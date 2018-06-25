@@ -41,11 +41,15 @@ APIs for native Android applications.
 * **[Client-side push API](java/push)**  
     You can use Java push API to develop apps for the Android environment.
 
+* **[Client side JSONStore API](java/store)**  
+    You can use JSONStore API to work with the store for the Android environment.
+
 ### C Sharp
 {: #c-sharp }
-APIs for native Windows 10 UWP and Windows 8 Universal applications.
-* **[Client-side API for Windows 10 Universal Windows Platform and Windows 8 Universal apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf)**  
-    You can use C# API to develop apps for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal environment.
+APIs for native Windows 10 UWP, Windows 8 Universal, Xamarin.iOS and Xamarin.Android applications.
+* **[Client-side API for Windows 10 Universal Windows Platform and Windows 8 Universal, Xamarin.iOS and Xamarin.Android apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf)**  
+    You can use C# API to develop apps for the Windows 10 Universal Windows Platform (UWP), Windows 8 Universal,Xamarin.iOS and Xamarin.Android 
+    environment.
 
-* **[Client-side push API for Windows 10 Universal Windows Platform and Windows 8 Universal apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_push_api.pdf)**  
-    You can use C# push APIs to develop apps which can send push notifications, for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal environment.
+* **[Client-side push API for Windows 10 Universal Windows Platform and Windows 8 Universal, Xamarin.iOS and Xamarin.Android apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_push_api.pdf)**  
+    You can use C# push APIs to develop apps which can send push notifications, for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal, Xamarin.iOS and Xamarin.Android environment.

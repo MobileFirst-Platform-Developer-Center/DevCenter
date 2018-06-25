@@ -54,7 +54,7 @@ In the **adapter.xml** file, declare the following parameters:
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -80,7 +80,7 @@ In the **adapter.xml** file, declare the following parameters:
 {% endhighlight %}</li>
 
                     <li><b>dataSourceJNDIName</b>: <i>Optional.</i> Connect to the data source by using the JNDI name of a data source that is provided by the application server. The adapter takes the connection from the server connection pool that is associated with the JNDI name. Application servers provide a way to configure data sources. For more information, see Installing {{ site.data.keys.mf_server }} to an application server. For example:
-                    
+
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
     <dataSourceJNDIName>my-adapter-ds</dataSourceJNDIName>
@@ -154,7 +154,7 @@ function getAccountTransactions2(accountId){
 
 ### Using multiple parameters
 {: #using-multiple-parameters }
- 
+
 When using either single or multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an **array**.
 
 ```javascript

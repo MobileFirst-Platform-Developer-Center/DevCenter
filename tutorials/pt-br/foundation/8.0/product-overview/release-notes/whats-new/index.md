@@ -7,7 +7,7 @@ weight: 1
 <br/>
 O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que modernizam sua experiência de desenvolvimento, implementação e gerenciamento de aplicativos no {{ site.data.keys.product_adj }}.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -134,6 +134,9 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>API REST atualizada para o tempo de execução</h3>
                 <p>A API REST para o tempo de execução do {{ site.data.keys.product_adj }} agora fornece vários serviços para clientes móveis e clientes confidenciais para chamar adaptadores, obter tokens de acesso, obter conteúdo de Atualização direta e mais. A maioria dos terminais de API REST é protegida por OAuth. Em um servidor de desenvolvimento, é possível visualizar o doc do Swagger para a API de tempo de execução em: <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
+
+                <h3>Suporte de fixação de certificado múltiplo</h3>
+                <p>Iniciando com iFix 8.0.0.0-IF201706240159, o {{ site.data.keys.mf_bm_short }} suporta a fixação de vários certificados. Isso permite que usuários tenham acesso seguro a diversos hosts. Antes desta iFix, o {{ site.data.keys.mf_bm_short }} suportava fixação de um único certificado. O {{ site.data.keys.mf_bm_short }} introduziu uma nova API, que permite conexão com vários hosts, permitindo que o usuário fixe chaves públicas de vários certificados X509 (adquiridas com uma autoridade de certificação) para o aplicativo cliente. Uma cópia de todos os certificados deve ser colocada em seu aplicativo cliente. Durante o handshake SSL, o cliente SDK do {{ site.data.keys.product_full }} verifica se a chave pública do certificado do servidor corresponde à chave pública de um dos certificados armazenados no aplicativo.</p>
             </div>
         </div>
     </div>
@@ -250,7 +253,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>Novos recursos do {{ site.data.keys.product }} foram introduzidos para ajudá-lo a implementar e gerenciar seus aplicativos. Agora é possível atualizar seus aplicativos e adaptadores sem reiniciar o {{ site.data.keys.mf_server }}.</p>
 
@@ -270,11 +273,11 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <p>Artefatos de desenvolvimento dos quais você faz upload para o servidor incluem adaptadores e sua configuração, configurações de segurança para seus aplicativos, certificados de notificação push e filtros de log.</p>
 
-                <h3>Executando aplicativos que foram criados no IBM Bluemix no {{ site.data.keys.product }}</h3>
-                <p>Os desenvolvedores podem migrar aplicativos IBM Bluemix para executar no {{ site.data.keys.product }}. A migração requer que você faça mudanças na configuração para seu aplicativo cliente para corresponder às APIs do {{ site.data.keys.product }}.</p>
+                <h3>Executando aplicativos criados no IBM Cloud no {{ site.data.keys.product }}</h3>
+                <p>Desenvolvedores podem migrar aplicativos do IBM Cloud para serem executados no {{ site.data.keys.product }}. A migração requer que você faça mudanças na configuração para seu aplicativo cliente para corresponder às APIs do {{ site.data.keys.product }}.</p>
 
-                <h3>{{ site.data.keys.product }} como serviço no IBM Bluemix</h3>
-                <p>Agora é possível usar o serviço {{ site.data.keys.mf_bm_full }} no IBM Bluemix para criar e executar seus aplicativos móveis corporativos.</p>
+                <h3>{{ site.data.keys.product }} como um serviço no IBM Cloud</h3>
+                <p>Agora, é possível usar o serviço {{ site.data.keys.mf_bm_full }} no IBM Cloud para criar e executar seus aplicativos móveis corporativos. </p>
 
                 <h3>Nenhum arquivo .wlapp</h3>
                 <p>Em versões anteriores, aplicativos eram implementados no {{ site.data.keys.mf_server }} fazendo upload de um arquivo <b>.wlapp</b>. O arquivo continha dados que descreviam o aplicativo e, no caso de aplicativos híbridos, os recursos da web que também eram necessários. Na V8.0.0, em vez do arquivo <b>.wlapp</b>:</p>
@@ -309,7 +312,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                 <p>JAX-RS 2.0 apresenta uma nova funcionalidade do lado do servidor: filtros e interceptores HTTP assíncronos do lado do servidor.  Os adaptadores agora podem explorar esses novos recursos.</p>
 
                 <h3>{{ site.data.keys.product }} no IBM Containers</h3>
-                <p>O {{ site.data.keys.product }} no IBM Containers liberado para a V8.0.0 está disponível no <a href="http://www-01.ibm.com/software/passportadvantage/">site do IBM Passport Advantage</a>. Essa versão do {{ site.data.keys.product }} no IBM Containers está pronta para a produção e suporta o banco de dados transacional dashDB™ corporativo no IBM Bluemix.</p>
+                <p>O {{ site.data.keys.product }} no IBM Containers liberado para a V8.0.0 está disponível no <a href="http://www-01.ibm.com/software/passportadvantage/">site do IBM Passport Advantage</a>. Essa versão do {{ site.data.keys.product }} no IBM Containers está pronta para produção e suporta o banco de dados transacional e corporativo dashDB™ no IBM Cloud. </p>
 
                 <p><b>Nota:</b> consulte os pré-requisitos para implementar o {{ site.data.keys.product }} no IBM Containers.</p>
 
@@ -470,7 +473,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_app_center }} é suportado pelo Bluemix (baseado em contêineres) por meio de scripts BYOL.</p>
+                <p>Agora, o {{ site.data.keys.mf_app_center }} é suportado no IBM Cloud (baseado em contêineres) através de scripts BYOL. </p>
             </div>
         </div>
     </div>

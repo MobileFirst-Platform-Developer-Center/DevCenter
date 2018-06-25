@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Configuración del registro y del rastreo para Application Center en el servidor de aplicaciones
-breadcrumb_title: Configuración del registro y del rastreo
+title: Definición del registro y el rastreo para el Application Center en el servidor de aplicaciones
+breadcrumb_title: Setting up logging and tracing
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
@@ -45,14 +45,13 @@ Donde:
 * **com.ibm.mfp.**\*, **com.ibm.worklight.*** y
 **com.worklight.*** son para otros componentes de {{ site.data.keys.product_adj }}.
 
-
 Los rastreos se envían a un archivo denominado **trace.log**, no a **SystemOut.log** o a **SystemErr.log**.
 
 ## Habilitación del registro y rastreo en WebSphere Application Server Liberty
 {: #logging-in-liberty }
 Puede establecer los niveles de registro y el archivo de salida para las operaciones de rastreo para Application Center en el servidor de aplicaciones de Liberty.
 
-Al intentar diagnosticar problemas en el servidor de aplicaciones, es importante poder ver los mensajes de registro. Para imprimir los mensajes de registro legibles en los archivos de registro, debe especificar los valores aplicables. 
+Al intentar diagnosticar problemas en el servidor de aplicaciones, es importante poder ver los mensajes de registro. Para imprimir los mensajes de registro legibles en los archivos de registro, debe especificar los valores aplicables.
 
 Para habilitar el registro para {{ site.data.keys.product }}, incluido Application Center, con el nivel FINEST (equivalente a ALL), añada una línea al archivo server.xml. Por ejemplo:
 
@@ -70,7 +69,7 @@ Para obtener más información, consulte [Perfil de Liberty: Registro y rastreo]
 {: #logging-in-tomcat }
 Puede establecer los niveles de registro y el archivo de salida para las operaciones de rastreo realizadas en el servidor de aplicaciones Apache Tomcat.
 
-Al intentar diagnosticar problemas en el servidor de aplicaciones, es importante poder ver los mensajes de registro. Para imprimir los mensajes de registro legibles en los archivos de registro, debe especificar los valores aplicables. 
+Al intentar diagnosticar problemas en el servidor de aplicaciones, es importante poder ver los mensajes de registro. Para imprimir los mensajes de registro legibles en los archivos de registro, debe especificar los valores aplicables.
 
 Para habilitar el registro para {{ site.data.keys.product }}, incluido Application Center, con el nivel **FINEST** (equivalente a **ALL**), edite el archivo **conf/logging.properties**. Por ejemplo, añada líneas similares a las siguientes:
 
@@ -89,8 +88,8 @@ En todas las plataformas soportadas, puede utilizar propiedades de Java Naming a
 
 Las siguientes propiedades de JNDI son aplicables para la aplicación web para servicios de Application Center (**applicationcenter.war**).
 
-| Valores de la propiedad | Valor | Descripción | 
+| Valores de la propiedad | Valor | Descripción |
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | De manera predeterminada, esta propiedad se establece en false. Establézcala en true para formatear la salida JSON con espacios en blanco, para una lectura más sencilla en archivos de registro. | 
-| ibm.appcenter.logging.tosystemerror | true | De manera predeterminada, esta propiedad se establece en false. Establézcala en true para imprimir todos los mensajes de registro del error de sistema en archivos de registro. Utilice la propiedad para activar el registro de forma global. | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | Este valor imprime todas las sentencias SQL generadas en los archivos de registro. | 
+| ibm.appcenter.logging.formatjson | true | De manera predeterminada, esta propiedad se establece en false. Establézcala en true para formatear la salida JSON con espacios en blanco, para una lectura más sencilla en archivos de registro. |
+| ibm.appcenter.logging.tosystemerror | true | De manera predeterminada, esta propiedad se establece en false. Establézcala en true para imprimir todos los mensajes de registro del error de sistema en archivos de registro. Utilice la propiedad para activar el registro de forma global. |
+| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | Este valor imprime todas las sentencias SQL generadas en los archivos de registro. |

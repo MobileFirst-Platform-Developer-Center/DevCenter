@@ -65,7 +65,7 @@ Im bereitgestellten Beispieladapter hat die Klasse den Namen `JavaSQLResource`.
 
 ```java
 @Path("/")
-  public class JavaSQLResource {
+public class JavaSQLResource {
 }
 ```
 
@@ -167,6 +167,8 @@ kann ein anderes `Response`-Objekt mit einem bestimmten HTTP-Statuscode erstellt
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Stellen Sie sicher, dass Ressourcen
 wie vorbereitete Anweisungen und Verbindungen geschlossen werden.
+
+
 
 ### Benutzer abrufen
 {: #get-user }

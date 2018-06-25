@@ -29,7 +29,7 @@ und [Windows-8-Universal- und Windows-10-UWP-Entwicklungsumgebung einrichten](..
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 - [Natives {{ site.data.keys.product_adj }}-SDK hinzufügen](#adding-the-mobilefirst-native-sdk)
-- [Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen](#manually-adding-the-mobilefirst-win-native-sdk) 
+- [Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen](#manually-adding-the-mobilefirst-win-native-sdk)
 - [Natives {{ site.data.keys.product_adj }}-SDK aktualisieren](#updating-the-mobilefirst-native-sdk)
 - [Generierte Artefakte des nativen {{ site.data.keys.product_adj }}-SDK](#generated-mobilefirst-native-sdk-artifacts)
 - [Nächste Lernprogramme](#tutorials-to-follow-next)
@@ -77,7 +77,7 @@ des Visual-Studio-Projekts generiert.
 
 Sie können das SDK der {{ site.data.keys.product }} auch manuell hinzufügen:
 
-<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="win-sdk">
             <h4 class="panel-title">
@@ -137,7 +137,7 @@ Anwendungen auch über die {{ site.data.keys.mf_console }} registrieren:
 >
 > 1. Laden Sie die {{ site.data.keys.mf_console }}.  
 > 2. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**, um eine neue Anwendung zu registrieren. Folgen Sie den angezeigten Anweisungen.   
-> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.resw** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen.
+> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.resw** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen. 
 
 ## Natives {{ site.data.keys.product_adj }}-SDK aktualisieren
 {: #updating-the-mobilefirst-native-sdk }

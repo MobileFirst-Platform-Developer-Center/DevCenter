@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Handling SMS Notifications in Android
+title: Android에서 SMS 알림 처리
 breadcrumb_title: Handling SMS in Android
 relevantTo: [android]
 weight: 10
@@ -9,48 +9,48 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Android](../../) tutorials.
+SMS 알림은 푸시 알림의 서브세트이므로 먼저 [Android의 푸시 알림 학습서를 완료](../../)해야 합니다.
 
-**Prerequisites:**
+**전제조건:**
 
-* Make sure you have read the following tutorials:
-  * [Notifications Overview](../../)
-  * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-  * [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 다음과 같은 학습서를 읽어야 합니다.
+  * [알림 개요](../../)
+  * [{{ site.data.keys.product_adj }} 개발 환경 설정](../../../installation-configuration/#installing-a-development-environment)
+  * [iOS 애플리케이션에 {{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/ios)
+* {{ site.data.keys.mf_server }}가 로컬로 실행되거나 {{ site.data.keys.mf_server }}가 원격으로 실행 중입니다.
+* {{ site.data.keys.mf_cli }}가 개발자 워크스테이션에 설치되어 있습니다.
 
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-* [Notifications API](#notifications-api)   
-* [Using an SMS subscribe servlet](#using-an-sms-subscribe-servlet)     
-* [Sample Application](#sample-application)
+* [알림 API](#notifications-api)   
+* [SMS 등록 서블릿 사용](#using-an-sms-subscribe-servlet)     
+* [샘플 애플리케이션](#sample-application)
 
-## Notifications API
+## 알림 API
 {: #notifications-api }
-In SMS notifications, when registering the device, a phone number value is passed.
+SMS 알림에서는 디바이스 등록 시 전화번호 값이 전달됩니다.
 
-#### Challenge Handlers
+#### 인증 확인 핸들러
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+`push.mobileclient` 범위가 **보안 검사**에 맵핑되는 경우에는 푸시 API를 사용하기 전에 일치하는 **인증 확인 핸들러**가 존재하며 등록되어 있는지 확인해야 합니다.
 
-#### Initialization
+#### 초기화
 {: #initialization }
-Required for the client application to connect to MFPPush service with the right application context.
+클라이언트 애플리케이션이 올바른 애플리케이션 컨텍스트를 사용하여 MFPPush 서비스에 연결하기 위해 필요합니다.
 
-* The API method should be called first before using any other MFPPush APIs.
-* Registers the callback function to handle received push notifications.
+* 다른 MFPPush API를 사용하기 전에 먼저 API 메소드를 호출해야 합니다.
+* 수신된 푸시 알림을 처리하도록 콜백 함수를 등록합니다.
 
 ```java
 MFPPush.getInstance().initialize(this);
 ```
 
-#### Register Device
+#### 디바이스 등록
 {: #register-device }
-Register the device to the push notifications service.
+디바이스를 푸시 알림 서비스에 등록합니다.
 
 ```java
 MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
@@ -66,7 +66,7 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
 }, optionObject);
 ```
 
-* **optionObject**: an `JSONObject` containing the phone number to register the device with. For example:
+* **optionObject**: 디바이스를 등록하는 데 사용할 전화번호가 포함된 `JSONObject`입니다. 예를 들어, 다음과 같습니다.
 
 ```java
 JSONObject optionObject = new JSONObject();
@@ -79,11 +79,11 @@ catch(Exception ex) {
 }
 ```
 
-> You can also register a device using the [Push Device Registration (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
+> [푸시 디바이스 등록(POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)를 사용하여 디바이스를 등록할 수도 있습니다.
 
-#### Unregister Device
+#### 디바이스 등록 취소
 {: #unregister-device }
-Unregister the device from push notification service instance.
+푸시 알림 서비스 인스턴스에서 디바이스를 등록 취소합니다.
 
 ```java
 MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
@@ -100,28 +100,28 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 });
 ```
 
-## Using an SMS subscribe servlet
+## SMS 등록 서블릿 사용
 {: #using-an-sms-subscribe-servlet }
-REST APIs are used to send notifications to the registered devices. All forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications
+REST API는 등록된 디바이스에 알림을 전송하는 데 사용됩니다. 모든 양식의 알림(태그 &amp; 브로드캐스트 알림 및 인증된 알림)을 전송할 수 있습니다.
 
-To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL: 
+알림을 전송하기 위해 REST 엔드포인트에 대한 POST를 사용하여 요청이 작성됩니다. `imfpush/v1/apps/<application-identifier>/messages`.  
+예제 URL: 
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
-> To review all Push Notifications REST APIs, see the <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API runtime services</a> topic in the user documentation.
+> 모든 푸시 알림 REST API를 검토하려면 사용자 문서에서 <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API 런타임 서비스</a> 주제를 참조하십시오.
 
-To send a notification, see the [sending notifications](../../sending-notifications) tutorial.
+알림을 전송하려면 [알림 전송](../../sending-notifications) 학습서를 참조하십시오.
 
-<img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
-## Sample application
+<img alt="샘플 애플리케이션의 이미지" src="sample-app.png" style="float:right"/>
+## 샘플 애플리케이션
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80) the Android project.
+Android 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80)하십시오.
 
-**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
+**참고:** 샘플을 실행할 Android 디바이스에 Google Play Services의 최신 버전이 설치되어 있어야 합니다.
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+샘플의 README.md 파일에 있는 지시사항을 따르십시오.

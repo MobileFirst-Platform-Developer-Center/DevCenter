@@ -1,22 +1,30 @@
 ---
 layout: tutorial
-title: Securing Cordova Applications
+title: Protección de aplicaciones Cordova
 breadcrumb_title: Securing applications
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Encrypting the web resources of your Cordova packages
+### Cifrado de recursos web de sus paquetes Cordova
 {: #encrypting-the-web-resources-of-your-cordova-packages }
-To minimize the risk of someone viewing and modifying your web resources while it is in the .apk or .ipa package, you can use the {{ site.data.keys.mf_cli }} `mfpdev app webencrypt` command or the `mfpwebencrypt` flag to encrypt the information. This procedure does not provide encryption that is impossible to defeat, but it provides a basic level of obfuscation.
+Para minimizar el riesgo que un tercero visualice y modifique sus recursos web mientras están en el paquete .apk o .ipa, utilice el mandato {{ site.data.keys.mf_cli }} `mfpdev app webencrypt` o el distintivo `mfpwebencrypt` para cifrar la información.
+Este procedimiento no proporciona un cifrado inviolable, pero sí proporciona un nivel básico de enmascaramiento.
 
-**Prerequisites:**
 
-* You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
-* You must have the {{ site.data.keys.mf_cli }} installed.
-* You must have the { site.data.keys.product_adj }} Cordova plug-in installed.
+**Requisitos previos:**
 
-The best time to complete this procedure is after finishing your app development and are ready to deploy the app. If you run any of the following commands after you complete the web resources encryption procedure, the content that was encrypted becomes decrypted:
+* Las herramientas de desarrollo de Cordova deben estar instaladas.
+Este ejemplo utiliza la interfaz de línea de mandatos (CLI) de Cordova.
+Si utiliza otras herramientas de desarrollo de Cordova, algunos de sus pasos serán diferentes.
+Consulte la documentación de su herramienta de Cordova para obtener instrucciones.
+
+* {{ site.data.keys.mf_cli }} debe estar instalado. 
+* El plugin in de Cordova {{ site.data.keys.product_adj }} debe estar instalado.
+
+El mejor momento para completar este procedimiento es al finalizar el desarrollo de su aplicación y antes de desplegarla.
+Si ejecuta cualquiera de los siguientes mandatos después de completar el procedimiento de cifrado de los recursos web, el contenido que estaba cifrado pasará a estar descifrado:
+
 
 * cordova prepare
 * cordova build
@@ -25,76 +33,110 @@ The best time to complete this procedure is after finishing your app development
 * mfpdev app webupdate
 * mfpdev app preview
 
-If you run one of the listed commands after you encrypt the web resources, you must complete this procedure again to encrypt the web resources.
+Si ejecuta alguno de los mandatos de la lista después de cifrar los recursos web, debe completar este procedimiento de nuevo para cifrar los recursos web.
 
-1. Open a terminal window and navigate to the root directory of the Cordova app that you want to encrypt.
-2. Prepare the app by entering one of the following commands:
+
+1. Abra una ventana de terminal y vaya al directorio raíz de la aplicación Cordova que desea cifrar.
+
+2. Prepare la aplicación especificando uno de los siguientes mandatos:
+
     - cordova prepare
     - mfpdev app webupdate
-3. Complete one of the following procedures to encrypt the content:
-    - Enter the following command: `mfpdev app webencrypt`. **Tip:** You can view information about the `mfpdev app webencrypt` command by entering `mfpdev help app webencrypt`.
-    - You can also encrypt the web resources of your Cordova packages by adding the `mfpwebencrypt` flag to the `cordova compile` or to the `cordova build` command when you build your packages.
+3. Complete uno de los siguientes procedimientos para cifrar el contenido:
+
+    - Especifique el siguiente mandato: `mfpdev app webencrypt`. **Sugerencia:** Visualice información sobre el mandato `mfpdev app webencrypt` especificando `mfpdev help app webencrypt`.
+
+    - Los recursos web de sus paquetes de Cordova también se pueden cifrar añadiendo el distintivo `mfpwebencrypt` al mandato `cordova compile` o `cordova build` al compilar sus paquetes.
+
         - `cordova compile -- --mfpwebencrypt` | `cordova build -- --mfpwebencrypt`
     <br/>
-    The operating system information in the **www** folder is replaced by a **resources.zip** file that contains the encrypted content.  
-    If your app is for the Android operating system and the **resources.zip** file is larger than 1 MB, the **resources.zip** file is divided into smaller 768 KB .zip files that are named **resources.zip.nnn**. The variable nnn is a number from 001 through 999.
-4. Test the application with the encrypted resources by using the emulator that is provided with the platform-specific tools. For example, you can use the emulator in Android Studio for Android, or Xcode for iOS.
+La información sobre el sistema operativo en la carpeta **www**
+se sustituye por un archivo **resources.zip** que contiene el contenido cifrado.
+  
+Si su aplicación está dirigida al sistema operativo Android y el archivo **resources.zip** es mayor de 1 MB, el archivo **resources.zip** se divide en archivos .zip de 768 KB más pequeños denominados **resources.zip.nnn**.
+La variable nnn es un número de 001 a 999.
+4. Pruebe la aplicación con los recursos cifrados mediante el emulador que se proporciona con las herramientas específicas de la plataforma.
+Por ejemplo, se puede utilizar el emulador en Android Studio para Android o Xcode para iOS.
 
-**Note:** Do not use the following Cordova commands to test the application after you encrypt it:
+**Nota:** No utilice los siguientes mandatos Cordova para probar la aplicación después de cifrarla:
+
 
 * `cordova run`
 * `cordova emulate`
 
-These commands refresh the content that was encrypted in the www folder, and saves it again as decrypted content. If you use these commands, remember to complete the procedure again to encrypt it before you publish the app.
+Estos mandatos renuevan el contenido cifrado en la carpeta www y lo guardan de nuevo como contenido descifrado.
+Si utiliza estos mandatos, recuerde completar el procedimiento de nuevo para cifrar antes de publicar la aplicación.
 
-### Enabling the web resources checksum feature
+
+### Habilitación de la característica de suma de comprobación de recursos web
 {: #enabling-the-web-resources-checksum-feature }
-When it is enabled, the web resources checksum feature compares the original web resources of an app when it is started to a stored baseline that was captured the first time that app was started. This is a good way of identifying any differences in the app that might indicate that the app was modified. This procedure is compatible with the Direct Update feature.
+Cuando se habilita, la característica de suma de comprobación de recursos web compara los recursos web originales de una aplicación cuando se inicia con una línea base almacenada que se capturó la primera vez que se inicio la aplicación.
+Es una buena forma de identificar diferencias en la aplicación que podrían indicar que ha sido modificada.
+Este procedimiento es compatible con la característica Direct Update.
 
-**Prerequisites:**
 
-* You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
-* You must have the {{ site.data.keys.mf_cli }} installed. 
-* You must have the { site.data.keys.product_adj }} plug-in installed.
-* You must add the platform to your Cordova project before you can enable the web resources checksum feature for that operating system by entering the `cordova platform add [android|ios|windows|browser]` command.
+**Requisitos previos:**
 
-To enable the web resources checksum feature for a Cordova app, complete the following steps:
+* Las herramientas de desarrollo de Cordova deben estar instaladas.
+Este ejemplo utiliza la interfaz de línea de mandatos (CLI) de Cordova.
+Si utiliza otras herramientas de desarrollo de Cordova, algunos de sus pasos serán diferentes.
+Consulte la documentación de su herramienta de Cordova para obtener instrucciones.
 
-1. In a terminal window, navigate to the root directory of your target app.
-2. Enter the following command to enable the web resources checksum feature for an operating system environment of your Cordova app:
+* {{ site.data.keys.mf_cli }} debe estar instalado. 
+* El plugin {{ site.data.keys.product_adj }} debe estar instalado. 
+* Debe añadir la plataforma a su proyecto de Cordova antes de habilitar la característica de suma de comprobación de recursos web para el sistema operativo especificando el mandato `cordova platform add [android|ios|windows|browser]`.
+
+
+Para habilitar la característica de suma de comprobación para una aplicación de Cordova, complete los siguientes pasos: 
+
+1. En una ventana de terminal, vaya al directorio raíz de su aplicación de destino. 
+2. Especifique el mandato siguiente para habilitar la característica de suma de comprobación de recursos web para un entorno de sistema operativo de su aplicación Cordova:
+
 
    ```bash
    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_test_web_resources_checksum true
    ```
 
-   For example:  
-    
+   Por ejemplo:
+
+  
+
    ```bash
    mfpdev app config android_security_test_web_resources_checksum true
    ```
 
-   You can disable the feature by replacing **true** in the command with **false**.
-   
-   > **Tip:** You can view information about the `mfpdev app config` command by entering `mfpdev help app config`.
-    
-3. Enter the following command to identify the types of files that you want to ignore during the checksum test:
+   Inhabilite la característica sustituyendo **true** en el mandato por **false**.
+
+
+   > **Sugerencia:** Visualice información sobre el mandato `mfpdev app config` especificando `mfpdev help app config`.
+
+
+3. Especifique el siguiente mandato para identificar los tipos de archivo que desea ignorar durante la prueba de suma de comprobación:
+
 
    ```bash
    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_ignore_file_extensions [ file_extension1,file_extension2 ]
    ```
-    
-   Multiple extensions must be separated by a comma with no spaces between them. For example:
-    
+
+   Separe las distintas extensiones con una coma y sin espacios entre las mismas.
+Por ejemplo:
+
+
+
    ```bash
    mfpdev app config android_security_ignore_file_extensions jpg,png,pdf
    ```
-    
-**Important:** Running this command overwrites the values that are set.
 
-The more files that the web resources checksum scans for its test, the longer it takes for the app to open. You can specify the extension of a file type to skip, which might improve the speed of starting the app.
+**Importante:** Al ejecutar este mandato se sobrescriben los valores establecidos.
 
-Your app has the web resources checksum feature enabled.
 
-1. Run the following command to integrate the changes into your app: `cordova prepare`
-2. Build your app by entering the following command: `cordova build`
-3. Run your app by entering the following command: `cordova run`
+Cuantos más archivos tenga que explorar la suma de comprobación de recursos web en su prueba, más tardará en abrirse la aplicación.
+Tiene la posibilidad de especificar la extensión de un tipo de archivo para omitirla, lo que podría mejorar el tiempo en que tarda en iniciarse la aplicación.
+
+
+Su aplicación tiene la característica de suma de comprobación de recursos web.
+
+
+1. Ejecute el mandato siguiente para integrar los cambios en la aplicación: `cordova prepare`
+2. Compile la aplicación especificando el siguiente mandato: `cordova build`
+3. Ejecute la aplicación especificando el siguiente mandato: `cordova run`

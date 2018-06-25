@@ -59,7 +59,7 @@ Sie zum Ordner des Servers und führen Sie den Befehl `./run.cmd` aus.
       {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -108,15 +108,16 @@ Laden Sie [dieses vorbereitete Adapterartefakt](../javaAdapter.adapter) herunter
 {: 5-testing-the-application }
 1. Wählen Sie in Visual Studio die Datei **mfpclient.resw** aus und bearbeiten Sie die Eigenschaften **protocol**, **host** und **port**. Geben Sie die für diese Eigenschaften die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} ein.
     * Wenn Sie einen lokalen {{ site.data.keys.mf_server }} verwenden, lauten die Werte normalerweise **http**, **localhost** und **9080**.
-    * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für Bluemix) verwenden, lauten die Werte in der Regel **https**, **your-server-address** und **443**.
+    * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für IBM Cloud) verwenden, lauten die Werte in der Regel **https**, **Ihre_Serveradresse** und **443**.
+    * Wenn Sie einen Kubernetes-Cluster in IBM Cloud Private verwenden und der Implementierungstyp **NodePort** ist, ist der Portwert in der Regel der **NodePort**, der vom Service im Kubernetes-Cluster zugänglich gemacht wird.
 
-    Wenn Sie die {{ site.data.keys.mf_cli }} installiert haben, können Sie alternativ zum Projektstammverzeichnis navigieren und den Befehl `mfpdev app register` ausführen. Bei Verwendung eines fernen {{ site.data.keys.mf_server }} müssen Sie den [Befehl `mfpdev server add` ausführen](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance), um den Server hinzuzufügen, gefolgt beispielsweise von `mfpdev app register myBluemixServer`.
-
+    Wenn Sie die {{ site.data.keys.mf_cli }} installiert haben, können Sie alternativ zum Projektstammverzeichnis navigieren und den Befehl `mfpdev app register` ausführen. Bei Verwendung eines fernen {{ site.data.keys.mf_server }} müssen Sie den [Befehl `mfpdev server add` ausführen](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance), um den Server hinzuzufügen, gefolgt beispielsweise von `mfpdev app register myIBMCloudServer`.
+    
 2. Klicken Sie auf die Schaltfläche **App ausführen**.
 
 ### Ergebnisse
 {: #results }
-* Wenn Sie auf die Schaltfläche **Ping {{ site.data.keys.mf_server }}** klicken, wird **Connected to {{ site.data.keys.mf_server }}** angezeigt.
+* Wenn Sie auf die Schaltfläche **{{ site.data.keys.mf_server }} pingen** klicken, wird **Verbunden mit {{ site.data.keys.mf_server }}** angezeigt.
 * Wenn die Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen konnte, findet ein Ressourcenanforderungsaufruf unter Verwendung des implementierten Java-Adapters statt.
 
 Die Antwort des Adapters wird in der Ausgabekonsole von Visual Studio ausgegeben.

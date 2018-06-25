@@ -1,37 +1,37 @@
 ---
 layout: tutorial
-title: Troubleshooting Analytics
+title: Analytics のトラブルシューティング
 breadcrumb_title: Analytics
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Find information to help resolve issues that you might encounter when you use the {{ site.data.keys.mf_analytics }}.
+以下に、{{ site.data.keys.mf_analytics }} を使用する際に発生する可能性がある問題を解決するために役立つ情報を記載しています。
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>There is no data in the analytics console</h4></div>
+  <div class="panel-heading"><h4>Analytics コンソール内にデータがありません</h4></div>
   <div class="panel-body">
-  <p>Check the following possibilities.</p>
+  <p>以下の可能性を調べてください。</p>
   <ul>
-    <li>Verify that your apps are set to point to the {{ site.data.keys.mf_server }}, which forwards the logs to the {{ site.data.keys.mf_analytics_server }}. Ensure that the following values are set in the <code>mfpclient.plist</code> (iOS),  <code>mfpclient.properties</code> (Android), or <code>config.xml</code> (Cordova) files.
+    <li>{{ site.data.keys.mf_analytics_server }}にログを転送する {{ site.data.keys.mf_server }} を指すようにアプリケーションが設定されていることを確認します。<code>mfpclient.plist</code> (iOS) ファイル、<code>mfpclient.properties</code> (Android) ファイル、または <code>config.xml</code> (Cordova) ファイルで必ず以下の値を設定するようにしてください。
 
 {% highlight xml %}
-protocol = http or https
-host = the IP address of your {{ site.data.keys.mf_server }}
-port = the HTTP port that is set in the server.xml file for reporting analytics
-wlServerContext = by default "/mfp/"
+protocol = http または https
+host = ご使用の {{ site.data.keys.mf_server }} の IP アドレス
+port = 分析を報告するために server.xml ファイルに設定されている HTTP ポート
+wlServerContext = デフォルトでは「/mfp/」
 {% endhighlight %}</li>
 
-    <li>Ensure that your {{ site.data.keys.mf_server }} is pointing to your {{ site.data.keys.mf_analytics_server }}.
+    <li>必ず {{ site.data.keys.mf_server }} が {{ site.data.keys.mf_analytics_server }}を指すようにしてください。
 
 {% highlight xml %}
 /analytics-service
 /analytics
 {% endhighlight %}</li>
 
-    <li>Check that you are calling the send method.
+    <li>send メソッドを呼び出していることを確認します。
         <ul>
             <li>iOS:
                 <ul>
@@ -49,24 +49,24 @@ wlServerContext = by default "/mfp/"
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Why is there crash data in the Crash Overview table, but nothing in the Crash Summary table?</h4></div>
+  <div class="panel-heading"><h4>「異常終了の概要」表には異常終了のデータがありますが、「異常終了の要約」表には何もありません。なぜですか?</h4></div>
   <div class="panel-body">
-    <p>The crash logs must be sent to the server once the app is again running. Verify that your apps are sending logs after a crash. To be safe, send logs on app start-up to ensure that any previously unsent information is reported.</p>
+    <p>アプリケーションが再度実行されたら、異常終了のログをサーバーに送信する必要があります。異常終了の後、アプリケーションがログを送信していることを確認します。念のため、アプリケーションの開始時にログを送信して、前に未送信の情報があれば報告されるようにしてください。</p>
   </div>
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Why is there no data in the Server Usage Flow graph or the Network Request graph?</h4></div>
+  <div class="panel-heading"><h4>「サーバー使用状況フロー」グラフおよび「ネットワーク要求」グラフにデータがありません。なぜですか?</h4></div>
   <div class="panel-body">
-    <p>Configure your apps to collect analytics on the Network device event.</p>
+    <p>Network デバイス・イベントで分析を収集するようにアプリケーションを構成してください。</p>
 
 {% highlight javascript %}
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 {% endhighlight %}
 
     <ul>
-        <li>For cross-platform apps that use Cordova, follow the iOS or Android guides, as the configurations are the same as for native apps.</li>
-        <li>To enable the capture of network analytic data in iOS, add the following code in your Application Delegate <code>application:didFinishLaunchingWithOptions</code> method.<br/>
+        <li>Cordova を使用するクロスプラットフォーム・アプリケーションの場合、ネイティブ・アプリケーションと構成が同じであるため、iOS または Android のガイドに従ってください。</li>
+        <li>iOS でネットワーク分析データの収集を有効にするには、Application Delegate の <code>application:didFinishLaunchingWithOptions</code> メソッドに次のコードを追加します。<br/>
 
         <b>Objective-C</b>
 
@@ -82,7 +82,7 @@ WLAnalytics.sharedInstance()
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK)
 {% endhighlight %}</li>
 
-        <li>To enable the capture of network analytic data in Android, add the following code in your Application subclass <code>onCreate</code> method.<br/>
+        <li>Android でネットワーク分析データの収集を有効にするには、Application サブクラスの <code>onCreate</code> メソッドに次のコードを追加します。<br/>
 
         <b>Java</b>
 {% highlight java %}
@@ -94,13 +94,13 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Why is there no data for app sessions?</h4></div>
+  <div class="panel-heading"><h4>アプリケーション・セッションのデータがありません。なぜですか?</h4></div>
   <div class="panel-body">
-    <p>Configure your apps to collect analytics using the Lifecycle device event listener.</p>
+    <p>Lifecycle デバイス・イベント・リスナーを使用して分析を収集するようにアプリケーションを構成してください。</p>
 
     <ul>
-        <li>For cross-platform apps that use Cordova, follow the iOS or Android guides, as the configurations are the same as for native apps.</li>
-        <li>To enable the capture of network analytic data in iOS, add the following code in your Application Delegate <code>application:didFinishLaunchingWithOptions</code> method.<br/><br/>
+        <li>Cordova を使用するクロスプラットフォーム・アプリケーションの場合、ネイティブ・アプリケーションと構成が同じであるため、iOS または Android のガイドに従ってください。</li>
+        <li>iOS でネットワーク分析データの収集を有効にするには、Application Delegate の <code>application:didFinishLaunchingWithOptions</code> メソッドに次のコードを追加します。<br/><br/>
 
         <b>Objective-C</b>
 
@@ -116,7 +116,7 @@ WLAnalytics.sharedInstance()
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE)
 {% endhighlight %}</li>
 
-        <li>To enable the capture of network analytic data in Android, add the following code in your Application subclass <code>onCreate</code> method.<br/>
+        <li>Android でネットワーク分析データの収集を有効にするには、Application サブクラスの <code>onCreate</code> メソッドに次のコードを追加します。<br/>
 
         <b>Java</b>
 
@@ -124,6 +124,31 @@ WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE)
 WLAnalytics.init(this);
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 {% endhighlight %}</li>
+    </ul>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h4>複数のユーザーが Analytics コンソールにアクセスすると、コンソールが応答しなくなります</h4></div>
+  <div class="panel-body">
+  <br>
+    <p>{{ site.data.keys.product }} Analytics が WebSphere Liberty バージョン <b>8.5.5.6 より前</b>にデプロイされている場合に、複数のユーザーがコンソールにアクセスすると、コンソールはフリーズしたり、その後のユーザー要求に応答しなくなったりします。
+</p>
+
+    <ul>
+        <li>この状況は、要求を処理するための <code>Executor</code> スレッドを WebSphere Liberty が使い尽くしたために発生します。これによってデッドロック状況が発生します。</li>
+
+        <li><a href="https://developer.ibm.com/wasdev/docs/was-liberty-threading-and-why-you-probably-dont-need-to-tune-it/" target="_blank">Liberty コア・スレッド</a>のデフォルトの数は、ハードウェア・スレッドの数です。
+</li>
+        <li>この問題を解決するには、Liberty executor スレッド数のパラメーターを、デフォルトより大きい値に構成します。
+<br/>
+以下の構成を Liberty の <code>server.xml</code> に追加します。
+<br/>
+
+{% highlight xml %}
+<executor name="LargeThreadPool" id="default" coreThreads="80" maxThreads="80" keepAlive="60s" stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS" />
+{% endhighlight %}</li>
+<li>これらの<a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_tun.html" target="_blank">調整設定</a>は通常、Websphere Liberty 8.5.5.6 の場合は不要です。</li>
     </ul>
   </div>
 </div>

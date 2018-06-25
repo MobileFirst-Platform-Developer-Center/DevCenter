@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Guia de Configuração do MobileFirst Analytics Server
-breadcrumb_title: Guia de Configuração
+title: Guia de configuração do servidor MobileFirst Analytics
+breadcrumb_title: Configuration Guide
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -81,9 +81,9 @@ A tabela a seguir mostra as propriedades que podem ser configuradas no {{ site.d
 | Propriedade                           | Descrição (Description)                                           | Valor Padrão |
 |------------------------------------|-------------------------------------------------------|---------------|
 | mfp.analytics.console.url          | Configure esta propriedade para a URL do {{ site.data.keys.mf_analytics_console }}. Por exemplo, http://hostname:port/analytics/console. Configurar essa propriedade ativa o ícone de análise de dados no {{ site.data.keys.mf_console }}. | Nenhuma |
-| mfp.analytics.logs.forward         | Se essa propriedade for configurada como verdadeira, os logs do servidor que estão registrados no {{ site.data.keys.mf_server }} serão capturados no {{ site.data.keys.mf_analytics }}. | true |
+| mfp.analytics.logs.forward         | Se essa propriedade for configurada como verdadeira, os logs do servidor que estão registrados no {{ site.data.keys.mf_server }} serão capturados no {{ site.data.keys.mf_analytics }}. | verdadeiro |
 | mfp.analytics.url                  |Requerido. A URL exposta pelo {{ site.data.keys.mf_analytics_server }} que recebe dados de análise de dados recebidos. Por exemplo, http://hostname:port/analytics-service/rest/v2. | Nenhuma |
-| analyticsconsole/mfp.analytics.url |	Opcional. URI completa dos serviços REST do Analytics. Em um cenário com um firewall ou um proxy reverso seguro, essa URI deve ser a URI externa, não a URI interna dentro da LAN local. Esse valor pode conter * no lugar do protocolo URI, nome do host ou porta, para denotar a parte correspondente da URL recebida.	*://*:*/analytics-service, com o protocolo, nome do host e porta determinados dinamicamente |
+| analyticsconsole/mfp.analytics.url |	Opcional. URI completa dos serviços REST do Analytics. Em um cenário com um firewall ou um proxy reverso seguro, essa URI deve ser a URI externa, não a URI interna dentro da LAN local. Esse valor pode conter * no lugar do protocolo URI, do nome do host ou da porta, para denotar a parte correspondente da URL recebida.	*://*:*/analytics-service, com o protocolo, o nome do host e a porta determinados dinamicamente |
 | mfp.analytics.username             | O nome do usuário que será usado se o ponto de entrada de dados for protegido com autenticação básica. | Nenhuma |
 | mfp.analytics.password             | A senha que será usada se o ponto de entrada de dados for protegido com autenticação básica. | Nenhuma |
 
@@ -97,7 +97,7 @@ A tabela a seguir mostra as propriedades que podem ser configuradas no {{ site.d
 | analytics/shards | O número de shards por índice. Esse valor pode ser configurado somente pelo primeiro nó que é iniciado no cluster e não pode ser mudado. | 1 |
 | analytics/replicas_per_shard | O número de réplicas para cada shard no cluster. Esse valor pode ser mudado dinamicamente em um cluster em execução. | 0 |
 | analytics/masternodes | Uma sequência delimitada por vírgulas que contém o nome do host e as portas dos nós principais elegíveis. | Nenhuma |
-| analytics/clustername | Nome do cluster. Configure esse valor se você planeja ter vários clusters que operam no mesmo subconjunto e precisa identificá-los exclusivamente. | worklight |
+| analytics/clustername | Nome do cluster. Configure esse valor se você planeja ter vários clusters que operam no mesmo subconjunto e precisa identificá-los exclusivamente. | Worklight |
 | analytics/nodename | Nome de um nó no cluster. | Uma sequência gerada aleatoriamente
 | analytics/datapath | O caminho no qual os dados de análise de dados são salvos no sistema de arquivos. | ./analyticsData |
 | analytics/settingspath | O caminho para um arquivo de configurações Elasticsearch. Para obter informações adicionais, consulte Elasticsearch. | Nenhuma |
@@ -105,12 +105,14 @@ A tabela a seguir mostra as propriedades que podem ser configuradas no {{ site.d
 | analytics/httpport | A porta que é usada para comunicação HTTP para Elasticsearch. | 9500 |
 | analytics/http.enabled | Ativa ou desativa a comunicação HTTP para Elasticsearch. | falso |
 | analytics/serviceProxyURL | O arquivo WAR de UI de análise o arquivo WAR de serviço de análise podem ser instalados em servidores de aplicativos separados. Se optar por fazer isso, você deve entender que o tempo de execução JavaScript no arquivo WAR da UI pode ser bloqueado por prevenção de cross-site scripting no navegador. Para efetuar bypass desse bloqueio, o arquivo WAR da UI inclui um código de proxy Java para que o tempo de execução JavaScript recupere respostas da API REST do servidor de origem. Mas o proxy está configurado para encaminhar solicitações de API REST para o arquivo WAR do serviço de análise de dados. Configure essa propriedade se você instalou seus arquivos WAR em servidores de aplicativos separados. | Nenhuma |
-| analytics/bootstrap.mlockall | Essa propriedade evita que a memória Elasticsearch seja trocada no disco. | true |
+| analytics/bootstrap.mlockall | Essa propriedade evita que a memória Elasticsearch seja trocada no disco. | verdadeiro |
 | analytics/multicast | Ativa ou desativa a descoberta de nó multicast. | falso |
 | analytics/warmupFrequencyInSeconds | A frequência na qual as consultas warmup são executadas. As consultas warmup são executadas no segundo plano para forçar resultados da consulta na memória, o que melhora o desempenho do console da web. Valores negativos desativam as consultas warmup. | 600 |
-| analytics/tenant | Nome do índice Elasticsearch principal.	worklight |
+| analytics/tenant | Nome do índice Elasticsearch principal.	Worklight |
 
 Em todos os casos em que a chave não contém um ponto (como **httpport** mas não **http.enabled**), a configuração pode ser controlada por variáveis de ambiente do sistema, onde o nome da variável é prefixado com **ANALYTICS_**. Quando a propriedade JNDI e a variável de ambiente do sistema são configuradas, a variável de ambiente do sistema toma precedência. Por exemplo, se você tiver a propriedade JNDI **analytics/httpport** e a variável de ambiente do sistema **ANALTYICS_httpport** configuradas, o valor para **ANALYTICS_httpport** será usado.
+
+> **Importante**: atualmente, o MobileFirst Analytics v8.0 não suporta a ocupação variada. Por padrão, os eventos do servidor MobileFirst são enviados para uma única arquitetura de locatário.
 
 #### Tempo de vida (TTL) do documento
 {: #document-time-to-live-ttl }
@@ -131,7 +133,23 @@ Esses valores podem ser configurados usando unidades de tempo básicas, conforme
 * 1s = 1 segundo
 * 1ms = 1 milissegundo
 
-> Nota: se estiver migrando de versões anteriores do {{ site.data.keys.mf_analytics_server }} e tiver configurado anteriormente as propriedades JNDI de TTL, consulte [Migração de propriedades do servidor usadas por versões anteriores do {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+A lista de tipos de documentos suportados é a seguinte:
+
+* TTL_PushNotification
+* TTL_PushSubscriptionSummarizedHourly
+* TTL_ServerLog
+* TTL_AppLog
+* TTL_NetworkTransaction
+* TTL_AppSession
+* TTL_AppSessionSummarizedHourly
+* TTL_NetworkTransactionSummarizedHourly
+* TTL_CustomData
+* TTL_AppPushAction
+* TTL_AppPushActionSummarizedHourly
+* TTL_PushSubscription
+
+
+> **Nota:** se você estiver migrando de versões anteriores do {{ site.data.keys.mf_analytics_server }} e configurou anteriormente quaisquer propriedades JNDI de TTL, consulte [Migração de propriedades de servidor usadas por versões anteriores do {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
 #### Elasticsearch
 {: #elasticsearch }
@@ -198,12 +216,12 @@ Nas instruções de amostra a seguir, não configure o nó para ser um nó princ
 
     | Flag | Valor (exemplo) | Padrão | Comunicado |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	O cluster que você pretende associar a esse nó. |
-    | discovery.zen.ping.multicast.enabled | 	falso | 	true | 	Configure como false para evitar associação de cluster acidental. |
+    | cluster.name | 	worklight	 | Worklight | 	O cluster que você pretende associar a esse nó. |
+    | discovery.zen.ping.multicast.enabled | 	falso | 	verdadeiro | 	Configure como false para evitar associação de cluster acidental. |
     | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Nenhuma | 	Lista de nós principais no cluster existente. Mude a porta padrão de 9600 se você especificou uma configuração de porta de transporte nos nós principais. |
-    | node.master | 	falso | 	true | 	Não permitir que esse nó seja um principal. |
-    | node.data|	falso | 	true | 	Não permitir que esse nó armazene dados. |
-    | http.enabled | 	true	 | true | 	Abrir porta HTTP 9200 não segura para a API REST Elasticsearch. |
+    | node.master | 	falso | 	verdadeiro | 	Não permitir que esse nó seja um principal. |
+    | node.data|	falso | 	verdadeiro | 	Não permitir que esse nó armazene dados. |
+    | http.enabled | 	true	 | verdadeiro | 	Abrir porta HTTP 9200 não segura para a API REST Elasticsearch. |
 
 3. Considere todas as sinalizações de configuração em cenários de produção. Talvez você queira que o Elasticsearch mantenha os plug-ins em um diretório do sistema de arquivos diferente dos dados, portanto, é preciso configurar a sinalização **path.plugins**.
 4. Execute o servidor de aplicativos e inicie os aplicativos WAR, se necessário.
@@ -228,12 +246,12 @@ Nas instruções de amostra a seguir, não configure o nó para ser um nó princ
 
     | Flag | Valor (exemplo) | Padrão | Comunicado |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	O cluster que você pretende associar a esse nó. |
-    | discovery.zen.ping.multicast.enabled | 	falso | 	true | 	Configure como false para evitar associação de cluster acidental. |
+    | cluster.name | 	worklight	 | Worklight | 	O cluster que você pretende associar a esse nó. |
+    | discovery.zen.ping.multicast.enabled | 	falso | 	verdadeiro | 	Configure como false para evitar associação de cluster acidental. |
     | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Nenhuma | 	Lista de nós principais no cluster existente. Mude a porta padrão de 9600 se você especificou uma configuração de porta de transporte nos nós principais. |
-    | node.master | 	falso | 	true | 	Não permitir que esse nó seja um principal. |
-    | node.data|	falso | 	true | 	Não permitir que esse nó armazene dados. |
-    | http.enabled | 	true	 | true | 	Abrir porta HTTP 9200 não segura para a API REST Elasticsearch. |
+    | node.master | 	falso | 	verdadeiro | 	Não permitir que esse nó seja um principal. |
+    | node.data|	falso | 	verdadeiro | 	Não permitir que esse nó armazene dados. |
+    | http.enabled | 	true	 | verdadeiro | 	Abrir porta HTTP 9200 não segura para a API REST Elasticsearch. |
 
 
 4. Considere todas as sinalizações de configuração em cenários de produção. Talvez você queira que o Elasticsearch mantenha os plug-ins em um diretório do sistema de arquivos diferente dos dados, portanto, é necessário configurar a sinalização path.plugins.

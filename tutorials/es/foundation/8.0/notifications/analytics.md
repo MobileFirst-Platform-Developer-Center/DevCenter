@@ -1,20 +1,20 @@
 ---
 layout: tutorial
-title: Setting Up Analytics Support for Push Notifications
+title: Configuración del soporte de Analytics para notificaciones push
 breadcrumb_title: Setting Up Analytics Support
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-To set up Analytics support for Push Notification, the following JNDI properties must be set in order to initialize and configure the **Analytics plug-in**. The Analytics plug-in is provided by the Push Notifications service. If it is not set, the Push Notifications service will default to logging the events in the system logger.
+Para configurar el soporte de analíticas para notificaciones push, se deben establecer las siguientes propiedades JNDI para inicializar y configurar el **plugin de analíticas**. El servicio de notificaciones push proporciona el plugin de analíticas. Si no se define, el servicio de notificaciones push de forma predeterminada registrará sucesos en el registrador del sistema.
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.services.ext.analytics" value = "com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin"/>
 ```
 
-The following properties are required to configure and initialize the {{ site.data.keys.mf_analytics }} plug-in. The username and password will be used to authenticate with the Analytics service at the provided endpoint.
+Se necesitan las siguientes propiedades para configurar e inicializar el plugin de {{ site.data.keys.mf_analytics }}. El nombre de usuario y la contraseña se utilizarán para autenticar el servicio de analíticas en el punto final proporcionado.
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
@@ -31,7 +31,7 @@ Push is meant to send two types of analytics events to the Analytics service. Th
 14/11/2016 only push notifications show up in reports, so we are removing any mention of the other events in the meantime, until there is a way to report on the other events.
 -->
 
-To track the notifications dispatched out of the Push Notifications service, ensure the following property is set to **true** (which is the default value):
+Para realizar un seguimiento de las notificaciones que el servicio de notificaciones push proporciona, asegúrese de que la siguiente propiedad está establecida en **true** (que es el valor predeterminado):
 
 <!--
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.events.tagSubscribe" value = "true"/>
@@ -42,9 +42,9 @@ To track the notifications dispatched out of the Push Notifications service, ens
 <jndiEntryjndiName = "mfp.push.analytics.events.notificationDispatch" value = "true"/>
 ```
 
-To disable the sending of this event, set the property to **false**.
+Para inhabilitar el envío de este suceso, establezca la propiedad en **false**.
 
-For information on viewing the Push Notification reports in the Analytics Console, see [Push Notification Reports](../../analytics/console/push-notifications/).
+Para obtener información sobre cómo visualizar informes de notificaciones push, consulte los [Informes de notificaciones push](../../analytics/console/push-notifications/).
 
-> For more information on the JNDI properties for push service, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
-> **Note:** The {{ site.data.keys.product_full }} installer creates and sets up these properties to defaults.
+> Para obtener más información sobre las propiedades JNDI para el servicio push, consulte [Lista de propiedades JNDI para el servicio push de {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service). 
+> **Nota:** El instalador de {{ site.data.keys.product_full }} crea y configura estas propiedades en los valores predeterminados.

@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: 信任关联拦截器
-breadcrumb_title: 信任关联拦截器
+breadcrumb_title: Trust Association Interceptor
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:
-  - name: 下载样本
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -26,7 +26,7 @@ Java 库是作为 JAR 文件 (**com.ibm.mfp.oauth.tai-8.0.0.jar**) 提供的。
 
 ## 服务器设置
 {: #server-setup }
-1. 从 **{{ site.data.keys.mf_console }} → 下载中心 → 工具**选项卡下载安全工具 .zip。您将在其中找到 `mfp-oauth-tai.zip` 归档。解压缩此 zip。
+1. 从 **{{ site.data.keys.mf_console }} → 下载中心 → 工具**选项卡下载安全工具 .zip。 您将在其中找到 `mfp-oauth-tai.zip` 归档。 解压缩此 zip。
 2. 将 `com.ibm.mfp.oauth.tai.jar` 文件添加到 **usr/extension/lib** 中的 WebSphere Application Server 实例。
 3. 将 `OAuthTai.mf` 文件添加到 **usr/extension/lib/features** 中的 WebSphere Application Server 实例。
 
@@ -85,7 +85,7 @@ Java 库是作为 JAR 文件 (**com.ibm.mfp.oauth.tai-8.0.0.jar**) 提供的。
 </application>
 ```
 
-* 配置 OAuthTAI。在此将 URL 设置为受保护的 URL：
+* 配置 OAuthTAI。 在此将 URL 设置为受保护的 URL：
 
   ```xml
   <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResourceId" clientSecret="ExternalResourcePass" cacheSize="500">
@@ -94,20 +94,20 @@ Java 库是作为 JAR 文件 (**com.ibm.mfp.oauth.tai-8.0.0.jar**) 提供的。
   ```
     - **authorizationURL**：{{ site.data.keys.mf_server }} (`http(s):/your-hostname:port/runtime-name/api`) 或外部 AZ 服务器，例如，IBM DataPower。
 
-    - **clientID**：资源服务器必须是已注册的保密客户机。要了解如何注册保密客户机，请阅读[保密客户机](../../confidential-clients/)教程。*保密客户机**必须** 具有允许的作用域 `authorization.introspect`，以使其可验证令牌。
+    - **clientID**：资源服务器必须是已注册的保密客户机。 要了解如何注册保密客户机，请阅读[保密客户机](../../confidential-clients/)教程。 *保密客户机**必须** 具有允许的作用域 `authorization.introspect`，以使其可验证令牌。
 
-    - **clientSecret**：资源服务器必须是已注册的保密客户机。要了解如何注册保密客户机，请阅读[保密客户机](../../confidential-clients/)教程。
+    - **clientSecret**：资源服务器必须是已注册的保密客户机。 要了解如何注册保密客户机，请阅读[保密客户机](../../confidential-clients/)教程。
     - **cacheSize（可选）**：TAI 使用 Java-Token-Validator 高速缓存来缓存令牌和自省数据作为值，从而在较短时间间隔内无需再次自省来自客户机请求中的令牌。
 
         缺省大小为 50000 个令牌。  
 
         如果想要保证在每个请求上自省令牌，请将高速缓存值设置为 0。  
 
-    - **scope**：资源服务器针对一个或多个作用域进行认证。作用域可以是安全性检查或映射到安全性检查的作用域元素。
+    - **scope**：资源服务器针对一个或多个作用域进行认证。 作用域可以是安全性检查或映射到安全性检查的作用域元素。
 
 ## 使用来自 TAI 的令牌自省数据
 {: #using-the-token-introspection-data-from-the-tai }
-通过资源，您可能想要访问 TAI 拦截和验证的令牌信息。您可以在 [API 参考大全](../../../api/java-token-validator)中找到在令牌上发现的数据列表。要获得此数据，请使用 [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html)：
+通过资源，您可能想要访问 TAI 拦截和验证的令牌信息。 您可以在 [API 参考大全](../../../api/java-token-validator)中找到在令牌上发现的数据列表。 要获得此数据，请使用 [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html)：
 
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();

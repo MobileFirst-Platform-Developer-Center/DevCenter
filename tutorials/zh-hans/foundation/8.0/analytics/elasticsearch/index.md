@@ -27,6 +27,7 @@ Elasticsearch 用于将所有移动和服务器数据以 JSON 格式存储在 {{
 Elasticsearch 嵌入在 {{ site.data.keys.mf_analytics_server }} 中，将参与节点和集群行为。
 
 > 有关在分析服务器上配置 Elasticsearch 的更多信息，请参阅 [{{ site.data.keys.mf_analytics_server }}配置指南](../../installation-configuration/production/analytics/configuration)主题中的[集群管理和 Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch)。
+
 ### Elasticsearch 属性
 {: #elasticsearch properties }
 
@@ -72,3 +73,4 @@ http://localhost:9500/*/_mapping
 ```
 
 > Elasticsearch 公开了更多 REST 端点。要了解更多信息，请访问 [Elasticsearch 文档](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)。
+

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" flippy="dippy" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Rights.Owner" content="© Copyright IBM Corporation 2017" />
+<meta name="DC.Type" content="reference" />
+<meta name="DC.Title" content="Diagnostic Service (GET)" />
+<meta name="abstract" content="Retrieves diagnostic information for administration, runtime, configuration (live update), and push services." />
+<meta name="Description" content="Retrieves diagnostic information for administration, runtime, configuration (live update), and push services." />
+<meta name="DC.Format" content="XHTML" />
+<meta name="DC.Identifier" content="Diagnostic-Service--GET-" />
+<meta name="DC.Language" content="en-us" />
+<meta name="IBM.Country" content="ZZ" />
+<meta name='DC.subject' content='SSHSCD'/>
+<meta name="IBM.WTMSite" content="ESTKCS"/>
+<meta name="IBM.WTMCategory" scheme="IBM_WTMCategory" content="ELSKCS"/>
+<script type="text/javascript" src="//www.ibm.com/common/stats/ida_production.js"></script>
+<style>
+  ul {
+     line-height: 30px;
+  }
+
+  li a {
+     font-weight: bold;
+     color: blue;
+  }
+</style>
+<!-- Licensed Materials - Property of IBM -->
+<!-- US Government Users Restricted Rights -->
+<!-- Use, duplication or disclosure restricted by -->
+<!-- GSA ADP Schedule Contract with IBM Corp. -->
+<link rel="stylesheet" type="text/css" href="ibmdita.css" />
+<title>Diagnostic Service (GET)</title>
+</head>
+<body id="Diagnostic-Service--GET-"><div role="main">
+
+<h1 class="title topictitle1" id="ariaid-title1"> Diagnostic Service (GET) </h1>
+
+
+
+<div class="body refbody"><p class="shortdesc">Retrieves diagnostic information for administration, runtime, configuration (live update), and push services.</p>
+
+<section class="section"><h2 class="title sectiontitle">Roles</h2>
+
+<p class="p">Users in the following roles are authorized to perform this operation:</p>
+
+<ul class="ul">
+<li class="li"><span class="keyword parmname parmname">mfpadmin</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpdeployer</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpmonitor</span></li>
+
+<li class="li"><span class="keyword parmname parmname">mfpoperator</span></li>
+
+</ul>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle"> Method </h2>
+
+<p class="p"><code class="ph codeph">GET</code></p>
+
+</section>
+
+
+
+<section class="section"><h2 class="title sectiontitle">Path</h2>
+
+<p class="p">/management-apis/2.0/diagnostic</p>
+
+</section>
+
+
+<div class="example"><h2 class="title sectiontitle">Example</h2>
+
+<pre class="pre codeblock prettyprint"><code>https://www.example.com/mfpadmin/management-apis/2.0/diagnostic</code></pre>
+</div>
+
+
+<section class="section"><h2 class="title sectiontitle">Produces</h2>
+
+<p class="p">
+application/json, application/xml, text/xml</p>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Response</h2>
+
+<p class="p">
+Information about the diagnostic.</p>
+
+</section>
+
+<div class="example"><h2 class="title sectiontitle">JSON Example</h2>
+<pre class="pre codeblock prettyprint"><code>{
+  "adminDB" : {
+    "status" : "available",
+  },
+  "analyticsService" : [
+    {
+      "runtime" : "mfp",
+      "status" : "available",
+    },
+    ...
+  ],
+  "configService" : {
+    "status" : "available",
+  },
+  "productVersion" : "8.0",
+  "pushDiagnostic" : {
+    "status" : "available",
+  },
+  "runningProjectStatuses" : {
+    "hasAppsOrAdapter" : true,
+    "name" : "mfp",
+    "running" : true,
+    "synchronized" : "ok",
+  },
+  "runtimeDiagnostic" : [
+    {
+      "instances" : [
+        {
+          "Providers" : [
+            {
+              "DatabaseDiagnosticBean" : {
+                "message" : "Database is OK",
+                "ok" : "Ok",
+              },
+            },
+            ...
+          ],
+          "overallStatus" : "Ok",
+        },
+        ...
+      ],
+      "name" : "mfp",
+    },
+    ...
+  ],
+}</code></pre></div>
+
+
+<div class="example"><h2 class="title sectiontitle">XML Example</h2>
+<pre class="pre codeblock prettyprint"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;diagnostic-info productVersion="8.0"&gt;
+  &lt;adminDB status="available"/&gt;
+  &lt;analyticsServiceArray&gt;
+    &lt;analyticsService
+      runtime="mfp"
+      status="available"/&gt;
+    ...
+  &lt;/analyticsServiceArray&gt;
+  &lt;configService status="available"/&gt;
+  &lt;pushDiagnostic status="available"/&gt;
+  &lt;runningProjectStatuses
+    hasAppsOrAdapter="true"
+    name="mfp"
+    running="true"
+    synchronized="ok"/&gt;
+  &lt;runtimeDiagnosticArray&gt;
+    &lt;runtimeDiagnostic name="mfp"&gt;
+      &lt;instances&gt;
+        &lt;instance overallStatus="Ok"&gt;
+          &lt;Providers&gt;
+            &lt;Provider&gt;
+              &lt;DatabaseDiagnosticBean
+                message="Database is OK"
+                ok="Ok"/&gt;
+            &lt;/Provider&gt;
+            ...
+          &lt;/Providers&gt;
+        &lt;/instance&gt;
+        ...
+      &lt;/instances&gt;
+    &lt;/runtimeDiagnostic&gt;
+    ...
+  &lt;/runtimeDiagnosticArray&gt;
+&lt;/diagnostic-info&gt;
+</code></pre></div>
+
+
+<section class="section"><h2 class="title sectiontitle">Response Properties</h2>
+
+<p class="p">The response has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">adminDB</dt>
+
+<dd class="dd pd">Status of the administration database.</dd>
+
+<dt class="dt pt dlterm">analyticsService</dt>
+
+<dd class="dd pd">Status of the Analytics service.</dd>
+
+<dt class="dt pt dlterm">configService</dt>
+
+<dd class="dd pd">Status of the configuration service/live update service.</dd>
+
+<dt class="dt pt dlterm">productVersion</dt>
+
+<dd class="dd pd">The exact product version.</dd>
+
+<dt class="dt pt dlterm">pushDiagnostic</dt>
+
+<dd class="dd pd">Status of the push service.</dd>
+
+<dt class="dt pt dlterm">runningProjectStatuses</dt>
+
+<dd class="dd pd">Status of all the running projects.</dd>
+
+<dt class="dt pt dlterm">runtimeDiagnostic</dt>
+
+<dd class="dd pd">Runtime diagnostics of each runtime.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">admin-db</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">status</dt>
+
+<dd class="dd pd">Status of the administration database.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">analytics-service</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">runtime</dt>
+
+<dd class="dd pd">The name of the runtime.</dd>
+
+<dt class="dt pt dlterm">status</dt>
+
+<dd class="dd pd">Status of the Analytics service.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">config-service</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">status</dt>
+
+<dd class="dd pd">Status of the configuration service/live update service.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">push-service</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">status</dt>
+
+<dd class="dd pd">Status of the push service.</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">running-project</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">hasAppsOrAdapter</dt>
+
+<dd class="dd pd">Whether the project includes any applications or adapters</dd>
+
+<dt class="dt pt dlterm">name</dt>
+
+<dd class="dd pd">The name of the project</dd>
+
+<dt class="dt pt dlterm">running</dt>
+
+<dd class="dd pd">Whether the project is running</dd>
+
+<dt class="dt pt dlterm">synchronized</dt>
+
+<dd class="dd pd">Synchronization status of the project</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">runtime-diagnostic</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">instances</dt>
+
+<dd class="dd pd">Status of each runtime instance</dd>
+
+<dt class="dt pt dlterm">name</dt>
+
+<dd class="dd pd">The name of the runtime</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">runtime-status</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">Providers</dt>
+
+<dd class="dd pd">Status of each runtime instance</dd>
+
+<dt class="dt pt dlterm">overallStatus</dt>
+
+<dd class="dd pd">The overall status of the runtime</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">providers-status</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">DatabaseDiagnosticBean</dt>
+
+<dd class="dd pd">Database Diagnostics Bean status</dd>
+
+</dl>
+
+<p class="p">The <var class="keyword varname">db-status</var> has the following properties:</p>
+<dl class="dl parml">
+<dt class="dt pt dlterm">message</dt>
+
+<dd class="dd pd">Database status message</dd>
+
+<dt class="dt pt dlterm">ok</dt>
+
+<dd class="dd pd">Database status</dd>
+
+</dl>
+
+</section>
+
+
+<section class="section"><h2 class="title sectiontitle">Errors</h2>
+
+<span class="keyword msgnum">403</span>
+<pre class="pre msgblock">The user is not authorized to call this service.</pre>
+
+<span class="keyword msgnum">500</span>
+<pre class="pre msgblock">An internal error occurred.</pre>
+
+</section>
+
+
+</div>
+</div></body>
+</html>

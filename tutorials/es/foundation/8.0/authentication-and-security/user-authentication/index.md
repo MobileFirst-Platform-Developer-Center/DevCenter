@@ -9,13 +9,13 @@ print_pdf: false
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-The **UserAuthenticationSecurityCheck** class inherits all the features of **CredentialsValidationSecurityCheck** and adds:
+La clase **UserAuthenticationSecurityCheck** hereda todas las características de **CredentialsValidationSecurityCheck**añade:
 
-- The concept of an `AuthenticatedUser`, creating a user identity.
-- An optional **Remember Me** capability
+- El concepto `AuthenticatedUser`, creando una identidad de usuario.
+- Una funcionalidad **Recuérdame** opcional
 
-> **Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) tutorial before continuing.
+> **Requisitos previos:** Lea la guía de aprendizaje [CredentialsValidationSecurityCheck](../credentials-validation) antes de continuar.
 
-Select a tutorial:
+Seleccione un tutorial:

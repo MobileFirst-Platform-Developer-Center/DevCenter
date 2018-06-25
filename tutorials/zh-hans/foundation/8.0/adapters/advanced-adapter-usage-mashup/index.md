@@ -4,14 +4,14 @@ title: 高级适配器用法和聚合
 breadcrumb_title: Adapter Mashup
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-现在已经介绍了不同类型的适配器的基本用法，重要的是要记住，可以组合适配器来生成一个过程，以使用不同的适配器来生成一个处理结果。您可以组合多个源（不同 HTTP 服务器和 SQL 等等）。
+现在已经介绍了不同类型的适配器的基本用法，重要的是要记住，可以组合适配器来生成一个过程，以使用不同的适配器来生成一个处理结果。 您可以组合多个源（不同 HTTP 服务器和 SQL 等等）。
 
 理论上，您可以从客户机端连续发出多个请求，一个请求依赖于另一个请求。
 但是，在服务器端编写此逻辑可能更加快速和简洁。
@@ -29,7 +29,7 @@ weight: 8
 ### 从 JavaScript 适配器调用 JavaScript 适配器过程
 {: #calling-a-javascript-adapter-procedure-from-a-javascript-adapter }
 
-在从其他 JavaScript 适配器调用 JavaScript 适配器过程时，请使用 `MFP.Server.invokeProcedure(invocationData)` API。此 API 会调用任何 JavaScript 适配器上的过程。`MFP.Server.invokeProcedure(invocationData)` 返回从被调用过程检索到的结果对象。
+在从其他 JavaScript 适配器调用 JavaScript 适配器过程时，请使用 `MFP.Server.invokeProcedure(invocationData)` API。 此 API 会调用任何 JavaScript 适配器上的过程。 `MFP.Server.invokeProcedure(invocationData)` 返回从被调用过程检索到的结果对象。
 
 `invocationData` 函数特征符是：  
 `MFP.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
@@ -86,7 +86,7 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 
 * SQL 适配器：
   * 从货币数据库表中抽取货币列表。
-  * 结果包含货币列表。每个货币都有标识、符号以及名称。例如：{3、EUR、欧元}
+  * 结果包含货币列表。 每个货币都有标识、符号以及名称。 例如：{3、EUR、欧元}
   * 此适配器还将拥有一个过程，该过程调用 HTTP 适配器并传递 2 个参数（基本货币和目标货币）以检索更新的汇率。
 * HTTP 适配器：
   * 连接到 Fixer.io 服务。
@@ -129,8 +129,8 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 
 ```javascript
 function getExchangeRate(fromCurrencySymbol, toCurrencySymbol) {
-  var input = { 
-method: 'get',
+  var input = {
+    method: 'get',
     returnedContentType: 'json',
     path: getPath(fromCurrencySymbol, toCurrencySymbol)
   };

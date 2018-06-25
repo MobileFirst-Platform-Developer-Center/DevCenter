@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Terminal を使用したアプリケーションの管理
-breadcrumb_title: Terminal を使用した管理
+title: 端末を介したアプリケーション管理
+breadcrumb_title: Administrating using terminal
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -28,7 +28,8 @@ Android の場合の例: 以下では、検証 TYPE を `dynamic` に設定し�
 ```bash
   mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] reset authenticity
 ```
-例:>
+例 :
+>
 ```bash
   mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp sample.com.pincodeandroid android 1.0 reset authenticity
 ```
@@ -54,18 +55,18 @@ Android の場合の例: 以下では、検証 TYPE を `dynamic` に設定し�
 * オペレーターの通常の作業時間外に操作を行う。
 * テスト・サーバーまたは実動前サーバーと同じ設定で実動サーバーを構成する。
 
-**mfpadm** プログラムと mfpadm Ant タスクは、REST サービスよりも使い方が簡単で、エラー・レポートも充実しています。mfpadm Ant タスクよりも mfpadm プログラムが優れている点は、オペレーティング・システム・コマンドとの統合がすでに使用可能なときに、統合がより容易であることです。また、対話式の使用にも、より適しています。
+**mfpadm** プログラムと mfpadm Ant タスクは、REST サービスよりも使い方が簡単で、エラー・レポートも充実しています。 mfpadm Ant タスクよりも mfpadm プログラムが優れている点は、オペレーティング・システム・コマンドとの統合がすでに使用可能なときに、統合がより容易であることです。 また、対話式の使用にも、より適しています。
 
 ## 前提条件
 {: #prerequisites }
-**mfpadm** ツールは、{{ site.data.keys.mf_server }} インストーラーを使用してインストールされます。このページの残りの部分では、**product\_install\_dir** は {{ site.data.keys.mf_server }} インストーラーのインストール・ディレクトリーを示します。
+**mfpadm** ツールは、{{ site.data.keys.mf_server }} インストーラーを使用してインストールされます。 このページの残りの部分では、**product\_install\_dir** は {{ site.data.keys.mf_server }} インストーラーのインストール・ディレクトリーを示します。
 
 **mfpadm** コマンドは、スクリプトのセットとして **product\_install\_dir/shortcuts/** ディレクトリーにあります。
 
 * mfpadm (UNIX / Linux の場合)
 * mfpadm.bat (Windows の場合)
 
-これらのスクリプトはいつでも実行できる状態にあります。つまり、特定の環境変数を必要としないということです。環境変数 **JAVA_HOME** が設定された場合、スクリプトはこれを受け入れます。  
+これらのスクリプトはいつでも実行できる状態にあります。つまり、特定の環境変数を必要としないということです。 環境変数 **JAVA_HOME** が設定された場合、スクリプトはこれを受け入れます。  
 **mfpadm** プログラムを使用するには、PATH 環境変数に **product\_install\_dir/shortcuts/** ディレクトリーを組み込むか、各呼び出しでプログラムの絶対ファイル名を参照します。
 
 {{ site.data.keys.mf_server }} インストーラーの実行について詳しくは、[IBM インストール・マネージャーの実行 (Running IBM Installation Manager) ](../../installation-configuration/production/installation-manager/)を参照してください。
@@ -95,12 +96,12 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 **mfpadm** プログラムには、以下のオプションがあります。
 
-| オプション	| タイプ | 説明 | 必要 | デフォルト |
+| オプション	| タイプ | 説明 | 必須 | デフォルト |
 |-----------|------|-------------|----------|---------|
 | --url | 	 | URL | 管理サービスの {{ site.data.keys.product_adj }} Web アプリケーションのベース URL | はい | |
 | --secure	 | ブール値 | セキュリティー・リスクをともなう操作を回避するかどうか | いいえ | true |
 | --user	 | 名前 | {{ site.data.keys.product_adj }} 管理サービスにアクセスするためのユーザー名 | はい |  | 	 
-| --passwordfile | ファイル | ユーザーのパスワードを含むファイル | いいえ |
+| --passwordfile | ファイル| ユーザーのパスワードを含むファイル | いいえ |
 | --timeout	     | 数値  | REST サービス・アクセス全体のタイムアウト (秒単位) | いいえ | 	 
 | --connect-timeout | 数値 | ネットワーク接続確立のタイムアウト (秒単位) | いいえ |
 | --socket-timeout  | 数値 | ネットワーク接続の損失検出のタイムアウト (秒単位) | いいえ |
@@ -109,26 +110,26 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 | --verbose	     | 詳細出力 | いいえ	| |  
 
 **url**  
-URL には、HTTPS プロトコルを使用することを推奨します。例えば、デフォルト・ポートとコンテキスト・ルートを使用する場合、次の URL を使用します。
+URL には、HTTPS プロトコルを使用することを推奨します。 例えば、デフォルト・ポートとコンテキスト・ルートを使用する場合、次の URL を使用します。
 
 * WebSphere Application Server の場合: https://server:9443/mfpadmin
 * Tomcat の場合: https://server:8443/mfpadmin
 
 **secure**  
-`--secure` オプションは、デフォルトで true に設定されます。`--secure=false` を設定すると、以下の影響がある場合があります。
+`--secure` オプションは、デフォルトで true に設定されます。 `--secure=false` を設定すると、以下の影響がある場合があります。
 
 * ユーザーとパスワードが、セキュアでない方法で送信される可能性があります (暗号化されていない HTTP で送信される可能性もあります)。
 * サーバーの SSL 証明書は、たとえ自己署名された場合でも、あるいはサーバーのホスト名とは異なるホスト名のために作成された場合でも、受け入れられます。
 
 **password**  
-パスワードは、`--passwordfile` オプションで渡される別個のファイルで指定します。あるいは、対話モード (「対話モード」を参照) でパスワードを対話式に指定することもできます。パスワードは機密情報であり、保護する必要があります。同じコンピューター上の他のユーザーがこれらのパスワードを知ることができないようにしてください。パスワードを保護するには、パスワードをファイルに入力する前に、自分以外のユーザーに対しファイルの読み取り権限を削除する必要があります。例えば、以下のいずれかのコマンドを使用できます。
+パスワードは、`--passwordfile` オプションで渡される別個のファイルで指定します。 あるいは、対話モード (「対話モード」を参照) でパスワードを対話式に指定することもできます。 パスワードは機密情報であり、保護する必要があります。 同じコンピューター上の他のユーザーがこれらのパスワードを知ることができないようにしてください。 パスワードを保護するには、パスワードをファイルに入力する前に、自分以外のユーザーに対しファイルの読み取り権限を削除する必要があります。 例えば、以下のいずれかのコマンドを使用できます。
 
 * UNIX の場合: `chmod 600 adminpassword.txt`
 * Windows の場合: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-この理由により、コマンド・ライン引数を通じてパスワードをプロセスに渡さないでください。多くのオペレーティング・システムでは、別のユーザーがプロセスのコマンド・ライン引数を調べることができます。
+この理由により、コマンド・ライン引数を通じてパスワードをプロセスに渡さないでください。 多くのオペレーティング・システムでは、別のユーザーがプロセスのコマンド・ライン引数を調べることができます。
 
-mfpadm 呼び出しは、1 つのコマンドを含みます。以下のコマンドがサポートされています。
+mfpadm 呼び出しは、1 つのコマンドを含みます。 以下のコマンドがサポートされています。
 
 | コマンド                           | 説明 |
 |-----------------------------------|-------------|
@@ -178,10 +179,10 @@ mfpadm 呼び出しは、1 つのコマンドを含みます。以下のコマ�
 
 #### 対話モード
 {: #interactive-mode }
-別の方法として、コマンド・ラインでコマンドなしで **mfpadm** を呼び出すこともできます。その場合、1 行に 1 つずつコマンドを対話式に入力できます。
+別の方法として、コマンド・ラインでコマンドなしで **mfpadm** を呼び出すこともできます。 その場合、1 行に 1 つずつコマンドを対話式に入力できます。
 `exit` コマンド、または標準入力 (UNIX ターミナルでは **Ctrl-D**) の EOF によって、mfpadm は終了します。
 
-このモードでは、`Help` コマンドも使用できます。例えば、次のとおりです。
+このモードでは、`Help` コマンドも使用できます。 例えば、次のとおりです。
 
 * help
 * help show versions
@@ -190,17 +191,17 @@ mfpadm 呼び出しは、1 つのコマンドを含みます。以下のコマ�
 
 #### 対話モードでのコマンド・ヒストリー
 {: #command-history-in-interactive-mode }
-一部のオペレーティング・システムでは、対話式の mfpadm コマンドがコマンド・ヒストリーを記憶します。コマンド・ヒストリーによって、上下矢印キーで以前のコマンドを選択し、編集してから実行することができます。
+一部のオペレーティング・システムでは、対話式の mfpadm コマンドがコマンド・ヒストリーを記憶します。 コマンド・ヒストリーによって、上下矢印キーで以前のコマンドを選択し、編集してから実行することができます。
 
 **Linux の場合**  
-rlwrap パッケージがインストール済みで、PATH に含まれていれば、端末エミュレーター・ウィンドウでコマンド・ヒストリーを使用することができます。rlwrap パッケージをインストールするには、以下を実行します。
+rlwrap パッケージがインストール済みで、PATH に含まれていれば、端末エミュレーター・ウィンドウでコマンド・ヒストリーを使用することができます。 rlwrap パッケージをインストールするには、以下を実行します。
 
 * Red Hat Linux の場合: `sudo yum install rlwrap`
 * SUSE Linux の場合: `sudo zypper install rlwrap`
 * Ubuntu の場合: `sudo apt-get install rlwrap`
 
 **OS X の場合:**  
-rlwrap パッケージがインストール済みで、PATH に含まれていれば、ターミナル・プログラムでコマンド・ヒストリーを使用することができます。rlwrap パッケージをインストールするには、以下を実行します。
+rlwrap パッケージがインストール済みで、PATH に含まれていれば、ターミナル・プログラムでコマンド・ヒストリーを使用することができます。 rlwrap パッケージをインストールするには、以下を実行します。
 
 1. [www.macports.org](http://www.macports.org) から、インストーラーを使用して、MacPorts をインストールします。
 2. 次のコマンドを実行します。`sudo /opt/local/bin/port install rlwrap`
@@ -213,7 +214,7 @@ rlwrap が使用できない環境または不要の環境では、オプショ�
 
 #### 構成ファイル
 {: #the-configuration-file }
-呼び出しごとにコマンド・ラインでオプションを渡す代わりに、オプションを構成ファイルに保管しておくことも可能です。構成ファイルが存在し、–configfile=file オプションが指定されているときに、省略することができるオプションは以下のとおりです。
+呼び出しごとにコマンド・ラインでオプションを渡す代わりに、オプションを構成ファイルに保管しておくことも可能です。 構成ファイルが存在し、–configfile=file オプションが指定されているときに、省略することができるオプションは以下のとおりです。
 
 * --url=URL
 * --secure=boolean
@@ -243,14 +244,14 @@ rlwrap が使用できない環境または不要の環境では、オプショ�
 
 構成ファイルに保管されている値をリストするには、次のコマンドを使用します: `mfpadm [--configfile=file] config`
 
-構成ファイルはテキスト・ファイルであり、現行のロケールのエンコード・フォーマットで、Java **.properties** 構文で記述されます。デフォルトの構成ファイルは以下のとおりです。
+構成ファイルはテキスト・ファイルであり、現行のロケールのエンコード・フォーマットで、Java **.properties** 構文で記述されます。 デフォルトの構成ファイルは以下のとおりです。
 
 * UNIX: **${HOME}/.mfpadm.config**
 * Windows: **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
-**注:** `--configfile` オプションを指定しない場合、デフォルトの構成ファイルは対話モードおよび config コマンドでのみ使用されます。他のコマンドを非対話式で使用するとき、構成ファイルを使いたい場合は、その構成ファイルを明示的に指定する必要があります。
+**注:** `--configfile` オプションを指定しない場合、デフォルトの構成ファイルは対話モードおよび config コマンドでのみ使用されます。 他のコマンドを非対話式で使用するとき、構成ファイルを使いたい場合は、その構成ファイルを明示的に指定する必要があります。
 
-> **重要:** パスワードは、偶発的な表示から隠すために、難読化した形式で保管されます。ただし、この難読化はセキュリティー機能を持ちません。
+> **重要:** パスワードは、偶発的な表示から隠すために、難読化した形式で保管されます。 ただし、この難読化はセキュリティー機能を持ちません。
 
 #### 一般オプション
 {: #generic-options }
@@ -263,18 +264,18 @@ rlwrap が使用できない環境または不要の環境では、オプショ�
 
 #### XML 形式
 {: #xml-format }
-サーバーから XML 応答を受け取るコマンドは、その応答が特定のスキーマに従うか検証します。`--xmlvalidation=none` を指定することで、この検証を無効にすることができます。
+サーバーから XML 応答を受け取るコマンドは、その応答が特定のスキーマに従うか検証します。 `--xmlvalidation=none` を指定することで、この検証を無効にすることができます。
 
 #### 出力文字セット
 {: #output-character-set }
-mfpadm プログラムより生成される通常の出力は、現行のロケールのエンコード・フォーマットでエンコードされます。Windows で、このエンコード・フォーマットは「ANSI コード・ページ」です。以下のような影響があります。
+mfpadm プログラムより生成される通常の出力は、現行のロケールのエンコード・フォーマットでエンコードされます。 Windows で、このエンコード・フォーマットは「ANSI コード・ページ」です。 以下のような影響があります。
 
 * この文字セット以外の文字は、出力時に疑問符 (?) に変換されます。
 * 出力が Windows コマンド・プロンプト・ウィンドウ (cmd.exe) に表示される場合、このようなウィンドウは、非 ASCII 文字を「OEM コード・ページ」でエンコードされる文字だと見なすため、非 ASCII 文字は正しく表示されません。
 
 この制約を回避するには、以下の手順を実行してください。
 
-* Windows 以外のオペレーティング・システムでは、エンコード・フォーマットが UTF-8 のロケールを使用します。この形式は、Red Hat Linux および OS X ではデフォルト・ロケールです。他の多くのオペレーティング・システムには、`en_US.UTF-8` という名前のロケールがあります。
+* Windows 以外のオペレーティング・システムでは、エンコード・フォーマットが UTF-8 のロケールを使用します。 この形式は、Red Hat Linux および OS X ではデフォルト・ロケールです。他の多くのオペレーティング・システムには、`en_US.UTF-8` という名前のロケールがあります。
 * それ以外の場合は、`output="some file name"` 属性と一緒に mfpadm Ant タスクを使用して、コマンドの出力をファイルにリダイレクトします。
 
 ### 一般構成用のコマンド
@@ -306,7 +307,7 @@ show global-config
 {: #the-show-user-config-command }
 `show user-config` コマンドは、ランタイムのユーザー構成を表示します。
 
-構文: `show user-config [--xml][runtime-name]`
+構文: `show user-config [--xml] [runtime-name]`
 
 以下の引数を取ります。
 
@@ -316,7 +317,7 @@ show global-config
 
 `show user-config` コマンドは、動詞の後に以下のオプションを取ります。
 
-| 引数 | 説明 | 必要 | デフォルト |
+| 引数 | 説明 | 必須 | デフォルト |
 |----------|-------------|----------|---------|
 | --xml | JSON 形式の代わりに XML 形式で出力を生成します。 | いいえ | 標準出力 |
 
@@ -344,12 +345,12 @@ show user-config mfp
 
 単一プロパティーの場合の構文: `set user-config [runtime-name] property = value`
 
-`set user-config` コマンドは以下の引数を取ります 
+`set user-config` コマンドは以下の引数を取ります
 
 | 引数 | 説明 |
 |----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| property | JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 |
+| property | JSON プロパティーの名前。 ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。 JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 |
 | value | プロパティーの値。 |
 
 **例**  
@@ -367,9 +368,9 @@ set user-config mfp timeout = 240
 <br/>
 #### `show confidential-clients` コマンド
 {: #the-show-confidential-clients-command }
-`show confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を表示します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
+`show confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を表示します。 機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
 
-構文: `show confidential-clients [--xml][runtime-name]`
+構文: `show confidential-clients [--xml] [runtime-name]`
 
 以下の引数を取ります。
 
@@ -379,7 +380,7 @@ set user-config mfp timeout = 240
 
 `show confidential-clients` コマンドは、動詞の後に以下のオプションを取ります。
 
-| 引数 | 説明 | 必要 | デフォルト |
+| 引数 | 説明 | 必須 | デフォルト |
 |----------|-------------|----------|---------|
 | --xml | JSON 形式の代わりに XML 形式で出力を生成します。 | いいえ | 標準出力 |
 
@@ -394,7 +395,7 @@ show confidential-clients --xml mfp
 <br/>
 #### `set confidential-clients` コマンド
 {: #the-set-confidential-clients-command }
-`set confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を指定します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
+`set confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を指定します。 機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
 
 構文: `set confidential-clients [runtime-name] file`
 
@@ -403,7 +404,7 @@ show confidential-clients --xml mfp
 | 属性 | 説明 |
 |-----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| file   新しい構成を含む JSON または XML ファイルの名前。 |
+| file | 新しい構成を含む JSON または XML ファイルの名前。 |
 
 **例**
 
@@ -416,7 +417,7 @@ set confidential-clients mfp clients.xml
 <br/>
 #### `set confidential-clients-rule` コマンド
 {: #the-set-confidential-clients-rule-command }
-`set confidential-clients-rule` コマンドは、ランタイムにアクセスできる機密クライアントの構成におけるルールを指定します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
+`set confidential-clients-rule` コマンドは、ランタイムにアクセスできる機密クライアントの構成におけるルールを指定します。 機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
 
 構文: `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
 
@@ -428,7 +429,7 @@ set confidential-clients mfp clients.xml
 | id | ルールの ID。 |
 | displayName | ルールの表示名。 |
 | secret | ルールのシークレット。 |
-| allowedScope | ルールの適用範囲。スペースで区切られたトークンのリスト。複数のトークンのリストを渡すには、二重引用符を使用します。 |
+| allowedScope | ルールの適用範囲。 スペースで区切られたトークンのリスト。 複数のトークンのリストを渡すには、二重引用符を使用します。 |
 
 **例**
 
@@ -559,7 +560,7 @@ delete adapter mfp MyAdapter
 
 動詞の後に、以下のオプションを取ります。
 
-| オプション | 説明 | 必要 | デフォルト |
+| オプション | 説明 | 必須 | デフォルト |
 |--------|-------------|----------|---------|
 | > tofile | 出力ファイルの名前。 | いいえ | 標準出力 |
 
@@ -611,7 +612,7 @@ adapter mfp MyAdapter show user-config
 
 | オプション | 説明 |
 |--------|-------------|
-| property | JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 |
+| property | JSON プロパティーの名前。 ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。 JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 |
 | value | プロパティーの値。 |
 
 **例**
@@ -860,7 +861,7 @@ app mfp MyApp iPhone 1.1 delete license-config
 
 動詞の後に、以下の引数を取ります。
 
-| 引数 | 説明 | 必要 | デフォルト |
+| 引数 | 説明 | 必須 | デフォルト |
 |----------|-------------|----------|---------|
 | > tofile | 出力ファイルの名前。 | いいえ | 標準出力 |
 
@@ -880,7 +881,7 @@ app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descrip
 
 動詞の後に、以下の引数を取ります。
 
-| 引数 | 説明 | 必要 | デフォルト |
+| 引数 | 説明 | 必須 | デフォルト |
 |----------|-------------|----------|---------|
 | > tofile | 出力ファイルの名前。 | いいえ | 標準出力 |
 
@@ -901,7 +902,7 @@ app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 動詞の後に、以下の引数を取ります。
 
 | 引数 | 説明 |
-| file | 入力ファイルの名前 (.zip ファイルでなければなりません)。|
+| file | 入力ファイルの名前 (.zip ファイルでなければなりません)。 |
 
 **例**
 
@@ -919,8 +920,8 @@ app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 
 動詞の後に、以下の引数を取ります。
 
-| 引数 | 説明 | 必要 | デフォルト |
-| > tofile | 出力ファイルの名前。| いいえ | 標準出力 |
+| 引数 | 説明 | 必須 | デフォルト |
+| > tofile | 出力ファイルの名前。 | いいえ | 標準出力 |
 
 **例**
 
@@ -980,7 +981,7 @@ app version mfp MyApp iPhone 1.1 delete authenticity-data
 
 動詞の後に、以下のオプションを取ります。
 
-| 引数 | 説明 | 必要 | デフォルト |
+| 引数 | 説明 | 必須 | デフォルト |
 |----------|-------------|----------|---------|
 | [--xml] | JSON 形式の代わりに XML 形式で出力を生成します。 | いいえ | 標準出力 |
 
@@ -1010,7 +1011,7 @@ app version mfp MyApp iPhone 1.1 show user-config
 
 | 引数 | 説明 |
 |----------|-------------|
-| property | JSON プロパティーの名前。ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 |
+| property | JSON プロパティーの名前。 ネストされたプロパティーでは、構文 prop1.prop2.....propN を使用します。 JSON 配列エレメントでは、プロパティー名ではなくインデックスを使用します。 |
 | value | プロパティーの値。 |
 
 **例**
@@ -1033,14 +1034,14 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 {: #the-list-devices-command }
 `list devices` コマンドは、ランタイムのアプリケーションと接触のあるデバイスのリストを返します。
 
-構文: `list devices [runtime-name][--query query]`
+構文: `list devices [runtime-name] [--query query]`
 
 以下の引数を取ります。
 
 | 引数 | 説明 |
 |----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| query | 検索対象の分かりやすい名前またはユーザー ID。このパラメーターには、検索対象のストリングを指定します。このストリングが含まれる (大/小文字を区別しないマッチングによって)、分かりやすい名前またはユーザー ID を持つすべてのデバイスが返されます。 |
+| query | 検索対象の分かりやすい名前またはユーザー ID。 このパラメーターには、検索対象のストリングを指定します。 このストリングが含まれる (大/小文字を区別しないマッチングによって)、分かりやすい名前またはユーザー ID を持つすべてのデバイスが返されます。 |
 
 `list devices` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
@@ -1151,7 +1152,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 #### `show info` コマンド
 {: #the-show-info-command }
-`show info` コマンドは、ランタイムやデータベースにアクセスせずに返されることが可能な、{{ site.data.keys.product_adj }} 管理サービスに関する基本情報を表示します。このコマンドは、{{ site.data.keys.product_adj }} 管理サービスが実行されているかどうかをテストするために使用できます。
+`show info` コマンドは、ランタイムやデータベースにアクセスせずに返されることが可能な、{{ site.data.keys.product_adj }} 管理サービスに関する基本情報を表示します。 このコマンドは、{{ site.data.keys.product_adj }} 管理サービスが実行されているかどうかをテストするために使用できます。
 
 構文: `show info`
 
@@ -1209,7 +1210,7 @@ show diagnostics
 
 #### `unlock` コマンド
 {: #the-unlock-command }
-`unlock` コマンドは汎用ロックをリリースします。破棄する動作の一部は、同じ構成データの同時修正を防ぐために、このロックを取得します。まれに、そのような動作が中断されると、ロックはロック状態のままとなり、それ以上の破棄操作が不可能になります。このような状況でロックをリリースするには、unlock コマンドを使用してください。
+`unlock` コマンドは汎用ロックをリリースします。 破棄する動作の一部は、同じ構成データの同時修正を防ぐために、このロックを取得します。 まれに、そのような動作が中断されると、ロックはロック状態のままとなり、それ以上の破棄操作が不可能になります。 このような状況でロックをリリースするには、unlock コマンドを使用してください。
 
 **例**
 
@@ -1270,7 +1271,7 @@ show runtime mfp
 
 #### `delete runtime` コマンド
 {: #the-delete-runtime-command }
-`delete runtime` コマンドは、ランタイム (そのアプリケーションとアダプターを含む) をデータベースから削除します。ランタイムを削除できるのは、その Web アプリケーションが停止している場合のみです。
+`delete runtime` コマンドは、ランタイム (そのアプリケーションとアダプターを含む) をデータベースから削除します。 ランタイムを削除できるのは、その Web アプリケーションが停止している場合のみです。
 
 構文: `delete runtime [runtime-name] condition`
 
@@ -1279,7 +1280,7 @@ show runtime mfp
 | 引数 | 説明 |
 |----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| condition | 削除する条件。empty または always のいずれかです。**注意:** always オプションは危険です。 |
+| condition | 削除する条件。empty または always のいずれかです。 **注意:** always オプションは危険です。 |
 
 **例**
 
@@ -1317,7 +1318,7 @@ list farm-members mfp
 
 #### `remove farm-member` コマンド
 {: #the-remove-farm-member-command }
-`remove farm-member` コマンドは、指定されたランタイムがデプロイされているファーム・メンバーのリストから特定のサーバーを削除します。サーバーが使用不可になったとき、または切断されたときに、このコマンドを使用します。
+`remove farm-member` コマンドは、指定されたランタイムがデプロイされているファーム・メンバーのリストから特定のサーバーを削除します。 サーバーが使用不可になったとき、または切断されたときに、このコマンドを使用します。
 
 構文: `remove farm-member [runtime-name] server-id`
 

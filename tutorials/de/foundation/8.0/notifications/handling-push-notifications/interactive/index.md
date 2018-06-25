@@ -17,7 +17,7 @@ Interaktive Benachrichtigungen werden auf Geräten mit iOS ab Version 8 unterst�
 Bereiten Sie die Benachrichtigung vor und senden Sie sie. Weitere Informationen finden Sie unter [Push-Benachrichtigungen senden](../../sending-notifications).
 
 Unter **{{ site.data.keys.mf_console }} → [Ihre Anwendung] → Push → Benachrichtigungen senden → Angepasste
-iOS-Einstellungen** können Sie eine Zeichenfolge festlegen, um die Kategorie der Benachrichtigung mit dem Benachrichtigungsobjekt anzugeben. Die Aktionsschaltflächen für die Benachrichtigung werden ausgehend vom Kategoriewert angezeigt. Beispiel: 
+iOS-Einstellungen** können Sie eine Zeichenfolge festlegen, um die Kategorie der Benachrichtigung mit dem Benachrichtigungsobjekt anzugeben. Die Aktionsschaltflächen für die Benachrichtigung werden ausgehend vom Kategoriewert angezeigt. Beispiel:
 
 ![Kategorien für interaktive iOS-Benachrichtigungen in der {{ site.data.keys.mf_console }} festlegen](categories-for-interactive-notifications.png)
 
@@ -69,19 +69,19 @@ Gehen Sie wie folgt vor, um interaktive Benachrichtigungen zu empfangen:
 
                 // Optionale Liste mit Aktionen, die im Lockscreen mit der Benachrichtigungszentrale angezeigt werden muss
                 // Fehlt die Liste, werden die ersten beiden Aktionen angezeigt.
-                minimalContextActions: ['poll_ok','poll_nok'] 
+                minimalContextActions: ['poll_ok','poll_nok']
             }]     
         }
    }
    ```
 
-2. Übergeben Sie das `options`-Objekt während der Registrierung des Geräts für Push-Benachrichtigungen. 
+2. Übergeben Sie das `options`-Objekt während der Registrierung des Geräts für Push-Benachrichtigungen.
 
    ```javascript
    MFPPush.registerDevice(options, function(successResponse) {
   		navigator.notification.alert("Successfully registered");
   		enableButtons();
-   });  
+   });
    ```
 
 ## Interaktive Benachrichtigungen in nativen iOS-Anwendungen

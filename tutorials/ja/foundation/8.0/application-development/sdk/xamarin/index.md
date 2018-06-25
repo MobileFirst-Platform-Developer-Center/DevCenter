@@ -13,9 +13,9 @@ weight: 6
 
 * **MobileFirst.Xamarin** - クライアントとサーバー間の接続を実装し、認証およびセキュリティーの各側面、リソース要求、およびその他の必要なコア機能を処理します。
 * **MobileFirst.JSONStore** - JSONStore のフレームワークを含んでいます。  
-* **MobileFirst.Push** - プッシュ通知のフレームワークを含んでいます。詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
+* **MobileFirst.Push** - プッシュ通知のフレームワークを含んでいます。 詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
 
-このチュートリアルでは、Xamarin Component ストアを使用して {{ site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Xamarin Android アプリケーションまたは Xamarin iOS アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法についても学習します。
+このチュートリアルでは、Xamarin Component ストアを使用して {{ site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Xamarin Android アプリケーションまたは Xamarin iOS アプリケーションに追加する方法について学習します。 また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法についても学習します。
 
 **前提条件:**
 
@@ -45,29 +45,29 @@ Xamarin Studio または Visual Studio を使用して Xamarin ソリューシ�
 1. {{ site.data.keys.product_adj }} ネイティブ SDK は、Xamarin Components ストア経由で提供されます。
 2. Android プロジェクトまたは iOS プロジェクトを展開します。
 3. Android プロジェクトまたは iOS プロジェクトで、**「コンポーネント (Components)」**を右クリックします。
-4. **「さらにコンポーネントを取得 (Get More Components)」**を選択します。![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
-5. **「IBM MobileFirst SDK」**を検索します。**「アプリケーションに追加 (Add to App)」**を選択して実行します。
-![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
-6. **「パッケージ (Packages)」**を右クリックして、**「パッケージの追加 (Add packages)」**を選択します。**「Json.NET」**を検索して追加します。これで Nuget から Newtonsoft 依存関係が取り込まれます。これは、Android プロジェクトと iOS プロジェクトの両方について別々に実行する必要があります。
-7. **「参照 (References)」**を右クリックして、**「参照を編集 (Edit References)」**を選択します。**「.Net アセンブリー (.Net Assembly)」**タブに移動して、「参照 (Browse)」をクリックします。プロジェクト・フォルダーのルートから、`「コンポーネント (Components)」->「ibm-worklight-8.0.0.1」->「lib」->「pcl」`に移動します。**Worklight.Core.dll** を選択します。
+4. **「さらにコンポーネントを取得 (Get More Components)」**を選択します。
+![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
+5. **「IBM MobileFirst SDK」**を検索します。 **「アプリケーションに追加 (Add to App)」**を選択して実行します。![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
+6. **「パッケージ (Packages)」**を右クリックして、**「パッケージの追加 (Add packages)」**を選択します。**「Json.NET」**を検索して追加します。 これで Nuget から Newtonsoft 依存関係が取り込まれます。 これは、Android プロジェクトと iOS プロジェクトの両方について別々に実行する必要があります。
+7. **「参照 (References)」**を右クリックして、**「参照を編集 (Edit References)」**を選択します。 **「.Net アセンブリー (.Net Assembly)」**タブに移動して、「参照 (Browse)」をクリックします。 プロジェクト・フォルダーのルートから、`「コンポーネント (Components)」->「ibm-worklight-8.0.0.1」->「lib」->「pcl」`に移動します。 **Worklight.Core.dll** を選択します。
 
 ### アプリケーションの登録
 {: #registering-the-application }
 1. {{ site.data.keys.mf_console }} をロードします。
 2. 「アプリケーション」の横の「新規」ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。
-3. Android アプリケーションと iOS アプリケーションは別々に登録する必要があります。そうすることで、Android アプリケーションと iOS アプリケーションの両方が正常にサーバーに接続できるようになります。Android アプリケーションと iOS アプリケーションの登録の詳細は、それぞれ `AndroidManifest.xml` と `Info.plist` に記載されています。
-3. アプリケーションが登録されたら、そのアプリケーションの「構成ファイル」タブに移動して、mfpclient.plist ファイルと mfpclient.properties ファイルをコピーまたはダウンロードします。画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
+3. Android アプリケーションと iOS アプリケーションは別々に登録する必要があります。 そうすることで、Android アプリケーションと iOS アプリケーションの両方が正常にサーバーに接続できるようになります。 Android アプリケーションと iOS アプリケーションの登録の詳細は、それぞれ `AndroidManifest.xml` と `Info.plist` に記載されています。
+3. アプリケーションが登録されたら、そのアプリケーションの「構成ファイル」タブに移動して、mfpclient.plist ファイルと mfpclient.properties ファイルをコピーまたはダウンロードします。 画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
 
 ### セットアップ・プロセスの完了
 {: #completing-the-setup-process }
 #### mfpclient.plist
 {: #complete-setup-mfpclientplist }
-1. Xamarin iOS プロジェクトを右クリックして**「ファイルの追加.. (Add files..)」**を選択します。プロジェクトのルートに配置されている `mfpclient.plist` を参照で検索します。**「ファイルをプロジェクトにコピー (Copy file to project)」**を選択するようにプロンプトが出されたら、選択します。
+1. Xamarin iOS プロジェクトを右クリックして**「ファイルの追加.. (Add files..)」**を選択します。プロジェクトのルートに配置されている `mfpclient.plist` を参照で検索します。 **「ファイルをプロジェクトにコピー (Copy file to project)」**を選択するようにプロンプトが出されたら、選択します。
 2. `mfpclient.plist` ファイルを右クリックし、**「ビルド・アクション (Build action)」**を選択します。**「コンテンツ (Content)」**を選択します。
 
 #### mfpclient.properties
 {: #mfpclientproperties }
-1. Xamarin Android プロジェクトの*「アセット (Assets)」*フォルダーを右クリックし、**「ファイルの追加.. (Add files..)」**を選択します。フォルダーの参照で `mfpclient.properties` を検索します。**「ファイルをプロジェクトにコピー (Copy file to project)」**を選択するようにプロンプトが出されたら、選択します。
+1. Xamarin Android プロジェクトの*「アセット (Assets)」*フォルダーを右クリックし、**「ファイルの追加.. (Add files..)」**を選択します。フォルダーの参照で `mfpclient.properties` を検索します。 **「ファイルをプロジェクトにコピー (Copy file to project)」**を選択するようにプロンプトが出されたら、選択します。
 2. `mfpclient.properties` ファイルを右クリックし、**「ビルド・アクション (Build action)」**を選択します。**「Android アセット (Android asset)」**を選択します。
 
 ### SDK の参照

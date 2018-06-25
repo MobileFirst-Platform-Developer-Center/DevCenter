@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Problèmes et limitations connus
+title: Limitations et problèmes connus
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -25,7 +25,7 @@ sont
 pas entièrement prises en charge dans les langues bidirectionnelles. La mise en miroir des éléments d'interface graphique et le contrôle de la
 direction du texte ne sont pas mis à disposition par défaut. Cependant, aucune dépendance stricte n'existe dans les applications générées sur cette limitation. Les développeurs peuvent définir la compatibilité pour les langues bidirectionnelles en procédant à des ajustements manuels dans le code généré.
 
-Bien que la traduction en hébreu existe pour la fonctionnalité de base d'{{ site.data.keys.product }}, certains éléments de l'interface graphique
+Bien que la traduction en hébreu existe pour la fonctionnalité de base de {{ site.data.keys.product }}, certains éléments de l'interface graphique
 ne sont pas mis en miroir.
 
 * Contraintes sur les noms d'adaptateur : les noms des adaptateurs doivent être des noms valides pour créer un nom de classe Java. En outre, ils doivent être composés uniquement des caractères suivants :
@@ -160,7 +160,7 @@ client {{ site.data.keys.product_adj }} et {{ site.data.keys.mf_server }}.
 le client. Les connexions directes aux autres serveurs ou services n'utilisent pas de bibliothèques FIPS 140-2.
 * Cette fonction n'est prise en charge que sur les plateformes iOS et Android.
     * Sous Android, cette fonction n'est prise en charge que sur des appareils ou des simulateurs utilisant l'architecture x86 ou armeabi. Elle n'est pas prise en charge sous Android avec une architecture armv5 ou armv6. C'est parce que la bibliothèque OpenSSL utilisée n'a pas obtenu la validation FIPS
-140-2 pour armv5 ou armv6 sous Android. La norme FIPS 140-2 n'est pas encore prise en charge dans l'architecture 64 bits, même si la bibliothèque {{ site.data.keys.product_adj }} prend en charge l'architecture 64 bits. La norme FIPS 140-2 peut être exécuté sur des appareils 64 bits s'il n'existe que des bibliothèques NDK natives 32 bits dans le projet.
+140-2 pour armv5 ou armv6 sous Android. La norme FIPS 140-2 n'est pas encore prise en charge dans l'architecture 64 bits, même si la bibliothèque {{ site.data.keys.product_adj }} prend en charge l'architecture 64 bits. La norme FIPS 140-2 peut être exécutée sur des appareils 64 bits s'il n'existe que des bibliothèques NDK natives 32 bits dans le projet.
     * Sous iOS, elle est prise en charge dans les architectures i386, x86_64, armv7, armv7s et arm64.
 * Cette fonction n'est opérationnelle qu'avec des applications hybrides (non natives).
 * Pour l'iOS natif, FIPS est activé à travers les bibliothèques FIPS iOS et est activé par défaut. Aucune action n'est nécessaire pour activer FIPS 140-2.
@@ -246,7 +246,7 @@ Pour mettre à jour la plateforme cordova-ios d'une application Cordova, vous de
 3. Exécutez la commande `cordova platform add ios@version` pour ajouter la nouvelle plateforme à l'application, où version est la version de la plateforme Cordova iOS.
 4. Exécutez la commande `cordova prepare` pour intégrer les modifications.
 
-La mise à jour échoie si vous utilisez la commande `cordova platform update ios`.
+La mise à jour échoue si vous utilisez la commande `cordova platform update ios`.
 
 ### Applications Web
 {: #web-applications }
@@ -266,9 +266,9 @@ L'exécution de cette commande entraîne l'exécution d'un serveur Web local dan
 
 **Remarque :** Ce plug-in Cordova n'est pas publié sur le gestionnaire de package de noeud (npm).
 
-### La barre d'état du plug-in cordova ne fonctionne pas avec l'application Cordova chargée avec cordova-plugin-mfp
+### La barre d'état du plug-in Cordova ne fonctionne pas avec l'application Cordova chargée avec cordova-plugin-mfp
 {: #cordova-plugin-statusbar-does-not-work-with-cordova-application-loaded-with-cordova-plugin-mfp }
-La barre d'état du plug-in cordova ne fonctionnera pas avec l'application Cordova chargée avec cordova-plugin-mfp.
+La barre d'état du plug-in Cordova ne fonctionnera pas avec l'application Cordova chargée avec cordova-plugin-mfp.
 
 Pour contourner ce problème, le développeur doit définir `CDVViewController` comme contrôleur de vue racine en remplaçant le fragment de code dans la méthode`wlInitDidCompleteSuccessfully` comme suggéré ci-après dans le fichier **MFPAppdelegate.m** du projet Cordova iOS.
 

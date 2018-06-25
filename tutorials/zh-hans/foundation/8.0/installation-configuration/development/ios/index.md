@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-本教程说明了开发人员开发和测试 iOS 应用程序所需执行的步骤。这些步骤包括注册 Apple Developer 和安装 Xcode。
+本教程说明了开发人员开发和测试 iOS 应用程序所需执行的步骤。 这些步骤包括注册 Apple Developer 和安装 Xcode。
 
 #### 支持级别
 {: #support-level }
@@ -46,7 +46,7 @@ Xcode 是一款具有下列用途的 IDE：
 
 #### iOS 模拟器
 {: #ios-simulator }
-Xcode 提供了一款用于测试应用程序的 iOS 模拟器。有关所有可用选项的详细说明，请参阅 Apple Developers Web 站点中的[“关于模拟器”文档主题](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html)。
+Xcode 提供了一款用于测试应用程序的 iOS 模拟器。 有关所有可用选项的详细说明，请参阅 Apple Developers Web 站点中的[“关于模拟器”文档主题](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html)。
 
 ## 后续操作
 {: #whats-next }

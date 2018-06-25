@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Подробная демонстрация для Xamarin
+title: Сквозная демонстрация для Xamarin
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 6
@@ -76,7 +76,7 @@ weight: 6
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
 
-                       if (accessToken.Value != null && accessToken.Value != "")
+                       if (accessToken.Value != null &&  accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
@@ -101,11 +101,11 @@ weight: 6
 
 ### 4. Развертывание адаптера
 {: #4-deploy-an-adapter }
-Загрузите [этот подготовленный артефакт .adapter](../javaAdapter.adapter) и разверните его с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**.
+Загрузите [подготовленный артефакт .adapter](../javaAdapter.adapter) и разверните его с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**.
 
 Кроме того, можно нажать кнопку **Создать** рядом с разделом **Адаптеры**.  
 
-1. Выберите **Действия → Загрузить пример**. Загрузите пример адаптера **Java** "Hello World".
+1. Выберите **Действия → загрузить пример**. Загрузите пример адаптера **Java** "Hello World".
 
    > Если Maven и {{ site.data.keys.mf_cli }} не установлены, выполните инструкции по **настройке среды разработки**.
 
@@ -118,20 +118,19 @@ weight: 6
 3. После завершения компоновки разверните адаптер с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**. Адаптер расположен в папке **[adapter]/target**.
 
    <img class="gifplayer" alt="Развертывание адаптера" src="create-an-adapter.png"/>
-
-<!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
+<!-- <img src="device-screen.png" alt="пример приложения" style="float:right"/>-->
 ### 5. Тестирование приложения
 {: #5-testing-the-application }
-1. В Xamarin Studio выберите файл **mfpclient.plist** и укажите значения свойств **protocol**, **host** и **port** с учетом параметров сервера {{ site.data.keys.mf_server }}.
+1. В Xamarin Studio выберите файл `mfpclient.properties` и укажите значения свойств **protocol**, **host** и **port** с учетом параметров {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
-    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в Bluemix): **https**, **your-server-address** и **443**.
-
+    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **your-server-address** и **443**.
+    * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
 2. Нажмите кнопку **Воспроизвести**.
 
 <br clear="all"/>
 ### Результаты
 {: #results }
-* При нажатии кнопки **Проверить связь с сервером MobileFirst** выдается сообщение **Установлено соединение с сервером MobileFirst**.
+* При нажатии кнопки **Проверить связь с MobileFirst Server** выдается сообщение **Установлено соединение с MobileFirst Server**.
 * Если приложению удалось подключиться к {{ site.data.keys.mf_server }}, ресурс запрашивается с помощью развернутого адаптера Java.
 
 Ответ адаптера отображается в консоли Xamarin Studio.
@@ -142,6 +141,6 @@ weight: 6
 {: #next-steps }
 Узнайте больше об использовании адаптеров в приложениях, интеграции дополнительных служб, таких как Push-уведомления, с помощью среды защиты {{ site.data.keys.product_adj }} и других вопросах:
 
-- Просмотреть учебники, посвященные [разработке адаптеров](../../adapters/)
-- Просмотреть учебники, посвященные [идентификации и защите](../../authentication-and-security/)
-- Просмотреть [все учебники](../../all-tutorials)
+- Просмотрите учебники [Разработка адаптеров](../../adapters/)
+- Просмотрите [учебники Идентификация и защита](../../authentication-and-security/)
+- Просмотрите [Все учебники](../../all-tutorials)

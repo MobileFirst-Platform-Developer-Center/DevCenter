@@ -1,37 +1,38 @@
 ---
 layout: tutorial
-title: Setting up the Android development environment
+title: Configuración del entorno de desarrollo de Android  
 breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
+En esta guía de aprendizaje se explican los pasos que debe seguir un desarrollador para poder desarrollar y probar aplicaciones Android. Estos pasos incluyen la instalación de Android Studio y la configuración de Android SDK.
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
+**Requisito previo: **
+A medida que configura su entorno de desarrollo Android, asegúrese de leer la guía de aprendizaje [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../mobilefirst/).
 
-#### Support level
+#### Nivel de soporte
 {: #support-level }
-{{ site.data.keys.product_adj }} SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
+{{ site.data.keys.product_adj }} SDK es compatible con la versión Android Ice Cream Sandwich (Nivel 14 de API) y posterior.
 
 ### Android Studio
-Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.
+Siga los pasos que se proporcionan en el [sitio web Android Developers](http://developer.android.com/develop/index.html) para descargar e instalar Android Studio.
 
-![Configure the Android SDK](android-studio.png)
+![Configuración de Android SDK](android-studio.png)
 
 ### Android SDK
-The Android SDK provides the tools and APIs required to develop applications on the Android platform, using the Java programming language.
+Android SDK proporciona las herramientas y las API necesarias para desarrollar aplicaciones en la plataforma Android mediante el lenguaje de programación de Java.
 
-Once you open Android Studio for the time, you will be able to configure the Android SDK using the SDK Manager.
+Una vez abra Android Studio por primera vez, podrá configurar Android SDK mediante SDK Manager.
 
-In the SDK Manager you can install required packages. For more information, [visit the Android Developer website](http://developer.android.com/sdk/index.html).
+En SDK Manager puede instalar los paquetes necesarios. Para obtener más información, [visite el sitio web Android Developer](http://developer.android.com/sdk/index.html).
 
-#### Android Virtual Devices
+#### Dispositivos virtuales Android
 {: #android-virtual-devices }
-You can use an AVD to test your application. For a detailed explanation of all available options, see the [Managing Virtual Devices documentation topic](http://developer.android.com/tools/devices/index.html) in the Android Developers website.
+Utilice AVD para probar su aplicación. Para obtener una explicación detallada de todas las opciones disponibles, consulte el [tema de documentación de gestión de dispositivos virtuales](http://developer.android.com/tools/devices/index.html) en el sitio web Android Developers.
 
-## What's Next
+## A continuación
 {: #whats-next }
-Now that the {{ site.data.keys.product_adj }} and Android development environment are set up, continue to [Quick Start](../../../quick-start/android/) category to experience {{ site.data.keys.product_adj }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product_adj }} development.
+Ahora que se ha configurado {{ site.data.keys.product_adj }} y el entorno de desarrollo de Android, continúe en la categoría del [Inicio rápido](../../../quick-start/android/) para experimentar con {{ site.data.keys.product_adj }} o vaya a [Todas las guías de aprendizaje](../../../all-tutorials) para conocer aspectos específicos del desarrollo de {{ site.data.keys.product_adj }}.

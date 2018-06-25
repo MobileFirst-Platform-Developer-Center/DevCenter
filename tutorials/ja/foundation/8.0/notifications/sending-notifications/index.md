@@ -38,7 +38,7 @@ weight: 3
 
 ### Google Cloud Messaging / Firebase Cloud Messaging
 {: #google-cloud-messaging--firebase-cloud-messaging }
-> **注:** [最近の発表](https://firebase.google.com/support/faq/#gcm-fcm)で、Google は GCM から FCM への移行を表明しています。それに伴い、下記の手順も更新されました。また、既存で使用中の GCM 構成は引き続き機能しますが、新規 GCM 構成は機能しないため、代わりに FCM を使用する必要がある点にも注意してください。
+> **注:** [最近の発表](https://firebase.google.com/support/faq/#gcm-fcm)で、Google は GCM から FCM への移行を表明しています。 それに伴い、下記の手順も更新されました。 また、既存で使用中の GCM 構成は引き続き機能しますが、新規 GCM 構成は機能しないため、代わりに FCM を使用する必要がある点にも注意してください。
 
 Android デバイスは、プッシュ通知に Firebase Cloud Messaging (FCM) サービスを使用します。  
 FCM をセットアップするには、次のようにします。
@@ -55,8 +55,8 @@ FCM をセットアップするには、次のようにします。
 お客様の組織にインターネットとの間のトラフィックを制限するファイアウォールが存在する場合は、以下のステップを実行する必要があります。  
 
 * FCM クライアント・アプリケーションがメッセージを受信するために FCM との接続を許可するようにファイアウォールを構成します。
-* 開くポートは 5228、5229、および 5230 です。FCM は通常は 5228 のみを使用しますが、場合によっては 5229 および 5230 を使用することもあります。 
-* FCM は特定の IP を提供しないため、Google の ASN 15169 にリストされた IP ブロックに含まれるすべての IP アドレスへの発信接続をファイアウォールが受け入れられるようにする必要があります。 
+* 開くポートは 5228、5229、および 5230 です。 FCM は通常は 5228 のみを使用しますが、場合によっては 5229 および 5230 を使用することもあります。
+* FCM は特定の IP を提供しないため、Google の ASN 15169 にリストされた IP ブロックに含まれるすべての IP アドレスへの発信接続をファイアウォールが受け入れられるようにする必要があります。
 * ファイアウォールが {{ site.data.keys.mf_server }} から android.googleapis.com への発信接続をポート 443 で受け入れるようにします。
 
 <img class="gifplayer" alt="GCM 資格情報の追加のイメージ" src="gcm-setup.png"/>
@@ -66,8 +66,8 @@ FCM をセットアップするには、次のようにします。
 iOS デバイスは、プッシュ通知に Apple Push Notification Service (APNS) を使用します。  
 APNS をセットアップするには、次のようにします。
 
-1. [開発や実動のためのプッシュ通知証明書を生成します](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv)。
-2. {{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「プッシュ設定」**で、証明書タイプを選択し、証明書のファイルとパスワードを指定します。次に、**「保存」**をクリックします。
+1. 開発や実動のためのプッシュ通知証明書を生成します。詳細な手順については、[こちら](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)の`「iOS の場合」`セクションを参照してください。 
+2. {{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「プッシュ設定」**で、証明書タイプを選択し、証明書のファイルとパスワードを指定します。 次に、**「保存」**をクリックします。
 
 #### 注
 {: #notes-apns }
@@ -82,6 +82,8 @@ APNS をセットアップするには、次のようにします。
 * 開発フェーズでは、apns-certificate-sandbox.p12 サンドボックス証明書ファイルを使用します。
 * 実動フェーズでは、apns-certificate-production.p12 実動証明書ファイルを使用します。
     * APNS 実動証明書は、その証明書を使用するアプリケーションが Apple App Store に正常に送信された後、はじめてテストできるようになります。
+
+**注:** MobileFirst は Universal 証明書をサポートしていません。
 
 > [{{ site.data.keys.product_adj }} プッシュ・サービス用 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) または [{{ site.data.keys.product_adj }} 管理サービス用 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc) のいずれかを使用して APNS をセットアップすることもできます。
 
@@ -101,7 +103,7 @@ WNS をセットアップするには、次のようにします。
 
 ### SMS 通知サービス
 {: #sms-notification-service }
-以下の JSON を使用して、SMS 通知を送信するための SMS ゲートウェイがセットアップされます。[`smsConf` REST API を使用](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html)して、SMS ゲートウェイ構成で {{ site.data.keys.mf_server }} を更新します。
+以下の JSON を使用して、SMS 通知を送信するための SMS ゲートウェイがセットアップされます。 [`smsConf` REST API を使用](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html)して、SMS ゲートウェイ構成で {{ site.data.keys.mf_server }} を更新します。
 
 ```json
 {
@@ -129,9 +131,9 @@ WNS をセットアップするには、次のようにします。
 **push.mobileclient** スコープ・エレメントをアプリケーションにマップします。
 
 1. {{ site.data.keys.mf_console }} をロードし、**「 [ご使用のアプリケーション] 」→「セキュリティー」→「スコープ・エレメントのマッピング」**にナビゲートし、**「新規」**をクリックします。
-2. **「スコープ・エレメント」**フィールドに「push.mobileclient」と入力します。次に、**「追加」**をクリックします。
+2. **「スコープ・エレメント」**フィールドに「push.mobileclient」と入力します。 次に、**「追加」**をクリックします。
 
-    <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
+    <div class="panel-group accordion" id="scopes" role="tablist">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="additional-scopes">
                 <h4 class="panel-title">
@@ -139,7 +141,7 @@ WNS をセットアップするには、次のようにします。
                 </h4>
             </div>
 
-            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel">
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
@@ -147,71 +149,71 @@ WNS をセットアップするには、次のようにします。
                             <td><b>説明</b></td>
                         </tr>
                         <tr>
-                            <td>apps.read</td>
+                            <td>apps.read	</td>
                             <td>アプリケーション・リソースの読み取りの許可</td>
                         </tr>
                         <tr>
-                            <td>apps.write</td>
+                            <td>apps.write	</td>
                             <td>アプリケーション・リソースの作成、更新、削除の許可</td>
                         </tr>
                         <tr>
-                            <td>gcmConf.read</td>
+                            <td>gcmConf.read	</td>
                             <td>GCM 構成設定の読み取りの許可 (API キーおよび SenderId)</td>
                         </tr>
                         <tr>
-                            <td>gcmConf.write</td>
+                            <td>gcmConf.write	</td>
                             <td>GCM 構成設定の更新、削除の許可</td>
                         </tr>
                         <tr>
-                            <td>apnsConf.read</td>
+                            <td>apnsConf.read	</td>
                             <td>APNs 構成設定の読み取りの許可</td>
                         </tr>
                         <tr>
-                            <td>apnsConf.write</td>
+                            <td>apnsConf.write	</td>
                             <td>APNs 構成設定の更新、削除の許可</td>
                         </tr>
                         <tr>
-                            <td>devices.read</td>
+                            <td>devices.read	</td>
                             <td>デバイスの読み取りの許可</td>
                         </tr>
                         <tr>
-                            <td>devices.write</td>
+                            <td>devices.write	</td>
                             <td>デバイスの作成、更新、削除の許可</td>
                         </tr>
                         <tr>
-                            <td>subscriptions.read</td>
+                            <td>subscriptions.read	</td>
                             <td>サブスクリプションの読み取りの許可</td>
                         </tr>
                         <tr>
-                            <td>subscriptions.write</td>
+                            <td>subscriptions.write	</td>
                             <td>サブスクリプションの作成、更新、削除の許可</td>
                         </tr>
                         <tr>
-                            <td>messages.write</td>
+                            <td>messages.write	</td>
                             <td>プッシュ通知の送信の許可</td>
                         </tr>
                         <tr>
-                            <td>webhooks.read</td>
+                            <td>webhooks.read	</td>
                             <td>イベント通知の読み取りの許可</td>
                         </tr>
                         <tr>
-                            <td>webhooks.write</td>
+                            <td>webhooks.write	</td>
                             <td>イベント通知の送信の許可</td>
                         </tr>
                         <tr>
-                            <td>smsConf.read</td>
+                            <td>smsConf.read	</td>
                             <td>SMS 構成設定の読み取りの許可</td>
                         </tr>
                         <tr>
-                            <td>smsConf.write</td>
+                            <td>smsConf.write	</td>
                             <td>SMS 構成設定の更新、削除の許可</td>
                         </tr>
                         <tr>
-                            <td>wnsConf.read</td>
+                            <td>wnsConf.read	</td>
                             <td>WNS 構成設定の読み取りの許可</td>
                         </tr>
                         <tr>
-                            <td>wnsConf.write</td>
+                            <td>wnsConf.write	</td>
                             <td>WNS 構成設定の更新、削除の許可</td>
                         </tr>
                     </table>
@@ -230,10 +232,10 @@ WNS をセットアップするには、次のようにします。
 **push.mobileclient** スコープ・エレメントをアプリケーションで使用されるセキュリティー検査にマップします。  
 
 1. {{ site.data.keys.mf_console }} をロードし、**「 [ご使用のアプリケーション] 」→「セキュリティー」→「スコープ・エレメントのマッピング」**にナビゲートし、**「新規」**をクリックするか、既存のスコープ・マッピング・エントリーを編集します。
-2. セキュリティー検査を選択します。次に、**「追加」**をクリックします。
+2. セキュリティー検査を選択します。 次に、**「追加」**をクリックします。
 
     <img class="gifplayer" alt="認証済み通知" src="authenticated-notifications.png"/>
-    
+
 ## タグの定義
 {: #defining-tags }
 {{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「タグ」**で、**「新規」**をクリックします。  
@@ -241,7 +243,7 @@ WNS をセットアップするには、次のようにします。
 
 <img class="gifplayer" alt="タグの追加" src="adding-tags.png"/>
 
-サブスクリプションにより、デバイス登録とタグが結び付けられます。デバイスがタグから登録解除されると、関連付けられたすべてのサブスクリプションが、デバイス自体から自動的にアンサブスクライブされます。デバイスのユーザーが複数存在するシナリオでは、サブスクリプションは、ユーザー・ログイン基準に基づいて、モバイル・アプリケーションに実装する必要があります。例えば、ユーザーがアプリケーションに正常にログインした後にサブスクライブ呼び出しを行い、ログアウト・アクション処理の一部としてアンサブスクライブ呼び出しを明示的に行います。
+サブスクリプションにより、デバイス登録とタグが結び付けられます。 デバイスがタグから登録解除されると、関連付けられたすべてのサブスクリプションが、デバイス自体から自動的にアンサブスクライブされます。 デバイスのユーザーが複数存在するシナリオでは、サブスクリプションは、ユーザー・ログイン基準に基づいて、モバイル・アプリケーションに実装する必要があります。 例えば、ユーザーがアプリケーションに正常にログインした後にサブスクライブ呼び出しを行い、ログアウト・アクション処理の一部としてアンサブスクライブ呼び出しを明示的に行います。
 
 ## 通知の送信
 {: #sending-notifications }
@@ -256,17 +258,17 @@ WNS をセットアップするには、次のようにします。
 
 #### タグ通知
 {: #tag-notifications }
-タグ通知は、特定のタグにサブスクライブしているすべてのデバイスをターゲットとする通知メッセージです。タグはユーザーが関心のあるトピックを表し、選択した関心に従って通知を受けられる機能を提供します。 
+タグ通知は、特定のタグにサブスクライブしているすべてのデバイスをターゲットとする通知メッセージです。 タグはユーザーが関心のあるトピックを表し、選択した関心に従って通知を受けられる機能を提供します。
 
-{{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」**タブで、**「送信先」**タブから**「タグ別のデバイス」**を選択し、**「通知テキスト」**を入力します。次に、**「送信」**をクリックします。
+{{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」**タブで、**「送信先」**タブから**「タグ別のデバイス」**を選択し、**「通知テキスト」**を入力します。 次に、**「送信」**をクリックします。
 
 <img class="gifplayer" alt="タグによる送信" src="sending-by-tag.png"/>
 
 #### ブロードキャスト通知
 {: #breadcast-notifications }
-ブロードキャスト通知は、サブスクライブされているすべてのデバイスを宛先とするタグ・プッシュ通知の一形態です。ブロードキャスト通知は、デフォルトでは、予約済みの `Push.all` タグ (あらゆるデバイスで自動作成される) へのサブスクリプションによって、プッシュ対応のすべての {{ site.data.keys.product_adj }} アプリケーションに対して使用可能になります。`Push.all` タグは、プログラマチックにアンサブスクライブできます。
+ブロードキャスト通知は、サブスクライブされているすべてのデバイスを宛先とするタグ・プッシュ通知の一形態です。 ブロードキャスト通知は、デフォルトでは、予約済みの `Push.all` タグ (あらゆるデバイスで自動作成される) へのサブスクリプションによって、プッシュ対応のすべての {{ site.data.keys.product_adj }} アプリケーションに対して使用可能になります。 `Push.all` タグは、プログラマチックにアンサブスクライブできます。
 
-{{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」**タブで、**「送信先」**タブから**「すべて」**を選択し、**「通知テキスト」**を入力します。次に、**「送信」**をクリックします。
+{{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」**タブで、**「送信先」**タブから**「すべて」**を選択し、**「通知テキスト」**を入力します。 次に、**「送信」**をクリックします。
 
 ![すべてに送信](sending-to-all.png)
 
@@ -275,7 +277,7 @@ WNS をセットアップするには、次のようにします。
 REST API を使用する場合は、タグ通知、ブロードキャスト通知、および認証済み通知のすべての形式の通知を送信できます。
 
 通知を送信するために、POST を使用して REST エンドポイントへの要求が行われます (`imfpush/v1/apps/<application-identifier>/messages`)。  
-URL の例を以下に示します。 
+URL の例を以下に示します。
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
@@ -285,19 +287,19 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 
 #### 通知ペイロード
 {: #notification-payload }
-要求には、以下のペイロード・プロパティーを含めることができます。 
+要求には、以下のペイロード・プロパティーを含めることができます。
 
 ペイロード・プロパティー| 定義
 --- | ---
 message | 送信されるアラート・メッセージ
 settings | 通知のさまざまな属性の設定。
-target | ターゲットのセットで使用できるのは、コンシューマー ID、デバイス、プラットフォーム、またはタグです。ターゲットのうちの 1 つのみを設定できます。
-deviceIds | デバイス ID によってあらわされるデバイスの配列。これらの ID を持つデバイスが通知を受け取ります。これはユニキャスト通知です。
-notificationType | メッセージの送信に使用されるチャネル (プッシュ/SMS) を示す整数値。許可される値は、1 (プッシュのみ)、2 (SMS のみ)、および 3 (プッシュと SMS) です。
-platforms | デバイス・プラットフォームの配列。これらのプラットフォームを実行しているデバイスが通知を受け取ります。サポートされる値は、A (Apple/iOS)、G (Google/Android)、および M (Microsoft/Windows) です。
-tagNames | tagNames として指定されたタグの配列。これらのタグにサブスクライブされているデバイスが通知を受け取ります。タグ・ベース通知にはこのタイプのターゲットを使用します。
-userIds | 通知の送信先とする、ユーザー ID によって表されるユーザーの配列。これはユニキャスト通知です。
-phoneNumber | デバイスを登録し、通知を受け取るために使用される電話番号。これはユニキャスト通知です。
+target | ターゲットのセットで使用できるのは、コンシューマー ID、デバイス、プラットフォーム、またはタグです。 ターゲットのうちの 1 つのみを設定できます。
+deviceIds | デバイス ID によってあらわされるデバイスの配列。 これらの ID を持つデバイスが通知を受け取ります。 これはユニキャスト通知です。
+notificationType | メッセージの送信に使用されるチャネル (プッシュ/SMS) を示す整数値。 許可される値は、1 (プッシュのみ)、2 (SMS のみ)、および 3 (プッシュと SMS) です。
+platforms | デバイス・プラットフォームの配列。 これらのプラットフォームを実行しているデバイスが通知を受け取ります。 サポートされる値は、A (Apple/iOS)、G (Google/Android)、および M (Microsoft/Windows) です。
+tagNames | tagNames として指定されたタグの配列。 これらのタグにサブスクライブされているデバイスが通知を受け取ります。 タグ・ベース通知にはこのタイプのターゲットを使用します。
+userIds | 通知の送信先とする、ユーザー ID によって表されるユーザーの配列。 これはユニキャスト通知です。
+phoneNumber | デバイスを登録し、通知を受け取るために使用される電話番号。 これはユニキャスト通知です。
 
 **プッシュ通知ペイロード JSON サンプル**
 
@@ -335,7 +337,7 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 
 ```json
 {
-    "message" : {
+  "message" : {
     "alert": "Hello World from an SMS message"
   },
   "notificationType":3,
@@ -351,13 +353,13 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 テスト目的では、以下で説明するように Postman が使用されます。
 
 1. [機密クライアントを構成します](../../authentication-and-security/confidential-clients/)。   
-    REST API 経由でプッシュ通知を送信する場合、スペースで区切られた `messages.write` と `push.application.<applicationId>` のスコープ・エレメントを使用します。
-    
+    REST API 経由でプッシュ通知を送信する場合、スペースで区切られたスコープ・エレメント `messages.write` と `push.application.<applicationId>` を使用します。
+
     <img class="gifplayer" alt="機密クライアントの構成" src="push-confidential-client.png"/>
 
 2. [アクセス・トークンを作成します](../../authentication-and-security/confidential-clients#obtaining-an-access-token)。  
-    
-    
+
+
 3. **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages** への **POST** 要求を行います。
     - リモート {{ site.data.keys.product_adj }} を使用している場合、`hostname` と `port` の値を実際の値で置き換えてください。
     - アプリケーション ID 値を実際の値で更新します。
@@ -365,7 +367,7 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 4. ヘッダーを設定します。
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
     - 「Bearer」の後に続く値を上記ステップ (1) で入手したアクセス・トークンの値で置き換えます。
-    
+
     ![許可ヘッダー](postman_authorization_header.png)
 
 5. 本体を設定します。
@@ -379,9 +381,9 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
         }
    }
    ```
-    
+
    ![許可ヘッダー](postman_json.png)
-    
+
 これで**「送信」**ボタンをクリックすると、デバイスに通知が到着します。
 
 ![サンプル・アプリケーションのイメージ](notifications-app.png)
@@ -405,7 +407,7 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 
 ## プロキシー・サポート
 {: #proxy-support }
-プロキシー設定を使用して、通知が Android デバイスおよび iOS デバイスに送信される際に経由するオプションのプロキシーを設定できます。プロキシーの設定には、**push.apns.proxy.** 構成プロパティーと **push.gcm.proxy.** 構成プロパティーを使用できます。詳しくは、[{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
+プロキシー設定を使用して、通知が Android デバイスおよび iOS デバイスに送信される際に経由するオプションのプロキシーを設定できます。 プロキシーの設定には、**push.apns.proxy.** 構成プロパティーと **push.gcm.proxy.** 構成プロパティーを使用できます。 詳しくは、[{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
 
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }

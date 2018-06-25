@@ -22,8 +22,8 @@ weight: 3
 #### 前提条件:
 {: #prerequisites }
 * Android Studio
-* *オプション*。{{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
-* *オプション*。スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 {{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
 ### 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
@@ -32,8 +32,8 @@ weight: 3
 
 ### 2. アプリケーションの作成
 {: #2-creating-an-application }
-ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
- 
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。 ユーザー名/パスワードは *admin/admin* です。
+
 1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
     * **Android** プラットフォームを選択します。
     * **com.ibm.mfpstarterandroid** を**アプリケーション ID** として入力します。
@@ -41,7 +41,7 @@ weight: 3
     * **「アプリケーションの登録」**をクリックします。
 
     <img class="gifplayer" alt="アプリケーションの登録" src="register-an-application-android.png"/>
- 
+
 2. **「スターター・コードの取得」**タイルをクリックして、Android サンプル・アプリケーションをダウンロードすることを選択します。
 
     <img class="gifplayer" alt="サンプル・アプリケーションのダウンロード" src="download-starter-code-android.png"/>
@@ -59,7 +59,7 @@ weight: 3
   import java.net.URISyntaxException;
   import android.util.Log;
   ```
-    
+
 * 以下のコード・スニペットを貼り付けて、`WLAuthorizationManager.getInstance().obtainAccessToken` への呼び出しを置換します。
 
   ```java
@@ -83,7 +83,7 @@ weight: 3
                     }
 
                     WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
-                    
+
                     request.setQueryParameter("name","world");
                     request.send(new WLResponseListener() {
                         @Override
@@ -118,8 +118,8 @@ weight: 3
 [この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{ site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
 あるいは、**「アダプター」**の隣の**「新規」**ボタンをクリックします。  
-        
-1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。「Hello World」**Java** アダプターのサンプルをダウンロードします。
+
+1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。 「Hello World」**Java** アダプターのサンプルをダウンロードします。
 
    > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。
 
@@ -129,8 +129,8 @@ weight: 3
    mfpdev adapter build
    ```
 
-3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{ site.data.keys.mf_console }} からアダプターをデプロイします。アダプターは、**[adapter]/target** フォルダー内にあります。
-    
+3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{ site.data.keys.mf_console }} からアダプターをデプロイします。 アダプターは、**[adapter]/target** フォルダー内にあります。
+
     <img class="gifplayer" alt="アダプターのデプロイ" src="create-an-adapter.png"/>   
 
 <img src="androidQuickStart.png" alt="サンプル・アプリケーション" style="float:right"/>
@@ -139,9 +139,10 @@ weight: 3
 
 1. Android Studio で、**「プロジェクト (Project)」**サイドバー・メニューで、**「app」→「src」→「main」→「assets」→「mfpclient.properties」**ファイルを選択し、ご使用の {{ site.data.keys.mf_server }} の正しい値で **protocol**、**host**、および **port** の各プロパティーを編集します。
     * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
-    * リモート {{ site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * リモート {{ site.data.keys.mf_server }} (IBM Cloud 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * IBM Cloud Private 上で Kubernetes クラスターを使用していて、デプロイメントのタイプが **NodePort** の場合、通常、ポートの値は、Kubernetes クラスターのサービスによって公開される **NodePort** です。
 
-    あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。リモート {{ site.data.keys.mf_server }} が使用されている場合は、 [コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myBluemixServer` を実行します。
+    あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。 リモート {{ site.data.keys.mf_server }} が使用されている場合は、[コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myIBMCloudServer` を実行します。
 
 2. **「アプリケーションの実行 (Run App)」**ボタンをクリックします。  
 
@@ -153,11 +154,11 @@ weight: 3
 
 その場合、アダプター応答が Android Studio の LogCat ビューに出力されます。
 
-![{{ site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](success_response.png)
+![ {{ site.data.keys.mf_server }} からリソースを正常に呼び出したアプリケーションのイメージ](success_response.png)
 
 ## 次の手順
 {: #next-steps }
-アプリケーションでのアダプターの使用、プッシュ通知などの追加のサービスを統合する方法、{{ site.data.keys.product_adj }} セキュリティー・フレームワークの使用などについて学習します。 
+アプリケーションでのアダプターの使用、プッシュ通知などの追加のサービスを統合する方法、{{ site.data.keys.product_adj }} セキュリティー・フレームワークの使用などについて学習します。
 
 - [アプリケーションの開発](../../application-development/)チュートリアルを検討する
 - [アダプターの開発](../../adapters/)チュートリアルを検討する

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--============createExtensionToc(List pkgs)============-->
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="REST API Push Services">
+    <topic label="Overview" href="html/refrest-push-service-api-docs/html/overview.html">
+
+            <topic label="Bulk Push Messages (POST)" href="html/refrest-push-service-api-docs/html/r_restapi_bulk_push_messages_post.html"/>
+
+            <topic label="Push APNS Certificate Settings (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_apns_certificate_settings_get.html"/>
+
+            <topic label="Push APNS settings (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_apns_settings_delete.html"/>
+
+            <topic label="Push APNS Settings (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_apns_settings_get.html"/>
+
+            <topic label="Push APNS settings (PUT)" href="html/refrest-push-service-api-docs/html/r_restapi_push_apns_settings_put.html"/>
+
+            <topic label="Push Application (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_application_delete.html"/>
+
+            <topic label="Push Application (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_application_get.html"/>
+
+            <topic label="Push Application (POST)" href="html/refrest-push-service-api-docs/html/r_restapi_push_application_post.html"/>
+
+            <topic label="Push Application (PUT)" href="html/refrest-push-service-api-docs/html/r_restapi_push_application_put.html"/>
+
+            <topic label="Push Application Settings (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_application_settings_get.html"/>
+
+            <topic label="Push Applications (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_applications_get.html"/>
+
+            <topic label="Push Device Registration (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_device_registration_delete.html"/>
+
+            <topic label="Push Device Registration (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_device_registration_get.html"/>
+
+            <topic label="Push Device Registration (POST)" href="html/refrest-push-service-api-docs/html/r_restapi_push_device_registration_post.html"/>
+
+            <topic label="Push Device Registration (PUT)" href="html/refrest-push-service-api-docs/html/r_restapi_push_device_registration_put.html"/>
+
+            <topic label="Push Device Registrations (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_device_registrations_get.html"/>
+
+            <topic label="Push Device Subscription By Tag Name (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_device_subscription_by_tag_name_delete.html"/>
+
+            <topic label="Push Device Subscription (POST)" href="html/refrest-push-service-api-docs/html/r_restapi_push_device_subscription_post.html"/>
+
+            <topic label="Push Device Subscriptions (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_device_subscriptions_get.html"/>
+
+            <topic label="Push GCM Public Settings (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_gcm_public_settings_get.html"/>
+
+            <topic label="Push GCM Settings (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_gcm_settings_delete.html"/>
+
+            <topic label="Push GCM Settings (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_gcm_settings_get.html"/>
+
+            <topic label="Push GCM Settings (PUT)" href="html/refrest-push-service-api-docs/html/r_restapi_push_gcm_settings_put.html"/>
+
+            <topic label="Push Health Checker (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_health_checker_get.html"/>
+
+            <topic label="Push Message (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_message_delete.html"/>
+
+            <topic label="Push Message (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_message_get.html"/>
+
+            <topic label="Push Message (POST)" href="html/refrest-push-service-api-docs/html/r_restapi_push_message_post.html"/>
+
+            <topic label="Push SMS settings (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_sms_settings_delete.html"/>
+
+            <topic label="Push SMS Settings (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_sms_settings_get.html"/>
+
+            <topic label="Push SMS Settings (PUT)" href="html/refrest-push-service-api-docs/html/r_restapi_push_sms_settings_put.html"/>
+
+            <topic label="Push Tag (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_tag_delete.html"/>
+
+            <topic label="Push Tag (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_tag_get.html"/>
+
+            <topic label="Push Tag (POST)" href="html/refrest-push-service-api-docs/html/r_restapi_push_tag_post.html"/>
+
+            <topic label="Push Tag (PUT)" href="html/refrest-push-service-api-docs/html/r_restapi_push_tag_put.html"/>
+
+            <topic label="Push Tags (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_tags_get.html"/>
+
+            <topic label="Push Webhook (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_webhook_delete.html"/>
+
+            <topic label="Push Webhooks (POST)" href="html/refrest-push-service-api-docs/html/r_restapi_push_webhooks_post.html"/>
+
+            <topic label="Push Webhooks (PUT)" href="html/refrest-push-service-api-docs/html/r_restapi_push_webhooks_put.html"/>
+
+            <topic label="Push WNS settings (DELETE)" href="html/refrest-push-service-api-docs/html/r_restapi_push_wns_settings_delete.html"/>
+
+            <topic label="Push WNS settings (GET)" href="html/refrest-push-service-api-docs/html/r_restapi_push_wns_settings_get.html"/>
+
+            <topic label="Push WNS settings (PUT)" href="html/refrest-push-service-api-docs/html/r_restapi_push_wns_settings_put.html"/>
+
+
+    </topic>
+</toc>

@@ -9,8 +9,11 @@ weight: 12
 
 > [Review the Migration Cookbook](migration-cookbook) to quickly get started with the migration process.
 
+> Use this [lab]({{site.baseurl}}/labs/developers/8.0/advancedwallet/) to guide you through the v7.1 to v8.0 migration.
+
 #### Jump to
 {: #jump-to }
+* [Why migrate to {{ site.data.keys.product_full }} 8.0](#why-migrate-to-ibm-mobilefirst-foundation-80)
 * [Changes in the development and deployment process](#changes-in-the-development-and-deployment-process)
 * [Migrating a Cordova or hybrid application](#migrating-a-cordova-or-hybrid-application)
 * [Migrating a native application](#migrating-a-native-application)
@@ -19,6 +22,29 @@ weight: 12
 * [Changes in the server databases and in the server structure](#changes-in-the-server-databases-and-in-the-server-structure)
 * [Storing mobile data in Cloudant](#storing-mobile-data-in-cloudant)
 * [Applying a fix pack to {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server)
+
+## Why migrate to IBM MobileFirst Foundation 8.0
+{: #why-migrate-to-ibm-mobilefirst-foundation-80}
+
+### Reduce Effort, Skill and Time Required to Build Apps
+* Build apps faster, simpler and smarter with standard package managers (npm, CocoaPods, Gradle, NuGet) and Maven for Java Adapter build automation
+* New simpler, modular, and easier to plug-in MobileFirst SDKs
+* New and improved overall user experience including anticipating users’ next best action and providing guided help throughout for registering, configuring and deploying apps
+
+### Enhanced Automation, and New Dev and IT Self-Service
+* New Live Update feature to externalize and dynamically change app configurable information (Push Notifications, Authentication, Adapters, App behavior and workflow)
+* Completely rethought, radically simplified Console user experience for registering, deploying and managing apps
+* A new simpler app architecture that eliminates the need for Dev and IT interdependence
+* Improved problem determination with new crash analytics, configurable alerts, and root cause analysis
+* Improved Push Notifications services enables targeted, subscription-based notifications sent from web console
+
+### More Hybrid Cloud Deployment Options
+* One-click provision of MobileFirst Foundation development, testing, and fully scalable production environments on IBM Cloud Public
+* Integrated with IBM DevOps Services and Urban Code for building your deployment pipelines
+
+### Multi-channel API creation and management
+* Step up API Connect multichannel security with mobile specific security extensions (e.g. Step Up, Multifactor) for maximum protection, then enforce in the DMZ with IBM DataPower
+* Create and define API Connect-compatible Swagger REST APIs in Foundation v8 then Manage and Secure them in API Connect
 
 ## Changes in the development and deployment process
 {: #changes-in-the-development-and-deployment-process }

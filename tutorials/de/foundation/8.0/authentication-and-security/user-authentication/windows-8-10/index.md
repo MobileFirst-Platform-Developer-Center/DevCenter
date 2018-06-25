@@ -5,15 +5,15 @@ breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Win8-Projekt RememberMe herunterladen
+  - name: Download RememberMe Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80
-  - name: Win10-Projekt RememberMe herunterladen
+  - name: Download RememberMe Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80
-  - name: Win8-Projekt PreemptiveLogin herunterladen
+  - name: Download PreemptiveLogin Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80
-  - name: Win10-Projekt PreemptiveLogin herunterladen
+  - name: Download PreemptiveLogin Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -82,7 +82,7 @@ Das SDK der {{ site.data.keys.product }} stellt die API `ObtainAccessToken` bere
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
 
-if(accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+if(accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
 {
   Debug.WriteLine("Auto login success");
 }

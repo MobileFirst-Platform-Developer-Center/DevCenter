@@ -5,9 +5,9 @@ breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 downloads:
-  - name: Android-Studio-Projekt herunterladen
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - name: Adapter-Maven-Projekt herunterladen
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -32,8 +32,15 @@ downloads:
 2. Fügen Sie zum vorhandenen Abschnitt `dependencies` die folgenden Zeilen hinzu: 
 
 ```
-compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+3. Fügen Sie Folgendes zum Abschnitt "DefaultConfig" Ihrer Datei build.gradle hinzu.
+```
+  ndk {
+        abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+      }
+ ```     
+ > **Hinweis** : Die abiFilters werden hinzugefügt, um sicherzustellen, dass die Apps mit JSONStore in jeder der oben angegebenen Architekturen ausgeführt werden können. Dies ist erforderlich, weil JSONStore von einer Bibliothek eines anderen Anbieters abhängig ist, die nur diese Architekturen unterstützt. 
 
 ## Grundlegende Verwendung
 {: #basic-usage }
@@ -51,7 +58,7 @@ und **{{ site.data.keys.product_adj }}-Adapter integrieren**.
 
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
@@ -70,7 +77,7 @@ try {
 Mit `getCollectionByName` können Sie einen Mechanismus für den Zugriff auf die Sammlung erstellen. Sie müssen `openCollections` vor `getCollectionByName` aufrufen.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -88,7 +95,7 @@ Die Variable `collection` kann jetzt verwendet werden, um Operationen für die S
 Verwenden Sie `addData`, um Daten als Dokumente innerhalb einer Sammlung zu speichern. 
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -108,7 +115,7 @@ try {
 Verwenden Sie `findDocuments`, um mit einer Abfrage ein Dokument in einer Sammlung zu finden. Verwenden Sie `findAllDocuments`, um alle Dokumente aus einer Sammlung abzurufen. Verwenden Sie `findDocumentById`, um mit der eindeutigen Dokument-ID nach einem Dokument zu suchen. 
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreQueryPart queryPart = new JSONStoreQueryPart();
@@ -132,7 +139,7 @@ try {
 Verwenden Sie `replaceDocument`, um Dokumente in einer Sammlung zu modifizieren. Das Feld für die Ersetzung ist die eindeutige ID des Dokuments (`_id`). 
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -154,7 +161,7 @@ In den vorliegenden Beispielen wird davon ausgegangen, dass das Dokument (`{_id:
 Verwenden Sie `removeDocumentById`, um ein Dokument aus einer Sammlung zu löschen. Dokumente werden erst aus der Sammlung entfernt, wenn Sie `markDocumentClean` aufgerufen haben. Weitere Informationen finden Sie im Abschnitt **{{ site.data.keys.product_adj }}-Adapter integrieren** weiter unten in diesem Lernprogramm. 
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -173,7 +180,7 @@ try {
 Verwenden Sie `removeCollection`, um alle Dokumente aus einer Sammlung zu löschen. Diese Operation ist mit dem Löschen einer Datenbanktabelle vergleichbar. 
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -194,7 +201,7 @@ Mit `destroy` können Sie die folgenden Daten entfernen:
 * Alle JSONStore-Metadaten und -Sicherheitsartefakte (siehe **Sicherheit** weiter unten in diesem Lernprogramm)
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   WLJSONStore.getInstance(context).destroy();
   // Erfolg behandeln
@@ -223,7 +230,7 @@ Verwenden Sie `closeAll`, um den Zugriff auf alle Sammlungen bis zum erneuten Au
 Verwenden Sie `changePassword`, um das Kennwort zu ändern. 
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
@@ -245,7 +252,7 @@ Sie können mehrere Stores erstellen, die verschiedene Sammlungen in nur einer
 {{ site.data.keys.product_adj }}-Anwendung enthalten. Die Funktion `openCollections` kann mit einem Optionsobjekt mit einem Benutzernamen verwendet werden. Wenn kein Benutzername angegeben wird, wird der Standardbenutzername **jsonstore** verwendet.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
@@ -271,8 +278,8 @@ Erstellen Sie einen Adapter mit dem Namen **JSONStoreAdapter**. Definieren Sie f
 `addPerson`, `getPeople`, `pushPeople`, `removePerson` und `replacePerson`.
 
 ```javascript
-function getPeople() {
-	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
+function getPeople () {
+var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
 	return data;

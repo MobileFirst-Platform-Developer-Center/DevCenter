@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--============createExtensionToc(List pkgs)============-->
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="REST API Administration Services">
+    <topic label="Overview" href="html/refrest-admin-service-api-docs/html/overview.html">
+
+            <topic label="Adapter Configuration (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_adapter_configuration_get.html"/>
+
+            <topic label="Adapter Configuration (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_adapter_configuration_put.html"/>
+
+            <topic label="Adapter (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_adapter_delete.html"/>
+
+            <topic label="Adapter (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_adapter_get.html"/>
+
+            <topic label="Adapter (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_adapter_post.html"/>
+
+            <topic label="Adapters (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_adapters_get.html"/>
+
+            <topic label="Adapter Generator (POST)" href="html/refrest-admin-service-api-docs/html/adapterGeneratorPOST.html"/>
+
+            <topic label="Application Authenticity (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_authenticity_delete.html"/>
+
+            <topic label="Application Authenticity (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_authenticity_post.html"/>
+
+            <topic label="Application Authenticity Validation Type (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_authenticity_validation_type_post.html"/>
+
+            <topic label="Application Configuration (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_configuration_get.html"/>
+
+            <topic label="Application Configuration (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_configuration_put.html"/>
+
+            <topic label="Application Descriptor (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_descriptor_get.html"/>
+
+            <topic label="Application Environment (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_environment_get.html"/>
+
+            <topic label="Application (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_get.html"/>
+
+            <topic label="Application License Configuration (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_license_configuration__post.html"/>
+
+            <topic label="Application License Configuration (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_license_configuration_get.html"/>
+
+            <topic label="Application (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_post.html"/>
+
+            <topic label="Application Version (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_version_delete.html"/>
+
+            <topic label="Application Version (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_application_version_get.html"/>
+
+            <topic label="Applications (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_applications_get.html"/>
+
+            <topic label="Audit (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_audit_get.html"/>
+
+            <topic label="Confidential Clients (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_confidential_clients_get.html"/>
+
+            <topic label="Confidential Clients (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_confidential_clients_put.html"/>
+
+            <topic label="Create Subscription (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_create_subscription_post.html"/>
+
+            <topic label="Create Tag (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_create_tag_post.html"/>
+
+            <topic label="Delete Tag (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_delete_tag_delete.html"/>
+
+            <topic label="Delete APNs settings (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_delete_apns_settings_delete.html"/>
+
+            <topic label="Delete GCM settings (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_delete_gcm_settings_delete.html"/>
+
+            <topic label="Delete Message (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_delete_message_delete.html"/>
+
+            <topic label="Delete Subscription (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_delete_subscription_delete.html"/>
+
+            <topic label="Delete WNS settings (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_delete_wns_settings_delete.html"/>
+
+            <topic label="Deploy (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_deploy_post.html"/>
+
+            <topic label="Device Application Status (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_device_application_status_put.html"/>
+
+            <topic label="Device (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_device_delete.html"/>
+
+            <topic label="Device Status (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_device_status_put.html"/>
+
+            <topic label="Devices (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_devices_get.html"/>
+
+            <topic label="Diagnostic Service (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_diagnostic_service_get.html"/>
+
+            <topic label="Enable or Disable Application Authenticity (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_enable_or_disable_application_authenticity_post.html"/>
+
+            <topic label="Export adapter resources (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_adapter_resources_get.html"/>
+
+            <topic label="Export adapters (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_adapters_get.html"/>
+
+            <topic label="Export application environment (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_application_environment_get.html"/>
+
+            <topic label="Export application environment resources (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_application_environment_resources_get.html"/>
+
+            <topic label="Export application resources (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_application_resources_get.html"/>
+
+            <topic label="Export applications (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_applications_get.html"/>
+
+            <topic label="Export resources (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_resources_get.html"/>
+
+            <topic label="Export runtime resources (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_export_runtime_resources_get.html"/>
+
+            <topic label="Farm topology members (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_farm_topology_members_delete.html"/>
+
+            <topic label="Farm topology members (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_farm_topology_members_get.html"/>
+
+            <topic label="Get APNs Settings (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_get_apns_settings_get.html"/>
+
+            <topic label="Get GCM Settings (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_get_gcm_settings_get.html"/>
+
+            <topic label="Get Message (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_get_message_get.html"/>
+
+            <topic label="Get WNS Settings (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_get_wns_settings_get.html"/>
+
+            <topic label="Get Push App Settings (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_get_push_app_settings_get.html"/>
+
+            <topic label="Get Tags (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_get_tags_get.html"/>
+
+            <topic label="Global Configuration (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_global_configuration_get.html"/>
+
+            <topic label="Keystore (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_keystore_delete.html"/>
+
+            <topic label="Keystore (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_keystore_get.html"/>
+
+            <topic label="Keystore (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_keystore_post.html"/>
+
+            <topic label="License configuration (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_license_configuration_delete.html"/>
+
+            <topic label="Push Device Registration (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_push_device_registration_delete.html"/>
+
+            <topic label="Push Device Registration (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_push_device_registration_get.html"/>
+
+            <topic label="Push Device Subscription (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_push_device_subscription_get.html"/>
+
+            <topic label="Register Application with Push Service (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_register_application_with_push_service_post.html"/>
+
+            <topic label="Remove Subscription (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_remove_subscription_delete.html"/>
+
+            <topic label="Reset Application Authenticity (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_reset_application_authenticity_post.html"/>
+
+            <topic label="Retrieve Device Registration (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_retrieve_device_registration_get.html"/>
+
+            <topic label="Retrieve Subscription to Push Service (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_retrieve_subscription_to_push_service__get.html"/>
+
+            <topic label="Retrieve Tag (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_retrieve_tag_get.html"/>
+
+            <topic label="Retrieve Web Resource (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_retrieve_web_resource_get.html"/>
+
+            <topic label="Runtime Configuration (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_runtime_configuration_get.html"/>
+
+            <topic label="Runtime configuration (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_runtime_configuration_put.html"/>
+
+            <topic label="Runtime (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_runtime_delete.html"/>
+
+            <topic label="Runtime (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_runtime_get.html"/>
+
+            <topic label="Runtime Lock (DELETE)" href="html/refrest-admin-service-api-docs/html/r_restapi_runtime_lock_delete.html"/>
+
+            <topic label="Runtime Lock (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_runtime_lock_get.html"/>
+
+            <topic label="Runtimes (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_runtimes_get.html"/>
+
+            <topic label="Send Bulk Messages (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_send_bulk_messages_post.html"/>
+
+            <topic label="Send Message (POST)" href="html/refrest-admin-service-api-docs/html/r_restapi_send_message_post.html"/>
+
+            <topic label="Transaction (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_transaction_get.html"/>
+
+            <topic label="Transactions (GET)" href="html/refrest-admin-service-api-docs/html/r_restapi_transactions_get.html"/>
+
+            <topic label="Update APNs settings (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_update_apns_settings_put.html"/>
+
+            <topic label="Update Device Registration (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_update_device_registration_put.html"/>
+
+            <topic label="Update GCM settings (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_update_gcm_settings_put.html"/>
+
+            <topic label="Update Tag Information (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_update_tag_information_put.html"/>
+
+            <topic label="Update WNS Settings (PUT)" href="html/refrest-admin-service-api-docs/html/r_restapi_update_wns_settings_put.html"/>
+
+    </topic>
+</toc>

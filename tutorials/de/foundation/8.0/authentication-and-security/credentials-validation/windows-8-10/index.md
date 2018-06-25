@@ -5,11 +5,11 @@ breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Win8-Projekt herunterladen
+  - name: Download Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
-  - name: Win10-Projekt herunterladen
+  - name: Download Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -137,8 +137,7 @@ public override JObject GetChallengeAnswer()
 
 ## Abfrage abbrechen
 {: #cancelling-the-challenge }
-Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., wenn auf
-eine Schaltfläche **Cancel** geklickt wird. 
+Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., indem Sie auf die Schaltfläche **Cancel** klicken.
 
 Überschreiben Sie zu diesem Zweck wie folgt die Methode `ShouldCancel`: 
 

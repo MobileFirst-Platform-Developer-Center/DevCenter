@@ -22,8 +22,8 @@ weight: 2
 #### 前提条件:
 {: #prerequisites }
 * Xcode
-* *オプション*。{{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
-* *オプション*。スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 {{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。 スタンドアロン {{ site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
 ### 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
@@ -32,26 +32,26 @@ weight: 2
 
 ### 2. アプリケーションの作成
 {: #2-creating-an-application }
-ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
- 
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。 ユーザー名/パスワードは *admin/admin* です。
+
 1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
     * **iOS** プラットフォームを選択します。
     * (次のステップでダウンロードするアプリケーション・スキャフォールドに応じて) **com.ibm.mfpstarteriosobjectivec** または **com.ibm.mfpstarteriosswift** を **アプリケーション ID** として入力します。
     * **1.0** を **version** の値として入力します。
     * **「アプリケーションの登録」**をクリックします。
-    
+
     <img class="gifplayer" alt="アプリケーションの登録" src="register-an-application-ios.png"/>
- 
+
 2. **「スターター・コードの取得」**タイルをクリックして、iOS Objective-C または iOS Swift サンプル・アプリケーションをダウンロードすることを選択します。
 
     <img class="gifplayer" alt="サンプル・アプリケーションのダウンロード" src="download-starter-code-ios.png"/>
-    
+
 ### 3. アプリケーション・ロジックの編集
 {: #3-editing-application-logic }
 1. **.xcworkspace** ファイルをダブルクリックして Xcode プロジェクトを開きます。
 
 2. **[project-root]/ViewController.m/swift** ファイルを選択し、以下のコード・スニペットを貼り付けて、既存の `getAccessToken()` 関数を置換します。
- 
+
    Objective-C の場合:
 
    ```objc
@@ -59,7 +59,7 @@ weight: 2
    _testServerButton.enabled = NO;
    NSURL *serverURL = [[WLClient sharedInstance] serverUrl];
    _connectionStatusLabel.text = [NSString stringWithFormat:@"Connecting to server...\n%@", serverURL];
-    
+
    NSLog(@"Testing Server Connection");
    [[WLAuthorizationManager sharedInstance] obtainAccessTokenForScope:@"" withCompletionHandler:^(AccessToken *token, NSError *error) {
         if (error != nil) {
@@ -70,10 +70,10 @@ weight: 2
             _titleLabel.text = @"Yay!";
             _connectionStatusLabel.text = [NSString stringWithFormat:@"Connected to {{ site.data.keys.mf_server }}\n%@", serverURL];
             NSLog(@"Received the following access token value: %@", token.value);
-            
+
             NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/resource/greet/"];
             WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
-            
+
             [request setQueryParameterValue:@"world" forName:@"name"];
             [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
                 if (error != nil){
@@ -90,19 +90,19 @@ weight: 2
     }];
 }
    ```
-    
+
    Swift の場合:
-    
+
    ```swift
    @IBAction func getAccessToken(sender: AnyObject) {
         self.testServerButton.enabled = false
-        
+
         let serverURL = WLClient.sharedInstance().serverUrl()
-        
+
         connectionStatusLabel.text = "Connecting to server...\n\(serverURL)"
         print("Testing Server Connection")
         WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { (token, error) -> Void in
-            
+
             if (error != nil) {
                 self.titleLabel.text = "Bummer..."
                 self.connectionStatusLabel.text = "Failed to connect to {{ site.data.keys.mf_server }}\n\(serverURL)"
@@ -111,10 +111,10 @@ weight: 2
                 self.titleLabel.text = "Yay!"
                 self.connectionStatusLabel.text = "Connected to {{ site.data.keys.mf_server }}\n\(serverURL)"
                 print("Recieved the following access token value: " + token.value)
-                
+
                 let url = NSURL(string: "/adapters/javaAdapter/resource/greet/")
                 let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-                
+
                 request.setQueryParameterValue("world", forName: "name")
                 request.sendWithCompletionHandler { (response, error) -> Void in
                     if (error != nil){
@@ -125,7 +125,7 @@ weight: 2
                     }
                 }
             }
-            
+
             self.testServerButton.enabled = true
         }
    }
@@ -136,8 +136,8 @@ weight: 2
 [この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{ site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
 あるいは、**「アダプター」**の隣の**「新規」**ボタンをクリックします。  
-        
-1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。「Hello World」**Java** アダプターのサンプルをダウンロードします。
+
+1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。 「Hello World」**Java** アダプターのサンプルをダウンロードします。
 
    > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。
 
@@ -147,7 +147,7 @@ weight: 2
    mfpdev adapter build
    ```
 
-3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{ site.data.keys.mf_console }} からアダプターをデプロイします。アダプターは、**[adapter]/target** フォルダー内にあります。 
+3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{ site.data.keys.mf_console }} からアダプターをデプロイします。 アダプターは、**[adapter]/target** フォルダー内にあります。
 
     <img class="gifplayer" alt="アダプターのデプロイ" src="create-an-adapter.png"/>   
 
@@ -156,10 +156,11 @@ weight: 2
 {: #5-testing-the-application }
 1. Xcode で、**mfpclient.plist** ファイルを選択し、**protocol**、**host**、**port** の各プロパティーをご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
     * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
-    * リモート {{ site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
-     
-    あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。リモート {{ site.data.keys.mf_server }} が使用されている場合は、 [コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myBluemixServer` を実行します。
+    * リモート {{ site.data.keys.mf_server }} (IBM Cloud 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
+    * IBM Cloud Private 上で Kubernetes クラスターを使用していて、デプロイメントのタイプが **NodePort** の場合、通常、ポートの値は、Kubernetes クラスターのサービスによって公開される **NodePort** です。
 
+    あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。 リモート {{ site.data.keys.mf_server }} が使用されている場合は、[コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myIBMCloudServer` を実行します。
+    
 2. **「再生」**ボタンを押します。
 
 <br clear="all"/>
@@ -170,7 +171,7 @@ weight: 2
 
 その場合、アダプター応答が Xcode コンソールに出力されます。
 
-![{{ site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](success_response.png)
+![ {{ site.data.keys.mf_server }} からリソースを正常に呼び出したアプリケーションのイメージ](success_response.png)
 
 ## 次の手順
 {: #next-steps }

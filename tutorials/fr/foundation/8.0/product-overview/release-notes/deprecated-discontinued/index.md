@@ -15,7 +15,7 @@ Examinez attentivement la façon dont les éléments des fonctions et des API su
 
 ## Fonctions abandonnées et fonctions absentes de la version 8.0
 {: #dicontinued-features-and-features-that-are-not-included-in-v-80 }
-{{ site.data.keys.product }}La version 8.0 a été simplifiée de manière radicale par rapport à la version précédente. En conséquences, certaines fonctions de la version 7.1 ne sont pas suivies dans la version 8.0. Dans la plupart des cas, une autre manière de les implémenter est proposée. Ces fonctions sont signalées comme abandonnées. D'autres fonctions de la version V7.1. n'ont pas été reconduites en version 8.0, sans que cela soit dû au remaniement de celle-ci. Pour les distinguer des fonctions abandonnées à partir de la version 8.0, elles sont signalées comme non disponibles en version 8.0.
+La version 8.0 de {{ site.data.keys.product }} a été simplifiée de manière radicale par rapport à la version précédente. En conséquences, certaines fonctions de la version 7.1 ne sont pas suivies dans la version 8.0. Dans la plupart des cas, une autre manière de les implémenter est proposée. Ces fonctions sont signalées comme abandonnées. D'autres fonctions de la version V7.1. n'ont pas été reconduites en version 8.0, sans que cela soit dû au remaniement de celle-ci. Pour les distinguer des fonctions abandonnées à partir de la version 8.0, elles sont signalées comme non disponibles en version 8.0.
 
 <table class="table table-striped">
     <tr>

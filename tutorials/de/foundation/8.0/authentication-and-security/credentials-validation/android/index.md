@@ -5,9 +5,9 @@ breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
 downloads:
-  - name: Android-Studio-Projekt herunterladen
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -108,8 +108,7 @@ submitChallengeAnswer(new JSONObject().put("pin", pinCodeTxt.getText()));
 
 ## Abfrage abbrechen
 {: #cancelling-the-challenge }
-Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., wenn
-auf eine Schaltfläche **Cancel** geklickt wird. 
+Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., indem Sie auf die Schaltfläche **Cancel** klicken.
 
 Verwenden Sie dazu die Methode `cancel()` von `SecurityCheckChallengeHandler`. 
 

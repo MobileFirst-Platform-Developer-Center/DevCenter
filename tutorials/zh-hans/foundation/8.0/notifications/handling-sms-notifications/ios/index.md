@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: 在 iOS 中处理 SMS 通知
-breadcrumb_title: 在 iOS 中处理 SMS
+breadcrumb_title: Handling SMS in iOS
 relevantTo: [ios]
 downloads:
-  - name: 下载 Xcode 项目
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80
 weight: 9
 ---
@@ -61,7 +61,7 @@ MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void 
  })
 ```
 
-* **optionObject**：一个 `jsonOptions`，其包含注册设备所用的电话号码。例如：
+* **optionObject**：一个 `jsonOptions`，其包含注册设备所用的电话号码。 例如：
 
 ```swift
 let phoneNumber: String = self.phoneNumberTF.text!
@@ -77,14 +77,15 @@ if JSONSerialization.isValidJSONObject(jsonOptions) {
 ```
 
 > 也可以使用[推送设备注册 (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html) 来注册设备
+
 #### 注销设备
 {: #unregister-device }
 从推送通知服务实例注销设备。
 
 ```swift
 MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
-   if error == nil {
-       // Unregistered successfully
+    if error == nil {
+        // Unregistered successfully
     } else {
         // Failed to unregister
     }
@@ -93,7 +94,7 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 
 ## 使用 SMS 预订 servlet
 {: #using-an-sms-subscribe-servlet }
-可使用 REST API 将通知发送到已注册的设备。可以发送所有形式的通知：标记通知、广播通知和已认证的通知
+可使用 REST API 将通知发送到已注册的设备。 可以发送所有形式的通知：标记通知、广播通知和已认证的通知
 
 要发送通知，可使用 POST 向 REST 端点发出请求：`imfpush/v1/apps/<application-identifier>/messages`。  
 示例 URL：
@@ -103,6 +104,7 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
 > 要查看所有推送通知 REST API，请参阅用户文档中的 <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API 运行时服务</a>主题。
+
 要发送通知，请参阅[发送通知](../../sending-notifications)教程。
 
 <img alt="样本应用程序图像" src="sample-app.png" style="float:right"/>

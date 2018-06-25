@@ -57,6 +57,9 @@ $color_wild_sand_approx: #f5f5f5;
 	}
 	.sidebar {
 		padding: 23px 0 0 7px;
+		background-color: #f2f2f2;
+    border-color: #f2f2f2;
+
 		ul {
 			// affects all ULs in the sidebar
 			list-style-type: none;
@@ -87,7 +90,7 @@ $color_wild_sand_approx: #f5f5f5;
 					font-size: 100%;
 				}
 			}
-			> li.active { 
+			> li.active {
 				// affects every active LI inside the nav element of the top level ("Founation" and alike)
 				padding: 0 0 0 10px;
 				&:hover {
@@ -110,25 +113,25 @@ $color_wild_sand_approx: #f5f5f5;
 								background-color: #89d1ef;
 							}
 							a {
-								font-weight: bold;
+								font-weight: normal;
 							}
-							font-weight: bold;
+							font-weight: normal;
 							> ul {
 								background-color: #bedfec;
 								padding-left: 0;
-								> li { 
+								> li {
 									// child tutorials
 									line-height: 1.5em;
 									&.active {
 										background-color: #89d1ef;
 										> a {
-											font-weight: bold;
+											font-weight: normal;
 											padding: 0 0 0 15px;
 										}
 									}
 									&.parent-active {
 										> a {
-											font-weight: bold;
+											font-weight: normal;
 										}
 									}
 									> a {
@@ -144,7 +147,7 @@ $color_wild_sand_approx: #f5f5f5;
 									}
 									> ul {
 										background-color: #bedfec;
-										> li { 
+										> li {
 											// grand-child tutorials
 											//margin-left: 5px;
 											font-weight: bold;
@@ -154,13 +157,13 @@ $color_wild_sand_approx: #f5f5f5;
 													font-weight: bold;
 												}
 											}
-											> a {	
+											> a {
 												font-weight: normal;
 												color: $black;
 												font-size: 70%;
 												text-decoration: none;
 												padding: 0 0 0 20px;
-												
+
 												&:hover {
 													text-decoration: underline;
 													color: #3c4646;

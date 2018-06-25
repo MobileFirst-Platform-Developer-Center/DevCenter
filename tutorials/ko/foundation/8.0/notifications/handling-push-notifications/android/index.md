@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Android
+title: Android에서 푸시 알림 처리
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
@@ -9,41 +9,41 @@ downloads:
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
+Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려면 먼저 Google Play Services에 대한 지원을 구성해야 합니다. 애플리케이션이 구성되고 나면 디바이스를 등록 및 등록 취소하고 태그에 등록 및 등록 취소하기 위해 {{ site.data.keys.product_adj }} 제공 알림 API를 사용할 수 있습니다. 이 학습서에서는 Android 애플리케이션에서 푸시 알림을 처리하는 방법에 대해 학습합니다.
 
-**Prerequisites:**
+**전제조건:**
 
-* Make sure you have read the following tutorials:
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android)
-    * [Push Notifications Overview](../../)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 다음과 같은 학습서를 읽어야 합니다.
+    * [{{ site.data.keys.product_adj }} 개발 환경 설정](../../../installation-configuration/#installing-a-development-environment)
+    * [Android 애플리케이션에 {{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/android)
+    * [푸시 알림 개요](../../)
+* {{ site.data.keys.mf_server }}가 로컬로 실행되거나 {{ site.data.keys.mf_server }}가 원격으로 실행 중입니다.
+* {{ site.data.keys.mf_cli }}가 개발자 워크스테이션에 설치되어 있습니다.
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
-* [Sample application](#sample-application)
+* [알림 구성](#notifications-configuration)
+* [알림 API](#notifications-api)
+* [푸시 알림 처리](#handling-a-push-notification)
+* [샘플 애플리케이션](#sample-application)
 
-## Notifications Configuration
+## 알림 구성
 {: #notifications-configuration }
-Create a new Android Studio project or use an existing one.  
-If the {{ site.data.keys.product_adj }} Native Android SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android) tutorial.
+새 Android Studio 프로젝트를 작성하거나 기존 프로젝트를 사용하십시오.  
+{{ site.data.keys.product_adj }} 고유 Android SDK가 아직 프로젝트에 없는 경우 [Android 애플리케이션에 {{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/android) 학습서의 지시사항을 따르십시오.
 
-### Project setup
+### 프로젝트 설정
 {: #project-setup }
-1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
+1. **Android → Gradle 스크립트**에서 **build.gradle (Module: app)** 파일을 선택한 후 다음 행을 `dependencies`에 추가하십시오.
 
    ```bash
    com.google.android.gms:play-services-gcm:9.0.2
    ```
-   - **Note:** there is a [known Google defect](https://code.google.com/p/android/issues/detail?id=212879) preventing use of the latest Play Services version (currently at 9.2.0). Use a lower version.
+   - **참고:** 최신 Play Services 버전(현재는 9.2.0) 사용을 방해하는 [알려진 Google 결함](https://code.google.com/p/android/issues/detail?id=212879)이 있습니다. 낮은 버전을 사용하십시오.
 
-   And:
+   그리고 다음 행을 추가하십시오.
 
    ```xml
    compile group: 'com.ibm.mobile.foundation',
@@ -53,14 +53,14 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
             transitive: true
    ```
     
-   Or in a single line:
+   또는 단일 행으로 다음 행을 추가하십시오.
 
    ```xml
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
 
-2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
-	* Add the following permissions to the top the `manifest` tag:
+2. **Android → 앱 → Manifest**에서 `AndroidManifest.xml` 파일을 여십시오.
+	* `manifest` 태그 맨 위에 다음과 같은 권한을 추가하십시오.
 
 	  ```xml
 	  <!-- Permissions -->
@@ -73,7 +73,7 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
     	    android:protectionLevel="signature" />
       ```
       
-	* Add the following to the `application` tag:
+	* `application` 태그에 다음을 추가하십시오.
 
 	  ```xml
       <!-- GCM Receiver -->
@@ -109,9 +109,9 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
 
-	  > **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
+	  > **참고:** `your.application.package.name`을 애플리케이션의 실제 패키지 이름으로 대체해야 합니다.
 
-    * Add the following `intent-filter` to the application's activity.
+    * 애플리케이션의 활동에 다음 `intent-filter`를 추가하십시오.
       
       ```xml
       <intent-filter>
@@ -120,47 +120,48 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
       </intent-filter>
       ```
       
-## Notifications API
+## 알림 API
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush 인스턴스
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by creating a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
+모든 API 호출은 `MFPPush`의 인스턴스에서 호출되어야 합니다.  이는 `private MFPPush push = MFPPush.getInstance();` 등의 클래스 레벨 필드를 작성한 후 클래스 전체에서 `push.<api-call>`를 호출하여 수행될 수 있습니다.
 
-Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
+또는 푸시 API 메소드에 액세스해야 하는 각 인스턴스에 대해 `MFPPush.getInstance().<api_call>`을 호출할 수 있습니다.
 
-### Challenge Handlers
+### 인증 확인 핸들러
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+`push.mobileclient` 범위가 **보안 검사**에 맵핑되는 경우에는 푸시 API를 사용하기 전에 일치하는 **인증 확인 핸들러**가 존재하며 등록되어 있는지 확인해야 합니다.
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/android) tutorial.
+> [신임 정보 유효성 검증](../../../authentication-and-security/credentials-validation/android) 학습서에서 인증 확인 핸들러에 대해 자세히 학습하십시오.
 
-### Client-side
+### 클라이언트 측
 {: #client-side }
-| Java Methods | Description |
+
+| Java 메소드 | 설명 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
-| [`isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
-| [`getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
+| [`initialize(Context context);`](#initialization) | 제공된 컨텍스트에 대해 MFPPush를 초기화합니다. |
+| [`isPushSupported();`](#is-push-supported) | 디바이스가 푸시 알림을 지원하는지 확인합니다. |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | 디바이스를 푸시 알림 서비스에 등록합니다. |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | 푸시 알림 서비스 인스턴스에서 사용 가능한 태그를 검색합니다. |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 디바이스를 지정된 태그에 등록합니다. |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | 디바이스가 현재 등록된 모든 태그를 검색합니다. |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 특정 태그에서 등록 취소합니다. |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | 푸시 알림 서비스에서 디바이스를 등록 취소합니다. |
 
-#### Initialization
+#### 초기화
 {: #initialization }
-Required for the client application to connect to MFPPush service with the right application context.
+클라이언트 애플리케이션이 올바른 애플리케이션 컨텍스트를 사용하여 MFPPush 서비스에 연결하기 위해 필요합니다.
 
-* The API method should be called first before using any other MFPPush APIs.
-* Registers the callback function to handle received push notifications.
+* 다른 MFPPush API를 사용하기 전에 먼저 API 메소드를 호출해야 합니다.
+* 수신된 푸시 알림을 처리하도록 콜백 함수를 등록합니다.
 
 ```java
 MFPPush.getInstance().initialize(this);
 ```
 
-#### Is push supported
+#### 푸시가 지원되는지 여부
 {: #is-push-supported }
-Checks if the device supports push notifications.
+디바이스가 푸시 알림을 지원하는지 확인합니다.
 
 ```java
 Boolean isSupported = MFPPush.getInstance().isPushSupported();
@@ -172,9 +173,9 @@ if (isSupported ) {
 }
 ```
 
-#### Register device
+#### 디바이스 등록
 {: #register-device }
-Register the device to the push notifications service.
+디바이스를 푸시 알림 서비스에 등록합니다.
 
 ```java
 MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>() {
@@ -190,9 +191,9 @@ MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>()
 });
 ```
 
-#### Get tags
+#### 태그 가져오기
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+푸시 알림 서비스에서 사용 가능한 모든 태그를 검색합니다.
 
 ```java
 MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
@@ -208,9 +209,9 @@ MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
 });
 ```
 
-#### Subscribe
+#### 등록
 {: #subscribe }
-Subscribe to desired tags.
+원하는 태그에 등록합니다.
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -228,9 +229,9 @@ MFPPush.getInstance().subscribe(tags, new MFPPushResponseListener<String[]>() {
 });
 ```
 
-#### Get subscriptions
+#### 등록 가져오기
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+디바이스가 현재 등록된 태그를 검색합니다.
 
 ```java
 MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>() {
@@ -246,9 +247,9 @@ MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>
 });
 ```
 
-#### Unsubscribe
+#### 등록 취소
 {: #unsubscribe }
-Unsubscribe from tags.
+태그에서 등록 취소합니다.
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -266,9 +267,9 @@ MFPPush.getInstance().unsubscribe(tags, new MFPPushResponseListener<String[]>() 
 });
 ```
 
-#### Unregister
+#### 등록 취소
 {: #unregister }
-Unregister the device from push notification service instance.
+푸시 알림 서비스 인스턴스에서 디바이스를 등록 취소합니다.
 
 ```java
 MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
@@ -285,17 +286,17 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 });
 ```
 
-## Handling a push notification
+## 푸시 알림 처리
 {: #handling-a-push-notification }
-In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing one of the following methods.
+푸시 알림을 처리하려면 `MFPPushNotificationListener`를 설정해야 합니다.  이는 다음 메소드 중 하나를 구현하여 수행할 수 있습니다.
 
-### Option One
+### 옵션 1
 {: #option-one }
-In the activity in which you wish the handle push notifications.
+푸시 알림을 처리할 활동에서
 
-1. Add `implements MFPPushNofiticationListener` to the class declaration.
-2. Set the class to be the listener by calling `MFPPush.getInstance().listen(this)` in the `onCreate` method.
-2. Then you will need to add the following *required* method:
+1. 클래스 선언에 `implements MFPPushNofiticationListener`를 추가하십시오.
+2. `onCreate` 메소드에서 `MFPPush.getInstance().listen(this)`를 호출하여 클래스를 리스너로 설정하십시오.
+2. 그런 다음 아래의 *필수* 메소드를 추가해야 합니다.
 
    ```java
    @Override
@@ -304,11 +305,11 @@ In the activity in which you wish the handle push notifications.
    }
    ```
 
-3. In this method you will receive the `MFPSimplePushNotification` and can handle the notification for the desired behavior.
+3. 이 메소드에서 사용자는 `MFPSimplePushNotification`을 수신하고 원하는 작동에 대한 알림을 처리할 수 있습니다.
 
-### Option Two
+### 옵션 2
 {: #option-two }
-Create a listener by calling `listen(new MFPPushNofiticationListener())` on an instance of `MFPPush` as outlined below:
+아래에 개략적으로 설명된 대로 `MFPPush`의 인스턴스에서 `listen(new MFPPushNofiticationListener())`를 호출하여 리스너를 작성하십시오.
 
 ```java
 MFPPush.getInstance().listen(new MFPPushNotificationListener() {
@@ -319,12 +320,12 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 });
 ```
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
-## Sample application
+<img alt="샘플 애플리케이션의 이미지" src="notifications-app.png" style="float:right"/>
+## 샘플 애플리케이션
 {: #sample-application }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) the Android Studio project.
+Android Studio 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80)하십시오.
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+샘플의 README.md 파일에 있는 지시사항을 따르십시오.

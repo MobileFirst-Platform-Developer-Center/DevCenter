@@ -183,7 +183,7 @@ push.unsubscribe("myPush", myUnsubListener);
 
 <h3>Additional client-side API methods</h3>
 
-<code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.
+<code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications. The call does not connect to the server, it returns the local state.
 
 {% highlight csharp  %} 
 WLClient.getInstance().getPush().isSubscribed("myPush");

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guia de Instalação da Estação de Trabalho
-breadcrumb_title: Guia de Instalação
+breadcrumb_title: Installation guide
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -17,16 +17,16 @@ O [{{ site.data.keys.mf_dev_kit }} Installer]({{site.baseurl}}/tutorials/en/foun
 O instalador requer o Java instalado.
 
 1. [Instalar JRE do Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html).
-    
+
 2. Inclua uma variável `JAVA_HOME`, apontando para o JRE
 
     *Mac e Linux:* Edite seu **~/.bash_profile**:
-    
+
     ```bash
     #### ORACLE JAVA
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home"
     ```
-    
+
     *Windows:*  
     [Siga esse guia](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html).
 
@@ -64,20 +64,20 @@ Abra uma janela de linha de comandos e navegue para o local da pasta extraída.
 O [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) é uma interface da linha de comandos que permite registrar aplicativos no {{ site.data.keys.mf_server }}, aplicativo pull/push de/para o {{ site.data.keys.mf_server }}, criar adaptadores Java e JavaScript, gerenciar vários servidores locais e remotos, atualizar aplicativos em tempo real usando o Direct Update etc
 
 **Pré-requisito: **  
-1. NodeJS é um requisito antes da instalação do {{ site.data.keys.mf_cli }}.  
- Faça download e instale o [NodeJS v4.4.3 LTS](https://nodejs.org/en/).
+1. O NodeJS e o NPM são necessários antes de ser possível realizar a instalação do {{ site.data.keys.mf_cli }}.  
+ Faça o download e instale o [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) e o NPM v3.10.10.
 
  Para verificar a instalação, abra uma janela de linha de comandos e execute: `node -v`.
 
 2. Alguns comandos da CLI, como criar, construir e implementar adaptadores requerem o Maven. Consulte a próxima seção para obter instruções de instalação.
 
-### Tarefas de Instalação
-{: #installation }
+### Instalação do {{ site.data.keys.mf_cli }}
+{: #installation-cli }
 Abra Terminal e execute: `npm install -g mfpdev-cli`.  
 
 *Mac e Linux:* Observe que pode ser necessário executar o comando usando `sudo`.  
 Leia mais sobre [corrigindo permissões de NPM](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
-    
+
 Para verificar a instalação, abra uma janela de linha de comandos e execute: `mfpdev -v` ou `mfpdev help`.
 
 ![console](mfpdev-cli.png)
@@ -88,12 +88,12 @@ Para verificar a instalação, abra uma janela de linha de comandos e execute: `
 
 **Pré-requisito: **  
 O Apache Maven é necessário para configuração antes da criação de adaptadores e verificações de segurança.  
-    
+
 1. [Faça download do .zip do Apache Maven](https://maven.apache.org/download.cgi)
 2. Inclua uma variável `MVN_PATH`, apontando para a pasta Maven
-    
+
     *Mac e Linux:* Edite seu **~/.bash_profile**:
-    
+
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
@@ -107,4 +107,3 @@ Verifique a instalação executando: `mvn -v`.
 {: #usage }
 Com o Apache Maven instalado, agora é possível criar adaptadores por meio de comandos da linha de comandos do Maven ou usando o {{ site.data.keys.mf_cli }}.  
 Para obter informações adicionais, revise os [tutoriais Adaptadores]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
-

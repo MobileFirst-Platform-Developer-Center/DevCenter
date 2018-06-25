@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: SMS-Benachrichtigungen in Android
-breadcrumb_title: SMS in Android
+title: Handhabung von SMS-Benachrichtigungen in Android
+breadcrumb_title: Handling SMS in Android
 relevantTo: [android]
 weight: 10
 downloads:
-  - name: Android-Projekt herunterladen
+  - name: Download Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -52,7 +52,7 @@ MFPPush.getInstance().initialize(this);
 
 #### Gerät registrieren
 {: #register-device }
-Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice.
 
 ```java
 MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
@@ -68,7 +68,7 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
  }, optionObject);
 ```
 
-* **optionObject**: `JSONObject` mit der Telefonnummer für die Registrierung des Geräts. Beispiel: 
+* **optionObject**: `JSONObject` mit der Telefonnummer für die Registrierung des Geräts. Beispiel:
 
 ```java
 JSONObject optionObject = new JSONObject();
@@ -117,6 +117,8 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
 > Eine Übersicht über alle REST-APIs für Push-Benachrichtigungen finden Sie im Abschnitt <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST-API-Laufzeitservices</a> in der Benutzerdokumentation.
+
+
 
 Informationen zum Senden einer Benachrichtigung enthält das Lernprogramm [Benachrichtigungen senden](../../sending-notifications). 
 

@@ -9,8 +9,8 @@ print_pdf: false
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-The **CredentialsValidationsSecurityCheck** is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. A built-in capability to block access after a set number of attempts is also provided.
+**CredentialsValidationsSecurityCheck** está pensada para que los flujos simples validen credenciales arbitrarias para garantizar el acceso a un recurso. También se proporciona una capacidad incorporada para bloquear el acceso después de que también se proporcione un determinado número de intentos.
 
-Select a tutorial:
+Seleccione un tutorial:

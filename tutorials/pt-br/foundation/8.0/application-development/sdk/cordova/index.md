@@ -24,8 +24,8 @@ Available plug-ins are:
 The Cordova platform versions supported by the MobileFirst plug-ins, are:
 
 * cordova-ios: **>= 4.1.1 and < 5.0**
-* cordova-android: **>= 5.1.1 and < 6.0**
-* cordova-windows: **>= 4.3.2 and < 5.0**
+* cordova-android: **>= 6.1.2 and <= 7.0**
+* cordova-windows: **>= 4.3.2 and < 6.0**
 
 #### Jump to:
 {: #jump-to }
@@ -68,9 +68,11 @@ The cordova-plugin-mfp-encrypt-utils plug-in provides iOS OpenSSL frameworks for
 
 **Prerequisites:**
 
-- [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) and {{ site.data.keys.mf_cli }} installed on the developer workstation.
+- [Apache Cordova CLI](https://www.npmjs.com/package/cordova) and {{ site.data.keys.mf_cli }} installed on the developer workstation.
 - A local or remote instance of {{ site.data.keys.mf_server }} is running.
 - Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Cordova development environment](../../../installation-configuration/development/cordova) tutorials.
+- For cordova-windows, a version of Visual C++ that is compatible to the Visual Studio and .NET versions installed in the machine have to be installed.
+- In case of Windows Phone SDK 8.0 and Visual Studio Tools for Universal Windows Apps, ensure that the cordova-windows applications created have all the required supporting libraries.
 
 ## Adding the {{ site.data.keys.product }} Cordova SDK
 {: #adding-the-mobilefirst-cordova-sdk }
@@ -87,7 +89,7 @@ Consider creating the project by using the {{ site.data.keys.product_adj }} Cord
 
 #### New Application
 {: #new-application }
-1. Create a Cordova project: `cordova create projectName applicationId --template cordova-template-mfp`.  
+1. Create a Cordova project: `cordova create projectName applicationId applicationName --template cordova-template-mfp`.  
    For example:
 
    ```bash
@@ -163,7 +165,7 @@ The {{ site.data.keys.product_adj }} API methods are available after the {{ site
 Use this function to call the various {{ site.data.keys.product_adj }} API methods.
 
 ## Updating the {{ site.data.keys.product_adj }} Cordova SDK
-{: updating-the-mobilefirst-cordova-sdk }
+{: #updating-the-mobilefirst-cordova-sdk }
 To update the {{ site.data.keys.product_adj }} Cordova SDK with the latest release, remove the **cordova-plugin-mfp** plug-in: run the `cordova plugin remove cordova-plugin-mfp` command and then run the `cordova plugin add cordova-plugin-mfp` command to add it again.
 
 SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/cordova-plugin-mfp).
@@ -203,7 +205,7 @@ After the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, 
 </widget>
 ```
 
-<div class="panel-group accordion" id="config-xml" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="config-xml" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">

@@ -1,17 +1,17 @@
 ---
 layout: tutorial
 title: 实现 UserAuthenticationSecurityCheck 类
-breadcrumb_title: 安全性检查
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: 下载安全性检查
+  - name: Download Security Checks
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-此抽象类扩展 `CredentialsValidationSecurityCheck`，且基于其而构建以适合最常见的简单用户认证用例。除了验证凭证，它还创建了可从框架的各个部分访问的**用户身份**，从而使您能够标识当前用户。（可选）`UserAuthenticationSecurityCheck` 还提供**记住我**功能。
+此抽象类扩展 `CredentialsValidationSecurityCheck`，且基于其而构建以适合最常见的简单用户认证用例。 除了验证凭证，它还创建了可从框架的各个部分访问的**用户身份**，从而使您能够标识当前用户。 （可选）`UserAuthenticationSecurityCheck` 还提供**记住我**功能。
 
 本教程使用的安全性检查示例会请求用户名和密码，并使用用户名来表示已认证的用户。
 
@@ -57,7 +57,7 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 
 ```java
 @Override
-protected Map<String, Object> createChallenge() {
+    protected Map<String, Object> createChallenge() {
     Map challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
     challenge.put("remainingAttempts",getRemainingAttempts());
@@ -67,17 +67,17 @@ protected Map<String, Object> createChallenge() {
 
 ## 验证用户凭证
 {: #validating-the-user-credentials }
-在客户机发送验证问题答案时，此答案会作为 `Map` 传递至 `validateCredentials`。使用此方法来实施您的逻辑。如果凭证是有效的，那么该方法将返回 `true`。
+在客户机发送验证问题答案时，此答案会作为 `Map` 传递至 `validateCredentials`。 使用此方法来实施您的逻辑。 如果凭证是有效的，那么该方法将返回 `true`。
 
 在此示例中，在 `username` 和 `password` 相同时，凭证被认为是“有效”的：
 
 ```java
 @Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
-        String username = credentials.get("username").toString();
-        String password = credentials.get("password").toString();
-        if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+    protected boolean validateCredentials(Map<String, Object> credentials) {
+    if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
+            String username = credentials.get("username").toString();
+            String password = credentials.get("password").toString();
+            if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
             return true;
         }
         else {
@@ -94,7 +94,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ## 创建 AuthenticatedUser 对象
 {: #creating-the-authenticateduser-object }
 `UserAuthenticationSecurityCheck` 类在持久数据中存储当前客户机（用户、设备和应用程序）的表示，使您能够在代码的各个部分中检索当前用户，例如，验证问题处理程序或适配器。
-通过类 `AuthenticatedUser` 的实例来表示用户。其构造方法采用 `id`、`displayName` 和 `securityCheckName` 参数。
+通过类 `AuthenticatedUser` 的实例来表示用户。 其构造方法采用 `id`、`displayName` 和 `securityCheckName` 参数。
 
 此示例针对 `id` 和 `displayName` 参数使用 `username`。
 
@@ -105,10 +105,10 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 userId = username;
                 displayName = username;
                 return true;
@@ -128,7 +128,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
    ```java
    @Override
-   protected AuthenticatedUser createUser() {
+    protected AuthenticatedUser createUser() {
         return new AuthenticatedUser(userId, displayName, this.getName());
    }
    ```
@@ -145,18 +145,18 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 AuthenticatedUser(String id, String displayName, String securityCheckName, Map<String, Object> attributes);
 ```
 
-此构造方法添加要使用用户表示存储的定制属性的 `Map`。映射可用于存储其他信息，例如，个人档案图片、Web 站点等。此信息可供客户机端（验证问题处理程序）和资源（使用自省数据）访问。
+此构造方法添加要使用用户表示存储的定制属性的 `Map`。 映射可用于存储其他信息，例如，个人档案图片、Web 站点等。此信息可供客户机端（验证问题处理程序）和资源（使用自省数据）访问。
 
 > **注：**
 >属性 `Map` 必须仅包含 Java 库中绑定的类型/类对象（例如，`String`、`int` 和 `Map` 等），而**不能**包含定制类。
 
 ## 添加 RememberMe 功能
 {: #adding-rememberme-functionality }
-缺省情况下，`UserAuthenticationSecurityCheck` 使用 `successStateExpirationSec` 属性来确定成功状态的持续时间。此属性继承自 `CredentialsValidationSecurityCheck`。
+缺省情况下，`UserAuthenticationSecurityCheck` 使用 `successStateExpirationSec` 属性来确定成功状态的持续时间。 此属性继承自 `CredentialsValidationSecurityCheck`。
 
 如果想要允许用户保持登录的时间超过 `successStateExpirationSec` 值，那么 `UserAuthenticationSecurityCheck` 可添加此功能。
 
-`UserAuthenticationSecurityCheck` 会添加一个名为 `rememberMeDurationSec` 的属性，其缺省值为 `0`：缺省情况下，将记住用户 **0 秒**，这意味着缺省情况下禁用此功能。将该值更改为对您的应用程序有意义的数字（一天、一周、一个月……）。
+`UserAuthenticationSecurityCheck` 会添加一个名为 `rememberMeDurationSec` 的属性，其缺省值为 `0`：缺省情况下，将记住用户 **0 秒**，这意味着缺省情况下禁用此功能。 将该值更改为对您的应用程序有意义的数字（一天、一周、一个月……）。
 
 您还可以通过覆盖 `rememberCreatedUser()` 方法来管理该功能，此方法缺省情况下返回 `true`，表示缺省情况下激活此功能（前提是更改了持续时间属性）。
 
@@ -170,10 +170,10 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 
    @Override
    protected boolean validateCredentials(Map<String, Object> credentials) {
-        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+        if(credentials!=null &&  credentials.containsKey("username") &&  credentials.containsKey("password")){
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
-            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            if(!username.isEmpty() &&  !password.isEmpty() &&  username.equals(password)) {
                 userId = username;
                 displayName = username;
 
@@ -217,6 +217,9 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 </securityCheckDefinition>
 ```
 如前所述，`UserAuthenticationSecurityCheck` 继承所有 `CredentialsValidationSecurityCheck` 属性，例如，`blockedStateExpirationSec` 和 `successStateExpirationSec` 等。
+
+
+
 此外，您还可以配置 `rememberMeDurationSec` 属性。
 
 ## 样本安全性检查

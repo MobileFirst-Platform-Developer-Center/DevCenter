@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Node.js Validator
+title: Validador de Node.js
 breadcrumb_title: Node.js validator
 relevantTo: [android,ios,windows,javascript]
 weight: 3
@@ -9,31 +9,31 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-{{ site.data.keys.product_full }} provides a Node.js framework to enforce security capabilities on external resources.  
-The Node.js framework is provided as an npm module (**passport-mfp-token-validation**).
+{{ site.data.keys.product_full }} proporciona una infraestructura Node.js para imponer funciones de seguridad en recursos externos.  
+La infraestructura Node.js se proporciona como un módulo npm (**passport-mfp-token-validation**).
 
-This tutorial shows how to protect a simple Node.js resource, `GetBalance`, by using a scope (`accessRestricted`).
+Este tutorial muestra cómo proteger un recurso de Node.js simple, `GetBalance`, utilizando un ámbito (`accessRestricted`).
 
-**Prerequsites:**  
+**Requisitos previos:**  
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product }} security framework](../../).
+* Lea la guía de aprendizaje [Utilización de {{ site.data.keys.mf_server }} para autenticar recursos externos](../).
+* Comprensión de la [infraestructura de seguridad de {{ site.data.keys.product }}](../../).
 
-## The passport-mfp-token-validation module
+## El módulo passport-mfp-token-validation
 {: #the-passport-mfp-token-validation-module }
-The passport-mfp-token-validation module provides an authentication mechanism to verify access tokens that are issued by the {{ site.data.keys.mf_server }}.
+El módulo passport-mfp-token-validation proporciona un mecanismo de autenticación para verificar las señales de acceso emitidas por {{ site.data.keys.mf_server }}.
 
-To install the module, run:
+Para instalar el módulo, ejecute:
 
 ```bash
 npm install passport-mfp-token-validation@8.0.X
 ```
 
-## Usage
+## Utilización
 {: #usage }
-* The sample uses the `express` and `passport-mfp-token-validation` modules:
+* El ejemplo utiliza los módulos `express` y `passport-mfp-token-validation`:
 
   ```javascript
   var express = require('express');
@@ -41,7 +41,7 @@ npm install passport-mfp-token-validation@8.0.X
   var mfpStrategy = require('passport-mfp-token-validation').Strategy;
   ```
 
-* Set up the `Strategy` as follows:
+* Configure `Strategy` de la siguiente manera:
 
   ```javascript
   passport.use(new mfpStrategy({
@@ -58,12 +58,12 @@ npm install passport-mfp-token-validation@8.0.X
   }));
   ```
   
- * `authServerUrl`: Replace `localhost:9080` with your {{ site.data.keys.mf_server }} IP address and port number.
- * `confClientID`, `confClientPass`: Replace the confidential client ID and password with the ones that you defined in the {{ site.data.keys.mf_console }}.
- * `analytics`: The analytics item is optional, and required only if you wish to log analytics events to {{ site.data.keys.product }}.  
- Replace `localhost:9080`, `username`, and `password` with your Analytics Server IP address, port number, user name, and password.
+ * `authServerUrl`: Sustituya `localhost:9080` con la dirección IP y el número de puerto de {{ site.data.keys.mf_server }}.
+ * `confClientID`, `confClientPass`: Sustituya el ID de cliente y la contraseña confidenciales por los que ha definido en {{ site.data.keys.mf_console }}.
+ * `analytics`: El elemento de análisis es opcional, y solo es necesario si desea registrarse en sucesos analíticos en {{ site.data.keys.product }}.  
+ Reemplace `localhost:9080`, `username`, and `password` con la dirección IP del servidor de análisis, el número de puerto, el nombre de usuario y la contraseña.
 
-* Authenticate requests by calling `passport.authenticate`:
+* Autentique las solicitudes llamando a `passport.authenticate`:
 
   ```javascript
   var app = express();
@@ -83,19 +83,19 @@ npm install passport-mfp-token-validation@8.0.X
   });
   ```
 
- * The `Strategy` to employ should be `mobilefirst-strategy`.
- * Set `session` to `false`.
- * Specify the `scope` name.
+ * En `Strategy` debería usar `mobilefirst-strategy`.
+ * Establezca `session` en `false`.
+ * Especifique el nombre `scope`.
 
-## Sample application 
+## Aplicación de ejemplo 
 {: #sample-application }
-[Download the Node.js sample](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
+[Descargue el ejemplo Node.js](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
 
-### Sample usage
+### Uso de ejemplo
 {: #sample-usage }
-1. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Register the matching application.
-5. Map the `accessRestricted` scope to the security check.
-6. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. Navegue a la carpeta raíz del ejemplo y ejecute el mandato: `npm install` seguido de: `npm start`.
+2. Asegúrese de [actualizar el cliente confidencial](../#confidential-client) y los valores secretos en {{ site.data.keys.mf_console }}.
+3. Despliegue alguna de las comprobaciones de seguridad: **[UserLogin](../../user-authentication/security-check/)** o **[PinCodeAttempts](../../credentials-validation/security-check/)**.
+4. Registre la aplicación coincidente.
+5. Correlacione el ámbito `accessRestricted` en la comprobación de seguridad.
+6. Actualice la aplicación de cliente para crear `WLResourceRequest` en su URL de servlet.

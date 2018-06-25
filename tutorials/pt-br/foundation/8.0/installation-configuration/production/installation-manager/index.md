@@ -37,7 +37,7 @@ No entanto, para instalação de produção, use tarefas Ant para instalar o App
     * Sempre que você fizer upgrade do produto, por exemplo, para instalar uma correção temporária, o Application Center será atualizado primeiro. O upgrade do Application Center inclui operações no banco de dados e no servidor de aplicativos. Se o upgrade do Application Center falhar, isso impedirá o Installation Manager de concluir o upgrade, e te impedirá de fazer upgrade de outros componentes do {{ site.data.keys.mf_server }}. Para instalação de produção, não implemente o Application Center com o Installation Manager. Instale o Application Center separadamente com tarefas Ant após o Installation Manager instalar o {{ site.data.keys.mf_server }}. Para obter informações adicionais sobre o Application Center, consulte [Instalando e configurando o Application Center](../../../appcenter).
 
 > **Importante:** O instalador do {{ site.data.keys.mf_server }} instala somente os arquivos binários e ferramentas do {{ site.data.keys.mf_server }} em seu disco. Ele não implementa os aplicativos {{ site.data.keys.mf_server }} em seu servidor de aplicativos. Após a execução da instalação com o Installation Manager, deve-se configurar os bancos de dados e implementar os aplicativos {{ site.data.keys.mf_server }} em seu servidor de aplicativos.  
-> Da mesma forma, quando você executa o Installation Manager para atualizar uma instalação existente, ele atualiza somente os arquivos em seu disco. É necessário executar ações adicionais para atualizar os aplicativos que estão implementados em seus servidores de aplicativos.
+> Da mesma forma, quando você executa o Installation Manager para atualizar uma instalação existente, eçe atualiza somente os arquivos que estão no seu disco. É necessário executar ações adicionais para atualizar os aplicativos que estão implementados em seus servidores de aplicativos.
 
 #### Ir para
 {: #jump-to }
@@ -87,7 +87,8 @@ As decisões nas duas áreas de janela a seguir no assistente de instalação s�
         Talvez você também queira aplicar o fix pack mais recente que pode ser transferido por download do [Portal de Suporte IBM](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Certifique-se de inserir o repositório para o fix pack. Se você descompactar o fix pack na pasta **fixpack_directory**, o arquivo de repositório será localizado em **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
         **Nota:** Não é possível instalar o fix pack sem o repositório da versão base nos repositórios do Installation Manager. Os fix packs são instaladores incrementais e precisam que o repositório da versão base esteja instalado.
-    * Selecione o arquivo e clique em **OK**.
+    * Selecione
+o arquivo e clique em **OK**.
     * Clique em **OK** para fechar o painel **Preferências**.
 3. Após aceitar os termos de licença do produto, clique em **Avançar**.
 4. Escolha o grupo de pacotes para instalar o produto.
@@ -201,8 +202,8 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
 
     > **Importante:**  
     > 
-    > * Para uma instalação que não instala o Application Center em um servidor de aplicativos, use o arquivo chamado **install-no-appcenter.xml**.
-    > * Para uma instalação que instala o Application Center, selecione o arquivo de resposta de amostra da seguinte tabela, dependendo de seu servidor de aplicativos e de seu banco de dados.
+    > * Para uma instalação que não instale o Application Center em um servidor de aplicativos, use o arquivo denominado **install-no-appcenter.xml**.
+    > * para uma instalação que instale o Application Center, selecione o arquivo de amostra de resposta a partir da tabela a seguir, dependendo do seu servidor e do seu banco de dados de aplicativo.
 
    #### Arquivos de resposta de instalação de amostra no arquivo **Silent\_Install\_Sample_Files.zip** para instalar o Application Center
     
@@ -315,8 +316,8 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
     * Para o Apache Tomcat: `conf/server.xml`
 4. Ajuste a lista de repositórios no elemento <server>. Para obter informações adicionais sobre essa etapa, consulte a documentação do IBM Installation Manager em [Repositórios](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html).
 
-    No elemento `<profile>`, ajuste os valores de cada par de chave/valor.  
-    No elemento `<offering>` no elemento `<install>`, configure o atributo de versão para corresponder à liberação que você deseja instalar, ou remova o atributo de versão se desejar instalar a versão mais recente disponível nos repositórios.
+    No elemento `<profile>`, ajuste os valores em cada par de chaves / valor.  
+    No elemento `<offering>` no elemento `<install>`<offering>` `<install>`, configure o atributo de versão para corresponder à liberação que você deseja instalar ou remova o atributo de versão se quiser instalar a versão mais recente disponível nos repositórios.
 5. Digite o seguinte comando: `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
     Em que:
@@ -647,8 +648,8 @@ Os arquivos e as ferramentas do {{ site.data.keys.mf_server }} estão instalado 
 |------|-------------|
 | **configuration-samples** | Contém os arquivos Ant de amostra para instalar o Application Center. As tarefas Ant criam a tabela de banco de dados e implementam arquivos WAR em um servidor de aplicativos. | 
 | **console** | Contém os arquivos EAR e WAR para instalar o Application Center. O arquivo EAR é exclusivamente para o IBM PureApplication System. | 
-| **bancos de dados** | Contém os scripts SQL a serem usados para a criação manual de tabelas para o Application Center. |
-| **instalador** | Contém os recursos para criar o cliente Application Center. | 
+| **databases** | Contém os scripts SQL a serem usados para a criação manual de tabelas para o Application Center. |
+| **installer** | Contém os recursos para criar o cliente Application Center. | 
 | **tools** | As ferramentas do Application Center. | 
 
 #### Arquivos e subdiretórios no subdiretório {{ site.data.keys.mf_server }}
@@ -660,7 +661,7 @@ Os arquivos e as ferramentas do {{ site.data.keys.mf_server }} estão instalado 
 | **mfp-*.war** | Os arquivos WAR dos componentes do {{ site.data.keys.mf_server }}. |
 | **configuration-samples** | Contém os arquivos Ant de amostra para instalar componentes do {{ site.data.keys.mf_server }} com tarefas Ant. | 
 | **ConfigurationTool** | Contém os arquivos binários do Server Configuration Tool. A ferramenta é ativada a partir de **mfp_server_install_dir/shortcuts**. |
-| **bancos de dados** | Contém os scripts SQL a serem usados para a criação manual de tabelas para componentes do {{ site.data.keys.mf_server }} (serviço de administração do {{ site.data.keys.mf_server }}, serviço de configuração do {{ site.data.keys.mf_server }} e tempo de execução do {{ site.data.keys.product_adj }}). | 
+| **databases** | Contém os scripts SQL a serem usados para a criação manual de tabelas para componentes do {{ site.data.keys.mf_server }} (serviço de administração do {{ site.data.keys.mf_server }}, serviço de configuração do {{ site.data.keys.mf_server }} e tempo de execução do {{ site.data.keys.product_adj }}). | 
 | **external-server-libraries** |  Contém os arquivos JAR usados por diferentes ferramentas (como ferramenta de autenticidade e ferramenta de segurança OAuth). |
 
 #### Arquivos e subdiretórios no subdiretório PushService
@@ -669,21 +670,21 @@ Os arquivos e as ferramentas do {{ site.data.keys.mf_server }} estão instalado 
 | Item | Descrição (Description) |
 |------|-------------|
 | **mfp-push-service.war** | O arquivo WAR para instalar o serviço de push do {{ site.data.keys.mf_server }}. |
-| **bancos de dados** | Contém os scripts SQL a serem usados para a criação manual de tabelas para o serviço de push do {{ site.data.keys.mf_server }}. | 
+| **databases** | Contém os scripts SQL a serem usados para a criação manual de tabelas para o serviço de push do {{ site.data.keys.mf_server }}. | 
 
 #### Arquivos e subdiretórios no subdiretório License
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
 | Item | Descrição (Description) |
 |------|-------------|
-| **Text** | Contém a licença para {{ site.data.keys.product }}. | 
+| **Texto** | Contém a licença para {{ site.data.keys.product }}. | 
 
 #### Arquivos e subdiretórios no diretório de instalação do {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
 | Item | Descrição (Description) |
 |------|-------------|
-| **atalhos ** | Os scripts do ativador para Apache Ant, o Server Configuration Tool, e o comando mfpadmin, que são fornecidos com o {{ site.data.keys.mf_server }}. | 
+| **shortcuts** | Os scripts do ativador para Apache Ant, o Server Configuration Tool, e o comando mfpadmin, que são fornecidos com o {{ site.data.keys.mf_server }}. | 
 
 #### Arquivos e subdiretórios no subdiretório tools
 {: #files-and-subdirectories-in-the-tools-subdirectory }

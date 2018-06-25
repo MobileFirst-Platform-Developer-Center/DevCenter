@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Подробная демонстрация для Android
+title: Сквозная демонстрация для Android
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
@@ -33,7 +33,7 @@ weight: 3
 ### 2. Создание приложения
 {: #2-creating-an-application }
 В браузере откройте {{ site.data.keys.mf_console }} с помощью следующего URL: `http://your-server-host:server-port/mfpconsole`. В локальном режиме введите следующий адрес: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Идентификационные данные пользователя: *admin/admin*.
- 
+
 1. Нажмите кнопку **Создать** рядом с разделом **Приложения**
     * Выберите платформу **Android**
     * Введите **com.ibm.mfpstarterandroid** в качестве **идентификатора приложения**
@@ -41,7 +41,7 @@ weight: 3
     * Нажмите кнопку **Зарегистрировать приложение**
 
     <img class="gifplayer" alt="Регистрация приложения" src="register-an-application-android.png"/>
- 
+
 2. Щелкните на плитке **Получить начальный код** и выберите загрузку примера приложения Android.
 
     <img class="gifplayer" alt="Загрузка примера приложения" src="download-starter-code-android.png"/>
@@ -59,7 +59,7 @@ weight: 3
   import java.net.URISyntaxException;
   import android.util.Log;
   ```
-    
+
 * Вставьте следующий фрагмент кода, заменив вызов `WLAuthorizationManager.getInstance().obtainAccessToken`:
 
   ```java
@@ -83,7 +83,7 @@ weight: 3
                     }
 
                     WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
-                    
+
                     request.setQueryParameter("name","world");
                     request.send(new WLResponseListener() {
                         @Override
@@ -118,7 +118,7 @@ weight: 3
 Загрузите [этот подготовленный артефакт .adapter](../javaAdapter.adapter) и разверните его с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**.
 
 Кроме того, можно нажать кнопку **Создать** рядом с разделом **Адаптеры**.  
-        
+
 1. Выберите **Действия → Загрузить пример**. Загрузите пример адаптера **Java** "Hello World".
 
    > Если Maven и {{ site.data.keys.mf_cli }} не установлены, выполните инструкции по **настройке среды разработки**.
@@ -130,7 +130,7 @@ weight: 3
    ```
 
 3. После завершения компоновки разверните адаптер с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**. Адаптер расположен в папке **[adapter]/target**.
-    
+
     <img class="gifplayer" alt="Развертывание адаптера" src="create-an-adapter.png"/>   
 
 <img src="androidQuickStart.png" alt="пример приложения" style="float:right"/>
@@ -139,9 +139,10 @@ weight: 3
 
 1. В Android Studio в боковом меню  **Проект** выберите файл **app → src → main →assets → mfpclient.properties** и укажите значения свойств **protocol**, **host** и **port** с учетом параметров сервера {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
-    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в Bluemix): **https**, **your-server-address** и **443**.
+    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **адрес-сервера** и **443**.
+    * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
 
-    Кроме того, если установлен {{ site.data.keys.mf_cli }}, перейдите в корневую папку проекта и выполните команду `mfpdev app register`. В случае применения удаленного экземпляра {{ site.data.keys.mf_server }} [выполните команду `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) для добавления сервера, а затем выполните команду, аналогичную следующей: `mfpdev app register myBluemixServer`.
+    Кроме того, если установлен {{ site.data.keys.mf_cli }}, перейдите в корневую папку проекта и выполните команду `mfpdev app register`. В случае применения удаленного экземпляра {{ site.data.keys.mf_server }} [выполните команду `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) для добавления сервера, а затем выполните команду, аналогичную следующей: `mfpdev app register myIBMCloudServer`.
 
 2. Нажмите кнопку **Запустить приложение**.  
 
@@ -153,7 +154,7 @@ weight: 3
 
 Ответ адаптера отображается в представлении LogCat Android Studio.
 
-![Изображение приложения, успешно вызвавшего ресурс из {{ site.data.keys.mf_server }}](success_response.png)
+![Приложение после успешного вызова ресурса из {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Дальнейшие действия
 {: #next-steps }

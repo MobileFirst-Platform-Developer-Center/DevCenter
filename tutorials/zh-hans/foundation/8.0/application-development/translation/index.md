@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: JavaScript（Cordova 或 Web）应用程序的多语言翻译
-breadcrumb_title: 多语言翻译
+title: JavaScript（Cordova 或 Web）应用程序的多语种翻译
+breadcrumb_title: Multilingual translation
 relevantTo: [javascript]
 weight: 9
 downloads:
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -56,7 +56,7 @@ Messages.headerText
 
 ## 翻译系统消息
 {: #translating-system-messages }
-还可能会翻译应用程序显示的系统消息，例如，“因特网连接不可用”或“用户名或密码无效”。系统消息存储在 `WL.ClientMessages` 对象中。
+还可能会翻译应用程序显示的系统消息，例如，“因特网连接不可用”或“用户名或密码无效”。 系统消息存储在 `WL.ClientMessages` 对象中。
 
 **注：**在全局 JavaScript 级别覆盖系统消息，因为只会在成功初始化应用程序之后才会执行部分代码：
 
@@ -106,7 +106,7 @@ WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
    }
    ```
 
-3. 使用新字符串更新 GUI 组件。您可以执行更多任务，如为自右向左语言（如希伯来语或阿拉伯语）设置文本方向。每次更新元素时，都会根据活动的语言使用不同的字符串进行更新。
+3. 使用新字符串更新 GUI 组件。 您可以执行更多任务，如为自右向左语言（如希伯来语或阿拉伯语）设置文本方向。 每次更新元素时，都会根据活动的语言使用不同的字符串进行更新。
 
    ```javascript
    function languageChanged(lang) {

@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: JavaScript HTTP 适配器
-breadcrumb_title: HTTP 适配器
+breadcrumb_title: HTTP Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 1
 ---
@@ -12,9 +12,9 @@ weight: 1
 ## 概述
 {: #overview }
 
-通过 HTTP 适配器，您可以发送 GET 或 POST HTTP 请求，并从响应头或主体检索数据。HTTP 适配器与 RESTful 和基于 SOAP 的服务一起使用，可以读取结构化的 HTTP 源（例如 RSS 订阅源）。
+通过 HTTP 适配器，您可以发送 GET 或 POST HTTP 请求，并从响应头或主体检索数据。 HTTP 适配器与 RESTful 和基于 SOAP 的服务一起使用，可以读取结构化的 HTTP 源（例如 RSS 订阅源）。
 
-您可以通过简单的服务器端 JavaScript 代码来轻松定制 HTTP 适配器。例如，您可以根据需要设置服务器端过滤。检索的数据可以为 XML、HTML、JSON 或纯文本格式。
+您可以通过简单的服务器端 JavaScript 代码来轻松定制 HTTP 适配器。 例如，您可以根据需要设置服务器端过滤。 检索的数据可以为 XML、HTML、JSON 或纯文本格式。
 
 使用 XML 配置适配器，以定义适配器属性和过程。  
 （可选）也可以使用 XSL 来过滤接收到的记录和字段。
@@ -58,7 +58,7 @@ weight: 1
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -70,7 +70,8 @@ weight: 1
             <div class="panel-body">
                 <ul>
                     <li><b>xsi:type</b>：<i>必填。</i> 此属性的值必须是 http:HTTPConnectionPolicyType。</li>
-                    <li><b>cookiePolicy</b>：<i>可选。</i>此属性决定 HTTP 适配器如何处理来自后端应用程序的 cookie。下列值有效。<ul>
+                    <li><b>cookiePolicy</b>：<i>可选。</i> 此属性决定 HTTP 适配器如何处理来自后端应用程序的 cookie。 下列值有效。
+                        <ul>
                             <li>BEST_MATCH：缺省值</li>
                             <li>BROWSER_COMPATIBILITY</li>
                             <li>RFC_2109</li>
@@ -78,15 +79,16 @@ weight: 1
                             <li>NETSCAPE</li>
                             <li>IGNORE_COOKIES</li>
                         </ul>
-                        有关这些值的更多信息，请参阅 Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP 组件</a>页面。</li>
-                    <li><b>maxRedirects</b>：<i>可选。</i>HTTP 可以跟随的最大重定向数。当后端应用程序由于某些错误（如认证失败）而发送循环重定向时，此属性非常有用。如果此属性设置为 0，那么适配器根本不尝试跟随重定向，并会向用户返回 HTTP 302 响应。缺省值为 10。
-</li>
-                    <li><b>protocol</b>：<i>可选。</i>要使用的 URL 协议。下列值有效：<b>http</b>（缺省值）和 <b>https</b>。</li>
-                    <li><b>domain</b>：<i>必填。</i>主机地址。</li>
-                    <li><b>port</b>：<i>可选。</i>端口地址。如果未指定任何端口，那么将使用缺省 HTTP/S 端口 (80/443)</li>
-                    <li><b>sslCertificateAlias</b>：对于常规 HTTP 认证和简单 SSL 认证是可选的。对于交互 SSL 认证是必需的。适配器专用 SSL 密钥的别名，HTTP 适配器密钥管理器使用该密钥来访问密钥库中的正确 SSL 证书。有关密钥库设置过程的更多信息，请参阅<a href="using-ssl">在 HTTP 适配器中使用 SSL</a> 教程。</li>
-                    <li><b>sslCertificatePassword</b>：对于常规 HTTP 认证和简单 SSL 认证是可选的。对于交互 SSL 认证是必需的。适配器专用 SSL 密钥的密码，HTTP 适配器密钥管理器使用该密码来访问密钥库中的正确 SSL 证书。有关密钥库设置过程的更多信息，请参阅<a href="using-ssl">在 HTTP 适配器中使用 SSL</a> 教程。</li>
-                    <li><b>authentication</b>：<i>可选。</i>HTTP 适配器的认证配置。HTTP 适配器可以使用两种认证协议中的一种。定义 <b>authentication</b>< 元素，如下所示：<ul>
+                        有关这些值的更多信息，请参阅 Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP 组件</a>页面。
+                    </li>
+                    <li><b>maxRedirects</b>：<i>可选。</i> HTTP 可以跟随的最大重定向数。 当后端应用程序由于某些错误（如认证失败）而发送循环重定向时，此属性非常有用。 如果此属性设置为 0，那么适配器根本不尝试跟随重定向，并会向用户返回 HTTP 302 响应。 缺省值为 10。</li>
+                    <li><b>protocol</b>：<i>可选。</i> 要使用的 URL 协议。 下列值有效：<b>http</b>（缺省值）和 <b>https</b>。</li>
+                    <li><b>domain</b>：<i>必填。</i> 主机地址。</li>
+                    <li><b>port</b>：<i>可选。</i> 端口地址。 如果未指定任何端口，那么将使用缺省 HTTP/S 端口 (80/443)</li>
+                    <li><b>sslCertificateAlias</b>：对于常规 HTTP 认证和简单 SSL 认证是可选的。 对于交互 SSL 认证是必需的。 适配器专用 SSL 密钥的别名，HTTP 适配器密钥管理器使用该密钥来访问密钥库中的正确 SSL 证书。 有关密钥库设置过程的更多信息，请参阅<a href="using-ssl">在 HTTP 适配器中使用 SSL</a> 教程。</li>
+                    <li><b>sslCertificatePassword</b>：对于常规 HTTP 认证和简单 SSL 认证是可选的。 对于交互 SSL 认证是必需的。 适配器专用 SSL 密钥的密码，HTTP 适配器密钥管理器使用该密码来访问密钥库中的正确 SSL 证书。 有关密钥库设置过程的更多信息，请参阅<a href="using-ssl">在 HTTP 适配器中使用 SSL</a> 教程。</li>
+                    <li><b>authentication</b>：<i>可选。</i> HTTP 适配器的认证配置。 HTTP 适配器可以使用两种认证协议中的一种。 定义 <b>authentication</b>< 元素，如下所示：
+                        <ul>
                             <li>基本认证
 {% highlight xml %}
 <authentication>
@@ -101,7 +103,7 @@ weight: 1
 {% endhighlight %}</li>
 
 
-                            连接策略可以包含一个 <code>serverIdentity</code> 元素。此功能适用于所有认证方案。例如：
+                            连接策略可以包含一个 <code>serverIdentity</code> 元素。 此功能适用于所有认证方案。 例如：
 {% highlight xml %}
 <authentication>
     <basic/>
@@ -113,7 +115,8 @@ weight: 1
 {% endhighlight %}
                         </ul>
                     </li>
-                    <li><b>proxy</b>：<i>可选。</i>proxy 元素指定访问后端应用程序时要使用的代理服务器的详细信息。代理详细信息中必须包含协议域和端口。如果代理需要认证，请在 <code>proxy</code> 中添加嵌套 <code>authentication</code> 元素。此元素与描述适配器的认证协议的元素具有相同的结构。以下示例显示需要基本认证并使用服务器身份的代理。                    
+                    <li><b>proxy</b>：<i>可选。</i> proxy 元素指定访问后端应用程序时要使用的代理服务器的详细信息。 代理详细信息中必须包含协议域和端口。 如果代理需要认证，请在 <code>proxy</code> 中添加嵌套 <code>authentication</code> 元素。 此元素与描述适配器的认证协议的元素具有相同的结构。 以下示例显示需要基本认证并使用服务器身份的代理。
+
 {% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>
@@ -132,15 +135,19 @@ weight: 1
   </proxy>
 </connectionPolicy>
 {% endhighlight %}</li>
-                    <li><b>maxConcurrentConnectionsPerNode</b>：<i>可选。</i>定义 {{ site.data.keys.mf_server }} 可以打开的到后端的最大并发连接数。{{ site.data.keys.product }} 不限制来自应用程序的入站服务请求。此项仅限制到后端服务的并发 HTTP 连接数。<br/><br/>
-                    并发 HTTP 连接的缺省数目为 50。您可以基于到适配器的期望并发请求数和后端服务允许的最大请求数来修改此数值。也可以配置后端服务以限制并发入站请求的数目。<br/><br/>
-                    注意双节点系统，其系统上期望的负载是 100 个并发请求，后端服务最多可支持 80 个并发请求。您可以将 maxConcurrentConnectionsPerNode 设置为 40。此设置可确保对后端服务发出的并发请求数不超过 80 个。<br/><br/>
-                    如果增加此值，那么后端应用程序将需要更多内存。为避免出现内存问题，请勿将此值设置太高。您可以预测每秒事务数的平均值和峰值，并且估算其平均持续时间。之后，根据此示例中的指示计算所需的并发连接数，并增加 5-10% 的范围。然后，监控后端并根据需要调整此值，以确保后端应用程序可以处理所有入站请求。
-<br/><br/>
-                    将适配器部署到集群时，将此属性的值设置为最大所需负载除以集群成员数。<br/><br/>
+                    <li><b>maxConcurrentConnectionsPerNode</b>：<i>可选。</i> 定义 {{ site.data.keys.mf_server }} 可以打开的到后端的最大并发连接数。 {{ site.data.keys.product }} 不限制来自应用程序的入站服务请求。 此项仅限制到后端服务的并发 HTTP 连接数。
+                    <br/><br/>
+                    并发 HTTP 连接的缺省数目为 50。 您可以基于到适配器的期望并发请求数和后端服务允许的最大请求数来修改此数值。 也可以配置后端服务以限制并发入站请求的数目。
+                    <br/><br/>
+                    注意双节点系统，其系统上期望的负载是 100 个并发请求，后端服务最多可支持 80 个并发请求。 您可以将 maxConcurrentConnectionsPerNode 设置为 40。 此设置可确保对后端服务发出的并发请求数不超过 80 个。
+                    <br/><br/>
+                    如果增加此值，那么后端应用程序将需要更多内存。 为避免出现内存问题，请勿将此值设置太高。 您可以预测每秒事务数的平均值和峰值，并且估算其平均持续时间。 之后，根据此示例中的指示计算所需的并发连接数，并增加 5-10% 的范围。 然后，监控后端并根据需要调整此值，以确保后端应用程序可以处理所有入站请求。
+                    <br/><br/>
+                    将适配器部署到集群时，将此属性的值设置为最大所需负载除以集群成员数。
+                    <br/><br/>
                     有关如何调整后端应用程序大小的更多信息，请参阅<a href="{{site.baseurl}}/learn-more">“可伸缩性和硬件大小调整”文档</a>及其随附的硬件计算器电子表格</li>
-                    <li><b>connectionTimeoutInMilliseconds</b>：<i>可选。</i>可以建立到后端的连接之前的超时（毫秒）。设置此超时并不确保在调用 HTTP 请求后经过特定时间后会发生超时异常。如果在 <code>invokeHTTP()</code> 函数中为此参数传递了其他值，那么将覆盖此处定义的值。</li>
-                    <li><b>socketTimeoutInMilliseconds</b>：<i>可选。</i>从连接包开始两个连续包之间的超时（毫秒）。设置此超时并不确保在调用 HTTP 请求后经过特定时间后会发生超时异常。如果在 <code>invokeHttp()</code> 函数中为 <code>socketTimeoutInMilliseconds</code> 参数传递了其他值，那么将覆盖此处定义的值。</li>
+                    <li><b>connectionTimeoutInMilliseconds</b>：<i>可选。</i> 可以建立到后端的连接之前的超时（毫秒）。 设置此超时并不确保在调用 HTTP 请求后经过特定时间后会发生超时异常。 如果在 <code>invokeHTTP()</code> 函数中为此参数传递了其他值，那么将覆盖此处定义的值。</li>
+                    <li><b>socketTimeoutInMilliseconds</b>：<i>可选。</i> 从连接包开始两个连续包之间的超时（毫秒）。 设置此超时并不确保在调用 HTTP 请求后经过特定时间后会发生超时异常。 如果在 <code>invokeHttp()</code> 函数中为 <code>socketTimeoutInMilliseconds</code> 参数传递了其他值，那么将覆盖此处定义的值。</li>
                 </ul>
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>结束部分</b></a>
@@ -153,7 +160,7 @@ weight: 1
 ## JavaScript 实施
 {: #javascript-implementation }
 
-服务 URL 用于过程调用。URL 的一些部分是常量；例如 http://example.com/。  
+服务 URL 用于过程调用。 URL 的一些部分是常量；例如 http://example.com/。  
 可以用参数表示 URL 的其他部分；即，可在运行时替换为提供给过程的参数值。
 
 可以用参数表示以下 URL 部分。
@@ -174,8 +181,8 @@ weight: 1
 
 ```js
 function getFeed() {
-  var input = { 
-method : 'get',
+  var input = {
+      method : 'get',
       returnedContentType : 'xml',
       path : "feed.xml"
   };
@@ -193,13 +200,13 @@ method : 'get',
 您也可以针对接收的数据应用 XSL 变换，例如过滤数据。  
 要应用 XSL 变换，请在 JavaScript 实施文件后创建 **filtered.xsl** 文件。
 
-之后，可以在过程调用的输入参数中指定变换选项。例如：
+之后，可以在过程调用的输入参数中指定变换选项。 例如：
 
 ```js
 function getFeedFiltered() {
 
-  var input = { 
-method : 'get',
+  var input = {
+      method : 'get',
       returnedContentType : 'xml',
       path : "feed.xml",
       transformation : {
@@ -323,7 +330,7 @@ resourceRequest.send().then(
     }
 )
 ```
-* 在服务器端，创建具有结果字符串的 XML 对象。之后，节点可作为属性来访问：
+* 在服务器端，创建具有结果字符串的 XML 对象。 之后，节点可作为属性来访问：
 
 ```javascript
 var xmlDoc = new XML(result.Envelope.Body.GetWeatherResponse.GetWeatherResult);

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Mobile Daten für die App-Migration mit dem IMFData- oder Cloudant-SDK in Cloudant speichern
-breadcrumb_title: Mobile Daten für die App-Migration speichern
+title: Apps umstellen, die mobile Daten mit IMFData oder dem Cloudant-SDK in Cloudant speichern
+breadcrumb_title: Migrating apps storing mobile data
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -12,17 +12,12 @@ in einer Cloudant-Datenbank speichern. Cloudant ist eine innovative NoSQL-Datenb
 SDK ist für
 Java, Objective-C und Swift verfügbar. 
 
-> Keine weitere Verwendung der Frameworks CloudantToolkit und IMFData in {{ site.data.keys.product_full }} Version 8.0.  
+> Doe Frameworks CloudantToolkit und IMFData werden in {{ site.data.keys.product_full }} Version 8.0 nicht weiter verwendet. 
 
-* Verwenden Sie für iOS das [CDTDatastore](https://github.com/cloudant/CDTDatastore)-SDK
-als Ersatz für das CloudantToolkit- und IMFData-Framework.
-* Verwenden Sie für Android das [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android)
-als Ersatz für das CloudantToolkit- und IMFData-Framework. Mit
-Cloudant Sync können Sie alle Daten lokal persistent speichern und mit einem
-fernen Datastore replizieren. 
+* Verwenden Sie für iOS das [CDTDatastore](https://github.com/cloudant/CDTDatastore)-SDK als Ersatz für das CloudantToolkit- und IMFData-Framework.
+* Verwenden Sie für Android das [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) als Ersatz für das CloudantToolkit- und IMFData-Framework. Mit Cloudant Sync können Sie alle Daten lokal persistent speichern und mit einem fernen Datastore replizieren.
 
-Wenn Sie direkt auf ferne Stores zugreifen möchten, verwenden Sie in Ihrer Anwendung REST-Aufrufe.
-Lesen Sie dazu die Informationen unter [Cloudant API Reference](https://docs.cloudant.com/api.html). 
+Wenn Sie direkt auf ferne Stores zugreifen möchten, verwenden Sie in Ihrer Anwendung REST-Aufrufe. Lesen Sie dazu die Informationen unter [Cloudant API Reference](https://docs.cloudant.com/api.html). 
 
 ### Cloudant und JSONStore im Vergleich
 {: #cloudant-versus-jsonstore }
@@ -131,7 +126,7 @@ Namen für den Datastore an.
 **Objective-C**  
 
 ```objc
-// Verweis auf DataManager abrufen
+// Verweis auf den Datenmanager abrufen
 IMFDataManager *manager = [IMFDataManager sharedInstance];
 NSString *name = @"automobiledb";
 NSError *error = nil;
@@ -210,14 +205,14 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 });
 ```
 
-##### NACHHER (mit Cloudant Sync):
-{: #after-with-cloudant-sync }
+##### NACHHER (mit Cloudant Sync) - Android:
+{: #after-with-cloudant-sync-android }
 ```java
 // DatastoreManager erstellen
-       File path = context.getDir("databasedir", Context.MODE_PRIVATE);
-       DatastoreManager manager = new DatastoreManager(path.getAbsolutePath());
+   File path = context.getDir("databasedir", Context.MODE_PRIVATE);
+   DatastoreManager manager = new DatastoreManager(path.getAbsolutePath());
 
-       // Datastore erstellen
+   // Datastore erstellen
        String name = "automobiledb";
        Datastore datastore = manager.openDatastore(name);
 ```
@@ -227,9 +222,9 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 Wenn Sie Daten im fernen Store speichern möchten, geben Sie den Namen des Datastore an. 
 
 #### iOS
-{: #ios }
-##### VORHER (mit IMFData/CloudantToolkit):
-{: #before-with-imfdata-cloudanttoolkit }
+{: #for-ios }
+##### VORHER (mit IMFData/CloudantToolkit) - iOS:
+{: #before-with-imfdata-cloudanttoolkit-for-ios }
 
 **Objective-c**
 
@@ -265,8 +260,8 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 })
 ```
 
-##### NACHHER (mit Cloudant Sync):
-{: #after-with-cloudant-sync }
+##### NACHHER (mit Cloudant Sync) - iOS:
+{: #after-with-cloudant-sync-for-ios }
 **Objective-c**
 
 ```objc
@@ -278,15 +273,15 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 ```
 
 #### Android
-{: #android }
-##### VORHER (mit IMFData/CloudantToolkit):
-{: #before-with-imfdata-cloudanttoolkit }
+{: #for-android }
+##### VORHER (mit IMFData/CloudantToolkit) - Android:
+{: #before-with-imfdata-cloudanttoolkit-for-android }
 
 ```java
 ```
 
-##### NACHHER (mit Cloudant Sync):
-{: #after-with-cloudant-sync }
+##### NACHHER (mit Cloudant Sync) - Android:
+{: #after-with-cloudant-sync-for-android }
 ```java
 ```
 
@@ -300,23 +295,23 @@ verschlüsselte Datastores.
 {: #encrypting-data-on-ios-devices }
 1. Fordern Sie mit CocoaPods die Verschlüsselungsfunktionen an.
    * Öffnen Sie Ihre Podfile und fügen Sie die folgende Zeile hinzu: 
-        
+
    ##### VORHER (mit IMFData/CloudantToolkit): 
    {: #before-with-imfdata-cloudanttoolkit }    
    ```xml
    pod 'IMFDataLocal/SQLCipher'
    ```
-        
-   ##### NACHHER (mit Cloudant Sync): 
-   {: after-with-cloudant-sync }
+
+   ##### NACHHER (mit Cloudant Sync) - Daten auf iOS-Geräten verschlüsseln: 
+   {: after-with-cloudant-sync-encrypt-ios-devices }
    ```xml
    pod 'CDTDatastore/SQLCipher'
    ```        
-        
+
    Weitere Informationen finden Sie in der
 Dokumentation unter
 [CDTDatastore Encryption](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md).
-    
+
    * Führen Sie den folgenden Befehl aus, um die Abhängigkeiten zu Ihrer Anwendung hinzuzufügen. 
 
      ```bash
@@ -324,32 +319,34 @@ Dokumentation unter
      ```
 
 2. Wenn Sie die Verschlüsselungsfunktion in einer Swift-Anwendung verwenden möchten, fügen
-Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hinzu:  
-    
-   ##### VORHER (mit IMFData/CloudantToolkit): 
-   {: #before-with-imfdata-cloudanttoolkit}
+Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hinzu: 
+
+   ##### VORHER (mit IMFData/CloudantToolkit) - Daten auf iOS-Geräten verschlüsseln: 
+   {: #before-with-imfdata-cloudanttoolkit-encrypt-ios-devices}
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
    #import <CloudantToolkit/CloudantToolkit.h>
    #import <IMFData/IMFData.h>
    ```
-    
-   ##### NACHHER (mit Cloudant Sync): 
-   {: #after-with-cloudant-sync }
+
+   ##### NACHHER (mit Cloudant Sync) - Daten auf iOS-Geräten verschlüsseln (Swift): 
+   {: #after-with-cloudant-sync-encrypt-ios-swift }
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
    ```
-        
+
 3. Initialisieren Sie Ihren lokalen Store für die Verschlüsselung mit einem Schlüsselprovider.
 
    > **Warnung:** Wenn Sie nach Erstellung der Datenbank das Kennwort ändern, tritt ein Fehler auf, weil die vorhandene Datenbank nicht verschlüsselt werden kann. Sie können Ihr Kennwort nicht ändern, nachdem die Datenbank verschlüsselt wurde. Wenn Sie Kennwörter ändern möchten, müssen Sie die Datenbank löschen.
 
-   ##### VORHER (mit IMFData/CloudantToolkit):
-   {: #before-with-imfdata-cloudanttoolkit }
+
+
+   ##### VORHER (mit IMFData/CloudantToolkit) - Lokalen Store für Verschlüsselung initialisieren:
+   {: #before-with-imfdata-cloudanttoolkit-initialize-local-store }
    **Objective-C**
-    
+
    ```objc
    // Verweis auf den Datenmanager abrufen
    IMFDataManager *manager = [IMFDataManager sharedInstance];
@@ -362,9 +359,9 @@ Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hi
    // Lokalen Store initialisieren
    CDTStore *localStore = [manager localStore: name withEncryptionKeyProvider: keyProvider error: &error];
    ```
-    
+
    **Swift**
-    
+
    ```swift
    let manager = IMFDataManager.sharedInstance()
    let name = "automobiledb"
@@ -377,13 +374,13 @@ Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hi
         // Fehler behandeln
    }
    ```
-    
-   ##### NACHHER (mit Cloudant Sync):
-   {: #after-with-cloudant-sync }
+
+   ##### NACHHER (mit Cloudant Sync) - Lokalen Store für Verschlüsselung initialisieren:
+   {: #after-with-cloudant-sync-initialize-local-store }
    **Objective-C**
 
    ```objc
-   // Verweis auf den Datastore-Manager abrufen
+   // Verweis auf DatastoreManager abrufen
    CDTDatastoreManager *datastoreManager = existingDatastoreManager;
    NSString *name = @"automobiledb";
    NSError *error = nil;
@@ -396,9 +393,9 @@ Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hi
    ```
 
    **Swift**
-    
+
    ```swift
-   // Verweis auf den Datastore-Manager abrufen
+   // Verweis auf DatastoreManager abrufen
    let datastoreManager:CDTDatastoreManager = existingDatastoreManager
    let name:String  = "automobiledb"
 
@@ -411,15 +408,15 @@ Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hi
         // Fehler behandeln
    }
    ```
-    
+
 4. Wenn Sie für die Datenreplikation einen verschlüsselten lokalen Store verwenden, müssen Sie die Methoden CDTPullReplication und CDTPushReplication mit einem Schlüsselprovider initialisieren.
 
-   ##### VORHER (mit IMFData/CloudantToolkit):   
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### VORHER (mit IMFData/CloudantToolkit) - Initialisierung mit dem Schlüsselprovider:    
+   {: #before-with-imfdata-cloudanttoolkit-initialize-with-key-provider }
    **Objective-C**
-    
+
    ```objc
-   // Verweis auf einen Datenmanager abrufen
+   // Verweis auf den Datenmanager abrufen
    IMFDataManager *manager = [IMFDataManager sharedInstance];
    NSString *databaseName = @"automobiledb";
 
@@ -432,9 +429,9 @@ Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hi
    // Replikation mit Push übertragen
    CDTPushReplication *push = [manager pushReplicationForStore: databaseName withEncryptionKeyProvider: keyProvider];
    ```
-    
+
    **Swift**
-    
+
    ```swift
    // Verweis auf einen Datenmanager abrufen
    let manager = IMFDataManager.sharedInstance()
@@ -449,11 +446,10 @@ Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hi
    // Replikation mit Push übertragen
    let push:CDTPushReplication = manager.pushReplicationForStore(databaseName, withEncryptionKeyProvider: keyProvider)
    ```
-    
-   ##### NACHHER (mit Cloudant Sync):
-   {: #after-with-cloudant-sync }
-Für die Replikation mit einer verschlüsselten
-Datenbank sind keine Änderungen gegenüber einer Replikation mit nicht verschlüsselter Datenbank erforderlich. 
+
+   ##### NACHHER (mit Cloudant Sync) - Initialisierung mit dem Schlüsselprovider: 
+   {: #after-with-cloudant-sync-initialize-with-key-provider }
+   Für die Replikation mit einer verschlüsselten Datenbank sind keine Änderungen gegenüber einer Replikation mit nicht verschlüsselter Datenbank erforderlich.
 
 ### Daten auf Android-Geräten verschlüsseln
 {: #encrypting-data-on-android-devices }
@@ -464,8 +460,8 @@ Dann können Sie Ihren lokalen Store für die Verschlüsselung initialisieren un
 1. Fügen Sie die Cloudant-Toolkit-Bibliothek als Abhängigkeit zu Ihrer Datei
 build.gradle hinzu. 
 
-   ##### VORHER (mit IMFData/CloudantToolkit):
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### VORHER (mit IMFData/CloudantToolkit) - Daten auf Android-Geräten verschlüsseln:
+   {: #before-with-imfdata-cloudanttoolkit-encrypt-android-devices }
    ```xml
    repositories {
    mavenCentral()
@@ -475,9 +471,9 @@ build.gradle hinzu.
        compile 'com.ibm.mobile.services:cloudant-toolkit-local:1.0.0'
    }
    ```
-    
-   ##### NACHHER (mit Cloudant Sync):
-   {: #after-with-cloudant-sync }
+
+   ##### NACHHER (mit Cloudant Sync) - Daten auf Android-Geräten verschlüsseln:
+   {: #after-with-cloudant-sync-encrypt-android-devices }
     ```xml
     repositories {
         mavenLocal()
@@ -491,7 +487,7 @@ build.gradle hinzu.
         compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption', version:'0.13.2'
     }
     ```
-    
+
 2. Laden Sie die **.jar**- und
 **.so**-Binärdateien
 von [SQLCipher for Android v3.2](https://www.zetetic.net/sqlcipher/open-source/) herunter und nehmen Sie sie
@@ -505,11 +501,13 @@ unter
 **Open
 Module Settings** das Register **Dependencies** aus.
 3. Initialisieren Sie Ihren lokalen Store für die Verschlüsselung mit einem Schlüsselprovider.
-    
+
    > **Warnung:** Wenn Sie nach Erstellung der Datenbank das Kennwort ändern, tritt ein Fehler auf, weil die vorhandene Datenbank nicht verschlüsselt werden kann. Sie können Ihr Kennwort nicht ändern, nachdem die Datenbank verschlüsselt wurde. Wenn Sie Kennwörter ändern möchten, müssen Sie die Datenbank löschen.
 
-   ##### VORHER (mit IMFData/CloudantToolkit):
-   {: #before-with-imfdata-cloudanttoolkit }
+
+
+   ##### VORHER (mit IMFData/CloudantToolkit) - Lokalen Store initialisieren (Android):
+   {: #before-with-imfdata-cloudanttoolkit-initialize-local-store-android }
    ```java
    // Verweis auf DataManager abrufen
    DataManager manager = DataManager.getInstance();
@@ -533,9 +531,9 @@ Module Settings** das Register **Dependencies** aus.
          }
    });
    ```
-    
-   ##### NACHHER (mit Cloudant Sync):
-   {: #after-with-cloudant-sync }   
+
+   ##### NACHHER (mit Cloudant Sync) - Lokalen Store initialisieren (Android):
+   {: #after-with-cloudant-sync-initialize-local-store-android }   
    ```java
    // SQLCipher-Bibliotheken laden
    SQLiteDatabase.loadLibs(context);
@@ -553,8 +551,8 @@ Module Settings** das Register **Dependencies** aus.
 
 4. Wenn Sie für die Replikation einen verschlüsselten lokalen Store verwenden, müssen Sie ein KeyProvider-Objekt an die Methode `pullReplicationForStore()` oder `pushReplicationForStore()` übergeben.
 
-   ##### VORHER (mit IMFData/CloudantToolkit):
-   {: #before-with-imfdata-cloudanttoolkit }
+   ##### VORHER (mit IMFData/CloudantToolkit) - Initialisierung mit dem Schlüsselprovider (Android):
+   {: #before-with-imfdata-cloudanttoolkit-initialize-with-key-provider-android }
    ```java
    // Verweis auf einen Datenmanager abrufen
    DataManager manager = DataManager.getInstance();
@@ -570,16 +568,16 @@ Module Settings** das Register **Dependencies** aus.
    Task<PushReplication> pushTask = manager.pushReplicationForStore(databaseName, keyProvider);
    ```
 
-   ##### NACHHER (mit Cloudant Sync):
-   {: #after-with-cloudant-sync }
+   ##### NACHHER (mit Cloudant Sync) - Initialisierung mit dem Schlüsselprovider (Android):
+   {: #after-with-cloudant-sync-initialize-with-key-provider-android }
    Für die Replikation mit einer verschlüsselten Datenbank sind keine Änderungen gegenüber einer Replikation mit nicht verschlüsselter Datenbank erforderlich.
 
 ## Benutzerberechtigungen festlegen
 {: #setting-user-permissions }
 Sie können Benutzerberechtigungen für ferne Datenbanken festlegen.
 
-##### VORHER (mit IMFData/CloudantToolkit):
-{: #before-with-imfdata-cloudanttoolkit }
+##### VORHER (mit IMFData/CloudantToolkit) - Benutzerberechtigungen festlegen:
+{: #before-with-imfdata-cloudanttoolkit-setting-user-permissions }
 **Objective-C**
 
 ```objc
@@ -630,8 +628,8 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 });
 ```
 
-##### NACHHER (mit Cloudant Sync):
-{: #after-with-cloudant-sync }
+##### NACHHER (mit Cloudant Sync) - Benutzerberechtigungen festlegen:
+{: #after-with-cloudant-sync-setting-user-permissions }
  Sie können keine Benutzerberechtigungen vom mobilen Gerät aus
 festlegen. Sie müssen das <tm trademark="Cloudant" tmtype="reg">Cloudant</tm>-Dashboard oder serverseitigen Code verwenden, um Berechtigungen festzulegen. Ein
 Beispiel für die Integration von {{ site.data.keys.product_adj }}-OAuth-Token in die
@@ -667,8 +665,8 @@ für einen fernen Store finden Sie in der Beschreibung der [Cloudant Document AP
 
 ### Daten erstellen
 {: #creating-data }
-##### VORHER
-{: #before }
+
+_**VORHER**_
 
 **Objective-C**
 
@@ -719,7 +717,7 @@ Store store = existingStore;
 Automobile automobile = new Automobile("Toyota", "Corolla", 2006);
 
 // Fahrzeug im Store speichern
-Task<Object> saveTask = store.save(automobile); 
+Task<Object> saveTask = store.save(automobile);
 saveTask.continueWith(new Continuation<Object, Void>() {
     @Override
     public Void then(Task<Object> task) throws Exception {
@@ -734,8 +732,8 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### NACHHER
-{: #after }
+_**NACHHER**_
+
 ```objc
 // Vorhandenen Store verwenden
 CDTDatastore *datastore = existingDatastore;
@@ -797,8 +795,8 @@ DocumentRevision savedRevision = datastore.createDocumentFromRevision(revision);
 
 ### Daten lesen
 {: #reading-data }
-##### VORHER
-{: #before }
+
+_**VORHER**_
 
 **Objective-C**
 
@@ -860,8 +858,8 @@ fetchTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### NACHHER
-{: #after }
+_**NACHHER**_
+
 **Objective-C**
 
 ```objc
@@ -910,8 +908,8 @@ DocumentRevision fetchedRevision = datastore.getDocument(documentId);
 
 ### Daten aktualisieren
 {: #updating-data }
-##### VORHER
-{: #before }
+
+_**VORHER**_
 
 **Objective-C**
 
@@ -983,8 +981,8 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### NACHHER
-{: #after }
+_**NACHHER**_
+
 **Objective-C**
 
 ```objc
@@ -1047,8 +1045,8 @@ DocumentRevision savedRevision = datastore.updateDocumentFromRevision(revision);
 {: #deleting-data }
 Wenn Sie ein Objekt löschen möchten, übergeben Sie es an den Store.
 
-##### VORHER
-{: #before }
+_**VORHER**_
+
 **Objective-C**
 
 ```objc
@@ -1108,8 +1106,8 @@ deleteTask.continueWith(new Continuation<String, Void>() {
 });
 ```
 
-##### NACHHER
-{: #after }
+_**NACHHER**_
+
 **Objective-C**
 
 ```objc
@@ -1117,7 +1115,7 @@ deleteTask.continueWith(new Continuation<String, Void>() {
 CDTDatastore *datastore = existingDatastore;
 CDTDocumentRevision *documentRevision = existingDocumentRevision;
 
-// Überarbeitung CDTDocumentRevision aus dem Store löschen
+// Überarbeitung (CDTDocumentRevision) aus dem Store löschen
 NSError *error = nil;
 CDTDocumentRevision *deletedRevision = [datastore deleteDocumentFromRevision:documentRevision error:&error];
 if (error) {
@@ -1171,10 +1169,10 @@ einen fernen Store finden Sie in der Beschreibung der [Cloudant Query API](https
 
 1. Index mit Datentyp erstellen. Die Indexierung mit Datentyp ist nützlich, wenn für den Datastore ein Objekt-Mapper definiert ist. 
 
-   ##### VORHER
-   {: #before }
+   _**VORHER**_
+
    **Objective-C**
-    
+
    ```objc
    // Vorhandenen Datastore verwenden
    CDTStore *store = existingStore;
@@ -1191,9 +1189,9 @@ einen fernen Store finden Sie in der Beschreibung der [Cloudant Query API](https
        }
    }];
    ```
-    
+
    **Swift**
-    
+
    ```swift
    // Bereits erstellter Store
    let store:CDTStore = existingStore
@@ -1205,14 +1203,14 @@ einen fernen Store finden Sie in der Beschreibung der [Cloudant Query API](https
    store.createIndexWithDataType(dataType, fields: ["year","make"]) { (error:NSError!) -> Void in
         if nil != error {
             // Fehler behandeln
-    } else {
-        // Anwendungsablauf fortsetzen
+        } else {
+            // Anwendungsablauf fortsetzen
         }
    }
    ```
-    
+
    **Java**
-    
+
    ```java
    // Vorhandenen Datastore verwenden
    Store store = existingStore;
@@ -1239,11 +1237,11 @@ einen fernen Store finden Sie in der Beschreibung der [Cloudant Query API](https
         }
    });
    ```
-    
-   ##### NACHHER
-   {: #after }
+
+   _**NACHHER**_
+
    **Objective-C**
-    
+
    ```objc
    // Bereits erstellter Store
    CDTDatastore *datastore = existingDatastore;
@@ -1253,9 +1251,9 @@ einen fernen Store finden Sie in der Beschreibung der [Cloudant Query API](https
         // Fehler behandeln
    }
    ```
-    
+
    **Swift**
-    
+
    ```swift
    // Bereits erstellter Store
    let datastore:CDTDatastore = existingDatastore
@@ -1266,9 +1264,9 @@ einen fernen Store finden Sie in der Beschreibung der [Cloudant Query API](https
         // Fehler behandeln
    }
    ```
-    
+
    **Java**
-    
+
    ```java
    // Vorhandenen Store verwenden
    Datastore datastore = existingStore;
@@ -1285,11 +1283,11 @@ einen fernen Store finden Sie in der Beschreibung der [Cloudant Query API](https
    // Index erstellen
    indexManager.ensureIndexed(indexFields, "automobile_index");
    ```
-    
+
 2. Indizes löschen:
 
-   ##### VORHER
-   {: #before }
+   _**VORHER**_
+
    **Objective-C**
 
    ```objc
@@ -1348,8 +1346,8 @@ einen fernen Store finden Sie in der Beschreibung der [Cloudant Query API](https
    });
    ```
 
-   ##### NACHHER
-   {: #after }
+   _**NACHHER**_
+
    **Objective-C**
 
    ```objc
@@ -1379,7 +1377,7 @@ einen fernen Store finden Sie in der Beschreibung der [Cloudant Query API](https
    ```
 
    **Java**
-   
+
    ```java
    // Vorhandenen Store verwenden
    Datastore datastore = existingStore;
@@ -1402,10 +1400,10 @@ enthält die Dokumentation zu [Cloudant Sync Query](https://github.com/cloudant/
 einen fernen Store finden Sie
 in der Beschreibung der [Cloudant Query API](https://docs.cloudant.com/cloudant_query.html). 
 
-#### iOS
-{: #ios }
-##### VORHER (mit IMFData/CloudantToolkit):
-{: #before-with-imfdata-cloudanttoolkit }
+#### iOS (Daten abfragen)
+{: #ios-querying-data }
+##### VORHER (mit IMFData/CloudantToolkit) - iOS (Daten abfragen):
+{: #before-with-imfdata-cloudanttoolkit-querying-data-ios }
 
 **Objective-C**
 
@@ -1443,8 +1441,8 @@ store.performQuery(query, completionHandler: { (results:[AnyObject]!, error:NSEr
 })
 ```
 
-##### NACHHER (mit Cloudant Sync):
-{: #after-with-cloudant-sync }
+##### NACHHER (mit Cloudant Sync) - Daten abfragen:
+{: #after-with-cloudant-sync-querying-data }
 **Objective-C**
 
 ```objc
@@ -1467,14 +1465,14 @@ if(results == nil){
 }
 ```
 
-#### Android
-{: #android }
+#### Android (Daten abfragen)
+{: #android-querying-data }
 Wenn Sie eine Abfrage nach Objekten ausführen möchten, erstellen Sie
 eine Cloudant-Abfrage mit den Abfragefiltern nach Datentyp. Führen Sie die Abfrage für
 ein Store-Objekt aus. 
 
-##### VORHER (mit IMFData/CloudantToolkit):
-{: #before-with-imfdata-cloudanttoolkit }
+##### VORHER (mit IMFData/CloudantToolkit) - Android (Daten abfragen):
+{: #before-with-imfdata-cloudanttoolkit-querying-data-android }
 ```java
 // Vorhandenen Store verwenden
 Store store = existingStore;
@@ -1523,8 +1521,8 @@ queryTask.continueWith(new Continuation<List, Object>() {
 });
 ```
 
-##### NACHHER (mit Cloudant Sync):
-{: #after-with-cloudant-sync }
+##### NACHHER (mit Cloudant Sync) - Android (Daten abfragen):
+{: #after-with-cloudant-sync-android-querying-data }
 ```java
 // Vorhandenen Store verwenden
 Datastore datastore = existingStore;
@@ -1571,8 +1569,8 @@ in der Beschreibung der [Cloudant Replication API](https://docs.cloudant.com/rep
 
 ### Pull-Replikation ausführen
 {: #running-pull-replication }
-##### VORHER
-{: #before }
+
+_**VORHER**_
 
 **Objective-C**
 
@@ -1651,8 +1649,8 @@ pullTask.continueWith(new Continuation<PullReplication, Object>() {
 });
 ```
 
-##### NACHHER
-{: #after }
+_**NACHHER**_
+
 **Objective-C**
 
 ```objc
@@ -1746,8 +1744,8 @@ replicator.start();
 
 ### Push-Replikation ausführen
 {: #running-push-replication }
-##### VORHER
-{: #before }
+
+_**VORHER**_
 
 **Objective-C**
 
@@ -1766,7 +1764,7 @@ if(replicationError){
 if(replicationError){
     // Fehler behandeln
 }else{
-    // Replikator erfolgreich erstellt
+    // Replikator erfolgreich gestartet
 }
 
 // Replikation mit Abfragen überwachen (optional)
@@ -1825,8 +1823,8 @@ pushTask.continueWith(new Continuation<PushReplication, Object>() {
 });
 ```
 
-##### NACHHER
-{: #after }
+_**NACHHER**_
+
 **Objective-C**
 
 ```objc
@@ -1882,7 +1880,7 @@ do {
         NSThread.sleepForTimeInterval(1.0)
         print("replicator state : \(CDTReplicator.stringForReplicatorState(replicator.state))")
     }
-    
+
 } catch let error as NSError {
     // Fehler behandeln
 }

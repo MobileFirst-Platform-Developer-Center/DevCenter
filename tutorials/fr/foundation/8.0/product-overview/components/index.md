@@ -1,29 +1,20 @@
 ---
 layout: tutorial
-title: Composants du produit
+title: Composants du produit 
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-{{ site.data.keys.product_full }} comprend les composants suivants :
-l'interface de ligne de commande {{ site.data.keys.mf_cli }}, le serveur
-{{ site.data.keys.mf_server }}, les composants d'exécution côté client, la console {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_app_center }} et le canevas {{ site.data.keys.mf_system_pattern }}.
+{{ site.data.keys.product_full }} comprend les composants suivants : l'interface de ligne de commande {{ site.data.keys.mf_cli }}, le serveur {{ site.data.keys.mf_server }}, les composants d'exécution côté client, la console {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_app_center }} et le canevas {{ site.data.keys.mf_system_pattern }}.
 
 La figure suivante représente les composants de {{ site.data.keys.product }} :
 
-![Architecture de la solution {{ site.data.keys.product }}](architecture.jpg)
+![Architecture de la solution {{ site.data.keys.product }} ](architecture.jpg)
 
 ### {{ site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-Vous pouvez utiliser l'interface de ligne
-de commande {{ site.data.keys.mf_cli_full }}
-pour
-développer et gérer des applications, en plus d'utiliser la console IBM {{ site.data.keys.mf_console }}. Certaines tâches du processus de développement
-{{ site.data.keys.product_adj }} doivent être effectuées dans l'interface de
-ligne de commande.
-
-Les commandes, qui commencent toutes par **mfpdev**, prennent en charge les types de tâche suivants :
+Vous pouvez utiliser {{ site.data.keys.mf_cli_full }} pour développer et gérer des applications, en plus d'utiliser la console IBM {{ site.data.keys.mf_console }}. Certaines tâches du processus de développement {{ site.data.keys.product_adj }} doivent être effectuées dans l'interface de ligne de commande.  Les commandes, qui commencent toutes par **mfpdev**, prennent en charge les types de tâche suivants :
 
 * Enregistrement des applications sur le serveur {{ site.data.keys.mf_server }}
 * Configuration de votre application
@@ -33,7 +24,7 @@ Les commandes, qui commencent toutes par **mfpdev**, prennent en charge les type
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-Le serveur {{ site.data.keys.mf_server }} fournit une connectivité de back end sécurisée, la gestion d'applications, la prise en charge de la notification push et des fonctions d'analyse, ainsi que la surveillance des applications {{ site.data.keys.product_adj }}. Il ne s'agit pas d'un serveur d'applications au sens de Java Platform, Enterprise Edition (Java EE). Il agit comme un conteneur pour les packages d'applications {{ site.data.keys.product }} et est en réalité un ensemble d'applications Web, éventuellement fournies sous la forme d'un fichier d'archive d'entreprise (EAR) qui s'exécutent par dessus les serveurs d'applications traditionnels.
+Le serveur {{ site.data.keys.mf_server }} fournit une connectivité de back end sécurisée, la gestion d'applications, la prise en charge de la notification push et des fonctions d'analyse, ainsi que la surveillance des applications {{ site.data.keys.product_adj }}. Il ne s'agit pas d'un serveur d'applications au sens de Java Platform, Enterprise Edition (Java EE). Il agit comme un conteneur pour les packages d'applications {{ site.data.keys.product }} et est en réalité un ensemble d'applications Web, éventuellement fournies sous la forme d'un fichier d'archive d'entreprise (EAR) qui s'exécutent par-dessus les serveurs d'applications traditionnels.
 
 Le serveur {{ site.data.keys.mf_server }} s'intègre à votre environnement d'entreprise et utilise des ressources et une infrastructure existantes. Cette intégration est basée sur des adaptateurs, qui sont des composants logiciels côté serveur chargés d'acheminer des systèmes d'entreprise expéditeurs et des services reposant sur le cloud jusqu'à l'unité utilisateur. Vous pouvez utiliser des adaptateurs pour extraire et mettre à jour des données à partir de sources d'information et pour autoriser des utilisateurs à effectuer des transactions et à démarrer d'autres services et applications.
 
@@ -50,9 +41,7 @@ La console {{ site.data.keys.mf_console }} est utilisée pour le contrôle et la
 Vous pouvez utiliser {{ site.data.keys.mf_console }} pour les tâches suivantes :
 
 * Surveiller et configurer toutes les applications, tous les adaptateurs et toutes les règles de notification push déployés à partir d'une console Web centralisée.
-* Désactiver à distance la possibilité de se connecter à
-{{ site.data.keys.mf_server }} en utilisant des règles préconfigurées de
-version d'application et de type d'appareil.
+* Désactiver à distance la possibilité de se connecter à {{ site.data.keys.mf_server }} en utilisant des règles préconfigurées de version d'application et de type d'appareil.
 * Personnaliser les messages envoyés aux utilisateurs au lancement des applications.
 * Collecter des statistiques d'utilisateur à partir de toutes les applications en cours d'exécution.
 * Générer des rapports préconfigurés intégrés sur l'adoption et l'utilisation par les utilisateurs (nombre et fréquence d'utilisateurs qui s'engagent avec le serveur par le biais des applications).
@@ -79,37 +68,25 @@ Votre société peut généralement utiliser Application Center comme suit :
 
 1. L'équipe de développement crée une version d'une application.
 2. L'équipe de développement télécharge l'application dans Application Center, entre sa description et demande aux membres de l'équipe étendue de la réviser et de la tester.
-3. Lorsque la nouvelle version de l'application est disponible,
-un testeur exécute le programme d'installation d'Application Center,
-c'est-à-dire le client mobile. Ensuite, le testeur localise cette nouvelle version de l'application, l'installe sur son appareil mobile et la teste.
+3. Lorsque la nouvelle version de l'application est disponible, un testeur exécute le programme d'installation d'Application Center, c'est-à-dire le client mobile. Ensuite, le testeur localise cette nouvelle version de l'application, l'installe sur son appareil mobile et la teste.
 4. Une fois les tests terminés, le testeur évalue l'application et soumet ses commentaires en retour, que le développeur peut consulter à partir de la console d'Application Center.
 
 Application Center est destiné à une utilisation privée au sein de l'entreprise et vous pouvez destiner certaines applications mobiles à des groupes d'utilisateurs spécifiques. Vous pouvez utiliser Application Center comme magasin d'applications d'entreprise.
 
 ### {{ site.data.keys.mf_system_pattern }}
 {: #mobilefirst-system-pattern }
-Avec {{ site.data.keys.mf_system_pattern_full }}, vous pouvez déployer {{ site.data.keys.mf_server }} sur IBM PureApplication System ou IBM PureApplication Service on SoftLayer. Avec
-ces canevas, les administrateurs et les entreprises peuvent répondre rapidement aux changements de l'environnement métier en tirant profit des technologies de cloud sur site. Cette approche simplifie le processus de déploiement et augmente l'efficacité opérationnelle de manière à répondre à la demande croissante en matière de technologies mobiles. La demande accélère l'itération de solutions qui excèdent les cycles de demande traditionnels. L'utilisation de {{ site.data.keys.mf_server }} Pattern vous permet également d'accéder aux meilleures pratiques et à une expertise intégrée, comme les règles de mise à l'échelle intégrées.
+Avec {{ site.data.keys.mf_system_pattern_full }}, vous pouvez déployer {{ site.data.keys.mf_server }} sur IBM PureApplication System ou IBM PureApplication Service sur SoftLayer. Avec ces canevas, les administrateurs et les entreprises peuvent répondre rapidement aux changements de l'environnement métier en tirant profit des technologies de cloud sur site. Cette approche simplifie le processus de déploiement et augmente l'efficacité opérationnelle de manière à répondre à la demande croissante en matière de technologies mobiles. La demande accélère l'itération de solutions qui excèdent les cycles de demande traditionnels. L'utilisation de {{ site.data.keys.mf_server }} Pattern vous permet également d'accéder aux meilleures pratiques et à une expertise intégrée, comme les règles de mise à l'échelle intégrées.
 
 #### PureApplication System
 {: #pureapplication-system }
-IBM PureApplication System est un système intégré hautement
-évolutif qui s'appuie sur l'architecture IBM X et qui fournit un modèle de traitement centré sur les applications
-dans un environnement de cloud.
+IBM PureApplication System est un système intégré hautement évolutif qui s'appuie sur l'architecture IBM X et qui fournit un modèle de traitement centré sur les applications dans un environnement de cloud.
 
-Un système centré sur les applications constitue un moyen efficace de gérer les applications complexes ainsi que les tâches et
-les processus qui sont appelés
-par l'application. Le système entier implémente un environnement de traitement virtuel riche dans lequel différentes configurations de ressources sont
-ajustées automatiquement à différentes charges de travail applicatives. Les capacités de gestion des applications de la plateforme IBM PureApplication System permettent de déployer des composants
-middleware et d'autres composants d'application rapidement, facilement, et de façon répétée.
+Un système centré sur les applications constitue un moyen efficace de gérer les applications complexes ainsi que les tâches et les processus qui sont appelés par l'application. Le système entier implémente un environnement de traitement virtuel riche dans lequel différentes configurations de ressources sont ajustées automatiquement à différentes charges de travail applicatives. Les capacités de gestion des applications de la plateforme IBM PureApplication System permettent de déployer des composants middleware et d'autres composants d'application rapidement, facilement, et de façon répétée.
 
-IBM PureApplication System fournit des charges de travail virtualisées ainsi qu'une infrastructure évolutive
-distribuée dans un système intégré.
+IBM PureApplication System fournit des charges de travail virtualisées ainsi qu'une infrastructure évolutive distribuée dans un système intégré.
 
 #### Canevas de système virtuel
 {: #virtual-system-patterns }
 Les canevas de système virtuel sont une représentation logique d'une topologie récurrente pour un ensemble d'exigences de déploiement.
 
-Les canevas de système virtuel permettent des déploiements efficaces et reproductibles de systèmes qui incluent une ou plusieurs instances de machine
-virtuelle et les applications qui s'exécutent dans ces instances. Vous pouvez automatiser intégralement le déploiement afin de ne plus avoir à effectuer plusieurs longues tâches manuelles. Ce type de déploiement élimine les problèmes qui sont introduits par les processus de configuration manuelle sujets
-aux erreurs, notamment dans les topologies de production complexes telles que les parcs de serveurs, et accélère le déploiement d'une solution.
+Les canevas de système virtuel permettent des déploiements efficaces et reproductibles de systèmes qui incluent une ou plusieurs instances de machine virtuelle et les applications qui s'exécutent dans ces instances. Vous pouvez automatiser intégralement le déploiement afin de ne plus avoir à effectuer plusieurs longues tâches manuelles. Ce type de déploiement élimine les problèmes qui sont introduits par les processus de configuration manuelle sujets aux erreurs, notamment dans les topologies de production complexes telles que les parcs de serveurs, et accélère le déploiement d'une solution.

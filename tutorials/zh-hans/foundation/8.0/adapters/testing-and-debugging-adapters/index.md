@@ -25,7 +25,7 @@ weight: 6
 ## 测试适配器
 {: #testing-adapters }
 
-可通过 REST 接口获取适配器。这表示如果您知道资源的 URL，那么便可以使用诸如 Postman 的 HTTP 工具来测试请求并传递您认为合适的 `URL` 参数、`path` 参数、`body` 参数或 `headers`。
+可通过 REST 接口获取适配器。 这表示如果您知道资源的 URL，那么便可以使用诸如 Postman 的 HTTP 工具来测试请求并传递您认为合适的 `URL` 参数、`path` 参数、`body` 参数或 `headers`。
 
 用于访问适配器资源的 URL 的结构为：
 
@@ -36,12 +36,12 @@ weight: 6
 {: #passing-parameters }
 
 * 使用 Java 适配器时，根据适配器的配置方式，您可以在 URL、主体、表单等中传递参数。
-* 使用 JavaScript 适配器时，以 `params=["param1", "param2"]` 形式传递参数。换而言之，JavaScript 过程只接收一个名为 `params` 的参数，要求该参数为**一个有序的未命名值的数组**。通过 `Content-Type: application/x-www-form-urlencoded`，该参数可以在 URL (`GET`) 中，也可以在主体 (`POST`) 中。
+* 使用 JavaScript 适配器时，以 `params=["param1", "param2"]` 形式传递参数。 换而言之，JavaScript 过程只接收一个名为 `params` 的参数，要求该参数为**一个有序的未命名值的数组**。 通过 `Content-Type: application/x-www-form-urlencoded`，该参数可以在 URL (`GET`) 中，也可以在主体 (`POST`) 中。
 
 ### 处理安全
 {: #handling-security }
 
-{{ site.data.keys.product }} 安全框架针对任何适配器资源都需要访问令牌，即使未对资源明确分配范围也是如此。因此，除非您特意禁用安全性，否则端点始终受保护。
+{{ site.data.keys.product }} 安全框架针对任何适配器资源都需要访问令牌，即使未对资源明确分配范围也是如此。 因此，除非您特意禁用安全性，否则端点始终受保护。
 
 要在 Java 适配器中禁用安全性，请向方法/类附加 `OAuthSecurity` 注释：
 
@@ -71,14 +71,15 @@ weight: 6
 1. 在 {{ site.data.keys.mf_console }} → **设置** → **机密客户机**选项卡中，创建机密客户机或使用缺省值：  
 出于测试目的，将**允许的作用域**设置为 `**`。
 
-  ![“设置机密客户机”图](confidential_client.png) {% endcomment %}
+  ![设置机密客户机的图示](confidential_client.png)
+{% endcomment %}
 
 1.  通过 HTTP 客户机 (Postman)，使用下列 `Content-Type: application/x-www-form-urlencoded` 格式的参数，向 `http://<IP>:<PORT>/mfp/api/az/v1/token` 发出 HTTP `POST` 请求：
 
     - `grant_type` - 将值设置为 `client_credentials`。
-    - `scope` - 将值设置为资源的保护作用域。如果没有为资源分配保护作用域，请省略此参数以应用缺省作用域 (`RegisteredClient`)。有关更多信息，请参阅[作用域](../../authentication-and-security/#scopes)。
+    - `scope` - 将值设置为资源的保护作用域。 如果没有为资源分配保护作用域，请省略此参数以应用缺省作用域 (`RegisteredClient`)。 有关更多信息，请参阅[作用域](../../authentication-and-security/#scopes)。
 
-    ![“Postman 主体配置”图](Body_configuration.png)
+    ![“Postman 主体配置”图像](Body_configuration.png)
 
 2.  使用带机密客户机标识（“test”）和密钥（“test”）的`基本认证`添加`授权头`。
     > 有关机密客户机的更多信息，请参阅[机密客户机](../../authentication-and-security/confidential-clients)。
@@ -100,7 +101,7 @@ weight: 6
 #### 发送请求
 {: #sending-request }
 
-现在，对于到适配器端点的任何未来请求，均向 HTTP 头添加名称 `Authorization` 和您之前收到的值（以 Bearer 开头）。安全框架将跳过保护您资源的任何安全挑战。
+现在，对于到适配器端点的任何未来请求，均向 HTTP 头添加名称 `Authorization` 和您之前收到的值（以 Bearer 开头）。 安全框架将跳过保护您资源的任何安全挑战。
 
   ![使用带测试令牌的 Postman 的适配器请求](Adapter-response.png)
 
@@ -121,14 +122,15 @@ Swagger 文档 UI 是适配器 REST 端点的可视化表示形式。
 
 <img alt="“Swagger UI 中的开关”图" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 
-#### 测试令牌
-{: #test-token }
+#### 添加测试令牌
+{: #adding-a-test-token }
 
 要向请求添加测试令牌，以使安全框架跳过保护资源的任何安全挑战，请单击端点操作右上角的**开关**按钮。
 
-这会要求您选择授予 Swagger UI 的作用域（出于测试目的，您可以全部选择）。如果是首次使用 Swagger UI，那么可能会要求您使用机密客户机标识和密码登录。为此，您需要创建一个新的机密客户机，并将 `*` 作为其**允许的作用域**。
+这会要求您选择授予 Swagger UI 的作用域（出于测试目的，您可以全部选择）。 如果是首次使用 Swagger UI，那么可能会要求您使用机密客户机标识和密码登录。 为此，您需要创建一个新的机密客户机，并将 `*` 作为其**允许的作用域**。
 
 > 在[机密客户机](../../authentication-and-security/confidential-clients)教程中了解有关“机密客户机”的更多信息。
+
 <br/><br/>
 
 #### 发送请求
@@ -144,6 +146,7 @@ Swagger 文档 UI 是适配器 REST 端点的可视化表示形式。
 
 要为 Java 适配器生成 Swagger 文档，请在 Java 实施中使用 Swagger 提供的注释。
 > 要了解有关 Swagger 注释的更多信息，请参阅 [Swagger 文档](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X)。
+
 ```java
 @ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters by using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
 @ApiResponses(value = { @ApiResponse(code = 200, message = "A JSON object containing all the received parameters returned.") })
@@ -172,7 +175,7 @@ public Map<String, String> enterInfo(
 {: #using-mobilefirst-cli }
 
 为了测试适配器功能，可在命令行中使用 `mfpdev adapter call` 命令来调用 Java 或 JavaScript 适配器。
-您可以选择以交互式或直接运行该命令。以下是使用直接方式的示例：
+您可以选择以交互式或直接运行该命令。 以下是使用直接方式的示例：
 
 #### Java 适配器
 {: #java-adapters-adapters-cli }
@@ -183,6 +186,7 @@ public Map<String, String> enterInfo(
 mfpdev adapter call adapterName/path
 ```
 例如：
+
 ```bash
 mfpdev adapter call SampleAdapter/users/World
 
@@ -200,6 +204,7 @@ Hello World
 mfpdev adapter call adapterName/procedureName
 ```
 例如：
+
 ```bash
 mfpdev adapter call SampleAdapter/getFeed
 
@@ -231,7 +236,7 @@ Hello World
 
 2. Maven 一旦在 Eclipse 中可用，请导入适配器 Maven 项目：
 
-    ![图像显示如何将适配器 Maven 项目导入到 Eclipse](import-adapter-maven-project.png)
+    ![显示如何将适配器 Maven 项目导入 Eclipse 的图示](import-adapter-maven-project.png)
 
 3. 提供调试参数：
     - 单击**运行** → **调试配置**。
@@ -242,9 +247,9 @@ Hello World
     - 单击**浏览**，然后选择 Maven 项目。
     - 单击**调试**。
 
-    ![图像显示如何设置 {{ site.data.keys.mf_server }} 调试参数](setting-debug-parameters.png)
+    ![显示如何设置 {{ site.data.keys.mf_server }} 调试参数的图示](setting-debug-parameters.png)
 
-4. 单击**窗口 → 显示视图 → 调试**以进入*调试方式*。现在，您可以像在标准 Java 应用程序中一样正常调试 Java 代码。您需要向适配器发出请求，以使代码运行并命中任何设置断点。通过遵循[“测试适配器”部分](#testing-adapters)中有关如何调用适配器资源的指示信息，即可完成此操作。
+4. 单击**窗口 → 显示视图 → 调试**以进入*调试方式*。 现在，您可以像在标准 Java 应用程序中一样正常调试 Java 代码。 您需要向适配器发出请求，以使代码运行并命中任何设置断点。 通过遵循[“测试适配器”部分](#testing-adapters)中有关如何调用适配器资源的指示信息，即可完成此操作。
 
     ![图像显示正在调试的适配器](debugging.png)
 

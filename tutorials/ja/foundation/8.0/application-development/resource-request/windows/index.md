@@ -4,12 +4,12 @@ title: Windows アプリケーションからのリソース要求
 breadcrumb_title: Windows
 relevantTo: [windows]
 downloads:
-  - name: ネイティブ Windows 8 プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
-  - name: ネイティブ Windows 10 プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
-  - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+  - name: Download Native Windows 8 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
+  - name: Download Native Windows 10 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
+  - name: Download Adapter Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -27,7 +27,7 @@ REST API は、すべてのアダプターおよび外部リソースで機能�
 {: #wlresourcerequest }
 `WorklightResourceRequest` クラスは、アダプターまたは外部リソースに対するリソース要求を処理します。
 
- `WorklightResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
+`WorklightResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
 使用可能なメソッドは、`GET`、`POST`、`PUT`、および `DELETE` です。
 
 ```cs
@@ -36,7 +36,7 @@ WorklightResourceRequest request = WorklightClient.ResourceRequest(adapterPath,"
 ```
 
 * **JavaScript アダプター** の場合は、`/adapters/{AdapterName}/{procedureName}` を使用します。
-* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。`path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。これには、使用した `@PathParam` も含まれます。
+* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。 `path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。 これには、使用した `@PathParam` も含まれます。
 * プロジェクトの外部にあるリソースにアクセスするには、外部サーバーの要件のとおりに完全な URL を使用してください。
 * **タイムアウト**: オプション。ミリ秒単位の要求タイムアウトです。
 * **スコープ**: オプションです。どのスコープがリソースを保護しているのか分かっている場合は、このスコープを指定することで要求をより効率的にすることができます。
@@ -51,7 +51,7 @@ WorklightResponse response = await request.send();
 
 `WorklightResponse response` オブジェクトを使用して、アダプターから取り出されたデータを取得します。
 
-`response` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。よく使用されるプロパティーは、`ResponseText`、`ResponseJSON` (応答が JSON の場合)、`Success` (呼び出しが成功の場合も失敗の場合も使用されます)、および `HTTPStatus` (応答の HTTP 状況) です。
+`response` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。 よく使用されるプロパティーは、`ResponseText`、`ResponseJSON` (応答が JSON の場合)、`Success` (呼び出しが成功の場合も失敗の場合も使用されます)、および `HTTPStatus` (応答の HTTP 状況) です。
 
 ## パラメーター
 {: #parameters }
@@ -77,7 +77,7 @@ request.SetQueryParameter("param2","value2");
 
 #### JavaScript アダプター
 {: #javascript-adapters-query }
-JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。 パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 ```cs
 request.SetQueryParameter("params","['value1', 'value2']");
@@ -96,7 +96,7 @@ request.Send(formParams);
 ```   
 
 #### JavaScript アダプター
-JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。 パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 ```cs
 formParams.Add("params","['value1', 'value2']");
@@ -120,13 +120,13 @@ request.SetHeader(KeyValuePair<string,string> header);
 
 ## 応答
 {: #the-response }
-`WorklightResponse` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。よく使用されるプロパティーは、`ResponseText` (ストリング)、`ResponseJSON` (JSONObject) (応答が JSON である場合)、`success` (ブール値) (応答の成功状況) です。
+`WorklightResponse` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。 よく使用されるプロパティーは、`ResponseText` (ストリング)、`ResponseJSON` (JSONObject) (応答が JSON である場合)、`success` (ブール値) (応答の成功状況) です。
 
 要求が失敗した場合、応答オブジェクトには `error` プロパティーも含まれます。
 
 ## 詳細情報
 {: #for-more-information }
-> WLResourceRequest について詳しくは、[APIリファレンス](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf) (http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf) を参照してください。
+> WLResourceRequest について詳しくは、[API リファレンス](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf) (http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf) を参照してください。
 
 <img alt="サンプル・アプリケーションのイメージ" src="resource-request-success-win8-10.png" style="float:right"/>
 ## サンプル・アプリケーション

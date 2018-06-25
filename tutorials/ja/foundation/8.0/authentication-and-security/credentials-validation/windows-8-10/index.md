@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Windows 8.1 Universal および Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装
+title: Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Win8 プロジェクトのダウンロード
+  - name: Download Win8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
-  - name: Win10 プロジェクトのダウンロード
+  - name: Download Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
-  - name: SecurityCheck Maven プロジェクトのダウンロード
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -21,7 +21,7 @@ downloads:
 ```json
 {
   "challenges": {
-"SomeSecurityCheck1":null,
+    "SomeSecurityCheck1":null,
     "SomeSecurityCheck2":{
       "some property": "some value"
     }
@@ -36,7 +36,7 @@ downloads:
 {: #creating-the-challenge-handler }
 チャレンジ・ハンドラーは、{{ site.data.keys.mf_server }} によって送信されるチャレンジを処理するクラスです。例えば、ログイン画面を表示したり、資格情報を収集したり、それらを元のセキュリティー検査に送信したりします。
 
-この例の場合、セキュリティー検査は `PinCodeAttempts` であり、これは [CredentialsValidationSecurityCheck の実装](../security-check)で定義したものです。このセキュリティー検査によって送信されるチャレンジには、ログインを試行できる残りの回数 (`remainingAttempts`) と、オプションで `errorMsg` が含まれます。
+この例の場合、セキュリティー検査は `PinCodeAttempts` であり、これは [CredentialsValidationSecurityCheck の実装](../security-check)で定義したものです。 このセキュリティー検査によって送信されるチャレンジには、ログインを試行できる残りの回数 (`remainingAttempts`) と、オプションで `errorMsg` が含まれます。
 
 `Worklight.SecurityCheckChallengeHandler` を継承する C# クラスを作成します。
 
@@ -48,7 +48,7 @@ public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
 
 ## チャレンジの処理
 {: #handling-the-challenge }
-`SecurityCheckChallengeHandler` クラスが求める最小要件は、コンストラクターおよび `HandleChallenge` メソッドを実装することです。このメソッドは、ユーザーに資格情報の提出を求める責任があります。`HandleChallenge` メソッドは、`Object` としてチャレンジを受け取ります。
+`SecurityCheckChallengeHandler` クラスが求める最小要件は、コンストラクターおよび `HandleChallenge` メソッドを実装することです。このメソッドは、ユーザーに資格情報の提出を求める責任があります。 `HandleChallenge` メソッドは、`Object` としてチャレンジを受け取ります。
 
 コンストラクター・メソッドを追加します。
 
@@ -102,7 +102,7 @@ public override void HandleChallenge(Object challenge)
 
 ## チャレンジ応答の送信
 {: #submitting-the-challenges-answer }
-UI から資格情報が収集された後は、`SecurityCheckChallengeHandler` の `ShouldSubmitChallengeAnswer()` メソッドと `GetChallengeAnswer()` メソッドを使用して、セキュリティー検査に応答を返信します。`ShouldSubmitChallengeAnswer()` は、セキュリティー検査にチャレンジ応答を返信する必要があるかどうかを示すブール値を返します。この例の場合、`PinCodeAttempts` は、提供された PIN コードを含んでいる `pin` というプロパティーを必要とします。
+UI から資格情報が収集された後は、`SecurityCheckChallengeHandler` の `ShouldSubmitChallengeAnswer()` メソッドと `GetChallengeAnswer()` メソッドを使用して、セキュリティー検査に応答を返信します。 `ShouldSubmitChallengeAnswer()` は、セキュリティー検査にチャレンジ応答を返信する必要があるかどうかを示すブール値を返します。 この例の場合、`PinCodeAttempts` は、提供された PIN コードを含んでいる `pin` というプロパティーを必要とします。
 
 ```csharp
 public override bool ShouldSubmitChallengeAnswer()

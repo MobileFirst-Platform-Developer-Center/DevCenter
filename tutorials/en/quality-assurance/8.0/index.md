@@ -14,8 +14,8 @@ IBM MobileFirst Quality Assurance enables mobile app testing, user validation, a
 
 ## Registration and common setup
 
-* Register for a [Bluemix ID](https://console.ng.bluemix.net/registration/).
-* After logging in to [Bluemix](https://console.stage1.ng.bluemix.net/home/), add a service instance of MQA by selecting it from the **Services** > **Mobile** section of the Bluemix catalog. Name the service so that you can identify it next to other services on the Bluemix dashboard.
+* Register for a [IBM Cloud ID](https://console.ng.bluemix.net/registration/).
+* After logging in to [IBM Cloud](https://console.stage1.ng.bluemix.net/home/), add a service instance of MQA by selecting it from the **Services** > **Mobile** section of the IBM Cloud catalog. Name the service so that you can identify it next to other services on the IBM Cloud dashboard.
 * Select a service plan, read and accept the license information, and select **Create**.
 * Add a mobile app to the Mobile Quality Assurance service by clicking **New MQA App** and providing a name for the app.
 * Start preparing the app for reporting by clicking **Add Platforms**. Select a platform on which your new mobile app runs. Click **Submit**. Repeat this step for additional platforms.
@@ -29,4 +29,3 @@ The next step is to download and install the required libraries for the selected
 * [Android](android/)
 
 > To learn more about MobileFirst Quality Assurance, read the Quality Assurance topics in the user documentation.
-

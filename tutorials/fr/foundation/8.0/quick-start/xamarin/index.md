@@ -76,7 +76,7 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
 
-                       if (accessToken.Value != null && accessToken.Value != "")
+                       if (accessToken.Value != null &&  accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
@@ -101,15 +101,15 @@ Dans une fenêtre de navigateur, ouvrez la console {{ site.data.keys.mf_console 
 
 ### 4. Déploiement d'un adaptateur
 {: #4-deploy-an-adapter }
-Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{ site.data.keys.mf_console }} en sélectionnant **Actions → Déployer un adaptateur**.
+Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{ site.data.keys.mf_console }} en sélectionnant **Actions →  Déployer un adaptateur**.
 
 Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **Adaptateurs**.  
 
-1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
+1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'exemple d'adaptateur **Java** "Hello World".
 
    > Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
 
-2. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
+2. A partir d'une **fenêtre de ligne de commande**, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
 
    ```bash
    mfpdev adapter build
@@ -117,21 +117,21 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 
 3. Une fois la génération terminée, déployez-la à partir de la console {{ site.data.keys.mf_console }} en utilisant l'option **Actions → Déployer un adaptateur**. L'adaptateur est disponible dans le dossier **[adaptateur]/target**.
 
-   <img class="gifplayer" alt="Déploiement d'un adaptateur" src="create-an-adapter.png"/>
+   <img class="gifplayer" alt="Déployer un adaptateur" src="create-an-adapter.png"/>
 
-<!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
+<!-- <img src="device-screen.png" alt="exemple d'application" style="float:right"/>-->
 ### 5. Test de l'application
 {: #5-testing-the-application }
-1. Dans Xamarin Studio, sélectionnez le fichier **mfpclient.plist** puis modifiez les propriétés **protocol**, **host** et **port** en indiquant les valeurs correctes de votre serveur {{ site.data.keys.mf_server }}.
+1. Dans Xamarin Studio, sélectionnez le fichier 'mfpclient.properties', puis modifiez les propriétés **protocol**, **host** et **port** en indiquant les valeurs correctes pour votre serveur {{ site.data.keys.mf_server }}.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
-    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur Bluemix), les valeurs sont généralement **https**, **your-server-address** et **443**.
-
+    * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur IBM Cloud), les valeurs sont généralement **https**, **your-server-address** et **443**.
+    * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes.
 2. Appuyez sur le bouton **Play**.
 
 <br clear="all"/>
 ### Résultats
 {: #results }
-* Si vous cliquez sur **Ping MobileFirst Server**, la mention **Connected to MobileFirst Server**.
+* Si vous cliquez sur le bouton **Ping MobileFirst Server**, la mention **Connected to MobileFirst Server** s'affiche.
 * Si l'application a pu se connecter au serveur {{ site.data.keys.mf_server }}, un appel de demande de ressource utilisant l'adaptateur Java déployé aura lieu.
 
 La réponse de l'adaptateur s'affiche alors dans la console Xamarin Studio Console.
@@ -140,8 +140,8 @@ La réponse de l'adaptateur s'affiche alors dans la console Xamarin Studio Conso
 
 ## Etapes suivantes
 {: #next-steps }
-Pour en savoir plus notamment sur l'utilisation d'adaptateurs dans des applications et sur le mode d'intégration de services supplémentaires (notifications Push, par exemple) à l'aide de l'infrastructure de sécurité {{ site.data.keys.product_adj }} :
+Pour en savoir plus, notamment sur l'utilisation d'adaptateurs dans des applications et sur le mode d'intégration de services supplémentaires (notifications Push, par exemple) à l'aide de l'infrastructure de sécurité {{ site.data.keys.product_adj }} :
 
-- Consultez les tutoriels [Adapters development](../../adapters/)
-- Consultez les tutoriels [Authentication and security](../../authentication-and-security/)
-- Consultez [tous les tutoriels](../../all-tutorials)
+- Consultez les tutoriels [Développement d'adaptateurs](../../adapters/)
+- Consultez les tutoriels [Authentification et sécurité](../../authentication-and-security/)
+- Consultez [Tous les tutoriels](../../all-tutorials)

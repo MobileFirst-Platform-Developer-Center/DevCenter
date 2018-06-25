@@ -67,7 +67,7 @@ Erstellen Sie ein Xcode-Projekt oder verwenden Sie ein vorhandenes Projekt (Swif
 2. Führen Sie den Befehl `pod init` aus. Damit wird eine `Podfile` erstellt.
 3. Öffnen Sie die `Podfile` in Ihrem bevorzugten Codeeditor.
     - Löschen Sie den Dateiinhalt oder setzen Sie ihn auf Kommentar. 
-    - Fügen Sie die folgenden Zeilen hinzu und speichern Sie die Änderungen: 
+    - Fügen Sie die folgenden Zeilen hinzu und speichern Sie die Änderungen:
 
       ```xml
       use_frameworks!
@@ -77,21 +77,23 @@ Erstellen Sie ein Xcode-Projekt oder verwenden Sie ein vorhandenes Projekt (Swif
           pod 'IBMMobileFirstPlatformFoundation'
       end
       ```
-      - Ersetzen Sie **Xcode-project-target** durch den Namen Ihres Xcode-Projektziels. 
+      - Ersetzen Sie **Xcode-project-target** durch den Namen Ihres Xcode-Projektziels.
 
 4. Führen Sie im Befehlszeilenfenster den Befehl `pod install` und dann den Befehl `pod update` aus. Mit diesen Befehlen werden die Dateien des nativen SDK der {{ site.data.keys.product }} und die Datei **mfpclient.plist** hinzugefügt. Außerdem wird ein Pod-Projekt erstellt.  
-    **Hinweis:** Die Ausführung der Befehle kann einige Zeit dauern. 
+    **Hinweis:** Die Ausführung der Befehle kann einige Zeit dauern.
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis**:
 Ab jetzt können Sie die Datei `[Projektname].xcworkspace` verwenden, um das Projekt in Xcode zu öffnen. Verwenden Sie **nicht**
 die Datei `[Projektname].xcodeproj`. Ein CocoaPods-basiertes Projekt wird als ein Arbeitsbereich verwaltet, der die (ausführbare Datei der) Anwendung und die Bibliothek
 enthält. (Alle Projektabhängigkeiten werden vom CocoaPods-Manager mit Pull übertragen.)
 
+
+
 ### Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen
 {: #manually-adding-the-mobilefirst-native-sdk }
 Sie können das SDK der {{ site.data.keys.product }} auch manuell hinzufügen: 
 
-<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="adding-the-sdk-manually" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">
@@ -165,8 +167,7 @@ Sie können das SDK der {{ site.data.keys.product }} auch manuell hinzufügen:
     ```bash
     mfpdev app register
     ```
-    - Wenn ein ferner Server verwendet wird,
-fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu. 
+    - Wenn ein ferner Server verwendet wird, fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu.
 
     Sie werden aufgefordert, die Bundle-ID anzugeben. **Wichtiger Hinweis**: Bei der Bundle-ID muss die **Groß-/Kleinschreibung beachtet** werden.  
 
@@ -180,7 +181,7 @@ Anwendungen auch über die {{ site.data.keys.mf_console }} registrieren:
 >
 > 1. Laden Sie die {{ site.data.keys.mf_console }}.
 > 2. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**, um eine neue Anwendung zu registrieren. Folgen Sie den angezeigten Anweisungen.   
-> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.plist** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen.
+> 3. Navigieren Sie nach der Anwendungsregistrierung zum Anwendungsregister **Konfigurationsdateien** und kopieren Sie die Datei **mfpclient.plist** laden Sie diese Datei herunter. Folgen Sie den angezeigten Anweisungen, um die entsprechende Datei zu Ihrem Projekt hinzuzufügen. 
 
 ### Setup-Prozess abschließen
 {: #completing-the-setup-process }
@@ -263,13 +264,13 @@ In dieser Datei, die sich im Stammverzeichnis des Projekts befindet, sind die cl
 iOS-App bei {{ site.data.keys.mf_server }}
 definiert.
 
-| Eigenschaft            | Beschreibung                                                         | Beispielwerte |
+| Eigenschaft| Beschreibung | Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }}             | http oder https  |
-| host        | Hostname von {{ site.data.keys.mf_server }}                            | 192.168.1.63   |
-| port        | Port von {{ site.data.keys.mf_server }}                                 | 9080           |
-| wlServerContext     | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/          |
-| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest           | en             |
+| protocol | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} | http oder https |
+| host | Hostname von {{ site.data.keys.mf_server }} | 192.168.1.63 |
+| port | Port von {{ site.data.keys.mf_server }} | 9080 |
+| wlServerContext | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/ |
+| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest | en |
 
 ## Bitcode und TLS 1.2
 {: #bitcode-and-tls-12 }

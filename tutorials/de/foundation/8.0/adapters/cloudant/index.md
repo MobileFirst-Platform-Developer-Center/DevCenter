@@ -1,21 +1,23 @@
 ---
 layout: tutorial
-title: Integration von Cloudant
+title: Kombinierter Einsatz mit Cloudant
 relevantTo: [javascript]
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-Cloudant ist eine auf CouchDB basierende NoSQL-Datenbank, die als eigenständiges Produkt und als DBaaS (Database-as-a-Service) in IBM Bluemix und unter `cloudant.com` verfügbar ist.
+Cloudant ist eine auf CouchDB basierende NoSQL-Datenbank, die als eigenständiges Produkt und als DBaaS (Database-as-a-Service) in IBM Cloud und unter `cloudant.com` verfügbar ist.
 
 Es folgt ein Auszug aus der Cloudant-Dokumentation: 
 > Dokumente sind JSON-Objekte. Sie sind Container für Ihre Daten und bilden die Basis der Cloudant-Datenbank.   
 Für alle Dokumente muss es die beiden folgenden Felder geben: ein eindeutiges Feld `_id` und ein Feld `_rev`. Das Feld
 `_id` wird von Ihnen erstellt oder von Cloudant automatisch als UUID generiert. Das Feld `_rev` ist eine Revisionsnummer und von entscheidender Bedeutung für das Cloudant-Replikationsprotokoll. Neben diesen beiden obligatorischen Feldern können Dokumente beliebige weitere Inhalte im JSON-Format enthalten.
+
+
 
 Die Cloudant-API ist auf der Website [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) dokumentiert. 
 
@@ -116,7 +118,9 @@ CloudantClient cloudantClient = new CloudantClient(cloudantAccount,cloudantKey,c
 db = cloudantClient.database(cloudantDBName, false);
 ```
 <br/>
-Wenn Sie [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) und JAX-RS 2.0 (Java API for RESTful Web Services) verwenden, können Sie in Cloudant ein neues Dokument erstellen, indem Sie eine JSON-Darstellung des Dokuments in der HTTP-Anforderung senden.
+Wenn Sie [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) und JAX-RS 2.0 (Java-API für REST-konforme Web-Services) verwenden, können Sie in Cloudant ein neues Dokument erstellen, indem Sie eine JSON-Darstellung des Dokuments in der HTTP-Anforderung senden.
+
+
 
 ```java
 @POST

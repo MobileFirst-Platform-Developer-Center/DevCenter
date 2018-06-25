@@ -44,6 +44,8 @@ Auf der Serverseite gehören zum Setup das Konfigurieren des erforderlichen Anbi
 {: #google-cloud-messaging--firebase-cloud-messaging }
 > **Hinweis:** Google [kündigte kürzlich](https://firebase.google.com/support/faq/#gcm-fcm) einen Wechsel von GCM zu FCM an. Die folgenden Anweisungen wurden entsprechend aktualisiert. Beachten Sie auch, das bestehende GCM-Konfigurationen weiterhin funktionieren. Dies gilt jedoch nicht für neue GCM-Konfigurationen. Verwenden Sie stattdessen FCM.
 
+
+
 Android-Geräte verwenden den Service Firebase Cloud Messaging (FCM) für Push-Benachrichtigungen.   
 Gehen Sie wie folgt vor, um FCM zu konfigurieren:
 
@@ -67,10 +69,10 @@ Schritte ausführen:
 * Konfigurieren Sie die Firewall so, dass Verbindungen zu FCM möglich sind, damit Ihre FCM-Client-Apps Nachrichten empfangen können. 
 * Die Ports
 5228, 5229 und 5230 müssen geöffnet werden. FCM verwendet normalerweise nur den Port
-5228, manchmal aber auch die Ports 5229 und 5230.  
+5228, manchmal aber auch die Ports 5229 und 5230. 
 * FCM stellt keine bestimmte IP-Adresse bereit. Stellen Sie daher sicher, dass Ihre Firewall abgehende Verbindungen zu allen IP-Adressen akzeptiert, die
 in den IP-Blöcken enthalten sind, die in Google ASN
-15169 aufgelistet sind. 
+15169 aufgelistet sind.
 * Stellen Sie sicher, dass Ihre Firewall am Port 443 abgehende Verbindungen
 von {{ site.data.keys.mf_server }} zu android.googleapis.com akzeptiert. 
 
@@ -81,7 +83,7 @@ von {{ site.data.keys.mf_server }} zu android.googleapis.com akzeptiert.
 iOS-Geräte verwenden den Apple Push Notification Service (APNS) für Push-Benachrichtigungen.   
 Gehen Sie wie folgt vor, um APNS zu konfigurieren:
 
-1. [Generieren Sie ein Zertifikat für Push-Benachrichtigungen für die Entwicklung oder Produktion](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv).
+1. Generieren Sie ein Zertifikat für Push-Benachrichtigungen für die Entwicklung oder Produktion. Eine ausführliche Beschreibung der Schritte finden Sie [hier](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1) im Abschnitt `For iOS`. 
 2. Wählen Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push → Push-Einstellungen**
 den Zertifikattyp aus und geben Sie die Zertifikatdatei und das Kennwort an. Klicken Sie dann auf **Speichern**.
 
@@ -98,6 +100,8 @@ den Zertifikattyp aus und geben Sie die Zertifikatdatei und das Kennwort an. Kli
 * Verwenden Sie in der Entwicklungsphase die Sandbox-Zertifikatdatei apns-certificate-sandbox.p12. 
 * Verwenden Sie in der Produktionsphase die Produktionszertifikatdatei apns-certificate-production.p12. 
     * Das APNS-Produktionszertifikat kann erst getestet werden, wenn die Anwendung, die das Zertifikat verwendet, erfolgreich an den Apple App Store übergeben wurde.
+
+**Hinweis:** MobileFirst bietet keine Unterstützung für universelle Zertifikate. 
 
 > Sie können den APNS auch
 mit der [REST-API
@@ -159,7 +163,7 @@ Ordnen Sie der Anwendung das Bereichselement **push.mobileclient** zu.
 **[Ihre Anwendung] → Sicherheit → Zuordnung von Bereichselementen** und klicken Sie auf **Neu**.
 2. Schreiben Sie in das Feld **Bereichselement** den Wert "push.mobileclient". Klicken Sie dann auf **Hinzufügen**.
 
-    <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
+    <div class="panel-group accordion" id="scopes" role="tablist">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="additional-scopes">
                 <h4 class="panel-title">
@@ -167,7 +171,7 @@ Ordnen Sie der Anwendung das Bereichselement **push.mobileclient** zu.
                 </h4>
             </div>
 
-            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel">
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
@@ -262,7 +266,7 @@ Ordnen Sie der für die Anwendung verwendeten Sicherheitsüberprüfung das Berei
 2. Wählen Sie eine Sicherheitsüberprüfung aus. Klicken Sie dann auf **Hinzufügen**.
 
     <img class="gifplayer" alt="Authentifizierte Benachrichtigungen" src="authenticated-notifications.png"/>
-    
+
 ## Tags definieren
 {: #defining-tags }
 Klicken Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push → Tags**
@@ -293,7 +297,7 @@ Benachrichtigungen können an eine einzelne Geräte-ID, an bestimmte Benutzer-ID
 #### Tagbasierte Benachrichtigungen
 {: #tag-notifications }
 Tagbasierte Benachrichtigungen sind Hinweisnachrichten, die an alle Geräte gesendet werden, die einen bestimmten Tag abonniert haben. Tags stehen für Themen, die für den Benutzer von Interesse sind, und
-ermöglichen dem Benutzer, Benachrichtigungen zu den ihn interessierenden Themen zu erhalten.  
+ermöglichen dem Benutzer, Benachrichtigungen zu den ihn interessierenden Themen zu erhalten. 
 
 Wählen Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push** das Register **Benachrichtigungen
 senden** aus. Wählen Sie dann
@@ -320,7 +324,7 @@ Wählen Sie dann auf der Registerkarte **Senden an** die Option **Alle** aus und
 Mit den REST-APIs können alle Arten von Benachrichtigungen gesendet werden, tagbasierte Benachrichtigungen und Broadcastbenachrichtigungen sowie authentifizierte Benachrichtigungen. 
 
 Für das Senden einer Benachrichtigung wird eine POST-Anforderung an den REST-Endpunkt abgesetzt: `imfpush/v1/apps/<Anwendungs-ID>/messages`.  
-Beispiel-URL:  
+Beispiel-URL: 
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
@@ -328,27 +332,34 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 
 > Eine Übersicht über alle REST-APIs für Push-Benachrichtigungen finden Sie im Abschnitt [REST-API-Laufzeitservices](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) der Benutzerdokumentation.
 
+
+
 #### Nutzdaten von Benachrichtigungen
 {: #notification-payload }
-Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten:  
+Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten:
 
-Eigenschaften der Nutzdaten| Definition
+| Eigenschaften der Nutzdaten | Definition |
+
 --- | ---
-message | Die zu sendende Alertnachricht
-settings | Die Einstellungen sind verschiedene Attribute der Benachrichtigung.
-target | Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden.
-deviceIds | Array der Geräte, die durch die Gerätekennungen repräsentiert werden. Geräte mit diesen IDs empfangen eine Unicastbeanchrichtigung.
-notificationType | Ganzzahliger Wert für den Kanal (Push/SMS), über den die Nachricht gesendet wird. Gültige Werte sind 1 (nur Push), 2 (nur SMS) und 3 (Push und SMS).
-platforms | Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows).
-tagNames | Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen.
-userIds | Array mit Benutzern, repräsentiert durch die Benutzer-IDs, an die eine Unicastbenachrichtigung gesendet wird.
-phoneNumber | Telefonnummer für die Registrierung des Geräts und den Empfang von Unicastbenachrichtigungen.
+| message | Die zu sendende Alertnachricht |
+| settings | Die Einstellungen sind verschiedene Attribute der Benachrichtigung. |
+
+| target | Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden. |
+
+| deviceIds | Array der Geräte, die durch die Gerätekennungen repräsentiert werden. Geräte mit diesen IDs empfangen eine Unicastbeanchrichtigung. |
+| notificationType | Ganzzahliger Wert für den Kanal (Push/SMS), über den die Nachricht gesendet wird. Gültige Werte sind 1 (nur Push), 2 (nur SMS) und 3 (Push und SMS). | 
+| platforms | Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows). |
+
+| tagNames | Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen. |
+
+| userIds | Array mit Benutzern, repräsentiert durch die Benutzer-IDs, an die eine Unicastbenachrichtigung gesendet wird. |
+| phoneNumber | Telefonnummer für die Registrierung des Geräts und den Empfang von Unicastbenachrichtigungen. |
 
 **JSON-Beispiel für die Nutzdaten von Push-Benachrichtigungen**
 
 ```json
 {
-  "message" : {
+    "message" : {
     "alert" : "Test message",
   },
   "settings" : {
@@ -397,14 +408,13 @@ Nachfolgend wird für Testzwecke Postman verwendet.
 
 1. [Konfigurieren Sie einen vertraulichen Client](../../authentication-and-security/confidential-clients/).
        
-Wenn Sie eine Push-Benachrichtigung über die REST-API senden, werden die jeweils durch ein Leerzeichen getrennten
-Bereichselemente `messages.write` und `push.application.<Anwendungs-ID>` verwendet. 
-    
+Wenn Sie eine Push-Benachrichtigung über die REST-API senden, werden die jeweils durch ein Leerzeichen getrennten Bereichselemente `messages.write` und `push.application.<Anwendungs-ID>` verwendet. 
+
     <img class="gifplayer" alt="Vertraulichen Client konfigurieren" src="push-confidential-client.png"/>
 
 2. [Erstellen Sie ein Zugriffstoken](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
-    
-    
+
+
 3. Setzen Sie eine **POST**-Anforderung an **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages** ab. 
     - Wenn Sie {{ site.data.keys.product_adj }} über Fernzugriff verwenden, ersetzen Sie `Hostnamen` und `Port` durch Ihre eigenen Werte. 
     - Aktualisieren Sie die Anwendungs-ID. Geben Sie Ihren eigenen Wert an. 
@@ -412,7 +422,7 @@ Bereichselemente `messages.write` und `push.application.<Anwendungs-ID>` verwend
 4. Legen Sie einen Header fest:
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
     - Ersetzen Sie den Wert hinter "Bearer" durch den Wert Ihres Zugriffstokens aus Schritt (1). 
-    
+
     ![Autorisierungsheader](postman_authorization_header.png)
 
 5. Legen Sie einen Hauptteil fest: 
@@ -427,9 +437,9 @@ wenn Sie eine Benachrichtigung an bestimmte registrierte Benutzer senden möchte
         }
    }
    ```
-    
+
    ![Autorisierungsheader](postman_json.png)
-    
+
 Wenn Sie auf die Schaltfläche **Senden** geklickt haben, müsste das Gerät eine Benachrichtigung empfangen haben: 
 
 ![Beispielanwendung](notifications-app.png)

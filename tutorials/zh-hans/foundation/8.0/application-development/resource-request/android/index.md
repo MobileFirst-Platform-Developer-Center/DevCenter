@@ -4,9 +4,9 @@ title: 来自 Android 应用程序的资源请求
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: 下载 Android Studio 项目
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
@@ -34,14 +34,14 @@ WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.
 ```
 
 * 对于 **JavaScript 适配器**，请使用 `/adapters/{AdapterName}/{procedureName}`
-* 对于 **Java 适配器**，请使用 `/adapters/{AdapterName}/{path}`。`path` 取决于您如何在 Java 代码中定义 `@Path` 注释。这也将包含您使用的任何 `@PathParam`。
+* 对于 **Java 适配器**，请使用 `/adapters/{AdapterName}/{path}`。 `path` 取决于您如何在 Java 代码中定义 `@Path` 注释。 这也将包含您使用的任何 `@PathParam`。
 * 要访问项目外面的资源，请根据外部服务器的需求使用完整 URL。
 * **超时**：可选，请求超时（毫秒）
 * **作用域**：可选，如果您知道哪个作用域将保护资源 - 指定此作用域可以使请求更高效。
 
 ## 发送请求
 {: #sending-the-request }
-使用 `.send()` 方法请求资源。指定 WLResponseListener 类实例：
+使用 `.send()` 方法请求资源。 指定 WLResponseListener 类实例：
 
 ```java
 request.send(new WLResponseListener(){
@@ -78,7 +78,7 @@ request.setQueryParameter("param2","value2");
 
 #### JavaScript 适配器
 {: #javascript-adapters }
-JavaScript 适配器使用有序的无名参数。要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
+JavaScript 适配器使用有序的无名参数。 要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
 
 ```java
 request.setQueryParameter("params","['value1', 'value2']");
@@ -96,8 +96,9 @@ formParams.put("height", height.getText().toString());
 request.send(formParams, new MyInvokeListener());
 ```    
 
-#### JavaScript 适配器
-JavaScript 适配器使用有序的无名参数。要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
+#### 参数 - JavaScript 适配器
+{: #parameters-javascript-adapters}
+JavaScript 适配器使用有序的无名参数。 要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
 
 ```java
 formParams.put("params", "['value1', 'value2']");
@@ -121,7 +122,7 @@ request.addHeader("date", date.getText().toString());
 
 ## 响应
 {: #the-response }
-`response` 对象包含响应数据，并且您可以使用其方法和属性来检索必需信息。常用属性包括：`responseText`（字符串）、`responseJSON`（JSON 对象）（如果以 JSON 格式响应）和 `status`（整数）（响应的 HTTP 状态）。
+`response` 对象包含响应数据，并且您可以使用其方法和属性来检索必需信息。 常用属性包括：`responseText`（字符串）、`responseJSON`（JSON 对象）（如果以 JSON 格式响应）和 `status`（整数）（响应的 HTTP 状态）。
 
 使用 `WLResponse response` 和 `WLFailResponse response` 对象获取从适配器检索的数据。
 

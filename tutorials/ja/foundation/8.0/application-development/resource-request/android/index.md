@@ -4,10 +4,10 @@ title: Android アプリケーションからのリソース要求
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Android Studio プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
-  - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+  - name: Download Android Studio project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
+  - name: Download Adapter Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -25,7 +25,7 @@ REST API は、すべてのアダプターおよび外部リソースで機能�
 {: #wlresourcerequest }
 `WLResourceRequest` クラスは、アダプターまたは外部リソースに対するリソース要求を処理します。
 
- `WLResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
+`WLResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
 使用可能なメソッドは、`WLResourceRequest.GET`、`WLResourceRequest.POST`、`WLResourceRequest.PUT`、`WLResourceRequest.HEAD`、および `WLResourceRequest.DELETE` です。
 
 ```java
@@ -34,14 +34,14 @@ WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.
 ```
 
 * **JavaScript アダプター** の場合は、`/adapters/{AdapterName}/{procedureName}` を使用します。
-* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。`path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。これには、使用した `@PathParam` も含まれます。
+* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。 `path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。 これには、使用した `@PathParam` も含まれます。
 * プロジェクトの外部にあるリソースにアクセスするには、外部サーバーの要件のとおりに完全な URL を使用してください。
 * **タイムアウト**: オプション。ミリ秒単位の要求タイムアウトです。
 * **スコープ**: オプションです。どのスコープがリソースを保護しているのか分かっている場合は、このスコープを指定することで要求をより効率的にすることができます。
 
 ## 要求の送信
 {: #sending-the-request }
-`.send()` メソッドを使用してリソースを要求します。WLResponseListener クラス・インスタンスを指定します。
+`.send()` メソッドを使用してリソースを要求します。 WLResponseListener クラス・インスタンスを指定します。
 
 ```java
 request.send(new WLResponseListener(){
@@ -78,7 +78,7 @@ request.setQueryParameter("param2","value2");
 
 #### JavaScript アダプター
 {: #javascript-adapters }
-JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。 パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 ```java
 request.setQueryParameter("params","['value1', 'value2']");
@@ -96,8 +96,9 @@ formParams.put("height", height.getText().toString());
 request.send(formParams, new MyInvokeListener());
 ```    
 
-#### JavaScript アダプター
-JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
+#### パラメーター - JavaScript アダプター
+{: #parameters-javascript-adapters}
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。 パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 ```java
 formParams.put("params", "['value1', 'value2']");
@@ -121,7 +122,7 @@ request.addHeader("date", date.getText().toString());
 
 ## 応答
 {: #the-response }
-`response` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。よく使用されるプロパティーは、`responseText` (ストリング)、`responseJSON` (JSON オブジェクト) (応答が JSON の場合)、および `status` (整数) (応答の HTTP 状況) です。
+`response` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。 よく使用されるプロパティーは、`responseText` (ストリング)、`responseJSON` (JSON オブジェクト) (応答が JSON の場合)、および `status` (整数) (応答の HTTP 状況) です。
 
 `WLResponse response` オブジェクトおよび `WLFailResponse response` オブジェクトを使用して、アダプターから取り出されたデータを取得します。
 
