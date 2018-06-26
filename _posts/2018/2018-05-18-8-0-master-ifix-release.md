@@ -11,7 +11,7 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *8.0.0.0-MFPF-IF201806141530* has been released for MobileFirst Foundation 8.0, dated **June 14th, 2018**.
+iFix *8.0.0.0-MFPF-IF201806061601* has been pulled out and a new iFix *8.0.0.0-MFPF-IF201806141530* has been released for MobileFirst Foundation 8.0, dated **June 14th, 2018**.
 <br/>
 
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201806141530" role="tablist">
