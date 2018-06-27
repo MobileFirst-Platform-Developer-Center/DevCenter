@@ -55,7 +55,7 @@ npm i ibm-mfp-web-sdk --save
 ```
 
 You can confirm the installed plugins by running following command:
- 
+
 ``` bash
 npm list --depth=0
 ```
@@ -119,21 +119,21 @@ These steps enables the app to use MFP APIs in the project.
 
 `Promise` identifier in the MobileFirst Web SDK does not work well with the Angular TypeScript Application as it will throw the duplicate identifier error. Presently, this is a know defect in the MobileFirst Web SDK npm plugin and this issue will be addressed in the upcoming release of the MobileFirst Web SDK.
 
-As a temporary workaround, remove the following code from the `ibmmfpf.d.ts` typescript file which is located at the path `node_modules/ibm-mfp-web-sdk/lib/typings/ibmmfpf.d.ts`. 
+As a temporary workaround, remove the following code from the `ibmmfpf.d.ts` typescript file which is located at the path `node_modules/ibm-mfp-web-sdk/lib/typings/ibmmfpf.d.ts`.
 
 ```javascript
 declare class Promise<T> implements Thenable<T> {
-	
+
 	constructor(callback: (resolve: (value?: T | Thenable<T>) => void, reject: (error?: any) => void) => void);
 
     then<U>(onFulfilled?: (value: T) => U | Thenable<U>, onRejected?: (error: any) => U | Thenable<U>): Promise<U>;
     then<U>(onFulfilled?: (value: T) => U | Thenable<U>, onRejected?: (error: any) => void): Promise<U>;
-    
+
 	catch<U>(onRejected?: (error: any) => U | Thenable<U>): Promise<U>;
 }
 
 declare namespace Promise {
-	
+
 	function resolve<T>(value?: T | Thenable<T>): Promise<T>;
 
 	function reject(error: any): Promise<any>;
@@ -185,7 +185,7 @@ export class AppComponent {
   constructor() {
     WL.Client.init({mfpContextRoot:"/mfp",applicationId:"com.mfp.userlogin"});
     this.MFPInitComplete();
-   
+
   }
 
   getBalance() {
@@ -263,7 +263,7 @@ Replace the content of **app.component.html** with following code. The file is l
         <div class="login-modal modal-content">
           <h4>MobileFirst Login Gateway</h4 >
           <div class="mfp-modal">
-              <h6>{% endraw %}{{ message }}{% endraw %}</h6>
+              <h6>{% raw %}{{ message }}{% endraw %}</h6>
               <br/>
               <form class="mfp-form">
                 <div class="full-width form-field">
@@ -298,7 +298,7 @@ Replace the content of **styles.css** with following code.
  .cdk-overlay-container{
     justify-content: center;
     display: flex;
-} 
+}
 
 .example-form {
   min-width: 150px;
@@ -361,7 +361,7 @@ Create a new json file with a name **proxy.conf.json** inside project folder and
    "/mfp": {
       "target": "http://localhost:9080",
       "secure": false
-   } 
+   }
 }
 ```
 
@@ -369,7 +369,7 @@ The above configuration forwards all the requests which contains `/mfp` in the r
 
 ## Test the Application
 
-Run the web application in the browser by running the following command. 
+Run the web application in the browser by running the following command.
 
 ```bash
 ng serve --proxy-config proxy.conf.json
