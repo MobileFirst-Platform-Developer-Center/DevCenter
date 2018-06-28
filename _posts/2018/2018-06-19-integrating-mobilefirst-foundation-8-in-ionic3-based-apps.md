@@ -28,14 +28,6 @@ Install the MobileFirst CLI by running the following command:
 npm install -g mfpdev-cli
 ```
 
-#### Cordova SDK
-
-Install the Cordova SDK by running the following command:
-
-```bash
-npm install -g cordova
-```
-
 #### Ionic SDK
 
 Install latest Ionic 3 and Cordova version by running following command:
@@ -123,7 +115,7 @@ The steps above needs to be followed for all the platforms, which you have added
 
 ### Call your resource adapter
 
-Create a new typescript file with a name **custom.typings.ts** inside `src` folder and add the following code.
+Create a new typescript file with a name **custom.typing.d.ts** inside `src` folder and add the following code.
 
 ```javascript
 /// <reference path="../plugins/cordova-plugin-mfp/typings/worklight.d.ts" />
