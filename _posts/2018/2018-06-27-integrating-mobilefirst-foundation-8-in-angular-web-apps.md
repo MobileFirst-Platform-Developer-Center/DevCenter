@@ -10,9 +10,9 @@ author:
   name: Vittal R Pai
 ---
 
-Angular is a TypeScript-based open-source front-end web application platform that helps you rapidly build web applicationn. The latest release of Angular is 6. More details about new features of Angular 6 can be found in this [blog post](https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4).
+Angular is a TypeScript based open source front-end web application platform that helps you rapidly build a web application. The latest release of Angular is 6. More details about the new features of Angular 6 can be found in this [blog post](https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4).
 
-This post will walk you through how to create, build Angular version 6 application implemented with MobileFirst Foundation Web SDK and run it on browser.
+This post will walk you through how to create, build Angular version 6 application implemented with MobileFirst Foundation Web SDK and run it on a browser.
 
 ## Install MobileFirst Components and SDKs
 
@@ -36,7 +36,7 @@ npm install -g @angular/cli
 
 #### MobileFirst 8.0 Server
 
-Ensure that you have installed and started latest iFix version of MobileFirst 8.0 server locally. More details on how to run MFP Server locally is [here](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/#mobilefirst-server).
+Ensure that you have installed and started latest iFix version of MobileFirst 8.0 server locally. More details on how to run MobileFirst Platform Foundation(MFP) Server locally is [here](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/#mobilefirst-server).
 
 ## Create a New Angular Project
 Create a new Angular 6 project by entering the command below.
@@ -55,7 +55,7 @@ npm i ibm-mfp-web-sdk --save
 ```
 
 You can confirm the installed plugins by running following command:
- 
+
 ``` bash
 npm list --depth=0
 ```
@@ -81,7 +81,7 @@ Open your MobileFirst console and confirm that your app has been registered.
 ## Implement the MobileFirst Adapter
 MobileFirst adapters provide a way to retrieve and manage data for your mobile client app on the server side.
 
-For this tutorial, I’m using the [ResourceAdapter](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80/ResourceAdapter) to call a resource API and [UserLogin](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80/UserLogin) for security in the project.
+For this tutorial, I am using the [ResourceAdapter](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80/ResourceAdapter) to call a resource API and [UserLogin](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80/UserLogin) for security in the project.
 
 Download both the adapters and **build** it by running the following command
 
@@ -115,25 +115,25 @@ Create a new typescript file with a name **custom-typings.d.ts** inside `src` fo
 ```javascript
 /// <reference path="../node_modules/ibm-mfp-web-sdk/lib/typings/ibmmfpf.d.ts"/>
 ```
-This steps enables app to use MFP APIs in the project.
+These steps enables the app to use MFP APIs in the project.
 
-`Promise` identifier in the MobileFirst Web SDK doesn't works well with the Angular TypeScript Application as it will throw the duplicate identifier error. Presently this is a know defect in the MobileFirst Web SDK npm plugin and this issue will be addressed in the upcoming release of the MobileFirst Web SDK.
+`Promise` identifier in the MobileFirst Web SDK does not work well with the Angular TypeScript Application as it will throw the duplicate identifier error. Presently, this is a know defect in the MobileFirst Web SDK npm plugin and this issue will be addressed in the upcoming release of the MobileFirst Web SDK.
 
-As a temporary workaround, Remove the following code from the `ibmmfpf.d.ts` typescript file which is located at the path `node_modules/ibm-mfp-web-sdk/lib/typings/ibmmfpf.d.ts`. 
+As a temporary workaround, remove the following code from the `ibmmfpf.d.ts` typescript file which is located at the path `node_modules/ibm-mfp-web-sdk/lib/typings/ibmmfpf.d.ts`.
 
 ```javascript
 declare class Promise<T> implements Thenable<T> {
-	
+
 	constructor(callback: (resolve: (value?: T | Thenable<T>) => void, reject: (error?: any) => void) => void);
 
     then<U>(onFulfilled?: (value: T) => U | Thenable<U>, onRejected?: (error: any) => U | Thenable<U>): Promise<U>;
     then<U>(onFulfilled?: (value: T) => U | Thenable<U>, onRejected?: (error: any) => void): Promise<U>;
-    
+
 	catch<U>(onRejected?: (error: any) => U | Thenable<U>): Promise<U>;
 }
 
 declare namespace Promise {
-	
+
 	function resolve<T>(value?: T | Thenable<T>): Promise<T>;
 
 	function reject(error: any): Promise<any>;
@@ -163,7 +163,7 @@ Add following code snippet inside `Scripts` tag of **angular.json** file which i
 ```
 
 
-### Add Code to call resource adapter &  handle MFP challenge
+### Add code to call resource adapter and handle MFP challenge
 
 Add logic to do resource request call to the resource adapter endpoint and logic to handle challenges from MobileFirst Server in the typescript file of the home page which is located at `src/app/app.component.ts`. The file contents look as below.
 
@@ -185,7 +185,7 @@ export class AppComponent {
   constructor() {
     WL.Client.init({mfpContextRoot:"/mfp",applicationId:"com.mfp.userlogin"});
     this.MFPInitComplete();
-   
+
   }
 
   getBalance() {
@@ -263,7 +263,7 @@ Replace the content of **app.component.html** with following code. The file is l
         <div class="login-modal modal-content">
           <h4>MobileFirst Login Gateway</h4 >
           <div class="mfp-modal">
-              <h6>{% endraw %}{{ message }}{% endraw %}</h6>
+              <h6>{% raw %}{{ message }}{% endraw %}</h6>
               <br/>
               <form class="mfp-form">
                 <div class="full-width form-field">
@@ -298,7 +298,7 @@ Replace the content of **styles.css** with following code.
  .cdk-overlay-container{
     justify-content: center;
     display: flex;
-} 
+}
 
 .example-form {
   min-width: 150px;
@@ -361,7 +361,7 @@ Create a new json file with a name **proxy.conf.json** inside project folder and
    "/mfp": {
       "target": "http://localhost:9080",
       "secure": false
-   } 
+   }
 }
 ```
 
@@ -369,7 +369,7 @@ The above configuration forwards all the requests which contains `/mfp` in the r
 
 ## Test the Application
 
-Run the web application in the browser by running following command. 
+Run the web application in the browser by running the following command.
 
 ```bash
 ng serve --proxy-config proxy.conf.json
@@ -379,7 +379,7 @@ This step launches the web application in the URL `http://localhost:4200/`.
 
 Click the **Get Balance** to view the balance amount.
 
-This  button internally calls the ResourceAdapter and you will need to enter your authorization. After your username and password is validated, your balance is shown in the app.
+This  button internally calls the ResourceAdapter and you will need to enter your authorization. After your *username* and *password* is validated, your balance is shown in the app.
 
 
 ![UserLogin-App]({{site.baseurl}}/assets/blog/2018-06-27-integrating-mobilefirst-foundation-8-in-angular-web-apps/angular-app-screen.png)
