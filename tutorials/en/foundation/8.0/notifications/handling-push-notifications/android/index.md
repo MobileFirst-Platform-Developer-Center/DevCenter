@@ -364,7 +364,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
 
  - Configure the AndroidManifest file. Following changes are required in the `Android manifest.xml` 
 
-**Remove** the following entries :
+**Remove the following entries :**
 
     ```xml
         <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
@@ -389,7 +389,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
 	
 	```
 
-**Modify** the following entries :
+**Modify the following entries :**
 
     ```xml
         <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
@@ -399,7 +399,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
         </service>
     ```
 
-    **to :**
+**to :**
 
     ```xml
 		<service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
@@ -409,7 +409,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
         </service>
     ```
 
-    **add the following entry : 
+**add the following entry : **
 
     ```xml
     <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
