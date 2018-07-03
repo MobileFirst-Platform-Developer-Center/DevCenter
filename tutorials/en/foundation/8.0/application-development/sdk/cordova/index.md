@@ -544,7 +544,7 @@ The app can be previewed using the command:
 mfpdev app preview
 ```
 
-The only supported browser option is _*Simple Browser Rendering*_. The option _*Mobile Browser Support*_ is not supported for the browser platform.
+The only supported browser option is *Simple Browser Rendering*. The option *Mobile Browser Support* is not supported for the browser platform.
 
 ### Using WebSphere Liberty to serve cordova browser resources
 {: #using-liberty-cordova-browser}
