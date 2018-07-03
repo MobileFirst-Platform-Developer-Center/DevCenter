@@ -346,7 +346,7 @@ For now, the existing applications using GCM services will continue to work as-i
 
 Setting up an application in FCM is a bit different compared to the old GCM model. 
 
- 1. Obtain your notification provider credentials, create a FCM project and add the same to your Android application. Include the package name of your application as `com.ibm.mobilefirstplatform.clientsdk.android.push`. Refer the [documentation for detailed steps](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)
+ 1. Obtain your notification provider credentials, create a FCM project and add the same to your Android application. Include the package name of your application as `com.ibm.mobilefirstplatform.clientsdk.android.push`. Refer the [documentation here](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android) , until you have finished generating the `google-services.json` file
 
  2. Configure your Gradle file. Add the following in the app's `build.gradle` file 
 
