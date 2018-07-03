@@ -409,7 +409,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
         </service>
     ```
 
-**add the following entry : **
+**add the following entry :**
 
     ```xml
     <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
