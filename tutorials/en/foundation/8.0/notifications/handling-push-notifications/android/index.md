@@ -346,9 +346,9 @@ For now, the existing applications using GCM services will continue to work as-i
 
 Setting up an application in FCM is a bit different compared to the old GCM model. 
 
- - Obtain your notification provider credentials, create a FCM project and add the same to your Android application. Include the package name of your application as `com.ibm.mobilefirstplatform.clientsdk.android.push`. Refer the [documentation for detailed steps](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)
+ 1. Obtain your notification provider credentials, create a FCM project and add the same to your Android application. Include the package name of your application as `com.ibm.mobilefirstplatform.clientsdk.android.push`. Refer the [documentation for detailed steps](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)
 
- - Configure your Gradle file. Add the following in the app's `build.gradle` file 
+ 2. Configure your Gradle file. Add the following in the app's `build.gradle` file 
 
     ```xml
     dependencies {
@@ -362,7 +362,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
 	
     apply plugin: 'com.google.gms.google-services'
 
- - Configure the AndroidManifest file. Following changes are required in the `Android manifest.xml` 
+ 3. Configure the AndroidManifest file. Following changes are required in the `Android manifest.xml` 
 
 **Remove the following entries :**
 
@@ -420,9 +420,9 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
     </service>
     ```
 	
- - Open the app in Android Studio. Copy the `google-services.json` file that you have created in the previous step inside the app directory. Note that the `google-service.json` file includes the package name you have added.		
+ 4. Open the app in Android Studio. Copy the `google-services.json` file that you have created in the **step-1** inside the app directory. Note that the `google-service.json` file includes the package name you have added.		
 		
- - Compile the SDK. Build the application.
+ 5. Compile the SDK. Build the application.
 
 
 
