@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Platform Foundation compatibility for Android P Beta Version
-date: 2018-06-28
+date: 2018-07-05
 tags:
 - MobileFirst_Platform
 - MobileFirst_Foundation
@@ -17,7 +17,7 @@ additional_authors:
 ---
 
 
-Google announced the next version of Android, which is [Android P](https://android-developers.googleblog.com/2018/03/previewing-android-p.html)in March 2018. The developer preview of Android P was launched in March 2018 and has been available for a while now for testing, development, and feedback. Android P introduces a variety of new [features and capabilities](https://developer.android.com/preview/features) for end users, such as built-in support for notches, display cutout support, animation, HDR VP9 video, multi-camera support, notifications, indoor positioning with Wi-Fi RTT and many more.
+Google announced the next version of Android, which is [Android P](https://android-developers.googleblog.com/2018/03/previewing-android-p.html) in March 2018. The developer preview of Android P was launched in March 2018 and has been available for a while now for testing, development, and feedback. Android P introduces a variety of new [features and capabilities](https://developer.android.com/preview/features) for end users, such as built-in support for notches, display cutout support, animation, HDR VP9 video, multi-camera support, notifications, indoor positioning with Wi-Fi RTT and many more.
 
 We have been testing the developer previews of Android P with the latest being Beta 2. We have verified various features of [MobileFirst Platform Foundation](https://console.bluemix.net/catalog/services/mobile-foundation) on the developer previews of Android P for MobileFirst Platform Foundation v7.1 and v8.0.
 
