@@ -79,8 +79,8 @@ _**Android**_
 ### Deploying the sync adapter
 {: #deploy-syncadapter}
 
-* Download the [JSONStoreSync adapter]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/JSONStoreCloudantSync.adapter) and deploy it in your MobileFirst server.
-* Configure the credentials to the backend Cloudant database.
+* Download the JSONStoreSync adapter from <a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">here</a>, configure cloudant credentials in path 'src/main/adapter-resources/adapter.xml' and deploy it in your MobileFirst server.
+* Configure the credentials to the backend Cloudant database also through the mfpconsole like below :
 
 |---------------------------|-------------------------|
 |![Configure Cloudant]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/configure-cloudant.png)    |   ![Cloudant credentials]({{site.baseurl}}/assets/blog/2018-02-23-jsonstoresync-couchdb-databases/CloudantCreds.jpg)|
