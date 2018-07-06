@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">ibm-mobile-first/wlAnalytics.js | react-native-ibm-mobilefirst</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="## Getting started"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="react-native-ibm-mobilefirst"><meta property="twitter:description" content="## Getting started"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a href="https://github.ibm.com/MobileFirst/mfp-react-native">Repository</a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html">WLAnalytics</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager.html">WLAuthorizationManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlClient.js~WLClient.html">WLClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlLogger.js~WLLogger.html">WLLogger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html">WLResourceRequest</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">ibm-mobile-first/wlAnalytics.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, { Component } from &apos;react&apos;;
+import {
+  Platform,
+  NativeModules,
+  NativeAppEventEmitter,
+  DeviceEventEmitter
+} from &apos;react-native&apos;;
+
+var wlAnalytics = NativeModules.RNWLAnalytics;
+
+if (Platform.OS === &apos;ios&apos;){
+  listener = NativeAppEventEmitter;
+}else{
+  listener = DeviceEventEmitter;
+}
+
+/**
+ * WLAnalytics means of persistently capturing analytics data and provides a method call to send captured data to the IBM MobileFirst Platform server, to be forwarded to the Operational Analytics engine.
+ *
+ * Capture is on by default.
+ * 
+ * When this WLAnalytics class&apos;s capture flag is turned on via enable method call, all messages passed through this class&apos;s log method will be persisted to file in the following JSON object format:
+ * 
+ * {
+ *   &quot;timestamp&quot;    : &quot;17-02-2013 13:54:27:123&quot;,  // &quot;dd-MM-yyyy hh:mm:ss:S&quot;
+ *   &quot;level&quot;        : &quot;ERROR&quot;,                    // ERROR || WARN || INFO || LOG || DEBUG
+ *   &quot;package&quot;      : &quot;your_tag&quot;,                 // typically a class name, app name, or JavaScript object name
+ *   &quot;msg&quot;          : &quot;the message&quot;,              // a helpful log message
+ *   &quot;metadata&quot;     : {&quot;hi&quot;: &quot;world&quot;},            // (optional) additional JSON metadata, appended via doLog API call
+ *   &quot;threadid&quot;     : long                        // (optional) id of the current thread
+ * }
+ */
+class WLAnalytics{
+  
+ /*
+  * @ignore
+  */
+  constructor(){
+    
+  }
+
+  /**
+   * Enable persistent capture of analytics data. Enable, and thus capture, is the default.
+   */
+  enable(){
+    wlAnalytics.enable(); 
+  }
+
+  /**
+   * Disable persistent capture of analytics data.
+   */
+  disable(){
+    wlAnalytics.disable(); 
+  }
+
+  /**
+   * Log data you want to be captured in the context of &quot;analytics&quot;. Some data is already captured by the framework. 
+   * To avoid collisions, the following keys will be excluded if logged:
+   * appStoreID
+   * appStoreLabel
+   * appStoreVersion
+   * appStoreVersionDisplay
+   * mfpAppName
+   * mfpAppVersion
+   * deviceBrand
+   * deviceOSversion
+   * deviceOS
+   * deviceModel
+   * deviceID
+   * timezone
+   * timestamp
+   * @param {string} message - The message to be logged
+   * @param {*} metadata - Any additional metadata to be added to the log message.
+   */
+  log(message, metadata){
+    wlAnalytics.log(message, metadata); 
+  }
+  
+  /**
+   * Enable analytics to capture the specified DeviceEvent
+   * @param {string} deviceEvent - A string representation of the device event to capture. Valid values are &quot;LIFECYCLE&quot; and &quot;NETWORK&quot;
+   */
+  addDeviceEventListener(deviceEvent){ 
+    wlAnalytics.addDeviceEventListener(deviceEvent);
+  }
+
+  /**
+   * Disable analytics from capturing the specified DeviceEvent
+   * @param {string} deviceEvent - A string representation of the device event to capture. Valid values are &quot;LIFECYCLE&quot; and &quot;NETWORK&quot;
+   */
+  removeDeviceEventListener(deviceEvent){ 
+    wlAnalytics.removeDeviceEventListener(deviceEvent);
+  }
+
+  /**
+   * Send the accumulated log data when the persistent log buffer exists and is not empty.
+   */
+  send(){
+    wlAnalytics.send(); 
+  }
+
+  /**
+   * Send the accumulated log data when the persistent log buffer exists and is not empty.
+   * @return {Promise} 
+   */
+  async sendWithCallback(){
+    return await wlAnalytics.sendWithCallback(); 
+  }
+
+  /**
+   * Specify current application user. If you want user-based analytics, you must use this method call. 
+   * For example, use it when the user logs in, and call the unsetUserContext method when the user logs out. 
+   * Or if your application supports user profiles, call this method when the user profile changes.
+   * @param {string} user - User ID for the current app user. 
+   */
+  setUserContext(user){
+    wlAnalytics.setUserContext(user);
+  }
+
+  /**
+   * Unset any user context previously set.
+   */
+  unsetUserContext(){
+    wlAnalytics.unsetUserContext();
+  }
+}
+export default WLAnalytics
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

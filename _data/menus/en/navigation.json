@@ -2,6 +2,83 @@
     "name": "Features",
     "path": "/features"
 },{
+    "name": "Developers",
+    "path": "/tutorials/en",
+    "children": [{
+        "name": "Native",
+        "path": "",
+        "children": [{
+            "name": "iOS",
+            "path": "/foundation/8.0/ios-tutorials"
+          },{
+            "name": "Android",
+            "path": "/foundation/8.0/android-tutorials"
+          },{
+            "name": "Windows 8 and 10",
+            "path": "/foundation/8.0/windows-8-10-tutorials"
+          }
+    ]}, {
+        "name": "Hybrid",
+        "path": "",
+        "children": [{
+            "name": "Cordova",
+            "path": "/foundation/8.0/cordova-tutorials"
+          }
+    ]}, {
+        "name": "Cross-platform",
+        "path": "",
+        "children": [{
+            "name": "Xamarin",
+            "path": "/foundation/8.0/xamarin-tutorials"
+          }, {
+            "name": "React Native",
+            "path": "/foundation/8.0/reactnative-tutorials"
+          }
+    ]}, {
+      "name": "Web",
+      "path": "/foundation/8.0/web-tutorials"
+    }
+]}, {
+    "name": "Blog",
+    "path": "/blog"
+}, {
+    "name": "Labs",
+    "path": "/labs",
+    "children": [{
+        "name": "Developers",
+        "path": "",
+        "children": [{
+            "name": "Foundation 8.0 Labs",
+            "path": "/developers/8.0/intro"
+        }, {
+            "name": "Foundation 7.1 Labs",
+            "path": "/developers/7.1/setup"
+        }, {
+            "name": "Foundation 7.0 Labs",
+            "path": "/developers/7.0/setup"
+        }]
+    }, {
+        "name": "Administrators",
+        "path": "",
+        "children": [{
+            "name": "Foundation 7.1 Labs",
+            "path": "/administrators/7.1/intro"
+        }]
+    }]
+}, {
+    "name": "Downloads",
+    "path": "/downloads",
+    "extraClasses": "hidden-xs hidden-sm hidden-md"
+}, {
+    "name": "Webinars",
+    "path": "/webinars",
+}, {
+    "name": "Video Gallery",
+    "path": "/video-gallery"
+}, {
+    "name": "Help",
+    "path": "/help"
+}, {
     "name": "Docs",
     "path": "/tutorials/en",
     "children": [{
@@ -19,28 +96,6 @@
         }, {
             "name": "Foundation 6.3",
             "path": "/foundation/6.3/all-tutorials"
-        }]
-    }, {
-        "name": "Developers",
-        "path": "",
-        "children": [{
-            "name": "Cordova",
-            "path": "/foundation/8.0/cordova-tutorials"
-        }, {
-            "name": "iOS",
-            "path": "/foundation/8.0/ios-tutorials"
-        }, {
-            "name": "Android",
-            "path": "/foundation/8.0/android-tutorials"
-        }, {
-            "name": "Windows 8 and 10",
-            "path": "/foundation/8.0/windows-8-10-tutorials"
-        }, {
-            "name": "Web",
-            "path": "/foundation/8.0/web-tutorials"
-        }, {
-            "name": "Xamarin",
-            "path": "/foundation/8.0/xamarin-tutorials"
         }]
     }, {
         "name": "Admins",
@@ -75,44 +130,4 @@
         "name": "Learn More",
         "path": "../../../learn-more"
     }]
-}, {
-    "name": "Labs",
-    "path": "/labs",
-    "children": [{
-        "name": "Developers",
-        "path": "",
-        "children": [{
-            "name": "Foundation 8.0 Labs",
-            "path": "/developers/8.0/intro"
-        }, {
-            "name": "Foundation 7.1 Labs",
-            "path": "/developers/7.1/setup"
-        }, {
-            "name": "Foundation 7.0 Labs",
-            "path": "/developers/7.0/setup"
-        }]
-    }, {
-        "name": "Administrators",
-        "path": "",
-        "children": [{
-            "name": "Foundation 7.1 Labs",
-            "path": "/administrators/7.1/intro"
-        }]
-    }]
-}, {
-    "name": "Video Gallery",
-    "path": "/video-gallery"
-}, {
-    "name": "Blog",
-    "path": "/blog"
-}, {
-    "name": "Help",
-    "path": "/help"
-}, {
-    "name": "Downloads",
-    "path": "/downloads",
-    "extraClasses": "hidden-xs hidden-sm hidden-md"
-}, {
-    "name": "Webinars",
-    "path": "/webinars",
 }]
