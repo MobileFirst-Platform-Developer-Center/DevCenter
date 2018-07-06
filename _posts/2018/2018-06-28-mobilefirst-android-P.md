@@ -52,9 +52,9 @@ Our tests have also ensured that native Android, as well as hybrid/Cordova apps 
 
 * After upgrading to Android P if the targetSdkVersion is set to API 28, the application will crash by throwing an exception as `java.lang.NoClassDefFoundError:failed resolution of :Lorg/apache/http/ProtocolVersion`, which is an Android bug, [find the issue tracker here](https://issuetracker.google.com/issues/79478779). The applications that are built using MobileFirst 7.1 version are affected by this.
 You should be able to workaround this issue by adding this line to your `AndroidManifest.xml` directly under `<application>` tag.
-```xml
-<uses-library android:name="org.apache.http.legacy" android:required="false"/>
-```
+ ```xml
+  <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+ ```
 
 ### Other notes
 Android had provided the `android:usesCleartextTraffic` attribute in the Android manifest file to protect against unintentional switch over to clear text communication over HTTP from HTTPS. This has been around since Android M. However, starting with Android P, the default setting has been changed to block clear text traffic. If you would, however, want to continue to send information in clear text to a specific domain, you have to explicitly opt-in for specific domains [as detailed in this blog post](https://android-developers.googleblog.com/2016/04/protecting-against-unintentional.html).
