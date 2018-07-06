@@ -131,7 +131,7 @@ defaults:
       print_pdf: true
   -
     scope:
-      path: "tutorials/pt-br/"
+      path: "tutorials/pt-br"
     values:
       layout: tutorial
       category: tutorial
@@ -151,7 +151,7 @@ defaults:
       print_pdf: true
   -
     scope:
-      path: "tutorials/zh-hans/"
+      path: "tutorials/zh-hans"
     values:
       layout: tutorial
       category: tutorial
@@ -161,7 +161,7 @@ defaults:
       print_pdf: true
   -
     scope:
-      path: "tutorials/it/"
+      path: "tutorials/it"
     values:
       layout: tutorial
       category: tutorial
