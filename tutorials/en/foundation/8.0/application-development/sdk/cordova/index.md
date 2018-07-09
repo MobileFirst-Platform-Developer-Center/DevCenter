@@ -68,7 +68,7 @@ The cordova-plugin-mfp-encrypt-utils plug-in provides iOS OpenSSL frameworks for
 
 **Prerequisites:**
 
-- [Apache Cordova CLI(>=6.x and <=8.0)](https://www.npmjs.com/package/cordova) and {{ site.data.keys.mf_cli }} installed on the developer workstation.
+- [Apache Cordova CLI(>=6.x and <9.0)](https://www.npmjs.com/package/cordova) and {{ site.data.keys.mf_cli }} installed on the developer workstation.
 - A local or remote instance of {{ site.data.keys.mf_server }} is running.
 - Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Cordova development environment](../../../installation-configuration/development/cordova) tutorials.
 - For cordova-windows, a version of Visual C++ that is compatible to the Visual Studio and .NET versions installed in the machine have to be installed.
