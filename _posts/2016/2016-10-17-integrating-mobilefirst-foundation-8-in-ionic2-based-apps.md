@@ -13,7 +13,7 @@ author:
 ---
 
 ## Overview
-[In my previous blog post]({{site.baseurl}}/blog/2016/07/19/integrating-mobilefirst-foundation-8-in-ionic-based-apps/), I walked you through how to create, build, and deploy Ionic 1 apps implemented with MobileFirst Foundation 8.  In this post I will be using Ionic 2 which is quite different than the version 1.
+[In my previous blog post]({{site.baseurl}}/blog/2016/07/19/integrating-mobilefirst-foundation-8-in-ionic-based-apps/), I walked you through how to create, build, and deploy Ionic 1 apps implemented with MobileFirst Foundation 8.  If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn  how to  integrate with Ionic 2 apps which is quite different than the version 1.
 
 Ionic 2 is based on AngularJS 2 which is being written for ECMAScript 6 however this isn’t actually supported by browsers yet. In the mean time, Ionic 2 uses TypeScript which transpiles ES6 code into ES5 code. This will allow us to make use of all the new ES6 features now and future proof the framework.
 

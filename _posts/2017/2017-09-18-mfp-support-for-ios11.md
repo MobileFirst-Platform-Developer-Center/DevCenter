@@ -17,6 +17,8 @@ additional_authors:
 Every year Apple releases a new version of iOS, and with every new release MobileFirst keeps up the promise of compatibility with latest version, to customers. With each new version, iOS changes are embraced with minimal impact. With this year's release of Apple iOS11, MobileFirst is pleased to announce the support of iOS 11 on MobileFirst Platform Foundation (MFP) v7.1 and v8.0. For further details, read through our [support plan for Android O and iOS 11](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
 
 The beta version of iOS 11 has been extensively tested with MFP and details can be viewed at [Compatibility tests for iOS 11.]({{site.baseurl}}/blog/2017/07/24/compatibility-tests-for-ios-11/). All features of MobileFirst Platform Foundation v7.1 and v8.0 has been tested on iOS11 seed build.
+If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/) customer, then read further to learn about MobileFirst compatibilty with iOS 11 .
+
 MobileFirst Platform Foundation v7.1 and v8.0 is compatible with iOS 11 and all the features work well except for a few UI glitches. The following features have been extensively tested:
 
 * OAuth authorization flow

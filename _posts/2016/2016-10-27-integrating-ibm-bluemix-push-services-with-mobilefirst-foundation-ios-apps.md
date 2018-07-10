@@ -3,25 +3,26 @@ title: 'Integrating IBM MobileFirst Foundation 8.0-based iOS applications with I
 date: 2016-10-27
 tags:
 - MobileFirst_Foundation
+- Mobile_Foundation_Service
 - iOS
 - Bluemix
 - Bluemix_Push_Service
 version:
 - 8.0
-author: 
-  name: Josephine E. Justin 
+author:
+  name: Josephine E. Justin
 ---
 
 ## Overview
 Applications using the MobileFirst Foundation 8.0 SDK can be integrated with the Bluemix Push Services for the app to receive notifications.
 
-> Learn more about [IBM Bluemix Push Notificaitons service](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_overview_push.html) and [IBM Bluemix Mobile Foundation service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/)
+> Learn more about [IBM Bluemix Push Notificaitons service](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_overview_push.html) and [IBM Bluemix Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation)
 
 ### Prerequisites
 1. Running a MobileFirst Server either locally or [Mobile Foundation service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation) on Bluemix.
 2. Instance of [IBM Bluemix Push Notification](https://new-console.ng.bluemix.net/catalog/services/push-notifications/)
 3. Push Notification instance created at step 2 should be configured with APNS credentials and certificate.
-4. Push Notification instance created at step 2 should contain few tags. 
+4. Push Notification instance created at step 2 should contain few tags.
 
 ## Setting up the iOS applicationFor the purpose of this blog post, the [RememberMe Android sample application](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/ios/) is used. Download the sample application and follow the instructions in the README.md file to setup and run the app.
 ## Adding the IBM Bluemix Push Service SDK With the application setup and working, we will add the push functionalities into the app using the IBM Bluemix Push Service SDK.* Open the **podfile** of the Xcode project (located at the root folder of the app)
@@ -40,7 +41,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	_ = RememberMeChallengeHandler()
 
 	bmsClient.initialize(bluemixAppRoute: "Your bluemix push app route", bluemixAppGUID: "app guid", bluemixRegion: "region")
-        
+
 	push.initializeWithAppGUID(appGUID:"app guid", clientSecret:"client secret")
         // Check if application was opened from a notification
         if let userInfo = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [NSObject: AnyObject] {
@@ -78,7 +79,7 @@ func application(application: UIApplication, didReceiveRemoteNotification userIn
         showAlert(body)
     }
 }
-       
+
 func showAlert(message: String) {
 	let alertDialog = UIAlertController(title: "Push Notification", message: message, preferredStyle: UIAlertControllerStyle.Alert)
 	alertDialog.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))  
@@ -99,7 +100,7 @@ let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 	print("after initialize with app guid ")
 	print("username is \(defaults.stringForKey("displayName"))")
 	let tagsArray: [AnyObject] = ["holiday"]
-    
+
 	push.registerWithDeviceToken(appDelegate.deviceTokenValue, WithUserId: defaults.stringForKey("displayName")) { (response, statusCode, error) -> Void in
 		if error.isEmpty {
 			print(statusCode)
@@ -123,4 +124,3 @@ let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 ```
 
 ## Sending the NotificationTo send the notification, one can use the Push Notification dashboard on the IBM Bluemix. [See the send API](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_android_enable.html#send) for more details on sending the notification.![Demo flow for blog post]({{site.baseurl}}/assets/blog/2016-10-27-integrating-ibm-bluemix-push-services-with-mobilefirst-foundation-ios-apps/ios.png)
-

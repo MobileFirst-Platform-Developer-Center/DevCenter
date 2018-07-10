@@ -36,6 +36,8 @@ You can update these components in two ways:
 
 The updating procedure depends on the method you used at the initial installation.
 
+> **Note:** Installation Manager(IM) does not support rolling back of an update/iFix. However, rollback is possible using Ant or Server Configuration Tool, if you have the old war files.
+
 ### Applying a fix pack by using the Server Configuration Tool
 {: #applying-a-fix-pack-by-using-the-server-configuration-tool }
 If {{ site.data.keys.mf_server }} is installed with the configuration tool and the configuration file is kept, you can apply a fix pack or an interim fix by reusing the configuration file.

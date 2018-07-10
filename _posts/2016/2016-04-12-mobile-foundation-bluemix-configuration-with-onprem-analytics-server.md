@@ -4,18 +4,19 @@ date: 2016-04-12
 tags:
 - MobileFirst_Platform
 - Mobile_Foundation
+- Mobile_Foundation_Service
 - Bluemix
 - IBM_Containers
 version:
 - 8.0
-author: 
+author:
   name: Sumant Kulkarni
 ---
 > **Note:** This blog post refers to MobileFirst server running on IBM Containers. For instructions for MobileFirst server running on Liberty buildpacks and Mobile Foundation Bluemix service (which also runs on Liberty buildpack), pl refer to this [blog post](https://mobilefirstplatform.ibmcloud.com/blog/2016/08/22/connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/)
 
 This blog talks about configuring MobileFirst Server running in Bluemix to connect to an analytics server running on-premises.
 
-The Mobile Foundation service on Bluemix allows you to deploy and run your MobileFirst-based applications on the Bluemix environment. It is a common scenario that the MobileFirst projects would need to access the resources that are running in the enterprise system within your corporate network. In this case, MobileFirst Analytics server is residing in the enterprise system to which the MobileFirst Server on the Bluemix should be configured to report the analytics data.
+The [Mobile Foundation service on Bluemix](https://console.bluemix.net/catalog/services/mobile-foundation) allows you to deploy and run your MobileFirst-based applications on the Bluemix environment. It is a common scenario that the MobileFirst projects would need to access the resources that are running in the enterprise system within your corporate network. In this case, MobileFirst Analytics server is residing in the enterprise system to which the MobileFirst Server on the Bluemix should be configured to report the analytics data.
 
 To establish the connectivity between the MobileFirst Server on Bluemix and the enterprise system,  you will configure the IBM Virtual Private Network (VPN) service to setup a virtual network. The VPN service on Bluemix is built on IPSec security standards and provides a secure communication channel between your data center and the resources running in the IBM Containers. In other words VPN is used as gateway between MFP Server and the analytics server which is sitting behind the enterprise firewall.
 
