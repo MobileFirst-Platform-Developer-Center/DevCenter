@@ -11,7 +11,7 @@ weight: 10
 
 > OpenWhisk는 이제 Cloud Functions라고 합니다.
 
-IBM Cloud Functions는 서버를 사용하지 않고 확장 가능한 환경에서 코드를 실행할 수 있는 FaaS(Function-as-a-Service) 플랫폼입니다. Cloud Functions 플랫폼의 유스 케이스 중 하나가 서버를 사용하지 않는 모바일 백엔드 코드를 개발하고 실행하는 것입니다. IBM Cloud의 Cloud Functions에 대해 자세히 알아보려면 [여기](https://console.bluemix.net/openwhisk/?env_id=ibm:yp:us-south)를 클릭하십시오. 
+IBM Cloud Functions는 서버를 사용하지 않고 확장 가능한 환경에서 코드를 실행할 수 있는 FaaS(Function-as-a-Service) 플랫폼입니다. Cloud Functions 플랫폼의 유스 케이스 중 하나가 서버를 사용하지 않는 모바일 백엔드 코드를 개발하고 실행하는 것입니다. IBM Cloud의 Cloud Functions에 대해 자세히 알아보려면 [여기](https://console.bluemix.net/openwhisk/?env_id=ibm:yp:us-south)를 클릭하십시오.
 
 {{ site.data.keys.product }} 어댑터는 필요한 서버 측 논리를 수행하고 백엔드 시스템에서 클라이언트 애플리케이션과 클라우드 서비스로 정보를 전송 및 검색하는 데 사용됩니다. {{ site.data.keys.product }}은 이제 Cloud Functions용 어댑터를 제공합니다.
 

@@ -277,7 +277,7 @@ weight: 1
                 <p>개발자는 {{ site.data.keys.product }}에서 실행되도록 IBM Cloud 애플리케이션을 마이그레이션할 수 있습니다. 마이그레이션하여 {{ site.data.keys.product }} API에 맞도록 클라이언트 애플리케이션에 대한 구성을 변경해야 합니다.</p>
 
                 <h3>IBM Cloud에 대한 서비스로서의 {{ site.data.keys.product }}</h3>
-                <p>이제 엔터프라이즈 모바일 앱을 작성 및 실행하기 위해 IBM Cloud에서 {{ site.data.keys.mf_bm_full }} 서비스를 사용할 수 있습니다. </p>
+                <p>이제 엔터프라이즈 모바일 앱을 작성 및 실행하기 위해 IBM Cloud에서 {{ site.data.keys.mf_bm_full }} 서비스를 사용할 수 있습니다.</p>
 
                 <h3>.wlapp 파일 없음</h3>
                 <p>이전 버전에서 <b>.wlapp</b> 파일을 업로드하여 애플리케이션을 {{ site.data.keys.mf_server }}에 배치했습니다. 파일에 애플리케이션 및 필수 웹 자원(하이브리드 애플리케이션의 경우)을 설명하는 데이터가 포함되었습니다. V8.0.0에서 <b>.wlapp</b> 파일 대신 다음을 수행하십시오.</p>
@@ -473,7 +473,7 @@ weight: 1
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_app_center }}는 이제 BYOL 스크립트를 통해 IBM Cloud(컨테이너 기반)에서 지원됩니다. </p>
+                <p>{{ site.data.keys.mf_app_center }}는 이제 BYOL 스크립트를 통해 IBM Cloud(컨테이너 기반)에서 지원됩니다.</p>
             </div>
         </div>
     </div>
