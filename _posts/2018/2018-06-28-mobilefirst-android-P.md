@@ -11,9 +11,6 @@ version:
 - 8.0
 author:
   name: Shubha S
-additional_authors:
-- Srihari Kulkarni
-- Manjunath Kallannavar
 ---
 
 
@@ -50,8 +47,14 @@ Our tests have also ensured that native Android, as well as hybrid/Cordova apps 
 
 ### Known Issues
 
->Starting with Android P the crypto provider support has been removed [check here for more information](https://android-developers.googleblog.com/2018/03/cryptography-changes-in-android-p.html). The MobileFirst SDK for Android is affected by this change. A fix is being worked upon and will be made available in a future iFix. As a developer, you will have to consume this iFix to be compatible with Android P. 
+* Starting with Android P the crypto provider support has been removed [check here for more information](https://android-developers.googleblog.com/2018/03/cryptography-changes-in-android-p.html). The MobileFirst SDK for Android is affected by this change. A fix is being worked upon and will be made available in a future iFix. As a developer, you will have to consume this iFix to be compatible with Android P. 
 	If you want to target to API level 28 then it is recommended to use the minimum API level as 18. If you want to target devices which are of API 17 and lower, specify the target version as API 27 or lower.
+
+* After upgrading to Android P if the targetSdkVersion is set to API 28, the application will crash by throwing an exception as `java.lang.NoClassDefFoundError:failed resolution of :Lorg/apache/http/ProtocolVersion`, which is an Android bug, [find the issue tracker here](https://issuetracker.google.com/issues/79478779). The applications that are built using MobileFirst 7.1 version are affected by this.
+You should be able to workaround this issue by adding this line to your `AndroidManifest.xml` directly under `<application>` tag.
+ ```xml
+  <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+ ```
 
 ### Other notes
 Android had provided the `android:usesCleartextTraffic` attribute in the Android manifest file to protect against unintentional switch over to clear text communication over HTTP from HTTPS. This has been around since Android M. However, starting with Android P, the default setting has been changed to block clear text traffic. If you would, however, want to continue to send information in clear text to a specific domain, you have to explicitly opt-in for specific domains [as detailed in this blog post](https://android-developers.googleblog.com/2016/04/protecting-against-unintentional.html).
