@@ -76,4 +76,4 @@ JKS 파일을 생성합니다.
         * 올바른 파일 이름, 비밀번호 및 유형을 사용하여 키 저장소 구성을 업데이트하십시오.
         `<keyStore id=“defaultKeyStore” location=<Keystore name> password=<Keystore password> type=<Keystore type> />`
 
-IBM Cloud에서 {{ site.data.keys.mf_bm_short}} 서비스를 사용하여 배치하는 경우에는 서버를 배치하기 전에 **고급 설정** 아래에서 키 저장소 파일을 업로드할 수 있습니다. 
+IBM Cloud에서 {{ site.data.keys.mf_bm_short}} 서비스를 사용하여 배치하는 경우에는 서버를 배치하기 전에 **고급 설정** 아래에서 키 저장소 파일을 업로드할 수 있습니다.

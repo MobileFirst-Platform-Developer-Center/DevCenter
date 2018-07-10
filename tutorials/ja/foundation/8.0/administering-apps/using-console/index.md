@@ -125,7 +125,6 @@ IBM {{ site.data.keys.mf_console }} を使用して、リソースへのアク�
 {: #defining-administrator-messages-in-multiple-languages }
 <b>注:</b> Microsoft Internet Explorer (IE) および Microsoft Edge では、管理メッセージはオペレーティング・システムの地域形式の設定に従って表示されます。構成されているブラウザーやオペレーティング・システムの表示言語の設定に従って表示されるものではありません。 [IE および Edge の Web アプリケーションの制限](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge)を参照してください。
 
-
 コンソールを使用して定義したアプリケーション管理者メッセージを表示するための複数言語を構成するには、以下の手順を実行してください。 これらのメッセージはデバイスのロケールに基づいて送信されるもので、モバイル・オペレーティング・システムがロケールの指定に使用する標準に準拠していなければなりません。
 
 1. {{ site.data.keys.mf_console }} ナビゲーション・サイドバーの**「アプリケーション」**セクションからご使用のアプリケーションのバージョンを選択し、次にアプリケーションの**「管理」**タブを選択します。
