@@ -15,7 +15,7 @@ weight: 3
 #### 다음으로 이동
 {: #jump-to }
 * [알림 설정](#setting-up-notifications)
-    * [Google Cloud Messaging/Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
+    * [Firebase Cloud Messaging](#firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [SMS 알림 서비스](#sms-notification-service)
@@ -83,7 +83,7 @@ APNS를 설정하려면 다음을 수행하십시오.
 * 프로덕션 단계(Phase) 수행 중에는 apns-certificate-production.p12 프로덕션 인증 파일을 사용하십시오.
     * APNS 프로덕션 인증서는 이 인증서를 활용하는 애플리케이션이 Apple App Store에 제출된 경우에만 테스트할 수 있습니다.
 
-**참고:** MobileFirst는 Universal 인증서를 지원하지 않습니다. 
+**참고:** MobileFirst는 Universal 인증서를 지원하지 않습니다.
 
 > [{{ site.data.keys.product_adj }} 푸시 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) 또는 [{{ site.data.keys.product_adj }} 관리 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)를 사용하여 APNS를 설정할 수도 있습니다.
 
