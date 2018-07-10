@@ -11,13 +11,40 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *7.1.0.0-MFPF-IF201805310728* has been released for MobileFirst Foundation 7.1, dated **May 31st, 2018**.
+A new iFix *7.1.0.0-MFPF-IF201807060852* has been released for MobileFirst Foundation 7.1, dated **July 6th, 2018**.
 <br/>
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201807060852" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201807060852">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201807060852" href="#collapse-mfp-ifix-IF201807060852" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201807060852"><b>iFix 7.1.0.0-MFPF-IF201807060852</b> <span class="label label-primary">latest</span></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201807060852" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201807060852">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>July 6th, 2018</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PI99058</b> ANALYTICS SERVER LOGS ARE SET TO LESS VERBOSE.
+
+            </div>
+        </div>      
+    </div>
+</div>     
+
+## Previous iFixes for MobileFirst Foundation 7.1
+
+IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
+*List below includes iFixes released in 2018 only.*
+
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201805310728" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201805310728">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201805310728" href="#collapse-mfp-ifix-IF201805310728" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201805310728"><b>iFix 7.1.0.0-MFPF-IF201805310728</b> <span class="label label-primary">latest</span></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201805310728" href="#collapse-mfp-ifix-IF201805310728" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201805310728"><b>iFix 7.1.0.0-MFPF-IF201805310728</b> </a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201805310728" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201805310728">
@@ -34,12 +61,6 @@ A new iFix *7.1.0.0-MFPF-IF201805310728* has been released for MobileFirst Found
         </div>      
     </div>
 </div>     
-
-## Previous iFixes for MobileFirst Foundation 7.1
-
-IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
-*List below includes iFixes released in 2018 only.*
-
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201805221108" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201805221108">
