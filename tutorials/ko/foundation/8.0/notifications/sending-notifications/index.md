@@ -36,8 +36,8 @@ weight: 3
 
 서버 측에서 필요한 설정에는 필요한 벤더(APNS, GCM 또는 WNS) 구성 및 "push.mobileclient" 범위 맵핑이 포함됩니다.
 
-### Google Cloud Messaging/Firebase Cloud Messaging
-{: #google-cloud-messaging--firebase-cloud-messaging }
+### Firebase Cloud Messaging
+{: #firebase-cloud-messaging }
 > **참고:** Google은 GCM에서 FCM으로 전환한다고 [최근에 발표했습니다](https://firebase.google.com/support/faq/#gcm-fcm). 이에 따라 아래의 지시사항이 업데이트되었습니다. 또한 현재 사용 중인 기존 GCM 구성은 계속 작동하지만 새 GCM 구성은 작동하지 않으므로 FCM을 대신 사용해야 합니다.
 
 Android 디바이스는 푸시 알림을 위해 FCM(Firebase Cloud Messaging) 서비스를 사용합니다.  
