@@ -1,5 +1,5 @@
 ---
-title: MobileFirstPlatform Cordova plugin compatibility issues with third-party plugins and their resolutions
+title: MobileFirst Platform Cordova plugin compatibility with third-party Cordova plugins
 date: 2018-04-09
 version:
 - 8.0
@@ -7,12 +7,14 @@ tags:
 - MobileFirst_Foundation
 - Cordova
 author:
-  name: Srutha Keerthi
+  name: Srutha Keerthi K
 ---
 
-Often the MobileFirstPlatform (MFP) Cordova plugin (*cordova-plugin-mfp*) is used in combination with other native Cordova plugins (like *cordova-plugin-camera*, *cordova-plugin-splashscreen* etc.) or with other third-party Cordova plugins. The MFP Cordova plugin works seamlessly with native Cordova plugins as the MFP plugin is built to ensure that there are no compatibility issues.
+Often the MobileFirst Platform (MFP) Cordova plugin (*cordova-plugin-mfp*) is used in combination with other native Cordova plugins (like *cordova-plugin-camera*, *cordova-plugin-splashscreen* etc.) or with other third-party Cordova plugins. The MFP Cordova plugin works seamlessly with native Cordova plugins as the MFP plugin is built to ensure that there are no compatibility issues. 
 
 But in case of third-party plugins, there is a possibility of incompatibility leading to some MFP functionalities not working, some third-party plugin functionalitites not working or both. Below are a few suggestions that can be followed to resolve such conflicts when MFP Cordova plugin is used in combination with various third-party plugins.
+
+> If you are an on-premise 8.0 customer or <a href="https://console.bluemix.net/catalog/services/mobile-foundation">Mobile Foundation Service</a> customer, you might be interested in <a href="https://mobilefirstplatform.ibmcloud.com/blog/2017/02/28/mfp-jsontore-windows-compatibility-fixes/">known compatibility issues with cordova-windows platform and MFP JSONStore plugin</a>.
 
 > **Note:** The suggestions below do not guarantee to solve incompatibility between all third-party plugins with MFP. These are only commonly observed patterns in third-party plugins that cause issues when used along with the MFP plugin and their possible resolutions.
 >

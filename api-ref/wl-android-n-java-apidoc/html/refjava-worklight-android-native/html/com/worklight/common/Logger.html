@@ -277,47 +277,59 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><strong><a href="../../../com/worklight/common/Logger.html#getShowLogsInConsole()">getShowLogsInConsole</a></strong>()</code>
+<div class="block">Gets current value for ShowLogsInConsole flag, indicating that display of logs in Logcat monitor is on or off.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../com/worklight/common/Logger.html#info(java.lang.String)">info</a></strong>(java.lang.String&nbsp;message)</code>
 <div class="block">Log at INFO level.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../com/worklight/common/Logger.html#info(java.lang.String, JSONObject)">info</a></strong>(java.lang.String&nbsp;message,
     JSONObject&nbsp;additionalMetadata)</code>
 <div class="block">Log at INFO level.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
 <td class="colLast"><code><strong><a href="../../../com/worklight/common/Logger.html#isUnCaughtExceptionDetected()">isUnCaughtExceptionDetected</a></strong>()</code>
 <div class="block">Ask the Logger if an uncaught exception, which often appears to the user as a crashed app, is present in the persistent capture buffer.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../com/worklight/common/Logger.html#log(java.lang.String)">log</a></strong>(java.lang.String&nbsp;message)</code>
 <div class="block">Log at LOG (Android VERBOSE) level.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><strong><a href="../../../com/worklight/common/Logger.html#log(java.lang.String, JSONObject)">log</a></strong>(java.lang.String&nbsp;message,
    JSONObject&nbsp;additionalMetadata)</code>
 <div class="block">Log at LOG (Android VERBOSE) level.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><strong><a href="../../../com/worklight/common/Logger.html#send()">send</a></strong>()</code>
 <div class="block">Send the accumulated log data when the persistent log buffer exists and is not empty.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><strong><a href="../../../com/worklight/common/Logger.html#send(WLRequestListener)">send</a></strong>(WLRequestListener&nbsp;listener)</code>
 <div class="block">See <a href="../../../com/worklight/common/Logger.html#send()"><code>Logger.send()</code></a></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><strong><a href="../../../com/worklight/common/Logger.html#setShowLogsInConsole(boolean _showLogsInConsole)">setShowLogsInConsole</a></strong>(boolean&nbsp;_showLogsInConsole)</code>
+<div class="block">Turns displaying of logs in Logcat monitor on or off.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -459,7 +471,7 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;setContext(Context&nbsp;_context)</pre>
 <div class="block">Context object must be set in order to use the Logger API.  This is called automatically by WL.init.
 
- setContext should only be called once. Any subsequent calls will be a no-op. If the configuration needs to be changed, 
+ setContext should only be called once. Any subsequent calls will be a no-op. If the configuration needs to be changed,
  use the getters and setters provided.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>_context</code> - Android Context object</dd></dl>
 </li>
@@ -517,9 +529,31 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCapture</h4>
 <pre>public static&nbsp;boolean&nbsp;getCapture()</pre>
-<div class="block">Get the current value of the capture flag, indicating that the Logger is recording log calls persistently.  Default behavior is to retrieve on successful 
+<div class="block">Get the current value of the capture flag, indicating that the Logger is recording log calls persistently.  Default behavior is to retrieve on successful
  WLClient.connect and WLClient.invokeProcedure.</div>
 <dl><dt><span class="strong">Returns:</span></dt><dd>current value of capture flag</dd></dl>
+</li>
+</ul>
+<a name="getShowLogsInConsole()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getShowLogsInConsole</h4>
+<pre>public static&nbsp;boolean&nbsp;getShowLogsInConsole()</pre>
+<div class="block">Gets current value for ShowLogsInConsole flag ,indicating that display of logs in Logcat monitor is on or off.</div>
+<dl><dt><span class="strong">Returns:</span></dt><dd>current value for ShowLogsInConsole flag</dd></dl>
+</li>
+</ul>
+<a name="setShowLogsInConsole(boolean _showLogsInConsole)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setShowLogsInConsole</h4>
+<pre>public static&nbsp;void&nbsp;setShowLogsInConsole(boolean&nbsp;_showLogsInConsole)</pre>
+<div class="block">Turns displaying of logs in Logcat monitor on or off.</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>_showLogsInConsole</code> - flag to indicate whether logged data must be displayed in console or not</dd></dl>
 </li>
 </ul>
 <a name="setFilters(java.util.HashMap)">

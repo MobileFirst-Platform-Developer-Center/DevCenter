@@ -1,12 +1,12 @@
 ---
 layout: tutorial
-title: Tutorials
+title: IBM MobileFirst Platform Tutorials
 hide_in_breadcrumb: true
 show_disqus: false
 show_breadcrumb: true
 breadcrumb_title: italiano
 use_dropdown: true
-#use_dropdown_home: foundation/8.0
+use_dropdown_home: foundation/8.0/
 use_dropdown_url_replace: false
 print_pdf: false
 ---
@@ -14,8 +14,8 @@ print_pdf: false
 <br>
 The Tutorials section is a collection of self-paced tutorials and sample applications that will help you start developing, testing, securing, and deploying mobile applications with the {{ site.data.key.parent_product_full }} suite of products.
 
-### [Foundation]({{site.baseurl}}/tutorials/en/foundation/)
-* [{{ site.data.keys.product_full }} 8.0]({{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/)
+### [Foundation]({{site.baseurl}}/tutorials/it/foundation/)
+* [{{ site.data.keys.product_full }} 8.0]({{site.baseurl}}/tutorials/it/foundation/8.0/all-tutorials/)
 * [MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/foundation/7.1/all-tutorials/)
 * [MobileFirst Platform Foundation 7.0]({{site.baseurl}}/tutorials/en/foundation/7.0/all-tutorials/)
 * [MobileFirst Platform Foundation 6.3]({{site.baseurl}}/tutorials/en/foundation/6.3/all-tutorials/)

@@ -9,9 +9,12 @@ version:
 author:
   name: Jorge Iglesias
 ---
-Using the {{ site.data.keys.mf_console_full }} you can clone an application configuration into a new application version, so you can register an identical copy of the application, but with a different version (same application id, environment, descriptor, and configuration). 
+Using the {{ site.data.keys.mf_console_full }} you can clone an application configuration into a new application version, so you can register an identical copy of the application, but with a different version (same application id, environment, descriptor, and configuration).
+But what if you want to achieve the same via command-line?
 
-But what if you want to achive the same via command-line? The {{ site.data.keys.mf_cli }} does not currently have an application cloning functionality and if you want to automate all the deployment processes, for example using Jenkins, you have to implement your own cloning process.
+If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn how to clone an application configuration into a new application using cli.
+
+The {{ site.data.keys.mf_cli }} does not currently have an application cloning functionality and if you want to automate all the deployment processes, for example using Jenkins, you have to implement your own cloning process.
 
 For this purpose I've written a Nodejs-based program that takes care of the process of cloning an application's configuration.  
 The program:
