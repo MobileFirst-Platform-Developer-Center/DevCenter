@@ -76,7 +76,7 @@ weight: 6
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
 
-                       if (accessToken.Value != null &&  accessToken.Value != "")
+                       if (accessToken.Value != null && accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
@@ -101,7 +101,7 @@ weight: 6
 
 ### 4. 어댑터 배치
 {: #4-deploy-an-adapter }
-[준비된 이 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 배치하십시오.
+[이 준비된 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 배치하십시오.
 
 그렇지 않으면 **어댑터** 옆에 있는 **새로 작성** 단추를 클릭하십시오.  
 
@@ -119,20 +119,20 @@ weight: 6
 
    <img class="gifplayer" alt="어댑터 배치" src="create-an-adapter.png"/>
 
-<!-- <img src="device-screen.png" alt="샘플 앱" style="float:right"/>-->
+<!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
 ### 5. 애플리케이션 테스트
 {: #5-testing-the-application }
 1. Xamarin Studio에서 `mfpclient.properties` 파일을 선택하고 **프로토콜**, **호스트** 및 **포트** 특성을 사용자의 {{ site.data.keys.mf_server }}에 대한 올바른 값으로 편집하십시오.
     * 로컬 {{ site.data.keys.mf_server }}를 사용 중인 경우, 일반적으로 값은 **http**, **localhost** 및 **9080**입니다.
     * 원격 {{ site.data.keys.mf_server }}를 사용 중인 경우(IBM Cloud에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다.
     * IBM Cloud Private에서 Kubernetes 클러스터를 사용 중이고 배치 유형이 **NodePort**이면, 포트 값이 일반적으로 Kubernetes 클러스터의 서비스에서 공개하는 **NodePort**입니다.
-
+    
 2. **재생** 단추를 누르십시오.
 
 <br clear="all"/>
 ### 결과
 {: #results }
-* **Ping MobileFirst Server** 단추를 누르면 **Connected to MobileFirst Server**가 표시됩니다.
+* **MobileFirst Server Ping** 단추를 클릭하면 **MobileFirst Server에 연결됨**이 표시됩니다.
 * 애플리케이션이 {{ site.data.keys.mf_server }}에 연결할 수 있는 경우, 배치된 Java 어댑터를 사용하는 자원 요청 호출이 발생합니다.
 
 그 후에 어댑터 응답이 Xamarin Studio 콘솔에 출력됩니다.

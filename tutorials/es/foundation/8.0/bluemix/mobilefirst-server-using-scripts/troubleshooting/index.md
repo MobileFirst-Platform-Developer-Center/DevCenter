@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Troubleshooting
 #relevantTo: [ios,android,windows,javascript]
