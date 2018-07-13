@@ -31,6 +31,7 @@ Mobilefirst 8.0:
 * Direct Update
 * Oauth Flow 
 * Certificate pinning
+* Device SSO
 
 MobileFirst 7.1:
 
@@ -55,7 +56,7 @@ You should be able to workaround this issue by adding this line to your `Android
  ```xml
   <uses-library android:name="org.apache.http.legacy" android:required="false"/>
  ```
-
+* Currently Push support is not available on MobileFirst for Android P. We are working on it, and will be updating the blog soon with our investigation results .
 ### Other notes
 Android had provided the `android:usesCleartextTraffic` attribute in the Android manifest file to protect against unintentional switch over to clear text communication over HTTP from HTTPS. This has been around since Android M. However, starting with Android P, the default setting has been changed to block clear text traffic. If you would, however, want to continue to send information in clear text to a specific domain, you have to explicitly opt-in for specific domains [as detailed in this blog post](https://android-developers.googleblog.com/2016/04/protecting-against-unintentional.html).
 
