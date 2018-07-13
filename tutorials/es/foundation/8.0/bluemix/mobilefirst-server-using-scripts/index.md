@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Setting Up MobileFirst Server on IBM Cloud using Scripts for IBM Containers
 #breadcrumb_title: IBM Containers

@@ -66,7 +66,7 @@ weight: 10
 **테스트 목적으로**, 아래에 설명되어 있는 바와 같이 Postman을 사용할 수 있습니다.  
 실제 상황에서는 사용자가 선택한 기술로 백엔드 로직에 Postman을 구현할 수 있습니다.
 
-1.  다음에 대해 **POST** 요청을 작성하십시오. **http(s)://[ipaddress-or-hostname]: [port]/[runtime]/api/az/v1/token**  
+1.  다음에 대해 **POST** 요청을 작성하십시오. **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**  
     예: `http://localhost:9080/mfp/api/az/v1/token`
     - 개발 환경에서 {{ site.data.keys.mf_server }}는 사전 존재 `mfp` 런타임을 사용합니다.  
     - 프로덕션 환경에서는 런타임 값을 사용자의 런타임 이름으로 대체하십시오.

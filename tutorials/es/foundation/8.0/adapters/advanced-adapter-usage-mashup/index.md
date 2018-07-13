@@ -96,11 +96,11 @@ El ejemplo que se proporciona en esta guía de aprendizaje muestra la implementa
 En cada uno de ellos los nombres de los adaptadores son ligeramente diferentes.   
 A continuación se muestra una lista de tipos de mashup y los correspondientes nombres de adaptador: 
 
-| Escenario |      Nombre de adaptador SQL|  Nombre de adaptador HTTP |  
+|Escenario |Nombre de adaptador SQL|Nombre de adaptador HTTP |  
 |--------------------------------------------------|------------------------------|-----------------------|
-| Adaptador **JavaScript** → Adaptador **JavaScript** | SQLAdapterJS                 | HTTPAdapterJS         |  
-| Adaptador **Java** → Adaptador **JavaScript** | SQLAdapterJava               | HTTPAdapterJS         |  
-| Adaptador **Java** → Adaptador **Java** | SQLAdapterJava               | HTTPAdapterJava       |
+|Adaptador **JavaScript** → Adaptador **JavaScript** |SQLAdapterJS                 |HTTPAdapterJS         |  
+|Adaptador **Java** → Adaptador **JavaScript** |SQLAdapterJava               |HTTPAdapterJS         |  
+|Adaptador **Java** → Adaptador **Java** |SQLAdapterJava               |HTTPAdapterJava       |
 
 
 ### Flujo de ejemplo de mashup 
