@@ -358,7 +358,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
        .....
 
     }
-	```
+    ```
 	
     apply plugin: 'com.google.gms.google-services'
 
@@ -367,7 +367,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
 **Remove the following entries :**
 
     ```xml
-        <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+    <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <category android:name="com.bmdpush.push" />
@@ -387,7 +387,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
         <uses-permission android:name="com.bmdpush.push.permission.C2D_MESSAGE" />
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 	
-	```
+    ```
 
 **Modify the following entries :**
 
