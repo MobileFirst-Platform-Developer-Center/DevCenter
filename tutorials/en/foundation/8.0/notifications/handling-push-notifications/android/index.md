@@ -371,11 +371,11 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
     <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
         <intent-filter>
             <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-            <category android:name="`your.application.package.name`" />
+            <category android:name="your.application.package.name" />
         </intent-filter>
         <intent-filter>
             <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-            <category android:name="`your.application.package.name`" />
+            <category android:name="your.application.package.name" />
         </intent-filter>
     </receiver>  
 	
@@ -385,7 +385,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
         </intent-filter>
     </service>
 
-    <uses-permission android:name="`your.application.package.name`.permission.C2D_MESSAGE" />
+    <uses-permission android:name="your.application.package.name.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
