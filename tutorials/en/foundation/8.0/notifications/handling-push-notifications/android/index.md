@@ -366,7 +366,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
 
 **Remove the following entries :**
 
-    ```xml
+```xml
     <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -386,38 +386,38 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
 
         <uses-permission android:name="com.bmdpush.push.permission.C2D_MESSAGE" />
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    ```
+```
 
 **Modify the following entries :**
 
-    ```xml
+```xml
     <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-    ```
+```
 
 **to :**
 
-    ```xml
+```xml
 		<service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-    ```
+```
 
 **add the following entry :**
 
-    ```xml
+```xml
     <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
     </service>
-    ```
+```
 	
  4. Open the app in Android Studio. Copy the `google-services.json` file that you have created in the **step-1** inside the app directory. Note that the `google-service.json` file includes the package name you have added.		
 		
