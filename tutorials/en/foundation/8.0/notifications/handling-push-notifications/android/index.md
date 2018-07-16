@@ -353,8 +353,9 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
     ```xml
     dependencies {
        ......
+       classpath 'com.google.gms:google-services:3.0.0'
        compile 'com.google.firebase:firebase-messaging:10.2.6'
-       compile 'com.ibm.mobilefirstplatform.clientsdk.android:push:3.6.5'
+       compile 'com.firebase:firebase-client-android:2.5.0'
        .....
 
     }
