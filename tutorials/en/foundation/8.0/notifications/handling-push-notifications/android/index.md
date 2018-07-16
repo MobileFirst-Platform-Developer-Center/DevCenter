@@ -389,7 +389,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
-**Modify the following entries :**
+**The below entries need modification :**
 
 ```xml
     <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
@@ -399,7 +399,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
     </service>
 ```
 
-**to :**
+**Modify the entries to :**
 
 ```xml
     <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
@@ -409,7 +409,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
     </service>
 ```
 
-**add the following entry :**
+**Add the following entry :**
 
 ```xml
     <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
