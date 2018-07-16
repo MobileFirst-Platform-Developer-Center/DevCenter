@@ -386,13 +386,12 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
 
         <uses-permission android:name="com.bmdpush.push.permission.C2D_MESSAGE" />
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-	
     ```
 
 **Modify the following entries :**
 
     ```xml
-        <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
