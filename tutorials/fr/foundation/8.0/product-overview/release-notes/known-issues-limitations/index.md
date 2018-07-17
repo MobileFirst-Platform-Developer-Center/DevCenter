@@ -20,13 +20,9 @@ Cette documentation décrit les limitations connues d'{{ site.data.keys.product_
 Si vous développez des applications globalisées, les restrictions sont les suivantes :
 
 * Traduction partielle : une partie du produit {{ site.data.keys.product }} v8.0, y compris sa documentation, est traduite dans les langues suivantes : chinois simplifié, chinois traditionnel, français, allemand, italien, japonais, coréen, portugais (Brésil), russe et espagnol. Le texte destiné aux utilisateurs est traduit.
-* Support bidirectionnel : Les applications qui sont générées par {{ site.data.keys.product }} ne
-sont
-pas entièrement prises en charge dans les langues bidirectionnelles. La mise en miroir des éléments d'interface graphique et le contrôle de la
-direction du texte ne sont pas mis à disposition par défaut. Cependant, aucune dépendance stricte n'existe dans les applications générées sur cette limitation. Les développeurs peuvent définir la compatibilité pour les langues bidirectionnelles en procédant à des ajustements manuels dans le code généré.
+* Support bidirectionnel : Les applications qui sont générées par {{ site.data.keys.product }} ne sont pas entièrement prises en charge dans les langues bidirectionnelles. La mise en miroir des éléments d'interface graphique et le contrôle de la direction du texte ne sont pas mis à disposition par défaut. Cependant, aucune dépendance stricte n'existe dans les applications générées sur cette limitation. Les développeurs peuvent définir la compatibilité pour les langues bidirectionnelles en procédant à des ajustements manuels dans le code généré.
 
-Bien que la traduction en hébreu existe pour la fonctionnalité de base de {{ site.data.keys.product }}, certains éléments de l'interface graphique
-ne sont pas mis en miroir.
+Bien que la traduction en hébreu existe pour la fonctionnalité de base de {{ site.data.keys.product }}, certains éléments de l'interface graphique ne sont pas mis en miroir.
 
 * Contraintes sur les noms d'adaptateur : les noms des adaptateurs doivent être des noms valides pour créer un nom de classe Java. En outre, ils doivent être composés uniquement des caractères suivants :
     * Lettres majuscules et minuscules (A à Z et a à z)
@@ -34,10 +30,8 @@ ne sont pas mis en miroir.
     * Trait de soulignement (_)
 
 * Caractères Unicode : les caractères Unicode en dehors du plan multilingue de base ne sont pas pris en charge.
-* Caractéristiques de langue et formulaire de normalisation C (NFC) : dans les cas d'utilisation suivants, les requêtes ne tiennent pas compte des caractéristiques de
-langue telles que l'insensibilité à l'accentuation, l'insensibilité à la casse et le mappage de 1 vers 2 pour que la fonction de recherche s'exécute correctement dans différentes langues, et la recherche sur des données n'utilise pas le formulaire de normalisation C (NFC).
-    * Dans {{ site.data.keys.mf_analytics_console }},
-lorsque vous créez un filtre personnalisé pour un graphique personnalisé. Cependant, dans cette console, la propriété de message utilise le formulaire de normalisation C (NFC) et tient compte de la sensibilité de la langue.
+* Caractéristiques de langue et formulaire de normalisation C (NFC) : dans les cas d'utilisation suivants, les requêtes ne tiennent pas compte des caractéristiques de langue telles que l'insensibilité à l'accentuation, l'insensibilité à la casse et le mappage de 1 vers 2 pour que la fonction de recherche s'exécute correctement dans différentes langues, et la recherche sur des données n'utilise pas le formulaire de normalisation C (NFC).
+    * Dans {{ site.data.keys.mf_analytics_console }}, lorsque vous créez un filtre personnalisé pour un graphique personnalisé. Cependant, dans cette console, la propriété de message utilise le formulaire de normalisation C (NFC) et tient compte de la sensibilité de la langue.
     * A partir de la console {{ site.data.keys.mf_console }}, lorsque vous recherchez une application sur la page de survol des applications, un adaptateur sur la page de survol des adaptateurs, une balise sur la page Push ou un appareil sur la page des appareils.
     * Dans les fonctions de recherche pour l'API JSONStore.
 
@@ -73,9 +67,7 @@ Le client mobile d'Application Center suit les conventions culturelles de l'appa
     * Si les premières lettres tapées sont dans une langue de gauche à droite, toute la direction du texte est automatiquement de gauche à droite.
 * La séquence de caractères et l'alignement du texte ne correspondent pas au mode culturel de la langue bidirectionnelle.
 * Les zones numériques n'analysent pas les valeurs numériques selon les règles de formatage des paramètres régionaux. La console affiche les nombres formatés, mais accepte en entrée uniquement des nombres *bruts* (non formatés). Par exemple : 1000, et non 1 000 ou 1,000.
-* Les temps de réponse sur la page Analyse de la console {{ site.data.keys.mf_console }} dépendent de plusieurs facteurs, tels que le
-matériel (mémoire vive, unités centrales), la quantité de données d'analyse accumulée et la mise en cluster de {{ site.data.keys.mf_analytics }}. Envisagez de tester la charge de travail avant d'intégrer
-{{ site.data.keys.mf_analytics }} à la production.
+* Les temps de réponse sur la page Analyse de la console {{ site.data.keys.mf_console }} dépendent de plusieurs facteurs, tels que le matériel (mémoire vive, unités centrales), la quantité de données d'analyse accumulée et la mise en cluster de {{ site.data.keys.mf_analytics }}. Envisagez de tester la charge de travail avant d'intégrer {{ site.data.keys.mf_analytics }} à la production.
 
 ### Outil de configuration du serveur
 {: #server-configuration-tool }
@@ -89,16 +81,13 @@ Vous pouvez également observer les restrictions ou des anomalies dans divers as
 
 * Vous devez définir le nom d'utilisateur et le mot de passe d'Application Center uniquement avec des caractères ASCII. Cette limitation existe car WebSphere Application Server (profils complets ou Liberty) ne prend pas en charge les mots de passe et les noms d'utilisateur non ASCII. Voir la rubrique Caractères qui ne sont pas valides pour les ID utilisateur et les mots de passe.
 * Sous Windows :
-    * Pour afficher les messages localisés dans le fichier journal que le serveur de test crée, vous devez ouvrir ce fichier journal
-avec le codage UTF8.
+    * Pour afficher les messages localisés dans le fichier journal que le serveur de test crée, vous devez ouvrir ce fichier journal avec le codage UTF8.
     * Les raisons de ces limitations sont les suivantes :
         * Le serveur de test est installé sur le profil WebSphere Application Server Liberty, qui crée un fichier journal avec le codage ANSI sauf pour ses messages localisés pour lesquels il utilise le codage UTF8.
 
 * Dans Java 7.0 Service Refresh 4-FP2 et les versions précédentes, vous ne pouvez pas coller de caractères Unicode qui ne font pas partie du plan multilingue de base dans la zone d'entrée. Pour éviter ce problème, créez le dossier de chemin manuellement et choisissez ce dossier au cours de l'installation.
-* Les noms personnalisés des boutons et des titres pour les méthodes d'alerte, de confirmation et d'invite doivent être courts afin d'éviter toute
-troncature à l'écran.
-* JSONStore ne traite pas la normalisation. Les fonctions de recherche pour l'API JSONStore ne prennent pas en compte les caractéristiques de
-langue telles que l'insensibilité à l'accentuation, l'insensibilité à la casse et le mappage de 1 vers 2.
+* Les noms personnalisés des boutons et des titres pour les méthodes d'alerte, de confirmation et d'invite doivent être courts afin d'éviter toute troncature à l'écran.
+* JSONStore ne traite pas la normalisation. Les fonctions de recherche pour l'API JSONStore ne prennent pas en compte les caractéristiques de langue telles que l'insensibilité à l'accentuation, l'insensibilité à la casse et le mappage de 1 vers 2.
 
 ### Adaptateurs et dépendances à des tiers
 {: #adapters-and-third-party-dependencies }
@@ -111,9 +100,7 @@ Apache HttpClient en interne. Si vous ajoutez une instance Apache HttpClient en 
 
 #### Bibliothèque cryptographique Bouncy Castle
 {: #bouncy-castle-cryptographic-library }
-{{ site.data.keys.product }} utilise
-Bouncy Castle même. Il peut être possible d'utiliser une autre version de Bouncy Castle dans l'adaptateur, mais les conséquences doivent être soigneusement testées : parfois, le code {{ site.data.keys.product_adj }} Bouncy
-Castle remplit certaines zones Singleton statiques des classes de package `javax.security` et peut empêcher la version de Bouncy Castle qui se trouve dans un adaptateur d'utiliser des fonctionnalités qui dépendent de ces zones.
+{{ site.data.keys.product }} utilise Bouncy Castle-même. Il peut être possible d'utiliser une autre version de Bouncy Castle dans l'adaptateur, mais les conséquences doivent être soigneusement testées : parfois, le code {{ site.data.keys.product_adj }} Bouncy Castle remplit certaines zones Singleton statiques des classes de package `javax.security` et peut empêcher la version de Bouncy Castle qui se trouve dans un adaptateur d'utiliser des fonctionnalités qui dépendent de ces zones.
 
 #### Implémentation Apache CXF des fichiers JAR
 {: #apache-cxf-implementaton-of-jar-files }
@@ -149,18 +136,11 @@ La mise à jour directe sur Windows n'est pas prise en charge dans V8.0.0.
 
 ### Limitations de la fonction FIPS 140-2
 {: #fips-104-2-feature-limitations }
-Les limitations connues suivantes s'appliquent lorsque vous utilisez la fonction FIPS 140-2
-dans {{ site.data.keys.product }} :
-* Le mode validé FIPS 140-2 ne s'applique qu'à la protection (chiffrement) des données locales qui sont stockées par la fonction JSONStore et à la
-protection des communications HTTPS entre le
-client {{ site.data.keys.product_adj }} et {{ site.data.keys.mf_server }}.
-    * Pour les communications HTTPS, seules les communications entre le client
-{{ site.data.keys.product_adj }} et
-{{ site.data.keys.mf_server }} utilisent les bibliothèques FIPS 140-2 sur
-le client. Les connexions directes aux autres serveurs ou services n'utilisent pas de bibliothèques FIPS 140-2.
+Les limitations connues suivantes s'appliquent lorsque vous utilisez la fonction FIPS 140-2 dans {{ site.data.keys.product }} :
+* Le mode validé FIPS 140-2 ne s'applique qu'à la protection (chiffrement) des données locales qui sont stockées par la fonction JSONStore et à la protection des communications HTTPS entre le client {{ site.data.keys.product_adj }} et {{ site.data.keys.mf_server }}.
+    * Pour les communications HTTPS, seules les communications entre le client {{ site.data.keys.product_adj }} et {{ site.data.keys.mf_server }} utilisent les bibliothèques FIPS 140-2 sur le client. Les connexions directes aux autres serveurs ou services n'utilisent pas de bibliothèques FIPS 140-2.
 * Cette fonction n'est prise en charge que sur les plateformes iOS et Android.
-    * Sous Android, cette fonction n'est prise en charge que sur des appareils ou des simulateurs utilisant l'architecture x86 ou armeabi. Elle n'est pas prise en charge sous Android avec une architecture armv5 ou armv6. C'est parce que la bibliothèque OpenSSL utilisée n'a pas obtenu la validation FIPS
-140-2 pour armv5 ou armv6 sous Android. La norme FIPS 140-2 n'est pas encore prise en charge dans l'architecture 64 bits, même si la bibliothèque {{ site.data.keys.product_adj }} prend en charge l'architecture 64 bits. La norme FIPS 140-2 peut être exécutée sur des appareils 64 bits s'il n'existe que des bibliothèques NDK natives 32 bits dans le projet.
+    * Sous Android, cette fonction n'est prise en charge que sur des appareils ou des simulateurs utilisant l'architecture x86 ou armeabi. Elle n'est pas prise en charge sous Android avec une architecture armv5 ou armv6. C'est parce que la bibliothèque OpenSSL utilisée n'a pas obtenu la validation FIPS 140-2 pour armv5 ou armv6 sous Android. La norme FIPS 140-2 n'est pas encore prise en charge dans l'architecture 64 bits, même si la bibliothèque {{ site.data.keys.product_adj }} prend en charge l'architecture 64 bits. La norme FIPS 140-2 peut être exécutée sur des appareils 64 bits s'il n'existe que des bibliothèques NDK natives 32 bits dans le projet.
     * Sous iOS, elle est prise en charge dans les architectures i386, x86_64, armv7, armv7s et arm64.
 * Cette fonction n'est opérationnelle qu'avec des applications hybrides (non natives).
 * Pour l'iOS natif, FIPS est activé à travers les bibliothèques FIPS iOS et est activé par défaut. Aucune action n'est nécessaire pour activer FIPS 140-2.
@@ -173,34 +153,25 @@ Lorsque vous appliquez un groupe de correctifs ou un correctif temporaire sur Ap
 
 ### Architectures JSONStore prises en charge
 {: #jsonstore-supported-architectures }
-Pour Android, JSONStore prend en charge les
-architectures suivantes : ARM, ARM version 7 et x86 32 bits. Les autres architectures ne sont pas prises en charge actuellement. La tentative
-d'utilisation d'autres architectures génère des exceptions et des pannes d'application potentielles.
+Pour Android, JSONStore prend en charge les architectures suivantes : ARM, ARM version 7 et x86 32 bits. Les autres architectures ne sont pas prises en charge actuellement. La tentative d'utilisation d'autres architectures génère des exceptions et des pannes d'application potentielles.
 
 JSON Store n'est pas pris en charge pour les applications natives Windows.
 
 ### Limitations du serveur Liberty
 {: #liberty-server-limitations }
-Si vous utilisez le serveur Liberty sur un kit JDK 7 32 bits, il se peut qu'Eclipse ne démarre pas et que le message d'erreur suivant s'affiche : "Error occurred during initialization of VM. Could not reserve enough space
-for object heap. Error: Could not create the Java Virtual Machine. Error: A fatal exception has occurred. Program will exit."
+Si vous utilisez le serveur Liberty sur un kit JDK 7 32 bits, il se peut qu'Eclipse ne démarre pas et que le message d'erreur suivant s'affiche : "Error occurred during initialization of VM. Could not reserve enough space for object heap. Error: Could not create the Java Virtual Machine. Error: A fatal exception has occurred. Program will exit."
 
 Pour résoudre ce problème, utilisez le kit JDK 64 bits avec Eclipse 64 bits et Windows 64 bits. Si vous utilisez le kit JDK 32 bits sur un poste 64 bits, vous pouvez configurer les préférences de la machine virtuelle Java **mx512m** et **-Xms216m**.
 
 ### Limitations du jeton LTPA
 {: #ltpa-token-limitations }
-Une exception `SESN0008E`
-se produit lorsqu'un jeton LTPA expire avant la session utilisateur.
+Une exception `SESN0008E` se produit lorsqu'un jeton LTPA expire avant la session utilisateur.
 
-Le jeton LTPA est
-associé à la session utilisateur en cours. Si la session
-expire avant le jeton LTPA, une autre est automatiquement créée. A l'inverse, l'exception suivante se produit :
+Le jeton LTPA est associé à la session utilisateur en cours. Si la session expire avant le jeton LTPA, une autre est automatiquement créée. A l'inverse, l'exception suivante se produit :
 
-`com.ibm.websphere.servlet.session.UnauthorizedSessionRequestException: SESN0008E : Un utilisateur authentifié en tant qu'anonyme a tenté d'accéder
-à une session appartenant à {nom d'utilisateur}`
+`com.ibm.websphere.servlet.session.UnauthorizedSessionRequestException: SESN0008E : Un utilisateur authentifié en tant qu'anonyme a tenté d'accéder à une session appartenant à {nom d'utilisateur}`
 
-Pour
-résoudre cette limitation, vous devez forcer l'expiration de la session utilisateur
-lorsque le jeton LTPA expire.
+Pour résoudre cette limitation, vous devez forcer l'expiration de la session utilisateur lorsque le jeton LTPA expire.
 * Sur WebSphere Application Server Liberty, affectez la valeur true à l'attribut httpSession invalidateOnUnauthorizedSessionRequestException dans le fichier server.xml.
 * Sur WebSphere Application Server, ajoutez la propriété personnalisée de gestion de sessions InvalidateOnUnauthorizedSessionRequestException avec la valeur true pour résoudre le problème.
 
