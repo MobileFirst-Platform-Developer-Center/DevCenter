@@ -93,8 +93,7 @@ Estos mandatos añaden los archivos de {{ site.data.keys.product }} Native SDK, 
   
     **Nota:** Los mandatos puede tardar unos minutos en completarse.
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante**: A partir de aquí, utilice el archivo `[NombreProyecto].xcworkspace` para abrir el proyecto en Xcode.
-**No** utilice el archivo `[NombreProyecto].xcodeproj`.
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante**: A partir de aquí, utilice el archivo `[ProjectName].xcworkspace` para abrir el proyecto en Xcode. **No** utilice el archivo `[NombreProyecto].xcodeproj`.
 Un proyecto basado en CocoaPods está gestionado como un espacio de trabajo con la aplicación (el ejecutable) y la biblioteca (todas las dependencias de proyecto recuperadas por el gestor de CocoaPods).
 
 
@@ -285,13 +284,13 @@ Los releases de SDK se pueden encontrar en el [repositorio CocoaPods](https://co
 Ubicado en la raíz del proyecto, este archivo define las propiedades del lado del cliente utilizadas para registrar la aplicación iOS en {{ site.data.keys.mf_server }}.
 
 
-| Propiedad | Descripción | Valores de ejemplo |
+|Propiedad |Descripción |Valores de ejemplo |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | Protocolo de comunicación con {{ site.data.keys.mf_server }}.             | http o https  |
-| host        | Nombre de host de {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| port        | Puerto de {{ site.data.keys.mf_server }}.                           | 9080           |
-| wlServerContext     | Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente. | en             |
+|protocol    |Protocolo de comunicación con {{ site.data.keys.mf_server }}.             |http o https  |
+|host        |Nombre de host de {{ site.data.keys.mf_server }}.                            |192.168.1.63   |
+|port        |Puerto de {{ site.data.keys.mf_server }}.                           |9080           |
+|wlServerContext     |Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. |/mfp/          |
+|languagePreferences |Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente. |en             |
 
 ## Bitcode y TLS 1.2
 {: #bitcode-and-tls-12 }

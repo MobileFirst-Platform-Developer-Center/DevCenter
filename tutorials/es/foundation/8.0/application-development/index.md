@@ -147,7 +147,7 @@ Para obtener información sobre {{ site.data.keys.mf_server }} y cómo utilizarl
 {{ site.data.keys.mf_server }} consta de los siguientes componentes.
 Todos estos componentes también se incluyen en {{ site.data.keys.mf_server }}.
 En los casos simples, todos se ejecutan en el mismo servidor de aplicaciones, sin embargo, en un entorno de producción o prueba, los componentes se puede ejecutar en diferentes servidores de aplicaciones.
-Para obtener información sobre posibles topologías para estos componentes de {{ site.data.keys.mf_server }}, consulte [Topologías y los flujos de red](../installation-configuration/production/topologies).
+Para obtener información sobre posibles topologías para estos componentes de {{ site.data.keys.mf_server }}, consulte [Topologías y los flujos de red](../installation-configuration/production/prod-env/topologies).
 
 ### {{ site.data.keys.product_adj }} y el servicio de administración de {{ site.data.keys.mf_server }}
 
@@ -214,7 +214,7 @@ Cuando despliegue su aplicación en el entorno de producción, podrá hacerlo en
 
 #### Localmente
 {: #on-premises }
-> Para obtener información sobre cómo instalar y configurar {{ site.data.keys.mf_server }} en un entorno local, consulte [Instalación de IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver).
+> Para obtener información sobre cómo instalar y configurar {{ site.data.keys.mf_server }} en un entorno local, consulte [Instalación de IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/prod-env/appserver).
 
 
 #### En la nube

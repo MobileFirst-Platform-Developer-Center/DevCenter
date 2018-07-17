@@ -441,88 +441,96 @@ La vista previa del Navegador simple, los recursos web de la aplicación se repr
     ◯ ios
 	```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Consejo** Aprenda más sobre los distintos mandatos de interfaz de línea de mandatos en la guía de aprendizaje [Utilización de la interfaz de línea de mandatos (CLI) para gestionar artefactos de {{ site.data.keys.product_adj }} ](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Consejo:** Obtenga más información acerca de los numerosos mandatos CLI en el tutorial [Utilización del CLI para administrar artefactos {{ site.data.keys.product_adj }}](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
 
-### Vista previa dinámica
+### Vista previa en directo 
 {: #live-preview }
-El código de la aplicación (HTML, CSS y JS) ahora se puede editar en tiempo real con una vista previa dinámica.
+El código de la aplicación (HTML, CSS y JS) puede editarse ahora en tiempo real con la
+vista previa en directo.   
 Después de realizar un cambio a un recurso, guarde el cambio y dicho cambio será reflejado de forma inmediata en el navegador.
 
-### Recarga dinámica
-{: #live-reload }
-Para obtener un efecto similar al realizar una vista previa en dispositivos físicos o en simuladores/emuladores, añada el plugin **cordova-plugin-livereload**.
-Para obtener las instrucciones de uso, [consulte la página de plugins de GitHub](https://github.com/omefire/cordova-plugin-livereload).
 
-### Ejecución de la aplicación en un emulador o en un dispositivo físico
+
+### Recarga en directo 
+{: #live-reload }
+Para obtener un efecto similar al realizar una vista previa en dispositivos físicos o en simuladores/emuladores, añada el plugin **cordova-plugin-livereload**. Para obtener las instrucciones de uso,[ consulte la página de plugins GitHub](https://github.com/omefire/cordova-plugin-livereload).
+
+### Ejecución de la aplicación en el emulador o en un dispositivo físico 
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-Para emular la aplicación ejecute el mandato de interfaz de línea de mandatos (CLI) Cordova `cordova emulate ios|android|windows`.
-Por ejemplo:
+Para emular la aplicación, ejecute el mandato Cordova CLI `cordova emulate ios|android|windows`. Por ejemplo:
+
 
 ```bash
 cordova emulate ios
 ```
 
-Para ejecutar la aplicación en un dispositivo físico, conectado a la estación de trabajo de desarrollo ejecute el mandato de interfaz de línea de mandatos (CLI) Cordova `cordova run ios|android|windows`.
-Por ejemplo:
+Para ejecutar la aplicación en un dispositivo físico, conectado a la estación de trabajo de desarrollo ejecute el mandato
+Cordova CLI `cordova run ios|android|windows`. Por ejemplo:
+
 
 ```bash
 cordova run ios
 ```
 
-## Implementación de código JavaScript
+## Implementación de código de JavaScript Code
 {: #implementing-javascript-code }
-La edición de los recursos WebView es más adecuada mediante un entorno de desarrollo integrado (IDE) que proporciona cumplimentación automática para JavaScript.
+La edición de los recursos WebView es más adecuada mediante un entorno integrado (IDE) que proporciona cumplimentación automática para JavaScript.
 
 Xcode, Android Studio y Visual Studio proporcionan funcionalidades de edición completas para Objective C, Swift, C# y Java, sin embargo, pueden estar limitadas para dar soporte a la edición en JavaScript.
 Para facilitar la edición de JavaScript, el proyecto de Cordova de {{ site.data.keys.product_adj }} contiene un archivo de definición para poder cumplimentar de forma automática elementos de API de {{ site.data.keys.product_adj }}.
-Cada plugin Cordova de {{ site.data.keys.product_adj }} proporciona un archivo de configuración `d.ts` para cada archivo JavaScript de {{ site.data.keys.product_adj }}.
-El nombre de archivo `d.ts` coincide con el correspondiente nombre de archivo JavaScript y se encuentra ubicado en la carpeta del plugin.
-Por ejemplo, para el {{ site.data.keys.product_adj }} SDK principal el archivo se encuentra en: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
 
-Los archivos de configuración `d.ts` proporcionan funcionalidades para cumplimentar de forma automática en todos los IDE con soporte de TypeScript: [TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript).
 
-Los recursos (archivos HTML y JavaScript) para WebView se encuentran en la carpeta **[myapp]\www**.
-Cuando un proyecto se compila con el mandato cordova build, o cuando se ejecuta el mandato cordova prepare, estos recursos se copian a la correspondiente carpeta **www** en la carpeta **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www** o **[myapp]\platforms\windows\www**.
+Cada plugin Cordova de {{ site.data.keys.product_adj }} proporciona un archivo de configuración `d.ts` para cada archivo JavaScript  de {{ site.data.keys.product_adj }}. El nombre del archivo `d.ts` coincide con el correspondiente nombre de archivo JavaScript y se encuentra ubicado en la carpeta del plugin. Por ejemplo, para el SDK principal  {{ site.data.keys.product_adj }} el archivo se encuentra en: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
+
+Los archivos de configuración `d.ts` proporcionan funcionalidades de autocompletado para los IDEs
+con soporte TypeScript: [TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript).
+
+Los recursos (archivos HTML y JavaScript) para WebView se encuentran en la carpeta **[myapp]\www**. Cuando el proyecto se compila con el mandato cordova build, o cuando se ejecuta el mandato cordova prepare, estos recursos se copian a la correspondiente carpeta
+**www** en la carpeta **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www**, o **[myapp]\platforms\windows\www**.
 
 Cuando abre la carpeta de aplicación principal con uno de los anteriores IDE, se conserva el contexto.
-El editor IDE estará ahora enlazado a los archivos `d.ts` relevantes y los elementos de API de {{ site.data.keys.product_adj }} se cumplimentarán de forma automática a medida que escribe.
+El editor IDE estará ahora enlazado a los archivos `d.ts` relevantes y los elementos de la API {{ site.data.keys.product_adj }} se autocompletarán a medida  que escribe.
 
-## Soporte de CrossWalk para Android
+## Soporte de CrossWalk para Android 
 {: #crosswalk-support-for-android }
-Las aplicaciones Cordova para la plataforma Android tiene su instancia de WebView predeterminada con [CrossWalk WebView](https://crosswalk-project.org/).
-
+En las aplicaciones de Cordova para la plataforma Android se pueden sustituir sus WebView predeterminadas con [CrossWalk WebView](https://crosswalk-project.org/).  
 Para añadirlo:
 
-1. Desde una **línea de mandatos**, ejecute el mandato:
+
+
+1. Desde una línea de **línea de mandatos**, ejecute el mandato:
 
    ```bash
    cordova plugin add cordova-plugin-crosswalk-webview
    ```
 
    Este mandato añadirá CrossWalk WebView a la aplicación.
+  
 Internamente, {{ site.data.keys.product_adj }} Cordova SDK ajustará la actividad del proyecto Android para utilizarlo.
+
+
 
 2. Compile el proyecto ejecutando el mandato:
 
    ```bash
-   cordova build
-   ```
+cordova build```
 
 ## Soporte de WKWebView para iOS
 {: #wkwebview-support-for-ios }
-La instancia de UIWebView predeterminada utilizada en aplicaciones Cordova iOS se puede sustituir con [WKWebView de Apple](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/).
+El UIWebView predeterminado utilizado en las aplicaciones Cordova iOS pueden sustituirse
+con [WKWebView de Apple](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/).  
 Para añadirlo, ejecute el siguiente mandato desde una ventana de línea de mandatos: `cordova plugin add cordova-plugin-wkwebview-engine`.
 
-> Aprenda más sobre el [plugin Cordova WKWebView](https://github.com/apache/cordova-plugin-wkwebview-engine).
+> Obtenga más información acerca del plugin [Cordova WKWebView](https://github.com/apache/cordova-plugin-wkwebview-engine).
 
-## Lectura adicional
+## Lectura adicional 
 {: #further-reading }
-Aprenda más sobre Cordova:
+Obtenga más información acerca de Cordova:
 
-- [Visión general](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
-- [Procedimientos recomendados, realización de pruebas, depuración y consideraciones sobre Cordova](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
-- [Cómo empezar a desarrollar aplicaciones Cordova](https://cordova.apache.org/#getstarted)
+- [Visión general de Cordova](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
+- [Procedimientos recomendados, realización de pruebas, depuración, consideraciones y mantenimiento de Cordova](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
+- [Iniciación con el desarrollo de las aplicaciones de Cordova](https://cordova.apache.org/#getstarted)
 
-## Guías de aprendizaje con las que continuar
+## Guías de aprendizaje con las que continuar 
 {: #tutorials-to-follow-next }
-Empiece [añadiendo el SDK de MobileFirst a su aplicación Cordova](../../application-development/sdk/cordova) y revise las características que {{ site.data.keys.product_adj }} proporciona en la sección de [Todas las guías de aprendizaje](../../all-tutorials/).
+Empiece con [añadiendo MobileFirst SDK a la aplicación Cordova](../../application-development/sdk/cordova), y revise las funciones   {{ site.data.keys.product_adj }} provistas en la sección [Todos los tutoriales](../../all-tutorials/).

@@ -21,7 +21,7 @@ weight: 3
 
 | アダプター・タイプ | 条件 | 
 |--------------|-----------|
-| Java | PushAPI または SecurityAPI インターフェースを使用している | 
+| Java | PushAPI または SecurityAPI のインターフェースを使用している | 
 | JavaScript | {::nomarkdown}<ul><li>IBM Worklight V6.2 以前を使用してビルドされた。</li><li>HTTP でも SQL でもない接続タイプを使用している。</li><li>securityTest のカスタマイズが適用されたプロシージャーが含まれている</li><li>ユーザー ID を使用してバックエンドに接続するプロシージャーが含まれている</li><li>以下のいずれかの API を使用している<ul><li>WL.Device.*</li><li>WL.Geo.\*</li><li>WL.Server.readSingleJMSMessage</li><li>WL.Server.readAllJMSMessages</li><li>WL.Server.writeJMSMessage</li><li>WL.Server.requestReplyJMSMessage</li><li>WL.Server.getActiveUser</li><li>WL.Server.setActiveUser</li><li>WL.Server.getCurrentUserIdentity</li><li>WL.Server.getCurrentDeviceIdentity</li><li>WL.Server.createEventSource</li><li>WL.Server.createDefaultNotification</li><li>WL.Server.getUserNotificationSubscription</li><li>WL.Server.notifyAllDevices</li><li>WL.Server.notifyDeviceToken</li><li>WL.Server.notifyDeviceSubscription</li><li>WL.Server.sendMessage</li><li>WL.Server.createEventHandler</li><li>WL.Server.setEventHandlers</li><li>WL.Server.setApplicationContext</li><li>WL.Server.fetchNWBusinessObject</li><li>WL.Server.createNWBusinessObject</li><li>WL.Server.deleteNWBusinessObject</li><li>WL.Server.updateNWBusinessObject</li><li>WL.Server.getBeaconsAndTriggers</li><li>WL.Server.signSoapMessage</li><li>WL.Server.createSQLStatement</li></ul></li></ul>{:/} |
 
 ## {{ site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの Java アダプターのマイグレーション

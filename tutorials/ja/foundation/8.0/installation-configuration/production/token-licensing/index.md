@@ -2,7 +2,7 @@
 layout: tutorial
 title: トークン・ライセンスに関するインストールおよび構成
 breadcrumb_title: Token licensing
-weight: 6
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
@@ -36,7 +36,7 @@ weight: 6
 
 #### サポートされるトポロジー:
 {: #supported-topologies }
-トークン・ライセンスでサポートされるトポロジーは、[{{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} ライブ更新サービス、および {{ site.data.keys.product_adj }} ランタイムでの制約](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)にリストされています。
+トークン・ライセンスでサポートされるトポロジーは、[{{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} ライブ更新サービス、および {{ site.data.keys.product_adj }} ランタイムでの制約](../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)にリストされています。
 
 ### ネットワーク要件
 {: #network-requirement }
@@ -46,7 +46,7 @@ weight: 6
 
 * ライセンス・マネージャー・デーモン (**lmgrd**) ポート - デフォルトのポート番号は 27000 です。
 * ベンダー・デーモン (**ibmratl**) ポート
- 
+
 これらのポートを構成して静的な値が使用されるようにするには、How to serve a license key to client machines through a firewall を参照してください。
 
 ### インストール・プロセス
@@ -73,18 +73,18 @@ weight: 6
 
    #### グラフィック・モードでのインストール
    製品をグラフィック・モードでインストールする場合、インストール中に**「汎用設定 (General settings)」**パネルで**「Rational License Key Server でトークン・ライセンスをアクティブにする (Activate token licensing with the Rational License Key Server)」**オプションを選択します。
-    
+
    ![IBM Installation Manager でのトークン・ライセンスのアクティブ化](licensing_with_tokens_activate.jpg)
-    
+
    #### コマンド・ライン・モードでのインストール
    サイレント・モードでインストールする場合、応答ファイル内の **user.licensed.by.tokens** パラメーターに値 **true** を設定します。  
    例えば、以下を使用できます。
-    
+
    ```bash
    imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.use.ios.edition=false,user.licensed.by.tokens=true -acceptLicense
    ```
-    
-2. 製品のインストールが完了した後、{{ site.data.keys.mf_server }} をアプリケーション・サーバーにデプロイします。 詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../appserver)を参照してください。
+
+2. 製品のインストールが完了した後、{{ site.data.keys.mf_server }} をアプリケーション・サーバーにデプロイします。 詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../prod-env/appserver)を参照してください。
 
 3. トークン・ライセンス用に {{ site.data.keys.mf_server }} を構成します。 手順はアプリケーション・サーバーによって異なります。
 
@@ -104,24 +104,24 @@ weight: 6
 {: #installing-rational-common-licensing-libraries }
 
 1. Rational Common Licensing ネイティブ・ライブラリーを選択します。 ご使用のオペレーティング・システムと、Apache Tomcat が稼働している Java ランタイム環境 (JRE) のビット・バージョンに基づいて、**product\_install\_dir/MobileFirstServer/tokenLibs/bin/your\_corresponding\_platform/the\_native\_library\_file** にある正しいネイティブ・ライブラリーを選択する必要があります。 例えば、Linux x86 と 64 ビット JRE を使用している場合、ライブラリーは **product\_install\_dir/MobileFirstServer/tokensLibs/bin/Linux\_x86\_64/librcl\_ibmratl.so** にあります。
-2. ネイティブ・ライブラリーを、{{ site.data.keys.mf_server }} 管理サービスを実行するコンピューターにコピーします。 ディレクトリーは **${CATALINA_HOME}/bin** とすることができます。 
+2. ネイティブ・ライブラリーを、{{ site.data.keys.mf_server }} 管理サービスを実行するコンピューターにコピーします。 ディレクトリーは **${CATALINA_HOME}/bin** とすることができます。
     > **注:** **${CATALINA_HOME}** は、Apache Tomcat のインストール・ディレクトリーです。
 3. **rcl_ibmratl.jar** ファイルを **${CATALINA_HOME}/lib** にコピーします。 **rcl_ibmratl.jar** ファイルは、Rational Common Licensing Java ライブラリーであり、**product\_install\_dir/MobileFirstServer/tokenLibs** ディレクトリーにあります。 このライブラリーは、ステップ 2 でコピーしたネイティブ・ライブラリーを使用し、Apache Tomcat によって一度だけロードすることができます。 このファイルは **${CATALINA_HOME}/lib** ディレクトリーか、または、Apache Tomcat 共通クラス・ローダーのパス中の任意のディレクトリーに置かれる必要があります。
     > **重要:** Apache Tomcat の Java 仮想マシン (JVM) には、コピーされたネイティブ・ライブラリーおよび Java ライブラリーに対する読み取り特権および実行特権が必要です。 両方のコピーされたファイルは、少なくともオペレーティング・システムでのアプリケーション・サーバー・プロセスのために、読み取り可能かつ実行可能である必要もあります。
 4. アプリケーション・サーバーの JVM による Rational Common Licensing ライブラリーへのアクセスを構成します。 どのオペレーティング・システムの場合でも、以下の行を追加することによって **${CATALINA_HOME}/bin/setenv.bat** ファイル (または、UNIX では **setenv.sh** ファイル) を構成します。
 
    **Windows:**  
-    
+
    ```bash
    set CATALINA_OPTS=%CATALINA_OPTS% -Djava.library.path=absolute_path_to_the_previous_bin_directory
    ```
-    
+
    **UNIX:**
 
    ```bash
    CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=absolute_path_to_the_previous_bin_directory"
    ```
-    
+
    > **注:** 管理サービスが実行されているサーバーの構成フォルダーを移動する場合、**java.library.path** を更新して新しい絶対パスにする必要があります。
 
 5. Rational License Key Server にアクセスするために {{ site.data.keys.mf_server }} を構成します。 **${CATALINA_HOME}/conf/server.xml** ファイル内で、管理サービス・アプリケーションの `Context` エレメントを探し、以下の JNDI 構成行に追加します。
@@ -137,7 +137,7 @@ weight: 6
 
 ### Apache Tomcat サーバー・ファームでのインストール
 {: #installing-on-apache-tomcat-server-farm }
-Apache Tomcat サーバー・ファームで {{ site.data.keys.mf_server }} の接続を構成するためには、{{ site.data.keys.mf_server }} 管理サービスが実行されているサーバー・ファームの各ノードについて、『[Rational Common Licensing ライブラリーのインストール](#installing-rational-common-licensing-libraries)』で説明されているすべてのステップを実行する必要があります。 サーバー・ファームについて詳しくは、[サーバー・ファームのトポロジー](../topologies/#server-farm-topology)および [サーバー・ファームのインストール](../appserver/#installing-a-server-farm)を参照してください。
+Apache Tomcat サーバー・ファームで {{ site.data.keys.mf_server }} の接続を構成するためには、{{ site.data.keys.mf_server }} 管理サービスが実行されているサーバー・ファームの各ノードについて、『[Rational Common Licensing ライブラリーのインストール](#installing-rational-common-licensing-libraries)』で説明されているすべてのステップを実行する必要があります。 サーバー・ファームについて詳しくは、[サーバー・ファームのトポロジー](../prod-env/topologies/#server-farm-topology)および [サーバー・ファームのインストール](../prod-env/appserver/#installing-a-server-farm)を参照してください。
 
 ## WebSphere Application Server Liberty プロファイルにインストールされた {{ site.data.keys.mf_server }} と Rational License Key Server の接続
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-liberty-profile-to-the-rational-license-key-server }
@@ -153,9 +153,9 @@ Apache Tomcat サーバー・ファームで {{ site.data.keys.mf_server }} の�
 1. Rational Common Licensing クライアント用の共有ライブラリーを定義します。 このライブラリーはネイティブ・コードを使用し、アプリケーション・サーバーによって一度だけロードできます。 したがって、これを使用するアプリケーションはこれを共通ライブラリーとして参照する必要があります。
    * Rational Common Licensing ネイティブ・ライブラリーを選択します。 ご使用のオペレーティング・システムと、Liberty プロファイルが稼働している Java ランタイム環境 (JRE) のビット・バージョンに基づいて、**product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file** にある正しいネイティブ・ライブラリーを選択する必要があります。 例えば、Linux x86 と 64 ビット JRE を使用している場合、ライブラリーは **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so** にあります。
    * ネイティブ・ライブラリーを、{{ site.data.keys.mf_server }} 管理サービスを実行するコンピューターにコピーします。 ディレクトリーは **${shared.resource.dir}/rcllib** とすることができます。 **${shared.resource.dir}** ディレクトリーは通常は **usr/shared/resources** 内にあります。ここで、usr は、usr/servers ディレクトリーも含んでいるディレクトリーです。 **${shared.resource.dir}** の標準的なロケーションについて詳しくは、[WebSphere Application Server Liberty Core - Directory locations and properties ](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc)を参照してください。 **rcllib** フォルダーが存在しない場合は、このフォルダーを作成し、その後でネイティブ・ライブラリー・ファイルをそこにコピーしてください。
-    
+
    > **注:** アプリケーション・サーバーの Java 仮想マシン (JVM) に、ネイティブ・ライブラリーに対する読み取り特権と実行特権の両方があることを確認してください。 Windows では、アプリケーション・サーバーの JVM に、コピーされたネイティブ・ライブラリーに対する実行可能権限がない場合、以下の例外がアプリケーション・サーバー・ログに記録されます。
-    
+
    ```bash
    com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Access is denied).
    ```
@@ -188,9 +188,9 @@ Apache Tomcat サーバー・ファームで {{ site.data.keys.mf_server }} の�
    <classloader delegation="parentLast" commonLibraryRef="MobileFirst/JDBC/oracle">
     </classloader>
    ```
-    
+
    以下のように、Rational Common Licensing ライブラリーを共通ライブラリーとして Oracle ライブラリーに付加する必要もあります。
-    
+
    ```xml
    <classloader delegation="parentLast"
          commonLibraryRef="MobileFirst/JDBC/oracle,RCLLibrary">
@@ -201,18 +201,18 @@ Apache Tomcat サーバー・ファームで {{ site.data.keys.mf_server }} の�
    ```xml
    -Djava.library.path=Absolute_path_to_the_previously_created_rcllib_folder
    ```
-    
+
    > **注:** 管理サービスが実行されているサーバーの構成フォルダーを移動する場合、**java.library.path** を更新して新しい絶対パスにする必要があります。
 
    **${wlp.user.dir}** ディレクトリーは通常は **liberty_install_dir/usr** 内にあり、servers ディレクトリーを含みます。 ただし、ロケーションはカスタマイズすることができます。 詳しくは、[Liberty プロファイル環境のカスタマイズ](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_customvars.html?lang=en&view=kc)を参照してください。
-    
+
 2. Rational License Key Server にアクセスするために {{ site.data.keys.mf_server }} を構成します。
 
    **${wlp.user.dir}/servers/server_name/server.xml** ファイルに以下の JNDI 構成行を追加します。
-    
+
    ```xml
-   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/> 
-   <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/> 
+   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/>
+   <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/>
    ```
    * **rlks_hostname** は、Rational License Key Server のホスト名です。
    * **rlks_port** は、Rational License Key Server のポートです。 デフォルトでは、この値は 27000 です。
@@ -221,7 +221,7 @@ Apache Tomcat サーバー・ファームで {{ site.data.keys.mf_server }} の�
 
 ### Liberty プロファイル・サーバー・ファームでのインストール
 {: #installing-on-liberty-profile-server-farm }
-Liberty プロファイル・サーバー・ファームで {{ site.data.keys.mf_server }} の接続を構成するためには、{{ site.data.keys.mf_server }} 管理サービスが実行されているサーバー・ファームの各ノードについて、『[Rational Common Licensing ライブラリーのインストール](#installing-rational-common-licensing-libraries)』で説明されているすべてのステップを実行する必要があります。 サーバー・ファームについて詳しくは、[サーバー・ファームのトポロジー](../topologies/#server-farm-topology)および [サーバー・ファームのインストール](../appserver/#installing-a-server-farm)を参照してください。
+Liberty プロファイル・サーバー・ファームで {{ site.data.keys.mf_server }} の接続を構成するためには、{{ site.data.keys.mf_server }} 管理サービスが実行されているサーバー・ファームの各ノードについて、『[Rational Common Licensing ライブラリーのインストール](#installing-rational-common-licensing-libraries)』で説明されているすべてのステップを実行する必要があります。 サーバー・ファームについて詳しくは、[サーバー・ファームのトポロジー](../prod-env/topologies/#server-farm-topology)および [サーバー・ファームのインストール](../prod-env/appserver/#installing-a-server-farm)を参照してください。
 
 ## WebSphere Application Server にインストールされた {{ site.data.keys.mf_server }} と Rational License Key Server の接続
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-to-the-rational-license-key-server }
@@ -236,13 +236,13 @@ Liberty プロファイル・サーバー・ファームで {{ site.data.keys.mf
 
 1. Rational Common Licensing ライブラリー用の共有ライブラリーを定義します。 このライブラリーはネイティブ・コードを使用し、アプリケーション・サーバーのライフサイクル中に一度だけクラス・ローダーによってロードできます。 この理由のため、このライブラリーは共有ライブラリーとして宣言され、{{ site.data.keys.mf_server }} 管理サービスを実行するすべてのアプリケーション・サーバーに関連付けられます。 このライブラリーを共有ライブラリーとして宣言する理由について詳しくは、[共有ライブラリーでのネイティブ・ライブラリーの構成](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tcws_sharedlib_nativelib.html?view=kc)を参照してください。
     * Rational Common Licensing ネイティブ・ライブラリーを選択します。 ご使用のオペレーティング・システムと、WebSphere Application Server が稼働している Java ランタイム環境 (JRE) のビット・バージョンに基づいて、**product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file** にある正しいネイティブ・ライブラリーを選択する必要があります。
-    
+
         例えば、Linux x86 と 64 ビット JRE を使用している場合、ライブラリーは **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so** にあります。
-    
+
         スタンドアロン WebSphere Application Server または WebSphere Application Server Network Deployment インストール済み環境の Java ランタイム環境のビット・バージョンを判別するには、**versionInfo.bat** (Windows の場合) または **versionInfo.sh** (UNIX の場合) を **bin** ディレクトリーから実行します。 **versionInfo.sh** ファイルは **/opt/IBM/WebSphere/AppServer/bin** にあります。 **「インストール済み製品」** セクションの「アーキテクチャー」の値を確認してください。 「アーキテクチャー」値で明示的に示されているか、64 または _64 という接尾部が付いている場合、Java ランタイム環境 は 64 ビットです。
     * ご使用のプラットフォームに対応するネイティブ・ライブラリーをオペレーティング・システムのフォルダーに入れます。 例えば、**/opt/IBM/RCL_Native_Library/** などです。
     * **rcl_ibmratl.jar** ファイルを **/opt/IBM/RCL_Native_Library/** にコピーします。 **rcl_ibmratl.jar** ファイルは、Rational Common Licensing Java ライブラリーであり、**product_install_dir/MobileFirstServer/tokenLibs ディレクトリー**にあります。
-    
+
         > **重要:**アプリケーション・サーバーの Java 仮想マシン (JVM) には、コピーされたネイティブ・ライブラリーおよび Java ライブラリーに対する読み取り特権および実行特権が必要です。 両方のコピーされたファイルは、少なくともオペレーティング・システムでのアプリケーション・サーバー・プロセスのために、読み取り可能かつ実行可能である必要もあります。    
     * WebSphere Application Server 管理コンソールで共有ライブラリーを宣言します。
         * WebSphere Application Server 管理コンソールにログインします。
@@ -252,10 +252,10 @@ Liberty プロファイル・サーバー・ファームで {{ site.data.keys.mf
         * 「名前」フィールドにライブラリーの名前を入力します。 例えば、「RCL Shared Library」などです。
         * 「クラスパス」フィールドに、**rcl_ibmratl.jar** ファイルのパスを入力します。 例えば、**/opt/IBM/RCL_Native_Library/rcl_ibmratl.jar** などです。
         * **「OK」**をクリックし、変更を保存します。 この設定は、サーバーが再始動されると有効になります。
-    
+
         > **注:** このライブラリーのネイティブ・ライブラリー・パスは、ステップ 3 で、サーバーの Java 仮想マシンの **ld.library.path** プロパティーに設定されます。
     * 共有ライブラリーを、{{ site.data.keys.mf_server }} 管理サービスを実行するすべてのサーバーと関連付けます。
-    
+
         共有ライブラリーをサーバーに関連付けることによって、共有ライブラリーが複数のアプリケーションで使用できるようになります。 {{ site.data.keys.mf_server }} 管理サービス用にのみ Rational Common Licensing クライアントが必要な場合、隔離されたクラス・ローダーを使用して共有ライブラリーを作成し、それを管理サービス・アプリケーションと関連付けることができます。
 
         以下の手順は、ライブラリーを 1 つのサーバーと関連付ける手順です。 WebSphere Application Server Network Deployment の場合、 {{ site.data.keys.mf_server }} 管理サービスを実行するすべてのサーバーについてこの手順を実行する必要があります。    
@@ -444,5 +444,3 @@ WebSphere Application Server Network Deployment の各ノードが Rational Comm
 
 * **rcl_ibmratl.jar** Java ライブラリーが、適切なアクセス権を持っていない。 このエラーの後に次の例外が発生する可能性があります: java.util.zip.ZipException: error in opening zip file。 **rcl_ibmratl.jar** ファイルが、WebSphere Application Server をインストールするユーザーのために、読み取り権限を持っていることを確認します。
 * 他に例外がない場合、共有ライブラリーのクラスパスで参照された **rcl_ibmratl.jar** ファイルが無効か、存在していない可能性がある。 **rcl_ibmratl.jar** ファイルが有効であり、定義されたパスに存在していることを確認してください。
-
-

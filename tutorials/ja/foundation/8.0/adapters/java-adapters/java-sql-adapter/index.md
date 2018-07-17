@@ -32,7 +32,7 @@ Java アダプターは、バックエンド・システムへの接続に対す
 
 MySQL サーバーに接続できるように {{ site.data.keys.mf_server }} を構成するには、**構成プロパティー**を使用してアダプターの XML ファイルを構成する必要があります。 これらのプロパティーは、後で {{ site.data.keys.mf_console }} で編集できます。
 
-adater.xml ファイルを編集して、以下のプロパティーを追加します。
+adapter.xml ファイルを編集して、以下のプロパティーを追加します。
 
 ```xml
 <mfp:adapter name="JavaSQL"
