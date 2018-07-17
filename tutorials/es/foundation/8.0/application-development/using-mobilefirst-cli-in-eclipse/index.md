@@ -125,15 +125,15 @@ Para acceder a los atajos de {{ site.data.keys.product }}, pulse con el botón d
 Aquí podrá seleccionar alguno de los siguientes mandatos:
 
 
-| Opción de menú | Acción | Interfaz de línea de mandatos de MobileFirst equivalente|
+|Opción de menú |Acción |Interfaz de línea de mandatos de MobileFirst equivalente|
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Abrir consola del servidor | Cuando existe la definición de servidor, abre la consola de forma que se pueden ver las distintas acciones en el servidor especificado. | mfpdev server console                         |
-| Vista previa de aplicación | Abre la aplicación en la modalidad de vista previa del navegador. | Abre la aplicación en la modalidad de vista previa del navegador. |
-| Registrar aplicación | Registra la aplicación con el servidor especificado en sus definiciones de servidor. | mfpdev app register                           |
-| Cifrar aplicación | Ejecuta la herramienta de cifrado de recursos web en su aplicación. | mfpdev app webencrypt                         |
-| Hacer pull a aplicación | Recupera la configuración de la aplicación existente desde el servidor especificado en la definición de servidor. | mfpdev app pull                               |
-| Hacer push a aplicación | Envía la configuración de su aplicación actual al servidor que se especifica en la definición de compilación de forma que pueda reutilizarla en otra aplicación. | mfpdev app push                               |
-| Actualizar aplicación | Empaqueta el contenido de la carpeta www en un archivo .zip y sustituye la versión en el servidor con la del paquete. | mfpdev app webupdate                          |
+|Abrir consola del servidor |Cuando existe la definición de servidor, abre la consola de forma que se pueden ver las distintas acciones en el servidor especificado. |mfpdev server console                         |
+|Vista previa de aplicación |Abre la aplicación en la modalidad de vista previa del navegador. |Abre la aplicación en la modalidad de vista previa del navegador. |
+|Registrar aplicación |Registra la aplicación con el servidor especificado en sus definiciones de servidor. |mfpdev app register                           |
+|Cifrar aplicación |Ejecuta la herramienta de cifrado de recursos web en su aplicación. |mfpdev app webencrypt                         |
+|Hacer pull a aplicación |Recupera la configuración de la aplicación existente desde el servidor especificado en la definición de servidor. |mfpdev app pull                               |
+|Hacer push a aplicación |Envía la configuración de su aplicación actual al servidor que se especifica en la definición de compilación de forma que pueda reutilizarla en otra aplicación. |mfpdev app push                               |
+|Actualizar aplicación |Empaqueta el contenido de la carpeta www en un archivo .zip y sustituye la versión en el servidor con la del paquete. |mfpdev app webupdate                          |
 
 
 ## Sugerencias y consejos

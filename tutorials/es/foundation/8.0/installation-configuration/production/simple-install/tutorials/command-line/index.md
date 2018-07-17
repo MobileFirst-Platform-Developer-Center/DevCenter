@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title:  Tutorial de instalación de MobileFirst Server desde la línea de mandatos
+title: Instalación de MobileFirst Server desde la línea de mandatos
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -12,7 +12,7 @@ Utilice la modalidad de línea de mandatos de IBM Installation Manager y las tar
 {: #before-you-begin }
 * Asegúrese de que están instaladas una de las siguientes bases de datos y versión de Java soportada. También necesita que el controlador JDBC correspondiente para la base de datos esté disponible en su sistema:
     * Sistema de gestión de bases de datos (DBMS) de la lista de bases de datos soportadas:
-        * DB2 
+        * DB2
         * MySQL
         * Oracle
 
@@ -34,7 +34,7 @@ Archivo .zip de {{ site.data.keys.product }} V8.0 del repositorio de Installatio
 
 **Perfil de Liberty de WebSphere Application Server**  
 IBM WebSphere Application Server: Liberty Core V8.5.5.3 o posterior
-    
+
 #### Ir a
 {: #jump-to }
 * [Instalación de IBM Installation Manager](#installing-ibm-installation-manager)
@@ -55,7 +55,7 @@ Debe instalar Installation Manager V1.8.4 o posterior. Las versiones anteriores 
 3. Si acepta el acuerdo de licencia tras la revisión, instale Installation Manager.  
     * Ejecute **installc.exe** para instalar Installation Manager como administrador. Se necesita el usuario root en Linux o UNIX. En Windows, se necesita el privilegio de administrador. En esta modalidad, la información sobre los paquetes instalados se coloca en una ubicación compartida en el disco y cualquier usuario con permisos para ejecutar Installation Manager puede actualizar las aplicaciones. El nombre del archivo ejecutable acaba con "c" (**installc**) para una instalación en línea de mandatos sin una interfaz gráfica de usuario. Para instalar Installation Manager, introduzca **installc.exe -acceptLicence**.
     * Ejecute **userinstc.exe** para instalar Installation Manager en modalidad de usuario. No es necesario ningún privilegio específico. Sin embargo, en esta modalidad, la información sobre los paquetes instalados se coloca en el directorio de inicio del usuario. Solo dicho usuario puede actualizar las aplicaciones instaladas con Installation Manager. El ejecutable acaba con "c" (**userinstc**) para una instalación en línea de mandatos sin una interfaz gráfica de usuario. Para instalar Installation Manager, introduzca **userinstc.exe -acceptLicence**.
-    
+
 ## Instalación de WebSphere Application Server Liberty Core
 {: #installing-websphere-application-server-liberty-core }
 El instalador de WebSphere Application Server Liberty Core se proporciona como parte del paquete de {{ site.data.keys.product }}. En esta tarea, se instala el perfil de Liberty y se crea una instancia de servidor para que pueda instalar {{ site.data.keys.mf_server }}.
@@ -68,7 +68,7 @@ El instalador de WebSphere Application Server Liberty Core se proporciona como p
 3. Decida un directorio donde instalar el perfil de Liberty. En los pasos siguientes referido como liberty_install_dir.
 4. Inicie una línea de mandatos y vaya a **installation\_manager\_install\_dir/tools/eclipse/**.
 5. Si acepta el acuerdo de licencia tras la revisión, instale Liberty.
-    
+
     Introduzca el mandato: **imcl install com.ibm.websphere.liberty.v85 -repositories liberty\_repository\_dir -installationDirectory liberty\_install\_dir -acceptLicense**
 
     Este mandato instala Liberty en el directorio **liberty\_install\_dir**. La opción **-acceptLicense** significa que acepta los términos de la licencia del producto.
@@ -82,9 +82,9 @@ El instalador de WebSphere Application Server Liberty Core se proporciona como p
 7.  Cree un servidor Liberty que se utilizará para instalar el primer nodo de {{ site.data.keys.mf_server }} al final de la guía de aprendizaje.
     * Inicie una línea de mandatos.
     * Vaya a **liberty\_install\_dir/bin** e introduzca **server create mfp1**.
-    
+
     Este mandato crea una instancia de servidor Liberty llamada **mfp1**. Puede ver su definición en **liberty\_install\_dir/usr/servers/mfp1** o **WLP\_USER\_DIR/servers/mfp1** (si modifica el directorio como se describe en el paso 6).
-    
+
 Después de crear el servidor, puede iniciarlo con `server start mfp1` desde **liberty\_install\_dir/bin/**.  
 Para detener el servidor, introduzca el mandato: `server stop mfp1` desde **liberty\_install\_dir/bin/**.
 
@@ -98,7 +98,7 @@ Asegúrese de que Installation Manager V1.8.4 o posterior está instalado. Es po
 
 Ejecute Installation Manager para instalar los archivos binarios de {{ site.data.keys.mf_server }} en su disco antes de crear las bases de datos y desplegar {{ site.data.keys.mf_server }} en el perfil de Liberty. Durante la instalación de {{ site.data.keys.mf_server }} con Installation Manager, se le propone una opción para instalar {{ site.data.keys.mf_app_center }}. Application Center es un componente diferente del producto. Para esta guía de aprendizaje, no es necesario instalarlo con {{ site.data.keys.mf_server }}.
 
-También debe especificar una propiedad para indicar si desea activar las licencias de señales o no. En esta guía de aprendizaje, se presupone que las licencias de señales no son necesarias y los pasos para configurar {{ site.data.keys.mf_server }} para las licencias de señales no se incluyen. Sin embargo, para la instalación de producción, debe determinar si es necesario activar las licencias de señales o no. Si no tiene un contrato para utilizar las licencias de señales con Rational License Key Server, no es necesario que active las licencias de señales. Si activa las licencias de señales, debe configurar {{ site.data.keys.mf_server }} para las licencias de señales. 
+También debe especificar una propiedad para indicar si desea activar las licencias de señales o no. En esta guía de aprendizaje, se presupone que las licencias de señales no son necesarias y los pasos para configurar {{ site.data.keys.mf_server }} para las licencias de señales no se incluyen. Sin embargo, para la instalación de producción, debe determinar si es necesario activar las licencias de señales o no. Si no tiene un contrato para utilizar las licencias de señales con Rational License Key Server, no es necesario que active las licencias de señales. Si activa las licencias de señales, debe configurar {{ site.data.keys.mf_server }} para las licencias de señales.
 
 En esta guía de aprendizaje, especifique las propiedades como los parámetros a través de la línea de mandatos **imcl**. Esta especificación también puede realizarse mediante un archivo de respuestas.
 
@@ -142,7 +142,7 @@ La base de datos se utiliza para almacenar los datos técnicos utilizados por lo
 * Tiempo de ejecución de {{ site.data.keys.product_adj }}
 
 En esta guía de aprendizaje, las tablas de todos los componentes están colocadas en el mismo esquema.  
-**Nota:** Los pasos de esta tarea son para DB2. Si tiene la intención de utilizar MySQL u Oracle, consulte [Requisitos de base de datos](../../databases/#database-requirements).
+**Nota:** Los pasos de esta tarea son para DB2. Si tiene la intención de utilizar MySQL u Oracle, consulte [Requisitos de base de datos](../../../prod-env/databases/#database-requirements).
 
 1. Inicie sesión en el sistema que está ejecutando el servidor DB2. Se presupone que existe un usuario de DB2, por ejemplo, **mfpuser**.
 2. Verifique que este usuario de DB2 tiene acceso a una base de datos con un tamaño de página de 32768 o más, y tiene permiso para crear esquemas y tablas implícitas en la base de datos.
@@ -154,7 +154,7 @@ En esta guía de aprendizaje, las tablas de todos los componentes están colocad
         * En sistemas Windows, pulse **Inicio → IBM DB2 → Procesador de línea de mandatos**.
         * En sistemas Linux o UNIX, vaya a **~/sqllib/bin** (o **db2\_install\_dir/bin** si sqllib no está creado en el directorio de inicio del administrador) y especifique `./db2`.
     * Especifique las siguientes sentencias SQL para crear una base de datos denominada **MFPDATA**:
-    
+
         ```sql
         CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
         CONNECT TO MFPDATA
@@ -166,7 +166,7 @@ En esta guía de aprendizaje, las tablas de todos los componentes están colocad
         ```
 
     Si ha definido un nombre de usuario diferente, sustituya **mfpuser** con su propio nombre de usuario.
-    
+
     > **Nota:** La sentencia no elimina los privilegios predeterminados concedidos a PUBLIC en una base de datos predeterminada de DB2. Para producción, es posible que tenga que reducir los privilegios en esta base de datos a los requisitos mínimos para el producto. Para obtener más información sobre la seguridad DB2 y un ejemplo de las prácticas de seguridad, consulte [Seguridad DB2, Parte 8: Doce procedimientos recomendados de seguridad DB2](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
 
 ## Despliegue de {{ site.data.keys.mf_server }} en Liberty con tareas Ant
@@ -180,11 +180,11 @@ Las siguientes aplicaciones de {{ site.data.keys.product_adj }} no las despliega
 
 #### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-Normalmente, {{ site.data.keys.mf_analytics }} se despliega en una granja de servidores diferente que {{ site.data.keys.mf_server }} debido a su alta necesidad de memoria. {{ site.data.keys.mf_analytics }} se puede instalar manualmente o con tareas Ant. Si ya está instalado, puede introducir su URL, el nombre de usuario y la contraseña para enviarle datos en la Herramienta de configuración del servidor. A continuación, la Herramienta de configuración del servidor configura las aplicaciones de {{ site.data.keys.product_adj }} para enviar datos a {{ site.data.keys.mf_analytics }}. 
+Normalmente, {{ site.data.keys.mf_analytics }} se despliega en una granja de servidores diferente que {{ site.data.keys.mf_server }} debido a su alta necesidad de memoria. {{ site.data.keys.mf_analytics }} se puede instalar manualmente o con tareas Ant. Si ya está instalado, puede introducir su URL, el nombre de usuario y la contraseña para enviarle datos en la Herramienta de configuración del servidor. A continuación, la Herramienta de configuración del servidor configura las aplicaciones de {{ site.data.keys.product_adj }} para enviar datos a {{ site.data.keys.mf_analytics }}.
 
 #### Application Center
 {: #application-center }
-Esta aplicación puede utilizarse para distribuir aplicaciones móvil internamente a los empleados que utilizan las aplicaciones o para pruebas. Es independiente de {{ site.data.keys.mf_server }} y no es necesario instalarla con {{ site.data.keys.mf_server }}. 
+Esta aplicación puede utilizarse para distribuir aplicaciones móvil internamente a los empleados que utilizan las aplicaciones o para pruebas. Es independiente de {{ site.data.keys.mf_server }} y no es necesario instalarla con {{ site.data.keys.mf_server }}.
 
 Seleccione el archivo XML adecuado que contiene las tareas Ant y configure las propiedades.
 
@@ -248,7 +248,7 @@ En la Herramienta de configuración del servidor, solo es necesario un usuario d
 
 #### Creación de tablas de bases de datos
 {: #database-tables-creation }
-Para producción, es posible que desee crear las tablas de forma manual. Por ejemplo, si su DBA desea sustituir algunos valores predeterminados o asignar espacios de tabla específicos. Los scripts de base de datos utilizados para crear las tablas están disponibles en **mfp\_server\_install\_dir/MobileFirstServer/databases** y **mfp\_server\_install\_dir/PushService/databases**. Para obtener más información, consulte [Creación de tablas de base de datos manualmente](../../databases/#create-the-database-tables-manually).
+Para producción, es posible que desee crear las tablas de forma manual. Por ejemplo, si su DBA desea sustituir algunos valores predeterminados o asignar espacios de tabla específicos. Los scripts de base de datos utilizados para crear las tablas están disponibles en **mfp\_server\_install\_dir/MobileFirstServer/databases** y **mfp\_server\_install\_dir/PushService/databases**. Para obtener más información, consulte [Creación de tablas de base de datos manualmente](../../../prod-env/databases/#create-the-database-tables-manually).
 
 El archivo **server.xml** y algunos valores de servidor de aplicaciones se modifican durante la instalación. Antes de cada modificación, se realiza una copia del archivo **server.xml**, como **server.xml.bak**, **server.xml.bak1** y **server.xml.bak2**. Para ver todo lo que se ha añadido, puede comparar el archivo **server.xml** con la copia de seguridad más antigua (server.xml.bak). En Linux, puede utilizar en mandato diff `--strip-trailing-cr server.xml server.xml.bak` para ver las diferencias. En AIX, utilice el mandato `diff server.xml server.xml.bak` para encontrar las diferencias.
 
@@ -256,8 +256,8 @@ El archivo **server.xml** y algunos valores de servidor de aplicaciones se modif
 {: #modification-of-the-application-server-settings-specific-to-liberty }
 1. Se han añadido las características de Liberty.
 
-    Las características se han añadido para cada aplicación y se pueden duplicar. Por ejemplo, la característica JDBC se utiliza para el servicio de administración y los componentes de tiempo de ejecución. Esta duplicación permite la eliminación de característica de una aplicación cuando se desinstala, sin dañar las otras aplicaciones. Por ejemplo, si decide en algún momento desinstalar el servicio de envío por push de un servidor e instalarlo en otro servidor. Sin embargo, no son posibles todas las topologías. El servicio de administración, el servicio de Live Update y el componente de tiempo de ejecución deben estar en el mismo servidor de aplicaciones con perfil de Liberty. Para obtener más información, consulte [Restricciones en el servicio de administración de {{ site.data.keys.mf_server }}, el servicio Live Update de {{ site.data.keys.mf_server }} y el tiempo de ejecución de {{ site.data.keys.product_adj }}](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). La duplicación de características no crea problemas a menos que las características que añada entren en conflicto. Añadir las características jdbc-40 y jdbc-41 causará un problema, pero añadir dos veces la misma característica no.
-    
+    Las características se han añadido para cada aplicación y se pueden duplicar. Por ejemplo, la característica JDBC se utiliza para el servicio de administración y los componentes de tiempo de ejecución. Esta duplicación permite la eliminación de característica de una aplicación cuando se desinstala, sin dañar las otras aplicaciones. Por ejemplo, si decide en algún momento desinstalar el servicio de envío por push de un servidor e instalarlo en otro servidor. Sin embargo, no son posibles todas las topologías. El servicio de administración, el servicio de Live Update y el componente de tiempo de ejecución deben estar en el mismo servidor de aplicaciones con perfil de Liberty. Para obtener más información, consulte [Restricciones en el servicio de administración de {{ site.data.keys.mf_server }}, el servicio de Live Update de {{ site.data.keys.mf_server }} y el tiempo de ejecución de {{ site.data.keys.product_adj }}](../../../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). La duplicación de características no crea problemas a menos que las características que añada entren en conflicto. Añadir las características jdbc-40 y jdbc-41 causará un problema, pero añadir dos veces la misma característica no.
+
 2. Se añade `host='*'` en la declaración de `httpEndPoint`.
 
     Este valor es para permitir la conexión con el servidor desde todas las interfaces de red. En producción, es posible que desee restringir el valor de host del punto final HTTP.
@@ -276,7 +276,7 @@ El archivo **server.xml** y algunos valores de servidor de aplicaciones se modif
 7. El ejecutor predeterminado está personalizado para establecer valores grandes en `coreThreads` y `maxThreads` si utiliza Liberty V8.5.5.5 o anterior. Liberty ajusta de forma automática el ejecutor predeterminado a partir de V8.5.5.6.
 
     Este valor evita problemas de tiempo de espera que interrumpen la secuencia de inicio del componente de tiempo de ejecución y el servicio de administración en algunas versiones de Liberty. La ausencia de esta sentencia puede ser la causa de estos errores en el archivo de registro del servidor:
-    
+
     > No se ha podido obtener la conexión JMX para acceder a un MBean. Es posible que ocurra un error de configuración JMX: Tiempo de espera de lectura excedido FWLSE3000E: Se ha detectado un error de servidor.
     > FWLSE3012E: Error de configuración JMX. No se han podido obtener MBeans. Motivo: "Tiempo de espera de lectura excedido".
 
@@ -290,7 +290,7 @@ Las siguientes aplicaciones están instaladas:
 * **mobilefirst**, componente de tiempo de ejecución de {{ site.data.keys.product_adj }}
 * **imfpush**, el servicio de envío por push
 
-La Herramienta de configuración del servidor instala todas las aplicaciones en el mismo servidor. Puede separar las aplicaciones en diferentes servidor de aplicaciones, pero con determinadas restricciones que se documentan en [Flujos de red y topologías](../../topologies).  
+La Herramienta de configuración del servidor instala todas las aplicaciones en el mismo servidor. Puede separar las aplicaciones en diferentes servidor de aplicaciones, pero con determinadas restricciones que se documentan en [Flujos de red y topologías](../../../prod-env/topologies).  
 Para una instalación en diferentes servidores, no puede utilizar la Herramienta de configuración del servidor. Utilice tareas Ant o instale el producto de forma manual.
 
 #### Servicio de administración
@@ -299,7 +299,7 @@ El servicio de administración es el servicio para gestionar aplicaciones y adap
 
 El cargador de clases se establece con el último padre de delegación para el perfil de Liberty y WebSphere Application Server, y para todas las aplicaciones de {{ site.data.keys.product_adj }}. Este valor es para evitar conflictos entre las clases empaquetadas en las aplicaciones de {{ site.data.keys.product_adj }} y las clases del servidor de aplicaciones. Olvidar establecer la delegación de cargador de clases en último padre es un origen de errores frecuente en la instalación manual. Para Apache Tomcat, esta declaración no es necesaria.
 
-En el perfil de Liberty, se añade una biblioteca común a la aplicación para descifrar contraseñas pasadas como propiedades JNDI. La Herramienta de configuración del servidor define dos propiedades JNDI obligatorias para el servicio de administración: **mfp.config.service.user** y **mfp.config.service.password**. Las utiliza el servicio de administración para conectar el servicio Live Update con su API REST. Se pueden definir más propiedades JNDI para ajustar la aplicación o adaptarla a las particularidades de su instalación. Para obtener más información, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+En el perfil de Liberty, se añade una biblioteca común a la aplicación para descifrar contraseñas pasadas como propiedades JNDI. La Herramienta de configuración del servidor define dos propiedades JNDI obligatorias para el servicio de administración: **mfp.config.service.user** y **mfp.config.service.password**. Las utiliza el servicio de administración para conectar el servicio Live Update con su API REST. Se pueden definir más propiedades JNDI para ajustar la aplicación o adaptarla a las particularidades de su instalación. Para obtener más información, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 La Herramienta de configuración del servidor también define las propiedades JNDI (el URL y los parámetros OAuth para registrar los clientes confidenciales) para la comunicación con el servicio de envío por push.  
 El origen de datos para la base de datos que contiene las tablas del servicio de administración está declarado, también, como biblioteca para su controlador JDBC.
@@ -310,7 +310,7 @@ El servicio Live Update almacena información sobre las configuraciones de tiemp
 
 El cargador de clases se establece con el último padre de delegación como se explica en la sección del servicio de administración.
 
-El servicio Live Update tiene un rol de seguridad, **admin_config**. Se debe correlacionar un usuario a ese rol. Debe proporcionarse su contraseña e inicio de sesión al servicio de administración con la propiedad JNDI: **mfp.config.service.user** y **mfp.config.service.password**. Para obtener información sobre las propiedades JNDI, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) y [Lista de propiedades JNDI para el servicio de Live Update de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service).
+El servicio Live Update tiene un rol de seguridad, **admin_config**. Se debe correlacionar un usuario a ese rol. Debe proporcionarse su contraseña e inicio de sesión al servicio de administración con la propiedad JNDI: **mfp.config.service.user** y **mfp.config.service.password**. Para obtener información sobre las propiedades JNDI, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) y [Lista de propiedades JNDI para el servicio de Live Update de {{ site.data.keys.mf_server }}](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service).
 
 También necesita un origen de datos con nombre JNDI en el perfil de Liberty. La convención es **context\_root\_of\_config\_server/jdbc/ConfigDS**. En esta guía de aprendizaje, se define como **mfpadminconfig/jdbc/ConfigDS**. En una instalación realizada con la Herramienta de configuración del servidor o con tareas Ant, las tablas del servicio Live Update están en la misma base de datos y esquema que las tablas del servicio de administración. El usuario para acceder a estas tablas es también el mismo.
 
@@ -318,7 +318,7 @@ También necesita un origen de datos con nombre JNDI en el perfil de Liberty. La
 {: #mobilefirst-operations-console }
 {{ site.data.keys.mf_console }} está declarado con los mismos roles de seguridad que el servicio de administración. Los usuarios correlacionados con los roles de seguridad de {{ site.data.keys.mf_console }} también deben estar correlacionados con el mismo rol de seguridad del servicio de administración. De hecho, {{ site.data.keys.mf_console }} ejecuta consultas en el servicio de administración en nombre del usuario de consola.
 
-La Herramienta de configuración del servidor posiciona una propiedad JNDI, **mfp.admin.endpoint**, que indica cómo se conecta la consola con el servicio de administración. El valor predeterminado establecido por la Herramienta de configuración del servidor es `*://*:*/mfpadmin`. El valor significa que debe utilizar el mismo protocolo, nombre de host y puerto que la solicitud HTTP entrante en la consola, y la raíz de contexto del servicio de administración es /mfpadmin. Si desea forzar la solicitud para que pase a través de un proxy de web, cambie el valor predeterminado. Para obtener más información sobre los valores posibles para este URL, o información sobre otras posibles propiedades JNDI, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+La Herramienta de configuración del servidor posiciona una propiedad JNDI, **mfp.admin.endpoint**, que indica cómo se conecta la consola con el servicio de administración. El valor predeterminado establecido por la Herramienta de configuración del servidor es `*://*:*/mfpadmin`. El valor significa que debe utilizar el mismo protocolo, nombre de host y puerto que la solicitud HTTP entrante en la consola, y la raíz de contexto del servicio de administración es /mfpadmin. Si desea forzar la solicitud para que pase a través de un proxy de web, cambie el valor predeterminado. Para obtener más información sobre los valores posibles para este URL, o información sobre otras posibles propiedades JNDI, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 El cargador de clases se establece con el último padre de delegación como se explica en la sección del servicio de administración.
 
@@ -384,15 +384,15 @@ Cuando crea una granja de servidores, también debe configurar un servidor HTTP 
         httpPort="9080"
         httpsPort="9443" />
       ```
-        
+
       Por:
-        
+
       ```xml
       <httpEndpoint id="defaultHttpEndpoint"
         httpPort="9081"
         httpsPort="9444" />
       ```
-        
+
       Los puertos HTTP y HTTPS del servidor mfp2 no entran en conflicto con los puertos del servidor mfp1 con este cambio. Asegúrese de modificar los puertos antes de ejecutar la instalación de {{ site.data.keys.mf_server }}. De lo contrario, si modifica los puertos después de realizar la instalación, también deberá reflejar el cambio del puerto en la propiedad JNDI: **mfp.admin.jmx.port**.
 
 3. Copie el archivo Ant que utilizó en [Despliegue de {{ site.data.keys.mf_server }} en Liberty con tareas Ant](#deploying-mobilefirst-server-to-liberty-with-ant-tasks), y cambie el valor de la propiedad **appserver.was85liberty.serverInstance** por **mfp2**. Las tareas Ant detectan que existen las bases de datos y no las crean (consulte el siguiente extracto de registro). A continuación, se despliegan las aplicaciones en el servidor.
@@ -416,26 +416,26 @@ Cuando crea una granja de servidores, también debe configurar un servidor HTTP 
     * Abra un separador en el mismo navegador web y especifique el URL: [http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole). El servidor mfp2 sirve a la consola.
     * Inicie sesión con admin/admin. Si se ha realizado correctamente la instalación, puede ver la misma página de bienvenida en ambos separadores después de iniciar sesión.
     * Vuelva al primer separador del navegador y pulse **Hola, administrador → Descargar registro de auditoría**. Se cierra la sesión de la consola y ve la pantalla de inicio de sesión de nuevo. Este comportamiento de cierre de sesión es un problema. El problema ocurre porque cuando inicia sesión en el servidor mfp2, se crea una señal de Lightweight Third Party Authentication (LTPA) y se almacena en su navegador como cookie. Sin embargo, el servidor mfp1 no reconoce esta señal LTPA. Es posible que se produzca una conmutación entre servidores en un entorno de producción cuando tiene un equilibrador de carga HTTP delante de un clúster. Para resolver este problema, debe asegurarse de que ambos servidores (mfp1 y mfp2) generan las señales de LTPA con las mismas claves secretas. Copie las claves de LTPA del servidor mfp1 en el servidor mfp2.
-    
+
         * Detenga ambos servidores con estos mandatos:
-        
+
           ```bash
           server stop mfp1
           server stop mfp2
           ```
-        
+
         * Copie las claves de LTPA del servidor mfp1 en el servidor mfp2.
-            Desde **liberty\_install\_dir/usr/servers** o **WLP\_USER\_DIR/servers**, ejecute el siguiente mandato dependiendo de su sistema operativo. 
+        Desde **liberty\_install\_dir/usr/servers** o **WLP\_USER\_DIR/servers**, ejecute el siguiente mandato dependiendo de su sistema operativo.
             * En UNIX: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
             * En Windows: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
         * Reinicie los servidores. Conmutar de un separador del navegador a otro no requiere que vuelva a iniciar sesión. En una granja de servidores Liberty, todos los servidores deben tener las mismas claves LTPA.
-    
+
 5. Habilite la comunicación JMX entre los servidores Liberty.
 
     La comunicación JMX con Liberty se realiza mediante el conector REST de Liberty en el protocolo HTTPS. Para habilitar esta comunicación, cada servidor de la granja de servidores debe ser capaz de reconocer el certificado SSL de los otros miembros. Debe intercambiar los certificados HTTPS en sus almacenes de confianza. Utilice los programas de utilidad de IBM como Keytool, que es parte de la distribución de JRE de IBM en **java/bin** para configurar el almacén de confianza. Las ubicaciones del almacén de claves y del almacén de confianza están definidas en el archivo **server.xml**. De forma predeterminada, el almacén de claves del perfil de Liberty se encuentra en **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. La contraseña de este almacén de claves predeterminado, como se puede ver en el archivo **server.xml**, es **mobilefirst**.
-        
+
     > **Sugerencia:** Puede cambiarla con el programa de utilidad keytool Keytool, pero también debe cambiar la contraseña en el archivo server.xml para que el servidor Liberty pueda leer este almacén de claves. En esta guía de aprendizaje, utilice la contraseña predeterminada.
-    
+
     * En **WLP\_USER\_DIR/servers/mfp1/resources/security**, especifique `keytool -list -keystore key.jks`. El mandato muestra los certificados en el almacén de claves. Solo hay uno llamado **default**. Se le solicitará la contraseña del almacén de claves (mobilefirst) antes de poder ver las claves. Este es el caso de todos los mandatos siguientes con el programa de utilidad Keytool.
     * Exporte el certificado predeterminado del servidor mfp1 con el mandato: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
     * En **WLP\_USER\_DIR/servers/mfp2/resources/security**, exporte el certificado predeterminado del servidor mfp2 con el mandato: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
@@ -451,5 +451,5 @@ Cuando crea una granja de servidores, también debe configurar un servidor HTTP 
    server start mfp1
    server start mfp2
    ```
-        
+
 2. Acceda a la consola. Por ejemplo, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole), o [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) en HTTPS. En la barra lateral izquierda, aparecerá un menú adicional etiquetado como **Nodos de granja de servidores**. Si pulsa en **Nodos de granja de servidores**, puede ver el estado de cada nodo. Es posible que tenga que esperar un poco para que se inicien los nodos.

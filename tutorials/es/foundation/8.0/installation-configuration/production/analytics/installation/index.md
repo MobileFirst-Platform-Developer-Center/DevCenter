@@ -92,7 +92,7 @@ Por ejemplo, si establece **fragmentos** en 4 y **réplicas** en 2, podrá escal
 
 ## Instalación de {{ site.data.keys.mf_analytics }} en WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). El archivo **analytics.ear** se encuentra en la carpeta `<mf_server_install_dir>\analytics`. Para obtener más información sobre cómo descargar e instalar WebSphere Application Server Liberty, consulte el artículo [Acerca de WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) en IBM developerWorks .
+Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../prod-env/appserver). El archivo **analytics.ear** se encuentra en la carpeta `<mf_server_install_dir>\analytics`. Para obtener más información sobre cómo descargar e instalar WebSphere Application Server Liberty, consulte el artículo [Acerca de WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) en IBM developerWorks .
 
 1. Cree un servidor ejecutando el siguiente mandato en su carpeta **./wlp/bin**.
 
@@ -168,7 +168,7 @@ Para obtener más información sobre la administración de WebSphere Application
 
 ## Instalación de {{ site.data.keys.mf_analytics }} en Tomcat
 {: #installing-mobilefirst-analytics-on-tomcat }
-Asegúrese de que ya disponga de los archivos WAR de {{ site.data.keys.mf_analytics }}. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). Los archivos **analytics-ui.war** y **analytics-service.war** se encuentran en la carpeta **<dir_instalación_servidor_mf>\analytics**. Para obtener más información sobre cómo descargar e instalar Tomcat, consulte [Apache Tomcat](http://tomcat.apache.org/). Asegúrese de que descarga la versión que da soporte a Java 7 o superior. Para obtener más información sobre qué versión de Tomcat da soporte a Java 7, consulte [Versiones de Apache Tomcat](http://tomcat.apache.org/whichversion.html).
+Asegúrese de que ya disponga de los archivos WAR de {{ site.data.keys.mf_analytics }}. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../prod-env/appserver). Los archivos **analytics-ui.war** y **analytics-service.war** se encuentran en la carpeta **<dir_instalación_servidor_mf>\analytics**. Para obtener más información sobre cómo descargar e instalar Tomcat, consulte [Apache Tomcat](http://tomcat.apache.org/). Asegúrese de que descarga la versión que da soporte a Java 7 o superior. Para obtener más información sobre qué versión de Tomcat da soporte a Java 7, consulte [Versiones de Apache Tomcat](http://tomcat.apache.org/whichversion.html).
 
 1. Añada los archivos **analytics-service.war** y **analytics-ui.war** a la carpeta **webapps** de Tomcat.
 2. Descomente la sección siguiente en el archivo **conf/server.xml**, que está presente, pero comentado, en un archivado de Tomcat recién descargado.
@@ -216,11 +216,11 @@ Asegúrese de que ya disponga de los archivos WAR de {{ site.data.keys.mf_analyt
 
 ## Instalación de {{ site.data.keys.mf_analytics }} en WebSphere Application Server
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
-Para obtener más información sobre los pasos de instalación iniciales para adquirir los artefactos de instalación (archivos JAR y EAR), consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). Los archivos **analytics.ear**, **analytics-ui.war** y **analytics-service.war** se encuentran en la carpeta **<dir_instalación_servidor_mf>\analytics**.
+Para obtener más información sobre los pasos de instalación iniciales para adquirir los artefactos de instalación (archivos JAR y EAR), consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../prod-env/appserver). Los archivos **analytics.ear**, **analytics-ui.war** y **analytics-service.war** se encuentran en la carpeta **<dir_instalación_servidor_mf>\analytics**.
 
 Los pasos siguientes describen cómo instalar y ejecutar el archivo EAR de Analytics en WebSphere Application Server. Si está instalando los archivos WAR individuales en WebSphere Application Server, siga sólo los pasos del 2 al 7 en el archivo WAR de **analytics-service** una vez que haya desplegado los archivos WAR. El orden de carga de clases no se debe modificar en el archivo WAR de analytics-ui.
 
-1. Despliegue el archivo EAR en el servidor de aplicaciones, pero no lo inicie . Para obtener más información sobre cómo instalar un archivo EAR en WebSphere Application Server, consulte el tema [Instalación de los archivos de la aplicación empresarial con la consola](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) en la documentación del producto WebSphere Application Server.
+1. Despliegue el archivo EAR en el servidor de aplicaciones, pero no lo inicie. Para obtener más información sobre cómo instalar un archivo EAR en WebSphere Application Server, consulte el tema [Instalación de los archivos de la aplicación empresarial con la consola](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) en la documentación del producto WebSphere Application Server.
 
 2. Seleccione la aplicación **MobileFirst Analytics** desde la lista **Enterprise Applications**.
 
@@ -250,13 +250,21 @@ Los pasos siguientes describen cómo instalar y ejecutar el archivo EAR de Analy
     * Inicie sesión en la consola de administración de WebSphere Application Server.
     * En el menú **Seguridad > Seguridad global**, asegúrese de que **Habilitar seguridad administrativa** y **Habilitar seguridad de aplicación** estén seleccionados. Nota: La seguridad de aplicación sólo se puede seleccionar una vez que **Seguridad administrativa** esté habilitado.
     * Pulse **Aceptar** y guarde los cambios.
-9. Inicie la aplicación {{ site.data.keys.mf_analytics }} y vaya al enlace del navegador: `http://<hostname>:<port>/analytics/console`.
+
+9. Para habilitar el acceso al servicio de analíticas a través de la documentación de Swagger, complete los pasos siguientes:
+    * Pulse **Servidores > Tipos de servidores > Servidores de aplicaciones de WebSphere** y elija el servidor en el que está desplegado el servicio de Analytics, en la lista de servidores.
+    * En **Infraestructura del servidor**, pulse **Java** y vaya a **Gestión de procesos > Definición de procesos > Máquina virtual Java > Propiedades personalizadas**.
+      - Establezca la propiedad personalizada siguiente<br/>
+        **Nombre de propiedad:** *com.ibm.ws.classloader.strict*<br/>
+        **Valor:** *true*
+
+10. Inicie la aplicación {{ site.data.keys.mf_analytics }} y vaya al enlace del navegador: `http://<hostname>:<port>/analytics/console`.
 
 ## Instalación de {{ site.data.keys.mf_analytics }} con tareas Ant
 {: #installing-mobilefirst-analytics-with-ant-tasks }
-Asegúrese de que tenga los archivos WAR y de configuración necesarios: **analytics-ui.war** y **analytics-service.war**. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../appserver). Los archivos **analytics-ui.war** y **analytics-service.war** se encuentran en **MobileFirst_Platform_Server\analytics**.
+Asegúrese de que tenga los archivos WAR y de configuración necesarios: **analytics-ui.war** y **analytics-service.war**. Para obtener más información sobre la instalación de artefactos, consulte [Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones](../../prod-env/appserver). Los archivos **analytics-ui.war** y **analytics-service.war** se encuentran en **MobileFirst_Platform_Server\analytics**.
 
-Debe ejecutar la tarea Ant en el sistema donde está instalado el servidor de aplicaciones, o el Network Deployment Manager para WebSphere Application Server Network Deployment. Si desea iniciar la tarea Ant desde un sistema en el que {{ site.data.keys.mf_server }} no está instalado, debe copiar el archivo **<dir_instalación_servidor_mf>/MobileFirstServer/mfp-ant-deployer.jar** en ese sistema.
+Debe ejecutar la tarea Ant en el sistema donde está instalado el servidor de aplicaciones, o el Network Deployment Manager para WebSphere Application Server Network Deployment. Si desea iniciar la tarea Ant desde un sistema en el que {{ site.data.keys.mf_server }} no está instalado, debe copiar el archivo **\<mf_server_install_dir\>/MobileFirstServer/mfp-ant-deployer.jar** en ese sistema.
 
 > Nota: El marcador de posición **dir_instalación_servidor_mf** es el directorio en el que ha instalado {{ site.data.keys.mf_server }}.
 
@@ -297,26 +305,26 @@ Algunos tipos de sucesos se han cambiado entre versiones anteriores de {{ site.d
 
 La tabla siguiente muestra la correlación entre tipos de sucesos antiguos y nuevos. Algunos tipos de sucesos no han cambiado.
 
-| Tipo de suceso antiguo            | Tipo de suceso nuevo         |
+|Tipo de suceso antiguo            |Tipo de suceso nuevo         |
 |---------------------------|------------------------|
-| AlertDefinition	        | AlertDefinition        |
-| AlertNotification	        | AlertNotification      |
-| AlertRunnerNode	        | AlertRunnerNode        |
-| AnalyticsConfiguration    | AnalyticsConfiguration |
-| CustomCharts	            | CustomChart            |
-| CustomData	            | CustomData             |
-| Devices	                | Device                 |
-| MfpAppLogs                | AppLog                 |
-| MfpAppPushAction          | AppPushAction          |
-| MfpAppSession	            | AppSession             |
-| ServerLogs	            | ServerLog              |
-| ServerNetworkTransactions | NetworkTransaction     |
-| ServerPushNotifications   | PushNotification       |
-| ServerPushSubscriptions   | PushSubscription       |
-| Users	                    | User                   |
-| inboundRequestURL	        | resourceURL            |
-| mfpAppName	            | appName                |
-| mfpAppVersion	            | appVersion             |
+|AlertDefinition	        |AlertDefinition        |
+|AlertNotification	        |AlertNotification      |
+|AlertRunnerNode	        |AlertRunnerNode        |
+|AnalyticsConfiguration |AnalyticsConfiguration |
+|CustomCharts	            |CustomChart            |
+|CustomData	            |CustomData             |
+|Devices	                |Device                 |
+|MfpAppLogs                |AppLog                 |
+|MfpAppPushAction          |AppPushAction          |
+|MfpAppSession	            |AppSession             |
+|ServerLogs	            |ServerLog              |
+|ServerNetworkTransactions |NetworkTransaction     |
+|ServerPushNotifications   |PushNotification       |
+|ServerPushSubscriptions   |PushSubscription       |
+|Users	                    |User                   |
+|inboundRequestURL	        |resourceURL            |
+|mfpAppName	            |appName                |
+|mfpAppVersion	            |appVersion             |
 
 ### Migración de datos analíticos
 {: #analytics-data-migration }
