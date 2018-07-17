@@ -64,7 +64,7 @@ weight: 1
 [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)는 {{ site.data.keys.mf_server }}에서 애플리케이션을 등록하고 {{ site.data.keys.mf_server }}에서 애플리케이션을 풀/푸시하고 Java 및 JavaScript 어댑터를 작성하고 여러 로컬 및 원격 서버를 관리하고 직접 업데이트를 사용하여 활성 애플리케이션을 업데이트하는 등의 작업을 수행할 수 있게 하는 명령행 인터페이스입니다.
 
 **전제조건:**  
-1. {{ site.data.keys.mf_cli }}를 설치하려면 NodeJS와 NPM이 필요합니다.   
+1. {{ site.data.keys.mf_cli }}를 설치하려면 NodeJS와 NPM이 필요합니다.  
  [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/)과 NPM v3.10.10을 다운로드하여 설치하십시오.
 
  설치를 확인하려면 명령행 창을 열고 `node -v`를 실행하십시오.

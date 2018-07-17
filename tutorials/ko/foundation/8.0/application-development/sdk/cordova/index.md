@@ -24,7 +24,7 @@ weight: 1
 MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음과 같습니다.
 
 * cordova-ios: **>= 4.1.1 및 < 5.0**
-* cordova-android: **>= 6.1.2 및 < 7.0**
+* cordova-android: **>= 6.1.2 및 <= 7.0**
 * cordova-windows: **>= 4.3.2 및 < 6.0**
 
 #### 다음으로 이동:
@@ -33,6 +33,7 @@ MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음�
 - [{{ site.data.keys.product_adj }} Cordova SDK 추가](#adding-the-mobilefirst-cordova-sdk)
 - [{{ site.data.keys.product_adj }} Cordova SDK 업데이트](#updating-the-mobilefirst-cordova-sdk)
 - [생성된 {{ site.data.keys.product_adj }} Cordova SDK 아티팩트](#generated-mobilefirst-cordova-sdk-artifacts)
+- [Cordova 브라우저 플랫폼 지원](#cordova-browser-platform)
 - [다음 학습서](#tutorials-to-follow-next)
 
 > **참고:** Xcode 8을 사용하는 경우 iOS 시뮬레이터에서 iOS 앱을 실행 중이면 **키 체인 공유** 기능은 필수입니다. 이 기능을 수동으로 사용하도록 설정한 후에 Xcode 프로젝트를 빌드해야 합니다.
@@ -68,7 +69,7 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 
 **전제조건:**
 
-- 개발자 워크스테이션에 [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 및 {{ site.data.keys.mf_cli }}가 설치되어 있습니다.
+- 개발자 워크스테이션에 [Apache Cordova CLI](https://www.npmjs.com/package/cordova) 및 {{ site.data.keys.mf_cli }}가 설치되어 있습니다.
 - {{ site.data.keys.mf_server }}의 로컬 또는 원격 인스턴스가 실행 중입니다.
 - [{{ site.data.keys.product_adj }} 개발 환경 설정](../../../installation-configuration/development/mobilefirst) 및 [Cordova 개발 환경 설정](../../../installation-configuration/development/cordova) 학습서를 읽으십시오.
 - cordova-windows의 경우 시스템에 설치된 Visual Studio 및 .NET 버전과 호환되는 C++ 버전을 설치해야 합니다.
@@ -320,6 +321,237 @@ Cordova 구성 파일은 애플리케이션 메타데이터를 포함하고 앱�
 ```bash
 mfpdev app config
 ```
+## Cordova 브라우저 플랫폼 지원
+{: #cordova-browser-platform}
+
+MobileFirst Platform에서는 이제 기타 Cordova Windows, Cordova Android 및 Cordova iOS의 지원되는 플랫폼과 함께 Cordova 브라우저 플랫폼을 지원합니다.
+
+MFP(MobileFirst Platform)를 사용하는 Cordova 브라우저 플랫폼 사용은 기타 플랫폼과 함께 MFP를 사용하는 것과 유사합니다. 이 기능을 설명하는 샘플이 아래에 설명되어 있습니다.
+
+다음 명령을 사용하여 cordova 애플리케이션을 작성하십시오.
+```bash
+cordova create <your-appFolder-name> <package-name>
+```
+이렇게 하면 vanilla cordova 앱이 작성됩니다.
+
+다음 명령을 사용하여 MFP 플러그인을 추가하십시오.
+```bash
+   cordova plugin add cordova-plugin-mfp
+```
+MFP 서버(로컬에 호스팅된 서버 또는 IBM Cloud의 서버일 수 있음)에 ping을 실행하는 데 사용할 수 있는 단추를 추가하십시오. 단추를 클릭하여 MFP 서버에 ping을 실행하십시오.
+다음과 같이 아래 샘플 코드를 사용할 수 있습니다.
+
+#### index.html
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+  <!-- load script with wlCommonInit defined before loading cordova.js -->
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+
+  <title>MFP 스타터 - Cordova</title>
+</head>
+
+<body>
+
+  <div id="main">
+    <div id="main_title">Hello MobileFirst</div>
+    <div id="main_status"></div>
+    <div id="main_info"></div>
+  </div>
+
+  <div id="button_content">
+    <button id="ping_button" style="display:none">MobileFirst 서버에 Ping</button>
+  </div>
+
+</body>
+
+</html>
+```
+
+#### index.js
+
+```javascript
+
+   var Messages = {
+  // Add here your messages for the default language.
+  // Generate a similar file with a language suffix containing the translated messages.
+  // key1 : message1,
+};
+
+   var wlInitOptions = {
+  // Options to initialize with the WL.Client object.
+  // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.
+   mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
+    applicationId : 'io.cordova.hellocordova' // Replace with your own app id/package name.
+};
+
+function wlCommonInit() {
+  app.init();
+}
+
+var app = {
+  //initialize app
+  "init": function init() {
+    var buttonElement = document.getElementById("ping_button");
+    buttonElement.style.display = "block";
+    buttonElement.addEventListener('click', app.testServerConnection, false);
+  },
+  //test server connection
+  "testServerConnection": function testServerConnection() {
+
+    var titleText = document.getElementById("main_title");
+    var statusText = document.getElementById("main_status");
+    var infoText = document.getElementById("main_info");
+    titleText.innerHTML = "Hello MobileFirst";
+    statusText.innerHTML = "Connecting to Server...";
+    infoText.innerHTML = "";
+
+    WLAuthorizationManager.obtainAccessToken()
+      .then(
+        function (accessToken) {
+          titleText.innerHTML = "Yay!";
+          statusText.innerHTML = "Connected to MobileFirst Server";
+        },
+        function (error) {
+          titleText.innerHTML = "Bummer...";
+          statusText.innerHTML = "Failed to connect to MobileFirst Server";
+        }
+        );
+    },
+ }
+
+```
+
+>**참고:** index.js 파일의 **wlInitOptions**에 있는 `mfpContextRoot` 및 `applicationId`를 언급하는 것이 중요합니다.
+
+#### index.css
+
+```css
+body {
+    position: static;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    margin: 0px;
+	padding: 0px;
+}
+
+#button_content {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+}
+
+#ping_button {
+  display: block;
+  margin: 0 auto;
+  height: 50px;
+  width: 240px;
+  font-size: 20px;
+  color: white;
+  background-color: #325c80;
+}
+
+#main {
+  top: 10%;
+  position: absolute;
+  text-align: center;
+  width: 100%
+}
+
+#main_title {
+  font-size: 40px;
+}
+
+#main_status {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#main_info {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+```
+
+
+다음 명령을 사용하여 브라우저 플랫폼을 추가하십시오.
+```bash
+cordova platform add browser
+```
+<!--
+ (Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and above recognizes cordova browser applications as web platform applications. If you are using a lower version then you can either upgrade to the latest version or manually register your application. -->
+
+> 수동으로 애플리케이션을 등록하려면 다음을 수행하십시오.
+>
+* MFP 서버의 콘솔에 로그인하십시오.
+* _*애플리케이션*_ 옵션 옆에 있는 **새로 작성** 단추를 클릭하십시오.
+* 애플리케이션에 이름을 제공하고 해당 플랫폼으로 **웹**을 선택하고 애플리케이션의 ID(`index.js`의 **wlInitOptions** 함수에서 정의됨)를 제공하십시오.
+>
+>**중요:** 애플리케이션의 `config.xml`에 서버 세부사항을 추가하십시오.
+
+<!--If you are using **mfpdev-cli** (more about the `cli` commands can be found [here](https://www.ibm.com/support/knowledgecenter/en/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/dev/t_gs_cli.html)), add the MFP server using the following command:
+
+```bash
+mfpdev server add
+```
+Set it as the default server.
+
+Register your application with the following command:
+
+```bash
+mfpdev app register
+```
+-->
+
+
+ >**참고**: 브라우저 플랫폼 앱을 등록하는 *mfpdev-cli*가 곧 릴리스될 예정입니다.
+
+그런 다음 다음 명령을 실행하십시오.
+
+```bash
+cordova prepare
+cordova build
+cordova run
+```
+
+<!--This will launch two browsers. One of the browser runs on cordova browser's proxy server (that runs on port `8000`, generally) which cannot connect to the MFP server due to the [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)). The other browser would be an MFP proxy server (this runs on port `9081`) that will serve MFP requests.
+
+If you click the button to ping MFP on the browser running on port `8000`, the ping will fail whereas clicking the button that runs on localhost port `9081` will be successful. All the cordova browser compatible cordova plugins and MFP features can be used without issues.-->
+
+그러면 프록시 서버(포트 `9081`)에서 실행되고 MFP 서버에 연결하는 브라우저가 시작됩니다. cordova 브라우저의 기본 프록시 서버(`8000`에서 실행됨)는 [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)로 인해 MFP 서버에 연결할 수 없어서 제외되었습니다.
+
+> 실행할 기본 브라우저는 **Chrome**으로 설정됩니다. `--target` 옵션을 사용하여 다른 브라우저에서 실행할 수 있으며 다음 명령을 사용할 수 있습니다.
+```bash
+ cordova run --target=Firefox
+ ```
+
+다음 명령을 사용하여 앱을 미리 볼 수 있습니다.
+
+```bash
+    mfpdev app preview
+```
+
+지원되는 유일한 브라우저 옵션은 *Simple Browser 렌더링*입니다. 옵션 *모바일 브라우저 지원*은 브라우저 플랫폼에서 지원되지 않습니다.
+
+### WebSphere Liberty를 사용하여 브라우저 자원 제공
+{: #using-liberty-cordova-browser}
+
+지시사항에 따라 <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/"> 학습서</a>에서 WebSphere Liberty를 사용하고 아래 변경 사항을 작성하십시오. 
+
+이 학습서의 **웹 애플리케이션 자원으로 Maven 웹 앱 빌드** 섹션의 1단계에서 언급한 대로 브라우저 프로젝트의 `www` 폴더를 `[MyWebApp] → src → 기본 → webapp `에 추가하십시오. 마지막으로 Liberty 서버에 앱을 등록하고 `localhost:9080/MyWebApp` 경로로 브라우저에서 앱을 실행하여 테스트하십시오. 또한 `sjcl` 및 `jssha` 폴더를 상위 폴더에 추가하고 `ibmmfpf.js` 파일에서 해당 참조를 변경하십시오.
 
 ## 다음 학습서
 {: #tutorials-to-follow-next }

@@ -23,7 +23,7 @@ weight: 1
 {: #server }
 [Mobile Foundation IBM Cloud 서비스](../../bluemix/using-mobile-foundation)를 사용하거나 {{ site.data.keys.mf_dev_kit_full }}(로컬 개발용으로 사용됨)을 로컬로 사용하여 {{ site.data.keys.mf_server }}를 사용할 수 있습니다. {{ site.data.keys.mf_server }}를 사용하려면 Java 7 또는 8을 실행해야 합니다.
 
-Mobile Foundation IBM Cloud 서비스를 사용하려면 bluemix.net의 계정이 필요합니다. 
+Mobile Foundation IBM Cloud 서비스를 사용하려면 bluemix.net의 계정이 필요합니다.
 
 ### 애플리케이션 개발
 {: #application-development }

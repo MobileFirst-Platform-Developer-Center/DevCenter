@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 토폴로지 및 네트워크 플로우
-weight: 3
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -61,14 +61,14 @@ JMX를 통한 통신의 경우, 애플리케이션 서버에서 이러한 프로
 #### {{ site.data.keys.mf_server }} 관리 서비스
 {: #mobilefirst-server-administration-service }
 
-* [관리 서비스의 JNDI 특성: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
-* [관리 서비스의 JNDI 특성: 프록시](../server-configuration/#jndi-properties-for-administration-service-proxies)
-* [관리 서비스의 JNDI 특성: 토폴로지](../server-configuration/#jndi-properties-for-administration-service-topologies)
+* [관리 서비스의 JNDI 특성: JMX](../../server-configuration/#jndi-properties-for-administration-service-jmx)
+* [관리 서비스의 JNDI 특성: 프록시](../../server-configuration/#jndi-properties-for-administration-service-proxies)
+* [관리 서비스의 JNDI 특성: 토폴로지](../../server-configuration/#jndi-properties-for-administration-service-topologies)
 
 #### {{ site.data.keys.product }} 런타임
 {: #mobilefirst-foundation-runtime }
 
-* [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 ### {{ site.data.keys.mf_server }} 관리 서비스에서 다른 서버의 {{ site.data.keys.product }} 런타임으로
 {: #mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers }
@@ -80,7 +80,7 @@ WebSphere Application Server Network Deployment에서는 특정한 구성 없이
 
 ### {{ site.data.keys.mf_server }} 관리 서비스 및 MobileFirst 런타임에서 WebSphere Application Server Network Deployment의 배치 관리자로
 {: #mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment }
-WebSphere Application Server Network Deployment에서 런타임 및 관리 서비스는 배치 관리자와 통신하여 [{{ site.data.keys.product }} 런타임에서 {{ site.data.keys.mf_server }} 관리 서비스로](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) 및 [{{ site.data.keys.mf_server }} 관리 서비스에서 다른 서버의 {{ site.data.keys.product }} 런타임으로](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)에서 사용되는 JMX MBean을 얻습니다. 해당하는 JNDI 특성은 [관리 서비스의 JNDI 특성: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)의 **mfp.admin.jmx.dmgr.***입니다.
+WebSphere Application Server Network Deployment에서 런타임 및 관리 서비스는 배치 관리자와 통신하여 [{{ site.data.keys.product }} 런타임에서 {{ site.data.keys.mf_server }} 관리 서비스로](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) 및 [{{ site.data.keys.mf_server }} 관리 서비스에서 다른 서버의 {{ site.data.keys.product }} 런타임으로](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)에서 사용되는 JMX MBean을 얻습니다. 해당하는 JNDI 특성은 [관리 서비스의 JNDI 특성: JMX](../../server-configuration/#jndi-properties-for-administration-service-jmx)의 **mfp.admin.jmx.dmgr.***입니다.
 
 런타임과 관리 서비스 사이의 JMX 통신이 필요한 조작을 수행하려면 배치 관리자가 실행 중이어야 합니다. 이러한 조작은 런타임 초기화이거나 관리 서비스를 통해 수행된 수정의 알림일 수 있습니다.
 
@@ -113,13 +113,13 @@ WebSphere Application Server Network Deployment에서 런타임 및 관리 서�
 
 * **mfp.config.service.user**
 * **mfp.config.service.password**
-* 및 [관리 서비스의 JNDI 특성: 프록시](../server-configuration/#jndi-properties-for-administration-service-proxies)의 특성.
+* 및 [관리 서비스의 JNDI 특성: 프록시](../../server-configuration/#jndi-properties-for-administration-service-proxies)의 특성.
 
 ### {{ site.data.keys.mf_console }}에서 {{ site.data.keys.mf_server }} 관리 서비스로
 {: #mobilefirst-operations-console-to-mobilefirst-server-administration-service }
 {{ site.data.keys.mf_console }}은 웹 사용자 인터페이스이며 관리 서비스에 대한 프론트 엔드 역할을 수행합니다. HTTP 또는 HTTPS를 통해 관리 서비스의 REST 서비스와 통신합니다. 콘솔 사용이 허용된 사용자는 관리 서비스 사용도 허용되어야 합니다. 콘솔의 특정 보안 역할에 맵핑되는 각 사용자는 서비스의 동일한 보안 역할에도 맵핑되어야 합니다. 이러한 설정을 수행함으로써 서비스는 콘솔에서의 요청을 수락할 수 있습니다.
 
-이 통신을 구성하기 위한 JNDI 특성은 [{{ site.data.keys.mf_console }}의 JNDI 특성](../server-configuration/#jndi-properties-for-mobilefirst-operations-console)에 있습니다.
+이 통신을 구성하기 위한 JNDI 특성은 [{{ site.data.keys.mf_console }}의 JNDI 특성](../../server-configuration/#jndi-properties-for-mobilefirst-operations-console)에 있습니다.
 
 > 참고: **mfp.admin.endpoint** 특성은 콘솔에서 관리 서비스를 찾는 데 사용됩니다. 관리 서비스에 접속하기 위해 콘솔에서 생성되는 URL에 콘솔로 수신되는 HTTP 요청과 동일한 값이 사용되도록 지정하는 데 별표 문자 "\*"를 와일드카드로 사용할 수 있습니다. 예: `*://*:*/mfpadmin`은 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 컨텍스트 루트로는 **mfpadmin**을 사용함을 의미합니다. 이 특성은 콘솔 애플리케이션에 대해 지정됩니다.
 
@@ -149,11 +149,11 @@ WebSphere Application Server Network Deployment에서 런타임 및 관리 서�
 * **push.apns.proxy**
 * **push.gcm.proxy**
 
-자세한 정보는 [{{ site.data.keys.mf_server }} 푸시 서비스의 JNDI 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)을 참조하십시오.
+자세한 정보는 [{{ site.data.keys.mf_server }} 푸시 서비스의 JNDI 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)을 참조하십시오.
 
 ### 모바일 디바이스에서 {{ site.data.keys.product }} 런타임으로
 {: #mobile-devices-to-mobilefirst-foundation-runtime }
-모바일 디바이스는 런타임에 접속합니다. 이 통신의 보안은 요청되는 애플리케이션 및 어댑터의 구성에 의해 결정됩니다. 자세한 정보는 [{{ site.data.keys.product_adj }} 보안 프레임워크](../../../authentication-and-security)를 참조하십시오.
+모바일 디바이스는 런타임에 접속합니다. 이 통신의 보안은 요청되는 애플리케이션 및 어댑터의 구성에 의해 결정됩니다. 자세한 정보는 [{{ site.data.keys.product_adj }} 보안 프레임워크](../../../../authentication-and-security)를 참조하십시오.
 
 ## {{ site.data.keys.mf_server }} 컴포넌트 및 {{ site.data.keys.mf_analytics }}에 대한 제한조건
 {: #constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics }
@@ -214,19 +214,19 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
 
 #### JNDI 특성의 구성
 {: #configuration-of-jndi-properties }
-관리 서비스와 런타임 간의 JMX(Java Management Extensions) 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하려면 몇 가지 JNDI 특성이 필요합니다. 이러한 특성에 대한 세부사항은 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오.
+관리 서비스와 런타임 간의 JMX(Java Management Extensions) 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하려면 몇 가지 JNDI 특성이 필요합니다. 이러한 특성에 대한 세부사항은 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오.
 
 **독립형 WebSphere Application Server Liberty 프로파일 서버**  
 관리 서비스 및 런타임에는 다음과 같은 글로벌 JNDI 특성이 필요합니다.
 
-|             JNDI 특성          |             값 |
+|            JNDI 특성          |            값 |
 |--------------------------|--------|
-|             mfp.topology.platform	   |             Liberty |
-|             mfp.topology.clustermode | Standalone |
-|             mfp.admin.jmx.host       | WebSphere Application Server Liberty 프로파일 서버의 호스트 이름 |
-|             mfp.admin.jmx.port       | WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<httpEndpoint>` 요소에 선언된 httpsPort 속성의 포트인 REST 커넥터의 포트. 이 특성에는 기본값이 없습니다. |
-|             mfp.admin.jmx.user       | WebSphere Application Server Liberty 관리자의 사용자 이름. WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<administrator-role>` 요소에 정의된 이름과 동일해야 합니다. |
-|             mfp.admin.jmx.pwd        |             WebSphere Application Server Liberty 관리자의 비밀번호 |
+|            mfp.topology.platform	   |            Liberty |
+|            mfp.topology.clustermode |Standalone |
+|            mfp.admin.jmx.host       |WebSphere Application Server Liberty 프로파일 서버의 호스트 이름 |
+|            mfp.admin.jmx.port       |WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<httpEndpoint>` 요소에 선언된 httpsPort 속성의 포트인 REST 커넥터의 포트. 이 특성에는 기본값이 없습니다. |
+|            mfp.admin.jmx.user       |WebSphere Application Server Liberty 관리자의 사용자 이름. WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<administrator-role>` 요소에 정의된 이름과 동일해야 합니다. |
+|            mfp.admin.jmx.pwd        |            WebSphere Application Server Liberty 관리자의 비밀번호 |
 
 여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다.
 
@@ -238,10 +238,10 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
 **독립형 Apache Tomcat 서버**
 관리 서비스 및 런타임에는 다음과 같은 로컬 JNDI 특성이 필요합니다.
 
-|             JNDI 특성        |	            값    |
+|            JNDI 특성        |	            값    |
 |------------------------|------------|
-|             mfp.topology.platform   | Tomcat     |
-|             mfp.topology.clustermode | Standalone |
+|            mfp.topology.platform   |Tomcat     |
+|            mfp.topology.clustermode |Standalone |
 
 JVM 특성은 JMX(Java Management Extensions) RMI(Remote Method Invocation)를 정의하는 데도 필요합니다. 자세한 정보는 [Apache Tomcat용 JMX 연결 구성](../appserver/#apache-tomcat-prerequisites)을 참조하십시오.
 
@@ -256,11 +256,11 @@ Apache Tomcat 서버가 방화벽 뒤에서 실행 중이면 **mfp.admin.rmi.reg
 **독립형 WebSphere Application Server**  
 관리 서비스 및 런타임에는 다음과 같은 로컬 JNDI 특성이 필요합니다.
 
-|             JNDI 특성          |             값                 |
+|            JNDI 특성          |            값                 |
 |--------------------------| -----------------------|
-|             mfp.topology.platform    | WAS                    |
-|             mfp.topology.clustermode | Standalone             |
-| mfp.admin.jmx.connector  | JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. |
+|            mfp.topology.platform    |WAS                    |
+|            mfp.topology.clustermode |Standalone             |
+|mfp.admin.jmx.connector  |JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. |
 
 여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다.  
 여러 관리 컴포넌트를 배치하는 경우 다음을 지정해야 합니다.
@@ -292,7 +292,7 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
 
 #### JNDI 특성의 구성
 {: #configuration-of-jndi-properties-1 }
-동일한 서버의 관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하려면 몇 가지 JNDI 특성이 필요합니다. 편의를 위해 다음 표에서 이러한 특성을 나열합니다. 서버 팜 설치 방법에 대한 지시사항은 [서버 팜 설치](../appserver/#installing-a-server-farm)를 참조하십시오. JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오.
+동일한 서버의 관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하려면 몇 가지 JNDI 특성이 필요합니다. 편의를 위해 다음 표에서 이러한 특성을 나열합니다. 서버 팜 설치 방법에 대한 지시사항은 [서버 팜 설치](../appserver/#installing-a-server-farm)를 참조하십시오. JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오.
 
 **WebSphere Application Server Liberty 프로파일 서버 팜**  
 팜의 각 서버에서는 관리 서비스 및 런타임에 다음과 같은 글로벌 JNDI 특성이 필요합니다.
@@ -335,7 +335,7 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
             mfp.admin.jmx.port
         </td>
         <td>
-            REST 커넥터의 포트. WebSphere Application Server Liberty 프로파일 서버에 있는 <b>server.xml</b> 파일의 <code>httpEndpoint</code> 요소에 선언된 httpsPort 속성의 값과 동일해야 합니다. 
+            REST 커넥터의 포트. WebSphere Application Server Liberty 프로파일 서버에 있는 <b>server.xml</b> 파일의 <code>httpEndpoint</code> 요소에 선언된 httpsPort 속성의 값과 동일해야 합니다.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
@@ -348,7 +348,7 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
         </td>
         <td>
             WebSphere Application Server Liberty 프로파일 서버에 있는 <b>server.xml</b> 파일의 <code>administrator-role</code> 요소에 정의된 WebSphere Application Server Liberty 관리자의 사용자 이름.
-            
+
 {% highlight xml %}
 <administrator-role>
     <user>MfpRESTUser</user>
@@ -378,10 +378,10 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
 **Apache Tomcat 서버 팜**  
 팜의 각 서버에서는 관리 서비스 및 런타임에 다음과 같은 글로벌 JNDI 특성이 필요합니다.
 
-|             JNDI 특성          |	            값 |
+|            JNDI 특성          |	            값 |
 |--------------------------|-----------|
-|             mfp.topology.platform	   | Tomcat    |
-|             mfp.topology.clustermode |             Farm      |
+|            mfp.topology.platform	   |Tomcat    |
+|            mfp.topology.clustermode |            Farm      |
 
 JVM 특성은 JMX(Java Management Extensions) RMI(Remote Method Invocation)를 정의하는 데도 필요합니다. 자세한 정보는 [Apache Tomcat용 JMX 연결 구성](../appserver/#apache-tomcat-prerequisites)을 참조하십시오.
 
@@ -397,19 +397,19 @@ JVM 특성은 JMX(Java Management Extensions) RMI(Remote Method Invocation)를 �
 **WebSphere Application Server 전체 프로파일 서버 팜**  
 팜의 각 서버에서는 관리 서비스 및 런타임에 다음과 같은 글로벌 JNDI 특성이 필요합니다.
 
-|             JNDI 특성            |             값 |
+|            JNDI 특성            |            값 |
 |----------------------------|--------|
-| mfp.topology.platform	WAS  | WAS    |
-|             mfp.topology.clustermode   |             Farm   |
-| mfp.admin.jmx.connector    | SOAP   |
+|mfp.topology.platform	WAS  |WAS    |
+|            mfp.topology.clustermode   |            Farm   |
+|mfp.admin.jmx.connector    |SOAP   |
 
 관리 서비스에서 서버 팜 구성을 관리하려면 다음과 같은 JNDI 특성이 필요합니다.
 
-|             JNDI 특성    |             값 |
+|            JNDI 특성    |            값 |
 |--------------------|--------|
-|             mfp.admin.jmx.user | WebSphere Application Server의 사용자 이름. WebSphere Application Server 사용자 레지스트리에 이 사용자가 정의되어 있어야 합니다. |
-| mfp.admin.jmx.pwd	 | WebSphere Application Server 사용자의 비밀번호입니다. |
-| mfp.admin.serverid | 서버 ID. 팜에 있는 서버마다 달라야 하며 서버 팜 구성 파일에서 해당 서버에 사용된 이 특성의 값과 동일해야 합니다. |
+|            mfp.admin.jmx.user |WebSphere Application Server의 사용자 이름. WebSphere Application Server 사용자 레지스트리에 이 사용자가 정의되어 있어야 합니다. |
+|mfp.admin.jmx.pwd	 |WebSphere Application Server 사용자의 비밀번호입니다. |
+|mfp.admin.serverid |서버 ID. 팜에 있는 서버마다 달라야 하며 서버 팜 구성 파일에서 해당 서버에 사용된 이 특성의 값과 동일해야 합니다. |
 
 여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다.
 
@@ -438,7 +438,7 @@ Liberty Collective 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴�
 
 #### JNDI 특성의 구성
 {: #configuration-of-jndi-properties-2 }
-다음 표에서는 관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하는 데 필요한 JNDI 특성을 나열합니다. 이러한 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. Liberty collective를 수동으로 설치하는 방법에 대한 지시사항은 [WebSphere Application Server Liberty Collective에 수동 설치](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)를 참조하십시오.
+다음 표에서는 관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하는 데 필요한 JNDI 특성을 나열합니다. JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. Liberty collective를 수동으로 설치하는 방법에 대한 지시사항은 [WebSphere Application Server Liberty Collective에 수동 설치](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)를 참조하십시오.
 
 관리 서비스에는 다음과 같은 글로벌 JNDI 특성이 필요합니다.
 
@@ -548,9 +548,9 @@ Liberty Collective 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴�
 
 동일한 관리 컴포넌트를 사용하는 여러 제어기(복제본)가 사용되는 경우 런타임에 다음 JNDI 특성이 필요합니다.
 
-|             JNDI 특성 |             값 | 
+|            JNDI 특성 |            값 |
 |-----------------|--------|
-| mfp.admin.jmx.replica | 서로 다른 제어기 복제본의 엔드포인트 목록(`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 구문을 사용함) | 
+|mfp.admin.jmx.replica |서로 다른 제어기 복제본의 엔드포인트 목록(`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 구문을 사용함) |
 
 여러 관리 컴포넌트가 제어기에 배치되는 경우, 각 런타임에서 로컬 **mfp.admin.environmentid** JNDI 특성의 값은 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일해야 합니다.
 
@@ -611,17 +611,17 @@ Liberty Collective 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴�
 
 #### JNDI 특성의 구성
 {: #configuration-of-jndi-properties-3 }
-관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하려면 몇 가지 JNDI 특성이 필요합니다. 이러한 특성에 대한 세부사항은 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오.
+관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하려면 몇 가지 JNDI 특성이 필요합니다. 이러한 특성에 대한 세부사항은 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오.
 
 관리 서비스 및 런타임에는 다음과 같은 로컬 JNDI 특성이 필요합니다.
 
-|             JNDI 특성 |	            값 |
+|            JNDI 특성 |	            값 |
 |-----------------|--------|
-|             mfp.topology.platform	| WAS |
-|             mfp.topology.clustermode | Cluster |
-| mfp.admin.jmx.connector |	배치 관리자와 연결하는 데 사용되는 JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. SOAP는 기본값이며 선호되는 값이기도 합니다. SOAP 포트가 사용되지 않는 경우에는 RMI를 사용해야 합니다. |
-| mfp.admin.jmx.dmgr.host |	배치 관리자의 호스트 이름입니다. |
-| mfp.admin.jmx.dmgr.port |	배치 관리자에서 사용하는 RMI 또는 SOAP 포트. mfp.admin.jmx.connector의 값에 따라 다릅니다. |
+|            mfp.topology.platform	|WAS |
+|            mfp.topology.clustermode |Cluster |
+|mfp.admin.jmx.connector |	배치 관리자와 연결하는 데 사용되는 JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. SOAP는 기본값이며 선호되는 값이기도 합니다. SOAP 포트가 사용되지 않는 경우에는 RMI를 사용해야 합니다. |
+|mfp.admin.jmx.dmgr.host |	배치 관리자의 호스트 이름입니다. |
+|mfp.admin.jmx.dmgr.port |	배치 관리자에서 사용하는 RMI 또는 SOAP 포트. mfp.admin.jmx.connector의 값에 따라 다릅니다. |
 
 여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트로 동일한 서버 또는 클러스터를 실행할 수 있습니다.
 
@@ -651,11 +651,11 @@ Liberty Collective 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴�
 
 리버스 프록시를 애플리케이션 서버 인프라 전면에서 사용하는 경우 관리 서비스에 대해 다음 JNDI 특성을 정의해야 합니다.
 
-|             JNDI 특성 |	            값 |
+|            JNDI 특성 |	            값 |
 |-----------------|--------|
-| mfp.admin.proxy.protocol | 리버스 프록시와 통신하는 데 사용되는 프로토콜. HTTP 또는 HTTPS일 수 있습니다. |
-| mfp.admin.proxy.host | 리버스 프록시의 호스트 이름 |
-| mfp.admin.proxy.port | 리버스 프록시의 포트 번호 |
+|mfp.admin.proxy.protocol |리버스 프록시와 통신하는 데 사용되는 프로토콜. HTTP 또는 HTTPS일 수 있습니다. |
+|mfp.admin.proxy.host |리버스 프록시의 호스트 이름 |
+|mfp.admin.proxy.port |리버스 프록시의 포트 번호 |
 
 리버스 프록시의 URL을 참조하는 **mfp.admin.endpoint** 특성은 {{ site.data.keys.mf_console }}에도 필요합니다.
 
@@ -671,7 +671,7 @@ Liberty Collective 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴�
 
 [{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product }} 런타임에 대한 제한조건](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)에 설명된 제한조건이 적용됩니다. 각 런타임(해당 컨텍스트 루트 포함)에는 자체 고유의 데이터베이스 테이블이 있어야 합니다.
 
-> 지시사항은 [복수 런타임 구성](../server-configuration/#configuring-multiple-runtimes)을 참조하십시오.
+> 지시사항은 [복수 런타임 구성](../../server-configuration/#configuring-multiple-runtimes)을 참조하십시오.
 
 ## 동일 서버 또는 WebSphere Application Server 셀의 복수 {{ site.data.keys.mf_server }} 인스턴스
 {: #multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell }

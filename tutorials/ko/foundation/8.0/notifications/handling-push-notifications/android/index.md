@@ -137,16 +137,16 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
 ### 클라이언트 측
 {: #client-side }
 
-| Java 메소드 | 설명 |
+|Java 메소드 |설명 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | 제공된 컨텍스트에 대해 MFPPush를 초기화합니다. |
-| [`isPushSupported();`](#is-push-supported) | 디바이스가 푸시 알림을 지원하는지 확인합니다. |
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | 디바이스를 푸시 알림 서비스에 등록합니다. |
-| [`getTags(MFPPushResponseListener)`](#get-tags) | 푸시 알림 서비스 인스턴스에서 사용 가능한 태그를 검색합니다. |
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 디바이스를 지정된 태그에 등록합니다. |
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | 디바이스가 현재 등록된 모든 태그를 검색합니다. |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 특정 태그에서 등록 취소합니다. |
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | 푸시 알림 서비스에서 디바이스를 등록 취소합니다. |
+|[`initialize(Context context);`](#initialization) |제공된 컨텍스트에 대해 MFPPush를 초기화합니다. |
+|[`isPushSupported();`](#is-push-supported) |디바이스가 푸시 알림을 지원하는지 확인합니다. |
+|[`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) |디바이스를 푸시 알림 서비스에 등록합니다. |
+|[`getTags(MFPPushResponseListener)`](#get-tags) |푸시 알림 서비스 인스턴스에서 사용 가능한 태그를 검색합니다. |
+|[`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) |디바이스를 지정된 태그에 등록합니다. |
+|[`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) |디바이스가 현재 등록된 모든 태그를 검색합니다. |
+|[`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) |특정 태그에서 등록 취소합니다. |
+|[`unregisterDevice(MFPPushResponseListener)`](#unregister) |푸시 알림 서비스에서 디바이스를 등록 취소합니다. |
 
 #### 초기화
 {: #initialization }

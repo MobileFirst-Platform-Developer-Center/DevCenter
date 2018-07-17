@@ -33,7 +33,7 @@ weight: 4
 
 > [Analytics 워크플로우](../workflows/) 학습서에서 자세히 학습하십시오.
 
-> **참고:** 클라이언트/서버 로그 **검색** 및 **내보내기** 데이터 기능은 최신 Chrome 브라우저 버전에서 날짜 필터 수정 시 마우스 클릭 이벤트를 통해 조치를 호출하지 않습니다. 이 문제는 Chrome 브라우저 문제로 인해 발생하며 알려진 제한사항입니다. 이 문제는 다른 브라우저나 Chrome 브라우저 버전 *v54.0.2840.71* 이전에서는 발생하지 않습니다. 최신 Chrome 브라우저에서는 검색/내보내기 단추를 클릭하기 전에 필요한 날짜를 설정하고 페이지를 새로 고치거나 Enter/Return 키를 눌러서 선택한 조치를 실행하여 문제를 해결할 수 있습니다. 
+> **참고:** 클라이언트/서버 로그 **검색** 및 **내보내기** 데이터 기능은 최신 Chrome 브라우저 버전에서 날짜 필터 수정 시 마우스 클릭 이벤트를 통해 조치를 호출하지 않습니다. 이 문제는 Chrome 브라우저 문제로 인해 발생하며 알려진 제한사항입니다. 이 문제는 다른 브라우저나 Chrome 브라우저 버전 *v54.0.2840.71* 이전에서는 발생하지 않습니다. 최신 Chrome 브라우저에서는 검색/내보내기 단추를 클릭하기 전에 필요한 날짜를 설정하고 페이지를 새로 고치거나 Enter/Return 키를 눌러서 선택한 조치를 실행하여 문제를 해결할 수 있습니다.
 
 ## Analytics 기능
 
@@ -114,13 +114,13 @@ weight: 4
 {{ site.data.keys.mf_analytics_console_short }}의 컨텐츠는 사전 정의된 보안 역할에 의해 제한됩니다.  
 {{ site.data.keys.mf_analytics_console_short }}은 로그인한 사용자의 보안 역할에 따라 다른 컨텐츠를 표시합니다. 다음 표에서는 보안 역할 및 {{ site.data.keys.mf_analytics_console_short }}에 대한 이들 역할의 액세스를 보여줍니다.
 
-| 역할           | 역할 이름                | 보기 액세스                                                     | 편집 액세스  |
+|역할           |역할 이름                |보기 액세스                                                     |편집 액세스  |
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-| 관리자  | analytics_administrator  | 모든 항목	                                                     | 모든 항목     |
-| 인프라 | analytics_infrastructure	| 모든 항목	                                                     | 모든 항목     |
-| 개발자      | analytics_developer	    | 관리 페이지를 제외한 모든 항목		             | 모든 항목     |
-| 지원        | analytics_support        | 관리 페이지를 제외한 모든 항목		             | 모든 항목     |
-| 비즈니스       | analytics_business       | 관리 및 인프라 페이지를 제외한 모든 항목 | 모든 항목     |
+|관리자  |analytics_administrator  |모든 항목	                                                     |모든 항목     |
+|인프라 |analytics_infrastructure	|모든 항목	                                                     |모든 항목     |
+|개발자      |analytics_developer	    |관리 페이지를 제외한 모든 항목		             |모든 항목     |
+|지원        |analytics_support        |관리 페이지를 제외한 모든 항목		             |모든 항목     |
+|비즈니스       |analytics_business       |관리 및 인프라 페이지를 제외한 모든 항목 |모든 항목     |
 
 > 역할 설정에 대한 정보는 [{{ site.data.keys.mf_server }} 관리를 위해 사용자 인증 구성](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration)을 참조하십시오.
 
