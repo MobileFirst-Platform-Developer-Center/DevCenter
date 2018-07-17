@@ -139,14 +139,14 @@ weight: 6
 
 | Java メソッド | 説明 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。 |
-| [`isPushSupported();`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 |
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | デバイスをプッシュ通知サービスに登録します。 |
-| [`getTags(MFPPushResponseListener)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。 |
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグをすべて取得します。 |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 |
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。 |
+| [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。|
+| [`isPushSupported();`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。|
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | デバイスをプッシュ通知サービスに登録します。|
+| [`getTags(MFPPushResponseListener)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。|
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。|
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグをすべて取得します。|
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 特定のタグからアンサブスクライブします。|
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。|
 
 #### 初期化
 {: #initialization }

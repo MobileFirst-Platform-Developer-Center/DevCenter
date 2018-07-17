@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: アプリケーション・サーバーへの MobileFirst Server のインストール
-breadcrumb_title: Installing MobileFirst Server
+breadcrumb_title: Installing MobileFirst Server to an application server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -35,7 +35,7 @@ weight: 4
 {{ site.data.keys.mf_server }} には、Apache Tomcat の構成に関していくつかの要件があります。その詳細は、以下のトピックで説明されています。  
 以下の基準を満たしていることを確認してください。
 
-* サポートされているバージョンの Apache Tomcat を使用してください。 [システム要件](../../../product-overview/requirements)を参照してください。
+* サポートされているバージョンの Apache Tomcat を使用してください。 [システム要件](../../../../product-overview/requirements)を参照してください。
 * Apache Tomcat は、JRE 7.0 以降で実行する必要があります。
 * 管理サービスとランタイム・コンポーネントとの間の通信を可能にするには、JMX 構成を有効にする必要があります。 次の **Apache Tomcat 用の JMX 接続の構成**で説明しているとおり、この通信では RMI を使用します。
 
@@ -129,7 +129,7 @@ weight: 4
 
 以下の基準を満たしていることを確認してください。
 
-* サポートされているバージョンの Liberty を使用してください。 [システム要件](../../../product-overview/requirements)を参照してください。
+* サポートされているバージョンの Liberty を使用してください。 [システム要件](../../../../product-overview/requirements)を参照してください。
 * Liberty は、JRE 7.0 以降で実行する必要があります。 JRE 6.0 はサポートされていません。
 * Liberty の一部のバージョンは、Java EE 6 と Java EE 7 の両方のフィーチャーをサポートしています。例えば、jdbc-4.0 Liberty フィーチャーは Java EE 6 の一部で、jdbc-4.1 Liberty フィーチャーは Java EE 7 の一部です。{{ site.data.keys.mf_server }} V8.0.0 は、Java EE 6 または Java EE 7 のフィーチャーと共にインストールできます。 ただし、これより古いバージョンの {{ site.data.keys.mf_server }} を同じ Liberty サーバーで実行する場合、Java EE 6 フィーチャーを使用しなければなりません。 {{ site.data.keys.mf_server }} V7.1.0 以前は Java EE 7 のフィーチャーをサポートしません。
 * 次の JMX は、**WebSphere Application Server Liberty プロファイル用の JMX 接続の構成**の記述に従って構成する必要があります。
@@ -170,7 +170,7 @@ liberty_install_dir/bin/productInfo featureInfo
 {{ site.data.keys.mf_server }} には、WebSphere Application Server および WebSphere Application Server Network Deployment の構成に関していくつかの要件があります。その詳細は、以下のトピックで説明されています。  
 以下の基準を満たしていることを確認してください。
 
-* サポートされているバージョンの WebSphere Application Server を使用してください。 [システム要件](../../../product-overview/requirements)を参照してください。
+* サポートされているバージョンの WebSphere Application Server を使用してください。 [システム要件](../../../../product-overview/requirements)を参照してください。
 * アプリケーション・サーバーは、JRE 7.0 で実行する必要があります。 デフォルトで、WebSphere Application Server は Java 6.0 SDK を使用します。 Java 7.0 SDK に切り替えるには、[WebSphere Application Server での Java 7.0 SDK への切り替え](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html)を参照してください。
 * 管理セキュリティーはオンにする必要があります。 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 管理サービス、および {{ site.data.keys.mf_server }} 構成サービスは、セキュリティー・ロールにより保護されます。 詳しくは、[セキュリティーの使用可能化](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en)を参照してください。
 * 管理サービスとランタイム・コンポーネントとの間の通信を可能にするには、JMX 構成を有効にする必要があります。 この通信では SOAP を使用します。 WebSphere Application Server Network Deployment には、RMI を使用できます。 詳しくは、次の **WebSphere Application Server および WebSphere Application Server Network Deployment 用の JMX 接続の構成**を参照してください。
@@ -303,7 +303,7 @@ Apache Tomcat の場合、以下の操作を実行するには必要な権限を
                             <li>インストール先が WebSphere Application Server Liberty の場合:
                                 <ul>
                                     <li>Liberty のインストール・ディレクトリーおよび {{ site.data.keys.mf_server }} をインストールするサーバーの名前を入力します。</li>
-                                    <li>コンソールにログインするためのデフォルト・ユーザーを作成します。 このユーザーは Liberty の基本レジストリーに作成されます。 実動インストールの場合は、<b>「デフォルト・ユーザーの作成」</b>オプションをクリアして、インストール後にユーザー・アクセスを構成することもできます。 詳しくは、<a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成</a>を参照してください。</li>
+                                    <li>コンソールにログインするためのデフォルト・ユーザーを作成します。 このユーザーは Liberty の基本レジストリーに作成されます。 実動インストールの場合は、<b>「デフォルト・ユーザーの作成」</b>オプションをクリアして、インストール後にユーザー・アクセスを構成することもできます。 詳しくは、<a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成</a>を参照してください。</li>
                                     <li><b>「スタンドアロン・デプロイメント」</b> (デフォルト)、<b>「サーバー・ファーム・デプロイメント」</b>、または<b>「Liberty 集合デプロイメント」</b>のいずれかのデプロイメント・タイプを選択します。</li>
                                 </ul>
 
@@ -340,7 +340,7 @@ Apache Tomcat の場合、以下の操作を実行するには必要な権限を
                                                 <ul>
                                                     <li>ライブ更新サービスのセキュリティー・ロール <b>configadmin</b> にユーザーをマップする。</li>
                                                     <li>このユーザーのログイン ID とパスワードを管理サービスの JNDI プロパティー (<b>mfp.config.service.user</b> および <b>mfp.config.service.password</b>) に追加する。</li>
-                                                    <li>1 人以上のユーザーを、管理サービスおよび {{ site.data.keys.mf_console }} のセキュリティー・ロールにマップします。 <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成</a>を参照してください。</li>
+                                                    <li>1 人以上のユーザーを、管理サービスおよび {{ site.data.keys.mf_console }} のセキュリティー・ロールにマップします。 <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成</a>を参照してください。</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -351,7 +351,7 @@ Apache Tomcat の場合、以下の操作を実行するには必要な権限を
                                 <ul>
                                     <li>Apache Tomcat のインストール・ディレクトリーを入力します。</li>
                                     <li>RMI との JMX 通信に使用するポートを入力します。 デフォルトで、この値は 8686 です。 サーバー構成ツールは、<b>tomcat_install_dir/bin/setenv.bat</b> ファイルまたは <b>tomcat_install_dir/bin/setenv.sh</b> ファイルを変更してこのポートを開きます。 手動でポートを開きたい場合や、ポートを開くコードが既に <b>setenv.bat</b> または <b>setenv.sh</b> にある場合は、このツールを使用しないでください。 その場合、代わりに Ant タスクを使用してインストールします。 Ant タスクでのインストールの場合は、RMI ポートを手動で開くオプションが提供されます。</li>
-                                    <li>コンソールにログインするためのデフォルト・ユーザーを作成します。 このユーザーは、<b>tomcat-users.xml</b> 構成ファイルでも作成されます。 実動インストールの場合は、「デフォルト・ユーザーの作成」オプションをクリアして、インストール後にユーザー・アクセスを構成することもできます。 詳しくは、<a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成</a>を参照してください。</li>
+                                    <li>コンソールにログインするためのデフォルト・ユーザーを作成します。 このユーザーは、<b>tomcat-users.xml</b> 構成ファイルでも作成されます。 実動インストールの場合は、「デフォルト・ユーザーの作成」オプションをクリアして、インストール後にユーザー・アクセスを構成することもできます。 詳しくは、<a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成</a>を参照してください。</li>
                                 </ul>
                             </li>
                         </ul>
@@ -417,11 +417,11 @@ Ant タスクを使用して、サーバー・ファームで実行するよう�
 
 Ant タスクの参照は以下のとおりです。
 
-* [{{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [{{ site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [{{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [{{ site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-サンプル構成ファイルとタスクを使用したインストールの概要については、[コマンド・ライン・モードでの {{ site.data.keys.mf_server }} のインストール](../tutorials/command-line)を参照してください。
+サンプル構成ファイルとタスクを使用したインストールの概要については、[コマンド・ライン・モードでの {{ site.data.keys.mf_server }} のインストール](../../simple-install/tutorials/command-line)を参照してください。
 
 Ant ファイルは、製品インストールの一部である Ant ディストリビューションを使用して実行できます。 例えば、WebSphere Application Server Network Deployment クラスターがあり、データベースが IBM DB2 の場合は、**mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-wasnd-cluster-db2.xml** Ant ファイルを使用できます。 このファイルを編集し、必要なすべてのプロパティーを入力したら、**mfp\_install\_dir/MobileFirstServer/configuration-samples** ディレクトリーから以下のコマンドを実行できます。
 
@@ -429,7 +429,7 @@ Ant ファイルは、製品インストールの一部である Ant ディス�
 * **mfp\_install\_dir/shortcuts/ant -f configure-wasnd-cluster-db2.xml install** - このコマンドは、Ant ファイルのプロパティーに入力されたパラメーターを使用して、DB2 をデータ・ソースとして、{{ site.data.keys.mf_server }} を WebSphere Application Server Network Deployment クラスター上にインストールします。
 
 <br/>
-インストール後、フィックスパックを適用する際に再使用できるように、Ant ファイルのコピーを作成します。
+インストールの後、フィックスパックを適用するために再使用できるように、Ant ファイルのコピーを作成します。
 
 ### Ant ファイルを使用したフィックスパックの適用
 {: #applying-a-fix-pack-by-using-the-ant-files }
@@ -465,9 +465,9 @@ Ant ファイルは、製品インストールの一部である Ant ディス�
 {: #specify-extra-jndi-properties }
 **installmobilefirstadmin**、**installmobilefirstruntime**、および **installmobilefirstpush** の各 Ant タスクは、コンポーネントを機能させるために必要となる JNDI プロパティーの値を宣言します。 これらの JNDI プロパティーは、JMX 通信を定義するのに使用します。また、他のコンポーネント (ライブ更新サービス、プッシュ・サービス、分析サービス、または許可サーバーなど) へのリンクを定義するのにも使用します。 ただし、他の JNDI プロパティーの値も定義できます。 これらの 3 つのタスクのために存在する `<property>` エレメントを使用します。 JNDI プロパティーのリストについては、以下を参照してください。
 
-* [{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
-* [{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
-* [{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
+* [{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
+* [{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 例えば、次のとおりです。
 
@@ -549,7 +549,7 @@ JDBC 接続のプロパティーを指定できます。 `<database>` エレメ�
   <console install="true" warFile="/usr/mfp/mfp-admin-ui.war"/>
 ```
 
-詳しくは、[インストールに関する参照情報](../installation-reference)で、各 {{ site.data.keys.mf_server }} コンポーネントをインストールする Ant タスクを参照してください。
+詳しくは、[インストールに関する参照情報](../../installation-reference)で、各 {{ site.data.keys.mf_server }} コンポーネントをインストールする Ant タスクを参照してください。
 
 #### WebSphere Application Server Network Deployment ターゲットの指定
 {: #specify-websphere-application-server-network-deployment-targets }
@@ -560,7 +560,7 @@ WebSphere Application Server Network Deployment にインストールするに�
 * セル (セルのすべてのサーバー)
 * ノード (ノードのすべてのサーバー)
 
-**configure-wasnd-cluster-dbms-name.xml**、**configure-wasnd-server-dbms-name.xml**、および **configure-wasnd-node-dbms-name.xml** などのサンプル・ファイルには、各タイプのターゲットにデプロイする宣言が含まれています。 詳しくは、[インストールに関する参照情報](../installation-reference)で、各 {{ site.data.keys.mf_server }} コンポーネントをインストールする Ant タスクを参照してください。
+**configure-wasnd-cluster-dbms-name.xml**、**configure-wasnd-server-dbms-name.xml**、および **configure-wasnd-node-dbms-name.xml** などのサンプル・ファイルには、各タイプのターゲットにデプロイする宣言が含まれています。 詳しくは、[インストールに関する参照情報](../../installation-reference)で、各 {{ site.data.keys.mf_server }} コンポーネントをインストールする Ant タスクを参照してください。
 
 > 注: V8.0.0 以降、WebSphere Application Server Network Deployment セル用のサンプル構成ファイルは提供されません。
 
@@ -649,7 +649,7 @@ WebSphere Application Server Network Deployment にインストールするに�
 
 > **注:** JNDI 値の自動変換から保護し、075 が 61 に、または 31.500 が 31.5 に変換されないようにするには、値を定義するときにこの構文 '"075"' を使用してください。
 
-管理サービスの JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。  
+管理サービスの JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。  
 
 ファーム構成については、以下のトピックも参照してください。
 
@@ -726,7 +726,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
+                <p>JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
 
                 <h3>データ・ソース</h3>
                 <p>管理サービスのデータ・ソースの JNDI 名は、<b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b> と定義する必要があります。 以下の例は、管理サービスが、コンテキスト・ルート <b>/mfpadmin</b> を使用してインストールされており、そのサービスがリレーショナル・データベースを使用しているケースを示しています。</p>
@@ -801,7 +801,7 @@ WebSphere Application Server Network Deployment にインストールするに�
 {% endhighlight %}
 
                 <p>mfp.admin.endpoint プロパティーの標準的な値は <b>*://*:*/the-adminContextRoot</b> です。<br/>
-                JNDI プロパティーについて詳しくは、<a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
+                JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
 
                 <h3>セキュリティー・ロール</h3>
                 <p>アプリケーションの <b>application-bnd</b> エレメントで以下のロールを宣言します。</p>
@@ -848,7 +848,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a>を参照してください。</p>
+                <p>JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a>を参照してください。</p>
 
                 <h3>データ・ソース</h3>
                 <p>ランタイムのデータ・ソースの JNDI 名は、<b>jndiName=the-contextRoot/jdbc/mfpDS</b> と定義する必要があります。 以下の例は、ランタイムが、コンテキスト・ルート <b>/mobilefirst</b> を使用してインストールされており、ランタイムがリレーショナル・データベースを使用しているケースを示しています。</p>
@@ -897,7 +897,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - この値は <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b> でなければなりません。</li>
                 </ul>
-                JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト</a>を参照してください。
+                JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト</a>を参照してください。
             </div>
         </div>
     </div>
@@ -992,8 +992,8 @@ WebSphere Application Server Network Deployment にインストールするに�
 
 > **注:** JNDI 値の自動変換から保護し、075 が 61 に、または 31.500 が 31.5 に変換されないようにするには、値を定義するときにこの構文 '"075"' を使用してください。
 
-* 管理サービスの JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。  
-* ランタイムの JNDI プロパティーについて詳しくは、[{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)を参照してください。
+* 管理サービスの JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。  
+* ランタイムの JNDI プロパティーについて詳しくは、[{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)を参照してください。
 
 #### クラス・ローダー
 {: #class-loader-collective }
@@ -1067,7 +1067,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
+                <p>JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
 
                 <h3>データ・ソース</h3>
                 <p>管理サービスのデータ・ソースの JNDI 名は、<b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b> と定義する必要があります。 以下の例は、管理サービスが、コンテキスト・ルート <b>/mfpadmin</b> を使用してインストールされており、そのサービスがリレーショナル・データベースを使用しているケースを示しています。</p>
@@ -1145,7 +1145,7 @@ WebSphere Application Server Network Deployment にインストールするに�
 {% endhighlight %}
 
                 <p>mfp.admin.endpoint プロパティーの標準的な値は <b>*://*:*/the-adminContextRoot</b> です。<br/>
-                JNDI プロパティーについて詳しくは、<a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
+                JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
 
                 <h3>セキュリティー・ロール</h3>
                 <p>アプリケーションの <b>application-bnd</b> エレメントで以下のロールを宣言します。</p>
@@ -1194,7 +1194,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a>を参照してください。</p>
+                <p>JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a>を参照してください。</p>
 
                 <h3>データ・ソース</h3>
                 <p>ランタイムのデータ・ソースの JNDI 名は、<b>jndiName=the-contextRoot/jdbc/mfpDS</b> と定義する必要があります。 以下の例は、ランタイムが、コンテキスト・ルート <b>/mobilefirst</b> を使用してインストールされており、ランタイムがリレーショナル・データベースを使用しているケースを示しています。</p>
@@ -1247,7 +1247,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - この値は <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b> でなければなりません。</li>
                 </ul>
-                JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト</a>を参照してください。
+                JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト</a>を参照してください。
             </div>
         </div>
     </div>
@@ -1337,7 +1337,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
+                <p>JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
 
                 <h3>データ・ソース</h3>
                 <p>データ・ソース (jdbc/mfpAdminDS) は、**Context** エレメントでリソースとして宣言されます。 例えば、次のとおりです。</p>
@@ -1404,7 +1404,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                 <h3>必須の JNDI プロパティー</h3>
                 <p><b>mfp.admin.endpoint</b> プロパティーを定義する必要があります。 このプロパティーの標準的な値は <b>*://*:*/the-adminContextRoot</b> です。
                 <br/><br/>
-                JNDI プロパティーについて詳しくは、<a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
+                JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
 
                 <h3>セキュリティー・ロール</h3>
                 <p>このアプリケーションで使用可能なセキュリティー・ロールは以下のとおりです。</p>
@@ -1453,7 +1453,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a>を参照してください。</p>
+                <p>JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a>を参照してください。</p>
 
                 <h3>データ・ソース</h3>
                 <p>ランタイムのデータ・ソースの JNDI 名は <b>jdbc/mfpDS</b> と定義する必要があります。 それを <b>Context</b> エレメントでリソースとして宣言します。</p>
@@ -1490,7 +1490,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - この値は <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b> でなければなりません。</li>
                 </ul>
-                JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト</a>を参照してください。
+                JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト</a>を参照してください。
             </div>
         </div>
     </div>
@@ -1618,7 +1618,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
+                <p>JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
 
                 <h3>データ・ソース</h3>
                 <p>管理サービス用のデータ・ソースを作成し、それを <b>jdbc/mfpAdminDS</b> にマップします。</p>
@@ -1686,7 +1686,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                 <br/><br/>
                 <b>mfp.admin.endpoint</b> プロパティーを定義する必要があります。 このプロパティーの標準的な値は <b>*://*:*/the-adminContextRoot</b> です。
                 <br/><br/>
-                JNDI プロパティーについて詳しくは、<a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
+                JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} の JNDI プロパティー</a>を参照してください。</p>
 
                 <h3>セキュリティー・ロール</h3>
                 <p>このアプリケーションで使用可能なセキュリティー・ロールは以下のとおりです。</p>
@@ -1745,7 +1745,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a>を参照してください。</p>
+                <p>JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a>を参照してください。</p>
 
                 <h3>始動順序</h3>
                 <p>ランタイム・アプリケーションは、管理サービス・アプリケーションの後に始動する必要があります。 順序は、<b>「始動の動作」</b>セクションで設定できます。 例えば、管理サービスでは Startup Order を <b>1</b> に設定し、ランタイムでは <b>2</b> に設定します。</p>
@@ -1787,7 +1787,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - この値は <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b> でなければなりません。</li>
                 </ul>
-                <p>JNDI プロパティーについて詳しくは、<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
+                <p>JNDI プロパティーについて詳しくは、<a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト</a>を参照してください。</p>
 
                 <h3>データ・ソース</h3>
                 <p>プッシュ・サービスのデータ・ソースを作成し、それを <b>jdbc/imfPushDS</b> にマップします。</p>
@@ -1879,7 +1879,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                                     <li>WebSphere Application Server Liberty プロファイル</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-                                サポートされているアプリケーション・サーバーのバージョンについては、<a href="../../../product-overview/requirements">システム要件</a>を参照してください。
+                                サポートされているアプリケーション・サーバーのバージョンについては、<a href="../../../../product-overview/requirements">システム要件</a>を参照してください。
 
                                 <blockquote><b>重要:</b> {{ site.data.keys.product }} では、同種のサーバー・ファームのみがサポートされます。 同じタイプのアプリケーション・サーバーを接続する場合、サーバー・ファームは同種です。 異なるタイプのアプリケーション・サーバーを関連付けようとすると、予測不能の動作が実行時に起こる可能性があります。 例えば、Apache Tomcat サーバーと WebSphere Application Server フル・プロファイル・サーバーを混在させたファームは、無効な構成になります。</blockquote>
                             </li>
@@ -1931,7 +1931,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                                     <li>WebSphere Application Server Liberty プロファイル</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-                                サポートされているアプリケーション・サーバーのバージョンについては、<a href="../../../product-overview/requirements">システム要件</a>を参照してください。
+                                サポートされているアプリケーション・サーバーのバージョンについては、<a href="../../../../product-overview/requirements">システム要件</a>を参照してください。
 
                                 <blockquote><b>重要:</b> {{ site.data.keys.product }} では、同種のサーバー・ファームのみがサポートされます。 同じタイプのアプリケーション・サーバーを接続する場合、サーバー・ファームは同種です。 異なるタイプのアプリケーション・サーバーを関連付けようとすると、予測不能の動作が実行時に起こる可能性があります。 例えば、Apache Tomcat サーバーと WebSphere Application Server フル・プロファイル・サーバーを混在させたファームは、無効な構成になります。</blockquote>
                             </li>
@@ -2006,7 +2006,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                             </li>
                             <li>各サーバーに対して以下のコマンドを実行します。<b>configure-appserver-database-ant-file.xml</b> は選択した実際の Ant ファイル名に置き換えてください。<code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> および <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>
                             <br/><br/>
-                            これらのコマンドは、Ant タスク <b>installmobilefirstadmin</b> および <b>installmobilefirstruntime</b> を実行します。 これらのタスクについて詳しくは、<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">{{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク</a>および <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク</a>を参照してください。
+                            これらのコマンドは、Ant タスク <b>installmobilefirstadmin</b> および <b>installmobilefirstruntime</b> を実行します。 これらのタスクについて詳しくは、<a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">{{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク</a>および <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク</a>を参照してください。
                             </li>
                             <li>オプションで、別のランタイムをインストールしたい場合は、以下のステップを実行します。
                                 <ul>
@@ -2049,7 +2049,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                             <li>WebSphere Application Server Liberty プロファイル</li>
                             <li>Apache Tomcat</li>
                         </ul>
-                        サポートされているアプリケーション・サーバーのバージョンについては、<a href="../../../product-overview/requirements">システム要件</a>を参照してください。
+                        サポートされているアプリケーション・サーバーのバージョンについては、<a href="../../../../product-overview/requirements">システム要件</a>を参照してください。
 
                         <blockquote><b>重要:</b> {{ site.data.keys.product }} では、同種のサーバー・ファームのみがサポートされます。 同じタイプのアプリケーション・サーバーを接続する場合、サーバー・ファームは同種です。 異なるタイプのアプリケーション・サーバーを関連付けようとすると、予測不能の動作が実行時に起こる可能性があります。 例えば、Apache Tomcat サーバーと WebSphere Application Server フル・プロファイル・サーバーを混在させたファームは、無効な構成になります。</blockquote>
                     </li>
@@ -2143,7 +2143,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                                     <li>Keytool について詳しくは、IBM SDK, Java Technology Edition の <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a> を参照してください。</li>
                                     <li>iKeyman について詳しくは、IBM SDK, Java Technology Edition の <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a> を参照してください。</li>
                                 </ul>
-                                鍵ストアおよびトラストストアのロケーションは、<b>server.xml</b> ファイルに定義されています。 <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 構成属性</a>内の <b>keyStoreRef</b> 属性と <b>trustStoreRef</b> 属性を参照してください。 デフォルトで、Liberty プロファイルの鍵ストアは <b>${server.config.dir}/resources/security/key.jks</b> にあります。 トラストストア参照が <b>server.xml</b> ファイルにないか定義されていない場合は、<b>keyStoreRef</b> によって指定された鍵ストアが使用されます。 サーバーはデフォルトの鍵ストアを使用し、ファイルはサーバーを初めて実行した時に作成されます。 その場合、365 日間の有効期間でデフォルト証明書が作成されます。 実動では、独自の証明書 (必要な場合、中間証明書を含む) を使用したり、生成された証明書の有効期限を変更したりすることも検討できます。
+                                鍵ストアおよびトラストストアのロケーションは、<b>server.xml</b> ファイルに定義されています。 <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 構成属性</a>内の <b>keyStoreRef</b> 属性と <b>trustStoreRef</b> 属性を参照してください。 デフォルトで、Liberty プロファイルの鍵ストアは <b>${server.config.dir}/resources/security/key.jks</b> にあります。 トラストストア参照が <b>server.xml</b> ファイルにないか定義されていない場合は、<b>keyStoreRef</b> によって指定された鍵ストアが使用されます。 サーバーはデフォルトの鍵ストアを使用し、ファイルはサーバーを初めて実行した時に作成されます。 その場合、365 日間の有効期間でデフォルト証明書が作成されます。 実動の場合、独自の証明書を (必要な場合は中間証明書を含めて) 使用すること、または、生成された証明書の有効期限を変更することを検討してください。
 
                                 <blockquote>注: トラストストアのロケーションを確認したい場合は、次の宣言を server.xml ファイルに追加することにより確認できます。
 {% highlight xml %}
@@ -2152,7 +2152,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                                 </blockquote>
                                 最後に、サーバーを始動し、<b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> ファイル内で com.ibm.ssl.trustStore を含む行を見つけます。
                                 <ul>
-                                    <li>ファーム内の他のサーバーの公開証明書を、サーバーの <b>server.xml</b> 構成ファイルによって参照されているトラストストアにインポートします。 <a href="../tutorials/graphical-mode">グラフィカル・モードでの {{ site.data.keys.mf_server }} のインストール</a>のチュートリアルに、ファーム内の 2 つの Liberty サーバー間で証明書を交換する手順が説明されています。 詳しくは、<a href="../tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成</a>セクションのステップ 5 を参照してください。</li>
+                                    <li>ファーム内の他のサーバーの公開証明書を、サーバーの <b>server.xml</b> 構成ファイルによって参照されているトラストストアにインポートします。 <a href="../../simple-install/tutorials/graphical-mode">グラフィカル・モードでの {{ site.data.keys.mf_server }} のインストール</a>のチュートリアルに、ファーム内の 2 つの Liberty サーバー間で証明書を交換する手順が説明されています。 詳しくは、<a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成</a>セクションのステップ 5 を参照してください。</li>
                                     <li>WebSphere Application Server Liberty プロファイルの各インスタンスを再始動して、セキュリティー構成を有効にします。 以下のステップは、シングル・サインオン (SSO) を機能させる場合に必須です。</li>
                                     <li>ファームのメンバーの 1 つを始動します。 デフォルトの LTPA 構成では、Liberty サーバーが正常に始動すると、LTPA 鍵ストアを <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys</b> として生成します。</li>
                                     <li><b>ltpa.keys</b> ファイルを各ファーム・メンバーの <b>${wlp.user.dir}/servers/server_name/resources/security</b> ディレクトリーにコピーして、ファーム・メンバー全体にわたって LTPA 鍵ストアを複製します。 LTPA 構成について詳しくは、<a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Liberty プロファイル上での LTPA の構成</a>を参照してください。</li>
@@ -2221,4 +2221,4 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
 * **mfp.admin.farm.missed.heartbeats.timeout**
 
 <br/>
-JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
+JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
