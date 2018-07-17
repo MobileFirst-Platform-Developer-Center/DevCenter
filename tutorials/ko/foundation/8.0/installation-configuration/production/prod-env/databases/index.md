@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 데이터베이스 설정
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -23,7 +23,7 @@ weight: 2
 하지만 각각 애플리케이션 서버에 자체 컨텍스트 루트를 가진 {{ site.data.keys.product }} 런타임의 여러 인스턴스를 설치하도록 결정하는 경우에는 모든 인스턴스에 자체 테이블 세트가 필요합니다. 이 경우 이들은 서로 다른 스키마에 있어야 합니다.
 
 > **DB2에 대한 참고:** {{ site.data.keys.product_adj }} 라이센스 사용자는 DB2를 Foundation에 대한 지원 시스템으로 사용할 수 있습니다. 이를 위해서는 DB2 소프트웨어를 설치한 후 다음을 수행해야 합니다.
-> 
+>
 > * [IBM Passport Advantage(PPA) 웹 사이트](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)에서 직접 용도가 제한된 활성화 이미지 다운로드
 > * **db2licm** 명령을 사용하여 용도가 제한된 활성화 라이센스 파일 **db2xxxx.lic** 적용
 >
@@ -90,7 +90,7 @@ Ant 태스크 또는 Server Configuration Tool을 사용한 설치를 실행하�
 * [Oracle 데이터베이스 및 사용자 요구사항](#oracle-database-and-user-requirements)
 * [MySQL 데이터베이스 및 사용자 요구사항](#mysql-database-and-user-requirements)
 
-> 지원되는 데이터베이스 소프트웨어 버전의 최신 목록은 [시스템 요구사항](../../../product-overview/requirements/) 페이지를 참조하십시오.
+> 지원되는 데이터베이스 소프트웨어 버전의 최신 목록은 [시스템 요구사항](../../../../product-overview/requirements/) 페이지를 참조하십시오.
 
 ### DB2 데이터베이스 및 사용자 요구사항
 {: #db2-database-and-user-requirements }
@@ -122,7 +122,7 @@ Oracle에 대한 데이터베이스 요구사항을 검토하십시오. 단계�
 
 데이터베이스 문자 세트를 유니코드 문자 세트(AL32UTF8)로 설정하고 자국 문자 세트를 UTF8 - 유니코드 3.0 UTF-8로 설정했는지 확인하십시오.  
 
-런타임 사용자([데이터베이스 사용자 및 권한](#database-users-and-privileges)에 설명되어 있음)는 연관된 테이블스페이스와 {{ site.data.keys.product }} 서비스에 필요한 기술 데이터를 기록하는 데 충분한 할당량을 가지고 있어야 합니다. 제품에서 사용하는 테이블에 대한 자세한 정보는 [내부 런타임 데이터베이스](../installation-reference/#internal-runtime-databases)를 참조하십시오.
+런타임 사용자([데이터베이스 사용자 및 권한](#database-users-and-privileges)에 설명되어 있음)는 연관된 테이블스페이스와 {{ site.data.keys.product }} 서비스에 필요한 기술 데이터를 기록하는 데 충분한 할당량을 가지고 있어야 합니다. 제품에서 사용하는 테이블에 대한 자세한 정보는 [내부 런타임 데이터베이스](../../installation-reference/#internal-runtime-databases)를 참조하십시오.
 
 테이블은 런타임 사용자의 기본 스키마에서 작성될 것으로 예상됩니다. Ant 태스크 및 Server Configuration Tool은 인수로 전달된 사용자의 기본 스키마에서 테이블을 작성합니다. 테이블 작성에 대한 자세한 정보는 [수동으로 Oracle 데이터베이스 테이블 작성](#creating-the-oracle-database-tables-manually)을 참조하십시오.
 
@@ -184,9 +184,9 @@ MySQL에 대한 데이터베이스 요구사항을 검토하십시오. 단계를
    ```
 
     여기서 "at" 부호(@) 앞의 mfpuser는 사용자 이름이고 **IDENTIFIED BY** 뒤의 **mfpuser-password**는 비밀번호이고 **mfp-host**는 {{ site.data.keys.product_adj }}가 실행되는 호스트의 이름입니다.
-    
+
     사용자는 {{ site.data.keys.mf_server }} 애플리케이션이 설치된 Java 애플리케이션 서버를 실행하는 호스트에서 MySQL 서버에 연결할 수 있어야 합니다.
-    
+
 ## 수동으로 데이터베이스 테이블 작성
 {: #create-the-database-tables-manually }
 {{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터베이스 테이블은 Ant 태스크 또는 Server Configuration Tool을 사용하여 수동으로 작성될 수 있습니다. 이 주제에서는 수동으로 해당 테이블을 작성하는 방법에 대한 설명 및 세부사항을 제공합니다.
@@ -313,7 +313,7 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 {: #create-the-database-tables-with-the-server-configuration-tool }
 {{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터베이스 테이블은 Ant 태스크 또는 Server Configuration Tool을 사용하여 수동으로 작성될 수 있습니다. 이 주제에서는 Server Configuration Tool을 사용하여 {{ site.data.keys.mf_server }}를 설치할 때 데이터베이스 설정에 대한 설명 및 세부사항을 제공합니다.
 
-Server Configuration Tool은 설치 프로세스의 일부로 데이터베이스 테이블을 작성할 수 있습니다. 일부 경우에는 {{ site.data.keys.mf_server }} 컴포넌트에 대한 데이터베이스 및 사용자도 작성할 수 있습니다. Server Configuration Tool을 사용한 설치 프로세스에 대한 개요는 [그래픽 모드에서 {{ site.data.keys.mf_server }} 설치](../tutorials/graphical-mode)를 참조하십시오.
+Server Configuration Tool은 설치 프로세스의 일부로 데이터베이스 테이블을 작성할 수 있습니다. 일부 경우에는 {{ site.data.keys.mf_server }} 컴포넌트에 대한 데이터베이스 및 사용자도 작성할 수 있습니다. Server Configuration Tool을 사용한 설치 프로세스에 대한 개요는 [그래픽 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/tutorials/graphical-mode)를 참조하십시오.
 
 구성 신임 정보를 완료하고 Server Configuration Tool 분할창에서 **배치**를 클릭하면 다음과 같은 조작이 실행됩니다.
 
@@ -400,7 +400,7 @@ MySQL 서버가 [MySQL 데이터베이스 및 사용자 요구사항](#mysql-dat
 
 {{ site.data.keys.mf_server }}가 Ant 태스크를 사용하여 설치된 경우 이 절에서 데이터베이스의 설정에 대한 관련 정보를 찾을 수 있습니다.
 
-Ant 태스크를 사용하여 {{ site.data.keys.mf_server }} 데이터베이스 테이블을 설정할 수 있습니다. 일부 경우에는 이 태스크를 사용하여 데이터베이스 및 사용자도 작성할 수 있습니다. Ant 태스크를 사용한 설치 프로세스에 대한 개요는 [명령행 모드에서 {{ site.data.keys.mf_server }} 설치](../tutorials/command-line)를 참조하십시오.
+Ant 태스크를 사용하여 {{ site.data.keys.mf_server }} 데이터베이스 테이블을 설정할 수 있습니다. 일부 경우에는 이 태스크를 사용하여 데이터베이스 및 사용자도 작성할 수 있습니다. Ant 태스크를 사용한 설치 프로세스에 대한 개요는 [명령행 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/tutorials/command-line)를 참조하십시오.
 
 Ant 태스크를 시작하는 데 도움이 되는 샘플 Ant 파일 세트가 설치와 함께 제공됩니다. **mfp\_install\_dir/MobileFirstServer/configurations-samples**에서 해당 파일을 찾을 수 있습니다. 해당 파일은 다음과 같은 패턴을 따라 이름이 지정됩니다.
 
@@ -415,7 +415,7 @@ Ant 파일은 다음과 같은 태스크를 수행할 수 있습니다.
 {: #create-database-dbmsxml }
 Ant 파일은 지원되는 데이터베이스 관리 시스템(DBMS)에 필요한 경우 데이터베이스를 작성한 후 데이터베이스에서 테이블을 작성할 수 있습니다. 하지만 데이터베이스는 기본 설정으로 작성되므로 프로덕션용으로 적합하지 않습니다.
 
-Ant 파일에서 **configureDatabase** Ant 태스크를 사용하여 데이터베이스를 설정하는 사전 정의된 대상을 찾을 수 있습니다. 자세한 정보는 [Ant configuredatabase](../installation-reference/#ant-configuredatabase-task-reference) 태스크 참조를 참조하십시오.
+Ant 파일에서 **configureDatabase** Ant 태스크를 사용하여 데이터베이스를 설정하는 사전 정의된 대상을 찾을 수 있습니다. 자세한 정보는 [Ant configuredatabase](../../installation-reference/#ant-configuredatabase-task-reference) 태스크 참조를 참조하십시오.
 
 ### 샘플 Ant 파일 사용
 {: #using-the-sample-ant-files }
@@ -437,7 +437,7 @@ Ant 파일에서 **configureDatabase** Ant 태스크를 사용하여 데이터�
 * 모든 {{ site.data.keys.mf_server }} 애플리케이션(관리 서비스, 라이브 업데이트 서비스, 푸시 서비스 및 런타임)
 * 애플리케이션 서버의 데이터 소스에 대해 런타임 시 사용자 및 데이터베이스를 작성하는 데 사용되는 사용자
 
-[데이터베이스 사용자 및 권한](#database-users-and-privileges)에 설명된 대로 사용자를 구분하려면 자체 Ant 파일을 작성해야 하거나 각 데이터베이스 대상이 다른 사용자를 가지도록 샘플 Ant 파일을 수정해야 합니다. 자세한 정보는 [설치 참조](../installation-reference)를 참조하십시오.
+[데이터베이스 사용자 및 권한](#database-users-and-privileges)에 설명된 대로 사용자를 구분하려면 자체 Ant 파일을 작성해야 하거나 각 데이터베이스 대상이 다른 사용자를 가지도록 샘플 Ant 파일을 수정해야 합니다. 자세한 정보는 [설치 참조](../../installation-reference)를 참조하십시오.
 
 DB2 및 MySQL의 경우 데이터베이스 작성과 런타임에 대해 서로 다른 사용자를 가질 수 있습니다. 각 유형의 사용자에 대한 권한이 [데이터베이스 사용자 및 권한](#database-users-and-privileges)에 나열되어 있습니다. Oracle의 경우에는 데이터베이스 작성과 런타임에 대해 서로 다른 사용자를 사용할 수 없습니다. Ant 태스크에서는 테이블이 사용자의 기본 스키마에 있다고 간주합니다. 런타임 사용자에 대한 권한을 줄이려면 런타임 시 사용될 사용자의 기본 스키마에서 수동으로 테이블을 작성해야 합니다. 자세한 정보는 [수동으로 Oracle 데이터베이스 테이블 작성](#creating-the-oracle-database-tables-manually)을 참조하십시오.
 
@@ -471,7 +471,7 @@ CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 
 Ant 파일에서 Oracle 사용자 이름을 입력할 때 해당 이름은 대문자여야 합니다. Oracle 데이터베이스 사용자(FOO)가 있을 때 소문자로 된 사용자 이름(foo)을 입력하면 **configureDatabase** Ant 태스크는 이를 다른 사용자로 간주합니다. Oracle 데이터베이스에 대한 기타 도구와 달리 **configureDatabase** Ant 태스크는 사용자 이름이 자동으로 대문자로 변환되지 않도록 보호합니다.
 
-**configureDatabase** Ant 태스크는 서비스 이름 또는 Oracle 시스템 ID(SID)를 사용하여 데이터베이스를 식별합니다. 하지만 Oracle RAC에 연결하려면 복합 JDBC URL을 입력해야 합니다. 이 경우 **configureDatabase** Ant 태스크에 있는 **oracle** 요소는 **database**, **server**, **port**, **user** 및 **password** 속성 대신 **url**, **user** 및 **password** 속성을 사용해야 합니다. 자세한 정보는 [Ant **configuredatabase** 태스크 참조](../installation-reference/#ant-configuredatabase-task-reference)에 있는 테이블을 참조하십시오. **mfp\_install\_dir/MobileFirstServer/configurations-samples**에 있는 샘플 Ant 파일은 **oracle** 요소에서 **database**, **server**, **port**, **user** 및 **password** 속성을 사용합니다. JDBC URL을 사용하여 Oracle에 연결해야 하는 경우에는 이를 수정해야 합니다.
+**configureDatabase** Ant 태스크는 서비스 이름 또는 Oracle 시스템 ID(SID)를 사용하여 데이터베이스를 식별합니다. 하지만 Oracle RAC에 연결하려면 복합 JDBC URL을 입력해야 합니다. 이 경우 **configureDatabase** Ant 태스크에 있는 **oracle** 요소는 **database**, **server**, **port**, **user** 및 **password** 속성 대신 **url**, **user** 및 **password** 속성을 사용해야 합니다. 자세한 정보는 [Ant **configuredatabase** 태스크 참조](../../installation-reference/#ant-configuredatabase-task-reference)에 있는 테이블을 참조하십시오. **mfp\_install\_dir/MobileFirstServer/configurations-samples**에 있는 샘플 Ant 파일은 **oracle** 요소에서 **database**, **server**, **port**, **user** 및 **password** 속성을 사용합니다. JDBC URL을 사용하여 Oracle에 연결해야 하는 경우에는 이를 수정해야 합니다.
 
 이미 있는 데이터베이스에서 데이터베이스 테이블을 작성하려면 [Ant 태스크를 사용하여 데이터베이스 테이블 작성](#create-the-database-tables-with-ant-tasks)을 참조하십시오.
 

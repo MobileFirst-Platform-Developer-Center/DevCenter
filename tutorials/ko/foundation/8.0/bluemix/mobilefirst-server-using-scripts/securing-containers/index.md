@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Securing containers
 #relevantTo: [ios,android,windows,javascript]
@@ -70,7 +71,7 @@ ATS 구성은 기타 비iOS 모바일 운영 체제에서 연결 중인 애플�
 
 ### 백엔드에 대한 연결 보안 설정
 {: #securing-a-connection-to-the-back-end }
-컨테이너와 사내 구축형 백엔드 시스템 간 보안 연결이 필요한 경우 IBM Cloud Secure Gateway 서비스를 사용할 수 있습니다. 구성 세부사항은 [IBM Cloud Containers의 Mobile Foundation에서 사내 구축형 백엔드에 안전하게 연결](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/) 블로그 게시물에서 제공됩니다. 
+컨테이너와 사내 구축형 백엔드 시스템 간 보안 연결이 필요한 경우 IBM Cloud Secure Gateway 서비스를 사용할 수 있습니다. 구성 세부사항은 [IBM Cloud Containers의 Mobile Foundation에서 사내 구축형 백엔드에 안전하게 연결](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/) 블로그 게시물에서 제공됩니다.
 
 ## IBM Containers에서 {{ site.data.keys.product_full }}의 보안 구성
 {: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
@@ -297,7 +298,7 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
 
 * LDAP 저장소 설정과 구성
 * 레지스트리 파일(registry.xml)의 변경
-* 로컬 LDAP 저장소와 컨테이너에 연결할 보안 게이트웨이의 구성(이 단계를 수행하려면 IBM Cloud에 기존 앱이 있어야 합니다.).
+* 로컬 LDAP 저장소와 컨테이너에 연결할 보안 게이트웨이의 구성 (이 단계를 수행하려면 IBM Cloud에 기존 앱이 있어야 합니다.).
 
 #### LDAP 저장소
 {: #ldap-repository }
@@ -324,13 +325,13 @@ LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 �
    </ldapRegistry>
    ```
 
-        항목 | 설명
+        항목 |설명
     --- | ---
-    `host` 및 `port` | 로컬 LDAP 서버의 호스트 이름(IP 주소)과 포트 번호입니다.
-    `baseDN` | 특정 조직에 대한 모든 세부사항을 캡처하는 LDAP의 도메인 이름(DN)입니다.
-    `bindDN="uid=admin,ou=system"	` | LDAP 서버의 바인딩 세부사항입니다. 예를 들어, Apache Directory Service의 기본값은 `uid=admin,ou=system`입니다.
-    `bindPassword="secret"	` | LDAP 서버의 바인딩 비밀번호입니다. 예를 들어, Apache Directory Service의 기본값은 `secret`입니다.
-    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 인증과 권한 부여 중에 디렉토리 서비스(예: Apache)를 조회하는 데 사용되는 사용자 정의 필터입니다.
+    `host` 및 `port` |로컬 LDAP 서버의 호스트 이름(IP 주소)과 포트 번호입니다.
+    `baseDN` |특정 조직에 대한 모든 세부사항을 캡처하는 LDAP의 도메인 이름(DN)입니다.
+    `bindDN="uid=admin,ou=system"	` |LDAP 서버의 바인딩 세부사항입니다. 예를 들어, Apache Directory Service의 기본값은 `uid=admin,ou=system`입니다.
+    `bindPassword="secret"	` |LDAP 서버의 바인딩 비밀번호입니다. 예를 들어, Apache Directory Service의 기본값은 `secret`입니다.
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` |인증과 권한 부여 중에 디렉토리 서비스(예: Apache)를 조회하는 데 사용되는 사용자 정의 필터입니다.
 
 2. `appSecurity-2.0`과 `ldapRegistry-3.0`에 다음 기능을 사용할 수 있는지 확인하십시오.
 
@@ -347,9 +348,9 @@ LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 �
 {: #secure-gateway }
 LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 IBM Cloud에 Secure Gateway 서비스의 인스턴스를 작성한 후 LDAP 레지스트리의 IP 정보를 얻어야 합니다. 이 태스크를 수행하려면 로컬 LDAP 호스트 이름과 포트 번호가 필요합니다.
 
-1. IBM Cloud에 로그온하고 **카탈로그, 카테고리 > 통합**으로 이동한 후 **Secure Gateway**를 클릭하십시오. 
+1. IBM Cloud에 로그온하고 **카탈로그, 카테고리 > 통합**으로 이동한 후 **Secure Gateway**를 클릭하십시오.
 2. 서비스 추가에서 앱을 선택한 후 **작성**을 클릭하십시오. 이제 서비스가 사용자 앱에 바인드됩니다.
-3. 앱의 IBM Cloud 대시보드로 이동하여 **Secure Gateway** 서비스 인스턴스를 클릭한 후 **게이트웨이 추가**를 클릭하십시오. 
+3. 앱의 IBM Cloud 대시보드로 이동하여 **Secure Gateway** 서비스 인스턴스를 클릭한 후 **게이트웨이 추가**를 클릭하십시오.
 4. 게이트웨이의 이름을 지정하고 **대상 추가**를 클릭한 후 로컬 LDAP 서버의 이름, IP 주소, 포트를 입력하십시오.
 5. 프롬프트에 따라 연결을 완료하십시오. 초기화된 대상을 확인하려면 LDAP 게이트웨이 서비스의 대상 화면으로 이동하십시오.
 6. 필요한 호스트 정보와 포트 정보를 얻으려면 LDAP 게이트웨이 서비스 인스턴스의 정보 아이콘을 클릭하십시오(Secure Gateway 대시보드에 있음). 표시되는 세부사항은 로컬 LDAP 서버의 별명입니다.
@@ -375,17 +376,17 @@ LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 IBM Cloud
 ### LDAP에 대해 작업하도록 앱 구성
 {: #configuring-apps-to-work-with-ldap }
 외부 LDAP 레지스트리에 대해 작업하도록 {{ site.data.keys.product_adj }} 모바일 앱을 구성합니다.  
-구성 프로세스는 로컬 LDAP 저장소와 컨테이너에 연결할 보안 게이트웨이 구성 단계를 포함합니다(이 단계를 수행하려면 IBM Cloud에 기존 앱이 있어야 합니다.).
+구성 프로세스는 로컬 LDAP 저장소와 컨테이너에 연결할 보안 게이트웨이 구성 단계를 포함합니다 (이 단계를 수행하려면 IBM Cloud에 기존 앱이 있어야 합니다.).
 
 LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 IBM Cloud에 Secure Gateway 서비스의 인스턴스를 작성한 후 LDAP 레지스트리의 IP 정보를 얻어야 합니다. 이 단계를 수행하려면 로컬 LDAP 호스트 이름과 포트 번호가 필요합니다.
 
-1. IBM Cloud에 로그온하고 **카탈로그, 카테고리 > 통합**으로 이동한 후 **Secure Gateway**를 클릭하십시오. 
+1. IBM Cloud에 로그온하고 **카탈로그, 카테고리 > 통합**으로 이동한 후 **Secure Gateway**를 클릭하십시오.
 2. 서비스 추가에서 앱을 선택한 후 **작성**을 클릭하십시오. 이제 서비스가 사용자 앱에 바인드됩니다.
-3. 앱의 IBM Cloud 대시보드로 이동하여 **Secure Gateway** 서비스 인스턴스를 클릭한 후 **게이트웨이 추가**를 클릭하십시오. 
+3. 앱의 IBM Cloud 대시보드로 이동하여 **Secure Gateway** 서비스 인스턴스를 클릭한 후 **게이트웨이 추가**를 클릭하십시오.
 4. 게이트웨이의 이름을 지정하고 **대상 추가**를 클릭한 후 로컬 LDAP 서버의 이름, IP 주소, 포트를 입력하십시오.
 5. 프롬프트에 따라 연결을 완료하십시오. 초기화된 대상을 확인하려면 LDAP 게이트웨이 서비스의 대상 화면으로 이동하십시오.
 6. 필요한 호스트 정보와 포트 정보를 얻으려면 LDAP 게이트웨이 서비스 인스턴스의 정보 아이콘을 클릭하십시오(Secure Gateway 대시보드에 있음). 표시되는 세부사항은 로컬 LDAP 서버의 별명입니다.
 7. **대상 ID** 값과 **클라우드 호스트:포트** 값을 캡처하십시오. LDAP 로그인 모듈에 해당 값을 제공하십시오.
 
 **결과**  
-로컬 LDAP 서버와 IBM Cloud의 컨테이너에 있는 {{ site.data.keys.product_adj }} 앱 간 통신이 설정됩니다. 로컬 LDAP 서버에 대해 IBM Cloud 앱의 인증과 권한 부여의 유효성이 검증됩니다. 
+로컬 LDAP 서버와 IBM Cloud의 컨테이너에 있는 {{ site.data.keys.product_adj }} 앱 간 통신이 설정됩니다. 로컬 LDAP 서버에 대해 IBM Cloud 앱의 인증과 권한 부여의 유효성이 검증됩니다.

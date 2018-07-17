@@ -42,7 +42,7 @@ show_children: true
 {: #administration-tools }
 {{ site.data.keys.product_adj }} 애플리케이션을 관리하는 데 {{ site.data.keys.mf_console }}만 사용할 수 있는 것은 아닙니다. {{ site.data.keys.product }}은 빌드와 배치 프로세스에 관리 조작을 통합하는 다른 도구도 제공합니다.
 
-REST 서비스 세트를 사용하여 관리 조작을 수행할 수 있습니다. 이러한 서비스의 API 참조 문서는 [{{ site.data.keys.mf_server }} 관리 서비스용 REST API](../api/rest/admin-apis/)를 참조하십시오. 
+REST 서비스 세트를 사용하여 관리 조작을 수행할 수 있습니다. 이러한 서비스의 API 참조 문서는 [{{ site.data.keys.mf_server }} 관리 서비스용 REST API](../api/rest/admin-apis/)를 참조하십시오.
 
 이 REST 서비스를 사용하면 {{ site.data.keys.mf_console }}에서 수행할 수 있는 조작을 수행할 수 있습니다. 애플리케이션과 어댑터를 관리하고, 새 버전의 애플리케이션을 업로드하거나 이전 버전을 사용 안함으로 설정하는 등의 작업을 수행할 수 있습니다.
 

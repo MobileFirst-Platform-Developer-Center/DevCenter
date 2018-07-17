@@ -88,4 +88,4 @@ jQuery는 신속한 웹 개발을 위해 HTML 문서 플로우, 이벤트 핸들
           	</body>
       </html>
     ```
-HTML 파일에서 jQuery Mobile에 대한 참조를 추가한 후에는 Eclipse에서 파일을 닫고 다시 여십시오. 그러면 HTML 캔버스에 끌어서 놓을 수 있는 팔레트 보기에 jQuery Mobile 위젯이 표시됩니다.
+HTML 파일에서 jQuery Mobile에 대한 참조를 추가한 후에는 Eclipse에서 파일을 닫고 다시 여십시오. 그러면 HTML 캔버스에 끌어서 놓을 수 있는 팔레트 보기에 jQuery Mobile 위젯이 표시됩니다. 

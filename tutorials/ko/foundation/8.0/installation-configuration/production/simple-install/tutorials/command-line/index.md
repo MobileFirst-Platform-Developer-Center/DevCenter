@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: 명령행에서 MobileFirst Server 설치 학습서
+title: 명령행에서 MobileFirst Server 설치
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -12,7 +12,7 @@ IBM  Installation Manager의 명령행 모드와 Ant 태스크를 사용하여 {
 {: #before-you-begin }
 * 다음 데이터베이스 중 하나와 지원되는 Java 버전이 설치되었는지 확인하십시오. 또한 사용하는 컴퓨터에서 이러한 데이터베이스에 해당하는 JDBC 드라이버도 사용 가능해야 합니다.
     * 지원되는 데이터베이스 목록의 DBMS(Database Management System):
-        * DB2 
+        * DB2
         * MySQL
         * Oracle
 
@@ -34,7 +34,7 @@ IBM  Installation Manager의 명령행 모드와 Ant 태스크를 사용하여 {
 
 **WebSphere Application Server Liberty 프로파일**  
 IBM WebSphere Application Server - Liberty Core V8.5.5.3 이상
-    
+
 #### 다음으로 이동
 {: #jump-to }
 * [IBM Installation Manager 설치](#installing-ibm-installation-manager)
@@ -55,7 +55,7 @@ Installation Manager V1.8.4 이상을 설치해야 합니다. 제품의 설치 �
 3. 검토 후에 라이센스 계약에 동의하면 Installation Manager를 설치하십시오.  
     * 관리자로 Installation Manager를 설치하려면 **installc.exe**를 실행하십시오. Linux 또는 UNIX에서는 루트가 필요합니다. Windows에서는 관리자 권한이 필요합니다. 이 모드에서는 설치된 패키지에 대한 정보가 디스크의 공유 위치에 배치되며 Installation Manager를 실행하도록 허용된 모든 사용자가 애플리케이션을 업데이트할 수 있습니다. 그래픽 사용자 인터페이스가 없는 명령행 설치의 경우 실행 파일 이름은 "c"로 끝나야 합니다(**installc**). Installation Manager를 설치하려면 **installc.exe -acceptLicence**를 입력하십시오.
     * 사용자 모드로 Installation Manager를 설치하려면 **userinstc.exe**를 실행하십시오. 특정 권한이 필요하지 않습니다. 단, 이 모드에서는 설치된 패키지에 대한 정보가 사용자의 홈 디렉토리에 배치됩니다. 해당 사용자만 Installation Manager를 사용하여 설치된 애플리케이션을 업데이트할 수 있습니다. 그래픽 사용자 인터페이스가 없는 명령행 설치의 경우 실행 파일은 "c"로 끝나야 합니다(**userinstc**). Installation Manager를 설치하려면 **userinstc.exe -acceptLicence**를 입력하십시오.
-    
+
 ## WebSphere Application Server Liberty Core 설치
 {: #installing-websphere-application-server-liberty-core }
 WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data.keys.product }} 패키지의 일부로 제공됩니다. 이 태스크에서는 Liberty 프로파일을 설치하고 서버 인스턴스를 작성합니다. 그러면 서버 인스턴스에 {{ site.data.keys.mf_server }}를 설치할 수 있습니다.
@@ -68,7 +68,7 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
 3. Liberty 프로파일을 설치할 디렉토리를 결정하십시오. 이후 단계에서는 이 디렉토리를 liberty_install_dir로 참조합니다.
 4. 명령행을 시작하여 **installation\_manager\_install\_dir/tools/eclipse/**로 이동하십시오.
 5. 검토 후 라이센스 계약에 동의하면 Liberty를 설치하십시오.
-    
+
     다음 명령을 입력하십시오. **imcl install com.ibm.websphere.liberty.v85 -repositories liberty\_repository\_dir -installationDirectory liberty\_install\_dir -acceptLicense**
 
     이 명령은 Liberty를 **liberty\_install\_dir** 디렉토리에 설치합니다. **-acceptLicense** 옵션은 제품에 대한 라이센스 조항에 동의함을 의미합니다.
@@ -82,9 +82,9 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
 7.  이 학습서의 다음 파트에서 {{ site.data.keys.mf_server }}의 첫 번째 노드를 설치하는 데 사용될 Liberty 서버를 작성하십시오.
     * 명령행을 시작하십시오.
     * **liberty\_install\_dir/bin**으로 이동하여 **server create mfp1**을 입력하십시오.
-    
+
     이 명령은 이름이 **mfp1**인 Liberty 서버를 작성합니다. **liberty\_install\_dir/usr/servers/mfp1** 또는 **WLP\_USER\_DIR/servers/mfp1**(6단계에 설명된 대로 디렉토리를 수정한 경우)에서 해당 정의를 볼 수 있습니다.
-    
+
 서버를 작성한 후, **liberty\_install\_dir/bin/**에서 `server start mfp1`을 사용하여 이 서버를 시작할 수 있습니다.  
 서버를 중지하려면 **liberty\_install\_dir/bin/**에서 `server stop mfp1` 명령을 입력하십시오.
 
@@ -98,7 +98,7 @@ Installation Manager V1.8.4 이상이 설치되었는지 확인하십시오. 설
 
 데이터베이스를 작성하고 Liberty 프로파일에 {{ site.data.keys.mf_server }}를 배치하기 전에, Installation Manager를 실행하여 사용하는 디스크에 {{ site.data.keys.mf_server }}의 2진 파일을 설치하십시오. Installation Manager를 사용하여 {{ site.data.keys.mf_server }}를 설치하는 중에 {{ site.data.keys.mf_app_center }}를 설치하는 옵션이 제안됩니다. Application Center는 제품의 다른 컴포넌트입니다. 이 학습서에서는 {{ site.data.keys.mf_server }}와 함께 설치하지 않아도 됩니다.
 
-또한 토큰 라이센싱 활성화 여부를 표시하기 위해 하나의 특성을 지정해야 합니다. 이 학습서에서는 토큰 라이센싱이 필요하지 않다고 가정하므로 토큰 라이센싱용으로 {{ site.data.keys.mf_server }}를 구성하는 단계가 포함되지 않습니다. 단, 프로덕션 설치의 경우 토큰 라이센싱 활성화가 필요한지 여부를 판별해야 합니다. Rational  License Key Server에서 토큰 라이센싱을 사용하는 계약이 없는 경우에는 토큰 라이센싱을 활성화하지 않아도 됩니다. 토큰 라이센싱을 활성화하는 경우, {{ site.data.keys.mf_server }}를 토큰 라이센싱용으로 구성해야 합니다. 
+또한 토큰 라이센싱 활성화 여부를 표시하기 위해 하나의 특성을 지정해야 합니다. 이 학습서에서는 토큰 라이센싱이 필요하지 않다고 가정하므로 토큰 라이센싱용으로 {{ site.data.keys.mf_server }}를 구성하는 단계가 포함되지 않습니다. 단, 프로덕션 설치의 경우 토큰 라이센싱 활성화가 필요한지 여부를 판별해야 합니다. Rational  License Key Server에서 토큰 라이센싱을 사용하는 계약이 없는 경우에는 토큰 라이센싱을 활성화하지 않아도 됩니다. 토큰 라이센싱을 활성화하는 경우, {{ site.data.keys.mf_server }}를 토큰 라이센싱용으로 구성해야 합니다.
 
 이 학습서에서는 **imcl** 명령행을 통해 특성을 매개변수로 지정합니다. 응답 파일을 사용하여 이러한 지정을 수행할 수도 있습니다.
 
@@ -142,7 +142,7 @@ Installation Manager V1.8.4 이상이 설치되었는지 확인하십시오. 설
 * {{ site.data.keys.product_adj }} 런타임
 
 이 학습서에서는 모든 컴포넌트에 대한 테이블이 동일한 스키마 아래에 배치됩니다.  
-**참고:** 이 태스크의 단계는 DB2를 대상으로 합니다. MySQL 또는 Oracle을 사용할 계획인 경우 [데이터베이스 요구사항](../../databases/#database-requirements)을 참조하십시오.
+**참고:** 이 태스크의 단계는 DB2를 대상으로 합니다. MySQL 또는 Oracle을 사용할 계획인 경우 [데이터베이스 요구사항](../../../prod-env/databases/#database-requirements)을 참조하십시오.
 
 1. DB2 서버를 실행 중인 컴퓨터에 로그온하십시오. DB2 사용자(예: **mfpuser**)가 존재한다고 가정합니다.
 2. 이 DB2 사용자에게 페이지 크기가 32768 이상인 데이터베이스에 액세스하고 해당 데이터베이스에 내재적 스키마 및 테이블을 작성할 수 있는 권한이 있는지 확인하십시오.
@@ -154,7 +154,7 @@ Installation Manager V1.8.4 이상이 설치되었는지 확인하십시오. 설
         * Windows 시스템에서 **시작 → IBM DB2 → 명령행 프로세서**를 클릭하십시오.
         * Linux 또는 UNIX 시스템에서 **~/sqllib/bin**(관리자의 홈 디렉토리에 sqllib가 작성되지 않은 경우 **db2\_install\_dir/bin**)으로 이동하여 `./db2`를 입력하십시오.
     * 다음 SQL문을 입력하여 이름이 **MFPDATA**인 데이터베이스를 작성하십시오.
-    
+
         ```sql
         CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
         CONNECT TO MFPDATA
@@ -166,7 +166,7 @@ Installation Manager V1.8.4 이상이 설치되었는지 확인하십시오. 설
         ```
 
     다른 사용자 이름을 정의한 경우 **mfpuser**를 자신의 사용자 이름으로 대체하십시오.
-    
+
     > **참고:** 이 명령문은 기본 DB2 데이터베이스에서 PUBLIC에 부여된 기본 권한을 제거하지는 않습니다. 프로덕션의 경우, 해당 데이터베이스 내의 권한을 제품의 최소 요구사항까지 줄여야 할 수도 있습니다. DB2 보안 및 보안 사례에 대한 자세한 정보는 [DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/)를 참조하십시오.
 
 ## Ant 태스크를 사용하여 Liberty에 {{ site.data.keys.mf_server }} 배치
@@ -180,11 +180,11 @@ Ant 태스크를 사용하여 다음 조작을 실행합니다.
 
 #### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{ site.data.keys.mf_analytics }}는 메모리 요구사항이 많기 때문에 일반적으로 {{ site.data.keys.mf_server }}와 다른 서버 세트에 배치됩니다. {{ site.data.keys.mf_analytics }}는 수동으로 또는 Ant 태스크를 사용하여 설치할 수 있습니다. 이미 설치되어 있는 경우에는 Server Configuration Tool에서 해당 URL, 사용자 이름 및 비밀번호를 입력하여 데이터를 전송할 수 있습니다. 그러면 Server Configuration Tool에서 {{ site.data.keys.mf_analytics }}에 데이터를 전송하도록 {{ site.data.keys.product_adj }} 앱을 구성합니다. 
+{{ site.data.keys.mf_analytics }}는 메모리 요구사항이 많기 때문에 일반적으로 {{ site.data.keys.mf_server }}와 다른 서버 세트에 배치됩니다. {{ site.data.keys.mf_analytics }}는 수동으로 또는 Ant 태스크를 사용하여 설치할 수 있습니다. 이미 설치되어 있는 경우에는 Server Configuration Tool에서 해당 URL, 사용자 이름 및 비밀번호를 입력하여 데이터를 전송할 수 있습니다. 그러면 Server Configuration Tool에서 {{ site.data.keys.mf_analytics }}에 데이터를 전송하도록 {{ site.data.keys.product_adj }} 앱을 구성합니다.
 
 #### Application Center
 {: #application-center }
-이 애플리케이션은 모바일 앱을 사용하는 직원들에게 내부적으로 모바일 앱을 분배하는 데 사용되거나 테스트 목적으로 사용될 수 있습니다. 이 애플리케이션은 {{ site.data.keys.mf_server }}와 독립되어 있으므로 {{ site.data.keys.mf_server }}와 함께 설치할 필요는 없습니다. 
+이 애플리케이션은 모바일 앱을 사용하는 직원들에게 내부적으로 모바일 앱을 분배하는 데 사용되거나 테스트 목적으로 사용될 수 있습니다. 이 애플리케이션은 {{ site.data.keys.mf_server }}와 독립되어 있으므로 {{ site.data.keys.mf_server }}와 함께 설치할 필요는 없습니다.
 
 Ant 태스크가 포함된 적절한 XML 파일을 선택하여 특성을 구성하십시오.
 
@@ -248,7 +248,7 @@ Server Configuration Tool에서 필요한 데이터베이스 사용자는 한 �
 
 #### 데이터베이스 테이블 작성
 {: #database-tables-creation }
-프로덕션의 경우, 수동으로 테이블을 작성해야 하는 경우가 있습니다. 예를 들어, DBA가 일부 기본 설정을 대체하거나 특정 테이블스페이스를 지정하고자 하는 경우입니다. 테이블을 작성하는 데 사용되는 데이터베이스 스크립트가 **mfp\_server\_install\_dir/MobileFirstServer/databases** 및 **mfp\_server\_install\_dir/PushService/databases**에 있습니다. 자세한 정보는 [수동으로 데이터베이스 테이블 작성](../../databases/#create-the-database-tables-manually)을 참조하십시오.
+프로덕션의 경우, 수동으로 테이블을 작성해야 하는 경우가 있습니다. 예를 들어, DBA가 일부 기본 설정을 대체하거나 특정 테이블스페이스를 지정하고자 하는 경우입니다. 테이블을 작성하는 데 사용되는 데이터베이스 스크립트가 **mfp\_server\_install\_dir/MobileFirstServer/databases** 및 **mfp\_server\_install\_dir/PushService/databases**에 있습니다. 자세한 정보는 [수동으로 데이터베이스 테이블 작성](../../../prod-env/databases/#create-the-database-tables-manually)을 참조하십시오.
 
 **server.xml** 파일 및 일부 애플리케이션 서버 설정이 설치 중에 수정됩니다. 각 수정 전에 **server.xml.bak**, **server.xml.bak1** 및 **server.xml.bak2**와 같은 **server.xml** 파일의 사본이 작성됩니다. 추가된 것을 모두 보려면 **server.xml** 파일을 가장 오래된 백업(server.xml.bak)과 비교하십시오. Linux에서는 diff `--strip-trailing-cr server.xml server.xml.bak` 명령을 사용하여 차이점을 확인할 수 있습니다. AIX에서는 `diff server.xml server.xml.bak` 명령을 사용하여 차이점을 찾으십시오.
 
@@ -256,8 +256,8 @@ Server Configuration Tool에서 필요한 데이터베이스 사용자는 한 �
 {: #modification-of-the-application-server-settings-specific-to-liberty }
 1. Liberty 기능이 추가됩니다.
 
-    Liberty 기능은 애플리케이션마다 추가되므로 중복될 수 있습니다. 예를 들어, JDBC 기능은 관리 서비스 및 런타임 컴포넌트 둘 다에 사용됩니다. 이러한 중복으로 인해, 애플리케이션을 설치 제거할 때 다른 애플리케이션을 중단하지 않고 해당 애플리케이션의 기능을 제거할 수 있습니다. 예를 들어, 어느 한 시점에 서버에서 푸시 서비스를 설치 제거하여 이를 다른 서버에 설치하기로 결정하는 경우입니다. 단, 모든 토폴로지가 가능한 것은 아닙니다. 관리 서비스, 라이브 업데이트 서비스 및 런타임 컴포넌트가 Liberty 프로파일과 동일한 애플리케이션 서버에 있어야 합니다. 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)을 참조하십시오. 추가된 기능이 충돌하지 않는 한 기능 중복은 문제가 되지 않습니다. jdbc-40 및 jdbc-41 기능을 추가하면 문제가 발생하지만 동일한 기능을 두 번 추가하는 경우에는 문제가 발생하지 않습니다.
-    
+    Liberty 기능은 애플리케이션마다 추가되므로 중복될 수 있습니다. 예를 들어, JDBC 기능은 관리 서비스 및 런타임 컴포넌트 둘 다에 사용됩니다. 이러한 중복으로 인해, 애플리케이션을 설치 제거할 때 다른 애플리케이션을 중단하지 않고 해당 애플리케이션의 기능을 제거할 수 있습니다. 예를 들어, 어느 한 시점에 서버에서 푸시 서비스를 설치 제거하여 이를 다른 서버에 설치하기로 결정하는 경우입니다. 단, 모든 토폴로지가 가능한 것은 아닙니다. 관리 서비스, 라이브 업데이트 서비스 및 런타임 컴포넌트가 Liberty 프로파일과 동일한 애플리케이션 서버에 있어야 합니다. 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건](../../../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)을 참조하십시오. 추가된 기능이 충돌하지 않는 한 기능 중복은 문제가 되지 않습니다. jdbc-40 및 jdbc-41 기능을 추가하면 문제가 발생하지만 동일한 기능을 두 번 추가하는 경우에는 문제가 발생하지 않습니다.
+
 2. `host='*'`가 `httpEndPoint` 선언에 추가됩니다.
 
     이 설정은 모든 네트워크 인터페이스에서 서버로의 연결을 허용하기 위한 것입니다. 프로덕션의 경우, HTTP 엔드포인트의 호스트 값을 제한하는 경우가 있습니다.
@@ -276,7 +276,7 @@ Server Configuration Tool에서 필요한 데이터베이스 사용자는 한 �
 7. Liberty V8.5.5.5 이하를 사용하는 경우, 기본 실행기는 큰 값을 `coreThreads` 및 `maxThreads`로 설정하도록 사용자 정의됩니다. V8.5.5.6의 경우, 기본 실행기는 Liberty에 의해 자동으로 조정됩니다.
 
     이 설정으로 인해 일부 Liberty 버전에서 런타임 컴포넌트 및 관리 서비스의 시작 시퀀스를 중단하는 제한시간 초과 문제가 방지됩니다. 이 명령문이 없으면 서버 로그 파일에서 다음과 같은 오류가 발생할 수 있습니다.
-    
+
     > Failed to obtain JMX connection to access an MBean. There might be a JMX configuration error: Read timed out
 FWLSE3000E: A server error was detected.
     > FWLSE3012E: JMX configuration error. Unable to obtain MBeans. Reason: "Read timed out".
@@ -291,7 +291,7 @@ FWLSE3000E: A server error was detected.
 * **mobilefirs**t, {{ site.data.keys.product_adj }} 런타임 컴포넌트
 * **imfpush**, 푸시 서비스
 
-Server Configuration Tool은 모든 애플리케이션을 동일한 서버에 설치합니다. 애플리케이션을 서로 다른 애플리케이션 서버에 분리할 수 있지만 [토폴로지 및 네트워크 플로우](../../topologies)에 설명된 특정 제한조건이 적용됩니다.  
+Server Configuration Tool은 모든 애플리케이션을 동일한 서버에 설치합니다. 애플리케이션을 서로 다른 애플리케이션 서버에 분리할 수 있지만 [토폴로지 및 네트워크 플로우](../../../prod-env/topologies)에 설명된 특정 제한조건이 적용됩니다.  
 서로 다른 서버에 설치하는 경우에는 Server Configuration Tool을 사용할 수 없습니다. Ant 태스크를 사용하거나 수동으로 제품을 설치하십시오.
 
 #### 관리 서비스
@@ -300,7 +300,7 @@ Server Configuration Tool은 모든 애플리케이션을 동일한 서버에 �
 
 Liberty 프로파일과 WebSphere Application Server, 그리고 모든 {{ site.data.keys.product_adj }} 애플리케이션에 대해, 클래스 로더 위임은 상위 마지막으로 설정됩니다. 이 설정은 {{ site.data.keys.product_adj }} 애플리케이션에 패키징된 클래스와 애플리케이션 서버 클래스 간의 충돌을 피하기 위한 것입니다. 클래스 로더 위임을 상위 마지막으로 설정하지 않으면 수동 설치 시 오류가 빈번하게 발생합니다. Apache Tomcat의 경우 이 선언이 필요하지 않습니다.
 
-Liberty 프로파일에서는 JNDI 특성으로 전달되는 비밀번호를 복호화하기 위한 공통 라이브러리가 애플리케이션에 추가됩니다. Server Configuration Tool은 관리 서비스에 대한 두 개의 필수 JNDI 특성(**mfp.config.service.user** 및 **mfp.config.service.password**)을 정의합니다. 이러한 특성은 관리 서비스에서 해당 REST API를 사용하여 라이브 업데이트 서비스에 연결하는 데 사용됩니다. 추가 JNDI 특성을 정의하여 애플리케이션을 설치 세부사항에 적합하게 조정할 수 있습니다. 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오.
+Liberty 프로파일에서는 JNDI 특성으로 전달되는 비밀번호를 복호화하기 위한 공통 라이브러리가 애플리케이션에 추가됩니다. Server Configuration Tool은 관리 서비스에 대한 두 개의 필수 JNDI 특성(**mfp.config.service.user** 및 **mfp.config.service.password**)을 정의합니다. 이러한 특성은 관리 서비스에서 해당 REST API를 사용하여 라이브 업데이트 서비스에 연결하는 데 사용됩니다. 추가 JNDI 특성을 정의하여 애플리케이션을 설치 세부사항에 적합하게 조정할 수 있습니다. 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오.
 
 Server Configuration Tool은 또한 푸시 서비스와의 통신을 위한 JNDI 특성(기밀 클라이언트 등록을 위한 URL 및 OAuth 매개변수)도 정의합니다.  
 관리 서비스용 테이블을 포함하는 데이터베이스의 데이터 소스와 해당 JDBC 드라이버의 라이브러리가 선언됩니다.
@@ -311,7 +311,7 @@ Server Configuration Tool은 또한 푸시 서비스와의 통신을 위한 JNDI
 
 관리 서비스 절에서 설명한 대로 클래스 로더 위임이 상위 마지막으로 설정됩니다.
 
-라이브 업데이트 서비스에는 하나의 보안 역할 **admin_config**가 있습니다. 해당 역할에 사용자를 맵핑해야 합니다. JNDI 특성(**mfp.config.service.user** 및 **mfp.config.service.password**)을 사용하여 해당 비밀번호 및 로그인을 관리 서비스에 제공해야 합니다. JNDI 특성에 대한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.mf_server }} 라이브 업데이트 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service)을 참조하십시오.
+라이브 업데이트 서비스에는 하나의 보안 역할 **admin_config**가 있습니다. 해당 역할에 사용자를 맵핑해야 합니다. JNDI 특성(**mfp.config.service.user** 및 **mfp.config.service.password**)을 사용하여 해당 비밀번호 및 로그인을 관리 서비스에 제공해야 합니다. JNDI 특성에 대한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.mf_server }} 라이브 업데이트 서비스의 JNDI 특성 목록](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service)을 참조하십시오.
 
 또한 Liberty 프로파일에 JNDI 이름을 갖는 데이터 소스도 필요합니다. 규칙은 **context\_root\_of\_config\_server/jdbc/ConfigDS**입니다. 이 학습서에서는 **mfpadminconfig/jdbc/ConfigDS**로 정의됩니다. Server Configuration Tool 또는 Ant 태스크에 의한 설치에서, 라이브 업데이트 서비스의 테이블은 관리 서비스의 테이블과 동일한 데이터베이스 및 스키마에 있습니다. 이러한 테이블에 액세스하는 사용자도 동일합니다.
 
@@ -319,7 +319,7 @@ Server Configuration Tool은 또한 푸시 서비스와의 통신을 위한 JNDI
 {: #mobilefirst-operations-console }
 {{ site.data.keys.mf_console }}은 관리 서비스와 동일한 보안 역할로 선언됩니다. {{ site.data.keys.mf_console }}의 보안 역할에 맵핑되는 사용자는 관리 서비스의 동일한 보안 역할에도 맵핑되어야 합니다. 실제로 {{ site.data.keys.mf_console }}은 콘솔 사용자를 대신하여 관리 서비스에 대한 조회를 실행합니다.
 
-Server Configuration Tool은 하나의 JNDI 특성 **mfp.admin.endpoint**를 배치합니다. 이 특성은 콘솔이 관리 서비스에 연결하는 방법을 표시합니다. Server Configuration Tool에 의해 설정되는 기본값은 `*://*:*/mfpadmin`입니다. 이 설정은 콘솔에 수신되는 HTTP 요청과 동일한 프로토콜, 호스트 이름 및 포트를 사용해야 하고 컨텍스트 루트가 /mfpadmin임을 의미합니다. 웹 프록시를 통해 요청이 전달되도록 설정하려면 기본값을 변경하십시오. 이 URL에 가능한 값에 대한 자세한 정보나 기타 가능한 JNDI 특성에 대한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오.
+Server Configuration Tool은 하나의 JNDI 특성 **mfp.admin.endpoint**를 배치합니다. 이 특성은 콘솔이 관리 서비스에 연결하는 방법을 표시합니다. Server Configuration Tool에 의해 설정되는 기본값은 `*://*:*/mfpadmin`입니다. 이 설정은 콘솔에 수신되는 HTTP 요청과 동일한 프로토콜, 호스트 이름 및 포트를 사용해야 하고 컨텍스트 루트가 /mfpadmin임을 의미합니다. 웹 프록시를 통해 요청이 전달되도록 설정하려면 기본값을 변경하십시오. 이 URL에 가능한 값에 대한 자세한 정보나 기타 가능한 JNDI 특성에 대한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오.
 
 관리 서비스 절에서 설명한 대로 클래스 로더 위임이 상위 마지막으로 설정됩니다.
 
@@ -385,15 +385,15 @@ Liberty 프로파일 **jvm.options** 파일이 수정됩니다. 런타임이 관
         httpPort="9080"
         httpsPort="9443" />
       ```
-        
+
       이를 다음으로 대체하십시오.
-        
+
       ```xml
       <httpEndpoint id="defaultHttpEndpoint"
         httpPort="9081"
         httpsPort="9444" />
       ```
-        
+
       이 변경으로 인해 mfp2 서버의 HTTP 및 HTTPS 포트가 mfp1 서버의 포트와 충돌하지 않습니다. {{ site.data.keys.mf_server }} 설치를 실행하기 전에 포트를 수정해야 합니다. 설치를 실행한 후 포트를 수정하는 경우에는 JNDI 특성(**mfp.admin.jmx.port**)에서 포트 변경을 반영해야 합니다.
 
 3. [Ant 태스크를 사용하여 Liberty에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-to-liberty-with-ant-tasks)에서 사용한 Ant 파일을 복사하여 **appserver.was85liberty.serverInstance** 특성의 값을 **mfp2**로 변경하십시오. Ant 태스크는 데이터베이스가 존재함을 발견하고 테이블을 작성하지 않습니다(다음 로그 추출 참조). 그런 다음 애플리케이션이 서버에 배치됩니다.
@@ -417,27 +417,26 @@ Liberty 프로파일 **jvm.options** 파일이 수정됩니다. 런타임이 관
     * 동일한 웹 브라우저에서 탭을 열고 다음 URL을 입력하십시오. [http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole). 이 콘솔은 mfp2 서버에서 서비스를 제공합니다.
     * admin/admin으로 로그인하십시오. 설치가 올바르게 수행된 경우, 로그인 후 두 탭에 동일한 시작 페이지가 표시됩니다.
     * 첫 번째 브라우저 탭으로 돌아가서 **Hello, admin → 감사 로그 다운로드**를 클릭하십시오. 콘솔에서 로그아웃되고 로그인 화면이 다시 표시됩니다. 이 로그아웃 동작은 문제점입니다. mfp2 서버에 로그온할 때 LTPA(Lightweight Third Party Authentication) 토큰이 작성되어 브라우저에 쿠키로 저장되기 때문에 이러한 문제가 발생합니다. 단, mfp1 서버에서는 이 LTPA 토큰을 인식하지 않습니다. 프로덕션 환경에서는 클러스터 앞에 HTTP 로드 밸런서가 있는 경우 서버 간 전환이 발생할 가능성이 있습니다. 이 문제를 해결하려면 두 서버(mfp1 및 mfp2) 모두 동일한 비밀 키를 사용하여 LTPA 토큰을 생성하도록 해야 합니다. mfp1 서버에서 mfp2 서버로 LTPA 키를 복사하십시오.
-    
+
         * 다음 명령을 사용하여 두 서버 모두 중지하십시오.
-        
+
           ```bash
           server stop mfp1
           server stop mfp2
           ```
-        
+
         * mfp1 서버의 LTPA 키를 mfp2 서버로 복사하십시오.
-            **liberty\_install\_dir/usr/servers** 또는 **WLP\_USER\_DIR/servers**에서, 사용하는 운영 체제에 따라 다음 명령을 실행하십시오. 
+            **liberty\_install\_dir/usr/servers** 또는 **WLP\_USER\_DIR/servers**에서, 사용하는 운영 체제에 따라 다음 명령을 실행하십시오.
             * UNIX의 경우: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
             * Windows의 경우: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
         * 서버를 다시 시작하십시오. 하나의 브라우저 탭에서 다른 브라우저 탭으로 전환하기 위해 다시 로그인할 필요가 없습니다. Liberty 서버 팜에서는 모든 서버가 동일한 LTPA 키를 가지고 있어야 합니다.
-    
+
 5. Liberty 서버 간의 JMX 통신을 사용 가능하게 설정하십시오.
 
     Liberty와의 JMX 통신은 HTTPS 프로토콜을 사용하여 Liberty REST 커넥터를 통해 수행됩니다. 이 통신을 사용하려면 팜의 각 서버가 다른 멤버의 SSL 인증을 인식할 수 있어야 합니다. 해당 신뢰 저장소에서 HTTPS 인증서를 교환해야 합니다. IBM 유틸리티(예: **java/bin**에 있는 IBM JRE 배포의 일부인 Keytool)를 사용하여 신뢰 저장소를 구성하십시오. 키 저장소 및 신뢰 저장소의 위치는 **server.xml** 파일에 정의됩니다. 기본적으로 Liberty 프로파일의 키 저장소는 **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**에 있습니다. 이 기본 키 저장소의 비밀번호는 **server.xml** 파일에서 보듯이 **mobilefirst**입니다.
-        
-    > **팁:** 이 비밀번호는 Keytool 유틸리티를 사용하여 변경할 수 있지만, Liberty 서버에서 해당 키 저장소를 읽을 수 있도록 server.xml 파일에서도 비밀번호를 변경해야 합니다. 이 학습서에서는 기본 비밀번호를 사용하십시오
-.
-    
+
+    > **팁:** 이 비밀번호는 Keytool 유틸리티를 사용하여 변경할 수 있지만, Liberty 서버에서 해당 키 저장소를 읽을 수 있도록 server.xml 파일에서도 비밀번호를 변경해야 합니다. 이 학습서에서는 기본 비밀번호를 사용하십시오.
+
     * **WLP\_USER\_DIR/servers/mfp1/resources/security**에서 `keytool -list -keystore key.jks`를 입력하십시오. 이 명령은 키 저장소의 인증서를 표시합니다. **default**라는 하나의 인증서만 있습니다. 키가 표시되기 전에 키 저장소의 비밀번호(mobilefirst) 입력을 요구하는 프롬프트가 표시됩니다. 이는 Keytool 유틸리티를 사용하는 다음의 모든 명령에 해당됩니다.
     * 다음 명령을 사용하여 mfp1 서버의 기본 인증서를 내보내십시오. `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
     * **WLP\_USER\_DIR/servers/mfp2/resources/security**에서 다음 명령을 사용하여 mfp2 서버의 기본 인증서를 내보내십시오. `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
@@ -453,5 +452,5 @@ Liberty 프로파일 **jvm.options** 파일이 수정됩니다. 런타임이 관
    server start mfp1
    server start mfp2
    ```
-        
+
 2. 콘솔에 액세스하십시오. 예를 들어, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) 또는 [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)(HTTPS의 경우)입니다. 왼쪽 사이드바에 **서버 팜 노드**라는 레이블이 지정된 추가 메뉴가 표시됩니다. **서버 팜 노드**를 클릭하면 각 노드의 상태가 표시됩니다. 두 노드가 모두 시작되려면 잠시 대기해야 할 수도 있습니다.

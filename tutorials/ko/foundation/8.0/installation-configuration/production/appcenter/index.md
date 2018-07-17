@@ -2,7 +2,7 @@
 layout: tutorial
 title: IBM MobileFirst Foundation Application Center 설치 및 구성
 breadcrumb_title: Installing Application Center
-weight: 8
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -32,7 +32,7 @@ weight: 8
 ## IBM Installation Manager를 사용한 Application Center 설치
 {: #installing-application-center-with-ibm-installation-manager }
 IBM Installation Manager를 사용하면 Application Center를 설치하고 해당 데이터베이스를 작성한 후 Application Server에 배치할 수 있습니다.  
-시작하기 전에 IBM Installation Manager를 실행하는 사용자가 [파일 시스템 전제조건](../appserver/#file-system-prerequisites)에 설명된 권한을 가지고 있는지 확인하십시오.
+시작하기 전에 IBM Installation Manager를 실행하는 사용자가 [파일 시스템 전제조건](../prod-env/appserver/#file-system-prerequisites)에 설명된 권한을 가지고 있는지 확인하십시오.
 
 IBM Installation Manager를 사용하여 IBM Application Center를 설치하려면 다음의 단계를 완료하십시오.
 
@@ -154,12 +154,12 @@ WebSphere Application Server Network Deployment Server 세트에서 Application 
     > **주의:** 애플리케이션 서버를 선택한 후 단일 관리 서버를 선택하지 마십시오. 이를 수행하면 배치 관리자가 실행 중인 머신에 설치하는지 아니면 다른 머신에 설치하는지에 관계없이 배치 관리자가 서버의 구성을 겹쳐씁니다.
 3. Application Center를 설치할 위치에 따라 필요한 범위를 선택하십시오. 다음 테이블에는 사용 가능한 범위가 나열되어 있습니다.
 
-    | 범위	 | 설명 |
+    |범위	 |설명 |
     |--------|-------------|
-    | 셀	 | 셀의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
-    | Cluster| 지정된 클러스터의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
-    | 노드   | (클러스터 제외) 클러스터에 없는 지정된 노드의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
-    | 서버 | 클러스터에 없는 지정된 서버에서 Application Center를 설치합니다. |
+    |셀	 |셀의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
+    |Cluster|지정된 클러스터의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
+    |노드   |(클러스터 제외) 클러스터에 없는 지정된 노드의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
+    |서버 |클러스터에 없는 지정된 서버에서 Application Center를 설치합니다. |
 
 4. 아래의 [설치 완료](#completing-the-installation)에 있는 프로시저를 수행하여 대상 서버를 다시 시작하십시오.
 
@@ -410,7 +410,7 @@ WebSphere Application Server Liberty 프로파일을 가진 Application Center�
         <fileset dir="${shared.resource.dir}/db2" includes="*.jar"/>
    </library>
 
-   <!-- IBM Application Center 데이터베이스를 선언하십시오. -->
+   <!-- Declare the IBM Application Center database. -->
    <dataSource jndiName="jdbc/AppCenterDS" transactional="false">
       <jdbcDriver libraryRef="DB2Lib"/>
       <properties.db2.jcc databaseName="APPCNTR"  currentSchema="APPSCHM"
@@ -559,12 +559,12 @@ WebSphere Application Server Liberty 프로파일을 가진 Application Center�
 다음과 같이 $LIBERTY_HOME/usr/servers/worklightServer/server.xml 파일에서 데이터 소스를 구성하십시오(worklightServer는 이 경로에서 서버의 이름으로 바꿀 수 있음).
 
 ```xml
-<!-- JDBC를 통해 Derby 액세스를 위한 jar 파일을 선언하십시오. -->
+<!-- Declare the jar files for Derby access through JDBC. -->
 <library id="derbyLib">
   <fileset dir="C:/Drivers/derby" includes="derby.jar" />
 </library>
 
-<!-- IBM Application Center 데이터베이스를 선언하십시오. -->
+<!-- Declare the IBM Application Center database. -->
 <dataSource jndiName="jdbc/AppCenterDS" transactional="false" statementCacheSize="10">
   <jdbcDriver libraryRef="derbyLib"
               javax.sql.ConnectionPoolDataSource="org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource40"/>
@@ -696,12 +696,12 @@ WebSphere Application Server Liberty 프로파일을 가진 Application Center�
 2. 다음과 같이 **$LIBERTY_HOME/usr/servers/worklightServer/server.xml** 파일에서 데이터 소스를 구성하십시오(**worklightServer**는 이 경로에서 서버의 이름으로 바꿀 수 있음).
 
    ```xml
-   <!-- JDBC를 통해 MySQL 액세스를 위한 jar 파일을 선언하십시오. -->
+   <!-- Declare the jar files for MySQL access through JDBC. -->
    <library id="MySQLLib">
       <fileset dir="${shared.resource.dir}/mysql" includes="*.jar"/>
    </library>
 
-   <!-- IBM Application Center 데이터베이스를 선언하십시오. -->
+   <!-- Declare the IBM Application Center database. -->
    <dataSource jndiName="jdbc/AppCenterDS" transactional="false">
       <jdbcDriver libraryRef="MySQLLib"/>
    <properties databaseName="APPCNTR"
@@ -868,12 +868,12 @@ Oracle JDBC 드라이버의 JAR 파일을 추가하여 WebSphere Application Ser
    **참고:** 이 경로에서 mobileFirstServer를 서버의 이름으로 바꿀 수 있습니다.
 
    ```xml
-   <!-- JDBC를 통해 Oracle 액세스를 위한 jar 파일을 선언하십시오. -->
+   <!-- Declare the jar files for Oracle access through JDBC. -->
    <library id="OracleLib">
       <fileset dir="${shared.resource.dir}/oracle" includes="*.jar"/>
    </library>
 
-   <!-- IBM Application Center 데이터베이스를 선언하십시오. -->
+   <!-- Declare the IBM Application Center database. -->
    <dataSource jndiName="jdbc/AppCenterDS" transactional="false">
       <jdbcDriver libraryRef="OracleLib"/>
       <properties.oracle driverType="thin"
@@ -912,12 +912,12 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * **새로 작성**을 클릭하십시오.
     * 다음 테이블에 표시된 대로 **JDBC 제공자** 필드에 기입을 완료하십시오.
 
-        | 필드 | 값 |
+        |필드 |값 |
         |-------|-------|
-        | 데이터베이스 유형 | Oracle |
-        | 제공자 유형 | Oracle JDBC 드라이버 |
-        | 구현 유형 | 연결 풀 데이터 소스 |
-        | 이름 | Oracle JDBC 드라이버 |
+        |데이터베이스 유형 |Oracle |
+        |제공자 유형 |Oracle JDBC 드라이버 |
+        |구현 유형 |연결 풀 데이터 소스 |
+        |이름 |Oracle JDBC 드라이버 |
     * **다음**을 클릭하십시오.
     * **클래스 경로**를 1단계에서 판별된 디렉토리에 있는 JAR 파일로 설정하고 **WAS\_INSTALL\_DIR/profiles/profile-name**을 WebSphere Application Server 변수 참조 **${USER_INSTALL_ROOT}**로 바꾸십시오.
     * **다음**을 클릭하십시오.
@@ -998,10 +998,10 @@ Application Center에 대해 수동으로 WebSphere Application Server Liberty �
 2. Application Center에 대한 다음과 같은 선언을 추가하십시오.
 
    ```xml
-   <!-- Android SDK의 플랫폼 도구 패키지에서 'aapt' 프로그램의 2진을 포함하는
-         디렉토리입니다. -->
+   <!-- The directory with binaries of the 'aapt' program, from the Android SDK's
+         platform-tools package. -->
    <jndiEntry jndiName="android.aapt.dir" value="product_install_dir/ApplicationCenter/tools/android-sdk"/>
-   <!-- Application Center 콘솔 애플리케이션을 선언하십시오. -->
+   <!-- Declare the Application Center Console application. -->
    <application id="appcenterconsole"
                  name="appcenterconsole"
                  location="appcenterconsole.war"
@@ -1015,7 +1015,7 @@ Application Center에 대해 수동으로 WebSphere Application Server Liberty �
       </classloader>
    </application>
 
-   <!-- IBM Application Center 서비스 애플리케이션을 선언하십시오. -->
+   <!-- Declare the IBM Application Center Services application. -->
    <application id="applicationcenter"
                  name="applicationcenter"
                  location="applicationcenter.war"
@@ -1029,12 +1029,12 @@ Application Center에 대해 수동으로 WebSphere Application Server Liberty �
       </classloader>
    </application>
 
-   <!-- IBM Application Center에 대한 사용자 레지스트리를 선언하십시오. -->
+   <!-- Declare the user registry for the IBM Application Center. -->
    <basicRegistry id="applicationcenter-registry"
                    realm="ApplicationCenter">
-      <!-- 여기에 정의된 사용자는 "appcentergroup" 그룹의 구성원이므로
-           "appcenteradmin" 역할을 갖고 있고, 따라서 Application Center 콘솔을 통해
-           관리 태스크를 수행할 수 있습니다. -->
+      <!-- The users defined here are members of group "appcentergroup",
+           thus have role "appcenteradmin", and can therefore perform
+           administrative tasks through the Application Center Console. -->
       <user name="appcenteradmin" password="admin"/>
       <user name="demo" password="demo"/>
       <group name="appcentergroup">
@@ -1077,19 +1077,19 @@ Application Center에 대해 수동으로 WebSphere Application Server Liberty �
     * UNIX 및 Linux 시스템의 경우:
 
       ```bash
-  mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+      mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
+      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * Windows 시스템의 경우:
 
       ```bash
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+      mkdir LIBERTY_HOME\wlp\usr\extension\lib
+      copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
+      LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+      mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+      copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
+      LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
       ```
 
 6. Liberty 서버를 시작하십시오.
@@ -1188,56 +1188,56 @@ Application Center에 대해 수동으로 Apache Tomcat을 구성하려면 JAR �
     * Application Center 콘솔 및 서비스 애플리케이션과 사용자 레지스트리를 선언하십시오.
 
       ```xml
-      <!-- IBM Application Center 콘솔 애플리케이션을 선언하십시오. -->
+      <!-- Declare the IBM Application Center Console application. -->
       <Context path="/appcenterconsole" docBase="appcenterconsole">
 
-          <!-- AppCenter 콘솔이 REST 서비스를 호출할 수 있도록 AppCenter
-               서비스 엔드포인트를 정의하십시오.
-                              서버가 리버스 프록시 뒤에 있거나 Application Center 서비스
-               애플리케이션의 컨텍스트 루트가 '/applicationcenter'와 다를 경우
-               이 특성을 사용으로 설정해야 합니다. -->
-          <!-- <환경 이름="ibm.appcenter.services.endpoint"
-                            값="http://proxy-host:proxy-port/applicationcenter"
-                            유형="java.lang.String" override="false"/>
+          <!-- Define the AppCenter services endpoint in order for the AppCenter
+               console to be able to invoke the REST service.
+               You need to enable this property if the server is behind a reverse
+               proxy or if the context root of the Application Center Services
+               application is different from '/applicationcenter'. -->
+          <!-- <Environment name="ibm.appcenter.services.endpoint"
+                            value="http://proxy-host:proxy-port/applicationcenter"
+                            type="java.lang.String" override="false"/>
           -->
 
       </Context>
 
-      <!-- IBM Application Center 서비스 애플리케이션을 선언하십시오. -->
+      <!-- Declare the IBM Application Center Services application. -->
       <Context path="/applicationcenter" docBase="applicationcenter">
-          <!-- Android SDK의 플랫폼 도구 패키지에서 'aapt' 프로그램의
-               2진을 포함하는 디렉토리입니다. -->
-          <환경 이름="android.aapt.dir"
-                       값="product_install_dir/ApplicationCenter/tools/android-sdk"
-                       유형="java.lang.String" override="false"/>
-          <!-- 애플리케이션 자원 URI의 프로토콜입니다.
-               이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만
-               필요합니다. -->
-          <!-- <환경 이름="ibm.appcenter.proxy.protocol"
-                            값="http" type="java.lang.String" override="false"/>
+          <!-- The directory with binaries of the 'aapt' program, from
+               the Android SDK's platform-tools package. -->
+          <Environment name="android.aapt.dir"
+                       value="product_install_dir/ApplicationCenter/tools/android-sdk"
+                       type="java.lang.String" override="false"/>
+          <!-- The protocol of the application resources URI.
+               This property is optional. It is only needed if the protocol
+               of the external and internal URI are different. -->
+          <!-- <Environment name="ibm.appcenter.proxy.protocol"
+                            value="http" type="java.lang.String" override="false"/>
           -->
 
-          <!-- 애플리케이션 자원 URI의 호스트 이름입니다. -->
-          <!-- <환경 이름="ibm.appcenter.proxy.host"
-                            값="proxy-host"
-                            유형="java.lang.String" override="false"/>
+          <!-- The host name of the application resources URI. -->
+          <!-- <Environment name="ibm.appcenter.proxy.host"
+                            value="proxy-host"
+                            type="java.lang.String" override="false"/>
           -->
 
-          <!-- 애플리케이션 자원 URI의 포트입니다.
-               이 특성은 선택사항입니다. -->
-          <!-- <환경 이름="ibm.appcenter.proxy.port"
-                            값="proxy-port"
-                            유형="java.lang.Integer" override="false"/> -->
+          <!-- The port of the application resources URI.
+               This property is optional. -->
+          <!-- <Environment name="ibm.appcenter.proxy.port"
+                            value="proxy-port"
+                            type="java.lang.Integer" override="false"/> -->
 
-          <!-- IBM Application Center 서비스 데이터베이스를 선언하십시오. -->
-          <!-- <리소스 이름="jdbc/AppCenterDS" type="javax.sql.DataSource" ... -->
+          <!-- Declare the IBM Application Center Services database. -->
+          <!-- <Resource name="jdbc/AppCenterDS" type="javax.sql.DataSource" ... -->
 
       </Context>
 
-      <!-- IBM Application Center에 대한 사용자 레지스트리를 선언하십시오.
-             MemoryRealm에서 conf/tomcat-users.xml에 정의된 사용자를 인식합니다.
-             다른 선택사항은 Apache Tomcat의 "Realm Configuration HOW-TO"
-             http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html을 참조하십시오. -->
+      <!-- Declare the user registry for the IBM Application Center.
+             The MemoryRealm recognizes the users defined in conf/tomcat-users.xml.
+             For other choices, see Apache Tomcat's "Realm Configuration HOW-TO"
+             http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html . -->
       <Realm className="org.apache.catalina.realm.MemoryRealm"/>
       ```
 
@@ -1289,10 +1289,10 @@ Application Center EAR 파일을 배치한 후 Application Center에 대해 수�
 2. Application Center에 대한 다음과 같은 선언을 추가하십시오.
 
    ```xml
-   <!-- Android SDK의 플랫폼 도구 패키지에서 'aapt' 프로그램의 2진을 포함하는 디렉토리입니다. -->
+   <!-- The directory with binaries of the 'aapt' program, from the Android SDK's platform-tools package. -->
    <jndiEntry jndiName="android.aapt.dir" value="product_install_dir/ApplicationCenter/tools/android-sdk"/>
 
-   <!-- IBM Application Center 애플리케이션을 선언하십시오. -->
+   <!-- Declare the IBM Application Center application. -->
    <application id="applicationcenter"
                  name="applicationcenter"
                  location="applicationcenter.ear"
@@ -1306,12 +1306,12 @@ Application Center EAR 파일을 배치한 후 Application Center에 대해 수�
       </classloader>
    </application>
 
-   <!-- IBM Application Center에 대한 사용자 레지스트리를 선언하십시오. -->
+   <!-- Declare the user registry for the IBM Application Center. -->
    <basicRegistry id="applicationcenter-registry"
                    realm="ApplicationCenter">
-      <!-- 여기에 정의된 사용자는 "appcentergroup" 그룹의 구성원이므로
-           "appcenteradmin" 역할을 갖고 있고, 따라서 Application Center 콘솔을 통해
-           관리 태스크를 수행할 수 있습니다. -->
+      <!-- The users defined here are members of group "appcentergroup",
+           thus have role "appcenteradmin", and can therefore perform
+           administrative tasks through the Application Center Console. -->
       <user name="appcenteradmin" password="admin"/>
       <user name="demo" password="demo"/>
       <group name="appcentergroup">
@@ -1353,19 +1353,19 @@ Application Center EAR 파일을 배치한 후 Application Center에 대해 수�
     * UNIX 및 Linux 시스템의 경우:
 
       ```bash
-  mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+      mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
+      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * Windows 시스템의 경우:
 
       ```bash
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+      mkdir LIBERTY_HOME\wlp\usr\extension\lib
+      copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
+      LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+      mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+      copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
+      LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
       ```
 
 6. Liberty 서버를 시작하십시오.
@@ -1511,7 +1511,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile }
 **server.xml** 파일에서 데이터 소스 및 Application Center의 Java™ EE 보안 역할을 구성하십시오.
 
-보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다.     `<application-bnd>` 요소(각 `<application>` 요소)에서 두 개의 `<security-role>` 요소가 없습니다. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이러한 그룹은 `<basicRegistry>` 요소에 선언된 httpsPort 속성의 값과 동일해야 합니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
+보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. 각 `<application>` 요소의 `<application-bnd>` 요소에서 두 개의 `<security-role>` 요소를 작성하십시오. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이러한 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
 
 그런 다음 설치된 많은 애플리케이션(예: 80개의 애플리케이션)에 대한 신속한 응답 시간을 유지하기 위해 Application Center 데이터베이스에 대한 연결 풀을 구성해야 합니다.
 
@@ -1528,7 +1528,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 
    이 예를 다음 위치에 포함해야 합니다.  
 
-   * WAR 파일을 배치한 경우에는 각 `<application>` 요소(**appcenterconsole** 및 **applicationcenter** 애플리케이션)의 `<application-bnd>` 요소.
+   * WAR 파일을 배치한 경우 `<application-bnd>` 요소(각 `<application>` 요소: **appcenterconsole** 및 **applicationcenter** 애플리케이션.
    * EAR 파일을 배치한 경우에는 **applicationcenter** 애플리케이션의 `<application-bnd>` 요소.
 
    테스트용으로 설치 중에 작성된 `<security-role>` 요소를 대체하십시오.
@@ -1556,7 +1556,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
    <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
    ```
 
-3.     `<dataSource>` 요소에서 연결 관리자에 대한 참조를 정의하십시오.
+3. `<dataSource>` 요소에서 연결 관리자에 대한 참조를 정의하십시오.
 
    ```xml
    <dataSource id="APPCNTR" jndiName="jdbc/AppCenterDS" connectionManagerRef="AppCenterPool">
@@ -1755,7 +1755,7 @@ Liberty 프로파일에 대한 LDAP을 사용하려면 LDAP 인증 및 LDAP ACL 
 LDAP 레지스트리 또는 여러 LDAP 레지스트리를 사용하는 연합 레지스트리(WebSphere Application Server Liberty 프로파일 V8.5.5 이후)를 정의하여 **server.xml** 파일에서 사용자 및 그룹의 LDAP 인증을 구성할 수 있습니다. 그런 다음 사용자 및 그룹을 Application Center 역할에 맵핑합니다. LDAP 인증과 기본 인증의 맵핑 구성은 동일합니다.
 
 1. **server.xml** 디스크립터 파일을 열려면 **{server.config.dir}/server.xml**을 입력하십시오.
-2. `<httpEndpoint>` 요소에 선언된 httpsPort 속성의 값과 동일해야 합니다. LDAP 레지스트리의 예:
+2. `<httpEndpoint>` 요소 다음에 하나 이상의 LDAP 레지스트리 정의를 추가하십시오. LDAP 레지스트리의 예:
 
    ```xml
    <ldapRegistry baseDN="o=ibm.com" host="employees.com" id="Employees"
@@ -1828,27 +1828,27 @@ JNDI 항목을 정의하려면 **server.xml** 파일에서 다음 기능을 정�
 * **JNDI\_property\_name**은 추가하는 특성의 이름입니다.
 * **property\_value**는 추가하는 특성의 값입니다.
 
-| 특성 | 설명 |
+|특성 |설명 |
 |----------|-------------|
-| ibm.appcenter.ldap.active | LDAP을 사용으로 설정하려면 true로 설정하고 LDAP을 사용 안함으로 설정하려면 false로 설정하십시오. |
-| ibm.appcenter.ldap.federated.active | WebSphere Application Server Liberty 프로파일 V8.5.5 이후: 연합 레지스트리 사용을 사용으로 설정하려면 true로 설정하고 연합 레지스트리 사용을 사용 안함으로 설정하려면 false(기본 설정)로 설정하십시오. |
-| ibm.appcenter.ldap.connectionURL | LDAP 연결 URL입니다. |
-| ibm.appcenter.ldap.user.base | 사용자의 검색 기반입니다. |
-| ibm.appcenter.ldap.user.loginName | LDAP 로그인 속성입니다. |
-| ibm.appcenter.ldap.user.displayName | 표시될 사용자 이름에 대한 LDAP 속성입니다(예: 사용자의 전체 이름). |
-| ibm.appcenter.ldap.group.base | 그룹의 검색 기반입니다. |
-| ibm.appcenter.ldap.group.name | 그룹 이름에 대한 LDAP 속성입니다. |
-| ibm.appcenter.ldap.group.uniquemember | 그룹의 멤버를 식별하는 LDAP 속성입니다. |
-| ibm.appcenter.ldap.user.groupmembership | 사용자가 속하는 그룹을 식별하는 LDAP 속성입니다. |
-| ibm.appcenter.ldap.group.nesting | 중첩 그룹의 관리: 중첩 그룹이 관리되지 않는 경우에는 값을 false로 설정하십시오. |
-| ibm.appcenter.ldap.user.filter |  사용자 로그인 이름의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 로그인 이름 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
-| ibm.appcenter.ldap.displayName.filter | 사용자 표시 이름의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 표시 이름 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
-| ibm.appcenter.ldap.group.filter | LDAP 그룹 검색 필터입니다. %v를 그룹 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
-| ibm.appcenter.ldap.security.sasl | LDAP 서버에 바인드하기 위해 LDAP 외부 SASL 인증 메커니즘이 필요한 경우 보안 인증 메커니즘의 값입니다. 값은 LDAP 서버에 따라 다르며 일반적으로 "EXTERNAL"로 설정됩니다. |
-| ibm.appcenter.ldap.security.binddn | LDAP 디렉토리를 검색하기 위해 허용되는 사용자의 식별 이름을 식별하는 특성입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. |
-| ibm.appcenter.ldap.security.bindpwd | LDAP 디렉토리를 검색하도록 허용되는 사용자의 비밀번호를 식별하는 특성입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. 비밀번호는 "Liberty 프로파일 securityUtility" 도구를 사용하여 인코딩할 수 있습니다. 이 도구를 실행한 후 이 특성의 값을 이 도구에 의해 생성된 인코딩된 비밀번호로 설정하십시오. 지원되는 인코딩 유형은 xor 및 aes입니다. Liberty 프로파일 server.xml 파일을 편집하여 비밀번호를 디코딩하는 JAR 파일을 로드하기 위해 클래스 로더가 사용으로 설정되어 있는지 확인하십시오. |
-| ibm.appcenter.ldap.cache.expiration.seconds | LDAP 캐시가 만료되기 전의 지연 시간(초)입니다. 값을 입력하지 않은 경우 기본값은 86400(24시간)입니다. LDAP 서버의 사용자 및 그룹에 대한 변경사항은 **ibm.appcenter.ldap.cache.expiration.seconds**에 의해 지정되는 지연 시간 경과 후 Application Center에 표시됩니다. Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. 기본적으로 지연 시간은 24시간입니다. 이러한 지연 없이 사용자 또는 그룹에 대한 변경 후에 만료하려면 `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password` 명령을 호출하여 LDAP 데이터의 캐시를 지우면 됩니다. 세부사항은 [독립형 도구를 사용하여 LDAP 캐시 지우기](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)를 참조하십시오. |
-| ibm.appcenter.ldap.referral | JNDI API에서 참조를 지원하는지 여부를 표시하는 특성입니다. 값을 제공하지 않으면 JNDI API는 LDAP 참조를 처리하지 않습니다. 가능한 값은 다음과 같습니다. {::nomarkdown}<ul><li>ignore: LDAP 서버에서 발견된 참조를 무시합니다.</li><li>follow: LDAP 서버에서 발견된 참조를 자동으로 따릅니다.</li><li>throw: LDAP 서버에서 발견된 각각의 참조에 대해 예외가 발생합니다.</li></ul>{:/} |
+|ibm.appcenter.ldap.active |LDAP을 사용으로 설정하려면 true로 설정하고 LDAP을 사용 안함으로 설정하려면 false로 설정하십시오. |
+|ibm.appcenter.ldap.federated.active |WebSphere Application Server Liberty 프로파일 V8.5.5 이후: 연합 레지스트리 사용을 사용으로 설정하려면 true로 설정하고 연합 레지스트리 사용을 사용 안함으로 설정하려면 false(기본 설정)로 설정하십시오. |
+|ibm.appcenter.ldap.connectionURL |LDAP 연결 URL입니다. |
+|ibm.appcenter.ldap.user.base |사용자의 검색 기반입니다. |
+|ibm.appcenter.ldap.user.loginName |LDAP 로그인 속성입니다. |
+|ibm.appcenter.ldap.user.displayName |표시될 사용자 이름에 대한 LDAP 속성입니다(예: 사용자의 전체 이름). |
+|ibm.appcenter.ldap.group.base |그룹의 검색 기반입니다. |
+|ibm.appcenter.ldap.group.name |그룹 이름에 대한 LDAP 속성입니다. |
+|ibm.appcenter.ldap.group.uniquemember |그룹의 멤버를 식별하는 LDAP 속성입니다. |
+|ibm.appcenter.ldap.user.groupmembership |사용자가 속하는 그룹을 식별하는 LDAP 속성입니다. |
+|ibm.appcenter.ldap.group.nesting |중첩 그룹의 관리: 중첩 그룹이 관리되지 않는 경우에는 값을 false로 설정하십시오. |
+|ibm.appcenter.ldap.user.filter |사용자 로그인 이름의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 로그인 이름 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
+|ibm.appcenter.ldap.displayName.filter |사용자 표시 이름의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 표시 이름 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
+|ibm.appcenter.ldap.group.filter |LDAP 그룹 검색 필터입니다. %v를 그룹 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
+|ibm.appcenter.ldap.security.sasl |LDAP 서버에 바인드하기 위해 LDAP 외부 SASL 인증 메커니즘이 필요한 경우 보안 인증 메커니즘의 값입니다. 값은 LDAP 서버에 따라 다르며 일반적으로 "EXTERNAL"로 설정됩니다. |
+|ibm.appcenter.ldap.security.binddn |LDAP 디렉토리를 검색하기 위해 허용되는 사용자의 식별 이름을 식별하는 특성입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. |
+|ibm.appcenter.ldap.security.bindpwd |LDAP 디렉토리를 검색하도록 허용되는 사용자의 비밀번호를 식별하는 특성입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. 비밀번호는 "Liberty 프로파일 securityUtility" 도구를 사용하여 인코딩할 수 있습니다. 이 도구를 실행한 후 이 특성의 값을 이 도구에 의해 생성된 인코딩된 비밀번호로 설정하십시오. 지원되는 인코딩 유형은 xor 및 aes입니다. Liberty 프로파일 server.xml 파일을 편집하여 비밀번호를 디코딩하는 JAR 파일을 로드하기 위해 클래스 로더가 사용으로 설정되어 있는지 확인하십시오. |
+|ibm.appcenter.ldap.cache.expiration.seconds |LDAP 캐시가 만료되기 전의 지연 시간(초)입니다. 값을 입력하지 않은 경우 기본값은 86400(24시간)입니다. LDAP 서버의 사용자 및 그룹에 대한 변경사항은 **ibm.appcenter.ldap.cache.expiration.seconds**에 의해 지정되는 지연 시간 경과 후 Application Center에 표시됩니다. Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. 기본적으로 지연 시간은 24시간입니다. 이러한 지연 없이 사용자 또는 그룹에 대한 변경 후에 만료하려면 `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password` 명령을 호출하여 LDAP 데이터의 캐시를 지우면 됩니다. 세부사항은 [독립형 도구를 사용하여 LDAP 캐시 지우기](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)를 참조하십시오. |
+|ibm.appcenter.ldap.referral |JNDI API에서 참조를 지원하는지 여부를 표시하는 특성입니다. 값을 제공하지 않으면 JNDI API는 LDAP 참조를 처리하지 않습니다. 가능한 값은 다음과 같습니다. {::nomarkdown}<ul><li>ignore: LDAP 서버에서 발견된 참조를 무시합니다.</li><li>follow: LDAP 서버에서 발견된 참조를 자동으로 따릅니다.</li><li>throw: LDAP 서버에서 발견된 각각의 참조에 대해 예외가 발생합니다.</li></ul>{:/} |
 
 설정할 수 있는 LDAP 특성의 전체 목록은 [Application Center의 JNDI 특성](#jndi-properties-for-application-center)을 참조하십시오.
 
@@ -1897,7 +1897,7 @@ Application Center의 ACL 관리를 구성하려면 이 프로세스를 수행�
 Application Center 서비스 웹 애플리케이션(**applicationcenter.war**) 및 Application Center 콘솔 웹 애플리케이션(**appcenterconsole.war**)의 web.xml 파일에서 보안(Java™ Platform, Enterprise Edition)을 구성하고 LDAP 인증을 위해 Apache Tomcat 서버를 구성합니다.
 
 **LDAP 사용자 인증**  
-**server.xml** 파일에서 **JNDIRealm**을 `<Host>` 요소에 선언된 httpsPort 속성의 값과 동일해야 합니다. 영역 구성에 대한 자세한 정보는 Apache Tomcat 웹 사이트에서 영역 컴포넌트를 참조하십시오.
+**server.xml** 파일의 `<Host>` 요소에서 **JNDIRealm**을 구성해야 합니다. 영역 구성에 대한 자세한 정보는 Apache Tomcat 웹 사이트에서 영역 컴포넌트를 참조하십시오.
 
 **LDAP 서버에 대해 인증하기 위한 Apache Tomcat에서의 구성 예**  
 이 예에서는 LDAP 인증을 위해 사용으로 설정된 서버에서 이 사용자의 권한과 비교하여 Apache Tomcat 서버에서 사용자 인증을 구성하는 방법을 보여줍니다.
@@ -2035,27 +2035,27 @@ Application Center의 LDAP ACL 관리를 구성하려면 server.xml 파일에서
 * **JNDI\_property\_name**은 추가하는 특성의 이름입니다.
 * **property\_value**는 추가하는 특성의 값입니다.
 
-| 특성 | 설명 |
+|특성 |설명 |
 |----------|-------------|
-| ibm.appcenter.ldap.active | LDAP을 사용으로 설정하려면 true로 설정하고 LDAP을 사용 안함으로 설정하려면 false로 설정하십시오. |
-| ibm.appcenter.ldap.federated.active | WebSphere Application Server Liberty 프로파일 V8.5.5 이후: 연합 레지스트리 사용을 사용으로 설정하려면 true로 설정하고 연합 레지스트리 사용을 사용 안함으로 설정하려면 false(기본 설정)로 설정하십시오. |
-| ibm.appcenter.ldap.connectionURL | LDAP 연결 URL입니다. |
-| ibm.appcenter.ldap.user.base | 사용자의 검색 기반입니다. |
-| ibm.appcenter.ldap.user.loginName | LDAP 로그인 속성입니다. |
-| ibm.appcenter.ldap.user.displayName | 표시될 사용자 이름에 대한 LDAP 속성입니다(예: 사용자의 전체 이름). |
-| ibm.appcenter.ldap.group.base | 그룹의 검색 기반입니다. |
-| ibm.appcenter.ldap.group.name | 그룹 이름에 대한 LDAP 속성입니다. |
-| ibm.appcenter.ldap.group.uniquemember | 그룹의 멤버를 식별하는 LDAP 속성입니다. |
-| ibm.appcenter.ldap.user.groupmembership | 사용자가 속하는 그룹을 식별하는 LDAP 속성입니다. |
-| ibm.appcenter.ldap.group.nesting | 중첩 그룹의 관리: 중첩 그룹이 관리되지 않는 경우에는 값을 false로 설정하십시오. |
-| ibm.appcenter.ldap.user.filter |  사용자 로그인 이름의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 로그인 이름 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
-| ibm.appcenter.ldap.displayName.filter | 사용자 표시 이름의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 표시 이름 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
-| ibm.appcenter.ldap.group.filter | LDAP 그룹 검색 필터입니다. %v를 그룹 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
-| ibm.appcenter.ldap.security.sasl | LDAP 서버에 바인드하기 위해 LDAP 외부 SASL 인증 메커니즘이 필요한 경우 보안 인증 메커니즘의 값입니다. 값은 LDAP 서버에 따라 다르며 일반적으로 "EXTERNAL"로 설정됩니다. |
-| ibm.appcenter.ldap.security.binddn | LDAP 디렉토리를 검색하기 위해 허용되는 사용자의 식별 이름을 식별하는 특성입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. |
-| ibm.appcenter.ldap.security.bindpwd | LDAP 디렉토리를 검색하도록 허용되는 사용자의 비밀번호를 식별하는 특성입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. 비밀번호는 "Liberty 프로파일 securityUtility" 도구를 사용하여 인코딩할 수 있습니다. 이 도구를 실행한 후 이 특성의 값을 이 도구에 의해 생성된 인코딩된 비밀번호로 설정하십시오. 지원되는 인코딩 유형은 xor 및 aes입니다. Liberty 프로파일 server.xml 파일을 편집하여 비밀번호를 디코딩하는 JAR 파일을 로드하기 위해 클래스 로더가 사용으로 설정되어 있는지 확인하십시오. |
-| ibm.appcenter.ldap.cache.expiration.seconds | LDAP 캐시가 만료되기 전의 지연 시간(초)입니다. 값을 입력하지 않은 경우 기본값은 86400(24시간)입니다. LDAP 서버의 사용자 및 그룹에 대한 변경사항은 **ibm.appcenter.ldap.cache.expiration.seconds**에 의해 지정되는 지연 시간 경과 후 Application Center에 표시됩니다. Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. 기본적으로 지연 시간은 24시간입니다. 이러한 지연 없이 사용자 또는 그룹에 대한 변경 후에 만료하려면 `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password` 명령을 호출하여 LDAP 데이터의 캐시를 지우면 됩니다. 세부사항은 [독립형 도구를 사용하여 LDAP 캐시 지우기](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)를 참조하십시오. |
-| ibm.appcenter.ldap.referral | JNDI API에서 참조를 지원하는지 여부를 표시하는 특성입니다. 값을 제공하지 않으면 JNDI API는 LDAP 참조를 처리하지 않습니다. 가능한 값은 다음과 같습니다. {::nomarkdown}<ul><li>ignore: LDAP 서버에서 발견된 참조를 무시합니다.</li><li>follow: LDAP 서버에서 발견된 참조를 자동으로 따릅니다.</li><li>throw: LDAP 서버에서 발견된 각각의 참조에 대해 예외가 발생합니다.</li></ul>{:/} |
+|ibm.appcenter.ldap.active |LDAP을 사용으로 설정하려면 true로 설정하고 LDAP을 사용 안함으로 설정하려면 false로 설정하십시오. |
+|ibm.appcenter.ldap.federated.active |WebSphere Application Server Liberty 프로파일 V8.5.5 이후: 연합 레지스트리 사용을 사용으로 설정하려면 true로 설정하고 연합 레지스트리 사용을 사용 안함으로 설정하려면 false(기본 설정)로 설정하십시오. |
+|ibm.appcenter.ldap.connectionURL |LDAP 연결 URL입니다. |
+|ibm.appcenter.ldap.user.base |사용자의 검색 기반입니다. |
+|ibm.appcenter.ldap.user.loginName |LDAP 로그인 속성입니다. |
+|ibm.appcenter.ldap.user.displayName |표시될 사용자 이름에 대한 LDAP 속성입니다(예: 사용자의 전체 이름). |
+|ibm.appcenter.ldap.group.base |그룹의 검색 기반입니다. |
+|ibm.appcenter.ldap.group.name |그룹 이름에 대한 LDAP 속성입니다. |
+|ibm.appcenter.ldap.group.uniquemember |그룹의 멤버를 식별하는 LDAP 속성입니다. |
+|ibm.appcenter.ldap.user.groupmembership |사용자가 속하는 그룹을 식별하는 LDAP 속성입니다. |
+|ibm.appcenter.ldap.group.nesting |중첩 그룹의 관리: 중첩 그룹이 관리되지 않는 경우에는 값을 false로 설정하십시오. |
+|ibm.appcenter.ldap.user.filter |사용자 로그인 이름의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 로그인 이름 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
+|ibm.appcenter.ldap.displayName.filter |사용자 표시 이름의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 표시 이름 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
+|ibm.appcenter.ldap.group.filter |LDAP 그룹 검색 필터입니다. %v를 그룹 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
+|ibm.appcenter.ldap.security.sasl |LDAP 서버에 바인드하기 위해 LDAP 외부 SASL 인증 메커니즘이 필요한 경우 보안 인증 메커니즘의 값입니다. 값은 LDAP 서버에 따라 다르며 일반적으로 "EXTERNAL"로 설정됩니다. |
+|ibm.appcenter.ldap.security.binddn |LDAP 디렉토리를 검색하기 위해 허용되는 사용자의 식별 이름을 식별하는 특성입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. |
+|ibm.appcenter.ldap.security.bindpwd |LDAP 디렉토리를 검색하도록 허용되는 사용자의 비밀번호를 식별하는 특성입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. 비밀번호는 "Liberty 프로파일 securityUtility" 도구를 사용하여 인코딩할 수 있습니다. 이 도구를 실행한 후 이 특성의 값을 이 도구에 의해 생성된 인코딩된 비밀번호로 설정하십시오. 지원되는 인코딩 유형은 xor 및 aes입니다. Liberty 프로파일 server.xml 파일을 편집하여 비밀번호를 디코딩하는 JAR 파일을 로드하기 위해 클래스 로더가 사용으로 설정되어 있는지 확인하십시오. |
+|ibm.appcenter.ldap.cache.expiration.seconds |LDAP 캐시가 만료되기 전의 지연 시간(초)입니다. 값을 입력하지 않은 경우 기본값은 86400(24시간)입니다. LDAP 서버의 사용자 및 그룹에 대한 변경사항은 **ibm.appcenter.ldap.cache.expiration.seconds**에 의해 지정되는 지연 시간 경과 후 Application Center에 표시됩니다. Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. 기본적으로 지연 시간은 24시간입니다. 이러한 지연 없이 사용자 또는 그룹에 대한 변경 후에 만료하려면 `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password` 명령을 호출하여 LDAP 데이터의 캐시를 지우면 됩니다. 세부사항은 [독립형 도구를 사용하여 LDAP 캐시 지우기](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)를 참조하십시오. |
+|ibm.appcenter.ldap.referral |JNDI API에서 참조를 지원하는지 여부를 표시하는 특성입니다. 값을 제공하지 않으면 JNDI API는 LDAP 참조를 처리하지 않습니다. 가능한 값은 다음과 같습니다. {::nomarkdown}<ul><li>ignore: LDAP 서버에서 발견된 참조를 무시합니다.</li><li>follow: LDAP 서버에서 발견된 참조를 자동으로 따릅니다.</li><li>throw: LDAP 서버에서 발견된 각각의 참조에 대해 예외가 발생합니다.</li></ul>{:/} |
 
 설정할 수 있는 LDAP 특성의 전체 목록은 [Application Center의 JNDI 특성](#jndi-properties-for-application-center)을 참조하십시오.
 
@@ -2138,12 +2138,12 @@ Application Center 콘솔에서 모바일 애플리케이션을 추가할 때 �
 #### 엔드포인트 특성
 {: #endpoint-properties }
 
-| 특성 이름 | 용도 | 예 |
+|특성 이름 |용도 |예 |
 |---------------|---------|---------|
-| ibm.appcenter.services.endpoint | 이 특성을 통해 Application Center 콘솔에서 Application Center REST 서비스를 찾을 수 있습니다. 이 특성의 값은 applicationcenter.war 웹 애플리케이션의 외부 주소 및 컨텍스트 루트로 지정되어야 합니다. 별표(\*) 문자를 와일드카드로 사용하여 Application Center REST 서비스가 Application Center 콘솔과 동일한 값을 사용하도록 지정할 수 있습니다. 예를 들어, *://*:*/appcenter는 Application Center 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 appcenter를 컨텍스트 루트로 사용함을 의미합니다. 이 특성은 Application Center 콘솔 애플리케이션에 대해 지정해야 합니다. | https://appcntr.net:443/applicationcenter |
-| ibm.appcenter.proxy.protocol | 이 특성은 외부 애플리케이션이 Application Center에 연결하기 위해 필요한 프로토콜을 지정합니다. | https |
-| ibm.appcenter.proxy.host | 이 특성은 외부 애플리케이션이 Application Center에 연결하기 위해 필요한 호스트 이름을 지정합니다. | appcntr.net |
-| ibm.appcenter.proxy.port | 이 특성은 외부 애플리케이션이 Application Center에 연결하기 위해 필요한 포트를 지정합니다. | 443 |
+|ibm.appcenter.services.endpoint |이 특성을 통해 Application Center 콘솔에서 Application Center REST 서비스를 찾을 수 있습니다. 이 특성의 값은 applicationcenter.war 웹 애플리케이션의 외부 주소 및 컨텍스트 루트로 지정되어야 합니다. 별표(\*) 문자를 와일드카드로 사용하여 Application Center REST 서비스가 Application Center 콘솔과 동일한 값을 사용하도록 지정할 수 있습니다. 예를 들어, *://*:*/appcenter는 Application Center 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 appcenter를 컨텍스트 루트로 사용함을 의미합니다. 이 특성은 Application Center 콘솔 애플리케이션에 대해 지정해야 합니다. |https://appcntr.net:443/applicationcenter |
+|ibm.appcenter.proxy.protocol |이 특성은 외부 애플리케이션이 Application Center에 연결하기 위해 필요한 프로토콜을 지정합니다. |https |
+|ibm.appcenter.proxy.host |이 특성은 외부 애플리케이션이 Application Center에 연결하기 위해 필요한 호스트 이름을 지정합니다. |appcntr.net |
+|ibm.appcenter.proxy.port |이 특성은 외부 애플리케이션이 Application Center에 연결하기 위해 필요한 포트를 지정합니다. |443 |
 
 #### 다음으로 이동
 {: #jump-to-13 }
@@ -2221,12 +2221,12 @@ IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하�
 * **JNDI\_property\_name**은 추가하는 특성의 이름입니다.
 * **property\_value**는 추가하는 특성의 값입니다.
 
-| 특성 | 설명 |
+|특성 |설명 |
 |----------|-------------|
-| ibm.appcenter.services.endpoint | Application Center REST 서비스의 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. |
-| ibm.appcenter.proxy.protocol	애플리케이션 자원 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
-| ibm.appcenter.proxy.host | 애플리케이션 자원 URI의 호스트 이름입니다. |
-| ibm.appcenter.proxy.port | 애플리케이션 자원 URI의 포트입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
+|ibm.appcenter.services.endpoint |Application Center REST 서비스의 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. |
+|ibm.appcenter.proxy.protocol	애플리케이션 자원 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
+|ibm.appcenter.proxy.host |애플리케이션 자원 URI의 호스트 이름입니다. |
+|ibm.appcenter.proxy.port |애플리케이션 자원 URI의 포트입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
 
 설정할 수 있는 LDAP 특성의 전체 목록은 [Application Center의 JNDI 특성](#jndi-properties-for-application-center)을 참조하십시오.
 
@@ -2262,12 +2262,12 @@ Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집�
 * **property\_value**는 추가하는 특성의 값입니다.
 * **property\_type**은 추가하는 특성의 유형입니다.
 
-| 특성 | 유형 | 설명 |
+|특성 |유형 |설명 |
 |----------|------|-------------|
-| ibm.appcenter.services.endpoint | java.lang.String | Application Center REST 서비스(applicationcenter.war)의 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. |
-| ibm.appcenter.proxy.protocol | java.lang.String | 애플리케이션 자원 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
-| ibm.appcenter.proxy.host | java.lang.String | 애플리케이션 자원 URI의 호스트 이름입니다. |
-| ibm.appcenter.proxy.port | java.lang.Integer | 애플리케이션 자원 URI의 포트입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
+|ibm.appcenter.services.endpoint |java.lang.String |Application Center REST 서비스(applicationcenter.war)의 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. |
+|ibm.appcenter.proxy.protocol |java.lang.String |애플리케이션 자원 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
+|ibm.appcenter.proxy.host |java.lang.String |애플리케이션 자원 URI의 호스트 이름입니다. |
+|ibm.appcenter.proxy.port |java.lang.Integer |애플리케이션 자원 URI의 포트입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
 
 설정할 수 있는 JNDI 특성의 전체 목록은 [Application Center의 JNDI 특성](#jndi-properties-for-application-center)을 참조하십시오.
 
@@ -2275,7 +2275,7 @@ Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집�
 {: #example-of-setting-serverxml-properties-for-configuring-the-endpoint }
 이 예에서는 **server.xml** 파일에서 애플리케이션 자원의 엔드포인트 구성을 위해 필요한 특성을 설정하는 것을 보여줍니다.
 
-    `<context>` 섹션에서:
+`<context>` 섹션에서:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2283,7 +2283,7 @@ Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집�
 
 별표(\*) 문자를 와일드카드로 사용하여 Application Center REST 서비스가 Application Center 콘솔과 동일한 값을 사용하도록 지정할 수 있습니다. 예를 들어, `*://*:*/appcenter`는 Application Center 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 appcenter를 컨텍스트 루트로 사용함을 의미합니다.
 
-    `<context>` 섹션에서:
+`<context>` 섹션에서:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2428,55 +2428,55 @@ OTA(부트스트랩 페이지)에서 Application Center 모바일 클라이언�
 {: #jndi-properties-for-application-center }
 Application Center의 일부 JNDI 특성을 구성할 수 있습니다.
 
-| 특성 | 설명 |
+|특성 |설명 |
 |----------|-------------|
-| appcenter.database.type | appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 필요한 데이터베이스 유형입니다. |
-| appcenter.jndi.name | 데이터베이스의 JNDI 이름입니다. 이 매개변수는 데이터베이스를 지정하기 위한 일반 메커니즘입니다. 기본값은 java:comp/env/jdbc/AppCenterDS입니다. |
-| appcenter.openjpa.ConnectionDriverName | 데이터베이스 연결 드라이버 클래스의 완전한 클래스 이름입니다. 이 특성은 appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 필요합니다. |
-| appcenter.openjpa.ConnectionPassword | 데이터베이스 연결을 위한 비밀번호입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오. |
-| appcenter.openjpa.ConnectionURL | 데이터베이스 연결 드라이버 클래스의 URL입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오. |
-| appcenter.openjpa.ConnectionUserName | 데이터베이스 연결을 위한 사용자 이름입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오. |
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate | Application Center가 iOS 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 인증서가 개발 인증서인지 여부를 지정하려면 이 특성을 true로 설정하십시오. 개발 인증서가 아닌 경우에는 이 특성을 **false**로 설정하십시오. [Apple 푸시 알림 서비스에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#apns)을 참조하십시오. |
-| ibm.appcenter.apns.p12.certificate.location | Application Center가 iOS 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 개발 인증서의 파일에 대한 경로입니다. 예를 들어, **/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12**입니다. [Apple 푸시 알림 서비스에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#apns)을 참조하십시오. |
-| ibm.appcenter.apns.p12.certificate.password | Application Center가 iOS 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 인증서의 비밀번호입니다. [Apple 푸시 알림 서비스에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#apns)을 참조하십시오. |
-| ibm.appcenter.forceUpgradeDBTo60 | 데이터베이스 디자인은 IBM Worklight 버전 6.0부터 변경되었습니다. Application Center 웹 애플리케이션이 시작될 때 데이터베이스가 자동으로 업데이트됩니다. 이 업데이트를 반복하려면 이 매개변수를 **true**로 설정하고 웹 애플리케이션을 다시 시작하십시오. 나중에 이 매개변수를 **false**로 재설정할 수 있습니다. |
-| ibm.appcenter.gcm.signature.googleapikey | Application Center가 Android 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 Google API 키입니다. 예를 들어, AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs입니다. [GCM(Google Cloud Messaging)에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#gcm)을 참조하십시오. |
-| ibm.appcenter.ios.plist.onetimeur | iOS plist Manifest에 저장된 URL이 신임 정보 없는 일회성 URL 메커니즘을 사용하는지 여부를 지정합니다. 이 특성을 true로 설정하면 보안 레벨이 중간입니다. 왜냐하면 누구도 URL을 추측할 수 없도록 일회성 URL이 암호화 메커니즘을 사용하여 생성되지만 사용자가 로그인하지 않아도 되기 때문입니다. 이 특성을 false로 설정하면 사용자가 URL마다 로그인해야 하므로 최고의 보안이 제공됩니다. 하지만 iOS 애플리케이션을 설치할 때 사용자에게 여러 번 로그인하도록 요청하면 사용자에게 안 좋은 느낌을 줄 수 있습니다. [iOS 모바일 디바이스에 클라이언트 설치](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device)를 참조하십시오. |
-| ibm.appcenter.ldap.active | Application Center가 LDAP에 대해 구성되어 있는지 여부를 지정합니다. LDAP을 사용으로 설정하려면 이 특성을 true로 설정하고 LDAP을 사용 안함으로 설정하려면 false로 설정하십시오. [LDAP을 사용한 사용자 관리](#managing-users-with-ldap)를 참조하십시오. |
-| ibm.appcenter.ldap.cache.expiration.seconds | Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. LDAP 캐시의 항목 유효 기간(초)을 지정하십시오. LDAP 요청의 양을 줄이기 위해 이 특성을 3600(1시간)보다 큰 값으로 설정하십시오. 값을 입력하지 않은 경우 기본값은 86400(24시간)입니다. 수동으로 LDAP 데이터의 캐시를 지워야 하는 경우에는 `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password` 명령을 입력하십시오. [독립형 도구를 사용하여 LDAP 캐시 지우기](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)를 참조하십시오. |
-| ibm.appcenter.ldap.connectionURL | VMM(Virtual Member Manager)이 사용되지 않을 때 LDAP 서버에 액세스하는 데 필요한 URL입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.federated.active | Application Center가 연합 저장소를 사용하여 LDAP에 대해 구성되어 있는지 여부를 지정합니다. WebSphere Application Server Liberty 프로파일 V8.5.5부터는 연합 레지스트리 사용을 사용으로 설정하려면 이 특성을 true로 설정하십시오. 연합 레지스트리 사용을 사용 안함으로 설정하려면 이 특성을 false(기본 설정)로 설정하십시오. [LDAP을 사용한 사용자 관리](#managing-users-with-ldap)를 참조하십시오. |
-| ibm.appcenter.ldap.group.base | VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 그룹을 찾는 데 필요한 검색 기반입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.group.filter | LDAP 그룹 검색 필터입니다. **%v**를 그룹 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
-| ibm.appcenter.ldap.group.name | VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 그룹 이름 속성입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.group.nesting | VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 LDAP에 중첩 그룹(즉, 그룹 안의 그룹)이 포함되는지 여부를 지정합니다. 그룹은 반복적으로 검색되지 않으므로 이 특성을 false로 설정하면 LDAP 액세스 속도가 빨라집니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.group.uniquemember | VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 그룹의 멤버를 지정합니다. 이 특성은 ibm.appcenter.ldap.user.groupmembership과 반대입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.referral | JNDI API에서 참조를 지원하는지 여부를 지정합니다. 값이 지정되지 않은 경우 JNDI API는 LDAP 참조를 처리하지 않습니다. 가능한 값은 다음과 같습니다.{::nomarkdown}<ul><li>ignore: LDAP 서버에서 발견되는 참조를 무시합니다.</li><li>follow: LDAP 서버에서 발견되는 참조를 자동으로 따릅니다.</li><li>throw: LDAP 서버에서 발견된 각각의 참조에 대해 예외가 발생합니다.</li></ul>{:/} |
-| ibm.appcenter.ldap.security.binddn | LDAP 디렉토리를 검색하기 위해 허용되는 사용자의 식별 이름입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. |
-| ibm.appcenter.ldap.security.bindpwd | LDAP 디렉토리를 검색하기 위해 허용되는 사용자의 비밀번호입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오.<br><br>이 비밀번호는 Liberty 프로파일 securityUtility 도구를 사용하여 인코딩될 수 있습니다. 해당 도구를 실행한 후 이 특성의 값을 해당 도구에 의해 생성되는 인코딩된 비밀번호로 설정하십시오.<br><br>Liberty 프로파일 server.xml 파일을 편집하여 비밀번호를 디코딩하는 JAR 파일을 로드하기 위해 클래스 로더가 사용으로 설정되어 있는지 확인하십시오.<br><br>[LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.security.sasl | LDAP 서버에 바인드하기 위해 LDAP 외부 SASL 인증 메커니즘이 필요한 경우 보안 인증 메커니즘을 지정합니다. 값은 LDAP 서버에 따라 다르며 일반적으로 EXTERNAL로 설정됩니다. 이 특성이 설정되면 VMM(Virtual Member Manager) 없이 LDAP에 연결하기 위해 보안 인증이 필요합니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.user.base | VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 사용자를 찾는 데 필요한 검색 기반입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.user.displayName | VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 표시 이름 속성(예: 사용자의 실제 이름)입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.displayName.filter | ibm.appcenter.ldap.user.displayName의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 표시 이름 속성의 플레이스홀더로 사용하십시오.<br><br>이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의되는 경우에만 필요합니다(즉, ibm.appcenter.ldap.user.base 특성과 ibm.appcenter.ldap.group.base 특성이 동일한 값을 가진 경우). |
-| ibm.appcenter.ldap.user.filter | ibm.appcenter.ldap.user.loginName의 속성에 대한 LDAP 사용자 검색 필터입니다. **%v**를 로그인 이름 속성의 플레이스홀더로 사용하십시오.<br><br>이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의되는 경우에만 필요합니다(즉, ibm.appcenter.ldap.user.base 특성과 ibm.appcenter.ldap.group.base 특성이 동일한 값을 가진 경우). |
-| ibm.appcenter.ldap.user.groupmembership | VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 멤버의 그룹을 지정합니다. 이 특성은 ibm.appcenter.ldap.group.uniquemember와 반대입니다. 이 특성은 선택사항이지만 지정된 경우에는 LDAP 액세스가 더 빠릅니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.user.loginName | VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 로그인 이름 속성입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
-| ibm.appcenter.ldap.vmm.active | LDAP이 VMM(Virtual Member Manager)을 통해 수행되도록 지정하려면 이 특성을 true로 설정하고 그렇지 않으면 false로 설정하십시오. [WebSphere Application Server V8.x에 대한 LDAP ACL 관리 구성](#configuring-ldap-acl-management-for-websphere-application-server-v8x)을 참조하십시오. |
-| ibm.appcenter.ldap.vmm.adminpwd | LDAP이 VMM(Virtual Member Manager)을 통해 수행될 때 비밀번호입니다. [WebSphere Application Server V8.x에 대한 LDAP ACL 관리 구성](#configuring-ldap-acl-management-for-websphere-application-server-v8x)을 참조하십시오. |
-| ibm.appcenter.ldap.vmm.adminuser | LDAP이 VMM(Virtual Member Manager)을 통해 수행될 때 사용자입니다. [WebSphere Application Server V8.x에 대한 LDAP ACL 관리 구성](#configuring-ldap-acl-management-for-websphere-application-server-v8x)을 참조하십시오. |
-| ibm.appcenter.logging.formatjson | 이 특성은 ibm.appcenter.logging.tosystemerror가 true로 설정된 경우에만 적용됩니다. 이 특성이 사용으로 설정된 경우 이 특성은 System.Error로 경로 지정되는 로깅 메시지의 JSON 응답을 형식화합니다. 이 특성을 설정하면 서버를 디버그할 때 도움이 됩니다. |
-| ibm.appcenter.logging.tosystemerror | 모든 로깅 메시지가 System.Error로도 경로 지정되는지 여부를 지정합니다. 이 특성을 설정하면 서버를 디버그할 때 도움이 됩니다. |
-| ibm.appcenter.openjpa.Log | 이 특성은 OpenJPA에 전달되며 JPA 로깅을 사용으로 설정합니다. 세부사항은 [Apache OpenJPA 사용자 안내서](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html)를 참조하십시오. |
-| ibm.appcenter.proxy.host | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 주소입니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
-| ibm.appcenter.proxy.port | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 포트입니다(예: 443). 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 이 특성이 필요합니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
-| ibm.appcenter.proxy.protocol | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 프로토콜(http 또는 https)을 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 프로토콜로 설정됩니다. 예를 들어, appcntr.net입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
-| ibm.appcenter.proxy.scheme | 이 특성은 단지 ibm.appcenter.proxy.protocol의 대체 이름입니다. |
-| ibm.appcenter.push.schedule.period.amount | 애플리케이션 업데이트의 푸시 알림을 전송할 때 시간 스케줄을 지정합니다. 서버에서 애플리케이션이 자주 변경되는 경우에는 이 특성을 설정하여 알림의 일괄처리를 전송하십시오. 예를 들어, 각각의 개별 알림을 전송하는 대신 이전 시간 내에 발생한 모든 알림을 전송합니다. |
-| ibm.appcenter.push.schedule.period.unit | 애플리케이션 업데이트의 푸시 알림을 전송할 때 시간 스케줄 단위를 지정합니다. |
-| ibm.appcenter.services.endpoint | Application Center 콘솔에서 Application Center REST 서비스를 찾을 수 있게 합니다. applicationcenter.war 웹 애플리케이션의 외부 주소 및 컨텍스트 루트를 지정하십시오. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. 예를 들어, https://appcntr.net:443/applicationcenter입니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
-| ibm.appcenter.services.iconCacheMaxAge | 캐시됨 아이콘이 Application Center 콘솔 및 클라이언트에 대해 유효한 기간(초)을 지정합니다. 애플리케이션 아이콘은 거의 변경되지 않으므로 캐시됩니다. 아이콘에 대한 데이터 전송의 양을 줄이기 위해 600(10분)보다 큰 값을 지정하십시오. |
-| mfp.jndi.configuration | 선택사항. JNDI 구성이 WAR 파일에 삽입되었거나 공유 라이브러리로 제공된 경우 이 특성의 값은 JNDI 구성의 이름입니다. 이 값을 시스템 특성으로 지정할 수도 있습니다. |
-| mfp.jndi.file | 선택사항. JNDI 구성이 외부 파일로 저장되는 경우 이 특성의 값은 JNDI 구성을 설명하는 파일의 경로입니다. 이 값을 시스템 특성으로 지정할 수도 있습니다. |
+|appcenter.database.type |appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 필요한 데이터베이스 유형입니다. |
+|appcenter.jndi.name |데이터베이스의 JNDI 이름입니다. 이 매개변수는 데이터베이스를 지정하기 위한 일반 메커니즘입니다. 기본값은 java:comp/env/jdbc/AppCenterDS입니다. |
+|appcenter.openjpa.ConnectionDriverName |데이터베이스 연결 드라이버 클래스의 완전한 클래스 이름입니다. 이 특성은 appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 필요합니다. |
+|appcenter.openjpa.ConnectionPassword |데이터베이스 연결을 위한 비밀번호입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오. |
+|appcenter.openjpa.ConnectionURL |데이터베이스 연결 드라이버 클래스의 URL입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오. |
+|appcenter.openjpa.ConnectionUserName |데이터베이스 연결을 위한 사용자 이름입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오. |
+|ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |Application Center가 iOS 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 인증서가 개발 인증서인지 여부를 지정하려면 이 특성을 true로 설정하십시오. 개발 인증서가 아닌 경우에는 이 특성을 **false**로 설정하십시오. [Apple 푸시 알림 서비스에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#apns)을 참조하십시오. |
+|ibm.appcenter.apns.p12.certificate.location |Application Center가 iOS 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 개발 인증서의 파일에 대한 경로입니다. 예를 들어, **/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12**입니다. [Apple 푸시 알림 서비스에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#apns)을 참조하십시오. |
+|ibm.appcenter.apns.p12.certificate.password |Application Center가 iOS 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 인증서의 비밀번호입니다. [Apple 푸시 알림 서비스에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#apns)을 참조하십시오. |
+|ibm.appcenter.forceUpgradeDBTo60 |데이터베이스 디자인은 IBM Worklight 버전 6.0부터 변경되었습니다. Application Center 웹 애플리케이션이 시작될 때 데이터베이스가 자동으로 업데이트됩니다. 이 업데이트를 반복하려면 이 매개변수를 **true**로 설정하고 웹 애플리케이션을 다시 시작하십시오. 나중에 이 매개변수를 **false**로 재설정할 수 있습니다. |
+|ibm.appcenter.gcm.signature.googleapikey |Application Center가 Android 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 Google API 키입니다. 예를 들어, AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs입니다. [GCM(Google Cloud Messaging)에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#gcm)을 참조하십시오. |
+|ibm.appcenter.ios.plist.onetimeur |iOS plist Manifest에 저장된 URL이 신임 정보 없는 일회성 URL 메커니즘을 사용하는지 여부를 지정합니다. 이 특성을 true로 설정하면 보안 레벨이 중간입니다. 왜냐하면 누구도 URL을 추측할 수 없도록 일회성 URL이 암호화 메커니즘을 사용하여 생성되지만 사용자가 로그인하지 않아도 되기 때문입니다. 이 특성을 false로 설정하면 사용자가 URL마다 로그인해야 하므로 최고의 보안이 제공됩니다. 하지만 iOS 애플리케이션을 설치할 때 사용자에게 여러 번 로그인하도록 요청하면 사용자에게 안 좋은 느낌을 줄 수 있습니다. [iOS 모바일 디바이스에 클라이언트 설치](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device)를 참조하십시오. |
+|ibm.appcenter.ldap.active |Application Center가 LDAP에 대해 구성되어 있는지 여부를 지정합니다. LDAP을 사용으로 설정하려면 이 특성을 true로 설정하고 LDAP을 사용 안함으로 설정하려면 false로 설정하십시오. [LDAP을 사용한 사용자 관리](#managing-users-with-ldap)를 참조하십시오. |
+|ibm.appcenter.ldap.cache.expiration.seconds |Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. LDAP 캐시의 항목 유효 기간(초)을 지정하십시오. LDAP 요청의 양을 줄이기 위해 이 특성을 3600(1시간)보다 큰 값으로 설정하십시오. 값을 입력하지 않은 경우 기본값은 86400(24시간)입니다. 수동으로 LDAP 데이터의 캐시를 지워야 하는 경우에는 `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password` 명령을 입력하십시오. [독립형 도구를 사용하여 LDAP 캐시 지우기](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)를 참조하십시오. |
+|ibm.appcenter.ldap.connectionURL |VMM(Virtual Member Manager)이 사용되지 않을 때 LDAP 서버에 액세스하는 데 필요한 URL입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.federated.active |Application Center가 연합 저장소를 사용하여 LDAP에 대해 구성되어 있는지 여부를 지정합니다. WebSphere Application Server Liberty 프로파일 V8.5.5부터는 연합 레지스트리 사용을 사용으로 설정하려면 이 특성을 true로 설정하십시오. 연합 레지스트리 사용을 사용 안함으로 설정하려면 이 특성을 false(기본 설정)로 설정하십시오. [LDAP을 사용한 사용자 관리](#managing-users-with-ldap)를 참조하십시오. |
+|ibm.appcenter.ldap.group.base |VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 그룹을 찾는 데 필요한 검색 기반입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.group.filter |LDAP 그룹 검색 필터입니다. **%v**를 그룹 속성의 플레이스홀더로 사용하십시오. 이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의된 경우에만 필요합니다(즉, **ibm.appcenter.ldap.user.base** 특성과 **ibm.appcenter.ldap.group.base** 특성이 동일한 값을 가진 경우). |
+|ibm.appcenter.ldap.group.name |VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 그룹 이름 속성입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.group.nesting |VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 LDAP에 중첩 그룹(즉, 그룹 안의 그룹)이 포함되는지 여부를 지정합니다. 그룹은 반복적으로 검색되지 않으므로 이 특성을 false로 설정하면 LDAP 액세스 속도가 빨라집니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.group.uniquemember |VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 그룹의 멤버를 지정합니다. 이 특성은 ibm.appcenter.ldap.user.groupmembership과 반대입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.referral |JNDI API에서 참조를 지원하는지 여부를 지정합니다. 값이 지정되지 않은 경우 JNDI API는 LDAP 참조를 처리하지 않습니다. 가능한 값은 다음과 같습니다.{::nomarkdown}<ul><li>ignore: LDAP 서버에서 발견되는 참조를 무시합니다.</li><li>follow: LDAP 서버에서 발견되는 참조를 자동으로 따릅니다.</li><li>throw: LDAP 서버에서 발견된 각각의 참조에 대해 예외가 발생합니다.</li></ul>{:/} |
+|ibm.appcenter.ldap.security.binddn |LDAP 디렉토리를 검색하기 위해 허용되는 사용자의 식별 이름입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오. |
+|ibm.appcenter.ldap.security.bindpwd |LDAP 디렉토리를 검색하기 위해 허용되는 사용자의 비밀번호입니다. 보안 바인딩이 필요한 경우에만 이 특성을 사용하십시오.<br><br>이 비밀번호는 Liberty 프로파일 securityUtility 도구를 사용하여 인코딩될 수 있습니다. 해당 도구를 실행한 후 이 특성의 값을 해당 도구에 의해 생성되는 인코딩된 비밀번호로 설정하십시오.<br><br>Liberty 프로파일 server.xml 파일을 편집하여 비밀번호를 디코딩하는 JAR 파일을 로드하기 위해 클래스 로더가 사용으로 설정되어 있는지 확인하십시오.<br><br>[LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.security.sasl |LDAP 서버에 바인드하기 위해 LDAP 외부 SASL 인증 메커니즘이 필요한 경우 보안 인증 메커니즘을 지정합니다. 값은 LDAP 서버에 따라 다르며 일반적으로 EXTERNAL로 설정됩니다. 이 특성이 설정되면 VMM(Virtual Member Manager) 없이 LDAP에 연결하기 위해 보안 인증이 필요합니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.user.base |VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 사용자를 찾는 데 필요한 검색 기반입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.user.displayName |VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 표시 이름 속성(예: 사용자의 실제 이름)입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.displayName.filter |ibm.appcenter.ldap.user.displayName의 속성에 대한 LDAP 사용자 검색 필터입니다. %v를 표시 이름 속성의 플레이스홀더로 사용하십시오.<br><br>이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의되는 경우에만 필요합니다(즉, ibm.appcenter.ldap.user.base 특성과 ibm.appcenter.ldap.group.base 특성이 동일한 값을 가진 경우). |
+|ibm.appcenter.ldap.user.filter |ibm.appcenter.ldap.user.loginName의 속성에 대한 LDAP 사용자 검색 필터입니다. **%v**를 로그인 이름 속성의 플레이스홀더로 사용하십시오.<br><br>이 특성은 LDAP 사용자 및 그룹이 동일한 서브트리에서 정의되는 경우에만 필요합니다(즉, ibm.appcenter.ldap.user.base 특성과 ibm.appcenter.ldap.group.base 특성이 동일한 값을 가진 경우). |
+|ibm.appcenter.ldap.user.groupmembership |VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 멤버의 그룹을 지정합니다. 이 특성은 ibm.appcenter.ldap.group.uniquemember와 반대입니다. 이 특성은 선택사항이지만 지정된 경우에는 LDAP 액세스가 더 빠릅니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.user.loginName |VMM(Virtual Member Manager) 없이 LDAP을 사용할 때 로그인 이름 속성입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
+|ibm.appcenter.ldap.vmm.active |LDAP이 VMM(Virtual Member Manager)을 통해 수행되도록 지정하려면 이 특성을 true로 설정하고 그렇지 않으면 false로 설정하십시오. [WebSphere Application Server V8.x에 대한 LDAP ACL 관리 구성](#configuring-ldap-acl-management-for-websphere-application-server-v8x)을 참조하십시오. |
+|ibm.appcenter.ldap.vmm.adminpwd |LDAP이 VMM(Virtual Member Manager)을 통해 수행될 때 비밀번호입니다. [WebSphere Application Server V8.x에 대한 LDAP ACL 관리 구성](#configuring-ldap-acl-management-for-websphere-application-server-v8x)을 참조하십시오. |
+|ibm.appcenter.ldap.vmm.adminuser |LDAP이 VMM(Virtual Member Manager)을 통해 수행될 때 사용자입니다. [WebSphere Application Server V8.x에 대한 LDAP ACL 관리 구성](#configuring-ldap-acl-management-for-websphere-application-server-v8x)을 참조하십시오. |
+|ibm.appcenter.logging.formatjson |이 특성은 ibm.appcenter.logging.tosystemerror가 true로 설정된 경우에만 적용됩니다. 이 특성이 사용으로 설정된 경우 이 특성은 System.Error로 경로 지정되는 로깅 메시지의 JSON 응답을 형식화합니다. 이 특성을 설정하면 서버를 디버그할 때 도움이 됩니다. |
+|ibm.appcenter.logging.tosystemerror |모든 로깅 메시지가 System.Error로도 경로 지정되는지 여부를 지정합니다. 이 특성을 설정하면 서버를 디버그할 때 도움이 됩니다. |
+|ibm.appcenter.openjpa.Log |이 특성은 OpenJPA에 전달되며 JPA 로깅을 사용으로 설정합니다. 세부사항은 [Apache OpenJPA 사용자 안내서](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html)를 참조하십시오. |
+|ibm.appcenter.proxy.host |Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 주소입니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
+|ibm.appcenter.proxy.port |Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 포트입니다(예: 443). 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 이 특성이 필요합니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
+|ibm.appcenter.proxy.protocol |Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 프로토콜(http 또는 https)을 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 프로토콜로 설정됩니다. 예를 들어, appcntr.net입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
+|ibm.appcenter.proxy.scheme |이 특성은 단지 ibm.appcenter.proxy.protocol의 대체 이름입니다. |
+|ibm.appcenter.push.schedule.period.amount |애플리케이션 업데이트의 푸시 알림을 전송할 때 시간 스케줄을 지정합니다. 서버에서 애플리케이션이 자주 변경되는 경우에는 이 특성을 설정하여 알림의 일괄처리를 전송하십시오. 예를 들어, 각각의 개별 알림을 전송하는 대신 이전 시간 내에 발생한 모든 알림을 전송합니다. |
+|ibm.appcenter.push.schedule.period.unit |애플리케이션 업데이트의 푸시 알림을 전송할 때 시간 스케줄 단위를 지정합니다. |
+|ibm.appcenter.services.endpoint |Application Center 콘솔에서 Application Center REST 서비스를 찾을 수 있게 합니다. applicationcenter.war 웹 애플리케이션의 외부 주소 및 컨텍스트 루트를 지정하십시오. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. 예를 들어, https://appcntr.net:443/applicationcenter입니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
+|ibm.appcenter.services.iconCacheMaxAge |캐시됨 아이콘이 Application Center 콘솔 및 클라이언트에 대해 유효한 기간(초)을 지정합니다. 애플리케이션 아이콘은 거의 변경되지 않으므로 캐시됩니다. 아이콘에 대한 데이터 전송의 양을 줄이기 위해 600(10분)보다 큰 값을 지정하십시오. |
+|mfp.jndi.configuration |선택사항. JNDI 구성이 WAR 파일에 삽입되었거나 공유 라이브러리로 제공된 경우 이 특성의 값은 JNDI 구성의 이름입니다. 이 값을 시스템 특성으로 지정할 수도 있습니다. |
+|mfp.jndi.file |선택사항. JNDI 구성이 외부 파일로 저장되는 경우 이 특성의 값은 JNDI 구성을 설명하는 파일의 경로입니다. 이 값을 시스템 특성으로 지정할 수도 있습니다. |
 
 ### 공용 앱 스토어의 애플리케이션을 지원하도록 WebSphere Application Server 구성
 {: #configuring-websphere-application-server-to-support-applications-in-public-app-stores }

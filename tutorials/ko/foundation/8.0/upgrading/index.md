@@ -9,7 +9,7 @@ weight: 12
 
 > 마이그레이션 프로세스를 빠르게 시작하려면 [마이그레이션 쿡북을 검토](migration-cookbook)하십시오.
 
-> 이 [랩]({{site.baseurl}}/labs/developers/8.0/advancedwallet/)을 사용하여 v7.1에서 v8.0으로 마이그레이션할 수 있습니다. 
+> 이 [랩]({{site.baseurl}}/labs/developers/8.0/advancedwallet/)을 사용하여 v7.1에서 v8.0으로 마이그레이션할 수 있습니다.
 
 #### 다음으로 이동
 {: #jump-to }
@@ -137,5 +137,5 @@ IMFData 프레임워크 또는 CloudantToolkit으로 Cloudant에 모바일 데�
 
 {{ site.data.keys.mf_server }}에 임시 수정사항이나 수정팩을 적용하려면 초기 설치 방법에 따라 다음 주제 중 하나를 선택하십시오.
 
-* [서버 구성 도구를 사용하여 수정팩 또는 임시 수정사항 적용](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
-* [Ant 파일을 사용하여 수정팩 적용](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
+* [서버 구성 도구를 사용하여 수정팩 또는 임시 수정사항 적용](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Ant 파일을 사용하여 수정팩 적용](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-ant-files)

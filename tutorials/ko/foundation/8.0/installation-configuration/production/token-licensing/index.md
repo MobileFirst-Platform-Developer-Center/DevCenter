@@ -2,7 +2,7 @@
 layout: tutorial
 title: 토큰 라이센싱을 위한 설치 및 구성
 breadcrumb_title: Token licensing
-weight: 6
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -36,7 +36,7 @@ weight: 6
 
 #### 지원되는 토폴로지:
 {: #supported-topologies }
-토큰 라이센싱에서 지원하는 토폴로지는 [{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)에 나열되어 있습니다.
+토큰 라이센싱에서 지원하는 토폴로지는 [{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건](../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)에 나열되어 있습니다.
 
 ### 네트워크 요구사항
 {: #network-requirement }
@@ -46,7 +46,7 @@ weight: 6
 
 * 라이센스 관리자 디먼(**lmgrd**) 포트 - 기본 포트 번호는 27000입니다.
 * 공급업체 디먼(**ibmratl**) 포트
- 
+
 정적 값을 사용하도록 포트를 구성하려면 방화벽을 통해 클라이언트 머신에 라이센스 키를 제공하는 방법을 참조하십시오.
 
 ### 설치 프로세스
@@ -73,18 +73,18 @@ weight: 6
 
    #### 그래픽 모드 설치
    그래픽 모드에서 제품을 설치하는 경우, 설치 시 **일반 설정** 패널에서 **Rational License Key Server에서 토큰 라이센싱 활성화** 옵션을 선택하십시오.
-    
+
    ![IBM Installation Manager에서 토큰 라이센싱 활성화](licensing_with_tokens_activate.jpg)
-    
+
    #### 명령행 모드 설치
    자동 모드로 설치하는 경우, 응답 파일에서 **user.licensed.by.tokens** 매개변수의 값을 **true**로 설정하십시오.  
    예를 들어, 다음을 사용할 수 있습니다.
-    
+
    ```bash
    imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.use.ios.edition=false,user.licensed.by.tokens=true -acceptLicense
    ```
-    
-2. 제품 설치가 완료된 후 애플리케이션 서버에 {{ site.data.keys.mf_server }}를 배치하십시오. 자세한 정보는 [애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치](../appserver)를 참조하십시오.
+
+2. 제품 설치가 완료된 후 애플리케이션 서버에 {{ site.data.keys.mf_server }}를 배치하십시오. 자세한 정보는 [애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치](../prod-env/appserver)를 참조하십시오.
 
 3. 토큰 라이센싱용으로 {{ site.data.keys.mf_server }}를 구성하십시오. 단계는 사용하는 애플리케이션 서버에 따라 다릅니다.
 
@@ -104,24 +104,24 @@ weight: 6
 {: #installing-rational-common-licensing-libraries }
 
 1. Rational Common Licensing 기본 라이브러리를 선택하십시오. 사용하는 운영 체제와 Apache Tomcat이 실행 중인 JRE(Java Runtime Environment)의 비트 버전에 따라 **product\_install\_dir/MobileFirstServer/tokenLibs/bin/your\_corresponding\_platform/the\_native\_library\_file**에서 올바른 기본 라이브러리를 선택해야 합니다. 예를 들어, 64비트 JRE가 설치된 Linux x86의 경우, 라이브러리는 **product\_install\_dir/MobileFirstServer/tokensLibs/bin/Linux\_x86\_64/librcl\_ibmratl.so**에 있습니다.
-2. {{ site.data.keys.mf_server }} 관리 서비스를 실행하는 컴퓨터로 기본 라이브러리를 복사하십시오. 디렉토리는 **${CATALINA_HOME}/bin**일 수 있습니다. 
+2. {{ site.data.keys.mf_server }} 관리 서비스를 실행하는 컴퓨터로 기본 라이브러리를 복사하십시오. 디렉토리는 **${CATALINA_HOME}/bin**일 수 있습니다.
     > **참고:** **${CATALINA_HOME}**은 Apache Tomcat의 설치 디렉토리입니다.
 3. **rcl_ibmratl.jar** 파일을 **${CATALINA_HOME}/lib**로 복사하십시오. **rcl_ibmratl.jar** 파일은 **product\_install\_dir/MobileFirstServer/tokenLibs** 디렉토리에 있는 Rational Common Licensing Java 라이브러리입니다. 이 라이브러리는 2단계에서 복사한 기본 라이브러리를 사용하며 Apache Tomcat에서 한 번만 로드할 수 있습니다. 이 파일은 **${CATALINA_HOME}/lib** 디렉토리나 Apache Tomcat 공통 클래스 로더의 경로에 있는 임의의 디렉토리에 저장해야 합니다.
     > **중요:** Apache Tomcat의 JVM(Java Virtual Machine)은 복사된 기본 및 Java 라이브러리에 대해 읽기 및 실행 권한이 필요합니다. 또한 사용하는 운영 체제에서 최소한 애플리케이션 서버 프로세스 동안 복사된 두 파일을 모두 읽고 실행할 수 있어야 합니다.
 4. 애플리케이션 서버의 JVM에 의한 Rational Common Licensing 라이브러리로의 액세스를 구성하십시오. 모든 운영 체제에서 다음 행을 추가하여 **${CATALINA_HOME}/bin/setenv.bat** 파일(UNIX의 경우, **setenv.sh** 파일)을 구성하십시오.
 
    **Windows:**  
-    
+
    ```bash
    set CATALINA_OPTS=%CATALINA_OPTS% -Djava.library.path=absolute_path_to_the_previous_bin_directory
    ```
-    
+
    **UNIX:**
 
    ```bash
    CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=absolute_path_to_the_previous_bin_directory"
    ```
-    
+
    > **참고:** 관리 서비스가 실행 중인 서버의 구성 폴더를 이동시키는 경우, **java.library.path**를 새 절대 경로로 업데이트해야 합니다.
 
 5. Rational License Key Server에 액세스하도록 {{ site.data.keys.mf_server }}를 구성하십시오. **${CATALINA_HOME}/conf/server.xml** 파일에서 관리 서비스 애플리케이션의 `Context` 요소를 찾아 다음 JNDI 구성 행에 추가하십시오.
@@ -137,7 +137,7 @@ JNDI 특성에 대한 자세한 정보는 [관리 서비스의 JNDI 특성: 라�
 
 ### Apache Tomcat 서버 팜에 설치
 {: #installing-on-apache-tomcat-server-farm }
-Apache Tomcat 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구성하려면 {{ site.data.keys.mf_server }}가 실행 중인 서버 팜의 각 노드에 대해 [Rational Common Licensing 라이브러리 설치](#installing-rational-common-licensing-libraries)에 설명된 모든 단계를 수행해야 합니다. 서버 팜에 대한 자세한 정보는 [서버 팜 토폴로지](../topologies/#server-farm-topology) 및 [서버 팜 설치](../appserver/#installing-a-server-farm)를 참조하십시오.
+Apache Tomcat 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구성하려면 {{ site.data.keys.mf_server }}가 실행 중인 서버 팜의 각 노드에 대해 [Rational Common Licensing 라이브러리 설치](#installing-rational-common-licensing-libraries)에 설명된 모든 단계를 수행해야 합니다. 서버 팜에 대한 자세한 정보는 [서버 팜 토폴로지](../prod-env/topologies/#server-farm-topology) 및 [서버 팜 설치](../prod-env/appserver/#installing-a-server-farm)를 참조하십시오.
 
 ## WebSphere Application Server Liberty 프로파일에 설치된 {{ site.data.keys.mf_server }}와 Rational License Key Server의 연결
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-liberty-profile-to-the-rational-license-key-server }
@@ -153,9 +153,9 @@ Apache Tomcat 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구�
 1. Rational Common Licensing 클라이언트용 공유 라이브러리를 정의하십시오. 이 라이브러리는 네이티브 코드를 사용하며 애플리케이션 서버에서 한 번만 로드할 수 있습니다. 따라서 이 라이브러리를 사용하는 애플리케이션은 이를 공통 라이브러리로 참조해야 합니다.
    * Rational Common Licensing 기본 라이브러리를 선택하십시오. 사용하는 운영 체제와 Liberty 프로파일이 실행 중인 JRE(Java Runtime Environment)의 비트 버전에 따라 **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file**에서 올바른 기본 라이브러리를 선택해야 합니다. 예를 들어, 64비트 JRE가 설치된 Linux x86의 경우, 라이브러리는 **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so**에 있습니다.
    * {{ site.data.keys.mf_server }} 관리 서비스를 실행하는 컴퓨터로 기본 라이브러리를 복사하십시오. 디렉토리는 **${shared.resource.dir}/rcllib**일 수 있습니다. **${shared.resource.dir}** 디렉토리는 보통 **usr/shared/resources**에 있습니다. 여기서 usr은 usr/servers 디렉토리도 포함된 디렉토리입니다. **${shared.resource.dir}**의 표준 위치에 대한 자세한 정보는 [WebSphere  Application Server Liberty Core - 디렉토리 위치 및 특성](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc)을 참조하십시오. **rcllib** 폴더가 없으면 이 폴더를 작성한 후 기본 라이브러리 파일을 여기로 복사하십시오.
-    
+
    > **참고:** 애플리케이션 서버의 JVM(Java Virtual Machine)에 기본 라이브러리에 대한 읽기 및 실행 권한이 모두 있어야 합니다. Windows에서는, 애플리케이션 서버의 JVM에 복사된 기본 라이브러리에 대한 실행 권한이 없는 경우 다음 예외가 표시됩니다.
-    
+
    ```bash
    com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Access is denied).
    ```
@@ -188,9 +188,9 @@ Apache Tomcat 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구�
    <classloader delegation="parentLast" commonLibraryRef="MobileFirst/JDBC/oracle">
     </classloader>
    ```
-    
+
    또한 다음과 같이 Oracle 라이브러리에 Rational Common Licensing 라이브러리를 공통 라이브러리로서 추가해야 합니다.
-    
+
    ```xml
    <classloader delegation="parentLast"
          commonLibraryRef="MobileFirst/JDBC/oracle,RCLLibrary">
@@ -201,18 +201,18 @@ Apache Tomcat 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구�
    ```xml
    -Djava.library.path=Absolute_path_to_the_previously_created_rcllib_folder
    ```
-    
+
    > **참고:** 관리 서비스가 실행 중인 서버의 구성 폴더를 이동시키는 경우, **java.library.path**를 새 절대 경로로 업데이트해야 합니다.
 
    **${wlp.user.dir}** 디렉토리는 보통 **liberty_install_dir/usr**에 있고 servers 디렉토리를 포함합니다. 그러나 해당 위치를 사용자 정의할 수 있습니다. 자세한 정보는 [Liberty 환경 사용자 정의](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_customvars.html?lang=en&view=kc)를 참조하십시오.
-    
+
 2. Rational License Key Server에 액세스하도록 {{ site.data.keys.mf_server }}를 구성하십시오.
 
    **${wlp.user.dir}/servers/server_name/server.xml** 파일에서 다음 JNDI 구성 행을 추가하십시오.
-    
+
    ```xml
-   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/> 
-   <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/> 
+   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/>
+   <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/>
    ```
    * **rlks_hostname**은 Rational License Key Server의 호스트 이름입니다.
    * **rlks_port**는 Rational License Key Server의 포트입니다. 기본적으로 이 값은 27000입니다.
@@ -221,7 +221,7 @@ Apache Tomcat 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구�
 
 ### Liberty 프로파일 서버 팜에 설치
 {: #installing-on-liberty-profile-server-farm }
-Liberty 프로파일 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구성하려면 {{ site.data.keys.mf_server }}가 실행 중인 서버 팜의 각 노드에 대해 [Rational Common Licensing 라이브러리 설치](#installing-rational-common-licensing-libraries)에 설명된 모든 단계를 수행해야 합니다. 서버 팜에 대한 자세한 정보는 [서버 팜 토폴로지](../topologies/#server-farm-topology) 및 [서버 팜 설치](../appserver/#installing-a-server-farm)를 참조하십시오.
+Liberty 프로파일 서버 팜에서 {{ site.data.keys.mf_server }}의 연결을 구성하려면 {{ site.data.keys.mf_server }}가 실행 중인 서버 팜의 각 노드에 대해 [Rational Common Licensing 라이브러리 설치](#installing-rational-common-licensing-libraries)에 설명된 모든 단계를 수행해야 합니다. 서버 팜에 대한 자세한 정보는 [서버 팜 토폴로지](../prod-env/topologies/#server-farm-topology) 및 [서버 팜 설치](../prod-env/appserver/#installing-a-server-farm)를 참조하십시오.
 
 ## WebSphere Application Server에 설치된 {{ site.data.keys.mf_server }}와 Rational License Key Server의 연결
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-to-the-rational-license-key-server }
@@ -236,13 +236,13 @@ Liberty 프로파일 서버 팜에서 {{ site.data.keys.mf_server }}의 연결�
 
 1. Rational Common Licensing 라이브러리용 공유 라이브러리를 정의하십시오. 이 라이브러리는 네이티브 코드를 사용하며 애플리케이션 서버 라이프사이클 동안 클래스 로더로 한 번만 로드할 수 있습니다. 이러한 이유로, 이 라이브러리는 공유 라이브러리로 선언되며 {{ site.data.keys.mf_server }} 관리 서비스를 실행하는 모든 애플리케이션 서버와 연관됩니다. 이 라이브러리를 공유 라이브러리로 선언하는 이유에 대한 자세한 정보는 [공유 라이브러리에서 기본 라이브러리 구성](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tcws_sharedlib_nativelib.html?view=kc)을 참조하십시오.
     * Rational Common Licensing 기본 라이브러리를 선택하십시오. 사용하는 운영 체제와 WebSphere Application Server가 실행 중인 JRE(Java Runtime Environment)의 비트 버전에 따라 **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file**에서 올바른 기본 라이브러리를 선택해야 합니다.
-    
+
         예를 들어, 64비트 JRE가 설치된 Linux x86의 경우, 라이브러리는 **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so**에 있습니다.
-    
+
         독립형 WebSphere Application Server 또는 WebSphere Application Server Network Deployment 설치의 JRE(Java Runtime Environment) 비트 버전을 판별하려면 **bin** 디렉토리에서 **versionInfo.bat**(Windows의 경우) 또는 **versionInfo.sh**(UNIX의 경우)를 실행하십시오. **versionInfo.sh** 파일은 **/opt/IBM/WebSphere/AppServer/bin**에 있습니다. **설치된 제품** 섹션의 아키텍처 값을 확인하십시오. 아키텍처 값에 명시적으로 표시되어 있거나 64 또는 _64라는 접미부가 있는 경우 JRE(Java Runtime Environment)는 64비트입니다.
     * 사용하는 플랫폼에 해당하는 기본 라이브러리를 운영 체제의 폴더에 배치하십시오. 예를 들면, **/opt/IBM/RCL_Native_Library/**입니다.
     * **rcl_ibmratl.jar** 파일을 **/opt/IBM/RCL_Native_Library/**로 복사하십시오. **rcl_ibmratl.jar** 파일은 **product_install_dir/MobileFirstServer/tokenLibs** 디렉토리에 있는 Rational Common Licensing Java 라이브러리입니다.
-    
+
         > **중요:** 애플리케이션 서버의 JVM(Java Virtual Machine)은 복사된 기본 및 Java 라이브러리에 대해 읽기 및 실행 권한이 필요합니다. 또한 사용하는 운영 체제에서 최소한 애플리케이션 서버 프로세스 동안 복사된 두 파일을 모두 읽고 실행할 수 있어야 합니다.    
     * WebSphere Application Server 관리 콘솔에서 공유 라이브러리를 선언하십시오.
         * WebSphere Application Server 관리 콘솔에 로그인하십시오.
@@ -252,10 +252,10 @@ Liberty 프로파일 서버 팜에서 {{ site.data.keys.mf_server }}의 연결�
         * 이름 필드에 라이브러리의 이름을 입력하십시오. 예: "RCL Shared Library".
         * 클래스 경로 필드에 **rcl_ibmratl.jar** 파일의 경로를 입력하십시오. 예: **/opt/IBM/RCL_Native_Library/rcl_ibmratl.jar**.
         * **확인**을 클릭하여 변경사항을 저장하십시오. 이 설정은 서버가 다시 시작될 때 적용됩니다.
-    
+
         > **참고:** 이 라이브러리의 기본 라이브러리 경로는 3단계에서 서버의 JVM(Java Virtual Machine)의 **ld.library.path** 특성에 설정됩니다.
     * {{ site.data.keys.mf_server }} 관리 서비스를 실행하는 모든 서버와 공유 라이브러리를 연관시키십시오.
-    
+
         서버에 공유 라이브러리를 연관시키면 여러 애플리케이션에서 공유 라이브러리를 사용할 수 있습니다. {{ site.data.keys.mf_server }} 관리 서비스에만 Rational Common Licensing 클라이언트가 필요한 경우, 격리된 클래스 로더를 사용하여 공유 라이브러리를 작성하고 관리 서비스 애플리케이션과 연관시킬 수 있습니다.
 
         다음 지시사항에 따라 라이브러리를 서버와 연관시킬 수 있습니다. WebSphere Application Server Network Deployment의 경우, {{ site.data.keys.mf_server }} 관리 서비스를 실행하는 모든 서버에 대해 이 지시사항을 완료해야 합니다.    
@@ -308,11 +308,11 @@ WebSphere Application Server Network Deployment의 각 노드에 Rational Common
 
 다음 표에서는 토큰 라이센싱이 사용되는 {{ site.data.keys.mf_server }}를 지원하는 플랫폼에 대해 설명합니다.
 
-| 운영 체제             | 운영 체제 버전 |	하드웨어 아키텍처 |
+|운영 체제             |운영 체제 버전 |	하드웨어 아키텍처 |
 |------------------------------|--------------------------|-----------------------|
-| AIX                          | 7.1                      |	POWER8(64비트 전용) |
-| SUSE Linux Enterprise Server | 11	                      | x86-64 전용           |
-| Windows Server               | 2012	                  | x86-64 전용           |
+|AIX                          |7.1                      |	POWER8(64비트 전용) |
+|SUSE Linux Enterprise Server |11	                      |x86-64 전용           |
+|Windows Server               |2012	                  |x86-64 전용           |
 
 토큰 라이센싱은 32비트 JRE(Java Runtime Environment)를 지원하지 않습니다. 애플리케이션 서버가 64비트 JRE를 사용하는지 확인하십시오.
 
@@ -444,5 +444,3 @@ Rational License Key Server의 남은 토큰 라이센스 수가 새 {{ site.dat
 
 * **rcl_ibmratl.jar** Java 라이브러리에 적절한 권한이 없습니다. 이 오류 후에 다음 예외가 발생할 수 있습니다. java.util.zip.ZipException: zip 파일을 여는 중에 오류 발생. **rcl_ibmratl.jar** 파일에 WebSphere Application Server를 설치하는 사용자를 위한 읽기 권한이 있는지 확인하십시오.
 * 다른 예외가 없는 경우, 공유 라이브러리의 클래스 경로에서 참조되는 **rcl_ibmratl.jar** 파일이 올바르지 않거나 존재하지 않을 가능성이 있습니다. **rcl_ibmratl.jar** 파일이 올바른지 또는 정의된 경로에 있는지 확인하십시오.
-
-

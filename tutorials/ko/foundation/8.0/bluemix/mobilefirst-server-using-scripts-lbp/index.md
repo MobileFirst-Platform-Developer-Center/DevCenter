@@ -19,7 +19,7 @@ weight: 3
 **참고:**  
 
 * Windows OS는 현재 이와 같은 스크립트 실행에 지원되지 않습니다.  
-* IBM Cloud에 배치하는 데 {{ site.data.keys.mf_server }} 구성 도구를 사용할 수 없습니다. 
+* IBM Cloud에 배치하는 데 {{ site.data.keys.mf_server }} 구성 도구를 사용할 수 없습니다.
 
 #### 다음으로 이동:
 {: #jump-to }
@@ -41,14 +41,14 @@ IBM Cloud에 로그인하면 활성 IBM Cloud **영역**의 개요를 제공하�
 
 ## 호스트 시스템 설정
 {: #set-up-your-host-machine }
-IBM Cloud Cloud Foundry 앱을 관리하려면 Cloud Foundry CLI를 설치해야 합니다.   
+IBM Cloud Cloud Foundry 앱을 관리하려면 Cloud Foundry CLI를 설치해야 합니다.  
 macOS Terminal.app 또는 Linux bash 쉘을 사용하여 스크립트를 실행할 수 있습니다.
 
 [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195)를 설치하십시오.
 
 ## {{ site.data.keys.mf_bm_pkg_name }} 아카이브 다운로드
 {: #download-the-ibm-mfpf-container-8000-archive}
-Liberty on Java에서 {{ site.data.keys.product }}을 설정하려면 나중에 IBM Cloud에 푸시할 파일 레이아웃을 먼저 작성해야 합니다.   
+Liberty on Java에서 {{ site.data.keys.product }}을 설정하려면 나중에 IBM Cloud에 푸시할 파일 레이아웃을 먼저 작성해야 합니다.  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">이 페이지의 지시사항을 수행하여</a> IBM Containers의 {{ site.data.keys.mf_server }} 8.0 아카이브(.zip 파일, *CNBL0EN* 검색)를 다운로드하십시오.
 
 아카이브 파일에는 파일 레이아웃을 빌드하는 데 필요한 파일(**dependencies**, **mfpf-libs**), {{ site.data.keys.mf_analytics }} Container를 빌드하고 배치하는 데 필요한 파일(**mfpf-analytics**), {{ site.data.keys.mf_server }} Cloud Foundry 앱을 구성하는 데 필요한 파일(**mfpf-server-libertyapp**)이 들어 있습니다.
@@ -250,7 +250,7 @@ prepareappcenter.sh --name APP_NAME
 </div>
 {{ site.data.keys.mf_app_center }} 콘솔을 실행하려면 URL `http://APP_HOST.mybluemix.net/appcenterconsole` 을 로드하십시오. 실행하는 데 몇 분 정도 걸릴 수 있습니다.   
 
-IBM Cloud에서 {{ site.data.keys.mf_app_center }}가 실행되면 이제 모바일 앱을 Application Center로 업로드할 수 있습니다. 
+IBM Cloud에서 {{ site.data.keys.mf_app_center }}가 실행되면 이제 모바일 앱을 Application Center로 업로드할 수 있습니다.
 
 
 ### {{ site.data.keys.mf_server }}
@@ -387,7 +387,7 @@ prepareserver.sh --name APP_NAME
 `http://APP_HOST.mybluemix.net/mfpconsole` URL을 로드하여 {{ site.data.keys.mf_console }}을 실행하십시오. 실행하는 데 몇 분 정도 걸릴 수 있습니다.  
 [{{ site.data.keys.mf_cli }}를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 학습서의 지시사항을 수행하여 원격 서버를 추가하십시오.  
 
-IBM Cloud에서 {{ site.data.keys.mf_server }}가 실행되면 애플리케이션 개발을 시작할 수 있습니다. 
+IBM Cloud에서 {{ site.data.keys.mf_server }}가 실행되면 애플리케이션 개발을 시작할 수 있습니다.
 
 #### 변경사항 적용
 {: #applying-changes }
@@ -416,7 +416,7 @@ Analytics Server를 설정했으며 이를 이 {{ site.data.keys.mf_server }}에
 ## {{ site.data.keys.mf_server }} 수정사항 적용
 {: #applying-mobilefirst-server-fixes }
 
-[IBM Fix Central](http://www.ibm.com/support/fixcentral)에서 {{ site.data.keys.mf_server }}on IBM Cloud에 대한 임시 수정사항을 얻을 수 있습니다.   
+[IBM Fix Central](http://www.ibm.com/support/fixcentral)에서 {{ site.data.keys.mf_server }}on IBM Cloud에 대한 임시 수정사항을 얻을 수 있습니다.  
 임시 수정사항을 적용하기 전에 기존 구성 파일을 백업하십시오. 구성 파일은 다음 폴더에 있습니다.
 * {{ site.data.keys.mf_analytics }}:  **package_root/mfpf-analytics/usr**
 * {{ site.data.keys.mf_server }} Liberty Cloud Foundry 애플리케이션: **package_root/mfpf-server-libertyapp/usr**
@@ -432,7 +432,7 @@ Analytics Server를 설정했으며 이를 이 {{ site.data.keys.mf_server }}에
 ```
     이제 업데이트된 서버를 빌드하고 배치할 수 있습니다. 동일한 인수 세트를 사용해서 다음 스크립트를 다시 실행하십시오.
 
-    a. 업데이트된 아티팩트를 IBM Cloud로 업로드하려면 `./prepareserver.sh`를 실행하십시오. 
+    a. 업데이트된 아티팩트를 IBM Cloud로 업로드하려면 `./prepareserver.sh`를 실행하십시오.
 
     b. 업데이트된 서버를 시작하려면 `./startserver.sh`를 실행하십시오.
 
@@ -444,11 +444,11 @@ Analytics Server를 설정했으며 이를 이 {{ site.data.keys.mf_server }}에
 {: #removing-the-database-service-configuration-from-ibmcloud }
 {{ site.data.keys.mf_server }} 이미지 구성 중에 **prepareserverdbs.sh** 스크립트를 실행한 경우 {{ site.data.keys.mf_server }}에 필요한 구성과 데이터베이스 테이블이 작성됩니다. 이 스크립트는 {{ site.data.keys.mf_server }}의 데이터베이스 스키마도 작성합니다.
 
-IBM Cloud에서 데이터베이스 서비스 구성을 제거하려면 IBM Cloud 대시보드를 사용하여 다음 프로시저를 수행하십시오. 
+IBM Cloud에서 데이터베이스 서비스 구성을 제거하려면 IBM Cloud 대시보드를 사용하여 다음 프로시저를 수행하십시오.
 
 1. IBM Cloud 대시보드에서 사용한 dashDB 서비스를 선택하십시오. **prepareserverdbs.sh** 스크립트를 실행하는 동안 매개변수로 제공한 dashDB 서비스 이름을 선택하십시오.
 2. dashDB 콘솔을 실행하여 선택한 dashDB 서비스 인스턴스의 스키마와 데이터베이스 오브젝트에 대한 작업을 수행하십시오.
 3. IBM {{ site.data.keys.mf_server }} 구성과 관련된 스키마를 선택하십시오. 스키마 이름은 **prepareserverdbs.sh** 스크립트를 실행하는 동안 매개변수로 제공한 이름입니다.
-4. 스키마 이름과 그 아래의 오브젝트를 신중히 검사한 후 각 스키마를 삭제하십시오. IBM Cloud에서 데이터베이스 구성이 제거됩니다. 
+4. 스키마 이름과 그 아래의 오브젝트를 신중히 검사한 후 각 스키마를 삭제하십시오. IBM Cloud에서 데이터베이스 구성이 제거됩니다.
 
-마찬가지로 {{ site.data.keys.mf_app_center }} 구성 중에 **prepareappcenterdbs.sh**를 실행한 경우에도 위 단계에 따라 IBM Cloud에서 데이터베이스 서비스 구성을 제거하십시오. 
+마찬가지로 {{ site.data.keys.mf_app_center }} 구성 중에 **prepareappcenterdbs.sh**를 실행한 경우에도 위 단계에 따라 IBM Cloud에서 데이터베이스 서비스 구성을 제거하십시오.
