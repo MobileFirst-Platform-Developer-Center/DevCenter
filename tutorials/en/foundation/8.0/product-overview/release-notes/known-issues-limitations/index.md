@@ -279,3 +279,5 @@ During the configuration of **mfpclient.properties** for your native Android app
 {:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
 Modifying the default behaviour of a Cordova app (such as overriding the back button behavior) when the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, can lead to the app being rejected by Google Play Store when submitted.
 For other failures with submission to Google Play Store, you can contact Google support.
+
+### If you are using MobileFirst 8.0 iFix release version Jan 2018 and later,it is recommended to update both server and client to same or later versions .
