@@ -97,13 +97,13 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 
 이 학습서에서 제공된 샘플은 세 개의 서로 다른 매시업 유형을 사용하여 이 시나리오의 구현을 보여줍니다.  
 각 매시업 유형에서 어댑터의 이름은 약간 다릅니다.  
-다음은 매시업 유형 및 해당 어댑터 이름의 목록 입니다.
+다음은 매시업 유형 및 해당 어댑터 이름의 목록입니다.
 
-| 시나리오                                         |      SQL 어댑터 이름        |  HTTP 어댑터 이름    |  
+| 시나리오                                         |       SQL 어댑터 이름        |    HTTP 어댑터 이름   |  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** 어댑터 → **JavaScript** 어댑터  | SQLAdapterJS                 | HTTPAdapterJS         |  
-| **Java** 어댑터 → **JavaScript** 어댑터        | SQLAdapterJava               | HTTPAdapterJS         |  
-| **Java** 어댑터 → **Java** 어댑터              | SQLAdapterJava               | HTTPAdapterJava       |
+| **JavaScript** 어댑터 → **JavaScript** 어댑터    | SQLAdapterJS                 | HTTPAdapterJS         |  
+| **Java** 어댑터 → **JavaScript** 어댑터          | SQLAdapterJava               | HTTPAdapterJS         |  
+| **Java** 어댑터 → **Java** 어댑터                | SQLAdapterJava               | HTTPAdapterJava       |
 
 
 ### 매시업 샘플 플로우
