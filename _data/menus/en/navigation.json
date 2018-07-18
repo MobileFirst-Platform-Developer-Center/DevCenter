@@ -23,7 +23,10 @@
         "children": [{
             "name": "Cordova",
             "path": "/foundation/8.0/cordova-tutorials"
-          }
+          },{
+              "name": "Ionic",
+              "path": "/foundation/8.0/ionic-tutorials"
+            }
     ]}, {
         "name": "Cross-platform",
         "path": "",
@@ -41,43 +44,6 @@
 ]}, {
     "name": "Blog",
     "path": "/blog"
-}, {
-    "name": "Labs",
-    "path": "/labs",
-    "children": [{
-        "name": "Developers",
-        "path": "",
-        "children": [{
-            "name": "Foundation 8.0 Labs",
-            "path": "/developers/8.0/intro"
-        }, {
-            "name": "Foundation 7.1 Labs",
-            "path": "/developers/7.1/setup"
-        }, {
-            "name": "Foundation 7.0 Labs",
-            "path": "/developers/7.0/setup"
-        }]
-    }, {
-        "name": "Administrators",
-        "path": "",
-        "children": [{
-            "name": "Foundation 7.1 Labs",
-            "path": "/administrators/7.1/intro"
-        }]
-    }]
-}, {
-    "name": "Downloads",
-    "path": "/downloads",
-    "extraClasses": "hidden-xs hidden-sm hidden-md"
-}, {
-    "name": "Webinars",
-    "path": "/webinars",
-}, {
-    "name": "Video Gallery",
-    "path": "/video-gallery"
-}, {
-    "name": "Help",
-    "path": "/help"
 }, {
     "name": "Docs",
     "path": "/tutorials/en",
@@ -130,4 +96,41 @@
         "name": "Learn More",
         "path": "../../../learn-more"
     }]
+}, {
+    "name": "Labs",
+    "path": "/labs",
+    "children": [{
+        "name": "Developers",
+        "path": "",
+        "children": [{
+            "name": "Foundation 8.0 Labs",
+            "path": "/developers/8.0/intro"
+        }, {
+            "name": "Foundation 7.1 Labs",
+            "path": "/developers/7.1/setup"
+        }, {
+            "name": "Foundation 7.0 Labs",
+            "path": "/developers/7.0/setup"
+        }]
+    }, {
+        "name": "Administrators",
+        "path": "",
+        "children": [{
+            "name": "Foundation 7.1 Labs",
+            "path": "/administrators/7.1/intro"
+        }]
+    }]
+}, {
+    "name": "Downloads",
+    "path": "/downloads",
+    "extraClasses": "hidden-xs hidden-sm hidden-md"
+}, {
+    "name": "Webinars",
+    "path": "/webinars",
+}, {
+    "name": "Video Gallery",
+    "path": "/video-gallery"
+}, {
+    "name": "Help",
+    "path": "/help"
 }]
