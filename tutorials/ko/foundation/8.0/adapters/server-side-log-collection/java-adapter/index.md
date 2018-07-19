@@ -41,7 +41,7 @@ logger.warning("Logging warning message...");
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
 * 다음에서 클라우드 배치의 로그를 얻을 수 있습니다.
     * IBM Containers 또는 Liberty 빌드 팩, [IBM Containers 로그 및 추적 콜렉션](../../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/) 학습서를 참조하십시오.
-    * Mobile Foundation IBM Cloud 서비스, [Mobile Foundation 사용](../../../bluemix/using-mobile-foundation) 학습서에서 [서버 로그에 액세스](../../../bluemix/using-mobile-foundation/#accessing-server-logs) 절을 참조하십시오. 
+    * Mobile Foundation IBM Cloud 서비스, [Mobile Foundation 사용](../../../bluemix/using-mobile-foundation) 학습서에서 [서버 로그에 액세스](../../../bluemix/using-mobile-foundation/#accessing-server-logs) 절을 참조하십시오.
 
 ## Analytics 서버로 로그 전달
 {: #forwarding-logs-to-the-analytics-server }

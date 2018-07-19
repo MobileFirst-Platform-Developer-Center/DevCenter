@@ -7,7 +7,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Para poder enviar notificaciones push o SMS a dispositivos iOS, Android o Windows, primero es necesario configurar a {{ site.data.keys.mf_server }} con los detalles de GCM para Android, un certificado APNS para iOS o credenciales WNS para Windows 8.1 Universal / Windows 10 UWP.
+Para poder enviar notificaciones push o SMS a dispositivos iOS, Android o Windows, primero es necesario configurar {{ site.data.keys.mf_server }} con los detalles de FCM para Android, un certificado APNS para iOS o credenciales WNS para Windows 8.1 Universal / Windows 10 UWP.
 Las notificaciones entonces se pueden enviar a: todos los dispositivos (difusión), dispositivos registrados a etiquetas específicas, un ID de dispositivo individual, ID de usuario, únicamente a dispositivos iOS, únicamente a dispositivos Android, únicamente a dispositivos Windows o en base al usuario autenticado.
 
 **Requisito previo**: Asegúrese de completar la guía de aprendizaje [Visión general de notificaciones](../).
@@ -15,7 +15,7 @@ Las notificaciones entonces se pueden enviar a: todos los dispositivos (difusió
 #### Ir a
 {: #jump-to }
 * [Configuración de notificaciones](#setting-up-notifications)
-    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
+    * [Firebase Cloud Messaging](#firebase-cloud-messaging)
     * [Servicio de notificaciones push de Apple](#apple-push-notifications-service)
     * [Servicio de notificaciones push de Windows](#windows-push-notifications-service)
     * [Servicio de notificación SMS](#sms-notification-service)
@@ -34,11 +34,11 @@ Las notificaciones entonces se pueden enviar a: todos los dispositivos (difusió
 La habilitación del soporte de notificaciones implica seguir varios pasos de configuración tanto en la aplicación de cliente como en {{ site.data.keys.mf_server }}.  
 Continúe la lectura para configurar el lado del servidor, o vaya a [Configuración del lado del cliente](#tutorials-to-follow-next).
 
-En el lado del servidor, la configuración necesaria incluye: la configuración del proveedor que se necesita (APNS, GCM o WNS) y la correlación del ámbito "push.mobileclient".
+En el lado del servidor, la configuración necesaria incluye: la configuración del proveedor que se necesita (APNS, FCM o WNS) y la correlación del ámbito "push.mobileclient".
 
-### Google Cloud Messaging / Firebase Cloud Messaging
-{: #google-cloud-messaging--firebase-cloud-messaging }
-> **Nota:** Google [anunció recientemente](https://firebase.google.com/support/faq/#gcm-fcm) el paso de GCM a FCM. Las siguientes instrucciones se han actualizado en consonancia a este último aspecto. Además tenga en cuenta que las configuraciones GCM existentes desplegadas continuarán funcionando, sin embargo, las nuevas configuraciones GCM no lo harán, siendo preciso utilizar FCM en su lugar.
+### Firebase Cloud Messaging
+{: #firebase-cloud-messaging }
+> **Nota:** Google ha [dejado de usar GCM](https://developers.google.com/cloud-messaging/faq) y ha integrado Cloud Messaging con Firebase. Si utiliza un proyecto de GCM, asegúrese de [migrar a FCM las aplicaciones cliente de GCM en Android](https://developers.google.com/cloud-messaging/android/android-migrate-fcm).
 
 Los dispositivos Android utilizan el servicio Firebase Cloud Messaging (FCM) para las notificaciones push.  
 Siga estos pasos para configurar FCM:
@@ -290,17 +290,17 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 {: #notification-payload }
 La solicitud puede contener las siguientes propiedades de carga útil:
 
-Propiedades de carga útil| Definición
+Propiedades de carga útil|Definición
 --- | ---
-message | Mensaje de alerta a enviar.
-settings | Los valores son los distintos atributos de la notificación.
-target | Conjunto de destinos: etiquetas, plataformas, dispositivos o ID de consumidor. Solo se puede especificar uno de los destinos.
-deviceIds | Matriz de los dispositivos representados por los identificadores de dispositivo. Los dispositivos con estos identificadores recibirán la notificación. Se trata de una notificación de difusión única.
-notificationType | Valor entero para indicar el canal (Push/SMS) utilizado para enviar el mensaje. Los valores permitidos son 1 (solo push), 2 (solo SMS) y 3 (push y SMS)
-platforms | Matriz de plataformas de dispositivo. Los dispositivos que se ejecuten en estas plataformas recibirán la notificación. Los valores soportados son (Apple/iOS), G (Google/Android) y M (Microsoft/Windows).
-tagNames | Matriz de etiquetas especificados como tagNames. Los dispositivos suscritos a estas etiquetas recibirán la notificación. Este tipo de destino se utiliza con notificaciones basadas en etiquetas.
-userIds | Matriz de usuarios representados por sus userIds para enviar la notificación. Se trata de una notificación de difusión única.
-phoneNumber | Número de teléfono utilizado para registrar el dispositivo y recibir notificaciones. Se trata de una notificación de difusión única.
+message |Mensaje de alerta a enviar.
+settings |Los valores son los distintos atributos de la notificación.
+target |Conjunto de destinos: etiquetas, plataformas, dispositivos o ID de consumidor. Solo se puede especificar uno de los destinos.
+deviceIds |Matriz de los dispositivos representados por los identificadores de dispositivo. Los dispositivos con estos identificadores recibirán la notificación. Se trata de una notificación de difusión única.
+notificationType |Valor entero para indicar el canal (Push/SMS) utilizado para enviar el mensaje. Los valores permitidos son 1 (solo push), 2 (solo SMS) y 3 (push y SMS)
+platforms |Matriz de plataformas de dispositivo. Los dispositivos que se ejecuten en estas plataformas recibirán la notificación. Los valores soportados son (Apple/iOS), G (Google/Android) y M (Microsoft/Windows).
+tagNames |Matriz de etiquetas especificados como tagNames. Los dispositivos suscritos a estas etiquetas recibirán la notificación. Este tipo de destino se utiliza con notificaciones basadas en etiquetas.
+userIds |Matriz de usuarios representados por sus userIds para enviar la notificación. Se trata de una notificación de difusión única.
+phoneNumber |Número de teléfono utilizado para registrar el dispositivo y recibir notificaciones. Se trata de una notificación de difusión única.
 
 **Ejemplo JSON de carga útil de notificaciones push**
 
@@ -397,7 +397,7 @@ En {{ site.data.keys.mf_console }} → **[su aplicación] → Push → Etiquetas
 
 ### Android
 {: #android }
-* Entre otras, sonido de notificación, tiempo que permanece almacenada una notificación en el almacenamiento GCM o carga útil personalizada.
+* Entre otras, sonido de notificación, tiempo que permanece almacenada una notificación en el almacenamiento FCM o carga útil personalizada.
 * Si desea cambiar el título de la notificación, añada `push_notification_tile` en el archivo **strings.xml** del proyecto.
 
 ### iOS

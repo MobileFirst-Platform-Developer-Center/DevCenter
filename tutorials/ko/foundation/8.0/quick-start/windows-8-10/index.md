@@ -107,7 +107,7 @@ try
 1. Visual Studio에서 **mfpclient.resw** 파일을 선택하고 **프로토콜**, **호스트** 및 **포트** 특성을 사용자의 {{ site.data.keys.mf_server }}에 대한 올바른 값으로 편집하십시오.
     * 로컬 {{ site.data.keys.mf_server }}를 사용 중인 경우, 일반적으로 값은 **http**, **localhost** 및 **9080**입니다.
     * 원격 {{ site.data.keys.mf_server }}를 사용 중인 경우(IBM Cloud에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다.
-    * IBM Cloud Private에서 Kubernetes 클러스터를 사용 중이고 배치 유형이 **NodePort**이면, 포트 값이 일반적으로 Kubernetes 클러스터의 서비스에서 공개하는 **NodePort**입니다. 
+    * IBM Cloud Private에서 Kubernetes 클러스터를 사용 중이고 배치 유형이 **NodePort**이면, 포트 값이 일반적으로 Kubernetes 클러스터의 서비스에서 공개하는 **NodePort**입니다.
 
     또는, {{ site.data.keys.mf_cli }}를 설치한 경우에는 프로젝트 루트 폴더로 이동해서 `mfpdev app register` 명령을 실행하십시오. 원격 {{ site.data.keys.mf_server }}가 사용된 경우, [`mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 명령을 실행하여 서버를 추가하고, 예를 들면 `mfpdev app register myIBMCloudServer`를 이어서 실행하십시오.
     

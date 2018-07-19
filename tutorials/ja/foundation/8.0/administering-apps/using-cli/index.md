@@ -98,16 +98,16 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 | オプション	| タイプ | 説明 | 必須 | デフォルト |
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | 管理サービスの {{ site.data.keys.product_adj }} Web アプリケーションのベース URL | はい | |
-| --secure	 | ブール値 | セキュリティー・リスクをともなう操作を回避するかどうか | いいえ | true |
-| --user	 | 名前 | {{ site.data.keys.product_adj }} 管理サービスにアクセスするためのユーザー名 | はい |  | 	 
-| --passwordfile | ファイル| ユーザーのパスワードを含むファイル | いいえ |
-| --timeout	     | 数値  | REST サービス・アクセス全体のタイムアウト (秒単位) | いいえ | 	 
-| --connect-timeout | 数値 | ネットワーク接続確立のタイムアウト (秒単位) | いいえ |
-| --socket-timeout  | 数値 | ネットワーク接続の損失検出のタイムアウト (秒単位) | いいえ |
-| --connection-request-timeout | 数値	接続要求プールからのエントリー取得のタイムアウト (秒単位) | いいえ |
-| --lock-timeout | 数値 | ロック取得のタイムアウト (秒単位) | いいえ | 2 |
-| --verbose	     | 詳細出力 | いいえ	| |  
+| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | |
+| --secure	 | Boolean | Whether to avoid operations with security risks | No | true |
+| --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
+| --passwordfile | file | File containing the password for the user | No |
+| --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
+| --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
+| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No |
+| --connection-request-timeout | Number	Timeout for obtaining an entry from a connection request pool, in seconds | No |
+| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 |
+| --verbose	     | Detailed output | No	| |  
 
 **url**  
 URL には、HTTPS プロトコルを使用することを推奨します。 例えば、デフォルト・ポートとコンテキスト・ルートを使用する場合、次の URL を使用します。
@@ -259,8 +259,8 @@ rlwrap が使用できない環境または不要の環境では、オプショ�
 
 | オプション	| 説明 |
 |-----------|-------------|
-| --help	| 使い方のヘルプを表示します |
-| --version	| バージョンを表示します |
+| --help	| Shows some usage help |
+| --version	| Shows the version |
 
 #### XML 形式
 {: #xml-format }
@@ -292,7 +292,7 @@ mfpadm プログラムより生成される通常の出力は、現行のロケ�
 
 | 引数 | 説明 |
 |----------|-------------|
-| --xml    | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml    | Produces XML output instead of tabular output. |
 
 **例**  
 
@@ -319,7 +319,7 @@ show global-config
 
 | 引数 | 説明 | 必須 | デフォルト |
 |----------|-------------|----------|---------|
-| --xml | JSON 形式の代わりに XML 形式で出力を生成します。 | いいえ | 標準出力 |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **例**  
 
@@ -341,7 +341,7 @@ show user-config mfp
 | 属性 | 説明 |
 |-----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| file | 新しい構成を含む JSON または XML ファイルの名前。 |
+| ファイル | 新しい構成を含む JSON または XML ファイルの名前。 |
 
 単一プロパティーの場合の構文: `set user-config [runtime-name] property = value`
 
@@ -382,7 +382,7 @@ set user-config mfp timeout = 240
 
 | 引数 | 説明 | 必須 | デフォルト |
 |----------|-------------|----------|---------|
-| --xml | JSON 形式の代わりに XML 形式で出力を生成します。 | いいえ | 標準出力 |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **例**
 
@@ -459,7 +459,7 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produce XML output instead of tabular output. |
 
 **例**  
 
@@ -481,7 +481,7 @@ list adapters mfp
 | 引数 | 説明 |
 |----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| file | バイナリー・アダプター・ファイル (.adapter) |
+| ファイル | バイナリー・アダプター・ファイル (.adapter) |
 
 **例**
 
@@ -509,7 +509,7 @@ deploy adapter mfp MyAdapter.adapter
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produce XML output instead of tabular output. |
 
 **例**
 
@@ -583,7 +583,7 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | JSON 形式の代わりに XML 形式で出力を生成します。 |
+| --xml | Produces output in XML format instead of JSON format. |
 
 **例**
 
@@ -604,7 +604,7 @@ adapter mfp MyAdapter show user-config
 
 | オプション | 説明 |
 |--------|-------------|
-| file | 新しい構成を含む JSON または XML ファイルの名前。 |
+| ファイル | 新しい構成を含む JSON または XML ファイルの名前。 |
 
 単一プロパティーの場合の構文: `adapter [runtime-name] adapter-name set user-config property = value`
 
@@ -647,7 +647,7 @@ adapter mfp MyAdapter set user-config timeout = 240
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produce XML output instead of tabular output. |
 
 **例**
 
@@ -668,7 +668,7 @@ list apps mfp
 | 引数 | 説明 |
 |----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| file | アプリケーション記述子、JSON ファイル。 |
+| ファイル | アプリケーション記述子、JSON ファイル。 |
 
 **例**
 
@@ -695,7 +695,7 @@ deploy app mfp MyApp/application-descriptor.json
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml	 | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml	 | Produce XML output instead of tabular output. |
 
 **例**
 
@@ -745,7 +745,7 @@ delete app mfp MyApp
 
 | 引数 | 説明 |
 | ---------|-------------|
-| -- xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| -- xml | Produces XML output instead of tabular output. |
 
 **例**
 
@@ -797,7 +797,7 @@ delete app version mfp MyApp iPhone 1.1
 
 | 引数 | 説明 |
 |----------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **例**
 
@@ -941,7 +941,7 @@ app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity
 
 | 引数 | 説明 |
 |----------|-------------|
-| file | 入力ファイルの名前。以下のいずれかです。<ul><li>.authenticity_data ファイルまたは</li><li>認証データの抽出元である装置ファイル (.ipa、.apk、または .appx)</li></ul>|
+| ファイル | 入力ファイルの名前。以下のいずれかです。<ul><li>.authenticity_data ファイルまたは</li><li>認証データの抽出元である装置ファイル (.ipa、.apk、または .appx)</li></ul>|
 
 **例**
 
@@ -1003,7 +1003,7 @@ app version mfp MyApp iPhone 1.1 show user-config
 
 | 引数 | 説明 |
 |----------|-------------|
-| file | 新しい構成を含む JSON または XML ファイルの名前。 |
+| ファイル | 新しい構成を含む JSON または XML ファイルの名前。 |
 
 単一プロパティーの場合の構文: `app version [runtime-name] app-name environment version set user-config property = value`
 
@@ -1047,7 +1047,7 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **例**
 
@@ -1160,7 +1160,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **例**
 
@@ -1182,7 +1182,7 @@ show info
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **例**
 
@@ -1200,7 +1200,7 @@ show versions
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **例**
 
@@ -1228,8 +1228,8 @@ unlock
 
 | オプション | 説明 |
 |--------|-------------|
-| --in-database	| MBeans 経由の代わりにデータベースを検索するかどうか。 |
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --in-database	| Whether to look in the database instead of via MBeans |
+| --xml | Produces XML output instead of tabular output. |
 
 **例**
 
@@ -1259,7 +1259,7 @@ list runtimes --in-database
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produces XML output instead of tabular output. |
 
 このコマンドは、[Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST サービスに基づいています。
 
@@ -1306,7 +1306,7 @@ delete runtime mfp empty
 
 | オプション | 説明 |
 |--------|-------------|
-| --xml | 表形式の出力の代わりに、XML 出力を生成します。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **例**
 
@@ -1333,7 +1333,7 @@ list farm-members mfp
 
 | オプション | 説明 |
 |--------|-------------|
-| --force | ファーム・メンバーが使用可能の場合、または接続されている場合でも、ファーム・メンバーの削除を強制します。 |
+| --force | Force removal of a farm member, even if it is available and connected. |
 
 **例**
 
