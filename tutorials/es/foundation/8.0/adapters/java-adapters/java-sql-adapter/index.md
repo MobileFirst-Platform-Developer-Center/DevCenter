@@ -37,8 +37,7 @@ Esta guía de aprendizaje cubre un ejemplo de un adaptador de Java que se conect
 Para poder configurar {{ site.data.keys.mf_server }} de forma que se pueda conectar al servidor MySQL, se debe configurar el archivo XML de adaptador con las **propiedades de configuración**.
 Estas propiedades se puede editar más tarde a través de {{ site.data.keys.mf_console }}.
 
-Edite el archivo adater.xml y añada las siguientes propiedades:
-
+Edite el archivo adapter.xml y añada las siguientes propiedades:
 
 ```xml
 <mfp:adapter name="JavaSQL"

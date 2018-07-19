@@ -42,7 +42,7 @@ weight: 2
 ## 보안 검사 정의
 {: #defining-a-security-check }
 
-[Java 또는 JavaScript 어댑터를 작성](../../adapters/creating-adapters/)하거나 기존 어댑터를 사용하십시오. 
+[Java 또는 JavaScript 어댑터를 작성](../../adapters/creating-adapters/)하거나 기존 어댑터를 사용하십시오.
 
 > Java 어댑터를 작성할 때 기본 템플리트는 어댑터가 **자원**을 제공한다고 가정합니다. 동일한 어댑터에 보안 검사와 자원을 번들할 것인지 아니면 별도 어댑터로 분리할 것인지는 개발자의 선택입니다.
 

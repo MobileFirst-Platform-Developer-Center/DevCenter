@@ -79,7 +79,7 @@ weight: 1
     keytool -genkey -alias backend -keyalg RSA -validity 365 -keystore backend.keystore -storetype JKS
     ```
 
-    > **注:** **「ファーストネームおよびラストネーム (First and Last Name)」** フィールドには、**adapter.xml** で使用するサーバー URL が含まれます (**mydomain.com** または **localhost** など)。
+    **注:** **「ファーストネームおよびラストネーム (First and Last Name)」** フィールドには、**adapter.xml** で使用するサーバー URL が含まれます (**mydomain.com** または **localhost** など)。
 
 2. 鍵ストアと連携して動作するようにバックエンド・サーバーを構成します。 例えば、Apache Tomcat では、**server.xml** ファイルを次のように変更します。
 

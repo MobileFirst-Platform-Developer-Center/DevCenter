@@ -21,6 +21,7 @@ In this article we explain how to replicate an existing Mobile Foundation server
 * [Using direct REST end points](#using-direct-rest-end-points)
 
 ## Using Mobile Foundation Operations Console
+{: #using-mobilefirst-console}
 Through Mobile Foundation Operations Console, only two types of artifacts can be exported. Currently Mobile Foundation Operations Console support, export at application version level and at adapter level.
 
 ![export-application]({{site.baseurl}}/assets/blog/2016-07-25-how-to-replicate-mobilefirst-environment/export_application.jpg "Export application version")
@@ -53,6 +54,7 @@ http://localhost:9080/worklightadmin/management-apis/2.0/runtimes/mfp/export?res
 ```
 
 ## Using direct REST end points
+{: #using-direct-rest-end-points}
 There are many export REST endpoints are provided in new version, where user can use required endpoint to export set of artifacts
 You can use following curl command to export all artifacts:
 
@@ -115,6 +117,7 @@ Once you have zipped file containing artifacts ready, you can import this zip fi
 
 
 ## Importing artifacts from Mobile Foundation Operations console
+{: #importing-artifacts-from-mobilefirst-console}
 Currently there are only two options are available i.e. application and adapter.
 
 ![import_application_adapter]({{site.baseurl}}/assets/blog/2016-07-25-how-to-replicate-mobilefirst-environment/import_application_adapter.jpg "Import application and adapter")
@@ -142,4 +145,3 @@ curl -X POST -u admin:admin -F file=@/testuser/export_applications_adf_ios_2.zip
 [IBM Mobile Foundation On-prem](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/)
 
 [MobileFirst REST API Overview](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html).
-

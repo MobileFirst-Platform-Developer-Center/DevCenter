@@ -14,7 +14,8 @@ layout: default
                         <span class="blogcontent"><a href="{{site.baseurl}}/search/?author={{ author | replace: ' ', '%20' }}">{{ author }}</a></span>{% if forloop.last == false %},{% endif %}
                     {% endfor %}
 
-                    <small><span class="blogcontent">{{ page.date | date: '%B %d, %Y' }}</span></small>
+                    <!--<small><span class="blogcontent">{{ page.date | date: '%B %d, %Y' }}</span></small>-->
+                    <small><span class="blogcontent">{{ page.last-modified-date | date: '%B %d, %Y' }}</span></small>
                     <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
                 </h4>
 
