@@ -21,7 +21,7 @@ If you're a React Native developer, you can now exploit all the capabilities of 
 * Integration with backend systems by means of Mobile Foundation adapters
 * Out of the box and custom security framework through out of the box security checks and security check adapters.
 * Application management - remotely enable /disable your app versions 
-* Device blacklisting - Black list individual rogue or stolen devices from the Mobile Foundation console 
+* Device blacklisting - Blacklist individual rogue or stolen devices from the Mobile Foundation console 
 * Secure and protect your app and backend by using security features such as certificate pinning, application authenticity etc. 
 * Get out of the box analytics from user trends to backend performance
 
@@ -39,7 +39,7 @@ npm install react-native-ibm-mobilefirst --save
 ```
 
 
-Watch this video below to see an end to end demonstration of React Native + Mobile Foundation. 
+Watch the video below to see an end to end demonstration of React Native + Mobile Foundation. 
 
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
