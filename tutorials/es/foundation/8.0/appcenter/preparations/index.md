@@ -190,20 +190,20 @@ Para personalizar características: varias características están controladas p
 
 Este archivo contiene las propiedades que se muestran en la tabla siguiente.
 
-| Propiedad | Descripción |
+|Propiedad |Descripción |
 |----------|-------------|
-| url | La dirección codificada del servidor de Application Center. Si se establece esta propiedad, no se mostrarán los campos de direcciones de la vista Inicio de sesión. |
-| defaultPort | Si la propiedad url es null, esta propiedad prerrellena el campo port de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo. |
-| defaultContext | Si la propiedad url es null, esta propiedad prerrellena el campo context de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo. |
-| ssl | El valor predeterminado del conmutador de SSL de la vista Inicio de sesión. |
-| allowDowngrade | Esta propiedad indica si la instalación de versiones anteriores está autorizada o no; sólo se puede instalar una versión anterior si el sistema operativo y la versión permiten la degradación. |
-| showPreviousVersions | Esta propiedad indica si el usuario del dispositivo puede mostrar los detalles de todas las versiones de las aplicaciones o sólo los detalles de la versión más reciente. |
-| showInternalVersion | Esta propiedad indica si la versión interna se muestra o no. Si el valor es false, la versión interna sólo se mostrará si no se ha establecido ninguna versión comercial. |
-| listItemRenderer | Esta propiedad puede tener uno de estos valores: <br/>- **full**: el valor predeterminado; las listas de aplicaciones muestran el nombre de aplicación, la valoración y la versión más reciente.<br/>- **simple**: la aplicación lista sólo el nombre de aplicación. |
-| listAverageRating | Esta propiedad puede tener uno de estos valores: <br/>-  **latestVersion**: las listas de aplicaciones muestran la valoración media de la versión más reciente de la aplicación.<br/>-  **allVersions**: las listas de aplicaciones muestran la valoración media de todas las versiones de la aplicación. |
-| requestTimeout | Esta propiedad indica el tiempo de espera en milisegundos para solicitudes en el servidor de Application Center. |
-| gcmProjectId | El ID de proyecto de la API de Google (nombre de proyecto = com.ibm.appcenter), necesario para las notificaciones push de Android; por ejemplo, 123456789012. |
-| allowAppLinkReview | Esta propiedad indica si las opiniones locales de aplicaciones desde almacenes de aplicaciones externos se pueden registrar y examinar en el Application Center. Estas opiniones locales no serán visibles en el almacén de aplicaciones externo. Estas opiniones se almacenarán en el servidor de Application Center. |
+|url |La dirección codificada del servidor de Application Center. Si se establece esta propiedad, no se mostrarán los campos de direcciones de la vista Inicio de sesión. |
+|defaultPort |Si la propiedad url es null, esta propiedad prerrellena el campo port de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo. |
+|defaultContext |Si la propiedad url es null, esta propiedad prerrellena el campo context de la vista Inicio de sesión de un teléfono. Este es un valor predeterminado; el usuario puede editar el campo. |
+|ssl |El valor predeterminado del conmutador de SSL de la vista Inicio de sesión. |
+|allowDowngrade |Esta propiedad indica si la instalación de versiones anteriores está autorizada o no; sólo se puede instalar una versión anterior si el sistema operativo y la versión permiten la degradación. |
+|showPreviousVersions |Esta propiedad indica si el usuario del dispositivo puede mostrar los detalles de todas las versiones de las aplicaciones o sólo los detalles de la versión más reciente. |
+|showInternalVersion |Esta propiedad indica si la versión interna se muestra o no. Si el valor es false, la versión interna sólo se mostrará si no se ha establecido ninguna versión comercial. |
+|listItemRenderer |Esta propiedad puede tener uno de estos valores: <br/>- **full**: el valor predeterminado; las listas de aplicaciones muestran el nombre de aplicación, la valoración y la versión más reciente.<br/>- **simple**: la aplicación lista sólo el nombre de aplicación. |
+|listAverageRating |Esta propiedad puede tener uno de estos valores: <br/>-  **latestVersion**: las listas de aplicaciones muestran la valoración media de la versión más reciente de la aplicación.<br/>-  **allVersions**: las listas de aplicaciones muestran la valoración media de todas las versiones de la aplicación. |
+|requestTimeout |Esta propiedad indica el tiempo de espera en milisegundos para solicitudes en el servidor de Application Center. |
+|gcmProjectId |El ID de proyecto de la API de Google (nombre de proyecto = com.ibm.appcenter), necesario para las notificaciones push de Android; por ejemplo, 123456789012. |
+|allowAppLinkReview |Esta propiedad indica si las opiniones locales de aplicaciones desde almacenes de aplicaciones externos se pueden registrar y examinar en el Application Center. Estas opiniones locales no serán visibles en el almacén de aplicaciones externo. Estas opiniones se almacenarán en el servidor de Application Center. |
 
 ### Otros recursos
 {: #other-resources }

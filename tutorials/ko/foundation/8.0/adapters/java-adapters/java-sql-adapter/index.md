@@ -33,7 +33,7 @@ Java 어댑터는 백엔드 시스템으로 연결에 대한 제어를 개발자
 
 MySQL 서버에 연결할 수 있도록 {{ site.data.keys.mf_server }}를 구성하려면 어댑터의 XML 파일이 **configuration properties**로 구성되어야 합니다. 이러한 특성은 {{ site.data.keys.mf_console }}을 통해 나중에 편집될 수 있습니다.
 
-adater.xml 파일을 편집하고 다음 특성을 추가하십시오.
+adapter.xml 파일을 편집하고 다음 특성을 추가하십시오.
 
 ```xml
 <mfp:adapter name="JavaSQL"
