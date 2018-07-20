@@ -7,19 +7,21 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
-{: #overview }
-The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are available through [Xamarin Component store](https://components.xamarin.com/) and which you can add to your Xamarin project.  
-The pods correspond to core functions and other functions:
+{: #overview 
+The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are packaged inside a NuGet package that can be added to your Xamarin project from [Nuget Package Manager](https://www.nuget.org/packages?q=mobilefirst) .
 
-* **MobileFirst.Xamarin** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **MobileFirst.JSONStore** - Contains the JSONStore framework.  
-* **MobileFirst.Push** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
+The packages correspond to core functions and other functions:
 
-In this tutorial you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Xamarin Component Store to a new or existing Xamarin Android or iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
+* **IBM.MobileFirstPlatformFoundation** - Contains MobileFirst client sdk libraries which implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions along with JSONStore framework .
+ 
+* **IBM.MobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
+
+In this tutorial you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using NuGet Package Manager to a new or existing Xamarin.Android or Xamarin.iOS application . You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
 
 **Prerequisites:**
 
-- Xamarin Studio installed on the developer workstation.  
+- Visual Studio 2017 installed on the developer workstation for macOS .
+- Visual Studio 2015 or Visual Studio 2017 community Version installed on the developer workstation for Windows OS . Make sure that you are not using Express edition of Visual Studio .If so it is recommended to update to a Community edition .  
 - A local or remote instance of {{ site.data.keys.mf_server }} is running.
 - Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/) and [Setting up your Xamarin development environment](../../../installation-configuration/development/xamarin/) tutorials.
 
@@ -42,21 +44,19 @@ Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existi
 
 ### Adding the SDK
 {: #adding-the-sdk }
-1. The {{ site.data.keys.product_adj }} Native SDK is provided via Xamarin Components Store.
-2. Expand the Android or iOS project.
-3. In the Android or iOS project, right-click **Components**.
-4. Select **Get More Components**. ![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
-5. Search for **IBM MobileFirst SDK**. Choose and do **Add to App**.
-![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
-6. Right-click **Packages** and select **Add packages** .Search for and add **Json.NET**. This pulls in the Newtonsoft dependency from Nuget. This needs to be done separately for both Android and iOS projects.
-7. Right-click **References** and select **Edit References**. Go to **.Net Assembly** tab and click 'Browse'. From the project folder's root go to `Components -> ibm-worklight-8.0.0.1 -> lib -> pcl`. Select **Worklight.Core.dll**.
+1. The {{ site.data.keys.product_adj }} Native SDK is provided via Nuget Gallery/Repository .
+2. To import MobileFirst packages, use the NuGet package manager. NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users. Right click on the Packages directory, select Add packages and in the search option, search for *IBM MobileFirst Platform*. Choose **IBM.MobileFirstPlatformFoundation**.
+![Adding sdk from nuget.org]({{site.baseurl}}/assets/xamarin-tutorials/add-package1.png)
+3. Click Add packages. This action installs the Mobile Foundation Native SDK and its dependencies. 
+![Adding sdk from nuget.org]({{site.baseurl}}/assets/xamarin-tutorials/add-package2.png)
+
 
 ### Registering the application
 {: #registering-the-application }
 1. Load the {{ site.data.keys.mf_console }}.
 2. Click the New button next to Applications to register a new application and follow the on-screen instructions.
 3. Android and iOS applications have to be registered separately. This ensures both the Android application and iOS application can connect successfully to the server. The registration details for Android and iOS applications can be found in the `AndroidManifest.xml` and `Info.plist` respectively.
-3. After the application is registered, navigate to the application's Configuration Files tab and copy or download the mfpclient.plist and mfpclient.properties file. Follow the onscreen instructions to add the file to your project.
+3. After the application is registered, navigate to the application's Configuration Files tab and copy or download the `mfpclient.plist` and `mfpclient.properties` file. Follow the onscreen instructions to add the file to your project.
 
 ### Completing the setup process
 {: #completing-the-setup-process }
@@ -94,7 +94,7 @@ using Worklight.Xamarin.Android;
 
 ## Updating the {{ site.data.keys.product_adj }} Native SDK
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, update the version of the SDK via the Xamarin Components store.
+To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, update the version of the SDK via the Nuget Gallery.
 
 ## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
 {: #generated-mobilefirst-native-sdk-artifacts }

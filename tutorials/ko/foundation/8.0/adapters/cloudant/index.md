@@ -10,7 +10,7 @@ weight: 9
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-Cloudant는 IBM Cloud 및 `cloudant.com`에서 DBaaS(Database-as-a-Service) 및 독립형 제품으로 사용할 수 있는 CouchDB를 기반으로 한 NoSQL 데이터베이스입니다. 
+Cloudant는 IBM Cloud 및 `cloudant.com`에서 DBaaS(Database-as-a-Service) 및 독립형 제품으로 사용할 수 있는 CouchDB를 기반으로 한 NoSQL 데이터베이스입니다.
 
 Cloudant 문서에서 설명된 바와 같이,
 > 문서는 JSON 오브젝트입니다. 문서는 데이터의 컨테이너이고 Cloudant 데이터베이스의 기초입니다.  
