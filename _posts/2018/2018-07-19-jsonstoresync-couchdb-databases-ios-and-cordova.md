@@ -43,7 +43,7 @@ A JSONStore collection can be initialized with a Sync Policy field. Sync Policy 
 
     _**IOS:**_
     ```
-    	openOptions.syncPolicy = SYNC_DOWNSTREAM;
+    openOptions.syncPolicy = SYNC_DOWNSTREAM;
     ```
 	
     _**Cordova**_:
@@ -99,7 +99,7 @@ collection.sync = {
 }
 ```
 
->**Note:** Details on deploying the adapter can be found <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/#deploy-syncadapter">here</a>
+>**Note:** Details on deploying the adapter can be found <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/#deploy-syncadapter">here</a>.
 
 ### Few points to consider before using this feature
 {: #take-note}
