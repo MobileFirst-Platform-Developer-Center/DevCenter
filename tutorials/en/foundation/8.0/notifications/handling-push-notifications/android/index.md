@@ -322,6 +322,7 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ```
 
 <img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
+
 ## Sample application
 {: #sample-application }
 
