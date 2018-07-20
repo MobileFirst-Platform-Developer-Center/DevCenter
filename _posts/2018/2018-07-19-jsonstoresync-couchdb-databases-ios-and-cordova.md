@@ -99,7 +99,7 @@ collection.sync = {
 }
 ```
 
->>Note: Details on deploying the adapter can be found <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/#deploy-syncadapter">here</a>
+>**Note:** Details on deploying the adapter can be found <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/#deploy-syncadapter">here</a>
 
 ### Few points to consider before using this feature
 {: #take-note}
@@ -118,12 +118,12 @@ This performs a downstream sync if the calling collection has a sync policy set 
 **Usage:**
 
 
-_**IOS**:
+_**IOS**_:
 ```
 collection.sync(); //Here collection is the JSONStore collection object that was initialized
 ```
 
-_**Cordova:**
+_**Cordova:**_
 ```
 WL.JSONStore.get(collectionName).sync();
 ```
