@@ -362,7 +362,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
 	
     apply plugin: 'com.google.gms.google-services'
     
-    Under the `buildscript` dependency add the following -
+    - Add the below dependency in the `buildscript` file -
     
     `classpath 'com.google.gms:google-services:3.0.0'`
 
