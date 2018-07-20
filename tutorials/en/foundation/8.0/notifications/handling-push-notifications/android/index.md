@@ -353,7 +353,6 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
     ```xml
     dependencies {
        ......
-       classpath 'com.google.gms:google-services:3.0.0'
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        compile 'com.firebase:firebase-client-android:2.5.0'
        .....
@@ -362,6 +361,10 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
     ```
 	
     apply plugin: 'com.google.gms.google-services'
+    
+    Under the `buildscript` dependency add the following -
+    
+    `classpath 'com.google.gms:google-services:3.0.0'`
 
  3. Configure the AndroidManifest file. Following changes are required in the `Android manifest.xml` 
 
