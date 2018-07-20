@@ -1,6 +1,6 @@
 ---
-title: Automated synchronization of JSONStore collections with CouchDB databases in IOS and Cordova
-date: 2018-07-10
+title: Automated synchronization of JSONStore collections with CouchDB databases in iOS and Cordova
+date: 2018-07-20
 tags:
 - Mobile_Foundation
 - JSONStore
@@ -13,8 +13,8 @@ author:
 ---
 MobileFirst JSONStore already allows you to write code to be able to pull and push data from/to an external data source, [see here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/jsonstore/#working-with-external-data).
 
-Starting with *iFix 8.0.0.0-MFPF-IF201802201451*, MobileFirst Android SDK can be used to automate the synchronization of data between a JSONStore collection on a device with any CouchDB database including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). All details regarding this can be found in this <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/">blog</a> .
-From the recent *version* of MFP 8.0, this automated sync is available is IOS and Cordova as well.
+Starting with *iFix 8.0.0.0-MFPF-IF201802201451*, MobileFirst Android SDK can be used to automate the synchronization of data between a JSONStore collection on a device with any CouchDB database including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). Details regarding this can be found in this <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/">post</a>.
+Starting from the recent *version* of MFP 8.0, this automated sync is available in iOS and Cordova SDK as well.
 
 
 
@@ -43,14 +43,14 @@ A JSONStore collection can be initialized with a Sync Policy field. Sync Policy 
 
     _**IOS:**_
     ```
-openOptions.syncPolicy = SYNC_DOWNSTREAM;
-	```
+    	openOptions.syncPolicy = SYNC_DOWNSTREAM;
+    ```
 	
-	_**Cordova**_:
-	```
-collection.sync = {
-	syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
-}
+    _**Cordova**_:
+    ```
+	collection.sync = {
+		syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
+	}
     ```
 
 
@@ -59,16 +59,16 @@ collection.sync = {
 
     **Usage:**
 
-      _**IOS:**_
+    _**IOS:**_
     ```
-openOptions.syncPolicy = SYNC_UPSTREAM;
-	```
+	openOptions.syncPolicy = SYNC_UPSTREAM;
+    ```
 	
-	_**Cordova**_:
-	```
-collection.sync = {
-	syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
-}
+    _**Cordova**_:
+    ```
+	collection.sync = {
+		syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
+	}
     ```
 
 
@@ -86,18 +86,18 @@ This is the adapter name that is deployed.
 
 **Usage:**
 
-   _**IOS:**_
-    ```
-openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
-	```
+_**IOS:**_
+```
+ openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
 	
 _**Cordova**_:
-	```
+```
 collection.sync = {
 	syncPolicy://One of the three sync policies,
 	syncAdapterPath : 'JSONStoreCloudantSync'
 }
-    ```
+```
 
 >>Note: Details on deploying the adapter can be found <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/#deploy-syncadapter">here</a>
 
@@ -118,8 +118,8 @@ This performs a downstream sync if the calling collection has a sync policy set 
 **Usage:**
 
 
- _**IOS**:
- ```
+_**IOS**:
+```
 collection.sync(); //Here collection is the JSONStore collection object that was initialized
 ```
 
