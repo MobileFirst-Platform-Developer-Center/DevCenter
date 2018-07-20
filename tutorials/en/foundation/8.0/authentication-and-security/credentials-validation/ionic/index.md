@@ -6,7 +6,7 @@ relevantTo: [ionic]
 weight: 1
 downloads:
   - name: Download Ionic project
-    url: https://github.ibm.com/MFPSamples/PincodeIonic
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PincodeIonic
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
@@ -155,7 +155,7 @@ someChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("the-securi
 The **PinCodeIonic**  project uses `WLResourceRequest` to get a bank balance.  
 The method is protected by a PIN code, with a maximum of 3 attempts.
 
-[Click to download](https://github.ibm.com/MFPSamples/PincodeIonic) the Ionic project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PincodeIonic) the Ionic project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
 
 ### Sample usage

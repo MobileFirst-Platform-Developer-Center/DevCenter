@@ -43,7 +43,7 @@ Develop your Ionic applications by following the tutorials below: set-up your de
   <div class="tab-pane fade in active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
     <p>Ionic is a framework that is built on <a target="_blank" href="https://angularjs.org/">AngularJS</a> and <a target="_blank" href="https://cordova.apache.org/">Apache Cordova</a>. Ionic helps you to rapidly build hybrid mobile & web platform apps using web technologies such as HTML, CSS, and Javascript. </p>
 
-    <p>If you are a developer who has chosen Ionic as the framework to develop your mobile or web app, the following sections help you get started with <a target="_blank "href="http://mobilefirstplatform.ibmcloud.com">IBM Mobile Foundation</a> SDK in your Ionic app. </p>
+    <p>If you are a developer who has chosen Ionic as the framework to develop your mobile or web app, the following sections help you get started with <a target="_blank "href="https://console.bluemix.net/catalog/services/mobile-foundation">IBM Mobile Foundation</a> SDK in your Ionic app. </p>
 
     <p>You can use your preferred code editor such as Atom.io, Visual Studio Code, Eclipse, IntelliJ or any other editor for writing your applications. </p>
 
@@ -72,7 +72,8 @@ Develop your Ionic applications by following the tutorials below: set-up your de
 
   <div class="tab-pane fade" id="quick-start" role="tabpanel" aria-labelledby="quick-start-tab">
     <p>The purpose of this quick start tutorial is to explain a simple end-to-end flow.</p>
-    <p>A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}. The provided adapter (or a new adapter) is deployed to the {{ site.data.keys.mf_console }}. The application logic is changed to make a resource request.</p>
+    <!--<p>A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}. The provided adapter (or a new adapter) is deployed to the {{ site.data.keys.mf_console }}. The application logic is changed to make a resource request.</p>-->
+    <p>A sample application is provided in  <a target="_blank" href="https://github.ibm.com/MFPSamples/MFPStarterReactNative">Github</a>, the sample is downloaded and registered with {{ site.data.keys.mf_server }}. The provided adapter (or a new adapter) is deployed to the {{ site.data.keys.mf_console }}. The application logic is changed to make a resource request.</p>
    <p><b>Expected result: </b>To successfully ping the {{ site.data.keys.mf_server }} and to successfully retrieve data using an adapter.</p>
 
     <!--  <h3><font color="DodgerBlue">Step 1:</font> Get the prerequisites</h3>
@@ -98,7 +99,7 @@ Develop your Ionic applications by following the tutorials below: set-up your de
        <li>Click on <b>Register application</b></li>
      </ul>
      <!--<img class="gifplayer" alt="Register an application" src="{{site.baseurl}}/assets/tutorials/all-tutorials/register-an-application-cordova.png"/>-->
-     <h4><font color="DarkTurquoise">Step 2.2:</font> Downloading the Ionic sample from <a target="_blank" href="https://github.ibm.com/MFPSamples/MFPStarterIonic">Github</a>.</h4>
+     <h4><font color="DarkTurquoise">Step 2.2:</font> Downloading the Ionic sample from <a target="_blank" href="https://github.com/MobileFirst-Platform-Developer-Center/MFPStarterIonic">Github</a>.</h4>
      <h4><font color="DarkTurquoise">Step 2.3:</font> Adding the Ionic SDK to the downloaded Ionic sample application</h4>
      <ol><li>Navigate to the root of your downloaded Ionic project and add the {{ site.data.keys.product_adj }} core Ionic Cordova plug-in.</li>
        <li> Change directory to the root of the Ionic project: <code>cd MFPStarterIonic</code></li>
@@ -132,7 +133,7 @@ Develop your Ionic applications by following the tutorials below: set-up your de
      <ol>
        <li>Open the Ionic project in your code editor of choice.</li>
        <li>Select the <b>src/js/index.js</b> file and paste the following code snippet, replacing the existing <code>WLAuthorizationManager.obtainAccessToken()</code> function:
-         <pre>
+         {% highlight javascript %}
            WLAuthorizationManager.obtainAccessToken("").then(
            (token) => {
              console.log('-->  pingMFP(): Success ', token);
@@ -162,7 +163,7 @@ Develop your Ionic applications by following the tutorials below: set-up your de
              });
            }
          );
-       </pre>
+       {% endhighlight %}
        </li>
      </ol>
   <h3><font color="DodgerBlue">Step 3: </font>Deploying an adapter</h3>

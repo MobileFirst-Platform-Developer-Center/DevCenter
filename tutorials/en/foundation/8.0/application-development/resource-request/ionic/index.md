@@ -5,7 +5,7 @@ breadcrumb_title: Ionic
 relevantTo: [ionic]
 downloads:
   - name: Download Ionic project
-    url: https://github.ibm.com/MFPSamples/ResourceRequestIonic
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestIonic
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 1
@@ -164,7 +164,7 @@ resourceRequest.send().then(
 The **ResourceRequestIonic** project demonstrate a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
 
-[Click to download](https://github.ibm.com/MFPSamples/ResourceRequestIonic/) the Ionic project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestIonic/) the Ionic project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage

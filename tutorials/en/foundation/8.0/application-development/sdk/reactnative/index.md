@@ -116,7 +116,7 @@ For example:
        The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project and to add to it the metadata that identifies the MobileFirst Server.
 
 
-If a remote server is used, [use the command](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) `mfpdev server add` to add it.
+If a remote server is used, [use the command](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) `mfpdev server add` to add it.
 
 The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application. 	Each platform is registered as an application in {{ site.data.keys.mf_server }}.
 
