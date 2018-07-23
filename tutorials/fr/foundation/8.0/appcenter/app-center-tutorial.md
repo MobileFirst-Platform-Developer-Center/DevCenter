@@ -51,7 +51,7 @@ Si vous ne disposez pas d'une base de données installée, le processus d'instal
 
     > Pour plus d'informations, voir la rubrique sur l'[installation de {{ site.data.keys.mf_server }}](../../installation-configuration).
 
-    Étant donné que iOS 7.1 prend uniquement en charge le protocole https, le serveur Application Center doit être sécurisé avec SSL (au moins avec TLS v.1) si vous prévoyez de distribuer des applications pour des appareils exécutant iOS 7.1 ou version ultérieure. Les certificats auto-signés ne sont pas recommandés, mais peuvent être utilisés à des fins de test, à condition que les certificats d'AC auto-signés soient distribués aux appareils.
+    Etant donné que iOS 7.1 prend uniquement en charge le protocole https, le serveur Application Center doit être sécurisé avec SSL (au moins avec TLS v.1) si vous prévoyez de distribuer des applications pour des appareils exécutant iOS 7.1 ou version ultérieure. Les certificats auto-signés ne sont pas recommandés, mais peuvent être utilisés à des fins de test, à condition que les certificats d'AC auto-signés soient distribués aux appareils.
 
 2. Une fois Application Center installé avec IBM Installation Manager, ouvrez la console : `http://localhost:9080/appcenterconsole`
 
@@ -59,7 +59,7 @@ Si vous ne disposez pas d'une base de données installée, le processus d'instal
 
 4. A ce stade, vous pouvez configurer l'authentification des utilisateurs. Par exemple, vous pouvez vous connecter à un référentiel LDAP.
 
-    > Pour plus d'informations, voir la rubrique sur la [configuration Application Center après l'installation](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
+    > Pour plus d'informations, voir la rubrique sur la [configuration d'Application après l'installation](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
 
 5. Préparez le client mobile pour Android, iOS, BlackBerry 6/7 et Windows Phone 8
 
@@ -174,7 +174,7 @@ Application Center gère uniquement les applications de société qui sont sign�
 {: #for-windows-store-apps-for-windows-81-pro }
 * Le fichier **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** contient l'exécutable du client Application Center. Transmettez ce fichier à l'ordinateur client et décompressez-le. Il contient le programme exécutable.
 
-* L'installation d'une application Windows Store (fichier de type `appx`) sans utiliser Microsoft Windows Store s'appelle chargement indépendant (<em>sideloading</em>) d'une application. Pour charger une application, vous devez respecter les prérequis de la page [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+* L'installation d'une application Windows Store (fichier de type `appx`) sans utiliser Microsoft Windows Store s'appelle chargement indépendant (<em>sideloading</em>) d'une application. Pour effectuer un chargement indépendant d'une application, vous devez respecter les prérequis énoncés dans [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx). La mise à jour de Windows 8.1.1 simplifie les prérequis pour le chargement indépendant (sideloading). For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
 
 ## Gestion des applications dans la console Application Center
 {: #managing-applications-in-the-application-center-console }

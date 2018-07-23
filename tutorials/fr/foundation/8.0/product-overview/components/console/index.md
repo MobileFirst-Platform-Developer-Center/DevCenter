@@ -14,8 +14,7 @@ La console {{ site.data.keys.mf_console_full }} est une interface utilisateur ba
 {: #as-a-developer }
 * Développer des applications pour un environnement et les enregistrer sur {{ site.data.keys.mf_server }}.
 * Voir toutes vos applications et tous vos adaptateurs déployés en un seul coup d'oeil. Voir le tableau de bord.
-* Gérer et configurer des applications enregistrées, notamment la mise à jour directe, la désactivation à distance et les paramètres de sécurité pour
-l'authenticité de l'application et l'authentification d'utilisateur.
+* Gérer et configurer des applications enregistrées, notamment la mise à jour directe, la désactivation à distance et les paramètres de sécurité pour l'authenticité de l'application et l'authentification d'utilisateur.
 * Configurer la notification push en déployant des certificats, en créant des étiquettes de notification et en envoyant des notifications.
 * Créer et déployer des adaptateurs.
 * Télécharger des exemples.
@@ -45,10 +44,7 @@ A partir du navigateur de votre choix, chargez l'URL [http://localhost:9080/mfpc
 
 #### Ligne de commande
 {: #command-line }
-A partir d'une fenêtre de **ligne de commande**, avec
-l'interface de ligne de commande {{ site.data.keys.mf_cli }} installée,
-exécutez la commande
-suivante : `mfpdev server console`.
+A partir d'une fenêtre de **ligne de commande**, avec l'interface de ligne de commande {{ site.data.keys.mf_cli }} installée, exécutez la commande suivante : `mfpdev server console`.
 
 ### A partir d'un serveur {{ site.data.keys.mf_server }} installé à distance
 {: #from-a-remotely-installed-mobilefirst-server }
@@ -59,8 +55,7 @@ Le serveur hôte peut être soit un serveur appartenant à un client, soit le se
 
 #### Ligne de commande
 {: #command-line-remote }
-A partir d'une fenêtre de **ligne de commande**, avec
-l'interface de ligne de commande {{ site.data.keys.mf_cli }} installée,
+A partir d'une fenêtre de **ligne de commande**, avec l'interface de ligne de commande {{ site.data.keys.mf_cli }} installée,
 
 1. Ajoutez une définition de serveur distant :
 

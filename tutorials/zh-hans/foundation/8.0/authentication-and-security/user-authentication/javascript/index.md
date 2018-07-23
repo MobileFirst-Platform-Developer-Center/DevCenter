@@ -64,8 +64,6 @@ if (isChallenged){
 > **注：**
 >`WLAuthorizationManager` `login()` API 具有自己的 `onSuccess` 和 `onFailure` 方法，同时**也**会调用相关验证问题处理程序的 `handleSuccess` 或 `handleFailure` 方法。
 
-
-
 ## 获取访问令牌
 {: #obtaining-an-access-token }
 因为此安全性检查支持 **RememberMe** 功能（作为 `rememberMe` 布尔值键），所以它将用于在应用程序启动时检查客户机当前是否已登录。
@@ -85,8 +83,6 @@ WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheck
 ```
 > **注：**
 > `WLAuthorizationManager` `obtainAccessToken()` API 具有自己的 `onSuccess` 和 `onFailure` 方法，同时**也**会调用相关验证问题处理程序的 `handleSuccess` 或 `handleFailure` 方法。
-
-
 
 如果客户机已登录或者处于*已记住*状态，那么 API 会触发成功。 如果客户机未登录，那么安全性检查将发送回验证问题。
 

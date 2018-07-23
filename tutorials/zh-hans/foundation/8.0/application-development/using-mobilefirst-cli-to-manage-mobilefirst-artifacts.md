@@ -291,7 +291,7 @@ mfpdev app config
 
 * 将向其注册应用程序的服务器地址和运行时
 
-    > **示例用例：**要向具有特定地址的 {{ site.data.keys.mf_server }} 注册应用程序，但还让应用程序连接到不同的服务器地址，例如 DataPower 设备：
+    > **示例用例：**要向具有特定地址的 {{ site.data.keys.mf_server }} 注册应用程序，并还想让应用程序连接到其他服务器地址（例如 DataPower 设备）：
     >
     > 1. 运行 `mfpdev app register` 以在期望的 {{ site.data.keys.mf_server }} 地址中注册应用程序。
     > 2. 运行 `mfpdev app config` 并更改 **server** 属性值以与 DataPower 设备的地址匹配。 您还可以在**直接方式**下运行此命令：`mfpdev app config server http(s)://server-ip-or-host:port`。

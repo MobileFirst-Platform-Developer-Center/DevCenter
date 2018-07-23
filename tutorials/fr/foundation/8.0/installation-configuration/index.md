@@ -27,7 +27,7 @@ Le service {{ site.data.keys.mf_bm }} offre une fonctionnalité similaire à cel
 
 {{ site.data.keys.product }} offre une grande flexibilité en matière d'outils et de plateformes pouvant être utilisés pour le développement d'applications {{ site.data.keys.product }}. Il est cependant nécessaire d'effectuer une configuration de base pour pouvoir choisir les outils permettant d'interagir avec {{ site.data.keys.product }}.  
 
-Sélectionnez l'un des liens suivants pour configurer l'environnement de développement correspondant à l'approche de développement utilisée par l'application : 
+Sélectionnez l'un des liens suivants pour configurer l'environnement de développement correspondant à l'approche de développement utilisée par l'application :
 
 * [Configuration de l'environnement de développement Cordova](development/cordova)
 * [Configuration de l'environnement de développement iOS](development/ios)
@@ -43,13 +43,12 @@ La première partie de l'installation du serveur {{ site.data.keys.product }} Se
 
 > **Important :** assurez-vous d'utiliser IBM Installation Manager version 1.8.4 ou ultérieure. Les anciennes versions d'Installation Manager ne peuvent pas installer {{ site.data.keys.product }} {{ site.data.keys.product_version }} car les opérations de post-installation du produit nécessitent Java 7. Les anciennes version d'Installation Manager sont livrées avec Java 6.
 
-L'assistant d'installation de {{ site.data.keys.mf_server }} utilise IBM Installation Manager pour placer tous les composants serveur sur le serveur. Les outils et les bibliothèques nécessaires au déploiement des composants {{ site.data.keys.product }} Server sur le serveur d'applications sont également installés.
-Il n'est pas recommandé d'installer tous les composants sur la même instance de serveur d'applications, sauf dans le cas d'un serveur de développement. Les outils de déploiement permettent de sélectionner les composants à installer. Veuillez vous reporter à [Topologies et flots réseau](production/topologies) pour connaître les éléments à prendre en compte avant d'installer le serveur. 
+L'assistant d'installation de {{ site.data.keys.mf_server }} utilise IBM Installation Manager pour placer tous les composants serveur sur le serveur.  Les outils et les bibliothèques nécessaires au déploiement des composants {{ site.data.keys.product }} Server sur le serveur d'applications sont également installés.  Il n'est pas recommandé d'installer tous les composants sur la même instance de serveur d'applications, sauf dans le cas d'un serveur de développement. Les outils de déploiement permettent de sélectionner les composants à installer.  Veuillez vous reporter à [Topologies et flots réseau](production/prod-env/topologies) pour connaître les éléments à prendre en compte avant d'installer le serveur.
 
 Prenez connaissance des informations ci-dessous concernant la préparation et l'installation de {{ site.data.keys.mf_server }} et des services facultatifs sur votre environnement spécifique. Pour une configuration simple, consultez le tutoriel [Configuration d'un environnement de test ou de production](production).
 
-* [Vérification de la configuration requise](production/#prerequisites)
-* [Présentation des composants {{ site.data.keys.mf_server }}](production/topologies)
+* [Vérification de la configuration requise](production/prod-env/prereqs)
+* [Présentation des composants {{ site.data.keys.mf_server }}](production/prod-env/topologies)
 * Facteurs à prendre en compte avant le chargement des outils et des bibliothèques pour le déploiement des composants MobileFirst Server et éventuellement d'Application Center
   * Licence de jeton
   * MobileFirst Foundation Application Center
@@ -59,8 +58,8 @@ Prenez connaissance des informations ci-dessous concernant la préparation et l'
   * l'utilisation de l'assistant d'installation d'IBM Installation Manager
   * l'exécution d'IBM Installation Manager sur la ligne de commande
   * l'utilisation des fichiers de réponses XML (installation en mode silencieux)
-* [Configuration de bases de données dorsales pour les composants MobileFirst Foundation Server](production/databases)
-* [Installation de MobileFirst Server sur un serveur d'applications](production/appserver)
+* [Configuration de bases de données dorsales pour les composants MobileFirst Foundation Server](production/prod-env/databases)
+* [Installation de MobileFirst Server sur un serveur d'applications](production/prod-env/appserver)
 * [Configuration de MobileFirst Server](production/server-configuration)
 * [Installation de MobileFirst Analytics Server](production/analytics/installation)
 * [Installation d'Application Center](production/appcenter)
@@ -69,17 +68,17 @@ Prenez connaissance des informations ci-dessous concernant la préparation et l'
 ### Configuration d'un environnement de test ou de production
 {: #setting-up-test-or-production-server}
 
-Pour plus d'informations sur le processus d'installation de {{ site.data.keys.mf_server }}, reportez-vous aux instructions permettant de créer un cluster {{ site.data.keys.mf_server }} fonctionnel avec deux noeuds sur le profil WebSphere Application Server Liberty. L'installation peut être effectuée grâce aux outils graphiques (interface graphique) ou via la ligne de commande. 
+Pour plus d'informations sur le processus d'installation de {{ site.data.keys.mf_server }}, reportez-vous aux instructions permettant de créer un cluster {{ site.data.keys.mf_server }} fonctionnel avec deux noeuds sur le profil WebSphere Application Server Liberty. L'installation peut être effectuée grâce aux outils graphiques (interface graphique) ou via la ligne de commande.
 
-* [Installation en mode interface graphique avec IBM Installation Manager et l'outil de configuration de serveur](production/tutorials/graphical-mode).
-* [Installation en mode ligne de commande avec l'outil de ligne de commande](production/tutorials/command-line).
+* [Installation en mode interface graphique avec IBM Installation Manager et l'outil de configuration de serveur](production/simple-install/tutorials/graphical-mode).
+* [Installation en mode ligne de commande avec l'outil de ligne de commande](production/simple-install/tutorials/command-line).
 
-Après avoir procédé à l'installation via l'une des deux méthodes ci-dessus, il se peut que vous deviez effectuer une [configuration](production/server-configuration) supplémentaire pour terminer l'installation selon les exigences de l'environnement. 
+Après avoir procédé à l'installation via l'une des deux méthodes ci-dessus, il se peut que vous deviez effectuer une [configuration](production/server-configuration) supplémentaire pour terminer l'installation selon les exigences de l'environnement.
 
 ### Configuration de fonctions facultatives sur votre environnement de test ou de production
 {: #setting-up-optional-features-test-or-production-server}
 
-{{ site.data.keys.product }} inclut des composants facultatifs qui peuvent être utilisés pour renforcer votre environnement de test ou de production. Pour plus d'informations, reportez-vous aux tutoriels suivants :
+{{ site.data.keys.product }} inclut des composants facultatifs qui peuvent être utilisés pour renforcer votre environnement de test ou de production.  Pour plus d'informations, reportez-vous aux tutoriels suivants :
 
 * [Installation et configuration de {{ site.data.keys.mf_analytics_server }}](production/analytics/installation/)
 * [Installation et configuration de {{ site.data.keys.mf_app_center }}](production/appcenter)

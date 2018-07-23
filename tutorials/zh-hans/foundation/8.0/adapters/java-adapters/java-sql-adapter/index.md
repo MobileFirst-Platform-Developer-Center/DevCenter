@@ -32,7 +32,7 @@ Java 适配器能够使开发人员控制到后端系统的连接。 因此，�
 
 为了将 {{ site.data.keys.mf_server }} 配置为能够连接到 MySQL 服务器，需要为适配器的 XML 文件配置**配置属性**。 之后，可以通过 {{ site.data.keys.mf_console }} 对这些属性进行编辑。
 
-编辑 adater.xml 文件并添加以下属性：
+编辑 adapter.xml 文件并添加以下属性：
 
 ```xml
 <mfp:adapter name="JavaSQL"
