@@ -16,7 +16,7 @@ If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](http
 
 Apple announced iOS 12 during their annual WWDC2018 conference. This release of iOS includes many new user and developer oriented features. You can read more about all the new features in iOS 12 [here](https://developer.apple.com/ios/whats-new/).
 
-We have been testing the iOS12 beta with the latest being beta 3. We have verified various features of MobileFirst Platform Foundation on the iOS11 beta 3 for MobileFirst Platform Foundation v8.0. For reference, make sure to read through our [support plan for newer iOS version](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
+We have been testing the iOS 12 beta with the latest being beta 3. We have verified various features of MobileFirst Platform Foundation on the iOS 12 beta 3 for MobileFirst Platform Foundation v8.0. For reference, make sure to read through our [support plan for newer iOS version](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
 
 We encourage you to start testing your application(s) with iOS 12.
 
@@ -26,7 +26,7 @@ We encourage you to start testing your application(s) with iOS 12.
 Existing application(s) that were created using MobileFirst Platform v8.0 **will work** on iOS 12 as they did on previous versions of iOS.
 
 #### Updating application on the App Store (built using older Xcode)
-You can opt to build application(s) with Xcode 9 ( or older Xcode) and republish to the App Store. These application(s) will work on iOS 12. Make sure to build app with only 64 bit architecture.
+You can opt to build application(s) with Xcode 9 and republish to the App Store. These application(s) will work on iOS 12. Make sure to build app with only 64 bit architecture.
 
 #### Updating existing application or submitting new application on the App Store (built using Xcode 10)
 Review the following section to learn what actions you need to take so that your app can support iOS 12. These needs to be considered only if you are building the application(s) using new [Xcode 10 build](https://developer.apple.com/download).
@@ -43,7 +43,7 @@ For more details on Xcode 10, refer [Whats new in XCode10](https://developer.app
 
 Highlighted features that were tested for Mobilefirst Foundation 8.0:
 
-* OAuth authorization flow
+* OAuth Flow
 * Invoking backend procedures through adapters
 * Challenge Handling
 * JSONStore
@@ -70,7 +70,7 @@ For a native app , you should remove **libstdc++** from other linker flags in yo
 
 > **Disclaimer:** *Some of the action items that are addressed in the list above are not under IBM’s control. Therefore, we expect developers and IT managers to ensure that their infrastructure is up-to-date according to Apple’s requirements.*
 
-iOS11 compatibility tests are planned for following:
+iOS 12 compatibility tests are planned for following:
 
 * Compatibility test for MobileFirst v7.1
 * Push notifications
