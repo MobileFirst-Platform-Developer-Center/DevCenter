@@ -34,7 +34,9 @@ Review the following section to learn what actions you need to take so that your
 Compatibility tests with [iOS 12 beta 3](https://developer.apple.com/download) have been performed for MobileFirst Foundation 8.0 using an iPhone 6 plus that was upgraded from iOS 11.3.x to iOS 12 beta 3.
 
 For the tests, [XCode 10 beta 2](https://developer.apple.com/download) was used to compile native, hybrid and Cordova apps. Xcode 10 uses a new build system. The new build system provides improved reliability and build performance and it catches project configuration problems that the legacy build system could not.
-The legacy build system is still available in Xcode 10. To use the legacy build system, select it in the **File > Project Settings**. Refer below ![Xcode10 Legacy build system settings]({{site.baseurl}}/assets/blog/2017-07-20-compatibility-tests-for-ios-12/xcode10-buildsystem.png)
+The legacy build system is still available in Xcode 10. To use the legacy build system, select it in the **File > Project Settings**. Refer the image below:
+
+![Xcode10 Legacy build system settings]({{site.baseurl}}/assets/blog/2017-07-20-compatibility-tests-for-ios-12/xcode10-buildsystem.png)
 
 For the compatibility test we had to use "legacy build system" to get rid of the issue reported [here](https://stackoverflow.com/questions/50718018/xcode-10-error-multiple-commands-produce)
 For more details on Xcode 10, refer [Whats new in XCode10](https://developer.apple.com/xcode/whats-new/)  
@@ -60,7 +62,8 @@ All the above features were validated to work on iOS 12 beta 3.
 In order to test your app on simulator, please use the workaround suggested [here](https://stackoverflow.com/questions/50694822/xcode-10-ios-12-does-not-contain-libstdc6-0-9).
 Mostly, for a hybrid/cordova app we found that entry of **libstdc++** included in our project structure  was red because Xcode couldn't find the reference for it. After we removed the entry of **libstdc++** from the project structure and added the new lib instead(**libc++**), it worked without issues.
 
-For a native app , you should remove **libstdc++** from other linker flags in your xcode project as below 
+For a native app , you should remove **libstdc++** from other linker flags in your xcode project as below:
+
 ![iOS12 libstdc++  issue workaround]({{site.baseurl}}/assets/blog/2017-07-20-compatibility-tests-for-ios-12/ios12-stdlib-fix.png)
 
 * During our compatibility test we found certificate pinning feature is not working. It looks very similar to the issue mentioned [here](https://github.com/AFNetworking/AFNetworking/issues/4229). We are currently investigating the issue. We will update here once we conclude our investigation.
