@@ -76,18 +76,18 @@ Die Task **configuredatabase** unterstützt die folgenden Elemente:
 | `<oracle>`          |	Parameter für Oracle |0..1 |
 | `<driverclasspath>` |JDBC-Treiberklassenpfad |0..1 |
 
-Für jeden Datenbanktyp können Sie ein Element `<property>` verwenden, um eine JDBC-Verbindungseigenschaft für den Zugriff auf die Datenbank anzugeben. Das Element `<property>` wird mit folgenden Attributen verwendet: 
+Für jeden Datenbanktyp können Sie ein Element `<property>` verwenden, um eine JDBC-Verbindungseigenschaft für den Zugriff auf die Datenbank anzugeben. Das Element `<property>` wird mit folgenden Attributen verwendet:
 
-|Attribut|Beschreibung |Erforderlich |Standardwert |
+| Attribut | Beschreibung | Erforderlich | Standardwert |
 |-----------|----------------------------|----------|---------|
 | name      |Name der Eigenschaft |Ja |Keiner |
 |value	     |Wert der Eigenschaft |Ja |Keiner |   
 
 #### Apache Derby
 {: #apache-derby }
-Das Element `<derby>` wird mit folgenden Attributen verwendet: 
+Das Element `<derby>` wird mit folgenden Attributen verwendet:
 
-|Attribut|Beschreibung |Erforderlich |Standardwert |
+| Attribut | Beschreibung | Erforderlich | Standardwert |
 |-----------|--------------------------------------------|----------|------------------------------------------------------------------------------|
 |database|Datenbankname |Nein |Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR|
 |datadir |Verzeichnis mit den Datenbanken |Ja |Keiner |
@@ -103,21 +103,19 @@ Informationen zu den verfügbaren Eigenschaften finden Sie unter [Setting attrib
 
 #### DB2
 {: #db2 }
-Das Element `<db2>` wird mit folgenden Attributen verwendet: 
+Das Element `<db2>` wird mit folgenden Attributen verwendet:
 
-|Attribut|Beschreibung |Erforderlich |Standardwert |
+| Attribut | Beschreibung | Erforderlich | Standardwert |
 |-----------|----------------------------------------|----------|---------|
-| database  |Datenbankname |Nein |Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR|
-| server    |Hostname des Datenbankservers | |Ja |Keiner |
-| port      |Port des Datenbankservers |Nein | 50000 |
-| user      |Benutzername für den Datenbankzugriff |Ja |Keiner |
-| password  |Kennwort für den Datenbankzugriff|Nein |Interaktiv abgefragt |
-|instance |Name der DB2-Instanz |Nein |Hängt vom Server ab |
-| schema    |Schemaname |Nein |Hängt vom Benutzer ab|
+| database | Datenbankname | Nein | Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR |
+| server | Hostname des Datenbankservers | Ja | Keiner |
+| port | Port des Datenbankservers | Nein | 50000 |
+| user | Benutzername für den Datenbankzugriff | Ja | Keiner |
+| password | Kennwort für den Datenbankzugriff | Nein | Interaktiv abgefragt |
+| instance | Name der DB2-Instanz | Nein | Hängt vom Server ab |
+| schema | Schemaname | Nein | Hängt vom Benutzer ab |
 
-Weitere Informationen
-zu DB2-Benutzeraccounts finden Sie im Artikel
-[DB2-Sicherheitsmodell - Übersicht](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).   
+Weitere Informationen zu DB2-Benutzeraccounts finden Sie im Artikel [DB2-Sicherheitsmodell - Übersicht](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).   
 Das Element `<db2>` unterstützt die folgenden Elemente:
 
 |Element|Beschreibung |Anzahl |
@@ -148,15 +146,13 @@ Das Element `<mysql>` wird mit folgenden Attributen verwendet:
 
 |Attribut|Beschreibung |Erforderlich |Standardwert |
 |-----------|----------------------------------------|----------|---------|
-|database	 |Datenbankname|Nein |Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR|
-|server	 |Hostname des Datenbankservers | |Ja |Keiner |
-|port	     |Port des Datenbankservers | |Nein | 3306 |
-|user	            |Benutzername für den Datenbankzugriff |Ja |Keiner |
-|password	 |Kennwort für den Datenbankzugriff|Nein |Interaktiv abgefragt |
+| database	| Datenbankname | Nein | Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR |
+| server	| Hostname des Datenbankservers | Ja | Keiner |
+| port	    | Port des Datenbankservers | Nein | 3306 |
+| user	    | Benutzername für den Datenbankzugriff | Ja | Keiner |
+| password	| Kennwort für den Datenbankzugriff | Nein | Interaktiv abgefragt |
 
-Weitere Informationen zu MySQL-Benutzerkonten
-finden Sie im Artikel
-[MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).  
+Weitere Informationen zu MySQL-Benutzerkonten finden Sie im Artikel [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).  
 Das Element `<mysql>` unterstützt die folgenden Elemente:
 
 |Element|Beschreibung |Anzahl |
@@ -1349,10 +1345,10 @@ in einem Anwendungsserver. Diese Task hat die folgenden Auswirkungen:
 
 Die Task ändert nicht die Konfiguration des Anwendungsservers, d. h.
 die Konfiguration der Webanwendungen, die Datenquellen, die JNDI-Umgebungseinträge und die Benutzer-Rollen-Zuordnungen.
-Diese Task ist nur auf eine Installation anwendbar, die mit der in diesem Abschnitt beschriebenen Task
-<installApplicationCenter> ausgeführt wird. 
+Diese Task ist nur auf eine Installation anwendbar, die mit der in diesem Abschnitt beschriebenen Task <installApplicationCenter> ausgeführt wird.
 
-> **Hinweis:** In
+> **Hinweis:** In WebSphere Application Server Liberty Profile ändert die Task nicht die Features, sodass die Datei server.xml für die installierte Anwendung eine potenziell nicht minimale Liste mit Features enthält.
+
 WebSphere Application Server Liberty Profile ändert die Task nicht die Features, sodass die Datei server.xml für die installierte Anwendung eine potenziell nicht minimale Liste mit Features enthält.
 
 
