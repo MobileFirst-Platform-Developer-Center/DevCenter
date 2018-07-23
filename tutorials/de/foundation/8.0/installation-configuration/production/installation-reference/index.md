@@ -389,26 +389,26 @@ Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der [Liste der JND
 {: #to-specify-an-application-server }
 Mit dem Element `<applicationserver>` können Sie die Parameter definieren, die vom zugrundeliegenden Anwendungsserver abhängig sind. Das Element `<applicationserver>` unterstützt die folgenden Elemente:
 
-|Element|Beschreibung |Anzahl |
+| Element | Beschreibung | Anzahl |
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` oder `<was>` |Parameter für WebSphere Application Server. <br/><br/>Das Element `<websphereapplicationserver>` (oder in seiner Kurzform `was>`) gibt eine WebSphere-Application-Server-Instanz an. WebSphere Application Server Full Profile (Base und Network Deployment) werden ebenso wie WebSphere Application Server Liberty Core und WebSphere Application Server Liberty Network Deployment unterstützt. | 0..1  |
-| `<tomcat>`                                |Parameter für Apache Tomcat| 0..1  |
+| `<websphereapplicationserver>` oder `<was>` | Parameter für WebSphere Application Server. <br/><br/>Das Element `<websphereapplicationserver>` (oder in seiner Kurzform `was>`) gibt eine WebSphere-Application-Server-Instanz an. WebSphere Application Server Full Profile (Base und Network Deployment) werden ebenso wie WebSphere Application Server Liberty Core und WebSphere Application Server Liberty Network Deployment unterstützt. | 0..1 |
+| `<tomcat>`                                | Parameter für Apache Tomcat | 0..1 |
 
 Die Attribute und inneren Elemente für diese Elemente sind in den Tabellen im Abschnitt [Ant-Tasks für die Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) beschrieben.  
 Das innere Element des Elements `<was>` für einen Liberty-Verbund ist in der folgenden Tabelle angegeben:
 
-|Element|Beschreibung |Anzahl |
+| Element | Beschreibung | Anzahl |
 |--------------------------|----------------------------------|-------|
-| `<collectiveController>` |Controller eines Liberty-Verbunds |	 0..1  |
+| `<collectiveController>` | Controller eines Liberty-Verbunds |	0..1 |
 
 Das Element `<collectiveController>` wird mit folgenden Attributen verwendet:
 
-|Attribut|Beschreibung |Erforderlich |Standardwert |
+| Attribut | Beschreibung | Erforderlich | Standardwert |
 |--------------------------|----------------------------------------|----------|---------|
-| serverName               |Name des Verbundcontrollers |Ja |Keiner |
-| controllerAdminName      |Name des im Verbundcontroller definierten Benutzers mit Verwaltungsaufgaben. Dieser Benutzer wird auch verwendet, wenn neue Member in den Verbund aufgenommen werden. |Ja |Keiner |
-| controllerAdminPassword  |Kennwort des Benutzers mit Verwaltungsaufgaben|Ja |Keiner |
-| createControllerAdmin    |Angabe, ob der Benutzer mit Verwaltungsaufgaben in der Basisregistry des Verbundcontrollers erstellt werden muss. Die gültigen Werte sind true und false. |Nein |true |
+| serverName | Name des Verbundcontrollers | Ja | Keiner |
+| controllerAdminName | Name des im Verbundcontroller definierten Benutzers mit Verwaltungsaufgaben. Dieser Benutzer wird auch verwendet, wenn neue Member in den Verbund aufgenommen werden. | Ja | Keiner |
+| controllerAdminPassword | Kennwort des Benutzers mit Verwaltungsaufgaben | Ja | Keiner |
+| createControllerAdmin | Angabe, ob der Benutzer mit Verwaltungsaufgaben in der Basisregistry des Verbundcontrollers erstellt werden muss. Die gültigen Werte sind true und false. | Nein | true |
 
 ### Konfiguration des Liveaktualisierungsservice angeben
 {: #to-specify-the-live-update-service-configuration }
@@ -456,29 +456,29 @@ Mit diesem Element können Sie Ihre eigenen JNDI-Eigenschaften definieren oder d
 {: #to-specify-an-application-server-1 }
 Mit dem Element `<applicationserver>` können Sie die Parameter definieren, die vom zugrundeliegenden Anwendungsserver abhängig sind. Das Element `<applicationserver>` unterstützt die folgenden Elemente: 
 
-|Element|Beschreibung |Anzahl |
+| Element | Beschreibung | Anzahl |
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` oder `<was>`	|Parameter für WebSphere Application Server <br/><br/>Das Element <websphereapplicationserver> (oder in seiner Kurzform <was>) gibt eine WebSphere-Application-Server-Instanz an. WebSphere Application Server Full Profile
+| `<websphereapplicationserver>` oder `<was>`	| Parameter für WebSphere Application Server <br/><br/>Das Element <websphereapplicationserver> (oder in seiner Kurzform <was>) gibt eine WebSphere-Application-Server-Instanz an. WebSphere Application Server Full Profile
 (Base und Network Deployment) werden ebenso wie
 WebSphere Application Server Liberty Core und
 WebSphere Application Server Liberty Network
-Deployment unterstützt. | 0..1  |
-| `<tomcat>`   |Parameter für Apache Tomcat| 0..1  |
+Deployment unterstützt. | 0..1 |
+| `<tomcat>`   | Parameter für Apache Tomcat| 0..1 |
 
 Die Attribute und inneren Elemente für diese Elemente sind in den Tabellen im Abschnitt [Ant-Tasks für die Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) beschrieben.  
 Das innere Element des Elements <was> für einen Liberty-Verbund ist in der folgenden
 Tabelle angegeben. 
 
-|Element|Beschreibung |Anzahl |
+| Element | Beschreibung | Anzahl |
 |-----------------------|----------------------------- |-------|
-| `<collectiveMember>`	|Member eines Liberty-Verbunds| 0..1  |
+| `<collectiveMember>`	| Member eines Liberty-Verbunds| 0..1 |
 
 Das Element `<collectiveMember>` wird mit folgenden Attributen verwendet: 
 
-|Attribut|Beschreibung |Erforderlich |Standardwert |
+| Attribut | Beschreibung | Erforderlich | Standardwert |
 |-------------|---------------------------------------------------------|----------|---------|
-| serverName  |	Name des Verbundmembers|Ja |Keiner |
-|clusterName|	Name des Clusters, zu dem das Verbundmember gehört|Ja |Keiner |
+| serverName |	Name des Verbundmembers| Ja | Keiner |
+| clusterName|	Name des Clusters, zu dem das Verbundmember gehört| Ja | Keiner |
 
 > **Hinweis:** Wenn der Push-Service und die Laufzeitkomponenten im selben Verbundmember installiert sind, müssen sie den gleichen Clusternamen
 haben. Sind diese Komponenten auf verschiedenen Membern desselben Verbundes installiert, können die Clusternamen verschieden sein.
@@ -963,10 +963,9 @@ unterstützt:
 
 |Element|Beschreibung |Anzahl |
 |-------------|------------------|-------|
-| `<server>`  |Einzelserver| 0..1  |
+| `<server>`  | Einzelserver| 0..1 |
 
-Das Element
-<server>, das in diesem Kontext verwendet wird, hat folgendes Attribut:
+Das Element <server>, das in diesem Kontext verwendet wird, hat folgendes Attribut:
 
 
 |Attribut|Beschreibung |Erforderlich |Standardwert |
