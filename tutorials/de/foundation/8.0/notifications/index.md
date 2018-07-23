@@ -192,7 +192,7 @@ Wählen Sie aus folgenden Optionen, um das Zertifikat zu generieren:
 		e. Klicken Sie auf **Apply**.
 		![Berechtigungsnachweis für die Crypto-Validierung konfigurieren](sending-notifications/bck_2.gif)
 
-	3. Erstellen Sie ein Crypto-Profil:
+	3. Erstellen Sie ein Crypto-Profil: 
 
 		a. Navigieren Sie zu **Objects** > **Crypto Configuration** und klicken Sie auf **Crypto Profile**.
 

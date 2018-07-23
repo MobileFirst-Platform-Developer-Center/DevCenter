@@ -430,7 +430,7 @@ Vorhandenes Code-Snippet:
 ```objc
 (void)wlInitDidCompleteSuccessfully
 {
-UIViewController* rootViewController = self.window.rootViewController;
+ UIViewController* rootViewController = self.window.rootViewController;
 // Cordova-Ansichtencontroller erstellen
 CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
 cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];

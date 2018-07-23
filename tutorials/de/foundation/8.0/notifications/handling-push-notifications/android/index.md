@@ -85,7 +85,7 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
 	* Fügen Sie Folgendes zum Tag `application` hinzu: 
 
 	  ```xml
-      <!-- GCM Receiver -->
+      <!-- GCM-Empfänger -->
       <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
@@ -149,16 +149,16 @@ müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, b
 ### Clientseite
 {: #client-side }
 
-| Java-Methoden| Beschreibung |
+|Java-Methoden|Beschreibung |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | Initialisiert MFPPush für den angegebenen Kontext|
-| [`isPushSupported();`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen?|
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registriert das Gerät beim Push-Benachrichtigungsservice|
-| [`getTags(MFPPushResponseListener)`](#get-tags) | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Richtet das Geräteabonnement für die angegebenen Tags ein|
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Ruft die derzeit vom Gerät abonnierten Tags ab |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags|
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf|
+|[`initialize(Context context);`](#initialization) |Initialisiert MFPPush für den angegebenen Kontext|
+|[`isPushSupported();`](#is-push-supported) |Unterstützt das Gerät Push-Benachrichtigungen?|
+|[`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) |Registriert das Gerät beim Push-Benachrichtigungsservice|
+|[`getTags(MFPPushResponseListener)`](#get-tags) |Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
+|[`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) |Richtet das Geräteabonnement für die angegebenen Tags ein|
+|[`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) |Ruft die derzeit vom Gerät abonnierten Tags ab |
+|[`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) |Beendet das Abonnement bestimmter Tags|
+|[`unregisterDevice(MFPPushResponseListener)`](#unregister) |Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf|
 
 #### Initialisierung
 {: #initialization }
@@ -199,8 +199,8 @@ MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>()
     @Override
     public void onFailure(MFPPushException e) {
         // Registrierung mit Fehler fehlgeschlagen
-     }
- });
+    }
+});
 ```
 
 #### Tags abrufen

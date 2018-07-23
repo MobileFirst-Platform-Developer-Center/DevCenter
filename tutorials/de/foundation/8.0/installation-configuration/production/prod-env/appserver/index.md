@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server in einem Anwendungsserver installieren
-breadcrumb_title: Installing MobileFirst Server
+breadcrumb_title: Installing MobileFirst Server to an application server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -44,7 +44,7 @@ Anforderungen an die Konfiguration von Apache Tomcat, die in den folgenden Absch
 Stellen Sie sicher, dass die folgenden Bedingungen erfüllt sind: 
 
 * Sie verwenden eine unterstützte Version von Apache Tomcat (siehe
-[Systemvoraussetzungen](../../../product-overview/requirements)).
+[Systemvoraussetzungen](../../../../product-overview/requirements)).
 * Apache Tomcat wird mit JRE 7.0 oder einer aktuelleren Version ausgeführt. 
 * Die JMX-Konfiguration lässt die Kommunikation zwischen dem Verwaltungsservice und der Laufzeitkomponente zu. Für die Kommunikation wird
 RMI verwendet. Lesen Sie dazu weiter unten den Abschnitt **JMX-Verbindung für Apache Tomcat konfigurieren**. 
@@ -139,7 +139,7 @@ Anforderungen an die Konfiguration des Liberty-Servers, die in den folgenden Abs
 
 Stellen Sie sicher, dass die folgenden Bedingungen erfüllt sind: 
 
-* Sie verwenden eine unterstützte Version von Liberty (siehe [Systemvoraussetzungen](../../../product-overview/requirements)).
+* Sie verwenden eine unterstützte Version von Liberty (siehe [Systemvoraussetzungen](../../../../product-overview/requirements)).
 * Liberty wird mit JRE 7.0 oder einer aktuelleren Version ausgeführt. JRE 6.0 wird nicht unterstützt.
 * Einige Liberty-Versionen unterstützen die Features von Java EE 6 und von Java EE 7. Das Liberty-Feature jdbc-4.0 ist beispielsweise Teil von Java EE 6, wohingegen das Lieberty-Feature jdbc-4.1 Teil von Java EE 7 ist. {{ site.data.keys.mf_server }} Version 8.0.0 kann mit Features von Java EE 6 oder Java EE 7 installiert werden. Wenn Sie jedoch in demselben Liberty-Server eine ältere Version von {{ site.data.keys.mf_server }} ausführen möchten, müssen Sie die Features von Java EE 6 verwenden. Bis Version 7.1.0 bietet {{ site.data.keys.mf_server }} keine Unterstützung für Features von Java EE 7.
 * JMX muss konfiguriert sein (siehe unten Abschnitt **JMX-Verbindung für WebSphere Application Server Liberty Profile konfigurieren**).
@@ -178,7 +178,7 @@ Liberty-Installationsverzeichnis/bin/productInfo featureInfo
 {{ site.data.keys.mf_server }} stellt gewisse Anforderungen an die Konfiguration von WebSphere Application Server und WebSphere Application Server Network Deployment, die in den folgenden Abschnitten ausführlich erläutert werden.  
 Stellen Sie sicher, dass die folgenden Bedingungen erfüllt sind: 
 
-* Sie verwenden eine unterstützte Version von WebSphere Application Server (siehe [Systemvoraussetzungen](../../../product-overview/requirements)).
+* Sie verwenden eine unterstützte Version von WebSphere Application Server (siehe [Systemvoraussetzungen](../../../../product-overview/requirements)).
 * Der Anwendungsserver wird mit JRE 7.0 ausgeführt. WebSphere Application Server verwendet standardmäßig das SDK von Java 6.0. Wie Sie zum SDK von Java 7.0 wechseln können, erfahren Sie unter [Switching to Java 7.0 SDK in WebSphere Application Server](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html).
 * Die Verwaltungssicherheit ist aktiviert. Die {{ site.data.keys.mf_console }}, der MobileFirst-Server Verwaltungsservice und der MobileFirst-Server-Konfigurationsservice sind mit Sicherheitsrollen geschützt. Weitere Informationen finden Sie im Artikel [Sicherheit aktivieren](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en).
 * Die JMX-Konfiguration lässt die Kommunikation zwischen dem Verwaltungsservice und der Laufzeitkomponente zu. Die Kommunikation verwendet SOAP. Für WebSphere Application Server Network Deployment kann RMI verwendet werden. Weitere Informationen finden Sie unten im Abschnitt **JMX-Verbindung für WebSphere Application Server und WebSphere Application Server Network Deployment konfigurieren**.
@@ -358,7 +358,7 @@ Bedingungen erfüllt sein:
                             <li>Installation in WebSphere Application Server Liberty:
                                 <ul>
                                     <li>Geben Sie das Liberty-Installationsverzeichnis und den Namen des Servers für die Installation von {{ site.data.keys.mf_server }} ein.</li>
-                                    <li>Sie können einen Standardbenutzer für die Anmeldung bei der Konsole erstellen. Dieser Benutzer wird in der Liberty-Basisregistry erstellt. Für eine Produktionsinstallation sollten Sie die Option <b>Create a default user</b> abwählen und den Benutzerzugriff nach der Installation konfigurieren. Weitere Informationen finden Sie unter <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren</a>.</li>
+                                    <li>Sie können einen Standardbenutzer für die Anmeldung bei der Konsole erstellen. Dieser Benutzer wird in der Liberty-Basisregistry erstellt. Für eine Produktionsinstallation sollten Sie die Option <b>Create a default user</b> abwählen und den Benutzerzugriff nach der Installation konfigurieren. Weitere Informationen finden Sie unter <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren</a>.</li>
                                     <li>Wählen Sie den Implementierungstyp aus: <b>Standalone deployment</b> (Standardeinstellung) oder <b>Server farm deployment</b> oder <b>Liberty collective deployment</b>.</li>
                                 </ul>
 
@@ -395,7 +395,7 @@ Bedingungen erfüllt sein:
                                                 <ul>
                                                     <li>Ordnen Sie einen Benutzer der Sicherheitsrolle <b>configadmin</b> des Liveaktualisierungsservice zu.</li>
                                                     <li>Geben Sie die Anmelde-ID und das Kennwort dieses Benutzers mit den JNDI-Eigenschaften (<b>mfp.config.service.user</b> und <b>mfp.config.service.password</b>) des Verwaltungsservice an.</li>
-                                                    <li>Ordnen Sie den Sicherheitsrollen des Verwaltungsservice und der {{ site.data.keys.mf_console }} Benutzer zu (siehe <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren</a>).</li>
+                                                    <li>Ordnen Sie den Sicherheitsrollen des Verwaltungsservice und der {{ site.data.keys.mf_console }} Benutzer zu (siehe <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren</a>).</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -406,7 +406,7 @@ Bedingungen erfüllt sein:
                                 <ul>
                                     <li>Geben Sie das Installationsverzeichnis von Apache Tomcat ein.</li>
                                     <li>Geben Sie den für die JMX-Kommunikation mit RMI verwendeten Port ein. Der Standardport ist 8686. Das Server Configuration Tool modifiziert zum Öffnen dieses Ports die Datei <b>Tomcat-Installationsverzeichnis/bin/setenv.bat</b> oder <b>Tomcat-Installationsverzeichnis/bin/setenv.sh</b>. Wenn Sie den Port manuell öffnen wollen oder bereits in <b>setenv.bat</b> oder <b>setenv.sh</b> über Code zum Öffnen des Ports verfügen, verwenden Sie das Tool nicht. Verwenden Sie stattdessen Ant-Tasks für die Installation. Bei der Installation mit Ant-Tasks gibt es eine Option für das manuelle Öffnen des RMI-Ports.</li>
-                                    <li>Erstellen Sie einen Standardbenutzer für die Anmeldung bei der Konsole. Dieser Benutzer wird auch in der Konfigurationsdatei <b>tomcat-users.xml</b> erstellt. Für eine Produktionsinstallation sollten Sie die Option Create a default user abwählen und den Benutzerzugriff nach der Installation konfigurieren. Weitere Informationen finden Sie unter <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren</a>.</li>
+                                    <li>Erstellen Sie einen Standardbenutzer für die Anmeldung bei der Konsole. Dieser Benutzer wird auch in der Konfigurationsdatei <b>tomcat-users.xml</b> erstellt. Für eine Produktionsinstallation sollten Sie die Option Create a default user abwählen und den Benutzerzugriff nach der Installation konfigurieren. Weitere Informationen finden Sie unter <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren</a>.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -501,12 +501,11 @@ Für andere unterstützte Topologien (siehe [Topologien und Netzabläufe](../top
 
 Es handelt sich um folgende Ant-Tasks: 
 
-* [Ant-Tasks für die Installation der {{ site.data.keys.mf_console }}, der MobileFirst-Server-Artefakte, des MobileFirst-Server-Verwaltungsservice und des Liveaktualisierungsservice](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [Ant-Tasks für die Installation des MobileFirst-Server-Push-Service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [Ant-Tasks für die Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [Ant-Tasks für die Installation der {{ site.data.keys.mf_console }}, der MobileFirst-Server-Artefakte, des MobileFirst-Server-Verwaltungsservice und des Liveaktualisierungsservice](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [Ant-Tasks für die Installation des MobileFirst-Server-Push-Service](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [Ant-Tasks für die Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-Eine Übersicht über die Installation mit der Beispielkonfigurationsdatei und den Beispiel-Taks finden Sie unter
-[{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../tutorials/command-line).
+Eine Übersicht über die Installation mit der Beispielkonfigurationsdatei und den Beispiel-Taks finden Sie unter [{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../../simple-install/tutorials/command-line).
 
 Sie können eine Ant-Datei mit der Ant-Distribution ausführen, die Teil der Produktinstallation ist. Wenn Sie beispielsweise einen Cluster mit
 WebSphere Application Server Network Deployment und
@@ -585,9 +584,9 @@ funktionieren. Mit diesen JNDI-Eigenschaften werden die JMX-Kommunikation und di
 Komponenten definiert (z. B. zum Liveaktualisierungsservice, zum Push-Service, zum Analyseservice oder zum Autorisierungsserver). Sie können aber auch Werte für andere JNDI-Eigenschaften
 definieren. Verwenden Sie dafür das Element `<property>` der drei genannten Tasks. Eine Liste der JNDI-Eigenschaften finden Sie unter: 
 
-* [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
-* [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
-* [Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
+* [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
+* [Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 Beispiel: 
 
@@ -644,7 +643,7 @@ Sie planen,
 und Version 7.1.0 auf demselben Liberty-Server auszuführen. Bis Version 7.1.0 unterstützt {{ site.data.keys.mf_server }}
 nur Features von Java EE 6. 
 
-Wenn Sie also die Verwendung der Features von Java EE 6 erzwingen wollen, verwenden Sie das Attribut jeeversion des Elements `<websphereapplicationserver>`. Beispiel:
+Wenn Sie also die Verwendung der Features von Java EE 6 erzwingen wollen, verwenden Sie das Attribut jeeversion des Elements `<websphereapplicationserver>`. Beispiel: 
 
 ```xml
 <installmobilefirstadmin execute="${mfp.process.admin}" contextroot="${mfp.admin.contextroot}">
@@ -656,7 +655,7 @@ Wenn Sie also die Verwendung der Features von Java EE 6 erzwingen wollen, verwen
 
 #### JDBC-Eigenschaften der Datenquelle angeben
 {: #specify-data-source-jdbc-properties }
-Sie können die Eigenschaften der JDBC-Verbindung mit dem Element `<property>` eines Elements `<database>` angeben. Dieses Element ist in den Ant-Tasks **configureDatabase**, **installmobilefirstadmin**, **installmobilefirstruntime** und **installmobilefirstpush** verfügbar. Beispiel:
+Sie können die Eigenschaften der JDBC-Verbindung mit dem Element `<property>` eines Elements `<database>` angeben. Dieses Element ist in den Ant-Tasks **configureDatabase**, **installmobilefirstadmin**, **installmobilefirstruntime** und **installmobilefirstpush** verfügbar. Beispiel: 
 
 ```xml
 <configuredatabase kind="MobileFirstAdmin">
@@ -681,14 +680,14 @@ möchten, benötigen Sie Folgendes:
 * Ant-Installation
 * Kopie der Datei **mfp-ant-deployer.jar** für den fernen Computer. Diese Bibliothek enthält die Definition der Ant-Tasks. 
 * Angabe der zu installierenden Ressourcen. Stanardmäßig werden die WAR-Dateien aus dem Umfeld von
-**mfp-ant-deployer.jar** verwendet. Sie können die Position dieser WAR-Dateien jedoch angeben. Beispiel:
+**mfp-ant-deployer.jar** verwendet. Sie können die Position dieser WAR-Dateien jedoch angeben. Beispiel: 
 
 ```xml
 <installmobilefirstadmin execute="true" contextroot="/mfpadmin" serviceWAR="/usr/mfp/mfp-admin-service.war">
   <console install="true" warFile="/usr/mfp/mfp-admin-ui.war"/>
 ```
 
-Weitere Informationen zur Verwendung von Ant-Tasks für die Installation der einzelnen MobileFirst-Server-Komponenten finden Sie in den [Referenzinformationen zur Installation](../installation-reference).
+Weitere Informationen zur Verwendung von Ant-Tasks für die Installation der einzelnen MobileFirst-Server-Komponenten finden Sie in den [Referenzinformationen zur Installation](../../installation-reference).
 
 #### Ziele für WebSphere Application Server Network Deployment angeben
 {: #specify-websphere-application-server-network-deployment-targets }
@@ -702,9 +701,7 @@ Für die Installation in WebSphere Application Server Network Deployment muss de
 Die Beispieldateien (z. B.
 **configure-wasnd-cluster-DBMS.xml**,
 **configure-wasnd-server-DBMS.xml**
-und **configure-wasnd-node-DBMS.xml**) enthalten die Deklaration für die Implementierung in den einzelnen Zielarten. Weitere Informationen
-zur Verwendung von Ant-Tasks für die Installation der einzelnen MobileFirst-Server-Komponenten finden Sie in den
-[Referenzinformationen zur Installation](../installation-reference).
+und **configure-wasnd-node-DBMS.xml**) enthalten die Deklaration für die Implementierung in den einzelnen Zielarten. Weitere Informationen zur Verwendung von Ant-Tasks für die Installation der einzelnen MobileFirst-Server-Komponenten finden Sie in den [Referenzinformationen zur Installation](../../installation-reference).
 
 > Hinweis: Ab
 Version 8.0.0 wird keine Beispielkonfigurationsdatei für eine WebSphere-Application-Server-Network-Deployment-Zelle
@@ -757,7 +754,7 @@ in einigen Liberty-Versionen die Startsequenz für die Laufzeit und den Verwaltu
 können Sie das Standardelement
 **executor** ändern. Legen Sie für die Attribute
 **coreThreads** und **maxThreads** große Werte fest.
-Beispiel:
+Beispiel: 
 
 ```xml
 <executor id="default" name="LargeThreadPool"
@@ -812,8 +809,7 @@ Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Ein
 
 
 
-Weitere Informationen zu den JNDI-Eigenschaften für den Verwaltungsservice finden Sie in der
-[Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
+Weitere Informationen zu den JNDI-Eigenschaften für den Verwaltungsservice finden Sie in der [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 
 Lesen Sie für eine Farmkonfiguration auch die folgenden
 Artikel: 
@@ -825,7 +821,7 @@ Artikel:
 #### Klassenladeprogramm
 {: #class-loader }
 Das Klassenladeprogramm für alle Anwendungen muss mit der Delegierung
-"Übergeordnete zuletzt" (parentLast) arbeiten. Beispiel:
+"Übergeordnete zuletzt" (parentLast) arbeiten. Beispiel: 
 
 ```xml
 <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
@@ -837,7 +833,7 @@ Das Klassenladeprogramm für alle Anwendungen muss mit der Delegierung
 
 #### Benutzerfeature Kennwort-Decoder
 {: #password-decoder-user-feature }
-Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
+Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel: 
 
 * Auf UNIX- und Linux-Systemen:
 
@@ -892,7 +888,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a>.</p>
+                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a>.</p>
 
                 <h3>Datenquelle</h3>
                 <p>Als JNDI-Name der Dateiquelle für den Verwaltungsservice muss <b>jndiName=Kontextstammverzeichnis/jdbc/mfpAdminDS</b> definiert werden. Das folgende Beispiel zeigt einen Fall, bei dem der Verwaltungsservice mit dem Kontextstammverzeichnis <b>/mfpadmin</b> installiert ist und eine relationale Datenbank verwendet:</p>
@@ -967,7 +963,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
 {% endhighlight %}
 
                 <p>Die Eigenschaft mfp.admin.endpoint hat normalerweise den Wert <b>*://*:*/Kontextstammverzeichnis_des_Verwaltungsservice</b>.<br/>
-                Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
+Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Sicherheitsrollen</h3>
                 <p>Deklarieren Sie die folgenden Rollen im Element <b>application-bnd</b> der Anwendung:</p>
@@ -1001,7 +997,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
 
-                <p>Sie müssen die Eigenschaft <b>mobilefirst/mfp.authorization.server</b> definieren. Beispiel:</p>
+                <p>Sie müssen die Eigenschaft <b>mobilefirst/mfp.authorization.server</b> definieren. Beispiel: </p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
@@ -1014,7 +1010,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a>.</p>
+                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a>.</p>
 
                 <h3>Datenquelle</h3>
                 <p>Als JNDI-Name der Datenquelle für die Laufzeit muss <b>jndiName=Kontextstammverzeichnis/jdbc/mfpDS</b> definiert werden. Das folgende Beispiel zeigt einen Fall, bei dem die Laufzeit mit dem Kontextstammverzeichnis <b>/mobilefirst</b> installiert ist und eine relationale Datenbank verwendet:</p>
@@ -1062,7 +1058,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b>: Der Wert muss <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b> lauten.</li>
                 </ul>
-                Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service</a>.
+                Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service</a>.
             </div>
         </div>
     </div>
@@ -1119,7 +1115,7 @@ in einigen Liberty-Versionen die Startsequenz für die Laufzeit und den Verwaltu
 können Sie das Standardelement
 **executor** ändern. Legen Sie für die Attribute
 **coreThreads** und **maxThreads** große Werte fest.
-Beispiel:
+Beispiel: 
 
 ```xml
 <executor id="default" name="LargeThreadPool"
@@ -1176,15 +1172,14 @@ Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Ein
 
 
 
-* Weitere Informationen zu den JNDI-Eigenschaften für den Verwaltungsservice finden Sie in der
-[Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
+* Weitere Informationen zu den JNDI-Eigenschaften für den Verwaltungsservice finden Sie in der [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 * Weitere Informationen zu den JNDI-Eigenschaften für die Laufzeit
-finden Sie in der [Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+finden Sie in der [Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 #### Klassenladeprogramm
 {: #class-loader-collective }
 Das Klassenladeprogramm für alle Anwendungen muss mit der Delegierung
-"Übergeordnete zuletzt" (parentLast) arbeiten. Beispiel:
+"Übergeordnete zuletzt" (parentLast) arbeiten. Beispiel: 
 
 ```xml
 <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
@@ -1196,7 +1191,7 @@ Das Klassenladeprogramm für alle Anwendungen muss mit der Delegierung
 
 #### Benutzerfeature Kennwort-Decoder
 {: #password-decoder-user-feature-collective }
-Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
+Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel: 
 
 * Auf UNIX- und Linux-Systemen:
 
@@ -1254,7 +1249,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a>.</p>
+                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a>.</p>
 
                 <h3>Datenquelle</h3>
                 <p>Als JNDI-Name der Dateiquelle für den Verwaltungsservice muss <b>jndiName=Kontextstammverzeichnis/jdbc/mfpAdminDS</b> definiert werden. Das folgende Beispiel zeigt einen Fall, bei dem der Verwaltungsservice mit dem Kontextstammverzeichnis <b>/mfpadmin</b> installiert ist und eine relationale Datenbank verwendet:</p>
@@ -1332,7 +1327,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
 {% endhighlight %}
 
                 <p>Die Eigenschaft mfp.admin.endpoint hat normalerweise den Wert <b>*://*:*/Kontextstammverzeichnis_des_Verwaltungsservice</b>.<br/>
-                Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
+Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Sicherheitsrollen</h3>
                 <p>Deklarieren Sie die folgenden Rollen im Element <b>application-bnd</b> der Anwendung:</p>
@@ -1368,7 +1363,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
 
-                <p>Sie müssen die Eigenschaft <b>mobilefirst/mfp.authorization.server</b> definieren. Beispiel:</p>
+                <p>Sie müssen die Eigenschaft <b>mobilefirst/mfp.authorization.server</b> definieren. Beispiel: </p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
@@ -1381,7 +1376,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a>.</p>
+                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a>.</p>
 
                 <h3>Datenquelle</h3>
                 <p>Als JNDI-Name der Datenquelle für die Laufzeit muss <b>jndiName=Kontextstammverzeichnis/jdbc/mfpDS</b> definiert werden. Das folgende Beispiel zeigt einen Fall, bei dem die Laufzeit mit dem Kontextstammverzeichnis <b>/mobilefirst</b> installiert ist und eine relationale Datenbank verwendet:</p>
@@ -1433,7 +1428,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b>: Der Wert muss <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b> lauten.</li>
                 </ul>
-                Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service</a>.
+                Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service</a>.
             </div>
         </div>
     </div>
@@ -1471,14 +1466,14 @@ MobileFirst-Server-Komponenten und für {{ site.data.keys.mf_analytics }}](../to
 
 #### Anwendungsservereinstellungen
 {: #application-server-settings-tomcat }
-Sie müssen das  **Valve-Element für Single Sign-On ** aktivieren. Beispiel:
+Sie müssen das  **Valve-Element für Single Sign-On ** aktivieren. Beispiel: 
 
 ```xml
 <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
 ```
 
 Bei Bedarf können Sie das Speicherrealm aktivieren, wenn die Benutzer in
-**tomcat-users.xml** definiert sind. Beispiel:
+**tomcat-users.xml** definiert sind. Beispiel: 
 
 ```xml
 <Realm className="org.apache.catalina.realm.MemoryRealm"/>
@@ -1527,7 +1522,7 @@ Bei Bedarf können Sie das Speicherrealm aktivieren, wenn die Benutzer in
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a>.</p>
+                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a>.</p>
 
                 <h3>Datenquelle</h3>
                 <p>Die Datenquelle (jdbc/mfpAdminDS) wird im Element **Context** als Ressource deklariert. Beispiel: </p>
@@ -1594,7 +1589,7 @@ Bei Bedarf können Sie das Speicherrealm aktivieren, wenn die Benutzer in
                 <h3>Obligatorische JNDI-Eigenschaften</h3>
                 <p>Sie müssen die Eigenschaft <b>mfp.admin.endpoint</b> definieren. Diese Eigenschaft hat normalerweise den Wert <b>*://*:*/Kontextstammverzeichnis_des_Verwaltungsservice</b>.
                 <br/><br/>
-                Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
+Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Sicherheitsrollen</h3>
                 <p>Die für diese Anwendung verfügbaren Sicherheitsrollen sind:</p>
@@ -1643,7 +1638,7 @@ Bei Bedarf können Sie das Speicherrealm aktivieren, wenn die Benutzer in
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a>.</p>
+                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a>.</p>
 
                 <h3>Datenquelle</h3>
                 <p>Der JNDI-Name der Datenquelle für die Laufzeit muss wie folgt definiert werden: <b>/jdbc/mfpDS</b>. Deklarieren Sie die Datenquelle im Element <b>Context</b> als Ressource.</p>
@@ -1680,7 +1675,7 @@ Bei Bedarf können Sie das Speicherrealm aktivieren, wenn die Benutzer in
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b>: Der Wert muss <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b> lauten.</li>
                 </ul>
-                Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service</a>.
+                Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service</a>.
             </div>
         </div>
     </div>
@@ -1833,7 +1828,7 @@ zuerst (übergeordneter zuletzt)** aus.
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a>.</p>
+                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a>.</p>
 
                 <h3>Datenquelle</h3>
                 <p>Erstellen Sie eine Datenquelle für den Verwaltungsservice und ordnen Sie sie <b>jdbc/mfpAdminDS</b> zu.</p>
@@ -1900,7 +1895,7 @@ zuerst (übergeordneter zuletzt)** aus.
                 <br/><br/>
                 Sie müssen die Eigenschaft <b>mfp.admin.endpoint</b> definieren. Diese Eigenschaft hat normalerweise den Wert <b>*://*:*/Kontextstammverzeichnis_des_Verwaltungsservice</b>.
                 <br/><br/>
-                Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
+Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Sicherheitsrollen</h3>
                 <p>Die für diese Anwendung verfügbaren Sicherheitsrollen sind:</p>
@@ -1959,7 +1954,7 @@ zuerst (übergeordneter zuletzt)** aus.
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a>.</p>
+                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a>.</p>
 
                 <h3>Startreihenfolge</h3>
                 <p>Die Laufzeit muss nach dem Verwaltungsservice gestartet werden. Sie können die Reihenfolge im Abschnitt <b>Startverhalten</b> festlegen. Setzen Sie die Position in der Startreihenfolge für den Verwaltungsservice beispielsweise auf <b>1</b> und für die Laufzeit auf <b>2</b>.</p>
@@ -2001,7 +1996,7 @@ zuerst (übergeordneter zuletzt)** aus.
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b>: Der Wert muss <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b> lauten.</li>
                 </ul>
-                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service</a>.</p>
+                <p>Weitere Informationen zu den JNDI-Eigenschaften finden Sie in der <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service</a>.</p>
 
                 <h3>Datenquelle</h3>
                 <p>Erstellen Sie die Datenquelle für den Push-Service und ordnen Sie sie <b>jdbc/imfPushDS</b> zu.</p>
@@ -2118,7 +2113,7 @@ für eine sichere gegenseitige Kommunikation. Mit dem Tool führen Sie dann die 
                                     <li>WebSphere Application Server Liberty Profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-                                Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in den <a href="../../../product-overview/requirements">Systemvoraussetzungen</a>.
+Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in den <a href="../../../../product-overview/requirements">Systemvoraussetzungen</a>.
 
                                 <blockquote><b>Wichtiger Hinweis:</b> Die {{ site.data.keys.product }} unterstützt nur homogene Server-Farmen. Eine Server-Farm wird als homogen eingestuft, wenn sie Anwendungsserver desselben Typs miteinander verbindet. Der Versuch, unterschiedliche Typen von Anwendungsservern zuzuordnen, könnte zur Laufzeit zu einem unvorhersehbaren Verhalten führen. Eine Farm von Tomcat-Servern und Servern mit WebSphere Application Server Full Profile ist beispielsweise eine ungültige Konfiguration.</blockquote>
                             </li>
@@ -2175,7 +2170,7 @@ sie Member der Server-Farm werden.
                                     <li>WebSphere Application Server Liberty Profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-                                Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in den <a href="../../../product-overview/requirements">Systemvoraussetzungen</a>.
+Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in den <a href="../../../../product-overview/requirements">Systemvoraussetzungen</a>.
 
                                 <blockquote><b>Wichtiger Hinweis:</b> Die {{ site.data.keys.product }} unterstützt nur homogene Server-Farmen. Eine Server-Farm wird als homogen eingestuft, wenn sie Anwendungsserver desselben Typs miteinander verbindet. Der Versuch, unterschiedliche Typen von Anwendungsservern zuzuordnen, könnte zur Laufzeit zu einem unvorhersehbaren Verhalten führen. Eine Farm von Tomcat-Servern und Servern mit WebSphere Application Server Full Profile ist beispielsweise eine ungültige Konfiguration.</blockquote>
                             </li>
@@ -2248,7 +2243,7 @@ sie Member der Server-Farm werden.
                             </li>
                             <li>Führen Sie für jeden Server die folgenden Befehle aus. Ersetzen Sie die Datei configure-appserver-database-ant-file.xml durch den Namen der von Ihnen gewählten Ant-Datei. <code>MFP-Installationsverzeichnis/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> und <code>MFP-Installationsverzeichnis/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>
                             <br/><br/>
-                            Mit diesen Befehlen werden die Ant-Tasks <b>installmobilefirstadmin</b> und <b>installmobilefirstruntime</b> ausgeführt. Weitere Informationen zu diesen Tasks finden Sie unter <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services</a> and <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Ant-Tasks für die Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen</a>.</li>
+                            Mit diesen Befehlen werden die Ant-Tasks <b>installmobilefirstadmin</b> und <b>installmobilefirstruntime</b> ausgeführt. Weitere Informationen zu diesen Tasks finden Sie unter <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services</a> and <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Ant-Tasks für die Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen</a>.</li>
                             <li>Wenn Sie eine weitere Laufzeit installieren möchten, führen Sie die folgenden Schritte aus:
                                 <ul>
                                     <li>Erstellen Sie eine Kopie der Ant-Datei, die Sie in Schritt 3.b konfiguriert haben.</li>
@@ -2292,7 +2287,7 @@ dass sie Member einer Server-Farm werden.
                             <li>WebSphere Application Server Liberty Profile</li>
                             <li>Apache Tomcat</li>
                         </ul>
-                        Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in den <a href="../../../product-overview/requirements">Systemvoraussetzungen</a>.
+Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in den <a href="../../../../product-overview/requirements">Systemvoraussetzungen</a>.
 
                         <blockquote><b>Wichtiger Hinweis:</b> Die {{ site.data.keys.product }} unterstützt nur homogene Server-Farmen. Eine Server-Farm wird als homogen eingestuft, wenn sie Anwendungsserver desselben Typs miteinander verbindet. Der Versuch, unterschiedliche Typen von Anwendungsservern zuzuordnen, könnte zur Laufzeit zu einem unvorhersehbaren Verhalten führen. Eine Farm von Tomcat-Servern und Servern mit WebSphere Application Server Full Profile ist beispielsweise eine ungültige Konfiguration.</blockquote>
                     </li>
@@ -2393,7 +2388,7 @@ dass sie Member einer Server-Farm werden.
                                 </blockquote>
                                 Starten Sie schließlich den Server und suchen Sie in der Datei <b>${wlp.install.dir}/usr/servers/Servername/logs/trace.log</b> nach Zeilen, die com.ibm.ssl.trustStore enthalten.
                                 <ul>
-                                    <li>Importieren Sie die öffentlichen Zertifikate der anderen Server der Farm in den Truststore, auf den die Konfigurationsdatei <b>server.xml</b> des Servers verweist. Das Lernprogramm (<a href="../tutorials/graphical-mode">{{ site.data.keys.mf_server }} im Grafikmodus installieren</a>) enthält die Anweisungen für den Austausch der Zertifikate zwischen zwei Liberty-Servern einer Farm. Weitere Informationen finden Sie unter <a href="../tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Farm mit zwei Liberty-Servern für {{ site.data.keys.mf_server }} erstellen</a> in Schritt 5.</li>
+                                    <li>Importieren Sie die öffentlichen Zertifikate der anderen Server der Farm in den Truststore, auf den die Konfigurationsdatei <b>server.xml</b> des Servers verweist. Das Lernprogramm (<a href="../../simple-install/tutorials/graphical-mode">{{ site.data.keys.mf_server }} im Grafikmodus installieren</a>) enthält die Anweisungen für den Austausch der Zertifikate zwischen zwei Liberty-Servern einer Farm. Weitere Informationen finden Sie unter <a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Farm mit zwei Liberty-Servern für {{ site.data.keys.mf_server }} erstellen</a> in Schritt 5.</li>
                                     <li>Starten Sie jede Instanz von WebSphere Application Server Liberty Profile neu, damit die Sicherheitskonfiguration wirksam wird. Die folgenden Schritte sind erforderlich, wenn Sie mit SSO arbeiten möchten.</li>
                                     <li>Starten Sie ein Member der Farm. Nach erfolgreichem Start des Liberty-Servers wird in der LTPA-Standardkonfiguration der LTPA-Keystore <b>${wlp.user.dir}/servers/Servername/resources/security/ltpa.keys</b> generiert.</li>
                                     <li>Kopieren Sie die Datei <b>ltpa.keys</b> in das Verzeichnis <b>${wlp.user.dir}/servers/Servername/resources/security</b> jedes Farmmembers, um die LTPA-Keystores auf allen Farmmembern zu replizieren. Weitere Informationen zur LTPA-Konfiguration finden Sie unter <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">LTPA im Liberty-Profil konfigurieren</a>.</li>
@@ -2479,6 +2474,5 @@ die folgenden JNDI-Eigenschaften definieren:
 * **mfp.admin.farm.missed.heartbeats.timeout**
 
 <br/>
-Weitere Informationen zu JNDI-Eigenschaften finden Sie in der
-[Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+Weitere Informationen zu JNDI-Eigenschaften finden Sie in der [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
