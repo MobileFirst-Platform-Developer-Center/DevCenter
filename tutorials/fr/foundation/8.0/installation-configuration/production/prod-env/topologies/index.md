@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Topologies et flots réseau
-weight: 3
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
@@ -60,17 +60,17 @@ L'environnement d'exécution communique également avec le service d'administrat
 
 Les propriétés JNDI utilisées pour la communication entre l'environnement d'exécution et le service d'administration sont les suivantes :
 
-#### Service d'administration de {{ site.data.keys.mf_server }}
+#### Le service d'administration de {{ site.data.keys.mf_server }}
 {: #mobilefirst-server-administration-service }
 
-* [Propriétés JNDI pour les services d'administration : JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
-* [Propriétés JNDI pour les services d'administration : proxys](../server-configuration/#jndi-properties-for-administration-service-proxies)
-* [Propriétés JNDI pour les services d'administration : topologies](../server-configuration/#jndi-properties-for-administration-service-topologies)
+* [Propriétés JNDI pour les services d'administration : JMX](../../server-configuration/#jndi-properties-for-administration-service-jmx)
+* [Propriétés JNDI pour les services d'administration : proxys](../../server-configuration/#jndi-properties-for-administration-service-proxies)
+* [Propriétés JNDI pour les services d'administration : topologies](../../server-configuration/#jndi-properties-for-administration-service-topologies)
 
 #### L'environnement d'exécution de {{ site.data.keys.product }}
 {: #mobilefirst-foundation-runtime }
 
-* [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 ### Communication entre le service d'administration de {{ site.data.keys.mf_server }} et l'environnement d'exécution de {{ site.data.keys.product }} dans d'autres serveurs
 {: #mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers }
@@ -82,7 +82,7 @@ Pour un cluster de WebSphere Application Server autonome, de profil Liberty de W
 
 ### Communication entre le service d'administration de {{ site.data.keys.mf_server }} et l'environnement d'exécution de MobileFirst et le gestionnaire de déploiement sur WebSphere Application Server Network Deployment
 {: #mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment }
-Sur WebSphere Application Server Network Deployment, l'environnement d'exécution et le service d'administration obtiennent les beans gérés JMX qui sont utilisés pour la [communication entre l'environnement d'exécution de {{ site.data.keys.product }} et le service d'administration de {{ site.data.keys.mf_server }}](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) et pour la [communication entre le service d'administration de {{ site.data.keys.mf_server }} et l'environnement d'exécution de {{ site.data.keys.product }} dans d'autres serveurs](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers) avec le gestionnaire de déploiement. Les propriétés JNDI correspondantes sont **mfp.admin.jmx.dmgr.*** décrites dans [Propriétés JNDI pour les services d'administration : JMX](../server-configuration/#jndi-properties-for-administration-service-jmx).
+Sur WebSphere Application Server Network Deployment, l'environnement d'exécution et le service d'administration obtiennent les beans gérés JMX qui sont utilisés pour la [communication entre l'environnement d'exécution de {{ site.data.keys.product }} et le service d'administration de {{ site.data.keys.mf_server }}](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) et pour la [communication entre le service d'administration de {{ site.data.keys.mf_server }} et l'environnement d'exécution de {{ site.data.keys.product }} dans d'autres serveurs](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers) avec le gestionnaire de déploiement. Les propriétés JNDI correspondantes sont **mfp.admin.jmx.dmgr.*** décrites dans [Propriétés JNDI pour les services d'administration : JMX](../../server-configuration/#jndi-properties-for-administration-service-jmx).
 
 Le gestionnaire de déploiement doit être actif pour que les opérations nécessitant une communication JMX entre l'environnement d'exécution et le service d'administration puissent être exécutées. Ces opérations peuvent être l'initialisation de l'environnement d'exécution ou la notification d'une modification effectuée via le service d'administration.
 
@@ -115,13 +115,13 @@ Les propriétés JNDI permettant de configurer cette communication entre les deu
 
 * **mfp.config.service.user**
 * **mfp.config.service.password**
-* Propriétés décrites dans [Propriétés JNDI pour les services d'administration : proxys](../server-configuration/#jndi-properties-for-administration-service-proxies).
+* Propriétés décrites dans [Propriétés JNDI pour les services d'administration : proxys](../../server-configuration/#jndi-properties-for-administration-service-proxies).
 
 ### Communication entre {{ site.data.keys.mf_console }} et le service d'administration de {{ site.data.keys.mf_server }}
 {: #mobilefirst-operations-console-to-mobilefirst-server-administration-service }
 {{ site.data.keys.mf_console }} est une interface utilisateur Web qui agit en tant que serveur frontal avec le service d'administration. Cette console communique avec les services REST du service d'administration via HTTP ou HTTPS. Les utilisateurs autorisés à utiliser la console doivent également être autorisés à utiliser le service d'administration. Chaque utilisateur mappé à un rôle de sécurité spécifique de la console doit également être mappé au même rôle de sécurité du service d'administration. Avec cette configuration, les demandes provenant de la console peuvent alors être acceptées par le service.
 
-Les propriétés JNDI permettant de configurer cette communication entre les deux services sont décrites dans [Propriétés JNDI pour {{ site.data.keys.mf_console }}](../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
+Les propriétés JNDI permettant de configurer cette communication entre les deux services sont décrites dans [Propriétés JNDI pour {{ site.data.keys.mf_console }}](../../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
 
 > Remarque : La propriété **mfp.admin.endpoint** permet à la console de localiser le service d'administration. Vous pouvez utiliser l'astérisque "\*" comme caractère générique pour indiquer que l'URL, générée par la console pour contacter les services d'administration, utilise la même valeur que la demande HTTP entrante sur la console. Par exemple, `*://*:*/mfpadmin` indique que le protocole, l'hôte et le port de la console doivent être utilisés, mais que **mfpadmin** doit être utilisé comme racine de contexte. Cette propriété est spécifiée pour l'application de console.
 
@@ -151,11 +151,11 @@ Le service push génère un trafic sortant avec le service de notification exter
 * **push.apns.proxy**
 * **push.gcm.proxy**
 
-Pour plus d'informations, voir [Liste des propriétés JNDI pour le service push de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+Pour plus d'informations, voir [Liste des propriétés JNDI pour le service push de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ### Communication entre les appareils mobiles et l'environnement d'exécution de {{ site.data.keys.product }}
 {: #mobile-devices-to-mobilefirst-foundation-runtime }
-Les appareils mobiles contactent l'environnement d'exécution. La sécurité de cette communication est déterminée par la configuration de l'application et des adaptateurs qui sont demandés. Pour plus d'informations, voir [Infrastructure de sécurité de {{ site.data.keys.product_adj }}](../../../authentication-and-security).
+Les appareils mobiles contactent l'environnement d'exécution. La sécurité de cette communication est déterminée par la configuration de l'application et des adaptateurs qui sont demandés. Pour plus d'informations, voir [Infrastructure de sécurité de {{ site.data.keys.product_adj }}](../../../../authentication-and-security).
 
 ## Contraintes sur les composants {{ site.data.keys.mf_server }} et {{ site.data.keys.mf_analytics }}
 {: #constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics }
@@ -216,7 +216,7 @@ Avec une machine virtuelle Java, seul le déploiement symétrique est possible, 
 
 #### Configuration des propriétés JNDI
 {: #configuration-of-jndi-properties }
-Certaines propriétés JNDI sont requises pour activer la communication JMX (Java Management Extensions) entre le service d'administration et l'environnement d'exécution et pour définir le service d'administration qui gère un environnement d'exécution. Pour plus d'informations sur ces propriétés, voir[Liste des propriétés JNDI pour le service d'administration de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Certaines propriétés JNDI sont requises pour activer la communication JMX (Java Management Extensions) entre le service d'administration et l'environnement d'exécution et pour définir le service d'administration qui gère un environnement d'exécution. Pour plus d'informations sur ces propriétés, voir[Liste des propriétés JNDI pour le service d'administration de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 **Serveur de profil Liberty de WebSphere Application Server autonome**  
 Les propriétés JNDI globales suivantes sont requises pour les services d'administration et les environnements d'exécution :
@@ -294,7 +294,7 @@ Cette topologie ne prend en charge que le déploiement symétrique. Les environn
 
 #### Configuration des propriétés JNDI
 {: #configuration-of-jndi-properties-1 }
-Certaines propriétés JNDI sont requises pour activer la communication JMX entre le service d'administration et l'environnement d'exécution du même serveur et pour définir le service d'administration qui gère un environnement d'exécution. Ces propriétés sont répertoriées dans les tableaux présentés ci-après. Pour savoir comment installer un parc de serveurs, voir [Installation d'un parc de serveurs](../appserver/#installing-a-server-farm). Pour plus d'informations sur les propriétés JNDI, voir [Liste des propriétés JNDI pour le service d'administration de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Certaines propriétés JNDI sont requises pour activer la communication JMX entre le service d'administration et l'environnement d'exécution du même serveur et pour définir le service d'administration qui gère un environnement d'exécution. Ces propriétés sont répertoriées dans les tableaux présentés ci-après. Pour savoir comment installer un parc de serveurs, voir [Installation d'un parc de serveurs](../appserver/#installing-a-server-farm). Pour plus d'informations sur les propriétés JNDI, voir [Liste des propriétés JNDI pour le service d'administration de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 **Parc de serveurs de profil Liberty de WebSphere Application Server**  
 Les propriétés JNDI globales suivantes sont requises dans chaque serveur du parc de serveurs pour les services d'administration et les environnements d'exécution :
@@ -337,7 +337,7 @@ Les propriétés JNDI globales suivantes sont requises dans chaque serveur du pa
             mfp.admin.jmx.port
         </td>
         <td>
-            Port du connecteur REST, qui doit être identique à la valeur de l'attribut httpsPort déclaré dans l'élément <code>httpEndpoint</code> du fichier <b>server.xml</b> du serveur de profil Liberty de WebSphere Application Server. 
+            Port du connecteur REST, qui doit être identique à la valeur de l'attribut httpsPort déclaré dans l'élément <code>httpEndpoint</code> du fichier <b>server.xml</b> du serveur de profil Liberty de WebSphere Application Server.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
@@ -350,7 +350,7 @@ Les propriétés JNDI globales suivantes sont requises dans chaque serveur du pa
         </td>
         <td>
             Nom d'utilisateur de l'administrateur Liberty de WebSphere Application Server qui est défini dans l'élément <code>administrator-role</code> du fichier <b>server.xml</b> du serveur de profil Liberty de WebSphere Application Server.
-            
+
 {% highlight xml %}
 <administrator-role>
     <user>MfpRESTUser</user>
@@ -440,7 +440,7 @@ Le déploiement de cette topologie possède les caractéristiques suivantes :
 
 #### Configuration des propriétés JNDI
 {: #configuration-of-jndi-properties-2 }
-Les tableaux ci-après répertorient les propriétés JNDI requises pour activer la communication JMX entre le service d'administration et l'environnement d'exécution et pour définir le service d'administration qui gère un environnement d'exécution. Pour plus d'informations sur ces propriétés, voir[Liste des propriétés JNDI pour le service d'administration de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). Pour savoir comment installer manuellement une collectivité Liberty, voir [Installation manuelle sur une collectivité Liberty de WebSphere Application Server](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
+Les tableaux ci-après répertorient les propriétés JNDI requises pour activer la communication JMX entre le service d'administration et l'environnement d'exécution et pour définir le service d'administration qui gère un environnement d'exécution. Pour plus d'informations sur ces propriétés, voir[Liste des propriétés JNDI pour le service d'administration de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). Pour savoir comment installer manuellement une collectivité Liberty, voir [Installation manuelle sur une collectivité Liberty de WebSphere Application Server](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
 
 Les propriétés JNDI globales suivantes sont requises pour les services d'administration :
 
@@ -550,9 +550,9 @@ Les propriétés JNDI globales suivantes sont requises pour les environnements d
 
 La propriété JNDI suivante est requise pour l'environnement d'exécution lorsque plusieurs contrôleurs (répliques) utilisant les mêmes composants d'administration sont utilisés :
 
-| Propriétés JNDI | Valeurs | 
+| Propriétés JNDI | Valeurs |
 |-----------------|--------|
-| mfp.admin.jmx.replica | Liste des noeuds finaux des différentes répliques de contrôleur avec la syntaxe suivante : `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+| mfp.admin.jmx.replica | Liste des noeuds finaux des différentes répliques de contrôleur avec la syntaxe suivante : `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 
 Lorsque plusieurs composants d'administration sont déployés dans le contrôleur, la valeur de la propriété JNDI **mfp.admin.environmentid** locale de chaque environnement d'exécution doit être identique à celle définie pour le service d'administration qui gère l'environnement d'exécution.
 
@@ -613,7 +613,7 @@ Le déploiement de cette topologie possède les caractéristiques suivantes :
 
 #### Configuration des propriétés JNDI
 {: #configuration-of-jndi-properties-3 }
-Certaines propriétés JNDI sont requises pour activer la communication JMX entre le service d'administration et l'environnement d'exécution et pour définir le service d'administration qui gère un environnement d'exécution. Pour plus d'informations sur ces propriétés, voir[Liste des propriétés JNDI pour le service d'administration de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Certaines propriétés JNDI sont requises pour activer la communication JMX entre le service d'administration et l'environnement d'exécution et pour définir le service d'administration qui gère un environnement d'exécution. Pour plus d'informations sur ces propriétés, voir[Liste des propriétés JNDI pour le service d'administration de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 Les propriétés JNDI locales suivantes sont requises pour les services d'administration et les environnements d'exécution :
 
@@ -673,7 +673,7 @@ Vous pouvez installer plusieurs environnements d'exécution. Chaque environnemen
 
 Les contraintes décrites dans [Contraintes sur le service d'administration de {{ site.data.keys.mf_server }}, le service Live Update de {{ site.data.keys.mf_server }} et l'environnement d'exécution de {{ site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) s'appliquent. Chaque environnement d'exécution (avec sa racine de contexte) doit avoir ses propres tables de base de données.
 
-> Pour obtenir des instructions, voir [Configuration de plusieurs environnements d'exécution](../server-configuration/#configuring-multiple-runtimes).
+> Pour obtenir des instructions, voir [Configuration de plusieurs environnements d'exécution](../../server-configuration/#configuring-multiple-runtimes).
 
 ## Plusieurs instances de {{ site.data.keys.mf_server }} sur le même serveur ou la même cellule WebSphere Application Server
 {: #multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell }

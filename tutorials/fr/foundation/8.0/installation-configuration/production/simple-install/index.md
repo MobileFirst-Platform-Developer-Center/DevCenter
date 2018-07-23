@@ -1,27 +1,27 @@
 ---
 layout: tutorial
-title: Simple MobileFirst Server installation
+title: Installation simple de MobileFirst Server
 breadcrumb_title: Simple MobileFirst Server installation
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-This getting started tutorial guides you through the installation procedure to have a functional {{ site.data.keys.mf_server }}, cluster with two nodes on Liberty profile. The installation can be done in two ways:
-* By using the graphical mode of IBM Installation Manager and the Server Configuration Tool.
-* By using the command line tool.
+Ce tutoriel de mise en route vous guide dans la procédure d'installation afin que vous disposiez d'un cluster {{ site.data.keys.mf_server }} fonctionnel avec deux noeuds sur le profil Liberty. Vous pouvez procéder à l'installation de deux façons :
+* Via le mode graphique d'IBM Installation Manager et l'outil de configuration de serveur.
+* Via l'outil de ligne de commande.
 
-## Installing {{ site.data.keys.mf_server }} in graphical mode
+## Installation de {{ site.data.keys.mf_server }} en mode graphique
 {: #graphical-mode }
 
-Use the graphical mode of IBM Installation Manager and the Server Configuration Tool to install {{ site.data.keys.mf_server }} by following the steps in the [tutorial for Installing {{ site.data.keys.mf_server }} in graphical mode](tutorials/graphical-mode).
+Utilisez le mode graphique d'IBM Installation Manager et l'outil de configuration de serveur pour installer {{ site.data.keys.mf_server }} en suivant la procédure décrite dans le [tutoriel présentant l'installation de {{ site.data.keys.mf_server }} en mode graphique](tutorials/graphical-mode).
 
-## Installing {{ site.data.keys.mf_server }} in command line mode
+## Installation de {{ site.data.keys.mf_server }} en mode de ligne de commande
 {: #cli-mode }
 
-Use the command line mode of IBM Installation Manager and Ant tasks to install {{ site.data.keys.mf_server }} by following the steps in the [tutorial for Installing {{ site.data.keys.mf_server }} in command-line mode](tutorials/command-line).
+Utilisez le mode de ligne de commande d'IBM Installation Manager et les tâches Ant pour installer {{ site.data.keys.mf_server }} en suivant la procédure du [tutoriel présentant l'installation de {{ site.data.keys.mf_server }} en mode de ligne de commande](tutorials/command-line).
 
-## Next step
+## Etape suivante
 {: #whats-next }
 
-[Configuring {{ site.data.keys.mf_server }}](../server-configuration).
+[Configuration de {{ site.data.keys.mf_server }}](../server-configuration).

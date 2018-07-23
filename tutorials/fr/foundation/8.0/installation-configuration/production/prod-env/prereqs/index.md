@@ -1,56 +1,56 @@
 ---
 layout: tutorial
-title: Installation prerequisites
+title: Conditions préalables à l'installation
 breadcrumb_title: Prerequisites
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-For smooth installation of MobileFirst Server, ensure that you fulfil all the software prerequisites.
+Pour une installation sans problème de MobileFirst Server, assurez-vous de disposer de tous les logiciels prérequis suivants.
 
-Before you install MobileFirst Server, you need to have the following software.
+Avant d'installer MobileFirst Server, vous devez disposer du logiciel suivant.
 
-* **Database Management System (DBMS)**
-  A DBMS is needed to store the technical data of MobileFirst Server components. You must use one of the supported DBMS:
+* **Système de gestion de base de données (SGBD)**
+  Un système de gestion de base de données est nécessaire pour stocker les données techniques des composants MobileFirst Server. Vous devez utiliser l'un des systèmes de gestion de base de données pris en charge :
 
   * IBM DB2
   * MySQL
   * Oracle
 
-  For more information about the versions of DBMS that are supported by the product, see [System requirements](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html). If you use a relational DBMS (IBM DB2, Oracle, or MySQL), you need the JDBC driver for that database during the installation process. The JDBC drivers are not provided by MobileFirst Server installer. Make sure that you have the JDBC driver.
+  Pour plus d'informations sur les versions de système de gestion de base de données prises en charge par le produit, voir [Configuration requise](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html). Si vous utilisez un système de gestion de base de données relationnelle (IBM DB2, Oracle, or MySQL), vous avez besoin du pilote JDBC correspondant à cette base de données lors du processus d'installation. Les pilotes JDBC ne sont pas fournis par le programme d'installation de MobileFirst Server. Vérifiez que vous disposez du pilote JDBC approprié.
 
-  * For DB2, use the DB2 JDBC driver V4.0 (db2jcc4.jar).
-  * For MySQL, use the Connector/J JDBC driver.
-  * For Oracle, use the Oracle thin JDBC driver.
+  * Pour DB2, utilisez le pilote JDBC DB2 V4.0 (db2jcc4.jar).
+  * Pour MySQL, utilisez le pilote JDBC Connector/J.
+  * Pour Oracle, utilisez le pilote JDBC fin d'Oracle.
 
-* **Java™ application server**
-  A Java application server is needed to run the MobileFirst Server applications. You can use any of the following application servers:
+* **Serveur d'applications Java**
+  Un serveur d'applications Java est nécessaire pour exécuter les applications MobileFirst Server. Vous pouvez utiliser n'importe lequel des serveurs d'applications suivants :
 
-  * WebSphere® Application Server Liberty Core
+  * WebSphere Application Server Liberty Core
   * WebSphere Application Server Liberty Network Deployment
   * WebSphere Application Server
   * Apache Tomcat
 
-  For more information about the versions of application servers that are supported by the product, see [System requirements](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html). The application server must run with Java 7 or later. By default, some versions of WebSphere Application Server run with Java 6. With this default, they cannot run MobileFirst Server.
+  Pour plus d'informations sur les versions de serveurs d'applications prises en charge par le produit, voir [Configuration requise](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html). Le serveur d'applications doit exécuter Java version 7 ou ultérieure. Par défaut, certaines versions de WebSphere Application Server s'exécutent avec Java 6. Avec cette version par défaut, ils ne peuvent pas exécuter MobileFirst Server. 
 
-* **IBM Installation Manager V1.8.4 or later**
-  Installation Manager is used to run the installer of MobileFirst Server. You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install IBM MobileFirst Platform Foundation V8.0 because the post installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+* **IBM Installation Manager version 1.8.4 ou version ultérieure**
+  Installation Manager permet d'exécuter le programme d'installation de MobileFirst Server. Vous devez installer Installation Manager version 1.8.4 ou ultérieure. Les anciennes versions d'Installation Manager ne peuvent pas installer IBM MobileFirst Platform Foundation V8.0 car les opérations de post-installation du produit nécessitent Java 7. Les anciennes versions d'Installation Manager sont livrées avec Java 6.
 
-  Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www-01.ibm.com/support/docview.wss?uid=swg27025142).
+  Téléchargez le programme d'installation d'IBM Installation Manager version 1.8.4 ou ultérieure à partir du site [Installation Manager and Packaging Utility download documents](http://www-01.ibm.com/support/docview.wss?uid=swg27025142).
 
-* **Installation Manager repository for MobileFirst Server**
-  You can download the repository from the IBM MobileFirst Platform Foundation eAssembly on [IBM Passport Advantage](https://www-01.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is `IBM MobileFirst Platform Foundation V8.0.zip` file of Installation Manager Repository for IBM MobileFirst Platform Server.
+* **Référentiel Installation Manager pour MobileFirst Server**
+  Vous pouvez télécharger le référentiel à partir d'IBM MobileFirst Platform Foundation eAssembly sur le site [IBM Passport Advantage](https://www-01.ibm.com/software/passportadvantage/pao_customers.htm). Le nom du package est `IBM MobileFirst Platform Foundation V8.0.zip` (référentiel Installation Manager pour IBM MobileFirst Platform Server).
 
-  You might also want to apply the latest fix pack that can be downloaded from [IBM Support Portal](https://www.ibm.com/support/home/product/N651135V62596I83/IBM_MobileFirst_Platform_Foundation). The fix pack cannot be installed without the repository of the base version in the repositories of Installation Manager.
+  Vous souhaiterez peut-être appliquer le dernier groupe de correctifs que vous pouvez télécharger à partir du [portail de support IBM](https://www.ibm.com/support/home/product/N651135V62596I83/IBM_MobileFirst_Platform_Foundation). Ce groupe de correctifs ne peut pas être installé sans le référentiel de la version de base dans les référentiels d'Installation Manager.
 
-The IBM MobileFirst Platform Foundation eAssembly includes the following installers:
+IBM MobileFirst Platform Foundation eAssembly comprend les programmes d'installation suivants :
 * IBM DB2 Workgroup Server Edition
 * IBM WebSphere Application Server Liberty Core
 
-For Liberty, you can also use IBM WebSphere SDK Java Technology edition with IBM WebSphere Application Server Liberty Core supplement.
+Pour Liberty, vous pouvez également utiliser l'édition IBM WebSphere SDK Java Technology avec le supplément IBM WebSphere Application Server Liberty Core.
 
-## Parent topic
+## Rubrique parent
 {: #parent-topic }
 
-* [Installing MobileFirst Server in a production environment](../).
+* [Installation de MobileFirst Server dans un environnement de production](../).
