@@ -7,7 +7,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-要将推送通知或 SMS 通知发送到 iOS、Android 或 Windows 设备，首先需要使用 GCM 详细信息（针对 Android）、APNS 证书（针对 iOS）或 WNS 凭证（针对 Windows 8.1 Universal / Windows 10 UWP）来配置 {{ site.data.keys.mf_server }}。
+要将推送通知或 SMS 通知发送到 iOS、Android 或 Windows 设备，首先需要使用 FCM 详细信息（针对 Android）、APNS 证书（针对 iOS）或 WNS 凭证（针对 Windows 8.1 Universal/Windows 10 UWP）来配置 {{ site.data.keys.mf_server }}。
 然后，可以将通知发送到：所有设备（广播）、已注册特定标记的设备、单个设备标识、用户标识、仅 iOS 设备、仅 Android 设备、仅 Windows 设备或基于已认证的用户。
 
 **先决条件**：请确保已阅读过[通知概述](../)教程。
@@ -15,7 +15,7 @@ weight: 3
 #### 跳转至
 {: #jump-to }
 * [设置通知](#setting-up-notifications)
-    * [Google 云消息传递/ Firebase 云消息传递](#google-cloud-messaging--firebase-cloud-messaging)
+    * [Firebase 云消息传递](#firebase-cloud-messaging)
     * [Apple 推送通知服务](#apple-push-notifications-service)
     * [Windows 推送通知服务](#windows-push-notifications-service)
     * [SMS 通知服务](#sms-notification-service)
@@ -34,13 +34,11 @@ weight: 3
 要启用通知支持，需要在 {{ site.data.keys.mf_server }} 和客户机应用程序中执行几个配置步骤。  
 继续了解服务器端设置，或者跳转至[客户端设置](#tutorials-to-follow-next)。
 
-在服务器端，必要的设置包括：配置所需供应商（APNS、GCM 或 WNS）和映射“push.mobileclient”作用域。
+在服务器端，必要的设置包括：配置所需供应商（APNS、FCM 或 WNS）和映射“push.mobileclient”作用域。
 
-### Google 云消息传递/ Firebase 云消息传递
-{: #google-cloud-messaging--firebase-cloud-messaging }
-> **注：**Google [最近宣布](https://firebase.google.com/support/faq/#gcm-fcm)已从 GCM 转变为 FCM。 同时，也相应地更新了下列指示信息。 另请注意，现行的 GCM 配置将继续有效，但不能使用新的 GCM 配置，而必须改为使用 FCM。
-
-
+### Firebase 云消息传递
+{: #firebase-cloud-messaging }
+> **注：**Google 具有[不推荐的 GCM](https://developers.google.com/cloud-messaging/faq)，并已将云消息传递与 Firebase 相集成。如果您正在使用 GCM 项目，请确保[将 Android 上的 GCM 客户机应用程序迁移到 FCM](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)。
 
 Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。  
 要设置 FCM：
@@ -68,7 +66,7 @@ Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。
 iOS 设备将 Apple 推送通知服务 (APNS) 用于推送通知。  
 要设置 APNS：
 
-1. 为开发或生产环境生成推送通知证书。有关详细步骤，请参阅[此处](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)`针对 iOS` 部分。 
+1. 为开发或生产环境生成推送通知证书。 有关详细步骤，请参阅[此处](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)`针对 iOS` 部分。 
 2. 在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 推送设置**中，选择证书类型并提供证书的文件和密码。 然后，单击**保存**。
 
 #### 注
@@ -308,7 +306,7 @@ phoneNumber | 用于注册设备和接收通知的电话号码。 这是单点�
 ```json
 {
     "message" : {
-            "alert" : "Test message",
+    "alert" : "Test message",
   },
   "settings" : {
     "apns" : {
@@ -398,7 +396,7 @@ phoneNumber | 用于注册设备和接收通知的电话号码。 这是单点�
 
 ### Android
 {: #android }
-* 通知声音、通知可在 GCM 存储器中存储的时间、定制有效内容等。
+* 通知声音、通知可在 FCM 存储器中存储的时间、定制有效内容等。
 * 如果您想要更改通知标题，请在 Android 项目的 **strings.xml** 文件中添加 `push_notification_tile`。
 
 ### iOS

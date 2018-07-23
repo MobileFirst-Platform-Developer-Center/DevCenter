@@ -104,7 +104,7 @@ weight: 5
 
 > 提供预先配置的服务器以供在开发应用程序时使用。有关要在开发应用程序时使用的 {{ site.data.keys.mf_server }} 的信息，请参阅[设置 {{ site.data.keys.product_adj }} 开发环境](../installation-configuration/development)。
 
-{{ site.data.keys.mf_server }} 由以下组件组成。 所有这些组件也包含在 {{ site.data.keys.mf_server }} 中。 在简单情况下，它们全都在相同的应用程序服务器上运行，但是在生产或测试环境中，组件可能在不同的应用程序服务器上运行。 有关这些 {{ site.data.keys.mf_server }} 组件的可能拓扑的信息，请参阅[拓扑和网络流](../installation-configuration/production/topologies)。
+{{ site.data.keys.mf_server }} 由以下组件组成。 所有这些组件也包含在 {{ site.data.keys.mf_server }} 中。 在简单情况下，它们全都在相同的应用程序服务器上运行，但是在生产或测试环境中，组件可能在不同的应用程序服务器上运行。 有关这些 {{ site.data.keys.mf_server }} 组件的可能拓扑的信息，请参阅[拓扑和网络流](../installation-configuration/production/prod-env/topologies)。
 
 ### {{ site.data.keys.product_adj }} 和 {{ site.data.keys.mf_server }} 管理服务
 {: #mobilefirst-and-the-mobilefirst-server-administration-service }
@@ -145,7 +145,7 @@ weight: 5
 
 #### 本地
 {: #on-premises }
-> 有关针对本地环境安装和配置 {{ site.data.keys.mf_server }} 的信息，请参阅[安装 IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver)。
+> 有关针对本地环境安装和配置 {{ site.data.keys.mf_server }} 的信息，请参阅[安装 IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/prod-env/appserver)。
 
 #### 在云上
 {: #on-the-cloud }

@@ -65,7 +65,7 @@ weight: 1
 
 **先决条件：**  
 1. 要安装 {{ site.data.keys.mf_cli }}，需要 NodeJS 和 NPM。  
-下载并安装 [NodeJS V6.11.1](https://nodejs.org/download/release/v6.11.1/) 和 NPM V3.10.10。
+ 下载并安装 [NodeJS V6.11.1](https://nodejs.org/download/release/v6.11.1/) 和 NPM V3.10.10。
 
  要验证安装，请打开命令行窗口并执行以下命令：`node -v`。
 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 设置数据库
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -22,13 +22,13 @@ weight: 2
 但是，如果您决定安装 {{ site.data.keys.product }} 运行时的多个实例（每一个在应用程序服务器中均具有其自身的上下文根），那么每个实例均需要其自身的一组表。 在这种情况下，它们需要处于不同模式中。
 
 > **有关 DB2 的注释：** {{ site.data.keys.product_adj }} 被许可方有权将 DB2 用作 Foundation 的支持系统。 要得益于此，必须在安装 DB2 软件之后：
-> 
+>
 > * 直接从 [IBM Passport Advantage (PPA) Web 站点](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)下载受限使用的激活映像
 > * 使用 **db2licm** 命令应用受限使用的激活许可证文件 **db2xxxx.lic**
 >
 > 从 [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html) 中获取更多信息
 
-#### 跳至：
+#### 跳转至
 {: #jump-to }
 
 * [数据库用户和权限](#database-users-and-privileges)
@@ -89,7 +89,7 @@ weight: 2
 * [Oracle 数据库和用户需求](#oracle-database-and-user-requirements)
 * [MySQL 数据库和用户需求](#mysql-database-and-user-requirements)
 
-> 有关受支持的数据库软件版本的最新列表，请参阅[系统需求](../../../product-overview/requirements/)页面。
+> 有关受支持的数据库软件版本的最新列表，请参阅[系统需求](../../../../product-overview/requirements/)页面。
 
 ### DB2 数据库和用户需求
 {: #db2-database-and-user-requirements }
@@ -121,7 +121,7 @@ QUIT
 
 请确保将数据库字符集设置为 Unicode character set (AL32UTF8)，将国家字符集设置为 UTF8 - Unicode 3.0 UTF-8。  
 
-运行时用户（如[数据库用户和权限](#database-users-and-privileges)中所论述）必须具有关联的表空间和足够的配额来编写 {{ site.data.keys.product }} 服务所需要的技术数据。 有关产品所使用的表的更多信息，请参阅[内部运行时数据库](../installation-reference/#internal-runtime-databases)。
+运行时用户（如[数据库用户和权限](#database-users-and-privileges)中所论述）必须具有关联的表空间和足够的配额来编写 {{ site.data.keys.product }} 服务所需要的技术数据。 有关产品所使用的表的更多信息，请参阅[内部运行时数据库](../../installation-reference/#internal-runtime-databases)。
 
 期望在运行时用户的缺省模式中创建表。 Ant 任务和 Server Configuration Tool 将在作为自变量传递的用户的缺省模式中创建各表。 有关创建表的更多信息，请参阅[手动创建 Oracle 数据库表](#creating-the-oracle-database-tables-manually)。
 
@@ -183,9 +183,9 @@ DISCONNECT;
    ```
 
     其中，@ 符号前面的 mfpuser 是用户名，**IDENTIFIED BY** 后面的 **mfpuser-password** 是密码，**mfp-host** 是运行 {{ site.data.keys.product_adj }} 的主机的名称。
-    
+
     用户必须能够从运行安装了 {{ site.data.keys.mf_server }} 应用程序的 Java 应用程序服务器的主机连接到 MySQL 服务器。
-    
+
 ## 手动创建数据库表
 {: #create-the-database-tables-manually }
 可以使用 Ant 任务或使用 Server Configuration Tool 来为 {{ site.data.keys.mf_server }} 应用程序手动创建数据库表。 这些主题提供了有关如何手动创建这些数据库表的说明和详细信息。
@@ -312,7 +312,7 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 {: #create-the-database-tables-with-the-server-configuration-tool }
 可以使用 Ant 任务或使用 Server Configuration Tool 来为 {{ site.data.keys.mf_server }} 应用程序手动创建数据库表。 以下主题提供了有关使用 Server Configuration Tool 安装 {{ site.data.keys.mf_server }} 时设置数据库的说明和详细信息。
 
-Server Configuration Tool 可以在安装过程中创建数据库表。 在某些情况下，甚至可以为 {{ site.data.keys.mf_server }} 组件创建数据库和用户。 有关使用 Server Configuration Tool 的安装流程的概述，请参阅[以图形方式安装 {{ site.data.keys.mf_server }}](../tutorials/graphical-mode)。
+Server Configuration Tool 可以在安装过程中创建数据库表。 在某些情况下，甚至可以为 {{ site.data.keys.mf_server }} 组件创建数据库和用户。 有关使用 Server Configuration Tool 的安装流程的概述，请参阅[以图形方式安装 {{ site.data.keys.mf_server }}](../../simple-install/tutorials/graphical-mode)。
 
 在完成配置凭证并单击 Server Configuration Tool 窗格中的**部署**之后，将运行以下操作：
 
@@ -399,7 +399,7 @@ Server Configuration Tool 可以为您创建 MySQL 数据库。 在 Server Confi
 
 如果使用 Ant 任务安装 {{ site.data.keys.mf_server }}，那么可在本部分中找到有关如何设置数据库的相关信息。
 
-您可以使用 Ant 任务来设置 {{ site.data.keys.mf_server }} 数据库表。 在某些情况下，还可以使用这些任务创建数据库和用户。 有关使用 Ant 任务的安装流程的概述，请参阅[以命令行方式安装 {{ site.data.keys.mf_server }}](../tutorials/command-line)。
+您可以使用 Ant 任务来设置 {{ site.data.keys.mf_server }} 数据库表。 在某些情况下，还可以使用这些任务创建数据库和用户。 有关使用 Ant 任务的安装流程的概述，请参阅[以命令行方式安装 {{ site.data.keys.mf_server }}](../../simple-install/tutorials/command-line)。
 
 安装提供了一组样本 Ant 文件，来帮助您着手完成 Ant 任务。 您可以在 **mfp\_install\_dir/MobileFirstServer/configurations-samples** 中找到这些文件。 文件依据以下模式命名：
 
@@ -414,7 +414,7 @@ Ant 文件能够完成以下任务：
 {: #create-database-dbmsxml }
 Ant 文件可创建数据库（如受支持的数据库管理系统 (DBMS) 上需要），然后在数据库中创建表。 然而，尽管数据库是使用缺省设置创建的，但并不意味着可用于生产。
 
-在 Ant 文件中，可找到使用 **configureDatabase** Ant 任务设置数据库的预定义目标。 有关更多信息，请参阅 [Ant configuredatabase](../installation-reference/#ant-configuredatabase-task-reference) 任务参考。
+在 Ant 文件中，可找到使用 **configureDatabase** Ant 任务设置数据库的预定义目标。 有关更多信息，请参阅 [Ant configuredatabase](../../installation-reference/#ant-configuredatabase-task-reference) 任务参考。
 
 ### 使用样本 Ant 文件
 {: #using-the-sample-ant-files }
@@ -436,7 +436,7 @@ Ant 文件可创建数据库（如受支持的数据库管理系统 (DBMS) 上�
 * 所有 {{ site.data.keys.mf_server }} 应用程序（管理服务、实时更新服务、推送服务以及运行时）
 * 用于在运行时为应用程序服务器中的数据源创建数据库和用户的用户。
 
-如果要如[数据库用户和权限](#database-users-and-privileges)中所述分离用户，需创建您自己的 Ant 文件或修改样本 Ant 文件，以便每个数据库目标均有一位不同的用户。 有关更多信息，请参阅[安装参考](../installation-reference)。
+如果要如[数据库用户和权限](#database-users-and-privileges)中所述分离用户，需创建您自己的 Ant 文件或修改样本 Ant 文件，以便每个数据库目标均有一位不同的用户。 有关更多信息，请参阅[安装参考](../../installation-reference)。
 
 对于 DB2 和 MySQL，可以让不同用户负责数据库创建和运行时。 [数据库用户和权限](#database-users-and-privileges)中列出了每一类用户的特权。 对于 Oracle，创建数据库和运行时无法具有不同的用户。 Ant 任务认为表属于“一个用户”的缺省模式。 如果要减少运行时用户的特权，必须在运行时将使用的那位用户的缺省模式中手动创建表。 有关更多信息，请参阅[手动创建 Oracle 数据库表](#creating-the-oracle-database-tables-manually)。
 
@@ -470,7 +470,7 @@ CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 
 在 Ant 文件中输入 Oracle 用户名时，必须使用大写。 如果您具有 Oracle 数据库用户 (FOO)，但输入小写的用户名 (foo)，那么 **configureDatabase** Ant 任务会将其视为另一个用户。 与 Oracle 数据库的其他工具不同，**configureDatabase** Ant 任务会对用户名进行保护，以防止自动转换为大写。
 
-**configureDatabase** Ant 任务使用服务名称或 Oracle 系统标识 (SID) 来标识数据库。 但是，如果要连接到 Oracle RAC，需输入复杂的 JDBC URL。 在此情况下，**configureDatabase** Ant 任务中的 **oracle** 元素必须使用特性 **url**、**user** 和 **password**，来代替特性 **database**、**server**、**port**、**user** 和 **password**。 有关更多信息，请参阅 [Ant **configuredatabase** 任务参考](../installation-reference/#ant-configuredatabase-task-reference)中的表。 **mfp\_install\_dir/MobileFirstServer/configurations-samples** 中的样本 Ant 文件在 **oracle** 元素中使用 **database**、**server**、**port**、**user** 和 **password** 特性。 如果需要使用 JDBC URL 连接到 Oracle，必须修改这些特性。
+**configureDatabase** Ant 任务使用服务名称或 Oracle 系统标识 (SID) 来标识数据库。 但是，如果要连接到 Oracle RAC，需输入复杂的 JDBC URL。 在此情况下，**configureDatabase** Ant 任务中的 **oracle** 元素必须使用特性 **url**、**user** 和 **password**，来代替特性 **database**、**server**、**port**、**user** 和 **password**。 有关更多信息，请参阅 [Ant **configuredatabase** 任务参考](../../installation-reference/#ant-configuredatabase-task-reference)中的表。 **mfp\_install\_dir/MobileFirstServer/configurations-samples** 中的样本 Ant 文件在 **oracle** 元素中使用 **database**、**server**、**port**、**user** 和 **password** 特性。 如果需要使用 JDBC URL 连接到 Oracle，必须修改这些特性。
 
 要在已存在的数据库中创建数据库表，请参阅[使用 Ant 任务创建数据库表](#create-the-database-tables-with-ant-tasks)。
 

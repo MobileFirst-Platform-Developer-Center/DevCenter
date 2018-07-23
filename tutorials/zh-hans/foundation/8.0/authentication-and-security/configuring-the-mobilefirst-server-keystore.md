@@ -47,11 +47,12 @@ weight: 14
    执行以下步骤，配置 {{ site.data.keys.mf_server }} 以使用密钥库：
 
       * **Javascript 适配器**
-        在 {{ site.data.keys.mf_console }} 导航侧边栏中，选择**运行时设置**，然后选择**密钥库**选项卡。遵循此选项卡上的指示信息来配置用户定义的 {{ site.data.keys.mf_server }} 密钥库。 相关步骤包括上传密钥库文件，指明其类型，以及提供密钥库密码、{{ site.data.keys.mf_server }} 身份别名名称和别名密码。成功配置后，**状态**将更改为*用户定义*，否则将显示错误并且状态仍为*缺省*。
+        在 {{ site.data.keys.mf_console }} 导航侧边栏中，选择**运行时设置**，然后选择**密钥库**选项卡。 遵循此选项卡上的指示信息来配置用户定义的 {{ site.data.keys.mf_server }} 密钥库。 相关步骤包括上传密钥库文件，指明其类型，以及提供密钥库密码、{{ site.data.keys.mf_server }} 身份别名名称和别名密码。
+        成功配置后，**状态**将更改为*用户定义*，否则将显示错误并且状态仍为*缺省*。
         在 `<connectionPolicy>` 元素的 `<sslCertificateAlias>` 和 `<sslCertificatePassword>` 子元素内，在相关适配器的描述符文件中配置 SSL 客户机身份别名（如使用）及其密码。 请参阅 [HTTP 适配器 connectionPolicy 元素](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)。
 
       * **Java 适配器**
-        要为 Java 适配器配置相互 SSL 认证，那么必须更新服务器的密钥库。可以通过执行以下步骤来实现：
+        要为 Java 适配器配置相互 SSL 认证，那么必须更新服务器的密钥库。 可以通过执行以下步骤来实现：
 
         * 将密钥库文件复制到 `<ServerInstallation>/mfp-server/usr/servers/mfp/resources/security`。
 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 将 MobileFirst Server 安装到应用程序服务器中
-breadcrumb_title: Installing MobileFirst Server
+breadcrumb_title: Installing MobileFirst Server to an application server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -13,7 +13,7 @@ weight: 4
 
 还必须定义用于安装组件的服务器拓扑。 请参阅[拓扑和网络流](../topologies)。
 
-#### 跳至：
+#### 跳转至
 {: #jump-to }
 
 * [应用程序服务器必备软件](#application-server-prerequisites)
@@ -35,7 +35,7 @@ weight: 4
 {{ site.data.keys.mf_server }} 对以下主题中详细介绍的 Apache Tomcat 配置有一些要求。  
 确保您满足以下条件：
 
-* 使用受支持版本的 Apache Tomcat。 请参阅[系统需求](../../../product-overview/requirements)。
+* 使用受支持版本的 Apache Tomcat。 请参阅[系统需求](../../../../product-overview/requirements)。
 * 必须使用 JRE 7.0 或更高版本运行 Apache Tomcat。
 * 必须启用 JMX 配置，以允许管理服务与运行时组件间进行通信。 通信使用下面的**为 Apache Tomcat 配置 JMX 连接**中所述的 RMI。
 
@@ -133,7 +133,7 @@ weight: 4
 
 确保您满足以下条件：
 
-* 使用受支持版本的 Liberty。 请参阅[系统需求](../../../product-overview/requirements)。
+* 使用受支持版本的 Liberty。 请参阅[系统需求](../../../../product-overview/requirements)。
 * 必须使用 JRE 7.0 或更高版本运行 Liberty。 不支持 JRE 6.0。
 * Liberty 的某些版本支持 Java EE 6 和 Java EE 7 的功能。例如，jdbc-4.0 Liberty 功能是 Java EE 6 的一部分，而 jdbc-4.1 Liberty 功能是 Java EE 7 的一部分。可使用 Java EE 6 或 Java EE 7 功能来安装 {{ site.data.keys.mf_server }} V8.0.0。 但是，如果要在同一 Liberty 服务器上运行旧版本 {{ site.data.keys.mf_server }}，那么必须使用 Java EE 6 功能。 {{ site.data.keys.mf_server }} V7.1.0 和更低版本不支持 Java EE 7 功能。
 * 必须如下面的 **为 WebSphere Application Server Liberty Profile 配置 JMX 连接**中所述配置 JMX。
@@ -173,7 +173,7 @@ liberty_install_dir/bin/productInfo featureInfo
 {{ site.data.keys.mf_server }} 对以下主题中详细介绍的 WebSphere  Application Server 和 WebSphere Application Server Network Deployment 配置有一些要求。  
 确保您满足以下条件：
 
-* 使用受支持版本的 WebSphere Application Server。 请参阅[系统需求](../../../product-overview/requirements)。
+* 使用受支持版本的 WebSphere Application Server。 请参阅[系统需求](../../../../product-overview/requirements)。
 * 必须使用 JRE 7.0 运行应用程序服务器。 缺省情况下，WebSphere Application Server 使用 Java 6.0 SDK。 要切换到 Java 7.0 SDK，请参阅[在 WebSphere Application Server 中切换到 Java 7.0 SDK](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html)。
 * 必须启动管理安全性。 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 管理服务和 {{ site.data.keys.mf_server }} 配置服务受安全角色保护。 有关更多信息，请参阅[启用安全性](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en)。
 * 必须启用 JMX 配置，以允许管理服务与运行时组件间进行通信。 此通信使用 SOAP。 对于 WebSphere Application Server Network Deployment，可使用 RMI。 有关更多信息，请参阅下面的**为 WebSphere Application Server 和 WebSphere Application Server Network Deployment 配置 JMX 连接**。
@@ -306,7 +306,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                             <li>要在 WebSphere Application Server Liberty 上进行安装：
                                 <ul>
                                     <li>输入 Liberty 的安装目录以及要安装 {{ site.data.keys.mf_server }} 的服务器的名称。</li>
-                                    <li>您可以创建登录到控制台的缺省用户。 将在 Liberty Basic 注册表中创建该用户。 对于生产安装，您可能要清除<b>创建缺省用户</b>选项，并在安装后配置用户访问权。 有关更多信息，请参阅<a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">配置 {{ site.data.keys.mf_server }} 管理的用户认证</a>。</li>
+                                    <li>您可以创建登录到控制台的缺省用户。 将在 Liberty Basic 注册表中创建该用户。 对于生产安装，您可能要清除<b>创建缺省用户</b>选项，并在安装后配置用户访问权。 有关更多信息，请参阅<a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">配置 {{ site.data.keys.mf_server }} 管理的用户认证</a>。</li>
                                     <li>设置部署类型：<b>独立部署</b>（缺省值）、<b>服务器场部署</b>或 <b>Liberty 集合体部署</b>。</li>
                                 </ul>
 
@@ -343,7 +343,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                                                 <ul>
                                                     <li>将用户映射到实时更新服务的安全角色 <b>configadmin</b>。</li>
                                                     <li>在管理服务的 JNDI 属性（<b>mfp.config.service.user</b> 和 <b>mfp.config.service.password</b>）中添加该用户的登录标识和密码。</li>
-                                                    <li>将一个或多个用户映射到管理服务和 {{ site.data.keys.mf_console }} 的安全角色。 请参阅<a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">为 {{ site.data.keys.mf_server }} 管理配置用户认证</a>。</li>
+                                                    <li>将一个或多个用户映射到管理服务和 {{ site.data.keys.mf_console }} 的安全角色。 请参阅<a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">为 {{ site.data.keys.mf_server }} 管理配置用户认证</a>。</li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -354,7 +354,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                                 <ul>
                                     <li>输入 Apache Tomcat 的安装目录。</li>
                                     <li>输入用于 JMX 与 RMI 通信的端口。 缺省情况下，该值为 8686。 Server Configuration Tool 修改 <b>tomcat_install_dir/bin/setenv.bat</b> 或 <b>tomcat_install_dir/bin/setenv.sh</b> 文件来打开此端口。 如果要手动打开此端口，或使用在 <b>setenv.bat</b> 或 <b>setenv.sh</b> 中打开此端口的一些代码，请不要使用此工具。 请改为使用 Ant 任务进行安装。 提供了一个手动打开 RMI 端口的选项，以使用 Ant 任务进行安装。</li>
-                                    <li>创建登录到控制台的缺省用户。 还将在 <b>tomcat-users.xml</b> 配置文件中创建该用户。 对于生产安装，您可能要清除创建缺省用户选项，并在安装后配置用户访问权。 有关更多信息，请参阅<a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">配置 {{ site.data.keys.mf_server }} 管理的用户认证</a>。</li>
+                                    <li>创建登录到控制台的缺省用户。 还将在 <b>tomcat-users.xml</b> 配置文件中创建该用户。 对于生产安装，您可能要清除创建缺省用户选项，并在安装后配置用户访问权。 有关更多信息，请参阅<a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">配置 {{ site.data.keys.mf_server }} 管理的用户认证</a>。</li>
                                 </ul>
                             </li>
                         </ul>
@@ -421,11 +421,11 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
 对 Ant 任务的引用如下所示：
 
-* [用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [用于安装 {{ site.data.keys.mf_server }} 推送服务的 Ant 任务](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [用于安装 {{ site.data.keys.mf_server }} 推送服务的 Ant 任务](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-要了解使用样本配置文件和任务进行安装的概述，请参阅[以命令行方式安装 {{ site.data.keys.mf_server }}](../tutorials/command-line)。
+要了解使用样本配置文件和任务进行安装的概述，请参阅[以命令行方式安装 {{ site.data.keys.mf_server }}](../../simple-install/tutorials/command-line)。
 
 您可以使用作为产品安装的一部分的 Ant 分发版来运行 Ant 文件。 例如，如果您有 WebSphere Application Server Network Deployment 集群，且数据库是 IBM DB2，那么您可以使用 **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-wasnd-cluster-db2.xml** Ant 文件。 在编辑文件并输入所有必需属性之后，可以从 **mfp\_install\_dir/MobileFirstServer/configuration-samples** 目录运行以下命令：
 
@@ -470,9 +470,9 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 **installmobilefirstadmin**、**installmobilefirstruntime** 和
 **installmobilefirstpush** Ant 任务声明组件运作所需的 JNDI 属性的值。 这些 JNDI 属性用于定义 JMX 通信，以及指向其他组件（例如，实时更新服务、推送服务、分析服务或授权服务器）的链接。 但是，还可以定义其他 JNDI 属性的值。 使用针对这三项任务存在的 `<property>` 元素。 有关 JNDI 属性的列表，请参阅：
 
-* [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
-* [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
-* [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
+* [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
+* [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 例如：
 
@@ -554,7 +554,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
   <console install="true" warFile="/usr/mfp/mfp-admin-ui.war"/>
 ```
 
-有关更多信息，请参阅[安装参考](../installation-reference)中用于安装每个 {{ site.data.keys.mf_server }} 组件的 Ant 任务。
+有关更多信息，请参阅[安装参考](../../installation-reference)中用于安装每个 {{ site.data.keys.mf_server }} 组件的 Ant 任务。
 
 #### 指定 WebSphere Application Server Network Deployment 目标
 {: #specify-websphere-application-server-network-deployment-targets }
@@ -565,7 +565,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 * 单元（单元的所有服务器）
 * 节点（节点的所有服务器）
 
-诸如 **configure-wasnd-cluster-dbms-name.xml**、**configure-wasnd-server-dbms-name.xml** 和 **configure-wasnd-node-dbms-name.xml** 等样本文件均包含要在每一类目标上部署的声明。 有关更多信息，请参阅[安装参考](../installation-reference)中用于安装每个 {{ site.data.keys.mf_server }} 组件的 Ant 任务。
+诸如 **configure-wasnd-cluster-dbms-name.xml**、**configure-wasnd-server-dbms-name.xml** 和 **configure-wasnd-node-dbms-name.xml** 等样本文件均包含要在每一类目标上部署的声明。 有关更多信息，请参阅[安装参考](../../installation-reference)中用于安装每个 {{ site.data.keys.mf_server }} 组件的 Ant 任务。
 
 > 注：自 V8.0.0 起，将不再提供 WebSphere Application Server Network Deployment 单元的样本配置文件。
 
@@ -655,7 +655,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
 > **注：**为防止自动转换 JNDI 值，以便不会将 075 转换为 61，或不会将 31.500 转换为 31.5，请在定义值时使用此语法 '"075"'。
 
-有关管理服务的 JNDI 属性的更多信息，请参阅[{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。  
+有关管理服务的 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。  
 
 有关场配置信息，另请参阅以下主题：
 
@@ -732,7 +732,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>有关 JNDI 属性的更多信息，请参阅<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
+                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
 
                 <h3>数据源</h3>
                 <p>管理服务的数据源的 JNDI 名称必须定义为 <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>。 以下示例说明使用上下文根 <b>/mfpadmin</b> 安装管理服务，且该服务使用关系数据库的情况：</p>
@@ -807,7 +807,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 {% endhighlight %}
 
                 <p>mfp.admin.endpoint 属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。<br/>
-                有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
+                有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
 
                 <h3>安全角色</h3>
                 <p>在应用程序的 <b>application-bnd</b> 元素中声明以下角色：</p>
@@ -854,7 +854,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
+                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
 
                 <h3>数据源</h3>
                 <p>必须将运行时的数据源的 JNDI 名称定义为 <b>jndiName=the-contextRoot/jdbc/mfpDS</b>。 以下示例说明使用上下文根 <b>/mobilefirst</b> 安装运行时，且运行时使用关系数据库的情况：</p>
@@ -903,7 +903,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - 该值必须为 <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>。</li>
                 </ul>
-                有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
+                有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
             </div>
         </div>
     </div>
@@ -999,8 +999,8 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
 > **注：**为防止自动转换 JNDI 值，以便不会将 075 转换为 61，或不会将 31.500 转换为 31.5，请在定义值时使用此语法 '"075"'。
 
-* 有关管理服务的 JNDI 属性的更多信息，请参阅[{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。  
-* 有关运行时的 JNDI 属性的更多信息，请参阅[{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
+* 有关管理服务的 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。  
+* 有关运行时的 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
 
 #### 类装入器
 {: #class-loader-collective }
@@ -1074,7 +1074,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>有关 JNDI 属性的更多信息，请参阅<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
+                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
 
                 <h3>数据源</h3>
                 <p>管理服务的数据源的 JNDI 名称必须定义为 <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>。 以下示例说明使用上下文根 <b>/mfpadmin</b> 安装管理服务，且该服务使用关系数据库的情况：</p>
@@ -1152,7 +1152,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 {% endhighlight %}
 
                 <p>mfp.admin.endpoint 属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。<br/>
-                有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
+                有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
 
                 <h3>安全角色</h3>
                 <p>在应用程序的 <b>application-bnd</b> 元素中声明以下角色：</p>
@@ -1201,7 +1201,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
+                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
 
                 <h3>数据源</h3>
                 <p>必须将运行时的数据源的 JNDI 名称定义为 <b>jndiName=the-contextRoot/jdbc/mfpDS</b>。 以下示例说明使用上下文根 <b>/mobilefirst</b> 安装运行时，且运行时使用关系数据库的情况：</p>
@@ -1254,7 +1254,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - 该值必须为 <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>。</li>
                 </ul>
-                有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
+                有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
             </div>
         </div>
     </div>
@@ -1344,7 +1344,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>有关 JNDI 属性的更多信息，请参阅<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
+                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
 
                 <h3>数据源</h3>
                 <p>将数据源 (jdbc/mfpAdminDS) 声明为 **Context** 元素中的一项资源。 例如：</p>
@@ -1411,7 +1411,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                 <h3>必需的 JNDI 属性</h3>
                 <p>您需要定义 <b>mfp.admin.endpoint </b> 属性。 该属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。
                 <br/><br/>
-                有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
+                有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
 
                 <h3>安全角色</h3>
                 <p>可用于此应用程序的安全角色为：</p>
@@ -1460,7 +1460,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
+                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
 
                 <h3>数据源</h3>
                 <p>运行时的数据源的 JNDI 名称必须定义为 <b>jdbc/mfpDS</b>。 在 <b>Context</b> 元素中将其声明为资源。</p>
@@ -1497,7 +1497,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - 该值必须为 <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>。</li>
                 </ul>
-                有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
+                有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
             </div>
         </div>
     </div>
@@ -1625,13 +1625,14 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>有关 JNDI 属性的更多信息，请参阅<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
+                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
 
                 <h3>数据源</h3>
                 <p>为管理服务创建数据源，并将其映射到 <b>jdbc/mfpAdminDS</b>。</p>
 
                 <h3>启动顺序</h3>
-                <p>管理服务应用程序必须在启动运行时应用程序之前启动。 您可以在<b>启动行为</b>部分设置此顺序。 例如，针对管理服务将 Startup Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
+                <p>管理服务应用程序必须在启动运行时应用程序之前启动。 您可以在<b>启动行为</b>部分设置此顺序。 例如，针对管理服务将 Startup
+Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
 
                 <h3>安全角色</h3>
                 <p>可供管理服务应用程序使用的安全角色有：</p>
@@ -1693,7 +1694,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                 <br/><br/>
                 您需要定义 <b>mfp.admin.endpoint </b> 属性。 该属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。
                 <br/><br/>
-                有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
+                有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
 
                 <h3>安全角色</h3>
                 <p>可用于此应用程序的安全角色为：</p>
@@ -1752,10 +1753,11 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
+                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
 
                 <h3>启动顺序</h3>
-                <p>运行时应用程序必须在管理服务应用程序启动之后才能启动。 您可以在<b>启动行为</b>部分设置此顺序。 例如，针对管理服务将 Startup Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
+                <p>运行时应用程序必须在管理服务应用程序启动之后才能启动。 您可以在<b>启动行为</b>部分设置此顺序。 例如，针对管理服务将 Startup
+Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
 
                 <h3>数据源</h3>
                 <p>为运行时创建数据源，并将其映射到 <b>jdbc/mfpDS</b>。</p>
@@ -1794,7 +1796,8 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - 该值必须为 <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>。</li>
                 </ul>
-                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。</p>
+                <p>                有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
+            </p>
 
                 <h3>数据源</h3>
                 <p>为推送服务创建数据源，并将其映射到 <b>jdbc/imfPushDS</b>。</p>
@@ -1886,7 +1889,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                                     <li>WebSphere  Application Server Liberty Profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-                                要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../product-overview/requirements">系统需求</a>。
+                                要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../../product-overview/requirements">系统需求</a>。
 
                                 <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full
 Profile 服务器的场是无效的配置。</blockquote>
@@ -1939,7 +1942,7 @@ Profile 服务器的场是无效的配置。</blockquote>
                                     <li>WebSphere  Application Server Liberty Profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-                                要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../product-overview/requirements">系统需求</a>。
+                                要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../../product-overview/requirements">系统需求</a>。
 
                                 <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full
 Profile 服务器的场是无效的配置。</blockquote>
@@ -2015,7 +2018,7 @@ Profile 服务器的场是无效的配置。</blockquote>
                             </li>
                             <li>对于每个服务器，运行以下命令，其中必须将 <b>configure-appserver-database-ant-file.xml</b> 替换为您选择的实际 Ant 文件名：<code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> 和 <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>。
                             <br/><br/>
-                            这些命令运行 <b>installmobilefirstadmin</b> 和 <b>installmobilefirstruntime</b> Ant 任务。 有关这些任务的更多信息，请参阅<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务</a>以及<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务</a>。
+                            这些命令运行 <b>installmobilefirstadmin</b> 和 <b>installmobilefirstruntime</b> Ant 任务。 有关这些任务的更多信息，请参阅<a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务</a>以及<a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务</a>。
                             </li>
                             <li>（可选）如果想要安装其他运行时，请执行以下步骤：
                                 <ul>
@@ -2058,7 +2061,7 @@ Profile 服务器的场是无效的配置。</blockquote>
                             <li>WebSphere  Application Server Liberty Profile</li>
                             <li>Apache Tomcat</li>
                         </ul>
-                        要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../product-overview/requirements">系统需求</a>。
+                        要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../../product-overview/requirements">系统需求</a>。
 
                         <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full
 Profile 服务器的场是无效的配置。</blockquote>
@@ -2156,14 +2159,13 @@ Profile 和 WebSphere Application Server Liberty Profile 的场必须交换信�
                                 </ul>
                                 在 <b>server.xml</b> 文件中定义了密钥库和信任库的位置。 请参阅 <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 配置属性</a>中的 <b>keyStoreRef</b> 和 <b>trustStoreRef</b> 属性。 缺省情况下，Liberty Profile 的密钥库位于 <b>${server.config.dir}/resources/security/key.jks</b> 中。 如果信任库引用缺失或者未在 <b>server.xml</b> 文件中进行定义，那么将使用 <b>keyStoreRef</b> 所指定的密钥库。 服务器将使用缺省密钥库，并且会在服务器首次运行时创建该文件。 在这种情况下，将创建缺省证书，其有效期为 365 天。 对于生产环境，您可能要考虑使用自己的证书（如果需要，包括中间证书）或者更改已生成证书的到期日期。
 
-                                <blockquote>注：如果您要确认信任库的位置，那么可以将以下声明添加到 server.xml 文件来实现这一点：
-{% highlight xml %}
+                                <blockquote>注：如果您要确认信任库的位置，那么可以将以下声明添加到 server.xml 文件来实现这一点：% highlight xml %}
 <logging traceSpecification="SSL=all:SSLChannel=all"/>
 {% endhighlight %}
                                 </blockquote>
                                 最后，启动服务器，并在 <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> 文件中查找包含 com.ibm.ssl.trustStore 的行。
                                 <ul>
-                                    <li>将场中其他服务器的公用证书导入到服务器的 <b>server.xml</b> 配置文件所引用的信任库中。 教程<a href="../tutorials/graphical-mode">以图形方式安装 {{ site.data.keys.mf_server }}</a> 为您提供指示信息以在场中的两个 Liberty 服务器之间交换证书。 有关更多信息，请参阅<a href="../tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">创建由两台运行 {{ site.data.keys.mf_server }} 的 Liberty 服务器组成的场</a>部分。</li>
+                                    <li>将场中其他服务器的公用证书导入到服务器的 <b>server.xml</b> 配置文件所引用的信任库中。 教程<a href="../../simple-install/tutorials/graphical-mode">以图形方式安装 {{ site.data.keys.mf_server }}</a> 为您提供指示信息以在场中的两个 Liberty 服务器之间交换证书。有关更多信息，请参阅<a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">创建由两台运行 {{ site.data.keys.mf_server }} 的 Liberty 服务器组成的场</a>部分的步骤 5。</li>
                                     <li>重新启动 WebSphere Application Server Liberty Profile 的每个实例，以使安全配置生效。 需要执行以下步骤来使单点登录 (SSO) 生效。</li>
                                     <li>启动场的一个成员。 在缺省 LTPA 配置中，在 Liberty 服务器成功启动之后，将生成 LTPA 密钥库 <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys。</b></li>
                                     <li>将 <b>ltpa.keys</b> 文件复制到每个场成员 <b>${wlp.user.dir}/servers/server_name/resources/security</b> 目录，以在场成员中复制 LTPA 密钥库。 有关 LTPA 配置的更多信息，请参阅 <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">在 Liberty Profile 上配置 LTPA</a>。</li>
@@ -2232,4 +2234,4 @@ Profile 和 WebSphere Application Server Liberty Profile 的场必须交换信�
 * **mfp.admin.farm.missed.heartbeats.timeout**
 
 <br/>
-有关 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。
+有关 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。

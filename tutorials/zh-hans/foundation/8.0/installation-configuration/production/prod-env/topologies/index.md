@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 拓扑和网络流
-weight: 3
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -9,7 +9,7 @@ weight: 3
 此处提供的信息详细介绍 {{ site.data.keys.mf_server }} 组件可能的服务器拓扑以及可用的网络流。  
 以下组件根据您使用的服务器拓扑进行部署。 网络流为您说明了组件之间以及组件与最终用户设备之间的通信方式。
 
-#### 跳至：
+#### 跳转至
 {: #jump-to }
 
 * [{{ site.data.keys.mf_server }} 组件间的网络流](#network-flows-between-the-mobilefirst-server-components)
@@ -61,14 +61,14 @@ weight: 3
 #### {{ site.data.keys.mf_server }} 管理服务
 {: #mobilefirst-server-administration-service }
 
-* [管理服务的 JNDI 属性：JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
-* [管理服务的 JNDI 属性：代理](../server-configuration/#jndi-properties-for-administration-service-proxies)
-* [管理服务的 JNDI 属性：拓扑](../server-configuration/#jndi-properties-for-administration-service-topologies)
+* [管理服务的 JNDI 属性：JMX](../../server-configuration/#jndi-properties-for-administration-service-jmx)
+* [管理服务的 JNDI 属性：代理](../../server-configuration/#jndi-properties-for-administration-service-proxies)
+* [管理服务的 JNDI 属性：拓扑](../../server-configuration/#jndi-properties-for-administration-service-topologies)
 
 #### {{ site.data.keys.product }} 运行时
 {: #mobilefirst-foundation-runtime }
 
-* [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
 ### 其他服务器中的 {{ site.data.keys.mf_server }}
 管理服务到 {{ site.data.keys.product }} 运行时
@@ -83,7 +83,7 @@ weight: 3
 {: #mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment }
 在 WebSphere Application Server Network Deployment 上，运行时和管理服务可通过与 Deployment Manager 进行通信，来获取
 [{{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_server }} 管理服务](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)和其他服务器中
-[{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.product }} 运行时](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)中使用的 JMX MBean。 在 [管理服务的 JNDI 属性：JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)中，对应的 JNDI 属性为 **mfp.admin.jmx.dmgr.***。
+[{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.product }} 运行时](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)中使用的 JMX MBean。 在 [管理服务的 JNDI 属性：JMX](../../server-configuration/#jndi-properties-for-administration-service-jmx)中，对应的 JNDI 属性为 **mfp.admin.jmx.dmgr.***。
 
 必须运行 Deployment Manager 以支持需要运行时与管理服务间进行 JMX 通信的操作。 此类操作可以是运行时初始化，或通知通过管理服务执行的修改。
 
@@ -116,14 +116,14 @@ weight: 3
 
 * **mfp.config.service.user**
 * **mfp.config.service.password**
-* 以及[管理服务的 JNDI 属性：代理](../server-configuration/#jndi-properties-for-administration-service-proxies)中的属性。
+* 以及[管理服务的 JNDI 属性：代理](../../server-configuration/#jndi-properties-for-administration-service-proxies)中的属性。
 
 ### {{ site.data.keys.mf_console }} 到
 {{ site.data.keys.mf_server }} 管理服务
 {: #mobilefirst-operations-console-to-mobilefirst-server-administration-service }
 {{ site.data.keys.mf_console }} 是一个 Web 用户界面，用作管理服务的前端。 它能通过 HTTP 或 HTTPS 与管理服务的 REST 服务通信。 还必须支持允许使用控制台的用户使用管理服务。 还必须将映射到控制台的某一安全角色的每位用户映射到服务的同一安全角色。 利用此设置，服务因此可接受来自控制台的请求。
 
-用于配置此通信的 JNDI 属性位于 [{{ site.data.keys.mf_console }} 的 JNDI 属性](../server-configuration/#jndi-properties-for-mobilefirst-operations-console)中。
+用于配置此通信的 JNDI 属性位于 [{{ site.data.keys.mf_console }} 的 JNDI 属性](../../server-configuration/#jndi-properties-for-mobilefirst-operations-console)中。
 
 > 注：**mfp.admin.endpoint** 属性支持控制台查找管理服务。 您可以使用星号“*”字符作为通配符，以指定控制台生成的 URL（用于联系管理服务）使用与到控制台的入局 HTTP 请求相同的值。 例如：`*://*:*/mfpadmin` 意味着使用相同的协议、主机和端口作为控制台，但使用 **mfpadmin** 作为上下文根。 为控制台应用程序指定该属性。
 
@@ -153,11 +153,11 @@ weight: 3
 * **push.apns.proxy**
 * **push.gcm.proxy**
 
-有关更多信息，请参阅 [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
+有关更多信息，请参阅 [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
 
 ### 移动设备到 {{ site.data.keys.product }} 运行时
 {: #mobile-devices-to-mobilefirst-foundation-runtime }
-移动设备可联系运行时。 此通信的安全性由应用程序以及所请求适配器的配置来决定。 有关更多信息，请参阅 [{{ site.data.keys.product_adj }} 安全框架](../../../authentication-and-security)。
+移动设备可联系运行时。 此通信的安全性由应用程序以及所请求适配器的配置来决定。 有关更多信息，请参阅 [{{ site.data.keys.product_adj }} 安全框架](../../../../authentication-and-security)。
 
 ## 对 {{ site.data.keys.mf_server }} 组件和 {{ site.data.keys.mf_analytics }} 的约束
 {: #constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics }
@@ -219,7 +219,7 @@ weight: 3
 
 #### JNDI 属性配置
 {: #configuration-of-jndi-properties }
-必须使用某些 JNDI 属性，才能在管理服务与运行时之间启用 Java 管理扩展 (JMX) 通信，以及定义用于管理运行时的管理服务。 有关这些属性的详细信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }}运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
+必须使用某些 JNDI 属性，才能在管理服务与运行时之间启用 Java 管理扩展 (JMX) 通信，以及定义用于管理运行时的管理服务。 有关这些属性的详细信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
 
 **独立 WebSphere Application Server Liberty Profile 服务器**  
 以下全局 JNDI 属性是管理服务和运行时所必需的。
@@ -300,7 +300,7 @@ JNDI 属性是管理服务所必需的。 请参阅[配置 Apache Tomcat 的 JMX
 
 #### JNDI 属性配置
 {: #configuration-of-jndi-properties-1 }
-必须使用某些 JNDI 属性，才能在相同服务器的管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。 方便起见，下表列出了这些属性。 有关如何安装服务器场的指示信息，请参阅[安装服务器场](../appserver/#installing-a-server-farm)。 有关 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }}运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
+必须使用某些 JNDI 属性，才能在相同服务器的管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。 方便起见，下表列出了这些属性。 有关如何安装服务器场的指示信息，请参阅[安装服务器场](../appserver/#installing-a-server-farm)。 有关 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
 
 **WebSphere Application Server Liberty Profile 服务器场**  
 在场的每个服务器中，管理服务和运行时需要以下全局 JNDI 属性。
@@ -343,7 +343,7 @@ JNDI 属性是管理服务所必需的。 请参阅[配置 Apache Tomcat 的 JMX
             mfp.admin.jmx.port
         </td>
         <td>
-            REST 接口的端口，必须与 WebSphere Application Server Liberty Profile 服务器的 <b>server.xml</b>文件的 <code>httpEndpoint</code> 元素中声明的 httpsPort 属性值相同。 
+            REST 接口的端口，必须与 WebSphere Application Server Liberty Profile 服务器的 <b>server.xml</b>文件的 <code>httpEndpoint</code> 元素中声明的 httpsPort 属性值相同。
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
@@ -356,7 +356,7 @@ JNDI 属性是管理服务所必需的。 请参阅[配置 Apache Tomcat 的 JMX
         </td>
         <td>
             在 WebSphere Application Server Liberty Profile 服务器的 <b>server.xml</b> 文件的 <code>administrator-role</code> 元素中定义的 WebSphere Application Server Liberty 管理员的用户名。
-            
+
 {% highlight xml %}
 <administrator-role>
     <user>MfpRESTUser</user>
@@ -446,7 +446,7 @@ JNDI 属性是管理服务所必需的。 请参阅[配置 Apache Tomcat 的 JMX
 
 #### JNDI 属性配置
 {: #configuration-of-jndi-properties-2 }
-以下各表列出了一些 JNDI 属性，需要这些属性才能在管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。 有关这些属性的更多信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }}运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。 有关如何手动安装 Liberty 集合体的指示信息，请参阅[手动安装 WebSphere Application Server Liberty 集合体](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)。
+以下各表列出了一些 JNDI 属性，需要这些属性才能在管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。 有关这些属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。有关如何手动安装 Liberty 集合体的指示信息，请参阅[手动安装 WebSphere Application Server Liberty 集合体](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)。
 
 管理服务需要以下全局 JNDI 属性：
 
@@ -556,9 +556,9 @@ JNDI 属性是管理服务所必需的。 请参阅[配置 Apache Tomcat 的 JMX
 
 当使用的若干个控制器（副本）使用同一个管理组件时，运行时需要以下 JNDI 属性：
 
-| JNDI 属性 | 值 | 
+| JNDI 属性 | 值 |
 |-----------------|--------|
-| mfp.admin.jmx.replica | 使用以下语法指定不同控制器副本的端点列表：`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+| mfp.admin.jmx.replica | 使用以下语法指定不同控制器副本的端点列表：`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 
 当在控制器中部署了若干管理组件时，每个运行时的局部 **mfp.admin.environmentid** JNDI 属性值必须与针对用于管理该运行时的管理服务定义的值相同。
 
@@ -620,7 +620,7 @@ JNDI 属性是管理服务所必需的。 请参阅[配置 Apache Tomcat 的 JMX
 
 #### JNDI 属性配置
 {: #configuration-of-jndi-properties-3 }
-必须使用某些 JNDI 属性，才能在管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。 有关这些属性的详细信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }}运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
+必须使用某些 JNDI 属性，才能在管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。 有关这些属性的详细信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
 
 以下局部 JNDI 属性是管理服务和运行时所必需的：
 
@@ -680,7 +680,7 @@ JNDI 属性是管理服务所必需的。 请参阅[配置 Apache Tomcat 的 JMX
 
 [{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product }} 运行时的约束](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)中描述的约束适用。 每个运行时（具有其上下文根）都必须具有其自身的数据库表。
 
-> 有关指示信息，请参阅[配置多个运行时](../server-configuration/#configuring-multiple-runtimes)。
+> 有关指示信息，请参阅[配置多个运行时](../../server-configuration/#configuring-multiple-runtimes)。
 
 ## 同一个服务器或 WebSphere Application Server 单元上的多个 {{ site.data.keys.mf_server }} 实例
 {: #multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell }

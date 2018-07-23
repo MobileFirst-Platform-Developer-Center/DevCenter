@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: 以图形方式安装 MobileFirst Server 教程
+title: 以图形方式安装 MobileFirst Server
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -12,14 +12,14 @@ weight: 0
 {: #before-you-begin }
 * 确保安装以下某个数据库和受支持的 Java 版本。 计算机上还需要有对应的数据库 JDBC 驱动程序：
     * 来自受支持数据库列表的数据库管理系统 (DBMS)：
-        * DB2 
+        * DB2
         * MySQL
         * Oracle
 
         **要点：**您必须具有一个能够创建产品所需表的数据库以及可以在该数据库中创建表的数据库用户。
 
         在本教程中，用于创建表的步骤适用于 DB2。 您可以在 [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) 上查找作为 {{ site.data.keys.product }} eAssembly 软件包一部分的 DB2 安装程序。  
-        
+
 * 适用于您的数据库的 JDBC 驱动程序
     * 对于 DB2，使用 DB2 JDBC 驱动程序 4 类。
     * 对于 MySQL，使用 Connector/J JDBC 驱动程序。
@@ -35,7 +35,7 @@ Installation Manager Repository for {{ site.data.keys.mf_server }} 的 {{ site.d
 
 **WebSphere Application Server Liberty Profile**  
 IBM WebSphere Application Server - Liberty Core V8.5.5.3 或更高版本
-    
+
 如果您使用以下某种操作系统，可以图形方式运行安装：
 
 * Windows x86 或 x86-64
@@ -49,7 +49,7 @@ IBM WebSphere Application Server - Liberty Core V8.5.5.3 或更高版本
 * 您可以图形方式运行 Installation Manager，但要部署服务器，需要跳过本教程中使用 Ant 任务进行安装的命令行部分。
 * 不能配置服务器场。 嵌入式 Derby 数据库不支持从多个服务器进行访问。 要配置服务器场，需要 DB2、MySQL 或 Oracle。
 
-#### 跳至：
+#### 跳转至
 {: #jump-to }
 
 * [安装 IBM Installation Manager](#installing-ibm-installation-manager)
@@ -93,14 +93,14 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
     * 请跳至 Liberty 的安装目录。
     * 创建名为 **etc** 的目录。这需要管理员权限或 root 用户权限。
     * 在 **etc** 目录中，使用以下内容创建 **server.env** 文件：`WLP_USER_DIR=<任何用户都可以写入的目录的路径>`
-    
+
     例如，在 Windows 上：`WLP_USER_DIR=C:\LibertyServers\usr`
 7. 创建 Liberty 服务器，在本教程后半部分，此服务器将用于安装 {{ site.data.keys.mf_server }} 的首个节点。
     * 启动命令行。
     * 转至 **liberty\_install\_dir/bin**，然后输入 `server create mfp1`。
-    
+
     此命令会创建名为 mfp1 的 Liberty 服务器实例。 您可以在 **liberty\_install\_dir/usr/servers/mfp1** 或 **WLP\_USER\_DIR/servers/mfp1**（如果按步骤 6 中所述修改了目录）中查看其定义。
-    
+
 创建服务器后，可以从 **liberty\_install\_dir/bin/** 使用 `server start mfp1` 启动此服务器。 要停止服务器，请从 **liberty\_install\_dir/bin/** 输入命令：`server stop mfp1`。  
 可在 http://localhost:9080 查看缺省主页。
 
@@ -118,7 +118,7 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
         如果将 {{ site.data.keys.mf_server }} 的 {{ site.data.keys.product }} V8.0 .zip 文件解压缩到 **mfp\_installer\_directory** 文件夹中，那么存储库文件位于 **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**。
 
         您可能还想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。 确保输入修订包的存储库。 如果将修订包解压缩到 **fixpack_directory** 文件夹，那么可以在 **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf** 中找到存储库文件。
-    
+
         > **注：**如果 Installation Manager 存储库中没有基本版本的存储库，那么无法安装修订包。 修订包是累积安装程序，需要安装基本版本的存储库。
     * 选择该文件，然后单击**确定**。
     * 单击**确定**以关闭“首选项”面板。
@@ -156,7 +156,7 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
 
 在本教程中，所有组件的表都置于相同模式下。 Server Configuration Tool 在同一模式中创建表。 要获得更大的灵活性，您可能想要使用 Ant 任务或手动安装。
 
-> **注：**此任务中的步骤适合于 DB2。 如果您计划使用 MySQL 或 Oracle，请参阅[数据库需求](../../databases/#database-requirements)。
+> **注：**此任务中的步骤适合于 DB2。 如果您计划使用 MySQL 或 Oracle，请参阅[数据库需求](../../../prod-env/databases/#database-requirements)。
 
 1. 登录至正在运行 DB2 服务器的计算机。 假定存在 DB2 用户，例如名为 **mfpuser** 的用户。
 2. 验证此 DB2 用户是否具有对页面大小不小于 32768 的数据库的访问权，并且允许此用户在该数据库中创建隐式模式和表。
@@ -169,7 +169,7 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
         * 在 Windows 系统中，单击**开始 → IBM DB2 → 命令行处理器**。
         * 在 Linux 或 UNIX 系统上，转至 **~/sqllib/bin**（或 **db2\_install\_dir/bin**，前提是 **sqllib** 不是在管理员主目录中创建的）并输入 `./db2`。
         * 输入以下 SQL 语句以创建一个称为 **MFPDATA** 的数据库：
-        
+
         ```sql
         CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
         CONNECT TO MFPDATA
@@ -179,7 +179,7 @@ WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.
         DISCONNECT MFPDATA
         QUIT
         ```
-        
+
 如果定义了其他用户名，请将 mfpuser 替换为您自己的用户名。  
 
 > **注：**此语句不会除去授予缺省 DB2 数据库中的 PUBLIC 的缺省权限。 对于生产环境，可能需要将此数据库中的权限降低至针对该产品的最低需求。 有关 DB2 安全性和安全实践示例的更多信息，请参阅 [DB2 安全第 8 部分：12 项 DB2 安全最佳实践](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/)。
@@ -196,23 +196,23 @@ Server Configuration Tool 不会部署以下 {{ site.data.keys.product_adj }} �
 #### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }}
-由于内存需求较高，因此通常与 {{ site.data.keys.mf_server }} 部署在不同的服务器集上。 {{ site.data.keys.mf_analytics }} 可手动安装或通过 Ant 任务来安装。 如果已安装，可以在 Server Configuration Tool 中输入其 URL、用户名和密码来将数据发送到其中。 然后，Server Configuration Tool 会将 {{ site.data.keys.product_adj }} 应用配置为向 {{ site.data.keys.mf_analytics }} 发送数据。 
+由于内存需求较高，因此通常与 {{ site.data.keys.mf_server }} 部署在不同的服务器集上。 {{ site.data.keys.mf_analytics }} 可手动安装或通过 Ant 任务来安装。 如果已安装，可以在 Server Configuration Tool 中输入其 URL、用户名和密码来将数据发送到其中。 然后，Server Configuration Tool 会将 {{ site.data.keys.product_adj }} 应用配置为向 {{ site.data.keys.mf_analytics }} 发送数据。
 
 #### Application
 Center
 {: #application-center }
 此应用程序可用于在内部向使用移动应用程序的员工分发这些应用程序，或者用于测试。 它独立于 {{ site.data.keys.mf_server }}，并且无需与 {{ site.data.keys.mf_server }} 一起安装。
-    
+
 1. 启动 Server Configuration Tool。
     * 在 Linux 上，通过**应用程序快捷方式“应用程序 → {{ site.data.keys.mf_server }} → Server Configuration Tool**。
     * 在 Windows 上，单击**开始 → 程序 → IBM MobileFirst Platform Server → Server Configuration Tool**。
     * 在 macOS 上，打开 shell 控制台。 转至 **mfp_server\_install\_dir/shortcuts，并输入 ./configuration-tool.sh**。
-    
+
     mfp_server_install_dir 是 {{ site.data.keys.mf_server }} 的安装目录。
 2. 选择**文件 → 新建配置...**以创建 {{ site.data.keys.mf_server }} 配置。
 3. 将此配置命名为“Hello MobileFirst”，然后单击**确定**。
 4. 保持配置详细信息缺省条目不变，然后单击**下一步**。
-    
+
     在本教程中，不使用环境标识。 这是用于高级部署方案的功能。  
     此类方案的一个示例是在同一个应用程序服务器或 WebSphere Application Server 单元中安装多个 {{ site.data.keys.mf_server }} 和管理服务实例。
 5. 保持管理服务和运行时组件的缺省上下文根。
@@ -225,7 +225,7 @@ Center
     * 单击**下一步**。
 
     如果无法使用输入的凭证访问 DB2 服务器，那么 Server Configuration Tool 会禁用**下一步**按钮并显示错误。 如果 JDBC 驱动程序不包含预期类，也会禁用**下一步**按钮。 如果所有信息正确，**下一步**按钮会呈启用状态。
-    
+
 9. 在 **DB2 额外设置**面板中，填写详细信息：
     * 输入 **mfpuser** 作为 DB2 用户名并输入其密码。 如果不是 **mfpuser**，请输入您自己的 DB2 用户名。
     * 输入 **MFPDATA** 作为数据库的名称。
@@ -238,7 +238,7 @@ Center
     * 输入 WebSphere Application Server Liberty 的安装目录。
     * 在“服务器名称”字段中，选择计划安装产品的服务器。 选择在[安装 WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core) 的步骤 7 中创建的 **mfp1** 服务器。
     * 保持**创建用户**选项选中缺省值。
-    
+
     此选项会在 Liberty 服务器的基本注册表中创建用户，以便您可以登录 {{ site.data.keys.mf_console }} 或管理服务。 对于生产安装，请勿使用此选项，而是按“配置 {{ site.data.keys.mf_server }} 管理的用户认证”所述在安装后配置应用程序的安全角色。
     * 对于部署类型，选择服务器场部署选项。
     * 单击**下一步**。
@@ -288,7 +288,7 @@ QUIT
 
 #### 数据库表创建
 {: #database-tables-creation }
-对于生产环境，您可能希望手动创建表。 例如，如果您的 DBA 要覆盖某些缺省设置或者分配特定表空间。 在 **mfp\_server\_install\_dir/MobileFirstServer/databases** 和 **mfp_server\_install\_dir/PushService/databases** 中提供了用于创建表的数据库脚本。 有关更多信息，请参阅[手动创建数据库表](../../databases/#create-the-database-tables-manually)。
+对于生产环境，您可能希望手动创建表。 例如，如果您的 DBA 要覆盖某些缺省设置或者分配特定表空间。 在 **mfp\_server\_install\_dir/MobileFirstServer/databases** 和 **mfp_server\_install\_dir/PushService/databases** 中提供了用于创建表的数据库脚本。 有关更多信息，请参阅[手动创建数据库表](../../../prod-env/databases/#create-the-database-tables-manually)。
 
 在安装期间修改了 **server.xml** 文件和部分应用程序服务器设置。 在每次修改之前，会生成 **server.xml** 文件的副本，例如，**server.xml.bak**、**server.xml.bak1** 和 **server.xml.bak2**。 要查看已添加的所有内容，可以将 **server.xml** 文件与最旧的备份 (server.xml.bak) 进行比较。 在 Linux 上，可以使用命令 diff `--strip-trailing-cr server.xml server.xml.bak` 来查看区别。 在 AIX 上，使用命令 `diff server.xml server.xml.bak` 来查看区别。
 
@@ -296,8 +296,8 @@ QUIT
 {: #modification-of-the-application-server-settings-specific-to-liberty }
 1. Liberty 功能已添加。
 
-    针对每个应用程序已添加了这些功能，并且这些功能可以复制。 例如，JDBC 功能可用于管理服务和运行时组件。 这种复制可以在卸载某个应用程序时移除这些功能而不破坏其他应用程序。 例如，如果您决定在某个时候要从服务器卸载推送服务，并将其安装在另一台服务器上。 但并非所有拓扑都可用。 管理服务、实时更新服务和运行时组件必须与 Liberty 概要文件位于同一台应用程序服务器上。 有关更多信息，请参阅[对 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product_adj }} 运行时的约束](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)。 除非添加的功能存在冲突，否则功能复制不会造成问题。 添加 jdbc-40 和 jdbc-41 功能会导致问题，但是将同一个功能添加两次不会造成问题。
-    
+    针对每个应用程序已添加了这些功能，并且这些功能可以复制。 例如，JDBC 功能可用于管理服务和运行时组件。 这种复制可以在卸载某个应用程序时移除这些功能而不破坏其他应用程序。 例如，如果您决定在某个时候要从服务器卸载推送服务，并将其安装在另一台服务器上。 但并非所有拓扑都可用。 管理服务、实时更新服务和运行时组件必须与 Liberty 概要文件位于同一台应用程序服务器上。 有关更多信息，请参阅[对 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product_adj }} 运行时的约束](../../../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)。 除非添加的功能存在冲突，否则功能复制不会造成问题。 添加 jdbc-40 和 jdbc-41 功能会导致问题，但是将同一个功能添加两次不会造成问题。
+
 2. 在 `httpEndPoint` 声明中添加 `host='*'`。
 
     此设置旨在允许从所有网络接口连接至服务器。 在生产环境中，您可能希望限制 HTTP 端点的主机值。
@@ -316,7 +316,7 @@ QUIT
 7. 如果您使用的是 Liberty V8.5.5.5 或更早版本，缺省执行程序需要进行定制，以将 `coreThreads` 和 `maxThreads` 设置为较大的值。 从 V8.5.5.6 开始，缺省执行程序由 Liberty 自动调整。
 
     此设置避免了破坏某些 Liberty 版本上的运行时组件和管理服务的启动顺序的超时问题。 在服务器日志文件中，缺少此语句可能导致出现以下错误：
-    
+
     > Failed to obtain JMX connection to access an MBean. There might be a JMX configuration error: Read timed out
 FWLSE3000E: A server error was detected.
     > FWLSE3012E: JMX configuration error. Unable to obtain MBeans. Reason: "Read timed out".
@@ -331,7 +331,7 @@ FWLSE3000E: A server error was detected.
 * **mobilefirst**，{{ site.data.keys.product_adj }} 运行时组件
 * **imfpush**，推送服务
 
-Server Configuration Tool 在同一服务器上安装所有应用程序。 您可以在不同应用程序服务器中分隔这些应用程序，但必须遵循[拓扑和网络流](../../topologies)中所述的某些约束。  
+Server Configuration Tool 在同一服务器上安装所有应用程序。 您可以在不同应用程序服务器中分隔这些应用程序，但必须遵循[拓扑和网络流](../../../prod-env/topologies)中所述的某些约束。  
 要在不同服务器上进行安装，不能使用 Server Configuration Tool。 请使用 Ant 任务或手动安装产品。
 
 #### 管理服务
@@ -340,7 +340,7 @@ Server Configuration Tool 在同一服务器上安装所有应用程序。 您�
 
 类装入器是以 Liberty 概要文件和 WebSphere Application Server 授权父代最后来设置，适用于所有 {{ site.data.keys.product_adj }} 应用程序。 此设置可避免 {{ site.data.keys.product_adj }} 应用程序中打包的类与应用程序服务器的类之间的冲突。 忘记将类装入器授权设置为父代最后会导致手动安装频繁出错。 对于 Apache Tomcat，无需此声明。
 
-在 Liberty 概要文件中，在应用程序中添加公共库用于解密作为 JNDI 属性传递的密码。 Server Configuration Tool 为管理服务定义了两个必需 JNDI 属性：**mfp.config.service.user** 和 **mfp.config.service.password**。 管理服务使用这些属性来通过其 REST API 连接至实时更新服务。 可定义更多 JNDI 属性以微调应用程序或者根据安装特殊需求对其进行调整。 有关更多信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。
+在 Liberty 概要文件中，在应用程序中添加公共库用于解密作为 JNDI 属性传递的密码。 Server Configuration Tool 为管理服务定义了两个必需 JNDI 属性：**mfp.config.service.user** 和 **mfp.config.service.password**。 管理服务使用这些属性来通过其 REST API 连接至实时更新服务。 可定义更多 JNDI 属性以微调应用程序或者根据安装特殊需求对其进行调整。 有关更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。
 
 Server Configuration Tool 还定义 JNDI 属性（用于注册机密客户机的 URL 和 OAuth 参数）以用于与推送服务进行通信。  
 包含管理服务表的数据库的数据源及其 JDBC 驱动程序库均已声明。
@@ -351,7 +351,7 @@ Server Configuration Tool 还定义 JNDI 属性（用于注册机密客户机的
 
 类装入器是使用管理服务部分中讨论的授权父代最后设置的。
 
-实时更新服务具有一个安全角色：**admin_config**。 必须将一个用户映射到该角色。 必须使用 JNDI 属性 **mfp.config.service.user** 和 **mfp.config.service.password** 将其密码和登录名提供给管理服务。 有关 JNDI 属性的信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.mf_server }}实时更新服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service)。
+实时更新服务具有一个安全角色：**admin_config**。 必须将一个用户映射到该角色。 必须使用 JNDI 属性 **mfp.config.service.user** 和 **mfp.config.service.password** 将其密码和登录名提供给管理服务。 有关 JNDI 属性的信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.mf_server }} 实时更新服务的 JNDI 属性列表](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service)。
 
 它还需要具有 Liberty 概要文件上的 JNDI 名称的数据源。 约定为 **context\_root\_of\_config\_server/jdbc/ConfigDS**。 在此教程中，此数据源定义为 **mfpadminconfig/jdbc/ConfigDS**。 在使用 Server Configuration Tool 或 Ant 任务进行的安装中，实时更新服务表与管理服务表位于相同的数据库和模式中。 访问这些表的用户也相同。
 
@@ -359,7 +359,7 @@ Server Configuration Tool 还定义 JNDI 属性（用于注册机密客户机的
 {: #mobilefirst-operations-console }
 使用与管理服务相同的安全角色声明 {{ site.data.keys.mf_console }}。 映射至 {{ site.data.keys.mf_console }} 的安全角色的用户还必须映射到管理服务的相同安全角色。 实际上，{{ site.data.keys.mf_console }} 代表控制台用户运行到管理服务的查询。
 
-Server Configuration Tool 提供了一个 JNDI 属性 **mfp.admin.endpoint**，用于指示控制台连接到管理服务的方式。 Server Configuration Tool 设置的缺省值为 `*://*:*/mfpadmin`。 此设置意味着必须使用与控制台的入局 HTTP 请求相同的协议、主机名和端口，并且管理服务的上下文根为 /mfpadmin。 如果要强制通过 Web 代理发送请求，请更改缺省值。 有关此 URL 的可能值的更多信息或者有关其他可能的 JNDI 属性的信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。
+Server Configuration Tool 提供了一个 JNDI 属性 **mfp.admin.endpoint**，用于指示控制台连接到管理服务的方式。 Server Configuration Tool 设置的缺省值为 `*://*:*/mfpadmin`。 此设置意味着必须使用与控制台的入局 HTTP 请求相同的协议、主机名和端口，并且管理服务的上下文根为 /mfpadmin。 如果要强制通过 Web 代理发送请求，请更改缺省值。 有关此 URL 的可能值的更多信息或者有关其他可能的 JNDI 属性的信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。
 
 类装入器是使用管理服务部分中讨论的授权父代最后设置的。
 
@@ -422,29 +422,29 @@ Liberty Profile jvm.options 文件已修改。 定义了一个属性 (com.ibm.ws
     httpPort="9080"
     httpsPort="9443" />
     ```
-    
+
     替换为：
-    
+
     ```xml
     <httpEndpoint id="defaultHttpEndpoint"
     httpPort="9081"
     httpsPort="9444" />
     ```
-    
+
     通过此更改，服务器 mfp2 的 HTTP 和 HTTPS 端口将不会与服务器 mfp1 的端口出现冲突。 在运行 {{ site.data.keys.mf_server }} 的安装之前，请确保修改这些端口。 否则，如果在安装之后修改端口，那么还需要在 JNDI 属性 **mfp.admin.jmx.port** 中反映端口更改。
-    
+
 3. 运行 Server Configuration Tool。
     *  创建配置 **Hello MobileFirst 2**。
     * 按照[运行 Server Configuration Tool](#running-the-server-configuration-tool) 所述执行相同的安装过程，但选择 **mfp2** 作为应用程序服务器。 使用相同的数据库和相同的模式。
 
     > **注：**  
-    > 
+    >
     > * 如果服务器 mfp1 有环境标识（在本教程中不建议使用），那么必须将同一环境标识用于服务器 mfp2。
-    > * 如果修改了某些应用程序的上下文根，那么将相同的上下文根用于服务器 mfp2。 一个场的服务器必须是对称的。
+    > * 如果修改了某些应用程序的上下文根，那么将相同的上下文根用于服务器 mfp2。一个场的服务器必须是对称的。
     > * 如果创建了缺省用户 (admin/admin)，请在服务器 mfp2 中创建相同的用户。
 
     Ant 任务会检测数据库是否存在，并且不会创建表（请参阅以下日志摘要）。 然后会将应用程序部署到服务器。
-    
+
     ```xml
     [configuredatabase] Checking connectivity to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser'...
     [configuredatabase] Database MFPDATA exists.
@@ -456,7 +456,7 @@ Liberty Profile jvm.options 文件已修改。 定义了一个属性 (com.ibm.ws
     [configuredatabase] The database is in latest version (8.0.0), no upgrade required.
     [configuredatabase] Configuration of MobileFirstAdmin database MFPDATA succeeded.
     ```
-    
+
 4. 使用 HTTP 连接测试两台服务器。
     * 打开 Web 浏览器。
     * 输入以下 URL：[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。 此控制台由服务器 mfp1 维护。
@@ -465,20 +465,20 @@ Liberty Profile jvm.options 文件已修改。 定义了一个属性 (com.ibm.ws
     * 使用 admin/admin 登录。 如果正确完成安装，登录后在两个选项卡中会显示相同的欢迎页面。
     * 返回至第一个浏览器选项卡，并单击**欢迎管理员 → 下载审计日志**。 您将从控制台注销，并再次显示登录屏幕。 此注销行为是一个问题。 发生此问题的原因是当您登录服务器 mfp2 时，会在您的浏览器中创建轻量级第三方认证 (LTPA) 令牌并将其存储为 cookie。 但服务器 mfp1 未识别此 LTPA 令牌。 当 HTTP 负载均衡器位于集群之前时，可能会在生产环境中发生切换服务器的情况。 要解决此问题，您必须确保两台服务器（mfp1 和 mfp2）都使用相同的密钥生成 LTPA 令牌。 将 LTPA 密钥从服务器 mfp1 复制到服务器 mfp2。
     * 使用以下命令停止这两台服务器：
-    
+
         ```bash
         server stop mfp1
         server stop mfp2
         ```
     * 将服务器 mfp1 的 LTPA 密钥复制到服务器 mfp2。
-        在 **liberty\_install\_dir/usr/servers** 或 **WLP\_USER\_DIR/servers** 中，根据操作系统运行以下命令。 
+        在 **liberty\_install\_dir/usr/servers** 或 **WLP\_USER\_DIR/servers** 中，根据操作系统运行以下命令。
         * 在 UNIX 上：`cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
         * 在 Windows 上：`copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
     * 重新启动服务器。 这样从某一个浏览器选项卡切换至另一个浏览器选项卡时即可无需重新登录。 在 Liberty 服务器场中，所有服务器必须具有相同的 LTPA 密钥。
 5. 在 Liberty 服务器之间启用 JMX 通信。
 
     JMX 与 Liberty 的通信是通过使用 HTTPS 协议的 Liberty REST 接口完成的。 要启用此通信，场的每个服务器都必须能识别其他成员的 SSL 证书。 您需要在服务器信任库中交换 HTTPS 证书。 使用 **java/bin** 中的 IBM 实用程序（例如，属于 IBM JRE 分发版的 Keytool）来配置信任库。 在 **server.xml** 文件中定义了密钥库和信任库的位置。 缺省情况下，Liberty Profile 的密钥库位于 **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks** 中。 此缺省密钥库的密码（显示在 **server.xml** 文件中）为 **mobilefirst**。
-    
+
     > **提示：**您可以使用 Keytool 实用程序来更改此密码，但必须同时更改 server.xml 文件中的密码，以便此 Liberty 服务器可以读取此密钥库。 在本教程中，使用缺省密码。
     * 在 **WLP\_USER\_DIR/servers/mfp1/resources/security** 中，输入 `keytool -list -keystore key.jks`。 此命令会显示密钥库中的证书。 只有一个名为 **default** 的证书。 系统会在提示您输入密钥库的密码 (mobilefirst)，然后您才能看到密钥。 对于使用 Keytool 实用程序的所有后续命令都是如此。
     * 使用以下命令导出服务器 mfp1 的缺省证书：`keytool -exportcert
@@ -496,7 +496,5 @@ Liberty Profile jvm.options 文件已修改。 定义了一个属性 (com.ibm.ws
     server start mfp1
     server start mfp2
     ```
-    
+
 2. 访问控制台。 例如，[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) 或 [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)（在 HTTPS 中）。 在左侧侧边栏中，会显示一个额外菜单，此菜单标记为**服务器场节点**。 如果您单击**服务器场节点**，您可以看到每个节点的状态。 您可能需要等待一段时间以便两个节点都完成启动。
-    
-    

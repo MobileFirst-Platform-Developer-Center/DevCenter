@@ -78,8 +78,6 @@ public interface IGetBalanceService
 ```
 最后，我们应通过托管程序 `Main` 方法运行：
 
-
-
 ```csharp
 static void Main(string[] args) {
   // Create the ServiceHost.

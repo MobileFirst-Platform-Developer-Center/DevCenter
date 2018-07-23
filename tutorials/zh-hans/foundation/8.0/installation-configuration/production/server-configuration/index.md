@@ -1,14 +1,14 @@
 ---
 layout: tutorial
 title: 配置 MobileFirst Server
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
 考虑您的备份和恢复策略，优化您的 {{ site.data.keys.mf_server }} Server 配置并应用访问限制和安全选项。
 
-#### 跳至：
+#### 跳转至
 {: #jump-to }
 
 * [{{ site.data.keys.mf_server }} 生产服务器的端点](#endpoints-of-the-mobilefirst-server-production-server)
@@ -288,7 +288,7 @@ weight: 5
 
       上下文根（在上个示例中为 **app\_context\_root**）将连接 JNDI 条目与特定的 {{ site.data.keys.product_adj }} 应用程序。 如果同一服务器上存在多个 {{ site.data.keys.product_adj }} 应用程序，那么可以通过使用上下文路径前缀为每个应用程序定义特定 JNDI 条目。
 
-      > **注：**WebSphere Application Server Liberty 上全局定义了一些属性，属性名称无上下文根前缀。 要获取这些属性的列表，请参阅[全局 JNDI 条目](../appserver/#global-jndi-entries)。
+      > **注：**WebSphere Application Server Liberty 上全局定义了一些属性，属性名称无上下文根前缀。 要获取这些属性的列表，请参阅[全局 JNDI 条目](../prod-env/appserver/#global-jndi-entries)。
 
       对于所有其他 JNDI 属性，必须使用应用程序的上下文根作为名称的前缀：
 
@@ -411,8 +411,8 @@ Service 的上下文根为 **/mfpadmin**，
 | mfp.admin.hsts | 可选。 | 设置为 true 以根据 RFC 6797 启用 HTTP Strict Transport Security。 |
 | mfp.topology.platform | 可选 | 服务器类型。 有效值：{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}如果未设置该值，应用程序会尝试猜测服务器类型。 |
 | mfp.topology.clustermode | 可选 | 除服务器类型外，还在此处指定服务器拓扑。 有效值： {::nomarkdown}<ul><li>独立</li><li>集群</li><li>场</li></ul>{:/}缺省值为“独立”。 |
-| mfp.admin.farm.heartbeat | 可选 | 此属性可用于设置服务器场拓扑中所用脉动信号速率持续的时间（以分钟为单位）。 缺省值为 2 分钟。<br/><br/>在服务器场中，所有成员都必须使用相同的脉动信号速率。 如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。 有关更多信息，请参阅[服务器场节点的生命周期](../appserver/#lifecycle-of-a-server-farm-node)。 |
-| mfp.admin.farm.missed.heartbeats.timeout | 可选 | 此属性可用于设置在服务器场成员的状态被视为发生故障或关闭之前，该成员缺少的脉动信号数。 缺省值为 2。<br/><br/>在服务器场中，所有成员都必须使用相同的缺失脉动信号数。 如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。 有关更多信息，请参阅[服务器场节点的生命周期](../appserver/#lifecycle-of-a-server-farm-node)。 |
+| mfp.admin.farm.heartbeat | 可选 | 此属性可用于设置服务器场拓扑中所用脉动信号速率持续的时间（以分钟为单位）。 缺省值为 2 分钟。<br/><br/>在服务器场中，所有成员都必须使用相同的脉动信号速率。 如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。 有关更多信息，请参阅[服务器场节点的生命周期](../prod-env/appserver/#lifecycle-of-a-server-farm-node)。 |
+| mfp.admin.farm.missed.heartbeats.timeout | 可选 | 此属性可用于设置在服务器场成员的状态被视为发生故障或关闭之前，该成员缺少的脉动信号数。 缺省值为 2。<br/><br/>在服务器场中，所有成员都必须使用相同的缺失脉动信号数。 如果在服务器场中的某个服务器上设置或更改了此 JNDI 值，那么还必须在该服务器场中的所有其他服务器上设置相同的值。 有关更多信息，请参阅[服务器场节点的生命周期](../prod-env/appserver/#lifecycle-of-a-server-farm-node)。 |
 | mfp.admin.farm.reinitialize | 可选 | 布尔值（true 或 false），用于重新注册或重新初始化场成员。 |
 | mfp.server.swagger.ui.url | 可选 | 此属性定义要显示在管理控制台中的 Swagger 用户界面的 URL。 |
 
@@ -785,7 +785,7 @@ com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operati
     * 修改**过期超时**属性的值。 该值必须小于 MySQL **wait_timeout** 系统变量，以便在 MySQL 关闭连接之前清除这些连接。
     * 单击**确定**。
 
-> **注：**与 WebSphere Application Server Liberty Profile 或 WebSphere Application Server Full Profile 结合使用的 MySQL 不属于受支持的配置。 有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。 使用 IBM DB2 或其他受 WebSphere Application Server 支持的数据库，以从 IBM 支持中心全面支持的配置中受益。
+> **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。 有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。 使用 IBM DB2 或其他受 WebSphere Application Server 支持的数据库，以从 IBM 支持中心全面支持的配置中受益。
 
 ## 配置日志记录和监控机制
 {: #configuring-logging-and-monitoring-mechanisms }
@@ -839,9 +839,9 @@ Application Center 日志以 **com.ibm.puremeap** 开头。
 {: #configuring-multiple-runtimes }
 您可以为 {{ site.data.keys.mf_server }} 配置多个运行时，从而在 {{ site.data.keys.mf_console }} 中针对不同应用程序“类型”创造视觉差异。
 
-> **注释：**Mobile Foundation IBM Cloud 服务创建的 Mobile Foundation 服务器实例不支持多个运行时。然而，在 IBM Cloud 服务中，您必须创建多个服务实例。
+> **注释：**Mobile Foundation IBM Cloud 服务创建的 Mobile Foundation 服务器实例不支持多个运行时。 然而，在 IBM Cloud 服务中，您必须创建多个服务实例。
 
-#### 跳至：
+#### 跳转至
 {: #jump-to-1 }
 * [在 WebSphere Liberty Profile 中配置多个运行时](#configuring-multiple-runtimes-in-websphere-liberty-profile)
 * [注册应用程序并将适配器部署到不同的运行时](#registering-applications-and-deploying-adapters-to-different-runtimes)
@@ -883,7 +883,7 @@ Application Center 日志以 **com.ibm.puremeap** 开头。
     > **注：**
     >
     > * 确保 `dataSource` 指向其他数据库模式。
-    > * 确保已为新的运行时创建了[其他数据库实例](../databases)。
+    > * 确保已为新的运行时创建了[其他数据库实例](../prod-env/databases)。
     > * 在开发环境中，在 `properties.derby.embedded` 子元素中添加 `createDatabase="create"`。
 
 5. 重新启动应用程序服务器。
