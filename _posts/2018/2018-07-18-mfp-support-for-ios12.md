@@ -61,9 +61,7 @@ All the above features were validated to work on iOS 12 beta 3.
 * Starting with iOS 12, **stdc++** library is removed from simulator runtime, but it remains in the iOS 12.0 (device) runtime for binary compatibility with shipping apps. **libstdc++** was deprecated 5 years ago. Apple's more recent platforms (tvOS and watchOS) doesn't support it.
 In order to test your app on simulator, please use the workaround suggested [here](https://stackoverflow.com/questions/50694822/xcode-10-ios-12-does-not-contain-libstdc6-0-9).
 Mostly, for a hybrid/cordova app we found that entry of **libstdc++** included in our project structure  was red because Xcode couldn't find the reference for it. After we removed the entry of **libstdc++** from the project structure and added the new lib instead(**libc++**), it worked without issues.
-
 For a native app , you should remove **libstdc++** from other linker flags in your xcode project as below:
-
 ![iOS12 libstdc++  issue workaround]({{site.baseurl}}/assets/blog/2017-07-20-compatibility-tests-for-ios-12/ios12-stdlib-fix.png)
 
 * During our compatibility test we found certificate pinning feature is not working. It looks very similar to the issue mentioned [here](https://github.com/AFNetworking/AFNetworking/issues/4229). We are currently investigating the issue. We will update here once we conclude our investigation.
