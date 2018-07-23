@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Datenbanken einrichten
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -32,7 +32,7 @@ wird für jede Instanz eine eigene Gruppe von Tabellen benötigt. Die Tabellen m
 > **Hinweis zu DB2:** {{ site.data.keys.product_adj }}-Lizenzen erlauben die Nutzung von DB2 als unterstützendes System für die MobileFirst Foundation. Wenn Sie davon profitieren möchten, führen Sie nach der Installation
 der DB2-Software folgende Schritte aus:
 
-> 
+>
 > * Laden Sie das Image zur Aktivierung für eine eingeschränkte Verwendung direkt von der Website [IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html) herunter.
 > * Wenden Sie die Datei zur Aktivierung für eine eingeschränkte Verwendung (**db2xxxx.lic**) an. Führen Sie dazu den Befehl **db2licm** aus. 
 >
@@ -112,7 +112,7 @@ erfüllt sind.
 * [Datenbank- und Benutzeranforderungen für Oracle](#oracle-database-and-user-requirements)
 * [Datenbank- und Benutzeranforderungen für MySQL](#mysql-database-and-user-requirements)
 
-> Eine aktuelle Liste der unterstützten Datenbanksoftwareversionen finden Sie auf der Seite mit den [Systemvoraussetzungen](../../../product-overview/requirements/).
+> Eine aktuelle Liste der unterstützten Datenbanksoftwareversionen finden Sie auf der Seite mit den [Systemvoraussetzungen](../../../../product-overview/requirements/).
 
 
 
@@ -163,7 +163,7 @@ Unicode Character Set
 Dem Laufzeitbenutzer (siehe [Datenbankbenutzer und -berechtigungen](#database-users-and-privileges)) muss ein Tabellenbereich und ein ausreichendes Kontingent für das Schreiben der für die
 {{ site.data.keys.product }}-Services erforderlichen Daten zugeordnet sein.
 Weitere Informationen zu den vom Produkt verwendeten Tabellen finden Sie unter
-[Interne Laufzeitdatenbanken](../installation-reference/#internal-runtime-databases). 
+[Interne Laufzeitdatenbanken](../../installation-reference/#internal-runtime-databases). 
 
 Die Tabellen müssen im Standardschema des Laufzeitbenutzers
 erstellt werden. Die Ant-Tasks und das
@@ -253,11 +253,11 @@ root` aus.
 Zeichen "@" ist der Benutzername, die Angabe **mfpuser-Kennwort** hinter **IDENTIFIED
 BY** ist das zugehörige Kennwort und die Angabe **MFP-Host** ist der Name des Hosts, auf dem
 {{ site.data.keys.product_adj }} ausgeführt wird.
-    
+
     Der Benutzer muss von den Hosts aus, auf denen der
 Java-Anwendungsserver mit den MobileFirst-Server-Anwendungen installiert ist,
 eine Verbindung zum MySQL-Server herstellen können. 
-    
+
 ## Datenbanktabellen manuell erstellen
 {: #create-the-database-tables-manually }
 Die Datenbanktabellen für die MobileFirst-Server-Anwendungen können manuell, mit Ant-Tasks oder mit dem
@@ -434,8 +434,7 @@ Server Configuration Tool installieren.
 Das
 Server Configuration Tool kann die Datenbanktabellen
 im Rahmen des Installationsprozesses erstellen. In einigen Fällen kann es sogar eine Datenbank und einen Benutzer für die
-MobileFirst-Server-Komponenten erstellen. Eine Übersicht über den Installationsprozess mit dem
-Server Configuration Tool finden Sie unter [{{ site.data.keys.mf_server }} im Grafikmodus installieren](../tutorials/graphical-mode).
+MobileFirst-Server-Komponenten erstellen. Eine Übersicht über den Installationsprozess mit dem Server Configuration Tool finden Sie unter [{{ site.data.keys.mf_server }} im Grafikmodus installieren](../../simple-install/tutorials/graphical-mode).
 
 Wenn Sie die Berechtigungsnachweise für die Konfiguration angegeben und
 im Fenster des Server Configuration Tool
@@ -597,8 +596,7 @@ Server Configuration Tool erstellt werden. In den folgenden Abschnitten ist die 
 In diesem Abschnitt finden Sie relevante Informationen zum Einrichten der Datenbank bei Installation von
 {{ site.data.keys.mf_server }} mit Ant-Tasks.  
 
-Sie können die MobileFirst-Server-Datenbanktabellen mit Ant-Tasks einrichten. In einigen Fällen können Sie auch eine Datenbank und einen Benutzer mit diesen Tasks erstellen. Eine Übersicht über den Installationsprozess mit Ant-Tasks
-finden Sie unter [{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../tutorials/command-line).
+Sie können die MobileFirst-Server-Datenbanktabellen mit Ant-Tasks einrichten. In einigen Fällen können Sie auch eine Datenbank und einen Benutzer mit diesen Tasks erstellen. Eine Übersicht über den Installationsprozess mit Ant-Tasks finden Sie unter [{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../../simple-install/tutorials/command-line).
 
 Mit der Installation werden eine Reihe von Ant-Beispieldateien bereitgestellt, die Ihnen den Einstieg in das Arbeiten mit Ant-Tasks erleichtern sollen. Sie finden diese Dateien unter **MFP-Installationsverzeichnis/MobileFirstServer/configuration-samples**. Die Dateien sind nach folgendem Muster benannt:
 
@@ -618,7 +616,7 @@ Die Ant-Dateien können eine Datenbank für das unterstützte Datenbankmanagemen
 Produktion geeignet. 
 
 In den Ant-Dateien können Sie die vordefinierten Ziele finden, die die Ant-Task **configureDatabase** zum Einrichten der Datenbank verwenden. Lesen Sie hierzu die Referenzinformationen zur
-[Ant-Task 'configuredatabase'](../installation-reference/#ant-configuredatabase-task-reference). 
+[Ant-Task 'configuredatabase'](../../installation-reference/#ant-configuredatabase-task-reference). 
 
 ### Ant-Beispieldateien verwenden
 {: #using-the-sample-ant-files }
@@ -648,7 +646,7 @@ für Folgendes denselben Datenbankbenutzer:
 
 Wenn Sie
 verschiedene Benutzer verwenden möchten (siehe Beschreibung unter [Datenbankbenutzer und -berechtigungen](#database-users-and-privileges)),
-müssen Sie Ihre eigene Ant-Datei erstellen oder die Ant-Beispieldateien so modifizieren, dass es für jedes Datenbankziel einen anderen Benutzer gibt. Lesen Sie hierzu die [Referenzinformatinen zur Installation](../installation-reference). 
+müssen Sie Ihre eigene Ant-Datei erstellen oder die Ant-Beispieldateien so modifizieren, dass es für jedes Datenbankziel einen anderen Benutzer gibt. Lesen Sie hierzu die [Referenzinformatinen zur Installation](../../installation-reference). 
 
 In DB2 und MySQL ist es möglich, für die Datenbankerstellung einen anderen Benutzer als für die Laufzeit
 zu verwenden.
@@ -717,8 +715,7 @@ muss das Element **oracle** der Ant-Task
 **url**, **user**
 und **password** anstelle der Attribute
 **database**, **server**, **port**, **user**
-und **password** verwenden. Sehen Sie sich hierzu die Tabelle in den Referenzinformationen zur
-[Ant-Task **configuredatabase**](../installation-reference/#ant-configuredatabase-task-reference) an. Die Ant-Beispieldateien im Verzeichnis **MFP-Installationsverzeichnis/MobileFirstServer/configurations-samples** verwenden die Attribute
+und **password** verwenden. Sehen Sie sich hierzu die Tabelle in den Referenzinformationen zur [Ant-Task **configuredatabase**](../../installation-reference/#ant-configuredatabase-task-reference) an. Die Ant-Beispieldateien im Verzeichnis **MFP-Installationsverzeichnis/MobileFirstServer/configurations-samples** verwenden die Attribute
 **database**, **server**, **port**, **user**
 und **password** im Element **oracle**.
 Sie müssen modifiziert werden, wenn Sie die Verbindung zu Oracle über eine JDBC-URL herstellen. 

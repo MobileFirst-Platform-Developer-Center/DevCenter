@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Securing containers
 #relevantTo: [ios,android,windows,javascript]
@@ -349,13 +350,13 @@ Erstellen Sie Benutzer und Gruppen in der LDAP-Repository. Die Autorisierung fü
    </ldapRegistry>
    ```
 
-    Eintrag | Beschreibung 
+    Eintrag |Beschreibung 
     --- | ---
-    `host` und `port` | Hostname (IP-Adresse) und Portnummer Ihres lokalen LDAP-Servers 
-    `baseDN` | Domänenname (DN) in LDAP mit allen Details einer bestimmten Organisation 
-    `bindDN="uid=admin,ou=system"	` | Bindungsdetails des LDAP-Servers. Für einen Apache Directory Service würden die Standardwerte beispielsweise `uid=admin,ou=system` lauten. 
-    `bindPassword="secret"` | Bindungskennwort für den LDAP-Server. Der Standardwert für einen Apache Directory Service wäre beispielsweise `secret`. 
-    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | Angepasste Filter für das Abfragen des Verzeichnisservice (z. B. Apache) während der Authentifizierung und Autorisierung 
+    `host` und `port` |Hostname (IP-Adresse) und Portnummer Ihres lokalen LDAP-Servers 
+    `baseDN` |Domänenname (DN) in LDAP mit allen Details einer bestimmten Organisation 
+    `bindDN="uid=admin,ou=system"	` |Bindungsdetails des LDAP-Servers. Für einen Apache Directory Service würden die Standardwerte beispielsweise `uid=admin,ou=system` lauten. 
+    `bindPassword="secret"` |Bindungskennwort für den LDAP-Server. Der Standardwert für einen Apache Directory Service wäre beispielsweise `secret`. 
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` |Angepasste Filter für das Abfragen des Verzeichnisservice (z. B. Apache) während der Authentifizierung und Autorisierung 
 
 2. Stellen Sie sicher, dass die folgenden Features für `appSecurity-2.0` und `ldapRegistry-3.0` aktiviert sind:
 

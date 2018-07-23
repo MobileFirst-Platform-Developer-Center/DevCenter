@@ -108,7 +108,8 @@ submitChallengeAnswer(new JSONObject().put("pin", pinCodeTxt.getText()));
 
 ## Abfrage abbrechen
 {: #cancelling-the-challenge }
-Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., indem Sie auf die Schaltfläche **Cancel** klicken.
+Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., wenn
+auf eine Schaltfläche **Cancel** geklickt wird. 
 
 Verwenden Sie dazu die Methode `cancel()` von `SecurityCheckChallengeHandler`. 
 
