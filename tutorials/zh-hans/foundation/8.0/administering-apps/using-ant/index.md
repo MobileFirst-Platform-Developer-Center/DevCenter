@@ -210,7 +210,7 @@ mfpadm Ant 任务的正常输出采用当前语言环境的编码格式进行编
 <br/>
 #### `show-user-config` 命令
 {: #the-show-user-config-command }
-`<adapter>` 和 `<app-version>` 元素外的 `show-user-config` 命令可显示运行时的用户配置。它具有以下属性：
+`<adapter>` 和 `<app-version>` 元素外部的 `show-user-config` 命令可显示运行时的用户配置。它具有以下属性：
 
 | 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|

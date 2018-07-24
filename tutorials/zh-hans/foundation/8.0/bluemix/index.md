@@ -7,12 +7,13 @@ weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/><br/>
-> **注：***IBM Bluemix 现在位于 IBM Cloud 上。要了解更多信息，请参阅[此处](https://www.ibm.com/blogs/bluemix/2017/10/bluemix-is-now-ibm-cloud/)。*
+> **注：***IBM Bluemix 现在位于 IBM Cloud 上。 要了解更多信息，请参阅[此处](https://www.ibm.com/blogs/bluemix/2017/10/bluemix-is-now-ibm-cloud/)。*
+
 ## 概述
 {: #overview }
-{{ site.data.keys.product_full }} 可在 IBM Cloud 上托管。以下是有关 IBM Cloud 的一些基本信息。
+{{ site.data.keys.product_full }} 可在 IBM Cloud 上托管。 以下是有关 IBM Cloud 的一些基本信息。
 
-IBM Cloud 是 IBM 的开放云架构的实现。它利用 Cloud Foundry 来支持开发人员快速构建、部署和管理其云应用程序，同时利用可用服务和运行时框架的不断增长的生态系统。
+IBM Cloud 是 IBM 的开放云架构的实现。 它利用 Cloud Foundry 来支持开发人员快速构建、部署和管理其云应用程序，同时利用可用服务和运行时框架的不断增长的生态系统。
 
 > 在[此处](https://console.bluemix.net/docs/overview/ibm-cloud.html#overview)了解有关 IBM Cloud 架构和 IBM Cloud 概念的更多信息。
 
@@ -20,7 +21,7 @@ IBM Cloud 是 IBM 的开放云架构的实现。它利用 Cloud Foundry 来支�
 {: #how-does-it-work }
 简而言之，根据许可权利的类型，有两种在 IBM Cloud 上运行 {{ site.data.keys.product }} 的方式。
 
-> **注：***现在不推荐使用 IBM Containers 服务，因此在 IBM Containers 上不支持 Mobile Foundation。[了解更多信息](https://www.ibm.com/blogs/bluemix/2017/07/deprecation-single-scalable-group-container-service-bluemix-public/)。*
+> **注：***现在不推荐使用 IBM Containers 服务，因此在 IBM Containers 上不支持 Mobile Foundation。 [了解更多信息](https://www.ibm.com/blogs/bluemix/2017/07/deprecation-single-scalable-group-container-service-bluemix-public/)。*
 
 * IBM Cloud 预订或 PayGo 许可证：{{ site.data.keys.mf_bm_full }} 服务
 * 本地许可证：使用 IBM 提供的脚本在 Kubernetes 集群或 Liberty for Java 运行时上设置 {{ site.data.keys.product_full }} 的实例。

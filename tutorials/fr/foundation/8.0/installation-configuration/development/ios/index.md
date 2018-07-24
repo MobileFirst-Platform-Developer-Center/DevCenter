@@ -48,7 +48,7 @@ Xcode est un environnement de développement intégré que vous pouvez utiliser 
 {: #ios-simulator }
 Xcode met à disposition un simulateur iOS pour le test de votre application. Pour une explication détaillée de toutes les options disponibles, voir la [rubrique de documentation About Simulator](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/Introduction/Introduction.html) sur le site Web Apple Developer.
 
-## Que faire ensuite ?
+## Etapes suivantes
 {: #whats-next }
 Maintenant que les environnements de développement {{ site.data.keys.product_adj }} et iOS sont configurés, vous pouvez passer à la catégorie [Démarrage rapide](../../../quick-start/ios/) pour commencer à vous servir de {{ site.data.keys.product }} ou [Tous les tutoriels](../../../all-tutorials) pour en savoir plus sur certains aspects du développement {{ site.data.keys.product }}.
 

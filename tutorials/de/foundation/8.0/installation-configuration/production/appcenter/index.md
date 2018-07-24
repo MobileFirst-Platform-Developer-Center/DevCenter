@@ -2,7 +2,7 @@
 layout: tutorial
 title: IBM MobileFirst Foundation Application Center installieren und konfigurieren
 breadcrumb_title: Installing Application Center
-weight: 8
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -26,7 +26,7 @@ erforderlich. Weitere Informationen finden Sie unten im Abschnitt "Application C
 Eine Liste der installierten Dateien und Tools finden Sie unter
 [Verteilerweg von {{ site.data.keys.mf_server }}](../installation-manager/#distribution-structure-of-mobilefirst-server).
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
 * [Application Center mit IBM Installation Manager installieren](#installing-application-center-with-ibm-installation-manager)
@@ -40,7 +40,7 @@ mit Ant-Tasks installieren](#installing-the-application-center-with-ant-tasks)
 Mit IBM Installation Manager können Sie
 das Application Center installieren, die zugehörige Datenbank erstellen und das Application Center in einem
 Anwendungsserver implementieren.  
-Vergewissern Sie sich vor Beginn, dass der Benutzer, der IBM Installation Manager ausführt, über die in den [Dateisystemvoraussetzungen](../appserver/#file-system-prerequisites) beschriebenen Zugriffsrechte verfügt.
+Vergewissern Sie sich vor Beginn, dass der Benutzer, der IBM Installation Manager ausführt, über die in den [Dateisystemvoraussetzungen](../prod-env/appserver/#file-system-prerequisites) beschriebenen Zugriffsrechte verfügt.
 
 Führen Sie zum Installieren des
 IBM Application Center mit IBM Installation Manager
@@ -52,7 +52,7 @@ mit Standardeinstellungen erstellen.
 [IBM Installation Manager ausführen](../installation-manager) aus.
 3. Beantworten Sie die Frage **IBM Application Center installieren?** mit **Ja**.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-1 }
 * [Optionale Datenbankerstellung](#optional-creation-of-databases)
 * [Application Center in WebSphere Application Server Network Deployment installieren](#installing-application-center-in-websphere-application-server-network-deployment)
@@ -70,7 +70,7 @@ Installationsprogramms für {{ site.data.keys.mf_server }} erstellt werden.
 
 In den folgenden Abschnitten sind die Prozeduren zum Erstellen der Datenbank für die unterstützten Datenbankmanagementsysteme beschrieben.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-2 }
 
 * [DB2-Datenbank für das Application Center erstellen](#creating-the-db2-database-for-application-center)
@@ -225,7 +225,7 @@ APPCENTER für die Datenbank:
 
         ```bash
         CONNECT SYSTEM/<SYSTEM-Kennwort>@ORCL
-        CREATE USER APPCENTER IDENTIFIED BY Kennwort DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
+        CREATE USER APPCENTER IDENTIFIED BY password DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
         GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO APPCENTER;
         DISCONNECT;
         ```
@@ -252,15 +252,14 @@ festgelegt werden muss, das Deployment-Manager-Profil aus.
 da der Deployment Manager in diesem Fall die Konfiguration des Servers überschreibt,
 unabhängig davon, ob Sie die Installation auf der Maschine ausführen, auf der der Deployment Manager ausgeführt wird, oder auf einer anderen Maschine.
 
-
 3. Wählen Sie den erforderlichen Geltungsbereich aus, in dem das Application Center installiert werden soll. In der folgenden Tabelle sind die verfügbaren Geltungsbereiche aufgelistet:
 
-    | Bereich | Erläuterung |
+    |Bereich |Erläuterung |
     |--------|-------------|
-    | Zelle | Installiert das Application Center in allen Anwendungsservern der Zelle |
-    | Cluster | Installiert das Application Center in allen Anwendungsservern des angegebenen Clusters |
-    | Knoten | Installiert das Application Center in allen Anwendungsservern des angegebenen Knotens, die nicht Teil eines Clusters sind |
-    | Server | Installiert das Application Center im angegebenen Server, der nicht Teil eines Clusters ist |
+    |Zelle |Installiert das Application Center in allen Anwendungsservern der Zelle |
+    |Cluster |Installiert das Application Center in allen Anwendungsservern des angegebenen Clusters |
+    |Knoten |Installiert das Application Center in allen Anwendungsservern des angegebenen Knotens, die nicht Teil eines Clusters sind |
+    |Server |Installiert das Application Center im angegebenen Server, der nicht Teil eines Clusters ist |
 
 4. Starten Sie die Zielserver erneut. Führen Sie dazu die unter [Installation abschließen](#completing-the-installation) beschriebene Prozedur aus.
 
@@ -369,7 +368,7 @@ Wie Sie diese Anmeldungen modifizieren können, erfahren Sie unter
 Nachfolgend sind die Ant-Tasks beschrieben, die Sie zum Installieren des
 Application Center verwenden.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-3 }
 
 * [Datenbank für das Application Center mit Ant-Tasks erstellen und konfigurieren](#creating-and-configuring-the-database-for-application-center-with-ant-tasks)
@@ -490,9 +489,9 @@ zu implementieren:
     Der Ant-Befehl ist in **MF-Server-Installationsverzeichnis/shortcuts** enthalten.
 
     > **Hinweis:** Sie können diese Ant-Dateien auch für folgende Aktionen verwenden:
-
     >
-    > * Application Center mit dem Ziel **uninstall** deinstallieren
+    >
+      * Application Center mit dem Ziel **uninstall** deinstallieren
     > * Application Center mit dem Ziel **minimal-update** aktualisieren, um ein Fixpack anzuwenden
 
 4. Speichern Sie die Ant-Datei, damit sie Ihnen später für die Anwendung eines Fixpacks oder für ein Upgrade zur Verfügung steht. Wenn Sie die Kennwörter nicht speichern möchten, können Sie sie durch "************" (12 Sterne) ersetzen und eine interaktive Aufforderung zur Kennworteingabe verwenden.
@@ -521,7 +520,7 @@ Application Center (z. B. Version 5.0.6 und Version 6.0.0) verwendet werden kön
 
 
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-4 }
 
 * [DB2-Datenbank für das Application Center manuell konfigurieren](#configuring-the-db2-database-manually-for-application-center)
@@ -543,7 +542,7 @@ für die Verwendung dieser Datenbankkonfiguration.
 3. Führen Sie das anwendungsserverspezifische Setup entsprechend der
 folgenden Liste aus.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-5 }
 
 * [DB2-Datenbank für das Application Center manuell einrichten](#setting-up-your-db2-database-manually-for-application-center)
@@ -572,7 +571,7 @@ DB2-Datenbankkonfiguration die richtigen Angaben für Benutzername und Kennwort 
 2. Öffnen Sie wie folgt einen
 DB2-Befehlszeilenprozessor. Verwenden Sie dabei einen
 Benutzer mit der Berechtigung **SYSADM** oder **SYSCTRL**. 
-    * Klicken Sie auf Windows-Systemen auf **Start → IBM DB2 → Befehlszeilenprozessor**.
+    * Klicken Sie auf Windows-Systemen auf **Start → IBM DB2 → Befehlszeilenprozessor**. 
     * Navigieren Sie auf Linux- oder UNIX-Systemen zu **~/sqllib/bin** und geben Sie `./db2` ein.
 
 3. Geben Sie die folgenden Datenbankmanager- und SQL-Anweisungen ein, um die Datenbank mit dem Namen **APPCNTR** zu erstellen: 
@@ -671,12 +670,10 @@ von der Seite [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?
 Using IBM JCC Driver**.
     * Setzen Sie den **Implementierungstyp** auf **Datenquelle des Verbindungspools**.
     * Setzen Sie die Option **Name** auf **DB2 Using IBM JCC Driver**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Setzen Sie den Klassenpfad auf die JAR-Dateien in dem in Schritt 1 bestimmten Verzeichnis und ersetzen Sie dabei **WAS-Installationsverzeichnis/profiles/Profilname** durch den Verweis auf die WebSphere-Application-Server-Variable `${USER_INSTALL_ROOT}`.
     * Geben Sie keinen **Pfad der nativen Bibliothek** an.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Klicken Sie auf
 **Fertigstellen**.
     * Der JDBC-Provider wird erstellt.
@@ -691,15 +688,13 @@ Application-Center-Datenbank:
     * Geben Sie
 **Application-Center-Datenbank** als **Name der Datenquelle** an.
     * Setzen Sie **JNDI-Name** auf **jdbc/AppCenterDS**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Geben Sie Eigenschaften für die Datenquelle ein. Beispiel: 
         * **Treibertyp**: 4
         * **Datenbankname**: APPCNTR
         * **Servername**: localhost
         * **Portnummer**: 50000 (Standard)
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Erstellen Sie JAAS-J2C-Authentifizierungsdaten, wobei Sie für die Containerverbindung
 den DB2-Benutzernamen und das DB2-Kennwort als Eigenschaften angeben. Falls erforderlich, rufen Sie erneut
 den Assistenten für die Datenquellenerstellung auf. Wiederholen Sie dazu die Schritte
@@ -778,7 +773,7 @@ der Apache Derby-Datenbank erstellen Sie die Datenbank und Datenbanktabellen und
 1. Erstellen Sie die Datenbank und die darin enthaltenen Tabellen. Dieser Schritt ist unter [Apache-Derby-Datenbank für das Application Center manuell einrichten](#setting-up-your-apache-derby-database-manually-for-application-center) beschrieben.
 2. Konfigurieren Sie den Anwendungsserver für die Verwendung dieser Datenbankkonfiguration. Fahren Sie mit einem der folgenden Abschnitte fort.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-6 }
 
 * [Apache-Derby-Datenbank für das Application Center manuell einrichten](#setting-up-your-apache-derby-database-manually-for-application-center)
@@ -872,8 +867,7 @@ hinzu.
 - Derby JDBC Provider**.
     * Setzen Sie **Beschreibung** auf **Derby
 JDBC provider for Worklight**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Setzen Sie den **Klassenpfad** auf die JAR-Datei in dem in Schritt 1 bestimmten
 Verzeichnis und ersetzen Sie dabei **WAS-Installationsverzeichnis/profiles/Profilname** durch
 den Verweis auf die WebSphere-Application-Server-Variable **${USER\_INSTALL\_ROOT}**.
@@ -885,13 +879,10 @@ den Verweis auf die WebSphere-Application-Server-Variable **${USER\_INSTALL\_ROO
     * Klicken Sie auf **Neu**.
     * Setzen Sie **Name der Datenquelle** auf **Application-Center-Datenbank**.
     * Setzen Sie **JNDI-Name** auf **jdbc/AppCenterDS**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Wählen Sie den vorhandenen JDBC-Provider mit dem Namen **Worklight - Derby JDBC Provider** aus.
-    * Klicken Sie auf
-**Weiter**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Klicken Sie auf
 **Fertigstellen**.
     * Klicken Sie auf **Speichern**.
@@ -946,7 +937,7 @@ für die Verwendung dieser Datenbankkonfiguration.
 3. Führen Sie das anwendungsserverspezifische Setup entsprechend der
 folgenden Liste aus.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-7 }
 
 * [MySQL-Datenbank für das Application Center manuell einrichten](#setting-up-your-mysql-database-manually-for-application-center)
@@ -993,7 +984,8 @@ WebSphere Application Server Liberty Profile einzurichten und zu konfigurieren. 
 
 > **Hinweis:** MySQL
 in Kombination mit WebSphere Application Server Liberty
-Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
+Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM
 DB2 oder
 eine andere von WebSphere Application Server unterstützte Datenbank
 verwenden, um die Vorteile
@@ -1038,7 +1030,8 @@ WebSphere Application Server einzurichten und zu konfigurieren. Beenden Sie das 
 
 > **Hinweis:** MySQL
 in Kombination mit WebSphere Application Server Liberty
-Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Es wird empfohlen, IBM DB2 oder eine andere
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
+Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Es wird empfohlen, IBM DB2 oder eine andere
 von WebSphere Application Server unterstützte Datenbank zu verwenden, um die Vorteile einer Konfiguration mit vollständiger Unterstützung durch den
 IBM Support zu nutzen.
 
@@ -1148,7 +1141,7 @@ für die Verwendung dieser Datenbankkonfiguration.
 3. Führen Sie das anwendungsserverspezifische Setup entsprechend der
 folgenden Liste aus.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-8 }
 
 * [Oracle-Datenbank für das Application Center manuell einrichten](#setting-up-your-oracle-database-manually-for-application-center)
@@ -1190,7 +1183,7 @@ SQLPlus zu erstellen, geben Sie die folgenden Befehle ein:
 
       ```bash
         CONNECT SYSTEM/<SYSTEM-Kennwort>@ORCL
-        CREATE USER APPCENTER IDENTIFIED BY Kennwort DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
+        CREATE USER APPCENTER IDENTIFIED BY password DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
         GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO APPCENTER;
         DISCONNECT;
         ```
@@ -1283,17 +1276,15 @@ Schritt 1 bestimmten Verzeichnis hinzu.
     * Klicken Sie auf **Neu**.
     * Füllen Sie die Felder für den **JDBC-Provider** wie in der folgenden Tabelle angegeben aus:
 
-        | Feld | Wert |
+        |Feld |Wert |
         |-------|-------|
-        | Datenbanktyp | Oracle |
-        | Providertyp | Oracle-JDBC-Treiber |
-        | Implementierungstyp | Datenquelle des Verbindungspools |
-        | Name | Oracle-JDBC-Treiber |
-    * Klicken Sie auf
-**Weiter**.
+        |Datenbanktyp |Oracle |
+        |Providertyp |Oracle-JDBC-Treiber |
+        |Implementierungstyp |Datenquelle des Verbindungspools |
+        |Name |Oracle-JDBC-Treiber |
+    * Klicken Sie auf **Weiter**.
     * Setzen Sie den **Klassenpfad** der Datenbank auf die JAR-Datei in dem in Schritt 1 bestimmten Verzeichnis und ersetzen Sie dabei **WAS-Installationsverzeichnis/profiles/Profilname** durch die WebSphere-Application-Server-Variablenreferenz **${USER_INSTALL_ROOT}**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
 
     Der JDBC-Provider wird erstellt.
 
@@ -1305,13 +1296,11 @@ Schritt 1 bestimmten Verzeichnis hinzu.
 JDBC Driver DataSource**.
     * Setzen Sie
 **JNDI-Name** auf **jdbc/AppCenterDS**.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Klicken Sie auf
 **Vorhandenen JDBC-Provider auswählen** und wählen Sie in der Liste
 **Oracle JDBC driver** aus.
-    * Klicken Sie auf
-**Weiter**.
+    * Klicken Sie auf **Weiter**.
     * Setzen Sie die **URL** auf den Wert **jdbc:oracle:thin:@oserver:1521:ORCL**.
 Hier steht **oserver** für den Hostnamen Ihres Oracle-Servers
 (z. B. **localhost**, wenn sich der Server auf derselben Maschine befindet).
@@ -1321,7 +1310,8 @@ Hier steht **oserver** für den Hostnamen Ihres Oracle-Servers
     * Setzen Sie **oracleLogPackageName** auf **oracle.jdbc.driver**.
     * Geben Sie Folgendes an: **user = APPCENTER**.
     * Geben Sie Folgendes an: **password = APPCENTER-Kennwort**.
-    * Klicken Sie auf **OK** und speichern Sie die Änderungen.
+    * Klicken Sie auf
+**OK** und speichern Sie die Änderungen. 
     * Wählen Sie unter **Ressourcen → JDBC → Datenquellen** die neue Datenquelle aus. 
     * Klicken Sie auf
 **Eigenschaften für WebSphere-Datenquelle**.
@@ -1372,7 +1362,7 @@ Sie müssen die Dateien
 appcenterconsole.war und applicationcenter.war im Application Center implementieren.
 Die Dateien befinden sich im Ordner **Produktinstallationsverzeichnis/ApplicationCenter/console**.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-9 }
 
 * [Liberty Profile für das Application Center manuell konfigurieren](#configuring-the-liberty-profile-for-application-center-manually)
@@ -1493,10 +1483,10 @@ mit der JDBC-JAR-Datei sein, die in der in
 
       ```bash
       mkdir LIBERTY_HOME\wlp\usr\extension\lib
-      copy /B Produktinstallationsverzeichnis\features\com.ibm.websphere.crypto_1.0.0.jar
+      copy /B Produktinstallationsverzeichnis\features\com.ibm.websphere.crypto_1.0.0.jar  
       LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
       mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-      copy /B Produktinstallationsverzeichnis\features\MFPDecoderFeature-1.0.mf
+      copy /B Produktinstallationsverzeichnis\features\MFPDecoderFeature-1.0.mf  
       LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
       ```
 
@@ -1638,30 +1628,31 @@ in Tomcat kopieren, Datenbanktreiber hinzufügen, die Datei **server.xml** bearb
     * Deklarieren Sie die Application-Center-Konsole und die Application-Center-Services sowie eine Benutzerregistry:
 
       ```xml
-      <!-- Anwendung für IBM Application-Center-Konsole deklarieren -->
+      <!-- IBM Application-Center-Konsole deklarieren -->
       <Context path="/appcenterconsole" docBase="appcenterconsole">
 
-          <!-- AppCenter-Services-Endpunkt deklarieren, damit die AppCenter-
-               Konsole den REST-Service aufrufen kann.
-               Sie müssen diese Eigenschaft aktivieren, wenn sich der Server hinter
-               einem Reverse Proxy befindet oder das Kontextstammverzeichnis der
-               Application-Center-Services nicht '/applicationcenter' lautet. -->
+          <!-- DAppCenter-Serviceendpunkt definieren, damit die AppCenter-Konsole
+               den REST-Service aufrufen kann.
+               Diese Eigenschaft muss aktiviert werden, wenn sich der Server hinter einem
+               Reverse Proxy befindet oder wenn für das Application Center Services ein anderes
+               Kontextstammverzeichnis verwendet wird als '/applicationcenter'. -->
           <!-- <Environment name="ibm.appcenter.services.endpoint"
-                            value="http://Proxy-Host:Proxy-Port/applicationcenter"
+                            value="http://proxy-host:proxy-port/applicationcenter"
                             type="java.lang.String" override="false"/>
           -->
 
       </Context>
 
-      <!-- Anwendung für IBM Application-Center-Services deklarieren -->
+            <!-- IBM Application-Center-Services deklarieren -->
       <Context path="/applicationcenter" docBase="applicationcenter">
-          <!-- Verzeichnis mit Binärdateien des Programms 'aapt' aus dem Paket platform-tools des Android-SDK -->
+          <!-- Das Verzeichnis mit den Binärdateien des Programms 'aapt' aus
+               dem Plattformtoolpaket des Android SDK. -->
           <Environment name="android.aapt.dir"
-                       value="Produktinstallationsverzeichnis/ApplicationCenter/tools/android-sdk"
+                       value="product_install_dir/ApplicationCenter/tools/android-sdk"
                        type="java.lang.String" override="false"/>
           <!-- Protokoll der Anwendungsressourcen-URI.
-               Diese Eigenschaft ist optional. Sie ist nur dann erforderlich,
-               wenn das Protokoll der externen URI von dem der internen URI abweicht. -->
+               Diese Eigenschaft ist nur erforderlich, wenn das Protokoll
+               der externen URI von dem der internen URI abweicht. -->
           <!-- <Environment name="ibm.appcenter.proxy.protocol"
                             value="http" type="java.lang.String" override="false"/>
           -->
@@ -1678,15 +1669,15 @@ in Tomcat kopieren, Datenbanktreiber hinzufügen, die Datei **server.xml** bearb
                             value="proxy-port"
                             type="java.lang.Integer" override="false"/> -->
 
-          <!-- Datenbank für IBM Application-Center-Services deklarieren -->
+          <!--  Datenbank für IBM Application-Center-Services deklarieren -->
           <!-- <Resource name="jdbc/AppCenterDS" type="javax.sql.DataSource" ... -->
 
       </Context>
 
-      <!-- Benutzerregistry für das IBM Application Center deklarieren.
+      <!-- Benutzerregistry für IBM Application Center deklarieren.
              Das MemoryRealm erkennt die in conf/tomcat-users.xml definierten Benutzer.
-             Weitere Optionen finden Sie auf der Apache-Tomcat-Seite "Realm Configuration HOW-TO"
-             unter http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html. -->
+             Weitere Auswahlmöglichkeiten enthält die Apache-Tomcat-Dokumentation in
+             "Realm Configuration HOW-TO" unter http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html. -->
       <Realm className="org.apache.catalina.realm.MemoryRealm"/>
       ```
 
@@ -1834,10 +1825,10 @@ mit der JDBC-JAR-Datei sein, die in der in
 
       ```bash
       mkdir LIBERTY_HOME\wlp\usr\extension\lib
-      copy /B Produktinstallationsverzeichnis\features\com.ibm.websphere.crypto_1.0.0.jar
+      copy /B Produktinstallationsverzeichnis\features\com.ibm.websphere.crypto_1.0.0.jar  
       LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
       mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-      copy /B Produktinstallationsverzeichnis\features\MFPDecoderFeature-1.0.mf
+      copy /B Produktinstallationsverzeichnis\features\MFPDecoderFeature-1.0.mf  
       LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
       ```
 
@@ -1949,7 +1940,7 @@ WebSphere-Application-Server-Variable **${USER\_INSTALL\_ROOT}** ersetzt.
 Wenn Sie das Application Center in dem dafür vorgesehenen Webanwendungsserver installiert haben, sind zusätzliche Konfigurationsschritte
 erforderlich. 
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-10 }
 * [Benutzerauthentifizierung für das Application Center konfigurieren](#configuring-user-authentication-for-application-center)
 * [Benutzer mit LDAP verwalten](#managing-users-with-ldap)
@@ -1997,7 +1988,7 @@ finden Sie unter
 [Vorbereitungen
 für die Verwendung des mobilen Clients](../../../appcenter/preparations/).
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-11 }
 * [Java-EE-Sicherheitsrollen in WebSphere Application Server Full Profile konfigurieren](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile)
 * [Java-EE-Sicherheitsrollen in WebSphere Application Server Liberty Profile konfigurieren](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)
@@ -2162,7 +2153,7 @@ in den Releases vor
 IBM Worklight Version 6.0 dokumentierten Methoden
 für die Verwendung der LDAP-Authentifizierung konfigurieren.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-12 }
 * [LDAP mit WebSphere Application Server Version 8.x](#ldap-with-websphere-application-server-v8x)
 * [LDAP mit Liberty Profile](#ldap-with-liberty-profile)
@@ -2357,7 +2348,7 @@ In Clusterumgebungen müssen Sie alle Server im Cluster auf dieselbe Art und Wei
 können Sie die LDAP-Daten im Cache mit dem folgenden Befehl löschen:
 
     ```xml
-    acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort
+     acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort
     ```
 
     Weitere Informationen finden Sie unter
@@ -2389,7 +2380,7 @@ WebSphere Application Server.
 5. Führen Sie diesen Befehl für alle Gruppen aus, die den Rollen **appcenteruser** und **appcenteradmin** zugeordnet sind. Führen Sie für einzelne Benutzer, die nicht zu einer Gruppe gehören, den folgenden Befehl aus:
 
     ```bash
-    $AdminTask mapIdMgrUserToRole {-roleName IdMgrReader -userId Ihre_LDDAP-Benutzer-ID}
+    $AdminTask mapIdMgrUserToRole {-roleName IdMgrReader -userId Ihre_LDAP-Benutzer-ID}
     ```
 
     Sie können
@@ -2507,27 +2498,27 @@ Für diese Angabe gilt Folgendes:
 * **JNDI-Eigenschaftsname** ist der Name der Eigenschaft, die Sie hinzufügen.
 * **Eigenschaftswert** ist der Wert der Eigenschaft, die Sie hinzufügen.
 
-| Eigenschaft | Beschreibung |
+|Eigenschaft |Beschreibung |
 |----------|-------------|
-| ibm.appcenter.ldap.active| Setzen Sie diese Eigenschaft auf true, um LDAP zu aktivieren, und auf false, um LDAP zu inaktivieren.|
-| ibm.appcenter.ldap.federated.active| Ab WebSphere Application Server Liberty Profile Version 8.5.5: Setzen Sie die Eigenschaft auf true, um die Verwendung der eingebundenen Registry zu aktivieren, oder auf die Standardeinstellung false, um die Verwendung der eingebundenen Registry zu inaktivieren.|
-| ibm.appcenter.ldap.connectionURL| LDAP-Verbindungs-URL|
-| ibm.appcenter.ldap.user.base| Suchbasis der Benutzer|
-| ibm.appcenter.ldap.user.loginName| LDAP-Anmeldeattribut|
-| ibm.appcenter.ldap.user.displayName| LDAP-Attribut für den Benutzernamen, der angezeigt werden soll, z. B. den vollständigen Namen einer Person|
-| ibm.appcenter.ldap.group.base| Suchbasis der Gruppen|
-| ibm.appcenter.ldap.group.name| LDAP-Attribut für den Gruppennamen|
-| ibm.appcenter.ldap.group.uniquemember| LDAP-Attribut, das die Mitglieder einer Gruppe angibt|
-| ibm.appcenter.ldap.user.groupmembership| LDAP-Attribut, das die Gruppen angibt, zu denen ein Benutzer gehört|
-| ibm.appcenter.ldap.group.nesting| Verwaltung verschachtelter Gruppen: Werden keine verschachtelten Gruppen verwaltet, setzen Sie den Wert auf false.|
-| ibm.appcenter.ldap.user.filter|  LDAP-Benutzersuchfilter für das Attribut des Benutzeranmeldenamens. Verwenden Sie %v als Platzhalter für das Attribut des Anmeldenamens. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
-| ibm.appcenter.ldap.displayName.filter| LDAP-Benutzersuchfilter für das Attribut des Benutzeranzeigenamens. Verwenden Sie %v als Platzhalter für das Attribut des Anzeigenamens. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
-| ibm.appcenter.ldap.group.filter| LDAP-Gruppensuchfilter. Verwenden Sie %v als Platzhalter für das Gruppenattribut. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
-| ibm.appcenter.ldap.security.sasl| Der Wert des Sicherheitsauthentifizierungsmechanismus, wenn der LDAP-Authentifizierungsmechanismus External SASL an den LDAP-Server gebunden werden muss. Der Wert ist abhängig vom LDAP-Server. Normalerweise ist die Eigenschaft auf "EXTERNAL" (extern) gesetzt.|
-| ibm.appcenter.ldap.security.binddn| Eine Eigenschaft, die den definierten Namen (DN) des Benutzers angibt, der zum Durchsuchen des LDAP-Verzeichnisses berechtigt ist. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. |
-| ibm.appcenter.ldap.security.bindpwd| Diese Eigenschaft gibt das Kennwort des Benutzers an, der berechtigt ist, das LDAP-Verzeichnis zu durchsuchen. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. Das Kennwort kann mit dem Tool "Liberty Profile securityUtility" verschlüsselt werden. Führen Sie das Tool aus und setzen Sie den Wert dieser Eigenschaft auf das vom Tool generierte verschlüsselte Kennwort. Die unterstützten Codierungstypen sind xor und aes. Bearbeiten Sie die Datei server.xml für Liberty Profile, um zu prüfen, ob classloader aktiviert ist, sodass die JAR-Datei, die das Kennwort entschlüsselt, geladen wird.|
-| ibm.appcenter.ldap.cache.expiration.seconds| Die Verzögerung in Sekunden, nach deren Ablauf der LDAP-Cache verfällt. Wenn Sie keinen Wert eingeben, wird der Standardwert 86400, d. h. 24 Stunden, verwendet. Änderungen an den Benutzern und Gruppen auf dem LDAP-Server werden im Application Center nach einer mit **ibm.appcenter.ldap.cache.expiration.seconds** angegebenen Verzögerung sichtbar. Das Application Center verwaltet einen Cache mit LDAP-Daten, und Änderungen werden erst sichtbar, wenn der Cache abgelaufen ist. Standardmäßig liegt die Verzögerung bei 24 Stunden. Wenn Sie diese zeitliche Verzögerung nicht abwarten möchten, nachdem Sie Benutzer oder Gruppen geändert haben, können Sie die LDAP-Daten im Cache mit dem folgenden Befehl löschen: `acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort`. Einzelheiten finden Sie unter [LDAP-Cache mit eigenständigem Tool läschen](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache).|
-| ibm.appcenter.ldap.referral| Eine Eigenschaft, die angibt, ob die JNDI-API Verweise unterstützt. Wird kein Wert festgelegt, werden LDAP-Verweise von der JNDI-API nicht verarbeitet. Gültige Werte:{::nomarkdown}<ul><li>ignore: Die im LDAP-Server gefundenen Verweise werden ignoriert.</li><li>follow: Allen im LDAP-Server gefundenen Verweisen wird automatisch gefolgt.</li><li>throw: Für jeden im LDAP-Server gefundenen Verweis wird eine Ausnahme ausgelöst.</li></ul>{:/} |
+|ibm.appcenter.ldap.active|Setzen Sie diese Eigenschaft auf true, um LDAP zu aktivieren, und auf false, um LDAP zu inaktivieren.|
+|ibm.appcenter.ldap.federated.active|Ab WebSphere Application Server Liberty Profile Version 8.5.5: Setzen Sie die Eigenschaft auf true, um die Verwendung der eingebundenen Registry zu aktivieren, oder auf die Standardeinstellung false, um die Verwendung der eingebundenen Registry zu inaktivieren.|
+|ibm.appcenter.ldap.connectionURL|LDAP-Verbindungs-URL|
+|ibm.appcenter.ldap.user.base|Suchbasis der Benutzer|
+|ibm.appcenter.ldap.user.loginName|LDAP-Anmeldeattribut|
+|ibm.appcenter.ldap.user.displayName|LDAP-Attribut für den Benutzernamen, der angezeigt werden soll, z. B. den vollständigen Namen einer Person|
+|ibm.appcenter.ldap.group.base|Suchbasis der Gruppen|
+|ibm.appcenter.ldap.group.name|LDAP-Attribut für den Gruppennamen|
+|ibm.appcenter.ldap.group.uniquemember|LDAP-Attribut, das die Mitglieder einer Gruppe angibt|
+|ibm.appcenter.ldap.user.groupmembership|LDAP-Attribut, das die Gruppen angibt, zu denen ein Benutzer gehört|
+|ibm.appcenter.ldap.group.nesting|Verwaltung verschachtelter Gruppen: Werden keine verschachtelten Gruppen verwaltet, setzen Sie den Wert auf false.|
+|ibm.appcenter.ldap.user.filter|LDAP-Benutzersuchfilter für das Attribut des Benutzeranmeldenamens. Verwenden Sie %v als Platzhalter für das Attribut des Anmeldenamens. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
+|ibm.appcenter.ldap.displayName.filter|LDAP-Benutzersuchfilter für das Attribut des Benutzeranzeigenamens. Verwenden Sie %v als Platzhalter für das Attribut des Anzeigenamens. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
+|ibm.appcenter.ldap.group.filter|LDAP-Gruppensuchfilter. Verwenden Sie %v als Platzhalter für das Gruppenattribut. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
+|ibm.appcenter.ldap.security.sasl|Der Wert des Sicherheitsauthentifizierungsmechanismus, wenn der LDAP-Authentifizierungsmechanismus External SASL an den LDAP-Server gebunden werden muss. Der Wert ist abhängig vom LDAP-Server. Normalerweise ist die Eigenschaft auf "EXTERNAL" (extern) gesetzt.|
+|ibm.appcenter.ldap.security.binddn|Eine Eigenschaft, die den definierten Namen (DN) des Benutzers angibt, der zum Durchsuchen des LDAP-Verzeichnisses berechtigt ist. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. |
+|ibm.appcenter.ldap.security.bindpwd|Diese Eigenschaft gibt das Kennwort des Benutzers an, der berechtigt ist, das LDAP-Verzeichnis zu durchsuchen. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. Das Kennwort kann mit dem Tool "Liberty Profile securityUtility" verschlüsselt werden. Führen Sie das Tool aus und setzen Sie den Wert dieser Eigenschaft auf das vom Tool generierte verschlüsselte Kennwort. Die unterstützten Codierungstypen sind xor und aes. Bearbeiten Sie die Datei server.xml für Liberty Profile, um zu prüfen, ob classloader aktiviert ist, sodass die JAR-Datei, die das Kennwort entschlüsselt, geladen wird.|
+|ibm.appcenter.ldap.cache.expiration.seconds|Die Verzögerung in Sekunden, nach deren Ablauf der LDAP-Cache verfällt. Wenn Sie keinen Wert eingeben, wird der Standardwert 86400, d. h. 24 Stunden, verwendet. Änderungen an den Benutzern und Gruppen auf dem LDAP-Server werden im Application Center nach einer mit **ibm.appcenter.ldap.cache.expiration.seconds** angegebenen Verzögerung sichtbar. Das Application Center verwaltet einen Cache mit LDAP-Daten, und Änderungen werden erst sichtbar, wenn der Cache abgelaufen ist. Standardmäßig liegt die Verzögerung bei 24 Stunden. Wenn Sie diese zeitliche Verzögerung nicht abwarten möchten, nachdem Sie Benutzer oder Gruppen geändert haben, können Sie die LDAP-Daten im Cache mit dem folgenden Befehl löschen: `acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort`. Einzelheiten finden Sie unter [LDAP-Cache mit eigenständigem Tool läschen](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache).|
+|ibm.appcenter.ldap.referral|Eine Eigenschaft, die angibt, ob die JNDI-API Verweise unterstützt. Wird kein Wert festgelegt, werden LDAP-Verweise von der JNDI-API nicht verarbeitet. Gültige Werte:{::nomarkdown}<ul><li>ignore: Die im LDAP-Server gefundenen Verweise werden ignoriert.</li><li>follow: Allen im LDAP-Server gefundenen Verweisen wird automatisch gefolgt.</li><li>throw: Für jeden im LDAP-Server gefundenen Verweis wird eine Ausnahme ausgelöst.</li></ul>{:/} |
 
 Unter [JNDI-Eigenschaften für das Application Center](#jndi-properties-for-application-center) sind alle LDAP-Eigenschaften aufgeführt, die Sie festlegen können.
 
@@ -2779,27 +2770,27 @@ Für diese Angabe gilt Folgendes:
 * **JNDI-Eigenschaftsname** ist der Name der Eigenschaft, die Sie hinzufügen.
 * **Eigenschaftswert** ist der Wert der Eigenschaft, die Sie hinzufügen.
 
-| Eigenschaft | Beschreibung |
+|Eigenschaft |Beschreibung |
 |----------|-------------|
-| ibm.appcenter.ldap.active| Setzen Sie diese Eigenschaft auf true, um LDAP zu aktivieren, und auf false, um LDAP zu inaktivieren.|
-| ibm.appcenter.ldap.federated.active| Ab WebSphere Application Server Liberty Profile Version 8.5.5: Setzen Sie die Eigenschaft auf true, um die Verwendung der eingebundenen Registry zu aktivieren, oder auf die Standardeinstellung false, um die Verwendung der eingebundenen Registry zu inaktivieren.|
-| ibm.appcenter.ldap.connectionURL| LDAP-Verbindungs-URL|
-| ibm.appcenter.ldap.user.base| Suchbasis der Benutzer|
-| ibm.appcenter.ldap.user.loginName| LDAP-Anmeldeattribut|
-| ibm.appcenter.ldap.user.displayName| LDAP-Attribut für den Benutzernamen, der angezeigt werden soll, z. B. den vollständigen Namen einer Person|
-| ibm.appcenter.ldap.group.base| Suchbasis der Gruppen|
-| ibm.appcenter.ldap.group.name| LDAP-Attribut für den Gruppennamen|
-| ibm.appcenter.ldap.group.uniquemember| LDAP-Attribut, das die Mitglieder einer Gruppe angibt|
-| ibm.appcenter.ldap.user.groupmembership| LDAP-Attribut, das die Gruppen angibt, zu denen ein Benutzer gehört|
-| ibm.appcenter.ldap.group.nesting| Verwaltung verschachtelter Gruppen: Werden keine verschachtelten Gruppen verwaltet, setzen Sie den Wert auf false.|
-| ibm.appcenter.ldap.user.filter|  LDAP-Benutzersuchfilter für das Attribut des Benutzeranmeldenamens. Verwenden Sie %v als Platzhalter für das Attribut des Anmeldenamens. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
-| ibm.appcenter.ldap.displayName.filter| LDAP-Benutzersuchfilter für das Attribut des Benutzeranzeigenamens. Verwenden Sie %v als Platzhalter für das Attribut des Anzeigenamens. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
-| ibm.appcenter.ldap.group.filter| LDAP-Gruppensuchfilter. Verwenden Sie %v als Platzhalter für das Gruppenattribut. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
-| ibm.appcenter.ldap.security.sasl| Der Wert des Sicherheitsauthentifizierungsmechanismus, wenn der LDAP-Authentifizierungsmechanismus External SASL an den LDAP-Server gebunden werden muss. Der Wert ist abhängig vom LDAP-Server. Normalerweise ist die Eigenschaft auf "EXTERNAL" (extern) gesetzt.|
-| ibm.appcenter.ldap.security.binddn| Eine Eigenschaft, die den definierten Namen (DN) des Benutzers angibt, der zum Durchsuchen des LDAP-Verzeichnisses berechtigt ist. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. |
-| ibm.appcenter.ldap.security.bindpwd| Diese Eigenschaft gibt das Kennwort des Benutzers an, der berechtigt ist, das LDAP-Verzeichnis zu durchsuchen. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. Das Kennwort kann mit dem Tool "Liberty Profile securityUtility" verschlüsselt werden. Führen Sie das Tool aus und setzen Sie den Wert dieser Eigenschaft auf das vom Tool generierte verschlüsselte Kennwort. Die unterstützten Codierungstypen sind xor und aes. Bearbeiten Sie die Datei server.xml für Liberty Profile, um zu prüfen, ob classloader aktiviert ist, sodass die JAR-Datei, die das Kennwort entschlüsselt, geladen wird.|
-| ibm.appcenter.ldap.cache.expiration.seconds| Die Verzögerung in Sekunden, nach deren Ablauf der LDAP-Cache verfällt. Wenn Sie keinen Wert eingeben, wird der Standardwert 86400, d. h. 24 Stunden, verwendet. Änderungen an den Benutzern und Gruppen auf dem LDAP-Server werden im Application Center nach einer mit **ibm.appcenter.ldap.cache.expiration.seconds** angegebenen Verzögerung sichtbar. Das Application Center verwaltet einen Cache mit LDAP-Daten, und Änderungen werden erst sichtbar, wenn der Cache abgelaufen ist. Standardmäßig liegt die Verzögerung bei 24 Stunden. Wenn Sie diese zeitliche Verzögerung nicht abwarten möchten, nachdem Sie Benutzer oder Gruppen geändert haben, können Sie die LDAP-Daten im Cache mit dem folgenden Befehl löschen: `acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort`. Einzelheiten finden Sie unter [LDAP-Cache mit eigenständigem Tool läschen](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache).|
-| ibm.appcenter.ldap.referral| Eine Eigenschaft, die angibt, ob die JNDI-API Verweise unterstützt. Wird kein Wert festgelegt, werden LDAP-Verweise von der JNDI-API nicht verarbeitet. Gültige Werte:{::nomarkdown}<ul><li>ignore: Die im LDAP-Server gefundenen Verweise werden ignoriert.</li><li>follow: Allen im LDAP-Server gefundenen Verweisen wird automatisch gefolgt.</li><li>throw: Für jeden im LDAP-Server gefundenen Verweis wird eine Ausnahme ausgelöst.</li></ul>{:/} |
+|ibm.appcenter.ldap.active|Setzen Sie diese Eigenschaft auf true, um LDAP zu aktivieren, und auf false, um LDAP zu inaktivieren.|
+|ibm.appcenter.ldap.federated.active|Ab WebSphere Application Server Liberty Profile Version 8.5.5: Setzen Sie die Eigenschaft auf true, um die Verwendung der eingebundenen Registry zu aktivieren, oder auf die Standardeinstellung false, um die Verwendung der eingebundenen Registry zu inaktivieren.|
+|ibm.appcenter.ldap.connectionURL|LDAP-Verbindungs-URL|
+|ibm.appcenter.ldap.user.base|Suchbasis der Benutzer|
+|ibm.appcenter.ldap.user.loginName|LDAP-Anmeldeattribut|
+|ibm.appcenter.ldap.user.displayName|LDAP-Attribut für den Benutzernamen, der angezeigt werden soll, z. B. den vollständigen Namen einer Person|
+|ibm.appcenter.ldap.group.base|Suchbasis der Gruppen|
+|ibm.appcenter.ldap.group.name|LDAP-Attribut für den Gruppennamen|
+|ibm.appcenter.ldap.group.uniquemember|LDAP-Attribut, das die Mitglieder einer Gruppe angibt|
+|ibm.appcenter.ldap.user.groupmembership|LDAP-Attribut, das die Gruppen angibt, zu denen ein Benutzer gehört|
+|ibm.appcenter.ldap.group.nesting|Verwaltung verschachtelter Gruppen: Werden keine verschachtelten Gruppen verwaltet, setzen Sie den Wert auf false.|
+|ibm.appcenter.ldap.user.filter|LDAP-Benutzersuchfilter für das Attribut des Benutzeranmeldenamens. Verwenden Sie %v als Platzhalter für das Attribut des Anmeldenamens. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
+|ibm.appcenter.ldap.displayName.filter|LDAP-Benutzersuchfilter für das Attribut des Benutzeranzeigenamens. Verwenden Sie %v als Platzhalter für das Attribut des Anzeigenamens. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
+|ibm.appcenter.ldap.group.filter|LDAP-Gruppensuchfilter. Verwenden Sie %v als Platzhalter für das Gruppenattribut. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
+|ibm.appcenter.ldap.security.sasl|Der Wert des Sicherheitsauthentifizierungsmechanismus, wenn der LDAP-Authentifizierungsmechanismus External SASL an den LDAP-Server gebunden werden muss. Der Wert ist abhängig vom LDAP-Server. Normalerweise ist die Eigenschaft auf "EXTERNAL" (extern) gesetzt.|
+|ibm.appcenter.ldap.security.binddn|Eine Eigenschaft, die den definierten Namen (DN) des Benutzers angibt, der zum Durchsuchen des LDAP-Verzeichnisses berechtigt ist. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. |
+|ibm.appcenter.ldap.security.bindpwd|Diese Eigenschaft gibt das Kennwort des Benutzers an, der berechtigt ist, das LDAP-Verzeichnis zu durchsuchen. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. Das Kennwort kann mit dem Tool "Liberty Profile securityUtility" verschlüsselt werden. Führen Sie das Tool aus und setzen Sie den Wert dieser Eigenschaft auf das vom Tool generierte verschlüsselte Kennwort. Die unterstützten Codierungstypen sind xor und aes. Bearbeiten Sie die Datei server.xml für Liberty Profile, um zu prüfen, ob classloader aktiviert ist, sodass die JAR-Datei, die das Kennwort entschlüsselt, geladen wird.|
+|ibm.appcenter.ldap.cache.expiration.seconds|Die Verzögerung in Sekunden, nach deren Ablauf der LDAP-Cache verfällt. Wenn Sie keinen Wert eingeben, wird der Standardwert 86400, d. h. 24 Stunden, verwendet. Änderungen an den Benutzern und Gruppen auf dem LDAP-Server werden im Application Center nach einer mit **ibm.appcenter.ldap.cache.expiration.seconds** angegebenen Verzögerung sichtbar. Das Application Center verwaltet einen Cache mit LDAP-Daten, und Änderungen werden erst sichtbar, wenn der Cache abgelaufen ist. Standardmäßig liegt die Verzögerung bei 24 Stunden. Wenn Sie diese zeitliche Verzögerung nicht abwarten möchten, nachdem Sie Benutzer oder Gruppen geändert haben, können Sie die LDAP-Daten im Cache mit dem folgenden Befehl löschen: `acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort`. Einzelheiten finden Sie unter [LDAP-Cache mit eigenständigem Tool läschen](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache).|
+|ibm.appcenter.ldap.referral|Eine Eigenschaft, die angibt, ob die JNDI-API Verweise unterstützt. Wird kein Wert festgelegt, werden LDAP-Verweise von der JNDI-API nicht verarbeitet. Gültige Werte:{::nomarkdown}<ul><li>ignore: Die im LDAP-Server gefundenen Verweise werden ignoriert.</li><li>follow: Allen im LDAP-Server gefundenen Verweisen wird automatisch gefolgt.</li><li>throw: Für jeden im LDAP-Server gefundenen Verweis wird eine Ausnahme ausgelöst.</li></ul>{:/} |
 
 Unter [JNDI-Eigenschaften für das Application Center](#jndi-properties-for-application-center) sind alle LDAP-Eigenschaften aufgeführt, die Sie festlegen können.
 
@@ -2918,16 +2909,16 @@ interne Adresse (192.168...) verbirgt. Der mobile Client muss die externe Adress
 #### Endpunkteigenschaften
 {: #endpoint-properties }
 
-| Eigenschaftsname| Zweck| Beispiel|
+|Eigenschaftsname|Zweck|Beispiel|
 |---------------|---------|---------|
-| ibm.appcenter.services.endpoint| Diese Eigenschaft ermöglicht der Application-Center-Konsole, die Application-Center-REST-Services zu lokalisieren. Der Wert dieser Eigenschaft muss als externe Adresse und Kontextstammverzeichnis der Webanwendung applicationcenter.war angegeben werden. Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen. Die Angabe *://*:*/appcenter bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port wie die Application-Center-Konsole verwenden, aber appcenter als Kontextstammverzeichnis. Diese Eigenschaft muss für die Application-Center-Konsole angegeben werden. | https://appcntr.net:443/applicationcenter|
-| ibm.appcenter.proxy.protocol| Diese Eigenschaft gibt das Protokoll an, das erforderlich ist, damit externe Anwendungen eine Verbindung mit
-dem Application Center herstellen können.| https|
-| ibm.appcenter.proxy.host| Diese Eigenschaft gibt den Hostnamen an, der erforderlich ist, damit externe Anwendungen eine Verbindung
-mit dem Application Center herstellen können.| appcntr.net|
-| ibm.appcenter.proxy.port| Diese Eigenschaft gibt den Port an, der erforderlich ist, damit externe Anwendungen eine Verbindung mit dem Application Center herstellen können.| 443|
+|ibm.appcenter.services.endpoint|Diese Eigenschaft ermöglicht der Application-Center-Konsole, die Application-Center-REST-Services zu lokalisieren. Der Wert dieser Eigenschaft muss als externe Adresse und Kontextstammverzeichnis der Webanwendung applicationcenter.war angegeben werden. Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen. Die Angabe *://*:*/appcenter bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port wie die Application-Center-Konsole verwenden, aber appcenter als Kontextstammverzeichnis. Diese Eigenschaft muss für die Application-Center-Konsole angegeben werden. |https://appcntr.net:443/applicationcenter|
+|ibm.appcenter.proxy.protocol|Diese Eigenschaft gibt das Protokoll an, das erforderlich ist, damit externe Anwendungen eine Verbindung mit
+dem Application Center herstellen können.|https|
+|ibm.appcenter.proxy.host|Diese Eigenschaft gibt den Hostnamen an, der erforderlich ist, damit externe Anwendungen eine Verbindung
+mit dem Application Center herstellen können.|appcntr.net|
+|ibm.appcenter.proxy.port|Diese Eigenschaft gibt den Port an, der erforderlich ist, damit externe Anwendungen eine Verbindung mit dem Application Center herstellen können.|443|
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-13 }
 * [Endpunkt von Anwendungsressourcen konfigurieren (Full Profile)](#configuring-the-endpoint-of-application-resources-full-profile)
 * [Endpunkt von Anwendungsressourcen konfigurieren (Liberty Profile)](#configuring-the-endpoint-of-the-application-resources-liberty-profile)
@@ -3012,12 +3003,12 @@ Für diese Angabe gilt Folgendes:
 * **JNDI-Eigenschaftsname** ist der Name der Eigenschaft, die Sie hinzufügen. 
 * **Eigenschaftswert** ist der Wert der Eigenschaft, die Sie hinzufügen. 
 
-| Eigenschaft | Beschreibung |
+|Eigenschaft |Beschreibung |
 |----------|-------------|
-| ibm.appcenter.services.endpoint| URI der Application-Center-REST-Services. In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI, nicht die interne URI im lokalen Netz sein. |
-| ibm.appcenter.proxy.protocol	| Das Protokoll der Anwendungsressourcen-URI. Diese Eigenschaft ist optional. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht.|
-| ibm.appcenter.proxy.host| Hostname der Anwendungsressourcen-URI|
-| ibm.appcenter.proxy.port| Der Port der Anwendungsressourcen-URI. Diese Eigenschaft ist optional. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht.|
+|ibm.appcenter.services.endpoint|URI der Application-Center-REST-Services. In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI, nicht die interne URI im lokalen Netz sein. |
+|ibm.appcenter.proxy.protocol	| Das Protokoll der Anwendungsressourcen-URI. Diese Eigenschaft ist optional. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht.|
+|ibm.appcenter.proxy.host|Hostname der Anwendungsressourcen-URI|
+|ibm.appcenter.proxy.port|Der Port der Anwendungsressourcen-URI. Diese Eigenschaft ist optional. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht.|
 
 Eine vollständige Liste der LDAP-Eigenschaften, die Sie definieren können, finden Sie unter [JNDI-Eigenschaften für das Application Center](#jndi-properties-for-application-center).
 
@@ -3034,7 +3025,9 @@ in der Datei
 <jndiEntry jndiName="ibm.appcenter.proxy.port"  value=" 443"/>
 ```
 
-Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen. Die Angabe `*://*:*/appcenter` bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port
+Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die
+Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen.
+Die Angabe `*://*:*/appcenter` bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port
 wie die Application-Center-Konsole verwenden, aber **appcenter** als Kontextstammverzeichnis. 
 
 #### Endpunkt von Anwendungsressourcen konfigurieren (Apache Tomcat)
@@ -3061,12 +3054,12 @@ Für diese Angabe gilt Folgendes:
 * **Eigenschaftswert** ist der Wert der Eigenschaft, die Sie hinzufügen.
 * **Eigenschaftstyp** ist der Typ der Eigenschaft, die Sie hinzufügen.
 
-| Eigenschaft | Typ | Beschreibung |
+|Eigenschaft |Typ |Beschreibung |
 |----------|------|-------------|
-| ibm.appcenter.services.endpoint| java.lang.String| Die URI der Application-Center-REST-Services (applicationcenter.war). In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI, nicht die interne URI im lokalen Netz sein. |
-| ibm.appcenter.proxy.protocol| java.lang.String| Das Protokoll der Anwendungsressourcen-URI. Diese Eigenschaft ist optional. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht.|
-| ibm.appcenter.proxy.host| java.lang.String| Hostname der Anwendungsressourcen-URI|
-| ibm.appcenter.proxy.port| java.lang.Integer| Der Port der Anwendungsressourcen-URI. Diese Eigenschaft ist optional. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht.|
+|ibm.appcenter.services.endpoint|java.lang.String|Die URI der Application-Center-REST-Services (applicationcenter.war). In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI, nicht die interne URI im lokalen Netz sein. |
+|ibm.appcenter.proxy.protocol|java.lang.String|Das Protokoll der Anwendungsressourcen-URI. Diese Eigenschaft ist optional. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht.|
+|ibm.appcenter.proxy.host|java.lang.String|Hostname der Anwendungsressourcen-URI|
+|ibm.appcenter.proxy.port|java.lang.Integer|Der Port der Anwendungsressourcen-URI. Diese Eigenschaft ist optional. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht.|
 
 Eine vollständige Liste der JNDI-Eigenschaften, die Sie definieren können, finden Sie unter [JNDI-Eigenschaften für das Application Center](#jndi-properties-for-application-center). 
 
@@ -3129,7 +3122,7 @@ in Bezug auf dieses selbst signierte Zertifikat zu ermöglichen. Dieses Verfahre
 geeignet sein. Ausführliche Informationen finden Sie unten im Abschnitt
 [Selbst signierte Zertifikate einer Zertifizierungsstelle in einer Application-Center-Testumgebung verwalten und installieren](#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment). 
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-14 }
 * [SSL für WebSphere Application Server Full Profile konfigurieren](#configuring-ssl-for-websphere-application-server-full-profile)
 * [SSL für Liberty Profile konfigurieren](#configuring-ssl-for-liberty-profile)
@@ -3315,55 +3308,55 @@ bereitstellt.
 {: #jndi-properties-for-application-center }
 Sie können JNDI-Eigenschaften für das Application Center konfigurieren.
 
-| Eigenschaft | Beschreibung |
+|Eigenschaft |Beschreibung |
 |----------|-------------|
-| appcenter.database.type| Der Datenbanktyp. Diese Eigenschaft ist nur erforderlich, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
-| appcenter.jndi.name| Der JNDI-Name der Datenbank. Dieser Parameter ist der normale Mechanismus für die Angabe der Datenbank. Der Standardwert ist java:comp/env/jdbc/AppCenterDS.|
-| appcenter.openjpa.ConnectionDriverName| Der vollständig qualifizierte Klassenname der Treiberklasse der Datenbankverbindung. Diese Eigenschaft ist nur erforderlich, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
-| appcenter.openjpa.ConnectionPassword| Das Kennwort für die Datenbankverbindung. Legen Sie diese Eigenschaft nur fest, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
-| appcenter.openjpa.ConnectionURL| URL für die Treiberklasse für die Datenbankverbindung. Legen Sie diese Eigenschaft nur fest, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
-| appcenter.openjpa.ConnectionUserName| Der Benutzername für die Datenbankverbindung. Legen Sie diese Eigenschaft nur fest, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate| Setzen Sie diese Eigenschaft auf true, um anzugeben dass das Zertifikat, das dem Application Center ermöglicht, Push-Benachrichtigungen zur Aktualisierung von iOS-Anwendungen zu senden, ein Entwicklungszertifikat ist. Setzen Sie die Eigenschaft auf **false**, wenn es kein Entwicklungszertifikat ist. Weitere Informationen finden Sie unter [Application-Center-Server für die Verbindung zum Apple Push Notification Service konfigurieren](../../../appcenter/push-notifications/#apns).|
-| ibm.appcenter.apns.p12.certificate.location| Der Pfad zur Datei des Entwicklungszertifikats, das dem Application Center ermöglicht, Push-Benachrichtigungen über Aktualisierungen von iOS-Anwendungen zu senden, z. B. **/Users/irgendein_Benutzer/irgendein_Verzeichnis/apache-tomcat/conf/AppCenter_apns_dev_cert.p12**. Weitere Informationen finden Sie unter [Application-Center-Server für die Verbindung zum Apple Push Notification Service konfigurieren](../../../appcenter/push-notifications/#apns).|
-| ibm.appcenter.apns.p12.certificate.password| Das Kennwort für das Entwicklungszertifikat, das dem Application Center ermöglicht, Push-Benachrichtigungen zur Aktualisierung von iOS-Anwendungen zu senden. Weitere Informationen finden Sie unter [Application-Center-Server für die Verbindung zum Apple Push Notification Service konfigurieren](../../../appcenter/push-notifications/#apns).|
-| ibm.appcenter.forceUpgradeDBTo60| Die Datenbankgestaltung wurde ab IBM Worklight Version 6.0 geändert. Die Datenbank wird beim Start der Application-Center-Webanwendung automatisch aktualisiert. Wenn Sie diese Aktualisierung wiederholen möchten, können Sie diesen Parameter auf **true** setzen und die Webanwendung anschließend erneut starten. Später können Sie diesen Parameter auf **false** setzen.|
-| ibm.appcenter.gcm.signature.googleapikey| Der Google API Key, der dem Application Center ermöglicht, Push-Benachrichtigungen zur Aktualisierung von Android-Anwendungen zu senden, z. B. AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs (siehe [Application-Center-Server für eine Verbindung zum Google Cloud Messaging konfigurieren](../../../appcenter/push-notifications/#gcm)).|
-| ibm.appcenter.ios.plist.onetimeur| Diese Eigenschaft gibt an, ob in iOS-pList-Manifesten gespeicherte URLs den Mechanismus für Einmal-URLs ohne Berechtigungsnachweise verwenden. Wenn Sie diese Eigenschaft auf true setzen, ist die Sicherheitsebene mittel, weil die Einmal-URLs mit einem Verschlüsselungsmechanismus generiert werden, damit niemand die URL erraten kann, aber dennoch keine Benutzeranmeldung erforderlich ist. Durch das Festlegen des Wertes false für diese Eigenschaft wird eine maximale Sicherheit erreicht, weil der Benutzer sich in diesem Fall für jede URL anmelden muss. Die Benutzererfahrung kann jedoch beeinträchtigt werden, wenn der Benutzer bei der Installation einer iOS-Anwendung mehrfach aufgefordert wird, sich anzumelden. Weitere Informationen finden Sie unter [Client auf einem mobilen iOS-Gerät installieren](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device).|
-| ibm.appcenter.ldap.active| Diese Eigenschaft gibt an, ob das Application Center für LDAP konfiguriert wird. Setzen Sie diese Eigenschaft auf true, um LDAP zu aktivieren, oder auf false, um LDAP zu inaktivieren (siehe [Benutzer mit LDAP verwalten](#managing-users-with-ldap)).|
-| ibm.appcenter.ldap.cache.expiration.seconds| Das Application Center verwaltet einen Cache mit LDAP-Daten, und Änderungen werden erst sichtbar, wenn der Cache abgelaufen ist. Geben Sie Gültigkeitsdauer (in Sekunden) für Einträge im LDAP-Cache an. Setzen Sie diese Eigenschaft auf einen höheren Wert als 3600 (1 Stunde), um die Anzahl der LDAP-Anforderungen zu reduzieren. Wenn Sie keinen Wert eingeben, wird der Standardwert 86400, d. h. 24 Stunden, verwendet. Wenn Sie den Cache mit den LDAP-Daten manuell löschen müssen, geben Sie den folgenden Befehl ein: `acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort`. Lesen Sie hierzu die Informationen unter [LDAP-Cache mit eigenständigem Tool löschen](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache).|
-| ibm.appcenter.ldap.connectionURL| Die URL für den Zugriff auf den LDAP-Server, wenn VMM (Virtual Member Manager) nicht verwendet wird. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.federated.active| Diese Eigenschaft gibt an, ob das Application Center für LDAP mit eingebundenen Repositorys konfiguriert wird. Setzen Sie diese Eigenschaft für WebSphere Application Server Liberty Profile ab Version 8.5.5 auf true, um die Verwendung der eingebundenen Registry zu aktivieren. Setzen Sie diese Eigenschaft auf false, um die Verwendung der eingebundenen Registry zu inaktivieren. Dies ist die Standardeinstellung (siehe [Benutzer mit LDAP verwalten](#managing-users-with-ldap)).|
-| ibm.appcenter.ldap.group.base| Die Suchbasis für die Suche von Gruppen, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.group.filter| LDAP-Gruppensuchfilter. Verwenden Sie **%v** als Platzhalter für das Gruppenattribut. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
-| ibm.appcenter.ldap.group.name| Das Gruppennamensattribut, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.group.nesting| Diese Eigenschaft gibt an, ob LDAP verschachtelte Gruppen (d. h. Gruppen in Gruppen) enthält, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Die Festlegung des Werts false für diese Eigenschaft beschleunigt den LDAP-Zugriff, weil die Gruppen in diesem Fall nicht rekursiv durchsucht werden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.group.uniquemember| Diese Eigenschaft gibt die Mitglieder einer Gruppe an, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Diese Eigenschaft ist das Gegenteil der Eigenschaft ibm.appcenter.ldap.user.groupmembership. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.referral| Diese Eigenschaft gibt an, ob Verweise von der JNDI-API unterstützt werden. Wenn Sie keinen Wert angeben, verarbeitet die JNDI-API keine LDAP-Bezugsdaten. Im Folgenden sind die gültigen Werte beschrieben: {::nomarkdown}<ul><li>ignore: Im LDAP-Server gefundene Verweise werden ignoriert.</li><li>follow: Im LDAP-Server gefundene Bezugsdaten werden automatisch verfolgt.</li><li>throw: Für jeden im LDAP-Server gefundenen Verweis wird eine Ausnahme ausgelöst.</li></ul>{:/} |
-| ibm.appcenter.ldap.security.binddn| Der definierte Name des Benutzers, der das LDAP-Verzeichnis durchsuchen darf. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. |
-| ibm.appcenter.ldap.security.bindpwd| Das Kennwort des Benutzers, der das LDAP-Verzeichnis durchsuchen darf. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist.<br><br>Das Kennwort kann mit dem Liberty-Profile-Tool securityUtility verschlüsselt werden. Führen Sie das Tool aus und setzen Sie den Wert dieser Eigenschaft auf das vom Tool generierte verschlüsselte Kennwort.<br><br>Bearbeiten Sie die Datei server.xml für Liberty Profile, um zu prüfen, ob classloader aktiviert ist, sodass die JAR-Datei, die das Kennwort entschlüsselt, geladen wird.<br><br>Lesen Sie hierzu den Abschnitt [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.security.sasl| Diese Eigenschaft gibt den Sicherheitsauthentifizierungsmechanismus an, wenn der LDAP-externe SASL-Authentifizierungsmechanismus eine Bindung zum LDAP-Server herstellen muss. Der Wert richtet sich nach dem LDAP-Server, ist aber gewöhnlich EXTERNAL. Wenn diese Eigenschaft definiert ist, ist für die Verbindung zu LDAP ohne Virtual Member Manager (VMM) eine Sicherheitsauthentifizierung erforderlich. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.user.base| Die Suchbasis für die Suche von Benutzern, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.user.displayName| Das Attribut für den Anzeigenamen, z. B. den realen Namen, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.displayName.filter| Der LDAP-Benutzersuchfilter für das Attribut ibm.appcenter.ldap.user.displayName. Verwenden Sie %v als Platzhalter für das Attribut des Anzeigenamens. <br><br>Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften ibm.appcenter.ldap.user.base und ibm.appcenter.ldap.group.base denselben Wert haben.|
-| ibm.appcenter.ldap.user.filter| Der LDAP-Benutzersuchfilter für das Attribut ibm.appcenter.ldap.user.loginName. Verwenden Sie **%v** als Platzhalter für das Attribut des Anmeldenamens. <br><br>Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften ibm.appcenter.ldap.user.base und ibm.appcenter.ldap.group.base denselben Wert haben.|
-| ibm.appcenter.ldap.user.groupmembership| Gibt die Gruppen eines Members an, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Diese Eigenschaft ist das Gegenteil von ibm.appcenter.ldap.group.uniquemember. Diese Eigenschaft ist optional, aber wenn sie angegeben wird, ist der LDAP-Zugriff schneller. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.user.loginName| Das Anmeldenamensattribut, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
-| ibm.appcenter.ldap.vmm.active| Setzen Sie diese Eigenschaft auf true, um anzugeben, dass LDAP mit VMM (Virtual Member Manager) verwendet wird. Legen Sie andernfalls den Wert false fest (siehe [LDAP-Verwaltung von Zugriffskontrolllisten für WebSphere Application Server Version 8.x konfigurieren](#configuring-ldap-acl-management-for-websphere-application-server-v8x)).|
-| ibm.appcenter.ldap.vmm.adminpwd| Das Kennwort, wenn LDAP mit VMM (Virtual Member Manager) verwendet wird (siehe [LDAP-Verwaltung von Zugriffskontrolllisten für WebSphere Application Server Version 8.x konfigurieren](#configuring-ldap-acl-management-for-websphere-application-server-v8x)).|
-| ibm.appcenter.ldap.vmm.adminuser| Der Benutzer, wenn LDAP mit VMM (Virtual Member Manager) verwendet wird (siehe [LDAP-Verwaltung von Zugriffskontrolllisten für WebSphere Application Server Version 8.x konfigurieren](#configuring-ldap-acl-management-for-websphere-application-server-v8x)).|
-| ibm.appcenter.logging.formatjson| Diese Eigenschaft hat nur Wirkung, wenn ibm.appcenter.logging.tosystemerror auf true gesetzt ist. Wenn diese Eigenschaft aktiviert ist, formatiert sie JSON-Antworten in den Protokollierungsnachrichten, die an System.Error übertragen werden. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. |
-| ibm.appcenter.logging.tosystemerror| Gibt an, ob alle Protokollierungsnachrichten auch an System.Error übertragen werden. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. |
-| ibm.appcenter.openjpa.Log| Diese Eigenschaft wird an OpenJPA übergeben und aktiviert die JPA-Protokollierung. Weitere Einzelheiten finden Sie in der Veröffentlichung [Apache OpenJPA User's Guide](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html).|
-| ibm.appcenter.proxy.host| Wenn sich der Application-Center-Server hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den Application-Center-Server zu erreichen. Gewöhnlich wird mit dieser Eigenschaft die Adresse des Proxys angegeben. Lesen Sie hierzu den Artikel [Endpunkt der Anwendungsressourcen definieren](#defining-the-endpoint-of-the-application-resources).|
-| ibm.appcenter.proxy.port| Wenn sich der Application-Center-Server hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den Application-Center-Server zu erreichen. Gewöhnlich wird mit dieser Eigenschaft der Port des Proxys angegeben, z. B. 443. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht. Lesen Sie hierzu den Artikel [Endpunkt der Anwendungsressourcen definieren](#defining-the-endpoint-of-the-application-resources).|
-| ibm.appcenter.proxy.protocol| Wenn sich der Application-Center-Server hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft das Protokoll an (http oder https). Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den Application-Center-Server zu erreichen. Gewöhnlich wird diese Eigenschaft auf das Protokoll des Proxys gesetzt, z. B. appcntr.net. Diese Eigenschaft ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht. Lesen Sie hierzu den Artikel [Endpunkt der Anwendungsressourcen definieren](#defining-the-endpoint-of-the-application-resources).|
-| ibm.appcenter.proxy.scheme| Diese Eigenschaft ist lediglich ein alternativer Name für ibm.appcenter.proxy.protocol.|
-| ibm.appcenter.push.schedule.period.amount| Gibt den Zeitplan an, wenn Sie Push-Benachrichtigungen über Anwendungsaktualisierungen senden. Wenn Anwendungen auf dem Server häufig geändert werden, definieren Sie diese Eigenschaft so, dass Stapel von Benachrichtigungen gesendet werden. Senden Sie beispielsweise alle Benachrichtigungen der vergangenen Stunde zusammen, anstatt Benachrichtigung einzeln zu senden. |
-| ibm.appcenter.push.schedule.period.unit| Gibt die Einheit für den Zeitplan an, wenn Sie Push-Benachrichtigungen über Anwendungsaktualisierungen senden.|
-| ibm.appcenter.services.endpoint| Diese Eigenschaft ermöglicht der Application-Center-Konsole, die Application-Center-REST-Services zu lokalisieren. Geben Sie die externe Adresse und das Kontextstammverzeichnis der Webanwendung applicationcenter.war an. In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI, nicht die interne URI im lokalen Netz sein. Beispiel: https://appcntr.net:443/applicationcenter. Lesen Sie hierzu den Artikel [Endpunkt der Anwendungsressourcen definieren](#defining-the-endpoint-of-the-application-resources).|
-| ibm.appcenter.services.iconCacheMaxAge| Gibt an, wie viele Sekunden zwischengespeicherte Symbole für die Application-Center-Konsole und den Client gültig bleiben. Anwendungssymbole ändern sich selten und werden deshalb zwischengespeichert. Geben Sie einen höheren Wert als 600 (10 Minuten) an, um die Anzahl der Datenübertragungen für die Symbole zu reduzieren.|
-| mfp.jndi.configuration| Wenn die JNDI-Konfiguration in die WAR-Dateien injiziert oder als gemeinsam genutzte Bibliothek bereitgestellt wird, ist der Wert dieser Eigenschaft der Name der JNDI-Konfiguration (optional). Dieser Wert kann auch als Systemeigenschaft angegeben werden.|
-| mfp.jndi.file| Wenn die JNDI-Konfiguration als externe Datei gespeichert wird, ist der Wert dieser Eigenschaft der Pfad zu einer Datei, in der die JNDI-Konfiguration beschrieben ist (optional). Dieser Wert kann auch als Systemeigenschaft angegeben werden.|
+|appcenter.database.type|Der Datenbanktyp. Diese Eigenschaft ist nur erforderlich, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
+|appcenter.jndi.name|Der JNDI-Name der Datenbank. Dieser Parameter ist der normale Mechanismus für die Angabe der Datenbank. Der Standardwert ist java:comp/env/jdbc/AppCenterDS.|
+|appcenter.openjpa.ConnectionDriverName|Der vollständig qualifizierte Klassenname der Treiberklasse der Datenbankverbindung. Diese Eigenschaft ist nur erforderlich, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
+|appcenter.openjpa.ConnectionPassword|Das Kennwort für die Datenbankverbindung. Legen Sie diese Eigenschaft nur fest, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
+|appcenter.openjpa.ConnectionURL|URL für die Treiberklasse für die Datenbankverbindung. Legen Sie diese Eigenschaft nur fest, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
+|appcenter.openjpa.ConnectionUserName|Der Benutzername für die Datenbankverbindung. Legen Sie diese Eigenschaft nur fest, wenn die Datenbank nicht mit appcenter.jndi.name angegeben wird.|
+|ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|Setzen Sie diese Eigenschaft auf true, um anzugeben dass das Zertifikat, das dem Application Center ermöglicht, Push-Benachrichtigungen zur Aktualisierung von iOS-Anwendungen zu senden, ein Entwicklungszertifikat ist. Setzen Sie die Eigenschaft auf **false**, wenn es kein Entwicklungszertifikat ist. Weitere Informationen finden Sie unter [Application-Center-Server für die Verbindung zum Apple Push Notification Service konfigurieren](../../../appcenter/push-notifications/#apns).|
+|ibm.appcenter.apns.p12.certificate.location|Der Pfad zur Datei des Entwicklungszertifikats, das dem Application Center ermöglicht, Push-Benachrichtigungen über Aktualisierungen von iOS-Anwendungen zu senden, z. B. **/Users/irgendein_Benutzer/irgendein_Verzeichnis/apache-tomcat/conf/AppCenter_apns_dev_cert.p12**. Weitere Informationen finden Sie unter [Application-Center-Server für die Verbindung zum Apple Push Notification Service konfigurieren](../../../appcenter/push-notifications/#apns).|
+|ibm.appcenter.apns.p12.certificate.password|Das Kennwort für das Entwicklungszertifikat, das dem Application Center ermöglicht, Push-Benachrichtigungen zur Aktualisierung von iOS-Anwendungen zu senden. Weitere Informationen finden Sie unter [Application-Center-Server für die Verbindung zum Apple Push Notification Service konfigurieren](../../../appcenter/push-notifications/#apns).|
+|ibm.appcenter.forceUpgradeDBTo60|Die Datenbankgestaltung wurde ab IBM Worklight Version 6.0 geändert. Die Datenbank wird beim Start der Application-Center-Webanwendung automatisch aktualisiert. Wenn Sie diese Aktualisierung wiederholen möchten, können Sie diesen Parameter auf **true** setzen und die Webanwendung anschließend erneut starten. Später können Sie diesen Parameter auf **false** setzen.|
+|ibm.appcenter.gcm.signature.googleapikey|Der Google API Key, der dem Application Center ermöglicht, Push-Benachrichtigungen zur Aktualisierung von Android-Anwendungen zu senden, z. B. AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs (siehe [Application-Center-Server für eine Verbindung zum Google Cloud Messaging konfigurieren](../../../appcenter/push-notifications/#gcm)).|
+|ibm.appcenter.ios.plist.onetimeur|Diese Eigenschaft gibt an, ob in iOS-pList-Manifesten gespeicherte URLs den Mechanismus für Einmal-URLs ohne Berechtigungsnachweise verwenden. Wenn Sie diese Eigenschaft auf true setzen, ist die Sicherheitsebene mittel, weil die Einmal-URLs mit einem Verschlüsselungsmechanismus generiert werden, damit niemand die URL erraten kann, aber dennoch keine Benutzeranmeldung erforderlich ist. Durch das Festlegen des Wertes false für diese Eigenschaft wird eine maximale Sicherheit erreicht, weil der Benutzer sich in diesem Fall für jede URL anmelden muss. Die Benutzererfahrung kann jedoch beeinträchtigt werden, wenn der Benutzer bei der Installation einer iOS-Anwendung mehrfach aufgefordert wird, sich anzumelden. Weitere Informationen finden Sie unter [Client auf einem mobilen iOS-Gerät installieren](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device).|
+|ibm.appcenter.ldap.active|Diese Eigenschaft gibt an, ob das Application Center für LDAP konfiguriert wird. Setzen Sie diese Eigenschaft auf true, um LDAP zu aktivieren, oder auf false, um LDAP zu inaktivieren (siehe [Benutzer mit LDAP verwalten](#managing-users-with-ldap)).|
+|ibm.appcenter.ldap.cache.expiration.seconds|Das Application Center verwaltet einen Cache mit LDAP-Daten, und Änderungen werden erst sichtbar, wenn der Cache abgelaufen ist. Geben Sie Gültigkeitsdauer (in Sekunden) für Einträge im LDAP-Cache an. Setzen Sie diese Eigenschaft auf einen höheren Wert als 3600 (1 Stunde), um die Anzahl der LDAP-Anforderungen zu reduzieren. Wenn Sie keinen Wert eingeben, wird der Standardwert 86400, d. h. 24 Stunden, verwendet. Wenn Sie den Cache mit den LDAP-Daten manuell löschen müssen, geben Sie den folgenden Befehl ein: `acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort`. Lesen Sie hierzu die Informationen unter [LDAP-Cache mit eigenständigem Tool löschen](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache).|
+|ibm.appcenter.ldap.connectionURL|Die URL für den Zugriff auf den LDAP-Server, wenn VMM (Virtual Member Manager) nicht verwendet wird. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.federated.active|Diese Eigenschaft gibt an, ob das Application Center für LDAP mit eingebundenen Repositorys konfiguriert wird. Setzen Sie diese Eigenschaft für WebSphere Application Server Liberty Profile ab Version 8.5.5 auf true, um die Verwendung der eingebundenen Registry zu aktivieren. Setzen Sie diese Eigenschaft auf false, um die Verwendung der eingebundenen Registry zu inaktivieren. Dies ist die Standardeinstellung (siehe [Benutzer mit LDAP verwalten](#managing-users-with-ldap)).|
+|ibm.appcenter.ldap.group.base|Die Suchbasis für die Suche von Gruppen, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.group.filter|LDAP-Gruppensuchfilter. Verwenden Sie **%v** als Platzhalter für das Gruppenattribut. Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften **ibm.appcenter.ldap.user.base** und **ibm.appcenter.ldap.group.base** denselben Wert haben.|
+|ibm.appcenter.ldap.group.name|Das Gruppennamensattribut, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.group.nesting|Diese Eigenschaft gibt an, ob LDAP verschachtelte Gruppen (d. h. Gruppen in Gruppen) enthält, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Die Festlegung des Werts false für diese Eigenschaft beschleunigt den LDAP-Zugriff, weil die Gruppen in diesem Fall nicht rekursiv durchsucht werden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.group.uniquemember|Diese Eigenschaft gibt die Mitglieder einer Gruppe an, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Diese Eigenschaft ist das Gegenteil der Eigenschaft ibm.appcenter.ldap.user.groupmembership. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.referral|Diese Eigenschaft gibt an, ob Verweise von der JNDI-API unterstützt werden. Wenn Sie keinen Wert angeben, verarbeitet die JNDI-API keine LDAP-Bezugsdaten. Im Folgenden sind die gültigen Werte beschrieben: {::nomarkdown}<ul><li>ignore: Im LDAP-Server gefundene Verweise werden ignoriert.</li><li>follow: Im LDAP-Server gefundene Bezugsdaten werden automatisch verfolgt.</li><li>throw: Für jeden im LDAP-Server gefundenen Verweis wird eine Ausnahme ausgelöst.</li></ul>{:/} |
+|ibm.appcenter.ldap.security.binddn|Der definierte Name des Benutzers, der das LDAP-Verzeichnis durchsuchen darf. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist. |
+|ibm.appcenter.ldap.security.bindpwd|Das Kennwort des Benutzers, der das LDAP-Verzeichnis durchsuchen darf. Verwenden Sie diese Eigenschaft nur dann, wenn eine Sicherheitsbindung erforderlich ist.<br><br>Das Kennwort kann mit dem Liberty-Profile-Tool securityUtility verschlüsselt werden. Führen Sie das Tool aus und setzen Sie den Wert dieser Eigenschaft auf das vom Tool generierte verschlüsselte Kennwort.<br><br>Bearbeiten Sie die Datei server.xml für Liberty Profile, um zu prüfen, ob classloader aktiviert ist, sodass die JAR-Datei, die das Kennwort entschlüsselt, geladen wird.<br><br>Lesen Sie hierzu den Abschnitt [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.security.sasl|Diese Eigenschaft gibt den Sicherheitsauthentifizierungsmechanismus an, wenn der LDAP-externe SASL-Authentifizierungsmechanismus eine Bindung zum LDAP-Server herstellen muss. Der Wert richtet sich nach dem LDAP-Server, ist aber gewöhnlich EXTERNAL. Wenn diese Eigenschaft definiert ist, ist für die Verbindung zu LDAP ohne Virtual Member Manager (VMM) eine Sicherheitsauthentifizierung erforderlich. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.user.base|Die Suchbasis für die Suche von Benutzern, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.user.displayName|Das Attribut für den Anzeigenamen, z. B. den realen Namen, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.displayName.filter|Der LDAP-Benutzersuchfilter für das Attribut ibm.appcenter.ldap.user.displayName. Verwenden Sie %v als Platzhalter für das Attribut des Anzeigenamens. <br><br>Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften ibm.appcenter.ldap.user.base und ibm.appcenter.ldap.group.base denselben Wert haben.|
+|ibm.appcenter.ldap.user.filter|Der LDAP-Benutzersuchfilter für das Attribut ibm.appcenter.ldap.user.loginName. Verwenden Sie **%v** als Platzhalter für das Attribut des Anmeldenamens. <br><br>Diese Eigenschaft ist nur dann erforderlich, wenn LDAP-Benutzer und -Gruppen in derselben untergeordneten Baumstruktur definiert sind, d. h., wenn die Eigenschaften ibm.appcenter.ldap.user.base und ibm.appcenter.ldap.group.base denselben Wert haben.|
+|ibm.appcenter.ldap.user.groupmembership|Gibt die Gruppen eines Members an, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Diese Eigenschaft ist das Gegenteil von ibm.appcenter.ldap.group.uniquemember. Diese Eigenschaft ist optional, aber wenn sie angegeben wird, ist der LDAP-Zugriff schneller. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.user.loginName|Das Anmeldenamensattribut, wenn Sie LDAP ohne VMM (Virtual Member Manager) verwenden. Lesen Sie hierzu die Abschnitte [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Liberty Profile)](#configuring-ldap-acl-management-liberty-profile) und [LDAP-Verwaltung von Zugriffskontrolllisten konfigurieren (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat).|
+|ibm.appcenter.ldap.vmm.active|Setzen Sie diese Eigenschaft auf true, um anzugeben, dass LDAP mit VMM (Virtual Member Manager) verwendet wird. Legen Sie andernfalls den Wert false fest (siehe [LDAP-Verwaltung von Zugriffskontrolllisten für WebSphere Application Server Version 8.x konfigurieren](#configuring-ldap-acl-management-for-websphere-application-server-v8x)).|
+|ibm.appcenter.ldap.vmm.adminpwd|Das Kennwort, wenn LDAP mit VMM (Virtual Member Manager) verwendet wird (siehe [LDAP-Verwaltung von Zugriffskontrolllisten für WebSphere Application Server Version 8.x konfigurieren](#configuring-ldap-acl-management-for-websphere-application-server-v8x)).|
+|ibm.appcenter.ldap.vmm.adminuser|Der Benutzer, wenn LDAP mit VMM (Virtual Member Manager) verwendet wird (siehe [LDAP-Verwaltung von Zugriffskontrolllisten für WebSphere Application Server Version 8.x konfigurieren](#configuring-ldap-acl-management-for-websphere-application-server-v8x)).|
+|ibm.appcenter.logging.formatjson|Diese Eigenschaft hat nur Wirkung, wenn ibm.appcenter.logging.tosystemerror auf true gesetzt ist. Wenn diese Eigenschaft aktiviert ist, formatiert sie JSON-Antworten in den Protokollierungsnachrichten, die an System.Error übertragen werden. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. |
+|ibm.appcenter.logging.tosystemerror|Gibt an, ob alle Protokollierungsnachrichten auch an System.Error übertragen werden. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. |
+|ibm.appcenter.openjpa.Log|Diese Eigenschaft wird an OpenJPA übergeben und aktiviert die JPA-Protokollierung. Weitere Einzelheiten finden Sie in der Veröffentlichung [Apache OpenJPA User's Guide](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html).|
+|ibm.appcenter.proxy.host|Wenn sich der Application-Center-Server hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den Application-Center-Server zu erreichen. Gewöhnlich wird mit dieser Eigenschaft die Adresse des Proxys angegeben. Lesen Sie hierzu den Artikel [Endpunkt der Anwendungsressourcen definieren](#defining-the-endpoint-of-the-application-resources).|
+|ibm.appcenter.proxy.port|Wenn sich der Application-Center-Server hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den Application-Center-Server zu erreichen. Gewöhnlich wird mit dieser Eigenschaft der Port des Proxys angegeben, z. B. 443. Sie ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht. Lesen Sie hierzu den Artikel [Endpunkt der Anwendungsressourcen definieren](#defining-the-endpoint-of-the-application-resources).|
+|ibm.appcenter.proxy.protocol|Wenn sich der Application-Center-Server hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft das Protokoll an (http oder https). Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den Application-Center-Server zu erreichen. Gewöhnlich wird diese Eigenschaft auf das Protokoll des Proxys gesetzt, z. B. appcntr.net. Diese Eigenschaft ist nur dann erforderlich, wenn das Protokoll der externen URI von dem der internen URI abweicht. Lesen Sie hierzu den Artikel [Endpunkt der Anwendungsressourcen definieren](#defining-the-endpoint-of-the-application-resources).|
+|ibm.appcenter.proxy.scheme|Diese Eigenschaft ist lediglich ein alternativer Name für ibm.appcenter.proxy.protocol.|
+|ibm.appcenter.push.schedule.period.amount|Gibt den Zeitplan an, wenn Sie Push-Benachrichtigungen über Anwendungsaktualisierungen senden. Wenn Anwendungen auf dem Server häufig geändert werden, definieren Sie diese Eigenschaft so, dass Stapel von Benachrichtigungen gesendet werden. Senden Sie beispielsweise alle Benachrichtigungen der vergangenen Stunde zusammen, anstatt Benachrichtigung einzeln zu senden. |
+|ibm.appcenter.push.schedule.period.unit|Gibt die Einheit für den Zeitplan an, wenn Sie Push-Benachrichtigungen über Anwendungsaktualisierungen senden.|
+|ibm.appcenter.services.endpoint|Diese Eigenschaft ermöglicht der Application-Center-Konsole, die Application-Center-REST-Services zu lokalisieren. Geben Sie die externe Adresse und das Kontextstammverzeichnis der Webanwendung applicationcenter.war an. In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI, nicht die interne URI im lokalen Netz sein. Beispiel: https://appcntr.net:443/applicationcenter. Lesen Sie hierzu den Artikel [Endpunkt der Anwendungsressourcen definieren](#defining-the-endpoint-of-the-application-resources).|
+|ibm.appcenter.services.iconCacheMaxAge|Gibt an, wie viele Sekunden zwischengespeicherte Symbole für die Application-Center-Konsole und den Client gültig bleiben. Anwendungssymbole ändern sich selten und werden deshalb zwischengespeichert. Geben Sie einen höheren Wert als 600 (10 Minuten) an, um die Anzahl der Datenübertragungen für die Symbole zu reduzieren.|
+|mfp.jndi.configuration|Wenn die JNDI-Konfiguration in die WAR-Dateien injiziert oder als gemeinsam genutzte Bibliothek bereitgestellt wird, ist der Wert dieser Eigenschaft der Name der JNDI-Konfiguration (optional). Dieser Wert kann auch als Systemeigenschaft angegeben werden.|
+|mfp.jndi.file|Wenn die JNDI-Konfiguration als externe Datei gespeichert wird, ist der Wert dieser Eigenschaft der Pfad zu einer Datei, in der die JNDI-Konfiguration beschrieben ist (optional). Dieser Wert kann auch als Systemeigenschaft angegeben werden.|
 
 ### WebSphere Application Server für die Unterstützung von Anwendungen in öffentlichen App Stores konfigurieren
 {: #configuring-websphere-application-server-to-support-applications-in-public-app-stores }
@@ -3384,7 +3377,7 @@ bevor Sie die Anwendungslinks zu Google Play verwenden können.
 Das Stammzertifikat von Apple iTunes muss in den WebSphere-Truststore importiert werden,
 bevor Sie die Anwendungslinks zu iTunes verwenden können.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-15 }
 * [WebSphere Application
 Server für die Unterstützung von Anwendungen in

@@ -5,7 +5,7 @@ show_children: true
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral
+## Visão geral
 {: #overview }
 O {{ site.data.keys.product_full }} é uma
 plataforma integrada que o ajudará a estender seus negócios para dispositivos móveis.

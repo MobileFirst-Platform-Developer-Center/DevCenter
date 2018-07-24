@@ -1408,7 +1408,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
    }
    ```
 
-4. 除去 `WLClient.Push.isPushSupported()`（如果已使用），并使用 `push.IsPushSupported();`。
+4. 除去 `WLClient.Push.isPushSupported()`（如果已使用）并使用 `push.IsPushSupported();`。
 5. 除去以下 `WLClient.Push` API：
     * `registerEventSourceCallback()`
     * `WLOnReadyToSubscribeListener` 和 `WLNotificationListener` 实现

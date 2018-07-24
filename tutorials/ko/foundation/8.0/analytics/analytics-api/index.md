@@ -160,7 +160,7 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
 **Cordova**  
-라이프사이클 이벤트 캡처를 사용으로 설정하려면 Cordova 앱의 고유 플랫폼에서 이를 초기화해야 합니다.
+라이프사이클 이벤트 캡처를 사용으로 설정하려면 Cordova 앱의 네이티브 플랫폼에서 이를 초기화해야 합니다.
 
 * iOS 플랫폼의 경우:
 	* **[Cordova 애플리케이션 루트 폴더] → platforms → ios → Classes** 폴더를 열고 **AppDelegate.m**(Objective-C) 또는 **AppDelegate.swift**(Swift) 파일을 찾으십시오.
@@ -240,7 +240,7 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
 **Cordova**  
-네트워크 이벤트 캡처를 사용으로 설정하려면 Cordova 앱의 고유 플랫폼에서 이를 초기화해야 합니다.
+네트워크 이벤트 캡처를 사용으로 설정하려면 Cordova 앱의 네이티브 플랫폼에서 이를 초기화해야 합니다.
 
 * iOS 플랫폼의 경우:
 	* **[Cordova 애플리케이션 루트 폴더] → platforms → ios → Classes** 폴더를 열고 **AppDelegate.m**(Objective-C) 또는 **AppDelegate.swift** 파일을 찾으십시오.

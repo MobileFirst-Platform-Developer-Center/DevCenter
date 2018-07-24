@@ -32,6 +32,6 @@ Dans le gestionnaire des logiciels SDK, vous pouvez installer les packages requi
 {: #android-virtual-devices }
 Vous pouvez utiliser un périphérique virtuel Android pour tester votre application. Pour une explication détaillée de toutes les options disponibles, voir la [rubrique de la documentation relative à la gestion des appareils virtuels](http://developer.android.com/tools/devices/index.html) sur le site Web des développeurs Android.
 
-## Que faire ensuite ?
+## Etapes suivantes
 {: #whats-next }
 Maintenant que les environnements de développement {{ site.data.keys.product_adj }} et Android sont configurés, vous pouvez passer à la catégorie [Démarrage rapide](../../../quick-start/android/) pour commencer à vous servir de {{ site.data.keys.product_adj }} ou [Tous les tutoriels](../../../all-tutorials) pour en savoir plus sur certains aspects du développement {{ site.data.keys.product_adj }}.

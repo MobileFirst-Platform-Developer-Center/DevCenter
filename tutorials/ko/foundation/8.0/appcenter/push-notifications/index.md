@@ -49,7 +49,7 @@ iOS 및 최신 Android 운영 체제 버전은 개별 애플리케이션에서 �
 
 > **중요:** 프로덕션 환경에서는 단위를 초로 설정하지 마십시오. 경과 시간이 짧을수록 서버의 로드가 더 높아집니다. 초로 표시되는 단위는 테스트 및 평가 목적으로만 구현됩니다. 예를 들어, 경과 시간이 10초로 설정되면 푸시 메시지를 거의 즉시 보내게 됩니다.
 
-설정할 수 있는 전체 특성 목록은 [Application Center의 JNDI 특성](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)을 참조하십시오.
+   설정할 수 있는 전체 특성 목록은 [Application Center의 JNDI 특성](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)을 참조하십시오.
 
 ### Apache Tomcat 서버의 예
 {: tomcat }
@@ -145,7 +145,7 @@ Apple 푸시 알림 서비스(APN)로 iOS 프로젝트를 구성하려면 사용
 
 표의 예는 Apache Tomcat 서버의 server.xml 파일에서 JNDI 특성이 정의되는 방식을 보여줍니다.
 
-| JNDI 특성	| 유형 및 설명 | Apache Tomcat 서버의 예 |
+| JNDI 특성 | 유형 및 설명 | Apache Tomcat 서버의 예 |
 |---------------|----------------------|----------------------------------|
 | ibm.appcenter.apns.p12.certificate.location | .p12 인증서의 전체 경로를 정의하는 문자열 값. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
 | ibm.appcenter.apns.p12.certificate.password | 인증서에 액세스하는 데 필요한 비밀번호를 정의하는 문자열 값. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |

@@ -62,8 +62,8 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
     @Override
     public void onFailure(MFPPushException e) {
         // Registration failed with error
-     }
- }, optionObject);
+    }
+}, optionObject);
 ```
 
 * **optionObject**：一个 `JSONObject`，其包含注册设备所用的电话号码。 例如：

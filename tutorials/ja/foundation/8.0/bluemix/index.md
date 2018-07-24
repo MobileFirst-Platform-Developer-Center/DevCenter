@@ -7,7 +7,7 @@ weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/><br/>
-> **注:** *IBM Bluemix は、IBM Cloud になりました。詳しくは、[こちら](https://www.ibm.com/blogs/bluemix/2017/10/bluemix-is-now-ibm-cloud/)を参照してください。*
+> **注:** *IBM Bluemix は、IBM Cloud になりました。 詳しくは、[こちら](https://www.ibm.com/blogs/bluemix/2017/10/bluemix-is-now-ibm-cloud/)を参照してください。*
 
 ## 概説
 {: #overview }
@@ -21,7 +21,7 @@ IBM Cloud は、IBM のオープン・クラウド・アーキテクチャーの
 {: #how-does-it-work }
 簡単に言うと、{{ site.data.keys.product }} を IBM Cloud で実行する方法には、ライセンス資格の種類によって 2 とおりあります。
 
-> **注:** *IBM Containers サービスは現在非推奨になったため、IBM Containers 上の Mobile Foundation はサポートされません。[詳細はこちら](https://www.ibm.com/blogs/bluemix/2017/07/deprecation-single-scalable-group-container-service-bluemix-public/)。*
+> **注:** *IBM Containers サービスは現在非推奨になったため、IBM Containers 上の Mobile Foundation はサポートされません。 [詳細はこちら](https://www.ibm.com/blogs/bluemix/2017/07/deprecation-single-scalable-group-container-service-bluemix-public/)。*
 
 * IBM Cloud サブスクリプションまたは PayGo ライセンス: {{ site.data.keys.mf_bm_full }} サービス
 * オンプレミス・ライセンス: IBM 提供のスクリプトを使用して、Kubernetes クラスターまたは Liberty for Java ランタイム上に {{ site.data.keys.product_full }} インスタンスをセットアップします。

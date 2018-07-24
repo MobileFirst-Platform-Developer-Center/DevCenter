@@ -36,7 +36,7 @@ Wenn ein Gerät für SMS-Benachrichtigungen registriert wird, wird eine Telefonn
 
 #### Gerät registrieren
 {: #register-device }
-Registrieren Sie das Gerät beim Push-Benachrichtigungsservice.
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
 
 ```javascript
 MFPPush.registerNotificationsCallback(notificationReceived);

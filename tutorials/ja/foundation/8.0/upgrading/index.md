@@ -137,5 +137,5 @@ IMFData フレームワークまたは CloudantToolkit を使用した Cloudant 
 
 {{ site.data.keys.mf_server }} にフィックスパックまたは暫定修正を適用するには、初期インストール方式に基づいて、以下のいずれかのトピックを選択してください。
 
-* [サーバー構成ツールを使用したフィックスパックまたは暫定修正の適用](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
-* [Ant ファイルを使用したフィックスパックの適用](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
+* [サーバー構成ツールを使用したフィックスパックまたは暫定修正の適用](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Ant ファイルを使用したフィックスパックの適用](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-ant-files)

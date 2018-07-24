@@ -29,8 +29,7 @@ Examinez attentivement la façon dont les éléments des fonctions et des API su
 
 ### Problèmes et limitations connus
 {: #known-issues-and-limitations }
-Vous pouvez identifier les derniers problèmes connus et leur solution pour cette édition de produit et tous ses groupes de correctifs en
-consultant cette liste dynamique de documents.  
+Vous pouvez identifier les derniers problèmes connus et leur solution pour cette édition de produit et tous ses groupes de correctifs en consultant cette liste dynamique de documents.  
 Des limitations générales s'appliquent à {{ site.data.keys.product_adj }}, comme décrit ici. Les limitations applicables à des fonctions spécifiques sont explicitées dans les rubriques qui décrivent ces fonctions.  
 
 [Lire la rubrique sur les problèmes et limitations connus](known-issues-limitations).

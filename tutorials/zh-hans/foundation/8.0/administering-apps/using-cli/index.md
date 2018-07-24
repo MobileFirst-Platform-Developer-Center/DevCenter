@@ -98,16 +98,16 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 | 选项	| 类型 | 描述 | 必需 | 缺省值 |
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | Administration Services 的 {{ site.data.keys.product_adj }} web 应用程序的基本 URL | 是 | |
-| --secure	 | 布尔值 | 是否避免存在安全风险的操作 | 否 | true |
-| --user	 | name | 用于访问 {{ site.data.keys.product_adj }} Administration Services 的用户名 | 是 |  | 	 
-| --passwordfile | 文件 | 包含用户密码的文件 | 否 |
-| --timeout	     | 数字  | 整个 REST 服务访问超时，以秒为单位 | 否 | 	 
-| --connect-timeout | 数字 | 建立网络连接超时，以秒为单位 | 否 |
-| --socket-timeout  | 数字 | 检测网络连接断开超时，以秒为单位 | 否 |
-| --connection-request-timeout | 数字 | 从连接请求池获取条目超时，以秒为单位 | 否 |
-| --lock-timeout | 数字 | 获取锁定时的超时，以秒为单位 | 否 | 2 |
-| --verbose	     | 详细的输出 | 否	| |  
+| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | |
+| --secure	 | Boolean | Whether to avoid operations with security risks | No | true |
+| --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
+| --passwordfile | file | File containing the password for the user | No |
+| --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
+| --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
+| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No |
+| --connection-request-timeout | Number	Timeout for obtaining an entry from a connection request pool, in seconds | No |
+| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 |
+| --verbose	     | Detailed output | No	| |  
 
 **url**  
 URL 最好使用 HTTPS 协议。 例如，如果使用缺省端口和上下文根，请使用此 URL：
@@ -259,8 +259,8 @@ mfpadm 调用包含一个命令。 支持以下命令。
 
 | 选项	| 描述 |
 |-----------|-------------|
-| --help	| 显示一些用法帮助 |
-| --version	| 显示版本 |
+| --help	| Shows some usage help |
+| --version	| Shows the version |
 
 #### XML 格式
 {: #xml-format }
@@ -293,7 +293,7 @@ global-config` 命令可显示全局配置。
 
 | 参数 | 描述 |
 |----------|-------------|
-| --xml    | 生成 XML 输出（而非表格输出）。 |
+| --xml    | Produces XML output instead of tabular output. |
 
 **示例**  
 
@@ -321,7 +321,7 @@ user-config` 命令可显示运行时的用户配置。
 
 | 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **示例**  
 
@@ -385,7 +385,7 @@ set user-config mfp timeout = 240
 
 | 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **示例**
 
@@ -462,7 +462,7 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produce XML output instead of tabular output. |
 
 **示例**  
 
@@ -512,7 +512,7 @@ deploy adapter mfp MyAdapter.adapter
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produce XML output instead of tabular output. |
 
 **示例**
 
@@ -587,7 +587,7 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 |
+| --xml | Produces output in XML format instead of JSON format. |
 
 **示例**
 
@@ -651,7 +651,7 @@ adapter mfp MyAdapter set user-config timeout = 240
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produce XML output instead of tabular output. |
 
 **示例**
 
@@ -700,7 +700,7 @@ deploy app mfp MyApp/application-descriptor.json
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml	 | 生成 XML 输出（而非表格输出）。 |
+| --xml	 | Produce XML output instead of tabular output. |
 
 **示例**
 
@@ -752,7 +752,7 @@ version` 命令可显示有关运行时中应用程序版本的详细信息。
 
 | 参数 | 描述 |
 | ---------|-------------|
-| -- xml | 生成 XML 输出（而非表格输出）。 |
+| -- xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -805,7 +805,7 @@ show license-config` 命令可显示应用程序的令牌许可证配置。
 
 | 参数 | 描述 |
 |----------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1064,7 +1064,7 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1179,7 +1179,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1201,7 +1201,7 @@ show info
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1221,7 +1221,7 @@ diagnostics` 命令可显示 {{ site.data.keys.product_adj }}
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1250,8 +1250,8 @@ runtimes` 命令返回已部署的运行时的列表。
 
 | 选项 | 描述 |
 |--------|-------------|
-| --in-database	| 是否在数据库中查看，而不是通过 MBeans |
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --in-database	| Whether to look in the database instead of via MBeans |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1282,7 +1282,7 @@ runtime` 命令可显示有关给定的已部署运行时的信息。
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 此命令基于[运行时 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 服务。
 
@@ -1330,7 +1330,7 @@ farm-members` 命令会返回在其上部署了指定运行时的场成员服务
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1358,7 +1358,7 @@ farm-member` 命令可从在其上部署了指定运行时的场成员的列表�
 
 | 选项 | 描述 |
 |--------|-------------|
-| --force | 强制除去场成员（即使在该成员可用且已连接的情况下）。 |
+| --force | Force removal of a farm member, even if it is available and connected. |
 
 **示例**
 

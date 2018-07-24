@@ -52,7 +52,7 @@ weight: 1
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
-                        <h3 class="migratingAdapters no-anchor">アダプターの<br/>マイグレーション</h3>
+                        <h3 class="migratingAdapters no-anchor">マイグレーション<br/>アダプター</h3>
 
                         <ul class="topics">
                             <li><a href="#migrating-adapters">Apache Maven のセットアップ<br/>の前提条件</a></li>
@@ -761,6 +761,57 @@ export MVN_PATH="/usr/local/bin"
                     </div>
                 </div>
             </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="migrationassistant">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseMigrationassistant" aria-expanded="false" aria-controls="collapseMigrationassistant">マイグレーション・アシスト・ツールの使用</a>
+                        </h4>
+                    </div>
+                    <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
+                        <div class="panel-body">
+                            <ol>
+                              <li>マイグレーション・アシスト・ツールを、<i>server</i> オプションを指定し、より古い worklight プロジェクトの <i>root</i> ディレクトリーを指定して実行します。
+                                <br/>
+                                <code>
+                                mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
+                                </code>
+                                <br/><br/>
+                                <blockquote>
+                                <h4>構文</h4>
+                                <pre><span id='code-span'>mfpmigrate server [--in|-i &lt;sourceDirectory&gt;] [--out|-o &lt;destinationDirectory&gt;] [--projectName|-p &lt;newProjectDirectory&gt;]</span></pre>
+                                <br/>
+                                <h4>説明</h4>
+                                <p>既存の MobileFirst プロジェクトからセキュリティー・レルムとアダプターのマイグレーションを実行します。</p>
+                                <br/>
+                                <h4>オプション</h4>
+                                <p><b><i>&lt;sourceDirectory&gt;</i></b>: <i>&lt;sourceDirectory&gt;</i> は、マイグレーションする MobileFirst プロジェクトの <i>root</i> フォルダーでなければなりません。これは必須であり、オプション・パラメーターではありません。</p>
+
+                                <p><b><i>&lt;destinationDirectory&gt;</i></b>: <i>&lt;destinationDirectory&gt;</i> は、アダプターのマイグレーション先となるディレクトリーです。</p>
+                              </blockquote>
+                                <p>マイグレーション・ツールは、アダプターとレルムをスキャンします。次に、以下を行います。</p>
+                                <ol><li>アダプターおよびサポートされているセキュリティー検査用のテンプレートを作成します。</li>
+                                    <li>アダプター・ソースを、新しく作成した Maven 成果物に移動します。</li>
+                                    <li>依存関係を使用して、プロジェクト <i>pom</i> を更新します。</li>
+                                    <li>このツールを使用して実行された内容と、マイグレーションを完了するために手動で実行されるその他の変更内容を記したサマリー・レポートを作成します。</li>
+                                </ol>
+                              </li>
+
+                              <li>
+                                <p>サマリー・レポートは、次のように使用します。</p>
+                                <ol>
+                                  <li>マイグレーション・アシスト・ツールを使用して実行された内容を理解します。</li>
+                                  <li>単純なマイグレーションが可能な個所で、サポートされていない API をサポートされている API にマップします。</li>
+                                  <li>レガシー worklight プロジェクトで使用している、サポートされていないアダプターとレルムを識別します。</li>
+                                  <li>既存の設計に存在するその他の技術的課題やボトルネックについて理解し、以下に記した新しい開発概念を参照して、そのような課題にどのように対処できるかを確認します。</li>
+                                </ol>
+                              </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
 
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-js-adapter">

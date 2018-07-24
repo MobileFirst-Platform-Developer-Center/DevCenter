@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Log and trace collection
 #relevantTo: [ios,android,windows,javascript]
@@ -11,7 +12,7 @@ new_url: /404/
 {: #overview }
 IBM Containers for IBM Cloud에서는 컨테이너 CPU, 메모리, 네트워크에 대한 몇몇 기본 제공 로깅 및 모니터링 기능을 제공합니다. 선택적으로 {{ site.data.keys.product_adj }} 컨테이너의 로그 레벨을 변경할 수 있습니다.
 
-{{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} 및 {{ site.data.keys.mf_app_center }} 컨테이너의 로그 파일을 작성하는 옵션은 기본적으로 사용으로 설정되어 있습니다(`*=info` 레벨 사용). 수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해서 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. Kibana 시각화 도구를 사용하여 IBM Cloud logmet 콘솔에서 컨테이너 로그와 서버 또는 런타임 로그를 모두 볼 수 있습니다. 개방형 소스 메트릭 대시보드이며 그래프 편집기인 Grafana를 사용하여 IBM Cloud logmet 콘솔에서 모니터링을 수행할 수 있습니다. 
+{{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} 및 {{ site.data.keys.mf_app_center }} 컨테이너의 로그 파일을 작성하는 옵션은 기본적으로 사용으로 설정되어 있습니다(`*=info` 레벨 사용). 수동으로 코드 대체를 추가하거나 제공된 스크립트 파일을 사용해서 코드를 삽입하여 로그 레벨을 변경할 수 있습니다. Kibana 시각화 도구를 사용하여 IBM Cloud logmet 콘솔에서 컨테이너 로그와 서버 또는 런타임 로그를 모두 볼 수 있습니다. 개방형 소스 메트릭 대시보드이며 그래프 편집기인 Grafana를 사용하여 IBM Cloud logmet 콘솔에서 모니터링을 수행할 수 있습니다.
 
 {{ site.data.keys.product_adj }} 컨테이너가 SSH(Secure Shell) 키를 사용하여 작성되고 공용 IP 주소에 바인드된 경우 적절한 개인 키를 사용해서 컨테이너 인스턴스의 로그를 안전하게 볼 수 있습니다.
 
@@ -43,7 +44,7 @@ V8.0.0 패키지에서 제공되는 start\*.sh 스크립트 파일(**startserver
 
 로그 파일 액세스 단계를 수행하여 컨테이너에 로그인하고 로그 파일에 액세스할 수 있습니다.
 
-컨테이너가 더 이상 존재하지 않는 경우에도 로그 파일을 유지하려면 볼륨을 사용으로 설정하십시오. (기본적으로 볼륨은 사용되지 않습니다.) 볼륨을 사용으로 설정하면 logmet 인터페이스(예: https://logmet.ng.bluemix.net/kibana) 를 사용해서 IBM Cloud에서 로그를 볼 수도 있습니다. 
+컨테이너가 더 이상 존재하지 않는 경우에도 로그 파일을 유지하려면 볼륨을 사용으로 설정하십시오. (기본적으로 볼륨은 사용되지 않습니다.) 볼륨을 사용으로 설정하면 logmet 인터페이스(예: https://logmet.ng.bluemix.net/kibana) 를 사용해서 IBM Cloud에서 로그를 볼 수도 있습니다.
 
 **볼륨 사용**
 볼륨을 사용하면 컨테이너에서 로그 파일을 유지할 수 있습니다. {{ site.data.keys.mf_server }} 로그와 {{ site.data.keys.mf_analyics }} 컨테이너 로그의 볼륨은 기본적으로 사용으로 설정되어 있지 않습니다.
@@ -55,7 +56,7 @@ V8.0.0 패키지에서 제공되는 start\*.sh 스크립트 파일(**startserver
 
 ## 로그 파일 액세스
 {: #accessing-log-files }
-각 컨테이너 인스턴스에 대한 로그가 작성됩니다. `cf ic` 명령을 사용하거나 IBM Cloud logmet 콘솔을 사용하여 IBM Container Cloud Service REST API를 통해 로그 파일에 액세스할 수 있습니다. 
+각 컨테이너 인스턴스에 대한 로그가 작성됩니다. `cf ic` 명령을 사용하거나 IBM Cloud logmet 콘솔을 사용하여 IBM Container Cloud Service REST API를 통해 로그 파일에 액세스할 수 있습니다.
 
 ### IBM Container Cloud Service REST API
 {: #ibm-container-cloud-service-rest-api }

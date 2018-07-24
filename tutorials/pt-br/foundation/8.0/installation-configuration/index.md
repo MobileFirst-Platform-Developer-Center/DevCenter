@@ -48,7 +48,7 @@ O assistente de instalação do {{ site.data.keys.mf_server }} usa o IBM Install
 Leia abaixo para obter informações sobre como preparar e instalar o {{site.data.keys.mf_server }} e serviços opcionais em seu ambiente específico. Para uma configuração simples, leia o tutorial [Configurando um ambiente de teste ou produção](production).
 
 * [Verificando Pré-requisitos](production/prod-env/prereqs)
-* [Visão geral dos componentes dos {{ site.data.keys.mf_server }}](production/prod-env/topologies)
+* [Visão geral dos componentes do {{ site.data.keys.mf_server }}](production/prod-env/topologies)
 * Fatores a serem considerados antes de carregar ferramentas e bibliotecas para implementar componentes do servidor MobileFirst e, opcionalmente, do Centro de Aplicativos
   * Licença de Token
   * Centro de Aplicativos do MobileFirst Foundation

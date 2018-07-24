@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Setting Up MobileFirst Server on IBM Cloud using Scripts for IBM Containers
 #breadcrumb_title: IBM Containers
@@ -10,7 +11,7 @@ new_url: /404/
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-遵循以下指示信息，以在 IBM Cloud 上配置 {{ site.data.keys.mf_server }} 实例以及 {{ site.data.keys.mf_analytics }} 实例。为此您需要完成以下步骤：
+遵循以下指示信息，以在 IBM Cloud 上配置 {{ site.data.keys.mf_server }} 实例以及 {{ site.data.keys.mf_analytics }} 实例。 为此您需要完成以下步骤：
 
 * 使用所需工具（Cloud Foundry CLI、Docker 和 IBM Containers Extension (cf ic) 插件）设置主计算机
 * 设置 IBM Cloud 帐户
@@ -36,11 +37,11 @@ new_url: /404/
 
 ## 在 IBM Cloud 上注册帐户
 {: #register-an-account-at-bluemix }
-如果还没有帐户，请访问 [IBM Cloud Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。您需要填写注册表单，然后才能进入下一步。
+如果还没有帐户，请访问 [IBM Cloud Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。 您需要填写注册表单，然后才能进入下一步。
 
 ### IBM Cloud 仪表板
 {: #the-bluemix-dashboard }
-在登录 IBM Cloud 后，会显示 IBM Cloud 仪表板，其中提供了活动的 IBM Cloud **空间**的概述。缺省情况下，此工作区命名为“dev”。 如果需要，您可以创建多个工作区/空间。
+在登录 IBM Cloud 后，会显示 IBM Cloud 仪表板，其中提供了活动的 IBM Cloud **空间**的概述。 缺省情况下，此工作区命名为“dev”。 如果需要，您可以创建多个工作区/空间。
 
 ## 设置主机
 {: #set-up-your-host-machine }
@@ -108,7 +109,7 @@ new_url: /404/
 
                 <ul>
                     <li><b>Dockerfile</b>：包含构建映像所需的所有命令的文本文档。</li>
-                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。 它还包含运行的脚本，用于登录 IBM Cloud、构建 {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} 映像，以及在 IBM Cloud 上推送与运行此映像。您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。 除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。 要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
+                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。 它还包含运行的脚本，用于登录 IBM Cloud、构建 {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} 映像，以及在 IBM Cloud 上推送与运行此映像。 您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。 除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。 要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
                     <li><b>usr</b> 文件夹：
                         <ul>
                             <li><b>bin</b> 文件夹:包含将在容器启动时执行的脚本文件。 您可以添加自己的定制代码以执行这些代码。</li>
@@ -287,7 +288,7 @@ Services 的 Liberty 服务器管理员用户的密码。</td>
 2. 要运行 IBM Containers 命令，必须首先登录 IBM Container 云服务。  
 运行：`cf ic login`。
 
-3. 确保已设置容器注册表的 `namespace`。 `namespace` 是用于识别 IBM Cloud 注册表上您的专用存储库的唯一名称。仅限针对每个组织指定一次名称空间，名称空间无法更改。 根据以下规则选择名称空间：
+3. 确保已设置容器注册表的 `namespace`。 `namespace` 是用于识别 IBM Cloud 注册表上您的专用存储库的唯一名称。 仅限针对每个组织指定一次名称空间，名称空间无法更改。 根据以下规则选择名称空间：
      * 只能包含小写字母、数字或下划线。
      * 名称可以为 4 到 30 个字符。 如果计划从命令行管理容器，那么您可能倾向于使用能够快速输入的简短名称空间。
      * 必须在 IBM Cloud 注册表中唯一。
@@ -416,7 +417,7 @@ Services 的 Liberty 服务器管理员用户的密码。</td>
                                             </tr>
                                             <tr>
                                                 <td>可选。 [-a|--api] IBM_CLOUD_API_URL	</td>
-                                                <td>IBM Cloud API 端点。（缺省端点为 https://api.ng.bluemix.net）</td>
+                                                <td>IBM Cloud API 端点。 （缺省端点为 https://api.ng.bluemix.net）</td>
                                             </tr>
                                         </table>
 
@@ -485,7 +486,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
 
                     <li><b>prepareappcenter.sh - 准备 {{ site.data.keys.mf_app_center }} 映像</b><br />
-                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像，并将其推送到 IBM Cloud 存储库。要查看 IBM Cloud 存储库中的所有可用映像，请运行 <code>cf ic images</code>
+                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像，并将其推送到 IBM Cloud 存储库。 要查看 IBM Cloud 存储库中的所有可用映像，请运行 <code>cf ic images</code>
 此列表包含映像名称、创建日期和标识。
 
                         运行：
@@ -808,7 +809,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
                                             </tr>
                                             <tr>
                                                 <td>可选。 [-a|--api] IBM_CLOUD_API_URL	</td>
-                                                <td>IBM Cloud API 端点。（缺省端点为 https://api.ng.bluemix.net）</td>
+                                                <td>IBM Cloud API 端点。 （缺省端点为 https://api.ng.bluemix.net）</td>
                                             </tr>
                                         </table>
 
@@ -1177,7 +1178,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                                         </tr>
                                         <tr>
                                             <td>可选。 [-a|--api] IBM_CLOUD_API_URL	</td>
-                                            <td>IBM Cloud API 端点。（缺省端点为 https://api.ng.bluemix.net）</td>
+                                            <td>IBM Cloud API 端点。 （缺省端点为 https://api.ng.bluemix.net）</td>
                                         </tr>
                                     </table>
 
@@ -1223,7 +1224,7 @@ initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOU
                                         </tr>
                                         <tr>
                                             <td>可选。 [-rd |--runtimedb ] RUNTIME_DB_SRV_NAME	</td>
-                                            <td>用于存储运行时数据的 IBM Cloud 数据库服务实例名称。缺省为与针对管理数据指定的服务相同。</td>
+                                            <td>用于存储运行时数据的 IBM Cloud 数据库服务实例名称。 缺省为与针对管理数据指定的服务相同。</td>
                                         </tr>
                                         <tr>
                                             <td>可选。 [-p |--push ] ENABLE_PUSH	</td>
@@ -1231,7 +1232,7 @@ initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOU
                                         </tr>
                                         <tr>
                                             <td>[-pd |--pushdb ] PUSH_DB_SRV_NAME	</td>
-                                            <td>用于存储推送数据的 IBM Cloud 数据库服务实例名称。缺省为与针对运行时数据指定的服务相同。</td>
+                                            <td>用于存储推送数据的 IBM Cloud 数据库服务实例名称。 缺省为与针对运行时数据指定的服务相同。</td>
                                         </tr>
                                         <tr>
                                             <td>[-ps |--pushschema ] PUSH_SCHEMA_NAME	</td>
@@ -1258,7 +1259,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                 </li>
                 <li><b>prepareserver.sh - 准备 {{ site.data.keys.mf_server }} 映像</b><br />
-                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 映像，并将其推送到 IBM Cloud 存储库。要查看 IBM Cloud 存储库中的所有可用映像，请运行 <code>cf ic images</code><br/>
+                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 映像，并将其推送到 IBM Cloud 存储库。 要查看 IBM Cloud 存储库中的所有可用映像，请运行 <code>cf ic images</code><br/>
                     此列表包含映像名称、创建日期和标识。<br/>
 
 {% highlight bash %}
@@ -1491,7 +1492,7 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 装入以下 URL 以启动 {{ site.data.keys.mf_console }}：http://MF\_CONTAINER\_HOST/mfpconsole（可能需要一些时间才能完成）。  
 遵循[使用 {{ site.data.keys.mf_cli }} 来管理 {{ site.data.keys.product_adj }} 工件](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)教程中的指示信息来添加远程服务器。  
 
-通过使用 IBM Cloud 上运行的 {{ site.data.keys.mf_server }}，现在您可以启动自己的应用程序开发。查看 {{ site.data.keys.product }} [教程](../../all-tutorials)。
+通过使用 IBM Cloud 上运行的 {{ site.data.keys.mf_server }}，现在您可以启动自己的应用程序开发。 查看 {{ site.data.keys.product }} [教程](../../all-tutorials)。
 
 #### 端口号限制
 {: #port-number-limitation }
@@ -1544,7 +1545,7 @@ IBM Containers 上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM 
 
 要从 IBM Cloud 中除去数据库服务配置，请使用 IBM Cloud 仪表板执行以下过程。
 
-1. 从 IBM Cloud 仪表板，选择使用的 dashDB 服务。选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 dashDB 服务名称。
+1. 从 IBM Cloud 仪表板，选择使用的 dashDB 服务。 选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 dashDB 服务名称。
 2. 启动 dashDB 控制台以使用选中的 dashDB 服务实例的模式和数据库对象。
 3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。 模式名称是在运行 **prepareserverdbs.sh** 脚本时作为参数提供的名称。
 4. 在仔细检查每个模式名称以及其下的对象后，删除模式。 这将从 IBM Cloud 中除去数据库配置。

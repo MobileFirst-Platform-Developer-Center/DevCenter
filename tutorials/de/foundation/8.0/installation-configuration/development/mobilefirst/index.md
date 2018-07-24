@@ -103,8 +103,7 @@ Sie können die
 Die {{ site.data.keys.product }} stellt Client-SDKs für Cordova-Anwendungen sowie für native Plattformen
 (iOS, Android sowie Windows 8.1 Universal und Windows 10 UWP) bereit. Darüber hinaus stehen Adaptertools für die Entwicklung von Adaptern und Sicherheitsüberprüfungen zur Verfügung.
 
-* Wenn Sie die {{ site.data.keys.product_adj }}-Client-SDKs verwenden möchten,
-wechseln Sie zur Lernprogrammkategorie zum [Hinzufügen des SDK der {{ site.data.keys.product }}](../../../application-development/sdk/).  
+* Wenn Sie die {{ site.data.keys.product_adj }}-Client-SDKs verwenden möchten, wechseln Sie zur Lernprogrammkategorie zum [Hinzufügen des SDK der {{ site.data.keys.product }}](../../../application-development/sdk/).  
 * Informationen zur Entwicklung von Adaptern enthält die Lernprogrammkategorie zu [Adaptern](../../../adapters/).  
 * Hinweise zur Entwicklung von Sicherheitsüberprüfungen finden Sie in der Lernprogrammkategorie zur [Authentifizierung und Sicherheit](../../../authentication-and-security/).  
 

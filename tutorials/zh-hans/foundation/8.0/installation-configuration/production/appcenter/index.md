@@ -2,7 +2,7 @@
 layout: tutorial
 title: 安装和配置 IBM MobileFirst Foundation Application Center
 breadcrumb_title: Installing Application Center
-weight: 8
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -32,7 +32,7 @@ weight: 8
 ## 使用 IBM Installation Manager 来安装 Application Center
 {: #installing-application-center-with-ibm-installation-manager }
 您可以使用 IBM Installation Manager 来安装 Application Center，创建其数据库，并将其部署到应用程序服务器上。  
-在开始之前，请验证运行 IBM Installation Manager 的用户是否具有[文件系统先决条件](../appserver/#file-system-prerequisites)中所述的权限。
+在开始之前，请验证运行 IBM Installation Manager 的用户是否具有[文件系统先决条件](../prod-env/appserver/#file-system-prerequisites)中所述的权限。
 
 要使用 IBM Installation Manager 来安装 IBM Application Center，请完成以下步骤。
 
@@ -119,7 +119,7 @@ weight: 8
     * 使用全局数据库名称 **ORCL\_your\_domain** 和系统标识 (SID) **ORCL**。
     * 在步骤**数据库内容**的**定制脚本**选项卡上，请勿运行 SQL 脚本，因为您必须首先创建用户帐户。
     * 在步骤**初始化参数**的**字符集**选项卡上，选择**使用 Unicode (AL32UTF8) 字符集和 UTF8 - Unicode 3.0 UTF-8 国家字符集**。
-    * 完成此过程（接受缺省值）。
+    * 在接受缺省值的情况下完成此过程。
 2. 通过使用 **Oracle Database Control** 或 **Oracle SQLPlus** 命令行解释器来创建数据库用户。
     * 使用 **Oracle Database Control**：
         * 以 **SYSDBA** 身份连接。
@@ -205,7 +205,7 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
 
 有关如何修改这些登录的更多信息，请参阅[在 WebSphere Application Server Full Profile 上配置 Java EE 安全角色](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile)。
 
-#### WebSphere  Application Server Liberty Profile
+#### WebSphere Application Server Liberty Profile
 {: #websphere-application-server-liberty-profile }
 * 在 basicRegistry 中创建密码为 demo 的登录 demo。
 * 在 basicRegistry 中创建密码为 admin 的登录 appcenteradmin。
@@ -289,7 +289,7 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
 {: #deploying-the-application-center-console-and-services-with-ant-tasks }
 通过使用 Ant 任务，不仅可将 Application Center 控制台和服务部署到应用程序服务器中，还可配置 Application Center 所使用的数据源、属性和数据库驱动程序。
 
-在开始之前，
+开始之前：
 
 * 完成[使用 Ant 任务为 Application Center 创建和配置数据库](#creating-and-configuring-the-database-for-application-center-with-ant-tasks)中的过程。
 * 您必须在安装了应用程序服务器的计算机上运行 Ant 任务，或运行针对 WebSphere Application Server Network Deployment 的 Network Deployment Manager。 如果您希望从没有安装 {{ site.data.keys.mf_server }} 的计算机上启动 Ant 任务，那么必须将以下文件和目录复制到该计算机上：
@@ -1085,18 +1085,18 @@ JDBC 驱动程序数据源**。
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * 在 Windows 系统上：
 
       ```bash
       mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+      copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
+      LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+      mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+      copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
+      LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
       ```
 
 6. 启动 Liberty Server。
@@ -1218,7 +1218,7 @@ JDBC 驱动程序数据源**。
                        value="product_install_dir/ApplicationCenter/tools/android-sdk"
                        type="java.lang.String" override="false"/>
           <!-- The protocol of the application resources URI.
-               该属性为可选属性。 It is only needed if the protocol
+               This property is optional. It is only needed if the protocol
                of the external and internal URI are different. -->
           <!-- <Environment name="ibm.appcenter.proxy.protocol"
                             value="http" type="java.lang.String" override="false"/>
@@ -1361,18 +1361,18 @@ JDBC 驱动程序数据源**。
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * 在 Windows 系统上：
 
       ```bash
       mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+      copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
+      LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+      mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+      copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
+      LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
       ```
 
 6. 启动 Liberty Server。

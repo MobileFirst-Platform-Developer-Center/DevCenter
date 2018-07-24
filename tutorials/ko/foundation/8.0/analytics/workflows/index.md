@@ -76,7 +76,7 @@ WLAnalytics.send();
 #### Cordova
 {: #cordova }
 
-Cordova 앱의 경우 iOS 및 Android 앱과 마찬가지로 고유 플랫폼 코드에서 리스너를 작성해야 합니다. 데이터를 서버에 전송하십시오.
+Cordova 앱의 경우 iOS 및 Android 앱과 마찬가지로 네이티브 플랫폼 코드에서 리스너를 작성해야 합니다. 데이터를 서버에 전송하십시오.
 
 ```javascript
 WL.Analytics.send();

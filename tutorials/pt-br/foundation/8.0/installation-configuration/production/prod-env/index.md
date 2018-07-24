@@ -1,37 +1,37 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server in a production environment
+title: Instalando o MobileFirst Server em um ambiente de produção
 breadcrumb_title: Installing MobileFirst Server
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-This tutorial is intended for developers and administrators who want to install and configure MobileFirst Server for a production environment.
-Detailed steps, beyond the tutorial about MobileFirst Server installation, is provided here to assist you in planning and preparing an installation for your specific environment.
+Este tutorial é destinado a desenvolvedores e administradores que desejam instalar e configurar o MobileFirst Server para um ambiente de produção.
+Etapas detalhadas, além do tutorial sobre a instalação do MobileFirst Server, são fornecidas aqui para ajudar a planejar e preparar uma instalação para um ambiente específico.
 
 
-## Installation pre-requisites
+## Pré-requisitos de Instalação
 {: #prereqs }
 
-For smooth installation of MobileFirst Server, ensure that you fulfil all the software [prerequisites](prereqs).
+Para obter uma instalação mais fácil do MobileFirst Server, assegure-se de preencher todos os [pré-requisitos](prereqs) de software.
 
-## Running IBM Installation Manager
+## Executando o IBM Installation Manager
 {: #run-install-mgr }
 
-IBM Installation Manager installs the IBM MobileFirst Platform Server files and tools on your computer. Follow this [tutorial to install and run IBM Installation Manager](../installation-manager).
+O IBM Installation Manager instala os arquivos e ferramentas do IBM MobileFirst Platform Server em seu computador. Siga este [tutorial para instalar e executar o IBM Installation Manager](../installation-manager).
 
-## Setting up databases
+## Configurando Bancos de Dados
 {: #databases }
 
-Set up the database to be used by MobileFirst Server components. Follow this [tutorial to set up the database](databases).
+Configure o banco de dados para ser usado pelos componentes do MobileFirst Server. Siga este [tutorial para configurar o banco de dados](databases).
 
-## Topologies and network flows
+## Topologias e fluxos de rede
 {: #topologies }
 
-Topics about possible server topologies for MobileFirst Server components and the network flows. Follow this [tutorial to learn about the possible server topologies and network flows](topologies).
+Os tópicos sobre as possíveis topologias do servidor para os componentes e os fluxos de rede do MobileFirst Server. Siga este [tutorial para aprender sobre as possíveis topologias e fluxos de rede do servidor](topologies).
 
-## Installing MobileFirst Server to an application server
+## Instalando o servidor MobileFirst em um servidor de aplicativos
 {: #install-to-appserver }
 
-The installation of the components can be done by using Ant Tasks, the Server Configuration Tool, or manually. Find out the prerequisite and the details about the installation process so that you can install the components on the application server successfully. Follow this [tutorial to learn how the MobileFirst components can be installed on application server](appserver).
+A instalação dos componentes pode ser feita usando tarefas Ant, o Server Configuration Tool ou manualmente. Descubra quais são os pré-requisitos e os detalhes sobre o processo de instalação para que seja possível instalar os componentes no servidor de aplicativos com sucesso. Siga este [tutorial para saber como os componentes do MobileFirst podem ser instalados no servidor de aplicativos](appserver).

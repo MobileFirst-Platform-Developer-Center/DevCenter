@@ -334,7 +334,7 @@ WL.JSONStore.get(collectionName).getAllDirty()
 
 #### 변경사항 푸시
 {: #push }
-어댑터에 변경사항을 푸시하려면 `getAllDirty`를 호출하여 수정된 문서 목록을 가져온 후 `WLResourceRequest`를 사용하십시오. 데이터가 전송되고 성공 응답을 수신하면 `markClean`을 호출하십시오. 
+어댑터에 변경사항을 푸시하려면 `getAllDirty`를 호출하여 수정된 문서 목록을 가져온 후 `WLResourceRequest`를 사용하십시오. 데이터가 전송되고 성공 응답을 수신하면 `markClean`을 호출하십시오.
 
 ```javascript
 try {

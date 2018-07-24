@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-遵循以下指示信息，在 IBM Cloud 上配置 {{ site.data.keys.mf_app_center }} 实例。为此您需要完成以下步骤：
+遵循以下指示信息，在 IBM Cloud 上配置 {{ site.data.keys.mf_app_center }} 实例。 为此您需要完成以下步骤：
 
 * 创建以下类型的 Kubernetes 集群：Standard（已付费集群）。
 * 使用所需的工具（Docker、Cloud Foundry CLI (cf)、IBM Cloud CLI (bx)、Container Service Plugin for IBM Cloud CLI (bx cs)、Container Registry Plugin for IBM Cloud CLI (bx cr) 和 Kubernetes CLI (kubectl)）来设置主计算机。
@@ -34,11 +34,11 @@ weight: 1
 
 ## 在 IBM Cloud 上注册帐户
 {: #register-an-account-on-ibmcloud }
-如果还没有帐户，请访问 [IBM Cloud Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。您需要填写注册表单，然后才能进入下一步。
+如果还没有帐户，请访问 [IBM Cloud Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。 您需要填写注册表单，然后才能进入下一步。
 
 ### IBM Cloud 仪表板
 {: #the-ibmcloud-dashboard }
-在登录 IBM Cloud 后，会显示 IBM Cloud 仪表板，其中提供了活动的 IBM Cloud **空间**的概述。缺省情况下，此工作区名为 *dev*。 如果需要，您可以创建多个工作区/空间。
+在登录 IBM Cloud 后，会显示 IBM Cloud 仪表板，其中提供了活动的 IBM Cloud **空间**的概述。 缺省情况下，此工作区名为 *dev*。 如果需要，您可以创建多个工作区/空间。
 
 ## 设置主机
 {: #set-up-your-host-machine }
@@ -83,7 +83,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 
                 <ul>
                     <li><b>Dockerfile-mfp-appcenter</b>：包含构建 {{ site.data.keys.mf_app_center }} 映像所需的所有命令的文本文档。</li>
-                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。 它还包含登录 IBM Cloud 时所需的脚本，可构建 {{ site.data.keys.mf_app_center }} 映像，以及用于在 IBM Cloud 上推送与运行此映像。您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。 除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。 要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
+                    <li><b>scripts</b> 文件夹：此文件夹包含 <b>args</b> 文件夹，其中包含一组配置文件。 它还包含登录 IBM Cloud 时所需的脚本，可构建 {{ site.data.keys.mf_app_center }} 映像，以及用于在 IBM Cloud 上推送与运行此映像。 您可以选择以交互方式运行这些脚本，或者通过对配置文件进行预配置的方式来运行脚本（如后文所述）。 除可定制的 args/*.properties 文件外，请勿修改该文件夹中的任何元素。 要获取脚本用法帮助，请使用 <code>-h</code> 或 <code>--help</code> 命令行参数（例如，<code>scriptname.sh --help</code>）。</li>
                     <li><b>usr-mfp-appcenter</b> 文件夹：
                         <ul>
                             <li><b>bin</b> 文件夹：包含将在容器启动时执行的脚本文件 (mfp-appcenter-init)。 您可以添加自己的定制代码以执行这些代码。</li>
@@ -278,7 +278,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 
                 </li>
                 <li><b>prepareappcenter.sh - 准备 {{ site.data.keys.mf_app_center }} 映像</b><br />
-                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像，并将其推送到 IBM Cloud 存储库。要查看 IBM Cloud 存储库中的所有可用映像，请运行：<code>bx cr image-list</code><br/>
+                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像，并将其推送到 IBM Cloud 存储库。 要查看 IBM Cloud 存储库中的所有可用映像，请运行：<code>bx cr image-list</code><br/>
                     此列表包含映像名称、创建日期和标识。<br/>
                     <b>交互方式</b>
 {% highlight bash %}
@@ -387,7 +387,7 @@ bx cr image-rm image-name（从注册表中除去映像）
 
 要从 IBM Cloud 中除去数据库服务配置，请使用 IBM Cloud 仪表板执行以下过程。
 
-1. 从 IBM Cloud 仪表板，选择使用的 DB2 on cloud 服务。选择在运行 **prepareappcenterdbs.sh** 脚本时作为参数提供的 DB2 服务名称。
+1. 从 IBM Cloud 仪表板，选择使用的 DB2 on cloud 服务。 选择在运行 **prepareappcenterdbs.sh** 脚本时作为参数提供的 DB2 服务名称。
 2. 启动 DB2 控制台以使用选中的 DB2 服务实例的模式和数据库对象。
 3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。 模式名称是在运行 **prepareappcenterdbs.sh** 脚本时作为参数提供的名称。
 4. 在仔细检查每个模式名称以及其下的对象后，删除模式。 这将从 IBM Cloud 中除去数据库配置。

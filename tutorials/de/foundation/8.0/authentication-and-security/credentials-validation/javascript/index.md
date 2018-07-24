@@ -101,7 +101,8 @@ PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
 
 ## Abfrage abbrechen
 {: #cancelling-the-challenge }
-Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., indem Sie auf die Schaltfläche **Cancel** klicken.  
+Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., indem Sie
+auf die Schaltfläche **Cancel** klicken.   
 Rufen Sie zu diesem Zweck Folgendes auf: 
 
 ```javascript
