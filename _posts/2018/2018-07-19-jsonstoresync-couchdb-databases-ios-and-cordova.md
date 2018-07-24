@@ -1,6 +1,6 @@
 ---
 title: Automated synchronization of JSONStore collections with CouchDB databases in iOS and Cordova
-date: 2018-07-20
+date: 2018-07-24
 tags:
 - Mobile_Foundation
 - JSONStore
@@ -14,8 +14,7 @@ author:
 MobileFirst JSONStore already allows you to write code to be able to pull and push data from/to an external data source, [see here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/jsonstore/#working-with-external-data).
 
 Starting with *iFix 8.0.0.0-MFPF-IF201802201451*, MobileFirst Android SDK can be used to automate the synchronization of data between a JSONStore collection on a device with any CouchDB database including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). Details regarding this can be found in this <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/">post</a>.
-Starting from the recent *version* of MFP 8.0, this automated sync is available in iOS and Cordova SDK as well.
-
+Starting from the [CD Update 2](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/8-0-cd-update-release) of MFP 8.0, this automated sync is available in iOS and Cordova SDK as well.
 
 
 If you are an on-premise 8.0 customer or <a href="https://console.bluemix.net/catalog/services/mobile-foundation">Mobile Foundation Service</a> customer, then read further to learn about the JSONStore <a href="https://www.ibm.com/support/knowledgecenter/en/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_jsonstore_overview.html">here</a>.
