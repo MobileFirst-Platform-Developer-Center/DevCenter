@@ -10,7 +10,7 @@ weight: 1
 {: #overview }
 In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} SDK to a new or existing React Native application, which has been created with React Native CLI. You also learn how to configure the {{ site.data.keys.mf_server }} to recognise the application, and to find information about the {{ site.data.keys.product_adj }} configuration files that are changed in the project.
 
-The {{ site.data.keys.product_adj }} React Native SDK is provided as a react native npm plug-in, and is registered at [NPM](https://www.npmjs.com/package/cordova-plugin-mfp).  
+The {{ site.data.keys.product_adj }} React Native SDK is provided as a react native npm plug-in, and is registered at [NPM](https://www.npmjs.com/package/react-native-ibm-mobilefirst).  
 
 Available plug-ins are:
 
@@ -130,7 +130,7 @@ The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf
 {: #updating-the-mobilefirst-react-native-sdk }
 To update the {{ site.data.keys.product_adj }} React native SDK with the latest release, remove the **react-native-ibm-mobilefirst** plug-in: run the `npm uninstall react-native-ibm-mobilefirst` command and then run the `npm install react-native-ibm-mobilefirst` command to add it again.
 
-SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/xxxxxx).
+SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/react-native-ibm-mobilefirst).
 
 ## Generated {{ site.data.keys.product_adj }} React Native SDK artifacts
 {: #generated-mobilefirst-reactnative-sdk-artifacts }
