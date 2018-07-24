@@ -124,7 +124,9 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>Novas APIs do lado do cliente Objective-C para iOS</h3>
                 <h4><code>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</code></h4>
-                <p>Com este novo método, é possível obter o nome de exibição de um dispositivo a partir dos dados de registro do {{ site.data.keys.mf_server }}.</p>
+                <p>Com este novo método, é possível obter o nome de exibição de um
+dispositivo a partir dos dados de registro do
+{{ site.data.keys.mf_server }}.</p>
 
                 <h4><code>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</code></h4>
                 <p>Com este novo método, é possível obter o nome de exibição de um dispositivo nos dados de registro do {{ site.data.keys.mf_server }}.</p>
@@ -277,7 +279,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                 <p>Desenvolvedores podem migrar aplicativos do IBM Cloud para serem executados no {{ site.data.keys.product }}. A migração requer que você faça mudanças na configuração para seu aplicativo cliente para corresponder às APIs do {{ site.data.keys.product }}.</p>
 
                 <h3>{{ site.data.keys.product }} como um serviço no IBM Cloud</h3>
-                <p>Agora, é possível usar o serviço {{ site.data.keys.mf_bm_full }} no IBM Cloud para criar e executar seus aplicativos móveis corporativos. </p>
+                <p>Agora, é possível usar o serviço {{ site.data.keys.mf_bm_full }} no IBM Cloud para criar e executar seus aplicativos móveis corporativos.</p>
 
                 <h3>Nenhum arquivo .wlapp</h3>
                 <p>Em versões anteriores, aplicativos eram implementados no {{ site.data.keys.mf_server }} fazendo upload de um arquivo <b>.wlapp</b>. O arquivo continha dados que descreviam o aplicativo e, no caso de aplicativos híbridos, os recursos da web que também eram necessários. Na V8.0.0, em vez do arquivo <b>.wlapp</b>:</p>
@@ -312,7 +314,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                 <p>JAX-RS 2.0 apresenta uma nova funcionalidade do lado do servidor: filtros e interceptores HTTP assíncronos do lado do servidor.  Os adaptadores agora podem explorar esses novos recursos.</p>
 
                 <h3>{{ site.data.keys.product }} no IBM Containers</h3>
-                <p>O {{ site.data.keys.product }} no IBM Containers liberado para a V8.0.0 está disponível no <a href="http://www-01.ibm.com/software/passportadvantage/">site do IBM Passport Advantage</a>. Essa versão do {{ site.data.keys.product }} no IBM Containers está pronta para produção e suporta o banco de dados transacional e corporativo dashDB™ no IBM Cloud. </p>
+                <p>O {{ site.data.keys.product }} no IBM Containers liberado para a V8.0.0 está disponível no <a href="http://www-01.ibm.com/software/passportadvantage/">site do IBM Passport Advantage</a>. Essa versão do {{ site.data.keys.product }} no IBM Containers está pronta para produção e suporta o banco de dados transacional e corporativo dashDB™ no IBM Cloud.</p>
 
                 <p><b>Nota:</b> consulte os pré-requisitos para implementar o {{ site.data.keys.product }} no IBM Containers.</p>
 
@@ -473,7 +475,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>Agora, o {{ site.data.keys.mf_app_center }} é suportado no IBM Cloud (baseado em contêineres) através de scripts BYOL. </p>
+                <p>Agora, o {{ site.data.keys.mf_app_center }} é suportado no IBM Cloud (baseado em contêineres) através de scripts BYOL.</p>
             </div>
         </div>
     </div>

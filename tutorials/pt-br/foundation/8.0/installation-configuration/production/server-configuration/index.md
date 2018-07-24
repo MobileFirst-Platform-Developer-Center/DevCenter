@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configurando o servidor MobileFirst
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
@@ -78,7 +78,7 @@ As etapas para configurar o {{ site.data.keys.mf_server }} para ativar a Seguran
 {: #websphere-application-server-full-profile }
 1. Confirme se o Java Runtime Environment (JRE) suporta o TLS V1.2.
 
-    Certifique-se de que o IBM Java SDK seja corrigido para a vulnerabilidade POODLE. É possível localizar as versões mínimas do IBM Java SDK que contêm a correção para sua versão do WebSphere Application Server em [Security Bulletin: vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173).
+    Certifique-se de que o IBM Java SDK seja corrigido para a vulnerabilidade POODLE. É possível localizar as versões mínimas do IBM Java SDK que contêm a correção para a sua versão do WebSphere Application Server em [Boletim de segurança: a vulnerabilidade no SSLv3 afeta o IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173).
     > **Nota:** é possível usar as versões que estão listadas no boletim de segurança ou as versões mais recentes.
 2. Efetue login no console administrativo do WebSphere Application Server e clique em **Segurança → Certificado SSL e gerenciamento de chave → Configurações SSL**.
 3. Para cada configuração de SSL listada, modifique a configuração para ativar o TLS V1.2.
@@ -497,9 +497,9 @@ A tabela a seguir lista as propriedades do {{ site.data.keys.product_adj }} que 
 | mfp.admin.jmx.dmgr.host | Obrigatório. O nome do host do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.dmgr.port | Obrigatório. A porta RMI ou SOAP do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.host | Somente Liberty. O nome do host da conexão REST JMX. Para Liberty Collective, use o nome do host do controlador. |
-| Mfp.admin.jmx.port | Somente Liberty. O número da porta para a conexão REST JMX. Para Liberty Collective, a porta do conector REST deve ser idêntica ao valor do atributo httpsPort que é declarado no elemento `<httpEndpoint>`. Esse elemento é declarado no arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.port | Somente Liberty. O número da porta para a conexão REST JMX. Para Liberty Collective, a porta do conector REST deve ser idêntica ao valor do atributo httpsPort que é declarado no elemento `<httpEndpoint>`. Esse elemento é declarado no arquivo server.xml do controlador Liberty. |
 | mfp.admin.jmx.user | Opcional. Farm do WebSphere Application Server: o nome do usuário da conexão SOAP.<br/><br/>Liberty Collective: o nome de usuário do administrador do controlador definido em `<administrator-role>` elemento do arquivo server.xml do controlador do Liberty. |
-| Mfp.admin.jmx.pwd | Opcional. Farm do WebSphere Application Server: a senha de usuário da conexão SOAP.<br/><br/>Liberty Collective: a senha do administrador do controlador definida em `<administrator-role>` elemento do arquivo server.xml do controlador do Liberty. |
+| mfp.admin.jmx.pwd | Opcional. Farm do WebSphere Application Server: a senha de usuário da conexão SOAP.<br/><br/>Liberty Collective: a senha do administrador do controlador definida em `<administrator-role>` elemento do arquivo server.xml do controlador do Liberty. |
 | mfp.admin.serverid | Obrigatório para server farms e Liberty Collective; caso contrário, opcional.<br/><br/>Server farm: o identificador do servidor. Deve ser diferente para cada servidor na fazenda.<br/><br/>Liberty Collective: o identificador do membro. O identificador deve ser diferente para cada membro no Collective. O controlador de valor não pode ser usado, pois está reservado para o controlador coletivo. |
 | mfp.topology.platform | Opcional. O tipo de servidor. Os valores válidos são:<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Se você não configurar o valor, o aplicativo tenta adivinhar o tipo de servidor. |
 | mfp.topology.clustermode | Opcional. Além do tipo de servidor, especifique aqui a topologia do servidor. Valores válidos:<ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>O valor padrão é Standalone. |
@@ -867,10 +867,10 @@ Para diagnosticar problemas de login e autenticação, ative o pacote **com.ibm.
    </dataSource>
    ```
 
-    > **Nota:**
+    > **Observação:**
     >
     > * Certifique-se de que o `dataSource` esteja apontando para um esquema do banco de dados diferente.
-    > * Certifique-se de que tenha criado [outra instância de banco de dados](../prod-env/databases) para o novo tempo de execução.
+    > * Certifique-se de ter criado [outra instância de banco de dados](../prod-env/databases) para o novo tempo de execução.
     > * No ambiente de desenvolvimento, inclua `createDatabase="create"` no elemento-filho `properties.derby.embedded`.
 
 5. Reinicie o servidor de aplicativos.
