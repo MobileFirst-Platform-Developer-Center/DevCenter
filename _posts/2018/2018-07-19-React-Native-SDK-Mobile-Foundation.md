@@ -1,6 +1,6 @@
 ---
 title: Power your React Native apps with IBM Mobile Foundation 
-date: 2018-07-19
+date: 2018-07-24
 tags:
 - MobileFirst_Platform
 - MobileFirst_Foundation
@@ -39,10 +39,10 @@ npm install react-native-ibm-mobilefirst --save
 ```
 
 
-Watch the video below to see an end to end demonstration of React Native + Mobile Foundation. 
+Watch the video below for an end to end demonstration of React Native and Mobile Foundation. 
 
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://youtu.be/OaLDX2kzlc0"></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/OaLDX2kzlc0?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 </div>
