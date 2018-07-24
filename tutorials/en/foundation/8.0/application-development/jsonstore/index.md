@@ -566,14 +566,19 @@ A JSONStore collection can be initialized with a Sync Policy. Sync Policy can be
 <b>SYNC_DOWNSTREAM : </b>
 Use this policy when you want to download data from Cloudant on to the JSONStore collection. This is typically used for static data that is required for offline storage. For example, price list of items in a catalog. Each time the collection is initialized on the device, data is refreshed from the remote Cloudant database. While the entire database is downloaded for the first time, subsequent refreshes will download only delta, comprising of the changes made on the remote database.
 
-```
+
 Android:
+```
 initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
+```
 
 iOS:
+```
 openOptions.syncPolicy = SYNC_DOWNSTREAM;
+```
 
 Cordova:
+```
 collection.sync = {
 	syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
 }
@@ -582,14 +587,19 @@ collection.sync = {
 <b>SYNC_ UPSTREAM : </b>
 Use this policy when you want to push local data to a Cloudant database. For example, uploading of sales data captured offline to a Cloudant database. When a collection is defined with the SYNC_UPSTREAM policy, any new records added to the collection creates a new record in Cloudant. Similarly, any document modified in the collection on the device will modify the document on Cloudant and documents deleted in the collection will also be deleted from the Cloudant database.
 
-```
+
 Android :
+```
 initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
+```
 
 iOS:
+```
 openOptions.syncPolicy = SYNC_UPSTREAM;
+```
 
 Cordova:
+```
 collection.sync = {
 	syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
 }
@@ -604,16 +614,20 @@ This is the default policy. Choose this policy for synchronization to not take p
 
 This is the adapter name that is deployed.
 
-```
-//Here "JSONStoreCloudantSync" is the name of the sync adapter deployed on MFP server.
 
 Android:
+```
+//Here "JSONStoreCloudantSync" is the name of the sync adapter deployed on MFP server.
 initOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
 
 iOS:
+```
 openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
 
 Cordova:
+```
 collection.sync = {
 	syncPolicy://One of the three sync policies,
 	syncAdapterPath : 'JSONStoreCloudantSync'
@@ -650,7 +664,7 @@ JSONStoreSyncListener syncListener = new JSONStoreSyncListener() {
 initOptions.setSyncListener(syncListener);
 ```
 
-In iOS, use the overloaded *opencollections* api that has a completion handler to enable sync including call backs like below :
+In iOS, use the overloaded `opencollections` api that has a completion handler to enable sync including call backs like below:
 
 ```
 JSONStore.sharedInstance().openCollections([collections], with: options, completionHandler: { (success, msg) in
