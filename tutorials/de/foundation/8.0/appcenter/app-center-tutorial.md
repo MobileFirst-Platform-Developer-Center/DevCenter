@@ -70,9 +70,7 @@ an die Geräte selbst signierte Zertifikate einer Zertifizierungsstelle verteilt
 
 4. Jetzt können Sie die Benutzerauthentifizierung konfigurieren. Sie können beispielsweise keine Verbindung zu einem LDAP-Repository herstellen. 
 
-    > Weitere Informationen finden Sie unter [Application Center nach der Installation konfigurieren](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
-
-
+    > Weitere Informationen finden Sie unter [Application Center nach der Installation konfigurieren](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation). 
 
 5. Erstellen Sie den mobilen Client für Android, iOS, BlackBerry 6/7 und Windows Phone 8. 
 
@@ -217,13 +215,7 @@ können die nicht signierte `.xap`-Datei **nicht** direkt verwenden. Bevor Sie d
 * Die Datei **Installationsverzeichnis/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** enthält
 die ausführbare Datei des Application-Center-Clients. Geben Sie diese Datei an den Clientcomputer weiter und entpacken Sie sie dort. Die Datei enthält das ausführbare Programm. 
 
-* Die Installation einer Windows-Store-App (d. h. einer Datei vom Typ
-`appx`) ohne Verwendung des Microsoft Windows Store wird als das <em>Querladen</em> einer App
-bezeichnet. Für das Querladen einer App müssen Sie die
-unter
-["Prepare to sideload apps"](https://technet.microsoft.com/fr-fr/library/dn613842.aspx.Mit dem Update auf Windows 8.1.1 gelten vereinfachte Voraussetzungen für das Querladen.
-Weitere Informationen finden Sie unter ) beschriebenen Voraussetzungen erfüllen. 
-
+* Die Installation einer Windows-Store-App (d. h. einer Datei vom Typ `appx`) ohne Verwendung des Microsoft Windows Store wird als das <em>Querladen</em> einer App bezeichnet. Für das Querladen einer App müssen Sie die unter [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx) beschriebenen Voraussetzungen erfüllen. Mit dem Update auf Windows 8.1.1 gelten vereinfachte Voraussetzungen für das Querladen. Weitere Informationen finden Sie unter [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
 
 ## Anwendungen in der Application-Center-Konsole verwalten
 {: #managing-applications-in-the-application-center-console }

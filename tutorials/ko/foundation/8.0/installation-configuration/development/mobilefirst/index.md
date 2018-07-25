@@ -88,7 +88,7 @@ weight: 1
 
 ### {{ site.data.keys.product }} 클라이언트 SDK 및 어댑터 도구
 {: #mobilefirst-foundation-client-sdks-and-adapter-tooling }
-{{ site.data.keys.product }}은 Cordova 애플리케이션 및 기본 플랫폼(iOS, Android 및 Windows 8.1 Universal &amp; Windows 10 UWP)용 클라이언트 SDK를 제공합니다. 어댑터 및 보안 검사 개발용 어댑터 도구도 사용할 수 있습니다.
+{{ site.data.keys.product }}은 Cordova 애플리케이션 및 네이티브 플랫폼(iOS, Android 및 Windows 8.1 Universal &amp; Windows 10 UWP)용 클라이언트 SDK를 제공합니다. 어댑터 및 보안 검사 개발용 어댑터 도구도 사용할 수 있습니다.
 
 * {{ site.data.keys.product_adj }} 클라이언트 SDK를 사용하려면 [{{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/) 학습서 카테고리를 방문하십시오.  
 * 어댑터를 개발하려면 [어댑터](../../../adapters/) 학습서 카테고리를 방문하십시오.  

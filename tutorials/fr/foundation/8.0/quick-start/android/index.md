@@ -140,7 +140,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 1. Dans Android Studio, à partir du menu latéral **Project**, sélectionnez le fichier **app → src → main →assets → mfpclient.properties** puis modifiez les propriétés **protocol**, **host** et **port** en indiquant les valeurs correctes de votre serveur {{ site.data.keys.mf_server }}.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur IBM Cloud), les valeurs sont généralement **https**, **your-server-address** et **443**.
-    * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes. 
+    * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes.
 
     Par ailleurs, si vous avez installé l'interface {{ site.data.keys.mf_cli }}, accédez au dossier racine du projet puis exécutez la commande `mfpdev app register`. Si un serveur {{ site.data.keys.mf_server }} distant est utilisé, [exécutez la commande `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) pour ajouter le serveur, suivi par exemple de la commande `mfpdev app register myIBMCloudServer`.
 

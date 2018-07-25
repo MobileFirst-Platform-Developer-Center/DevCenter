@@ -29,7 +29,7 @@ weight: 4
 | モバイル・クライアント・アプリケーションで特定のタグに基づいた通知を使用可能にするには | サポートされません。 | 対象のタグ (タグ名を使用) をサブスクライブします。 |
 | モバイル・クライアント・アプリケーションで通知を受け取って処理するには | リスナー実装を登録します。 | リスナー実装を登録します。 |
 | プッシュ通知をモバイル・クライアント・アプリケーションに送信するには | {::nomarkdown}<ul><li>WL.Server API を内部的に呼び出してプッシュ通知を送信する、アダプター・プロシージャーを実装します。</li><li>WL サーバー API は、以下のように通知を送信する手段を提供します。<ul><li>ユーザー別</li><li>デバイス別</li><li><li>ブロードキャスト (すべてのデバイス)</li></ul></li><li>その後、バックエンド・サーバー・アプリケーションは、アダプター・プロシージャーを呼び出して、アプリケーション・ロジックの一部としてプッシュ通知をトリガーできます。</li></ul>{:/} | {::nomarkdown}<ul><li>バックエンド・サーバー・アプリケーションは、メッセージ REST API を直接呼び出すことができます。 ただし、そのようなアプリケーションは、{{ site.data.keys.mf_server }} に機密クライアントとして登録し、有効な OAuth アクセス・トークンを取得し、それを REST API の許可ヘッダーで渡す必要があります。</li><li>REST API は、以下のように通知を送信するオプションを備えています。<ul><li>ユーザー別</li><li>デバイス別</li><li>プラットフォーム別</li><li>タグ別</li><li>ブロードキャスト (すべてのデバイス)</li></ul></li></ul>{:/} |
-| 定期的な期間 (ポーリング間隔) でプッシュ通知をトリガーするには |  イベント・ソース・アダプター内にプッシュ通知を送信する関数を実装し、これを createEventSource 関数呼び出しの一部として実装します。 | サポートされません。 |
+| 定期的な期間 (ポーリング間隔) でプッシュ通知をトリガーするには | イベント・ソース・アダプター内にプッシュ通知を送信する関数を実装し、これを createEventSource 関数呼び出しの一部として実装します。 | サポートされません。 |
 | フックを名前、URL、およびイベント・タイプで登録するには | プッシュ通知をサブスクライブまたはアンサブスクライブするデバイスのパスに、フックを実装します。 | サポートされません。 |
 
 ## マイグレーション・シナリオ
@@ -1538,22 +1538,22 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
     | 値                | 説明  | サンプル値 |
     |----------------------|--------------|---------------|
-    | w.db.type		       | 対象とするデータベースのタイプ	           | pw.db.type = db2 可能な値は DB2、Oracle、MySql、Derby |
-    | pw.db.url			   | MobileFirst Platform Foundation 7.1 Worklight データベースの URL  | jdbc:mysql://localhost:3306/WRKLGHT |
-    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin データベースの URL      | jdbc:mysql://localhost:3306/ADMIN |
+    | w.db.type		       | 対象とするデータベースのタイプ	| pw.db.type = db2 possible values DB2,Oracle,MySql,Derby |
+    | pw.db.url			   | MobileFirst Platform Foundation 7.1 Worklight データベースの URL | jdbc:mysql://localhost:3306/WRKLGHT |
+    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin データベースの URL | jdbc:mysql://localhost:3306/ADMIN |
     | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight データベースのユーザー名 | pw.db.username=root |
     | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight データベースのパスワード | pw.db.password=root |
-    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin データベースのユーザー名     | pw.db.adminusername=root |
-    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin データベースのパスワード     | pw.db.adminpassword=root |
-    | pw.db.urlTarget	   | MFP 8.0 データベースの URL						        | jdbc:mysql://localhost:3306/MFPDATA |
-    | pw.db.usernameTarget | MFP 8.0 データベースのユーザー名						| pw.db.usernameTarget=root |
-    | pw.db.passwordTarget | MFP 8.0 データベースのパスワード						| pw.db.passwordTarget=root |
+    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin データベースのユーザー名 | pw.db.adminusername=root |
+    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin データベースのパスワード | pw.db.adminpassword=root |
+    | pw.db.urlTarget	   | MFP 8.0 データベースの URL	| jdbc:mysql://localhost:3306/MFPDATA |
+    | pw.db.usernameTarget | MFP 8.0 データベースのユーザー名	| pw.db.usernameTarget=root |
+    | pw.db.passwordTarget | MFP 8.0 データベースのパスワード	| pw.db.passwordTarget=root |
     | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight データベースのスキーマ | WRKLGT |
-    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin データベースのスキーマ     | WLADMIN |
+    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin データベースのスキーマ | WLADMIN |
     | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 Worklight データベースのスキーマ    | MFPDATA |
-    | runtime			   | MobileFirst Platform Foundation 7.1 のランタイム名		 | runtime=worklight |
+    | runtime			   | MobileFirst Platform Foundation 7.1 のランタイム名	| runtime=worklight |
     | applicationId	       | MobileFirst Platform Foundation 7.1 に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。 | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId  | {{ site.data.keys.product }} 8.0に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。   | com.HybridTestApp,com.NativeiOSTestApp |
+    | targetApplicationId  | {{ site.data.keys.product }} 8.0 に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。 | com.HybridTestApp,com.NativeiOSTestApp |
 
     * **applicationID** と **targetApplicationId** の両方の値が、正しい順序で指定されていることを確認します。 マッピングは、1 対 1 (つまり n 対 n) の方式で行われます。すなわち、**applicationId** リスト内の最初のアプリケーションのデータが、**targetApplicationId** リスト内の最初のアプリケーションにマイグレーションされます。
 	* **targetApplicationId** リストには、アプリケーションの packageName/BundleId を指定します。 つまり、MobileFirst Platform Foundation 7.1 の TestApp1 ならば、**targetApplicationId** は com.TestApp1 となります (TestApp1 の packageName/BundleId)。 これは、MobileFirst Platform Foundation 7.1 では **applicationId** はアプリケーション名であるのに対し、{{ site.data.keys.mf_server }} 8.0 ではこれは、アプリケーションの環境に基づいた packageName/BundleId/packageIdentityName であるためです。

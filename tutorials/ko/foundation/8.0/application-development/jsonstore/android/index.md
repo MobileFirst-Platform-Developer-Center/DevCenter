@@ -33,13 +33,13 @@ downloads:
 ```
 compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
-3. 다음을 build.gradle 파일의 "DefaultConfig" 섹션에 추가하십시오. 
+3. 다음을 build.gradle 파일의 "DefaultConfig" 섹션에 추가하십시오.
 ```
   ndk {
         abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
       }
  ```     
- > **참고**: JSONStore가 포함된 앱을 위에 지정된 아키텍처에서 실행될 수 있도록 abiFilters를 추가합니다. JSONStore는 이러한 아키텍처만 지원하는 써드파티 라이브러리에 종속되므로 이러한 작업이 필요합니다. 
+ > **참고**: JSONStore가 포함된 앱을 위에 지정된 아키텍처에서 실행될 수 있도록 abiFilters를 추가합니다. JSONStore는 이러한 아키텍처만 지원하는 써드파티 라이브러리에 종속되므로 이러한 작업이 필요합니다.
 
 ## 기본 사용법
 {: #basic-usage }

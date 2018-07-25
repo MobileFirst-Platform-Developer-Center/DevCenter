@@ -98,16 +98,16 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 | 옵션	| 유형 | 설명 | 필수 여부 | 기본값 |
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | 관리 서비스에 사용되는 {{ site.data.keys.product_adj }} 웹 애플리케이션의 기본 URL | 예 | |
-| --secure	 | 부울 | 보안 위험이 있는 조작을 수행하지 않을지 여부 | 아니오 | true |
-| --user	 | 이름 | {{ site.data.keys.product_adj }} 관리 서비스에 액세스하는 데 사용되는 사용자 이름 | 예 |  | 	 
-| --passwordfile | 파일 | 사용자의 비밀번호가 있는 파일 | 아니오 |
-| --timeout	     | 숫자  | 전체 REST 서비스 액세스의 제한시간(초) | 아니오 | 	 
-| --connect-timeout | 숫자 | 네트워크 연결 설정의 제한시간(초) | 아니오 |
-| --socket-timeout  | 숫자 | 네트워크 연결 끊어짐을 발견할 제한시간(초) | 아니오 |
-| --connection-request-timeout | 숫자 연결 요청 풀에서 항목을 얻을 제한시간(초) | 아니오 |
-| --lock-timeout | 숫자 | 잠금 획득 제한시간(초) | 아니오 | 2 |
-| --verbose	     | 자세한 출력 | 아니오	| |  
+| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | |
+| --secure	 | Boolean | Whether to avoid operations with security risks | No | true |
+| --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
+| --passwordfile | file | File containing the password for the user | No |
+| --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
+| --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
+| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No |
+| --connection-request-timeout | Number	Timeout for obtaining an entry from a connection request pool, in seconds | No |
+| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 |
+| --verbose	     | Detailed output | No	| |  
 
 **url**  
 URL에서는 우선적으로 HTTPS 프로토콜을 사용합니다. 예를 들어, 기본 포트와 컨텍스트 루트를 사용하는 경우 다음 URL을 사용하십시오.
@@ -121,7 +121,7 @@ URL에서는 우선적으로 HTTPS 프로토콜을 사용합니다. 예를 들�
 * 암호화되지 않은 HTTP를 통해서도 사용자와 비밀번호가 안전하지 않은 방법으로 전송될 수 있습니다.
 * 서버의 SSL 인증서가 자체 서명되었거나 서버의 호스트 이름과 다른 호스트 이름에 대해 작성된 경우에도 해당 인증서가 허용됩니다.
 
-**비밀번호**  
+**password**  
 `--passwordfile` 옵션으로 전달되는 별도의 파일에서 비밀번호를 지정합니다. 대화식 모드(대화식 모드 참조)에서 비밀번호를 대화식으로 지정할 수도 있습니다. 비밀번호는 민감한 정보이므로 보호되어야 합니다. 동일한 컴퓨터의 다른 사용자가 이 비밀번호를 알지 못하게 해야 합니다. 비밀번호에 대한 보안을 설정하려면 파일에 비밀번호를 입력하기 전에 자신이 아닌 다른 사용자의 파일 읽기 권한을 제거해야 합니다. 예를 들어, 다음 명령 중 하나를 사용할 수 있습니다.
 
 * UNIX의 경우: `chmod 600 adminpassword.txt`
@@ -131,7 +131,7 @@ URL에서는 우선적으로 HTTPS 프로토콜을 사용합니다. 예를 들�
 
 mfpadm 호출은 명령을 포함합니다. 다음 명령이 지원됩니다.
 
-| 명령                           | 설명 |
+| 명령                              | 설명        |
 |-----------------------------------|-------------|
 | show info	| 사용자 정보와 구성 정보를 표시합니다. |
 | show global-config | 글로벌 구성 정보를 표시합니다. |
@@ -259,8 +259,8 @@ rlwrap가 작동하지 않거나 필요 없는 환경에서는 `--no-readline` �
 
 | 옵션	| 설명 |
 |-----------|-------------|
-| --help	| 몇몇 사용법 도움말 표시 |
-| --version	| 버전 표시 |
+| --help	| Shows some usage help |
+| --version	| Shows the version |
 
 #### XML 형식
 {: #xml-format }
@@ -292,7 +292,7 @@ mfpadm 프로그램에서 생성하는 일반 출력은 현재 로케일의 인�
 
 | 인수 | 설명 |
 |----------|-------------|
-| --xml    | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml    | Produces XML output instead of tabular output. |
 
 **예제**  
 
@@ -319,7 +319,7 @@ show global-config
 
 | 인수 | 설명 | 필수 여부 | 기본값 |
 |----------|-------------|----------|---------|
-| --xml | JSON 형식 대신 XML 형식으로 출력을 생성합니다. | 아니오 | 표준 출력 |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **예제**  
 
@@ -341,7 +341,7 @@ show user-config mfp
 | 속성 | 설명 |
 |-----------|-------------|
 | runtime-name | 런타임의 이름입니다. |
-| 파일 | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
+| file | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
 
 단일 특성의 구문: `set user-config [runtime-name] property = value`
 
@@ -382,7 +382,7 @@ set user-config mfp timeout = 240
 
 | 인수 | 설명 | 필수 여부 | 기본값 |
 |----------|-------------|----------|---------|
-| --xml | JSON 형식 대신 XML 형식으로 출력을 생성합니다. | 아니오 | 표준 출력 |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **예제**
 
@@ -404,7 +404,7 @@ show confidential-clients --xml mfp
 | 속성 | 설명 |
 |-----------|-------------|
 | runtime-name | 런타임의 이름입니다. |
-| 새 구성이 포함된 JSON 또는 XML 파일의 파일 이름입니다. |
+| file | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
 
 **예제**
 
@@ -459,7 +459,7 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produce XML output instead of tabular output. |
 
 **예제**  
 
@@ -481,7 +481,7 @@ list adapters mfp
 | 인수 | 설명 |
 |----------|-------------|
 | runtime-name | 런타임의 이름입니다. |
-| 파일 | 2진 어댑터 파일입니다(.adapter). |
+| file | 2진 어댑터 파일입니다(.adapter). |
 
 **예제**
 
@@ -509,7 +509,7 @@ deploy adapter mfp MyAdapter.adapter
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produce XML output instead of tabular output. |
 
 **예제**
 
@@ -583,7 +583,7 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | JSON 형식 대신 XML 형식으로 출력을 생성합니다. |
+| --xml | Produces output in XML format instead of JSON format. |
 
 **예제**
 
@@ -604,7 +604,7 @@ adapter mfp MyAdapter show user-config
 
 | 옵션 | 설명 |
 |--------|-------------|
-| 파일 | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
+| file | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
 
 단일 특성의 구문: `adapter [runtime-name] adapter-name set user-config property = value`
 
@@ -647,7 +647,7 @@ adapter mfp MyAdapter set user-config timeout = 240
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produce XML output instead of tabular output. |
 
 **예제**
 
@@ -668,7 +668,7 @@ list apps mfp
 | 인수 | 설명 |
 |----------|-------------|
 | runtime-name | 런타임의 이름입니다. |
-| 파일 | 애플리케이션 디스크립터입니다(JSON 파일). |
+| file | 애플리케이션 디스크립터입니다(JSON 파일). |
 
 **예제**
 
@@ -695,7 +695,7 @@ deploy app mfp MyApp/application-descriptor.json
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml	 | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml	 | Produce XML output instead of tabular output. |
 
 **예제**
 
@@ -745,7 +745,7 @@ delete app mfp MyApp
 
 | 인수 | 설명 |
 | ---------|-------------|
-| -- xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| -- xml | Produces XML output instead of tabular output. |
 
 **예제**
 
@@ -797,7 +797,7 @@ delete app version mfp MyApp iPhone 1.1
 
 | 인수 | 설명 |
 |----------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produces XML output instead of tabular output. |
 
 **예제**
 
@@ -941,7 +941,7 @@ app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity
 
 | 인수 | 설명 |
 |----------|-------------|
-| 파일 | 입력 파일의 이름입니다.<ul><li>.authenticity_data 파일</li><li>또는 디바이스 파일(.ipa, .apk 또는 .appx)이며 여기에서 인증 데이터를 추출합니다.</li></ul>|
+| file | 입력 파일의 이름입니다.<ul><li>.authenticity_data 파일</li><li>또는 디바이스 파일(.ipa, .apk 또는 .appx)이며 여기에서 인증 데이터를 추출합니다.</li></ul>|
 
 **예제**
 
@@ -1003,7 +1003,7 @@ app version mfp MyApp iPhone 1.1 show user-config
 
 | 인수 | 설명 |
 |----------|-------------|
-| 파일 | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
+| file | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다. |
 
 단일 특성의 구문: `app version [runtime-name] app-name environment version set user-config property = value`
 
@@ -1041,13 +1041,13 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 | 인수 | 설명 |
 |----------|-------------|
 | runtime-name | 런타임의 이름입니다. |
-| query | 검색할 친숙한 이름 또는 사용자 ID입니다. 이 매개변수는 검색할 문자열을 지정합니다. 이 문자열(대소문자 구분 없이 일치)을 포함하는 친숙한 이름 또는 사용자 ID를 사용하는 모든 디바이스가 리턴됩니다. |
+| query | 검색할 친숙한 이름 또는 사용자 ID입니다. 이 매개변수는 검색할 문자열을 지정합니다. 이 문자열(대소문자 구분 없이 일치)을 포함하는 사용자 ID 또는 친숙한 이름을 사용하는 모든 디바이스가 리턴됩니다. |
 
 `list devices` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다.
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produces XML output instead of tabular output. |
 
 **예제**
 
@@ -1160,7 +1160,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produces XML output instead of tabular output. |
 
 **예제**
 
@@ -1182,7 +1182,7 @@ show info
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produces XML output instead of tabular output. |
 
 **예제**
 
@@ -1200,7 +1200,7 @@ show versions
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produces XML output instead of tabular output. |
 
 **예제**
 
@@ -1228,8 +1228,8 @@ unlock
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --in-database	| MBean을 사용하는 대신 데이터베이스에서 찾을 것인지 여부 |
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --in-database	| Whether to look in the database instead of via MBeans |
+| --xml | Produces XML output instead of tabular output. |
 
 **예제**
 
@@ -1259,7 +1259,7 @@ list runtimes --in-database
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produces XML output instead of tabular output. |
 
 이 명령은 [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 서비스를 기반으로 합니다.
 
@@ -1280,7 +1280,7 @@ show runtime mfp
 | 인수 | 설명 |
 |----------|-------------|
 | runtime-name | 런타임의 이름입니다. |
-| condition | 삭제 조건입니다(비어 있음 또는 항상). **주의:** 항상 옵션은 위험합니다. |
+| condition | 삭제 조건입니다(empty 또는 always). **주의:** always 옵션은 위험합니다. |
 
 **예제**
 
@@ -1306,7 +1306,7 @@ delete runtime mfp empty
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --xml | 표 형식 출력 대신 XML 출력을 생성합니다. |
+| --xml | Produces XML output instead of tabular output. |
 
 **예제**
 
@@ -1326,14 +1326,14 @@ list farm-members mfp
 
 | 인수 | 설명 |
 |----------|-------------|
-| runtime-name | 런타임의 이름입니다. |
-| server-id | 서버의 ID입니다. |
+|runtime-name |런타임의 이름입니다. |
+|server-id |서버의 ID입니다. |
 
 `remove farm-member` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다.
 
 | 옵션 | 설명 |
 |--------|-------------|
-| --force | 사용 가능하거나 연결되어 있는 경우에도 팜 멤버의 제거를 강제 실행합니다. |
+| --force | Force removal of a farm member, even if it is available and connected. |
 
 **예제**
 

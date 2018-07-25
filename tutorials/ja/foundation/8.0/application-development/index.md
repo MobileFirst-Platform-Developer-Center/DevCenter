@@ -104,7 +104,7 @@ ID は開発者によって割り当てられる固有の ID です。
 
 > アプリケーションを開発する際に使用可能な事前構成済みのサーバーが用意されています。 アプリケーションの開発時に使用する {{ site.data.keys.mf_server }} については、[『{{ site.data.keys.product_adj }} 開発環境のセットアップ』](../installation-configuration/development)を参照してください。
 
-{{ site.data.keys.mf_server }} は、以下のコンポーネントで構成されます。 これらのすべてのコンポーネントは、{{ site.data.keys.mf_server }}にも含まれています。 単純なケースでは、すべて同じアプリケーション・サーバー上で実行されますが、実動環境またはテスト環境では、コンポーネントは異なるアプリケーション・サーバーで実行される可能性があります。 これらの {{ site.data.keys.mf_server }} コンポーネントの可能なトポロジーについては、『[トポロジーおよびネットワーク・フロー (Topologies and network flows)](../installation-configuration/production/topologies)』を参照してください。
+{{ site.data.keys.mf_server }} は、以下のコンポーネントで構成されます。 これらのすべてのコンポーネントは、{{ site.data.keys.mf_server }}にも含まれています。 単純なケースでは、すべて同じアプリケーション・サーバー上で実行されますが、実動環境またはテスト環境では、コンポーネントは異なるアプリケーション・サーバーで実行される可能性があります。 これらの {{ site.data.keys.mf_server }} コンポーネントの可能なトポロジーについては、『[トポロジーおよびネットワーク・フロー (Topologies and network flows)](../installation-configuration/production/prod-env/topologies)』を参照してください。
 
 ### {{ site.data.keys.product_adj }} および {{ site.data.keys.mf_server }} 管理サービス
 {: #mobilefirst-and-the-mobilefirst-server-administration-service }
@@ -145,7 +145,7 @@ Operations Console は、{{ site.data.keys.mf_server }} 構成を表示および
 
 #### オンプレミス
 {: #on-premises }
-> オンプレミス環境での {{ site.data.keys.mf_server }} のインストールおよび構成については、[IBM {{ site.data.keys.mf_server }} のインストール](../installation-configuration/production/appserver)を参照してください。
+> オンプレミス環境での {{ site.data.keys.mf_server }} のインストールおよび構成については、[IBM {{ site.data.keys.mf_server }} のインストール](../installation-configuration/production/prod-env/appserver)を参照してください。
 
 #### クラウド
 {: #on-the-cloud }

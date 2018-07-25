@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Instalando o servidor MobileFirst em um servidor de aplicativos
-breadcrumb_title: Installing MobileFirst Server
+breadcrumb_title: Installing MobileFirst Server to an application server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -303,7 +303,7 @@ Antes de executar o Server Configuration Tool, certifique-se de que os seguintes
                             <li>Para uma instalação no WebSphere Application Server Liberty:
                                 <ul>
                                     <li>Insira o diretório de instalação do Liberty e o nome do servidor no qual deseja instalar o {{ site.data.keys.mf_server }}.</li>
-                                    <li>É possível criar um usuário padrão para efetuar login no console. Esse usuário é criado no registro Básico do Liberty. Para uma instalação de produção, talvez você queira limpar a opção <b>Criar um Usuário Padrão</b> e configurar o acesso de usuário após a instalação. Para obter informações adicionais, consulte <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
+                                    <li>É possível criar um usuário padrão para efetuar login no console. Esse usuário é criado no registro Básico do Liberty. Para uma instalação de produção, talvez você queira limpar a opção <b>Criar um Usuário Padrão</b> e configurar o acesso de usuário após a instalação. Para obter mais informações, consulte <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
                                     <li>Selecione o tipo de implementação: <b>Implementação Independente</b> (padrão), <b>Implementação de Server Farm</b> ou <b>Implementação de Liberty Collective</b>.</li>
                                 </ul>
 
@@ -351,7 +351,7 @@ Antes de executar o Server Configuration Tool, certifique-se de que os seguintes
                                 <ul>
                                     <li>Insira o diretório de instalação do Apache Tomcat.</li>
                                     <li>Insira a porta usada para a comunicação JMX com RMI. Por padrão, o valor é 8686. O Server Configuration Tool modifica o arquivo <b>tomcat_install_dir/bin/setenv.bat</b> ou <b>tomcat_install_dir/bin/setenv.sh</b> para abrir essa porta. Se desejar abrir a porta manualmente, ou se você já tiver algum código que abre a porta no <b>setenv.bat</b> ou <b>setenv.sh</b>, não use a ferramenta. Instale com as tarefas Ant. Uma opção para abrir a porta RMI manualmente é fornecida para uma instalação com tarefas Ant.</li>
-                                    <li>Crie um usuário padrão para efetuar login no console. Esse usuário também é criado no arquivo de configuração <b>tomcat-users.xml</b>. Para uma instalação de produção, talvez você queira limpar a opção Criar uma opção de usuário padrão e configurar o acesso de usuário após a instalação. Para obter informações adicionais, consulte <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
+                                    <li>Crie um usuário padrão para efetuar login no console. Esse usuário também é criado no arquivo de configuração <b>tomcat-users.xml</b>. Para uma instalação de produção, talvez você queira limpar a opção Criar uma opção de usuário padrão e configurar o acesso de usuário após a instalação. Para obter mais informações, consulte <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configurando a autenticação do usuário para administração do {{ site.data.keys.mf_server }}</a>.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -418,8 +418,8 @@ Para outras topologias que são suportadas em [Topologias e fluxos de rede](../t
 As referências às tarefas Ant são as seguintes:
 
 * [Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, administração do {{ site.data.keys.mf_server }} e serviços de atualização em tempo real](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [Tarefas Ant para instalação de serviço de push do {{ site.data.keys.mf_server }}](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [Tarefas Ant para instalação do serviço de push do {{ site.data.keys.mf_server }}](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [Tarefas Ant para instalação dos ambientes de tempo de execução do {{ site.data.keys.product_adj }}](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
 Para obter uma visão geral da instalação com tarefas e arquivo de configuração de amostra, consulte [Instalando o {{ site.data.keys.mf_server }} no modo de linha de comando](../../simple-install/tutorials/command-line).
 
@@ -651,7 +651,7 @@ Essas entradas JNDI globais são configuradas com essa sintaxe e não são prefi
 
 > **Nota:** Para proteger contra uma conversão automática dos valores JNDI, para que 075 não seja convertido em 61 ou 31.500 não seja convertido em 31.5, use essa sintaxe '"075"' quando definir o valor.
 
-Para obter informações adicionais sobre as propriedades JNDI para o serviço de administração, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
+Para obter mais informações sobre as propriedades JNDI para o serviço de administração, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
 
 Para uma configuração de farm, consulte também os tópicos a seguir:
 
@@ -721,7 +721,7 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}</a>.</p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}</a>.</p>
 
                 <h3>Origem de dados</h3>
                 <p>O nome JNDI da origem de dados para o serviço de administração deve ser definido como <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>. O exemplo a seguir ilustra o caso por meio do qual o serviço de administração é instalado com a raiz de contexto <b>/mfpadmin</b>, e se o serviço está usando um banco de dados relacional:</p>
@@ -843,7 +843,7 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}</a>.</p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}</a>.</p>
 
                 <h3>Origem de dados</h3>
                 <p>O nome JNDI da origem de dados para o tempo de execução deve ser definido como <b>jndiName=the-contextRoot/jdbc/mfpDS</b>. O exemplo a seguir ilustra o caso por meio do qual o tempo de execução é instalado com a raiz de contexto <b>/mobilefirst</b>, e se o tempo de execução está usando um banco de dados relacional:</p>
@@ -892,7 +892,7 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - o valor deve ser <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
+Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
             </div>
         </div>
     </div>
@@ -988,8 +988,8 @@ Essas entradas JNDI globais são configuradas com essa sintaxe e não são prefi
 
 > **Nota:** Para proteger contra uma conversão automática dos valores JNDI, para que 075 não seja convertido em 61 ou 31.500 não seja convertido em 31.5, use essa sintaxe '"075"' quando definir o valor.
 
-* Para obter informações adicionais sobre as propriedades JNDI para o serviço de administração, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
-* Para obter informações adicionais sobre as propriedades JNDI para o tempo de execução, consulte [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+* Para obter mais informações sobre as propriedades JNDI para o serviço de administração, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
+* Para obter mais informações sobre as propriedades JNDI para o tempo de execução, consulte [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 #### Carregador de Classes
 {: #class-loader-collective }
@@ -1056,7 +1056,7 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}</a>.</p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}</a>.</p>
 
                 <h3>Origem de dados</h3>
                 <p>O nome JNDI da origem de dados para o serviço de administração deve ser definido como <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>. O exemplo a seguir ilustra o caso por meio do qual o serviço de administração é instalado com a raiz de contexto <b>/mfpadmin</b>, e se o serviço está usando um banco de dados relacional:</p>
@@ -1183,7 +1183,7 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}</a>.</p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}</a>.</p>
 
                 <h3>Origem de dados</h3>
                 <p>O nome JNDI da origem de dados para o tempo de execução deve ser definido como <b>jndiName=the-contextRoot/jdbc/mfpDS</b>. O exemplo a seguir ilustra o caso por meio do qual o tempo de execução é instalado com a raiz de contexto <b>/mobilefirst</b>, e se o tempo de execução está usando um banco de dados relacional:</p>
@@ -1236,7 +1236,7 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - o valor deve ser <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
+Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
             </div>
         </div>
     </div>
@@ -1326,7 +1326,7 @@ Opcionalmente, talvez você queira ativar a região da memória se os usuários 
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}</a>.</p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}</a>.</p>
 
                 <h3>Origem de dados</h3>
                 <p>A origem de dados (jdbc/mfpAdminDS) é declarada como um recurso no elemento **Context**. Por exemplo:</p>
@@ -1442,7 +1442,7 @@ Opcionalmente, talvez você queira ativar a região da memória se os usuários 
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}</a>.</p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}</a>.</p>
 
                 <h3>Origem de dados</h3>
                 <p>O nome JNDI da origem de dados para o tempo de execução deve ser definido como <b>jdbc/mfpDS</b>. Declare-a como um recurso no elemento <b>Context</b>.</p>
@@ -1479,7 +1479,7 @@ Opcionalmente, talvez você queira ativar a região da memória se os usuários 
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - o valor deve ser <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
+Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
             </div>
         </div>
     </div>
@@ -1608,7 +1608,7 @@ Para configurar a delegação de carregador de classes para o último pai após 
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}</a>.</p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}</a>.</p>
 
                 <h3>Origem de dados</h3>
                 <p>Crie uma origem de dados para o serviço de administração e mapeie-a para <b>jdbc/mfpAdminDS</b>.</p>
@@ -1735,7 +1735,7 @@ Para configurar a delegação de carregador de classes para o último pai após 
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
 
-                <p>Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}</a>.</p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}</a>.</p>
 
                 <h3>Ordem de início</h3>
                 <p>O aplicativo de tempo de execução deve ser iniciado após o aplicativo de serviço de administração. É possível configurar a ordem na seção <b>Comportamento de Inicialização</b>. Por exemplo, configure a Ordem de inicialização como <b>1</b> para o serviço de administração e <b>2</b> para o tempo de execução.</p>
@@ -1777,7 +1777,8 @@ Para configurar a delegação de carregador de classes para o último pai após 
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - o valor deve ser <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                <p>Para obter informações adicionais sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.</p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
+            </p>
 
                 <h3>Origem de dados</h3>
                 <p>Crie a origem de dados para o serviço de push e mapeie-a para <b>jdbc/imfPushDS</b>.</p>
@@ -1996,7 +1997,7 @@ Ao planejar um server farm com tarefas Ant, primeiro crie os servidores independ
                             </li>
                             <li>Para cada servidor, execute os seguintes comandos em que <b>configure-appserver-database-ant-file.xml</b> deve ser substituído pelo nome do arquivo Ant real escolhido: <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> e <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>.
                             <br/><br/>
-                            Esses comandos executam as tarefas Ant <b>installmobilefirstadmin</b> e <b>installmobilefirstruntime</b>. Para obter informações adicionais sobre essas tarefas, consulte <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, serviços de administração e de atualização em tempo real do {{ site.data.keys.mf_server }}</a> e <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}</a>.
+                            Esses comandos executam as tarefas Ant <b>installmobilefirstadmin</b> e <b>installmobilefirstruntime</b>. Para obter mais informações sobre essas tarefas, consulte <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, administração do {{ site.data.keys.mf_server }} e serviços de atualização em tempo real</a> e <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}</a>.
                             </li>
                             <li>Opcionalmente, se você deseja instalar outro tempo de execução, execute as etapas a seguir:
                                 <ul>
@@ -2211,4 +2212,4 @@ Ter um ou mais nós inativos não impede os outros membros do farm de atenderem 
 * **mfp.admin.farm.missed.heartbeats.timeout**
 
 <br/>
-Para obter mais informações sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+Para obter mais informações sobre propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).

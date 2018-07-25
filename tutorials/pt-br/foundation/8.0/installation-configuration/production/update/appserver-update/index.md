@@ -1,67 +1,69 @@
 ---
 layout: tutorial
-title: Updating the MobileFirst server
+title: Atualizando o servidor MobileFirst
 breadcrumb_title: Updating the MobileFirst server
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-IBM MobileFirst Platform Foundation provides several components that you might have installed.
+O IBM MobileFirst Platform Foundation fornece vários componentes que podem ter sido instalados.
 
-Here is a description of their dependencies to update them:
+A seguir está uma descrição de suas dependências para atualizá-las:
 
-### MobileFirst Server Administration Service, MobileFirst Operations Console, and MobileFirst runtime environment
+### O ambiente de tempo de execução do MobileFirst Server Administration Service, do MobileFirst Operations Console e do MobileFirst
 {: #server-console }
 
-These three components compose as MobileFirst Server. They must be updated together.
+Esses três componentes compõem o MobileFirst Server. Eles devem ser atualizados juntos.
 
 ### Application Center
 {: #appenter}
 
-The installation of this component is optional. This component is independent of the other components. It can be run at a different interim fix level than the others if needed.
+A instalação desse componente é opcional. Esse componente é independente dos outros componentes. Ele pode ser executado em um nível de correção temporária diferente dos outros, se necessário.
 
 ### MobileFirst Operational Analytics
 {: #analytics}
 
-The installation of this component is optional. The MobileFirst components send data to MobileFirst Operational Analytics via a REST API. It is preferable to run MobileFirst Operational Analytics with the other components of MobileFirst Server of the same interim fix level.
+A instalação desse componente é opcional. Os componentes do MobileFirst enviam dados para o MobileFirst Operational Analytics por meio de uma API de REST. A preferência é que se execute o MobileFirst Operational Analytics com os outros componentes do MobileFirst Server do mesmo nível de correção temporária.
 
 
-## Updating MobileFirst Server Administration Service, MobileFirst Operations Console, and MobileFirst runtime environment
+## Atualizando o ambiente de tempo de execução do MobileFirst Server Administration Service, do MobileFirst Operations Console e do MobileFirst
 {: #updating-server}
 
-You can update these components in two ways:
-* With Server Configuration Tool
-* With Ant tasks
+É possível atualizar esses componentes de duas maneiras:
+* Com a ferramenta de configuração do servidor
+* Com as tarefas Ant
 
-The updating procedure depends on the method you used at the initial installation.
+O procedimento de atualização depende do método usado na instalação inicial.
 
-### Applying a fix pack by using the Server Configuration Tool
+> **Observação:** o Installation Manager (IM) não suporta o retrocesso de uma atualização/iFix. No entanto, será possível retroceder usando o Ant e a ferramenta de configuração do servidor, se você tiver os arquivos WAR antigos.
+
+### Aplicando um fix pack usando o Server Configuration Tool
 {: #applying-a-fix-pack-by-using-the-server-configuration-tool }
-If {{ site.data.keys.mf_server }} is installed with the configuration tool and the configuration file is kept, you can apply a fix pack or an interim fix by reusing the configuration file.
+Se o {{ site.data.keys.mf_server }} for instalado com a ferramenta de configuração e o arquivo de configuração for mantido, será possível aplicar um fix pack ou uma correção temporária reutilizando o arquivo de configuração.
 
-1. Start the Server Configuration Tool.
-    * On Linux, from application shortcuts **Applications → IBM MobileFirst Platform Server → Server Configuration Tool**.
-    * On Windows, click **Start → Programs → IBM MobileFirst Platform Server → Server Configuration Tool**.
-    * On macOS, open a shell console. Go to **mfp\_server\_install_dir/shortcuts** and type **./configuration-tool.sh**.
-    * The **mfp\_server\_install\_dir** directory is where you installed {{ site.data.keys.mf_server }}.
+1. Inicie o Server Configuration Tool.
+    * No Linux, em atalhos de aplicativo **Aplicativos → IBM MobileFirst Platform Server → Server Configuration Tool**.
+    * No Windows, clique em **Iniciar → Programas → IBM MobileFirst Platform Server → Server Configuration Tool**.
+    * No macOS, abra um console de shell. Acesse **mfp\_server\_install_dir/shortcuts** e digite **./configuration-tool.sh**.
+    * O diretório **mfp\_server\_install\_dir** é onde foi instalado o {{ site.data.keys.mf_server }}.
 
-2. Click **Configurations → Replace the deployed WAR files** and select an existing configuration to apply the fix pack or an interim fix.
+2. Clique em **Configurações → Substituir os arquivos WAR implementados** e selecione uma configuração existente para aplicar o fix pack ou uma correção temporária.
 
 
-### Applying a fix pack by using the Ant files
+### Aplicando um fix pack usando os arquivos Ant
 {: #applying-a-fix-pack-by-using-the-ant-files }
 
-#### Updating with the sample Ant file
+#### Atualizando com o arquivo Ant de amostra
 {: #updating-with-the-sample-ant-file }
-If you use the sample Ant files that are provided in the **mfp\_install\_dir/MobileFirstServer/configuration-samples** directory to install {{ site.data.keys.mf_server }}, you can reuse a copy of this Ant file to apply a fix pack. For password values, you can enter 12 stars (\*) instead of the actual value, to be prompted interactively when the Ant file is run.
+Se você usar os arquivos Ant de amostra fornecidos no diretório **mfp\_install\_dir/MobileFirstServer/configuration-samples** para instalar o {{ site.data.keys.mf_server }}, será possível reutilizar uma cópia desse arquivo Ant para aplicar um fix pack. Para valores de senha, é possível inserir 12 estrelas (\*) em vez do valor real, a ser solicitado interativamente quando o arquivo Ant for executado.
 
-1. Verify the value of the **mfp.server.install.dir** property in the Ant file. It must point to the directory that contains the product with the fix pack applied. This value is used to take the updated {{ site.data.keys.mf_server }} WAR files.
-2. Run the command: `mfp_install_dir/shortcuts/ant -f your_ant_file update`
+1. Verifique o valor da propriedade **mfp.server.install.dir** no arquivo Ant. Ele deve apontar para o diretório que contém o produto com o fix pack aplicado. Esse valor é usado para obter os arquivos WAR do {{ site.data.keys.mf_server }} atualizados.
+2. Execute o comando: `mfp_install_dir/shortcuts/ant -f your_ant_file update`
 
-#### Updating with own Ant file
+#### Atualizando com seu próprio arquivo Ant
 {: #updating-with-own-ant-file }
-If you use your own Ant file, make sure that for each installation task (**installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush**), you have a corresponding update task in your Ant file with the same parameters. The corresponding update tasks are **updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**.
+Se você usar seu próprio arquivo Ant, certifique-se de que, para cada tarefa de instalação task (**installmobilefirstadmin**, **installmobilefirstruntime** e **installmobilefirstpush**), você tenha uma tarefa de atualização correspondente em seu arquivo Ant com os mesmos parâmetros. As tarefas de atualização correspondentes são **updatemobilefirstadmin**, **updatemobilefirstruntime** e **updatemobilefirstpush**.
 
-1. Verify the class path of the **taskdef** element for the **mfp-ant-deployer.jar** file. It must point to the **mfp-ant-deployer.jar** file in an {{ site.data.keys.mf_server }} installation that the fix pack is applied. By default, the updated {{ site.data.keys.mf_server }} WAR files are taken from the location of **mfp-ant-deployer.jar**.
-2. Run the update tasks (**updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**) of your Ant file.
+1. Verifique o caminho da classe do elemento **taskdef** para o arquivo **mfp-ant-deployer.jar**. Ele deve apontar para o arquivo **mfp-ant-deployer.jar** em uma instalação do {{ site.data.keys.mf_server }} à qual o fix pack é aplicado. Por padrão, os arquivos WAR do {{ site.data.keys.mf_server }} atualizados são obtidos do local **mfp-ant-deployer.jar**.
+2. Execute as tarefas de atualização (**updatemobilefirstadmin**, **updatemobilefirstruntime** e **updatemobilefirstpush**) de seu arquivo Ant.

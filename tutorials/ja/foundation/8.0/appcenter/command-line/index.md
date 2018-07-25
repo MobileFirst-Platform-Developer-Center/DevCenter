@@ -46,19 +46,19 @@ Application Center コンソールの Web インターフェースを使用し�
 
 | オプション | 内容 | 説明 |
 |--------|----------------------|-------------|
-| -s | serverpath | Application Center サーバーへのパス。 |
-| -c | context | Application Center Web アプリケーションのコンテキスト。 |
-| -u | user | Application Center にアクセスするためのユーザー資格情報。 |
-| -p | password | ユーザーのパスワード。 |
-| -d | description | アップロードするアプリケーションの説明。 |
-| -l | label | フォールバック・ラベル。 通常、ラベルは、アップロードされるファイルに保管されたアプリケーション記述子から取得されます。 アプリケーション記述子にラベルが含まれていない場合は、フォールバック・ラベルが使用されます。 |
-| -isActive | true または false | アプリケーションは、アクティブまたは非アクティブ・アプリケーションとして Application Center に保管されます。 |
-| -isInstaller | true または false | アプリケーションは、「installer」フラグが適切に設定された Application Center に保管されます。 |
-| -isReadyForProduction | true または false | アプリケーションは、「ready-for-production」フラグが適切に設定された Application Center に保管されます。 |
-| -isRecommended | true または false | アプリケーションは、「recommended」フラグが適切に設定された Application Center に保管されます。 |
-| -e	  |  | 失敗時にフル例外スタック・トレースを表示します。 |
-| -f	  |  | 既に存在する場合でもアプリケーションのアップロードを強制します。 |
-| -y	  |  | SSL セキュリティー検査を使用不可にします。SSL 証明書の検査なしで、機密保護機能のあるホストでの公開が許可されます。 |  このフラグの使用はセキュリティー・リスクですが、一時自己署名 SSL 証明書による localhost のテストには適している場合があります。 |
+| -s | serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -d | description | The description of the application to be uploaded. |
+| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. |
+| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. |
+| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. |
+| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. |
+| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. |
+| -e	  |  | Shows the full exception stack trace on failure. |
+| -f	  |  | Force uploading of applications, even if they exist already. |
+| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 files パラメーターには、タイプが Android アプリケーション・パッケージ (.apk) のファイルまたは iOS アプリケーション (.ipa) のファイルを指定することができます。  
 この例では、ユーザー demo はパスワード demopassword を持っています。 次のコマンド・ラインを使用してください。
@@ -81,13 +81,13 @@ Application Center からアプリケーションを削除するには、コマ�
 
 コマンド・ラインにある使用可能なオプションならどれでも渡すことができます。
 
-| オプション | 内容	| 説明 |
+| オプション | 内容 | 説明 |
 |--------|----------------------|-------------|
-| -s |serverpath | Application Center サーバーへのパス。 |
-| -c | context | Application Center Web アプリケーションのコンテキスト。 |
-| -u | user | Application Center にアクセスするためのユーザー資格情報。 |
-| -p | password | ユーザーのパスワード。 |
-| -y | | SSL セキュリティー検査を使用不可にします。SSL 証明書の検査なしで、機密保護機能のあるホストでの公開が許可されます。 このフラグの使用はセキュリティー・リスクですが、一時自己署名 SSL 証明書による localhost のテストには適している場合があります。 |
+| -s |serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 ファイルまたはアプリケーション・パッケージ、オペレーティング・システム、およびバージョンを指定することができます。 ファイルが指定された場合は、パッケージ、オペレーティング・システム、およびバージョンはファイルから決定され、対応するアプリケーションが Application Center から削除されます。 アプリケーションが指定された場合は、アプリケーションは次のいずれかの形式を持たなければなりません。
 
@@ -122,11 +122,11 @@ Application Center が LDAP で構成されると、LDAP サーバー上のユ�
 
 | オプション | 内容 | 説明 |
 |--------|----------------------|-------------|
-| -s | serverpath | Application Center サーバーへのパス。|
-| -c | context | Application Center Web アプリケーションのコンテキスト。|
-| -u | user | Application Center にアクセスするためのユーザー資格情報。|
-| -p | password | ユーザーのパスワード。|
-| -y | | SSL セキュリティー検査を使用不可にします。SSL 証明書の検査なしで、機密保護機能のあるホストでの公開が許可されます。 このフラグの使用はセキュリティー・リスクですが、一時自己署名 SSL 証明書による localhost のテストには適している場合があります。|
+| -s | serverpath | The path to the Application Center server.|
+| -c | context | The context of the Application Center web application.|
+| -u | user | The user credentials to access the Application Center.|
+| -p | password | The password of the user.|
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.|
 
 #### 例
 {: #example-cache }
@@ -152,16 +152,16 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 
 | Ant タスクのパラメーター | 説明 |
 |------------------------|-------------|
-| serverPath | Application Center に接続するため。 デフォルト値は http://localhost:9080 です。 |
-| context | Application Center のコンテキスト。 デフォルト値は /applicationcenter です。 |
-| loginUser | アプリケーションをアップロードする権限があるユーザー名。 |
-| loginPass | アプリケーションをアップロードする権限があるユーザーのパスワード。 |
-| forceOverwrite | このパラメーターが true に設定されると、Ant タスクは、既に存在するアプリケーションをアップロードするとき、Application Center 内のアプリケーションを上書きしようと試みます。 このパラメーターは upload Ant タスクでのみ使用可能です。
-| file | Application Center にアップロードする、または Application Center から削除する .apk ファイルまたは .ipa ファイル。 このパラメーターにはデフォルト値がありません。 |
-| fileset | 複数のファイルをアップロードまたは削除するため。 |
-| application | アプリケーションのパッケージ名。このパラメーターは delete Ant タスクでのみ使用可能です。 |
-| os | アプリケーションのオペレーティング・システム。 (例えば、Android または iOS。) このパラメーターは delete Ant タスクでのみ使用可能です。 |
-| version | アプリケーションの内部バージョン。このパラメーターは delete Ant タスクでのみ使用可能です。 ここで商用バージョンを使用しないでください。商用バージョンはバージョンを正確に識別するのには適さないからです。 |
+| serverPath | Application Center に接続するため。デフォルト値は http://localhost:9080 です。 |
+| context | Application Center のコンテキスト。デフォルト値は /applicationcenter です。 |
+| loginUser | アプリケーションをアップロードする権限があるユーザー名。|
+| loginPass | アプリケーションをアップロードする権限があるユーザーのパスワード。|
+| forceOverwrite | このパラメーターが true に設定されると、Ant タスクは、既に存在するアプリケーションをアップロードするとき、Application Center 内のアプリケーションを上書きしようと試みます。このパラメーターは upload Ant タスクでのみ使用可能です。
+| file | Application Center にアップロードする、または Application Center から削除する .apk ファイルまたは .ipa ファイル。このパラメーターにはデフォルト値がありません。 |
+| fileset | 複数のファイルをアップロードまたは削除するため。|
+| application | アプリケーションのパッケージ名。このパラメーターは delete Ant タスクでのみ使用可能です。|
+| os | アプリケーションのオペレーティング・システム。(例えば、Android または iOS。) このパラメーターは delete Ant タスクでのみ使用可能です。 |
+| version | アプリケーションの内部バージョン。このパラメーターは delete Ant タスクでのみ使用可能です。ここで商用バージョンを使用しないでください。商用バージョンはバージョンを正確に識別するのには適さないからです。 |
 
 #### 例
 {: #example-ant }
@@ -233,14 +233,14 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 {: #properties-of-the-sample-ant-script }
 | プロパティー | コメント |
 |----------|---------|
-| install.dir | デフォルトの ../../ になります。 |
-| server.path | デフォルト値は http://localhost:9080 です。 |
-| context.path | デフォルト値は applicationcenter です。 |
+| install.dir | デフォルトの ../../ になります。|
+| server.path | デフォルト値は http://localhost:9080 です。|
+| context.path | デフォルト値は applicationcenter です。|
 | upload.file | このプロパティーにはデフォルト値がありません。 正確なファイル・パスを含む必要があります。 |
-| workspace.root | デフォルトの ../../ になります。 |
-| login.user | デフォルト値は appcenteradmin です。 |
-| login.pass | デフォルト値は admin です。 |
-| force	デフォルト値は true です。 |
+| workspace.root | デフォルトの ../../ になります。|
+| login.user | デフォルト値は appcenteradmin です。|
+| login.pass | デフォルト値は admin です。|
+| force	デフォルト値は true です。|
 
 Ant の呼び出し時にこれらのパラメーターをコマンド・ラインで指定するには、プロパティー名の前に -D を追加してください。 例えば、次のとおりです。
 

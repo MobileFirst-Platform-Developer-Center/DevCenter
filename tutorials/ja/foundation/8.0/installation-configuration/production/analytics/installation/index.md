@@ -92,7 +92,7 @@ shards を 1 に構成すると、各索引は、1 つのプライマリー・�
 
 ## {{ site.data.keys.mf_analytics }} の WebSphere Application Server Liberty へのインストール
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-{{ site.data.keys.mf_analytics }} EAR ファイルがあることを確認します。 インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。 **analytics.ear** ファイルは、`<mf_server_install_dir>\analytics` フォルダーにあります。 WebSphere Application Server Liberty のダウンロードとインストールの方法について詳しくは、IBM developerWorks の「[About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)」の記事を参照してください。
+{{ site.data.keys.mf_analytics }} EAR ファイルがあることを確認します。 インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../prod-env/appserver)を参照してください。 **analytics.ear** ファイルは、`<mf_server_install_dir>\analytics` フォルダーにあります。 WebSphere Application Server Liberty のダウンロードとインストールの方法について詳しくは、IBM developerWorks の「[About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)」の記事を参照してください。
 
 1. **./wlp/bin** フォルダーで次のコマンドを実行して、サーバーを作成します。
 
@@ -168,7 +168,7 @@ WebSphere Application Server Liberty の管理について詳しくは、WebSphe
 
 ## {{ site.data.keys.mf_analytics }} の Tomcat へのインストール
 {: #installing-mobilefirst-analytics-on-tomcat }
-{{ site.data.keys.mf_analytics }} WAR ファイルがあることを確認します。 インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。 **analytics-ui.war** と **analytics-service.war** の各ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。 Tomcat のダウンロード方法とインストール方法について詳しくは、[Apache Tomcat](http://tomcat.apache.org/) を参照してください。 Java 7 以上をサポートするバージョンをダウンロードするようにしてください。 Tomcat のどのバージョンで Java 7 がサポートされているかについて詳しくは、[Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html) を参照してください。
+{{ site.data.keys.mf_analytics }} WAR ファイルがあることを確認します。 インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../prod-env/appserver)を参照してください。 **analytics-ui.war** と **analytics-service.war** の各ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。 Tomcat のダウンロード方法とインストール方法について詳しくは、[Apache Tomcat](http://tomcat.apache.org/) を参照してください。 Java 7 以上をサポートするバージョンをダウンロードするようにしてください。 Tomcat のどのバージョンで Java 7 がサポートされているかについて詳しくは、[Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html) を参照してください。
 
 1. Tomcat の **webapps** フォルダーに **analytics-service.war** と **analytics-ui.war** のファイルを追加します。
 2. **conf/server.xml** ファイルで以下のセクションのコメントを外します。これは、新しくダウンロードした Tomcat アーカイブ内に存在しますが、コメント化されています。
@@ -216,7 +216,7 @@ WebSphere Application Server Liberty の管理について詳しくは、WebSphe
 
 ## {{ site.data.keys.mf_analytics }} の WebSphere Application Server へのインストール
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
-インストール成果物 (JAR ファイルおよび EAR ファイル) を獲得するための最初のインストール・ステップについて詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。 **analytics.ear**、**analytics-ui.war**、**analytics-service.war** の各ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。
+インストール成果物 (JAR ファイルおよび EAR ファイル) を獲得するための最初のインストール・ステップについて詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../prod-env/appserver)を参照してください。 **analytics.ear**、**analytics-ui.war**、**analytics-service.war** の各ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。
 
 以下のステップでは、WebSphere Application Server に Analytics EAR ファイルをインストールし、実行する方法について説明します。 WebSphere Application Server に個別の WAR ファイルをインストールする場合は、両方の WAR ファイルをデプロイした後に **analytics-service** WAR ファイルについてステップ 2 から 7 のみを実行してください。 analytics-ui WAR ファイルでクラス・ロード順序を変更してはなりません。
 
@@ -250,13 +250,21 @@ WebSphere Application Server Liberty の管理について詳しくは、WebSphe
     * WebSphere Application Server 管理コンソールにログインします。
     * **「セキュリティー」>「グローバル・セキュリティー」**メニューで、**「管理セキュリティーを使用可能にする」**と**「アプリケーション・セキュリティーを使用可能にする」**の両方を必ず選択します。 注: アプリケーション・セキュリティーは、**管理セキュリティー**が使用可能にされた後にのみ、選択可能です。
     * **「OK」**をクリックし、変更を保存します。
-9. {{ site.data.keys.mf_analytics }} アプリケーションを開始し、ブラウザー内のリンクに移動します (`http://<hostname>:<port>/analytics/console`)。
+
+9. Swagger 文書を介して Analytics サービスへのアクセスを有効にするには、以下のステップを実行します。
+    * **「サーバー」 > 「サーバー・タイプ」 > 「WebSphere Application Server」**をクリックし、Analytics サービスがデプロイされたサーバーをサーバー・リストから選択します。
+    * **「サーバー・インフラストラクチャー」**の下で、**「Java」**をクリックし、**「プロセス管理」 > 「プロセス定義」 > 「Java 仮想マシン」 > 「カスタム・プロパティー」**と進みます。
+      - 以下のカスタム・プロパティーを設定します。<br/>
+        **プロパティー名:** *com.ibm.ws.classloader.strict*<br/>
+        **値:** *true*
+
+10. {{ site.data.keys.mf_analytics }} アプリケーションを開始し、ブラウザー内のリンクに移動します (`http://<hostname>:<port>/analytics/console`)。
 
 ## Ant タスクを使用した {{ site.data.keys.mf_analytics }} のインストール
 {: #installing-mobilefirst-analytics-with-ant-tasks }
-必要な WAR ファイルおよび構成ファイルの **analytics-ui.war** と **analytics-service.war** があることを確認します。 インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。 **analytics-ui.war** と **analytics-service.war** の各ファイルは、**MobileFirst_Platform_Server\analytics** にあります。
+必要な WAR ファイルおよび構成ファイルの **analytics-ui.war** と **analytics-service.war** があることを確認します。 インストール成果物について詳しくは、[アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストール](../../prod-env/appserver)を参照してください。 **analytics-ui.war** と **analytics-service.war** の各ファイルは、**MobileFirst_Platform_Server\analytics** にあります。
 
-アプリケーション・サーバー、または WebSphere Application Server Network Deployment 用の Network Deployment Manager がインストールされているコンピューターで Ant タスクを実行する必要があります。 {{ site.data.keys.mf_server }} がインストールされていないコンピューターから Ant タスクを開始したい場合は、ファイル **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** をそのコンピューターにコピーする必要があります。
+アプリケーション・サーバー、または WebSphere Application Server Network Deployment 用の Network Deployment Manager がインストールされているコンピューターで Ant タスクを実行する必要があります。 {{ site.data.keys.mf_server }} がインストールされていないコンピューターから Ant タスクを開始したい場合は、ファイル **\<mf_server_install_dir\>/MobileFirstServer/mfp-ant-deployer.jar** をそのコンピューターにコピーする必要があります。
 
 > 注: **mf_server_install_dir** プレースホルダーは、{{ site.data.keys.mf_server }} をインストールしたディレクトリーです。
 

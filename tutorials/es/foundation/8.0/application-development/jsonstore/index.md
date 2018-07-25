@@ -201,18 +201,18 @@ En la tabla se muestra como algunas de las características que JSONStore propor
 La característica JSONStore solo está disponible en simuladores y dispositivos iOS y Android.
 
 
-| Característica                                     | JSONStore      | LocalStorage | IndexedDB | Cordova storage API | Cordova file API |
+|Característica                                     |JSONStore      |LocalStorage |IndexedDB |Cordova storage API |Cordova file API |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-| Soporte Android (aplicaciones nativas y Cordova)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	    |
-| Soporte iOS (aplicaciones nativas y Cordova)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	    |
-| Windows 8.1 Universal y Windows 10 UWP (aplicaciones Cordova)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
-| Cifrado de datos                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Máximo almacenamiento                                 |Espacio disponible |    ~5MB     |   ~5MB 	 | Espacio disponible | Espacio disponible |
-| Almacenamiento fiable (ver nota)              |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
-| Mantener seguimiento de cambios locales         |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Soporte a varios usuarios                   |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Indexación   |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
-| Tipo de almacenamiento                   | Documentos JSON| Parejas clave/valor | Documentos JSON| Relacional (SQL) | Series |
+|Soporte Android (aplicaciones nativas y Cordova)|	     ✔ 	      |✔	     |✔	           |✔	    |✔	    |
+|Soporte iOS (aplicaciones nativas y Cordova)	     |	     ✔ 	      |✔	     |✔	           |✔	    |✔	    |
+|Windows 8.1 Universal y Windows 10 UWP (aplicaciones Cordova)          |	     ✔ 	      |✔	     |✔	     |        -	           |✔	      |
+|Cifrado de datos                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+|Máximo almacenamiento                                 |Espacio disponible |~5MB     |~5MB 	 |Espacio disponible |Espacio disponible |
+|Almacenamiento fiable (ver nota)              |	     ✔ 	      |      -	    |     -	     |✔	      |✔	      |
+|Mantener seguimiento de cambios locales         |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+|Soporte a varios usuarios                   |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+|Indexación   |	     ✔ 	      |      -	    |✔	           |✔	           |         -	      |
+|Tipo de almacenamiento                   |Documentos JSON|Parejas clave/valor |Documentos JSON|Relacional (SQL) |Series |
 
 **Nota:** Almacenamiento fiable significa que no se suprimen los datos a no ser que se produzca una de las siguientes situaciones:
 

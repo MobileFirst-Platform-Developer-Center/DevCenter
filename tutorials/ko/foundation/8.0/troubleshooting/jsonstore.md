@@ -8,35 +8,35 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-JSONStore API를 사용할 때 발생할 수 있는 문제를 해결하는 데 도움을 주는 정보를 찾아보십시오. 
+JSONStore API를 사용할 때 발생할 수 있는 문제를 해결하는 데 도움을 주는 정보를 찾아보십시오.
 
 ## 도움을 요청할 때 정보 제공
 {: #provide-information-when-you-ask-for-help }
-충분하지 않은 정보를 제공하는 것보다는 자세한 정보를 제공하는 것이 좋습니다. JSONStore 문제에 대해 도움을 주기 위해서는 다음 목록과 같은 정보를 먼저 제공하는 것이 좋습니다. 
+충분하지 않은 정보를 제공하는 것보다는 자세한 정보를 제공하는 것이 좋습니다. JSONStore 문제에 대해 도움을 주기 위해서는 다음 목록과 같은 정보를 먼저 제공하는 것이 좋습니다.
 
-* 운영 체제 및 버전. 예를 들면, Windows XP SP3 Virtual Machine 또는 Mac OSX 10.8.3과 같습니다. 
-* Eclipse 버전. 예를 들면, Eclipse Indigo 3.7 Java EE와 같습니다. 
-* JDK 버전. 예를 들면, Java SE Runtime Environment(빌드 1.7)와 같습니다. 
-* {{ site.data.keys.product }} 버전. 예를 들면, IBM Worklight V5.0.6 Developer Edition과 같습니다. 
-* iOS 버전. 예를 들면, iOS Simulator 6.1 또는 iPhone 4S iOS 6.0(더 이상 사용되지 않음, 더 이상 사용되지 않는 기능 및 API 요소 참고)과 같습니다. 
-* Android 버전. 예를 들면, Android Emulator 4.1.1 또는 Samsung Galaxy Android 4.0 API 레벨 14와 같습니다. 
-* Windows 버전. 예를 들면, Windows 8, Windows 8.1 또는 Windows Phone 8.1과 같습니다. 
-* adb 버전. 예를 들면, Android Debug Bridge 버전 1.0.31과 같습니다. 
-* iOS의 Xcode 출력이나 Android의 logcat 출력과 같은 로그. 
+* 운영 체제 및 버전. 예를 들면, Windows XP SP3 Virtual Machine 또는 Mac OSX 10.8.3과 같습니다.
+* Eclipse 버전. 예를 들면, Eclipse Indigo 3.7 Java EE와 같습니다.
+* JDK 버전. 예를 들면, Java SE Runtime Environment(빌드 1.7)와 같습니다.
+* {{ site.data.keys.product }} 버전. 예를 들면, IBM Worklight V5.0.6 Developer Edition과 같습니다.
+* iOS 버전. 예를 들면, iOS Simulator 6.1 또는 iPhone 4S iOS 6.0(더 이상 사용되지 않음, 더 이상 사용되지 않는 기능 및 API 요소 참고)과 같습니다.
+* Android 버전. 예를 들면, Android Emulator 4.1.1 또는 Samsung Galaxy Android 4.0 API 레벨 14와 같습니다.
+* Windows 버전. 예를 들면, Windows 8, Windows 8.1 또는 Windows Phone 8.1과 같습니다.
+* adb 버전. 예를 들면, Android Debug Bridge 버전 1.0.31과 같습니다.
+* iOS의 Xcode 출력이나 Android의 logcat 출력과 같은 로그.
 
 ## 문제 격리
 {: #try-to-isolate-the-issue }
-문제점을 더 정확하게 보고하기 위해 문제를 격리하려면 다음 단계를 따르십시오. 
+문제점을 더 정확하게 보고하기 위해 문제를 격리하려면 다음 단계를 따르십시오.
 
-1. 에뮬레이터(Android) 또는 시뮬레이터(iOS)를 재설정하고 destroy API를 호출하여 시스템을 정리된 상태로 시작하십시오. 
-2. 지원되는 프로덕션 환경에서 실행 중인지 확인하십시오. 
+1. 에뮬레이터(Android) 또는 시뮬레이터(iOS)를 재설정하고 destroy API를 호출하여 시스템을 정리된 상태로 시작하십시오.
+2. 지원되는 프로덕션 환경에서 실행 중인지 확인하십시오.
     * Android >= 2.3 ARM v7/ARM v8/x86 에뮬레이터 또는 디바이스
     * iOS >= 6.0 시뮬레이터 또는 디바이스(더 이상 사용되지 않음)
     * Windows 8.1/10 ARM/x86/x64 시뮬레이터 또는 디바이스
-3. init 또는 open API에 비밀번호를 전달하지 않음으로써 암호화를 끄십시오. 
-4. JSONStore에 의해 생성된 SQLite 데이터베이스 파일을 살펴보십시오. 암호화가 꺼져 있어야 합니다. 
+3. init 또는 open API에 비밀번호를 전달하지 않음으로써 암호화를 끄십시오.
+4. JSONStore에 의해 생성된 SQLite 데이터베이스 파일을 살펴보십시오. 암호화가 꺼져 있어야 합니다.
 
-   * Android 에뮬레이터: 
+   * Android 에뮬레이터:
 
    ```bash
    $ adb shell
@@ -44,7 +44,7 @@ JSONStore API를 사용할 때 발생할 수 있는 문제를 해결하는 데 �
    $ sqlite3 jsonstore.sqlite
    ```
 
-   * iOS 시뮬레이터: 
+   * iOS 시뮬레이터:
 
    ```bash
    $ cd ~/Library/Application Support/iPhone Simulator/7.1/Applications/<id>/Documents/wljsonstore
@@ -58,57 +58,57 @@ JSONStore API를 사용할 때 발생할 수 있는 문제를 해결하는 데 �
    $ sqlite3 jsonstore.sqlite
    ```
 
-   * **참고:** 웹 브라우저(Firefox, Chrome, Safari, Internet Explorer)에서 실행되는 JavaScript 전용 구현은 SQLite 데이터베이스를 사용하지 않습니다. 이 파일은 HTML5 LocalStorage에 저장됩니다. 
-   * `.schema`를 포함하는 `searchFields`를 살펴보고 `SELECT * FROM <collection-name>;`으로 데이터를 선택하십시오. sqlite3를 종료하려면 `.exit`를 입력하십시오. init 메소드에 사용자 이름을 전달하는 경우 이 파일의 이름은 **the-username.sqlite**입니다. 사용자 이름을 전달하지 않는 경우 이 파일의 이름은 기본적으로 **jsonstore.sqlite**입니다. 
-5. (Android 한정) 상세 JSONStore를 사용으로 설정하십시오. 
+   * **참고:** 웹 브라우저(Firefox, Chrome, Safari, Internet Explorer)에서 실행되는 JavaScript 전용 구현은 SQLite 데이터베이스를 사용하지 않습니다. 이 파일은 HTML5 LocalStorage에 저장됩니다.
+   * `.schema`를 포함하는 `searchFields`를 살펴보고 `SELECT * FROM <collection-name>;`으로 데이터를 선택하십시오. sqlite3를 종료하려면 `.exit`를 입력하십시오. init 메소드에 사용자 이름을 전달하는 경우 이 파일의 이름은 **the-username.sqlite**입니다. 사용자 이름을 전달하지 않는 경우 이 파일의 이름은 기본적으로 **jsonstore.sqlite**입니다.
+5. (Android 한정) 상세 JSONStore를 사용으로 설정하십시오.
 
    ```bash
    adb shell setprop log.tag.jsonstore-core VERBOSE
    adb shell getprop log.tag.jsonstore-core
    ```
 
-6. 디버거를 사용하십시오. 
+6. 디버거를 사용하십시오.
 
 ## 일반적인 문제
 {: #common-issues }
-다음 JSONStore 특성을 이해하면 발생할 수 있는 일반적인 문제 중 일부를 해결하는 데 도움이 됩니다.   
+다음 JSONStore 특성을 이해하면 발생할 수 있는 일반적인 문제 중 일부를 해결하는 데 도움이 됩니다.  
 
-* 2진 데이터를 JSONStore에 저장하는 유일한 방법은 이를 먼저 base64로 인코딩하는 것입니다. 실제 파일 대신 파일 이름 또는 경로를 JSONStore에 저장하십시오. 
-* 네이티브 코드에서 JSONStore 데이터에 액세스하는 것은 {{ site.data.keys.v62_product_full }} V6.2.0에서만 가능합니다. 
-* JSONStore에는 모바일 운영 체제에서 제한하는 한계를 초과하여 무제한으로 데이터를 저장할 수 있습니다. 
-* JSONStore는 지속적 데이터 스토리지를 제공합니다. 이는 메모리에만 저장되지 않습니다. 
-* 콜렉션 이름이 숫자 또는 기호로 시작하는 경우 init API가 실패합니다. IBM Worklight V5.0.6.1 이상에서는 적절한 오류(`4 BAD\_PARAMETER\_EXPECTED\_ALPHANUMERIC\_STRING`)를 리턴합니다. 
-* 검색 필드에서 숫자와 정수 사이에 차이가 있습니다. `1` 및 `2`와 같은 숫자 값은 유형이 `number`인 경우 `1.0` 및 `2.0`으로 저장됩니다. 유형이 `integer`인 경우에는 `1` 및 `2`로 저장됩니다. 
-* 애플리케이션이 강제 중지되거나 충돌한 경우, 애플리케이션이 다시 시작된 후 `init` 또는 `open` API가 호출되면 항상 오류 코드 -1이 발생하며 실패합니다. 이 문제점이 발생하면 먼저 `closeAll` API를 호출하십시오. 
-* JSONStore의 JavaScript 구현에서는 코드가 연속으로 호출될 것을 예상합니다. 다음 조작을 호출하기 전에 조작이 완료되기를 기다리십시오. 
-* Android 2.3.x에서는 Cordova 애플리케이션에 대해 트랜잭션이 지원되지 않습니다. 
-* 64비트 디바이스에서 JSONStore를 사용하는 경우에는 오류 `java.lang.UnsatisfiedLinkError: dlopen failed: "..." is 32-bit instead of 64-bit`가 표시될 수 있습니다. 
-* 이 오류는 Android 프로젝트에 64비트 기본 라이브러리가 있으며 이러한 라이브러리를 사용하는 경우 JSONStore가 현재 작동하지 않음을 의미합니다. 확인하려면 Android 프로젝트의 **src/main/libs** 또는 **src/main/jniLibs**로 이동하여 x86_64 또는 arm64-v8a 폴더가 있는지 확인하십시오. 있는 경우에는 이러한 폴더를 삭제하면 JSONStore가 다시 작동합니다. 
+* 2진 데이터를 JSONStore에 저장하는 유일한 방법은 이를 먼저 base64로 인코딩하는 것입니다. 실제 파일 대신 파일 이름 또는 경로를 JSONStore에 저장하십시오.
+* 네이티브 코드에서 JSONStore 데이터에 액세스하는 것은 {{ site.data.keys.v62_product_full }} V6.2.0에서만 가능합니다.
+* JSONStore에는 모바일 운영 체제에서 제한하는 한계를 초과하여 무제한으로 데이터를 저장할 수 있습니다.
+* JSONStore는 지속적 데이터 스토리지를 제공합니다. 이는 메모리에만 저장되지 않습니다.
+* 콜렉션 이름이 숫자 또는 기호로 시작하는 경우 init API가 실패합니다. IBM Worklight V5.0.6.1 이상에서는 적절한 오류(`4 BAD\_PARAMETER\_EXPECTED\_ALPHANUMERIC\_STRING`)를 리턴합니다.
+* 검색 필드에서 숫자와 정수 사이에 차이가 있습니다. `1` 및 `2`와 같은 숫자 값은 유형이 `number`인 경우 `1.0` 및 `2.0`으로 저장됩니다. 유형이 `integer`인 경우에는 `1` 및 `2`로 저장됩니다.
+* 애플리케이션이 강제 중지되거나 충돌한 경우, 애플리케이션이 다시 시작된 후 `init` 또는 `open` API가 호출되면 항상 오류 코드 -1이 발생하며 실패합니다. 이 문제점이 발생하면 먼저 `closeAll` API를 호출하십시오.
+* JSONStore의 JavaScript 구현에서는 코드가 연속으로 호출될 것을 예상합니다. 다음 조작을 호출하기 전에 조작이 완료되기를 기다리십시오.
+* Android 2.3.x에서는 Cordova 애플리케이션에 대해 트랜잭션이 지원되지 않습니다.
+* 64비트 디바이스에서 JSONStore를 사용하는 경우에는 오류 `java.lang.UnsatisfiedLinkError: dlopen failed: "..." is 32-bit instead of 64-bit`가 표시될 수 있습니다.
+* 이 오류는 Android 프로젝트에 64비트 기본 라이브러리가 있으며 이러한 라이브러리를 사용하는 경우 JSONStore가 현재 작동하지 않음을 의미합니다. 확인하려면 Android 프로젝트의 **src/main/libs** 또는 **src/main/jniLibs**로 이동하여 x86_64 또는 arm64-v8a 폴더가 있는지 확인하십시오. 있는 경우에는 이러한 폴더를 삭제하면 JSONStore가 다시 작동합니다.
 * 일부 경우(또는 환경)에는 JSONStore 플러그인이 초기화되기 전에 플로우가 `wlCommonInit()`로 들어갑니다. 이렇게 되면 JSONStore 관련 API 호출이 실패합니다. `cordova-plugin-mfp` 부트스트랩은 `WL.Client.init`를 자동으로 호출하며 이는 완료되면 `wlCommonInit` 함수를 트리거합니다. 이 초기화 프로세스는 JSONStore 플러그인의 경우 다릅니다. JSONStore 플러그인에는 `WL.Client.init` 호출을 _정지_시킬 수단이 없습니다. 다양한 환경에서, `mfpjsonjslloaded`가 완료되기 전에 플로우가 `wlCommonInit()`로 들어가는 경우가 있습니다.
 개발자는 `mfpjsonjsloaded` 및 `mfpjsloaded` 이벤트의 순서를 지정하기 위해 `WL.CLient.init`를
-수동으로 호출할 수 있습니다. 이렇게 하면 플랫폼별 코드를 갖출 필요가 없습니다. 
+수동으로 호출할 수 있습니다. 이렇게 하면 플랫폼별 코드를 갖출 필요가 없습니다.
 
-  `WL.CLient.init`의 수동 호출을 구성하려면 아래 단계를 따르십시오.                              
+  `WL.CLient.init`의 수동 호출을 구성하려면 아래 단계를 따르십시오.                             
 
-  1. `config.xml`에서 `clientCustomInit` 특성을 **true**로 변경하십시오. 
+  1. `config.xml`에서 `clientCustomInit` 특성을 **true**로 변경하십시오.
 
-  + `index.js` 파일에서 다음 작업을 수행하십시오.                                    
-    * 파일의 시작 부분에 다음 행을 추가하십시오.                 
+  + `index.js` 파일에서 다음 작업을 수행하십시오.                                   
+    * 파일의 시작 부분에 다음 행을 추가하십시오.                
       ```javascript
       document.addEventListener('mfpjsonjsloaded', initWL, false);
       ```           
-    * `wlCommonInit()`에 `WL.JSONStore.init` 호출을 남겨 두십시오.                     
+    * `wlCommonInit()`에 `WL.JSONStore.init` 호출을 남겨 두십시오.                    
 
-    * 다음 함수를 추가하십시오.   
+    * 다음 함수를 추가하십시오.  
     ```javascript                                         
 function initWL(){                                                     
-        var options = typeof wlInitOptions !== 'undefined' ? wlInitOptions
+var options = typeof wlInitOptions !== 'undefined' ? wlInitOptions
         : {};                                                                
         WL.Client.init(options);                                           
 }                                                                      
 ```                                                                       
 
-  이는 `mfpjsonjsloaded` 이벤트(`wlCommonInit` 외부)를 기다려
+이는 `mfpjsonjsloaded` 이벤트(`wlCommonInit` 외부)를 기다려
 스크립트가 로드되었는지 확인한 후 `WL.Client.init`를 호출하고, 이는 `wlCommonInit`를 트리거하며, 이는 그 후 `WL.JSONStore.init`를 호출합니다.
 
 ## 저장소 내부

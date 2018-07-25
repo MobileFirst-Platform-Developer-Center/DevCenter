@@ -102,35 +102,35 @@ DESCRIPTION
 ## Lista de mandatos de CLI
 {: #list-of-cli-commands }
 
-| Prefijo de mandato | Acción de mandato | Descripción |
+|Prefijo de mandato |Acción de mandato |Descripción |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
-| `mfpdev app`	                                                | register                                     | Registra su aplicación con {{ site.data.keys.mf_server }}.                           |
-|                                                               | config                                       | Permite especificar el tiempo de ejecución y el servidor de fondo para que los utilice su aplicación. Además, para las aplicaciones de Cordova, permite configurar varios aspectos adicionales como, por ejemplo, el idioma predeterminado para los mensajes del sistema o si es necesario realizar una suma de comprobación. Se incluyen otros parámetros de configuración para aplicaciones de Cordova. |
-|                                                               | pull                                         | Recupera una configuración de aplicación existente desde el servidor. |
-|                                                               | push                                         | Envía una configuración de aplicación al servidor. |
-|                                                               | preview                                      | Habilita obtener una vista previa de su aplicación de Cordova sin que sea necesario el dispositivo real en el tipo de plataforma de destino. Podrá visualizar la vista previa tanto en {{ site.data.keys.mf_mbs }} como en su navegador. |
-|                                                               | webupdate                                    | Empaqueta los recursos de la aplicación contenidos en el directorio www en un archivo .zip que se puede utilizar para el proceso de Direct Update. |
-| mfpdev server	                                                | info                                         | Visualiza información sobre {{ site.data.keys.mf_server }}.                      |
-|                                                               | add                                          | Añade una nueva definición de servidor a su entorno. |
-|                                                               | edit                                         | Habilita la edición de definiciones de servidor. |
-|                                                               | remove                                       | Elimina una definición de servidor del entorno. |
-|                                                               | console                                      | Abre {{ site.data.keys.mf_console }}.                               |
-|                                                               | clean                                        | Anula el registro de aplicaciones y elimina adaptadores de {{ site.data.keys.mf_server }}.      |
-| mfpdev adapter                                                | create                                       | Crea un adaptador. |
-|                                                               | build                                        | Compila un adaptador. |
-|                                                               | build all                                    | Encuentra y compila todos los adaptadores en el directorio actual y sus subdirectorios. |
-|                                                               | deploy                                       | Despliega un adaptador en {{ site.data.keys.mf_server }}.                           |
-|                                                               | deploy all                                   | Encuentra todos los adaptadores en el directorio actual y sus subdirectorios, y los despliega en {{ site.data.keys.mf_server }}. |
-|                                                               | call                                         | Llama a un procedimiento de adaptador en {{ site.data.keys.mf_server }}.                 |
-|                                                               | pull                                         | Recupera una configuración de adaptador existente desde el servidor. |
-|                                                               | push                                         | Envía una configuración de adaptador al servidor. |
-| mfpdev                                                        | config                                       | Establece las preferencias de configuración para el tipo de navegador de vista previa, el valor del tiempo de espera de vista previa y el valor de tiempo de espera de servidor para la interfaz de línea de mandatos mfpdev. |
-|                                                               | info                                         | Visualiza información sobre el entorno, incluido el sistema operativo, el consumo de memoria, la versión del nodo y la versión de la interfaz de línea de mandatos. Si el directorio actual corresponde a una aplicación de Cordova, también se visualiza la información que proporciona el mandato cordova info de Cordova. |
-|                                                               | -v                                           | Visualiza el número de versión de la instancia de {{ site.data.keys.mf_cli }} actualmente en uso. |
-|                                                               | -d, --debug                                  | Modalidad de depuración: Genera la salida de depuración. |
-|                                                               | -dd, --ddebug                                | Modalidad de depuración detallada: Genera la salida de depuración detallada. |
-|                                                               | -no-color                                    | Suprime la utilización del color en la salida del mandato. |
-| mfpdev help                                                   | nombre del mandato| Visualiza ayuda para los mandatos {{ site.data.keys.mf_cli }} (mfpdev). Con argumentos, visualiza texto de ayuda más específico para cada mandato o tipo de mandato. Por ejemplo, "mfpdev help server add" |
+|`mfpdev app`	                                                |register                                     |Registra su aplicación con {{ site.data.keys.mf_server }}.                           |
+|                                                               |config                                       |Permite especificar el tiempo de ejecución y el servidor de fondo para que los utilice su aplicación. Además, para las aplicaciones de Cordova, permite configurar varios aspectos adicionales como, por ejemplo, el idioma predeterminado para los mensajes del sistema o si es necesario realizar una suma de comprobación. Se incluyen otros parámetros de configuración para aplicaciones de Cordova. |
+|                                                               |pull                                         |Recupera una configuración de aplicación existente desde el servidor. |
+|                                                               |push                                         |Envía una configuración de aplicación al servidor. |
+|                                                               |preview                                      |Habilita obtener una vista previa de su aplicación de Cordova sin que sea necesario el dispositivo real en el tipo de plataforma de destino. Podrá visualizar la vista previa tanto en {{ site.data.keys.mf_mbs }} como en su navegador. |
+|                                                               |webupdate                                    |Empaqueta los recursos de la aplicación contenidos en el directorio www en un archivo .zip que se puede utilizar para el proceso de Direct Update. |
+|mfpdev server	                                                |info                                         |Visualiza información sobre {{ site.data.keys.mf_server }}.                      |
+|                                                               |add                                          |Añade una nueva definición de servidor a su entorno. |
+|                                                               |edit                                         |Habilita la edición de definiciones de servidor. |
+|                                                               |remove                                       |Elimina una definición de servidor del entorno. |
+|                                                               |console                                      |Abre {{ site.data.keys.mf_console }}.                               |
+|                                                               |clean                                        |Anula el registro de aplicaciones y elimina adaptadores de {{ site.data.keys.mf_server }}.      |
+|mfpdev adapter                                                |create                                       |Crea un adaptador. |
+|                                                               |build                                        |Compila un adaptador. |
+|                                                               |build all                                    |Encuentra y compila todos los adaptadores en el directorio actual y sus subdirectorios. |
+|                                                               |deploy                                       |Despliega un adaptador en {{ site.data.keys.mf_server }}.                           |
+|                                                               |deploy all                                   |Encuentra todos los adaptadores en el directorio actual y sus subdirectorios, y los despliega en {{ site.data.keys.mf_server }}. |
+|                                                               |call                                         |Llama a un procedimiento de adaptador en {{ site.data.keys.mf_server }}.                 |
+|                                                               |pull                                         |Recupera una configuración de adaptador existente desde el servidor. |
+|                                                               |push                                         |Envía una configuración de adaptador al servidor. |
+|mfpdev                                                        |config                                       |Establece las preferencias de configuración para el tipo de navegador de vista previa, el valor del tiempo de espera de vista previa y el valor de tiempo de espera de servidor para la interfaz de línea de mandatos mfpdev. |
+|                                                               |info                                         |Visualiza información sobre el entorno, incluido el sistema operativo, el consumo de memoria, la versión del nodo y la versión de la interfaz de línea de mandatos. Si el directorio actual corresponde a una aplicación de Cordova, también se visualiza la información que proporciona el mandato cordova info de Cordova. |
+|                                                               |-v                                           |Visualiza el número de versión de la instancia de {{ site.data.keys.mf_cli }} actualmente en uso. |
+|                                                               |-d, --debug                                  |Modalidad de depuración: Genera la salida de depuración. |
+|                                                               |-dd, --ddebug                                |Modalidad de depuración detallada: Genera la salida de depuración detallada. |
+|                                                               |-no-color                                    |Suprime la utilización del color en la salida del mandato. |
+|mfpdev help                                                   |nombre del mandato|Visualiza ayuda para los mandatos {{ site.data.keys.mf_cli }} (mfpdev). Con argumentos, visualiza texto de ayuda más específico para cada mandato o tipo de mandato. Por ejemplo, "mfpdev help server add" |
 
 ## Modalidad directa e interactiva
 {: #interactive-and-direct-modes }
@@ -323,11 +323,9 @@ Las configuraciones disponibles son:
 
 * El tiempo de ejecución y la dirección de servidor que se registrarán
 
-    > **Ejemplo de caso de uso:** con el propósito de registrar una aplicación para {{ site.data.keys.mf_server }} con una determinada dirección, pero también para que la aplicación se conecte a una dirección de servidor diferente, por ejemplo un dispositivo DataPower:
-
-    >
+    > **Caso de uso de ejemplo:** para registrar una aplicación en un  {{ site.data.keys.mf_server }} con una dirección determinada, pero tener también la aplicación conectada a una dirección de servidor distinta, por ejemplo, un dispositivo
+DataPower: >
     > 1. Ejecute `mfpdev app register` para registrar la aplicación en la dirección de {{ site.data.keys.mf_server }} esperada.
-
     > 2. Ejecute `mfpdev app config` y cambie el valor de la propiedad **server** para que coincida con la dirección del dispositivo DataPower. 
 También puede ejecutar el mandato en la **modalidad directa**:
 `mfpdev app config server http(s)://server-ip-or-host:port`.

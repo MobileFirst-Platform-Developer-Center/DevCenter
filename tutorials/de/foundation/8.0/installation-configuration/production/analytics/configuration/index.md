@@ -11,7 +11,7 @@ weight: 2
 muss konfiguriert werden. Einige der Konfigurationsparameter gelten für einen Einzelknoten und andere Parameter gelten für den gesamten Cluster.
 Welcher Parameter wofür gilt, ist jeweils angegeben. 
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
 * [Konfigurationseigenschaften](#configuration-properties)
@@ -109,37 +109,37 @@ Die JNDI-Eigenschaften von WebSphere Application Server sind als Umgebungsvariab
 {: #mobilefirst-server }
 In der folgenden Tabelle sind Eigenschaften angegeben, die in {{ site.data.keys.mf_server }} festgelegt werden können.
 
-| Eigenschaft | Beschreibung | Standardwert |
+|Eigenschaft |Beschreibung |Standardwert |
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url | Setzen Sie diese Eigenschaft auf die URL Ihrer {{ site.data.keys.mf_analytics_console }}, z. B. http://Hostname:Port/analytics/console. Bei Festlegung dieser Eigenschaft wird das Analysesymbol in der {{ site.data.keys.mf_console }} aktiviert. | Keiner |
-| mfp.analytics.logs.forward | Wenn diese Eigenschaft auf "true" gesetzt ist, werden auf dem {{ site.data.keys.mf_server }} aufgezeichnete Serverprotokolle in {{ site.data.keys.mf_analytics }} erfasst. | true |
-| mfp.analytics.url | Die von {{ site.data.keys.mf_analytics_server }} zugänglich gemachte URL für den Empfang eingehender Analysedaten (erforderlich). Beispiel: http://hostname:port/analytics-service/rest/v2 | Keiner |
-| analyticsconsole/mfp.analytics.url |	Vollständige URI der Analytics-REST-Services (optional). In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI und nicht die interne URI im lokalen Netz sein. Dieser Wert kann anstelle des URI-Protokolls, des Hostnamens oder des Ports der eingehenden URL das Zeichen * enthalten. *://*:*/analytics-service zeigt beispielsweise an, dass das Protokoll, der Hostname und der Port dynamisch bestimmt werden. |
-| mfp.analytics.username | Der Benutzername, der verwendet wird, wenn der Dateneingabepunkt durch Basisauthentifizierung geschützt ist. | Keiner |
-| mfp.analytics.password | Das Kennwort, das verwendet wird, wenn der Dateneingabepunkt durch Basisauthentifizierung geschützt ist. | Keiner |
+|mfp.analytics.console.url |Setzen Sie diese Eigenschaft auf die URL Ihrer {{ site.data.keys.mf_analytics_console }}, z. B. http://Hostname:Port/analytics/console. Bei Festlegung dieser Eigenschaft wird das Analysesymbol in der {{ site.data.keys.mf_console }} aktiviert. |Keiner |
+|mfp.analytics.logs.forward |Wenn diese Eigenschaft auf "true" gesetzt ist, werden auf dem {{ site.data.keys.mf_server }} aufgezeichnete Serverprotokolle in {{ site.data.keys.mf_analytics }} erfasst. |true |
+|mfp.analytics.url | Die von {{ site.data.keys.mf_analytics_server }} zugänglich gemachte URL für den Empfang eingehender Analysedaten (erforderlich). Beispiel: http://hostname:port/analytics-service/rest/v2 |Keiner |
+|analyticsconsole/mfp.analytics.url |	Vollständige URI der Analytics-REST-Services (optional). In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI und nicht die interne URI im lokalen Netz sein. Dieser Wert kann anstelle des URI-Protokolls, des Hostnamens oder des Ports der eingehenden URL das Zeichen * enthalten. *://*:*/analytics-service zeigt beispielsweise an, dass das Protokoll, der Hostname und der Port dynamisch bestimmt werden. |
+|mfp.analytics.username |Der Benutzername, der verwendet wird, wenn der Dateneingabepunkt durch Basisauthentifizierung geschützt ist. |Keiner |
+|mfp.analytics.password |Das Kennwort, das verwendet wird, wenn der Dateneingabepunkt durch Basisauthentifizierung geschützt ist. |Keiner |
 
 #### {{ site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
 In der folgenden Tabelle sind Eigenschaften angegeben, die in {{ site.data.keys.mf_analytics_server }} festgelegt werden können.
 
-| Eigenschaft | Beschreibung | Standardwert |
+|Eigenschaft |Beschreibung |Standardwert |
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | Definiert den Typ des Elasticsearch-Knotens. Gültige Werte sind "master" und "data". Wenn diese Eigenschaft nicht definiert ist, kommt der Knoten als Master- und Datenknoten infrage. | 	Keiner |
-| analytics/shards | Anzahl der vom Cluster pro Index erstellten Shards. Der Wert kann nur von dem im Cluster zuerst gestarteten Knoten definiert und nicht geändert werden. | 1 |
-| analytics/replicas_per_shard | Diese Eigenschaft gibt die Anzahl der Replikate pro Shard im Cluster an. Dieser Wert kann in einem aktiven Cluster dynamisch geändert werden. | 0 |
-| analytics/masternodes | Zeichenfolge mit Komma als Trennzeichen, die den Hostnamen und Port der Knoten angibt, die als Masterknoten infrage kommen | Keiner |
-| analytics/clustername | Diese Eigenschaft gibt den Namen des Clusters an. Definieren Sie diesen Wert, wenn es in einer Untergruppe mehrere Cluster gibt, die eindeutig identifizierbar sein sollen. | worklight |
-| analytics/nodename | Diese Eigenschaft gibt den Namen eines Knotens im Cluster an. | Zufällig generierte Zeichenfolge |
-| analytics/datapath | Diese Eigenschaft gibt den Pfad an, unter dem Analysedaten im Dateisystem gespeichert werden. | ./analyticsData |
-| analytics/settingspath | Pfad zu einer Datei mit Elasticsearch-Einstellungen. Weitere Informationen finden Sie unter "Elasticsearch". | Keiner |
-| analytics/transportport | Diese Eigenschaft gibt den Port für die Knoten-zu-Knoten-Kommunikation an. | 9600 |
-| analytics/httpport | Diese Eigenschaft gibt den Port für die HTTP-Kommunikation mit Elasticsearch an. | 9500 |
-| analytics/http.enabled | Aktiviert oder inaktiviert die HTTP-Kommunikation mit Elasticsearch | false |
-| analytics/serviceProxyURL | Die WAR-Datei für die Analysebenutzerschnittstelle und die WAR-Datei für den Analyseservice können in gesonderten Anwendungsservern installiert werden. In dem Fall müssen Sie wissen, dass die JavaScript-Laufzeit in der WAR-Datei für die Benutzerschnittstelle durch eine Cross-Site-Scripting-Prävention im Browser blockiert werden kann. Zur Umgehung dieser Blockade enthält die WAR-Datei für die Benutzerschnittstelle Java-Proxy-Code, der dafür sorft, dass die JavaScript-Laufzeit REST-API-Antworten vom ursprünglichen Server abruft. Der Proxy ist aber so konfiguriert, dass REST-API-Anforderungen an die WAR-Datei für den Analyseservice weiterteleitet werden. Konfigurieren Sie diese Eigenschaft, wenn Sie Ihre WAR-Dateien in separaten Anwendungsservern installiert haben. | Keiner |
-| analytics/bootstrap.mlockall | Diese Eigenschaft verhindert, dass Elasticsearch-Speicher auf die Platte ausgelagert wird. | true |
-| analytics/multicast | Aktiviert oder inaktiviert die Multicast-Knotenerkennung | false |
-| analytics/warmupFrequencyInSeconds | Häufigkeit mit der Initialisierungsabfragen im Hintergrund ausgeführt werden, damit Abfrageergebnisse in den Speicher geschrieben werden. Dadurch verbessert sich die Leistung der Webkonsole. Negative Werte inaktivieren die Initialisierungsabfragen. | 600 |
-| analytics/tenant | Name des Elasticsearch-Hauptindex. | worklight |
+|analytics/nodetype |Definiert den Typ des Elasticsearch-Knotens. Gültige Werte sind "master" und "data". Wenn diese Eigenschaft nicht definiert ist, kommt der Knoten als Master- und Datenknoten infrage. | 	Keiner |
+|analytics/shards |Anzahl der vom Cluster pro Index erstellten Shards. Der Wert kann nur von dem im Cluster zuerst gestarteten Knoten definiert und nicht geändert werden. |1 |
+|analytics/replicas_per_shard |Diese Eigenschaft gibt die Anzahl der Replikate pro Shard im Cluster an. Dieser Wert kann in einem aktiven Cluster dynamisch geändert werden. |0 |
+|analytics/masternodes |Zeichenfolge mit Komma als Trennzeichen, die den Hostnamen und Port der Knoten angibt, die als Masterknoten infrage kommen |Keiner |
+|analytics/clustername |Diese Eigenschaft gibt den Namen des Clusters an. Definieren Sie diesen Wert, wenn es in einer Untergruppe mehrere Cluster gibt, die eindeutig identifizierbar sein sollen. |worklight |
+|analytics/nodename |Diese Eigenschaft gibt den Namen eines Knotens im Cluster an. |Zufällig generierte Zeichenfolge |
+|analytics/datapath |Diese Eigenschaft gibt den Pfad an, unter dem Analysedaten im Dateisystem gespeichert werden. |./analyticsData |
+|analytics/settingspath |Pfad zu einer Datei mit Elasticsearch-Einstellungen. Weitere Informationen finden Sie unter "Elasticsearch". |Keiner |
+|analytics/transportport |Diese Eigenschaft gibt den Port für die Knoten-zu-Knoten-Kommunikation an. |9600 |
+|analytics/httpport |Diese Eigenschaft gibt den Port für die HTTP-Kommunikation mit Elasticsearch an. |9500 |
+|analytics/http.enabled |Aktiviert oder inaktiviert die HTTP-Kommunikation mit Elasticsearch |false |
+|analytics/serviceProxyURL |Die WAR-Datei für die Analysebenutzerschnittstelle und die WAR-Datei für den Analyseservice können in gesonderten Anwendungsservern installiert werden. In dem Fall müssen Sie wissen, dass die JavaScript-Laufzeit in der WAR-Datei für die Benutzerschnittstelle durch eine Cross-Site-Scripting-Prävention im Browser blockiert werden kann. Zur Umgehung dieser Blockade enthält die WAR-Datei für die Benutzerschnittstelle Java-Proxy-Code, der dafür sorft, dass die JavaScript-Laufzeit REST-API-Antworten vom ursprünglichen Server abruft. Der Proxy ist aber so konfiguriert, dass REST-API-Anforderungen an die WAR-Datei für den Analyseservice weiterteleitet werden. Konfigurieren Sie diese Eigenschaft, wenn Sie Ihre WAR-Dateien in separaten Anwendungsservern installiert haben. |Keiner |
+|analytics/bootstrap.mlockall |Diese Eigenschaft verhindert, dass Elasticsearch-Speicher auf die Platte ausgelagert wird. |true |
+|analytics/multicast |Aktiviert oder inaktiviert die Multicast-Knotenerkennung |false |
+|analytics/warmupFrequencyInSeconds |Häufigkeit mit der Initialisierungsabfragen im Hintergrund ausgeführt werden, damit Abfrageergebnisse in den Speicher geschrieben werden. Dadurch verbessert sich die Leistung der Webkonsole. Negative Werte inaktivieren die Initialisierungsabfragen. |600 |
+|analytics/tenant |Name des Elasticsearch-Hauptindex. | worklight |
 
 Immer, wenn der Schlüssel keinen Punkt enthält (wie bei **httpport**, aber nicht bei
 **http.enabled**), kann die Einstellung mit Systemumgebungsvariablen gesteuert werden. Der Name der Variablen muss in dem Fall mit dem Präfix
@@ -292,14 +292,14 @@ auf einem der unterstützten App-Server.
 
 2. Bearbeiten Sie die Konfigurationsdatei des Anwendungsservers, um JNDI-Eigenschaften zu konfigurieren. (Sie können auch Systemumgebungsvariablen verwenden.) Konfigurieren Sie mindestens die folgenden Flags: 
 
-    | Flag | Wert (Beispiel) | Standardwert | Hinweis |
+    |Flag |Wert (Beispiel) |Standardwert |Hinweis |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	| worklight | 	Cluster, in den dieser Knoten aufgenommen werden soll |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Mit dem Wert "false" kann eine versehentliche Aufnahme in den Cluster verhindert werden. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Keiner | 	Liste der Masterknoten im Cluster. Ändern Sie den Standardport 9600, wenn Sie für die Masterknoten eine Einstellung für den Transportport angegeben haben. |
-    | node.master | 	false | 	true | 	Dieser Knoten darf kein Masterknoten sein. |
-    | node.data |	false | 	true | 	Auf diesem Knoten dürfen keine Daten gespeichert werden. |
-    | http.enabled | 	true	| true | 	Öffnen Sie den nicht gesicherten HTTP-Port 9200 für die REST-API von Elasticsearch. |
+    |cluster.name | 	worklight	|worklight | 	Cluster, in den dieser Knoten aufgenommen werden soll |
+    |discovery.zen.ping.multicast.enabled | 	false | 	true | 	Mit dem Wert "false" kann eine versehentliche Aufnahme in den Cluster verhindert werden. |
+    |discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Keiner | 	Liste der Masterknoten im Cluster. Ändern Sie den Standardport 9600, wenn Sie für die Masterknoten eine Einstellung für den Transportport angegeben haben. |
+    |node.master | 	false | 	true | 	Dieser Knoten darf kein Masterknoten sein. |
+    |node.data |	false | 	true | 	Auf diesem Knoten dürfen keine Daten gespeichert werden. |
+    |http.enabled | 	true	|true | 	Öffnen Sie den nicht gesicherten HTTP-Port 9200 für die REST-API von Elasticsearch. |
 
 3. Für Produktionsszenarien müssen Sie alle Konfigurationsflags sorgfältig überdenken. Wenn Sie beispielsweise möchten, dass
 Elasticsearch die Plug-ins in einem anderen Dateisystemverzeichnis als die Daten aufbewahrt, müssen Sie das Flag
@@ -332,14 +332,14 @@ für Überwachung und dynamische Konfiguration zugänglich zu machen.
 2. Entpacken Sie die Datei.
 3. Bearbeiten Sie die Datei **config/elasticsearch.yml** und konfigurieren Sie mindestens die folgenden Flags.
 
-    | Flag | Wert (Beispiel) | Standardwert | Hinweis |
+    |Flag |Wert (Beispiel) |Standardwert |Hinweis |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	| worklight | 	Cluster, in den dieser Knoten aufgenommen werden soll |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Mit dem Wert "false" kann eine versehentliche Aufnahme in den Cluster verhindert werden. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Keiner | 	Liste der Masterknoten im Cluster. Ändern Sie den Standardport 9600, wenn Sie für die Masterknoten eine Einstellung für den Transportport angegeben haben. |
-    | node.master | 	false | 	true | 	Dieser Knoten darf kein Masterknoten sein. |
-    | node.data |	false | 	true | 	Auf diesem Knoten dürfen keine Daten gespeichert werden. |
-    | http.enabled | 	true	| true | 	Öffnen Sie den nicht gesicherten HTTP-Port 9200 für die REST-API von Elasticsearch. |
+    |cluster.name | 	worklight	|worklight | 	Cluster, in den dieser Knoten aufgenommen werden soll |
+    |discovery.zen.ping.multicast.enabled | 	false | 	true | 	Mit dem Wert "false" kann eine versehentliche Aufnahme in den Cluster verhindert werden. |
+    |discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	Keiner | 	Liste der Masterknoten im Cluster. Ändern Sie den Standardport 9600, wenn Sie für die Masterknoten eine Einstellung für den Transportport angegeben haben. |
+    |node.master | 	false | 	true | 	Dieser Knoten darf kein Masterknoten sein. |
+    |node.data |	false | 	true | 	Auf diesem Knoten dürfen keine Daten gespeichert werden. |
+    |http.enabled | 	true	|true | 	Öffnen Sie den nicht gesicherten HTTP-Port 9200 für die REST-API von Elasticsearch. |
 
 
 4. Für Produktionsszenarien müssen Sie alle Konfigurationsflags sorgfältig überdenken. Wenn Sie beispielsweise möchten, dass

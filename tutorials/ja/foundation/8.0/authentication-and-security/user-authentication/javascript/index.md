@@ -25,7 +25,7 @@ downloads:
 
 ## ログイン
 {: #login }
-この例では、`UserLogin` は `username` と `password` という *key:value* を必要とします。 オプションで、ブール型の `rememberMe` キーも受け入れます。これは、このユーザーを長期間記憶しておくようにセキュリティー検査に指示するためのものです。サンプル・アプリケーションの場合、この情報はログイン・フォームのチェック・ボックスからブール値を使用して収集されます。
+この例では、`UserLogin` は `username` と `password` という *key:value* を必要とします。 オプションで、ブール型の `rememberMe` キーも受け入れます。これは、このユーザーを長期間記憶しておくようにセキュリティー検査に指示するためのものです。 サンプル・アプリケーションの場合、この情報はログイン・フォームのチェック・ボックスからブール値を使用して収集されます。
 
 ```js
 userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password, rememberMe: rememberMeState});

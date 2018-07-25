@@ -13,7 +13,7 @@ weight: 1
 
 {{ site.data.keys.product }} のコンポーネントの詳細については、以下で説明します。
 
-> {{ site.data.keys.product }} を評価するために必要なことは、Mobile Foundation IBM Cloud サービスを使用して IBM Cloud で {{ site.data.keys.mf_server }} のインスタンスをスピンすることだけです。手順については、[Mobile Foundation の使用](../../../bluemix/using-mobile-foundation/)のチュートリアルを参照してください。 ローカル・インストールの場合は、{{ site.data.keys.mf_dev_kit_short }} のインストールを選択することもできます。
+> {{ site.data.keys.product }} を評価するために必要なことは、Mobile Foundation IBM Cloud サービスを使用して IBM Cloud で {{ site.data.keys.mf_server }} のインスタンスをスピンすることだけです。 手順については、[Mobile Foundation の使用](../../../bluemix/using-mobile-foundation/)のチュートリアルを参照してください。 ローカル・インストールの場合は、{{ site.data.keys.mf_dev_kit_short }} のインストールを選択することもできます。
 
 #### ジャンプ先:
 {: #jump-to }

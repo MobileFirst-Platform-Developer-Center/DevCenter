@@ -21,7 +21,7 @@ weight: 1
 
 ### サーバー
 {: #server }
-{{ site.data.keys.mf_server }} は、[Mobile Foundation IBM Cloud サービス](../../bluemix/using-mobile-foundation)経由で、または {{ site.data.keys.mf_dev_kit_full }} を使用してローカルで (ローカルの開発目的用) 使用することができます。{{ site.data.keys.mf_server }} を実行するには、Java 7 または 8 が必要です。
+{{ site.data.keys.mf_server }} は、[Mobile Foundation IBM Cloud サービス](../../bluemix/using-mobile-foundation)経由で、または {{ site.data.keys.mf_dev_kit_full }} を使用してローカルで (ローカルの開発目的用) 使用することができます。 {{ site.data.keys.mf_server }} を実行するには、Java 7 または 8 が必要です。
 
 Mobile Foundation IBM Cloud サービスを使用する予定の場合は、bluemix.net のアカウントが必要です。
 

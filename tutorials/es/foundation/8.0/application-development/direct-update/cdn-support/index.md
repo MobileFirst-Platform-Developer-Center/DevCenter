@@ -89,11 +89,11 @@ Por ejemplo, debería crear una condición que indique `Si la vía de acceso coi
 5. Debería establecer valores similares a los siguientes para configurar el comportamiento del almacenamiento en caché para el URL de Direct Update y para configurar TTL.
 
 
-    | Campo| Valor|
+    |Campo|Valor|
     |-------|-------|
-    | Opción de almacenamiento en caché| Caché|
-    | Forzar la reevaluación de objetos obsoletos | Servir obsoleto si no es posible validar|
-    | Edad máxima | 3 minutos |
+    |Opción de almacenamiento en caché|Caché|
+    |Forzar la reevaluación de objetos obsoletos |Servir obsoleto si no es posible validar|
+    |Edad máxima |3 minutos |
 
     ![Establecer valores para configurar el comportamiento del almacenamiento en caché](direct_update_cdn_7.jpg)
 

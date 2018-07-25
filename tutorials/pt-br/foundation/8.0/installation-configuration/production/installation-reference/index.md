@@ -147,7 +147,7 @@ O status de proteção do elemento `<mysql>` possui os atributos a seguir:
 
 | Atributo | Descrição (Description)                            | Necessário | Padrão |
 |-----------|----------------------------------------|----------|---------|
-| Banco de dados	| O nome do banco de dados.	                 | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH ou APPCNTR, dependendo do tipo. |
+| banco de dados	| O nome do banco de dados.	                 | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH ou APPCNTR, dependendo do tipo. |
 | servidor	| O nome do host do servidor de banco de dados.	 | Sim	    | Nenhuma |
 | porta	    | A porta no servidor de banco de dados.	     | Não	    | 3306 |
 | usuário	    | O nome do usuário para acessar bancos de dados. | Sim	    | Nenhuma |
@@ -376,7 +376,7 @@ O elemento `<property>` especifica uma propriedade de implementação a ser defi
 
 Usando esse elemento, é possível definir suas próprias propriedades JNDI ou substituir o valor padrão de propriedades JNDI fornecidas pelo serviço de administração e arquivos WAR do {{ site.data.keys.mf_console }}.
 
-Para obter informações adicionais sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+Para obter mais informações sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 ### Para especificar um servidor de aplicativos
 {: #to-specify-an-application-server }
@@ -445,7 +445,7 @@ O elemento `<property>` especifica uma propriedade de implementação a ser defi
 | Nome       | O nome da propriedade.  | Sim      | Nenhuma    |
 | valor	     | O valor da propriedade. |	Sim      | Nenhuma    |
 
-Usando esse elemento, é possível definir suas próprias propriedades JNDI ou substituir o valor padrão de propriedades JNDI fornecidas pelo serviço de administração e arquivos WAR do {{ site.data.keys.mf_console }}. Para obter informações adicionais sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+Usando esse elemento, é possível definir suas próprias propriedades JNDI ou substituir o valor padrão de propriedades JNDI fornecidas pelo serviço de administração e arquivos WAR do {{ site.data.keys.mf_console }}. Para obter mais informações sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 ### Para especificar um servidor de aplicativos
 {: #to-specify-an-application-server-1 }
@@ -629,7 +629,7 @@ O elemento `<property>` especifica uma propriedade de implementação a ser defi
 
 Usando esse elemento, é possível definir suas próprias propriedades JNDI ou substituir o valor padrão de propriedades JNDI fornecidas pelo arquivo WAR do serviço de push.
 
-Para obter informações adicionais sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+Para obter mais informações sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ### Para especificar um servidor de aplicativos
 {: #to-specify-an-application-server-2 }

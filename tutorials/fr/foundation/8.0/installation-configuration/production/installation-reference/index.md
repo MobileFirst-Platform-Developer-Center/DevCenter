@@ -144,7 +144,7 @@ L'élément `<driverclasspath>` doit contenir les fichiers JAR pour le pilote JD
 * Ou bien, procédez à l'extraction du fichier **db2jcc4.jar** et des fichiers **db2jcc_license_*.jar** qui lui sont associés à partir du répertoire **DB2_INSTALL_DIR/java** sur le serveur DB2.
 
 Vous ne pouvez pas
-spécifier de détails sur les allocations de table, comme l'espace table, avec la tâche Ant. Pour contrôler l'espace table, vous devez utiliser les instructions manuelles décrites dans la section [Exigences utilisateur et base de données DB2](../databases/#db2-database-and-user-requirements).
+spécifier de détails sur les allocations de table, comme l'espace table, avec la tâche Ant. Pour contrôler l'espace table, vous devez utiliser les instructions manuelles décrites dans la section [Exigences utilisateur et base de données DB2](../prod-env/databases/#db2-database-and-user-requirements).
 
 #### MySQL
 {: #mysql }
@@ -235,7 +235,7 @@ L'élément interne `<dba>` spécifie les données d'identification de l'adminis
 L'élément `<driverclasspath>` doit contenir un fichier JAR de pilote JDBC Oracle. Vous pouvez télécharger des pilotes JDBC Oracle depuis la page [JDBC, SQLJ, Oracle JPublisher and Universal Connection
 Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
 
-Vous ne pouvez pas spécifier de détails sur une allocation de table, comme l'espace table, avec la tâche Ant. Pour contrôler l'espace table, vous pouvez créer le compte utilisateur manuellement et lui affecter un espace table par défaut avant d'exécuter la tâche Ant. Pour contrôler les autres détails, vous devez utiliser les instructions manuelles décrites dans la section [Exigences utilisateur et base de données Oracle](../databases/#oracle-database-and-user-requirements).
+Vous ne pouvez pas spécifier de détails sur une allocation de table, comme l'espace table, avec la tâche Ant. Pour contrôler l'espace table, vous pouvez créer le compte utilisateur manuellement et lui affecter un espace table par défaut avant d'exécuter la tâche Ant. Pour contrôler les autres détails, vous devez utiliser les instructions manuelles décrites dans la section [Exigences utilisateur et base de données Oracle](../prod-env/databases/#oracle-database-and-user-requirements).
 
 | Attribut | Description                            | Obligatoire | Valeur par défaut               |
 |-----------|----------------------------------------|----------|-----------------------|
@@ -1565,12 +1565,12 @@ Le tableau ci-après contient une liste de tables de base de données du service
 | PUSH_MESSAGE_SEQUENCE_TABLE	 | Table des notifications push ; stocke l'ID de séquence généré.	 | Une ligne. |
 | PUSH_VERSION	                 | Version du produit.	                                         | Une ligne. |
 
-Pour plus d'informations sur la configuration des bases de données, voir [Configuration des bases de données](../databases).
+Pour plus d'informations sur la configuration des bases de données, voir [Configuration des bases de données](../prod-env/databases).
 
 ## Exemples de fichier de configuration
 {{ site.data.keys.product }} inclut un certain nombre d'exemples de fichier de configuration destinés à vous aider à commencer à utiliser les tâches Ant pour installer {{ site.data.keys.mf_server }}.
 
-Pour commencer à utiliser ces tâches Ant le plus facilement possible, servez-vous des exemples de fichier de configuration fournis dans le répertoire **MobileFirstServer/configuration-samples/** de la distribution de {{ site.data.keys.mf_server }}. Pour plus d'informations sur l'installation de {{ site.data.keys.mf_server }} à l'aide de tâches Ant, voir [Installation à l'aide de tâches Ant](../appserver/#installing-with-ant-tasks).
+Pour commencer à utiliser ces tâches Ant le plus facilement possible, servez-vous des exemples de fichier de configuration fournis dans le répertoire **MobileFirstServer/configuration-samples/** de la distribution de {{ site.data.keys.mf_server }}. Pour plus d'informations sur l'installation de {{ site.data.keys.mf_server }} à l'aide de tâches Ant, voir [Installation à l'aide de tâches Ant](../prod-env/appserver/#installing-with-ant-tasks).
 
 ### Liste des exemples de fichier de configuration
 {: #list-of-sample-configuration-files }

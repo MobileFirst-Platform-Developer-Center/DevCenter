@@ -15,7 +15,7 @@ Cordova 애플리케이션을 사용하면 선호하는 코드 편집기(예: At
 
 ## Cordova CLI 설치
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }}은 Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 이상을 지원합니다.   
+{{ site.data.keys.product }}은 Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 이상을 지원합니다.  
 설치하려면 다음을 수행하십시오.
 
 1. [NodeJS](https://nodejs.org/en/)를 다운로드하여 설치하십시오.

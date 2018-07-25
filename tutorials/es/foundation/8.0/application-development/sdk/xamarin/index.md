@@ -7,26 +7,24 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
-{: #overview }
-El producto {{ site.data.keys.product }} SDK está formado por un conjunto de dependencias que están disponibles a través de [Xamarin Component Store](https://components.xamarin.com/) y que puede añadir a su proyecto de Xamarin.
-  
-Los pods corresponden a funciones principales y a otras funciones:
+{: #overview
+El SDK {{ site.data.keys.product }} consiste en una colección de dependencias que están empaquetadas en un paquete NuGet que puede añadirse a un proyecto Xamarin desde [Nuget Package Manager](https://www.nuget.org/packages?q=mobilefirst) .
 
+Los paquetes corresponden a las funciones principales y a otras funciones:
 
-* **MobileFirst.Xamarin** - Implementa la conectividad de cliente a servidor, maneja la autenticación y los aspectos de seguridad, solicitudes de recursos y otras funciones básicas necesarias.
+* **IBM.MobileFirstPlatformFoundation**: Contiene bibliotecas sdk de cliente MobileFirst que implementan conectividad de cliente a servidor, maneja aspectos de autenticación y seguridad, solicitudes de recursos y otras funciones principales requeridas con el entorno
+JSONStore.
+ 
+* **IBM.MobileFirstPlatformFoundationPush** - Contiene la infraestructura de notificación de push. Para obtener más información, revise las [guías de aprendizajes de notificaciones](../../../notifications/).
 
-* **MobileFirst.JSONStore** - Contiene la infraestructura de JSONStore.   
-* **MobileFirst.Push** - Contiene la infraestructura de notificaciones push.
-Para obtener más información, revise las [guías de aprendizajes de notificaciones](../../../notifications/).
-
-En esta guía de aprendizaje aprenderá a añadir {{ site.data.keys.product_adj }} Native SDK mediante Xamarin Component Store a una aplicación iOS o Xamarin Android nueva o existente.
-También aprenderá a configurar {{ site.data.keys.mf_server }} para que reconozca la aplicación.
+En este tutorial aprenderá a añadir {{ site.data.keys.product_adj }} Native SDK mediante NuGet Package Manager a una aplicación
+Xamarin.Android o Xamarin.iOS nueva o existente. También aprenderá a configurar {{ site.data.keys.mf_server }} para que reconozca la aplicación.
 
 
 **Requisitos previos:**
 
-- Xamarin Studio instalado en la estación de trabajo del desarrollador.
-  
+- Visual Studio 2017 instalado en la estación de trabajo del desarrollador para macOS .
+- Versión de Community de Visual Studio 2015 o Visual Studio 2017 instalada en la estación de trabajo de desarrollo para Windows OS . Asegúrese de que no está utilizando la edición Express de Visual Studio. En este caso, se recomienda que actualice a Community Edition .  
 - Una instancia remota o local de {{ site.data.keys.mf_server }} que esté en ejecución.
 
 - Lea las guías de aprendizaje [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/development/) y [Configuración del entorno de desarrollo de Xamarin](../../../installation-configuration/development/xamarin/).
@@ -54,21 +52,15 @@ Cree una solución Xamarin mediante Xamarin Studio, Visual Studio o utilice uno 
 
 ### Adición del SDK
 {: #adding-the-sdk }
-1. {{ site.data.keys.product_adj }} Native SDK se proporciona a través de Xamarin Components Store.
+1. El SDK nativo {{ site.data.keys.product_adj }} se proporciona a través de Nuget Gallery/Repository.
+2. Para importar los paquetes de MobileFirst packages, utilice el gestor de paquetes NuGet. NuGet es un gestor de paquetes para la plataforma de desarrollo de Microsoft, incluido .NET.
+Las herramientas de cliente de NuGet proporcionan la posibilidad de crear y utilizar paquetes.
+NuGet Gallery es el repositorio central de paquetes de todos los usuarios y creadores de paquetes.
+Pulse con el botón derecho del ratón en el directorio de paquetes, seleccione Añadir paquetes y en la opción de búsqueda, busque *IBM MobileFirst Platform*. Seleccione **IBM.MobileFirstPlatformFoundation**.
+![Adición de sdk desde nuget.org]({{site.baseurl}}/assets/xamarin-tutorials/add-package1.png)
+3. Pulse los paquetes para añadir. Con esta acción se instala Mobile Foundation Native SDK y sus dependencias.
+![Adding sdk from nuget.org]({{site.baseurl}}/assets/xamarin-tutorials/add-package2.png)
 
-2. Expanda el proyecto Android o iOS.
-
-3. En el proyecto Android o iOS, pulse con el botón derecho del ratón sobre **Componentes**.
-4. Seleccione **Obtener más componentes**. ![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
-5. Busque **IBM MobileFirst SDK**. Cierre y complete **Añadir a aplicación**.
-![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
-6. Pulse con el botón derecho del ratón sobre **Paquetes** y seleccione **Añadir paquetes**. Busque y añada **Json.NET**.
-Obtendrá la dependencia Newtonsoft desde Nuget. Esto se debe realizar de forma separada tanto para los proyectos Android como iOS.
-
-7. Pulse con el botón derecho del ratón sobre **Referencias** y seleccione **Editar referencias**.
-Vaya al separador **.Net Assembly** y pulse 'Examinar'.
-Desde la raíz de las carpetas del proyecto, vaya a `Components -> ibm-worklight-8.0.0.1 -> lib -> pcl`.
-Seleccione **Worklight.Core.dll**.
 
 ### Registro de la aplicación
 {: #registering-the-application }
@@ -79,8 +71,7 @@ Seleccione **Worklight.Core.dll**.
 Así se asegura que tanto la aplicación Android como la aplicación iOS se pueden conectar de forma satisfactoria al servidor.
 Los detalles de registro para las aplicaciones Android e iOS se pueden entrar en `AndroidManifest.xml` e `Info.plist` respectivamente.
 
-3. Después de que se registre la aplicación, vaya al separador de Archivos de configuración y copie o descargue los archivos mfpclient.plist y mfpclient.properties.
-Siga las instrucciones en la pantalla para añadir el archivo al proyecto.
+3. Después de registrar la aplicación, navegue a la ficha Archivos de configuración de la aplicación y copie o descargue los archivos`mfpclient.plist` y `mfpclient.properties`. Siga las instrucciones en la pantalla para añadir el archivo al proyecto.
 
 
 
@@ -123,8 +114,7 @@ using Worklight.Xamarin.Android;
 
 ## Actualización de {{ site.data.keys.product_adj }} Native SDK
 {: #updating-the-mobilefirst-native-sdk }
-Para actualizar {{ site.data.keys.product_adj }} Native SDK con el último release, actualice la versión del SDK a través de Xamarin Components Store.
-
+Para actualizar {{ site.data.keys.product_adj }} Native SDK con la última publicación, actualice la versión de SDK a través de Nuget Gallery.
 
 ## Artefactos de {{ site.data.keys.product_adj }} Native SDK generados
 {: #generated-mobilefirst-native-sdk-artifacts }
@@ -133,13 +123,13 @@ Para actualizar {{ site.data.keys.product_adj }} Native SDK con el último relea
 Este archivo define las propiedades del lado del cliente utilizadas para registrar la aplicación iOS en {{ site.data.keys.mf_server }}.
 
 
-| Propiedad | Descripción | Valores de ejemplo |
+|Propiedad |Descripción |Valores de ejemplo |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | Protocolo de comunicación con {{ site.data.keys.mf_server }}.             | http o https  |
-| host        | Nombre de host de {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| port        | Puerto de {{ site.data.keys.mf_server }}.                           | 9080           |
-| wlServerContext     | Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente. | en             |
+|protocol    |Protocolo de comunicación con {{ site.data.keys.mf_server }}.             |http o https  |
+|host        |Nombre de host de {{ site.data.keys.mf_server }}.                            |192.168.1.63   |
+|port        |Puerto de {{ site.data.keys.mf_server }}.                           |9080           |
+|wlServerContext     |Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. |/mfp/          |
+|languagePreferences |Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente. |en             |
 
 ## Guías de aprendizaje con las que continuar 
 {: #tutorials-to-follow-next }

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen
-breadcrumb_title: Bilder und Symbole hinzufügen
+breadcrumb_title: Adding images and icons
 relevantTo: [cordova]
 weight: 1
 ---
@@ -37,7 +37,7 @@ erstellt haben, werden die von der
 {{ site.data.keys.product_adj }}-Bildposition abgerufenen Begrüßungsbilder
 angezeigt. Die Zieldateipfade und -dateinamen müssen exakt aus dem Beispiel übernommen
 werden, wenn Sie die Schablone nicht verwenden. Ändern Sie die Quellenpfade und Dateinamen
-(`src`) in die Pfade der Dateien, die angezeigt werden sollen. Fügen Sie in der Datei **config.xml** zwischen den Tags `<platform name="android">` und `</platform>` Zeilen wie die im folgenden Beispiel hinzu:  
+(`src`) in die Pfade der Dateien, die angezeigt werden sollen. Fügen Sie in der Datei **config.xml** zwischen den Tags `<platform name="android">` und `</platform>` Zeilen wie die im folgenden Beispiel hinzu: 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -79,7 +79,7 @@ Größe.
 ### iOS
 {: #ios }
 Wenn Sie eine iOS-App haben, fügen Sie Zeilen ähnlich den folgenden zwischen den Tags `<platform name="ios">` und `</platform>` ein: 
-    
+
 #### Begrüßungsanzeigen
 {: #splash-screens-ios }
 Die Dateipfade und -namen der Begrüßungsanzeigen müssen die gleichen wie im folgenden Beispiel sein. Der Name der einzelnen Bilder richtet sich nach ihrer
@@ -121,6 +121,168 @@ Größe.
 <icon height="58" src="res/icon/ios/icon-small@2x.png" width="58" />
 <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
 ```
+
+Seit der Cordova-Plug-in Version 8.0.2017102406 für die MobileFirst Platform Foundation gibt es eine Änderung in `AppDelegate.m`, die notwendig war, weil bei installiertem Plug-in `cordova-plugin-mfp` eine schwarze flimmernde Anzeige erschien, sobald die Cordova-iOS-Anwendung geladen wurde. Wenn ein Benutzer dieser Begrüßungsanzeige nicht sehen möchte, kann er einen neuen `ViewController` hinzufügen und einige Änderungen am Ladevorgang in `AppDelegate.m` vornehmen, um eine schwarze Begrüßungsanzeige zu vermeiden. Die erforderlichen Schritte sind nachfolgend beschrieben:
+
+1. Klicken Sie in Ihrem Xcode-Projekt mit der rechten Maustaste auf den Ordner **Classes** und wählen Sie die Option **New file** aus.
+2. Wählen Sie die Schablone **Cocoa Touch Class** aus. Klicken Sie auf **Next**.
+3. Übernehmen Sie die Standardwerte (d. h. den Klassennamen *ViewController*). Klicken Sie auf **Next**.
+4. Klicken Sie auf **Create**. Die Dateien `ViewController.m` und `ViewController.h` werden zum Ordner **Classes** hinzugefügt.
+5. Klicken Sie erneut mit der rechten Maustaste auf den Ordner **Classes** und wählen Sie die Option **New file** aus.
+6. Wählen Sie die Schablone **Storyboard** aus. Klicken Sie auf **Next** und speichern Sie die Schablone unter dem Namen `ViewController`. Klicken Sie dann auf **Create**.
+7. Öffnen Sie `ViewController.storyboard` und fügen Sie ein neues Objekt `ViewController` hinzu. Fügen Sie die Attributklasse auf der Registerklasse **Custom Class** als *ViewController* hinzu. Geben Sie auf der Registerkarte **Identity** *ViewController* für die **Storyboard ID** und die **Restoration ID** an.
+8. Modifizieren Sie Ihre Datei `AppDelegate.m` wie unten angegeben. Erstellen Sie dann die Anwendung und führen Sie sie aus. Anstelle der schwarzen Begrüßungsanzeige müssten Sie jetzt eine weiße Anzeige sehen, die Sie in *ViewController.storyboard* anpassen können.
+
+```
+  /*
+   Licensed Materials - Property of IBM
+
+   (C) Copyright 2017 IBM Corp.
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+   */
+  /*
+   Licensed to the Apache Software Foundation (ASF) under one
+   or more contributor license agreements.  See the NOTICE file
+   distributed with this work for additional information
+   regarding copyright ownership.  The ASF licenses this file
+   to you under the Apache License, Version 2.0 (the
+   "License"); you may not use this file except in compliance
+   with the License.  You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing,
+   software distributed under the License is distributed on an
+   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+   KIND, either express or implied.  See the License for the
+   specific language governing permissions and limitations
+   under the License.
+   */
+  #import "AppDelegate.h"
+  #import <IBMMobileFirstPlatformFoundationHybrid/IBMMobileFirstPlatformFoundationHybrid.h>
+  #import <IBMMobileFirstPlatformFoundation/WLAnalytics.h>
+  #import "MainViewController.h"
+  #import "ViewController.h"
+  @implementation AppDelegate
+  NSString* const MFP_INITIALIAZATION = @"WLInitSuccess";
+  NSString* const OPEN_URL_COMPLETED = @"OpenURLCompleted";
+  - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
+  {
+      if (NSClassFromString(@"CDVSplashScreen") == nil) {
+          [[WL sharedInstance] showSplashScreen];
+      }
+      // Standardmäßig wird die Begrüßungsanzeige automatisch ausgeblendet, sobald das Worklight-JavaScript-Framework abgeschlossen ist.
+      // Sie können dieses Verhalten überschreiben, indem Sie die Eigenschaft autoHideSplash in initOptions.js auf "false" setzen und die API WL.App.hideSplashScreen() verwenden.
+
+      self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+     // UIViewController* rootViewController = self.window.rootViewController;
+
+      ViewController *loginController = [[UIStoryboard storyboardWithName:@"ViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"]; //or the homeController
+      UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:loginController];
+      self.window.rootViewController = navController;
+
+      [self.window makeKeyAndVisible];
+
+       [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
+  //    __block __weak id observer =  [[NSNotificationCenter defaultCenter]addObserverForName:MFP_INITIALIAZATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * note) {
+  //        self.viewController = [[MainViewController alloc] init];
+  //        self.viewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
+  //        [super application:application didFinishLaunchingWithOptions:launchOptions];
+  //        [[NSNotificationCenter defaultCenter] removeObserver:observer name:MFP_INITIALIAZATION object:nil];
+  //    }];
+      return YES;
+  }
+  -(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
+  {
+      if ([result statusCode] == WLWebFrameworkInitResultSuccess) {
+          [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
+          [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
+          [self wlInitDidCompleteSuccessfully];
+          //[[NSNotificationCenter defaultCenter] postNotificationName:MFP_INITIALIAZATION object:nil];
+      } else {
+          [self wlInitDidFailWithResult:result];
+      }
+  }
+  -(void)wlInitDidCompleteSuccessfully
+  {
+      UIViewController* rootViewController = self.window.rootViewController;
+
+      // Cordova ViewController erstellen
+      CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
+
+      cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
+
+      // Anzeigerahmen des Cordova ViewController an die übergeordnete Anzeigebegrenzung anpassen
+      cordovaViewController.view.frame = rootViewController.view.bounds;
+
+      // Cordova-Ansicht anzeigen
+      [rootViewController addChildViewController:cordovaViewController];
+      [rootViewController.view addSubview:cordovaViewController.view];
+  }
+  -(void)wlInitDidFailWithResult:(WLWebFrameworkInitResult *)result
+  {
+      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                          message:[result message]
+                                                         delegate:self
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+      [alertView show];
+  }
+  - (void)applicationWillResignActive:(UIApplication *)application
+  {
+      // Senden, wenn die Anwendung vom aktiven in den inaktiven Zustand wechselt. Dies kann bei bestimmten Arten von temporären Unterbrechungen geschehen (z. B. bei einem eingehenden Anruf oder einer eingehenden SMS) oder wenn der Benutzer die Anwendung beendet und diese in den Hintergrund gestellt wird.
+      // Stoppen Sie mit dieser Methode laufende Aufgaben, inaktivieren Sie Zeitgeber und drosseln Sie die OpenGL-ES-Volldbildrate. Bei Spielen kann mit dieser Methode das Spiel angehalten werden.
+  }
+  - (void)applicationDidEnterBackground:(UIApplication *)application
+  {
+      // Verwenden Sie diese Methode, um gemeinsam genutzte Ressourcen freizugeben, Benutzerdaten zu speichern, Zeitgeber zu inaktivieren und so viele Informationen zum Zustand der Anwendung zu speichern, dass eine Wiederherstellung des aktuellen Zustands möglich ist, wenn die Anwendung später beendet wird.
+      // Wenn Ihre Anwendung die Ausführung im Hintergrund unterstützt, wird diese Methode anstelle von applicationWillTerminate: aufgerufen, wenn der Benutzer die Anwendung beendet.
+  }
+  - (void)applicationWillEnterForeground:(UIApplication *)application
+  {
+      // Als Teil des Übergangs vom Hintergrundstatus in den aktiven Zustand aufgerufen. Hier können Sie vieles rückgängig machen, was beim Wechsel in den Hintergrundstatus geschieht.
+      //wi 116840 - Abschlussbenachrichtigung zur mfp_intialization hinzufügen, nachdem openurl ausgeführt und eine Benachrichtigung von der Überwachungsfunktion empfangen wurde.
+      // So wird ein Warmstart ordnungsgemäß gehandhabt.
+      __block __weak id observer = [[NSNotificationCenter defaultCenter]addObserverForName:OPEN_URL_COMPLETED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * note) {
+          [[NSNotificationCenter defaultCenter] postNotificationName:MFP_INITIALIAZATION object:nil];
+          [[NSNotificationCenter defaultCenter] removeObserver:observer name:OPEN_URL_COMPLETED object:nil];
+      }];
+
+  }
+  - (void)applicationDidBecomeActive:(UIApplication *)application
+  {
+      // Alle Aufgaben neu Starten, die während der Inaktivität der Anwendung gestoppt (oder noch nicht gestartet) wurden. Falls die Anwendung sich im Hintergrund befand, können Sie die Anzeige der Benutzerschnittstelle aktualisieren.
+  }
+  - (void)applicationWillTerminate:(UIApplication *)application
+  {
+      // Aufgerufen, wenn die Anwendung kurz vor der Beendigung steht. Speichern Sie ggf. Daten (siehe auch applicationDidEnterBackground:).
+  }
+  //wi 116840 - Mit den folgenden Änderungen wird ein Kaltstart in handleopenurl korrigiert. Erst wenn die Überwachungsfunktion für MFP_INITIALIZATION zurückkehrt, wird das Plug-in handleopenurl aufgerufen.
+  // So wird sichergestellt, dass es beim Kaltstart keine Probleme gibt.
+  // Anschließend wird eine Überwachungsfunktion für open_url_completed initialisiert. Damit ist sichergestellt, dass in "applicationWillEnterForeground" die Aktion für die Abschlussbenachrichtigung nach Ausführung von openurl beendet ist.
+  - (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
+  {
+      if (!url) {
+          return NO;
+      }
+      __block __weak id observer = [[NSNotificationCenter defaultCenter]addObserverForName:MFP_INITIALIAZATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * note) {
+          [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
+          [[NSNotificationCenter defaultCenter] removeObserver:observer name:MFP_INITIALIAZATION object:nil];
+      }];
+      [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_URL_COMPLETED object:nil];
+      return YES;
+  }
+  @end
+```
+
+
+>**Hinweis:** Diese Änderungen gehen zwangsläufig verloren, wenn die iOS-Plattform entfernt und hinzugefügt wird. Sie müssen also sicherstellen, dass diese Änderungen immer bei Bedarf vorgenommen werden. 
 
 ### Windows
 {: #windows }

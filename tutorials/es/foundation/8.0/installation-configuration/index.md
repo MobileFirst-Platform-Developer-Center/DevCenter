@@ -18,7 +18,7 @@ Si desarrolla el lado del cliente o el lado del servidor de las aplicaciones mó
 
 {{ site.data.keys.mf_dev_kit }} incluye todo lo que se necesita para ejecutar y depurar aplicaciones móviles en una estación de trabajo personal. Para desarrollar una aplicación mediante {{ site.data.keys.mf_dev_kit }}, siga el tutorial  [Configuración del entorno de desarrollo de MobileFirst](development/mobilefirst).
 
-**Utilización de {{ site.data.keys.mf_bm }}**
+**Uso de {{ site.data.keys.mf_bm }}**
 {: #using-mf-bluemix }
 
 El servicio de {{ site.data.keys.mf_bm }} proporciona una funcionalidad similar al  {{ site.data.keys.mf_dev_kit }}, sin embargo, el servicio se ejecuta en IBM Cloud.
@@ -45,13 +45,14 @@ La primera parte de la instalación de los usos del servidor de {{ site.data.key
 
 > **Importante:** Asegúrese de que utiliza IBM Installation Manager V1.8.4 o posterior. Las versiones anteriores de Installation Manager no están disponibles para instalar {{ site.data.keys.product }} {{ site.data.keys.product_version }} porque las operaciones posteriores a la instalación del producto requieren Java 7. Las versiones anteriores de Installation Manager se suministran con Java 6.
 
-El asistente de instalación {{ site.data.keys.mf_server }} utiliza IBM Installation para colocar todos los componentes en el servidor.  Las herramientas y bibliotecas que también están instaladas requieren desplegar los componentes del servidor {{ site.data.keys.product }}
-al servidor de aplicaciones.  Se recomienda que no se instale todos los componentes en la misma instancia del servidor de aplicaciones, excepto en caso de un servidor de desarrollo. Las herramientas de desarrollo permiten la selección de los componentes que se deben instalar.  Consulte[Flujos de red y topologías](production/topologies) para considerar algunos puntos antes de instalar el servidor.
+
+El asistente de instalación de {{ site.data.keys.mf_server }} utiliza IBM Installation Manager para colocar todos los componentes en el servidor.  Las herramientas y bibliotecas que también están instaladas requieren desplegar los componentes del servidor {{ site.data.keys.product }}
+al servidor de aplicaciones.  Se recomienda que no se instale todos los componentes en la misma instancia del servidor de aplicaciones, excepto en caso de un servidor de desarrollo. Las herramientas de desarrollo permiten la selección de los componentes que se deben instalar.  Consulte[Flujos de red y topologías](production/prod-env/topologies) para considerar algunos puntos antes de instalar el servidor.
 
 Lea más adelante, para obtener información sobre la preparación e instalación de {{ site.data.keys.mf_server }} y otros servicios opcionales para su entorno específico. Para una configuración sencilla, lea el tutorial [Configurar una prueba o entorno de producción ](production).
 
-* [Verificación de requisitos previos](production/#prerequisites)
-* [{{ site.data.keys.mf_server }} descripción general de componentes ](production/topologies)
+* [Verificación de requisitos previos](production/prod-env/prereqs)
+* [{{ site.data.keys.mf_server }} descripción general de componentes ](production/prod-env/topologies)
 * Los factores que deben considerarse antes de cargar las herramientas y bibliotecas para desplegar los componentes de MobileFirst Server opcionalmente 
   * licencia de señal
   * MobileFirst Foundation Application Centre
@@ -61,8 +62,8 @@ Lea más adelante, para obtener información sobre la preparación e instalació
   * el uso del asistente de instalación IBM Installation Manager 
   * la ejecución de IBM Installation Manager en la línea de mandatos 
   * el uso del archivo de respuestas XML, instalación silenciosa 
-* [Configuración base de datos de fondo para componentes de MobileFirst Foundation Server ](production/databases)
-* [Instalación de MobileFirst Server en un servidor de aplicaciones](production/appserver)
+* [Configuración base de datos de fondo para componentes de MobileFirst Foundation Server ](production/prod-env/databases)
+* [Instalación de MobileFirst Server en un servidor de aplicaciones](production/prod-env/appserver)
 * [Configuración de MobileFirst Server](production/server-configuration)
 * [Instalación de MobileFirst Analytics Server](production/analytics/installation)
 * [Instalación de Application Center](production/appcenter)
@@ -73,8 +74,8 @@ Lea más adelante, para obtener información sobre la preparación e instalació
 
 Obtenga más información sobre el proceso de instalación de {{ site.data.keys.mf_server }} siguiendo las instrucciones para crear un clúster funcional de {{ site.data.keys.mf_server }} con dos nodos en el perfil de WebSphere Application Server Liberty. La instalación puede completarse utilizando herramientas gráficas (GUI) o líneas de mandatos.
 
-* [La instalación del modo GUI con IBM Installation Manager y la herramienta de configuración del servidor ](production/tutorials/graphical-mode).
-* [Instalación de la línea de mandatos con la herramienta de línea de mandatos](production/tutorials/command-line).
+* [La instalación del modo GUI con IBM Installation Manager y la herramienta de configuración del servidor ](production/simple-install/tutorials/graphical-mode).
+* [Instalación de la línea de mandatos con la herramienta de línea de mandatos](production/simple-install/tutorials/command-line).
 
 Después de completar la instalación mediante uno de los dos métodos anteriores, podría necesitarse la [configuración](production/server-configuration) posterior según los requisitos.
 

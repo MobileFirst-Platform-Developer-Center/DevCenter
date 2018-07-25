@@ -15,7 +15,7 @@ weight: 2
   <div class="panel-body">
   <p>以下の可能性を調べてください。</p>
   <ul>
-    <li>{{ site.data.keys.mf_analytics_server }}にログを転送する {{ site.data.keys.mf_server }} を指すようにアプリケーションが設定されていることを確認します。<code>mfpclient.plist</code> (iOS) ファイル、<code>mfpclient.properties</code> (Android) ファイル、または <code>config.xml</code> (Cordova) ファイルで必ず以下の値を設定するようにしてください。
+    <li>{{ site.data.keys.mf_analytics_server }}にログを転送する {{ site.data.keys.mf_server }} を指すようにアプリケーションが設定されていることを確認します。 <code>mfpclient.plist</code> (iOS) ファイル、<code>mfpclient.properties</code> (Android) ファイル、または <code>config.xml</code> (Cordova) ファイルで必ず以下の値を設定するようにしてください。
 
 {% highlight xml %}
 protocol = http または https
@@ -51,7 +51,7 @@ wlServerContext = デフォルトでは「/mfp/」
 <div class="panel panel-default">
   <div class="panel-heading"><h4>「異常終了の概要」表には異常終了のデータがありますが、「異常終了の要約」表には何もありません。なぜですか?</h4></div>
   <div class="panel-body">
-    <p>アプリケーションが再度実行されたら、異常終了のログをサーバーに送信する必要があります。異常終了の後、アプリケーションがログを送信していることを確認します。念のため、アプリケーションの開始時にログを送信して、前に未送信の情報があれば報告されるようにしてください。</p>
+    <p>アプリケーションが再度実行されたら、異常終了のログをサーバーに送信する必要があります。 異常終了の後、アプリケーションがログを送信していることを確認します。 念のため、アプリケーションの開始時にログを送信して、前に未送信の情報があれば報告されるようにしてください。</p>
   </div>
 </div>
 
@@ -136,7 +136,7 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 </p>
 
     <ul>
-        <li>この状況は、要求を処理するための <code>Executor</code> スレッドを WebSphere Liberty が使い尽くしたために発生します。これによってデッドロック状況が発生します。</li>
+        <li>この状況は、要求を処理するための <code>Executor</code> スレッドを WebSphere Liberty が使い尽くしたために発生します。 これによってデッドロック状況が発生します。</li>
 
         <li><a href="https://developer.ibm.com/wasdev/docs/was-liberty-threading-and-why-you-probably-dont-need-to-tune-it/" target="_blank">Liberty コア・スレッド</a>のデフォルトの数は、ハードウェア・スレッドの数です。
 </li>
@@ -152,3 +152,9 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
     </ul>
   </div>
 </div>
+
+## 追加参照
+{: #additional_references}
+
+* [MobileFirst Analytics 実動クラスターのセットアップのベスト・プラクティス](../../analytics/bestpractices-prod/)
+* [{{ site.data.keys.mf_analytics_server }} に関するよくある質問](../../analytics/bestpractices-prod/faq/)

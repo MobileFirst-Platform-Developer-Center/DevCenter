@@ -15,7 +15,7 @@ weight: 2
   <div class="panel-body">
   <p>检查以下可能性。</p>
   <ul>
-    <li>验证您的应用程序是否已设置为指向 {{ site.data.keys.mf_server }}，此服务器会将日志转发至 {{ site.data.keys.mf_analytics_server }}。确保在 <code>mfpclient.plist</code> (iOS)、<code>mfpclient.properties</code> (Android) 或 <code>config.xml</code> (Cordova) 文件中设置了以下值。
+    <li>验证您的应用程序是否已设置为指向 {{ site.data.keys.mf_server }}，此服务器会将日志转发至 {{ site.data.keys.mf_analytics_server }}。 确保在 <code>mfpclient.plist</code> (iOS)、<code>mfpclient.properties</code> (Android) 或 <code>config.xml</code> (Cordova) 文件中设置了以下值。
 
 {% highlight xml %}
 protocol = http or https
@@ -51,7 +51,7 @@ wlServerContext = by default "/mfp/"
 <div class="panel panel-default">
   <div class="panel-heading"><h4>为何在“崩溃概述”表中出现崩溃数据，但在“崩溃摘要”表中却未显示任何数据？</h4></div>
   <div class="panel-body">
-    <p>在应用程序恢复运行后，必须将崩溃日志发送至服务器。验证您的应用程序在崩溃后是否发送了日志。为安全起见，在应用程序启动时发送日志以确保报告了任何先前未发送的信息。</p>
+    <p>在应用程序恢复运行后，必须将崩溃日志发送至服务器。 验证您的应用程序在崩溃后是否发送了日志。 为安全起见，在应用程序启动时发送日志以确保报告了任何先前未发送的信息。</p>
   </div>
 </div>
 
@@ -136,7 +136,7 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 </p>
 
     <ul>
-        <li>发生此情况的原因是 WebSphere Liberty 的 <code>Executor</code> 线程不足，以致于无法为这些请求提供服务。这将导致死锁情况。</li>
+        <li>发生此情况的原因是 WebSphere Liberty 的 <code>Executor</code> 线程不足，以致于无法为这些请求提供服务。 这将导致死锁情况。</li>
 
         <li><a href="https://developer.ibm.com/wasdev/docs/was-liberty-threading-and-why-you-probably-dont-need-to-tune-it/" target="_blank">Liberty 核心线程</a>的缺省数量等于硬件线程的数量。
 </li>
@@ -152,3 +152,9 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
     </ul>
   </div>
 </div>
+
+## 其他参考资料
+{: #additional_references}
+
+* [用于设置 MobileFirst Analytics 生产集群的最佳实践](../../analytics/bestpractices-prod/)
+* [与 {{ site.data.keys.mf_analytics_server }} 相关的常见问题及解答](../../analytics/bestpractices-prod/faq/)

@@ -174,7 +174,7 @@ Application Center는 회사 계정과 함께 제공되는 회사 인증서를 �
 {: #for-windows-store-apps-for-windows-81-pro }
 * **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore. zip** 파일은 Application Center 클라이언트의 실행 파일을 포함합니다. 이 파일을 클라이언트 컴퓨터에 분배하고 압축을 해제하십시오. 실행 가능 프로그램이 포함되어 있습니다.
 
-* Microsoft Windows 스토어를 사용하지 않고 Windows 스토어 앱(`appx` 파일 유형)을 설치하는 것을 앱 <em>사이드로딩</em>이라고 합니다. 앱을 사이드로드하려면, [앱 사이드로드 준비](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx)의 전제조건을 준수해야 합니다.
+* Microsoft Windows 스토어를 사용하지 않고 Windows 스토어 앱(`appx` 파일 유형)을 설치하는 것을 앱 <em>사이드로딩</em>이라고 합니다. 앱을 사이드로드하려면, [앱 사이드로드 준비](https://technet.microsoft.com/fr-fr/library/dn613842.aspx)의 전제조건을 준수해야 합니다. Windows 8.1.1 업데이트는 사이드로딩에 대한 전제조건을 간소화합니다. 자세한 정보는 [Windows 8.1.1 디바이스에 스토어 앱 사이드로딩]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx)을 참조하십시오.
 
 ## Application Center 콘솔에서 애플리케이션 관리
 {: #managing-applications-in-the-application-center-console }

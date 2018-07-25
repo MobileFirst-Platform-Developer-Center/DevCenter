@@ -1,0 +1,174 @@
+{
+  "coverage": "56.55%",
+  "expectCount": 122,
+  "actualCount": 69,
+  "files": {
+    "ibm-mobile-first/index.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        7,
+        8
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/index.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        4
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/lib/bytesToUuid.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        10
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/lib/md5-browser.js": {
+      "expectCount": 11,
+      "actualCount": 0,
+      "undocumentLines": [
+        24,
+        42,
+        63,
+        165,
+        184,
+        193,
+        200,
+        203,
+        206,
+        209,
+        212
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/lib/md5.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/lib/rng-browser.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        7
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/lib/rng.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        6
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/lib/sha1-browser.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        14,
+        18
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/lib/sha1.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/lib/v35.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        3,
+        13,
+        22
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/v1.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        13,
+        14,
+        17
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/v3.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/v4.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        4
+      ]
+    },
+    "ibm-mobile-first/node_modules/uuid/v5.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2
+      ]
+    },
+    "ibm-mobile-first/wlAnalytics.js": {
+      "expectCount": 12,
+      "actualCount": 10,
+      "undocumentLines": [
+        9,
+        38
+      ]
+    },
+    "ibm-mobile-first/wlAuthorizationManager.js": {
+      "expectCount": 7,
+      "actualCount": 6,
+      "undocumentLines": [
+        9
+      ]
+    },
+    "ibm-mobile-first/wlClient.js": {
+      "expectCount": 12,
+      "actualCount": 11,
+      "undocumentLines": [
+        9
+      ]
+    },
+    "ibm-mobile-first/wlLogger.js": {
+      "expectCount": 25,
+      "actualCount": 23,
+      "undocumentLines": [
+        9,
+        50
+      ]
+    },
+    "ibm-mobile-first/wlResourceRequest.js": {
+      "expectCount": 21,
+      "actualCount": 18,
+      "undocumentLines": [
+        9,
+        11,
+        39
+      ]
+    }
+  }
+}

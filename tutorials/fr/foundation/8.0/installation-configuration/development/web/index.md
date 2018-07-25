@@ -62,12 +62,12 @@ Pour que vous puissiez traiter les ressources de l'application Web, celles-ci do
 {: #building-the-maven-webapp-with-the-web-applications-resources }
 1. Placez les ressources de l'application Web (comme les fichiers HTML, CSS, JavaScript et image) dans le dossier **[MonAppWeb] → src → Main → webapp**.
 
-    > A partir de maintenant, le dossier **webapp** sera considéré comme l'emplacement de développement de l'application web.
+    > Le dossier **webapp** est désormais considéré comme l'emplacement de développement de l'application Web.
 
 2. Exécutez la commande `mvn clean install` pour générer un fichier .war contenant les ressources Web de l'application.  
    Le fichier .war généré est disponible dans le dossier **[MonAppWeb] target**.
    
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important :** vous devez exécuter la commande `mvn clean install` à chaque fois que vous mettez à jour une ressource Web.
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important :** vous devez exécuter la commande `mvn clean install` dès que vous mettez à jour une ressource Web.
 
 ### Ajout de l'application Web Maven sur le serveur d'applications
 {: #adding-the-maven-webapp-to-the-application-server }
