@@ -638,7 +638,8 @@ collection.sync = {
 Download the JSONStoreSync adapter from <a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">here</a>, configure cloudant credentials in path ‘src/main/adapter-resources/adapter.xml’ and deploy it in your MobileFirst server.
 Configure the credentials to the backend Cloudant database also through the mfpconsole like below :
 
-< Pics from blog to come here >
+|---------------------------|-------------------------|
+|![Configure Cloudant]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/configure-cloudant.png)    |   ![Cloudant credentials]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/CloudantCreds.jpg)|
 
 #### Few points to consider before using this feature
 This feature is available for Android, iOS, cordova-android and cordova-ios only.
