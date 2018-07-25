@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">ibm-mobile-first/wlClient.js | react-native-ibm-mobilefirst</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="## Getting started"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="react-native-ibm-mobilefirst"><meta property="twitter:description" content="## Getting started"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a href="https://github.ibm.com/MobileFirst/mfp-react-native">Repository</a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html">WLAnalytics</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager.html">WLAuthorizationManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlClient.js~WLClient.html">WLClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlLogger.js~WLLogger.html">WLLogger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html">WLResourceRequest</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">ibm-mobile-first/wlClient.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, { Component } from &apos;react&apos;;
+import {
+  Platform,
+  NativeModules,
+  NativeAppEventEmitter,
+  DeviceEventEmitter
+} from &apos;react-native&apos;;
+
+var wlClient = NativeModules.RNWLClient;
+
+
+if (Platform.OS === &apos;ios&apos;){
+  listener = NativeAppEventEmitter;
+}else{
+  listener = DeviceEventEmitter;
+}
+
+/**
+ *  This collection of topics lists the public methods of the IBM&#xAE; MobileFirst&#xAE; runtime client API 
+* for mobile apps, desktop, and web. WL.Client is a JavaScript client library that provides access to IBM MobileFirst capabilities. You can use WL.Client to perform the following types of functions:
+*/
+class WLClient{
+
+ /** 
+  * @ignore
+  */
+  constructor(){
+    if (WLClient.instance ){
+      return WLClient.instance; 
+    }
+    WLClient.instance = this ; 
+    // DeviceEventEmitter.addListener(&apos;mobileFirstExceptionEvent&apos;, function(e: Event) {
+    //   console.error(&quot;Exception occurred &quot;);
+    //   console.error(&quot;Message : &quot; + e.message);
+    //   console.error(&quot;Cause : &quot; + e.cause);
+    // });
+    return WLClient.instance ;
+  }
+
+  /**
+  * Adds a HTTP header to all requests made by the MobileFirst SDK. 
+  * Use the WLClient.removeGlobalHeader API to stop adding the header to further requests 
+  * @param {string} name - Name of the HTTP header 
+  * @param {string} value  - The value of the HTTP header
+  */
+  addGlobalHeader(name,value){
+    wlClient.addGlobalHeader(name,value);
+  }
+
+  /**
+   * Send an answer back to the security check that triggered this challenge. 
+   * The answer should be in a JSON format.
+   * @param {string} securityCheckName - The security check name that represents the challenge. Used to identify which security check requires authentication.
+   * @param {object} answer - The challenge answer to be returned to the server. For example, this could be credentials collected from the user. 
+   */
+  submitChallengeAnswer(securityCheckName, answer) { 
+    console.log(&quot;Submitting challenge answer from JS &quot;);
+    wlClient.submitChallengeAnswer(securityCheckName, answer) ;
+  }
+
+  /**
+   * Gets the display name of the device. 
+   * The display name is retrieved from the MobileFirst Server registration data. 
+   * You can see the device display name in the Devices section of the MobileFirst Console.
+   * 
+   * @return {Promise&lt;string&gt;} The display name of the device. For example, &quot;Sam&apos;s iPhone&quot;
+   */
+  async getDeviceDisplayName(){ 
+    var deviceName  = await wlClient.getDeviceDisplayName();
+    return deviceName;
+  }
+
+  /**
+   * Sets the friendly name of the device.
+   * You can see the device display name in the Devices section of the MobileFirst console.
+   * @param {string} deviceDisplayName - The friendly name to be set for the device.
+   */
+  async setDeviceDisplayName(deviceDisplayName){ 
+    var response  = await wlClient.setDeviceDisplayName(deviceDisplayName);
+    return response;
+  }
+
+  /**
+   * Returns the current MobileFirst Platform server URL. 
+   * You can define the server URL in the mfpclient.properties (Android) / mfpclient.plist (iOS) or by calling the WLClient.setServerUrl API
+   * @return {Promise&lt;string&gt;} The URL of the current MobileFirst Platform server. 
+   */
+  async getServerUrl(){
+    var serverUrl = await  wlClient.getServerUrl(); 
+    return serverUrl ; 
+  }
+
+  /**
+   * 
+   * @param {string} serverUrl - The URL of the MobileFirst Platform server to point to. 
+   * @example 
+   * var newserverurl = &apos;https://mobilefoundation-newserver.mybluemix.net:443/mfp&apos; ;
+   * await WLClient.setServerUrl(newserverurl);
+   */
+  async setServerUrl(serverUrl){
+    var response = await  wlClient.setServerUrl(serverUrl); 
+    return response ; 
+  }
+
+  /**
+   * The number of seconds between which a heartbeat request is sent to the MobileFirst server to keep the connection alive. 
+   * The default interval is 7 minutes or 420 seconds. Heartbeats are sent only when the app is in the foreground.
+   * @param {number} heartbeatIntervalInSeconds - Heartbeat interval value in seconds
+   */
+  setHeartbeatInterval(heartbeatIntervalInSeconds){
+    wlClient.setHeartbeatInterval(heartbeatIntervalInSeconds);
+  }
+
+  /**
+   * Pins the host X509 certificate public key to the client application. 
+   * Secured calls to the pinned remote host will be checked for a public key match. 
+   * Secured calls to other hosts containing other certificates will be rejected. 
+   * Some mobile operating systems might cache the certificate validation check results. 
+   * Your app must call the certificate pinning method before making a secured request. 
+   * Calling this method a second time overrides any previous pinning operation.
+   * The certificates must be in DER format. When multiple certificates are pinned, a secured call is checked for a match with any one of the certificates. 
+   * @param {string[]} certificateFileNames - The list of paths to the certificate files. On Android this will be under the assets folder. 
+   */
+  pinTrustedCertificatesPublicKey(certificateFileNames) { 
+    wlClient.pinTrustedCertificatesPublicKey(certificateFileNames);
+  }
+
+  /**
+   * Register a challenge handler to handle act upon challenges provided for a given security check.
+   * @param {ChallengeHandler} challengeHandlerClass - The challenge handler object implementing the methods of a SecurityCheck Challenge handler
+   * @param {string} securityCheckName - The name of the security check for which this challenge handler must respond.
+   * @example
+   * 
+   * var userLoginCH = new UserLoginCH(); 
+   * WLClient.registerChallengeHandler(userLoginCH ,&quot;UserLogin&quot;) ; 
+   * 
+   * class UserLoginCH { 
+   * 
+   * constructor() {} 
+   * 
+   * handleChallenge(params){
+   *    // Gather credentials from the user
+   *    WLClient.submitChallengeAnswer (credentials); 
+   * }
+   * 
+   * handleSuccess(){
+   *    // Handle success. Perhaps show a success message or do nothing. 
+   * }
+   * 
+   * handleFailure(){
+   *     // Handle failure. Perhaps, show a failure message or ask for credentials again.
+   * }
+   * }
+   */
+  registerChallengeHandler(challengeHandlerClass , securityCheckName ) { 
+    wlClient.registerChallengeHandler(securityCheckName); 
+    // DeviceEventEmitter.addListener(&apos;handleChallengeEvent&apos;, function(e: Event) {
+    //   console.log(&quot;Event received in JS &quot; + JSON.stringify(e));
+    //   challengeHandlerClass.handleChallenge(e);
+    // });
+  }
+}
+
+export default WLClient
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">ibm-mobile-first/wlResourceRequest.js | react-native-ibm-mobilefirst</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="## Getting started"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="react-native-ibm-mobilefirst"><meta property="twitter:description" content="## Getting started"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a href="https://github.ibm.com/MobileFirst/mfp-react-native">Repository</a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html">WLAnalytics</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager.html">WLAuthorizationManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlClient.js~WLClient.html">WLClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlLogger.js~WLLogger.html">WLLogger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html">WLResourceRequest</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">ibm-mobile-first/wlResourceRequest.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React, { Component } from &apos;react&apos;;
+import {
+  Platform,
+  NativeModules,
+  NativeAppEventEmitter,
+  DeviceEventEmitter
+} from &apos;react-native&apos;;
+
+var uuidv4 =  require(&apos;uuid/v4&apos;); 
+
+var wlResourceRequest = NativeModules.RNWLResourceRequest;
+
+
+if (Platform.OS === &apos;ios&apos;){
+  listener = NativeAppEventEmitter;
+}else{
+  listener = DeviceEventEmitter;
+}
+
+/**
+ * This class encapsulates a resource request.
+ * The resource can be an adapter that is deployed to an instance of MobileFirst Server, or a resource on an external resource server.
+ * The class provides several send methods with different inputs for the body of a request.
+ * A successful response is any response with a status in the 2xx range from the server.  
+ * A response with a 4xx or 5xx status from the server is considered a failure.
+ */
+class WLResourceRequest{
+ 
+  /**
+   * Create a new ResourceRequest object to fetch data from a resource endpoint. 
+   * @constructor 
+   * @param {string} url - The URL of the resource - either as an absolute URL or a relative URL. 
+   * @param {string} method - The HTTP method to call the resource. Use &quot;GET&quot;, &quot;POST&quot;, &quot;HEAD&quot;, &quot;PUT&quot;, &quot;DELETE&quot;, &quot;OPTIONS&quot;, &quot;TRACE&quot;
+   * @param {number} timeout - Optional. The interval in milliseconds after which the call to the resource should time out. The default timeout is 30 seconds.
+   * @param {string} scope - Optional. The scope protecting the particular resource. 
+   */
+  constructor(url, method, timeout = 30000, scope = undefined){
+    console.log(&quot;Calling RNWLResourceRequest&quot;);
+    this.uuid = uuidv4(); 
+    console.log(&quot;UUID is &quot; + this.uuid);
+    wlResourceRequest.init(this.uuid,url, method, timeout, scope) ; 
+  }
+  
+  /**
+   * Initiate a request to the resource without any content in the body. 
+   * @return {Promise&lt;Map, String&gt;} If success, a map with the response from the server. If failure, more information about the error.
+   */
+  async send(){
+    console.log(&quot;Sending WLResourceRequest.send&quot;);
+    var response = await wlResourceRequest.send(this.uuid);
+    return response; 
+  }
+
+  /**
+   * Initiate a request to the resource with the specified JSON content in the body. 
+   * @param {Object} jsonObject - The body of the request in JSON format.
+   * @return {Promise&lt;Map, String&gt;} If success, a map with the response from the server. If failure, more information about the error.
+   */
+  
+  async sendWithJSON(jsonObject){
+    console.log(&quot;Sending WLResourceRequest.sendWithJSON&quot;);
+    var response = await wlResourceRequest.sendWithJSON(this.uuid,jsonObject);
+    return response; 
+  }
+
+  /**
+   * Initiate a request to the resource with the specified form parameters in the body. 
+   * @param {Object} formParams - The JSON object of form parameters in name-value pairs 
+   * @return {Promise&lt;Map, String&gt;} If success, a map with the response from the server. If failure, more information about the error.
+   */
+  async sendWithFormParameters(formParams){
+    console.log(&quot;Sending WLResourceRequest.sendWithFormParameters&quot;);
+    var response = await wlResourceRequest.sendWithFormParameters(this.uuid,formParams);
+    return response; 
+  }
+
+  /**
+   * Initiate a request to the resource with raw text in the body. 
+   * @param {string} body - The body that is part of the request. 
+   * @return {Promise&lt;Map, String&gt;} If success, a map with the response from the server. If failure, more information about the error.
+   */
+  async sendWithRequestBody(body){
+    console.log(&quot;Sending WLResourceRequest.sendWithRequestBody&quot;);
+    var response = await wlResourceRequest.sendWithRequestBody(this.uuid,body);
+    return response; 
+  }
+
+  /**
+   * Get the HTTP method of this resource request. 
+   * @return {Promise&lt;string&gt;} The HTTP method of the resource request. 
+   */
+  async getMethod(){
+    return await wlResourceRequest.getMethod(this.uuid);
+  }
+
+  /**
+   * Adds a header to this resource request.
+   * This method allows response headers to have multiple values.
+   * @param {string} name  - The name of the header to add to the request. 
+   * @param {string} value - The value of the header to add to the request. 
+   */
+  addHeader(name, value){
+    wlResourceRequest.addHeader(this.uuid,name, value);
+  }
+
+  /**
+   * Set the query parameters that should be added to this request. 
+   * @param {Object} params - A JSON object containing name value pairs of query parameters that should be added to this request. 
+   */
+  setQueryParameters(params) { 
+    wlResourceRequest.setQueryParameters(this.uuid,params);
+  }
+
+  /**
+   * Get all the query parameters that are added to this request.
+   * @return {Promise&lt;Object&gt;} A JSON object with query parameters 
+   */
+  async getQueryParameters(){
+    return await wlResourceRequest.getQueryParameters(this.uuid); 
+  }
+  
+  /**
+   * Get the query string of this request. 
+   * @return {Promise&lt;string&gt;} A string containing the query parameters as a query string. 
+   */
+  async getQueryString(){
+    return await wlResourceRequest.getQueryString(this.uuid); 
+  }
+  
+  /**
+   * Get a list of all the headers added to this request
+   * @return {Promise&lt;Object&gt;} A list of all HTTP headers that are added to this request. Note that each header can have one or more values. 
+   */
+  async getAllHeaders(){
+    var headers = await wlResourceRequest.getAllHeaders(this.uuid); 
+    return headers;
+  }
+
+  /**
+   * Get a list of values for a given header
+   * @param {string} headerName - The name of the header
+   * @return {Promise&lt;Array&gt;} - An array of values for the given header name. 
+   */
+  async getHeaders(headerName){
+    var headers = await wlResourceRequest.getHeaders(this.uuid,headerName); 
+    return headers;
+  }
+
+  /**
+   * Sets the specified headers for this resource request.
+   * For a header that is already set, the new value overwrites the previous value.
+   * @param {Object} headers - A JSON object containing a map of all headers to be set for this request. 
+   */
+  setHeaders(headers){
+    wlResourceRequest.setHeaders(this.uuid,headers); 
+    
+  }
+
+  /**
+   * Removes headers with the specified name for this resource request.
+   * @param {string} headerName - The name of the header to remove. 
+   */
+  removeHeaders(headerName){
+    wlResourceRequest.removeHeaders(this.uuid, headerName); 
+  }
+
+  /**
+   * Sets the expiration period (timeout) for this resource request.
+   * @param {number} timeoutInMilliseconds - The timeout in milliseconds
+   */
+  setTimeout(timeoutInMilliseconds){
+    wlResourceRequest.setTimeout(this.uuid, timeoutInMilliseconds);
+  }
+
+  /**
+   * Returns the URL for this resource request.
+   * @return {string} The absolute URL of the resource request.
+   */
+  async getUrl(){
+    return wlResourceRequest.getUrl(this.uuid);
+  }
+
+  /**
+   * Get the timeout for this resource request. 
+   * @return {number} - The timeout of this request in milliseconds. 
+   */
+  async getTimeout(){
+    return await wlResourceRequest.getTimeout(this.uuid);
+  }
+}
+
+export default  WLResourceRequest</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
