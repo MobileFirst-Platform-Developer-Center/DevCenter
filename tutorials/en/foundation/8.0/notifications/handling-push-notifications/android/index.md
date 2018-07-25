@@ -355,7 +355,6 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
     dependencies {
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
-       compile 'com.firebase:firebase-client-android:2.5.0'
        .....
 
     }
