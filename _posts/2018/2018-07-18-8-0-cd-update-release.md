@@ -17,7 +17,7 @@ We are pleased to announce the continuous delivery (CD) update 2 for Mobile Foun
 
 
 ## What is included in this CD update
-*This CD update is cumulative of fixes and features included in all previous iFixes released since the last CD update (8.0.0.0-MFPF-IF201711230641-CDUpdate-01). See the [list of iFixes](https://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/8-0-master-ifix-release/).*
+*This CD update is cumulative (includes fixes and features from 8.0.0.0-MFPF-IF201711230641-CDUpdate-01) and includes fixes and features included in all previous iFixes released since the last CD update (8.0.0.0-MFPF-IF201711230641-CDUpdate-01). See the [list of iFixes](https://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/8-0-master-ifix-release/).*
 
 ### Features included in this CD update
 *Below is the list of major features included in this CD update.*
@@ -180,4 +180,16 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
             </div>
         </div>      
     </div>
-</div>        
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="reactnative-sdk">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-reactnative-sdk" aria-expanded="true" aria-controls="collapse-reactnative-sdk"><b>React Native SDK</b></a>
+            </h4>
+        </div>
+        <div id="collapse-reactnative-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="reactnative-sdk">
+            <div class="panel-body">
+                    <b>react-native-ibm-mobilefirst 8.0.2018072413</b><br/>
+            </div>
+        </div>        
+    </div>
+  </div>        
