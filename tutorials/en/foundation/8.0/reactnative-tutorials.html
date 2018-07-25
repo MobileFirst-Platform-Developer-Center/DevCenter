@@ -144,8 +144,14 @@ Develop your React Native applications by following the tutorials bellow: set-up
      <h3><font color="DodgerBlue">Step 4:</font> Editing the application logic</b></h3>
      <ol>
        <li>Open the React native project in your code editor of choice.</li>
-       <li>Select the <b>App.js</b> file, which is located at project's root folder and paste the following code snippet, replacing the existing <code>WLAuthorizationManager.obtainAccessToken()</code> function:
+         <li> Import the <b>WLAuthorizationManager</b> class into your <b>App.js</b></li>
+         {% highlight javascript %}
+         import {WLAuthorizationManager} from 'react-native-ibm-mobilefirst';
+         {% endhighlight %}         
+         
+         <li>Select the <b>App.js</b> file, which is located at project's root folder and paste the following code snippet, replacing the existing <code>WLAuthorizationManager.obtainAccessToken()</code> function:
          <blockquote>See the React Native Client-side API references <a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/api/client-side-api/reactnative/client/">here</a>.</blockquote>
+         
          {% highlight javascript %}
            WLAuthorizationManager.obtainAccessToken("").then(
                (token) => {
