@@ -1,860 +1,794 @@
 window.esdocSearchIndex = [
   [
-    "react-native-ibm-mobilefirst/ibm-mobile-first/wlanalytics.js~wlanalytics",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html",
-    "<span>WLAnalytics</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst/ibm-mobile-first/wlAnalytics.js</span>",
+    "react-native-ibm-mobilefirst~wlanalytics",
+    "class/js/wlAnalytics.js~WLAnalytics.html",
+    "<span>WLAnalytics</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst</span>",
     "class"
   ],
   [
-    "react-native-ibm-mobilefirst/ibm-mobile-first/wlauthorizationmanager.js~wlauthorizationmanager",
-    "class/ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager.html",
-    "<span>WLAuthorizationManager</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst/ibm-mobile-first/wlAuthorizationManager.js</span>",
+    "react-native-ibm-mobilefirst~wlauthorizationmanager",
+    "class/js/wlAuthorizationManager.js~WLAuthorizationManager.html",
+    "<span>WLAuthorizationManager</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst</span>",
     "class"
   ],
   [
-    "react-native-ibm-mobilefirst/ibm-mobile-first/wlclient.js~wlclient",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html",
-    "<span>WLClient</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst/ibm-mobile-first/wlClient.js</span>",
+    "react-native-ibm-mobilefirst~wlclient",
+    "class/js/wlClient.js~WLClient.html",
+    "<span>WLClient</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst</span>",
     "class"
   ],
   [
-    "react-native-ibm-mobilefirst/ibm-mobile-first/wllogger.js~wllogger",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html",
-    "<span>WLLogger</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst/ibm-mobile-first/wlLogger.js</span>",
+    "react-native-ibm-mobilefirst~wllogger",
+    "class/js/wlLogger.js~WLLogger.html",
+    "<span>WLLogger</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst</span>",
     "class"
   ],
   [
-    "react-native-ibm-mobilefirst/ibm-mobile-first/wlresourcerequest.js~wlresourcerequest",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html",
-    "<span>WLResourceRequest</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst/ibm-mobile-first/wlResourceRequest.js</span>",
+    "react-native-ibm-mobilefirst~wlresourcerequest",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html",
+    "<span>WLResourceRequest</span> <span class=\"search-result-import-path\">react-native-ibm-mobilefirst</span>",
     "class"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~array",
+    "js/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
-    "ibm-mobile-first/.external-ecmascript.js~Array",
+    "js/.external-ecmascript.js~Array",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~arraybuffer",
+    "js/.external-ecmascript.js~arraybuffer",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
-    "ibm-mobile-first/.external-ecmascript.js~ArrayBuffer",
+    "js/.external-ecmascript.js~ArrayBuffer",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~boolean",
+    "js/.external-ecmascript.js~boolean",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "ibm-mobile-first/.external-ecmascript.js~Boolean",
+    "js/.external-ecmascript.js~Boolean",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~dataview",
+    "js/.external-ecmascript.js~dataview",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
-    "ibm-mobile-first/.external-ecmascript.js~DataView",
+    "js/.external-ecmascript.js~DataView",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~date",
+    "js/.external-ecmascript.js~date",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
-    "ibm-mobile-first/.external-ecmascript.js~Date",
+    "js/.external-ecmascript.js~Date",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~error",
+    "js/.external-ecmascript.js~error",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
-    "ibm-mobile-first/.external-ecmascript.js~Error",
+    "js/.external-ecmascript.js~Error",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~evalerror",
+    "js/.external-ecmascript.js~evalerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
-    "ibm-mobile-first/.external-ecmascript.js~EvalError",
+    "js/.external-ecmascript.js~EvalError",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~float32array",
+    "js/.external-ecmascript.js~float32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
-    "ibm-mobile-first/.external-ecmascript.js~Float32Array",
+    "js/.external-ecmascript.js~Float32Array",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~float64array",
+    "js/.external-ecmascript.js~float64array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
-    "ibm-mobile-first/.external-ecmascript.js~Float64Array",
+    "js/.external-ecmascript.js~Float64Array",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~function",
+    "js/.external-ecmascript.js~function",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "ibm-mobile-first/.external-ecmascript.js~Function",
+    "js/.external-ecmascript.js~Function",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~generator",
+    "js/.external-ecmascript.js~generator",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
-    "ibm-mobile-first/.external-ecmascript.js~Generator",
+    "js/.external-ecmascript.js~Generator",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~generatorfunction",
+    "js/.external-ecmascript.js~generatorfunction",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
-    "ibm-mobile-first/.external-ecmascript.js~GeneratorFunction",
+    "js/.external-ecmascript.js~GeneratorFunction",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~infinity",
+    "js/.external-ecmascript.js~infinity",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
-    "ibm-mobile-first/.external-ecmascript.js~Infinity",
+    "js/.external-ecmascript.js~Infinity",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~int16array",
+    "js/.external-ecmascript.js~int16array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
-    "ibm-mobile-first/.external-ecmascript.js~Int16Array",
+    "js/.external-ecmascript.js~Int16Array",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~int32array",
+    "js/.external-ecmascript.js~int32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
-    "ibm-mobile-first/.external-ecmascript.js~Int32Array",
+    "js/.external-ecmascript.js~Int32Array",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~int8array",
+    "js/.external-ecmascript.js~int8array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
-    "ibm-mobile-first/.external-ecmascript.js~Int8Array",
+    "js/.external-ecmascript.js~Int8Array",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~internalerror",
+    "js/.external-ecmascript.js~internalerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
-    "ibm-mobile-first/.external-ecmascript.js~InternalError",
+    "js/.external-ecmascript.js~InternalError",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~json",
+    "js/.external-ecmascript.js~json",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
-    "ibm-mobile-first/.external-ecmascript.js~JSON",
+    "js/.external-ecmascript.js~JSON",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~map",
+    "js/.external-ecmascript.js~map",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
-    "ibm-mobile-first/.external-ecmascript.js~Map",
+    "js/.external-ecmascript.js~Map",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~nan",
+    "js/.external-ecmascript.js~nan",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
-    "ibm-mobile-first/.external-ecmascript.js~NaN",
+    "js/.external-ecmascript.js~NaN",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~number",
+    "js/.external-ecmascript.js~number",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "ibm-mobile-first/.external-ecmascript.js~Number",
+    "js/.external-ecmascript.js~Number",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~object",
+    "js/.external-ecmascript.js~object",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "ibm-mobile-first/.external-ecmascript.js~Object",
+    "js/.external-ecmascript.js~Object",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~promise",
+    "js/.external-ecmascript.js~promise",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
-    "ibm-mobile-first/.external-ecmascript.js~Promise",
+    "js/.external-ecmascript.js~Promise",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~proxy",
+    "js/.external-ecmascript.js~proxy",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
-    "ibm-mobile-first/.external-ecmascript.js~Proxy",
+    "js/.external-ecmascript.js~Proxy",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~rangeerror",
+    "js/.external-ecmascript.js~rangeerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
-    "ibm-mobile-first/.external-ecmascript.js~RangeError",
+    "js/.external-ecmascript.js~RangeError",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~referenceerror",
+    "js/.external-ecmascript.js~referenceerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
-    "ibm-mobile-first/.external-ecmascript.js~ReferenceError",
+    "js/.external-ecmascript.js~ReferenceError",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~reflect",
+    "js/.external-ecmascript.js~reflect",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
-    "ibm-mobile-first/.external-ecmascript.js~Reflect",
+    "js/.external-ecmascript.js~Reflect",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~regexp",
+    "js/.external-ecmascript.js~regexp",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
-    "ibm-mobile-first/.external-ecmascript.js~RegExp",
+    "js/.external-ecmascript.js~RegExp",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~set",
+    "js/.external-ecmascript.js~set",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
-    "ibm-mobile-first/.external-ecmascript.js~Set",
+    "js/.external-ecmascript.js~Set",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~string",
+    "js/.external-ecmascript.js~string",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "ibm-mobile-first/.external-ecmascript.js~String",
+    "js/.external-ecmascript.js~String",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~symbol",
+    "js/.external-ecmascript.js~symbol",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
-    "ibm-mobile-first/.external-ecmascript.js~Symbol",
+    "js/.external-ecmascript.js~Symbol",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~syntaxerror",
+    "js/.external-ecmascript.js~syntaxerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
-    "ibm-mobile-first/.external-ecmascript.js~SyntaxError",
+    "js/.external-ecmascript.js~SyntaxError",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~typeerror",
+    "js/.external-ecmascript.js~typeerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
-    "ibm-mobile-first/.external-ecmascript.js~TypeError",
+    "js/.external-ecmascript.js~TypeError",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~urierror",
+    "js/.external-ecmascript.js~urierror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
-    "ibm-mobile-first/.external-ecmascript.js~URIError",
+    "js/.external-ecmascript.js~URIError",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~uint16array",
+    "js/.external-ecmascript.js~uint16array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
-    "ibm-mobile-first/.external-ecmascript.js~Uint16Array",
+    "js/.external-ecmascript.js~Uint16Array",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~uint32array",
+    "js/.external-ecmascript.js~uint32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
-    "ibm-mobile-first/.external-ecmascript.js~Uint32Array",
+    "js/.external-ecmascript.js~Uint32Array",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~uint8array",
+    "js/.external-ecmascript.js~uint8array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
-    "ibm-mobile-first/.external-ecmascript.js~Uint8Array",
+    "js/.external-ecmascript.js~Uint8Array",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~uint8clampedarray",
+    "js/.external-ecmascript.js~uint8clampedarray",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
-    "ibm-mobile-first/.external-ecmascript.js~Uint8ClampedArray",
+    "js/.external-ecmascript.js~Uint8ClampedArray",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~weakmap",
+    "js/.external-ecmascript.js~weakmap",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
-    "ibm-mobile-first/.external-ecmascript.js~WeakMap",
+    "js/.external-ecmascript.js~WeakMap",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~weakset",
+    "js/.external-ecmascript.js~weakset",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
-    "ibm-mobile-first/.external-ecmascript.js~WeakSet",
+    "js/.external-ecmascript.js~WeakSet",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~boolean",
+    "js/.external-ecmascript.js~boolean",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "ibm-mobile-first/.external-ecmascript.js~boolean",
+    "js/.external-ecmascript.js~boolean",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~function",
+    "js/.external-ecmascript.js~function",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "ibm-mobile-first/.external-ecmascript.js~function",
+    "js/.external-ecmascript.js~function",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~null",
+    "js/.external-ecmascript.js~null",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
-    "ibm-mobile-first/.external-ecmascript.js~null",
+    "js/.external-ecmascript.js~null",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~number",
+    "js/.external-ecmascript.js~number",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "ibm-mobile-first/.external-ecmascript.js~number",
+    "js/.external-ecmascript.js~number",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~object",
+    "js/.external-ecmascript.js~object",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "ibm-mobile-first/.external-ecmascript.js~object",
+    "js/.external-ecmascript.js~object",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~string",
+    "js/.external-ecmascript.js~string",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "ibm-mobile-first/.external-ecmascript.js~string",
+    "js/.external-ecmascript.js~string",
     "external"
   ],
   [
-    "ibm-mobile-first/.external-ecmascript.js~undefined",
+    "js/.external-ecmascript.js~undefined",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
-    "ibm-mobile-first/.external-ecmascript.js~undefined",
+    "js/.external-ecmascript.js~undefined",
     "external"
   ],
   [
-    "ibm-mobile-first/docs/script/inherited-summary.js",
-    "file/ibm-mobile-first/docs/script/inherited-summary.js.html",
-    "ibm-mobile-first/docs/script/inherited-summary.js",
+    "js/wlanalytics.js",
+    "file/js/wlAnalytics.js.html",
+    "js/wlAnalytics.js",
     "file"
   ],
   [
-    "ibm-mobile-first/docs/script/inner-link.js",
-    "file/ibm-mobile-first/docs/script/inner-link.js.html",
-    "ibm-mobile-first/docs/script/inner-link.js",
+    "js/wlanalytics.js~wlanalytics#adddeviceeventlistener",
+    "class/js/wlAnalytics.js~WLAnalytics.html#instance-method-addDeviceEventListener",
+    "js/wlAnalytics.js~WLAnalytics#addDeviceEventListener",
+    "method"
+  ],
+  [
+    "js/wlanalytics.js~wlanalytics#disable",
+    "class/js/wlAnalytics.js~WLAnalytics.html#instance-method-disable",
+    "js/wlAnalytics.js~WLAnalytics#disable",
+    "method"
+  ],
+  [
+    "js/wlanalytics.js~wlanalytics#enable",
+    "class/js/wlAnalytics.js~WLAnalytics.html#instance-method-enable",
+    "js/wlAnalytics.js~WLAnalytics#enable",
+    "method"
+  ],
+  [
+    "js/wlanalytics.js~wlanalytics#log",
+    "class/js/wlAnalytics.js~WLAnalytics.html#instance-method-log",
+    "js/wlAnalytics.js~WLAnalytics#log",
+    "method"
+  ],
+  [
+    "js/wlanalytics.js~wlanalytics#removedeviceeventlistener",
+    "class/js/wlAnalytics.js~WLAnalytics.html#instance-method-removeDeviceEventListener",
+    "js/wlAnalytics.js~WLAnalytics#removeDeviceEventListener",
+    "method"
+  ],
+  [
+    "js/wlanalytics.js~wlanalytics#send",
+    "class/js/wlAnalytics.js~WLAnalytics.html#instance-method-send",
+    "js/wlAnalytics.js~WLAnalytics#send",
+    "method"
+  ],
+  [
+    "js/wlanalytics.js~wlanalytics#sendwithcallback",
+    "class/js/wlAnalytics.js~WLAnalytics.html#instance-method-sendWithCallback",
+    "js/wlAnalytics.js~WLAnalytics#sendWithCallback",
+    "method"
+  ],
+  [
+    "js/wlanalytics.js~wlanalytics#setusercontext",
+    "class/js/wlAnalytics.js~WLAnalytics.html#instance-method-setUserContext",
+    "js/wlAnalytics.js~WLAnalytics#setUserContext",
+    "method"
+  ],
+  [
+    "js/wlanalytics.js~wlanalytics#unsetusercontext",
+    "class/js/wlAnalytics.js~WLAnalytics.html#instance-method-unsetUserContext",
+    "js/wlAnalytics.js~WLAnalytics#unsetUserContext",
+    "method"
+  ],
+  [
+    "js/wlauthorizationmanager.js",
+    "file/js/wlAuthorizationManager.js.html",
+    "js/wlAuthorizationManager.js",
     "file"
   ],
   [
-    "ibm-mobile-first/docs/script/manual.js",
-    "file/ibm-mobile-first/docs/script/manual.js.html",
-    "ibm-mobile-first/docs/script/manual.js",
+    "js/wlauthorizationmanager.js~wlauthorizationmanager#clearaccesstoken",
+    "class/js/wlAuthorizationManager.js~WLAuthorizationManager.html#instance-method-clearAccessToken",
+    "js/wlAuthorizationManager.js~WLAuthorizationManager#clearAccessToken",
+    "method"
+  ],
+  [
+    "js/wlauthorizationmanager.js~wlauthorizationmanager#login",
+    "class/js/wlAuthorizationManager.js~WLAuthorizationManager.html#instance-method-login",
+    "js/wlAuthorizationManager.js~WLAuthorizationManager#login",
+    "method"
+  ],
+  [
+    "js/wlauthorizationmanager.js~wlauthorizationmanager#logout",
+    "class/js/wlAuthorizationManager.js~WLAuthorizationManager.html#instance-method-logout",
+    "js/wlAuthorizationManager.js~WLAuthorizationManager#logout",
+    "method"
+  ],
+  [
+    "js/wlauthorizationmanager.js~wlauthorizationmanager#obtainaccesstoken",
+    "class/js/wlAuthorizationManager.js~WLAuthorizationManager.html#instance-method-obtainAccessToken",
+    "js/wlAuthorizationManager.js~WLAuthorizationManager#obtainAccessToken",
+    "method"
+  ],
+  [
+    "js/wlclient.js",
+    "file/js/wlClient.js.html",
+    "js/wlClient.js",
     "file"
   ],
   [
-    "ibm-mobile-first/docs/script/patch-for-local.js",
-    "file/ibm-mobile-first/docs/script/patch-for-local.js.html",
-    "ibm-mobile-first/docs/script/patch-for-local.js",
+    "js/wlclient.js~wlclient#addglobalheader",
+    "class/js/wlClient.js~WLClient.html#instance-method-addGlobalHeader",
+    "js/wlClient.js~WLClient#addGlobalHeader",
+    "method"
+  ],
+  [
+    "js/wlclient.js~wlclient#getdevicedisplayname",
+    "class/js/wlClient.js~WLClient.html#instance-method-getDeviceDisplayName",
+    "js/wlClient.js~WLClient#getDeviceDisplayName",
+    "method"
+  ],
+  [
+    "js/wlclient.js~wlclient#getserverurl",
+    "class/js/wlClient.js~WLClient.html#instance-method-getServerUrl",
+    "js/wlClient.js~WLClient#getServerUrl",
+    "method"
+  ],
+  [
+    "js/wlclient.js~wlclient#pintrustedcertificatespublickey",
+    "class/js/wlClient.js~WLClient.html#instance-method-pinTrustedCertificatesPublicKey",
+    "js/wlClient.js~WLClient#pinTrustedCertificatesPublicKey",
+    "method"
+  ],
+  [
+    "js/wlclient.js~wlclient#registerchallengehandler",
+    "class/js/wlClient.js~WLClient.html#instance-method-registerChallengeHandler",
+    "js/wlClient.js~WLClient#registerChallengeHandler",
+    "method"
+  ],
+  [
+    "js/wlclient.js~wlclient#setdevicedisplayname",
+    "class/js/wlClient.js~WLClient.html#instance-method-setDeviceDisplayName",
+    "js/wlClient.js~WLClient#setDeviceDisplayName",
+    "method"
+  ],
+  [
+    "js/wlclient.js~wlclient#setheartbeatinterval",
+    "class/js/wlClient.js~WLClient.html#instance-method-setHeartbeatInterval",
+    "js/wlClient.js~WLClient#setHeartbeatInterval",
+    "method"
+  ],
+  [
+    "js/wlclient.js~wlclient#setserverurl",
+    "class/js/wlClient.js~WLClient.html#instance-method-setServerUrl",
+    "js/wlClient.js~WLClient#setServerUrl",
+    "method"
+  ],
+  [
+    "js/wlclient.js~wlclient#submitchallengeanswer",
+    "class/js/wlClient.js~WLClient.html#instance-method-submitChallengeAnswer",
+    "js/wlClient.js~WLClient#submitChallengeAnswer",
+    "method"
+  ],
+  [
+    "js/wllogger.js",
+    "file/js/wlLogger.js.html",
+    "js/wlLogger.js",
     "file"
   ],
   [
-    "ibm-mobile-first/docs/script/prettify/prettify.js",
-    "file/ibm-mobile-first/docs/script/prettify/prettify.js.html",
-    "ibm-mobile-first/docs/script/prettify/prettify.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/docs/script/pretty-print.js",
-    "file/ibm-mobile-first/docs/script/pretty-print.js.html",
-    "ibm-mobile-first/docs/script/pretty-print.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/docs/script/search.js",
-    "file/ibm-mobile-first/docs/script/search.js.html",
-    "ibm-mobile-first/docs/script/search.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/docs/script/search_index.js",
-    "file/ibm-mobile-first/docs/script/search_index.js.html",
-    "ibm-mobile-first/docs/script/search_index.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/docs/script/test-summary.js",
-    "file/ibm-mobile-first/docs/script/test-summary.js.html",
-    "ibm-mobile-first/docs/script/test-summary.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/index.js",
-    "file/ibm-mobile-first/index.js.html",
-    "ibm-mobile-first/index.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/index.js",
-    "file/ibm-mobile-first/node_modules/uuid/index.js.html",
-    "ibm-mobile-first/node_modules/uuid/index.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/lib/bytestouuid.js",
-    "file/ibm-mobile-first/node_modules/uuid/lib/bytesToUuid.js.html",
-    "ibm-mobile-first/node_modules/uuid/lib/bytesToUuid.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/lib/md5-browser.js",
-    "file/ibm-mobile-first/node_modules/uuid/lib/md5-browser.js.html",
-    "ibm-mobile-first/node_modules/uuid/lib/md5-browser.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/lib/md5.js",
-    "file/ibm-mobile-first/node_modules/uuid/lib/md5.js.html",
-    "ibm-mobile-first/node_modules/uuid/lib/md5.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/lib/rng-browser.js",
-    "file/ibm-mobile-first/node_modules/uuid/lib/rng-browser.js.html",
-    "ibm-mobile-first/node_modules/uuid/lib/rng-browser.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/lib/rng.js",
-    "file/ibm-mobile-first/node_modules/uuid/lib/rng.js.html",
-    "ibm-mobile-first/node_modules/uuid/lib/rng.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/lib/sha1-browser.js",
-    "file/ibm-mobile-first/node_modules/uuid/lib/sha1-browser.js.html",
-    "ibm-mobile-first/node_modules/uuid/lib/sha1-browser.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/lib/sha1.js",
-    "file/ibm-mobile-first/node_modules/uuid/lib/sha1.js.html",
-    "ibm-mobile-first/node_modules/uuid/lib/sha1.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/lib/v35.js",
-    "file/ibm-mobile-first/node_modules/uuid/lib/v35.js.html",
-    "ibm-mobile-first/node_modules/uuid/lib/v35.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/v1.js",
-    "file/ibm-mobile-first/node_modules/uuid/v1.js.html",
-    "ibm-mobile-first/node_modules/uuid/v1.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/v3.js",
-    "file/ibm-mobile-first/node_modules/uuid/v3.js.html",
-    "ibm-mobile-first/node_modules/uuid/v3.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/v4.js",
-    "file/ibm-mobile-first/node_modules/uuid/v4.js.html",
-    "ibm-mobile-first/node_modules/uuid/v4.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/node_modules/uuid/v5.js",
-    "file/ibm-mobile-first/node_modules/uuid/v5.js.html",
-    "ibm-mobile-first/node_modules/uuid/v5.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/wlanalytics.js",
-    "file/ibm-mobile-first/wlAnalytics.js.html",
-    "ibm-mobile-first/wlAnalytics.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#adddeviceeventlistener",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-method-addDeviceEventListener",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#addDeviceEventListener",
+    "js/wllogger.js~wllogger#constructor",
+    "class/js/wlLogger.js~WLLogger.html#instance-constructor-constructor",
+    "js/wlLogger.js~WLLogger#constructor",
     "method"
   ],
   [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#constructor",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-constructor-constructor",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#constructor",
+    "js/wllogger.js~wllogger#debug",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-debug",
+    "js/wlLogger.js~WLLogger#debug",
     "method"
   ],
   [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#disable",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-method-disable",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#disable",
+    "js/wllogger.js~wllogger#debugwithmetadata",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-debugWithMetadata",
+    "js/wlLogger.js~WLLogger#debugWithMetadata",
     "method"
   ],
   [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#enable",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-method-enable",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#enable",
+    "js/wllogger.js~wllogger#error",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-error",
+    "js/wlLogger.js~WLLogger#error",
     "method"
   ],
   [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#log",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-method-log",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#log",
+    "js/wllogger.js~wllogger#errorwithmetadata",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-errorWithMetadata",
+    "js/wlLogger.js~WLLogger#errorWithMetadata",
     "method"
   ],
   [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#removedeviceeventlistener",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-method-removeDeviceEventListener",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#removeDeviceEventListener",
+    "js/wllogger.js~wllogger#getcapture",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-getCapture",
+    "js/wlLogger.js~WLLogger#getCapture",
     "method"
   ],
   [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#send",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-method-send",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#send",
+    "js/wllogger.js~wllogger#getfilters",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-getFilters",
+    "js/wlLogger.js~WLLogger#getFilters",
     "method"
   ],
   [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#sendwithcallback",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-method-sendWithCallback",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#sendWithCallback",
+    "js/wllogger.js~wllogger#getlevel",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-getLevel",
+    "js/wlLogger.js~WLLogger#getLevel",
     "method"
   ],
   [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#setusercontext",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-method-setUserContext",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#setUserContext",
+    "js/wllogger.js~wllogger#getmaxfilesize",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-getMaxFileSize",
+    "js/wlLogger.js~WLLogger#getMaxFileSize",
     "method"
   ],
   [
-    "ibm-mobile-first/wlanalytics.js~wlanalytics#unsetusercontext",
-    "class/ibm-mobile-first/wlAnalytics.js~WLAnalytics.html#instance-method-unsetUserContext",
-    "ibm-mobile-first/wlAnalytics.js~WLAnalytics#unsetUserContext",
+    "js/wllogger.js~wllogger#info",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-info",
+    "js/wlLogger.js~WLLogger#info",
     "method"
   ],
   [
-    "ibm-mobile-first/wlauthorizationmanager.js",
-    "file/ibm-mobile-first/wlAuthorizationManager.js.html",
-    "ibm-mobile-first/wlAuthorizationManager.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/wlauthorizationmanager.js~wlauthorizationmanager#clearaccesstoken",
-    "class/ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager.html#instance-method-clearAccessToken",
-    "ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager#clearAccessToken",
+    "js/wllogger.js~wllogger#infowithmetadata",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-infoWithMetadata",
+    "js/wlLogger.js~WLLogger#infoWithMetadata",
     "method"
   ],
   [
-    "ibm-mobile-first/wlauthorizationmanager.js~wlauthorizationmanager#login",
-    "class/ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager.html#instance-method-login",
-    "ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager#login",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlauthorizationmanager.js~wlauthorizationmanager#logout",
-    "class/ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager.html#instance-method-logout",
-    "ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager#logout",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlauthorizationmanager.js~wlauthorizationmanager#obtainaccesstoken",
-    "class/ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager.html#instance-method-obtainAccessToken",
-    "ibm-mobile-first/wlAuthorizationManager.js~WLAuthorizationManager#obtainAccessToken",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js",
-    "file/ibm-mobile-first/wlClient.js.html",
-    "ibm-mobile-first/wlClient.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js~wlclient#addglobalheader",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html#instance-method-addGlobalHeader",
-    "ibm-mobile-first/wlClient.js~WLClient#addGlobalHeader",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js~wlclient#getdevicedisplayname",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html#instance-method-getDeviceDisplayName",
-    "ibm-mobile-first/wlClient.js~WLClient#getDeviceDisplayName",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js~wlclient#getserverurl",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html#instance-method-getServerUrl",
-    "ibm-mobile-first/wlClient.js~WLClient#getServerUrl",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js~wlclient#pintrustedcertificatespublickey",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html#instance-method-pinTrustedCertificatesPublicKey",
-    "ibm-mobile-first/wlClient.js~WLClient#pinTrustedCertificatesPublicKey",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js~wlclient#registerchallengehandler",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html#instance-method-registerChallengeHandler",
-    "ibm-mobile-first/wlClient.js~WLClient#registerChallengeHandler",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js~wlclient#setdevicedisplayname",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html#instance-method-setDeviceDisplayName",
-    "ibm-mobile-first/wlClient.js~WLClient#setDeviceDisplayName",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js~wlclient#setheartbeatinterval",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html#instance-method-setHeartbeatInterval",
-    "ibm-mobile-first/wlClient.js~WLClient#setHeartbeatInterval",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js~wlclient#setserverurl",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html#instance-method-setServerUrl",
-    "ibm-mobile-first/wlClient.js~WLClient#setServerUrl",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wlclient.js~wlclient#submitchallengeanswer",
-    "class/ibm-mobile-first/wlClient.js~WLClient.html#instance-method-submitChallengeAnswer",
-    "ibm-mobile-first/wlClient.js~WLClient#submitChallengeAnswer",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js",
-    "file/ibm-mobile-first/wlLogger.js.html",
-    "ibm-mobile-first/wlLogger.js",
-    "file"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#constructor",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-constructor-constructor",
-    "ibm-mobile-first/wlLogger.js~WLLogger#constructor",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#debug",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-debug",
-    "ibm-mobile-first/wlLogger.js~WLLogger#debug",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#debugwithmetadata",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-debugWithMetadata",
-    "ibm-mobile-first/wlLogger.js~WLLogger#debugWithMetadata",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#error",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-error",
-    "ibm-mobile-first/wlLogger.js~WLLogger#error",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#errorwithmetadata",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-errorWithMetadata",
-    "ibm-mobile-first/wlLogger.js~WLLogger#errorWithMetadata",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#getcapture",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-getCapture",
-    "ibm-mobile-first/wlLogger.js~WLLogger#getCapture",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#getfilters",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-getFilters",
-    "ibm-mobile-first/wlLogger.js~WLLogger#getFilters",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#getlevel",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-getLevel",
-    "ibm-mobile-first/wlLogger.js~WLLogger#getLevel",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#getmaxfilesize",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-getMaxFileSize",
-    "ibm-mobile-first/wlLogger.js~WLLogger#getMaxFileSize",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#info",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-info",
-    "ibm-mobile-first/wlLogger.js~WLLogger#info",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#infowithmetadata",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-infoWithMetadata",
-    "ibm-mobile-first/wlLogger.js~WLLogger#infoWithMetadata",
-    "method"
-  ],
-  [
-    "ibm-mobile-first/wllogger.js~wllogger#logtag",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-member-logTag",
-    "ibm-mobile-first/wlLogger.js~WLLogger#logTag",
+    "js/wllogger.js~wllogger#logtag",
+    "class/js/wlLogger.js~WLLogger.html#instance-member-logTag",
+    "js/wlLogger.js~WLLogger#logTag",
     "member"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#send",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-send",
-    "ibm-mobile-first/wlLogger.js~WLLogger#send",
+    "js/wllogger.js~wllogger#send",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-send",
+    "js/wlLogger.js~WLLogger#send",
     "method"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#setcapture",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-setCapture",
-    "ibm-mobile-first/wlLogger.js~WLLogger#setCapture",
+    "js/wllogger.js~wllogger#setcapture",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-setCapture",
+    "js/wlLogger.js~WLLogger#setCapture",
     "method"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#setfilters",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-setFilters",
-    "ibm-mobile-first/wlLogger.js~WLLogger#setFilters",
+    "js/wllogger.js~wllogger#setfilters",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-setFilters",
+    "js/wlLogger.js~WLLogger#setFilters",
     "method"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#setlevel",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-setLevel",
-    "ibm-mobile-first/wlLogger.js~WLLogger#setLevel",
+    "js/wllogger.js~wllogger#setlevel",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-setLevel",
+    "js/wlLogger.js~WLLogger#setLevel",
     "method"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#setmaxfilesize",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-setMaxFileSize",
-    "ibm-mobile-first/wlLogger.js~WLLogger#setMaxFileSize",
+    "js/wllogger.js~wllogger#setmaxfilesize",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-setMaxFileSize",
+    "js/wlLogger.js~WLLogger#setMaxFileSize",
     "method"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#trace",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-trace",
-    "ibm-mobile-first/wlLogger.js~WLLogger#trace",
+    "js/wllogger.js~wllogger#trace",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-trace",
+    "js/wlLogger.js~WLLogger#trace",
     "method"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#tracewithmetadata",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-traceWithMetadata",
-    "ibm-mobile-first/wlLogger.js~WLLogger#traceWithMetadata",
+    "js/wllogger.js~wllogger#tracewithmetadata",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-traceWithMetadata",
+    "js/wlLogger.js~WLLogger#traceWithMetadata",
     "method"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#updateconfigfromserver",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-updateConfigFromServer",
-    "ibm-mobile-first/wlLogger.js~WLLogger#updateConfigFromServer",
+    "js/wllogger.js~wllogger#updateconfigfromserver",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-updateConfigFromServer",
+    "js/wlLogger.js~WLLogger#updateConfigFromServer",
     "method"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#warn",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-warn",
-    "ibm-mobile-first/wlLogger.js~WLLogger#warn",
+    "js/wllogger.js~wllogger#warn",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-warn",
+    "js/wlLogger.js~WLLogger#warn",
     "method"
   ],
   [
-    "ibm-mobile-first/wllogger.js~wllogger#warnwithmetadata",
-    "class/ibm-mobile-first/wlLogger.js~WLLogger.html#instance-method-warnWithMetadata",
-    "ibm-mobile-first/wlLogger.js~WLLogger#warnWithMetadata",
+    "js/wllogger.js~wllogger#warnwithmetadata",
+    "class/js/wlLogger.js~WLLogger.html#instance-method-warnWithMetadata",
+    "js/wlLogger.js~WLLogger#warnWithMetadata",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js",
-    "file/ibm-mobile-first/wlResourceRequest.js.html",
-    "ibm-mobile-first/wlResourceRequest.js",
+    "js/wllogger.js~wllogger.debug",
+    "class/js/wlLogger.js~WLLogger.html#static-get-DEBUG",
+    "js/wlLogger.js~WLLogger.DEBUG",
+    "member"
+  ],
+  [
+    "js/wllogger.js~wllogger.error",
+    "class/js/wlLogger.js~WLLogger.html#static-get-ERROR",
+    "js/wlLogger.js~WLLogger.ERROR",
+    "member"
+  ],
+  [
+    "js/wllogger.js~wllogger.fatal",
+    "class/js/wlLogger.js~WLLogger.html#static-get-FATAL",
+    "js/wlLogger.js~WLLogger.FATAL",
+    "member"
+  ],
+  [
+    "js/wllogger.js~wllogger.info",
+    "class/js/wlLogger.js~WLLogger.html#static-get-INFO",
+    "js/wlLogger.js~WLLogger.INFO",
+    "member"
+  ],
+  [
+    "js/wllogger.js~wllogger.log",
+    "class/js/wlLogger.js~WLLogger.html#static-get-LOG",
+    "js/wlLogger.js~WLLogger.LOG",
+    "member"
+  ],
+  [
+    "js/wllogger.js~wllogger.trace",
+    "class/js/wlLogger.js~WLLogger.html#static-get-TRACE",
+    "js/wlLogger.js~WLLogger.TRACE",
+    "member"
+  ],
+  [
+    "js/wllogger.js~wllogger.warn",
+    "class/js/wlLogger.js~WLLogger.html#static-get-WARN",
+    "js/wlLogger.js~WLLogger.WARN",
+    "member"
+  ],
+  [
+    "js/wlresourcerequest.js",
+    "file/js/wlResourceRequest.js.html",
+    "js/wlResourceRequest.js",
     "file"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#addheader",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-addHeader",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#addHeader",
+    "js/wlresourcerequest.js~wlresourcerequest#addheader",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-addHeader",
+    "js/wlResourceRequest.js~WLResourceRequest#addHeader",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#constructor",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-constructor-constructor",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#constructor",
+    "js/wlresourcerequest.js~wlresourcerequest#constructor",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-constructor-constructor",
+    "js/wlResourceRequest.js~WLResourceRequest#constructor",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#getallheaders",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-getAllHeaders",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#getAllHeaders",
+    "js/wlresourcerequest.js~wlresourcerequest#getallheaders",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-getAllHeaders",
+    "js/wlResourceRequest.js~WLResourceRequest#getAllHeaders",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#getheaders",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-getHeaders",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#getHeaders",
+    "js/wlresourcerequest.js~wlresourcerequest#getheaders",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-getHeaders",
+    "js/wlResourceRequest.js~WLResourceRequest#getHeaders",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#getmethod",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-getMethod",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#getMethod",
+    "js/wlresourcerequest.js~wlresourcerequest#getmethod",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-getMethod",
+    "js/wlResourceRequest.js~WLResourceRequest#getMethod",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#getqueryparameters",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-getQueryParameters",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#getQueryParameters",
+    "js/wlresourcerequest.js~wlresourcerequest#getqueryparameters",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-getQueryParameters",
+    "js/wlResourceRequest.js~WLResourceRequest#getQueryParameters",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#getquerystring",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-getQueryString",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#getQueryString",
+    "js/wlresourcerequest.js~wlresourcerequest#getquerystring",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-getQueryString",
+    "js/wlResourceRequest.js~WLResourceRequest#getQueryString",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#gettimeout",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-getTimeout",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#getTimeout",
+    "js/wlresourcerequest.js~wlresourcerequest#gettimeout",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-getTimeout",
+    "js/wlResourceRequest.js~WLResourceRequest#getTimeout",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#geturl",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-getUrl",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#getUrl",
+    "js/wlresourcerequest.js~wlresourcerequest#geturl",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-getUrl",
+    "js/wlResourceRequest.js~WLResourceRequest#getUrl",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#removeheaders",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-removeHeaders",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#removeHeaders",
+    "js/wlresourcerequest.js~wlresourcerequest#removeheaders",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-removeHeaders",
+    "js/wlResourceRequest.js~WLResourceRequest#removeHeaders",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#send",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-send",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#send",
+    "js/wlresourcerequest.js~wlresourcerequest#send",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-send",
+    "js/wlResourceRequest.js~WLResourceRequest#send",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#sendwithformparameters",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-sendWithFormParameters",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#sendWithFormParameters",
+    "js/wlresourcerequest.js~wlresourcerequest#sendwithformparameters",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-sendWithFormParameters",
+    "js/wlResourceRequest.js~WLResourceRequest#sendWithFormParameters",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#sendwithjson",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-sendWithJSON",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#sendWithJSON",
+    "js/wlresourcerequest.js~wlresourcerequest#sendwithjson",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-sendWithJSON",
+    "js/wlResourceRequest.js~WLResourceRequest#sendWithJSON",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#sendwithrequestbody",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-sendWithRequestBody",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#sendWithRequestBody",
+    "js/wlresourcerequest.js~wlresourcerequest#sendwithrequestbody",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-sendWithRequestBody",
+    "js/wlResourceRequest.js~WLResourceRequest#sendWithRequestBody",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#setheaders",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-setHeaders",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#setHeaders",
+    "js/wlresourcerequest.js~wlresourcerequest#setheaders",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-setHeaders",
+    "js/wlResourceRequest.js~WLResourceRequest#setHeaders",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#setqueryparameters",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-setQueryParameters",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#setQueryParameters",
+    "js/wlresourcerequest.js~wlresourcerequest#setqueryparameters",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-setQueryParameters",
+    "js/wlResourceRequest.js~WLResourceRequest#setQueryParameters",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#settimeout",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-method-setTimeout",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#setTimeout",
+    "js/wlresourcerequest.js~wlresourcerequest#settimeout",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#instance-method-setTimeout",
+    "js/wlResourceRequest.js~WLResourceRequest#setTimeout",
     "method"
   ],
   [
-    "ibm-mobile-first/wlresourcerequest.js~wlresourcerequest#uuid",
-    "class/ibm-mobile-first/wlResourceRequest.js~WLResourceRequest.html#instance-member-uuid",
-    "ibm-mobile-first/wlResourceRequest.js~WLResourceRequest#uuid",
+    "js/wlresourcerequest.js~wlresourcerequest.delete",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#static-get-DELETE",
+    "js/wlResourceRequest.js~WLResourceRequest.DELETE",
+    "member"
+  ],
+  [
+    "js/wlresourcerequest.js~wlresourcerequest.get",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#static-get-GET",
+    "js/wlResourceRequest.js~WLResourceRequest.GET",
+    "member"
+  ],
+  [
+    "js/wlresourcerequest.js~wlresourcerequest.head",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#static-method-HEAD",
+    "js/wlResourceRequest.js~WLResourceRequest.HEAD",
+    "method"
+  ],
+  [
+    "js/wlresourcerequest.js~wlresourcerequest.options",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#static-get-OPTIONS",
+    "js/wlResourceRequest.js~WLResourceRequest.OPTIONS",
+    "member"
+  ],
+  [
+    "js/wlresourcerequest.js~wlresourcerequest.post",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#static-get-POST",
+    "js/wlResourceRequest.js~WLResourceRequest.POST",
+    "member"
+  ],
+  [
+    "js/wlresourcerequest.js~wlresourcerequest.put",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#static-get-PUT",
+    "js/wlResourceRequest.js~WLResourceRequest.PUT",
+    "member"
+  ],
+  [
+    "js/wlresourcerequest.js~wlresourcerequest.trace",
+    "class/js/wlResourceRequest.js~WLResourceRequest.html#static-get-TRACE",
+    "js/wlResourceRequest.js~WLResourceRequest.TRACE",
     "member"
   ]
 ]
