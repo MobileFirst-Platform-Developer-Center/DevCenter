@@ -13,7 +13,7 @@ weight: 1
 
 继续阅读以了解有关 {{ site.data.keys.product }} 组件的更多信息。
 
-> 要评估 {{ site.data.keys.product }}，只需使用 Mobile Foundation IBM Cloud 服务在 IBM Cloud 上扩展 {{ site.data.keys.mf_server }} 实例即可。请参阅[使用 Mobile Foundation](../../../bluemix/using-mobile-foundation/) 教程，以获取相关指示信息。 也可以选择安装 {{ site.data.keys.mf_dev_kit_short }} 作为本地安装。
+> 要评估 {{ site.data.keys.product }}，只需使用 Mobile Foundation IBM Cloud 服务在 IBM Cloud 上扩展 {{ site.data.keys.mf_server }} 实例即可。 请参阅[使用 Mobile Foundation](../../../bluemix/using-mobile-foundation/) 教程，以获取相关指示信息。 也可以选择安装 {{ site.data.keys.mf_dev_kit_short }} 作为本地安装。
 
 #### 跳至：
 {: #jump-to }

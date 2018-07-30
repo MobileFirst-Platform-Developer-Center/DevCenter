@@ -72,7 +72,7 @@ pod 与核心函数和其他函数对应：
 4. 返回到命令行窗口，运行命令 `pod install`，然后运行命令 `pod update`。 这些命令将添加 {{ site.data.keys.product }} 本机 SDK 文件、添加 **mfpclient.plist** 文件并生成 Pod 项目。  
     **注：**这些命令可能需要几分钟完成。
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点**：从此时开始，使用 `[ProjectName].xcworkspace` 文件在 Xcode 中打开项目。 请**勿**使用 `[ProjectName].xcodeproj` 文件。 基于 CocoaPods 的项目将作为包含应用程序（可执行程序）和库（CocoaPods 管理器提取的所有项目依赖关系）的工作空间进行管理。
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>**要点**：从此时开始，使用 `[ProjectName].xcworkspace` 文件在 Xcode 中打开项目。请**勿**使用 `[ProjectName].xcodeproj` 文件。 基于 CocoaPods 的项目将作为包含应用程序（可执行程序）和库（CocoaPods 管理器提取的所有项目依赖关系）的工作空间进行管理。
 
 ### 手动添加 {{ site.data.keys.product_adj }} 本机 SDK
 {: #manually-adding-the-mobilefirst-native-sdk }

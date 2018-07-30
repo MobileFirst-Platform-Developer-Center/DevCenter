@@ -187,8 +187,8 @@ MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>()
     @Override
     public void onFailure(MFPPushException e) {
         // Registration failed with error
-     }
- });
+    }
+});
 ```
 
 #### 获取标记
@@ -301,8 +301,8 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
    ```java
    @Override
     public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
-        // Handle push notification here      
-   }
+        // Handle push notification here
+    }
    ```
 
 3. 在此方法中，您将收到 `MFPSimplePushNotification`，并可以处理关于期望行为的通知。

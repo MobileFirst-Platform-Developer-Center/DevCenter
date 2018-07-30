@@ -61,12 +61,12 @@ Para entregar os recursos de aplicativo da web, eles precisam ser armazenados em
 {: #building-the-maven-webapp-with-the-web-applications-resources }
 1. Coloque os recursos do aplicativo da web (como HTML, CSS, JavaScript e arquivos de imagem) dentro da pasta gerada **[MyWebApp] → src → Main → webapp**.
 
-    > A partir de agora, considere a pasta **webapp** como o local de desenvolvimento para o aplicativo da web.
+    > A partir de agora, considere a pasta **webapp** como o local de desenvolvimento do aplicativo da web.
 
 2. Execute o comando: `mvn clean install` para gerar um arquivo .war contendo os recursos da web do aplicativo.  
    O arquivo .war gerado está disponível na pasta **[MyWebApp] → target**.
    
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** `mvn clean install` deve ser executado sempre que você atualizar um recurso da web.
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** `mvn clean install` deverá ser executado sempre que você atualizar um recurso da web.
 
 ### Incluindo o aplicativo da web Maven no servidor de aplicativos
 {: #adding-the-maven-webapp-to-the-application-server }

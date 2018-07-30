@@ -2,7 +2,7 @@
 layout: tutorial
 title: Installation et configuration pour l'octroi de licence de jeton
 breadcrumb_title: Token licensing
-weight: 6
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
@@ -36,7 +36,7 @@ Les plateformes qui prennent en charge l'octroi de licence de jeton sont répert
 
 #### Topologies prises en charge :
 {: #supported-topologies }
-Les topologies prises en charge par la fonction d'octroi de licence de jeton sont répertoriées dans [Contraintes sur le service d'administration de {{ site.data.keys.mf_server }}, le service Live Update de {{ site.data.keys.mf_server }} et l'environnement d'exécution de {{ site.data.keys.product_adj }} ](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+Les topologies prises en charge par la fonction d'octroi de licence de jeton sont répertoriées dans [Contraintes sur le service d'administration de {{ site.data.keys.mf_server }}, le service Live Update de {{ site.data.keys.mf_server }} et l'environnement d'exécution de {{ site.data.keys.product_adj }}](../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
 
 ### Exigences relatives au réseau
 {: #network-requirement }
@@ -46,7 +46,7 @@ Cette communication nécessite l'accès aux deux ports suivants sur le serveur d
 
 * Port (**lmgrd**) de démon de gestionnaire de licence - le numéro de port par défaut est 27000.
 * Port (**ibmratl**) de démon de fournisseur
- 
+
 Pour configurer les ports de sorte qu'ils utilisent des valeurs statiques, voir la rubrique How to serve a license key to client machines through a firewall.
 
 ### Processus d'installation
@@ -73,19 +73,19 @@ Si vous prévoyez d'utiliser l'octroi de licence de jeton avec {{ site.data.keys
 
    #### Installation en mode graphique
    Si vous installez le produit en mode graphique, sélectionnez l'option **Activer l'octroi de licence de jeton avec Rational License Key Server** dans le panneau **Paramètres généraux** lors de l'installation.
-    
+
    ![Activation de licence de jeton dans le gestionnaire d'installation IBM](licensing_with_tokens_activate.jpg)
-    
+
    #### Installation en mode de ligne de commande
    Si vous effectuez l'installation en mode silencieux, affectez la valeur **true** au paramètre **user.licensed.by.tokens** dans le fichier de réponses.  
    Par exemple, vous pouvez utiliser :
-    
+
    ```bash
    imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.use.ios.edition=false,user.licensed.by.tokens=true -acceptLicense
    ```
-    
+
 2. Déployez {{ site.data.keys.mf_server }} sur un serveur d'applications une fois l'installation du produit terminée. Pour plus d'informations, voir
-[Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../appserver).
+[Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../prod-env/appserver).
 
 3. Configurez {{ site.data.keys.mf_server }} pour l'octroi de licence de jeton. Les étapes dépendent de votre serveur d'applications.
 
@@ -105,24 +105,24 @@ Vous devez installer les bibliothèques Java et natives Rational Common Licensin
 {: #installing-rational-common-licensing-libraries }
 
 1. Choisissez la bibliothèque native Rational Common Licensing. Selon le système d'exploitation que vous utilisez et la version bit de Java Runtime Environment sur laquelle Apache Tomcat est exécuté, vous devez choisir la bibliothèque native appropriée dans **product\_install\_dir/MobileFirstServer/tokenLibs/bin/your\_corresponding\_platform/the\_native\_library\_file**. Par exemple, pour Linux x86 avec JRE 64 bits, la bibliothèque figure dans **product\_install\_dir/MobileFirstServer/tokensLibs/bin/Linux\_x86\_64/librcl\_ibmratl.so**.
-2. Copiez la bibliothèque native sur l'ordinateur qui exécute le service d'administration de {{ site.data.keys.mf_server }}. Le répertoire peut être **${CATALINA_HOME}/bin**. 
+2. Copiez la bibliothèque native sur l'ordinateur qui exécute le service d'administration de {{ site.data.keys.mf_server }}. Le répertoire peut être **${CATALINA_HOME}/bin**.
     > **Remarque :** **${CATALINA_HOME}** est le répertoire d'installation de votre serveur Apache Tomcat.
 3. Copiez le fichier **rcl_ibmratl.jar** dans **${CATALINA_HOME}/lib**. Le fichier **rcl_ibmratl.jar** est une bibliothèque Java Rational Common Licensing qui se trouve dans le répertoire **product\_install\_dir/MobileFirstServer/tokenLibs**. La bibliothèque utilise la bibliothèque native que vous avez copiée à l'étape 2, et ne peut être chargée qu'une seule fois par Apache Tomcat. Ce fichier doit être placé dans le répertoire **${CATALINA_HOME}/lib** ou dans n'importe quel répertoire du chemin du chargeur de classe commun Apache Tomcat.
     > **Important :** La machine virtuelle Java d'Apache Tomcat doit disposer des droits de lecture et d'exécution sur la bibliothèque native copiée et la bibliothèque Java. Les deux fichiers copiés doivent également être lisibles et exécutables au moins pour le processus de serveur d'applications dans votre système d'exploitation.
 4. Configurez l'accès à la bibliothèque Rational Common Licensing par la machine virtuelle Java de votre serveur d'applications. Pour tout système d'exploitation, configurez le fichier **${CATALINA_HOME}/bin/setenv.bat** (ou le fichier **setenv.sh** sous UNIX) en ajoutant la ligne suivante :
 
    **Windows :**  
-    
+
    ```bash
    set CATALINA_OPTS=%CATALINA_OPTS% -Djava.library.path=absolute_path_to_the_previous_bin_directory
    ```
-    
+
    **UNIX :**
 
    ```bash
    CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=absolute_path_to_the_previous_bin_directory"
    ```
-    
+
    > **Remarque :** Si vous déplacez le dossier de configuration du serveur sur lequel le service d'administration s'exécute, vous devez mettre à jour **java.library.path** avec le nouveau chemin absolu.
 
 5. Configurez {{ site.data.keys.mf_server }} pour qu'il accède à Rational License Key Server. Dans le fichier **${CATALINA_HOME}/conf/server.xml**, recherchez l'élément `Context` de l'application du service d'administration, et ajoutez-y les lignes de configuration JNDI suivantes :
@@ -138,7 +138,7 @@ Pour plus d'informations sur les propriétés JNDI, voir [Propriétés JNDI pour
 
 ### Installation sur un parc de serveurs Apache Tomcat
 {: #installing-on-apache-tomcat-server-farm }
-Pour configurer la connexion d'un serveur {{ site.data.keys.mf_server }} sur un parc de serveurs Apache Tomcat, vous devez suivre toutes les étapes décrites dans [Installation des bibliothèques Rational Common Licensing](#installing-rational-common-licensing-libraries) pour chaque noeud de votre parc de serveurs où le service d'administration de {{ site.data.keys.mf_server }} s'exécute. Pour plus d'informations sur un parc de serveurs, voir [Topologie de parc de serveurs](../topologies/#server-farm-topology) et [Installation d'un parc de serveurs](../appserver/#installing-a-server-farm).
+Pour configurer la connexion d'un serveur {{ site.data.keys.mf_server }} sur un parc de serveurs Apache Tomcat, vous devez suivre toutes les étapes décrites dans [Installation des bibliothèques Rational Common Licensing](#installing-rational-common-licensing-libraries) pour chaque noeud de votre parc de serveurs où le service d'administration de {{ site.data.keys.mf_server }} s'exécute. Pour plus d'informations sur un parc de serveurs, voir [Topologie de parc de serveurs](../prod-env/topologies/#server-farm-topology) et [Installation d'un parc de serveurs](../prod-env/appserver/#installing-a-server-farm).
 
 ## Connexion d'un serveur {{ site.data.keys.mf_server }} installé sur le profil Liberty de WebSphere Application Server à Rational License Key Server
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-liberty-profile-to-the-rational-license-key-server }
@@ -154,9 +154,9 @@ Vous devez installer les bibliothèques Java et natives Rational Common Licensin
 1. Définissez une bibliothèque partagée pour le client Rational Common Licensing. Cette bibliothèque utilise du code natif et ne peut être chargée qu'une seule fois par le serveur d'applications. Par conséquent, les applications qui l'utilisent doivent y faire référence en tant que bibliothèque commune.
    * Choisissez la bibliothèque native Rational Common Licensing. Selon le système d'exploitation que vous utilisez et la version bit de Java Runtime Environment sur laquelle le profil Liberty est exécuté, vous devez choisir la bibliothèque native appropriée dans **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file**. Par exemple, pour Linux x86 avec JRE 64 bits, la bibliothèque figure dans **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so**.
    * Copiez la bibliothèque native sur l'ordinateur qui exécute le service d'administration de {{ site.data.keys.mf_server }}. Le répertoire peut être **${shared.resource.dir}/rcllib**. Le répertoire **${shared.resource.dir}** figure généralement dans **usr/shared/resources**, où usr est le répertoire qui contient également le répertoire usr/servers. Pour plus d'informations sur l'emplacement standard de **${shared.resource.dir}**, voir [WebSphere Application Server Liberty Core - Emplacement des répertoires et des propriétés](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc). Si le dossier **rcllib** n'existe pas, créez-le, puis copiez le fichier de bibliothèque native dedans.
-    
+
    > **Remarque :** Assurez-vous que la machine virtuelle Java du serveur d'applications dispose des droits de lecture et d'exécution sur la bibliothèque native. Sous  Windows, l'exception suivante apparaît dans le journal du serveur d'applications si la machine virtuelle Java du serveur d'applications ne dispose pas des droits d'exécution sur la bibliothèque native copiée.
-    
+
    ```bash
    com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Access is denied).
    ```
@@ -189,9 +189,9 @@ Vous devez installer les bibliothèques Java et natives Rational Common Licensin
    <classloader delegation="parentLast" commonLibraryRef="MobileFirst/JDBC/oracle">
     </classloader>
    ```
-    
+
    Vous devez également ajouter la bibliothèque Rational Common Licensing en tant que bibliothèque commune à la bibliothèque Oracle, comme suit :
-    
+
    ```xml
    <classloader delegation="parentLast"
          commonLibraryRef="MobileFirst/JDBC/oracle,RCLLibrary">
@@ -202,18 +202,18 @@ Vous devez installer les bibliothèques Java et natives Rational Common Licensin
    ```xml
    -Djava.library.path=Absolute_path_to_the_previously_created_rcllib_folder
    ```
-    
+
    > **Remarque :** Si vous déplacez le dossier de configuration du serveur sur lequel le service d'administration s'exécute, vous devez mettre à jour **java.library.path** avec le nouveau chemin absolu.
 
    Le répertoire **${wlp.user.dir}** figure généralement dans **liberty_install_dir/usr** et contient le répertoire servers. Toutefois, son emplacement peut être personnalisé. Pour plus d'informations, voir [Personnalisation de l'environnement du profil Liberty](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_customvars.html?lang=en&view=kc)
-    
+
 2. Configurez {{ site.data.keys.mf_server }} pour qu'il accède à Rational License Key Server.
 
    Dans le fichier **${wlp.user.dir}/servers/server_name/server.xml**, ajoutez ces lignes de configuration JNDI.
-    
+
    ```xml
-   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/> 
-   <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/> 
+   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/>
+   <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/>
    ```
    * **rlks_hostname** est le nom d'hôte de Rational License Key Server.
    * **rlks_port** est le port de Rational License Key Server. La valeur par défaut est 27000.
@@ -222,7 +222,7 @@ Vous devez installer les bibliothèques Java et natives Rational Common Licensin
 
 ### Installation sur un parc de serveurs de profil Liberty
 {: #installing-on-liberty-profile-server-farm }
-Pour configurer la connexion d'un serveur {{ site.data.keys.mf_server }} sur un parc de serveurs de profil Liberty, vous devez suivre toutes les étapes décrites dans [Installation des bibliothèques Rational Common Licensing](#installing-rational-common-licensing-libraries) pour chaque noeud de votre parc de serveurs où le service d'administration de {{ site.data.keys.mf_server }} s'exécute. Pour plus d'informations sur un parc de serveurs, voir [Topologie de parc de serveurs](../topologies/#server-farm-topology) et [Installation d'un parc de serveurs](../appserver/#installing-a-server-farm).
+Pour configurer la connexion d'un serveur {{ site.data.keys.mf_server }} sur un parc de serveurs de profil Liberty, vous devez suivre toutes les étapes décrites dans [Installation des bibliothèques Rational Common Licensing](#installing-rational-common-licensing-libraries) pour chaque noeud de votre parc de serveurs où le service d'administration de {{ site.data.keys.mf_server }} s'exécute. Pour plus d'informations sur un parc de serveurs, voir [Topologie de parc de serveurs](../prod-env/topologies/#server-farm-topology) et [Installation d'un parc de serveurs](../prod-env/appserver/#installing-a-server-farm).
 
 ## Connexion du serveur {{ site.data.keys.mf_server }} installé sur WebSphere Application Server à Rational License Key Server
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-to-the-rational-license-key-server }
@@ -237,13 +237,13 @@ Vous devez configurer une bibliothèque partagée pour les bibliothèques Ration
 
 1. Définissez une bibliothèque partagée pour la bibliothèque Rational Common Licensing. Cette bibliothèque utilise du code natif et ne peut être chargée qu'une seule fois par un chargeur de classe au cours du cycle de vie du serveur d'applications. Par conséquent, la bibliothèque est déclarée en tant que bibliothèque partagée et associée à tous les serveurs d'applications qui exécutent le service d'administration de {{ site.data.keys.mf_server }}. Pour plus d'informations sur les raisons qui imposent de déclarer cette bibliothèque en tant que bibliothèque partagée, voir [Configuration des bibliothèques natives dans les bibliothèques partagées](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tcws_sharedlib_nativelib.html?view=kc).
     * Choisissez la bibliothèque native Rational Common Licensing. Selon le système d'exploitation que vous utilisez et la version bit de Java Runtime Environment sur laquelle WebSphere Application Server est exécuté, vous devez choisir la bibliothèque native appropriée dans **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file**.
-    
+
         Par exemple, pour Linux x86 avec JRE 64 bits, la bibliothèque figure dans **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so**.
-    
+
         Pour déterminer la version bit de Java Runtime Environment pour une installation WebSphere Application Server autonome ou WebSphere Application Server Network Deployment, exécutez **versionInfo.bat** sous Windows ou **versionInfo.sh** sous UNIX à partir du répertoire **bin**. Le fichier **versionInfo.sh** figure dans **/opt/IBM/WebSphere/AppServer/bin**. Recherchez la valeur Architecture dans la section **Produit installé**. Java Runtime Environment est en version 64 bits si la valeur Architecture mentionne explicitement cette version ou si elle porte le suffixe 64 ou _64.
     * Placez la bibliothèque native correspondant à votre plateforme dans un dossier de votre système d'exploitation. Par exemple, **/opt/IBM/RCL_Native_Library/**.
     * Copiez le fichier **rcl_ibmratl.jar** dans **/opt/IBM/RCL_Native_Library/**. Le fichier **rcl_ibmratl.jar** est une bibliothèque Java Rational Common Licensing qui se trouve dans **product_install_dir/MobileFirstServer/tokenLibs directory**.
-    
+
         > **Important :** La machine virtuelle Java du serveur d'applications doit disposer des droits de lecture et d'exécution sur la bibliothèque native copiée et la bibliothèque Java. Les deux fichiers copiés doivent également être lisibles et exécutables au moins pour le processus de serveur d'applications dans votre système d'exploitation.    
     * Déclarez une bibliothèque partagée dans la console d'administration de WebSphere Application Server.
         * Connectez-vous à la console d'administration de WebSphere Application Server.
@@ -253,10 +253,10 @@ Vous devez configurer une bibliothèque partagée pour les bibliothèques Ration
         * Entrez un nom pour la bibliothèque dans la zone Nom. Par exemple, "RCL Shared Library".
         * Dans la zone Chemin de classe, entrez le chemin d'accès au fichier **rcl_ibmratl.jar**. Par exemple, **/opt/IBM/RCL_Native_Library/rcl_ibmratl.jar**.
         * Cliquez sur **OK** et sauvegardez les modifications. Cette valeur prendra effet au redémarrage du serveur.
-    
+
         > **Remarque :** Le chemin de la bibliothèque native pour cette bibliothèque est définie à l'étape 3 dans la propriété **ld.library.path** de la machine virtuelle Java du serveur.
     * Associez la bibliothèque partagée à tous les serveurs qui exécutent le service d'administration de {{ site.data.keys.mf_server }}.
-    
+
         Lorsque la bibliothèque partagée est associée à un serveur, elle peut être utilisée par plusieurs applications. Si vous avez besoin du client Rational Common Licensing uniquement pour le service d'administration de {{ site.data.keys.mf_server }}, vous pouvez créer une bibliothèque partagée avec un chargeur de classe isolé et l'associer à l'application de service d'administration.
 
         L'instruction décrite ci-après consiste à associer la bibliothèque à un serveur. Pour WebSphere Application Server Network Deployment, vous devez exécuter cette instruction pour tous les serveurs qui exécutent le service d'administration de {{ site.data.keys.mf_server }}.    
@@ -445,5 +445,3 @@ Causes possibles de cette erreur :
 
 * La bibliothèque Java **rcl_ibmratl.jar** ne dispose pas des droits appropriés. L'erreur peut être suivie d'une autre exception :java.util.zip.ZipException: erreur d'ouverture du fichier zip. Vérifiez que le fichier **rcl_ibmratl.jar** dispose du droit de lecture pour l'utilisateur qu installe WebSphere Application Server.
 * S'il n'existe aucune autre exception, le fichier **rcl_ibmratl.jar** qui est référencé dans le chemin d'accès aux classes de la bibliothèque partagée est peut-être incorrect ou inexistant. Vérifiez que le fichier **rcl_ibmratl.jar** est valide ou qu'il existe dans le chemin défini.
-
-

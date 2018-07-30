@@ -110,8 +110,8 @@ MFPPushMessageResponse Response = await MFPPush.GetInstance().RegisterDevice(Opt
 if (Response.Success == true)
 {
     // Successfully registered
-     } else {
-         // Registration failed with error
+} else {
+    // Registration failed with error
 }
 ```
 
@@ -192,8 +192,8 @@ MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice()
 if (Response.Success == true)
 {
     // Successfully registered
-     } else {
-         // Registration failed with error
+} else {
+    // Registration failed with error
 }
 ```
 

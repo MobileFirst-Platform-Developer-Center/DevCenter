@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Installation Manager ausführen
-weight: 1
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -90,7 +90,7 @@ Manager ausgeführt haben, müssen Sie die Datenbanken einrichten und
 die MobileFirst-Server-Anwendungen in Ihrem Anwendungsserver implementieren.   
 > Wenn Sie für eine vorhandene Installation ein Update mit dem Installation Manager durchführen, werden auch nur die Dateien auf der Platte aktualisiert. Für die Aktualisierung der in Ihren Anwendungsservern implementierten Anwendungen sind weitere Schritte erforderlich.
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [Administratormodus und Benutzermodus im Vergleich](#administrator-versus-user-mode)
 * [Installation mit dem Installationsassistenten von IBM Installation Manager](#installing-by-using-ibm-installation-manager-install-wizard)
@@ -173,27 +173,29 @@ sich das Repository der Basisversion unter den Installation-Manager-Repositorys 
 **OK**, um
 das Fenster
 **Benutzervorgaben** zu schließen.
-3. Wenn Sie die Lizenzbedingungen für das Produkt akzeptiert haben, klicken Sie auf **Weiter**.
+3. Wenn Sie die Lizenzbedingungen für das Produkt akzeptiert haben, klicken Sie auf
+**Weiter**.
 4. Wählen Sie die Paketgruppe für die Produktinstallation aus. 
 
     {{ site.data.keys.product }} Version 8.0
 ist ein Ersatz für die Vorgängerreleases, die einen anderen Installationsnamen haben: 
     * Worklight für Version 5.0.6 
     * IBM Worklight für Version 6.0 bis 6.3
-    
+
     Wenn eine dieser älteren Produktversionen auf Ihrem Computer installiert ist,
 bietet der Installation Manager zu beginn des Installationsprozesses die Option
 Vorhandene Paketgruppe verwenden an. Bei Auswahl dieser Option wird die ältere Version des Produkts deinstalliert.
 Falls das {{ site.data.keys.mf_app_center_full }} installiert war,
 werden die Installationsoptionen der bisherigen Installation verwendet, um ein Upgrade für das Application Center durchzuführen. 
-    
+
     Wählen Sie für eine separate Installation die Option
 Neue Paketgruppe erstellen aus. In dem Fall können Sie die neue Version installieren und die ältere Version beibehalten.   
 Wenn Sie das Produkt in einer neuen Paketgruppe installieren möchten und auf Ihrem Computer keine andere Version des Produkts installiert
 ist, wählen Sie die Option
 Neue Paketgruppe erstellen aus. 
-    
-5. Klicken Sie auf **Weiter**.
+
+5. Klicken Sie auf
+**Weiter**.
 6. Entscheiden Sie im Fenster **Allgemeine Einstellungen** im Abschnitt **Activate Token Licensing**,
 ob die Tokenlizenzierung aktiviert werden soll. 
 
@@ -265,17 +267,17 @@ eine Installation ohne Durchsetzung der Tokenlizenzierung ausführen, geben Sie 
       imcl install com.ibm.mobilefirst.foundation.server -repositories MFP-Repositoryverzeichnis/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
     * Für eine Installation mit Durchsetzung der Tokenlizenzierung müssten Sie den folgenden Befehl eingeben: 
-    
+
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories MFP-Repositoryverzeichnis/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
-    
+
         Die
 Eigenschaft
 **user.licensed.by.tokens** ist auf den Wert
 **true** gesetzt. Sie müssen {{ site.data.keys.mf_server }} für die
 [Tokenlizenzierung](../token-licensing) konfigurieren. 
-        
+
         Die folgenden Eigenschaften sind
 für eine Installation von
 {{ site.data.keys.mf_server }}
@@ -283,22 +285,22 @@ ohne das Application Center definiert:
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
-        
+
         Die folgende Eigenschaft gibt an, ob die Tokenlizenzierung aktiviert ist:
 **user.licensed.by.tokens=true/false**.
-        
+
         Setzen Sie die Eigenschaft user.use.ios.edition für die Installation der {{ site.data.keys.product }} auf "false". 
-        
+
 5. Wenn Sie mit den neuesten vorläufigen Fix installieren wollen, fügen Sie das Repository für den vorläufigen Fix mit dem Parameter
 **-repositories** hinzu. Der Parameter **-repositories** akzeptiert eine Liste mit Repositorys, die jeweils durch ein Komma getrennt angegeben werden müssen. 
 
     Fügen Sie die Version des vorläufigen Fix hinzu.
 Ersetzen Sie dazu **com.ibm.mobilefirst.foundation.server** durch **com.ibm.mobilefirst.foundation.server_Version**. **Version** hat das Format **8.0.0.0-Buildnummer**. Wenn Sie beispielsweise den vorläufigen Fix **8.0.0.0-IF201601031015** installieren möchten, geben Sie den
 folgenden Befehl ein: `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`
-    
+
     Weitere Informationen zu dem imcl-Befehl finden Sie unter
 [Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
-    
+
 Ein Installationsverzeichnis mit den Ressourcen für die Installation der
 {{ site.data.keys.product_adj }}-Komponenten wurde erstellt. 
 
@@ -349,12 +351,14 @@ Die folgenden Prozeduren beschreiben die Verwendung dieser Dateien.
 1. Wählen Sie die geeignete Beispielantwortdatei aus der komprimierten Datei aus. Die Datei Silent_Install_Sample_Files.zip enthält ein Unterverzeichnis für jedes Release.
 
     > **Wichtiger Hinweis:**  
-    > 
+    >
     > * Für eine Installation, bei der das Application Center nicht in einem Anwendungsserver installiert wird, verwenden Sie die Datei **install-no-appcenter.xml**.
-    > * Für eine Installation, bei der das Application Center installiert wird, wählen Sie die Beispielantwortdatei basierend auf Ihrem Anwendungsserver und Ihrer Datenbank in der folgenden Tabelle aus.
+      * Für eine Installation, bei der das Application Center installiert wird, wählen Sie die Beispielantwortdatei basierend auf Ihrem Anwendungsserver und Ihrer Datenbank in der folgenden Tabelle aus.
+
+
 
    #### Beispielantwortdateien für die Installation des Application Center in der Datei **Silent\_Install\_Sample_Files.zip**
-    
+
     <table>
         <tr>
       <td></td>
@@ -412,13 +416,13 @@ Die folgenden Prozeduren beschreiben die Verwendung dieser Dateien.
             <td>install-tomcat-oracle.xml</td>
         </tr>
     </table>
-    
+
     > **Hinweis:** MySQL
 in Kombination mit WebSphere Application Server Liberty
 Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM DB2 oder ein anderes von WebSphere Application Server unterstütztes Datenbankmanagementsystem (DBMS) verwenden, um die Vorteile einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
 
     Für die Deinstallation müssen Sie eine Beispieldatei verwenden, die von der Version von {{ site.data.keys.mf_server }} oder Worklight Server abhängt, die Sie ursprünglich in der entsprechenden Paketgruppe installiert haben:
-    
+
     * {{ site.data.keys.mf_server }} verwendet die Paketgruppe {{ site.data.keys.mf_server }}.
     * Worklight Server ab Version 6.x verwendet die Paketgruppe IBM Worklight.
     * Worklight Server Version 5.x verwendet die Paketgruppe Worklight.
@@ -489,7 +493,7 @@ Setzen Sie das Versionsattribut im Element `<offering>` im Element `<install>` a
 
 > Weitere Informationen finden Sie in der Dokumentation zu IBM Installation
 Manager im Abschnitt [Pakete unbeaufsichtigt mithilfe einer Antwortdatei installieren](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
-    
+
 
 ### Mit einer Antwortdatei arbeiten, die auf einer anderen Maschine aufgezeichnet wurde
 {: #working-with-a-response-file-recorded-on-a-different-machine }
@@ -729,7 +733,9 @@ Normalerweise 50000.</td>
     <tr>
       <td>user.database.db2.appcenter.password</td>
       <td>${user.database.selection2} == db2</td>
-      <td>Optional in einer bestimmten Art und Weise verschlüsseltes Kennwort für den Zugriff auf die DB2-Datenbank für das Application Center</td>
+      <td>Optional in einer bestimmten Art und Weise verschlüsseltes Kennwort für den Zugriff auf
+die DB2-Datenbank für das Application Center
+</td>
       <td>Ein Kennwort, das nicht leer ist</td>
     </tr>
     <tr>
@@ -886,59 +892,59 @@ Die Dateien und Tools für {{ site.data.keys.mf_server }} werden im Installation
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'Analytics'
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-| Element| Beschreibung |
+|Element|Beschreibung |
 |------|-------------|
-| **analytics.ear** und **analytics-*.war** | EAR- und WAR-Dateien für die Installation von {{ site.data.keys.mf_analytics }}|
-| **configuration-samples** | Ant-Beispieldateien für die Installation von {{ site.data.keys.mf_analytics }} mit Ant-Tasks|
+|**analytics.ear** und **analytics-*.war** |EAR- und WAR-Dateien für die Installation von {{ site.data.keys.mf_analytics }}|
+|**configuration-samples** |Ant-Beispieldateien für die Installation von {{ site.data.keys.mf_analytics }} mit Ant-Tasks|
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'ApplicationCenter'
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-| Element| Beschreibung |
+|Element|Beschreibung |
 |------|-------------|
-| **configuration-samples** | Ant-Beispieldateien für die Installation des Application Center. Die Ant-Tasks erstellen die Datenbanktabelle und implementieren WAR-Dateien in einem Anwendungsserver.| 
-| **console** | EAR- und WAR-Dateien für die Installation des Application Center. Die EAR-Datei ist für IBM PureApplication System bestimmt.| 
-| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für das Application Center|
-| **installer** | Ressourcen für die Erstellung des Application-Center-Clients | 
-| **tools** | Tools des Application Center| 
+|**configuration-samples** |Ant-Beispieldateien für die Installation des Application Center. Die Ant-Tasks erstellen die Datenbanktabelle und implementieren WAR-Dateien in einem Anwendungsserver.|
+|**console** |EAR- und WAR-Dateien für die Installation des Application Center. Die EAR-Datei ist für IBM PureApplication System bestimmt.|
+|**databases** |SQL-Scripts zum manuellen Erstellen von Tabellen für das Application Center|
+|**installer** |Ressourcen für die Erstellung des Application-Center-Clients |
+|**tools** |Tools des Application Center|
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'MobileFirstServer'
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-| Element| Beschreibung |
+|Element|Beschreibung |
 |------|-------------|
-| **mfp-ant-deployer.jar** | Reihe von Ant-Tasks für {{ site.data.keys.mf_server }}|
-| **mfp-*.war** | WAR-Dateien der MobileFirst-Server-Komponenten|
-| **configuration-samples** | Ant-Beispieldateien für die Installation der MobileFirst-Server-Komponenten mit Ant-Tasks| 
-| **ConfigurationTool** | Binärdateien des Server Configuration Tool. Das Tool wird im Verzeichnis **MFP-Server-Installationsverzeichnis/shortcuts** gestartet.|
-| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für die MobileFirst-Server-Komponenten (MobileFirst-Server-Verwaltungsservice und -Konfigurationsservice und {{ site.data.keys.product_adj }}-Laufzeit)| 
-| **external-server-libraries** |  JAR-Dateien, die von verschiedenen Tools verwendet werden (z. B. dem Authentizitätstool und dem OAuth-Sicherheitstool)|
+|**mfp-ant-deployer.jar** |Reihe von Ant-Tasks für {{ site.data.keys.mf_server }}|
+|**mfp-*.war** |WAR-Dateien der MobileFirst-Server-Komponenten|
+|**configuration-samples** |Ant-Beispieldateien für die Installation der MobileFirst-Server-Komponenten mit Ant-Tasks|
+|**ConfigurationTool** |Binärdateien des Server Configuration Tool. Das Tool wird im Verzeichnis **MFP-Server-Installationsverzeichnis/shortcuts** gestartet.|
+|**databases** |SQL-Scripts zum manuellen Erstellen von Tabellen für die MobileFirst-Server-Komponenten (MobileFirst-Server-Verwaltungsservice und -Konfigurationsservice und {{ site.data.keys.product_adj }}-Laufzeit)|
+|**external-server-libraries** |JAR-Dateien, die von verschiedenen Tools verwendet werden (z. B. dem Authentizitätstool und dem OAuth-Sicherheitstool)|
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'PushService'
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-| Element| Beschreibung |
+|Element|Beschreibung |
 |------|-------------|
-| **mfp-push-service.war** | WAR-Datei für die Installation des MobileFirst-Server-Push-Service|
-| **databases** | SQL-Scripts zum manuellen Erstellen von Tabellen für den MobileFirst-Server-Push-Service| 
+|**mfp-push-service.war** |WAR-Datei für die Installation des MobileFirst-Server-Push-Service|
+|**databases** |SQL-Scripts zum manuellen Erstellen von Tabellen für den MobileFirst-Server-Push-Service|
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'License'
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-| Element| Beschreibung |
+|Element|Beschreibung |
 |------|-------------|
-| **Text** | Lizenz für die {{ site.data.keys.product }}| 
+|**Text** |Lizenz für die {{ site.data.keys.product }}|
 
 #### Dateien und Unterverzeichnisse im Installationsverzeichnis von {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-| Element| Beschreibung |
+|Element|Beschreibung |
 |------|-------------|
-| **shortcuts** | Starterscripts für Apache Ant, das Server Configuration Tool von und den Befehl mfpadmin, die mit {{ site.data.keys.mf_server }} bereitgestellt werden.| 
+|**shortcuts** |Starterscripts für Apache Ant, das Server Configuration Tool von und den Befehl mfpadmin, die mit {{ site.data.keys.mf_server }} bereitgestellt werden.|
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'tools'
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-| Element| Beschreibung |
+|Element|Beschreibung |
 |------|-------------|
-| **tools/apache-ant-version-number** | Vom Server Configuration Tool verwendete Binärdatei für die Installation von Apache Ant, mit der auch die Ant-Tasks ausgeführt werden können| 
+|**tools/apache-ant-version-number** |Vom Server Configuration Tool verwendete Binärdatei für die Installation von Apache Ant, mit der auch die Ant-Tasks ausgeführt werden können|

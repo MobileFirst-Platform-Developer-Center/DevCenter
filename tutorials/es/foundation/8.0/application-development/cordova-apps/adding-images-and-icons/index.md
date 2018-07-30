@@ -35,7 +35,7 @@ Los nombres de archivo y las vías de acceso de archivo de destino deben permane
 Cambie los nombres de archivo y las vías de acceso de origen (`src`) con las vías de acceso de los archivos que desea visualizar.
 Añada líneas similares a las del ejemplo siguiente entre las etiquetas
 `<platform name="android">` y `</platform>` en el archivo **config.xml**:
- 
+
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -80,7 +80,7 @@ El nombre de cada imagen corresponde a su tamaño.
 {: #ios }
 Si tiene una aplicación iOS, añada líneas similares a las del ejemplo siguiente entre las etiquetas
 `<platform name="ios">` y `</platform>`: 
-    
+
 #### Pantallas iniciales
 {: #splash-screens-ios }
 Los nombres de archivo y las vías de acceso de los archivos de pantallas iniciales deben ser los mismos que los nombres en el siguiente ejemplo.
@@ -123,6 +123,164 @@ El nombre de cada imagen corresponde a su tamaño.
 <icon height="58" src="res/icon/ios/icon-small@2x.png" width="58" />
 <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
 ```
+
+A partir de la versión 8.0.2017102406 del plugin cordoba de MobileFirstPlatform Foundation, se ha realizado un cambio  a `AppDelegate.m` que provoca un parpadeo de la pantalla negra cuando se carga una aplicación de cordova con
+el plugin `cordova-plugin-mfp` instalado. Si un usuario no quiere ver esta pantalla inicial, pueden añadir un nuevo `ViewController` y hacer algunos cambios en la carga de `AppDelegate.m` para evitar la pantalla inicial. Los pasos para el proceso son como siguen:
+
+1. En su proyecto XCode, pulse el botón derecho (del ratón) en la pantalla **Classes** y seleccione la opción **Nuevo archivo**.
+2. Seleccione la plantilla **Cocoa Touch Class**. Pulse **Siguiente**.
+3. Deje los valores predeterminados (el nombre de clase será *ViewController*). Pulse **Siguiente**.
+4. Pulse **Crear**. Los archivos `ViewController.m` y `ViewController.h` se añaden a la carpeta **Clases**.
+5. Vuelva a pulsar el botón derecho (del ratón) en la carpeta **Classes** y seleccione la opción **Nuevo archivo**.
+6. Seleccione la plantilla **Storyboard**. Pulse **Siguiente**, guárdelo con el nombre `ViewController` y pulse **Crear**.
+7. Abra `ViewController.storyboard` y añada un nuevo objeto de `ViewController`. Y añada los atributos *Clase* en la ficha **Clase personalizada** como *ViewController*. En la ficha **Identidad** defina el **ID del Storyboard** y el **ID de restauración** como *ViewController*.
+8. Modifique su `AppDelegate.m` como a continuación y ejecute la aplicación. Ahora en lugar de pantalla inicial, aparecerá una pantalla blanca que se puede personalizar en *ViewController.storyboard* .
+
+```
+  /*
+   Material bajo licencia - Propiedad de IBM
+
+   (C) Copyright 2017 IBM Corp.
+
+A menos que lo requiera la legislación vigente o se acuerde por escrito,
+el software distribuido bajo la licencia se distribuye "TAL CUAL", SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ya sean expresas o implícitas.
+   Consulte la Licencia para
+ver los permisos aplicables específicos del idioma y las limitaciones
+bajo la Licencia.*/
+  /*
+   Con licencia para Apache Software Foundation (ASF) de conformidad con uno o
+   más acuerdos de licencia de colaborador.  Consulte el archivo de AVISO
+   distribuido con este trabajo para obtener más información en relación con
+   la propiedad del copyright.  ASF le otorga la licencia según la Licencia de Apache, Versión 2.0
+   (la "Licencia"); no deberá utilizar este archivo, excepto de conformidad con
+   la licencia.  Puede obtener una copia de la licencia en
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+   A menos que lo requiera la legislación vigente o se acuerde por escrito,
+   el software distribuido bajo la Licencia se distribuye
+   "TAL CUAL", SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO,
+   ya sean expresas o implícitas.  Consulte la Licencia para ver
+   los permisos aplicables específicos del idioma y las limitaciones bajo la Licencia.
+   */
+  #import "AppDelegate.h"
+  #import <IBMMobileFirstPlatformFoundationHybrid/IBMMobileFirstPlatformFoundationHybrid.h>
+  #import <IBMMobileFirstPlatformFoundation/WLAnalytics.h>
+  #import "MainViewController.h"
+  #import "ViewController.h"
+  @implementation AppDelegate
+  NSString* const MFP_INITIALIAZATION = @"WLInitSuccess";
+  NSString* const OPEN_URL_COMPLETED = @"OpenURLCompleted";
+  - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
+  {
+      if (NSClassFromString(@"CDVSplashScreen") == nil) {
+          [[WL sharedInstance] showSplashScreen];
+      }
+      // Se ocultará la pantalla automáticamente de forma predeterminada cuando se complete el entorno Worklight JavaScript.
+      // Para sustituir este comportamiento, establezca la propiedad autoHideSplash en initOptions.js a falso y utilice la API WL.App.hideSplashScreen().
+      self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+     // UIViewController* rootViewController = self.window.rootViewController;
+
+      ViewController *loginController = [[UIStoryboard storyboardWithName:@"ViewController" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"]; //or the homeController
+      UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:loginController];
+      self.window.rootViewController = navController;
+
+      [self.window makeKeyAndVisible];
+
+       [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
+  //    __block __weak id observer =  [[NSNotificationCenter defaultCenter]addObserverForName:MFP_INITIALIAZATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * note) {
+  //        self.viewController = [[MainViewController alloc] init];
+  //        self.viewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
+  //        [super application:application didFinishLaunchingWithOptions:launchOptions];
+  //        [[NSNotificationCenter defaultCenter] removeObserver:observer name:MFP_INITIALIAZATION object:nil];
+  //    }];
+      return YES;
+  }
+  -(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
+  {
+      if ([result statusCode] == WLWebFrameworkInitResultSuccess) {
+          [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
+          [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
+          [self wlInitDidCompleteSuccessfully];
+          //[[NSNotificationCenter defaultCenter] postNotificationName:MFP_INITIALIAZATION object:nil];
+      } else {
+          [self wlInitDidFailWithResult:result];
+      }
+  }
+  -(void)wlInitDidCompleteSuccessfully
+  {
+      UIViewController* rootViewController = self.window.rootViewController;
+
+      // Create a Cordova View Controller
+      CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
+
+      cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
+
+      // Ajuste el marco de visualización del controlador de vista de Cordova para que coincida con los límites de la vista principal
+      cordovaViewController.view.frame = rootViewController.view.bounds;
+
+      // Mostrar la vista de Cordova
+      [rootViewController addChildViewController:cordovaViewController];
+      [rootViewController.view addSubview:cordovaViewController.view];
+  }
+  -(void)wlInitDidFailWithResult:(WLWebFrameworkInitResult *)result
+  {
+      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ERROR"
+                                                          message:[result message]
+                                                         delegate:self
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+      [alertView show];
+  }
+  - (void)applicationWillResignActive:(UIApplication *)application
+  {
+      // Se envía cuando la aplicación está a punto de cambiar del estado activo al inactivo. Esto no puede ocurrir cuando hay determinadas interrupciones momentáneas (como llamadas o mensajes SMS entrantes) o cuando el usuario deja la aplicación y pasa a la transición al estado en segundo plano.
+      // Utilice este método para pausar tareas entrantes, deshabilite los temporizadores, y regule la velocidad de
+fotogramas de OpenGL ES. Los juegos deberían utilizar este método para pausar el juego.
+  }
+  - (void)applicationDidEnterBackground:(UIApplication *)application
+  {
+      // Utilice este método para publicar los recursos compartidos, guardar datos de usuario, invalidar temporizadores, y almacene suficiente información del estado de las aplicaciones para restaurar su aplicación a su estado actual en caso de que se termine más adelante.
+      // Si su aplicación soporta la ejecución de fondo, se llama a este método en lugar de applicationWillTerminate: cuando el usuario sale. }
+  - (void)applicationWillEnterForeground:(UIApplication *)application
+  {
+      // Se llama como parte de la transición desde el fondo al estado inactivo; puede deshacer muchos cambios realizados al entrar en el fondo.
+      //wi 116840 - Al añadir una notificación de una publicación en mfp_intialization después de que se ejecute openurl y que se reciba una notificación de observador.
+      //Esto es para manejar el inicio en caliente correctamente
+      __block __weak id observer = [[NSNotificationCenter defaultCenter]addObserverForName:OPEN_URL_COMPLETED object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * note) {
+          [[NSNotificationCenter defaultCenter] postNotificationName:MFP_INITIALIAZATION object:nil];
+          [[NSNotificationCenter defaultCenter] removeObserver:observer name:OPEN_URL_COMPLETED object:nil];
+      }];
+
+  }
+  - aplicación (void)applicationDidBecomeActive:(UIApplication *)
+  {
+      // Reinicie las tareas que se han pausado (o que aun no se han iniciado) mientras la aplicación estaba inactiva. Si la aplicación había estadopreviamente en segundo plano, puede actualizar la interfaz de usuario. }
+  - aplicación (void)applicationWillTerminate:(UIApplication *)
+  {
+      // Se llama cuando la aplicación está a punto de finalizar. Guarde los datos si es necesario. Consulte también applicationDidEnterBackground:. }
+  //wi 116840 - Los cambios a continuación son para arreglar el inicio en frío en handleopenurl. Solo después de la devolución del observador MFP_INITIALIZATION, se llama al plugin handleopenurl.
+  //Esto garantiza que el comportamiento de inicio en frío no tenga ningún problema.
+  // Después, un se inicia un observador para open_url_completed. Esto garantiza que en "applicationWillEnterForeground", la acción para enviar la notificación se completa después de que se ejecute openurl.
+  - (BOOL)application:(UIApplication*)application openURL:(NSURL*)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation
+  {
+      if (!url) {
+          return NO;
+      }
+      __block __weak id observer = [[NSNotificationCenter defaultCenter]addObserverForName:MFP_INITIALIAZATION object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * note) {
+          [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
+          [[NSNotificationCenter defaultCenter] removeObserver:observer name:MFP_INITIALIAZATION object:nil];
+      }];
+      [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_URL_COMPLETED object:nil];
+      return YES;
+  }
+  @end
+```
+
+
+>**Nota:** Estos cambios están destinados a perderse si se elimina y se añade la plataforma ios. Por lo tanto, asegúrese de
+que se realicen estos cambios cómo y cuándo se necesitan.
 
 ### Windows
 {: #windows }

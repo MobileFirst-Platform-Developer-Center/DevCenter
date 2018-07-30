@@ -174,7 +174,7 @@ Application Center は、企業アカウントに付随する企業証明書を�
 {: #for-windows-store-apps-for-windows-81-pro }
 * **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** ファイルには、Application Center クライアントの実行可能ファイルが含まれています。 このファイルをクライアント・コンピューターに配布し、unzip します。 これには、実行可能プログラムが含まれています。
 
-* Microsoft Windows Store を使用せずに、Windows Store アプリ (タイプ `appx` のファイル) をインストールすることは、アプリケーションの<em>サイドローディング</em> と呼ばれます。 アプリケーションをサイドローディングするには、[アプリケーションのサイドローディングの準備 (Prepare to Sideload Apps)](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx) の前提条件に従う必要があります。
+* Microsoft Windows Store を使用せずに、Windows Store アプリ (タイプ `appx` のファイル) をインストールすることは、アプリケーションの<em>サイドローディング</em> と呼ばれます。 アプリケーションをサイドローディングするには、[アプリケーションのサイドローディングの準備 (Prepare to Sideload Apps)](https://technet.microsoft.com/fr-fr/library/dn613842.aspx) の前提条件に従う必要があります。 Windows 8.1.1 アップデートによって、サイドローディングの前提条件が単純化されています。詳しくは、[Sideloading Store Apps to Windows 8.1.1 Devices ]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx)を参照してください。
 
 ## Application Center コンソールでのアプリケーションの管理
 {: #managing-applications-in-the-application-center-console }

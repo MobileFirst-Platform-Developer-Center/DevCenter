@@ -94,7 +94,7 @@ Par exemple, si vous définissez 4 **fragments** et 2 **répliques**, passez à 
 
 ## Installation de {{ site.data.keys.mf_analytics }} sur WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Assurez-vous de disposer du fichier EAR de {{ site.data.keys.mf_analytics }}. Pour plus d'informations sur les artefacts d'installation, voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../appserver). Le fichier **analytics.ear** se trouve dans le dossier `<mf_server_install_dir>\analytics`. Pour plus d'informations sur le téléchargement et l'installation de WebSphere Application Server Liberty, voir l'article [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) sur le site IBM developerWorks.
+Assurez-vous de disposer du fichier EAR de {{ site.data.keys.mf_analytics }}. Pour plus d'informations sur les artefacts d'installation, voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../prod-env/appserver). Le fichier **analytics.ear** se trouve dans le dossier `<mf_server_install_dir>\analytics`. Pour plus d'informations sur le téléchargement et l'installation de WebSphere Application Server Liberty, voir l'article [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) sur le site IBM developerWorks.
 
 1. Créez un serveur en exécutant la commande suivante dans votre dossier **./wlp/bin** :
 
@@ -170,7 +170,7 @@ Pour plus d'informations sur l'administration de WebSphere Application Server Li
 
 ## Installation de {{ site.data.keys.mf_analytics }} sur Tomcat
 {: #installing-mobilefirst-analytics-on-tomcat }
-Assurez-vous de disposer des fichiers WAR de {{ site.data.keys.mf_analytics }}. Pour plus d'informations sur les artefacts d'installation, voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../appserver). Les fichiers **analytics-ui.war** et **analytics-service.war** se trouvent dans le dossier **<rép_install_serveur_mf>\analytics**. Pour plus d'informations sur le téléchargement et l'installation de Tomcat, voir [Apache Tomcat](http://tomcat.apache.org/). Assurez-vous de télécharger la version qui prend en charge Java 7 ou version ultérieure. Pour savoir quelles versions de Tomcat prennent en charge Java 7, voir [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
+Assurez-vous de disposer des fichiers WAR de {{ site.data.keys.mf_analytics }}. Pour plus d'informations sur les artefacts d'installation, voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../prod-env/appserver). Les fichiers **analytics-ui.war** et **analytics-service.war** se trouvent dans le dossier **<rép_install_serveur_mf>\analytics**. Pour plus d'informations sur le téléchargement et l'installation de Tomcat, voir [Apache Tomcat](http://tomcat.apache.org/). Assurez-vous de télécharger la version qui prend en charge Java 7 ou version ultérieure. Pour savoir quelles versions de Tomcat prennent en charge Java 7, voir [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
 
 1. Ajoutez les fichiers **analytics-service.war** et **analytics-ui.war** dans le dossier **webapps** de Tomcat.
 2. Supprimez la mise en commentaire de la section suivante dans le fichier **conf/server.xml**, qui existe mais est en commentaire dans toute archive Tomcat téléchargée :
@@ -218,7 +218,7 @@ Assurez-vous de disposer des fichiers WAR de {{ site.data.keys.mf_analytics }}. 
 
 ## Installation de {{ site.data.keys.mf_analytics }} sur WebSphere Application Server
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
-Pour plus d'informations sur les étapes d'installation initiale permettant d'acquérir les artefacts d'installation (fichiers JAR et EAR), voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../appserver). Les fichiers **analytics.ear**, **analytics-ui.war** et **analytics-service.war** se trouvent dans le dossier **<rép_install_serveur_mf>\analytics**.
+Pour plus d'informations sur les étapes d'installation initiale permettant d'acquérir les artefacts d'installation (fichiers JAR et EAR), voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../prod-env/appserver). Les fichiers **analytics.ear**, **analytics-ui.war** et **analytics-service.war** se trouvent dans le dossier **<rép_install_serveur_mf>\analytics**.
 
 Les étapes ci-après expliquent comment installer et exécuter le fichier EAR d'Analytics sur WebSphere Application Server. Si vous installez les fichiers WAR individuels sur WebSphere Application Server, suivez uniquement les étapes 2 à 7 concernant le fichier WAR **analytics-service** après avoir déployé les deux fichiers WAR. L'ordre de chargement des classes ne doit pas être modifié dans le fichier WAR analytics-ui.
 
@@ -250,16 +250,24 @@ WebSphere Application Server.
     ![Module Analytics dans WebSphere](install_websphere_module_class_load_order.jpg)
 
 8. Activez la **sécurité administrative** et la **sécurité des applications** dans la console d'administration WebSphere Application Server :
-    * Connectez-vous à la console d'administration de WebSphere Application Server.
+    * Connectez-vous à la console d'administration WebSphere Application Server.
     * Dans le menu **Sécurité > Sécurité globale**, vérifiez que les options **Activer la sécurité administrative** et **Activer la sécurité des applications** sont sélectionnées. Remarque : la sécurité des applications ne peut être sélectionnée que si la **sécurité administrative** est activée.
     * Cliquez sur **OK** et sauvegardez les modifications.
-9. Démarrez l'application {{ site.data.keys.mf_analytics }} et entrez l'adresse suivante dans le navigateur : `http://<hostname>:<port>/analytics/console`.
+
+9. Pour que le service d'analyse soit accessible via la documentation Swagger, procédez comme suit :
+    * Cliquez sur **Serveurs > Types de serveurs > Serveurs d'applications WebSphere** et choisissez dans la liste de serveurs le serveur sur lequel le service d'analyse est déployé.
+    * Sous **Infrastructure du serveur**, cliquez sur **Java** puis sélectionnez **Gestion des processus et Java > Définition des processus > Machine virtuelle Java > Propriétés personnalisées**.
+      - Définissez la propriété personnalisée suivante<br/>
+        **Nom de la propriété :** *com.ibm.ws.classloader.strict*<br/>
+        **Valeur :** *true*
+
+10. Démarrez l'application {{ site.data.keys.mf_analytics }} et entrez l'adresse suivante dans le navigateur : `http://<hostname>:<port>/analytics/console`.
 
 ## Installation de {{ site.data.keys.mf_analytics }} à l'aide de tâches Ant
 {: #installing-mobilefirst-analytics-with-ant-tasks }
-Assurez-vous de disposer des fichiers de configuration WAR nécessaires : **analytics-ui.war** et **analytics-service.war**. Pour plus d'informations sur les artefacts d'installation, voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../appserver). Les fichiers **analytics-ui.war** et **analytics-service.war** se trouvent dans le dossier **MobileFirst_Platform_Server\analytics**.
+Assurez-vous de disposer des fichiers de configuration WAR nécessaires : **analytics-ui.war** et **analytics-service.war**. Pour plus d'informations sur les artefacts d'installation, voir [Installation de {{ site.data.keys.mf_server }} sur un serveur d'applications](../../prod-env/appserver). Les fichiers **analytics-ui.war** et **analytics-service.war** se trouvent dans le dossier **MobileFirst_Platform_Server\analytics**.
 
-Vous devez exécuter la tâche Ant sur l'ordinateur sur lequel est installé le serveur d'applications ou le gestionnaire de déploiement réseau pour WebSphere Application Server Network Deployment. Si vous voulez démarrer la tâche Ant à partir d'un ordinateur sur lequel {{ site.data.keys.mf_server }} n'est pas installé, vous devez copier le fichier **<rép_install_serveur_mf>/MobileFirstServer/mfp-ant-deployer.jar** sur cet ordinateur.
+Vous devez exécuter la tâche Ant sur l'ordinateur sur lequel est installé le serveur d'applications ou le gestionnaire de déploiement réseau pour WebSphere Application Server Network Deployment. Si vous souhaitez démarrer la tâche Ant depuis un ordinateur sur lequel {{ site.data.keys.mf_server }} n'est pas installé, vous devez copier le fichier **\<mf_server_install_dir\>/MobileFirstServer/mfp-ant-deployer.jar** sur cet ordinateur.
 
 > Remarque : la marque de réservation **rép_install_serveur_mf** correspond au répertoire dans lequel vous avez installé {{ site.data.keys.mf_server }}.
 
@@ -267,11 +275,11 @@ Vous devez exécuter la tâche Ant sur l'ordinateur sur lequel est installé le 
     * Prenez connaissance des exemples de fichier de configuration dans [Exemples de fichier de configuration pour {{ site.data.keys.mf_analytics }}](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics).
     * Remplacez les marques de réservation par les propriétés au début du fichier.
 
-    > Remarque : les caractères spéciaux suivants doivent être associés à des caractères d'échappement lorsqu'ils sont utilisés dans les valeurs des scripts XML Ant :
+    > Remarque : Les caractères spéciaux suivants doivent être associés à des caractères d'échappement lorsqu'ils sont utilisés dans les valeurs des scripts XML Ant :
     >
     > * Le symbole du dollar ($) doit être écrit sous la forme $$, sauf si vous voulez référencer explicitement une variable Ant via la syntaxe ${variable}, comme décrit dans la section [Properties](http://ant.apache.org/manual/properties.html) du manuel Apache Ant.
-    > * La perluète (&) doit être écrite sous la forme &amp;, sauf si vous voulez référencer explicitement une entité XML.
-    > * Les guillemets (") doivent être écrits sous la forme &quot;, sauf s'ils se trouvent dans une chaîne placée entre apostrophes.
+    > * Le caractère perluète (&) doit être écrit sous la forme &amp;, sauf si vous voulez référencer explicitement une entité XML.
+    > * Les guillemets (") doivent être écrits sous la forme &quot;, sauf s'ils se trouvent dans une chaîne placée entre apostrophes. 
 
 2. Si vous installez un cluster de noeuds sur plusieurs serveurs :
     * Vous devez supprimer la mise en commentaire de la propriété **wl.analytics.masters.list** et définir comme valeur la liste des noms d'hôte et des ports de transport des noeuds maîtres. Exemple : `noeud1.masociété.com:96000,noeud2.masociété.com:96000`

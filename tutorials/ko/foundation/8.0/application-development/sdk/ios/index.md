@@ -242,13 +242,13 @@ SDK 릴리스는 SDK의 [CocoaPods 저장소](https://cocoapods.org/?q=ibm%20mob
 {: #mfpclientplist }
 이 파일은 프로젝트의 루트에 있으며 {{ site.data.keys.mf_server }}에서 iOS 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-| 특성            | 설명                                                         | 예제 값 |
+|특성            |설명                                                         |예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
-| host        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
-| port        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
-| wlServerContext     | {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. | /mfp/          |
-| languagePreferences | 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.           | en             |
+|protocol    |{{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             |HTTP 또는 HTTPS  |
+|host        |{{ site.data.keys.mf_server }}의 호스트 이름입니다.                            |192.168.1.63   |
+|port        |{{ site.data.keys.mf_server }}의 포트입니다.                                 |9080           |
+|wlServerContext     |{{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. |/mfp/          |
+|languagePreferences |클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.           |en             |
 
 ## 비트 코드 및 TLS 1.2
 {: #bitcode-and-tls-12 }

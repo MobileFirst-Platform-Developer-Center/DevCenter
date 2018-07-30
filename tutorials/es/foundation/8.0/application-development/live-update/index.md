@@ -528,19 +528,19 @@ public class ResolverAdapterData {
 {: #rest-interface-of-the-segment-resolver-adapter }
 **Solicitud**
 
-| **Atributo** |  **Valor**                                                                                     |  
+|**Atributo** |**Valor**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
-| *URL*           | /segment                                                                                          |
-| *Método*        | POST                                                                                              |               
-| *Tipo de contenido*  | application/json                                                                                  |
-| *Cuerpo*          | &lt;objeto JSON con toda la información necesaria para la resolución de segmentos&gt;                     |
+|*URL*           |/segment                                                                                          |
+|*Método*        |POST                                                                                              |               
+|*Tipo de contenido*  |application/json                                                                                  |
+|*Cuerpo*          |&lt;objeto JSON con toda la información necesaria para la resolución de segmentos&gt;                     |
 
 **Respuesta**
 
-|  **Atributo** |  **Valor**                                                                                     |
+|**Atributo** |**Valor**                                                                                     |
 |:-------------------|:--------------------------------------------|
-| *Tipo de contenido*  | text/plain                                  |                                                                          
-| *Cuerpo*          |  &lt;serie que describe el ID de segmento&gt;   |
+|*Tipo de contenido*  |text/plain                                  |                                                                          
+|*Cuerpo*          |&lt;serie que describe el ID de segmento&gt;   |
 
 
 ## Temas avanzados

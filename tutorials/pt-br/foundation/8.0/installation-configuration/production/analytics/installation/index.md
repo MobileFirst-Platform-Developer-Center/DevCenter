@@ -250,13 +250,21 @@ As etapas a seguir descrevem como instalar e executar o arquivo EAR do Analytics
     * Efetue login no console administrativo do WebSphere Application Server.
     * No menu **Segurança > Segurança global**, certifique-se de que as opções **Ativar segurança administrativa** e **Ativar segurança do aplicativo** estejam selecionadas. Nota: a segurança do aplicativo pode ser selecionada somente depois que a **Segurança administrativa** for ativada.
     * Clique em **OK** e salve as alterações.
-9. Inicie o aplicativo {{ site.data.keys.mf_analytics }} e acesse o link no navegador: `http://<hostname>:<port>/analytics/console`.
+
+9. Para permitir que o serviço de Analítica seja acessado por meio da documentação do swagger, conclua as etapas a seguir:
+    * Clique em **Servidores > Tipos de servidor > WebSphere Application Servers** e escolha o servidor no qual o serviço Analytics está implementado na lista de servidores.
+    * Em **Infraestrutura do servidor**, clique em **Java** e, em seguida, navegue para o **gerenciamento de processo > Definição de processo > Java virtual machine > Propriedades customizadas**.
+      - Configure a propriedade customizada a seguir<br/>
+        **Nome da propriedade:** *com.ibm.ws.classloader.strict*<br/>
+        **Valor:** *true*
+
+10. Inicie o aplicativo {{ site.data.keys.mf_analytics }} e acesse o link no navegador: `http://<hostname>:<port>/analytics/console`.
 
 ## Instalando o {{ site.data.keys.mf_analytics }} com tarefas Ant
 {: #installing-mobilefirst-analytics-with-ant-tasks }
 Certifique-se de que tenha os arquivos WAR e de configuração necessários: **analytics-ui.war** e **analytics-service.war**. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../prod-env/appserver). Os arquivos **analytics-ui.war** e **analytics-service.war** estão localizados em **MobileFirst_Platform_Server\analytics**.
 
-Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos está instalado, ou o Network Deployment Manager para WebSphere Application Server Network Deployment. Se desejar iniciar a tarefa Ant a partir de um computador no qual o {{ site.data.keys.mf_server }} não está instalado, será preciso copiar o arquivo **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** para esse computador.
+Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos está instalado, ou o Network Deployment Manager para WebSphere Application Server Network Deployment. Se você deseja iniciar a tarefa Ant de um computador no qual {{ site.data.keys.mf_server }} não está instalado, deve-se copiar o arquivo **\<mf_server_install_dir\>/MobileFirstServer/mfp-ant-deployer.jar** para esse computador.
 
 > Nota: o item temporário **mf_server_install_dir** é o diretório onde o {{ site.data.keys.mf_server }} foi instalado.
 
@@ -264,11 +272,11 @@ Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos est
     * Revise os arquivos de configuração de amostra em [Arquivos de configuração de amostra para o {{ site.data.keys.mf_analytics }}](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics).
     * Substitua os valores de item temporário pelas propriedades no início do arquivo.
 
-    > Nota: os seguintes caracteres especiais devem estar escapados quando forem usados nos valores dos scripts XML Ant:
+    > Observação: os caracteres especiais a seguir deverão estar escapados quando forem usados nos valores dos scripts XML Ant:
     >
-    > * O símbolo de dólar ($) deve ser escrito como $$, , a não ser que você explicitamente deseje referenciar uma variável Ant por meio a sintaxe ${variável}, conforme descrito na seção [Propriedades](http://ant.apache.org/manual/properties.html) do Manual do Apache Ant.
-    > * O caractere e comercial (&) deve ser escrito como &amp;, a menos que você deseje referenciar explicitamente uma entidade XML.
-    > * Aspas duplas (") devem ser escritas como &quot;, exceto quando estiverem dentro de uma sequência que estiver dentro de aspas simples.
+    > * O símbolo de dólar ($) deve ser escrito como $$, a menos que você deseje referenciar explicitamente uma variável Ant por meio da sintaxe ${variable}, conforme descrito na seção [Propriedades](http://ant.apache.org/manual/properties.html) do Manual do Apache Ant.
+    > * O caractere e comercial (&) deve ser escrito como &amp;, a menos que você deseje referenciar explicitamente a entidade XML.
+    > * Aspas duplas (") devem ser escritas como &quot;, exceto quando estiverem dentro de uma sequência que esteja entre aspas simples.
 
 2. Se você instalar um cluster de nós em vários servidores:
     * Você deve remover o comentário da propriedade **wl.analytics.masters.list** e configurar o seu valor para a lista de nome do host e da porta de transporte dos nós mestres. Por exemplo: `node1.mycompany.com:96000,node2.mycompany.com:96000`

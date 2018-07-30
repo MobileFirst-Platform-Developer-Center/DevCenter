@@ -274,20 +274,20 @@ anpassen.
 
 Diese Datei enthält die in der folgenden Tabelle angegebenen Eigenschaften.
 
-| Eigenschaft| Beschreibung|
+|Eigenschaft|Beschreibung|
 |----------|-------------|
-| url| Fest codierte Adresse des Application-Center-Servers. Wenn diese Eigenschaft gesetzt ist, werden die Adressfelder der Anmeldeansicht nicht angezeigt.|
-| defaultPort| Wenn die Eigenschaft url den Wert null hat, trägt diese Eigenschaft den Wert des Feldes port in der Anmeldeansicht eines Telefons ein. Dies ist ein Standardwert. Das Feld kann vom Benutzer bearbeitet werden. |
-| defaultContext| Wenn die Eigenschaft url den Wert null hat, trägt diese Eigenschaft den Wert des Feldes context in der Anmeldeansicht eines Telefons ein. Dies ist ein Standardwert. Das Feld kann vom Benutzer bearbeitet werden. |
-| ssl| Standardwert des SSL-Schalters in der Anmeldeansicht|
-| allowDowngrade| Diese Eigenschaft gibt an, ob die Installation älterer Versionen autorisiert wird oder nicht. Eine ältere Version kann nur installiert werden. wenn das Betriebssystem und die Version ein Downgrade zulassen. |
-| showPreviousVersions| Diese Eigenschaft gibt an, ob der Gerätebenutzer die Details aller Anwendungsversionen oder nur Details der neuesten Version anzeigen kann.|
-| showInternalVersion| Diese Eigenschaft gibt an, ob die interne Version angezeigt wird oder nicht. Wenn der Wert "false" lautet, wird die interne Version nur angezeigt, wenn keine kommerzielle Version definiert ist. |
-| listItemRenderer| Diese Eigenschaft kann einen der folgenden Werte haben:<br/>- **full**: Bei Verwendung dieses Standardwerts werden in den Anwendungslisten Name, Bewertung und neueste Version angezeigt.<br/>- **simple**: In den Anwendungslisten wird nur der Anwendungsname angezeigt.|
-| listAverageRating| Diese Eigenschaft kann einen der folgenden Werte haben:<br/>-  **latestVersion**: In den Anwendungslisten sehen Sie die durchschnittliche Bewertung der neuesten Version der Anwendung.<br/>-  **allVersions**: In den Anwendungslisten sehen Sie die durchschnittliche Bewertung aller Versionen der Anwendung.|
-| requestTimeout| Diese Eigenschaft gibt das Zeitlimit für Anfragen an den Application-Center-Server in Millisekunden an.|
-| gcmProjectId| Google-API-Projekt-ID (Projektname = com.ibm.appcenter), die für Android-Push-Benachrichtigungen erforderlich ist, z. B. 123456789012 |
-| allowAppLinkReview| Diese Eigenschaft gibt an, ob lokale Rezensionen zu Anwendungen aus externen Application Stores im Application Center registriert und angezeigt werden können. Diese lokalen Rezensionen sind im externen Application Store nicht sichtbar. Sie werden auf dem Application-Center-Server gespeichert. |
+|url|Fest codierte Adresse des Application-Center-Servers. Wenn diese Eigenschaft gesetzt ist, werden die Adressfelder der Anmeldeansicht nicht angezeigt.|
+|defaultPort|Wenn die Eigenschaft url den Wert null hat, trägt diese Eigenschaft den Wert des Feldes port in der Anmeldeansicht eines Telefons ein. Dies ist ein Standardwert. Das Feld kann vom Benutzer bearbeitet werden. |
+|defaultContext|Wenn die Eigenschaft url den Wert null hat, trägt diese Eigenschaft den Wert des Feldes context in der Anmeldeansicht eines Telefons ein. Dies ist ein Standardwert. Das Feld kann vom Benutzer bearbeitet werden. |
+|ssl|Standardwert des SSL-Schalters in der Anmeldeansicht|
+|allowDowngrade|Diese Eigenschaft gibt an, ob die Installation älterer Versionen autorisiert wird oder nicht. Eine ältere Version kann nur installiert werden. wenn das Betriebssystem und die Version ein Downgrade zulassen. |
+|showPreviousVersions|Diese Eigenschaft gibt an, ob der Gerätebenutzer die Details aller Anwendungsversionen oder nur Details der neuesten Version anzeigen kann.|
+|showInternalVersion|Diese Eigenschaft gibt an, ob die interne Version angezeigt wird oder nicht. Wenn der Wert "false" lautet, wird die interne Version nur angezeigt, wenn keine kommerzielle Version definiert ist. |
+|listItemRenderer|Diese Eigenschaft kann einen der folgenden Werte haben:<br/>- **full**: Bei Verwendung dieses Standardwerts werden in den Anwendungslisten Name, Bewertung und neueste Version angezeigt.<br/>- **simple**: In den Anwendungslisten wird nur der Anwendungsname angezeigt.|
+|listAverageRating|Diese Eigenschaft kann einen der folgenden Werte haben:<br/>-  **latestVersion**: In den Anwendungslisten sehen Sie die durchschnittliche Bewertung der neuesten Version der Anwendung.<br/>-  **allVersions**: In den Anwendungslisten sehen Sie die durchschnittliche Bewertung aller Versionen der Anwendung.|
+|requestTimeout|Diese Eigenschaft gibt das Zeitlimit für Anfragen an den Application-Center-Server in Millisekunden an.|
+|gcmProjectId|Google-API-Projekt-ID (Projektname = com.ibm.appcenter), die für Android-Push-Benachrichtigungen erforderlich ist, z. B. 123456789012 |
+|allowAppLinkReview|Diese Eigenschaft gibt an, ob lokale Rezensionen zu Anwendungen aus externen Application Stores im Application Center registriert und angezeigt werden können. Diese lokalen Rezensionen sind im externen Application Store nicht sichtbar. Sie werden auf dem Application-Center-Server gespeichert. |
 
 ### Weitere Ressourcen
 {: #other-resources }

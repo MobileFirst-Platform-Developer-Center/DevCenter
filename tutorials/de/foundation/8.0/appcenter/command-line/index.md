@@ -48,21 +48,21 @@ Führen Sie für die Verwendung des eigenständigen Tools die folgenden Schritte
 
 Sie können jede der verfügbaren Optionen in der Befehlszeile übergeben.
 
-| Option| Inhalt angegeben mit| Beschreibung|
+|Option|Inhalt angegeben mit|Beschreibung|
 |--------|----------------------|-------------|
-| -s| serverpath| Pfad zum Application-Center-Server|
-| -c| context| Kontext der Application-Center-Webanwendung|
-| -u| user| Benutzerberechtigungsnachweise für den Zugriff auf das Application Center|
-| -p| password| Kennwort des Benutzers|
-| -d| description| Beschreibung der hochzuladenden Anwendung|
-| -l| label| Alternative Bezeichnung. Normalerweise wird die Bezeichnung aus dem Anwendungsdeskriptor übernommen, der in der hochzuladenden Datei gespeichert ist. Wenn der Anwendungsdeskriptor keine Bezeichnung enthält, wird die alternative Bezeichnung verwendet.|
-| -isActive| true oder false| Die Anwendung wird im Application Center als aktive oder inaktive Anwendung gespeichert.|
-| -isInstaller| true oder false| Die Anwendung wird im Application Center mit der entsprechend gesetzten Option "installer" gespeichert.|
-| -isReadyForProduction| true oder false| Die Anwendung wird im Application Center mit der entsprechend gesetzten Option "ready-for-production" gespeichert.|
-| -isRecommended| true oder false| Die Anwendung wird im Application Center mit der entsprechend gesetzten Option "recommended" gespeichert.|
-| -e	  |  | Zeigt bei einer Störung den vollständigen Stack-Trace für Ausnahmen an|
-| -f	  |  | Erzwingt das Hochladen von Anwendungen, auch wenn diese bereits vorhanden sind|
-| -y	  |  | Inaktiviert die SSL-Sicherheitsprüfung, sodass auf geschützten Hosts Veröffentlichungen ohne Prüfung des SSL-Zertifikats möglich sind. |  Die Verwendung dieser Option ist ein Sicherheitsrisiko, kann aber für das Testen von localhost mit temporären selbst signierten SSL-Zertifikaten geeignet sein.|
+| -s | serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -d | description | The description of the application to be uploaded. |
+| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. |
+| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. |
+| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. |
+| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. |
+| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. |
+| -e	  |  | Shows the full exception stack trace on failure. |
+| -f	  |  | Force uploading of applications, even if they exist already. |
+| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 Mit dem Parameter "Dateien" können Dateien mit Android-Anwendungspaketen
 (.apk) oder iOS-Anwendungsdateien
@@ -87,13 +87,13 @@ Führen Sie für die Verwendung des eigenständigen Tools die folgenden Schritte
 
 Sie können jede der verfügbaren Optionen in der Befehlszeile übergeben.
 
-| Option| Inhalt angegeben mit| Beschreibung|
+|Option|Inhalt angegeben mit|Beschreibung|
 |--------|----------------------|-------------|
-| -s|serverpath| Pfad zum Application-Center-Server|
-| -c| context| Kontext der Application-Center-Webanwendung|
-| -u| user| Benutzerberechtigungsnachweise für den Zugriff auf das Application Center|
-| -p| password| Kennwort des Benutzers|
-| -y| | Inaktiviert die SSL-Sicherheitsprüfung, sodass auf geschützten Hosts Veröffentlichungen ohne Prüfung des SSL-Zertifikats möglich sind. Die Verwendung dieser Option ist ein Sicherheitsrisiko, kann aber für das Testen von localhost mit temporären selbst signierten SSL-Zertifikaten geeignet sein.|
+| -s |serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 Sie können Dateien oder das Anwendungspaket, das Betriebssystem und die Version angeben. Wenn Dateien angegeben werden,
 werden das Paket, das Betriebssystem und die Version anhand der Datei bestimmt. Dann wird die entsprechende Anwendung aus dem Application Center gelöscht. Wenn Anwendungen angegeben werden,
@@ -141,13 +141,13 @@ Führen Sie für die Verwendung des eigenständigen Tools die folgenden Schritte
 
 Sie können jede der verfügbaren Optionen in der Befehlszeile übergeben.
 
-| Option| Inhalt angegeben mit| Beschreibung|
+|Option|Inhalt angegeben mit|Beschreibung|
 |--------|----------------------|-------------|
-| -s| serverpath| Pfad zum Application-Center-Server|
-| -c| context| Kontext der Application-Center-Webanwendung|
-| -u| user| Benutzerberechtigungsnachweise für den Zugriff auf das Application Center|
-| -p| password| Kennwort des Benutzers|
-| -y| | Inaktiviert die SSL-Sicherheitsprüfung, sodass auf geschützten Hosts Veröffentlichungen ohne Prüfung des SSL-Zertifikats möglich sind. Die Verwendung dieser Option ist ein Sicherheitsrisiko, kann aber für das Testen von localhost mit temporären selbst signierten SSL-Zertifikaten geeignet sein.|
+| -s | serverpath | The path to the Application Center server.|
+| -c | context | The context of the Application Center web application.|
+| -u | user | The user credentials to access the Application Center.|
+| -p | password | The password of the user.|
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.|
 
 #### Beispiel
 {: #example-cache }
@@ -180,18 +180,18 @@ Wenn Sie das Tool zum Hochladen als eine Ant-Task verwenden,
 lautet der "classname" der Ant-Task "upload"
 **com.ibm.appcenter.ant.UploadApps**. Der "classname" der Ant-Task "delete" ist **com.ibm.appcenter.ant.DeleteApps**.
 
-| Parameter der Ant-Task| Beschreibung|
+|Parameter der Ant-Task|Beschreibung|
 |------------------------|-------------|
-| serverPath| Verbindung zum Application Center herstellen. Der Standardwert ist http://localhost:9080.|
-| context| Kontext des Application Center. Der Standardwert ist /applicationcenter.|
-| loginUser| Name des Benutzers mit der Berechtigung, eine Anwendung hochzuladen|
-| loginPass| Kennwort des Benutzers mit der Berechtigung, eine Anwendung hochzuladen|
-| forceOverwrite| Wenn dieser Parameter auf "true" gesetzt ist, versucht die Ant-Task beim Hochladen einer bereits im Application Center vorhandenen Anwendung, die vorhandene Anwendung zu überschreiben. Dieser Parameter ist nur für die Ant-Task "upload" verfügbar.
-| file| Die .apk- oder .ipa-Datei, die in das Application Center hochgeladen oder aus dem Application Center gelöscht werden soll. Dieser Parameter hat keinen Standardwert.|
-| fileset| Hochladen oder Löschen mehrerer Dateien|
-| application| Paketname der Anwendung. Dieser Parameter ist nur für die Ant-Task "delete" verfügbar.|
-| os| Betriebssystem der Anwendung (z. B. Android oder iOS). Dieser Parameter ist nur für die Ant-Task "delete" verfügbar.|
-| version| Interne Version der Anwendung. Dieser Parameter ist nur für die Ant-Task "delete" verfügbar. Verwenden Sie hier nicht die kommerzielle Version, die nicht zum genauen Identifizieren der Version geeignet ist.|
+|serverPath|Verbindung zum Application Center herstellen. Der Standardwert ist http://localhost:9080.|
+|context|Kontext des Application Center. Der Standardwert ist /applicationcenter.|
+|loginUser|Name des Benutzers mit der Berechtigung, eine Anwendung hochzuladen|
+|loginPass|Kennwort des Benutzers mit der Berechtigung, eine Anwendung hochzuladen|
+|forceOverwrite|Wenn dieser Parameter auf "true" gesetzt ist, versucht die Ant-Task beim Hochladen einer bereits im Application Center vorhandenen Anwendung, die vorhandene Anwendung zu überschreiben. Dieser Parameter ist nur für die Ant-Task "upload" verfügbar.
+|file|Die .apk- oder .ipa-Datei, die in das Application Center hochgeladen oder aus dem Application Center gelöscht werden soll. Dieser Parameter hat keinen Standardwert.|
+|fileset|Hochladen oder Löschen mehrerer Dateien|
+|application|Paketname der Anwendung. Dieser Parameter ist nur für die Ant-Task "delete" verfügbar.|
+|os|Betriebssystem der Anwendung (z. B. Android oder iOS). Dieser Parameter ist nur für die Ant-Task "delete" verfügbar.|
+|version|Interne Version der Anwendung. Dieser Parameter ist nur für die Ant-Task "delete" verfügbar. Verwenden Sie hier nicht die kommerzielle Version, die nicht zum genauen Identifizieren der Version geeignet ist.|
 
 #### Beispiel
 {: #example-ant }
@@ -266,16 +266,16 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 
 #### Eigenschaften des Ant-Beispiel-Scripts
 {: #properties-of-the-sample-ant-script }
-| Eigenschaft| Kommentar|
+|Eigenschaft|Kommentar|
 |----------|---------|
-| install.dir| Standardmäßig ../../|
-| server.path| Der Standardwert ist http://localhost:9080.|
-| context.path| Der Standardwert ist applicationcenter.|
-| upload.file| Diese Eigenschaft hat keinen Standardwert. Sie muss den genauen Dateipfad enthalten.|
-| workspace.root| Standardmäßig ../../|
-| login.user| Der Standardwert ist appcenteradmin.|
-| login.pass| Der Standardwert ist admin.|
-| force	| Der Standardwert ist true.|
+|install.dir|Standardmäßig ../../|
+|server.path|Der Standardwert ist http://localhost:9080.|
+|context.path|Der Standardwert ist applicationcenter.|
+|upload.file|Diese Eigenschaft hat keinen Standardwert. Sie muss den genauen Dateipfad enthalten.|
+|workspace.root|Standardmäßig ../../|
+|login.user|Der Standardwert ist appcenteradmin.|
+|login.pass|Der Standardwert ist admin.|
+|force	| Der Standardwert ist true.|
 
 Wenn Sie
 diese Parameter beim Aufrufen von Ant in der Befehlszeile angeben möchten,

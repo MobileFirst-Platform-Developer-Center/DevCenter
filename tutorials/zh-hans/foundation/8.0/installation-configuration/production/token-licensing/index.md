@@ -2,7 +2,7 @@
 layout: tutorial
 title: 安装并配置令牌许可
 breadcrumb_title: Token licensing
-weight: 6
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -36,7 +36,7 @@ weight: 6
 
 #### 受支持的拓扑：
 {: #supported-topologies }
-[{{ site.data.keys.mf_server }}管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product_adj }} 运行时的约束](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)上列出了令牌许可支持的拓扑。
+[{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product_adj }} 运行时的约束](../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)上列出了令牌许可支持的拓扑。
 
 ### 网络需求
 {: #network-requirement }
@@ -46,7 +46,7 @@ weight: 6
 
 * 许可证管理器守护程序 (**lmgrd**) 端口 - 缺省端口号为 27000。
 * 供应商守护程序 (**ibmratl**) 端口
- 
+
 要配置这些端口以使其使用静态值，请参阅“如何穿过防火墙向客户端机器提供许可证密钥”。
 
 ### 安装过程
@@ -73,18 +73,18 @@ weight: 6
 
    #### 图形方式安装
    如果以图形方式安装产品，请在安装期间选择**常规设置**面板中的**使用 Rational License Key Server 激活令牌许可**选项。
-    
+
    ![在 IBM Installation Manager 中激活令牌许可](licensing_with_tokens_activate.jpg)
-    
+
    #### 命令行方式安装
    如果采用静默方式进行安装，请将响应文件中 **user.licensed.by.tokens** 参数的值设置为 **true**。  
    例如，您可以：
-    
+
    ```bash
    imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.use.ios.edition=false,user.licensed.by.tokens=true -acceptLicense
    ```
-    
-2. 在产品安装完成后，将 {{ site.data.keys.mf_server }} 部署至应用程序服务器。 有关更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../appserver)。
+
+2. 在产品安装完成后，将 {{ site.data.keys.mf_server }} 部署至应用程序服务器。 有关更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../prod-env/appserver)。
 
 3. 为 {{ site.data.keys.mf_server }} 配置令牌许可。 步骤取决于应用程序服务器。
 
@@ -105,24 +105,24 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
 {: #installing-rational-common-licensing-libraries }
 
 1. 选择 Rational Common Licensing 本机库。 根据运行 Apache Tomcat 的 Java 运行时环境 (JRE) 的操作系统和位版本，必须在 **product\_install\_dir/MobileFirstServer/tokenLibs/bin/your\_corresponding\_platform/the\_native\_library\_file** 中选择正确的本机库。 例如，对于具有 64 位 JRE 的 Linux x86，该库位于 **product\_install\_dir/MobileFirstServer/tokensLibs/bin/Linux\_x86\_64/librcl\_ibmratl.so** 中。
-2. 将本机库复制到运行 {{ site.data.keys.mf_server }} 管理服务的计算机上。 该目录可能是 **${CATALINA_HOME}/bin**。 
+2. 将本机库复制到运行 {{ site.data.keys.mf_server }} 管理服务的计算机上。 该目录可能是 **${CATALINA_HOME}/bin**。
     > **注：****${CATALINA_HOME}** 是 Apache Tomcat 的安装目录。
 3. 将 **rcl_ibmratl.jar** 文件复制到 **${CATALINA_HOME}/lib** 中。 **rcl_ibmratl.jar** 文件是 Rational Common Licensing Java 库，位于 **product\_install\_dir/MobileFirstServer/tokenLibs** 目录中。 该库使用步骤 2 中复制的本机库，并且只能供 Apache Tomcat 装入一次。 必须将该文件放在 **${CATALINA_HOME}/lib** 目录中或 Apache Tomcat 公共类装入器路径中的任何目录中。
     > **要点：**Apache Tomcat 的 Java 虚拟机 (JVM) 需要具有已复制的本机库和 Java 库的读和执行权限。 在您的操作系统中，至少应用程序服务器进程还必须具有这两个已复制文件的读和执行权限。
 4. 通过应用程序服务器的 JVM 来配置对 Rational Common Licensing 库的访问权。 对于任何操作系统，通过添加以下行来配置 **${CATALINA_HOME}/bin/setenv.bat** 文件（或 UNIX 上的 **setenv.sh** 文件）：
 
    **Windows：**  
-    
+
    ```bash
    set CATALINA_OPTS=%CATALINA_OPTS% -Djava.library.path=absolute_path_to_the_previous_bin_directory
    ```
-    
+
    **UNIX：**
 
    ```bash
    CATALINA_OPTS="$CATALINA_OPTS -Djava.library.path=absolute_path_to_the_previous_bin_directory"
    ```
-    
+
    > **注：**如果您移动了运行管理服务的服务器的配置文件夹，必须使用新的绝对路径来更新 **java.library.path**。
 
 5. 配置 {{ site.data.keys.mf_server }} 以访问 Rational License Key Server。 在 **${CATALINA_HOME}/conf/server.xml** 文件中，查找管理服务应用程序的 `Context` 元素，并添加以下 JNDI 配置行。
@@ -138,7 +138,7 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
 
 ### 安装在 Apache Tomcat 服务器场上
 {: #installing-on-apache-tomcat-server-farm }
-要配置 Apache Tomcat 服务器场上的 {{ site.data.keys.mf_server }} 连接，必须针对运行 {{ site.data.keys.mf_server }} 管理服务的服务器场中的每个节点，完成[安装 Rational Common Licensing 库](#installing-rational-common-licensing-libraries)中描述的所有步骤。 有关服务器场的更多信息，请参阅[服务器场拓扑](../topologies/#server-farm-topology)和[安装服务器场](../appserver/#installing-a-server-farm)。
+要配置 Apache Tomcat 服务器场上的 {{ site.data.keys.mf_server }} 连接，必须针对运行 {{ site.data.keys.mf_server }} 管理服务的服务器场中的每个节点，完成[安装 Rational Common Licensing 库](#installing-rational-common-licensing-libraries)中描述的所有步骤。 有关服务器场的更多信息，请参阅[服务器场拓扑](../prod-env/topologies/#server-farm-topology)和[安装服务器场](../prod-env/appserver/#installing-a-server-farm)。
 
 ## 将 WebSphere Application Server Liberty Profile 上安装的 {{ site.data.keys.mf_server }} 连接到 Rational License Key Server
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-liberty-profile-to-the-rational-license-key-server }
@@ -155,9 +155,9 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
 1. 为 Rational Common Licensing 客户机定义共享库。 该库使用本机代码并且只可供应用程序服务器装入一次。 因此，使用该库的应用程序必须将其作为公共库进行引用。
    * 选择 Rational Common Licensing 本机库。 根据运行 Liberty Profile 的 Java 运行时环境 (JRE) 的操作系统和位版本，必须在 **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file** 中选择正确的本机库。 例如，对于具有 64 位 JRE 的 Linux x86，该库位于 **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so** 中。
    * 将本机库复制到运行 {{ site.data.keys.mf_server }} 管理服务的计算机上。 该目录可能是 **${shared.resource.dir}/rcllib**。 **${shared.resource.dir}** 目录通常位于 **usr/shared/resources** 中，其中 usr 是同时还包含 usr/servers 目录的目录。 有关 **${shared.resource.dir}** 的标准位置的更多信息，请参阅 [WebSphere Application Server Liberty Core - 目录位置和属性](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_dirs.html?lang=en&view=kc)。 如果 **rcllib** 文件夹不存在，请创建此文件夹，然后将本机库文件复制到其中。
-    
+
    > **注：**确保应用程序服务器的 Java 虚拟机 (JVM) 具有本机库的读和执行权限。 在 Windows 上，如果应用程序服务器的 JVM 不具有已复制本机库的执行权限，那么应用程序服务器日志中会出现以下异常。
-    
+
    ```bash
    com.ibm.rcl.ibmratl.LicenseConfigurationException: java.lang.UnsatisfiedLinkError: rcl_ibmratl (Access is denied).
    ```
@@ -190,9 +190,9 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
    <classloader delegation="parentLast" commonLibraryRef="MobileFirst/JDBC/oracle">
     </classloader>
    ```
-    
+
    您还需要将 Rational Common Licensing 库作为公共库附加到 Oracle 库中，如下所示：
-    
+
    ```xml
    <classloader delegation="parentLast"
          commonLibraryRef="MobileFirst/JDBC/oracle,RCLLibrary">
@@ -203,18 +203,18 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
    ```xml
    -Djava.library.path=Absolute_path_to_the_previously_created_rcllib_folder
    ```
-    
+
    > **注：**如果您移动了运行管理服务的服务器的配置文件夹，必须使用新的绝对路径来更新 **java.library.path**。
 
    **${wlp.user.dir}** 目录通常位于 **liberty_install_dir/usr** 中，并且包含 servers 目录。 但是，其位置可进行定制。 有关更多信息，请参阅[定制 Liberty 环境](http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_customvars.html?lang=en&view=kc)
-    
+
 2. 配置 {{ site.data.keys.mf_server }} 以访问 Rational License Key Server。
 
    在 **${wlp.user.dir}/servers/server_name/server.xml** 文件中，添加以下 JNDI 配置行。
-    
+
    ```xml
-   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/> 
-   <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/> 
+   <jndiEntry jndiName="mfp.admin.license.key.server.host" value="rlks_hostname"/>
+   <jndiEntry jndiName="mfp.admin.license.key.server.port" value="rlks_port"/>
    ```
    * **rlks_hostname** 是 Rational License Key Server 的主机名。
    * **rlks_port** 是 Rational License Key Server 的端口。 缺省情况下，该值为 27000。
@@ -223,7 +223,7 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
 
 ### 安装在 Liberty Profile 服务器场上
 {: #installing-on-liberty-profile-server-farm }
-要配置 Liberty Profile 服务器场上的 {{ site.data.keys.mf_server }} 连接，必须针对运行 {{ site.data.keys.mf_server }} 管理服务的服务器场中的每个节点，完成[安装 Rational Common Licensing 库](#installing-rational-common-licensing-libraries)中描述的所有步骤。 有关服务器场的更多信息，请参阅[服务器场拓扑](../topologies/#server-farm-topology)和[安装服务器场](../appserver/#installing-a-server-farm)。
+要配置 Liberty Profile 服务器场上的 {{ site.data.keys.mf_server }} 连接，必须针对运行 {{ site.data.keys.mf_server }} 管理服务的服务器场中的每个节点，完成[安装 Rational Common Licensing 库](#installing-rational-common-licensing-libraries)中描述的所有步骤。 有关服务器场的更多信息，请参阅[服务器场拓扑](../prod-env/topologies/#server-farm-topology)和[安装服务器场](../prod-env/appserver/#installing-a-server-farm)。
 
 ## 将 WebSphere Application Server 上安装的 {{ site.data.keys.mf_server }} 连接到 Rational License Key Server
 {: #connecting-mobilefirst-server-installed-on-websphere-application-server-to-the-rational-license-key-server }
@@ -239,13 +239,13 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
 
 1. 为 Rational Common Licensing 库定义共享库。 该库使用本机代码，并且只可供类装入器在应用程序服务器生命周期内装入一次。 因此，将该库声明为共享库，并且将其与运行 {{ site.data.keys.mf_server }} 管理服务的所有应用程序服务器相关联。 有关将该库声明为共享库的原因的更多信息，请参阅[在共享库中配置本机库](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tcws_sharedlib_nativelib.html?view=kc)。
     * 选择 Rational Common Licensing 本机库。 根据运行 WebSphere Application Server 的 Java 运行时环境 (JRE) 的操作系统和位版本，必须在 **product_install_dir/MobileFirstServer/tokenLibs/bin/your_corresponding_platform/the_native_library_file** 中选择正确的本机库。
-    
+
         例如，对于具有 64 位 JRE 的 Linux x86，该库位于 **product_install_dir/MobileFirstServer/tokensLibs/bin/Linux_x86_64/librcl_ibmratl.so** 中。
-    
+
         要为独立的 WebSphere Application Server 或 WebSphere Application Server Network Deployment 安装确定 Java 运行时环境的位版本，请从 **bin** 目录中运行 **versionInfo.bat**（在 Windows 上）或 **versionInfo.sh**（在 UNIX 上）。 **versionInfo.sh** 文件位于 **/opt/IBM/WebSphere/AppServer/bin** 中。 查看**已安装的产品**部分中的“体系结构”值。 如果“体系结构”值已明确提及 64 位或者其后缀为 64 或 _64，那么 Java 运行时环境是 64 位。
     * 将与您平台对应的本机库放到操作系统上的某个文件夹中。 例如，**/opt/IBM/RCL_Native_Library/**。
     * 将 **rcl_ibmratl.jar** 文件复制到 **/opt/IBM/RCL_Native_Library/** 中。 **rcl_ibmratl.jar** 文件是 Rational Common Licensing Java 库，位于 **product_install_dir/MobileFirstServer/tokenLibs** 目录中。
-    
+
         > **要点：**应用程序服务器的 Java 虚拟机 (JVM) 需要具有已复制的本机库和 Java 库的读和执行权限。 在您的操作系统中，至少应用程序服务器进程还必须具有这两个已复制文件的读和执行权限。    
     * 在 WebSphere Application Server 管理控制台中声明共享库。
         * 登录到 WebSphere Application Server 管理控制台。
@@ -255,10 +255,10 @@ Tomcat 上使用“通过 Rational License Key Server 激活令牌许可”选�
         * 在“名称”字段中输入库的名称。 例如，“RCL 共享库”。
         * 在“类路径”字段中，输入 **rcl_ibmratl.jar** 文件的路径。 例如，**/opt/IBM/RCL_Native_Library/rcl_ibmratl.jar**。
         * 单击**确定**以保存更改。 服务器重新启动后，此设置将生效。
-    
+
         > **注：**在步骤 3 中，在服务器 Java 虚拟机的 **ld.library.path** 属性中设置该库的本机库路径。
     * 将该共享库与所有运行 {{ site.data.keys.mf_server }} 管理服务的服务器相关联。
-    
+
         将共享库与服务器相关联将允许多个应用程序使用该共享库。 如果需要将 Rational Common Licensing 客户机仅用于 {{ site.data.keys.mf_server }} 管理服务，您可以创建具有独立类装入器的共享库，并将其与管理服务应用程序相关联。
 
         以下指示信息描述了如何将库与服务器相关联。 对于 WebSphere Application Server Network Deployment，您必须对所有运行 {{ site.data.keys.mf_server }} 管理服务的服务器都完成这些指示信息。    
@@ -447,5 +447,3 @@ WebSphere Application Server Network Deployment 的每个节点必须具有 Rati
 
 * **rcl_ibmratl.jar** Java 库没有相应的许可权。 该错误后面可能出现异常“java.util.zip.ZipException: 在打开的 zip 文件中出现错误”。 请检查安装了 WebSphere Application Server 的用户是否具有 **rcl_ibmratl.jar** 文件的读许可权。
 * 如果没有其他异常，那么在共享库类路径中引用的 **rcl_ibmratl.jar** 文件可能无效或不存在。 请检查 **rcl_ibmratl.jar** 文件是否有效或者是否存在于所定义的路径中。
-
-

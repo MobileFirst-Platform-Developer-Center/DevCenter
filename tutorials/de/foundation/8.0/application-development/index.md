@@ -158,9 +158,7 @@ finden Sie unter [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einricht
 alle auch im
 {{ site.data.keys.mf_server }} enthalten sind.
 In einfachen Fällen werden alle Komponenten in demselben Anwendungsserver ausgeführt.
-In einer Produktions- oder Testumgebung können Sie jedoch einige Komponenten in anderen Anwendungsservern ausführen. Informationen zu möglichen Topologien für diese
-MobileFirst-Server-Komponenten finden Sie unter
-[Topologien und Netzabläufe](../installation-configuration/production/topologies). 
+In einer Produktions- oder Testumgebung können Sie jedoch einige Komponenten in anderen Anwendungsservern ausführen. Informationen zu möglichen Topologien für diese MobileFirst-Server-Komponenten finden Sie unter [Topologien und Netzabläufe](../installation-configuration/production/prod-env/topologies). 
 
 ### {{ site.data.keys.product_adj }} und MobileFirst-Server-Verwaltungsservice
 {: #mobilefirst-and-the-mobilefirst-server-administration-service }
@@ -230,11 +228,7 @@ implementieren:
 
 #### In Ihren Räumlichkeiten
 {: #on-premises }
-> Informationen zur Installation und Konfiguration
-von {{ site.data.keys.mf_server }} in Ihrer lokalen Umgebung
-finden Sie unter
-[IBM {{ site.data.keys.mf_server }} installieren](../installation-configuration/production/appserver).
-
+> Informationen zur Installation und Konfiguration von {{ site.data.keys.mf_server }} in Ihrer lokalen Umgebung finden Sie unter [IBM {{ site.data.keys.mf_server }} installieren](../installation-configuration/production/prod-env/appserver). 
 
 #### In der Cloud
 {: #on-the-cloud }

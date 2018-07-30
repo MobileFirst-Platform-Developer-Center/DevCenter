@@ -40,31 +40,31 @@ weight: 3
 * Kubernetes CLI (`kubectl`)
 * Helm (`helm`)
 
-CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセスするために、*kubectl* クライアントを構成する必要があります。[詳細はこちら](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_cluster/cfc_cli.html)。
+CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセスするために、*kubectl* クライアントを構成する必要があります。 [詳細はこちら](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_cluster/cfc_cli.html)。
 
 ## IBM Mobile Foundation パスポート・アドバンテージ・アーカイブのダウンロード
 {: #download-the-ibm-mfpf-ppa-archive}
-{{site.data.keys.product_full }} のパスポート・アドバンテージ・アーカイブ (PPA) は、[ここ](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)から入手できます。{{site.data.keys.product }} の PPA アーカイブには、以下の {{site.data.keys.product }} コンポーネントの Docker イメージと Helm チャートが含まれます。
+{{site.data.keys.product_full }} のパスポート・アドバンテージ・アーカイブ (PPA) は、[ここ](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)から入手できます。 {{site.data.keys.product }} の PPA アーカイブには、以下の {{site.data.keys.product }} コンポーネントの Docker イメージと Helm チャートが含まれます。
 * {{ site.data.keys.product_adj }} Server
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
 
 ## IBM Mobile Foundation パスポート・アドバンテージ・アーカイブのロード
 {: #load-the-ibm-mfpf-ppa-archive}
-{{site.data.keys.product }} の PPA アーカイブをロードする前に、Docker をセットアップする必要があります。[こちら](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html)の説明を参照してください。
+{{site.data.keys.product }} の PPA アーカイブをロードする前に、Docker をセットアップする必要があります。 [こちら](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html)の説明を参照してください。
 
 以下のステップに従って、PPA アーカイブを {{site.data.keys.prod_icp }} クラスターにロードします。
 
-  1. IBM Cloud ICP Plugin (`bx pr`) を使用してクラスターにログインします。
+  1. IBM Cloud ICP plugin (`bx pr`) を使用してクラスターにログインします。
       >{{ site.data.keys.prod_icp }} の資料で、[CLI コマンド解説書](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html)を参照してください。
 
       以下に例を示します。
       ```bash
       bx pr login -a https://ip:port
       ```
-      オプションで、SSL 検証をスキップする場合は、上記のコマンドでフラグ `--skip-ssl-validation` を使用します。このオプションを使用すると、クラスター・エンドポイントの `username` と `password` の入力を求めるプロンプトが出されます。ログインに成功したら、以下のステップに進んでください。
+      オプションで、SSL 検証をスキップする場合は、上記のコマンドでフラグ `--skip-ssl-validation` を使用します。このオプションを使用すると、クラスター・エンドポイントの `username` と `password` の入力を求めるプロンプトが出されます。 ログインに成功したら、以下のステップに進んでください。
 
-  2. 以下のコマンドを使用して、{{site.data.keys.product }} の PPA アーカイブをロードします。
+  2. 以下のコマンドを使用して、{{ site.data.keys.product }} の PPA アーカイブをロードします。
       ```
       bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
@@ -72,7 +72,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 
       前のステップに従い、クラスター・エンドポイントを `bx pr` のデフォルトにした場合、`--clustername` は無視できます。
 
-  3. PPA アーカイブをロードした後、リポジトリーを同期化します。これにより、**カタログ**内に確実に Helm チャートがリストされるようになります。これは、{{site.data.keys.prod_icp }} 管理コンソールで行うことができます。
+  3. PPA アーカイブをロードした後、リポジトリーを同期化します。これにより、**カタログ**内に確実に Helm チャートがリストされるようになります。 これは、{{site.data.keys.prod_icp }} 管理コンソールで行うことができます。
       * **「管理」>「リポジトリー」**を選択します。
       * **「リポジトリーの同期化 (Synch Repositories)」**をクリックします。
 
@@ -81,7 +81,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
       * **「プラットフォーム」>「イメージ」**を選択します。
       * Helm チャートが**「カタログ」**に表示されます。
 
-  上記のステップを完了すると、アップロードされたバージョンの {{site.data.keys.prod_adj }} Helm チャートが ICP カタログに表示されます。{{site.data.keys.mf_server }} は、**ibm-mfpf-server-prod** としてリストされ、{{site.data.keys.mf_analytics }} は、**ibm-mfpf-analytics-prod** としてリストされます。
+  上記のステップを完了すると、アップロードされたバージョンの {{site.data.keys.prod_adj }} Helm チャートが ICP カタログに表示されます。 {{site.data.keys.mf_server }} は、**ibm-mfpf-server-prod** としてリストされ、{{site.data.keys.mf_analytics }} は、**ibm-mfpf-analytics-prod** としてリストされます。
 
 ## IBM {{site.data.keys.product }} Helm チャートのインストールおよび構成
 {: #configure-install-mf-helmcharts}
@@ -89,7 +89,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 {{site.data.keys.mf_server }} をインストールし、構成するには、以下のものが事前に必要になります。
 
 * [**必須**] 構成済みで使用可能な DB2 データベース。
-  [{{site.data.keys.mf_server }} Helm を構成](#install-hmc-icp)するには、データベース情報が必要です。{{site.data.keys.mf_server }} には、スキーマと表が必要であり、それらがこのデータベースに作成されます (存在しない場合)。
+  [{{site.data.keys.mf_server }} Helm を構成](#install-hmc-icp)するには、データベース情報が必要です。 {{site.data.keys.mf_server }} には、スキーマと表が必要であり、それらがこのデータベースに作成されます (存在しない場合)。
 
 * [**オプション**] 鍵ストアとトラストストアが設定された秘密。
   独自の鍵ストアとトラストストアを設定した秘密を作成することにより、独自の鍵ストアとトラストストアをデプロイメントに提供できます。
@@ -98,7 +98,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 
   * `keystore.jks`、`keystore-password.txt`、`truststore.jks`、`truststore-password.txt` を使用して秘密を作成し、秘密の名前を *keystores.keystoresSecretName* フィールドに指定します。
 
-  * `keystore.jks` ファイルとそのパスワードを `keystore-password.txt` というファイル内に保持し、`truststore.jks` ファイルとそのパスワードを `truststore-password.jks` というファイル内に保持します。
+  * `keystore.jks` ファイルとそのパスワードを `keystore-password.txt` というファイル内に保持し、`truststore.jks` ファイルとそのパスワードを `truststore-password.txt` というファイル内に保持します。
 
   * コマンド・ラインに移動し、以下を実行します。
     ```bash
@@ -116,11 +116,11 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 
 | 修飾子 | パラメーター | 定義 | 使用可能な値 |
 |-----------|-----------|------------|---------------|
-| arch |  | ワーカー・ノード・アーキテクチャー| このチャートのデプロイ先となるワーカー・ノード・アーキテクチャー。<br/>現在、**AMD64** プラットフォームのみがサポートされています。|
+| arch |  | ワーカー・ノード・アーキテクチャー | このチャートのデプロイ先となるワーカー・ノード・アーキテクチャー。<br/>現在、**AMD64** プラットフォームのみがサポートされています。 |
 | image | pullPolicy | イメージ・プル・ポリシー | デフォルトは **IfNotPresent** |
 |  | tag | Docker イメージ・タグ | [Docker タグの説明](https://docs.docker.com/engine/reference/commandline/image_tag/)を参照 |
 |  | name | Docker イメージ名 | {{ site.data.keys.prod_adj }} Operational Analytics Docker イメージの名前。 |
-| scaling | replicaCount | 作成する必要がある {{site.data.keys.prod_adj }} Operational Analytics のインスタンス (ポッド) の数 | 正整数<br/>デフォルトは **2** |
+| scaling | replicaCount | 作成する必要がある {{ site.data.keys.prod_adj }} Operational Analytics のインスタンス (ポッド) の数 | 正整数<br/>デフォルトは **2** |
 | mobileFirstAnalyticsConsole | user | {{ site.data.keys.prod_adj }} Operational Analytics のユーザー名 | デフォルトは **admin** |
 |  | password | {{ site.data.keys.prod_adj }} Operational Analytics のパスワード | デフォルトは **admin** |
 | analyticsConfiguration | clusterName | {{ site.data.keys.prod_adj }} Analytics クラスターの名前 | デフォルトは **mobilefirst** |
@@ -131,9 +131,9 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 | jndiConfigurations | mfpfProperties | Operational Analytics をカスタマイズするために指定する {{site.data.keys.prod_adj }} JNDI プロパティー | 名前値のペアをコンマ区切りで指定します。 |
 | resources | limits.cpu | 許可される CPU の最大量を記述します。 | デフォルトは **2000m**<br/>[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) をお読みください。 |
 |  | limits.memory | 許可されるメモリーの最大量を記述します。 | デフォルトは **4096Mi**<br/>[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) をお読みください。 |
-|  | requests.cpu | 必要な CPU の最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。| デフォルトは **1000m** |
-|  | requests.memory | 必要なメモリーの最小量を記述します。指定されない場合、メモリー量は、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。| デフォルトは **2048Mi** |
-| persistence | existingClaimName | 既存の永続ボリューム要求 (PVC) の名前  |  |
+|  | requests.cpu | 必要な CPU の最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1000m** |
+|  | requests.memory | 必要なメモリーの最小量を記述します。指定されない場合、メモリー量は、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **2048Mi** |
+| persistence | existingClaimName | 既存の永続ボリューム要求 (PVC) の名前 |  |
 
 
 ### {{ site.data.keys.mf_server }} の環境変数
@@ -142,12 +142,12 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 
 | 修飾子 | パラメーター | 定義 | 使用可能な値 |
 |-----------|-----------|------------|---------------|
-| arch |  | ワーカー・ノード・アーキテクチャー| このチャートのデプロイ先となるワーカー・ノード・アーキテクチャー。<br/>現在、**AMD64** プラットフォームのみがサポートされています。|
-| image | pullPolicy | イメージ・プル・ポリシー | デフォルトは **IfNotPresent** |
+| arch |  | ワーカー・ノード・アーキテクチャー | このチャートのデプロイ先となるワーカー・ノード・アーキテクチャー。<br/>現在、**AMD64** プラットフォームのみがサポートされています。 |
+| image | pullPolicy | イメージ・プル・ポリシー |デフォルトは **IfNotPresent** |
 |  | tag | Docker イメージ・タグ | [Docker タグの説明](https://docs.docker.com/engine/reference/commandline/image_tag/)を参照 |
 |  | name | Docker イメージ名 | {{site.data.keys.prod_adj }} Server Docker イメージの名前。 |
 | scaling | replicaCount | 作成する必要がある {{site.data.keys.prod_adj }} Server のインスタンス (ポッド) の数 | 正整数<br/>デフォルトは **3** |
-| mobileFirstOperationsConsole | ユーザー | {{site.data.keys.prod_adj }} サーバーのユーザー名 | デフォルトは **admin** |
+| mobileFirstOperationsConsole | user | {{site.data.keys.prod_adj }} サーバーのユーザー名 | デフォルトは **admin** |
 |  | password | {{site.data.keys.prod_adj }} Server のユーザーのパスワード | デフォルトは **admin** |
 | existingDB2Details | db2Host | {{site.data.keys.prod_adj }} Server の表を構成する必要がある DB2 データベースの IP アドレスまたはホスト | 現在、DB2 のみがサポートされています。 |
 |  | db2Port | DB2 データベースがセットアップされているポート |  |
@@ -156,7 +156,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 |  | db2Password | 指定されたデータベースの DB2 パスワード  |  |
 |  | db2Schema | 作成するサーバー DB2 スキーマ |  |
 |  | db2ConnectionIsSSL | DB2 接続タイプ | データベース接続が **http** と **https** のいずれであるかを指定します。デフォルト値は **false** (http) です。<br/>DB2 ポートも同じ接続モード用に構成されていることを確認してください。 |
-| existingMobileFirstAnalytics | analyticsEndPoint | Analytics Server の URL | 例: `http://9.9.9.9:30400`。<br/> コンソールへのパスは指定しないでください。これはデプロイメント時に追加されます。
+| existingMobileFirstAnalytics | analyticsEndPoint | Analytics Server の URL | 例: `http://9.9.9.9:30400`<br/> コンソールへのパスは指定しないでください。これはデプロイメント時に追加されます。
  |
 |  | analyticsAdminUser | Analytics 管理ユーザーのユーザー名 |  |
 |  | analyticsAdminPassword | Analytics 管理ユーザーのパスワード |  |
@@ -164,8 +164,8 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 | jndiConfigurations | mfpfProperties | デプロイメントをカスタマイズするための {{site.data.keys.prod_adj }} Server JNDI プロパティー | 名前値のペアをコンマで区切ります。 |
 | resources | limits.cpu | 許可される CPU の最大量を記述します。 | デフォルトは **2000m**<br/>[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) をお読みください。 |
 |  | limits.memory | 許可されるメモリーの最大量を記述します。 | デフォルトは **4096Mi**<br/>[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) をお読みください。 |
-|  | requests.cpu | 必要な CPU の最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。| デフォルトは **1000m** |
-|  | requests.memory | 必要なメモリーの最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。| デフォルトは **2048Mi** |
+|  | requests.cpu | 必要な CPU の最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1000m** |
+|  | requests.memory | 必要なメモリーの最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **2048Mi** |
 
 ### ICP カタログからの {{site.data.keys.prod_adj }} Helm チャートのインストール
 {: #install-hmc-icp}
@@ -173,16 +173,16 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 #### {{ site.data.keys.mf_analytics }} のインストール
 {: #install-mf-analytics}
 
-{{site.data.keys.mf_analytics }} のインストールはオプションです。{{site.data.keys.mf_server }} での分析を使用可能にする場合は、{{site.data.keys.mf_server }} をインストールする前に、まず {{site.data.keys.mf_analytics }} を構成してインストールする必要があります。
+{{site.data.keys.mf_analytics }} のインストールはオプションです。 {{site.data.keys.mf_server }} での分析を使用可能にする場合は、{{site.data.keys.mf_server }} をインストールする前に、まず {{site.data.keys.mf_analytics }} を構成してインストールする必要があります。
 
-{{site.data.keys.mf_analytics }} チャートのインストールを開始する前に、**永続ボリューム**を構成します。{{ site.data.keys.mf_analytics }} を構成するための**永続ボリューム**を提供します。[{{site.data.keys.prod_icp }} の資料](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/create_volume.html)で詳述しているステップに従って、**永続ボリューム**を作成してください。
+{{site.data.keys.mf_analytics }} チャートのインストールを開始する前に、**永続ボリューム**を構成します。 {{ site.data.keys.mf_analytics }} を構成するための**永続ボリューム**を提供します。 [{{site.data.keys.prod_icp }} の資料](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/create_volume.html)で詳述しているステップに従って、**永続ボリューム**を作成してください。
 
 以下のステップに従って、{{site.data.keys.prod_icp }} 管理コンソールから IBM {{site.data.keys.mf_analytics }} をインストールし、構成します。
 
 1. 管理コンソールで**「カタログ」**に移動します。
 2. **ibm-mfpf-analytics-prod** Helm チャートを選択します。
 3. **「構成」**をクリックします。
-4. 環境変数を指定します。詳しくは、[{{site.data.keys.mf_analytics }} の環境変数](#env-mf-analytics)を参照してください。
+4. 環境変数を指定します。 詳しくは、[{{site.data.keys.mf_analytics }} の環境変数](#env-mf-analytics)を参照してください。
 5. **「ご使用条件 (License Agreement)」**に同意します。
 6. **「インストール」**をクリックします。
 
@@ -197,7 +197,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 1. 管理コンソールで**「カタログ」**に移動します。
 2. **ibm-mfpf-server-prod** Helm チャートを選択します。
 3. **「構成」**をクリックします。
-4. 環境変数を指定します。詳しくは、[{{site.data.keys.mf_server }} の環境変数](#env-mf-server)を参照してください。
+4. 環境変数を指定します。 詳しくは、[{{site.data.keys.mf_server }} の環境変数](#env-mf-server)を参照してください。
 5. **「ご使用条件 (License Agreement)」**に同意します。
 6. **「インストール」**をクリックします。
 
@@ -206,7 +206,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 
 {{site.data.keys.mf_analytics }} (オプション) および {{site.data.keys.mf_server }} のインストールと構成が完了したら、以下を実行することにより、インストール済み環境およびデプロイされたポッドの状況を検査できます。
 
-{{ site.data.keys.prod_icp }} 管理コンソールで、**「ワークロード (Workloads)」>「Helm リリース (Helm Releases)」**を選択します。インストール済み環境の*リリース名* をクリックします。
+{{ site.data.keys.prod_icp }} 管理コンソールで、**「ワークロード (Workloads)」>「Helm リリース (Helm Releases)」**を選択します。 インストール済み環境の*リリース名* をクリックします。
 
 
 ## {{site.data.keys.prod_adj }} コンソールへのアクセス
@@ -215,7 +215,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 インストールが成功したら、`<protocol>://<ip_address>:<port>/mfpconsole` を使用して、IBM {{ site.data.keys.prod_adj }} Operations Console にアクセスできます。
 IBM {{ site.data.keys.mf_analytics }} Console には、`<protocol>://<ip_address>:<port>/analytics/console` を使用してアクセスできます。
 
-プロトコルには、`http` または `https` を使用できます。また、**NodePort** デプロイメントの場合、ポートは **NodePort** になることに注意してください。インストールされた {{site.data.keys.prod_adj }} チャートの ip_address および **NodePort** を取得するには、以下のステップに従ってください。
+プロトコルには、`http` または `https` を使用できます。 また、**NodePort** デプロイメントの場合、ポートは **NodePort** になることに注意してください。 インストールされた {{site.data.keys.prod_adj }} チャートの ip_address および **NodePort** を取得するには、以下のステップに従ってください。
 
 1. {{ site.data.keys.prod_icp }} 管理コンソールで、**「ワークロード (Workloads)」>「Helm リリース (Helm Releases)」**を選択します。
 2. Helm チャート・インストール済み環境の*リリース名* をクリックします。
@@ -235,12 +235,12 @@ Helm チャート/リリースをアップグレードする方法について�
 
 ### Helm リリース・アップグレードのサンプル・シナリオ
 
-1. `values.yaml` の値の変更によって Helm リリースをアップグレードするには、`--set` フラグを指定した **helm upgrade** コマンドを使用します。**-set** フラグは複数回指定できます。コマンド・ラインで指定された右端のセットの優先順位が最も高くなります。
+1. `values.yaml` の値の変更によって Helm リリースをアップグレードするには、`--set` フラグを指定した **helm upgrade** コマンドを使用します。 **-set** フラグは複数回指定できます。 コマンド・ラインで指定された右端のセットの優先順位が最も高くなります。
   ```bash
   helm upgrade --set <name>=<value> --set <name>=<value> <existing-helm-release-name> <path of new helm chart>
   ```
 
-2. ファイル内に値を指定して Helm リリースをアップグレードするには、**-f** フラグを指定した `helm upgrade` コマンドを使用します。**--values** フラグまたは **-f** フラグは複数回使用できます。コマンド・ラインで指定された右端のファイルの優先順位が最も高くなります。以下の例で、`myvalues.yaml` と `override.yaml` の両方に *Test* というキーが含まれている場合、`override.yaml` に設定された値が優先されます。
+2. ファイル内に値を指定して Helm リリースをアップグレードするには、**-f** フラグを指定した `helm upgrade` コマンドを使用します。 **--values** フラグまたは **-f** フラグは複数回使用できます。 コマンド・ラインで指定された右端のファイルの優先順位が最も高くなります。 以下の例で、`myvalues.yaml` と `override.yaml` の両方に *Test* というキーが含まれている場合、`override.yaml` に設定された値が優先されます。
   ```bash
   helm upgrade -f myvalues.yaml -f override.yaml <existing-helm-release-name> <path of new helm chart>
   ```
@@ -252,7 +252,8 @@ Helm チャート/リリースをアップグレードする方法について�
 
 ## アンインストール
 {: #uninstall}
-{{site.data.keys.mf_server }} および {{site.data.keys.mf_analytics }} をアンインストールするには、[Helm CLI](https://docs.helm.sh/using_helm/#installing-helm) を使用します。以下のコマンドを使用して、インストールされているチャートおよび関連するデプロイメントを完全に削除します。
+{{site.data.keys.mf_server }} および {{site.data.keys.mf_analytics }} をアンインストールするには、[Helm CLI](https://docs.helm.sh/using_helm/#installing-helm) を使用します。
+以下のコマンドを使用して、インストールされているチャートおよび関連するデプロイメントを完全に削除します。
 ```bash
 helm delete --purge <release_name>
 ```

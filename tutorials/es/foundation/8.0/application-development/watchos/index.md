@@ -101,15 +101,15 @@ Las infraestructuras opcionales que añaden características a la aplicación {{
 Algunas otras características están limitadas por las restricciones que el dispositivo watchOS o Apple Watch imponen.
 
 
-| Característica | Limitación |
+|Característica |Limitación |
 |---------|------------|
-| openSSL | No soportada |
-| JSONStore| No soportada |
-| Notificaciones | No soportada |
-| Alertas de mensajes visualizadas por el código de {{ site.data.keys.product_adj }} | No soportada |
-| Validación de autenticidad de aplicación | No compatible con bitcode, y por lo tanto, no soportada|
-| Notificación/inhabilitación remota| Precisa personalización (consulte más abajo) |
-| Comprobación de seguridad de contraseña/nombres de usuario | Utilice la comprobación de seguridad CredentialsValidation |
+|openSSL |No soportada |
+|JSONStore|No soportada |
+|Notificaciones |No soportada |
+|Alertas de mensajes visualizadas por el código de {{ site.data.keys.product_adj }} |No soportada |
+|Validación de autenticidad de aplicación |No compatible con bitcode, y por lo tanto, no soportada|
+|Notificación/inhabilitación remota|Precisa personalización (consulte más abajo) |
+|Comprobación de seguridad de contraseña/nombres de usuario |Utilice la comprobación de seguridad CredentialsValidation |
 
 ### Notificación/inhabilitación remota
 {: #remote-disablenotify }

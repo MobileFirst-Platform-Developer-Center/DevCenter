@@ -87,7 +87,7 @@ weight: 1
         <p>在开始迁移之前，您需要一个正在运行的 {{ site.data.keys.mf_server }} 实例和迁移辅助工具。</p>
 
         <h3>{{ site.data.keys.mf_server }}</h3>
-        <p>您可以使用 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile Foundation IBM Cloud 服务</a>在 <a href="https://bluemix.net">IBM Cloud</a> 上设置 {{ site.data.keys.mf_server }}。或者，您可以使用 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> 来设置在本地运行的服务器。</p>
+        <p>您可以使用 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile Foundation IBM Cloud 服务</a>在 <a href="https://bluemix.net">IBM Cloud</a> 上设置 {{ site.data.keys.mf_server }}。 或者，您可以使用 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> 来设置在本地运行的服务器。</p>
 
         <h3>迁移辅助工具</h3>
         <p>在 {{ site.data.keys.mf_server }} 启动并运行之后，由于您将在稍后使用迁移辅助工具，请先安装此工具。</p>
@@ -760,6 +760,56 @@ export MVN_PATH="/usr/local/bin"
                 </div>
             </div>
 
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="migrationassistant">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseMigrationassistant" aria-expanded="false" aria-controls="collapseMigrationassistant">使用迁移辅助工具</a>
+                        </h4>
+                    </div>
+                    <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
+                        <div class="panel-body">
+                            <ol>
+                              <li>使用 <i>server</i> 选项运行迁移辅助工具，并指定较早 Worklight 项目的<i>根</i>目录。<br/>
+                                <code>
+                                mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
+                                </code>
+                                <br/><br/>
+                                <blockquote>
+                                <h4>语法</h4>
+                                <pre><span id='code-span'>mfpmigrate server [--in|-i &lt;sourceDirectory&gt;] [--out|-o &lt;destinationDirectory&gt;] [--projectName|-p &lt;newProjectDirectory&gt;]</span></pre>
+                                <br/>
+                                <h4>描述</h4>
+                                <p>从现有 MobileFirst 项目迁移安全域和适配器。</p>
+                                <br/>
+                                <h4>选项</h4>
+                                <p><b><i>&lt;sourceDirectory&gt;</i></b>：<i>&lt;sourceDirectory&gt;</i> 必须是要迁移的 MobileFirst 项目的<i>根</i>文件夹。这是必需参数，而非可选参数。</p>
+
+                                <p><b><i>&lt;destinationDirectory&gt;</i></b>：<i>&lt;destinationDirectory&gt;</i> 是期望将适配器迁移到的目录。</p>
+                              </blockquote>
+                                <p>迁移工具将扫描适配器和域，并执行下列操作：</p>
+                                <ol><li>为适配器和受支持的安全性检查创建模板。</li>
+                                    <li>将适配器源移到新创建的 maven 工件。</li>
+                                    <li>使用依赖关系更新项目 <i>pom</i>。</li>
+                                    <li>创建一份摘要报告，说明这款工具的功能以及完成迁移需要手动执行哪些其他更改。</li>
+                                </ol>
+                              </li>
+
+                              <li>
+                                <p>通过摘要报告，您可以：</p>
+                                <ol>
+                                  <li>了解迁移辅助工具的功能。</li>
+                                  <li>将不受支持的 API 映射到受支持的 API，以便可以进行直接迁移。</li>
+                                  <li>识别原有 Worklight 项目中使用的不受支持的适配器/域。</li>
+                                  <li>了解现有设计存在哪些其他技术难题或瓶颈问题，然后参考以下新的开发概念来了解如何解决这些问题。</li>
+                                </ol>
+                              </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-js-adapter">
                     <h4 class="panel-title">
@@ -897,7 +947,7 @@ export MVN_PATH="/usr/local/bin"
 │   └── main
 │       ├── adapter-resources
 │       │   └── adapter.xml
-    │       └── java
+│       └── java
 │           └── com
 │               └── sample
 │                   ├── RSSAdapterApplication.java

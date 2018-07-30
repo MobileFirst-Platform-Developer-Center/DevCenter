@@ -226,7 +226,7 @@ der Datei hinzu.
 
 {% highlight html %}<script type="text/javascript" src="cordova.js"></script>{% endhighlight %}
                                                     </li>
-						    <li>Entfernen Sie die folgende Codezeile, wenn sie vorhanden ist.<br />
+						    <li>Entfernen Sie die folgende Codezeile, wenn sie vorhanden ist. <br />
 							<code>&lt;script&gt;window.$ = window.jQuery = WLJQ;&lt;/script&gt;</code>
 							<br />
 							Sie können Ihre eigene
@@ -831,6 +831,57 @@ den zuvor verwendeten
                     </div>
                 </div>
             </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="migrationassistant">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseMigrationassistant" aria-expanded="false" aria-controls="collapseMigrationassistant">Unterstützungstool für die Migration verwenden</a>
+                        </h4>
+                    </div>
+                    <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
+                        <div class="panel-body">
+                            <ol>
+                              <li>Führen Sie das Unterstützungstool für die Migration mit der Option <i>server</i> aus und geben Sie das <i>Stammverzeichnis</i> Ihres älteren Worklight-Projekts an.
+                                <br/>
+                                <code>
+                                mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
+                                </code>
+                                <br/><br/>
+                                <blockquote>
+                                <h4>SYNTAX</h4>
+                                <pre><span id='code-span'>mfpmigrate server [--in|-i &lt;Quellenverzeichnis&gt;] [--out|-o &lt;Zielverzeichnis&gt;] [--projectName|-p &lt;neues_Projektverzeichnis&gt;]</span></pre>
+                                <br/>
+                                <h4>BESCHREIBUNG</h4>
+                                <p>Das Tool führt eine Migration für sichere Realms und Adapter eines vorhandenen MobileFirst-Projekts durch. </p>
+                                <br/>
+                                <h4>OPTIONEN</h4>
+                                <p><b><i>&lt;Quellenverzeichnis&gt;</i></b>: Das <i>&lt;Quellenverzeichnis&gt;</i> muss der <i>Stammordner</i> des zu migrierenden MobileFirst-Projekts sein. Dieser Parameter ist erforderlich.</p>
+
+                                <p><b><i>&lt;Zielverzeichnis&gt;</i></b>: Das <i>&lt;Zielverzeichnis&gt;</i> ist das Verzeichnis, das nach der Migration die Adapter enthalten soll.</p>
+                              </blockquote>
+                                <p>Das Migrationstool scannt die Adapter und Realms und führt die folgenden Schritte aus:</p>
+                                <ol><li>Es erstellt eine Schablone für die Adapter und unterstützten Sicherheitsüberprüfungen.</li>
+                                    <li>Es verschiebt die Adapterquellen in das neu erstellte Maven-Artefakt.</li>
+                                    <li>Es aktualisiert das <i>POM</i> mit den Abhängigkeiten.</li>
+                                    <li>Es erstellt einen zusammenfassenden Bericht über die ausgeführten Schritte und die Änderungen, die manuell vorgenommen werden müssen, um die Migration abzuschließen.</li>
+                                </ol>
+                              </li>
+
+                              <li>
+                                <p>Nutzen Sie den zusammenfassenden Bericht wie folgt:</p>
+                                <ol>
+                                  <li>Verschaffen Sie sich einen Überblick über die Schritte des Unterstützungstools für die Migration.</li>
+                                  <li>Ordnen Sie nicht unterstützte APIs unterstützten APIs zu, wenn eine direkte Migration nicht möglich ist.</li>
+                                  <li>Stellen Sie fest, welche nicht unterstützten Adapter/Realms in Ihrem traditionellen Worklight-Projekt verwendet werden.</li>
+                                  <li>Gewinnen Sie Einblicke in andere technische Herausforderungen oder Engpässe Ihres bestehenden Entwurfs und lesen Sie die folgenden Informationen zu neuen Entwicklungskonzepten für die Meisterung dieser Herausforderungen.</li>
+                                </ol>
+                              </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
 
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-js-adapter">

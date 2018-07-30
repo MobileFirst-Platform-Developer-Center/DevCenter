@@ -112,7 +112,7 @@ WebSphere Application Server の JNDI プロパティーは、環境変数とし
 
 キーにピリオドが含まれない (例えば、**http.enabled** ではなく **httpport**) 場合はすべて、変数名に接頭部 **ANALYTICS_** が付いたシステム環境変数が設定を制御できます。 JNDI プロパティーとシステム環境変数の両方が設定されると、システム環境変数が優先されます。 例えば、JNDI プロパティー **analytics/httpport** とシステム環境変数 **ANALTYICS_httpport** の両方を設定した場合、 **ANALYTICS_httpport** の値が使用されます。
 
-> **重要**: 現在、MobileFirst Analytics v8.0 ではマルチテナンシーはサポートされていません。MobileFirst Server からのイベントはデフォルトで、単一のテナント・アーキテクチャーに送信されます。
+> **重要**: 現在、MobileFirst Analytics v8.0 ではマルチテナンシーはサポートされていません。 MobileFirst Server からのイベントはデフォルトで、単一のテナント・アーキテクチャーに送信されます。
 
 #### ドキュメントの存続時間 (TTL)
 {: #document-time-to-live-ttl }

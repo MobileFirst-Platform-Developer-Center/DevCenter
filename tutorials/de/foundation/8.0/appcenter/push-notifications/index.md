@@ -225,11 +225,11 @@ aus einem Produktionsprofil ein Produktionszertifikat generiert. Die Webanwendun
 
 Die Beispiele in der Tabelle zeigen, wie die JNDI-Eigenschaften in der Datei server.xml von Apache Tomcat Server definiert sind.
 
-| JNDI-Eigenschaft | Typ und Beschreibung| Beispiel für Apache-Tomcat-Server|
+|JNDI-Eigenschaft |Typ und Beschreibung|Beispiel für Apache-Tomcat-Server|
 |---------------|----------------------|----------------------------------|
-| ibm.appcenter.apns.p12.certificate.location| Zeichenfolgewert, der den vollständigen Pfad zum .p12-Zertifikat definiert| `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password| Zeichenfolgewert, der das Kennwort für den Zugriff auf das Zertifikat definiert| `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|	Boolescher Wert (true oder false), der definiert, ob das zum Generieren des Authentifizierungszertifikats verwendete Bereitstellungsprofil ein Entwicklungsprofil ist| `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` |
+|ibm.appcenter.apns.p12.certificate.location|Zeichenfolgewert, der den vollständigen Pfad zum .p12-Zertifikat definiert| `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
+|ibm.appcenter.apns.p12.certificate.password|Zeichenfolgewert, der das Kennwort für den Zugriff auf das Zertifikat definiert| `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |
+|ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate|	Boolescher Wert (true oder false), der definiert, ob das zum Generieren des Authentifizierungszertifikats verwendete Bereitstellungsprofil ein Entwicklungsprofil ist| `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` |
 
 Unter [JNDI-Eigenschaften für das Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) sind alle JNDI-Eigenschaften aufgeführt, die Sie festlegen können.
 

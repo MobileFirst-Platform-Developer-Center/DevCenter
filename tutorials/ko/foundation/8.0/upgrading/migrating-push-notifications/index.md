@@ -22,15 +22,15 @@ weight: 4
 
 다음 표는 두 모델 사이의 비교를 제공합니다.
 
-| 사용자 요구사항 | 이벤트 소스 모델 | 푸시 서비스 모델 |
+|사용자 요구사항 |이벤트 소스 모델 |푸시 서비스 모델 |
 |------------------|--------------------|--------------------|
-| 애플리케이션에서 푸시 알림 사용 | {::nomarkdown}<ul><li>이벤트 소스 어댑터를 작성하고 해당 어댑터 내에 EventSource를 작성하십시오.</li><li>푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오.</li></ul>{:/} | 푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오. |
-| 모바일 클라이언트 애플리케이션에서 푸시 알림 사용 | {::nomarkdown}<ul><li>WLClient 작성</li><li>{{ site.data.keys.mf_server }}에 연결</li><li>푸시 클라이언트 인스턴스 가져오기</li><li>이벤트 소스에 등록</li></ul>{:/} | {::nomarkdown}<ul><li>푸시 클라이언트 인스턴스화</li><li>푸시 클라이언트 초기화</li><li>모바일 디바이스 등록</li></ul>{:/} |
-| 특정 태그 기반의 알림에 모바일 클라이언트 애플리케이션 사용 | 지원되지 않음. | 태그 이름을 사용하여 관심있는 태그에 등록하십시오. |
-| 모바일 클라이언트 애플리케이션에서 알림 수신 및 처리 | 리스너 구현을 등록하십시오. | 리스너 구현을 등록하십시오. |
-| 모바일 클라이언트 애플리케이션에 푸시 알림 보내기 | {::nomarkdown}<ul><li>WL.Server API를 내부적으로 호출하여 푸시 알림을 보낼 어댑터 프로시저를 구현하십시오.</li><li>WL Server API는 알림을 보낼 방법을 제공합니다.<ul><li>사용자가 수행</li><li>디바이스로 수행</li><li><li>브로드캐스트(모든 디바이스)</li></ul></li><li>그런 다음 백엔드 서버 애플리케이션이 푸시 알림을 애플리케이션 로직의 일부로 트리거하는 어댑터 프로시저를 호출할 수 있습니다.</li></ul>{:/} | {::nomarkdown}<ul><li>백엔드 서버 애플리케이션은 messages REST API를 직접 호출할 수 있습니다. 그러나 이러한 애플리케이션은 {{ site.data.keys.mf_server }}에 기밀 클라이언트로 등록하고 REST API의 권한 부여 헤더에 전달되어야 하는 올바른 OAuth 액세스 토큰을 얻어야 합니다.</li><li>REST API는 알림을 보내는 옵션을 제공합니다.<ul><li>사용자가 수행</li><li>디바이스로 수행</li><li>플랫폼으로 수행</li><li>태그로 수행</li><li>브로드캐스트(모든 디바이스)</li></ul></li></ul>{:/} |
-| 정기적(폴링 간격)으로 푸시 알림 트리거 |  이벤트 소스 어댑터 내에서 푸시 알림을 보내는 기능을 createEventSource 함수 호출의 일부로 구현합니다. | 지원되지 않음. |
-| 이름, URL 및 이벤트 유형에 후크 등록 | 푸시 알림에 대한 디바이스 등록 또는 등록 취소 경로에 후크를 구현합니다. | 지원되지 않음. |
+|애플리케이션에서 푸시 알림 사용 | {::nomarkdown}<ul><li>이벤트 소스 어댑터를 작성하고 해당 어댑터 내에 EventSource를 작성하십시오.</li><li>푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오.</li></ul>{:/} |푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오. |
+|모바일 클라이언트 애플리케이션에서 푸시 알림 사용 | {::nomarkdown}<ul><li>WLClient 작성</li><li>{{ site.data.keys.mf_server }}에 연결</li><li>푸시 클라이언트 인스턴스 가져오기</li><li>이벤트 소스에 등록</li></ul>{:/} |{::nomarkdown}<ul><li>푸시 클라이언트 인스턴스화</li><li>푸시 클라이언트 초기화</li><li>모바일 디바이스 등록</li></ul>{:/} |
+|특정 태그 기반의 알림에 모바일 클라이언트 애플리케이션 사용 |지원되지 않음. |태그 이름을 사용하여 관심있는 태그에 등록하십시오. |
+|모바일 클라이언트 애플리케이션에서 알림 수신 및 처리 |리스너 구현을 등록하십시오. |리스너 구현을 등록하십시오. |
+|모바일 클라이언트 애플리케이션에 푸시 알림 보내기 | {::nomarkdown}<ul><li>WL.Server API를 내부적으로 호출하여 푸시 알림을 보낼 어댑터 프로시저를 구현하십시오.</li><li>WL Server API는 알림을 보낼 방법을 제공합니다.<ul><li>사용자가 수행</li><li>디바이스로 수행</li><li><li>브로드캐스트(모든 디바이스)</li></ul></li><li>그런 다음 백엔드 서버 애플리케이션이 푸시 알림을 애플리케이션 로직의 일부로 트리거하는 어댑터 프로시저를 호출할 수 있습니다.</li></ul>{:/} |{::nomarkdown}<ul><li>백엔드 서버 애플리케이션은 messages REST API를 직접 호출할 수 있습니다. 그러나 이러한 애플리케이션은 {{ site.data.keys.mf_server }}에 기밀 클라이언트로 등록하고 REST API의 권한 부여 헤더에 전달되어야 하는 올바른 OAuth 액세스 토큰을 얻어야 합니다.</li><li>REST API는 알림을 보내는 옵션을 제공합니다.<ul><li>사용자가 수행</li><li>디바이스로 수행</li><li>플랫폼으로 수행</li><li>태그로 수행</li><li>브로드캐스트(모든 디바이스)</li></ul></li></ul>{:/} |
+|정기적(폴링 간격)으로 푸시 알림 트리거 |이벤트 소스 어댑터 내에서 푸시 알림을 보내는 기능을 createEventSource 함수 호출의 일부로 구현합니다. |지원되지 않음. |
+|이름, URL 및 이벤트 유형에 후크 등록 |푸시 알림에 대한 디바이스 등록 또는 등록 취소 경로에 후크를 구현합니다. |지원되지 않음. |
 
 ## 마이그레이션 시나리오
 {: #migration-scenarios }
@@ -1536,24 +1536,24 @@ class Pushlistener : MFPPushNotificationListener
 1. [다음 GitHub 저장소](https://github.com/mfpdev/push-migration-tool)에서 마이그레이션 도구를 다운로드하십시오.
 2. 도구를 다운로드한 후 **migration.properties** 파일에서 다음 세부사항을 제공하십시오.
 
-    | 값                | 설명  | 샘플 값 |
+    |값                |설명  |샘플 값 |
     |----------------------|--------------|---------------|
-    | w.db.type		       | 고려 중인 데이터베이스의 유형	           | pw.db.type = db2 possible values DB2,Oracle,MySql,Derby |
-    | pw.db.url			   | MobileFirst Platform Foundation 7.1 worklight DB URL  | jdbc:mysql://localhost:3306/WRKLGHT |
-    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB URL      | jdbc:mysql://localhost:3306/ADMIN |
-    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB 사용자 이름 | pw.db.username=root |
-    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight DB 비밀번호 | pw.db.password=root |
-    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin DB 사용자 이름     | pw.db.adminusername=root |
-    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin DB 비밀번호     | pw.db.adminpassword=root |
-    | pw.db.urlTarget	   | MFP 8.0 DB URL						        | jdbc:mysql://localhost:3306/MFPDATA |
-    | pw.db.usernameTarget | MFP 8.0 DB 사용자 이름						| pw.db.usernameTarget=root |
-    | pw.db.passwordTarget | MFP 8.0 DB 비밀번호						| pw.db.passwordTarget=root |
-    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight DB 스키마 | WRKLGT |
-    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin DB 스키마     | WLADMIN |
-    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 worklight DB 스키마    | MFPDATA |
-    | runtime			   | MobileFirst Platform Foundation 7.1 Runtime 이름		 | runtime=worklight |
-    | applicationId	       | MobileFirst Platform Foundation 7.1에 등록된 애플리케이션의 쉼표(,)로 구분된 목록을 제공하십시오. | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId  | {{ site.data.keys.product }} 8.0에 등록된 애플리케이션의 쉼표(,)로 구분된 목록을 제공하십시오.   | com.HybridTestApp,com.NativeiOSTestApp |
+    |w.db.type		       |고려 중인 데이터베이스의 유형	           |pw.db.type = db2 possible values DB2,Oracle,MySql,Derby |
+    |pw.db.url			   |MobileFirst Platform Foundation 7.1 worklight DB URL  |jdbc:mysql://localhost:3306/WRKLGHT |
+    |pw.db.adminurl	   |MobileFirst Platform Foundation 7.1 Admin DB URL      |jdbc:mysql://localhost:3306/ADMIN |
+    |pw.db.username	   |MobileFirst Platform Foundation 7.1 Worklight DB 사용자 이름 |pw.db.username=root |
+    |pw.db.password	   |MobileFirst Platform Foundation 7.1 Worklight DB 비밀번호 |pw.db.password=root |
+    |pw.db.adminusername  |MobileFirst Platform Foundation 7.1 Admin DB 사용자 이름     |pw.db.adminusername=root |
+    |pw.db.adminpassword  |MobileFirst Platform Foundation 7.1 Admin DB 비밀번호     |pw.db.adminpassword=root |
+    |pw.db.urlTarget	   |MFP 8.0 DB URL						        |jdbc:mysql://localhost:3306/MFPDATA |
+    |pw.db.usernameTarget |MFP 8.0 DB 사용자 이름						|pw.db.usernameTarget=root |
+    |pw.db.passwordTarget |MFP 8.0 DB 비밀번호						|pw.db.passwordTarget=root |
+    |pw.db.schema         |MobileFirst Platform Foundation 7.1 Worklight DB 스키마 |WRKLGT |
+    |pw.db.adminschema    |MobileFirst Platform Foundation 7.1 Admin DB 스키마     |WLADMIN |
+    |pw.db.targetschema   |{{ site.data.keys.product }} 8.0 worklight DB 스키마    |MFPDATA |
+    |runtime			   |MobileFirst Platform Foundation 7.1 Runtime 이름		 |runtime=worklight |
+    |applicationId	       |MobileFirst Platform Foundation 7.1에 등록된 애플리케이션의 쉼표(,)로 구분된 목록을 제공하십시오. |HybridTestApp,NativeiOSTestApp |
+    |targetApplicationId  |{{ site.data.keys.product }} 8.0에 등록된 애플리케이션의 쉼표(,)로 구분된 목록을 제공하십시오.   |com.HybridTestApp,com.NativeiOSTestApp |
 
     * 적절한 순서로 **applicationID** 및 **targetApplicationId**의 값을 둘 다 제공했는지 확인하십시오. 맵핑은 일대일(또는 N대N) 방식으로 수행됩니다. 즉, **applicationId** 목록에서 첫 번째 애플리케이션의 데이터는 **targetApplicationId** 목록의 첫 번째 애플리케이션으로 마이그레이션됩니다.
 	* **targetApplicationId** 목록에서 애플리케이션에 대해 packageName/BundleId를 제공하십시오. 즉, MobileFirst Platform Foundation 7.1에 있는 TestApp1의 경우 **targetApplicationId**는 com.TestApp1인 TestApp1의 packageName/BundleId가 됩니다. MobileFirst Platform Foundation 7.1 **applicationId**는 애플리케이션 이름이며 {{ site.data.keys.mf_server }} 8.0에서는 애플리케이션 환경 기반의 packageName/BundleId/packageIdentityName이기 때문입니다.
@@ -1566,4 +1566,4 @@ class Pushlistener : MFPPushNotificationListener
 
    * 도구 .jar 파일 및 properties 파일이 다른 위치에 있는 경우 **path-to-migration.properties**를 **migration.properties**의 경로로 대체하십시오. 그렇지 않으면 명령에서 해당 경로를 제거하십시오.
    
-    도구 .jar 파일과 동일한 위치의 필수 라이브러리가 포함된 라이브러리 폴더를 유지하십시오. 
+    도구 .jar 파일과 동일한 위치의 필수 라이브러리가 포함된 라이브러리 폴더를 유지하십시오.

@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Setting Up MobileFirst Server on IBM Cloud using Scripts for IBM Containers
 #breadcrumb_title: IBM Containers
@@ -14,7 +15,7 @@ IBM Cloud에서 {{ site.data.keys.mf_server }} 인스턴스와 {{ site.data.keys
 
 * 필수 도구(Cloud Foundry CLI, Docker, IBM Containers Extension(cf ic) 플러그인)를 사용하여 호스트 컴퓨터 설정
 * IBM Cloud 계정 설정
-* {{ site.data.keys.mf_server }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하십시오. 
+* {{ site.data.keys.mf_server }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하십시오.
 
 마지막으로 IBM Containers에서 단일 Container 또는 Container 그룹으로 이미지를 실행하고 애플리케이션을 등록할 뿐 아니라 어댑터를 배치합니다.
 
@@ -82,7 +83,7 @@ macOS의 경우 두 개의 옵션을 사용해서 Docker 명령을 실행할 수
 
 ## {{ site.data.keys.mf_bm_pkg_name }} 아카이브 다운로드
 {: #download-the-ibm-mfpf-container-8000-archive}
-IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 IBM Cloud에 푸시할 이미지를 먼저 작성해야 합니다.   
+IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 IBM Cloud에 푸시할 이미지를 먼저 작성해야 합니다.  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">이 페이지의 지시사항을 수행하여</a> IBM Containers의 {{ site.data.keys.mf_server }} 아카이브(.zip 파일, *CNBL0EN* 검색)를 다운로드하십시오.
 
 아카이브 파일에는 이미지를 빌드하는 데 필요한 파일(**dependencies**, **mfpf-libs**), {{ site.data.keys.mf_analytics }} Container를 빌드하고 배치하는 데 필요한 파일(**mfpf-analytics**), {{ site.data.keys.mf_server }} Container를 구성하는 데 필요한 파일(**mfpf-server**)이 들어 있습니다.
@@ -271,7 +272,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 I
 {: #prerequisites }
 다음 섹션 중에 IBM Containers 명령을 실행하므로 아래의 단계는 필수입니다.
 
-1. IBM Cloud 환경에 로그인하십시오.   
+1. IBM Cloud 환경에 로그인하십시오.  
 
     `cf login`을 실행하십시오.  
     프롬프트가 표시되면 다음 정보를 입력하십시오.
@@ -287,7 +288,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 I
 3. 컨테이너 레지스트리의 `namespace`가 설정되었는지 확인하십시오. `namespace`는 IBM Cloud 레지스트리에서 개인용 저장소를 식별하는 고유 이름입니다. 네임스페이스는 조직에 한 번 지정되며 변경될 수 없습니다. 다음 규칙에 따라 네임스페이스를 선택하십시오.
      * 소문자, 숫자 또는 밑줄만 포함할 수 있습니다.
      * 4 - 30자입니다. 명령행에서 컨테이너를 관리하려는 경우 빨리 입력할 수 있는 짧은 네임스페이스를 선호할 수 있습니다.
-     * IBM Cloud 레지스트리에서 고유해야 합니다. 
+     * IBM Cloud 레지스트리에서 고유해야 합니다.
 
     네임스페이스를 설정하려면 `cf ic namespace set <new_name>` 명령을 실행하십시오.  
     설정한 네임스페이스를 가져오려면 `cf ic namespace get` 명령을 실행하십시오.
@@ -346,16 +347,16 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 I
               <h4>startappcenter.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b><em>prepareappcenter.sh</em>의 경우와 동일합니다.</li>
-                  <li><b>SERVER_CONTAINER_NAME - </b>IBM Cloud Container의 이름입니다. </li>
-                  <li><b>SERVER_IP - </b>IBM Cloud Container를 바인드할 IP 주소입니다. </li>
+                  <li><b>SERVER_CONTAINER_NAME - </b>IBM Cloud Container의 이름입니다.</li>
+                  <li><b>SERVER_IP - </b>IBM Cloud Container를 바인드할 IP 주소입니다.</li>
                   <blockquote>IP 주소를 지정하려면 <code>cf ic ip request</code>를 실행하십시오.
                   제공된 IBM Cloud 영역의 여러 컨테이너에서 IP 주소를 재사용할 수 있습니다.
-                   IP 주소를 이미 지정한 경우에는 <code>cf ic ip list</code>를 실행할 수 있습니다.</blockquote>
+                  IP 주소를 이미 지정한 경우에는 <code>cf ic ip list</code>를 실행할 수 있습니다.</blockquote>
               </ul>
               <h4>startappcentergroup.properties</h4>
               <ul>
                   <li><b>SERVER_IMAGE_TAG - </b><em>prepareappcenter.sh</em>의 경우와 동일합니다.</li>
-                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>IBM Cloud Container 그룹의 이름입니다. </li>
+                  <li><b>SERVER_CONTAINER_GROUP_NAME - </b>IBM Cloud Container 그룹의 이름입니다.</li>
                   <li><b>SERVER_CONTAINER_GROUP_HOST - </b>호스트 이름입니다.</li>
                   <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>도메인 이름입니다. 기본값은 <code>mybluemix.net</code>입니다.</li>
               </ul>    
@@ -413,7 +414,7 @@ IBM Containers에서 {{ site.data.keys.product }}를 빌드하고 실행하는 �
                                             </tr>
                                             <tr>
                                                 <td>선택사항. [-a|--api] IBM_CLOUD_API_URL	</td>
-                                                <td>IBM Cloud API 엔드포인트(기본값은 https://api.ng.bluemix.net).</td>
+                                                <td>IBM Cloud API 엔드포인트 (기본값은 https://api.ng.bluemix.net).</td>
                                             </tr>
                                         </table>
 
@@ -483,7 +484,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
                     <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} 이미지 준비</b><br />
                     {{ site.data.keys.mf_app_center }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오.
-                    목록은 이미지 이름, 작성 날짜, ID를 포함합니다. 
+                    목록은 이미지 이름, 작성 날짜, ID를 포함합니다.
 
 다음을 실행하십시오.
 {% highlight bash %}
@@ -804,7 +805,7 @@ IBM Containers에서 {{ site.data.keys.mf_analytics }}를 빌드하고 실행하
                                             </tr>
                                             <tr>
                                                 <td>선택사항. [-a|--api] IBM_CLOUD_API_URL	</td>
-                                                <td>IBM Cloud API 엔드포인트(기본값은 https://api.ng.bluemix.net).</td>
+                                                <td>IBM Cloud API 엔드포인트 (기본값은 https://api.ng.bluemix.net).</td>
                                             </tr>
                                         </table>
 
@@ -820,13 +821,13 @@ initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOU
                         </div>
                     </li>
                     <li><b>prepareanalytics.sh - {{ site.data.keys.mf_analytics }} 이미지 준비</b><br />
-                        {{ site.data.keys.mf_analytics }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareanalytics.sh</b> 스크립트를 실행하십시오. 
+                        {{ site.data.keys.mf_analytics }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareanalytics.sh</b> 스크립트를 실행하십시오.
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
-                        IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오. <br/>
+                        IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오.<br/>
                         목록은 이미지 이름, 작성 날짜, ID를 포함합니다.
 
                         <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
@@ -1103,8 +1104,8 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                 <h4>startserver.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b><em>prepareserver.sh</em>의 경우와 동일합니다.</li>
-                    <li><b>SERVER_CONTAINER_NAME - </b>IBM Cloud Container의 이름입니다. </li>
-                    <li><b>SERVER_IP - </b>IBM Cloud Container를 바인드할 IP 주소입니다. <br/>
+                    <li><b>SERVER_CONTAINER_NAME - </b>IBM Cloud Container의 이름입니다.</li>
+                    <li><b>SERVER_IP - </b>IBM Cloud Container를 바인드할 IP 주소입니다.<br/>
                   IP 주소를 지정하려면 <code>cf ic ip request</code>를 실행하십시오.<br/>
                   영역의 여러 컨테이너에서 IP 주소를 재사용할 수 있습니다.<br/>
                   IP 주소를 하나 이미 지정한 경우에는 <code>cf ic ip list</code>를 실행할 수 있습니다.</li>
@@ -1113,7 +1114,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                 <h4>startservergroup.properties</h4>
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b><em>prepareserver.sh</em>의 경우와 동일합니다.</li>
-                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>IBM Cloud Container 그룹의 이름입니다. </li>
+                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>IBM Cloud Container 그룹의 이름입니다.</li>
                     <li><b>SERVER_CONTAINER_GROUP_HOST - </b>호스트 이름입니다.</li>
                     <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>도메인 이름입니다. 기본값은 <code>mybluemix.net</code>입니다.</li>
                     <li><b>MFPF_PROPERTIES - </b>쉼표로 구분된(<b>공백 없음</b>) {{ site.data.keys.mf_server }} JNDI 특성입니다. 여기서 분석 관련 특성을 정의합니다. <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
@@ -1173,7 +1174,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 빌드하고 실행하는 �
                                         </tr>
                                         <tr>
                                             <td>선택사항. [-a|--api] IBM_CLOUD_API_URL	</td>
-                                            <td>IBM Cloud API 엔드포인트(기본값은 https://api.ng.bluemix.net).</td>
+                                            <td>IBM Cloud API 엔드포인트 (기본값은 https://api.ng.bluemix.net).</td>
                                         </tr>
                                     </table>
 
@@ -1254,7 +1255,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                 </li>
                 <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} 이미지 준비</b><br />
-                    {{ site.data.keys.mf_server }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareserver.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오. <br/>
+                    {{ site.data.keys.mf_server }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareserver.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오.<br/>
                     목록은 이미지 이름, 작성 날짜, ID를 포함합니다.<br/>
 
 {% highlight bash %}
@@ -1521,14 +1522,14 @@ IBM Cloud에서 {{ site.data.keys.mf_server }}가 실행되면 애플리케이�
 
 ## IBM Cloud에서 컨테이너 제거
 {: #removing-a-container-from-bluemix }
-IBM Cloud에서 컨테이너를 제거하는 경우 레지스트리에서 이미지 이름도 제거해야 합니다.   
-다음 명령을 실행하여 IBM Cloud에서 컨테이너를 제거하십시오. 
+IBM Cloud에서 컨테이너를 제거하는 경우 레지스트리에서 이미지 이름도 제거해야 합니다.  
+다음 명령을 실행하여 IBM Cloud에서 컨테이너를 제거하십시오.
 
 1. `cf ic ps`(현재 실행 중인 컨테이너 나열)
 2. `cf ic stop container_id`(컨테이너 중지)
 3. `cf ic rm container_id`(컨테이너 제거)
 
-IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 cf ic 명령을 실행하십시오. 
+IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 cf ic 명령을 실행하십시오.
 
 1. `cf ic images`(레지스트리의 이미지 나열)
 2. `cf ic rmi image_id`(레지스트리에서 이미지 제거)
@@ -1537,11 +1538,11 @@ IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 cf ic
 {: #removing-the-database-service-configuration-from-bluemix }
 {{ site.data.keys.mf_server }} 이미지 구성 중에 **prepareserverdbs.sh** 스크립트를 실행한 경우 {{ site.data.keys.mf_server }}에 필요한 구성과 데이터베이스 테이블이 작성됩니다. 이 스크립트는 컨테이너의 데이터베이스 스키마도 작성합니다.
 
-IBM Cloud에서 데이터베이스 서비스 구성을 제거하려면 IBM Cloud 대시보드를 사용하여 다음 프로시저를 수행하십시오. 
+IBM Cloud에서 데이터베이스 서비스 구성을 제거하려면 IBM Cloud 대시보드를 사용하여 다음 프로시저를 수행하십시오.
 
 1. IBM Cloud 대시보드에서 사용한 dashDB 서비스를 선택하십시오. **prepareserverdbs.sh** 스크립트를 실행하는 동안 매개변수로 제공한 dashDB 서비스 이름을 선택하십시오.
 2. dashDB 콘솔을 실행하여 선택한 dashDB 서비스 인스턴스의 스키마와 데이터베이스 오브젝트에 대한 작업을 수행하십시오.
 3. IBM {{ site.data.keys.mf_server }} 구성과 관련된 스키마를 선택하십시오. 스키마 이름은 **prepareserverdbs.sh** 스크립트를 실행하는 동안 매개변수로 제공한 이름입니다.
-4. 스키마 이름과 그 아래의 오브젝트를 신중히 검사한 후 각 스키마를 삭제하십시오. IBM Cloud에서 데이터베이스 구성이 제거됩니다. 
+4. 스키마 이름과 그 아래의 오브젝트를 신중히 검사한 후 각 스키마를 삭제하십시오. IBM Cloud에서 데이터베이스 구성이 제거됩니다.
 
-마찬가지로 {{ site.data.keys.mf_app_center }} 구성 중에 **prepareappcenterdbs.sh**를 실행한 경우에도 위 단계에 따라 IBM Cloud에서 데이터베이스 서비스 구성을 제거하십시오. 
+마찬가지로 {{ site.data.keys.mf_app_center }} 구성 중에 **prepareappcenterdbs.sh**를 실행한 경우에도 위 단계에 따라 IBM Cloud에서 데이터베이스 서비스 구성을 제거하십시오.
