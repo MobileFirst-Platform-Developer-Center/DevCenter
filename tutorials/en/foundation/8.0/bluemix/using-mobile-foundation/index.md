@@ -17,14 +17,14 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 
     > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
 
-2. **Professional Per Device**: This plan allows users to build, test and run mobile applications in production. You are billed based on the number of client devices connected per day. This plan supports large deployments and high availability. This plan requires you to have an instance of IBM Db2 on Cloud (now called Db2 Hosted) service, which is created and billed separately. This plan provisions a Mobile Foundation server on Liberty for Java, starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.
+2. **Professional Per Device**: This plan allows users to build, test and run mobile applications in production. You are billed based on the number of client devices connected per day. This plan supports large deployments and high availability. This plan requires you to have an instance of IBM Db2 or Compose for PostgreSQL service, which is created and billed separately. This plan provisions a Mobile Foundation server on Liberty for Java, starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.
 
-3. **Professional 1 Application**: This plan allows users to build and manage a single mobile application with a predictable price, regardless of the number of mobile app users or devices. The single mobile application can be of multiple flavors, such as iOS, Android, Windows and Mobile Web. This plan provisions a Mobile Foundation server in a scalable environment as a Cloud Foundry application on Liberty for Java starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. This plan also requires an IBM Db2 on Cloud (Db2 Hosted) service instance, which is created and billed separately. Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.
+3. **Professional 1 Application**: This plan allows users to build and manage a single mobile application with a predictable price, regardless of the number of mobile app users or devices. The single mobile application can be of multiple flavors, such as iOS, Android, Windows and Mobile Web. This plan provisions a Mobile Foundation server in a scalable environment as a Cloud Foundry application on Liberty for Java starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. This plan also requires an IBM Db2 or Compose for PostgreSQL service instance, which is created and billed separately. Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.
 
-4. **Developer Pro**: This plan provisions a {{ site.data.keys.mfound_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. This plan requires you to have a **Db2 Hosted** service instance. The Db2 on Cloud service instance is created and billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
+4. **Developer Pro**: This plan provisions a {{ site.data.keys.mfound_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. This plan requires you to have a **Db2** service instance. The Db2 service instance is created and billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 >_The **Developer Pro** plan is now deprecated._
 
-5. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **Db2 Hosted** service instance. The Db2 Hosted service instance is created and billed separately. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
+5. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **Db2** service instance. The Db2 service instance is created and billed separately. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
 >_The **Professional Per Capacity** plan is now deprecated._
 
 > [See the service details](https://console.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
@@ -64,15 +64,20 @@ Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.k
 
 ### Setting up the *Professional 1 Application* and *Professional Per Device* plan
 {: #setting-up-the-professional-1-application-n-professional-per-device-plan }
-1. These plans require an external [Db2 Hosted database instance](https://console.bluemix.net/catalog/services/db2-hosted/).
+1. These plans require an external [Db2 database instance](https://console.bluemix.net/catalog/services/db2/).
 
-    * If you have an existing Db2 Hosted service instance, select the **Use Existing Service** option, and provide your credentials:
+    * If you have an existing Db2 service instance, select the **Use Existing Service** option, and provide your credentials:
 
-        ![Image of {{ site.data.keys.mf_bm_short }} setup](create-db2-hosted-instance-existing.png)
+        ![Image of {{ site.data.keys.mf_bm_short }} setup](create-db2-instance-existing.png)
 
-    * If you do not currently have a Db2 Hosted service instance, select the **Create New Service** option and follow the on-screen instructions:
+    * If you have an existing Compose for PostgreSQL service instance, select the **Use Existing Service** option, and provide your credentials:
 
-       ![Image of {{ site.data.keys.mf_bm_short }} setup](create-db2-hosted-instance-new.png)
+        ![Image of {{ site.data.keys.mf_bm_short }} setup](create-postgres-instance-existing.png)
+
+
+    * If you do not currently have a Db2 or Compose for PostgreSQL service instance, select the **Create New Service** option and follow the on-screen instructions:
+
+       ![Image of {{ site.data.keys.mf_bm_short }} setup](create-db2-instance-new.png)
 
 2. Start the {{ site.data.keys.mfound_server }}.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
