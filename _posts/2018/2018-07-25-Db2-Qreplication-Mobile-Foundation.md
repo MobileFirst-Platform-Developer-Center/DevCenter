@@ -1,6 +1,6 @@
 ---
 title: Db2 Q-replication for Mobilefirst 8.0 in an Active-Active Configuration
-date: 2018-07-24
+date: 2018-08-05
 tags:
 - MobileFirst_Platform
 - MobileFirst_Foundation
@@ -10,79 +10,87 @@ version:
 - 8.0
 author:
   name: Kavitha Varadarajan
-additional_authors:
--
 ---
 
-Background:
-
 Deploying a mobile application is more than just building a mobile application and deploying it to the public app store. A mobile application talks to a back-end system. If the application can be used in many places around the world by a large community, it is likely that the backend servers will be located in several data centers to more efficiently serve the requests from the mobile application.
-setting up an active-active topology for your mobile application built with IBM MobileFirst Platform Foundation (formerly Worklight Platform Foundation) in order to achieve:Increased availability and performance.
 
-    Distribution of workload across sites.
+Setting up an active-active topology for your mobile application built with IBM MobileFirst Platform Foundation (formerly Worklight Platform Foundation) achieves:
 
-    Provision of better disaster recovery, compared to an active-passive solution.
+* Increased availability and performance.
 
-The active-active topology, also known as master-master topology, consists of IBM MobileFirst Platform Foundation deploying the server in two or more data centers that are all active. This deployment means that the server instances are all ready to respond to requests from the clients. In IBM MobileFirst Platform Foundation, these requests come from the mobile applications,
+* Distribution of workload across sites.
 
-For detailed information on configuring Active-active configuration refer the tutorial and reference links under the section "Refernces". Please note that the base tutorial published is based on older Mobilefirst version, however only change that is needed would be to change the Database names corresponding to MFP8 tablenames which can be referred here https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_internal_ibm_worklight_database_tables.html
+* Better disaster recovery, compared to an active-passive solution.
+
+The active-active topology, also known as master-master topology, consists of IBM MobileFirst Platform Foundation(MFP) deploying the server in two or more data centers that are all active. This deployment means that the server instances are all ready to respond to requests from the clients. In IBM MobileFirst Platform Foundation, these requests come from the mobile applications.
+
+For detailed information on configuring active-active configuration refer to the tutorial and reference links under the [References](#references) section.  Please note that the base tutorial published is based on older Mobilefirst version, however the only change that is needed would be to change the database names corresponding to MFP v8 table names which can be referred [here](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_internal_ibm_worklight_database_tables.html).
 
 
-Challenge:
+## Challenge
+{: #challenge}
 
-Starting Mobilefirst 8.0,   just enabling the DB2 q-replication for all the MFP runtime /push databases following the Db2 Q-replication tutorial will  fail with  
+Starting Mobilefirst v8.0,  enabling the DB2 q-replication for all the MFP runtime/push databases following the Db2 Q-replication tutorial will  fail with the following error while running q-replication scripts to create subscriptions.
 
-following error while running q-replication scripts to create subscriptions.
-
+```
 ASN2003I The action "Create Subscription" started at "Friday, May 4, 2018 5:18:06 PM UTC". Q subscription name: "LICENSE_TERMS0001". Q Capture server: "MFP1". Q Capture schema: "ASN". Q Apply server: "MFPDB". Q Apply schema: "ASN". The source table is "MFPSRVR.LICENSE_TERMS". The target table or stored procedure is "MFPSRVR.LICENSE_TERMS".
 ASN0999E "Column ID with datatype GENERATE ALWAYS is part of the primary key. This is not supported" : "*" : Error condition "*", error code(s): "*", "*", "*"
+```
 
-Reason for this error is documented here
-https://www.ibm.com/support/knowledgecenter/en/SSTRGZ_10.2.1/com.ibm.swg.im.iis.repl.qrepl.doc/topics/iiyrqsubidentity.html
+Reason for this error is documented [here](https://www.ibm.com/support/knowledgecenter/en/SSTRGZ_10.2.1/com.ibm.swg.im.iis.repl.qrepl.doc/topics/iiyrqsubidentity.html).
 
+## Solution
+{: #solution}
 
-Solution:
+For any existing customers, who already have the Mobilefirst server running and in production, but want to use the Q-replication feature, we recommend them to run the following steps prior to attempting Q-replication.
 
-For any existing Customers, who have Mobilefirst server already running and in production, but want to use the Q-replication feature, we recommend them to run the following steps prior to attempting Q-replication.
+In both the datacenters, connect to your MFP database and alter the license terms property.
 
-In both the Datacenters, connect to your MFP Database and alter the license terms property.
-
+```SQL
 db2 connect to <MFPDBNAME> user <MFPUSER> using <MFPPWD>
 db2 alter table <MFPSCHEMANAME>.license_terms alter column ID drop identity
 db2 alter table <MFPSCHEMANAME>.license_terms alter column ID set generated by default as identity
+```
 
-assuming MFPDBNAME is MFP1
-MFPUSER - db2inst1
-MFPPWD - db2pwd
-MFPSCHEMANAME = MFPSRVR, then the command to run will be
+assuming, <br/>
+MFPDBNAME is *MFP1*<br/>
+MFPUSER is *db2inst1*<br/>
+MFPPWD is *db2pwd*<br/>
+MFPSCHEMANAME is *MFPSRVR*, then the command to run will be
 
+
+```SQL
 db2 connect to MFP1 user db2inst1 using db2pwd
 db2 alter table MFPSRVR.license_terms alter column ID drop identity
 db2 alter table MFPSRVR,license_terms alter column ID set generated by default as identity
+```
 
 Repeat the above step for the other active datacenter as well.
 
-Once above prerequisite is done in both the MFP servers, customer can run the Db2 Q-Replication tutorial to configure Q-replication.
+Once the above prerequisite is done in both the MFP servers, customer can follow the Db2 Q-Replication tutorial to configure Q-replication.
+
+### For new Installation
+
+Starting MFP *CD Update 8.0.0.0-IF201807180449*, APAR `PH00066 DB2 Q-REPLICATION WITH MFP DB NOT WORKING IN MFP8` has been fixed, which updates the SQL scripts to fix this limitation during the installation. So for any new Installation, customers can simply go ahead and configure the Db2 Q-replication as long as they have done fresh installation of MFP v8 using the CD cumulative install pack .
+
+Refer to the documentation of this in the CD release notes [here](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=8.0.0.0-MFPF-IF201807180449-CDUpdate-02&source=SAR    ).  
 
 
-For new Installation:
+### Impact for existing customers
 
-Starting MFP CD Update 8.0.0.0-IF201807180449, Apar "PH00066 DB2 Q-REPLICATION WITH MFP DB NOT WORKING IN MFP8" has been published which updates the SQL scripts to fix this limitation during the installation itself. So for any new Installation, Customers can simply go ahead and configure the Db2 Q-replication as long as they have done fresh installation of MFP8 using the CD cummulative install pack .
+1.  With our tests, we have observed that `db2 alter` does not affect the contents of the table. Only the identity column is modified. The rest of the data is intact. We have also tested that the normal behavior of licensing feature works as expected, and subsequent runs properly append entries to license-terms table.
 
-Refer to the documentation of this in the CD release notes here  http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=8.0.0.0-MFPF-IF201807180449-CDUpdate-02&source=SAR    
+2.  We have tested that for the tables we chose for Q-replication , **active-active** configuration sync happened perfectly in both directions.
 
+3.  Note that even in the parent turorial, DB2 replication is recommended only for runtime and push tables. We expect the Admin deployments to happen manually on each cluster of the topology.
 
-
-Impact for existing customers:
-a)  With our tests, we have observed that db2 alter does not affect the contents of the table. Only the identity column is modified. The rest of the data is intact. We have also tested the normal behavior of licensing feature works as expected, and subsequent runs properly append entries to license-terms table.
-b) we have tested that for the tables we chose for Q-replication , "active-active" configuration sync happened perfectly in both directions.
-c) Note that even in the parent turorial, DB2 replication is recommended only for runtime and push tables. We Expect the Admin deployments happen manually on each clusters of the topology.
-d) Data replication is real time. However, depending on network bandwidth, resource contention or distance replication may take slightly longer to be visible between DB instances ( data center - data center).
+4.  Data replication is real time. However, depending on network bandwidth, resource contention or distance, replication may take slightly longer to be visible between DB instances ( data center - data center).
 
 
+## Reference for Q-replication with Mobilefirst
+{: #references}
 
-Reference for Q-replication with Mobilefirst
-https://www.ibm.com/support/knowledgecenter/en/SSTRGZ_10.2.0/com.ibm.swg.im.iis.repl.qtutorial.doc/topics/iiyrqtutabstr1.html
-https://www.ibm.com/support/knowledgecenter/SSTRGZ_10.2.0/com.ibm.swg.im.iis.repl.qtutorial.doc/topics/iiyrqtutintro2.html
-https://www.ibm.com/developerworks/websphere/techjournal/1501_tissandier/1501_tissandier.html
-http://www.channeldb2.com/profiles/blogs/a-fast-way-to-get-started-with-websphere-mq-for-db2-active-active?xg_source=activity
+- [Q Replication Tutorial](https://www.ibm.com/support/knowledgecenter/en/SSTRGZ_10.2.0/com.ibm.swg.im.iis.repl.qtutorial.doc/topics/iiyrqtutabstr1.html)
+- [Introduction to the Q Replication tutorial](https://www.ibm.com/support/knowledgecenter/SSTRGZ_10.2.0/com.ibm.swg.im.iis.repl.qtutorial.doc/topics/iiyrqtutintro2.html)
+- [How to coordinate and execute an active-active topology with IBM MobileFirst Platform Foundation](https://www.ibm.com/developerworks/websphere/techjournal/1501_tissandier/1501_tissandier.html)
+- [A Fast Way to Get Started with Websphere MQ for DB2 Active-Active Databases](http://www.channeldb2.com/profiles/blogs/a-fast-way-to-get-started-with-websphere-mq-for-db2-active-active?xg_source=activity)
