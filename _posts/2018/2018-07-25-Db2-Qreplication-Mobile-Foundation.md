@@ -1,5 +1,5 @@
 ---
-title: Db2 Q-replication for Mobilefirst 8.0 in an Active-Active Configuration
+title: Db2 Q-replication for MobileFirst 8.0 in an Active-Active Configuration
 date: 2018-08-05
 tags:
 - MobileFirst_Platform
@@ -24,13 +24,13 @@ Setting up an active-active topology for your mobile application built with IBM 
 
 The active-active topology, also known as master-master topology, consists of IBM MobileFirst Platform Foundation(MFP) deploying the server in two or more data centers that are all active. This deployment means that the server instances are all ready to respond to requests from the clients. In IBM MobileFirst Platform Foundation, these requests come from the mobile applications.
 
-For detailed information on configuring active-active configuration refer to the tutorial and reference links under the [References](#references) section.  Please note that the base tutorial published is based on older Mobilefirst version, however the only change that is needed would be to change the database names corresponding to MFP v8 table names which can be referred [here](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_internal_ibm_worklight_database_tables.html).
+For detailed information on configuring active-active configuration refer to the tutorial and reference links under the [References](#references) section.  Please note that the base tutorial published is based on older MobileFirst version, however the only change that is needed would be to change the database names corresponding to MFP v8 table names which can be referred [here](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_internal_ibm_worklight_database_tables.html).
 
 
 ## Challenge
 {: #challenge}
 
-Starting Mobilefirst v8.0,  enabling the DB2 q-replication for all the MFP runtime/push databases following the Db2 Q-replication tutorial will  fail with the following error while running q-replication scripts to create subscriptions.
+Starting MobileFirst v8.0,  enabling the DB2 q-replication for all the MFP runtime/push databases following the Db2 Q-replication tutorial will  fail with the following error while running q-replication scripts to create subscriptions.
 
 ```
 ASN2003I The action "Create Subscription" started at "Friday, May 4, 2018 5:18:06 PM UTC". Q subscription name: "LICENSE_TERMS0001". Q Capture server: "MFP1". Q Capture schema: "ASN". Q Apply server: "MFPDB". Q Apply schema: "ASN". The source table is "MFPSRVR.LICENSE_TERMS". The target table or stored procedure is "MFPSRVR.LICENSE_TERMS".
@@ -42,7 +42,7 @@ Reason for this error is documented [here](https://www.ibm.com/support/knowledge
 ## Solution
 {: #solution}
 
-For any existing customers, who already have the Mobilefirst server running and in production, but want to use the Q-replication feature, we recommend them to run the following steps prior to attempting Q-replication.
+For any existing customers, who already have the MobileFirst server running and in production, but want to use the Q-replication feature, we recommend them to run the following steps prior to attempting Q-replication.
 
 In both the datacenters, connect to your MFP database and alter the license terms property.
 
@@ -87,7 +87,7 @@ Refer to the documentation of this in the CD release notes [here](http://www.ibm
 4.  Data replication is real time. However, depending on network bandwidth, resource contention or distance, replication may take slightly longer to be visible between DB instances ( data center - data center).
 
 
-## Reference for Q-replication with Mobilefirst
+## Reference for Q-replication with MobileFirst
 {: #references}
 
 - [Q Replication Tutorial](https://www.ibm.com/support/knowledgecenter/en/SSTRGZ_10.2.0/com.ibm.swg.im.iis.repl.qtutorial.doc/topics/iiyrqtutabstr1.html)
