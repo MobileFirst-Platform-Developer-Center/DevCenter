@@ -44,8 +44,8 @@ With the final release of Android Pie, we have validated MobileFirst v8.0 and v7
 
 #### MobileFirst v7.1 apps 
 
-For MobileFirst v7.1 apps targeting API level 28, you will have to add the legacy Apache HTTP library as a dependency in your `AndroidManifest.xml` 
-Add this line under the `<application>` tag of your `AndroidManifest.xml` 
+For MobileFirst v7.1 apps targeting API level 28, you will have to add the legacy Apache HTTP library as a dependency in your `AndroidManifest.xml`.
+Add the following line under the `<application>` tag of your `AndroidManifest.xml`.
 ```xml
 <uses-library android:name="org.apache.http.legacy" android:required="false"/>
 ```
