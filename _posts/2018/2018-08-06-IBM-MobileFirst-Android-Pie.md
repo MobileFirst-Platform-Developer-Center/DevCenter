@@ -33,7 +33,7 @@ With the final release of Android Pie, we have validated MobileFirst v8.0 and v7
 
 ### Targetting your apps for API level 28  
 
-### MobileFirst v8.0 apps 
+#### MobileFirst v8.0 apps 
 
 * If you are targeting your MobileFirst v8 application for API level 28, you will have to update your Native Android project to point to the [latest MobileFirst SDK](http://search.maven.org/#artifactdetails%7Ccom.ibm.mobile.foundation%7Cibmmobilefirstplatformfoundation%7C8.0.2018071606%7Caar) `com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.2018071606`. If you are working on a Cordova project, please remove the `cordova-plugin-mfp` from your project and add the `cordova-plugin-mfp@8.0.2018080605` [version to your project](https://www.npmjs.com/package/cordova-plugin-mfp).
 	
@@ -42,7 +42,7 @@ With the final release of Android Pie, we have validated MobileFirst v8.0 and v7
 
 * If your app communicates over cleartext or HTTP, you will have to whitelist the domains to which cleartext traffic is allowed, in your apps Network security configuration. Read [this article](https://android-developers.googleblog.com/2016/04/protecting-against-unintentional.html) for more information
 
-### MobileFirst v7.1 apps 
+#### MobileFirst v7.1 apps 
 
 For MobileFirst v7.1 apps targeting API level 28, you will have to add the legacy Apache HTTP library as a dependency in your `AndroidManifest.xml` 
 Add this line under the `<application>` tag of your `AndroidManifest.xml` 
