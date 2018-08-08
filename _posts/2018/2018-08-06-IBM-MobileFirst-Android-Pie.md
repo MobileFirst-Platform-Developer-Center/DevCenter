@@ -31,7 +31,7 @@ With the final release of Android Pie, we have validated MobileFirst v8.0 and v7
 * Push notifications (v8) 
 
 
-### Targetting your apps for API level 28  
+### Targeting your apps for API level 28  
 
 #### MobileFirst v8.0 apps 
 
