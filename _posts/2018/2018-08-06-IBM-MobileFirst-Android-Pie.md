@@ -25,6 +25,7 @@ With the final release of Android Pie, we have validated MobileFirst v8.0 and v7
 * Invoking backend procedures through adapters
 * Application Authenticity
 * Application management
+* Application Center
 * JSONStore
 * Direct Update
 * Oauth handshake with Mobile First server 
