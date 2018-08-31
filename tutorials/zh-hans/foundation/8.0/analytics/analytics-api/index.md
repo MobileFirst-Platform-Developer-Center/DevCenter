@@ -9,7 +9,7 @@ weight: 1
 ## 概述
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} 提供客户机端 API，可帮助用户开始收集有关应用程序的分析数据。本教程提供有关如何在客户机应用程序上设置分析支持的信息，并且列出了可用的 API。
+{{ site.data.keys.mf_analytics_full }} 提供客户机端 API，可帮助用户开始收集有关应用程序的分析数据。 本教程提供有关如何在客户机应用程序上设置分析支持的信息，并且列出了可用的 API。
 
 #### 跳转至
 {: #jump-to }
@@ -33,7 +33,7 @@ weight: 1
 ### JavaScript (Web)
 {: #javascript-web }
 
-在 Web 应用程序中，必须引用分析 JavaScript 文件。确保您已先添加 {{ site.data.keys.product_adj }} Web SDK。有关更多信息，请参阅[将 {{ site.data.keys.product_adj }} SDK 添加到 Web 应用程序](../../application-development/sdk/web)教程。  
+在 Web 应用程序中，必须引用分析 JavaScript 文件。 确保您已先添加 {{ site.data.keys.product_adj }} Web SDK。 有关更多信息，请参阅[将 {{ site.data.keys.product_adj }} SDK 添加到 Web 应用程序](../../application-development/sdk/web)教程。  
 
 根据您添加 {{ site.data.keys.product_adj }} Web SDK 的方式，以下列任一方法继续：
 
@@ -70,7 +70,7 @@ require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
- **要点**：Cordova 与 Web SDK 之间存在一些 JavaScript API 差异。请参阅用户文档中的 [API 参考主题](../../api/)。
+ **要点**：Cordova 与 Web SDK 之间存在一些 JavaScript API 差异。 请参阅用户文档中的 [API 参考主题](../../api/)。
 
 ### iOS
 {: #ios }
@@ -94,7 +94,7 @@ import IBMMobileFirstPlatformFoundation
 {: #initialize-analytics-ios }
 
 **Objective-C**  
-无需设置。缺省情况下已预初始化。
+无需设置。 缺省情况下已预初始化。
 
 **Swift**  
 在调用 **WLAnalytics** 类的其他方法之前，调用 `WLAnalytics.sharedInstance()`。
@@ -134,14 +134,14 @@ Analytics API 使开发人员能够自由地启用和禁用要在 {{ site.data.k
 必须使用本机代码写入分析 API 的初始化，即使在 Cordova 应用程序中也是如此。
 
  * 要捕获应用程序使用情况，必须在发生相关事件之前以及将数据发送至服务器之前注册应用程序生命周期事件侦听器。
- * 要使用文件系统或本机语言和设备功能，必须初始化 API。如果 API 的使用需要本机设备功能（如文件系统），但未初始化 API，那么 API 调用失败。在 Android 上尤其如此。
+ * 要使用文件系统或本机语言和设备功能，必须初始化 API。 如果 API 的使用需要本机设备功能（如文件系统），但未初始化 API，那么 API 调用失败。 在 Android 上尤其如此。
 
-**注意**：要构建 Cordova 应用程序，JavaScript Analytics API 无法启用或禁用 `LIFECYCLE` 或 `NETWORK` 事件的收集。换句话说，缺省情况下 Cordova 应用程序会预先启用 `LIFECYCLE` 和 `NETWORK` 事件。如果要禁用这些事件，请参阅[客户机生命周期事件](#client-lifecycle-events)和[客户机网络事件](#client-lifecycle-events)。
+**注意**：要构建 Cordova 应用程序，JavaScript Analytics API 无法启用或禁用 `LIFECYCLE` 或 `NETWORK` 事件的收集。 换句话说，缺省情况下 Cordova 应用程序会预先启用 `LIFECYCLE` 和 `NETWORK` 事件。 如果要禁用这些事件，请参阅[客户机生命周期事件](#client-lifecycle-events)和[客户机网络事件](#client-lifecycle-events)。
 
 ### 客户机生命周期事件
 {: #client-lifecycle-events }
 
-在配置 Analytics SDK 之后，将开始在用户设备上记录应用程序会话。将应用程序从前台移至后台时将在 {{ site.data.keys.mf_analytics }} 中记录会话，这将在 {{ site.data.keys.mf_analytics_console_short }} 上创建会话。
+在配置 Analytics SDK 之后，将开始在用户设备上记录应用程序会话。 将应用程序从前台移至后台时将在 {{ site.data.keys.mf_analytics }} 中记录会话，这将在 {{ site.data.keys.mf_analytics_console_short }} 上创建会话。
 
 一旦将设备设置为记录会话并发送数据，就可以看到 {{ site.data.keys.mf_analytics_console_short }} 已填充有数据，如下所示。
 
@@ -227,7 +227,7 @@ WLAnalytics.sharedInstance().removeDeviceEventListener(LIFECYCLE);
 
 * 服务器收集诸如服务器处理时间、适配器使用情况和已使用过程等后端信息。
 
-由于客户机和服务器各自收集自己的信息，图表不会显示数据，直至将客户机配置为显示数据。要配置您的客户机，必须对 `NETWORK` 设备事件启动收集并将其发送到服务器。
+由于客户机和服务器各自收集自己的信息，图表不会显示数据，直至将客户机配置为显示数据。 要配置您的客户机，必须对 `NETWORK` 设备事件启动收集并将其发送到服务器。
 
 #### JavaScript
 {: #javascript }
@@ -409,7 +409,7 @@ WLAnalytics.setUserContext("John Doe");
 #### Web 应用程序
 {: #web-applications-untracking-users }
 
-{{ site.data.keys.product_adj }} Web SDK 中没有 `unsetUserContext`。用户会话将在 30 分钟不活动后结束，除非对 `ibmmfpfanalytics.setUserContext(user)` 发出另一个调用。
+{{ site.data.keys.product_adj }} Web SDK 中没有 `unsetUserContext`。 用户会话将在 30 分钟不活动后结束，除非对 `ibmmfpfanalytics.setUserContext(user)` 发出另一个调用。
 
 #### iOS
 {: #ios-untracking-users }
@@ -436,9 +436,9 @@ WLAnalytics.unsetUserContext();
 ## 发送分析数据
 {: #sending-analytics-data }
 
-发送分析是在分析服务器上查看客户机端分析的至关重要的一步。针对分析收集了已配置的事件类型的数据后，分析日志将存储在客户机设备上的日志文件中。将使用 Analytics API 的 `send` 方法将来自该文件中的数据发送到 {{ site.data.keys.mf_analytics_server }}。
+发送分析是在分析服务器上查看客户机端分析的至关重要的一步。 针对分析收集了已配置的事件类型的数据后，分析日志将存储在客户机设备上的日志文件中。 将使用 Analytics API 的 `send` 方法将来自该文件中的数据发送到 {{ site.data.keys.mf_analytics_server }}。
 
-考虑定期将捕获的日志发送到服务器。定期发送数据可确保您在 {{ site.data.keys.mf_analytics_console }} 中看到最新分析数据。
+考虑定期将捕获的日志发送到服务器。 定期发送数据可确保您在 {{ site.data.keys.mf_analytics_console }} 中看到最新分析数据。
 
 #### JavaScript (Cordova)
 {: #javascript-cordova-sending-data }

@@ -145,9 +145,9 @@ Apple Push Notification Services (APNs) で iOS プロジェクトを正常に�
 
 表中の例は、Apache Tomcat サーバーの server.xml ファイル内で JNDI プロパティーがどのように定義されるかを示したものです。
 
-| JNDI プロパティー	| タイプと説明 | Apache Tomcat サーバーの場合の例 |
+| JNDI プロパティー | タイプと説明 | Apache Tomcat サーバーの場合の例 |
 |---------------|----------------------|----------------------------------|
-| ibm.appcenter.apns.p12.certificate.location | .p12 証明書への絶対パスを定義するストリング値。 | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
+| ibm.appcenter.apns.p12.certificate.location | .p12 証明書への絶対パスを定義するストリング値。| `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
 | ibm.appcenter.apns.p12.certificate.password | 証明書にアクセスするために必要なパスワードを定義するストリング値。 | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |
 | ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	認証証明書を生成するために使用されたプロビジョニング・プロファイルが開発証明書であったかどうかを定義するブール値 (true か false で識別される)。 | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` |
 

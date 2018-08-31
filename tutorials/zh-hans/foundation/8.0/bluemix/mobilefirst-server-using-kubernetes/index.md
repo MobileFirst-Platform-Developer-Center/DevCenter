@@ -8,7 +8,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-遵循以下指示信息，以在 IBM Cloud 上配置 {{ site.data.keys.mf_server }} 实例以及 {{ site.data.keys.mf_analytics }} 实例。为此您需要完成以下步骤：
+遵循以下指示信息，以在 IBM Cloud 上配置 {{ site.data.keys.mf_server }} 实例以及 {{ site.data.keys.mf_analytics }} 实例。 为此您需要完成以下步骤：
 
 * 创建以下类型的 Kubernetes 集群：Standard（已付费集群）。
 * 使用所需的工具（Docker、Cloud Foundry CLI (cf)、IBM Cloud CLI (bx)、Container Service Plugin for IBM Cloud CLI (bx cs)、Container Registry Plugin for IBM Cloud CLI (bx cr) 和 Kubernetes CLI (kubectl)）来设置主计算机。
@@ -34,11 +34,11 @@ weight: 2
 
 ## 在 IBM Cloud 上注册帐户
 {: #register-an-account-on-ibmcloud }
-如果还没有帐户，请访问 [IBM Cloud Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。您需要填写注册表单，然后才能进入下一步。
+如果还没有帐户，请访问 [IBM Cloud Web 站点](https://bluemix.net)，然后单击**免费开始使用**或**注册**。 您需要填写注册表单，然后才能进入下一步。
 
 ### IBM Cloud 仪表板
 {: #the-ibmcloud-dashboard }
-在登录 IBM Cloud 后，会显示 IBM Cloud 仪表板，其中提供了活动的 IBM Cloud **空间**的概述。缺省情况下，此工作区命名为“dev”。 如果需要，您可以创建多个工作区/空间。
+在登录 IBM Cloud 后，会显示 IBM Cloud 仪表板，其中提供了活动的 IBM Cloud **空间**的概述。 缺省情况下，此工作区命名为“dev”。 如果需要，您可以创建多个工作区/空间。
 
 ## 设置主机
 {: #set-up-your-host-machine }
@@ -347,7 +347,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
 
                 </li>
                 <li><b>prepareserver.sh - 准备 {{ site.data.keys.mf_server }} 映像</b><br />
-                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analytics }} 映像，并将其推送到 IBM Cloud 存储库。要查看 IBM Cloud 存储库中的所有可用映像，请运行：<code>bx cr image-list</code><br/>
+                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analytics }} 映像，并将其推送到 IBM Cloud 存储库。 要查看 IBM Cloud 存储库中的所有可用映像，请运行：<code>bx cr image-list</code><br/>
                     此列表包含映像名称、创建日期和标识。<br/>
                     <b>交互方式</b>
 {% highlight bash %}
@@ -366,7 +366,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
                   将 <em>my-cluster</em> 替换为您的集群名称后，复制粘贴以上命令以在您的终端内设置环境变量，然后按 <b>Enter</b> 键。
                   </li>
-                  <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]: </b> 创建 <b>持久存储卷申请</b>。这将用于持久存储分析数据。 这是一次性步骤。 如果先前已创建 <b>PVC</b>，可以进行复用。 编辑 <em>yaml</em> 文件 <b>args/mfpf-persistent-volume-claim.yaml</b>，然后运行此命令。
+                  <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]: </b> 创建<b>持久存储卷申请</b>。 这将用于持久存储分析数据。 这是一次性步骤。 如果先前已创建 <b>PVC</b>，可以进行复用。 编辑 <em>yaml</em> 文件 <b>args/mfpf-persistent-volume-claim.yaml</b>，然后运行此命令。
                   在执行以下 <em>kubectl</em> 命令之前，所有变量都必须替换为各自的值。<br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
                   记下<b>持久存储卷申请</b>的名称，因为后续步骤中必须提供此名称。
                   </li>
@@ -406,7 +406,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
     </div>
 </div>
 
-通过使用 IBM Cloud 上运行的 {{ site.data.keys.mf_server }}，现在您可以启动自己的应用程序开发。查看 {{ site.data.keys.product }} [教程](../../all-tutorials)。
+通过使用 IBM Cloud 上运行的 {{ site.data.keys.mf_server }}，现在您可以启动自己的应用程序开发。 查看 {{ site.data.keys.product }} [教程](../../all-tutorials)。
 
 
 ## 应用 {{ site.data.keys.mf_server }} 修订
@@ -453,7 +453,7 @@ bx cr image-rm image-name（从注册表中除去映像）
 
 要从 IBM Cloud 中除去数据库服务配置，请使用 IBM Cloud 仪表板执行以下过程。
 
-1. 从 IBM Cloud 仪表板，选择使用的 DB2 on cloud 服务。选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 DB2 服务名称。
+1. 从 IBM Cloud 仪表板，选择使用的 DB2 on cloud 服务。 选择在运行 **prepareserverdbs.sh** 脚本时作为参数提供的 DB2 服务名称。
 2. 启动 DB2 控制台以使用选中的 DB2 服务实例的模式和数据库对象。
 3. 选择与 IBM {{ site.data.keys.mf_server }} 配置相关的模式。 模式名称是在运行 **prepareserverdbs.sh** 脚本时作为参数提供的名称。
 4. 在仔细检查每个模式名称以及其下的对象后，删除模式。 这将从 IBM Cloud 中除去数据库配置。

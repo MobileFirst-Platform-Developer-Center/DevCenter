@@ -162,7 +162,7 @@ Application Center dépend de la disponibilité de l'API Google Cloud Messaging 
 1. Vérifiez que les notifications push sont désactivées en vérifiant que le fichier **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** contient cette ligne : `"gcmProjectId": "" ,`.
 2. Supprimez de deux endroits dans le fichier **IBMAppCenter/apps/AppCenter/android/native/AndroidManifest.xml** toutes les lignes qui se trouvent entre ces commentaires : `<!-- AppCenter Push configuration -->` et `<!-- end of AppCenter Push configuration -->`.
 3. Supprimez la classe **IBMAppCenter/apps/AppCenter/android/native/src/com/ibm/appcenter/GCMIntenteService.java**.
-4. Dans Eclipse, exécutez "Build Android Environment" dans le dossier IBMAppCenter/apps/AppCenter/android folder.
+4. Dans Eclipse, exécutez "Build Android Environment" dans le dossier IBMAppCenter/apps/AppCenter/android.
 5. Supprimez le fichier **IBMAppCenter/apps/AppCenter/android/native/libs/gcm.jar** qui a été créé par le plug-in MobileFirst lorsque vous avez exécuté la commande précédente "Build Android Environment".
 6. Actualisez le nouveau projet IBMAppCenterAppCenterAndroid, afin que la suppression de la bibliothèque GCM soit prise en compte.
 7. Créez le fichier .apk d'Application Center.

@@ -125,9 +125,7 @@ Der Push-Service wird durch das OAuth-Sicherheitsmodell geschützt. Sie müssen 
 
 ### Datenmigrationstool für Push-Benachrichtigungen
 {: #push-notifications-data-migration-tool }
-Es steht ein Datenmigrationstool für Push-Benachrichtigungen zur Verfügung. Das Migrationstool vereinfacht
-die Umstellung von Push-Daten von MobileFirst Platform Foundation 7.1 (Geräte, Benutzerabonnements,
-Berechtigungsnachweise und Tags) auf {{ site.data.keys.product }} 8.0.
+Es steht ein Datenmigrationstool für Push-Benachrichtigungen zur Verfügung. Das Migrationstool vereinfacht die Umstellung von Push-Daten von MobileFirst Platform Foundation 7.1 (Geräte, Benutzerabonnements, Berechtigungsnachweise und Tags) auf {{ site.data.keys.product }} 8.0.
 
 > [Informieren Sie sich über das Migrationstool](migrating-push-notifications/#migration-tool).
 
@@ -147,5 +145,5 @@ Hier erfahren Sie, wie Sie das Server Configuration Tool für ein Upgrade von {{
 
 Wählen Sie den für Ihre Erstinstallationsmethode passenden Artikel aus, um einen vorläufigen Fix oder ein Fixpack für {{ site.data.keys.mf_server }} anzuwenden: 
 
-* [Fixpack oder vorläufigen Fix mit dem Server Configuration Tool anwenden](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
-* [Fixpack mit Ant-Dateien anwenden](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
+* [Fixpack oder vorläufigen Fix mit dem Server Configuration Tool anwenden](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Fixpack mit Ant-Dateien anwenden](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-ant-files)

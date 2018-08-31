@@ -211,8 +211,6 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 ```
 `CredentialsValidationSecurityCheckConfig` 类可定义以下属性：
 
-
-
 - `maxAttempts`：在达到 *failure* 之前允许的尝试次数。
 - `attemptingStateExpirationSec`：客户机必须提供有效凭证并统计尝试次数的时间间隔（秒）。
 - `successStateExpirationSec`：保持成功登录的时间间隔（秒）。

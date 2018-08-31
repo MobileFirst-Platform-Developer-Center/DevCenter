@@ -1,16 +1,16 @@
 ---
 layout: tutorial
-title: Updating your MobileFirst Platform Foundation installation
+title: Atualizando sua instalação do MobileFirst Platform Foundation
 breadcrumb_title: Applying updates
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-IBM MobileFirst Platform Foundation fix packs can be applied to your installation to update and upgrade MobileFirst components.
+Os fix packs do IBM MobileFirst Platform Foundation podem ser aplicados em sua instalação para atualizar e fazer upgrade dos componentes do MobileFirst.
 
-Applying updates or fix packs involve two steps, which are:
+A aplicação das atualizações ou dos fix packs envolve duas etapas, que são:
 
-1. [Running IBM Installation Manager](installation-manager)
+1. [Executando o IBM Installation Manager](installation-manager)
 
-2. [Updating the MobileFirst server](appserver-update)
+2. [Atualizando o servidor MobileFirst](appserver-update)

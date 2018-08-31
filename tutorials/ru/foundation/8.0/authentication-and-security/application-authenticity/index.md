@@ -35,6 +35,8 @@ To enable application authenticity, you can either follow the on-screen instruct
 {: #application-authenticity-flow }
 The application-authenticity security check is run during the application's registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. By default the authenticity check does not run again.
 
+Once app authenticity is enabled and if customer needs to introduce any changes in their application, then the application version needs to be upgraded.
+
 See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
 
 ## Enabling Application Authenticity
@@ -46,6 +48,8 @@ For application authenticity to be enabled in your application:
 3. Toggle the **On/Off** button in the **Status** box.
 
 ![Enable Application Authenticity](enable_application_authenticity.png)
+
+MobileFirst Server validates the application's authenticity on the first attempt to connect to the server. To apply this validation also to protected resources, add the `appAuthenticity` security check to the protecting scope.
 
 ### Disabling Application Authenticity
 {: #disabling-application-authenticity }
@@ -100,11 +104,13 @@ After resetting the fingerprint, the appAuthenticity security check continues to
 ### Validation Type
 {: #validation }
 
-By default, when application authenticity is enabled it uses the **dynamic** validation algorithm. The dynamic application authenticity validation uses mobile platform specific features to determine the authenticity of the application. Accordingly it might be affected if non backward compatible changes are introduced to the mobile operating system, which could result in preventing authentic applications from connecting to the server.
+MobileFirst Platform Foundation provides static and dynamic app authenticity for applications. These validation types differ on the algorithm and attributes used to generate app authenticity seeds.
+By default, when application authenticity is enabled, it uses the **dynamic** validation algorithm.
 
-To mitigate such potential issues, the **static** validation algorithm is available. This validation type is less sensitive to OS specific changes.
+The dynamic app authenticity is configurable from MobileFirst Console. The internal algorithm takes care of generating app authenticity data based on the options chosen in console.
+For static app authenticity, one need to use the [**mfpadm** CLI](../../administering-apps/using-cli/).
 
-To switch between validation types, use the [**mfpadm** CLI](../../administering-apps/using-cli/):
+For enabling static app authenticity and to switch between validation types, use the [**mfpadm** CLI](../../administering-apps/using-cli/):
 
 ```bash
 mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE

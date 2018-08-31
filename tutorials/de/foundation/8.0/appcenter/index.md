@@ -167,7 +167,8 @@ Dateien vom Typ
 ARM-basierten Tablets nicht ausgeführt werden. Das Application Center
 unterstützt daher nur Windows 8 und Windows 8.1, aber nicht Windows RT.
 
-Zum Ausführen des Appliction-Center-Clients benötigt der Gerätebenutzer die Administratorberechtigung für das Gerät. 
+Zum Ausführen des Appliction-Center-Clients benötigt
+der Gerätebenutzer die Administratorberechtigung für das Gerät. 
 
 Das Application
 Center gibt keinen Weg für die Verteilung des mobilen Clients vor.

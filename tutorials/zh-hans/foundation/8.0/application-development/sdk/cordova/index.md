@@ -24,7 +24,7 @@ weight: 1
 MobileFirst 插件支持的 Cordova 平台版本包括：
 
 * cordova-ios：**>= 4.1.1 以及 < 5.0**
-* cordova-android：**>= 6.1.2 以及 < 7.0**
+* cordova-android：**>= 6.1.2 and <= 7.0**
 * cordova-windows：**>= 4.3.2 以及 < 6.0**
 
 #### 跳转至：
@@ -33,6 +33,7 @@ MobileFirst 插件支持的 Cordova 平台版本包括：
 - [添加 {{ site.data.keys.product_adj }} Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
 - [更新 {{ site.data.keys.product_adj }} Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
 - [已生成 {{ site.data.keys.product_adj }} Cordova SDK 工件](#generated-mobilefirst-cordova-sdk-artifacts)
+- [Cordova 浏览器平台支持](#cordova-browser-platform)
 - [接下来要学习的教程](#tutorials-to-follow-next)
 
 > **注：**如果使用 Xcode 8，在 iOS 模拟器中运行 iOS 应用程序时，**密钥链共享**功能是必需的。在构建 Xcode 项目之前，必须手动启用此功能。
@@ -68,7 +69,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 
 **先决条件：**
 
-- [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 和 {{ site.data.keys.mf_cli }} 已安装在开发人员工作站上。
+- 安装在开发人员工作站上的 [Apache Cordova CLI](https://www.npmjs.com/package/cordova) 和 {{ site.data.keys.mf_cli }}。
 - {{ site.data.keys.mf_server }} 的本地或远程实例正在运行。
 - 阅读[设置您的 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/development/mobilefirst)和[设置您的 Cordova 开发环境](../../../installation-configuration/development/cordova)教程。
 - 对于 cordova-windows，必须安装与机器中已安装的 Visual Studio 和 .NET 版本兼容的 Visual C++ 版本。
@@ -100,7 +101,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
      - “HelloWorld”是应用程序的名称。
      - --template 将使用特定于 {{ site.data.keys.product_adj }} 的新增项来修改应用程序。
 
-    > 模板化的 **index.js** 使您能够使用其他 {{ site.data.keys.product_adj }} 功能，如[多语言应用程序翻译](../../translation)和初始化选项（请参阅用户文档以获取更多信息）。
+    模板化的 **index.js** 使您能够使用其他 {{ site.data.keys.product_adj }} 功能，如[多语言应用程序翻译](../../translation)和初始化选项（请参阅用户文档以获取更多信息）。
 
 2. 将目录更改为 Cordova 项目的根目录：`cd hello`
 
@@ -320,6 +321,237 @@ Cordova 配置文件是包含应用程序元数据的必需 XML 文件，存储�
 ```bash
 mfpdev app config
 ```
+## Cordova 浏览器平台支持
+{: #cordova-browser-platform}
+
+MobileFirst 平台现在支持 Cordova 浏览器平台以及受支持的 Cordova Windows、Cordova Android 和 Cordova iOS 平台。
+
+将 Cordova 浏览器平台用于 MobileFirst Platform (MFP) 类似于将 MFP 用于任何其他平台。下面解释了用于演示此功能的样本。
+
+使用以下命令来创建 cordova 应用程序：
+```bash
+cordova create <your-appFolder-name> <package-name>
+```
+这将创建一个 vanilla cordova 应用程序。
+
+使用以下命令来添加 MFP 插件：
+```bash
+cordova plugin add cordova-plugin-mfp
+   ```
+添加一个可用于 ping MFP 服务器（此服务器可能是本地托管的服务器或 IBM Cloud 上的服务器）的按钮。单击此按钮以 Ping 您的 MFP 服务器。
+您可以使用以下样本代码：
+
+#### index.html
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+  <!-- load script with wlCommonInit defined before loading cordova.js -->
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+
+  <title>MFP Starter - Cordova</title>
+</head>
+
+<body>
+
+  <div id="main">
+    <div id="main_title">Hello MobileFirst</div>
+    <div id="main_status"></div>
+    <div id="main_info"></div>
+  </div>
+
+  <div id="button_content">
+    <button id="ping_button" style="display:none">Ping MobileFirst Server</button>
+  </div>
+
+</body>
+
+</html>
+```
+
+#### index.js
+
+```javascript
+
+var Messages = {
+        // Add here your messages for the default language.
+  // Generate a similar file with a language suffix containing the translated messages.
+  // key1 : message1,
+};
+
+var wlInitOptions = {
+    // Options to initialize with the WL.Client object.
+  // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.
+   mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
+    applicationId : 'io.cordova.hellocordova' // Replace with your own app id/package name.
+};
+
+function wlCommonInit() {
+  app.init();
+}
+
+var app = {
+  //initialize app
+  "init": function init() {
+    var buttonElement = document.getElementById("ping_button");
+    buttonElement.style.display = "block";
+    buttonElement.addEventListener('click', app.testServerConnection, false);
+  },
+  //test server connection
+  "testServerConnection": function testServerConnection() {
+
+    var titleText = document.getElementById("main_title");
+    var statusText = document.getElementById("main_status");
+    var infoText = document.getElementById("main_info");
+    titleText.innerHTML = "Hello MobileFirst";
+    statusText.innerHTML = "Connecting to Server...";
+    infoText.innerHTML = "";
+
+    WLAuthorizationManager.obtainAccessToken()
+      .then(
+        function (accessToken) {
+          titleText.innerHTML = "Yay!";
+          statusText.innerHTML = "Connected to MobileFirst Server";
+        },
+        function (error) {
+          titleText.innerHTML = "Bummer...";
+          statusText.innerHTML = "Failed to connect to MobileFirst Server";
+        }
+        );
+    },
+ }
+
+```
+
+>**注：**请务必在 index.js 文件的 **wlInitOptions** 中提及 `mfpContextRoot` 和 `applicationId`。
+
+#### index.css
+
+```css
+body {
+    position: static;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    margin: 0px;
+	padding: 0px;
+}
+
+#button_content {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+}
+
+#ping_button {
+  display: block;
+  margin: 0 auto;
+  height: 50px;
+  width: 240px;
+  font-size: 20px;
+  color: white;
+  background-color: #325c80;
+}
+
+#main {
+  top: 10%;
+  position: absolute;
+  text-align: center;
+  width: 100%
+}
+
+#main_title {
+  font-size: 40px;
+}
+
+#main_status {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#main_info {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+```
+
+
+使用以下命令来添加浏览器平台：
+```bash
+cordova platform add browser
+```
+<!--
+ (Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and above recognizes cordova browser applications as web platform applications. If you are using a lower version then you can either upgrade to the latest version or manually register your application. -->
+
+> 要手动注册您的应用程序：
+>
+* 登录到您的 MFP 服务器控制台。
+* 单击_*应用程序*_选项旁边的**新建**按钮。
+* 为应用程序提供名称，选择 **Web** 作为平台，然后提供应用程序的标识（在 `index.js` 的 **wlInitOptions** 函数中定义）。
+>
+>**谨记：**将服务器详细信息添加到应用程序的 `config.xml`。
+
+<!--If you are using **mfpdev-cli** (more about the `cli` commands can be found [here](https://www.ibm.com/support/knowledgecenter/en/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/dev/t_gs_cli.html)), add the MFP server using the following command:
+
+```bash
+mfpdev server add
+```
+Set it as the default server.
+
+Register your application with the following command:
+
+```bash
+mfpdev app register
+```
+-->
+
+
+ >**注**：不久后将发布用于注册浏览器平台应用程序的 *mfpdev-cli*。
+
+然后，执行以下命令：
+
+```bash
+cordova prepare
+cordova build
+cordova run
+```
+
+<!--This will launch two browsers. One of the browser runs on cordova browser's proxy server (that runs on port `8000`, generally) which cannot connect to the MFP server due to the [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)). The other browser would be an MFP proxy server (this runs on port `9081`) that will serve MFP requests.
+
+If you click the button to ping MFP on the browser running on port `8000`, the ping will fail whereas clicking the button that runs on localhost port `9081` will be successful. All the cordova browser compatible cordova plugins and MFP features can be used without issues.-->
+
+这会启动运行在代理服务器上的浏览器（在端口 `9081` 上），然后连接到 MFP 服务器。cordova 浏览器的缺省代理服务器（运行在端口 `8000` 上）已被禁止，原因是该服务器由于 [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) 而无法连接到 MFP 服务器。
+
+> 要运行的缺省浏览器设置为 **Chrome**。使用 `--target` 选项以在其他浏览器上运行，也可通过以下命令使用该选项：
+```bash
+ cordova run --target=Firefox
+ ```
+
+可通过以下命令来预览应用程序：
+
+```bash
+mfpdev app preview
+```
+
+唯一受支持的浏览器选项是*简单浏览器呈现*。该浏览器平台不支持*移动浏览器支持*选项。
+
+### 使用 WebSphere Liberty 提供 cordova 浏览器资源
+{: #using-liberty-cordova-browser}
+
+按照指示信息使用<a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/">本</a>教程中的 WebSphere Liberty，然后进行以下更改。
+
+将浏览器项目的 `www` 文件夹内容添加到 `[MyWebApp] → src → Main → webapp`，如本教程中**使用 Web 应用程序资源构建 Maven Web 应用程序**部分的步骤 1 中所述。最后，在 Liberty 服务器上注册您的应用程序，并在浏览器中使用路径 `localhost:9080/MyWebApp` 运行该应用程序以进行测试。另外将 `sjcl` 和 `jssha` 文件夹添加到其父文件夹，并更改其在 `ibmmfpf.js` 文件中的引用。
 
 ## 接下来要学习的教程
 {: #tutorials-to-follow-next }

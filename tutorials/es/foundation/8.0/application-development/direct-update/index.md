@@ -230,17 +230,17 @@ Los métodos del escucha se inician durante el proceso de actualización directa
 * Se llama a `onFinish` con uno de los siguientes códigos de estado final:
 
 
-| Código de estado | Descripción |
+|Código de estado |Descripción |
 |-------------|-------------|
-| `SUCCESS` | La actualización directa finalizó sin errores. |
-| `CANCELED` | Se canceló la actualización directa (por ejemplo, debido a que se llamó al método `stop()`). |
-| `FAILURE_NETWORK_PROBLEM` | Se produjo un problema con una conexión de red durante la actualización. |
-| `FAILURE_DOWNLOADING` | El archivo no se ha descargado completamente. |
-| `FAILURE_NOT_ENOUGH_SPACE` | No hay espacio suficiente en el dispositivo para descargar y desempaquetar el archivo de actualización. |
-| `FAILURE_UNZIPPING` | Se ha producido un problema desempaquetar el archivo de actualización. |
-| `FAILURE_ALREADY_IN_PROGRESS` | Se ha llamado al método de inicio mientras ya se estaba ejecutando una actualización directa. |
-| `FAILURE_INTEGRITY` | No se ha podido verificar el archivo de actualización.  |
-| `FAILURE_UNKNOWN` | Error interno inesperado. |
+|`SUCCESS` |La actualización directa finalizó sin errores. |
+|`CANCELED` |Se canceló la actualización directa (por ejemplo, debido a que se llamó al método `stop()`). |
+|`FAILURE_NETWORK_PROBLEM` |Se produjo un problema con una conexión de red durante la actualización. |
+|`FAILURE_DOWNLOADING` |El archivo no se ha descargado completamente. |
+|`FAILURE_NOT_ENOUGH_SPACE` |No hay espacio suficiente en el dispositivo para descargar y desempaquetar el archivo de actualización. |
+|`FAILURE_UNZIPPING` |Se ha producido un problema desempaquetar el archivo de actualización. |
+|`FAILURE_ALREADY_IN_PROGRESS` |Se ha llamado al método de inicio mientras ya se estaba ejecutando una actualización directa. |
+|`FAILURE_INTEGRITY` |No se ha podido verificar el archivo de actualización.  |
+|`FAILURE_UNKNOWN` |Error interno inesperado. |
 
 Si implementa un escucha de actualización directa personalizado, debe asegurarse de que la aplicación se recarga cuando se complete el proceso de dicha actualización directa y se haya llamado al método `onFinish()`. También se debe llamar a `wl_directUpdateChalengeHandler.submitFailure()` si el proceso de actualización directa no se completa de forma satisfactoria.
 

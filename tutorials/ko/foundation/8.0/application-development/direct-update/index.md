@@ -91,7 +91,7 @@ downloads:
  1. 업로드하지 않고 .zip 파일을 빌드하십시오.
 
     ```bash
-mfpdev app webupdate --build
+    mfpdev app webupdate --build
     ```
  2. {{ site.data.keys.mf_console }}을 로드하고 애플리케이션 항목을 클릭하십시오.
  3. **웹 자원 파일 업로드**를 클릭하고 패키지된 웹 자원을 업로드하십시오.
@@ -167,17 +167,17 @@ var  directUpdateCustomListener  = {
 * `onProgress`는 `UNZIP_IN_PROGRESS` 상태에서 호출됩니다.
 * `onFinish`는 다음 최종 상태 코드 중 하나로 호출됩니다.
 
-| 상태 코드 | 설명 |
+|상태 코드 |설명 |
 |-------------|-------------|
-| `SUCCESS` | 직접 업데이트가 오류 없이 완료되었습니다. |
-| `CANCELED` | 직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서). |
-| `FAILURE_NETWORK_PROBLEM` | 업데이트 중에 네트워크 연결에 문제점이 발생했습니다. |
-| `FAILURE_DOWNLOADING` | 파일이 완전히 다운로드되지 않았습니다. |
-| `FAILURE_NOT_ENOUGH_SPACE` | 디바이스에 업데이트 파일을 다운로드하고 언팩할 공간이 충분하지 않습니다. |
-| `FAILURE_UNZIPPING` | 업데이트 파일을 언팩하는 중에 문제점이 발생했습니다. |
-| `FAILURE_ALREADY_IN_PROGRESS` | 직접 업데이트가 이미 실행 중인 동안 시작 메소드가 호출되었습니다. |
-| `FAILURE_INTEGRITY` | 업데이트 파일의 신뢰성을 확인할 수 없습니다. |
-| `FAILURE_UNKNOWN` | 예기치 않은 내부 오류가 발생했습니다. |
+|`SUCCESS` |직접 업데이트가 오류 없이 완료되었습니다. |
+|`CANCELED` |직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서). |
+|`FAILURE_NETWORK_PROBLEM` |업데이트 중에 네트워크 연결에 문제점이 발생했습니다. |
+|`FAILURE_DOWNLOADING` |파일이 완전히 다운로드되지 않았습니다. |
+|`FAILURE_NOT_ENOUGH_SPACE` |디바이스에 업데이트 파일을 다운로드하고 언팩할 공간이 충분하지 않습니다. |
+|`FAILURE_UNZIPPING` |업데이트 파일을 언팩하는 중에 문제점이 발생했습니다. |
+|`FAILURE_ALREADY_IN_PROGRESS` |직접 업데이트가 이미 실행 중인 동안 시작 메소드가 호출되었습니다. |
+|`FAILURE_INTEGRITY` |업데이트 파일의 신뢰성을 확인할 수 없습니다. |
+|`FAILURE_UNKNOWN` |예기치 않은 내부 오류가 발생했습니다. |
 
 사용자 정의 직접 업데이트 리스너를 구현하는 경우 직접 업데이트 프로세스가 완료되고 `onFinish()` 메소드가 호출되었을 때 앱이 다시 로드되는지 확인해야 합니다. 또한 직접 업데이트 프로세스가 올바르게 완료되지 못하면 `wl_directUpdateChalengeHandler.submitFailure()`를 호출해야 합니다.
 

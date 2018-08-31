@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Troubleshooting
 #relevantTo: [ios,android,windows,javascript]
@@ -15,7 +16,7 @@ new_url: /404/
 
 * 使用的 {{ site.data.keys.product }} 的版本（必须为 V8.0.0 或更高版本）和应用的任何临时修订。
 * 所选容器大小。 例如，Medium 2GB。
-* IBM Cloud dashDB 数据库规划类型。例如，EnterpriseTransactional 2.8.50。
+* IBM Cloud dashDB 数据库规划类型。 例如，EnterpriseTransactional 2.8.50。
 * 容器标识
 * 公共 IP 地址（如果指定）
 * Docker 和 Cloud Foundry 的版本：`cf -v` 和 `docker version`
@@ -24,7 +25,7 @@ ic) 命令从组织和空间（在其中部署 {{ site.data.keys.product }} 容�
  - `cf ic info`
  - `cf ic ps -a`（如果列出多个容器实例，那么确保指示具有问题的实例。）
 * 如果在容器创建（在运行 **startserver.sh** 脚本时）期间启用了 Secure Shell (SSH) 和卷，那么收集以下文件夹中的所有文件：/opt/ibm/wlp/usr/servers/mfp/logs and /var/log/rsyslog/syslog
-* 如果仅启用卷而不启用 SSH，那么使用 IBM Cloud 仪表板收集可用日志信息。在单击 IBM Cloud 仪表板中的容器实例后，单击侧边栏中的“监控和日志”链接。转至“日志记录”选项卡，然后单击“高级视图”。 Kibana 仪表板将单独打开。 使用搜索工具栏，搜索异常堆栈跟踪，然后收集异常 @time-stamp,
+* 如果仅启用卷而不启用 SSH，那么使用 IBM Cloud 仪表板收集可用日志信息。 在单击 IBM Cloud 仪表板中的容器实例后，单击侧边栏中的“监控和日志”链接。 转至“日志记录”选项卡，然后单击“高级视图”。 Kibana 仪表板将单独打开。 使用搜索工具栏，搜索异常堆栈跟踪，然后收集异常 @time-stamp,
 _id 的完整详细信息。
 
 ### 运行脚本期间出现的 Docker 相关错误
@@ -50,7 +51,7 @@ _id 的完整详细信息。
 通常，在 prepareserver.sh 或  prepareanalytics.sh 脚本运行期间发生的任何网络问题可能导致处理挂起，然后失败。
 
 **解决方法**  
-首先，再次运行 initenv.sh 脚本以登录到 IBM Cloud 上的容器注册表。然后，重新运行之前失败的脚本。
+首先，再次运行 initenv.sh 脚本以登录到 IBM Cloud 上的容器注册表。 然后，重新运行之前失败的脚本。
 
 ### 无法创建 mfpfsqldb.xml 文件
 {: #unable-to-create-the-mfpfsqldbxml-file }
@@ -89,7 +90,7 @@ _id 的完整详细信息。
 脚本运行失败，并返回类似 Refreshing cf tokens 或 Failed to refresh token 的消息。
 
 **说明**  
-IBM Cloud 会话可能已超时。用户必须登录到 IBM Cloud，然后才能运行容器脚本。
+IBM Cloud 会话可能已超时。 用户必须登录到 IBM Cloud，然后才能运行容器脚本。
 
 **解决方法**
 再次运行 initenv.sh 脚本以登录到 IBM Cloud，然后再次运行失败的脚本。

@@ -79,7 +79,7 @@ weight: 1
 * 您必须具有因特网访问权。
 * 您必须已安装 node.js V4.0.0 或更高版本。
 * 您必须已安装 Cordova 命令行界面 (CLI)，并且安装对目标平台使用 Cordova CLI 所需的任何必备软件。 有关更多信息，请参阅 Apache Cordova Web 站点中的 [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html)。
-* 查看并了解迁移过程的限制。 有关更多信息，请参阅[从较早发行版迁移应用程序](../)。
+* 查看并了解迁移过程的限制。 有关更多信息，请参阅[从先前发行版迁移应用程序](../)。
 
 针对使用较早版本的 IBM MobileFirst Platform Foundation 命令创建的跨平台应用程序或使用 IBM MobileFirst Platform Foundation 命令创建的 Cordova 应用程序，在未进行一些更改的情况下在 V8.0 中不受支持。 迁移辅助工具可通过以下功能简化此过程：
 
@@ -114,7 +114,7 @@ weight: 1
    项目新内容所在的文件夹的可选名称。
    此文件夹位于 *destination_directory* 文件夹中，包含 Cordova 应用程序的所有信息。如果未指定此选项，那么缺省名称为 `app_name-app_id-version`。
    <br/>
-      与 client 命令一起使用时，迁移辅助工具会完成以下操作：  
+   与 client 命令一起使用时，迁移辅助工具会完成以下操作：  
         * 识别现有 IBM MobileFirst Platform Foundation 应用程序中在 V8.0 中已移除、不推荐使用或更改的 API。
         * 根据初始应用程序的结构创建 Cordova 结构。
         * 视情况复制或添加以下项：
@@ -179,7 +179,7 @@ weight: 1
       <link rel="stylesheet" href="css/main.css">
       ```
 
-      > **注：****worklight.css** 文件将 body 属性设置为 relative。 如果这影响应用程序的样式，请在您自己的 CSS 代码中为 position 声明其他值。 例如：
+      > **注：****worklight.css** 文件将 body 属性设置为 relative。如果这影响应用程序的样式，请在您自己的 CSS 代码中为 position 声明其他值。 例如：
 
       ```css
       body {

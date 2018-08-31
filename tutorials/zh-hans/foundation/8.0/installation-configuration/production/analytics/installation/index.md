@@ -93,7 +93,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
 ## 在 WebSphere Application Server Liberty 上安装 {{ site.data.keys.mf_analytics }}
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-确保您已具有 {{ site.data.keys.mf_analytics }} EAR 文件。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics.ear** 文件位于 `<mf_server_install_dir>\analytics` 文件夹中。 有关如何下载和安装 WebSphere Application Server Liberty 的更多信息，请参阅 IBM developerWorks 上的以下文章：[关于 WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)。
+确保您已具有 {{ site.data.keys.mf_analytics }} EAR 文件。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../prod-env/appserver)。 **analytics.ear** 文件位于 `<mf_server_install_dir>\analytics` 文件夹中。 有关如何下载和安装 WebSphere Application Server Liberty 的更多信息，请参阅 IBM developerWorks 上的以下文章：[关于 WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)。
 
 1. 在 **./wlp/bin** 文件夹中运行以下命令以创建服务器。
 
@@ -169,7 +169,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
 ## 在 Tomcat 上安装 {{ site.data.keys.mf_analytics }}
 {: #installing-mobilefirst-analytics-on-tomcat }
-确保您已具有 {{ site.data.keys.mf_analytics }} WAR 文件。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics-ui.war** 和 **analytics-service.war** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。 有关如何下载和安装 Tomcat 的更多信息，请参阅 [Apache Tomcat](http://tomcat.apache.org/)。 确保下载的版本支持 Java 7 或更高版本。 有关哪一个版本的 Tomcat 支持 Java 7 的更多信息，请参阅 [Apache Tomcat 版本](http://tomcat.apache.org/whichversion.html)。
+确保您已具有 {{ site.data.keys.mf_analytics }} WAR 文件。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../prod-env/appserver)。 **analytics-ui.war** 和 **analytics-service.war** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。 有关如何下载和安装 Tomcat 的更多信息，请参阅 [Apache Tomcat](http://tomcat.apache.org/)。 确保下载的版本支持 Java 7 或更高版本。 有关哪一个版本的 Tomcat 支持 Java 7 的更多信息，请参阅 [Apache Tomcat 版本](http://tomcat.apache.org/whichversion.html)。
 
 1. 将 **analytics-service.war** 和 **analytics-ui.war** 文件添加到 Tomcat **webapps** 文件夹中。
 2. 取消注释 **conf/server.xml** 文件中的以下节（此节存在于新下载的 Tomcat 归档中，但已被注释掉）。
@@ -217,7 +217,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
 ## 在 WebSphere Application Server 上安装 {{ site.data.keys.mf_analytics }}
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
-有关用于获取安装工件（JAR 和 EAR 文件）的初始安装步骤的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics.ear**、**analytics-ui.war** 和 **analytics-service.war** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。
+有关用于获取安装工件（JAR 和 EAR 文件）的初始安装步骤的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../prod-env/appserver)。 **analytics.ear**、**analytics-ui.war** 和 **analytics-service.war** 文件位于 **<mf_server_install_dir>\analytics** 文件夹中。
 
 以下步骤描述了如何在 WebSphere Application Server 上安装和运行分析 EAR 文件。 如果要在 WebSphere Application Server 上安装个别 WAR 文件，只需在部署两个 WAR 文件后对 **analytics-service** WAR 文件执行步骤 2 至 7 即可。 不能在 analytics-ui WAR 文件中更改类装入顺序。
 
@@ -251,13 +251,21 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
     * 登录到 WebSphere Application Server 管理控制台。
     * 在**安全性 > 全局安全性**菜单中，确保同时选中**启用管理安全性**和**启用应用程序安全性**。 注：仅在启用**管理安全性**后才可选择应用程序安全性。
     * 单击**确定**并保存更改。
-9. 启动 {{ site.data.keys.mf_analytics }} 应用程序，并在浏览器中转至以下链接：`http://<hostname>:<port>/analytics/console`。
+
+9. 要支持通过 Swagger 文档访问分析服务，请完成以下步骤：
+    * 单击**服务器 > 服务器类型 > WebSphere Application Server**，并从服务器列表中选择在其中部署分析服务的服务器。
+    * 在**服务器基础结构**下，单击 **Java**，然后浏览至**流程管理 > 流程定义 > Java 虚拟机 > 定制属性**。
+      - 设置以下定制属性<br/>
+        **属性名称：***com.ibm.ws.classloader.strict*<br/>
+        **值：***true*
+
+10. 启动 {{ site.data.keys.mf_analytics }} 应用程序，并在浏览器中转至以下链接：`http://<hostname>:<port>/analytics/console`。
 
 ## 使用 Ant 任务安装 {{ site.data.keys.mf_analytics }}
 {: #installing-mobilefirst-analytics-with-ant-tasks }
-确保您有必需的 WAR 和配置文件：**analytics-ui.war** 和 **analytics-service.war**。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../appserver)。 **analytics-ui.war** 和 **analytics-service.war** 文件位于 **MobileFirst_Platform_Server\analytics** 中。
+确保您有必需的 WAR 和配置文件：**analytics-ui.war** 和 **analytics-service.war**。 有关安装工件的更多信息，请参阅[将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](../../prod-env/appserver)。 **analytics-ui.war** 和 **analytics-service.war** 文件位于 **MobileFirst_Platform_Server\analytics** 中。
 
-您必须在安装了应用程序服务器的计算机上运行 Ant 任务，或运行针对 WebSphere Application Server Network Deployment 的 Network Deployment Manager。 如果您要从尚未安装 {{ site.data.keys.mf_server }} 的计算机上启动 Ant 任务，那么必须将文件 **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** 复制到该计算机上。
+您必须在安装了应用程序服务器的计算机上运行 Ant 任务，或运行针对 WebSphere Application Server Network Deployment 的 Network Deployment Manager。 如果您希望从没有安装 {{ site.data.keys.mf_server }} 的计算机启动 Ant 任务，那么必须将以下文件复制到该计算机上：**\<mf_server_install_dir\>/MobileFirstServer/mfp-ant-deployer.jar**。
 
 > 注：**mf_server_install_dir** 占位符是 {{ site.data.keys.mf_server }} 的安装目录。
 
@@ -267,7 +275,7 @@ true**（在嵌入式 Elasticsearch 实例中该值为缺省值）。
 
     > 注：当在 Ant XML 脚本的值中使用以下特殊字符时，必须对这些字符进行转义：
     >
-    > * 美元符号 ($) 必须写作 $$, 除非您明确希望通过语法 ${variable} 引用 Ant 变量，如 Apache Ant 手册的[属性](http://ant.apache.org/manual/properties.html)部分中所述。
+    > * 美元符号 ($) 必须写作 $$，除非您明确希望通过语法 ${variable} 引用 Ant 变量，如 Apache Ant 手册的[属性](http://ant.apache.org/manual/properties.html)部分中所述。
     > * 和号字符 (&) 必须写作 &amp;，除非您明确希望引用 XML 实体。
     > * 双引号 (") 必须写作 &quot;，除非它在由单引号括起的字符串内。
 

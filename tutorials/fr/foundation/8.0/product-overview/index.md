@@ -7,16 +7,11 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-{{ site.data.keys.product_full }} est une plateforme intégrée qui
-vous permet d'étendre votre activité sur des appareils mobiles.
+{{ site.data.keys.product_full }} est une plateforme intégrée qui vous permet d'étendre votre activité sur des appareils mobiles.
 
-{{ site.data.keys.product }} inclut un environnement de développement
-complet, un middleware d'exécution optimisé pour les applications mobiles, un magasin d'applications d'entreprise privé et une console d'analyse et de
-gestion intégrée, qui sont tous pris en charge par divers mécanismes de sécurité.
+{{ site.data.keys.product }} inclut un environnement de développement complet, un middleware d'exécution optimisé pour les applications mobiles, un magasin d'applications d'entreprise privé et une console d'analyse et de gestion intégrée, qui sont tous pris en charge par divers mécanismes de sécurité.
 
-Avec {{ site.data.keys.product }},
-votre organisation peut efficacement développer des applications mobiles riches qui ont accès à l'intégralité des fonctions de vos appareils mobiles cible,
-s'y connecter, les exécuter et les gérer. {{ site.data.keys.product }} peut réduire le temps de mise sur le marché, le coût et la complexité du développement et offre aux clients et aux employés un acquis utilisateur optimisé dans différentes environnements.
+Avec {{ site.data.keys.product }}, votre organisation peut efficacement développer des applications mobiles riches qui ont accès à l'intégralité des fonctions de vos appareils mobiles cible, s'y connecter, les exécuter et les gérer. {{ site.data.keys.product }} peut réduire le temps de mise sur le marché, le coût et la complexité du développement et offre aux clients et aux employés un acquis utilisateur optimisé dans différentes environnements.
 
 Dans le cadre de cette solution mobile complète, {{ site.data.keys.product }} peut être intégré à des capacités de cycle de vie, de sécurité, de gestion et d'analyse pour vous aider à répondre aux besoins de votre activité en matière d'applications mobiles.
 

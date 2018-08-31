@@ -13,7 +13,7 @@ weight: 3
 
 * 使用的 IBM MobileFirst Foundation 的版本（必须为 V8.0.0 或更高版本）和应用的任何临时修订。
 * 所选 Liberty for Java 运行时的大小。 例如，2GB。
-* IBM Cloud dashDB 数据库规划类型。例如，EnterpriseTransactional 2.8.500。
+* IBM Cloud dashDB 数据库规划类型。 例如，EnterpriseTransactional 2.8.500。
 * mfpconsole 路径
 * Cloud Foundry 的版本：`cf -v`
 * 通过运行以下 Cloud Foundry CLI 命令从组织和空间（在其中部署 MobileFirst Foundation 服务器）返回的信息：
@@ -33,7 +33,7 @@ weight: 3
 脚本运行失败，并返回类似 Refreshing cf tokens 或 Failed to refresh token 的消息。
 
 **说明**  
-IBM Cloud 会话可能已超时。用户必须登录到 IBM Cloud，然后才能运行脚本。
+IBM Cloud 会话可能已超时。 用户必须登录到 IBM Cloud，然后才能运行脚本。
 
 **解决方法**
 再次运行 initenv.sh 脚本以登录到 IBM Cloud，然后再次运行失败的脚本。

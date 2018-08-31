@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Fluxos de redes e topologias
-weight: 3
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
@@ -50,11 +50,11 @@ Os protocolos para JMX dependem do servidor de aplicativos:
 
 Para comunicação via JMX, é necessário que esses protocolos estejam disponíveis no servidor de aplicativos. Para obter informações adicionais sobre os requisitos, consulte [Pré-requisitos do servidor de aplicativos](../appserver/#application-server-prerequisites).
 
-Os beans JMX do tempo de execução e serviço de administração são obtidos do servidor de aplicativos. No entanto, no caso do WebSphere Application Server Network Deployment, os beans JMX são obtidos do gerenciador de implementação. O gerenciador de implementação tem a visão de todos os beans de uma célula no WebSphere Application Server Network Deployment. Portanto, algumas configurações não são necessárias no WebSphere Application Server Network Deployment (como a configuração de farm), e a implementação não simétrica é possível no WebSphere Application Server Network Deployment. Para obter informações adicionais, consulte [Restrições no serviço de administração do {{ site.data.keys.mf_server }}, no serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e no tempo de execução do {{ site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+Os beans JMX do tempo de execução e serviço de administração são obtidos do servidor de aplicativos. No entanto, no caso do WebSphere Application Server Network Deployment, os beans JMX são obtidos do gerenciador de implementação. O gerenciador de implementação tem a visão de todos os beans de uma célula no WebSphere Application Server Network Deployment. Portanto, algumas configurações não são necessárias no WebSphere Application Server Network Deployment (como a configuração de farm), e a implementação não simétrica é possível no WebSphere Application Server Network Deployment. Para obter mais informações, consulte [Restrições no serviço de administração do {{ site.data.keys.mf_server }}, no serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e no tempo de execução do {{ site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
 
 Para distinguir diferentes instalações do {{ site.data.keys.mf_server }} no mesmo servidor de aplicativos ou na mesma célula do WebSphere Application Server, é possível usar um ID de ambiente, que é uma variável JNDI. Por padrão, essa variável tem um valor vazio. Um tempo de execução com um determinado ID de ambiente se comunica somente com um serviço de administração que tem o mesmo ID de ambiente. Por exemplo, o serviço de administração tem um ID de ambiente configurado como X, e o tempo de execução tem um ID de ambiente diferente (por exemplo, Y), portanto, os dois componentes não se veem. O {{ site.data.keys.mf_console }} mostra que não há nenhum tempo de execução disponível.
 
-Um serviço de administração deve estar apto para se comunicar com todos os componentes de tempo de execução do {{ site.data.keys.product }} de um cluster. Quando uma operação de administração é executada, como o upload de uma nova versão de um adaptador ou a mudança do status ativo de um aplicativo, todos os componentes de tempo de execução do cluster devem ser notificados da mudança. Se o servidor de aplicativos não for WebSphere Application Server Network Deployment, essa comunicação poderá ocorrer somente se um farm estiver configurado. Para obter informações adicionais, consulte [Restrições no serviço de administração do {{ site.data.keys.mf_server }}, no serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e no tempo de execução do {{ site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+Um serviço de administração deve estar apto para se comunicar com todos os componentes de tempo de execução do {{ site.data.keys.product }} de um cluster. Quando uma operação de administração é executada, como o upload de uma nova versão de um adaptador ou a mudança do status ativo de um aplicativo, todos os componentes de tempo de execução do cluster devem ser notificados da mudança. Se o servidor de aplicativos não for WebSphere Application Server Network Deployment, essa comunicação poderá ocorrer somente se um farm estiver configurado. Para obter mais informações, consulte [Restrições no serviço de administração do {{ site.data.keys.mf_server }}, no serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e no tempo de execução do {{ site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
 
 O tempo de execução também se comunica com o serviço de administração por meio de HTTP ou HTTPS para fazer o download de artefatos grandes, como adaptadores. Uma URL é gerada pelo serviço de administração e o tempo de execução abre uma conexão HTTP ou HTTPS de saída para solicitar um artefato dessa URL. É possível substituir a geração de URL padrão definindo as propriedades JNDI (mfp.admin.proxy.port, mfp.admin.proxy.protocol e mfp.admin.proxy.host) no serviço de administração. O serviço de administração também pode precisar se comunicar com o tempo de execução por meio de HTTP ou HTTPS para obter os tokens OAuth que são usados para a execução de operações push. Para obter informações adicionais, consulte [Serviço de administração do {{ site.data.keys.mf_server }} para o serviço de push do {{ site.data.keys.mf_server }} e para o servidor de autorizações](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server).
 
@@ -157,11 +157,11 @@ O serviço de push gera tráfego de saída para o serviço de notificação exte
 * **push.apns.proxy**
 * **push.gcm.proxy**
 
-Para obter informações adicionais, consulte [Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+Para obter mais informações, consulte [Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 ### Dispositivos móveis para o tempo de execução do {{ site.data.keys.product }}
 {: #mobile-devices-to-mobilefirst-foundation-runtime }
-Os dispositivos móveis contatam o tempo de execução. A segurança dessa comunicação é determinada pela configuração do aplicativo e dos adaptadores solicitados. Para obter informações adicionais, consulte [Estrutura de segurança do {{ site.data.keys.product_adj }}](../../../../authentication-and-security).
+Os dispositivos móveis contatam o tempo de execução. A segurança dessa comunicação é determinada pela configuração do aplicativo e dos adaptadores solicitados. Para obter mais informações, consulte a estrutura de segurança do [{{ site.data.keys.product_adj }}](../../../../authentication-and-security).
 
 ## Restrições nos componentes do {{ site.data.keys.mf_server }} e {{ site.data.keys.mf_analytics }}
 {: #constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics }
@@ -300,7 +300,7 @@ Essa topologia suporta somente a implementação simétrica. Os tempos de execu�
 
 #### Configuração de propriedades da JNDI
 {: #configuration-of-jndi-properties-1 }
-Algumas propriedades da JNDI são requeridas para ativar a comunicação de JMX entre o serviço de administração e o tempo de execução do mesmo servidor e para definir o serviço de administração que gerencia um tempo de execução. Para sua comodidade, as tabelas a seguir listam essas propriedades. Para obter instruções sobre como instalar um server farm, consulte [Instalando um server farm](../appserver/#installing-a-server-farm). Para obter informações adicionais sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Algumas propriedades da JNDI são requeridas para ativar a comunicação de JMX entre o serviço de administração e o tempo de execução do mesmo servidor e para definir o serviço de administração que gerencia um tempo de execução. Para sua comodidade, as tabelas a seguir listam essas propriedades. Para obter instruções sobre como instalar um server farm, consulte [Instalando um server farm](../appserver/#installing-a-server-farm). Para obter mais informações sobre as propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
 **Server farm de perfil Liberty do WebSphere Application Server**  
 As propriedades JNDI globais a seguir são necessárias em cada servidor do farm para os serviços de administração e tempos de execução.
@@ -343,7 +343,7 @@ As propriedades JNDI globais a seguir são necessárias em cada servidor do farm
             mfp.admin.jmx.port
         </td>
         <td>
-            A porta do conector REST que deve ser idêntica ao valor do atributo httpsPort declarado no elemento <code>httpEndpoint</code> do arquivo <b>server.xml</b> do servidor de perfil Liberty do WebSphere Application Server. 
+            A porta do conector REST que deve ser idêntica ao valor do atributo httpsPort declarado no elemento <code>httpEndpoint</code> do arquivo <b>server.xml</b> do servidor de perfil Liberty do WebSphere Application Server.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
@@ -356,7 +356,7 @@ As propriedades JNDI globais a seguir são necessárias em cada servidor do farm
         </td>
         <td>
             O nome do usuário do administrador do WebSphere Application Server Liberty que está definido no elemento <code>administrator-role</code> do arquivo <b>server.xml</b> do servidor de perfil Liberty do WebSphere Application Server.
-            
+
 {% highlight xml %}
 <administrator-role>
     <user>MfpRESTUser</user>
@@ -446,7 +446,7 @@ A implementação dessa topologia tem as seguintes características:
 
 #### Configuração de propriedades da JNDI
 {: #configuration-of-jndi-properties-2 }
-As tabelas a seguir listam as propriedades JNDI que são necessárias para ativar a comunicação JMX entre o serviço de administração e o tempo de execução e para definir o serviço de administração que gerencia um tempo de execução. Para obter informações adicionais sobre essas propriedades, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). Para obter instruções sobre como instalar um Liberty Collective manualmente, consulte [Instalação manual no WebSphere Application Server Liberty Collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
+As tabelas a seguir listam as propriedades JNDI que são necessárias para ativar a comunicação JMX entre o serviço de administração e o tempo de execução e para definir o serviço de administração que gerencia um tempo de execução. Para obter mais informações sobre essas propriedades, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) e [Lista de propriedades JNDI para o tempo de execução do {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). Para obter instruções sobre como instalar um Liberty Collective manualmente, consulte [Instalação manual no WebSphere Application Server Liberty Collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
 
 As propriedades JNDI globais a seguir são necessárias para os serviços de administração:
 
@@ -556,9 +556,9 @@ As propriedades JNDI globais a seguir são necessárias para os tempos de execu�
 
 A propriedade JNDI a seguir é necessária para o tempo de execução quando vários controladores (réplicas) usando os mesmos componentes de administração são usados:
 
-| Propriedades JNDI | Valores | 
+| Propriedades JNDI | Valores |
 |-----------------|--------|
-| mfp.admin.jmx.replica | Lista de endpoints das diferentes réplicas do controlador com a sintaxe a seguir: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+| mfp.admin.jmx.replica | Lista de endpoints das diferentes réplicas do controlador com a sintaxe a seguir: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 
 Quando vários componentes de administração são implementados no controlador, cada tempo de execução deve ter o mesmo valor para a propriedade JNDI **mfp.admin.environmentid** local que o valor definido para o serviço de administração gerenciando o tempo de execução.
 

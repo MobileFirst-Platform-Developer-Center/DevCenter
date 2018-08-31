@@ -1,6 +1,7 @@
 ---
 layout: redirect
 new_url: /404/
+sitemap: false
 #layout: tutorial
 #title: Securing containers
 #relevantTo: [ios,android,windows,javascript]
@@ -70,7 +71,7 @@ ATS 配置不会影响从其他非 iOS 移动操作系统连接的应用程序�
 
 ### 保护后端连接的安全
 {: #securing-a-connection-to-the-back-end }
-如果在容器和本地后端系统之间需要安全连接，可以使用 IBM Cloud Secure Gateway 服务。博客帖子 [Connecting Securely to On-Premise Backends from Mobile Foundation on IBM Cloud containers](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/) 中提供了配置详细信息。
+如果在容器和本地后端系统之间需要安全连接，可以使用 IBM Cloud Secure Gateway 服务。 博客帖子 [Connecting Securely to On-Premise Backends from Mobile Foundation on IBM Cloud containers](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/) 中提供了配置详细信息。
 
 ## IBM Containers 上 {{ site.data.keys.product_full }} 的安全配置
 {: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
@@ -346,7 +347,7 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
 
 #### 安全网关
 {: #secure-gateway }
-要配置到 LDAP 服务器的安全网关连接，必须在 IBM Cloud 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。您需要本地 LDAP 主机名和端口号才能完成此任务。
+要配置到 LDAP 服务器的安全网关连接，必须在 IBM Cloud 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。 您需要本地 LDAP 主机名和端口号才能完成此任务。
 
 1. 登录到 IBM Cloud 并浏览至**目录，类别 > 集成**，然后单击**安全网关**。
 2. 在“添加服务”下，选择应用程序，然后单击**创建**。 这样就将服务绑定到了应用程序。
@@ -378,7 +379,7 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
 配置 {{ site.data.keys.product_adj }} 移动应用程序以使用外部 LDAP 注册表。  
 配置流程包含以下步骤：配置安全网关以连接到本地 LDAP 存储库和容器。 （对于本步骤，现有应用程序应位于 IBM Cloud 上。）
 
-要配置到 LDAP 服务器的安全网关连接，必须在 IBM Cloud 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。您需要本地 LDAP 主机名和端口号才能完成此步骤。
+要配置到 LDAP 服务器的安全网关连接，必须在 IBM Cloud 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。 您需要本地 LDAP 主机名和端口号才能完成此步骤。
 
 1. 登录到 IBM Cloud 并浏览至**目录，类别 > 集成**，然后单击**安全网关**。
 2. 在“添加服务”下，选择应用程序，然后单击**创建**。 这样就将服务绑定到了应用程序。
@@ -389,4 +390,4 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
 7. 捕获**目标标识**和**云主机：端口**值。 针对 LDAP 登录模块提供这些值。
 
 **结果**  
-这样将在 IBM Cloud 上容器中的 {{ site.data.keys.product_adj }} 应用程序与本地 LDAP 服务器之间建立通信。通过本地 LDAP 服务器验证 IBM Cloud 应用程序的认证和授权。
+这样将在 IBM Cloud 上容器中的 {{ site.data.keys.product_adj }} 应用程序与本地 LDAP 服务器之间建立通信。 通过本地 LDAP 服务器验证 IBM Cloud 应用程序的认证和授权。

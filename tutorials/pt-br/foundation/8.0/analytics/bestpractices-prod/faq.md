@@ -133,4 +133,50 @@ This topic describes the list of commonly asked questions related to {{ site.dat
             </div>
         </div>      
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-faq11">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq11" aria-expanded="true" aria-controls="collapse-mfp-faq11"><b>11.	What does App Sessions mean for web apps?</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-faq11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq11">
+            <div class="panel-body">
+                  <p>For Web apps, AppSession count is incremented based on the browser session and is based on the connection from the browser (app) to the MFP Server.</p>
+
+                  <p>Let us say if the browser is using the general window/tab and performs a connection to the server then the App Session count is incremented by one. In the same browser, if the user opens the app on another tab and performs the connect, then the session doesn't increment. The session stays inactive for 30 mins. When you try to reconnect again it is incremented by one.</p>
+
+                  <p>If the user clears the browser cache and tries to connect, then the device is considered to be a new one and the device count is incremented. Since browsers don't have a real device ID, an ID is generated for the browser app until the offline files/cache is cleared.</p>
+
+                  <p>This applies to an incognito browser window as well, if you use an incognito browser window and try to connect, an app used to connect from each tab is considered as a new session and the session count is incremented. If the user uses two different browsers and accesses the app to connect to MFP Server, then the device count is incremented by two.</p>
+            </div>
+        </div>      
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-faq12">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq12" aria-expanded="true" aria-controls="collapse-mfp-faq12"><b>12.	What does <i>Active Users</i> on Analytics Dashboard refer to?</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-faq12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq12">
+            <div class="panel-body">
+                  <p><i>Active users</i> is the number of users using the app. Every unique user is counted as a user using the app. By default deviceID is userID. However app developer can use <code>setUserContext(userid)</code> API. This is going to replace the userID to the value the app developer sets.</p>
+
+                  <p>One solution/approach is to generate a uniqueID from the computer when the user is accessing the WebApp and it sends that as a customData. This data can be used to compute the statistics for the actual machines (or computers/browsers) from which user accesses the app and uses the <code>setUserContext</code> to set the userID. This data can also be used to generate the custom charts.</p>
+            </div>
+        </div>      
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-faq13">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq13" aria-expanded="true" aria-controls="collapse-mfp-faq13"><b>13.	What does App Sessions mean for native/Cordova apps?</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-faq13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq13">
+            <div class="panel-body">
+                  <p>In Analytics 8.0, calculating an App session is completely different from any of the previous versions of MFP Analytics.</p>
+
+                  <p>An App session count is incremented by one when the app is brought to the foreground from background. To enable this for Cordova Apps, we need to enable the CLIENT APP LIFECYCLE events. Please refer <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/analytics/analytics-api/#client-lifecycle-events">here</a>, for more information.</p>
+            </div>
+        </div>      
+    </div>
 </div>       

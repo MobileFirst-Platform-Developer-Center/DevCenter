@@ -9,7 +9,7 @@ weight: 2
 {: #overview }
 需要对 {{ site.data.keys.mf_analytics_server }} 进行一些配置。 如文中所示，某些配置参数适用于单个节点，某些则适用于整个集群。
 
-#### 跳至：
+#### 跳转至
 {: #jump-to }
 
 * [配置属性](#configuration-properties)
@@ -113,7 +113,7 @@ WebSphere Application Server 上的 JNDI 属性可用作环境变量。
 
 在密钥不包含句点（例如 **httpport** 而不是 **http.enabled**）的所有情况下，可通过变量名带有 **ANALYTICS_** 前缀的系统环境变量来控制设置。 同时设置 JNDI 属性和系统环境变量时，系统环境变量优先。 例如，如果已设置 **analytics/httpport** JNDI 属性和 **ANALTYICS_httpport** 系统环境变量，那么将使用 **ANALYTICS_httpport** 的值。
 
-> **要点**：目前，MobileFirst Analytics V8.0 不支持多租户。缺省情况下，会将事件从 MobileFirst Server 发送至单租户体系结构。
+> **要点**：目前，MobileFirst Analytics V8.0 不支持多租户。 缺省情况下，会将事件从 MobileFirst Server 发送至单租户体系结构。
 
 #### 文档生存时间 (TTL)
 {: #document-time-to-live-ttl }

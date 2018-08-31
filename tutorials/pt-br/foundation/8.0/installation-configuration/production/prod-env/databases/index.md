@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configurando bancos de dados
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
@@ -24,7 +24,7 @@ Cada componente precisa de um conjunto de tabelas. As tabelas podem ser criadas 
 Entretanto, se você decidir instalar várias instâncias do tempo de execução do {{ site.data.keys.product }}, cada uma com sua raiz de contexto no servidor de aplicativos, cada instância precisará ter seu próprio conjunto de tabelas. Nesse caso, elas precisam estar em esquemas diferentes.
 
 > **Nota sobre o DB2:** Os licenciados do {{ site.data.keys.product_adj }} estão autorizados a usar o DB2 como um sistema de suporte para o Foundation. Para beneficiar-se disso você deve, depois de instalar o software DB2:
-> 
+>
 > * Faça o download a imagem de ativação de uso restrito direetamente do [website do IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
 > * Aplicar o arquivo de licença de ativação de uso restrito **db2xxxx.lic** usando o comando **db2licm**
 >
@@ -186,9 +186,9 @@ O procedimento cria um banco de dados (MFPDATA) e um usuário (mfpuser) que pode
    ```
 
     Em que mfpuser antes do sinal de "arroba" (@) é o nome do usuário, **mfpuser-password** após **IDENTIFIED BY** é sua senha e **mfp-host** é o nome do host no qual o {{ site.data.keys.product_adj }} é executado.
-    
+
     O usuário deve estar apto para conectar-se ao servidor MySQL a partir dos hosts que executam o servidor de aplicativos Java com os aplicativos {{ site.data.keys.mf_server }} instalados.
-    
+
 ## Crie as tabelas de banco de dados manualmente
 {: #create-the-database-tables-manually }
 As tabelas de banco de dados para os aplicativos do {{ site.data.keys.mf_server }} podem ser criadas manualmente, com Tarefas Ant ou com o Server Configuration Tool. Os tópicos fornecem a explicação e os detalhes sobre como criá-las manualmente.
@@ -478,7 +478,7 @@ Use tarefas Ant que são fornecidas com a instalação do {{ site.data.keys.mf_s
 
 Quando você inserir o nome do usuário do Oracle no arquivo Ant, ele deverá estar em letras maiúsculas. Se você tiver um usuário do banco de dados Oracle (FOO), mas inserir um nome do usuário com letras minúsculas (foo), a tarefa Ant **configureDatabase** o considerará como outro usuário. Ao contrário de outras ferramentas para banco de dados Oracle, a tarefa Ant **configureDatabase** protege o nome do usuário contra a conversão automática em letras maiúsculas.
 
-A tarefa Ant **configureDatabase** usa um nome de serviço ou Identificador do Sistema (SID) do Oracle para identificar um banco de dados. No entanto, se desejar estabelecer a conexão com o Oracle RAC, você precisará inserir uma URL JDBC complexa. Nesse caso, o elemento **oracle** que está na tarefa Ant **configureDatabase** deve usar os atributos (**url**, **user** e **password**) em vez desses atributos (**database**, **server**, **port**, **user** e **password**). Para obter informações adicionais, consulte a tabela em [Referência de tarefa Ant **configuredatabase**](../../installation-reference/#ant-configuredatabase-task-reference). Os arquivos Ant de amostra em **mfp\_install\_dir/MobileFirstServer/configurations-samples** usam os atributos **database**, **server**, **port**, **user** e **password** no elemento **oracle**. Eles devem ser modificados se você precisar se conectar ao Oracle com uma URL JDBC.
+A tarefa Ant **configureDatabase** usa um nome de serviço ou Identificador do Sistema (SID) do Oracle para identificar um banco de dados. No entanto, se desejar estabelecer a conexão com o Oracle RAC, você precisará inserir uma URL JDBC complexa. Nesse caso, o elemento **oracle** que está na tarefa Ant **configureDatabase** deve usar os atributos (**url**, **user** e **password**) em vez desses atributos (**database**, **server**, **port**, **user** e **password**). Para obter mais informações, consulte a tabela na referência da tarefa **configuredatabase** [Ant](../../installation-reference/#ant-configuredatabase-task-reference). Os arquivos Ant de amostra em **mfp\_install\_dir/MobileFirstServer/configurations-samples** usam os atributos **database**, **server**, **port**, **user** e **password** no elemento **oracle**. Eles devem ser modificados se você precisar se conectar ao Oracle com uma URL JDBC.
 
 Para criar as tabelas de banco de dados em um banco de dados que já existe, consulte [Criar as tabelas de banco de dados com tarefas Ant](#create-the-database-tables-with-ant-tasks).
 

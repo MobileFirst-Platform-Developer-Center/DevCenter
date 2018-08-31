@@ -1,0 +1,65 @@
+{
+  "coverage": "71.13%",
+  "expectCount": 97,
+  "actualCount": 69,
+  "files": {
+    "js/wlAnalytics.js": {
+      "expectCount": 13,
+      "actualCount": 11,
+      "undocumentLines": [
+        17,
+        24
+      ]
+    },
+    "js/wlAuthorizationManager.js": {
+      "expectCount": 8,
+      "actualCount": 6,
+      "undocumentLines": [
+        17,
+        26
+      ]
+    },
+    "js/wlClient.js": {
+      "expectCount": 14,
+      "actualCount": 11,
+      "undocumentLines": [
+        18,
+        19,
+        27
+      ]
+    },
+    "js/wlLogger.js": {
+      "expectCount": 33,
+      "actualCount": 23,
+      "undocumentLines": [
+        17,
+        25,
+        61,
+        64,
+        67,
+        70,
+        73,
+        76,
+        79,
+        88
+      ]
+    },
+    "js/wlResourceRequest.js": {
+      "expectCount": 29,
+      "actualCount": 18,
+      "undocumentLines": [
+        17,
+        19,
+        28,
+        29,
+        54,
+        57,
+        60,
+        63,
+        66,
+        69,
+        72
+      ]
+    }
+  }
+}

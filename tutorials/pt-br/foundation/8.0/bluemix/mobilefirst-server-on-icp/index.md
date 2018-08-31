@@ -134,6 +134,9 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |  | requests.cpu | Describes the minimum amount of CPU required. If not specified, this will default to *limits* (if specified) or otherwise implementation-defined value | Default is **1000m**. |
 |  | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the *limits* (if specified) or the implementation-defined value | Default is **2048Mi**. |
 | persistence | existingClaimName | The name of existing persistence volume claim (PVC) |  |
+| logs | consoleFormat | Specifies container log output format. | Default is **json**. |
+|  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
+|  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
 
 
 ### Environment variables for {{ site.data.keys.mf_server }}
@@ -166,6 +169,11 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |  | limits.memory | Describes the maximum amount of memory allowed | Default is **4096Mi**<br/>Read the [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |  | requests.cpu | Describes the minimum amount of CPU required. If not specified, this defaults to *limits* (if specified) or otherwise implementation-defined value. | Default is **1000m**. |
 |  | requests.memory | Describes the minimum amount of memory required. If not specified, this defaults to the *limits* (if specified) or the implementation-defined value | Default is **2048Mi**. |
+| logs | consoleFormat | Specifies container log output format. | Default is **json**. |
+|  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
+|  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
+
+> For the tutorial on analyzing {{ site.data.keys.prod_adj }} logs using Kibana, see [here](analyzing-mobilefirst-logs-on-icp/).
 
 ### Installing {{ site.data.keys.prod_adj }} Helm Charts from ICP Catalog
 {: #install-hmc-icp}

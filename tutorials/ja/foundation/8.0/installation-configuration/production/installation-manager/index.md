@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Installation Manager の実行
-weight: 1
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
@@ -94,12 +94,12 @@ Installation Manager のモードについて詳しくは、IBM Installation Man
     {{ site.data.keys.product }} V8.0 は、以下のように異なるインストール名を持つ、以前のリリースの後継製品です。
     * Worklight for V5.0.6
     * IBM Worklight for V6.0 から V6.3
-    
+
     これらの古い製品バージョンのいずれかがコンピューターにインストールされている場合、Installation Manager はインストール・プロセスの最初に、「既存のパッケージ・グループを使用」というオプションを提供します。 このオプションは、{{ site.data.keys.mf_app_center_full }} がインストールされていた場合、製品の古いバージョンをアンインストールし、古いインストール・オプションを再使用してアップグレードを実行します。
-    
+
     分離インストールの場合は、古いバージョンと共に新規バージョンをインストールできるように、「新規パッケージ・グループの作成」オプションを選択します。  
     コンピューターに製品の他のバージョンがインストールされていない場合、新しいパッケージ・グループで製品をインストールするために「新規パッケージ・グループの作成」オプションを選択します。
-    
+
 5. **「次へ」**をクリックします。
 6. **「汎用設定 (General settings) 」**パネルの**「トークン・ライセンスのアクティブ化 (Activate token licensing)」**セクションで、トークン・ライセンスをアクティブにするかどうかを決定します。
 
@@ -141,28 +141,28 @@ Installation Manager のモードについて詳しくは、IBM Installation Man
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
     * トークン・ライセンスの適用ありでインストールする場合は、次のコマンドを入力します。
-    
+
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
-    
+
         **user.licensed.by.tokens** プロパティーの値を **true** に設定します。 [トークン・ライセンス](../token-licensing)用に {{ site.data.keys.mf_server }} を構成する必要があります。
-        
+
         Application Center はインストールせずに {{ site.data.keys.mf_server }} をインストールする場合は、以下のプロパティーを設定します。
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
-        
+
         このプロパティーは、トークン・ライセンスをアクティブ化するかどうかを示しています。**user.licensed.by.tokens=true/false**.
-        
+
         {{ site.data.keys.product }} をインストールするには、user.use.ios.edition プロパティーの値を false に設定します。
-        
+
 5. 最新の暫定修正も一緒にインストールする場合は、**-repositories** パラメーターに暫定修正・リポジトリーを追加してください。 **-repositories** パラメーターは、リポジトリーのコンマ区切りリストを受け入れます。
 
     **com.ibm.mobilefirst.foundation.server** を **com.ibm.mobilefirst.foundation.server_version** に置換することで、暫定修正のバージョンを追加します。 **version** の形式は **8.0.0.0-buildNumber** となります。 例えば、暫定修正 **8.0.0.0-IF201601031015** をインストールする場合は、次のコマンドを入力します。`imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`
-    
+
     imcl コマンドについて詳しくは、[Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en) を参照してください。
-    
+
 {{ site.data.keys.product_adj }} コンポーネントをインストールするためのリソースを含むインストール・ディレクトリーがインストールされます。
 
 リソースは以下のフォルダーに入っています。
@@ -198,12 +198,12 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
 1. 適切なサンプル応答ファイルを圧縮ファイルから選択します。 Silent_Install_Sample_Files.zip ファイルには、リリースごとに 1 つのサブディレクトリーが含まれています。
 
     > **重要:**  
-    > 
-    > * Application Center をアプリケーション・サーバーにインストールしないインストールには、**install-no-appcenter.xml** という名前のファイルを使用します。
+    >
+    > * Application Center をアプリケーション・サーバーにインストールしないインストールには、**install-no-appcenter.xml*** という名前のファイルを使用します。
     > * Application Center をインストールするインストールには、使用するアプリケーション・サーバーおよびデータベースに基づいて、以下の表からサンプル応答ファイルを選択します。
 
    #### Application Center をインストールするための **Silent\_Install\_Sample_Files.zip** ファイル内のインストール用サンプル応答ファイル
-    
+
     <table>
         <tr>
       <td></td>
@@ -261,11 +261,11 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
             <td>install-tomcat-oracle.xml</td>
         </tr>
     </table>
-    
+
     > **注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。 詳しくは、「[WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)」を参照してください。 IBM DB2、または WebSphere Application Server によってサポートされる別の DBMSを使用して、IBM サポートによってフルにサポートされる構成の利点を活用することができます。
 
     アンインストールする場合は、最初に特定のパッケージ・グループにインストールした {{ site.data.keys.mf_server }} または Worklight Server のバージョンに応じたサンプル・ファイルを使用してください。
-    
+
     * {{ site.data.keys.mf_server }} では、パッケージ・グループ「{{ site.data.keys.mf_server }}」を使用します。
     * Worklight Server V6.x 以降では、パッケージ・グループ「IBM Worklight」を使用します。
     * Worklight Server V5.x では、パッケージ・グループ「Worklight」を使用します。
@@ -322,7 +322,7 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
     * `<responseFile>` は、ステップ 1 で選択および更新されたファイルの名前です。
 
 > 詳細については、IBM Installation Manager 資料の[応答ファイルを使用したパッケージのサイレント・インストール](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html)を参照してください。
-    
+
 
 ### 別のマシンで記録された応答ファイルの処理
 {: #working-with-a-response-file-recorded-on-a-different-machine }
@@ -642,11 +642,11 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
 
 | アイテム | 説明 |
 |------|-------------|
-| **configuration-samples** | Application Center をインストールするためのサンプル Ant ファイルが含まれています。 これらの Ant タスクはデータベース表を作成し、WAR ファイルをアプリケーション・サーバーにデプロイします。 | 
-| **console** | Application Center をインストールするための EAR ファイルと WAR ファイルが含まれています。 この EAR ファイルは IBM PureApplication システムに一意的に使用されます。 | 
+| **configuration-samples** | Application Center をインストールするためのサンプル Ant ファイルが含まれています。 これらの Ant タスクはデータベース表を作成し、WAR ファイルをアプリケーション・サーバーにデプロイします。 |
+| **console** | Application Center をインストールするための EAR ファイルと WAR ファイルが含まれています。 この EAR ファイルは IBM PureApplication システムに一意的に使用されます。 |
 | **databases** | Application Center 用の表の手動作成に使用される SQL スクリプトが含まれています。 |
-| **installer** | Application Center クライアントを作成するためのリソースが含まれています。 | 
-| **tools** | Application Center のツール。 | 
+| **installer** | Application Center クライアントを作成するためのリソースが含まれています。 |
+| **tools** | Application Center のツール。 |
 
 #### {{ site.data.keys.mf_server }} サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
@@ -655,9 +655,9 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
 |------|-------------|
 | **mfp-ant-deployer.jar** | {{ site.data.keys.mf_server }} Ant タスクのセット。 |
 | **mfp-*.war** | {{ site.data.keys.mf_server }} コンポーネントの WAR ファイル。 |
-| **configuration-samples** | Ant タスクを使用して {{ site.data.keys.mf_server }} コンポーネントをインストールするためのサンプル Ant ファイルが含まれています。 | 
+| **configuration-samples** | Ant タスクを使用して {{ site.data.keys.mf_server }} コンポーネントをインストールするためのサンプル Ant ファイルが含まれています。 |
 | **ConfigurationTool** | サーバー構成ツールのバイナリー・ファイルが含まれています。 このツールは、**mfp_server_install_dir/shortcuts** から起動されます。 |
-| **databases** | {{ site.data.keys.mf_server }} コンポーネント ({{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} 構成サービス、および {{ site.data.keys.product_adj }} ランタイム) 用の表の手動作成に使用される SQL スクリプトが含まれています。 | 
+| **databases** | {{ site.data.keys.mf_server }} コンポーネント ({{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} 構成サービス、および {{ site.data.keys.product_adj }} ランタイム) 用の表の手動作成に使用される SQL スクリプトが含まれています。 |
 | **external-server-libraries** |  さまざまなツール (認証性ツールおよび OAuth セキュリティー・ツールなど) によって使用される JAR ファイルが含まれています。 |
 
 #### PushService サブディレクトリー内のファイルおよびサブディレクトリー
@@ -666,25 +666,25 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
 | アイテム | 説明 |
 |------|-------------|
 | **mfp-push-service.war** | {{ site.data.keys.mf_server }} プッシュ・サービスをインストールするための WAR ファイル。 |
-| **databases** | {{ site.data.keys.mf_server }} プッシュ・サービス用の表の手動作成に使用される SQL スクリプトが含まれています。 | 
+| **databases** | {{ site.data.keys.mf_server }} プッシュ・サービス用の表の手動作成に使用される SQL スクリプトが含まれています。 |
 
 #### License サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
 | アイテム | 説明 |
 |------|-------------|
-| **Text** | {{ site.data.keys.product }} のライセンスが含まれています。 | 
+| **Text** | {{ site.data.keys.product }} のライセンスが含まれています。 |
 
 #### {{ site.data.keys.mf_server }} インストール・ディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
 | アイテム | 説明 |
 |------|-------------|
-| **shortcuts** | Apache Ant 用ランチャー・スクリプト、サーバー構成ツール、および mfpadmin コマンド。これらは、{{ site.data.keys.mf_server }} と共に提供されています。 | 
+| **shortcuts** | Apache Ant 用ランチャー・スクリプト、サーバー構成ツール、および mfpadmin コマンド。これらは、{{ site.data.keys.mf_server }} と共に提供されています。 |
 
 #### tools サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
 | アイテム | 説明 |
 |------|-------------|
-| **tools/apache-ant-version-number** | サーバー構成ツールによって使用される Apache Ant のバイナリー・インストール。 これは、Ant タスクを実行するためにも使用できます。 | 
+| **tools/apache-ant-version-number** | サーバー構成ツールによって使用される Apache Ant のバイナリー・インストール。 これは、Ant タスクを実行するためにも使用できます。 |

@@ -218,13 +218,13 @@ Los releases de SDK se pueden encontrar en el [repositorio JCenter ](https://bin
 Ubicado en la carpeta **./app/src/main/assets/** del proyecto Android Studio, este archivo define las propiedades utilizadas del lado del cliente para registrar su aplicación Android en {{ site.data.keys.mf_server }}.
 
 
-| Propiedad | Descripción | Valores de ejemplo |
+|Propiedad |Descripción |Valores de ejemplo |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | Protocolo de comunicación con {{ site.data.keys.mf_server }}.             | http o https  |
-| wlServerHost        | Nombre de host de {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| wlServerPort        | Puerto de {{ site.data.keys.mf_server }}.                           | 9080           |
-| wlServerContext     | Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente. | en             |
+|wlServerProtocol    |Protocolo de comunicación con {{ site.data.keys.mf_server }}.             |http o https  |
+|wlServerHost        |Nombre de host de {{ site.data.keys.mf_server }}.                            |192.168.1.63   |
+|wlServerPort        |Puerto de {{ site.data.keys.mf_server }}.                           |9080           |
+|wlServerContext     |Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. |/mfp/          |
+|languagePreferences |Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente. |en             |
 
 ## Soporte para Javadoc y el servicio Android
 {: #support-for-javadoc-and-android-service }

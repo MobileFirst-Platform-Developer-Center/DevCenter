@@ -167,17 +167,17 @@ var  directUpdateCustomListener  = {
 * `onProgress` は、状況 `UNZIP_IN_PROGRESS` で呼び出されます。
 * `onFinish` は、次のいずれかの最終状況コードで呼び出されます。
 
-| 状況コード | 説明 |
+|状況コード |説明 |
 |-------------|-------------|
-| `SUCCESS` | ダイレクト・アップデートがエラーなしで終了しました。 |
-| `CANCELED` | ダイレクト・アップデートが取り消されました (例えば、`stop()` メソッドが呼び出されたため)。 |
-| `FAILURE_NETWORK_PROBLEM` | 更新時にネットワーク接続に関する問題がありました。 |
-| `FAILURE_DOWNLOADING` | ファイルが完全にダウンロードされませんでした。 |
-| `FAILURE_NOT_ENOUGH_SPACE` | 更新ファイルをダウンロードして解凍するだけの十分なスペースがデバイスにありません。 |
-| `FAILURE_UNZIPPING` | 更新ファイルの解凍中に問題がありました。 |
-| `FAILURE_ALREADY_IN_PROGRESS` | ダイレクト・アップデートが既に実行しているときに start メソッドが呼び出されました。 |
-| `FAILURE_INTEGRITY` | 更新ファイルの認証性を検証できません。 |
-| `FAILURE_UNKNOWN` | 予期しない内部エラー。 |
+| `SUCCESS` |ダイレクト・アップデートがエラーなしで終了しました。 |
+| `CANCELED` |ダイレクト・アップデートが取り消されました (例えば、`stop()` メソッドが呼び出されたため)。 |
+| `FAILURE_NETWORK_PROBLEM` |更新時にネットワーク接続に関する問題がありました。 |
+| `FAILURE_DOWNLOADING` |ファイルが完全にダウンロードされませんでした。 |
+| `FAILURE_NOT_ENOUGH_SPACE` |更新ファイルをダウンロードして解凍するだけの十分なスペースがデバイスにありません。 |
+| `FAILURE_UNZIPPING` |更新ファイルの解凍中に問題がありました。 |
+| `FAILURE_ALREADY_IN_PROGRESS` |ダイレクト・アップデートが既に実行しているときに start メソッドが呼び出されました。 |
+| `FAILURE_INTEGRITY` |更新ファイルの認証性を検証できません。 |
+| `FAILURE_UNKNOWN` |予期しない内部エラー。 |
 
 カスタム・ダイレクト・アップデート・リスナーを実装する場合は、ダイレクト・アップデート・プロセスが完了して `onFinish()` メソッドが呼び出されたときにアプリケーションが再ロードされるようにする必要があります。 また、ダイレクト・アップデート・プロセスが正常に完了できなかった場合には `wl_directUpdateChalengeHandler.submitFailure()` を呼び出す必要があります。
 

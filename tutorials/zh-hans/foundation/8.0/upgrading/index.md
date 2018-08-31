@@ -50,8 +50,6 @@ weight: 12
 {: #changes-in-the-development-and-deployment-process }
 > 有关使用 {{ site.data.keys.product }} V8.0.0 执行开发过程的速成实际经验，可查看[快速入门教程](../quick-start)。
 
-
-
 在此版本的产品中，不再创建需要安装在运行 {{ site.data.keys.mf_server }} 的应用程序服务器中的项目 WAR 文件即可上载您的应用程序。 而是安装一次 {{ site.data.keys.mf_server }}，然后将应用程序、资源安全性或推送服务的服务器端**配置**上载到服务器。 您可以使用 {{ site.data.keys.mf_console }} 修改应用程序的配置。 也可以使用命令行工具或服务器 REST API 上载应用程序的新**配置文件**。
 
 MobileFirst 项目不再存在。 相反，您使用所选的开发环境来开发移动应用程序。 分别采用 Java™ 或 JavaScript 开发应用程序的服务器端。 您可以使用 Apache Maven 或支持 Maven 的 IDE（如 Eclipse 和 IntelliJ 等）开发适配器。
@@ -140,5 +138,5 @@ MobileFirst 项目不再存在。 相反，您使用所选的开发环境来开�
 
 要对 {{ site.data.keys.mf_server }} 应用临时修订或修订包，请根据初始安装方法选择以下其中一个主题：
 
-* [使用 Server Configuration Tool 来应用修订包或临时修订](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
-* [使用 Ant 文件应用修订包](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
+* [使用 Server Configuration Tool 来应用修订包或临时修订](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [使用 Ant 文件应用修订包](../installation-configuration/production/prod-env/appserver/#applying-a-fix-pack-by-using-the-ant-files)

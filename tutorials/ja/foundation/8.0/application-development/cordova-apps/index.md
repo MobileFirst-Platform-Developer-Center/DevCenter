@@ -349,26 +349,26 @@ Simple Browser プレビューでは、アプリケーションの Web リソー
     ◯ ios
 	```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** さまざまな CLI コマンドについて詳しくは、『CLI を使用した {{ site.data.keys.product_adj }} 成果物の管理』(../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) チュートリアルを参照してください。
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** さまざまな CLI コマンドについて詳しくは、『[CLI を使用した {{ site.data.keys.product_adj }} 成果物の管理](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)』チュートリアルを参照してください。
 
 ### ライブ・プレビュー
 {: #live-preview }
 ライブ・プレビューを使用して、応用コード (HTML、CSS、および JS) をリアルタイムで編集できるようになりました。   
-リソースに変更を加えた後、変更を保存すると、即時にブラウザーに変更が反映されます。
+リソースに変更を加えた後、変更を保存すると、その変更は即時にブラウザーで反映されます。
 
 ### ライブ再ロード
 {: #live-reload }
-物理デバイスまたはシミュレーター/エミュレーターでのプレビュー時に同様の効果を得るには、「cordova-plugin-livereload」プラグインを追加します。 使用法については、プラグイン GitHub のページ (https://github.com/omefire/cordova-plugin-livereload) を参照してください。
+物理デバイスまたはシミュレーター/エミュレーターでのプレビュー時に同様の効果を得るには、**cordova-plugin-livereload** プラグインを追加します。使用手順については、[プラグイン GitHub ページ](https://github.com/omefire/cordova-plugin-livereload)を参照してください。
 
-### エミュレーターまたは物理デバイス上でのアプリケーションの実行
+### エミュレーターまたは物理デバイスでのアプリケーションの実行
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-アプリケーションをエミュレートするには、Cordova CLI コマンド「cordova emulate ios|android|windows」を実行します。 例えば、次のとおりです。
+アプリケーションをエミュレートするには、Cordova CLI コマンド `cordova emulate ios|android|windows` を実行します。例えば、次のとおりです。
 
 ```bash
 cordova emulate ios
 ```
 
-開発ワークステーションに接続されている物理デバイス上でアプリケーションを実行するには、Cordova CLI コマンド「cordova run ios|android|windows」を実行します。 例えば、次のとおりです。
+開発ワークステーションに接続されている物理デバイス上でアプリケーションを実行するには、Cordova CLI コマンド `cordova run ios|android|windows` を実行します。例えば、次のとおりです。
 
 ```bash
 cordova run ios
@@ -378,29 +378,29 @@ cordova run ios
 {: #implementing-javascript-code }
 WebView リソースの編集は、JavaScript のオートコンプリートを可能にする IDE を使用すると便利です。
 
-Xcode、Android Studio、および Visual Studio は、Objective C、Swift、C#、および Java を編集するための全編集機能を提供しますが、JavaScript の編集を支援する方法については制限される場合があります。 JavaScript の編集を容易にするには、{{ site.data.keys.product_adj }} Cordova プロジェクトに {{ site.data.keys.product_adj }} API エレメントのオートコンプリートを可能にする定義ファイルを含めます。
+Xcode、Android Studio、および Visual Studio は、Objective C、Swift、C#、および Java を編集するための全編集機能を提供しますが、JavaScript の編集を支援する方法については制限される場合があります。 JavaScript の編集を容易にするため、{{ site.data.keys.product_adj }} Cordova プロジェクトには、{{ site.data.keys.product_adj }} API エレメントのオートコンプリートを提供する定義ファイルが含まれています。
 
-各 {{ site.data.keys.product_adj }} Cordova プラグインは、{{ site.data.keys.product_adj }} JavaScript ファイルごとに「d.ts」構成ファイルを提供します。 「d.ts」ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内にあります。 例えば、メインの {{ site.data.keys.product_adj }} SDK の場合、このファイルは「[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts」です。
+各 {{ site.data.keys.product_adj }} Cordova プラグインは、{{ site.data.keys.product_adj }} JavaScript ファイルごとに `d.ts` 構成ファイルを提供します。`d.ts` ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内にあります。例えば、メインの {{ site.data.keys.product_adj }} SDK の場合、このファイルは **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts** です。
 
-「d.ts」構成ファイルを使用すると、TypeScript をサポートしているすべての IDE (TypeScript Playground (http://www.typescriptlang.org/Playground/)、Visual Studio Code (http://www.microsoft.com/visualstudio/eng)、WebStorm (http://www.jetbrains.com/webstorm/)、WebEssentials (http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f)、Eclipse (https://github.com/palantir/eclipse-typescript)) でオートコンプリートを使用できるようになります。
+`d.ts` 構成ファイルは、TypeScript をサポートしているすべての IDE ([TypeScript Playground](http://www.typescriptlang.org/Playground/)、[Visual Studio Code](http://www.microsoft.com/visualstudio/eng)、[WebStorm](http://www.jetbrains.com/webstorm/)、[WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f)、[Eclipse](https://github.com/palantir/eclipse-typescript)) に対してオートコンプリートを提供します。
 
-WebView のリソース (HTML ファイルおよび JavaScript ファイル) は、「[myapp]\www」フォルダーにあります。 プロジェクトを cordova build コマンドでビルドする場合、または cordova prepare コマンドを実行する場合、これらのリソースは、「[myapp]\platforms\ios\www」、「[myapp]\platforms\android\assets\www」、または「[myapp]\platforms\windows\www」の各フォルダー内の対応する 「www」フォルダーにコピーされます。
+WebView のリソース (HTML ファイルおよび JavaScript ファイル) は、**[myapp]\www** フォルダーにあります。プロジェクトを cordova build コマンドでビルドする場合、または cordova prepare コマンドを実行する場合、これらのリソースは、**[myapp]\platforms\ios\www** フォルダー、**[myapp]\platforms\android\assets\www** フォルダー、または **[myapp]\platforms\windows\www** フォルダー内の対応する **www** フォルダーにコピーされます。
 
-前述の IDE の 1 つでメイン・アプリケーション・フォルダーを開くと、コンテキストが保持されます。 IDE エディターは関連する「d.ts」ファイルにリンクされるようになり、入力したとおりに {{ site.data.keys.product_adj }} API エレメントをオートコンプリートします。
+前述の IDE の 1 つでメイン・アプリケーション・フォルダーを開くと、コンテキストが保持されます。 IDE エディターは関連する `d.ts` ファイルにリンクされるようになり、入力に応じて {{ site.data.keys.product_adj }} API エレメントをオートコンプリートします。
 
 ## Android 用の CrossWalk サポート
 {: #crosswalk-support-for-android }
-Android プラットフォーム用の Cordova アプリケーションでは、デフォルトの WebView を「CrossWalk WebView」(https://crosswalk-project.org/) に置換できます。  
+Android プラットフォーム用の Cordova アプリケーションでは、デフォルトの WebView を [CrossWalk WebView](https://crosswalk-project.org/) に置換できます。  
 これを追加するには、以下のようにします。
 
-1. 「コマンド・ライン」ウィンドウから、次のコマンドを実行します。
+1. **コマンド・ライン**行から次のコマンドを実行します。
 
    ```bash
    cordova plugin add cordova-plugin-crosswalk-webview
    ```
 
    このコマンドにより、アプリケーションに CrossWalk WebView が追加されます。  
-    表に出ないところで、{{ site.data.keys.product_adj }} Cordova SDK は、CrossWalk WebView を使用するように Android プロジェクト・アクティビティーを調整します。
+{{ site.data.keys.product_adj }} Cordova SDK は、表に出ないところで、これを使用するように Android プロジェクト・アクティビティーを調整します。
 
 2. 次のコマンドを実行して、プロジェクトをビルドします。
 
@@ -410,19 +410,19 @@ Android プラットフォーム用の Cordova アプリケーションでは、
 
 ## iOS 用の WKWebView サポート
 {: #wkwebview-support-for-ios }
-Cordova iOS アプリケーションで使用されているデフォルトの UIWebView を、「Apple の WKWebView」(https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) に置換できます。  
-追加するには、コマンド・ライン・ウィンドウからコマンド「cordova plugin add cordova-plugin-wkwebview-engine」を実行します。
+Cordova iOS アプリケーションで使用されているデフォルトの UIWebView を、[Apple の WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) に置換できます。  
+追加するには、コマンド・ライン・ウィンドウで `cordova plugin add cordova-plugin-wkwebview-engine` コマンドを実行します。
 
-> 「Cordova WKWebView プラグイン」に関する詳細 (https://github.com/apache/cordova-plugin-wkwebview-engine) を参照してください。
+> 詳しくは、[Cordova WKWebView プラグイン](https://github.com/apache/cordova-plugin-wkwebview-engine)を参照してください。
 
-## 発展的なチュートリアル
+## 参考文献
 {: #further-reading }
-Cordova に関する詳細は以下を参照してください。
+Cordova についてさらに詳しく学習するには、以下を参照してください。
 
-- Cordova の概要 (https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
-- Cordova のベスト・プラクティス、テスト、デバッグ、考慮事項、および保守 (https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
-- Cordova アプリケーション開発の開始 (https://cordova.apache.org/#getstarted)
+- [Cordova 概要](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
+- [Cordova ベスト・プラクティス、テスト、デバッグ、考慮事項、および最新情報の入手](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
+- [Cordova アプリケーション開発の開始](https://cordova.apache.org/#getstarted)
 
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-始めに『Cordova アプリケーションに MobileFirst SDK を追加』(../../application-development/sdk/cordova) し、『すべてのチュートリアル』(../../all-tutorials/) セクションで {{ site.data.keys.product_adj }} 提供のフィーチャーを検討します。
+[Cordova アプリケーションへの MobileFirst SDK の追加](../../application-development/sdk/cordova)から始めて、『[すべてのチュートリアル](../../all-tutorials/)』セクションで {{ site.data.keys.product_adj }} 提供のフィーチャーを検討します。
