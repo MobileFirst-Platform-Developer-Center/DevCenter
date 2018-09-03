@@ -53,7 +53,6 @@ Highlighted features that were tested for Mobilefirst Foundation v7.1 and v8.0:
 * Remote Disable
 * Device SSO
 * Push notifications
-* Application Center
 
 We had also verified MFP based cordova, ionic and react-native apps.
 
@@ -71,5 +70,9 @@ For a native app , you should remove **libstdc++** from other linker flags in yo
 
 
 > **Disclaimer:** *Some of the action items that are addressed in the list above are not under IBM’s control. Therefore, we expect developers and IT managers to ensure that their infrastructure is up-to-date according to Apple’s requirements.*
+
+iOS 12 compatibility tests are planned for following:
+
+* Application Center
 
 *Stay tuned for more updates.*
