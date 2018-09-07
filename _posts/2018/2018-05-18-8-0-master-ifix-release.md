@@ -29,7 +29,7 @@ A new iFix *8.0.0.0-MFPF-IF201809041150*  released for MobileFirst Foundation 8.
             <h2>Changes in this iFix</h2>
             <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
 
-            <blockquote>This iFix includes a change to remove <i>libstdc++</i> as a dependency to Cordova projects. This is required for new apps running on iOS 12. For further details, refer to <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/07/23/mfp-support-for-ios12/">this blog post</a>.</blockquote>
+            <blockquote>This iFix includes a change to remove <i>libstdc++</i> as a dependency to Cordova projects. This is required for new apps running on iOS 12. For further details, such as a workaround, refer to <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/07/23/mfp-support-for-ios12/">this blog post</a>.</blockquote>
 
             <h3>APARs Fixed</h3>
 
