@@ -26,7 +26,7 @@ We encourage you to start testing your application(s) with iOS 12.
 Existing application(s) that were created using MobileFirst Platform v7.1 and v8.0 **will work** on iOS 12 as they did on previous versions of iOS.
 
 #### Updating application on the App Store (built using older Xcode)
-You can opt to build application(s) with Xcode 9 and republish to the App Store. These application(s) will work on iOS 12. Make sure to build app with only 64 bit architecture.
+You can opt to build application(s) with Xcode 9 and republish to the App Store. These application(s) will work on iOS 12. Make sure to build app with only 64 bit architecture.As per Apple all iOS apps and app updates submitted to the App Store must be built with the Xcode9 and iOS 11 SDK and must support the Super Retina display of iPhone X.https://developer.apple.com/app-store/submissions/
 
 #### Updating existing application or submitting new application on the App Store (built using Xcode 10)
 Review the following section to learn what actions you need to take so that your app can support iOS 12. These needs to be considered only if you are building the application(s) using new [Xcode 10 build](https://developer.apple.com/download).
@@ -40,6 +40,14 @@ The legacy build system is still available in Xcode 10. To use the legacy build 
 
 For the compatibility test we had to use "legacy build system" to get rid of the issue reported [here](https://stackoverflow.com/questions/50718018/xcode-10-error-multiple-commands-produce)
 For more details on Xcode 10, refer [Whats new in XCode10](https://developer.apple.com/xcode/whats-new/)  
+
+#### Swift Apps on iOS12
+Along with iOS 12 apple introduced **Swift 4.2** for Swift developers.[Xcode 10 build](https://developer.apple.com/download) can build targets written in only Swift 4.x or Swift 3.2. Xcode 10 can be used for migration to Swift 4, This can be easily done using the [migration guide](https://swift.org/migration-guide).Apple introduced  **Swift 4.2** to be an intermediate step towards achieving ABI stability in **Swift 5**, which should enable binary compatibility between applications and libraries compiled with different Swift versions.
+
+As per Apple you can submit apps in **Swift 3.2** to the App Store and migrate individual modules to Swift 4 when you’re ready.We strongly encourage you to migrate your code to **Swift 4.2** in order to prepare for the ABI stability coming in **Swift 5.0**
+
+#### Deprecation of UIWebView
+Though Deprecation of **UIWebView** does not have any impact on MobileFirst features in iOS12. MobileFirst v8.0 already support **WKWebview** using cordova plugin. Though we are planning to remove the **UIWbview** completely and migrating to **WKWebview** very soon.
 
 Highlighted features that were tested for Mobilefirst Foundation v7.1 and v8.0:
 
@@ -66,8 +74,7 @@ For a native app , you should remove **libstdc++** from other linker flags in yo
 
   ![iOS12 libstdc++  issue workaround]({{site.baseurl}}/assets/blog/2017-07-20-compatibility-tests-for-ios-12/ios12-stdlib-fix.png)
 
-* During our compatibility test we found certificate pinning feature is not working. It looks very similar to the issue mentioned [here](https://github.com/AFNetworking/AFNetworking/issues/4229). We are currently investigating the issue. We will update here once we conclude our investigation.
-
+* MobileFirst Platform provides a framework `IBMMobileFirstPlatformFoundationWatchOS` along with the core `IBMMobileFirstPlatformFoundation` framework to support watchOS 2 onwards, . We are unable to launch app on Apple Watch after watchOS 5.0. We are currently investigating the issue.
 
 > **Disclaimer:** *Some of the action items that are addressed in the list above are not under IBM’s control. Therefore, we expect developers and IT managers to ensure that their infrastructure is up-to-date according to Apple’s requirements.*
 
