@@ -20,6 +20,9 @@ We have been testing the iOS 12 beta with the latest being beta 3. We have verif
 
 We encourage you to start testing your application(s) with iOS 12.
 
+* If you are planning to build your MobileFirst v8 application for iOS12 you have to get rid of **stdc++** library which is removed in iSO12. Refer **Known Issues** section in this blog for details of the workaround.
+If you dont want to go for workaround and looking for a permanent solution upgrade to MobileFirst iFix [mfp-ifix-IF201809041150]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) for v8.0.
+
 ## MobileFirst Platform Foundation Support for iOS 12(beta 3)
 
 #### Existing application
@@ -67,9 +70,6 @@ We had also verified MFP based cordova, ionic and react-native apps.
 All the above features were validated to work on iOS 12 beta 3.  
 
 ### Known Issues
-* If you are planning to build your MobileFirst v8 application for iOS12 you have to get rid of **stdc++** library which is removed in iSO12. below section for details of the workaround.
-If you dont want to go for workaround and looking for a permanent solution upgrade to MobileFirst iFix [mfp-ifix-IF201809041150](https://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) for v8.0.
-
 Starting with iOS 12, **stdc++** library is removed from simulator runtime, but it remains in the iOS 12.0 (device) runtime for binary compatibility with shipping apps. **libstdc++** was deprecated 5 years ago. Apple's more recent platforms (tvOS and watchOS) doesn't support it.
 In order to test your app on simulator, please use the workaround suggested [here](https://stackoverflow.com/questions/50694822/xcode-10-ios-12-does-not-contain-libstdc6-0-9).
 Mostly, for a hybrid/cordova app we found that entry of **libstdc++** included in our project structure  was red because Xcode couldn't find the reference for it. After we removed the entry of **libstdc++** from the project structure and added the new lib instead(**libc++**), it worked without issues.
