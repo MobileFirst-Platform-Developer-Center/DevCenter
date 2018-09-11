@@ -13,18 +13,18 @@ This tutorial provides step-by-step instructions to set up a {{ site.data.keys.m
 
 The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 
-1. **Developer**: This plan provisions a {{ site.data.keys.mfound_server }} as a Cloud Foundry application on a Liberty for Java runtime. Liberty for Java charges are billed separately and are not included in this plan. The plan does not support the use of external databases and is restricted to development and testing. The {{ site.data.keys.mf_bm_short }} server *Developer plan* instance allows you to register any number of Mobile applications for development and testing, but it restricts the number of connected devices to 10 per day. This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.
+1. **Developer**: This plan provisions a {{ site.data.keys.mfound_server }} as a Cloud Foundry application on a Liberty for Java runtime. Liberty for Java charges are billed separately and are not included in this plan. The plan does not support the use of external databases and is restricted to development and testing. The {{ site.data.keys.mf_bm_short }} server *Developer plan* instance allows you to register any number of Mobile applications for development and testing, but it restricts the number of connected devices to 10 per day. <!--This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.-->
 
     > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
 
-2. **Professional Per Device**: This plan allows users to build, test and run mobile applications in production. You are billed based on the number of client devices connected per day. This plan supports large deployments and high availability. This plan requires you to have an instance of IBM Db2 or Compose for PostgreSQL service, which is created and billed separately. This plan provisions a Mobile Foundation server on Liberty for Java, starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.
+2. **Professional Per Device**: This plan allows users to build, test and run mobile applications in production. You are billed based on the number of client devices connected per day. This plan supports large deployments and high availability. This plan requires you to have an instance of IBM Db2 or Compose for PostgreSQL service, which is created and billed separately. This plan provisions a Mobile Foundation server on Liberty for Java, starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. <!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
 
-3. **Professional 1 Application**: This plan allows users to build and manage a single mobile application with a predictable price, regardless of the number of mobile app users or devices. The single mobile application can be of multiple flavors, such as iOS, Android, Windows and Mobile Web. This plan provisions a Mobile Foundation server in a scalable environment as a Cloud Foundry application on Liberty for Java starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. This plan also requires an IBM Db2 or Compose for PostgreSQL service instance, which is created and billed separately. Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.
+3. **Professional 1 Application**: This plan allows users to build and manage a single mobile application with a predictable price, regardless of the number of mobile app users or devices. The single mobile application can be of multiple flavors, such as iOS, Android, Windows and Mobile Web. This plan provisions a Mobile Foundation server in a scalable environment as a Cloud Foundry application on Liberty for Java starting with a minimum of 2 nodes of 1 GB. Liberty for Java charges are billed separately and are not included as part of this plan. This plan also requires an IBM Db2 or Compose for PostgreSQL service instance, which is created and billed separately. <!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
 
-4. **Developer Pro**: This plan provisions a {{ site.data.keys.mfound_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. This plan requires you to have a **Db2** service instance. The Db2 service instance is created and billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
+4. **Developer Pro**: This plan provisions a {{ site.data.keys.mfound_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. This plan requires you to have a **Db2** service instance. The Db2 service instance is created and billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment. <!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_The **Developer Pro** plan is now deprecated._
 
-5. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **Db2** service instance. The Db2 service instance is created and billed separately. Charges depend on the total size of your environment. Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.
+5. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **Db2** service instance. The Db2 service instance is created and billed separately. Charges depend on the total size of your environment. <!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_The **Professional Per Capacity** plan is now deprecated._
 
 > [See the service details](https://console.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
@@ -35,8 +35,6 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 * [Using the {{ site.data.keys.mf_bm_short }} service](#using-the-mobile-foundation-service)
 * [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
-* [Adding Analytics support](#adding-analytics-support)
-* [Removing Analytics support](#removing-analytics-support)
 * [Applying {{ site.data.keys.mfound_server }} fixes](#applying-mobilefirst-server-fixes)
 * [Accessing server logs](#accessing-server-logs)
 * [Troubleshooting](#troubleshooting)
@@ -92,16 +90,21 @@ Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.k
 ## Using the {{ site.data.keys.mf_bm_short }} service
 {: #using-the-mobile-foundation-service }
 
-With the {{ site.data.keys.mfound_server }} now running, you are presented with the following Dashboard:
+With the {{ site.data.keys.mfound_server }} now running, you are presented with the following dashboard:
 
 ![Image of {{ site.data.keys.mf_bm_short }} setup](service-dashboard.png)
 
-Click on **Add Analytics** to add {{ site.data.keys.mf_analytics_service }} support to your server instance.
-Learn more in the [Adding Analytics support](#adding-analytics-support) section.
+<!--Click on **Add Analytics** to add {{ site.data.keys.mf_analytics_service }} support to your server instance.
+Learn more in the [Adding Analytics support](#adding-analytics-support) section.-->
 
-Click on **Launch Console** to open the {{ site.data.keys.mf_console }}. The default user name is "admin" and the password can be revealed by clicking on the "eye" icon.
+* Click on **Launch Console** to open the {{ site.data.keys.mf_console }}. The default user name is *admin* and the password can be revealed by clicking on the eye icon in the password field.
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](dashboard.png)
+  ![Image of {{ site.data.keys.mf_bm_short }} setup](dashboard.png)
+
+* Click on **Analytics Console** from the {{ site.data.keys.mf_console }} to open the Mobile Analytics console and view the analytics data, as shown below.
+
+  ![Image of {{ site.data.keys.mf_analytics_service }} console](analytics-dashboard.png)
+
 
 ### Server configuration
 {: #server-configuration }
@@ -133,20 +136,21 @@ Through the **Settings** tab, you can further customize the server instance with
 
   >**Note** : You can choose to create your own TrustStore, but the default certificate needs to made available for Mobile Foundation Service to function properly
 
-* {{ site.data.keys.mf_analytics_service }} configuration
+<!--* {{ site.data.keys.mf_analytics_service }} configuration-->
 * VPN
 
 ![Image of {{ site.data.keys.mf_bm_short }} setup](advanced-server-configuration.png)
 
+<!--
 ## Adding {{ site.data.keys.mf_analytics_service }} support
 {: #adding-analytics-support }
 You can add {{ site.data.keys.mf_analytics_service }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions a {{ site.data.keys.mf_analytics_service }} service instance.
 
 >When you create or recreate the **Developer** plan instance of {{ site.data.keys.mf_bm_short }} service, the {{ site.data.keys.mf_analytics_service }} service instance is added by default.
-
+-->
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
-
+<!--
 Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_service_console }}.  
 
 > Learn more about {{ site.data.keys.mf_analytics_service }} in the [{{ site.data.keys.mf_analytics_service }} category](../../analytics).
@@ -157,7 +161,7 @@ Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in 
 You can remove the {{ site.data.keys.mf_analytics_service }} support for your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Delete Analytics**  from the service’s Dashboard page. This action deletes the {{ site.data.keys.mf_analytics_service }} service instance.
 
 Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
-
+-->
 <!--
 ##  Switching from Analytics deployed with IBM Containers to Analytics service
 {: #switching-from-analytics-container-to-analytics-service}
@@ -166,6 +170,7 @@ Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in 
 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 -->
+
 ## Applying {{ site.data.keys.mfound_server }} fixes
 {: #applying-mobilefirst-server-fixes }
 Updates to the {{ site.data.keys.mf_bm }} services are applied automatically without a need for human intervention, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
