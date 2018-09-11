@@ -20,8 +20,9 @@ We have been testing the iOS 12 beta with the latest being beta 3. We have verif
 
 We encourage you to start testing your application(s) with iOS 12.
 
-* If you are planning to build your MobileFirst v8 application for iOS12 you have to get rid of **stdc++** library which is removed in iSO12. Refer **Known Issues** section in this blog for details of the workaround.
-If you dont want to go for workaround and looking for a permanent solution upgrade to MobileFirst iFix [mfp-ifix-IF201809041150]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) for v8.0.
+**Update:** *If you are planning to build your MobileFirst v8 application for iOS12  you have to remove stdc++ library from your Dependencies. This is because stdc++ is removed in iOS 12. Refer Known Issues section in this blog for details of the workaround.
+For Cordova apps, please upgrade to the latest iFix [mfp-ifix-IF201809041150]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) so that your Cordova projects have the correct reference of libc++ automatically.*
+
 
 ## MobileFirst Platform Foundation Support for iOS 12(beta 3)
 
@@ -29,7 +30,7 @@ If you dont want to go for workaround and looking for a permanent solution upgra
 Existing application(s) that were created using MobileFirst Platform v7.1 and v8.0 **will work** on iOS 12 as they did on previous versions of iOS.
 
 #### Updating application on the App Store (built using older Xcode)
-You can opt to build application(s) with Xcode 9 and republish to the App Store. These application(s) will work on iOS 12. Make sure to build app with only 64 bit architecture.As per Apple all iOS apps and app updates submitted to the App Store must be built with the Xcode9 and iOS 11 SDK and must support the Super Retina display of iPhone X.https://developer.apple.com/app-store/submissions/
+You can opt to build application(s) with Xcode 9 and republish to the App Store. These application(s) will work on iOS 12. Make sure to build app with only 64 bit architecture.Apple mandates ( https://developer.apple.com/app-store/submissions ) that iOS apps and app updates submitted to the App Store from must be built with the Xcode 9 and iOS 11 SDK and must support the Super Retina display of iPhone X. Ensure that your apps are built to meet these requirements.
 
 #### Updating existing application or submitting new application on the App Store (built using Xcode 10)
 Review the following section to learn what actions you need to take so that your app can support iOS 12. These needs to be considered only if you are building the application(s) using new [Xcode 10 build](https://developer.apple.com/download).
@@ -44,13 +45,16 @@ The legacy build system is still available in Xcode 10. To use the legacy build 
 For the compatibility test we had to use "legacy build system" to get rid of the issue reported [here](https://stackoverflow.com/questions/50718018/xcode-10-error-multiple-commands-produce)
 For more details on Xcode 10, refer [Whats new in XCode10](https://developer.apple.com/xcode/whats-new/)  
 
+**Update:** *Lately we verified MobileFirst features with Xcode 10 with new build system without any issues.*
+
+
 #### Swift Apps on iOS12
 Along with iOS 12 apple introduced **Swift 4.2** for Swift developers.[Xcode 10 build](https://developer.apple.com/download) can build targets written in only Swift 4.x or Swift 3.2. Xcode 10 can be used for migration to Swift 4, This can be easily done using the [migration guide](https://swift.org/migration-guide).Apple introduced  **Swift 4.2** to be an intermediate step towards achieving ABI stability in **Swift 5**, which should enable binary compatibility between applications and libraries compiled with different Swift versions.
 
 As per Apple you can submit apps in **Swift 3.2** to the App Store and migrate individual modules to Swift 4 when you’re ready.We strongly encourage you to migrate your code to **Swift 4.2** in order to prepare for the ABI stability coming in **Swift 5.0**
 
 #### Deprecation of UIWebView
-Though Deprecation of **UIWebView** does not have any impact on MobileFirst features in iOS12. MobileFirst v8.0 already support **WKWebview** using cordova plugin. Though we are planning to remove the **UIWbview** completely and migrating to **WKWebview** very soon.
+Apple also announce the deprecation of **UIWebView** whose replacement is the WKWebView. This does not have any impact on MobileFirst features in iOS 12. MobileFirst v8.0 already supports **WKWebview** using the **WKWebview** Cordova plugin (). We will be migrating to **WKWebview** in the MobileFirst SDK in a future iFix.
 
 Highlighted features that were tested for Mobilefirst Foundation v7.1 and v8.0:
 
@@ -76,6 +80,10 @@ Mostly, for a hybrid/cordova app we found that entry of **libstdc++** included i
 For a native app , you should remove **libstdc++** from other linker flags in your xcode project as below:
 
   ![iOS12 libstdc++  issue workaround]({{site.baseurl}}/assets/blog/2017-07-20-compatibility-tests-for-ios-12/ios12-stdlib-fix.png)
+
+* During our compatibility test we found certificate pinning feature is not working. It looks very similar to the issue mentioned [here](https://github.com/AFNetworking/AFNetworking/issues/4229). We are currently investigating the issue. We will update here once we conclude our investigation.
+
+**Update:** *We verified Certificate Pinning with latest beta and found ,certificate pinning is working fine, previously evaluating trust was failing due to the issue discussed [here](https://stackoverflow.com/questions/44952985/ios-11-and-12-installed-certificates-not-trusted-automatically-self-signed).*
 
 * MobileFirst Platform provides a framework `IBMMobileFirstPlatformFoundationWatchOS` along with the core `IBMMobileFirstPlatformFoundation` framework to support watchOS 2 onwards, . We are unable to launch app on Apple Watch after watchOS 5.0. We are currently investigating the issue.
 
