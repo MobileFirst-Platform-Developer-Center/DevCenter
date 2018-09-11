@@ -85,8 +85,6 @@ For a native app , you should remove **libstdc++** from other linker flags in yo
 
 **Update:** *We verified Certificate Pinning with latest beta and found ,certificate pinning is working fine, previously evaluating trust was failing due to the issue discussed [here](https://stackoverflow.com/questions/44952985/ios-11-and-12-installed-certificates-not-trusted-automatically-self-signed).*
 
-* MobileFirst Platform provides a framework `IBMMobileFirstPlatformFoundationWatchOS` along with the core `IBMMobileFirstPlatformFoundation` framework to support watchOS 2 onwards, . We are unable to launch app on Apple Watch after watchOS 5.0. We are currently investigating the issue.
-
 > **Disclaimer:** *Some of the action items that are addressed in the list above are not under IBM’s control. Therefore, we expect developers and IT managers to ensure that their infrastructure is up-to-date according to Apple’s requirements.*
 
 iOS 12 compatibility tests are planned for following:
