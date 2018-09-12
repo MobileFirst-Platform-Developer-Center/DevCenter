@@ -20,9 +20,9 @@ We have been testing the iOS 12 beta with the latest being beta 3. We have verif
 
 We encourage you to start testing your application(s) with iOS 12.
 
->**Update:** *If you are planning to build your MobileFirst v8 application for iOS12  you have to remove stdc++ library from your Dependencies. This is because stdc++ is removed in iOS 12. Refer Known Issues section in this blog for details of the workaround.
+>**Update:** *If you are planning to build your MobileFirst v8 application for iOS12  you have to remove stdc++ library from your Dependencies. This is because stdc++ is removed in iOS 12. Refer Known Issues section in this blog for details of the workaround.*
 >
->For Cordova apps, please upgrade to the latest iFix [mfp-ifix-IF201809041150]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) so that your Cordova projects have the correct reference of libc++ automatically.*
+>*For Cordova apps, please upgrade to the latest iFix [mfp-ifix-IF201809041150]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) so that your Cordova projects have the correct reference of libc++ automatically.*
 
 
 ## MobileFirst Platform Foundation Support for iOS 12(beta 3)
@@ -84,7 +84,7 @@ For a native app , you should remove **libstdc++** from other linker flags in yo
 
 * During our compatibility test we found certificate pinning feature is not working. It looks very similar to the issue mentioned [here](https://github.com/AFNetworking/AFNetworking/issues/4229). We are currently investigating the issue. We will update here once we conclude our investigation.
 
->**Update:** *We verified Certificate Pinning with latest beta and found ,certificate pinning is working fine, previously evaluating trust was failing due to the issue Certificate.*
+>**Update:** *We verified Certificate Pinning with latest beta and found, certificate pinning is working fine. Previously, evaluating trust was failing due to the issue Certificate.*
 
 iOS 12 compatibility tests are planned for following:
 
