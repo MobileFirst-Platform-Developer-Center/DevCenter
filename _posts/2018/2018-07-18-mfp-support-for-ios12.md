@@ -20,8 +20,8 @@ We have been testing the iOS 12 beta with the latest being beta 3. We have verif
 
 We encourage you to start testing your application(s) with iOS 12.
 
-**Update:** *If you are planning to build your MobileFirst v8 application for iOS12  you have to remove stdc++ library from your Dependencies. This is because stdc++ is removed in iOS 12. Refer Known Issues section in this blog for details of the workaround.
-For Cordova apps, please upgrade to the latest iFix [mfp-ifix-IF201809041150]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) so that your Cordova projects have the correct reference of libc++ automatically.*
+>**Update:** *If you are planning to build your MobileFirst v8 application for iOS12  you have to remove stdc++ library from your Dependencies. This is because stdc++ is removed in iOS 12. Refer Known Issues section in this blog for details of the workaround.
+>For Cordova apps, please upgrade to the latest iFix [mfp-ifix-IF201809041150]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) so that your Cordova projects have the correct reference of libc++ automatically.*
 
 
 ## MobileFirst Platform Foundation Support for iOS 12(beta 3)
@@ -30,7 +30,7 @@ For Cordova apps, please upgrade to the latest iFix [mfp-ifix-IF201809041150]({{
 Existing application(s) that were created using MobileFirst Platform v7.1 and v8.0 **will work** on iOS 12 as they did on previous versions of iOS.
 
 #### Updating application on the App Store (built using older Xcode)
-You can opt to build application(s) with Xcode 9 and republish to the App Store. These application(s) will work on iOS 12. Make sure to build app with only 64 bit architecture.Apple mandates ( https://developer.apple.com/app-store/submissions ) that iOS apps and app updates submitted to the App Store from must be built with the Xcode 9 and iOS 11 SDK and must support the Super Retina display of iPhone X. Ensure that your apps are built to meet these requirements.
+You can opt to build application(s) with Xcode 9 and republish to the App Store. These application(s) will work on iOS 12. Make sure to build app with only 64 bit architecture. Apple [mandates](https://developer.apple.com/app-store/submissions) that iOS apps and app updates submitted to the App Store from must be built with the Xcode 9 and iOS 11 SDK and must support the Super Retina display of iPhone X. Ensure that your apps are built to meet these requirements.
 
 #### Updating existing application or submitting new application on the App Store (built using Xcode 10)
 Review the following section to learn what actions you need to take so that your app can support iOS 12. These needs to be considered only if you are building the application(s) using new [Xcode 10 build](https://developer.apple.com/download).
@@ -45,7 +45,7 @@ The legacy build system is still available in Xcode 10. To use the legacy build 
 For the compatibility test we had to use "legacy build system" to get rid of the issue reported [here](https://stackoverflow.com/questions/50718018/xcode-10-error-multiple-commands-produce)
 For more details on Xcode 10, refer [Whats new in XCode10](https://developer.apple.com/xcode/whats-new/)  
 
-**Update:** *Lately we verified MobileFirst features with Xcode 10 with new build system without any issues.*
+>**Update:** *Lately we verified MobileFirst features with Xcode 10 with new build system without any issues.*
 
 
 #### Swift Apps on iOS12
@@ -83,7 +83,7 @@ For a native app , you should remove **libstdc++** from other linker flags in yo
 
 * During our compatibility test we found certificate pinning feature is not working. It looks very similar to the issue mentioned [here](https://github.com/AFNetworking/AFNetworking/issues/4229). We are currently investigating the issue. We will update here once we conclude our investigation.
 
-**Update:** *We verified Certificate Pinning with latest beta and found ,certificate pinning is working fine, previously evaluating trust was failing due to the issue Certificate.*
+>**Update:** *We verified Certificate Pinning with latest beta and found ,certificate pinning is working fine, previously evaluating trust was failing due to the issue Certificate.*
 
 > **Disclaimer:** *Some of the action items that are addressed in the list above are not under IBM’s control. Therefore, we expect developers and IT managers to ensure that their infrastructure is up-to-date according to Apple’s requirements.*
 
