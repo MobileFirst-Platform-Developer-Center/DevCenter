@@ -390,7 +390,10 @@ When you open the main app folder with one of the previous IDEs, the context is 
 
 ## CrossWalk support for Android
 {: #crosswalk-support-for-android }
-Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  
+Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).
+
+> Note: The CrossWalk project is [no longer being maintained](https://crosswalk-project.org/blog/crosswalk-final-release.html) by the community and its maintainers. Therefore, there are chances that bugs or issues in CrossWalk could affect the functioning of the MobileFirst SDKs in a CrossWalk WebView. It is therefore discouraged to use CrossWalk WebViews in your applications. 
+
 To add it:
 
 1. From a **Command-line** line, run the command:
