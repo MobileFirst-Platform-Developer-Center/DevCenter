@@ -12,13 +12,40 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *7.1.0.0-MFPF-IF201808161052* has been released for MobileFirst Foundation 7.1, dated **August 16th, 2018**.
+A new iFix *7.1.0.0-MFPF-IF201809121702* has been released for MobileFirst Foundation 7.1, dated **September 12th, 2018**.
 <br/>
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201809121702" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201809121702">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201809121702" href="#collapse-mfp-ifix-IF201809121702" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201809121702"><b>iFix 7.1.0.0-MFPF-IF201809121702</b> <span class="label label-primary">latest</span></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201809121702" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201809121702">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>September 12th, 2018</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH02680</b> REMOVING LIBSTDC++ DEPENDENCY FROM MOBILEFIRST IOS 7.1 SDKS
+
+            </div>
+        </div>      
+    </div>
+</div>     
+
+## Previous iFixes for MobileFirst Foundation 7.1
+
+IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
+*List below includes iFixes released in 2018 only.*
+
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201808161052" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201808161052">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201808161052" href="#collapse-mfp-ifix-IF201808161052" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201808161052"><b>iFix 7.1.0.0-MFPF-IF201808161052</b> <span class="label label-primary">latest</span></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201808161052" href="#collapse-mfp-ifix-IF201808161052" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201808161052"><b>iFix 7.1.0.0-MFPF-IF201808161052</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201808161052" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201808161052">
@@ -35,12 +62,6 @@ A new iFix *7.1.0.0-MFPF-IF201808161052* has been released for MobileFirst Found
         </div>      
     </div>
 </div>     
-
-## Previous iFixes for MobileFirst Foundation 7.1
-
-IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
-*List below includes iFixes released in 2018 only.*
-
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201807271401" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201807271401">
