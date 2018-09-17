@@ -28,7 +28,9 @@ A new iFix *7.1.0.0-MFPF-IF201809121702* has been released for MobileFirst Found
 
             <h3>Changes included in this iFix</h3>
             <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
-
+            <blockquote>This iFix includes a change to remove <i>libstdc++</i> as a dependency for Cordova projects. This is required for new apps running on iOS 12. For further details, such as a workaround,  refer to <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/07/23/mfp-support-for-ios12/">this blog post</a>.
+            </blockquote>
+            <br/>
             <b>PH02680</b> REMOVING LIBSTDC++ DEPENDENCY FROM MOBILEFIRST IOS 7.1 SDKS
 
             </div>
