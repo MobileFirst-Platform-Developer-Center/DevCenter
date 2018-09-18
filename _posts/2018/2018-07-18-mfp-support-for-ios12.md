@@ -12,6 +12,9 @@ author:
   name: Sandhya Suman
 ---
 
+> **Update:** Please refer our latest [blog]({{site.baseurl}}/blog/2018/09/17/IBM-MobileFirst-iOS12/) for the latest news on iOS12 compatibility with MobileFirst .
+
+
 If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about  Mobile Foundation support for iOS 12 .
 
 Apple announced iOS 12 during their annual *WWDC2018* conference. This release of iOS includes many new user and developer oriented features. You can read more about all the new features in iOS 12 [here](https://developer.apple.com/ios/whats-new/).
@@ -22,8 +25,7 @@ We encourage you to start testing your application(s) with iOS 12.
 
 >**Update:** *If you are planning to build your MobileFirst v8 application for iOS12  you have to remove stdc++ library from your Dependencies. This is because stdc++ is removed in iOS 12. Refer Known Issues section in this blog for details of the workaround.*
 >
->*For Cordova apps, please upgrade to the latest iFix [mfp-ifix-IF201809041150]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) so that your Cordova projects have the correct reference of libc++ automatically.*
-
+>*For Cordova apps, please upgrade to the latest iFix [mfp-ifix-IF201809041150]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201809041150) so that your Cordova projects have the correct reference of libc++ automatically. For v7.1 , you can upgrade to the iFix [ 7.1.0.0-MFPF-IF201808161052]({{site.baseurl}}/blog/2018/05/18/7-1-master-ifix-release/).*
 
 ## MobileFirst Platform Foundation Support for iOS 12(beta 3)
 
@@ -44,7 +46,7 @@ The legacy build system is still available in Xcode 10. To use the legacy build 
 ![Xcode10 Legacy build system settings]({{site.baseurl}}/assets/blog/2017-07-20-compatibility-tests-for-ios-12/xcode10-buildsystem.png)
 
 For the compatibility test we had to use "legacy build system" to get rid of the issue reported [here](https://stackoverflow.com/questions/50718018/xcode-10-error-multiple-commands-produce)
-For more details on Xcode 10, refer [Whats new in XCode10](https://developer.apple.com/xcode/whats-new/). 
+For more details on Xcode 10, refer [Whats new in XCode10](https://developer.apple.com/xcode/whats-new/).
 
 >**Update:** *Lately we verified MobileFirst features with Xcode 10 with new build system without any issues.*
 
