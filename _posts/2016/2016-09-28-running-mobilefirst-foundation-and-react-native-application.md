@@ -11,7 +11,7 @@ author:
 additional_authors:
   - Carmel Schindelhaim
 ---
-> This blog post is obsolete. You can now use the MobileFirst SDK for React Native apps to connect your React Native with IBM MobileFirst Foundation. [Read more](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/)
+> This blog post is obsolete. You can now use the MobileFirst SDK for React Native apps to connect your React Native with IBM MobileFirst Foundation. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/).
 
 
 ## Introduction
