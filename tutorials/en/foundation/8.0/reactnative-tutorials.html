@@ -119,7 +119,10 @@ Develop your React Native applications by following the tutorials bellow: set-up
 
     </ol>
     <h3><font color="DodgerBlue">Step 3:</font> Registering the application</h3>
-     <ol><li>Open a Command-line window and navigate to the root of the  particular platform (iOS or Android) of the project. </li>
+    <ol><li>Open a Command-line window and navigate to the root of the  particular platform (iOS or Android) of the project. </li>
+      <pre>
+        cd ios or cd android
+      </pre>
       <li>Run the following command to register the application:
       <pre>
         mfpdev app register
@@ -132,8 +135,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
       <li><h5>iOS</h5>
 
       <p>If your platform is iOS then you are asked to provide the application’s BundleID. <b>Important</b>: The BundleID is <b>case sensitive</b>.</p>
-      <p> The <b>mfpdev app register</b> CLI command first connects to the MobileFirst Server to register the application, then generates the <b>mfpclient.plist</b> file at the root of the Xcode project, and adds to it the metadata that identifies the MobileFirst Server.</p>
-    </li>
+      <p> The <b>mfpdev app register</b> CLI command first connects to the MobileFirst Server to register the application, then updates the <b>mfpclient.plist</b> configuration file at the root of the Xcode project which contains metadata that identifies the MobileFirst Server.</p>
+
+      <p> <b></b>Note :</b> In XCode, in the project navigator, drag and drop mfpclient.plist from ios folder. This step is applicable only for iOS platform.</p>
       <li><h5>Android</h5>
 
       <p>If your platform is Android then you are asked to provide the application’s package name. <b>Important</b>: The package name is <b>case sensitive</b>.</p>
@@ -146,7 +150,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
        <li>Open the React native project in your code editor of choice.</li>
          <li> Import the <b>WLAuthorizationManager</b> class into your <b>App.js</b></li>
          {% highlight javascript %}
-         import {WLAuthorizationManager} from 'react-native-ibm-mobilefirst';
+         import {WLAuthorizationManager, WLResourceRequest} from 'react-native-ibm-mobilefirst';
          {% endhighlight %}         
          
          <li>Select the <b>App.js</b> file, which is located at project's root folder and paste the following code snippet, replacing the existing <code>WLAuthorizationManager.obtainAccessToken()</code> function:
