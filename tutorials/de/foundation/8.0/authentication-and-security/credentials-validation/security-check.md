@@ -47,8 +47,7 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
     protected Map<String, Object> createChallenge() {
         return null;
     }
-
-    }
+}
 ```
 
 ## Abfrage erstellen
@@ -80,7 +79,7 @@ Wenn der Client die Antwort auf die Abfrage sendet, wird die Antwort als Zuordnu
 
 ```java
 @Override
-   protected boolean validateCredentials(Map<String, Object> credentials) {
+    protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null &&  credentials.containsKey("pin")){
         String pinCode = credentials.get("pin").toString();
 
@@ -169,7 +168,7 @@ Sie können die Methode `validateCredentials` so ändern, dass anstelle des fest
 
 ```java
 @Override
-   protected boolean validateCredentials(Map<String, Object> credentials) {
+    protected boolean validateCredentials(Map<String, Object> credentials) {
         if(credentials!=null &&  credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 

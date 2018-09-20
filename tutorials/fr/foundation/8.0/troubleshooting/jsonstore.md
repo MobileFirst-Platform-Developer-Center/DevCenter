@@ -12,9 +12,7 @@ Vous trouverez ici des des informations qui vous aideront à résoudre les probl
 
 ## Fournissez des informations lorsque vous demandez de l'aide
 {: #provide-information-when-you-ask-for-help }
-Il vaut mieux fournir trop d'informations que risquer de n'en
-fournir pas assez. La liste ci-après est un bon point de départ pour savoir quelles informations sont requises lorsque vous demandez de l'aide concernant
-des problèmes liés à JSONStore.
+Il vaut mieux fournir trop d'informations que risquer de n'en fournir pas assez. La liste ci-après est un bon point de départ pour savoir quelles informations sont requises lorsque vous demandez de l'aide concernant des problèmes liés à JSONStore.
 
 * Système d'exploitation et version. Par exemple, Windows XP SP3 Virtual Machine ou Mac OSX 10.8.3.
 * Version d'Eclipse. Par exemple, Eclipse Indigo 3.7 Java EE.
@@ -73,34 +71,28 @@ Procédez comme suit afin d'isoler le problème et de le signaler plus précisé
 
 ## Problèmes courants
 {: #common-issues }
-La compréhension des caractéristiques JSONStore suivantes peut vous aider à résoudre certains
-problèmes courants que vous pouvez rencontrer.  
+La compréhension des caractéristiques JSONStore suivantes peut vous aider à résoudre certains problèmes courants que vous pouvez rencontrer.  
 
-* Pour stocker des données binaires dans JSONStore, vous devez d'abord les coder en base64. Stockez les chemins d'accès et les noms de
-fichier au lieu des fichiers réels dans JSONStore.
-* L'accès aux données JSONStore depuis le code natif n'est possible que dans
-{{ site.data.keys.v62_product_full }} version 6.2.0.
+* Pour stocker des données binaires dans JSONStore, vous devez d'abord les coder en base64. Stockez les chemins d'accès et les noms de fichier au lieu des fichiers réels dans JSONStore.
+* L'accès aux données JSONStore depuis le code natif n'est possible que dans {{ site.data.keys.v62_product_full }} version 6.2.0.
 * La quantité de données que vous pouvez stocker dans JSONStore n'est pas limitée, en dehors des limites imposées par le système d'exploitation mobile.
 * JSONStore fournit un stockage de persistance des données. Les données ne sont pas seulement stockées en mémoire.
 * L'API init échoue si le nom de la collection commence par un chiffre ou un symbole. IBM Worklight versions 5.0.6.1 et ultérieures renvoient une erreur appropriée : `4 BAD\_PARAMETER\_EXPECTED\_ALPHANUMERIC\_STRING`
-* Les zones de recherche différencient les nombres et les entiers. Les valeurs numériques telles que `1` et `2` sont
-stockées sous la forme `1.0` et `2.0` lorsque le type est `number`. Elles sont stockées sous la forme
-`1` et `2` lorsque le type est `integer`.
+* Les zones de recherche différencient les nombres et les entiers. Les valeurs numériques telles que `1` et `2` sont stockées sous la forme `1.0` et `2.0` lorsque le type est `number`. Elles sont stockées sous la forme `1` et `2` lorsque le type est `integer`.
 * Si une application est forcée de s'arrêter ou tombe en panne, elle échoue toujours avec le code d'erreur -1 lorsqu'elle est redémarrée et que l'API `init` ou `open` est appelée. Si ce problème survient, appelez d'abord l'API `closeAll`.
 * L'implémentation JavaScript de JSONStore s'attend à ce que le code soit appelé en série. Attendez que l'opération en cours se termine avant d'appeler la suivante.
 * Les transactions ne sont pas prises en charge dans Android 2.3.x pour les applications Cordova.
 * Lorsque vous utilisez JSONStore sur un appareil 64 bits, l'erreur suivante peut s'afficher : `java.lang.UnsatisfiedLinkError: dlopen failed: "..." is 32-bit instead of 64-bit`
-* Cette erreur signifie
-que vous disposez de bibliothèques natives 64 bits dans votre projet Android et que JSONStore ne fonctionne pas lorsque vous utilisez ces bibliothèques. Pour confirmation, accédez au répertoire **src/main/libs** ou **src/main/jniLibs** sous votre projet Android et vérifiez si le dossier x86_64 ou arm64-v8a existe. Si tel est le cas, supprimez-le ; JSONStore fonctionnera à nouveau.
+* Cette erreur signifie que vous disposez de bibliothèques natives 64 bits dans votre projet Android et que JSONStore ne fonctionne pas lorsque vous utilisez ces bibliothèques. Pour confirmation, accédez au répertoire **src/main/libs** ou **src/main/jniLibs** sous votre projet Android et vérifiez si le dossier x86_64 ou arm64-v8a existe. Si tel est le cas, supprimez-le ; JSONStore fonctionnera à nouveau.
 * Dans certains cas (ou environnements), le flux entre `wlCommonInit()` avant l'initialisation du plug-in JSONStore. Cela entraîne l'échec des appels d'API liés à JSONStore. L'amorçage de `cordova-plugin-mfp` appelle automatiquement `WL.Client.init`, qui, une fois terminé, déclenche la fonction `wlCommonInit`. Ce processus d'initialisation est différent pour le plug-in JSONStore. En effet, ce dernier ne dispose d'aucun moyen d'arrêter (_halt_) l'appel de `WL.Client.init`. Dans certains environnements, il peut arriver que le flux indique `wlCommonInit()` avant la fin de `mfpjsonjslloaded`.
-Pour garantir l'ordre des événements `mfpjsonjsloaded` et `mfpjsloaded`, le développeur a la possibilité d'appeler manuellement `WL.CLient.init`. Il n'est alors plus nécessaire de disposer d'un code spécifique à la plateforme. 
+Pour garantir l'ordre des événements `mfpjsonjsloaded` et `mfpjsloaded`, le développeur a la possibilité d'appeler manuellement `WL.CLient.init`. Il n'est alors plus nécessaire de disposer d'un code spécifique à la plateforme.
 
-  Pour configurer l'appel de `WL.CLient.init` manuellement, suivez les étapes ci-après :                              
+  Pour configurer l'appel de `WL.CLient.init` manuellement, suivez les étapes ci-après :                             
 
   1. Dans `config.xml`, modifiez la propriété `clientCustomInit` et définissez-la sur **true**.
 
   + Dans le fichier `index.js` :                                   
-    * ajoutez la ligne suivante au début du fichier :                 
+    * ajoutez la ligne suivante au début du fichier :                
       ```javascript
       document.addEventListener('mfpjsonjsloaded', initWL, false);
       ```           
@@ -108,11 +100,11 @@ Pour garantir l'ordre des événements `mfpjsonjsloaded` et `mfpjsloaded`, le d�
 
     * ajoutez la fonction suivante :  
     ```javascript                                         
-function initWL(){
+function initWL(){                                                     
         var options = typeof wlInitOptions !== 'undefined' ? wlInitOptions
-        : {};
-        WL.Client.init(options);
-}
+        : {};                                                                
+        WL.Client.init(options);                                           
+}                                                                      
 ```                                                                       
 
   Cela permet d'attendre l'événement `mfpjsonjsloaded` (en dehors de `wlCommonInit`),
@@ -147,6 +139,7 @@ Les autres zones JSONStore internes sont :
 ### JavaScript
 {: #javascript }
 JSONStore utilise un objet erreur pour renvoyer des messages sur la cause des échecs.
+
 Lorsqu'une erreur survient au cours d'une opération JSONStore (par exemple, les méthodes `find` et `add` dans la classe `JSONStoreInstance`), un objet erreur est renvoyé. Il fournit des informations sur la cause de l'échec.
 
 ```javascript

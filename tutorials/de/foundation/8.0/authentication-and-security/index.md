@@ -530,9 +530,7 @@ durchgeführt.
 
 3.  Nach erfolgreichem Abschluss des Abfrageprozesses leitet die Clientanwendung die Anforderung an den Autorisierungsserver weiter. 
 
-    > Nach erfolgreicher Autorisierung wird der Client zum Tokenendpunkt des Autorisierungsservers umgeleitet, wo
-er mithilfe des öffentlichen Schlüssels, der bei der Clientregistrierung bereitgestellt wurde, authentifiziert
-wird. Auf erfolgreicher Authentifizierung stellt der
+    > Nach erfolgreicher Autorisierung wird der Client zum Tokenendpunkt des Autorisierungsservers umgeleitet, wo er mithilfe des öffentlichen Schlüssels, der bei der Clientregistrierung bereitgestellt wurde, authentifiziert wird. Auf erfolgreicher Authentifizierung stellt der
 Autorisierungsserver für den Client ein digital signiertes Zugriffstoken (mit der ID des Clients, dem angeforderten Bereich und der Ablaufzeit des Tokens) aus. 
 
 4.  Die Clientanwendung

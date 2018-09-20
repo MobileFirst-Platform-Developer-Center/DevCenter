@@ -33,10 +33,10 @@ Liberty for Java 런타임에서 IBM MobileFirst Foundation에 대한 작업 중
 스크립트 실행에 실패하고 cf 토큰 새로 고치기 또는 토큰 새로 고치기 실패 같은 메시지가 리턴됩니다.
 
 **설명**  
-IBM Cloud 세션의 제한시간이 초과되었을 수 있습니다. IBM Cloud에 로그인한 후 스크립트를 실행해야 합니다. 
+IBM Cloud 세션의 제한시간이 초과되었을 수 있습니다. IBM Cloud에 로그인한 후 스크립트를 실행해야 합니다.
 
 **해결 방법**
-initenv.sh 스크립트를 다시 실행하여 IBM Cloud에 로그인한 후 실패한 스크립트를 다시 실행하십시오. 
+initenv.sh 스크립트를 다시 실행하여 IBM Cloud에 로그인한 후 실패한 스크립트를 다시 실행하십시오.
 
 ### 관리 DB, 활성 업데이트, 푸시 서비스가 비활성으로 표시됨
 {: #administration-db-live-update-and-push-service-show-up-as-inactive }

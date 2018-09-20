@@ -115,7 +115,7 @@ do {
 } catch let error as NSError {
     // Handle error
 }
-   ```
+```
 
 ##### AFTER（使用 Cloudant Sync）：
 {: #after-with-cloudant-sync }
@@ -222,9 +222,9 @@ let name = "automobiledb"
 
 manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NSError!) -> Void in
     if nil != error {
-        // Handle error
-        } else {
-            let store:CDTStore = createdStore
+        //Handle error
+    } else {
+        let store:CDTStore = createdStore
         print("Successfully created store: \(store.name)")
     }
 })
@@ -474,7 +474,7 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
             if (task.isFaulted()) {
                 // Handle error
         } else {
-            // Do something with Store
+                // Do something with Store
                 Store store = task.getResult();
             }
             return null;
@@ -624,10 +624,10 @@ Automobile *automobile = [[Automobile alloc] initWithMake:@"Toyota" model:@"Coro
 **Swift**
 
 ```swift
-   // Use an existing store
+// Use an existing store
 let store:CDTStore = existingStore
 
-   // Create your object to save
+// Create your object to save
 let automobile = Automobile(make: "Toyota", model: "Corolla", year: 2006)
 
 store.save(automobile, completionHandler: { (savedObject:AnyObject!, error:NSError!) -> Void in
@@ -708,10 +708,10 @@ do{
 **Java**
 
 ```java
-   // Use an existing store
-   Datastore datastore = existingStore;
+// Use an existing store
+Datastore datastore = existingStore;
 
-   // Create document body
+// Create document body
 Map<String, Object> body = new HashMap<String, Object>();
 body.put("@datatype", "Automobile");
 body.put("make", "Toyota");
@@ -1516,10 +1516,10 @@ while (replicator.isActive) {
 **Swift**
 
 ```swift
-   // Use an existing store
+// Use an existing store
 let store:CDTStore = existingStore
 
-   do {
+do {
     // store is an existing CDTStore object created using IMFDataManager remoteStore
     let pull:CDTPullReplication = manager.pullReplicationForStore(store.name)
     let replicator:CDTReplicator = try manager.replicatorFactory.oneWay(pull)
@@ -1536,7 +1536,7 @@ let store:CDTStore = existingStore
 } catch let error as NSError {
     // Handle error
 }
-   ```
+```
 
 **Java**
 
@@ -1624,7 +1624,7 @@ do {
 } catch let error as NSError {
     // Handle error
 }
-   ```
+```
 
 **Java**
 
@@ -1710,7 +1710,7 @@ do {
 } catch let error as NSError {
     // Handle error
 }
-   ```
+```
 
 **Java**
 
@@ -1798,7 +1798,7 @@ do {
 } catch let error as NSError {
     // Handle error
 }
-   ```
+```
 
 **Java**
 

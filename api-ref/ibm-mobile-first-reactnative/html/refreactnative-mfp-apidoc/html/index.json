@@ -1,0 +1,3015 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "js/wlAnalytics.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/js/wlAnalytics.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "variable",
+    "name": "wlAnalytics",
+    "memberof": "js/wlAnalytics.js",
+    "static": true,
+    "longname": "js/wlAnalytics.js~wlAnalytics",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 50,
+    "kind": "function",
+    "name": "_mandatoryParam",
+    "memberof": "js/wlAnalytics.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlAnalytics.js~_mandatoryParam",
+    "access": "private",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameterName",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 51,
+    "kind": "class",
+    "name": "WLAnalytics",
+    "memberof": "js/wlAnalytics.js",
+    "static": true,
+    "longname": "js/wlAnalytics.js~WLAnalytics",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": "WLAnalytics",
+    "description": "WLAnalytics means of persistently capturing analytics data and provides a method call to send captured data to the IBM MobileFirst Platform server, to be forwarded to the Operational Analytics engine.\n\nCapture is on by default.\n\nWhen this WLAnalytics class's capture flag is turned on via enable method call, all messages passed through this class's log method will be persisted to file in the following JSON object format:\n\n{\n  \"timestamp\"    : \"17-02-2013 13:54:27:123\",  // \"dd-MM-yyyy hh:mm:ss:S\"\n  \"level\"        : \"ERROR\",                    // ERROR || WARN || INFO || LOG || DEBUG\n  \"package\"      : \"your_tag\",                 // typically a class name, app name, or JavaScript object name\n  \"msg\"          : \"the message\",              // a helpful log message\n  \"metadata\"     : {\"hi\": \"world\"},            // (optional) additional JSON metadata, appended via doLog API call\n  \"threadid\"     : long                        // (optional) id of the current thread\n}",
+    "lineNumber": 43,
+    "interface": false
+  },
+  {
+    "__docId__": 52,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 48,
+    "ignore": true
+  },
+  {
+    "__docId__": 53,
+    "kind": "method",
+    "name": "enable",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#enable",
+    "access": "public",
+    "description": "Enable persistent capture of analytics data. Enable, and thus capture, is the default.",
+    "lineNumber": 55,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 54,
+    "kind": "method",
+    "name": "disable",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#disable",
+    "access": "public",
+    "description": "Disable persistent capture of analytics data.",
+    "lineNumber": 62,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 55,
+    "kind": "method",
+    "name": "log",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#log",
+    "access": "public",
+    "description": "Log data you want to be captured in the context of \"analytics\". Some data is already captured by the framework. \nTo avoid collisions, the following keys will be excluded if logged:\nappStoreID\nappStoreLabel\nappStoreVersion\nappStoreVersionDisplay\nmfpAppName\nmfpAppVersion\ndeviceBrand\ndeviceOSversion\ndeviceOS\ndeviceModel\ndeviceID\ntimezone\ntimestamp",
+    "lineNumber": 85,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The message to be logged"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to be added to the log message."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "name": "addDeviceEventListener",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#addDeviceEventListener",
+    "access": "public",
+    "description": "Enable analytics to capture the specified DeviceEvent",
+    "lineNumber": 93,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "deviceEvent",
+        "description": "A string representation of the device event to capture. Valid values are \"LIFECYCLE\" and \"NETWORK\""
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "removeDeviceEventListener",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#removeDeviceEventListener",
+    "access": "public",
+    "description": "Disable analytics from capturing the specified DeviceEvent",
+    "lineNumber": 101,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "deviceEvent",
+        "description": "A string representation of the device event to capture. Valid values are \"LIFECYCLE\" and \"NETWORK\""
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "send",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#send",
+    "access": "public",
+    "description": "Send the accumulated log data when the persistent log buffer exists and is not empty.",
+    "lineNumber": 108,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 59,
+    "kind": "method",
+    "name": "sendWithCallback",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#sendWithCallback",
+    "access": "public",
+    "description": "Send the accumulated log data when the persistent log buffer exists and is not empty.",
+    "lineNumber": 116,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 60,
+    "kind": "method",
+    "name": "setUserContext",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#setUserContext",
+    "access": "public",
+    "description": "Specify current application user. If you want user-based analytics, you must use this method call. \nFor example, use it when the user logs in, and call the unsetUserContext method when the user logs out. \nOr if your application supports user profiles, call this method when the user profile changes.",
+    "lineNumber": 126,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "user",
+        "description": "User ID for the current app user."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 61,
+    "kind": "method",
+    "name": "unsetUserContext",
+    "memberof": "js/wlAnalytics.js~WLAnalytics",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAnalytics.js~WLAnalytics#unsetUserContext",
+    "access": "public",
+    "description": "Unset any user context previously set.",
+    "lineNumber": 133,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 62,
+    "kind": "file",
+    "name": "js/wlAuthorizationManager.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/js/wlAuthorizationManager.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 63,
+    "kind": "variable",
+    "name": "wlAuthManager",
+    "memberof": "js/wlAuthorizationManager.js",
+    "static": true,
+    "longname": "js/wlAuthorizationManager.js~wlAuthManager",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "function",
+    "name": "_mandatoryParam",
+    "memberof": "js/wlAuthorizationManager.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlAuthorizationManager.js~_mandatoryParam",
+    "access": "private",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 26,
+    "undocument": true,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameterName",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 65,
+    "kind": "class",
+    "name": "WLAuthorizationManager",
+    "memberof": "js/wlAuthorizationManager.js",
+    "static": true,
+    "longname": "js/wlAuthorizationManager.js~WLAuthorizationManager",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": "WLAuthorizationManager",
+    "description": "This class manages the OAuth interaction between the device and the authorization server.",
+    "lineNumber": 32,
+    "interface": false
+  },
+  {
+    "__docId__": 66,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/wlAuthorizationManager.js~WLAuthorizationManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAuthorizationManager.js~WLAuthorizationManager#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 37,
+    "ignore": true,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 67,
+    "kind": "method",
+    "name": "obtainAccessToken",
+    "memberof": "js/wlAuthorizationManager.js~WLAuthorizationManager",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlAuthorizationManager.js~WLAuthorizationManager#obtainAccessToken",
+    "access": "public",
+    "description": "Initiates the OAuth flow with the MobileFirst server to get an access token for the specified resource scope. ",
+    "lineNumber": 46,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "scope",
+        "description": "Scope for which the access token is to be returned."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": "If success, the access token string for the resource scope. If failed, the error object with additional failure information."
+    }
+  },
+  {
+    "__docId__": 68,
+    "kind": "method",
+    "name": "login",
+    "memberof": "js/wlAuthorizationManager.js~WLAuthorizationManager",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlAuthorizationManager.js~WLAuthorizationManager#login",
+    "access": "public",
+    "description": "Logs in to the specified security check. ",
+    "lineNumber": 58,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "securityCheck",
+        "description": "The security check to log into."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "credentials",
+        "description": "Credentials for logging in to the security check in JSON format."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": "Empty string if success. If failed, the error object with additional failure information."
+    }
+  },
+  {
+    "__docId__": 69,
+    "kind": "method",
+    "name": "logout",
+    "memberof": "js/wlAuthorizationManager.js~WLAuthorizationManager",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlAuthorizationManager.js~WLAuthorizationManager#logout",
+    "access": "public",
+    "description": "Logs out of a specified security check ",
+    "lineNumber": 68,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "securityCheck",
+        "description": "The security check to log out of"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": "Empty string if success. If failed, the error object with additional failure information."
+    }
+  },
+  {
+    "__docId__": 70,
+    "kind": "method",
+    "name": "clearAccessToken",
+    "memberof": "js/wlAuthorizationManager.js~WLAuthorizationManager",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlAuthorizationManager.js~WLAuthorizationManager#clearAccessToken",
+    "access": "public",
+    "description": "Clears the provided access token.\nNote: When failing to access a resource with an obtained token, call the clearAccessToken method to clear the invalid token before calling WLAuthorizationManager.obtainAccessToken to obtain a new access token.",
+    "lineNumber": 78,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "scope",
+        "description": "The scope whose access token must be cleared."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 71,
+    "kind": "file",
+    "name": "js/wlClient.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/js/wlClient.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 72,
+    "kind": "variable",
+    "name": "wlClient",
+    "memberof": "js/wlClient.js",
+    "static": true,
+    "longname": "js/wlClient.js~wlClient",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 18,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "variable",
+    "name": "eventEmitter",
+    "memberof": "js/wlClient.js",
+    "static": true,
+    "longname": "js/wlClient.js~eventEmitter",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "function",
+    "name": "_mandatoryParam",
+    "memberof": "js/wlClient.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlClient.js~_mandatoryParam",
+    "access": "private",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 27,
+    "undocument": true,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameterName",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 75,
+    "kind": "class",
+    "name": "WLClient",
+    "memberof": "js/wlClient.js",
+    "static": true,
+    "longname": "js/wlClient.js~WLClient",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": "WLClient",
+    "description": " This collection of topics lists the public methods of the IBM® MobileFirst® runtime client API \nfor mobile apps, desktop, and web. WL.Client is a JavaScript client library that provides access to IBM MobileFirst capabilities. You can use WL.Client to perform the following types of functions:",
+    "lineNumber": 34,
+    "interface": false
+  },
+  {
+    "__docId__": 76,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 39,
+    "ignore": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "method",
+    "name": "addGlobalHeader",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#addGlobalHeader",
+    "access": "public",
+    "description": "Adds a HTTP header to all requests made by the MobileFirst SDK. \nUse the WLClient.removeGlobalHeader API to stop adding the header to further requests ",
+    "lineNumber": 60,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "Name of the HTTP header"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "The value of the HTTP header"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 78,
+    "kind": "method",
+    "name": "submitChallengeAnswer",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#submitChallengeAnswer",
+    "access": "public",
+    "description": "Send an answer back to the security check that triggered this challenge. \nThe answer should be in a JSON format.",
+    "lineNumber": 70,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "securityCheckName",
+        "description": "The security check name that represents the challenge. Used to identify which security check requires authentication."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "answer",
+        "description": "The challenge answer to be returned to the server. For example, this could be credentials collected from the user."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 79,
+    "kind": "method",
+    "name": "getDeviceDisplayName",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#getDeviceDisplayName",
+    "access": "public",
+    "description": "Gets the display name of the device. \nThe display name is retrieved from the MobileFirst Server registration data. \nYou can see the device display name in the Devices section of the MobileFirst Console.",
+    "lineNumber": 82,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": "The display name of the device. For example, \"Sam's iPhone\""
+    },
+    "params": []
+  },
+  {
+    "__docId__": 80,
+    "kind": "method",
+    "name": "setDeviceDisplayName",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#setDeviceDisplayName",
+    "access": "public",
+    "description": "Sets the friendly name of the device.\nYou can see the device display name in the Devices section of the MobileFirst console.",
+    "lineNumber": 92,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "deviceDisplayName",
+        "description": "The friendly name to be set for the device."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 81,
+    "kind": "method",
+    "name": "getServerUrl",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#getServerUrl",
+    "access": "public",
+    "description": "Returns the current MobileFirst Platform server URL. \nYou can define the server URL in the mfpclient.properties (Android) / mfpclient.plist (iOS) or by calling the WLClient.setServerUrl API",
+    "lineNumber": 102,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": "The URL of the current MobileFirst Platform server."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 82,
+    "kind": "method",
+    "name": "setServerUrl",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#setServerUrl",
+    "access": "public",
+    "description": "",
+    "examples": [
+      "var newserverurl = 'https://mobilefoundation-newserver.mybluemix.net:443/mfp' ;\nWLClient.setServerUrl(newserverurl);"
+    ],
+    "lineNumber": 114,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "serverUrl",
+        "description": "The URL of the MobileFirst Platform server to point to."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 83,
+    "kind": "method",
+    "name": "setHeartbeatInterval",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#setHeartbeatInterval",
+    "access": "public",
+    "description": "The number of seconds between which a heartbeat request is sent to the MobileFirst server to keep the connection alive. \nThe default interval is 7 minutes or 420 seconds. Heartbeats are sent only when the app is in the foreground.",
+    "lineNumber": 123,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "heartbeatIntervalInSeconds",
+        "description": "Heartbeat interval value in seconds"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 84,
+    "kind": "method",
+    "name": "pinTrustedCertificatesPublicKey",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#pinTrustedCertificatesPublicKey",
+    "access": "public",
+    "description": "Pins the host X509 certificate public key to the client application. \nSecured calls to the pinned remote host will be checked for a public key match. \nSecured calls to other hosts containing other certificates will be rejected. \nSome mobile operating systems might cache the certificate validation check results. \nYour app must call the certificate pinning method before making a secured request. \nCalling this method a second time overrides any previous pinning operation.\nThe certificates must be in DER format. When multiple certificates are pinned, a secured call is checked for a match with any one of the certificates. ",
+    "lineNumber": 137,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "certificateFileNames",
+        "description": "The list of paths to the certificate files. On Android this will be under the assets folder."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 85,
+    "kind": "method",
+    "name": "registerChallengeHandler",
+    "memberof": "js/wlClient.js~WLClient",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlClient.js~WLClient#registerChallengeHandler",
+    "access": "public",
+    "description": "Register a challenge handler to handle act upon challenges provided for a given security check.",
+    "examples": [
+      "class UserLoginCH { \n\n   constructor() {} \n   \n   handleChallenge(params){\n     // Gather credentials from the user\n     WLClient.submitChallengeAnswer (securityCheck, credentials); \n   }\n\n   handleSuccess(){\n     // Handle success. Perhaps show a success message or do nothing. \n   }\n\n   handleFailure(){\n      // Handle failure. Perhaps, show a failure message or ask for credentials again.\n   }\n}\n\nvar userLoginCH = new UserLoginCH(); \nWLClient.registerChallengeHandler(userLoginCH ,\"UserLogin\") ; "
+    ],
+    "lineNumber": 168,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "ChallengeHandler"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "challengeHandlerClass",
+        "description": "The challenge handler object implementing the methods of a SecurityCheck Challenge handler"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "securityCheckName",
+        "description": "The name of the security check for which this challenge handler must respond."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 86,
+    "kind": "file",
+    "name": "js/wlLogger.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/js/wlLogger.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 87,
+    "kind": "variable",
+    "name": "wlLogger",
+    "memberof": "js/wlLogger.js",
+    "static": true,
+    "longname": "js/wlLogger.js~wlLogger",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "function",
+    "name": "_mandatoryParam",
+    "memberof": "js/wlLogger.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlLogger.js~_mandatoryParam",
+    "access": "private",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 25,
+    "undocument": true,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameterName",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 89,
+    "kind": "class",
+    "name": "WLLogger",
+    "memberof": "js/wlLogger.js",
+    "static": true,
+    "longname": "js/wlLogger.js~WLLogger",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": "WLLogger",
+    "description": "WLLogger is a class for logging that provides some enhanced capability such as capturing log calls, \npackage filtering, and log level control at both global and individual package scope. \n\nIt also provides a method call to send captured logs to the IBM MobileFirst Platform server. \n\nLog file data is sent to the IBM MobileFirst Platform server when this class's send() method is called and the accumulated log size is greater than zero. \nWhen the log data is successfully uploaded, the persisted local log data is deleted.\n\nWhen this Logger class's capture flag is turned on via setCapture(true) method call, \nall messages passed through this class's log methods will be persisted to store in the following JSON object format:",
+    "examples": [
+      "{\n  \"timestamp\"    : \"17-02-2013 13:54:27:123\",  // \"dd-MM-yyyy hh:mm:ss:S\"\n  \"level\"        : \"ERROR\",                    // FATAL || ERROR || WARN || INFO || LOG || DEBUG || TRACE\n  \"package\"      : \"your_tag\",                 // typically a class name, app name, or JavaScript object name\n  \"msg\"          : \"the message\",              // a helpful log message\n  \"metadata\"     : {\"hi\": \"world\"},            // (optional) additional JSON metadata, appended via doLog API call\n  \"threadid\"     : long                        // (optional) id of the current thread\n}"
+    ],
+    "lineNumber": 49,
+    "interface": false
+  },
+  {
+    "__docId__": 90,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 55,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": "Create or get an instance of the WLLogger class for a given tag. "
+      }
+    ]
+  },
+  {
+    "__docId__": 91,
+    "kind": "get",
+    "name": "TRACE",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlLogger.js~WLLogger.TRACE",
+    "access": "public",
+    "description": null,
+    "lineNumber": 61,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 92,
+    "kind": "get",
+    "name": "DEBUG",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlLogger.js~WLLogger.DEBUG",
+    "access": "public",
+    "description": null,
+    "lineNumber": 64,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 93,
+    "kind": "get",
+    "name": "LOG",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlLogger.js~WLLogger.LOG",
+    "access": "public",
+    "description": null,
+    "lineNumber": 67,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 94,
+    "kind": "get",
+    "name": "INFO",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlLogger.js~WLLogger.INFO",
+    "access": "public",
+    "description": null,
+    "lineNumber": 70,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 95,
+    "kind": "get",
+    "name": "WARN",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlLogger.js~WLLogger.WARN",
+    "access": "public",
+    "description": null,
+    "lineNumber": 73,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "get",
+    "name": "ERROR",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlLogger.js~WLLogger.ERROR",
+    "access": "public",
+    "description": null,
+    "lineNumber": 76,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 97,
+    "kind": "get",
+    "name": "FATAL",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlLogger.js~WLLogger.FATAL",
+    "access": "public",
+    "description": null,
+    "lineNumber": 79,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 98,
+    "kind": "method",
+    "name": "init",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#init",
+    "access": "public",
+    "description": "",
+    "lineNumber": 87,
+    "ignore": true,
+    "params": [
+      {
+        "name": "tag",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "member",
+    "name": "logTag",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#logTag",
+    "access": "public",
+    "description": null,
+    "lineNumber": 88,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 100,
+    "kind": "method",
+    "name": "debug",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#debug",
+    "access": "public",
+    "description": "Logs a message at DEBUG level",
+    "lineNumber": 98,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 101,
+    "kind": "method",
+    "name": "debugWithMetadata",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#debugWithMetadata",
+    "access": "public",
+    "description": "Logs a message at DEBUG level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 107,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 102,
+    "kind": "method",
+    "name": "error",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#error",
+    "access": "public",
+    "description": "Logs a message at ERROR level",
+    "lineNumber": 118,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The error  message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 103,
+    "kind": "method",
+    "name": "errorWithMetadata",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#errorWithMetadata",
+    "access": "public",
+    "description": "Logs a message at ERROR level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 128,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The error message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 104,
+    "kind": "method",
+    "name": "warn",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#warn",
+    "access": "public",
+    "description": "Logs a message at WARN level",
+    "lineNumber": 140,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The warning message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 105,
+    "kind": "method",
+    "name": "warnWithMetadata",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#warnWithMetadata",
+    "access": "public",
+    "description": "Logs a message at WARN level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 150,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The warning message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 106,
+    "kind": "method",
+    "name": "info",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#info",
+    "access": "public",
+    "description": "Logs a message at INFO level",
+    "lineNumber": 162,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The information message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 107,
+    "kind": "method",
+    "name": "infoWithMetadata",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#infoWithMetadata",
+    "access": "public",
+    "description": "Logs a message at INFO level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 172,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The information message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 108,
+    "kind": "method",
+    "name": "trace",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#trace",
+    "access": "public",
+    "description": "Logs a message at TRACE level",
+    "lineNumber": 184,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The trace message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 109,
+    "kind": "method",
+    "name": "traceWithMetadata",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#traceWithMetadata",
+    "access": "public",
+    "description": "Logs a message at TRACE level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 194,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The trace message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 110,
+    "kind": "method",
+    "name": "setCapture",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#setCapture",
+    "access": "public",
+    "description": "Global setting to turn persisting of log data passed to this class's log methods on or off.",
+    "lineNumber": 203,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "capture",
+        "description": "True to turn on logging, false to turn it off."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 111,
+    "kind": "method",
+    "name": "getCapture",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#getCapture",
+    "access": "public",
+    "description": "Get the current value of the capture flag, indicating that the Logger is recording log calls persistently. ",
+    "lineNumber": 211,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<boolean>"
+      ],
+      "spread": false,
+      "description": "true, if logging is enabled, false otherwise."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 112,
+    "kind": "method",
+    "name": "setFilters",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#setFilters",
+    "access": "public",
+    "description": "Filter on packages at and above designated LEVEL. \nThis is a white list. Any package not listed in the filters will not be logged. \nPass null or an empty HashMap parameter to remove filters and resume logging at the default LEVEL.",
+    "lineNumber": 221,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "filter",
+        "description": "set of filters and associated level (and above) to allow for logging"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 113,
+    "kind": "method",
+    "name": "getFilters",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#getFilters",
+    "access": "public",
+    "description": "Get the current list of filters.",
+    "lineNumber": 229,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Object>"
+      ],
+      "spread": false,
+      "description": "The current list of filters in the form of  {\"packageName\" : \"LEVEL\"}"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 114,
+    "kind": "method",
+    "name": "getLevel",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#getLevel",
+    "access": "public",
+    "description": "Get the current Logger level.",
+    "lineNumber": 237,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": "A string representation of the current Logging level. Possible values are TRACE, DEBUG, LOG, INFO, WARN, ERROR, FATAL. The default value is FATAL."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 115,
+    "kind": "method",
+    "name": "send",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#send",
+    "access": "public",
+    "description": "Send the accumulated log data when the persistent log buffer exists and is not empty. \nThe data accumulates in the log buffer from the use of Logger with capture turned on.",
+    "lineNumber": 245,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 116,
+    "kind": "method",
+    "name": "setLevel",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#setLevel",
+    "access": "public",
+    "description": "Set the level and above at which log messages should be saved/printed. \nA null parameter value is ignored and has no effect.",
+    "examples": [
+      "var homePageLogger = new WLLogger(\"HomePage\");\nhomePageLogger.setCapture(true); \nhomePageLogger.setLevel (WLLogger.DEBUG);\nhomePageLogger.debug(\"User exited home page.\");"
+    ],
+    "lineNumber": 259,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "level",
+        "description": "A string representation of the Logger level. Valid values are TRACE, DEBUG, LOG, INFO, WARN, ERROR, FATAL. You can use the properties defined in WLLogger as well."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 117,
+    "kind": "method",
+    "name": "updateConfigFromServer",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#updateConfigFromServer",
+    "access": "public",
+    "description": "Get and apply the configuration from the IBM MobileFirst Platform Server. \nThe configuration comes from the use of the \"Config Profiles\" tab in the IBM MobileFirst Platform administrative console.",
+    "lineNumber": 267,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 118,
+    "kind": "method",
+    "name": "getMaxFileSize",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#getMaxFileSize",
+    "access": "public",
+    "description": "Get the current setting for the max file size threshold.",
+    "lineNumber": 275,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number>"
+      ],
+      "spread": false,
+      "description": "The current threashold of the maximum file size."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 119,
+    "kind": "method",
+    "name": "setMaxFileSize",
+    "memberof": "js/wlLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlLogger.js~WLLogger#setMaxFileSize",
+    "access": "public",
+    "description": "Set the maximum size of the local log file. Once the maximum file size is reached, no more data will be appended. \nThe file must then be sent to the server using the send() API. ",
+    "lineNumber": 284,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "sizeInBytes",
+        "description": "The maximum size of the file in number of bytes. The minimum is 10000."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 120,
+    "kind": "file",
+    "name": "js/wlResourceRequest.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/js/wlResourceRequest.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 121,
+    "kind": "variable",
+    "name": "uuidv4",
+    "memberof": "js/wlResourceRequest.js",
+    "static": true,
+    "longname": "js/wlResourceRequest.js~uuidv4",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 122,
+    "kind": "variable",
+    "name": "wlResourceRequest",
+    "memberof": "js/wlResourceRequest.js",
+    "static": true,
+    "longname": "js/wlResourceRequest.js~wlResourceRequest",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 19,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 123,
+    "kind": "function",
+    "name": "_mandatoryParam",
+    "memberof": "js/wlResourceRequest.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlResourceRequest.js~_mandatoryParam",
+    "access": "private",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameterName",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 124,
+    "kind": "variable",
+    "name": "_uuid",
+    "memberof": "js/wlResourceRequest.js",
+    "static": true,
+    "longname": "js/wlResourceRequest.js~_uuid",
+    "access": "private",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "ignore": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 125,
+    "kind": "class",
+    "name": "WLResourceRequest",
+    "memberof": "js/wlResourceRequest.js",
+    "static": true,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst",
+    "importStyle": "WLResourceRequest",
+    "description": "This class encapsulates a resource request.\nThe resource can be an adapter that is deployed to an instance of MobileFirst Server, or a resource on an external resource server.\nThe class provides several send methods with different inputs for the body of a request.\nA successful response is any response with a status in the 2xx range from the server.  \nA response with a 4xx or 5xx status from the server is considered a failure.",
+    "lineNumber": 37,
+    "interface": false
+  },
+  {
+    "__docId__": 126,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#constructor",
+    "access": "public",
+    "description": "Create a new ResourceRequest object to fetch data from a resource endpoint. ",
+    "lineNumber": 47,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "url",
+        "description": "The URL of the resource - either as an absolute URL or a relative URL."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "method",
+        "description": "The HTTP method to call the resource. Use WLResourceRequest.GET, WLResourceRequest.POST, WLResourceRequest.HEAD, WLResourceRequest.PUT, WLResourceRequest.DELETE, WLResourceRequest.OPTIONS, WLResourceRequest.TRACE"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "timeout",
+        "description": "Optional. The interval in milliseconds after which the call to the resource should time out. The default timeout is 30 seconds."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "scope",
+        "description": "Optional. The scope protecting the particular resource."
+      }
+    ]
+  },
+  {
+    "__docId__": 127,
+    "kind": "get",
+    "name": "POST",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest.POST",
+    "access": "public",
+    "description": null,
+    "lineNumber": 54,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 128,
+    "kind": "get",
+    "name": "GET",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest.GET",
+    "access": "public",
+    "description": null,
+    "lineNumber": 57,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 129,
+    "kind": "method",
+    "name": "HEAD",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest.HEAD",
+    "access": "public",
+    "description": null,
+    "lineNumber": 60,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 130,
+    "kind": "get",
+    "name": "PUT",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest.PUT",
+    "access": "public",
+    "description": null,
+    "lineNumber": 63,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 131,
+    "kind": "get",
+    "name": "DELETE",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest.DELETE",
+    "access": "public",
+    "description": null,
+    "lineNumber": 66,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 132,
+    "kind": "get",
+    "name": "OPTIONS",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest.OPTIONS",
+    "access": "public",
+    "description": null,
+    "lineNumber": 69,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 133,
+    "kind": "get",
+    "name": "TRACE",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest.TRACE",
+    "access": "public",
+    "description": null,
+    "lineNumber": 72,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 134,
+    "kind": "method",
+    "name": "send",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#send",
+    "access": "public",
+    "description": "Initiate a request to the resource without any content in the body. ",
+    "lineNumber": 86,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Map, String>"
+      ],
+      "spread": false,
+      "description": "If success, a map with the response from the server. The map contain following key strings.\n\"responseText\" - Original response text from the server.\n\"responseJSON\" - in case the response is a JSON response, otherwise map will not have the field.\n\"userInfo\" - user information.\n\"headers\" - Retrieves the headers from the response.\n\"status\" - HTTP status from the response\nIf failure, more information about the error."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 135,
+    "kind": "method",
+    "name": "sendWithJSON",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#sendWithJSON",
+    "access": "public",
+    "description": "Initiate a request to the resource with the specified JSON content in the body. ",
+    "lineNumber": 103,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "jsonObject",
+        "description": "The body of the request in JSON format."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Map, String>"
+      ],
+      "spread": false,
+      "description": "If success, a map with the response from the server. The map contain following key strings.\n\"responseText\" - Original response text from the server.\n\"responseJSON\" - in case the response is a JSON response, otherwise map will not have the field.\n\"userInfo\" - user information.\n\"headers\" - Retrieves the headers from the response.\n\"status\" - HTTP status from the response\nIf failure, more information about the error."
+    }
+  },
+  {
+    "__docId__": 136,
+    "kind": "method",
+    "name": "sendWithFormParameters",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#sendWithFormParameters",
+    "access": "public",
+    "description": "Initiate a request to the resource with the specified form parameters in the body. ",
+    "lineNumber": 120,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "formParams",
+        "description": "The JSON object of form parameters in name-value pairs"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Map, String>"
+      ],
+      "spread": false,
+      "description": "If success, a map with the response from the server. The map contain following key strings.\n\"responseText\" - Original response text from the server.\n\"responseJSON\" - in case the response is a JSON response, otherwise map will not have the field.\n\"userInfo\" - user information.\n\"headers\" - Retrieves the headers from the response.\n\"status\" - HTTP status from the response\nIf failure, more information about the error."
+    }
+  },
+  {
+    "__docId__": 137,
+    "kind": "method",
+    "name": "sendWithRequestBody",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#sendWithRequestBody",
+    "access": "public",
+    "description": "Initiate a request to the resource with raw text in the body. ",
+    "lineNumber": 137,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "body",
+        "description": "The body that is part of the request."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Map, String>"
+      ],
+      "spread": false,
+      "description": "If success, a map with the response from the server.The map contain following key strings.\n\"responseText\" - Original response text from the server.\n\"responseJSON\" - in case the response is a JSON response, otherwise map will not have the field.\n\"userInfo\" - user information.\n\"headers\" - Retrieves the headers from the response.\n\"status\" - HTTP status from the response\nIf failure, more information about the error."
+    }
+  },
+  {
+    "__docId__": 138,
+    "kind": "method",
+    "name": "getMethod",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#getMethod",
+    "access": "public",
+    "description": "Get the HTTP method of this resource request. ",
+    "lineNumber": 147,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": "The HTTP method of the resource request."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 139,
+    "kind": "method",
+    "name": "addHeader",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#addHeader",
+    "access": "public",
+    "description": "Adds a header to this resource request.\nThis method allows response headers to have multiple values.",
+    "lineNumber": 157,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "The name of the header to add to the request."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "The value of the header to add to the request."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 140,
+    "kind": "method",
+    "name": "setQueryParameters",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#setQueryParameters",
+    "access": "public",
+    "description": "Set the query parameters that should be added to this request. ",
+    "lineNumber": 165,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "params",
+        "description": "A JSON object containing name value pairs of query parameters that should be added to this request."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 141,
+    "kind": "method",
+    "name": "getQueryParameters",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#getQueryParameters",
+    "access": "public",
+    "description": "Get all the query parameters that are added to this request.",
+    "lineNumber": 173,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Object>"
+      ],
+      "spread": false,
+      "description": "A JSON object with query parameters"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 142,
+    "kind": "method",
+    "name": "getQueryString",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#getQueryString",
+    "access": "public",
+    "description": "Get the query string of this request. ",
+    "lineNumber": 181,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": "A string containing the query parameters as a query string."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 143,
+    "kind": "method",
+    "name": "getAllHeaders",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#getAllHeaders",
+    "access": "public",
+    "description": "Get a list of all the headers added to this request",
+    "lineNumber": 189,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Object>"
+      ],
+      "spread": false,
+      "description": "A list of all HTTP headers that are added to this request. Note that each header can have one or more values."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 144,
+    "kind": "method",
+    "name": "getHeaders",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#getHeaders",
+    "access": "public",
+    "description": "Get a list of values for a given header",
+    "lineNumber": 199,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "headerName",
+        "description": "The name of the header"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Array>"
+      ],
+      "spread": false,
+      "description": "An array of values for the given header name."
+    }
+  },
+  {
+    "__docId__": 145,
+    "kind": "method",
+    "name": "setHeaders",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#setHeaders",
+    "access": "public",
+    "description": "Sets the specified headers for this resource request.\nFor a header that is already set, the new value overwrites the previous value.",
+    "lineNumber": 209,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "headers",
+        "description": "A JSON object containing a map of all headers to be set for this request."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 146,
+    "kind": "method",
+    "name": "removeHeaders",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#removeHeaders",
+    "access": "public",
+    "description": "Removes headers with the specified name for this resource request.",
+    "lineNumber": 218,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "headerName",
+        "description": "The name of the header to remove."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 147,
+    "kind": "method",
+    "name": "setTimeout",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#setTimeout",
+    "access": "public",
+    "description": "Sets the expiration period (timeout) for this resource request.",
+    "lineNumber": 226,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "timeoutInMilliseconds",
+        "description": "The timeout in milliseconds"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 148,
+    "kind": "method",
+    "name": "getUrl",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#getUrl",
+    "access": "public",
+    "description": "Returns the URL for this resource request.",
+    "lineNumber": 234,
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "The absolute URL of the resource request."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 149,
+    "kind": "method",
+    "name": "getTimeout",
+    "memberof": "js/wlResourceRequest.js~WLResourceRequest",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/wlResourceRequest.js~WLResourceRequest#getTimeout",
+    "access": "public",
+    "description": "Get the timeout for this resource request. ",
+    "lineNumber": 242,
+    "return": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": "The timeout of this request in milliseconds."
+    },
+    "params": []
+  },
+  {
+    "kind": "index",
+    "content": "# React Native SDK for IBM Mobile Foundation \nThis is the React Native SDK for IBM Mobile Foundation. \n\n## Getting Started \n\n### Pre-requisites \n1. Make sure you have all the pre-requisites for a React Native app covered. See the [React Native Getting Started](https://facebook.github.io/react-native/docs/getting-started.html) page if you're new to this whole stuff. \n2. Setup of MobileFirst server \n\n\n### Android \n\n* The first step is to create a React Native project. Let's call our app as the MyCarApp. Use the React Native CLI to create a new project. \n\n> `cd MyApps`\n\n> `react-native init MyReactWallet`\n\n* Next, add the react native plugin to your app\n\n>` cd MyReactWallet`\n\n>`npm install <path_to_react-native-ibm-mobilefirst_package> --save` \n\n* Link your project so that all native dependencies are added to your React Native project. \n\n>`react-native link`\n\n\n\n#### Run your app \n\n> ` cd ..`\n\n> `react-native run-android`\n>\n\n### iOS \n* The first step is to create a React Native project. Let's call our app as the MyCarApp. Use the React Native CLI to create a new project. \n\n> `cd MyApps`\n\n> `react-native init MyReactWallet`\n\n* Next, add the react native plugin to your app\n\n>` cd MyReactWallet`\n\n>`npm install <path_to_react-native-ibm-mobilefirst_package> --save` \n\n* Link your project so that all native dependencies are added to your React Native project. \n\n>`react-native link`\n\n* Install MobileFirst native dependencies to your React Native project. \n>`cd ios`\n\n>`pod install`\n\n* Run your app. \n>`cd ..`\n\n>`react-native run-ios`\n\n\n#### Manual Steps for iOS only\n\n1. In XCode, in the project navigator, drag and drop \"mfpclient.plist\" from \"ios\" folder.\n\n",
+    "longname": "/Users/srihari/GitHub/mfp-react-native/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "",
+    "longname": "",
+    "name": "",
+    "static": true,
+    "access": "public"
+  }
+]

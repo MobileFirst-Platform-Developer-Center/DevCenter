@@ -76,16 +76,16 @@ müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, b
 ### Clientseite
 {: #client-side }
 
-| C-Sharp-Methoden| Beschreibung |
+|C-Sharp-Methoden|Beschreibung |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`Initialize()`](#initialization)                                                                            | Initialisiert MFPPush für den angegebenen Kontext|
-| [`IsPushSupported()`](#is-push-supported)                                                                    | Unterstützt das Gerät Push-Benachrichtigungen?|
-| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registriert das Gerät beim Push-Benachrichtigungsservice|
-| [`GetTags()`](#get-tags)                                | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
-| [`Subscribe(String[] Tags)`](#subscribe)     | Richtet das Geräteabonnement für die angegebenen Tags ein|
-| [`GetSubscriptions()`](#get-subscriptions)              | Ruft die derzeit vom Gerät abonnierten Tags ab |
-| [`Unsubscribe(String[] Tags)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags|
-| [`UnregisterDevice()`](#unregister)                     | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf|
+|[`Initialize()`](#initialization)                                                                            |Initialisiert MFPPush für den angegebenen Kontext|
+|[`IsPushSupported()`](#is-push-supported)                                                                    |Unterstützt das Gerät Push-Benachrichtigungen?|
+|[`RegisterDevice(JObject options)`](#register-device--send-device-token)                  |Registriert das Gerät beim Push-Benachrichtigungsservice|
+|[`GetTags()`](#get-tags)                                |Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
+|[`Subscribe(String[] Tags)`](#subscribe)     |Richtet das Geräteabonnement für die angegebenen Tags ein|
+|[`GetSubscriptions()`](#get-subscriptions)              |Ruft die derzeit vom Gerät abonnierten Tags ab |
+|[`Unsubscribe(String[] Tags)`](#unsubscribe) |Beendet das Abonnement bestimmter Tags|
+|[`UnregisterDevice()`](#unregister)                     |Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf|
 
 #### Initialisierung
 {: #initialization }

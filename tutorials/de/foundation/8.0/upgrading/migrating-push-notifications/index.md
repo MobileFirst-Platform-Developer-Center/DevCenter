@@ -29,15 +29,15 @@ Benutzer die jeweiligen Tags abonnieren lassen. Tagbasierte Benachrichtigungen e
 
 Die folgende Tabelle enthält eine Gegenüberstellung der beiden Modelle. 
 
-| Benutzeranforderung| Ereignisquellenmodell| Push-Servicemodell|
+|Benutzeranforderung|Ereignisquellenmodell|Push-Servicemodell|
 |------------------|--------------------|--------------------|
-| Push-Benachrichtigungen in der Anwendung ermöglichen| {::nomarkdown}<ul><li>Sie erstellen einen Ereignisquellenadapter und in dem Adapter eine Ereignisquelle (EventSource).</li><li>Sie konfigurieren Ihre Anwendung mit Push-Berechtigungsnachweisen. </li></ul>{:/} | Sie konfigurieren Ihre Anwendung mit Push-Berechtigungsnachweisen. |
-| Push-Benachrichtigungen in der mobilen Clientanwendung ermöglichen| {::nomarkdown}<ul><li>Sie erstellen WLClient. </li><li>Sie stellen eine Verbindung zu {{ site.data.keys.mf_server }} her. </li><li>Sie rufen eine Instanz des Push-Clients an. </li><li>Sie abonnieren die Ereignisquelle. </li></ul>{:/} | {::nomarkdown}<ul><li>Sie instanziieren den Push-Client. </li><li>Sie initialisieren den Push-Client. </li><li>Sie registrieren das mobile Gerät. </li></ul>{:/} |
-| Auf bestimmten Tags basierende Push-Benachrichtigungen in der mobilen Clientanwendung ermöglichen| Nicht unterstützt | Sie abonnieren den interessierenden Tag (unter Angabe des Tagnamens). |
-| Benachrichtigungen in der mobilen Clientanwendung empfangen und handhaben | Sie registrieren eine Listenerimplementierung. | Sie registrieren eine Listenerimplementierung. |
-| Push-Benachrichtigungen an mobile Clientanwendungen senden| {::nomarkdown}<ul><li>Sie implementieren Adapterprozeduren, die intern die WL.Server-APIs aufrufen, um Push-Benachrichtigungen zu senden. </li><li>WL-Server-APIs stellen Mittel bereit, Benachrichtigungen wie folgt zu senden: <ul><li>Nach Benutzer</li><li>Nach Gerät</li><li><li>Broadcasts (alle Geräte)</li></ul></li><li>Back-End-Serveranwendungen können die Adapterprozeduren aufrufen, um Push-Benachrichtigungen als Teil ihrer Anwendungslogik auszulösen. </li></ul>{:/} | {::nomarkdown}<ul><li>Back-End-Serveranwendungen können direkt die REST-API für Nachrichten aufrufen. Diese Anwendungen müssen jedoch als vertraulicher Client bei {{ site.data.keys.mf_server }} registriert werden und ein gültiges OAuth-Zugriffstoken erhalten, das an den Autorisierungsheader der REST-API übergeben werden muss.</li><li>Die REST-API stellt Optionen bereit, Benachrichtigungen wie folgt zu senden:<ul><li>Nach Benutzer</li><li>Nach Gerät</li><li>Nach Plattform</li><li>Nach Tags</li><li>Broadcasts (alle Geräte)</li></ul></li></ul>{:/} |
-| Push-Benachrichtigungen in regelmäßigen Abständen auslösen (Sendeaufrufintervalle)|  Sie implementieren die Funktion für das Senden von Push-Benachrichtigungen im Ereignisquellenadapter als Teil des createEventSource-Funktionsaufrufs.| Nicht unterstützt |
-| Hook mit Namen, URL und Ereignistypen registrieren| Hooks im Pfad eines Geräts implementieren, das Push-Benachrichtigungen abonniert oder das Abonnement solcher Benachrichtigungen beendet| Nicht unterstützt |
+|Push-Benachrichtigungen in der Anwendung ermöglichen| {::nomarkdown}<ul><li>Sie erstellen einen Ereignisquellenadapter und in dem Adapter eine Ereignisquelle (EventSource).</li><li>Sie konfigurieren Ihre Anwendung mit Push-Berechtigungsnachweisen. </li></ul>{:/} |Sie konfigurieren Ihre Anwendung mit Push-Berechtigungsnachweisen. |
+|Push-Benachrichtigungen in der mobilen Clientanwendung ermöglichen| {::nomarkdown}<ul><li>Sie erstellen WLClient. </li><li>Sie stellen eine Verbindung zu {{ site.data.keys.mf_server }} her. </li><li>Sie rufen eine Instanz des Push-Clients an. </li><li>Sie abonnieren die Ereignisquelle. </li></ul>{:/} |{::nomarkdown}<ul><li>Sie instanziieren den Push-Client. </li><li>Sie initialisieren den Push-Client. </li><li>Sie registrieren das mobile Gerät. </li></ul>{:/} |
+|Auf bestimmten Tags basierende Push-Benachrichtigungen in der mobilen Clientanwendung ermöglichen|Nicht unterstützt|Sie abonnieren den interessierenden Tag (unter Angabe des Tagnamens). |
+|Benachrichtigungen in der mobilen Clientanwendung empfangen und handhaben |Sie registrieren eine Listenerimplementierung. |Sie registrieren eine Listenerimplementierung. |
+|Push-Benachrichtigungen an mobile Clientanwendungen senden| {::nomarkdown}<ul><li>Sie implementieren Adapterprozeduren, die intern die WL.Server-APIs aufrufen, um Push-Benachrichtigungen zu senden. </li><li>WL-Server-APIs stellen Mittel bereit, Benachrichtigungen wie folgt zu senden: <ul><li>Nach Benutzer</li><li>Nach Gerät</li><li><li>Broadcasts (alle Geräte)</li></ul></li><li>Back-End-Serveranwendungen können die Adapterprozeduren aufrufen, um Push-Benachrichtigungen als Teil ihrer Anwendungslogik auszulösen. </li></ul>{:/} |{::nomarkdown}<ul><li>Back-End-Serveranwendungen können direkt die REST-API für Nachrichten aufrufen. Diese Anwendungen müssen jedoch als vertraulicher Client bei {{ site.data.keys.mf_server }} registriert werden und ein gültiges OAuth-Zugriffstoken erhalten, das an den Autorisierungsheader der REST-API übergeben werden muss.</li><li>Die REST-API stellt Optionen bereit, Benachrichtigungen wie folgt zu senden:<ul><li>Nach Benutzer</li><li>Nach Gerät</li><li>Nach Plattform</li><li>Nach Tags</li><li>Broadcasts (alle Geräte)</li></ul></li></ul>{:/} |
+|Push-Benachrichtigungen in regelmäßigen Abständen auslösen (Sendeaufrufintervalle)|Sie implementieren die Funktion für das Senden von Push-Benachrichtigungen im Ereignisquellenadapter als Teil des createEventSource-Funktionsaufrufs.|Nicht unterstützt|
+|Hook mit Namen, URL und Ereignistypen registrieren|Hooks im Pfad eines Geräts implementieren, das Push-Benachrichtigungen abonniert oder das Abonnement solcher Benachrichtigungen beendet|Nicht unterstützt|
 
 ## Migrationsszenarien
 {: #migration-scenarios }
@@ -1061,9 +1061,9 @@ wie folgt wieder aufheben:
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
+	       NSLog(@"Failed to unregister");
         }else{
-        	NSLog(@"Successfully unregistered");
+	       NSLog(@"Successfully unregistered");
         }
    }];
    ```
@@ -1657,24 +1657,24 @@ Die folgenden Informationen müssen vor Verwendung des Migrationstools beachtet 
 1. Laden Sie das Migrationstool aus dem folgenden [GitHub-Repository](https://github.com/mfpdev/push-migration-tool) herunter.
 2. Machen Sie nach dem Download des Tools die folgenden Angaben in der Datei **migration.properties**:
 
-    | Wert | Beschreibung | Beispielwerte |
+    |Wert |Beschreibung |Beispielwerte |
     |----------------------|--------------|---------------|
-    | w.db.type | Typ der betreffenden Datenbank | pw.db.type = db2 (gültige Werte: DB2, Oracle, MySql, Derby) |
-    | pw.db.url | URL der Worklight-Datenbank von MobileFirst Platform Foundation 7.1 | jdbc:mysql://localhost:3306/WRKLGHT |
-    | pw.db.adminurl | URL der Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1 | jdbc:mysql://localhost:3306/ADMIN |
-    | pw.db.username | Benutzername für die Worklight-Datenbank von MobileFirst Platform Foundation 7.1 | pw.db.username=root |
-    | pw.db.password | Kennwort für die Worklight-Datenbank von MobileFirst Platform Foundation 7.1 | pw.db.password=root |
-    | pw.db.adminusername | Benutzername für die Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1 | pw.db.adminusername=root |
-    | pw.db.adminpassword | Kennwort für die Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1 | pw.db.adminpassword=root |
-    | pw.db.urlTarget | URL der Datenbank von MFP 8.0 | jdbc:mysql://localhost:3306/MFPDATA |
-    | pw.db.usernameTarget | Benutzername für die Datenbank von MFP 8.0 | pw.db.usernameTarget=root |
-    | pw.db.passwordTarget | Kennwort für die Datenbank von MFP 8.0 | pw.db.passwordTarget=root |
-    | pw.db.schema | Schema der Worklight-Datenbank von MobileFirst Platform Foundation 7.1 | WRKLGT |
-    | pw.db.adminschema | Schema der Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1 | WLADMIN |
-    | pw.db.targetschema | Schema der Worklight-Datenbank von {{ site.data.keys.product }} 8.0 | MFPDATA |
-    | runtime | Laufzeitname von MobileFirst Platform Foundation 7.1 | runtime=worklight |
-    | applicationId | Liste mit durch Kommata (,) getrennten Anwendungen, die in MobileFirst Platform Foundation 7.1 registriert sind | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId | Liste mit durch Kommata (,) getrennten Anwendungen, die in {{ site.data.keys.product }} 8.0 registriert sind | com.HybridTestApp,com.NativeiOSTestApp |
+    |w.db.type |Typ der betreffenden Datenbank |pw.db.type = db2 (gültige Werte: DB2, Oracle, MySql, Derby) |
+    |pw.db.url |URL der Worklight-Datenbank von MobileFirst Platform Foundation 7.1 |jdbc:mysql://localhost:3306/WRKLGHT |
+    |pw.db.adminurl |URL der Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1 |jdbc:mysql://localhost:3306/ADMIN |
+    |pw.db.username |Benutzername für die Worklight-Datenbank von MobileFirst Platform Foundation 7.1 |pw.db.username=root |
+    |pw.db.password |Kennwort für die Worklight-Datenbank von MobileFirst Platform Foundation 7.1 |pw.db.password=root |
+    |pw.db.adminusername |Benutzername für die Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1 |pw.db.adminusername=root |
+    |pw.db.adminpassword |Kennwort für die Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1 |pw.db.adminpassword=root |
+    |pw.db.urlTarget |URL der Datenbank von MFP 8.0 |jdbc:mysql://localhost:3306/MFPDATA |
+    |pw.db.usernameTarget |Benutzername für die Datenbank von MFP 8.0 |pw.db.usernameTarget=root |
+    |pw.db.passwordTarget |Kennwort für die Datenbank von MFP 8.0 |pw.db.passwordTarget=root |
+    |pw.db.schema |Schema der Worklight-Datenbank von MobileFirst Platform Foundation 7.1 |WRKLGT |
+    |pw.db.adminschema |Schema der Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1 |WLADMIN |
+    |pw.db.targetschema |Schema der Worklight-Datenbank von {{ site.data.keys.product }} 8.0 |MFPDATA |
+    |runtime |Laufzeitname von MobileFirst Platform Foundation 7.1 |runtime=worklight |
+    |applicationId |Liste mit durch Kommata (,) getrennten Anwendungen, die in MobileFirst Platform Foundation 7.1 registriert sind |HybridTestApp,NativeiOSTestApp |
+    |targetApplicationId |Liste mit durch Kommata (,) getrennten Anwendungen, die in {{ site.data.keys.product }} 8.0 registriert sind |com.HybridTestApp,com.NativeiOSTestApp |
 
     * Stellen Sie sicher, dass die Werte für **applicationID** und **targetApplicationId** in der richtigen Reihenfolge angegeben sind. Die Zuordnung erfolgt 1:1 (oder n:n). Das heißt, Daten der ersten Anwendung in der **applicationId**-Liste werden der ersten Anwendung in der **targetApplicationId**-Liste zugeordnet.
 	* Geben Sie in der **targetApplicationId**-Liste einen Paketnamen bzw. eine Bundle-ID (packageName/BundleId) für die Anwendung an. Für die TestApp1 in MobileFirst Platform Foundation 7.1 enthält die **targetApplicationId**-Liste beispielsweise den Wert com.TestApp1 als packageName/BundleId, weil in MobileFirst Platform Foundation 7.1 **applicationId** der Anwendungsname ist, in {{ site.data.keys.mf_server }} 8.0 der Paketname bzw. die Bundle-ID oder der Paket-ID-Name (packageName/BundleId/packageIdentityName) jedoch auf der Anwendungsumgebung basiert.

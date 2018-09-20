@@ -79,7 +79,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 
 * `mfpdev app pull` 명령을 사용하여 서버에서 기존 JSON 구성 파일을 가져오고 파일을 업데이트한 후 `mfpdev app push` 명령을 사용하여 변경된 구성을 업로드하십시오.
 * **mfpadm** 프로그램 또는 Ant 태스크를 사용하십시오. mfpadm 사용에 대한 정보는 [명령행을 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-cli) 및 [Ant를 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-ant)를 참조하십시오.
-* {{ site.data.keys.product_adj }} 관리 서비스용 REST API를 사용하십시오. REST API에 대한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스용 REST API](../api/rest/admin-apis/)를 참조하십시오. 
+* {{ site.data.keys.product_adj }} 관리 서비스용 REST API를 사용하십시오. REST API에 대한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스용 REST API](../api/rest/admin-apis/)를 참조하십시오.
 
 이러한 메소드를 사용하여 {{ site.data.keys.mf_server }}의 구성을 자동화할 수도 있습니다.
 
@@ -104,7 +104,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 
 > 앱 개발 시에 사전 구성된 서버를 사용할 수 있습니다. 앱 개발 시 사용할 {{ site.data.keys.mf_server }}에 대한 정보는 [{{ site.data.keys.product_adj }} 개발 환경 설정](../installation-configuration/development)을 참조하십시오.
 
-{{ site.data.keys.mf_server }}는 다음 컴포넌트로 구성되어 있습니다. 이러한 컴포넌트는 {{ site.data.keys.mf_server }}에도 모두 포함됩니다. 단순 케이스의 경우 모두 동일한 애플리케이션 서버에서 실행되지만 프로덕션 또는 테스트 환경에서는 여러 애플리케이션 서버에서 이러한 컴포넌트를 실행할 수 있습니다. 이러한 {{ site.data.keys.mf_server }} 컴포넌트의 가능한 토폴로지에 대한 정보는 [토폴로지 및 네트워크 플로우](../installation-configuration/production/topologies)를 참조하십시오.
+{{ site.data.keys.mf_server }}는 다음 컴포넌트로 구성되어 있습니다. 이러한 컴포넌트는 {{ site.data.keys.mf_server }}에도 모두 포함됩니다. 단순 케이스의 경우 모두 동일한 애플리케이션 서버에서 실행되지만 프로덕션 또는 테스트 환경에서는 여러 애플리케이션 서버에서 이러한 컴포넌트를 실행할 수 있습니다. 이러한 {{ site.data.keys.mf_server }} 컴포넌트의 가능한 토폴로지에 대한 정보는 [토폴로지 및 네트워크 플로우](../installation-configuration/production/prod-env/topologies)를 참조하십시오.
 
 ### {{ site.data.keys.product_adj }} 및 {{ site.data.keys.mf_server }} 관리 서비스
 {: #mobilefirst-and-the-mobilefirst-server-administration-service }
@@ -143,9 +143,9 @@ ID는 개발자가 지정한 고유 ID입니다.
 초기 설치 및 구성 후에 {{ site.data.keys.product }}를 구성할 때 애플리케이션 서버 콘솔 또는 인터페이스에 액세스할 필요가 없습니다.  
 앱을 프로덕션에 배치할 때 다음 {{ site.data.keys.mf_server }} 프로덕션 환경에 앱을 배치할 수 있습니다.
 
-#### 사내 구축 환경
+#### 온프레미스 환경
 {: #on-premises }
-> 사내 구축 환경에 사용되는 {{ site.data.keys.mf_server }} 설치 및 구성에 대한 정보는 [IBM {{ site.data.keys.mf_server }} 설치](../installation-configuration/production/appserver)를 참조하십시오.
+> 온프레미스 환경에 사용되는 {{ site.data.keys.mf_server }} 설치 및 구성에 대한 정보는 [IBM {{ site.data.keys.mf_server }} 설치](../installation-configuration/production/prod-env/appserver)를 참조하십시오.
 
 #### 클라우드
 {: #on-the-cloud }

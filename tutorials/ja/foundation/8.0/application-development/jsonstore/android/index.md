@@ -39,7 +39,7 @@ compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0
         abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
       }
  ```     
- > **注** : JSONStore が含まれるアプリケーションが、上で指定したいずれかのアーキテクチャーで確実に実行されるように abiFilters を追加します。これが必要なのは、これらのアーキテクチャーのみをサポートするサード・パーティーのライブラリーに JSONStore が依存しているためです。
+ > **注** : JSONStore が含まれるアプリケーションが、上で指定したいずれかのアーキテクチャーで確実に実行されるように abiFilters を追加します。 これが必要なのは、これらのアーキテクチャーのみをサポートするサード・パーティーのライブラリーに JSONStore が依存しているためです。
 
 ## 基本的な使用法
 {: #basic-usage }

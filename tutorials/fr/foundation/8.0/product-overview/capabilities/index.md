@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Fonctions principales du produit 
+title: Fonctions principales du produit
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -12,8 +12,7 @@ Avec {{ site.data.keys.product_full }}, vous pouvez utiliser des fonctions telle
 {: #deployment }
 {{ site.data.keys.product }} fournit une infrastructure qui permet le développement, l'optimisation, l'intégration et la gestion d'applications mobiles sécurisées. {{ site.data.keys.product }} n'introduit pas de modèle ou de langage de programmation propriétaire que les utilisateurs doivent apprendre.
 
-Vous pouvez développer des applications à l'aide de HTML5, CSS3 et JavaScript. Vous pouvez éventuellement écrire du code natif (Java ou Objective-C). {{ site.data.keys.product }}
-fournit un kit de développement de logiciels (SDK) qui inclut les bibliothèques auxquelles vous pouvez accéder depuis le code natif.
+Vous pouvez développer des applications à l'aide de HTML5, CSS3 et JavaScript. Vous pouvez éventuellement écrire du code natif (Java ou Objective-C). {{ site.data.keys.product }} fournit un kit de développement de logiciels (SDK) qui inclut les bibliothèques auxquelles vous pouvez accéder depuis le code natif.
 
 #### Plateformes prises en charge
 {: #supported-platforms }
@@ -34,10 +33,7 @@ Les notifications push permettent aux applications d'entreprise d'envoyer des in
 
 ### Mode hors ligne
 {: #offline-mode }
-En matière de connectivité, les applications mobiles peuvent opérer en mode hors ligne, en ligne ou en mode mixte. {{ site.data.keys.product }}
-utilise une architecture client-serveur qui peut détecter si un appareil possède une connectivité de réseau ainsi que la qualité du réseau. Agissant tel un client, les applications mobiles tentent périodiquement de se connecter au serveur et d'évaluer la puissance de la connexion. Une application mobile activée hors ligne peut être utilisée lorsqu'un appareil mobile n'a pas de connectivité mais certaines fonctions risquent d'être limitées. Lorsque
-vous créez une application mobile activée hors ligne, stockez les informations concernant l'appareil mobile qui permettent de préserver sa fonctionnalité en
-mode hors ligne. Ces informations proviennent généralement d'un système expéditeur et vous devez prévoir une synchronisation de données avec le système expéditeur dans le cadre de l'architecture d'application. {{ site.data.keys.product }} inclut une fonction appelée JSONStore pour le stockage et l'échange de données. Cette fonction permet de créer, lire, mettre à jour et supprimer des enregistrements de données depuis une source de données. Chaque opération est mise en file d'attente lors du fonctionnement hors ligne. Lorsqu'une connexion est disponible, l'opération est transférée au serveur et chaque opération est alors effectuée en fonction des données source.
+En matière de connectivité, les applications mobiles peuvent opérer en mode hors ligne, en ligne ou en mode mixte. {{ site.data.keys.product }} utilise une architecture client-serveur qui peut détecter si un appareil possède une connectivité de réseau ainsi que la qualité du réseau. Agissant tel un client, les applications mobiles tentent périodiquement de se connecter au serveur et d'évaluer la puissance de la connexion. Une application mobile activée hors ligne peut être utilisée lorsqu'un appareil mobile n'a pas de connectivité mais certaines fonctions risquent d'être limitées. Lorsque vous créez une application mobile activée hors ligne, stockez les informations concernant l'appareil mobile qui permettent de préserver sa fonctionnalité en mode hors ligne. Ces informations proviennent généralement d'un système expéditeur et vous devez prévoir une synchronisation de données avec le système expéditeur dans le cadre de l'architecture d'application. {{ site.data.keys.product }} inclut une fonction appelée JSONStore pour le stockage et l'échange de données. Cette fonction permet de créer, lire, mettre à jour et supprimer des enregistrements de données depuis une source de données. Chaque opération est mise en file d'attente lors du fonctionnement hors ligne. Lorsqu'une connexion est disponible, l'opération est transférée au serveur et chaque opération est alors effectuée en fonction des données source.
 
 ### Mise à jour
 {: #update }
@@ -45,21 +41,16 @@ mode hors ligne. Ces informations proviennent généralement d'un système expé
 
 ### Sécurité
 {: #security }
-La protection des informations confidentielles et privées est essentielle pour toutes les applications d'une entreprise, y compris les applications mobiles. La sécurité des appareils mobiles s'applique à divers niveaux, tels qu'à l'application mobile, aux services d'application mobile ou au service de back end. Vous devez garantir la confidentialité des informations client et protéger les données confidentielles contre tout accès non autorisé. S'agissant
-des appareils mobiles privés, il s'avère nécessaire de renoncer au contrôle de certains niveaux inférieurs de sécurité, tel celui du système d'exploitation
+La protection des informations confidentielles et privées est essentielle pour toutes les applications d'une entreprise, y compris les applications mobiles. La sécurité des appareils mobiles s'applique à divers niveaux, tels qu'à l'application mobile, aux services d'application mobile ou au service de back end. Vous devez garantir la confidentialité des informations client et protéger les données confidentielles contre tout accès non autorisé. S'agissant des appareils mobiles privés, il s'avère nécessaire de renoncer au contrôle de certains niveaux inférieurs de sécurité, tel celui du système d'exploitation
 mobile.
 
-{{ site.data.keys.product }} fournit une communication sécurisée de bout en bout en positionnant un serveur qui supervise le flux de données entre l'application mobile et vos systèmes expéditeurs. Avec {{ site.data.keys.product }}, vous pouvez définir des descripteurs de sécurité personnalisés pour tout accès à ce flux de données. Etant donné que l'accès aux données d'une application mobile doit s'effectuer via cette instance de serveur, vous pouvez définir différents gestionnaires de sécurité pour des applications mobiles, des applications Web et l'accès au système expéditeur. Avec ce type de sécurité granulaire, vous pouvez définir des niveaux distincts d'authentification pour différentes fonctions de votre application mobile. Vous
-pouvez également empêcher des applications mobiles d'accéder à des informations sensibles.
+{{ site.data.keys.product }} fournit une communication sécurisée de bout en bout en positionnant un serveur qui supervise le flux de données entre l'application mobile et vos systèmes expéditeurs. Avec {{ site.data.keys.product }}, vous pouvez définir des descripteurs de sécurité personnalisés pour tout accès à ce flux de données. Etant donné que l'accès aux données d'une application mobile doit s'effectuer via cette instance de serveur, vous pouvez définir différents gestionnaires de sécurité pour des applications mobiles, des applications Web et l'accès au système expéditeur. Avec ce type de sécurité granulaire, vous pouvez définir des niveaux distincts d'authentification pour différentes fonctions de votre application mobile. Vous pouvez également empêcher des applications mobiles d'accéder à des informations sensibles.
 
 ### Analyse
 {: #analytics }
 La fonction {{ site.data.keys.mf_analytics }} active la recherche parmi les applications, les services, les appareils et d'autres sources afin de collecter des données d'utilisation ou de détecter des problèmes.
 
-En
-plus des rapports qui récapitulent l'activité des applications,
-{{ site.data.keys.product }} inclut une plateforme d'analyse
-opérationnelle évolutive qui est accessible dans {{ site.data.keys.mf_console }}. La fonction {{ site.data.keys.mf_analytics_short }} permet aux entreprises de rechercher dans les journaux et les événements collectés à partir d'appareils, d'applications et de serveurs des canevas, des problèmes et des statistiques d'utilisation de plateforme. Vous pouvez activer les fonctions d'analyse et/ou de génération de rapports en fonction de vos besoins.
+En plus des rapports qui récapitulent l'activité des applications, {{ site.data.keys.product }} inclut une plateforme d'analyse opérationnelle évolutive qui est accessible dans {{ site.data.keys.mf_console }}. La fonction {{ site.data.keys.mf_analytics_short }} permet aux entreprises de rechercher dans les journaux et les événements collectés à partir d'appareils, d'applications et de serveurs des canevas, des problèmes et des statistiques d'utilisation de plateforme. Vous pouvez activer les fonctions d'analyse et/ou de génération de rapports en fonction de vos besoins.
 
 ### Surveillance
 {: #monitoring }
@@ -67,9 +58,7 @@ opérationnelle évolutive qui est accessible dans {{ site.data.keys.mf_console 
 
 ### Publication d'application
 {: #application-publishing }
-{{ site.data.keys.product }} Application Center
-est un magasin d'applications d'entreprise. Il permet d'installer, de configurer et d'administrer un référentiel d'applications mobiles à l'usage d'individus et de groupes au sein de votre entreprise. Vous pouvez déterminer quelles sont les personnes de votre organisation qui peuvent accéder à Application Center et télécharger des applications dans le référentiel Application Center, ainsi que les personnes qui peuvent télécharger et installer ces applications sur un appareil mobile. Vous pouvez également utiliser Application Center pour collecter des commentaires en retour auprès d'utilisateurs et accéder à des informations concernant
-les appareils sur lesquels des applications sont installées.
+{{ site.data.keys.product }} Application Center est un magasin d'applications d'entreprise. Il permet d'installer, de configurer et d'administrer un référentiel d'applications mobiles à l'usage d'individus et de groupes au sein de votre entreprise. Vous pouvez déterminer quelles sont les personnes de votre organisation qui peuvent accéder à Application Center et télécharger des applications dans le référentiel Application Center, ainsi que les personnes qui peuvent télécharger et installer ces applications sur un appareil mobile. Vous pouvez également utiliser Application Center pour collecter des commentaires en retour auprès d'utilisateurs et accéder à des informations concernant les appareils sur lesquels des applications sont installées.
 
 Application Center est similaire à la boutique App Store publique d'Apple ou à la boutique Play Store de Google, à ceci près qu'il vise le processus de développement.
 

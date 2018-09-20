@@ -8,7 +8,7 @@ weight: 3
 ## Übersicht
 {: #overview }
 Für das Senden von Push- oder SMS-Benachrichtigungen an
-iOS-, Android- oder Windows-Geräte muss zunächst {{ site.data.keys.mf_server }} mit den GCM-Details für Android, einem APNS-Zertifikat für
+iOS-, Android- oder Windows-Geräte muss zunächst {{ site.data.keys.mf_server }} mit den FCM-Details für Android, einem APNS-Zertifikat für
 iOS oder mit WNS-Berechtigungsnachweisen für Windows 8.1 Universal / Windows 10 UWP konfiguriert werden.
 Anschließend können Benachrichtigungen an alle Geräte gesendet werden (Broadcast), an Geräte, die für bestimmte Tags registriert sind,
 an eine einzelne Geräte-ID, an Benutzer-IDs, nur an iOS-Geräte, nur an Android-Geräte, nur an Windows-Geräte
@@ -19,7 +19,7 @@ oder augehend vom authentifizierten Benutzer.
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [Benachrichtigungen einrichten](#setting-up-notifications)
-    * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
+    * [Firebase Cloud Messaging](#firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [SMS-Benachrichtigungsservice](#sms-notification-service)
@@ -38,13 +38,11 @@ oder augehend vom authentifizierten Benutzer.
 Für die Aktivierung der Unterstützung für Benachrichtigungen müssen mehrere Konfigurationsschritte in {{ site.data.keys.mf_server }} und in der Clientanwendung ausgeführt werden.   
 Fahren Sie mit dem Abschnitt zum serverseitigen Setup fort oder lesen Sie den Abschnitt [Clientseitiges Setup](#tutorials-to-follow-next).
 
-Auf der Serverseite gehören zum Setup das Konfigurieren des erforderlichen Anbieters (APNS, GCM oder WNS) und die Zuordnung des Bereichs "push.mobileclient". 
+Auf der Serverseite gehören zum Setup das Konfigurieren des erforderlichen Anbieters (APNS, FCM oder WNS) und die Zuordnung des Bereichs "push.mobileclient". 
 
-### Google Cloud Messaging / Firebase Cloud Messaging
-{: #google-cloud-messaging--firebase-cloud-messaging }
-> **Hinweis:** Google [kündigte kürzlich](https://firebase.google.com/support/faq/#gcm-fcm) einen Wechsel von GCM zu FCM an. Die folgenden Anweisungen wurden entsprechend aktualisiert. Beachten Sie auch, das bestehende GCM-Konfigurationen weiterhin funktionieren. Dies gilt jedoch nicht für neue GCM-Konfigurationen. Verwenden Sie stattdessen FCM.
-
-
+### Firebase Cloud Messaging
+{: #firebase-cloud-messaging }
+> **Hinweis:** Google unterstützt [GCM](https://developers.google.com/cloud-messaging/faq) nicht mehr und hat das Cloud-Messaging mit Firebase integriert. Wenn Sie ein GCM-Projekt verwenden, müssen Sie die [GCM-Client-Apps für Android auf FCM umstellen](https://developers.google.com/cloud-messaging/android/android-migrate-fcm) .
 
 Android-Geräte verwenden den Service Firebase Cloud Messaging (FCM) für Push-Benachrichtigungen.   
 Gehen Sie wie folgt vor, um FCM zu konfigurieren:
@@ -338,22 +336,22 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 {: #notification-payload }
 Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten:
 
-| Eigenschaften der Nutzdaten | Definition |
+| Eigenschaften der Nutzdaten |Definition |
 
 --- | ---
-| message | Die zu sendende Alertnachricht |
-| settings | Die Einstellungen sind verschiedene Attribute der Benachrichtigung. |
+| message |Die zu sendende Alertnachricht |
+| settings |Die Einstellungen sind verschiedene Attribute der Benachrichtigung. |
 
-| target | Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden. |
+| target |Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden. |
 
-| deviceIds | Array der Geräte, die durch die Gerätekennungen repräsentiert werden. Geräte mit diesen IDs empfangen eine Unicastbeanchrichtigung. |
-| notificationType | Ganzzahliger Wert für den Kanal (Push/SMS), über den die Nachricht gesendet wird. Gültige Werte sind 1 (nur Push), 2 (nur SMS) und 3 (Push und SMS). | 
-| platforms | Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows). |
+| deviceIds |Array der Geräte, die durch die Gerätekennungen repräsentiert werden. Geräte mit diesen IDs empfangen eine Unicastbeanchrichtigung. |
+| notificationType |Ganzzahliger Wert für den Kanal (Push/SMS), über den die Nachricht gesendet wird. Gültige Werte sind 1 (nur Push), 2 (nur SMS) und 3 (Push und SMS). | 
+| platforms |Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows). |
 
-| tagNames | Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen. |
+| tagNames |Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen. |
 
-| userIds | Array mit Benutzern, repräsentiert durch die Benutzer-IDs, an die eine Unicastbenachrichtigung gesendet wird. |
-| phoneNumber | Telefonnummer für die Registrierung des Geräts und den Empfang von Unicastbenachrichtigungen. |
+| userIds |Array mit Benutzern, repräsentiert durch die Benutzer-IDs, an die eine Unicastbenachrichtigung gesendet wird. |
+| phoneNumber |Telefonnummer für die Registrierung des Geräts und den Empfang von Unicastbenachrichtigungen. |
 
 **JSON-Beispiel für die Nutzdaten von Push-Benachrichtigungen**
 
@@ -454,7 +452,7 @@ den Abschnitt **Angepasste iOS/Android-Einstellungen** ein, um die Benachrichtig
 
 ### Android
 {: #android }
-* Benachrichtigungsklang, Dauer der Aufbewahrung einer Benachrichtigung im GCM-Speicher, angepasste Nutzdaten usw. 
+* Benachrichtigungsklang, Dauer der Aufbewahrung einer Benachrichtigung im FCM-Speicher, angepasste Nutzdaten usw.
 * Wenn Sie den Benachrichtigungstitel ändern möchten, fügen Sie zur Datei
 **strings.xml** des Android-Projekts `push_notification_tile` hinzu. 
 

@@ -292,7 +292,7 @@ SSL 선택은 Application Center 서버가 SSL 연결을 통해 실행하도록 
 {: #connecting-to-the-server }
 서버에 연결하려면 다음을 수행하십시오.
 
-1. 사용자 이름 및 비밀번호를 입력하십시오.
+사용자 이름 및 비밀번호를 입력하십시오.
 2. Application Center 서버 주소를 입력하십시오.
 3. Application Center의 구성이 SSL 프로토콜을 통해 실행되는 경우 **SSL**을 선택하십시오.
 4. **로그인**을 눌러 서버에 연결하십시오.

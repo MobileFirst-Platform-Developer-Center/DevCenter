@@ -7,7 +7,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-푸시 또는 SMS 알림을 iOS, Android 또는 Windows 디바이스에 전송하려면 먼저 GCM 세부사항(Android의 경우), APNS 인증서(iOS의 경우) 또는 WNS 신임 정보(Windows 8.1 Universal/Windows 10 UWP의 경우)를 사용하여 {{ site.data.keys.mf_server }}를 구성해야 합니다.
+푸시 또는 SMS 알림을 iOS, Android 또는 Windows 디바이스에 전송하려면 먼저 FCM 세부사항(Android의 경우), APNS 인증서(iOS의 경우) 또는 WNS 신임 정보(Windows 8.1 Universal/Windows 10 UWP의 경우)를 사용하여 {{ site.data.keys.mf_server }}를 구성해야 합니다.
 그런 다음 알림은 모든 디바이스(브로드캐스트), 특정 태그에 등록된 디바이스, 단일 디바이스 ID 또는 사용자 ID에 전송되거나 iOS 디바이스, Android 디바이스 또는 Windows 디바이스에만 전송되거나 인증된 사용자를 기반으로 전송될 수 있습니다.
 
 **전제조건**: [알림 개요](../) 학습서를 읽으십시오.
@@ -15,7 +15,7 @@ weight: 3
 #### 다음으로 이동
 {: #jump-to }
 * [알림 설정](#setting-up-notifications)
-    * [Google Cloud Messaging/Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
+    * [Firebase 클라우드 메시징](#firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [SMS 알림 서비스](#sms-notification-service)
@@ -34,11 +34,11 @@ weight: 3
 알림 지원을 사용으로 설정하는 데는 {{ site.data.keys.mf_server }}와 클라이언트 애플리케이션 모두에서의 몇몇 구성 단계가 포함됩니다.  
 서버 측 설정을 위해 계속 읽거나 [클라이언트 측 설정](#tutorials-to-follow-next)으로 이동하십시오.
 
-서버 측에서 필요한 설정에는 필요한 벤더(APNS, GCM 또는 WNS) 구성 및 "push.mobileclient" 범위 맵핑이 포함됩니다.
+서버 측에서 필요한 설정에는 필요한 벤더(APNS, FCM 또는 WNS) 구성 및 "push.mobileclient" 범위 맵핑이 포함됩니다.
 
-### Google Cloud Messaging/Firebase Cloud Messaging
-{: #google-cloud-messaging--firebase-cloud-messaging }
-> **참고:** Google은 GCM에서 FCM으로 전환한다고 [최근에 발표했습니다](https://firebase.google.com/support/faq/#gcm-fcm). 이에 따라 아래의 지시사항이 업데이트되었습니다. 또한 현재 사용 중인 기존 GCM 구성은 계속 작동하지만 새 GCM 구성은 작동하지 않으므로 FCM을 대신 사용해야 합니다.
+### Firebase 클라우드 메시징
+{: #firebase-cloud-messaging }
+> **참고:** Google은 [GCM을 더 이상 지원하지 않으며](https://developers.google.com/cloud-messaging/faq) 클라우드 메시징을 Firebase에 통합했습니다. GCM 프로젝트를 사용하는 경우, [ Android의 GCM 클라이언트 앱을 FCM으로 마이그레이션](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)해야 합니다.
 
 Android 디바이스는 푸시 알림을 위해 FCM(Firebase Cloud Messaging) 서비스를 사용합니다.  
 FCM을 설정하려면 다음을 수행하십시오.
@@ -66,7 +66,7 @@ FCM을 설정하려면 다음을 수행하십시오.
 iOS 디바이스는 푸시 알림을 위해 APNS(Apple Push Notification Service)를 사용합니다.  
 APNS를 설정하려면 다음을 수행하십시오.
 
-1. 개발 또는 프로덕션용 푸시 알림 인증서를 생성하십시오. 세부 단계를 보려면 `iOS` 섹션인 [여기](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)를 참조하십시오.  
+1. 개발 또는 프로덕션용 푸시 알림 인증서를 생성하십시오. 세부 단계를 보려면 `iOS` 섹션인 [여기](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)를 참조하십시오. 
 2. {{ site.data.keys.mf_console }} → **[사용자의 애플리케이션] → 푸시 → 푸시 설정**에서 인증서 유형을 선택한 후 인증서의 파일 및 비밀번호를 제공하십시오. 그런 다음 **저장**을 클릭하십시오.
 
 #### 참고
@@ -83,7 +83,7 @@ APNS를 설정하려면 다음을 수행하십시오.
 * 프로덕션 단계(Phase) 수행 중에는 apns-certificate-production.p12 프로덕션 인증 파일을 사용하십시오.
     * APNS 프로덕션 인증서는 이 인증서를 활용하는 애플리케이션이 Apple App Store에 제출된 경우에만 테스트할 수 있습니다.
 
-**참고:** MobileFirst는 Universal 인증서를 지원하지 않습니다. 
+**참고:** MobileFirst는 Universal 인증서를 지원하지 않습니다.
 
 > [{{ site.data.keys.product_adj }} 푸시 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) 또는 [{{ site.data.keys.product_adj }} 관리 서비스용 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)를 사용하여 APNS를 설정할 수도 있습니다.
 
@@ -289,17 +289,17 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 {: #notification-payload }
 요청은 다음과 같은 페이로드 특성을 포함할 수 있습니다.
 
-페이로드 특성| 정의
+페이로드 특성|정의
 --- | ---
-message | 전송할 경보 메시지입니다.
-settings | 설정은 알림의 다양한 속성입니다.
-target | 대상 세트는 이용자 ID, 디바이스, 플랫폼 또는 태그일 수 있습니다. 대상 중 하나만 설정할 수 있습니다.
-deviceIds | 디바이스 ID로 표시되는 디바이스의 배열입니다. 이러한 ID를 가진 디바이스가 알림을 수신합니다. 이는 유니캐스트 알림입니다.
-notificationType | 메시지를 전송하는 데 사용되는 채널(푸시/SMS)을 표시하는 정수 값입니다. 허용되는 값은 1(푸시만), 2(SMS만) 및 3(푸시 및 SMS)입니다 .
-platforms | 디바이스 플랫폼의 배열입니다. 이러한 플랫폼에서 실행 중인 디바이스가 알림을 수신합니다. 지원되는 값은 A(Apple/iOS), G(Google/Android) 및 M(Microsoft/Windows)입니다.
-tagNames | tagNames로 지정되는 태그의 배열입니다. 이러한 태그에 등록된 디바이스가 알림을 수신합니다. 태그 기반 알림의 경우 이 유형의 대상을 사용하십시오.
-userIds | 알림을 전송할 사용자 ID로 표시되는 사용자의 배열입니다. 이는 유니캐스트 알림입니다.
-phoneNumber | 디바이스 등록 및 알림 수신에 사용되는 전화번호입니다. 이는 유니캐스트 알림입니다.
+message |전송할 경보 메시지입니다.
+settings |설정은 알림의 다양한 속성입니다.
+target |대상 세트는 이용자 ID, 디바이스, 플랫폼 또는 태그일 수 있습니다. 대상 중 하나만 설정할 수 있습니다.
+deviceIds |디바이스 ID로 표시되는 디바이스의 배열입니다. 이러한 ID를 가진 디바이스가 알림을 수신합니다. 이는 유니캐스트 알림입니다.
+notificationType |메시지를 전송하는 데 사용되는 채널(푸시/SMS)을 표시하는 정수 값입니다. 허용되는 값은 1(푸시만), 2(SMS만) 및 3(푸시 및 SMS)입니다 .
+platforms |디바이스 플랫폼의 배열입니다. 이러한 플랫폼에서 실행 중인 디바이스가 알림을 수신합니다. 지원되는 값은 A(Apple/iOS), G(Google/Android) 및 M(Microsoft/Windows)입니다.
+tagNames |tagNames로 지정되는 태그의 배열입니다. 이러한 태그에 등록된 디바이스가 알림을 수신합니다. 태그 기반 알림의 경우 이 유형의 대상을 사용하십시오.
+userIds |알림을 전송할 사용자 ID로 표시되는 사용자의 배열입니다. 이는 유니캐스트 알림입니다.
+phoneNumber |디바이스 등록 및 알림 수신에 사용되는 전화번호입니다. 이는 유니캐스트 알림입니다.
 
 **푸시 알림 페이로드 JSON의 예**
 
@@ -396,7 +396,7 @@ phoneNumber | 디바이스 등록 및 알림 수신에 사용되는 전화번호
 
 ### Android
 {: #android }
-* 알림 사운드, GCM 스토리지에 알림을 저장할 수 있는 기간, 사용자 정의 페이로드 등
+* 알림 사운드, FCM 스토리지에 알림을 저장할 수 있는 기간, 사용자 정의 페이로드 등
 * 알림 제목을 변경하려면 Android 프로젝트의 **strings.xml** 파일에 `push_notification_tile`을 추가하십시오.
 
 ### iOS

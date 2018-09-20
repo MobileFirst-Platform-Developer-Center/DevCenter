@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Nouveautés des correctifs temporaires 
+title: Nouveautés des correctifs temporaires
 breadcrumb_title: Interim iFixes
 weight: 2
 ---
@@ -27,16 +27,9 @@ processeur pour {{ site.data.keys.product }} Extension, voir
 
 ### Applications Web
 {: #web-applications }
-#### Enregistrement d'applications Web à partir de
-l'interface de ligne de commande {{ site.data.keys.mf_cli }} (APAR PI65327)
+#### Enregistrement d'applications Web à partir de l'interface de ligne de commande {{ site.data.keys.mf_cli }} (APAR PI65327)
 {: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-Vous pouvez désormais enregistrer des applications Web client sur
-{{ site.data.keys.mf_server }} en utilisant
-l'interface de ligne de commande {{ site.data.keys.mf_cli }} (mfpdev) à la
-place de la
-console {{ site.data.keys.mf_console }}. Pour plus d'informations, voir
-la rubrique Enregistrement d'applications Web à partir de
-l'interface de ligne de commande {{ site.data.keys.mf_cli }}.
+Vous pouvez désormais enregistrer des applications Web client sur {{ site.data.keys.mf_server }} en utilisant l'interface de ligne de commande {{ site.data.keys.mf_cli }} (mfpdev) à la place de la console {{ site.data.keys.mf_console }}. Pour plus d'informations, voir la rubrique Enregistrement d'applications Web à partir de l'interface de ligne de commande {{ site.data.keys.mf_cli }}.
 
 ### Applications Cordova
 {: #cordova-applications }
@@ -61,9 +54,7 @@ Les modifications suivantes ont été apportées afin d'améliorer la facilité 
 {: #adapters }
 #### Commandes `mfpdev push` et `pull` ajoutées pour les configurations d'adaptateur Java et JavaScript
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-Vous pouvez utiliser {{ site.data.keys.mf_cli }}
-pour insérer des
-configurations d'adaptateur Java et JavaScript sur le serveur {{ site.data.keys.mf_server }} et extraire des configurations d'adaptateur du serveur {{ site.data.keys.mf_server }}.
+Vous pouvez utiliser {{ site.data.keys.mf_cli }} pour insérer des configurations d'adaptateur Java et JavaScript sur le serveur {{ site.data.keys.mf_server }} et extraire des configurations d'adaptateur du serveur {{ site.data.keys.mf_server }}.
 
 ### Application Center
 {: #application-center}

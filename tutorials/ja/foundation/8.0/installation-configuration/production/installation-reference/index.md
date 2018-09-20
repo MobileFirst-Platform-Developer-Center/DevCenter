@@ -138,7 +138,7 @@ DB2 ユーザー・アカウントについて詳しくは、[DB2 のセキュ�
 * [DB2 JDBC Driver Versions and Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866) ページから、DB2 JDBC ドライバーをダウンロードする。
 * あるいは、DB2 サーバー上の **DB2_INSTALL_DIR/java** ディレクトリーから、**db2jcc4.jar** ファイルおよびそれに関連のある **db2jcc_license_*.jar** ファイルを取り出す。
 
-Ant タスクを使用して表スペースなどの表割り振りの詳細を指定することはできません。 表スペースを制御する場合は、[DB2 データベースおよびユーザーの要件](../databases/#db2-database-and-user-requirements)のセクションにある手動での指示を使用する必要があります。
+Ant タスクを使用して表スペースなどの表割り振りの詳細を指定することはできません。 表スペースを制御する場合は、[DB2 データベースおよびユーザーの要件](../prod-env/databases/#db2-database-and-user-requirements)のセクションにある手動での指示を使用する必要があります。
 
 #### MySQL
 {: #mysql }
@@ -189,7 +189,7 @@ hostname の構文について詳しくは、[Specifying Account Names](http://d
 | user	    | データベースにアクセスするユーザー名。 | はい      | なし                  |
 | password	| データベースにアクセスするパスワード。	 | いいえ       | 対話式に照会 |
 
-> `注:` 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。 この場合、**configuredatabase** タスクはデータベースおよびユーザーの作成を試行せず、ユーザーのアクセス権限の付与も試行しません。 **configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。 内部エレメントである `<dba>` および `<client>` を指定する必要はありません。
+> `注:` 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。 この場合、**configuredatabase** タスクはデータベースおよびユーザーの作成を試行せず、ユーザーのアクセス権限の付与も試行しません。 **configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。 内部エレメント ` を指定する必要はありません。<dba>` または `<client>`.
 
 #### Oracle
 {: #oracle }
@@ -225,7 +225,7 @@ Oracle ユーザー・アカウントについて詳しくは、[Overview of Aut
 
 `<driverclasspath>` エレメントには、Oracle JDBC ドライバーの JAR ファイルが含まれている必要があります。 Oracle JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) からダウンロードできます。
 
-表スペースなどの表割り振りの詳細を、Ant タスクで指定することはできません。 表スペースを制御する場合は、ユーザー・アカウントを手動で作成し、そのアカウントにデフォルト表スペースを割り当ててから、Ant タスクを実行することができます。 他の詳細を制御する場合は、[Oracle データベースおよびユーザーの要件](../databases/#oracle-database-and-user-requirements)のセクションにある手動での指示を使用する必要があります。
+表スペースなどの表割り振りの詳細を、Ant タスクで指定することはできません。 表スペースを制御する場合は、ユーザー・アカウントを手動で作成し、そのアカウントにデフォルト表スペースを割り当ててから、Ant タスクを実行することができます。 他の詳細を制御する場合は、[Oracle データベースおよびユーザーの要件](../prod-env/databases/#oracle-database-and-user-requirements)のセクションにある手動での指示を使用する必要があります。
 
 | 属性 | 説明                            | 必須 | デフォルト               |
 |-----------|----------------------------------------|----------|-----------------------|
@@ -1471,12 +1471,12 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 | PUSH_MESSAGE_SEQUENCE_TABLE	 | プッシュ通知表。生成されたシーケンス ID を保管します。	 | 1 行。 |
 | PUSH_VERSION	                 | 製品バージョン。	                                         | 1 行。 |
 
-データベースについて詳しくは、[データベースのセットアップ](../databases)を参照してください。
+データベースについて詳しくは、[データベースのセットアップ](../prod-env/databases)を参照してください。
 
 ## サンプル構成ファイル
 {{ site.data.keys.product }} には、{{ site.data.keys.mf_server }} をインストールするための Ant タスクの使用を開始する上で役立つ、多数のサンプル構成ファイルが用意されています。
 
-これらの Ant タスクの使用を開始するには、{{ site.data.keys.mf_server }} ディストリビューションの **MobileFirstServer/configuration-samples/** ディレクトリー内に用意されているサンプル構成ファイルを使用して作業を行うのが最も簡単な方法です。 Ant タスクを使用した {{ site.data.keys.mf_server }} のインストールについて詳しくは、[Ant タスクを使用したインストール](../appserver/#installing-with-ant-tasks)を参照してください。
+これらの Ant タスクの使用を開始するには、{{ site.data.keys.mf_server }} ディストリビューションの **MobileFirstServer/configuration-samples/** ディレクトリー内に用意されているサンプル構成ファイルを使用して作業を行うのが最も簡単な方法です。 Ant タスクを使用した {{ site.data.keys.mf_server }} のインストールについて詳しくは、[Ant タスクを使用したインストール](../prod-env/appserver/#installing-with-ant-tasks)を参照してください。
 
 ### サンプル構成ファイルのリスト
 {: #list-of-sample-configuration-files }

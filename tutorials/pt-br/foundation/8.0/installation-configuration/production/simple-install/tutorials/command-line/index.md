@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Tutorial de instalação do servidor MobileFirst a partir da linha de comandos
+title: Instalando o MobileFirst Server da linha de comandos
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -12,7 +12,7 @@ Use o modo de linha de comando do IBM Installation Manager e tarefas Ant para in
 {: #before-you-begin }
 * Certifique-se de que um dos bancos de dados a seguir e uma versão Java suportada estejam instaladas. Você também precisa do driver JDBC correspondente para o banco de dados ficar disponível no computador:
     * Sistema de Gerenciamento de Banco de Dados (DBMS) da lista de bancos de dados suportados:
-        * DB2 
+        * DB2
         * MySQL
         * Oracle
 
@@ -34,7 +34,7 @@ Arquivo .zip do {{ site.data.keys.product }} V8.0 do Installation Manager Reposi
 
 **perfil Liberty do WebSphere Application Server**  
 IBM WebSphere Application Server - Liberty Core V8.5.5.3 ou posterior
-    
+
 #### Ir para
 {: #jump-to }
 * [Instalando o IBM Installation Manager](#installing-ibm-installation-manager)
@@ -56,7 +56,7 @@ Deve-se instalar o Installation Manager V1.8.4 ou posterior. As versões mais an
 3. Se você aceitar o contrato de licença após a revisão, instale o Installation Manager.  
     * Execute **installc.exe** para instalar o Installation Manager como administrador. A raiz é necessária no Linux ou UNIX. No Windows, o privilégio de administrador é necessário. Nesse modo, as informações sobre os pacotes instalados são colocadas em um local compartilhado no disco, e qualquer usuário com permissão para executar o Installation Manager pode atualizar os aplicativos. O nome do arquivo executável termina com "c" (**installc**) para uma instalação da linha de comandos sem uma interface gráfica com o usuário. Para instalar o Installation Manager, insira **installc.exe -acceptLicence**.
     * Execute **userinstc.exe** para instalar o Installation Manager no modo de usuário. Nenhum privilégio específico é necessário. No entanto, nesse modo, as informações sobre os pacotes instalados são colocadas no diretório inicial do usuário. Somente o usuário pode atualizar o aplicativo que é instalado com o Installation Manager. O executável termina com "c" (**userinstc**) para uma instalação da linha de comandos sem uma interface gráfica com o usuário. Para instalar o Installation Manager, insira **userinstc.exe -acceptLicence**.
-    
+
 ## Instalando o WebSphere Application Server Liberty Core
 {: #installing-websphere-application-server-liberty-core }
 O instalador do WebSphere Application Server Liberty Core é fornecido como parte do pacote para o {{ site.data.keys.product }}. Nesta tarefa, o perfil Liberty é instalado e uma instância de servidor é criada, de modo que seja possível instalar o {{ site.data.keys.mf_server }} nele.
@@ -69,7 +69,7 @@ O instalador do WebSphere Application Server Liberty Core é fornecido como part
 3. Decida um diretório no qual o perfil Liberty deve ser instalado. É referido como liberty_install_dir nas próximas etapas.
 4. Inicie uma linha de comandos e acesse **installation\_manager\_install\_dir/tools/eclipse/**.
 5. Se você aceitar o contrato de licença após a revisão, instale o Liberty.
-    
+
     Insira o comando: **imcl install com.ibm.websphere.liberty.v85 -repositories liberty\_repository\_dir -installationDirectory liberty\_install\_dir -acceptLicense**
 
     Esse comando instala o Liberty no diretório **liberty\_install\_dir**. A opção **-acceptLicense** significa que você aceita os termos de licença do produto.
@@ -83,9 +83,9 @@ O instalador do WebSphere Application Server Liberty Core é fornecido como part
 7.  Crie um servidor Liberty que será usado para instalar o primeiro nó do {{ site.data.keys.mf_server }} na parte posterior do tutorial.
     * Inicie uma linha de comandos.
     * Acesse **liberty\_install\_dir/bin** e insira **server create mfp1**.
-    
+
     Este comando chama uma instância de servidor Liberty chamada **mfp1**. É possível ver sua definição em **liberty\_install\_dir/usr/servers/mfp1** ou **WLP\_USER\_DIR/servers/mfp1** (se você modificar o diretório conforme descrito na etapa 6).
-    
+
 Após a criação do servidor, é possível iniciar esse servidor com `server start mfp1` a partir de **liberty\_install\_dir/bin/**.  
 Para parar o servidor, insira o comando: `server stop mfp1` de **liberty\_install\_dir/bin/**.
 
@@ -106,7 +106,7 @@ Installation Manager, é proposta uma opção para você instalar o {{ site.data
 {{ site.data.keys.mf_server }}.
 
 Também é necessário especificar uma propriedade para indicar se é necessário ou não ativar o licenciamento de token. Neste tutorial, supõe-se que um licenciamento de token não seja necessário e que as etapas para configurar o
-{{ site.data.keys.mf_server }} para licenciamento de token não estejam incluídas. Entretanto, para instalação de produção, deve-se determinar se é necessário ou não ativar o licenciamento de token. Se você não tiver um contrato para usar o licenciamento de token com o Rational License Key Server, não precisará ativar o licenciamento de token. Se você ativar o licenciamento de token, deve-se configurar o {{ site.data.keys.mf_server }} para licenciamento de token. 
+{{ site.data.keys.mf_server }} para licenciamento de token não estejam incluídas. Entretanto, para instalação de produção, deve-se determinar se é necessário ou não ativar o licenciamento de token. Se você não tiver um contrato para usar o licenciamento de token com o Rational License Key Server, não precisará ativar o licenciamento de token. Se você ativar o licenciamento de token, deve-se configurar o {{ site.data.keys.mf_server }} para licenciamento de token.
 
 Neste tutorial, você especifica as propriedades como parâmetros por meio da linha de comandos **imcl**. Essa especificação também pode ser feita usando um arquivo de resposta.
 
@@ -163,7 +163,7 @@ Neste tutorial, as tabelas para todos os componentes são colocadas sob o mesmo 
         * Em sistemas Windows, clique em **Iniciar → IBM DB2 → Processador de Linha de Comandos**.
         * Em sistemas Linux ou UNIX, acesse **~/sqllib/bin** (ou **db2\_install\_dir/bin** se sqllib não for criado no diretório inicial do administrador) e insira `./db2`.
     * Insira as instruções SQL a seguir para criar um banco de dados chamado **MFPDATA**:
-    
+
         ```sql
         CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
         CONNECT TO MFPDATA
@@ -175,7 +175,7 @@ Neste tutorial, as tabelas para todos os componentes são colocadas sob o mesmo 
         ```
 
     Se você definiu um nome do usuário diferente, substitua **mfpuser** por seu próprio nome do usuário.
-    
+
     > **Nota:** A instrução não remove os privilégios padrão concedidos a PUBLIC em um banco de dados DB2 padrão. Para produção, você pode precisar reduzir os privilégios nesse banco de dados para o requisito mínimo do produto. Para obter mais informações sobre a segurança do DB2 e obter um exemplo das práticas de segurança, consulte [Segurança do DB2. Parte 8: doze melhores práticas de segurança do DB2](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
 
 ## Implementando o {{ site.data.keys.mf_server }} no Liberty com tarefas Ant
@@ -189,11 +189,11 @@ Os aplicativos {{ site.data.keys.product_adj }} a seguir não são implementados
 
 #### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{ site.data.keys.mf_analytics }} normalmente é implementado em um conjunto de servidores diferente do {{ site.data.keys.mf_server }} devido aos seus requisitos de alta memória. {{ site.data.keys.mf_analytics }} pode ser instalado manualmente ou com tarefas Ant. Se ele já estiver instalado, será possível inserir sua URL, o nome do usuário e a senha para enviar dados para ele no Server Configuration Tool. O Server Configuration Tool configura então os aplicativos do {{ site.data.keys.product_adj }} para enviar dados para o {{ site.data.keys.mf_analytics }}. 
+{{ site.data.keys.mf_analytics }} normalmente é implementado em um conjunto de servidores diferente do {{ site.data.keys.mf_server }} devido aos seus requisitos de alta memória. {{ site.data.keys.mf_analytics }} pode ser instalado manualmente ou com tarefas Ant. Se ele já estiver instalado, será possível inserir sua URL, o nome do usuário e a senha para enviar dados para ele no Server Configuration Tool. O Server Configuration Tool configura então os aplicativos do {{ site.data.keys.product_adj }} para enviar dados para o {{ site.data.keys.mf_analytics }}.
 
 #### Application Center
 {: #application-center }
-Esse aplicativo pode ser usado para distribuir aplicativos móveis internamente para os funcionários que usam os aplicativos ou para propósitos de teste. Ele é independente do {{ site.data.keys.mf_server }} e não é necessário instalá-lo junto com o {{ site.data.keys.mf_server }}. 
+Esse aplicativo pode ser usado para distribuir aplicativos móveis internamente para os funcionários que usam os aplicativos ou para propósitos de teste. Ele é independente do {{ site.data.keys.mf_server }} e não é necessário instalá-lo junto com o {{ site.data.keys.mf_server }}.
 
 Selecione o arquivo XML apropriado que contém as tarefas Ant e configure as propriedades.
 
@@ -266,8 +266,8 @@ O arquivo **server.xml** e algumas configurações do servidor de aplicativos s�
 {: #modification-of-the-application-server-settings-specific-to-liberty }
 1. Os recursos do Liberty estão incluídos.
 
-    Os recursos são incluídos para cada aplicativo e podem ser duplicados. Por exemplo, o recurso JDBC é usado para o serviço de administração e os componentes de tempo de execução. Essa duplicação permite a remoção dos recursos de um aplicativo quando ele é desinstalado sem dividir os outros aplicativos. Por exemplo, se você decidir, em algum ponto, desinstalar o serviço de push de um servidor e instalá-lo em outro servidor. No entanto, nem todas as topologias são possíveis. O serviço de administração, o serviço de atualização em tempo real e o componente de tempo de execução devem estar no mesmo servidor de aplicativos com o perfil Liberty. Para obter informações adicionais, consulte [Restrições no serviço de administração do {{ site.data.keys.mf_server }}, no serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e no tempo de execução do {{ site.data.keys.product_adj }}](../../../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). A duplicação de recursos não cria problema, a menos que os recursos incluídos estejam em conflito. A inclusão dos recursos jdbc-40 e jdbc-41 causa um problema, mas incluir duas vezes o mesmo recurso não.
-    
+    Os recursos são incluídos para cada aplicativo e podem ser duplicados. Por exemplo, o recurso JDBC é usado para o serviço de administração e os componentes de tempo de execução. Essa duplicação permite a remoção dos recursos de um aplicativo quando ele é desinstalado sem dividir os outros aplicativos. Por exemplo, se você decidir, em algum ponto, desinstalar o serviço de push de um servidor e instalá-lo em outro servidor. No entanto, nem todas as topologias são possíveis. O serviço de administração, o serviço de atualização em tempo real e o componente de tempo de execução devem estar no mesmo servidor de aplicativos com o perfil Liberty. Para obter mais informações, consulte [Restrições sobre o serviço de administração do {{ site.data.keys.mf_server }}, o serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e o tempo de execução do {{ site.data.keys.product_adj }}](../../../prod-env/topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). A duplicação de recursos não cria problema, a menos que os recursos incluídos estejam em conflito. A inclusão dos recursos jdbc-40 e jdbc-41 causa um problema, mas incluir duas vezes o mesmo recurso não.
+
 2. `host='*'` é incluído na declaração `httpEndPoint`.
 
     Essa configuração deve permitir a conexão com o servidor a partir de todas as interfaces de rede. Na produção, talvez você queira restringir o valor do host do terminal HTTP.
@@ -286,7 +286,7 @@ O arquivo **server.xml** e algumas configurações do servidor de aplicativos s�
 7. O executor padrão é customizado para configurar valores grandes para `coreThreads` e `maxThreads` se você usar Liberty V8.5.5.5 ou anterior. O executor padrão é ajustado automaticamente pelo Liberty a partir da V8.5.5.6.
 
     Essa configuração evita problemas de tempo limite que quebram a sequência de inicialização do componente de tempo de execução e do serviço de administração em algumas versões do Liberty. A ausência dessa instrução pode ser a causa desses erros no arquivo de log do servidor:
-    
+
     > Falha ao obter a conexão JMX para acessar um MBean. Pode haver um erro de configuração de JMX: atingido o tempo limite de leitura
 FWLSE3000E: foi detectado um erro do servidor.
     > FWLSE3012E: erro de configuração do JMX. Não é possível obter MBeans. Motivo: "Limite de tempo de leitura atingido".
@@ -310,7 +310,7 @@ O serviço de administração é o serviço para gerenciar aplicativos {{ site.d
 
 O carregador de classes é configurado com a delegação de pai por último para o perfil Liberty e o WebSphere Application Server e para todos os aplicativos {{ site.data.keys.product_adj }}. Essa configuração é para evitar conflitos entre as classes empacotadas em aplicativos {{ site.data.keys.product_adj }} e classes do servidor de aplicativos. Esquecer de configurar a delegação do carregador de classes para último pai é uma frequente fonte de erros na instalação manual. Para o Apache Tomcat, essa declaração não é necessária.
 
-No perfil Liberty, uma biblioteca comum é incluída no aplicativo para decriptografar senhas passadas como propriedades JNDI. O Server Configuration Tool define duas propriedades JNDI obrigatórias para o serviço de administração: **mfp.config.service.user** e **mfp.config.service.password**. Elas são usadas pelo serviço de administração para se conectarem ao serviço de atualização em tempo real com sua API REST. Mais propriedades JNDI podem ser definidas para ajustar o aplicativo ou adaptá-lo às particularidades de sua instalação. Para obter informações adicionais, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+No perfil Liberty, uma biblioteca comum é incluída no aplicativo para decriptografar senhas passadas como propriedades JNDI. O Server Configuration Tool define duas propriedades JNDI obrigatórias para o serviço de administração: **mfp.config.service.user** e **mfp.config.service.password**. Elas são usadas pelo serviço de administração para se conectarem ao serviço de atualização em tempo real com sua API REST. Mais propriedades JNDI podem ser definidas para ajustar o aplicativo ou adaptá-lo às particularidades de sua instalação. Para obter mais informações, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 O Server Configuration Tool também define as propriedades JNDI (a URL e os parâmetros OAuth para registrar os clientes confidenciais) para a comunicação com o serviço de push.  
 A origem de dados para o banco de dados que contém as tabelas para o serviço de administração é declarada, bem como uma biblioteca para seu driver JDBC.
@@ -329,7 +329,7 @@ Ele também precisa de uma origem de dados com nome JNDI no perfil Liberty. A co
 {: #mobilefirst-operations-console }
 {{ site.data.keys.mf_console }} é declarado com as mesmas funções de segurança que o serviço de administração. Os usuários que são mapeados para as funções de segurança do {{ site.data.keys.mf_console }} também devem ser mapeados para a mesma função de segurança do serviço de administração. De fato, o {{ site.data.keys.mf_console }} executa consultas para o serviço de administração em nome do usuário do console.
 
-O Server Configuration Tool posiciona uma propriedade JNDI, **mfp.admin.endpoint**, que indica como o console se conecta ao serviço de administração. O valor padrão configurado pelo Server Configuration Tool é `*://*:*/mfpadmin`. A configuração significa que ele deve usar o mesmo protocolo, nome do host e porta que a solicitação de HTTP recebida para o console, e a raiz de contexto do serviço de administração é /mfpadmin. Se desejar forçar a solicitação para passar por um proxy da web, mude o valor padrão. Para obter informações adicionais sobre os valores possíveis para essa URL, ou para obter informações sobre outras possíveis propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+O Server Configuration Tool posiciona uma propriedade JNDI, **mfp.admin.endpoint**, que indica como o console se conecta ao serviço de administração. O valor padrão configurado pelo Server Configuration Tool é `*://*:*/mfpadmin`. A configuração significa que ele deve usar o mesmo protocolo, nome do host e porta que a solicitação de HTTP recebida para o console, e a raiz de contexto do serviço de administração é /mfpadmin. Se desejar forçar a solicitação para passar por um proxy da web, mude o valor padrão. Para obter mais informações sobre os valores possíveis para essa URL ou para obter informações sobre outras possíveis propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
 O carregador de classes é configurado para a última delegação de pai, conforme discutido na seção de serviço de administração.
 
@@ -397,15 +397,15 @@ Quando você cria um farm, também é necessário configurar um servidor HTTP pa
         httpPort="9080"
         httpsPort="9443" />
       ```
-        
+
       Com:
-        
+
       ```xml
       <httpEndpoint id="defaultHttpEndpoint"
         httpPort="9081"
         httpsPort="9444" />
       ```
-        
+
       As portas HTTP e HTTPS do servidor mfp2 não entram em conflito com as portas do servidor mfp1 com essa mudança. Certifique-se de modificar as portas antes de executar a instalação do {{ site.data.keys.mf_server }}. Caso contrário, se você modificar a porta após a instalação ser feita, também será necessário refletir a mudança da porta na propriedade JNDI: **mfp.admin.jmx.port**.
 
 3. Copie o arquivo Ant que foi usado em [Implementando o {{ site.data.keys.mf_server }} no Liberty com tarefas Ant](#deploying-mobilefirst-server-to-liberty-with-ant-tasks), e mude o valor da propriedade **appserver.was85liberty.serverInstance** para **mfp2**. As tarefas Ant detectam que os bancos de dados existem e não criam as tabelas (consulte a extração de log a seguir). Em seguida, os aplicativos são implementados no servidor.
@@ -429,26 +429,26 @@ Quando você cria um farm, também é necessário configurar um servidor HTTP pa
     * Abra uma guia no mesmo navegador da web e insira a URL: [http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole). O console é atendido pelo servidor mfp2.
     * Efetue login com admin/admin. Se a instalação for feita corretamente, é possível ver a mesma página de boas-vindas em ambas as guias após o login.
     * Retorne à primeira guia do navegador e clique em **Olá, administrador → Fazer download do log de auditoria**. Você é desconectado do console e vê a tela de login novamente. Esse comportamento de logout é um problema. O problema acontece porque, quando você efetua logon no servidor mfp2, um token Lightweight Third Party Authentication (LTPA) é criado e armazenado em seu navegador como um cookie. No entanto, esse token LTPA não é reconhecido pelo servidor mfp1. É provável que aconteça uma alternância entre servidores em um ambiente de produção quando você tiver um balanceador de carga HTTP na frente do cluster. Para resolver esse problema, deve-se assegurar que ambos os servidores (mfp1 e mfp2) gerem tokens LTPA com as mesmas chaves secretas. Copie as chaves LTPA do servidor mfp1 no servidor mfp2.
-    
+
         * Pare ambos os servidores com estes comandos:
-        
+
           ```bash
           server stop mfp1
           server stop mfp2
           ```
-        
+
         * Copie as chaves LTPA do servidor mfp1 no servidor mfp2.
-            Em **liberty\_install\_dir/usr/servers** ou **WLP\_USER\_DIR/servers**, execute o seguinte comando, dependendo de seu sistema operacional. 
+            Em **liberty\_install\_dir/usr/servers** ou **WLP\_USER\_DIR/servers**, execute o seguinte comando, dependendo de seu sistema operacional.
             * No UNIX: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
             * No Windows: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
         * Reinicie os servidores. Alterne de uma guia do navegador para outra que não requer um novo login. Em um server farm Liberty, todos os servidores devem ter as mesmas chaves LTPA.
-    
+
 5. Ative a comunicação JMX entre os servidores Liberty.
 
     A comunicação JMX com o Liberty é feita via o conector REST do Liberty sobre o protocolo HTTPS. Para ativar essa comunicação, cada servidor do farm deve estar apto para reconhecer o certificado SSL dos outros membros. É necessário trocar os certificados HTTPS em seus armazenamentos confiáveis. Use utilitários IBM, como o Keytool, que faz parte da distribuição do IBM JRE em **java/bin** para configurar o armazenamento confiável. Os locais do keystore e do armazenamento confiável são definidos no arquivo **server.xml**. Por padrão, o keystore do perfil Liberty está em **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. A senha desse keystore padrão, como pode ser visto no arquivo **server.xml**, é **mobilefirst**.
-        
+
     > **Dica:** É possível mudá-la com o utilitário Keytool, mas também deve-se mudar a senha no arquivo server.xml para que o servidor Liberty possa ler esse keystore. Neste tutorial, use a senha padrão.
-    
+
     * Em **WLP\_USER\_DIR/servers/mfp1/resources/security**, insira `keytool -list -keystore key.jks`. O comando mostra os certificados no keystore. Há somente um **default** nomeado. É solicitada a senha do keystore (mobilefirst) antes de você ver as chaves. Esse é o caso para todos os próximos comandos com o utilitário Keytool.
     * Exporte o certificado padrão do servidor mfp1 com o comando: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
     * Em **WLP\_USER\_DIR/servers/mfp2/resources/security**, exporte o certificado padrão do servidor mfp2 com o comando: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
@@ -464,5 +464,5 @@ Quando você cria um farm, também é necessário configurar um servidor HTTP pa
    server start mfp1
    server start mfp2
    ```
-        
+
 2. Acesse o console. Por exemplo, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) ou [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) em HTTPS. Na barra lateral esquerda, um menu extra rotulado como **Nós do Server Farm** aparece. Se você clicar em **Nós do Server Farm**, é possível ver o status de cada nó. Talvez você tenha que esperar um pouco até que os nós sejam iniciados.

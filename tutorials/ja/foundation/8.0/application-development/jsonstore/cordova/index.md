@@ -334,7 +334,7 @@ WL.JSONStore.get(collectionName).getAllDirty()
 
 #### 変更のプッシュ
 {: #push }
-変更をアダプターにプッシュするには、`getAllDirty` を呼び出して変更が含まれるドキュメントのリストを取得し、その後 `WLResourceRequest` を使用します。データが送信され、成功応答を受信した後、`markClean` を呼び出す必要があります。
+変更をアダプターにプッシュするには、`getAllDirty` を呼び出して変更が含まれるドキュメントのリストを取得し、その後 `WLResourceRequest` を使用します。 データが送信され、成功応答を受信した後、`markClean` を呼び出す必要があります。
 
 ```javascript
 try {

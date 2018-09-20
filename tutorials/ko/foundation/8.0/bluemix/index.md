@@ -11,7 +11,7 @@ weight: 10
 
 ## 개요
 {: #overview }
-{{ site.data.keys.product_full }}을 IBM Cloud에서 호스팅할 수 있습니다. IBM Cloud에 대한 몇몇 기본 정보는 다음과 같습니다. 
+{{ site.data.keys.product_full }}을 IBM Cloud에서 호스팅할 수 있습니다. IBM Cloud에 대한 몇몇 기본 정보는 다음과 같습니다.
 
 IBM Cloud는 IBM 개방형 클라우드 아키텍처의 구현입니다. Bluemix에서는 Cloud Foundry를 이용해 개발자가 클라우드 애플리케이션을 신속하게 빌드하고 배치하며 관리하는 한편 사용 가능한 서비스와 런타임 프레임워크의 성장하는 에코시스템을 이용할 수 있습니다.
 
@@ -19,20 +19,20 @@ IBM Cloud는 IBM 개방형 클라우드 아키텍처의 구현입니다. Bluemix
 
 ### 작동 방식
 {: #how-does-it-work }
-간단히 말하면 라이센스 부여 유형에 따라 IBM Cloud에서 {{ site.data.keys.product }}을 실행하는 두 가지 방법이 있습니다. 
+간단히 말하면 라이센스 부여 유형에 따라 IBM Cloud에서 {{ site.data.keys.product }}을 실행하는 두 가지 방법이 있습니다.
 
 > **참고:** *IBM Containers 서비스는 이제 더 이상 사용되지 않으므로 IBM Containers의 Mobile Foundation은 지원되지 않습니다. [자세히 알아보기](https://www.ibm.com/blogs/bluemix/2017/07/deprecation-single-scalable-group-container-service-bluemix-public/).*
 
-* IBM Cloud 등록 또는 PayGo 라이센스: {{ site.data.keys.mf_bm_full }} 서비스. 
-* 사내 구축형 라이센스: IBM에서 제공하는 스크립트를 사용하여 Kubernetes Clusters 또는 Liberty for Java 런타임에 {{ site.data.keys.product_full }} 인스턴스를 설정합니다. 
+* IBM Cloud 등록 또는 PayGo 라이센스: {{ site.data.keys.mf_bm_full }} 서비스.
+* 사내 구축형 라이센스: IBM에서 제공하는 스크립트를 사용하여 Kubernetes Clusters 또는 Liberty for Java 런타임에 {{ site.data.keys.product_full }} 인스턴스를 설정합니다.
 
 <!--To run {{ site.data.keys.product }} on Bluemix IBM Containers, several components must interact with one another: the first component is an **image** that contains a **Linux distribution with a WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it. The image is then stored inside an **IBM Container**, and the IBM Container is managed by **Bluemix**.-->
 
-IBM Cloud Liberty for Java 런타임에서 {{ site.data.keys.product}}을 실행하기 위해 **WebSphere Liberty 설치**를 포함하고 **{{ site.data.keys.mf_server }} 인스턴스**가 배치되어 있는 **Cloudfoundry 앱** 컴포넌트를 사용합니다. 
+IBM Cloud Liberty for Java 런타임에서 {{ site.data.keys.product}}을 실행하기 위해 **WebSphere Liberty 설치**를 포함하고 **{{ site.data.keys.mf_server }} 인스턴스**가 배치되어 있는 **Cloudfoundry 앱** 컴포넌트를 사용합니다.
 
 ### IBM Cloud의 Kubernetes Cluster
 Kubernetes는 컴퓨팅 머신의 클러스터에 대한 앱 컨테이너를 스케줄링하는 오케스트레이션 도구입니다. Kubernetes를 통해 개발자는 컨테이너의 성능과 유연성을 활용하여 고가용성 애플리케이션을 신속하게 개발할 수 있습니다.
-Kubernetes CLI를 사용하여 Kubernetes 클러스터를 작성하고 관리할 수 있습니다. 
+Kubernetes CLI를 사용하여 Kubernetes 클러스터를 작성하고 관리할 수 있습니다.
 
 [IBM Cloud의 Kubernetes Cluster에 대해 자세히 알아보기](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_tutorials)
 
@@ -46,7 +46,7 @@ IBM Container infrastructure includes a private registry for your images, so tha
 
 ### Liberty for Java 런타임
 {: #liberty-for-java-runtime }
-Liberty for Java 런타임은 liberty-for-java 빌드팩으로 구현됩니다. liberty-for-java 빌드팩은 WebSphere Liberty 프로파일 외에 애플리케이션을 실행하는 데 필요한 전체 런타임 환경을 제공합니다. 그런 다음 명령 인터페이스를 사용하여 IBM Cloud에서 앱을 관리합니다. 
+Liberty for Java 런타임은 liberty-for-java 빌드팩으로 구현됩니다. liberty-for-java 빌드팩은 WebSphere Liberty 프로파일 외에 애플리케이션을 실행하는 데 필요한 전체 런타임 환경을 제공합니다. 그런 다음 명령 인터페이스를 사용하여 IBM Cloud에서 앱을 관리합니다.
 
 [Liberty for Java에 대해 자세히 알아보기](https://console.bluemix.net/docs/runtimes/liberty/index.html)
 

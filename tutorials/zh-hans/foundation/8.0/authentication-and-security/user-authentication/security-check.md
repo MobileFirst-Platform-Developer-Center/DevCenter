@@ -218,8 +218,6 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 ```
 如前所述，`UserAuthenticationSecurityCheck` 继承所有 `CredentialsValidationSecurityCheck` 属性，例如，`blockedStateExpirationSec` 和 `successStateExpirationSec` 等。
 
-
-
 此外，您还可以配置 `rememberMeDurationSec` 属性。
 
 ## 样本安全性检查

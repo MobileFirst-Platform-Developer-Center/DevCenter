@@ -82,16 +82,16 @@ Android Studio에서 다음 `activity`를 `application` 태그에 추가하십�
 ### 클라이언트 측
 {: #client-side }
 
-| Javascript 함수 | 설명 |
+|Javascript 함수 |설명 |
 | --- | --- |
-| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush 인스턴스를 초기화합니다. | 
-| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | 디바이스가 푸시 알림을 지원하는지 확인합니다. | 
-| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | 디바이스를 푸시 알림 서비스에 등록합니다. | 
-| [`MFPPush.getTags(success, failure)`](#get-tags) | 푸시 알림 서비스 인스턴스에서 사용 가능한 모든 태그를 검색합니다. | 
-| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | 특정 태그에 등록합니다. | 
-| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | 디바이스가 현재 등록된 태그를 검색합니다. | 
-| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | 특정 태그에서 등록 취소합니다. | 
-| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | 푸시 알림 서비스에서 디바이스를 등록 취소합니다. | 
+|[`MFPPush.initialize(success, failure)`](#initialization) |MFPPush 인스턴스를 초기화합니다. | 
+|[`MFPPush.isPushSupported(success, failure)`](#is-push-supported) |디바이스가 푸시 알림을 지원하는지 확인합니다. | 
+|[`MFPPush.registerDevice(options, success, failure)`](#register-device) |디바이스를 푸시 알림 서비스에 등록합니다. | 
+|[`MFPPush.getTags(success, failure)`](#get-tags) |푸시 알림 서비스 인스턴스에서 사용 가능한 모든 태그를 검색합니다. | 
+|[`MFPPush.subscribe(tag, success, failure)`](#subscribe) |특정 태그에 등록합니다. | 
+|[`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) |디바이스가 현재 등록된 태그를 검색합니다. | 
+|[`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) |특정 태그에서 등록 취소합니다. | 
+|[`MFPPush.unregisterDevice(success, failure)`](#unregister) |푸시 알림 서비스에서 디바이스를 등록 취소합니다. | 
 
 ### API 구현
 {: #api-implementation }

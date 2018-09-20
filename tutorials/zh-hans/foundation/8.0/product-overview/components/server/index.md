@@ -1,7 +1,6 @@
 ---
 layout: tutorial
-title: MobileFirst
-Server
+title: MobileFirst Server
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
@@ -26,10 +25,10 @@ weight: 1
 
 ### {{ site.data.keys.mf_server }} 的核心组件
 {: #core-components-of-mobilefirst-server }
-{{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务、{{ site.data.keys.mf_server }} 工件和 {{ site.data.keys.product_adj }} 运行时是要安装的最少组件集。 
+{{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务、{{ site.data.keys.mf_server }} 工件和 {{ site.data.keys.product_adj }} 运行时是要安装的最少组件集。
 
 * 该运行时为在移动设备上运行的移动应用提供 {{ site.data.keys.product_adj }} 服务。
-* 该管理服务提供配置和管理功能。 您可以通过 {{ site.data.keys.mf_console }}、实时更新服务 REST API 或命令行工具（例如 mfpadm 或 mfpdev）来使用管理服务。 
+* 该管理服务提供配置和管理功能。 您可以通过 {{ site.data.keys.mf_console }}、实时更新服务 REST API 或命令行工具（例如 mfpadm 或 mfpdev）来使用管理服务。
 * 该实时更新服务管理由该管理服务使用的配置数据。
 
 这些组件需要数据库。 每个组件的数据库表名没有任何交集。 因此，您可以使用同一个数据库，甚至同一个模式来存储这些组件的所有表。 有关更多信息，请参阅[设置数据库](../../../installation-configuration/production/server-configuration)。
@@ -40,7 +39,7 @@ weight: 1
 {: #optional-components-of-mobliefirst-server }
 {{ site.data.keys.mf_server }} 推送服务提供推送通知功能。 必须安装此服务才能为移动应用提供使用 {{ site.data.keys.product_adj }} 推送功能的能力。 从移动应用的角度而言，推送服务的 URL 与运行时的 URL 相同，除了上下文根为 `/imfpush` 之外。
 
-如果计划将推送服务安装到不同于运行时的服务器或集群，需要配置 HTTP Server 的路由规则。 此配置是为了确保能够正确路由发送到推送服务和运行时的请求。 
+如果计划将推送服务安装到不同于运行时的服务器或集群，需要配置 HTTP Server 的路由规则。 此配置是为了确保能够正确路由发送到推送服务和运行时的请求。
 
 推送服务需要数据库。 推送服务的表与运行时、管理服务和实时更新服务的表没有交集。 因此，也可以安装在同一数据库或模式中。
 
@@ -60,4 +59,3 @@ weight: 1
 
 * WebSphere Application Server Liberty 概要文件上 {{ site.data.keys.mf_server }} 场的[完整安装指南](../../../installation-configuration/production/)。 本指南基于简单场景，供您以图形方式或命令行方式尝试安装。
 * [详细章节](../../../installation-configuration/production/)，其中包含与安装先决条件、数据库设置、服务器拓扑、将组件部署到应用程序服务器和服务器配置有关的详细信息。
-

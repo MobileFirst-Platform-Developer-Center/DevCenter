@@ -51,7 +51,7 @@ MFPPush.sharedInstance().initialize()
 
 #### Gerät registrieren
 {: #register-device }
-Registrieren Sie das Gerät beim Push-Benachrichtigungsservice.
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
 
 ```swift
 MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void in
@@ -63,7 +63,7 @@ MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void 
  })
 ```
 
-* **optionObject**: `jsonOptions` mit der Telefonnummer für die Registrierung des Geräts. Beispiel:
+* **optionObject**: `jsonOptions` mit der Telefonnummer für die Registrierung des Geräts. Beispiel: 
 
 ```swift
 let phoneNumber: String = self.phoneNumberTF.text!

@@ -11,13 +11,13 @@ weight: 3
 
 {{ site.data.keys.mf_analytics_full }} 使用 **Elasticsearch 1.5x** 来存储数据和运行搜索查询。  
 
-Elasticsearch 是实时的分布式搜索和分析引擎，可提高数据存储和探究的速度和扩展率。Elasticsearch 将用于全文搜索和结构化搜索。
+Elasticsearch 是实时的分布式搜索和分析引擎，可提高数据存储和探究的速度和扩展率。 Elasticsearch 将用于全文搜索和结构化搜索。
 
 Elasticsearch 用于将所有移动和服务器数据以 JSON 格式存储在 {{ site.data.keys.mf_analytics_server }} 上的 Elasticsearch 实例中。
 
 将实时查询 Elasticsearch 实例以填充 {{ site.data.keys.mf_analytics_console_full }}。
 
-{{ site.data.keys.mf_analytics }} 将公开所有 Elasticsearch 功能。用户能够充分利用 Elasticsearch 查询、调试和优化。
+{{ site.data.keys.mf_analytics }} 将公开所有 Elasticsearch 功能。 用户能够充分利用 Elasticsearch 查询、调试和优化。
 
 有关 Elasticsearch 功能（除了此处描述的功能之外）的更多信息，请参阅 [Elasticsearch 文档](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)。
 
@@ -38,7 +38,7 @@ Elasticsearch 属性通过 JNDI 变量或环境条目可用。
 <jndiEntry jndiName="analytics/http.enabled" value="true"/>
 ```
 
-此 JNDI 属性允许您查看 JSON 格式的 {{ site.data.keys.mf_analytics_short }} 原始数据，并且允许您通过 Elasticsearch 定义的端口来访问您的 Elasticsearch 实例。缺省端口为 9500。
+此 JNDI 属性允许您查看 JSON 格式的 {{ site.data.keys.mf_analytics_short }} 原始数据，并且允许您通过 Elasticsearch 定义的端口来访问您的 Elasticsearch 实例。 缺省端口为 9500。
 
 > **注**：此设置不安全，并且不应该在生产环境中启用。
 
@@ -72,5 +72,4 @@ http://localhost:9500/_nodes
 http://localhost:9500/*/_mapping
 ```
 
-> Elasticsearch 公开了更多 REST 端点。要了解更多信息，请访问 [Elasticsearch 文档](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)。
-
+> Elasticsearch 公开了更多 REST 端点。 要了解更多信息，请访问 [Elasticsearch 文档](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)。

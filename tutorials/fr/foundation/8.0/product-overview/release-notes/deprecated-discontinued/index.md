@@ -155,8 +155,7 @@ La version 8.0 de {{ site.data.keys.product }} a été simplifiée de manière r
         <td>Abandonnée. Utilisez l'API de périphérique natif ou les plug-in Cordova tiers pour la géolocalisation.</td>
     </tr>
     <tr>
-        <td>La fonction {{ site.data.keys.product_adj }} Data
-Proxy est abandonnée. Les API Cloudant IMFData et CloudantToolkit sont également abandonnées.	</td>
+        <td>La fonction {{ site.data.keys.product_adj }} Data Proxy est abandonnée. Les API Cloudant IMFData et CloudantToolkit sont également abandonnées.	</td>
         <td>Abandonnée. Pour plus d'informations sur le remplacement des API IMFData et CloudantToolkit dans vos applications, voir la rubrique Migration d'applications qui stockent des données mobiles dans Cloudant à l'aide du kit de développement de logiciels IMFData ou Cloudant.</td>
     </tr>
     <tr>
@@ -296,8 +295,7 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 | `WL.Device.setFriendlyName()` | Utilisez `WL.Client.setDeviceDisplayName` |
 | `WL.Device.getNetworkInfo(callback)` | Utilisez les plug-in Cordova qui fournissent cette fonctionnalité. **Remarque :** A titre d'information, le plug-in **cordova-plugin-network-information** fournit cette fonction. |
 | `WLUtils.wlCheckReachability()` | Créez un adaptateur personnalisé pour vérifier la disponibilité de serveur. |
-| `WL.EncryptedCache` | Utilisez JSONStore pour stocker des données chiffrées localement. JSONStore se trouve dans le plug-in **cordova-plugin-mfp-jsonstore**. Pour plus d'informations, voir
-[JSONStore](../../../application-development/jsonstore). |
+| `WL.EncryptedCache` | Utilisez JSONStore pour stocker des données chiffrées localement. JSONStore se trouve dans le plug-in **cordova-plugin-mfp-jsonstore**. Pour plus d'informations, voir [JSONStore](../../../application-development/jsonstore). |
 | `WL.SecurityUtils.remoteRandomString(bytes)` | Créez un adaptateur personnalisé qui fournit la même fonctionnalité. |
 | `WL.Client.getAppProperty(property)` | Vous pouvez extraite la propriété de version d'application à l'aide du plug-in **cordova-plugin-appversion**. La version renvoyée est la version d'application native (Android et iOS uniquement). |
 | `WL.Client.Push.*` | Utilisez l'API push côté client JavaScript à partir du plug-in **cordova-plugin-mfp-push**. |

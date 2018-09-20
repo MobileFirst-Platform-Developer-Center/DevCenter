@@ -98,16 +98,16 @@ Le programme **mfpadm** comporte les options suivantes :
 
 | Option	| Type | Description | Obligatoire | Par défaut |
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | URL de base de l'application Web {{ site.data.keys.product_adj }} pour les services d'administration | Oui | |
-| --secure	 | Booléen | Indique si les opérations présentant des risques de sécurité doivent être évitées | Non | true |
-| --user	 | name | Nom d'utilisateur permettant d'accéder aux services d'administration de {{ site.data.keys.product_adj }} | Oui |  | 	 
-| --passwordfile | file | Fichier contenant le mot de passe de l'utilisateur | Non |
-| --timeout	     | Nombre  | Délai d'attente relatif à l'accès à l'ensemble du service REST, exprimé en secondes | Non | 	 
-| --connect-timeout | Nombre | Délai d'attente relatif à l'établissement d'une connexion réseau, exprimé en secondes | Non |
-| --socket-timeout  | Nombre | Délai d'attente relatif à la détection de la perte d'une connexion réseau, exprimé en secondes | Non |
-| --connection-request-timeout | Nombre Délai d'attente relatif à l'obtention d'une entrée à partir d'un pool de demande de connexion, exprimé en secondes | Non |
-| --lock-timeout | Nombre | Délai d'attente relatif à l'acquisition d'un verrou, exprimé en secondes | Non | 2 |
-| --verbose	     | Sortie détaillée | Non	| |  
+| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | |
+| --secure	 | Boolean | Whether to avoid operations with security risks | No | true |
+| --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
+| --passwordfile | file | File containing the password for the user | No |
+| --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
+| --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
+| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No |
+| --connection-request-timeout | Number	Timeout for obtaining an entry from a connection request pool, in seconds | No |
+| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 |
+| --verbose	     | Detailed output | No	| |  
 
 **url**  
 L'URL utilise de préférence le protocole HTTPS. Par exemple, si vous utilisez des ports et des racines de contexte par défaut, utilisez l'URL suivante :
@@ -259,8 +259,8 @@ Les options génériques habituelles sont les suivantes :
 
 | Option	| Description |
 |-----------|-------------|
-| --help	| Affiche de l'aide sur la syntaxe |
-| --version	| Affiche la version |
+| --help	| Shows some usage help |
+| --version	| Shows the version |
 
 #### Format XML
 {: #xml-format }
@@ -292,7 +292,7 @@ Elle accepte les options suivantes :
 
 | Argument | Description |
 |----------|-------------|
-| --xml    | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml    | Produces XML output instead of tabular output. |
 
 **Exemple**  
 
@@ -319,7 +319,7 @@ La commande `show user-config` accepte les options suivantes après le verbe.
 
 | Argument | Description | Obligatoire | Par défaut |
 |----------|-------------|----------|---------|
-| --xml | Génère une sortie au format XML à la place du format JSON. | Non | Sortie standard |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **Exemple**  
 
@@ -382,7 +382,7 @@ La commande `show confidential-clients` accepte les options suivantes après le 
 
 | Argument | Description | Obligatoire | Par défaut |
 |----------|-------------|----------|---------|
-| --xml | Génère une sortie au format XML à la place du format JSON. | Non | Sortie standard |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **Exemple**
 
@@ -459,7 +459,7 @@ La commande `list adapters` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produce XML output instead of tabular output. |
 
 **Exemple**  
 
@@ -509,7 +509,7 @@ La commande `show adapter` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produce XML output instead of tabular output. |
 
 **Exemple**
 
@@ -583,7 +583,7 @@ Elle accepte les options suivantes après le verbe.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie au format XML à la place du format JSON. |
+| --xml | Produces output in XML format instead of JSON format. |
 
 **Exemple**
 
@@ -647,7 +647,7 @@ La commande `list apps` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produce XML output instead of tabular output. |
 
 **Exemple**
 
@@ -695,7 +695,7 @@ La commande `show app` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml	 | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml	 | Produce XML output instead of tabular output. |
 
 **Exemple**
 
@@ -745,7 +745,7 @@ La commande `show app version` accepte les options suivantes après l'objet.
 
 | Argument | Description |
 | ---------|-------------|
-| -- xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| -- xml | Produces XML output instead of tabular output. |
 
 **Exemple**
 
@@ -797,7 +797,7 @@ Elle accepte les options suivantes après l'objet :
 
 | Argument | Description |
 |----------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produces XML output instead of tabular output. |
 
 **Exemple**
 
@@ -1047,7 +1047,7 @@ La commande `list devices` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produces XML output instead of tabular output. |
 
 **Exemples**
 
@@ -1160,7 +1160,7 @@ Elle accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produces XML output instead of tabular output. |
 
 **Exemple**
 
@@ -1182,7 +1182,7 @@ Elle accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produces XML output instead of tabular output. |
 
 **Exemple**
 
@@ -1200,7 +1200,7 @@ Elle accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produces XML output instead of tabular output. |
 
 **Exemple**
 
@@ -1228,8 +1228,8 @@ Elle accepte les options suivantes :
 
 | Option | Description |
 |--------|-------------|
-| --in-database	| Indique si la recherche doit porter sur la base de données et non sur les beans gérés. |
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --in-database	| Whether to look in the database instead of via MBeans |
+| --xml | Produces XML output instead of tabular output. |
 
 **Exemples**
 
@@ -1259,7 +1259,7 @@ La commande `show runtime` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produces XML output instead of tabular output. |
 
 Cette commande est basée sur le service REST [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-).
 
@@ -1306,7 +1306,7 @@ La commande `list farm-members` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
+| --xml | Produces XML output instead of tabular output. |
 
 **Exemple**
 
@@ -1333,7 +1333,7 @@ La commande `remove farm-member` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --force | Forcer le retrait d'un membre d'un parc de serveurs même s'il est disponible et connecté. |
+| --force | Force removal of a farm member, even if it is available and connected. |
 
 **Exemple**
 

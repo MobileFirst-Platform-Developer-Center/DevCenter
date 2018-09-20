@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | IBM Mobile Foundation SDK for React Native applications</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="This is the Mobile Foundation SDK for React Native apps on Android and iOS. IBM Mobile Foundation provides simple, scalable, time-tested enterprise mmobile middleware, deployable on premises or on Cloud. "><meta property="og:type" content="website"><meta property="og:url" content="https://mobilefirstplatform.ibmcloud.com/"><meta property="og:site_name" content="IBM Mobile Foundation SDK for React Native applications"><meta property="og:title" content="IBM Mobile Foundation SDK for React Native applications"><meta property="og:image" content="./mfp_512x512.png"><meta property="og:description" content="This is the Mobile Foundation SDK for React Native apps on Android and iOS. IBM Mobile Foundation provides simple, scalable, time-tested enterprise mmobile middleware, deployable on premises or on Cloud. "><meta property="og:author" content="IBM"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="IBM Mobile Foundation SDK for React Native applications"><meta property="twitter:description" content="This is the Mobile Foundation SDK for React Native apps on Android and iOS. IBM Mobile Foundation provides simple, scalable, time-tested enterprise mmobile middleware, deployable on premises or on Cloud. "><meta property="twitter:image" content="./mfp_512x512.png"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/wlAnalytics.js~WLAnalytics.html">WLAnalytics</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/wlAuthorizationManager.js~WLAuthorizationManager.html">WLAuthorizationManager</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/wlClient.js~WLClient.html">WLClient</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/wlLogger.js~WLLogger.html">WLLogger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/wlResourceRequest.js~WLResourceRequest.html">WLResourceRequest</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="react-native-sdk-for-ibm-mobile-foundation">React Native SDK for IBM Mobile Foundation</h1><p>This is the React Native SDK for IBM Mobile Foundation. </p>
+<h2 id="getting-started">Getting Started</h2><h3 id="pre-requisites">Pre-requisites</h3><ol>
+<li>Make sure you have all the pre-requisites for a React Native app covered. See the <a href="https://facebook.github.io/react-native/docs/getting-started.html">React Native Getting Started</a> page if you&apos;re new to this whole stuff. </li>
+<li>Setup of MobileFirst server </li>
+</ol>
+<h3 id="android">Android</h3><ul>
+<li>The first step is to create a React Native project. Let&apos;s call our app as the MyCarApp. Use the React Native CLI to create a new project. </li>
+</ul>
+<blockquote>
+<p><code>cd MyApps</code></p>
+</blockquote>
+<blockquote>
+<p><code>react-native init MyReactWallet</code></p>
+</blockquote>
+<ul>
+<li>Next, add the react native plugin to your app</li>
+</ul>
+<blockquote>
+<p><code>cd MyReactWallet</code></p>
+</blockquote>
+<blockquote>
+<p><code>npm install &lt;path_to_react-native-ibm-mobilefirst_package&gt; --save</code> </p>
+</blockquote>
+<ul>
+<li>Link your project so that all native dependencies are added to your React Native project. </li>
+</ul>
+<blockquote>
+<p><code>react-native link</code></p>
+</blockquote>
+<h4 id="run-your-app">Run your app</h4><blockquote>
+<p><code>cd ..</code></p>
+</blockquote>
+<blockquote>
+<p><code>react-native run-android</code></p>
+</blockquote>
+<h3 id="ios">iOS</h3><ul>
+<li>The first step is to create a React Native project. Let&apos;s call our app as the MyCarApp. Use the React Native CLI to create a new project. </li>
+</ul>
+<blockquote>
+<p><code>cd MyApps</code></p>
+</blockquote>
+<blockquote>
+<p><code>react-native init MyReactWallet</code></p>
+</blockquote>
+<ul>
+<li>Next, add the react native plugin to your app</li>
+</ul>
+<blockquote>
+<p><code>cd MyReactWallet</code></p>
+</blockquote>
+<blockquote>
+<p><code>npm install &lt;path_to_react-native-ibm-mobilefirst_package&gt; --save</code> </p>
+</blockquote>
+<ul>
+<li>Link your project so that all native dependencies are added to your React Native project. </li>
+</ul>
+<blockquote>
+<p><code>react-native link</code></p>
+</blockquote>
+<ul>
+<li>Install MobileFirst native dependencies to your React Native project. <blockquote>
+<p><code>cd ios</code></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><code>pod install</code></p>
+</blockquote>
+<ul>
+<li>Run your app. <blockquote>
+<p><code>cd ..</code></p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p><code>react-native run-ios</code></p>
+</blockquote>
+<h4 id="manual-steps-for-ios-only">Manual Steps for iOS only</h4><ol>
+<li>In XCode, in the project navigator, drag and drop &quot;mfpclient.plist&quot; from &quot;ios&quot; folder.</li>
+</ol>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

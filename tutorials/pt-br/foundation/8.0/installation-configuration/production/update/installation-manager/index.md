@@ -1,46 +1,46 @@
 ---
 layout: tutorial
-title: Running the IBM Installation Manager for update
+title: Executando o IBM Installation Manager para atualização
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Running Installation Manager in graphical mode
+## Executando o Installation Manager em modo gráfico
 {: #graphical-mode}
 
-* Run Installation Manager from the user account that is used at the initial installation.
-  To apply an update, Installation Manager must run with the same list of registry files that are used at the initial installation. The list of Software that is installed and the options that are used during the installation time are stored in those registry files. If you run Installation Manager in administrator mode, the registry files are installed at the system level. In `/var` folder on UNIX or Linux. In `c:\ProgramData` folder on Windows. The location is independent from the user who runs Installation Manager (although root is needed on UNIX and Linux). However, if you run Installation Manager in single user mode, the registry files are stored by default in the user's home directory.
+* Execute o Installation Manager da conta do usuário que é usada na instalação inicial.
+  Para aplicar uma atualização, o Installation Manager deve ser executado com a mesma lista de arquivos de registro que são usados na instalação inicial. A lista de Softwares que está instalada e as opções que são usadas durante o momento da instalação são armazenadas nesses arquivos de registro. Se você executar o Installation Manager no modo de administrador, os arquivos de registro serão instalados no nível do sistema. Na pasta `/var` no UNIX ou no Linux. Na pasta `c:\ProgramData` no Windows. O local é independente do usuário que executa o Installation Manager (embora a raiz seja necessária no UNIX e no Linux). No entanto, se você executar o Installation Manager no modo de usuário único, os arquivos de registro serão armazenados por padrão no diretório inicial do usuário.
 
-* Select **File > Preferences**.
-  If you plan to update an existing IBM MobileFirst Platform Foundation V8.0.0 (apply a fix pack or interim fix), the repository of product is not needed.
+* Selecione **Arquivo > Preferências**.
+  Se você planeja atualizar um IBM MobileFirst Platform Foundation V8.0.0 existente (aplicar um fix pack ou uma correção temporária), o repositório do produto não é necessário.
 
-* Click **OK** to close the **Preferences** display.
+* Clique em **OK** para fechar a exibição **Preferências**.
 
-* Click **Update** and select the package that you need to update. Installation Manager displays a list of packages. By default, the package to  update is named as IBM MobileFirst Platform Server.
+* Clique em **Atualização** e selecione o pacote que precisa ser atualizado. O Installation Manager exibe uma lista de pacotes. Por padrão, o pacote para atualização é nomeado como IBM MobileFirst Platform Server.
 
-* Accept the license terms, and click **Next**.
+* Aceite os termos de licença e clique em **Avançar**.
 
-* In the **Thank You** panel, click **Next**. A summary is displayed.
+* No painel **Obrigado**, clique em **Avançar**. Um resumo é exibido.
 
-* Click **Update** to start the update procedure.
+* Clique em **Atualizar** para iniciar o procedimento de atualização.
 
-## Running Installation Manager in command-line mode
+## Executando o Installation Manager no modo de linha de comando
 {: #cli-mode}
 
-1. Download the silent install files from   [here](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/Silent_Install_Sample_Files.zip).
+1. Faça download dos arquivos de instalação silenciosa [aqui](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/Silent_Install_Sample_Files.zip).
 
-2. Decompress the file, and select `8.0/upgrade-initially-mfpserver.xml` file.
-  - If you initially installed the product in V6.0.0, V6.1.0 or V6.2.0, select the `8.0/upgrade-initially-worklightv6.xmlfile` instead.
-  - If you initially installed the product in V5.x, select this `8.0/upgrade-initially-worklightv5.xml` file instead.
-  The file contains the profile identity of the product. The default value of this identity changes over the releases of the product. In V5.x, it is Worklight. In V6.0.0, V6.1.0, and V6.2.0, it is IBM Worklight. In V6.3.0, V7.0.0, V7.1.0 and V8.0.0, it is IBM MobileFirst Platform Server.
+2. Descompacte o arquivo e selecione o arquivo `8.0/upgrade-initially-mfpserver.xml`.
+  - Se você instalou inicialmente o produto na V6.0.0, na V6.1.0 ou na V6.2.0, selecione o `8.0/upgrade-initially-worklightv6.xmlfile` em vez disso.
+  - Se você instalou inicialmente o produto na V5.x, selecione este arquivo `8.0/upgrade-initially-worklightv5.xml` em vez disso.
+  O arquivo contém a identidade de perfil do produto. O valor padrão dessa identidade é mudado nas liberações do produto. Na V5.x, ele é Worklight. Na V6.0.0, na V6.1.0 e na V6.2.0, ele é IBM Worklight. Na V6.3.0, na V7.0.0, na V7.1.0 e na V8.0.0, ele é IBM MobileFirst Platform Server.
 
-3. Make a copy of the file you selected.
+3. Faça uma cópia do arquivo selecionado.
 
-4. Open the copied XML file with a text editor or XML editor. Modify the following elements:
+4. Abra o arquivo XML copiado com um editor de texto ou um editor de XML. Modifique os elementos a seguir:
 
-   a. The repository element that defines the repository list. Since you plan to update an existing IBM MobileFirst Platform Foundation V8.0.0 (apply a fix pack or interim fix), the repository of product is not needed.
+   a. O elemento de repositório que define a lista de repositórios. Como você planeja atualizar um IBM MobileFirst Platform Foundation V8.0.0 existente (aplique um fix pack ou uma correção temporária), o repositório do produto não é necessário.
 
-   b. **Optional:** Update the passwords for the database and the application server.
-      If Application Center is installed at the initial installation with Installation Manager, and the passwords for the database or the application server are changed, you can modify the value in the XML file. These passwords are used to validate that the database has the right schema version, and to upgrade it if it is in a version older than V8.0.0. They are also used to run **wsadmin** for an installation of Application Center on WebSphere Application Server full profile. Uncomment the appropriate lines in the XML file:
+   b. **Opcional:** atualize as senhas para o banco de dados e o servidor de aplicativos.
+      Se o Application Center estiver instalado na instalação inicial com o Installation Manager e as senhas para o banco de dados ou para o servidor de aplicativos forem mudadas, será possível modificar o valor no arquivo XML. Essas senhas são usadas para validar que o banco de dados tem a versão de esquema correta e para atualizá-lo se ele estiver em uma versão anterior à V8.0.0. Também são usadas para executar **wsadmin** para uma instalação do Application Center no perfil integral do WebSphere Application Server. Remova os comentários das linhas apropriadas no arquivo XML:
       ```
       <!-- Optional: If the password of the WAS administrator has changed-->
       <!-- <data key='user.appserver.was.admin.password2' value='password'/> -->
@@ -58,47 +58,46 @@ weight: 1
       <!-- <data key='user.database.oracle.appcenter.password' value='password'/> -->
       ```
 
-    c. If you have not made a choice before to activate token licensing that is released with an interim fix on 15 September 2015 or later,   uncomment the line `<data key=’user.licensed.by.tokens’ value=’false’/>`. Set the value to **true** if you have a contract to use token   licensing with the Rational License Key Server. Otherwise, set the value to **false**.
-      If you activate token licensing, make sure that the Rational License Key Server is configured, and enough tokens can be obtained to run MobileFirst Server and the applications it serves. Otherwise, the MobileFirst Server administration application and the runtime environment cannot be run.
-      > **Restriction:** After the decision is made to activate token licensing or not, it cannot be modified. If you run an upgrade with the value **true**, and later another upgrade with the value **false**, the second upgrade fails.
+    c. Se você não tiver feito uma escolha antes de ativar o licenciamento de token que foi liberado com uma correção temporária em 15 de setembro de 2015 ou mais recente, remova o comentário da linha `<data key=’user.licensed.by.tokens’ value=’false’/>`. Configure o valor para **true** se você tiver um contrato para usar o licenciamento de token com o Rational License Key Server. Caso contrário, configure o valor como **false**.
+      Se você ativar o licenciamento de token, certifique-se de que o Rational License Key Server esteja configurado e que possam ser obtidos tokens suficientes para executar o MobileFirst Server e os aplicativos que ele atende. Caso contrário, o aplicativo de administração MobileFirst Server e o ambiente de tempo de execução não poderão ser executados.
+      > **Restrição:** após a decisão ser feita para ativar o licenciamento de token ou não, isso não poderá ser modificado. Se você executar um upgrade com o valor **true** e, posteriormente, outro upgrade com o valor **false**, o segundo upgrade falhará.
 
-    d. Review the profile identity and the installation location. The profile identity and the installation location must match what is installed:
-      * This line: `<profile id='IBM MobileFirst Platform Server' installLocation='/opt/IBM/MobileFirst_Platform_Server'>`
-      * And this line: `<offering id='com.ibm.mobilefirst.foundation.server' version='8.0.0.20160610_0940' profile='IBM MobileFirst Platform Server' features='main.feature' installFixes='none'/>`
-      * To review the profile identity and the installation directories that are known to Installation Manager, you can type the command:
+    d. Revise a identidade do perfil e o local de instalação. A identidade do perfil e o local da instalação devem corresponder ao que está instalado:
+      * Esta linha: `<profile id='IBM MobileFirst Platform Server' installLocation='/opt/IBM/MobileFirst_Platform_Server'>`
+      * E esta linha: `<offering id='com.ibm.mobilefirst.foundation.server' version='8.0.0.20160610_0940' profile='IBM MobileFirst Platform Server' features='main.feature' installFixes='none'/>`
+      * Para revisar a identidade do perfil e os diretórios de instalação que são conhecidos para o Installation Manager, será possível digitar o comando:
     ```bash
       installation_manager_path/eclipse/tools/imcl listInstallationDirectories -verbose
     ```
 
-    e. Update the version attribute to and set it to the version of the interim fix.
-       For example, if you install the interim fix (8.0.0.0-MFPF-IF20171006-1725), replace
+    e. Atualize o atributo de versão e configure-o para a versão da correção temporária.
+       Por exemplo, se você instalar a correção temporária (8.0.0.0-MFPF-IF20171006-1725), substitua
 
       ```xml
       <offering id='com.ibm.mobilefirst.foundation.server' version='8.0.0.20160610_0940' profile='IBM MobileFirst Platform Server' features='main.feature' installFixes='none'/>
       ```
 
-      by
+      por
 
       ```xml
       <offering id='com.ibm.mobilefirst.foundation.server' version='8.0.0.20171006-1725' profile='IBM MobileFirst Platform Server' features='main.feature' installFixes='none'/>
       ```
 
-      Installation Manager does not only use the repositories that are listed in the installation file, but also the repositories that are installed in its preferences. Specifying the version attribute in the offering element is optional. However, by specifying it, you ensure that the interim fix that is defined is the version that you intend to install. This specification overrides the other repositories with interim fixes that are listed in the Installation Manager preferences.
+      O Installation Manager não usa somente os repositórios listados no arquivo de instalação, mas também os repositórios instalados em suas preferências. Especificar o atributo de versão no elemento de oferta é opcional. No entanto, ao especificá-lo, você garante que a correção temporária definida é a versão que você pretende instalar. Essa especificação substitui os outros repositórios por correções temporárias que estão listadas nas preferências do Installation Manager.
 
-5. Open a session with the user account that is used at the initial installation.
-    To apply an update, Installation Manager must run with the same list of registry files that are used at the initial installation. The list of Software that is installed and the options that are used during the installation time are stored in those registry files. If you run Installation Manager in administrator mode, the registry files are installed at the system level. In `/var` folder on UNIX or Linux. In `c:\ProgramData` folder on Windows. The location is independent from the user who runs Installation Manager (although root is needed on UNIX and
-    Linux). However, if you run Installation Manager in single user mode, the registry files are stored by default in the user's home directory.
+5. Abra uma sessão com a conta do usuário que é usada na instalação inicial.
+    Para aplicar uma atualização, o Installation Manager deve ser executado com a mesma lista de arquivos de registro que são usados na instalação inicial. A lista de Softwares que está instalada e as opções que são usadas durante o momento da instalação são armazenadas nesses arquivos de registro. Se você executar o Installation Manager no modo de administrador, os arquivos de registro serão instalados no nível do sistema. Na pasta `/var` no UNIX ou no Linux. Na pasta `c:\ProgramData` no Windows. O local é independente do usuário que executa o Installation Manager (embora a raiz seja necessária no UNIX e no Linux). No entanto, se você executar o Installation Manager no modo de usuário único, os arquivos de registro serão armazenados por padrão no diretório inicial do usuário.
 
-6. Run the command
+6. Execute o comando
   ```bash
    installation_manager_path/eclipse/tools/imcl input <responseFile> -log /tmp/installwl.log -acceptLicense
   ```
-   where,
-   * <responseFile> is the XML file that you edit in step 4.
-   * *-log /tmp/installwl.log* is optional. It specifies a log file for the output of Installation Manager.
-   * *-acceptLicense* is mandatory. It means that you accept the license terms of IBM MobileFirst Platform Foundation V8.0.0. Without that option, Installation Manager cannot proceed with the update.
+   em que,
+   * <responseFile> é o arquivo XML editado na etapa 4.
+   * *-log /tmp/installwl.log* é opcional. Isso especifica um arquivo de log para a saída do Installation Manager.
+   * *-acceptLicense* é obrigatório. Isso significa que você aceita os termos de licença do IBM MobileFirst Platform Foundation V8.0.0. Sem essa opção, o Installation Manager não pode continuar com a atualização.
 
-## Next steps
+## Etapas seguintes
 {: #next-steps }
 
-[Updating the application server](../appserver-update)
+[Atualizando o servidor de aplicativos](../appserver-update)

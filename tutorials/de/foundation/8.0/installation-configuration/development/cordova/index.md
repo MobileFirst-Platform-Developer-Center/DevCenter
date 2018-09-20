@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Setting up the Cordova development environment
+title: Cordova-Entwicklungsumgebung einrichten
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 2
@@ -17,7 +17,7 @@ einrichten, müssen Sie das Lernprogramm [MobileFirst-Entwicklungsumgebung einri
 
 ## Cordova-CLI installieren
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }} supports Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) or greater.  
+Die {{ site.data.keys.product }} unterstützt Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) oder eine aktuellere Version.  
 Gehen Sie für die Installation wie folgt vor:
 
 1. Sie müssen [NodeJS](https://nodejs.org/en/) herunterladen und installieren.
@@ -30,5 +30,5 @@ muss das {{ site.data.keys.product_adj }}-Cordova-SDK (die zugehörigen Plug-ins
 
 * Informieren Sie sich darüber, wie das [{{ site.data.keys.product_adj }}-SDK zu
 Cordova-Anwendungen hinzugefügt wird](../../../application-development/sdk/cordova/).
-* For applications development, refer to the [Using the {{ site.data.keys.product }} SDK](../../../application-development/) tutorials.
-* For adapters develpment, refer to the [Adapters](../../../adapters/) category.
+* Informationen zur Anwendungsentwicklung enthalten die Lernprogramme unter [SDK der {{ site.data.keys.product }} verwenden](../../../application-development/).
+* Informationen zur Adapterentwicklung findne Sie in der Kategorie [Adapter](../../../adapters/).

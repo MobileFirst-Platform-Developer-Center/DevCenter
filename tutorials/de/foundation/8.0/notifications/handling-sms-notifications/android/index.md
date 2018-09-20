@@ -52,7 +52,7 @@ MFPPush.getInstance().initialize(this);
 
 #### Gerät registrieren
 {: #register-device }
-Registrieren Sie das Gerät beim Push-Benachrichtigungsservice.
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
 
 ```java
 MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
@@ -68,7 +68,7 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
  }, optionObject);
 ```
 
-* **optionObject**: `JSONObject` mit der Telefonnummer für die Registrierung des Geräts. Beispiel:
+* **optionObject**: `JSONObject` mit der Telefonnummer für die Registrierung des Geräts. Beispiel: 
 
 ```java
 JSONObject optionObject = new JSONObject();

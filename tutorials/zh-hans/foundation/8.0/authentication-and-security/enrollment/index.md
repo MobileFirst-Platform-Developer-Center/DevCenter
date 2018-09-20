@@ -260,8 +260,6 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 <br/>
 `IsEnrolled` 安全性检查**取决于** `EnrollmentUserLogin`：
 
-
-
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
