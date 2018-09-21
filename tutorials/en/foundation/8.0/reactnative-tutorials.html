@@ -119,7 +119,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
 
     </ol>
     <h3><font color="DodgerBlue">Step 3:</font> Registering the application</h3>
-    <ol><li>Open a Command-line window and navigate to the root of the  particular platform (iOS or Android) of the project. </li>
+    <ol><li>Open a Command-line window and navigate to the root of the  particular platform (iOS or Android) of the project.
       <pre>
         cd ios
       </pre>
@@ -127,6 +127,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
        <pre>
         cd android
       </pre>
+      </li>
       <li>Run the following command to register the application:
       <pre>
         mfpdev app register
@@ -155,11 +156,11 @@ Develop your React Native applications by following the tutorials bellow: set-up
          <li> Import the <b>WLAuthorizationManager</b> class into your <b>App.js</b></li>
          {% highlight javascript %}
          import {WLAuthorizationManager, WLResourceRequest} from 'react-native-ibm-mobilefirst';
-         {% endhighlight %}         
-         
+         {% endhighlight %}
+
          <li>Select the <b>App.js</b> file, which is located at project's root folder and paste the following code snippet, replacing the existing <code>WLAuthorizationManager.obtainAccessToken()</code> function:
          <blockquote>See the React Native Client-side API references <a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/api/client-side-api/reactnative/client/">here</a>.</blockquote>
-         
+
          {% highlight javascript %}
            WLAuthorizationManager.obtainAccessToken("").then(
                (token) => {
