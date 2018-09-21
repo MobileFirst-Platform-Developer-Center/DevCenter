@@ -98,7 +98,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
      <!--<img class="gifplayer" alt="Register an application" src="{{site.baseurl}}/assets/tutorials/all-tutorials/register-an-application-cordova.png"/>-->
      <h4><font color="DarkTurquoise">Step 2.1:</font> Downloading the React Native sample application from <a target="_blank" href="https://github.com/MobileFirst-Platform-Developer-Center/MFPStarterReactNative">Github</a>.</h4>
      <h4><font color="DarkTurquoise">Step 2.2:</font> Adding the React Native SDK to the downloaded React Native sample application</h4>
-     <p>The MobileFirst SDK for React Native is available as a React Native module from NPM.</p>
+     <p>The MobileFirst SDK for React Native is available as a <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst">React Native module from NPM.</a></p>
      <ol>
        <li> Navigate to the root of your downloaded React Native project and add the {{ site.data.keys.product_adj }} core React Native plug-in, change directory to the root of the React Native project: <code>cd MFPStarterReactNative</code></li>
        <li> Add the MobileFirst Plugins by using the NPM CLI command: <code>npm install react-native-plugin-name</code><br/>
@@ -115,9 +115,26 @@ Develop your React Native applications by following the tutorials bellow: set-up
         react-native link
       </pre>
       </li>
-
-
     </ol>
+
+  </br>
+    <h4><font color="DarkTurquoise">Step 2.3:</font> Additional platform sepcific steps </h4>
+    <p> <b> Android </b> </br>
+    Add the following lines to AndroidManifest.xml ({project-folder}/android/app/src/main/) :
+    <pre>
+      <![CDATA[
+      <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/  package="com.myapp"> 
+        ...
+        <application tools:replace="android:allowBackup"
+        ...
+      </application>
+    ]]>
+    </pre>
+  </br>
+  <p> <b> iOS </b> </br>
+    Open your project in XCode. In the project navigator, drag and drop mfpclient.plist from ios folder. 
+  </br>
+
     <h3><font color="DodgerBlue">Step 3:</font> Registering the application</h3>
     <ol><li>Open a Command-line window and navigate to the root of the  particular platform (iOS or Android) of the project.
       <pre>
