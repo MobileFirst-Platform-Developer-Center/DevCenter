@@ -53,9 +53,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
 
     <p>Download and install <a target="_blank" href="https://nodejs.org/en/">NodeJS</a>.</p>
     <p>From a Command-line window, run the following command:</p>
-    <pre>
+    {% highlight bash %}
     npm install -g react-native-cli
-   </pre>
+   {% endhighlight %}
 
    <p>Follow the instructions provided in the <a  target="_blank" href="https://facebook.github.io/react-native/docs/getting-started.html">Getting Started page in React Native docs</a>, to set up your machine for React Native development. </p>
    <p>This includes the setup required for Android & iOS.</p>
@@ -104,51 +104,51 @@ Develop your React Native applications by following the tutorials bellow: set-up
        <li> Add the MobileFirst Plugins by using the NPM CLI command: <code>npm install react-native-plugin-name</code><br/>
          For example:
 
-      <pre>
+       {% highlight bash %}
         npm install react-native-ibm-mobilefirst --save
-      </pre>
+      {% endhighlight %}
 
         <blockquote>The above command adds MobileFirst Core SDK Plugin to the React Native project.</blockquote>
         </li>
      <li>Link all native dependencies to your app <br/>
-       <pre>
+       {% highlight bash %}
         react-native link
-      </pre>
+      {% endhighlight %}
       </li>
     </ol>
 
   </br>
     <h4><font color="DarkTurquoise">Step 2.3:</font> Additional platform sepcific steps </h4>
     <p> <b> Android </b> </br>
-    Add the following lines to AndroidManifest.xml ({project-folder}/android/app/src/main/) :
-    <pre>
+    Add the following lines to <b>AndroidManifest.xml</b> <i>({project-folder}/android/app/src/main/)</i></filepath> :
+      {% highlight xml %}
       <![CDATA[
-      <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/  package="com.myapp"> 
+      <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/  package="com.myapp">
         ...
         <application tools:replace="android:allowBackup"
         ...
       </application>
     ]]>
-    </pre>
+    {% endhighlight %}
   </br>
   <p> <b> iOS </b> </br>
-    Open your project in XCode. In the project navigator, drag and drop mfpclient.plist from ios folder. 
+    Open your project in XCode. In the project navigator, drag and drop mfpclient.plist from ios folder.
   </br>
 
     <h3><font color="DodgerBlue">Step 3:</font> Registering the application</h3>
-    <ol><li>Open a Command-line window and navigate to the root of the  particular platform (iOS or Android) of the project.
-      <pre>
+    <ol><li>Open a command-line window and navigate to the root of the  particular platform (iOS or Android) of the project.
+       {% highlight bash %}
         cd ios
-      </pre>
+      {% endhighlight %}
       or
-       <pre>
+        {% highlight bash %}
         cd android
-      </pre>
+      {% endhighlight %}
       </li>
       <li>Run the following command to register the application:
-      <pre>
+       {% highlight bash %}
         mfpdev app register
-      </pre>
+      {% endhighlight %}
 
       <p> If a remote server is used, <a target="_blank" href="../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance">use the command</a> <code>mfpdev server add</code> to add it.
 
@@ -208,9 +208,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
   <p>Alternatively, click the <b>New</b> button next to <b>Adapters</b>.  </p>
   <p><blockquote> If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen <b>Set up your development environment</b> instructions.</blockquote></p>
   <h4><font color="DarkTurquoise">Step 5.2: </font>From a <b>Command-line</b> window, navigate to the adapter's Maven project root folder and run the command:</h4>
-  <pre>
+  {% highlight bash %}
     mfpdev adapter build
-  </pre>
+  {% endhighlight %}
   <h4><font color="DarkTurquoise">Step 5.3: </font>When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the <b>Actions → Deploy adapter</b> action. The adapter can be found in the <b>[adapter]/target</b> folder.</h4>
   <!--<img class="gifplayer" alt="Deploy an adapter" src="{{site.baseurl}}/assets/tutorials/all-tutorials/create-an-adapter.png"/>-->
 
@@ -219,9 +219,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
   <h3><font color="DodgerBlue">Step 6: </font>Testing the application</h3>
 
     <p>Use the following command to run the application:</p>
-    <pre>
+    {% highlight bash %}
      react-native run-ios|run-android
-    </pre>
+    {% endhighlight %}
 
     <p>If a device is connected, the application is installed and launched in the device. Otherwise the simulator or emulator will be used.</p>
 
