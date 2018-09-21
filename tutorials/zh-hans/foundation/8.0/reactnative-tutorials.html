@@ -53,9 +53,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
 
     <p>Download and install <a target="_blank" href="https://nodejs.org/en/">NodeJS</a>.</p>
     <p>From a Command-line window, run the following command:</p>
-    <pre>
+    {% highlight bash %}
     npm install -g react-native-cli
-   </pre>
+   {% endhighlight %}
 
    <p>Follow the instructions provided in the <a  target="_blank" href="https://facebook.github.io/react-native/docs/getting-started.html">Getting Started page in React Native docs</a>, to set up your machine for React Native development. </p>
    <p>This includes the setup required for Android & iOS.</p>
@@ -98,32 +98,57 @@ Develop your React Native applications by following the tutorials bellow: set-up
      <!--<img class="gifplayer" alt="Register an application" src="{{site.baseurl}}/assets/tutorials/all-tutorials/register-an-application-cordova.png"/>-->
      <h4><font color="DarkTurquoise">Step 2.1:</font> Downloading the React Native sample application from <a target="_blank" href="https://github.com/MobileFirst-Platform-Developer-Center/MFPStarterReactNative">Github</a>.</h4>
      <h4><font color="DarkTurquoise">Step 2.2:</font> Adding the React Native SDK to the downloaded React Native sample application</h4>
-     <p>The MobileFirst SDK for React Native is available as a React Native module from NPM.</p>
+     <p>The MobileFirst SDK for React Native is available as a <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst">React Native module from NPM.</a></p>
      <ol>
        <li> Navigate to the root of your downloaded React Native project and add the {{ site.data.keys.product_adj }} core React Native plug-in, change directory to the root of the React Native project: <code>cd MFPStarterReactNative</code></li>
        <li> Add the MobileFirst Plugins by using the NPM CLI command: <code>npm install react-native-plugin-name</code><br/>
          For example:
 
-      <pre>
+       {% highlight bash %}
         npm install react-native-ibm-mobilefirst --save
-      </pre>
+      {% endhighlight %}
 
         <blockquote>The above command adds MobileFirst Core SDK Plugin to the React Native project.</blockquote>
         </li>
      <li>Link all native dependencies to your app <br/>
-       <pre>
+       {% highlight bash %}
         react-native link
-      </pre>
+      {% endhighlight %}
       </li>
-
-
     </ol>
+
+  </br>
+    <h4><font color="DarkTurquoise">Step 2.3:</font> Additional platform sepcific steps </h4>
+    <p> <b> Android </b> </br>
+    Add the following lines to <b>AndroidManifest.xml</b> <i>({project-folder}/android/app/src/main/)</i> :
+      {% highlight xml %}
+      <![CDATA[
+      <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/  package="com.myapp">
+        ...
+        <application tools:replace="android:allowBackup"
+        ...
+      </application>
+    ]]>
+    {% endhighlight %}
+  </br>
+  <p> <b> iOS </b> </br>
+    Open your project in XCode. In the project navigator, drag and drop mfpclient.plist from ios folder.
+  </br>
+
     <h3><font color="DodgerBlue">Step 3:</font> Registering the application</h3>
-     <ol><li>Open a Command-line window and navigate to the root of the  particular platform (iOS or Android) of the project. </li>
+    <ol><li>Open a command-line window and navigate to the root of the  particular platform (iOS or Android) of the project.
+       {% highlight bash %}
+        cd ios
+      {% endhighlight %}
+      or
+        {% highlight bash %}
+        cd android
+      {% endhighlight %}
+      </li>
       <li>Run the following command to register the application:
-      <pre>
+       {% highlight bash %}
         mfpdev app register
-      </pre>
+      {% endhighlight %}
 
       <p> If a remote server is used, <a target="_blank" href="../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance">use the command</a> <code>mfpdev server add</code> to add it.
 
@@ -132,8 +157,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
       <li><h5>iOS</h5>
 
       <p>If your platform is iOS then you are asked to provide the application’s BundleID. <b>Important</b>: The BundleID is <b>case sensitive</b>.</p>
-      <p> The <b>mfpdev app register</b> CLI command first connects to the MobileFirst Server to register the application, then generates the <b>mfpclient.plist</b> file at the root of the Xcode project, and adds to it the metadata that identifies the MobileFirst Server.</p>
-    </li>
+      <p> The <b>mfpdev app register</b> CLI command first connects to the MobileFirst Server to register the application, then updates the <b>mfpclient.plist</b> configuration file at the root of the Xcode project which contains metadata that identifies the MobileFirst Server.</p>
+
+      <p><b>Note :</b> In XCode, in the project navigator, drag and drop mfpclient.plist from ios folder. This step is applicable only for iOS platform.</p>
       <li><h5>Android</h5>
 
       <p>If your platform is Android then you are asked to provide the application’s package name. <b>Important</b>: The package name is <b>case sensitive</b>.</p>
@@ -144,8 +170,14 @@ Develop your React Native applications by following the tutorials bellow: set-up
      <h3><font color="DodgerBlue">Step 4:</font> Editing the application logic</b></h3>
      <ol>
        <li>Open the React native project in your code editor of choice.</li>
-       <li>Select the <b>App.js</b> file, which is located at project's root folder and paste the following code snippet, replacing the existing <code>WLAuthorizationManager.obtainAccessToken()</code> function:
+         <li> Import the <b>WLAuthorizationManager</b> class into your <b>App.js</b></li>
+         {% highlight javascript %}
+         import {WLAuthorizationManager, WLResourceRequest} from 'react-native-ibm-mobilefirst';
+         {% endhighlight %}
+
+         <li>Select the <b>App.js</b> file, which is located at project's root folder and paste the following code snippet, replacing the existing <code>WLAuthorizationManager.obtainAccessToken()</code> function:
          <blockquote>See the React Native Client-side API references <a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/api/client-side-api/reactnative/client/">here</a>.</blockquote>
+
          {% highlight javascript %}
            WLAuthorizationManager.obtainAccessToken("").then(
                (token) => {
@@ -176,9 +208,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
   <p>Alternatively, click the <b>New</b> button next to <b>Adapters</b>.  </p>
   <p><blockquote> If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen <b>Set up your development environment</b> instructions.</blockquote></p>
   <h4><font color="DarkTurquoise">Step 5.2: </font>From a <b>Command-line</b> window, navigate to the adapter's Maven project root folder and run the command:</h4>
-  <pre>
+  {% highlight bash %}
     mfpdev adapter build
-  </pre>
+  {% endhighlight %}
   <h4><font color="DarkTurquoise">Step 5.3: </font>When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the <b>Actions → Deploy adapter</b> action. The adapter can be found in the <b>[adapter]/target</b> folder.</h4>
   <!--<img class="gifplayer" alt="Deploy an adapter" src="{{site.baseurl}}/assets/tutorials/all-tutorials/create-an-adapter.png"/>-->
 
@@ -187,9 +219,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
   <h3><font color="DodgerBlue">Step 6: </font>Testing the application</h3>
 
     <p>Use the following command to run the application:</p>
-    <pre>
+    {% highlight bash %}
      react-native run-ios|run-android
-    </pre>
+    {% endhighlight %}
 
     <p>If a device is connected, the application is installed and launched in the device. Otherwise the simulator or emulator will be used.</p>
 
@@ -239,34 +271,6 @@ Develop your React Native applications by following the tutorials bellow: set-up
         <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
     </ul>
 
-
-    <h2><a href="../notifications">Notifications</a></h2>
-    Send notifications with {{ site.data.keys.product_full }}.
-
-    <ul>
-        <li><a href="../notifications/">Notifications Overview</a></li>
-        <li><a href="../notifications/sending-notifications/">Sending Notifications</a></li>
-        <li><a href="../notifications/handling-push-notifications/">Handling push notifications</a>
-            <ul>
-                <li><a href="../notifications/handling-push-notifications/ios/">Handling Push Notifications in iOS applications</a>
-                    <ul>
-                        <li><a href="../notifications/handling-push-notifications/interactive">Interactive notifications</a></li>
-                        <li><a href="../notifications/handling-push-notifications/silent">Silent notifications</a></li>
-                    </ul>
-                </li>
-                <li><a href="../notifications/handling-push-notifications/android/">Handling Push Notifications in Android applications</a></li>
-                <li><a href="../notifications/handling-push-notifications/windows/">Handling Push Notifications in Windows applications</a></li>
-            </ul>
-        </li>
-        <li><a href="../notifications/handling-sms-notifications/">Handling SMS notifications</a>
-            <ul>
-                <li><a href="../notifications/handling-sms-notifications/android/">Handling SMS Notifications in Android applications</a></li>
-                <li><a href="../notifications/handling-sms-notifications/ios/">Handling SMS Notifications in iOS applications</a></li>
-            </ul>
-        </li>
-        <li><a href="../notifications/analytics/">Setting Up Analytics Support for Push Notifications</a></li>
-        <li><a href="../notifications/rest-apis/">Push Service REST APIs </a></li>
-    </ul>
   </div>
 </div>
 </div>
