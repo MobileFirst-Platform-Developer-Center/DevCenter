@@ -366,7 +366,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
 
       `classpath 'com.google.gms:google-services:3.0.0'`
 
-    - Remove below GCM plugin from build.gradle file compile "com.google.android.gms:play-services-gcm:+”
+    - Remove below GCM plugin from build.gradle file compile `com.google.android.gms:play-services-gcm:+`
 
  3. Configure the AndroidManifest file. Following changes are required in the `Android manifest.xml`
 
