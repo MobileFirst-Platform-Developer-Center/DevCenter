@@ -27,9 +27,8 @@ Complete the steps to browse the {{ site.data.keys.prod_icp }} catalog and selec
 
 
       c.  Set the Logging fields to the following default values, alternatively, you can set the previous values when you deploy the {{ site.data.keys.prod_adj }} Helm chart from the command line by using the `--set` flag.<br/>
-      <div class="container">
       <p><b>Helm chart fields and values for JSON logging</b></p>            
-      <table class="table table-bordered">
+      <table class="table table-bordered" >
         <thead>
           <tr>
             <th>GUI Field Name</th>
@@ -51,11 +50,10 @@ Complete the steps to browse the {{ site.data.keys.prod_icp }} catalog and selec
           <tr>
             <td>Console logging source</td>
             <td>logs.consoleLogLevel</td>
-            <td>message, trace, accessLog, ffdc<br/><br/>The source types supported are: messages, traces, accessLog or ffdc.  Specify each source type in a comma-separated list in the console logging source. Using accessLog requires additional settings in <code>server.xml</code> file. For more information, see <a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_http_accesslogs.html?view=kc">HTTP access logging</a>.</td>
+            <td>message, trace, accessLog, ffdc<br/><br/>The source types supported are: messages, traces, accessLog or ffdc.  <br/>Specify each source type in a comma-separated list in the console logging source. <br/>Using accessLog requires additional settings in <code>server.xml</code> file. <br/>For more information, see <a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_http_accesslogs.html?view=kc">HTTP access logging</a>.</td>
           </tr>
         </tbody>
       </table>
-    </div>
 2.  Deploy Kibana.<br/>
     After you deploy Liberty with JSON logging enabled, log records are stored in Elasticsearch, and you can view the log records with Kibana.<br/>
 

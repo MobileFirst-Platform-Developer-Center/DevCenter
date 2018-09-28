@@ -9,7 +9,7 @@ weight: 6
 ## Overview
 {: #overview }
 Adapters are Maven projects that contain server-side code implemented in either Java or JavaScript.  
-Adapters are used perform any necessary server-side logic, and to transfer and retrieve information from back-end systems to client applications and cloud services. 
+Adapters are used to perform any necessary server-side logic, and to transfer and retrieve information from back-end systems to client applications and cloud services. 
 
 Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](advanced-adapter-usage-mashup)" possible.
 

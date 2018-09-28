@@ -101,11 +101,10 @@ It is possible to reset this fingerprint, providing the algorithm with new data.
 
 After resetting the fingerprint, the appAuthenticity security check continues to work as before (this will be transparent to the user).
 
-### Validation Type
+### Validation Types
 {: #validation }
 
-MobileFirst Platform Foundation provides static and dynamic app authenticity for applications. These validation types differ on the algorithm and attributes used to generate app authenticity seeds.
-By default, when application authenticity is enabled, it uses the **dynamic** validation algorithm.
+Mobile First Platform Foundation provides static and dynamic app authenticity for applications. These validation types differ on the algorithm and attributes used to generate app authenticity seeds. By default, when application authenticity is enabled, it uses the **dynamic** validation algorithm. Both the validation types ensure the security of the application. Dynamic app authenticity uses strict validations and checks for app authenticity. For static app authenticity, we use slightly relaxed algorithm, which will not use all the validation checks as used in dynamic app authenticity.
 
 The dynamic app authenticity is configurable from MobileFirst Console. The internal algorithm takes care of generating app authenticity data based on the options chosen in console.
 For static app authenticity, one need to use the [**mfpadm** CLI](../../administering-apps/using-cli/).

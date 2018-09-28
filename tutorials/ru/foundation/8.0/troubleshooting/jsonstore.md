@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Troubleshooting JSONtore
+title: Troubleshooting JSONStore
 breadcrumb_title: JSONStore
 relevantTo: [ios,android,cordova]
 weight: 3
