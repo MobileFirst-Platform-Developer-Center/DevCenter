@@ -18,12 +18,14 @@ show_breadcrumb: true
 
 * [すべてのチュートリアル](all-tutorials/)
 
-それぞれの内容については、以下にアクセスします。 
+それぞれの内容については、以下にアクセスします。
 
 * [Cordova の開発](cordova-tutorials/)
-* [iOS の開発](ios-tutorials/) 
-* [Android の開発](android-tutorials/) 
+* [Ionic の開発](ionic-tutorials/)
+* [iOS の開発](ios-tutorials/)
+* [Android の開発](android-tutorials/)
 * [Windows 8.1 Universal および Windows 10 UWP の開発](windows-8-10-tutorials/)
 * [Xamarin の開発](xamarin-tutorials/)
+* [React Native の開発](reactnative-tutorials/) 
 * [Web アプリケーションの開発](web-tutorials/)
 * [サーバー・サイドの開発](server-side-tutorials/)
