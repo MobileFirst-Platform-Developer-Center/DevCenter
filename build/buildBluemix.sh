@@ -37,8 +37,8 @@ cp -R _site/* ../mfpsamples.github.ibm.com.generated-bluemix
 # commit and push generated content to `generated-bluemix' branch
 # since repository was cloned in write mode with token auth - we can push there
 cd ../mfpsamples.github.ibm.com.generated-bluemix
-git config user.email "nathanh@il.ibm.com"
-git config user.name "Nathan Hazout Travis"
+git config user.email "sreelathas@in.ibm.com"
+git config user.name "Sreelatha Sankaranarayanan Travis"
 git add -A .
 git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
 git push --quiet origin generated-bluemix

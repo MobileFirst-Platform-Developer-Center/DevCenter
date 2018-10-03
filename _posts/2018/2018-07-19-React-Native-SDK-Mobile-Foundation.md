@@ -32,7 +32,7 @@ Whether you're testing the waters with the [Developer Kit](https://mobilefirstpl
 
 ### Getting Started
 
-The React Native SDK is available as a module on npmjs.org. To get started with a new application, simply add the `react-native-ibm-mobilefirst` module to your React Native app using the following command
+The React Native SDK is available as a module on [npmjs.org](https://www.npmjs.com/package/react-native-ibm-mobilefirst). To get started with a new application, simply add the `react-native-ibm-mobilefirst` module to your React Native app using the following command
 
 ```
 npm install react-native-ibm-mobilefirst --save 
@@ -43,6 +43,8 @@ Watch the video below for an end to end demonstration of React Native and Mobile
 
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/OaLDX2kzlc0?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Zf-piCByEw8?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 </div>
+
+We encourage you to try out our new SDK for React Native and provide us with your thoughts in the comments below. You can also join our [Slack team](	https://mobilefirstplatform.ibmcloud.com/blog/2017/05/26/come-chat-with-us/) for more engaging conversations around Mobile Foundation and React Native. 

@@ -18,12 +18,14 @@ To review all categories and tutorials visit:
 
 * [All Tutorials](all-tutorials/)
 
-For curated content visit: 
+For curated content visit:
 
 * [Cordova development](cordova-tutorials/)
-* [iOS development](ios-tutorials/) 
-* [Android development](android-tutorials/) 
+* [Ionic development](ionic-tutorials/)
+* [iOS development](ios-tutorials/)
+* [Android development](android-tutorials/)
 * [Windows 8.1 Universal and Windows 10 UWP development](windows-8-10-tutorials/)
 * [Xamarin development](xamarin-tutorials/)
+* [React Native development](reactnative-tutorials/) 
 * [Web application development](web-tutorials/)
 * [Server-side development](server-side-tutorials/)
