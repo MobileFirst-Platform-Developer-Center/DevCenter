@@ -9,6 +9,9 @@
                 "name": "Cordova",
                 "path": "/cordova-tutorials"
             }, {
+                "name": "Ionic",
+                "path": "/ionic-tutorials"
+            }, {
                 "name": "iOS",
                 "path": "/ios-tutorials"
             }, {
@@ -23,6 +26,9 @@
             }, {
                 "name": "Xamarin",
                 "path": "/xamarin-tutorials"
+            }, {
+                "name": "React Native",
+                "path": "/reactnative-tutorials"
             }, {
                 "name": "Server-side",
                 "path": "/server-side-tutorials"

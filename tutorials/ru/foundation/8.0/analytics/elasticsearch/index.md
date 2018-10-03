@@ -9,7 +9,7 @@ weight: 3
 ## Overview
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} uses  **Elasticsearch 1.5x** for storing data and running search queries.  
+{{ site.data.keys.mf_analytics_full }} uses  **Elasticsearch 1.7.5** for storing data and running search queries.  
 
 Elasticsearch is a real-time distributed search and analytics engine that increases the speed and scale rates for data storage and exploration. Elasticsearch is used for full-text search, structured search.
 
@@ -19,7 +19,7 @@ The Elasticsearch instances are queried in real-time to populate the {{ site.dat
 
 {{ site.data.keys.mf_analytics }} exposes all Elasticsearch functionality. The user is able to take full advantage of Elasticsearch queries, debugging, and optimization.
 
-For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html).
 
 ## Managing Elasticsearch on the {{ site.data.keys.mf_analytics_server }}
 {: #managing-elasticsearch-on-the-mobilefirst-analytics-server }
@@ -72,4 +72,4 @@ http://localhost:9500/_nodes
 http://localhost:9500/*/_mapping
 ```
 
-> Elasticsearch exposes many more REST endpoints. To learn more, visit the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+> Elasticsearch exposes many more REST endpoints. To learn more, visit the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html).
