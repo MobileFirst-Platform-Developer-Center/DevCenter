@@ -1,181 +1,181 @@
 ---
 layout: tutorial
-title: Frequently Asked Questions
+title: Preguntas más frecuentes
 breadcrumb_title: FAQs
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
 
-This topic describes the list of commonly asked questions related to {{ site.data.keys.mf_analytics_server }}.
+En este tema se describe la lista de preguntas comunes en relación con {{ site.data.keys.mf_analytics_server }}.
 
 <div class="panel-group accordion" id="mfp-analytics-faqs" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq1">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq1" aria-expanded="true" aria-controls="collapse-mfp-faq1"><b>1.	How do I set the number of shards and replicas for my analytics cluster?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq1" aria-expanded="true" aria-controls="collapse-mfp-faq1"><b>1.	¿Cómo puedo definir el número de fragmentos y réplicas de mi clúster de analíticas?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq1">
             <div class="panel-body">
-              <p>In a multi-index elasticsearch cluster, it is important to set the following:
-                <ul><li>Minimum number of shards to be set to the number of nodes in the cluster.</li><li>Replicas per shard to be set to a minimum of two.</li></ul><br/>MobileFirst Analytics v8.0 uses multiple indices to store the event data.</p>
+              <p>En un clúster de elasticsearch de varios índices, es importante definir lo siguiente:
+                <ul><li>El número mínimo de fragmentos se debe definir en el número de nodos del clúster.</li><li>Las réplicas por fragmento se deben definir en un mínimo de dos.</li></ul><br/>MobileFirst Analytics v8.0 utiliza varios para almacenar los datos de suceso.</p>
          </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq2">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq2" aria-expanded="true" aria-controls="collapse-mfp-faq2"><b>2. In MobileFirst Analytics v8.0, the configuration in <code>server.xml</code> has 3 shards set but Analytics Operations console administration page shows more than 15 shards.</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq2" aria-expanded="true" aria-controls="collapse-mfp-faq2"><b>2. En MobileFirst Analytics v8.0, la configuración de <code>server.xml</code> tiene 3 fragmentos definidos, pero la página de administración de la consola de operaciones de Analytics muestra más de 15 fragmentos.</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq2">
             <div class="panel-body">
-                  <p>In MobileFirst Analytics v8.0, the data store of Elasticsearch has multiple indices. It is not a single index-based data store. Indices are dynamically created based on the type of events flowing into the analytics. So the end users need not be concerned about the multiple indices. Here every index within the Elasticsearch is split into the number of shards set in the config file.</p>
+                  <p>En MobileFirst Analytics v8.0, el almacén de datos de Elasticsearch tiene varios índices. No se trata de un almacén de datos basado en un solo índice. Los índices se crean de forma dinámica en función del tipo de sucesos que fluyen en las analíticas. De este modo, los usuarios finales no tienen que preocuparse de los diferentes índices. Cada índice de Elasticsearch se divide en el número de fragmentos definido en el archivo de configuración.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq3">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq3" aria-expanded="true" aria-controls="collapse-mfp-faq3"><b>3. Why does my analytics operations console render extremely slow?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq3" aria-expanded="true" aria-controls="collapse-mfp-faq3"><b>3. ¿Por qué mi consola de operaciones de Analytics se representa de forma extremadamente lenta?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq3">
             <div class="panel-body">
-                  <p>Ensure that the <a href="https://mobilefirstplatform.ibmcloud.com/learn-more/scalability-and-hardware-sizing-8-0/">hardware sizing calculator</a> is used for checking the right hardware against the data and the customer requirements. Several factors influence the performance of the system including hardware, the type or size of data events that come into the analytics server and  the volume of events.</p>
+                  <p>Asegúrese de que se utiliza la <a href="https://mobilefirstplatform.ibmcloud.com/learn-more/scalability-and-hardware-sizing-8-0/">calculadora de dimensionamiento de hardware</a> para comprobar el hardware correcto según los requisitos del cliente y los datos. Hay varios factores que influyen en el rendimiento del sistema, incluido el hardware, el tipo o el tamaño de los sucesos de datos que entran al servidor de analíticas y el volumen de los sucesos.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq4">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq4" aria-expanded="true" aria-controls="collapse-mfp-faq4"><b>4. Can I recover my purged data?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq4" aria-expanded="true" aria-controls="collapse-mfp-faq4"><b>4. ¿Puedo recuperar los datos depurados?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq4">
             <div class="panel-body">
-                <p>No. Once the data is purged, it cannot be recovered.</p>
+                <p>No. Una vez que se depuran los datos, no se pueden recuperar.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq5">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq5" aria-expanded="true" aria-controls="collapse-mfp-faq5"><b>5. Data Purging not happening correctly irrespective of setting TTL values.</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq5" aria-expanded="true" aria-controls="collapse-mfp-faq5"><b>5. La depuración de datos no funciona correctamente, independientemente de definir o no los valores de TTL.</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq5">
             <div class="panel-body">
-                <p>The TTL properties are not applied to the data that exists in the Analytics platform. You must set the TTL properties before you add data.</p>
+                <p>Las propiedades de TTL no se aplican a los datos que existen en la plataforma de Analytics. Debe establecer las propiedades de TTL antes de añadir los datos.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq6">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq6" aria-expanded="true" aria-controls="collapse-mfp-faq6"><b>6. Analytics Operations console does not display any data.</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq6" aria-expanded="true" aria-controls="collapse-mfp-faq6"><b>6. La consola de operaciones de Analytics no muestra ningún dato.</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq6">
             <div class="panel-body">
-              <p>Ensure that the MobileFirst Server JNDI properties are used to configure the right Analytics end points. Ensure that the Date filter is correctly set for the data to be rendered.</p>
+              <p>Asegúrese de que las propiedades JNDI de MobileFirst Server se utilizan para configurar los puntos finales adecuados de Analytics. Asegúrese de que el filtro de fecha esté definido correctamente para que se presenten los datos.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq7">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq7" aria-expanded="true" aria-controls="collapse-mfp-faq7"><b>7. Unable to invoke the Elasticsearch cluster REST APIs.</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq7" aria-expanded="true" aria-controls="collapse-mfp-faq7"><b>7. No se ha podido invocar a las API REST de clúster de Elasticsearch.</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq7">
             <div class="panel-body">
-                  <p>To invoke the Elasticsearch REST APIs, it is mandatory that the property <b>analytics/http.enabled</b> has to be set to <b>true</b> in Analytics server's <code>server.xml</code>.</p>
+                  <p>Para invocar las API REST de Elasticsearch, es obligatorio que la propiedad <b>analytics/http.enabled</b> esté definida en <b>true</b> en el archivo <code>server.xml</code> del servidor de analíticas.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq8">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq8" aria-expanded="true" aria-controls="collapse-mfp-faq8"><b>8.	Can I use Open JDK with IBM WebSphere Application Server ND (or Full Profile) on Analytics?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq8" aria-expanded="true" aria-controls="collapse-mfp-faq8"><b>8.	Can ¿Puedo utilizar Open JDK con ND (o perfil completo) de IBM WebSphere Application Server en Analytics?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq8">
             <div class="panel-body">
-                  <p>No. While using IBM WebSphere Application Server Full Profile or Network Deployment (ND), make sure to use the IBM JDK that is provided out of the box with WebSphere Application Server.</p>
+                  <p>No. Cuando utilice el perfil completo o ND (Network Deployment) de IBM WebSphere Application Server, asegúrese de utilizar el IBM JDK que se proporciona listo para utilizar con WebSphere Application Server.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq9">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq9" aria-expanded="true" aria-controls="collapse-mfp-faq9"><b>9.	When does the number of <b>App Sessions</b> start to increment?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq9" aria-expanded="true" aria-controls="collapse-mfp-faq9"><b>9.	¿Cuándo empieza a incrementarse el número de <b>Sesiones de aplicaciones</b>?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq9">
             <div class="panel-body">
-                  <p>First time when the application is opened the <b>App Sessions</b> is zero. When the end user takes the mobile app to the background and brings it back to the foreground, then this action increments the <b>App Sessions</b> to 1. Further repeating the same action continues to increment the <b>App Sessions</b>.</p>
+                  <p>La primera vez que se abre la aplicación, el número de <b>Sesiones de aplicaciones</b> es cero. Cuando el usuario final coloca la aplicación móvil en segundo plano y la vuelve a poner en primer plano, esta acción incrementa las <b>Sesiones de aplicaciones</b> a 1. Al repetir la misma acción, se van incrementando las <b>Sesiones de aplicaciones</b>.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq10">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq10" aria-expanded="true" aria-controls="collapse-mfp-faq10"><b>10.	Analytics Cluster Health shows YELLOW, what does it mean?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq10" aria-expanded="true" aria-controls="collapse-mfp-faq10"><b>10.	¿Qué significa que el estado del clúster de analíticas sea AMARILLO?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq10">
             <div class="panel-body">
-                  <p>Cluster health YELLOW might not be an issue. Mostly, when there are unassigned shards the cluster health is shown as yellow. When new nodes are joined to the cluster, Elasticsearch reallocates the unassigned shards to the new nodes, thus making the cluster health GREEN. Sometimes, too much of shard counts also leaves the shards unassigned to any of the nodes and hence the cluster health status shows as yellow. Make sure all the nodes in the cluster are active and are working fine and that the shards are in started/active state.</p>
+                  <p>El estado del clúster AMARILLO no tiene por qué ser un problema. La mayoría de las veces, cuando hay fragmentos sin asignar, el estado del clúster se muestra amarillo. Cuando se incorporan nuevos nodos al clúster, Elasticsearch reasigna los fragmentos sin asignar a los nuevos nodos, lo que provoca que el estado del clúster sea VERDE. En ocasiones, tener un recuento excesivo de fragmentos también provoca que queden fragmentos sin asignar a alguno de los nodos, y por eso el estado del clúster se muestra amarillo. Asegúrese de que todos los nodos del clúster están activos y funcionan correctamente, y de que los fragmentos se encuentran en estado iniciado/activo.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq11">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq11" aria-expanded="true" aria-controls="collapse-mfp-faq11"><b>11.	What does App Sessions mean for web apps?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq11" aria-expanded="true" aria-controls="collapse-mfp-faq11"><b>11.	¿Qué significan las Sesiones de aplicaciones para las aplicaciones web?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq11" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq11">
             <div class="panel-body">
-                  <p>For Web apps, AppSession count is incremented based on the browser session and is based on the connection from the browser (app) to the MFP Server.</p>
+                  <p>Para aplicaciones web, el recuento de Sesiones de aplicaciones se incrementa en función de la sesión de navegador y se basa en la conexión del navegador (aplicación) a MFP Server.</p>
 
-                  <p>Let us say if the browser is using the general window/tab and performs a connection to the server then the App Session count is incremented by one. In the same browser, if the user opens the app on another tab and performs the connect, then the session doesn't increment. The session stays inactive for 30 mins. When you try to reconnect again it is incremented by one.</p>
+                  <p>Si el navegador utiliza el separador/ventana general y realiza una conexión al servidor, el recuento de sesiones de aplicaciones se incrementa en uno. En el mismo navegador, si el usuario abre la aplicación en otro separador y realiza la conexión, la sesión no se incrementa. La sesión permanece inactiva durante 30 minutos. Cuando intenta volver a conectar de nuevo, se incrementa en uno.</p>
 
-                  <p>If the user clears the browser cache and tries to connect, then the device is considered to be a new one and the device count is incremented. Since browsers don't have a real device ID, an ID is generated for the browser app until the offline files/cache is cleared.</p>
+                  <p>Si el usuario borra la memoria caché de navegador e intenta conectarse, el dispositivo se considera como un dispositivo nuevo y se incrementa el recuento de dispositivos. Puesto que los navegadores no tienen un ID de dispositivo real, se genera un ID para la aplicación de navegador hasta que se borra la memoria caché/los archivos fuera de línea.</p>
 
-                  <p>This applies to an incognito browser window as well, if you use an incognito browser window and try to connect, an app used to connect from each tab is considered as a new session and the session count is incremented. If the user uses two different browsers and accesses the app to connect to MFP Server, then the device count is incremented by two.</p>
+                  <p>Esto se aplica también a las ventanas de navegador de incógnito; si utiliza una ventana de navegador de incógnito e intenta conectarse, una aplicación utilizada para conectarse desde cada separador se considera una nueva sesión, y se incrementa el recuento de sesiones. Si el usuario utiliza dos navegadores diferentes y accede a la aplicación para conectarse a MFP Server, el recuento de dispositivos se incrementa en dos.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq12">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq12" aria-expanded="true" aria-controls="collapse-mfp-faq12"><b>12.	What does <i>Active Users</i> on Analytics Dashboard refer to?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq12" aria-expanded="true" aria-controls="collapse-mfp-faq12"><b>12.	¿A qué hace referencia <i>Usuarios activos</i> en el panel de control de las analíticas?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq12">
             <div class="panel-body">
-                  <p><i>Active users</i> is the number of users using the app. Every unique user is counted as a user using the app. By default deviceID is userID. However app developer can use <code>setUserContext(userid)</code> API. This is going to replace the userID to the value the app developer sets.</p>
+                  <p><i>Usuarios activos</i> es el número de usuarios que están utilizando la aplicación. Cada usuario exclusivo se cuenta como usuario que utiliza la aplicación. De forma predeterminada, deviceID es userID. Sin embargo, el desarrollador de aplicación puede utilizar la API <code>setUserContext(userid)</code>. Esto sustituirá el userID por el valor que defina el desarrollador de aplicación.</p>
 
-                  <p>One solution/approach is to generate a uniqueID from the computer when the user is accessing the WebApp and it sends that as a customData. This data can be used to compute the statistics for the actual machines (or computers/browsers) from which user accesses the app and uses the <code>setUserContext</code> to set the userID. This data can also be used to generate the custom charts.</p>
+                  <p>Una solución/enfoque consiste en generar un uniqueID desde el ordenador cuando el usuario accede a la WebApp y lo envía como customData. Estos datos se pueden utilizar para calcular las estadísticas de las máquinas reales (o sistemas/navegadores) desde las que el usuario accede a la aplicación y utiliza <code>setUserContext</code> para definir el userID. Estos datos también se pueden utilizar para generar los gráficos personalizados.</p>
             </div>
         </div>      
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq13">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq13" aria-expanded="true" aria-controls="collapse-mfp-faq13"><b>13.	What does App Sessions mean for native/Cordova apps?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq13" aria-expanded="true" aria-controls="collapse-mfp-faq13"><b>13.	¿Qué significan las Sesiones de aplicaciones para las aplicaciones nativas/Cordova?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq13">
             <div class="panel-body">
-                  <p>In Analytics 8.0, calculating an App session is completely different from any of the previous versions of MFP Analytics.</p>
+                  <p>En Analytics 8.0, calcular una sesión de aplicación es completamente diferente a las versiones anteriores de MFP Analytics.</p>
 
-                  <p>An App session count is incremented by one when the app is brought to the foreground from background. To enable this for Cordova Apps, we need to enable the CLIENT APP LIFECYCLE events. Please refer <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/analytics/analytics-api/#client-lifecycle-events">here</a>, for more information.</p>
+                  <p>El recuento de sesiones de aplicaciones se incrementa en uno cuando la aplicación pasa al primer plano desde el segundo plano. Para habilitar esto en las aplicaciones Cordova, se deben habilitar los sucesos de CICLO DE VIDA DE APLICACIÓN CLIENTE. Consulte <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/analytics/analytics-api/#client-lifecycle-events">aquí</a> para obtener más información.</p>
             </div>
         </div>      
     </div>

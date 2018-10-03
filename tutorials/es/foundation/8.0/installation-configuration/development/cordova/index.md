@@ -35,4 +35,3 @@ Para continuar con el desarrollo de {{ site.data.keys.product_adj }} en aplicaci
 * Para el desarrollo de aplicaciones, consulte las guías de aprendizaje de [Utilización de {{ site.data.keys.product }} SDK](../../../application-development/).
 
 * Para el desarrollo de adaptadores, consulte la categoría [Adaptadores](../../../adapters/).
-

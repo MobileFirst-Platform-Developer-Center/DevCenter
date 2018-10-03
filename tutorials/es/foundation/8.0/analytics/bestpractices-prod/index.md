@@ -1,24 +1,24 @@
 ---
 layout: tutorial
-title: Best Practices for setting up MobileFirst Analytics production Cluster
+title: Procedimientos recomendados para configurar el clúster de producción de MobileFirst Analytics
 breadcrumb_title: Best Practices
 relevantTo: [ios,android,javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
 
-This topic describes the list of best practices that include the DOs and the DON’Ts to be followed while setting up an Analytics Server in production.
+En este tema se describe la lista de procedimientos recomendados que se deben seguir a la hora de configurar un servidor de Analytics, incluido lo que se debe y no se debe hacer.
 
 
-## {{ site.data.keys.mf_analytics_server }} - Configuration settings
+## {{ site.data.keys.mf_analytics_server }} - Valores de configuración
 {: #mfp-analytics-config }
 
-Data purging has to be applied to the production environment, mandatorily, in order to not persist the entire document set from the beginning. By setting the appropriate TTL values for various event documents, the search scope for Elasticsearch queries can be reduced considerably.
-Following are the TTL values that are to be set for the MobileFirst Analytics v8.0 Server:
+Se debe aplicar depuración de datos al entorno de producción, de forma obligatoria, para no hacer persistente todo el conjunto de documentos desde el principio. El ámbito de búsqueda de las consultas de Elasticsearch se puede reducir de forma considerable definiendo los valores adecuados de TTL para los diferentes documentos de sucesos.
+A continuación, se muestran los valores de TTL que se deben definir para MobileFirst Analytics v8.0 Server:
 
-**TTL properties for Analytics Event/Documents**
+**Propiedades de TTL para sucesos/documentos de Analytics**
 
 * TTL_PushNotification
 *  TTL_PushSubscriptionSummarizedHourly
@@ -33,176 +33,176 @@ Following are the TTL values that are to be set for the MobileFirst Analytics v8
 *  TTL_AppPushActionSummarizedHourly
 *  TTL_PushSubscription
 
-**Example usage:**
+**Ejemplo de uso:**
 ```xml
 <jndiEntry jndiName="analytics/TTL_AppLog" value= '"20d"' />
 ```
 
-> TTL value are expected to be String literals and should be passed within single quotes.
+> El valor de TTL esperado son literales de serie y se debe pasar entre comillas simples.
 
-## {{ site.data.keys.mf_analytics_server }} - Topology
+## {{ site.data.keys.mf_analytics_server }} - Topología
 {: #mfp-analytics-topology }
 
-Multi-Node Analytics Cluster
-*	It is important to have a load balancer in front of the nodes to ensure that the analytics layer is offered an even load across the nodes.
-*	In a two-node analytics cluster when a load balancer is not used, it is good to configure or use the Analytics console of the node that is not used for accepting the data from the MobileFirst Server.
+Clúster de analíticas de varios nodos
+*	Es importante disponer de un equilibrador de carga frente a los nodos para asegurarse de que se ofrece una carga uniforme a la capa de analíticas entre los nodos.
+*	En un clúster de analíticas de dos nodos, cuando no se utiliza un equilibrador de carga, es recomendable configurar o utilizar la consola de Analytics del nodo que no se utiliza para aceptar los datos de MobileFirst Server.
 
-**For example:**
+**Por ejemplo:**
 
-Consider that there are two nodes for the analytics server.
-In such a case, the recommendation for MobileFirst server configuration for analytics is as below:
+Supongamos que hay dos nodos para el servidor de analíticas.
+En ese caso, la recomendación para la configuración de MobileFirst Server para las analíticas es la siguiente:
 
-**Recommended:**<br/>
+**Recomendado:**<br/>
 
 >**mfp.analytics.url** -> *http://node1:9080/analytics-service/rest*<br/>
 >**mfp.analytics.console.url** -> *http://node2:9080/analytic/console*
 
-**NOT recommended:**<br/>
+**NO recomendado:**<br/>
 
 >**mfp.analytics.url** -> *http://node1:9080/analytics-service/rest*<br/>
 >**mfp.analytics.console.url** -> *http://node1:9080/analytic/console*
 
-This allows the user to reduce the load on the nodes when the user views the analytics console.
+De esta forma, el usuario puede reducir la carga en los nodos cuando ve la consola de analíticas.
 
-## {{ site.data.keys.mf_analytics_server }} - Performance Tuning
+## {{ site.data.keys.mf_analytics_server }} - Ajuste de rendimiento
 {: #mfp-analytics-perf-tuning }
 
-### Operating System Tuning
+### Ajuste del sistema operativo
 {: #os-tuning }
 
-* Increase the allowed number of open file descriptors to 32k or 64k.
-* Increase the virtual memory map counts.
+* Aumentar el número permitido de descriptores de archivos abiertos de 32k a 64k.
+* Aumentar los recuentos de correlación de memoria virtual.
 
->**Note:** Check the corresponding documentation for the Operating System .
+>**Nota:** compruebe la documentación correspondiente para el sistema operativo. 
 
-### Application Server Tuning
+### Ajuste del servidor de aplicaciones
 {: #app-server-tuning }
 
-If you are on WebSphere Application Server v8.5.5.6 Liberty Profile or earlier versions, ensure that you tune the JVM Thread Pool size settings explicitly.
+Si utiliza un perfil de Liberty de WebSphere Application Server v8.5.5.6 o versiones anteriores, asegúrese de ajustar explícitamente los valores de tamaño de JVM Thread Pool.
 
-This behaviour resulted in many users setting the **coreThreads** value of the executor to a high number to ensure that the executor never landed in a deadlock. However, in v8.5.5.6 the auto-tuning algorithm is modified to aggressively fight deadlocks. Now it is nearly impossible for the executor to deadlock. So if you have manually set **coreThreads** in the past to avoid executor deadlocks, you might want to consider reverting to the default value once you move to v8.5.5.6.
+Como resultado de este comportamiento, muchos usuarios definían el valor de **coreThreads** del ejecutor en un número elevado para asegurarse de que el ejecutor nunca llegase a punto muerto. Sin embargo, en v8.5.5.6, el algoritmo de ajuste automático se ha modificado para evitar los puntos muertos con determinación. Ahora es casi imposible que el ejecutor llegue a un punto muerto, de forma que, si anteriormente ha definido **coreThreads** manualmente para evitar los puntos muertos del ejecutor, quizá quiera volver al valor predeterminado una vez que pase a utilizar v8.5.5.6.
 
-**Example:**
+**Ejemplo:**
 
 ```xml
 <executor name="LargeThreadPool" id="default"  coreThreads="200" maxThreads="400" keepAlive="60s" stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```     
 
-### Analytics Tuning
+### Ajuste de analíticas
 {: #analytics-tuning }
 
-* Both Java **Xms** and **Xmx** has to be set (Min and Max) as same.
-* Maximum allowed Heapsize Per JVM <= RAM Size/2.
-* Number of Primary Shards = Number of Nodes of the Analytics Cluster.
-* Number of Replica per shard >= 2.
+* Se tiene que definir el mismo valor (mínimo y máximo) en Java **Xms** y **Xmx**.
+* Tamaño de almacenamiento dinámico máximo permitido por JVM <= Tamaño de RAM/2.
+* Número de fragmentos primarios = Número de nodos del clúster de analíticas.
+* Número de réplicas por fragmento >= 2.
 
-> **Note:** If there is only one node then there is no need of a replica.
+> **Nota:** si solo hay un nodo, no hay necesidad de tener una réplica.
 
-### Elasticsearch Tuning
+### Ajuste de Elasticsearch
 {: #es-tuning }
 
-Elasticsearch tuning can be performed in a separate YAML file (for example, it can named as `elasticsearchconfig.yml`), the path to this file can be configured in the analytics server configuration (using the JNDI properties).
+El ajuste de Elasticsearch se puede realizar en un archivo YAML independiente (por ejemplo, se puede denominar `elasticsearchconfig.yml`), y la vía de acceso a este archivo se puede configurar en la configuración del servidor de analíticas (mediante las propiedades JNDI).
 
-**Property Name:**  *analytics/settingspath*<br/>
-**Value:** *\<path_to_the_ES_config_yml\>*
+**Nombre de propiedad:**  *analytics/settingspath*<br/>
+**Valor:** *\<path_to_the_ES_config_yml\>*
 
-Apply the Elasticsearch tuning parameters by adding the values to a `.yml` file and accessing it using the JNDI entry.
+Aplique los parámetros de ajuste de Elasticsearch añadiendo los valores a un archivo `.yml` y acceda a él mediante la entrada de JNDI.
 
-Elasticsearch tuning parameters are to be considered for a basic tuning of the environment and can be tuned further based on the infrastructure resources:
+Los parámetros de ajuste de Elasticsearch se deben tener en cuenta para un ajuste básico del entorno y se pueden ajustar más en función de los recursos de infraestructura:
 
-1. Set a value for **indices.fielddata.cache.size**
+1. Defina un valor para **indices.fielddata.cache.size**
 
-   For example:
+   Por ejemplo:
    ```
    indices.fielddata.cache.size:  35%
    ```  
 
-   >**Note:** Use **analytics/indices.fielddata.cache.size** with caution.
-   >Do not increase it to a high value, as increasing this value can cause OutofMemory. The underlying technology used by the analytics platform loads several field values into memory to provide faster access to those documents. This is known as the field cache. By default, the amount of data loaded into memory by the field cache is unbounded. If the field cache becomes too large, it can cause an out of memory exception and crash the analytics platform.
+   >**Nota:** utilice **analytics/indices.fielddata.cache.size** con precaución.
+   >No lo aumente a un valor mayor, puesto que aumentar este valor puede producir un error OutofMemory. La tecnología subyacente que utiliza la plataforma de analíticas carga varios valores de archivo en la memoria para proporcionar un acceso más rápido a dichos documentos. Esto se conoce como memoria caché de campo. De forma predeterminada, la cantidad de datos que la memoria caché de campo carga en la memoria no tiene límite. Si la memoria caché de campo llega a ser demasiado grande, se puede producir una excepción de falta de memoria y la plataforma de analíticas se puede bloquear.
 
-2. Set a value for **indices.fielddata.breaker.limit**.
+2. Defina un valor para **indices.fielddata.breaker.limit**.
 
-   Set **indices.fielddata.breaker.limit** to a value greater than **indices.fielddata.cache.size**.
+   Defina **indices.fielddata.breaker.limit** en un valor mayor que **indices.fielddata.cache.size**.
 
-   So, if the cache size is *35%*, set breaker limit to a value greater than the cache size.
+   De modo que, si el tamaño de memoria caché es *35%*, debe definir el límite de interruptor en un valor mayor que el tamaño de memoria caché.
 
-3. Set a value for **indices.fielddata.cache.expire**.
+3. Defina un valor para **indices.fielddata.cache.expire**.
 
-   This value sets the expiry time of the Elasticsearch cache and prevents the cache from growing unbound and filling up the heap.
+   Este valor define la hora de caducidad de la memoria caché de Elasticsearch y evita que la memoria caché crezca de forma ilimitada y agote el almacenamiento dinámico.
 
    > **indices.fielddata.cache.expire**
    >
-   > A time-based setting that expires field data after a certain time of inactivity. Defaults to -1. For example, can be set to 5 m for a 5 minute expiry.
+   > Un valor basado en tiempo que hace que caduquen los datos de campo tras un determinado periodo de inactividad. El valor predeterminado es -1. Por ejemplo, se puede definir en 5 m para una caducidad de 5 minutos.
 
-4. The default setting for Analytics is to NOT purge any data.
+4. El valor predeterminado de Analytics es NO depurar ningún dato.
 
-   Configure the TTL appropriately to ensure that data is purged. Otherwise, the data store can grow in an unlimited manner.
+   Configure el TTL como corresponda para asegurarse de que se depuren los datos. De lo contrario, el almacén de datos podría crecer de forma ilimitada.
 
-## {{ site.data.keys.mf_analytics_server }} - DOs and DON'Ts
+## {{ site.data.keys.mf_analytics_server }} - Lo que se debe y no se debe hacer
 {: #mfp-analytics-dos-donts }
 
--	Avoid clearing the analyticsData directory when the analytics nodes are running.
--	In a multi node cluster, avoid using the same node for pushing the events into analytics cluster and access the console. Best practice would be to use a Load balancer in front of the analytics cluster.
--	Avoid using any other Application Server clustering methodologies for Analytics Cluster. The underlying Elasticsearch creates cluster on its own using its node discovery mechanisms.
--	Avoid using Open JDK (or Sun Java) for Analytics on IBM WebSphere Application Server Full Profile (or) IBM WebSphere Application Server Network Deployment.
--	Never increase the Analytics min/max heap size to value greater than half of the RAM Size on the node. For instance, if you have a node with RAM size of 16 GB then the max allowed heap size is 8 GB for analytics.
-- For analytics cluster name (**analytics/clustername** JNDI property), use a unique cluster name. Avoid using the default name *worklight*.
+-	No borre el directorio analyticsData cuando se estén ejecutando los nodos de analíticas.
+-	En un clúster de varios nodos, no utilice el mismo nodo para enviar los sucesos por push al clúster de analíticas y acceder a la consola. El procedimiento recomendado es utilizar un equilibrador de carga frente al clúster de analíticas.
+-	No utilice otras metodologías de clúster de servidores de aplicaciones para el clúster de analíticas. El proceso de Elasticsearch subyacente crea un clúster por su cuenta mediante sus mecanismos de descubrimiento de nodos.
+-	No utilice Open JDK (o Sun Java) para Analytics en el perfil completo de IBM WebSphere Application Server o en IBM WebSphere Application Server Network Deployment.
+-	En ningún caso aumente el tamaño de almacenamiento dinámico mínimo/máximo de analíticas a un valor mayor que la mitad del tamaño de RAM en el nodo. Por ejemplo, si tiene un nodo con un tamaño de RAM de 16 GB, entonces el tamaño de almacenamiento dinámico máximo permitido es de 8 GB para las analíticas.
+- Para el nombre de clúster de analíticas (propiedad JNDI **analytics/clustername**), utilice un nombre de clúster exclusivo. No utilice el nombre predeterminado *worklight*.
 
-## {{ site.data.keys.mf_analytics_server }} - SDK issues
+## {{ site.data.keys.mf_analytics_server }} - Problemas de SDK
 {: #mfp-analytics-sdk-issues }
 
-### 1. Cordova Applications must initialize at native platform for Lifecycle events to enable AppSession capture
+### 1. Las aplicaciones Cordova se deben inicializar en una plataforma nativa para sucesos de ciclo de vida para habilitar la captura de AppSession
 {: #mfp-cordova-apps-appsession }
 
-In MobileFirst Platform Foundation v8.0, the app sessions are incremented/recorded when the app goes from background to foreground.  
+En MobileFirst Platform Foundation v8.0, las sesiones de aplicaciones se incrementan/graban cuando la aplicación se traslada desde el segundo plano al primer plano.  
 
-Capturing AppSessions is enabled by adding listeners for lifecycle events. The native SDKs provide appropriate APIs for adding these listeners.   However, in the case of Cordova there is no JavaScript API for adding these lifecycle event listeners. Instead, the listeners have to be added using native platform APIs even for Cordova applications.
+La captura de AppSessions se habilita añadiendo escuchas para los sucesos de ciclo de vida. Los SDK nativos proporcionan API adecuadas para añadir estos escuchas. Sin embargo, en el caso de Cordova, no hay ninguna API de JavaScript para añadir estos escuchas de sucesos de ciclo de vida. En su lugar, los escuchas se tienen que añadir mediante API de plataformas nativas, incluso para las aplicaciones Cordova.
 
-Excerpt from the [documentation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/analytics/analytics-api/#client-lifecycle-events):
+Extracto de la [documentación](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/analytics/analytics-api/#client-lifecycle-events):
 
-<blockquote>After the Analytics SDK is configured, app sessions start to be recorded on the users device. A session in MobileFirst Analytics is recorded when the app is moved from the foreground to the background, which creates a session on the Analytics Console.  As soon as the device is set up to record sessions and you send your data, you can see the Analytics Console populated with data, as shown below.</blockquote>
+<blockquote>Una vez que configurado el SDK de analíticas, las sesiones de la aplicación empiezan a ser grabadas en el dispositivo del usuario. Se graba una sesión en MobileFirst Analytics cuando la aplicación se pasa desde el primer plano al segundo plano, lo que crea una sesión en Analytics Console. Tan pronto como el dispositivo está configurado para registrar sesiones y envía los datos, puede ver Analytics Console cumplimentado con datos, tal como se muestra a continuación.</blockquote>
 
-For example, for a Cordova app on iOS Platform (iOS) it is mandatory to add the following under `AppDelegate.m`:
+Por ejemplo, para una aplicación Cordova en la plataforma iOS (iOS), es obligatorio añadir lo siguiente bajo `AppDelegate.m`:
 ```
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
 [[WLAnalytics sharedInstance] send];
 ```
-### 2. View the custom Data on Analytics console
+### 2. Ver los datos personalizados en Analytics Console
 {: #view-custom-data-console }
 
-To quickly locate the custom data sent to Analytics server using the Analytics Client SDK APIs, following step can be performed.
+Para localizar rápidamente los datos personalizados enviados al servidor de analíticas mediante las API del SDK de cliente de Analytics, se deben seguir estos pasos.
 
-Go to **Analytics Console > Dashboard > Custom Charts > Create a Custom Chart**
+Vaya a **Analytics Console > Panel de control > Gráficos personalizados > Crear un gráfico personalizado**
 
-![Create a custom chart]({{ site.baseurl }}/tutorials/en/foundation/8.0/analytics/bestpractices-prod/create_custom_chart.png)
+![Crear un gráfico personalizado]({{ site.baseurl }}/tutorials/en/foundation/8.0/analytics/bestpractices-prod/create_custom_chart.png)
 
-For more information refer to the documentation [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/analytics/console/custom-charts/).
+Para obtener más información, consulte la documentación [aquí](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/analytics/console/custom-charts/).
 
-## {{ site.data.keys.mf_analytics_server }} - Troubleshooting steps
+## {{ site.data.keys.mf_analytics_server }} - Pasos de resolución de problemas
 {: #mfp-analytics-troubleshooting }
 
-1.	Customer Environment Version:<br/>
-    Gather the details of the complete software stack, including OS, JDK/JRE, AppServer, MobileFirst Platform Foundation version, and MobileFirst Platform Foundation build version.
-2.	Compare the environment details with IBM MobileFirst Analytics Software Compatibility Matrix/requirements.
-3.	Gather the Analytics Topology & Hardware specifications used.
-4.	Check if there was any performance tuning performed (in case of performance issues).
-5.	Gather the MobileFirst Platform Foundation Server’s `server.xml` (Liberty) and JNDI Environment entries/properties (WAS Full Profile/ND) to verify the Analytics integration configuration.
-6.	Gather the screen shot of the Analytics administration console.
-7.	Gather the Analytics `server.xml` (Liberty) and JNDI Environment entries/properties (WAS Full Profile/ND) to verify the Analytics integration configuration.
-8.	Collect the output of the following REST APIs (listed under the section – **Important Commands & APIs for troubleshooting analytics issues**).
+1.	Versión de entorno de cliente:<br/>
+    Recopile los detalles de toda la pila de software, incluido el SO, el JDK/JRE, el servidor de aplicaciones, la versión de MobileFirst Platform Foundation y la versión de la compilación de MobileFirst Platform Foundation.
+2.	Compare los detalles del entorno con los requisitos/la matriz de compatibilidad de software de IBM MobileFirst Analytics.
+3.	Recopile las especificaciones utilizadas de hardware y topología de Analytics.
+4.	Compruebe si se ha realizado algún ajuste de rendimiento (en el caso de los problemas de rendimiento).
+5.	Recopile las entradas/propiedades del archivo `server.xml` de MobileFirst Platform Foundation Server (Liberty) y del entorno JNDI (ND/perfil completo de WAS) para verificar la configuración de la integración de Analytics.
+6.	Recopile la captura de pantalla de la consola de administración de Analytics.
+7.	Recopile las entradas/propiedades del archivo `server.xml` de Analytics (Liberty) y del entorno JNDI (ND/perfil completo de WAS) para verificar la configuración de la integración de Analytics.
+8.	Recopile la salida de las API REST siguientes (enumeradas bajo la sección – **Mandatos importantes y API para resolución de problemas de analíticas**).
 
-## Utilities for troubleshooting
+## Programas de utilidad para resolución de problemas
 {: #urilities-for-troubleshooting }
 
-Following are the open source tools which can be effectively used to visualize and administer the elasticsearch indices, data/shard allocation etc.
+A continuación, se enumeran las herramientas de código abierto que pueden resultar eficaces para visualizar y administrar los índices de elasticsearch, la asignación de fragmentos/datos, etc.
 
 -	[Cerebro](https://github.com/lmenezes/cerebro)
 -	[Sense (Beta)](https://github.com/cheics/sense)
 
-### Important Commands & APIs For Troubleshooting Analytics Issues
+### Mandatos importantes y API para resolución de problemas de analíticas
 {: #commands-apis}
 
-Use cURL to run the following REST APIs to capture the response for identifying various information about the cluster/shard/indices:
+Utilice cURL para ejecutar las API REST siguientes para capturar la respuesta para identificar información diversa sobre el clúster/el fragmento/los índices:
 ```
 http://<es_node>:9500/_cluster/health
 http://<es_node>:9500/_cluster/stats
@@ -211,10 +211,10 @@ http://<es_node>:9500/_node/status
 http://<es_node>:9500/_cat/indices
 ```
 
-## References
+## Referencias
 {: #references}
 
-*	[MobileFirst Analytics - Quick & Dirty clusters](https://mobilefirstplatform.ibmcloud.com/blog/2015/10/10/mobilefirst-analytics-quick-dirty-clusters/)
-*	[MobileFirst Analytics - Planning for Production](https://mobilefirstplatform.ibmcloud.com/blog/2015/10/01/mobilefirst-analytics-planning-for-production/)
-*	[MobileFirst Analytics – Installation Guide](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/analytics/installation/)
-*	[Setting JNDI property for Mobile Analytics Time To Live(TTL) value as days in Liberty Profile](https://mobilefirstplatform.ibmcloud.com/blog/2017/07/03/liberty-analytics-jndi-ttl-setting/)
+*	[MobileFirst Analytics - Clústeres rápidos y "sucios"](https://mobilefirstplatform.ibmcloud.com/blog/2015/10/10/mobilefirst-analytics-quick-dirty-clusters/)
+*	[MobileFirst Analytics - Planificación para la producción](https://mobilefirstplatform.ibmcloud.com/blog/2015/10/01/mobilefirst-analytics-planning-for-production/)
+*	[MobileFirst Analytics – Guía de instalación](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/analytics/installation/)
+*	[Definición del valor de la propiedad JNDI para el TTL (Time To Live) de Mobile Analytics como días en el perfil de Liberty](https://mobilefirstplatform.ibmcloud.com/blog/2017/07/03/liberty-analytics-jndi-ttl-setting/)

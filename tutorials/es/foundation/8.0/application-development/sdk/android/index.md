@@ -170,8 +170,8 @@ repositories {
 
 
     ```bash
-    mfpdev app register
-    ```
+mfpdev app register
+```
     - Si se utiliza un servidor remoto, [utilice el mandato `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para añadirlo.
 
 
