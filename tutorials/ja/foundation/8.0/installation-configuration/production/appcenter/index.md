@@ -2,7 +2,7 @@
 layout: tutorial
 title: IBM MobileFirst Foundation Application Center のインストールおよび構成
 breadcrumb_title: Installing Application Center
-weight: 8
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
@@ -32,7 +32,7 @@ Application Center を {{ site.data.keys.mf_server }} インストールの一�
 ## IBM Installation Manager を使用した Application Center のインストール
 {: #installing-application-center-with-ibm-installation-manager }
 IBM Installation Manager を使用して、Application Center をインストールし、そのデータベースを作成し、それをアプリケーション・サーバーにデプロイすることができます。  
-始める前に、IBM Installation Manager を実行するユーザーが、[ファイル・システムの前提条件](../appserver/#file-system-prerequisites)に記述された特権を持っていることを検証します。
+始める前に、IBM Installation Manager を実行するユーザーが、[ファイル・システムの前提条件](../prod-env/appserver/#file-system-prerequisites)に記述された特権を持っていることを検証します。
 
 IBM Installation Manager を使用して IBM Application Center をインストールするには、以下のステップを実行します。
 
@@ -760,9 +760,9 @@ WebSphere Application Server を使用して、Application Center 用に MySQL �
     portNumber = 3306
     relaxAutoCommit=true
     databaseName = APPCNTR
-    serverName = MySQL サーバーのホスト名
-    user = MySQL サーバーのユーザー名
-    password = ユーザー名に関連付けられたパスワード
+    serverName = the host name of the MySQL server
+    user = the user name of the MySQL server
+    password = the password associated with the user name
     ```
 
 6. 新規データ・ソースの WebSphere Application Server カスタム・プロパティーを設定します。
@@ -1078,18 +1078,18 @@ Application Center 用に WebSphere Application Server Liberty プロファイ�
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * Windows システムの場合:
 
       ```bash
       mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+      copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
+      LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+      mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+      copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
+      LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
       ```
 
 6. Liberty サーバーを始動します。
@@ -1354,18 +1354,18 @@ Application Center EAR ファイルをデプロイした後、Application Center
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * Windows システムの場合:
 
       ```bash
       mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+      copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar  
+      LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
+      mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
+      copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf  
+      LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
       ```
 
 6. Liberty サーバーを始動します。
@@ -1511,11 +1511,11 @@ WebSphere Application Server コンソールで基本的なユーザー構成を
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile }
 **server.xml** ファイル内に、Application Center およびデータ・ソースの Java™ EE セキュリティー・ロールを構成します。
 
-セキュリティー・ロールを構成するには、**server.xml** ファイルを編集する必要があります。各 `<application>` エレメントの `<application-bnd>` エレメント内に、2 つの `<security-role>` エレメントを作成します。 一方の `<security-role>` エレメントは **appcenteruser** ロール用であり、他方は **appcenteradmin** ロール用です。 これらのロールを、適切なユーザー・グループ名 **appcenterusergroup** または **appcenteradmingroup** にマップします。 これらのグループは、`<basicRegistry>` エレメントによって定義されます。 このエレメントをカスタマイズするか、または、全体を `<ldapRegistry>` エレメントまたは `<safRegistry>` エレメントで置き換えることができます。
+セキュリティー・ロールを構成するには、**server.xml** ファイルを編集する必要があります。 各 `<application>` エレメントの `<application-bnd>` エレメント内に、2 つの `<security-role>` エレメントを作成します。 一方の `<security-role>` エレメントは **appcenteruser** ロール用であり、他方は **appcenteradmin** ロール用です。 これらのロールを、適切なユーザー・グループ名 **appcenterusergroup** または **appcenteradmingroup** にマップします。 これらのグループは、`<basicRegistry>` エレメントによって定義されます。 このエレメントをカスタマイズするか、または、全体を `<ldapRegistry>` エレメントまたは `<safRegistry>` エレメントで置き換えることができます。
 
 次に、多数のインストール済みアプリケーション (例えば、80 個のアプリケーション) で良好な応答時間を維持できるように、Application Center データベース用の接続プールを構成する必要があります。
 
-1. **server.xml** ファイルを編集します。例えば、次のとおりです。
+1. **server.xml** ファイルを編集します。 例えば、次のとおりです。
 
    ```xml
    <security-role name="appcenteradmin">
@@ -2122,7 +2122,7 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 デプロイする  MobileFirst アプリケーションの最大サイズに応じて、DB2 ログ・スペースの拡張が必要になる場合があります。
 
-`DB2 update db cfg` コマンドを使用して、**LOGSECOND** パラメーターを大きくします。データベースがアクティブになっているときは、スペースは割り振られません。その代わり、このスペースは必要な場合にのみ割り振られます。
+`DB2 update db cfg` コマンドを使用して、 **LOGSECOND** パラメーターを大きくします。 データベースがアクティブになっているときは、スペースは割り振られません。 その代わり、このスペースは必要な場合にのみ割り振られます。
 
 ### アプリケーション・リソースのエンドポイントの定義
 {: #defining-the-endpoint-of-the-application-resources }
@@ -2205,7 +2205,7 @@ Liberty プロファイル用に、JNDI 環境を介してアプリケーショ�
 
 IBM Worklight V6.0 以降、デバイス上のアプリケーションを管理するために Application Center クライアントによって使用される URI プロトコル、ホスト名、およびポートを変更する必要がある場合は、この手順を使用します。
 
-**server.xml** ファイルを編集します。JNDI 項目を定義できるようにするためには、**server.xml** ファイル内に `<feature>` エレメントが次のように正しく定義されている必要があります。
+**server.xml** ファイルを編集します。 JNDI 項目を定義できるようにするためには、**server.xml** ファイル内に `<feature>` エレメントが次のように正しく定義されている必要があります。
 
 ```xml
 <feature>jndi-1.0</feature>
@@ -2225,9 +2225,9 @@ IBM Worklight V6.0 以降、デバイス上のアプリケーションを管理�
 | プロパティー | 説明 |
 |----------|-------------|
 | ibm.appcenter.services.endpoint | Application Center REST サービスの URI。 ファイアウォールまたはセキュア・リバース・プロキシーが使用されるシナリオでは、この URI は外部 URI でなければならず、ローカル LAN の内側の内部 URI であってはなりません。 |
-| ibm.appcenter.proxy.protocol	| アプリケーション・リソース URI のプロトコル。 このプロパティーは任意指定です。これが必要なのは、外部 URI のプロトコルと内部 URI のプロトコルが異なる場合のみです。 |
+| ibm.appcenter.proxy.protocol	| アプリケーション・リソース URI のプロトコル。 このプロパティーは任意指定です。 これが必要なのは、外部 URI のプロトコルと内部 URI のプロトコルが異なる場合のみです。 |
 | ibm.appcenter.proxy.host | アプリケーション・リソース URI のホスト名。 |
-| ibm.appcenter.proxy.port | アプリケーション・リソース URI のポート。 このプロパティーは任意指定です。これが必要なのは、外部 URI のプロトコルと内部 URI のプロトコルが異なる場合のみです。 |
+| ibm.appcenter.proxy.port | アプリケーション・リソース URI のポート。 このプロパティーは任意指定です。 これが必要なのは、外部 URI のプロトコルと内部 URI のプロトコルが異なる場合のみです。 |
 
 設定できる LAPD プロパティーの完全なリストについては、[Application Center の JNDI プロパティー](#jndi-properties-for-application-center)を参照してください。
 
@@ -2266,9 +2266,9 @@ Apache Tomcat インストール済み環境の conf ディレクトリーにあ
 | プロパティー | タイプ | 説明 |
 |----------|------|-------------|
 | ibm.appcenter.services.endpoint | java.lang.String | Application Center REST サービス (applicationcenter.war) の URI。 ファイアウォールまたはセキュア・リバース・プロキシーが使用されるシナリオでは、この URI は外部 URI でなければならず、ローカル LAN の内側の内部 URI であってはなりません。 |
-| ibm.appcenter.proxy.protocol | java.lang.String | アプリケーション・リソース URI のプロトコル。 このプロパティーは任意指定です。これが必要なのは、外部 URI のプロトコルと内部 URI のプロトコルが異なる場合のみです。 |
+| ibm.appcenter.proxy.protocol | java.lang.String | アプリケーション・リソース URI のプロトコル。 このプロパティーは任意指定です。 これが必要なのは、外部 URI のプロトコルと内部 URI のプロトコルが異なる場合のみです。 |
 | ibm.appcenter.proxy.host | java.lang.String | アプリケーション・リソース URI のホスト名。 |
-| ibm.appcenter.proxy.port | java.lang.Integer | アプリケーション・リソース URI のポート。 このプロパティーは任意指定です。これが必要なのは、外部 URI のプロトコルと内部 URI のプロトコルが異なる場合のみです。 |
+| ibm.appcenter.proxy.port | java.lang.Integer | アプリケーション・リソース URI のポート。 このプロパティーは任意指定です。 これが必要なのは、外部 URI のプロトコルと内部 URI のプロトコルが異なる場合のみです。 |
 
 設定できる JNDI プロパティーの完全なリストについては、[Application Center の JNDI プロパティー](#jndi-properties-for-application-center)を参照してください。
 

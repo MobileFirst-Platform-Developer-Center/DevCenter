@@ -57,7 +57,7 @@ If your organization has a firewall that restricts the traffic to or from the In
 * Configure the firewall to allow connectivity with FCM in order for your FCM client apps to receive messages.
 * The ports to open are 5228, 5229, and 5230. FCM typically uses only 5228, but it sometimes uses 5229 and 5230.
 * FCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169.
-* Ensure that your firewall accepts outgoing connections from {{ site.data.keys.mf_server }} to android.googleapis.com on port 443.
+* Ensure that your firewall accepts outgoing connections from {{ site.data.keys.mf_server }} to fcm.googleapis.com on port 443.
 
 <img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
 
@@ -66,7 +66,7 @@ If your organization has a firewall that restricts the traffic to or from the In
 iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
 To setup APNS:
 
-1. Generate a push notification certificate for development or production. For detailed steps, refer the `For iOS` section [here](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1). 
+1. Generate a push notification certificate for development or production. For detailed steps, refer the `For iOS` section [here](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1).
 2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then, click **Save**.
 
 #### Notes

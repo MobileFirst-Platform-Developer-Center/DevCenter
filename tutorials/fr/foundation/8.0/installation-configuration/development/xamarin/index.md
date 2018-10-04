@@ -20,6 +20,6 @@ Vous pouvez télécharger Xamarin Studio depuis la page des [téléchargements d
 
 ![Xamarin Studio](xamarin-studio.png)
 
-## Que faire ensuite ?
+## Etapes suivantes
 {: #whats-next }
 Maintenant que les environnements de développement {{ site.data.keys.product_full }} et Xamarin sont configurés, vous pouvez passer à la catégorie [Démarrage rapide](../../../quick-start/xamarin/) pour commencer à vous servir de {{ site.data.keys.product }} ou [Tous les tutoriels](../../../all-tutorials) pour en savoir plus sur certains aspects du développement {{ site.data.keys.product }}.

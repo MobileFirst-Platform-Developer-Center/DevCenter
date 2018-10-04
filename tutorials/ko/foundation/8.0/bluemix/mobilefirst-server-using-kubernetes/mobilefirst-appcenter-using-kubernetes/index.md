@@ -11,8 +11,8 @@ weight: 1
 아래의 지시사항에 따라 IBM Cloud에서 {{ site.data.keys.mf_app_center }} 인스턴스를 구성하십시오. 이를 달성하기 위해 다음 단계를 수행합니다.
 
 * 표준(유료 클러스터)의 Kubernetes Cluster 유형을 작성하십시오.
-* 필수 도구(Docker, Cloud Foundry CLI( cf ), IBM Cloud CLI( bx ), IBM Cloud CLI를 위한 Container Service 플러그인( bx cs ), IBM Cloud CLI를 위한 Container Registry 플러그인( bx cr ), Kubernetes CLI(kubectl))를 사용하여 호스트 컴퓨터를 설정하십시오. 
-* {{ site.data.keys.mf_app_center }} Docker 이미지를 빌드하여 IBM Cloud 저장소에 푸시하십시오. 
+* 필수 도구(Docker, Cloud Foundry CLI( cf ), IBM Cloud CLI( bx ), IBM Cloud CLI를 위한 Container Service 플러그인( bx cs ), IBM Cloud CLI를 위한 Container Registry 플러그인( bx cr ), Kubernetes CLI(kubectl))를 사용하여 호스트 컴퓨터를 설정하십시오.
+* {{ site.data.keys.mf_app_center }} Docker 이미지를 빌드하여 IBM Cloud 저장소에 푸시하십시오.
 * 마지막으로, Kubernetes Cluster에 Docker 이미지를 실행하십시오.
 
 >**참고:**  
@@ -49,7 +49,7 @@ IBM Cloud에 로그인하면 활성 IBM Cloud **영역**의 개요를 제공하�
 * IBM Cloud CLI를 위한 Container Registry 플러그인( bx cr )
 * Kubernetes CLI(kubectl)
 
-[전제조건 CLI를 설정하기 위한 단계](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps)를 확인하려면 IBM Cloud 문서를 참조하십시오. 
+[전제조건 CLI를 설정하기 위한 단계](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps)를 확인하려면 IBM Cloud 문서를 참조하십시오.
 
 ## IBM Cloud Container Service를 사용하여 Kubernetes Cluster 작성 및 설정
 {: #setup-kube-cluster}
@@ -59,7 +59,7 @@ IBM Cloud에 로그인하면 활성 IBM Cloud **영역**의 개요를 제공하�
 
 ## {{ site.data.keys.mf_bm_pkg_name }} 아카이브 다운로드
 {: #download-the-ibm-mfpf-container-8000-archive}
-IBM Cloud Containers를 사용하여 Kubernetes Cluster로 {{ site.data.keys.mf_app_center }}를 설정하려면 나중에 IBM Cloud에 푸시할 이미지를 먼저 작성해야 합니다. <br/>
+IBM Cloud Containers를 사용하여 Kubernetes Cluster로 {{ site.data.keys.mf_app_center }}를 설정하려면 나중에 IBM Cloud에 푸시할 이미지를 먼저 작성해야 합니다.<br/>
 [IBM Fix Central](http://www.ibm.com/support/fixcentral)에서 IBM Containers의 MobileFirst Server에 대한 임시 수정사항을 얻을 수 있습니다.<br/>
 Fix Central에서 최신 임시 수정사항을 다운로드하십시오. Kubernetes 지원은 iFix **8.0.0.0-IF201708220656**에서 사용할 수 있습니다.
 
@@ -77,7 +77,7 @@ Fix Central에서 최신 임시 수정사항을 다운로드하십시오. Kubern
             <div class="panel-body">
                 <img src="zip.png" alt="아카이브 파일의 파일 시스템 구조를 표시하는 이미지" style="float:right;width:570px"/>
                 <h4>bmx-kubernetes 폴더</h4>
-                <p>IBM Cloud Container Service를 사용하여 Kubernetes Cluster에 배치하는 데 필요한 사용자 정의 파일 및 스크립트가 들어 있습니다. </p>
+                <p>IBM Cloud Container Service를 사용하여 Kubernetes Cluster에 배치하는 데 필요한 사용자 정의 파일 및 스크립트가 들어 있습니다.</p>
 
                 <h4>Dockerfile-mfp-appcenter</h4>
 
@@ -195,10 +195,10 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>IBM_CLOUD_API_URL - </b>배치하려는 지역 또는 영역입니다. <br>
+                    <li><b>IBM_CLOUD_API_URL - </b>배치하려는 지역 또는 영역입니다.<br>
                       <blockquote>예: <i>api.ng.bluemix.net</i>(미국), <i>api.eu-de.bluemix.net</i>(독일), <i>api.au-syd.bluemix.net</i>(시드니)</blockquote>
                     </li>
-                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>영숫자 값으로 된 사용자의 계정 ID입니다(예: <i>a1b1b111d11e1a11d1fa1cc999999999</i>). <br>	계정 ID를 가져오려면 <code>bx target</code> 명령을 사용하십시오.</li>
+                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>영숫자 값으로 된 사용자의 계정 ID입니다(예: <i>a1b1b111d11e1a11d1fa1cc999999999</i>).<br>	계정 ID를 가져오려면 <code>bx target</code> 명령을 사용하십시오.</li>
                     <li><b>IBM_CLOUD_USER - </b>IBM Cloud 사용자 이름(이메일)입니다.</li>
                     <li><b>IBM_CLOUD_PASSWORD - </b>IBM Cloud 비밀번호입니다.</li>
                     <li><b>IBM_CLOUD_ORG - </b>IBM Cloud 조직 이름입니다.</li>
@@ -206,7 +206,7 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
                 </ul><br/>
                 <h4>prepareappcenterdbs.properties</h4>
                 {{ site.data.keys.mf_app_center }}를 사용하려면 외부 <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 on Cloud</i></a> 인스턴스가 필요합니다.<br/>
-                <blockquote><b>참고:</b> 사용자 고유의 DB2 데이터베이스도 사용할 수 있습니다. 데이터베이스에 연결하도록 IBM Cloud Kubernetes Cluster를 구성해야 합니다. </blockquote>
+                <blockquote><b>참고:</b> 사용자 고유의 DB2 데이터베이스도 사용할 수 있습니다. 데이터베이스에 연결하도록 IBM Cloud Kubernetes Cluster를 구성해야 합니다.</blockquote>
                 DB2 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오.
                 <ul>
                     <li><b>DB_TYPE</b> - <i>dashDB</i>(DB2 on Cloud를 사용하는 경우) 또는 <i>DB2</i>(사용자 고유의 DB2 데이터베이스를 사용하는 경우)입니다.</li>
@@ -278,7 +278,7 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
 
                 </li>
                 <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} 이미지 준비</b><br />
-                    {{ site.data.keys.mf_app_center }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>bx cr image-list</code>를 실행하십시오. <br/>
+                    {{ site.data.keys.mf_app_center }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>bx cr image-list</code>를 실행하십시오.<br/>
                     목록은 이미지 이름, 작성 날짜, ID를 포함합니다.<br/>
                     <b>대화식 모드</b>
 {% highlight bash %}
@@ -356,14 +356,14 @@ Before you apply an interim fix, back up your existing configuration files. The 
 
 ## IBM Cloud에서 컨테이너 제거
 {: #removing-the-container-from-ibmcloud }
-IBM Cloud에서 컨테이너를 제거하는 경우 레지스트리에서 이미지 이름도 제거해야 합니다.   
-다음 명령을 실행하여 IBM Cloud에서 컨테이너를 제거하십시오. 
+IBM Cloud에서 컨테이너를 제거하는 경우 레지스트리에서 이미지 이름도 제거해야 합니다.  
+다음 명령을 실행하여 IBM Cloud에서 컨테이너를 제거하십시오.
 
 1. `cf ic ps`(현재 실행 중인 컨테이너 나열)
 2. `cf ic stop container_id`(컨테이너 중지)
 3. `cf ic rm container_id`(컨테이너 제거)
 
-IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 cf ic 명령을 실행하십시오. 
+IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 cf ic 명령을 실행하십시오.
 
 1. `cf ic images`(레지스트리의 이미지 나열)
 2. `cf ic rmi image_id`(레지스트리에서 이미지 제거)
@@ -371,11 +371,11 @@ IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 cf ic
 ## IBM Cloud에서 Kubernetes 배치 제거
 {: #removing-kube-deployments}
 
-IBM Cloud Kubernetes 클러스터에서 배치된 인스턴스를 제거하려면 다음 명령을 실행하십시오. 
+IBM Cloud Kubernetes 클러스터에서 배치된 인스턴스를 제거하려면 다음 명령을 실행하십시오.
 
 `kubectl delete -f mfp-deployment-appcenter.yaml`(yaml에서 정의된 모든 Kubernetes 유형을 제거함)
 
-IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 명령을 실행하십시오. 
+IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 명령을 실행하십시오.
 ```bash
 bx cr image-list(레지스트리의 이미지 나열)
 bx cr image-rm image-name(레지스트리에서 이미지 제거)
@@ -385,9 +385,9 @@ bx cr image-rm image-name(레지스트리에서 이미지 제거)
 {: #removing-the-database-service-configuration-from-ibmcloud }
 {{ site.data.keys.mf_app_center }} 이미지 구성 중에 **prepareappcenterdbs.sh** 스크립트를 실행한 경우 {{ site.data.keys.mf_app_center }}에 필요한 구성 및 데이터베이스 테이블이 작성됩니다. 이 스크립트는 컨테이너의 데이터베이스 스키마도 작성합니다.
 
-IBM Cloud에서 데이터베이스 서비스 구성을 제거하려면 IBM Cloud 대시보드를 사용하여 다음 프로시저를 수행하십시오. 
+IBM Cloud에서 데이터베이스 서비스 구성을 제거하려면 IBM Cloud 대시보드를 사용하여 다음 프로시저를 수행하십시오.
 
 1. IBM Cloud 대시보드에서 사용한 DB2 on Cloud 서비스를 선택하십시오. **prepareappcenterdbs.sh** 스크립트를 실행하는 동안 매개변수로 제공한 DB2 서비스 이름을 선택하십시오.
 2. DB2 콘솔을 실행하여 선택한 DB2 서비스 인스턴스의 스키마와 데이터베이스 오브젝트에 대한 작업을 수행하십시오.
 3. IBM {{ site.data.keys.mf_server }} 구성과 관련된 스키마를 선택하십시오. 스키마 이름은 **prepareappcenterdbs.sh** 스크립트를 실행하는 동안 매개변수로 제공한 이름입니다.
-4. 스키마 이름과 그 아래의 오브젝트를 신중히 검사한 후 각 스키마를 삭제하십시오. IBM Cloud에서 데이터베이스 구성이 제거됩니다. 
+4. 스키마 이름과 그 아래의 오브젝트를 신중히 검사한 후 각 스키마를 삭제하십시오. IBM Cloud에서 데이터베이스 구성이 제거됩니다.

@@ -27,4 +27,4 @@ To continue with {{ site.data.keys.product_adj }} development in Cordova applica
 
 * Learn how to add the [{{ site.data.keys.product_adj }} SDK to Cordova applications](../../../application-development/sdk/cordova/).
 * For applications development, refer to the [Using the {{ site.data.keys.product }} SDK](../../../application-development/) tutorials.
-* For adapters develpment, refer to the [Adapters](../../../adapters/) category.
+* For adapters development, refer to the [Adapters](../../../adapters/) category.

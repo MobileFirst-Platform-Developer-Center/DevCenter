@@ -76,7 +76,7 @@ weight: 6
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
 
-                       if (accessToken.Value != null &&  accessToken.Value != "")
+                       if (accessToken.Value != null && accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
@@ -101,48 +101,48 @@ weight: 6
 
 ### 4. アダプターのデプロイ
 {: #4-deploy-an-adapter }
-[この準備された .adapter 成果物](../javaAdapter.adapter) をダウンロードし、それを {{ site.data.keys.mf_console }} から **「アクション」 → 「アダプターのデプロイ」** アクションを使用してデプロイします。
+[この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{ site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
-あるいは、**「アダプター」** の隣の **「新規」** ボタンをクリックします。  
+あるいは、**「アダプター」**の隣の**「新規」**ボタンをクリックします。  
 
-1. **「アクション」 → 「サンプルのダウンロード」** オプションを選択します。 「Hello World」 **Java** アダプターのサンプルをダウンロードします。
+1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。 「Hello World」**Java** アダプターのサンプルをダウンロードします。
 
-   > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の **「開発環境をセットアップします」** の説明に従います。
+   > Maven および {{ site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。
 
-2. **コマンド・ライン** ・ウィンドウからアダプターの Maven プロジェクト・ルート・フォルダーにナビゲートし、以下のコマンドを実行します。
+2. **コマンド・ライン**・ウィンドウからアダプターの Maven プロジェクト・ルート・フォルダーにナビゲートし、以下のコマンドを実行します。
 
    ```bash
    mfpdev adapter build
    ```
 
-3. ビルドが終了したら、それを {{ site.data.keys.mf_console }} から **「アクション」 → 「アダプターのデプロイ」** アクションを使用してデプロイします。 アダプターは、**[アダプター]/target** フォルダー内にあります。
+3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{ site.data.keys.mf_console }} からアダプターをデプロイします。 アダプターは、**[adapter]/target** フォルダー内にあります。
 
    <img class="gifplayer" alt="アダプターのデプロイ" src="create-an-adapter.png"/>
 
-<!-- <img src="device-screen.png" alt="サンプル・アプリケーション" style="float:right"/>-->
+<!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
 ### 5. アプリケーションのテスト
 {: #5-testing-the-application }
-1. Xamarin Studio で、`mfpclient.properties` ファイルを選択し、**protocol**、**host**、**port** の各プロパティーをご使用の {{ site.data.keys.mf_server }} の正しい値で編集します。
+1. Xamarin Studio で、`mfpclient.properties` ファイルを選択し、**protocol**、**host**、**port** の各プロパティーをご使用の {{ site.data.keys.mf_server }} に適した値で編集します。
     * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
     * リモート {{ site.data.keys.mf_server }} (IBM Cloud 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
     * IBM Cloud Private 上で Kubernetes クラスターを使用していて、デプロイメントのタイプが **NodePort** の場合、通常、ポートの値は、Kubernetes クラスターのサービスによって公開される **NodePort** です。
-
-2. **「再生」** ボタンを押します。
+    
+2. **「再生」**ボタンを押します。
 
 <br clear="all"/>
 ### 結果
 {: #results }
-* **「MobileFirst Server の ping (Ping MobileFirst Server)」** ボタンをクリックすると、**「MobileFirst Server に接続 (Connected to MobileFirst Server)」** が表示されます。
+* **「MobileFirst Server の ping」**ボタンをクリックすると、**「MobileFirst Server に接続」**が表示されます。
 * アプリケーションが {{ site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。
 
-その場合、アダプター応答が Xamarin Studio コンソールに出力されます。
+すると、アダプター応答が Xamarin Studio コンソールに出力されます。
 
-![{{ site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](console-output.png)
+![{{ site.data.keys.mf_server }} からリソースを正常に呼び出したアプリケーションのイメージ](console-output.png)
 
-## 次のステップ
+## 次の手順
 {: #next-steps }
 アプリケーションでのアダプターの使用、プッシュ通知などの追加のサービスを統合する方法、{{ site.data.keys.product_adj }} セキュリティー・フレームワークの使用などについて学習します。
 
-- [アダプター開発に関するチュートリアル](../../adapters/) を検討する
-- [認証とセキュリティーに関するチュートリアル](../../authentication-and-security/) を検討する
-- [すべてのチュートリアル](../../all-tutorials) を検討する
+- [アダプターの開発](../../adapters/)チュートリアルを検討する
+- [認証およびセキュリティー・チュートリアル](../../authentication-and-security/)を検討する
+- [すべてのチュートリアル](../../all-tutorials)を検討する

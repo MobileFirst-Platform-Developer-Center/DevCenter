@@ -4,7 +4,7 @@ title: Recursos principais do produto
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral
+## Visão geral
 {: #overview }
 Com o {{ site.data.keys.product_full }}, é possível usar recursos, como desenvolvimento, teste, conexões de backend, notificações push, modo offline, atualização, segurança, análise de dados, monitoramento e publicação de aplicativo.
 

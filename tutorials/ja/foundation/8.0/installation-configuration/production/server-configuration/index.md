@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server の構成
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
@@ -27,22 +27,22 @@ IBM {{ site.data.keys.mf_server }} のエンドポイントに対してホワイ
 
 > **注:** {{ site.data.keys.product }} によって公開されている URL に関する情報を、ガイドラインとして提供しています。 組織は、ホワイトリストとブラックリストで有効になっているものに基づいて、それらの URL を企業のインフラストラクチャーで確実にテストする必要があります。
 
-| `<runtime context root>/api/` の下の API URL | 説明                               | ホワイトリストとして推奨されるか? |
+| `<runtime context root>/api/` の下の API URL |説明| ホワイトリストとして推奨されるか? |
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | 指定されたアダプターに関して、アダプターの Swagger 文書を返す | いいえ。管理者と開発者が内部でのみ使用します。 |
-| /adapters/*  | アダプターのサービス提供 | はい |
-| /az/v1/authorization/* | クライアントが特定のスコープにアクセスすることを許可する | はい |
+| /adapters/*  | アダプターのサービス提供 |はい|
+| /az/v1/authorization/* | クライアントが特定のスコープにアクセスすることを許可する |はい|
 | /az/v1/introspection | クライアントのアクセス・トークンをイントロスペクトする | いいえ。この API は機密のクライアント専用です。 |
-| /az/v1/token | クライアントのアクセス・トークンを生成する | はい |
-| /clientLogProfile/* | クライアント・ログ・プロファイルを取得する | はい |
+| /az/v1/token | クライアントのアクセス・トークンを生成する |はい|
+| /clientLogProfile/* | クライアント・ログ・プロファイルを取得する |はい|
 | /directupdate/* | ダイレクト・アップデートの .zip ファイルを取得する | はい (ダイレクト・アップデートの使用を予定している場合) |
-| /loguploader | クライアント・ログをサーバーにアップロードする | はい |
-| /preauth/v1/heartbeat | クライアントからのハートビートを受け入れ、最後のアクティビティー時刻をメモする | はい |
-| /preauth/v1/logout | セキュリティー検査からログアウトする | はい |
-| /preauth/v1/preauthorize | 特定のスコープのセキュリティー検査をマップし、実行する | はい |
+| /loguploader | クライアント・ログをサーバーにアップロードする |はい|
+| /preauth/v1/heartbeat | クライアントからのハートビートを受け入れ、最後のアクティビティー時刻をメモする |はい|
+| /preauth/v1/logout | セキュリティー検査からログアウトする |はい|
+| /preauth/v1/preauthorize | 特定のスコープのセキュリティー検査をマップし、実行する |はい|
 | /reach | サーバーは到達可能 | いいえ。内部使用専用です。 |
 | /registration/v1/clients/* | 登録サービス・クライアント API | いいえ。この API は機密のクライアント専用です。 |
-| /registration/v1/self/* | 登録サービス・クライアントのセルフ登録 API | はい |
+| /registration/v1/self/* | 登録サービス・クライアントのセルフ登録 API |はい|
 
 ## TLS V1.2 を使用可能にするための {{ site.data.keys.mf_server }} の構成
 {: #configuring-mobilefirst-server-to-enable-tls-v12 }
@@ -130,8 +130,8 @@ SSL プロトコルのうち Transport Layer Security v1.2 (TLS) V1.2 のみを�
 | {{ site.data.keys.product_adj }} アプリケーションの削除。	  | はい           | はい         | いいえ          | いいえ         |
 | 新規アダプターのアップロード。     | はい           | はい         | いいえ          | いいえ         |
 | アダプターの削除。         | はい           | はい         | いいえ          | いいえ         |
-| アプリケーションに対するアプリケーション認証性テストのオン / オフ | はい | はい | いいえ | いいえ    |
-| {{ site.data.keys.product_adj }} アプリケーションの状況に関するプロパティーの変更: アクティブ、アクティブ通知、使用不可。 | はい | はい | はい | いいえ |
+| アプリケーションに対するアプリケーション認証性テストのオン / オフ |はい|はい| いいえ | いいえ    |
+| {{ site.data.keys.product_adj }} アプリケーションの状況に関するプロパティーの変更: アクティブ、アクティブ通知、使用不可。 |はい|はい|はい| いいえ |
 
 基本的にすべてのロールが GET 要求を実行でき、**mfpadmin**、**mfpdeployer**、および **mfpmonitor** の各ロールが POST 要求と PUT 要求も実行でき、**mfpadmin** ロールと **mfpdeployer** ロールが DELETE 要求も実行できます。
 
@@ -141,7 +141,7 @@ SSL プロトコルのうち Transport Layer Security v1.2 (TLS) V1.2 のみを�
 |                        | 管理者 | デプロイメント担当者    | オペレーター    | モニター    |
 |------------------------|---------------|-------------|-------------|------------|
 | Java EE セキュリティー・ロール。 | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| GET 要求 {::nomarkdown}<ul><li>アプリケーションに対してプッシュ通知を使用するすべてのデバイスのリストを取得する</li><li>特定のデバイスの詳細を取得する</li><li>サブスクリプションのリストを取得する</li><li>サブスクリプション ID に関連付けられたサブスクライブ情報を取得する</li><li>GCM 構成の詳細を取得する</li><li>APNS 構成の詳細を取得する</li><li>アプリケーションに対して定義されているタグのリストを取得する</li><li>特定のタグの詳細を取得する</li></ul>{:/}| はい           | はい         | はい         | はい        |
+| GET 要求 {::nomarkdown}<ul><li>アプリケーションに対してプッシュ通知を使用するすべてのデバイスのリストを取得する</li><li>特定のデバイスの詳細を取得する</li><li>サブスクリプションのリストを取得する</li><li>サブスクリプション ID に関連付けられたサブスクライブ情報を取得する</li><li>GCM 構成の詳細を取得する</li><li>APNS 構成の詳細を取得する</li><li>アプリケーションに対して定義されているタグのリストを取得する</li><li>特定のタグの詳細を取得する</li></ul>{:/}| はい           | はい         | はい         | はい         |
 | POST 要求および PUT 要求 {::nomarkdown}<ul><li>アプリをプッシュ通知に登録する</li><li>プッシュ・デバイス登録を更新する</li><li>サブスクライブを作成する</li><li>GCM 構成を追加または更新する</li><li>APNS 構成を追加または更新する</li><li>デバイスに通知をサブミットする</li><li>タグを作成または更新する</li></ul>{:/} | はい           | はい         | はい         | いいえ         |
 | DELETE 要求 {::nomarkdown}<ul><li>プッシュ通知へのデバイスの登録を削除する</li><li>サブスクリプションを削除する</li><li>デバイスをタグからアンサブスクライブする</li><li>GCM 構成を削除する</li><li>APNS 構成を削除する</li><li>タグを削除する</li></ul>{:/} | はい           | はい         | いいえ          | いいえ         |
 
@@ -151,7 +151,7 @@ SSL プロトコルのうち Transport Layer Security v1.2 (TLS) V1.2 のみを�
 |                        | 管理者 | デプロイメント担当者    | オペレーター    | モニター    |
 |------------------------|---------------|-------------|-------------|------------|
 | Java EE セキュリティー・ロール。 | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| 特定のデバイスを使用不可にし、ステータスを紛失や盗難とマーク付けして、そのデバイス上のアプリケーションからのアクセスをブロック。       | はい           | はい         | はい          | いいえ        |
+| 特定のデバイスを使用不可にし、ステータスを紛失や盗難とマーク付けして、そのデバイス上のアプリケーションからのアクセスをブロック。       | はい           | はい         | はい         | いいえ         |
 | 特定のアプリケーションを使用不可にし、状態を無効とマーク付けして、デバイス上にあるその特定のアプリケーションからのアクセスをブロック。              | はい           | はい         | はい         | いいえ         |
 
 LDAP などのユーザー・リポジトリーを介した認証方式を使用することを選択した場合、ユーザー・リポジトリーと共にユーザーおよびグループを使用して {{ site.data.keys.mf_server }} 管理のアクセス制御リスト (ACL) を定義できるように、{{ site.data.keys.mf_server }} 管理を構成することができます。 この手順は、使用している Web アプリケーション・サーバーのタイプとバージョンによって異なります。
@@ -180,11 +180,11 @@ WebSphere Application Server コンソールで基本的なユーザー構成を
 {: #configuring-websphere-application-server-liberty-profile-for-mobilefirst-server-administration }
 WebSphere Application Server Liberty Profile で、サーバーの **server.xml** 構成ファイルに、**mfpadmin**、**mfpdeployer**、**mfpmonitor**、および **mfpoperator** の各ロールを構成します。
 
-セキュリティー・ロールを構成するには、**server.xml** ファイルを編集する必要があります。各 `<application>` エレメントの `<application-bnd>` エレメントに、`<security-role>` エレメントを作成します。 各 `<security-role>` エレメントは、**mfpadmin**、mfpdeployer、mfpmonitor、および mfpoperator の各ロール用です。 これらのロールを適切なユーザー・グループ名にマップします。この例では、**mfpadmingroup**、**mfpdeployergroup**、**mfpmonitorgroup**、または **mfpoperatorgroup** です。 これらのグループは、`<basicRegistry>` エレメントによって定義されます。 このエレメントをカスタマイズするか、または、全体を `<ldapRegistry>` エレメントまたは `<safRegistry>` エレメントで置き換えることができます。
+セキュリティー・ロールを構成するには、**server.xml** ファイルを編集する必要があります。 各 `<application>` エレメントの `<application-bnd>` エレメントに、`<security-role>` エレメントを作成します。 各 `<security-role>` エレメントは、**mfpadmin**、mfpdeployer、mfpmonitor、および mfpoperator の各ロール用です。 これらのロールを適切なユーザー・グループ名にマップします。この例では、**mfpadmingroup**、**mfpdeployergroup**、**mfpmonitorgroup**、または **mfpoperatorgroup** です。 これらのグループは、`<basicRegistry>` エレメントによって定義されます。 このエレメントをカスタマイズするか、または、全体を `<ldapRegistry>` エレメントまたは `<safRegistry>` エレメントで置き換えることができます。
 
 次に、多数のインストール済みアプリケーション (例えば、80 個のアプリケーション) がある状態で良好な応答時間を維持するために、管理データベース用の接続プールを構成します。
 
-1. **server.xml** ファイルを編集します。例えば、次のとおりです。
+1. **server.xml** ファイルを編集します。 例えば、次のとおりです。
 
    ```xml
    <security-role name="mfpadmin">
@@ -286,7 +286,7 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 
       コンテキスト・ルート (前の例では **app\_context\_root**) は、JNDI エントリーと特定の {{ site.data.keys.product_adj }} アプリケーションを接続します。 複数の {{ site.data.keys.product_adj }} アプリケーションが同じサーバー上に存在する場合は、コンテキスト・パスの接頭部を使用して、各アプリケーションに対して固有の JNDI エントリーを定義することができます。
 
-      > **注:** 一部のプロパティーは、コンテキスト・ルートでプロパティー名に接頭部を付けることなく、WebSphere Application Server Liberty でグローバルに定義されます。 これらのプロパティーのリストについては、[グローバル JNDI 項目](../appserver/#global-jndi-entries)を参照してください。
+      > **注:** 一部のプロパティーは、コンテキスト・ルートでプロパティー名に接頭部を付けることなく、WebSphere Application Server Liberty でグローバルに定義されます。これらのプロパティーのリストについては、[グローバル JNDI 項目](../prod-env/appserver/#global-jndi-entries)を参照してください。
 
       他のすべての JNDI プロパティーでは、名前の接頭部としてアプリケーションのコンテキスト・ルートを付加する必要があります。
 
@@ -365,7 +365,7 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 #### 管理サービスの JNDI プロパティー: タイムアウト
 {: #jndi-properties-for-administration-service-timeout }
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
 | mfp.admin.actions.prepareTimeout | オプション | デプロイメント・トランザクション中に管理サービスからランタイムにデータを転送する際のタイムアウト (ミリ秒)。 この時間内にランタイムに到達できない場合、エラーが発生し、デプロイメント・トランザクションは終了します。<br/><br/>デフォルト値: 1800000 ミリ秒 (30 分) |
 | mfp.admin.actions.commitRejectTimeout | オプション | ランタイムへの接続時に、デプロイメント・トランザクションをコミットまたはリジェクトする際のタイムアウト (ミリ秒)。 この時間内にランタイムに到達できない場合、エラーが発生し、デプロイメント・トランザクションは終了します。<br/><br/>デフォルト値: 120000 ミリ秒 (2 分) |
@@ -375,15 +375,15 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 #### 管理サービスの JNDI プロパティー: ロギング
 {: #jndi-properties-for-administration-service-logging }
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
 | mfp.admin.logging.formatjson | オプション | 応答およびログ・メッセージで JSON オブジェクトの Pretty フォーマット (余分なブランク・スペース) を使用可能にするには、このプロパティーを true に設定します。 このプロパティーを設定すると、サーバーをデバッグする時に役立ちます。 デフォルト値: false。 |
-| mfp.admin.logging.tosystemerror | オプション | すべてのロギング・メッセージを System.Error にも送信するかどうかを指定します。 このプロパティーを設定すると、サーバーをデバッグする時に役立ちます。 |
+| mfp.admin.logging.tosystemerror | オプション |すべてのロギング・メッセージを System.Error にも送信するかどうかを指定します。このプロパティーを設定すると、サーバーをデバッグする時に役立ちます。 |
 
 #### 管理サービスの JNDI プロパティー: プロキシー
 {: #jndi-properties-for-administration-service-proxies }
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
 | mfp.admin.proxy.port | オプション | {{ site.data.keys.product_adj }} 管理サーバーがファイアウォールまたはリバース・プロキシーの背後にある場合、このプロパティーはホストのアドレスを指定します。 このプロパティーを設定すると、ファイアウォールの外のユーザーが {{ site.data.keys.product_adj }} 管理サーバーにアクセスできます。 通常、このプロパティーはプロキシーのポートです。例えば、443 など。 これは、外部と内部の URI のプロトコルが異なる場合にのみ必要です。 |
 | mfp.admin.proxy.protocol | オプション | {{ site.data.keys.product_adj }} 管理サーバーがファイアウォールまたはリバース・プロキシーの背後にある場合、このプロパティーはプロトコル (HTTP または HTTPS) を指定します。 このプロパティーを設定すると、ファイアウォールの外のユーザーが {{ site.data.keys.product_adj }} 管理サーバーにアクセスできます。 通常、このプロパティーはプロキシーのプロトコルに設定されます。 例えば、wl.net などです。 このプロパティーは、外部と内部の URI のプロトコルが異なる場合にのみ必要です。 |
@@ -393,7 +393,7 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 #### 管理サービスの JNDI プロパティー: トポロジー
 {: #jndi-properties-for-administration-service-topologies }
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
 | mfp.admin.audit | オプション。 | {{ site.data.keys.mf_console }} の監査フィーチャーを使用不可にするには、このプロパティーを false に設定します。 デフォルト値は true です。 |
 | mfp.admin.environmentid | オプション。 | MBean の登録のための環境 ID。 この ID は、{{ site.data.keys.mf_server }} の異なるインスタンスが同じアプリケーション・サーバー上にインストールされている場合に使用します。 この ID は、どの管理サービス、どのコンソール、およびどのランタイムが同じインストールに属しているかを判別します。 管理サービスは、同じ環境 ID を持つランタイムのみを管理します。 |
@@ -401,28 +401,28 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 | mfp.admin.hsts | オプション。 | RFC 6797 に従って HTTP Strict Transport Security を有効にする場合は、true に設定します。 |
 | mfp.topology.platform | オプション | サーバー・タイプ。 有効な値は以下のとおりです。{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}この値を設定しないと、アプリケーションはサーバー・タイプを推測しようとします。 |
 | mfp.topology.clustermode | オプション | サーバー・タイプに加え、ここにサーバー・トポロジーを指定します。 有効な値は以下のとおりです。 {::nomarkdown}<ul><li>Standalone</li><li>クラスター</li><li>Farm</li></ul>{:/}デフォルト値は Standalone です。 |
-| mfp.admin.farm.heartbeat | オプション | このプロパティーにより、サーバー・ファーム・トポロジーで使用するハートビート・レートを分単位で設定することができます。 デフォルト値は 2 分です。<br/><br/>1 つのサーバー・ファーム内では、すべてのメンバーが同じハートビート・レートを使用しなければなりません。 ファーム内の 1 つのサーバーでこの JNDI 値を設定または変更すると、そのファーム内の他のすべてのサーバーでもそれと同じ値を設定する必要があります。 詳しくは、[サーバー・ファーム・ノードのライフサイクル ](../appserver/#lifecycle-of-a-server-farm-node)を参照してください。 |
-| mfp.admin.farm.missed.heartbeats.timeout | オプション | このプロパティーにより、あるファーム・メンバーで何個のハートビートが欠落すると、そのファーム・メンバーに障害が発生したかダウンしたと見なされるかを設定できます。 デフォルト値は 2 です。<br/><br/>1 つのサーバー・ファーム内では、すべてのメンバーが同じ欠落ハートビートの値を使用しなければなりません。 ファーム内の 1 つのサーバーでこの JNDI 値を設定または変更すると、そのファーム内の他のすべてのサーバーでもそれと同じ値を設定する必要があります。 詳しくは、[サーバー・ファーム・ノードのライフサイクル ](../appserver/#lifecycle-of-a-server-farm-node)を参照してください。 |
+| mfp.admin.farm.heartbeat | オプション | このプロパティーにより、サーバー・ファーム・トポロジーで使用するハートビート・レートを分単位で設定することができます。 デフォルト値は 2 分です。<br/><br/>1 つのサーバー・ファーム内では、すべてのメンバーが同じハートビート・レートを使用しなければなりません。 ファーム内の 1 つのサーバーでこの JNDI 値を設定または変更すると、そのファーム内の他のすべてのサーバーでもそれと同じ値を設定する必要があります。 詳しくは、[サーバー・ファーム・ノードのライフサイクル ](../prod-env/appserver/#lifecycle-of-a-server-farm-node)を参照してください。|
+| mfp.admin.farm.missed.heartbeats.timeout | オプション | このプロパティーにより、あるファーム・メンバーで何個のハートビートが欠落すると、そのファーム・メンバーに障害が発生したかダウンしたと見なされるかを設定できます。 デフォルト値は 2 です。<br/><br/>1 つのサーバー・ファーム内では、すべてのメンバーが同じ欠落ハートビートの値を使用しなければなりません。 ファーム内の 1 つのサーバーでこの JNDI 値を設定または変更すると、そのファーム内の他のすべてのサーバーでもそれと同じ値を設定する必要があります。 詳しくは、[サーバー・ファーム・ノードのライフサイクル ](../prod-env/appserver/#lifecycle-of-a-server-farm-node)を参照してください。|
 | mfp.admin.farm.reinitialize | オプション | ファーム・メンバーを再登録または再初期化するためのブール値 (true または false)。 |
 | mfp.server.swagger.ui.url | オプション | このプロパティーは、管理コンソールで表示される Swagger ユーザー・インターフェースの URL を定義します。 |
 
 #### 管理サービスの JNDI プロパティー: リレーショナル・データベース
 {: #jndi-properties-for-administration-service-relational-database }
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
-| mfp.admin.db.jndi.name | オプション | データベースの JNDI 名。 このパラメーターは、データベースを指定する標準メカニズムです。 デフォルト値は **java:comp/env/jdbc/mfpAdminDS** です。 |
+| mfp.admin.db.jndi.name | オプション |データベースの JNDI 名。このパラメーターは、データベースを指定する標準メカニズムです。 デフォルト値は **java:comp/env/jdbc/mfpAdminDS** です。 |
 | mfp.admin.db.openjpa.ConnectionDriverName | オプション/条件によって必須 | データベース接続ドライバー・クラスの完全修飾名。 **mfp.admin.db.jndi.name ** プロパティーによって指定されているデータ・ソースがアプリケーション・サーバー構成に定義されていない場合にのみ必須です。 |
 | mfp.admin.db.openjpa.ConnectionURL | オプション/条件によって必須 | データベース接続の URL。 **mfp.admin.db.jndi.name ** プロパティーによって指定されているデータ・ソースがアプリケーション・サーバー構成に定義されていない場合にのみ必須です。 |
 | mfp.admin.db.openjpa.ConnectionUserName | オプション/条件によって必須 | データベース接続のユーザー名。 **mfp.admin.db.jndi.name ** プロパティーによって指定されているデータ・ソースがアプリケーション・サーバー構成に定義されていない場合にのみ必須です。 |
-| mfp.admin.db.openjpa.ConnectionPassword | オプション/条件によって必須 | データベース接続のパスワード。 **mfp.admin.db.jndi.name ** プロパティーによって指定されているデータ・ソースがアプリケーション・サーバー構成に定義されていない場合にのみ必須です。 |
-| mfp.admin.db.openjpa.Log | オプション | このプロパティーは OpenJPA に渡され、JPA ロギングを有効にします。 詳細については、[the Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html) を参照してください。 |
+| mfp.admin.db.openjpa.ConnectionPassword | オプション/条件によって必須 |データベース接続のパスワード。**mfp.admin.db.jndi.name ** プロパティーによって指定されているデータ・ソースがアプリケーション・サーバー構成に定義されていない場合にのみ必須です。 |
+| mfp.admin.db.openjpa.Log | オプション |このプロパティーは OpenJPA に渡され、JPA ロギングを有効にします。詳細については、[the Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html) を参照してください。 |
 | mfp.admin.db.type | オプション | このプロパティーは、データベースのタイプを定義します。 デフォルト値は、接続 URL から推定されます。 |
 
 #### 管理サービスの JNDI プロパティー: ライセンス交付
 {: #jndi-properties-for-administration-service-licensing }
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
 | mfp.admin.license.key.server.host	| {::nomarkdown}<ul><li>永久ライセンスの場合、オプション</li><li>トークン・ライセンスの場合、必須。</li></ul>{:/} | Rational License Key Server のホスト名。 |
 | mfp.admin.license.key.server.port	| {::nomarkdown}<ul><li>永久ライセンスの場合、オプション</li><li>トークン・ライセンスの場合、必須。</li></ul>{:/} | Rational License Key Server のポート番号。 |
@@ -430,7 +430,7 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 #### 管理サービスの JNDI プロパティー: JNDI 構成
 {: #jndi-properties-for-administration-service-jndi-configurations }
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
 | mfp.jndi.configuration | オプション | WAR ファイルに組み入れられたプロパティー・ファイルから JNDI プロパティー (このプロパティー以外) を読み取る必要がある場合は、JNDI 構成の名前。 このプロパティーを設定しないと、JNDI プロパティーはプロパティー・ファイルから読み取られません。 |
 | mfp.jndi.file | オプション | Web サーバーにインストールされたファイルから JNDI プロパティー (このプロパティー以外) を読み取る必要がある場合は、JNDI 構成を含むファイルの名前。 このプロパティーを設定しないと、JNDI プロパティーはプロパティー・ファイルから読み取られません。 |
@@ -440,7 +440,7 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 #### 管理サービスの JNDI プロパティー: ライブ更新サービス
 {: #jndi-properties-for-administration-service-live-update-service }
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
 | mfp.config.service.url | オプション	ライブ更新サービスの URL。 デフォルトの URL は、config を管理サービスのコンテキスト・ルートに追加することで、管理サービスの URL から取得されます。 |
 | mfp.config.service.user | 必須 | ライブ更新サービスにアクセスするために使用されるユーザー名。 サーバー・ファーム・トポロジーでは、ユーザー名はファームのすべてのメンバーで同じでなければなりません。 |
@@ -452,7 +452,7 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 #### 管理サービスの JNDI プロパティー: プッシュ・サービス
 {: #jndi-properties-for-administration-service-push-service }
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
 | mfp.admin.push.url | オプション | プッシュ・サービスの URL。 このプロパティーが指定されていない場合、プッシュ・サービスは使用不可とみなされます。 このプロパティーが適切に設定されていない場合、管理サービスがプッシュ・サービスに接続できず、{{ site.data.keys.mf_console }} のプッシュ・サービスの管理が機能しません。 |
 | mfp.admin.authorization.server.url | オプション | プッシュ・サービスによって使用される OAuth 許可サーバーの URL。 デフォルトの URL は、コンテキスト・ルートを最初にインストールされたランタイムのコンテキスト・ルートに変更することで、管理サービスの URL から取得されます。 複数のランタイムをインストールする場合、このプロパティーを設定するのが最良です。 このプロパティーが適切に設定されていない場合、管理サービスがプッシュ・サービスに接続できず、{{ site.data.keys.mf_console }} のプッシュ・サービスの管理が機能しません。 |
@@ -465,7 +465,7 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 {: #jndi-properties-for-mobilefirst-operations-console }
 {{ site.data.keys.mf_console }} の Web アプリケーション (mfp-admin-ui.war) で、以下のプロパティーを設定できます。
 
-| プロパティー                 | オプションまたは必須 | 説明  |
+| プロパティー                 | オプションまたは必須 |説明|
 |--------------------------|-----------------------|--------------|
 | mfp.admin.endpoint | オプション | {{ site.data.keys.mf_console }} が、{{ site.data.keys.mf_server }} 管理の REST サービスを見つけられるようにします。 **mfp-admin-service.war** Web アプリケーションの外部アドレスとコンテキスト・ルートを指定します。 ファイアウォールまたはセキュア・リバース・プロキシーが使用されるシナリオでは、この URI は外部 URI でなければならず、ローカル LAN の内側の内部 URI であってはなりません。 例えば、https://wl.net:443/mfpadmin などです。 |
 | mfp.admin.global.logout | オプション | コンソールのログアウト中に WebSphere ユーザー認証キャッシュをクリアします。 このプロパティーは、WebSphere Application Server V7 にのみ有用です。 デフォルト値は false です。 |
@@ -490,13 +490,13 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 
 | プロパティー | 説明 |
 |----------|-------------|
-| mfp.admin.jmx.dmgr.host | 必須。 デプロイメント・マネージャーのホスト名。 WebSphere Application Server Network Deployment のみ。 |
-| mfp.admin.jmx.dmgr.port | 必須。 デプロイメント・マネージャーの RMI ポートまたは SOAP ポート。 WebSphere Application Server Network Deployment のみ。 |
+| mfp.admin.jmx.dmgr.host |必須。デプロイメント・マネージャーのホスト名。 WebSphere Application Server Network Deployment のみ。 |
+| mfp.admin.jmx.dmgr.port |必須。デプロイメント・マネージャーの RMI ポートまたは SOAP ポート。 WebSphere Application Server Network Deployment のみ。 |
 | mfp.admin.jmx.host | Liberty のみ。 JMX REST 接続のホスト名。 Liberty 集合の場合、コントローラーのホスト名を使用します。 |
 | mfp.admin.jmx.port | Liberty のみ。 JMX REST 接続用のポート番号。 Liberty 集合の場合、REST コネクターのポートは、`<httpEndpoint>` エレメントで宣言される httpsPort 属性の値と同じでなければなりません。 このエレメントは、Liberty コントローラーの server.xml ファイル内で宣言されます。 |
 | mfp.admin.jmx.user | オプション。 WebSphere Application Server ファーム: SOAP 接続のユーザー名。<br/><br/>Liberty 集合: Liberty コントローラーの server.xml ファイルの `<administrator-role>` エレメントで定義されたコントローラー管理者のユーザー名。 |
 | mfp.admin.jmx.pwd | オプション。 WebSphere Application Server ファーム: SOAP 接続のユーザー・パスワード。<br/><br/>Liberty 集合: Liberty コントローラーの server.xml ファイルの `<administrator-role>` エレメントで定義されたコントローラー管理者のパスワード。 |
-| mfp.admin.serverid | サーバー・ファームおよび Liberty 集合では必須、その他の場合はオプション。<br/><br/>サーバー・ファーム: サーバー ID。 ファーム内のサーバーごとに異なる必要があります。<br/><br/>Liberty 集合: メンバー ID。 集合内のメンバーごとに ID が異なっている必要があります。 値 controller は、集合コントローラー用に予約済みであるため使用できません。 |
+| mfp.admin.serverid |サーバー・ファームおよび Liberty 集合では必須、その他の場合はオプション。<br/><br/>サーバー・ファーム: サーバー ID。 ファーム内のサーバーごとに異なる必要があります。<br/><br/>Liberty 集合: メンバー ID。 集合内のメンバーごとに ID が異なっている必要があります。 値 controller は、集合コントローラー用に予約済みであるため使用できません。 |
 | mfp.topology.platform | オプション。 サーバー・タイプ。 有効な値は以下のとおりです。<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>この値を設定しないと、アプリケーションはサーバー・タイプを推測しようとします。 |
 | mfp.topology.clustermode | オプション。 サーバー・タイプに加え、ここにサーバー・トポロジーを指定します。 有効な値は以下のとおりです。<ul><li>Standalone<li>クラスター</li><li>Farm</li></ul>デフォルト値は Standalone です。 |
 | mfp.admin.jmx.replica | オプション。 Liberty 集合の場合のみ。<br/><br/>このランタイムを管理する管理コンポーネントが複数の異なる Liberty コントローラー (レプリカ) にデプロイされている場合のみ、このプロパティーを設定します。<br/><br/>複数の異なるコントローラー・レプリカのエンドポイント・リスト (`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 構文を使用)。 |
@@ -646,7 +646,7 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 デプロイする {{ site.data.keys.product_adj }} アプリケーションの最大サイズに応じて、DB2 ログ・スペースの拡張が必要になる場合があります。
 
-`DB2 update db cfg` コマンドを使用して、**LOGSECOND** パラメーターを大きくします。データベースがアクティブになっているときは、スペースは割り振られません。その代わり、このスペースは必要な場合にのみ割り振られます。
+`DB2 update db cfg` コマンドを使用して、**LOGSECOND** パラメーターを大きくします。 データベースがアクティブになっているときは、スペースは割り振られません。 その代わり、このスペースは必要な場合にのみ割り振られます。
 
 ### {{ site.data.keys.mf_server }} および Application Center のデータ・ソースに対する DB2 HADR シームレス・フェイルオーバーの構成
 {: #configuring-db2-hadr-seamless-failover-for-mobilefirst-server-and-application-center-data-sources }
@@ -782,7 +782,7 @@ Application Center のログは **com.ibm.puremeap** で始まります。
 
 ログ・ファイルの場所も含めて各アプリケーション・サーバーのロギング・モデルについて詳しくは、以下の表に示す関連アプリケーション・サーバーの資料を参照してください。
 
-| アプリケーション・サーバー | 資料の場所 |
+|アプリケーション・サーバー| 資料の場所 |
 | -------------------|---------------------------|
 | Apache Tomcat	     | [http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)](http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)) |
 | WebSphere Application Server バージョン 8.5 フル・プロファイル | 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html) |
@@ -821,7 +821,7 @@ WebSphere Application Server の場合、IBM Knowledge Center で説明されて
 {: #configuring-multiple-runtimes }
 複数のランタイムで {{ site.data.keys.mf_server }} を構成し、{{ site.data.keys.mf_console }} でアプリケーションの「タイプ」によって表示を区別することができます。
 
-> **注:** Mobile Foundation IBM Cloud サービスで作成された Mobile Foundation サーバー・インスタンスで、複数ランタイムはサポートされません。IBM Cloud サービスでは、代わりに複数サービス・インスタンスを作成してください。
+> **注:** Mobile Foundation IBM Cloud サービスで作成された Mobile Foundation サーバー・インスタンスで、複数ランタイムはサポートされません。 IBM Cloud サービスでは、代わりに複数サービス・インスタンスを作成してください。
 
 #### ジャンプ先
 {: #jump-to-1 }
@@ -865,7 +865,7 @@ WebSphere Application Server の場合、IBM Knowledge Center で説明されて
     > **注:**
     >
     > * `dataSource` が、別のデータベース・スキーマを指していることを確認します。
-    > * 新しいランタイムに[別のデータベース・インスタンス](../databases)を作成したことを確認します。
+    > * 新しいランタイムに[別のデータベース・インスタンス](../prod-env/databases)を作成したことを確認します。
     > * 開発環境では、子エレメント `properties.derby.embedded` に `createDatabase="create"` を追加します。
 
 5. アプリケーション・サーバーを再始動します。

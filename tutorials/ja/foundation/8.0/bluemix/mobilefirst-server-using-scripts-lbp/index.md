@@ -74,7 +74,7 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
 
                 <ul>
 
-                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。 また、IBM Cloud へのログイン、IBM Cloud にプッシュするための {{ site.data.keys.product }} アプリケーションのビルド、IBM Cloud 上でのサーバーの実行を行うための各スクリプトも含まれています。スクリプトは、対話式に実行することも、(後述のように) 構成ファイルを事前に設定することで実行することもできます。 カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。 スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
+                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。 また、IBM Cloud へのログイン、IBM Cloud にプッシュするための {{ site.data.keys.product }} アプリケーションのビルド、IBM Cloud 上でのサーバーの実行を行うための各スクリプトも含まれています。 スクリプトは、対話式に実行することも、(後述のように) 構成ファイルを事前に設定することで実行することもできます。 カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。 スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
                     <li><b>usr</b> フォルダー:
                         <ul>
                             <li><b>config</b> フォルダー: {{ site.data.keys.mf_server }} によって使用されるサーバー構成フラグメント (鍵ストア、サーバー・プロパティー、ユーザー・レジストリー) が含まれます。</li>

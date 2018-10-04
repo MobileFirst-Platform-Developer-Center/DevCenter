@@ -65,7 +65,7 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 {% endhighlight %}
 
     <ul>
-        <li>Dans le cas d'applications multiplateformes qui utilisent Cordova, consultez les guides relatifs à iOS ou Android car les configurations sont identiques à celles des applications natives. </li>
+        <li>Dans le cas d'applications multiplateformes qui utilisent Cordova, consultez les guides relatifs à iOS ou Android car les configurations sont identiques à celles des applications natives.</li>
         <li>Pour activer la capture des données d'analyse réseau sous iOS, ajoutez le code suivant dans la méthode <code>application:didFinishLaunchingWithOptions</code> de votre application déléguée.<br/>
 
         <b>Objective-C</b>
@@ -94,12 +94,12 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
 </div>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h4>Pourquoi n'existe-t-il aucune donnée pour les sessions d'application ? </h4></div>
+  <div class="panel-heading"><h4>Pourquoi n'existe-t-il aucune donnée pour les sessions d'application ?</h4></div>
   <div class="panel-body">
-    <p>Configurez vos applications de manière à ce qu'elles collectent des analyses à l'aide du programme d'écoute d'événement d'appareil du cycle de vie. </p>
+    <p>Configurez vos applications de manière à ce qu'elles collectent des analyses à l'aide du programme d'écoute d'événement d'appareil du cycle de vie.</p>
 
     <ul>
-        <li>Dans le cas d'applications multiplateformes qui utilisent Cordova, consultez les guides relatifs à iOS ou Android car les configurations sont identiques à celles des applications natives. </li>
+        <li>Dans le cas d'applications multiplateformes qui utilisent Cordova, consultez les guides relatifs à iOS ou Android car les configurations sont identiques à celles des applications natives.</li>
         <li>Pour activer la capture des données d'analyse réseau sous iOS, ajoutez le code suivant dans la méthode <code>application:didFinishLaunchingWithOptions</code> de votre application déléguée.<br/><br/>
 
         <b>Objective-C</b>
@@ -138,7 +138,8 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
     <ul>
         <li>Cette situation se produit car WebSphere Liberty ne dispose pas d'une quantité suffisante d'unités d'exécution <code>Executor</code> pour servir les demandes. Cela entraîne une situation d'interblocage.</li>
 
-        <li>Le nombre par défaut d'<a href="https://developer.ibm.com/wasdev/docs/was-liberty-threading-and-why-you-probably-dont-need-to-tune-it/" target="_blank">unités d'exécution de base Liberty</a> est le nombre d'unités d'exécution matérielles. </li>
+        <li>Le nombre par défaut d'<a href="https://developer.ibm.com/wasdev/docs/was-liberty-threading-and-why-you-probably-dont-need-to-tune-it/" target="_blank">unités d'exécution de base Liberty</a> est le nombre d'unités d'exécution matérielles.
+</li>
         <li>Pour résoudre ce problème, configurez le nombre d'unités d'exécution dans le paramètre des unités d'exécution Executor de Liberty en indiquant une valeur supérieure à la valeur par défaut.
 <br/>
 Ajoutez la configuration suivante dans le fichier <code>server.xml</code> de Liberty :
@@ -151,3 +152,9 @@ Ajoutez la configuration suivante dans le fichier <code>server.xml</code> de Lib
     </ul>
   </div>
 </div>
+
+## Références complémentaires
+{: #additional_references}
+
+* [Best Practices for setting up MobileFirst Analytics production Cluster](../../analytics/bestpractices-prod/)
+* [Questions posées fréquemment sur {{ site.data.keys.mf_analytics_server }}](../../analytics/bestpractices-prod/faq/)

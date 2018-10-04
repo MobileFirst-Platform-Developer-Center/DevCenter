@@ -18,7 +18,7 @@ eingebettete Elasticsearch-Bibliothek als Data-Store und für die Clusterverwalt
 Platten-E/A erforderlich. Aus dem Grund müssen für ein Produktionssystem einige Voraussetzungen erfüllt sein. Generell ist es sehr wahrscheinlich, dass Sie nicht genug Haupt- und Plattenspeicher haben (oder feststellen, dass die Platten-E/A Ihr Leistungsengpass ist), bevor
 die CPU zum Problem wird. In einer Clusterumgebung benötigen Sie benachbarte Knoten, die schnell und zuverlässig sind. 
 
-#### Fahren Sie mit folgenden Abschnitten fort:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
 * [Systemvoraussetzungen](#system-requirements)
@@ -130,7 +130,7 @@ Wenn Sie **shards** beispielsweise auf 4 und **replicas** auf 2 setzen, können 
 ## MobileFirst Analytics in WebSphere Application Server Liberty installieren
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
 Stellen Sie sicher, dass die EAR-Datei für {{ site.data.keys.mf_analytics }} vorhanden ist. Weitere Informationen zu den Installationsartefakten
-finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../appserver). Die Datei **analytics.ear** befindet sich im Ornder `<MF-Server-Installationsverzeichnis>\analytics`. Weitere Informationen zum Herunterladen und Installieren von
+finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../prod-env/appserver). Die Datei **analytics.ear** befindet sich im Ornder `<MF-Server-Installationsverzeichnis>\analytics`. Weitere Informationen zum Herunterladen und Installieren von
 WebSphere Application Server Liberty finden Sie
 im Artikel [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) auf
 IBM developerWorks.
@@ -223,22 +223,20 @@ verwalten](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multipla
 {: #installing-mobilefirst-analytics-on-tomcat }
 Stellen Sie sicher, dass die WAR-Dateien
 für {{ site.data.keys.mf_analytics }} vorhanden sind. Weitere Informationen zu den Installationsartefakten
-finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../appserver). Die Dateien
+finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../prod-env/appserver). Die Dateien
 **analytics-ui.war** und **analytics-service.war** befinden sich im Ordner **<MF-Server-Installationsverzeichnis>\analytics**. Weitere Informationen zum Herunterladen und Installieren von Tomcat finden Sie auf der Webseite von [Apache Tomcat](http://tomcat.apache.org/). Sie müssen die Version herunterladen, die Java 7 oder eine aktuellere Java-Version
 unterstützt. Welche Tomcat-Version Java 7 unterstützt erfahren Sie unter
 [Apache Tomcat
 Versions](http://tomcat.apache.org/whichversion.html).
 
-1. Fügen Sie die Dateien **analytics-service.war** und **analytics-ui.war** zum Tomcat-Ordner **webapps**
-hinzu. 
-2. Entfernen Sie in der Datei **conf/server.xml** das Kommentarzeichen vor dem folgenden Abschnitt, der in einem neu heruntergeladenen Tomcat-Archiv vorhanden, aber auf
-Kommentar gesetzt ist. 
+1. Fügen Sie die Dateien **analytics-service.war** und **analytics-ui.war** zum Tomcat-Ordner **webapps** hinzu.
+2. Entfernen Sie in der Datei **conf/server.xml** das Kommentarzeichen vor dem folgenden Abschnitt, der in einem neu heruntergeladenen Tomcat-Archiv vorhanden, aber auf Kommentar gesetzt ist.
 
    ```xml
    <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
    ```
 
-3. Deklarieren Sie die beiden WAR-Dateien in der Datei **conf/server.xml** und definieren Sie eine Benutzerregistry. 
+3. Deklarieren Sie die beiden WAR-Dateien in der Datei **conf/server.xml** und definieren Sie eine Benutzerregistry.
 
    ```xml
    <Context docBase ="analytics-service" path ="/analytics-service"></Context>
@@ -253,7 +251,7 @@ Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
 
 4. Fügen Sie die folgenden Abschnitte zur Datei **conf/tomcat-users.xml** hinzu, um ein
 **MemoryRealm** zu konfigurieren.
-    * Fügen Sie die Sicherheitsrollen hinzu. 
+    * Fügen Sie die Sicherheitsrollen hinzu.
 
       ```xml
       <role rolename="analytics_administrator"/>
@@ -262,7 +260,7 @@ Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
       <role rolename="analytics_developer"/>
       <role rolename="analytics_business"/>
       ```
-    * Fügen Sie ein paar Benutzer mit den gewünschten Rollen hinzu. 
+    * Fügen Sie ein paar Benutzer mit den gewünschten Rollen hinzu.
 
       ```xml
       <user name="admin" password="admin" roles="analytics_administrator"/>
@@ -284,7 +282,7 @@ z. B. unter [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introducti
 ## {{ site.data.keys.mf_analytics }} in WebSphere Application Server installieren
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
 Die ersten Installationsschritte zur Beschaffung der Installationsartefakte (JAR- und EAR-Dateien) sind
-unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../appserver) beschrieben. Die Dateien
+unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../prod-env/appserver) beschrieben. Die Dateien
 **analytics.ear**, **analytics-ui.war** und **analytics-service.war** befinden sich im Ordner
 **<MF-Installationsverzeichnis>\analytics**. 
 
@@ -336,13 +334,21 @@ in der Administrationskonsole von WebSphere Application Server:
 Hinweis: Die Anwendungssicherheit kann erst aktiviert werden, wenn die **Verwaltungssicherheit** aktiviert ist. 
     * Klicken Sie auf
 **OK** und speichern Sie die Änderungen. 
-9. Starten Sie die Anwendung {{ site.data.keys.mf_analytics }} und öffnen Sie im Browser den Link `http://<Hostname>:<Port>/analytics/console`.
+
+9. Führen Sie die folgenden Schritte aus, um den Zugriff auf den Analytics Service über die Swagger-Dokumentation zu ermöglichen:
+    * Klicken Sie auf **Server > Servertypen > WebSphere-Anwendungsserver** und wählen Sie in der Serverliste den Server aus, in dem der Analytics Service implementiert ist.
+    * Klicken Sie unter **Serverinfrastruktur** auf **Java** und navigieren Sie zu **Java- und Prozessverwaltung > Prozessdefinition > Java Virtual Machine > Angepasste Eigenschaften**.
+      - Definieren Sie die folgende angepasste Eigenschaft:<br/>
+        **Eigenschaftsname:** *com.ibm.ws.classloader.strict*<br/>
+        **Wert:** *true*
+
+10. Starten Sie die Anwendung {{ site.data.keys.mf_analytics }} und öffnen Sie im Browser den Link `http://<Hostname>:<Port>/analytics/console`.
 
 ## {{ site.data.keys.mf_analytics }} mit Ant-Tasks installieren
 {: #installing-mobilefirst-analytics-with-ant-tasks }
 Stellen Sie sicher, dass die erforderlichen WAR-Dateien und Konfigurationsdateien vorliegen:
 **analytics-ui.war** und **analytics-service.war**. Weitere Informationen zu den Installationsartefakten
-finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../appserver). Die Dateien
+finden Sie unter [{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren](../../prod-env/appserver). Die Dateien
 **analytics-ui.war** und **analytics-service.war** befinden sich im Ordner
 **MobileFirst_Platform_Server\analytics**. 
 
@@ -352,7 +358,7 @@ Deployment Manager für
 WebSphere Application Server Network Deployment installiert ist. Wenn Sie die Ant-Task
 von einem Computer aus starten möchten, auf dem
 {{ site.data.keys.mf_server }} nicht
-installiert ist, müssen Sie die Datei **<MF-Server-Installationsverzeichnis>/MobileFirstServer/mfp-ant-deployer.jar**
+installiert ist, müssen Sie die Datei **\<MF-Server-Installationsverzeichnis\>/MobileFirstServer/mfp-ant-deployer.jar**
 auf diesen Computer kopieren.
 
 
@@ -369,7 +375,6 @@ für {{ site.data.keys.mf_analytics }}](../../installation-reference/#sample-con
     * Ersetzen Sie die Platzhalterwerte durch die Eigenschaften am Anfang der Datei.
 
     > Hinweis: Wenn Sie in den Werten der Ant-XML-Scripts die folgenden Sonderzeichen verwenden, müssen Sie sie mit Escapezeichen angeben:
-
     >
     > * Das Dollarzeichen ($) muss mit $$ angegeben werden, sofern Sie mit der Syntax ${variable}, die im Abschnitt [Properties](http://ant.apache.org/manual/properties.html) der Veröffentlichung "Apache Ant Manual" beschrieben ist, nicht explizit auf eine Ant-Variable verweisen möchten.
     > * Das Et-Zeichen (&) muss mit &amp; angegeben werden, sofern Sie nicht explizit auf eine XML-Entität verweisen möchten.
@@ -421,26 +426,26 @@ Einige Ereignistypen haben sich in Version 8.0.0 gegenüber den älteren Version
 
 In der folgenden Tabelle sind die alten Ereignistypen den neuen Typen zugeordnet. Einige Ereignistypen haben sich nicht geändert. 
 
-| Alter Ereignistyp| Neuer Ereignistyp|
+|Alter Ereignistyp|Neuer Ereignistyp|
 |---------------------------|------------------------|
-| AlertDefinition	        | AlertDefinition|
-| AlertNotification	        | AlertNotification|
-| AlertRunnerNode	        | AlertRunnerNode|
-| AnalyticsConfiguration| AnalyticsConfiguration|
-| CustomCharts	            | CustomChart|
-| CustomData	            | CustomData|
-| Devices	                | Device|
-| MfpAppLogs| AppLog|
-| MfpAppPushAction| AppPushAction|
-| MfpAppSession	            | AppSession|
-| ServerLogs	            | ServerLog|
-| ServerNetworkTransactions| NetworkTransaction|
-| ServerPushNotifications| PushNotification|
-| ServerPushSubscriptions| PushSubscription|
-| Users	                    | User|
-| inboundRequestURL	        | resourceURL|
-| mfpAppName	            | appName|
-| mfpAppVersion	            | appVersion|
+|AlertDefinition	        |AlertDefinition|
+|AlertNotification	        |AlertNotification|
+|AlertRunnerNode	        |AlertRunnerNode|
+|AnalyticsConfiguration|AnalyticsConfiguration|
+|CustomCharts	            |CustomChart|
+|CustomData	            |CustomData|
+|Devices	                |Device|
+|MfpAppLogs|AppLog|
+|MfpAppPushAction|AppPushAction|
+|MfpAppSession	            |AppSession|
+|ServerLogs	            |ServerLog|
+|ServerNetworkTransactions|NetworkTransaction|
+|ServerPushNotifications|PushNotification|
+|ServerPushSubscriptions|PushSubscription|
+|Users	                    |User|
+|inboundRequestURL	        |resourceURL|
+|mfpAppName	            |appName|
+|mfpAppVersion	            |appVersion|
 
 ### Migration von Analysedaten
 {: #analytics-data-migration }

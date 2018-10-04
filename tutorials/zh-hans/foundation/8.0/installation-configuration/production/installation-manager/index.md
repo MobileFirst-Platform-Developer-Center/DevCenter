@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 运行 IBM Installation Manager
-weight: 1
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -37,9 +37,9 @@ Application Center 是 {{ site.data.keys.product }} 的组件。 利用 Applicat
     * 每次升级产品时（例如，要安装临时修订），都首先会升级 Application Center。 升级 Application Center 包括在数据库和应用程序服务器上进行操作。 如果 Application Center 升级失败，那么将阻止 Installation Manager 完成升级，并阻止您升级其他 {{ site.data.keys.mf_server }} 组件。 对于生产安装，请不要使用 Installation Manager 部署 Application Center。 在 Installation Manager 安装 {{ site.data.keys.mf_server }} 后，请单独使用 Ant 任务来安装 Application Center。 有关 Application Center 的更多信息，请参阅[安装和配置 Application Center](../../../appcenter)。
 
 > **要点：**{{ site.data.keys.mf_server }} 安装程序仅将 {{ site.data.keys.mf_server }} 二进制文件和工具安装在磁盘上。 它不会将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器上。 使用 Installation Manager 运行安装后，必须设置数据库并将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器上。  
-> 类似地，运行 Installation Manager 以更新现有安装时，将仅更新磁盘上的文件。需执行更多操作以更新部署到应用程序服务器的应用程序。
+>类似地，运行 Installation Manager 以更新现有安装时，将仅更新磁盘上的文件。 需执行更多操作以更新部署到应用程序服务器的应用程序。
 
-#### 跳至：
+#### 跳转至
 {: #jump-to }
 * [管理员与用户方式](#administrator-versus-user-mode)
 * [使用 IBM Installation Manager 安装向导进行安装](#installing-by-using-ibm-installation-manager-install-wizard)
@@ -96,12 +96,12 @@ Manager 文档中的 [Installing as an administrator, nonadministrator, or group
     {{ site.data.keys.product }} V8.0 取代具有不同安装名称的先前发行版：
     * Worklight (V5.0.6)
     * IBM Worklight（V6.0 至 V6.3）
-    
+
     如果计算机上安装了上述某个较旧版本的产品，Installation Manager 在开始安装流程时将允许您选择使用现有软件包组。 此选项会卸载产品的较旧版本，然后复用较旧安装选项来升级 {{ site.data.keys.mf_app_center_full }}（如果先前已安装）。
-    
+
     要进行独立安装，请选择创建新软件包组选项，以便您可以并行于较旧版本来安装新版本。  
     如果未在计算机上安装任何其他版本的产品，那么选择创建新软件包组选项以在新软件包组中安装产品。
-    
+
 5. 单击**下一步**。
 6. 在**常规设置**面板的**激活令牌许可**部分中决定是否激活令牌许可。
 
@@ -131,10 +131,10 @@ Manager 文档中的 [Installing as an administrator, nonadministrator, or group
 1. 查看 {{ site.data.keys.mf_server }} 的许可协议。 可以在从 Passport Advantage 下载安装库时查看许可文件。
 2. 将下载的 {{ site.data.keys.mf_server }} 存储库的压缩文件解压缩至某个文件夹中。
 
-    可以从 [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) 上的 {{ site.data.keys.product }} eAssembly 中下载该存储库。 包名称为 **IBM MobileFirst Platform Server 的 Installation Manager 存储库 IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip 文件**。
+    您可以从 [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) 上的 {{ site.data.keys.product }} eAssembly 下载存储库。 包名称为 **IBM MobileFirst Platform Server 的 Installation Manager 存储库的 IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip 文件**。
 
     在后续步骤中，解压缩安装程序的目录称为 **mfp\_repository\_dir**。 其中包含 **MobileFirst\_Platform\_Server/disk1** 文件夹。
-3. 启动命令行，并转至 **installation\manager\ install\dir/tools/eclipse/**。
+3. 启动命令行，并转至 **installation\_manager\_install\_dir/tools/eclipse/**。
 
     如果在步骤 1 中查看许可协议后表示接受，即可安装 {{ site.data.keys.mf_server }}。
     * 对于未强制令牌许可的安装（如果您不具备定义令牌使用许可的合同），请输入以下命令：
@@ -143,28 +143,28 @@ Manager 文档中的 [Installing as an administrator, nonadministrator, or group
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
     * 对于强制令牌许可的安装，请输入以下命令：
-    
+
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
-    
+
         **user.licensed.by.tokens** 属性值设置为 **true**。 您必须为[令牌许可](../token-licensing)配置 {{ site.data.keys.mf_server }}。
-        
+
         将设置以下属性，以在无 Application Center 的情况下安装 {{ site.data.keys.mf_server }}：
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
-        
+
         此属性指示是否激活令牌许可：**user.licensed.by.tokens=true/false**。
-        
+
         将 user.use.ios.edition 属性的值设置为 false 以安装 {{ site.data.keys.product }}。
-        
+
 5. 如果要使用最新的临时修订进行安装，请在 **-repositories** 参数中添加临时修订存储库。 **-repositories** 参数用于提取存储库的逗号分隔列表。
 
     通过将 **com.ibm.mobilefirst.foundation.server** 替换为 **com.ibm.mobilefirst.foundation.server_version**，来添加临时修订版本。 **version** 的格式为 **8.0.0.0-buildNumber**。 例如，如果要安装临时修订 **8.0.0.0-IF201601031015**，请输入以下命令：`imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`。
-    
+
     有关 imcl 命令的更多信息，请参阅 [Installation Manager：使用 `imcl` 命令安装软件包](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en)。
-    
+
 安装一个安装目录，其中包含用于安装 {{ site.data.keys.product_adj }} 组件的资源。
 
 您可以在以下文件夹中找到资源：
@@ -200,12 +200,12 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
 1. 从压缩文件中选取适用的样本响应文件。 Silent_Install_Sample_Files.zip 文件对于每个发行版都包含一个子目录。
 
     > **要点：**  
-    > 
+    >
     > * 对于不在应用程序服务器上安装 Application Center 的安装，请使用名为 **install-no-appcenter.xml** 的文件。
     > * 对于要安装 Application Center 的安装，请根据应用程序服务器和数据库从下表中选取样本响应文件。
 
    #### **Silent\_Install\_Sample_Files.zip** 文件中用于安装 Application Center 的样本安装响应文件
-    
+
     <table>
         <tr>
       <td></td>
@@ -263,11 +263,11 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
             <td>install-tomcat-oracle.xml</td>
         </tr>
     </table>
-    
-    > **注：**与 WebSphere Application Server Liberty Profile 或 WebSphere Application Server Full Profile 结合使用的 MySQL 不属于受支持的配置。 有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。 您可以使用 IBM DB2 或其他受 WebSphere Application Server 支持的 DBMS，以受益于配置可获得 IBM 支持中心的全面支持。
+
+    > **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。 有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。 您可以使用 IBM DB2 或其他受 WebSphere Application Server 支持的 DBMS，以受益于配置可获得 IBM 支持中心的全面支持。
 
     对于卸载，使用的样本文件取决于在特定软件包组中最初安装的 {{ site.data.keys.mf_server }} 或 Worklight Server 的版本：
-    
+
     * {{ site.data.keys.mf_server }} 使用软件包组 {{ site.data.keys.mf_server }}。
     * Worklight Server V6.x 或更高版本使用软件包组 IBM Worklight。
     * Worklight Server V5.x 使用软件包组 Worklight。
@@ -324,7 +324,7 @@ Installation Manager 用户文档中描述了静默安装，请参阅[使用静�
     * `<responseFile>` 是在步骤 1 中选择并更新的文件的名称。
 
 > 有关更多信息，请参阅[使用响应文件静默安装软件包](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html)中的 IBM Installation Manager 文档。
-    
+
 
 ### 处理在不同机器上记录的响应文件
 {: #working-with-a-response-file-recorded-on-a-different-machine }
@@ -662,12 +662,12 @@ ${user.appserver.was.profile} == Liberty</td>
 
 | 项目 | 描述 |
 |------|-------------|
-| **configuration-samples** | 包含用于安装 Application Center 的样本 Ant 文件。 Ant 任务将创建数据库表并将 WAR 文件部署到应用程序服务器。 | 
+| **configuration-samples** | 包含用于安装 Application Center 的样本 Ant 文件。 Ant 任务将创建数据库表并将 WAR 文件部署到应用程序服务器。 |
 | **console** | 包含用于安装 Application Center 的 EAR 和 WAR 文件。 EAR 文件对于 IBM
-PureApplication System 而言唯一。 | 
+PureApplication System 而言唯一。 |
 | **databases** | 包含用于为 Application Center 手动创建表的 SQL 脚本。 |
-| **installer** | 包含用于创建 Application Center 客户机的资源。 | 
-| **tools** | Application Center 的工具。 | 
+| **installer** | 包含用于创建 Application Center 客户机的资源。 |
+| **tools** | Application Center 的工具。 |
 
 #### {{ site.data.keys.mf_server }} 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
@@ -676,9 +676,9 @@ PureApplication System 而言唯一。 |
 |------|-------------|
 | **mfp-ant-deployer.jar** | 一组 {{ site.data.keys.mf_server }} Ant 任务。 |
 | **mfp-*.war** | {{ site.data.keys.mf_server }} 组件的 WAR 文件。 |
-| **configuration-samples** | 包含样本 Ant 文件以使用 Ant 任务安装 {{ site.data.keys.mf_server }} 组件。 | 
+| **configuration-samples** | 包含样本 Ant 文件以使用 Ant 任务安装 {{ site.data.keys.mf_server }} 组件。 |
 | **ConfigurationTool** | 包含 Server Configuration Tool 的二进制文件。 可通过 **mfp_server_install_dir/shortcuts** 启动此工具。 |
-| **databases** | 包含用于为 {{ site.data.keys.mf_server }} 组件（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 配置服务和 {{ site.data.keys.product_adj }} 运行时）手动创建表的 SQL 脚本。 | 
+| **databases** | 包含用于为 {{ site.data.keys.mf_server }} 组件（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 配置服务和 {{ site.data.keys.product_adj }} 运行时）手动创建表的 SQL 脚本。 |
 | **external-server-libraries** |  包含不同工具（如真实性工具和 OAuth 安全工具）使用的 JAR 文件。 |
 
 #### PushService 子目录中的文件和子目录
@@ -687,25 +687,25 @@ PureApplication System 而言唯一。 |
 | 项目 | 描述 |
 |------|-------------|
 | **mfp-push-service.war** | 用于安装 {{ site.data.keys.mf_server }} 推送服务的 WAR 文件。 |
-| **databases** | 包含用于为 {{ site.data.keys.mf_server }} 推送服务手动创建表的 SQL 脚本。 | 
+| **databases** | 包含用于为 {{ site.data.keys.mf_server }} 推送服务手动创建表的 SQL 脚本。 |
 
 #### License 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
 | 项目 | 描述 |
 |------|-------------|
-| **Text** | 包含 {{ site.data.keys.product }} 的许可证。 | 
+| **Text** | 包含 {{ site.data.keys.product }} 的许可证。 |
 
 #### {{ site.data.keys.mf_server }} 安装目录中的文件和子目录
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
 | 项目 | 描述 |
 |------|-------------|
-| **shortcuts** | {{ site.data.keys.mf_server }} 随附了 Apache Ant 的启动程序脚本、Server Configuration Tool 和 mfpadmin 命令。 | 
+| **shortcuts** | {{ site.data.keys.mf_server }} 随附了 Apache Ant 的启动程序脚本、Server Configuration Tool 和 mfpadmin 命令。 |
 
 #### tools 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
 | 项目 | 描述 |
 |------|-------------|
-| **tools/apache-ant-version-number** | Server Configuration Tool 所使用的 Apache Ant 的二进制安装。 它还可用于运行 Ant 任务。 | 
+| **tools/apache-ant-version-number** | Server Configuration Tool 所使用的 Apache Ant 的二进制安装。 它还可用于运行 Ant 任务。 |

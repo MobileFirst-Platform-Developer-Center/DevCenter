@@ -11,7 +11,8 @@ Wenn Sie ein mit der
 IBM MobileFirst Platform Foundation ab Version 6.2.0
 erstelltes natives iOS-Projekt migrieren möchten, müssen Sie das Projekt so modifizieren, dass es das SDK der aktuellen Version verwendet. Ersetzen Sie
 dann die clientseitigen APIs, die
-weggefallen oder nicht in Version 8.0 enthalten sind. Das Unterstützungstool für die Migration kann Ihren Code scannen und Berichte zu den zu ersetzenden APIs generieren.
+weggefallen oder nicht in Version 8.0 enthalten sind. Das Unterstützungstool für die
+Migration kann Ihren Code scannen und Berichte zu den zu ersetzenden APIs generieren. 
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
@@ -35,8 +36,8 @@ Die folgenden Informationen müssen vor Verwendung des Unterstützungstools für
 
 * Sie benötigen eine mit der
 IBM MobileFirst Platform Foundation erstellte, native iOS-Anwendung. 
-* Sie benötigen Internetzugriff.
-* Node.js ab Version 4.0.0 muss installiert sein.
+* Sie benötigen Internetzugriff. 
+* Node.js ab Version 4.0.0 muss installiert sein. 
 * Sie müssen die Einschränkungen des Migrationsprozesses kennen und verstehen. Weitere Informationen
 finden Sie unter
 [Apps früherer Releases umstellen](../).
@@ -126,7 +127,8 @@ Ihre Anwendung ist jetzt aktualisiert und kann mit dem iOS-SDK von {{ site.data.
 
 #### Nächste Schritte
 {: #what-to-do-next }
-Ersetzen Sie die clientseitigen APIs, die weggefallen oder nicht in Version 8.0 enthalten sind. 
+Ersetzen Sie die clientseitigen APIs, die
+weggefallen oder nicht in Version 8.0 enthalten sind. 
 
 ## Vorhandenes natives iOS-Projekt mit CocoaPods umstellen
 {: #migrating-an-existing-native-ios-project-with-cocoapods }
@@ -155,11 +157,11 @@ IBMMobileFirstPlatformFoundation ist der Kern des Systems. Er implementiert Clie
 Die folgenden
 optionalen Pods stellen zusätzliche Features bereit. 
 
-| Pod| Feature |
+|Pod|Feature|
 |-----|---------|
-| IBMMobileFirstPlatformFoundationPush| Fügt das Framework IBMMobileFirstPlatformFoundationPush zur Aktivierung von Push hinzu. |
-| IBMMobileFirstPlatformFoundationJSONStore| Implementiert das JSONStore-Feature. Nehmen Sie diesen Pod in Ihre Podfile auf, wenn Sie das JSONStore-Feature in Ihrer App verwenden möchten.|
-| IBMMobileFirstPlatformFoundationOpenSSLUtils| Enthält das in {{ site.data.keys.product_adj }} eingebettete OpenSSL-Feature und lädt automatisch das Framework openssl. Nehmen Sie diesen Pod in Ihre Podfile auf, wenn Sie MobileFirst-OpenSSL verwenden möchten.|
+|IBMMobileFirstPlatformFoundationPush|Fügt das Framework IBMMobileFirstPlatformFoundationPush zur Aktivierung von Push hinzu. |
+|IBMMobileFirstPlatformFoundationJSONStore|Implementiert das JSONStore-Feature. Nehmen Sie diesen Pod in Ihre Podfile auf, wenn Sie das JSONStore-Feature in Ihrer App verwenden möchten.|
+|IBMMobileFirstPlatformFoundationOpenSSLUtils|Enthält das in {{ site.data.keys.product_adj }} eingebettete OpenSSL-Feature und lädt automatisch das Framework openssl. Nehmen Sie diesen Pod in Ihre Podfile auf, wenn Sie MobileFirst-OpenSSL verwenden möchten.|
 
 1. Öffnen Sie Ihr Projekt in Xcode.
 2. Löschen Sie den Ordner **WorklightAPI**. (Verschieben Sie es ihn den Papierkorb.) 
@@ -287,7 +289,8 @@ Ihre Anwendung ist jetzt aktualisiert und kann mit dem iOS-SDK von {{ site.data.
 
 #### Nächste Schritte
 {: #what-next }
-Ersetzen Sie die clientseitigen APIs, die weggefallen oder nicht in Version 8.0 enthalten sind. 
+Ersetzen Sie die clientseitigen APIs, die
+weggefallen oder nicht in Version 8.0 enthalten sind. 
 
 ## Verschlüsselung in iOS umstellen
 {: #migrating-encryption-in-ios }
@@ -304,25 +307,25 @@ Nachdem Sie das iOS-Framework aktualisiert und die erforderlichen Konfigurations
 kann Ihr konkreter Anwendungscode von einigen Problemen betroffen sein.   
 In der folgenden Tabelle sind die iOS-API-Änderungen aufgelistet.
 
-| API-Element | Migrationspfad |
+|API-Element |Migrationspfad |
 |-------------|----------------|
-| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} | Die Geoortung wurde entfernt. Verwenden Sie für die Geoortung native iOS-Optionen oder Pakete von anderen Anbietern.|
-| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | Kein Ersatz |
-| `WL.Client.deleteUserPref(key, options)` | Kein Ersatz. Sie können einen Adapter und die API [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) verwenden, um Benutzervorgaben zu verwalten. |
-| `[WLClient getRequiredAccessTokenScopeFromStatus]` | Verwenden Sie [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
-| `[WLClient login:withDelegate:]` | Verwenden Sie [`WLAuthorizationManager login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/login:withCredentials:withCompletionHandler:). |
-| `[WLClient logout:withDelegate:]` | Verwenden Sie [`WLAuthorizationManager logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/logout:withCompletionHandler:). |
-| {::nomarkdown}<ul><li><code>[WLClient lastAccessToken]</code></li><li><code>[WLClient lastAccessTokenForScope:]</code></li></ul>{:/} | Verwenden Sie [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
-| {::nomarkdown}<ul><li><code>[WLClient obtainAccessTokenForScope:withDelegate:]</code></li><li><code>[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]</code></li></ul>{:/} | Verwenden Sie [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
-| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | Verwenden Sie die [clientseitige Objective-C-Push-API für iOS-Apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps) aus dem Framework IBMMobileFirstPlatformFoundationPush.|
-| `[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary *) userInfo]` | Verwenden Sie die [clientseitige Objective-C-Push-API für iOS-Apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps) aus dem Framework IBMMobileFirstPlatformFoundationPush.|
-| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | Nicht mehr verwendet. Verwenden Sie stattdessen [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:). |
-| `[WLClient sendUrlRequest:delegate:]` | Verwenden Sie stattdessen [`[WLResourceRequest sendWithDelegate:delegate]`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:). |
-| `[WLClient (void) logActivity:(NSString *) activityType]`	| Gelöscht. Verwenden Sie einen Objective-C-Logger. |
-| {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} | Verwenden Sie für die anwendungsübergreifende Nutzung von Token die Betriebssystem-APIs.|
-| `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | Verwenden Sie [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc). |
-| `BaseProvisioningChallengeHandler` | Kein Ersatz. Die Bereitstellung für Geräte erfolgt jetzt automatisch über das Sicherheitsframework. |
-| `ChallengeHandler` | Verwenden Sie für angepasste Gateway-Abfragen [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). |
-| `WLChallengeHandler` | Verwenden Sie [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). |
-| `ChallengeHandler.isCustomResponse()` | Verwenden Sie [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). |
-| `ChallengeHandler.submitAdapterAuthentication` | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). |
+| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} |Die Geoortung wurde entfernt. Verwenden Sie für die Geoortung native iOS-Optionen oder Pakete von anderen Anbietern.|
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} |Kein Ersatz |
+|`WL.Client.deleteUserPref(key, options)` |Kein Ersatz. Sie können einen Adapter und die API [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) verwenden, um Benutzervorgaben zu verwalten. |
+|`[WLClient getRequiredAccessTokenScopeFromStatus]` |Verwenden Sie [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
+|`[WLClient login:withDelegate:]` |Verwenden Sie [`WLAuthorizationManager login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/login:withCredentials:withCompletionHandler:). |
+|`[WLClient logout:withDelegate:]` |Verwenden Sie [`WLAuthorizationManager logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/logout:withCompletionHandler:). |
+| {::nomarkdown}<ul><li><code>[WLClient lastAccessToken]</code></li><li><code>[WLClient lastAccessTokenForScope:]</code></li></ul>{:/} |Verwenden Sie [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
+| {::nomarkdown}<ul><li><code>[WLClient obtainAccessTokenForScope:withDelegate:]</code></li><li><code>[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]</code></li></ul>{:/} |Verwenden Sie [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
+|`[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` |Verwenden Sie die [clientseitige Objective-C-Push-API für iOS-Apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps) aus dem Framework IBMMobileFirstPlatformFoundationPush.|
+|`[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary *) userInfo]` |Verwenden Sie die [clientseitige Objective-C-Push-API für iOS-Apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps) aus dem Framework IBMMobileFirstPlatformFoundationPush.|
+|`[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` |Nicht mehr verwendet. Verwenden Sie stattdessen [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:). |
+|`[WLClient sendUrlRequest:delegate:]` |Verwenden Sie stattdessen [`[WLResourceRequest sendWithDelegate:delegate]`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:). |
+|`[WLClient (void) logActivity:(NSString *) activityType]`	|Gelöscht. Verwenden Sie einen Objective-C-Logger. |
+| {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} |Verwenden Sie für die anwendungsübergreifende Nutzung von Token die Betriebssystem-APIs.|
+|`BaseChallengeHandler.submitFailure(WLResponse *)challenge` |Verwenden Sie [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc). |
+|`BaseProvisioningChallengeHandler` |Kein Ersatz. Die Bereitstellung für Geräte erfolgt jetzt automatisch über das Sicherheitsframework. |
+|`ChallengeHandler` |Verwenden Sie für angepasste Gateway-Abfragen [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). |
+|`WLChallengeHandler` |Verwenden Sie [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). |
+|`ChallengeHandler.isCustomResponse()` |Verwenden Sie [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). |
+|`ChallengeHandler.submitAdapterAuthentication` |Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). |

@@ -77,7 +77,7 @@ weight: 8
 
 ## 代理设置
 {: #proxy-settings }
-可使用代理设置来设置用于将通知发送到 APNS 和 FCM 的可选代理。可以使用 **push.apns.proxy.*** 和 **push.gcm.proxy.*** 配置属性来设置代理。 有关更多信息，请参阅 [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
+可使用代理设置来设置用于将通知发送到 APNS 和 FCM 的可选代理。 可以使用 **push.apns.proxy.*** 和 **push.gcm.proxy.*** 配置属性来设置代理。 有关更多信息，请参阅 [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
 
 > **注：**WNS 不支持任何代理。
 
@@ -100,7 +100,7 @@ weight: 8
 
 其中 `host` 是 DataPower 的主机名，`port` 是为 HTTPS 前端处理程序配置的用于处理 FCM 和 WNS 的端口号。
 
-对于 SMS，配置设置将在 REST API 调用过程中提供。无需提供 JNDI 属性。
+对于 SMS，配置设置将在 REST API 调用过程中提供。 无需提供 JNDI 属性。
 
 #### 配置 DataPower
 {: #proxy-settings-datapower-2 }
@@ -242,7 +242,7 @@ weight: 8
 
 		c. 提供唯一名称。
 
-		d. 对于“标识凭证”，从列表框中选择在先前步骤 2 中创建的标识凭证。将“验证凭证”设置为“无”。
+		d. 对于“标识凭证”，从列表框中选择在先前步骤 2 中创建的标识凭证。 将“验证凭证”设置为“无”。
 
 		e. 单击**应用**。
 		![配置加密概要文件](sending-notifications/frnt_3.gif)
@@ -287,7 +287,7 @@ weight: 8
 
 	![生成配置](sending-notifications/frnt_6.gif)
 
-	在“前端设置”中供 DataPower 使用的证书为自签名证书。除非此证书已添加到 Mobilefirst 使用的 JRE 密钥库，否则与 DataPower 的连接将失败。
+	在“前端设置”中供 DataPower 使用的证书为自签名证书。 除非此证书已添加到 Mobilefirst 使用的 JRE 密钥库，否则与 DataPower 的连接将失败。
 
 	要将自签名证书添加到 JRE 密钥库，请按照以下文档中的指示信息执行：[IBM Worklight Server 和自签名证书](https://www.ibm.com/support/knowledgecenter/SSZH4A_5.0.5/com.ibm.worklight.help.doc/admin/t_ibm_worklight_server_and_self-signed_certificates.html)。
 

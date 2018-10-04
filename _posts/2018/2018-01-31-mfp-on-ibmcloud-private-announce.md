@@ -14,7 +14,7 @@ additional_authors :
 ---
 We are excited to announce that IBM Mobile Foundation v8.0 is now available for deployment on IBM Cloud Private. This empowers clients to leverage Mobile Foundation enterprise capabilities to build next-generation cognitive and engaging apps, and rapidly innovate by standardizing on a modern and scalable Cloud platform. Read more about IBM Cloud Private [here](https://www.ibm.com/blogs/cloud-computing/2017/10/what-is-ibm-cloud-private/).
 
-Download the IBM Mobile Foundation for IBM Cloud Private deployment package (part number CNQM3EN) from [IBM Passport Advantage](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The package includes Docker images and Helm Charts to deploy the following components:
+Download the IBM Mobile Foundation for IBM Cloud Private deployment package (part number CNV0XEN) from [IBM Passport Advantage](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The package includes Docker images and Helm Charts to deploy the following components:
 * IBM Mobile Foundation Server
 * IBM Mobile Analytics Server
 * IBM Mobile Foundation Application Center

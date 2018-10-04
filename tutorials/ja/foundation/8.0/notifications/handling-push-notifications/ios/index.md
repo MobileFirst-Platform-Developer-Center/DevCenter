@@ -94,16 +94,16 @@ downloads:
 ### クライアント・サイド
 {: #client-side }
 
-| Swift メソッド | 説明  |
+| Swift メソッド | 説明 |
 |---------------|--------------|
-| [`initialize()`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。 |
-| [`isPushSupported()`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 |
+| [`initialize()`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。|
+| [`isPushSupported()`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。|
 | [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | デバイスをプッシュ通知サービスに登録します。|
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | デバイス・トークンをサーバーに送信します。 |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。 |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | デバイスが現在サブスクライブしているタグをすべて取得します。 |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 |
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | デバイス・トークンをサーバーに送信します。|
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。|
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。|
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | デバイスが現在サブスクライブしているタグをすべて取得します。|
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 特定のタグからアンサブスクライブします。|
 | [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。              |
 
 #### 初期化

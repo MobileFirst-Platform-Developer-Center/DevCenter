@@ -467,19 +467,19 @@ public class ResolverAdapterData {
 {: #rest-interface-of-the-segment-resolver-adapter }
 **要求**
 
-| **属性** |  **値**                                                                                     |  
+|**属性** |**値**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
 | *URL*           | /segment                                                                                          |
-| *メソッド*        | POST                                                                                              |               
-| *コンテンツ・タイプ*  | application/json                                                                                  |
-| *本文*          | &lt;JSON object containing all required information for segment resolving&gt;                     |
+|*メソッド*        | POST                                                                                              |               
+|*コンテンツ・タイプ*  | application/json                                                                                  |
+|*本文*          | &lt;セグメント解決に必要なすべての情報を含んでいる JSON オブジェクト&gt;                     |
 
 **応答**
 
-|  **属性**   |  **値**                                |
+|**属性** |**値**                                                                                     |
 |:-------------------|:--------------------------------------------|
-| *コンテンツ・タイプ*     | text/plain                                  |                                                                          
-| *本文*             |  &lt;string describing the segment ID&gt;   |
+|*コンテンツ・タイプ*  | text/plain                                  |                                                                          
+|*本文*          |  &lt;セグメント ID を記述するストリング&gt;   |
 
 
 ## 高度なトピック

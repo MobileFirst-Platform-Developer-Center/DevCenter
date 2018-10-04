@@ -318,8 +318,7 @@ Dokumentation unter
      pod install
      ```
 
-2. Wenn Sie die Verschlüsselungsfunktion in einer Swift-Anwendung verwenden möchten, fügen
-Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hinzu: 
+2. Wenn Sie die Verschlüsselungsfunktion in einer Swift-Anwendung verwenden möchten, fügen Sie die folgenden Importe zum zugehörigen Bridging-Header für die Anwendung hinzu:
 
    ##### VORHER (mit IMFData/CloudantToolkit) - Daten auf iOS-Geräten verschlüsseln: 
    {: #before-with-imfdata-cloudanttoolkit-encrypt-ios-devices}
@@ -480,6 +479,8 @@ build.gradle hinzu.
         maven { url "http://cloudant.github.io/cloudant-sync-eap/repository/" }
         mavenCentral()
     }
+
+    
 
     dependencies {
         compile group: 'com.cloudant', name: 'cloudant-sync-datastore-core', version:'0.13.2'

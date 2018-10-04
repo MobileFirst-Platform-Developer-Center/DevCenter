@@ -32,7 +32,7 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 
 In order to configure the {{ site.data.keys.mf_server }} to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the {{ site.data.keys.mf_console }}.
 
-Edit the adater.xml file and add the following properties:
+Edit the adapter.xml file and add the following properties:
 
 ```xml
 <mfp:adapter name="JavaSQL"

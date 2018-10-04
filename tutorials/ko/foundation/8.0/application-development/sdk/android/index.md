@@ -182,13 +182,13 @@ SDK 릴리스는 SDK의 [JCenter 저장소](https://bintray.com/bintray/jcenter/
 {: #mfpclient.properties }
 이 파일은 Android Studio 프로젝트의 **./app/src/main/assets/** 폴더에 있으며, {{ site.data.keys.mf_server }}에서 Android 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-| 특성            | 설명                                                         | 예제 값 |
+|특성            |설명                                                         |예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
-| wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
-| wlServerContext     | {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. | /mfp/          |
-| languagePreferences | 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.           | en             |
+|wlServerProtocol    |{{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             |HTTP 또는 HTTPS  |
+|wlServerHost        |{{ site.data.keys.mf_server }}의 호스트 이름입니다.                            |192.168.1.63   |
+|wlServerPort        |{{ site.data.keys.mf_server }}의 포트입니다.                                 |9080           |
+|wlServerContext     |{{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. |/mfp/          |
+|languagePreferences |클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.           |en             |
 
 ## Javadoc 및 Android 서비스의 지원
 {: #support-for-javadoc-and-android-service }

@@ -98,16 +98,16 @@ Fügen Sie in Android Studio die folgende Aktivität (`activity`) zum Tag `appli
 ### Clientseite
 {: #client-side }
 
-| JavaScript-Funktion | Beschreibung |
+|JavaScript-Funktion |Beschreibung |
 | --- | --- |
-| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush-Instanz initialisieren  | 
-| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen?| 
-| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registriert das Gerät beim Push-Benachrichtigungsservice| 
-| [`MFPPush.getTags(success, failure)`](#get-tags) | Ruft alle verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab| 
-| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Abonniert einen bestimmten Tag | 
-| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Ruft die derzeit vom Gerät abonnierten Tags ab      | 
-| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Beendet das Abonnement eines bestimmten Tags| 
-| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf| 
+|[`MFPPush.initialize(success, failure)`](#initialization) |MFPPush-Instanz initialisieren  | 
+|[`MFPPush.isPushSupported(success, failure)`](#is-push-supported) |Unterstützt das Gerät Push-Benachrichtigungen?| 
+|[`MFPPush.registerDevice(options, success, failure)`](#register-device) |Registriert das Gerät beim Push-Benachrichtigungsservice| 
+|[`MFPPush.getTags(success, failure)`](#get-tags) |Ruft alle verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab| 
+|[`MFPPush.subscribe(tag, success, failure)`](#subscribe) |Abonniert einen bestimmten Tag | 
+|[`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) |Ruft die derzeit vom Gerät abonnierten Tags ab      | 
+|[`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) |Beendet das Abonnement eines bestimmten Tags| 
+|[`MFPPush.unregisterDevice(success, failure)`](#unregister) |Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf| 
 
 ### API-Implementierung
 {: #api-implementation }

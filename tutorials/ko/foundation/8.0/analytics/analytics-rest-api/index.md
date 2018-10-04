@@ -31,19 +31,19 @@ Analytics REST API를 사용하려는 경우:
 `https://example.com:9080/analytics-service/v3/applogs`
 
 
-REST API 메소드 | 엔드포인트 | 설명
+REST API 메소드 |엔드포인트 |설명
 --- | --- | ---
-Application Logs(POST) | /v3/applogs | 새 애플리케이션 로그를 작성합니다.
-Application Session(POST) | /v3/appsession | 동일한 appSessionID를 사용하여 보고할 때 애플리케이션 세션을 작성하거나 기존 애플리케이션 세션을 업데이트합니다.
-Bulk(POST) | /v3/bulk | 벌크로 이벤트를 보고합니다.
-Custom Chart(GET)| /v3/customchart | 모든 사용자 정의 차트 정의를 내보냅니다.
-Custom Chart(POST) | /v3/customchart/import | 사용자 정의 차트의 목록을 가져옵니다.
-Custom Data(POST) | /v3/customdata | 새 사용자 정의 데이터를 작성합니다.
-Device(POST) | /v3/device | 디바이스를 작성하거나 업데이트합니다.
-Export Data(GET) | /v3/export | 데이터를 지정된 데이터 형식으로 내보냅니다.
-Network Transaction(POST) | /v3/networktransaction |  새 네트워크 트랜잭션을 작성합니다.
-Server Log(POST) | /v3/serverlog | 새 서버 로그를 작성합니다.
-User(POST) | /v3/user | 새 서버를 작성합니다.
+Application Logs(POST) |/v3/applogs |새 애플리케이션 로그를 작성합니다.
+Application Session(POST) |/v3/appsession |동일한 appSessionID를 사용하여 보고할 때 애플리케이션 세션을 작성하거나 기존 애플리케이션 세션을 업데이트합니다.
+Bulk(POST) |/v3/bulk |벌크로 이벤트를 보고합니다.
+Custom Chart(GET)|/v3/customchart |모든 사용자 정의 차트 정의를 내보냅니다.
+Custom Chart(POST) |/v3/customchart/import |사용자 정의 차트의 목록을 가져옵니다.
+Custom Data(POST) |/v3/customdata |새 사용자 정의 데이터를 작성합니다.
+Device(POST) |/v3/device |디바이스를 작성하거나 업데이트합니다.
+Export Data(GET) |/v3/export |데이터를 지정된 데이터 형식으로 내보냅니다.
+Network Transaction(POST) |/v3/networktransaction |새 네트워크 트랜잭션을 작성합니다.
+Server Log(POST) |/v3/serverlog |새 서버 로그를 작성합니다.
+User(POST) |/v3/user |새 서버를 작성합니다.
 
 ## Swagger 문서에서 사용해 보기
 {: #try-it-out-on-swagger-docs }

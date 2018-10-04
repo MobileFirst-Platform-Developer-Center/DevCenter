@@ -8,7 +8,7 @@ weight: 9
 {: #overview }
 有关用于安装 {{ site.data.keys.mf_server_full }}、{{ site.data.keys.mf_app_center_full }} 和 {{ site.data.keys.mf_analytics_full }} 的 Ant 任务和配置样本文件的参考信息。
 
-#### 跳至：
+#### 跳转至
 {: #jump-to }
 * [Ant configuredatabase 任务参考](#ant-configuredatabase-task-reference)
 * [用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
@@ -138,7 +138,7 @@ configuredatabase Ant 任务的参考信息。 本参考信息仅针对关系数
 * 从 [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) 页面下载 DB2 JDBC 驱动程序
 * 或从 DB2 服务器上的 **DB2_INSTALL_DIR/java** 目录访存 **db2jcc4.jar** 文件及其关联的 **db2jcc_license_*.jar** 文件。
 
-不能通过使用 Ant 任务来指定表分配的详细信息，例如，表空间。 要控制表空间，必须使用 [DB2 数据库和用户需求](../databases/#db2-database-and-user-requirements)部分中的手动操作指示信息。
+不能通过使用 Ant 任务来指定表分配的详细信息，例如，表空间。 要控制表空间，必须使用 [DB2 数据库和用户需求](../prod-env/databases/#db2-database-and-user-requirements)部分中的手动操作指示信息。
 
 #### MySQL
 {: #mysql }
@@ -230,7 +230,7 @@ Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件�
 `<driverclasspath>` 元素必须包含一个 Oracle JDBC 驱动程序 JAR 文件。 可以从 [JDBC, SQLJ, Oracle JPublisher and Universal Connection
 Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) 下载 Oracle JDBC 驱动程序。
 
-不能通过使用 Ant 任务来指定表分配的详细信息，例如，表空间。 要控制表空间，可以手动创建用户帐户并在运行 Ant 任务之前向其分配缺省表空间。 要控制其他详细信息，必须使用 [Oracle 数据库和用户需求](../databases/#oracle-database-and-user-requirements)部分中的手动操作指示信息。
+不能通过使用 Ant 任务来指定表分配的详细信息，例如，表空间。 要控制表空间，可以手动创建用户帐户并在运行 Ant 任务之前向其分配缺省表空间。 要控制其他详细信息，必须使用 [Oracle 数据库和用户需求](../prod-env/databases/#oracle-database-and-user-requirements)部分中的手动操作指示信息。
 
 | 属性 | 描述                            | 必需 | 缺省值               |
 |-----------|----------------------------------------|----------|-----------------------|
@@ -1512,12 +1512,12 @@ Service 组件接收事件时，在运行时将自动创建 **analyticsData** �
 | PUSH_MESSAGE_SEQUENCE_TABLE	 | 推送通知表；存储生成的序列标识。	 | 1 行。 |
 | PUSH_VERSION	                 | 产品版本。	                                         | 1 行。 |
 
-有关设置数据库的更多信息，请参阅[设置数据库](../databases)。
+有关设置数据库的更多信息，请参阅[设置数据库](../prod-env/databases)。
 
 ## 样本配置文件
 {{ site.data.keys.product }} 包含许多样本配置文件，可帮助您启动 Ant 任务来安装 {{ site.data.keys.mf_server }}。
 
-启动这些 Ant 任务的最容易方式是使用 {{ site.data.keys.mf_server }} 分发版的 **MobileFirstServer/configuration-samples/** 目录中提供的样本配置文件。 有关使用 Ant 任务安装 {{ site.data.keys.mf_server }} 的更多信息，请参阅[使用 Ant 任务进行安装](../appserver/#installing-with-ant-tasks)。
+启动这些 Ant 任务的最容易方式是使用 {{ site.data.keys.mf_server }} 分发版的 **MobileFirstServer/configuration-samples/** 目录中提供的样本配置文件。 有关使用 Ant 任务安装 {{ site.data.keys.mf_server }} 的更多信息，请参阅[使用 Ant 任务进行安装](../prod-env/appserver/#installing-with-ant-tasks)。
 
 ### 样本配置文件的列表
 {: #list-of-sample-configuration-files }
