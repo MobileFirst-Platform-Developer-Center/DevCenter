@@ -9,8 +9,7 @@ env:
     - BUILD=buildBluemix.sh
     - BUILD=buildElastic.sh
 script:
-    - "travis_wait 60 sleep 1800 &"
-    - ./build/$BUILD
+    - travis_wait 60 ./build/$BUILD
 branches:
   only:
   - master
