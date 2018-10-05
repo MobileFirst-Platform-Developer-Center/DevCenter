@@ -69,7 +69,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 
 **前提条件:**
 
-- [Apache Cordova CLI](https://www.npmjs.com/package/cordova) および {{ site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
+- [Apache Cordova CLI (>=6.x および <9.0)](https://www.npmjs.com/package/cordova) と {{ site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
 - {{ site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
 - [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/mobilefirst)、および [Cordova 開発環境のセットアップ](../../../installation-configuration/development/cordova)の両チュートリアルを読む。
 - cordova-windows の場合、マシンにインストールされている Visual Studio と .NET のバージョンと互換性のある Visual C++ のバージョンがインストールされている必要があります。
@@ -326,7 +326,7 @@ mfpdev app config
 
 MobileFirst Platform では、Cordova Windows、Cordova Android、および Cordova iOS のサポートされるプラットフォームと共に、Cordova Browser プラットフォームがサポートされるようになりました。
 
-MobileFirst Platform (MFP) と共に Cordova Browser プラットフォームを使用することは、他のプラットフォームのいずれかと共に MFP を使用することに似ています。この機能を示すサンプルを以下に示します。
+MobileFirst Platform (MFP) と共に Cordova Browser プラットフォームを使用することは、他のプラットフォームのいずれかと共に MFP を使用することに似ています。 この機能を示すサンプルを以下に示します。
 
 以下のコマンドを使用して、Cordova アプリケーションを作成します。
 ```bash
@@ -531,7 +531,7 @@ cordova run
 
 If you click the button to ping MFP on the browser running on port `8000`, the ping will fail whereas clicking the button that runs on localhost port `9081` will be successful. All the cordova browser compatible cordova plugins and MFP features can be used without issues.-->
 
-これにより、プロキシー・サーバー (ポート `9081`) で実行するブラウザーが起動され、MFP サーバーに接続されます。Cordova ブラウザーのデフォルトのプロキシー・サーバー (ポート `8000` で実行) は、[same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) が原因で MFP サーバーに接続できないため抑止されました。
+これにより、プロキシー・サーバー (ポート `9081`) で実行するブラウザーが起動され、MFP サーバーに接続されます。 Cordova ブラウザーのデフォルトのプロキシー・サーバー (ポート `8000` で実行) は、[same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) が原因で MFP サーバーに接続できないため抑止されました。
 
 > 実行されるデフォルト・ブラウザーは、**Chrome** に設定されます。 異なるブラウザー上で実行するには、以下のコマンドで `--target` オプションを使用できます。
 ```bash
@@ -551,7 +551,7 @@ mfpdev app preview
 
 <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/">この</a>チュートリアルの WebSphere Liberty 使用手順に従い、以下の変更を行います。
 
-このチュートリアルの『**Building the Maven webapp with the web application’s resources**』セクションのステップ 1 に記述されているように、ブラウザー・プロジェクトの `www` フォルダーの内容を `[MyWebApp] → src → Main → webapp ` に追加します。最後に、Liberty サーバーでアプリケーションを登録し、パス `localhost:9080/MyWebApp` を指定してブラウザーで実行することによってアプリケーションをテストします。また、`sjcl` フォルダーと `jssha` フォルダーを親フォルダーに追加し、`ibmmfpf.js` ファイル内でのそれらの参照を変更します。
+このチュートリアルの『**Building the Maven webapp with the web application’s resources**』セクションのステップ 1 に記述されているように、ブラウザー・プロジェクトの `www` フォルダーの内容を `[MyWebApp] → src → Main → webapp ` に追加します。 最後に、Liberty サーバーでアプリケーションを登録し、パス `localhost:9080/MyWebApp` を指定してブラウザーで実行することによってアプリケーションをテストします。 また、`sjcl` フォルダーと `jssha` フォルダーを親フォルダーに追加し、`ibmmfpf.js` ファイル内でのそれらの参照を変更します。
 
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }

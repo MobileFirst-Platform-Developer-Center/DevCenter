@@ -62,7 +62,7 @@ The *cordova-plugin-mfp-fips* plug-in provides FIPS 140-2 support for the Androi
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-The *cordova-plugin-mfp-encrypt-utils* plug-in provides iOS OpenSSL frameworks for encryption for Cordova applications with the iOS platform. For more information, see [Enabling OpenSSL for Cordova iOS](additional-information).
+The *cordova-plugin-mfp-encrypt-utils* plug-in provides iOS OpenSSL frameworks for encryption for Cordova applications with the iOS platform. For more information, see [Enabling OpenSSL for Cordova iOS](../cordova/additional-information).
 
 **Prerequisites:**
 

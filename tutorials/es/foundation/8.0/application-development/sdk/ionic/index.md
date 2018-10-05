@@ -17,7 +17,7 @@ Los plugins disponibles son:
 
 * **cordova-plugin-mfp** - El núcleo de SDK
 * **cordova-plugin-mfp-push** - Proporciona soporte de notificaciones push
-* **cordova-plugin-mfp-jsonstore** - Proporciona soporte JSONStore 
+* **cordova-plugin-mfp-jsonstore** - Proporciona soporte JSONStore
 
 
 ### Niveles de soporte
@@ -64,7 +64,7 @@ El plugin *cordova-plugin-mfp-fips* proporciona soporte FIPS 140-2 para la plata
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-El plugin *cordova-plugin-mfp-encrypt-utils* proporciona infraestructuras de cifrado iOS OpenSSL para las aplicaciones Cordova con la plataforma iOS. Para obtener más información, consulte [Habilitación de OpenSSL para Cordova iOS](additional-information).
+El plugin *cordova-plugin-mfp-encrypt-utils* proporciona infraestructuras de cifrado iOS OpenSSL para las aplicaciones Cordova con la plataforma iOS. Para obtener más información, consulte [Habilitación de OpenSSL para Cordova iOS](../cordova/additional-information).
 
 **Requisitos previos:**
 
@@ -82,7 +82,7 @@ Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](..
 Siga las instrucciones siguientes para añadir el SDK de {{ site.data.keys.product }} Ionic a un proyecto nuevo o existente de Ionic, y regístrelo en {{ site.data.keys.mf_server }}.
 
 Antes de empezar, asegúrese de que {{ site.data.keys.mf_server }} está en ejecución.
-  
+
 Si está utilizando un servidor instalado localmente, desde una ventana de **línea de mandatos**, vaya a la carpeta del servidor y ejecute el mandato: `./run.sh`.
 
 ### Adición del SDK
@@ -161,7 +161,7 @@ Cada plataforma se registra como una aplicación en {{ site.data.keys.mf_server 
 >
 > 1. Cargue {{ site.data.keys.mf_console }}.  
 > 2. Pulse el botón **Nuevo** junto a **Aplicaciones** para registrar una nueva aplicación y seguir las instrucciones en la pantalla.
-  
+
 
 ### Utilización del SDK
 {: #using-the-sdk }
@@ -317,7 +317,7 @@ Después de que el SDK de {{ site.data.keys.product_adj }} Ionic se añada al pr
     </div>
 </div>
 
-### Edición de los valores de {{ site.data.keys.product_adj }} en el archivo config.xml 
+### Edición de los valores de {{ site.data.keys.product_adj }} en el archivo config.xml
 {: #editing-mobilefirst-settings-in-the-configxml-file }
 Utilice {{ site.data.keys.mf_cli }} para editar los valores anteriores ejecutando el mandato:
 
@@ -326,12 +326,12 @@ Utilice {{ site.data.keys.mf_cli }} para editar los valores anteriores ejecutand
 mfpdev app config
 ```
 
-## Guías de aprendizaje con las que continuar 
+## Guías de aprendizaje con las que continuar
 {: #tutorials-to-follow-next }
 Con el SDK de {{ site.data.keys.product_adj }} Ionic ahora integrado, podrá:
 
 - Revisar las guías de aprendizaje de [Utilización de {{ site.data.keys.product }} SDK](../)
 - Revisar las guías de aprendizaje de [Desarrollo de adaptadores](../../../adapters/)
 - Revisar las guías de aprendizaje de [Autenticación y seguridad](../../../authentication-and-security/)
-- Revisar las guías de aprendizaje de [Notificaciones](../../../notifications/) 
+- Revisar las guías de aprendizaje de [Notificaciones](../../../notifications/)
 - Revisar [Todas las guías de aprendizaje](../../../all-tutorials)

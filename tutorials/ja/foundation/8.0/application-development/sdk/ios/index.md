@@ -72,7 +72,7 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
 4. コマンド・ライン・ウィンドウに戻り、`pod install` コマンドに続けて、`pod update` コマンドを実行します。 これらのコマンドは、{{ site.data.keys.product }} ネイティブ SDK ファイルの追加、**mfpclient.plist** ファイルの追加、および Pod プロジェクトの生成を行います。  
     **注:** コマンドは、完了するのに数分かかることがあります。
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要**: これ以降、プロジェクトを Xcode で開くには、`[ProjectName].xcworkspace` ファイルを使用してください。`[ProjectName].xcodeproj` ファイルは使用**しないでください**。 CocoaPods ベースのプロジェクトは、アプリケーション (実行可能ファイル) およびライブラリー (CocoaPods マネージャーがプルするすべてのプロジェクト依存関係) を含むワークスペースとして管理されます。
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要**: これ以降、プロジェクトを Xcode で開くには、`[ProjectName].xcworkspace` ファイルを使用してください。 `[ProjectName].xcodeproj` ファイルは使用**しないでください**。 CocoaPods ベースのプロジェクトは、アプリケーション (実行可能ファイル) およびライブラリー (CocoaPods マネージャーがプルするすべてのプロジェクト依存関係) を含むワークスペースとして管理されます。
 
 ### {{ site.data.keys.product_adj }} ネイティブ SDK の手動での追加
 {: #manually-adding-the-mobilefirst-native-sdk }
