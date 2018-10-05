@@ -156,7 +156,7 @@ The {{ site.data.keys.product_adj }} API methods are available after the {{ site
 Call the various {{ site.data.keys.product_adj }} API methods only after event is called.
 
 ## Updating the {{ site.data.keys.product_adj }} Ionic SDK
-{: #updating-the-mobilefirst-cordova-sdk }
+{: #updating-the-mobilefirst-ionic-sdk }
 To update the {{ site.data.keys.product_adj }} Ionic Cordova SDK with the latest release, remove the **cordova-plugin-mfp** plug-in: run the `ionic cordova plugin remove cordova-plugin-mfp` command and then run the `ionic cordova plugin add cordova-plugin-mfp` command to add it again.
 
 SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/cordova-plugin-mfp).

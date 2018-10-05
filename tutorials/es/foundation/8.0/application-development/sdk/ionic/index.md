@@ -170,7 +170,7 @@ Se llama entonces al suceso `mfjsloaded`.
 Llame a los diversos métodos de la API de {{ site.data.keys.product_adj }} solo después de que se haya llamado al suceso.
 
 ## Actualización del SDK de {{ site.data.keys.product_adj }} Ionic
-{: #updating-the-mobilefirst-cordova-sdk }
+{: #updating-the-mobilefirst-ionic-sdk }
 Para actualizar el SDK de {{ site.data.keys.product_adj }} Ionic Cordova con el último release, elimine el plug-in **cordova-plugin-mfp**: ejecute el mandato `ionic cordova plugin remove cordova-plugin-mfp` y, a continuación, ejecute el mandato `ionic cordova plugin add cordova-plugin-mfp` para añadirlo de nuevo.
 
 Los releases de SDK se pueden encontrar en el [repositorio NPM ](https://www.npmjs.com/package/cordova-plugin-mfp) de SDK.

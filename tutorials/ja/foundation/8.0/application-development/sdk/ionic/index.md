@@ -156,7 +156,7 @@ MobileFirst プラグインでサポートされる Ionic Cordova プラット�
 イベントが呼び出された後に初めて、さまざまな {{ site.data.keys.product_adj }} API メソッドを呼び出してください。
 
 ## {{ site.data.keys.product_adj }} Ionic SDK の更新
-{: #updating-the-mobilefirst-cordova-sdk }
+{: #updating-the-mobilefirst-ionic-sdk }
 {{ site.data.keys.product_adj }} Ionic Cordova SDK を最新リリースで更新するには、`ionic cordova plugin remove cordova-plugin-mfp` コマンドを実行して **cordova-plugin-mfp** プラグインを削除してから、`ionic cordova plugin add cordova-plugin-mfp` コマンドを実行してこのプラグインを再度追加します。
 
 SDK のリリースは、SDK の [NPM リポジトリー](https://www.npmjs.com/package/cordova-plugin-mfp)で調べることができます。
