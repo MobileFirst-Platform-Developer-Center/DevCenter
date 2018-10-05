@@ -1,4 +1,4 @@
----
+﻿---
 layout: tutorial
 title: Traitement des incidents liés à JSONStore
 breadcrumb_title: JSONStore
@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Vous trouverez ici des des informations qui vous aideront à résoudre les problèmes que vous êtes susceptible de rencontrer lors de l'utilisation de l'API JSONStore.
+Vous trouverez ici des informations qui vous aideront à résoudre les problèmes que vous êtes susceptible de rencontrer lors de l'utilisation de l'API JSONStore.
 
 ## Fournissez des informations lorsque vous demandez de l'aide
 {: #provide-information-when-you-ask-for-help }
@@ -85,7 +85,8 @@ La compréhension des caractéristiques JSONStore suivantes peut vous aider à r
 * Lorsque vous utilisez JSONStore sur un appareil 64 bits, l'erreur suivante peut s'afficher : `java.lang.UnsatisfiedLinkError: dlopen failed: "..." is 32-bit instead of 64-bit`
 * Cette erreur signifie que vous disposez de bibliothèques natives 64 bits dans votre projet Android et que JSONStore ne fonctionne pas lorsque vous utilisez ces bibliothèques. Pour confirmation, accédez au répertoire **src/main/libs** ou **src/main/jniLibs** sous votre projet Android et vérifiez si le dossier x86_64 ou arm64-v8a existe. Si tel est le cas, supprimez-le ; JSONStore fonctionnera à nouveau.
 * Dans certains cas (ou environnements), le flux entre `wlCommonInit()` avant l'initialisation du plug-in JSONStore. Cela entraîne l'échec des appels d'API liés à JSONStore. L'amorçage de `cordova-plugin-mfp` appelle automatiquement `WL.Client.init`, qui, une fois terminé, déclenche la fonction `wlCommonInit`. Ce processus d'initialisation est différent pour le plug-in JSONStore. En effet, ce dernier ne dispose d'aucun moyen d'arrêter (_halt_) l'appel de `WL.Client.init`. Dans certains environnements, il peut arriver que le flux indique `wlCommonInit()` avant la fin de `mfpjsonjslloaded`.
-Pour garantir l'ordre des événements `mfpjsonjsloaded` et `mfpjsloaded`, le développeur a la possibilité d'appeler manuellement `WL.CLient.init`. Il n'est alors plus nécessaire de disposer d'un code spécifique à la plateforme.
+Pour garantir l'ordre des événements `mfpjsonjsloaded` et `mfpjsloaded`, le développeur a la possibilité d'appeler manuellement
+`WL.CLient.init`. Il n'est alors plus nécessaire de disposer d'un code spécifique à la plateforme.
 
   Pour configurer l'appel de `WL.CLient.init` manuellement, suivez les étapes ci-après :                             
 
@@ -186,7 +187,7 @@ catch(JSONStoreException e) {
 {: #list-of-error-codes }
 Liste des codes d'erreur courants et leur description :
 
-|Code d'erreur      | Description |
+|Code d'erreur   | Description |
 |----------------|-------------|
 | -100 UNKNOWN_FAILURE | Erreur non reconnue. |
 | -75 OS\_SECURITY\_FAILURE | Ce code d'erreur est lié à l'indicateur requireOperatingSystemSecurity. Il peut être émis si l'API ne parvient pas à supprimer des métadonnées de sécurité qui sont protégées par la fonction de sécurité du système d'exploitation (Touch ID avec rétromigration vers le code d'accès) ou si l'API init ou open ne parvient pas à localiser les métadonnées de sécurité. Il peut également être émis si l'appareil ne prend pas en charge la fonction de sécurité du système d'exploitation, alors que l'utilisation de cette fonction a été demandée. |

@@ -38,7 +38,7 @@ weight: 3
 
 ### Firebase Cloud Messaging
 {: #firebase-cloud-messaging }
-> **注:** Google は [GCM を非推奨](https://developers.google.com/cloud-messaging/faq)とし、Cloud Messaging を Firebase に統合しました。GCM プロジェクトを使用する場合は、必ず [Android 上の GCM クライアント・アプリケーションを FCM にマイグレーション](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)してください。
+> **注:** Google は [GCM を非推奨](https://developers.google.com/cloud-messaging/faq)とし、Cloud Messaging を Firebase に統合しました。 GCM プロジェクトを使用する場合は、必ず [Android 上の GCM クライアント・アプリケーションを FCM にマイグレーション](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)してください。
 
 Android デバイスは、プッシュ通知に Firebase Cloud Messaging (FCM) サービスを使用します。  
 FCM をセットアップするには、次のようにします。
@@ -57,7 +57,7 @@ FCM をセットアップするには、次のようにします。
 * FCM クライアント・アプリケーションがメッセージを受信するために FCM との接続を許可するようにファイアウォールを構成します。
 * 開くポートは 5228、5229、および 5230 です。 FCM は通常は 5228 のみを使用しますが、場合によっては 5229 および 5230 を使用することもあります。
 * FCM は特定の IP を提供しないため、Google の ASN 15169 にリストされた IP ブロックに含まれるすべての IP アドレスへの発信接続をファイアウォールが受け入れられるようにする必要があります。
-* ファイアウォールが {{ site.data.keys.mf_server }} から android.googleapis.com への発信接続をポート 443 で受け入れるようにします。
+* ファイアウォールが {{ site.data.keys.mf_server }} から fcm.googleapis.com への発信接続をポート 443 で受け入れるようにします。
 
 <img class="gifplayer" alt="GCM 資格情報の追加のイメージ" src="gcm-setup.png"/>
 
@@ -66,7 +66,7 @@ FCM をセットアップするには、次のようにします。
 iOS デバイスは、プッシュ通知に Apple Push Notification Service (APNS) を使用します。  
 APNS をセットアップするには、次のようにします。
 
-1. 開発や実動のためのプッシュ通知証明書を生成します。 詳細な手順については、[こちら](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)の`「iOS の場合」`セクションを参照してください。 
+1. 開発や実動のためのプッシュ通知証明書を生成します。 詳細な手順については、[こちら](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)の`「iOS の場合」`セクションを参照してください。
 2. {{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「プッシュ設定」**で、証明書タイプを選択し、証明書のファイルとパスワードを指定します。 次に、**「保存」**をクリックします。
 
 #### 注
@@ -293,13 +293,13 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 --- | ---
 message | 送信されるアラート・メッセージ
 settings | 通知のさまざまな属性の設定。
-target | ターゲットのセットで使用できるのは、コンシューマー ID、デバイス、プラットフォーム、またはタグです。ターゲットのうちの 1 つのみを設定できます。
-deviceIds | デバイス ID によって表されるデバイスの配列。これらの ID を持つデバイスが通知を受け取ります。 これはユニキャスト通知です。
-notificationType | メッセージの送信に使用されるチャネル (プッシュ/SMS) を示す整数値。許可される値は、1 (プッシュのみ)、2 (SMS のみ)、および 3 (プッシュと SMS) です。
-platforms | デバイス・プラットフォームの配列。これらのプラットフォームを実行しているデバイスが通知を受け取ります。 サポートされる値は、A (Apple/iOS)、G (Google/Android)、および M (Microsoft/Windows) です。
-tagNames | tagNames として指定されたタグの配列。これらのタグにサブスクライブされているデバイスが通知を受け取ります。 タグ・ベース通知にはこのタイプのターゲットを使用します。
-userIds | 通知の送信先とする、ユーザー ID によって表されるユーザーの配列。これはユニキャスト通知です。
-phoneNumber | デバイスを登録し、通知を受け取るために使用される電話番号。これはユニキャスト通知です。
+target | ターゲットのセットで使用できるのは、コンシューマー ID、デバイス、プラットフォーム、またはタグです。 ターゲットのうちの 1 つのみを設定できます。
+deviceIds | デバイス ID によって表されるデバイスの配列。 これらの ID を持つデバイスが通知を受け取ります。 これはユニキャスト通知です。
+notificationType | メッセージの送信に使用されるチャネル (プッシュ/SMS) を示す整数値。 許可される値は、1 (プッシュのみ)、2 (SMS のみ)、および 3 (プッシュと SMS) です。
+platforms | デバイス・プラットフォームの配列。 これらのプラットフォームを実行しているデバイスが通知を受け取ります。 サポートされる値は、A (Apple/iOS)、G (Google/Android)、および M (Microsoft/Windows) です。
+tagNames | tagNames として指定されたタグの配列。 これらのタグにサブスクライブされているデバイスが通知を受け取ります。 タグ・ベース通知にはこのタイプのターゲットを使用します。
+userIds | 通知の送信先とする、ユーザー ID によって表されるユーザーの配列。 これはユニキャスト通知です。
+phoneNumber | デバイスを登録し、通知を受け取るために使用される電話番号。 これはユニキャスト通知です。
 
 **プッシュ通知ペイロード JSON サンプル**
 

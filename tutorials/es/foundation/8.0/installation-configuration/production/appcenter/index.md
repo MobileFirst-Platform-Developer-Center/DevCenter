@@ -835,15 +835,15 @@ Complete el procedimiento siguiente para configurar la base de datos de Oracle.
         * Cree un usuario, denominado **APPCENTER** con los siguientes atributos:
 
       ```bash
-      Profile: DEFAULT
-      Authentication: password
-      Default tablespace: USERS
-      Temporary tablespace: TEMP
-      Status: Unlocked
-      Add system privilege: CREATE SESSION
-      Add system privilege: CREATE SEQUENCE
-      Add system privilege: CREATE TABLE
-      Add quota: Unlimited for tablespace USERS
+      Perfil: DEFAULT
+      Autenticación: contraseña
+      Espacio de tabla predeterminado: USERS
+      Espacio de tabla temporal: TEMP
+      Estado: Desbloqueado
+      Añadir privilegio del sistema: CREATE SESSION
+      Añadir privilegio del sistema: CREATE SEQUENCE
+      Añadir privilegio del sistema: CREATE TABLE
+      Añadir cuota: Ilimitada para el espacio de tabla USERS
       ```
     * Para crear el usuario utilizando Oracle SQLPlus, escriba los mandatos siguientes:
 

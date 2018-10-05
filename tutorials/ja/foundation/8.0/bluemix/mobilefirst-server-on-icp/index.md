@@ -62,7 +62,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
       ```bash
       bx pr login -a https://ip:port
       ```
-      オプションで、SSL 検証をスキップする場合は、上記のコマンドでフラグ `--skip-ssl-validation` を使用します。このオプションを使用すると、クラスター・エンドポイントの `username` と `password` の入力を求めるプロンプトが出されます。 ログインに成功したら、以下のステップに進んでください。
+      オプションで、SSL 検証をスキップする場合は、上記のコマンドでフラグ `--skip-ssl-validation` を使用します。 このオプションを使用すると、クラスター・エンドポイントの `username` と `password` の入力を求めるプロンプトが出されます。 ログインに成功したら、以下のステップに進んでください。
 
   2. 以下のコマンドを使用して、{{ site.data.keys.product }} の PPA アーカイブをロードします。
       ```
@@ -131,9 +131,12 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 | jndiConfigurations | mfpfProperties | Operational Analytics をカスタマイズするために指定する {{site.data.keys.prod_adj }} JNDI プロパティー | 名前値のペアをコンマ区切りで指定します。 |
 | resources | limits.cpu | 許可される CPU の最大量を記述します。 | デフォルトは **2000m**<br/>[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) をお読みください。 |
 |  | limits.memory | 許可されるメモリーの最大量を記述します。 | デフォルトは **4096Mi**<br/>[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) をお読みください。 |
-|  | requests.cpu | 必要な CPU の最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1000m** |
-|  | requests.memory | 必要なメモリーの最小量を記述します。指定されない場合、メモリー量は、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **2048Mi** |
+|  | requests.cpu | 必要な CPU の最小量を記述します。 指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1000m** |
+|  | requests.memory | 必要なメモリーの最小量を記述します。 指定されない場合、メモリー量は、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **2048Mi** |
 | persistence | existingClaimName | 既存の永続ボリューム要求 (PVC) の名前 |  |
+| logs | consoleFormat | コンテナー・ログの出力形式を指定します。 | デフォルトは **json** |
+|  | consoleLogLevel | コンテナー・ログに移動するメッセージの細分度を制御します。 | デフォルトは **info** |
+|  | consoleSource | コンテナー・ログに書き込まれるソースを指定します。 複数のソースには、コンマ区切りのリストを使用します。 | デフォルトは **message**、**trace**、**accessLog**、**ffdc** |
 
 
 ### {{ site.data.keys.mf_server }} の環境変数
@@ -143,7 +146,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 | 修飾子 | パラメーター | 定義 | 使用可能な値 |
 |-----------|-----------|------------|---------------|
 | arch |  | ワーカー・ノード・アーキテクチャー | このチャートのデプロイ先となるワーカー・ノード・アーキテクチャー。<br/>現在、**AMD64** プラットフォームのみがサポートされています。 |
-| image | pullPolicy | イメージ・プル・ポリシー |デフォルトは **IfNotPresent** |
+| image | pullPolicy | イメージ・プル・ポリシー | デフォルトは **IfNotPresent** |
 |  | tag | Docker イメージ・タグ | [Docker タグの説明](https://docs.docker.com/engine/reference/commandline/image_tag/)を参照 |
 |  | name | Docker イメージ名 | {{site.data.keys.prod_adj }} Server Docker イメージの名前。 |
 | scaling | replicaCount | 作成する必要がある {{site.data.keys.prod_adj }} Server のインスタンス (ポッド) の数 | 正整数<br/>デフォルトは **3** |
@@ -155,7 +158,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 |  | db2Username | DB2 データベースにアクセスするための DB2 ユーザー名 | ユーザーには、表を作成するための権限と、スキーマがまだ存在しない場合、スキーマを作成するための権限が必要です。 |
 |  | db2Password | 指定されたデータベースの DB2 パスワード  |  |
 |  | db2Schema | 作成するサーバー DB2 スキーマ |  |
-|  | db2ConnectionIsSSL | DB2 接続タイプ | データベース接続が **http** と **https** のいずれであるかを指定します。デフォルト値は **false** (http) です。<br/>DB2 ポートも同じ接続モード用に構成されていることを確認してください。 |
+|  | db2ConnectionIsSSL | DB2 接続タイプ | データベース接続が **http** と **https** のいずれであるかを指定します。 デフォルト値は **false** (http) です。<br/>DB2 ポートも同じ接続モード用に構成されていることを確認してください。 |
 | existingMobileFirstAnalytics | analyticsEndPoint | Analytics Server の URL | 例: `http://9.9.9.9:30400`<br/> コンソールへのパスは指定しないでください。これはデプロイメント時に追加されます。
  |
 |  | analyticsAdminUser | Analytics 管理ユーザーのユーザー名 |  |
@@ -164,8 +167,13 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 | jndiConfigurations | mfpfProperties | デプロイメントをカスタマイズするための {{site.data.keys.prod_adj }} Server JNDI プロパティー | 名前値のペアをコンマで区切ります。 |
 | resources | limits.cpu | 許可される CPU の最大量を記述します。 | デフォルトは **2000m**<br/>[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) をお読みください。 |
 |  | limits.memory | 許可されるメモリーの最大量を記述します。 | デフォルトは **4096Mi**<br/>[Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) をお読みください。 |
-|  | requests.cpu | 必要な CPU の最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1000m** |
-|  | requests.memory | 必要なメモリーの最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **2048Mi** |
+|  | requests.cpu | 必要な CPU の最小量を記述します。 指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1000m** |
+|  | requests.memory | 必要なメモリーの最小量を記述します。 指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **2048Mi** |
+| logs | consoleFormat | コンテナー・ログの出力形式を指定します。 | デフォルトは **json** |
+|  | consoleLogLevel | コンテナー・ログに移動するメッセージの細分度を制御します。 | デフォルトは **info** |
+|  | consoleSource | コンテナー・ログに書き込まれるソースを指定します。 複数のソースには、コンマ区切りのリストを使用します。 | デフォルトは **message**、**trace**、**accessLog**、**ffdc** |
+
+> Kibana を使用して {{ site.data.keys.prod_adj }} ログを分析する場合のチュートリアルについては、[こちら](analyzing-mobilefirst-logs-on-icp/)を参照してください。
 
 ### ICP カタログからの {{site.data.keys.prod_adj }} Helm チャートのインストール
 {: #install-hmc-icp}

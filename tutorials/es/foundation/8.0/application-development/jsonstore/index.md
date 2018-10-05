@@ -252,7 +252,7 @@ Todas las claves están reforzadas mediante PBKDF2 (Password-Based Key Derivatio
 Puede decidir cifrar las recopilaciones de datos de una aplicación, sin embargo, no puede conmutar entre los formatos cifrados y sin cifrar ni utilizar ambos formatos dentro de un almacén.
 
 
-La clave que proteje los datos en el almacén se basa en la contraseña de usuario que proporcione.
+La clave que protege los datos en el almacén se basa en la contraseña de usuario que proporcione.
 La clave no caduca y puede cambiarla llamando a la API changePassword.
 
 La clave de protección de datos (DPK) es la clave que se utiliza para descifrar el contenido del almacén.
@@ -383,7 +383,7 @@ Este coste en el rendimiento es más evidente en recopilaciones grandes.
 
 * La API `count` es relativamente costosa.
 Sin embargo, puede mantener una variable que mantenga el recuento de dicha recopilación.
-Actualízela cada vez que almacene o elimine elementos en la recopilación.
+Actualícela cada vez que almacene o elimine elementos en la recopilación.
 
 * Las API `find` (`find`, `findAll` y `findById`) se ven afectadas por el cifrado, puesto que deben descifrar cada documento para ver si hay una coincidencia.
 Para una búsqueda mediante una consulta, si se pasa un límite, podría ser más rápido al detenerse la consulta al alcanzar el límite de los resultados.
@@ -750,6 +750,176 @@ Si el documento no se marca como sucio, se elimina físicamente de la recopilaci
 accessor.remove(doc, {markDirty: true})
 ```
 
+
+### Sincronización automática con CloudantDB
+A partir de Mobile Foundation [CD Update 2](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/8-0-cd-update-release), el SDK de MFP JSONStore se puede utilizar para automatizar la sincronización de datos entre una recopilación de JSONStore en un dispositivo con cualquier base de datos CouchDB incluida Cloudant. Esta característica está disponible en iOS, android, cordova-android y cordova-ios.
+
+#### Configuración de la sincronización entre JSONStore y Cloudant
+Para configurar la sincronización automática entre JSONStore y Cloudant, complete los pasos siguientes:
+
+1. Defina la política de sincronización en la aplicación móvil.
+2. Despliegue el adaptador de sincronización en IBM Mobile Foundation.
+
+#### Definición de la política de sincronización
+El método de sincronización entre una recopilación de JSONStore y una base de datos Cloudant está definido por la política de sincronización. Puede especificar la política de sincronización en la aplicación para cada recopilación.
+
+Se puede inicializar una recopilación de JSONStore con una política de sincronización. La política de sincronización puede ser una de las tres siguientes políticas:
+
+<b>SYNC_DOWNSTREAM:</b>
+Utilice esta política cuando desee descargar datos desde Cloudant en la recopilación de JSONStore. Esto se suele utilizar para datos estáticos que son necesarios para el almacenamiento fuera de línea. Por ejemplo, la lista de precios de elementos de un catálogo. Cada vez que se inicialice la recopilación en el dispositivo, los datos se renuevan desde la base de datos Cloudant remota. Mientras que se descarga toda la base de datos por primera vez, las renovaciones siguientes descargarán solo delta, que se compone de los cambios realizados en la base de datos remota.
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_DOWNSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
+}
+```
+
+<b>SYNC_UPSTREAM:</b>
+Utilice esta política cuando desee enviar por push datos locales a una base de datos Cloudant. Por ejemplo, la carga de datos de ventas capturados fuera de línea a una base de datos Cloudant. Cuando una recopilación está definida con la política SYNC_UPSTREAM, cualquier registro nuevo añadido a la recopilación crea un registro nuevo en Cloudant. De forma similar, cualquier documento modificado en la recopilación en el dispositivo modificará el documento en Cloudant, y los documentos suprimidos en la recopilación también se suprimirán de la base de datos Cloudant.
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_UPSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
+}
+```
+
+<b>SYNC_NONE:</b>
+Esta es la política predeterminada. Seleccione esta política para que no tenga lugar la sincronización.
+
+<b><i>Importante:</i></b> La política de sincronización se atribuye a una recopilación JSONStore. Una vez que se inicialice una recopilación con una política de sincronización en concreto, no se debería modificar. La modificación de la política de sincronización puede dar lugar a resultados indeseables.
+
+<b>syncAdapterPath</b>
+
+Este es el nombre del adaptador desplegado.
+
+
+Android:
+```
+//Here "JSONStoreCloudantSync" is the name of the sync adapter deployed on MFP server.
+initOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+iOS:
+```
+openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy://One of the three sync policies,
+	syncAdapterPath : 'JSONStoreCloudantSync'
+}
+```
+
+#### Despliegue del adaptador de sincronización
+Descargue el adaptador de JSONStoreSync desde <a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">aquí</a>, configure las credenciales de cloudant en la vía de acceso ‘src/main/adapter-resources/adapter.xml’ y despliéguelo en el servidor de MobileFirst.
+Configure las credenciales en la base de datos de Cloudant de fondo también mediante la mfpconsole, como se muestra a continuación:
+
+|---------------------------|-------------------------|
+|![Configurar Cloudant]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/configure-cloudant.png)    |   ![Credenciales de Cloudant]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/CloudantCreds.jpg)|
+
+#### Algunos puntos a tener en cuenta antes de utilizar esta característica
+Esta característica solo está disponible para Android, iOS, cordova-android y cordova-ios.
+
+El nombre de la recopilación de JSONStore y el nombre de la base de datos CouchDB debe ser el mismo. Con cuidado, consulte la sintaxis de denominación de la base de datos CouchDB antes de poner nombre a la recopilación de JSONStore.
+
+En Android, defina la escucha de devolución de llamada de sincronización como parte de las opciones *init*, como se indica a continuación: 
+
+```
+//import com.worklight.jsonstore.api.JSONStoreSyncListener;
+JSONStoreSyncListener syncListener = new JSONStoreSyncListener() {
+	@Override
+	public void onSuccess(JSONObject json) {
+		//Implement success action
+	}
+
+	@Override
+	public void onFailure(JSONStoreException ex) {
+		//Implement failure action
+	}
+
+};
+initOptions.setSyncListener(syncListener);
+```
+
+En iOS, utilice la API `opencollections` sobrecargada que tiene un manejador de terminación para habilitar la sincronización, incluidas las devoluciones de llamada, como se indica a continuación:
+
+```
+JSONStore.sharedInstance().openCollections([collections], with: options, completionHandler: { (success, msg) in
+	self.logMessage("msg is : " + msg!);
+	//success flag is true if the sync succeeds, else on failure it is false and the message from the SDK is available through 'msg' argument.
+})
+```
+
+En Cordova, defina las devoluciones de llamadas de éxito y de error como parte de los objetos de sincronización, como se indica a continuación:
+
+```
+function onsuccess(msg) {
+//Implement success action
+}
+
+function onfailure(msg) {
+//Implement failure action
+}
+
+collection.sync = {
+	syncPolicy : WL.JSONStore.syncOptions.SYNC_UPSTREAM, 
+	syncAdapterPath : 'JSONStoreCloudantSync',
+	onSyncSuccess : onsuccess,
+	onSyncFailure : onfailure
+};
+```
+
+Una JSONStoreCollection se puede definir con solo una de las políticas de sincronización permitidas, por ejemplo, SYNC_DOWNSTREAM, SYNC_UPSTREAM o SYNC_NONE.
+
+Si tiene que realizarse una sincronización en sentido ascendente o en sentido descendente en cualquier momento después de la inicialización explícitamente, se puede utilizar la siguiente API:
+
+`sync()`
+
+Esto realiza una sincronización en sentido descendente si la recopilación de llamadas tiene una política de sincronización establecida en ‘SYNC_ DOWNSTREAM’. De lo contrario, si la política de sincronización está establecida en ‘SYNC_ UPSTREAM’, se realizará una sincronización en sentido ascendente para documentos añadidos, suprimidos y sustituidos desde jsonstore a la base de datos Cloudant. 
+
+
+Android:   
+```
+WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
+```
+
+iOS:
+```
+collection.sync(); //Here collection is the JSONStore collection object that was initialized
+```
+
+Cordova:
+```
+WL.JSONStore.get(collectionName).sync();
+```
+>**Nota:** Las devoluciones de llamada de éxito y de error para la API de sincronización se activarán en la escucha de sincronización (en Android), el manejador de terminación (en IOS) y las devoluciones de llamada definidas (en Cordova) que se han declarado durante la inicialización de la recopilación.
+
 ### Push
 {: #push }
 Muchos sistemas utilizan el término push para hacer referencia al envío de datos a un origen externo.
@@ -775,7 +945,7 @@ Este origen de datos es habitualmente una base de datos, un punto final REST o S
 
 Todos los siguientes ejemplos de código están escritos en un pseudocódigo similar a JavaScript. 
 
-**Nota:** Utilice adaptadores para la capa de transporte.
+>**Nota:** Utilice adaptadores para la capa de transporte.
 Algunas de las ventajas de utilizar adaptadores son conversión XML a JSON, seguridad, filtrado, desacoplamiento de código del lado del cliente y de código del lado del servidor.
 
 
@@ -835,7 +1005,7 @@ Se presupone que tiene el adaptador `people` definido con un procedimiento `upda
 })
 ```
 
-**Nota:** Podría desear aprovecharse de `compressResponse`, `timeout` y de otros parámetros que se pueden pasar a la API `WLResourceRequest`.
+>**Nota:** Podría desear aprovecharse de `compressResponse`, `timeout` y de otros parámetros que se pueden pasar a la API `WLResourceRequest`.
 
 
 En {{ site.data.keys.mf_server }}, el adaptador tiene el procedimiento `updatePeople`, que podría ser como el del siguiente ejemplo:

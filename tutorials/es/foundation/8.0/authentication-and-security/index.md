@@ -138,6 +138,108 @@ Pragma: no-cache
     </div>
 </div>
 
+### Señales de renovación
+{: #refresh-tokens}
+
+Una Señal de renovación es un tipo de señal especial, que se puede utilizar para obtener una señal de acceso nueva cuando caduque la señal de acceso. Para solicitar una nueva señal de acceso, se puede presentar una señal de renovación válida. Las señales de renovación son señales de larga duración y seguirán siendo válidas durante un periodo de tiempo más largo en comparación con las señales de acceso.
+
+Una aplicación debe utilizar con cuidado la señal de renovación porque puede permitir a un usuario seguir siempre autenticado. Las aplicaciones de redes sociales, las aplicaciones de comercio electrónico, las aplicaciones de navegación de catálogo de productos y tales aplicaciones de utilidad, donde el proveedor de aplicaciones no autentica a los usuarios regularmente, pueden utilizar las señales de renovación. Las aplicaciones que obligan la autenticación de usuario frecuentemente deben evitar utilizar las señales de renovación.  
+
+#### Señal de renovación de MobileFirst
+{: #mfp-refresh-token}
+
+Una señal de renovación de MobileFirst es una entidad firmadas digitalmente como señal de acceso que describe los permisos de autorización de un cliente. La señal de renovación se puede utilizar para obtener una nueva señal de acceso del mismo ámbito. Una vez que se otorga la solicitud de autorización del cliente para un ámbito específico y que el cliente está autenticado, el punto final de la señal del servidor de autorización envía al cliente una respuesta HTTP que contiene la señal de acceso y la señal de renovación solicitadas. Cuando caduca la señal de acceso, el cliente envía una señal de renovación al punto final de señal del servidor de autorización para obtener un nuevo conjunto de señales de acceso y de señales de renovación.
+
+**Estructura**
+
+De forma similar a la señal de acceso de MobileFirst, la señal de renovación de MobileFirst contiene la información siguiente:
+* **ID de cliente**: un identificador único del cliente.
+* **Ámbito**: el ámbito al que se otorgó la señal (ver ámbitos de OAuth). Este ámbito no incluye un ámbito de aplicación obligatorio.
+* **Hora de vencimiento de la señal**: la hora a partir de la cual la señal se vuelve inválida (caduca), en segundo.
+
+#### Vencimiento de la señal
+{: #token-expiration}
+
+El periodo de vencimiento de la señal para la señal de renovación es mayor que el periodo de vencimiento de la señal de acceso típico. La señal de renovación una vez otorgada continúa siendo válida hasta que transcurre la hora de caducidad. Dentro de este periodo de validez, un cliente puede utilizar la señal de renovación para obtener un conjunto nuevo de señales de acceso y de señales de renovación. La señal de renovación tiene un periodo de vencimiento fijo de 30 días. Cada vez que el cliente recibe un conjunto nuevo de señales de acceso y de señales de renovación correctamente, se restablece el vencimiento de la señal de renovación, dando así al cliente una experiencia de una señal que no vence nunca. Las reglas de vencimiento de la señal de acceso permanecen igual que lo explicado en la sección **Señal de acceso**.
+
+<div class="panel-group accordion" id="configuration-explanation-rt" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="refresh-token-expiration">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>Habilitación de la característica Señal de renovación</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
+            <div class="panel-body">
+            <p>La característica de señal de renovación se puede habilitar utilizando las propiedades siguientes en el lado del cliente y del servidor, respectivamente.</p>
+            <b>Propiedad del lado del cliente</b><br/>
+
+            <i>Nombre de archivo</i>.:            mfpclient.properties<br/>
+            <i>Nombre de propiedad</i>:   wlEnableRefreshToken<br/>
+            <i>Valor de propiedad</i>:   true<br/>
+
+            Por ejemplo,<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>propiedad del lado del servidor</b><br/>
+
+            <i>Nombre de archivo</i>:            server.xml<br/>
+            <i>Nombre de propiedad</i>:   mfp.security.refreshtoken.enabled.apps<br/>
+            <i>Valor de propiedad</i>:   <i>id de paquete de aplicación separado por ‘;’</i><br/><br/>
+
+            <p>Por ejemplo,</p><br/>
+            {% highlight xml %}
+            <jndiEntry jndiName="mfp/mfp.security.refreshtoken.enabled.apps" value='"com.sample.android.myapp1;com.sample.android.myapp2"'/>
+            {% endhighlight %}
+
+            <p>Utilice id de paquetes distintos para distintas plataformas.</p>
+
+                                    <br/>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>Cerrar sección</b></a>
+            </div>
+                                </div>
+                            </div>
+                        </div>
+
+<div class="panel-group accordion" id="response-refresh-token" role="tablist">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="response-structure-rt">
+        <h4 class="panel-title">
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>Renovar estructura de la respuesta de señales</b></a>
+        </h4>
+    </div>
+
+    <div id="collapse-response-structure-rt" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure-rt">
+      <div class="panel-body">
+        <p>A continuación, se muestra un ejemplo de una respuesta de señal de renovación válida del servidor de autorizaciones:</p>
+
+        {% highlight json %}
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+{"token_type": "Bearer",
+            "expires_in": 3600,
+            "access_token": "yI6ICJodHRwOi8vc2VydmVyLmV4YW1",
+            "scope": "scopeElement1 scopeElement2",
+            "refresh_token": "yI7ICasdsdJodHRwOi8vc2Vashnneh "
+        }
+        {% endhighlight %}
+
+        <p>La respuesta de la señal de renovaciones tiene el objeto de propiedades adicional <code>refresh_token</code> aparte del resto de los objetos de propiedades que se explican como parte de la estructura de la respuesta de la señal de acceso.</p>
+
+        <br/>
+              <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>Cerrar sección</b></a>
+            </div>
+          </div>
+        </div>
+</div>
+
+
+>**Nota:** Las señales de renovación tienen una larga duración, en comparación con las señales de acceso. Por lo tanto, la característica de señal de renovación se debe utilizar con cuidado. Las aplicaciones donde la autenticación de usuario periódica no es necesaria son candidatos ideales para utilizar la característica de señal de renovación. En este momento, MobileFirst da soporte a la característica de señal de renovación solo en la plataforma Android. Se recomienda utilizar un ID de paquete distinto para aplicaciones Android e iOS.
+
+
 ### Comprobaciones de seguridad
 {: #security-checks }
 

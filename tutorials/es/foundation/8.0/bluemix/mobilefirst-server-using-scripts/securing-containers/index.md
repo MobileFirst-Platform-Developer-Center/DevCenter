@@ -325,13 +325,13 @@ Cree usuarios y grupos en el repositorio LDAP. En el caso de los grupos, la auto
    </ldapRegistry>
    ```
 
-    Entrada | Descripción
+    Entrada |Descripción
     --- | ---
-    `host` y `port` | Nombre de host (dirección IP) y número de puerto de su servidor LDAP local.
-    `baseDN` | El nombre de dominio (DN) en LDAP que captura todos los detalles acerca de una organización específica.
-    `bindDN="uid=admin,ou=system"	` | Detalles de enlace del servidor LDAP. Por ejemplo, los valores predeterminados para Apache Directory Service pueden ser `uid=admin,ou=system`.
-    `bindPassword="secret"	` | Contraseña de enlace para el servidor LDAP. Por ejemplo, el valor predeterminado para Apache Directory Service es `secret`.
-    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | Los filtros predeterminados que se utilizan para consultar el servicio de directorio, tal como Apache, durante la autenticación y la autorización.
+    `host` y `port` |Nombre de host (dirección IP) y número de puerto de su servidor LDAP local.
+    `baseDN` |El nombre de dominio (DN) en LDAP que captura todos los detalles acerca de una organización específica.
+    `bindDN="uid=admin,ou=system"	` |Detalles de enlace del servidor LDAP. Por ejemplo, los valores predeterminados para Apache Directory Service pueden ser `uid=admin,ou=system`.
+    `bindPassword="secret"	` |Contraseña de enlace para el servidor LDAP. Por ejemplo, el valor predeterminado para Apache Directory Service es `secret`.
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` |Los filtros predeterminados que se utilizan para consultar el servicio de directorio, tal como Apache, durante la autenticación y la autorización.
 
 2. Asegúrese de que las siguientes características estén habilitadas para `appSecurity-2.0` y `ldapRegistry-3.0`:
 

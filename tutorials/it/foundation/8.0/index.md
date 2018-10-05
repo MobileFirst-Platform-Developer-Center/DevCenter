@@ -18,12 +18,14 @@ Per esaminare tutte le categorie e le esercitazioni visitare:
 
 * [Tutte le esercitazioni](all-tutorials/)
 
-Per ulteriori contenuti visitare: 
+Per ulteriori contenuti visitare:
 
 * [Sviluppo Cordova](cordova-tutorials/)
-* [Sviluppo iOS](ios-tutorials/) 
-* [Sviluppo Android](android-tutorials/) 
+* [Sviluppo Ionic](ionic-tutorials/)
+* [Sviluppo iOS](ios-tutorials/)
+* [Sviluppo Android](android-tutorials/)
 * [Sviluppo UWP di Windows 8.1 Universal e Windows 10](windows-8-10-tutorials/)
 * [Sviluppo Xamarin](xamarin-tutorials/)
+* [Sviluppo React Native](reactnative-tutorials/) 
 * [Sviluppo di applicazioni Web](web-tutorials/)
 * [Sviluppo lato server](server-side-tutorials/)

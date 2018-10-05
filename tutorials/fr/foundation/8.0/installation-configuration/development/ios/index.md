@@ -16,7 +16,7 @@ Ce tutoriel présente les étapes que doit suivre un développeur pour développ
 * Xcode 7.1 et versions ultérieures
 * iOS 8 et versions ultérieures
 
-**Prérequis :** lorsque vous configurez votre environnement de développement iOS, lisez également le tutoriel [Configuration de l'environnement de développement {{ site.data.keys.product }}](../mobilefirst/).
+**Prérequis :** Lors de la configuration de votre environnement de développement iOS, lisez également le tutoriel [Configuration de l'environnement de développement {{ site.data.keys.product }}](../mobilefirst/).
 
 ### Enregistrement
 {: #registration }
