@@ -32,7 +32,7 @@ Avant d'installer MobileFirst Server, vous devez disposer du logiciel suivant.
   * WebSphere Application Server
   * Apache Tomcat
 
-  Pour plus d'informations sur les versions de serveurs d'applications prises en charge par le produit, voir [Configuration requise](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html). Le serveur d'applications doit exécuter Java version 7 ou ultérieure. Par défaut, certaines versions de WebSphere Application Server s'exécutent avec Java 6. Avec cette version par défaut, ils ne peuvent pas exécuter MobileFirst Server. 
+  Pour plus d'informations sur les versions de serveurs d'applications prises en charge par le produit, voir [Configuration requise](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/start/r_supported_operating_systems_an.html). Le serveur d'applications doit exécuter Java version 7 ou ultérieure. Par défaut, certaines versions de WebSphere Application Server s'exécutent avec Java 6. Avec cette version par défaut, ils ne peuvent pas exécuter MobileFirst Server.
 
 * **IBM Installation Manager version 1.8.4 ou version ultérieure**
   Installation Manager permet d'exécuter le programme d'installation de MobileFirst Server. Vous devez installer Installation Manager version 1.8.4 ou ultérieure. Les anciennes versions d'Installation Manager ne peuvent pas installer IBM MobileFirst Platform Foundation V8.0 car les opérations de post-installation du produit nécessitent Java 7. Les anciennes versions d'Installation Manager sont livrées avec Java 6.

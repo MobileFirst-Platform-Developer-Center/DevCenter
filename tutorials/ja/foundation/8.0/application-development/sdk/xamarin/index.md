@@ -14,14 +14,14 @@ weight: 6
 
 * **IBM.MobileFirstPlatformFoundation** - MobileFirst クライアント SDK ライブラリー (クライアントとサーバー間の接続を実装し、認証およびセキュリティーの各側面、リソース要求、およびその他の必要な中核機能を処理します) および JSONStore フレームワークを含みます。
  
-* **IBM.MobileFirstPlatformFoundationPush** - プッシュ通知フレームワークを含みます。詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
+* **IBM.MobileFirstPlatformFoundationPush** - プッシュ通知フレームワークを含みます。 詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
 
-このチュートリアルでは、NuGet Package Manager を使用して {{ site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Xamarin.Android アプリケーションまたは Xamarin.iOS アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法についても学習します。
+このチュートリアルでは、NuGet Package Manager を使用して {{ site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Xamarin.Android アプリケーションまたは Xamarin.iOS アプリケーションに追加する方法について学習します。 また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法についても学習します。
 
 **前提条件:**
 
 - Visual Studio 2017 が macOS の開発者ワークステーションにインストールされている。
-- Visual Studio 2015 または Visual Studio 2017 Community バージョンが Windows OS の開発者ワークステーションにインストールされている。Express エディションの Visual Studio を使用していないことを確認してください。使用している場合、Community エディションに更新することが推奨されます。  
+- Visual Studio 2015 または Visual Studio 2017 Community バージョンが Windows OS の開発者ワークステーションにインストールされている。 Express エディションの Visual Studio を使用していないことを確認してください。使用している場合、Community エディションに更新することが推奨されます。  
 - {{ site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
 - [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/)、および [Xamarin 開発環境のセットアップ](../../../installation-configuration/development/xamarin/)の両チュートリアルを読む。
 
@@ -45,9 +45,9 @@ Xamarin Studio または Visual Studio を使用して Xamarin ソリューシ�
 ### SDK の追加
 {: #adding-the-sdk }
 1. {{ site.data.keys.product_adj }} ネイティブ SDK は、Nuget Gallery (リポジトリー) を介して提供されます。
-2. MobileFirst パッケージをインポートするには、NuGet パッケージ・マネージャーを使用します。NuGet は、.NET などの Microsoft 開発プラットフォーム用のパッケージ・マネージャーです。 NuGet クライアント・ツールは、パッケージを作成および使用するための機能を提供します。 NuGet Gallery は、パッケージの作成者およびユーザー全員が使用する、中央のパッケージ・リポジトリーです。Packages ディレクトリーを右クリックして「パッケージの追加」を選択し、検索オプションで *IBM MobileFirst Platform* を検索します。 **IBM.MobileFirstPlatformFoundation** を選択します。
+2. MobileFirst パッケージをインポートするには、NuGet パッケージ・マネージャーを使用します。 NuGet は、.NET などの Microsoft 開発プラットフォーム用のパッケージ・マネージャーです。 NuGet クライアント・ツールは、パッケージを作成および使用するための機能を提供します。 NuGet Gallery は、パッケージの作成者およびユーザー全員が使用する、中央のパッケージ・リポジトリーです。 Packages ディレクトリーを右クリックして「パッケージの追加」を選択し、検索オプションで *IBM MobileFirst Platform* を検索します。 **IBM.MobileFirstPlatformFoundation** を選択します。
 ![nuget.org からの SDK の追加]({{site.baseurl}}/assets/xamarin-tutorials/add-package1.png)
-3. 「パッケージの追加」をクリックします。このアクションにより、Mobile Foundation ネイティブ SDK とその依存関係がインストールされます。
+3. 「パッケージの追加」をクリックします。 このアクションにより、Mobile Foundation ネイティブ SDK とその依存関係がインストールされます。
 ![nuget.org からの SDK の追加]({{site.baseurl}}/assets/xamarin-tutorials/add-package2.png)
 
 
@@ -56,7 +56,7 @@ Xamarin Studio または Visual Studio を使用して Xamarin ソリューシ�
 1. {{ site.data.keys.mf_console }} をロードします。
 2. 「アプリケーション」の横の「新規」ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。
 3. Android アプリケーションと iOS アプリケーションは別々に登録する必要があります。 そうすることで、Android アプリケーションと iOS アプリケーションの両方が正常にサーバーに接続できるようになります。 Android アプリケーションと iOS アプリケーションの登録の詳細は、それぞれ `AndroidManifest.xml` と `Info.plist` に記載されています。
-3. アプリケーションが登録されたら、そのアプリケーションの「構成ファイル」タブに移動して、`mfpclient.plist` ファイルと `mfpclient.properties` ファイルをコピーまたはダウンロードします。画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
+3. アプリケーションが登録されたら、そのアプリケーションの「構成ファイル」タブに移動して、`mfpclient.plist` ファイルと `mfpclient.properties` ファイルをコピーまたはダウンロードします。 画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
 
 ### セットアップ・プロセスの完了
 {: #completing-the-setup-process }

@@ -66,7 +66,7 @@ weight: 10
 **出于测试目的**，可如下所述使用 Postman。  
 在实际情况下，使用您选择的技术在后端逻辑中实施 Postman。
 
-1.  针对以下项发出 **POST** 请求：**http(s)://[ipaddress-or-hostname]: [port]/[runtime]/api/az/v1/token**。  
+1.  针对以下项发出 **POST** 请求：**http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**。  
     例如：`http://localhost:9080/mfp/api/az/v1/token`
     - 在开发环境中，{{ site.data.keys.mf_server }} 使用预先存在的 `mfp` 运行时。  
     - 在生产环境中，将运行时值替换为运行时名称。

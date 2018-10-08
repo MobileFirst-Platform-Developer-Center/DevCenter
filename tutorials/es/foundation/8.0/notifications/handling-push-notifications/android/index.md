@@ -28,6 +28,7 @@ Antes que las aplicaciones Android puedan manejar las notificaciones push que re
 * [API de notificaciones](#notifications-api)
 * [Manejo de una notificación push](#handling-a-push-notification)
 * [Aplicación de ejemplo](#sample-application)
+* [Migración de las aplicaciones cliente en Android a FCM](#migrate-to-fcm)
 
 ## Configuración de notificaciones
 {: #notifications-configuration }
@@ -321,6 +322,7 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ```
 
 <img alt="Imagen de la aplicación de ejemplo" src="notifications-app.png" style="float:right"/>
+
 ## Aplicación de ejemplo
 {: #sample-application }
 
@@ -330,3 +332,102 @@ Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/P
 ### Uso de ejemplo
 {: #sample-usage }
 Siga el archivo README.md de ejemplo para obtener instrucciones.
+
+## Migración de las aplicaciones cliente en Android a FCM
+{: #migrate-to-fcm }
+
+Google Cloud Messaging (GCM) está [en desuso](https://developers.google.com/cloud-messaging/faq) y se ha integrado con Firebase Cloud Messaging (FCM). Google desactivará la mayoría de los servicios de GCM en abril de 2019.
+
+Si utiliza un proyecto de GCM, [a continuación migre las aplicaciones cliente de GCM en Android a FCM](https://developers.google.com/cloud-messaging/android/android-migrate-fcm).
+
+Por ahora, las aplicaciones existentes que utilizan servicios de GCM seguirán funcionando tal cual. Dado que el servicio de Notificaciones push se ha actualizado para utilizar los puntos finales de FCM, en el futuro todas las nuevas aplicaciones deben utilizar FCM.
+
+**Nota**: Tras migrar a FCM, actualice el proyecto para utilizar credenciales de FCM en lugar de las credenciales antiguas de GCM.
+
+### Configuración del proyecto de FCM
+
+La configuración de una aplicación en FCM es algo distinta en comparación con el antiguo modelo de GCM. 
+
+ 1. Obtenga sus credenciales del proveedor de notificaciones, cree un proyecto de FCM y añada el mismo a la aplicación de Android. Incluya el nombre del paquete de la aplicación como `com.ibm.mobilefirstplatform.clientsdk.android.push`. Consulte la [documentación aquí](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android), hasta el paso donde haya terminado de generar el archivo `google-services.json`
+
+ 2. Configure el archivo de Gradle. Añada lo siguiente en el archivo `build.gradle` de la aplicación 
+
+    ```xml
+    dependencies {
+       ......
+       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       .....
+
+    }
+    ```
+	
+    apply plugin: 'com.google.gms.google-services'
+    
+    - Añada la dependencia siguiente en el archivo `buildscript` -
+    
+    `classpath 'com.google.gms:google-services:3.0.0'`
+
+ 3. Configure el archivo AndroidManifest. Son necesarios los cambios siguientes en el `Android manifest.xml` 
+
+**Elimine las entradas siguientes:**
+
+```xml
+    <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+    </receiver>  
+	
+    <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
+        <intent-filter>
+            <action android:name="com.google.android.gms.iid.InstanceID" />
+        </intent-filter>
+    </service>
+
+    <uses-permission android:name="your.application.package.name.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+```
+
+**Las entradas siguientes necesitan modificarse:**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        </intent-filter>
+    </service>
+```
+
+**Modifique las entradas a:**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+```
+
+**Añada la entrada siguiente:**
+
+```xml
+    <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+    </service>
+```
+	
+ 4. Abra la aplicación en Android Studio. Copie el archivo `google-services.json` que ha creado en el **step-1** dentro del directorio de aplicación. Tenga en cuenta que el archivo `google-service.json` incluye el nombre del paquete que ha añadido.		
+		
+ 5. Compile el SDK. Cree la aplicación.
+
+
+
+

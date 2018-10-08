@@ -14,17 +14,17 @@ IBM MobileFirst Platform Foundation が提供するコンポーネントはい�
 ### MobileFirst Server 管理サービス、MobileFirst オペレーション・コンソール、および MobileFirst ランタイム環境
 {: #server-console }
 
-MobileFirst Server はこれら 3 つのコンポーネントから構成されます。これらは一緒に更新する必要があります。
+MobileFirst Server はこれら 3 つのコンポーネントから構成されます。 これらは一緒に更新する必要があります。
 
 ### Application Center
 {: #appenter}
 
-このコンポーネントのインストールはオプションです。このコンポーネントは、他のコンポーネントからは独立しています。必要な場合、他とは異なる暫定修正レベルで実行することができます。
+このコンポーネントのインストールはオプションです。 このコンポーネントは、他のコンポーネントからは独立しています。 必要な場合、他とは異なる暫定修正レベルで実行することができます。
 
 ### MobileFirst Operational Analytics
 {: #analytics}
 
-このコンポーネントのインストールはオプションです。MobileFirst コンポーネントは REST API を介して MobileFirst Operational Analytics にデータを送信します。MobileFirst Operational Analytics と MobileFirst Server の他のコンポーネントを同じ暫定修正レベルで実行することが推奨されます。
+このコンポーネントのインストールはオプションです。 MobileFirst コンポーネントは REST API を介して MobileFirst Operational Analytics にデータを送信します。 MobileFirst Operational Analytics と MobileFirst Server の他のコンポーネントを同じ暫定修正レベルで実行することが推奨されます。
 
 
 ## MobileFirst Server 管理サービス、MobileFirst オペレーション・コンソール、および MobileFirst ランタイム環境の更新
@@ -36,7 +36,7 @@ MobileFirst Server はこれら 3 つのコンポーネントから構成され�
 
 更新手順は、初期インストール時に使用した方法によって決まります。
 
-> **注:** Installation Manager(IM) は、アップデート/暫定修正のロールバックをサポートしていません。ただし、古い WAR ファイルがあれば、Ant またはサーバー構成ツールを使用したロールバックが可能です。
+> **注:** Installation Manager(IM) は、アップデート/暫定修正のロールバックをサポートしていません。 ただし、古い WAR ファイルがあれば、Ant またはサーバー構成ツールを使用したロールバックが可能です。
 
 ### サーバー構成ツールを使用したフィックスパックの適用
 {: #applying-a-fix-pack-by-using-the-server-configuration-tool }

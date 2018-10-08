@@ -9,7 +9,7 @@ weight: 3
 ## 概説
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }}は、データの保管および検索照会の実行に **Elasticsearch 1.5x** を使用します。  
+{{ site.data.keys.mf_analytics_full }}は、データの保管および検索照会の実行に **Elasticsearch 1.7.5** を使用します。  
 
 Elasticsearch は、スピードを向上させるリアルタイムの分散検索および分析のエンジンで、データの保管および探索の速度が上がります。 Elasticsearch は、全文検索の構造化検索で使用されます。
 
@@ -19,7 +19,7 @@ Elasticsearch インスタンスはリアルタイムで照会され、{{ site.d
 
 {{ site.data.keys.mf_analytics }} はすべての Elasticsearch 機能を公開しています。 ユーザーは、Elasticsearch の照会、デバッグ、および最適化を最大限に利用できます。
 
-ここに記載されている以外の Elasticsearch 機能について詳しくは、[Elasticsearch 資料](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)を参照してください。
+ここに記載されている以外の Elasticsearch 機能について詳しくは、[Elasticsearch 資料](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html)を参照してください。
 
 ## {{ site.data.keys.mf_analytics_server }}での Elasticsearch の管理
 {: #managing-elasticsearch-on-the-mobilefirst-analytics-server }
@@ -72,4 +72,4 @@ http://localhost:9500/_nodes
 http://localhost:9500/*/_mapping
 ```
 
-> Elasticsearch は、さらに多くの REST エンドポイントを公開しています。 詳細については、[Elasticsearch 資料](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)を参照してください。
+> Elasticsearch は、さらに多くの REST エンドポイントを公開しています。 詳細については、[Elasticsearch 資料](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html)を参照してください。

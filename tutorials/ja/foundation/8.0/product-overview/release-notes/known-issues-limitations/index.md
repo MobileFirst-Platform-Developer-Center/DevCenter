@@ -279,3 +279,5 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 {:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
 {{ site.data.keys.product_adj }} Cordova SDK がプロジェクトに追加されるときに、Cordova アプリケーションのデフォルトの動作を変更する (「戻る」ボタンの動作をオーバーライドするなど) と、送信時に、Google Play Store によってアプリケーションが拒否される原因となることがあります。
 Google Play Store へのサブミットに関する他の障害については、Google サポートにお問い合わせください。
+
+>**注意:** MobileFirst 8.0 iFix リリース・バージョンを 2018 年 1 月以降からご使用の場合、サーバーとクライアントの両方を同じバージョンに更新することをお奨めします。

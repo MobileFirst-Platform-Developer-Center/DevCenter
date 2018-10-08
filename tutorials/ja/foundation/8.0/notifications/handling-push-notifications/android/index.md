@@ -28,6 +28,7 @@ weight: 6
 * [通知 API](#notifications-api)
 * [プッシュ通知の処理](#handling-a-push-notification)
 * [サンプル・アプリケーション](#sample-application)
+* [Android 上のクライアント・アプリケーションの FCM へのマイグレーション](#migrate-to-fcm)
 
 ## 通知構成
 {: #notifications-configuration }
@@ -139,14 +140,14 @@ weight: 6
 
 | Java メソッド | 説明 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。|
-| [`isPushSupported();`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。|
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | デバイスをプッシュ通知サービスに登録します。|
-| [`getTags(MFPPushResponseListener)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。|
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。|
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグをすべて取得します。|
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 特定のタグからアンサブスクライブします。|
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。|
+| [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。 |
+| [`isPushSupported();`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | デバイスをプッシュ通知サービスに登録します。 |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。 |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグをすべて取得します。 |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。 |
 
 #### 初期化
 {: #initialization }
@@ -321,6 +322,7 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ```
 
 <img alt="サンプル・アプリケーションのイメージ" src="notifications-app.png" style="float:right"/>
+
 ## サンプル・アプリケーション
 {: #sample-application }
 
@@ -329,3 +331,102 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ### サンプルの使用法
 {: #sample-usage }
 サンプルの README.md ファイルの指示に従ってください。
+
+## Android 上のクライアント・アプリケーションの FCM へのマイグレーション
+{: #migrate-to-fcm }
+
+Google Cloud Messaging (GCM) は[非推奨](https://developers.google.com/cloud-messaging/faq)となっており、Firebase Cloud Messaging (FCM) と統合されています。Google は、2019 年 4 月までにほとんどの GCM サービスをオフにします。
+
+GCM プロジェクトを使用する場合は、[Android 上の GCM クライアント・アプリケーションを FCM にマイグレーション](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)してください。
+
+現時点では、GCM サービスを使用する既存のアプリケーションは引き続きそのまま機能します。プッシュ通知サービスは FCM エンドポイントを使用するように更新されているため、将来はすべての新しいアプリケーションが FCM を使用する必要があります。
+
+**注**: FCM へのマイグレーション後に、古い GCM 資格情報ではなく FCM 資格情報を使用するようにプロジェクトを更新してください。
+
+### FCM プロジェクトのセットアップ
+
+FCM でのアプリケーションのセットアップは、古い GCM モデルと比較すると少し異なります。 
+
+ 1. 通知プロバイダーの資格情報を取得して、FCM プロジェクトを作成し、同じものを Android アプリケーションに追加します。アプリケーションのパッケージ名を `com.ibm.mobilefirstplatform.clientsdk.android.push` として含めます。`google-services.json` ファイルの生成を終了したステップまでは、[ここにある資料](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)を参照してください。
+
+ 2. Gradle ファイルを構成します。アプリケーションの `build.gradle` ファイルに以下のものを追加します。 
+
+    ```xml
+    dependencies {
+       ......
+       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       .....
+
+    }
+    ```
+	
+    apply plugin: 'com.google.gms.google-services'
+    
+    - `buildscript` ファイルに以下の依存関係を追加します。
+    
+    `classpath 'com.google.gms:google-services:3.0.0'`
+
+ 3. AndroidManifest ファイルを構成します。`Android manifest.xml` では以下の変更が必要です。 
+
+**以下の項目を削除します。**
+
+```xml
+    <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+    </receiver>
+	
+    <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
+        <intent-filter>
+            <action android:name="com.google.android.gms.iid.InstanceID" />
+        </intent-filter>
+    </service>
+
+    <uses-permission android:name="your.application.package.name.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+```
+
+**以下の項目を変更する必要があります。**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        </intent-filter>
+    </service>
+```
+
+**これらの項目を以下のように変更します。**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+```
+
+**以下の項目を追加します。**
+
+```xml
+    <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+    </service>
+```
+	
+ 4. Android Studio でアプリケーションを開きます。**ステップ 1** で作成した `google-services.json` ファイルをアプリケーション・ディレクトリー内にコピーします。`google-service.json` ファイルには、追加したパッケージ名が含まれていることに注意してください。		
+		
+ 5. SDK をコンパイルします。アプリケーションをビルドします。
+
+
+
+

@@ -47,19 +47,19 @@ Center。
 
 | 选项 | 指示的内容 | 描述 |
 |--------|----------------------|-------------|
-| -s | serverpath | Application Center 服务器的路径。 |
-| -c | context | Application Center Web 应用程序的上下文。 |
-| -u | user | 用于访问 Application Center 的用户凭证。 |
-| -p | password | 用户的密码。 |
-| -d | description | 要上载的应用程序的描述。 |
-| -l | label | 回退标签。 通常，此标签取自要上载的文件中存储的应用程序描述符。 如果应用程序描述符不包含标签，那么会使用回退标签。 |
-| -isActive | true 或 false | 该应用程序在 Application Center 中存储为活动或不活动的应用程序。 |
-| -isInstaller | true 或 false | 该应用程序存储在 Application Center 中，并设置有相应的“安装程序”标志。 |
-| -isReadyForProduction | true 或 false | 该应用程序存储在 Application Center 中，并设置有相应的“准备生产”标志。 |
-| -isRecommended | true 或 false | 该应用程序存储在 Application Center 中，并设置有相应的“推荐”标志。 |
-| -e	  |  | 在失败时显示完整的异常堆栈跟踪。 |
-| -f	  |  | 强制上载应用程序，即使这些应用程序已存在。 |
-| -y	  |  | 禁用 SSL 安全检查，这将允许在受保护的主机上发布，而无需验证 SSL 证书。 |  此标志的使用会带来安全性风险，但可能适合以临时自签名的 SSL 证书测试本地主机。 |
+| -s | serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -d | description | The description of the application to be uploaded. |
+| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. |
+| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. |
+| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. |
+| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. |
+| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. |
+| -e	  |  | Shows the full exception stack trace on failure. |
+| -f	  |  | Force uploading of applications, even if they exist already. |
+| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 files 参数可以指定 Android 应用程序包 (.apk) 文件或 iOS 应用程序 (.ipa) 文件类型的文件。  
 在此示例中，用户 demo 的密码为 demopassword。 使用以下命令行。
@@ -84,11 +84,11 @@ java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u d
 
 | 选项 | 指示的内容	| 描述 |
 |--------|----------------------|-------------|
-| -s |serverpath | Application Center 服务器的路径。 |
-| -c | context | Application Center Web 应用程序的上下文。 |
-| -u | user | 用于访问 Application Center 的用户凭证。 |
-| -p | password | 用户的密码。 |
-| -y | | 禁用 SSL 安全检查，这将允许在受保护的主机上发布，而无需验证 SSL 证书。 此标志的使用会带来安全性风险，但可能适合以临时自签名的 SSL 证书测试本地主机。 |
+| -s |serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 您可以指定文件或应用程序包、操作系统和版本。 如果指定了文件，将从文件确定包、操作系统和版本，并从 Application Center 删除对应的应用程序。 如果指定了应用程序，那么这些应用程序必须具有以下某种格式：
 
@@ -125,11 +125,11 @@ Center 可见。 Application Center 将维护 LDAP 数据的缓存，仅在缓�
 
 | 选项 | 指示的内容 | 描述 |
 |--------|----------------------|-------------|
-| -s | serverpath | Application Center 服务器的路径。|
-| -c | context | Application Center Web 应用程序的上下文。|
-| -u | user | 用于访问 Application Center 的用户凭证。|
-| -p | password | 用户的密码。|
-| -y | | 禁用 SSL 安全检查，这将允许在受保护的主机上发布，而无需验证 SSL 证书。 此标志的使用会带来安全性风险，但可能适合以临时自签名的 SSL 证书测试本地主机。|
+| -s | serverpath | The path to the Application Center server.|
+| -c | context | The context of the Application Center web application.|
+| -u | user | The user credentials to access the Application Center.|
+| -p | password | The password of the user.|
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.|
 
 #### 示例
 {: #example-cache }

@@ -35,6 +35,8 @@ weight: 9
 {: #application-authenticity-flow }
 在应用程序注册到 {{ site.data.keys.mf_server }} 期间会执行应用程序真实性安全检查，这在应用程序的实例首次尝试连接到服务器时发生。 缺省情况下，不会再次运行真实性检查。
 
+在启用应用程序真实性后，如果客户需要在其应用程序中引入任何更改，那么必须升级应用程序版本。
+
 请参阅[配置应用程序真实性](#configuring-application-authenticity)，了解如何定制此行为。
 
 ## 启用应用程序真实性
@@ -46,6 +48,8 @@ weight: 9
 3. 切换**状态**框中的**开启/关闭**按钮。
 
 ![启用应用程序真实性](enable_application_authenticity.png)
+
+MobileFirst Server 在首次尝试连接到服务器时验证应用程序的真实性。要将此验证同样应用于受保护资源，请将 `appAuthenticity` 安全性检查添加到保护范围。
 
 ### 禁用应用程序真实性
 {: #disabling-application-authenticity }
@@ -100,11 +104,12 @@ weight: 9
 ### 验证类型
 {: #validation }
 
-缺省情况下，启用应用程序真实性之后，将使用**动态** (dynamic) 验证算法。 动态应用程序真实性验证将使用特定于移动平台的功能来确定应用程序的真实性。 因此，如果未在移动操作系统中实施向后兼容变更，就有可能导致真实的应用程序无法连接到服务器。
+Mobile First Platform Foundation 为应用程序提供静态和动态应用程序真实性。这些验证类型在用于生成应用程序真实性种子值的算法和属性方面有所不同。缺省情况下，启用应用程序真实性之后，将使用**动态**验证算法。两种验证类型都可确保应用程序的安全性。动态应用程序真实性使用严格的验证并检查应用程序的真实性。对于静态应用程序真实性，我们使用略微宽松的算法，该算法不会使用动态应用程序真实性中所使用的所有验证检查。
 
-要消除此类潜在问题，可以使用**静态** (static) 验证算法。 此验证类型对特定于操作系统的变更不太敏感。
+可通过 MobileFirst Console 配置动态应用程序真实性。内部算法负责根据在控制台中选择的选项生成应用程序真实性数据。
+对于静态应用程序真实性，需要使用 [**mfpadm** CLI](../../administering-apps/using-cli/)。
 
-要在验证类型之间切换，请使用 [**mfpadm** CLI](../../administering-apps/using-cli/) 运行以下命令：
+要启用静态应用程序真实性以及在验证类型之间切换，请使用 [**mfpadm** CLI](../../administering-apps/using-cli/)：
 
 ```bash
 mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE

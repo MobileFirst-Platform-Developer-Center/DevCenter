@@ -10,7 +10,7 @@ weight: 3
 {: #overview }
 Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications Xamarin C# natives pour des appareils Android ou iOS. Elles consistent à installer Xamarin Studio.
 
-**Prérequis :** lorsque vous configurez votre environnement de développement Xamarin, lisez également le tutoriel [Configuration de l'environnement de développement MobileFirst](../../development/).
+**Prérequis :** Lors de la configuration de votre environnement de développement Xamarin, lisez également le tutoriel [Configuration de l'environnement de développement MobileFirst](../../development/).
 
 ### Développement
 {: #development }
