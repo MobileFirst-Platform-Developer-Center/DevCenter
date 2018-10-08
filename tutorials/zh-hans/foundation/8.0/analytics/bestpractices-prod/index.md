@@ -15,7 +15,7 @@ weight: 6
 ## {{ site.data.keys.mf_analytics_server }} - 配置设置
 {: #mfp-analytics-config }
 
-必须强制性地将数据清除应用于生产环境，以便从一开始就不持久存储整个文档集。通过为各种事件文档设置相应的 TTL 值，可以显著减少 Elasticsearch 查询的搜索范围。
+必须强制性地将数据清除应用于生产环境，以便从一开始就不持久存储整个文档集。 通过为各种事件文档设置相应的 TTL 值，可以显著减少 Elasticsearch 查询的搜索范围。
 以下是要为 MobileFirst Analytics V8.0 服务器设置的 TTL 值：
 
 **Analytics 事件/文档的 TTL 属性**
@@ -80,7 +80,7 @@ weight: 6
 
 如果您使用的是 WebSphere Application Server V8.5.5.6 Liberty Profile 或更早版本，请确保显式调整 JVM 线程池大小设置。
 
-此行为会让许多用户将执行程序的 **coreThreads** 值设置为较高数字，以确保执行程序永远不会陷入死锁。但是，在 V8.5.5.6 中，修改了自动调整算法以积极对抗死锁。现在执行程序几乎不可能陷入死锁。因此，如果您过去手动设置 **coreThreads** 以避免执行程序死锁，那么一旦迁移 V8.5.5.6，就可能需要考虑恢复为缺省值。
+此行为会让许多用户将执行程序的 **coreThreads** 值设置为较高数字，以确保执行程序永远不会陷入死锁。 但是，在 V8.5.5.6 中，修改了自动调整算法以积极对抗死锁。 现在执行程序几乎不可能陷入死锁。 因此，如果您过去手动设置 **coreThreads** 以避免执行程序死锁，那么一旦迁移 V8.5.5.6，就可能需要考虑恢复为缺省值。
 
 **示例：**
 
@@ -117,7 +117,8 @@ Elasticsearch 调整可以在单独的 YAML 文件中执行（例如，它可以
    indices.fielddata.cache.size:  35%
    ```  
 
-   >**注：**请谨慎使用 **analytics/indices.fielddata.cache.size**。>请勿将其增加到高值，因为增加此值可能会导致 OutofMemory。分析平台使用的基础技术将多个字段值加载到内存中，以便更快速地访问这些文档。这称为“字段缓存”。缺省情况下，通过字段缓存装入内存的数据量不受限制。如果字段缓存过大，会导致内存不足异常，使分析平台崩溃。
+   >**注：**请谨慎使用 **analytics/indices.fielddata.cache.size**。
+   >请勿将其增加到高值，因为增加此值可能会导致 OutofMemory。 分析平台使用的基础技术将多个字段值加载到内存中，以便更快速地访问这些文档。 这称为“字段缓存”。 缺省情况下，通过字段缓存装入内存的数据量不受限制。 如果字段缓存过大，会导致内存不足异常，使分析平台崩溃。
 
 2. 为 **indices.fielddata.breaker.limit** 设置一个值。
 
@@ -131,21 +132,21 @@ Elasticsearch 调整可以在单独的 YAML 文件中执行（例如，它可以
 
    > **indices.fielddata.cache.expire**
    >
-   > 基于时间的设置，在一段时间不活动后使字段数据到期。缺省值为 -1。例如，可以设置为 5 m，表示 5 分钟后到期。
+   > 基于时间的设置，在一段时间不活动后使字段数据到期。 缺省值为 -1。 例如，可以设置为 5 m，表示 5 分钟后到期。
 
 4. Analytics 的缺省设置是不清除任何数据。
 
-   适当配置 TTL 以确保清除数据。否则，数据存储可能会以无限方式增长。
+   适当配置 TTL 以确保清除数据。 否则，数据存储可能会以无限方式增长。
 
 ## {{ site.data.keys.mf_analytics_server }} - 注意事项
 {: #mfp-analytics-dos-donts }
 
 -	在分析节点运行时，避免清除 analyticsData 目录。
--	在多节点集群中，避免将同一节点用于将事件推送到分析集群中和访问控制台。最佳做法是在分析集群前使用负载均衡器。
--	避免对分析集群使用任何其他应用程序服务器集群方法。底层 Elasticsearch 使用其节点发现机制自行创建集群。
+-	在多节点集群中，避免将同一节点用于将事件推送到分析集群中和访问控制台。 最佳做法是在分析集群前使用负载均衡器。
+-	避免对分析集群使用任何其他应用程序服务器集群方法。 底层 Elasticsearch 使用其节点发现机制自行创建集群。
 -	避免在 IBM WebSphere Application Server Full Profile 或 IBM WebSphere Application Server Network Deployment 中对 Analytics 使用 Open JDK（或 Sun Java）。
--	永远不要将 Analytics 最小/最大堆大小增加到大于节点上 RAM 大小一半的值。例如，如果您有一个 RAM 大小为 16 GB 的节点，那么针对 Analytics，允许的最大堆大小为 8 GB。
-- 对于分析集群名称（**analytics/clustername** JNDI 属性），请使用唯一的集群名称。避免使用缺省名称 *worklight*。
+-	永远不要将 Analytics 最小/最大堆大小增加到大于节点上 RAM 大小一半的值。 例如，如果您有一个 RAM 大小为 16 GB 的节点，那么针对 Analytics，允许的最大堆大小为 8 GB。
+- 对于分析集群名称（**analytics/clustername** JNDI 属性），请使用唯一的集群名称。 避免使用缺省名称 *worklight*。
 
 ## {{ site.data.keys.mf_analytics_server }} - SDK 问题
 {: #mfp-analytics-sdk-issues }
@@ -155,11 +156,11 @@ Elasticsearch 调整可以在单独的 YAML 文件中执行（例如，它可以
 
 在 MobileFirst Platform Foundation V8.0 中，当应用程序从后台切换到前台时，应用程序会话数将递增/记录。  
 
-通过为生命周期事件添加侦听器来启用 AppSession 的捕获。本机 SDK 提供相应的 API 用于添加这些侦听器。但是，在 Cordova 情况下，没有用于添加这些生命周期事件侦听器的 JavaScript API。相反，即使对于 Cordova 应用程序，也必须使用本机平台 API 添加侦听器。
+通过为生命周期事件添加侦听器来启用 AppSession 的捕获。 本机 SDK 提供相应的 API 用于添加这些侦听器。   但是，在 Cordova 情况下，没有用于添加这些生命周期事件侦听器的 JavaScript API。 相反，即使对于 Cordova 应用程序，也必须使用本机平台 API 添加侦听器。
 
 摘录自[文档](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/analytics/analytics-api/#client-lifecycle-events)：
 
-<blockquote>在配置 Analytics SDK 之后，将开始在用户设备上记录应用程序会话。将应用程序从前台移至后台时将在 MobileFirst Analytics 中记录会话，这将在 Analytics Console 上创建会话。一旦将设备设置为记录会话并发送数据，就可以看到 Analytics Console 已填充有数据，如下所示。</blockquote>
+<blockquote>在配置 Analytics SDK 之后，将开始在用户设备上记录应用程序会话。 将应用程序从前台移至后台时将在 MobileFirst Analytics 中记录会话，这将在 Analytics Console 上创建会话。  一旦将设备设置为记录会话并发送数据，就可以看到 Analytics Console 已填充有数据，如下所示。</blockquote>
 
 例如，对于 iOS 平台 (iOS) 上的 Cordova 应用程序，必须在 `AppDelegate.m` 下添加下列内容：
 ```

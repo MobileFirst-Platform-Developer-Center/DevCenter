@@ -69,7 +69,7 @@ Visual Studio プロジェクトを V8.0 に手動でアップグレードでき
         * SharpCompress
         * worklight-windows8
 
-        > **注:** アプリケーションでアプリケーション認証性フィーチャーまたは拡張認証性フィーチャーを使用している場合、Microsoft Visual C++ 2013 Runtime Package for Windows または Microsoft Visual C++ 2013 Runtime Package for Windows Phone のいずれかを参照としてアプリケーションに追加する必要があります。そうするには、Visual Studio で、ネイティブ・プロジェクトの参照を右クリックし、ネイティブ API アプリケーションに追加した環境に応じて以下のいずれかを行います。
+        > **注:** アプリケーションでアプリケーション認証性フィーチャーまたは拡張認証性フィーチャーを使用している場合、Microsoft Visual C++ 2013 Runtime Package for Windows または Microsoft Visual C++ 2013 Runtime Package for Windows Phone のいずれかを参照としてアプリケーションに追加する必要があります。 そうするには、Visual Studio で、ネイティブ・プロジェクトの参照を右クリックし、ネイティブ API アプリケーションに追加した環境に応じて以下のいずれかを行います。
 
         * Windows デスクトップおよびタブレットの場合: **「参照設定」→「参照の追加」→「Windows 8.1」→「拡張機能」→「Microsoft Visual C++ 2013 Runtime Package for Windows」→「OK」**の順に右クリックして選択します。
         * Windows Phone 8 Universal の場合: **「参照設定」→「参照の追加」→「Windows 8.1」→「拡張機能」→「Microsoft Visual C++ 2013 Runtime Package for Windows Phone」→「OK」**の順に右クリックして選択します。
@@ -111,12 +111,12 @@ Visual Studio プロジェクトを V8.0 に手動でアップグレードでき
 
 | カテゴリー | 説明 | 推奨処置 |
 |----------|-------------|--------------------|
-| `ChallengeHandler`  | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler`  | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。 {{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
 | `ChallengeHandler`, `isCustomResponse()`  | `GatewayChallengeHandler.canHandleResponse()` を使用します。 |
-| `ChallengeHandler.submitAdapterAuthentication` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。 {{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler.submitAdapterAuthentication` | チャレンジ・ハンドラーで同様のロジックを実装してください。 カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。 {{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 |
 | `ChallengeHandler.submitFailure(WLResponse wlResponse)` For custom gateway challenge handlers, use `GatewayChallengeHandler.Shouldcancel()`. {{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 |
 | `WLAuthorizationManager` | 代わりに、`WorklightClient.WorklightAuthorizationManager` を使用してください。 |
-| `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。|
+| `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。  |
 | `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  | 	`SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 |
 | `WLClient` | 	代わりに、`WorklightClient` を使用してください。 |
 | `WLErrorCode` | 	サポートされません。 |

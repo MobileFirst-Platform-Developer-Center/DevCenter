@@ -10,7 +10,7 @@ weight: 5
 {: #overview }
 Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications Windows 8.1 Universal et Windows 10 UWP.
 
-**Prérequis :** lorsque vous configurez votre environnement de développement Windows, lisez également le tutoriel [Configuration de l'environnement de développement {{ site.data.keys.product }}](../mobilefirst/).
+**Prérequis :** Lors de la configuration de votre environnement de développement Windows, lisez également le tutoriel [Configuration de l'environnement de développement {{ site.data.keys.product }}](../mobilefirst/).
 
 ### Enregistrement
 {: #registration }

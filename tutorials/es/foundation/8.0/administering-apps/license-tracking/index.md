@@ -106,13 +106,13 @@ Las licencias se incorporan cuando se suprime la última versión de una aplicac
 
 #### Al iniciar el servidor
 {: #at-server-start }
-Se extrae la licencia de cada aplicación registrada. El servidor desactiva las aplicaciones si no hay disponbiles señales suficientes para todas las aplicaciones.
+Se extrae la licencia de cada aplicación registrada. El servidor desactiva las aplicaciones si no hay disponibles señales suficientes para todas las aplicaciones.
 
 > **Importante:** El servidor no reactiva el automáticamente las aplicaciones. Después de incrementar el número de señales disponibles, debe reactivar las aplicaciones de forma manual. Para obtener más información sobre cómo inhabilitar y habilitar aplicaciones, consulte [Inhabilitación de forma remota del acceso de la aplicación a recursos protegidos](../using-console/#remotely-disabling-application-access-to-protected-resources).
 
 #### Al caducar la licencia
 {: #on-license-expiration }
-Después de cierto tiempo, la licencia caduca y se debe extraer de nuevo. El servidor desactiva las aplicaciones si no hay disponbiles señales suficientes para todas las aplicaciones.
+Después de cierto tiempo, la licencia caduca y se debe extraer de nuevo. El servidor desactiva las aplicaciones si no hay disponibles señales suficientes para todas las aplicaciones.
 
 > **Importante:** El servidor no reactiva el automáticamente las aplicaciones. Después de aumentar el número de señales disponibles, debe volver a activar las aplicaciones manualmente. Para obtener más información sobre cómo inhabilitar y habilitar aplicaciones, consulte [Inhabilitación de forma remota del acceso de la aplicación a recursos protegidos](../using-console/#remotely-disabling-application-access-to-protected-resources).
 

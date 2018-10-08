@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Analíticas de MobileFirst
+title: MobileFirst Analytics
 breadcrumb_title: Analytics
 show_children: true
 relevantTo: [ios,android,javascript]

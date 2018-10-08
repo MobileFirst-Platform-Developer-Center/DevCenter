@@ -227,7 +227,7 @@ Rational License Key Server のインストールおよび構成について詳�
     * パターンを保存します。
 3. オプション: {{ site.data.keys.mf_server }} 管理を構成します。 後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{ site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。
 
-    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
     * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
     * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
@@ -247,7 +247,7 @@ Rational License Key Server のインストールおよび構成について詳�
 
 5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。 例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -273,7 +273,7 @@ Rational License Key Server のインストールおよび構成について詳�
 
         示されたフィールドに以下の情報を指定します。
 
-        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。 LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
         
         **admin\_user**  
         ステップ 3 で構成された場合、表示されません。デフォルトの {{ site.data.keys.mf_server }} 管理者アカウントを作成します。 デフォルト値: demo。
@@ -353,7 +353,7 @@ Rational License Key Server のインストールおよび構成について詳�
     * パターンを保存します。
 3. オプション: {{ site.data.keys.mf_server }} 管理を構成します。 後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{ site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。
 
-    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
     * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
     * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
@@ -373,7 +373,7 @@ Rational License Key Server のインストールおよび構成について詳�
 
 5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。 例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -403,7 +403,7 @@ Rational License Key Server のインストールおよび構成について詳�
 
         示されたフィールドに以下の情報を指定します。
 
-        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。 LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
         
         **admin\_user**  
         ステップ 3 で構成された場合、表示されません。デフォルトの {{ site.data.keys.mf_server }} 管理者アカウントを作成します。 デフォルト値: demo。
@@ -483,7 +483,7 @@ Rational License Key Server のインストールおよび構成について詳�
     * パターンを保存します。
 3. オプション: {{ site.data.keys.mf_server }} 管理を構成します。 後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{ site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。
 
-    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
     * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
     * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
@@ -503,7 +503,7 @@ Rational License Key Server のインストールおよび構成について詳�
 
 5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。 例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -529,7 +529,7 @@ Rational License Key Server のインストールおよび構成について詳�
 
         示されたフィールドに以下の情報を指定します。
         
-        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。 LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
 
         **WebSphere 管理ユーザー名**  
         WebSphere 管理コンソール・ログインの管理ユーザー ID。 デフォルト値: virtuser。
@@ -622,7 +622,7 @@ Rational License Key Server のインストールおよび構成について詳�
     * パターンを保存します。
 3. オプション: {{ site.data.keys.mf_server }} 管理を構成します。 後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{ site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。
 
-    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
     * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
     * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
@@ -642,7 +642,7 @@ Rational License Key Server のインストールおよび構成について詳�
 
 5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。 例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -672,7 +672,7 @@ Rational License Key Server のインストールおよび構成について詳�
 
         示されたフィールドに以下の情報を指定します。
 
-        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。 LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
         
         **runtime_contextRoot_list**  
         複数のランタイムが存在する場合の、{{ site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。 セミコロン「;」を使用して、各ランタイム・コンテキスト・ルートを区切ります。例えば、**HelloMobileFirst;HelloWorld** のようにします。
@@ -765,7 +765,7 @@ System Monitoring for WebSphere Application Server 共有サービスを実行�
     * パターンを保存します。
 3. オプション: {{ site.data.keys.mf_server }} 管理を構成します。 後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{ site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。
 
-    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
     * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
     * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
@@ -798,7 +798,7 @@ System Monitoring for WebSphere Application Server 共有サービスを実行�
 
 6. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。 例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。
     * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
     * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
@@ -827,7 +827,7 @@ System Monitoring for WebSphere Application Server 共有サービスを実行�
 
         示されたフィールドに以下の情報を指定します。
         
-        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。 LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
 
         **WebSphere 管理ユーザー名**  
         WebSphere 管理コンソール・ログインの管理ユーザー ID。 デフォルト値: virtuser。
@@ -986,7 +986,7 @@ PureApplication System パターンを {{ site.data.keys.product }} (WAS ND) テ
     * パターンを保存します。
 3. オプション: **「MFP AppCenter Server」**ノードで **「MFP Server Application Center」**を構成します。
     
-    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
     * **「MFP AppCenter Server」**ノードで、**「MFP Server Application Center」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
     * **「admin_user」**フィールドと**「admin_password」**フィールドに、管理ユーザー名とパスワードを指定します。
@@ -1005,7 +1005,7 @@ PureApplication System パターンを {{ site.data.keys.product }} (WAS ND) テ
 
     示されたフィールドに以下の情報を指定します。
 
-    > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。 LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
     
     **admin\_user**  
     ステップ 3 で構成された場合、表示されません。デフォルトの {{ site.data.keys.mf_server }} 管理者アカウントを作成します。 デフォルト値: demo。
@@ -1092,7 +1092,7 @@ PureApplication System パターンを {{ site.data.keys.product }} (WAS ND) テ
 
 3. オプション: **「MFP AppCenter Server」**ノードで **「MFP Server Application Center」**を構成します。
 
-    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
     * **「MFP AppCenter Server」**ノードで、**「MFP Server Administration」**コンポーネントをクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
     * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
     * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
@@ -1114,7 +1114,7 @@ PureApplication System パターンを {{ site.data.keys.product }} (WAS ND) テ
 
         示されたフィールドに以下の情報を指定します。
 
-        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。 LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。 詳しくは、[外部 LDAP リポジトリーを使用した、{{ site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
         
         **admin\_user**  
         ステップ 3 で構成された場合、表示されません。デフォルトの {{ site.data.keys.mf_server }} 管理者アカウントを作成します。 デフォルト値: demo。
@@ -1408,7 +1408,7 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
         * {{ site.data.keys.mf_analytics }} を WebSphere Application Server Liberty プロファイルにデプロイする場合、{{ site.data.keys.mf_analytics }} ノードで**「Liberty profile server」**をクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。 **「構成データ・ロケーション」**フィールドに **/opt/IBM/WebSphere/Liberty** のパスを入力し、管理ユーザー名とパスワードを指定します。 その他のパラメーターについてはデフォルト値を使用します。
         * {{ site.data.keys.mf_analytics }} を WebSphere Application Server フル・プロファイルにデプロイする場合、{{ site.data.keys.mf_analytics }} ノードで**「Standalone server」**をクリックします。 キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。 **「構成データ・ロケーション」**フィールドに **/opt/IBM/WebSphere/AppServer/Profiles** のパスを指定し、「プロファイル名」を**「AppSrv01」**に変更し、管理ユーザー名とパスワードを指定します。 その他のパラメーターについてはデフォルト値を使用します。
     
-        > **重要:** WebSphere Application Server 管理ユーザーが、WebSphere Application Server ユーザー・リポジトリーに作成されます。Analytics サーバー用に LDAP が構成される場合は、WebSphere Application Server 管理ユーザーと競合するユーザー名を使用しないようにしてください。 例えば、LDAP サーバーの構成により「user1」が導入される場合は、「user1」を WebSphere Application Server 管理ユーザー名として設定しないでください。
+        > **重要:** WebSphere Application Server 管理ユーザーが、WebSphere Application Server ユーザー・リポジトリーに作成されます。 Analytics サーバー用に LDAP が構成される場合は、WebSphere Application Server 管理ユーザーと競合するユーザー名を使用しないようにしてください。 例えば、LDAP サーバーの構成により「user1」が導入される場合は、「user1」を WebSphere Application Server 管理ユーザー名として設定しないでください。
     * 「コンポーネント」リストから、**「スクリプト」**を展開し、キャンバス上の {{ site.data.keys.mf_analytics }} ノードに**「MFP Server Prerequisite」**コンポーネントおよび「MFP WAS SDK Level」コンポーネントをドラッグ・アンド・ドロップします。
     * 「コンポーネント」リストから**「スクリプト」**を展開し、キャンバス上の {{ site.data.keys.mf_analytics }} ノードに**「MFP Analytics」**コンポーネントをドラッグ・アンド・ドロップします。 MFP Analytics コンポーネントは、Liberty profile server コンポーネント (または Standalone server コンポーネント) の後に配置するようにしてください。
     * 示されたフィールドに以下の {{ site.data.keys.mf_analytics }} 情報を指定します。
@@ -1664,13 +1664,13 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 
 | パラメーター | 説明 | 
 |-----------|-------------|
-| WAS_ROOT  |必須。{::nomarkdown}<ul><li>Analytics が WebSphere Application Server Liberty プロファイルにインストールされている場合は、Analytics 用の WebSphere Application Server Liberty プロファイルのインストール・ディレクトリーを指定します。</li><li>Analytics が WebSphere Application Server フル・プロファイルにインストールされている場合は、Analytics 用の WebSphere Application Server フル・プロファイルのインストール・ディレクトリーを指定します。</li></ul>{:/} | 
+| WAS_ROOT  | 必須。{::nomarkdown}<ul><li>Analytics が WebSphere Application Server Liberty プロファイルにインストールされている場合は、Analytics 用の WebSphere Application Server Liberty プロファイルのインストール・ディレクトリーを指定します。</li><li>Analytics が WebSphere Application Server フル・プロファイルにインストールされている場合は、Analytics 用の WebSphere Application Server フル・プロファイルのインストール・ディレクトリーを指定します。</li></ul>{:/} | 
 | HEAP\_MIN\_SIZE | WebSphere Application Server フル・プロファイルのみ。<br/><br/>生成される Analytics データの量に応じて、データ処理の増加に対応するために、より多くのメモリーが必要になります。 この値は、WebSphere Application Server フル・プロファイルの最小ヒープ・サイズを大きくすることができるようにするために設定します。 {{ site.data.keys.mf_analytics }} の Core OS コンポーネントに指定されているメモリー・サイズが、これより大きくなるようにしてください。 HEAP_MAX_SIZE と同じ値を設定することが推奨されます。<br/><br/>デフォルト値: 4096 (MB)。 | 
 | HEAP\_MAX\_SIZE	| WebSphere Application Server フル・プロファイルのみ。<br/><br/>生成される Analytics データの量に応じて、データ処理の増加に対応するために、より多くのメモリーが必要になります。 この値は、WebSphere Application Server フル・プロファイルの最大ヒープ・サイズを大きくすることができるようにするために設定します。 {{ site.data.keys.mf_analytics }} の Core OS コンポーネントに指定されているメモリー・サイズが、これより大きくなるようにしてください。 HEAP_MIN_SIZE と同じ値を設定することが推奨されます。<br/><br/>デフォルト値: 4096 (MB)。 | 
 | WAS\_admin\_user | WebSphere Application Server フル・プロファイルのみ。<br/><br/>Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー。 WebSphere Application Server Liberty プロファイルの場合、デフォルト値を未変更のままにします。 | 
 | WAS\_admin\_password | WebSphere Application Server フル・プロファイルのみ。<br/><br/>Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー・パスワード。 WebSphere Application Server Liberty プロファイルの場合、デフォルト値を未変更のままにします。 | 
-| admin_user |必須。{::nomarkdown}<ul><li>LDAP リポジトリーが使用可能になっていない場合は、{{ site.data.keys.mf_analytics_console }}保護のためのデフォルト管理ユーザーを作成します。</li><li>LDAP リポジトリーが使用可能になっている場合は、{{ site.data.keys.mf_analytics }} 管理特権を持つユーザー名を指定します。 この値は、LDAP リポジトリーに格納されます。</li></ul> |
-| admin_password |必須。<ul><li>LDAP リポジトリーが使用可能になっていない場合は、{{ site.data.keys.mf_analytics_console }}保護に使用されるデフォルト管理ユーザーのパスワードを指定します。</li><li>LDAP リポジトリーが使用可能になっている場合は、管理ユーザーのパスワードを指定します。 この値は、LDAP リポジトリーに格納されます。</li></ul>{:/} | 
+| admin_user | 必須。{::nomarkdown}<ul><li>LDAP リポジトリーが使用可能になっていない場合は、{{ site.data.keys.mf_analytics_console }}保護のためのデフォルト管理ユーザーを作成します。</li><li>LDAP リポジトリーが使用可能になっている場合は、{{ site.data.keys.mf_analytics }} 管理特権を持つユーザー名を指定します。 この値は、LDAP リポジトリーに格納されます。</li></ul> |
+| admin_password | 必須。<ul><li>LDAP リポジトリーが使用可能になっていない場合は、{{ site.data.keys.mf_analytics_console }}保護に使用されるデフォルト管理ユーザーのパスワードを指定します。</li><li>LDAP リポジトリーが使用可能になっている場合は、管理ユーザーのパスワードを指定します。 この値は、LDAP リポジトリーに格納されます。</li></ul>{:/} | 
 | LDAP_TYPE | (LDAP パラメーター) 必須。 ユーザー・レジストリーの LDAP サーバー・タイプ。<br/><br/>なし<br/>LDAP 接続は使用不可です。 これが設定されている場合、他のすべての LDAP パラメーターはプレースホルダーのみとして扱われます。<br/><br/>TivoliDirectoryServer<br/>LDAP リポジトリーが IBM Tivoli Directory Server の場合、これを選択します。<br/><br/>ActiveDirectory<br/>LDAP リポジトリーが Microsoft Active Directory の場合、これを選択します。<br/><br/>デフォルト値: None。 | 
 | LDAP_IP | (LDAP パラメーター) LDAP サーバーの IP アドレス。 | 
 | LDAP\_SSL\_PORT | (LDAP パラメーター) セキュア接続のための LDAP ポート。 | 
@@ -1826,7 +1826,7 @@ LDAP リポジトリーを使用して Analytics コンソールを保護する�
 
 | パラメーター | 説明 |
 |-----------|-------------|
-|なし| このスクリプト・パッケージのパラメーターはありません。 | 
+| なし | このスクリプト・パッケージのパラメーターはありません。 | 
 
 ### MFP Server Runtime Deployment
 {: #mfp-server-runtime-deployment }

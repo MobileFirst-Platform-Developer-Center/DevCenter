@@ -760,9 +760,9 @@ WebSphere Application Server を使用して、Application Center 用に MySQL �
     portNumber = 3306
     relaxAutoCommit=true
     databaseName = APPCNTR
-    serverName = the host name of the MySQL server
-    user = the user name of the MySQL server
-    password = the password associated with the user name
+    serverName = MySQL サーバーのホスト名
+    user = MySQL サーバーのユーザー名
+    password = ユーザー名に関連付けられたパスワード
     ```
 
 6. 新規データ・ソースの WebSphere Application Server カスタム・プロパティーを設定します。

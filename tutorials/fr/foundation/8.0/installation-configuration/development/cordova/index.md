@@ -11,7 +11,7 @@ weight: 2
 Pour commencer le [développement Cordova (PhoneGap)](https://cordova.apache.org/), vous devez tout d'abord installer l'interface de ligne de commande Cordova. Il s'agit de l'outil permettant de créer des applications Cordova. Celles-ci peuvent être améliorées à l'aide de divers outils et infrastructures tiers tels qu'Ionic, AngularJS, jQuery Mobile, etc. 
 Avec des applications Cordova, vous pouvez utiliser l'éditeur de code de votre choix, par exemple Atom.io, Visual Studio Code, Eclipse, IntelliJ ou d'autres, afin d'implémenter vos applications et vos adaptateurs.
 
-**Prérequis :** lorsque vous configurez votre environnement de développement Cordova, lisez également le tutoriel [Configuration de l'environnement de développement {{ site.data.keys.product_adj }}](../mobilefirst/).
+**Prérequis :** Lors de la configuration de votre environnement de développement Cordova, lisez également le tutoriel [Configuration de l'environnement de développement {{ site.data.keys.product_adj }}](../mobilefirst/).
 
 ## Installation de l'interface de ligne de commande Cordova
 {: #installing-the-cordova-cli }
