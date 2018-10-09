@@ -19,17 +19,17 @@ MobileFirst Server のインストールを円滑に進めるために、すべ�
 ## IBM Installation Manager の実行
 {: #run-install-mgr }
 
-IBM Installation Manager は、IBM MobileFirst Platform Server のファイルおよびツールをコンピューターにインストールします。[IBM Installation Manager のインストールと実行に関するチュートリアル](../installation-manager)に従ってください。
+IBM Installation Manager は、IBM MobileFirst Platform Server のファイルおよびツールをコンピューターにインストールします。 [IBM Installation Manager のインストールと実行に関するチュートリアル](../installation-manager)に従ってください。
 
 ## データベースのセットアップ
 {: #databases }
 
-MobileFirst Server コンポーネントが使用するデータベースをセットアップします。[データベースのセットアップに関するチュートリアル](databases)に従ってください。
+MobileFirst Server コンポーネントが使用するデータベースをセットアップします。 [データベースのセットアップに関するチュートリアル](databases)に従ってください。
 
 ## トポロジーとネットワーク・フロー
 {: #topologies }
 
-MobileFirst Server コンポーネントの可能なサーバー・トポロジーおよびそれらのネットワーク・フローに関するトピックです。[可能なサーバー・トポロジーおよびネットワーク・フローに関するチュートリアル](topologies)に従ってください。
+MobileFirst Server コンポーネントの可能なサーバー・トポロジーおよびそれらのネットワーク・フローに関するトピックです。 [可能なサーバー・トポロジーおよびネットワーク・フローに関するチュートリアル](topologies)に従ってください。
 
 ## アプリケーション・サーバーへの MobileFirst Server のインストール
 {: #install-to-appserver }

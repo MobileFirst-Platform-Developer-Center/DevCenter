@@ -72,8 +72,8 @@ Para obtener más información sobre las notificaciones push, consulte la guía 
 
 #### cordova-plugin-mfp-fips
 {: #cordova-plugin-mfp-fips }
-El plugin cordova-plugin-mfp-fips proporciona soporte FIPS 140-2 para la plataforma Andorid.
-Para obtener más información, consulte el [soporte a FIPS 140-2](../../../administering-apps/federal/#fips-140-2-support).
+El plugin cordova-plugin-mfp-fips proporciona soporte FIPS 140-2 para la plataforma Android.
+Para obtener más información, consulte el apartado [Soporte a FIPS 140-2](../../../administering-apps/federal/#fips-140-2-support).
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
@@ -82,7 +82,7 @@ Para obtener más información, consulte [Habilitación de OpenSSL para Cordova 
 
 **Requisitos previos:**
 
-- [Apache Cordova CLI](https://www.npmjs.com/package/cordova) y {{ site.data.keys.mf_cli }} instalados en la estación de trabajo del desarrollador.
+- [Apache Cordova CLI(>=6.x y <9.0)](https://www.npmjs.com/package/cordova) y {{ site.data.keys.mf_cli }} instalado en la estación de trabajo del desarrollador.
 - Una instancia remota o local de {{ site.data.keys.mf_server }} que esté en ejecución.
 
 - Lea las guías de aprendizaje [

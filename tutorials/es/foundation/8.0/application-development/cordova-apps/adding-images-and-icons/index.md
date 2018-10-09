@@ -124,7 +124,7 @@ El nombre de cada imagen corresponde a su tamaño.
 <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
 ```
 
-A partir de la versión 8.0.2017102406 del plugin cordoba de MobileFirstPlatform Foundation, se ha realizado un cambio  a `AppDelegate.m` que provoca un parpadeo de la pantalla negra cuando se carga una aplicación de cordova con
+A partir de la versión 8.0.2017102406 del plugin cordoba de MobileFirstPlatform Foundation, se ha realizado un cambio a `AppDelegate.m` que provoca un parpadeo de la pantalla negra cuando se carga una aplicación de cordova con
 el plugin `cordova-plugin-mfp` instalado. Si un usuario no quiere ver esta pantalla inicial, pueden añadir un nuevo `ViewController` y hacer algunos cambios en la carga de `AppDelegate.m` para evitar la pantalla inicial. Los pasos para el proceso son como siguen:
 
 1. En su proyecto XCode, pulse el botón derecho (del ratón) en la pantalla **Classes** y seleccione la opción **Nuevo archivo**.

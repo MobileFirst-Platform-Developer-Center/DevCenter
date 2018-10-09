@@ -48,7 +48,7 @@ IBM WebSphere Application Server - Liberty Core V8.5.5.3 以降
 
 ## IBM Installation Manager のインストール
 {: #installing-ibm-installation-manager }
-Installation Manager V1.8.4 以降をインストールする必要があります。製品のポストインストール操作で Java 7 が必要なため、古いバージョンの Installation Manager は {{ site.data.keys.product }} V8.0 をインストールできません。古いバージョンの Installation Manager には Java 6 が装備されています。
+Installation Manager V1.8.4 以降をインストールする必要があります。 製品のポストインストール操作で Java 7 が必要なため、古いバージョンの Installation Manager は {{ site.data.keys.product }} V8.0 をインストールできません。古いバージョンの Installation Manager には Java 6 が装備されています。
 
 1. ダウンロードした IBM Installation Manager アーカイブ・ファイルを解凍します。 インストーラーは [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142) にあります。
 2. **unzip\_IM\_1.8.x/license** ディレクトリー内にある IBM Installation Manager のご使用条件を確認します。
@@ -102,10 +102,10 @@ Installation Manager V1.8.4 以降がインストールされていることを�
 
 このチュートリアルでは、**imcl** コマンド・ラインを使用して、これらのプロパティーをパラメーターとして指定します。 この指定は、応答ファイルを使用しても行うことができます。
 
-1. {{ site.data.keys.mf_server }} のご使用条件を確認します。ライセンス・ファイルは、パスポート・アドバンテージからインストール・リポジトリーをダウンロードすると表示できます。
+1. {{ site.data.keys.mf_server }} のご使用条件を確認します。 ライセンス・ファイルは、パスポート・アドバンテージからインストール・リポジトリーをダウンロードすると表示できます。
 2. ダウンロードした {{ site.data.keys.mf_server }} インストーラーの圧縮ファイルを、任意のフォルダーに解凍します。
 
-    以下のステップでは、インストーラーを解凍するディレクトリーは **mfp\_repository\_dir** という名前になっています。この中には **MobileFirst\_Platform\_Server/disk1** フォルダーが含まれています。
+    以下のステップでは、インストーラーを解凍するディレクトリーは **mfp\_repository\_dir** という名前になっています。 この中には **MobileFirst\_Platform\_Server/disk1** フォルダーが含まれています。
 3. コマンド・ラインを開始し、**installation\_manager\_install\_dir/tools/eclipse/** に移動します。
 4. ステップ 1 で確認後ご使用条件に同意したら、{{ site.data.keys.mf_server }} をインストールします。
 
@@ -378,20 +378,20 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。 
     * 2 番目のサーバーのディレクトリーに移動します。
 
         ディレクトリーは **liberty\_install\_dir/usr/servers/mfp2** または **WLP\_USER\_DIR/servers/mfp2** (『WebSphere Application Server Liberty Core のインストール』のステップ 6 に説明されたようにディレクトリーを変更した場合) です。
-    * **server.xml** ファイルを編集します。置換は、
+    * **server.xml** ファイルを編集します。 置換は、
 
       ```xml
-    <httpEndpoint id="defaultHttpEndpoint"
-    httpPort="9080"
-    httpsPort="9443" />
+      <httpEndpoint id="defaultHttpEndpoint"
+        httpPort="9080"
+        httpsPort="9443" />
       ```
 
       これを以下のように置き換えます。
 
       ```xml
-    <httpEndpoint id="defaultHttpEndpoint"
-    httpPort="9081"
-    httpsPort="9444" />
+      <httpEndpoint id="defaultHttpEndpoint"
+        httpPort="9081"
+        httpsPort="9444" />
       ```
 
       この変更により、サーバー mfp2 の HTTP ポートおよび HTTPS ポートはサーバー mfp1 のポートと競合しなくなります。 {{ site.data.keys.mf_server }} のインストールを実行する前に必ずポートを変更するようにしてください。 そうでない場合、インストールが完了した後にポートを変更するのであれば、JNDI プロパティー **mfp.admin.jmx.port** にもポートの変更を反映させなければなりません。
@@ -412,17 +412,17 @@ Liberty プロファイル **jvm.options** ファイルが変更されます。 
 
 4. HTTP 接続で 2 つのサーバーをテストします。
     * Web ブラウザーを開きます。
-    * 次の URL を入力します。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。コンソールはサーバー mfp1 によってサービスを提供されます。
+    * 次の URL を入力します。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。 コンソールはサーバー mfp1 によってサービスを提供されます。
     * **admin/admin** でログインします。
-    * 同じ Web ブラウザーでタブを開いて、次の URL を入力します。[http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole)。コンソールはサーバー mfp2 によってサービスを提供されます。
+    * 同じ Web ブラウザーでタブを開いて、次の URL を入力します。[http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole)。 コンソールはサーバー mfp2 によってサービスを提供されます。
     * admin/admin でログインします。 インストールが正しく行われると、ログイン後、両方のタブで同じウェルカム・ページが表示されます。
     * 最初のブラウザー・タブに戻り、**「管理者トップ (Hello, Admin)」→「監査ログのダウンロード (Download Audit Log)」**をクリックします。 コンソールからログアウトし、ログイン画面が再度表示されます。 このログアウトの動作は、問題点です。 この問題が発生するのは、サーバー mfp2 にログオンする際に Lightweight Third Party Authentication (LTPA) トークンが作成され、ご使用のブラウザーに Cookie として保管されるためです。 しかし、この LTPA トークンはサーバー mfp1 からは認識されません。 クラスターの前に HTTP ロード・バランサーがある場合、実稼働環境ではサーバーの切り替えが行われる可能性があります。 この問題を解決するには、両方のサーバー (mfp1 および mfp2) が同じ秘密鍵を使用して LTPA トークンを生成するようにしなければなりません。 LTPA 鍵をサーバー mfp1 からサーバー mfp2 にコピーしてください。
 
         * 以下のコマンドで両方のサーバーを停止します。
 
           ```bash
-        server stop mfp1
-        server stop mfp2
+          server stop mfp1
+          server stop mfp2
           ```
 
         * サーバー mfp1 の LTPA 鍵をサーバー mfp2 にコピーします。

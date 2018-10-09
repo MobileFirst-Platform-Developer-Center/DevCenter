@@ -35,6 +35,8 @@ Para habilitar la autenticidad de aplicación, puede seguir las instrucciones qu
 {: #application-authenticity-flow }
 La comprobación de seguridad de autenticidad de aplicación se ejecuta durante el registro de la aplicación en {{ site.data.keys.mf_server }}, que la primera vez produce una instancia de los intentos de la aplicación de conectarse al servidor. De forma predeterminada, la verificación de autenticidad no se ejecuta de nuevo.
 
+Una vez habilitada la autenticidad de aplicaciones y si el cliente necesita introducir cambios en su aplicación, la versión de la aplicación necesitará actualizarse.
+
 Consulte [Configuración de la autenticidad de aplicación](#configuring-application-authenticity) para conocer más sobre como personalizar este comportamiento.
 
 ## Habilitación de la autenticidad de aplicación
@@ -46,6 +48,8 @@ Para que la autenticidad de aplicación se habilite en su aplicación:
 3. Conmute el botón **Activado/desactivado** en el recuadro **Estado**.
 
 ![Habilitación de la autenticidad de aplicación](enable_application_authenticity.png)
+
+MobileFirst Server valida la autenticidad de aplicación en el primer intento por conectarse al servidor. Para aplicar esta validación también a recursos protegidos, añada la comprobación de seguridad `appAuthenticity` al ámbito de protección.
 
 ### Inhabilitación de la autenticidad de aplicación
 {: #disabling-application-authenticity }
@@ -97,14 +101,15 @@ Es posible restablecer esta huella y proporcionar nuevos datos al algoritmo. Est
 
 Después de restablecer la huella, la comprobación de seguridad appAuthenticity continua trabajando como lo hacía al principio (esto será completamente transparente para el usuario).
 
-### Tipo de validación
+### Tipos de validación
 {: #validation }
 
-De forma predeterminada, cuando la autenticidad de aplicación está habilitada, utiliza el algoritmo de validación **dinámico**. La validación de autenticidad de aplicación dinámica utiliza características específicas de plataformas móviles para determinar la autenticidad de la aplicación. En consecuencia, puede quedar afectado si se introducen cambios no retrocompatibles en el sistema operativo móvil, lo que impide que las aplicaciones auténticas se conecten al servidor.
+Mobile First Platform Foundation proporciona autenticidad de aplicaciones estática y dinámica para las aplicaciones. Estos tipos de validaciones difieren del algoritmo y de los atributos utilizados para generar semillas de autenticidad de aplicaciones. De forma predeterminada, cuando la autenticidad de aplicación está habilitada, utiliza el algoritmo de validación **dinámico**. Ambos tipos de validación garantizan la seguridad de la aplicación. La autenticidad de aplicaciones dinámica utiliza validaciones y comprobaciones estrictas para la autenticidad de aplicaciones. Para la autenticidad de aplicaciones estática, utilizamos el algoritmo ligeramente relajado, que no utilizará todas las comprobaciones de validación que se utilizan en la autenticidad de aplicaciones dinámica.
 
-Para mitigar estos problemas conocido, está disponible el algoritmo de validación **estático**. Este tipo de validación es menos sensitiva a las modificaciones específicas de OS.
+La autenticidad de aplicaciones dinámica se puede configurar desde la consola de MobileFirst. El algoritmo interno cuida la generación de los datos de autenticidad de aplicaciones basadas en las opciones elegidas en la consola.
+Para la autenticidad de aplicaciones estática, se necesita utilizar la [CLI de **mfpadm**](../../administering-apps/using-cli/).
 
-Para conmutar entre tipos de validación, utilice la CLI [**mfpadm**](../../administering-apps/using-cli/):
+Para habilitar la autenticidad de aplicaciones estática y para conmutar entre tipos de validación, utilice la [CLI de **mfpadm**](../../administering-apps/using-cli/):
 
 ```bash
 mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE

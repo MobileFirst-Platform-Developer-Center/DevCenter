@@ -9,7 +9,7 @@ weight: 3
 ## Visión general
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} utiliza **Elasticsearch 1.5x** para almacenar datos y ejecutar consultas de búsqueda.  
+{{ site.data.keys.mf_analytics_full }} utiliza **Elasticsearch 1.7.5** para almacenar datos y ejecutar consultas de búsqueda.  
 
 Elasticsearch es un motor de analíticas y búsqueda distribuida en tiempo real que incrementa los ratios de escalado y velocidad para la exploración y almacenamiento de datos. Elasticsearch se utiliza para una búsqueda estructurada y de texto completo.
 
@@ -19,7 +19,7 @@ Las instancias de Elasticsearch son consultadas en tiempo real para cumplimentar
 
 {{ site.data.keys.mf_analytics }} expone toda la funcionalidad Elasticsearch. Al usuario se le ofrece la posibilidad de aprovecharse de las características de optimización, depuración y consultas de Elasticsearch.
 
-Para obtener más información sobre la funcionalidad Elasticsearch, más allá de la funcionalidad aquí descrita, consulte la [Documentación de Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+Para obtener más información sobre la funcionalidad Elasticsearch, más allá de la funcionalidad aquí descrita, consulte la [Documentación de Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html).
 
 ## Gestión de Elasticsearch en {{ site.data.keys.mf_analytics_server }}
 {: #managing-elasticsearch-on-the-mobilefirst-analytics-server }
@@ -72,4 +72,4 @@ http://localhost:9500/_nodes
 http://localhost:9500/*/_mapping
 ```
 
-> Elasticsearch expone muchos más puntos finales REST. Para obtener más información, visite la [Documentación de Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+> Elasticsearch expone muchos más puntos finales REST. Para obtener más información, visite la [Documentación de Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html).

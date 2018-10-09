@@ -138,6 +138,109 @@ Pragma: no-cache
     </div>
 </div>
 
+### リフレッシュ・トークン
+{: #refresh-tokens}
+
+リフレッシュ・トークンは特殊なタイプのトークンであり、アクセス・トークンの有効期限が切れたときに新しいアクセス・トークンを取得するために使用できます。新しいアクセス・トークンを要求するには、有効なリフレッシュ・トークンを提示します。リフレッシュ・トークンは存続期間が長いトークンであり、アクセス・トークンと比較してより長い期間有効です。
+
+リフレッシュ・トークンは、ユーザーが永続的に認証済みのままになることができるため、アプリケーションでは注意して使用する必要があります。アプリケーション・プロバイダーがユーザーを定期的に認証しないソーシャル・メディア・アプリケーション、e-commerce アプリケーション、製品カタログ・ブラウズ・アプリケーションなどのユーティリティー・アプリケーションでは、リフレッシュ・トークンを使用できます。頻繁なユーザー認証を要求するアプリケーションでは、リフレッシュ・トークンの使用を避ける必要があります。  
+
+#### MobileFirst リフレッシュ・トークン
+{: #mfp-refresh-token}
+
+MobileFirst リフレッシュ・トークンは、クライアントの許可アクセス権を記述したアクセス・トークンのような、デジタル署名されたエンティティーです。リフレッシュ・トークンは、同じスコープの新しいアクセス・トークンを取得するために使用できます。特定のスコープについてクライアントの認証要求が許可され、クライアントが認証されると、許可サーバーのトークン・エンドポイントは、要求されたアクセス・トークンとリフレッシュ・トークンを含む HTTP 応答をクライアントに送信します。アクセス・トークンの有効期限が切れると、クライアントは、新しいアクセス・トークンとリフレッシュ・トークンのセットを取得するために、許可サーバーのトークン・エンドポイントにリフレッシュ・トークンを送信します。
+
+**構造**
+
+MobileFirst アクセス・トークンと同様、MobileFirst リフレッシュ・トークンには以下の情報が含まれています。
+* **クライアント ID**: クライアントの固有 ID。
+* **スコープ**: トークンが適用される有効範囲 (OAuth スコープを参照)。 このスコープには、必須アプリケーション・スコープは含まれません。
+* **トークンの有効期限**: トークンが無効 (期限切れ) になる時間 (秒数)。
+
+#### トークンの有効期限
+{: #token-expiration}
+
+リフレッシュ・トークンのトークン有効期間は、一般的なアクセス・トークンの有効期間よりも長くなっています。付与されたリフレッシュ・トークンは、有効期限時刻が経過するまで有効になります。この有効期間内に、クライアントはリフレッシュ・トークンを使用して、新しいアクセス・トークンとリフレッシュ・トークンのセットを取得できます。リフレッシュ・トークンには、30 日の固定の有効期間があります。クライアントが新しいアクセス・トークンとリフレッシュ・トークンのセットを正常に受信するたびに、リフレッシュ・トークンの有効期限がリセットされるため、クライアントではトークンの有効期限が切れることはありません。アクセス・トークンの有効期限ルールは、**アクセス・トークン**のセクションで説明されているものと同じです。
+
+<div class="panel-group accordion" id="configuration-explanation-rt" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="refresh-token-expiration">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>リフレッシュ・トークン機能の有効化</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
+            <div class="panel-body">
+            <p>リフレッシュ・トークン機能は、クライアント・サイドとサーバー・サイドでそれぞれ以下のプロパティーを使用して有効にできます。</p>
+            <b>クライアント・サイドのプロパティー</b><br/>
+
+            <i>ファイル名</i>.:            mfpclient.properties<br/>
+            <i>プロパティー名</i>:   wlEnableRefreshToken<br/>
+            <i>プロパティー値</i>:   true<br/>
+
+            例:<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>サーバー・サイドのプロパティー</b><br/>
+
+            <i>ファイル名</i>:            server.xml<br/>
+            <i>プロパティー名</i>:   mfp.security.refreshtoken.enabled.apps<br/>
+            <i>プロパティー値</i>:   <i>「;」で区切ったアプリケーション・バンドル ID</i><br/><br/>
+
+            <p>例:</p><br/>
+            {% highlight xml %}
+            <jndiEntry jndiName="mfp/mfp.security.refreshtoken.enabled.apps" value='"com.sample.android.myapp1;com.sample.android.myapp2"'/>
+            {% endhighlight %}
+
+            <p>プラットフォームに応じて異なるバンドル ID を使用してください。</p>
+
+                                    <br/>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>セクションを閉じる</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+<div class="panel-group accordion" id="response-refresh-token" role="tablist">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="response-structure-rt">
+        <h4 class="panel-title">
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>リフレッシュ・トークン応答構造</b></a>
+        </h4>
+    </div>
+
+    <div id="collapse-response-structure-rt" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure-rt">
+      <div class="panel-body">
+        <p>以下に、許可サーバーからの有効なリフレッシュ・トークン応答の例を示します。</p>
+
+        {% highlight json %}
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+        Cache-Control: no-store
+        Pragma: no-cache
+        {
+            "token_type": "Bearer",
+            "expires_in": 3600,
+            "access_token": "yI6ICJodHRwOi8vc2VydmVyLmV4YW1",
+            "scope": "scopeElement1 scopeElement2",
+            "refresh_token": "yI7ICasdsdJodHRwOi8vc2Vashnneh "
+        }
+        {% endhighlight %}
+
+        <p>リフレッシュ・トークン応答には、アクセス・トークン応答構造のパートで説明した他のプロパティー・オブジェクトとは別に追加のプロパティー・オブジェクト <code>refresh_token</code> があります。</p>
+
+        <br/>
+              <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>セクションを閉じる</b></a>
+            </div>
+          </div>
+        </div>
+</div>
+
+
+>**注:** リフレッシュ・トークンの存続期間は、アクセス・トークンと比較して長くなります。そのため、リフレッシュ・トークン機能は注意して使用する必要があります。定期的なユーザー認証が必要ないアプリケーションが、リフレッシュ・トークン機能を使用する場合に理想的な候補となります。現在 MobileFirst は、Android プラットフォームでのみリフレッシュ・トークン機能をサポートしています。Android アプリケーションと iOS アプリケーションには異なるバンドル ID を使用することをお勧めします。
+
+
 ### セキュリティー検査
 {: #security-checks }
 

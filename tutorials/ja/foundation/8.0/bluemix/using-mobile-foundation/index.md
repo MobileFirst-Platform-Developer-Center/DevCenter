@@ -13,18 +13,18 @@ weight: 1
 
 {{ site.data.keys.mf_bm_short }} サービスには、以下のプラン・オプションがあります。
 
-1. **開発者**: このプランでは、{{ site.data.keys.mfound_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。 Liberty for Java の料金は別に請求され、このプランには含まれていません。 このプランでは外部データベースの使用がサポートされておらず、開発とテストに制限されています。 {{ site.data.keys.mf_bm_short }} サーバーの*開発者プラン* のインスタンスでは、開発およびテスト用に任意の数のモバイル・アプリケーションを登録できます。ただし、接続デバイスの数は 1 日当たり 10 台に制限されます。 このプランには、{{site.data.keys.mf_analytics_service }} サービス・インスタンスも含まれています。 使用量が Mobile Analytics の無料層エンタイトルメントを超過する場合には、Mobile Analytics の基本プランに従って料金が適用されます。
+1. **開発者**: このプランでは、{{ site.data.keys.mfound_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。 Liberty for Java の料金は別に請求され、このプランには含まれていません。 このプランでは外部データベースの使用がサポートされておらず、開発とテストに制限されています。 {{ site.data.keys.mf_bm_short }} サーバーの*開発者プラン*のインスタンスでは、開発およびテスト用に任意の数のモバイル・アプリケーションを登録できます。ただし、接続デバイスの数は 1 日当たり 10 台に制限されます。<!--This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.-->
 
     > **注:** 「開発者」プランでは、永続的なデータベースは提供されません。したがって、[トラブルシューティング・セクション](#troubleshooting)にある説明のとおりに、必ず構成をバックアップしてください。
 
-2. **デバイスごとの商用 (Professional Per Device)**: このプランでは、ユーザーは実動モバイル・アプリケーションを作成、テスト、および実行できます。 1 日に接続されたクライアント・デバイスの数に基づいて請求されます。 このプランは、大規模なデプロイメントと高可用性をサポートします。 このプランでは、別途作成および請求される IBM DB2 on Cloud (今は Db2 Hosted と呼ばれている) サービス・インスタンスが必要です。このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが Liberty for Java 上でプロビジョンされます。 Liberty for Java の料金は別途請求され、このプランの一部には含まれません。 オプションで、Mobile Analytics サービス・インスタンスを追加できます。 Mobile Analytics サービスは別途請求されます。
+2. **デバイスごとの商用 (Professional Per Device)**: このプランでは、ユーザーは実動モバイル・アプリケーションを作成、テスト、および実行できます。 1 日に接続されたクライアント・デバイスの数に基づいて請求されます。 このプランは、大規模なデプロイメントと高可用性をサポートします。 このプランでは、別途作成および請求される、IBM DB2 (**ライト**・プラン以外のプラン) のインスタンスまたは Compose for PostgreSQL サービスが必要です。このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが Liberty for Java 上でプロビジョンされます。 Liberty for Java の料金は別途請求され、このプランの一部には含まれません。<!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
 
-3. **1 つの商用アプリケーション**: このプランでは、モバイル・アプリケーションのユーザーまたはデバイスの数に関係なく、ユーザーは予測可能な料金で単一のモバイル・アプリケーションを作成および管理できます。 単一のモバイル・アプリケーションは、iOS、Android、Windows、Mobile Web など、複数のフレーバーにすることができます。 このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが Cloud Foundry アプリケーションとして Liberty for Java 上の拡張が容易な環境にプロビジョンされます。 Liberty for Java の料金は別途請求され、このプランの一部には含まれません。 このプランでも、別途作成および請求される IBM DB2 on Cloud (Db2 Hosted) サービス・インスタンスが必要です。オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービス・インスタンスを追加できます。 Mobile Analytics サービスは別途請求されます。
+3. **1 つの商用アプリケーション**: このプランでは、モバイル・アプリケーションのユーザーまたはデバイスの数に関係なく、ユーザーは予測可能な料金で単一のモバイル・アプリケーションを作成および管理できます。 単一のモバイル・アプリケーションは、iOS、Android、Windows、Mobile Web など、複数のフレーバーにすることができます。 このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが Cloud Foundry アプリケーションとして Liberty for Java 上の拡張が容易な環境にプロビジョンされます。 Liberty for Java の料金は別途請求され、このプランの一部には含まれません。 このプランではまた、別途作成および請求される、IBM DB2 (**ライト**・プラン以外のプラン) または Compose for PostgreSQL サービス・インスタンスが必要です。<!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
 
-4. **開発者商用**: このプランでは {{ site.data.keys.mfound_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。ユーザーは、このプランを使用することで任意の数のモバイル・アプリケーションを開発およびテストできます。 このプランでは、**DB2 Hosted** サービス・インスタンスが必要です。DB2 on Cloud サービス・インスタンスは、別途作成および請求されます。 このプランはサイズ制限があり、実動ではなく、チーム・ベースの開発アクティビティーとテスト・アクティビティーに使用することを目的としています。 料金は、ご使用の環境の合計サイズによって異なります。 オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
+4. **開発者商用**: このプランでは {{ site.data.keys.mfound_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。ユーザーは、このプランを使用することで任意の数のモバイル・アプリケーションを開発およびテストできます。 このプランでは、別途作成および請求される、**DB2** (**ライト**・プラン以外のプラン) サービス・インスタンスが必要です。DB2 サービス・インスタンスは、別途作成および請求されます。このプランはサイズ制限があり、実動ではなく、チーム・ベースの開発アクティビティーとテスト・アクティビティーに使用することを目的としています。 料金は、ご使用の環境の合計サイズによって異なります。<!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_**開発者商用** プランは、非推奨になりました。_
 
-5. **容量ごとの商用:** このプランにより、ユーザーはモバイル・ユーザーやデバイスの数に関係なく、任意の数のモバイル・アプリケーションを実動で作成、テスト、および実行できます。 大規模のデプロイメントと高可用性がサポートされます。 このプランでは、**DB2 Hosted** サービス・インスタンスが必要です。DB2 Hosted サービス・インスタンスは、別途作成および請求されます。料金は、ご使用の環境の合計サイズによって異なります。 オプションで、**「Analytics の追加」**ボタンをクリックして {{ site.data.keys.mf_analytics_service }} サービスを追加できます。
+5. **容量ごとの商用:** このプランにより、ユーザーはモバイル・ユーザーやデバイスの数に関係なく、任意の数のモバイル・アプリケーションを実動で作成、テスト、および実行できます。 大規模のデプロイメントと高可用性がサポートされます。 このプランでは、別途作成および請求される、**DB2** (**ライト**・プラン以外のプラン) サービス・インスタンスが必要です。DB2 サービス・インスタンスは、別途作成および請求されます。料金は、ご使用の環境の合計サイズによって異なります。<!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_**容量ごとの商用**プランは、現在非推奨になりました。_
 
 > 使用可能なプランとそれぞれの請求について詳しくは、[サービスの詳細](https://console.bluemix.net/catalog/services/mobile-foundation/)を参照してください。
@@ -35,8 +35,6 @@ weight: 1
 * [{{ site.data.keys.mf_bm_short }} サービスの使用](#using-the-mobile-foundation-service)
 * [サーバー構成](#server-configuration)
 * [拡張サーバー構成](#advanced-server-configuration)
-* [分析サポートの追加](#adding-analytics-support)
-* [Analytics サポートの削除](#removing-analytics-support)
 * [{{ site.data.keys.mfound_server }} 修正の適用](#applying-mobilefirst-server-fixes)
 * [サーバー・ログへのアクセス](#accessing-server-logs)
 * [トラブルシューティング](#troubleshooting)
@@ -64,21 +62,26 @@ weight: 1
 
 ### *1 つの商用アプリケーション*および*デバイスごとの商用*プランのセットアップ
 {: #setting-up-the-professional-1-application-n-professional-per-device-plan }
-1. これらのプランには、外部[Db2 Hosted データベース・インスタンス](https://console.bluemix.net/catalog/services/db2-hosted/)が必要です。
+1. これらのプランでは、外部 [DB2 (**ライト**・プラン以外のプラン) データベース・インスタンス](https://console.bluemix.net/catalog/services/db2/)が必要です。
 
-    * 既存の Db2 Hosted サービス・インスタンスがある場合は、**「既存のサービスの使用」**オプションを選択して、次のように資格情報を入力します。
+    * 既存の DB2 サービス・インスタンスがある場合は、**「既存のサービスの使用」**オプションを選択して、次のように資格情報を入力します。
 
-        ![{{ site.data.keys.mf_bm_short }} セットアップのイメージ](create-db2-hosted-instance-existing.png)
+        ![{{ site.data.keys.mf_bm_short }} のセットアップのイメージ](create-db2-instance-existing.png)
 
-    * 現在まだ Db2 Hosted サービス・インスタンスがない場合は、次のように**「新規サービスの作成」**オプションを選択して、画面に表示される指示に従います。
+    * 既存の Compose for PostgreSQL サービス・インスタンスがある場合は、**「既存のサービスの使用」**オプションを選択して、次のように資格情報を入力します。
 
-       ![{{ site.data.keys.mf_bm_short }} セットアップのイメージ](create-db2-hosted-instance-new.png)
+        ![{{ site.data.keys.mf_bm_short }} のセットアップのイメージ](create-postgres-instance-existing.png)
+
+
+    * 現在まだ DB2 サービス・インスタンスも Compose for PostgreSQL サービス・インスタンスもない場合は、次のように**「新規サービスの作成」**オプションを選択して、画面に表示される指示に従います。
+
+       ![{{ site.data.keys.mf_bm_short }} のセットアップのイメージ](create-db2-instance-new.png)
 
 2. {{ site.data.keys.mfound_server }} を始動します。
     - サーバー構成については、基本レベルをそのまま保持して **「基本サーバーの始動」**をクリックするか、または
     - [「設定」タブ](#advanced-server-configuration)でサーバー構成を更新して、**「拡張サーバーの始動」**をクリックします。
 
-    このステップの間に、{{ site.data.keys.mf_bm_short }} サービス用として Cloud Foundry アプリケーションが生成され、Mobile Foundation 環境が初期化されます。このステップは 5 分から 10 分かかることがあります。
+    このステップの間に、{{ site.data.keys.mf_bm_short }} サービス用として Cloud Foundry アプリケーションが生成され、Mobile Foundation 環境が初期化されます。 このステップは 5 分から 10 分かかることがあります。
 
 3. インスタンスの準備ができれば、[サービスを使用](#using-the-mobile-foundation-service)できます。
 
@@ -91,12 +94,17 @@ weight: 1
 
 ![{{ site.data.keys.mf_bm_short }} のセットアップのイメージ](service-dashboard.png)
 
-**「Analytics の追加」**をクリックして、サーバー・インスタンスに {{ site.data.keys.mf_analytics_service }} サポートを追加します。
-『[分析サポートの追加](#adding-analytics-support)』セクションで詳しく学びます。
+<!--Click on **Add Analytics** to add {{ site.data.keys.mf_analytics_service }} support to your server instance.
+Learn more in the [Adding Analytics support](#adding-analytics-support) section.-->
 
-**「コンソールの起動」**をクリックして {{ site.data.keys.mf_console }} を開きます。 デフォルトのユーザー名は「admin」で、「目」アイコンをクリックすることでパスワードを明らかにすることができます。
+* **「コンソールの起動」**をクリックして {{ site.data.keys.mf_console }} を開きます。 デフォルトのユーザー名は*「admin」*で、パスワード・フィールドの「目」アイコンをクリックすることでパスワードを明らかにすることができます。
 
-![{{ site.data.keys.mf_bm_short }} のセットアップのイメージ](dashboard.png)
+  ![{{ site.data.keys.mf_bm_short }} のセットアップのイメージ](dashboard.png)
+
+* {{ site.data.keys.mf_console }} から**「Analytics コンソール」**をクリックして Mobile Analytics コンソールを開き、次に示すような分析データを表示します。
+
+  ![{{ site.data.keys.mf_analytics_service }} コンソールのイメージ](analytics-dashboard.png)
+
 
 ### サーバー構成
 {: #server-configuration }
@@ -128,31 +136,32 @@ weight: 1
 
   >**注:** 独自のトラストストアを作成することもできますが、デフォルトの証明書は、Mobile Foundation サービスが正常に機能するために使用できるようにする必要があります。
 
-* {{ site.data.keys.mf_analytics_service }} の構成
+<!--* {{ site.data.keys.mf_analytics_service }} configuration-->
 * VPN
 
 ![{{ site.data.keys.mf_bm_short }} のセットアップのイメージ](advanced-server-configuration.png)
 
-## {{ site.data.keys.mf_analytics_service }} サポートの追加
+<!--
+## Adding {{ site.data.keys.mf_analytics_service }} support
 {: #adding-analytics-support }
-サービスの「ダッシュボード」ページから**「Analytics の追加」**をクリックすることで、{{ site.data.keys.mf_analytics_service }} サポートを {{ site.data.keys.mf_bm_short }} サービス・インスタンスに追加できます。 このアクションにより、{{ site.data.keys.mf_analytics_service }} サービス・インスタンスがプロビジョンされます。
+You can add {{ site.data.keys.mf_analytics_service }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions a {{ site.data.keys.mf_analytics_service }} service instance.
 
->{{ site.data.keys.mf_bm_short }} サービスの**開発者**プラン・インスタンスを作成または再作成すると、デフォルトで、{{ site.data.keys.mf_analytics_service }} サービス・インスタンスが追加されます。
-
+>When you create or recreate the **Developer** plan instance of {{ site.data.keys.mf_bm_short }} service, the {{ site.data.keys.mf_analytics_service }} service instance is added by default.
+-->
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
+<!--
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_service_console }}.  
 
-操作が完了したら、ブラウザー上で {{ site.data.keys.mf_console }} ページを再ロードして {{ site.data.keys.mf_analytics_service_console }} にアクセスします。  
+> Learn more about {{ site.data.keys.mf_analytics_service }} in the [{{ site.data.keys.mf_analytics_service }} category](../../analytics).
 
-> [{{ site.data.keys.mf_analytics_service }} カテゴリーの {{ site.data.keys.mf_analytics_service }} についてもっとよく知る](../../analytics)。
-
-##  {{ site.data.keys.mf_analytics_service }} サポートの削除
+##  Removing {{ site.data.keys.mf_analytics_service }} support
 {: #removing-analytics-support}
 
-サービスの「ダッシュボード」ページから**「Analytics の削除」**をクリックすると、{{ site.data.keys.mf_bm_short }} サービス・インスタンスの {{ site.data.keys.mf_analytics_service }} サポートを削除できます。 このアクションにより、{{ site.data.keys.mf_analytics_service }} サービス・インスタンスが削除されます。
+You can remove the {{ site.data.keys.mf_analytics_service }} support for your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Delete Analytics**  from the service’s Dashboard page. This action deletes the {{ site.data.keys.mf_analytics_service }} service instance.
 
-操作が完了したら、ブラウザー上で {{ site.data.keys.mf_console }} ページを再ロードします。
-
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
+-->
 <!--
 ##  Switching from Analytics deployed with IBM Containers to Analytics service
 {: #switching-from-analytics-container-to-analytics-service}
@@ -161,6 +170,7 @@ weight: 1
 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 -->
+
 ## {{ site.data.keys.mfound_server }} 修正の適用
 {: #applying-mobilefirst-server-fixes }
 {{ site.data.keys.mf_bm }} サービスの更新は、人的介入を必要とせず自動的に適用されます。ただし、更新を実行するための同意だけはユーザーが行います。 更新が使用可能になると、指示とアクション・ボタンが含まれたバナーが、サービスの「ダッシュボード」ページに表示されます。

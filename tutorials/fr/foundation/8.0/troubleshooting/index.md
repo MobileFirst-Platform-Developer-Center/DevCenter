@@ -8,7 +8,7 @@ weight: 15
 {: #overview }
 Vous trouverez ici les réponses aux questions fréquemment posées sur les problèmes que vous êtes susceptible de rencontrer lors de l'utilisation de {{ site.data.keys.product }} 8.0.
 
-#### Accédez à
+#### Accéder à
 {: #jump-to }
 * [Notifications push]({{ site.baseurl }}/tutorials/fr/foundation/8.0/troubleshooting/notifications)
 * [JSONStore]({{ site.baseurl }}/tutorials/fr/foundation/8.0/troubleshooting/jsonstore)
