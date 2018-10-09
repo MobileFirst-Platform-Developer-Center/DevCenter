@@ -57,7 +57,7 @@ Si su organización dispone de un cortafuegos que restringe el tráfico a o desd
 * Configurar el cortafuegos para permitir la conectividad con FCM a fin de que las aplicaciones de cliente de FCM reciban mensajes.
 * Es necesario abrir los puertos 5228, 5229 y 5230. FCM normalmente solo utiliza el puerto 5228 pero, a veces, también utiliza los puertos 5229 y 5230.
 * FCM no proporciona una dirección IP específica, por lo que debe permitir que el cortafuegos acepte conexiones salientes para todas las direcciones IP contenidas en los bloques de IP que se listan en la ASN 15169 de Google.
-* Asegúrese de que el cortafuegos acepte conexiones salientes de desde {{ site.data.keys.mf_server }} a android.googleapis.com en el puerto 443.
+* Asegúrese de que el cortafuegos acepte conexiones salientes de {{ site.data.keys.mf_server }} a fcm.googleapis.com en el puerto 443.
 
 <img class="gifplayer" alt="Imagen de adición de las credenciales de GCM" src="gcm-setup.png"/>
 
@@ -66,7 +66,7 @@ Si su organización dispone de un cortafuegos que restringe el tráfico a o desd
 Los dispositivos iOS utilizan APNS (Push Notification Service) de Apple para las notificaciones push.  
 Siga estos pasos para configurar APNS:
 
-1. Genere un certificado de notificación push para el desarrollo o la producción. Para ver los pasos detallados consulte la sección `para iOS` [ aquí](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1). 
+1. Genere un certificado de notificación push para el desarrollo o la producción. Para ver los pasos detallados consulte la sección `para iOS` [ aquí](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1).
 2. En {{ site.data.keys.mf_console }} → **[su aplicación] → Push → Valores de push**, seleccione el tipo de certificado y proporcione el archivo y la contraseña del certificado. A continuación, pulse **Guardar**.
 
 #### Notas

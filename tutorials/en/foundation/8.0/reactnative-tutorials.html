@@ -119,7 +119,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
 
   </br>
     <h4><font color="DarkTurquoise">Step 2.3:</font> Additional platform sepcific steps </h4>
-    <p> <b> Android </b> </br>
+    <p> <b> Android </b> </p></br>
     Add the following lines to <b>AndroidManifest.xml</b> <i>({project-folder}/android/app/src/main/)</i> :
       {% highlight xml %}
       <![CDATA[
@@ -131,7 +131,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
     ]]>
     {% endhighlight %}
   </br>
-  <p> <b> iOS </b> </br>
+  <p> <b> iOS </b></p> </br>
     Open your project in XCode. In the project navigator, drag and drop mfpclient.plist from ios folder.
   </br>
 
@@ -150,7 +150,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
         mfpdev app register
       {% endhighlight %}
 
-      <p> If a remote server is used, <a target="_blank" href="../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance">use the command</a> <code>mfpdev server add</code> to add it.
+      <p> If a remote server is used, <a target="_blank" href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance">use the command</a> <code>mfpdev server add</code> to add it.
 
       The <code>mfpdev app register</code> CLI command first connects to the {{ site.data.keys.mf_server }} to register the application. 	Each platform is registered as an application in {{ site.data.keys.mf_server }}.</p>
       <ul>
@@ -203,7 +203,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
        </li>
      </ol>
   <h3><font color="DodgerBlue">Step 5: </font>Deploying an adapter</h3>
-  <p>Download <a href="../javaAdapter.adapter">this prepared .adapter artifact</a> and deploy it from the {{ site.data.keys.mf_console }} using the <b>Actions → Deploy adapter</b> action.</p>
+  <p>Download <a href="../quick-start/javaAdapter.adapter">this prepared .adapter artifact</a> and deploy it from the {{ site.data.keys.mf_console }} using the <b>Actions → Deploy adapter</b> action.</p>
   <h4><font color="DarkTurquoise">Step 5.1: </font>Select the <b>Actions → Download sample</b> option. Download the <i>Hello World</i> <b>Java</b> adapter sample</h4>
   <p>Alternatively, click the <b>New</b> button next to <b>Adapters</b>.  </p>
   <p><blockquote> If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen <b>Set up your development environment</b> instructions.</blockquote></p>

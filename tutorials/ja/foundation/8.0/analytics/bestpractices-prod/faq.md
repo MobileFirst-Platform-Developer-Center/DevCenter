@@ -33,7 +33,7 @@ weight: 1
         </div>
         <div id="collapse-mfp-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq2">
             <div class="panel-body">
-                  <p>MobileFirst Analytics v8.0 では、Elasticsearch のデータ・ストアは複数の索引を持ちます。単一索引ベースのデータ・ストアではありません。索引は、Analytics に流入してくるイベントのタイプに基づいて動的に作成されます。したがって、エンド・ユーザーは、複数の索引について心配する必要はありません。ここでは、Elasticsearch 内部の各索引が、構成ファイルに設定されたシャード数に分割されます。</p>
+                  <p>MobileFirst Analytics v8.0 では、Elasticsearch のデータ・ストアは複数の索引を持ちます。 単一索引ベースのデータ・ストアではありません。 索引は、Analytics に流入してくるイベントのタイプに基づいて動的に作成されます。 したがって、エンド・ユーザーは、複数の索引について心配する必要はありません。 ここでは、Elasticsearch 内部の各索引が、構成ファイルに設定されたシャード数に分割されます。</p>
             </div>
         </div>      
     </div>
@@ -45,7 +45,7 @@ weight: 1
         </div>
         <div id="collapse-mfp-faq3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq3">
             <div class="panel-body">
-                  <p>データ要件および顧客要件に照らして正しいハードウェアかどうかが<a href="https://mobilefirstplatform.ibmcloud.com/learn-more/scalability-and-hardware-sizing-8-0/">ハードウェア・サイジング計算器</a>を使用してチェックされていることを確認してください。ハードウェア、Analytics サーバーに入ってくるデータ・イベントのタイプやサイズ、イベントの量など、いくつかの要因がシステムのパフォーマンスに影響を及ぼします。</p>
+                  <p>データ要件および顧客要件に照らして正しいハードウェアかどうかが<a href="https://mobilefirstplatform.ibmcloud.com/learn-more/scalability-and-hardware-sizing-8-0/">ハードウェア・サイジング計算器</a>を使用してチェックされていることを確認してください。 ハードウェア、Analytics サーバーに入ってくるデータ・イベントのタイプやサイズ、イベントの量など、いくつかの要因がシステムのパフォーマンスに影響を及ぼします。</p>
             </div>
         </div>      
     </div>
@@ -64,12 +64,12 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq5">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq5" aria-expanded="true" aria-controls="collapse-mfp-faq5"><b>5. データ・パージの発生が TTL 値の設定に正しく対応しません。</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq5" aria-expanded="true" aria-controls="collapse-mfp-faq5"><b>5. TTL 値を設定しているにもかかわらず、データ・パージが正しく発生しません。</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq5">
             <div class="panel-body">
-                <p>TTL プロパティーは、Analytics プラットフォームに存在するデータには適用されません。TTL プロパティーを設定した後でデータを追加する必要があります。</p>
+                <p>TTL プロパティーは、Analytics プラットフォームに存在するデータには適用されません。 TTL プロパティーを設定した後でデータを追加する必要があります。</p>
             </div>
         </div>      
     </div>
@@ -81,7 +81,7 @@ weight: 1
         </div>
         <div id="collapse-mfp-faq6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq6">
             <div class="panel-body">
-              <p>MobileFirst Server JNDI プロパティーを使用して正しい Analytics エンドポイントが構成されていることを確認してください。レンダリングされるデータに応じて日付フィルターが正しく設定されていることを確認してください。</p>
+              <p>MobileFirst Server JNDI プロパティーを使用して正しい Analytics エンドポイントが構成されていることを確認してください。 レンダリングされるデータに応じて日付フィルターが正しく設定されていることを確認してください。</p>
             </div>
         </div>      
     </div>
@@ -117,7 +117,7 @@ weight: 1
         </div>
         <div id="collapse-mfp-faq9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq9">
             <div class="panel-body">
-                  <p>アプリケーションを開いた最初の時点では<b>アプリケーション・セッション数</b>はゼロです。エンド・ユーザーがモバイル・アプリケーションをバックグラウンドに移してからフォアグラウンドに戻すと、このアクションによって<b>アプリケーション・セッション数</b>が 1 に増えます。同じアクションをさらに繰り返すと、<b>アプリケーション・セッション数</b>は増え続けます。</p>
+                  <p>アプリケーションを開いた最初の時点では<b>アプリケーション・セッション数</b>はゼロです。 エンド・ユーザーがモバイル・アプリケーションをバックグラウンドに移してからフォアグラウンドに戻すと、このアクションによって<b>アプリケーション・セッション数</b>が 1 に増えます。同じアクションをさらに繰り返すと、<b>アプリケーション・セッション数</b>は増え続けます。</p>
             </div>
         </div>      
     </div>
@@ -129,7 +129,7 @@ weight: 1
         </div>
         <div id="collapse-mfp-faq10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq10">
             <div class="panel-body">
-                  <p>クラスター・ヘルスの「黄」は、問題ではないことがあります。ほとんどの場合、未割り当てのシャードがあるとクラスター・ヘルスは「黄」と示されます。新しいノードがクラスターに加わると、Elasticsearch は未割り当てのシャードを新しいノードに再割り振りするため、クラスター・ヘルスは「緑」になります。場合によっては、シャード数が多すぎても、どのノードにも割り当てられていないシャードが残るため、クラスター・ヘルスの状況が「黄」と示されます。クラスター内のすべてのノードがアクティブで良好に作動していること、および、シャードの状態が開始済みまたはアクティブであることを確認してください。</p>
+                  <p>クラスター・ヘルスの「黄」は、問題ではないことがあります。 ほとんどの場合、未割り当てのシャードがあるとクラスター・ヘルスは「黄」と示されます。 新しいノードがクラスターに加わると、Elasticsearch は未割り当てのシャードを新しいノードに再割り振りするため、クラスター・ヘルスは「緑」になります。 場合によっては、シャード数が多すぎても、どのノードにも割り当てられていないシャードが残るため、クラスター・ヘルスの状況が「黄」と示されます。 クラスター内のすべてのノードがアクティブで良好に作動していること、および、シャードの状態が開始済みまたはアクティブであることを確認してください。</p>
             </div>
         </div>      
     </div>
@@ -143,11 +143,11 @@ weight: 1
             <div class="panel-body">
                   <p>Web アプリケーションの場合、アプリケーション・セッション数は、ブラウザー・セッションに基づいて増やされ、ブラウザー (アプリケーション) から MFP Server への接続に基づきます。</p>
 
-                  <p>ブラウザーが一般ウィンドウ/タブを使用していて、サーバーへの接続を実行すると、アプリケーション・セッション数が 1 だけ増加するとしましょう。同じブラウザーでユーザーが別のタブでアプリケーションを開き、接続を実行すると、セッションは増加しません。セッションは 30 分間アクティブでないままです。再接続を再び試行すると、1 だけ増加します。</p>
+                  <p>例えば、ブラウザーが一般ウィンドウ/タブを使用しているときに、サーバーへの接続を実行します。これにより、アプリケーション・セッション数が 1 だけ増加します。 同じブラウザーでユーザーが別のタブでアプリケーションを開き、接続を実行すると、セッションは増加しません。 セッションは 30 分間アクティブでないままです。 再接続を再び試行すると、1 だけ増加します。</p>
 
-                  <p>ユーザーがブラウザー・キャッシュを初期化し、接続を試行すると、デバイスは新しいものであると見なされ、デバイス数が増やされます。ブラウザーは実デバイス ID を保有していないため、オフラインのファイル/キャッシュが初期化されるまで、ブラウザー・アプリケーション用に生成される ID は 1 つになります。</p>
+                  <p>ユーザーがブラウザー・キャッシュを初期化し、接続を試行すると、デバイスは新しいものであると見なされ、デバイス数が増やされます。 ブラウザーは実デバイス ID を保有していないため、オフラインのファイル/キャッシュが初期化されるまで、ブラウザー・アプリケーション用に生成される ID は 1 つになります。</p>
 
-                  <p>これは、匿名ブラウザー・ウィンドウにも当てはまります。匿名ブラウザー・ウィンドウを使用していて、接続を試行すると、各タブからの接続に使用されるアプリケーションは新規セッションであると見なされ、セッション数が増やされます。ユーザーが 2 つの異なるブラウザーを使用していて、MFP Server に接続するためにアプリケーションにアクセスすると、デバイス数は 2 増やされます。</p>
+                  <p>これは、匿名ブラウザー・ウィンドウにも当てはまります。匿名ブラウザー・ウィンドウを使用していて、接続を試行すると、各タブからの接続に使用されるアプリケーションは新規セッションであると見なされ、セッション数が増やされます。 ユーザーが 2 つの異なるブラウザーを使用していて、MFP Server に接続するためにアプリケーションにアクセスすると、デバイス数は 2 増やされます。</p>
             </div>
         </div>      
     </div>
@@ -159,9 +159,9 @@ weight: 1
         </div>
         <div id="collapse-mfp-faq12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq12">
             <div class="panel-body">
-                  <p><i>アクティブ・ユーザー</i> は、アプリケーションを使用しているユーザーの数です。固有の各ユーザーが、アプリケーションを使用しているユーザーとしてカウントされます。デフォルトでは、デバイス ID が userID です。ただし、アプリケーション開発者は <code>setUserContext(userid)</code> API を使用できます。これにより、userID はアプリケーション開発者が設定する値に置き換えられます。</p>
+                  <p><i>アクティブ・ユーザー</i> は、アプリケーションを使用しているユーザーの数です。 固有の各ユーザーが、アプリケーションを使用しているユーザーとしてカウントされます。 デフォルトでは、デバイス ID が userID です。 ただし、アプリケーション開発者は <code>setUserContext(userid)</code> API を使用できます。 これにより、userID はアプリケーション開発者が設定する値に置き換えられます。</p>
 
-                  <p>1 つの解決策/手段は、ユーザーが Web アプリケーションにアクセスしたときにコンピューターで固有 ID を生成し、それをカスタム・データとして送信することです。 このデータは、ユーザーがアプリケーションにアクセスし、<code>setUserContext</code> を使用して userID を設定する実際のマシン (またはコンピューター/ブラウザー) の統計情報を計算するのに使用できます。また、このデータは、カスタム・グラフを生成するためにも使用できます。</p>
+                  <p>1 つの解決策/手段は、ユーザーが Web アプリケーションにアクセスしたときにコンピューターで固有 ID を生成し、それをカスタム・データとして送信することです。 このデータは、ユーザーがアプリケーションにアクセスし、<code>setUserContext</code> を使用して userID を設定する実際のマシン (またはコンピューター/ブラウザー) の統計情報を計算するのに使用できます。 また、このデータは、カスタム・グラフを生成するためにも使用できます。</p>
             </div>
         </div>      
     </div>
@@ -175,7 +175,7 @@ weight: 1
             <div class="panel-body">
                   <p>Analytics 8.0 におけるアプリケーション・セッションの計算は、それより前のバージョンの MFP Analytics とはまったく異なります。</p>
 
-                  <p>アプリケーション・セッション数は、アプリケーションがバックグラウンドからフォアグラウンドに移されると 1 だけ増やされます。これを Cordova アプリケーションに対して有効にするには、CLIENT APP LIFECYCLE イベントを有効にする必要があります。詳しくは、<a href="https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/analytics/analytics-api/#client-lifecycle-events">ここ</a>を参照してください。</p>
+                  <p>アプリケーション・セッション数は、アプリケーションがバックグラウンドからフォアグラウンドに移されると 1 だけ増やされます。 これを Cordova アプリケーションに対して有効にするには、CLIENT APP LIFECYCLE イベントを有効にする必要があります。 詳しくは、<a href="https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/analytics/analytics-api/#client-lifecycle-events">ここ</a>を参照してください。</p>
             </div>
         </div>      
     </div>

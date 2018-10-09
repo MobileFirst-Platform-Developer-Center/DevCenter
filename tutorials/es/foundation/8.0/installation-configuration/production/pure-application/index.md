@@ -944,7 +944,7 @@ Para trabajar correctamente, los nodos de servicio de administración de {{ site
     * Abra la consola de administración de WebSphere Application Server en el siguiente URL:
     
         ```bash
-        https://{DmgrNode VM public IP address}:9043/ibm/console
+        https://{Dirección IP pública de máquina virtual de DmgrNode}:9043/ibm/console
         ```
     
         Utilice el ID de usuario y la contraseña que especificó para la consola de administración de WebSphere Application Server cuando desplegó el patrón.

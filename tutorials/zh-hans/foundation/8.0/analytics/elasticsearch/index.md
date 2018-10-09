@@ -9,7 +9,7 @@ weight: 3
 ## 概述
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} 使用 **Elasticsearch 1.5x** 来存储数据和运行搜索查询。  
+{{ site.data.keys.mf_analytics_full }} 使用  **Elasticsearch 1.7.5** 来存储数据和运行搜索查询。  
 
 Elasticsearch 是实时的分布式搜索和分析引擎，可提高数据存储和探究的速度和扩展率。 Elasticsearch 将用于全文搜索和结构化搜索。
 
@@ -19,7 +19,7 @@ Elasticsearch 用于将所有移动和服务器数据以 JSON 格式存储在 {{
 
 {{ site.data.keys.mf_analytics }} 将公开所有 Elasticsearch 功能。 用户能够充分利用 Elasticsearch 查询、调试和优化。
 
-有关 Elasticsearch 功能（除了此处描述的功能之外）的更多信息，请参阅 [Elasticsearch 文档](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)。
+有关 Elasticsearch 功能（除了此处描述的功能之外）的更多信息，请参阅 [Elasticsearch 文档](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html)。
 
 ## 在 {{ site.data.keys.mf_analytics_server }} 上管理 Elasticsearch
 {: #managing-elasticsearch-on-the-mobilefirst-analytics-server }
@@ -72,4 +72,4 @@ http://localhost:9500/_nodes
 http://localhost:9500/*/_mapping
 ```
 
-> Elasticsearch 公开了更多 REST 端点。 要了解更多信息，请访问 [Elasticsearch 文档](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)。
+> Elasticsearch 公开了更多 REST 端点。 要了解更多信息，请访问 [Elasticsearch 文档](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html)。

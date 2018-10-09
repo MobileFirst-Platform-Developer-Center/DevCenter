@@ -286,7 +286,7 @@ QUIT
 
 #### データベース表の作成
 {: #database-tables-creation }
-実動用には、手動で表を作成することもできます。 例えば、DBA がデフォルトの設定値の一部をオーバーライドしたい場合や、特定の表スペースを割り当てたい場合などがそうです。 表の作成に使用するデータベース・スクリプトは、 **mfp\_server\_install\_dir/MobileFirstServer/databases** および **mfp_server\_install\_dir/PushService/databases** にあります。詳しくは、[データベース表の手動作成](../../../prod-env/databases/#create-the-database-tables-manually)を参照してください。
+実動用には、手動で表を作成することもできます。 例えば、DBA がデフォルトの設定値の一部をオーバーライドしたい場合や、特定の表スペースを割り当てたい場合などがそうです。 表の作成に使用するデータベース・スクリプトは、 **mfp\_server\_install\_dir/MobileFirstServer/databases** および **mfp_server\_install\_dir/PushService/databases** にあります。 詳しくは、[データベース表の手動作成](../../../prod-env/databases/#create-the-database-tables-manually)を参照してください。
 
 **server.xml** ファイルおよび何らかのアプリケーション・サーバーの設定が、インストール中に変更されます。 それぞれの変更の前に、**server.xml** ファイルのコピー (**server.xml.bak**、**server.xml.bak1**、**server.xml.bak2** など) が作成されます。 追加された内容をすべて確認するには、**server.xml** ファイルを最も古いバックアップ (server.xml.bak) と比較することができます。 Linux では、コマンド `--strip-trailing-cr server.xml server.xml.bak` を使用してその差異を確認します。 AIX では、コマンド `diff server.xml server.xml.bak` を使用してその差異を確認します。
 
@@ -381,7 +381,7 @@ Liberty プロファイル上に、JNDI 名を持つデータ・ソースも必�
 
 #### 他のファイルの変更
 {: #other-files-modification }
-Liberty プロファイル jvm.options ファイルが変更されます。ランタイムが管理サービスと同期する際の JMX でのタイムアウトの問題を回避するために、プロパティー (com.ibm.ws.jmx.connector.client.rest.readTimeout) が定義されます。
+Liberty プロファイル jvm.options ファイルが変更されます。 ランタイムが管理サービスと同期する際の JMX でのタイムアウトの問題を回避するために、プロパティー (com.ibm.ws.jmx.connector.client.rest.readTimeout) が定義されます。
 
 ### インストール済み環境のテスト
 {: #testing-the-installation }
@@ -412,8 +412,8 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
     * コマンド・ラインを開始します。
     * **liberty\_install\_dir/bin** に移動し、**server create mfp2** と入力します。
 2. サーバー mfp2 の HTTP ポートおよび HTTPS ポートを変更して、サーバー mfp1 のポートと競合しないようにします。
-    * 2 番目のサーバーのディレクトリーに移動します。ディレクトリーは **liberty\_install\_dir/usr/servers/mfp2** または **WLP\_USER\_DIR/servers/mfp2** ([『WebSphere Application Server Liberty Core のインストール』](#installing-websphere-application-server-liberty-core)のステップ 6 に説明されたようにディレクトリーを変更した場合) です。
-    * **server.xml** ファイルを編集します。置換は、
+    * 2 番目のサーバーのディレクトリーに移動します。 ディレクトリーは **liberty\_install\_dir/usr/servers/mfp2** または **WLP\_USER\_DIR/servers/mfp2** ([『WebSphere Application Server Liberty Core のインストール』](#installing-websphere-application-server-liberty-core)のステップ 6 に説明されたようにディレクトリーを変更した場合) です。
+    * **server.xml** ファイルを編集します。 置換は、
 
     ```xml
     <httpEndpoint id="defaultHttpEndpoint"

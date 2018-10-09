@@ -12,7 +12,7 @@ IBM MobileFirst Platform Foundation は、オンプレミスでインストー�
 ## テスト・サーバーまたは実動サーバーのオンプレミス・インストール
 {: #test-prod-install }
 
-テスト・サーバーまたは実動サーバーをインストールする場合、[シンプルな MobileFirst Server のインストールについてのチュートリアル](simple-install/)をまずお読みください。ご使用の特定の環境を対象としたインストールの準備について詳しくは、[実稼働環境用の MobileFirst Server のインストール](prod-env/)を参照してください。
+テスト・サーバーまたは実動サーバーをインストールする場合、[シンプルな MobileFirst Server のインストールについてのチュートリアル](simple-install/)をまずお読みください。 ご使用の特定の環境を対象としたインストールの準備について詳しくは、[実稼働環境用の MobileFirst Server のインストール](prod-env/)を参照してください。
 
 インストール済み環境に MobileFirst Analytics Server を追加するには、[MobileFirst Analytics Server インストール・ガイド](analytics/)を参照してください。
 

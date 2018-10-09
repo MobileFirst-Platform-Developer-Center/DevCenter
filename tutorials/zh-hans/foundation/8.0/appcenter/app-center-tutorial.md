@@ -174,7 +174,7 @@ Application Center 仅管理那些使用公司帐户随附的公司证书签署�
 {: #for-windows-store-apps-for-windows-81-pro }
 * **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** 文件包含 Application Center 客户机的可执行文件。 将此文件分发到客户端计算机上并进行解压缩。 其中包含可执行程序。
 
-* 在不使用 Microsoft Windows Store 的情况下安装 Windows Store 应用程序（类型为 `appx` 的文件）称为<em>侧加载</em>应用程序。要侧加载应用程序，您必须遵循 [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx) 中的先决条件。
+* 在不使用 Microsoft Windows Store 的情况下安装 Windows Store 应用程序（类型为 `appx` 的文件）称为<em>侧加载</em>应用程序。要侧加载应用程序，您必须遵循 [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx) 中的先决条件。 Windows 8.1.1 更新可简化侧加载的先决条件。 有关更多信息，请参阅 [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx)。
 
 ## 在 Application Center 控制台中管理应用程序
 {: #managing-applications-in-the-application-center-console }

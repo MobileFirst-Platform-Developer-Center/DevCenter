@@ -8,6 +8,7 @@ tags:
 - Announcement
 - CDUpdate_8.0
 - CDUpdate
+- iFix_8.0
 author:
   name: Krishnakumar Balachandar
 ---

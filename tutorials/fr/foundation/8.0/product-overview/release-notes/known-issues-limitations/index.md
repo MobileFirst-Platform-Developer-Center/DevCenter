@@ -281,3 +281,5 @@ Lors de la configuration de **mfpclient.properties** pour votre application Andr
 {:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
 La modification du comportement par défaut d'une application Cordova (par exemple le remplacement du comportement du bouton Retour) lorsque le SDK Cordova de {{ site.data.keys.product_adj }} est ajouté au projet peut entraîner le rejet de l'application par Google Play Store lors de sa soumission.
 Pour d'autres types d'incident lors de la soumission à Google Play Store, vous pouvez contacter le support Google.
+
+>**Remarque :** Si vous utilisez une version de correctif temporaire de MobileFirst 8.0 datant de janvier 2018 ou d'une date ultérieure, il est recommandé de mettre à jour le client et le serveur à la même version.

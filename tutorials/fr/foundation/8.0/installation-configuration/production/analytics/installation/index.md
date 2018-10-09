@@ -279,7 +279,7 @@ Vous devez exécuter la tâche Ant sur l'ordinateur sur lequel est installé le 
     >
     > * Le symbole du dollar ($) doit être écrit sous la forme $$, sauf si vous voulez référencer explicitement une variable Ant via la syntaxe ${variable}, comme décrit dans la section [Properties](http://ant.apache.org/manual/properties.html) du manuel Apache Ant.
     > * Le caractère perluète (&) doit être écrit sous la forme &amp;, sauf si vous voulez référencer explicitement une entité XML.
-    > * Les guillemets (") doivent être écrits sous la forme &quot;, sauf s'ils se trouvent dans une chaîne placée entre apostrophes. 
+    > * Les guillemets (") doivent être écrits sous la forme &quot;, sauf s'ils se trouvent dans une chaîne placée entre apostrophes.
 
 2. Si vous installez un cluster de noeuds sur plusieurs serveurs :
     * Vous devez supprimer la mise en commentaire de la propriété **wl.analytics.masters.list** et définir comme valeur la liste des noms d'hôte et des ports de transport des noeuds maîtres. Exemple : `noeud1.masociété.com:96000,noeud2.masociété.com:96000`
