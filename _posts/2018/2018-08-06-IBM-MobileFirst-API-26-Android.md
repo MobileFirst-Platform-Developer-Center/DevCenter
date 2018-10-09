@@ -28,6 +28,10 @@ In accordance with the [support plan for IBM MobileFirst](https://mobilefirstpla
 
 This restriction is only for apps that are distributed through the Google Play Store and is not applicable to apps distributed through App Center. 
 
+Update: To keep your existing MobileFirst v7.1 apps compatible with API level 26, upgrade to the iFix 7.1.0.0-MFPF-IF201810081403. 
+
+No action is required for apps built on MobileFirst v8.0 
+
 >**Note:** *An issue exists with Push Notifications when hybrid apps built on MobileFirst v7.1 are targeted to API Level 26 or above. An iFix for this issue will be soon rolled out.*
 
 
