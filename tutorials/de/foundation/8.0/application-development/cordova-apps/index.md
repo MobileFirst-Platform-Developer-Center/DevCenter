@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: MobileFirst-Foundation-Entwicklung für Cordova-Anwendungen
-breadcrumb_title: Cordova-Anwendungsentwicklung
+title: MobileFirst-Foundation-Entwicklung in Cordova-Anwendungen
+breadcrumb_title: Cordova application development
 relevantTo: [cordova]
 weight: 4
 ---
@@ -64,6 +64,9 @@ Beispiel-Plug-ins:
 
 >**Hinweis:** Die Modifikation des Standardverhaltens einer Cordova-App (z. B. durch Außerkraftsetzen des Verhaltens der Schaltfläche "Back") beim Hinzufügen des {{ site.data.keys.product_adj }}-Cordova-SDK zum Projekt, kann dazu führen, dass die App bei Übergabe an den Google Play Store zurückgewiesen wird. 
 Sollte die Übergabe an den Google Play Store aus anderen Gründen fehlschlagen, wenden Sie sich an den Google-Support.
+
+
+
 
 
 ### Frameworks anderer Anbieter
@@ -403,21 +406,24 @@ Der {{ site.data.keys.mf_mbs }} ist eine Webanwendung zum Testen von Cordova-Anw
 ### Livevorschau
 {: #live-preview }
 Der applikative Code (HTML, CSS und JS) kann jetzt in Echtzeit in einer Livevorschau bearbeitet werden.
+   
 Wenn Sie eine Ressource ändern und die Änderung speichern, spiegelt sie sich sofort im Browser wider.
+
+
 
 ### Livereload
 {: #live-reload }
-Wenn Sie für die Voranzeige auf physischen Geräten oder in Simulatoren/Emulatoren einen ähnlichen Effekt wünschen, fügen Sie das Plug-in cordova-plugin-livereload hinzu. Verwendungsanweisungen finden Sie auf der [GitHub-Seite für das Plug-in](https://github.com/omefire/cordova-plugin-livereload).
+Wenn Sie für die Voranzeige auf physischen Geräten oder in Simulatoren/Emulatoren einen ähnlichen Effekt wünschen, fügen Sie das Plug-in **cordova-plugin-livereload** hinzu. Verwendungsanweisungen finden Sie auf der [GitHub-Seite zu Plug-ins](https://github.com/omefire/cordova-plugin-livereload).
 
-### Anwendung in einem Emulator oder auf einem phyischen Gerät ausführen
+### Anwendung in einem Emulator oder auf einem physischen Gerät ausführen
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-Sie können die Anwendungsausführung mit dem Cordova-CLI-Befehl cordova emulate ios|android|windows emulieren. Beispiel:
+Führen Sie den Cordova-CLI-Befehl `cordova emulate ios|android|windows` aus, um die Anwendung zu emulieren. Beispiel:
 
 ```bash
 cordova emulate ios
 ```
 
-Wenn Sie die Anwendung auf einem mit der Entwicklungsworkstation verbundenen physischen Gerät ausführen möchten, führen Sie den Cordova-CLI-Befehl cordova run ios|android|windows aus. Beispiel:
+Wenn sie die Anwendung auf einem physischen Gerät, das mit der Entwicklungsworkstation verbunden ist, ausführen möchten, verwenden Sie den Cordova-CLI-Befehl `cordova run ios|android|windows`. Beispiel:
 
 ```bash
 cordova run ios
@@ -427,30 +433,44 @@ cordova run ios
 {: #implementing-javascript-code }
 WebView-Ressourcen lassen sich besser in einer IDE mit automatischer Vervollständigung für JavaScript bearbeiten.
 
+
+
 In Xcode, Android Studio und Visual Studio gibt es umfassende Bearbeitungsfunktionen für
 Objective-C, Swift, C# und and  Java. Hinsichtlich der Unterstützung für die Bearbeitung von
 JavaScript kann es jedoch Einschränkungen geben.
-Zur Vereinfachung der JavaScript-Berabeitung enthält das {{ site.data.keys.product_adj }}-Cordova-Projekt eine Definitionsdatei für die automatische Vervollständigung von {{ site.data.keys.product_adj }}-API-Elementen. In jedem {{ site.data.keys.product_adj }}-Cordova-Plug-in gibt es eine Konfigurationsdatei d.ts für jede {{ site.data.keys.product_adj }}-JavaScript-Datei. Der Dateiname von d.ts passt zum Namen der entsprechenden JavaScript-Datei. Die Konfigurationsdatei befindet sich im Plug-in-Ordner. Die Datei für das {{ site.data.keys.product_adj }}-Haupt-SDK befindet sich beispielsweise an folgender Position: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
+Zur Vereinfachung der JavaScript-Berabeitung enthält das {{ site.data.keys.product_adj }}-Cordova-Projekt eine Definitionsdatei für die automatische Vervollständigung von {{ site.data.keys.product_adj }}-API-Elementen. 
 
-Die Konfigurationsdatei d.ts stellt für alle IDEs mit TypeScript-Unterstützung ([TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript)) die automatische Vervollständigung bereit.
+In jedem {{ site.data.keys.product_adj }}-Cordova-Plug-in gibt es eine Konfigurationsdatei `d.ts` für jede {{ site.data.keys.product_adj }}-JavaScript-Datei. Der Dateiname von `d.ts` passt zum Namen der entsprechenden JavaScript-Datei. Die Konfigurationsdatei befindet sich im Plug-in-Ordner. Die Datei für das {{ site.data.keys.product_adj }}-Haupt-SDK befindet sich beispielsweise an folgender Position: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
+
+Die Konfigurationsdatei `d.ts` stellt für alle IDEs mit TypeScript-Unterstützung ([TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript)) die automatische Vervollständigung bereit. 
 
 Die Ressourcen (HTML- und JavaScript-Dateien) für WebView befinden sich im Ordner **[myapp]\www**. Wenn das Projekt mit dem Befehl cordova build erstellt oder der Befehl cordova prepare ausgeführt wird, werden diese Ressourcen in den entsprechenden Ordner **www**, d. h. in **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www** oder **[myapp]\platforms\windows\www**, kopiert.
+
 
 Wenn Sie den App-Hauptordner in einer der vorgenannten IDEs öffnen, bleibt der Kontext erhalten. Der IDE-Editor ist jetzt mit den relevanten `d.ts`-Dateien verlinkt und kann die {{ site.data.keys.product_adj }}-API-Elemente während Ihrer Eingabe automatisch vervollständigen.
 
 ## CrossWalk-Unterstützung für Android
 {: #crosswalk-support-for-android }
 In Cordova-Anwendungen für die Android-Plattform kann das standardmäßig verwendete WebView durch [CrossWalk WebView](https://crosswalk-project.org/) ersetzt werden.
+
+
+> **Hinweis:** Das CrossWalk-Projekt wird von der Community und ihren Verwaltern [nicht mehr gepflegt](https://crosswalk-project.org/blog/crosswalk-final-release.html). Es ist daher möglich, dass sich Programmfehler oder Probleme in CrossWalk auf die MobileFirst-SDKs in CrossWalk WebView auswirken. Aus diesem Grund wird davon abgeraten, CrossWalk WebView in Ihren Anwendungen zu nutzen.  
+
 Gehen Sie zum Hinzufügen von CrossWalk WebView wie folgt vor:
 
-1. Führen Sie in einem **Befehlszeilenfenster** den folgenden Befehl aus:
+
+
+1. Führen Sie in einer **Befehlszeile** den folgenden Befehl aus:
 
    ```bash
    cordova plugin add cordova-plugin-crosswalk-webview
    ```
 
    Der Befehl fügt CrossWalk WebView zu der Anwendung hinzu.
-    Im Hintergrund passt das {{ site.data.keys.product_adj }}-Cordova-SDK die Android-Projektaktivitäten so an, dass CrossWalk WebView verwendet werden kann.
+      
+Im Hintergrund passt das {{ site.data.keys.product_adj }}-Cordova-SDK die Android-Projektaktivitäten so an, dass CrossWalk WebView verwendet werden kann.
+
+
 
 2. Erstellen Sie das Projekt mit folgendem Befehl:
 
@@ -460,14 +480,15 @@ Gehen Sie zum Hinzufügen von CrossWalk WebView wie folgt vor:
 
 ## WKWebView-Unterstützung für iOS
 {: #wkwebview-support-for-ios }
-In Cordova-iOS-Anwendungen kann das standardmäßig verwendete UIWebView durch [Apple WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) ersetzt werden.
-Führen Sie in einem Befehlszeilenfenster den folgenden Befehl aus, um WKWebView hinzuzufügen: cordova plugin add cordova-plugin-wkwebview-engine.
+In Cordova-iOS-Anwendungen kann das standardmäßig verwendete UIWebView durch [WKWebView von Apple](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) ersetzt werden.
+  
+Führen Sie in einem Befehlszeilenfenster den folgenden Befehl aus, um WKWebView hinzuzufügen: `cordova plugin add cordova-plugin-wkwebview-engine`.
 
-> Informieren Sie sich über das [Cordova-WKWebView-Plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine).
+> Machen Sie sich mit dem [Cordova-WKWebView-Plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine) vertraut.
 
 ## Weiterführende Informationen
 {: #further-reading }
-Auf den folgenden Seiten erfahren Sie mehr über Cordova:
+Machen Sie sich mit Cordova vertraut: 
 
 - [Cordova Overview](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
 - [Cordova best practices, testing, debugging, cosiderations and keeping up](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)

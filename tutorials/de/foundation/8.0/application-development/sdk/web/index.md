@@ -97,6 +97,7 @@ Initialisieren Sie das Web-SDK der {{ site.data.keys.product }}, indem Sie in de
 var wlInitOptions = {
 mfpContextRoot : '/mfp', // "mfp" ist das Standardkontextstammverzeichnis der {{ site.data.keys.product }}
     applicationId : 'com.sample.mywebapp' // Durch eigenen Wert ersetzen
+sessionMode : true // Dies ist ein optionaler Parameter, der mit dem Wert 'true' sicherstellt, dass MFP-beogene Daten in der Sitzung und nicht im lokalen Speicher gespeichert werden. Ist der Parameter auf 'false' gesetzt oder nicht definiert, wird standardmäßig der lokale Speicher verwendet.
 };
 
 WL.Client.init(wlInitOptions).then (

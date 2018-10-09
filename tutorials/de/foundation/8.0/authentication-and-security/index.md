@@ -179,6 +179,110 @@ Zugriffstokenantworten für Sie. Lesen Sie hierzu die Informationen unter
     </div>
 </div>
 
+### Aktualisierungstoken
+{: #refresh-tokens}
+
+Ein Aktualisierungstoken ist eine besondere Art von Token. Wenn das Zugriffstoken abgelaufen ist, kann das Aktualisierungstoken verwendet werden, um ein neues Zugriffstoken anzufordern. Für die Anforderung eines neuen Zugriffstokens kann ein gültiges Aktualisierungstoken vorgelegt werden. Aktualisierungstoken sind langlebige Token, die länger als Zugriffstoken gültig bleiben. 
+
+Eine Anwendung muss Vorsicht walten lassen, wenn sie Aktualisierungstoken verwendet, da ein Benutzer mit einem solchen Token unbegrenzte Zeit authentifiziert bleiben kann. Social-Media-Anwendungen, E-Commerce-Anwendungen, Produktkataloganzeigen und Dienstprogrammanwendungen, bei denen Benutzer nicht regelmäßig vom Anwendungsprovider authentifiziert werden, können Aktualisierungstoken nutzen. Anwendungen, die eine regelmäßige Benutzerauthentifizierung erfordern, sollten die Verwendung von Aktualisierungstoken vermeiden.  
+
+#### MobileFirst-Aktualisierungstoken
+{: #mfp-refresh-token}
+
+Ein MobileFirst-Aktualisierungstoken ist eine digital signierte Entität wie ein Zugriffstoken, die die Autorisierungsberechtigungen eines Clients beschreibt.
+Aktualisierungstoken können verwendet werden, um neue Zugriffstoken desselben Geltungsbereichs zu erhalten. Wenn der Autorisierungsanforderung des Clients für einen bestimmten Bereich entsprochen und der Client authentifiziert wurde, sendet der Tokenendpunkt des Autorisierungsservers eine HTTP-Antwort mit dem angeforderten Zugriffstoken und Aktualisierungstoken an den Client. Wenn das Zugriffstoken abläuft, sendet der Client ein Aktualisierungstoken an den Tokenendpunkt des Autorisierungsservers, um ein neues Zugriffstoken und ein neues Aktualisierungstoken zu erhalten. 
+
+**Struktur**
+
+Das MobileFirst-Aktualisierungstoken enthält ähnlich wie ein MobileFirst-Zugriffstoken die folgenden Informationen: 
+* **Client-ID**: Eine eindeutige Kennung des Clients 
+* **Bereich**: Der Bereich, für den das Token ausgestellt wurde (siehe "OAuth-Bereiche"). Dieser Bereich umfasst nicht den obligatorischen Anwendungsbereich. 
+* **Tokenablaufzeit**: Die Zeit, nach der das Token ungültig wird (abläuft), in Sekunden
+
+#### Tokenablaufzeit
+{: #token-expiration}
+
+Der Ablaufzeitraum für Aktualisierungstoken ist länger als der normale Ablaufzeitraum für Zugriffstoken. Ein einmal ausgestelltes Aktualisierungstoken bleibt gültig, bis der Ablaufzeitpunkt erreicht ist.
+Dank dieses Gültigkeitszeitraums kann ein Client ein Aktualisierungstoken verwenden, um ein neues Zugriffstoken und ein neues Aktualisierungstoken zu erhalten. Der Ablaufzeitraum eines Aktualisierungstokens ist festgelegt und liegt bei 30 Tagen. Jedes Mal, wenn der Client erfolgreich ein neues Zugriffstoken und Aktualisierungstoken erhält, wird der Ablaufzeitraum des Aktualisierungstokens zurückgesetzt, sodass der Client den Eindruck hat, das Token würde nie ablaufen. Die Regeln für die Ablaufzeit des Zugriffstokens sind die im Abschnitt **Zugriffstoken** erläuterten.
+
+<div class="panel-group accordion" id="configuration-explanation-rt" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="refresh-token-expiration">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>Aktualisierungstoken aktivieren</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
+            <div class="panel-body">
+            <p>Aktualisierungstoken können mit den folgenden Eigenschaften jeweils auf der Client- und der Serverseite aktiviert werden. </p>
+            <b>Clientseitige Eigenschaft</b><br/>
+
+            <i>Dateiname</i>:            mfpclient.properties<br/>
+            <i>Eigenschaftsname</i>:   wlEnableRefreshToken<br/>
+            <i>Eigenschaftswert</i>:   true<br/>
+
+            Beispiel:<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>Serverseitige Eigenschaft</b><br/>
+
+            <i>Dateiname</i>:            server.xml<br/>
+            <i>Eigenschaftsname</i>:   mfp.security.refreshtoken.enabled.apps<br/>
+            <i>Eigenschaftswert</i>:   <i>Anwendungsbundle-IDs, jeweils getrennt durch ‘;’</i><br/><br/>
+
+            <p>Beispiel:</p><br/>
+            {% highlight xml %}
+            <jndiEntry jndiName="mfp/mfp.security.refreshtoken.enabled.apps" value='"com.sample.android.myapp1;com.sample.android.myapp2"'/>
+            {% endhighlight %}
+
+            <p>Verwenden Sie für verschiedene Plattformen unterschiedliche Bundle-IDs.</p>
+
+                                    <br/>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>Abschnitt schließen</b></a>
+                </div>
+                                </div>
+                            </div>
+                        </div>
+
+<div class="panel-group accordion" id="response-refresh-token" role="tablist">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="response-structure-rt">
+        <h4 class="panel-title">
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>Struktur der Aktualisierungstokenantwort</b></a>
+        </h4>
+    </div>
+
+    <div id="collapse-response-structure-rt" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure-rt">
+      <div class="panel-body">
+        <p>Das folgende Beispiel zeigt eine gültige Aktualisierungstokenantwort vom Autorisierungsserver:</p>
+
+        {% highlight json %}
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+{"token_type": "Bearer",
+            "expires_in": 3600,
+            "access_token": "yI6ICJodHRwOi8vc2VydmVyLmV4YW1",
+            "scope": "scopeElement1 scopeElement2",
+            "refresh_token": "yI7ICasdsdJodHRwOi8vc2Vashnneh "
+        }
+        {% endhighlight %}
+
+        <p>Das Aktualisierungstoken hat neben den Eigenschaftenobjekten, die im Abschnitt zur Struktur der Zugriffstokenantwort erklärt sind, hat die Aktualisierungstokenantwort das Eigenschaftsobjekt <code>refresh_token</code>. </p>
+
+        <br/>
+              <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>Abschnitt schließen</b></a>
+                </div>
+          </div>
+        </div>
+</div>
+
+
+>**Hinweis:** Aktualisierungstoken sind im Vergleich zu Zugriffstoken langlebig. Daher sollten Sie Aktualisierungstoken mit Vorsicht verwenden. Anwendungen, die keine regelmäßige Benutzerauthentifizierung erfordern, sind ideale Kandidaten für die Verwendung von Aktualisierungstoken. MobileFirst unterstützt Aktualisierungstoken derzeit nur für die Android-Plattform. Sie sollten für Android- und iOS-Anwendungen unterschiedliche Bundle-IDs verwenden. 
+
+
 ### Sicherheitsüberprüfungen
 {: #security-checks }
 

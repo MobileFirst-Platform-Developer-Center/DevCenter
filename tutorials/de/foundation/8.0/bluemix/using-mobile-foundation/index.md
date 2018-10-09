@@ -13,19 +13,19 @@ Der {{ site.data.keys.mf_bm_short }} Service ist ein IBM Cloud-Service für eine
 
 Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen an: 
 
-1. **Developer**: Dieser Plan stellt {{ site.data.keys.mfound_server }} als eine Cloud-Foundry-Anwendung in einer Liberty-for-Java-Laufzeit bereit. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht in diesem Plan enthalten. Der Plan unterstützt nicht die Verwendung externer Datenbanken. Er ist für Entwicklung und Tests bestimmt. Die Mobile-Foundation-Server-Instanz des Plans *Developer* ermöglicht Ihnen, beliebig viele mobile Anwendungen für Entwicklung und Tests zu registrieren. Die Anzahl verbundener Geräte ist allerdings auf 10 beschränkt. Als Teil dieses Plans wird auch eine Instanz des {{ site.data.keys.mf_analytics_service }} Service bereitgestellt. Wenn Sie mit Ihrer Nutzung die kostenlosen Mobile-Analytics-Berechtigungen überschreiten, werden Gebühren gemäß dem Mobile-Analytics-Basisplan erhoben. 
+1. **Developer**: Dieser Plan stellt {{ site.data.keys.mfound_server }} als eine Cloud-Foundry-Anwendung in einer Liberty-for-Java-Laufzeit bereit. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht in diesem Plan enthalten. Der Plan unterstützt nicht die Verwendung externer Datenbanken. Er ist für Entwicklung und Tests bestimmt. Die Mobile-Foundation-Server-Instanz des Plans *Developer* ermöglicht Ihnen, beliebig viele mobile Anwendungen für Entwicklung und Tests zu registrieren. Die Anzahl verbundener Geräte ist allerdings auf 10 beschränkt.
 
     > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenbank an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
 
 
-2. **Professional Per Device:** Dieser Plan ermöglicht Benutzern, in der Produktion mobile Anwendungen zu erstellen, zu testen und auszuführen. Die Gebühren richten sich nach der Anzahl der pro Tag verbundenen Clientgeräte. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Für diesen Plan ist eine Serviceinstanz von Db2 on Cloud (bzw. jetzt Db2Hosted) erforderlich, die separat erstellt und in Rechnung gestellt wird. Mit diesem Plan wird ein Mobile Foundation Server in Liberty for Java mit mindestens 2 Knoten mit 1 GB bereitgestellt. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten. Optional können Sie eine Mobile-Analytics-Serviceinstanz hinzufügen. Der Mobile-Analytics-Service wird separat in Rechnung gestellt.
+2. **Professional Per Device:** Dieser Plan ermöglicht Benutzern, in der Produktion mobile Anwendungen zu erstellen, zu testen und auszuführen. Die Gebühren richten sich nach der Anzahl der pro Tag verbundenen Clientgeräte. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Dieser Plan erfordert eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird. Mit diesem Plan wird ein Mobile Foundation Server in Liberty for Java mit mindestens 2 Knoten mit 1 GB bereitgestellt. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten.
 
-3. **Professional 1 Application:** Dieser Plan ermöglicht Benutzern, eine mobile Anwendung mit einem verhersehbaren Preis zu erstellen und zu verwalten. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Diese eine mobile Anwendung kann es in mehreren Varianten geben, z. B. für iOS, Android, Windows und Mobile Web. Mit diesem Plan wird ein Mobile Foundation Server als Cloud-Foundry-Anwendung in Liberty for Java mit mindestens 2 Knoten mit 1 GB bereitgestellt. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten. Für diesen Plan ist zudem eine Serviceinstanz von Db2 on Cloud (Db2 Hosted) erforderlich, die separat erstellt und in Rechnung gestellt wird. Bei Bedarf können Sie eine Instanz des {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. Der Mobile-Analytics-Service wird separat in Rechnung gestellt.
+3. **Professional 1 Application:** Dieser Plan ermöglicht Benutzern, eine mobile Anwendung mit einem verhersehbaren Preis zu erstellen und zu verwalten. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Diese eine mobile Anwendung kann es in mehreren Varianten geben, z. B. für iOS, Android, Windows und Mobile Web. Mit diesem Plan wird ein Mobile Foundation Server als Cloud-Foundry-Anwendung in Liberty for Java mit mindestens 2 Knoten mit 1 GB bereitgestellt. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten. Dieser Plan erfordert auch eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird.
 
-4. **Developer Pro**: Dieser Plan stellt {{ site.data.keys.mfound_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Für diesen Plan ist eine Serviceinstanz von **Db2 Hosted** erforderlich. Die Serviceinstanz von Db2 on Cloud wird separat erstellt und in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
+4. **Developer Pro**: Dieser Plan stellt {{ site.data.keys.mfound_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Dieser Plan erfordert eine Serviceinstanz von **Db2** (aus einem beliebigen Plan mit Ausnahme von **Lite**). Die Serviceinstanz von Db2 wird separat erstellt und in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung.
 >_Der Plan **Developer Pro** wird nicht weiter unterstützt._
 
-5. **Professional Per Capacity:** Dieser Plan ermöglicht Benutzern, in der Produktion beliebig viele mobile Anwendungen zu erstellen, zu testen und auszuführen. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Der Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Für den Plan ist eine Serviceinstanz von **Db2 Hosted** erforderlich. Die Serviceinstanz von Db2 Hosted wird separat erstellt und in Rechnung gestellt. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung. Bei Bedarf können Sie einen {{ site.data.keys.mf_analytics_service }} Service hinzufügen. Klicken Sie dazu auf die Schaltfläche **Analytics hinzufügen**. 
+5. **Professional Per Capacity:** Dieser Plan ermöglicht Benutzern, in der Produktion beliebig viele mobile Anwendungen zu erstellen, zu testen und auszuführen. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Der Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Der Plan erfordert eine Serviceinstanz von **Db2** (aus einem beliebigen Plan mit Ausnahme von **Lite**). Die Serviceinstanz von Db2 wird separat erstellt und in Rechnung gestellt. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung.
 >_Der Plan **Professional Per Capacity** wird nicht weiter unterstützt._
 
 > Die [Servicedetails](https://console.bluemix.net/catalog/services/mobile-foundation/) enthalten weitere Informationen zu den verfügbaren Plänen und ihrer Fakturierung.
@@ -36,8 +36,6 @@ Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen a
 * [{{ site.data.keys.mf_bm_short }} Service verwenden](#using-the-mobile-foundation-service)
 * [Serverkonfiguration](#server-configuration)
 * [Erweiterte Serverkonfiguration](#advanced-server-configuration)
-* [Analytics-Unterstützung hinzufügen](#adding-analytics-support)
-* [Analytics-Unterstützung entfernen](#removing-analytics-support)
 * [Fixes für {{ site.data.keys.mfound_server }} anwenden](#applying-mobilefirst-server-fixes)
 * [Zugriff auf Serverprotokolle](#accessing-server-logs)
 * [Fehlerbehebung](#troubleshooting)
@@ -65,15 +63,20 @@ Wenn Sie den {{ site.data.keys.mf_bm_short }} Service erstellen, wird der {{ sit
 
 ### Pläne *Professional 1 Application* und *Professional Per Device* einrichten
 {: #setting-up-the-professional-1-application-n-professional-per-device-plan }
-1. Für diese Pläne ist eine externe [Db2-Hosted-Datenbankinstanz](https://console.bluemix.net/catalog/services/db2-hosted/) erforderlich.
+1. Diese Pläne erfordern eine externe [Db2-Datenbankinstanz (aus einem beliebigen Plan mit Ausnahme von **Lite**)](https://console.bluemix.net/catalog/services/db2/). 
 
-    * Wenn Sie bereits eine Db2-Hosted-Serviceinstanz haben, wählen Sie die Option **Vorhandenen Service verwenden** aus und geben Sie Ihre Berechtigungsnachweise an.
+    * Wenn Sie bereits eine Db2-Serviceinstanz haben, wählen Sie die Option **Vorhandenen Service verwenden** aus und geben Sie Ihre Berechtigungsnachweise an.
 
-        ![Setup für {{ site.data.keys.mf_bm_short }}](create-db2-hosted-instance-existing.png)
+        ![Eichritung von {{ site.data.keys.mf_bm_short }}](create-db2-instance-existing.png)
 
-    * Falls Sie noch keine Db2-Hosted-Serviceinstanz haben, wählen Sie die Option **Neuen Service erstellen** aus und folgen Sie den Anweisungen, die auf dem Bildschirm angezeigt werden. 
+    * Wenn Sie bereits eine Serviceinstanz von Compose for PostgreSQL haben, wählen Sie die Option **Vorhandenen Service verwenden** aus und geben Sie Ihre Berechtigungsnachweise an.
 
-       ![Setup für {{ site.data.keys.mf_bm_short }}](create-db2-hosted-instance-new.png)
+        ![Mobile-Foundation-Setup](create-postgres-instance-existing.png)
+
+
+    * Falls Sie noch keine Serviceinstanz von Db2 oder Compose for PostgreSQL haben, wählen Sie die Option **Neuen Service erstellen** aus und folgen Sie den Anweisungen, die auf dem Bildschirm angezeigt werden. 
+
+       ![Mobile-Foundation-Setup](create-db2-instance-new.png)
 
 2. Starten Sie {{ site.data.keys.mfound_server }}.
     - Sie können die Basisversion der Serverkonfiguration verwenden und auf **Basisserver starten** klicken oder 
@@ -92,12 +95,17 @@ Sobald {{ site.data.keys.mfound_server }} aktiv ist, wird das folgende Dashboard
 
 ![Mobile-Foundation-Setup](service-dashboard.png)
 
-Klicken Sie auf **Analytics hinzufügen**, um Unterstützung für {{ site.data.keys.mf_analytics_service }} zu Ihrer Serverinstanz hinzuzufügen.
-Weitere Informationen finden Sie im Abschnitt [Analytics-Unterstützung hinzufügen](#adding-analytics-support). 
+<!--Click on **Add Analytics** to add {{ site.data.keys.mf_analytics_service }} support to your server instance.
+Learn more in the [Adding Analytics support](#adding-analytics-support) section.-->
 
-Klicken Sie auf **Konsole starten**, um die {{ site.data.keys.mf_console }} zu öffnen. Der Standardbenutzername ist "admin". Das Kennwort können Sie sichtbar machen, indem Sie auf das Augensymbol klicken. 
+* Klicken Sie auf **Konsole starten**, um die {{ site.data.keys.mf_console }} zu öffnen. Der Standardbenutzername ist *admin*. Das Kennwort können Sie sichtbar machen, indem Sie im Kennwortfeld auf das Augensymbol klicken. 
 
-![Mobile-Foundation-Setup](dashboard.png)
+  ![Mobile-Foundation-Setup](dashboard.png)
+
+* Klicken Sie in der {{ site.data.keys.mf_console }} auf **Analytics Console**, um die Mobile Analytics Console zu öffnen und die Analysedaten anzuzeigen. Sehen Sie sich dazu die folgende Abbildung an.
+
+  ![Mobile Analytics Console](analytics-dashboard.png)
+
 
 ### Serverkonfiguration
 {: #server-configuration }
@@ -129,33 +137,32 @@ Auf der Registerkarte **Einstellungen** können Sie die Serverinstanz mit Folgen
 
   >**Hinweis**: Sie können auch Ihren eigenen Truststore erstellen. Das Standardzertifikat muss aber dennoch verfügbar sein, damit der Service Mobile Foundation ordnungsgemäß funktioniert.
 
-* Konfiguration von {{ site.data.keys.mf_analytics_service }}
+<!--* {{ site.data.keys.mf_analytics_service }} configuration-->
 * VPN
 
 ![Mobile-Foundation-Setup](advanced-server-configuration.png)
 
-## Unterstützung für {{ site.data.keys.mf_analytics_service }} hinzufügen
+<!--
+## Adding {{ site.data.keys.mf_analytics_service }} support
 {: #adding-analytics-support }
-Sie können Unterstützung für {{ site.data.keys.mf_analytics_service }} zu Ihrer Mobile-Foundation-Serviceinstanz hinzufügen. Klicken Sie dazu auf der Dashboardseite des Service auf **Analytics hinzufügen**. Mit dieser Aktion wird eine Instanz des {{ site.data.keys.mf_analytics_service }} Service bereitgestellt. 
+You can add {{ site.data.keys.mf_analytics_service }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions a {{ site.data.keys.mf_analytics_service }} service instance.
 
->Wenn Sie die Instanz des {{ site.data.keys.mf_bm_short }} Service für den Plan **Developer** erstellen oder erneut erstellen, wird die Instanz des {{ site.data.keys.mf_analytics_service }} Service standardmäßig hinzugefügt.
-
-
-
+>When you create or recreate the **Developer** plan instance of {{ site.data.keys.mf_bm_short }} service, the {{ site.data.keys.mf_analytics_service }} service instance is added by default.
+-->
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
+<!--
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_service_console }}.  
 
-Wenn die Operation abgeschlossen ist, müssen Sie in Ihrem Browser die Seite der {{ site.data.keys.mf_console }} neu laden, um auf die {{ site.data.keys.mf_analytics_service_console }} zugreifen zu können.   
+> Learn more about {{ site.data.keys.mf_analytics_service }} in the [{{ site.data.keys.mf_analytics_service }} category](../../analytics).
 
-> Weitere Informationen zu {{ site.data.keys.mf_analytics_service }} finden Sie in der Kategorie "[{{ site.data.keys.mf_analytics_service }}"](../../analytics).
-
-##  Unterstützung für {{ site.data.keys.mf_analytics_service }} entfernen
+##  Removing {{ site.data.keys.mf_analytics_service }} support
 {: #removing-analytics-support}
 
-Sie können die Unterstützung für {{ site.data.keys.mf_analytics_service }} aus Ihrer Mobile-Foundation-Service-Instanz entfernen. Klicken Sie dazu auf der Dashboardseite des Service auf **Analytics löschen**. Mit dieser Aktion wird die Instanz des {{ site.data.keys.mf_analytics_service }} Service gelöscht. 
+You can remove the {{ site.data.keys.mf_analytics_service }} support for your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Delete Analytics**  from the service’s Dashboard page. This action deletes the {{ site.data.keys.mf_analytics_service }} service instance.
 
-Wenn die Operation abgeschlossen ist, müssen Sie in Ihrem Browser die Seite der {{ site.data.keys.mf_console }} neu laden. 
-
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
+-->
 <!--
 ##  Switching from Analytics deployed with IBM Containers to Analytics service
 {: #switching-from-analytics-container-to-analytics-service}
@@ -164,6 +171,7 @@ Wenn die Operation abgeschlossen ist, müssen Sie in Ihrem Browser die Seite der
 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 -->
+
 ## Fixes für {{ site.data.keys.mfound_server }} anwenden
 {: #applying-mobilefirst-server-fixes }
 Aktualisierungen für die {{ site.data.keys.mf_bm }} Services werden automatisch und ohne manuellen Eingriff durchgeführt. Die Durchführung muss lediglich bestätigt werden. Wenn eine Aktualisierung verfügbar ist, wird auf der Dashboardseite des Service ein Banner mit Anweisungen und Aktionsschaltflächen angezeigt. 
