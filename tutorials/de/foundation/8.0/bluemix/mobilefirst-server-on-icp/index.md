@@ -134,6 +134,9 @@ In der folgenden Tabelle sind die in {{ site.data.keys.mf_analytics }} in {{ sit
 |  |requests.cpu |Beschreibt die erforderliche CPU-Mindestkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder ein anderweitig für die Implementierung definierter Wert. |Standardeinstellung: **1000m** |
 |  |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder der für die Implementierung definierte Wert. |Standardeinstellung: **2048Mi** |
 |persistence |existingClaimName |Name der vorhandenen Forderung nach einem persistenten Datenträger |  |
+| logs | consoleFormat | Gibt das Format der Containerprotokollausgabe an |Standardeinstellung: **json** |
+|  | consoleLogLevel | Steuert den Detaillierungsgrad von Nachrichten, die in das Containerprotokoll aufgenommen werden|Standardeinstellung: **info** |
+|  | consoleSource | Gibt Quellen an, die in das Containerprotokoll geschrieben werden. Mehrere Quellen sind jeweils durch ein Komma getrennt aufgelistet. | Standardeinstellung: **message**, **trace**, **accessLog**, **ffdc** |
 
 
 ### Umgebungsvariablen für {{ site.data.keys.mf_server }}
@@ -165,6 +168,11 @@ In der folgenden Tabelle sind die in {{ site.data.keys.mf_server }} in {{ site.d
 |  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität |Standardeinstellung: **4096Mi** <br/>Informieren Sie sich über die Bedeutung der CPU-Kapazität unter [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |  |requests.cpu |Beschreibt die erforderliche CPU-Mindestkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder ein anderweitig für die Implementierung definierter Wert. |Standardeinstellung: **1000m** |
 |  |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder der für die Implementierung definierte Wert. |Standardeinstellung: **2048Mi** |
+| logs | consoleFormat | Gibt das Format der Containerprotokollausgabe an |Standardeinstellung: **json** |
+|  | consoleLogLevel | Steuert den Detaillierungsgrad von Nachrichten, die in das Containerprotokoll aufgenommen werden|Standardeinstellung: **info** |
+|  | consoleSource | Gibt Quellen an, die in das Containerprotokoll geschrieben werden. Mehrere Quellen sind jeweils durch ein Komma getrennt aufgelistet. | Standardeinstellung: **message**, **trace**, **accessLog**, **ffdc** |
+
+> Das Lernprogramm zur Analyse von {{ site.data.keys.prod_adj }}-Protokollen mit Kibana finden Sie [hier](analyzing-mobilefirst-logs-on-icp/).
 
 ### {{ site.data.keys.prod_adj }}-Helm-Charts aus dem ICP-Katalog installieren
 {: #install-hmc-icp}
