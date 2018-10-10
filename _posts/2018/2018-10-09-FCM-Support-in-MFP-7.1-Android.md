@@ -120,21 +120,17 @@ Get `google-services.json` for your application from [here](https://developers.g
 3. Open the App gradle file `build.gradle` and follow the steps below:
 	
   a. Add below dependencies
-	
-     ```groovy
-	   dependencies {
-	      implementation 'com.google.firebase:firebase-messaging:10.2.6'
-	      implementation 'com.android.support:multidex:1.0.3'
-	      compile 'com.android.support:support-v4:28.0.0'
-	   }
-	   apply plugin: 'com.google.gms.google-services'
-  
-     ```
- 
+	```groovy
+		dependencies {
+		implementation 'com.google.firebase:firebase-messaging:10.2.6'
+		implementation 'com.android.support:multidex:1.0.3'
+		compile 'com.android.support:support-v4:28.0.0'
+		}
+		apply plugin: 'com.google.gms.google-services'
 
- b. Enable multidex in app gradle file`build.gradle` under android tag.
-  For more info on multidex follow see [here](https://developer.android.com/studio/build/multidex).
-  
+	```
+  b. Enable multidex in app gradle file`build.gradle` under android tag.
+     For more info on multidex follow see [here](https://developer.android.com/studio/build/multidex).
   ```
     multiDexEnabled true
   ```
@@ -147,7 +143,7 @@ Get `google-services.json` for your application from [here](https://developers.g
 
 4. In the main acitivity file `MainActivity.java` perform the following changes:
  
- a. Add the following code in `oncreate` method (you can add it anywhere , but make sure this is getting called when app opens)
+   a. Add the following code in `oncreate` method (you can add it anywhere , but make sure this is getting called when app opens)
 
 	  ```Java
 
@@ -156,8 +152,7 @@ Get `google-services.json` for your application from [here](https://developers.g
 		push.setWLNotificationListener(wlNotificationListener);
 
 	  ```
- 
- b. Add the following code for handling the resume and pause scenarios 
+   b. Add the following code for handling the resume and pause scenarios 
  
 	  ```Java
 			@Override
