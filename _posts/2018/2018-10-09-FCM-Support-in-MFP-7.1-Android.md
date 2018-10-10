@@ -1,5 +1,5 @@
 ---
-title: FCM Support in MFP 7.1 Android
+title: FCM Support for Android in MobileFirst Platform 7.1 
 date: 2018-10-09
 tags:
 - MobileFirst_Foundation
@@ -8,42 +8,37 @@ tags:
 version:
 - 7.1
 author:
-  name: Anantha Krishnan & Kapil Powar
+  name: Anantha Krishnan
+additional_authors:
+- Kapil Powar
 ---
 
-# FCM Support in MFP 7.1 Android
+## Follow the steps in this post to use FCM in your android app with MobileFirst Platform Android Push SDK
 
-
-## Follow the below documentation to support FCM in your android app with MFP Android push SDK
-
-Follow below link to get `google-services.json` for your application. Insert json file in to your `app` folder.
-
-https://developers.google.com/cloud-messaging/android/android-migrate-fcm 
+Get `google-services.json` for your application from [here](https://developers.google.com/cloud-messaging/android/android-migrate-fcm). Add the json file to your `app` folder.
+ 
 ### Steps for Native application
 
-#### 1. Open the `AndroidManifest.xml` file and follow below steps
-  a. Inside the `<application>` -> `<activity>` tag add the following `intent-filter`
+1. Open the `AndroidManifest.xml` file and follow the steps below:
+ a. Inside the `<application>` -> `<activity>` tag add the following `intent-filter`
  
-  ```Java
-
+  ```xml
    <intent-filter>
-	     		<action android:name="<applicationId>.IBMPushNotification" />
-	     		<category android:name="android.intent.category.DEFAULT" />
-	    </intent-filter>
+		<action android:name="<applicationId>.IBMPushNotification" />
+		<category android:name="android.intent.category.DEFAULT" />
+    </intent-filter>
   ```
 
-  b. Add this acivity after the above step (step 1.a)
+ b. Add the following `<acivity>` after the above step:
 
-   ```Java
-
-    	<activity android:name="com.worklight.wlclient.fcmpush.MFPFCMPushNotificationHandler"
-    	                   android:theme="@android:style/Theme.NoDisplay"/>
+   ```xml
+	<activity android:name="com.worklight.wlclient.fcmpush.MFPFCMPushNotificationHandler"
+			   android:theme="@android:style/Theme.NoDisplay"/>
    ```
 
-  c. Add the following services ,
+ c. Now, add the following services:
   
-  ```Java
-
+  ```xml
       <service android:exported="true" android:name="com.worklight.wlclient.fcmpush.MFPFCMPushIntentService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -56,9 +51,9 @@ https://developers.google.com/cloud-messaging/android/android-migrate-fcm
         </service>
    ```
    
-  d. Update Application Tag as below
+ d. Update the `application` attributes as below:
   
-  ```
+  ```xml
      <application android:name="android.support.multidex.MultiDexApplication"
 		android:allowBackup="true"
 		android:icon="@drawable/ic_launcher"
@@ -68,17 +63,16 @@ https://developers.google.com/cloud-messaging/android/android-migrate-fcm
 	
   ```
     
-  e. Remove below `<permission>`,`<services>` and `<intent-filter>`
+ e. Remove the `<permission>`,`<services>` and `<intent-filter>` shown below:
    
-   
-   ```
+   ```xml
     <permission android:name="<ApplicationId>.permission.C2D_MESSAGE" android:protectionLevel="signature" />
  	<uses-permission android:name="<ApplicationId>.permission.C2D_MESSAGE" />
  	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
   ```
     
-  ```
+  ```xml
     <service android:name="com.worklight.wlclient.push.GCMIntentService" />		
     <receiver android:name="com.worklight.wlclient.push.WLBroadcastReceiver" 
     android:permission="com.google.android.c2dm.permission.SEND">
@@ -99,9 +93,9 @@ https://developers.google.com/cloud-messaging/android/android-migrate-fcm
     		android:value="15.0.0" />
    ```
   
-#### 2. Open the project gradle file `build.gradle` and add the following dependencies ,
+2. Open the project gradle file `build.gradle` and add the following dependencies:
 
- ```
+ ```groovy
       buildscript {
 	    
 		    repositories {
@@ -122,100 +116,96 @@ https://developers.google.com/cloud-messaging/android/android-migrate-fcm
 		    }
 		}
  ```   				
-		
-		
-#### 3. Open the App gradle file `build.gradle` and follow below steps 
+
+3. Open the App gradle file `build.gradle` and follow the steps below:
 	
   a. Add below dependencies
 	
+     ```groovy
+	   dependencies {
+	      implementation 'com.google.firebase:firebase-messaging:10.2.6'
+	      implementation 'com.android.support:multidex:1.0.3'
+	      compile 'com.android.support:support-v4:28.0.0'
+	   }
+	   apply plugin: 'com.google.gms.google-services'
   
-  ```
-   dependencies {
-      implementation 'com.google.firebase:firebase-messaging:10.2.6'
-      implementation 'com.android.support:multidex:1.0.3'
-      compile 'com.android.support:support-v4:28.0.0'
-   }
-   apply plugin: 'com.google.gms.google-services'
-  
- ```
+     ```
  
 
  b. Enable multidex in app gradle file`build.gradle` under android tag.
-  For more info on multidex follow below link https://developer.android.com/studio/build/multidex.
+  For more info on multidex follow see [here](https://developer.android.com/studio/build/multidex).
   
   ```
     multiDexEnabled true
   ```
-  
+
   ```
     dexOptions {
-        javaMaxHeapSize "4g"
+	javaMaxHeapSize "4g"
     }
   ```
 
-#### 4. In main acitivity file `MainActivity.java` do following changes
+4. In the main acitivity file `MainActivity.java` perform the following changes:
  
- a. add the following code in `oncreate` method (you can add anywhere , but make sure this is getting called when app opens)
+ a. Add the following code in `oncreate` method (you can add it anywhere , but make sure this is getting called when app opens)
 
-  ```Java
+	  ```Java
 
-   	final WLClient client = WLClient.createInstance(this);
-   	push = client.getPush();
-   	push.setWLNotificationListener(wlNotificationListener);
-    
-  ```
+		final WLClient client = WLClient.createInstance(this);
+		push = client.getPush();
+		push.setWLNotificationListener(wlNotificationListener);
+
+	  ```
  
  b. Add the following code for handling the resume and pause scenarios 
  
-  ```Java
-		@Override
-	    protected void onPause() {
-	        super.onPause();
-	       if (push != null) {
-	           push.setForeground(false);
-	       }
-	    }
-	    @Override
-	    protected void onResume() {
-	        super.onResume();
-	        if (push != null)
-	            push.setForeground(true);
-	            push.setWLNotificationListener(wlNotificationListener);
-	    }
-  ```
+	  ```Java
+			@Override
+		    protected void onPause() {
+			super.onPause();
+		       if (push != null) {
+			   push.setForeground(false);
+		       }
+		    }
+		    @Override
+		    protected void onResume() {
+			super.onResume();
+			if (push != null)
+			    push.setForeground(true);
+			    push.setWLNotificationListener(wlNotificationListener);
+		    }
+	  ```
   
 ### Steps for Hybrid application 
 
-#### 1. Open the `AndroidManifest.xml` file and follow below steps
+1. Open the `AndroidManifest.xml` file and follow the steps below:
 
  a. Inside the `<application>` -> `<activity>` tag add the following `intent-filter`
  
-  ```Java
-
-	   <intent-filter>
+  ```xml
+     <intent-filter>
         <action android:name="<applicationId>.IBMPushNotification" />
         <category android:name="android.intent.category.DEFAULT" />
      </intent-filter> 
-       
   ```
   
-  b. Update the `<application>`  tag as below 
+  b. Update the `<application>` tag as below:
 
-  ```Java
+  ```xml
     <application  android:name="android.support.multidex.MultiDexApplication" 
               android:label="@string/app_name" android:icon="@drawable/icon">
   ```
 
-  c. Add below acivity in `<application>`
+  c. Add below acivity in `<application>`:
 
-  ```Java
+  ```xml
       <activity android:name="com.worklight.wlclient.fcmpush.MFPFCMPushNotificationHandler" 
           android:theme="@android:style/Theme.NoDisplay"/>
   ```
   
-  d. Add the following services ,
+  d. Add the following services:
   
-   ```Java
+   ```xml
 
       <service android:exported="true" android:name="com.worklight.wlclient.fcmpush.MFPFCMPushIntentService"> 
       	<intent-filter>
@@ -230,15 +220,15 @@ https://developers.google.com/cloud-messaging/android/android-migrate-fcm
      </service>
      
    ```
-  e. Remove below `<permission>`,`<services>` and `<intent-filter>`
+  e. Remove the `<permission>`,`<services>` and `<intent-filter>` shown below:
    
-   ```
+   ```xml
     <permission android:name="com.HybridTagNotifications.permission.C2D_MESSAGE" android:protectionLevel="signature"/>  
     <uses-permission android:name="com.HybridTagNotifications.permission.C2D_MESSAGE"/>  
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>  
    ```
 
-   ```
+   ```xml
     <service android:name=".GCMIntentService"/>
     <service android:name="com.worklight.wlclient.push.MFPPushService" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="true"/> 
      
@@ -257,9 +247,9 @@ https://developers.google.com/cloud-messaging/android/android-migrate-fcm
     </receiver>
   ```
        
-#### 2. Open the project gradle file and add the following dependencies ,
+2. Open the project gradle file and add the following dependencies:
 
-  ```
+  ```groovy
       buildscript {
 	    
 		    repositories {
@@ -279,38 +269,33 @@ https://developers.google.com/cloud-messaging/android/android-migrate-fcm
 		        jcenter()
 		    }
 		}
-    
- ```
-
-#### 3. Open the App gradle file `build.gradle`and add the following ,
-
-
-  ```Java
-
- 		dependencies {
-
-		//compile files('libs/appcompat-v4.jar')   
-		    implementation 'com.google.firebase:firebase-messaging:10.2.6'
-		    implementation 'com.android.support:multidex:1.0.3'
-		    compile 'com.android.support:support-v4:28.0.0'
-		}
-
-		apply plugin: 'com.google.gms.google-services'
   ```
 
-#### 4. Enable multidex in app gradle file `build.gradle` under android tag.
+3. Open the App gradle file `build.gradle`and add the following:
+
+   ```groovy
+	dependencies {
+
+	//compile files('libs/appcompat-v4.jar')   
+	    implementation 'com.google.firebase:firebase-messaging:10.2.6'
+	    implementation 'com.android.support:multidex:1.0.3'
+	    compile 'com.android.support:support-v4:28.0.0'
+	}
+
+	apply plugin: 'com.google.gms.google-services'
+   ```
+
+4. Enable multidex in app gradle file `build.gradle` under android tag:
   
   ```
     multiDexEnabled true
   ```
-    
-    
-  ```
+   ```
     dexOptions {
-        javaMaxHeapSize "4g"
+	javaMaxHeapSize "4g"
     }
-  ```
-For more info on multidex follow below link https://developer.android.com/studio/build/multidex
+   ```
+For more info on multidex see [here](https://developer.android.com/studio/build/multidex).
 
 
 
