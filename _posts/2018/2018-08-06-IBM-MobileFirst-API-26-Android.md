@@ -23,7 +23,7 @@ To prevent your MobileFirst app updates from being blocked in Google Play Store 
 
 In accordance with the [support plan for IBM MobileFirst](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/), all existing apps built on MobileFirst v7.1 and v8.0 will be compliant with this new requirement. 
 
->**Update:** To keep your existing MobileFirst v7.1 apps compatible with API level 26, upgrade to the *iFix 7.1.0.0-MFPF-IF201810081403*. 
+>**Update:** To keep your existing MobileFirst v7.1 apps compatible with API level 26, upgrade to the [*iFix 7.1.0.0-MFPF-IF201810081403*](https://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/7-1-master-ifix-release/). 
 >
 >No action is required for apps built on MobileFirst v8.0. 
 
