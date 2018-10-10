@@ -30,7 +30,7 @@ Get `google-services.json` for your application from [here](https://developers.g
     </intent-filter>
   ```
 
- b. Add the following `<acivity>` after the above step:
+ b. Add the following `<activity>` after the above step:
 
    ```xml
 	<activity android:name="com.worklight.wlclient.fcmpush.MFPFCMPushNotificationHandler"
