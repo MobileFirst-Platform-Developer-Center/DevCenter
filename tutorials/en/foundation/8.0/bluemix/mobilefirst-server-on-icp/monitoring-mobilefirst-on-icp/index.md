@@ -3,7 +3,7 @@ layout: tutorial
 title: Monitoring Mobile Foundation in IBM Cloud Private (ICP)
 breadcrumb_title: Monitoring Mobile Foundation
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
