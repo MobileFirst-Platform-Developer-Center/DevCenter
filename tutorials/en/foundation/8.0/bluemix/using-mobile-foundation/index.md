@@ -31,14 +31,19 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 
 #### Jump to:
 {: #jump-to}
-* [Setting up the {{ site.data.keys.mf_bm_short }} service](#setting-up-the-mobile-foundation-service)
-* [Using the {{ site.data.keys.mf_bm_short }} service](#using-the-mobile-foundation-service)
-* [Server configuration](#server-configuration)
-* [Advanced server configuration](#advanced-server-configuration)
-* [Applying {{ site.data.keys.mfound_server }} fixes](#applying-mobilefirst-server-fixes)
-* [Accessing server logs](#accessing-server-logs)
-* [Troubleshooting](#troubleshooting)
-* [Further reading](#further-reading)
+- [Overview](#overview)
+    - [Jump to:](#jump-to)
+- [Setting up the {{ site.data.keys.mf_bm_short }} service](#setting-up-the--sitedatakeysmfbmshort--service)
+  - [Setting up the *developer* plan](#setting-up-the-developer-plan)
+  - [Setting up the *Professional 1 Application* and *Professional Per Device* plan](#setting-up-the-professional-1-application-and-professional-per-device-plan)
+- [Using the {{ site.data.keys.mf_bm_short }} service](#using-the--sitedatakeysmfbmshort--service)
+  - [Server configuration](#server-configuration)
+  - [Advanced server configuration](#advanced-server-configuration)
+- [Applying {{ site.data.keys.mfound_server }} fixes](#applying--sitedatakeysmfoundserver--fixes)
+- [Accessing server logs](#accessing-server-logs)
+    - [Tracing](#tracing)
+- [Troubleshooting](#troubleshooting)
+- [Further reading](#further-reading)
 
 ## Setting up the {{ site.data.keys.mf_bm_short }} service
 {: #setting-up-the-mobile-foundation-service }

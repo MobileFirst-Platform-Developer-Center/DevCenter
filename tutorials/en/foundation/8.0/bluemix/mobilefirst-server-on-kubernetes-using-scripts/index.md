@@ -3,9 +3,12 @@ layout: tutorial
 title: Setting up MobileFirst Server on IBM Cloud Kubernetes Cluster
 breadcrumb_title: Mobile Foundation on Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+<br/>
+>**Note:** Helm is the recommended approach to deploy software on Kubernetes Cluster. Learn about deploying [Mobile Foundation on IBM Cloud Kubernetes Cluster using helm charts](../mobilefirst-server-on-kubernetes-using-helm).
+
 ## Overview
 {: #overview }
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance as well as {{ site.data.keys.mf_analytics }} instance on IBM Cloud. To achieve this you will go through the following steps:
@@ -22,15 +25,19 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 
 #### Jump to:
 {: #jump-to }
-* [Register an account on IBM Cloud](#register-an-account-on-ibmcloud)
-* [Set up your host machine](#set-up-your-host-machine)
-* [Create and setup a Kubernetes Cluster with IBM Cloud Container Service](#setup-kube-cluster)
-* [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
-* [Prerequisites](#prerequisites)
-* [Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on Kubernetes Cluster with IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-kube-with-ibm-containers)
-* [Applying {{ site.data.keys.mf_server }} Fixes](#applying-mobilefirst-server-fixes)
-* [Removing the Kubernetes deployments from IBM Cloud](#removing-kube-deployments)
-* [Removing the database service configuration from IBM Cloud](#removing-the-database-service-configuration-from-ibmcloud)
+- [Overview](#overview)
+        - [Jump to:](#jump-to)
+- [Register an account on IBM Cloud](#register-an-account-on-ibm-cloud)
+    - [IBM Cloud Dashboard](#ibm-cloud-dashboard)
+- [Set up your host machine](#set-up-your-host-machine)
+- [Create and setup a Kubernetes Cluster with IBM Cloud Container Service](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the--sitedatakeysmfbmpkgname--archive)
+- [Prerequisites](#prerequisites)
+- [Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on Kubernetes Cluster with IBM Containers](#setting-up-the--sitedatakeysproductadj--and-analytics-servers-on-kubernetes-cluster-with-ibm-containers)
+- [Applying {{ site.data.keys.mf_server }} Fixes](#applying--sitedatakeysmfserver--fixes)
+    - [Steps to apply the iFix:](#steps-to-apply-the-ifix)
+- [Removing the Kubernetes deployments from IBM Cloud](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [Removing the database service configuration from IBM Cloud](#removing-the-database-service-configuration-from-ibm-cloud)
 
 ## Register an account on IBM Cloud
 {: #register-an-account-on-ibmcloud }

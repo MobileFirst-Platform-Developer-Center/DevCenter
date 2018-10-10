@@ -6,6 +6,9 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+<br/>
+>**Note:** Helm is the recommended approach to deploy software on Kubernetes Cluster. Learn about deploying [Mobile Foundation on IBM Cloud Kubernetes Cluster using helm charts](../../mobilefirst-server-on-kubernetes-using-helm).
+
 ## Overview
 {: #overview }
 Follow the instructions below to configure a {{ site.data.keys.mf_app_center }} instance on IBM Cloud. To achieve this you will go through the following steps:
@@ -22,15 +25,19 @@ Follow the instructions below to configure a {{ site.data.keys.mf_app_center }} 
 
 #### Jump to:
 {: #jump-to }
-* [Register an account on IBM Cloud](#register-an-account-on-ibmcloud)
-* [Set up your host machine](#set-up-your-host-machine)
-* [Create and setup a Kubernetes Cluster with IBM Cloud Container Service](#setup-kube-cluster)
-* [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
-* [Prerequisites](#prerequisites)
-* [Setting Up the {{ site.data.keys.mf_app_center }} on Kubernetes Cluster with IBM Containers](#setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers)
-* [Removing the container from IBM Cloud](#removing-the-container-from-ibmcloud)
-* [Removing the Kubernetes deployments from IBM Cloud](#removing-kube-deployments)
-* [Removing the database service configuration from IBM Cloud](#removing-the-database-service-configuration-from-ibmcloud)
+- [Overview](#overview)
+        - [Jump to:](#jump-to)
+- [Register an account on IBM Cloud](#register-an-account-on-ibm-cloud)
+    - [IBM Cloud Dashboard](#ibm-cloud-dashboard)
+- [Set up your host machine](#set-up-your-host-machine)
+- [Create and setup a Kubernetes Cluster with IBM Cloud Container Service](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the--sitedatakeysmfbmpkgname--archive)
+- [Prerequisites](#prerequisites)
+- [Setting Up the {{ site.data.keys.mf_app_center }} on Kubernetes Cluster with IBM Containers](#setting-up-the--sitedatakeysmfappcenter--on-kubernetes-cluster-with-ibm-containers)
+    - [Steps to apply the iFix:](#steps-to-apply-the-ifix)
+- [Removing the Container from IBM Cloud](#removing-the-container-from-ibm-cloud)
+- [Removing the Kubernetes deployments from IBM Cloud](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [Removing the database service configuration from IBM Cloud](#removing-the-database-service-configuration-from-ibm-cloud)
 
 ## Register an account on IBM Cloud
 {: #register-an-account-on-ibmcloud }
