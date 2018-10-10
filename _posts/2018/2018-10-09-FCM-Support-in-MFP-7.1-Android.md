@@ -20,6 +20,7 @@ Get `google-services.json` for your application from [here](https://developers.g
 ### Steps for Native application
 
 1. Open the `AndroidManifest.xml` file and follow the steps below:
+
  a. Inside the `<application>` -> `<activity>` tag add the following `intent-filter`
  
   ```xml
@@ -119,27 +120,26 @@ Get `google-services.json` for your application from [here](https://developers.g
 
 3. Open the App gradle file `build.gradle` and follow the steps below:
 	
-  a. Add below dependencies
-	```groovy
-		dependencies {
-		implementation 'com.google.firebase:firebase-messaging:10.2.6'
-		implementation 'com.android.support:multidex:1.0.3'
-		compile 'com.android.support:support-v4:28.0.0'
-		}
-		apply plugin: 'com.google.gms.google-services'
+    a. Add below dependencies
+  	```groovy
+  		dependencies {
+  		implementation 'com.google.firebase:firebase-messaging:10.2.6'
+  		implementation 'com.android.support:multidex:1.0.3'
+  		compile 'com.android.support:support-v4:28.0.0'
+  		}
+  		apply plugin: 'com.google.gms.google-services'
+  	```
+    b. Enable multidex in app gradle file`build.gradle` under android tag.
 
-	```
-  b. Enable multidex in app gradle file`build.gradle` under android tag.
-     For more info on multidex follow see [here](https://developer.android.com/studio/build/multidex).
-  ```
-    multiDexEnabled true
-  ```
-
-  ```
-    dexOptions {
-	javaMaxHeapSize "4g"
-    }
-  ```
+      ```
+          multiDexEnabled true
+      ```
+      ```
+          dexOptions {
+      	javaMaxHeapSize "4g"
+          }
+      ```
+      For more info on multidex follow see [here](https://developer.android.com/studio/build/multidex).
 
 4. In the main acitivity file `MainActivity.java` perform the following changes:
  
