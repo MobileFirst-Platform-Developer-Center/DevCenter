@@ -49,7 +49,7 @@ iOS 및 최신 Android 운영 체제 버전은 개별 애플리케이션에서 �
 
 > **중요:** 프로덕션 환경에서는 단위를 초로 설정하지 마십시오. 경과 시간이 짧을수록 서버의 로드가 더 높아집니다. 초로 표시되는 단위는 테스트 및 평가 목적으로만 구현됩니다. 예를 들어, 경과 시간이 10초로 설정되면 푸시 메시지를 거의 즉시 보내게 됩니다.
 
-   설정할 수 있는 전체 특성 목록은 [Application Center의 JNDI 특성](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)을 참조하십시오.
+설정할 수 있는 전체 특성 목록은 [Application Center의 JNDI 특성](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)을 참조하십시오.
 
 ### Apache Tomcat 서버의 예
 {: tomcat }

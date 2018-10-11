@@ -7,21 +7,21 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-IBM MobileFirst™ Platform Foundation 버전 6.2.0 이상으로 작성된 기존의 고유 Windows 프로젝트를 마이그레이션하려면 현재 버전에서 SDK를 사용하도록 프로젝트를 수정해야 합니다. 그런 다음 V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체하십시오. 마이그레이션 지원 도구는 코드를 스캔하고 대체할 API의 보고서를 생성할 수 있습니다.
+IBM MobileFirst™ Platform Foundation 버전 6.2.0 이상으로 작성된 기존의 네이티브 Windows 프로젝트를 마이그레이션하려면 현재 버전에서 SDK를 사용하도록 프로젝트를 수정해야 합니다. 그런 다음 V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체하십시오. 마이그레이션 지원 도구는 코드를 스캔하고 대체할 API의 보고서를 생성할 수 있습니다.
 
 #### 다음으로 이동
 {: #jump-to }
-* [버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 고유 Windows 앱 스캔](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade)
+* [버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 네이티브 Windows 앱 스캔](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade)
 * [Windows 프로젝트 마이그레이션](#migrating-a-windows-project)
 * [Windows 코드 업데이트](#updating-the-windows-code)
 
-## 버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 고유 Windows 앱 스캔
+## 버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 네이티브 Windows 앱 스캔
 {: #scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade }
-마이그레이션 지원 도구는 고유 Windows 앱의 소스를 스캔하고 V8.0에서 더 이상 사용되지 않거나 중단된 API의 보고서를 생성하여 마이그레이션을 위해 IBM MobileFirst™ Platform Foundation의 이전 버전으로 작성된 앱을 준비하도록 도와줍니다.
+마이그레이션 지원 도구는 네이티브 Windows 앱의 소스를 스캔하고 V8.0에서 더 이상 사용되지 않거나 중단된 API의 보고서를 생성하여 마이그레이션을 위해 IBM MobileFirst™ Platform Foundation의 이전 버전으로 작성된 앱을 준비하도록 도와줍니다.
 
 마이그레이션 지원 도구를 사용하기 전에 다음 정보를 파악하는 것이 중요합니다.
 
-* 기존 IBM MobileFirst Platform Foundation 고유 Windows 애플리케이션이 있어야 합니다.
+* 기존 IBM MobileFirst Platform Foundation 네이티브 Windows 애플리케이션이 있어야 합니다.
 * 인터넷에 액세스할 수 있어야 합니다.
 * node.js 버전 4.0.0 이상이 설치되어 있어야 합니다.
 * 마이그레이션 프로세스의 제한사항을 검토하고 숙지하십시오. 자세한 정보는 [이전 릴리스에서 앱 마이그레이션](../)을 참조하십시오.
@@ -57,7 +57,7 @@ IBM MobileFirst Platform Foundation의 이전 버전으로 작성된 앱은 몇 
 
 ## Windows 프로젝트 마이그레이션
 {: #migrating-a-windows-project }
-IBM MobileFirst™ Platform Foundation V6.2.0 이상으로 작성된 기존 고유 Windows 프로젝트에 대해 작업하려면 프로젝트를 수정해야 합니다.
+IBM MobileFirst™ Platform Foundation V6.2.0 이상으로 작성된 기존 네이티브 Windows 프로젝트에 대해 작업하려면 프로젝트를 수정해야 합니다.
 
 MobileFirst V8.0은 Windows Universal 환경, 즉 Windows 10 Universal Windows Platform(UWP) 및 Windows 8 Universal(Desktop 및 Phone)만 지원합니다. Windows Phone 8 Silverlight는 지원되지 않습니다.
 
@@ -69,7 +69,7 @@ Visual Studio 프로젝트를 수동으로 V8.0으로 업그레이드할 수 있
         * SharpCompress
         * worklight-windows8
 
-        > **참고:** 앱이 애플리케이션 인증 또는 확장된 인증 기능을 사용하는 경우, Microsoft Visual C++ 2013 Runtime Package for Windows 또는 Microsoft Visual C++ 2013 Runtime Package for Windows Phone을 앱에 대한 참조로 추가해야 합니다. 이를 수행하려면 Visual Studio에서 고유 프로젝트의 참조를 마우스 오른쪽 단추로 클릭한 후 고유 API 앱에 추가한 환경에 따라 다음 선택사항 중 하나를 완료하십시오.
+        > **참고:** 앱이 애플리케이션 인증 또는 확장된 인증 기능을 사용하는 경우, Microsoft Visual C++ 2013 Runtime Package for Windows 또는 Microsoft Visual C++ 2013 Runtime Package for Windows Phone을 앱에 대한 참조로 추가해야 합니다. 이를 수행하려면 Visual Studio에서 네이티브 프로젝트의 참조를 마우스 오른쪽 단추로 클릭한 후 네이티브 API 앱에 추가한 환경에 따라 다음 선택사항 중 하나를 완료하십시오.
 
         * Windows 데스크탑 또는 태블릿의 경우: **참조 → 참조 추가 → Windows 8.1 → 확장기능 → Microsoft Visual C++ 2013 Runtime Package for Windows → 확인**을 마우스 오른쪽 단추로 클릭하십시오.
         * Windows Phone 8 Universal의 경우: **참조 → 참조 추가 → Windows 8.1 → 확장기능 → Microsoft Visual C++ 2013 Runtime Package for Windows Phone → 확인**을 마우스 오른쪽 단추로 클릭하십시오.
@@ -96,7 +96,7 @@ Visual Studio 프로젝트를 수동으로 V8.0으로 업그레이드할 수 있
 
     * 비동기 조작을 수행한 모든 메소드에서는 이전에 응답 리스너 콜백 모델을 사용했습니다. 이는 **await/async** 모델로 대체되었습니다.
 
-이제 {{ site.data.keys.product_adj }} SDK를 사용하여 고유 Windows 애플리케이션 개발을 시작할 수 있습니다. {{ site.data.keys.product_adj }} V8.0.0 API에 대한 변경사항을 반영하도록 코드를 업데이트해야 할 수도 있습니다.
+이제 {{ site.data.keys.product_adj }} SDK를 사용하여 네이티브 Windows 애플리케이션 개발을 시작할 수 있습니다. {{ site.data.keys.product_adj }} V8.0.0 API에 대한 변경사항을 반영하도록 코드를 업데이트해야 할 수도 있습니다.
 
 #### 다음에 수행할 작업
 {: #what-to-do-next }

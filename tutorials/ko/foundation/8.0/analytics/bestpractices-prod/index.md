@@ -78,7 +78,7 @@ Analytics Server에 대해 두 개의 노드가 있다고 가정합니다.
 ### 애플리케이션 서버 튜닝
 {: #app-server-tuning }
 
-WebSphere Application Server v8.5.5.6 Liberty 프로파일 또는 이전 버전을 사용하는 경우, JVM 스레드 풀 크기 설정을 명시적으로 조정해야 합니다. 
+WebSphere Application Server v8.5.5.6 Liberty 프로파일 또는 이전 버전을 사용하는 경우, JVM 스레드 풀 크기 설정을 명시적으로 조정해야 합니다.
 
 이로 인해 많은 사용자는 실행자가 교착 상태에 빠지지 않도록 실행자의 **coreThreads** 값을 높은 숫자로 설정했습니다. 하지만 v8.5.5.6에서 자동 튜닝 알고리즘은 교착 상태를 공격적으로 대처하도록 수정되었습니다. 이제 실행자가 교착 상태에 빠지는 것은 거의 불가능합니다. 따라서 과거에 실행자가 교착 상태를 피하기 위해 수동으로 **coreThreads**를 설정한 경우, v8.5.5.6으로 이동하면 기본값으로 되돌리는 것을 고려할 수 있습니다.
 
@@ -156,7 +156,7 @@ Elasticsearch 튜닝 매개변수는 환경의 기본 튜닝으로 고려되며 
 
 MobileFirst Platform Foundation v8.0에서 앱이 백그라운드에서 포그라운드로 이동하면 앱 세션은 증가/기록됩니다.  
 
-AppSessions 캡처는 라이프사이클 이벤트용 리스너를 추가하여 사용할 수 있습니다. 고유 SDK에서 이러한 리스너를 추가하는 데 적합한 API를 제공합니다. 그러나 Cordova의 경우 이러한 라이프사이클 이벤트 리스너를 추가하기 위한 JavaScript API가 없습니다. 대신 Cordova애플리케이션에서도 네이티브 플랫폼 API를 사용하여 리스너를 추가해야 합니다.
+AppSessions 캡처는 라이프사이클 이벤트용 리스너를 추가하여 사용할 수 있습니다. 네이티브 SDK에서 이러한 리스너를 추가하는 데 적합한 API를 제공합니다. 그러나 Cordova의 경우 이러한 라이프사이클 이벤트 리스너를 추가하기 위한 JavaScript API가 없습니다. 대신 Cordova애플리케이션에서도 네이티브 플랫폼 API를 사용하여 리스너를 추가해야 합니다.
 
 [문서](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/analytics/analytics-api/#client-lifecycle-events)에서 다음과 같이 발췌하십시오.
 

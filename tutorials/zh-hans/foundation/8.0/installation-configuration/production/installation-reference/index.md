@@ -193,7 +193,7 @@ Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件�
 > `注：`如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。 在这种情况下，**configuredatabase** 任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。 **configuredatabase** 任务仅
 确保数据库具有当前
 {{ site.data.keys.mf_server }}
-版本的必需表。 您无需指定内部元素 `<dba>` 或 `<client>`。
+版本的必需表。 您无需指定内部元素 `<dba>` 或 `<client>`.
 
 #### Oracle
 {: #oracle }

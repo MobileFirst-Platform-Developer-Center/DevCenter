@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: 对 JSONtore 进行故障诊断
+title: 对 JSONStore 进行故障诊断
 breadcrumb_title: JSONStore
 relevantTo: [ios,android,cordova]
 weight: 3
