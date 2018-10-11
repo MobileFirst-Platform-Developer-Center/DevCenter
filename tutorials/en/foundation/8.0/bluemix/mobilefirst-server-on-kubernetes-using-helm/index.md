@@ -1,19 +1,19 @@
 ---
 layout: tutorial
-title: Setting up MobileFirst Server on IBM Cloud Private
-breadcrumb_title: Foundation on IBM Cloud Private
+title: Setting up Mobile Foundation on IBM Cloud Kubernetes Cluster using Helm
+breadcrumb_title: Foundation on Kubernetes Cluster using Helm
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance and {{ site.data.keys.mf_analytics }} instance on {{ site.data.keys.prod_icp }}:
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance and {{ site.data.keys.mf_analytics }} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts:
 
-* Setup IBM Cloud Private Kubernetes Cluster.
-* Setup your host computer with the required tools (Docker, IBM Cloud CLI ( bx ), {{ site.data.keys.prod_icp }} (icp) Plugin for IBM Cloud CLI (bx pr), Kubernetes CLI (kubectl)), and Helm CLI (helm)).
+* Setup IBM Cloud Kubernetes Cluster.
+* Setup your host computer with IBM Cloud CLI.
 * Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} .
-* Load the PPA archive in the {{ site.data.keys.prod_icp }} Cluster.
+* Load the PPA archive in IBM Cloud Kubernetes Cluster.
 * Finally, you will configure and install the {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}.
 
 #### Jump to:
@@ -30,17 +30,16 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 ## Prerequisites
 {: #prereqs}
 
-You should have {{ site.data.keys.prod_icp }} account and must have set up the Kubernetes Cluster by following the documentation in [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html).
+You should have IBM Cloud account and must have set up the Kubernetes Cluster by following the documentation in [IBM Cloud Kubernetes Cluster service](https://console.bluemix.net/docs/containers/cs_tutorials.html).
 
-To manage containers and images, you need to install the following tools on your host machine as part of {{ site.data.keys.prod_icp }} setup:
+To manage containers and images, you need to install the following tools on your host machine as part of IBM Cloud CLI plugins setup:
 
-* Docker
-* IBM Cloud CLI (`bx`)
-* {{ site.data.keys.prod_icp }} (ICP) plugin for IBM Cloud CLI ( `bx pr` )
-* Kubernetes CLI (`kubectl`)
-* Helm (`helm`)
+* IBM Cloud CLI 
+* Kubernetes CLI
+* IBM Cloud Container Registry plug-in
+* IBM Cloud Container Service plug-in
 
-To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the *kubectl* client. [Learn more](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_cluster/cfc_cli.html).
+To access IBM Cloud Kubernetes Cluster using CLI, you should configure the IBM Cloud client. [Learn more](https://console.bluemix.net/docs/cli/index.html).
 
 ## Download the IBM Mobile Foundation Passport Advantage Archive
 {: #download-the-ibm-mfpf-ppa-archive}
@@ -53,35 +52,36 @@ The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is ava
 {: #load-the-ibm-mfpf-ppa-archive}
 Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
 
-Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod_icp }} cluster:
+Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes Cluster:
 
-  1. Log in to the cluster using IBM Cloud ICP plugin (`bx pr`).
-      >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
+  1. Log in to the cluster using IBM Cloud plugin.
+
+      >See the [CLI Command Reference](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) in IBM Cloud CLI documentation.
 
       For example,
       ```bash
-      bx pr login -a https://ip:port
+      ibmcloud login -a https://ip:port
       ```
       Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
+      
+  2. Login into the IBM Cloud Container registry & initialize the Container Service using the following commands:
+      ```bash
+      ibmcloud cr login
+      ibmcloud cs init
+      ```  
+  3. Set the region of the deployment using the following command (e.g. us-south)
+      ```bash
+      ibmcloud cr region-set
+      ```    
 
-  2. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
+  4. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
       ```
       bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
-      `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `bx pr`.
 
-  3. After you load the PPA Archive, synch the repositories, which ensures the listing of Helm Charts in the **Catalog**. You can do this in {{ site.data.keys.prod_icp }} management console.
-      * Select **Admin > Repositories**.
-      * Click **Synch Repositories**.
-
-  4.  View the Docker images and Helm Charts in the {{ site.data.keys.prod_icp }} management console.
-      To view Docker images,
-      * Select **Platform > Images**.
-      * Helm Charts are shown in the **Catalog**.
-
-  On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mfpf-server-prod** and {{ site.data.keys.mf_analytics }} is listed as **ibm-mfpf-analytics-prod**.
+  The helm charts are stored in the client or local (unlike ICP helm chart stored in the IBM Cloud Private helm repository). Charts can be located within the `ppa-import/charts` directory.
 
 ## Install and configure IBM {{ site.data.keys.product }} Helm Charts
 {: #configure-install-mf-helmcharts}
@@ -112,7 +112,7 @@ Before you install and configure {{ site.data.keys.mf_server }}, you should have
 
 ### Environment variables for {{ site.data.keys.mf_analytics }}
 {: #env-mf-analytics }
-The table below provides the environment variables used in {{ site.data.keys.mf_analytics }} on {{ site.data.keys.prod_icp }}.
+The table below provides the environment variables used in {{ site.data.keys.mf_analytics }} on IBM Cloud Kubernetes Cluster.
 
 | Qualifier | Parameter | Definition | Allowed Value |
 |-----------|-----------|------------|---------------|
@@ -141,7 +141,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 
 ### Environment variables for {{ site.data.keys.mf_server }}
 {: #env-mf-server }
-The table below provides the environment variables used in {{ site.data.keys.mf_server }} on {{ site.data.keys.prod_icp }}.
+The table below provides the environment variables used in {{ site.data.keys.mf_server }} on IBM Cloud Kubernetes Cluster.
 
 | Qualifier | Parameter | Definition | Allowed Value |
 |-----------|-----------|------------|---------------|
@@ -175,7 +175,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 
 > For the tutorial on analyzing {{ site.data.keys.prod_adj }} logs using Kibana, see [here](analyzing-mobilefirst-logs-on-icp/).
 
-### Installing {{ site.data.keys.prod_adj }} Helm Charts from ICP Catalog
+### Installing Helm Charts
 {: #install-hmc-icp}
 
 #### Install {{ site.data.keys.mf_analytics }}
@@ -183,58 +183,118 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 
 Installation of {{ site.data.keys.mf_analytics }} is optional. If you wish to enable analytics in {{ site.data.keys.mf_server }}, you should configure and install {{ site.data.keys.mf_analytics }} first, before installing {{ site.data.keys.mf_server }}.
 
-Before you begin the installation of {{ site.data.keys.mf_analytics }} Chart, configure the **Persistent Volume**. Provide the **Persistent Volume** to configure {{ site.data.keys.mf_analytics }}. Follow the steps detailed in [{{ site.data.keys.prod_icp }} documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/create_volume.html) to create **Persistent Volume**.
+Before you begin the installation of {{ site.data.keys.mf_analytics }} Chart, configure the **Persistent Volume**. Provide the **Persistent Volume** to configure {{ site.data.keys.mf_analytics }}. Follow the steps detailed in [IBM Cloud Kubernetes documentation](https://console.bluemix.net/docs/containers/cs_storage_file.html#file_storage) to create **Persistent Volume**.
 
-Follow the steps below to install and configure IBM {{ site.data.keys.mf_analytics }} from {{ site.data.keys.prod_icp }} management console.
+Follow the steps below to install and configure IBM {{ site.data.keys.mf_analytics }} on IBM Cloud Kubernetes Cluster.
 
-1. Go to **Catalog** in the management console.
-2. Select **ibm-mfpf-analytics-prod** helm chart.
-3. Click **Configure**.
-4. Provide the environment variables. Refer to [Environment Variables for {{ site.data.keys.mf_analytics }}](#env-mf-analytics) for more information.
-5. Accept the **License Agreement**.
-6. Click **Install**.
+1. To configure the Kubernetes Cluster execute the command below:
+    ```bash
+    ibmcloud cs cluster-config <iks-cluster-name>
+    ```
+2. Get the default helm chart values using the following command.
+    ```bash
+    helm inspect values <mfp-analytics-helm-chart.tgz>  > values.yaml
+    ```
+    Example for {{ site.data.keys.mf_analytics }}:
+    ```bash
+    helm inspect values ibm-mfpf-analytics-prod-1.0.17.tgz > values.yaml
+    ```    
+
+3. Modify the **values.yaml** to add appropriate values for deploying the helm chart. Make sure the [ingress](https://console.bluemix.net/docs/containers/cs_ingress.html).hostname details, scaling etc. are added and save the values.yaml.
+
+4. To deploy the helm chart run the following command:
+    ```bash
+    helm install -n <iks-cluster-name> -f values.yaml <mfp-analytics-helm-chart.tgz>
+    ```
+    Example for deploying analytics server:
+    ```bash
+    helm install -n mfpanalyticsonkubecluster -f analytics-values.yaml ./ibm-mfpf-analytics-prod-1.0.17.tgz
+    ```    
 
 #### Install {{ site.data.keys.mf_server }}
 {: #install-mf-server}
 
 Before you begin the installation of {{ site.data.keys.mf_server }} ensure that you have pre-configured a DB2 database.
 
+Follow the steps below to install and configure IBM {{ site.data.keys.mf_server }} on IBM Cloud Kubernetes Cluster.
 
-Follow the steps below to install and configure IBM {{ site.data.keys.mf_server }} from {{ site.data.keys.prod_icp }} management console.
+1. Configure the Kube Cluster:
+    ```bash
+    ibmcloud cs cluster-config <iks-cluster-name>
+    ```   
 
-1. Go to **Catalog** in the management console.
-2. Select **ibm-mfpf-server-prod** helm chart.
-3. Click **Configure**.
-4. Provide the environment variables. Refer to [Environment Variables for {{ site.data.keys.mf_server }}](#env-mf-server) for more information.
-5. Accept the **License Agreement**.
-6. Click **Install**.
+2. Get the default helm chart values using the following command:
+    ```bash
+    helm inspect values <mfp-server-helm-chart.tgz>  > values.yaml
+    ```   
+    Example for {{ site.data.keys.mf_server }}:
+    ```bash
+    helm inspect values ibm-mfpf-server-prod-1.0.17.tgz > values.yaml
+    ```   
+
+3. Modify the **values.yaml** to add appropriate values for deploying the helm chart. Make sure the database details, ingress, scaling etc. are added and save the values.yaml.
+
+4. To deploy the helm chart run the following command.
+    ```bash
+    helm install -n <iks-cluster-name> -f values.yaml <mfp-server-helm-chart.tgz>
+    ```   
+    Example for deploying server:
+    ```bash
+    helm install -n mfpserveronkubecluster -f server-values.yaml ./ibm-mfpf-server-prod-1.0.17.tgz
+    ``` 
+
+>**Note:** For installing the AppCenter the above steps are to be followed with the corresponding helm chart (e.g. ibm-mfpf-appcenter-prod-1.0.17.tgz).
 
 ## Verifying the Installation
 {: #verify-install}
 
-After you have installed and configured {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}, you can verify your installation and the status of the deployed pods by doing the following:
+After you have installed and configured {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}, you can verify your installation and the status of the deployed pods by using IBM Cloud CLI, Kubernetes CLI and helm commands.
 
-In the {{ site.data.keys.prod_icp }} Management Console. Select **Workloads > Helm Releases**. Click on the *release name* of your installation.
+See the [CLI Command Reference](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) in IBM Cloud CLI documentation and Helm CLI from [Helm documentation](https://docs.helm.sh/helm/).
 
+From the IBM Cloud Kubernetes Cluster page on IBM Cloud Portal, one can use the **Launch** button to open the Kubernetes console to manage the cluster artifacts.
 
 ## Accessing {{ site.data.keys.prod_adj }} console
 {: #access-mf-console}
 
-After successful installation you can access, IBM {{ site.data.keys.prod_adj }} Operational Console using `<protocol>://<ip_address>:<port>/mfpconsole`.
-IBM {{ site.data.keys.mf_analytics }} Console can be accessed using `<protocol>://<ip_address>:<port>/analytics/console`.
+On successful deployment, the notes will be shown as output on the terminal. You can run the commands directly to get the console URL via *NodePort*.
 
-The protocol can be `http` or `https`. Also, note that, the port will be **NodePort** in the case of **NodePort** deployment. To get the ip_address and **NodePort** of your installed {{ site.data.keys.prod_adj }} Charts, follow the steps below:
+Example, for Mobile Foundation Server notes displayed is as follows:
 
-1. In {{ site.data.keys.prod_icp }} Management Console, select **Workloads > Helm Releases**.
-2. Click on the *release name* of your helm chart installation.
-3. See the **Notes** section.
+```text
+The Notes displayed as follows as the result of the helm deployment
+Get the Server URL by running these commands:
+1. For http endpoint:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=“{.spec.ports[0].nodePort}” services monitor-mfp-ibm-mfpf-server-prod)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=“{.items[0].status.addresses[0].address}“)
+ echo http://$NODE_IP:$NODE_PORT/mfpconsole
+2. For https endpoint:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=“{.spec.ports[1].nodePort}” services monitor-mfp-ibm-mfpf-server-prod)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=“{.items[0].status.addresses[0].address}“)
+ echo https://$NODE_IP:$NODE_PORT/mfpconsole
+```
+
+Using similar installation method, you can access IBM MobileFirst Analytics Console using `<protocol>://<ip_address>:<node_port>/analytics/console`  and  IBM Mobile Foundation Application Center using <`protocol>://<ip_address>:<node_port>/appcenter/console`
+In addition to the *NodePort* approach to access the Console, the service can also be accessed via [Ingress](https://console.bluemix.net/docs/containers/cs_ingress.html) host.
+
+Follow the steps below to access the console:
+
+1. Go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps/).
+2. Choose the Kubernetes Cluster on which `Analytics/Server/AppCenter` has been deployed, to open the **Overview** page.
+3. Locate the Ingress subdomain for the ingress hostname and access the consoles as follows.
+    * Access the IBM Mobile Foundation Operational Console using:
+     `<protocol>://<ingress-hostname>/mfpconsole`
+    * Access the IBM Mobile Foundation Analytics Console using:
+     `<protocol>://<ingress-hostname>/analytics/console`
+    * Access the IBM Mobile Foundation Application Center Console using:
+     `<protocol>://<ingress-hostname>/appcenter/console`
 
 >**Note:** The port 9600 is exposed internally in the Kubernetes service and is used by the {{ site.data.keys.prod_adj }} Analytics instances as the transport port.
 
 
 ## Sample application
 {: #sample-app}
-See the [{{ site.data.keys.prod_adj }} tutorials](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/), to deploy the sample adapter and to run the sample application on IBM {{ site.data.keys.mf_server }} running on {{ site.data.keys.prod_icp }},
+See the [{{ site.data.keys.prod_adj }} tutorials](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/), to deploy the sample adapter and to run the sample application on IBM {{ site.data.keys.mf_server }} running on IBM Cloud Kubernetes Cluster.
 
 ## Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases
 {: #upgrading-mf-helm-charts}
