@@ -301,4 +301,6 @@ gyp ERR! not ok
 > node install
 ```
 
-This error is due a [known bug in node-gyp](https://github.com/nodejs/node-gyp/issues/1547). These errors can be ignored and do not affect the functioning of the MobileFirst CLI. 
+This error is due a [known bug in node-gyp](https://github.com/nodejs/node-gyp/issues/1547). These errors can be ignored and do not affect the functioning of the MobileFirst CLI. This is applicable for mfpdev-cli iFix level 8.0.2018100112 and higher. To overcome this error, use the `--no-optional` flag during installation. For example, 
+
+```npm install -g mfpdev-cli --no-optional```
