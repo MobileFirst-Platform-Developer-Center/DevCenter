@@ -53,7 +53,7 @@ Mobile Foundation server Metrics configuration, YAML snippet below:<br/>
 scheme: 'https'
 basic_auth:
   username: 'mfpRESTUser'
-  password: 'mpadmin'
+  password: 'mfpadmin'
 tls_config:
   insecure_skip_verify: true
 kubernetes_sd_configs:
