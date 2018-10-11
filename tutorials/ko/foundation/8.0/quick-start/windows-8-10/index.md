@@ -10,14 +10,14 @@ weight: 4
 {: #overview }
 이 데모의 목적은 엔드-투-엔드 플로우를 경험해보는 것입니다.
 
-1. {{ site.data.keys.product_adj }} 클라이언트 SDK가 사전에 번들된 샘플 애플리케이션을 등록하고 {{ site.data.keys.mf_console }}에서 다운로드합니다.
+1. {{ site.data.keys.product_adj }} 클라이언트 SDK에 사전 번들로 제공되는 샘플 애플리케이션이 등록되고 {{ site.data.keys.mf_console }}에서 다운로드됩니다.
 2. 새 어댑터 또는 제공된 어댑터가 {{ site.data.keys.mf_console }}에 배치됩니다.  
 3. 자원 요청을 하도록 애플리케이션 로직이 변경됩니다.
 
 **종료 결과**:
 
-* {{ site.data.keys.mf_server }} ping을 실행함.
-* 어댑터를 사용하여 데이터를 검색함.
+* {{ site.data.keys.mf_server }} ping 실행에 성공함.
+* 어댑터를 사용하여 데이터 검색에 성공함.
 
 #### 전제조건:
 {: #prerequisites }
@@ -28,7 +28,7 @@ weight: 4
 ### 1. {{ site.data.keys.mf_server }} 시작
 {: #1-starting-the-mobilefirst-server }
 [Mobile Foundation 인스턴스를 작성](../../bluemix/using-mobile-foundation)했는지 확인하십시오. 또는  
-[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)를 사용하는 경우, 서버의 폴더로 이동해서 `./run.cmd` 명령을 실행하십시오.
+[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)를 사용하는 경우 서버의 폴더로 이동해서 `./run.cmd` 명령을 실행하십시오.
 
 ### 2. 애플리케이션 작성
 {: #2-creating-an-application }
@@ -36,8 +36,8 @@ weight: 4
 
 1. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하십시오.
     * **Windows** 플랫폼을 선택하십시오.
-    * **MFPStarterCSharp.Windows**를 Windows용 **애플리케이션 ID**로 입력하거나 Windows 전화의 경우 **MFPStarterCSharp.WindowsPhone**을 입력하십시오.
-    * **1.0.0**을 **버전** 값으로 입력하십시오.
+    * Windows용 **애플리케이션 ID**로 **MFPStarterCSharp.Windows**를 입력하거나 Windows 전화의 경우 **MFPStarterCSharp.WindowsPhone**을 입력하십시오.
+    * **버전** 값으로 **1.0.0**을 입력하십시오.
     * **애플리케이션 등록**을 클릭하십시오.
 
     <img class="gifplayer" alt="애플리케이션 등록" src="register-an-application-windows.png"/>
@@ -53,8 +53,8 @@ weight: 4
 2. 솔루션의 **MainPage.xaml.cs** 파일을 선택해서 다음 코드 스니펫을 GetAccessToken() 메소드에 다음과 같이 붙여넣기하십시오.
 
    ```csharp
-try
-                   {
+   try
+      {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
           if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
@@ -83,7 +83,7 @@ try
 
 ### 4. 어댑터 배치
 {: 4-deploy-an-adapter }
-[이 준비된 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 배치하십시오.
+[이 준비된 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 이를 배치하십시오.
 
 <!-- Alternatively, click the **New** button next to **Adapters**.  
 
@@ -109,7 +109,7 @@ try
     * 원격 {{ site.data.keys.mf_server }}를 사용 중인 경우(IBM Cloud에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다.
     * IBM Cloud Private에서 Kubernetes 클러스터를 사용 중이고 배치 유형이 **NodePort**이면, 포트 값이 일반적으로 Kubernetes 클러스터의 서비스에서 공개하는 **NodePort**입니다.
 
-    또는, {{ site.data.keys.mf_cli }}를 설치한 경우에는 프로젝트 루트 폴더로 이동해서 `mfpdev app register` 명령을 실행하십시오. 원격 {{ site.data.keys.mf_server }}가 사용된 경우, [`mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 명령을 실행하여 서버를 추가하고, 예를 들면 `mfpdev app register myIBMCloudServer`를 이어서 실행하십시오.
+    또는 {{ site.data.keys.mf_cli }}를 설치한 경우에는 프로젝트 루트 폴더로 이동해서 `mfpdev app register` 명령을 실행하십시오. 원격 {{ site.data.keys.mf_server }}가 사용된 경우, [`mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 명령을 실행하여 서버를 추가하고, 예를 들면 `mfpdev app register myIBMCloudServer`를 이어서 실행하십시오.
     
 2. **앱 실행** 단추를 누르십시오.
 

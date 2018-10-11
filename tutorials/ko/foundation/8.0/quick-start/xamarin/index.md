@@ -16,7 +16,7 @@ weight: 6
 
 **종료 결과**:
 
-* {{ site.data.keys.mf_server }} ping을 실행함.
+* {{ site.data.keys.mf_server }} ping 실행에 성공함.
 
 #### 전제조건:
 {: #prerequisites }
@@ -26,7 +26,7 @@ weight: 6
 ### 1. {{ site.data.keys.mf_server }} 시작
 {: #1-starting-the-mobilefirst-server }
 [Mobile Foundation 인스턴스를 작성](../../bluemix/using-mobile-foundation)했는지 확인하십시오. 또는  
-[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/)를 사용하는 경우, 서버의 폴더로 이동해서 Mac 및 Linux의 경우 `./run.sh` 또는 Windows의 경우 `run.cmd` 명령을 실행하십시오.
+[ {{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/)를 사용하는 경우 서버의 폴더로 이동해서 `./run.sh`(Mac 및 Linux의 경우) 또는 `run.cmd`(Windows의 경우) 명령을 실행하십시오.
 
 ### 2. 애플리케이션 작성
 {: #2-creating-an-application }
@@ -34,8 +34,8 @@ weight: 6
 
 1. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하십시오.
     * **Android** 플랫폼을 선택하십시오.
-    * **com.ibm.mfpstarterxamarin**을 **애플리케이션 ID**로 입력하십시오(다음 단계에서 다운로드할 애플리케이션 발판에 따라서).
-    * **1.0**을 **버전** 값으로 입력하십시오.
+    * **애플리케이션 ID**로 **com.ibm.mfpstarterxamarin**을 입력하십시오(다음 단계에서 다운로드할 애플리케이션 스캐폴드에 따름).
+    * **버전** 값으로 **1.0**을 입력하십시오.
     * **애플리케이션 등록**을 클릭하십시오.
 
     <img class="gifplayer" alt="애플리케이션 등록" src="register-an-application-xamarin.gif"/>
@@ -101,7 +101,7 @@ weight: 6
 
 ### 4. 어댑터 배치
 {: #4-deploy-an-adapter }
-[이 준비된 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 배치하십시오.
+[이 준비된 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 이를 배치하십시오.
 
 그렇지 않으면 **어댑터** 옆에 있는 **새로 작성** 단추를 클릭하십시오.  
 
@@ -115,7 +115,7 @@ weight: 6
    mfpdev adapter build
    ```
 
-3. 빌드가 완료되면 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 배치하십시오. **[adapter]/target** 폴더에서 어댑터를 찾을 수 있습니다.
+3. 빌드가 완료되면 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 이를 배치하십시오. **[adapter]/target** 폴더에서 어댑터를 찾을 수 있습니다.
 
    <img class="gifplayer" alt="어댑터 배치" src="create-an-adapter.png"/>
 
