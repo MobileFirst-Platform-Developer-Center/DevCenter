@@ -180,7 +180,7 @@ V6.0.0 및 이전 버전의 경우, 동일한 버전의 서버, **.war** 파일,
 
 ## {{ site.data.keys.mf_system_pattern }}의 토큰 라이센싱 요구사항
 {: #token-licensing-requirements-for-mobilefirst-system-pattern }
-토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, {{ site.data.keys.mf_system_pattern_full }}을 배치하기 전에 IBM  Rational  License Key Server를 설치하고 라이센스를 지정하여 구성해야 합니다.
+토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, {{ site.data.keys.mf_system_pattern_full }}을 배치하기 전에 IBM Rational License Key Server를 설치하고 라이센스를 지정하여 구성해야 합니다.
 
 > **중요:** {{ site.data.keys.product }}(WAS ND) 패턴 템플리트는 토큰 라이센싱을 지원하지 않습니다. {{ site.data.keys.product }}(WAS ND) 패턴 템플리트에 기반하여 패턴을 배치할 때는 영구 라이센싱을 사용해야 합니다. 기타 모든 패턴 템플리트에서는 토큰 라이센싱을 지원합니다.
 

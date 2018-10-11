@@ -81,7 +81,7 @@ Java 어댑터의 **adapter.xml** 파일에서 `securityCheckDefinition`라는 X
 ### 보안 검사
 {: #security-check }
 `SecurityCheck`는 Java **인터페이스**이며, 보안 검사를 나타내기 위해 최소 필수 메소드를 정의합니다.  
-이는 각 시나리오를 핸들하기 위해 보안 검사를 구현하는 개발자의 단독 책임입니다.
+이는 각 시나리오를 처리하기 위해 보안 검사를 구현하는 개발자의 단독 책임입니다.
 
 ### ExternalizableSecurityCheck
 {: #externalizablesecuritycheck }

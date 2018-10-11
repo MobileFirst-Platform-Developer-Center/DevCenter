@@ -38,7 +38,7 @@ downloads:
 ### 알림 구성
 {: #notifications-configuration }
 새 Xcode 프로젝트를 작성하거나 기존 프로젝트를 사용하십시오.
-{{ site.data.keys.product_adj }} 고유 iOS SDK가 아직 프로젝트에 없는 경우 [iOS 애플리케이션에 {{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/ios) 학습서의 지시사항을 따르십시오.
+{{ site.data.keys.product_adj }} 네이티브 iOS SDK가 아직 프로젝트에 없는 경우 [iOS 애플리케이션에 {{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/ios) 학습서의 지시사항을 따르십시오.
 
 
 ### 푸시 SDK 추가
@@ -81,7 +81,7 @@ downloads:
 {: #notifications-api }
 ### MFPPush 인스턴스
 {: #mfppush-instance }
-모든 API 호출은 `MFPPush`의 인스턴스에서 호출되어야 합니다.  이는 보기 제어기에서 `var`을 사용한 후(예: `var push = MFPPush.sharedInstance();`) 보기 제어기 전체에서 `push.methodName()`를 호출하여 수행될 수 있습니다.
+모든 API 호출은 `MFPPush`의 인스턴스에서 호출되어야 합니다.  이는 보기 제어기에서 `var`을 사용한 후(예: `var push = MFPPush.sharedInstance();`) 보기 제어기 전체에서 `push.methodName()`을 호출하여 수행될 수 있습니다.
 
 또는 푸시 API 메소드에 액세스해야 하는 각 인스턴스에 대해 `MFPPush.sharedInstance().methodName()`을 호출할 수 있습니다.
 
@@ -265,7 +265,7 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 ## 푸시 알림 처리
 {: #handling-a-push-notification }
 
-푸시 알림은 고유 iOS 프레임워크에 의해 직접 처리됩니다. 애플리케이션 라이프사이클에 따라 iOS 프레임워크에 의해 다양한 메소드가 호출됩니다.
+푸시 알림은 네이티브 iOS 프레임워크에 의해 직접 처리됩니다. 애플리케이션 라이프사이클에 따라 iOS 프레임워크에 의해 다양한 메소드가 호출됩니다.
 
 예를 들어, 애플리케이션이 실행 중인 동안 단순 알림이 수신되는 경우 **AppDelegate**의 `didReceiveRemoteNotification`이 트리거됩니다.
 
@@ -287,7 +287,7 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 
 ## 샘플 애플리케이션
 {: #sample-application }
-Xcode 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80)하십시오.
+Xcode 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80)하십시오.
 
 ### 샘플 사용법
 {: #sample-usage }

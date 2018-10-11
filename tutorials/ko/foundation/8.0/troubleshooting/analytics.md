@@ -65,7 +65,7 @@ ibmmfpfanalytics.logger.config({analyticsCapture: true});
 {% endhighlight %}
 
     <ul>
-        <li>Cordova를 사용하는 크로스 플랫폼 앱의 경우, 구성이 고유 앱과 동일하므로 iOS 또는 Android 안내서를 따르십시오.</li>
+        <li>Cordova를 사용하는 크로스 플랫폼 앱의 경우, 구성이 네이티브 앱과 동일하므로 iOS 또는 Android 안내서를 따르십시오.</li>
         <li>iOS에서 네트워크 분석 데이터 캡처를 사용으로 설정하려면 애플리케이션 위임 <code>application:didFinishLaunchingWithOptions</code> 메소드에 다음 코드를 추가하십시오.<br/>
 
         <b>Objective-C</b>
@@ -99,7 +99,7 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
     <p>라이프사이클 디바이스 이벤트 리스너를 사용하여 분석을 수집하도록 앱을 구성하십시오.</p>
 
     <ul>
-        <li>Cordova를 사용하는 크로스 플랫폼 앱의 경우, 구성이 고유 앱과 동일하므로 iOS 또는 Android 안내서를 따르십시오.</li>
+        <li>Cordova를 사용하는 크로스 플랫폼 앱의 경우, 구성이 네이티브 앱과 동일하므로 iOS 또는 Android 안내서를 따르십시오.</li>
         <li>iOS에서 네트워크 분석 데이터 캡처를 사용으로 설정하려면 애플리케이션 위임 <code>application:didFinishLaunchingWithOptions</code> 메소드에 다음 코드를 추가하십시오.<br/><br/>
 
         <b>Objective-C</b>

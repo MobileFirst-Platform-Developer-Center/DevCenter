@@ -29,7 +29,7 @@ weight: 3
 
 ### 개발
 {: #development }
-Cordova 또는 Native iOS 애플리케이션을 개발하려면 [Xcode](https://developer.apple.com/xcode/)가 설치된 상태로 [Mac](https://www.apple.com/mac/) 워크스테이션을 사용해야 합니다.
+Cordova 또는 네이티브 iOS 애플리케이션을 개발하려면 [Xcode](https://developer.apple.com/xcode/)가 설치된 상태로 [Mac](https://www.apple.com/mac/) 워크스테이션을 사용해야 합니다.
 
 Xcode는 Objective-C 또는 Swift 프로그래밍 언어를 사용하여 iOS 플랫폼을 위한 애플리케이션을 개발하는 데 필요한 도구 및 API를 제공합니다.</p>
 

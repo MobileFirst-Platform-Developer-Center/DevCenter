@@ -9,7 +9,7 @@ weight: 3
 ## 개요
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }}는 데이터 저장 및 검색 조회 실행을 위해 **Elasticsearch 1.5x**를 사용합니다.  
+{{ site.data.keys.mf_analytics_full }}는 데이터 저장 및 검색 조회 실행을 위해 **Elasticsearch 1.7.5**를 사용합니다.  
 
 Elasticsearch는 데이터 저장 및 탐색의 속도 및 스케일 비율을 늘리는 실시간 분산 검색 및 분석 엔진입니다. Elasticsearch는 전체 텍스트 검색, 구조화된 검색에 사용됩니다.
 
@@ -19,7 +19,7 @@ Elasticsearch 인스턴스는 {{ site.data.keys.mf_analytics_console_full }}을 
 
 {{ site.data.keys.mf_analytics }}는 모든 Elasticsearch 기능을 노출합니다. 사용자는 Elasticsearch 조회, 디버깅 및 최적화를 완전히 활용할 수 있습니다.
 
-여기에 설명된 기능 이상의 Elasticsearch 기능에 대한 자세한 정보는 [Elasticsearch 문서](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)를 참조하십시오.
+여기에 설명된 기능 이상의 Elasticsearch 기능에 대한 자세한 정보는 [Elasticsearch 문서](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html)를 참조하십시오.
 
 ## {{ site.data.keys.mf_analytics_server }}에서 Elasticsearch 관리
 {: #managing-elasticsearch-on-the-mobilefirst-analytics-server }
@@ -72,4 +72,4 @@ http://localhost:9500/_nodes
 http://localhost:9500/*/_mapping
 ```
 
-> Elasticsearch는 다수의 추가 REST 엔드포인트를 노출합니다. 자세히 학습하려면 [Elasticsearch 문서](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)를 참조하십시오.
+> Elasticsearch는 다수의 추가 REST 엔드포인트를 노출합니다. 자세히 학습하려면 [Elasticsearch 문서](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html)를 참조하십시오.

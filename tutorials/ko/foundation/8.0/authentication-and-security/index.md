@@ -138,6 +138,109 @@ Pragma: no-cache
     </div>
 </div>
 
+### 새로 고치기 토큰
+{: #refresh-tokens}
+
+새로 고치기 토큰은 특수한 유형의 토큰으로, 이를 사용하여 액세스 토큰이 만료된 경우 새 액세스 토큰을 확보할 수 있습니다. 새 액세스 토큰을 요청하려는 경우 유효한 새로 고치기 토큰을 제시할 수 있습니다. 새로 고치기 토큰은 장기 토큰이며, 액세스 토큰과 비교해서 더 오랜 기간 유효합니다.
+
+새로 고치기 토큰은 사용자를 계속 인증된 상태로 허용하기 때문에 애플리케이션에서 신중하게 사용해야 합니다. 소셜 미디어 애플리케이션, 전자 상거래 애플리케이션, 제품 카탈로그 브라우징 등 애플리케이션 제공자가 사용자를 정기적으로 인증하지 않는 경우 새로 고치기 토큰을 사용할 수 있습니다. 사용자 인증을 자주 지시하는 애플리케이션은 새로 고치기 토큰 사용을 피해야 합니다.  
+
+#### MobileFirst 새로 고치기 토큰
+{: #mfp-refresh-token}
+
+MobileFirst 새로 고치기 토큰은 액세스 토큰과 같이 클라이언트의 권한 부여 권한을 설명하는 디지털 서명된 엔티티입니다. 새로 고치기 토큰은 동일한 범위의 새 액세스 토큰을 가져오는 데 사용할 수 있습니다. 특정 범위에 대한 클라이언트의 권한 부여 요청이 허용되고 클라이언트가 인증되면 권한 부여 서버의 토큰 엔드포인트는 요청된 액세스 토큰 및 새로 고치기 토큰이 포함된 HTTP 응답을 클라이언트에게 전송합니다. 액세스 토큰이 만료되면 클라이언트는 액세스 토큰 및 새로 고치기 토큰의 새 세트를 얻기 위해 인증 서버의 토큰 엔드포인트로 새로 고치기 토큰을 전송합니다.
+
+**구조**
+
+MobileFirst 액세스 토큰과 마찬가지로, MobileFirst 새로 고치기 토큰은 다음 정보를 포함합니다.
+* **클라이언트 ID**: 클라이언트의 고유 ID입니다.
+* **범위**: 토큰에 부여된 범위입니다(OAuth 범위 참조). 이 범위는 필수 애플리케이션 범위를 포함하지 않습니다.
+* **토큰 만기 시간**: 토큰이 올바르지 않게 되는(만기되는) 시간(초)입니다.
+
+#### 토큰 만기
+{: #token-expiration}
+
+새로 고치기 토큰의 토큰 만기 기간은 일반 액세스 토큰 만료 기간보다 깁니다. 만기 시간이 경과할 때까지 새로 고치기 토큰은 일단 유효한 상태를 유지합니다. 이 유효 기간 내 클라이언트는 새로 고치기 토큰을 사용하여 액세스 토큰 및 새로 고치기 토큰의 새 세트를 가져올 수 있습니다. 새로 고치기 토큰의 고정된 만료 기간은 30일입니다. 클라이언트가 액세스 토큰 및 새로 고치기 토큰의 새 세트를 성공적으로 얻을 때마다 새로 고치기 토큰 만료가 재설정되므로, 클라이언트는 절대로 만료되지 않는 토큰을 이용할 수 있습니다. 액세스 토큰 만료 규칙은 **액세스 토큰** 절에서 설명한 것과 동일합니다.
+
+<div class="panel-group accordion" id="configuration-explanation-rt" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="refresh-token-expiration">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>새로 고치기 토큰 기능 사용</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
+            <div class="panel-body">
+            <p>새로 고치기 토큰 기능은 클라이언트 측 및 서버 측 각각에서 다음 특성을 사용하여 사용할 수 있습니다.</p>
+            <b>클라이언트 측 특성</b><br/>
+
+            <i>파일 이름</i>.:            mfpclient.properties<br/>
+            <i>특성 이름</i>:   wlEnableRefreshToken<br/>
+            <i>특성 값</i>:   true<br/>
+
+            예를 들어, 다음과 같습니다.<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>서버 측 특성</b><br/>
+
+            <i>파일 이름</i>:            server.xml<br/>
+            <i>특성 이름</i>:   mfp.security.refreshtoken.enabled.apps<br/>
+            <i>특성 값</i>:   <i>‘;’으로 분리된 애플리케이션 번들 ID</i><br/><br/>
+
+            <p>예를 들어, 다음과 같습니다.</p><br/>
+            {% highlight xml %}
+            <jndiEntry jndiName="mfp/mfp.security.refreshtoken.enabled.apps" value='"com.sample.android.myapp1;com.sample.android.myapp2"'/>
+            {% endhighlight %}
+
+            <p>다른 플랫폼에 대해 다른 번들 ID를 사용합니다.</p>
+
+                                    <br/>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>닫기 섹션</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+<div class="panel-group accordion" id="response-refresh-token" role="tablist">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="response-structure-rt">
+        <h4 class="panel-title">
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>새로 고치기 토큰 응답 구조</b></a>
+        </h4>
+    </div>
+
+    <div id="collapse-response-structure-rt" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure-rt">
+      <div class="panel-body">
+        <p>다음은 권한 부여 서버의 유효한 새로 고치기 토큰 응답의 예제입니다.</p>
+
+        {% highlight json %}
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+{
+            "token_type": "Bearer",
+            "expires_in": 3600,
+            "access_token": "yI6ICJodHRwOi8vc2VydmVyLmV4YW1",
+            "scope": "scopeElement1 scopeElement2",
+            "refresh_token": "yI7ICasdsdJodHRwOi8vc2Vashnneh "
+        }
+        {% endhighlight %}
+
+        <p>새로 고치기 토큰 응답에는 액세스 토큰 응답 구조에서 설명한 기타 특성 오브젝트를 제외한 추가 특성 오브젝트 <code>refresh_token</code>이 있습니다.</p>
+
+        <br/>
+              <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>닫기 섹션</b></a>
+            </div>
+          </div>
+        </div>
+</div>
+
+
+>**참고:** 새로 고치기 토큰은 액세스 토큰에 비해 유효 기간이 깁니다. 따라서 새로 고치기 토큰은 신중하게 사용해야 합니다. 정기적으로 사용자 인증이 필요하지 않은 애플리케이션이 새로 고치기 토큰 기능을 사용하는 데 적합한 후보입니다. 현재 MobileFirst는 Android 플랫폼에서만 새로 고치기 토큰 기능을 지원합니다. Android 및 iOS 애플리케이션에서는 다른 번들 ID를 사용하는 것이 좋습니다.
+
+
 ### 보안 검사
 {: #security-checks }
 
@@ -222,7 +325,7 @@ scope = `access-restricted deletePrivilege`
 ## 자원 보호
 {: #protecting-resources }
 
-OAuth 모델에서 보호 자원은 액세스 토큰을 요구하는 자원입니다. {{ site.data.keys.product_adj }} 보안 프레임워크를 사용하여 {{ site.data.keys.mf_server }}의 인스턴스에서 호스팅되는 자원과 외부 서버의 자원을 모두 보호할 수 있습니다. 자원에 대한 액세스 토큰을 얻는 데 필요한 권한을 정의하는 범위를 지정하여 자원을 보호합니다.
+OAuth 모델에서 보호된 자원은 액세스 토큰을 요구하는 자원입니다. {{ site.data.keys.product_adj }} 보안 프레임워크를 사용하여 {{ site.data.keys.mf_server }}의 인스턴스에서 호스팅되는 자원과 외부 서버의 자원을 모두 보호할 수 있습니다. 자원에 대한 액세스 토큰을 얻는 데 필요한 권한을 정의하는 범위를 지정하여 자원을 보호합니다.
 
 다양한 방법으로 사용자의 자원을 보호할 수 있습니다.
 

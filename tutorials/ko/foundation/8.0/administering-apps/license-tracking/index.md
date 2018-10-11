@@ -123,7 +123,7 @@ rm password.txt
 {: #causes-of-license-validation-failure }
 다음과 같은 경우 애플리케이션이 등록되거나 삭제되면 라이센스 유효성 검증에 실패합니다.
 
-* Rational Common Licensing 기본 라이브러리가 설치되어 구성되지 않았습니다.
+* Rational Common Licensing 네이티브 라이브러리가 설치되어 구성되지 않았습니다.
 * 관리 서비스에 토큰 라이센싱이 구성되어 있지 않습니다. 자세한 정보는 [토큰 라이센싱을 위한 설치 및 구성](../../installation-configuration/production/token-licensing)을 참조하십시오.
 * Rational License Key Server에 액세스할 수 없습니다.
 * 사용할 수 있는 토큰이 부족합니다.
@@ -186,7 +186,7 @@ IBM MobileFirst Foundation은 IBM Software License Metric Tag(SLMT) 파일을 �
 {: #about-the-application-metric }
 개발 서버에서 MobileFirst 런타임 환경이 실행 중인 경우가 아니면 APPLICATION 메트릭에 하위 유형이 없습니다.
 
-이 메트릭에 대해 보고되는 값은 MobileFirst 런타임 환경에 배치되는 애플리케이션의 수입니다. 각 애플리케이션은 새 애플리케이션인지, 추가 브랜드 배치인지 아니면 기존 애플리케이션의 추가 유형(예: 기본, 하이브리드 또는 웹)인지에 상관없이 한 단위로 계수됩니다.
+이 메트릭에 대해 보고되는 값은 MobileFirst 런타임 환경에 배치되는 애플리케이션의 수입니다. 각 애플리케이션은 새 애플리케이션인지, 추가 브랜드 배치인지 아니면 기존 애플리케이션의 추가 유형(예: 네이티브, 하이브리드 또는 웹)인지에 상관없이 한 단위로 계수됩니다.
 
 #### ADDRESSABLE_DEVICE 메트릭 정보
 {: #about-the-addressable_device-metric }

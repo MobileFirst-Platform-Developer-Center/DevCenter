@@ -54,10 +54,10 @@ Android 디바이스에서는 기본적으로 FIPS 140-2로 유효성 검증되�
 
 * 이 FIPS 140-2 유효성 검증 모드는 JSONStore 기능으로 저장되는 로컬 데이터의 보호(암호화) 및 {{ site.data.keys.product_adj }} 클라이언트와 {{ site.data.keys.mf_server }} 간 HTTPS 통신의 보호에만 적용됩니다.
 * 이 기능은 iOS 플랫폼과 Android 플랫폼에서만 지원됩니다.
-    * Android에서는 x86 또는 armeabi 아키텍처를 사용하는 디바이스 또는 시뮬레이터에서만 이 기능이 지원됩니다. armv5 또는 armv6 아키텍처를 사용하는 Android에서는 지원되지 않습니다. 사용되는 OpenSSL 라이브러리가 Android의 armv5 또는 armv6에 대한 FIPS 140-2 유효성 검증을 얻지 못했기 때문입니다. {{ site.data.keys.product_adj }} 라이브러리에서 64비트 아키텍처를 지원해도 64비트 아키텍처에서 FIPS 140-2는 지원되지 않습니다. 프로젝트에 32비트 기본 NDK 라이브러리만 포함되어 있는 경우 FIPS 140-2를 64비트 디바이스에서 실행할 수 있습니다.
+    * Android에서는 x86 또는 armeabi 아키텍처를 사용하는 디바이스 또는 시뮬레이터에서만 이 기능이 지원됩니다. armv5 또는 armv6 아키텍처를 사용하는 Android에서는 지원되지 않습니다. 사용되는 OpenSSL 라이브러리가 Android의 armv5 또는 armv6에 대한 FIPS 140-2 유효성 검증을 얻지 못했기 때문입니다. {{ site.data.keys.product_adj }} 라이브러리에서 64비트 아키텍처를 지원해도 64비트 아키텍처에서 FIPS 140-2는 지원되지 않습니다. 프로젝트에 32비트 네이티브 NDK 라이브러리만 포함되어 있는 경우 FIPS 140-2를 64비트 디바이스에서 실행할 수 있습니다.
     * iOS에서는 i386, x86_64, armv7, armv7s, arm64 아키텍처에서 이 기능이 지원됩니다.
-* 이 기능은 기본 애플리케이션이 아닌 하이브리드 애플리케이션에서 작동합니다.
-* 고유 iOS의 경우 iOS FIPS 라이브러리를 통해 FIPS를 사용할 수 있으며 기본적으로 사용으로 설정되어 있습니다. FIPS 140-2를 사용으로 설정하는 조치가 필요하지 않습니다.
+* 이 기능은 네이티브 애플리케이션이 아닌 하이브리드 애플리케이션에서 작동합니다.
+* 네이티브 iOS의 경우 iOS FIPS 라이브러리를 통해 FIPS를 사용할 수 있으며 기본적으로 사용으로 설정되어 있습니다. FIPS 140-2를 사용으로 설정하는 조치가 필요하지 않습니다.
 * HTTPS 통신의 경우:
     * Android 디바이스의 경우 {{ site.data.keys.product_adj }} 클라이언트와 {{ site.data.keys.mf_server }} 간 통신에서만 클라이언트의 FIPS 140-2 라이브러리를 사용합니다. 기타 서버 또는 서비스로 직접 연결하는 경우 FIPS 140-2 라이브러리를 사용하지 않습니다.
     * {{ site.data.keys.product_adj }} 클라이언트는 지원되는 환경에서 실행되는 {{ site.data.keys.mf_server }}하고만 통신할 수 있습니다. 지원되는 환경은 [시스템 요구사항](http://www-01.ibm.com/support/docview.wss?uid=swg27024838)에 나열되어 있습니다. {{ site.data.keys.mf_server }}가 지원되지 않는 환경에서 실행되는 경우에는 HTTPS 연결에 실패하고 키 크기가 너무 작음 오류가 발생합니다. 이 오류는 HTTP 통신에서는 발생하지 않습니다.
@@ -91,7 +91,7 @@ Android 디바이스의 경우 `cordova-plugin-mfp-fips` Corodva 플러그인을
 java.lang.UnsatisfiedLinkError: dlopen failed: "..." is 32-bit instead of 64-bit
 ```
 
-이 오류는 Android 프로젝트에 64비트 기본 라이브러리가 있고 해당 라이브러리 사용 시 FIPS 140-2가 작동하지 않음을 의미합니다. 확인하려면 Android 프로젝트에서 src/main/libs 또는 src/main/jniLibs로 이동하여 x86_64 또는 arm64-v8a 폴더가 있는지 확인하십시오. 폴더가 있는 경우 이들 폴더를 삭제하면 FIPS 140-2가 다시 작동합니다.
+이 오류는 Android 프로젝트에 64비트 네이티브 라이브러리가 있고 해당 라이브러리 사용 시 FIPS 140-2가 작동하지 않음을 의미합니다. 확인하려면 Android 프로젝트에서 src/main/libs 또는 src/main/jniLibs로 이동하여 x86_64 또는 arm64-v8a 폴더가 있는지 확인하십시오. 폴더가 있는 경우 이들 폴더를 삭제하면 FIPS 140-2가 다시 작동합니다.
 
 ## HTTPS 및 JSONStore 암호화를 위해 FIPS 140-2 모드 구성
 {: #configure-fips-140-2-mode-for-https-and-jsonstore-encryption }

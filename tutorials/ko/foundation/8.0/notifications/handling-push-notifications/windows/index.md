@@ -13,7 +13,7 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-디바이스를 등록 및 등록 취소하고 태그에 등록 및 등록 취소하기 위해 {{ site.data.keys.product_adj }} 제공 알림 API를 사용할 수 있습니다. 이 학습서에서는 C#을 사용하여 고유 Windows 8.1 Universal 및 Windows 10 UWP 애플리케이션에서 푸시 알림을 처리하는 방법에 대해 학습합니다.
+디바이스를 등록 및 등록 취소하고 태그에 등록 및 등록 취소하기 위해 {{ site.data.keys.product_adj }} 제공 알림 API를 사용할 수 있습니다. 이 학습서에서는 C#을 사용하여 네이티브 Windows 8.1 Universal 및 Windows 10 UWP 애플리케이션에서 푸시 알림을 처리하는 방법에 대해 학습합니다.
 
 **전제조건:**
 
@@ -33,7 +33,7 @@ downloads:
 ## 알림 구성
 {: #notifications-configuration }
 새 Visual Studio 프로젝트를 작성하거나 기존 프로젝트를 사용하십시오.  
-{{ site.data.keys.product_adj }} 고유 Windows SDK가 아직 프로젝트에 없는 경우 [Windows 애플리케이션에 {{ site.data.keys.product_adj }} SDK 추가](../../../application-development/sdk/windows-8-10) 학습서의 지시사항을 따르십시오.
+{{ site.data.keys.product_adj }} 네이티브 Windows SDK가 아직 프로젝트에 없는 경우 [Windows 애플리케이션에 {{ site.data.keys.product_adj }} SDK 추가](../../../application-development/sdk/windows-8-10) 학습서의 지시사항을 따르십시오.
 
 ### 푸시 SDK 추가
 {: #adding-the-push-sdk }
@@ -51,7 +51,7 @@ downloads:
 {: #notifications-api }
 ### MFPPush 인스턴스
 {: #mfppush-instance }
-모든 API 호출은 `MFPPush`의 인스턴스에서 호출되어야 합니다.  이는 `private MFPPush PushClient = MFPPush.GetInstance();` 등의 변수를 작성한 후 클래스 전체에서 `PushClient.methodName()`를 호출하여 수행될 수 있습니다.
+모든 API 호출은 `MFPPush`의 인스턴스에서 호출되어야 합니다.  이는 `private MFPPush PushClient = MFPPush.GetInstance();` 등의 변수를 작성한 후 클래스 전체에서 `PushClient.methodName()`을 호출하여 수행될 수 있습니다.
 
 또는 푸시 API 메소드에 액세스해야 하는 각 인스턴스에 대해 `MFPPush.GetInstance().methodName()`을 호출할 수 있습니다.
 
@@ -228,8 +228,8 @@ WNS는 일반 http 또는 https 요청을 사용합니다.
 
 ## 샘플 애플리케이션
 {: #sample-application }
-Windows 8.1 Universal 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80)하십시오.  
-Windows 10 UWP 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80)하십시오.
+Windows 8.1 Universal 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80)하십시오.  
+Windows 10 UWP 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80)하십시오.
 
 ### 샘플 사용법
 {: #sample-usage }

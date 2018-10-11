@@ -184,7 +184,7 @@ navigator.globalization.getPreferredLanguage(
 
 ## 샘플 애플리케이션
 {: #sample-application }
-Cordova 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/Translation)하십시오.  
+Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/Translation)하십시오.  
 
 ### 샘플 사용법
 {: #sample-usage }

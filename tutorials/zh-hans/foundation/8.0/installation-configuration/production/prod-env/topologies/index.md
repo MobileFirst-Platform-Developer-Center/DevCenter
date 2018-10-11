@@ -446,7 +446,7 @@ JNDI 属性是管理服务所必需的。 请参阅[配置 Apache Tomcat 的 JMX
 
 #### JNDI 属性配置
 {: #configuration-of-jndi-properties-2 }
-以下各表列出了一些 JNDI 属性，需要这些属性才能在管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。 有关这些属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。有关如何手动安装 Liberty 集合体的指示信息，请参阅[手动安装 WebSphere Application Server Liberty 集合体](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)。
+以下各表列出了一些 JNDI 属性，需要这些属性才能在管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。 有关这些属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。 有关如何手动安装 Liberty 集合体的指示信息，请参阅[手动安装 WebSphere Application Server Liberty 集合体](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)。
 
 管理服务需要以下全局 JNDI 属性：
 

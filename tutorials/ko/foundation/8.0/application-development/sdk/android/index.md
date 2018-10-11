@@ -14,7 +14,7 @@ weight: 3
 * **IBMMobileFirstPlatformFoundationJSONStore** - JSONStore 프레임워크를 포함합니다. 자세한 정보는 [Andoid용 JSONStore 학습서](../../jsonstore/android/)를 검토하십시오.
 * **IBMMobileFirstPlatformFoundationPush** - 푸시 알림 프레임워크를 포함합니다. 자세한 정보는 [알림 학습서](../../../notifications/)를 검토하십시오.
 
-이 학습서에서는 Gradle을 사용하여 신규 또는 기존 Android 애플리케이션에 {{ site.data.keys.product_adj }} 고유 SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법 및 프로젝트에 추가되는 {{ site.data.keys.product_adj }} 구성 파일에 대한 정보를 찾는 방법에 대해서도 학습합니다.
+이 학습서에서는 Gradle을 사용하여 신규 또는 기존 Android 애플리케이션에 {{ site.data.keys.product_adj }} 네이티브 SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법 및 프로젝트에 추가되는 {{ site.data.keys.product_adj }} 구성 파일에 대한 정보를 찾는 방법에 대해서도 학습합니다.
 
 **전제조건:**
 
@@ -24,16 +24,16 @@ weight: 3
 
 #### 다음으로 이동:
 {: #jump-to }
-- [{{ site.data.keys.product_adj }} 고유 SDK 추가](#adding-the-mobilefirst-native-sdk)
-- [{{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가](#manually-adding-the-mobilefirst-native-sdk)
-- [{{ site.data.keys.product_adj }} 고유 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
-- [생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
+- [{{ site.data.keys.product_adj }} 네이티브 SDK 추가](#adding-the-mobilefirst-native-sdk)
+- [{{ site.data.keys.product_adj }} 네이티브 SDK를 수동으로 추가](#manually-adding-the-mobilefirst-native-sdk)
+- [{{ site.data.keys.product_adj }} 네이티브 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
+- [생성되는 {{ site.data.keys.product_adj }} 네이티브 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
 - [Javadoc 및 Android 서비스의 지원](#support-for-javadoc-and-android-service)
 - [다음 학습서](#tutorials-to-follow-next)
 
-## {{ site.data.keys.product_adj }} 고유 SDK 추가
+## {{ site.data.keys.product_adj }} 네이티브 SDK 추가
 {: #adding-the-mobilefirst-native-sdk }
-아래 지시사항에 따라 신규 또는 기존 Android Studio 프로젝트에 {{ site.data.keys.product_adj }} 고유 SDK를 추가하고 {{ site.data.keys.mf_server }} 인스턴스에 애플리케이션을 등록하십시오.
+아래 지시사항에 따라 신규 또는 기존 Android Studio 프로젝트에 {{ site.data.keys.product_adj }} 네이티브 SDK를 추가하고 {{ site.data.keys.mf_server }} 인스턴스에 애플리케이션을 등록하십시오.
 
 시작하기 전에 {{ site.data.keys.mf_server }}가 실행 중인지 확인하십시오.  
 로컬로 설치된 서버를 사용하는 경우: **명령행** 창에서 서버의 폴더로 이동하고 `./run.sh`(Mac 또는 Linux OS에서)나 `run.cmd`(Windows에서) 명령을 실행하십시오.
@@ -95,7 +95,7 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
 
 > Gradle 동기화 요청이 표시되면 허용하십시오.
 
-### {{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가
+### {{ site.data.keys.product_adj }} 네이티브 SDK를 수동으로 추가
 {: #manually-adding-the-mobilefirst-native-sdk }
 {{ site.data.keys.product_adj }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다.
 
@@ -147,9 +147,9 @@ repositories {
 2. 다음 명령을 실행하십시오.
 
     ```bash
-    mfpdev app register
+   mfpdev app register
     ```
-    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 추가하십시오.
+    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 이를 추가하십시오.
 
 `mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록한 후에 Android Studio 프로젝트의 **[project root]/app/src/main/assets/** 폴더에 **mfpclient.properties** 파일을 생성하고 {{ site.data.keys.mf_server }}를 식별하는 메타데이터에 추가합니다.
 
@@ -169,26 +169,26 @@ WLClient.createInstance(this);
 
 **참고:** `WLClient` 인스턴스는 전체 애플리케이션 라이프사이클 중에 한 번만 작성해야 합니다. Android 애플리케이션 클래스를 사용하여 수행할 것을 권장합니다.
 
-## {{ site.data.keys.product_adj }} 고유 SDK 업데이트
+## {{ site.data.keys.product_adj }} 네이티브 SDK 업데이트
 {: #updating-the-mobilefirst-native-sdk }
-최신 릴리스로 {{ site.data.keys.product_adj }} 고유 SDK를 업데이트하려면 릴리스 버전 번호를 찾고 **build.gradle** 파일에서 `version` 특성을 적절하게 업데이트하십시오.  
+최신 릴리스로 {{ site.data.keys.product_adj }} 네이티브 SDK를 업데이트하려면 릴리스 버전 번호를 찾고 **build.gradle** 파일에서 `version` 특성을 적절하게 업데이트하십시오.  
 위의 4단계를 참조하십시오.
 
 SDK 릴리스는 SDK의 [JCenter 저장소](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#)에 있습니다.
 
-## 생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트
+## 생성되는 {{ site.data.keys.product_adj }} 네이티브 SDK 아티팩트
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.properties
 {: #mfpclient.properties }
 이 파일은 Android Studio 프로젝트의 **./app/src/main/assets/** 폴더에 있으며, {{ site.data.keys.mf_server }}에서 Android 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-|특성            |설명                                                         |예제 값 |
+| 특성            | 설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
-|wlServerProtocol    |{{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             |HTTP 또는 HTTPS  |
-|wlServerHost        |{{ site.data.keys.mf_server }}의 호스트 이름입니다.                            |192.168.1.63   |
-|wlServerPort        |{{ site.data.keys.mf_server }}의 포트입니다.                                 |9080           |
-|wlServerContext     |{{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. |/mfp/          |
-|languagePreferences |클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.           |en             |
+| wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
+| wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
+| wlServerPort        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. | /mfp/          |
+| languagePreferences | 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.           | en             |
 
 ## Javadoc 및 Android 서비스의 지원
 {: #support-for-javadoc-and-android-service }
@@ -196,7 +196,7 @@ Javadoc 및 Android 서비스의 지원에 대한 정보는 [추가 정보](addi
 
 ## 다음 학습서
 {: #tutorials-to-follow-next }
-이제 {{ site.data.keys.product_adj }} 고유 SDK가 통합되었으므로 다음을 수행할 수 있습니다.
+이제 {{ site.data.keys.product_adj }} 네이티브 SDK가 통합되었으므로 다음을 수행할 수 있습니다.
 
 - [{{ site.data.keys.product }} SDK 사용 학습서](../) 검토
 - [어댑터 개발 학습서](../../../adapters/) 검토
