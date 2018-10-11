@@ -81,7 +81,7 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 <img alt="샘플 애플리케이션의 이미지" src="sample-app.png" style="float:right"/>
 ## 샘플 애플리케이션
 {: #sample-application }
-Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80)하십시오.
+Cordova 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80)하십시오.
 
 **참고:** 샘플을 실행할 Android 디바이스에 Google Play Services의 최신 버전이 설치되어 있어야 합니다.
 

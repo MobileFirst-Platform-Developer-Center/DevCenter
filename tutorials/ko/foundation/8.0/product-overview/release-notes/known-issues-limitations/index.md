@@ -139,10 +139,10 @@ V8.0.0에서는 Windows 기반 직접 업데이트가 지원되지 않습니다.
 * 이 FIPS 140-2 유효성 검증 모드는 JSONStore 기능에 의해 저장되는 로컬 데이터의 보호(암호화) 및 {{ site.data.keys.product_adj }} 클라이언트와 {{ site.data.keys.mf_server }} 간 HTTPS 통신의 보호에만 적용됩니다.
     * HTTPS 통신의 경우, {{ site.data.keys.product_adj }} 클라이언트와 {{ site.data.keys.mf_server }} 사이의 통신에서만 클라이언트의 FIPS 140-2 라이브러리를 사용합니다. 기타 서버 또는 서비스로 직접 연결하는 경우 FIPS 140-2 라이브러리를 사용하지 않습니다.
 * 이 기능은 iOS 및 Android 플랫폼에서만 지원됩니다.
-    * Android의 경우, 이 기능은 x86 또는 armeabi 아키텍처를 사용하는 디바이스 또는 시뮬레이터에서만 지원됩니다. armv5 또는 armv6 아키텍처를 사용하는 Android에서는 지원되지 않습니다. 사용된 OpenSSL 라이브러리가 Android에서 armv5 또는 armv6의 FIPS 140-2 유효성 검증을 받지 못했기 때문입니다. {{ site.data.keys.product_adj }} 라이브러리가 64비트 아키텍처를 지원하더라도 FIPS 140-2는 64비트 아키텍처에서 지원되지 않습니다. 프로젝트에 32비트 고유 NDK 라이브러리가 포함되어 있는 경우에만 FIPS 140-2가 64비트 디바이스에서 실행될 수 있습니다.
+    * Android의 경우, 이 기능은 x86 또는 armeabi 아키텍처를 사용하는 디바이스 또는 시뮬레이터에서만 지원됩니다. armv5 또는 armv6 아키텍처를 사용하는 Android에서는 지원되지 않습니다. 사용된 OpenSSL 라이브러리가 Android에서 armv5 또는 armv6의 FIPS 140-2 유효성 검증을 받지 못했기 때문입니다. {{ site.data.keys.product_adj }} 라이브러리가 64비트 아키텍처를 지원하더라도 FIPS 140-2는 64비트 아키텍처에서 지원되지 않습니다. 프로젝트에 32비트 네이티브 NDK 라이브러리가 포함되어 있는 경우에만 FIPS 140-2가 64비트 디바이스에서 실행될 수 있습니다.
     * iOS의 경우, 이 기능은 i386, x86_64, armv7, armv7s 및 arm64 아키텍처에서 지원됩니다.
-* 이 기능은 고유 애플리케이션이 아닌 하이브리드 애플리케이션에서 작동됩니다.
-* 고유 iOS의 경우 FIPS는 iOS FIPS 라이브러리를 통해 사용할 수 있으며 기본적으로 사용으로 설정되어 있습니다. FIPS 140-2를 사용으로 설정하기 위해 조치를 수행할 필요가 없습니다.
+* 이 기능은 네이티브 애플리케이션이 아닌 하이브리드 애플리케이션에서 작동됩니다.
+* 네이티브 iOS의 경우 FIPS는 iOS FIPS 라이브러리를 통해 사용할 수 있으며 기본적으로 사용으로 설정되어 있습니다. FIPS 140-2를 사용으로 설정하기 위해 조치를 수행할 필요가 없습니다.
 * 클라이언트에서 사용자 등록 기능 사용은 FIPS 140-2 기능에서 지원되지 않습니다.
 * Application Center 클라이언트는 FIPS 140-2 기능을 지원하지 않습니다.
 
@@ -154,7 +154,7 @@ Application Center 또는 {{ site.data.keys.mf_server }}에 수정사항 또는 
 {: #jsonstore-supported-architectures }
 Android의 경우, JSONStore에서는 ARM, ARM v7 및 x86 32비트 아키텍처를 지원합니다. 기타 아키텍처는 현재 지원되지 않습니다. 다른 아키텍처를 사용하려고 시도하면 예외가 발생하며 애플리케이션이 잠재적으로 손상됩니다.
 
-Windows 고유 애플리케이션에서는 JSON 저장소가 지원되지 않습니다.
+Windows 네이티브 애플리케이션에서는 JSON 저장소가 지원되지 않습니다.
 
 ### Liberty 서버 제한사항
 {: #liberty-server-limitations }
@@ -273,9 +273,11 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 
 ### Android 애플리케이션에서 지원되지 않는 원시 IPv6 주소
 {: #raw-ipv6-address-not-supported-in-android-applications }
-고유 Android 애플리케이션에 대한 **mfpclient.properties**의 구성 동안 {{ site.data.keys.mf_server }}가 IPv6 주소를 가진 호스트에 있는 경우, IPV6 주소에 대한 맵핑된 호스트 이름을 사용하여 **mfpclient.properties**의 **wlServerHost** 특성을 구성하십시오. 원시 IPv6 주소를 가진 **wlServerHost** 특성은 {{ site.data.keys.mf_server }}에 연결하기 위한 애플리케이션의 시도에 실패합니다.
+네이티브 Android 애플리케이션에 대한 **mfpclient.properties**의 구성 동안 {{ site.data.keys.mf_server }}가 IPv6 주소를 가진 호스트에 있는 경우, IPV6 주소에 대한 맵핑된 호스트 이름을 사용하여 **mfpclient.properties**의 **wlServerHost** 특성을 구성하십시오. 원시 IPv6 주소를 가진 **wlServerHost** 특성은 {{ site.data.keys.mf_server }}에 연결하기 위한 애플리케이션의 시도에 실패합니다.
 
 ### Cordova 앱의 기본 동작 수정은 권장되지 않음
 {:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
 {{ site.data.keys.product_adj }} Cordova SDK가 프로젝트에 추가되면 Cordova 앱의 기본 동작을 수정(예: 뒤로 버튼 동작 무시)하여 Google Play 스토어에서 제출 시 앱을 거부 할 수 있습니다.
 Google Play 스토어에 제출된 다른 오류는 Google 지원팀에 문의할 수 있습니다.
+
+>**참고:** MobileFirst 8.0 iFix 2018년 1월 이후 릴리스 버전을 사용하는 경우 서버 및 클라이언트 모두 동일한 버전으로 업데이트하는 것이 좋습니다.

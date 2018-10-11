@@ -30,7 +30,7 @@ APAR 번호가 나열되면 해당 APAR 번호에 대한 임시 수정사항 REA
 
 ### Cordova 애플리케이션
 {: #cordova-applications }
-#### Studio 플러그인으로 Eclipse에서 Cordova 프로젝트에 대한 고유 IDE 열기
+#### Studio 플러그인으로 Eclipse에서 Cordova 프로젝트에 대한 네이티브 IDE 열기
 {: #opening-the-native-ide-for-a-cordova-project-from-eclipse-with-the-studio-plug-in }
 Eclipse IDE에 설치된 Studio 플러그인을 통해 사용자는 기존 Cordova 프로젝트를 Android Studio에서 열거나 Xcode를 Eclipse 인터페이스로부터 열어 프로젝트를 빌드 및 실행할 수 있습니다.
 

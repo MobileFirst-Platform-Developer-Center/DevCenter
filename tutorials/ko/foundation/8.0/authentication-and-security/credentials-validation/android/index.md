@@ -13,7 +13,7 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-보호된 자원에 액세스를 시도할 때 서버(보안 검사)는 핸들할 클라이언트에 대한 하나 이상의 **인증 확인**을 포함하는 목록을 클라이언트에 다시 전송합니다.  
+보호된 자원에 액세스를 시도할 때 서버(보안 검사)는 처리할 클라이언트에 대한 하나 이상의 **인증 확인**을 포함하는 목록을 클라이언트에 다시 전송합니다.  
 이 목록은 추가 데이터의 선택적 `JSON`과 함께 보안 검사 이름을 나열하는 `JSON` 오브젝트로 수신됩니다.
 
 ```json
@@ -32,7 +32,7 @@ downloads:
 
 ## 인증 확인 핸들러 작성
 {: #creating-the-challenge-handler }
-인증 확인 핸들러는 로그인 화면 표시, 신임 정보 수집, 신임 정보를 보안 검사에 다시 제출과 같이 {{ site.data.keys.mf_server }}에서 전송한 인증 확인을 핸들하는 클래스입니다.
+인증 확인 핸들러는 로그인 화면 표시, 신임 정보 수집, 신임 정보를 보안 검사에 다시 제출과 같이 {{ site.data.keys.mf_server }}에서 전송한 인증 확인을 처리하는 클래스입니다.
 
 이 예제에서 보안 검사는 `PinCodeAttempts`이며 [CredentialsValidationSecurityCheck 구현](../security-check)에 정의되어 있습니다. 이 보안 검사가 전송한 인증 확인은 남은 로그인 시도 횟수(`remainingAttempts`) 및 선택적 `errorMsg`를 포함합니다.
 
@@ -44,7 +44,7 @@ public class PinCodeChallengeHandler extends SecurityCheckChallengeHandler {
 }
 ```
 
-## 인증 확인 핸들링
+## 인증 확인 처리
 {: #handling-the-challenge }
 `SecurityCheckChallengeHandler` 프로토콜의 최소 요구사항은 생성자와 `handleChallenge` 메소드를 구현하는 것으로 사용자가 신임 정보를 제공하도록 프롬프트가 표시됩니다. `handleChallenge` 메소드는 `JSONObject`로서 인증 확인을 수신합니다.
 
@@ -98,9 +98,9 @@ UI에서 **취소** 단추를 클릭한 것처럼 일부 경우에 이 인증 �
 
 이를 위해서는 `SecurityCheckChallengeHandler`의 `cancel()` 메소드를 사용하십시오.
 
-## 실패 핸들링
+## 실패 처리
 {: #handling-failures }
-일부 시나리오에서는 실패를 트리거합니다(예: 최대 시도 횟수에 도달). 이를 핸들하려면 `SecurityCheckChallengeHandler`의 `handleFailure` 메소드를 구현하십시오.  
+일부 시나리오에서는 실패를 트리거합니다(예: 최대 시도 횟수에 도달). 이를 처리하려면 `SecurityCheckChallengeHandler`의 `handleFailure` 메소드를 구현하십시오.  
 매개변수로 전달된 `JSONObject`의 구조는 실패의 특성에 크게 좌우됩니다.
 
 ```java
@@ -125,7 +125,7 @@ public void handleFailure(JSONObject jsonObject) {
 
 > `alertError`의 구현이 샘플 애플리케이션에 포함됩니다.
 
-## 성공 핸들링
+## 성공 처리
 {: #handling-successes }
 일반적으로 애플리케이션의 남은 부분이 계속 실행될 수 있도록 프레임워크에서 성공을 자동으로 처리합니다.
 

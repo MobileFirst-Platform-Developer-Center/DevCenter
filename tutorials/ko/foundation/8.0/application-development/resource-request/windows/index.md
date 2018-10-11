@@ -20,7 +20,7 @@ REST API는 모든 어댑터 및 외부 자원에서 작동합니다.
 
 **전제조건**:
 
-- 고유 [Windows 8.1 Universal 또는 Windows 10 UWP](../../../application-development/sdk/windows-8-10)에 {{ site.data.keys.product }} SDK를 추가했는지 확인하십시오..
+- 네이티브 [Windows 8.1 Universal 또는 Windows 10 UWP](../../../application-development/sdk/windows-8-10)에 {{ site.data.keys.product }} SDK를 추가했는지 확인하십시오..
 - [어댑터 작성](../../../adapters/creating-adapters/) 방법에 대해 자세히 알아보십시오.
 
 ## WLResourceRequest
@@ -126,17 +126,17 @@ request.SetHeader(KeyValuePair<string,string> header);
 
 ## 자세한 정보
 {: #for-more-information }
-> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조하십시오](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf)(http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf).
+> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf)(http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf)하십시오.
 
 <img alt="샘플 애플리케이션 이미지" src="resource-request-success-win8-10.png" style="float:right"/>
 ## 샘플 애플리케이션
 {: #sample-application }
-ResourceRequestWin8 및 ResourceRequestWin10 프로젝트에는 Java 어댑터를 사용하여 자원 요청을 작성하는 고유 Windows 8 Universal/Windows 10 UWP 애플리케이션이 포함되어 있습니다.  
+ResourceRequestWin8 및 ResourceRequestWin10 프로젝트에는 Java 어댑터를 사용하여 자원 요청을 작성하는 네이티브 Windows 8 Universal/Windows 10 UWP 애플리케이션이 포함되어 있습니다.  
 어댑터 Maven 프로젝트에는 자원 요청 호출 중에 사용되는 Java 어댑터가 포함되어 있습니다.
 
-Windows 8.1 Universal 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80)하십시오.  
-Windows 10 UWP 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80)하십시오.  
-어댑터 Maven 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오.
+Windows 8.1 Universal 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80)하십시오.  
+Windows 10 UWP 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80)하십시오.  
+어댑터 Maven 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오.
 
 ### 샘플 사용법
 {: #sample-usage }

@@ -53,7 +53,7 @@ Apple ATS(App Transport Security)는 iOS 9의 새로운 기능으로, 앱과 서
 
 ## Cordova 애플리케이션에서 OpenSSL 사용
 {: #enabling-openssl-in-cordova-applications }
-iOS용 {{ site.data.keys.product_adj }} Cordova SDK는 암호화에 고유 iOS API를 사용합니다. Cordova iOS 앱에서 OpenSSL 암호화 라이브러리를 대신 사용하도록 애플리케이션을 구성할 수 있습니다.
+iOS용 {{ site.data.keys.product_adj }} Cordova SDK는 암호화에 네이티브 iOS API를 사용합니다. Cordova iOS 앱에서 OpenSSL 암호화 라이브러리를 대신 사용하도록 애플리케이션을 구성할 수 있습니다.
 
 다음 Javascript API에는 암호화/복호화 기능이 제공됩니다.
 
