@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Setting up MobileFirst Server on IBM Cloud Kubernetes Cluster
-breadcrumb_title: Mobile Foundation on Kubernetes Cluster
+title: Setting up MobileFirst Server on IBM Cloud Kubernetes Cluster using scripts
+breadcrumb_title: Foundation on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
@@ -31,10 +31,10 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
     - [IBM Cloud Dashboard](#ibm-cloud-dashboard)
 - [Set up your host machine](#set-up-your-host-machine)
 - [Create and setup a Kubernetes Cluster with IBM Cloud Container Service](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
-- [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the--sitedatakeysmfbmpkgname--archive)
+- [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the--sitedatakeysmf_bm_pkg_name--archive)
 - [Prerequisites](#prerequisites)
-- [Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on Kubernetes Cluster with IBM Containers](#setting-up-the--sitedatakeysproductadj--and-analytics-servers-on-kubernetes-cluster-with-ibm-containers)
-- [Applying {{ site.data.keys.mf_server }} Fixes](#applying--sitedatakeysmfserver--fixes)
+- [Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on Kubernetes Cluster with IBM Containers](#setting-up-the--sitedatakeysproduct_adj--and-analytics-servers-on-kubernetes-cluster-with-ibm-containers)
+- [Applying {{ site.data.keys.mf_server }} Fixes](#applying--sitedatakeysmf_server--fixes)
     - [Steps to apply the iFix:](#steps-to-apply-the-ifix)
 - [Removing the Kubernetes deployments from IBM Cloud](#removing-the-kubernetes-deployments-from-ibm-cloud)
 - [Removing the database service configuration from IBM Cloud](#removing-the-database-service-configuration-from-ibm-cloud)
