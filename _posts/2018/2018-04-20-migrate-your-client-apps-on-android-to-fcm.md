@@ -23,4 +23,4 @@ Note that there will be no change in the SDK and the client app would behave as 
 
 We recommend the developers to upgrade at the earliest.
 
->**Note:** The GCM to FCM client side support is part of Cordova plugin version **8.0.2018072407**.
+>**Note:** The GCM to FCM client side support is part of the plugin version **8.0.2018072407**.
