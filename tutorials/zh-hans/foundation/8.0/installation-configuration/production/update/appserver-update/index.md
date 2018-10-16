@@ -14,18 +14,18 @@ IBM MobileFirst Platform Foundation 提供了多种组件，您可能已安装�
 ### MobileFirst Server 管理服务、MobileFirst Operations Console 和 MobileFirst 运行时环境
 {: #server-console }
 
-这三个组件组成 MobileFirst Server。这些组件必须一起更新。
+这三个组件组成 MobileFirst Server。 这些组件必须一起更新。
 
 ### Application
 Center
 {: #appenter}
 
-该组件的安装为可选操作。该组件独立于其他组件。如果需要，该组件可在不同于其他组件的临时修订级别运行。
+该组件的安装为可选操作。 该组件独立于其他组件。 如果需要，该组件可在不同于其他组件的临时修订级别运行。
 
 ### MobileFirst Operational Analytics
 {: #analytics}
 
-该组件的安装为可选操作。MobileFirst 组件通过 REST API 向 MobileFirst Operational Analytics 发送数据。最好将 MobileFirst Operational Analytics 与处于相同临时修订级别的其他 MobileFirst Server 组件一起运行。
+该组件的安装为可选操作。 MobileFirst 组件通过 REST API 向 MobileFirst Operational Analytics 发送数据。 最好将 MobileFirst Operational Analytics 与处于相同临时修订级别的其他 MobileFirst Server 组件一起运行。
 
 
 ## 更新 MobileFirst Server 管理服务、MobileFirst Operations Console 和 MobileFirst 运行时环境
@@ -37,7 +37,7 @@ Center
 
 更新过程取决于您在初始安装时使用的方法。
 
-> **注：**Installation Manager(IM) 不支持回滚更新/临时修订。但是，如果您拥有旧的 WAR 文件，那么可以通过使用 Ant 或 Server Configuration Tool 来进行回滚。
+> **注：**Installation Manager(IM) 不支持回滚更新/临时修订。 但是，如果您拥有旧的 WAR 文件，那么可以通过使用 Ant 或 Server Configuration Tool 来进行回滚。
 
 ### 通过使用 Server Configuration Tool 应用修订包
 {: #applying-a-fix-pack-by-using-the-server-configuration-tool }

@@ -271,7 +271,8 @@ For other failures with submission to Google Play Store, you can contact Google 
 >**Note:** If you are using MobileFirst 8.0 iFix release version from Jan 2018 or later, it is recommended that you update both server and client to the same version.
 
 ### Access errors while installing MobileFirst CLI using Node 8 
-{:#mfpdev-cli-installation errors} While installing the MobileFirst CLI using npm, you may see the following errors in the Terminal output. 
+{:#mfpdev-cli-installation errors} 
+While installing the MobileFirst CLI using npm, you may see the following errors in the Terminal output. 
 
 ```> bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
 > node-gyp rebuild
@@ -301,6 +302,6 @@ gyp ERR! not ok
 > node install
 ```
 
-This error is due a [known bug in node-gyp](https://github.com/nodejs/node-gyp/issues/1547). These errors can be ignored and do not affect the functioning of the MobileFirst CLI. This is applicable for mfpdev-cli iFix level 8.0.2018100112 and higher. To overcome this error, use the `--no-optional` flag during installation. For example, 
+This error is due a [known bug in node-gyp](https://github.com/nodejs/node-gyp/issues/1547). These errors can be ignored as this does not affect the functioning of the MobileFirst CLI. This is applicable for *mfpdev-cli iFix level 8.0.2018100112* and higher. To overcome this error, use the `--no-optional` flag during installation. For example, 
 
 ```npm install -g mfpdev-cli --no-optional```

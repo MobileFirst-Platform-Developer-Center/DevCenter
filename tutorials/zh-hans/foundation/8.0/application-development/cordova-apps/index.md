@@ -356,15 +356,13 @@ Cordova 配置文件是包含应用程序元数据的必需的 XML 文件，其�
 现在，可以使用“实时预览”功能实时编辑适用的代码（HTML、CSS 和 JS）。   
 在对资源进行更改后，保存更改并且更改将立即反映在浏览器中。
 
-
-
 ### 实时重新装入
 {: #live-reload }
-要在物理设备或模拟器/仿真器中预览时实现类似效果，请添加 **cordova-plugin-livereload** 插件。有关用法指示信息，[请参阅插件 GitHub 页面](https://github.com/omefire/cordova-plugin-livereload)。
+要在物理设备或模拟器/仿真器中预览时实现类似效果，请添加 **cordova-plugin-livereload** 插件。 有关用法指示信息，[请参阅插件 GitHub 页面](https://github.com/omefire/cordova-plugin-livereload)。
 
 ### 在仿真器或物理设备上运行应用程序
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-要仿真应用程序，请执行 Cordova CLI 命令 `cordova emulate ios|android|windows`。例如：
+要仿真应用程序，请执行 Cordova CLI 命令 `cordova emulate ios|android|windows`。 例如：
 
 ```bash
 cordova emulate ios
@@ -382,24 +380,21 @@ cordova run ios
 
 Xcode、Android Studio 和 Visual Studio 提供完整编辑功能，以供编辑 Objective C、Swift、C# 和 Java，但是可能限制帮助编辑 JavaScript 的方式。 为促进 JavaScript 编辑，{{ site.data.keys.product_adj }} Cordova 项目包含一个定义文件以供针对 {{ site.data.keys.product_adj }} API 元素提供自动补全。
 
-
-
-每个 {{ site.data.keys.product_adj }} Cordova 插件都针对每个 {{ site.data.keys.product_adj }} JavaScript 文件提供一个 `d.ts` 配置文件。`d.ts` 文件名与相应的 JavaScript 文件名匹配，其位于 plug-in 文件夹中。 例如，对于主 {{ site.data.keys.product_adj }} SDK，该文件位于：**[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**。
+每个 {{ site.data.keys.product_adj }} Cordova 插件都针对每个 {{ site.data.keys.product_adj }} JavaScript 文件提供一个 `d.ts` 配置文件。 `d.ts` 文件名与相应的 JavaScript 文件名匹配，其位于 plug-in 文件夹中。 例如，对于主 {{ site.data.keys.product_adj }} SDK，该文件位于：**[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**。
 
 `d.ts` 配置文件针对支持 TypeScript 的所有 IDE 提供自动补全功能：[TypeScript Playground](http://www.typescriptlang.org/Playground/)、[Visual Studio Code](http://www.microsoft.com/visualstudio/eng)、[WebStorm](http://www.jetbrains.com/webstorm/)、[WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f) 和 [Eclipse](https://github.com/palantir/eclipse-typescript)。
 
-WebView 的资源（HTML 和 JavaScript 文件）位于 **[myapp]\www** 文件夹中。在使用 cordova build 命令构建项目或在运行 cordova prepare 命令时，这些资源将被复制到 **[myapp]\platforms\ios\www**、**[myapp]\platforms\android\assets\www** 或 **[myapp]\platforms\windows\www** 文件夹下对应的 **www** 文件夹中。
+WebView 的资源（HTML 和 JavaScript 文件）位于 **[myapp]\www** 文件夹中。 在使用 cordova build 命令构建项目或在运行 cordova prepare 命令时，这些资源将被复制到 **[myapp]\platforms\ios\www**、**[myapp]\platforms\android\assets\www** 或 **[myapp]\platforms\windows\www** 文件夹下对应的 **www** 文件夹中。
 
 在打开包含先前一个 IDE 的主应用程序文件夹时，将保留上下文。 IDE 编辑器现在将链接到相关的 `d.ts` 文件并在您输入时自动补全 {{ site.data.keys.product_adj }} API 元素。
 
-
-
 ## 针对 Android 的 CrossWalk 支持
 {: #crosswalk-support-for-android }
-针对 Android 平台的 Cordova 应用程序可将其缺省 WebView 替换为 [CrossWalk WebView](https://crosswalk-project.org/)。  
+针对 Android 平台的 Cordova 应用程序可将其缺省 WebView 替换为 [CrossWalk WebView](https://crosswalk-project.org/)。
+
+> **注：**[不再](https://crosswalk-project.org/blog/crosswalk-final-release.html)由社区及其维护者维护 CrossWalk 项目。因此，CrossWalk 中的错误或问题可能会影响 CrossWalk WebView 中 MobileFirst SDK 的运行。因此，不建议在应用程序中使用 CrossWalk WebView。 
+
 要进行添加：
-
-
 
 1. 从**命令行**中运行以下命令：
 
@@ -408,23 +403,18 @@ WebView 的资源（HTML 和 JavaScript 文件）位于 **[myapp]\www** 文件�
    ```
 
    此命令会将 CrossWalk WebView 添加到应用程序。  
-      
     在后台，{{ site.data.keys.product_adj }} Cordova SDK 将调整 Android 项目活动以供使用。
-
-
 
 2. 通过运行以下命令构建项目：
 
-
    ```bash
    cordova build
-```
+   ```
 
 ## 针对 iOS 的 WKWebView 支持
 {: #wkwebview-support-for-ios }
 Cordova iOS 应用程序中使用的缺省 UIWebView 可替换为 [Apple 的 WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/)。  
 要进行添加，请从命令行窗口中运行以下命令：`cordova plugin add cordova-plugin-wkwebview-engine`。
-
 
 > 了解有关 [Cordova WKWebView 插件](https://github.com/apache/cordova-plugin-wkwebview-engine)的更多信息。
 

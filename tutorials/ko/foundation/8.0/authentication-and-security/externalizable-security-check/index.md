@@ -8,7 +8,7 @@ weight: 5
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-abstract `ExternalizableSecurityCheck` 클래스는 `SecurityCheck` 인터페이스를 구현하고 보안 검사 기능성의 두 가지 중요 측면인 외부화 및 상태 관리를 핸들합니다.
+abstract `ExternalizableSecurityCheck` 클래스는 `SecurityCheck` 인터페이스를 구현하고 보안 검사 기능성의 두 가지 중요 측면인 외부화 및 상태 관리를 처리합니다.
 
 * 외부화 - 이 클래스는 `Externalizable` 인터페이스를 구현하므로 파생된 클래스는 스스로 이를 구현할 필요가 없습니다.
 * 상태 관리 - 이 클래스는 `STATE_EXPIRED` 상태를 사전 정의하는데 이는 보안 검사가 만료되고 상태가 유지되지 않음을 의미합니다. 파생된 클래스는 보안 검사에서 지원하는 다른 상태를 정의해야 합니다.

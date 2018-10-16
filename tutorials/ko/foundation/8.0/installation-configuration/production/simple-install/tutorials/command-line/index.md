@@ -98,7 +98,7 @@ Installation Manager V1.8.4 이상이 설치되었는지 확인하십시오. 설
 
 데이터베이스를 작성하고 Liberty 프로파일에 {{ site.data.keys.mf_server }}를 배치하기 전에, Installation Manager를 실행하여 사용하는 디스크에 {{ site.data.keys.mf_server }}의 2진 파일을 설치하십시오. Installation Manager를 사용하여 {{ site.data.keys.mf_server }}를 설치하는 중에 {{ site.data.keys.mf_app_center }}를 설치하는 옵션이 제안됩니다. Application Center는 제품의 다른 컴포넌트입니다. 이 학습서에서는 {{ site.data.keys.mf_server }}와 함께 설치하지 않아도 됩니다.
 
-또한 토큰 라이센싱 활성화 여부를 표시하기 위해 하나의 특성을 지정해야 합니다. 이 학습서에서는 토큰 라이센싱이 필요하지 않다고 가정하므로 토큰 라이센싱용으로 {{ site.data.keys.mf_server }}를 구성하는 단계가 포함되지 않습니다. 단, 프로덕션 설치의 경우 토큰 라이센싱 활성화가 필요한지 여부를 판별해야 합니다. Rational  License Key Server에서 토큰 라이센싱을 사용하는 계약이 없는 경우에는 토큰 라이센싱을 활성화하지 않아도 됩니다. 토큰 라이센싱을 활성화하는 경우, {{ site.data.keys.mf_server }}를 토큰 라이센싱용으로 구성해야 합니다.
+또한 토큰 라이센싱 활성화 여부를 표시하기 위해 하나의 특성을 지정해야 합니다. 이 학습서에서는 토큰 라이센싱이 필요하지 않다고 가정하므로 토큰 라이센싱용으로 {{ site.data.keys.mf_server }}를 구성하는 단계가 포함되지 않습니다. 단, 프로덕션 설치의 경우 토큰 라이센싱 활성화가 필요한지 여부를 판별해야 합니다. Rational License Key Server에서 토큰 라이센싱을 사용하는 계약이 없는 경우에는 토큰 라이센싱을 활성화하지 않아도 됩니다. 토큰 라이센싱을 활성화하는 경우, {{ site.data.keys.mf_server }}를 토큰 라이센싱용으로 구성해야 합니다.
 
 이 학습서에서는 **imcl** 명령행을 통해 특성을 매개변수로 지정합니다. 응답 파일을 사용하여 이러한 지정을 수행할 수도 있습니다.
 

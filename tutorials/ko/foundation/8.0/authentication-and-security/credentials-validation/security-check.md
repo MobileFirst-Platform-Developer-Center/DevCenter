@@ -113,9 +113,9 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 }
 ```
 
-이 클래스의 유일한 필수 메소드는 `Properties` 인스턴스를 핸들할 수 있는 생성자입니다. adapter.xml 파일에서 특정 특성을 검색하려면 `get[Type]Property` 메소드를 사용하십시오. 값이 발견되지 않으면, 세 번째 매개변수가 기본값(`1234`)을 정의합니다.
+이 클래스의 유일한 필수 메소드는 `Properties` 인스턴스를 처리할 수 있는 생성자입니다. adapter.xml 파일에서 특정 특성을 검색하려면 `get[Type]Property` 메소드를 사용하십시오. 값이 발견되지 않으면, 세 번째 매개변수가 기본값(`1234`)을 정의합니다.
 
-또한 `addMessage` 메소드를 사용하여 오류 핸들링을 이 생성자에 추가할 수 있습니다.
+또한 `addMessage` 메소드를 사용하여 이 생성자에서 오류 처리를 추가할 수 있습니다.
 
 ```java
 public PinCodeConfig(Properties properties) {

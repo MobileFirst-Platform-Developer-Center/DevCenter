@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Fehlerbehebung für JSONtore
+title: Fehlerbehebung für JSONStore
 breadcrumb_title: JSONStore
 relevantTo: [ios,android,cordova]
 weight: 3
@@ -100,13 +100,14 @@ Wenn Sie die folgenden JSONStore-Merkmale verstehen, können Sie einige allgemei
     * Fügen Sie die folgende Funktion hinzu:  
     ```javascript                                         
 function initWL(){                                                     
-        var options = typeof wlInitOptions !== 'undefined' ? wlInitOptions
+                                                             
+var options = typeof wlInitOptions !== 'undefined' ? wlInitOptions
         : {};                                                                
         WL.Client.init(options);                                           
 }                                                                      
 ```                                                                       
 
-  Auf diese Weise wird (außerhalb von 'wlCommonInit') auf das Ereignis `mfpjsonjsloaded` gewartet.
+Auf diese Weise wird (außerhalb von 'wlCommonInit') auf das Ereignis `mfpjsonjsloaded` gewartet.
 So wird sichergestellt, dass das Script geladen wurde und nachfolgend `WL.Client.init` aufruft, was wiederum `wlCommonInit` auslöst und dann `WL.JSONStore.init` aufruft.
 
 ## Store-Interna
@@ -162,6 +163,8 @@ Alle APIs, die fehlschlagen können, verwenden einen Fehlerparameter mit der Adr
 ```objc
 // Dieser NSError zeigt auf einen Fehler, sobald ein solcher auftritt.
 NSError* error = nil;
+
+
 
 // Löschung durchführen
 [JSONStore destroyDataAndReturnError:&error];

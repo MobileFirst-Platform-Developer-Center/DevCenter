@@ -63,7 +63,7 @@ weight: 1
 개발자는 다음을 수행할 수 있습니다.
 
 - 애플리케이션 및 어댑터 등록 및 배치
-- 선택적으로 기본/Cordova 애플리케이션 및 어댑터 시작 코드 템플리트 다운로드
+- 선택적으로 네이티브/Cordova 애플리케이션 및 어댑터 시작 코드 템플리트 다운로드
 - 애플리케이션의 인증 및 보안 특성 구성
 - 애플리케이션 관리:
     - 애플리케이션 인증
@@ -103,7 +103,7 @@ weight: 1
 
     선호하는 코드 편집기(예: Atom.io, Visual Studio Code, Eclipse, IntelliJ 등)를 사용하여 애플리케이션 및 어댑터를 구현할 수 있습니다.  
 
-* 기본 애플리케이션을 사용하려면 Xcode, Android Studio 또는 Visual Studio가 필요합니다. [iOS/Android/Windows 개발 환경 설정](../)에 대해 자세히 읽으십시오.
+* 네이티브 애플리케이션을 사용하려면 Xcode, Android Studio 또는 Visual Studio가 필요합니다. [iOS/Android/Windows 개발 환경 설정](../)에 대해 자세히 읽으십시오.
 
 ### 어댑터
 {: #adapters }

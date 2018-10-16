@@ -652,8 +652,7 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 每个应用程序的内容都存储在 {{ site.data.keys.product_adj }} 管理数据库中。
 
-活动日志文件由 **LOGPRIMARY** 和 **LOGSECOND** 数据库配置参数定义数量，并且由 **LOGFILSIZ** 数据库配置参数定义大小。 单个事务不能使用超过 **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**)
-* 4096 KB 的日志空间。
+活动日志文件由 **LOGPRIMARY** 和 **LOGSECOND** 数据库配置参数定义数量，并且由 **LOGFILSIZ** 数据库配置参数定义大小。 单个事务不能使用超过 **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**) * 4096 KB 的日志空间。
 
 `DB2 GET DATABASE CONFIGURATION` 命令包含有关日志文件大小的信息，以及主要和辅助日志文件的数量。
 

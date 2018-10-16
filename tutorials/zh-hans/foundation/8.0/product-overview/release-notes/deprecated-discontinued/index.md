@@ -374,7 +374,7 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }} 客户机应用
 | `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 改为使用新的 `WLResourceRequest.getHeaders(String headerName)` API。 |
 | `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 改为使用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
 | `WLResourceRequest.setHeader(org.apache.http.Header header)` | 改为使用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
-| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | 替换为 `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
+| `org.apache.http.client.CookieStore WLClient.getCookieStore()` |替换为 `ClearableCookieJar WLClient.getPersistentCookies()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 无替换。 MFP 客户机允许循环重定向。 |
 | `WLHttpResponseListener`、`WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`、`WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`、`WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`、`WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`、`WLResourceRequest.send(WLHttpResponseListener listener)`、`WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`、`WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | 由于不推荐使用 Apache HTTP 客户机依赖关系而已移除。 创建自己的请求，以对请求和响应具有完全控制。 |
 

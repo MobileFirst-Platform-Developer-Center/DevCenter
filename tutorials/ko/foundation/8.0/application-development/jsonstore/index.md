@@ -25,7 +25,7 @@ weight: 6
 
 #### 지원 레벨
 {: #support-level }
-* JSONStore는 고유 iOS 및 Android 애플리케이션에서 지원됩니다(고유 Windows(Universal 및 UWP)의 경우 지원되지 않음).
+* JSONStore는 네이티브 iOS 및 Android 애플리케이션에서 지원됩니다(네이티브 Windows(Universal 및 UWP)의 경우 지원되지 않음).
 * JSONStore는 Cordova iOS, Android 및 Windows(Universal 및 UWP) 애플리케이션에서 지원됩니다.
 
 #### 다음으로 이동
@@ -143,22 +143,22 @@ var query2 = {name: 'carlos', age: 99};
 {: #features-table }
 JSONStore 기능을 다른 데이터 스토리지 기술 및 형식의 해당 기능과 비교하십시오.
 
-JSONStore는 {{ site.data.keys.product_adj }} 플러그인을 사용하는 Cordova 애플리케이션 내에 데이터를 저장하는 데 사용되는 JavaScript API, 고유 iOS 애플리케이션에 대한 Objective-C API 및 고유 Android 애플리케이션에 대한 Java API입니다. 여기에 참조용으로 제공되는 여러 JavaScript 스토리지 기술 간 비교를 통해 JSONStore와 해당 기술이 어떻게 다른지 확인하십시오.
+JSONStore는 {{ site.data.keys.product_adj }} 플러그인을 사용하는 Cordova 애플리케이션 내에 데이터를 저장하는 데 사용되는 JavaScript API, 네이티브 iOS 애플리케이션에 대한 Objective-C API 및 네이티브 Android 애플리케이션에 대한 Java API입니다. 여기에 참조용으로 제공되는 여러 JavaScript 스토리지 기술 간 비교를 통해 JSONStore와 해당 기술이 어떻게 다른지 확인하십시오.
 
 JSONStore은 LocalStorage, 색인이 작성된 DB, Cordova 스토리지 API 및 Cordova 파일 API 등의 기술과 유사합니다. 다음 테이블은 JSONStore에서 제공하는 일부 기능이 다른 기술과 비교하여 어떻게 다른지 보여줍니다. JSONStore 기능은 iOS 및 Android 디바이스와 시뮬레이터에서만 사용 가능합니다.
 
-|기능                                            |JSONStore      |LocalStorage |IndexedDB |Cordova 스토리지 API |Cordova 파일 API |
+| 기능                                            | JSONStore      | LocalStorage | IndexedDB | Cordova 스토리지 API | Cordova 파일 API |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-|Android 지원(Cordova &amp; 고유 애플리케이션)|	     ✔ 	      |✔	    |✔	     |✔	           |✔	      |
-|iOS 지원(Cordova & 고유 애플리케이션)	     |	     ✔ 	      |✔	    |✔	     |✔	           |✔	      |
-|Windows 8.1 Universal 및 Windows 10 UWP(Cordova 애플리케이션)          |	     ✔ 	      |✔	    |✔	     |        -	           |✔	      |
-|데이터 암호화	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-|최대 스토리지	                                 |사용 가능한 공간 |~5MB     |~5MB 	 |사용 가능한 공간	   |사용 가능한 공간  |
-|신뢰할 수 있는 스토리지(참고 참조)	                     |	     ✔ 	      |      -	    |     -	     |✔	           |✔	      |
-|로컬 변경사항 추적	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-|다중 사용자 지원                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-|색인화	                                         |	     ✔ 	      |      -	    |✔	     |✔	           |         -	      |
-|스토리지 유형	                                 |JSON 문서 |키/값 쌍 |JSON 문서 |관계형(SQL) |문자열     |
+| Android 지원(Cordova &amp; 네이티브 애플리케이션)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| iOS 지원(Cordova & 네이티브 애플리케이션)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Windows 8.1 Universal 및 Windows 10 UWP(Cordova 애플리케이션)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
+| 데이터 암호화	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 최대 스토리지	                                 | 사용 가능한 공간 |    ~5MB     |   ~5MB 	 | 사용 가능한 공간	   | 사용 가능한 공간  |
+| 신뢰할 수 있는 스토리지(참고 참조)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
+| 로컬 변경사항 추적	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 다중 사용자 지원                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 색인화	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
+| 스토리지 유형	                                 | JSON 문서 | 키/값 쌍 | JSON 문서 | 관계형(SQL) | 문자열     |
 
 **참고:** 신뢰할 수 있는 스토리지는 다음 이벤트 중 하나가 발생하는 경우를 제외하고는 데이터가 삭제되지 않음을 의미합니다.
 
@@ -169,7 +169,7 @@ JSONStore은 LocalStorage, 색인이 작성된 DB, Cordova 스토리지 API 및 
 {: #multiple-user-support }
 JSONStore를 사용하여 단일 {{ site.data.keys.product_adj }} 애플리케이션에 여러 콜렉션이 포함된 다중 저장소를 작성할 수 있습니다.
 
-init(JavaScript) 또는 open(고유 iOS 및 고유 Android) API는 사용자 이름을 사용하여 옵션 오브젝트를 선택할 수 있습니다. 서로 다른 저장소는 파일 시스템에서 별도의 파일입니다. 사용자 이름은 저장소의 파일 이름으로 사용됩니다. 이러한 별도의 저장소는 보안 및 개인정보 보호정책과 관련된 이유로 서로 다른 비밀번호를 사용하여 암호화할 수 있습니다. closeAll API를 사용하면 모든 콜렉션에 대한 액세스가 제거됩니다. changePassword API를 호출하여 암호화된 저장소의 비밀번호를 변경할 수도 있습니다.
+init(JavaScript) 또는 open(네이티브 iOS 및 네이티브 Android) API는 사용자 이름을 사용하여 옵션 오브젝트를 선택할 수 있습니다. 서로 다른 저장소는 파일 시스템에서 별도의 파일입니다. 사용자 이름은 저장소의 파일 이름으로 사용됩니다. 이러한 별도의 저장소는 보안 및 개인정보 보호정책과 관련된 이유로 서로 다른 비밀번호를 사용하여 암호화할 수 있습니다. closeAll API를 사용하면 모든 콜렉션에 대한 액세스가 제거됩니다. changePassword API를 호출하여 암호화된 저장소의 비밀번호를 변경할 수도 있습니다.
 
 예제 유스 케이스는 여러 직원이 실제 디바이스(예: iPad 또는 Android 태블릿) 및 {{ site.data.keys.product_adj }} 애플리케이션을 공유하는 경우입니다. 또한 직원이 서로 다른 작업교대조에서 근무하고 {{ site.data.keys.product_adj }} 애플리케이션을 사용하는 동안 여러 고객의 개인 데이터를 처리하는 경우 다중 사용자 지원이 유용합니다.
 
@@ -177,7 +177,7 @@ init(JavaScript) 또는 open(고유 iOS 및 고유 Android) API는 사용자 이
 {: #security }
 암호화를 통해 저장소의 모든 콜렉션을 보호할 수 있습니다.
 
-저장소의 모든 콜렉션을 암호화하려면 `init`(JavaScript) 또는 `open`(고유 iOS 및 고유 Android) API에 비밀번호를 전달하십시오. 비밀번호가 전달되지 않으면 저장소 콜렉션의 문서가 암호화되지 않습니다.
+저장소의 모든 콜렉션을 암호화하려면 `init`(JavaScript) 또는 `open`(네이티브 iOS 및 네이티브 Android) API에 비밀번호를 전달하십시오. 비밀번호가 전달되지 않으면 저장소 콜렉션의 문서가 암호화되지 않습니다.
 
 일부 보안 아티팩트(예: salt)는 키 체인(iOS), 공유 환경 설정(Android) 및 신임 정보 보관(Windows Universal 8.1 및 Windows 10 UWP)에 저장됩니다. 저장소는 256비트 AES(Advanced Encryption Standard) 키로 암호화됩니다. 모든 키는 PBKDF2(Password-Based Key Derivation Function 2)로 강화됩니다. 애플리케이션에 대해 데이터 콜렉션을 암호화하도록 선택할 수는 있지만 암호화된 형식 및 일반 텍스트 형식 간에 전환하거나 저장소 내에서 형식을 혼합할 수는 없습니다.
 
@@ -187,7 +187,7 @@ init(JavaScript) 또는 open(고유 iOS 및 고유 Android) API는 사용자 이
 
 JSONStore에서 비밀번호를 사용하여 콜렉션을 처음 여는 경우(즉 개발자가 저장소 내의 데이터를 암호화하려는 경우) JSONStore에 랜덤 토큰이 필요합니다. 해당 랜덤 토큰은 클라이언트 또는 서버에서 가져올 수 있습니다.
 
-localKeyGen 키가 JSONStore API의 JavaScript 구현에 존재하고 값이 true인 경우 암호화된 보안 토큰이 로컬로 생성됩니다. 그렇지 않은 경우 토큰은 서버에 접속하여 생성되므로 {{ site.data.keys.mf_server }}에 대한 연결이 필요합니다. 이 토큰은 비밀번호를 사용하여 저장소가 처음으로 열리는 경우에만 필요합니다. 고유 구현(Objective-C 및 Java)에서는 기본적으로 암호화된 보안 토큰을 로컬로 생성합니다. 그렇지 않은 경우 secureRandom 옵션을 통해 전달할 수도 있습니다.
+localKeyGen 키가 JSONStore API의 JavaScript 구현에 존재하고 값이 true인 경우 암호화된 보안 토큰이 로컬로 생성됩니다. 그렇지 않은 경우 토큰은 서버에 접속하여 생성되므로 {{ site.data.keys.mf_server }}에 대한 연결이 필요합니다. 이 토큰은 비밀번호를 사용하여 저장소가 처음으로 열리는 경우에만 필요합니다. 네이티브 구현(Objective-C 및 Java)에서는 기본적으로 암호화된 보안 토큰을 로컬로 생성합니다. 그렇지 않은 경우 secureRandom 옵션을 통해 전달할 수도 있습니다.
 
 오프라인에서 저장소를 열고 클라이언트를 신뢰하여 랜덤 토큰을 생성하도록 하는 것(보안 정도가 낮음) 또는 연결된 {{ site.data.keys.mf_server }}에 대한 액세스 권한을 사용하여 저장소를 열고 서버를 신뢰하는 것(보안 정도가 높음) 간에 절충됩니다.
 
@@ -238,7 +238,7 @@ JSONStore는 모든 플랫폼에서 SQLCipher를 사용합니다. Android 및 iO
 
 ### 메모리
 {: #memory }
-* JavaScript API를 사용하면 JSONStore 문서는 고유(Objective-C, Java 또는 C#) 계층과 JavaScript 계층 간에 문자열로 직렬화 및 역직렬화됩니다. 발생 가능한 메모리 문제를 완화하는 한 가지 방법은 find API를 사용할 때 한계와 오프셋을 사용하는 것입니다. 이렇게 하면 결과에 대해 할당되는 메모리 양을 제한하고 페이지 번호 매기기(페이지당 X개의 결과 수 표시)와 같은 사항을 구현할 수 있습니다.
+* JavaScript API를 사용하면 JSONStore 문서는 네이티브(Objective-C, Java 또는 C#) 계층과 JavaScript 계층 간에 문자열로 직렬화 및 역직렬화됩니다. 발생 가능한 메모리 문제를 완화하는 한 가지 방법은 find API를 사용할 때 한계와 오프셋을 사용하는 것입니다. 이렇게 하면 결과에 대해 할당되는 메모리 양을 제한하고 페이지 번호 매기기(페이지당 X개의 결과 수 표시)와 같은 사항을 구현할 수 있습니다.
 * 궁극적으로 문자열로 직렬화 및 역직렬화되는 긴 키 이름을 사용하는 대신 이러한 긴 키 이름을 짧은 키 이름으로 맵핑할 것을 고려하십시오(예: `myVeryVeryVerLongKeyName`의 경우 `k` 또는 `key`). 어댑터에서 클라이언트로 전송할 때 긴 키 이름을 짧은 키 이름으로 맵핑하고, 데이터를 백엔드로 다시 전송할 때 짧은 키 이름을 원래의 긴 키 이름으로 맵핑하는 것이 가장 좋습니다.
 * 저장소 내 데이터를 여러 콜렉션으로 분할할 것을 고려하십시오. 하나의 큰 문서를 단일 콜렉션에 포함시키는 대신 여러 콜렉션에 작은 문서를 포함시키십시오. 이 고려사항은 데이터가 관련된 정도 및 해당 데이터의 유스 케이스에 따라 다릅니다.
 * 오브젝트 배열에 add API를 사용하면 메모리 문제가 발생할 수 있습니다. 이 문제를 완화하려면 한 번에 사용되는 JSON 오브젝트 수를 줄이고 이 메소드를 호출하십시오.
@@ -257,13 +257,13 @@ JSONStore는 모든 플랫폼에서 SQLCipher를 사용합니다. Android 및 iO
 {: #concurrency }
 ### JavaScript
 {: #javascript }
-콜렉션에서 수행할 수 있는 대부분의 조작(예: add 및 find)은 비동기적입니다. 이러한 조작은 조작이 올바르게 완료되면 해결되고 실패가 발생하면 거부되는 jQuery 약속을 리턴합니다. 이러한 약속은 성공 및 실패 콜백과 유사합니다.
+콜렉션에서 수행할 수 있는 대부분의 조작(예: add 및 find)은 비동기적입니다. 이러한 조작은 조작이 올바르게 완료되면 해결되고 실패가 발생하면 거부되는 jQuery 프라미스(promise)를 리턴합니다. 이러한 프라미스는 성공 및 실패 콜백과 유사합니다.
 
-jQuery 연기됨은 해결되거나 거부될 수 있는 약속입니다. 다음 예제는 JSONStore에만 해당되지는 않지만 일반적인 사용법을 이해하는 데 도움이 됩니다.
+jQuery 연기됨은 해결되거나 거부될 수 있는 프라미스입니다. 다음 예제는 JSONStore에만 해당되지는 않지만 일반적인 사용법을 이해하는 데 도움이 됩니다.
 
-약속 및 콜백 대신 JSONStore `success` 및 `failure` 이벤트를 청취할 수도 있습니다. 이벤트 리스너에 전달되는 인수에 따라 조치를 수행하십시오.
+프라미스 및 콜백 대신 JSONStore `success` 및 `failure` 이벤트를 청취할 수도 있습니다. 이벤트 리스너에 전달되는 인수에 따라 조치를 수행하십시오.
 
-**약속 정의 예제**
+**프라미스 정의 예제**
 
 ```javascript
 var asyncOperation = function () {
@@ -278,7 +278,7 @@ var asyncOperation = function () {
 };
 ```
 
-**약속 사용법 예제**
+**프라미스 사용법 예제**
 
 ```javascript
 // The function that is passed to .then is executed after 1000 ms.
@@ -320,11 +320,11 @@ $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collection
 
 ### Objective-C
 {: #objective-c }
-JSONStore에 고유 iOS API를 사용하는 경우 모든 조작이 동기 디스패치 큐에 추가됩니다. 이 동작은 저장소에 접촉하는 조작이 기본 스레드가 아닌 스레드에서 적절하게 실행되도록 합니다. 자세한 정보는 Apple 문서 [GCD(Grand Central Dispatch)](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html#//apple_ref/c/func/dispatch_sync        )를 참조하십시오.
+JSONStore에 네이티브 iOS API를 사용하는 경우 모든 조작이 동기 디스패치 큐에 추가됩니다. 이 동작은 저장소에 접촉하는 조작이 기본 스레드가 아닌 스레드에서 적절하게 실행되도록 합니다. 자세한 정보는 Apple 문서 [GCD(Grand Central Dispatch)](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html#//apple_ref/c/func/dispatch_sync        )를 참조하십시오.
 
 ### Java
 {: #java }
-JSONStore에 고유 Android API를 사용하는 경우 모든 조작은 기본 스레드에서 실행됩니다. 비동기 동작을 수행하려면 스레드를 작성하거나 스레드 풀을 사용해야 합니다. 모든 저장소 조작은 스레드에서 안전합니다.
+JSONStore에 네이티브 Android API를 사용하는 경우 모든 조작은 기본 스레드에서 실행됩니다. 비동기 동작을 수행하려면 스레드를 작성하거나 스레드 풀을 사용해야 합니다. 모든 저장소 조작은 스레드에서 안전합니다.
 
 ## 분석 
 {: #analytics }
@@ -548,6 +548,176 @@ accessor.replace(doc, {markDirty: true})
 accessor.remove(doc, {markDirty: true})
 ```
 
+
+### CloudantDB와 자동 동기화
+Mobile Foundation [CD 업데이트 2](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/8-0-cd-update-release)부터 MFP JSONStore SDK를 사용하여 Cloudant를 포함하여 CouchDB 데이터베이스와 디바이스의 JSONStore 콜렉션 사이에서 데이터 동기화를 자동화할 수 있습니다. 이 기능은 iOS, android, cordova-android, cordova-ios에서 사용할 수 있습니다.
+
+#### JSONStore 및 Cloudant 사이에서 동기화 설정
+JSONStore 및 Cloudant 사이에서 자동 동기화를 설정하려면 다음 단계를 완료하십시오.
+
+1. 모바일 앱에서 동기화 정책을 정의하십시오.
+2. IBM Mobile Foundation에서 동기화 어댑터를 배치하십시오.
+
+#### 동기화 정책 정의
+JSONStore 콜렉션 및 Cloudant 데이터베이스 사이에서 동기화하는 방법은 동기화 정책에서 정의합니다. 각 콜렉션에 대해 앱에서 동기화 정책을 지정할 수 있습니다.
+
+JSONStore 콜렉션은 동기화 정책으로 초기화할 수 있습니다. 동기화 정책은 다음 세 개 정책 중 하나일 수 있습니다.
+
+<b>SYNC_DOWNSTREAM : </b>
+Cloudant에서 JSONStore 콜렉션으로 데이터를 다운로드하려는 경우 이 정책을 사용합니다. 일반적으로 오프라인 스토리지에 필요한 정적 데이터에 대해 사용됩니다. 예를 들어, 카탈로그에서 항목의 가격 목록이 이에 해당합니다. 디바이스에서 콜렉션을 초기화할 때마다 원격 Couldant 데이터베이스에서 데이터를 새로 고칩니다. 처음에는 전체 데이터베이스를 다운로드하는 반면, 후속 새로 고치기에서는 원격 데이터베이스에서 변경된 사항으로 구성되는 델타만 다운로드합니다.
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_DOWNSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
+}
+```
+
+<b>SYNC_ UPSTREAM : </b>
+Cloudant 데이터베이스로 로컬 데이터를 푸시하려는 경우 이 정책을 사용합니다. 예를 들어, Cloudant 데이터베이스에 오프라인으로 캡처한 판매 데이터를 업로드하는 경우가 이에 해당합니다. SYNC_UPSTREAM 정책으로 콜렉션을 정의하는 경우 콜렉션에 새 레코드가 추가되면 Cloudant에서 새 레코드가 작성됩니다. 마찬가지로, 디바이스의 콜렉션에서 문서가 수정되면 Cloudant에서 문서가 수정되고 콜렉션에서 문서가 삭제되면 Cloudant 데이터베이스에서도 삭제됩니다.
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_UPSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
+}
+```
+
+<b>SYNC_NONE : </b>
+이는 기본 정책입니다. 동기화를 수행하지 않으려는 경우 이 정책을 선택합니다.
+
+<b><i>중요:</i></b> 동기화 정책은 JSONStore 콜렉션에 기인합니다. 콜렉션이 특정 동기화 정책으로 초기화되면 변경해서는 안 됩니다. 동기화 정책을 수정하면 원하지 않는 결과로 이어질 수 있습니다.
+
+<b>syncAdapterPath</b>
+
+배치되는 어댑터 이름입니다.
+
+
+Android:
+```
+//Here "JSONStoreCloudantSync" is the name of the sync adapter deployed on MFP server.
+initOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+iOS:
+```
+openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy://One of the three sync policies,
+	syncAdapterPath : 'JSONStoreCloudantSync'
+}
+```
+
+#### 동기화 어댑터 배치
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">여기</a>에서 JSONStoreSync 어댑터를 다운로드하고 ‘src/main/adapter-resources/adapter.xml’ 경로에서 cloudant 신임 정보를 구성하고 MobileFirst 서버에 배치하십시오.
+아래와 같이 mfpconsole을 통해 백엔드 Cloudant 데이터베이스에 대한 신임 정보를 구성하십시오.
+
+|---------------------------|-------------------------|
+|![Configure Cloudant]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/configure-cloudant.png)    |   ![Cloudant credentials]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/CloudantCreds.jpg)|
+
+#### 이 기능을 사용하기 전에 고려할 몇 가지 사항
+이 기능은 Android, iOS, cordova-android, cordova-ios에서만 사용할 수 있습니다.
+
+JSONStore 콜렉션 및 CouchDB 데이터베이스 이름은 동일해야 합니다. JSONStore 콜렉션 이름을 지정하기 전에 CouchDB 데이터베이스 이름 지정 구문을 주의하여 참조하십시오.
+
+Android에서는 아래와 같이 *init* 옵션의 일부로 동기화 콜백 리스너를 정의하십시오. 
+
+```
+//import com.worklight.jsonstore.api.JSONStoreSyncListener;
+JSONStoreSyncListener syncListener = new JSONStoreSyncListener() {
+	@Override
+	public void onSuccess(JSONObject json) {
+		//Implement success action
+	}
+
+	@Override
+	public void onFailure(JSONStoreException ex) {
+		//Implement failure action
+	}
+
+};
+initOptions.setSyncListener(syncListener);
+```
+
+iOS에서는 아래와 같이 콜백을 포함하여 동기화를 사용하기 위해 완료 핸들러가 있는 오버로드된 `opencollections` API를 사용하십시오.
+
+```
+JSONStore.sharedInstance().openCollections([collections], with: options, completionHandler: { (success, msg) in
+	self.logMessage("msg is : " + msg!);
+	//success flag is true if the sync succeeds, else on failure it is false and the message from the SDK is available through 'msg' argument.
+})
+```
+
+Cordova에서는 아래와 같이 동기화 오브젝트의 일부로 성공 및 실패 콜백을 정의하십시오.
+
+```
+function onsuccess(msg) {
+//Implement success action
+}
+
+function onfailure(msg) {
+//Implement failure action
+}
+
+collection.sync = {
+	syncPolicy : WL.JSONStore.syncOptions.SYNC_UPSTREAM, 
+	syncAdapterPath : 'JSONStoreCloudantSync',
+	onSyncSuccess : onsuccess,
+	onSyncFailure : onfailure
+};
+```
+
+JSONStoreCollection은 허용된 동기화 정책(즉, SYNC_DOWNSTREAM, SYNC_UPSTREAM 또는 SYNC_NONE) 중 하나만으로 정의할 수 있습니다.
+
+업스트림 또는 다운스트림 동기화를 초기화 이후 명시적으로 언제라도 수행해야 하는 경우 다음 API를 사용할 수 있습니다.
+
+`sync()`
+
+그러면 호출 콜렉션이 동기화 정책을 ‘SYNC_ DOWNSTREAM’으로 설정한 경우 다운스트림 동기화를 수행합니다. 그렇지 않고, 동기화 정책이 ‘SYNC_ UPSTREAM’으로 설정된 경우 jsonstore에서 Cloudant 데이터베이스로 추가, 삭제, 대체된 문서에 대한 업스트림 동기화가 수행됩니다. 
+
+
+Android:   
+```
+WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
+```
+
+iOS:
+```
+collection.sync(); //Here collection is the JSONStore collection object that was initialized
+```
+
+Cordova:
+```
+WL.JSONStore.get(collectionName).sync();
+```
+>**참고:** sync API에 대한 성공 및 실패 콜백은 콜렉션의 초기화 중에 선언된, 동기화 리스너(Android의 경우), 완료 핸들러(IOS의 경우) 및 정의된 콜백(Cordova의 경우)으로 트리거됩니다.
+
 ### 푸시
 {: #push }
 여러 시스템에서는 푸시라는 용어를 사용하여 외부 소스에 데이터를 전송하는 것을 나타냅니다.
@@ -568,7 +738,7 @@ accessor.remove(doc, {markDirty: true})
 
 다음 코드 예제는 모두 JavaScript와 유사한 의사 코드로 작성됩니다.
 
-**참고:** 전송 계층에는 어댑터를 사용하십시오. 어댑터를 사용하여 얻는 여러 장점에는 XML의 JSON 변환, 보안, 필터링 및 서버 측 코드와 클라이언트 측 코드의 분리가 포함됩니다.
+>**참고:** 전송 계층에는 어댑터를 사용하십시오. 어댑터를 사용하여 얻는 여러 장점에는 XML의 JSON 변환, 보안, 필터링 및 서버 측 코드와 클라이언트 측 코드의 분리가 포함됩니다.
 
 **내부 데이터 소스 API: JSONStore**  
 콜렉션에 대한 액세서가 있으면 `getAllDirty` API를 호출하여 더티로 표시된 모든 문서를 가져올 수 있습니다. 이러한 문서에는 전송 계층을 통해 외부 데이터 소스에 전송하려는 로컬로만 수행된 변경사항이 포함되어 있습니다.
@@ -616,7 +786,7 @@ accessor.getAllDirty()
 })
 ```
 
-**참고:** `WLResourceRequest` API에 전달될 수 있는 `compressResponse`, `timeout` 및 기타 매개변수를 사용할 수 있습니다.
+>**참고:** `WLResourceRequest` API에 전달될 수 있는 `compressResponse`, `timeout` 및 기타 매개변수를 사용할 수 있습니다.
 
 {{ site.data.keys.mf_server }}에서 어댑터에는 다음 예제와 유사한 `updatePeople` 프로시저가 있습니다.
 

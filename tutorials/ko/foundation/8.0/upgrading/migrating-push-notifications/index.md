@@ -41,9 +41,9 @@ IBM MobileFirst Platform Foundation의 이전 버전에서 기존 이벤트 소�
 #### 다음 섹션으로 이동
 {: #jump-to-section }
 * [하이브리드 애플리케이션](#hybrid-applications)
-* [고유 Android 애플리케이션](#native-android-applications)
-* [고유 iOS 애플리케이션](#native-ios-applications)
-* [고유 Windows Universal 애플리케이션](#native-windows-universal-applications)
+* [네이티브 Android 애플리케이션](#native-android-applications)
+* [네이티브 iOS 애플리케이션](#native-ios-applications)
+* [네이티브 Windows Universal 애플리케이션](#native-windows-universal-applications)
 
 ### 하이브리드 애플리케이션
 {: #hybrid-applications }
@@ -432,7 +432,7 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
     * {{ site.data.keys.mf_console }}. [등록자에게 푸시 알림 전송](../../notifications/sending-notifications/#sending-notifications)을 참조하십시오.
     * [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`.
 
-### 고유 Android 애플리케이션
+### 네이티브 Android 애플리케이션
 {: #native-android-applications }
 이 마이그레이션 시나리오의 예제는 하나의 이벤트 소스 또는 여러 소스, 브로드캐스트 또는 유니캐스트 알림, 또는 태그 알림을 사용하는 애플리케이션을 다룹니다.
 
@@ -828,7 +828,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
     * {{ site.data.keys.mf_console }}. [등록자에게 푸시 알림 전송](../../notifications/sending-notifications/#sending-notifications)을 참조하십시오.
     * [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`.
 
-### 고유 iOS 애플리케이션
+### 네이티브 iOS 애플리케이션
 {: #native-ios-applications }
 이 마이그레이션 시나리오의 예제는 하나의 이벤트 소스 또는 여러 소스, 브로드캐스트 또는 유니캐스트 알림, 또는 태그 알림을 사용하는 애플리케이션을 다룹니다.
 
@@ -1163,7 +1163,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
     * {{ site.data.keys.mf_console }}. [등록자에게 푸시 알림 전송](../../notifications/sending-notifications/#sending-notifications)을 참조하십시오.
     * [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`.  
 
-### 고유 Windows Universal 애플리케이션
+### 네이티브 Windows Universal 애플리케이션
 {: #native-windows-universal-applications }
 이 마이그레이션 시나리오의 예제는 하나의 이벤트 소스 또는 여러 소스, 브로드캐스트 또는 유니캐스트 알림, 또는 태그 알림을 사용하는 애플리케이션을 다룹니다.
 

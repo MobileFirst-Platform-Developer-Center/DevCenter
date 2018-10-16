@@ -12,7 +12,7 @@ weight: 4
 
 * **IBMMobileFirstPlatformFoundation** - 클라이언트 대 서버 연결을 구현하고 인증 및 보안 측면, 자원 요청과 기타 필수 핵심 기능을 처리합니다.
 
-이 학습서에서는 Nuget을 사용하여 신규 또는 기존 Windows 8.1 Universal 애플리케이션이나 Windows 10 UWP(Universal Windows Platform) 애플리케이션에 {{ site.data.keys.product_adj }} 고유 SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법 및 프로젝트에 추가되는 {{ site.data.keys.product_adj }} 구성 파일에 대한 정보를 찾는 방법에 대해서도 학습합니다.
+이 학습서에서는 Nuget을 사용하여 신규 또는 기존 Windows 8.1 Universal 애플리케이션이나 Windows 10 UWP(Universal Windows Platform) 애플리케이션에 {{ site.data.keys.product_adj }} 네이티브 SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법 및 프로젝트에 추가되는 {{ site.data.keys.product_adj }} 구성 파일에 대한 정보를 찾는 방법에 대해서도 학습합니다.
 
 **전제조건:**
 
@@ -22,15 +22,15 @@ weight: 4
 
 #### 다음으로 이동:
 {: #jump-to }
-- [{{ site.data.keys.product_adj }} 고유 SDK 추가](#adding-the-mobilefirst-native-sdk)
-- [수동으로 {{ site.data.keys.product_adj }} 고유 SDK 추가](#manually-adding-the-mobilefirst-win-native-sdk)
-- [{{ site.data.keys.product_adj }} 고유 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
-- [생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
+- [{{ site.data.keys.product_adj }} 네이티브 SDK 추가](#adding-the-mobilefirst-native-sdk)
+- [수동으로 {{ site.data.keys.product_adj }} 네이티브 SDK 추가](#manually-adding-the-mobilefirst-win-native-sdk)
+- [{{ site.data.keys.product_adj }} 네이티브 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
+- [생성되는 {{ site.data.keys.product_adj }} 네이티브 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
 - [다음 학습서](#tutorials-to-follow-next)
 
-## {{ site.data.keys.product_adj }} 고유 SDK 추가
+## {{ site.data.keys.product_adj }} 네이티브 SDK 추가
 {: #adding-the-mobilefirst-native-sdk }
-아래 지시사항에 따라 신규 또는 기존 Visual Studio 프로젝트에 {{ site.data.keys.product_adj }} 고유 SDK를 추가하고 {{ site.data.keys.mf_server }}에 애플리케이션을 등록하십시오.
+아래 지시사항에 따라 신규 또는 기존 Visual Studio 프로젝트에 {{ site.data.keys.product_adj }} 네이티브 SDK를 추가하고 {{ site.data.keys.mf_server }}에 애플리케이션을 등록하십시오.
 
 시작하기 전에 {{ site.data.keys.mf_server }} 인스턴스가 실행 중인지 확인하십시오.  
 로컬로 설치된 서버를 사용하는 경우: **명령행** 창에서 서버의 폴더로 이동하고 `./run.cmd` 명령을 실행하십시오.
@@ -54,13 +54,13 @@ NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관
 
     ![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
 
-4. **설치**를 클릭하십시오. 이 조치는 {{ site.data.keys.product }} 고유 SDK 및 해당 종속 항목을 설치합니다. 또한 이 단계는 Visual Studio 프로젝트의 `strings` 폴더에 비어 있는 `mfpclient.resw` 파일을 생성합니다.
+4. **설치**를 클릭하십시오. 이 조치는 {{ site.data.keys.product }} 네이티브 SDK 및 해당 종속 항목을 설치합니다. 또한 이 단계는 Visual Studio 프로젝트의 `strings` 폴더에 비어 있는 `mfpclient.resw` 파일을 생성합니다.
 
 5. 최소한 다음 기능이 `Package.appxmanifest`에서 사용되는지 확인하십시오.
 
     - 인터넷(클라이언트)
 
-### {{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가
+### {{ site.data.keys.product_adj }} 네이티브 SDK를 수동으로 추가
 {: #manually-adding-the-mobilefirst-win-native-sdk }
 
 {{ site.data.keys.product }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다.
@@ -81,7 +81,7 @@ NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관
                     <li><b>{{ site.data.keys.mf_console }} → Download Center → SDK</b> 탭에서 {{ site.data.keys.product }} SDK를 가져오십시오.
                     </li>
                     <li>1단계에서 얻은 다운로드한 SDK의 컨텐츠를 추출하십시오.</li>
-                    <li>Windows 유니버셜 고유 프로젝트를 Visual Studio에서 여십시오. 다음 단계를 수행하십시오.
+                    <li>Windows 유니버셜 네이티브 프로젝트를 Visual Studio에서 여십시오. 다음 단계를 수행하십시오.
                         <ol>
                             <li><b>도구 → NuGet 패키지 관리자 → 패키지 관리자 설정</b>을 선택하십시오.</li>
                             <li><b>패키지 소스</b> 옵션을 선택하십시오. <b>+</b> 아이콘을 클릭하여 새 패키지 소스를 추가하십시오.</li>
@@ -113,7 +113,7 @@ NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관
    ```bash
    mfpdev app register
    ```
-    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 추가하십시오.
+    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 이를 추가하십시오.
 
 `mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록한 후에 Visual Studio 프로젝트의 **strings** 폴더에서 **mfpclient.resw** 파일을 업데이트하고 {{ site.data.keys.mf_server }}를 식별하는 메타데이터에 추가합니다.
 
@@ -123,15 +123,15 @@ NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관
 > 2. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하여 새 애플리케이션을 등록하고 화면의 지시사항에 따르십시오.  
 > 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.resw** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오.
 
-## {{ site.data.keys.product_adj }} 고유 SDK 업데이트
+## {{ site.data.keys.product_adj }} 네이티브 SDK 업데이트
 {: #updating-the-mobilefirst-native-sdk }
-최신 릴리스로 {{ site.data.keys.product_adj }} 고유 SDK를 업데이트하려면 **명령행** 창의 Visual Studio 프로젝트 루트 폴더에서 다음 명령을 실행하십시오.
+최신 릴리스로 {{ site.data.keys.product_adj }} 네이티브 SDK를 업데이트하려면 **명령행** 창의 Visual Studio 프로젝트 루트 폴더에서 다음 명령을 실행하십시오.
 
 ```bash
 Nuget update
 ```
 
-## 생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트
+## 생성되는 {{ site.data.keys.product_adj }} 네이티브 SDK 아티팩트
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.resw
 {: #mfpclientresw }
@@ -146,7 +146,7 @@ Nuget update
 
 ## 다음 학습서
 {: #tutorials-to-follow-next }
-이제 MobileFirst 고유 SDK가 통합되었으므로 다음을 수행할 수 있습니다.
+이제 MobileFirst 네이티브 SDK가 통합되었으므로 다음을 수행할 수 있습니다.
 
 - [{{ site.data.keys.product }} SDK 사용 학습서](../) 검토
 - [어댑터 개발 학습서](../../../adapters/) 검토

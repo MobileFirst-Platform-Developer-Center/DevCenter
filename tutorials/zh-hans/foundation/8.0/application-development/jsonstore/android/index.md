@@ -39,7 +39,7 @@ compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0
         abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
       }
  ```     
- > **注**：我们将添加 abiFilters 以确保具有 JSONStore 的应用程序将在上述指定的任何体系结构中运行。由于 JSONStore 依赖于仅支持这些体系结构的第三方库，因此需要此项。
+ > **注**：我们将添加 abiFilters 以确保具有 JSONStore 的应用程序将在上述指定的任何体系结构中运行。 由于 JSONStore 依赖于仅支持这些体系结构的第三方库，因此需要此项。
 
 ## 基本用法
 {: #basic-usage }

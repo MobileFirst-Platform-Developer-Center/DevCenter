@@ -22,13 +22,13 @@ Appcenter 설치 프로그램 애플리케이션은 모바일 디바이스에 �
 {: #prerequisites }
 ### Android 운영 체제에 맞는 전제조건
 {: #prerequisites-specific-to-the-android-operating-system }
-모바일 클라이언트의 고유 Android 버전은 Android 애플리케이션 패키지(.apk) 파일 양식으로 소프트웨어 전달에 포함됩니다. **IBMApplicationCenter.apk** 파일은 **ApplicationCenter/installer** 디렉토리에 있습니다. 푸시 알림은 사용 안함으로 설정되어 있습니다. 푸시 알림을 사용으로 설정하려는 경우 .apk 파일을 다시 빌드해야 합니다. Application Center의 푸시 알림에 대한 자세한 정보는 [애플리케이션 업데이트의 푸시 알림](../push-notifications)을 참조하십시오.
+모바일 클라이언트의 네이티브 Android 버전은 Android 애플리케이션 패키지(.apk) 파일 양식으로 소프트웨어 전달에 포함됩니다. **IBMApplicationCenter.apk** 파일은 **ApplicationCenter/installer** 디렉토리에 있습니다. 푸시 알림은 사용 안함으로 설정되어 있습니다. 푸시 알림을 사용으로 설정하려는 경우 .apk 파일을 다시 빌드해야 합니다. Application Center의 푸시 알림에 대한 자세한 정보는 [애플리케이션 업데이트의 푸시 알림](../push-notifications)을 참조하십시오.
 
 Android 버전을 빌드하려면 최신 버전의 Android 개발 도구가 있어야 합니다.
 
 ### Apple iOS 운영 체제에 맞는 전제조건
 {: #prerequisites-specific-to-apple-ios-operating-system }
-iPad 및 iPhone용 고유 iOS 버전은 컴파일된 애플리케이션으로 전달되지 않습니다. 애플리케이션은 **IBMAppCenter**라는 {{ site.data.keys.product_full }} 프로젝트에서 작성해야 합니다. 이 프로젝트는 **ApplicationCenter/installer** 디렉토리에 배포의 일부로도 전달됩니다.
+iPad 및 iPhone용 네이티브 iOS 버전은 컴파일된 애플리케이션으로 전달되지 않습니다. 애플리케이션은 **IBMAppCenter**라는 {{ site.data.keys.product_full }} 프로젝트에서 작성해야 합니다. 이 프로젝트는 **ApplicationCenter/installer** 디렉토리에 배포의 일부로도 전달됩니다.
 
 iOS 버전을 빌드하려면 적절한 {{ site.data.keys.product_full }} 및 Apple 소프트웨어가 있어야 합니다. {{ site.data.keys.mf_studio }} 버전은 이 문서의 기반이 되는 {{ site.data.keys.mf_server }} 버전과 같아야 합니다. Apple Xcode 버전은 V6.1입니다.
 
@@ -124,7 +124,7 @@ iOS 및 Android용 Cordova 프로젝트를 사용하는 대신에, MobileFirst S
 
 #### Android에서 프로젝트 가져오기 및 빌드
 {: #importing-building-projects-android }
-MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/android/native**에 고유 Android 프로젝트를 생성합니다. 고유 Android 개발 도구(ADT) 프로젝트는 android/native 폴더에 있습니다. ADT 도구를 사용하여 이 프로젝트를 컴파일하고 서명할 수 있습니다. 생성되는 APK가 모든 Android 버전 2.3 이상과 호환 가능하도록 이 프로젝트에서는 Android SDK 레벨 16을 설치해야 합니다. 프로젝트를 빌드할 때 상위 레벨의 Android SDK를 선택하는 경우 생성되는 APK는 Android 버전 2.3과 호환 가능하지 않습니다.
+MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/android/native**에 네이티브 Android 프로젝트를 생성합니다. 네이티브 Android 개발 도구(ADT) 프로젝트는 android/native 폴더에 있습니다. ADT 도구를 사용하여 이 프로젝트를 컴파일하고 서명할 수 있습니다. 생성되는 APK가 모든 Android 버전 2.3 이상과 호환 가능하도록 이 프로젝트에서는 Android SDK 레벨 16을 설치해야 합니다. 프로젝트를 빌드할 때 상위 레벨의 Android SDK를 선택하는 경우 생성되는 APK는 Android 버전 2.3과 호환 가능하지 않습니다.
 
 모바일 클라이언트 애플리케이션에 영향을 미치는 특정 Android 정보는 [개발자용 Android 사이트](https://developer.android.com/index.html)를 참조하십시오.
 
@@ -132,7 +132,7 @@ MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/android/native**에 고유 A
 
 #### iOS에서 프로젝트 가져오기 및 빌드
 {: #importing-building-projects-ios }
-MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/iphone/native**에 고유 iOS 프로젝트를 생성합니다. **IBMAppCenterAppCenterIphone.xcodeproj** 파일은 iphone/native 폴더에 있습니다. 이 파일은 Xcode를 사용하여 컴파일하고 서명해야 하는 Xcode 프로젝트입니다.
+MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/iphone/native**에 네이티브 iOS 프로젝트를 생성합니다. **IBMAppCenterAppCenterIphone.xcodeproj** 파일은 iphone/native 폴더에 있습니다. 이 파일은 Xcode를 사용하여 컴파일하고 서명해야 하는 Xcode 프로젝트입니다.
 
 iOS 모바일 클라이언트 애플리케이션을 서명하는 방법에 대해 자세히 알아보려면 [Apple 개발자 사이트](https://developer.apple.com/)를 참조하십시오. iOS 애플리케이션을 서명하려면 사용하는 프로비저닝 프로파일과 함께 사용할 수 있는 번들 ID로 애플리케이션의 번들 ID를 변경해야 합니다. 값은 Xcode 프로젝트 설정에서 **com.your\_internet\_domain\_name.appcenter**로 정의됩니다. 여기서 **your\_internet\_domain\_name**은 인터넷 도메인의 이름입니다.
 
@@ -140,7 +140,7 @@ iOS 모바일 클라이언트 애플리케이션을 서명하는 방법에 대�
 
 #### Windows Phone 8
 {: #windows-phone-8 }
-MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/windowsphone8/native**에 고유 Windows Phone 8 프로젝트를 생성합니다. **AppCenter.csproj** 파일은 windowsphone8/native 폴더에 있습니다. 이 파일은 Visual Studio 및 Windows Phone 8.0 SDK를 사용하여 컴파일해야 하는 Visual Studio 프로젝트입니다.
+MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/windowsphone8/native**에 네이티브 Windows Phone 8 프로젝트를 생성합니다. **AppCenter.csproj** 파일은 windowsphone8/native 폴더에 있습니다. 이 파일은 Visual Studio 및 Windows Phone 8.0 SDK를 사용하여 컴파일해야 하는 Visual Studio 프로젝트입니다.
 
 애플리케이션은 Windows Phone 8.0 및 8.1 디바이스에서 [Windows Phone 8.0 SDK](https://www.microsoft.com/en-in/download/details.aspx?id=35471)로 빌드됩니다. 결과가 이전의 Windows Phone 8.0 디바이스에서 실행되지 않기 때문에 Windows Phone 8.1 SDK로는 빌드되지 않습니다.
 
@@ -162,10 +162,10 @@ Windows 8 프로젝트를 빌드하려면 다음을 수행하십시오.
 
 Application Center 사용자에게 모바일 클라이언트를 배포하기 위해, 생성된 실행 파일(.exe) 및 해당 종속 동적 링크 라이브러리(.dll) 파일을 설치할 설치 프로그램을 나중에 생성할 수 있습니다. 또는 설치 프로그램에 포함시키지 않고 이러한 파일을 제공할 수 있습니다.
 
-####  Microsoft Windows 10 Universal(기본) IBM AppCenter 클라이언트
+####  Microsoft Windows 10 Universal(네이티브) IBM AppCenter 클라이언트
 {: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
 
-기본 Window 10 Universal IBM AppCenter 클라이언트는 Windows 10 휴대폰에 Windows 10 Universal 앱을 설치하는 데 사용할 수 있습니다. Windows 데스크탑에 Windows 10 앱을 설치하는 데는 **IBMApplicationCenterWindowsStore**를 사용하십시오.
+네이티브 Window 10 Universal IBM AppCenter 클라이언트는 Windows 10 휴대폰에 Windows 10 Universal 앱을 설치하는 데 사용할 수 있습니다. Windows 데스크탑에 Windows 10 앱을 설치하는 데는 **IBMApplicationCenterWindowsStore**를 사용하십시오.
 
 #### Microsoft Windows 10: 프로젝트 빌드
 {: #microsoft-windows-10-universal-building-the-project}

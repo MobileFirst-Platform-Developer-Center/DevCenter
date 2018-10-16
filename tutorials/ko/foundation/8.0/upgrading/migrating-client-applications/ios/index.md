@@ -7,23 +7,23 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-IBM MobileFirst™ Platform Foundation 버전 6.2.0 이상으로 작성된 기존의 고유 iOS 프로젝트를 마이그레이션하려면 현재 버전에서 SDK를 사용하도록 프로젝트를 수정해야 합니다. 그런 다음 V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체하십시오. 마이그레이션 지원 도구는 코드를 스캔하고 대체할 API의 보고서를 생성할 수 있습니다.
+IBM MobileFirst™ Platform Foundation 버전 6.2.0 이상으로 작성된 기존의 네이티브 iOS 프로젝트를 마이그레이션하려면 현재 버전에서 SDK를 사용하도록 프로젝트를 수정해야 합니다. 그런 다음 V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체하십시오. 마이그레이션 지원 도구는 코드를 스캔하고 대체할 API의 보고서를 생성할 수 있습니다.
 
 #### 다음으로 이동
 {: #jump-to }
-* [버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 고유 iOS 앱 스캔](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
+* [버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 네이티브 iOS 앱 스캔](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
 * [기존 iOS 프로젝트를 수동으로 마이그레이션](#migrating-an-existing-ios-project-manually)
-* [CocoaPods를 사용하여 기존 고유 iOS 프로젝트를 마이그레이션](#migrating-an-existing-native-ios-project-with-cocoapods)
+* [CocoaPods를 사용하여 기존 네이티브 iOS 프로젝트를 마이그레이션](#migrating-an-existing-native-ios-project-with-cocoapods)
 * [iOS에서 암호화 마이그레이션](#migrating-encryption-in-ios)
 * [iOS 코드 업데이트](#updating-the-ios-code)
 
-## 버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 고유 iOS 앱 스캔
+## 버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 네이티브 iOS 앱 스캔
 {: #scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade }
-마이그레이션 지원 도구는 Swift 또는 Objective-C를 사용하여 개발된 고유 iOS 앱의 소스를 스캔하고 V8.0에서 더 이상 사용되지 않거나 중단된 API의 보고서를 생성하여 마이그레이션을 위해 IBM MobileFirst™ Platform Foundation의 이전 버전으로 작성된 앱을 준비하도록 도와줍니다.
+마이그레이션 지원 도구는 Swift 또는 Objective-C를 사용하여 개발된 네이티브 iOS 앱의 소스를 스캔하고 V8.0에서 더 이상 사용되지 않거나 중단된 API의 보고서를 생성하여 마이그레이션을 위해 IBM MobileFirst™ Platform Foundation의 이전 버전으로 작성된 앱을 준비하도록 도와줍니다.
 
 마이그레이션 지원 도구를 사용하기 전에 다음 정보를 파악하는 것이 중요합니다.
 
-* 기존 IBM MobileFirst Platform Foundation 고유 iOS 애플리케이션이 있어야 합니다.
+* 기존 IBM MobileFirst Platform Foundation 네이티브 iOS 애플리케이션이 있어야 합니다.
 * 인터넷에 액세스할 수 있어야 합니다.
 * node.js 버전 4.0.0 이상이 설치되어 있어야 합니다.
 * 마이그레이션 프로세스의 제한사항을 검토하고 숙지하십시오. 자세한 정보는 [이전 릴리스에서 앱 마이그레이션](../)을 참조하십시오.
@@ -59,12 +59,12 @@ IBM MobileFirst Platform Foundation의 이전 버전으로 작성된 앱은 몇 
 
 ## 기존 iOS 프로젝트를 수동으로 마이그레이션
 {: #migrating-an-existing-ios-project-manually }
-Xcode 프로젝트 내에서 수동으로 기존 고유 iOS 프로젝트를 마이그레이션하고 {{ site.data.keys.product }} V8.0으로 계속 개발하십시오.
+Xcode 프로젝트 내에서 수동으로 기존 네이티브 iOS 프로젝트를 마이그레이션하고 {{ site.data.keys.product }} V8.0으로 계속 개발하십시오.
 
 시작하기 전에 다음 조건을 충족해야 합니다.
 
 * Xcode 7.0(iOS 9) 이상에서 작업 중이어야 합니다.
-* IBM MobileFirst Platform Foundation 6.2.0 이상으로 작성된 기존의 고유 iOS 프로젝트가 있어야 합니다.
+* IBM MobileFirst Platform Foundation 6.2.0 이상으로 작성된 기존의 네이티브 iOS 프로젝트가 있어야 합니다.
 * V8.0.0 {{ site.data.keys.product_adj }} iOS SDK 파일의 사본에 대한 액세스 권한이 있어야 합니다.
 
 1. **빌드 단계** 섹션의 **라이브러리가 포함된 2진 링크** 탭에서 정적 라이브러리 **libWorklightStaticLibProjectNative.a**에 대한 모든 참조를 삭제하십시오.
@@ -100,9 +100,9 @@ Xcode 프로젝트 내에서 수동으로 기존 고유 iOS 프로젝트를 마�
 {: #what-to-do-next }
 V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체하십시오.
 
-## CocoaPods를 사용하여 기존 고유 iOS 프로젝트를 마이그레이션
+## CocoaPods를 사용하여 기존 네이티브 iOS 프로젝트를 마이그레이션
 {: #migrating-an-existing-native-ios-project-with-cocoapods }
-CocoaPods를 사용하고 프로젝트 구성을 변경하여 {{ site.data.keys.product }} iOS SDK를 가져옴으로써 V8.0에 대해 작동하도록 기존 고유 iOS 프로젝트를 마이그레이션하십시오.
+CocoaPods를 사용하고 프로젝트 구성을 변경하여 {{ site.data.keys.product }} iOS SDK를 가져옴으로써 V8.0에 대해 작동하도록 기존 네이티브 iOS 프로젝트를 마이그레이션하십시오.
 
 > **참고:** {{ site.data.keys.product_adj }} 개발은 iOS 8.0 이상을 사용하여 버전 7.1의 Xcode에서 지원됩니다.
 
@@ -251,7 +251,7 @@ iOS API 변경사항을 아래 표에 나열했습니다.
 
 |API 요소 |마이그레이션 경로 |
 |-------------|----------------|
-| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} |위치정보가 제거되었습니다. 위치정보에 대한 기본 iOS 또는 써드파티 패키지를 사용하십시오. |
+| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} |위치정보가 제거되었습니다. 위치정보에 대한 네이티브 iOS 또는 써드파티 패키지를 사용하십시오. |
 | {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} |대체 없음. |
 |`WL.Client.deleteUserPref(key, options)` |대체 없음. 어댑터와 [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) API를 사용하여 사용자 환경 설정을 관리할 수 있습니다. |
 |`[WLClient getRequiredAccessTokenScopeFromStatus]` |[`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:)를 사용하십시오. |

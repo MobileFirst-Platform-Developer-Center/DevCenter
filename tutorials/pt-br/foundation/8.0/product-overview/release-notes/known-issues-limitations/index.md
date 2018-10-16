@@ -280,3 +280,5 @@ Durante a configuração de **mfpclient.properties** para o seu aplicativo Andro
 {:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
 A modificação do comportamento padrão de um aplicativo Cordova (como a substituição do comportamento do botão Voltar) quando o Cordova SDK {{ site.data.keys.product_adj }} está incluído no projeto pode acarretar na rejeição do aplicativo pelo Google Play Store no momento do envio.
 Para obter mais informações sobre falhas no envio para o Google Play Store, é possível entrar em contato com o suporte do Google.
+
+>**Nota:** se estiver usando a versão de liberação do MobileFirst 8.0 iFix a partir de janeiro de 2018 ou depois, é recomendável atualizar o servidor e o cliente para a mesma versão. 

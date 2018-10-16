@@ -99,7 +99,7 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 각 매시업 유형에서 어댑터의 이름은 약간 다릅니다.  
 다음은 매시업 유형 및 해당 어댑터 이름의 목록입니다.
 
-| 시나리오                                         |       SQL 어댑터 이름        |    HTTP 어댑터 이름   |  
+| 시나리오                                         |      SQL 어댑터 이름         |  HTTP 어댑터 이름     |  
 |--------------------------------------------------|------------------------------|-----------------------|
 | **JavaScript** 어댑터 → **JavaScript** 어댑터    | SQLAdapterJS                 | HTTPAdapterJS         |  
 | **Java** 어댑터 → **JavaScript** 어댑터          | SQLAdapterJava               | HTTPAdapterJS         |  

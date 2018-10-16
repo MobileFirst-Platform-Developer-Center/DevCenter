@@ -16,7 +16,7 @@ POD는 핵심 기능 및 다른 기능에 해당됩니다.
 * **IBMMobileFirstPlatformFoundationPush** - 푸시 알림 프레임워크를 포함합니다. 자세한 정보는 [알림 학습서](../../../notifications/)를 검토하십시오.
 * **IBMMobileFirstPlatformFoundationWatchOS** - Apple WatchOS에 대한 지원을 포함합니다.
 
-이 학습서에서는 신규 또는 기존 iOS 애플리케이션에 CocoaPods를 사용하여 MobileFirst 고유 SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법도 학습합니다.
+이 학습서에서는 신규 또는 기존 iOS 애플리케이션에 CocoaPods를 사용하여 MobileFirst 네이티브 SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법도 학습합니다.
 
 **전제조건:**
 
@@ -28,17 +28,17 @@ POD는 핵심 기능 및 다른 기능에 해당됩니다.
 
 #### 다음으로 이동:
 {: #jump-to }
-- [MobileFirst 고유 SDK 추가](#adding-the-mobilefirst-native-sdk)
-- [MobileFirst 고유 SDK를 수동으로 추가](#manually-adding-the-mobilefirst-native-sdk)
+- [MobileFirst 네이티브 SDK 추가](#adding-the-mobilefirst-native-sdk)
+- [MobileFirst 네이티브 SDK를 수동으로 추가](#manually-adding-the-mobilefirst-native-sdk)
 - [Apple watchOS에 대한 지원 추가](#adding-support-for-apple-watchos)
-- [MobileFirst 고유 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
-- [생성된 MobileFirst 고유 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
+- [MobileFirst 네이티브 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
+- [생성되는 MobileFirst 네이티브 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
 - [비트 코드 및 TLS 1.2](#bitcode-and-tls-12)
 - [다음 학습서](#tutorials-to-follow-next)
 
-## {{ site.data.keys.product_adj }} 고유 SDK 추가
+## {{ site.data.keys.product_adj }} 네이티브 SDK 추가
 {: #adding-the-mobilefirst-native-sdk }
-아래 지시사항에 따라 신규 또는 기존 Xcode 프로젝트에 {{ site.data.keys.product }} 고유 SDK를 추가하고 {{ site.data.keys.mf_server }}에 애플리케이션을 등록하십시오.
+아래 지시사항에 따라 신규 또는 기존 Xcode 프로젝트에 {{ site.data.keys.product }} 네이티브 SDK를 추가하고 {{ site.data.keys.mf_server }}에 애플리케이션을 등록하십시오.
 
 시작하기 전에 {{ site.data.keys.mf_server }}가 실행 중인지 확인하십시오.  
 로컬로 설치된 서버를 사용하는 경우: **명령행** 창에서 서버의 폴더로 이동하고 `./run.sh` 명령을 실행하십시오.
@@ -49,7 +49,7 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
 
 ### SDK 추가
 {: #adding-the-sdk }
-1. {{ site.data.keys.product }} 고유 SDK는 CocoaPods를 통해 제공됩니다.
+1. {{ site.data.keys.product }} 네이티브 SDK는 CocoaPods를 통해 제공됩니다.
     - 개발 환경에 [CocoaPods](http://guides.cocoapods.org)가 이미 설치되어 있는 경우 2단계로 건너뛰십시오.
     - CocoaPods가 설치되지 않은 경우 다음과 같이 설치하십시오.  
         - **명령행** 창을 열고 Xcode 프로젝트의 루트로 이동하십시오.
@@ -60,7 +60,7 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
     - 다음 행을 추가하고 변경사항을 저장하십시오.
 
       ```xml
-      use_frameworks!
+use_frameworks!
 
       platform :ios, 8.0
       target "Xcode-project-target" do
@@ -69,12 +69,12 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
       ```
       - Xcode 프로젝트의 대상 이름으로 **Xcode-project-target**을 대체하십시오.
 
-4. 명령행 창으로 돌아가서 `pod install` 및 `pod update` 명령을 순서대로 실행하십시오. 이러한 명령은 {{ site.data.keys.product }} 고유 SDK 파일 및 **mfpclient.plist** 파일을 추가하고 Pod 프로젝트를 생성합니다.  
+4. 명령행 창으로 돌아가서 `pod install` 및 `pod update` 명령을 순서대로 실행하십시오. 이러한 명령은 {{ site.data.keys.product }} 네이티브 SDK 파일 및 **mfpclient.plist** 파일을 추가하고 Pod 프로젝트를 생성합니다.  
     **참고:** 명령을 완료하려면 몇 분 정도 소요될 수 있습니다.
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요**: 여기서부터 `[ProjectName].xcworkspace` 파일을 사용하여 Xcode에서 프로젝트를 여십시오. `[ProjectName].xcodeproj` 파일을 사용하지 **마십시오**. CocoaPods 기반 프로젝트는 애플리케이션(실행 파일) 및 라이브러리(CocoaPod 관리자가 가져오는 모든 프로젝트 종속 항목)를 포함하는 작업공간으로 관리됩니다.
 
-### {{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가
+### {{ site.data.keys.product_adj }} 네이티브 SDK를 수동으로 추가
 {: #manually-adding-the-mobilefirst-native-sdk }
 {{ site.data.keys.product }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다.
 
@@ -151,9 +151,9 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
 2. 다음 명령을 실행하십시오.
 
     ```bash
-    mfpdev app register
+   mfpdev app register
     ```
-    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 추가하십시오.
+    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 이를 추가하십시오.
 
     애플리케이션의 번들 ID를 제공하라는 메시지가 표시됩니다. **중요**: 번들 ID는 **대소문자를 구분**합니다.  
 
@@ -171,7 +171,7 @@ Xcode에서 프로젝트 항목을 마우스 오른쪽 단추로 클릭하고 **
 
 ### SDK 참조
 {: #referencing-the-sdk }
-{{ site.data.keys.product }} 고유 SDK를 사용할 때마다 {{ site.data.keys.product }} 프레임워크를 가져오십시오.
+{{ site.data.keys.product }} 네이티브 SDK를 사용할 때마다 {{ site.data.keys.product }} 프레임워크를 가져오십시오.
 
 Objective-C:
 
@@ -226,9 +226,9 @@ end
 
 Xcode 프로젝트가 처리완료되었는지 확인하고 `pod install` 명령을 실행하십시오.
 
-## {{ site.data.keys.product_adj }} 고유 SDK 업데이트
+## {{ site.data.keys.product_adj }} 네이티브 SDK 업데이트
 {: #updating-the-mobilefirst-native-sdk }
-최신 릴리스로 {{ site.data.keys.product }} 고유 SDK를 업데이트하려면 **명령행** 창의 Xcode 프로젝트 루트 폴더에서 다음 명령을 실행하십시오.
+최신 릴리스로 {{ site.data.keys.product }} 네이티브 SDK를 업데이트하려면 **명령행** 창의 Xcode 프로젝트 루트 폴더에서 다음 명령을 실행하십시오.
 
 ```bash
 pod update
@@ -236,19 +236,19 @@ pod update
 
 SDK 릴리스는 SDK의 [CocoaPods 저장소](https://cocoapods.org/?q=ibm%20mobilefirst)에 있습니다.
 
-## 생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트
+## 생성되는 {{ site.data.keys.product_adj }} 네이티브 SDK 아티팩트
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
 이 파일은 프로젝트의 루트에 있으며 {{ site.data.keys.mf_server }}에서 iOS 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-|특성            |설명                                                         |예제 값 |
+| 특성            | 설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
-|protocol    |{{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             |HTTP 또는 HTTPS  |
-|host        |{{ site.data.keys.mf_server }}의 호스트 이름입니다.                            |192.168.1.63   |
-|port        |{{ site.data.keys.mf_server }}의 포트입니다.                                 |9080           |
-|wlServerContext     |{{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. |/mfp/          |
-|languagePreferences |클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.           |en             |
+| protocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
+| host        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
+| port        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다. | /mfp/          |
+| languagePreferences | 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.           | en             |
 
 ## 비트 코드 및 TLS 1.2
 {: #bitcode-and-tls-12 }
@@ -256,7 +256,7 @@ SDK 릴리스는 SDK의 [CocoaPods 저장소](https://cocoapods.org/?q=ibm%20mob
 
 ## 다음 학습서
 {: #tutorials-to-follow-next }
-이제 {{ site.data.keys.product }} 고유 SDK가 통합되었으므로 다음을 수행할 수 있습니다.
+이제 {{ site.data.keys.product }} 네이티브 SDK가 통합되었으므로 다음을 수행할 수 있습니다.
 
 - [{{ site.data.keys.product }} SDK 사용 학습서](../) 검토
 - [어댑터 개발 학습서](../../../adapters/) 검토

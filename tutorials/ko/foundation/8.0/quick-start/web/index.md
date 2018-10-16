@@ -10,14 +10,14 @@ weight: 5
 {: #overview }
 이 데모의 목적은 엔드-투-엔드 플로우를 경험해보는 것입니다.
 
-1. {{ site.data.keys.product_adj }} 클라이언트 SDK가 사전에 번들된 샘플 애플리케이션을 등록하고 {{ site.data.keys.mf_console }}에서 다운로드합니다.
+1. {{ site.data.keys.product_adj }} 클라이언트 SDK에 사전 번들로 제공되는 샘플 애플리케이션이 등록되고 {{ site.data.keys.mf_console }}에서 다운로드됩니다.
 2. 새 어댑터 또는 제공된 어댑터가 {{ site.data.keys.mf_console }}에 배치됩니다.  
 3. 자원 요청을 하도록 애플리케이션 로직이 변경됩니다.
 
 **종료 결과**:
 
-* {{ site.data.keys.mf_server }} ping을 실행함.
-* 어댑터를 사용하여 데이터를 검색함.
+* {{ site.data.keys.mf_server }} ping 실행에 성공함.
+* 어댑터를 사용하여 데이터 검색에 성공함.
 
 #### 전제조건:
 {: #prerequisites }
@@ -28,7 +28,7 @@ weight: 5
 ### 1. {{ site.data.keys.mf_server }} 시작
 {: #starting-the-mobilefirst-server }
 [Mobile Foundation 인스턴스를 작성](../../bluemix/using-mobile-foundation)했는지 확인하십시오. 또는  
-[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)를 사용하는 경우, 서버의 폴더로 이동해서 Mac 및 Linux의 경우 `./run.sh` 또는 Windows의 경우 `run.cmd` 명령을 실행하십시오.
+[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)를 사용하는 경우 서버의 폴더로 이동해서 `./run.sh`(Mac 및 Linux의 경우) 또는 `run.cmd`(Windows의 경우) 명령을 실행하십시오.
 
 ### 2. 애플리케이션 작성 및 등록
 {: #creating-and-registering-an-application }
@@ -36,7 +36,7 @@ weight: 5
 
 1. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하십시오.
     * **웹** 플랫폼을 선택하십시오.
-    * **com.ibm.mfpstarterweb**을 **애플리케이션 ID**로 입력하십시오.
+    * **애플리케이션 ID**로 **com.ibm.mfpstarterweb**을 입력하십시오.
     * **애플리케이션 등록**을 클릭하십시오.
 
     <img class="gifplayer" alt="애플리케이션 등록" src="register-an-application-web.png"/>
@@ -49,7 +49,7 @@ weight: 5
 {: #editing-application-logic }
 1. 선택한 코드 편집기로 프로젝트를 여십시오.
 
-2. **client/js/index.js** 파일을 선택하고 다음 코드 스니펫을 붙여넣기하면 다음과 같이 기존 `WLAuthorizationManager.obtainAccessToken()` 함수를 바꿉니다.
+2. **client/js/index.js** 파일을 선택하고 다음 코드 스니펫을 붙여넣어 기존 `WLAuthorizationManager.obtainAccessToken()` 함수를 대체하십시오.
 
    ```javascript
    WLAuthorizationManager.obtainAccessToken()
@@ -84,7 +84,7 @@ weight: 5
 
 ### 4. 어댑터 배치
 {: #deploy-an-adapter }
-[이 준비된 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 배치하십시오.
+[이 준비된 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 이를 배치하십시오.
 
 그렇지 않으면 **어댑터** 옆에 있는 **새로 작성** 단추를 클릭하십시오.  
 
@@ -98,7 +98,7 @@ weight: 5
    mfpdev adapter build
    ```
 
-3. 빌드가 완료되면 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 배치하십시오. **[adapter]/target** 폴더에서 어댑터를 찾을 수 있습니다.
+3. 빌드가 완료되면 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 이를 배치하십시오. **[adapter]/target** 폴더에서 어댑터를 찾을 수 있습니다.
 
     <img class="gifplayer" alt="어댑터 배치" src="create-an-adapter.png"/>   
 
