@@ -29,7 +29,7 @@ weight: 1
 <update src="res/screen/android/splash-ldpi.9.png" target="res/drawable-ldpi/splash.9.png" />
 <update src="res/screen/android/splash-mdpi.9.png" target="res/drawable-mdpi/splash.9.png" />
 <update src="res/screen/android/splash-xhdpi.9.png" target="res/drawable-xhdpi/splash.9.png" />
-<update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
+<update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" />
 ```
 
 如果在创建应用程序时使用 {{ site.data.keys.product_adj }} 模板，那么必须更新 Cordova 使用的启动图像。 将源路径和文件名 (src) 更改为想要显示的文件的路径。 在 config.xml 文件的 <platform name="android"> 和 </platform> 标记之间添加类似于以下示例的行：
@@ -102,16 +102,16 @@ weight: 1
 <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
 ```
 
-从 MobileFirstPlatform Foundation cordova 插件 V8.0.2017102406 开始，已对 `AppDelegate.m` 进行了更改，这会造成在通过已安装的 `cordova-plugin-mfp` 来装入 cordova iOS 应用程序时闪烁黑屏。如果用户不希望看到这种启动屏幕，那么他们可以添加一个新的 `ViewController`，并对 `AppDelegate.m` 装入进行一些更改以避免出现黑色启动屏幕。此过程的步骤如下：
+从 MobileFirstPlatform Foundation cordova 插件 V8.0.2017102406 开始，已对 `AppDelegate.m` 进行了更改，这会造成在通过已安装的 `cordova-plugin-mfp` 来装入 cordova iOS 应用程序时闪烁黑屏。 如果用户不希望看到这种启动屏幕，那么他们可以添加一个新的 `ViewController`，并对 `AppDelegate.m` 装入进行一些更改以避免出现黑色启动屏幕。 此过程的步骤如下：
 
 1. 在 XCode 项目中，右键单击 **Classes** 文件夹，然后选择**新建文件**选项。
-2. 选择 **Cocoa Touch Class** 模板。单击**下一步**。
-3. 保留缺省值（类名将为 *ViewController*）。单击**下一步**。
-4. 单击**创建**。此时会将文件 `ViewController.m` 和 `ViewController.h` 添加到 **Classes** 文件夹。
+2. 选择 **Cocoa Touch Class** 模板。 单击**下一步**。
+3. 保留缺省值（类名将为 *ViewController*）。 单击**下一步**。
+4. 单击**创建**。 此时会将文件 `ViewController.m` 和 `ViewController.h` 添加到 **Classes** 文件夹。
 5. 再次右键单击 **Classes** 文件夹，然后选择**新建文件**选项。
-6. 选择 **Storyboard** 模板。单击**下一步**，使用名称 `ViewController` 进行保存，然后单击**创建**。
-7. 打开 `ViewController.storyboard`，然后添加一个新的 `ViewController` 对象。在**定制类**选项卡中，添加属性*类*作为 *ViewController*。在**标识**选项卡中，将**故事板标识**和**复原标识**设置为 *ViewController*。
-8. 按如下所示修改 `AppDelegate.m`，然后构建并运行应用程序。现在不会再出现黑色启动屏幕，而是显示一个白色屏幕，且此屏幕可在 *ViewController.storyboard* 中进行定制。
+6. 选择 **Storyboard** 模板。 单击**下一步**，使用名称 `ViewController` 进行保存，然后单击**创建**。
+7. 打开 `ViewController.storyboard`，然后添加一个新的 `ViewController` 对象。 在**定制类**选项卡中，添加属性*类*作为 *ViewController*。 在**标识**选项卡中，将**故事板标识**和**复原标识**设置为 *ViewController*。
+8. 按如下所示修改 `AppDelegate.m`，然后构建并运行应用程序。 现在不会再出现黑色启动屏幕，而是显示一个白色屏幕，且此屏幕可在 *ViewController.storyboard* 中进行定制。
 
 ```
   /*
@@ -262,7 +262,7 @@ weight: 1
 ```
 
 
->**注：**如果移除 ios 平台然后重新添加，这些更改一定会丢失。因此，请确保在需要时进行这些更改。
+>**注：**如果移除 ios 平台然后重新添加，这些更改一定会丢失。 因此，请确保在需要时进行这些更改。
 
 ### Windows
 {: #windows }

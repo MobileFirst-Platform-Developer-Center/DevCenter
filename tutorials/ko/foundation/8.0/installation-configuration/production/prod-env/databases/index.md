@@ -14,7 +14,7 @@ weight: 3
 * {{ site.data.keys.product }} 런타임
 
 > **참고:** 다른 컨텍스트 루트를 가진 여러 런타임 인스턴스가 설치되는 경우 각 인스턴스에는 자체 테이블 세트가 필요합니다.
-> 데이터베이스는 IBM  DB2 , Oracle 또는 MySQL 등의 관계형 데이터베이스일 수 있습니다.
+> 데이터베이스는 IBM DB2, Oracle 또는 MySQL 등의 관계형 데이터베이스일 수 있습니다.
 
 #### 관계형 데이터베이스(DB2, Oracle 또는 MySQL)
 {: #relational-databases-db2-oracle-or-mysql }

@@ -18,7 +18,7 @@ REST API는 모든 어댑터 및 외부 자원에서 작동합니다.
 
 **전제조건**:
 
-- 고유 Android 프로젝트에 [{{ site.data.keys.product }} SDK를 추가](../../../application-development/sdk/android)했는지 확인하십시오.
+- 네이티브 Android 프로젝트에 [{{ site.data.keys.product }} SDK를 추가](../../../application-development/sdk/android)했는지 확인하십시오.
 - [어댑터 작성](../../../adapters/creating-adapters) 방법에 대해 자세히 알아보십시오.
 
 ## WLResourceRequest
@@ -84,7 +84,7 @@ JavaScript 어댑터는 이름이 없는 정렬된 매개변수를 사용합니�
 request.setQueryParameter("params","['value1', 'value2']");
 ```
 
-이는 `WLResourceRequest.GET`와 함께 사용해야 합니다.
+이는 `WLResourceRequest.GET`과 함께 사용해야 합니다.
 
 ### 양식 매개변수
 {: #form-parameters }
@@ -128,16 +128,16 @@ request.addHeader("date", date.getText().toString());
 
 ## 자세한 정보
 {: #for-more-information }
-> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조하십시오](../../../api/client-side-api/java/client/).
+> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조](../../../api/client-side-api/java/client/)하십시오.
 
 <img alt="샘플 애플리케이션 이미지" src="resource-request-success-android.png" style="float:right"/>
 ## 샘플 애플리케이션
 {: #sample-application }
-ResourceRequestAndroid 프로젝트에는 Java 어댑터를 사용하여 자원 요청을 작성하는 고유 Android 애플리케이션이 포함되어 있습니다.  
+ResourceRequestAndroid 프로젝트에는 Java 어댑터를 사용하여 자원 요청을 작성하는 네이티브 Android 애플리케이션이 포함되어 있습니다.  
 어댑터 Maven 프로젝트에는 자원 요청 호출 중에 사용되는 Java 어댑터가 포함되어 있습니다.
 
-Android 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80)하십시오.  
-어댑터 Maven 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오.
+Android 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80)하십시오.  
+어댑터 Maven 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오.
 
 ### 샘플 사용법
 {: #sample-usage }

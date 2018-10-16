@@ -7,7 +7,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-本入门教程指导您完成整个安装过程以使 {{ site.data.keys.mf_server }} 正常运行，并在 Liberty 概要文件上建立具有两个节点的集群。可以如下方式完成安装：
+本入门教程指导您完成整个安装过程以使 {{ site.data.keys.mf_server }} 正常运行，并在 Liberty 概要文件上建立具有两个节点的集群。 可以如下方式完成安装：
 * 使用 IBM Installation Manager 图形方式和 Server Configuration Tool。
 * 使用命令行工具。
 

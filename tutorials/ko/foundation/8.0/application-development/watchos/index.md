@@ -25,7 +25,7 @@ watchOS의 개발 환경을 설정하려면 Xcode 프로젝트 작성, watchOS �
     ![Xcode의 WatchOS 프로젝트](WatchOSProject.jpg)
 
 2. {{ site.data.keys.product_adj }} watchOS 프레임워크를 추가하십시오.
-    * CocoaPods로 필수 프레임워크를 설치하려면 [{{ site.data.keys.product_adj }} 고유 SDK 추가](../../application-development/sdk/ios/#adding-support-for-apple-watchos) 학습서를 참조하십시오.
+    * CocoaPods로 필수 프레임워크를 설치하려면 [{{ site.data.keys.product_adj }} 네이티브 SDK 추가](../../application-development/sdk/ios/#adding-support-for-apple-watchos) 학습서를 참조하십시오.
     * 필수 프레임워크를 수동으로 설치하려면 다음을 수행하십시오.
         * {{ site.data.keys.mf_console }}의 다운로드 센터에서 watchOS 프레임워크를 가져오십시오.
         * 왼쪽 탐색 분할창에서 **[프로젝트 이름] WatchKit Extension** 폴더를 선택하십시오.
@@ -70,15 +70,15 @@ Apple Watch 및 iPhone 디바이스는 물리적으로 다릅니다. 따라서 �
 {: #watchos-limitation }
 watchOS 개발 시에는 {{ site.data.keys.product_adj }} 앱에 기능을 추가하는 선택적 프레임워크가 제공되지 않습니다. watchOS 또는 Apple Watch 디바이스에 의해 부과되는 제한조건으로 인해 일부 다른 기능이 제한됩니다.
 
-|기능 |제한사항 |
+| 기능 | 제한사항 |
 |---------|------------|
-|openSSL |지원되지 않음 |
-|JSONStore|지원되지 않음 |
-|알림 |지원되지 않음 |
-|{{ site.data.keys.product_adj }} 코드에 의해 표시되는 메시지 경보 |지원되지 않음 |
-|애플리케이션 인증 유효성 검증 |비트 코드와 호환되지 않으므로 지원되지 않음 |
-|원격 사용 안함/알림	|사용자 정의 필요(아래 참조) |
-|사용자 이름/비밀번호 보안 검사 |CredentialsValidation 보안 검사 사용 |
+| openSSL | 지원되지 않음 |
+| JSONStore| 지원되지 않음 |
+| 알림 | 지원되지 않음 |
+| {{ site.data.keys.product_adj }} 코드에 의해 표시되는 메시지 경보 | 지원되지 않음 |
+| 애플리케이션 인증 유효성 검증 | 비트 코드와 호환되지 않으므로 지원되지 않음 |
+| 원격 사용 안함/알림	| 사용자 정의 필요(아래 참조) |
+| 사용자 이름/비밀번호 보안 검사 | CredentialsValidation 보안 검사 사용 |
 
 ### 원격 사용 안함/알림
 {: #remote-disablenotify }

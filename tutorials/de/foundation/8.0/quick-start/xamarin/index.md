@@ -8,7 +8,7 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-Bei der folgende Demonstration geht es darum, einen End-to-End-Ablauf zu veranschaulichen: 
+Bei der folgenden Demonstration geht es darum, einen End-to-End-Ablauf zu veranschaulichen: 
 
 1. Ein im Lieferumfang des {{ site.data.keys.product_adj }}-Client-SDK für Xamarin enthaltene Beispielanwendung wird
 in der {{ site.data.keys.mf_console }} registriert. 

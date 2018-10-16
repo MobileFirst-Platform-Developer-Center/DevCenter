@@ -228,8 +228,8 @@ weight: 1
             <div class="panel-body">
                 <p>{{ site.data.keys.product }}은 이제 Windows 10 Universal 앱, bitcode 빌드 및 Apple watchOS 2를 지원합니다.</p>
 
-                <h3>Windows 10 고유 유니버셜 애플리케이션에 대한 지원</h3>
-                <p>{{ site.data.keys.product }}을 사용하여 이제 앱 내부에서 {{ site.data.keys.product_adj }} SDK를 사용하도록 고유 C# 유니버셜 앱 플랫폼 애플리케이션을 작성할 수 있습니다.</p>
+                <h3>Windows 10 네이티브 유니버셜 애플리케이션에 대한 지원</h3>
+                <p>{{ site.data.keys.product }}을 사용하여 이제 앱 내부에서 {{ site.data.keys.product_adj }} SDK를 사용하도록 네이티브 C# 유니버셜 앱 플랫폼 애플리케이션을 작성할 수 있습니다.</p>
 
                 <h3>Windows 하이브리드 환경에 대한 지원</h3>
                 <p>Windows 하이브리드 환경에 대한 Windows 10 Universal Windows Platform(UWP) 지원이 제공됩니다. 시작 방법에 대한 자세한 정보는 다음을 참조하십시오.</p>
@@ -460,7 +460,7 @@ weight: 1
                 <p>푸시 알림 서비스가 {{ site.data.keys.mf_server }} 컴포넌트({{ site.data.keys.mf_server }} 푸시 서비스)로 패키지화됩니다.</p>
 
                 <h3>푸시 서비스 모델은 Windows Universal Platform 앱에서 지원됩니다.</h3>
-                <p>푸시 서비스 모델을 사용하여 푸시 알림을 보내도록 고유 UWP(Windows Universal Platform) 애플리케이션을 마이그레이션할 수 있습니다.</p>
+                <p>푸시 서비스 모델을 사용하여 푸시 알림을 보내도록 네이티브 UWP(Windows Universal Platform) 애플리케이션을 마이그레이션할 수 있습니다.</p>
             </div>
         </div>
     </div>

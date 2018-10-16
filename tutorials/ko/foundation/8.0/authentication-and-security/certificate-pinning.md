@@ -11,7 +11,7 @@ weight: 13
 
 인증서 체인 검증(예: SSL/TLS)에 의존하는 프로토콜은 모바일 디바이스와 백엔드 시스템 사이에 전달되는 모든 트래픽을 권한 없는 사용자가 보고 수정할 수 있을 때 발생하는 중간자 공격을 포함하여 많은 위험한 공격에 취약합니다.
 
-{{ site.data.keys.product_full }}은 **인증서 고정**을 활성화할 수 있는 API를 제공합니다. 이는 고유 iOS, 고유 Android 및 크로스 플랫폼 Cordova {{ site.data.keys.product_adj }} 애플리케이션에서 지원됩니다.
+{{ site.data.keys.product_full }}은 **인증서 고정**을 활성화할 수 있는 API를 제공합니다. 이는 네이티브 iOS, 네이티브 Android 및 크로스 플랫폼 Cordova {{ site.data.keys.product_adj }} 애플리케이션에서 지원됩니다.
 
 ## 인증서 고정 프로세스
 {: #certificate-pinning-process }
@@ -36,8 +36,8 @@ weight: 13
 
 * {{ site.data.keys.mf_server }} (WebSphere  Application Server, WebSphere Application Server Liberty, 또는 Apache Tomcat)의 경우: SSL/TLS 및 인증서 구성 방법에 관한 정보는 특정 애플리케이션 서버에 대한 문서를 참조하십시오.
 * 애플리케이션에서:
-    - 기본 iOS: 애플리케이션 **번들**에 인증서 추가
-    - 기본 Android: **assets** 폴더에 인증서 배치
+    - 네이티브 iOS: 애플리케이션 **번들**에 인증서 추가
+    - 네이티브 Android: **assets** 폴더에 인증서 배치
     - Cordova: 인증서를 **app-name\www\certificates** 폴더에 배치(폴더가 해당 위치에 없으면 새로 작성)
 
 ## 인증서 고정 API

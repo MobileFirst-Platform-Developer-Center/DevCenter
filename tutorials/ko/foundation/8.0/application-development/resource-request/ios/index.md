@@ -18,7 +18,7 @@ REST API는 모든 어댑터 및 외부 자원에서 작동합니다.
 
 **전제조건**:
 
-- 고유 iOS 프로젝트에 [{{ site.data.keys.product }} SDK를 추가](../../../application-development/sdk/ios)했는지 확인하십시오.
+- 네이티브 iOS 프로젝트에 [{{ site.data.keys.product }} SDK를 추가](../../../application-development/sdk/ios)했는지 확인하십시오.
 - [어댑터 작성](../../../adapters/creating-adapters/) 방법에 대해 자세히 알아보십시오.
 
 ## WLResourceRequest
@@ -119,7 +119,7 @@ Swift
 request.setQueryParameterValue("['value1', 'value2']", forName: "params")
 ```
 
-이는 `WLHttpMethodGet`와 함께 사용해야 합니다.
+이는 `WLHttpMethodGet`과 함께 사용해야 합니다.
 
 ### 양식 매개변수
 {: #form-parameters }
@@ -240,7 +240,7 @@ request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void i
 
 ## 자세한 정보
 {: #for-more-information }
-> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조하십시오](../../../api/client-side-api/objc/client/).
+> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조](../../../api/client-side-api/objc/client/)하십시오.
 
 <img alt="샘플 애플리케이션 이미지" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
 ## 샘플 애플리케이션
@@ -248,8 +248,8 @@ request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void i
 ResourceRequestSwift 프로젝트에는 Swift에서 구현되며 Java 어댑터를 사용하여 자원 요청을 작성하는 iOS 애플리케이션이 포함되어 있습니다.  
 어댑터 Maven 프로젝트에는 자원 요청 호출 중에 사용되는 Java 어댑터가 포함되어 있습니다.
 
-iOS 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80)하십시오.  
-어댑터 Maven 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오.
+iOS 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80)하십시오.  
+어댑터 Maven 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오.
 
 ### 샘플 사용법
 {: #sample-usage }

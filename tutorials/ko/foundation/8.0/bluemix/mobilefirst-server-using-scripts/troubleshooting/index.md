@@ -122,7 +122,7 @@ initenv.sh 스크립트를 다시 실행하여 IBM Cloud에 로그인한 후 실
 > 허용되지 않은 메소드  
 > 메소드는 요청된 URL에 허용되지 않습니다.
 
-이 오류는 일반적으로 호스트 환경에서 Docker 변수가 수정된 경우에 발생합니다. initenv.sh 스크립트를 실행한 후 도구에서 원시 Docker 명령을 사용하여 IBM Containers에 연결하기 위해 로컬 Docker 환경을 대체할 옵션을 제공합니다.
+이 오류는 일반적으로 호스트 환경에서 Docker 변수가 수정된 경우에 발생합니다. initenv.sh 스크립트를 실행한 후 도구에서는 고유 Docker 명령을 사용하여 IBM Containers에 연결하기 위해 로컬 Docker 환경을 대체하는 옵션을 제공합니다.
 
 **해결 방법**  
 IBM Containers 레지스트리 환경을 가리키도록 Docker 변수(예: DOCKER\_HOST, DOCKER\_CERT\_PATH)를 수정하지 마십시오. **prepareserver.sh** 스크립트가 올바로 작동하려면 Docker 변수가 로컬 Docker 환경을 가리켜야 합니다.

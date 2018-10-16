@@ -83,7 +83,7 @@ iOS-Plattform bereit. Weitere Informationen finden Sie unter [OpenSSL für Cordo
 
 **Voraussetzungen:**
 
-- [Apache Cordova CLI](https://www.npmjs.com/package/cordova) und die {{ site.data.keys.mf_cli }} sind auf der Entwicklerworkstation installiert. 
+- [Apache Cordova CLI (>=6.x und <9.0)](https://www.npmjs.com/package/cordova) und {{ site.data.keys.mf_cli }} sind auf der Entwicklerworkstation installiert.
 - Eine lokale oder ferne Instanz von {{ site.data.keys.mf_server }} ist aktiv. 
 - Sie haben die Lernprogramme [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/development/mobilefirst) und [Cordova-Entwicklungsumgebung einrichten](../../../installation-configuration/development/cordova) durchgearbeitet. 
 - Für Cordova für Windows muss eine Version von Visual C++ installiert sein, die mit den auf der Maschine installierten Versionen von Visual Studio und .NET kompatibel ist. 
@@ -140,7 +140,7 @@ Beispiel:
 
 
 
-4. Erstellen Sie die Anwendungsressourcen mit dem Befehl `cordova prepare command`:
+4. Erstellen Sie die Anwendungsressourcen mit dem Befehl `cordova prepare`:
 
    ```bash
    cordova prepare

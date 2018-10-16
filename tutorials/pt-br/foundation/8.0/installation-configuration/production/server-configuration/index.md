@@ -84,8 +84,7 @@ As etapas para configurar o {{ site.data.keys.mf_server }} para ativar a Seguran
 3. Para cada configuração de SSL listada, modifique a configuração para ativar o TLS V1.2.
     * Selecione uma configuração SSL e, em seguida, em **Propriedades adicionais**, clique em configurações de **Qualidade de proteções (QoP)**.
     * Na lista **Protocolo**, selecione **SSL_TLSv2**.
-    * Clique em **Aplicar** e, em seguida, salve as
-mudanças.
+    * Clique em **Aplicar** e, em seguida, salve as mudanças.
 
 ## Configurando a autenticação do usuário para o {{ site.data.keys.mf_server }} administration
 {: #configuring-user-authentication-for-mobilefirst-server-administration }

@@ -192,18 +192,18 @@ API vergleichbar. Die Tabelle zeigt, wie einige
 JSONStore-Features im Vergleich mit anderen Technologien aussehen. JSONStore ist nur für
 iOS- und Android-Geräte bzw. -Simulatoren verfügbar.
 
-| Feature | JSONStore      | LocalStorage | IndexedDB | Cordova-API Storage | Cordova-API File |
+|Feature |JSONStore      |LocalStorage |IndexedDB |Cordova-API Storage |Cordova-API File |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-| Android-Unterstützung (Cordova-Anwendungen &amp; native Anwendungen)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| iOS-Unterstützung (Cordova-Anwendungen & native Anwendungen) |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Windows 8.1 Universal und Windows 10 UWP (Cordova-Anwendungen)|	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
-| Datenverschlüsselung |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Maximaler Speicher | Verfügbarer Speicherplatz |    ~5 MB |   ~5 MB | Verfügbarer Speicherplatz | Verfügbarer Speicherplatz|
-| Zuverlässiger Speicher (siehe Hinweis)|	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
-| Verfolgung lokaler Änderungen |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Mehrbenutzerunterstützung|	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Indexierung |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
-| Art der Speichers | JSON-Dokumente| Schlüssel-Wert-Paare| JSON-Dokumente| Relational (SQL)| Zeichenfolgen |
+|Android-Unterstützung (Cordova-Anwendungen &amp; native Anwendungen)|	     ✔ 	      |✔	      |✔	      |✔	    |✔	     |
+|iOS-Unterstützung (Cordova-Anwendungen & native Anwendungen) |	     ✔ 	      |✔	      |✔	      |✔	    |✔	     |
+|Windows 8.1 Universal und Windows 10 UWP (Cordova-Anwendungen)|	     ✔ 	      |✔	      |✔	      |        -	           |✔	      |
+|Datenverschlüsselung |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+|Maximaler Speicher |Verfügbarer Speicherplatz|~5 MB |~5 MB | Verfügbarer Speicherplatz | Verfügbarer Speicherplatz |
+|Zuverlässiger Speicher (siehe Hinweis)|	     ✔ 	      |      -	    |     -	     |✔	      |✔	      |
+|Verfolgung lokaler Änderungen |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+|Mehrbenutzerunterstützung|	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+|Indexierung |	     ✔ 	      |      -	    |✔	      |✔	      |         -	      |
+|Art der Speichers |JSON-Dokumente|Schlüssel-Wert-Paare|JSON-Dokumente|Relational (SQL)|Zeichenfolgen |
 
 **Hinweis:** Zuverlässiger Speicher bedeutet, dass Ihre Daten erst gelöscht werden, wenn eines der folgenden Ereignisse eintritt:
 
@@ -543,8 +543,7 @@ Diese Komponente umfasst die JSONStore-APIs, mit denen Sie JSON-Daten zu einer S
 
 **Hinweis:** Sie können den internen Store mit Daten füllen, die aus einer Datei oder einem Eingabefeld gelesen werden, oder mit fest codierten Daten in einer Variablen. Die Daten müssen nicht ausschließlich von einer externen Quelle mit erforderlicher Netzkommunikation stammen.
 
-Alle nachfolgenden Codebeispiele sind Pseudocode, der so ähnlich wie
-JavaScript aussieht.
+Alle nachfolgenden Codebeispiele sind Pseudocode, der so ähnlich wie JavaScript aussieht.
 
 **Hinweis:** Verwenden Sie für die Transportschicht Adapter. Zu den Vorteilen, die Sie
 bei Verwendung von Adaptern haben, gehören die XML-JSON-Umsetzung, die Sicherheit, Filter und die Entkopplung
@@ -707,6 +706,176 @@ Auf die gleiche Weise können Sie ein Dokument entfernen und das Entfernen bei B
 accessor.remove(doc, {markDirty: true})
 ```
 
+
+### Automatische Synchronisation mit der Cloudant-DB
+Ab Mobile Foundation [CD Update 2](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/8-0-cd-update-release) können Sie das MFP-JSONStore-SDK verwenden, um die Datensynchronisation einer JSONStore-Sammlung auf einem Gerät mit jeder CouchD-Datenbank, einschließlich Cloudant, zu automatisieren. Dieses Feature ist für iOS, Android, Cordova-Android und Cordova-iOS verfügbar.
+
+#### Synchronisierung von JSONStore und Cloudant einrichten
+Führen Sie die folgenden Schritte aus, um die automatische Synchronisation von JSONStore und Cloudant einzurichten:
+
+1. Definieren Sie die Synchronisationsrichtlinie für Ihre mobile App.
+2. Implementieren Sie den Synchronisationsadapter in der IBM Mobile Foundation.
+
+#### Synchronisationsrichtlinie definieren
+Die Synchronisationsrichtlinie legt die Methode der Synchronisation einer JSONStore-Sammlung mit einer Cloudant-Datenbank fest. Sie können die Synchronisationsrichtlinie in Ihrer App für jede Sammlung angeben. 
+
+Eine JSONStore-Sammlung kann mit einer Synchronisationsrichtlinie initialisiert werden. Als Synchronisationsrichtlinie kommt eine der drei folgenden Richtlinien infrage: 
+
+<b>SYNC_DOWNSTREAM:</b>
+Verwenden Sie diese Richtlinie, wenn Sie Daten von Cloudant in die JSONStore-Sammlung herunterladen möchten. Diese Richtlinie wird normalerweise für statische Daten verwendet, die für einen Offlinespeicher erforderlich sind, z. B. die Preisliste für Artikel in einem Katalog. Jedes Mal, wenn die Sammlung auf dem Gerät initialisiert wird, werden die Daten aus der fernen Cloudant-Datenbank aktualisiert. Beim ersten Mal wird die gesamte Datenbank heruntergeladen. Bei nachfolgenden Aktualisierungen wird dagegen nur das Delta heruntergeladen, d. h. die Änderungen, die an der fernen Datenbank vorgenommen wurden. 
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_DOWNSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
+}
+```
+
+<b>SYNC_ UPSTREAM: </b>
+Verwenden Sie diese Richtlinie, wenn Sie lokale Daten per Push-Operation in eine Cloudant-Datenbank übertragen möchten. Sie könnten beispielsweise offline erfasste Verkaufsdaten in eine Cloudant-Datenbank hochladen. Wenn für eine Sammlung die Richtlinie SYNC_UPSTREAM definiert ist, bewirkt das Hinzufügen eines neuen Datensatzes zu der Sammlung die Erstellung eines neuen Datensatzes in Cloudant. Analog dazu bewirkt jedes modifizierte Dokument in der Sammlung auf dem Gerät eine Modifikation des Dokuments in Cloudant. Aus der Sammlung gelöschte Dokumente werden ebenso aus der Cloudant-Datenbank gelöscht. 
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_UPSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
+}
+```
+
+<b>SYNC_NONE: </b>
+Dies ist die Standardrichtlinie. Wählen Sie diese Richtlinie, wenn keine Synchronisation stattfinden soll. 
+
+<b><i>Wichtiger Hinweis:</i></b> Die Synchronisationsrichtlinie wird einer JSONStore-Sammlung zugeordnet. Sobald eine Sammlung mit einer bestimmten Synchronisationsrichtlinie initialisiert wurde, sollte die Richtlinie nicht geändert werden. Das Modifizieren der Synchronisationsrichtlinie kann zu unerwünschten Ergebnissen führen.
+
+<b>syncAdapterPath</b>
+
+Dies ist der Name des Adapters, der implementiert wird.
+
+
+Android:
+```
+// Hier ist "JSONStoreCloudantSync" der Name des in MFP Server implementierten Synchronisationsadapters.
+initOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+iOS:
+```
+openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:// eine der drei Synchronisationsrichtlinien
+	syncAdapterPath : 'JSONStoreCloudantSync'
+}
+```
+
+#### Synchronisierungsadapter implementieren
+Laden Sie <a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">hier</a> den Adapter JSONStoreSync herunter, konfigurieren Sie Cloudant-Berechtigungsnachweise in ‘src/main/adapter-resources/adapter.xml’ und implementieren Sie den Adapter in Ihrem MobileFirst Server.
+Konfigurieren Sie außerdem die Berechtigungsnachweise für die Back-End-Cloudant-Datenbank. Verwenden Sie dazu wie folgt die MPF-Konsole:
+
+|---------------------------|-------------------------|
+|![Cloudant konfigurieren]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/configure-cloudant.png)    |   ![Cloudant-Berechtigungsnachweise]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/CloudantCreds.jpg)|
+
+#### Wichtige Hinweise zur Verwendung dieses Features
+Dieses Feature ist nur für Android, iOS, Cordova-Android und Cordova-iOS verfügbar.
+
+Der Name der JSONStore-Sammlung muss mit dem der CouchDB-Datenbank übereinstimmen. Informieren Sie sich gründlich über die Syntax für die Benennung Ihrer CouchDB-Datenbank, bevor Sie Ihrer JSONStore-Sammlung einen Namen geben. 
+
+In Android müssen Sie wie folgt den Callback-Listener für die Synchronisation als Teil der *init*-Optionen definieren: 
+
+```
+// import com.worklight.jsonstore.api.JSONStoreSyncListener;
+JSONStoreSyncListener syncListener = new JSONStoreSyncListener() {
+	@Override
+	public void onSuccess(JSONObject json) {
+		// Erfolgsaktion implementieren
+	}
+
+	@Override
+	public void onFailure(JSONStoreException ex) {
+		// Fehleraktion implementieren
+	}
+
+};
+initOptions.setSyncListener(syncListener);
+```
+
+Verwenden Sie in iOS zum Aktivieren der Synchronistion mit Callbacks wie folgt die überladene API `opencollections`, die über einen Completion-Handler verfügt:
+
+```
+JSONStore.sharedInstance().openCollections([collections], with: options, completionHandler: { (success, msg) in
+	self.logMessage("msg is : " + msg!);
+	// Das Flag success hat den Wert 'true', wenn die Synchronisation erfolgreich ist. Andernfalls hat das Flag den Wert 'false' und die Nachricht vom SDK ist über das Argument 'msg' verfügbar.
+})
+```
+
+Definieren Sie in Cordova wie folgt Ihre Erfolgs- und Fehler-Callbacks als Teil der Synchronisationsobjekte:
+
+```
+function onsuccess(msg) {
+// Erfolgsaktion implementieren
+}
+
+function onfailure(msg) {
+// Fehleraktion implementieren
+}
+
+collection.sync = {
+	syncPolicy : WL.JSONStore.syncOptions.SYNC_UPSTREAM, 
+	syncAdapterPath : 'JSONStoreCloudantSync',
+	onSyncSuccess : onsuccess,
+	onSyncFailure : onfailure
+};
+```
+
+Eine JSONStoreCollection kann mit nur einer der zulässigen Synchronisationsrichtlinien definiert werden, d. h. mit SYNC_DOWNSTREAM, SYNC_UPSTREAM oder SYNC_NONE.
+
+Falls nach der Initialisierung explizit eine Upstream- oder Downstream-Synchronisation durchgeführt werden muss, kann die folgende API verwendet werden:
+
+`sync()`
+
+Die API führt eine Downstream-Synchronisation durch, wenn die aufrufende Sammlung mit SYNC_DOWNSTREAM definiert ist. Ist SYNC_UPSTREAM als Richtlinie festgelegt, wird eine Upstream-Synchronisation für hinzugefügte, gelöschte und ersetzte JSONStore-Dokumente in der Cloudant-Datenbank durchgeführt.  
+
+
+Android:   
+```
+WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
+```
+
+iOS:
+```
+collection.sync(); // Hier steht collection für das initialisierte JSONStore-Sammlungsobjekt
+```
+
+Cordova:
+```
+WL.JSONStore.get(collectionName).sync();
+```
+>**Hinweis:** Die Erfolgs- und Fehler-Callbacks für die Synchronisations-API werden (in Android) über den Synchronisations-Listener, (in iOS= über den Completion-Handler und (in Cordova) über definierte Callbacks ausgelöst, die während der Initialisierung der Sammlung deklariert wurden.
+
 ### Push
 {: #push }
 Viele Systeme verwenden den Begriff Push für das Senden von Daten an eine externe Quelle.
@@ -727,7 +896,7 @@ Diese Quelle ist in der Regel eine Datenbank, ein REST- oder SOAP-Endpunkt oder 
 
 Alle nachfolgenden Codebeispiele sind Pseudocode, der so ähnlich wie JavaScript aussieht.
 
-**Hinweis:** Verwenden Sie für die Transportschicht Adapter. Zu den Vorteilen, die Sie
+>**Hinweis:** Verwenden Sie für die Transportschicht Adapter. Zu den Vorteilen, die Sie
 bei Verwendung von Adaptern haben, gehören die XML-JSON-Umsetzung, die Sicherheit, Filter und die Entkopplung
 von server- und clientseitigem Code.
 
@@ -782,7 +951,7 @@ var adapter = 'people',
 })
 ```
 
-**Hinweis:** Sie können auch von den Vorteilen profitieren, die mit der Übergabe von `compressResponse`, `timeout`
+>**Hinweis:** Sie können auch von den Vorteilen profitieren, die mit der Übergabe von `compressResponse`, `timeout`
 und anderen Parametern an die API `WLResourceRequest` verbunden sind. 
 
 Im

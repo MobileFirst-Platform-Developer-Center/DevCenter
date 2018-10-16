@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-IBM {{site.data.keys.mf_app_center }} 可用作企业应用程序商店，可在组织内的不同团队成员之间共享信息。 {{ site.data.keys.mf_app_center_short }} 的概念类似于 Apple 的公共 App Store 或 Android 的 Play Store，只是它仅以组织内专用为目标。 通过使用 {{site.data.keys.mf_app_center_short }}，同一组织内的用户可以从充当移动应用程序存储库的单个位置将应用程序下载到移动设备。
+IBM {{ site.data.keys.mf_app_center }} 可用作企业应用程序商店，可在组织内的不同团队成员之间共享信息。 {{ site.data.keys.mf_app_center_short }} 的概念类似于 Apple 的公共 App Store 或 Android 的 Play Store，只是它仅以组织内专用为目标。 通过使用 {{ site.data.keys.mf_app_center_short }}，同一组织内的用户可以从充当移动应用程序存储库的单个位置将应用程序下载到移动设备。
 有关 MobileFirst Application Center 的更多信息，请参阅 [MobileFirst Application Center 文档](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/appcenter/)。
 
 
@@ -18,9 +18,9 @@ IBM {{site.data.keys.mf_app_center }} 可用作企业应用程序商店，可在
 * [下载 IBM {{ site.data.keys.mf_app_center }} Passport Advantage 归档](#download-the-ibm-mac-ppa-archive)
 * [在 {{ site.data.keys.prod_icp }} 中装入 IBM {{ site.data.keys.mf_app_center }} PPA 归档](#load-the-ibm-mfpf-appcenter-ppa-archive)
 * [{{ site.data.keys.mf_app_center }} 的环境变量](#env-mf-appcenter)
-* [安装和配置 {{site.data.keys.mf_app_center }}](#configure-install-mf-appcenter-helmcharts)
+* [安装和配置 {{ site.data.keys.mf_app_center }}](#configure-install-mf-appcenter-helmcharts)
 * [验证安装](#verify-install)
-* [访问 {{site.data.keys.mf_app_center }}](#access-mf-appcenter-console)
+* [访问 {{ site.data.keys.mf_app_center }}](#access-mf-appcenter-console)
 * [升级 {{ site.data.keys.prod_adj }} Helm Chart 和发行版](#upgrading-mf-helm-charts)
 * [卸载](#uninstall)
 * [参考](#references)
@@ -34,7 +34,7 @@ IBM {{site.data.keys.mf_app_center }} 可用作企业应用程序商店，可在
 
 > 受支持的数据库：DB2。
 
-要管理容器和映像，需要在 {{site.data.keys.prod_icp }} 设置期间在主机上安装以下工具：
+要管理容器和映像，需要在 {{ site.data.keys.prod_icp }} 设置期间在主机上安装以下工具：
 
 * Docker
 * IBM Cloud CLI (`bx`)
@@ -75,7 +75,7 @@ IBM {{site.data.keys.mf_app_center }} 可用作企业应用程序商店，可在
 
       如果已执行先前步骤并将集群端点设置为 `bx pr` 的缺省值，那么可忽略 `--clustername`。
 
-  3. 在装入 PPA 归档后，同步存储库，这确保在**目录**中列出 Helm Chart。 您可以在 {{site.data.keys.prod_icp }} 管理控制台中执行此操作。<br/>
+  3. 在装入 PPA 归档后，同步存储库，这确保在**目录**中列出 Helm Chart。 您可以在 {{ site.data.keys.prod_icp }} 管理控制台中执行此操作。<br/>
      * 选择**管理 > 存储库**。
      * 单击**同步存储库**。
 
@@ -84,7 +84,7 @@ IBM {{site.data.keys.mf_app_center }} 可用作企业应用程序商店，可在
       * 选择**平台 > 映像**。
       * 在**目录**中显示 Helm Chart。
 
-  在完成上述步骤后，您将看到在 ICP 目录中显示已上载版本的 {{site.data.keys.prod_adj }} Helm Chart。 {{ site.data.keys.mf_app_center }} 在目录中显示为 **ibm-mfpf-appcenter-prod**。
+  在完成上述步骤后，您将看到在 ICP 目录中显示已上载版本的 {{ site.data.keys.prod_adj }} Helm Chart。 {{ site.data.keys.mf_app_center }} 在目录中显示为 **ibm-mfpf-appcenter-prod**。
 
 ## {{ site.data.keys.mf_app_center }} 的环境变量
 {: #env-mf-appcenter }
@@ -105,13 +105,13 @@ IBM {{site.data.keys.mf_app_center }} 可用作企业应用程序商店，可在
 |  | appCenterDB2Password | 提供的数据库的 DB2 密码 |  |
 |  | appCenterDB2Schema | 要创建的 {{ site.data.keys.mf_app_center_short }} DB2 模式  |  |
 |  | appCenterDB2ConnectionIsSSL | DB2 连接类型 | 指定数据库连接必须为 **http** 还是 **https**。 缺省值为 **false** (http)。 确保还为相同连接方式配置 DB2 端口。 |
-| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{site.data.keys.product }} Helm Chart](../#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
+| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{ site.data.keys.product }} Helm Chart](../#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
 | resources | limits.cpu | 允许的最大 CPU 量 | 缺省值为 **1000m**<br/>有关更多信息，请参阅[此处](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)。 |
 |  | limits.memory | 允许的最大内存量 | 缺省值为 **1024Mi**<br/>有关更多信息，请参阅[此处](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)。 |
 | resources.requests | requests.cpu | 描述所需的最小 CPU 量。 如果未指定，那么缺省为 *limits*（如果已指定）或实现定义的值。 | 缺省值为 **1000m**。 |
 |  | requests.memory | 描述所需的最小内存。 如果未指定，那么内存缺省为 *limits*（如果已指定）或实现定义的值。 | 缺省值为 **1024Mi**。 |
 
-## 安装和配置 {{site.data.keys.mf_app_center }}
+## 安装和配置 {{ site.data.keys.mf_app_center }}
 {: #configure-install-mf-appcenter-helmcharts}
 
 在安装和配置 {{ site.data.keys.mf_app_center }} 之前，您应具有以下内容：
@@ -151,7 +151,7 @@ IBM {{site.data.keys.mf_app_center }} 可用作企业应用程序商店，可在
 
 在安装和配置 {{ site.data.keys.mf_analytics }}（可选）和 {{ site.data.keys.mf_server }} 后，您可以通过执行以下步骤来验证已部署的 pod 的安装和状态：
 
-在 {{site.data.keys.prod_icp }} 管理控制台中， 选择**工作负载 > Helm 发行版**。 单击您的安装的*发行版名称*。
+在 {{ site.data.keys.prod_icp }} 管理控制台中， 选择**工作负载 > Helm 发行版**。 单击您的安装的*发行版名称*。
 
 ## 访问 {{ site.data.keys.mf_app_center }}
 {: #access-mf-appcenter-console}
