@@ -463,7 +463,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
 
 #### 추가 JNDI 특성 지정
 {: #specify-extra-jndi-properties }
-**installmobilefirstadmin**, **installmobilefirstruntime** 및 **installmobilefirstpush** Ant 태스크는 컴포넌트가 작동하기 위해 필요한 JNDI 특성에 대한 값을 선언합니다. 이 JNDI 특성은 JMX 통신과 다른 컴포넌트(예: 라이브 업데이트 서비스, 푸시 서비스, 분석 서비스 또는 권한 부여 서버)에 대한 링크를 정의하는 데 사용됩니다. 하지만 기타 JNDI 특성에 대한 값도 정의할 수 있습니다. `<property>` 요소(이 세 태스크에 대해 존재함)를 사용하십시오. JNDI 특성의 목록은 다음을 참조하십시오.
+**installmobilefirstadmin**, **installmobilefirstruntime** 및 **installmobilefirstpush** Ant 태스크는 컴포넌트가 작동하기 위해 필요한 JNDI 특성에 대한 값을 선언합니다. 이 JNDI 특성은 JMX 통신과 다른 컴포넌트(예: 라이브 업데이트 서비스, 푸시 서비스, 분석 서비스 또는 권한 부여 서버)에 대한 링크를 정의하는 데 사용됩니다. 하지만 기타 JNDI 특성에 대한 값도 정의할 수 있습니다. 이 세 가지 태스크에 대해 존재하는 `<property>` 요소를 사용하십시오. JNDI 특성의 목록은 다음을 참조하십시오.
 
 * [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
 * [{{ site.data.keys.mf_server }} 푸시 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
@@ -486,7 +486,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
 
 새 사용자를 작성하는 대신 기존 사용자를 사용하려면 다음과 같은 조작을 수행하십시오.
 
-1.     `<jmx>` 요소에서, 사용자 및 비밀번호를 지정하고 **createLibertyAdmin** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다.
+1. `<jmx>` 요소에서, 사용자 및 비밀번호를 지정하고 **createLibertyAdmin** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다.
 
    ```xml
    <installmobilefirstadmin ...>
@@ -494,7 +494,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
        ...
    ```
 
-2.     `<configuration>` 요소에서, 사용자 및 비밀번호를 지정하고 **createConfigAdminUser** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다.
+2. `<configuration>` 요소에서, 사용자 및 비밀번호를 지정하고 **createConfigAdminUser** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다.
 
    ```xml
     <installmobilefirstadmin ...>
@@ -1941,7 +1941,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                             <br/><br/>
                             이 서버 각각에는 {{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 하나 이상의 {{ site.data.keys.product_adj }} 런타임이 배치되어 있어야 합니다.
                             <br/><br/>
-                            서버 설정에 대한 자세한 정보는 <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건</a>을 참조하십시오. </li>
+                            서버 설정에 대한 자세한 정보는 <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건</a>을 참조하십시오.</li>
                             <li>각각의 신뢰 저장소에 있는 모든 서버 사이에서 서명자 인증서를 교환하십시오.
                             <br/><br/>
                             보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.

@@ -13,7 +13,8 @@ weight: 3
 * {{ site.data.keys.mf_server }} 推送服务
 * {{ site.data.keys.product }} 运行时
 
-> **注：**如果使用不同的上下文根来安装多个运行时实例，那么每一个实例均需要其自身的一组表。> 数据库可以是关系数据库（例如，IBM DB2、Oracle 或 MySQL）。
+> **注：**如果使用不同的上下文根来安装多个运行时实例，那么每一个实例均需要其自身的一组表。
+> 数据库可以是关系数据库（例如，IBM DB2、Oracle 或 MySQL）。
 
 #### 关系数据库（DB2、Oracle 或 MySQL）
 {: #relational-databases-db2-oracle-or-mysql }

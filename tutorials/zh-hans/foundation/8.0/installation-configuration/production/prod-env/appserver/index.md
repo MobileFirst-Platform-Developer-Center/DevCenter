@@ -67,8 +67,7 @@ weight: 4
 
                 <p>如果您通过其他命令启动 Apache Tomcat，那么可能不会使用此文件。 如果安装了 Apache Tomcat Windows Service Installer，那么服务启动程序不会使用 <b>setenv.bat</b>。</p>
 
-                <blockquote><b>要点：</b>缺省情况下，此配置不安全。 要保护配置，您必须手动完成以下过程的
-步骤 2 和 3。</blockquote>
+                <blockquote><b>要点：</b>缺省情况下，此配置不安全。 要保护配置，您必须手动完成以下过程的步骤 2 和 3。</blockquote>
 
                 <p>手动配置 Apache Tomcat：</p>
 
@@ -101,9 +100,7 @@ weight: 4
 
                     <b>注：</b>可以更改端口 8686。</li>
                     <li>
-                        <p>如果 Tomcat 实例在防火墙背后运行，那么必须配置 JMX 远程生命周期侦听器。 请参阅
-<a href="http://tomcat.apache.org/tomcat-7.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener">JMX
-远程生命周期侦听器</a>的 Apache Tomcat 文档。</p><p>还必须将以下环境属性添加到 <b>server.xml</b> 文件中的管理服务应用程序的 Context 节，如以下示例所示：</p>
+                        <p>如果 Tomcat 实例在防火墙背后运行，那么必须配置 JMX 远程生命周期侦听器。 请参阅 <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener"> JMX远程生命周期侦听器</a>的 Apache Tomcat 文档。</p><p>还必须将以下环境属性添加到 <b>server.xml</b> 文件中的管理服务应用程序的 Context 节，如以下示例所示：</p>
 
 {% highlight xml %}
 <Context docBase="mfpadmin" path="/mfpadmin ">
@@ -137,7 +134,8 @@ weight: 4
 * 必须使用 JRE 7.0 或更高版本运行 Liberty。 不支持 JRE 6.0。
 * Liberty 的某些版本支持 Java EE 6 和 Java EE 7 的功能。例如，jdbc-4.0 Liberty 功能是 Java EE 6 的一部分，而 jdbc-4.1 Liberty 功能是 Java EE 7 的一部分。可使用 Java EE 6 或 Java EE 7 功能来安装 {{ site.data.keys.mf_server }} V8.0.0。 但是，如果要在同一 Liberty 服务器上运行旧版本 {{ site.data.keys.mf_server }}，那么必须使用 Java EE 6 功能。 {{ site.data.keys.mf_server }} V7.1.0 和更低版本不支持 Java EE 7 功能。
 * 必须如下面的 **为 WebSphere Application Server Liberty Profile 配置 JMX 连接**中所述配置 JMX。
-* 要在生产环境中安装，您可能希望在 Windows、Linux 或 UNIX 系统上作为服务启动 Liberty 服务器，以便：在启动计算机时，{{ site.data.keys.mf_server }} 组件可以自动启动。
+* 要在生产环境中安装，您可能希望在 Windows、Linux 或 UNIX 系统上作为服务启动 Liberty 服务器，以便：
+在启动计算机时，{{ site.data.keys.mf_server }} 组件可以自动启动。
 当启动运行 Liberty 服务器的进程的用户注销时，此进程不会停止。
 * 以下 Liberty 服务器中无法部署 {{ site.data.keys.mf_server }} V8.0.0：包含来自于先前版本的已部署的 {{ site.data.keys.mf_server }} 组件。
 * 要在 Liberty 集合体环境中进行安装，Liberty 集合体控制器和 Liberty 集合体集群成员必须按照[配置 Liberty 集合体](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/tagt_wlp_configure_collective.html?view=kc)中所述来进行配置。
@@ -1631,8 +1629,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                 <p>为管理服务创建数据源，并将其映射到 <b>jdbc/mfpAdminDS</b>。</p>
 
                 <h3>启动顺序</h3>
-                <p>管理服务应用程序必须在启动运行时应用程序之前启动。 您可以在<b>启动行为</b>部分设置此顺序。 例如，针对管理服务将 Startup
-Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
+                <p>管理服务应用程序必须在启动运行时应用程序之前启动。 您可以在<b>启动行为</b>部分设置此顺序。 例如，针对管理服务将 Startup Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
 
                 <h3>安全角色</h3>
                 <p>可供管理服务应用程序使用的安全角色有：</p>
@@ -1756,8 +1753,7 @@ Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
                 <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
 
                 <h3>启动顺序</h3>
-                <p>运行时应用程序必须在管理服务应用程序启动之后才能启动。 您可以在<b>启动行为</b>部分设置此顺序。 例如，针对管理服务将 Startup
-Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
+                <p>运行时应用程序必须在管理服务应用程序启动之后才能启动。 您可以在<b>启动行为</b>部分设置此顺序。 例如，针对管理服务将 Startup Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
 
                 <h3>数据源</h3>
                 <p>为运行时创建数据源，并将其映射到 <b>jdbc/mfpDS</b>。</p>
@@ -1796,8 +1792,7 @@ Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - 该值必须为 <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>。</li>
                 </ul>
-                <p>                有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
-            </p>
+                <p>有关 JNDI 属性的更多信息，请参阅 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。</p>
 
                 <h3>数据源</h3>
                 <p>为推送服务创建数据源，并将其映射到 <b>jdbc/imfPushDS</b>。</p>
@@ -1891,8 +1886,7 @@ Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
                                 </ul>
                                 要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../../product-overview/requirements">系统需求</a>。
 
-                                <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full
-Profile 服务器的场是无效的配置。</blockquote>
+                                <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full Profile 服务器的场是无效的配置。</blockquote>
                             </li>
                             <li>设置与希望包含在场中的成员数一样多的独立服务器。
                                 <ul>
@@ -1944,8 +1938,7 @@ Profile 服务器的场是无效的配置。</blockquote>
                                 </ul>
                                 要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../../product-overview/requirements">系统需求</a>。
 
-                                <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full
-Profile 服务器的场是无效的配置。</blockquote>
+                                <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full Profile 服务器的场是无效的配置。</blockquote>
                             </li>
                             <li>设置与希望包含在场中的成员数一样多的独立服务器。
                             <br/><br/>
@@ -2063,8 +2056,7 @@ Profile 服务器的场是无效的配置。</blockquote>
                         </ul>
                         要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../../product-overview/requirements">系统需求</a>。
 
-                        <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full
-Profile 服务器的场是无效的配置。</blockquote>
+                        <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。 在连接相同类型的应用程序服务器时，服务器场为同类。 尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。 例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full Profile 服务器的场是无效的配置。</blockquote>
                     </li>
                     <li>决定要使用的数据库。 您可以从下列各项中进行选择：
                         <ul>
@@ -2147,8 +2139,7 @@ Profile 服务器的场是无效的配置。</blockquote>
                             </li>
                         </ul>
                     </li>
-                    <li>在场的所有成员之间交换信任库中的服务器证书。 使用 WebSphere Application Server Full
-Profile 和 WebSphere Application Server Liberty Profile 的场必须交换信任库中的服务器证书，因为这些场中服务器之间的通信由 SSL 提供保护。
+                    <li>在场的所有成员之间交换信任库中的服务器证书。 使用 WebSphere Application Server Full Profile 和 WebSphere Application Server Liberty Profile 的场必须交换信任库中的服务器证书，因为这些场中服务器之间的通信由 SSL 提供保护。
                         <ul>
                             <li><b>WebSphere Application Server Liberty Profile</b>
                                 <br/>
@@ -2166,7 +2157,7 @@ Profile 和 WebSphere Application Server Liberty Profile 的场必须交换信�
                                 </blockquote>
                                 最后，启动服务器，并在 <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> 文件中查找包含 com.ibm.ssl.trustStore 的行。
                                 <ul>
-                                    <li>将场中其他服务器的公用证书导入到服务器的 <b>server.xml</b> 配置文件所引用的信任库中。 教程<a href="../../simple-install/tutorials/graphical-mode">以图形方式安装 {{ site.data.keys.mf_server }}</a> 为您提供指示信息以在场中的两个 Liberty 服务器之间交换证书。有关更多信息，请参阅<a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">创建由两台运行 {{ site.data.keys.mf_server }} 的 Liberty 服务器组成的场</a>部分的步骤 5。</li>
+                                    <li>将场中其他服务器的公用证书导入到服务器的 <b>server.xml</b> 配置文件所引用的信任库中。 教程<a href="../../simple-install/tutorials/graphical-mode">以图形方式安装 {{ site.data.keys.mf_server }}</a> 为您提供指示信息以在场中的两个 Liberty 服务器之间交换证书。 有关更多信息，请参阅<a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">创建由两台运行 {{ site.data.keys.mf_server }} 的 Liberty 服务器组成的场</a>部分的步骤 5。</li>
                                     <li>重新启动 WebSphere Application Server Liberty Profile 的每个实例，以使安全配置生效。 需要执行以下步骤来使单点登录 (SSO) 生效。</li>
                                     <li>启动场的一个成员。 在缺省 LTPA 配置中，在 Liberty 服务器成功启动之后，将生成 LTPA 密钥库 <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys。</b></li>
                                     <li>将 <b>ltpa.keys</b> 文件复制到每个场成员 <b>${wlp.user.dir}/servers/server_name/resources/security</b> 目录，以在场成员中复制 LTPA 密钥库。 有关 LTPA 配置的更多信息，请参阅 <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">在 Liberty Profile 上配置 LTPA</a>。</li>

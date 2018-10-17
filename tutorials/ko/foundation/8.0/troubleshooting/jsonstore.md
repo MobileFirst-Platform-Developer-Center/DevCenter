@@ -83,7 +83,7 @@ JSONStore API를 사용할 때 발생할 수 있는 문제를 해결하는 데 �
 * JSONStore의 JavaScript 구현에서는 코드가 연속으로 호출될 것을 예상합니다. 다음 조작을 호출하기 전에 조작이 완료되기를 기다리십시오.
 * Android 2.3.x에서는 Cordova 애플리케이션에 대해 트랜잭션이 지원되지 않습니다.
 * 64비트 디바이스에서 JSONStore를 사용하는 경우에는 오류 `java.lang.UnsatisfiedLinkError: dlopen failed: "..." is 32-bit instead of 64-bit`가 표시될 수 있습니다.
-* 이 오류는 Android 프로젝트에 64비트 기본 라이브러리가 있으며 이러한 라이브러리를 사용하는 경우 JSONStore가 현재 작동하지 않음을 의미합니다. 확인하려면 Android 프로젝트의 **src/main/libs** 또는 **src/main/jniLibs**로 이동하여 x86_64 또는 arm64-v8a 폴더가 있는지 확인하십시오. 있는 경우에는 이러한 폴더를 삭제하면 JSONStore가 다시 작동합니다.
+* 이 오류는 Android 프로젝트에 64비트 네이티브 라이브러리가 있으며 이러한 라이브러리를 사용하는 경우 JSONStore가 현재 작동하지 않음을 의미합니다. 확인하려면 Android 프로젝트의 **src/main/libs** 또는 **src/main/jniLibs**로 이동하여 x86_64 또는 arm64-v8a 폴더가 있는지 확인하십시오. 있는 경우에는 이러한 폴더를 삭제하면 JSONStore가 다시 작동합니다.
 * 일부 경우(또는 환경)에는 JSONStore 플러그인이 초기화되기 전에 플로우가 `wlCommonInit()`로 들어갑니다. 이렇게 되면 JSONStore 관련 API 호출이 실패합니다. `cordova-plugin-mfp` 부트스트랩은 `WL.Client.init`를 자동으로 호출하며 이는 완료되면 `wlCommonInit` 함수를 트리거합니다. 이 초기화 프로세스는 JSONStore 플러그인의 경우 다릅니다. JSONStore 플러그인에는 `WL.Client.init` 호출을 _정지_시킬 수단이 없습니다. 다양한 환경에서, `mfpjsonjslloaded`가 완료되기 전에 플로우가 `wlCommonInit()`로 들어가는 경우가 있습니다.
 개발자는 `mfpjsonjsloaded` 및 `mfpjsloaded` 이벤트의 순서를 지정하기 위해 `WL.CLient.init`를
 수동으로 호출할 수 있습니다. 이렇게 하면 플랫폼별 코드를 갖출 필요가 없습니다.

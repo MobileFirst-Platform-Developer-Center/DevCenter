@@ -83,7 +83,7 @@ weight: 2
    });  
    ```
 
-## 고유 iOS 애플리케이션에서 대화식 푸시 알림 처리
+## 네이티브 iOS 애플리케이션에서 대화식 푸시 알림 처리
 {: #handling-interactive-push-notifications-in-native-ios-applications }
 대화식 알림을 수신하려면 다음과 같은 단계를 수행하십시오.
 

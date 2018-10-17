@@ -19,7 +19,7 @@ weight: 9
 
 {{ site.data.keys.mf_analytics }}는 다음을 지원합니다.
 
-* 고유 iOS 및 Android 클라이언트
+* 네이티브 iOS 및 Android 클라이언트
 * Cordova 애플리케이션(iOS, Android)
 * 웹 애플리케이션
 * Windows 8.1 Universal 또는 Windows 10 UWP의 경우 지원을 **사용할 수 없습니다**.

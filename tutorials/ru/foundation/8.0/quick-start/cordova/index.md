@@ -97,7 +97,7 @@ WLAuthorizationManager.obtainAccessToken()
 2. В окне **Командная строка** перейдите в корневую папку проекта Maven адаптера и выполните следующую команду:
 
     ```bash
-   mfpdev adapter build
+    mfpdev adapter build
     ```
 
 3. После завершения компоновки разверните адаптер с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**. Адаптер расположен в папке **[adapter]/target**.

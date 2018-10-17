@@ -892,7 +892,7 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - o valor deve ser <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
+                Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
             </div>
         </div>
     </div>
@@ -1236,7 +1236,7 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - o valor deve ser <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
+                Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
             </div>
         </div>
     </div>
@@ -1479,7 +1479,7 @@ Opcionalmente, talvez você queira ativar a região da memória se os usuários 
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - o valor deve ser <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
+                Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
             </div>
         </div>
     </div>
@@ -1777,8 +1777,7 @@ Para configurar a delegação de carregador de classes para o último pai após 
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - o valor deve ser <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.
-            </p>
+                <p>Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}</a>.</p>
 
                 <h3>Origem de dados</h3>
                 <p>Crie a origem de dados para o serviço de push e mapeie-a para <b>jdbc/imfPushDS</b>.</p>

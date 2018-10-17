@@ -60,7 +60,7 @@ Apple ATS(App Transport Security)는 iOS 9의 새로운 기능으로, 앱과 서
 
 ### iOS에 OpenSSL 사용
 {: #enabling-openssl-for-ios }
-{{ site.data.keys.product_adj }} iOS SDK는 암호화에 고유 iOS API를 사용합니다. iOS 앱에서 OpenSSL 암호화 라이브러리를 사용하도록 {{ site.data.keys.product_full }}을 구성할 수 있습니다.
+{{ site.data.keys.product_adj }} iOS SDK는 암호화에 네이티브 iOS API를 사용합니다. iOS 앱에서 OpenSSL 암호화 라이브러리를 사용하도록 {{ site.data.keys.product_full }}을 구성할 수 있습니다.
 
 암호화/복호화는 `WLSecurityUtils.encryptText()` 및 `WLSecurityUtils.decryptWithKey()` API에 제공됩니다.
 

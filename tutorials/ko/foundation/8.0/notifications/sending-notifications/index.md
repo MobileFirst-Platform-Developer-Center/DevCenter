@@ -57,7 +57,7 @@ FCM을 설정하려면 다음을 수행하십시오.
 * FCM 클라이언트 앱이 메시지를 수신하기 위해 FCM과의 연결을 허용하도록 방화벽을 구성하십시오.
 * 5228, 5229 및 5230 포트를 열어야 합니다. FCM은 일반적으로 5228을 사용하지만 5229 및 5230을 사용하는 경우도 있습니다.
 * FCM은 특정 IP를 제공하지 않으므로 방화벽이 Google ASN 15169에 나열된 IP 블록에 포함된 모든 IP 주소에 대한 발신 연결을 승인하도록 허용해야 합니다.
-* 포트 443에서 방화벽이 {{ site.data.keys.mf_server }}에서 android.googleapis.com으로의 발신 연결을 허용하는지 확인하십시오.
+* 포트 443에서 방화벽이 {{ site.data.keys.mf_server }}에서 fcm.googleapis.com으로의 발신 연결을 허용하는지 확인하십시오.
 
 <img class="gifplayer" alt="GCM 신임 정보를 추가하는 이미지" src="gcm-setup.png"/>
 
@@ -66,7 +66,7 @@ FCM을 설정하려면 다음을 수행하십시오.
 iOS 디바이스는 푸시 알림을 위해 APNS(Apple Push Notification Service)를 사용합니다.  
 APNS를 설정하려면 다음을 수행하십시오.
 
-1. 개발 또는 프로덕션용 푸시 알림 인증서를 생성하십시오. 세부 단계를 보려면 `iOS` 섹션인 [여기](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)를 참조하십시오. 
+1. 개발 또는 프로덕션용 푸시 알림 인증서를 생성하십시오. 세부 단계를 보려면 `iOS` 섹션인 [여기](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)를 참조하십시오.
 2. {{ site.data.keys.mf_console }} → **[사용자의 애플리케이션] → 푸시 → 푸시 설정**에서 인증서 유형을 선택한 후 인증서의 파일 및 비밀번호를 제공하십시오. 그런 다음 **저장**을 클릭하십시오.
 
 #### 참고

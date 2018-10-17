@@ -9,7 +9,7 @@ weight: 5
 {: #development-concepts-and-overview }
 {{ site.data.keys.product_full }} 도구 세트를 사용하여 앱을 개발하는 경우 여러 컴포넌트 및 요소를 개발하거나 구성해야 합니다. 앱 개발 시 관련되는 컴포넌트와 구성에 대해 학습하여 개발을 원활하게 진행할 수 있습니다.
 
-이러한 개념을 익히는 것 외에도 고유 Cordova 및 웹 애플리케이션에 대한 {{ site.data.keys.product_adj }} 제공 API(예: JSONStore 및 WLResourceRequest)를 학습하고 애플리케이션 디버깅 방법, 직접 업데이트를 사용하여 웹 자원을 새로 고치는 방법, 활성 업데이트를 사용하여 사용자 기반을 세그먼트화하는 방법 및 {{ site.data.keys.mf_cli }}를 사용하여 앱, 어댑터 및 기타 아티팩트를 처리하는 방법에 대해 학습합니다.
+이러한 개념을 익히는 것 외에도 네이티브 Cordova 및 웹 애플리케이션에 대한 {{ site.data.keys.product_adj }} 제공 API(예: JSONStore 및 WLResourceRequest)를 학습하고 애플리케이션 디버깅 방법, 직접 업데이트를 사용하여 웹 자원을 새로 고치는 방법, 활성 업데이트를 사용하여 사용자 기반을 세그먼트화하는 방법 및 {{ site.data.keys.mf_cli }}를 사용하여 앱, 어댑터 및 기타 아티팩트를 처리하는 방법에 대해 학습합니다.
 
 사이드바 탐색에서 관련 주제로 이동하거나 계속 읽고 여러 {{ site.data.keys.product_adj }} 컴포넌트에 대해 자세히 알아보십시오.
 
@@ -55,7 +55,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 * 어셈블리 이름이 `com.mydomain.mfp`인 Windows 10 Universal Windows Platform 앱
 * 지정된 ID가 `com.mydomain.mfp`인 웹 앱
 
-앱의 대상 배치 플랫폼은 앱이 고유 앱으로 개발되었는지, 또는 Cordova 앱으로 개발되었는지 여부와 관계가 없습니다. 예를 들어 다음 앱은 둘 다 {{ site.data.keys.product }}에서 iOS 앱으로 간주됩니다.
+앱의 대상 배치 플랫폼은 앱이 네이티브 앱으로 개발되었는지, 또는 Cordova 앱으로 개발되었는지 여부와 관계가 없습니다. 예를 들어 다음 앱은 둘 다 {{ site.data.keys.product }}에서 iOS 앱으로 간주됩니다.
 
 * Xcode 및 네이티브 코드를 사용하여 개발되는 iOS 앱
 * Cordova 크로스 플랫폼 개발 기술을 사용하여 개발되는 iOS 앱
@@ -66,7 +66,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 {: #application-configuration }
 언급된 것과 같이 애플리케이션은 클라이언트 측 및 서버 측 모두에 구성됩니다.  
 
-고유 및 Cordova iOS, Android와 Windows 애플리케이션의 경우 클라이언트 구성은 클라이언트 특성 파일(iOS는 **mfpclient.plist**, Android는 **mfpclient.properties** 또는 Windows는 **mfpclient.resw**)에 저장됩니다. 웹 애플리케이션의 경우 구성 특성은 SDK [초기화 메소드](../application-development/sdk/web)에 매개변수로 전달됩니다.
+네이티브 및 Cordova iOS, Android와 Windows 애플리케이션의 경우 클라이언트 구성은 클라이언트 특성 파일(iOS는 **mfpclient.plist**, Android는 **mfpclient.properties** 또는 Windows는 **mfpclient.resw**)에 저장됩니다. 웹 애플리케이션의 경우 구성 특성은 SDK [초기화 메소드](../application-development/sdk/web)에 매개변수로 전달됩니다.
 
 클라이언트 구성 특성에는 서버에 액세스하는 데 필요한 애플리케이션 ID 및 정보(예: {{ site.data.keys.mf_server }} 런타임 URL과 보안 키)가 포함됩니다.  
 앱의 서버 구성에는 앱 관리 상태, 직접 업데이트의 웹 자원, 구성된 보안 범위 및 로그 구성과 같은 정보가 포함됩니다.
@@ -85,7 +85,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 
 > **중요:** {{ site.data.keys.mf_server }}가 실행 중이고 앱에서 트래픽을 수신하는 중에도 서버 구성을 수정할 수 있습니다. 앱의 서버 구성 변경 시에 서버를 중지할 필요가 없습니다.
 
-프로덕션 서버에서 앱 버전은 일반적으로 앱 스토어에 공개되는 애플리케이션 버전과 일치합니다. 앱 신뢰성의 구성과 같은 일부 서버 구성 요소는 스토어에 공개된 앱에 특정됩니다.
+프로덕션 서버에서 앱 버전은 일반적으로 앱 스토어에 공개되는 애플리케이션 버전과 일치합니다. 앱 인증의 구성과 같은 일부 서버 구성 요소는 스토어에 공개된 앱에 고유합니다.
 
 ## {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
@@ -94,7 +94,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 {{ site.data.keys.mf_server }}는 다음 기능을 포함하여 여러 {{ site.data.keys.product }} 기능을 제공하는 핵심 컴포넌트입니다.
 
 * 애플리케이션 관리
-* 디바이스와 사용자 인증 및 애플리케이션 신뢰성 확인을 포함하여 애플리케이션 보안
+* 디바이스 및 사용자에 대한 인증 및 애플리케이션 인증 확인을 포함한 애플리케이션 보안
 * 어댑터를 통한 백엔드 서비스에 대한 보안 액세스
 * 직접 업데이트를 사용하여 Cordova 앱 웹 자원 업데이트
 * 푸시 알림 및 푸시 등록

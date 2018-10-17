@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-이 학습서에는 개발자가 Android 또는 iOS 디바이스용 기본 C# Xamarin 애플리케이션을 개발하고 테스트하기 위해 수행해야 하는 단계가 설명되어 있습니다. 이 단계에는 Xamarin Studio 설치가 포함됩니다.
+이 학습서에는 개발자가 Android 또는 iOS 디바이스용 네이티브 C# Xamarin 애플리케이션을 개발하고 테스트하기 위해 수행해야 하는 단계가 설명되어 있습니다. 이 단계에는 Xamarin Studio 설치가 포함됩니다.
 
 **전제조건:** Xamarin 개발 환경을 설정할 때는 [MobileFirst 개발 환경 설정](../../development/) 학습서도 읽어야 합니다.
 

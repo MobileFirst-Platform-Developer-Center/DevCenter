@@ -27,4 +27,4 @@ Para continuar com o desenvolvimento do {{ site.data.keys.product_adj }} em apli
 
 * Saiba como incluir o SDK do [{{ site.data.keys.product_adj }} em aplicativos do Cordova](../../../application-development/sdk/cordova/).
 * Para desenvolvimento de aplicativos, consulte os tutoriais [Usando o SDK do {{ site.data.keys.product }}](../../../application-development/).
-* Para desenvolvimento de adaptadores, consulte a categoria [Adaptadores](../../../adapters/).
+* Para o desenvolvimento de adaptadores, consulte a categoria [Adaptadores](../../../adapters/).

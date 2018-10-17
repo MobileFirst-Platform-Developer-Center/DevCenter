@@ -71,8 +71,7 @@ Schritte ausführen:
 * FCM stellt keine bestimmte IP-Adresse bereit. Stellen Sie daher sicher, dass Ihre Firewall abgehende Verbindungen zu allen IP-Adressen akzeptiert, die
 in den IP-Blöcken enthalten sind, die in Google ASN
 15169 aufgelistet sind.
-* Stellen Sie sicher, dass Ihre Firewall am Port 443 abgehende Verbindungen
-von {{ site.data.keys.mf_server }} zu android.googleapis.com akzeptiert. 
+* Stellen Sie sicher, dass Ihre Firewall am Port 443 abgehende Verbindungen von {{ site.data.keys.mf_server }} zu fcm.googleapis.com akzeptiert.
 
 <img class="gifplayer" alt="GCM-Berechtigungsnachweise hinzufügen" src="gcm-setup.png"/>
 
@@ -81,7 +80,7 @@ von {{ site.data.keys.mf_server }} zu android.googleapis.com akzeptiert.
 iOS-Geräte verwenden den Apple Push Notification Service (APNS) für Push-Benachrichtigungen.   
 Gehen Sie wie folgt vor, um APNS zu konfigurieren:
 
-1. Generieren Sie ein Zertifikat für Push-Benachrichtigungen für die Entwicklung oder Produktion. Eine ausführliche Beschreibung der Schritte finden Sie [hier](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1) im Abschnitt `For iOS`. 
+1. Generieren Sie ein Zertifikat für Push-Benachrichtigungen für die Entwicklung oder Produktion. Eine ausführliche Beschreibung der Schritte finden Sie [hier](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1) im Abschnitt `For iOS`.
 2. Wählen Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push → Push-Einstellungen**
 den Zertifikattyp aus und geben Sie die Zertifikatdatei und das Kennwort an. Klicken Sie dann auf **Speichern**.
 

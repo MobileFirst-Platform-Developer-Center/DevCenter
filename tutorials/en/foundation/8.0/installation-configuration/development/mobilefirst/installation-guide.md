@@ -66,6 +66,7 @@ The [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/a
 **Prerequisite:**  
 1. NodeJS and NPM are requirements before you can install the {{ site.data.keys.mf_cli }}.  
  Download and install [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) and NPM v3.10.10.
+ For MobileFirst CLI version 8.0.2018100112 or higher, you can use Node v8.x or v10.x. 
 
  To Verify the installation, open a command-line window and execute: `node -v`.
 

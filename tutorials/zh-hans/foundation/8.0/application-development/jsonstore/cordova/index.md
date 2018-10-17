@@ -334,7 +334,7 @@ WL.JSONStore.get(collectionName).getAllDirty()
 
 #### 推送更改
 {: #push }
-要将更改推送到适配器，请调用 `getAllDirty` 以获取包含修订的文档列表，然后使用 `WLResourceRequest`。在发送数据并且收到成功响应后，确保调用 `markClean`。
+要将更改推送到适配器，请调用 `getAllDirty` 以获取包含修订的文档列表，然后使用 `WLResourceRequest`。 在发送数据并且收到成功响应后，确保调用 `markClean`。
 
 ```javascript
 try {

@@ -96,6 +96,7 @@ require(['mfp'], function(WL) {
    var wlInitOptions = {
     mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
     applicationId : 'com.sample.mywebapp' // Replace with your own value.
+    sessionMode : true //This is an optional paramter. Setting this to true ensures that MFP related data is stored in the session rather than in the local storage. If this option is set to false or not set at all, default is local storage.
 };
 
 WL.Client.init(wlInitOptions).then (

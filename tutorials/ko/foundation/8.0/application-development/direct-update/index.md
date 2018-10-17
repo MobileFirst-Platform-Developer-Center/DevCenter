@@ -129,7 +129,7 @@ wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 사용자 정의 직접 업데이트 UI의 추가 예제:
 
 - 써드파티 JavaScript 프레임워크(예: Dojo 또는 jQuery Mobile, Ionic 등)를 사용하여 작성되는 대화 상자
-- Cordova 플러그인 실행을 통한 완전한 고유 UI
+- Cordova 플러그인 실행을 통한 완전한 기본 UI
 - 옵션과 함께 사용자에게 표시되는 대체 HTML
 - 기타
 
@@ -167,17 +167,17 @@ var  directUpdateCustomListener  = {
 * `onProgress`는 `UNZIP_IN_PROGRESS` 상태에서 호출됩니다.
 * `onFinish`는 다음 최종 상태 코드 중 하나로 호출됩니다.
 
-|상태 코드 |설명 |
+| 상태 코드 | 설명 |
 |-------------|-------------|
-|`SUCCESS` |직접 업데이트가 오류 없이 완료되었습니다. |
-|`CANCELED` |직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서). |
-|`FAILURE_NETWORK_PROBLEM` |업데이트 중에 네트워크 연결에 문제점이 발생했습니다. |
-|`FAILURE_DOWNLOADING` |파일이 완전히 다운로드되지 않았습니다. |
-|`FAILURE_NOT_ENOUGH_SPACE` |디바이스에 업데이트 파일을 다운로드하고 언팩할 공간이 충분하지 않습니다. |
-|`FAILURE_UNZIPPING` |업데이트 파일을 언팩하는 중에 문제점이 발생했습니다. |
-|`FAILURE_ALREADY_IN_PROGRESS` |직접 업데이트가 이미 실행 중인 동안 시작 메소드가 호출되었습니다. |
-|`FAILURE_INTEGRITY` |업데이트 파일의 신뢰성을 확인할 수 없습니다. |
-|`FAILURE_UNKNOWN` |예기치 않은 내부 오류가 발생했습니다. |
+| `SUCCESS` | 직접 업데이트가 오류 없이 완료되었습니다. |
+| `CANCELED` | 직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서). |
+| `FAILURE_NETWORK_PROBLEM` | 업데이트 중에 네트워크 연결에 문제점이 발생했습니다. |
+| `FAILURE_DOWNLOADING` | 파일이 완전히 다운로드되지 않았습니다. |
+| `FAILURE_NOT_ENOUGH_SPACE` | 디바이스에 업데이트 파일을 다운로드하고 언팩할 공간이 충분하지 않습니다. |
+| `FAILURE_UNZIPPING` | 업데이트 파일을 언팩하는 중에 문제점이 발생했습니다. |
+| `FAILURE_ALREADY_IN_PROGRESS` | 직접 업데이트가 이미 실행 중인 동안 시작 메소드가 호출되었습니다. |
+| `FAILURE_INTEGRITY` | 업데이트 파일의 신뢰성을 확인할 수 없습니다. |
+| `FAILURE_UNKNOWN` | 예기치 않은 내부 오류가 발생했습니다. |
 
 사용자 정의 직접 업데이트 리스너를 구현하는 경우 직접 업데이트 프로세스가 완료되고 `onFinish()` 메소드가 호출되었을 때 앱이 다시 로드되는지 확인해야 합니다. 또한 직접 업데이트 프로세스가 올바르게 완료되지 못하면 `wl_directUpdateChalengeHandler.submitFailure()`를 호출해야 합니다.
 
@@ -328,7 +328,7 @@ var directUpdateCustomListener = {
 {: #secure-direct-update }
 기본적으로 사용 안함으로 설정되는 보안 직접 업데이트를 사용하는 경우 써드파티 공격자가 {{ site.data.keys.mf_server }} 또는 CDN(Content Delivery Network)에서 클라이언트 애플리케이션으로 전송되는 웹 자원을 변경하는 것을 방지합니다.
 
-**직접 업데이트 신뢰성을 사용하려면 다음을 수행하십시오.**  
+**직접 업데이트 신뢰성을 사용으로 설정하려면 다음을 수행하십시오.**  
 선호하는 도구를 사용하여 {{ site.data.keys.mf_server }} 키 저장소에서 공개 키를 추출하고 base64로 변환하십시오.  
 이렇게 하여 생성되는 값은 아래 지시된 대로 사용되어야 합니다.
 
@@ -342,7 +342,7 @@ var directUpdateCustomListener = {
 
 ## 샘플 애플리케이션
 {: #sample-application }
-Cordova 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80)하십시오.  
+Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80)하십시오.  
 
 ### 샘플 사용법
 {: #sample-usage }

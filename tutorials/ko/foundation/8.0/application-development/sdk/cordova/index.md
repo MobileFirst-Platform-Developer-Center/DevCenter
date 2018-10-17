@@ -32,7 +32,7 @@ MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음�
 - [Cordova SDK 컴포넌트](#cordova-sdk-components)
 - [{{ site.data.keys.product_adj }} Cordova SDK 추가](#adding-the-mobilefirst-cordova-sdk)
 - [{{ site.data.keys.product_adj }} Cordova SDK 업데이트](#updating-the-mobilefirst-cordova-sdk)
-- [생성된 {{ site.data.keys.product_adj }} Cordova SDK 아티팩트](#generated-mobilefirst-cordova-sdk-artifacts)
+- [생성되는 {{ site.data.keys.product_adj }} Cordova SDK 아티팩트](#generated-mobilefirst-cordova-sdk-artifacts)
 - [Cordova 브라우저 플랫폼 지원](#cordova-browser-platform)
 - [다음 학습서](#tutorials-to-follow-next)
 
@@ -69,7 +69,7 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 
 **전제조건:**
 
-- 개발자 워크스테이션에 [Apache Cordova CLI](https://www.npmjs.com/package/cordova) 및 {{ site.data.keys.mf_cli }}가 설치되어 있습니다.
+- 개발자 워크스테이션에 [Apache Cordova CLI(>=6.x, <9.0)](https://www.npmjs.com/package/cordova) 및 {{ site.data.keys.mf_cli }}가 설치되어 있습니다.
 - {{ site.data.keys.mf_server }}의 로컬 또는 원격 인스턴스가 실행 중입니다.
 - [{{ site.data.keys.product_adj }} 개발 환경 설정](../../../installation-configuration/development/mobilefirst) 및 [Cordova 개발 환경 설정](../../../installation-configuration/development/cordova) 학습서를 읽으십시오.
 - cordova-windows의 경우 시스템에 설치된 Visual Studio 및 .NET 버전과 호환되는 C++ 버전을 설치해야 합니다.
@@ -113,7 +113,7 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 
    > **참고:** 애플리케이션이 {{ site.data.keys.product_adj }} 템플리트를 사용하여 구성되었으므로 3단계에서 플랫폼이 추가된 것과 같이 {{ site.data.keys.product_adj }} 핵심 Cordova 플러그인이 자동으로 추가됩니다.
 
-4. `cordova prepare command`를 실행하여 애플리케이션 자원을 준비하십시오.
+4. `cordova prepare command` 명령을 실행하여 애플리케이션 자원을 준비하십시오.
 
    ```bash
    cordova prepare
@@ -149,7 +149,7 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
    ```bash
    mfpdev app register
    ```
-    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 추가하십시오.
+    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 이를 추가하십시오.
 
 `mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록한 후에 {{ site.data.keys.mf_server }}를 식별하는 메타데이터를 사용하여 Cordova 프로젝트의 루트에 있는 **config.xml** 파일을 업데이트합니다.
 
@@ -167,11 +167,11 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 
 ## {{ site.data.keys.product_adj }} Cordova SDK 업데이트
 {: #updating-the-mobilefirst-cordova-sdk }
-최신 릴리스로 {{ site.data.keys.product_adj }} Cordova SDK를 업데이트하려면 **cordova-plugin-mfp** 플러그인을 다음과 같이 제거하십시오. `cordova plugin remove cordova-plugin-mfp` 명령을 실행한 후에 `cordova plugin add cordova-plugin-mfp` 명령을 실행하여 다시 추가하십시오.
+최신 릴리스로 {{ site.data.keys.product_adj }} Cordova SDK를 업데이트하려면 `cordova plugin remove cordova-plugin-mfp` 명령을 실행하여 **cordova-plugin-mfp** 플러그인을 제거한 후에 `cordova plugin add cordova-plugin-mfp` 명령을 실행하여 이를 다시 추가하십시오.
 
 SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/cordova-plugin-mfp)에 있습니다.
 
-## 생성된 {{ site.data.keys.product_adj }} Cordova SDK 아티팩트
+## 생성되는 {{ site.data.keys.product_adj }} Cordova SDK 아티팩트
 {: #generated-mobilefirst-cordova-sdk-artifacts }
 ### config.xml
 {: #configxml }
@@ -549,7 +549,7 @@ If you click the button to ping MFP on the browser running on port `8000`, the p
 ### WebSphere Liberty를 사용하여 브라우저 자원 제공
 {: #using-liberty-cordova-browser}
 
-지시사항에 따라 <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/"> 학습서</a>에서 WebSphere Liberty를 사용하고 아래 변경 사항을 작성하십시오. 
+지시사항에 따라 <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/"> 학습서</a>에서 WebSphere Liberty를 사용하고 아래 변경 사항을 작성하십시오.
 
 이 학습서의 **웹 애플리케이션 자원으로 Maven 웹 앱 빌드** 섹션의 1단계에서 언급한 대로 브라우저 프로젝트의 `www` 폴더를 `[MyWebApp] → src → 기본 → webapp `에 추가하십시오. 마지막으로 Liberty 서버에 앱을 등록하고 `localhost:9080/MyWebApp` 경로로 브라우저에서 앱을 실행하여 테스트하십시오. 또한 `sjcl` 및 `jssha` 폴더를 상위 폴더에 추가하고 `ibmmfpf.js` 파일에서 해당 참조를 변경하십시오.
 
