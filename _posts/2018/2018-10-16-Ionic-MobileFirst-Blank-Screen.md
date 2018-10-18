@@ -17,7 +17,7 @@ Ionic Developers - take note! If you now create a new Ionic project and add the 
 
 
 ### The Cause 
-The default WebView that is added to this project on iOS (as of today) is `cordova-plugin-ionic-weview@2.2.0`. `cordova-plugin-ionic-webview` versions 2.x has an [issue](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/195) wherein a page with an absolute URI is not rendered. Ionic apps make use of relative URIs by default and hence are not affected by this issue. However, this issue surfaces in apps that have the MobileFirst plugin. This is because MobileFirst makes use of absolute URLs for the HTML files. This is by design of the MobileFirst SDK. 
+The default WebView that is added to an Ionic project on iOS (as of today) is `cordova-plugin-ionic-weview@2.2.0`. Versions 2.x of the `cordova-plugin-ionic-webview ` have an [issue](https://github.com/ionic-team/cordova-plugin-ionic-webview/issues/195) where they do not render a page with an absolute URI. Ionic apps make use of relative URIs by default and hence are not affected by this issue. However, this issue gets surfaced in apps that have the MobileFirst plugin. This is because MobileFirst makes use of absolute URLs for the pages. This is by design of the MobileFirst SDK to enable certain features such as Direct Update.
 
 {% include image.html url="../../../../../assets/blog/2018-10-16-Ionic-MobileFirst-Blank-Screen/ionic-blank-screen.png" description="Blank Screen on an Ionic App" %}
 
