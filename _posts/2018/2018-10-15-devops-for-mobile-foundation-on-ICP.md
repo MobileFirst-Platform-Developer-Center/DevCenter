@@ -43,6 +43,10 @@ The screen snapshot of the scripts that perform the deployment of MF on ICP is s
 
 ![Deploy MF on ICP Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/deploy_mfp_on_icp.png)
 
+Once the Jenkins job is successfully completed, MF deployment can be seen from the ICP deployments dashboard, as shown in the snapshot.
+
+![MF Deployment on ICP]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/mf_deployment_on_icp.png)
+
 ### Build And Deploy Adapter
 After MF is deployed on ICP, adapters can be built and deployed on MF for testing the changes. This is automated by *build_and_deploy_adapter* Jenkins job . The job can be configured to be run after the previous job, *deploy_mfp_on_ICP* is successfully completed. This job build the adapter using mfpdev cli and uses the MF deployment end-points to deploy the adapter to MF that is running on ICP. 
 
@@ -55,6 +59,10 @@ The scripts for building and deploying adapter requires details of ICP cluster a
 The screen snapshot of the scripts that perform the building of adapter and deploying it to MF is shown below. The script uses mfpdev cli for building and deploying the adapter. The script is available in the attachment.
 
 ![Build And Deploy Adapter Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/build_and_deploy_adapter_script.png)
+
+After successful completion of the job, the adapter would have deployed on MF running on ICP as shown in the image
+
+![Adapter Deployed on MF on ICP]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/adapter_deployed_MF_on_ICP.png)
 
 ### Test Adapter
 *Test_Adapter* job performs unit tests on the adapter that was built and deployed in the earlier Jenkins job. This way any adatper changes can be tested using unit tests. For this DevOps pipeline, the tests that are written to test the adapter end-points is available under the *tests* folder of Adapter git repository. You can add all the tests under this folder and these scripts can be executed from the job's scripts. The job can be configured to be run after the previous jobs *build_and_deploy_adapter* is successfully completed.
@@ -79,6 +87,10 @@ The scripts for automating building and deploying the app uses Fastlane for buil
 
 ![Build And Deploy Apps Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/build_and_deploy_app_scripts.png)
 
+Once the job is successfully completed, the app would have registered with MF running on ICP as shown in the image
+
+![Apps Deployed on MF on ICP]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/apps_deployed_MF_on_ICP.png)
+
 ### Test App With Bitbar
 Once the app is built and registered with MF, the app can be tested. We use Bitbar cloud testing for functional testing of the app. Before you can test the app, you need to create a Bitbar cloud instance. The Bitbar service can be created from IBM Cloud. If you are using Bitbar cloud for testing, you need to work with Bitbar to open-up the port in ICP to connect it from Bitbar to test app running on MF on ICP. For functional testing of app on Bitbar cloud, we use the Appium tests. We use different git repository for tests that are used for testing the apps.
 
@@ -94,7 +106,9 @@ The script to run the tests on Bitbar is invoked using maven, that is shown in t
 
 Note that, we used Bitbar cloud for testing the app. You can use any of the testing tools of your choice for testing the apps that can be run locally on your organization's intranet, without going to the public network to connect to cloud testing vendors like Bitbar cloud. 
 
-This job can be configured to run after previous job for *build_and_deploy_apps* is successfully completed.
+This job can be configured to run after previous job for *build_and_deploy_apps* is successfully completed. Once the job is successfully completed, the status of app tested can be viewd in Bitbar dashboard
+
+![Bitbar Dashboard]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/bit_bar_test_status.png)
 
 ### Delete MF on ICP
 This Jenkins job will clean up the MF on ICP after all the previous jobs are successfully completed. Cleaning up MF on ICP helps in leaving no traces of previous pipeline run and helps in tear down the MF after completion of pipeline run. You can choose not to perform this phase in pipeline if you don't wish to clean-up the environment after every successful build of the pipeline. This means that the jobs for deploying MF on ICP and Deleting MF on ICP can be taken out from the continous build and testing of apps and adapter pipeline. 
