@@ -1,5 +1,5 @@
 ---
-title: 'Devops for Mobile Foundation on IBM Cloud Private (ICP) '
+title: Devops for Mobile Foundation on IBM Cloud Private (ICP)
 date: 2018-10-15
 tags:
 - MobileFirst_Foundation
