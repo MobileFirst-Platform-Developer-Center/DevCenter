@@ -14,12 +14,12 @@ additional_authors:
 ---
 
 ## Introduction
-DevOps is a practice used by enterprises for faster delivery of software and to improve the time taken for go to market. The DevOps pipeline for [Mobile Foundation on IBM Cloud Private](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/) helps in automating tasks that are required to set up a continous delivery of mobile apps. For Mobile Foundation on ICP, the tasks such as deploying Mobile Foundation (MF) on ICP, building and deploying apps and adatpers to MF on ICP, testing apps and adapters, and deleting and updating the Mobile Foundation deployments on ICP needs to be automated. 
+DevOps is a practice used by enterprises for faster delivery of software and to improve the time taken for go to market. The DevOps pipeline for [Mobile Foundation on IBM Cloud Private](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/) helps in automating tasks that are required to set up a continuous delivery of mobile apps. For Mobile Foundation on ICP, the tasks such as deploying Mobile Foundation (MF) on ICP, building and deploying apps and adapters to MF on ICP, testing apps and adapters, and deleting and updating the Mobile Foundation deployments on ICP needs to be automated. 
 
-In this blog post we will walk you through the steps of creating a DevOps pipeline for Mobile Foundation on ICP using Jenkins. The Jenkins jobs use the combination of ICP, Helm and `mfpdev` command line to automate the different stages/jobs in the pipeline. The jobs can be configured in such a way that whenever developers commit a code change to git repository, the pipeline automatically gets triggered to exceute some of the Jenkins job. In a continous build and test automation pipeline, the job execution can start with a fresh deployment of Mobile Foundation on ICP and then do the building of apps and adatper and subsequently register it with Mobile Foundation Server running on ICP followed by testing both apps and adatper and finally tearing down the Mobile Foudation deployment on ICP.
+In this blog post, we will walk you through the steps of creating a DevOps pipeline for Mobile Foundation on ICP using Jenkins. The Jenkins jobs use the combination of ICP, Helm and `mfpdev` command line to automate the different stages/jobs in the pipeline. The jobs can be configured in such a way that whenever developers commit a code change to a git repository, the pipeline automatically gets triggered to execute some of the Jenkins jobs. In a continuous build and test automation pipeline, the job execution can start with a fresh deployment of Mobile Foundation on ICP and then do the building of apps and adapter and subsequently register it with Mobile Foundation Server running on ICP followed by testing both apps and adapter and finally tearing down the Mobile Foundation deployment on ICP.
 
 ## DevOps pipeline
-The DevOps pipeline that is described in this blog is built by using Jenkins. This blog post assumes that Jenkins is installed locally within the organization's intranet.  ICP provides helm charts for Jenkins deployments that you could use to build the DevOps pipeline, but ICP may run the Jenkins job on a new pod each time a job is run, and that would require every job to have the scripts to install the prerequisite software such as `mfpdev` command line, *maven*, *helm* etc., which is required to run the job. This may have a performance impact on execution of jobs. It is hence recommended to have locally installed Jenkins server and client, which can connect to the ICP running on your data center. The Jenkins job that is used for creating DevOps pipeline for MF on ICP is shown below.
+The DevOps pipeline that is described in this blog is built by using Jenkins. This blog post assumes that Jenkins is installed locally within the organization's intranet.  ICP provides helm charts for Jenkins deployments that you could use to build the DevOps pipeline, but ICP may run the Jenkins job on a new pod each time a job is run, and that would require every job to have the scripts to install the prerequisite software such as `mfpdev` command line, *maven*, *helm* etc., which is required to run the job. This may have a performance impact on the execution of jobs. It is hence recommended to have locally installed Jenkins server and client, which can connect to the ICP running on your data center. The Jenkins job that is used for creating DevOps pipeline for MF on ICP is shown below.
 
 ![Jenkins Job View]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/jobs_view.png)
 
@@ -31,9 +31,9 @@ As mentioned earlier, we will be using Jenkins that is installed locally for run
 ![Set Up Jenkins Build Machine]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/setup_build_machine_scripts.png)
 
 ### Deploy MF on ICP
-Once the build machine is setup, which is a one time activitiy, the other jobs can be run. The jobs can be linked together to create an end-to-end devops pipeline. You can configure Jenkins jobs in such a way that whenever an app or adapter change is committed to git repositoy, a job can be kicked-off. You can choose to test the changes on a fresh MF deployments by configuring the *deploy_mfp_on_ICP* job to listen to the changes in the source repository. If you don't require to test the app and adatper changes on a new deploment of MF on ICP, you can skip this job from the pipeline. The apps and adapter source code is publically available in git repo.
+Once the build machine is setup, which is a one time activitiy, the other jobs can be run. The jobs can be linked together to create an end-to-end devops pipeline. You can configure Jenkins jobs in such a way that whenever an app or adapter change is committed to git repositoy, a job can be kicked-off. You can choose to test the changes on a fresh MF deployments by configuring the *deploy_mfp_on_ICP* job to listen to the changes in the source repository. If you don't require to test the app and adapter changes on a new deploment of MF on ICP, you can skip this job from the pipeline. The apps and adapter source code is publically available in git repo.
 
-![GIT Repository for MF Apps and Adatper]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
+![GIT Repository for MF Apps and Adapter]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
 
 The scripts for deploying MF on ICP requries details of the ICP cluster and DB credentials (In this pipeline we use DB2 as the database), that can be provided as parameters for the Jenkins jobs. The parameters are used internally in the scripts that automate the job.
 
@@ -50,7 +50,7 @@ Once the Jenkins job is successfully completed, MF deployment can be seen from t
 ### Build And Deploy Adapter
 After MF is deployed on ICP, adapters can be built and deployed on MF for testing the changes. This is automated by *build_and_deploy_adapter* Jenkins job . The job can be configured to be run after the previous job, *deploy_mfp_on_ICP* is successfully completed. This job builds the adapter using mfpdev cli and uses the MF deployment end-points to deploy the adapter to MF running on ICP. 
 
-![GIT Repository for MF Apps and Adatper]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
+![GIT Repository for MF Apps and Adapter]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
 
 The scripts for building and deploying adapter requires details of ICP cluster and credential to login to ICP. These details are provided as parameters to Jenkins job
 
@@ -65,7 +65,7 @@ After successful completion of the job, the adapter would have deployed on MF ru
 ![Adapter Deployed on MF on ICP]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/adapter_deployed_MF_on_ICP.png)
 
 ### Test Adapter
-The *test_adapter* job performs unit tests on the adapter that was built and deployed in the earlier Jenkins job. This way any adatper changes can be tested using unit tests. For this DevOps pipeline, the tests that are written to test the adapter end-points are available under the *tests* folder of adapter git repository. You can add all the tests under this folder and these scripts can be executed from the job's scripts. The job can be configured to be run after the previous jobs *build_and_deploy_adapter* is successfully completed.
+The *test_adapter* job performs unit tests on the adapter that was built and deployed in the earlier Jenkins job. This way any adapter changes can be tested using unit tests. For this DevOps pipeline, the tests that are written to test the adapter end-points are available under the *tests* folder of adapter git repository. You can add all the tests under this folder and these scripts can be executed from the job's scripts. The job can be configured to be run after the previous jobs *build_and_deploy_adapter* is successfully completed.
 
 ![GIT Repository for Adapter Tests]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
 
@@ -77,7 +77,7 @@ The script first gets the deployment end-point of MF. The MF end-point is then u
 ### Build And Deploy Apps
 Any app changes commited to the git repository can be built using this job. In this DevOps pipeline, we are using Fastlane for building the Android app. The app that is built is then published to another git repository to be used later in the *test_app_with_bitbar* Jenkins job. The git repository for apps is same as the git repo that is used for adapter.
 
-![GIT Repository for MF Apps and Adatper]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
+![GIT Repository for MF Apps and Adapter]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
 
 The parameters required for the runing the script includes the ICP cluster details and credentials to login to the ICP as well as the git url for publishing the app that is built. In this DevOps pipeline, we use the GIT Push Token, that can be found from the GIT settings page. You need to use your own GIT repo for publishing the app and provide the GIT details such as url, token and publish url as shown in the image below.
 
@@ -132,7 +132,7 @@ The scripts uses the helm command to upgrade the deployment for MF and Analytics
 ![Test Apps Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/upgrade_mfp_on_icp_scripts.png)
 
 ## DevOps Pipeline for Development, Test and Production
-What we have seen in the blog is a DevOps pipeline for development, where developers make changes to apps and adapters and commit the changes to git repository. Whenever changes are commited to git repository, the pipeline is configured to run the phases (jobs) such as deploying MF on ICP, building and testing apps and adapter and finally deleting the MF deployment from ICP.  This is how a standard devops pipeline can be created for development. Based on your requiirement the jobs can be linked to create a continous delivery pipeline for development.
+What we have seen in the blog is a DevOps pipeline for development, where developers make changes to apps and adapters and commit the changes to git repository. Whenever changes are commited to git repository, the pipeline is configured to run the phases (jobs) such as deploying MF on ICP, building and testing apps and adapter and finally deleting the MF deployment from ICP.  This is how a standard devops pipeline can be created for development. Based on your requiirement the jobs can be linked to create a continuous delivery pipeline for development.
 
 The DevOps pipeline for Test is very similar to development, the only difference is that for test environment, instead of kicking off the pipeline for each of the git commit, it can be configured to run at regular interval (nightly) or twice in a day. This way all the changes delivered to git repository for a period of time gets tested in the test environment at regular intervals.
 
