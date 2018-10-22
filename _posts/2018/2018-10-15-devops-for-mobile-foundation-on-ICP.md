@@ -92,54 +92,54 @@ Once the job is successfully completed, the app would have registered with MF ru
 ![Apps Deployed on MF on ICP]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/apps_deployed_MF_on_ICP.png)
 
 ### Test App With Bitbar
-Once the app is built and registered with MF, the app can be tested. We use Bitbar cloud service for functional testing of the app. Before you can test the app, you need to create a Bitbar cloud service instance. The Bitbar service can be created from IBM Cloud. If you are using Bitbar cloud for testing, you need to work with Bitbar to open-up the port in ICP to connect it from Bitbar to test app running on MF on ICP. For functional testing of app on Bitbar cloud, we use the Appium tests. We use different git repository for tests that are used for testing the apps.
+Once the app is built and registered with MF, the app can be tested. We use Bitbar cloud service for functional testing of the app. Before you can test the app, you need to create a Bitbar cloud service instance. The Bitbar service can be created from IBM Cloud. If you are using Bitbar cloud for testing, you need to work with Bitbar to open the port in ICP to connect to it from Bitbar, to test the app running on MF in ICP. For functional testing of app on Bitbar cloud, we use the Appium tests. We use different git repository for tests, which are used for testing the apps.
 
 ![App Tests GIT Repository]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/test_apps_tests_git_repo.png)
 
-The parameters required to run the Jenkins job requires git repository where the built app was published in the  previous *build_and_deploy_app* job and the bitbar cloud details such as BitbarAPIKey and ClientType etc. The parameters required is shown in the image
+The parameters required to run the Jenkins job requires the git repository where the built app was published to, in the  previous *build_and_deploy_app* job and also the bitbar cloud details such as BitbarAPIKey, ClientType etc. The parameters required is shown in the image.
 
 ![Test App With Bitbar Job Parameters]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/test_app_parameters.png)
 
-The script to run the tests on Bitbar is invoked using maven, that is shown in the screen snapshot 
+The script to run the tests on Bitbar is invoked using maven, which is shown in the screenshot 
 
 ![Test Apps Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/test_app_scripts.png)
 
 Note that, we use Bitbar cloud for testing the app. You can use any of the testing tools of your choice for testing the apps that can be run locally on your organization's intranet, without going to the public network to connect to cloud testing vendors like Bitbar cloud. 
 
-This job can be configured to run after previous job *build_and_deploy_app* is successfully completed. Once the job is successfully completed, the status of app tested can be viewd in Bitbar dashboard
+This job can be configured to run after the previous job *build_and_deploy_app* is completed successfully. Once the job is successfully completed, the status of the app tested can be viewed from the Bitbar dashboard.
 
 ![Bitbar Dashboard]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/bit_bar_test_status.png)
 
 ### Delete MF on ICP
-This Jenkins job will clean up the MF on ICP after all the previous jobs are successfully completed. Cleaning up MF on ICP helps in leaving no traces of previous pipeline run and helps in tear down the MF after completion of pipeline run. You can choose not to perform this phase in pipeline if you don't wish to clean-up the environment after every successful build of the pipeline. This means that the jobs for deploying MF on ICP and Deleting MF on ICP can be taken out from the continous build and testing of apps and adapter pipeline. 
+This Jenkins job will clean up the MF deployment on ICP after all the previous jobs are successfully completed. Cleaning up MF on ICP helps in leaving no traces of previous pipeline run and helps in tear down of the MF after completion of pipeline run. You can choose not to perform this phase in the pipeline if you don't wish to clean up the environment after every successful build of the pipeline. This means that the jobs for *deploying MF on ICP* and *deleting MF on ICP* can be taken out from the continuous build and testing of apps and adapter pipeline. 
 
-For this Job to be run, we need to provide the ICP cluster connection credentials and release name as shown in the image
+For this job to be run, we need to provide the ICP cluster connection credentials and release name as shown in the image.
 
 ![Delete MF on ICP Job Parameters]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/delete_mfp_on_icp_parameters.png)
 
-The script for job *delete_mfp_on_icp* uses the helm commands to delete the MF deployment. Note that as part of the MF deployments, we have also deploy MF Analtyics. So this job performs the deletion of both MF and Analystics deployments.
+The script for job *delete_mfp_on_icp* uses the helm commands to delete the MF deployment. Note that as part of the MF deployments, we also have *deploy MF Analytics*. This job performs the deletion of both MF and Analytics deployments.
 
 ![Test Apps Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/delete_mfp_on_icp_scripts.png)
 
 ### Upgrade MF on ICP
 It is often required to upgrade the MF on ICP whenever the latest version of MF for ICP is released.  This job can be used to upgrade MF and Analytics on ICP.
-This job needs the credentials of ICP cluster and release name
+This job needs the credentials of ICP cluster and the release name.
 
 ![Upgrade MF on ICP Job Parameters]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/delete_mfp_on_icp_parameters.png)
 
-The scripts uses the helm command to upgrade the deployment for MF and Analytics on ICP
+This script uses the helm command to upgrade the deployment for MF and Analytics on ICP.
 
 ![Test Apps Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/upgrade_mfp_on_icp_scripts.png)
 
 ## DevOps Pipeline for Development, Test and Production
-What we have seen in the blog is a DevOps pipeline for development, where developers make changes to apps and adapters and commit the changes to git repository. Whenever changes are commited to git repository, the pipeline is configured to run the phases (jobs) such as deploying MF on ICP, building and testing apps and adapter and finally deleting the MF deployment from ICP.  This is how a standard devops pipeline can be created for development. Based on your requiirement the jobs can be linked to create a continuous delivery pipeline for development.
+What we have seen in the blog is a DevOps pipeline for development, where developers make changes to apps and adapters and commit the changes to a git repository. Whenever changes are committed to a git repository, the pipeline is configured to run the phases (jobs) such as deploying MF on ICP, building and testing apps and adapters and finally deleting the MF deployment from ICP.  This is how a standard devops pipeline can be created for development. Based on your requirement the jobs can be linked to create a continuous delivery pipeline for development.
 
-The DevOps pipeline for Test is very similar to development, the only difference is that for test environment, instead of kicking off the pipeline for each of the git commit, it can be configured to run at regular interval (nightly) or twice in a day. This way all the changes delivered to git repository for a period of time gets tested in the test environment at regular intervals.
+The DevOps pipeline for Test is very similar to development, the only difference is that for the test environment, instead of kicking off the pipeline for each of the git commit, it can be configured to run at regular time intervals (nightly) or twice in a day. This way all the changes delivered to the git repository for a period of time gets tested in the test environment at regular intervals.
 
-In the case of DevOps for Production environment, you will not be using/running all the jobs that we discussed in the blog, rather you will be having jobs for registering the app and deploying the adapter after the app and adapters was successfully tested in the Test environment.
+In the case of DevOps for production environment, you will not be using/running all the jobs that we discussed in the blog, rather you will be having jobs for registering the app and deploying the adapter after the apps and adapters are successfully tested in the test environment.
 
 ### Attachment
-The zip file [MF_on_ICP_Jenkins_Job_Scripts]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/MFP_on_ICP_Jenkins_Job_Scripts.zip) includes all the scripts for all the Jenkins jobs described in this blog. The scripts assume that Jenkins job parameters are set correctly before running the pipeline.
+The zip file [MF_on_ICP_Jenkins_Job_Scripts]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/MFP_on_ICP_Jenkins_Job_Scripts.zip) includes all the scripts for all the Jenkins jobs described in this post. These scripts assume that Jenkins job parameters are set correctly before running the pipeline.
 
 
 
