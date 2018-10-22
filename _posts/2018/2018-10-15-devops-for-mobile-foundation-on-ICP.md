@@ -26,41 +26,41 @@ The DevOps pipeline that is described in this blog is built by using Jenkins. Th
 We will now discuss each of these jobs in detail.
 
 ### Setting up the Jenkins build machine
-As mentioned earlier, we will be using Jenkins that is installed locally for running Jenkins job. This jobs install all the prerequisite software required to run the Jenkins jobs. The job needs to be run only once on the build machine. The jobs installs IBM Cloud CLI (Bluemix CLI), IBM Cloud Private Command Line, Helm Command Line, NodeJS, Maven, MFP Dev CLI and Android SDK. These commad line tools are needed for running the rest of the jobs in the pipeline such as building apps and adapters and testing them. The scripts for setting up the build machine can be found in the attachment. A snapshot of the script for the same is shown below
+As mentioned earlier, we will be using Jenkins that is installed locally for running Jenkins job. These jobs install all the prerequisite software required to run the Jenkins jobs. The job needs to be run only once on the build machine. The jobs install IBM Cloud CLI (Bluemix CLI), IBM Cloud Private Command Line, Helm Command Line, NodeJS, Maven, MFP Dev CLI, and Android SDK. These command line tools are needed for running the rest of the jobs in the pipeline such as building apps and adapters and testing them. The scripts for setting up the build machine can be found in the attachment. A snapshot of the script for the same is shown below
 
 ![Set Up Jenkins Build Machine]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/setup_build_machine_scripts.png)
 
 ### Deploy MF on ICP
-Once the build machine is setup, which is a one time activitiy, the other jobs can be run. The jobs can be linked together to create an end-to-end devops pipeline. You can configure Jenkins jobs in such a way that whenever an app or adapter change is committed to git repositoy, a job can be kicked-off. You can choose to test the changes on a fresh MF deployments by configuring the *deploy_mfp_on_ICP* job to listen to the changes in the source repository. If you don't require to test the app and adapter changes on a new deploment of MF on ICP, you can skip this job from the pipeline. The apps and adapter source code is publically available in git repo.
+Once the build machine is set up, which is a one-time activity, the other jobs can be run. The jobs can be linked together to create an end-to-end devops pipeline. You can configure Jenkins jobs in such a way that whenever an app or adapter change is committed to the git repository, a job can be kicked-off. You can choose to test the changes on a fresh MF deployment by configuring the *deploy_mfp_on_ICP* job to listen to the changes in the source repository. If you don't require to test the app and adapter changes on a new deployment of MF on ICP, you can skip this job from the pipeline. The source code for apps and adapters is publically available in the git repo.
 
 ![GIT Repository for MF Apps and Adapter]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
 
-The scripts for deploying MF on ICP requries details of the ICP cluster and DB credentials (In this pipeline we use DB2 as the database), that can be provided as parameters for the Jenkins jobs. The parameters are used internally in the scripts that automate the job.
+The scripts for deploying MF on ICP requires details of the ICP cluster and DB credentials (in this pipeline we use DB2 as the database), which can be provided as parameters for the Jenkins jobs. The parameters are used internally in the scripts that automate the job.
 
 ![Deploy MF on ICP Job Parameters]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/deploy_mfp_on_icp_parameters.png)
 
-The screen snapshot of the scripts that perform the deployment of MF on ICP is shown below. The scripts uses the helm commands to deploy MF server and Analytics Server on ICP.  The complete script is available in the attachment.
+The screenshot of the script that perform the deployment of MF on ICP is shown below. The script uses the helm commands to deploy MF Server and Analytics Server on ICP.  The complete script is available in the attachment.
 
 ![Deploy MF on ICP Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/deploy_mfp_on_icp.png)
 
-Once the Jenkins job is successfully completed, MF deployment can be seen from the ICP deployments dashboard, as shown in the snapshot.
+Once the Jenkins job is successfully completed, MF deployment can be seen from the ICP deployments dashboard, as shown in the screenshot.
 
 ![MF Deployment on ICP]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/mf_deployment_on_icp.png)
 
 ### Build And Deploy Adapter
-After MF is deployed on ICP, adapters can be built and deployed on MF for testing the changes. This is automated by *build_and_deploy_adapter* Jenkins job . The job can be configured to be run after the previous job, *deploy_mfp_on_ICP* is successfully completed. This job builds the adapter using mfpdev cli and uses the MF deployment end-points to deploy the adapter to MF running on ICP. 
+After MF is deployed on ICP, adapters can be built and deployed on MF for testing the changes. This is automated by *build_and_deploy_adapter* Jenkins job. The job can be configured to be run after the previous job, *deploy_mfp_on_ICP* is successfully completed. This job builds the adapter using mfpdev CLI and uses the MF deployment endpoints to deploy the adapter to MF running on ICP. 
 
 ![GIT Repository for MF Apps and Adapter]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
 
-The scripts for building and deploying adapter requires details of ICP cluster and credential to login to ICP. These details are provided as parameters to Jenkins job
+The scripts for building and deploying adapter requires details of ICP cluster and credentials to log in to ICP. These details are provided as parameters to Jenkins job.
 
 ![Build And Deploy Adapter Job Parameters]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/build_and_deploy_adapter_parameters.png)
 
-The screen snapshot of the scripts that perform the building of adapter and deploying it to MF is shown below. The script uses mfpdev cli for building and deploying the adapter. The complete script is available in the attachment.
+The screenshot of the scripts that build and deploy the adapter to MF is shown below. The script uses `mfpdev` CLI for building and deploying the adapter. The complete script is available in the attachment.
 
 ![Build And Deploy Adapter Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/build_and_deploy_adapter_script.png)
 
-After successful completion of the job, the adapter would have deployed on MF running on ICP as shown in the image
+After successful completion of thia job, the adapter would be deployed on MF running on ICP as shown in the image below.
 
 ![Adapter Deployed on MF on ICP]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/adapter_deployed_MF_on_ICP.png)
 
@@ -69,25 +69,25 @@ The *test_adapter* job performs unit tests on the adapter that was built and dep
 
 ![GIT Repository for Adapter Tests]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
 
-This job also require the same set of parameters that was mentioned in the previous job. The parameters are referred in scripts that is used to automate the job.
-The script first gets the deployment end-point of MF. The MF end-point is then used to register confidential client that is required to test adapter endpoint from the unit tests. The screen snapshot of the script is shown below, the complete script is available from the attachment.
+This job also requires the same set of parameters that was mentioned in the previous job. The parameters are referred in scripts that are used to automate the job.
+The script first gets the deployment endpoint of MF. The MF endpoint is then used to register confidential client that is required to test adapter endpoint from the unit tests. The screenshot of the script is shown below, the complete script is available from the attachment.
 
 ![Test Adapter Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/test_adapters_script.png)
 
 ### Build And Deploy Apps
-Any app changes commited to the git repository can be built using this job. In this DevOps pipeline, we are using Fastlane for building the Android app. The app that is built is then published to another git repository to be used later in the *test_app_with_bitbar* Jenkins job. The git repository for apps is same as the git repo that is used for adapter.
+Any app changes committed to the git repository can be built using this job. In this DevOps pipeline, we are using Fastlane for building the Android app. The app that is built is then published to another git repository to be used later in the *test_app_with_bitbar* Jenkins job. The git repository for apps is the same as the git repo that is used for adapters.
 
 ![GIT Repository for MF Apps and Adapter]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
 
-The parameters required for the runing the script includes the ICP cluster details and credentials to login to the ICP as well as the git url for publishing the app that is built. In this DevOps pipeline, we use the GIT Push Token, that can be found from the GIT settings page. You need to use your own GIT repo for publishing the app and provide the GIT details such as url, token and publish url as shown in the image below.
+The parameters required for the running the script includes the ICP cluster details and credentials to log in to the ICP as well as the git URL for publishing the app, which is built. In this DevOps pipeline, we use the GIT Push Token that can be found from the GIT settings page. You need to use your own GIT repo for publishing the app and you will need to provide the GIT details such as URL, token and publish URL as shown in the image below.
 
 ![Build And Deploy Apps Job Parameters]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/build_and_deploy_app_parameters.png)
 
-The scripts for automating building and deploying the app uses Fastlane for building the android app and mfpdev cli for registering the app with MF deployed on ICP. It uses the git commands to publish the .apk file that was built by Fastlane.
+The scripts for automating building and deploying the app uses Fastlane for building the Android app and `mfpdev` CLI for registering the app with MF deployed on ICP. It uses git commands to publish the `.apk` file that was built by Fastlane.
 
 ![Build And Deploy Apps Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/build_and_deploy_app_scripts.png)
 
-Once the job is successfully completed, the app would have registered with MF running on ICP as shown in the image
+Once the job is successfully completed, the app would have registered with MF running on ICP as shown in the image.
 
 ![Apps Deployed on MF on ICP]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/apps_deployed_MF_on_ICP.png)
 
