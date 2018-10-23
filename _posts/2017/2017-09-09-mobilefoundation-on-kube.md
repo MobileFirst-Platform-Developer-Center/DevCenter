@@ -10,6 +10,8 @@ author:
   name: Neeti Sukhtankar
 ---
 
+> **Note:** We have simplified the deployment experience of Mobile Foundation on IBM Cloud Kubernetes clusters tremendously, while improving deployment times significantly. Please refer to the [blog announcement](http://mobilefirstplatform.ibmcloud.com/blog/2018/10/22/mfp-on-ibmcloud-kube-announce/) for more details. With this announcement, we are deprecating the deployment option described in the blog below.
+
 ## Deploy Mobile Foundation on Kubernetes clusters
 
 As a Mobile Foundation user, you can now deploy Mobile Foundation, including the Mobile Foundation Server, Mobile Analytics Server, and the Application Center on Kubernetes clusters. The deployment package has been updated to support Kubernetes deployment. You can download the deployment package **CNL77EN** from Passport Advantage (your PPA login credentials are required).

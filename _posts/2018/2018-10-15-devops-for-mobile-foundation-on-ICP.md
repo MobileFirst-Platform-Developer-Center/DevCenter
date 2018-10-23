@@ -1,6 +1,6 @@
 ---
-title: Devops for Mobile Foundation on IBM Cloud Private (ICP)
-date: 2018-10-15
+title: DevOps for Mobile Foundation on IBM Cloud Private (ICP)
+date: 2018-10-22
 tags:
 - MobileFirst_Foundation
 - ICP
@@ -8,7 +8,7 @@ tags:
 version:
 - 8.0
 author: 
-name: Shinoj Zacharias
+    name: Shinoj Zacharias
 additional_authors:
 - Prashanth Bhat
 ---
