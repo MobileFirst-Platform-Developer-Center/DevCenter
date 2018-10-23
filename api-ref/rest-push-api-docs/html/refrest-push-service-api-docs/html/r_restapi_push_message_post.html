@@ -124,52 +124,94 @@
 
             <div class="example">
                 <h2 class="title sectiontitle">JSON Example</h2>
-                <pre class="pre codeblock prettyprint"><code>{
-  "message" : {
-    "alert" : "Test message",
+                <pre class="pre codeblock prettyprint"><code>
+{
+  "message": {
+    "alert": "Test message"
   },
-  "notificationType" : 1,
-  "settings" : {
-    "apns" : {
-      “attachmentUrl” : "http://test.com/test.png",
-      “subtitle” : "Sub Title",
-      “title” : "Title",
-      "badge" : 1,
-      "category" : 1,
-      "iosActionKey" : "Ok",
-      "payload" : {"custom":"data"},
-      "sound" : "song.mp3",
-      "type" : "SILENT",
+  "notificationType": 1,
+  "settings": {
+    "apns": {
+      "attachmentUrl": "http://test.com/test.png",
+      "subtitle": "Sub Title",
+      "title": "Title",
+      "badge": 1,
+      "category": 1,
+      "iosActionKey": "Ok",
+      "payload": {
+        "custom": "data"
+      },
+      "sound": "song.mp3",
+      "type": "SILENT"
     },
-    "gcm" : {
-      "bridge" : false,
-      "category" : "email",
-      "collapseKey" : "testkey",
-      "delayWhileIdle" : false,
-      "payload" : {"custom":"data"},
-      "priority" : "low",
-      "redact" : "Test Redact Message",
-      "sound" : "song.mp3",
-      "sync" : false,
-      "timeToLive" : 10,
-      "visibility" : "public",
+    "gcm": {
+      "bridge": false,
+      "category": "email",
+      "collapseKey": "testkey",
+      "delayWhileIdle": false,
+      "payload": {
+        "custom": "data"
+      },
+      "priority": "low",
+      "redact": "Test Redact Message",
+      "sound": "song.mp3",
+      "sync": false,
+      "timeToLive": 10,
+      "visibility": "public"
     },
-    "wns" : {
-      "badge" : {"value":"10"},
-      "cachePolicy" : false,
-      "expirationTime" : 20,
-      "raw" : {"payload":{"custom":"data"}},
-      "tile" : {"visual":{"binding":[{"template":"TileSquareText04", "text": [{"content":"Text1"}]}, {"template":"TileWideText04","text": [{"content":"Text1"}]}]}},
-      "toast" : {"launch":{"custom":"data"}, "visual":{"binding":{"template":"ToastText04","text":[{"content":"Text1"},{"content":"Text2"},{"content":"Text3"}]}},
+    "wns": {
+      "badge": {
+        "value": "10"
+      },
+      "cachePolicy": false,
+      "expirationTime": 20,
+      "raw": {
+        "payload": {
+          "custom": "data"
+        }
+      },
+      "tile": {
+        "visual": {
+          "binding": [{
+            "template": "TileSquareText04",
+            "text": [{
+              "content": "Text1"
+            }]
+          }, {
+            "template": "TileWideText04",
+            "text": [{
+              "content": "Text1"
+            }]
+          }]
+        }
+      },
+      "toast": {
+        "launch": {
+          "custom": "data"
+        },
+        "visual": {
+          "binding": {
+            "template": "ToastText04",
+            "text": [{
+              "content": "Text1"
+            }, {
+              "content": "Text2"
+            }, {
+              "content": "Text3"
+            }]
+          }
+        }
+      }
     },
-  },
-  "target" : {
-    "deviceIds" : [ "MyDeviceId1", ... ],
-    "platforms" : [ "A,G", ... ],
-    "tagNames" : [ "Gold", ... ],
-    "userIds" : [ "MyUserId", ... ],
-  },
-}</code></pre></div>
+    "target": {
+      "deviceIds": ["MyDeviceId1", ...],
+      "platforms": ["A,G", ...],
+      "tagNames": ["Gold", ...],
+      "userIds": ["MyUserId", ...],
+    }
+  }
+} 
+</code></pre></div>
 
 
             <section class="section">
