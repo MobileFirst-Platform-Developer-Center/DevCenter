@@ -18,6 +18,8 @@ DevOps is a practice used by enterprises for faster delivery of software and to 
 
 In this blog post, we will walk you through the steps of creating a DevOps pipeline for Mobile Foundation on ICP using Jenkins. The Jenkins jobs use the combination of ICP, Helm and `mfpdev` command line to automate the different stages/jobs in the pipeline. The jobs can be configured in such a way that whenever developers commit a code change to a git repository, the pipeline automatically gets triggered to execute some of the Jenkins jobs. In a continuous build and test automation pipeline, the job execution can start with a fresh deployment of Mobile Foundation on ICP and then do the building of apps and adapter and subsequently register it with Mobile Foundation Server running on ICP followed by testing both apps and adapter and finally tearing down the Mobile Foundation deployment on ICP.
 
+This blog post assumes that you have already set up IBM Cloud Private and loaded the [IBM Mobile Foundation Passport Advantage Archive](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#download-the-ibm-mfpf-ppa-archive) on ICP.
+
 ## DevOps pipeline
 The DevOps pipeline that is described in this blog is built by using Jenkins. This blog post assumes that Jenkins is installed locally within the organization's intranet.  ICP provides helm charts for Jenkins deployments that you could use to build the DevOps pipeline, but ICP may run the Jenkins job on a new pod each time a job is run, and that would require every job to have the scripts to install the prerequisite software such as `mfpdev` command line, *maven*, *helm* etc., which is required to run the job. This may have a performance impact on the execution of jobs. It is hence recommended to have locally installed Jenkins server and client, which can connect to the ICP running on your data center. The Jenkins job that is used for creating DevOps pipeline for MF on ICP is shown below.
 
@@ -125,7 +127,7 @@ The script for job *delete_mfp_on_icp* uses the helm commands to delete the MF d
 It is often required to upgrade the MF on ICP whenever the latest version of MF for ICP is released.  This job can be used to upgrade MF and Analytics on ICP.
 This job needs the credentials of ICP cluster and the release name.
 
-![Upgrade MF on ICP Job Parameters]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/delete_mfp_on_icp_parameters.png)
+![Upgrade MF on ICP Job Parameters]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/upgrade_mfp_on_icp_parameters.png)
 
 This script uses the helm command to upgrade the deployment for MF and Analytics on ICP.
 
