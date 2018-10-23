@@ -1,15 +1,18 @@
 ---
+layout: redirect
 title: Mobile Foundation Bluemix Service - Beta
-date: 2016-03-31
-tags:
-- MobileFirst_Platform
-- Announcement
-- Bluemix
-- Mobile_Foundation
-version:
-- 8.0
-author:
-  name: Ajay Chebbi
+new_url:  /404/
+sitemap: false  
+#date: 2016-03-31
+#tags:
+#- MobileFirst_Platform
+#- Announcement
+#- Bluemix
+#- Mobile_Foundation
+#version:
+#- 8.0
+#author:
+#  name: Ajay Chebbi
 ---
 Last year IBM brought the IBM MobileFirst Platform server to Bluemix on docker containers. Today IBM introduce the next evolution in the journey - 
 the beta release of a Bluemix Service called [“Mobile Foundation”](https://console.ng.bluemix.net/catalog/?search=mobile%20foundation) . Mobile Foundation will 
