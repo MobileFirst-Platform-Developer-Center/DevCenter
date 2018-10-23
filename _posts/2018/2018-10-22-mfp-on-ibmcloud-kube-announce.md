@@ -21,7 +21,7 @@ Download the IBM Mobile Foundation for IBM Cloud Private deployment package (par
 * IBM Mobile Analytics Server
 * IBM Mobile Foundation Application Center
 
-To deploy the components on IBM Cloud Kubernetes Service and to run a sample application on Mobile Foundation, follow the instructions [here]({{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/).
+To deploy the components on IBM Cloud Kubernetes Service and to run a sample application on Mobile Foundation, follow the instructions [here]({{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-kubernetes-using-helm/).
 
 If you own existing licenses of Mobile Foundation v8.0, you can use the same license entitlement to deploy your apps on Mobile Foundation on IBM Cloud Private. To buy new licenses for Mobile Foundation v8.0, [contact our sales team](https://www.ibm.com/cloud/mobile-foundation).
 
