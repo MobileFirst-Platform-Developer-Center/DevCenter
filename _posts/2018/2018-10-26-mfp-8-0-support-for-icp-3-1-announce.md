@@ -1,6 +1,6 @@
 ---
 title: Support for Mobile Foundation v8.0 on IBM Cloud Private v3.1
-date: 2018-10-27
+date: 2018-10-26
 version:
 - 8.0
 tags:
