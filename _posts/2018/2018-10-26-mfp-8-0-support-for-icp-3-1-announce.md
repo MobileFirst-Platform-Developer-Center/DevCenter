@@ -9,7 +9,7 @@ tags:
 - Announcement
 - IBM_Cloud_Private
 author:
-  name: Krishna N Chandrasekar
+  name: Krishna K Chandrasekar
 ---
 We are pleased to announce the official support of IBM Mobile Foundation v8.0 on IBM Cloud Private (ICP) 3.1. The support for deploying IBM Mobile Foundation artifacts on ICP 3.1 is from iFix **8.0.0.0-MFPF-IF201810040631** onwards.
 
