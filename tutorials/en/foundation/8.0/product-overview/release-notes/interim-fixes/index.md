@@ -12,19 +12,19 @@ Interim fixes are cumulative. When you download the latest v8.0 interim fix, you
 
 Download and install the latest interim fix to obtain all of the fixes that are described in the following sections. If you install earlier fixes, you might not get all of the fixes described here.
 
-> For a list of iFix releases of {{ site.data.keys.product }} 8.0, [see these blog posts]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/).
+> For a list of iFix releases of {{ site.data.keys.product }} 8.0, [see here]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
 Where an APAR number is listed, you can confirm that an interim fix has that feature by searching the interim fix README file for that APAR number.
 
-### Features introduced with CD update 1 
+### Features introduced with CD update 1 (8.0.0.0-MFPF-IF201711230641-CDUpdate-01)
 
 ##### <span style="color:NAVY">**Support for Eclipse UI editor**</span>
 
-WYSIWYG editor is now provided in MobileFirst Studio’s Eclipse. Developers can design and implement UI for their Cordova applications using this UI editor. [Learn more](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/developing-ui/).
+Starting with CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, WYSIWYG editor is now provided in MobileFirst Studio’s Eclipse. Developers can design and implement UI for their Cordova applications using this UI editor. [Learn more](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/developing-ui/).
 
 ##### <span style="color:NAVY">**New adapters for building cognitive apps**</span>
 
-Mobile Foundation has introduced two new pre-built cognitive services adapters for the [*Watson Tone Analyzer*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonToneAnalyzer) and [*Language Translator*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonLanguageTranslator) services. These adapters are available to be downloaded and deployed from the *Download Center* in the Mobile Foundation Console.
+Starting with CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, Mobile Foundation has introduced two new pre-built cognitive services adapters for the [*Watson Tone Analyzer*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonToneAnalyzer) and [*Language Translator*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonLanguageTranslator) services. These adapters are available to be downloaded and deployed from the *Download Center* in the Mobile Foundation Console.
 
 ##### <span style="color:NAVY">**Dynamic App Authenticity**</span>
 
@@ -72,29 +72,29 @@ Starting with iFix (*8.0.0.0-MFPF-IF20170901-1903*), {{ site.data.keys.product }
 
 ##### <span style="color:NAVY">**Support for iOS 11 and iPhone X**</span>
 
-Mobile Foundation announced the support for iOS 11 and iPhone X on Mobile Foundation v8.0. For further details, read the blog post [IBM MobileFirst Platform Foundation Support for iOS 11 and iPhone X](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/18/mfp-support-for-ios11/).
+Starting with CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, Mobile Foundation announced the support for iOS 11 and iPhone X on Mobile Foundation v8.0. For further details, read the blog post [IBM MobileFirst Platform Foundation Support for iOS 11 and iPhone X](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/18/mfp-support-for-ios11/).
 
 ##### **<span style="color:NAVY">Support for Android Oreo</span>**
 
-Mobile Foundation announced the support for Android Oreo with this [blog post](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/22/mobilefirst-android-Oreo/). Both native Android apps and hybrid/Cordova apps, built on older versions of Android, work as expected on Android Oreo when the device is upgraded through an OTA.
+Starting with CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, Mobile Foundation announced the support for Android Oreo with this [blog post](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/22/mobilefirst-android-Oreo/). Both native Android apps and hybrid/Cordova apps, built on older versions of Android, work as expected on Android Oreo when the device is upgraded through an OTA.
 
 ##### <span style="color:NAVY">**Mobile Foundation can now be deployed on Kubernetes clusters**</span>
 
-Mobile Foundation user can now deploy Mobile Foundation, which includes the Mobile Foundation Server, Mobile Analytics Server, and the Application Center, on Kubernetes clusters. The deployment package has been updated to support Kubernetes deployment. Read the [announcement](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/09/mobilefoundation-on-kube/).
+Starting with CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, Mobile Foundation user can now deploy Mobile Foundation, which includes the Mobile Foundation Server, Mobile Analytics Server, and the Application Center, on Kubernetes clusters. The deployment package has been updated to support Kubernetes deployment. Read the [announcement](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/09/mobilefoundation-on-kube/).
 
-### Features introduced with CD update 2
+### Features introduced with CD update 2 (8.0.0.0-MFPF-IF201807180449-CDUpdate-02)
 
 ##### <span style="color:NAVY">**Support for React Native development**</span>
 
-Mobile Foundation [announces]({{site.baseurl}}/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/) the support for React Native development with the availability of IBM Mobile Foundation SDK for React Native apps. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/reactnative-tutorials/).
+Starting with the CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), Mobile Foundation [announces]({{site.baseurl}}/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/) the support for React Native development with the availability of IBM Mobile Foundation SDK for React Native apps. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/reactnative-tutorials/).
 
 ##### <span style="color:NAVY">**Automated synchronization of JSONStore collections with CouchDB databases for iOS and Cordova SDK**</span>
 
-Starting with this CD Update, using MobileFirst iOS SDK and Cordova SDK, you can automate the synchronization of data between a JSONStore Collection on a device with any flavour of CouchDB database, including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). For more information on this feature, read this [blog post]({{site.baseurl}}/blog/2018/07/24/jsonstoresync-couchdb-databases-ios-and-cordova/).
+Starting with the CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), using MobileFirst iOS SDK and Cordova SDK, you can automate the synchronization of data between a JSONStore Collection on a device with any flavour of CouchDB database, including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). For more information on this feature, read this [blog post]({{site.baseurl}}/blog/2018/07/24/jsonstoresync-couchdb-databases-ios-and-cordova/).
 
 ##### <span style="color:NAVY">**Introducing Refresh tokens**</span>
 
-Mobile Foundation now introduces special kind of tokens called Refresh tokens that can be used to request a new access token.  [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
+Starting with the CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), Mobile Foundation now introduces special kind of tokens called Refresh tokens that can be used to request a new access token.  [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
 
 ##### <span style="color:NAVY">**Support for Cordova v8 and Cordova Android v7**</span>
 
