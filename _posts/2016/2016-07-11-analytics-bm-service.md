@@ -1,21 +1,24 @@
 ---
+layout: redirect
 title: Configuring Mobile Analytics and Mobile Foundation Bluemix services
-date: 2018-05-17
-tags:
-- MobileFirst_Foundation
-- Mobile_Foundation
-- Mobile_Analytics
-- Analytics
-- Bluemix
-- IBM_Cloud
-- IBM_Cloud_Private
+new_url:  /404/
+#date: 2018-05-17
+#tags:
+#- MobileFirst_Foundation
+#- Mobile_Foundation
+#- Mobile_Analytics
+#- Analytics
+#- Bluemix
+#- IBM_Cloud
+#- IBM_Cloud_Private
 
-version:
-- 8.0
-author:
-  name: Ajay Chebbi
-additional_authors:
-- John Gerken
+#version:
+#- 8.0
+#author:
+#  name: Ajay Chebbi
+#additional_authors:
+#- John Gerken
+sitemap: false
 ---
 > **Note:** Updated for changes after Mobile Analytics service went GA.
 >
