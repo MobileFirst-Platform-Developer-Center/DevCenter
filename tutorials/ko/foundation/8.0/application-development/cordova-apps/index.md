@@ -220,7 +220,7 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 {: #cordova-application-security }
 {{ site.data.keys.product_full }}은 Cordova 앱을 보호하는 데 도움이 되는 보안 기능을 제공합니다.
 
-크로스 플랫폼 앱에 포함된 대부분의 컨텐츠는 기본 앱의 컨텐츠보다 쉽게 권한 없는 사용자에 의해 수정될 수 있습니다. 크로스 플랫폼 앱에 포함된 대부분의 공통 컨텐츠가 읽을 수 있는 형식으로 되어 있으므로 IBM MobileFirst Foundation에는 크로스 플랫폼 Cordova 앱에 보다 높은 수준의 보안을 제공할 수 있는 기능이 포함되어 있습니다.
+크로스 플랫폼 앱에 포함된 대부분의 컨텐츠는 네이티브 앱의 컨텐츠보다 쉽게 권한 없는 사용자에 의해 수정될 수 있습니다. 크로스 플랫폼 앱에 포함된 대부분의 공통 컨텐츠가 읽을 수 있는 형식으로 되어 있으므로 IBM MobileFirst Foundation에는 크로스 플랫폼 Cordova 앱에 보다 높은 수준의 보안을 제공할 수 있는 기능이 포함되어 있습니다.
 
 > [{{ site.data.keys.product_adj }} 보안 프레임워크](../../authentication-and-security)에 대해 자세히 알아보십시오.
 
@@ -390,7 +390,10 @@ WebView의 자원(HTML 및 JavaScript 파일)은 **[myapp]\www** 폴더에 있�
 
 ## Android에 대한 CrossWalk 지원
 {: #crosswalk-support-for-android }
-Android 플랫폼용 Cordova 애플리케이션은 기본 WebView를 [CrossWalk WebView](https://crosswalk-project.org/)로 대체할 수 있습니다.  
+Android 플랫폼용 Cordova 애플리케이션은 기본 WebView를 [CrossWalk WebView](https://crosswalk-project.org/)로 대체할 수 있습니다.
+
+> **참고:** CrossWalk 프로젝트는 커뮤니티 및 해당 유지보수 담당자가 [더 이상 유지보수하지 않습니다](https://crosswalk-project.org/blog/crosswalk-final-release.html). 따라서 CrossWalk의 버그나 문제가 CrossWalk WebView의 MobileFirst SDK 작동에 영향을 줄 수 있습니다. 그러므로 애플리케이션에서 CrossWalk WebView를 사용하지 않는 것이 좋습니다. 
+
 이를 추가하려면 다음을 수행하십시오.
 
 1. **명령행**에서 다음 명령을 실행하십시오.

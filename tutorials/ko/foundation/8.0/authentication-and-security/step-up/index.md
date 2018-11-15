@@ -151,8 +151,8 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ## 인증 확인 핸들러
 {: #challenge-handlers }
-클라이언트 측에서, 여러 단계를 핸들하기 위한 특수 API는 없습니다. 오히려 각 인증 핸들러는 자체 인증 확인을 핸들합니다. 
-이 예제에서 두 개의 별도 인증 확인 핸들러를 등록해야 합니다. `StepUpUserLogin`에서 인증 확인을 핸들하기 위한 하나와 `StepUpPincode`에서 인증 확인을 핸들하기 위한 하나입니다.
+클라이언트 측에서, 여러 단계를 처리하기 위한 특수 API는 없습니다. 오히려 각 인증 핸들러는 자체 인증 확인을 처리합니다. 
+이 예제에서 두 개의 별도 인증 확인 핸들러를 등록해야 합니다. `StepUpUserLogin`에서 인증 확인을 처리하기 위한 하나와 `StepUpPincode`에서 인증 확인을 처리하기 위한 하나입니다.
 
 <img alt="단계별 샘플 애플리케이션" src="sample_application.png" style="float:right"/>
 ## 샘플 애플리케이션

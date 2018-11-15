@@ -376,7 +376,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 I
                 <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다.</p>
                 <ol>
                     <li><b>initenv.sh – IBM Cloud에 로그인</b><br />
-IBM Containers에서 {{ site.data.keys.product }}를 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
+                    IBM Containers에서 {{ site.data.keys.product }}를 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -475,7 +475,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
                     </li>
                     <li><b>initenv.sh(선택사항) – IBM Cloud에 로그인</b><br />
-                      이 단계는 dashDB 서비스 인스턴스를 사용할 수 있는 조직과 영역 이외의 조직과 영역에서 컨테이너를 작성해야 하는 경우에만 필수입니다. 값이 예인 경우에는 컨테이너가 작성되고 시작되어야 하는 새 조직과 영역으로 <b>initenv.properties</b>를 업데이트하고 <b>initenv.sh</b> 스크립트를 다시 실행하십시오.</li>
+                    이 단계는 dashDB 서비스 인스턴스를 사용할 수 있는 조직과 영역 이외의 조직과 영역에서 컨테이너를 작성해야 하는 경우에만 필수입니다. 값이 예인 경우에는 컨테이너가 작성되고 시작되어야 하는 새 조직과 영역으로 <b>initenv.properties</b>를 업데이트하고 <b>initenv.sh</b> 스크립트를 다시 실행하십시오.</li>
 
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -486,7 +486,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
                     {{ site.data.keys.mf_app_center }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오.
                     목록은 이미지 이름, 작성 날짜, ID를 포함합니다.
 
-다음을 실행하십시오.
+                        다음을 실행하십시오.
 {% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
@@ -526,7 +526,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                     <li><b>startappcenter.sh - IBM Container에서 이미지 실행</b><br/>
                     <b>startappcenter.sh</b> 스크립트는 IBM Container에서 {{ site.data.keys.mf_app_center }} 이미지를 실행하는 데 사용됩니다. 또한 <b>SERVER_IP</b> 특성에서 구성한 공용 IP에 이미지를 바인드합니다.
 
-다음을 실행하십시오.
+                        다음을 실행하십시오.
 {% highlight bash %}
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
@@ -611,7 +611,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
                     <li><b>startappcentergroup.sh - IBM Container 그룹에서 이미지 실행</b><br/>
                     <b>startappcentergroup.sh</b> 스크립트는 IBM Container 그룹에서 {{ site.data.keys.mf_app_center }} 이미지를 실행하는 데 사용됩니다. 또한 <b>SERVER_CONTAINER_GROUP_HOST</b> 특성에서 구성한 호스트 이름에 이미지를 바인드합니다.
 
-다음을 실행하십시오.
+                        다음을 실행하십시오.
 {% highlight bash %}
 ./startappcentergroup.sh args/startappcentergroup.properties
 {% endhighlight %}
@@ -767,7 +767,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
                 <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다.</p>
                 <ol>
                     <li><b>initenv.sh – IBM Cloud에 로그인</b><br />
-IBM Containers에서 {{ site.data.keys.mf_analytics }}를 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
+                    IBM Containers에서 {{ site.data.keys.mf_analytics }}를 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -866,7 +866,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                     <li><b>startanalytics.sh - IBM Container에서 이미지 실행</b><br />
                     <b>startanalytics.sh</b> 스크립트는 IBM Container에서 {{ site.data.keys.mf_analytics }} 이미지를 실행하는 데 사용됩니다. 또한 <b>ANALYTICS_IP</b> 특성에서 구성한 공용 IP에 이미지를 바인드합니다.</li>
 
-다음을 실행하십시오.
+                    다음을 실행하십시오.
 {% highlight bash %}
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
@@ -965,7 +965,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                     <li><b>startanalyticsgroup.sh - IBM Container 그룹에서 이미지 실행</b><br />
                         <b>startanalyticsgroup.sh</b> 스크립트는 IBM Container 그룹에서 {{ site.data.keys.mf_analytics }} 이미지를 실행하는 데 사용됩니다. 또한 <b>ANALYTICS_CONTAINER_GROUP_HOST</b> 특성에서 구성한 호스트 이름에 이미지를 바인드합니다.
 
-다음을 실행하십시오.
+                        다음을 실행하십시오.
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
@@ -1136,7 +1136,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
             <ol>
                 <li><b>initenv.sh – IBM Cloud에 로그인</b><br />
-IBM Containers에서 {{ site.data.keys.product }}을 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
+                    IBM Containers에서 {{ site.data.keys.product }}을 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -1381,7 +1381,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                     </div>
                 <li><b>startservergroup.sh - IBM Container 그룹에서 이미지 실행</b><br />
                     <b>startservergroup.sh</b> 스크립트는 IBM Container 그룹에서 {{ site.data.keys.mf_server }} 이미지를 실행하는 데 사용됩니다. 또한 <b>SERVER_CONTAINER_GROUP_HOST</b> 특성에서 구성한 호스트 이름에 이미지를 바인드합니다.</li>
-다음을 실행하십시오.
+                    다음을 실행하십시오.
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}

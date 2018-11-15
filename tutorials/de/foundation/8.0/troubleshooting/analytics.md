@@ -152,3 +152,9 @@ Fügen Sie die folgende Konfiguration zur Liberty-Datei <code>server.xml</code> 
     </ul>
   </div>
 </div>
+
+## Zusätzliche Referenzinformationen
+{: #additional_references}
+
+* [Bewährte Verfahren für die Einrichtung eines MobileFirst-Analytics-Produktionsclusters](../../analytics/bestpractices-prod/)
+* [Häufig gestellte Fragen zu {{ site.data.keys.mf_analytics_server }}](../../analytics/bestpractices-prod/faq/)

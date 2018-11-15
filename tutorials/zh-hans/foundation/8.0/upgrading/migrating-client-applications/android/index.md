@@ -131,7 +131,7 @@ scope)</code></li></ul>{:/} | 使用 [`AuthorizationManager`](http://www.ibm.com
 | `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 改用新的 `WLResourceRequest.getHeaders(String headerName)` API。 |
 | `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
 | `WLResourceRequest.setHeader(org.apache.http.Header header)` | 改用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
-| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | 替换为 `java.net.CookieStore getCookieStore WLClient.getCookieStore()`<br/><br/> `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
+| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | 替换为 `ClearableCookieJar WLClient.getPersistentCookies()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 无替换。 MFP 客户机允许循环重定向。 |
 | {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>，所有采用 <code>WLHttpResponseListener</code> 的方法：<ul><li><code>WLResourceRequest.send(java.util.HashMap
 formParameters,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(org.json.JSONObject json,

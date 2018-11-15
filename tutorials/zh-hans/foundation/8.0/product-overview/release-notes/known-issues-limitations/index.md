@@ -289,3 +289,5 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 {:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
 如果在将 {{ site.data.keys.product_adj }} Cordova SDK 添加到项目时修改 Cordova 应用程序的缺省行为（如覆盖后退按钮行为），可能会导致提交时应用程序被 Google Play Store 拒绝。
 如果在提交到 Google Play Store 时遇到其他失败情况，可以联系 Google 支持人员。
+
+>**注：**如果您使用的是 2018 年 1 月的 MobileFirst 8.0 iFix 发行版本或更高版本，建议您将服务器和客户机更新至同一版本。

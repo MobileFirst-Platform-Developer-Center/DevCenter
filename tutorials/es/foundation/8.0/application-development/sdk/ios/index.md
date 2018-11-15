@@ -78,7 +78,9 @@ Cree un proyecto Xcode o utilice uno existente (Swift o Objective-C).
 
 
       ```xml
-      use_frameworks!
+use_frameworks!
+
+
 
       platform :ios, 8.0
       target "Xcode-project-target" do
@@ -177,8 +179,8 @@ También es posible añadir el SDK de {{ site.data.keys.product }}:
 
 
     ```bash
-    mfpdev app register
-    ```
+mfpdev app register
+```
     - Si se utiliza un servidor remoto, [utilice el mandato `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para añadirlo.
 
 

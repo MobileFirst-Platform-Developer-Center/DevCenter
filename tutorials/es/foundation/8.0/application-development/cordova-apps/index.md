@@ -424,8 +424,8 @@ La vista previa del Navegador simple, los recursos web de la aplicación se repr
 
 
     ```bash
-    mfpdev app preview
-    ```
+mfpdev app preview
+```
 
 2. Seleccione una opción de vista previa: 
 
@@ -493,7 +493,10 @@ El editor IDE estará ahora enlazado a los archivos `d.ts` relevantes y los elem
 
 ## Soporte de CrossWalk para Android 
 {: #crosswalk-support-for-android }
-En las aplicaciones de Cordova para la plataforma Android se pueden sustituir sus WebView predeterminadas con [CrossWalk WebView](https://crosswalk-project.org/).  
+En las aplicaciones de Cordova para la plataforma Android se pueden sustituir sus WebView predeterminadas con [CrossWalk WebView](https://crosswalk-project.org/).
+
+> **Nota:** El proyecto de CrossWalk [ya no está mantenido](https://crosswalk-project.org/blog/crosswalk-final-release.html) por la comunidad ni sus mantenedores. Por lo tanto, no hay ninguna opción de que haya errores o problemas en CrossWalk que puedan afectar al funcionamiento de los SDK de MobileFirst en un CrossWalk WebView. Por lo tanto, no se recomienda utilizar CrossWalk WebViews en sus aplicaciones. 
+
 Para añadirlo:
 
 

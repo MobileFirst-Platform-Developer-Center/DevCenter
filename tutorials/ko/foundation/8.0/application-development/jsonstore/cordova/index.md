@@ -395,8 +395,8 @@ WL.JSONStore.get(collectionName).getValue(key).then(function (result) {
 JSONStoreSwift 프로젝트에는 JSONStore API 세트를 이용하는 Cordova 애플리케이션이 있습니다.  
 JavaScript 어댑터 Maven 프로젝트에서도 사용 가능합니다.
 
-Cordova 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80)하십시오.  
-어댑터 Maven 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80)하십시오.  
+Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80)하십시오.  
+어댑터 Maven 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80)하십시오.  
 
 ### 샘플 사용법
 {: #sample-usage }

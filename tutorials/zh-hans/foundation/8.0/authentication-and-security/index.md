@@ -138,6 +138,108 @@ Pragma: no-cache
     </div>
 </div>
 
+### 刷新令牌
+{: #refresh-tokens}
+
+“刷新令牌”是一种特殊类型的令牌，可用于在访问令牌到期时获取新的访问令牌。要请求新的访问令牌，可以提供有效的刷新令牌。刷新令牌是长期令牌，与访问令牌相比，它们在更长的时间段内保持有效。
+
+应用程序使用刷新令牌时必须谨慎，因为刷新令牌可以允许用户永久保持已认证。社交媒体应用程序、电子商务应用程序、产品目录浏览和此类实用程序应用程序（其中应用程序提供者不定期对用户进行认证）可以使用刷新令牌。经常要求用户认证的应用程序必须避免使用刷新令牌。  
+
+#### MobileFirst 刷新令牌
+{: #mfp-refresh-token}
+
+MobileFirst 刷新令牌是数字签名的实体，如访问令牌，用于描述客户机的授权许可权。刷新令牌可用于获取相同作用域的新访问令牌。在针对特定作用域授予客户机授权请求且认证客户机后，授权服务器的令牌端点会向客户机发送包含所请求的访问令牌和刷新令牌的 HTTP 响应。在访问令牌到期后，客户机将刷新令牌发送到授权服务器的令牌端点以获取一组新的访问令牌和刷新令牌。
+
+**结构**
+
+与 MobileFirst 访问令牌类似，MobileFirst 刷新令牌包含以下信息：
+* **客户机标识**：客户机的唯一标识。
+* **作用域**：授予令牌的作用域（请参阅 OAuth 作用域）。 此作用域不包括必需的应用程序作用域。
+* **令牌到期时间**：令牌无效（到期）的时间（秒）。
+
+#### 令牌到期
+{: #token-expiration}
+
+刷新令牌的令牌到期时间段比典型的访问令牌到期时间段长。一旦授予刷新令牌，刷新令牌将一直保持有效直至到期。在此有效期内，客户机可以使用刷新令牌获取一组新的访问令牌和刷新令牌。刷新令牌的固定到期时间段为 30 天。每次客户机成功接收到一组新的访问令牌和刷新令牌时，刷新令牌到期都会重置，从而为客户机提供永不过期令牌体验。访问令牌到期规则保持相同，如**访问令牌**部分中所解释。
+
+<div class="panel-group accordion" id="configuration-explanation-rt" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="refresh-token-expiration">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>启用刷新令牌功能</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
+            <div class="panel-body">
+            <p>可以分别在客户机端和服务器端使用以下属性来启用刷新令牌功能。</p>
+            <b>客户机端属性</b><br/>
+
+            <i>文件名</i>：mfpclient.properties<br/>
+            <i>属性名称</i>：wlEnableRefreshToken<br/>
+            <i>属性值</i>：true<br/>
+
+            例如，<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>服务器端属性</b><br/>
+
+            <i>文件名</i>：server.xml<br/>
+            <i>属性名称</i>：mfp.security.refreshtoken.enabled.apps<br/>
+            <i>属性值</i>：<i>“;”分隔的应用程序捆绑软件标识</i><br/><br/>
+
+            <p>例如，</p><br/>
+            {% highlight xml %}
+            <jndiEntry jndiName="mfp/mfp.security.refreshtoken.enabled.apps" value='"com.sample.android.myapp1;com.sample.android.myapp2"'/>
+            {% endhighlight %}
+
+            <p>对不同的平台使用不同的捆绑软件标识。</p>
+
+                                    <br/>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>结束部分</b></a>
+            </div>
+                                </div>
+                            </div>
+                        </div>
+
+<div class="panel-group accordion" id="response-refresh-token" role="tablist">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="response-structure-rt">
+        <h4 class="panel-title">
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>刷新令牌响应结构</b></a>
+        </h4>
+    </div>
+
+    <div id="collapse-response-structure-rt" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure-rt">
+      <div class="panel-body">
+        <p>以下是来自授权服务器的有效刷新令牌响应的示例：</p>
+
+        {% highlight json %}
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+{"token_type": "Bearer",
+            "expires_in": 3600,
+            "access_token": "yI6ICJodHRwOi8vc2VydmVyLmV4YW1",
+            "scope": "scopeElement1 scopeElement2",
+            "refresh_token": "yI7ICasdsdJodHRwOi8vc2Vashnneh "
+        }
+        {% endhighlight %}
+
+        <p>除了作为访问令牌响应结构的一部分解释的其他属性对象之外，刷新令牌响应还具有额外的属性对象 <code>refresh_token</code>。</p>
+
+        <br/>
+              <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>结束部分</b></a>
+            </div>
+          </div>
+        </div>
+</div>
+
+
+>**注：**与访问令牌相比，刷新令牌是长期有效令牌。因此，必须谨慎使用刷新令牌功能。不需要定期进行用户认证的应用程序是使用刷新令牌功能的理想选择。目前，MobileFirst 仅在 Android 平台上支持刷新令牌功能。建议对 Android 和 iOS 应用程序使用不同的捆绑软件标识。
+
+
 ### 安全性检查
 {: #security-checks }
 

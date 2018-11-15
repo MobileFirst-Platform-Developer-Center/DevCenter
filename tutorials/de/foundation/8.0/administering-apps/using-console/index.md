@@ -325,14 +325,14 @@ und wählen Sie **Produktinfo** aus. Klicken Sie auf **Zusätzliche Supportinfor
 **Prüfprotokoll herunterladen**.
 
 
-| Feldname| Beschreibung |
+|Feldname|Beschreibung |
 |------------|-------------|
-| Timestamp	 | Datum und Zeit der Erstellung des Eintrags|
-| Type	     | Typ der Operation (siehe folgende Liste der Operationstypen für gültige Werte)|
-| User	     | Benutzername (**username**) des angemeldeten Benutzers|
-| Outcome	 | Ergebnis der Operation (gültige Werte: SUCCESS, ERROR, PENDING)|
-| ErrorCode	 | Wenn das Ergebnis ERROR lautet, gibt ErrorCode den genauen Fehler an.|
-| Runtime	 | Name des mit der Operation verbundenen {{ site.data.keys.product_adj }}-Projekts|
+|Timestamp	 |Datum und Zeit der Erstellung des Eintrags|
+|Type	     |Typ der Operation (siehe folgende Liste der Operationstypen für gültige Werte)|
+|User	     |Benutzername (**username**) des angemeldeten Benutzers|
+|Outcome	 |Ergebnis der Operation (gültige Werte: SUCCESS, ERROR, PENDING)|
+|ErrorCode	 |Wenn das Ergebnis ERROR lautet, gibt ErrorCode den genauen Fehler an.|
+|Runtime	 |Name des mit der Operation verbundenen {{ site.data.keys.product_adj }}-Projekts|
 
 In der folgenden Liste finden Sie die gültigen Werte für
 den Operationstyp (im Feld Type).

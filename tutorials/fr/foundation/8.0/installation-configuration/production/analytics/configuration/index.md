@@ -264,6 +264,6 @@ Dans l'exemple d'instructions suivant, ne configurez pas le noeud en tant que no
 {: #circuit-breakers }
 Découvrez les disjoncteurs Elasticsearch.
 
-Elasticsearch contient plusieurs disjoncteurs qui sont utilisés pour empêcher les opérations de générer des **erreurs de mémoire insuffisante**). Par exemple, si une requête qui envoie des données à {{ site.data.keys.mf_console }} utilise 40 % du segment de mémoire de la machine virtuelle Java, le disjoncteur est déclenché, une exception est émise, et la console reçoit des données vides.
+Elasticsearch contient plusieurs disjoncteurs qui sont utilisés pour empêcher les opérations de générer des **erreurs de mémoire insuffisante**. Par exemple, si une requête qui envoie des données à {{ site.data.keys.mf_console }} utilise 40 % du segment de mémoire de la machine virtuelle Java, le disjoncteur est déclenché, une exception est émise, et la console reçoit des données vides.
 
 Elasticsearch dispose également de protections permettant d'éviter la saturation du disque. Si 90 % du disque sur lequel le magasin de données Elasticsearch écrit les données est rempli, le noeud Elasticsearch en informe le noeud maître dans le cluster. Le noeud maître dirige alors les nouvelles écritures de document ailleurs que vers le noeud presque plein. Si votre cluster ne comporte qu'un noeud, aucun noeud secondaire sur lequel les données peuvent être écrites n'est disponible. Par conséquent, les données ne sont pas écrites et sont perdues.

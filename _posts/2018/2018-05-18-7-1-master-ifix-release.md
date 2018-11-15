@@ -12,13 +12,115 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *7.1.0.0-MFPF-IF201809121702* has been released for MobileFirst Foundation 7.1, dated **September 12th, 2018**.
+A new iFix *7.1.0.0-MFPF-IF201810261701* has been released for MobileFirst Foundation 7.1, dated **October 26th, 2018**.
 <br/>
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201810261701" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201810261701">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201810261701" href="#collapse-mfp-ifix-IF201810261701" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201810261701"><b>iFix 7.1.0.0-MFPF-IF201810261701</b> <span class="label label-primary">latest</span></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201810261701" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201810261701">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>October 26th, 2018</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH03712</b> MOBILEFIRST CAMERA WITH ANDROID 8: ERROR CAPTURING IMAGE - NOMEDIA STORAGE FOUND AND REMOVE R CLASSES FROM ANDROID SDK<br/>
+            <b>PH02233</b> MFP SERVER v7.1 ADDS THE NOTIFICATION TO PUSH QUEUE EVEN WHEN RETRY-AFTER EQUAL TO 0<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>     
+
+## Previous iFixes for MobileFirst Foundation 7.1
+
+IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
+*List below includes iFixes released in 2018 only.*
+
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201810091354" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201810091354">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201810091354" href="#collapse-mfp-ifix-IF201810091354" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201810091354"><b>iFix 7.1.0.0-MFPF-IF201810091354</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201810091354" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201810091354">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>October 9th, 2018</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH02730</b>  APPSTORE ISSUES AN ALERT UPON UPLOADING THE NEW BUILD OF IOS.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>     
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201810081403" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201810081403">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201810081403" href="#collapse-mfp-ifix-IF201810081403" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201810081403"><b>iFix 7.1.0.0-MFPF-IF201810081403</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201810081403" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201810081403">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>October 8th, 2018</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+            <blockquote>This iFix adds support for the following:
+            <ul><li>Android API level 26. Android API level 26 is required for any updates to the Google Play Store starting November 1. Read more about this <a href="{{ site.baseurl }}/blog/2018/09/13/IBM-MobileFirst-API-26-Android/">here</a>.</li>
+            <li>FCM Support for Android. Read more about this <a href="{{ site.baseurl }}/blog/2018/10/09/FCM-Support-in-MFP-7.1-Android/">here</a>.</li></ul>
+
+            </blockquote>
+            <br/>
+            <b>PH03655</b>  FCM CLIENT SIDE SUPPORT FOR FOR MOBILEFIRST FOUNDATION V7.1.<br/>
+            <b>PH03273</b>  CURRENCY UPGRADE TO LIBERTY (18.0.0.2) AND IBM JAVA 8.0.5.17.<br/>
+            <b>PH03139</b>  ANDROID APP CRASH WITH API LEVEL 26.<br/>
+            <b>PH02932</b> OPENSSL HAS RECEIVED SECURITY UPDATES 1.0.2P AND MUST BE UPGRADED TO THE LATEST VERSION.<br/>
+            <b>PI58213</b> TAG BASED PUSH NOTIFICATIONS ARE NOT WORKING WITH JAVA PUSH API FOR IOS NATIVE.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>  
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201809180751" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201809180751">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201809180751" href="#collapse-mfp-ifix-IF201809180751" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201809180751"><b>iFix 7.1.0.0-MFPF-IF201809180751</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201809180751" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201809180751">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>September 18th, 2018</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+            <blockquote>This iFix includes feedback endpoint changes for FCM.
+            </blockquote>
+            <br/>
+            <b>PI96632</b> ADDING SUPPORT FOR FCM END-POINT.
+
+            </div>
+        </div>      
+    </div>
+</div>     
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201809121702" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201809121702">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201809121702" href="#collapse-mfp-ifix-IF201809121702" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201809121702"><b>iFix 7.1.0.0-MFPF-IF201809121702</b> <span class="label label-primary">latest</span></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201809121702" href="#collapse-mfp-ifix-IF201809121702" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201809121702"><b>iFix 7.1.0.0-MFPF-IF201809121702</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201809121702" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201809121702">
@@ -36,13 +138,7 @@ A new iFix *7.1.0.0-MFPF-IF201809121702* has been released for MobileFirst Found
             </div>
         </div>      
     </div>
-</div>     
-
-## Previous iFixes for MobileFirst Foundation 7.1
-
-IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
-*List below includes iFixes released in 2018 only.*
-
+</div>    
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201808161052" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201808161052">

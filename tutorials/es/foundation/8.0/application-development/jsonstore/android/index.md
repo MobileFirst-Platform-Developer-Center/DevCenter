@@ -60,7 +60,7 @@ Para obtener más información sobre las características opcionales que es posi
 
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
@@ -80,7 +80,7 @@ Utilice `getCollectionByName` para crear un accesor a la recopilación.
 Es necesario llamar a `openCollections` antes de llamar a `getCollectionByName`.
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -98,7 +98,7 @@ La variable `collection` se puede utilizar ahora para realizar operaciones en la
 Utilice `addData` para almacenar datos como documentos dentro de la recopilación. 
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -120,7 +120,7 @@ Utilice `findAllDocuments` para recuperar todos los documentos dentro de una rec
 Utilice `findDocumentById` para buscar documentos según su identificador exclusivo de documento. 
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreQueryPart queryPart = new JSONStoreQueryPart();
@@ -146,7 +146,7 @@ El campo que se utiliza para realizar la sustitución es `_id,` el identificador
 
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -172,7 +172,7 @@ Para obtener más información, consulte la sección **Integración de adaptador
 
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -192,7 +192,7 @@ Utilice `removeCollection` para suprimir todos los documentos que se almacenan d
 Esta operación es similar a descartar una tabla en términos de una base de datos.
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -213,7 +213,7 @@ Utilice `destroy` para eliminar los siguientes datos:
 * Todos los artefactos de seguridad y metadatos de JSONStore - Consulte **Seguridad** más adelante en esta guía de aprendizaje 
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   WLJSONStore.getInstance(context).destroy();
   // handle success
@@ -242,7 +242,7 @@ Si interpreta `openCollections` como una función de inicio de sesión, puede in
 Utilice `changePassword` para cambiar la contraseña.
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
@@ -265,7 +265,7 @@ La función `openCollections` puede tomar un objeto de opciones con un nombre de
 Si no se proporciona un nombre de usuario, el predeterminado es ""**jsonstore**"".
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);

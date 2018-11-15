@@ -130,7 +130,7 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 <!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
 ### 5. Testando o aplicativo
 {: #5-testing-the-application }
-1. No Xamarin Studio, selecione o arquivo `mfpclient.properties` e edite as propriedades **protocol**, **host** e **port** com os valores corretos para seu {{ site.data.keys.mf_server }}. 
+1. No Xamarin Studio, selecione o arquivo `mfpclient.properties` e edite as propriedades **protocol**, **host** e **port** com os valores corretos para seu {{ site.data.keys.mf_server }}.
     * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**,
 **localhost** e **9080**.
     * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.

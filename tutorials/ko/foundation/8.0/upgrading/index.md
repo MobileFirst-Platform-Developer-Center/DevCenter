@@ -16,7 +16,7 @@ weight: 12
 * [{{ site.data.keys.product_full }} 8.0으로 마이그레이션해야 하는 이유](#why-migrate-to-ibm-mobilefirst-foundation-80)
 * [개발 및 배치 프로세스의 변경사항](#changes-in-the-development-and-deployment-process)
 * [Cordova 또는 하이브리드 애플리케이션 마이그레이션](#migrating-a-cordova-or-hybrid-application)
-* [고유 애플리케이션 마이그레이션](#migrating-a-native-application)
+* [네이티브 애플리케이션 마이그레이션](#migrating-a-native-application)
 * [어댑터 및 보안 마이그레이션](#migrating-adapters-and-security)
 * [푸시 알림 지원 마이그레이션](#migrating-push-notifications-support)
 * [서버 데이터베이스 및 서버 구조의 변경사항](#changes-in-the-server-databases-and-in-the-server-structure)
@@ -80,17 +80,17 @@ Cordova 또는 하이브리드 앱을 마이그레이션하려면 다음을 수�
 
 > **참고:** 푸시 알림 지원을 마이그레이션하려면 클라이언트 측 및 서버 측 변경사항이 필요하며, 이에 대해서는 나중에 푸시 알림 지원 마이그레이션에서 설명합니다.
 
-## 고유 애플리케이션 마이그레이션
+## 네이티브 애플리케이션 마이그레이션
 {: #migrating-a-native-application }
-고유 애플리케이션을 마이그레이션하려면 다음 단계를 수행해야 합니다.
+네이티브 애플리케이션을 마이그레이션하려면 다음 단계를 수행해야 합니다.
 
 * 계획 용도로는 기존 프로제트에서 마이그레이션 지원 도구를 실행하십시오. 생성된 보고서를 검토하고 마이그레이션에 필요한 사항을 평가하십시오.
 * {{ site.data.keys.product }} v8.0에서 SDK를 사용하여 프로젝트를 업데이트하십시오.
 * v8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체하십시오. 마이그레이션 지원 도구는 코드를 스캔하고 대체할 API의 보고서를 생성할 수 있습니다.
 * 클래식 보안 모델을 사용하는 클라이언트 자원에 대한 호출을 수정하십시오. 예를 들어, 더 이상 사용되지 않는 `invokeProcedure` 대신 `WLResourceRequest` API를 사용하십시오.
-    * 고유 iOS 앱의 마이그레이션에 대한 자세한 정보는 [기존 고유 iOS 애플리케이션 마이그레이션](migrating-client-applications/ios)을 참조하십시오.
-    * 고유 Android 앱의 마이그레이션에 대한 자세한 정보는 [기존 고유 Android 애플리케이션 마이그레이션](migrating-client-applications/android)을 참조하십시오.
-    * 고유 Windows 앱의 마이그레이션에 대한 자세한 정보는 [기존 고유 Windows 애플리케이션 마이그레이션](migrating-client-applications/windows)을 참조하십시오.
+    * 네이티브 iOS 앱의 마이그레이션에 대한 자세한 정보는 [기존 네이티브 iOS 애플리케이션 마이그레이션](migrating-client-applications/ios)을 참조하십시오.
+    * 네이티브 Android 앱의 마이그레이션에 대한 자세한 정보는 [기존 네이티브 Android 애플리케이션 마이그레이션](migrating-client-applications/android)을 참조하십시오.
+    * 네이티브 Windows 앱의 마이그레이션에 대한 자세한 정보는 [기존 네이티브 Windows 애플리케이션 마이그레이션](migrating-client-applications/windows)을 참조하십시오.
 
 > **참고:** 푸시 알림 지원을 마이그레이션하려면 클라이언트 측 및 서버 측 변경사항이 필요하며, 이에 대해서는 나중에 [푸시 알림 지원 마이그레이션](#migrating-push-notifications-support)에서 설명합니다.
 

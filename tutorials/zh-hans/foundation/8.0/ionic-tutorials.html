@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Developing for Ionic
+title: Ionic 开发
 show_disqus: false
 use_dropdown: false
 print_pdf: false
@@ -24,59 +24,59 @@ indexed: false
 }
 </style>
 </head>
-<br>
-Develop your Ionic applications by following the tutorials below: set-up your development environment, experience the product and add value by integrating with {{ site.data.keys.product }} 8.0 offerings.<br/><br/>
+<br/>
+请按照以下教程来开发您的 Ionic 应用程序：设置开发环境、体验产品以及通过与 {{ site.data.keys.product }} 8.0 产品集成来增加价值。<br/><br/>
 
 <div class="container-fluid">
 <ul class="nav nav-pills" id="quickstartTab">
   <li class="nav-item">
-    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="basic" aria-selected="true"><h2 class="no-anchor">Basic Setup</h2></a>
+    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="basic" aria-selected="true"><h2 class="no-anchor">基本设置</h2></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="quick-start-tab" data-toggle="tab" href="#quick-start" role="tab" aria-controls="quick-start" aria-selected="false"><h2 class="no-anchor">Quick Start</h2></a>
+    <a class="nav-link" id="quick-start-tab" data-toggle="tab" href="#quick-start" role="tab" aria-controls="quick-start" aria-selected="false"><h2 class="no-anchor">快速入門</h2></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced" aria-selected="false"><h2 class="no-anchor">Advanced</h2></a>
+    <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced" aria-selected="false"><h2 class="no-anchor">高级</h2></a>
   </li>
 </ul>
 <div class="tab-content" id="quickstartTabContent">
   <div class="tab-pane fade in active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
-    <p>Ionic is a framework that is built on <a target="_blank" href="https://angularjs.org/">AngularJS</a> and <a target="_blank" href="https://cordova.apache.org/">Apache Cordova</a>. Ionic helps you to rapidly build hybrid mobile & web platform apps using web technologies such as HTML, CSS, and Javascript. </p>
+    <p>Ionic 是基于 <a target="_blank" href="https://angularjs.org/">AngularJS</a> 和 <a target="_blank" href="https://cordova.apache.org/">Apache Cordova</a> 构建的框架。Ionic 可帮助您使用 HTML、CSS 和 Javascript 等 Web 技术快速构建混合移动和 Web 平台应用程序。</p>
 
-    <p>If you are a developer who has chosen Ionic as the framework to develop your mobile or web app, the following sections help you get started with <a target="_blank "href="https://console.bluemix.net/catalog/services/mobile-foundation">IBM Mobile Foundation</a> SDK in your Ionic app. </p>
+    <p>如果您是选择 Ionic 作为移动或 Web 应用程序开发框架的开发人员，以下部分可帮助您在 Ionic 应用程序中开始使用 <a target="_blank" href="https://console.bluemix.net/catalog/services/mobile-foundation">IBM Mobile Foundation</a> SDK。</p>
 
-    <p>You can use your preferred code editor such as Atom.io, Visual Studio Code, Eclipse, IntelliJ or any other editor for writing your applications. </p>
+    <p>您可以使用自己首选的代码编辑器（如 Atom.io、Visual Studio Code、Eclipse、IntelliJ 或任何其他编辑器）来编写自己的应用程序。</p>
 
     <!--<p><b>Prerequisite:</b> As you setup your Ionic development environment, make sure to also read the <a target="_blank "href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">Setting up the MobileFirst development environment</a> tutorial.</p>-->
 
-    <p>Follow the steps below to get quickly started with development using Ionic on MobileFirst Platform Foundation.</p>
-    <h2><font color="DodgerBlue">Step 1:</font> Installing the Ionic CLI</h2>
-    <p>To get started with Ionic development the first step required is to install the <a target="_blank" href="https://ionicframework.com/docs/cli/">Ionic CLI</a>. </p>
+    <p>执行以下步骤，以在 MobileFirst Platform Foundation 上快速开始使用 Ionic 进行开发。</p>
+    <h2><font color="DodgerBlue">步骤 1：</font>安装 Ionic CLI</h2>
+    <p>要开始进行 Ionic 开发，所需执行的第一步是安装 <a target="_blank" href="https://ionicframework.com/docs/cli/">Ionic CLI</a>。</p>
 
-    <p>To install Cordova and Ionic CLI:</p>
+    <p>要安装 Cordova 和 Ionic CLI，请执行以下步骤：</p>
 
-    <p>Download and install <a target="_blank" href="https://nodejs.org/en/">NodeJS</a>.</p>
-    <p>From a Command-line window, run the following command:</p>
+    <p>下载并安装 <a target="_blank" href="https://nodejs.org/en/">NodeJS</a>。</p>
+    <p>从命令行窗口运行以下命令：</p>
     <pre>
     npm install -g ionic
     </pre>
 
-    <h2><font color="DodgerBlue">Step 2:</font> Setting up the MobileFirst development environment</h2>
-    <p>After you have installed the Ionic CLI, set up the MobileFirst development environment. For detailed information, refer to the tutorial <a target="_blank "href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">Setting up the MobileFirst development environment</a> to set up your MobileFirst development environment. </p>
+    <h2><font color="DodgerBlue">步骤 2：</font>设置 MobileFirst 开发环境</h2>
+    <p>在您安装 Ionic CLI 之后，设置 MobileFirst 开发环境。有关详细信息，请参阅教程<a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">设置 MobileFirst 开发环境</a>以设置您的 MobileFirst 开发环境。</p>
 
 
   <!--  <h2><font color="DodgerBlue">Step 3:</font> Adding the Mobile Foundation SDK to your Ionic app</h2>
     <p>To continue with MobileFirst development in Ionic applications, the MobileFirst Cordova SDK/plug-ins need to be added to the Ionic application.</p>
     <p>Learn how to add the MobileFirst SDK to Ionic applications, refer to the tutorial <a target="_top" href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/ionic">Adding the Mobile Foundation SDK to Ionic applications</a>.</p>-->
     <br/>
-    <blockquote>Go to <font color="DodgerBlue">Quick Start</font> tab, to learn how to quickly get started with development using Ionic SDK.</blockquote>  
+    <blockquote>转至<font color="DodgerBlue">快速启动</font>选项卡，以了解如何使用 Ionic SDK 快速启动开发工作。</blockquote>
   </div>
 
   <div class="tab-pane fade" id="quick-start" role="tabpanel" aria-labelledby="quick-start-tab">
-    <p>The purpose of this quick start tutorial is to explain a simple end-to-end flow.</p>
+    <p>该快速启动教程的目的是解释简单的端到端流程。</p>
     <!--<p>A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}. The provided adapter (or a new adapter) is deployed to the {{ site.data.keys.mf_console }}. The application logic is changed to make a resource request.</p>-->
-    <p>A sample application is provided in  <a target="_blank" href="https://github.ibm.com/MFPSamples/MFPStarterReactNative">Github</a>, the sample is downloaded and registered with {{ site.data.keys.mf_server }}. The provided adapter (or a new adapter) is deployed to the {{ site.data.keys.mf_console }}. The application logic is changed to make a resource request.</p>
-   <p><b>Expected result: </b>To successfully ping the {{ site.data.keys.mf_server }} and to successfully retrieve data using an adapter.</p>
+    <p>在 <a target="_blank" href="https://github.ibm.com/MFPSamples/MFPStarterReactNative">Github</a> 中提供了样本应用程序，将下载样本并向 {{ site.data.keys.mf_server }} 注册。提供的适配器（或新适配器）将部署到 {{ site.data.keys.mf_console }}。应用程序逻辑更改为发出资源请求。</p>
+   <p><b>预期结果：</b>成功 ping {{ site.data.keys.mf_server }}，并使用适配器成功检索数据。</p>
 
     <!--  <h3><font color="DodgerBlue">Step 1:</font> Get the prerequisites</h3>
         <ul>
@@ -85,56 +85,50 @@ Develop your Ionic applications by following the tutorials below: set-up your de
         <li><i>[Optional]</i> {{ site.data.keys.mf_cli }} <a target="_blank" href="{{site.baseurl}}/downloads">(download)</a></li>
         <li><i>[Optional]</i> Stand-alone {{ site.data.keys.mf_server }} <a target="_blank" href="{{site.baseurl}}/downloads">(download)</a></li>
       </ul>-->
-    <h3><font color="DodgerBlue">Step 1:</font> Starting the {{ site.data.keys.mf_server }}</h3>
-    <p>Make sure you have <a target="_blank" href="../bluemix/using-mobile-foundation">created a Mobile Foundation instance</a>, or
-      if you are using the <a target="_blank" href="../installation-configuration/development/mobilefirst">{{ site.data.keys.mf_dev_kit }}</a>, navigate to the server's folder and run the command: <code>./run.sh</code> in Mac and Linux or <code>run.cmd</code> in Windows.</p>
-    <h3><font color="DodgerBlue">Step 2:</font> Registering an application</h3>
-    <p>Open the {{ site.data.keys.mf_console }} by loading the URL: <code>http://your-server-host:server-port/mfpconsole</code> in a browser. </p>
-      <ul><li>If the server is running locally, use: <code>http://localhost:9080/mfpconsole</code>. The <i>username/password</i> is <b>admin/admin</b>.</li>
-        <li>If the server is running on IBM Cloud as Mobile Foundation service instance, use: <code>https://bluemix-mfp-server-hostname:443/mfpconsole</code>. The <i>username/password</i> can be obtained from the IBM Cloud Mobile Foundation Service Credentials.</li>
+    <h3><font color="DodgerBlue">步骤 1：</font>启动 {{ site.data.keys.mf_server }}</h3>
+    <p>确保您<a target="_blank" href="../bluemix/using-mobile-foundation">已创建 Mobile Foundation 实例</a>，如果要使用 <a target="_blank" href="../installation-configuration/development/mobilefirst">{{ site.data.keys.mf_dev_kit }}</a>，请浏览至服务器的文件夹并运行以下命令：<code>./run.sh</code>（在 Mac 和 Linux 中）或 <code>run.cmd</code>（在 Windows 中）。</p>
+    <h3><font color="DodgerBlue">步骤 2：</font>注册应用程序</h3>
+    <p>通过在浏览器中加载 URL <code>http://your-server-host:server-port/mfpconsole</code> 来打开 {{ site.data.keys.mf_console }}。</p>
+      <ul><li>如果服务器是在本地运行，请使用：<code>http://localhost:9080/mfpconsole</code>。<i>username/password</i> 为 <b>admin/admin</b>。</li>
+        <li>如果服务器在 IBM Cloud 上作为 Mobile Foundation 服务实例运行，请使用：<code>https://bluemix-mfp-server-hostname:443/mfpconsole</code>。可以通过 IBM Cloud Mobile Foundation 服务凭证获取 <i>username/password</i>。</li>
       </ul>
-      <h4><font color="DarkTurquoise">Step 2.1:</font> Click the <b>New</b> button next to <b>Applications</b></h4>
+      <h4><font color="DarkTurquoise">步骤 2.1：</font>单击<b>应用程序</b>旁边的<b>新建</b>按钮</h4>
       <ul>
-       <li>Select a platform from the list of platforms: <b>Android, iOS, Windows, Browser</b></li>
-       <li>Enter <b>com.ibm.mfpstarterionic</b> as the <b>application identifier</b></li>
-       <li>Enter <b>1.0.0</b> as the <b>version</b></li>
-       <li>Click on <b>Register application</b></li>
+       <li>从平台列表中选择一个平台：<b>Android、iOS、Windows、浏览器</b></li>
+       <li>输入 <b>com.ibm.mfpstarterionic</b> 作为<b>应用程序标识</b></li>
+       <li>将 <b>1.0.0</b> 输入为<b>版本</b></li>
+       <li>单击<b>注册应用程序</b></li>
      </ul>
      <!--<img class="gifplayer" alt="Register an application" src="{{site.baseurl}}/assets/tutorials/all-tutorials/register-an-application-cordova.png"/>-->
-     <h4><font color="DarkTurquoise">Step 2.2:</font> Downloading the Ionic sample from <a target="_blank" href="https://github.com/MobileFirst-Platform-Developer-Center/MFPStarterIonic">Github</a>.</h4>
-     <h4><font color="DarkTurquoise">Step 2.3:</font> Adding the Ionic SDK to the downloaded Ionic sample application</h4>
-     <ol><li>Navigate to the root of your downloaded Ionic project and add the {{ site.data.keys.product_adj }} core Ionic Cordova plug-in.</li>
-       <li> Change directory to the root of the Ionic project: <code>cd MFPStarterIonic</code></li>
-       <li> Add the MobileFirst Plugins by using the Ionic CLI command: <code>ionic cordova plugin add cordova-plugin-name</code><br/>
-         For example:
-
-        <pre>
+     <h4><font color="DarkTurquoise">步骤 2.2：</font>从 <a target="_blank" href="https://github.com/MobileFirst-Platform-Developer-Center/MFPStarterIonic">Github</a> 下载 Ionic 样本。</h4>
+     <h4><font color="DarkTurquoise">步骤 2.3：</font>将 Ionic SDK 添加到下载的 Ionic 样本应用程序</h4>
+     <ol><li>浏览至已下载的 Ionic 项目的根目录，然后添加 {{ site.data.keys.product_adj }} 核心 Ionic Cordova 插件。</li>
+       <li> 将目录更改为 Ionic 项目的根目录：<code>cd MFPStarterIonic</code></li>
+       <li> 使用 Ionic CLI 命令添加 MobileFirst 插件：<code>ionic cordova plugin add cordova-plugin-name</code><br/>
+         例如：<pre>
         ionic cordova plugin add cordova-plugin-mfp
       </pre>
 
-        <blockquote>The above command adds MobileFirst Core SDK Plugin to the Ionic project.</blockquote>
+        <blockquote>上述命令会将 MobileFirst 核心 SDK 插件添加到 Ionic 项目。</blockquote>
         </li>
-     <li>Add one or more supported platforms to the Cordova project by using the Ionic CLI command: <br/>
+     <li>使用 Ionic CLI 命令将一个或多个受支持的平台添加到 Cordova 项目：<br/>
        <code>ionic cordova platform add ios|android|windows|browser</code><br/>
-       For example:
-
-        <pre>
+       例如：<pre>
         cordova platform add ios
-      </pre>
+   </pre>
       </li>
 
-      <li>Prepare the application resources by running the <code>ionic cordova prepare</code> command:
-
+      <li>通过运行 <code>ionic cordova prepare</code> 命令来准备应用程序资源：
         <pre>
         ionic cordova prepare
       </pre>
       </li>
     </ol>
 
-     <h4><font color="DarkTurquoise">Step 2.4:</font> Editing the application logic</b></h4>
+     <h4><font color="DarkTurquoise">步骤 2.4：</font>编辑应用程序逻辑</h4>
      <ol>
-       <li>Open the Ionic project in your code editor of choice.</li>
-       <li>Select the <b>src/js/index.js</b> file and paste the following code snippet, replacing the existing <code>WLAuthorizationManager.obtainAccessToken()</code> function:
+       <li>在您所选的代码编辑器中打开 Ionic 项目。</li>
+       <li>选择 <b>src/js/index.js</b> 文件并粘贴以下代码片段，替换现有的 <code>WLAuthorizationManager.obtainAccessToken()</code> 函数：
          {% highlight javascript %}
            WLAuthorizationManager.obtainAccessToken("").then(
            (token) => {
@@ -151,7 +145,7 @@ Develop your Ionic applications by following the tutorials below: set-up your de
                  resourceRequest.send().then(
                      (response) => {
                          // Will display "Hello world" in an alert dialog.
-                         alert("Success: " + response.responseText);
+                        alert("Success: " + response.responseText);
                      },
                      (error) => {
                          alert("Failure: " + JSON.stringify(error));
@@ -168,40 +162,40 @@ Develop your Ionic applications by following the tutorials below: set-up your de
        {% endhighlight %}
        </li>
      </ol>
-  <h3><font color="DodgerBlue">Step 3: </font>Deploying an adapter</h3>
-  <p>Download <a href="../javaAdapter.adapter">this prepared .adapter artifact</a> and deploy it from the {{ site.data.keys.mf_console }} using the <b>Actions → Deploy adapter</b> action.</p>
-  <h4><font color="DarkTurquoise">Step 3.1: </font>Select the <b>Actions → Download sample</b> option. Download the <i>Hello World</i> <b>Java</b> adapter sample</h4>
-  <p>Alternatively, click the <b>New</b> button next to <b>Adapters</b>.  </p>
-  <p><blockquote> If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen <b>Set up your development environment</b> instructions.</blockquote></p>
-  <h4><font color="DarkTurquoise">Step 3.2: </font>From a <b>Command-line</b> window, navigate to the adapter's Maven project root folder and run the command:</h4>
+  <h3><font color="DodgerBlue">步骤 3：</font>部署适配器</h3>
+  <p>下载<a href="../quick-start/javaAdapter.adapter">这一准备好的 .adapter 工件</a>，并通过使用<b>操作 → 部署适配器</b>操作从 {{ site.data.keys.mf_console }} 进行部署。</p>
+  <h4><font color="DarkTurquoise">步骤 3.1：</font>选择<b>操作 → 下载样本</b>选项。下载 <i>Hello World</i> <b>Java</b> 适配器样本</h4>
+  <p>或者，单击<b>适配器</b>旁边的<b>新建</b>按钮。</p>
+  <p><blockquote> 如果未安装 Maven 和 {{ site.data.keys.mf_cli }}，请遵循屏幕上的<b>设置开发环境</b>指示信息。</blockquote></p>
+  <h4><font color="DarkTurquoise">步骤 3.2：</font>从<b>命令行</b>窗口中，导航至适配器的 Maven 项目根文件夹并运行以下命令：</h4>
   <pre>
     mfpdev adapter build
   </pre>
-  <h4><font color="DarkTurquoise">Step 3.3: </font>When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the <b>Actions → Deploy adapter</b> action. The adapter can be found in the <b>[adapter]/target</b> folder.</h4>
+  <h4><font color="DarkTurquoise">步骤 3.3：</font>在构建完成时，使用<b>操作 → 部署适配器</b>操作从 {{ site.data.keys.mf_console }} 进行部署。适配器可在 <b>[adapter]/target</b> 文件夹中找到。</h4>
   <!--<img class="gifplayer" alt="Deploy an adapter" src="{{site.baseurl}}/assets/tutorials/all-tutorials/create-an-adapter.png"/>-->
 
   <!--<img src="{{site.baseurl}}/assets/tutorials/all-tutorials/cordovaQuickStart.png" alt="sample application" style="float:right"/>-->
 
-  <h3><font color="DodgerBlue">Step 4: </font>Testing the application</h3>
-  <h4><font color="DarkTurquoise">Step 4.1: </font>From a <b>Command-line</b> window, navigate to the Ionic project's root folder.</h4><br/>
-  <h4><font color="DarkTurquoise">Step 4.2: </font>Run the command: <br/><code>ionic cordova platform add ios|android|windows|browser</code><br/> to add a platform.</h4><br/>
-  <h4><font color="DarkTurquoise">Step 4.3: </font>In the Ionic project, select the <b>config.xml</b> file and edit the  <code><mfp:server ... url=" "/></code> value with the <b>protocol</b>, <b>host</b> and <b>port</b> properties with the correct values for your {{ site.data.keys.mf_server }}.</h4>
+  <h3><font color="DodgerBlue">步骤 4：</font>测试应用程序</h3>
+  <h4><font color="DarkTurquoise">步骤 4.1：</font>从<b>命令行</b>窗口，导航至 Ionic 项目的根文件夹。</h4><br/>
+  <h4><font color="DarkTurquoise">步骤 4.2：</font>运行以下命令来添加平台：<br/><code>ionic cordova platform add ios|android|windows|browser</code><br/>。</h4><br/>
+  <h4><font color="DarkTurquoise">步骤 4.3：</font>在 Ionic 项目中，选择 <b>config.xml</b> 文件，然后编辑 <code><mfp:server ... url=" "/></code> 值，其中 <b>protocol</b>、<b>host</b> 和 <b>port</b> 属性设置为针对 {{ site.data.keys.mf_server}} 的正确的值。</h4>
     <ul>
-      <li>If using a local {{ site.data.keys.mf_server }}, the values are typically <b>http</b>, <b>localhost</b> and <b>9080</b>.</li>
-      <li>If using a remote {{ site.data.keys.mf_server }} (on IBM Cloud), the values are typically <b>https</b>, <b>your-server-address</b> and <b>443</b>.</li>
-      <li>If using a Kubernetes cluster on IBM Cloud Private and if the deployment is of type <b>NodePort</b>, the value of the port would typically be the <b>NodePort</b> exposed by the service in Kubernetes cluster.</li>
+      <li>如果使用本地 {{ site.data.keys.mf_server }}，这些值通常是 <b>http</b>、<b>localhost</b> 和 <b>9080</b>。</li>
+      <li>如果使用远程 {{ site.data.keys.mf_server }}（在 IBM Cloud 中），这些值通常是 <b>https</b>、<b>your-server-address</b> 和 <b>443</b>。</li>
+      <li>如果要在 IBM Cloud Private 上使用 Kubernetes 集群并且如果部署的类型为 <b>NodePort</b>，那么端口的值通常为 Kubernetes 集群中服务公开的 <b>NodePort</b>。</li>
     </ul>
 
-    <p>Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command <code>mfpdev app register</code>. If a remote {{ site.data.keys.mf_server }} is used, <a target="_blank" href="../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance">run the command</a>  <code>mfpdev server add</code> to add the server, followed by for example: <code>mfpdev app register myIBMCloudServer</code>.</p>
+    <p>或者，如果已安装 {{ site.data.keys.mf_cli }}，那么导航至项目根文件夹，并运行命令 <code>mfpdev app register</code>。如果使用远程 {{ site.data.keys.mf_server }}，那么<a target="_blank" href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance">运行命令</a> <code>mfpdev server add</code> 来添加服务器，后跟（例如）：<code>mfpdev app register myIBMCloudServer</code>。</p>
 
-    <p>If a device is connected, the application is installed and launched in the device. Otherwise the simulator or emulator will be used.</p>
+    <p>如果已连接某设备，将在该设备上安装并启动此应用程序。否则，将使用模拟器或仿真器。</p>
 
-    <blockquote>For detailed instructions on quick start steps, see <a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/ionic/">here</a>.</blockquote>
+    <blockquote>有关快速启动步骤的详细指示信息，请参阅<a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/ionic/">此处</a>。</blockquote>
 
-  <h3>Results</h3>
+  <h3>结果</h3>
   <ul>
-    <li>Clicking the <b>Ping {{ site.data.keys.mf_server }}</b> button will display <b>Connected to {{ site.data.keys.mf_server }}</b>.</li>
-    <li>If the application is able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter takes place. The adapter response is then displayed in an alert.</li>
+    <li>单击 <b>Ping {{ site.data.keys.mf_server }}</b> 按钮将显示<b>已连接到 {{ site.data.keys.mf_server }}</b>。</li>
+    <li>如果应用程序能够连接到 {{ site.data.keys.mf_server }}，那么将使用部署的 Java 适配器进行资源请求调用。然后，适配器响应将显示在警报中。</li>
   </ul>
 
 
@@ -209,67 +203,58 @@ Develop your Ionic applications by following the tutorials below: set-up your de
   <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
 
 
-    <h2><a href="../application-development">Developing Applications</a></h2>
-    Learn to use {{ site.data.keys.product_adj }} APIs: WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
+    <h2><a href="../application-development">开发应用程序</a></h2>
+    学会使用 {{ site.data.keys.product_adj }} API：WLResourceRequest、客户端翻译、调试应用程序、开发者 CLI 等……
 
     <ul>
-        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using {{ site.data.keys.mf_cli }} to manage {{ site.data.keys.product_adj }} artifacts</a></li>
-        <li><a href="../application-development/sdk/ionic/">Adding the MobileFirst Foundation SDK to Ionic Applications</a></li>
-        <li><a href="../application-development/resource-request/ionic/">Resource request from Ionic applications</a></li>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">使用 {{ site.data.keys.mf_cli }} 管理 {{ site.data.keys.product_adj }} 工件</a></li>
+        <li><a href="../application-development/sdk/ionic/">将 MobileFirst Foundation SDK 添加到 Ionic 应用程序</a></li>
+        <li><a href="../application-development/resource-request/ionic/">来自 Ionic 应用程序的资源请求</a></li>
     </ul>
 
-    <h2><a href="../authentication-and-security">Authentication and Security</a></h2>
-    Add various layers of protection to your applications.
-
-    <ul>
-        <li><a href="../authentication-and-security/">Authorization concepts</a></li>
-        <li><a href="../authentication-and-security/creating-a-security-check/">Creating a Security Check</a>
-            <ul>
-                <li><a href="../authentication-and-security/creating-a-security-check/contract">The Security Check Contract</a></li>
+    <h2><a href="../authentication-and-security">认证和安全性</a></h2>
+    向应用程序添加多个保护层。<ul>
+        <li><a href="../authentication-and-security/">授权概念</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">创建安全性检查</a><ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">安全性检查合同</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
             <ul>
-                <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/ionic/">Implementing the challenge handler in Ionic applications</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">实施安全性检查</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/ionic/">在 Ionic 应用程序中实施验证问题处理程序</a></li>
             </ul>
         </li>
     </ul>
 
-    <h2><a href="../adapters/">Developing Adapters</a></h2>
-    Develop server-side code to integrate with enterprise back-end systems and cloud services.
-
-    <ul>
-        <li><a href="../adapters/">Adapters overview</a></li>
-        <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
-        <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a>
-            <ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
-                    <ul>
-                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Using SSL in JavaScript HTTP Adapters</a></li>
+    <h2><a href="../adapters/">开发适配器</a></h2>
+    开发服务器端代码以与企业后端系统和云服务集成。<ul>
+        <li><a href="../adapters/">适配器概述</a></li>
+        <li><a href="../adapters/creating-adapters/">创建 Java 和 JavaScript 适配器</a></li>
+        <li><a href="../adapters/javascript-adapters/">JavaScript 适配器</a><ul>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP 适配器</a><ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">在 JavaScript HTTP 适配器中使用 SSL</a></li>
                     </ul>
                 </li>
-                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Using Java in JavaScript Adapters</a></li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL 适配器</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">在 JavaScript 适配器中使用 Java</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/java-adapters/">Java Adapters</a>
-            <ul>
-                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP adapter</a></li>
-                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
+        <li><a href="../adapters/java-adapters/">Java 适配器</a><ul>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP 适配器</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL 适配器</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
-        <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
-        <li>Server-side log collection
-            <ul>
-                <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
-                <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
-                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
+        <li><a href="../adapters/developing-adapters/">在 IDE 中开发适配器</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">测试并调试适配器</a></li>
+        <li>服务器端日志收集<ul>
+                <li><a href="../adapters/server-side-log-collection/">服务器端日志收集概述</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java 适配器中的日志收集</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript 适配器中的日志收集</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
-        <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">高级适配器用法和 Mashup</a></li>
+        <li><a href="../adapters/cloudant/">使用适配器与 Cloudant 集成</a></li>
     </ul>
 
   </div>

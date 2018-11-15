@@ -110,7 +110,7 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 <img alt="샘플 애플리케이션의 이미지" src="sample-app.png" style="float:right"/>
 ## 샘플 애플리케이션
 {: #sample-application }
-Xcode 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80)하십시오.
+Xcode 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80)하십시오.
 
 ### 샘플 사용법
 {: #sample-usage }

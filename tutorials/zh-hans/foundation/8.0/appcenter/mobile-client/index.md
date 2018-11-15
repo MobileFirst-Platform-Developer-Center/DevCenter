@@ -286,14 +286,13 @@ Application Center 服务器地址包含以下元素：
 SSL 在 iOS 设备上是必需的。 因此，该选项未在登录视图中显示。
 在所支持的其他操作系统上，选择 SSL，为网络通信开启 SSL 协议。 如果在 SSL 处于选中状态时再次轻击该字段，将关闭 SSL。
 
-如果 Application
-Center 服务器配置为通过 SSL 连接运行，那么 SSL 选项可用。 当服务器未配置为处理 SSL 层时选择 SSL 会阻止您连接到服务器。 系统管理员可以告知您 Application Center 是否通过 SSL 连接运行。
+如果 Application Center 服务器配置为通过 SSL 连接运行，那么 SSL 选项可用。 当服务器未配置为处理 SSL 层时选择 SSL 会阻止您连接到服务器。 系统管理员可以告知您 Application Center 是否通过 SSL 连接运行。
 
 ### 连接至服务器
 {: #connecting-to-the-server }
 要连接至服务器：
 
-1.输入您的用户名和密码。
+1. 输入您的用户名和密码。
 2. 输入您的 Application Center 服务器地址。
 3. 如果您的 Application Center 配置通过 SSL 协议运行，请选择 **SSL**。
 4. 轻击**登录**以连接到服务器。

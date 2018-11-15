@@ -139,12 +139,12 @@ En outre, le dossier **shortcuts** contient des raccourcis pour l'outil de confi
     * Pour une installation sans application de l'octroi de licence de jeton (si vous ne disposez pas d'un contrat définissant l'utilisation de l'octroi de licence de jeton), entrez la commande suivante :
 
       ```bash
-      imcl install com.ibm.mobilefirst.foundation.server -repositories rép_référentiel_mfp/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
+      imcl install com.ibm.mobilefirst.foundation.server -repositories rép_référentiel_mfp/Serveur_plateforme_MobileFirst/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
     * Pour une installation avec application de l'octroi de licence de jeton, entrez la commande suivante :
 
       ```bash
-      imcl install com.ibm.mobilefirst.foundation.server -repositories rép_référentiel_mfp/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
+      imcl install com.ibm.mobilefirst.foundation.server -repositories rép_référentiel_mfp/Serveur_plateforme_MobileFirst/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
 
         La valeur de la propriété **user.licensed.by.tokens** est **true**. Vous devez configurer {{ site.data.keys.mf_server }} pour l'[octroi de licence de jeton](../token-licensing).
@@ -398,7 +398,7 @@ dans les exemples suivants :
     <tr>
         <td>user.appserver.was.scope</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>Type d'ensemble de serveurs dans lequel installer les applications.<br/><br/><code>server</code> désigne un serveur autonome.<br/><br/><code>nd-cell</code> désigne une cellule de déploiement réseau de WebSphere Application Server. <code>nd-cluster</code> désigne un cluste de déploiement réseau de WebSphere Application Server.<br/><br/><code>nd-node</code> désigne un noeud de déploiement réseau de WebSphere Application Server (à l'exclusion des clusters).<br/><br/><code>nd-server</code> désigne un serveur de déploiement réseau géré de WebSphere Application Server.</td>
+        <td>Type d'ensemble de serveurs dans lequel installer les applications.<br/><br/><code>server</code> désigne un serveur autonome.<br/><br/><code>nd-cell</code> désigne une cellule de déploiement réseau de WebSphere Application Server. <code>nd-cluster</code> désigne un cluster de déploiement réseau de WebSphere Application Server.<br/><br/><code>nd-node</code> désigne un noeud de déploiement réseau de WebSphere Application Server (à l'exclusion des clusters).<br/><br/><code>nd-server</code> désigne un serveur de déploiement réseau géré de WebSphere Application Server.</td>
         <td><code>server</code>, <code>nd-cell</code>, <code>nd-cluster</code>, <code>nd-node</code>, <code>nd-server</code></td>
     </tr>
     <tr>

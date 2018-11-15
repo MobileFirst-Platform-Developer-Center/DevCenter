@@ -81,7 +81,7 @@ Application Center からアプリケーションを削除するには、コマ�
 
 コマンド・ラインにある使用可能なオプションならどれでも渡すことができます。
 
-| オプション | 内容 | 説明 |
+| オプション | 内容	| 説明 |
 |--------|----------------------|-------------|
 | -s |serverpath | The path to the Application Center server. |
 | -c | context | The context of the Application Center web application. |
@@ -152,16 +152,16 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 
 | Ant タスクのパラメーター | 説明 |
 |------------------------|-------------|
-| serverPath | Application Center に接続するため。デフォルト値は http://localhost:9080 です。 |
-| context | Application Center のコンテキスト。デフォルト値は /applicationcenter です。 |
-| loginUser | アプリケーションをアップロードする権限があるユーザー名。|
-| loginPass | アプリケーションをアップロードする権限があるユーザーのパスワード。|
-| forceOverwrite | このパラメーターが true に設定されると、Ant タスクは、既に存在するアプリケーションをアップロードするとき、Application Center 内のアプリケーションを上書きしようと試みます。このパラメーターは upload Ant タスクでのみ使用可能です。
-| file | Application Center にアップロードする、または Application Center から削除する .apk ファイルまたは .ipa ファイル。このパラメーターにはデフォルト値がありません。 |
-| fileset | 複数のファイルをアップロードまたは削除するため。|
-| application | アプリケーションのパッケージ名。このパラメーターは delete Ant タスクでのみ使用可能です。|
-| os | アプリケーションのオペレーティング・システム。(例えば、Android または iOS。) このパラメーターは delete Ant タスクでのみ使用可能です。 |
-| version | アプリケーションの内部バージョン。このパラメーターは delete Ant タスクでのみ使用可能です。ここで商用バージョンを使用しないでください。商用バージョンはバージョンを正確に識別するのには適さないからです。 |
+| serverPath | Application Center に接続するため。 デフォルト値は http://localhost:9080 です。 |
+| context | Application Center のコンテキスト。 デフォルト値は /applicationcenter です。 |
+| loginUser | アプリケーションをアップロードする権限があるユーザー名。 |
+| loginPass | アプリケーションをアップロードする権限があるユーザーのパスワード。 |
+| forceOverwrite | このパラメーターが true に設定されると、Ant タスクは、既に存在するアプリケーションをアップロードするとき、Application Center 内のアプリケーションを上書きしようと試みます。 このパラメーターは upload Ant タスクでのみ使用可能です。
+| file | Application Center にアップロードする、または Application Center から削除する .apk ファイルまたは .ipa ファイル。 このパラメーターにはデフォルト値がありません。 |
+| fileset | 複数のファイルをアップロードまたは削除するため。 |
+| application | アプリケーションのパッケージ名。このパラメーターは delete Ant タスクでのみ使用可能です。 |
+| os | アプリケーションのオペレーティング・システム。 (例えば、Android または iOS。) このパラメーターは delete Ant タスクでのみ使用可能です。 |
+| version | アプリケーションの内部バージョン。このパラメーターは delete Ant タスクでのみ使用可能です。 ここで商用バージョンを使用しないでください。商用バージョンはバージョンを正確に識別するのには適さないからです。 |
 
 #### 例
 {: #example-ant }
@@ -233,14 +233,14 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 {: #properties-of-the-sample-ant-script }
 | プロパティー | コメント |
 |----------|---------|
-| install.dir | デフォルトの ../../ になります。|
-| server.path | デフォルト値は http://localhost:9080 です。|
-| context.path | デフォルト値は applicationcenter です。|
+| install.dir | デフォルトの ../../ になります。 |
+| server.path | デフォルト値は http://localhost:9080 です。 |
+| context.path | デフォルト値は applicationcenter です。 |
 | upload.file | このプロパティーにはデフォルト値がありません。 正確なファイル・パスを含む必要があります。 |
-| workspace.root | デフォルトの ../../ になります。|
-| login.user | デフォルト値は appcenteradmin です。|
-| login.pass | デフォルト値は admin です。|
-| force	デフォルト値は true です。|
+| workspace.root | デフォルトの ../../ になります。 |
+| login.user | デフォルト値は appcenteradmin です。 |
+| login.pass | デフォルト値は admin です。 |
+| force	デフォルト値は true です。 |
 
 Ant の呼び出し時にこれらのパラメーターをコマンド・ラインで指定するには、プロパティー名の前に -D を追加してください。 例えば、次のとおりです。
 

@@ -280,3 +280,5 @@ Durante la configuración de **mfpclient.properties** para su aplicación Androi
 {:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
 La modificación del comportamiento predeterminado de una aplicación Cordova (por ejemplo, cambiando el comportamiento del botón atrás) cuando se ha añadido {{ site.data.keys.product_adj }} Cordova SDK al proyecto, puede dar lugar a que Google Play Store la rechace cuando la envíe.
 Para cualquier otra anomalía al enviar la aplicación a Google Play Store, puede ponerse en contacto con el soporte de Google.
+
+>**Nota:** Si está utilizando la versión del release de MobileFirst 8.0 iFix de enero de 2018 o posterior, se recomienda que actualice tanto el servidor como el cliente a la misma versión. 

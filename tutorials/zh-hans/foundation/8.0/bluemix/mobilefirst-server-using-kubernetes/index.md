@@ -366,7 +366,7 @@ IBM Containers 上的 MobileFirst Server 的临时修订可从 [IBM Fix Central]
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
                   将 <em>my-cluster</em> 替换为您的集群名称后，复制粘贴以上命令以在您的终端内设置环境变量，然后按 <b>Enter</b> 键。
                   </li>
-                  <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]: </b> 创建<b>持久存储卷申请</b>。 这将用于持久存储分析数据。 这是一次性步骤。 如果先前已创建 <b>PVC</b>，可以进行复用。 编辑 <em>yaml</em> 文件 <b>args/mfpf-persistent-volume-claim.yaml</b>，然后运行此命令。
+                  <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]:</b> 创建<b>持久存储卷申请</b>。 这将用于持久存储分析数据。 这是一次性步骤。 如果先前已创建 <b>PVC</b>，可以进行复用。 编辑 <em>yaml</em> 文件 <b>args/mfpf-persistent-volume-claim.yaml</b>，然后运行此命令。
                   在执行以下 <em>kubectl</em> 命令之前，所有变量都必须替换为各自的值。<br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
                   记下<b>持久存储卷申请</b>的名称，因为后续步骤中必须提供此名称。
                   </li>

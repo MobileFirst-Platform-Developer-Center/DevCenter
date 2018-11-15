@@ -469,3 +469,5 @@ beim Hinzufügen des
 {{ site.data.keys.product_adj }}-Cordova-SDK zum Projekt, kann dazu führen, dass die App
 bei Übergabe an den Google Play Store zurückgewiesen wird.
 Sollte die Übergabe an den Google Play Store aus anderen Gründen fehlschlagen, wenden Sie sich an den Google-Support.
+
+>**Hinweis:** Wenn Sie die MobileFirst-8.0-iFix-Releaseversion von Januar 2018 oder eine aktuellere Version verwenden, sollten Sie eine Aktualisierung durchführen und den Server und den Client auf denselben Versionsstand bringen.

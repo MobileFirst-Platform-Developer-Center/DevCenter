@@ -9,7 +9,7 @@ weight: 1
     <h2>개요</h2>
     <p>이 쿡북의 목표는 IBM Worklight Foundation 6.2 또는 IBM MobileFirst Platform Foundation 6.3 - 7.1에서 {{ site.data.keys.product_full }} 8.0으로 애플리케이션 및 어댑터를 마이그레이션하는 단계에 대한 명확하고 간단한 보기를 제공하는 것입니다.</p>
 
-    <p>마이그레이션 프로세스는 일반 하이브리드 애플리케이션을 표준 Cordova 애플리케이션으로 변환하고 고유 애플리케이션에서 {{ site.data.keys.product_adj }} SDK를 업데이트하는 단계를 안내합니다. 모바일 웹 앱도 처리됩니다. 어댑터는 Maven 프로젝트로 마이그레이션되고 {{ site.data.keys.product_adj }} 보안 프레임워크, 푸시 알림 및 직접 업데이트와 같은 구현 개념이 더 명확해집니다.</p>
+    <p>마이그레이션 프로세스는 일반 하이브리드 애플리케이션을 표준 Cordova 애플리케이션으로 변환하고 네이티브 애플리케이션에서 {{ site.data.keys.product_adj }} SDK를 업데이트하는 단계를 안내합니다. 모바일 웹 앱도 처리됩니다. 어댑터는 Maven 프로젝트로 마이그레이션되고 {{ site.data.keys.product_adj }} 보안 프레임워크, 푸시 알림 및 직접 업데이트와 같은 구현 개념이 더 명확해집니다.</p>
 
     <p>마이그레이션 프로세스의 일부 측면을 더 쉽게 만들기 위해 마이그레이션 지원 도구가 제공됩니다.<br/>
     이 도구는 코드 베이스에서 더 이상 사용되지 않거나 더 이상 지원되지 않거나 수정된 API와 같이 검사하고 변경해야 하는 영역을 식별하여 도움을 줍니다.</p>
@@ -34,7 +34,7 @@ weight: 1
                         <h3 class="setupAndTools no-anchor">설정<br/> &amp; 도구</h3>
 
                         <ul class="topics">
-                            <li><a href="#env-setup">MobileFirst<br/>서버 설정</a></li>
+                            <li><a href="#env-setup">MobileFirst Server<br/>설정</a></li>
                             <li><a href="#env-setup">마이그레이션 지원 도구<br/>설치</a></li>
                         </ul>
                     </div>
@@ -46,7 +46,7 @@ weight: 1
                         <ul class="topics">
                             <li><a href="#applications">일반 하이브리드/MFPF Cordova 앱을<br/>표준 Cordova 앱으로<br/> 마이그레이션</a></li>
                             <li><a href="#applications">모바일 웹/데스크탑 브라우저 앱 <br/>마이그레이션</a></li>
-                            <li><a href="#applications">고유 애플리케이션에서<br/> SDK 업데이트</a></li>
+                            <li><a href="#applications">네이티브 애플리케이션에서<br/> SDK 업데이트</a></li>
                         </ul>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ weight: 1
     <div class="gutter gutter-apps-color">
         <div class="number number-apps hidden-sm hidden-xs hidden-md">2</div>
         <h2>애플리케이션 마이그레이션</h2>
-        <p>일반 하이브리드/MobileFirst Cordova, 웹 및 고유 애플리케이션의 마이그레이션 단계에는 마이그레이션 지원 도구를 실행하여 API 변경사항 평가, 프로젝트 구조 설정, 애플리케이션 소스 관리, 패키지 관리자 사용 및 API 변경사항 처리가 포함됩니다.</p>
+        <p>일반 하이브리드/MobileFirst Cordova, 웹 및 네이티브 애플리케이션의 마이그레이션 단계에는 마이그레이션 지원 도구를 실행하여 API 변경사항 평가, 프로젝트 구조 설정, 애플리케이션 소스 관리, 패키지 관리자 사용 및 API 변경사항 처리가 포함됩니다.</p>
 
         <h3>일반 하이브리드 애플리케이션</h3>
         <p>지난 릴리스에서는 Eclipse 또는 {{ site.data.keys.mf_cli }}용 MobileFirst Studio 플러그인을 사용하여 일반 하이브리드 애플리케이션이 작성되고 개발되고 빌드되고 관리되었습니다. {{ site.data.keys.product }} 8.0부터는 이전 애플리케이션 모델 대신 표준 Cordova 애플리케이션에 대한 지원이 소개됩니다.</p>
@@ -360,18 +360,18 @@ if (document.addEventListener) {
             </div>
         </div>
 
-        <h3>고유 애플리케이션</h3>
-        <p>제품의 이전 버전에서는 플랫폼 특정 아티팩트(WorklightAPI 폴더, 구성 파일 등)를 우선 작성한 후 각 IDE에서 고유 프로젝트에 해당 아티팩트를 수동으로 복사하여 붙여넣기 위해 고유 애플리케이션에 Eclipse 또는 {{ site.data.keys.mf_cli }}용 MobileFirst Studio 플러그인이 필요했습니다.</p>
+        <h3>네이티브 애플리케이션</h3>
+        <p>제품의 이전 버전에서는 플랫폼 특정 아티팩트(WorklightAPI 폴더, 구성 파일 등)를 우선 작성한 후 각 IDE에서 네이티브 프로젝트에 해당 아티팩트를 수동으로 복사하여 붙여넣기 위해 네이티브 애플리케이션에 Eclipse 또는 {{ site.data.keys.mf_cli }}용 MobileFirst Studio 플러그인이 필요했습니다.</p>
 
-        <p>{{ site.data.keys.product }} 8.0부터는 커뮤니티 선호 패키지 관리자인 <a href="https://cocoapods.org/" target="_blank">iOS용 CocoaPods</a>, <a href="https://gradle.org/" target="_blank">Android용 Gradle</a> 및 <a href="https://www.nuget.org/" target="_blank">Windows용 NuGet</a>이 소개되었습니다. 개발자는 이러한 도구를 사용하여 각 플랫폼에 {{ site.data.keys.product_adj }} 고유 SDK를 매끄럽게 추가할 수 있습니다.</p>
+        <p>{{ site.data.keys.product }} 8.0부터는 커뮤니티 선호 패키지 관리자인 <a href="https://cocoapods.org/" target="_blank">iOS용 CocoaPods</a>, <a href="https://gradle.org/" target="_blank">Android용 Gradle</a> 및 <a href="https://www.nuget.org/" target="_blank">Windows용 NuGet</a>이 소개되었습니다. 개발자는 이러한 도구를 사용하여 각 플랫폼에 {{ site.data.keys.product_adj }} 네이티브 SDK를 매끄럽게 추가할 수 있습니다.</p>
 
-        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">고유 애플리케이션 개발</a>에 대해 자세히 학습하십시오.</blockquote>
+        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">네이티브 애플리케이션 개발</a>에 대해 자세히 학습하십시오.</blockquote>
 
         <div class="panel-group accordion" id="application-migration-native" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-native-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration-native" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">고유 애플리케이션에서 SDK 업데이트</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-native" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">네이티브 애플리케이션에서 SDK 업데이트</a>
                     </h4>
                 </div>
 
@@ -380,18 +380,18 @@ if (document.addEventListener) {
                         <h4>1단계</h4>
                         <p>마이그레이션 지원 도구를 사용하여 API 보고서를 생성하십시오.</p>
 
-                        <blockquote><b>참고:</b> 현재 마이그레이션 지원 도구는 MobileFirst Platform Foundation 7.1을 기반으로 하는 고유 애플리케이션만 스캔할 수 있습니다.</blockquote>
+                        <blockquote><b>참고:</b> 현재 마이그레이션 지원 도구는 MobileFirst Platform Foundation 7.1을 기반으로 하는 네이티브 애플리케이션만 스캔할 수 있습니다.</blockquote>
 
                         <p>명령행 창을 열고 다음과 같은 방식으로 마이그레이션 지원 도구를 사용하십시오.</p>
 {% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory --type platform{% endhighlight %}
 
                         <ul>
-                            <li><b>source_directory</b>를 고유 프로젝트의 경로로 대체하십시오. 예: <i>../Desktop/FormBasedAuthObjCiOS-release71</i></li>
+                            <li><b>source_directory</b>를 네이티브 프로젝트의 경로로 대체하십시오. 예: <i>../Desktop/FormBasedAuthObjCiOS-release71</i></li>
                             <li><b>destination_directory</b>를 보고서를 생성할 경로로 대체하십시오.</li>
                             <li><b>platform</b>을 지원되는 플랫폼(<code>ios</code>, <code>android</code> 또는 <code>windows</code>)으로 대체하십시오.</li>
                         </ul>
 
-                        <img alt="고유 앱에 대한 API 보고서 생성" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/native-migration.png"/>
+                        <img alt="네이티브 앱에 대한 API 보고서 생성" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/native-migration.png"/>
 
                         <p>마이그레이션 지원 도구를 성공적으로 실행한 후 다음과 같은 영향을 관찰할 수 있습니다.</p>
 
@@ -402,7 +402,7 @@ if (document.addEventListener) {
                         <img alt="API 보고서" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-native.png"/>
 
                         <h4>2단계</h4>
-                        <p>API 보고서에서 문제를 해결한 후 이전 고유 SDK를 새 고유 SDK로 대체할 수 있습니다.</p>
+                        <p>API 보고서에서 문제를 해결한 후 이전 네이티브 SDK를 새 네이티브 SDK로 대체할 수 있습니다.</p>
 
                         <b>iOS</b><br/>
                         <b>전제조건:</b> Mac 컴퓨터에 CocoaPods가 설치되어 있는지 확인하십시오.
@@ -488,7 +488,7 @@ target "replace-with-the-name-of-the-target-in-xcode-project" do
     pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
 end{% endhighlight %}
                                               </li>
-                                              <li><code>pod install</code> 명령을 실행하십시오. 이 명령은 {{ site.data.keys.product_adj }} 고유 SDK, IBMMobileFirstPlatformFoundation.framework 및 Podfile에 지정된 기타 모든 프레임워크와 해당 종속 항목을 설치합니다. 그런 다음 pods 프로젝트를 생성하고 클라이언트 프로젝트를 {{ site.data.keys.product_adj }} SDK와 통합합니다.</li>
+                                              <li><code>pod install</code> 명령을 실행하십시오. 이 명령은 {{ site.data.keys.product_adj }} 네이티브 SDK, IBMMobileFirstPlatformFoundation.framework 및 Podfile에 지정된 기타 모든 프레임워크와 해당 종속 항목을 설치합니다. 그런 다음 pods 프로젝트를 생성하고 클라이언트 프로젝트를 {{ site.data.keys.product_adj }} SDK와 통합합니다.</li>
                                           </ul>
                                        </li>
                                        <li>명령행에서 <b>open ProjectName.xcworkspace</b>를 입력하여 Xcode에서 <b>ProjectName.xcworkspace</b> 파일을 여십시오. 이 파일은 ProjectName.xcodeproj 파일과 동일한 디렉토리에 있습니다. 파인더에서 두 번 클릭할 수도 있습니다.</li>
@@ -646,7 +646,7 @@ transitive: true{% endhighlight %}</li>
 
                         <br/>
                         <h4>3단계</h4>
-                        <p>고유 애플리케이션이 거의 마이그레이션되었습니다. 이제 API 보고서에 생성된 문제를 처리할 시간입니다. 브라우저에서 API 보고서를 열고 검토하십시오. 보고서의 각 항목에 대해 다르게 구현하거나 전적으로 대체해야 합니다.</p>
+                        <p>네이티브 애플리케이션이 거의 마이그레이션되었습니다. 이제 API 보고서에 생성된 문제를 처리할 시간입니다. 브라우저에서 API 보고서를 열고 검토하십시오. 보고서의 각 항목에 대해 다르게 구현하거나 전적으로 대체해야 합니다.</p>
 
                         <ul>
                             <li><a href="../migrating-client-applications/ios" target="_blank">iOS 코드 변경사항</a></li>
@@ -772,7 +772,8 @@ export MVN_PATH="/usr/local/bin"
                     <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
                         <div class="panel-body">
                             <ol>
-                              <li><i>서버</i> 옵션으로 마이그레이션 지원 도구를 실행하여 이전 worklight 프로젝트의 <i>루트</i> 디렉토리를 지정하십시오. <br/>
+                              <li><i>서버</i> 옵션으로 마이그레이션 지원 도구를 실행하여 이전 worklight 프로젝트의 <i>루트</i> 디렉토리를 지정하십시오.
+                                <br/>
                                 <code>
                                 mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
                                 </code>
@@ -785,11 +786,11 @@ export MVN_PATH="/usr/local/bin"
                                 <p>기존 MobileFirst 프로젝트에서 보안 영역 및 어댑터의 마이그레이션을 수행합니다.</p>
                                 <br/>
                                 <h4>옵션</h4>
-                                <p><b><i>&lt;sourceDirectory&gt;</i></b>: <i>&lt;sourceDirectory&gt;</i>는 마이그레이션하려는 MobileFirst 프로젝트의 <i>루트</i> 폴더여야 합니다. 이는 필수이며 선택적 매개변수가 아닙니다. </p>
+                                <p><b><i>&lt;sourceDirectory&gt;</i></b>: <i>&lt;sourceDirectory&gt;</i>는 마이그레이션하려는 MobileFirst 프로젝트의 <i>루트</i> 폴더여야 합니다. 이는 필수이며 선택적 매개변수가 아닙니다.</p>
 
-                                <p><b><i>&lt;destinationDirectory&gt;</i></b>: <i>&lt;destinationDirectory&gt;</i>는 어댑터가 마이그레이션되는 디렉토리입니다. </p>
+                                <p><b><i>&lt;destinationDirectory&gt;</i></b>: <i>&lt;destinationDirectory&gt;</i>는 어댑터가 마이그레이션되는 디렉토리입니다.</p>
                               </blockquote>
-                                <p>마이그레이션 도구는 어댑터 및 영역을 통해 스캔하고 다음을 수행합니다. </p>
+                                <p>마이그레이션 도구는 어댑터 및 영역을 통해 스캔하고 다음을 수행합니다.</p>
                                 <ol><li>어댑터 및 지원되는 보안 검사에 대한 템플리트를 작성합니다.</li>
                                     <li>어댑터 소스를 새로 작성된 Maven 아티팩트로 이동합니다.</li>
                                     <li>종속 항목과 함께 프로젝트 <i>pom</i>을 업데이트합니다.</li>

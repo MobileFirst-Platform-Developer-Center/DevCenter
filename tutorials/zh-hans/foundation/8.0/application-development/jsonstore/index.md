@@ -155,15 +155,15 @@ JSONStore 类似于诸如 LocalStorage、Indexed DB、Cordova Storage API 和 Co
 
 | 功能                                            | JSONStore      | LocalStorage | IndexedDB | Cordova Storage API | Cordova File API |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-| Android 支持（Cordova 和本机应用程序）|	     ✔ 	      |      ✔	     |     ✔	           |        ✔	      |         ✔	      |
-| iOS 支持（Cordova 和本机应用程序）	     |	     ✔ 	      |      ✔	     |     ✔	           |        ✔	      |         ✔	      |
-| Windows 8.1 Universal 和 Windows 10 UWP（Cordova 应用程序）          |	     ✔ 	      |      ✔	     |     ✔	     |        -	           |         ✔	      |
+| Android 支持（Cordova 和本机应用程序）|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| iOS 支持（Cordova 和本机应用程序）	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Windows 8.1 Universal 和 Windows 10 UWP（Cordova 应用程序）          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
 | 数据加密	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| 最大存储量	                                 |可用空间 |    ~5MB    |      ~5MB   	 |  可用空间	   | 可用空间  |
-| 可靠存储（请参阅注释）	                     |	     ✔ 	      |      -	    |     -	     |        ✔	      |         ✔	      |
+| 最大存储量	                                 |可用空间 |    ~5MB    |   ~5MB   	 | 可用空间	   | 可用空间  |
+| 可靠存储（请参阅注释）	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
 | 跟踪本地更改	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
 | 多用户支持                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| 建立索引	                                         |	     ✔ 	      |      -	    |     ✔	           |        ✔	           |         -	      |
+| 建立索引	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
 | 存储类型	                                 | JSON 文档 | 键/值对 | JSON 文档 | 关系数据库 (SQL) | 字符串     |
 
 **注：**可靠存储意味着除非发生以下某个事件，否则不会删除您的数据：
@@ -575,6 +575,173 @@ accessor.replace(doc, {markDirty: true})
 accessor.remove(doc, {markDirty: true})
 ```
 
+
+### 与 CloudantDB 自动同步
+从 Mobile Foundation [CD 更新 2](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/8-0-cd-update-release) 开始，MFP JSONStore SDK 可用于自动化设备上的 JSONStore 集合与任何 CouchDB 数据库（包括 Cloudant）之间的数据同步。此功能在 iOS、android、cordova-android 和 cordova-ios 中可用。
+
+#### 在 JSONStore 与 Cloudant 之间设置同步
+要在 JSONStore 与 Cloudant 之间设置自动同步，请完成以下步骤：
+
+1. 在移动应用程序上定义同步策略。
+2. 在 IBM Mobile Foundation 上部署同步适配器。
+
+#### 定义同步策略
+通过同步策略来定义 JSONStore 集合与 Cloudant 数据库之间的同步方法。您可以在应用程序中为每个集合指定同步策略。
+
+可以使用同步策略对 JSONStore 集合进行初始化。同步策略可以是以下三个策略之一：
+
+<b>SYNC_DOWNSTREAM：</b>如果要将 Cloudant 中的数据下载到 JSONStore 集合，请使用此策略。这通常用于脱机存储所需的静态数据。例如，目录中的项目价格表。每次在设备上初始化集合时，都会从远程 Cloudant 数据库刷新数据。首次下载整个数据库时，后续刷新将仅下载变化量，包括在远程数据库上所做的更改。
+
+
+Android：
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
+```
+
+iOS：
+```
+openOptions.syncPolicy = SYNC_DOWNSTREAM;
+```
+
+Cordova：
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
+}
+```
+
+<b>SYNC_ UPSTREAM：</b>如果要将本地数据推送到 Cloudant 数据库，请使用此策略。例如，将脱机捕获的销售数据上载到 Cloudant 数据库。使用 SYNC_UPSTREAM 策略定义集合时，添加到集合的任何新记录都会在 Cloudant 中创建新记录。同样，在设备上的集合中修改的任何文档都将修改 Cloudant 上的文档，并且集合中删除的文档也将从 Cloudant 数据库中删除。
+
+
+Android：
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
+```
+
+iOS：
+```
+openOptions.syncPolicy = SYNC_UPSTREAM;
+```
+
+Cordova：
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
+}
+```
+
+<b>SYNC_NONE：</b>这是缺省策略。选择此策略以便不进行同步。
+
+<b><i>要点：</i></b>同步策略归因于 JSONStore 集合。在使用特定的同步策略对集合进行初始化之后，不应再更改该策略。修改同步策略可能会导致不良后果。
+
+<b>syncAdapterPath</b>
+
+这是部署的适配器名称。
+
+
+Android：
+```
+//Here "JSONStoreCloudantSync" is the name of the sync adapter deployed on MFP server.
+initOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+iOS：
+```
+openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+Cordova：
+```
+collection.sync = {
+	syncPolicy://One of the three sync policies,
+	syncAdapterPath : 'JSONStoreCloudantSync'
+}
+```
+
+#### 部署同步适配器
+从<a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">此处</a>下载 JSONStoreSync 适配器，在路径“src/main/adapter-resources/adapter.xml”中配置 cloudant 凭证，然后在 MobileFirst Server 中进行部署。
+通过 mfpconsole 将凭证配置到后端 Cloudant 数据库，如下所示：
+
+|---------------------------|-------------------------|
+|![配置 Cloudant]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/configure-cloudant.png)    |   ![Cloudant 凭证]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/CloudantCreds.jpg)|
+
+#### 使用此功能之前要考虑以下几点
+此功能仅可用于 Android、iOS、cordova-android 和 cordova-ios。
+
+JSONStore 集合名称与 CouchDB 数据库名称必须相同。在命名 JSONStore 集合之前，请仔细查看 CouchDB 数据库命名语法。
+
+在 Android 中，将同步回调侦听器定义为 *init* 选项的一部分，如下所示： 
+
+```
+//import com.worklight.jsonstore.api.JSONStoreSyncListener;
+JSONStoreSyncListener syncListener = new JSONStoreSyncListener() {
+	@Override
+	public void onSuccess(JSONObject json) {
+		//Implement success action
+	}
+
+	@Override
+	public void onFailure(JSONStoreException ex) {
+		//Implement failure action
+	}
+
+};
+initOptions.setSyncListener(syncListener);
+```
+
+在 iOS 中，使用过载 `opencollections` api，该 api 具有一个完成处理程序来启用同步（包括回调），如下所示：
+
+```
+JSONStore.sharedInstance().openCollections([collections], with: options, completionHandler: { (success, msg) in
+	self.logMessage("msg is : " + msg!);
+	//success flag is true if the sync succeeds, else on failure it is false and the message from the SDK is available through 'msg' argument.
+})
+```
+
+在 Cordova 中，将成功和失败回调定义为同步对象的一部分，如下所示：
+
+```
+function onsuccess(msg) {
+//Implement success action
+}
+
+function onfailure(msg) {
+//Implement failure action
+}
+
+collection.sync = {
+	syncPolicy : WL.JSONStore.syncOptions.SYNC_UPSTREAM, 
+	syncAdapterPath : 'JSONStoreCloudantSync',
+	onSyncSuccess : onsuccess,
+	onSyncFailure : onfailure
+};
+```
+
+只能使用允许的同步策略之一（即 SYNC_DOWNSTREAM、SYNC_UPSTREAM 或 SYNC_NONE）来定义 JSONStoreCollection。
+
+如果必须在显式初始化后的任何时间执行上游或下游同步，那么可以使用以下 API：
+
+`sync()`
+
+如果调用集合的同步策略设置为“SYNC_ DOWNSTREAM”，那么这将执行下游同步。否则，如果同步策略设置为“SYNC_ UPSTREAM”，那么将执行从 jsonstore 到 Cloudant 数据库的已添加、已删除和已替换文档的上游同步。 
+
+
+Android：   
+```
+WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
+```
+
+iOS：
+```
+collection.sync(); //Here collection is the JSONStore collection object that was initialized
+```
+
+Cordova：
+```
+WL.JSONStore.get(collectionName).sync();
+```
+>**注：**sync api 的成功和失败回调将被触发到同步侦听器（在 Android 中）、完成处理程序（在 IOS 中）和集合初始化期间声明的已定义回调（在 Cordova 中）。
+
 ### 推送
 {: #push }
 许多系统使用词汇推送来指代将数据发送到外部源。
@@ -595,7 +762,7 @@ accessor.remove(doc, {markDirty: true})
 
 以下所有代码示例都以类似于 JavaScript 的伪码来编写。
 
-**注：**针对传输层使用适配器。 使用适配器的优点包括服务器端代码和客户机端代码的 XML 到 JSON 转换、安全性、过滤和重复数据删除。
+>**注：**针对传输层使用适配器。 使用适配器的优点包括服务器端代码和客户机端代码的 XML 到 JSON 转换、安全性、过滤和重复数据删除。
 
 **内部数据源 API：JSONStore**  
 具有集合的存取器后，您可以调用 `getAllDirty` API 以获取标记为脏的所有文档。 这些文档中包含您要通过传输层发送到外部数据源的仅限本地更改。
@@ -643,7 +810,7 @@ accessor.getAllDirty()
 })
 ```
 
-**注：**您可能想要利用可传递到 `WLResourceRequest` API 的 `compressResponse`、`timeout` 以及其他参数。
+>**注：**您可能想要利用可传递到 `WLResourceRequest` API 的 `compressResponse`、`timeout` 以及其他参数。
 
 在 {{ site.data.keys.mf_server }} 上，适配器具有类似以下示例的 `updatePeople` 过程：
 

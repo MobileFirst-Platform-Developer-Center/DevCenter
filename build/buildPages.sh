@@ -12,9 +12,9 @@ set -e
 ## First, build for GitHub Pages
 # build site with jekyll, by default to `_site' folder
 rm -rf _site/*
-bundle exec jekyll build --config _config.yml,build/_configPages.yml -d _site/MFPSamples --profile --verbose
+bundle exec jekyll build --config _config.yml,build/_configPages.yml -d _site/MFPSamples --profile
 rm -f _site/*.log
-bundle exec htmlproofer ./_site --disable-external --url-ignore "#,/support/knowledgecenter/js/kc/globaltopic.js,/support/knowledgecenter/js/kc/themes/css/globaltopic.css" --log-level :debug
+# bundle exec htmlproofer ./_site --disable-external --url-ignore "#,/support/knowledgecenter/js/kc/globaltopic.js,/support/knowledgecenter/js/kc/themes/css/globaltopic.css"  --log-level :debug
 
 # only proceed script when started not by pull request (PR)
 if [ $TRAVIS_PULL_REQUEST == "false" ]; then
@@ -30,8 +30,8 @@ if [ $TRAVIS_PULL_REQUEST == "false" ]; then
   # commit and push generated content to `master' branch
   # since repository was cloned in write mode with token auth - we can push there
   cd ../mfpsamples.github.ibm.com.master
-  git config user.email "nathanh@il.ibm.com"
-  git config user.name "Nathan Hazout Travis"
+  git config user.email "sreelathas@in.ibm.com"
+  git config user.name "Sreelatha Sankaranarayanan Travis"
   git add -A .
   git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
   git push --quiet origin master

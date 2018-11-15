@@ -18,12 +18,14 @@ Para revisar todas as categorias e a visita de tutoriais:
 
 * [Todos os tutoriais](all-tutorials/)
 
-Para a visita de conteúdo curado: 
+Para a visita de conteúdo curado:
 
 * [Desenvolvimento do Cordova](cordova-tutorials/)
-* [Desenvolvimento do iOS](ios-tutorials/) 
-* [Desenvolvimento do Android](android-tutorials/) 
+* [Desenvolvimento Iônico ](ionic-tutorials/)
+* [Desenvolvimento do iOS](ios-tutorials/)
+* [Desenvolvimento do Android](android-tutorials/)
 * [Desenvolvimento do Windows 8.1 Universal e do Windows 10 UWP](windows-8-10-tutorials/)
 * [Desenvolvimento do Xamarin](xamarin-tutorials/)
+* [Reagir Desenvolvimento Nativo ](reactnative-tutorials/) 
 * [Desenvolvimento de aplicativo da Web](web-tutorials/)
 * [Desenvolvimento do lado do servidor](server-side-tutorials/)

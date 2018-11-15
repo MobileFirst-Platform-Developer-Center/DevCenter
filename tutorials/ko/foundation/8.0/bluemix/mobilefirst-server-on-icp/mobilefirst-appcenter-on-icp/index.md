@@ -65,7 +65,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
       ```bash
       bx pr login -a https://<ip>:<port>
       ```
-            선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
+      선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
 
   2. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
       ```
@@ -90,26 +90,26 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 {: #env-mf-appcenter }
 아래의 표에서는 {{ site.data.keys.prod_icp }}의 {{ site.data.keys.mf_app_center }}에서 사용되는 환경 변수를 제공합니다.
 
-|규정자 |매개변수 |정의 |허용값 |
+| 규정자 | 매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
-|arch |  |작업자 노드 아키텍처 |이 차트를 배치해야 하는 작업자 노드 아키텍처. **AMD64** 플랫폼만 현재 지원됩니다. |
-|image |pullPolicy |이미지 가져오기 정책 |기본값은 **IfNotPresent**입니다. |
-|  |name |Docker 이미지 이름 |{{ site.data.keys.mf_app_center }} Docker 이미지의 이름. |
-|  |tag |Docker 이미지 태그 |[Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
-|mobileFirstAppCenterConsole |user |{{ site.data.keys.mf_app_center }} 콘솔의 사용자 이름 |  |
-|  |password |{{ site.data.keys.mf_app_center }} 콘솔의 비밀번호 |  |
-|existingDB2Details |appCenterDB2Host |{{ site.data.keys.mf_app_center_short }} 데이터베이스가 구성된 DB2 서버의 IP 주소 |  |
-|  |appCenterDB2Port |설정된 DB2 데이터베이스의 포트 |  |
-|  |appCenterDB2Database |사용할 데이터베이스의 이름 |이전에 데이터베이스를 작성해야 합니다. |
-|  |appCenterDB2Username |DB2 데이터베이스에 액세스할 DB2 사용자 이름 |사용자에게 테이블을 작성하고 스키마를 작성할 수 있는 액세스 권한이 있어야 합니다(아직 없는 경우). |
-|  |appCenterDB2Password |제공된 데이터베이스의 DB2 비밀번호 |  |
-|  |appCenterDB2Schema |작성할 {{ site.data.keys.mf_app_center_short }} DB2 스키마  |  |
-|  |appCenterDB2ConnectionIsSSL |DB2 연결 유형 |데이터베이스 연결이 **http**여야 하는지 또는 **https**여야 하는지 지정하십시오. 기본값은 **false**(http)입니다. 또한 DB2 포트가 동일한 연결 모드로 구성되어 있는지 확인하십시오. |
-|keystores |keystoresSecretName |키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](../#configure-install-mf-helmcharts)을 참조하십시오. |  |
-|resources |limits.cpu |허용되는 최대 CPU 양 |기본값은 **1000m**입니다.<br/>자세한 정보는 [여기](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
-|  |limits.memory |허용되는 최대 메모리 양 |기본값은 **1024Mi**입니다.<br/>자세한 정보는 [여기](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
-|resources.requests |requests.cpu |필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. |기본값은 **1000m**입니다. |
-|  |requests.memory |필요한 최소 메모리 설명. 지정되지 않은 경우 메모리의 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. |기본값은 **1024Mi**입니다. |
+| arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처. **AMD64** 플랫폼만 현재 지원됩니다. |
+| image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
+|  | name | Docker 이미지 이름 | {{ site.data.keys.mf_app_center }} Docker 이미지의 이름. |
+|  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
+| mobileFirstAppCenterConsole | user | {{ site.data.keys.mf_app_center }} 콘솔의 사용자 이름 |  |
+|  | password | {{ site.data.keys.mf_app_center }} 콘솔의 비밀번호 |  |
+| existingDB2Details | appCenterDB2Host |{{ site.data.keys.mf_app_center_short }} 데이터베이스가 구성된 DB2 서버의 IP 주소 |  |
+|  | appCenterDB2Port | 설정된 DB2 데이터베이스의 포트 |  |
+|  | appCenterDB2Database | 사용할 데이터베이스의 이름 | 이전에 데이터베이스를 작성해야 합니다. |
+|  | appCenterDB2Username | DB2 데이터베이스에 액세스할 DB2 사용자 이름 | 사용자에게 테이블을 작성하고 스키마를 작성할 수 있는 액세스 권한이 있어야 합니다(아직 없는 경우). |
+|  | appCenterDB2Password | 제공된 데이터베이스의 DB2 비밀번호 |  |
+|  | appCenterDB2Schema | 작성할 {{ site.data.keys.mf_app_center_short }} DB2 스키마  |  |
+|  | appCenterDB2ConnectionIsSSL | DB2 연결 유형 | 데이터베이스 연결이 **http**여야 하는지 또는 **https**여야 하는지 지정하십시오. 기본값은 **false**(http)입니다. 또한 DB2 포트가 동일한 연결 모드로 구성되어 있는지 확인하십시오. |
+| keystores | keystoresSecretName | 키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](../#configure-install-mf-helmcharts)을 참조하십시오. |  |
+| resources | limits.cpu | 허용되는 최대 CPU 양 | 기본값은 **1000m**입니다.<br/>자세한 정보는 [여기](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+|  | limits.memory | 허용되는 최대 메모리 양 | 기본값은 **1024Mi**입니다.<br/>자세한 정보는 [여기](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
+| resources.requests | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. |기본값은 **1000m**입니다. |
+|  | requests.memory | 필요한 최소 메모리 설명. 지정되지 않은 경우 메모리의 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **1024Mi**입니다. |
 
 ## {{ site.data.keys.mf_app_center }} 설치 및 구성
 {: #configure-install-mf-appcenter-helmcharts}
