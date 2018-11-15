@@ -29,6 +29,10 @@ We are pleased to announce the continuous delivery (CD) update 3 for Mobile Foun
 >
 Mobile Foundation introduces the refresh token feature on iOS starting with this CD Update. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
 >
+##### <span style="color:NAVY">**Download admin CLI (*mfpadm*) from Mobile Foundation console**</span>
+>
+Mobile Foundation admin CLI (*mfpadm*) can now be downloaded from within the *Download Center* of the Mobile Foundation console.
+>
 
 #### Features included in this CD update (from previous iFixes)
 
