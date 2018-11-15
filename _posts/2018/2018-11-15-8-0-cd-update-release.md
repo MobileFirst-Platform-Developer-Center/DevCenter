@@ -25,18 +25,18 @@ We are pleased to announce the continuous delivery (CD) update 3 for Mobile Foun
 
 #### Features introduced with this CD update
 >
-##### <span style="color:NAVY">**Support for React Native development**</span>
+##### <span style="color:NAVY">**Support for refresh tokens on iOS**</span>
 >
 Mobile Foundation introduces the refresh token feature on iOS starting with this CD Update. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
 >
 
 #### Features included in this CD update (from previous iFixes)
 
-##### <span style="color:NAVY">**Support for Cordova v8 and Cordova Android v7**</span>
+##### <span style="color:NAVY">**Support for Node v8.x for MobileFirst CLI**</span>
 
-Starting from this iFix (*8.0.0.0-MFPF-IF201810040631*), Mobile Foundation adds support for Node v8.x for the MobileFirst CLI.
+Starting from this iFix (*8.0.0.0-MFPF-IF201810040631*), Mobile Foundation adds support for Node v8.x for MobileFirst CLI.
 
-##### <span style="color:NAVY">**Automated synchronization of JSONStore collections with CouchDB databases**</span>
+##### <span style="color:NAVY">**Remove dependency on *libstdc++* for Cordova projects**</span>
 
 Starting with this iFix (*8.0.0.0-MFPF-IF201809041150*), a change to remove *libstdc++* as a dependency to Cordova projects is introduced. This is required for new apps running on iOS 12. For further details, such as a workaround, refer to [this blog post](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/23/mfp-support-for-ios12/).
 
