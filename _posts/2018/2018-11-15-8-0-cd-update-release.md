@@ -100,7 +100,7 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="tools">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-tools" aria-expanded="true" aria-controls="collapse-tools">Tools</a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-tools" aria-expanded="true" aria-controls="collapse-tools"><b>Tools</b></a>
             </h4>
         </div>
         <div id="collapse-tools" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tools">
@@ -174,12 +174,12 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="reactnative-sdk">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-reactnative-sdk" aria-expanded="true" aria-controls="collapse-reactnative-sdk"><b>React Native SDK</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds" href="#collapse-reactnative-sdk" aria-expanded="true" aria-controls="collapse-reactnative-sdk">React Native SDK</a>
             </h4>
         </div>
         <div id="collapse-reactnative-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="reactnative-sdk">
             <div class="panel-body">
-                    <b>react-native-ibm-mobilefirst 8.0.2018072413</b><br/>
+                    react-native-ibm-mobilefirst 8.0.2018072413<br/>
             </div>
         </div>        
     </div>
