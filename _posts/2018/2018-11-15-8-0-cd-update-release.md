@@ -12,7 +12,7 @@ tags:
 author:
   name: Krishnakumar Balachandar
 ---
-We are pleased to announce the continuous delivery (CD) update 2 for Mobile Foundation v8.0.
+We are pleased to announce the continuous delivery (CD) update 3 for Mobile Foundation v8.0.
 
 >To learn more about the continuous delivery support model, refer to the [Mobile Foundation v8.0 CD support announcement](https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/0/897/ENUS217-390/index.html&request_locale=en).
 
