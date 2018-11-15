@@ -16,6 +16,46 @@ Download and install the latest interim fix to obtain all of the fixes that are 
 
 Where an APAR number is listed, you can confirm that an interim fix has that feature by searching the interim fix README file for that APAR number.
 
+### Features introduced with CD update 3 (8.0.0.0-MFPF-IF201811050432-CDUpdate-03)
+
+##### <span style="color:NAVY">**Support for refresh tokens on iOS**</span>
+
+Mobile Foundation introduces the refresh token feature on iOS starting with this CD Update. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
+
+##### <span style="color:NAVY">**Download admin CLI (*mfpadm*) from Mobile Foundation console**</span>
+
+Mobile Foundation admin CLI (*mfpadm*) can now be downloaded from within the *Download Center* of the Mobile Foundation console.
+
+##### <span style="color:NAVY">**Support for Node v8.x for MobileFirst CLI**</span>
+
+Starting from this iFix (*8.0.0.0-MFPF-IF201810040631*), Mobile Foundation adds support for Node v8.x for MobileFirst CLI.
+
+##### <span style="color:NAVY">**Remove dependency on *libstdc++* for Cordova projects**</span>
+
+Starting with this iFix (*8.0.0.0-MFPF-IF201809041150*), a change to remove *libstdc++* as a dependency to Cordova projects is introduced. This is required for new apps running on iOS 12. For further details, such as a workaround, refer to [this blog post](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/23/mfp-support-for-ios12/).
+
+### Features introduced with CD update 2 (8.0.0.0-MFPF-IF201807180449-CDUpdate-02)
+
+##### <span style="color:NAVY">**Support for React Native development**</span>
+
+Starting with the CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), Mobile Foundation [announces]({{site.baseurl}}/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/) the support for React Native development with the availability of IBM Mobile Foundation SDK for React Native apps. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/reactnative-tutorials/).
+
+##### <span style="color:NAVY">**Automated synchronization of JSONStore collections with CouchDB databases for iOS and Cordova SDK**</span>
+
+Starting with the CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), using MobileFirst iOS SDK and Cordova SDK, you can automate the synchronization of data between a JSONStore Collection on a device with any flavour of CouchDB database, including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). For more information on this feature, read this [blog post]({{site.baseurl}}/blog/2018/07/24/jsonstoresync-couchdb-databases-ios-and-cordova/).
+
+##### <span style="color:NAVY">**Introducing Refresh tokens**</span>
+
+Starting with the CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), Mobile Foundation now introduces special kind of tokens called Refresh tokens that can be used to request a new access token.  [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
+
+##### <span style="color:NAVY">**Support for Cordova v8 and Cordova Android v7**</span>
+
+Starting from this iFix (*8.0.0.0-MFPF-IF201804051553*), MobileFirst Cordova plugins for Cordova v8 and Cordova Android v7 is supported. To work with the mentioned version of Cordova, you need to get the latest MobileFirst plugins and upgrade to the latest CLI (mfpdev-cli) version. For details on supported versions for individual platforms, refer to  [Adding the MobileFirst Foundation SDK to Cordova Applications]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/cordova/#support-levels).
+
+##### <span style="color:NAVY">**Automated synchronization of JSONStore collections with CouchDB databases**</span>
+
+Starting with this iFix (*8.0.0.0-MFPF-IF201802201451*), using MobileFirst Android SDK, you can automate the synchronization of data between a JSONStore Collection on a device with any flavour of CouchDB database, including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). For more information on this feature, read this [blog post]({{site.baseurl}}/blog/2018/02/23/jsonstoresync-couchdb-databases/).
+
 ### Features introduced with CD update 1 (8.0.0.0-MFPF-IF201711230641-CDUpdate-01)
 
 ##### <span style="color:NAVY">**Support for Eclipse UI editor**</span>
@@ -81,29 +121,6 @@ Starting with CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, Mobile Founda
 ##### <span style="color:NAVY">**Mobile Foundation can now be deployed on Kubernetes clusters**</span>
 
 Starting with CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, Mobile Foundation user can now deploy Mobile Foundation, which includes the Mobile Foundation Server, Mobile Analytics Server, and the Application Center, on Kubernetes clusters. The deployment package has been updated to support Kubernetes deployment. Read the [announcement](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/09/mobilefoundation-on-kube/).
-
-### Features introduced with CD update 2 (8.0.0.0-MFPF-IF201807180449-CDUpdate-02)
-
-##### <span style="color:NAVY">**Support for React Native development**</span>
-
-Starting with the CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), Mobile Foundation [announces]({{site.baseurl}}/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/) the support for React Native development with the availability of IBM Mobile Foundation SDK for React Native apps. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/reactnative-tutorials/).
-
-##### <span style="color:NAVY">**Automated synchronization of JSONStore collections with CouchDB databases for iOS and Cordova SDK**</span>
-
-Starting with the CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), using MobileFirst iOS SDK and Cordova SDK, you can automate the synchronization of data between a JSONStore Collection on a device with any flavour of CouchDB database, including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). For more information on this feature, read this [blog post]({{site.baseurl}}/blog/2018/07/24/jsonstoresync-couchdb-databases-ios-and-cordova/).
-
-##### <span style="color:NAVY">**Introducing Refresh tokens**</span>
-
-Starting with the CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), Mobile Foundation now introduces special kind of tokens called Refresh tokens that can be used to request a new access token.  [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
-
-##### <span style="color:NAVY">**Support for Cordova v8 and Cordova Android v7**</span>
-
-Starting from this iFix (*8.0.0.0-MFPF-IF201804051553*), MobileFirst Cordova plugins for Cordova v8 and Cordova Android v7 is supported. To work with the mentioned version of Cordova, you need to get the latest MobileFirst plugins and upgrade to the latest CLI (mfpdev-cli) version. For details on supported versions for individual platforms, refer to  [Adding the MobileFirst Foundation SDK to Cordova Applications]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/cordova/#support-levels).
-
-##### <span style="color:NAVY">**Automated synchronization of JSONStore collections with CouchDB databases**</span>
-
-Starting with this iFix (*8.0.0.0-MFPF-IF201802201451*), using MobileFirst Android SDK, you can automate the synchronization of data between a JSONStore Collection on a device with any flavour of CouchDB database, including [Cloudant](https://www.ibm.com/in-en/marketplace/database-management). For more information on this feature, read this [blog post]({{site.baseurl}}/blog/2018/02/23/jsonstoresync-couchdb-databases/).
-
 
 <!--
 ### Licensing
