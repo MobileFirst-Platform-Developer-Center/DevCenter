@@ -120,7 +120,7 @@ This updates the existing mfp-server docker image with the customized registry.x
 
 The above set of instructions are applicable for using any other LDAP servers like IBM Directory Server, Microsoft Active Directory Server etc.
 
-####Configuring On-premise MobileFirst with LDAP Registry
+#### Configuring On-premise MobileFirst with LDAP Registry
 In case of OnPrem MobileFirst Installation with Liberty as the application server, do the following changes to your Liberty server.xml
 
 1. Add <**feature**>**ldapRegistry-3.0**</**feature**> under **<featureManager>** to enable LDAP communication between MFP running Liberty server and LDAP server.
@@ -140,7 +140,7 @@ In case of OnPrem MobileFirst Installation with Liberty as the application serve
 	 <member name="Push_MFPLDAPPOC"/>
 	 <member name="Admin_MFPLDAPPOC"/>
 	</ldapRegistry>
-```
+	```
 
 3. Comment out <**basicregistry**> entry and ensure below jndi properties are set to correct values.
 
@@ -148,8 +148,8 @@ In case of OnPrem MobileFirst Installation with Liberty as the application serve
 	<jndiEntry jndiName="mfp.admin.jmx.user" value='"MfpRESTUser"'/>
 	<jndiEntry jndiName="mfp.admin.jmx.pwd" value='"restuser"'/>
 	<jndiEntry jndiName="mfpadmin/mfp.config.service.password" value='"configuser"'/>
-    <jndiEntry jndiName="mfpadmin/mfp.config.service.user" value='"configUser_mfpadmin"'/>
-    ```
+    	<jndiEntry jndiName="mfpadmin/mfp.config.service.user" value='"configUser_mfpadmin"'/>
+    	```
 
 4. Make sure you configure <**security-role**> of an application by rightly adding appropriate users and group that has been defined in the above step. Below is the sample to configure <**security-role**> of an MobileFirst Admin Service Application.
 
@@ -171,7 +171,7 @@ In case of OnPrem MobileFirst Installation with Liberty as the application serve
         </application-bnd>
         <classloader delegation="parentLast">
         </classloader>
-    </application>
+    	</application>
 	```
 
 > For more details on Configuring LDAP user registries in Liberty, refer to the [documentation](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_sec_ldap.html)
