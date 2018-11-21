@@ -56,23 +56,14 @@ There are two steps for querying data from a JSONStore collection:
     Refer to the following code:
 
     ```javascript
-    var favCollection = new JsonStoreCollection('favourites');
-    var q = new JSONStoreQuery();
+    var favCollection = new JSONStoreCollection('favourites');
     var queryPart1 = new JSONStoreQueryPart();
     queryPart1.addBetween("age", 21, 50);
 
     var queryPart2 = new JSONStoreQueryPart();
     queryPart2.addEqual("gender", "female");
 
-    query.addQueryPart(queryPart1);
-    query.addQueryPart(queryPart2);
-
-    /**
-     * Now the query means: return all the objects where "age" is
-     * between 21-50 OR where "gender" is "female".
-     */
-
-    favCollection.findDocuments(query)
+    favCollection.findDocuments([queryPart1, queryPart2])
     .then(data => {
     	console.log("Succesfully fetched all documents from collection!"));
     	console.log("Data: " + JSON.stringify(data));
