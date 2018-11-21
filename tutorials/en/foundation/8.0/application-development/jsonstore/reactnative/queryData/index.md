@@ -38,41 +38,36 @@ Rarely would you want to get all the documents in a collection at the same time.
 Inside your `App.js` you need to import the following packages:
 
 ```javascript
-import { JsonStoreCollection, WLJsonStore } from 'react-native-ibm-mobilefirst-jsonstore';
+import { JSONStoreCollection, WLJSONStore } from 'react-native-ibm-mobilefirst-jsonstore';
 ```
 
 There are two steps for querying data from a JSONStore collection:
 
 1. Opening a Collection, opening a collection allows us to interact with it.
     ```javascript
-    WLJsonStore.openCollections(['favourites']).then(data => { console.log(data); }).catch(err =>{ console.log(err); });
+    WLJSONStore.openCollections(['favourites']).then(data => { console.log(data); }).catch(err =>{ console.log(err); });
     ```
 
 2. Fetching data from a Collection: After you have opened a collection, you can fetch the documents based on given query. For querying JSONStore two classes are provided to work with `JSONStoreQuery` and `JSONStoreQueryPart`.<br/>
-    A `JSONStoreQuery` contains one or more `JSONStoreQueryPart`.<br/>
-    Multiple `JSONStoreQueryPart` objects for the same `JSONStoreQuery` are joined using **OR** statement.<br/>
-    Multiple conditions for one `JSONStoreQueryPart` are joined using an **AND** statement.
+    You can use multiple JSONStoreQueryPart objects for same call by passing each JSONStoreQueryPart object in an array.
+    Multiple JSONStoreQueryPart objects are joined using an OR statement.
+    Multiple conditions for one JSONStoreQueryPart are joined using an AND statement.
 
     Refer to the following code:
 
     ```javascript
-    var favCollection = new JsonStoreCollection('favourites');
-    var q = new JSONStoreQuery();
+    var favCollection = new JSONStoreCollection('favourites');
     var queryPart1 = new JSONStoreQueryPart();
     queryPart1.addBetween("age", 21, 50);
 
     var queryPart2 = new JSONStoreQueryPart();
     queryPart2.addEqual("gender", "female");
 
-    query.addQueryPart(queryPart1);
-    query.addQueryPart(queryPart2);
+    // Notice how multiple JSONStoreQueryPart objects are passed in an array to build a complex query
+    // The following call will return - all the Documents that has either
+    // "gender" set to "female" OR has "age" between range 21 - 50
 
-    /**
-     * Now the query means: return all the objects where "age" is
-     * between 21-50 OR where "gender" is "female".
-     */
-
-    favCollection.findDocuments(query)
+    favCollection.findDocuments([queryPart1, queryPart2])
     .then(data => {
     	console.log("Succesfully fetched all documents from collection!"));
     	console.log("Data: " + JSON.stringify(data));
