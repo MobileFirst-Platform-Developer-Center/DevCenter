@@ -1,0 +1,81 @@
+{
+  "coverage": "86.89%",
+  "expectCount": 145,
+  "actualCount": 126,
+  "files": {
+    "js/JSONStoreAddOptions.js": {
+      "expectCount": 6,
+      "actualCount": 5,
+      "undocumentLines": [
+        35
+      ]
+    },
+    "js/JSONStoreChangeOptions.js": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
+    "js/JSONStoreCollection.js": {
+      "expectCount": 35,
+      "actualCount": 29,
+      "undocumentLines": [
+        20,
+        22,
+        44,
+        47,
+        50,
+        53
+      ]
+    },
+    "js/JSONStoreFindOptions.js": {
+      "expectCount": 10,
+      "actualCount": 10,
+      "undocumentLines": []
+    },
+    "js/JSONStoreInitOptions.js": {
+      "expectCount": 10,
+      "actualCount": 10,
+      "undocumentLines": []
+    },
+    "js/JSONStoreQueryPart.js": {
+      "expectCount": 20,
+      "actualCount": 19,
+      "undocumentLines": [
+        16
+      ]
+    },
+    "js/JSONStoreSyncPolicy.js": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
+    "js/Utils.js": {
+      "expectCount": 7,
+      "actualCount": 7,
+      "undocumentLines": []
+    },
+    "js/WLJSONStore.js": {
+      "expectCount": 12,
+      "actualCount": 11,
+      "undocumentLines": [
+        15
+      ]
+    },
+    "js/WLLogger.js": {
+      "expectCount": 33,
+      "actualCount": 23,
+      "undocumentLines": [
+        16,
+        24,
+        60,
+        63,
+        66,
+        69,
+        72,
+        75,
+        78,
+        87
+      ]
+    }
+  }
+}
