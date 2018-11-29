@@ -23,7 +23,8 @@ authorization server issues it. Thus each time client obtains new access token b
 refresh token. With each new refresh token the expiry window shall extend to 30 days from the time of issuing the token pair. This gives experience of never expiring token.
 
 ## Usage
-Following diagram illustrates high level flow steps between MFP client and server –
+Following diagram illustrates high level flow steps between MFP client and server
+
 ![Flow]({{site.baseurl}}/assets/blog/2018-11-29-IBM-MobileFirst-Refresh-Token/flow.png)
 
 1.	Initially client sends a request to obtain an access token
