@@ -223,18 +223,6 @@ Web applications have the following limitations:
 - {: #web_app_limit_ms_ie_n_edge }
 In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative app messages and client web SDK messages are displayed according to the operating system's region-format preference, and not according to the configured browser or operating-system display-language preferences. See also [Defining administrator messages in multiple languages](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
 
-### WKWebView support for iOS Cordova applications
-{: #wkwebview-support-for-ios-cordova-applications }
-App notifications and Direct Update features might not work well in iOS Cordova apps with WKWebView.
-
-This limitation is due to the defect file:// url XmlHttpRequests are not allowed in WKWebViewEgine in **cordova-plugin-wkwebview-engine**.
-
-To circumvent this issue, run the following command in your Cordova project: `cordova plugin add https://github.com/apache/cordova-plugins.git#master:wkwebview-engine-localhost`
-
-Executing this command would run a local web server in your Cordova application, you can then host and access your local files instead of using the file URI scheme (file://) to work with local files.
-
-**Note:** This Cordova plug-in is not published to the Node package manager (npm).
-
 ### cordova-plugin-statusbar does not work with Cordova application loaded with cordova-plugin-mfp.
 {: #cordova-plugin-statusbar-does-not-work-with-cordova-application-loaded-with-cordova-plugin-mfp }
 cordova-plugin-statusbar will not work with Cordova application loaded with cordova-plugin-mfp.
@@ -281,3 +269,39 @@ Modifying the default behaviour of a Cordova app (such as overriding the back bu
 For other failures with submission to Google Play Store, you can contact Google support.
 
 >**Note:** If you are using MobileFirst 8.0 iFix release version from Jan 2018 or later, it is recommended that you update both server and client to the same version.
+
+### Access errors while installing MobileFirst CLI using Node 8 
+{:#mfpdev-cli-installation errors} 
+While installing the MobileFirst CLI using npm, you may see the following errors in the Terminal output. 
+
+```> bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+> node-gyp rebuild
+
+gyp ERR! clean error 
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok 
+
+> utf-8-validate@1.2.2 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+> node-gyp rebuild
+
+gyp ERR! clean error 
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok 
+
+> fsevents@1.2.4 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/fsevents
+> node install
+```
+
+This error is due a [known bug in node-gyp](https://github.com/nodejs/node-gyp/issues/1547). These errors can be ignored as this does not affect the functioning of the MobileFirst CLI. This is applicable for *mfpdev-cli iFix level 8.0.2018100112* and higher. To overcome this error, use the `--no-optional` flag during installation. For example, 
+
+```npm install -g mfpdev-cli --no-optional```
