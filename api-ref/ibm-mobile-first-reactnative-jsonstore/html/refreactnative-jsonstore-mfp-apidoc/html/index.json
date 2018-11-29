@@ -1,0 +1,4783 @@
+[
+  {
+    "__docId__": 1,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Infinity",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 2,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~NaN",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 3,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~undefined",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 4,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~null",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 5,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 6,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~object",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 7,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 8,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~function",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 9,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 10,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~boolean",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 11,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Symbol",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 12,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Error",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 13,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~EvalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 14,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~InternalError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 15,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~RangeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 16,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~ReferenceError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 17,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~SyntaxError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 18,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~TypeError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 19,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~URIError",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 20,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 21,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~number",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 22,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Date",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 23,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~String",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 24,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~string",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 25,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~RegExp",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 26,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 27,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 28,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint8Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 29,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint8ClampedArray",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 30,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 31,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint16Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 32,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Int32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 33,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Uint32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 34,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Float32Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 35,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Float64Array",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 36,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Map",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 37,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Set",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 38,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~WeakMap",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 39,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~WeakSet",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 40,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~ArrayBuffer",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 41,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~DataView",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 42,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~JSON",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 43,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Promise",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 44,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Generator",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 45,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~GeneratorFunction",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 46,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Reflect",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 47,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "js/.external-ecmascript.js",
+    "static": true,
+    "longname": "js/.external-ecmascript.js~Proxy",
+    "access": "public",
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 48,
+    "kind": "file",
+    "name": "js/JSONStoreAddOptions.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/JSONStoreAddOptions.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 49,
+    "kind": "class",
+    "name": "JSONStoreAddOptions",
+    "memberof": "js/JSONStoreAddOptions.js",
+    "static": true,
+    "longname": "js/JSONStoreAddOptions.js~JSONStoreAddOptions",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "JSONStoreAddOptions",
+    "description": "Options that are used to control the add operation in JSONStoreCollection.",
+    "lineNumber": 14,
+    "interface": false
+  },
+  {
+    "__docId__": 50,
+    "kind": "member",
+    "name": "markDirty",
+    "memberof": "js/JSONStoreAddOptions.js~JSONStoreAddOptions",
+    "static": false,
+    "longname": "js/JSONStoreAddOptions.js~JSONStoreAddOptions#markDirty",
+    "access": "public",
+    "description": "",
+    "lineNumber": 19,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/JSONStoreAddOptions.js~JSONStoreAddOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreAddOptions.js~JSONStoreAddOptions#constructor",
+    "access": "public",
+    "description": "Constructor",
+    "lineNumber": 31,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "markDirty",
+        "description": "Flag to mark a document dirty. Default is false."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "additionalSearchFields",
+        "description": "additional search fields for the add operation."
+      }
+    ]
+  },
+  {
+    "__docId__": 54,
+    "kind": "member",
+    "name": "additionalSearchFields",
+    "memberof": "js/JSONStoreAddOptions.js~JSONStoreAddOptions",
+    "static": false,
+    "longname": "js/JSONStoreAddOptions.js~JSONStoreAddOptions#additionalSearchFields",
+    "access": "public",
+    "description": null,
+    "lineNumber": 35,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "method",
+    "name": "addAdditionalSearchField",
+    "memberof": "js/JSONStoreAddOptions.js~JSONStoreAddOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreAddOptions.js~JSONStoreAddOptions#addAdditionalSearchField",
+    "access": "public",
+    "description": "Add an additional search field for the add operation.",
+    "lineNumber": 43,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "The key of additional search field to include with the document."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "The value of additional search field for 'key' to include with the document. Accepted value types are: ('string', 'boolean', 'integer', 'number')"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "name": "addAdditionalSearchFields",
+    "memberof": "js/JSONStoreAddOptions.js~JSONStoreAddOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreAddOptions.js~JSONStoreAddOptions#addAdditionalSearchFields",
+    "access": "public",
+    "description": "Add multiple additional search fields for the add operation.",
+    "lineNumber": 52,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "extraSearchFields",
+        "description": "An JSON Object that contains key/value pairs for additional search fields."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 57,
+    "kind": "file",
+    "name": "js/JSONStoreChangeOptions.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/JSONStoreChangeOptions.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 58,
+    "kind": "class",
+    "name": "JSONStoreChangeOptions",
+    "memberof": "js/JSONStoreChangeOptions.js",
+    "static": true,
+    "longname": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "JSONStoreChangeOptions",
+    "description": "Options that are used to modify the change operation in JSONStoreCollection.",
+    "lineNumber": 14,
+    "interface": false
+  },
+  {
+    "__docId__": 59,
+    "kind": "member",
+    "name": "addNew",
+    "memberof": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions",
+    "static": false,
+    "longname": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions#addNew",
+    "access": "public",
+    "description": "",
+    "lineNumber": 19,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 60,
+    "kind": "member",
+    "name": "markDirty",
+    "memberof": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions",
+    "static": false,
+    "longname": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions#markDirty",
+    "access": "public",
+    "description": "",
+    "lineNumber": 24,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "member",
+    "name": "searchFieldCriteria",
+    "memberof": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions",
+    "static": false,
+    "longname": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions#searchFieldCriteria",
+    "access": "public",
+    "description": "",
+    "lineNumber": 29,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 62,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions#constructor",
+    "access": "public",
+    "description": "Constructor",
+    "lineNumber": 37,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "addNew",
+        "description": "Flag to set if the document should be added if a previously stored document could not be found."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "markDirty",
+        "description": "Flag to mark a document dirty. Default is false."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "searchFieldCriteria",
+        "description": "An Array of search fields that is used to compare in the database that is found in the document."
+      }
+    ]
+  },
+  {
+    "__docId__": 66,
+    "kind": "member",
+    "name": "convertToJSON",
+    "memberof": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions",
+    "static": false,
+    "longname": "js/JSONStoreChangeOptions.js~JSONStoreChangeOptions#convertToJSON",
+    "access": "public",
+    "description": "",
+    "lineNumber": 50,
+    "ignore": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 67,
+    "kind": "file",
+    "name": "js/JSONStoreCollection.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/JSONStoreCollection.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 68,
+    "kind": "variable",
+    "name": "jsonStoreCollection",
+    "memberof": "js/JSONStoreCollection.js",
+    "static": true,
+    "longname": "js/JSONStoreCollection.js~jsonStoreCollection",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 20,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "variable",
+    "name": "nameMap",
+    "memberof": "js/JSONStoreCollection.js",
+    "static": true,
+    "longname": "js/JSONStoreCollection.js~nameMap",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 22,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "class",
+    "name": "JSONStoreCollection",
+    "memberof": "js/JSONStoreCollection.js",
+    "static": true,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "JSONStoreCollection",
+    "description": "This class represents a single JSONStore collection. Operations on the collection can be done by using the API for this class.",
+    "lineNumber": 27,
+    "interface": false
+  },
+  {
+    "__docId__": 71,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 31,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "name",
+        "description": "the name of the JSONStoreCollection."
+      }
+    ]
+  },
+  {
+    "__docId__": 72,
+    "kind": "get",
+    "name": "BOOLEAN",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection.BOOLEAN",
+    "access": "public",
+    "description": null,
+    "lineNumber": 44,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 73,
+    "kind": "get",
+    "name": "INTEGER",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection.INTEGER",
+    "access": "public",
+    "description": null,
+    "lineNumber": 47,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 74,
+    "kind": "get",
+    "name": "NUMBER",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection.NUMBER",
+    "access": "public",
+    "description": null,
+    "lineNumber": 50,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 75,
+    "kind": "get",
+    "name": "STRING",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection.STRING",
+    "access": "public",
+    "description": null,
+    "lineNumber": 53,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 76,
+    "kind": "method",
+    "name": "addData",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#addData",
+    "access": "public",
+    "description": "Add data and create a new document in the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 69,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "New JSON data to be added to the collection"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "JSONStoreAddOptions"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options",
+        "description": "Options to be applied while adding the object"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an empty string in case of success and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 77,
+    "kind": "method",
+    "name": "changeData",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#changeData",
+    "access": "public",
+    "description": "Change a list of documents in the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 91,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "dataList",
+        "description": "List of JSON documents"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "JSONStoreChangeOptions"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "jsonStoreChangeOptions",
+        "description": "Options to be applied while changing the objects"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of number of documents affected and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 78,
+    "kind": "method",
+    "name": "countAllDocuments",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#countAllDocuments",
+    "access": "public",
+    "description": "Count the number of documents in the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 107,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of the count of all documents. In case of any error this function returns a JSON."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 79,
+    "kind": "method",
+    "name": "countAllDirtyDocuments",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#countAllDirtyDocuments",
+    "access": "public",
+    "description": "Count the number of dirty documents in the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 121,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of the count of all dirty documents. In case of any error this function returns a JSON."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 80,
+    "kind": "method",
+    "name": "countDocuments",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#countDocuments",
+    "access": "public",
+    "description": "Count the number of documents in the collection that are based on the given query.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 137,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array<JSONStoreQueryPart>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "query",
+        "description": "An array of JSONStoreQueryPart objects that limits the count scope. Every query part in the arrayare joined by an OR operation."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "includeDeleted",
+        "description": "Additional options to modify the count operation."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of the count of documents based on given query and whether to include deleted documents. In case of any error this function returns a JSON."
+    }
+  },
+  {
+    "__docId__": 81,
+    "kind": "method",
+    "name": "clearCollection",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#clearCollection",
+    "access": "public",
+    "description": "Removes all documents from a collection, but does not destroy the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 160,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an empty string in case of success. In case of any error this function returns a JSON."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 82,
+    "kind": "method",
+    "name": "findAllDirtyDocuments",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#findAllDirtyDocuments",
+    "access": "public",
+    "description": "Find all the dirty documents in the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 174,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Array, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an array of documents that are found dirty in the collection. In case of any error this function returns a JSON."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 83,
+    "kind": "method",
+    "name": "findAllDocuments",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#findAllDocuments",
+    "access": "public",
+    "description": "Find all documents in the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 189,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "JSONStoreFindOptions"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options",
+        "description": "The find query that restricts the search."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Array, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an array of documents that are found in the collection with the given Find Options. In case of any error this function returns a JSON."
+    }
+  },
+  {
+    "__docId__": 84,
+    "kind": "method",
+    "name": "findDocumentById",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#findDocumentById",
+    "access": "public",
+    "description": "Find a document in the collection based on the given ID.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 205,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "The unique id that is associated with a document in the database (the _id search field)."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<object, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a document that is found for this given id. In case of any error this function returns a JSON."
+    }
+  },
+  {
+    "__docId__": 85,
+    "kind": "method",
+    "name": "findDocumentsById",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#findDocumentsById",
+    "access": "public",
+    "description": "Find all documents in the collection that have the given ids.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 221,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ids",
+        "description": "An array of unique ids that are associated with a document in the database (the _id search field)."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Array, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an array of all the documents that are found for this given ids. In case of any error this function returns a JSON."
+    }
+  },
+  {
+    "__docId__": 86,
+    "kind": "method",
+    "name": "findDocuments",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#findDocuments",
+    "access": "public",
+    "description": "Find documents in the collection that are based on the given query.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 238,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array<JSONStoreQueryPart>"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "query",
+        "description": "An array of JSONStoreQueryPart objects that limits the count scope. Every query part in the arrayare joined by an OR operation."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "JSONStoreFindOptions"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options",
+        "description": "Additional options to modify the count operation."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Array, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an array of all the documents that are found for this given query and find options. In case of any error this function returns a JSON."
+    }
+  },
+  {
+    "__docId__": 87,
+    "kind": "method",
+    "name": "getAdditionalSearchFields",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#getAdditionalSearchFields",
+    "access": "public",
+    "description": "Get a map of the additional search fields for this collection.",
+    "lineNumber": 249,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<object>"
+      ],
+      "spread": false,
+      "description": "This function returns an object of all the additional search fields for the given collection."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 88,
+    "kind": "method",
+    "name": "getSearchFields",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#getSearchFields",
+    "access": "public",
+    "description": "Get a map of all search fields for this collection.",
+    "lineNumber": 258,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<object>"
+      ],
+      "spread": false,
+      "description": "This function returns an object of all the search fields for the given collection."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 89,
+    "kind": "method",
+    "name": "hasAdditionalSearchField",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#hasAdditionalSearchField",
+    "access": "public",
+    "description": "Determines if the collection contains the given additional search field.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 273,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The name of the additional search field to check for existence."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<boolean, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a boolean value indicative of whether the collection contains the given additional search field or not, and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 90,
+    "kind": "method",
+    "name": "hasSearchField",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#hasSearchField",
+    "access": "public",
+    "description": "The name of the search field to check for existence.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 289,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The name of the additional search field to check for existence."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<boolean, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a boolean value indicative of whether the collection contains the given search field or not, and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 91,
+    "kind": "method",
+    "name": "isDocumentDirty",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#isDocumentDirty",
+    "access": "public",
+    "description": "Determine if a document is dirty or not.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 305,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "ID of the document to be checked."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<boolean, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a boolean value indicative of whether the document is dirty or not, and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 92,
+    "kind": "method",
+    "name": "markDocumentClean",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#markDocumentClean",
+    "access": "public",
+    "description": "Mark a document in the collection clean.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 321,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "document",
+        "description": "JSON document to be marked as clean."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of number of documents affected and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 93,
+    "kind": "method",
+    "name": "markDocumentsClean",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#markDocumentsClean",
+    "access": "public",
+    "description": "Mark an array of documents in the collection clean.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 337,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "documents",
+        "description": "An Array of JSON documents to be marked as clean."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of number of documents affected and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 94,
+    "kind": "method",
+    "name": "removeCollection",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#removeCollection",
+    "access": "public",
+    "description": "Permanently deletes all the documents that are stored in a collection and destroys the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 352,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an empty string in case of success and it returns a JSON in case of any error"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 95,
+    "kind": "method",
+    "name": "removeDocumentById",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#removeDocumentById",
+    "access": "public",
+    "description": "Remove a document from the collection that is based on the given id.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 368,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "ID of the document to be deleted."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "markDirty",
+        "description": "Mark the document as dirty. Default is false."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of number of documents affected and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 96,
+    "kind": "method",
+    "name": "removeDocumentsById",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#removeDocumentsById",
+    "access": "public",
+    "description": "Remove array of documents from the collection, based on the given ids.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 386,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ids",
+        "description": "ID of the document to be deleted."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "markDirty",
+        "description": "Mark the document as dirty using this flag. Default is false."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of number of documents affected and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 97,
+    "kind": "method",
+    "name": "replaceDocument",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#replaceDocument",
+    "access": "public",
+    "description": "Replace a document in the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 404,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "document",
+        "description": "A JSONObject that represents the document to update in the collection. The document's '_id' is used to determine which document to replace."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "markDirty",
+        "description": "Mark the document as dirty using this flag. Default is false."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of number of documents affected and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 98,
+    "kind": "method",
+    "name": "replaceDocuments",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#replaceDocuments",
+    "access": "public",
+    "description": "Replace an array of documents in the collection.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 422,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "documents",
+        "description": "A List that contains JSONObjects that represent the documents to update in the collection. The document's '_id' is used to determine which document to replace. If all documents could not be updated, a rollback is performed to a state where no documents were updated."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "markDirty",
+        "description": "Mark the document as dirty using this flag. Default is false."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a number indicative of number of documents affected and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 99,
+    "kind": "method",
+    "name": "setAdditionalSearchField",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#setAdditionalSearchField",
+    "access": "public",
+    "description": "Set an additional search field for the collection.",
+    "lineNumber": 434,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "The name of the additional search field to add. Only useful before the collection is opened."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchFieldType",
+        "description": "The type of the search field. Accepted values are ('boolean', 'integer', 'number', 'string')"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 100,
+    "kind": "method",
+    "name": "setSearchField",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#setSearchField",
+    "access": "public",
+    "description": "Set a search field for the collection.",
+    "lineNumber": 452,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "key",
+        "description": "The name of the additional search field to add. Only useful before the collection is opened."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchFieldType",
+        "description": "The type of the search field. Accepted values are ('boolean', 'integer', 'number', 'string')"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 101,
+    "kind": "method",
+    "name": "sync",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#sync",
+    "access": "public",
+    "description": "Sync this collection based on Sync policy set when the collection was opened.",
+    "lineNumber": 468,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 102,
+    "kind": "method",
+    "name": "wasReopened",
+    "memberof": "js/JSONStoreCollection.js~JSONStoreCollection",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/JSONStoreCollection.js~JSONStoreCollection#wasReopened",
+    "access": "public",
+    "description": "Determine if the collection was reopened when it was initialized.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 481,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<boolean, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns a boolean value and it returns a JSON in case of any error"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 103,
+    "kind": "file",
+    "name": "js/JSONStoreFindOptions.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/JSONStoreFindOptions.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 104,
+    "kind": "class",
+    "name": "JSONStoreFindOptions",
+    "memberof": "js/JSONStoreFindOptions.js",
+    "static": true,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "JSONStoreFindOptions",
+    "description": "Options that are used to modify the find operation in JSONStoreCollection.",
+    "lineNumber": 14,
+    "interface": false
+  },
+  {
+    "__docId__": 105,
+    "kind": "member",
+    "name": "limit",
+    "memberof": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "static": false,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions#limit",
+    "access": "public",
+    "description": "",
+    "lineNumber": 19,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 106,
+    "kind": "member",
+    "name": "offset",
+    "memberof": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "static": false,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions#offset",
+    "access": "public",
+    "description": "",
+    "lineNumber": 24,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 107,
+    "kind": "member",
+    "name": "filters",
+    "memberof": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "static": false,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions#filters",
+    "access": "public",
+    "description": "",
+    "lineNumber": 29,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 108,
+    "kind": "member",
+    "name": "sortAscending",
+    "memberof": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "static": false,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions#sortAscending",
+    "access": "public",
+    "description": "",
+    "lineNumber": 34,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 109,
+    "kind": "member",
+    "name": "sortDescending",
+    "memberof": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "static": false,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions#sortDescending",
+    "access": "public",
+    "description": "",
+    "lineNumber": 39,
+    "type": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 110,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 49,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "limit",
+        "description": "The maximum number of results to be returned."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "offset",
+        "description": "The offset of which results will begin."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "filters",
+        "description": "The search fields to be returned on the results of the find operation."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "sortAscending",
+        "description": "The search fields by which the results will be sorted in ascending order."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Array"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "sortDescending",
+        "description": "The search fields by which the results will be sorted in descending order."
+      }
+    ]
+  },
+  {
+    "__docId__": 116,
+    "kind": "method",
+    "name": "addFilter",
+    "memberof": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions#addFilter",
+    "access": "public",
+    "description": "Add a search filter to the existing list of search fields.",
+    "lineNumber": 64,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "filterField",
+        "description": "The search field to Filter"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 117,
+    "kind": "method",
+    "name": "addSortAscending",
+    "memberof": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions#addSortAscending",
+    "access": "public",
+    "description": "Add a new search field by which the results will be sorted. The search field will sort the results in a ascending manner against the search field. Note that it will be sorted in the order that they were added. For example, if you add searchField1 and then searchField2, it will sort according to searchField1, and then any ties will be sorted according to searchField2.",
+    "lineNumber": 73,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "sortField",
+        "description": "The search field that is used for a ascending sort."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 118,
+    "kind": "method",
+    "name": "addSortDescending",
+    "memberof": "js/JSONStoreFindOptions.js~JSONStoreFindOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreFindOptions.js~JSONStoreFindOptions#addSortDescending",
+    "access": "public",
+    "description": "Add a new search field by which the results will be sorted. The search field will sort the results in a descending manner against the search field. Please note that it will be sorted in the order that they were added. For example, if you add searchField1 and then searchField2, it will sort according to searchField1, and then any ties will be sorted according to searchField2.",
+    "lineNumber": 82,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "sortField",
+        "description": "The search field that is used for a descending sort."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 119,
+    "kind": "file",
+    "name": "js/JSONStoreInitOptions.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/JSONStoreInitOptions.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 120,
+    "kind": "class",
+    "name": "JSONStoreInitOptions",
+    "memberof": "js/JSONStoreInitOptions.js",
+    "static": true,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "JSONStoreInitOptions",
+    "description": "Options that are used to modify the init operation in WLJSONStore.",
+    "lineNumber": 15,
+    "interface": false
+  },
+  {
+    "__docId__": 121,
+    "kind": "member",
+    "name": "username",
+    "memberof": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "static": false,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions#username",
+    "access": "public",
+    "description": "",
+    "lineNumber": 20,
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 122,
+    "kind": "member",
+    "name": "password",
+    "memberof": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "static": false,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions#password",
+    "access": "public",
+    "description": "",
+    "lineNumber": 25,
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 123,
+    "kind": "member",
+    "name": "enableAnalytics",
+    "memberof": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "static": false,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions#enableAnalytics",
+    "access": "public",
+    "description": "",
+    "lineNumber": 30,
+    "type": {
+      "nullable": null,
+      "types": [
+        "boolean"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 124,
+    "kind": "member",
+    "name": "secureRandom",
+    "memberof": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "static": false,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions#secureRandom",
+    "access": "public",
+    "description": "",
+    "lineNumber": 35,
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 125,
+    "kind": "member",
+    "name": "pbkdf2Iterations",
+    "memberof": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "static": false,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions#pbkdf2Iterations",
+    "access": "public",
+    "description": "",
+    "lineNumber": 40,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 126,
+    "kind": "member",
+    "name": "syncAdapterPath",
+    "memberof": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "static": false,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions#syncAdapterPath",
+    "access": "public",
+    "description": "",
+    "lineNumber": 45,
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 127,
+    "kind": "member",
+    "name": "syncPolicy",
+    "memberof": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "static": false,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions#syncPolicy",
+    "access": "public",
+    "description": "",
+    "lineNumber": 50,
+    "type": {
+      "nullable": null,
+      "types": [
+        "JSONStoreSyncPolicy"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 128,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions#constructor",
+    "access": "public",
+    "description": "Constructor to initialize JSONStoreInitOptions",
+    "lineNumber": 60,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "username",
+        "description": "The user name"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "password",
+        "description": "The password to be used for the store."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "enableAnalytics",
+        "description": "When true, analytics will be logged for JSONStore."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "secureRandom",
+        "description": "The secure random string to be used by security artifacts."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "pbkdf2Iterations",
+        "description": ""
+      }
+    ]
+  },
+  {
+    "__docId__": 136,
+    "kind": "method",
+    "name": "setSyncOptions",
+    "memberof": "js/JSONStoreInitOptions.js~JSONStoreInitOptions",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreInitOptions.js~JSONStoreInitOptions#setSyncOptions",
+    "access": "public",
+    "description": "Set Synchronization Options for the collection set",
+    "lineNumber": 78,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "JSONStoreSyncPolicy"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "syncPolicy",
+        "description": "Must be either of ['SYNC_NONE', 'SYNC_DOWNSTREAM', 'SYNC_UPSTREAM']"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "syncAdapterPath",
+        "description": "Name of the Sync Adapter"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 139,
+    "kind": "file",
+    "name": "js/JSONStoreQueryPart.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/JSONStoreQueryPart.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 140,
+    "kind": "variable",
+    "name": "jsonStoreQueryPart",
+    "memberof": "js/JSONStoreQueryPart.js",
+    "static": true,
+    "longname": "js/JSONStoreQueryPart.js~jsonStoreQueryPart",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 141,
+    "kind": "class",
+    "name": "JSONStoreQueryPart",
+    "memberof": "js/JSONStoreQueryPart.js",
+    "static": true,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "{JSONStoreQueryPart}",
+    "description": "This class is used to build query objects. It represents a group of operations that are joined with an AND.",
+    "lineNumber": 25,
+    "interface": false
+  },
+  {
+    "__docId__": 142,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 29,
+    "ignore": true
+  },
+  {
+    "__docId__": 143,
+    "kind": "method",
+    "name": "addBetween",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addBetween",
+    "access": "public",
+    "description": "Add BETWEEN criteria to the query part.",
+    "lineNumber": 40,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare start and end against with a BETWEEN statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "start",
+        "description": "All documents that are returned must have the search field set to a number greater than or equal to this start."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "end",
+        "description": "All documents that are returned must have the search field set to a number less than or equal to this end."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 144,
+    "kind": "method",
+    "name": "addNotBetween",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addNotBetween",
+    "access": "public",
+    "description": "Add NOT BETWEEN criteria to the query part.",
+    "lineNumber": 54,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare start and end against with a NOT BETWEEN statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "start",
+        "description": "All documents that are returned must have the search field set to a number greater than or equal to this start."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "end",
+        "description": "All documents that are returned must have the search field set to a number less than or equal to this end."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 145,
+    "kind": "method",
+    "name": "addGreaterThan",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addGreaterThan",
+    "access": "public",
+    "description": "Add GREATER THAN criteria to the query part.",
+    "lineNumber": 67,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare with a GREATER THAN statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "All documents returned must have the search field set to a number greater than this value."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 146,
+    "kind": "method",
+    "name": "addGreaterThanOrEqual",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addGreaterThanOrEqual",
+    "access": "public",
+    "description": "Add GREATER THAN OR EQUAL criteria to the query part.",
+    "lineNumber": 79,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare with a GREATER THAN OR EQUAL statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "All documents returned must have the search field set to a number greater than or equal to this value."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 147,
+    "kind": "method",
+    "name": "addLessThan",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addLessThan",
+    "access": "public",
+    "description": "Add LESS THAN criteria to the query part.",
+    "lineNumber": 91,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare with a LESS THAN statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "All documents returned must have the search field set to a number less than this value."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 148,
+    "kind": "method",
+    "name": "addLessThanOrEqual",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addLessThanOrEqual",
+    "access": "public",
+    "description": "Add LESS THAN OR EQUAL criteria to the query part.",
+    "lineNumber": 103,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare with a LESS THAN OR EQUAL statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "All documents returned must have the search field set to a number less or equal than this value."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 149,
+    "kind": "method",
+    "name": "addInside",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addInside",
+    "access": "public",
+    "description": "Add a INSIDE criteria to the query part.",
+    "lineNumber": 115,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare with an INSIDE statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "values",
+        "description": "An non-empty list of numbers, booleans, and/or strings. All documents where the search field is one of the values in the list."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 150,
+    "kind": "method",
+    "name": "addNotInside",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addNotInside",
+    "access": "public",
+    "description": "Add a NOT INSIDE criteria to the query part.",
+    "lineNumber": 127,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare with a NOT INSIDE statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "values",
+        "description": "An non-empty list of numbers, booleans, and/or strings. All matching documents must not match the search field to one of the values in the list."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 151,
+    "kind": "method",
+    "name": "addEqual",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addEqual",
+    "access": "public",
+    "description": "Add a EQUAL criteria to the query part.",
+    "lineNumber": 139,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare with an EQUAL statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Search field's value for the EQUAL criteria."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 152,
+    "kind": "method",
+    "name": "addNotEqual",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addNotEqual",
+    "access": "public",
+    "description": "Add a NOT EQUAL criteria to the query part.",
+    "lineNumber": 169,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare with a NOT EQUAL statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Search field's value for the NOT EQUAL criteria."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 153,
+    "kind": "method",
+    "name": "addLike",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addLike",
+    "access": "public",
+    "description": "Add a LIKE criteria to the query part.",
+    "lineNumber": 199,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare with a LIKE statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Search field's value for the LIKE criteria."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 154,
+    "kind": "method",
+    "name": "addLeftLike",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addLeftLike",
+    "access": "public",
+    "description": "Add a LEFT LIKE criteria to the query part.",
+    "lineNumber": 229,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare start and end against with a LEFT LIKE statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Search field's value for the LEFT LIKE criteria."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 155,
+    "kind": "method",
+    "name": "addRightLike",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addRightLike",
+    "access": "public",
+    "description": "Add a RIGHT LIKE criteria to the query part.",
+    "lineNumber": 259,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare start and end against with a RIGHT LIKE statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Search field's value for the RIGHT LIKE criteria."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 156,
+    "kind": "method",
+    "name": "addNotLike",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addNotLike",
+    "access": "public",
+    "description": "Add a NOT LIKE criteria to the query part.",
+    "lineNumber": 289,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare start and end against with a NOT LIKE statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Search field's value for the NOT LIKE criteria."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 157,
+    "kind": "method",
+    "name": "addNotLeftLike",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addNotLeftLike",
+    "access": "public",
+    "description": "Add a NOT LEFT LIKE criteria to the query part.",
+    "lineNumber": 319,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare start and end against with a NOT LEFT LIKE statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Search field's value for the NOT LEFT LIKE criteria."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 158,
+    "kind": "method",
+    "name": "addNotRightLike",
+    "memberof": "js/JSONStoreQueryPart.js~JSONStoreQueryPart",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreQueryPart.js~JSONStoreQueryPart#addNotRightLike",
+    "access": "public",
+    "description": "Add a NOT RIGHT LIKE criteria to the query part.",
+    "lineNumber": 349,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "searchField",
+        "description": "The search field to compare start and end against with a NOT RIGHT LIKE statement."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "any"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "Search field's value for the NOT RIGHT LIKE criteria."
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 159,
+    "kind": "variable",
+    "name": "queryPartMap",
+    "memberof": "js/JSONStoreQueryPart.js",
+    "static": true,
+    "longname": "js/JSONStoreQueryPart.js~queryPartMap",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "{queryPartMap}",
+    "description": "",
+    "lineNumber": 20,
+    "ignore": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 160,
+    "kind": "file",
+    "name": "js/JSONStoreSyncPolicy.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/JSONStoreSyncPolicy.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 161,
+    "kind": "class",
+    "name": "JSONStoreSyncPolicy",
+    "memberof": "js/JSONStoreSyncPolicy.js",
+    "static": true,
+    "longname": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "JSONStoreSyncPolicy",
+    "description": "This class contains Syncronization Policies for a JSONStore collection",
+    "lineNumber": 11,
+    "interface": false
+  },
+  {
+    "__docId__": 162,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 16,
+    "ignore": true
+  },
+  {
+    "__docId__": 163,
+    "kind": "member",
+    "name": "type",
+    "memberof": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy",
+    "static": false,
+    "longname": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy#type",
+    "access": "public",
+    "description": "",
+    "lineNumber": 20,
+    "type": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 164,
+    "kind": "get",
+    "name": "SYNC_DOWNSTREAM",
+    "memberof": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy.SYNC_DOWNSTREAM",
+    "access": "public",
+    "description": "",
+    "lineNumber": 26,
+    "return": {
+      "nullable": null,
+      "types": [
+        "JSONStoreSyncPolicy"
+      ],
+      "spread": false,
+      "description": "Downstream Sync Policy"
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 165,
+    "kind": "get",
+    "name": "SYNC_UPSTREAM",
+    "memberof": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy.SYNC_UPSTREAM",
+    "access": "public",
+    "description": "",
+    "lineNumber": 31,
+    "return": {
+      "nullable": null,
+      "types": [
+        "JSONStoreSyncPolicy"
+      ],
+      "spread": false,
+      "description": "Upstream Sync Policy"
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 166,
+    "kind": "get",
+    "name": "SYNC_NONE",
+    "memberof": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy.SYNC_NONE",
+    "access": "public",
+    "description": "",
+    "lineNumber": 36,
+    "return": {
+      "nullable": null,
+      "types": [
+        "JSONStoreSyncPolicy"
+      ],
+      "spread": false,
+      "description": "This is the default Sync Policy"
+    },
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 167,
+    "kind": "file",
+    "name": "js/Utils.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/Utils.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 168,
+    "kind": "function",
+    "name": "_isNativeType",
+    "memberof": "js/Utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/Utils.js~_isNativeType",
+    "access": "private",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": null,
+    "description": "",
+    "lineNumber": 58,
+    "ignore": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "boolean"
+      ]
+    }
+  },
+  {
+    "__docId__": 169,
+    "kind": "function",
+    "name": "_mandatoryParam",
+    "memberof": "js/Utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/Utils.js~_mandatoryParam",
+    "access": "private",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "{_mandatoryParam}",
+    "description": "",
+    "lineNumber": 12,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameterName",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 170,
+    "kind": "function",
+    "name": "_checkParamClassType",
+    "memberof": "js/Utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/Utils.js~_checkParamClassType",
+    "access": "private",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "{_checkParamClassType}",
+    "description": "",
+    "lineNumber": 20,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameter",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "classType",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 171,
+    "kind": "function",
+    "name": "_checkParamType",
+    "memberof": "js/Utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/Utils.js~_checkParamType",
+    "access": "private",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "{_checkParamType}",
+    "description": "",
+    "lineNumber": 48,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameter",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "type",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 172,
+    "kind": "variable",
+    "name": "ParamTypes",
+    "memberof": "js/Utils.js",
+    "static": true,
+    "longname": "js/Utils.js~ParamTypes",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "{ParamTypes}",
+    "description": "",
+    "lineNumber": 77,
+    "ignore": true,
+    "type": {
+      "types": [
+        "{\"STRING\": string, \"NUMBER\": string, \"BOOLEAN\": string}"
+      ]
+    }
+  },
+  {
+    "__docId__": 173,
+    "kind": "function",
+    "name": "_checkIfNativeType",
+    "memberof": "js/Utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/Utils.js~_checkIfNativeType",
+    "access": "private",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "{_checkIfNativeType}",
+    "description": "",
+    "lineNumber": 68,
+    "ignore": true,
+    "params": [
+      {
+        "name": "value",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 174,
+    "kind": "function",
+    "name": "_checkParamArrayType",
+    "memberof": "js/Utils.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/Utils.js~_checkParamArrayType",
+    "access": "private",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "{_checkParamArrayType}",
+    "description": "",
+    "lineNumber": 30,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameter",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "classType",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 175,
+    "kind": "file",
+    "name": "js/WLJSONStore.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/WLJSONStore.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 176,
+    "kind": "variable",
+    "name": "wlJsonStore",
+    "memberof": "js/WLJSONStore.js",
+    "static": true,
+    "longname": "js/WLJSONStore.js~wlJsonStore",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 177,
+    "kind": "class",
+    "name": "WLJSONStore",
+    "memberof": "js/WLJSONStore.js",
+    "static": true,
+    "longname": "js/WLJSONStore.js~WLJSONStore",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "WLJSONStore",
+    "description": "This class is the public WLJSONStore API for React-Native applications.",
+    "lineNumber": 20,
+    "interface": false
+  },
+  {
+    "__docId__": 178,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 24,
+    "ignore": true
+  },
+  {
+    "__docId__": 179,
+    "kind": "method",
+    "name": "changePassword",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#changePassword",
+    "access": "public",
+    "description": "Change the password for the given user.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 39,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "username",
+        "description": "The user name."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "oldPassword",
+        "description": "The old password."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "newPassword",
+        "description": "The new password."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "pbkdf2Iterations",
+        "description": "The number of iterations used by the Password-Based Key Derivation Function 2 algorithm used to secure the password."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an empty string in case of success and it returns a JSON in case of any error."
+    }
+  },
+  {
+    "__docId__": 180,
+    "kind": "method",
+    "name": "closeAll",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#closeAll",
+    "access": "public",
+    "description": "Locks access to all the collections until the init method is called.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 63,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an empty string in case of success and it returns a JSON in case of any error"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 181,
+    "kind": "method",
+    "name": "commitTransaction",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#commitTransaction",
+    "access": "public",
+    "description": "Commit a transaction.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 78,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an empty string in case of success and it returns a JSON in case of any error"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 182,
+    "kind": "method",
+    "name": "destroy",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#destroy",
+    "access": "public",
+    "description": "Permanently deletes all data for all users, clears security artifacts, and removes accessors.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 94,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "username",
+        "description": "The user name."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an empty string in case of success and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 183,
+    "kind": "method",
+    "name": "getFileInfo",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#getFileInfo",
+    "access": "public",
+    "description": "Returns an array of objects with information about all the stores in the device.",
+    "examples": [
+      "- This is how a sample response will look like:\n[\n {\n     encrypted:false,\n     fileSize:7168,\n     username:\"com.worklight.jsonstore\"\n }\n]"
+    ],
+    "lineNumber": 112,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Array, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an Array of JSON Objects in case of success, representing the details of the JSONStore info, and it returns a JSON in case of any error"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 184,
+    "kind": "method",
+    "name": "openCollections",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#openCollections",
+    "access": "public",
+    "description": "Provides access to the collections that are inside the store, and creates them if they do not already exist.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 128,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "array"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "collections",
+        "description": "An array of collection definitions (JSONStoreCollection objects) that are to be initialized (either reopened or created)."
+      },
+      {
+        "nullable": null,
+        "types": [
+          "JSONStoreInitOptions"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options",
+        "description": "An object of class JSONStoreInitOptions. This is a specific set of options to initialize the collection with (such as security credentials)."
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string, JSON>"
+      ],
+      "spread": false,
+      "description": "This function returns an empty string in case of success and it returns a JSON in case of any error"
+    }
+  },
+  {
+    "__docId__": 185,
+    "kind": "method",
+    "name": "rollbackTransaction",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#rollbackTransaction",
+    "access": "public",
+    "description": "Roll back a transaction.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 145,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<boolean, JSON>"
+      ],
+      "spread": false,
+      "description": "This returns a boolean value on completion - true for success, false for failure."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 186,
+    "kind": "method",
+    "name": "setAnalyticsEnabled",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#setAnalyticsEnabled",
+    "access": "public",
+    "description": "Enable or disable the collection of analytic data for JSONStore.",
+    "lineNumber": 155,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "isAnalyticsEnabled",
+        "description": "ture: to collect Analytics data, false: otherwise"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 187,
+    "kind": "method",
+    "name": "startTransaction",
+    "memberof": "js/WLJSONStore.js~WLJSONStore",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLJSONStore.js~WLJSONStore#startTransaction",
+    "access": "public",
+    "description": "Start a transaction.",
+    "examples": [
+      "- If the promise is rejected, an error JSON in the following format is available with more information.\n{\n     errorMsg: \"Error adding data to collection: favourites\", \n     reason: \"Collection is not initialized.\"\n}"
+    ],
+    "lineNumber": 169,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string, JSON>"
+      ],
+      "spread": false,
+      "description": "This returns an empty string on success, and a JSON in case of any error."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 188,
+    "kind": "file",
+    "name": "js/WLLogger.js",
+    "content": "",
+    "static": true,
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/react-native-ibm-mobilefirst-jsonstore/js/WLLogger.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 189,
+    "kind": "variable",
+    "name": "wlLogger",
+    "memberof": "js/WLLogger.js",
+    "static": true,
+    "longname": "js/WLLogger.js~wlLogger",
+    "access": "public",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    },
+    "ignore": true
+  },
+  {
+    "__docId__": 190,
+    "kind": "function",
+    "name": "_mandatoryParam",
+    "memberof": "js/WLLogger.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/WLLogger.js~_mandatoryParam",
+    "access": "private",
+    "export": false,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 24,
+    "undocument": true,
+    "ignore": true,
+    "params": [
+      {
+        "name": "parameterName",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 191,
+    "kind": "class",
+    "name": "WLLogger",
+    "memberof": "js/WLLogger.js",
+    "static": true,
+    "longname": "js/WLLogger.js~WLLogger",
+    "access": "public",
+    "export": true,
+    "importPath": "react-native-ibm-mobilefirst-jsonstore",
+    "importStyle": "WLLogger",
+    "description": "WLLogger is a class for logging that provides some enhanced capability such as capturing log calls, \npackage filtering, and log level control at both global and individual package scope. \n\nIt also provides a method call to send captured logs to the IBM MobileFirst Platform server. \n\nLog file data is sent to the IBM MobileFirst Platform server when this class's send() method is called and the accumulated log size is greater than zero. \nWhen the log data is successfully uploaded, the persisted local log data is deleted.\n\nWhen this Logger class's capture flag is turned on via setCapture(true) method call, \nall messages passed through this class's log methods will be persisted to store in the following JSON object format:",
+    "examples": [
+      "{\n  \"timestamp\"    : \"17-02-2013 13:54:27:123\",  // \"dd-MM-yyyy hh:mm:ss:S\"\n  \"level\"        : \"ERROR\",                    // FATAL || ERROR || WARN || INFO || LOG || DEBUG || TRACE\n  \"package\"      : \"your_tag\",                 // typically a class name, app name, or JavaScript object name\n  \"msg\"          : \"the message\",              // a helpful log message\n  \"metadata\"     : {\"hi\": \"world\"},            // (optional) additional JSON metadata, appended via doLog API call\n  \"threadid\"     : long                        // (optional) id of the current thread\n}"
+    ],
+    "lineNumber": 48,
+    "interface": false
+  },
+  {
+    "__docId__": 192,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#constructor",
+    "access": "public",
+    "description": "",
+    "lineNumber": 54,
+    "unknown": [
+      {
+        "tagName": "@constructor",
+        "tagValue": "Create or get an instance of the WLLogger class for a given tag. "
+      }
+    ]
+  },
+  {
+    "__docId__": 193,
+    "kind": "get",
+    "name": "TRACE",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/WLLogger.js~WLLogger.TRACE",
+    "access": "public",
+    "description": null,
+    "lineNumber": 60,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 194,
+    "kind": "get",
+    "name": "DEBUG",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/WLLogger.js~WLLogger.DEBUG",
+    "access": "public",
+    "description": null,
+    "lineNumber": 63,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 195,
+    "kind": "get",
+    "name": "LOG",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/WLLogger.js~WLLogger.LOG",
+    "access": "public",
+    "description": null,
+    "lineNumber": 66,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 196,
+    "kind": "get",
+    "name": "INFO",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/WLLogger.js~WLLogger.INFO",
+    "access": "public",
+    "description": null,
+    "lineNumber": 69,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 197,
+    "kind": "get",
+    "name": "WARN",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/WLLogger.js~WLLogger.WARN",
+    "access": "public",
+    "description": null,
+    "lineNumber": 72,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 198,
+    "kind": "get",
+    "name": "ERROR",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/WLLogger.js~WLLogger.ERROR",
+    "access": "public",
+    "description": null,
+    "lineNumber": 75,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 199,
+    "kind": "get",
+    "name": "FATAL",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "js/WLLogger.js~WLLogger.FATAL",
+    "access": "public",
+    "description": null,
+    "lineNumber": 78,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "__docId__": 200,
+    "kind": "method",
+    "name": "init",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#init",
+    "access": "public",
+    "description": "",
+    "lineNumber": 86,
+    "ignore": true,
+    "params": [
+      {
+        "name": "tag",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 201,
+    "kind": "member",
+    "name": "logTag",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#logTag",
+    "access": "public",
+    "description": null,
+    "lineNumber": 87,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 202,
+    "kind": "method",
+    "name": "debug",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#debug",
+    "access": "public",
+    "description": "Logs a message at DEBUG level",
+    "lineNumber": 97,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 203,
+    "kind": "method",
+    "name": "debugWithMetadata",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#debugWithMetadata",
+    "access": "public",
+    "description": "Logs a message at DEBUG level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 106,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 204,
+    "kind": "method",
+    "name": "error",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#error",
+    "access": "public",
+    "description": "Logs a message at ERROR level",
+    "lineNumber": 117,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The error  message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 205,
+    "kind": "method",
+    "name": "errorWithMetadata",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#errorWithMetadata",
+    "access": "public",
+    "description": "Logs a message at ERROR level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 127,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The error message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 206,
+    "kind": "method",
+    "name": "warn",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#warn",
+    "access": "public",
+    "description": "Logs a message at WARN level",
+    "lineNumber": 139,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The warning message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 207,
+    "kind": "method",
+    "name": "warnWithMetadata",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#warnWithMetadata",
+    "access": "public",
+    "description": "Logs a message at WARN level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 149,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The warning message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 208,
+    "kind": "method",
+    "name": "info",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#info",
+    "access": "public",
+    "description": "Logs a message at INFO level",
+    "lineNumber": 161,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The information message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 209,
+    "kind": "method",
+    "name": "infoWithMetadata",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#infoWithMetadata",
+    "access": "public",
+    "description": "Logs a message at INFO level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 171,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The information message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 210,
+    "kind": "method",
+    "name": "trace",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#trace",
+    "access": "public",
+    "description": "Logs a message at TRACE level",
+    "lineNumber": 183,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The trace message to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 211,
+    "kind": "method",
+    "name": "traceWithMetadata",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#traceWithMetadata",
+    "access": "public",
+    "description": "Logs a message at TRACE level with additional metadata. The metadata is available as custom fields while creating custom charts on the MobileFirst Analytics Console. ",
+    "lineNumber": 193,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "The trace message to log"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "metadata",
+        "description": "Any additional metadata to log."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 212,
+    "kind": "method",
+    "name": "setCapture",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#setCapture",
+    "access": "public",
+    "description": "Global setting to turn persisting of log data passed to this class's log methods on or off.",
+    "lineNumber": 202,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "boolean"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "capture",
+        "description": "True to turn on logging, false to turn it off."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 213,
+    "kind": "method",
+    "name": "getCapture",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#getCapture",
+    "access": "public",
+    "description": "Get the current value of the capture flag, indicating that the Logger is recording log calls persistently. ",
+    "lineNumber": 210,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<boolean>"
+      ],
+      "spread": false,
+      "description": "true, if logging is enabled, false otherwise."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 214,
+    "kind": "method",
+    "name": "setFilters",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#setFilters",
+    "access": "public",
+    "description": "Filter on packages at and above designated LEVEL. \nThis is a white list. Any package not listed in the filters will not be logged. \nPass null or an empty HashMap parameter to remove filters and resume logging at the default LEVEL.",
+    "lineNumber": 220,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "filter",
+        "description": "set of filters and associated level (and above) to allow for logging"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 215,
+    "kind": "method",
+    "name": "getFilters",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#getFilters",
+    "access": "public",
+    "description": "Get the current list of filters.",
+    "lineNumber": 228,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<Object>"
+      ],
+      "spread": false,
+      "description": "The current list of filters in the form of  {\"packageName\" : \"LEVEL\"}"
+    },
+    "params": []
+  },
+  {
+    "__docId__": 216,
+    "kind": "method",
+    "name": "getLevel",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#getLevel",
+    "access": "public",
+    "description": "Get the current Logger level.",
+    "lineNumber": 236,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<string>"
+      ],
+      "spread": false,
+      "description": "A string representation of the current Logging level. Possible values are TRACE, DEBUG, LOG, INFO, WARN, ERROR, FATAL. The default value is FATAL."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 217,
+    "kind": "method",
+    "name": "send",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#send",
+    "access": "public",
+    "description": "Send the accumulated log data when the persistent log buffer exists and is not empty. \nThe data accumulates in the log buffer from the use of Logger with capture turned on.",
+    "lineNumber": 244,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 218,
+    "kind": "method",
+    "name": "setLevel",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#setLevel",
+    "access": "public",
+    "description": "Set the level and above at which log messages should be saved/printed. \nA null parameter value is ignored and has no effect.",
+    "examples": [
+      "var homePageLogger = new WLLogger(\"HomePage\");\nhomePageLogger.setCapture(true); \nhomePageLogger.setLevel (WLLogger.DEBUG);\nhomePageLogger.debug(\"User exited home page.\");"
+    ],
+    "lineNumber": 258,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "level",
+        "description": "A string representation of the Logger level. Valid values are TRACE, DEBUG, LOG, INFO, WARN, ERROR, FATAL. You can use the properties defined in WLLogger as well."
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 219,
+    "kind": "method",
+    "name": "updateConfigFromServer",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#updateConfigFromServer",
+    "access": "public",
+    "description": "Get and apply the configuration from the IBM MobileFirst Platform Server. \nThe configuration comes from the use of the \"Config Profiles\" tab in the IBM MobileFirst Platform administrative console.",
+    "lineNumber": 266,
+    "params": [],
+    "return": null
+  },
+  {
+    "__docId__": 220,
+    "kind": "method",
+    "name": "getMaxFileSize",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": true,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#getMaxFileSize",
+    "access": "public",
+    "description": "Get the current setting for the max file size threshold.",
+    "lineNumber": 274,
+    "return": {
+      "nullable": null,
+      "types": [
+        "Promise<number>"
+      ],
+      "spread": false,
+      "description": "The current threashold of the maximum file size."
+    },
+    "params": []
+  },
+  {
+    "__docId__": 221,
+    "kind": "method",
+    "name": "setMaxFileSize",
+    "memberof": "js/WLLogger.js~WLLogger",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "js/WLLogger.js~WLLogger#setMaxFileSize",
+    "access": "public",
+    "description": "Set the maximum size of the local log file. Once the maximum file size is reached, no more data will be appended. \nThe file must then be sent to the server using the send() API. ",
+    "lineNumber": 283,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "sizeInBytes",
+        "description": "The maximum size of the file in number of bytes. The minimum is 10000."
+      }
+    ],
+    "return": null
+  },
+  {
+    "kind": "index",
+    "content": "# \n<!---\n   Licensed Materials - Property of IBM\n\n   (C) Copyright 2018 IBM Corp.\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an \"AS IS\" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.\n-->\n\n# React Native SDK for IBM MobileFirst JSONStore\n\n## Description\nThe IBM Mobile Foundation JSONStore is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of JSON documents. Documents in an application are available in JSONStore even when the device is offline. This persistent, always-available storage can be useful to give users access to documents when,for example, there is no network connection available in the device.\n\n### Key features\n* Automatic upstream or downstream synchronization of on-device data with a Cloudant database (or a database compliant with the Couch DB protocol).\n* Data indexing for efficient searching\n* Mechanism for tracking local-only changes to the stored data\n* Support for multiple users\n* AES 256 encryption of stored data provides security and confidentiality. You can segment protection by user with password-protection, in the case of more than one user on a single device.\n\nRead more about JSONStore [here](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/jsonstore/).\n\n## Changelog\nFor details of the changes in this latest release, visit the [IBM Mobile Foundation Blog](http://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/8-0-master-ifix-release).\n\n\n## Installation\n\nThe IBM MobileFirst&trade; JSONStore SDK for React Native apps is dependent on the [IBM MobileFirst Foundation SDK](https://www.npmjs.com/package/react-native-ibm-mobilefirst). If you have already added the IBM MobileFirst Foundation SDK to your app, continue with the instructions below.\n\nNavigate to the folder of your React Native app and run the following command to install the JSONStore SDK for React Native apps. \n\n`npm install react-native-ibm-mobilefirst-jsonstore --save`\n\t\n## Getting Started \n\n### Pre-requisites \n1. Make sure you have all the pre-requisites for a React Native app covered. See the [React Native Getting Started](https://facebook.github.io/react-native/docs/getting-started.html) page if you're new to this whole stuff. \n\n2. A [Mobile Foundation instance on IBM Cloud] (https://console.bluemix.net/catalog/services/Mobile%20Foundation) OR\nan [on-premise installation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/) of the IBM Mobile Foundation server. \n\n\n### Create a React Native Project \n\n* The first step is to create a React Native project. Let's call our app as the `JSONStoreApp`. Use the React Native CLI to create a new project. \n\n> `react-native init JSONStoreApp`\n> \n>`cd JSONStoreApp `\n\n* Install the MobileFirst Core SDK and complete the Getting Started Instructions from [here](https://www.npmjs.com/package/react-native-ibm-mobilefirst). \n\n* Next, add the IBM MobileFirst JSONStore SDK to your app\n\n\n>`npm install react-native-ibm-mobilefirst-jsonstore —-save`\n\n* Link your project so that all native dependencies are added to your React Native project. \n\n>`react-native link`\n\n\n\n\n### Creating a JSONStore Collection\n\nThe first step in using the JSONStore API is to create a JSONStore Collection. \n\nImport the JSONStore classes into your application. Open `App.js` and add the following line among the other import statements\n\n```\nimport {WLJSONStore, JSONStoreCollection} from 'react-native-ibm-mobilefirst-jsonstore'; \n```\n\nNext, create and open a collection. You can open multiple collections at once. Pass a `JSONStoreInitOptions` parameter for advanced options such as protecting your collection with a password, setting up sync policies etc. \n\n```\nvar dogs = new JSONStoreCollection('dogs'); \nWLJSONStore.openCollections(['dogs']);  // Provide the name of the collection as a string. \n```\n\n### Adding data to a collection \nAdd JSON data to your collection. \n\n```\n\tvar hachi = { \"name\" : \"Hachiko\" , \"breed\" : \"Akita\" , \"country\" : \"Japan\"}; \n    dogs.addData(hachi).then( ()=> { \n      // Data was added to the collection successfully.\n    }).catch ( (err) => { \n      // Error adding data. See the err object for more information on the error \n    })\n```\n\n### Querying data from a collection \nUse any of the JSONStoreCollection.find* APIs to query a collection. \nUse JSONStoreQueryPart and JSONStoreQuery APIs for advanced filtering and querying of JSON data. \n\n```\n\tdogs.findAllDocuments().then( (result) => { \n       // result will have all the documents in the collection \n       // E.g. [ {\"json\": {\"name\":\"Hachiko\",\"breed\":\"Akita\",\"country\":\"Japan\"},\"_id\":2}]       \n     }).catch((error) => {\n        console.error (\"Error finding docs \" +  JSON.stringify(error));\n     });\n```\n\n### Closing, clearing and destroying your collection \nClosing your collection will close your JSONStore collection for further access until it is opened again using the `openCollections` API \n\n```\nWLJSONStore.closeAll()\n```\n\nClearing a collection will remove all documents from a collection but does not destroy it. \n\n```\n\tdogs.clearCollection().then (()=>{\n\t\t// All documents cleared successfully\n     }).catch( (err) => { \n       // An error occurred while clearing the collection. \n     })\n```\n\nDestroying a collection will permanently delete all data, all accessors and security artifacts. A collection once destroyed cannot be restored. All collections of the app will be destroyed. \n\n```\n\tWLJSONStore.destroy()\n```\n\n\n\n## Supported platforms\n- Android\n- iOS\n\n## Documentation\n\n- [Developer Center](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/)\n\n- [Getting Started](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/reactnative-tutorials/)\n\n- [API Reference](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/api/client-side-api/reactnative/jsonstore/) \n\n\n\nCopyright 2018 IBM Corp.\n\nIBM - IBM MobileFirst Platform Foundation v8.0 license agreement\n\n[Terms of Use](https://mobilefirstplatform.ibmcloud.com/licenses/ipla)\n\n\n",
+    "longname": "/Users/srihari/GitHub/mfp-react-native/jsonstore/README.md",
+    "name": "./README.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "packageJSON",
+    "content": "",
+    "longname": "",
+    "name": "",
+    "static": true,
+    "access": "public"
+  }
+]

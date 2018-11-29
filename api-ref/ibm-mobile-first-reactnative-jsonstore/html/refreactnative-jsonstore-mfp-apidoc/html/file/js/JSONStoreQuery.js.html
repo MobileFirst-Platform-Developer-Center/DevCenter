@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">js/JSONStoreQuery.js | react-native-ibm-jsonstore</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="React Native SDK for IBM JSONStore. Works with IBM Mobile First"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="react-native-ibm-jsonstore"><meta property="twitter:description" content="React Native SDK for IBM JSONStore. Works with IBM Mobile First"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreAddOptions.js~JSONStoreAddOptions.html">JSONStoreAddOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreChangeOptions.js~JSONStoreChangeOptions.html">JSONStoreChangeOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreCollection.js~JSONStoreCollection.html">JSONStoreCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreFindOptions.js~JSONStoreFindOptions.html">JSONStoreFindOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreInitOptions.js~JSONStoreInitOptions.html">JSONStoreInitOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreQuery.js~JSONStoreQuery.html">JSONStoreQuery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreQueryPart.js~JSONStoreQueryPart.html">JSONStoreQueryPart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy.html">JSONStoreSyncPolicy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/WLJSONStore.js~WLJSONStore.html">WLJSONStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/WLLogger.js~WLLogger.html">WLLogger</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/JSONStoreQuery.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* Licensed Materials - Property of IBM
+ * 5725-I43 (C) Copyright IBM Corp. 2018. All Rights Reserved.
+ * US Government Users Restricted Rights - Use, duplication or
+ * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ */
+
+/* author - Yash Soni | yashsoni21@in.ibm.com */
+
+import { _checkParamClassType, _checkParamType, _mandatoryParam } from &apos;./Utils&apos;;
+
+import {
+    NativeModules
+} from &apos;react-native&apos;;
+var jsonStoreQuery = NativeModules.RNJSONStoreQuery;
+import { queryPartMap, JSONStoreQueryPart } from &apos;./JSONStoreQueryPart&apos;;
+
+import uuidv4 from &apos;uuid/v4&apos;;
+/**
+ * @ignore
+ */
+const queryMap = new Map();
+
+/**
+ * This class represents a group of query part objects that are joined with an OR statement. 
+ */
+class JSONStoreQuery {
+
+    /**
+     * @ignore
+     */
+    constructor() {
+        queryMap.set(this, uuidv4());
+        jsonStoreQuery.init(queryMap.get(this));
+    }
+
+    /**
+     * Add a JSONStoreQueryPart object to the list of queries.
+     * @param {JSONStoreQueryPart} queryPart - A query part that should be included in the query. All query parts are ORed together. For example, when adding query part A and query part B to the query content, the final query will be A OR B.
+     */
+    addQueryPart(queryPart = _mandatoryParam(&apos;queryPart&apos;)) {
+        _checkParamClassType(queryPart, JSONStoreQueryPart);
+        jsonStoreQuery.addQueryPart(queryMap.get(this), queryPartMap.get(queryPart));
+    }
+
+    /**
+     * Retrieve the current list of query part objects in this query group.
+     * @return {Promise&lt;Array&gt;} - A list of all query parts in the query content.
+     * @example 
+     * [
+     *  {
+     *      value: &quot;[21, 50]&quot;, 
+     *      operation: &quot;BETWEEN&quot;, 
+     *      isKeySpecial: false, 
+     *      key: &quot;age&quot;
+     *  },
+     *  {
+     *      value: &quot;[20000, 40000]&quot;,
+     *      operation: &quot;BETWEEN&quot;, 
+     *      isKeySpecial: false, 
+     *      key: &quot;salary&quot;
+     *  }
+     * ]
+     */
+    async getAllQueryParts() {
+        return jsonStoreQuery.getAllQueryParts(queryMap.get(this));
+    }
+}
+
+export { JSONStoreQuery, queryMap }</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -65,7 +65,7 @@ Starting with this iFix (*8.0.0.0-MFPF-IF201802201451*), using MobileFirst Andro
 
 ## How to upgrade
 **Server**  
-To upgrade, download &amp; install the [Developer Kit for evaluators]({{site.baseurl}}/downloads/), [Developer Kit for customers / CD update package for on-prem production environment](https://www-945.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FOther%20software&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=All&platform=All&function=fixId&fixids=8.0.0.0-MFPF-IF201711230641-CDUpdate-01&includeRequisites=1&includeSupersedes=0&downloadMethod=http) (requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
+To upgrade, download &amp; install the [Developer Kit for evaluators]({{site.baseurl}}/downloads/), [Developer Kit for customers / CD update package for on-prem production environment](https://www-945.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FOther%20software&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=All&platform=All&function=fixId&fixids=8.0.0.0-MFPF-IF201807180449-CDUpdate-02&includeRequisites=1&includeSupersedes=0&downloadMethod=http) (requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
 
 **Client SDKs**  
 To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/).
