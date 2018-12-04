@@ -69,7 +69,7 @@ Ref : WLResourceRequest( resource url, method, options) ;
 ```
 
 For details refer the [WLResourceRequest API](
-https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html#constructor)
+https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html#constructor).
 
 ### Avoid excessive or constant use of `WL.App.setServerUrl()` API
 
