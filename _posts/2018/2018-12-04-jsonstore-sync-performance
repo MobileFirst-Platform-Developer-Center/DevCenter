@@ -1,3 +1,15 @@
+------------------------------------------------------------------------------------------------------------------
+title: JSONStore sync Performance
+date: 2018-12-04
+version:
+- 8.0
+tags:
+- MobileFirst_Foundation
+-JSONStore
+author:
+  name: Srutha Keerthi
+------------------------------------------------------------------------------------------------------------------
+
 #JSONStore Automated Sync Performance
 
 The feature of automated sync in JSONStore is available in native IOS, native Android, cordova-ios and cordova-android platforms. More details on enabling this feature can be found <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/">here </a> and in <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/jsonstoresync-couchdb-databases-ios-and-cordova/">this</a> blog. This blog provides details regarding the of the performance of the JSONStore automated sync feature on Android and IOS devices.
