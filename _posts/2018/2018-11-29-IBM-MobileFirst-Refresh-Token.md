@@ -13,8 +13,10 @@ author:
 ## Introduction
 
 The MobileFirst security framework is based on the OAuth 2.0 protocol. According to this protocol, a resource can be protected by a scope that defines the required permissions for accessing the resource. To access a protected resource, the client must provide a matching access token, which encapsulates the scope of the authorization that is granted to the client. A MobileFirst access token is a digitally signed entity that describes the authorization permissions of a client. After the client’s authorization request for a specific scope is granted, and the client is authenticated, the authorization server’s token endpoint sends the client an HTTP response that contains the requested access token.
-The refresh token is a special type of token with longer expiry period compared to the access token. The sole purpose of refresh token is to obtain a new access token when the existing access token expires. Unlike access token, refresh token never gets shared with resource server. To obtain a new access token, a valid refresh token can be presented to Authorization 
+
+Refresh token is a special type of token with longer expiry period compared to the access token. The sole purpose of refresh token is to obtain a new access token when the existing access token expires. Unlike access token, refresh token never gets shared with resource server. To obtain a new access token, a valid refresh token can be presented to Authorization 
 Server. 
+
 The MobileFirst refresh token is a single usage token with a fixed expiry period of thirty days. When a valid refresh token is used to obtain a new access token, MobileFirst authorization server issues a new access token as well as a new refresh token to MobileFirst SDK. The expiry period of the new refresh token shall be reset to 30 days from the point in time the MobileFirst authorization server issues it. Thus each time the client obtains a new access token by presenting a valid refresh token, MobileFirst server issues a new token pair of the access token and refresh token. With each new refresh token, the expiry window shall extend to 30 days from the time of issuing the token pair. This gives the experience of a never expiring token.
 
 ## Usage
