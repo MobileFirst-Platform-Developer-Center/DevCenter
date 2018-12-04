@@ -1,11 +1,14 @@
 ---
-layout: tutorial
-title: Fehlerbehebung
-relevantTo: [ios,android,windows,javascript]
-weight: 3
+layout: redirect
+new_url: /404/
+sitemap: false
+#layout: tutorial
+#title: Troubleshooting
+#relevantTo: [ios,android,windows,javascript]
+#weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Probleme mit der {{ site.data.keys.product_full }} in IBM Containern lösen	
+### Probleme mit der {{ site.data.keys.product_full }} in IBM Containern lösen
 {: #resolving-problems-with-ibm-mobilefirst-foundation-on-ibm-containers }
 Wenn beim Arbeiten mit der {{ site.data.keys.product_full }} in IBM Containern ein Problem auftritt, das Sie nicht lösen können, stellen Sie die folgenden wichtigen Informationen zusammen, bevor Sie Kontakt zum
 IBM Support aufnehmen.
@@ -14,7 +17,7 @@ Stellen Sie die folgenden Informationen zusammen, um den Fehlerbehebungsprozess 
 
 * Verwendete Version der {{ site.data.keys.product }} (Version 8.0.0 oder eine aktuellere Version) und alle angewendeten vorläufigen Fixes 
 * Gewählte Containergröße, z. B. Medium 2GB
-* Art des Bluemix-dashDB-Datenbankplans, z. B. EnterpriseTransactional 2.8.50
+* Art des IBM Cloud-dashDB-Datenbankplans, z. B. EnterpriseTransactional 2.8.50
 * Container-ID
 * Öffentliche IP-Adresse (sofern zugewiesen)
 * Version von Docker und Cloud Foundry: `cf -v` und `docker version`
@@ -22,14 +25,14 @@ Stellen Sie die folgenden Informationen zusammen, um den Fehlerbehebungsprozess 
  - `cf ic info`
  - `cf ic ps -a` (Falls mehrere Containerinstanzen aufgelistet sind, bezeichnen Sie die Instanz, bei der das Problem besteht.) 
 * Wenn während der Containererstellung, d. h. beim Ausführen des Scripts **startserver.sh**, Secure Shell (SSH) und Datenträger aktiviert waren, stellen Sie alle Dateien aus den Ordnern /opt/ibm/wlp/usr/servers/mfp/logs und /var/log/rsyslog/syslog zusammen. 
-* Wenn nur Datenträger aktiviert waren, SSH jedoch nicht, stellen Sie über das Bluemix-Dashboard die verfügbaren Protokolldaten zusammen. Wenn Sie im Bluemix-Dashboard auf die Containerinstanz geklickt haben, klicken Sie in der Seitenleiste auf den Link "Monitoring and Logs". Öffnen Sie die Registgerkarte "Logging" und klicken Sie auf ADVANCED VIEW. Das Kibana-Dashboard wird
+* Wenn nur Datenträger aktiviert waren, SSH jedoch nicht, stellen Sie über das IBM Cloud-Dashboard die verfügbaren Protokolldaten zusammen. Wenn Sie im IBM Cloud-Dashboard auf die Containerinstanz geklickt haben, klicken Sie in der Seitenleiste auf den Link "Monitoring and Logs". Öffnen Sie die Registgerkarte "Logging" und klicken Sie auf ADVANCED VIEW. Das Kibana-Dashboard wird
 separat geöffnet. Verwenden Sie die Suchsymbolleiste für den Stack-Trace für Ausnahmebedingungen. Stellen Sie die vollständigen Details der Ausnahme (@Zeitmarke, _ID) zusammen.
 
-### Docker-Fehler nach der Scriptausführung	
+### Docker-Fehler nach der Scriptausführung
 {: #docker-related-error-while-running-script }
 Wenn nach Ausführung des Scripts initenv.sh oder prepareserver.sh Docker-bezogene Fehler angezeigt werden, versuchen Sie, den Docker-Service neu zu starten. 
 
-**Beispielnachricht** 
+**Beispielnachricht**
 
 > Pulling repository docker.io/library/ubuntu  
 > Error while pulling image: Get https://index.docker.io/v1/repositories/library/ubuntu/images: dial tcp: lookup index.docker.io on 192.168.0.0:00: DNS message ID mismatch
@@ -42,7 +45,7 @@ werden.
 **Problemlösung**  
 Starten Sie den Docker-Service neu. Tritt der Fehler erneut auf, starten Sie den Computer neu und dann den Docker-Service. 
 
-### Bluemix-Registryfehler	
+### IBM Cloud-Registryfehler
 {: #bluemix-registry-error }
 Wenn nach Ausführung des Scripts prepareserver.sh oder prepareanalytics.sh ein Registry-bezogener Fehler angezeigt wird, versuchen Sie zuerst, das Script initenv.sh auszuführen. 
 
@@ -51,9 +54,7 @@ Netzprobleme, die während der Ausführung des Scripts prepareserver.sh oder
 prepareanalytics.sh auftreten, können dazu führen, dass die Verarbeitung blockiert wird und dann fehlschlägt. 
 
 **Problemlösung**  
-Führen Sie zunächst erneut das Script initenv.sh aus, um sich bei der
-Container-Registry in Bluemix anzumelden. Führen Sie dann erneut
-das zuvor fehlgeschlagene Script aus. 
+Führen Sie zunächst erneut das Script initenv.sh aus, um sich bei der Container-Registry in IBM Cloud anzumelden. Führen Sie dann erneut das zuvor fehlgeschlagene Script aus. 
 
 ### Datei mfpfsqldb.xml kann nicht erstellt werden
 {: #unable-to-create-the-mfpfsqldbxml-file }
@@ -64,7 +65,7 @@ Bei Ausführung des Scripts **prepareserverdbs.sh** tritt gegen Ende der folgend
 **Problemlösung**  
 Es könnte eine vorübergehende Störung der Datenbankverbindungen vorliegen. Versuchen Sie erneut, das Script auszuführen. 
 
-### Übertragung des Image dauert lange	
+### Übertragung des Image dauert lange
 {: #taking-a-long-time-to-push-image }
 Wenn Sie das Script prepareserver.sh ausführen, dauert es mehr als 20 Minuten, ein Image mit Push in die IBM Container-Registry zu übertragen. 
 
@@ -75,7 +76,7 @@ Das Script **prepareserver.sh** überträgt den gesamten Stack der {{ site.data.
 Wenn das Script nach 60 Minuten noch nicht abgeschlossen ist, wurde der Prozess vielleicht wegen eines Verbindungsproblems blockiert. Starten Sie das Script erneut, nachdem Sie eine
 stabile Verbindung hergestellt haben. 
 
-### Fehler wegen unvollständiger Bindung	
+### Fehler wegen unvollständiger Bindung
 {: #binding-is-incomplete-error }
 Wenn Sie ein Script zum Starten eines Containers ausführen (z. B. **startserver.sh** oder **startanalytics.sh**),
 werden Sie wegen einer unvollständigen Bindung aufgefordert, manuell eine IP-Adresse zu binden. 
@@ -90,17 +91,17 @@ Wenn das manuelle Binden der IP-Adresse nicht erfolgreich ist, stellen Sie siche
                       
 **Hinweis:** Für eine erfolgreiche Bindung müssen Container aktiv sein. 
 
-### Script schlägt fehl und gibt eine Nachricht zu Token zurück	
+### Script schlägt fehl und gibt eine Nachricht zu Token zurück
 {: #script-fails-and-returns-message-about-tokens }
 Die Ausführung eines Scripts ist nicht erfolgreich. Eine Nachricht wie "Refreshing cf tokens" oder "Failed to refresh token" wird zurückgegeben.
 
 **Erläuterung**  
-Möglicherweise wurde das zulässige Zeitlimit für die Bluemix-Sitzung überschritten. Der Benutzer muss sich bei Bluemix angemeldet haben, bevor er die Containerscripts ausführt. 
+Möglicherweise wurde das zulässige Zeitlimit für die IBM Cloud-Sitzung überschritten. Der Benutzer muss sich bei IBM Cloud angemeldet haben, bevor er die Containerscripts ausführt. 
 
 **Verwendungshinweise**
-Führen Sie erneut das Script initenv.sh aus, um sich bei Bluemix anzumelden. Führen Sie dann nochmals das fehlgeschlagene Script aus. 
+Führen Sie erneut das Script initenv.sh aus, um sich bei IBM Cloud anzumelden. Führen Sie dann nochmals das fehlgeschlagene Script aus. 
 
-### Verwaltungsdatenbank, Liveaktualisierungsservice und Push-Service werden als inaktiv angezeigt	
+### Verwaltungsdatenbank, Liveaktualisierungsservice und Push-Service werden als inaktiv angezeigt
 {: #administration-db-live-update-and-push-service-show-up-as-inactive }
 In der {{ site.data.keys.mf_console }} werden die Verwaltungsdatenbank, der Liveaktualisierungsservice und der Push-Service als inaktiv angezeigt oder es sind keine Laufzeiten aufgelistet, obwohl das Script **prepareserver.sh** erfolgreich ausgeführt wurde. 
 
@@ -114,6 +115,8 @@ Solche Fehler könnten wie folgt aussehen:
 
 > FWLSE0320E: Failed to check whether the admin services are ready. Caused by: [project Sample] java.net.MalformedURLException: Bad host: "${env.IP_ADDRESS}"
 
+
+
 **Problemlösung**  
 Starten Sie die Container manuell neu. Besteht das Problem weiterhin, überprüfen Sie, ob die Anzahl der Verbindungen zum Datenbankservice
 die in Ihrem Datenbankplan vorgesehene Anzahl Verbindungen überschreitet. Ist das der Fall, nehmen Sie die erforderlichen Anpassungen vor. 
@@ -122,7 +125,7 @@ Wenn das Problem durch nicht aufgelöste Eigenschaften hervorgerufen wurde, stel
 das Zeilenvorschubzeichen (LF)
 hinzufügt, um das Ende einer Zeile zu markieren. Die App TextEdit für macOS könnte das Zeilenende beispielsweise mit dem Zeichen CR und nicht mit LF markieren, was dann zu diesem Problem führen würde. 
 
-### Script prepareserver.sh schlägt fehl	
+### Script prepareserver.sh schlägt fehl
 {: #prepareserversh-script-fails }
 Das Script **prepareserver.sh** schlägt fehl und gibt den Fehler "405 Method Not Allowed" zurück.
 

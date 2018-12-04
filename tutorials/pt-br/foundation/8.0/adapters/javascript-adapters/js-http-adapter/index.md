@@ -58,7 +58,7 @@ Declare the required procedures below the `connectivity` element:
 </mfp:adapter>
 ```
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
@@ -116,7 +116,7 @@ Declare the required procedures below the `connectivity` element:
                         </ul>
                     </li>
                     <li><b>proxy</b>: <i>Optional.</i> The proxy element specifies the details of the proxy server to use when accessing the back-end application. The proxy details must include the protocol domain and port. If the proxy requires authentication, add a nested <code>authentication</code> element inside <code>proxy</code>. This element has the same structure as the one used to describe the authentication protocol of the adapter. The following example shows a proxy that requires basic authentication and uses a server identity.
-                    
+
 {% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>

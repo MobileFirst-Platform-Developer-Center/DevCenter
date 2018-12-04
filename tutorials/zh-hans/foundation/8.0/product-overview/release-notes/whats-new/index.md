@@ -7,7 +7,7 @@ weight: 1
 <br/>
 {{ site.data.keys.product_full }} V8.0 进行了重大更改，极大地改善了您的 {{ site.data.keys.product_adj }} 应用程序开发、部署和管理体验。
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -41,7 +41,8 @@ weight: 1
                 <h3>使用首选的 Cordova 工具开发跨平台应用程序</h3>
                 <p>您现在可以使用首选的 Cordova 工具（如 Apache Cordova CLI 或 Ionic Framework）开发跨平台混合应用程序。 独立于 {{ site.data.keys.product }} 获取这些工具，然后添加 {{ site.data.keys.product_adj }} 插件以提供 {{ site.data.keys.product_adj }} 后端功能。</p>
 
-                <p>您可以安装 {{ site.data.keys.product }} Studio Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product }} 支持的跨平台 Cordova 应用程序。 {{ site.data.keys.product }} Studio 插件还提供了可从 Eclipse 环境内部运行的其他 {{ site.data.keys.mf_cli }} 命令。</p>
+                <p>您可以安装 {{ site.data.keys.product }} Studio
+Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product }} 支持的跨平台 Cordova 应用程序。 {{ site.data.keys.product }} Studio 插件还提供了可从 Eclipse 环境内部运行的其他 {{ site.data.keys.mf_cli }} 命令。</p>
 
                 <h3>SDK 组件化</h3>
                 <p>之前，将 {{ site.data.keys.product_adj }} 客户机 SDK 作为单框架或 JAR 文件提供。 您现在可以选择包含或排除特定功能。 除了核心 SDK 之外，每个 {{ site.data.keys.product_adj }} API 还具有自己的可选组件集。</p>
@@ -134,6 +135,9 @@ weight: 1
 
                 <h3>运行时的更新后的 REST API</h3>
                 <p>{{ site.data.keys.product_adj }} 运行时的 REST API 现在为移动式客户机和保密客户机提供多个服务，以调用适配器、获取访问令牌以及获取直接更新内容等。 大多数 REST API 端点受 OAuth 保护。 在开发服务器上，您可以在以下位置查看运行时 API 的 Swagger 文档：<code>http(s)://server_ip:server_port/context_root/doc</code>。</p>
+
+                <h3>多证书锁定支持</h3>
+                <p>从 iFix 8.0.0.0-IF201706240159 开始，{{ site.data.keys.mf_bm_short }} 支持锁定多个证书。 这使得用户能够安全访问多个主机。 在此 iFix 之前，{{ site.data.keys.mf_bm_short }} 支持锁定单个证书。 {{ site.data.keys.mf_bm_short }} 引入了一个新 API，通过允许用户将多个 X509 证书（购买自认证中心）的公用密钥锁定到客户机应用程序，来允许连接到多个主机。 应将所有证书的副本放置在您的客户机应用程序中。 在 SSL 握手期间，{{ site.data.keys.product_full }} 客户机 SDK 将验证服务器证书的公用密钥与存储在应用程序中的某个证书的公用密钥是否匹配。</p>
             </div>
         </div>
     </div>
@@ -250,7 +254,7 @@ weight: 1
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>引入了全新的 {{ site.data.keys.product }} 功能来帮助您部署和管理应用程序。 您现在无需重新启动 {{ site.data.keys.mf_server }} 即可更新应用程序和适配器。</p>
 
@@ -270,11 +274,11 @@ weight: 1
 
                 <p>您上载到服务器的开发工件包含适配器及其配置、应用程序的安全配置、推送通知证书和日志过滤器。</p>
 
-                <h3>在 {{ site.data.keys.product }} 上运行在 IBM Bluemix 上创建的应用程序</h3>
-                <p>开发人员可以迁移 IBM Bluemix 应用程序以在 {{ site.data.keys.product }} 上运行。 迁移需要对您的客户机应用程序进行配置更改以与 {{ site.data.keys.product }} API 匹配。</p>
+                <h3>在 {{ site.data.keys.product }} 上运行在 IBM Cloud 上创建的应用程序</h3>
+                <p>开发人员可以迁移 IBM Cloud 应用程序以在 {{ site.data.keys.product }} 上运行。 迁移需要对您的客户机应用程序进行配置更改以与 {{ site.data.keys.product }} API 匹配。</p>
 
-                <h3>{{ site.data.keys.product }} 在 IBM Bluemix 上用作服务</h3>
-                <p>您现在可以在 IBM Bluemix 上使用 {{ site.data.keys.mf_bm_full }} 服务来创建和运行企业移动应用程序。</p>
+                <h3>{{ site.data.keys.product }} 在 IBM Cloud 上用作服务</h3>
+                <p>您现在可以在 IBM Cloud 上使用 {{ site.data.keys.mf_bm_full }} 服务来创建和运行企业移动应用程序。</p>
 
                 <h3>无 .wlapp 文件</h3>
                 <p>在先前版本中，通过上载 <b>.wlapp</b> 文件将应用程序部署到 {{ site.data.keys.mf_server }} 中。 该文件包含用于描述应用程序以及（如果是混合应用程序）所需 Web 资源的数据。 在 V8.0.0 中，不再使用 <b>.wlapp</b> 文件：</p>
@@ -309,7 +313,7 @@ weight: 1
                 <p>JAX-RS 2.0 引入了新的服务器端功能：服务器端异步 HTTP、过滤器和拦截器。  适配器现在可以利用这些新功能。</p>
 
                 <h3>{{ site.data.keys.product }} on IBM Containers</h3>
-                <p><a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage 站点</a>站点上提供了针对 V8.0.0 发布的 {{ site.data.keys.product }} on IBM Containers。 此版本的 {{ site.data.keys.product }} on IBM Containers 可随时用于生产环境中，并支持 IBM Bluemix 上的企业 dashDB™ 事务数据库。</p>
+                <p><a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage 站点</a>站点上提供了针对 V8.0.0 发布的 {{ site.data.keys.product }} on IBM Containers。 此版本的 {{ site.data.keys.product }} on IBM Containers 可随时用于生产环境中，并支持 IBM Cloud 上的企业 dashDB™ 事务数据库。</p>
 
                 <p><b>注：</b>请参阅“部署 {{ site.data.keys.product }} on IBM Containers 的先决条件”。</p>
 
@@ -470,7 +474,7 @@ weight: 1
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>在 Bluemix（基于容器）中现在可通过 BYOL 脚本支持 {{ site.data.keys.mf_app_center }}。</p>
+                <p>在 IBM Cloud（基于容器）中现在可通过 BYOL 脚本支持 {{ site.data.keys.mf_app_center }}。</p>
             </div>
         </div>
     </div>

@@ -191,8 +191,7 @@ Bouncy-Castle-Version daran, Funktionen zu nutzen, die auf diese Felder zurückg
 CXF wird in der {{ site.data.keys.product_adj }}-JAX-RS-Implementierung verwendet, sodass
 Sie keine Apache-CXF-JAR-Dateien zu einem Adapter hinzufügen können. 
 
-### Aktualisierungsprobleme des mobilen Application-Center-Clients unter
-Android 4.0.x
+### Aktualisierungsprobleme des mobilen Application-Center-Clients unter Android 4.0.x
 {: #application-center-mobile-client-refresh-issues-on-android-40x}
 Es ist bekannt, dass bei der WebView-Komponente von Android 4.0.x mehrere Aktualisierungsprobleme
 auftreten. Wenn Sie für Geräte ein Upgrade auf Android 4.1.x durchführen, sollte eine Besserung
@@ -349,8 +348,7 @@ Verschachteln Sie keine Projekte ineinander, wenn Sie die
 {{ site.data.keys.mf_cli }} verwenden.
 Es könnte sonst passieren, dass Sie nicht das erwartete Projekt bearbeiten. 
 
-### Cordova-Webressourcen im
-{{ site.data.keys.mf_mbs }} voranzeigen
+### Cordova-Webressourcen im {{ site.data.keys.mf_mbs }} voranzeigen
 {: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
 Sie können Ihre Webressourcen im {{ site.data.keys.mf_mbs }} voranzeigen. Der Simulator unterstützt
 jedoch nicht alle {{ site.data.keys.product_adj }}-JavaScript-APIs. Insbesondere das OAuth-Protokoll wird nicht vollständig unterstützt.
@@ -372,7 +370,7 @@ Ant-Tasks) unterstützen eine Installation mit Oracle 12c als Datenbank.
 Die Benutzer und Tabellen können von den Installationstools erstellt werden. Die Datenbanken müssen jedoch bereits vor Ausführung der Installationstools
 vorhanden sein. 
 
-### Untrestützung für Push-Benachrichtigungen
+### Unterstützung für Push-Benachrichtigungen
 {: #support-for-push-notification }
 Ungeschütztes Push wird in Cordova (unter iOS und Android) untertsützt.
 
@@ -431,8 +429,8 @@ Vorhandenes Code-Snippet:
 
 ```objc
 (void)wlInitDidCompleteSuccessfully
-{ 
-UIViewController* rootViewController = self.window.rootViewController;
+{
+ UIViewController* rootViewController = self.window.rootViewController;
 // Cordova-Ansichtencontroller erstellen
 CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
 cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
@@ -471,3 +469,5 @@ beim Hinzufügen des
 {{ site.data.keys.product_adj }}-Cordova-SDK zum Projekt, kann dazu führen, dass die App
 bei Übergabe an den Google Play Store zurückgewiesen wird.
 Sollte die Übergabe an den Google Play Store aus anderen Gründen fehlschlagen, wenden Sie sich an den Google-Support.
+
+>**Hinweis:** Wenn Sie die MobileFirst-8.0-iFix-Releaseversion von Januar 2018 oder eine aktuellere Version verwenden, sollten Sie eine Aktualisierung durchführen und den Server und den Client auf denselben Versionsstand bringen.

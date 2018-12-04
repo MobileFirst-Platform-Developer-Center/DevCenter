@@ -13,7 +13,7 @@ weight: 2
 #### 開発者として
 {: #as-a-developer }
 * 任意の環境用のアプリケーションを開発し、{{ site.data.keys.mf_server }} に登録する。
-* デプロイ済みのすべてのアプリケーションとアダプターを一目で確認する。『ダッシュボード』を参照してください。
+* デプロイ済みのすべてのアプリケーションとアダプターを一目で確認する。 『ダッシュボード』を参照してください。
 * ダイレクト・アップデート、リモート無効化、アプリケーション認証性とユーザー認証のセキュリティー・パラメーターなど、登録済みアプリケーションを管理および構成する。
 * 証明書をデプロイし、通知タグを作成し、通知を送信することでプッシュ通知をセットアップする。
 * アダプターを作成してデプロイする。
@@ -34,13 +34,13 @@ weight: 2
 
 ## コンソールへのアクセス
 {: #accessing-the-console }
-{{ site.data.keys.mf_console }} には、以下の方法でアクセスできます。 
+{{ site.data.keys.mf_console }} には、以下の方法でアクセスできます。
 
 ### ローカル側にインストールされている {{ site.data.keys.mf_server }} から
 {: #from-a-locally-installed-mobilefirst-server }
 #### デスクトップ・ブラウザー
 {: #desktop-browser }
-任意のブラウザーから、URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) をロードします。ユーザー名/パスワードは、*admin/admin* です。
+任意のブラウザーから、URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) をロードします。 ユーザー名/パスワードは、*admin/admin* です。
 
 #### コマンド・ライン
 {: #command-line }
@@ -51,11 +51,11 @@ weight: 2
 #### デスクトップ・ブラウザー
 {: #desktop-browser-remote }
 任意のブラウザーから、URL `http://the-server-host:server-port-number/mfpconsole` をロードします。  
-ホスト・サーバーは、お客様所有のサーバーでも、IBM Bluemix サービス (IBM [Mobile Foundation](../../../bluemix/)) でもかまいません。
+ホスト・サーバーは、お客様所有のサーバーでも、IBM Cloud サービス (IBM [Mobile Foundation](../../../bluemix/)) でもかまいません。
 
 #### コマンド・ライン
 {: #command-line-remote }
-「**コマンド・ライン**」ウィンドウで ({{ site.data.keys.mf_cli }} がインストールされている)、以下の手順に従います。 
+「**コマンド・ライン**」ウィンドウで ({{ site.data.keys.mf_cli }} がインストールされている)、以下の手順に従います。
 
 1. 以下の手順で、リモート・サーバー定義を追加します。
 
@@ -63,7 +63,7 @@ weight: 2
     コマンド `mfpdev server add` を実行し、画面に表示される指示に従います。
 
     *ダイレクト・モード*  
-    `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]` という構造でコマンドを実行します。例:
+    `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]` という構造でコマンドを実行します。 例:
 
    ```bash
    mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
@@ -95,17 +95,17 @@ weight: 2
 
 ### エラー・ログ
 {: #error-log }
-エラー・ログには、現在のランタイム環境の {{ site.data.keys.mf_console }} またはコマンド・ラインから開始された管理操作のうち、失敗した管理操作がリストされます。ログを使用して、サーバーの障害の影響を確認してください。
+エラー・ログには、現在のランタイム環境の {{ site.data.keys.mf_console }} またはコマンド・ラインから開始された管理操作のうち、失敗した管理操作がリストされます。 ログを使用して、サーバーの障害の影響を確認してください。
 
 > 詳しくは、ユーザー文書で、ランタイム環境での操作のエラー・ログに関するトピックを参照してください。
 
-![エラー・ログの画面のイメージ](error-log.png)
+![エラー・ログ画面のイメージ](error-log.png)
 
 ### デバイス
 {: #devices }
 管理者は、{{ site.data.keys.mf_server }} にアクセスするデバイスを検索すること、およびアクセス権を管理することができます。  
-デバイスは、ユーザー ID や分かりやすい名前を使用して検索できます。ユーザー ID は、ログインに使用した ID です。  
-分かりやすい名前は、デバイスをユーザー ID を共有する他のデバイスと区別するための、そのデバイスに関連した名前です。 
+デバイスは、ユーザー ID や分かりやすい名前を使用して検索できます。 ユーザー ID は、ログインに使用した ID です。  
+分かりやすい名前は、デバイスをユーザー ID を共有する他のデバイスと区別するための、そのデバイスに関連した名前です。
 
 > 詳しくは、ユーザー文書で、デバイス・アクセス管理に関するトピックを参照してください。
 
@@ -115,7 +115,7 @@ weight: 2
 {: #applications }
 #### アプリケーションの登録
 {: #registering-applications }
-基本的なアプリケーションの値を指定し、スターター・コードをダウンロードします。 
+基本的なアプリケーションの値を指定し、スターター・コードをダウンロードします。
 
 ![アプリケーション登録画面のイメージ](register-applications.png)
 
@@ -173,17 +173,16 @@ weight: 2
 {: #license-tracking }
 上部の「設定」ボタンからアクセスできます。
 
-ライセンス条項は、{{ site.data.keys.product }} のどのエディション (Enterprise または Consumer) を使用するかにより異なります。ライセンス追跡は、デフォルトでは有効になっており、アクティブ・クライアント・デバイス、インストールされているアプリケーションなど、ライセンス・ポリシーに関連するメトリックが追跡されます。この情報は、{{ site.data.keys.product }} の現在の使用がライセンス資格レベル内に収まっているかどうかを判別するのに役立ち、ライセンス違反を防止できます。
+ライセンス条項は、{{ site.data.keys.product }} のどのエディション (Enterprise または Consumer) を使用するかにより異なります。   ライセンス追跡は、デフォルトでは有効になっており、アクティブ・クライアント・デバイス、インストールされているアプリケーションなど、ライセンス・ポリシーに関連するメトリックが追跡されます。 この情報は、{{ site.data.keys.product }} の現在の使用がライセンス資格レベル内に収まっているかどうかを判別するのに役立ち、ライセンス違反を防止できます。
 
-管理者は、クライアント・デバイスの使用を追跡し、デバイスがアクティブかどうか判別することで、サービスに今後アクセスしないデバイスを廃棄できます。例えば、従業員が退社した場合にこの状態が発生することがあります。
+管理者は、クライアント・デバイスの使用を追跡し、デバイスがアクティブかどうか判別することで、サービスに今後アクセスしないデバイスを廃棄できます。 例えば、従業員が退社した場合にこの状態が発生することがあります。
 
 > 詳しくは、ユーザー文書でライセンス追跡に関するトピックを参照してください。
 
-![クライアント・ログ画面のイメージ](license-tracking.png)
+![ライセンス追跡画面のイメージ](license-tracking.png)
 
 ### ダウンロード
 {: #downloads }
 インターネット接続を使用できない場合、{{ site.data.keys.mf_console }} のダウンロード・センターから、{{ site.data.keys.product }} のさまざまな開発作成物のスナップショットをダウンロードできます。
 
 ![使用可能な作成物のイメージ](downloads.png)
-

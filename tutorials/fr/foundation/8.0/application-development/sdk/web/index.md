@@ -95,6 +95,7 @@ Initialize the {{ site.data.keys.product }} web SDK by specifying the **context 
 var wlInitOptions = {
     mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
     applicationId : 'com.sample.mywebapp' // Replace with your own value.
+    sessionMode : true //This is an optional paramter. Setting this to true ensures that MFP related data is stored in the session rather than in the local storage. If this option is set to false or not set at all, default is local storage.
 };
 
 WL.Client.init(wlInitOptions).then (
@@ -147,7 +148,7 @@ You can meet the policy requirements by using either of the following methods:
 > Learn more in [Setting up the Web development environmnt](../../../installation-configuration/development/web) tutorial
 
 ## Secure-origins policy
-{: secure-origins-policy }
+{: #secure-origins-policy }
 When you use Chrome during development, the browser might not allow an application to load if it uses both HTTP and a host that **is not** `localhost`. The cause is the secure-origins policy that is implemented and used by default in this browser.
 
 To overcome this, you can start the Chrome browser with the following flag:

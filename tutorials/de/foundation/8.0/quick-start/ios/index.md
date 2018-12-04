@@ -8,7 +8,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-Bei der folgende Demonstration geht es darum, einen End-to-End-Ablauf zu veranschaulichen:
+Bei der folgenden Demonstration geht es darum, einen End-to-End-Ablauf zu veranschaulichen:
 
 1. Eine im Lieferumfang des {{ site.data.keys.product_adj }}-Client-SDK enthaltene Beispielanwendung wird in der {{ site.data.keys.mf_console }} registriert und heruntergeladen.
 2. Ein neuer oder bereitgestellter Adapter wird über die {{ site.data.keys.mf_console }} implementiert.  
@@ -33,25 +33,25 @@ falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration
 ### 2. Anwendung erstellen
 {: #2-creating-an-application }
 Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://your-server-host:server-port/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
- 
+
 1. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**.
     * Wählen Sie die **iOS**-Plattform aus.
     * Geben Sie für die **Anwendungs-ID** den Wert **com.ibm.mfpstarteriosobjectivec** oder **com.ibm.mfpstarteriosswift** ein. (Der Wert hängt vom Anwendungsgerüst ab, das Sie im nächsten Schritt herunterladen werden.)
     * Geben Sie für die **Version** den Wert **1.0** ein.
     * Klicken Sie auf **Anwendung registrieren**.
-    
+
     <img class="gifplayer" alt="Anwendung registrieren" src="register-an-application-ios.png"/>
- 
+
 2. Klicken Sie auf die Kachel **Startercode abrufen** und wählen Sie die Objective-C- oder Swift-Beispielanwendung für iOS zum Download aus.
 
     <img class="gifplayer" alt="Beispielanwendung herunterladen" src="download-starter-code-ios.png"/>
-    
+
 ### 3. Anwendungslogik bearbeiten
 {: #3-editing-application-logic }
 1. Öffnen Sie das Xcode-Projket. Klicken Sie dazu doppelt auf die Datei **.xcworkspace**.
 
 2. Wählen Sie die Datei **[Projektstammverzeichnis]/ViewController.m/swift** aus und fügen Sie das folgende Code-Snippet als Ersatz für die vorhandene Funktion `getAccessToken()` ein:
- 
+
    Objective-C:
 
    ```objc
@@ -59,7 +59,7 @@ falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration
    _testServerButton.enabled = NO;
    NSURL *serverURL = [[WLClient sharedInstance] serverUrl];
    _connectionStatusLabel.text = [NSString stringWithFormat:@"Connecting to server...\n%@", serverURL];
-    
+
    NSLog(@"Testing Server Connection");
    [[WLAuthorizationManager sharedInstance] obtainAccessTokenForScope:@"" withCompletionHandler:^(AccessToken *token, NSError *error) {
         if (error != nil) {
@@ -90,9 +90,9 @@ falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration
     }];
 }
    ```
-    
+
    Swift:
-    
+
    ```swift
    @IBAction func getAccessToken(sender: AnyObject) {
         self.testServerButton.enabled = false
@@ -125,7 +125,7 @@ falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration
                     }
                 }
             }
-            
+
             self.testServerButton.enabled = true
         }
    }
@@ -136,10 +136,13 @@ falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration
 Laden Sie [dieses vorbereitete Adapterartefakt](../javaAdapter.adapter) herunter und implementieren Sie es über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen.
 
 Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.  
-        
+
 1. Wählen Sie **Aktionen → Beispiel herunterladen** aus. Laden Sie das **Java**-Adapterbeispiel "Hello World" herunter.
 
-   > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind, folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
+   > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind,
+folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
+
+
 
 2. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Adapter-Maven-Projekts und führen Sie den folgenden Befehl aus:
 
@@ -147,7 +150,7 @@ Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.
    mfpdev adapter build
    ```
 
-3. Wenn der Build fertiggestellt ist, implementieren Sie den Adapter über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. Sie finden den Adapter im Ordner **[adapter]/target**. 
+3. Wenn der Build fertiggestellt ist, implementieren Sie den Adapter über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. Sie finden den Adapter im Ordner **[adapter]/target**.
 
     <img class="gifplayer" alt="Adapter implementieren" src="create-an-adapter.png"/>   
 
@@ -156,10 +159,11 @@ Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.
 {: #5-testing-the-application }
 1. Wählen Sie in Xcode die Datei **mfpclient.plist** aus und bearbeiten Sie die Eigenschaften **protocol**, **host** und **port**. Geben Sie die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} an.
     * Wenn Sie einen lokalen {{ site.data.keys.mf_server }} verwenden, lauten die Werte normalerweise **http**, **localhost** und **9080**.
-    * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für Bluemix) verwenden, lauten die Werte in der Regel **https**, **your-server-address** und **443**.
-     
-    Wenn Sie die {{ site.data.keys.mf_cli }} installiert haben, können Sie alternativ zum Projektstammverzeichnis navigieren und den Befehl `mfpdev app register` ausführen. Bei Verwendung eines fernen {{ site.data.keys.mf_server }} müssen Sie den [Befehl `mfpdev server add` ausführen](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance), um den Server hinzuzufügen, gefolgt beispielsweise von `mfpdev app register myBluemixServer`.
+    * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für IBM Cloud) verwenden, lauten die Werte in der Regel **https**, **Ihre_Serveradresse** und **443**.
+    * Wenn Sie einen Kubernetes-Cluster in IBM Cloud Private verwenden und der Implementierungstyp **NodePort** ist, ist der Portwert in der Regel der **NodePort**, der vom Service im Kubernetes-Cluster zugänglich gemacht wird.
 
+    Wenn Sie die {{ site.data.keys.mf_cli }} installiert haben, können Sie alternativ zum Projektstammverzeichnis navigieren und den Befehl `mfpdev app register` ausführen. Bei Verwendung eines fernen {{ site.data.keys.mf_server }} müssen Sie den [Befehl `mfpdev server add` ausführen](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance), um den Server hinzuzufügen, gefolgt beispielsweise von `mfpdev app register myIBMCloudServer`.
+    
 2. Klicken Sie auf die Schaltfläche **Play**.
 
 <br clear="all"/>

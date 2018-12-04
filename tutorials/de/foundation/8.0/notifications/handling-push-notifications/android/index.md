@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Push-Benachrichtigungen in Android
+title: Handhabung von Push-Benachrichtigungen in Android
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Android-Studio-Projekt herunterladen
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
@@ -32,6 +32,7 @@ Push-Benachrichtigungen in Android-Anwendungen gehandhabt werden.
 * [API für Benachrichtigungen](#notifications-api)
 * [Handhabung von Push-Benachrichtigungen](#handling-a-push-notification)
 * [Beispielanwendung](#sample-application)
+* [Clientanwendungen für Android auf FCM umstellen](#migrate-to-fcm)
 
 ## Benachrichtigungskonfiguration
 {: #notifications-configuration }
@@ -73,7 +74,7 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
 
 	  ```xml
 	  <!-- Permissions -->
-      hj<uses-permission android:name="android.permission.WAKE_LOCK" />
+      <uses-permission android:name="android.permission.WAKE_LOCK" />
 
       <!-- GCM Permissions -->
       <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -113,7 +114,7 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-
+      
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -133,12 +134,9 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
 {: #notifications-api }
 ### MFPPush-Instanz
 {: #mfppush-instance }
-Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie
-ein Feld auf Klassenebene erstellen, z. B. `private MFPPush push = MFPPush.getInstance();`, und dann
-in der gesamten Klasse `push.<API-Aufruf>` aufrufen. 
+Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie ein Feld auf Klassenebene erstellen, z. B. `private MFPPush push = MFPPush.getInstance();`, und dann in der gesamten Klasse `push.<API-Aufruf>` aufrufen. 
 
-Alternativ dazu können Sie `MFPPush.getInstance().<API-Aufruf>` für jede Instanz aufrufen,
-in der Sie auf die Push-API-Methoden zugreifen müssen. 
+Alternativ dazu können Sie `MFPPush.getInstance().<API-Aufruf>` für jede Instanz aufrufen, in der Sie auf die Push-API-Methoden zugreifen müssen. 
 
 ### Abfrage-Handler
 {: #challenge-handlers }
@@ -147,19 +145,21 @@ müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, b
 
 > Weitere Informationen zu Abfrage-Handlern enthält das Lernprogramm [Berechtigungsnachweise validieren](../../../authentication-and-security/credentials-validation/android).
 
+
+
 ### Clientseite
 {: #client-side }
 
-| Java-Methoden | Beschreibung |
+|Java-Methoden|Beschreibung |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | Initialisiert MFPPush für den angegebenen Kontext |
-| [`isPushSupported();`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen? |
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registriert das Gerät beim Push-Benachrichtigungsservice |
-| [`getTags(MFPPushResponseListener)`](#get-tags) | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab |
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Richtet das Geräteabonnement für die angegebenen Tags ein |
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Ruft die derzeit vom Gerät abonnierten Tags ab  |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags |
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf |
+|[`initialize(Context context);`](#initialization) |Initialisiert MFPPush für den angegebenen Kontext|
+|[`isPushSupported();`](#is-push-supported) |Unterstützt das Gerät Push-Benachrichtigungen?|
+|[`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) |Registriert das Gerät beim Push-Benachrichtigungsservice|
+|[`getTags(MFPPushResponseListener)`](#get-tags) |Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
+|[`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) |Richtet das Geräteabonnement für die angegebenen Tags ein|
+|[`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) |Ruft die derzeit vom Gerät abonnierten Tags ab |
+|[`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) |Beendet das Abonnement bestimmter Tags|
+|[`unregisterDevice(MFPPushResponseListener)`](#unregister) |Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf|
 
 #### Initialisierung
 {: #initialization }
@@ -309,10 +309,9 @@ folgenden Methoden implementieren.
 {: #option-one }
 Führen Sie in der Aktivität, in der Sie Push-Benachrichtigungen behandeln möchten, die folgenden Schritte aus: 
 
-1. Fügen Sie `implements MFPPushNofiticationListener` zur Klassendeklaration hinzu. 
-2. Definieren Sie die Klasse als Listener, indem Sie
-`MFPPush.getInstance().listen(this)` in der Methode `onCreate` aufrufen. 
-2. Anschließend müssen Sie die folgende *erforderliche* Methode hinzufügen: 
+1. Fügen Sie `implements MFPPushNofiticationListener` zur Klassendeklaration hinzu.
+2. Definieren Sie die Klasse als Listener, indem Sie `MFPPush.getInstance().listen(this)` in der Methode `onCreate` aufrufen.
+2. Anschließend müssen Sie die folgende *erforderliche* Methode hinzufügen:
 
    ```java
    @Override
@@ -321,7 +320,7 @@ Führen Sie in der Aktivität, in der Sie Push-Benachrichtigungen behandeln möc
    }
    ```
 
-3. In dieser Methode werden Sie `MFPSimplePushNotification` empfangen und können für die Benachrichtigung das gewünschte Verhalten festlegen. 
+3. In dieser Methode werden Sie `MFPSimplePushNotification` empfangen und können für die Benachrichtigung das gewünschte Verhalten festlegen.
 
 ### Option zwei
 {: #option-two }
@@ -332,11 +331,12 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
     @Override
     public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
         // Hier Behandlung von Push-Benachrichtigungen
-   }
-   });
+    }
+});
 ```
 
 <img alt="Beispielanwendung" src="notifications-app.png" style="float:right"/>
+
 ## Beispielanwendung
 {: #sample-application }
 
@@ -345,3 +345,102 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ### Verwendung des Beispiels
 {: #sample-usage }
 Anweisungen finden Sie in der Datei README.md zum Beispiel. 
+
+## Clientanwendungen für Android auf FCM umstellen
+{: #migrate-to-fcm }
+
+Google Cloud Messaging (GCM) [wird nicht mehr verwendet](https://developers.google.com/cloud-messaging/faq) und wurde in Firebase Cloud Messaging (FCM) integriert. Google wird die meisten GCM-Services bis April 2019 einstellen.
+
+Wenn Sie ein GCM-Projekt verwenden, [stellen Sie die GCM-Client-Apps für Android auf FCM um](https://developers.google.com/cloud-messaging/android/android-migrate-fcm) .
+
+Momentan funktionieren die vorhandenen Anwendungen, die GCM-Services nutzen, unverändert weiter. Da der Push-Benachrichtigungsservice aktualisiert wurde und jetzt FCM-Endpunkte verwendet, müssen alle neuen Anwendungen FCM nutzen. 
+
+**Hinweis**: Nach der Umstellung auf FCM müssen Sie Ihr Projekt aktualisieren, damit es anstelle der alten GCM-Berechtigungsnachweise FCM-Berechtigungsnachweise verwendet. 
+
+### Einrichtung eines FCM-Projekts
+
+Die Einrichtung einer Anwendung in FCM unterscheidet sich vom alten GCM-Modell.  
+
+ 1. Fordern Sie die Berechtigungsnachweise Ihres Benachrichtigungsproviders an, erstellen Sie ein FCM-Projekt und fügen Sie beides zu Ihrer Android-Anwendung hinzu. Nehmen Sie als Paketnamen Ihrer Anwendung `com.ibm.mobilefirstplatform.clientsdk.android.push` auf. Folgen Sie [hier der Dokumentation](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android) bis zu dem Schritt, nach dem Sie die Datei `google-services.json` generiert haben.
+
+ 2. Konfigurieren Sie Ihre Gradle-Datei. Fügen Sie Folgendes zur Datei `build.gradle` der App hinzu: 
+
+    ```xml
+    dependencies {
+       ......
+       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       .....
+
+    }
+    ```
+	
+    apply plugin: 'com.google.gms.google-services'
+    
+    - Fügen Sie die folgende Abhängigkeit zur `buildscript`-Datei hinzu:
+    
+    `classpath 'com.google.gms:google-services:3.0.0'`
+
+ 3. Konfigurieren Sie die Android-Manifestdatei. Die folgenden Änderungen an der Datei `Android manifest.xml` sind erforderlich: 
+
+**Entfernen Sie folgende Einträge:**
+
+```xml
+    <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+    </receiver>  
+	
+    <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
+        <intent-filter>
+            <action android:name="com.google.android.gms.iid.InstanceID" />
+        </intent-filter>
+    </service>
+
+    <uses-permission android:name="your.application.package.name.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+```
+
+**Folgende Einträge müssen modifiziert werden:**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        </intent-filter>
+    </service>
+```
+
+**Nach der Modifikation müssen die Einträge wie folgt aussehen:**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+```
+
+**Fügen Sie den folgenden Eintrag hinzu:**
+
+```xml
+    <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+    </service>
+```
+	
+ 4. Öffnen Sie die App in Android Studio. Kopieren Sie die Datei `google-services.json`, die Sie in **Schritt 1** erstellt haben, in das App-Verzeichnis. Die Datei `google-service.json` enthält den Paketnamen, den Sie hinzugefügt haben.		
+		
+ 5. Kompilieren Sie das SDK. Erstellen Sie die Anwendung.
+
+
+
+

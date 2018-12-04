@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 数据保留和清除
-breadcrumb_title: 数据保留和清除
+breadcrumb_title: Data Retention and Purging
 relevantTo: [ios,android,javascript]
 weight: 6
 ---
@@ -9,7 +9,7 @@ weight: 6
 ## 概述
 {: #overview }
 
-{{ site.data.keys.mf_analytics }} 数据存储在服务器上，可用于报告直至数据被清除。您可以控制保留或清除哪些事件类型数据。可以定期或手动清除数据。
+{{ site.data.keys.mf_analytics }} 数据存储在服务器上，可用于报告直至数据被清除。 您可以控制保留或清除哪些事件类型数据。 可以定期或手动清除数据。
 
 ## 从 Analytics Console 配置数据保留
 {: #configuring-data-retention-from-the-analytics-console }

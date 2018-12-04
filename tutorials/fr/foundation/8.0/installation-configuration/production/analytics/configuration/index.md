@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guide de configuration de MobileFirst Analytics Server
-breadcrumb_title: Guide de configuration
+breadcrumb_title: Configuration Guide
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -60,14 +60,13 @@ L'application Web d'exécution d'Analytics doit être redémarrée pour que les 
 Pour définir une propriété JNDI sur WebSphere Application Server Liberty, ajoutez une balise dans le fichier **server.xml** comme suit :
 
 ```xml
-<jndiEntry jndiName="{NOM PROPRIETE}" value="{VALEUR PROPRIETE}}" />
+<jndiEntry jndiName="{PROPERTY NAME}" value="{PROPERTY VALUE}}" />
 ```
 
 Pour définir une propriété JNDI sur Tomcat, ajoutez une balise dans le fichier context.xml comme suit :
 
 ```xml
-<Environment name="{NOM PROPRIETE}" value="{VALEUR PROPRIETE}"
-type="java.lang.String" override="false" />
+<Environment name="{PROPERTY NAME}" value="{PROPERTY VALUE}" type="java.lang.String" override="false" />
 ```
 
 Les propriétés JNDI sur WebSphere Application Server sont disponibles sous forme de variables d'environnement.
@@ -114,6 +113,8 @@ Le tableau ci-dessous répertorie les propriétés que vous pouvez définir sur 
 
 Dans tous les cas où la clé ne contient pas de point (par exemple **httpport** et non **http.enabled**), le paramètre peut être contrôlé par des variables d'environnement système où le nom de la variable est préfixé avec **ANALYTICS_**. Lorsque la propriété JNDI et la variable d'environnement système sont définies toutes les deux, la variable d'environnement système est prioritaire. Par exemple, si la propriété JNDI **analytics/httpport** et la variable d'environnement système **ANALTYICS_httpport** sont définies toutes les deux, la valeur de **ANALYTICS_httpport** est utilisée.
 
+> **Important** : Actuellement, MobileFirst Analytics version 8.0 ne prend pas en charge le partage de services. Les événements de MobileFirst Server sont envoyés par défaut à une architecture à service exclusif.
+
 #### Durée de vie des documents
 {: #document-time-to-live-ttl }
 La durée de vie détermine l'établissement et la gestion d'une règle de conservation des données. Vos décisions ont des conséquences notables sur vos besoins en matière de ressources système. Plus vous conservez les données longtemps, plus vous aurez besoin de mémoire RAM et de disque, ainsi que de procéder à une mise à l'échelle.
@@ -133,7 +134,23 @@ Ces valeurs peuvent être définies avec des unités de temps basiques, comme su
 * 1s = 1 seconde
 * 1ms = 1 milliseconde
 
-> Remarque : si vous procédez à la migration depuis des versions précédentes de {{ site.data.keys.mf_analytics_server }} et que vous avez déjà configuré des propriétés JNDI de durée de vie, voir [Migration des propriétés de serveur utilisées par des versions précédentes de {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+Les types de document pris en charge sont les suivants :
+
+* TTL_PushNotification
+* TTL_PushSubscriptionSummarizedHourly
+* TTL_ServerLog
+* TTL_AppLog
+* TTL_NetworkTransaction
+* TTL_AppSession
+* TTL_AppSessionSummarizedHourly
+* TTL_NetworkTransactionSummarizedHourly
+* TTL_CustomData
+* TTL_AppPushAction
+* TTL_AppPushActionSummarizedHourly
+* TTL_PushSubscription
+
+
+> **Remarque :** Si vous procédez à la migration depuis des versions précédentes de {{ site.data.keys.mf_analytics_server }} et que vous avez déjà configuré des propriétés JNDI de durée de vie, voir [Migration des propriétés de serveur utilisées par des versions précédentes de {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
 
 #### Elasticsearch
 {: #elasticsearch }
@@ -247,6 +264,6 @@ Dans l'exemple d'instructions suivant, ne configurez pas le noeud en tant que no
 {: #circuit-breakers }
 Découvrez les disjoncteurs Elasticsearch.
 
-Elasticsearch contient plusieurs disjoncteurs qui sont utilisés pour empêcher les opérations de générer des **erreurs de mémoire insuffisante**). Par exemple, si une requête qui envoie des données à {{ site.data.keys.mf_console }} utilise 40 % du segment de mémoire de la machine virtuelle Java, le disjoncteur est déclenché, une exception est émise, et la console reçoit des données vides.
+Elasticsearch contient plusieurs disjoncteurs qui sont utilisés pour empêcher les opérations de générer des **erreurs de mémoire insuffisante**. Par exemple, si une requête qui envoie des données à {{ site.data.keys.mf_console }} utilise 40 % du segment de mémoire de la machine virtuelle Java, le disjoncteur est déclenché, une exception est émise, et la console reçoit des données vides.
 
 Elasticsearch dispose également de protections permettant d'éviter la saturation du disque. Si 90 % du disque sur lequel le magasin de données Elasticsearch écrit les données est rempli, le noeud Elasticsearch en informe le noeud maître dans le cluster. Le noeud maître dirige alors les nouvelles écritures de document ailleurs que vers le noeud presque plein. Si votre cluster ne comporte qu'un noeud, aucun noeud secondaire sur lequel les données peuvent être écrites n'est disponible. Par conséquent, les données ne sont pas écrites et sont perdues.

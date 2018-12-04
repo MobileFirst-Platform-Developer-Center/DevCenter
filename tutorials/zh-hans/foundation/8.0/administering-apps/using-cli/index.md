@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 通过终端管理应用程序
-breadcrumb_title: 使用终端管理
+breadcrumb_title: Administrating using terminal
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -13,7 +13,7 @@ weight: 4
 >
 浏览至 {{ site.data.keys.product_full }} 安装目录 `/MobilefirstPlatformServer/shortcuts`，并运行 `mfpadm` 命令。
 >
-1. 在验证类型之间切换：
+1.在验证类型之间切换：
 ```bash
 	mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE
 ```  
@@ -24,7 +24,7 @@ weight: 4
   mfpadm --url=http://localhost:8080/mfpadmin --user=admin --passwordfile="C:\userhome\mfppassword\MFP_password.txt" --secure=false app version mfp test android 1.0 set authenticity-validation dynamic
 ```
 >
-2. 使用清除应用程序指纹的下列命令重置数据。
+2.使用清除应用程序指纹的下列命令重置数据。
 ```bash
   mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] reset authenticity
 ```
@@ -98,16 +98,16 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 | 选项	| 类型 | 描述 | 必需 | 缺省值 |
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | Administration Services 的 {{ site.data.keys.product_adj }} web 应用程序的基本 URL | 是 | |
-| --secure	 | 布尔值 | 是否避免存在安全风险的操作 | 否 | true |
-| --user	 | 名称 | 用于访问 {{ site.data.keys.product_adj }} Administration Services 的用户名 | 是 |  | 	 
-| --passwordfile | 文件 | 包含用户密码的文件 | 否 |
-| --timeout	     | 数字  | 整个 REST 服务访问超时，以秒为单位 | 否 | 	 
-| --connect-timeout | 数字 | 建立网络连接超时，以秒为单位 | 否 |
-| --socket-timeout  | 数字 | 检测网络连接断开超时，以秒为单位 | 否 |
-| --connection-request-timeout | 数字 | 从连接请求池获取条目超时，以秒为单位 | 否 |
-| --lock-timeout | 数字 | 获取锁定时的超时，以秒为单位 | 否 | 2 |
-| --verbose	     | 详细的输出 | 否	| |  
+| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | |
+| --secure	 | Boolean | Whether to avoid operations with security risks | No | true |
+| --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
+| --passwordfile | file | File containing the password for the user | No |
+| --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
+| --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
+| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No |
+| --connection-request-timeout | Number	Timeout for obtaining an entry from a connection request pool, in seconds | No |
+| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 |
+| --verbose	     | Detailed output | No	| |  
 
 **url**  
 URL 最好使用 HTTPS 协议。 例如，如果使用缺省端口和上下文根，请使用此 URL：
@@ -259,8 +259,8 @@ mfpadm 调用包含一个命令。 支持以下命令。
 
 | 选项	| 描述 |
 |-----------|-------------|
-| --help	| 显示一些用法帮助 |
-| --version	| 显示版本 |
+| --help	| Shows some usage help |
+| --version	| Shows the version |
 
 #### XML 格式
 {: #xml-format }
@@ -284,7 +284,8 @@ mfpadm 程序生成的正常输出采用当前语言环境的编码格式进行�
 
 #### `show global-config` 命令
 {: #the-show-global-config-command }
-`show global-config` 命令可显示全局配置。
+`show
+global-config` 命令可显示全局配置。
 
 语法：`show global-config`
 
@@ -292,7 +293,7 @@ mfpadm 程序生成的正常输出采用当前语言环境的编码格式进行�
 
 | 参数 | 描述 |
 |----------|-------------|
-| --xml    | 生成 XML 输出（而非表格输出）。 |
+| --xml    | Produces XML output instead of tabular output. |
 
 **示例**  
 
@@ -305,9 +306,10 @@ show global-config
 <br/>
 #### `show user-config` 命令
 {: #the-show-user-config-command }
-`show user-config` 命令可显示运行时的用户配置。
+`show
+user-config` 命令可显示运行时的用户配置。
 
-语法：`show user-config [--xml][runtime-name]`
+语法：`show user-config [--xml] [runtime-name]`
 
 它采用以下参数：
 
@@ -319,7 +321,7 @@ show global-config
 
 | 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **示例**  
 
@@ -332,7 +334,8 @@ show user-config mfp
 <br/>
 #### `set user-config` 命令
 {: #the-set-user-config-command }
-`set user-config` 命令可指定运行时的用户配置或此配置中的单个属性。
+`set
+user-config` 命令可指定运行时的用户配置或此配置中的单个属性。
 
 针对整个配置的语法：`set user-config [runtime-name] file`
 
@@ -341,7 +344,7 @@ show user-config mfp
 | 属性 | 描述 |
 |-----------|-------------|
 | runtime-name | 运行时的名称。 |
-| file | 包含新配置的 JSON 或 XML 文件的名称。 |
+| 文件 | 包含新配置的 JSON 或 XML 文件的名称。 |
 
 针对单个属性的语法：`set user-config [runtime-name] property = value`
 
@@ -370,7 +373,7 @@ set user-config mfp timeout = 240
 {: #the-show-confidential-clients-command }
 `show confidential-clients` 命令显示可以访问运行时的保密客户机的配置。 有关保密客户机的更多信息，请参阅[保密客户机](../../authentication-and-security/confidential-clients)。
 
-语法：`show confidential-clients [--xml][runtime-name]`
+语法：`show confidential-clients [--xml] [runtime-name]`
 
 它采用以下参数：
 
@@ -382,7 +385,7 @@ set user-config mfp timeout = 240
 
 | 参数 | 描述 | 必需 | 缺省值 |
 |----------|-------------|----------|---------|
-| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 | 否 | 标准输出 |
+| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
 
 **示例**
 
@@ -459,7 +462,7 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produce XML output instead of tabular output. |
 
 **示例**  
 
@@ -481,7 +484,7 @@ list adapters mfp
 | 参数 | 描述 |
 |----------|-------------|
 | runtime-name | 运行时的名称。 |
-| file | 二进制适配器文件 (.adapter) |
+| 文件 | 二进制适配器文件 (.adapter) |
 
 **示例**
 
@@ -509,7 +512,7 @@ deploy adapter mfp MyAdapter.adapter
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produce XML output instead of tabular output. |
 
 **示例**
 
@@ -570,7 +573,8 @@ delete adapter mfp MyAdapter
 adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 ```
 
-此命令基于[导出运行时资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 服务。
+此命令基于[
+导出运行时资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 服务。
 
 <br/>
 #### `adapter show user-config` 命令
@@ -583,7 +587,7 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 格式（而非 JSON 格式）的输出。 |
+| --xml | Produces output in XML format instead of JSON format. |
 
 **示例**
 
@@ -604,7 +608,7 @@ adapter mfp MyAdapter show user-config
 
 | 选项 | 描述 |
 |--------|-------------|
-| file | 包含新配置的 JSON 或 XML 文件的名称。 |
+| 文件 | 包含新配置的 JSON 或 XML 文件的名称。 |
 
 针对单个属性的语法：`adapter [runtime-name] adapter-name set user-config property = value`
 
@@ -647,7 +651,7 @@ adapter mfp MyAdapter set user-config timeout = 240
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produce XML output instead of tabular output. |
 
 **示例**
 
@@ -659,7 +663,8 @@ list apps mfp
 
 #### `deploy app` 命令
 {: #the-deploy-app-command }
-`deploy app` 命令可在运行时中部署应用程序版本。
+`deploy
+app` 命令可在运行时中部署应用程序版本。
 
 语法：`deploy app [runtime-name] file`
 
@@ -668,7 +673,7 @@ list apps mfp
 | 参数 | 描述 |
 |----------|-------------|
 | runtime-name | 运行时的名称。 |
-| file | 作为应用程序描述符的 JSON 文件。 |
+| 文件 | 作为应用程序描述符的 JSON 文件。 |
 
 **示例**
 
@@ -695,7 +700,7 @@ deploy app mfp MyApp/application-descriptor.json
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml	 | 生成 XML 输出（而非表格输出）。 |
+| --xml	 | Produce XML output instead of tabular output. |
 
 **示例**
 
@@ -707,7 +712,8 @@ show app mfp MyApp
 
 #### `delete app` 命令
 {: #the-delete-app-command }
-`delete app` 命令可从运行时中除去（取消部署）应用程序（包含所有环境和所有版本）。
+`delete
+app` 命令可从运行时中除去（取消部署）应用程序（包含所有环境和所有版本）。
 
 语法：`delete app [runtime-name] app-name`
 
@@ -728,7 +734,8 @@ delete app mfp MyApp
 
 #### `show app version` 命令
 {: #the-show-app-version-command }
-`show app version` 命令可显示有关运行时中应用程序版本的详细信息。
+`show app
+version` 命令可显示有关运行时中应用程序版本的详细信息。
 
 语法：`show app version [runtime-name] app-name environment version`
 
@@ -745,7 +752,7 @@ delete app mfp MyApp
 
 | 参数 | 描述 |
 | ---------|-------------|
-| -- xml | 生成 XML 输出（而非表格输出）。 |
+| -- xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -789,7 +796,8 @@ delete app version mfp MyApp iPhone 1.1
 
 #### `app show license-config` 命令
 {: #the-app-show-license-config-command }
-`app show license-config` 命令可显示应用程序的令牌许可证配置。
+`app
+show license-config` 命令可显示应用程序的令牌许可证配置。
 
 语法：`app [runtime-name] app-name show license-config`
 
@@ -797,7 +805,7 @@ delete app version mfp MyApp iPhone 1.1
 
 | 参数 | 描述 |
 |----------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -805,7 +813,8 @@ delete app version mfp MyApp iPhone 1.1
 app mfp MyApp show license-config
 ```
 
-此命令基于[应用程序许可证配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST 服务。
+此命令基于[
+应用程序许可证配置 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST 服务。
 
 #### `app set license-config` 命令
 {: #the-app-set-license-config-command }
@@ -827,11 +836,13 @@ license-config` 命令可指定应用程序的令牌许可证配置。
 app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION
 ```
 
-此命令基于[应用程序许可证配置 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST 服务。
+此命令基于[
+应用程序许可证配置 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST 服务。
 
 #### `app delete license-config` 命令
 {: #the-app-delete-license-config-command }
-`app delete license-config` 命令可重置应用程序的令牌许可证配置，即将其还原至初始状态。
+`app
+delete license-config` 命令可重置应用程序的令牌许可证配置，即将其还原至初始状态。
 
 语法：`app [runtime-name] app-name delete license-config`
 
@@ -856,7 +867,8 @@ app mfp MyApp iPhone 1.1 delete license-config
 
 #### `app version get descriptor` 命令
 {: #the-app-version-get-descriptor-command }
-`app version get descriptor` 命令返回应用程序版本的应用程序描述符。
+`app
+version get descriptor` 命令返回应用程序版本的应用程序描述符。
 
 语法：`app version [runtime-name] app-name environment version get descriptor [> tofile]`
 
@@ -921,7 +933,7 @@ app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 
 它在动词后采用以下参数。
 
-| 参数 | 描述 | 必需 | 缺省值 |
+| 参数     | 描述   | 必需    | 缺省值   |
 | > tofile | 输出文件的名称。 | 否 | 标准输出 |
 
 **示例**
@@ -930,7 +942,8 @@ app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity_data
 ```
 
-此命令基于[导出运行时资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 服务。
+此命令基于[
+导出运行时资源 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 服务。
 
 #### `app version set authenticity-data` 命令
 {: #the-app-version-set-authenticity-data-command }
@@ -942,7 +955,7 @@ app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity
 
 | 参数 | 描述 |
 |----------|-------------|
-| file | 输入文件的名称：<ul><li>从中抽取真实性数据的 .authenticity_data 文件</li><li>或设备文件（.ipa、.apk 或 .appx）。</li></ul>|
+| 文件 | 输入文件的名称：<ul><li>从中抽取真实性数据的 .authenticity_data 文件</li><li>或设备文件（.ipa、.apk 或 .appx）。</li></ul>|
 
 **示例**
 
@@ -958,7 +971,8 @@ app version mfp MyApp iPhone 1.1 set authenticity-data MyApp.ipa
 app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 ```
 
-此命令基于[部署应用程序真实性数据 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST 服务。
+此命令基于[
+部署应用程序真实性数据 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST 服务。
 
 #### `app version delete authenticity-data` 命令
 {: #the-app-version-delete-authenticity-data-command }
@@ -972,7 +986,8 @@ app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 app version mfp MyApp iPhone 1.1 delete authenticity-data
 ```
 
-此命令基于[应用程序真实性 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST 服务。
+此命令基于[
+应用程序真实性 (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST 服务。
 
 #### `app version show user-config` 命令
 {: #the-app-version-show-user-config-command }
@@ -1004,7 +1019,7 @@ app version mfp MyApp iPhone 1.1 show user-config
 
 | 参数 | 描述 |
 |----------|-------------|
-| file | 包含新配置的 JSON 或 XML 文件的名称。 |
+| 文件 | 包含新配置的 JSON 或 XML 文件的名称。 |
 
 针对单个属性的语法：`app version [runtime-name] app-name environment version set user-config property = value`
 
@@ -1025,7 +1040,8 @@ app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json
 app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 ```
 
-此命令基于[应用程序配置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST 服务。
+此命令基于[
+应用程序配置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST 服务。
 
 ### 设备命令
 {: #commands-for-devices }
@@ -1035,7 +1051,7 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 {: #the-list-devices-command }
 `list devices` 命令返回已联系运行时的应用程序的设备列表。
 
-语法：`list devices [runtime-name][--query query]`
+语法：`list devices [runtime-name] [--query query]`
 
 它采用以下参数：
 
@@ -1048,7 +1064,7 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1064,7 +1080,8 @@ list-devices mfp --query=john
 
 #### `remove device` 命令
 {: #the-remove-device-command }
-`remove device` 命令清除有关某一设备的记录，该设备已联系某一运行时的应用程序。
+`remove
+device` 命令清除有关某一设备的记录，该设备已联系某一运行时的应用程序。
 
 语法：`remove device [runtime-name] id`
 
@@ -1094,7 +1111,8 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 
 #### `device set status` 命令
 {: #the-device-set-status-command }
-`device set status` 命令在运行时范围内更改设备的状态。
+`device
+set status` 命令在运行时范围内更改设备的状态。
 
 语法：`device [runtime-name] id set status new-status`
 
@@ -1161,7 +1179,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1183,7 +1201,7 @@ show info
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1193,7 +1211,9 @@ show versions
 
 #### `show diagnostics` 命令
 {: #the-show-diagnostics-command }
-`show diagnostics` 命令可显示 {{ site.data.keys.product_adj }} 管理服务正常运行所需的各种组件的状态，例如数据库和辅助服务的可用性。
+`show
+diagnostics` 命令可显示 {{ site.data.keys.product_adj }}
+管理服务正常运行所需的各种组件的状态，例如数据库和辅助服务的可用性。
 
 语法：`show diagnostics`
 
@@ -1201,7 +1221,7 @@ show versions
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1210,7 +1230,8 @@ show diagnostics
 ```
 
 #### `unlock` 命令
-{: #the-unlock-command } `unlock` 命令可释放通用锁定。 一些破坏性操作会接受此锁定，以防止同时修改相同的配置数据。 在极少数情况下，如果中断了此操作，那么锁可能仍处于锁定状态，从而使破坏性操作无法进一步执行。 unlock 命令可用于在此类情况下发布锁定。
+{: #the-unlock-command }
+`unlock` 命令可释放通用锁定。 一些破坏性操作会接受此锁定，以防止同时修改相同的配置数据。 在极少数情况下，如果中断了此操作，那么锁可能仍处于锁定状态，从而使破坏性操作无法进一步执行。 unlock 命令可用于在此类情况下发布锁定。
 
 **示例**
 
@@ -1220,7 +1241,8 @@ unlock
 
 #### `list runtimes` 命令
 {: #the-list-runtimes-command }
-`list runtimes` 命令返回已部署的运行时的列表。
+`list
+runtimes` 命令返回已部署的运行时的列表。
 
 语法：`list runtimes [--in-database]`
 
@@ -1228,8 +1250,8 @@ unlock
 
 | 选项 | 描述 |
 |--------|-------------|
-| --in-database	| 是否在数据库中查看，而不是通过 MBeans |
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --in-database	| Whether to look in the database instead of via MBeans |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1245,7 +1267,8 @@ list runtimes --in-database
 
 #### `show runtime` 命令
 {: #the-show-runtime-command }
-`show runtime` 命令可显示有关给定的已部署运行时的信息。
+`show
+runtime` 命令可显示有关给定的已部署运行时的信息。
 
 语法：`show runtime [runtime-name]`
 
@@ -1259,7 +1282,7 @@ list runtimes --in-database
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 此命令基于[运行时 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 服务。
 
@@ -1292,7 +1315,8 @@ delete runtime mfp empty
 
 #### `list farm-members` 命令
 {: #the-list-farm-members-command }
-`list farm-members` 命令会返回在其上部署了指定运行时的场成员服务器的列表。
+`list
+farm-members` 命令会返回在其上部署了指定运行时的场成员服务器的列表。
 
 语法：`list farm-members [runtime-name]`
 
@@ -1306,7 +1330,7 @@ delete runtime mfp empty
 
 | 选项 | 描述 |
 |--------|-------------|
-| --xml | 生成 XML 输出（而非表格输出）。 |
+| --xml | Produces XML output instead of tabular output. |
 
 **示例**
 
@@ -1318,7 +1342,8 @@ list farm-members mfp
 
 #### `remove farm-member` 命令
 {: #the-remove-farm-member-command }
-`remove farm-member` 命令可从在其上部署了指定运行时的场成员的列表中除去某个服务器。 在服务器不可用或断开连接时，可使用此命令。
+`remove
+farm-member` 命令可从在其上部署了指定运行时的场成员的列表中除去某个服务器。 在服务器不可用或断开连接时，可使用此命令。
 
 语法：`remove farm-member [runtime-name] server-id`
 
@@ -1333,7 +1358,7 @@ list farm-members mfp
 
 | 选项 | 描述 |
 |--------|-------------|
-| --force | 强制除去场成员（即使在该成员可用且已连接的情况下）。 |
+| --force | Force removal of a farm member, even if it is available and connected. |
 
 **示例**
 

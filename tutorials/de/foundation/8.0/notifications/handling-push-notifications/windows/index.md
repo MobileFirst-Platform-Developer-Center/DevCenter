@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Push-Benachrichtigungen Windows 8.1 Universal und Windows 10 UWP
+title: Handhabung von Push-Benachrichtigungen in Windows 8.1 Universal und Windows 10 UWP
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 7
 downloads:
-  - name: Universelles Windows-8.1-Projekt herunterladen
+  - name: Download Windows 8.1 Universal Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
-  - name: Windows-10-UWP-Projekt herunterladen
+  - name: Download Windows 10 UWP Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -71,19 +71,21 @@ müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, b
 
 > Weitere Informationen zu Abfrage-Handlern enthält das Lernprogramm [Berechtigungsnachweise validieren](../../../authentication-and-security/credentials-validation/ios).
 
+
+
 ### Clientseite
 {: #client-side }
 
-| C-Sharp-Methoden                                                                                                | Beschreibung                                                             |
+|C-Sharp-Methoden|Beschreibung |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`Initialize()`](#initialization)                                                                            | Initialisiert MFPPush für den angegebenen Kontext                               |
-| [`IsPushSupported()`](#is-push-supported)                                                                    | Unterstützt das Gerät Push-Benachrichtigungen?                             |
-| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registriert das Gerät beim Push-Benachrichtigungsservice               |
-| [`GetTags()`](#get-tags)                                | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab |
-| [`Subscribe(String[] Tags)`](#subscribe)     | Richtet das Geräteabonnement für die angegebenen Tags ein                          |
-| [`GetSubscriptions()`](#get-subscriptions)              | Ruft die derzeit vom Gerät abonnierten Tags ab                |
-| [`Unsubscribe(String[] Tags)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags                                  |
-| [`UnregisterDevice()`](#unregister)                     | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf              |
+|[`Initialize()`](#initialization)                                                                            |Initialisiert MFPPush für den angegebenen Kontext|
+|[`IsPushSupported()`](#is-push-supported)                                                                    |Unterstützt das Gerät Push-Benachrichtigungen?|
+|[`RegisterDevice(JObject options)`](#register-device--send-device-token)                  |Registriert das Gerät beim Push-Benachrichtigungsservice|
+|[`GetTags()`](#get-tags)                                |Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
+|[`Subscribe(String[] Tags)`](#subscribe)     |Richtet das Geräteabonnement für die angegebenen Tags ein|
+|[`GetSubscriptions()`](#get-subscriptions)              |Ruft die derzeit vom Gerät abonnierten Tags ab |
+|[`Unsubscribe(String[] Tags)`](#unsubscribe) |Beendet das Abonnement bestimmter Tags|
+|[`UnregisterDevice()`](#unregister)                     |Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf|
 
 #### Initialisierung
 {: #initialization }
@@ -224,8 +226,8 @@ Für die Handhabung von Push-Benachrichtigungen müssen Sie einen `MFPPushNotifi
    }
    ```
 
-2. Definieren Sie die Klasse als Listener, indem Sie `MFPPush.GetInstance().listen(new NotificationListner())` aufrufen. 
-3. In der Methode onReceive empfangen Sie die Push-Benachrichtigung und können für die Benachrichtigung das gewünschte Verhalten festlegen. 
+2. Definieren Sie die Klasse als Listener, indem Sie `MFPPush.GetInstance().listen(new NotificationListner())` aufrufen.
+3. In der Methode onReceive empfangen Sie die Push-Benachrichtigung und können für die Benachrichtigung das gewünschte Verhalten festlegen.
 
 
 <img alt="Beispielanwendung" src="sample-app.png" style="float:right"/>

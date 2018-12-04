@@ -138,6 +138,121 @@ Pragma: no-cache
     </div>
 </div>
 
+### Refresh Tokens
+{: #refresh-tokens}
+
+A Refresh token is a special type of token, which can be used to obtain a new access token when the access token expires. To request a new access token, a valid refresh token can be presented. The refresh tokens are long-lived tokens and remain valid for a longer duration of time compared to access tokens.
+
+Refresh token must be used with caution by an application because they can allow a user to remain authenticated forever. Social media applications, e-commerce applications, product catalog browsing and such utility applications, where the application provider does not authenticate users regularly can use refresh tokens. Applications that mandate user authentication frequently must avoid using refresh tokens.  
+
+#### MobileFirst Refresh Token
+{: #mfp-refresh-token}
+
+A MobileFirst refresh token is a digitally signed entity like access token that describes the authorization permissions of a client. Refresh token can be used to get new access token of the same scope. After the client’s authorization request for a specific scope is granted and the client is authenticated, the authorization server’s token endpoint sends the client an HTTP response that contains the requested access token and refresh token. When the access token expires, the client sends refresh token to authorization server’s token endpoint to get a new set of access token and refresh token.
+
+**Structure**
+
+Similar to the MobileFirst access token, the MobileFirst refresh token contains the following information:
+* **Client ID**: a unique identifier of the client.
+* **Scope**: the scope for which the token was granted (see OAuth scopes). This scope does not include the mandatory application scope.
+* **Token-expiration time**: the time at which the token becomes invalid (expires), in seconds.
+
+#### Token Expiration
+{: #token-expiration}
+
+The token expiration period for refresh token is longer than the typical access token expiry period. The refresh token once granted remains valid until its expiration time elapses. Within this validity period, a client can use the refresh token to get a new set of access token and refresh token. The refresh token has a fixed expiry period of 30 days. Every time the client receives a new set of access token and refresh token successfully, the refresh token expiry is reset thus giving the client an experience of a never expiring token. The access token expiry rules remain same as explained in section **Access Token**.
+
+<div class="panel-group accordion" id="configuration-explanation-rt" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="refresh-token-expiration">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>Enabling Refresh Token feature</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
+            <div class="panel-body">
+            <p>Refresh token feature can be enabled using the following properties on client side and server side respectively.</p>
+            <b>Client side property (Android)</b><br/>
+
+            <i>File name</i>:            mfpclient.properties<br/>
+            <i>Property name</i>:   wlEnableRefreshToken<br/>
+            <i>Property value</i>:   true<br/>
+
+            For example,<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>Client side property (iOS)</b><br/>
+
+            <i>File name</i>:            mfpclient.plist<br/>
+            <i>Property name</i>:   wlEnableRefreshToken<br/>
+            <i>Property value</i>:   true<br/>
+
+            For example,<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
+
+            <b>server-side property</b><br/>
+
+            <i>File name</i>:            server.xml<br/>
+            <i>Property name</i>:   mfp.security.refreshtoken.enabled.apps<br/>
+            <i>Property value</i>:   <i>application bundle id separated by ‘;’</i><br/><br/>
+
+            <p>For example,</p><br/>
+            {% highlight xml %}
+            <jndiEntry jndiName="mfp/mfp.security.refreshtoken.enabled.apps" value='"com.sample.android.myapp1;com.sample.android.myapp2"'/>
+            {% endhighlight %}
+
+            <p>Use different bundle ids for different platforms.</p>
+
+                                    <br/>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>Close section</b></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+<div class="panel-group accordion" id="response-refresh-token" role="tablist">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="response-structure-rt">
+        <h4 class="panel-title">
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>Refresh token response structure</b></a>
+        </h4>
+    </div>
+
+    <div id="collapse-response-structure-rt" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure-rt">
+      <div class="panel-body">
+        <p>Following is an example of a valid refresh token response from the authorization server:</p>
+
+        {% highlight json %}
+        HTTP/1.1 200 OK
+        Content-Type: application/json
+        Cache-Control: no-store
+        Pragma: no-cache
+        {
+            "token_type": "Bearer",
+            "expires_in": 3600,
+            "access_token": "yI6ICJodHRwOi8vc2VydmVyLmV4YW1",
+            "scope": "scopeElement1 scopeElement2",
+            "refresh_token": "yI7ICasdsdJodHRwOi8vc2Vashnneh "
+        }
+        {% endhighlight %}
+
+        <p>The refresh-token response has the additional property object <code>refresh_token</code> apart from the other property objects explained as part of the access token response structure.</p>
+
+        <br/>
+              <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure-rt" data-target="#collapse-response-structure-rt" aria-expanded="false" aria-controls="collapse-response-structure-rt"><b>Close section</b></a>
+            </div>
+          </div>
+        </div>
+</div>
+
+
+>**Note:** The refresh tokens are long-lived compared to access tokens. Hence the refresh token feature must be used with caution. Applications where periodic user authentication is not necessary are ideal candidates for using the refresh token feature. 
+>
+> MobileFirst supports refresh token feature on iOS starting CD Update 3. 
+
+
 ### Security Checks
 {: #security-checks }
 

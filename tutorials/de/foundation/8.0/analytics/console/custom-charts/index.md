@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Kundenspezifische Diagramme erstellen
-breadcrumb_title: Kundenspezifische Diagramme
+breadcrumb_title: Custom Charts
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
@@ -182,6 +182,8 @@ Logger gesendet wurden.
 Die Protokolle enthalten außerdem Kontextinformationen zum Gerät, z. B. zur Umgebung, zum App-Namen und zur App-Version. 
 
 > **Hinweis:** Sie müssen kundenspezifische Ereignisse protokollieren, um kundenspezifische Diagramme mit Daten zu füllen. Informationen zum Senden kundenspezifischer Ereignisse von der Client-App finden Sie unter [Kundenspezifische Daten erfassen](../../analytics-api/#custom-events).
+
+
 
 1. Die Daten von Client-Apps werden eingetragen, wenn Sie erfasste Protokolle an den Server senden (siehe
 [Erfasste Protokolle senden](../../analytics-api/#sending-analytics-data)).

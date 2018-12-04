@@ -18,7 +18,7 @@ set -e
 ## First, build
 # build site with jekyll, by default to `_site' folder
 rm -rf _site/*
-bundle exec jekyll build --config _config.yml,build/_configBluemix.yml -d _site --profile
+bundle exec jekyll build --config _config.yml,build/_configBluemix.yml -d _site --profile --verbose
 rm -f _site/*.log
 #bundle exec htmlproofer ./_site --disable-external --url-ignore "#,/support/knowledgecenter/js/kc/globaltopic.js,/support/knowledgecenter/js/kc/themes/css/globaltopic.css" --log-level :debug
 
@@ -37,8 +37,8 @@ cp -R _site/* ../mfpsamples.github.ibm.com.generated-bluemix
 # commit and push generated content to `generated-bluemix' branch
 # since repository was cloned in write mode with token auth - we can push there
 cd ../mfpsamples.github.ibm.com.generated-bluemix
-git config user.email "nathanh@il.ibm.com"
-git config user.name "Nathan Hazout Travis"
+git config user.email "sreelathas@in.ibm.com"
+git config user.name "Sreelatha Sankaranarayanan Travis"
 git add -A .
 git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
 git push --quiet origin generated-bluemix

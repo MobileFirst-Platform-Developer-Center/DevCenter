@@ -1,190 +1,256 @@
 ---
 layout: tutorial
-title: Configuring MobileFirst Server
-weight: 5
+title: MobileFirst Server konfigurieren
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Consider your backup and recovery policy, optimize your {{ site.data.keys.mf_server }} Server configuration, and apply access restrictions and security options.
+Nachfolgend finden Sie Informationen zur Sicherungs- und Wiederherstellungsrichtlinie, zur Optimierung
+der
+MobileFirst-Server-Konfiguration und zum Anwenden von Zugriffsbeschränkungen und Sicherheitsoptionen.
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [Endpoints of the {{ site.data.keys.mf_server }} production server](#endpoints-of-the-mobilefirst-server-production-server)
-* [Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2](#configuring-mobilefirst-server-to-enable-tls-v12)
-* [Configuring user authentication for {{ site.data.keys.mf_server }} administration](#configuring-user-authentication-for-mobilefirst-server-administration)
-* [List of JNDI properties of the {{ site.data.keys.mf_server }} web applications](#list-of-jndi-properties-of-the-mobilefirst-server-web-applications)
-* [Configuring data sources](#configuring-data-sources)
-* [Configuring logging and monitoring mechanisms](#configuring-logging-and-monitoring-mechanisms)
-* [Configuring multiple runtimes](#configuring-multiple-runtimes)
-* [Configuring license tracking](#configuring-license-tracking)
-* [WebSphere Application Server SSL configuration and HTTP adapters](#websphere-application-server-ssl-configuration-and-http-adapters)
+* [Endpunkte
+von {{ site.data.keys.mf_server }}
+(Produktionsserver)](#endpoints-of-the-mobilefirst-server-production-server)
+* [{{ site.data.keys.mf_server }} für die Aktivierung von TLS Version 1.2 konfigurieren](#configuring-mobilefirst-server-to-enable-tls-v12)
+* [Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren](#configuring-user-authentication-for-mobilefirst-server-administration)
+* [Liste der JNDI-Eigenschaften für die MobileFirst-Server-Webanwendungen](#list-of-jndi-properties-of-the-mobilefirst-server-web-applications)
+* [Datenquellen konfigurieren](#configuring-data-sources)
+* [Protokollierungs- und Überwachungsmechanismen konfigurieren](#configuring-logging-and-monitoring-mechanisms)
+* [Mehrere Laufzeiten konfigurieren](#configuring-multiple-runtimes)
+* [Lizenzüberwachung konfigurieren](#configuring-license-tracking)
+* [SSL-Konfiguration von WebSphere Application Server und HTTP-Adapter](#websphere-application-server-ssl-configuration-and-http-adapters)
 
-## Endpoints of the {{ site.data.keys.mf_server }} production server
+## Endpunkte von {{ site.data.keys.mf_server }} (Produktionsserver)
 {: #endpoints-of-the-mobilefirst-server-production-server }
-You can create whitelists and blacklists for the endpoints of the IBM {{ site.data.keys.mf_server }}.
+Sie können für die Endpunkte von
+IBM {{ site.data.keys.mf_server }}. Whitelists und Blacklists erstellen.
 
-> **Note:** Information regarding URLs that are exposed by {{ site.data.keys.product }} is provided as a guideline. Organizations must ensure the URLs are tested in an enterprise infrastructure, based on what has been enabled for white and black lists.
+> **Hinweis:** Informationen zu den von der {{ site.data.keys.product }} zugänglich gemachten URLs werden als Richtlinie bereitgestellt. Organisationen müssen sicherstellen, dass die URLs ausgehend von Whitelists und Blacklists in einer Unternehmensstruktur getestet werden.
 
-| API URL under `<runtime context root>/api/` | Description                               | Suggested for whitelist? |
+
+
+|API-URL unter `<Kontextstammverzeichnis der Laufzeit>/api/` | Beschreibung |Empfohlen für Whitelist? |
 |---------------------------------------------|-------------------------------------------|--------------------------|
-| /adapterdoc/*	                              | Return the adapter's Swagger documentation for the named adapter | No. Used only internally by the administrator and the developers |
-| /adapters/*  | Adapters serving | Yes |
-| /az/v1/authorization/* | Authorize the client to access a specific scope | Yes |
-| /az/v1/introspection | Introspect the client's access token | No. This API is for confidential clients only. |
-| /az/v1/token | Generate an access token for the client | Yes |
-| /clientLogProfile/* | Get client log profile | Yes |
-| /directupdate/* | Get Direct Update .zip file | Yes, if you plan to use Direct Update |
-| /loguploader | Upload client logs to server | Yes |
-| /preauth/v1/heartbeat | Accept heartbeat from the client and note the last activity time | Yes |
-| /preauth/v1/logout | Log out from a security check | Yes |
-| /preauth/v1/preauthorize | Map and execute security checks for a specific scope | Yes |
-| /reach | The server is reachable | No, for internal use only |
-| /registration/v1/clients/* | Registration-service clients API | No. This API is for confidential clients only. |
-| /registration/v1/self/* | Registration-service client self-registration API | Yes |
+|/adapterdoc/*	                              |Gibt die Swagger-Dokumentation des benannten Adapters zurück |Nein; nur intern vom Administrator und von den Entwicklern verwendet |
+|/adapters/* |Services für Adapter |Ja |
+|/az/v1/authorization/* |Autorisiert den Zugriff des Clients auf einen bestimmten Bereich |Ja |
+|/az/v1/introspection |Introspektion des Zugriffstokens für den Client |Nein; API nur für vertrauliche Clients |
+|/az/v1/token |Generiert ein Zugriffstoken für den Client |Ja |
+|/clientLogProfile/* |Ruft das Clientprotokollprofil ab |Ja |
+|/directupdate/* |Ruft die ZIP-Datei für direkte Aktualisierung ab |Ja, wenn Sie planen, die direkte Aktualisierung zu verwenden |
+|/loguploader |Lädt die Clientprotokolle auf den Server hoch |Ja |
+|/preauth/v1/heartbeat |Akzeptiert das Überwachungssignal vom Client und notiert die Zeit der letzten Aktivität |Ja |
+|/preauth/v1/logout |Abmeldung bei einer Sicherheitsüberprüfung |Ja |
+|/preauth/v1/preauthorize |Ordnet einem bestimmten Bereich Sicherheitsüberprüfungen zu und führt diese aus |Ja |
+|/reach |Server erreichbar |Nein; nur für internen Gebrauch |
+|/registration/v1/clients/* |API für den Registrierungsservice für Clients |Nein; API nur für vertrauliche Clients |
+|/registration/v1/self/* |API des Registrierungsservice für die Selbstregistrierung von Clients |Ja |
 
-## Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2
+## {{ site.data.keys.mf_server }} für die Aktivierung von TLS Version 1.2 konfigurieren
 {: #configuring-mobilefirst-server-to-enable-tls-v12 }
-For {{ site.data.keys.mf_server }} to communicate with devices that support only Transport Layer Security v1.2 (TLS) V1.2, among the SSL protocols, you must complete the following instructions.
+Sie müssen die folgenden Anweisungen ausführen, wenn
+{{ site.data.keys.mf_server }} mit Geräten kommunizieren können soll, die
+von den SSL-Protokollen nur TLS (Transport Layer Security) Version 1.2 unterstützen. 
 
-The steps to configure {{ site.data.keys.mf_server }} to enable Transport Layer Security (TLS) V1.2 depend on how {{ site.data.keys.mf_server }} connects to devices.
+Mit welchen Schritten {{ site.data.keys.mf_server }} konfiguriert werden muss, um
+Transport Layer Security (TLS) Version 1.2 zu ermöglichen,
+hängt davon ab, wie {{ site.data.keys.mf_server }} eine Verbindung zu Geräten
+herstellt. 
 
-* If {{ site.data.keys.mf_server }} is behind a reverse proxy that decrypts SSL-encoded packets from devices before it passes the packets to the application server, you must enable TLS V1.2 support on your reverse proxy. If you use IBM  HTTP Server as your reverse proxy, see [Securing IBM HTTP Server](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.ihs.doc/ihs/welc6top_securing_ihs_container.html?view=kc) for instructions.
-* If {{ site.data.keys.mf_server }} communicates directly with devices, the steps to enable TLS V1.2 depend on whether your application serveris Apache Tomcat, WebSphere  Application Server Liberty profile, or WebSphere Application Server full profile.
+* Wenn sich {{ site.data.keys.mf_server }} hinter einem
+Reverse Proxy befindet, der SSL-verschlüsselte Pakete von Geräten vor der Weitergabe an den Anwendungsserver entschlüsselt, müssen Sie
+für Ihren Reverse Proxy die Unterstützung für
+TLS Version 1.2 aktivieren. Falls Sie IBM HTTP Server als Reverse Proxy verwenden,
+lesen Sie die Anweisungen unter
+[IBM HTTP Server sichern](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.ihs.doc/ihs/welc6top_securing_ihs_container.html?view=kc). 
+* Wenn {{ site.data.keys.mf_server }} direkt mit Geräten
+kommuniziert, hängen die für die Aktivierung vn TLS Version 1.2 erforderlichen Konfigurationsschritte davon ab, ob Sie Apache Tomcat,
+WebSphere Application Server Liberty Profile oder
+WebSphere Application Server Full Profile als Anwendungsserver verwenden. 
 
 ### Apache Tomcat
 {: #apache-tomcat }
-1. Confirm that the Java Runtime Environment (JRE) supports TLS V1.2.
-    Ensure that you have one of the following JRE versions:
-    * Oracle JRE 1.7.0_75 or later
-    * Oracle JRE 1.8.0_31 or later
-2. Edit the **conf/server.xml** file and modify the `Connector` element that declares the HTTPS port so that the **sslEnabledProtocols** attribute has the following value: `sslEnabledProtocols="TLSv1.2,TLSv1.1,TLSv1,SSLv2Hello"`.
+1. Vergewissern Sie sich, dass die Java Runtime
+Environment (JRE) TLS Version 1.2 unterstützt. Stellen Sie sicher, dass Sie eine der folgenden JRE-Versionen haben: 
+    * Oracle JRE 1.7.0_75 oder eine aktuellere JRE
+    * Oracle JRE 1.8.0_31 oder eine aktuellere JRE
+2. Bearbeiten Sie die Datei **conf/server.xml**. Modifizieren Sie das
+`Connector`-Element, das den HTTPS-Port deklariert, so, dass das Attribut
+**sslEnabledProtocols** den Wert `sslEnabledProtocols="TLSv1.2,TLSv1.1,TLSv1,SSLv2Hello"` hat. 
 
-### WebSphere Application Server Liberty profile
+### WebSphere Application Server Liberty Profile
 {: #websphere-application-server-liberty-profile }
-1. Confirm that the Java Runtime Environment (JRE) supports TLS V1.2.
-    * If you use an IBM Java SDK, ensure that your IBM Java SDK is patched for the POODLE vulnerability. You can find the minimum IBM Java SDK versions that contain the patch for your version of WebSphere Application Server in [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173).
+1. Vergewissern Sie sich, dass die Java Runtime Environment (JRE) TLS Version 1.2 unterstützt.
+    * Wenn Sie ein IBM Java-SDK verwenden, stellen Sie sicher, dass das Patch zum Beseitigen der Anfälligkeit für POODLE angewendet wurde. Die älteste Version des IBM Java-SDK,
+die das Patch für Ihre Version von WebSphere Application Server
+enthält, finden Sie im [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173). 
 
-        > **Note:** You can use the versions that are listed in the security bulletin or later versions.
-    * If you use an Oracle Java SDK, ensure that you have one of the following versions:
-        * Oracle JRE 1.7.0_75 or later
-        * Oracle JRE 1.8.0_31 or later
-2. If you use an IBM Java SDK, edit the **server.xml** file.
-    * Add the following line: `<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="SSL_TLSv2"/>`
-    * Add the `sslProtocol="SSL_TLSv2"` attribute to all existing `<ssl>` elements.
+        > **Hinweis:** Sie können die im Sicherheitsbulletin aufgelisteten Versionen oder aktuellere Versionen verwenden.
+    * Wenn Sie ein Java-SDK von Oracle verwenden, stellen Sie sicher, dass Sie über eine der folgenden Versionen verfügen:
+        * Oracle JRE 1.7.0_75 oder eine aktuellere JRE
+        * Oracle JRE 1.8.0_31 oder eine aktuellere JRE
+2. Wenn Sie ein IBM Java-SDK verwenden, bearbeiten Sie die Datei **server.xml**.
+    * Fügen Sie die folgende Zeile hinzu: `<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="SSL_TLSv2"/>`
+    * Fügen Sie das Attribut `sslProtocol="SSL_TLSv2"` zu allen vorhandenen `<ssl>`-Elementen hinzu.
 
-### WebSphere Application Server full profile
+### WebSphere Application Server Full Profile
 {: #websphere-application-server-full-profile }
-1. Confirm that the Java Runtime Environment (JRE) supports TLS V1.2.
+1. Vergewissern Sie sich, dass die Java Runtime Environment (JRE) TLS Version 1.2 unterstützt.
 
-    Ensure that your IBM Java SDK is patched for the POODLE vulnerability. You can find the minimum IBM Java SDK versions that contain the patch for your version of WebSphere Application Server in [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173).
-    > **Note:** You can use the versions that are listed in the security bulletin or later versions.
-2. Log in to WebSphere Application Server administrative console, and click **Security → SSL certificate and key management → SSL configurations**.
-3. For each SSL configuration listed, modify the configuration to enable TLS V1.2.
-    * Select an SSL configuration and then, under **Additional Properties**, click **Quality of protections (QoP)** settings.
-    * From the **Protocol** list, select **SSL_TLSv2**.
-    * Click **Apply** and then save the changes.
+    Stellen Sie sicher, dass auf Ihr IBM Java-SDK das Patch zur Beseitigung der Anfälligkeit für POODLE angewendet wurde. Die älteste Version des IBM Java-SDK, die das Patch für Ihre Version von WebSphere Application Server enthält, finden Sie im [Security Bulletin: Vulnerability in SSLv3 affects IBM WebSphere Application Server (CVE-2014-3566)](http://www.ibm.com/support/docview.wss?uid=swg21687173).
+    > **Hinweis:** Sie können die im Sicherheitsbulletin aufgelisteten Versionen oder aktuellere Versionen verwenden.
+2. Melden Sie sich bei der Administrationskonsole von WebSphere Application Server an und klicken Sie auf **Sicherheit → Verwaltung von SSL-Zertifikaten und Schlüsseln → SSL-Konfigurationen**.
+3. Modifizieren Sie jede aufgelistete SSL-Konfiguration so, dass TLS Version 1.2 ermöglicht wird.
+    * Wählen Sie eine SSL-Konfiguration aus und klicken Sie unter **Weitere Eigenschaften** auf **Einstellungen für Datenschutzniveau**.
+    * Wählen Sie in der Liste **Protokoll** den Eintrag **SSL_TLSv2** aus.
+    * Klicken Sie auf **Anwenden** und speichern Sie die Änderungen.
 
-## Configuring user authentication for {{ site.data.keys.mf_server }} administration
+## Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren
 {: #configuring-user-authentication-for-mobilefirst-server-administration }
-{{ site.data.keys.mf_server }} administration requires user authentication. You can configure user authentication and choose an authentication method. Then, the configuration procedure depends on the web application server that you use.
+Für die MobileFirst-Server-Verwaltung
+ist die Benutzerauthentifizierung erforderlich. Sie können die Benutzerauthentifizierung konfigurieren und eine Authentifizierungsmethode auswählen. Die Konfigurationsprozedur
+richtet sich nach dem Webanwendungsserver, den Sie verwenden.
 
-> **Important:** If you use stand-alone WebSphere  Application Server full profile, use an authentication method other than the simple WebSphere authentication method (SWAM) in global security. You can use lightweight third-party authentication (LTPA). If you use SWAM, you might experience unexpected authentication failures.
+> **Wichtiger Hinweis:** Wenn Sie einen eigenständigen WebSphere Application Server Full Profile
+verwenden, müssen Sie in der globalen Sicherheit eine andere Authentifizierungsmethode als SWAM (Simple
+WebSphere Authentication Mechanism) verwenden. Sie können LTPA (Lightweight Third-Party Authentication)
+nutzen. Wenn Sie SWAM verwenden, kann es zu nerwarteten Authentifizierungsfehlern kommen. 
 
-You must configure authentication after the installer deploys the {{ site.data.keys.mf_server }} administration web applications in the web application server.
+Nachdem das Installationsprogramm die
+Webanwendungen für die MobileFirst-Server-Verwaltung
+im Webanwendungsserver implementiert hat, müssen Sie die Authentifizierung konfigurieren. 
 
-The {{ site.data.keys.mf_server }} administration has the following Java Platform, Enterprise Edition (Java EE) security roles defined:
+Für die MobileFirst-Server-Verwaltung
+sind die folgenden Java-EE-Sicherheitsrollen (Java Platform,
+Enterprise Edition) definiert:
 
 * mfpadmin
 * mfpdeployer
 * mfpoperator
 * mfpmonitor
 
-You must map the roles to the corresponding sets of users. The **mfpmonitor** role can view data but cannot change any data. The following tables list MobileFirst roles and functions for production servers.
+Diese Rollen müssen den entsprechenden Benutzergruppen zugeordnet werden. Der Benutzer mit der Rolle **mfpmonitor** kann Daten anzeigen, aber nicht
+ändern. In der folgenden Tabelle sind die MobileFirst-Rollen und ihre Funktion
+für Produktionsserver aufgelistet. 
 
-#### Deployment
+#### Implementierung
 {: #deployment }
 
 |                        | Administrator | Deployer    | Operator    | Monitor    |
 |------------------------|---------------|-------------|-------------|------------|
-| Java EE security role. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| Deploy an application. | Yes           | Yes         | No          | No         |
-| Deploy an adapter.     | Yes           | Yes         | No          | No         |
+|Java-EE-Sicherheitsrolle | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
+|Anwendung implementieren |Ja |Ja |Nein |Nein |
+|Adapter implementieren |Ja |Ja |Nein |Nein |
 
-#### {{ site.data.keys.mf_server }} management
+#### MobileFirst-Server-Verwaltung
 {: #mobilefirst-server-management }
 
 |                            | Administrator | Deployer    | Operator    | Monitor    |
 |----------------------------|---------------|-------------|-------------|------------|
-| Java EE security role.     | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| Configure runtime settings.| Yes           | Yes         | No          | No         |
+|Java-EE-Sicherheitsrolle | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
+|Laufzeiteinstellungen konfigurieren |Ja |Ja |Nein |Nein |
 
-#### Application management
-{: #mobilefirst-server-management }
+#### Anwendungsmanagement
+{: #application-management }
 
 |                                     | Administrator | Deployer    | Operator    | Monitor    |
 |-------------------------------------|---------------|-------------|-------------|------------|
-| Java EE security role.              | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| Upload new {{ site.data.keys.product_adj }} application. | Yes           | Yes         | No          | No         |
-| Remove {{ site.data.keys.product_adj }} application.	  | Yes           | Yes         | No          | No         |
-| Upload new adapter.     | Yes           | Yes         | No          | No         |
-| Remove adapter.         | Yes           | Yes         | No          | No         |
-| Turn on or off application authenticity testing for an application. | Yes | Yes | No | No    |
-| Change properties on {{ site.data.keys.product_adj }} application status: Active, Active Notifying, and Disabled. | Yes | Yes | Yes | No |
+|Java-EE-Sicherheitsrolle | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
+|Neue {{ site.data.keys.product_adj }}-Anwendung hochladen |Ja |Ja |Nein |Nein |
+|{{ site.data.keys.product_adj }}-Anwendung entfernen |Ja |Ja |Nein |Nein |
+|Neuen Adapter hochladen |Ja |Ja |Nein |Nein |
+|Adapter entfernen |Ja |Ja |Nein |Nein |
+|Authentizitätstests für eine Anwendung aktivieren oder inaktivieren |Ja |Ja |Nein |Nein |
+|Eigenschaften für {{ site.data.keys.product_adj }}-Anwendungsstatus ändern (Active, Active Notifying und Disabled) |Ja |Ja |Ja |Nein |
 
-Basically, all roles can issue GET requests, the **mfpadmin**, **mfpdeployer**, and **mfpmonitor** roles can also issue POST and PUT requests, and the **mfpadmin** and **mfpdeployer** roles can also issue DELETE requests.
+Im Grunde können alle Rollen GET-Anforderungen absetzen. Die Rollen
+**mfpadmin**, **mfpdeployer** und
+**mfpmonitor** können außerdem POST- und PUT-Anforderungen absetzen. Die Rollen
+**mfpadmin** und **mfpdeployer** könen darüber hinaus
+DELETE-Anforderungen absetzen. 
 
-#### Requests related to push notifications
+#### Anforderungen in Bezug auf Push-Benachrichtigungen
 {: #requests-related-to-push-notifications }
 
 |                        | Administrator | Deployer    | Operator    | Monitor    |
 |------------------------|---------------|-------------|-------------|------------|
-| Java EE security role. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| GET requests {::nomarkdown}<ul><li>Get a list of all the devices that use push notification for an application</li><li>Get the details of a specific device</li><li>Get the list of subscriptions</li><li>Get the subscription information that is associated with a subscription ID.</li><li>Get the details of a GCM configuration</li><li>Get the details of an APNS configuration</li><li>Get the list of tags that are defined for the application</li><li>Get details of a specific tag</li></ul>{:/}| Yes           | Yes         | Yes         | Yes        |
-| POST and PUT requests {::nomarkdown}<ul><li>Register an app with push notification</li><li>Update a push device registration</li><li>Create a subscription</li><li>Add or update a GCM configuration</li><li>Add or update an APNS configuration</li><li>Submit notifications to a device</li><li>Create or update a tag</li></ul>{:/} | Yes           | Yes         | Yes         | No         |
-| DELETE requests {::nomarkdown}<ul><li>Delete the registration of a device to push notification</li><li>Delete a subscription</li><li>Unsubscribe a device from a tag</li><li>Delete a GCM configuration</li><li>Delete an APNS configuration</li><li>Delete a tag</li></ul>{:/} | Yes           | Yes         | No          | No         |
+|Java-EE-Sicherheitsrolle | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
+|GET-Anforderungen{::nomarkdown}<ul><li>Liste aller Geräte abrufen, die Push-Benachrichtigungen für eine Anwendung verwenden</li><li>Details eines bestimmten Geräts abrufen</li><li>Liste der Abonnements abrufen</li><li>Abonnementinformationen zu einer Abonnement-ID abrufen </li><li>Details einer GCM-Konfiguration abrufen</li><li>Details einer APNS-Konfiguration abrufen</li><li>Liste der für die Anwendung definierten Tags abrufen</li><li>Details zu einem bestimmten Tag abrufen</li></ul>{:/}|Ja |Ja |Ja |Ja |
+|POST- und PUT-Anforderungen{::nomarkdown}<ul><li>App für Push-Benachrichtigungen registrieren</li><li>Geräteregistrierung für Push aktualisieren</li><li>Abonnement erstellen</li><li>GCM-Konfiguration hinzufügen oder aktualisieren</li><li>APNS-Konfiguration hinzufügen oder aktualisieren</li><li>Benachrichtigungen an ein Gerät senden</li><li>Tag erstellen oder aktualisieren</li></ul>{:/} |Ja |Ja |Ja |Nein |
+|DELETE-Anforderungen{::nomarkdown}<ul><li>Registrierung eines Geräts für Push-Benachrichtigungen löschen</li><li>Abonnement löschen</li><li>Abonnement eines Tags für ein Gerät beenden</li><li>GCM-Konfiguration löschen</li><li>APNS-Konfiguration löschen</li><li>Tag löschen
+</li></ul>{:/} |Ja |Ja |Nein |Nein |
 
-#### Disabling
+#### Inaktivierung
 {: #disabling }
 
 |                        | Administrator | Deployer    | Operator    | Monitor    |
 |------------------------|---------------|-------------|-------------|------------|
-| Java EE security role. | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| Disable the specific device, marking the state as lost or stolen so that access from any of the applications on that device is blocked.       | Yes           | Yes         | Yes          | No        |
-| Disable a specific application, marking the state as disabled so that access from the specific application on that device is blocked.              | Yes           | Yes         | Yes         | No         |
+|Java-EE-Sicherheitsrolle | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
+|Gerät inaktivieren und Zustand als "verloren" (lost) oder "gestohlen" (stolen) angeben, um den Zugriff durch Anwendungen auf diesem Gerät zu blockieren |Ja |Ja |Ja |Nein |
+|Anwendung inaktivieren und Zustand als "inaktiviert" (disabled) angeben, um den Zugriff durch diese Anwendung auf diesem Gerät zu blockieren |Ja |Ja |Ja |Nein |
 
-If you choose to use an authentication method through a user repository such as LDAP, you can configure the {{ site.data.keys.mf_server }} administration so that you can use users and groups with the user repository to define the Access Control List (ACL) of the {{ site.data.keys.mf_server }} administration. This procedure depends on the type and version of the web application server that you use.
+Wenn Sie sich für eine Authentifizierungsmethode über ein Benutzerrepository wie LDAP entscheiden,
+können Sie die {{ site.data.keys.mf_server }}-Verwaltung
+so konfigurieren,
+dass Sie die
+Benutzer und Gruppen mit dem Benutzerrepository verwenden können, um die Zugriffssteuerungsliste (Access Control List, ACL) der
+{{ site.data.keys.mf_server }}-Verwaltung
+zu definieren.
+Die erforderliche Vorgehensweise ist abhängig vom Typ und von der Version des verwendeten Webanwendungsservers.
 
-### Configuring WebSphere Application Server full profile for {{ site.data.keys.mf_server }} administration
+### WebSphere Application Server Full Profile für die MobileFirst-Server-Verwaltung konfigurieren
 {: #configuring-websphere-application-server-full-profile-for-mobilefirst-server-administration }
-Configure security by mapping the {{ site.data.keys.mf_server }} administration Java EE roles to a set of users for both web applications.
+Konfigurieren Sie die Sicherheit, indem Sie für beide Webanwendungen
+die Java-EE-Rollen der MobileFirst-Server-Verwaltung einer Gruppe von Benutzern zuordnen.
 
-You define the basics of user configuration in the WebSphere  Application Server console. Access to the console is usually by this address: `https://localhost:9043/ibm/console/`
+Die grundlegenden Informationen für die Benutzerkonfiguration
+werden in der Konsole
+von WebSphere Application Server definiert. Die Konsole wird normalerweise über die Adresse `https://localhost:9043/ibm/console/` aufgerufen. 
 
-1. Select **Security → Global Security**.
-2. Select **Security Configuration Wizard** to configure users.
-    You can manage individual user accounts by selecting **Users and Groups → Manage Users**.
-3. Map the roles **mfpadmin**, **mfpdeployer**, **mfpmonitor**, and **mfpoperator** to a set of users.
-    * Select **Servers → Server Types → WebSphere application servers**.
-    * Select the server.
-    * In the **Configuration** tab, select **Applications → Enterprise applications**.
-    * Select **MobileFirst_Administration_Service**.
-    * In the **Configuration** tab, select **Details → Security** role to user/group mapping.
-    * Perform the necessary customization.
-    * Click **OK**.
-    * Repeat the steps to map the roles for the console web application. This time select **MobileFirst_Administration_Console**.
-    * Click **Save** to save the changes.
+1. Wählen Sie **Sicherheit → Globale Sicherheit** aus.
+2. Wählen Sie
+**Assistent für die Sicherheitskonfiguration** aus, um die Benutzer zu konfigurieren. Sie können einzelne Benutzeraccounts verwalten, wenn Sie
+**Benutzer und Gruppen → Benutzer verwalten** auswählen.
+3. Ordnen Sie die Rollen **mfpadmin**, **mfpdeployer**, **mfpmonitor**
+und **mfpoperator** einer Gruppe von Benutzern zu.
+    * Wählen Sie **Server → Servertypen → WebSphere-Anwendungsserver** aus.
+    * Wählen Sie den Server aus.
+    * Wählen Sie auf der Registerkarte
+**Konfiguration** die Optionen **Anwendungen → Unternehmensanwendungen** aus.
+    * Wählen Sie **MobileFirst_Administration_Service** aus.
+    * Wählen Sie auf der Registerkarte
+**Konfiguration** die Optionen
+**Details → Zuordnung von Sicherheitsrollen zu Benutzern/Gruppen** aus.
+    * Passen Sie die Angaben nach Bedarf an.
+    * Klicken Sie auf **OK**. 
+    * Wiederholen Sie die Schritte
+für die Zuordnung der Rollen für die Konsolenwebanwendung. Wählen Sie dieses Mal **MobileFirst_Administration_Console** aus.
+    * Klicken Sie auf
+**Speichern**, um die Änderungen zu speichern.
 
-### Configuring WebSphere Application Server Liberty profile for {{ site.data.keys.mf_server }} administration
+### WebSphere Application Server Liberty Profile für die MobileFirst-Server-Verwaltung konfigurieren
 {: #configuring-websphere-application-server-liberty-profile-for-mobilefirst-server-administration }
-In WebSphere  Application Server Liberty profile, you configure the roles of **mfpadmin**, **mfpdeployer**, **mfpmonitor**, and **mfpoperator** in the **server.xml** configuration file of the server.
+In WebSphere Application Server Liberty Profile werden die Rollen
+**mfpadmin**, **mfpdeployer**, **mfpmonitor** und **mfpoperator** in der Konfigurationsdatei
+**server.xml** des Servers konfiguriert. 
 
-To configure the security roles, you must edit the **server.xml** file. In the `<application-bnd>` element of each `<application>` element, create `<security-role>` elements. Each `<security-role>` element is for each roles: **mfpadmin**, mfpdeployer, mfpmonitor, and mfpoperator. Map the roles to the appropriate user group name, in this example: **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup**, or **mfpoperatorgroup**. These groups are defined through the `<basicRegistry>` element. You can customize this element or replace it entirely with an `<ldapRegistry>` element or a `<safRegistry>` element.
+Sie müssen die Datei
+**server.xml** bearbeiten, um die Sicherheitsrollen zu konfigurieren.
+Erstellen Sie im Element `<application-bnd>` jedes `<application>`-Elements `<security-role>`-Elemente. Jedes Element `<security-role>` ist für die Rollen **mfpadmin**, **mfpdeployer**, **mfpmonitor** und **mfpoperator** bestimmt. Ordnen Sie die Rollen dem passenden Benutzergruppennamen zu,
+in diesem Beispiel **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup**
+oder **mfpoperatorgroup**. Diese Gruppen werden mit dem Element `<basicRegistry>` definiert. Sie können dieses Element entweder anpassen oder ganz durch ein `<ldapRegistry>`-Element oder ein `<safRegistry>`-Element ersetzen.
 
-Then, to maintain good response times with a large number of installed applications, for example with 80 applications, you should configure a connection pool for the administration database.
+Anschließend
+sollten Sie einen Verbindungspool für die Verwaltungsdatenbank konfigurieren,
+um bei einer großen Anzahl von installierten Anwendungen (z. B. 80 Anwendungen) gute Antwortzeiten zu erzielen.
 
-1. Edit the **server.xml** file. For example:
+1. Bearbeiten Sie die Datei
+**server.xml**. Beispiel:
 
    ```xml
    <security-role name="mfpadmin">
@@ -216,13 +282,13 @@ Then, to maintain good response times with a large number of installed applicati
    </basicRegistry>
    ```
 
-2. Define  the **AppCenterPool** size:
+2. Definieren Sie die Größe für **AppCenterPool**: 
 
    ```xml
    <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
    ```
 
-3. In the `<dataSource>` element, define a reference to the connection manager:
+3. Definieren Sie im Element `<dataSource>` eine Referenz auf den Verbindungsmanager:
 
    ```xml
    <dataSource id="MFPADMIN" jndiName="mfpadmin/jdbc/mfpAdminDS" connectionManagerRef="AppCenterPool">
@@ -230,11 +296,15 @@ Then, to maintain good response times with a large number of installed applicati
    </dataSource>
    ```
 
-### Configuring Apache Tomcat for {{ site.data.keys.mf_server }} administration
+### Apache Tomcat für die MobileFirst-Server-Verwaltung konfigurieren
 {: #configuring-apache-tomcat-for-mobilefirst-server-administration }
-You must configure the Java EE security roles for the {{ site.data.keys.mf_server }} administration on the Apache Tomcat web application server.
+Sie müssen die Java-EE-Sicherheitsrollen für die
+MobileFirst-Server-Verwaltung
+im Apache-Tomcat-Webanwendungsserver konfigurieren.
 
-1. If you installed the {{ site.data.keys.mf_server }} administration manually, declare the following roles in the **conf/tomcat-users.xml** file:
+1. Wenn Sie die MobileFirst-Server-Verwaltung
+manuell installiert haben, deklarieren Sie die folgenden Rollen in der Datei
+**conf/tomcat-users.xml**:
 
    ```xml
    <role rolename="mfpadmin"/>
@@ -243,58 +313,68 @@ You must configure the Java EE security roles for the {{ site.data.keys.mf_serve
    <role rolename="mfpoperator"/>
    ```
 
-2. Add roles to the selected users, for example:
+2. Fügen Sie den ausgewählten Benutzern Rollen hinzu, z. B.:
 
    ```xml
    <user name="admin" password="admin" roles="mfpadmin"/>
    ```
 
-3. You can define the set of users as described in the Apache Tomcat documentation, [Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
+3. Sie können die Benutzer wie in der Apache Tomcat-Dokumentation
+unter [Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html) beschrieben definieren.
 
-## List of JNDI properties of the {{ site.data.keys.mf_server }} web applications
+## Liste der JNDI-Eigenschaften für die MobileFirst-Server-Webanwendungen
 {: #list-of-jndi-properties-of-the-mobilefirst-server-web-applications }
-Configure the JNDI properties for the {{ site.data.keys.mf_server }} web applications that are deployed to the application server.
+Konfigurieren Sie die JNDI-Eigenschaften für die MobileFirst-Server-Webanwendungen, die im Anwendungsserver
+implementiert sind. 
 
-* [Setting up JNDI properties for {{ site.data.keys.mf_server }} web applications](#setting-up-jndi-properties-for-mobilefirst-server-web-applications)
-* [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](#list-of-jndi-properties-for-mobilefirst-server-administration-service)
-* [List of JNDI properties for {{ site.data.keys.mf_server }} live update service](#list-of-jndi-properties-for-mobilefirst-server-live-update-service)
-* [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](#list-of-jndi-properties-for-mobilefirst-runtime)
-* [List of JNDI properties for {{ site.data.keys.mf_server }} push service](#list-of-jndi-properties-for-mobilefirst-server-push-service)
+* [Liste der JNDI-Eigenschaften für die MobileFirst-Server-Webanwendungen konfigurieren](#setting-up-jndi-properties-for-mobilefirst-server-web-applications)
+* [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](#list-of-jndi-properties-for-mobilefirst-server-administration-service)
+* [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Liveaktualisierungsservice](#list-of-jndi-properties-for-mobilefirst-server-live-update-service)
+* [Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit](#list-of-jndi-properties-for-mobilefirst-runtime)
+* [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service](#list-of-jndi-properties-for-mobilefirst-server-push-service)
 
-### Setting up JNDI properties for {{ site.data.keys.mf_server }} web applications
+### JNDI-Eigenschaften für MobileFirst-Server-Webanwendungen konfigurieren
 {: #setting-up-jndi-properties-for-mobilefirst-server-web-applications }
-Set up JNDI properties to configure the {{ site.data.keys.mf_server }} web applications that are deployed to the application server.  
-Set the JNDI environment entries in one of the following ways:
+Sie können JNDI-Eigenschaften für die im Anwendungsserver implementierten MobileFirst-Server-Webanwendungen
+konfigurieren.   
+Sie haben die folgenden Möglichkeiten, die JNDI-Umgebungseinträge festzulegen: 
 
-* Configure the server environment entries. The steps to configure the server environment entries depends on which application server you use:
+* Konfigurieren Sie die Serverumgebungseinträge. Die Konfigurationsschritte für die Serverumgebungseinträge hängen wie folgt vom verwendeten Anwendungsserver
+ab: 
 
-    * **WebSphere  Application Server:**
-        1. In the WebSphere Application Server administration console, go to **Applications → Application Types → WebSphere enterprise applications → application_name → Environment entries for Web modules**.
-        2. In the Value fields, enter values that are appropriate to your server environment.
+    * **WebSphere Application Server:**
+        1. Navigieren Sie in der Administrationskonsole von WebSphere Application Server zu
+**Anwendungen → Anwendungstypen → WebSphere-Unternehmensanwendungen → Anwendungsname → Umgebungseinträge für Webmodule**.
+        2. Geben Sie im Feld Wert Werte ein, die für Ihre Serverumgebung geeignet sind. 
 
-        ![JNDI environment entries in WebSphere](jndi_was.jpg)
+        ![JNDI-Umgebungseinträge in WebSphere](jndi_was.jpg)
     * WebSphere Application Server Liberty:
 
-      In **liberty\_install\_dir/usr/servers/serverName**, edit the **server.xml** file, and declare the JNDI properties as follows:
+      Bearbeiten Sie die Datei **server.xml** unter **Liberty-Installationsverzeichnis/usr/servers/Servername** und deklarieren Sie wie folgt die
+JNDI-Eigenschaften: 
 
       ```xml
-      <application id="app_context_root" name="app_context_root" location="app_war_name.war" type="war">
+      <application id="App-Kontextstammverzeichnis" name="App-Kontextstammverzeichnis" location="App-WAR-Name.war" type="war">
             ...
       </application>
-      <jndiEntry jndiName="app_context_root/JNDI_property_name" value="JNDI_property_value" />
+      <jndiEntry jndiName="App-Kontextstammverzeichnis/Name_der_JNDI-Eigenschaft" value="Wert_der_JNDI-Eigenschaft" />
       ```
 
-      The context root (in the previous example: **app\_context\_root**) connects between the JNDI entry and a specific {{ site.data.keys.product_adj }} application. If multiple {{ site.data.keys.product_adj }} applications exist on the same server, you can define specific JNDI entries for each application by using the context path prefix.
+      Das Kontextstammverzeichnis
+(im obigen Beispiel **App-Kontextstammverzeichnis**)
+ist die Verbindung zwischen dem JNDI-Eintrag und einer bestimmten {{ site.data.keys.product_adj }}-Anwendung. Wenn mehrere
+{{ site.data.keys.product_adj }}-Anwendungen in demselben Server vorhanden sind, können
+Sie bestimmte JNDI-Einträge für jede Anwendung mit dem Kontextpfadpräfix definieren. 
 
-      > **Note:** Some properties are defined globally on WebSphere Application Server Liberty, without prefixing the property name by the context root. For a list of these properties, see [Global JNDI entries](../appserver/#global-jndi-entries).
+      > **Hinweis:** Einige Eingenschaften werden in WebSphere Application Server global definiert, ohne dass das Kontextstammverzeichnis als Präfix für den Eigenschaftsnamen verwendet wird. Eine Liste dieser Eigenschaften finden Sie unter [Globale JNDI-Einträge](../prod-env/appserver/#global-jndi-entries).
 
-      For all other JNDI properties, the names must be prefixed with the context root of the application:
+      Die Namen aller anderen JNDI-Eigenschaften müssen mit dem Konstextstammverzeichis der Anwendung als Präfix versehen sein.
 
-       * For the live update service, the context root must be **/[adminContextRoot]config**. For example, if the context root of the administration service is **/mfpadmin**, then the context root of the live update service must be **/mfpadminconfig**.
-       * For the push service, you must define the context root as **/imfpush**. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.
-       * For the {{ site.data.keys.product_adj }} Administration Service application, the {{ site.data.keys.mf_console }} and {{ site.data.keys.product_adj }} runtime, you can define the context root as you want. However, by default it is **/mfpadmin** for {{ site.data.keys.product_adj }} Administration Service, **/mfpconsole** for {{ site.data.keys.mf_console }}, and **/mfp** for {{ site.data.keys.product_adj }} runtime.
+       * Das Kontextstammverzeichnis für den Liveaktualisierungsservice muss **/[Kontextstammverzeichnis_des_Verwaltungsservice]config** lauten. Wenn das Kontextstammverzeichnis des Verwaltungsservice beispielsweise **/mfpadmin** ist, muss der Liveaktualisierungsservice das Kontextstammverzeichnis **/mfpadminconfig** haben.
+       * Für den Push-Service müssen Sie **/imfpush** als Kontextstammverzeichnis festlegen. Andernfalls können die Clientgeräte keine Verbindung zu dem Service herstellen, denn das Kontextstammverzeichnis ist im SDK fest codiert.
+       * Für den {{ site.data.keys.product_adj }}-Verwaltungsservice, die {{ site.data.keys.mf_console }} und die {{ site.data.keys.product_adj }}-Laufzeit können Sie das Kontextstammverzeichnis ganz nach Wunsch definieren. Die Standardwerte lauten **/mfpadmin** für den {{ site.data.keys.product_adj }}-Verwaltungsservice, **/mfpconsole** für die {{ site.data.keys.mf_console }} und **/mfp** für die {{ site.data.keys.product_adj }}-Laufzeit.
 
-      For example:
+      Beispiel: 
 
       ```xml
       <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
@@ -305,19 +385,21 @@ Set the JNDI environment entries in one of the following ways:
 
     * Apache Tomcat:
 
-      In **tomcat\_install\_dir/conf**, edit the **server.xml** file, and declare the JNDI properties as follows:
+      Bearbeiten Sie die Datei **server.xml** unter
+**Tomcat-Installationsverzeichnis/conf** und deklarieren Sie wie folgt die JNDI-Eigenschaften: 
 
       ```xml
       <Context docBase="app_context_root" path="/app_context_root">
-            <Environment name="JNDI_property_name" override="false" type="java.lang.String" value="JNDI_property_value"/>
+            <Environment name="Name_der_JNDI-Eigenschaft" override="false" type="java.lang.String" value="Wert_der_JNDI-Eigenschaft"/>
       </Context>
       ```
 
-        * The context path prefix is not needed because the JNDI entries are defined inside the `<Context>` element of an application.
-        * `override="false"` is mandatory.
-        * The `type` attribute is always `java.lang.String`, unless specified differently for the property.
+        * Das Präfix für den Kontextpfad ist nicht erforderlich, weil die JNDI-Einträge innerhalb des Elements `<Context>` einer Anwendung definiert werden.
+        * Die Angabe `override="false"` ist obligatorisch. 
+        * Das Attribut `type` hat immer den Wert `java.lang.String`,
+sofern für die Eigenschaft nichts anderes angegeben ist. 
 
-      For example:
+      Beispiel: 
 
       ```xml
       <Context docBase="app_context_root" path="/app_context_root">
@@ -325,15 +407,24 @@ Set the JNDI environment entries in one of the following ways:
       </Context>
       ```
 
-* If you install with Ant tasks, you can also set the values of the JNDI properties at installation time.
+* Wenn Sie für die Installation Ant-Tasks verwenden, können Sie die Werte der JNDI-Eigenschaften
+auch zur Installationszeit festlegen. 
 
-  In **mfp_install_dir/MobileFirstServer/configuration-samples**, edit the configuration XML file for the Ant tasks, and declare the values for the JNDI properties by using the property element inside the following tags:
+  Bearbeiten Sie die XML-Konfigurationsdatei für die Ant-Tasks
+unter **MFP-Installationsverzeichnis/MobileFirstServer/configuration-samples** und deklarieren Sie die Werte für die JNDI-Eigenschaften mit dem Element
+property innerhalb folgender Tags: 
 
-  * `<installmobilefirstadmin>`, for {{ site.data.keys.mf_server }} administration, {{ site.data.keys.mf_console }}, and live update services. For more information, see [Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
-  * `<installmobilefirstruntime>`, for {{ site.data.keys.product_adj }} runtime configuration properties. For more information, see [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
-  * `<installmobilefirstpush>`, for configuration of the push service. For more information, see [Ant tasks for installation of {{ site.data.keys.mf_server }} push service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service).
+  * `<installmobilefirstadmin>` für die MobileFirst-Server-Verwaltung, die {{ site.data.keys.mf_console }} und den Liveaktualisierungsservice. Weitere Informationen finden Sie unter
+[Ant-Tasks für die Installation
+der {{ site.data.keys.mf_console }}, der MobileFirst-Server-Artefakte, des MobileFirst-Server-Verwaltungsservice und des
+Liveaktualisierungsservice](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
+  * `<installmobilefirstruntime>` für die Konfigurationseigenschaften der {{ site.data.keys.product_adj }}-Laufzeit. Weitere Informationen finden Sie unter
+[Ant-Tasks für die Installation der
+{{ site.data.keys.product_adj }}-Laufzeitumgebungen](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+  * `<installmobilefirstpush>` für die Konfiguration des Push-Service. Weitere Informationen finden Sie unter
+[Ant-Tasks für die Installation des MobileFirst-Server-Push-Service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service).
 
-  For example:
+  Beispiel:
 
   ```xml
   <installmobilefirstadmin ..>
@@ -341,229 +432,244 @@ Set the JNDI environment entries in one of the following ways:
   </installmobilefirstadmin>
   ```
 
-### List of JNDI properties for {{ site.data.keys.mf_server }} administration service
+### Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice
 {: #list-of-jndi-properties-for-mobilefirst-server-administration-service }
-When you configure {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.mf_console }} for your application server, you set optional or mandatory JNDI properties, in particular for Java Management Extensions (JMX).
+Wenn Sie die Verwaltungsservices von {{ site.data.keys.mf_server }}
+und die {{ site.data.keys.mf_console }} für Ihren Anwendungsserver konfigurieren, definieren Sie optionale
+oder obligatorische JNDI-Eigenschaften, insbesondere für Java Management Extensions (JMX). 
 
-The following properties can be set on the administration service web application mfp-admin-service.war.
+Für die
+Webanwendung für Verwaltungsservices,
+mfp-admin-service.war, können die folgenden Eigenschaften festgelegt werden: 
 
-#### JNDI properties for administration service: JMX
+#### JNDI-Eigenschaften für den Verwaltungsservice: JMX
 {: #jndi-properties-for-administration-service-jmx }
 
-| Property                 | Optional or mandatory | Description | Restrictions |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung | Einschränkungen |
 |--------------------------|-----------------------|-------------|--------------|
-| mfp.admin.jmx.connector  | Optional	           | The Java Management Extensions (JMX) connector type.<br/>The possible values are `SOAP` and `RMI`. The default value is SOAP. | WebSphere  Application Server only. |
-| mfp.admin.jmx.host       | Optional	           | Host name for the JMX REST connection. | Liberty profile only. |
-| mfp.admin.jmx.port	   | Optional	           | Port for the JMX REST connection. | Liberty profile only. |
-| mfp.admin.jmx.user       | Mandatory for the Liberty profile and for WebSphere Application Server farm, optional otherwise | User name for the JMX REST connection. | WebSphere Application Server Liberty profile: The user name for the JMX REST connection.<br/><br/>WebSphere Application Server farm: the user name for the SOAP connection.<br/><br/>WebSphere Application Server Network Deployment: the user name of the WebSphere administrator if the virtual host mapped to the {{ site.data.keys.mf_server }} administration application is not the default host.<br/><br/>Liberty collective: the user name of the controller administrator that is defined in the `<administrator-role>` element of the server.xml file of the Liberty controller. |
-| mfp.admin.jmx.pwd	| Mandatory for the Liberty profile and for WebSphere Application Server farm, optional otherwise | User password for the JMX REST connection. | WebSphere Application Server Liberty profile: the user password for the JMX REST connection.<br/><br/>WebSphere Application Server farm: the user password for the SOAP connection.<br/><br/>WebSphere Application Server Network Deployment: the user password of the WebSphere administrator if the virtual host that is mapped to the {{ site.data.keys.mf_server }} server administration application is not the default host.<br/><br/>Liberty collective: the password of the controller administrator that is defined in the `<administrator-role>` element of the server.xml file of the Liberty controller. |
-| mfp.admin.rmi.registryPort | Optional | RMI registry port for the JMX connection through a firewall. | Tomcat only. |
-| mfp.admin.rmi.serverPort | Optional | RMI server port for the JMX connection through a firewall. | Tomcat only. |
-| mfp.admin.jmx.dmgr.host | Mandatory | Deployment manager host name. | WebSphere Application Server Network Deployment only. |
-| mfp.admin.jmx.dmgr.port | Mandatory | Deployment manager RMI or SOAP port. | WebSphere Application Server Network Deployment only. |
+|mfp.admin.jmx.connector|Optional	|JMX-Connectortyp (Java Management Extensions)<br/>Die gültigen Werte sind `SOAP` und `RMI`. Der Standardwert ist SOAP. |Nur WebSphere Application Server |
+|mfp.admin.jmx.host |Optional	|Hostname für die JMX-REST-Verbindung |Nur Liberty Profile |
+|mfp.admin.jmx.port	   |Optional	|Port für die JMX-REST-Verbindung |Nur Liberty Profile |
+|mfp.admin.jmx.user |Obligatorisch für Liberty Profile und eine WebSphere-Application-Server-Farm; andernfalls optional |Benutzername für die JMX-REST-Verbindung |WebSphere Application Server Liberty Profile: Benutzername für die JMX-REST-Verbindung<br/><br/>WebSphere-Application-Server-Farm: Benutzername für die SOAP-Verbindung<br/><br/>WebSphere Application Server Network Deployment: Benutzername des WebSphere-Administrators, wenn der der Anwendung für MobileFirst-Server-Verwaltung zugeordnete virtuelle Host nicht der Standardhost ist<br/><br/>Liberty-Verbund: Benutzername des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
+|mfp.admin.jmx.pwd	|Obligatorisch für Liberty Profile und eine WebSphere-Application-Server-Farm; andernfalls optional |Benutzerkennwort für die JMX-REST-Verbindung |WebSphere Application Server Liberty Profile: Benutzerkennwort für die JMX-REST-Verbindung<br/><br/>WebSphere-Application-Server-Farm: Benutzerkennwort für die SOAP-Verbindung<br/><br/>WebSphere Application Server Network Deployment: Kennwort des WebSphere-Administrators, wenn der der Anwendung für MobileFirst-Server-Verwaltung zugeordnete virtuelle Host nicht der Standardhost ist<br/><br/>Liberty-Verbund: Kennwort des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
+|mfp.admin.rmi.registryPort | Optional |RMI-Registryport für die JMX-Verbindung über eine Firewall |Nur Tomcat |
+|mfp.admin.rmi.serverPort | Optional |RMI-Serverport für die JMX-Verbindung über eine Firewall |Nur Tomcat |
+|mfp.admin.jmx.dmgr.host |Obligatorisch |Hostname des Deployment Manager |Nur WebSphere Application Server Network Deployment |
+|mfp.admin.jmx.dmgr.port |Obligatorisch |RMI- oder SOAP-Port des Deployment Manager |Nur WebSphere Application Server Network Deployment |
 
-#### JNDI properties for administration service: timeout
+#### JNDI-Eigenschaften für den Verwaltungsservice: Zeitlimit
 {: #jndi-properties-for-administration-service-timeout }
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.actions.prepareTimeout | Optional | Timeout in milliseconds to transfer data from the adminstration service to the runtime during a deployment transaction. If the runtime cannot be reached within this time, an error is raised and the deployment transaction ends.<br/><br/>Default value: 1800000 ms (30 min) |
-| mfp.admin.actions.commitRejectTimeout | Optional | Timeout in milliseconds, when a runtime is contacted, to commit or reject a deployment transaction. If the runtime cannot be reached within this time, an error is raised and the deployment transaction ends.<br/><br/>Default value: 120000 ms (2 min) |
-| mfp.admin.lockTimeoutInMillis | Optional |Timeout in milliseconds for obtaining the transaction lock. Because deployment transactions run sequentially, they use a lock. Therefore, a transaction must wait until a previous transaction is finished. This timeout is the maximal time during which a transaction waits.<br/><br/>Default value: 1200000 ms (20 min) |
-| mfp.admin.maxLockTimeInMillis | Optional | The maximal time during which a process can take the transaction lock. Because deployment transactions run sequentially, they use a lock. If the application server fails while a lock is taken, it can happen in rare situations that the lock is not released at the next restart of the application server. In this case, the lock is released automatically after the maximum lock time so that the server is not blocked forever. Set a time that is longer than a normal transaction.<br/><br/>Default value: 1800000 (30 min) |
+|mfp.admin.actions.prepareTimeout | Optional |Zeitlimit (in Millisekunden) für die Übertragung von Daten vom Verwaltungsservice an die Laufzeitumgebung während einer Implementierungstransaktion. Wenn die Laufzeitumgebung innerhalb dieses Zeitlimits nicht erreicht werden kann, wird ein Fehler ausgelöst und die Implementierungstransaktion beendet.<br/><br/>Der Standardwert ist 1800000 ms (30 Minuten). |
+|mfp.admin.actions.commitRejectTimeout | Optional |Das Zeitlimit (in Millisekunden) für das Festschreiben oder Zurückweisen einer Implementierungstransaktion, wenn eine Verbindung zur Laufzeitumgebung hergestellt wird. Wenn die Laufzeitumgebung innerhalb dieses Zeitlimits nicht erreicht werden kann, wird ein Fehler ausgelöst und die Implementierungstransaktion beendet.<br/><br/>Der Standardwert ist 120000 ms (2 Minuten). |
+|mfp.admin.lockTimeoutInMillis | Optional |Das Zeitlimit (in Millisekunden) für das Abrufen der Transaktionssperre. Da Implementierungstransaktionen sequenziell ausgeführt werden, verwenden sie eine Sperre. Deshalb muss eine Transaktion warten, bis eine vorherige Transaktion beendet ist. Dieses Zeitlimit gibt an, wie lange eine Transaktion maximal wartet.<br/><br/>Der Standardwert ist 1200000 ms (20 Minuten). |
+|mfp.admin.maxLockTimeInMillis | Optional |Die maximal zulässige Haltezeit für eine Transaktionssperre durch einen Prozess. Da Implementierungstransaktionen sequenziell ausgeführt werden, verwenden sie eine Sperre. Wenn der Anwendungsserver ausfällt, während eine Sperre gehalten wird, kann es in seltenen Fällen vorkommen, dass die Sperre beim nächsten Neustart des Anwendungsservers nicht freigegeben wird. In diesem Fall wird die Sperre nach Ablauf der maximalen Sperrzeit automatisch freigegeben, sodass der Server nicht für immer blockiert bleibt. Definieren Sie eine Zeit, die die normale Dauer einer Transaktion nicht überschreitet.<br/><br/>Der Standardwert ist 1800000 (30 Minuten). |
 
-#### JNDI properties for administration service: logging
+#### JNDI-Eigenschaften für den Verwaltungsservice: Protokollierung
 {: #jndi-properties-for-administration-service-logging }
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.logging.formatjson | Optional | Set this property to true to enable pretty formatting (extra blank space) of JSON objects in responses and log messages. Setting this property is helpful when you debug the server. Default value: false. |
-| mfp.admin.logging.tosystemerror | Optional | Specifies whether all logging messages are also directed to System.Error. Setting this property is helpful when you debug the server. |
+|mfp.admin.logging.formatjson| Optional |Setzen Sie diese Eigenschaft auf true, um für JSON-Objekte eine besser lesbare Formatierung (mit zusätzlichem Leerzeichen) in Antworten und Protokollnachrichten zu aktivieren. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. Der Standardwert ist false.|
+|mfp.admin.logging.tosystemerror| Optional |Gibt an, ob alle Protokollierungsnachrichten auch an System.Error übertragen werden. Die Definition dieser Eigenschaft ist hilfreich, wenn Sie den Server debuggen. |
 
-#### JNDI properties for administration service: proxies
+#### JNDI-Eigenschaften für den Verwaltungsservice: Proxys
 {: #jndi-properties-for-administration-service-proxies }
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.proxy.port | Optional | If the {{ site.data.keys.product_adj }} administration server is behind a firewall or reverse proxy, this property specifies the address of the host. Set this property to enable a user outside the firewall to reach the {{ site.data.keys.product_adj }} administration server. Typically, this property is the port of the proxy, for example 443. It is necessary only if the protocol of the external and internal URIs are different. |
-| mfp.admin.proxy.protocol | Optional | If the {{ site.data.keys.product_adj }} administration server is behind a firewall or reverse proxy, this property specifies the protocol (HTTP or HTTPS). Set this property to enable a user outside the firewall to reach the {{ site.data.keys.product_adj }} administration server. Typically, this property is set to the protocol of the proxy. For example, wl.net. This property is necessary only if the protocol of the external and internal URIs are different. |
-| mfp.admin.proxy.scheme | Optional | This property is just an alternative name for mfp.admin.proxy.protocol. |
-| mfp.admin.proxy.host | Optional | If the {{ site.data.keys.product_adj }} administration server is behind a firewall or reverse proxy, this property specifies the address of the host. Set this property to enable a user outside the firewall to reach the {{ site.data.keys.product_adj }} administration server. Typically, this property is the address of the proxy. |
+|mfp.admin.proxy.port| Optional |Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird mit dieser Eigenschaft der Port des Proxys angegeben, z. B. 443. Die Eigenschaft ist nur erforderlich, wenn das Protokoll der externen und der internen URIs voneinander abweichen.|
+|mfp.admin.proxy.protocol| Optional |Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft das Protokoll an (HTTP oder HTTPS). Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird diese Eigenschaft auf das Protokoll des Proxys gesetzt, z. B. wl.net. Diese Eigenschaft ist nur erforderlich, wenn das Protokoll der externen und der internen URIs voneinander abweichen.|
+|mfp.admin.proxy.scheme| Optional |Diese Eigenschaft ist lediglich ein alternativer Name für mfp.admin.proxy.protocol.|
+|mfp.admin.proxy.host| Optional |Wenn sich der {{ site.data.keys.product_adj }}-Verwaltungsserver hinter einer Firewall oder einem Reverse Proxy befindet, gibt diese Eigenschaft die Adresse des Hosts an. Definieren Sie diese Eigenschaft, wenn Sie einem Benutzer außerhalb der Firewall ermöglichen möchten, den {{ site.data.keys.product_adj }}-Verwaltungsserver zu erreichen. Gewöhnlich wird mit dieser Eigenschaft die Adresse des Proxys angegeben. |
 
-#### JNDI properties for administration service: topologies
+#### JNDI-Eigenschaften für den Verwaltungsservice: Topologien
 {: #jndi-properties-for-administration-service-topologies }
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.audit | Optional. | Set this property to false to disable the audit feature of the {{ site.data.keys.mf_console }}. The default value is true. |
-| mfp.admin.environmentid | Optional. | The environment identifier for the registration of the MBeans. Use this identifier when different instances of the {{ site.data.keys.mf_server }} are installed on the same application server. The identifier determines which administration service, which console, and which runtimes belong to the same installation. The administration service manages only the runtimes that have the same environment identifier. |
-| mfp.admin.serverid | Mandatory for server farms and Liberty collective, optional otherwise. | Server farm: the server identifier. Must be different for each server in the farm.<br/><br/> Liberty collective: the value must be controller. |
-| mfp.admin.hsts | Optional. | Set to true to enable HTTP Strict Transport Security according to RFC 6797. |
-| mfp.topology.platform | Optional | Server type. Valid values:{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}If you do not set the value, the application tries to guess the server type. |
-| mfp.topology.clustermode | Optional | In addition to the server type, specify here the server topology. Valid values: {::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{:/}The default value is Standalone. |
-| mfp.admin.farm.heartbeat | Optional | This property enables you to set in minutes the heartbeat rate that is used in server farm topologies. The default value is 2 minutes.<br/><br/>In a server farm, all members must use the same heartbeat rate. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../appserver/#lifecycle-of-a-server-farm-node). |
-| mfp.admin.farm.missed.heartbeats.timeout | Optional | This property enables you to set the number of missed heartbeats of a farm member before the status of the farm member is considered to be failed or down. The default value is 2.<br/><br/>In a server farm all members must use the same missed heartbeat value. If you set or change this JNDI value on one server in the farm, you must also set the same value on every other server in the farm. For more information, see [Lifecycle of a server farm node](../appserver/#lifecycle-of-a-server-farm-node). |
-| mfp.admin.farm.reinitialize | Optional | A Boolean value (true or false) for re-registering or re-initializing the farm member. |
-| mfp.swagger.ui.url | Optional | This property defines the URL of the Swagger user interface to be displayed in the administration console. |
+|mfp.admin.audit |Optional |Setzen Sie diese Eigenschaft auf false, um das Prüffeature der {{ site.data.keys.mf_console }} zu inaktivieren. Der Standardwert ist true. |
+|mfp.admin.environmentid |Optional |Die Umgebungs-ID für die Registrierung der MBeans. Verwenden Sie diese ID, wenn verschiedene {{ site.data.keys.mf_server }}-Instanzen in demselben Anwendungsserver installiert sind. Die ID bestimmt, welcher Verwaltungsservice, welche Konsole und welche Laufzeitumgebungen zu derselben Installation gehören. Der Verwaltungsservice verwaltet nur die Laufzeitumgebungen, die dieselbe Umgebungs-ID haben. |
+|mfp.admin.serverid |Obligatorisch für Server-Farmen und einen Liberty-Verbund, ansonsten optional |Server-Farm: Die Serverkennung. Die ID muss für jeden Server in der Farm eindeutig sein.<br/><br/> Liberty-Verbund: Der Wert muss controller lauten. |
+|mfp.admin.hsts |Optional |Setzen Sie diese Eigenschaft auf "true", um HTTP Strict Transport Security gemäß RFC 6797 zu aktivieren. |
+|mfp.topology.platform | Optional |Der Servertyp. Die gültigen Werte sind im Folgenden aufgelistet: {::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}Wenn Sie den Wert nicht definieren, versucht die Anwendung, den Servertyp zu raten. |
+|mfp.topology.clustermode |Optional |Zusätzlich zum Servertyp geben Sie mit dieser Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: {::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{:/}Der Standardwert ist Standalone. |
+|mfp.admin.farm.heartbeat |Optional |Mit dieser Eigenschaft können Sie für Server-Farmtopologien die Signalrate in Minuten festlegen. Der Standardwert liegt bei 2 Minuten.<br/><br/>In einer Server-Farm müssen alle Member dieselbe Signalrate verwenden. Wenn Sie diesen JNDI-Wert auf einem Server in der Farm festlegen oder ändern, müssen Sie diesen neuen/geänderten Wert auch auf allen anderen Servern der Farm festlegen. Weitere Informationen finden Sie unter [Lebenszyklus eines Server-Farm-Knotens](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
+|mfp.admin.farm.missed.heartbeats.timeout | Optional |Mit dieser Eigenschaft können Sie festlegen, nach wie vielen fehlenden Überwachungssignalen ein Farm-Member als ausgefallen oder inaktiviert betrachtet wird. Der Standardwert ist 2.<br/><br/>In einer Server-Farm müssen alle Member dieselbe Anzahl fehlender Überwachungssignale verwenden. Wenn Sie diesen JNDI-Wert auf einem Server in der Farm festlegen oder ändern, müssen Sie diesen neuen/geänderten Wert auch auf allen anderen Servern der Farm festlegen. Weitere Informationen finden Sie unter [Lebenszyklus eines Server-Farm-Knotens](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
+|mfp.admin.farm.reinitialize | Optional |Boolescher Wert (true oder false) für die erneute Registrierung oder Reinitialisierung des Farm-Members |
+|mfp.server.swagger.ui.url | Optional |Diese Eigenschaft definiert die URL der Swagger-Benutzerschnitttelle, die in der Administrationskonsole angezeigt werden soll. |
 
-#### JNDI properties for administration service: relational database
+#### JNDI-Eigenschaften für den Verwaltungsservice: relationale Datenbank
 {: #jndi-properties-for-administration-service-relational-database }
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.db.jndi.name | Optional | The JNDI name of the database. This parameter is the normal mechanism to specify the database. The default value is **java:comp/env/jdbc/mfpAdminDS**. |
-| mfp.admin.db.openjpa.ConnectionDriverName | Optional/Conditionally mandatory | The fully qualified name of the database connection driver class. Mandatory only when the data source that is specified by the **mfp.admin.db.jndi.name** property is not defined in the application server configuration. |
-| mfp.admin.db.openjpa.ConnectionURL | Optional/Conditionally mandatory | The URL for the database connection. Mandatory only when the data source that is specified by the **mfp.admin.db.jndi.name** property is not defined in the application server configuration. |
-| mfp.admin.db.openjpa.ConnectionUserName | Optional/Conditionally mandatory | The ﻿user name for the database connection. Mandatory only when the data source that is specified by the **mfp.admin.db.jndi.name** property is not defined in the application server configuration. |
-| mfp.admin.db.openjpa.ConnectionPassword | Optional/Conditionally mandatory | The password for the database connection. Mandatory only when the data source that is specified by the **mfp.admin.db.jndi.name** property is not defined in the application server configuration. |
-| mfp.admin.db.openjpa.Log | Optional | This property is passed to OpenJPA and enables JPA logging. For more information, see [the Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html). |
-| mfp.admin.db.type | Optional | This property defines the type of database. The default value is inferred from the connection URL. |
+|mfp.admin.db.jndi.name|Optional|Der JNDI-Name der Datenbank. Dieser Parameter ist der normale Mechanismus für die Angabe der Datenbank. Der Standardwert ist **java:comp/env/jdbc/mfpAdminDS**.|
+|mfp.admin.db.openjpa.ConnectionDriverName|Optional / Bedingt obligatorisch|Der vollständig qualifizierte Name der Treiberklasse der Datenbankverbindung. Diese Eigenschaft ist nur obligatorisch, wenn die mit der Eigenschaft **mfp.admin.db.jndi.name** angegebene Datenquelle nicht in der Anwendungsserverkonfiguration definiert ist.|
+|mfp.admin.db.openjpa.ConnectionURL|Optional / Bedingt obligatorisch|Die URL für die Datenbankverbindung. Diese Eigenschaft ist nur obligatorisch, wenn die mit der Eigenschaft **mfp.admin.db.jndi.name** angegebene Datenquelle nicht in der Anwendungsserverkonfiguration definiert ist.|
+|mfp.admin.db.openjpa.ConnectionUserName|Optional / Bedingt obligatorisch|Der Benutzername für die Datenbankverbindung. Diese Eigenschaft ist nur obligatorisch, wenn die mit der Eigenschaft **mfp.admin.db.jndi.name** angegebene Datenquelle nicht in der Anwendungsserverkonfiguration definiert ist.|
+|mfp.admin.db.openjpa.ConnectionPassword|Optional / Bedingt obligatorisch|Das Kennwort für die Datenbankverbindung. Diese Eigenschaft ist nur obligatorisch, wenn die mit der Eigenschaft **mfp.admin.db.jndi.name** angegebene Datenquelle nicht in der Anwendungsserverkonfiguration definiert ist.|
+|mfp.admin.db.openjpa.Log| Optional |Diese Eigenschaft wird an OpenJPA übergeben und aktiviert die JPA-Protokollierung. Weitere Informationen finden Sie in der Veröffentlichung [Apache OpenJPA User's Guide](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html).|
+|mfp.admin.db.type| Optional |Diese Eigenschaft definiert den Datenbanktyp. Der Standardwert wird aus der Verbindungs-URL hergeleitet.|
 
-#### JNDI properties for administration service: licensing
+#### JNDI-Eigenschaften für den Verwaltungsservice: Lizenzierung
 {: #jndi-properties-for-administration-service-licensing }
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.license.key.server.host	| {::nomarkdown}<ul><li>Optional for perpetual licenses</li><li>Mandatory for token licenses</li></ul>{:/} | Host name of the Rational  License Key Server. |
-| mfp.admin.license.key.server.port	| {::nomarkdown}<ul><li>Optional for perpetual licenses</li><li>Mandatory for token licenses</li></ul>{:/} | Port number of the Rational License Key Server. |
+|mfp.admin.license.key.server.host| {::nomarkdown}<ul><li>Optional für zeitlich unbegrenzte Lizenzen</li><li>Obligatorisch für Tokenlizenzen</li></ul>{:/} |Hostname von Rational License Key Server|
+|mfp.admin.license.key.server.port| {::nomarkdown}<ul><li>Optional für zeitlich unbegrenzte Lizenzen</li><li>Obligatorisch für Tokenlizenzen</li></ul>{:/} |Portnummer von Rational License Key Server|
 
-#### JNDI properties for administration service: JNDI configurations
+#### JNDI-Eigenschaften für den Verwaltungsservice: JNDI-Konfigurationen
 {: #jndi-properties-for-administration-service-jndi-configurations }
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.jndi.configuration | Optional | The name of the JNDI configuration if the JNDI properties (except this one) must be read from a property file that is injected into the WAR file. If you do not set this property, JNDI properties are not read from a property file. |
-| mfp.jndi.file | Optional | The name of the file that contains the JNDI configuration if the JNDI properties (except this one) must be read from a file installed in the web server. If you do not set this property, JNDI properties are not read from a property file. |
+|mfp.jndi.configuration| Optional |Der Name der JNDI-Konfiguration, wenn die JNDI-Eigenschaften (bis auf diese) aus einer Eigenschaftendatei gelesen werden müssen, die in die WAR-Datei injiziert ist. Wenn Sie diese Eigenschaft nicht definieren, werden die JNDI-Eigenschaften nicht aus einer Eigenschaftendatei gelesen.|
+|mfp.jndi.file| Optional |Der Name der Datei mit der JNDI-Konfiguration, wenn die JNDI-Eigenschaften (bis auf diese) aus einer im Web-Server installierten Datei gelesen werden müssen. Wenn Sie diese Eigenschaft nicht definieren, werden die JNDI-Eigenschaften nicht aus einer Eigenschaftendatei gelesen.|
 
-The administration service uses a live update service as an auxiliary facility to store various configurations. Use these properties to configure how to reach the live update service.
+Der Verwaltungsservice verwendet einen Liveaktualisierungsservice als Hilfseinrichtung, um verschiedene Konfigurationen zu speichern. Mit diesen Eigenschaften legen Sie fest, wie der Liveaktualisierungsservice erreicht werden kann.
 
-#### JNDI properties for administration service: live update service
+#### JNDI-Eigenschaften für den Verwaltungsservice: Liveaktualisierungsservice
 {: #jndi-properties-for-administration-service-live-update-service }
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.config.service.url | Optional	The URL of the live update service. The default URL is derived from the URL of administration service by adding config to the context root of the administration service. |
-| mfp.config.service.user | Mandatory | The user name that is used to access the live update service. In a server farm topology, the user name must be the same for all the members of the farm. |
-| mfp.config.service.password | Mandatory | The password that is used to access the live update service. In a server farm topology, the password must be the same for all the members of the farm. |
-| mfp.config.service.schema | Optional | The name of the schema that is used by the live update service. |
+|mfp.config.service.url |Optional | URL des Liveaktualisierungsservice. Die Standard-URL wird aus der URL des Verwaltungsservice abgeleitet, indem config zum Kontextstammverzeichnis des Verwaltungsservice hinzugefügt wird. |
+|mfp.config.service.user |Obligatorisch |Benutzername für den Zugriff auf den Liveaktualisierungsservice. In einer Server-Farmtopologie muss der Benutzername für alle Member der Farm der gleiche sein. |
+|mfp.config.service.password |Obligatorisch |Kennwort für den Zugriff auf den Liveaktualisierungsservice. In einer Server-Farmtopologie muss das Kennwort für alle Member der Farm das gleiche sein. |
+|mfp.config.service.schema | Optional |Name des vom Liveaktualisierungsservice verwendeten Schemas |
 
-The administration service uses a push service as an auxiliary facility to store various push settings. Use these properties to configure how to reach the push service. Because the push service is protected by the OAuth security model, you must set various properties to enable confidential clients in OAuth.
+Der Verwaltungsservice verwendet einen Push-Service als Hilfseinrichtung, um verschiedene Push-Einstellungen zu speichern. Mit diesen Eigenschaften legen Sie fest, wie der Push-Service
+erreicht werden kann. Da der Push-Service mit dem OAuth-Sicherheitsmodell geschützt ist,
+müssen Sie verschiedene Eigenschaften definieren, um in OAuth vertrauliche Clients zu ermöglichen. 
 
-#### JNDI properties for administration service: push service
+#### JNDI-Eigenschaften für den Verwaltungsservice: Push-Service
 {: #jndi-properties-for-administration-service-push-service }
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.push.url | Optional | The URL of the push service. If the property is not specified, the push service is considered disabled. If the property is not properly set, the administration service cannot contact the push service and the administration of push services in {{ site.data.keys.mf_console }} does not work. |
-| mfp.admin.authorization.server.url | Optional | The URL of the OAuth authorization server that is used by the push service. The default URL is derived from the URL of the administration service by changing the context root to the context root of the first installed runtime. If you install multiple runtimes, it is best to set the property. If the property is not set properly, the administration service cannot contact the push service and the administration of push services in {{ site.data.keys.mf_console }} does not work. |
-| mfp.push.authorization.client.id | Optional/conditionally mandatory | The identifier of the confidential client that handles OAuth authorization for the push service. Mandatory only if the **mfp.admin.push.url** property is specified. |
-| mfp.push.authorization.client.secret | Optional/conditionally mandatory | The secret of the confidential client that handles OAuth authorization for the push service. Mandatory only if the **mfp.admin.push.url** property is specified |
-| mfp.admin.authorization.client.id | Optional/conditionally mandatory | The identifier of the confidential client that handles OAuth authorization for the administration service. Mandatory only if the **mfp.admin.push.url** property is specified. |
-| mfp.push.authorization.client.secret | Optional/conditionally mandatory | The secret of the confidential client that handles OAuth authorization for the administration service. Mandatory only if the **mfp.admin.push.url** property is specified. |
+|mfp.admin.push.url| Optional |URL des Push-Service. Wenn die Eigenschaft nicht angegeben ist, wird der Push-Service als inaktiviert angesehen. Wenn die Eigenschaft nicht ordnungsgemäß definiert ist, kann der Verwaltungsservice keinen Kontakt zum Push-Service aufnehmen, sodass die Verwaltung der Push-Services in der {{ site.data.keys.mf_console }} nicht funktioniert.|
+|mfp.admin.authorization.server.url| Optional |URL des OAuth-Autorisierungsservers, der vom Push-Service verwendet wird. Die Standard-URL wird aus der URL des Verwaltungsservice abgeleitet, indem das Kontextstammverzeichnis in das Kontextstammverzeichnis der ersten installierten Laufzeit geändert wird. Wenn Sie mehrere Laufzeiten installieren, ist es am besten, die Eigenschaft zu definieren. Wenn die Eigenschaft nicht ordnungsgemäß definiert ist, kann der Verwaltungsservice keinen Kontakt zum Push-Service aufnehmen, sodass die Verwaltung der Push-Services in der {{ site.data.keys.mf_console }} nicht funktioniert.|
+|mfp.push.authorization.client.id|Optional / Bedingt obligatorisch|Kennung des vertraulichen Clients, der die OAuth-Autorisierung für den Push-Service ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
+|mfp.push.authorization.client.secret|Optional / Bedingt obligatorisch|Geheimer Schlüssel des vertraulichen Clients, der die OAuth-Autorisierung für den Push-Service ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
+|mfp.admin.authorization.client.id|Optional / Bedingt obligatorisch|Kennung des vertraulichen Clients, der die OAuth-Autorisierung für den Verwaltungsservice ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
+|mfp.admin.authorization.client.secret |Optional / Bedingt obligatorisch|Geheimer Schlüssel des vertraulichen Clients, der die OAuth-Autorisierung für den Verwaltungsservice ausführt. Nur obligatorisch, wenn die Eigenschaft **mfp.admin.push.url** angegeben ist.|
 
-### JNDI properties for {{ site.data.keys.mf_console }}
+### JNDI-Eigenschaften für die {{ site.data.keys.mf_console }}
 {: #jndi-properties-for-mobilefirst-operations-console }
-The following properties can be set on the web application (mfp-admin-ui.war) of {{ site.data.keys.mf_console }}.
+Für die
+Webanwendung für die {{ site.data.keys.mf_console }},
+mfp-admin-ui.war, können die folgenden Eigenschaften festgelegt werden: 
 
-| Property                 | Optional or mandatory | Description  |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.endpoint | Optional | Enables the {{ site.data.keys.mf_console }} to locate the {{ site.data.keys.mf_server }} administration REST service. Specify the external address and context root of the **mfp-admin-service.war** web application. In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI and not the internal URI inside the local LAN. For example, https://wl.net:443/mfpadmin. |
-| mfp.admin.global.logout | Optional | Clears the WebSphere user authentication cache during the console logout. This property is useful only for WebSphere Application Server V7. The default value is false. |
-| mfp.admin.hsts | Optional | Set this property to true to enable HTTP [Strict Transport Security](http://www.w3.org/Security/wiki/Strict_Transport_Security) according to RFC 6797. For more information, see the W3C Strict Transport Security page. The default value is false. |
-| mfp.admin.ui.cors | Optional | The default value is true. For more information, see the [W3C Cross-Origin Resource Sharing page](http://www.w3.org/TR/cors/). |
-| mfp.admin.ui.cors.strictssl | Optional | Set to false to allow CORS situations where the {{ site.data.keys.mf_console }} is secured with SSL (HTTPS protocol) while the {{ site.data.keys.mf_server }} administration service is not, or conversely. This property takes effect only if the **mfp.admin.ui.cors** property is enabled. |
+|mfp.admin.endpoint| Optional |Ermöglicht der {{ site.data.keys.mf_console }}, die REST-Services für die MobileFirst-Server-Verwaltung zu finden. Geben Sie die externe Adresse und das Kontextstammverzeichnis der Webanwendung **mfp-admin-service.war** an. In einem Szenario mit einer Firewall oder einem geschützten Reverse Proxy muss diese URI die externe URI, nicht die interne URI im lokalen Netz sein. Beispiel: https://wl.net:443/mfpadmin|
+|mfp.admin.global.logout|Optional|Löscht den WebSphere-Benutzerauthentifizierungscache während der Abmeldung von der Konsole. Diese Eigenschaft ist nur für WebSphere Application Server Version 7 hilfreich. Der Standardwert ist false.|
+|mfp.admin.hsts | Optional |Setzen Sie diese Eigenschaft auf true, um [HTTP Strict Transport Security](http://www.w3.org/Security/wiki/Strict_Transport_Security) gemäß RFC 6797 zu aktivieren. Weitere Informationen finden Sie auf der W3C-Webseite Strict Transport Security. Der Standardwert ist false.|
+|mfp.admin.ui.cors| Optional |Der Standardwert ist true. Weitere Informationen finden Sie auf der W3C-Webseite [Cross-Origin Resource Sharing](http://www.w3.org/TR/cors/).|
+|mfp.admin.ui.cors.strictssl| Optional |Setzen Sie diese Eigenschaft auf false, um CORS-Situationen zuzulassen, in denen die {{ site.data.keys.mf_console }} mit SSL (HTTPS-Protokoll) gesichert ist, aber der MobileFirst-Server-Verwaltungsservice nicht, oder umgekehrt. Diese Eigenschaft wird nur wirksam, wenn die Eigenschaft **mfp.admin.ui.cors** aktiviert ist.|
 
-### List of JNDI properties for {{ site.data.keys.mf_server }} live update service
+### Liste der JNDI-Eigenschaften für den MobileFirst-Server-Liveaktualisierungsservice
 {: #list-of-jndi-properties-for-mobilefirst-server-live-update-service }
-When you configure the {{ site.data.keys.mf_server }} live update service for your application server, you can set the following JNDI properties. The table lists the JNDI properties for the IBM  relational database live update service.
+Wenn Sie den MobileFirst-Server-Liveaktualisierungsservice für Ihren Anwendungsserver konfigurieren, können Sie die folgenden
+JNDI-Eigenschaften festlegen. In der folgenden Tabelle sind die JNDI-Eigenschaften für den Liveaktualisierungsservice
+für die relationale IBM Datenbank aufgelistet. 
 
-| Property | Optional or mandatory | Description |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |----------|-----------------------|-------------|
-| mfp.db.relational.queryTimeout | Optional | Timeout for executing a query in RDBMS, in seconds. A value of zero means an infinite timeout. A negative value means the default (no override).<br/><br/>In case no value is configured, a default value is used. For more information, see [setQueryTimeout](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int)). |
+|mfp.db.relational.queryTimeout| Optional |Zeitlimit für die Ausführung einer Abfrage im RDBMS in Sekunden. Der Wert null bedeutet kein Zeitlimit. Ein negativer Wert bedeutet, dass der Standardwert verwendet wird (keine Außerkraftsetzung).<br/><br/>Falls kein Wert konfiguriert ist, wird ein Standardwert verwendet. Weitere Informationen finden Sie unter [setQueryTimeout)](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int).|
 
-To know how to set those properties, see [Setting up JNDI properties for {{ site.data.keys.mf_server }} web applications](#setting-up-jndi-properties-for-mobilefirst-server-web-applications).
+Informationen zum Festlegen dieser Eigenschaften finden Sie unter [JNDI-Eigenschaften für MobileFirst-Server-Webanwendungen konfigurieren](#setting-up-jndi-properties-for-mobilefirst-server-web-applications). 
 
-### List of JNDI properties for {{ site.data.keys.product_adj }} runtime
+### Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit
 {: #list-of-jndi-properties-for-mobilefirst-runtime }
-When you configure the {{ site.data.keys.mf_server }} runtime for your application server, you need to set the optional or mandatory JNDI properties.  
-The following table lists the {{ site.data.keys.product_adj }} properties that are always available as JNDI entries:
+Wenn Sie die MobileFirst-Server-Laufzeit für Ihren Anwendungsserver konfigurieren, müssen Sie die folgenden
+optionalen oder obligatorischen JNDI-Eigenschaften festlegen.   
+In der folgenden Tabelle
+sind die {{ site.data.keys.product_adj }}-Eigenschaften aufgelistet, die immer als JNDI-Einträge
+verfügbar sind:
 
-| Property | Description |
+
+|Eigenschaft | Beschreibung |
 |----------|-------------|
-| mfp.admin.jmx.dmgr.host | Mandatory. The host name of the deployment manager. WebSphere  Application Server Network Deployment only. |
-| mfp.admin.jmx.dmgr.port | Mandatory. The RMI or SOAP port of the deployment manager. WebSphere Application Server Network Deployment only. |
-| mfp.admin.jmx.host | Liberty only. The host name for the JMX REST connection. For Liberty collective, use the host name of the controller. |
-| mfp.admin.jmx.port | Liberty only. The port number for the JMX REST connection. For Liberty collective, the port of the REST connector must be identical to the value of the httpsPort attribute that is declared in the `<httpEndpoint>` element. This element is declared in the server.xml file of the Liberty controller. |
-| mfp.admin.jmx.user | Optional. WebSphere Application Server farm: the user name of the SOAP connection.<br/><br/>Liberty collective: the user name of the controller administrator that is defined in the `<administrator-role>` element of the server.xml file of the Liberty controller. |
-| mfp.admin.jmx.pwd | Optional. WebSphere Application Server farm: the user passsword of the SOAP connection.<br/><br/>Liberty collective: the password of the controller administrator that is defined in the `<administrator-role>` element of the server.xml file of the Liberty controller. |
-| mfp.admin.serverid | Mandatory for server farms and Liberty collective, optional otherwise.<br/><br/>Server farm: the server identifier. Must be different for each server in the farm.<br/><br/>Liberty collective: the member identifier. The identifier must be different for each member in the collective. The value controller cannot be used as it is reserved for the collective controller. |
-| mfp.topology.platform | Optional. The server type. Valid values are:<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>If you do not set the value, the application tries to guess the server type. |
-| mfp.topology.clustermode | Optional. In addition to the server type, specify here the server topology. Valid values:<ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>The default value is Standalone. |
-| mfp.admin.jmx.replica | Optional. For Liberty collective only.<br/><br/>Set this property only when the administration components that manage this runtime are deployed in different Liberty controllers (replicas).<br/><br/>Endpoint list of the different controller replicas with the following syntax: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
-| mfp.analytics.console.url | Optional. The URL that is exposed by IBM {{ site.data.keys.mf_analytics }} that links to the Analytics console. Set this property if you want to access the Analytics console from the {{ site.data.keys.mf_console }}. For example, `http://<hostname>:<port>/analytics/console` |
-| mfp.analytics.password | The password that is used if the data entry point for the IBM {{ site.data.keys.mf_analytics }} is protected with basic authentication. |
-| mfp.analytics.url | The URL that is exposed by the IBM {{ site.data.keys.mf_analytics }} that receives incoming analytics data. For example, `http://<hostname>:<port>/analytics-service/rest` |
-| mfp.analytics.username | The user name that is used if the data entry point for the IBM {{ site.data.keys.mf_analytics }} is protected with basic authentication.|
-| mfp.device.decommissionProcessingInterval | Defines how often (in seconds) the decommissioning task is executed. Default: 86400, which is one day. |
-| mfp.device.decommission.when | The number of days of inactivity after which a client device is decommissioned by the device decommissioning task. Default: 90 days. |
-| mfp.device.archiveDecommissioned.when | The number of days of inactivity, after which a client device that has been decommissioned is archived.<br/><br/>This task writes the client devices that were decommissioned to an archive file. The archived client devices are written to a file in the {{ site.data.keys.mf_server }} **home\devices_archive** directory. The name of the file contains the time stamp when the archive file is created. Default: 90 days. |
-| mfp.licenseTracking.enabled | A value that is used to enable or disable device tracking in {{ site.data.keys.product }}.<br/><br/>For performance reasons, you can disable device tracking when {{ site.data.keys.product }} runs only Business-to-Consumer (B2C) apps. When device tracking is disabled, the license reports are also disabled and no license metrics are generated.<br/><br/>Possible values are true (default) and false. |
-| mfp.runtime.temp.folder | Defines the runtime temporary files folder. Uses the default temporary folder location of the web container when not set. |
-| mfp.adapter.invocation.url | The URL to be used for invoking adapter procedures from inside Java adapters, or JavaScript adapters that are invoked using the rest endpoint. If this property is not set, the URL of the currently executing request will be used (this is the default behavior). This value should contain the full URL, including the context root. |
-| mfp.authorization.server | Authorization-server mode. Can be one of the following mode:{::nomarkdown}<ul><li>embedded: Use the {{ site.data.keys.product_adj }} authorization server.</li><li>external: Use an external authorization server</li></ul>{:/}. When setting this value, you must also set the **mfp.external.authorization.server.secret** and **mfp.external.authorization.server.introspection.url** properties for your external server. |
-| mfp.external.authorization.server.secret | Secret of the external authorization server. This property is required when using an external authorization server, meaning **mfp.authorization.server** is set to external and is ignored otherwise. |
-| mfp.external.authorization.server.introspection.url | URL of the introspection endpoint of the external authorization server. This property is required when using an external authorization server, meaning **mfp.authorization.server** is set to **external** and is ignored otherwise. |
-| ssl.websphere.config | Used to configure the keystore for an HTTP adapter. When set to false (default), instructs the {{ site.data.keys.product_adj }} runtime to use the {{ site.data.keys.product_adj }} keystore. When set to true, instructs the {{ site.data.keys.product_adj }} runtime to use the WebSphere SSL configuration. For more information, see [WebSphere Application Server SSL configuration and HTTP adapters](#websphere-application-server-ssl-configuration-and-http-adapters). |
+|mfp.admin.jmx.dmgr.host |Diese obligatorische Eigenschaft gibt den Hostnamen des Deployment Manager an (nur WebSphere Application Server Network Deployment). |
+|mfp.admin.jmx.dmgr.port |Diese obligatorische Eigenschaft gibt den RMI- oder SOAP-Port des Deployment Manager an (nur WebSphere Application Server Network Deployment). |
+|mfp.admin.jmx.host |Nur Liberty. Hostname für die JMX-REST-Verbindung. Verwenden Sie in einem Liberty-Verbund den Hostnamen des Controllers. |
+|mfp.admin.jmx.port |Nur Liberty. Port-Nummer für die JMX-REST-Verbindung. In einem Liberty-Verbund muss der Port des REST-Connectors mit dem Wert des Attributs httpsPort, das im Element `<httpEndpoint>` deklariert ist, übereinstimmen. Das Element ist in der Datei server.xml des Liberty-Controllers deklariert. |
+|mfp.admin.jmx.user |WebSphere-Application-Server-Farm: Benutzername für die SOAP-Verbindung (optional)<br/><br/>Liberty-Verbund: Benutzername des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
+|mfp.admin.jmx.pwd |WebSphere-Application-Server-Farm: Benutzerkennwort für die SOAP-Verbindung (optional)<br/><br/>Liberty-Verbund: Kennwort des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
+|mfp.admin.serverid |Obligatorisch für Server-Farmen und einen Liberty-Verbund, ansonsten optional<br/><br/>Server-Farm: Die Serverkennung. Die ID muss für jeden Server in der Farm eindeutig sein.<br/><br/>Liberty-Verbund: die Memberkennung. Jedes Member des Verbunds muss eine andere Kennung haben. Der Wert controller kann nicht verwendet werden, weil er für den Verbundcontroller reserviert ist. |
+|mfp.topology.platform |Optional. Der Servertyp. Gültige Werte: <ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Wenn Sie den Wert nicht definieren, versucht die Anwendung, den Servertyp zu raten. |
+|mfp.topology.clustermode |Zusätzlich zum Servertyp geben Sie mit dieser optionalen Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: <ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>Der Standardwert ist Standalone. |
+|mfp.admin.jmx.replica |Nur für einen Liberty-Verbund (optional).<br/><br/>Legen Sie diese Eigenschaft nur fest, wenn die Verwaltungskomponenten, mit denen diese Laufzeit verwaltet wird, in verschiedenen Liberty-Controllern (d. h. Replikaten) implementiert sind.<br/><br/>Syntax der Endpunktliste mit den verschiedenen Controllerreplikaten: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
+|mfp.analytics.console.url |Die von IBM {{ site.data.keys.mf_analytics }} zugänglich gemachte URL für die Verbindung zur Analytics Console (optional). Wenn Sie von der {{ site.data.keys.mf_console }} auf die Analytics Console zugreifen möchten, definieren Sie diese Eigenschaft. Beispiel: `http://<Hostname>:<Port>/analytics/console` |
+|mfp.analytics.password |Das Kennwort, das verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics }} durch Basisauthentifizierung geschützt ist. |
+|mfp.analytics.url |Die von IBM {{ site.data.keys.mf_analytics }} zugänglich gemachte URL für den Empfang eingehender Analysedaten. Beispiel: `http://<Hostname>:<Port>/analytics-service/rest` |
+|mfp.analytics.username |Der Benutzername, der verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics }} durch Basisauthentifizierung geschützt ist. |
+|mfp.device.decommissionProcessingInterval |Definiert, wie häufig eine Stilllegung durchgeführt wird (Intervall in Sekunden). Standardwert: 86400 (ein Tag). |
+|mfp.device.decommission.when |Anzahl von Tagen der Inaktivität, nach denen ein Clientgerät mit der Aufgabe für Gerätestilllegung stillgelegt wird. Standardwert: 90 Tage |
+|mfp.device.archiveDecommissioned.when |Anzahl von Tagen der Inaktivität, nach denen ein stillgelegtes Clientgerät archiviert wird.<br/><br/>Diese Task schreibt die stillgelegten Clientgeräte in eine Archivdatei. Die archivierten Clientgeräte werden in eine Datei im MobileFirst-Server-Verzeichnis **home\devices_archive** geschrieben. Der Name der Datei
+enthält die Zeitmarke für den Erstellungszeitpunkt der Archivdatei. Standardwert: 90 Tage |
+|mfp.licenseTracking.enabled |Mit dem Wert dieser Eigenschaft wird die Geräteüberwachung in der {{ site.data.keys.product }} aktiviert oder inaktiviert.<br/><br/>Aus Leistungsaspekten können Sie die Geräteüberwachung inaktivieren, wenn die {{ site.data.keys.product }} ausschließlich Business-to-Consumer-Apps (B2C) ausführt. Bei inaktivierter Geräteüberwachung sind auch die Lizenzberichte inaktiviert und es werden keine Lizenzmetriken generiert.<br/><br/>Gültige Werte sind true (Standard) und false. |
+|mfp.runtime.temp.folder |Definiert den Laufzeitordner für temporäre Dateien. Wenn kein Wert angegeben ist, wird die Posotion des Standardordners für temporäre Dateien für den Web-Container verwendet. |
+|mfp.adapter.invocation.url |URL zum Aufrufen von Adapterprozeduren in Java- oder JavaScript-Adaptern, die mit dem REST-Endpunkt aufgerufen werden. Wenn diese Eigenschaft nicht definiert ist, wird die URL der aktuell ausgeführten Anfrage verwendet. (Dies ist das Standardverhalten.) Als Wert muss eine vollständige URL mit Kontextstammverzeichnis angegeben werden. |
+|mfp.authorization.server |Modus des Autorisierungsservers mit folgenden gültigen Werten:{::nomarkdown}<ul><li>embedded: Der {{ site.data.keys.product_adj }}-Autorisierungsserver wird verwendet.</li><li>external: Ein externer Autorisierungsserver wird verwendet.</li></ul>{:/}. Wenn Sie diesen Wert festlegen, müssen Sie auch die Eigenschaften **mfp.external.authorization.server.secret** und **mfp.external.authorization.server.introspection.url** für Ihren externen Server definieren. |
+|mfp.external.authorization.server.secret |Geheimer Schlüssel des Autorisierungsservers. Diese Eigenschaft ist erforderlich, wenn ein externer Autorisierungsserver verwendet wird, d. h., wenn **mfp.authorization.server** auf external gesetzt ist. Andernfalls wird diese Eigenschaft ignoriert. |
+|mfp.external.authorization.server.introspection.url |URL des Introspektionsendpunkts des Autorisierungsservers. Diese Eigenschaft ist erforderlich, wenn ein externer Autorisierungsserver verwendet wird, d. h., wenn **mfp.authorization.server** auf **external** gesetzt ist. Andernfalls wird diese Eigenschaft ignoriert. |
+|ssl.websphere.config |Zum Konfigurieren des Keystores für einen HTTP-Adapter verwendet. Wenn diese Eigenschaft auf false gesetzt ist (Standardwert), wird die MobileFirst-Laufzeit angewiesen, den MobileFirst-Keystore zu verwenden. Der Wert true weist die MobileFirst-Laufzeit an, die WebSphere-SSL-Konfiguration zu verwenden. Weitere Informationen finden Sie unter [SSL-Konfiguration von WebSphere Application Server und HTTP-Adapter](#websphere-application-server-ssl-configuration-and-http-adapters). |
 
-### List of JNDI properties for {{ site.data.keys.mf_server }} push service
+### Liste der JNDI-Eigenschaften für den MobileFirst-Server-Push-Service
 {: #list-of-jndi-properties-for-mobilefirst-server-push-service }
 
-| Property | Optional or mandatory | Description |
+|Eigenschaft |Optional oder obligatorisch | Beschreibung |
 |----------|-----------------------|-------------|
-| mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB |
-| mfp.push.db.queue.connections | Optional | Number of threads in the thread pool that does the database operation. Default: 3 |
-| mfp.push.db.cloudant.url | Optional | The Cloudant  account URL. When this property is defined, the Cloudant DB will be directed to this URL. |
-| mfp.push.db.cloudant.dbName | Optional | The name of the database in the Cloudant account. It must start with a lowercase letter and consist only of lowercase letters, digits, and the characters _, $, and -. Default: mfp\_push\_db |
-| mfp.push.db.cloudant.username | Optional | The user name of the Cloudant account, used to store the database. when this property is not defined, a relational database is used. |
-| mfp.push.db.cloudant.password | Optional | The password of the Cloudant account, used to store the database. This property must be set when mfp.db.cloudant.username is set. |
-| mfp.push.db.cloudant.doc.version | Optional | The Cloudant document version. |
-| mfp.push.db.cloudant.socketTimeout | Optional	| A timeout for detecting the loss of a network connection for Cloudant, in milliseconds. A value of zero means an infinite timeout. A negative value means the default (no override). Default. See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.connectionTimeout | Optional	| A timeout for establishing a network connection for Cloudant, in milliseconds. A value of zero means an infinite timeout. A negative value means the default (no override). Default. See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.maxConnections | Optional | The Cloudant connector's max connections. Default. See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.ssl.authentication | Optional | A Boolean value (true or false) that specifies whether the SSL certificate chain validation and host name verification are enabled for HTTPS connections to the Cloudant database. Default: True |
-| mfp.push.db.cloudant.ssl.configuration | Optional	| (WAS Full Profile only) For HTTPS connections to the Cloudant database: The name of an SSL configuration in the WebSphere  Application Server configuration, to use when no configuration is specified for the host and port. |
-| mfp.push.db.cloudant.proxyHost | Optional	| Cloudant connector's proxy host. Default: See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.proxyPort | Optional	| Cloudant connector's proxy port. Default: See [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.services.ext.security | Optional	| The security extension plugin. |
-| mfp.push.security.endpoint | Optional	| The endpoint URL for the authorization server. |
-| mfp.push.security.user | Optional	| The username to access the authorization server. |
-| mfp.push.security.password | Optional	| The password to access the authorization server. |
-| mfp.push.services.ext.analytics | Optional | The analytics extension plugin. |
-| mfp.push.analytics.endpoint | Optional | The endpoint URL for the analytics server. |
-| mfp.push.analytics.user | Optional | The username to access the analytics server. |
-| mfp.push.analytics.password | Optional | The password to access the analytics server. |
-| mfp.push.analytics.events.notificationDispatch | Optional	| The analytic event when the notification is about to be dispatched. Default: true |
-| mfp.push.internalQueue.maxLength | Optional | The length of the queue which holds the notification tasks before dispatch. Default: 200000 |
-| mfp.push.gcm.proxy.enabled | Optional	| Shows whether Google GCM must be accessed through a proxy. Default: false |
-| mfp.push.gcm.proxy.protocol | Optional | Can be either http or https. |
-| mfp.push.gcm.proxy.host | Optional | GCM proxy host. Negative value means default port. |
-| mfp.push.gcm.proxy.port | Optional | GCM proxy port. Default: -1 |
-| mfp.push.gcm.proxy.user | Optional | Proxy user name, if the proxy requires authentication. Empty user name means no authentication. |
-| mfp.push.gcm.proxy.password | Optional | Proxy password, if the proxy requires authentication. |
-| mfp.push.gcm.connections | Optional | Push GCM max connections. Default : 10 |
-| mfp.push.apns.proxy.enabled | Optional | Shows whether APNs must be accessed through a proxy. Default: false |
-| mfp.push.apns.proxy.type | Optional | APNs proxy type. |
-| mfp.push.apns.proxy.host | Optional | APNs proxy host. |
-| mfp.push.apns.proxy.port | Optional | APNs proxy port. Default: -1 |
-| mfp.push.apns.proxy.user | Optional | Proxy user name, if the proxy requires authentication. Empty user name means no authentication. |
-| mfp.push.apns.proxy.password | Optional | Proxy password, if the proxy requires authentication. |
-| mfp.push.apns.connections | Optional | Push APNs max connections. Default : 3 |
-| mfp.push.apns.connectionIdleTimeout | Optional | APNs Idle Connection Timeout. Default : 0 |
+|mfp.push.db.type |Optional |Datenbanktyp. Gültige Werte: DB, CLOUTDANT. Standardwert: DB |
+|mfp.push.db.queue.connections |Optional |Anzahl Threads in dem Thread-Pool, der die Datenbankoperation ausführt. Standardwert: 3 |
+|mfp.push.db.cloudant.url |Optional |URL des Cloudant-Kontos. Wenn diese Eigenschaft definiert ist, wird die Cloudant-Datenbank zu dieser URL geleitet. |
+|mfp.push.db.cloudant.dbName |Optional |Name der Datenbank im Cloudant-Konto. Der Name muss mit einem Kleinbuchstaben beginnen und darf nur aus Kleinbuchstaben, Ziffern sowie den Zeichen _, $ und - bestehen. Standardwert: mfp\_push\_db |
+|mfp.push.db.cloudant.username |Optional |Benutzername des Cloudant-Kontos, das zum  Speichern der Datenbank verwendet wird. Wenn diese Eigenschaft nicht definiert ist, wird eine relationale Datenbank verwendet. |
+|mfp.push.db.cloudant.password |Optional |Kennwort des Cloudant-Kontos, das zum  Speichern der Datenbank verwendet wird. Diese Eigenschaft muss definiert sein, wenn mfp.db.cloudant.username definiert ist. |
+|mfp.push.db.cloudant.doc.version |Optional |Cloudant-Dokumentversion |
+|mfp.push.db.cloudant.socketTimeout |Optional	|Zeitlimit für das Erkennen des Verlusts einer Cloudant-Netzverbindung in Millisekunden. Der Wert null bedeutet kein Zeitlimit. Ein negativer Wert bedeutet, dass der Standardwert verwendet wird (keine Außerkraftsetzung). Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+|mfp.push.db.cloudant.connectionTimeout |Optional	|Zeitlimit für das Herstellen einer Cloudant-Netzverbindung in Millisekunden. Der Wert null bedeutet kein Zeitlimit. Ein negativer Wert bedeutet, dass der Standardwert verwendet wird (keine Außerkraftsetzung). Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+|mfp.push.db.cloudant.maxConnections |Optional |Maximale Verbindungen für den Cloudant-Connector. Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+|mfp.push.db.cloudant.ssl.authentication |Optional |Boolescher Wert (true oder false), der angibt, ob für HTTPS-Verbindungen zur Cloudant-Datenbank die Validierung der SSL-Zertifikatkette und die Überprüfung des Hostnamens aktiviert sind. Standardwert: True |
+|mfp.push.db.cloudant.ssl.configuration |Optional	|(Nur WAS Full Profile) Gibt für HTTPS-Verbindungen zur Cloudant-Datenbank den Namen einer SSL-Konfiguration in der WebSphere-Application-Server-Konfiguration an, die verwendet werden muss, wenn für den Host und Port keine Konfiguration angegeben ist. |
+|mfp.push.db.cloudant.proxyHost |Optional	|Proxy-Host des Cloudant-Connectors. Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+|mfp.push.db.cloudant.proxyPort |Optional	|Proxy-Port des Cloudant-Connectors. Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+|mfp.push.services.ext.security |Optional	|Sicherheitserweiterungs-Plug-in |
+|mfp.push.security.endpoint |Optional	|Endpunkt-URL für den Autorisierungsserver |
+|mfp.push.security.user |Optional	|Benutzername für den Zugriff auf den Autorisierungsserver |
+|mfp.push.security.password |Optional	|Kennwort für den Zugriff auf den Autorisierungsserver |
+|mfp.push.services.ext.analytics |Optional |Erweiterungs-Plug-in für Analytics |
+|mfp.push.analytics.endpoint |Optional |Endpunkt-URL für den Analyseserver |
+|mfp.push.analytics.user |Optional |Benutzername für den Zugriff auf den Analyseserver |
+|mfp.push.analytics.password |Optional |Kennwort für den Zugriff auf den Analyseserver |
+|mfp.push.analytics.events.notificationDispatch |Optional	|Analyseereignis bei Bereitschaft zum Zustellen der Benachrichtigung. Standardwert: true |
+|mfp.push.internalQueue.maxLength |Optional |Länge der Warteschlange mit den Benachrichtigungstasks vor der Zustellung. Standardwert: 200000 |
+|mfp.push.gcm.proxy.enabled |Optional	|Zeigt an, ob über einen Proxy auf GCM zugegriffen werden muss. Standardwert: false |
+|mfp.push.gcm.proxy.protocol |Optional |Kann http oder https sein |
+|mfp.push.gcm.proxy.host |Optional |GCM-Proxy-Host. Ein negativer Wert bedeutet die Verwendung des Standardports. |
+|mfp.push.gcm.proxy.port |Optional |GCM-Proxy-Port. Standardwert: -1 |
+|mfp.push.gcm.proxy.user |Optional |Name des Proxybenutzers, wenn der Proxy eine Authentifizierung erfordert. Ein leerer Benutzername bedeutet, dass keine Authentifizierung stattfindet. |
+|mfp.push.gcm.proxy.password |Optional |Proxykennwort, wenn der Proxy eine Authentifizierung erfordert |
+|mfp.push.gcm.connections |Optional |Maximale Verbindungen für GCM-Push. Standardwert: 10 |
+|mfp.push.apns.proxy.enabled |Optional |Zeigt an, ob über einen Proxy auf APNs zugegriffen werden muss. Standardwert: false |
+|mfp.push.apns.proxy.type |Optional |APNS-Proxy-Typ |
+|mfp.push.apns.proxy.host |Optional |APNS-Proxy-Host |
+|mfp.push.apns.proxy.port |Optional |APNS-Proxy-Port. Standardwert: -1 |
+|mfp.push.apns.proxy.user |Optional |Name des Proxybenutzers, wenn der Proxy eine Authentifizierung erfordert. Ein leerer Benutzername bedeutet, dass keine Authentifizierung stattfindet. |
+|mfp.push.apns.proxy.password |Optional |Proxykennwort, wenn der Proxy eine Authentifizierung erfordert |
+|mfp.push.apns.connections |Optional |Maximale Verbindungen für APNS-Push. Standardwert: 3 |
+|mfp.push.apns.connectionIdleTimeout |Optional |Zeitlimit für inaktive APNS-Verbindungen. Standardwert: 0 |
 
 
 {% comment %}
 <!-- START NON-TRANSLATABLE -->
-The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448 
+The following table contains an additional 11 analytics push events that were removed. See RTC defect 112448
 | Property | Optional or mandatory | Description |
 |----------|-----------------------|-------------|
 | mfp.push.db.type | Optional | Database type. Possible values: DB, CLOUDANT. Default: DB |
@@ -619,48 +725,67 @@ The following table contains an additional 11 analytics push events that were re
 <!-- END NON-TRANSLATABLE -->
 {% endcomment %}
 
-## Configuring data sources
+## Datenquellen konfigurieren
 {: #configuring-data-sources }
-Find out some data source configuration details pertaining to the supported databases.
+Hier können Sie sich über Details der Datenquellenkonfiguration für die unterstützten Datenbanken informieren. 
 
-* [Managing the DB2 transaction log size](#managing-the-db2-transaction-log-size)
-* [Configuring DB2 HADR seamless failover for {{ site.data.keys.mf_server }} and Application Center data sources](#configuring-db2-hadr-seamless-failover-for-mobilefirst-server-and-application-center-data-sources)
-* [Handling stale connections](#handling-stale-connections)
-* [Stale data after creating or deleting apps from {{ site.data.keys.mf_console }}](#stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console)
+* [Größe des DB2-Transaktionsprotokolls steuern](#managing-the-db2-transaction-log-size)
+* [Nahtloses Failover mit DB2 HADR für MobileFirst-Server- und Application-Center-Datenquellen konfigurieren](#configuring-db2-hadr-seamless-failover-for-mobilefirst-server-and-application-center-data-sources)
+* [Behandlung von veralteten Verbindungen](#handling-stale-connections)
+* [Veraltete Daten nach dem Erstellen oder Löschen von Apps in der {{ site.data.keys.mf_console }}](#stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console)
 
-### Managing the DB2 transaction log size
+### Größe des DB2-Transaktionsprotokolls steuern
 {: #managing-the-db2-transaction-log-size }
-When you deploy an application that is at least 40 MB with IBM {{ site.data.keys.mf_console }}, you might receive a transaction log full error.
+Wenn Sie eine Anwendung mit einer Größe von
+mindestens 40 MB über die IBM {{ site.data.keys.mf_console }} implementieren, könnten Sie
+einen Fehler transaction log full empfangen.
 
-The following system output is an example of the transaction log full error code.
+Die folgende Systemausgabe ist ein Beispiel für den Fehlercode transaction
+log full.
 
 ```bash
 DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 ```
 
-The content of each application is stored in the {{ site.data.keys.product_adj }} administration database.
+Der Inhalt jeder Anwendung ist in der
+MobileFirst-Verwaltungsdatenbank gespeichert.
 
-The active log files are defined in number by the **LOGPRIMARY** and **LOGSECOND** database configuration parameters, and in size by the **LOGFILSIZ** database configuration parameter. A single transaction cannot use more log space than **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**) * 4096 KB.
+Die Anzahl der aktiven Protokolldateien wird von den Datenbankkonfigurationsparametern **LOGPRIMARY** und **LOGSECOND** definiert und die Größe der Protokolldateien vom Datenbankkonfigurationsparameter **LOGFILSIZ**. Eine Transaktion darf keinen größeren Protokollspeicherbereich als **LOGFILSZ** * (**LOGPRIMARY** + **LOGSECOND**) * 4096 KB belegen.
 
-The `DB2 GET DATABASE CONFIGURATION` command includes information about the log file size, and the number of primary and secondary log files.
+Der Befehl `DB2 GET DATABASE CONFIGURATION` liefert unter anderem Informationen zur Größe der Protokolldateien
+und zur Anzahl der primären und sekundären Protokolldateien.
 
-Depending on the largest size of the {{ site.data.keys.product_adj }} application that is deployed, you might need to increase the DB2  log space.
+Möglicherweise müssen Sie den
+DB2-Protokollspeicherbereich ausgehend von der größten implementierten MobileFirst-Anwendung vergrößern.
 
-Using the `DB2 update db cfg` command, increase the **LOGSECOND** parameter. Space is not allocated when the database is activated. Instead, the space is allocated only as needed.
+Erhöhen Sie mit dem Befehl `DB2 update db cfg` den Wert des Parameters
+**LOGSECOND**.Speicherbereich wird nicht bei Aktivierung der Datenbank, sondern bei Bedarf zugeordnet.
 
-### Configuring DB2 HADR seamless failover for {{ site.data.keys.mf_server }} and Application Center data sources
+### Nahtloses Failover mit DB2 HADR für MobileFirst-Server- und Application-Center-Datenquellen konfigurieren
 {: #configuring-db2-hadr-seamless-failover-for-mobilefirst-server-and-application-center-data-sources }
-You must enable the seamless failover feature with WebSphere  Application Server Liberty profile and WebSphere Application Server. With this feature, you can manage an exception when a database fails over and gets rerouted by the DB2  JDBC driver.
+Sie müssen das Feature für nahtloses Failover in WebSphere Application Server
+Liberty Profile und WebSphere Application
+Server aktivieren. Mit diesem Feature können Sie eine Ausnahme verwalten, wenn eine Datenbank ausfällt und vom
+DB2-JDBC-Treiber umgeleitet wird.
 
-> **Note:** DB2 HADR failover is not supported for Apache Tomcat.
+> **Hinweis:** Das Failover mit DB2 HADR wird nicht für Apache Tomcat unterstützt. 
 
-By default with DB2 HADR, when the DB2 JDBC driver performs a client reroute after detecting that a database failed over during the first attempt to reuse an existing connection, the driver triggers **com.ibm.db2.jcc.am.ClientRerouteException**, with **ERRORCODE=-4498** and **SQLSTATE=08506**. WebSphere Application Server maps this exception to **com.ibm.websphere.ce.cm.StaleConnectionException** before it is received by the application.
+Wenn Sie DB2 HADR verwenden und der
+DB2-JDBC-Treiber nach Feststellung eines Datenbankausfalls eine Clientumleitung durchführt,
+löst der Treiber bei dem ersten Versuch, eine vorhandene Verbindung zu nutzen, die Ausnahme
+**com.ibm.db2.jcc.am.ClientRerouteException** mit **ERRORCODE=-4498** und **SQLSTATE=08506** aus. Bevor die Anwendung diese Ausnahme empfängt, ordnet WebSphere Application Server
+sie der Ausnahme **com.ibm.websphere.ce.cm.StaleConnectionException** zu.
 
-In this case, the application would have to catch the exception and execute again the transaction. The {{ site.data.keys.product_adj }} and Application Center runtime environments do not manage the exception but rely on a feature that is called seamless failover. To enable this feature, you must set the **enableSeamlessFailover** JDBC property to "1".
+Die Anwendung müsste also die Ausnahme abfangen und die Transaktion erneut ausführen. Die {{ site.data.keys.product_adj }}-Laufzeitumgebung und die
+Application-Center-Laufzeitumgebung können die Ausnahme nicht verwalten, greifen jedoch auf ein Feature mit der Bezeichnung "nahtloses Failover" zurück. Zum Aktivieren
+dieses Features müssen Sie die JDBC-Eigenschaft
+**enableSeamlessFailover** auf "1" setzen.
 
-#### WebSphere Application Server Liberty profile configuration
+#### Konfiguration von WebSphere Application Server Liberty Profile
 {: #websphere-application-server-liberty-profile-configuration }
-You must edit the **server.xml** file, and add the **enableSeamlessFailover** property to the **properties.db2.jcc** element of the {{ site.data.keys.product_adj }} and Application Center data sources. For example:
+Sie müssen die Datei **server.xml** bearbeiten und die Eigenschaft
+**enableSeamlessFailover** zum Element
+**properties.db2.jcc** der {{ site.data.keys.product_adj }}- und Application-Center-Datenquellen hinzufügen. Beispiel:
 
 ```xml
 <dataSource jndiName="jdbc/WorklightAdminDS" transactional="false">
@@ -672,42 +797,57 @@ You must edit the **server.xml** file, and add the **enableSeamlessFailover** pr
 </dataSource>
 ```
 
-#### WebSphere Application Server configuration
+#### Konfiguration von WebSphere Application Server
 {: #websphere-application-server-configuration }
-From the WebSphere Application Server administrative console for each {{ site.data.keys.product_adj }} and Application Center data source:
+Führen Sie in der Administrationskonsole von WebSphere Application Server für
+jede {{ site.data.keys.product_adj }}- und
+Application-Center-Datenquelle die folgenden Schritte aus:
 
-1. Go to **Resources → JDBC → Data sources → DataSource name**.
-2. Select **New** and add the following custom property, or update the values if the properties already exist: `enableSeamlessFailover : 1`
-3. Click **Apply**.
-4. Save your configuration.
+1. Navigieren Sie zu **Ressourcen → JDBC → Datenquellen → Datenquellenname**.
+2. Wählen Sie **Neu** aus und fügen Sie die folgende angepasste Eigenschaft hinzu bzw. aktualisieren Sie den Wert, wenn es die Eigenschaft bereits gibt: `enableSeamlessFailover : 1`
+3. Klicken Sie auf **Anwenden**.
+4. Speichern Sie Ihre Konfiguration.
 
-For more information about how to configure a connection to an HADR-enabled DB2 database, see [Setting up a connection to an HADR-enabled DB2 database](https://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/tdat_db2_hadr.html?cp=SSAW57_8.5.5%2F3-3-6-3-3-0-7-3&lang=en).
+Weitere Informationen zum Konfigurieren einer Verbindung zu einer DB2-HADR-Datenbank finden Sie unter
+https://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/tdat_db2_hadr.html?cp=SSAW57_8.5.5%2F3-3-6-3-3-0-7-3&lang=de">Verbindung für eine HADR-aktivierte DB2-Datenbank konfigurieren.
 
-### Handling stale connections
+### Behandlung von veralteten Verbindungen
 {: #handling-stale-connections }
-Configure your application server to avoid database timeout issues.
+Konfigurieren Sie Ihren Anwendungsserver so, dass Probleme mit der Überschreibung von Datenbankzeitlimits
+vermieden werden. 
 
-A **StaleConnectionException** is an exception that is generated by the Java application server profile database connection code when a JDBC driver returns an unrecoverable error from a connection request or operation. The **StaleConnectionException** is raised when the database vendor issues an exception to indicate that a connection currently in the connection pool is no longer valid. This exception can happen for many reasons. The most common cause of **StaleConnectionException** is due to retrieving connections from the database connection pool and finding out that the connection has timed out or dropped when it was unused for a long time.
+Der Datenbankverbindungscode des Java-Anwendungsserverprofils
+generiert eine Ausnahme **StaleConnectionException**, wenn ein
+JDBC-Treiber einen nicht behebbaren Fehler für eine Verbindungsanforderung oder Operation zurückgibt. **StaleConnectionException** wird ausgelöst, wenn
+der Datenbankanbieter eine Ausnahme
+absetzt, um anzuzeigen, dass eine zurzeit im Verbindungspool enthaltene Verbindung nicht mehr gültig ist. Zu dieser Ausnahme kann es aus vielen Gründen kommen. Am häufigsten
+tritt die Ausnahme
+**StaleConnectionException** ein, wenn beim Abrufen von Verbindungen aus dem Datenbankverbindungspool festgestellt wird, dass das Zeitlimit für eine
+Verbindung überschritten ist oder dass eine länger ungenutzte Verbindung gelöscht wurde. 
 
-You can configure your application server to avoid this exception.
+Sie können Ihren Anwendungsserver so konfigurieren, dass diese Ausnahme vermieden
+wird. 
 
-#### Apache Tomcat configuration
+#### Apache-Tomcat-Konfiguration
 {: #apache-tomcat-configuration }
 **MySQL**  
-The MySQL database closes its connections after a period of non-activity on a connection. This timeout is defined by the system variable called **wait_timeout**. The default is 28000 seconds (8 hours).
+Die MySQL-Datenbank schließt ihre Verbindungen, wenn für eine Verbindung ein bestimmter Zeitraum ohne Aktivität abgelaufen ist. Dieses Zeitlimit wird mit der Systemvariablen **wait_timeout** definiert.
+Der Standardwert ist 28000 Sekunden (8 Stunden). 
 
-When an application tries to connect to the database after MySQL closes the connection, the following exception is generated:
+Wenn eine Anwendung versucht, eine Verbindung zur Datenbank herzustellen,
+nachdem MySQL die Verbindung geschlossen hat, wird
+die folgende Ausnahme generiert: 
 
 ```xml
 com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after statement closed.
 ```
 
-Edit the **server.xml** and **context.xml** files, and for every `<Resource>` element add the following properties:
+Bearbeiten Sie die Dateien **server.xml** und **context.xml** und fügen Sie für jedes `<Resource>`-Element die folgenden Eigenschaften hinzu:
 
 * **testOnBorrow="true"**
 * **validationQuery="select 1"**
 
-For example:
+Beispiel:
 
 ```xml
 <Resource name="jdbc/AppCenterDS"
@@ -719,122 +859,193 @@ For example:
 />
 ```
 
-#### WebSphere Application Server Liberty profile configuration
+#### Konfiguration von WebSphere Application Server Liberty Profile
 {: #websphere-application-server-liberty-profile-configuration-1 }
-Edit the **server.xml** file and for every `<dataSource>` element (runtime and Application Center databases) add a `<connectionManager>` element with the agedTimeout property:
+Bearbeiten Sie die Datei **server.xml** und fügen Sie für jedes `<dataSource>`-Element (Laufzeit- und Application-Center-Datenbank) ein Element `<connectionManager>` mit der Eigenschaft agedTimeout hinzu:
 
 ```xml
-<connectionManager agedTimeout="timeout_value"/>
+<connectionManager agedTimeout="Zeitlimitwert"/>
 ```
 
-The timeout value depends mainly on the number of opened connections in parallel but also on the minimum and maximum number of the connections in the pool. Hence, you must tune the different **connectionManager** attributes to identify the most adequate values. For more information about the **connectionManager** element, see [Liberty: Configuration elements in the **server.xml** file](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html).
+Der Zeitlimitwert richtet sich im Wesentlichen nach der Anzahl gleichzeitig geöffneter Verbindungen, aber auch nach der
+Mindestanzahl und der maximalen Anzahl von Verbindungen im Pool. Sie müssen die verschiedenen
+**connectionManager**-Attribute also optimieren und die am besten geeigneten Werte finden. Weitere Informationen
+zum Element **connectionManager** finden Sie unter
+[Liberty: Configuration elements in the **server.xml** file](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html).
 
-> **Note:** MySQL in combination with WebSphere  Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Use IBM  DB2  or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+> **Hinweis:** MySQL
+in Kombination mit WebSphere Application Server Liberty
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
+Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM DB2 oder
+eine andere von WebSphere Application Server unterstützte Datenbank
+verwenden, um die Vorteile
+einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
 
-### Stale data after creating or deleting apps from {{ site.data.keys.mf_console }}
+
+
+### Veraltete Daten nach dem Erstellen oder Löschen von Apps in der {{ site.data.keys.mf_console }}
 {: #stale-data-after-creating-or-deleting-apps-from-mobilefirst-operations-console }
-On a Tomcat 8 application server, if you use a MySQL database, some calls from {{ site.data.keys.mf_console }} to services return a 404 error.
+Wenn Sie in einem Tomcat 8 Application Server eine MySQL-Datenbank verwenden,
+wird für einige Serviceaufrufe der {{ site.data.keys.mf_console }} ein Fehler
+404 zurückgegeben. 
 
-On a Tomcat 8 application server, if you work with a MySQL database, when you use {{ site.data.keys.mf_console }} to delete an app, or add a new one, and try to refresh the console a couple of times, you might see stale data. For example, users might see an already deleted app in the list.
+Wenn Sie in einem Tomcat 8 Application Server mit einer MySQL-Datenbank arbeiten und in
+der {{ site.data.keys.mf_console }} eine App löschen oder eine neue App hinzufügen, sehen Sie nach mehrfacher Aktualisierung der
+Konsolenanzeige möglicherweise veraltete Daten. Benutzer könnten beispielsweise eine bereits gelöschte App in der Liste sehen. 
 
-To avoid this problem, change the isolation level to **READ_COMMITTED**, either in the data source, or in the database management system.
+Sie können dieses Problem umgehen, indem Sie die Isolationsstufe
+in der Datenquelle oder im Datenbankmanagementsystem auf **READ_COMMITTED** setzen. 
 
-For the meaning of **READ_COMMITTED**, see the [MySQL documentation](http://www.ibm.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html?view=kc) at [http://dev.mysql.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html](http://dev.mysql.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html).
+Die Bedeutung von **READ_COMMITTED** ist in der [MySQL-Dokumentation](http://www.ibm.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html?view=kc)
+unter [http://dev.mysql.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html](http://dev.mysql.com/doc/refman/5.7/en/innodb-transaction-isolation-levels.html) erläutert.
 
-* To change the isolation level to **READ_COMMITTED** in the data source, modify the **server.xml** Tomcat configuration file: In the **<Resource name="jdbc/mfpAdminDS" .../>** section, add the **defaultTransactionIsolation="READ_COMMITTED"** attribute.
-* To change the isolation level to **READ_COMMITTED** globally in the database management system, refer to the [SET TRANSACTION Syntax page](http://dev.mysql.com/doc/refman/5.7/en/set-transaction.html) of the MySQL documentation at [http://dev.mysql.com/doc/refman/5.7/en/set-transaction.html](http://dev.mysql.com/doc/refman/5.7/en/set-transaction.html).
+* Wenn Sie die Isolationsstufe in der Datenquelle auf **READ_COMMITTED** setzen möchten,
+müssen Sie die Tomcat-Konfigurationsdatei **server.xml** modifizieren.
+Fügen Sie im Abschnitt **<Resource name="jdbc/mfpAdminDS" .../>** das Attribut **defaultTransactionIsolation="READ_COMMITTED"** hinzu. 
+* Wenn Sie die Isolationsstufe im Datenbankmanagementsystem global auf **READ_COMMITTED** setzen möchten,
+lesen Sie sich die Seite [SET TRANSACTION Syntax](http://dev.mysql.com/doc/refman/5.7/en/set-transaction.html) in der
+MySQL-Dokumentation unter [http://dev.mysql.com/doc/refman/5.7/en/set-transaction.html](http://dev.mysql.com/doc/refman/5.7/en/set-transaction.html) durch.
 
-#### WebSphere Application Server full profile configuration
+#### Konfiguration von WebSphere Application Server Full Profile
 {: #websphere-application-server-full-profile-configuration }
-**DB2 or Oracle**  
-To minimize the stale connection issues, check the connection pools configuration on each data source in WebSphere Application Server administration console.
+**DB2 oder Oracle**  
+Wenn Sie Probleme mit veralteten Verbindungen auf ein Minimum reduzieren möchten, überprüfen Sie in der
+Administrationskonsole von WebSphere Application Server die Verbindungspoolkonfiguration für jede
+Datenquelle. 
 
-1. Log in to the WebSphere Application Server administration console.
-2. Select **Resources → JDBC Providers → database_jdbc_provider → Data Sources → your_data_source → Connection pool properties**.
-3. Set the **Minimum connections** value to 0.
-4. Set the **Reap time** value to be lesser than the **Unused timeout** value.
-5. Make sure that the **Purge policy** property is set to **EntirePool (default)**.
+1. Melden Sie sich bei der Administrationskonsole von WebSphere Application Server an. 
+2. Wählen Sie **Ressourcen → JDBC-Provider → Datenbank-JDBC-Provider → Datenquellen → Ihre_Datenquelle → Eigenschaften des Verbindungspools** aus.
+3. Setzen Sie **Mindestanzahl von Verbindungen** auf den Wert 0.
+4. Setzen Sie das **Bereinigungsintervall** auf einen Wert, der kleiner als der Wert
+für das **Zeitlimit für nicht verwendete Verbindungen** ist. 
+5. Stellen Sie sicher, dass die Eigenschaft **Löschrichtlinie** auf (die Standardeinstellung) **Gesamter Pool** gesetzt ist.
 
-For more information, see [Connection pool settings](https://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/udat_conpoolset.html).
+Weitere Informationen finden Sie unter [Connection pool settings](https://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/udat_conpoolset.html).
 
 **MySQL**  
 
-1. Log in to the WebSphere Application Server administration console.
-2. Select **Resources → JDBC → Data sources**.
-3. For each MySQL data source:
-    * Click the data source.
-    * Select **Connection pool** properties under **Additional Properties**.
-    * Modify the value of the **Aged timeout** property. The value must be lower than the MySQL **wait_timeout** system variable so that the connections are purged before MySQL closes these connections.
-    * Click **OK**.
+1. Melden Sie sich bei der Administrationskonsole von WebSphere Application Server an. 
+2. Wählen Sie **Ressourcen → JDBC → Datenquellen** aus.
+3. Gehen Sie für jede MySQL-Datenquelle wie folgt vor:
+    * Klicken Sie auf die Datenquelle.
+    * Wählen Sie unter
+**Weitere Eigenschaften** die Option **Eigenschaften des Verbindungspools** aus.
+    * Ändern Sie den Wert der Eigenschaft
+**Zeitlimit für veraltete Verbindungen**. Der Wert muss kleiner sein als der Wert für die
+MySQL-Systemvariable **wait_timeout**, damit die Verbindungen bereinigt werden,
+bevor sie von MySQL geschlossen werden.
 
-> **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Use IBM DB2 or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+    * Klicken Sie auf **OK**. 
 
-## Configuring logging and monitoring mechanisms
+> **Hinweis:** MySQL
+in Kombination mit WebSphere Application Server Liberty
+Profile oder WebSphere Application Server Full Profile ist keine unterstützte Konfiguration. Weitere Informationen finden Sie unter [WebSphere Application
+Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Sie können IBM DB2 oder
+eine andere von WebSphere Application Server unterstützte Datenbank
+verwenden, um die Vorteile
+einer Konfiguration zu nutzen, die vollständig vom IBM Support unterstützt wird.
+
+
+
+## Protokollierungs- und Überwachungsmechanismen konfigurieren
 {: #configuring-logging-and-monitoring-mechanisms }
-{{ site.data.keys.product }} reports errors, warnings, and informational messages into a log file. The underlying logging mechanism varies by application server.
+Die {{ site.data.keys.product }} schreibt Fehler, Warnungen und Informationsnachrichten in eine
+Protokolldatei. Der zugrunde liegende Protokollierungsmechanismus ist je nach Anwendungsserver verschieden.
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-{{ site.data.keys.product }} ({{ site.data.keys.mf_server }} for short) uses the standard java.util.logging package. By default, all {{ site.data.keys.product_adj }} logging goes to the application server log files. You can control {{ site.data.keys.mf_server }} logging by using the standard tools that are available in each application server. For example, if you want to activate trace logging in WebSphere  Application Server Liberty, add a trace element to the server.xml file. To activate trace logging in WebSphere Application Server, use the logging screen in the console and enable trace for {{ site.data.keys.product_adj }} logs.
+Die {{ site.data.keys.product }} (oder kurz {{ site.data.keys.mf_server }}) verwendet das Standardpaket java.util.logging. Die gesamte {{ site.data.keys.product_adj }}-Protokollierung
+erfolgt standardmäßig in den Protokolldateien des Anwendungsservers. Sie können die Protokollierung von {{ site.data.keys.mf_server }} mit
+den in jedem Anwendungsserver verfügbaren Standardtools steuern. Wenn Sie beispielsweise in WebSphere Application Server Liberty die Traceprotokollierung aktivieren möchten, fügen Sie
+zur Datei
+server.xml ein Element "trace" hinzu. Wenn Sie die Traceprotokollierung in
+WebSphere Application Server
+aktivieren möchten,
+aktivieren Sie in der Protokollierungsanzeige der Konsole
+den Trace für {{ site.data.keys.product_adj }}-Protokolle. 
 
-{{ site.data.keys.product_adj }} logs all begin with **com.ibm.mfp**.  
-Application Center logs begin with **com.ibm.puremeap**.
+Die Namen aller
+{{ site.data.keys.product_adj }}-Protokolle
+beginnen mit **com.ibm.mfp**.   
+Die Namen der
+Application-Center-Protokolle beginnen mit **com.ibm.puremeap**. 
 
-For more information about the logging models of each application server, including the location of the log files, see the documentation for the relevant application server, as shown in the following table.
+Weitere Informationen zu den Protokollierungsmodellen der einzelnen Anwendungsserver und zur Position der Protokolldateien finden Sie in der
+Dokumentation zum jeweiligen Anwendungsserver. Vergleichen Sie dazu die Angaben in der folgenden Tabelle.
 
-| Application server | Location of documentation |
+|Anwendungsserver |Position der Dokumentation |
 | -------------------|---------------------------|
-| Apache Tomcat	     | [http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)](http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)) |
-| WebSphere Application Server Version 8.5 full profile | 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html) |
-| WebSphere Application Server Version 8.5 Liberty profile | 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0) |
+|Apache Tomcat	     |[http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)](http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)) |
+|WebSphere Application Server Version 8.5 Full Profile | 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html) |
+|WebSphere Application Server Version 8.5 Liberty Profile | 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0) |
 
-### Log level mappings
+### Zuordnung der Protokollstufen
 {: #log-level-mappings }
-{{ site.data.keys.mf_server }} uses the **java.util.logging** API. The logging levels map to the following levels:
+{{ site.data.keys.mf_server }} verwendet
+die API **java.util.logging**. Die Zuordnung der Protokollierungsstufen sieht wie folgt aus:
 
 * WL.Logger.debug: FINE
 * WL.Logger.info: INFO
 * WL.Logger.warn: WARNING
 * WL.Logger.error: SEVERE
 
-### Log monitoring tools
+### Überwachungstools für Protokolle
 {: #log-monitoring-tools }
-For Apache Tomcat, you can use [IBM  Operations Analytics - Log Analysis](http://www.ibm.com/software/products/en/ibm-operations-analytics---log-analysis) or other industry standard log file monitoring tools to monitor logs and highlight errors and warnings.
+Für Apache Tomcat
+können Sie [IBM Operations Analytics - Log Analysis](http://www.ibm.com/software/products/en/ibm-operations-analytics---log-analysis) oder andere Überwachungstools für Protokolldateien nach Industrienorm verwenden,
+um Protokolle zu überwachen und Fehler und Warnungen hervorzuheben. 
 
-For WebSphere Application Server, use the log viewing facilities that are described in IBM Knowledge Center. The URLs are listed in the table in the {{ site.data.keys.mf_server }} section of this page.
+Verwenden Sie für WebSphere Application Server
+die Protokollanzeigefunktionen, die um IBM Knowledge Center beschrieben sind. Die URLs sind auf dieser Seite in der Tabelle im MobileFirst-Server-Abschnitt
+aufgelistet. 
 
-### Back-end connectivity
+### Back-End-Konnektivität
 {: #back-end-connectivity }
-To enable trace to monitor back-end connectivity, see the documentation for your specific application server platform in the table of section {{ site.data.keys.mf_server }} of this page. Use the **com.ibm.mfp.server.js.adapter** package and set the log level to **FINEST**.
+Wenn Sie den Trace für die Überwachung der Back-End-Konnektivität aktivieren möchten, lesen Sie
+die Dokumentation zu Ihrer Anwendungsserverplattform auf dieser Seite in der Tabelle
+im Abschnitt {{ site.data.keys.mf_server }}. Verwenden Sie das Paket
+**com.ibm.mfp.server.js.adapter** und setzen Sie die Protokollstufe
+auf **FINEST**.
 
-### Audit log for administration operations
+### Prüfprotokoll für Verwaltungsoperationen
 {: #audit-log-for-administration-operations }
-{{ site.data.keys.mf_console }} stores an audit log for login, logout, and for all administration operations, such as deploying apps or adapters or locking apps. You can disable the audit log by setting the JNDI property **mfp.admin.audit** to false on the web application of the {{ site.data.keys.product_adj }} administration service (**mfp-admin-service.war**).
+Die {{ site.data.keys.mf_console }} speichert
+ein Prüfprotokoll für Anmeldung, Abmeldung und alle Verwaltungsoperationen, z. B. die Implementierung von Apps oder Adaptern oder das Sperren von Apps. Sie können das Prüfprotokoll inaktivieren, indem Sie
+die JNDI-Eigenschaft **mfp.admin.audit** der Webanwendung für den
+{{ site.data.keys.product_adj }}-Verwaltungsservice
+(**mfp-admin-service.war**) auf "false" setzen. 
 
-When the audit log is enabled, you can download it from {{ site.data.keys.mf_console }} by clicking the **Audit log** link in the footer of the page.
+Wenn das Prüfprotokoll aktiviert ist, können Sie es von der
+{{ site.data.keys.mf_console }} herunterladen. Klicken Sie dazu
+in der Fußzeile der Seite auf den Link **Prüfprotokoll**. 
 
-### Login and authentication issues
+### Probleme bei der Anmeldung und der Authentifizierung
 {: #login-and-authentication-issues }
-To diagnose login and authentication issues, enable the package **com.ibm.mfp.server.security** for trace and set the log level to **FINEST**.
+Aktivieren Sie zur Diagnose von Anmelde- und Authentifizierungsproblemen
+das Paket
+**com.ibm.mfp.server.security** für Traces und setzen Sie die Protokollstufe auf
+**FINEST**.
 
-## Configuring multiple runtimes
+## Mehrere Laufzeiten konfigurieren
 {: #configuring-multiple-runtimes }
-You can configure {{ site.data.keys.mf_server }} with multiple runtimes, creating a visual differentiation between application "types" in the {{ site.data.keys.mf_console }}.
+Sie können {{ site.data.keys.mf_server }} mit mehreren Laufzeiten konfigurieren und in der {{ site.data.keys.mf_console }} eine visuelle Abgrenzung der Anwendungstypen erstellen. 
 
-> **Note:** multiple runtimes are not supported in a Mobile Foundation server instance created by the Mobile Foundation Bluemix service. In the Bluemix service, you must create multiple service instances instead.
+> **Hinweis:** Eine Mobile-Foundation-Server-Instanz, die mit dem IBM Cloud-Service "Mobile Foundation" erstellt wurde, bietet keine Unterstützung für mehrere Laufzeiten. Im IBM Cloud-Service müssen Sie stattdessen mehrere Serviceinstanzen erstellen.
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to-1 }
-* [Configuring multiple runtimes in WebSphere Liberty profile](#configuring-multiple-runtimes-in-websphere-liberty-profile)
-* [Registering applications and deploying adapters to different runtimes](#registering-applications-and-deploying-adapters-to-different-runtimes)
-* [Exporting and importing runtime configurations](#exporting-and-importing-runtime-configurations)
+* [Mehrere Laufzeiten in WebSphere Liberty Profile konfigurieren](#configuring-multiple-runtimes-in-websphere-liberty-profile)
+* [In verschiedenen Laufzeiten Anwendungen registrieren und Adapter implementieren](#registering-applications-and-deploying-adapters-to-different-runtimes)
+* [Laufzeitkonfigurationen exportieren und importieren](#exporting-and-importing-runtime-configurations)
 
-### Configuring multiple runtimes in WebSphere Liberty profile
+### Mehrere Laufzeiten in WebSphere Liberty Profile konfigurieren
 {: #configuring-multiple-runtimes-in-websphere-liberty-profile }
 
-1. Open the **server.xml** file of the application server. Typically located in the  **[application-server]/usr/servers/server-name/** folder. For example, with the {{ site.data.keys.mf_dev_kit }}, the file can be found it **[installation-folder]/mfp-server/usrs/servers/mfp/server.xml**.
+1. Öffnen Sie die Datei **server.xml** des Anwendungsservers. Normalerweise befindet sich die Datei
+im Ordner **[Anwendungsserver]/usr/servers/Servername/**. Wenn Sie beispielsweise das
+{{ site.data.keys.mf_dev_kit }} verwenden, finden Sie die Datei unter **[Installationsordner]/mfp-server/usrs/servers/mfp/server.xml**.
 
-2. Add a second `application` element:
+2. Fügen Sie ein zweites Element `application` hinzu: 
 
    ```xml
    <application id="second-runtime" name="second-runtime" location="mfp-server.war" type="war">
@@ -843,7 +1054,7 @@ You can configure {{ site.data.keys.mf_server }} with multiple runtimes, creatin
    </application>
    ```
 
-3. Add a second set of JNDI entries:
+3. Fügen Sie eine zweite Gruppe von JNDI-Einträgen hinzu: 
 
    ```xml
    <jndiEntry jndiName="second-runtime/mfp.analytics.url" value='"http://localhost:9080/analytics-service/rest"'/>
@@ -853,7 +1064,7 @@ You can configure {{ site.data.keys.mf_server }} with multiple runtimes, creatin
    <jndiEntry jndiName="second-runtime/mfp.authorization.server" value='"embedded"'/>
    ```
 
-4. Add a second `dataSource` element:
+4. Fügen Sie ein zweites Element `dataSource` hinzu: 
 
    ```xml
    <dataSource jndiName="second-runtime/jdbc/mfpDS" transactional="false">
@@ -862,121 +1073,172 @@ You can configure {{ site.data.keys.mf_server }} with multiple runtimes, creatin
    </dataSource>
    ```
 
-    > **Note:**
+    > **Hinweis:**
     >
-    > * Make sure the `dataSource` is pointing to a different database schema.
-    > * Make sure you have created [another database instance](../databases) for the new runtime.
-    > * In the development environment, add `createDatabase="create"` in the `properties.derby.embedded` child-element.
+    > * Stellen Sie sicher, dass `dataSource` auf ein anderes Datenbankschema zeigt.
+    > * Vergewissern Sie sich, dass für die neue Laufzeit eine [andere Datenbankinstanz](../prod-env/databases) erstellt wurde.
+    > * Fügen Sie in der Entwicklungsumgebung zum untergeordneten Element `properties.derby.embedded` den Eintrag `createDatabase="create"` hinzu. 
 
-5. Restart the application server.
+5. Starten Sie den Anwendungsserver neu.
 
-### Registering applications and deploying adapters to different runtimes
+### In verschiedenen Laufzeiten Anwendungen registrieren und Adapter implementieren
 {: #registering-applications-and-deploying-adapters-to-different-runtimes }
-When a {{ site.data.keys.mf_server }} is configured with multiple runtimes, the registration of applications and deployment of adapters is slightly different.
+Wenn ein {{ site.data.keys.mf_server }} mit mehreren Laufzeiten konfiguriert ist, verläuft die Registrierung von Anwendungen und die Implementierung von Adaptern etwas anders. 
 
-* [Registering and deploying from the {{ site.data.keys.mf_console }}](#registering-and-deploying-from-the-mobilefirst-operations-console)
-* [Registering and deploying from the Command-line](#registering-and-deploying-from-the-command-line)
+* [Registrierung und Implementierung über die {{ site.data.keys.mf_console }}](#registering-and-deploying-from-the-mobilefirst-operations-console)
+* [Registrierung und Implementierung über die Befehlszeile](#registering-and-deploying-from-the-command-line)
 
-#### Registering and deploying from the {{ site.data.keys.mf_console }}
+#### Registrierung und Implementierung über die {{ site.data.keys.mf_console }}
 {: #registering-and-deploying-from-the-mobilefirst-operations-console }
-When performing these actions in the {{ site.data.keys.mf_console }}, you now need to select the runtime to register or deploy to.
+Wenn Sie diese Aktionen in der {{ site.data.keys.mf_console }} ausführen, müssen Sie jetzt die Ziellaufzeit für die Registrierung oder Implementierung auswählen. 
 
-<img class="gifplayer" alt="Multiple runtimes in the {{ site.data.keys.mf_console }}" src="register-and-deploy-to-multiple-runtimes.png"/>
+<img class="gifplayer" alt="Mehrere Laufzeiten in der {{ site.data.keys.mf_console }}" src="register-and-deploy-to-multiple-runtimes.png"/>
 
-#### Registering and deploying from the Command-line
+#### Registrierung und Implementierung über die Befehlszeile
 {: #registering-and-deploying-from-the-command-line }
-When performing these actions using the **mfpdev** command-line tool, you now need to add the runtime name to register or deploy to.
+Wenn Sie diese Aktionen mit dem Befehlszeilentool (**mfpdev**) ausführen, müssen Sie jetzt den Namen der Ziellaufzeit für die Registrierung oder Implementierung hinzufügen. 
 
-To register an application: `mfpdev app register <server-name> <runtime-name>`.  
+Registrierung einer Anwendung: `mfpdev app register <Servername> <Laufzeitname>`.  
 
 ```bash
 mfpdev app register local second-runtime
 ```
 
-To deploy an adapter: `mfpdev adapter deploy <server-name> <runtime-name>`.  
+Implementierung eines Adapters: `mfpdev adapter deploy <Servername> <Laufzeitname>`.  
 
 ```bash
 mfpdev adapter deploy local second-runtime
 ```
 
-* **local** is the name of the default server definition in the {{ site.data.keys.mf_cli }}. Replace *local* with a the server definition name you need to register or deploy to.
-* **runtime-name** is the name of the runtime to register or deploy to.
+* In der {{ site.data.keys.mf_cli }} ist **local** der Name der Standardserverdefinition. Ersetzen Sie *local* durch den Namen einer Serverdefinition, die als Ziel für die Registrierung oder Implementierung verwendet werden soll. 
+* **Laufzeitname** ist der Name der Ziellaufzeit für die Registrierung oder Implementierung. 
 
-> Learn more with the following CLI help commands:
+> Weitere Informationen können Sie mit den folgenden help-Befehlen der CLI abrufen: 
 >
 > * `mfpdev help server add`
 > * `mfpdev help app register`
 > * `mfpdev help adapter deploy`
 
-## Exporting and importing runtime configurations
+## Laufzeitkonfigurationen exportieren und importieren
 {: #exporting-and-importing-runtime-configurations }
-You can export a runtime configuration and import it to another {{ site.data.keys.mf_server }} using the REST APIs of the {{ site.data.keys.mf_server }} **administration service**.
+Mit den REST-APIs des MobileFirst-Server-**Verwaltungsservice** können Sie eine Laufzeitkonfiguration exportieren und in einen anderen
+{{ site.data.keys.mf_server }} importieren. 
 
-For example, you can setup a runtime configuration in a development environment, export its configuration and then import it to a testing environment for a quick set-up, and then further configure it for the specific needs of the testing environment.
+Sie können beispielsweise eine Laufzeitkonfiguration in einer Entwicklungsumgebung definieren, dann die Konfiguration exportieren und die Konfiguration schließlich
+für ein Schnell-Setup in eine Testumgebung importieren.
+In der Testumgebung können Sie die Definition der Konfiguration an die Umgebungsanforderungen anpassen. 
 
-> Find out all available REST APIs [in the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html).
+> In den [API-Referenzinformationen](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html) erfahren Sie, welche REST-APIs zur Verfügung stehen.
 
-## Configuring license tracking
+
+
+## Lizenzüberwachung konfigurieren
 {: #configuring-license-tracking }
-License tracking is enabled by default. Read the following topics to learn how you can configure license tracking. For more information about license tracking, see [License tracking](../../../administering-apps/license-tracking).
+Die Lizenzüberwachung ist standardmäßig aktiviert. In den folgenden Abschnitten erfahren Sie, wie Sie die Lizenzüberwachung
+konfigurieren können. Weitere Informationen zur Lizenzüberwachung
+finden Sie unter
+[Lizenzüberwachung](../../../administering-apps/license-tracking).
 
-* [Configuring license tracking for client device and addressable device](#configuring-license-tracking-for-client-device-and-addressable-device)
-* [Configuring IBM License Metric Tool log files](#configuring-ibm-license-metric-tool-log-files)
+* [Lizenzüberwachung für Clientgeräte und adressierbare Geräte konfigurieren](#configuring-license-tracking-for-client-device-and-addressable-device)
+* [Protokolldateien von IBM License Metric Tool konfigurieren](#configuring-ibm-license-metric-tool-log-files)
 
-### Configuring license tracking for client device and addressable device
+### Lizenzüberwachung für Clientgeräte und adressierbare Geräte konfigurieren
 {: #configuring-license-tracking-for-client-device-and-addressable-device }
-License tracking for client devices and addressable device is enabled by default. License reports are available in the {{ site.data.keys.mf_console }}. You can specify the following JNDI properties to change the default settings for license tracking.
+Die Lizenzüberwachung für Clientgeräte und adressierbare Geräte ist standardmäßig aktiviert. Die Lizenzberichte sind in der
+{{ site.data.keys.mf_console }} verfügbar.
+Sie können die folgenden JNDI-Eigenschaften angeben, um die Standardeinstellungen für die Lizenzüberwachung zu ändern. 
 
-> **Note:** If you have a contract that defines the use of token licensing, see also [Installing and configuring for token licensing](../token-licensing).
+> **Hinweis:** Wenn in Ihrem Vertrag die Tokenlizenzierung vereinbart ist, lesen Sie auch die Informationen unter [Installation und Konfiguration für Tokenlizenzierung](../token-licensing). 
 
-You can specify the following JNDI properties to change the default settings for license tracking.
+Sie können die folgenden JNDI-Eigenschaften angeben, um die Standardeinstellungen für die Lizenzüberwachung zu ändern. 
 
 **mfp.device.decommission.when**  
-The number of days of inactivity after which a device is decommissioned by the device decommissioning task. License reports do not count decommissioned devices as active devices. The default value for the property is 90 days. Do not set a value lower than 30 days if your software is licensed by Client Device or by Addressable Device, or license reports might not be sufficient to prove compliance.
+Anzahl von Tagen der Inaktivität, nach denen ein Gerät mit der Aufgabe für Gerätestilllegung stillgelegt wird. Für Lizenzberichte werden stillgelegte Geräte nicht als aktive
+Geräte gezählt. Der Standardwert für diese Eigenschaft liegt bei 90 Tagen. Legen Sie keinen Wert unter 30 Tagen fest, wenn Ihre Software auf der Basis von
+Clientgeräten oder
+adressierbaren Geräten lizenziert wird. Andernfalls sind die Lizenzberichte unter Umständen nicht ausreichend, um die Einhaltung der Lizenzvereinbarung
+nachzuweisen. 
 
 **mfp.device.archiveDecommissioned.when**  
-A value, in days, that defines when decommissioned devices are placed in an archive file when the decommissioning task is run. The archived devices are written to a file in the IBM {{ site.data.keys.mf_server }} **home\devices_archive** directory. The name of the file contains the time stamp when the archive file is created. The default value is 90 days.
+Ein Wert, der in Tagen definiert, wann stillgelegte Geräte bei Ausführung der Stilllegungsaufgabe in eine
+Archivdatei aufgenommen werden. Die archivierten Geräte werden
+in eine Datei im IBM MobileFirst-Server-Verzeichnis **home\devices_archive** geschrieben.
+Der Name der Datei
+enthält die Zeitmarke für den Erstellungszeitpunkt der Archivdatei. Der Standardwert liegt bei 90 Tagen.
 
 **mfp.device.decommissionProcessingInterval**  
-Defines how often (in seconds) the decommissioning task is run. Default: 86400, which is one day. The decommissioning task performs the following actions:
+Definiert, wie häufig eine Stilllegung durchgeführt wird (Intervall in Sekunden). Standardwert: 86400 (ein Tag). Bei der
+Stilllegung werden folgende Aktionen ausgeführt:
 
-* Decommissions inactive devices, based on the **mfp.device.decommission.when** setting.
-* Optionally, archives older decommissioned devices, based on the **mfp.device.archiveDecommissioned.when** setting.
-* Generates the license tracking report.
+* Inaktive Geräte werden ausgehend von der Einstellung der Eigenschaft **mfp.device.decommission.when** stillgelegt.
+* Ältere stillgelegte Geräte können ausgehend von der Einstellung der Eigenschaft **mfp.device.archiveDecommissioned.when** archiviert werden.
+* Der Lizenzüberwachungsbericht wird generiert.
 
 **mfp.licenseTracking.enabled**  
-A value that is used to enable or disable license tracking in {{ site.data.keys.product }}. By default, license tracking is enabled. For performance reasons, you can disable this flag when {{ site.data.keys.product }} is not licensed by Client Device or by Addressable Device. When device tracking is disabled, the license reports are also disabled and no license metrics are generated. In that case, only IBM  License Metric Tool records for Application count are generated.
+Mit dem Wert dieser Eigenschaft wird die Lizenzüberwachung in
+der {{ site.data.keys.product }} aktiviert oder inaktiviert. Die Lizenzüberwachung
+ist standardmäßig
+aktiviert. Aus Leistungsgründen können Sie dieses Flag inaktivieren, wenn
+die {{ site.data.keys.product }}
+weder auf der Basis von Clientgeräten noch auf der Basis von adressierbaren
+Geräten lizienziert wird.
+Bei inaktivierter Geräteüberwachung sind
+auch die Lizenzberichte inaktiviert und es werden keine Lizenzmetriken generiert. In dem Fall weden nur
+Datensätze von IBM License Metric Tool für die Anwendungszählung generiert. 
 
-For more information about specifying JNDI properties, see [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](#list-of-jndi-properties-for-mobilefirst-runtime).
+Weitere Informationen zur Angabe von JNDI-Eigenschaften
+finden Sie in der [Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit](#list-of-jndi-properties-for-mobilefirst-runtime).
 
-### Configuring IBM License Metric Tool log files
+### Protokolldateien von IBM License Metric Tool konfigurieren
 {: #configuring-ibm-license-metric-tool-log-files }
-{{ site.data.keys.product }} generates IBM  Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this to understand how to configure the location and the maximum size of the generated files.
+Die {{ site.data.keys.product }}
+generiert SLMT-Dateien (IBM Software License Metric Tag). Versionen des IBM License Metric Tool, die
+SLMT unterstützen, können Berichte zum Lizenzbedarf generieren. Lesen Sie die folgenden Informationen, damit Sie wissen, wie die
+Position und die maximale Größe der generierten Dateien konfiguriert werden. 
 
-By default, the IBM Software License Metric Tag files are in the following directories:
+SLMT-Dateien (IBM Software License Metric Tag) sind standardmäßig in folgenden Verzeichnissen
+enthalten:
 
-* On Windows: **%ProgramFiles%\ibm\common\slm**
-* On UNIX and UNIX-like operating systems: **/var/ibm/common/slm**
+* Windows: **%ProgramFiles%\ibm\common\slm**
+* UNIX und UNIX-ähnliche Betriebssysteme: **/var/ibm/common/slm**
 
-If the directories are not writable, the files are created in the log directory of the application server that runs the {{ site.data.keys.product_adj }} runtime environment.
+Wenn die Verzeichnisse schreibgeschützt sind, werden die
+Dateien im Protokollverzeichnis des Anwendungsservers erstellt,
+in dem die {{ site.data.keys.product_adj }}-Laufzeitumgebung ausgeführt wird.
 
-You can configure the location and management of those files with the following properties:
+Sie können die Position und die Verwaltung der Dateien mit folgenden Eigenschaften konfigurieren:             
 
-* **license.metric.logger.output.dir**: Location of the IBM Software License Metric Tag files
-* **license.metric.logger.file.size**: Maximum size of an SLMT file before a rotation is performed. The default size is 1 MB.
-* **license.metric.logger.file.number**: Maximum number of SLMT archive files to keep in rotations. The default number is 10.
+* **license.metric.logger.output.dir**: Position der SLMT-Dateien
+* **license.metric.logger.file.size**: Maximale Größe einer SLMT-Datei, bei deren Erreichung eine Rotation erfolgt. Die Standardgröße liegt bei 1 MB.
+* **license.metric.logger.file.number**: Maximale Anzahl der SLMT-Archivdateien bei aktiver Rotation. Die Standardanzahl ist 10.
 
-To change the default values, you must create a Java property file, with the format **key=value**, and provide the path to the properties file through the **license_metric_logger_configuration** JVM property.
+Wenn Sie die Standardwerte
+ändern möchten, müssen Sie eine Java-Eigenschaftendatei im Format **Schlüssel=Wert** erstellen und mit der JVM-Eigenschaft **license_metric_logger_configuration** den Pfad zu den Eigenschaften angeben.
 
-For more information about IBM License Metric Tool reports, see [Integration with IBM License Metric Tool](../../../administering-apps/license-tracking/#integration-with-ibm-license-metric-tool).
+Weitere Informationen zu
+Berichten des IBM License Metric Tool
+finden Sie unter [Integration des
+IBM License Metric Tool](../../../administering-apps/license-tracking/#integration-with-ibm-license-metric-tool).
 
-## WebSphere Application Server SSL configuration and HTTP adapters
+## SSL-Konfiguration von WebSphere Application Server und HTTP-Adapter
 {: #websphere-application-server-ssl-configuration-and-http-adapters }
-By setting a property, you can let HTTP adapters benefit from WebSphere  SSL configuration.
+Sie können mit einer Einstellung dafür sorgen, dass HTTP-Adapter von der
+WebSphere-SSL-Konfiguration profitieren. 
 
-By default, HTTP adapters do not use WebSphere SSL by concatenating the Java Runtime Environment (JRE) truststore with the {{ site.data.keys.mf_server }} keystore, which is described in [Configuring the {{ site.data.keys.mf_server }} keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore). Also see [Configuring SSL between adapters and back-end servers by using self-signed certificates](../../../administering-apps/deployment/#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
+Standardmäßig machen HTTP-Adapter keinen Gebrauch von
+WebSphere-SSL mit der Verkettung des JRE-Truststores
+und des IBM MobileFirst-Platform-Server-Keystores (siehe Beschreibung unter
+[Keystore von {{ site.data.keys.mf_server }} konfigurieren](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore)).
+Lesen Sie auch die Informationen unter
+[SSL zwischen Adaptern und Back-End-Servern mit selbst signierten Zertifikaten konfigurieren](../../../administering-apps/deployment/#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
 
-To have HTTP adapters use the WebSphere SSL configuration, set the **ssl.websphere.config** JNDI property to true. The setting has the following effects in order of precedence:
+Wenn HTTP-Adapter in der Lage sein sollen, die
+WebSphere-SSL-Konfiguration zu nutzen, müssen Sie die JNDI-Eigenschaft
+**ssl.websphere.config** auf true setzen.
+Diese Einstellung hat die folgenden Auswirkungen in der hier genannten Reihenfolge: 
 
-1. Adapters running on WebSphere use the WebSphere keystore and not the {{ site.data.keys.mf_server }} keystore.
-2. If the **ssl.websphere.alias** property is set, the adapter uses the SSL configuration that is associated with the alias as set in this property.
+1. In WebSphere ausgeführte Adapter verwenden
+den WebSphere-Keystore und nicht den Keystore von
+{{ site.data.keys.mf_server }}. 
+2. Wenn die Eigenschaft **ssl.websphere.alias** gesetzt ist, verwendet der Adapter die
+SSL-Konfiguration, die dem mit dieser Eigenschaft angegebenen Alias zugeordnet ist. 

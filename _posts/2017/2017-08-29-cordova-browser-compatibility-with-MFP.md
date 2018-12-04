@@ -1,16 +1,16 @@
 ---
 title: MobileFirst Platform on cordova browser platform
-date: 2017-08-29
+date: 2017-09-07
 version:
 - 8.0
 tags:
 - MobileFirst_Foundation
 - cordova
 author:
-  name: Srutha K Kotta
+  name: Srutha Keerthi K
 ---
 
-The MobileFirst Platform now supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios.
+The MobileFirst Platform now supports the cordova browser platform along with the earlier supported platforms of cordova windows, cordova android, and cordova ios. If you are an on-premise 8.0 customer or <a href="https://console.bluemix.net/catalog/services/mobile-foundation">Mobile Foundation Service</a> customer, then read further to know more about using MFP with other cordova platforms <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/quick-start/cordova/">here</a>.
 
 The usage is very similar to using MobileFirst Platform (MFP) with any of the other platforms. A simple sample to test this new feature is below.
 
@@ -172,11 +172,13 @@ body {
 
 ```
 
+
 Add the browser platform using the following command:
 ```bash
 cordova platform add browser
 ```
-Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and above recognizes cordova browser applications as web platform applications. If you are using a lower version then you can either upgrade to the latest version or manually register your application.
+<!--
+ (Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and above recognizes cordova browser applications as web platform applications. If you are using a lower version then you can either upgrade to the latest version or manually register your application. -->
 
 > To manually register your application:
 >
@@ -186,7 +188,7 @@ Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and ab
 >
 >**Remember:** Add the server details to the `config.xml` of your application.
 
-If you are using **mfpdev-cli** (more about the `cli` commands can be found [here](https://www.ibm.com/support/knowledgecenter/en/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/dev/t_gs_cli.html)), add the MFP server using the following command:
+<!--If you are using **mfpdev-cli** (more about the `cli` commands can be found [here](https://www.ibm.com/support/knowledgecenter/en/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/dev/t_gs_cli.html)), add the MFP server using the following command:
 
 ```bash
 mfpdev server add
@@ -198,6 +200,10 @@ Register your application with the following command:
 ```bash
 mfpdev app register
 ```
+-->
+
+ 
+ >Note: mfpdev-cli to register browser platform app will be released soon.
 
 Then execute the following commands:
 
@@ -207,9 +213,11 @@ cordova build
 cordova run
 ```
 
-This will launch two browsers. One of the browser runs on cordova browser's proxy server (that runs on port `8000`, generally) which cannot connect to the MFP server due to the [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)). The other browser would be an MFP proxy server (this runs on port `9081`) that will serve MFP requests.
+<!--This will launch two browsers. One of the browser runs on cordova browser's proxy server (that runs on port `8000`, generally) which cannot connect to the MFP server due to the [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)). The other browser would be an MFP proxy server (this runs on port `9081`) that will serve MFP requests.
 
-If you click the button to ping MFP on the browser running on port `8000`, the ping will fail whereas clicking the button that runs on localhost port `9081` will be successful. All the cordova browser compatible cordova plugins and MFP features can be used without issues.
+If you click the button to ping MFP on the browser running on port `8000`, the ping will fail whereas clicking the button that runs on localhost port `9081` will be successful. All the cordova browser compatible cordova plugins and MFP features can be used without issues.-->
+
+This will launch a browser that runs on a proxy server (on port '9081') and connects to the MFP server. The cordova-browser's default proxy server(that runs on port '8000') has been suppressed as it cannot connect to the MFP server due to the [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy).
 
 > The default browser to run is set to **Chrome**. Use the `--target` option to run on different browsers and can be used using the following command:
 ```bash
@@ -231,6 +239,7 @@ You can deploy your browser application on bluemix as a nodejs instance.
 Steps to create this nodejs instance is as below:
 
 * Create a nodejs instance (from the Bluemix **Catalog**, Select **SDK for Node.js** from under **Cloud Foundry Apps**) in Bluemix and download the sample application.
+* For the sample starter app, you could also clone the repo : https://github.com/IBM-Bluemix/get-started-node.
 * Add the contents of the browser platform's `www` folder from your cordova project (i.e. `/rootFolderOfYourCordovaApp/platforms/browser/`) to the `public` folder. Ensure that the `index.js` and `index.css` are not within the `js` and `css` folders but are in the same folder level as the `index.html`.
 * Change the reference of the `index.js` in `index.html` to point to where the `css` and `js` files are now located in the project.
 * Next replace contents of the `app.js` with the contents of `proxy.js` (the `proxy.js` can be found in `<your cordova project's root folder>/plugins/cordova-plugin-mfp/src/browser/`) of your cordova project.
@@ -245,11 +254,24 @@ var path = require('path');
 var cfenv = require('cfenv');
 ```
 
+Replace 
+
+```javascript 
+app.use('/' + appName, express.static(__dirname + '/../../../../www'));
+```
+
+with below line
+
 Replace app.use('/' + appName, express.static(__dirname + '/../../../../www')); with below line
 
 ```javascript
 app.use(express.static(path.join(__dirname, './public')));
 ```
+Ensure to replace the value of the variable <b>mfpServer</b> in your app.js with your MFP server url (including port number), i.e. :
+
+```javascript
+var mfpServer = "https://<yourMFPServerURL>:<port>";
+``` 
 
 Add the below lines in the end of the file
 

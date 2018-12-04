@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Herramienta de línea de mandatos para cargar o suprimir una aplicación
-breadcrumb_title: Carga o supresión de una aplicación
+breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
@@ -44,21 +44,21 @@ Utilice la herramienta autónoma siguiendo estos pasos.
 
 Puede pasar cualquiera de las opciones disponibles de la línea de mandatos.
 
-| Opción | Contenido indicado por | Descripción |
+|Opción |Contenido indicado por |Descripción |
 |--------|----------------------|-------------|
-| -s | serverpath | La vía de acceso al servidor de Application Center. |
-| -c | context | El contexto de la aplicación web Application Center. |
-| -u | user | Las credenciales de usuario para acceder al Application Center. |
-| -p | password | La contraseña del usuario. |
-| -d | description | La descripción de la aplicación que se cargará. |
-| -l | label | La etiqueta de reserva. Normalmente, la etiqueta se toma del descriptor de aplicación almacenado en el archivo que se cargará. Si el descriptor de aplicación no contiene una etiqueta, se utilizará la etiqueta de reserva. |
-| -isActive | true o false | La aplicación se almacena en el Application Center como una aplicación activa o inactiva. |
-| -isInstaller | true o false | La aplicación se almacena en el Application Center con el distintivo “installer” establecido según convenga. |
-| -isReadyForProduction | true o false | La aplicación se almacena en el Application Center con el distintivo “ready-for-production” establecido según convenga. |
-| -isRecommended | true o false | La aplicación se almacena en el Application Center con el distintivo “recommended” establecido según convenga. |
-| -e	  |  | Muestra el rastreo de pila de excepciones completo cuando se produce un error. |
-| -f	  |  | Fuerza la carga de aplicaciones, aunque ya existan. |
-| -y	  |  | Inhabilita la comprobación de seguridad SSL, que permite publicar en hosts seguros sin la verificación del certificado SSL. |  El uso de este distintivo es un riesgo para la seguridad, pero puede ser adecuado para probar localhost con certificados SSL autofirmados temporales. |
+| -s | serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -d | description | The description of the application to be uploaded. |
+| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. |
+| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. |
+| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. |
+| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. |
+| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. |
+| -e	  |  | Shows the full exception stack trace on failure. |
+| -f	  |  | Force uploading of applications, even if they exist already. |
+| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 El parámetro files puede especificar archivos de tipo archivos de paquete de aplicaciones de Android (.apk) o archivos de aplicaciones iOS (.ipa).  
 En este ejemplo, la demo del usuario tiene la contraseña demopassword. Utilice esta línea de mandatos.
@@ -81,13 +81,13 @@ Utilice la herramienta autónoma siguiendo estos pasos.
 
 Puede pasar cualquiera de las opciones disponibles de la línea de mandatos.
 
-| Opción | Contenido indicado por	| Descripción |
+|Opción |Contenido indicado por	|Descripción |
 |--------|----------------------|-------------|
-| -s |serverpath | La vía de acceso al servidor de Application Center. |
-| -c | context | El contexto de la aplicación web Application Center. |
-| -u | user | Las credenciales de usuario para acceder al Application Center. |
-| -p | password | La contraseña del usuario. |
-| -y | | Inhabilita la comprobación de seguridad SSL, que permite publicar en hosts seguros sin la verificación del certificado SSL. El uso de este distintivo es un riesgo para la seguridad, pero puede ser adecuado para probar localhost con certificados SSL autofirmados temporales. |
+| -s |serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 Puede especificar archivos o el paquete de aplicaciones, el sistema operativo y la versión. Si se especifican los archivos, el paquete, el sistema operativo y la versión estarán determinados desde el archivo y la aplicación correspondiente se suprimirá del Application Center. Si se especifican aplicaciones, deben tener uno de los formatos siguientes:
 
@@ -120,13 +120,13 @@ Utilice la herramienta autónoma siguiendo estos pasos.
 
 Puede pasar cualquiera de las opciones disponibles de la línea de mandatos.
 
-| Opción | Contenido indicado por | Descripción |
+|Opción |Contenido indicado por	|Descripción |
 |--------|----------------------|-------------|
-| -s | serverpath | La vía de acceso al servidor de Application Center.|
-| -c | context | El contexto de la aplicación web Application Center.|
-| -u | user | Las credenciales de usuario para acceder al Application Center.|
-| -p | password | La contraseña del usuario.|
-| -y | | Inhabilita la comprobación de seguridad SSL, que permite publicar en hosts seguros sin la verificación del certificado SSL. El uso de este distintivo es un riesgo para la seguridad, pero puede ser adecuado para probar localhost con certificados SSL autofirmados temporales.|
+| -s | serverpath | The path to the Application Center server.|
+| -c | context | The context of the Application Center web application.|
+| -u | user | The user credentials to access the Application Center.|
+| -p | password | The password of the user.|
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.|
 
 #### Ejemplo
 {: #example-cache }
@@ -150,18 +150,18 @@ Estos scripts están listos para ejecutarse, lo que significa que no necesitan v
 
 Cuando utilice la herramienta de carga como una tarea Ant, el valor classname de la tarea Ant de carga será **com.ibm.appcenter.ant.UploadApps**. El valor classname de la tarea Ant de supresión será **com.ibm.appcenter.ant.DeleteApps**.
 
-| Parámetros de la tarea Ant | Descripción |
+|Parámetros de la tarea Ant |Descripción |
 |------------------------|-------------|
-| serverPath | Para conectar al Application Center. El valor predeterminado es http://localhost:9080. |
-| context | El contexto del Application Center. El valor predeterminado es /applicationcenter. |
-| loginUser | El nombre de usuario que tiene los permisos pertinentes para poder subir una aplicación. |
-| loginPass | La contraseña del usuario que tiene los permisos pertinentes para poder subir una aplicación. |
-| forceOverwrite | Si este parámetro se establece en true, la tarea Ant intentará sobrescribir aplicaciones en el Application Center cuando cargue una aplicación que ya se encuentre. Este parámetro sólo está disponible en la tarea Ant de carga.
-| file | El archivo .apk o .ipa que se cargará en el Application Center o que se suprimirá del Application Center. Este parámetro no tiene ningún valor predeterminado. |
-| fileset | Para cargar o suprimir varios archivos. |
-| application | El nombre de paquete de la aplicación. Este parámetro sólo está disponible en la tarea Ant de supresión. |
-| os | El sistema operativo de la aplicación. (Por ejemplo, Android o iOS). Este parámetro sólo está disponible en la tarea Ant de supresión. |
-| version | La versión interna de la aplicación. Este parámetro sólo está disponible en la tarea Ant de supresión. No utilice la versión comercial aquí, porque no es apropiada para identificar la versión exactamente. |
+|serverPath |Para conectar al Application Center. El valor predeterminado es http://localhost:9080. |
+|context |El contexto del Application Center. El valor predeterminado es /applicationcenter. |
+|loginUser |El nombre de usuario que tiene los permisos pertinentes para poder subir una aplicación. |
+|loginPass |La contraseña del usuario que tiene los permisos pertinentes para poder subir una aplicación. |
+|forceOverwrite |Si este parámetro se establece en true, la tarea Ant intentará sobrescribir aplicaciones en el Application Center cuando cargue una aplicación que ya se encuentre. Este parámetro sólo está disponible en la tarea Ant de carga.
+|file |El archivo .apk o .ipa que se cargará en el Application Center o que se suprimirá del Application Center. Este parámetro no tiene ningún valor predeterminado. |
+|fileset |Para cargar o suprimir varios archivos. |
+|application |El nombre de paquete de la aplicación. Este parámetro sólo está disponible en la tarea Ant de supresión. |
+|os |El sistema operativo de la aplicación. (Por ejemplo, Android o iOS). Este parámetro sólo está disponible en la tarea Ant de supresión. |
+|version |La versión interna de la aplicación. Este parámetro sólo está disponible en la tarea Ant de supresión. No utilice la versión comercial aquí, porque no es apropiada para identificar la versión exactamente. |
 
 #### Ejemplo
 {: #example-ant }
@@ -231,16 +231,16 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 
 #### Propiedades del script Ant de ejemplo
 {: #properties-of-the-sample-ant-script }
-| Propiedad | Comentario |
+|Propiedad |Comentario |
 |----------|---------|
-| install.dir | Tiene como valor predeterminado ../../ |
-| server.path | El valor predeterminado es http://localhost:9080. |
-| context.path | El valor predeterminado es applicationcenter. |
-| upload.file | Esta propiedad no tiene ningún valor predeterminado. Debe incluir la vía de acceso de archivos exacta. |
-| workspace.root | Tiene como valor predeterminado ../../ |
-| login.user | El valor predeterminado es appcenteradmin. |
-| login.pass | El valor predeterminado es admin. |
-| force	El valor predeterminado es true. |
+|install.dir |Tiene como valor predeterminado ../../ |
+|server.path |El valor predeterminado es http://localhost:9080. |
+|context.path |El valor predeterminado es applicationcenter. |
+|upload.file |Esta propiedad no tiene ningún valor predeterminado. Debe incluir la vía de acceso de archivos exacta. |
+|workspace.root |Tiene como valor predeterminado ../../ |
+|login.user |El valor predeterminado es appcenteradmin. |
+|login.pass |El valor predeterminado es admin. |
+|force	El valor predeterminado es true. |
 
 Para especificar estos parámetros por línea de mandatos al invocar Ant, añada -D antes del nombre de propiedad. Por ejemplo:
 

@@ -1,8 +1,10 @@
 ---
-layout: tutorial
-title: REST API for the MobileFirst Server administration service
-breadcrumb_title: Administration service
-weight: 2
+layout: redirect
+#title: REST API for the MobileFirst Server administration service
+#breadcrumb_title: Administration service
+#weight: 2
+#published: false
+new_url: /tutorials/en/foundation/8.0/api/rest/admin-apis/
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

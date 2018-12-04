@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 管理警报
-breadcrumb_title: 警报
+breadcrumb_title: Alerts
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
@@ -12,9 +12,9 @@ weight: 1
 警报提供一种主动方式来监控移动应用程序的运行状况，无需定期检查 {{ site.data.keys.mf_analytics_console_full }}。  
 您可以在 {{ site.data.keys.mf_analytics_console }} 中设置响应式阈值，以在满足特定条件时触发警报。
 
-您可以在广泛级别（特定应用程序）或在详细级别（特定应用程序实例或设备）设置阈值。警报通知可配置为显示在 {{ site.data.keys.mf_analytics_console_short }} 中，并且也可以发送至预配置的 REST 端点或定制 webhook。
+您可以在广泛级别（特定应用程序）或在详细级别（特定应用程序实例或设备）设置阈值。 警报通知可配置为显示在 {{ site.data.keys.mf_analytics_console_short }} 中，并且也可以发送至预配置的 REST 端点或定制 webhook。
 
-在触发警报后，**警报**图标（位于 {{ site.data.keys.mf_analytics_console_short }} 的标题栏中）将用红色显示警报计数 (<img  alt="警报图标" style="margin:0;display:inline" src="alertIcon.png"/>)。单击**警报**图标以查看警报。
+在触发警报后，**警报**图标（位于 {{ site.data.keys.mf_analytics_console_short }} 的标题栏中）将用红色显示警报计数 (<img  alt="警报图标" style="margin:0;display:inline" src="alertIcon.png"/>)。 单击**警报**图标以查看警报。
 
 提供了用户分发警报的备选方法。
 
@@ -28,13 +28,12 @@ weight: 1
 
 在 {{ site.data.keys.mf_analytics_console }} 中：
 
-1. 选择**仪表板→警报管理**选项卡。单击**创建警报**按钮。
-
+1. 选择**仪表板→警报管理**选项卡。 单击**创建警报**按钮。
 
    ![警报管理选项卡](alert_management_tab.png)
 
-2. 提供下列值：警报名称、消息、查询频率和事件类型。根据事件类型，使用相应的值填充显示的其他文本框。
-3. 在输入所有值之后，单击**下一步**。将显示**分发方法**选项卡。
+2. 提供下列值：警报名称、消息、查询频率和事件类型。 根据事件类型，使用相应的值填充显示的其他文本框。
+3. 在输入所有值之后，单击**下一步**。 将显示**分发方法**选项卡。
 
 ### “分发方法”选项卡
 {: #distribution-method-tab }
@@ -45,7 +44,6 @@ weight: 1
 
 如果选择此选项，那么以下字段可用：
 
-
 * 网络发布 URL（*必需*）
 * 标题（*可选*）
 * 认证类型（*必需*）
@@ -55,7 +53,7 @@ weight: 1
 ## 定制 web hook
 {: #custom-web-hook }
 
-您可以设置用于警报的定制分发方法。例如：定义触发警报阈值后将有效内容发送至的 web hook。
+您可以设置用于警报的定制分发方法。 例如：定义触发警报阈值后将有效内容发送至的 web hook。
 
 示例有效内容：
 
@@ -96,6 +94,6 @@ POST 请求包含以下属性：
 
 ![新警报日志](alert-log.png)
 
-单击 **+** 图标以获取任何可用的入局警报。该操作会显示**警报定义**和**警报实例**部分。下图显示了“警报定义”和“警报实例”部分：
+单击 **+** 图标以获取任何可用的入局警报。 该操作会显示**警报定义**和**警报实例**部分。 下图显示了“警报定义”和“警报实例”部分：
 
 ![警报定义和实例](alert-definitions-and-instances.png)

@@ -9,7 +9,7 @@ version:
 author:
   name: Idan Adar
 ---
-With the release of MobileFirst Foundation 8.0 ([in beta form]({{site.baseurl}}/blog/2016/03/31/ibm-mobilefirst-platform-foundation-8-0-beta-is-available/), and now generally available), we also introduced some radical changes:
+With the release of MobileFirst Foundation 8.0 ([in beta form]({{site.baseurl}}/blog/2016/03/31/ibm-mobilefirst-platform-foundation-8-0-beta-is-available/), and now generally available) on-premise 8.0 or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation), we also introduced some radical changes:
 
 * Gone are MobileFirst projects you would create in MobileFirst Studio
 * Gone are Hybrid apps you would create in those MobileFirst projects

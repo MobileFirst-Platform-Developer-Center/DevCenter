@@ -28,7 +28,7 @@ Folgende Plug-ins sind verfügbar:
 Von den MobileFirst-Plug-ins werden folgende Cordova-Plattformversionen unterstützt: 
 
 * cordova-ios: **>= 4.1.1 und < 5.0**
-* cordova-android: **>= 6.1.2 und < 7.0**
+* cordova-android: **>= 6.1.2 and <= 7.0**
 * cordova-windows: **>= 4.3.2 und < 6.0**
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
@@ -37,9 +37,12 @@ Von den MobileFirst-Plug-ins werden folgende Cordova-Plattformversionen unterst�
 - [{{ site.data.keys.product_adj }}-Cordova-SDK hinzufügen](#adding-the-mobilefirst-cordova-sdk)
 - [{{ site.data.keys.product_adj }}-Cordova-SDK aktualisieren](#updating-the-mobilefirst-cordova-sdk)
 - [Generierte Artefakte des {{ site.data.keys.product_adj }}-Cordova-SDK](#generated-mobilefirst-cordova-sdk-artifacts)
+- [Unterstützung der Cordova-Browserplattform](#cordova-browser-platform)
 - [Nächste Lernprogramme](#tutorials-to-follow-next)
 
 > **Hinweis:** Die Funktion **Keychain Sharing** ist obligatorisch, wenn Sie Xcode 8 verwenden und iOS-Apps im iOS-Simulator ausführen. Sie müssen diese Funktion manuell aktivieren, bevor Sie das Xcode-Projekt erstellen.
+
+
 
 ## Cordova-SDK-Komponenten
 {: #cordova-sdk-components }
@@ -80,9 +83,11 @@ iOS-Plattform bereit. Weitere Informationen finden Sie unter [OpenSSL für Cordo
 
 **Voraussetzungen:**
 
-- [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) und die {{ site.data.keys.mf_cli }} sind auf der Entwicklerworkstation installiert. 
+- [Apache Cordova CLI (>=6.x und <9.0)](https://www.npmjs.com/package/cordova) und {{ site.data.keys.mf_cli }} sind auf der Entwicklerworkstation installiert.
 - Eine lokale oder ferne Instanz von {{ site.data.keys.mf_server }} ist aktiv. 
 - Sie haben die Lernprogramme [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/development/mobilefirst) und [Cordova-Entwicklungsumgebung einrichten](../../../installation-configuration/development/cordova) durchgearbeitet. 
+- Für Cordova für Windows muss eine Version von Visual C++ installiert sein, die mit den auf der Maschine installierten Versionen von Visual Studio und .NET kompatibel ist. 
+- Im Falle von Windows Phone SDK 8.0 und Visual-Studio-Tools für universelle Windows-Apps müssen Sie sicherstellen, dass erstellte Cordova-Windows-Anwendungen über alle erforderlichen unterstützenden Bibliotheken verfügen. 
 
 ## {{ site.data.keys.product }}-Cordova-SDK hinzufügen
 {: #adding-the-mobilefirst-cordova-sdk }
@@ -97,6 +102,8 @@ navigieren Sie in einem **Befehlszeilenfenster** zum Serverordner und führen Si
 
 > **Hinweis:** Wenn Sie das SDK zu einer vorhandenen Cordova-Anwendung hinzufügen, überschreibt das Plug-in die Datei
 `MainActivity.java` für Android und die Datei `Main.m` für iOS.
+
+
 
 ### SDK hinzufügen
 {: #adding-the-sdk }
@@ -131,7 +138,9 @@ Beispiel:
 
    > **Hinweis:** Da die Anwendung mit der {{ site.data.keys.product_adj }}-Schablone konfiguriert wurde, wird das zentrale {{ site.data.keys.product_adj }}-Cordova-Plug-in in Schritt 3 automatisch hinzugefügt, wenn die Plattform hinzugefügt wird.
 
-4. Erstellen Sie die Anwendungsressourcen mit dem Befehl `cordova prepare command`:
+
+
+4. Erstellen Sie die Anwendungsressourcen mit dem Befehl `cordova prepare`:
 
    ```bash
    cordova prepare
@@ -168,8 +177,7 @@ Mit dieser Funktion können Sie die verschiedenen {{ site.data.keys.product_adj 
    ```bash
    mfpdev app register
    ```
-    - Wenn ein ferner Server verwendet wird,
-fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu. 
+    - Wenn ein ferner Server verwendet wird, fügen Sie ihn mit dem [Befehl `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) hinzu.
 
 Der CLI-Befehl `mfpdev app register` stellt zunächst eine Verbindung
 zu {{ site.data.keys.mf_server }} her, um die Anwendung zu registrieren. Anschließend wird die Datei
@@ -238,7 +246,7 @@ die über den Namespace `mfp:` identifiziert werden können. Die hinzugefügten 
 </widget>
 ```
 
-<div class="panel-group accordion" id="config-xml" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="config-xml" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">
@@ -350,6 +358,237 @@ Sie können die {{ site.data.keys.mf_cli }} verwenden, um mit folgendem Befehl d
 ```bash
 mfpdev app config
 ```
+## Unterstützung der Cordova-Browserplattform
+{: #cordova-browser-platform}
+
+Die MobileFirst Platform bietet jetzt unterstützung für die Cordova-Browserplattform sowie für andere unterstützte Plattformen von Cordova für Windows, Cordova für Android und Cordova für iOS.
+
+Die Verwendung der Cordova-Browserplattform zusammen mit der MobileFirst Platform (MFP) ist mit der gemeinsamen Verwendung der MFP und anderer Plattformen vergleichbar. Es folgt ein Beispiel, das dieses Feature veranschaulicht. 
+
+Erstellen Sie mit folgendem Befehl eine Cordova-Anwendung:
+```bash
+cordova create <Name_Ihres_App-Ordners> <Paketname>
+```
+Dieser Befehl erstellt eine Vanilla-Cordova-App.
+
+Fügen Sie mit folgendem Befehl das MFP-Plug-in hinzu:
+```bash
+   cordova plugin add cordova-plugin-mfp
+   ```
+Fügen Sie eine Schaltfläche hinzu, über die Sie ein Pingsignal an Ihren MFP Server absetzen können. (Der Server kann ein lokal bereitgestellter Server oder ein Server in IBM Cloud sein.) Klicken Sie auf die Schaltfläche, um das Pingsignal an Ihren MFP Server zu senden.
+Sie können den folgenden Beispielcode nutzen:
+
+#### index.html
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+
+  <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+  <!-- Script mit definiertem wlCommonInit laden, bevor cordova.js geladen wird -->
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript" src="cordova.js"></script>
+
+  <title>MFP Starter - Cordova</title>
+</head>
+
+<body>
+
+  <div id="main">
+    <div id="main_title">Hello MobileFirst</div>
+    <div id="main_status"></div>
+    <div id="main_info"></div>
+  </div>
+
+  <div id="button_content">
+    <button id="ping_button" style="display:none">Pingsignal an MobileFirst Server</button>
+  </div>
+
+</body>
+
+</html>
+```
+
+#### index.js
+
+```javascript
+
+   var Messages = {
+        // Hier Ihre Nachrichten für die Standardsprache hinzufügen.
+  // Ähnliche Datei mit einem Sprachsuffix erstellen, die die übersetzten Nachrichten enthält.
+  // key1 : message1,
+};
+
+   var wlInitOptions = {
+      // Optionen für eine Initialisierung mit dem WL.Client-Objekt.
+  // Initialisierungsoptionen enthält das IBM MobileFirst Platform Foundation Knowledge Center.
+   mfpContextRoot : '/mfp', // "mfp" ist as Standardkontextstammverzeichnis für den MobileFirst-Entwicklungsserver
+    applicationId : 'io.cordova.hellocordova' // durch eigene App-ID bzw. eigenen Paketnamen ersetzen
+};
+
+function wlCommonInit() {
+  app.init();
+}
+
+var app = {
+  // App initialisieren
+  "init": function init() {
+    var buttonElement = document.getElementById("ping_button");
+    buttonElement.style.display = "block";
+    buttonElement.addEventListener('click', app.testServerConnection, false);
+  },
+  // Serververbindung testen
+  "testServerConnection": function testServerConnection() {
+
+    var titleText = document.getElementById("main_title");
+    var statusText = document.getElementById("main_status");
+    var infoText = document.getElementById("main_info");
+    titleText.innerHTML = "Hello MobileFirst";
+    statusText.innerHTML = "Connecting to Server...";
+    infoText.innerHTML = "";
+
+    WLAuthorizationManager.obtainAccessToken()
+      .then(
+        function (accessToken) {
+          titleText.innerHTML = "Yay!";
+          statusText.innerHTML = "Connected to MobileFirst Server";
+        },
+        function (error) {
+          titleText.innerHTML = "Bummer...";
+          statusText.innerHTML = "Failed to connect to MobileFirst Server";
+        }
+        );
+    },
+ }
+
+```
+
+>**Hinweis:** Es ist wichtig, `mfpContextRoot` und `applicationId` in der Funktion **wlInitOptions** Ihrer Datei index.js anzugeben.
+
+#### index.css
+
+```css
+body {
+    position: static;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    margin: 0px;
+	padding: 0px;
+}
+
+#button_content {
+  position: absolute;
+  bottom: 10%;
+  width: 100%;
+}
+
+#ping_button {
+  display: block;
+  margin: 0 auto;
+  height: 50px;
+  width: 240px;
+  font-size: 20px;
+  color: white;
+  background-color: #325c80;
+}
+
+#main {
+  top: 10%;
+  position: absolute;
+  text-align: center;
+  width: 100%
+}
+
+#main_title {
+  font-size: 40px;
+}
+
+#main_status {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#main_info {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+```
+
+
+Fügen Sie mit folgendem Befehl die Browserplattform hinzu:
+```bash
+cordova platform add browser
+```
+<!--
+ (Register the app to the MFP server. The **mfpdev-cli** from version -.-.- and above recognizes cordova browser applications as web platform applications. If you are using a lower version then you can either upgrade to the latest version or manually register your application. -->
+
+> Gehen Sie wie folgt vor, um Ihre Anwendung zu registrieren:
+>
+* Melden Sie sich bei der Konsole Ihres MFP Server an.
+* Klicken Sie neben der Option _*Anwendungen*_ auf die Schaltfläche **Neu**.
+* Benennen Sie Ihre Anwendung, wählen Sie **Web** als Plattform aus und geben Sie die ID Ihrer Anwendung an (die mit der Funktion **wlInitOptions** in Ihrer Datei `index.js` definiert wurde).
+>
+>**Vergessen Sie nicht**, die Serverdetails zur Datei `config.xml` Ihrer Anwendung hinzuzufügen. 
+
+<!--If you are using **mfpdev-cli** (more about the `cli` commands can be found [here](https://www.ibm.com/support/knowledgecenter/en/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/dev/t_gs_cli.html)), add the MFP server using the following command:
+
+```bash
+mfpdev server add
+```
+Set it as the default server.
+
+Register your application with the following command:
+
+```bash
+mfpdev app register
+```
+-->
+
+
+ >**Hinweis**: Für die Registrierung der Browserplattform-App wird bald die *mfpdev-cli* freigegeben.
+
+Führen Sie anschließend die folgenden Befehle aus:
+
+```bash
+cordova prepare
+cordova build
+cordova run
+```
+
+<!--This will launch two browsers. One of the browser runs on cordova browser's proxy server (that runs on port `8000`, generally) which cannot connect to the MFP server due to the [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)). The other browser would be an MFP proxy server (this runs on port `9081`) that will serve MFP requests.
+
+If you click the button to ping MFP on the browser running on port `8000`, the ping will fail whereas clicking the button that runs on localhost port `9081` will be successful. All the cordova browser compatible cordova plugins and MFP features can be used without issues.-->
+
+Damit wird ein Browser gestartet, der auf einem Proxy-Server (am Port `9081`) ausgeführt wird und eine Verbindung zu MFP Server herstellt. Der Standard-Proxy-Server des Cordova-Browsers (der am Port `8000` ausgeführt wird) ist unterdrückt, weil er aufgrund der [Same-Origin-Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) keine Verbindung zu MFP Server herstellen kann.
+
+> Als Standardbrowser für die Ausführung ist **Chrome** festgelegt. Verwenden Sie die Option `--target`, wenn Sie andere Browser verwenden möchten. Sehen Sie sich dazu den folgenden Befehl an:
+```bash
+ cordova run --target=Firefox
+ ```
+
+Eine Vorschau der App kann mit folgendem Befehl angezeigt werden:
+
+```bash
+    mfpdev app preview
+    ```
+
+Die einzige unterstützte Browseroption ist *Simple Browser Rendering*. Die Option *Mobile Browser Support* wird nicht für die Browserplattform unterstützt. 
+
+### Cordova-Browserressourcen mit WebSphere Liberty bereitstellen
+{: #using-liberty-cordova-browser}
+
+Folgen Sie den Anweisungen für die Verwendung von WebSphere Liberty in <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/">diesem</a> Lernprogramm und nehmen Sie die nachstehenden Änderungen vor.
+
+Fügen Sie den Inhalt des Ordners `www` Ihres Browserprojekts zu `[MyWebApp] → src → Main → webapp` hinzu, wie es in Schritt 1 des Lernprogrammabschnitts **Maven-Webanwendung mit den Webanwendungsressourcen erstellen** beschrieben ist. Registrieren Sie abschließend Ihre App bei Ihrem Liberty-Server und testen Sie sie, indem Sie sie mit `localhost:9080/MyWebApp` im Browser ausführen. Fügen Sie außerdem die Ordner `sjcl` und `jssha` zum übergeordneten Ordner hinzu und ändern Sie die Verweise auf die Ordner entsprechend in der Datei `ibmmfpf.js`. 
 
 ## Nächste Lernprogramme
 {: #tutorials-to-follow-next }

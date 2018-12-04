@@ -114,8 +114,7 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
 
 1. Selecione a opção **Ações → Download de Amostra**. Faça o download da amostra do adaptador **Java** "Hello World".
 
-   > Se o Maven e o {{ site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de
-desenvolvimento** na tela.
+   > Se o Maven e o {{ site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de desenvolvimento** na tela.
 
 2. Em uma janela de **Linha de Comandos**, navegue para a pasta raiz do projeto Maven do adaptador e execute o comando:
 
@@ -131,13 +130,12 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 <!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
 ### 5. Testando o aplicativo
 {: #5-testing-the-application }
-1. No Xamarin Studio, selecione o arquivo **mfpclient.plist** e edite as propriedades **protocol**,
-**host** e **port** com os valores corretos para o {{ site.data.keys.mf_server }}.
+1. No Xamarin Studio, selecione o arquivo `mfpclient.properties` e edite as propriedades **protocol**, **host** e **port** com os valores corretos para seu {{ site.data.keys.mf_server }}.
     * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**,
 **localhost** e **9080**.
-    * Se estiver usando um {{ site.data.keys.mf_server }} remoto (no Bluemix), os valores normalmente serão
-**https**, **your-server-address** e **443**.
-
+    * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.
+    * Se você estiver usando um cluster do Kubernetes no IBM Cloud Private, e se a implementação for do tipo **NodePort**, normalmente o valor da porta será **NodePort**, exposto pelo serviço no cluster do Kubernetes.
+    
 2. Pressione o botão **Reproduzir**.
 
 <br clear="all"/>
@@ -150,7 +148,7 @@ adaptador Java implementado acontecerá.
 
 A resposta do adaptador é então impressa no Xamarin Studio Console.
 
-![Imagem do aplicativo que chamou um recurso do {{ site.data.keys.mf_server }}](console-output.png) com sucesso
+![Imagem de um aplicativo que chamou com sucesso um recurso do {{ site.data.keys.mf_server }}](console-output.png)
 
 ## Etapas Seguintes
 {: #next-steps }

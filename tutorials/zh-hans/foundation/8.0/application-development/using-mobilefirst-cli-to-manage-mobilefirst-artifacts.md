@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 使用 MobileFirst CLI 管理 MobileFirst 工件
-breadcrumb_title: 使用 MobileFirst CLI
+breadcrumb_title: Using the MobileFirst CLI
 weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---
@@ -12,7 +12,7 @@ relevantTo: [ios,android,windows,javascript]
 
 您还可以向本地或远程 {{ site.data.keys.mf_server }} 实例创建、注册和管理适配器，以及从命令行或通过 REST 服务或者从 {{ site.data.keys.mf_console }} 管理项目。
 
-**mfpdev** 命令有两个方式：交互方式和直接方式。在交互方式下，输入不带选项的命令，并且将提示您响应。在直接方式下，输入包含选项的完整命令，并且不提供提示。如果适用，提示对于应用程序的目标平台而言是上下文相关的，由从中运行命令的目录确定。使用键盘的向上和向下方向键来进行选择，当您想要的选择项已突出显示并且前面有“>”字符时，按 Enter 键。
+**mfpdev** 命令有两个方式：交互方式和直接方式。 在交互方式下，输入不带选项的命令，并且将提示您响应。 在直接方式下，输入包含选项的完整命令，并且不提供提示。 如果适用，提示对于应用程序的目标平台而言是上下文相关的，由从中运行命令的目录确定。 使用键盘的向上和向下方向键来进行选择，当您想要的选择项已突出显示并且前面有“>”字符时，按 Enter 键。
 
 在此教程中，您将了解如何安装 `mfpdev` 命令行界面 (CLI)，以及如何使用它来管理 {{ site.data.keys.mf_server }} 实例、应用程序和适配器。
 
@@ -34,17 +34,17 @@ relevantTo: [ios,android,windows,javascript]
 {: #prerequisites }
 {{ site.data.keys.mf_cli }} 在 [NPM 注册表](https://www.npmjs.com/)中可用作 NPM 软件包。  
 
-确保 **node.js** 安装在开发环境中，以便安装 NPM 软件包。  
+确保 **node.js** 和 **npm** 安装在开发环境中，以便安装 NPM 软件包。  
 遵循 [nodejs.org](https://nodejs.org) 中的安装指示信息来安装 node.js。
 
 要确认 node.js 安装正确，请运行命令 `node -v`。
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **注：**node.js 最低受支持版本为 4.2.3
+> **注：****node.js** 的最低受支持版本为 **4.2.3**。 另外，**node** 和 **npm** 包发展很快，MobileFirst CLI 可能无法在所有版本的 **node** 和 **npm**（包括最新版本）上都能完全发挥作用。 要使 CLI 能够正常运行，请确保 **node** 的版本为 **6.11.1**，**npm** 的版本为 **3.10.10**。
 
 ## 安装 {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
@@ -92,10 +92,10 @@ DESCRIPTION
 | 命令前缀                                                | 命令操作                               | 描述                                                             |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
 | `mfpdev app`	                                                | register                                     | 向 {{ site.data.keys.mf_server }} 注册您的应用程序。                           |
-|                                                               | config                                       | 使您能够指定要用于应用程序的后端服务器和运行时。此外，对于 Cordova 应用程序，使您能够进行多个其他方面的配置，如系统消息的缺省语言以及是否执行校验和安全性检查。针对 Cordova 应用程序，包含其他配置参数。                                                                                                                                                |
+|                                                               | config                                       | 使您能够指定要用于应用程序的后端服务器和运行时。此外，对于 Cordova 应用程序，使您能够进行多个其他方面的配置，如系统消息的缺省语言以及是否执行校验和安全性检查。 针对 Cordova 应用程序，包含其他配置参数。                                                                                                                                                |
 |                                                               | pull                                         | 从服务器检索现有的应用程序配置。                |
 |                                                               | push                                         | 将应用程序的配置发送到服务器。                             |
-|                                                               | preview                                      | 使您能够预览 Cordova 应用程序，而无需目标平台类型的实际设备。您可以在 {{ site.data.keys.mf_mbs }} 或 Web 浏览器中查看预览。                                                                               |
+|                                                               | preview                                      | 使您能够预览 Cordova 应用程序，而无需目标平台类型的实际设备。 您可以在 {{ site.data.keys.mf_mbs }} 或 Web 浏览器中查看预览。                                                                               |
 |                                                               | webupdate                                    | 将包含在 www 目录内的应用程序资源打包在可用于直接更新过程的 .zip 文件中。                                                                                                                                     |
 | mfpdev server	                                                | info                                         | 显示有关 {{ site.data.keys.mf_server }} 的信息。                      |
 |                                                               | add                                          | 将新的服务器定义添加到您的环境中                        |
@@ -112,16 +112,16 @@ DESCRIPTION
 |                                                               | pull                                         | 从服务器检索现有的适配器配置。                |
 |                                                               | push                                         | 将适配器的配置发送到服务器。                             |
 | mfpdev                                                        | config                                       | 针对 mfpdev 命令行界面，设置预览浏览器类型、预览超时值以及服务器超时值的配置首选项。                                                                                                                   |
-|                                                               | info                                         | 显示有关您环境的信息，包括操作系统、内存使用量、节点版本和命令行界面版本。如果当前目录是 Cordova 应用程序，还将显示 Cordova cordova info 命令提供的信息。 |
+|                                                               | info                                         | 显示有关您环境的信息，包括操作系统、内存使用量、节点版本和命令行界面版本。 如果当前目录是 Cordova 应用程序，还将显示 Cordova cordova info 命令提供的信息。 |
 |                                                               | -v                                           | 显示当前使用的 {{ site.data.keys.mf_cli }} 的版本号。 |
 |                                                               | -d，--debug                                  | 调试方式：生成调试输出。                                      |
 |                                                               | -dd，--ddebug                                | 详细的调试方式：生成详细的调试输出。                      |
 |                                                               | -no-color                                    | 禁止在命令输出中使用颜色。                              |
-| mfpdev help                                                   | 命令的名称                              | 显示 {{ site.data.keys.mf_cli }} (mfpdev) 命令的帮助。通过参数，显示每个命令类型或命令的更具体的帮助文本。例如“mfpdev help server add” |
+| mfpdev help                                                   | 命令的名称                              | 显示 {{ site.data.keys.mf_cli }} (mfpdev) 命令的帮助。 通过参数，显示每个命令类型或命令的更具体的帮助文本。 例如“mfpdev help server add” |
 
 ## 交互方式和直接方式
 {: #interactive-and-direct-modes }
-可以在**交互**或**直接方式**下执行所有命令。在交互方式下，将提示命令所需要的参数，并且将使用一些缺省值。在直接方式下，必须随要执行的命令一起提供参数。
+可以在**交互**或**直接方式**下执行所有命令。 在交互方式下，将提示命令所需要的参数，并且将使用一些缺省值。 在直接方式下，必须随要执行的命令一起提供参数。
 
 示例：
 
@@ -145,12 +145,12 @@ Server profile 'mydevserver' added successfully.
 mfpdev server add mydevserver --url http://mydevserver.example.com:9080 --login admin --password admin --setdefault
 ```
 
-要查找直接方式下命令的合适语法，请使用 `mfpdev help <command>`。
+要查找直接方式下命令的正确语法，请使用 `mfpdev help <command>`。
 
 
 ## 管理 {{ site.data.keys.mf_server }} 实例
 {: #managing-mobilefirst-server-instances }
-您可以使用 `mfpdev server <option>` 命令管理使用中的 {{ site.data.keys.mf_server }} 的实例。必须始终至少有一个服务器实例列示为缺省实例。如果未指定另一个服务器，那么将始终使用缺省服务器。
+您可以使用 `mfpdev server <option>` 命令管理使用中的 {{ site.data.keys.mf_server }} 的实例。 必须始终至少有一个服务器实例列示为缺省实例。   如果未指定另一个服务器，那么将始终使用缺省服务器。
 
 ### 列示服务器实例
 {: #list-server-instances }
@@ -171,7 +171,7 @@ mfpdev server add
 ```
 
 遵循交互式提示，提供服务器的名称、服务器 URL 以及用户/密码凭证。  
-例如，要添加正在 Mobile Foundation Bluemix 服务上运行的 {{ site.data.keys.mf_server }}，可执行以下操作：
+例如，要添加正在 Mobile Foundation IBM Cloud 服务上运行的 {{ site.data.keys.mf_server }}，可执行以下操作：
 
 ```bash
 $ mfpdev server add
@@ -185,7 +185,7 @@ $ mfpdev server add
 ? Make this server the default?: Yes
 Verifying server configuration...
 The following runtimes are currently installed on this server: mfp
-Server profile 'MyBluemixServer' added successfully. 
+Server profile 'MyBluemixServer' added successfully.
 ```
 
 - 将“fully qualified URL of this server”替换为您自己服务器的标准 URL。
@@ -269,7 +269,7 @@ mfpdev app register
 mfpdev app register <server> <runtime>
 ```
 
-对于 Cordova Windows 平台，必须将 `-w <platform>` 参数添加到命令。`<platform>` 参数是要注册的 Windows 平台的逗号分隔列表。有效值为 `windows`、`windows8` 和 `windowsphone8`。
+对于 Cordova Windows 平台，必须在命令中添加 `-w <platform>` 自变量。  `<platform>` 自变量是要注册的 Windows 平台的逗号分隔列表。 有效值为 `windows`、`windows8` 和 `windowsphone8`。
 
 ```
 mfpdev app register -w windows8
@@ -291,16 +291,17 @@ mfpdev app config
 
 * 将向其注册应用程序的服务器地址和运行时
 
-    > **示例用例：**要向具有特定地址的 {{ site.data.keys.mf_server }} 注册应用程序，但还让应用程序连接到不同的服务器地址，例如 DataPower 设备：
+    > **示例用例：**要向具有特定地址的 {{ site.data.keys.mf_server }} 注册应用程序，并还想让应用程序连接到其他服务器地址（例如 DataPower 设备）：
     >
     > 1. 运行 `mfpdev app register` 以在期望的 {{ site.data.keys.mf_server }} 地址中注册应用程序。
-    > 2. 运行 `mfpdev app config` 并更改 **server** 属性值以与 DataPower 设备的地址匹配。您还可以在**直接方式**下运行此命令：`mfpdev app config server http(s)://server-ip-or-host:port`。
-* 为“直接更新”真实性功能设置公用密钥 
+    > 2. 运行 `mfpdev app config` 并更改 **server** 属性值以与 DataPower 设备的地址匹配。 您还可以在**直接方式**下运行此命令：`mfpdev app config server http(s)://server-ip-or-host:port`。
+
+* 为“直接更新”真实性功能设置公用密钥
 * 设置应用程序缺省语言（缺省值为英语 (en)）
 * 是否启用 Web 资源校验和测试
 * 要在 Web 资源校验和测试期间忽略哪些文件扩展名
 
-<div class="panel-group accordion" id="app-config" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="app-config" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="app-config-options">
             <h4 class="panel-title">
@@ -310,8 +311,8 @@ mfpdev app config
 
         <div id="collapse-app-config-options" class="panel-collapse collapse" role="tabpanel" aria-labelledby="app-config-options">
             <div class="panel-body">
-                <p>对于 Web 资源校验和设置，每个可能的目标平台（Android、iOS、Windows 8、Windows Phone 8 和 Windows 10 UWP）都具有特定于平台的密钥，以在 <b>mfpdev</b> 直接方式下使用。这些密钥以表示平台名称的字符串开始。例如，<code>windows10_security_test_web_resources_checksum</code> 是 true 或 false 设置，指定是否为 Windows 10 UWP 启用 Web 资源校验和测试。</p>
-                
+                <p>对于 Web 资源校验和设置，每个可能的目标平台（Android、iOS、Windows 8、Windows Phone 8 和 Windows 10 UWP）都具有特定于平台的密钥，以在 <b>mfpdev</b> 直接方式下使用。 这些密钥以表示平台名称的字符串开始。 例如，<code>windows10_security_test_web_resources_checksum</code> 是 true 或 false 设置，指定是否为 Windows 10 UWP 启用 Web 资源校验和测试。</p>
+
                 <table class="table table-striped">
                     <tr>
                         <td><b>设置</b></td>
@@ -319,50 +320,50 @@ mfpdev app config
                     </tr>
                     <tr>
                         <td><code>direct_update_authenticity_public_key</code></td>
-                        <td>为直接更新认证指定公用密钥。密钥必须采用 Base64 格式。</td>
+                        <td>为直接更新认证指定公用密钥。 密钥必须采用 Base64 格式。</td>
                     </tr>
                     <tr>
                         <td><code>ios_security_test_web_resources_checksum</code></td>
-                        <td>如果设置为 <code>true</code>，那么对 iOS Cordova 应用程序启用 Web 资源校验和测试。缺省值为 <code>false</code>。</td>
+                        <td>如果设置为 <code>true</code>，那么对 iOS Cordova 应用程序启用 Web 资源校验和测试。 缺省值为 <code>false</code>。</td>
                     </tr>
                     <tr>
                         <td><code>android_security_test_web_resources_checksum</code></td>
-                        <td>如果设置为 <code>true</code>，那么对 Android Cordova 应用程序启用 Web 资源校验和测试。缺省值为 <code>false</code>。</td>
+                        <td>如果设置为 <code>true</code>，那么对 Android Cordova 应用程序启用 Web 资源校验和测试。 缺省值为 <code>false</code>。</td>
                     </tr>
                     <tr>
                         <td><code>windows10_security_test_web_resources_checksum</code></td>
-                        <td>如果设置为 <code>true</code>，那么对 Windows 10 UWP Cordova 应用程序启用 Web 资源校验和测试。缺省值为 <code>false</code>。</td>
+                        <td>如果设置为 <code>true</code>，那么对 Windows 10 UWP Cordova 应用程序启用 Web 资源校验和测试。 缺省值为 <code>false</code>。</td>
                     </tr>
                     <tr>
                         <td><code>windows8_security_test_web_resources_checksum</code></td>
-                        <td>如果设置为 <code>true</code>，那么对 Windows 8.1 Cordova 应用程序启用 Web 资源校验和测试。缺省值为 <code>false</code>。</td>
+                        <td>如果设置为 <code>true</code>，那么对 Windows 8.1 Cordova 应用程序启用 Web 资源校验和测试。 缺省值为 <code>false</code>。</td>
                     </tr>
                     <tr>
                         <td><code>windowsphone8_security_test_web_resources_checksum</code></td>
-                        <td>如果设置为 <code>true</code>，那么对 Windows Phone 8.1 Cordova 应用程序启用 Web 资源校验和测试。缺省值为 <code>false</code>。</td>
+                        <td>如果设置为 <code>true</code>，那么对 Windows Phone 8.1 Cordova 应用程序启用 Web 资源校验和测试。 缺省值为 <code>false</code>。</td>
                     </tr>
                     <tr>
                         <td><code>ios_security_ignore_file_extensions</code></td>
-                        <td>指定在对 iOS Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。用逗号分隔多个扩展名。例如：jpg,gif,pdf</td>
+                        <td>指定在对 iOS Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。 用逗号分隔多个扩展名。 例如：jpg,gif,pdf</td>
                     </tr>
                     <tr>
                         <td><code>android_security_ignore_file_extensions</code></td>
-                        <td>指定在对 Android Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。用逗号分隔多个扩展名。例如：jpg, gif,pdf</td>
+                        <td>指定在对 Android Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。 用逗号分隔多个扩展名。 例如：jpg, gif,pdf</td>
                     </tr>
                     <tr>
                         <td><code>windows10_security_ignore_file_extensions</code></td>
-                        <td>指定在对 Windows 10 UWP Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。用逗号分隔多个扩展名。例如：jpg,gif,pdf</td>
+                        <td>指定在对 Windows 10 UWP Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。 用逗号分隔多个扩展名。 例如：jpg,gif,pdf</td>
                     </tr>
                     <tr>
                         <td><code>windows8_security_ignore_file_extensions</code></td>
-                        <td>指定在对 Windows 8.1 Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。用逗号分隔多个扩展名。例如：jpg,gif,pdf</td>
+                        <td>指定在对 Windows 8.1 Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。 用逗号分隔多个扩展名。 例如：jpg,gif,pdf</td>
                     </tr>
                     <tr>
                         <td><code>windowsphone8_security_ignore_file_extensions</code></td>
-                        <td>指定在对 Windows Phone 8.1 Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。用逗号分隔多个扩展名。例如：jpg,gif,pdf</td>
+                        <td>指定在对 Windows Phone 8.1 Cordova 应用程序进行 Web 资源校验和测试期间要忽略的文件扩展名。 用逗号分隔多个扩展名。 例如：jpg,gif,pdf</td>
                     </tr>
                 </table>
- 
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>结束部分</b></a>
             </div>
@@ -373,10 +374,9 @@ mfpdev app config
 
 ### 预览 Cordova 应用程序
 {: #preview-a-cordova-application }
-可以使用浏览器预览 Cordova 应用程序的 Web 资源。预览应用程序将支持快速开发，而无需使用特定于本机平台的仿真器和模拟器。
+可以使用浏览器预览 Cordova 应用程序的 Web 资源。 预览应用程序将支持快速开发，而无需使用特定于本机平台的仿真器和模拟器。
 
-在运行预览命令之前，您必须通过添加 `wlInitOptions` 变量来准备项目。完成以下步骤：
-
+在运行预览命令之前，您必须通过添加 `wlInitOptions` 变量来准备项目。 完成以下步骤：
 
 1. 将 *wlInitOptions* 变量添加到主要 JavaScript 文件（在标准 Cordova 应用程序中为 **index.js**）。
 
@@ -393,8 +393,8 @@ mfpdev app config
    mfpdev app register
    ```
 
- 3. 运行以下命令： 
- 
+ 3. 运行以下命令：
+
     ```bash
     cordova prepare
     ```
@@ -405,24 +405,27 @@ mfpdev app config
     mfpdev app preview
     ```
 
-系统将提示您选择要预览的平台以及要使用的预览类型。有两个预览选项：MBS 和浏览器。
+系统将提示您选择要预览的平台以及要使用的预览类型。
+有两个预览选项：MBS 和浏览器。
 
-* MBS - {{ site.data.keys.mf_mbs }}。此方法将在浏览器中模拟移动设备，并提供基本的 Cordova API 模拟，如摄像头、文件上载、地理定位等。注：您不能将 cordova 浏览器与 MBS 选项一起使用。
-* 浏览器 - 简单浏览器呈现。此方法会将 Cordova 应用程序的 www 资源作为正常的浏览器 Web 页面提供。
+* MBS - {{ site.data.keys.mf_mbs }}。 此方法将在浏览器中模拟移动设备，并提供基本的 Cordova API 模拟，如摄像头、文件上载、地理定位等。 注：您不能将 cordova 浏览器与 MBS 选项一起使用。
+* 浏览器 - 简单浏览器呈现。 此方法会将 Cordova 应用程序的 www 资源作为正常的浏览器 Web 页面提供。
 
 > 有关预览选项的更多详细信息，请参阅 [Cordova 开发教程](../cordova-apps)。
 
 ### 更新“直接更新”的 Web 资源
 {: #update-web-resources-for-direct-update }
-可以更新 Cordova 应用程序的 Web 资源（如 **www** 文件夹内的 .html、.css 和 .js 文件），而无需在移动设备上重新安装应用程序。使用 {{ site.data.keys.product }} 提供的“直接更新”功能可以实现。
+可以更新 Cordova 应用程序的 Web 资源（如 **www** 文件夹内的 .html、.css 和 .js 文件），而无需在移动设备上重新安装应用程序。 使用 {{ site.data.keys.product }} 提供的“直接更新”功能可以实现。
 
-> 有关“直接更新”如何工作的更多详细信息，请参阅教程[在 Cordova 应用程序中使用“直接更新”](../direct-update)。如果想发送一组要在 cordova 应用程序中更新的新 Web 资源，请运行命令
+> 有关“直接更新”如何工作的更多详细信息，请参阅教程[在 Cordova 应用程序中使用“直接更新”](../direct-update)。
+
+如果想发送一组要在 cordova 应用程序中更新的新 Web 资源，请运行命令
 
 ```bash
 mfpdev app webupdate
 ```
 
-此命令会将已更新的 Web 资源打包到 .zip 文件，并将其上载到已注册的缺省 {{ site.data.keys.mf_server }}。可以在 **[cordova-project-root-folder]/mobilefirst/** 文件夹中找到打包的 Web 资源。
+此命令会将已更新的 Web 资源打包到 .zip 文件，并将其上载到已注册的缺省 {{ site.data.keys.mf_server }}。 可以在 **[cordova-project-root-folder]/mobilefirst/** 文件夹中找到打包的 Web 资源。
 
 要将 Web 资源上载到不同的服务器实例，请将服务器名称和运行时作为命令的一部分进行通知
 
@@ -462,7 +465,7 @@ mfpdev app pull
 mfpdev app push
 ```
 
-**示例：**可以在 {{ site.data.keys.mf_console }} 中执行安全性检查的范围映射，然后使用上述命令从服务器中提取相关信息。下载的 .zip 文件存储在项目的 **[root directory]/mobilefirst** 文件夹中，稍后可与 `mfpdev app push` 一起使用，以将其上载到另一个 {{ site.data.keys.mf_server }}，通过复用预定义的配置允许快速配置和设置。
+**示例：**可以在 {{ site.data.keys.mf_console }} 中执行安全性检查的范围映射，然后使用上述命令从服务器中提取相关信息。 下载的 .zip 文件存储在项目的 **[root directory]/mobilefirst** 文件夹中，稍后可与 `mfpdev app push` 一起使用，以将其上载到另一个 {{ site.data.keys.mf_server }}，通过复用预定义的配置允许快速配置和设置。
 
 ## 管理和测试适配器
 {: #managing-and-testing-adapters }
@@ -513,7 +516,7 @@ mfpdev adapter deploy <server_name>
 mfpdev adapter call
 ```
 
-系统会提示您通知要使用的适配器、过程和参数。命令的输出将是适配器过程的响应。
+系统会提示您通知要使用的适配器、过程和参数。 命令的输出将是适配器过程的响应。
 
 > 可在[测试和调试适配器](../../adapters/testing-and-debugging-adapters/)教程中了解更多信息。
 

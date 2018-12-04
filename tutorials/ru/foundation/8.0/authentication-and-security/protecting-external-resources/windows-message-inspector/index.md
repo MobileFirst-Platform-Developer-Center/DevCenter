@@ -102,7 +102,7 @@ static void Main(string[] args) {
 > For More information about WCF REST services refer to [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
 
 ## Define a Message Inspector
-{: #define-a-message-inspector }
+{: #define-a-message-inspector}
 Before we dive into the validation process we must create and define a **message inspector** which we will use to protect the resource (the service endpoint).
 A message inspector is an extensibility object that can be used in the service to inspect and alter messages after they are received or before they are sent. Service message inspectors should implement the `IDispatchMessageInspector` interface:
 
@@ -284,6 +284,8 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server
+{: #obtain-access-token-from-mobilefirst-authorization-server}
+
 In order to authenticate the client token we should **obtain an access token as the message inspector** by making a request to the **token endpoint**.
 Later we will use this received token to pass the client token for introspection.
 

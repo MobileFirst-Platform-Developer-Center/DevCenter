@@ -17,7 +17,7 @@ set -e
 
 # build site with jekyll, by default to `_site' folder
 rm -rf _site/*
-bundle exec jekyll build --config _config.yml,build/_configPDF.yml -d _site --profile
+bundle exec jekyll build --config _config.yml,build/_configPDF.yml -d _site --profile --verbose
 rm -f _site/*.log
 
 # cleanup
@@ -41,8 +41,10 @@ cp _site/pdf/8.0.html ../generated-pdf/release80/index.html
 
 # commit and push generated content
 cd ../generated-pdf/release80
-git config user.email "nathanh@il.ibm.com"
-git config user.name "Nathan Hazout Travis"
+#git config user.email "nathanh@il.ibm.com"
+#git config user.name "Nathan Hazout Travis"
+git config user.email "sreelathas@in.ibm.com"
+git config user.name "Sreelatha Sankaranarayanan Travis"
 git add -A .
 git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
 git push --quiet origin release80
@@ -68,8 +70,8 @@ cp _site/pdf/7.1.html ../generated-pdf/release71/index.html
 
 # commit and push generated content
 cd ../generated-pdf/release71
-git config user.email "nathanh@il.ibm.com"
-git config user.name "Nathan Hazout Travis"
+git config user.email "sreelathas@in.ibm.com"
+git config user.name "Sreelatha Sankaranarayanan Travis"
 git add -A .
 git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
 git push --quiet origin release71
@@ -93,8 +95,8 @@ cp _site/pdf/7.0.html ../generated-pdf/release70/index.html
 
 # commit and push generated content
 cd ../generated-pdf/release70
-git config user.email "nathanh@il.ibm.com"
-git config user.name "Nathan Hazout Travis"
+git config user.email "sreelathas@in.ibm.com"
+git config user.name "Sreelatha Sankaranarayanan Travis"
 git add -A .
 git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
 git push --quiet origin release70
@@ -118,8 +120,8 @@ cp _site/pdf/6.3.html ../generated-pdf/release63/index.html
 
 # commit and push generated content
 cd ../generated-pdf/release63
-git config user.email "nathanh@il.ibm.com"
-git config user.name "Nathan Hazout Travis"
+git config user.email "sreelathas@in.ibm.com"
+git config user.name "Sreelatha Sankaranarayanan Travis"
 git add -A .
 git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
 git push --quiet origin release63

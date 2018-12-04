@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Executando o IBM Installation Manager
-weight: 1
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
@@ -37,7 +37,7 @@ No entanto, para instalação de produção, use tarefas Ant para instalar o App
     * Sempre que você fizer upgrade do produto, por exemplo, para instalar uma correção temporária, o Application Center será atualizado primeiro. O upgrade do Application Center inclui operações no banco de dados e no servidor de aplicativos. Se o upgrade do Application Center falhar, isso impedirá o Installation Manager de concluir o upgrade, e te impedirá de fazer upgrade de outros componentes do {{ site.data.keys.mf_server }}. Para instalação de produção, não implemente o Application Center com o Installation Manager. Instale o Application Center separadamente com tarefas Ant após o Installation Manager instalar o {{ site.data.keys.mf_server }}. Para obter informações adicionais sobre o Application Center, consulte [Instalando e configurando o Application Center](../../../appcenter).
 
 > **Importante:** O instalador do {{ site.data.keys.mf_server }} instala somente os arquivos binários e ferramentas do {{ site.data.keys.mf_server }} em seu disco. Ele não implementa os aplicativos {{ site.data.keys.mf_server }} em seu servidor de aplicativos. Após a execução da instalação com o Installation Manager, deve-se configurar os bancos de dados e implementar os aplicativos {{ site.data.keys.mf_server }} em seu servidor de aplicativos.  
-> Da mesma forma, quando você executa o Installation Manager para atualizar uma instalação existente, ele atualiza somente os arquivos em seu disco. É necessário executar ações adicionais para atualizar os aplicativos que estão implementados em seus servidores de aplicativos.
+> Da mesma forma, quando você executa o Installation Manager para atualizar uma instalação existente, eçe atualiza somente os arquivos que estão no seu disco. É necessário executar ações adicionais para atualizar os aplicativos que estão implementados em seus servidores de aplicativos.
 
 #### Ir para
 {: #jump-to }
@@ -87,7 +87,8 @@ As decisões nas duas áreas de janela a seguir no assistente de instalação s�
         Talvez você também queira aplicar o fix pack mais recente que pode ser transferido por download do [Portal de Suporte IBM](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Certifique-se de inserir o repositório para o fix pack. Se você descompactar o fix pack na pasta **fixpack_directory**, o arquivo de repositório será localizado em **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
         **Nota:** Não é possível instalar o fix pack sem o repositório da versão base nos repositórios do Installation Manager. Os fix packs são instaladores incrementais e precisam que o repositório da versão base esteja instalado.
-    * Selecione o arquivo e clique em **OK**.
+    * Selecione
+o arquivo e clique em **OK**.
     * Clique em **OK** para fechar o painel **Preferências**.
 3. Após aceitar os termos de licença do produto, clique em **Avançar**.
 4. Escolha o grupo de pacotes para instalar o produto.
@@ -95,12 +96,12 @@ As decisões nas duas áreas de janela a seguir no assistente de instalação s�
     {{ site.data.keys.product }} V8.0 é uma substituição das liberações anteriores que têm um nome de instalação diferente:
     * Worklight para V5.0.6
     * IBM Worklight para a V6.0 até a V6.3
-    
+
     Se uma dessas versões mais antigas do produto estiver instalada em seu computador, o Installation Manager oferecerá uma opção Usar um grupo de pacotes existente no início do processo de instalação. Essa opção desinstala a versão mais antiga do produto e reutiliza as opções de instalação mais antigas para fazer upgrade do {{ site.data.keys.mf_app_center_full }}, caso ele estivesse instalado.
-    
+
     Para uma instalação separada, selecione a opção Criar um novo grupo de pacotes para que seja possível instalar a nova versão junto com a mais antiga.  
     Se nenhuma outra versão do produto estiver instalada em seu computador, escolha a opção Criar um novo grupo de pacotes para instalar o produto em um novo grupo de pacotes.
-    
+
 5. Clique em **Avançar**.
 6. Decida se deseja ativar o licenciamento de token na seção **Ativar Licenciamento de Token** do painel **Configurações Gerais**.
 
@@ -143,28 +144,28 @@ Também é possível localizar alguns atalhos para o Server Configuration Tool, 
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
     * Para uma instalação com execução de licenciamento de token, insira o comando:
-    
+
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
-    
+
         O valor da propriedade **user.licensed.by.tokens** é configurado para **true**. Deve-se configurar o {{ site.data.keys.mf_server }} para [licenciamento de token](../token-licensing).
-        
+
         As propriedades a seguir são configuradas para instalar o {{ site.data.keys.mf_server }} sem o Application Center:
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
-        
+
         Essa propriedade indica se o licenciamento de token está ativado ou não: **user.licensed.by.tokens=true/false**.
-        
+
         Configure o valor da propriedade user.use.ios.edition como false para instalar o {{ site.data.keys.product }}.
-        
+
 5. Se desejar instalar com a correção temporária mais recente, inclua o repositório de correção temporária no parâmetro **-repositories**. O parâmetro **-repositories** usa uma lista separada por vírgula de repositórios.
 
     Inclua a versão da correção temporária substituindo **com.ibm.mobilefirst.foundation.server** por **com.ibm.mobilefirst.foundation.server_version**. **version** tem o formato **8.0.0.0-buildNumber**. Por exemplo, se você instalar a correção temporária **8.0.0.0-IF20160103101**5, insira o comando: `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`.
-    
+
     Para obter informações adicionais sobre o comando imcl, consulte [Installation Manager: instalando pacotes usando comandos `imcl`](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
-    
+
 Um diretório de instalação contendo os recursos para instalação dos componentes do {{ site.data.keys.product_adj }} está instalado.
 
 É possível localizar os recursos nas pastas a seguir:
@@ -200,12 +201,12 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
 1. Selecione o arquivo de resposta de amostra apropriado a partir do arquivo compactado. O arquivo Silent_Install_Sample_Files.zip contém um subdiretório por liberação.
 
     > **Importante:**  
-    > 
-    > * Para uma instalação que não instala o Application Center em um servidor de aplicativos, use o arquivo chamado **install-no-appcenter.xml**.
-    > * Para uma instalação que instala o Application Center, selecione o arquivo de resposta de amostra da seguinte tabela, dependendo de seu servidor de aplicativos e de seu banco de dados.
+    >
+    > * Se o Application Center não for instalado em um servidor de aplicativos, use o arquivo nomeado **install-no-appcenter.xml**.
+    > * Se ocorrer a instalação do Application Center, selecione o arquivo de resposta de amostra da seguinte tabela, dependendo de seu servidor de aplicativos e de seu banco de dados.
 
    #### Arquivos de resposta de instalação de amostra no arquivo **Silent\_Install\_Sample_Files.zip** para instalar o Application Center
-    
+
     <table>
         <tr>
       <td></td>
@@ -263,11 +264,11 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
             <td>install-tomcat-oracle.xml</td>
         </tr>
     </table>
-    
+
     > **Nota:** O MySQL, em conjunto com o perfil Liberty do WebSphere Application Server ou o perfil completo do WebSphere Application Server, não é classificado como uma configuração suportada. Para obter informações adicionais, consulte [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). É possível usar o IBM DB2 ou outro DBMS que seja suportado pelo WebSphere Application Server para beneficiar-se de uma configuração que seja totalmente suportada pelo Suporte IBM.
 
     Para a desinstalação, use um arquivo de amostra que depende da versão do {{ site.data.keys.mf_server }} ou so Worklight Server que você instalou inicialmente no grupo de pacotes específico:
-    
+
     * O {{ site.data.keys.mf_server }} usa o grupo de pacotes {{ site.data.keys.mf_server }}.
     * O Worklight Server V6.x ou mais recente usa o grupo de pacotes IBM Worklight.
     * O Worklight Server V5.x usa o grupo de pacotes Worklight.
@@ -315,8 +316,8 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
     * Para o Apache Tomcat: `conf/server.xml`
 4. Ajuste a lista de repositórios no elemento <server>. Para obter informações adicionais sobre essa etapa, consulte a documentação do IBM Installation Manager em [Repositórios](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html).
 
-    No elemento `<profile>`, ajuste os valores de cada par de chave/valor.  
-    No elemento `<offering>` no elemento `<install>`, configure o atributo de versão para corresponder à liberação que você deseja instalar, ou remova o atributo de versão se desejar instalar a versão mais recente disponível nos repositórios.
+    No elemento `<profile>`, ajuste os valores em cada par de chaves / valor.  
+    No elemento `<offering>` no elemento `<install>`<offering>` `<install>`, configure o atributo de versão para corresponder à liberação que você deseja instalar ou remova o atributo de versão se quiser instalar a versão mais recente disponível nos repositórios.
 5. Digite o seguinte comando: `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
     Em que:
@@ -324,7 +325,7 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
     * `<responseFile>` é o nome do arquivo selecionado e atualizado na etapa 1.
 
 > Para obter informações adicionais, consulte a documentação do IBM Installation Manager em [Instalando um pacote silenciosamente usando um arquivo de resposta](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
-    
+
 
 ### Trabalhando com um Arquivo de Resposta Registrado em uma Máquina Diferente
 {: #working-with-a-response-file-recorded-on-a-different-machine }
@@ -645,11 +646,11 @@ Os arquivos e as ferramentas do {{ site.data.keys.mf_server }} estão instalado 
 
 | Item | Descrição (Description) |
 |------|-------------|
-| **configuration-samples** | Contém os arquivos Ant de amostra para instalar o Application Center. As tarefas Ant criam a tabela de banco de dados e implementam arquivos WAR em um servidor de aplicativos. | 
-| **console** | Contém os arquivos EAR e WAR para instalar o Application Center. O arquivo EAR é exclusivamente para o IBM PureApplication System. | 
-| **bancos de dados** | Contém os scripts SQL a serem usados para a criação manual de tabelas para o Application Center. |
-| **instalador** | Contém os recursos para criar o cliente Application Center. | 
-| **tools** | As ferramentas do Application Center. | 
+| **configuration-samples** | Contém os arquivos Ant de amostra para instalar o Application Center. As tarefas Ant criam a tabela de banco de dados e implementam arquivos WAR em um servidor de aplicativos. |
+| **console** | Contém os arquivos EAR e WAR para instalar o Application Center. O arquivo EAR é exclusivamente para o IBM PureApplication System. |
+| **databases** | Contém os scripts SQL a serem usados para a criação manual de tabelas para o Application Center. |
+| **installer** | Contém os recursos para criar o cliente Application Center. |
+| **tools** | As ferramentas do Application Center. |
 
 #### Arquivos e subdiretórios no subdiretório {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
@@ -658,9 +659,9 @@ Os arquivos e as ferramentas do {{ site.data.keys.mf_server }} estão instalado 
 |------|-------------|
 | **mfp-ant-deployer.jar** | Um conjunto de tarefas Ant do {{ site.data.keys.mf_server }}. |
 | **mfp-*.war** | Os arquivos WAR dos componentes do {{ site.data.keys.mf_server }}. |
-| **configuration-samples** | Contém os arquivos Ant de amostra para instalar componentes do {{ site.data.keys.mf_server }} com tarefas Ant. | 
+| **configuration-samples** | Contém os arquivos Ant de amostra para instalar componentes do {{ site.data.keys.mf_server }} com tarefas Ant. |
 | **ConfigurationTool** | Contém os arquivos binários do Server Configuration Tool. A ferramenta é ativada a partir de **mfp_server_install_dir/shortcuts**. |
-| **bancos de dados** | Contém os scripts SQL a serem usados para a criação manual de tabelas para componentes do {{ site.data.keys.mf_server }} (serviço de administração do {{ site.data.keys.mf_server }}, serviço de configuração do {{ site.data.keys.mf_server }} e tempo de execução do {{ site.data.keys.product_adj }}). | 
+| **databases** | Contém os scripts SQL a serem usados para a criação manual de tabelas para componentes do {{ site.data.keys.mf_server }} (serviço de administração do {{ site.data.keys.mf_server }}, serviço de configuração do {{ site.data.keys.mf_server }} e tempo de execução do {{ site.data.keys.product_adj }}). |
 | **external-server-libraries** |  Contém os arquivos JAR usados por diferentes ferramentas (como ferramenta de autenticidade e ferramenta de segurança OAuth). |
 
 #### Arquivos e subdiretórios no subdiretório PushService
@@ -669,25 +670,25 @@ Os arquivos e as ferramentas do {{ site.data.keys.mf_server }} estão instalado 
 | Item | Descrição (Description) |
 |------|-------------|
 | **mfp-push-service.war** | O arquivo WAR para instalar o serviço de push do {{ site.data.keys.mf_server }}. |
-| **bancos de dados** | Contém os scripts SQL a serem usados para a criação manual de tabelas para o serviço de push do {{ site.data.keys.mf_server }}. | 
+| **databases** | Contém os scripts SQL a serem usados para a criação manual de tabelas para o serviço de push do {{ site.data.keys.mf_server }}. |
 
 #### Arquivos e subdiretórios no subdiretório License
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
 | Item | Descrição (Description) |
 |------|-------------|
-| **Text** | Contém a licença para {{ site.data.keys.product }}. | 
+| **Texto** | Contém a licença para {{ site.data.keys.product }}. |
 
 #### Arquivos e subdiretórios no diretório de instalação do {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
 | Item | Descrição (Description) |
 |------|-------------|
-| **atalhos ** | Os scripts do ativador para Apache Ant, o Server Configuration Tool, e o comando mfpadmin, que são fornecidos com o {{ site.data.keys.mf_server }}. | 
+| **shortcuts** | Os scripts do ativador para Apache Ant, o Server Configuration Tool, e o comando mfpadmin, que são fornecidos com o {{ site.data.keys.mf_server }}. |
 
 #### Arquivos e subdiretórios no subdiretório tools
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
 | Item | Descrição (Description) |
 |------|-------------|
-| **tools/apache-ant-version-number** | Uma instalação binária do Apache Ant que é usada pelo Server Configuration Tool. Ela também pode ser usada para executar tarefas Ant. | 
+| **tools/apache-ant-version-number** | Uma instalação binária do Apache Ant que é usada pelo Server Configuration Tool. Ela também pode ser usada para executar tarefas Ant. |

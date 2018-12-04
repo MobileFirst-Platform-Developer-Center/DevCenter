@@ -1,12 +1,13 @@
 ---
-layout: tutorial
-title: API Connect
-downloads:
-  - name: Download MobileFirst APIC OAuthProvider
-    url: https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/mobilefirst-ouath-provider_1.0.0.yaml
-  - name: Download Sample Android Studio project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
-weight: 1
+layout: redirect
+new_url: /tutorials/en/product-integration/8.0/apiconnect/
+#title: API Connect
+#downloads:
+#  - name: Download MobileFirst APIC OAuthProvider
+#    url: https://git.ng.bluemix.net/imfsdkt/console-tools-and-sdks/raw/master/mobilefirst-ouath-provider_1.0.0.yaml
+#  - name: Download Sample Android Studio project
+#    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
+#weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -22,7 +23,7 @@ To learn more about IBM API Connect, visit the [IBM API Connect Developer Center
 
 Currently the security integration of {{ site.data.keys.product_adj }} and API Connect is supported only when DataPower is used as the Gateway server ("Edge Gateway").  
 
-The security integration is suppored for both [API Connect on-premise deployment](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.install.doc/overview_installing_apimgmt.html) and [API Connect BlueMix Service](https://console.ng.bluemix.net/docs/services/apiconnect/index.html)
+The security integration is suppored for both [API Connect on-premise deployment](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.install.doc/overview_installing_apimgmt.html) and [API Connect IBM Cloud Service](https://console.ng.bluemix.net/docs/services/apiconnect/index.html)
 
 #### Jump to
 * [Prerequisites](#prerequisites)

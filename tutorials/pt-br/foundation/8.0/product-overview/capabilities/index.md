@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Principais recursos do produto
+title: Recursos principais do produto
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

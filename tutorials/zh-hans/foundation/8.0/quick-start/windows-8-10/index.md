@@ -22,8 +22,8 @@ weight: 4
 #### 先决条件：
 {: #prerequisites }
 * 已配置 Visual Studio 2013/5
-* *可选*。{{ site.data.keys.mf_cli }}（[下载]({{site.baseurl}}/downloads)）
-* *可选*。单机{{ site.data.keys.mf_server }}（[下载]({{site.baseurl}}/downloads)）
+* *可选*。 {{ site.data.keys.mf_cli }}（[下载]({{site.baseurl}}/downloads)）
+* *可选*。 单机{{ site.data.keys.mf_server }}（[下载]({{site.baseurl}}/downloads)）
 
 ### 1. 启动 {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
@@ -32,7 +32,7 @@ weight: 4
 
 ### 2. 创建应用程序
 {: #2-creating-an-application }
-在浏览器窗口中，通过加载以下 URL 打开 {{ site.data.keys.mf_console }}：`http://your-server-host:server-port/mfpconsole`。如果是本地运行，请使用：[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。用户名/密码为 *admin/admin*。
+在浏览器窗口中，通过加载以下 URL 打开 {{ site.data.keys.mf_console }}：`http://your-server-host:server-port/mfpconsole`。 如果是本地运行，请使用：[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。 用户名/密码为 *admin/admin*。
 
 1. 单击**应用程序**旁的**新建**按钮
     * 选择 **Windows** 平台
@@ -54,10 +54,10 @@ weight: 4
 
    ```csharp
    try
-      {
+                   {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
           accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+          if (accessToken.IsValidToken &&  accessToken.Value != null &&  accessToken.Value != "")
           {
               System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
               titleTextBlock.Text = "Yay!";
@@ -106,10 +106,11 @@ weight: 4
 {: 5-testing-the-application }
 1. 在 Visual Studio 中，选择 **mfpclient.resw** 文件并将 **protocol**、**host** 和 **port** 属性编辑为针对 {{ site.data.keys.mf_server }} 的正确的值。
     * 如果使用本地 {{ site.data.keys.mf_server }}，这些值通常是 **http**、 **localhost** 和 **9080**。
-    * 如果使用远程 {{ site.data.keys.mf_server }}（在 Bluemix 中），这些值通常是 **https**、**your-server-address** 和 **443**。
+    * 如果使用远程 {{ site.data.keys.mf_server }}（在 IBM Cloud 中），这些值通常是 **https**、**your-server-address** 和 **443**。
+    * 如果要在 IBM Cloud Private 上使用 Kubernetes 集群并且如果部署的类型为 **NodePort**，那么端口的值通常为 Kubernetes 集群中服务公开的 **NodePort**。
 
-    或者，如果已安装 {{ site.data.keys.mf_cli }}，那么导航至项目根文件夹并运行命令 `mfpdev app register`。如果使用远程 {{ site.data.keys.mf_server }}，[那么运行命令 `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 来添加服务器，后跟（例如）`mfpdev app register myBluemixServer`。
-
+    或者，如果已安装 {{ site.data.keys.mf_cli }}，那么导航至项目根文件夹并运行命令 `mfpdev app register`。 如果使用远程 {{ site.data.keys.mf_server }}，那么[运行命令 `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 来添加服务器，后跟（例如）：`mfpdev app register myIBMCloudServer`。
+    
 2. 按**运行应用程序**按钮。
 
 ### 结果
@@ -119,7 +120,7 @@ weight: 4
 
 然后，适配器响应将列显在 Visual Studio 的 Outpout 控制台中。
 
-![成功从 {{ site.data.keys.mf_server }} 调用资源的应用程序图像](success_response.png)
+![成功从 {{ site.data.keys.mf_server }} 调用了资源的应用程序的图像](success_response.png)
 
 ## 后续步骤
 {: #next-steps }

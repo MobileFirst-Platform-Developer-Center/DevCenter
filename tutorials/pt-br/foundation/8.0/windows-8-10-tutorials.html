@@ -14,7 +14,7 @@ Desenvolva seus aplicativos do Windows 8.1 Universal ou do Windows 10 UWP seguin
 <div id="container">
     <div class="row">
         <div id="categoryBoxes">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Campo de procura sequencial" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="search" aria-label="Campo de procura sequencial" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
                     <input style="width: 206px" id="search-input" aria-label="Campo de procura" type="text" class="form-control" placeholder="Procurar por..." name="q">
                 </div>
@@ -61,20 +61,20 @@ Desenvolva seus aplicativos do Windows 8.1 Universal ou do Windows 10 UWP seguin
 
     <h2><a href="../installation-configuration">Instalação e configuração</a></h2>
     Configure seu ambiente de desenvolvimento para trabalhar com o {{ site.data.keys.product_full }}.
-
-    <h2><a href="../product-overview/">Visão Geral do Produto</a></h2>
-    Conheça a oferta do {{ site.data.keys.product }}.
+<!--
+    <h2><a href="../product-overview/">Product Overview</a></h2>
+    Learn about the {{ site.data.keys.product }} offering.
 
     <ul>
-        <li><a href="../product-overview/capabilities">Principais Recursos</a></li>
-        <li><a href="../product-overview/components">Componentes do produto</a></li>
-        <li><a href="../product-overview/requirements">Requisitos do Sistema</a></li>
-        <li><a href="../product-overview/licensing">Licensiamento no {{ site.data.keys.mf_server }}</a></li>
-        <li><a href="../product-overview/features-matrix">Matriz de recursos e plataformas</a></li>
-        <li><a href="../product-overview/accessibility">Recursos de acessibilidade para o {{ site.data.keys.product_full }}</a></li>
-        <li><a href="../product-overview/release-notes">Notas sobre a liberação</a></li>
+        <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
+        <li><a href="../product-overview/components">Product Components</a></li>
+        <li><a href="../product-overview/requirements">System Requirements</a></li>
+        <li><a href="../product-overview/licensing">Licensing in {{ site.data.keys.mf_server }}</a></li>
+        <li><a href="../product-overview/features-matrix">Matrix of features and platforms</a></li>
+        <li><a href="../product-overview/accessibility">Accessibility features for {{ site.data.keys.product_full }}</a></li>
+        <li><a href="../product-overview/release-notes">Release Notes</a></li>
     </ul>
-
+-->
     <ul>
         <li><a href="../installation-configuration/development/mobilefirst/">Configurando o ambiente de desenvolvimento do {{ site.data.keys.product_adj }}</a></li>
         <li><a href="../installation-configuration/development/windows/">Configurando os ambientes de desenvolvimento do Windows 8.1 Universal e do Windows 10 UWP</a></li>
@@ -195,23 +195,30 @@ Desenvolva seus aplicativos do Windows 8.1 Universal ou do Windows 10 UWP seguin
     </ul>
 
 
-    <h2><a href="../bluemix">Base no Bluemix</a></h2>
-    Implemente o {{ site.data.keys.product }} na nuvem usando o Bluemix.
+    <h2><a href="../bluemix">Foundation on IBM Cloud</a></h2>
+    Implemente {{ site.data.keys.product }} na nuvem usando IBM Cloud.
 
     <ul>
-        <li><a href="../bluemix/">Introdução ao {{ site.data.keys.product_full }} no Bluemix</a></li>
-        <li><a href="../bluemix/using-mobile-foundation/">Crie uma instância do {{ site.data.keys.mf_server }} usando o serviço do Mobile Foundation Bluemix</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Configurando o {{ site.data.keys.mf_server }} no IBM Containers usando scripts no IBM Container Service</a>
+        <!--<li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on IBM Containers using Scripts on IBM Container Service</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Coleção de logs e de rastreio</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Protegendo contêineres</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Resolução de problemas</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </li>-->
+        <li><a href="../bluemix/">Introdução ao {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Crie uma instância do {{ site.data.keys.mf_server }} usando o serviço Mobile Foundation IBM Cloud</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-kubernetes/">Configurando o MobileFirst Server on IBM Cloud Kubernetes Cluster</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">Configurando o MobileFirst Appcenter on IBM Cloud Kubernetes Cluster</a></li>
             </ul>
         </li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Configurando o {{ site.data.keys.mf_server }} no Bluemix usando scripts no Liberty for Java</a>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Configurando o {{ site.data.keys.mf_server }} on IBM Cloud usando scripts no Liberty for Java</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Protegendo contêineres</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Resolução de problemas</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">Protegendo contêineres</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">Resolução de problemas</a></li>
             </ul>
         </li>
     </ul>

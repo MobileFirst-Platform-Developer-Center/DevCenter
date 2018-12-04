@@ -82,7 +82,7 @@ En Application Center, las aplicaciones sólo tienen un número de versión. El 
 ### Windows 8
 {: #windows-8 }
 El cliente móvil de Application Center se proporciona como un archivo ejecutable de escritorio normal (.exe). Utilícelo para instalar en las aplicaciones de Windows Store del dispositivo, que están empaquetadas como archivos .appx.
-La instalación de un archivo de tipo appx en el dispositivo sin utilizar Windows Store se denomina instalación de prueba de una aplicación. Para realizar una instalación de prueba de una aplicación, debe cumplir con los requisitos previos de [Prepararse para realizar una instalación de prueba de aplicaciones](http://technet.microsoft.com/fr-fr/library/dn613842.aspx). La actualización de Windows 8.1 simplifica los requisitos previos para realizar una instalación de prueba. Para obtener más información, consulte [Instalación de prueba de aplicaciones del almacén en dispositivos Windows 8.1](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+La instalación de un archivo de tipo appx en su dispositivo sin el uso de Windows Store se denomina instalación de prueba de una aplicación. Para realizar una instalación de prueba de una aplicación, debe cumplir con los requisitos previos de [Prepararse para realizar una instalación de prueba de aplicaciones](http://technet.microsoft.com/fr-fr/library/dn613842.aspx). La actualización de Windows 8.1 simplifica los requisitos previos para realizar una instalación de prueba. Para obtener más información, consulte [Instalación de prueba de aplicaciones del almacén en dispositivos Windows 8.1](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
 
 Los archivos de tipo .exe no se pueden ejecutar en tabletas basadas en ARM, por lo que Application Center no da soporte a Windows RT; sólo están soportados Windows 8 y Windows 8.1.
 
@@ -95,9 +95,9 @@ En Application Center, las aplicaciones sólo tienen un número de versión. El 
 ### Windows 10 UWP
 {:  #windows-10-uwp}
 
-Application Center se entrega con un proyecto de cliente Windows 10 UWP para instalar la aplicación UWP. Puede abrir el proyecto en Visual Studio y crear un binario (por ejemplo: **.appx**) para distribuirlo. Application Center no proporciona un método predefinido para distribuir el cliente móvil. 
+Application Center se entrega con un proyecto de cliente Windows 10 UWP para instalar la aplicación UWP. Puede abrir el proyecto en Visual Studio y crear un binario (por ejemplo: **.appx**) para distribuirlo. Application Center no proporciona un método predefinido para distribuir el cliente móvil.
 
-En Application Center, las aplicaciones sólo tienen un número de versión. El número de versión se utiliza para distinguir qué versión es más reciente. Para las aplicaciones Windows 10 UWP, el número de versión está en el campo ***Version*** en el archivo **Package.appxmanifest**. Este número de versión debe tener el formato siguiente: a.b.c.d, donde a, b, c, d son enteros no negativos.
+En Application Center, las aplicaciones sólo tienen un número de versión. El número de versión se utiliza para distinguir qué versión es más reciente. Para aplicaciones de Windows 10 UWP, el número de versión se encuentra en el campo _**Version**_ del archivo **Package.appxmanifest**. Este número de versión debe tener el formato siguiente: a.b.c.d, donde a, b, c, d son enteros no negativos.
 
 
 ## Arquitectura general

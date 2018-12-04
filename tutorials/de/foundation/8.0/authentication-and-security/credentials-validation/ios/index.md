@@ -5,9 +5,9 @@ breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 3
 downloads:
-  - name: Xcode-Projekt herunterladen
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

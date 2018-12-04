@@ -7,71 +7,71 @@ relevantTo: [ios,android,javascript]
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} collects data from app-to-server activities, client logs, client crashes, and server-side logs from the {{ site.data.keys.mf_server }} and client devices. The collected data then provides a rich view into both the mobile landscape and server infrastructure. Included are: default reports of user retention, crash reports, device type and operating system breakdowns, custom data and custom charts, network usage, push notification results, in-app behavior, debug log collection, and more.
+{{ site.data.keys.mf_analytics_full }}는 {{ site.data.keys.mf_server }} 및 클라이언트 디바이스의 앱 대 서버 활동, 클라이언트 로그, 클라이언트 충돌 및 서버 측 로그에서 데이터를 수집합니다. 수집된 데이터는 모바일 환경 및 서버 인프라에 대한 풍부한 정보를 제공합니다. 여기에는 사용자 보존의 기본 보고서, 충돌 보고서, 디바이스 유형 및 운영 체제 내역, 사용자 정의 데이터 및 사용자 정의 차트, 네트워크 사용, 푸시 알림 결과, 인앱 동작, 디버그 로그 콜렉션 등이 포함됩니다.
 
-{{ site.data.keys.mf_server }} comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems. In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client-side and on the {{ site.data.keys.mf_analytics_server }}. You choose the verbosity and data retention policy of the reported events, set conditional alerts, build custom charts and engage with new data.
+{{ site.data.keys.mf_server }}는 네트워크 인프라 보고를 통해 미리 인스트루먼테이션되어 있습니다. 클라이언트와 서버가 모두 네트워크 사용을 보고하면 데이터가 집계되므로 네트워크, 서버 또는 백엔드 시스템이 성능 저하의 원인이 될 수 있습니다. 또한 클라이언트 측과 {{ site.data.keys.mf_analytics_server }}에서 모두 필터를 정의하여 Analytics에서 액세스하고 사용하는 로거 데이터를 제어할 수 있습니다. 보고된 이벤트의 상세도 및 데이터 보존 정책을 선택하고 조건부 경보를 설정하고 사용자 정의 차트를 빌드하고 새 데이터를 활용합니다.
 
-#### Platform support
+#### 플랫폼 지원
 {: #platform-support }
 
-{{ site.data.keys.mf_analytics }} supports:
+{{ site.data.keys.mf_analytics }}는 다음을 지원합니다.
 
-* Native iOS and Android clients
-* Cordova applications (iOS, Android)
-* Web applications
-* Support is **not available** for Windows 8.1 Universal or Windows 10 UWP
+* 네이티브 iOS 및 Android 클라이언트
+* Cordova 애플리케이션(iOS, Android)
+* 웹 애플리케이션
+* Windows 8.1 Universal 또는 Windows 10 UWP의 경우 지원을 **사용할 수 없습니다**.
 
-IBM {{ site.data.keys.mf_server }} comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting their network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems.
+IBM {{ site.data.keys.mf_server }}는 네트워크 인프라 보고를 통해 미리 인스트루먼테이션되어 있습니다. 클라이언트와 서버가 모두 네트워크 사용을 보고하면 데이터가 집계되므로 네트워크, 서버 또는 백엔드 시스템이 성능 저하의 원인이 될 수 있습니다.
 
-## Client development
+## 클라이언트 개발
 {: #client-development }
 
-Two client classes work together to send raw data to the server: the Logger and Analytics classes.
+Logger 클래스와 Analytics 클래스라는 두 개의 클라이언트 클래스가 함께 작업하여 원시 데이터를 서버에 전송합니다.
 
-### The Analytics API
+### Analytics API
 {: #the-analytics-api }
 
-The Analytics client API collects data on a wide range of events and sends them to the {{ site.data.keys.mf_analytics_server }}.
-> Learn more in the [Analytics Client Development](analytics-api) tutorial.
+Analytics 클라이언트 API는 광범위한 이벤트에 대한 데이터를 수집하여 {{ site.data.keys.mf_analytics_server }}에 전송합니다.
+> [Analytics 클라이언트 개발](analytics-api) 학습서에서 자세히 학습하십시오.
 
-### The Logger API
+### Logger API
 {: #the-logger-api }
 
-The Logger functions as a standard logger. From the client you can also send logger data to the {{ site.data.keys.mf_analytics_server }} at any logging level. However, the server configuration controls what level of logging requests are allowed. Requests sent below this threshold are ignored.
+Logger는 표준 로거로서 작동합니다. 클라이언트로부터 로거 데이터를 모든 로깅 레벨로 {{ site.data.keys.mf_analytics_server }}에 전송할 수도 있습니다. 하지만 서버 구성에서 허용되는 로깅 요청 레벨을 제어합니다. 이 임계값 미만으로 전송된 요청은 무시됩니다.
 
-Logging levels need to be controlled to balance two needs: the need to collect information and the need to limit the quantity of data to fit limited storage ability.
+정보를 수집해야 하는 요구와 데이터 수량을 제한된 스토리지 용량에 맞게 제한해야 하는 요구 사이에서 균형을 맞추기 위해 로깅 레벨을 제어해야 합니다.
 
-> Learn more in the [Client Logging](../application-development/client-side-log-collection/) tutorial.
+> [클라이언트 로깅](../application-development/client-side-log-collection/) 학습서에서 자세히 학습하십시오.
 
-In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client side and on the {{ site.data.keys.mf_analytics_server }}.
+또한 클라이언트 측과 {{ site.data.keys.mf_analytics_server }}에서 모두 필터를 정의하여 Analytics에서 액세스하고 사용하는 로거 데이터를 제어할 수 있습니다.
 
-## The Analytics and Operations Consoles
+## Analytics Console 및 Operations Console
 {: #the-analytics-and-operations-consoles }
 
-{{ site.data.keys.product_full }} provides the Analytics and Operations consoles. The {{ site.data.keys.mf_console_full }} configures how the Analytics Server works with the client applications. The {{ site.data.keys.mf_analytics_console_full }} configures and displays the various Analytics reports.
+{{ site.data.keys.product_full }}은 Analytics Console 및 Operations Console을 제공합니다. {{ site.data.keys.mf_console_full }}은 Analytics Server가 클라이언트 애플리케이션에 대해 작업하는 방식을 구성합니다. {{ site.data.keys.mf_analytics_console_full }}은 다양한 Analytics 보고서를 구성하고 표시합니다.
 
-> Learn more in the [Operations Console](console) tutorial.
+> [Operations Console](console) 학습서에서 자세히 학습하십시오.
 
-> Learn more about creating custom charts with the Analytics console in the [Custom Charts](console/custom-charts) tutorial.
+> [사용자 정의 차트](console/custom-charts) 학습서에서 Analytics Console을 사용하여 사용자 정의 차트를 작성하는 것에 대해 자세히 학습하십시오.
 
-## The Analytics Server
+## Analytics Server
 {: #the-analytics-server }
 
-The Analytics Server is available in both the development and production environments.
+Analytics Server는 개발 환경과 프로덕션 환경에서 모두 사용할 수 있습니다.
 
-For development, the Analytics Server is installed together with the {{ site.data.keys.mf_dev_kit }}.  For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the {{ site.data.keys.mf_analytics_console_short }} is available for your development needs.
+개발의 경우 Analytics Server는 {{ site.data.keys.mf_dev_kit }}과 함께 설치됩니다.  자세한 정보는 [{{ site.data.keys.product_adj }} 개발 환경 설정](../installation-configuration/development/mobilefirst/)을 참조하십시오. 이 킷이 설치되면 개발 요구에 맞게 {{ site.data.keys.mf_analytics_console_short }}을 사용할 수 있습니다.
 
-For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/production/analytics/).
+프로덕션의 경우에는 사용 가능한 인프라, 비즈니스 요구, 시스템 디자인 등에 따라 다양한 설치 및 구성 옵션이 있습니다. 자세한 정보는 [{{ site.data.keys.product_adj }} 개발 환경 설정](../installation-configuration/production/analytics/)을 참조하십시오.
 
-{{ site.data.keys.mf_analytics }} uses Elasticsearch. [Learn how to use Elasticsearch](elasticsearch) in {{ site.data.keys.product }}.
+{{ site.data.keys.mf_analytics }}는 Elasticsearch를 사용합니다. {{ site.data.keys.product }}에서 [Elasticsearch 사용 방법에 대해 학습](elasticsearch)하십시오.
 
-## Troubleshooting
+## 문제점 해결
 {: #troubleshotting }
 
-For information on troubleshooting {{ site.data.keys.mf_analytics }}, see [Analytics Troubleshooting](../troubleshooting/analytics/).
+{{ site.data.keys.mf_analytics }}의 문제점 해결에 대한 정보는 [Analytics 문제점 해결](../troubleshooting/analytics/)을 참조하십시오.
 
-## What to read next
+## 다음에 읽을 내용
 {: #what-to-read-next }

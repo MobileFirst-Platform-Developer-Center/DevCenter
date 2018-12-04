@@ -11,6 +11,7 @@ author:
 ---
 
 Challenge handlers have changed between 8.0 beta and 8.0 GA. If you have used challenge handlers in previous versions of MobileFirst Foundation (previously Worklight/MobileFirst Platform Foundation), it is worth going over this quick review of challenge handlers, to understand the new APIs and the different types of challenge handlers.
+If you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about challenge handlers in Mobile Foundation.
 
 ## What is a challenge handler
 When trying to access a protected resource, the client may be faced with a *challenge*. A challenge is a question, a security test, a prompt by the server to make sure you are allowed to access this resource.  

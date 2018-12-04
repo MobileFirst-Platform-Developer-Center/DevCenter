@@ -7,6 +7,8 @@ weight: 7
 <br/>
 Hier finden Sie die neuesten Informationen zu diesem Produktrelease und zu allen zugehörigen Fixpacks.
 
+
+
 ### Neuerungen in Version 8.0
 {: #whats-new-in-v-80 }
 In {{ site.data.keys.product_full }} Version 8.0
@@ -26,9 +28,7 @@ In neuen Releases der {{ site.data.keys.product }} kann es Features oder API-Ele
 
 ### Weggefallene Features und API-Elemente
 {: #discontinued-features-and-api-elements }
-Überprüfen Sie gründlich, wie sich Features und API-Elemente, die entfernt wurden,
-auf Ihre
-{{ site.data.keys.product_adj }}-Umgebung auswirken.   
+Überprüfen Sie gründlich, wie sich Features und API-Elemente, die entfernt wurden, auf Ihre {{ site.data.keys.product_adj }}-Umgebung auswirken.  
 [Infos zu weggefallenen Features und APIs lesen](deprecated-discontinued)
 
 ### Bekannte Probleme und Einschränkungen

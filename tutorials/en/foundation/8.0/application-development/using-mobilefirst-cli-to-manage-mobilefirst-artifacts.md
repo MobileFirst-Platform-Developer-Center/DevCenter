@@ -34,25 +34,30 @@ In this tutorial you will learn how to install the `mfpdev` Command Line Interfa
 {: #prerequisites }
 The {{ site.data.keys.mf_cli }} is available as an NPM package at the [NPM registry](https://www.npmjs.com/).  
 
-Ensure **node.js** is installed in the development environment in order to install NPM packages.  
+Ensure **node.js** and **npm** is installed in the development environment in order to install NPM packages.  
 Follow the installation instructions in [nodejs.org](https://nodejs.org) to install node.js.
 
 To confirm that node.js is properly installed, run the command `node -v`.
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **Note:** Minimum supported node.js version is 4.2.3
+> **Note:** Minimum supported **node.js** version is **4.2.3**. Also, with the fast evolving **node** and **npm** packages, the MobileFirst CLI might not be fully functional with all the available versions of **node** and **npm** including the latest versions. 
+> 
+> For MobileFirst CLI versions upto and including iFix version 8.0.2018040312, ensure that **node** is on version **6.11.1** and **npm** version is **3.10.10**, for proper functioning of the CLI.
+>
+> For MobileFirst CLI iFix versions 8.0.2018100112 and higher, you can use Node version versions 8.x or 10.x
 
 ## Installing the {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
 To install the Command Line Interface run the command:
 
 ```bash
-npm install -g mfpdev-cli
+npm install -g mfpdev-cli --no-optional
 ```
+
 
 If the CLI .zip file was downloaded from the Download Center of the {{ site.data.keys.mf_console }}, use the command:
 
@@ -171,7 +176,7 @@ mfpdev server add
 ```
 
 Follow the interactive prompt to provide a name to the server, the server URL and user/password credentials.  
-For example, to add a {{ site.data.keys.mf_server }} that is running on a Mobile Foundation Bluemix service you would do the following:
+For example, to add a {{ site.data.keys.mf_server }} that is running on a Mobile Foundation IBM Cloud service you would do the following:
 
 ```bash
 $ mfpdev server add

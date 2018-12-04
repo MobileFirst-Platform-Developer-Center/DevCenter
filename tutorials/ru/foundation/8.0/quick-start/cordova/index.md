@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Подробная демонстрация для Cordova
+title: Сквозная демонстрация для Cordova
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
@@ -34,7 +34,7 @@ weight: 1
 ### 2. Создание и регистрация приложения
 {: #2-creating-and-registering-an-application }
 В браузере откройте {{ site.data.keys.mf_console }} с помощью следующего URL: `http://your-server-host:server-port/mfpconsole`. В локальном режиме введите следующий адрес: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Идентификационные данные пользователя: *admin/admin*.
- 
+
 1. Нажмите кнопку **Создать** рядом с разделом **Приложения**
     * Выберите платформу: **Android, iOS, Windows**
     * Введите **com.ibm.mfpstartercordova** в качестве **идентификатора приложения**
@@ -42,11 +42,11 @@ weight: 1
     * Нажмите кнопку **Зарегистрировать приложение**
 
     <img class="gifplayer" alt="Регистрация приложения" src="register-an-application-cordova.png"/>
- 
+
 2. Щелкните на плитке **Получить начальный код** и выберите загрузку примера приложения Cordova.
 
     <img class="gifplayer" alt="Загрузка примера приложения" src="download-starter-code-cordova.png"/>
- 
+
 ### 3. Изменение логики приложения
 {: #3-editing-application-logic }
 1. Откройте проект Cordova в предпочитаемом редакторе исходного кода.
@@ -59,12 +59,12 @@ WLAuthorizationManager.obtainAccessToken()
         function(accessToken) {
             titleText.innerHTML = "Yay!";
             statusText.innerHTML = "Connected to {{ site.data.keys.mf_server }}";
-            
+
             var resourceRequest = new WLResourceRequest(
                 "/adapters/javaAdapter/resource/greet/",
                 WLResourceRequest.GET
             );
-            
+
             resourceRequest.setQueryParameter("name", "world");
             resourceRequest.send().then(
                 function(response) {
@@ -83,25 +83,25 @@ WLAuthorizationManager.obtainAccessToken()
         }
     );
 ```
-    
+
 ### 4. Развертывание адаптера
 {: #4-deploy-an-adapter }
 Загрузите [этот подготовленный артефакт .adapter](../javaAdapter.adapter) и разверните его с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**.
 
 Кроме того, можно нажать кнопку **Создать** рядом с разделом **Адаптеры**.  
-        
+
 1. Выберите **Действия → Загрузить пример**. Загрузите пример адаптера **Java** "Hello World".
 
-    > Если Maven и {{ site.data.keys.mf_cli }} не установлены, выполните инструкции по **настройке среды разработки**.
+    Если Maven и {{ site.data.keys.mf_cli }} не установлены, выполните инструкции по **настройке среды разработки**.
 
 2. В окне **Командная строка** перейдите в корневую папку проекта Maven адаптера и выполните следующую команду:
 
     ```bash
-   mfpdev adapter build
+    mfpdev adapter build
     ```
 
 3. После завершения компоновки разверните адаптер с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**. Адаптер расположен в папке **[adapter]/target**.
-    
+
     <img class="gifplayer" alt="Развертывание адаптера" src="create-an-adapter.png"/>   
 
 
@@ -110,12 +110,13 @@ WLAuthorizationManager.obtainAccessToken()
 {: #5-testing-the-application }
 1. В окне **Командная строка** перейдите в корневую папку проекта Cordova.
 2. Выполните команду `cordova platform add ios|android|windows` для добавления платформы.
-3. В проекте Cordova выберите файл  **config.xml** и укажите в элементе `<mfp:server ... url=" "/>` значения свойств **protocol**, **host** и **port** с учетом конфигурации {{ site.data.keys.mf_server }}.
+3. В проекте Cordova выберите файл **config.xml** и укажите в элементе `<mfp:server ... url=" "/>` значения свойств **protocol**, **host** и **port** с учетом конфигурации {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
-    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в Bluemix): **https**, **your-server-address** и **443**.
+    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **your-server-address** и **443**.
+    * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
 
-    Кроме того, если установлен {{ site.data.keys.mf_cli }}, перейдите в корневую папку проекта и выполните команду `mfpdev app register`. В случае применения удаленного экземпляра {{ site.data.keys.mf_server }} [выполните команду `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) для добавления сервера, а затем выполните команду, аналогичную следующей: `mfpdev app register myBluemixServer`.
-	
+    Кроме того, если установлен {{ site.data.keys.mf_cli }}, перейдите в корневую папку проекта и выполните команду `mfpdev app register`. В случае применения удаленного экземпляра {{ site.data.keys.mf_server }} [выполните команду `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) для добавления сервера, а затем выполните команду, аналогичную следующей: `mfpdev app register myIBMCloudServer`.
+
 Если устройство подключено, то приложение устанавливается и запускается на устройстве.  
 В противном случае применяется симулятор или эмулятор.
 

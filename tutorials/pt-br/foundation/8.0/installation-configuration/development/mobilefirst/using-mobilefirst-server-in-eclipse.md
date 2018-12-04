@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Usando o MobileFirst Server para Eclipse
+title: Usando o MobileFirst Server para o Eclipse
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

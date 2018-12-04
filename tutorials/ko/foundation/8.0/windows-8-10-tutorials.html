@@ -9,12 +9,12 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-아래의 학습서에 따라 Windows 8.1 Universal 또는 Windows 10 UWP 애플리케이션을 개발하십시오. {{ site.data.keys.product }} 8.0 오퍼링과 통합하여 개발 환경을 설정하고 제품을 경험하고 가치를 추가하십시오. <br/><br/>
+아래의 학습서에 따라 Windows 8.1 Universal 또는 Windows 10 UWP 애플리케이션을 개발하십시오. {{ site.data.keys.product }} 8.0 오퍼링과 통합하여 개발 환경을 설정하고 제품을 경험하고 가치를 추가하십시오.<br/><br/>
 
 <div id="container">
     <div class="row">
         <div id="categoryBoxes">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="인라인 검색 필드" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="search" aria-label="인라인 검색 필드" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
                     <input style="width: 206px" id="search-input" aria-label="검색 필드" type="text" class="form-control" placeholder="검색..." name="q">
                 </div>
@@ -62,19 +62,20 @@ indexed: false
     <h2><a href="../installation-configuration">설치 및 구성</a></h2>
     {{ site.data.keys.product_full }}에 대해 작업할 수 있도록 개발 환경을 설정하십시오.
 
-    <h2><a href="../product-overview/">제품 개요</a></h2>
-    {{ site.data.keys.product }} 오퍼링에 대해 학습합니다.
+    <!--
+    <h2><a href="../product-overview/">Product Overview</a></h2>
+    Learn about the {{ site.data.keys.product }} offering.
 
     <ul>
-        <li><a href="../product-overview/capabilities">기본 기능</a></li>
-        <li><a href="../product-overview/components">제품 컴포넌트</a></li>
-        <li><a href="../product-overview/requirements">시스템 요구사항</a></li>
-        <li><a href="../product-overview/licensing">{{ site.data.keys.mf_server }}에서 라이센싱</a></li>
-        <li><a href="../product-overview/features-matrix">기능 및 플랫폼의 매트릭스</a></li>
-        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full}}의 내게 필요한 옵션 기능</a></li>
-        <li><a href="../product-overview/release-notes">릴리스 정보</a></li>
+        <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
+        <li><a href="../product-overview/components">Product Components</a></li>
+        <li><a href="../product-overview/requirements">System Requirements</a></li>
+        <li><a href="../product-overview/licensing">Licensing in {{ site.data.keys.mf_server }}</a></li>
+        <li><a href="../product-overview/features-matrix">Matrix of features and platforms</a></li>
+        <li><a href="../product-overview/accessibility">Accessibility features for {{ site.data.keys.product_full }}</a></li>
+        <li><a href="../product-overview/release-notes">Release Notes</a></li>
     </ul>
-
+-->
     <ul>
         <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 개발 환경 설정</a></li>
         <li><a href="../installation-configuration/development/windows/">Windows 8.1 Universal 및 Windows 10 UWP 개발 환경 설정</a></li>
@@ -90,7 +91,7 @@ indexed: false
     </ul>
 
     <h2><a href="../application-development/sdk">{{ site.data.keys.product_adj }} SDK 추가</a></h2>
-    {{ site.data.keys.product }} SDK를 Cordova 또는 기본 iOS, Android, Windows 8.1 Universal 또는 Windows 10 UWP 애플리케이션에 추가하십시오.
+    {{ site.data.keys.product }} SDK를 Cordova 또는 네이티브 iOS, Android, Windows 8.1 Universal 또는 Windows 10 UWP 애플리케이션에 추가하십시오.
 
     <ul>
         <li><a href="../application-development/sdk/windows-8-10/">Windows 8.1 Universal 및 Windows 10 UWP 애플리케이션에 {{ site.data.keys.product }} SDK 추가</a></li>
@@ -171,7 +172,7 @@ indexed: false
         <li><a href="../authentication-and-security/confidential-clients/">기밀 클라이언트</a></li>
         <li><a href="../authentication-and-security/protecting-external-resources/">외부 자원 보호</a>
             <ul>
-                <li><a href="../authentication-and-security/protecting-external-resources/tai">신뢰 연관 인터셉터</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">TAI(Trust Association Interceptor)</a></li>
                 <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java 토큰 유효성 검증</a></li>
                 <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js 유효성 검증</a></li>
             </ul>
@@ -190,28 +191,35 @@ indexed: false
         <li><a href="../notifications/">알림 개요</a></li>
         <li><a href="../notifications/sending-notifications/">알림 전송</a></li>
         <li><a href="../notifications/handling-push-notifications/windows/">Windows 애플리케이션에서 푸시 알림 처리</a></li>
-        <li><a href="../notifications/analytics/">푸시 알림에 대한 분석 지원 설정</a></li>
+        <li><a href="../notifications/analytics/">푸시 알림에 대한 Analytics 지원 설정</a></li>
         <li><a href="../notifications/rest-apis/">푸시 서비스 REST API</a></li>
     </ul>
 
 
-    <h2><a href="../bluemix">Foundation on Bluemix</a></h2>
-    Bluemix를 사용하여 클라우드에 {{ site.data.keys.product }}을 배치하십시오.
+    <h2><a href="../bluemix">Foundation on IBM Cloud</a></h2>
+    IBM Cloud를 사용하여 클라우드에 {{ site.data.keys.product }}을 배치합니다.
 
     <ul>
-        <li><a href="../bluemix/">{{ site.data.keys.product_full }} on Bluemix 소개</a></li>
-        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation Bluemix 서비스를 사용하여 {{ site.data.keys.mf_server }} 인스턴스 작성</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">IBM Container Service에서 스크립트를 사용하여 IBM Containers에 대해 {{ site.data.keys.mf_server }} 설정</a>
+        <!--<li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on IBM Containers using Scripts on IBM Container Service</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">로그 및 추적 콜렉션</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">컨테이너 보안</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">문제점 해결</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </li>-->
+        <li><a href="../bluemix/">{{ site.data.keys.product_full }} on IBM Cloud 소개</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation IBM Cloud 서비스를 사용하여 {{ site.data.keys.mf_server }} 인스턴스 작성</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-kubernetes/">IBM Cloud Kubernetes 클러스터에 MobileFirst Server 설정</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">IBM Cloud Kubernetes 클러스터에 MobileFirst Appcenter 설정</a></li>
             </ul>
         </li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Liberty for Java에서 스크립트를 사용하여 Bluemix에 대해 {{ site.data.keys.mf_server }} 설정</a>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Liberty for Java에서 스크립트를 사용하여 IBM Cloud에 대해 {{ site.data.keys.mf_server }} 설정</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">컨테이너 보안</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">문제점 해결</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">컨테이너 보안</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">문제점 해결</a></li>
             </ul>
         </li>
     </ul>

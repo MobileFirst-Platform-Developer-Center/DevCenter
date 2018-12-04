@@ -1,184 +1,184 @@
 ---
 layout: tutorial
-title: Creating Custom Charts
+title: 사용자 정의 차트 작성
 breadcrumb_title: Custom Charts
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
 
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console }}. This visualization feature is a powerful way to analyze business-critical data.
+사용자 정의 차트를 사용하면 Analytics 데이터 저장소에서 수집된 Analytics 데이터를 {{ site.data.keys.mf_analytics_console }}에서 기본적으로 사용할 수 없는 차트로 시각화할 수 있습니다. 이 시각화 기능은 비즈니스에 필수적인 데이터를 분석하는 강력한 방법입니다.
 
-Available custom chart types: **App Session**, **Network Transactions**, **Push Notifications**, **Client Logs**, **Server Logs**, **Custom Data**.
+사용 가능한 사용자 정의 차트 유형: **앱 세션**, **네트워크 트랜잭션**, **푸시 알림**, **클라이언트 로그**, **서버 로그**, **사용자 정의 데이터**
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
 
-* [Creating a custom chart](#creating-a-custom-chart)
-* [Chart types](#chart-types)
-* [Creating custom charts for client logs](#creating-custom-charts-for-client-logs)
-* [Exporting custom chart data](#exporting-custom-chart-data)
-* [Exporting and importing custom chart definitions](#exporting-and-importing-custom-chart-definitions)
+* [사용자 정의 차트 작성](#creating-a-custom-chart)
+* [차트 유형](#chart-types)
+* [클라이언트 로그에 대한 사용자 정의 차트 작성](#creating-custom-charts-for-client-logs)
+* [사용자 정의 차트 데이터 내보내기](#exporting-custom-chart-data)
+* [사용자 정의 차트 정의 내보내기 및 가져오기](#exporting-and-importing-custom-chart-definitions)
 
-## Creating a custom chart
+## 사용자 정의 차트 작성
 {: #creating-a-custom-chart }
 
-In the {{ site.data.keys.mf_analytics_console }}, from the **Dashboard** panel, the custom charts creation builder takes you through four main stages:
+{{ site.data.keys.mf_analytics_console }}의 **대시보드** 패널에서 사용자 정의 차트 작성 빌더는 네 가지 기본 단계를 진행합니다.
 
-### 1. General settings
+### 1. 일반 설정
 {: #1-general-settings }
 
-Click the **Create Chart** button in the **Custom Charts** tab.  
+**사용자 정의 차트** 탭에서 **차트 작성** 단추를 클릭하십시오.  
 
-In the **General Settings** tab, select Chart Title, Event Type and the Chart Type.  
-After selecting the Event Type and Chart Type, the **Chart Definition** tab appears.
+**일반 설정** 탭에서 차트 제목, 이벤트 유형 및 차트 유형을 선택하십시오.  
+이벤트 유형 및 차트 유형을 선택하면 **차트 정의** 탭이 표시됩니다.
 
-### 2. The Chart Definition tab
+### 2. 차트 정의 탭
 {: #2-the-chart-definition-tab }
 
-Use the **Chart Definition** tab to define the chart for the specified chart type that you previously selected. After you define the chart, you can set the chart filters and chart properties.
+**차트 정의** 탭을 사용하여 이전에 선택한 지정된 차트 유형에 대한 차트를 정의하십시오. 차트를 정의한 후 차트 필터 및 차트 특성을 설정할 수 있습니다.
 
-### 3. The Chart Filters tab
+### 3. 차트 필터 탭
 {: #3-the-chart-filters-tab }
 
-**Chart Filters** are used to fine-tune the custom chart. Multiple filters can be defined for any chart.  
-For example, if you are interested in seeing the average app session duration for a particular app, you can specify the following options:
+**차트 필터**는 사용자 정의 차트를 미세 조정하는 데 사용됩니다. 모든 차트에 대해 복수의 필터를 정의할 수 있습니다.  
+예를 들어, 특정 앱의 평균 앱 세션 지속 기간을 확인하는 데 관심이 있는 경우 다음과 같은 옵션을 지정할 수 있습니다.
 
-1. Select **Application Name** for **Property**.
-2. Select **Equals** for **Operator**.
-3. Select the name of your app for **Value**.
-4. Click **Add Filter**.
+1. **특성**에 대해 **애플리케이션 이름**을 선택하십시오.
+2. **연산자**에 대해 **등호**를 선택하십시오.
+3. **값**에 대해 앱의 이름을 선택하십시오.
+4. **필터 추가**를 클릭하십시오.
 
-The app name filter is added to the table of filters for your chart.
+앱 이름 필터가 차트의 필터 테이블에 추가됩니다.
 
-### 4. Chart properties
+### 4. 차트 특성
 {: #4-chart-properties }
 
-Chart properties are available for the **Table**, **Bar Graph**, and **Line Graph** chart types. The goal of chart properties is to enhance how the data is presented so that the visualization is more effective.
+차트 특성은 **테이블**, **막대 그래프** 및 **선 그래프** 차트 유형에 사용할 수 있습니다. 차트 특성의 목표는 더 효과적으로 시각화를 수행하도록 데이터가 제공되는 방식을 개선하는 것입니다.
 
-If you created a **Table chart**, the chart properties can be set to define the table page size, the field on which to sort, and the sort order of the field.
+**테이블 차트**를 작성한 경우 차트 특성을 설정하여 테이블 페이지 크기, 정렬할 필드 및 필드 정렬 순서를 정의할 수 있습니다.
 
-If you created a **Bar Graph** or **Line Graph** chart, the chart properties can be set to label threshold lines to add a frame of reference for anyone who is monitoring the chart.
+**막대 그래프** 또는 **선 그래프** 차트를 작성한 경우 차트 특성을 설정하여 차트를 모니터링하는 모든 사용자를 위한 참조 프레임을 추가할 임계값 선에 레이블을 지정할 수 있습니다.
 
-<img class="gifplayer"  alt="Creating a custom chart" src="creating-custom-charts.png"/>
+<img class="gifplayer"  alt="사용자 정의 차트 작성" src="creating-custom-charts.png"/>
 
-## Chart types
+## 차트 유형
 {: #chart-types }
 
-### Bar graph
+### 막대 그래프
 {: #bar-graph }
 
-The bar graph allows for visualization of numeric data over an X-axis. When you define a bar graph, you must choose the value for X-Axis first. You can choose from the following possible values.
+막대 그래프를 사용하면 X축 위에 숫자 데이터를 시각화할 수 있습니다. 막대 그래프를 정의하는 경우 먼저 X축의 값을 선택해야 합니다. 다음과 같은 가능한 값 중에서 선택할 수 있습니다.
 
-* **Timeline** - choose Timeline for X-Axis if you want to see your data as a trend (for example, average app session duration over time).
-* **Property** - choose Property if you want to see a count breakdown for the specific property. If you choose Property for X-Axis, then Total is implicitly chosen for Y-Axis. For example, choose Property for X-Axis and Application Name for Property to see a count for a specified event type, which is broken down by app name.
+* **타임라인** - 데이터를 상태동향으로 보려는 경우(예: 시간 경과에 따른 평균 앱 세션 지속 기간) X축에 대해 타임라인을 선택하십시오.
+* **특성** - 특정 특성에 대한 개수 내역을 보려는 경우 특성을 선택하십시오. X축에 대해 특성을 선택하는 경우 Y축에 대해서는 총계가 내재적으로 선택됩니다. 예를 들어, X축에 대해 특성을 선택하고 특성에 대해 애플리케이션 이름을 선택하면 지정된 이벤트 유형에 대한 개수가 표시되며 앱 이름별로 구분됩니다.
 
-After you define a value for X-Axis, you can define a value for Y-Axis. If you choose Timeline for X-Axis, you can choose the following possible values for Y-Axis.
+X축에 대해 값을 정의한 후 Y축에 대한 값을 정의할 수 있습니다. X축에 대해 타임라인을 선택하는 경우 Y축에 대해 다음과 같은 가능한 값을 선택할 수 있습니다.
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **평균** - 제공된 이벤트 유형의 숫자 특성의 평균입니다.
+* **총계** - 제공된 이벤트 유형의 특성의 총 개수입니다.
+* **고유** - 제공된 이벤트 유형의 특성의 고유 개수입니다.
 
-After you define the chart axes, you must choose a value for Property.
+차트 축을 정의한 후 특성의 값을 선택해야 합니다.
 
-### Line graph
+### 선 그래프
 {: #line-graph }
 
-The line graph allows for the visualization of some metric over time. This type of chart is valuable when you want to visualize data in terms of a trend over time. The first value to define when you create a line graph is Measure, which has the following possible values.
+선 그래프를 사용하면 시간 경과에 따라 일부 메트릭을 시각화할 수 있습니다. 이 유형의 차트는 시간 경과에 따른 상태동향의 관점에서 데이터를 시각화하려는 경우에 유용합니다. 선 그래프를 작성할 때 정의할 첫 번째 값은 측정치이며 다음과 같은 값을 사용할 수 있습니다.
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **평균** - 제공된 이벤트 유형의 숫자 특성의 평균입니다.
+* **총계** - 제공된 이벤트 유형의 특성의 총 개수입니다.
+* **고유** - 제공된 이벤트 유형의 특성의 고유 개수입니다.
 
-After you define the measurement, you must choose a value for Property.
+측정치를 정의한 후 특성의 값을 선택해야 합니다.
 
-### Flow chart
+### 플로우 차트
 {: #flow-chart }
 
-The flow chart allows for the visualization of flow breakdown of one property to another. For a flow chart, the following properties must be set.
+플로우 차트를 사용하면 한 특성에서 다른 특성으로의 플로우 내역을 시각화할 수 있습니다. 플로우 차트의 경우 다음과 같은 특성을 설정해야 합니다.
 
-* **Source** - the value of a source node in the diagram.
-* **Destination** - the value of the destination node in the diagram.
-* **Property** - a property value from either the source node or the destination node.
+* **소스** - 다이어그램에서 소스 노드의 값입니다.
+* **대상** - 다이어그램에서 대상 노드의 값입니다.
+* **특성** - 소스 노드 또는 대상 노드의 특성 값입니다.
 
-With the flow chart, you can see the density breakdown of various sources that flow to a destination, or vice versa. For example, if you want to see the breakdown of log severities for an app, you can define the following values.
+플로우 차트를 사용하는 경우 대상으로 플로우하는 다양한 소스의 밀도 내역을 볼 수 있으며 그 반대의 경우도 마찬가지입니다. 예를 들어, 앱에 대한 로그 심각도 내역을 확인하려는 경우 다음과 같은 값을 정의할 수 있습니다.
 
-* Select Application Name for Source.
-* Select Log Level for Destination.
-* Select the name of your app for Property.
+* 소스에 대해 애플리케이션 이름을 선택하십시오.
+* 대상에 대해 로그 레벨을 선택하십시오.
+* 특성에 대해 앱의 이름을 선택하십시오.
 
-### Metric group
+### 메트릭 그룹
 {: #metric-group }
 
-The metric group can be used to visualize a single metric that is measured as either an average value, a total count, or a unique count. To define a metric group, you must define one of the following possible values for Measure.
+메트릭 그룹은 평균값, 총 개수 또는 고유 개수로 측정되는 단일 메트릭을 시각화하는 데 사용할 수 있습니다. 메트릭 그룹을 정의하려면 측정치에 대해 다음 가능한 값 중 하나를 정의해야 합니다.
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **평균** - 제공된 이벤트 유형의 숫자 특성의 평균입니다.
+* **총계** - 제공된 이벤트 유형의 특성의 총 개수입니다.
+* **고유** - 제공된 이벤트 유형의 특성의 고유 개수입니다.
 
-After you define the measurement, you must choose a value for Property. This metric is displayed in the metric group.
+측정치를 정의한 후 특성의 값을 선택해야 합니다. 이 메트릭은 메트릭 그룹에 표시됩니다.
 
-### Pie chart
+### 원형 차트
 {: #pie-chart }
 
-The pie chart can be used to visualize the count breakdown of values for a particular property. For example, if you want to see a crash breakdown, define the following values.
+원형 차트는 특정 특성에 대한 값의 개수 내역을 시각화하는 데 사용할 수 있습니다. 예를 들어, 충돌 내역을 보려는 경우 다음과 같은 값을 정의하십시오.
 
-* Select App Session for Event Type.
-* Select Pie Chart for Chart Type.
-* Select Closed By for Property.
+* 이벤트 유형에 대해 앱 세션을 선택하십시오.
+* 차트 유형에 대해 원형 차트를 선택하십시오.
+* 특성에 대해 처리완료자를 선택하십시오.
 
-The resulting pie chart shows the breakdown of app sessions that were closed by the user as opposed to app sessions that were closed by a crash.
+결과 원형 차트에는 충돌에 의해 처리완료된 앱 세션과 대조적으로 사용자가 처리완료한 앱 세션의 내역이 표시됩니다.
 
-### Table
+### 테이블
 {: #table }
 
-The table is useful when you want to see the raw data. Building a table is as simple as adding columns for the raw data that you want to see.  
-Because not all properties are required for specific event types, null values can appear in your table. If you want to prevent these rows from appearing in your table, add an Exists filter for a specific property in the Chart Filters tab.
+테이블은 원시 데이터를 보려는 경우에 유용합니다. 테이블을 빌드하는 것은 보려는 원시 데이터에 대한 열을 추가하는 것만큼 단순합니다.  
+특정 이벤트 유형의 경우 일부 특성이 필요하지 않으므로 널값이 테이블에 표시될 수 있습니다. 이 행이 테이블에 표시되지 않게 하려면 차트 필터 탭에서 특정 특성에 대해 존재함 필터를 추가하십시오.
 
-## Creating custom charts for client logs
+## 클라이언트 로그에 대한 사용자 정의 차트 작성
 {: #creating-custom-charts-for-client-logs }
 
-You can create a custom chart for client logs that contain log information that is sent with the platform's Logger API.  
-The log information also includes contextual information about the device, including environment, app name, and app version.
+플랫폼의 Logger API를 사용하여 전송되는 로그 정보가 포함된 클라이언트 로그에 대한 사용자 정의 차트를 작성할 수 있습니다.  
+이 로그 정보에는 환경, 앱 이름 및 앱 버전을 포함하여 디바이스에 대한 컨텍스트 정보도 포함되어 있습니다.
 
-> **Note:** You must log custom events to populate custom charts. For information on sending custom events from the client app, see [Capturing custom data](../../analytics-api/#custom-events).
+> **참고:** 사용자 정의 차트를 채우기 위해 사용자 정의 이벤트를 로그해야 합니다. 클라이언트 앱에서 사용자 정의 이벤트를 전송하는 것에 대한 정보는 [사용자 정의 데이터 캡처](../../analytics-api/#custom-events)를 참조하십시오.
 
-1. From the client app, populate the data by sending captured logs to the server. See [Sending captured logs](../../analytics-api/#sending-analytics-data).
-2. In the {{ site.data.keys.mf_analytics_console }}, click the **Custom Charts** tab and continue to a create a chart:
-    * **Chart Title**: Application and Log Levels
-    * **Event Type**: Client Logs
-    * **Chart Type**: Flow Chart
+1. 클라이언트 앱에서 캡처한 로그를 서버에 전송하여 데이터를 채우십시오. [캡처된 로그 전송](../../analytics-api/#sending-analytics-data)을 참조하십시오.
+2. {{ site.data.keys.mf_analytics_console }}에서 **사용자 정의 차트** 탭을 클릭한 후 차트 작성을 계속 수행하십시오.
+    * **차트 제목**: 애플리케이션 및 로그 레벨
+    * **이벤트 유형**: 클라이언트 로그
+    * **차트 유형**: 플로우 차트
 
-3. Click the **Chart Definition** tab and provide the following values:
-    * **Source**: Application Name
-    * **Destination**: Log Level
-    * **Property**: your app name
+3. **차트 정의** 탭을 클릭한 후 다음과 같은 값을 제공하십시오.
+    * **소스**: 애플리케이션 이름
+    * **대상**: 로그 레벨
+    * **특성**: 앱 이름
 
-4. Click the **Save** button.
+4. **저장** 단추를 클릭하십시오.
 
-## Exporting custom chart data
+## 사용자 정의 차트 데이터 내보내기
 {: #exporting-custom-chart-data }
 
-You can download the data that is shown for any custom chart.  
+사용자 정의 차트에 대해 표시되는 데이터를 다운로드할 수 있습니다.  
 
-![Export custom chart data using these icons](export-data.png)
+![이 아이콘을 사용하여 사용자 정의 차트 데이터 내보내기](export-data.png)
 
-* **Export with URL** - looks like a chain link
-* **Download Chart** - looks like a down arrow
-* **Edit Chart** - looks like a pencil
-* **Delete Chart** - looks like a trash can
+* **URL로 내보내기** - 체인 링크 모양
+* **차트 다운로드** - 아래로 화살표 모양
+* **차트 편집** - 연필 모양
+* **차트 삭제** - 휴지통 모양
 
-Click the **Download Chart** icon to download a file in JSON format from the {{ site.data.keys.mf_analytics_console_short }}.  
-Click the **Export with URL** icon to generate an export link from the {{ site.data.keys.mf_analytics_console_short }} to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
+{{ site.data.keys.mf_analytics_console_short }}에서 JSON 형식의 파일을 다운로드하려면 **차트 다운로드** 아이콘을 클릭하십시오.  
+{{ site.data.keys.mf_analytics_console_short }}에서 HTTP 클라이언트로부터 호출하기 위한 내보내기 링크를 생성하려면 **URL로 내보내기** 아이콘을 클릭하십시오. 이 옵션은 지정된 시간 간격으로 내보내기 프로세스를 자동화하는 스크립트를 작성하려는 경우에 유용합니다.
 
-## Exporting and importing custom chart definitions
+## 사용자 정의 차트 정의 내보내기 및 가져오기
 {: #exporting-and-importing-custom-chart-definitions }
 
-You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console_short }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts for your new cluster.
+{{ site.data.keys.mf_analytics_console_short }}에서 사용자 정의 차트 정의를 내보내고 가져올 수 있습니다. 테스트 환경에서 프로덕션 배치로 이동하는 경우 새 클러스터에 대한 사용자 정의 차트를 다시 작성하는 대신 사용자 정의 차트 정의를 내보내서 시간을 절약할 수 있습니다.
 
-1. Click the **Custom Charts** tab in the {{ site.data.keys.mf_analytics_console_short }} dashboard.
-2. Click **Export Charts** to download a JSON file with your chart definition.
-3. Choose a location to save the JSON file.
-4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that already exists, you create duplicate definitions, which also means that the {{ site.data.keys.mf_analytics_console_short }} shows duplicate custom charts.
+1. {{ site.data.keys.mf_analytics_console_short }} 대시보드에서 **사용자 정의 차트** 탭을 클릭하십시오.
+2. **차트 내보내기**를 클릭하여 차트 정의를 가진 JSON 파일을 다운로드하십시오.
+3. JSON 파일을 저장할 위치를 선택하십시오.
+4. **차트 가져오기**를 클릭하여 JSON 파일을 가져오십시오. 이미 존재하는 사용자 정의 차트 정의를 가져오는 경우 중복 정의를 작성할 수 있습니다. 이는 {{ site.data.keys.mf_analytics_console_short }}에 중복 사용자 정의 차트가 표시된다는 것도 의미합니다.

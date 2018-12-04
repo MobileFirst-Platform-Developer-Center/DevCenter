@@ -4,10 +4,10 @@ title: iOS アプリケーションからのリソース要求
 breadcrumb_title: iOS
 relevantTo: [ios]
 downloads:
-  - name: Xcode プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
-  - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+  - name: Download Xcode project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
+  - name: Download Adapter Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -25,7 +25,7 @@ REST API は、すべてのアダプターおよび外部リソースで機能�
 {: #wlresourcerequest }
 `WLResourceRequest` クラスは、アダプターまたは外部リソースに対するリソース要求を処理します。
 
- `WLResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
+`WLResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
 使用可能なメソッドは、`WLHttpMethodGet`、`WLHttpMethodPost`、`WLHttpMethodPut`、および `WLHttpMethodDelete` です。
 
 Objective-C
@@ -43,7 +43,7 @@ let request = WLResourceRequest(
 ```
 
 * **JavaScript アダプター** の場合は、`/adapters/{AdapterName}/{procedureName}` を使用します。
-* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。`path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。これには、使用した `@PathParam` も含まれます。
+* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。 `path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。 これには、使用した `@PathParam` も含まれます。
 * プロジェクトの外部にあるリソースにアクセスするには、外部サーバーの要件のとおりに完全な URL を使用してください。
 * **タイムアウト**: オプション。ミリ秒単位の要求タイムアウトです。
 
@@ -76,7 +76,7 @@ request.sendWithCompletionHandler { (response, error) -> Void in
 }
 ```
 
-代替方法として、`sendWithDelegate` を使用して、`NSURLConnectionDataDelegate` と `NSURLConnectionDelegate` の両方のプロトコルに準拠するデリゲートを指定することができます。これにより、バイナリー応答の処理など、よりきめ細かに応答を処理できます。   
+代替方法として、`sendWithDelegate` を使用して、`NSURLConnectionDataDelegate` と `NSURLConnectionDelegate` の両方のプロトコルに準拠するデリゲートを指定することができます。 これにより、バイナリー応答の処理など、よりきめ細かに応答を処理できます。   
 
 ## パラメーター
 {: #parameters }
@@ -105,7 +105,7 @@ request.setQueryParameterValue("value2", forName: "param2")
 
 #### JavaScript アダプター
 {: #javascript-adapters-query }
-JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。 パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 Objective-C
 
@@ -159,7 +159,7 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 
 #### JavaScript アダプター
 {: #javascript-adapters-form }
-JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。 パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 Objective-C
 
@@ -234,7 +234,7 @@ request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void i
 
 ## 応答
 {: #the response }
-`response` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。よく使用されるプロパティーは、`responseText` (ストリング)、`responseJSON` (ディクショナリー) (応答が JSON の場合)、および `status` (整数) (応答の HTTP 状況) です。
+`response` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。 よく使用されるプロパティーは、`responseText` (ストリング)、`responseJSON` (ディクショナリー) (応答が JSON の場合)、および `status` (整数) (応答の HTTP 状況) です。
 
 `response` オブジェクトおよび `error` オブジェクトを使用して、アダプターから取り出されたデータを取得します。
 
@@ -258,7 +258,7 @@ ResourceRequestSwift プロジェクトには、Swift で実装され、Java ア
 #### iOS 9 についての注意:
 {: #note-about-ios-9 }
 
-> Xcode 7 を使用すると、デフォルトで [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) が使用可能になります。チュートリアルを実行するには、ATS を使用不可にしてください ([続きを読む](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error))。
+> Xcode 7 を使用すると、デフォルトで [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) が使用可能になります。 チュートリアルを実行するには、ATS を使用不可にしてください ([続きを読む](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error))。
 >   1. Xcode で、右クリックにより**「[プロジェクト]/info.plist ファイル」→「指定して開く」→「ソース・コード」**を選択します。
 >   2. 以下を貼り付けます。
 >

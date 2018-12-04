@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst CLI を使用した MobileFirst 成果物の管理
-breadcrumb_title: MobileFirst CLI の使用
+breadcrumb_title: Using the MobileFirst CLI
 weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---
@@ -12,7 +12,7 @@ relevantTo: [ios,android,windows,javascript]
 
 ローカルまたはリモートの {{ site.data.keys.mf_server }} インスタンスに対するアダプターを作成、登録、管理し、コマンド・ラインから、あるいは REST サービス経由で、あるいは {{ site.data.keys.mf_console }} から、プロジェクトを管理することもできます。
 
-**mfpdev** コマンドには、対話モードと直接モードの 2 つのモードがあります。対話モードでは、オプションを指定せずにコマンドを入力すると、応答を求めるプロンプトが出されます。直接モードでは、オプションも含めて完全なコマンドを入力します。プロンプトは出されません。該当する場合、プロンプトは、アプリケーションのターゲット・プラットフォーム (コマンドを実行したディレクトリーによって判別される) のコンテキストに依存したものになります。キーボードの上下矢印キーを使用して選択項目間を移動し、目的の選択項目が強調表示され、その前に「>」という 文字が表示されたら、Enter キーを押します。
+**mfpdev** コマンドには、対話モードと直接モードの 2 つのモードがあります。 対話モードでは、オプションを指定せずにコマンドを入力すると、応答を求めるプロンプトが出されます。 直接モードでは、オプションも含めて完全なコマンドを入力します。プロンプトは出されません。 該当する場合、プロンプトは、アプリケーションのターゲット・プラットフォーム (コマンドを実行したディレクトリーによって判別される) のコンテキストに依存したものになります。 キーボードの上下矢印キーを使用して選択項目間を移動し、目的の選択項目が強調表示され、その前に「>」という 文字が表示されたら、Enter キーを押します。
 
 このチュートリアルでは、`mfpdev` コマンド・ライン・インターフェース (CLI) のインストール方法と、この CLI を使用して {{ site.data.keys.mf_server }} のインスタンス、アプリケーション、およびアダプターを管理する方法について学習します。
 
@@ -34,17 +34,17 @@ relevantTo: [ios,android,windows,javascript]
 {: #prerequisites }
 {{ site.data.keys.mf_cli }} は、NPM パッケージとして [NPM レジストリー](https://www.npmjs.com/)で入手できます。  
 
-NPM パッケージをインストールするため、開発環境に **node.js** がインストールされていることを確認します。  
+NPM パッケージをインストールするため、開発環境に **node.js** と **npm** がインストールされていることを確認します。  
 [nodejs.org](https://nodejs.org) のインストール手順に従って、node.js をインストールします。
 
 node.js が正しくインストールされていることを確認するには、コマンド `node -v` を実行します。
 
 ```bash
 node -v
-v4.2.3
+v6.11.1
 ```
 
-> **注:** サポートされている node.js の最小バージョンは 4.2.3 です。
+> **注:** サポートされている **node.js** の最小バージョンは **4.2.3** です。 また、急速に進化している **node** と **npm** のパッケージでは、MobileFirst CLI は、最新バージョンも含めて、**node** と **npm** のすべての利用可能なバージョンで完全には機能しない可能性があります。 CLI が適切に機能するように、**node** がバージョン **6.11.1** であり、**npm** のバージョンが **3.10.10** であるようにしてください。
 
 ## {{ site.data.keys.mf_cli }} のインストール
 {: #installing-the-mobilefirst-cli }
@@ -92,14 +92,14 @@ DESCRIPTION
 | コマンド接頭部                                                | コマンド・アクション                               | 説明                                                             |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
 | `mfpdev app`	                                                | register                                     | アプリケーションを {{ site.data.keys.mf_server }} に登録します。                           |
-|                                                               | config                                       | アプリケーションで使用するバックエンド・サーバーおよびランタイムを指定できます。さらに、Cordova アプリケーションの場合、システム・メッセージのデフォルト言語やチェックサム・セキュリティー検査を実行するかどうかなどのさまざまな側面も構成できます。Cordova アプリケーションでは、その他の構成パラメーターが含まれます。                                                                                                                                                |
+|                                                               | config                                       | アプリケーションで使用するバックエンド・サーバーおよびランタイムを指定できます。 さらに、Cordova アプリケーションの場合、システム・メッセージのデフォルト言語やチェックサム・セキュリティー検査を実行するかどうかなどのさまざまな側面も構成できます。 Cordova アプリケーションでは、その他の構成パラメーターが含まれます。                                                                                                                                                |
 |                                                               | pull                                         | サーバーから既存のアプリケーション構成を取得します。                |
 |                                                               | push                                         | アプリケーションの構成をサーバーに送信します。                             |
-|                                                               | preview                                      | ターゲット・プラットフォーム・タイプの実際のデバイスがなくても Cordova アプリケーションをプレビューできます。{{ site.data.keys.mf_mbs }}か Web ブラウザーのいずれかでプレビューを表示できます。                                                                               |
+|                                                               | preview                                      | ターゲット・プラットフォーム・タイプの実際のデバイスがなくても Cordova アプリケーションをプレビューできるようにします。 {{ site.data.keys.mf_mbs }}か Web ブラウザーのいずれかでプレビューを表示できます。                                                                               |
 |                                                               | webupdate                                    | www ディレクトリーに入っているアプリケーション・リソースを、ダイレクト・アップデート・プロセスで使用できる .zip ファイルにパッケージします。                                                                                                                                     |
 | mfpdev server	                                                | info                                         | {{ site.data.keys.mf_server }} に関する情報を表示します。                      |
 |                                                               | add                                          | 新規サーバー定義を環境に追加します。                        |
-|                                                               | edit                                         | サーバー定義を編集できます。                                |
+|                                                               | edit                                         | サーバー定義を編集できるようにします。                                |
 |                                                               | remove                                       | サーバー定義を環境から削除します。                      |
 |                                                               | console                                      | {{ site.data.keys.mf_console }} を開きます。                               |
 |                                                               | clean                                        | アプリケーションを登録抹消し、アダプターを {{ site.data.keys.mf_server }} から削除します。      |
@@ -112,16 +112,16 @@ DESCRIPTION
 |                                                               | pull                                         | サーバーから既存のアダプター構成を取得します。                |
 |                                                               | push                                         | アダプターの構成をサーバーに送信します。                             |
 | mfpdev                                                        | config                                       | mfpdev コマンド・ライン・インターフェースのプレビュー・ブラウザー・タイプ、プレビュー・タイムアウト値、およびサーバー・タイムアウト値の構成設定を指定します。                                                                                                                   |
-|                                                               | info                                         | オペレーティング・システム、メモリー使用量、ノード・バージョン、コマンド・ライン・インターフェースのバージョンなど、環境に関する情報を表示します。現行ディレクトリーが Cordova アプリケーションである場合、Cordova cordova info コマンドで提供される情報も表示されます。 |
+|                                                               | info                                         | オペレーティング・システム、メモリー使用量、ノード・バージョン、コマンド・ライン・インターフェースのバージョンなど、環境に関する情報を表示します。 現行ディレクトリーが Cordova アプリケーションである場合、Cordova cordova info コマンドで提供される情報も表示されます。 |
 |                                                               | -v                                           | 現在使用されている {{ site.data.keys.mf_cli }} のバージョン番号を表示します。 |
 |                                                               | -d, --debug                                  | デバッグ・モード: デバッグ出力を生成します。                                      |
 |                                                               | -dd, --ddebug                                | 冗長デバッグ・モード: 冗長デバッグ出力を生成します。                      |
 |                                                               | -no-color                                    | コマンド出力でのカラーの使用を抑止します。                              |
-| mfpdev help                                                   | コマンドの名前                              | {{ site.data.keys.mf_cli }} (mfpdev) コマンドのヘルプを表示します。引数を指定した場合、各コマンド・タイプまたはコマンドに関するより具体的なヘルプ・テキストを表示します。例: 「mfpdev help server add」 |
+| mfpdev help                                                   | コマンドの名前                              | {{ site.data.keys.mf_cli }} (mfpdev) コマンドのヘルプを表示します。 引数を指定した場合、各コマンド・タイプまたはコマンドに関するより具体的なヘルプ・テキストを表示します。 例: 「mfpdev help server add」 |
 
 ## 対話モードと直接モード
 {: #interactive-and-direct-modes }
-すべてのコマンドは、**対話モード**または**直接モードで実行できます。**。対話モードでは、そのコマンドに必要なパラメーターの入力を求めるプロンプトが出され、いくつかのデフォルト値が使用されます。直接モードでは、実行するコマンドと一緒にパラメーターを指定する必要があります。
+すべてのコマンドは、**対話モード**または**直接モードで実行できます。**。 対話モードでは、そのコマンドに必要なパラメーターの入力を求めるプロンプトが出され、いくつかのデフォルト値が使用されます。 直接モードでは、実行するコマンドと一緒にパラメーターを指定する必要があります。
 
 例:
 
@@ -145,12 +145,12 @@ Server profile 'mydevserver' added successfully.
 mfpdev server add mydevserver --url http://mydevserver.example.com:9080 --login admin --password admin --setdefault
 ```
 
-直接モードでのコマンドの正しい構文を見るには、`mfpdev help < コマンドを使用します。>`.
+直接モードでのコマンドの正しい構文を見るには、`mfpdev help<command>` を使用します。
 
 
 ## {{ site.data.keys.mf_server }} インスタンスの管理
 {: #managing-mobilefirst-server-instances }
-`mfpdev server <option>` コマンドを使用すると、現在使用中の {{ site.data.keys.mf_server }} インスタンスを管理できます。常に、少なくとも 1 つのサーバー・インスタンスがデフォルト・インスタンスとしてリストされている必要があります。別のサーバーが指定されなかった場合は、常にデフォルト・サーバーが使用されます。
+`mfpdev server <option>` コマンドを使用すると、現在使用中の {{ site.data.keys.mf_server }} インスタンスを管理できます。 常に、少なくとも 1 つのサーバー・インスタンスがデフォルト・インスタンスとしてリストされている必要があります。   別のサーバーが指定されなかった場合は、常にデフォルト・サーバーが使用されます。
 
 ### サーバー・インスタンスのリスト
 {: #list-server-instances }
@@ -171,7 +171,7 @@ mfpdev server add
 ```
 
 対話式プロンプトに従って、サーバーの名前、サーバー URL、およびユーザー/パスワード資格情報を指定します。  
-例えば、Mobile Foundation Bluemix サービス上で稼働している {{ site.data.keys.mf_server }} を追加するには、次のようにします。
+例えば、Mobile Foundation IBM Cloud サービス上で稼働している {{ site.data.keys.mf_server }} を追加するには、次のようにします。
 
 ```bash
 $ mfpdev server add
@@ -185,7 +185,7 @@ $ mfpdev server add
 ? Make this server the default?: Yes
 Verifying server configuration...
 The following runtimes are currently installed on this server: mfp
-Server profile 'MyBluemixServer' added successfully. 
+Server profile 'MyBluemixServer' added successfully.
 ```
 
 - 「fully qualified URL of this server」は、使用するサーバーの URL に置き換えてください。
@@ -269,7 +269,7 @@ Android アプリケーションまたは Windows アプリケーションの場
 mfpdev app register <server> <runtime>
 ```
 
-Cordova Windows プラットフォームの場合は、`-w <platform>` 引数をコマンドに追加する必要があります。`<platform>` 引数は、登録する Windows プラットフォームのコンマ区切りリストです。有効値は、`windows`、`windows8`、および `windowsphone8` です。
+Cordova Windows プラットフォームの場合は、`-w<platform>` 引数をコマンドに追加する必要があります。  `<platform>` 引数は、登録する Windows プラットフォームのコンマ区切りリストです。 有効値は、`windows`、`windows8`、および `windowsphone8` です。
 
 ```
 mfpdev app register -w windows8
@@ -291,17 +291,17 @@ mfpdev app config
 
 * アプリケーションの登録先となるサーバー・アドレスおよびサーバー・ランタイム
 
-    > **ユース・ケースの例:** アプリケーションを、ある特定のアドレスを持つ {{ site.data.keys.mf_server }} に登録するが、さらにそのアプリケーションが異なるサーバー・アドレス (DataPower アプライアンスなど) に接続するように設定する場合は、次のようにします。
+    > **ユース・ケース例:** アプリケーションを、ある特定のアドレスの {{ site.data.keys.mf_server }} に登録するが、そのアプリケーションが別のサーバー・アドレス (例えば DataPower アプライアンス) に接続するようにもするには、次のようにします。
     >
     > 1. `mfpdev app register` を実行して、アプリケーションを目的の {{ site.data.keys.mf_server }} アドレスに登録します。
-    > 2. `mfpdev app config` を実行し、**server** プロパティーの値を、DataPower アプライアンスのアドレスと一致するように変更します。また、このコマンドを**直接モード**で、次のように実行することもできます: `mfpdev app config server http(s)://server-ip-or-host:port`
+    > 2. `mfpdev app config` を実行し、**server** プロパティーの値を、DataPower アプライアンスのアドレスと一致するように変更します。 また、このコマンドを**直接モード**で、次のように実行することもできます: `mfpdev app config server http(s)://server-ip-or-host:port`
 
-* ダイレクト・アップデートの認証性フィーチャー用の公開鍵の設定 
+* ダイレクト・アップデートの認証性フィーチャー用の公開鍵の設定
 * アプリケーションのデフォルト言語の設定 (デフォルトは英語 (en))
 * Web リソース・チェックサム・テストを有効にするかどうか
 * Web リソース・チェックサム・テストで無視するファイル拡張子
 
-<div class="panel-group accordion" id="app-config" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="app-config" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="app-config-options">
             <h4 class="panel-title">
@@ -311,8 +311,8 @@ mfpdev app config
 
         <div id="collapse-app-config-options" class="panel-collapse collapse" role="tabpanel" aria-labelledby="app-config-options">
             <div class="panel-body">
-                <p>Web リソース・チェックサムの設定については、使用可能なターゲット・プラットフォーム (Android、iOS、Windows 8、Windows Phone 8、Windows 10 UWP) ごとに、<b>mfpdev</b> 直接モードで使用するためのプラットフォーム固有の鍵があります。これらの鍵は、プラットフォーム名を表すストリングで始まります。例えば、<code>windows10_security_test_web_resources_checksum</code> は、Windows10 UWP で Web リソース・チェックサム・テストを有効にするかどうかを指定する true/false 設定です。</p>
-                
+                <p>Web リソース・チェックサムの設定については、使用可能なターゲット・プラットフォーム (Android、iOS、Windows 8、Windows Phone 8、Windows 10 UWP) ごとに、<b>mfpdev</b> 直接モードで使用するためのプラットフォーム固有の鍵があります。 これらの鍵は、プラットフォーム名を表すストリングで始まります。 例えば、<code>windows10_security_test_web_resources_checksum</code> は、Windows10 UWP で Web リソース・チェックサム・テストを有効にするかどうかを指定する true/false 設定です。</p>
+
                 <table class="table table-striped">
                     <tr>
                         <td><b>設定</b></td>
@@ -320,50 +320,50 @@ mfpdev app config
                     </tr>
                     <tr>
                         <td><code>direct_update_authenticity_public_key</code></td>
-                        <td>ダイレクト・アップデート認証の公開鍵を指定します。鍵は Base64 形式でなければなりません。</td>
+                        <td>ダイレクト・アップデート認証の公開鍵を指定します。 鍵は Base64 形式でなければなりません。</td>
                     </tr>
                     <tr>
                         <td><code>ios_security_test_web_resources_checksum</code></td>
-                        <td><code>true</code> に設定した場合、iOS Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。デフォルトは <code>false</code> です。</td>
+                        <td><code>true</code> に設定した場合、iOS Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。 デフォルトは <code>false</code> です。</td>
                     </tr>
                     <tr>
                         <td><code>android_security_test_web_resources_checksum</code></td>
-                        <td><code>true</code> に設定した場合、Android Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。デフォルトは <code>false</code> です。</td>
+                        <td><code>true</code> に設定した場合、Android Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。 デフォルトは <code>false</code> です。</td>
                     </tr>
                     <tr>
                         <td><code>windows10_security_test_web_resources_checksum</code></td>
-                        <td><code>true</code> に設定した場合、Windows 10 UWP Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。デフォルトは <code>false</code> です。</td>
+                        <td><code>true</code> に設定した場合、Windows 10 UWP Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。 デフォルトは <code>false</code> です。</td>
                     </tr>
                     <tr>
                         <td><code>windows8_security_test_web_resources_checksum</code></td>
-                        <td><code>true</code> に設定した場合、Windows 8.1 Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。デフォルトは <code>false</code> です。</td>
+                        <td><code>true</code> に設定した場合、Windows 8.1 Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。 デフォルトは <code>false</code> です。</td>
                     </tr>
                     <tr>
                         <td><code>windowsphone8_security_test_web_resources_checksum</code></td>
-                        <td><code>true</code> に設定した場合、Windows Phone 8.1 Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。デフォルトは <code>false</code> です。</td>
+                        <td><code>true</code> に設定した場合、Windows Phone 8.1 Cordova アプリケーションに対する Web リソース・チェックサムのテストが有効になります。 デフォルトは <code>false</code> です。</td>
                     </tr>
                     <tr>
                         <td><code>ios_security_ignore_file_extensions</code></td>
-                        <td>iOS Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。複数の拡張子はコンマで区切って指定します。例えば、jpg,gif,pdf などです。</td>
+                        <td>iOS Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。 複数の拡張子はコンマで区切って指定します。 例えば、jpg,gif,pdf などです。</td>
                     </tr>
                     <tr>
                         <td><code>android_security_ignore_file_extensions</code></td>
-                        <td>Android Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。複数の拡張子はコンマで区切って指定します。例えば、jpg,gif,pdf などです。</td>
+                        <td>Android Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。 複数の拡張子はコンマで区切って指定します。 例えば、jpg,gif,pdf などです。</td>
                     </tr>
                     <tr>
                         <td><code>windows10_security_ignore_file_extensions</code></td>
-                        <td>Windows 10 UWP Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。複数の拡張子はコンマで区切って指定します。例えば、jpg,gif,pdf などです。</td>
+                        <td>Windows 10 UWP Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。 複数の拡張子はコンマで区切って指定します。 例えば、jpg,gif,pdf などです。</td>
                     </tr>
                     <tr>
                         <td><code>windows8_security_ignore_file_extensions</code></td>
-                        <td>Windows 8.1 Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。複数の拡張子はコンマで区切って指定します。例えば、jpg,gif,pdf などです。</td>
+                        <td>Windows 8.1 Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。 複数の拡張子はコンマで区切って指定します。 例えば、jpg,gif,pdf などです。</td>
                     </tr>
                     <tr>
                         <td><code>windowsphone8_security_ignore_file_extensions</code></td>
-                        <td>Windows Phone 8.1 Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。複数の拡張子はコンマで区切って指定します。例えば、jpg,gif,pdf などです。</td>
+                        <td>Windows Phone 8.1 Cordova アプリケーションに対する Web リソース・チェックサム・テスト時に無視するファイル拡張子を指定します。 複数の拡張子はコンマで区切って指定します。 例えば、jpg,gif,pdf などです。</td>
                     </tr>
                 </table>
- 
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#app-config-options" data-target="#collapse-app-config-options" aria-expanded="false" aria-controls="collapse-app-config-options"><b>セクションを閉じる</b></a>
             </div>
@@ -374,9 +374,9 @@ mfpdev app config
 
 ### Cordova アプリケーションのプレビュー
 {: #preview-a-cordova-application }
-ブラウザーを使用して Cordova アプリケーションの Web リソースをプレビューすることができます。アプリケーションをプレビューすることで、ネイティブ・プラットフォーム固有のエミュレーターやシミュレーターを使用することなく、迅速な開発が可能になります。
+ブラウザーを使用して Cordova アプリケーションの Web リソースをプレビューすることができます。 アプリケーションをプレビューすることで、ネイティブ・プラットフォーム固有のエミュレーターやシミュレーターを使用することなく、迅速な開発が可能になります。
 
-プレビュー・コマンドを実行する前に、`wlInitOptions` 変数を追加することによってそのプロジェクトを準備する必要があります。以下のステップを実行します。
+プレビュー・コマンドを実行する前に、`wlInitOptions` 変数を追加することによってそのプロジェクトを準備する必要があります。 以下のステップを実行します。
 
 1. *wlInitOptions* 変数を、メインの JavaScript ファイル (標準 Cordova アプリケーション内の **index.js**) に追加します。
 
@@ -394,7 +394,7 @@ mfpdev app config
    ```
 
  3. 以下のコマンドを実行します。
- 
+
     ```bash
     cordova prepare
     ```
@@ -408,14 +408,14 @@ mfpdev app config
 どのプラットフォームをプレビューし、どのタイプのプレビューを使用するかを選択するためのプロンプトが出されます。
 プレビューのオプションには、MBS とブラウザーの 2 つがあります。
 
-* MBS: {{ site.data.keys.mf_mbs }}。この方式は、ブラウザーでモバイル・デバイスをシミュレートするだけでなく、カメラ、ファイルのアップロード、地理位置情報など、基本的な Cordova API のシミュレーションも提供します。注: MBS オプションでは Cordova Browser は使用できません。
-* ブラウザー: Simple Browser レンダリング。この方式は、Cordova アプリケーションの www リソースを、通常のブラウザーの Web ページとして表現します。
+* MBS: {{ site.data.keys.mf_mbs }}。 この方式は、ブラウザーでモバイル・デバイスをシミュレートするだけでなく、カメラ、ファイルのアップロード、地理位置情報など、基本的な Cordova API のシミュレーションも提供します。 注: MBS オプションでは Cordova Browser は使用できません。
+* ブラウザー: Simple Browser レンダリング。 この方式は、Cordova アプリケーションの www リソースを、通常のブラウザーの Web ページとして表現します。
 
 > プレビュー・オプションについて詳しくは、[Cordova 開発のチュートリアル](../cordova-apps)を参照してください。
 
 ### ダイレクト・アップデートでの Web リソースの更新
 {: #update-web-resources-for-direct-update }
-モバイル・デバイスでアプリケーションを再インストールしなくても、Cordova アプリケーションの Web リソース (**www** フォルダー内にある .html ファイル、.css ファイル、.js ファイルなど) を更新できます。これは、{{ site.data.keys.product }} によって提供されるダイレクト・アップデート・フィーチャーによって可能になります。
+モバイル・デバイスでアプリケーションを再インストールしなくても、Cordova アプリケーションの Web リソース (**www** フォルダー内にある .html ファイル、.css ファイル、.js ファイルなど) を更新できます。 これは、{{ site.data.keys.product }} によって提供されるダイレクト・アップデート・フィーチャーによって可能になります。
 
 > ダイレクト・アップデートがどのように機能するかについて詳しくは、チュートリアル[Cordova アプリケーションでのダイレクト・アップデートの使用](../direct-update)を参照してください。
 
@@ -425,7 +425,7 @@ mfpdev app config
 mfpdev app webupdate
 ```
 
-このコマンドにより、更新された Web リソースが .zip ファイルにパッケージ化され、登録済みのデフォルトの {{ site.data.keys.mf_server }} にアップロードされます。パッケージ化された Web リソースは、**[cordova-project-root-folder]/mobilefirst/** フォルダー内にあります。
+このコマンドにより、更新された Web リソースが .zip ファイルにパッケージ化され、登録済みのデフォルトの {{ site.data.keys.mf_server }} にアップロードされます。 パッケージ化された Web リソースは、**[cordova-project-root-folder]/mobilefirst/** フォルダー内にあります。
 
 Web リソースを別のサーバー・インスタンスにアップロードするには、コマンドの一部としてサーバー名とランタイムを指定します。
 
@@ -465,7 +465,7 @@ mfpdev app pull
 mfpdev app push
 ```
 
-**例:** {{ site.data.keys.mf_console }} でセキュリティー検査へのスコープ・マッピングを実行した後、上記のコマンドを使用してサーバーからプルすることができます。ダウンロードした .zip ファイルは、プロジェクトの **[root directory]/mobilefirst** フォルダーに保管されるので、後でこれを `mfpdev app push` コマンドを使用して別の {{ site.data.keys.mf_server }} にアップロードすることができます。このように、事前に定義済みの構成を再利用することで、迅速な構成とセットアップが可能になります。
+**例:** {{ site.data.keys.mf_console }} でセキュリティー検査へのスコープ・マッピングを実行した後、上記のコマンドを使用してサーバーからプルすることができます。 ダウンロードした .zip ファイルは、プロジェクトの **[root directory]/mobilefirst** フォルダーに保管されるので、後でこれを `mfpdev app push` コマンドを使用して別の {{ site.data.keys.mf_server }} にアップロードすることができます。このように、事前に定義済みの構成を再利用することで、迅速な構成とセットアップが可能になります。
 
 ## アダプターの管理とテスト
 {: #managing-and-testing-adapters }
@@ -516,7 +516,7 @@ mfpdev adapter deploy <server_name>
 mfpdev adapter call
 ```
 
-使用するアダプター、プロシージャー、およびパラメーターを指定するよう求めるプロンプトが出されます。コマンドの実行結果として、アダプター・プロシージャーの応答が出力されます。
+使用するアダプター、プロシージャー、およびパラメーターを指定するよう求めるプロンプトが出されます。 コマンドの実行結果として、アダプター・プロシージャーの応答が出力されます。
 
 > 詳しくは、[アダプターのテストおよびデバッグ](../../adapters/testing-and-debugging-adapters/)に関するチュートリアルを参照してください。
 

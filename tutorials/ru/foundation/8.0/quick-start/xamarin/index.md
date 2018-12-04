@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Подробная демонстрация для Xamarin
+title: Сквозная демонстрация для Xamarin
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 6
@@ -122,21 +122,22 @@ weight: 6
 <!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
 ### 5. Тестирование приложения
 {: #5-testing-the-application }
-1. В Xamarin Studio выберите файл **mfpclient.plist** и укажите значения свойств **protocol**, **host** и **port** с учетом параметров сервера {{ site.data.keys.mf_server }}.
+1. В Xamarin Studio выберите файл `mfpclient.properties` и укажите значения свойств **protocol**, **host** и **port** с учетом параметров сервера {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
-    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в Bluemix): **https**, **your-server-address** и **443**.
-
+    * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **адрес-сервера** и **443**.
+    * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
+    
 2. Нажмите кнопку **Воспроизвести**.
 
 <br clear="all"/>
 ### Результаты
 {: #results }
-* При нажатии кнопки **Проверить связь с сервером MobileFirst** выдается сообщение **Установлено соединение с сервером MobileFirst**.
+* При нажатии кнопки **Проверить связь с MobileFirst Server** выдается сообщение **Установлено соединение с MobileFirst Server**.
 * Если приложению удалось подключиться к {{ site.data.keys.mf_server }}, ресурс запрашивается с помощью развернутого адаптера Java.
 
 Ответ адаптера отображается в консоли Xamarin Studio.
 
-![Изображение приложения, успешно вызвавшего ресурс из {{ site.data.keys.mf_server }}](console-output.png)
+![Приложение после успешного вызова ресурса из {{ site.data.keys.mf_server }}](console-output.png)
 
 ## Дальнейшие действия
 {: #next-steps }

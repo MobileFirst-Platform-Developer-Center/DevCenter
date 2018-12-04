@@ -44,7 +44,7 @@ Es gibt verschiedene Arten von Benachrichtigungen:
 * **Interactive (iOS ab Version 8)** - Aktionsschaltflächen im Banner einer empfangenen Benachrichtigung
 * **Silent (iOS ab Version 8)** - Senden von Benachrichtigungen, ohne den Benutzer zu stören
 
-### Arten von Push-Benachrichtigungen 
+### Arten von Push-Benachrichtigungen
 {: #push-notification-types }
 #### Tagbasierte Benachrichtigungen
 {: #tag-notifications }
@@ -64,9 +64,7 @@ das Abonnement des reservierten Tags `Push.all` beendet wird.
 
 #### Unicastbenachrichtigungen
 {:# unicast-notifications }
-Unicastbenachrichtigungen oder mit OAuth geschützte authentifizierte Benachrichtigungen
-sind Benachrichtigungen, die an ein
-bestimmtes Gerät oder an bestimmte Benutzer-IDs gesendet werden. Die Benutzer-ID (userID) im Benutzerabonnement kann aus dem
+Unicastbenachrichtigungen oder mit OAuth geschützte authentifizierte Benachrichtigungen sind Benachrichtigungen, die an ein bestimmtes Gerät oder an bestimmte Benutzer-IDs gesendet werden. Die Benutzer-ID (userID) im Benutzerabonnement kann aus dem
 zugrunde liegenden Sicherheitskontext stammen. 
 
 #### Interaktive Benachrichtigungen
@@ -100,13 +98,222 @@ Informationen zum Konfigurieren eines Gateways enthält das Lernprogramm [Benach
 
 ## Proxy-Einstellungen
 {: #proxy-settings }
-In den Proxy-Einstellungen können Sie den optionalen Proxy festlegen, über den Benachrichtigungen
-an APNS
-und GCM gesendet werden. Verwenden Sie die Konfigurationseigenschaften **push.apns.proxy.*** und **push.gcm.proxy.***, um den Proxy festzulegen. Weitere Informationen
+In den Proxy-Einstellungen können Sie den optionalen Proxy festlegen, über den Benachrichtigungen an APNS und FCM gesendet werden. Verwenden Sie die Konfigurationseigenschaften **push.apns.proxy.*** und **push.gcm.proxy.***, um den Proxy festzulegen. Weitere Informationen
 finden Sie in der [Liste der
 JNDI-Eigenschaften für den MobileFirst-Server-Push-Service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
 > **Hinweis:** WNS bietet keine Proxyunterstützung. 
+
+### WebSphere DataPower als Endpunkt für Push-Benachrichtigungen verwenden
+{: #proxy-settings-datapower }
+
+Sie können DataPower so einrichten, dass Anforderungen von MobileFirst Server akzeptiert und dann an FCM, SMS und WNS weitergeleitet werden.
+
+Beachten Sie, dass APNS nicht unterstützt wird. 
+
+#### MobileFirst Server konfigurieren
+{: #proxy-settings-datapower-1 }
+
+Konfigurieren Sie in der Datei `server.xml` die folgende JNDI-Eigenschaft:
+```
+<jndiEntry jndiName="imfpush/mfp.push.dp.endpoint" value = '"https://Host"' />
+<jndiEntry jndiName="imfpush/mfp.push.dp.gcm.port" value = '"Port"' />
+<jndiEntry jndiName="imfpush/mfp.push.dp.wns.port" value = '"Port"' />
+```
+
+Hier steht `Host` für den DataPower-Hostnamen und `Port` für die Portnummer, die für den HTTPS-Front-Side-Handler für FCM und WNS konfiguriert ist. 
+
+Konfigurationseinstellungen für SMS werden im Rahmen eines REST-API-Aufrufs bereitgestellt. Es müssen keine JNDI-Eigenschaften angegeben werden. 
+
+#### DataPower konfigurieren
+{: #proxy-settings-datapower-2 }
+
+1. Melden Sie sich beim DataPower-Gerät an.
+2. Navigieren Sie zu **Services** > **Multi-Protocol Gateway** > **New Multi-Protocol Gateway**.
+3. Geben Sie einen Namen für die Identifikation der Konfiguration an. 
+4. Wählen Sie den XML-Manager aus, geben Sie "Multi-Protocol Gateway Policy" als Standard an und setzen Sie "URL Rewrite Policy" auf "none". 
+5. Wählen Sie das Optionsfeld **static-backend** aus. Wählen Sie für **set Default Backend URL** die folgenden Optionen aus:
+	- FCM:	`https://gcm-http.googleapis.com`
+	- SMS:	`http://<Beispiel-Gateway>/gateway`
+	- WNS:	`https://hk2.notify.windows.com`
+6. Wählen Sie für "Response Type" und "Request Type" die Option "pass through" aus.
+
+#### Zertifikat generieren
+{: #proxy-settings-datapower-3 }
+
+Wählen Sie aus folgenden Optionen, um das Zertifikat zu generieren: 
+
+- FCM:
+	1. Setzen Sie in der Befehlszeile `Openssl` ab, um die FCM-Zertifikate zu erhalten. 
+	2. Führen Sie den folgenden Befehl aus:
+		```
+		openssl s_client -connect gcm-http.googleapis.com:443
+		```
+	3. Kopieren Sie den Inhalt von -----BEGIN CERTIFICATE-----  bis -----END CERTIFICATE----- und speichern Sie ihn in einer Datei mit der Erweiterung `.pem`. 
+
+- Für SMS sind keine Zertifikate erforderlich.
+- WNS:
+	1. Verwenden Sie in der Befehlszeile den Befehl `Openssl`, um die WNS-Zertifikate zu erhalten. 
+	2. Führen Sie den folgenden Befehl aus:
+		```
+		openssl s_client -connect https://hk2.notify.windows.com:443
+		```
+	3. Kopieren Sie den Inhalt von -----BEGIN CERTIFICATE-----  bis -----END CERTIFICATE----- und speichern Sie ihn in einer Datei mit der Erweiterung `.pem`. 
+
+#### Backside-Einstellungen
+{: #proxy-settings-datapower-4 }
+
+
+- FCM und WNS:
+
+	1. Erstellen Sie ein Crypto-Zertifikat: 
+
+		a. Navigieren Sie zu **Objects** > **Crypto Configuration** und klicken Sie auf **Crypto certificate**.
+
+		b. Geben Sie einen Namen für die Identifikation des Crypto-Zertifikats an. 
+
+		c. Klicken Sie auf **Upload**, um das generierte FCM-Zertifikat hochzuladen. 
+
+		d. Geben Sie für **Password Alias** "none" an. 
+
+		e. Klicken Sie auf **Generate key**.
+		![Crypto-Zertifikat konfigurieren](sending-notifications/bck_1.gif)
+
+	2. Erstellen Sie einen Berechtigungsnachweis für die Crypto-Validierung:
+
+		a. Navigieren Sie zu **Objects** > **Crypto Configuration** und klicken Sie auf **Crypto Validation Credential**.
+
+		b. Geben Sie einen eindeutigen Namen an.
+
+		c. Wählen Sie für "Certificates" das im vorherigen Schritt (Schritt 1) erstellte Crypto-Zertifikat aus. 
+
+		d. Wälen Sie für **Certificate Validation Mode** die Option "Match exact certificate" oder "Immediate issuer" aus.
+
+		e. Klicken Sie auf **Apply**.
+		![Berechtigungsnachweis für die Crypto-Validierung konfigurieren](sending-notifications/bck_2.gif)
+
+	3. Erstellen Sie ein Crypto-Profil: 
+
+		a. Navigieren Sie zu **Objects** > **Crypto Configuration** und klicken Sie auf **Crypto Profile**.
+
+		b. Klicken Sie auf **Add**.
+
+		c. Geben Sie einen eindeutigen Namen an.
+
+		d. Wählen Sie für **Validation Credentials** im Dropdown-Menü den im vorherigen Schritt (Schritt 2) erstellten Berechtigungsnachweis für die Validierung aus und setzen Sie "Identification Credentials" auf **None**.
+
+		e. Klicken Sie auf **Apply**.
+		![Crypto-Profil konfigurieren](sending-notifications/bck_3.gif)
+
+	4. Erstellen Sie ein SSL-Proxy-Profil:
+
+		a. Navigieren Sie zu **Objects** > **Crypto Configuration** > **SSL Proxy Profile**.
+
+		b. Wählen Sie eine der folgenden Optionen aus:
+
+		- SMS: Wählen Sie für **SSL Proxy Profile** "None" aus. 
+		- Führen Sie für FCM und WNS mit geschützter Back-End-URL (HTTPS) die folgenden Schritte aus: 
+			1.	Klicken Sie auf **Add**.
+
+			2.	Geben Sie einen Namen für die spätere Identifizierung des SSL-Proxy-Profils an. 
+
+			3.	Wählen Sie für **SSL Direction** im Dropdown-Menü **Forward** aus. 
+
+			4.	Wählen Sie für "Forward (Client) Crypto Profile" das in Schritt 3 erstellte Crypto-Profil aus. 
+
+			5.	Klicken Sie auf **Apply**.
+			![SSL-Proxy-Profil konfigurieren](sending-notifications/bck_4.gif)
+
+	5. Wählen Sie im Fenster "Multi-Protocol Gateway" unter **Back side settings** für **SSL client type** die Option **Proxy Profile** aus. Wählen Sie dann das in Schritt 4 erstellte SSL-Proxy-Profil aus.
+	 ![SSL-Proxy-Profil konfigurieren](sending-notifications/bck_5.gif)
+
+- Für SMS sind keine Back-Side-Einstellungen erforderlich. 
+
+#### Front-Side-Einstellungen
+{: #proxy-settings-datapower-5 }
+
+- FCM, WNS und SMS:
+
+
+	1. Erstellen Sie ein Schlüssel-Zertifikat-Paar und geben Sie als allgemeinen Namen (CN, Common Name) den DataPower-Hostnamen an:
+
+		a. Navigieren Sie zu **Administration** > **Miscellaneous** und klicken Sie auf **Crypto Tools**.
+
+		b. Geben Sie den DataPower-Hostnamen als Wert für den allgemeinen Namen (CN) an.
+
+		c. Wählen Sie **Export private key** aus, wenn Sie den privaten Schlüssel später exportieren möchten, und klicken Sie auf **Generate Key**.
+		![Schlüssel-Zertifikat-Paar erstellen](sending-notifications/frnt_1.gif)
+
+	2. Erstellen Sie einen Berechtigungsnachweis für die Crypto-Identifikation:
+
+		a. Navigieren Sie zu **Objects** > **Crypto Configuration** und klicken Sie auf **Crypto Identification Credentials**.
+
+		b. Klicken Sie auf **Add**.
+
+		c. Geben Sie einen eindeutigen Namen an.
+
+		d. Wählen Sie für "Crypto Key" und "Certificate" im Listenfeld den im vorherigen Schritt (d. h. Schritt 1) generierten Schlüssel sowie das generierte Zertifikat aus. 
+
+		e. Klicken Sie auf **Apply**.
+		![Berechtigungsnachweis für die Crypto-Identifikation erstellen](sending-notifications/frnt_2.gif)
+
+	3. Erstellen Sie ein Crypto-Profil:
+
+		a. Navigieren Sie zu **Objects** > **Crypto Configuration** und klicken Sie auf **Crypto Profile**.
+
+		b. Klicken Sie auf **Add**.
+
+		c. Geben Sie einen eindeutigen Namen an.
+
+		d. Wählen Sie für "Identification Credentials" im Listenfeld den im vorherigen Schritt (Schritt 2) erstellten Berechtigungsnachweis für die Identifikation aus. Setzen Sie "Validation credentials" auf "none".
+
+		e. Klicken Sie auf **Apply**.
+		![Crypto-Profil konfigurieren](sending-notifications/frnt_3.gif)
+
+	4. Erstellen Sie ein SSL-Proxy-Profil:
+
+		a. Navigieren Sie zu **Objects** > **Crypto Configuration** > **SSL Proxy Profile**.
+
+		b. Klicken Sie auf **Add**.
+
+		c. Geben Sie einen eindeutigen Namen an.
+
+		d. Wählen Sie für "SSL Direction" im Listenfeld **Reverse** aus.
+
+		e. Wählen Sie für "Reverse (Server) Crypto Profile" das im vorherigen Schritt (Schritt 3) erstellte Crypto-Profil aus.  
+
+		f. Klicken Sie auf **Apply**.
+		![SSL-Proxy-Profil konfigurieren](sending-notifications/frnt_4.gif)
+
+	5. Erstellen Sie einen HTTPS-Front-Side-Handler:
+
+		a. Navigieren Sie zu **Objects** > **Protocol Handlers** > **HTTPS Front Side Handler**.
+
+		b. Klicken Sie auf **Add**.
+
+		c. Geben Sie einen eindeutigen Namen an.
+
+		d. Wählen Sie für **Local IP address** den korrekten Alias aus oder übernehmen Sie den Standardwert (0.0.0.0).
+
+		e. Geben Sie einen verfügbaren Port an.
+
+		f. Wählen Sie für **Allowed methods and versions** "HTTP 1.0", "HTTP 1.1", "POST method", "GET method", "URL with ?", "URL with #", "URL with ." aus.
+
+		g. Wählen Sie **Proxy Profile** als SSL-Servertyp aus.
+
+		h. Wählen Sie für "SSL proxy profile (deprecated)" das im vorherigen Schritt (Schritt 4) erstellte SSL-Proxy-Profil aus.
+
+		i. Klicken Sie auf **Apply**.
+		![HTTPS-Front-Side-Handler](sending-notifications/frnt_5.gif)
+
+	6. Wählen Sie auf der Seite "Configure Multi-Protocol Gateway" unter **Front side settings** den in Schritt 5 erstellten HTTPS-Front-Side-Handler als **Front Side Protocol** aus und klicken Sie auf **Apply**.
+
+	![Allgemeine Konfiguration](sending-notifications/frnt_6.gif)
+
+	Das von DataPower in den Front-Side-Einstellungen verwendete Zertifikat ist selbst signiert. Verbindungen zu DataPower können erst hergestellt werden, wenn dieses Zertifikat zu dem von MobileFirst verwendeten JRE-Keystore hinzugefügt wurde. 
+
+	Gehen Sie zum Hinzufügen des selbst signierten Zertifikats zum JRE-Keystore gemäß den Anweisungen im folgenden Dokument vor: [IBM Worklight Server and self-signed certificates](https://www.ibm.com/support/knowledgecenter/SSZH4A_5.0.5/com.ibm.worklight.help.doc/admin/t_ibm_worklight_server_and_self-signed_certificates.html).
+
 
 ## Nächste Lernprogramme
 {: #tutorials-to-follow-next }

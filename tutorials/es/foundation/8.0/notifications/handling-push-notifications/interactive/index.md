@@ -1,30 +1,30 @@
 ---
 layout: tutorial
-title: Interactive notifications
+title: Notificaciones interactivas
 relevantTo: [ios, cordova]
 show_in_nav: false
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message.
+En las notificaciones interactivas, cuando una notificación llega, los usuarios pueden tomar acciones con relación a la misma sin abrir la aplicación. Cuando llega una notificación interactiva, el dispositivo muestra los botones de la acción junto con el mensaje de notificación.
 
-Interactive notifications are supported on devices with iOS version 8 and above. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
+Las notificaciones interactivas están soportadas en dispositivos en iOS versión 8 y posterior. Si se envía una notificación interactiva a un dispositivo iOS con una versión anterior a la versión 8, las acciones de la notificación no se visualizarán.
 
-## Sending interactive push notification
+## Enviar notificaciones push interactivas
 {: #sending-interactive-push-notification }
-Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
+La notificación se debe preparar antes de enviarla. Para obtener más información, consulte [Envío de notificaciones push](../../sending-notifications).
 
-You can set a string to indicate the category of the notification with the notification object, under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. Based on the category value, the notification action buttons are displayed. For example:
+Establezca una serie para indicar la categoría de la notificación con el objeto de notificación, bajo **{{ site.data.keys.mf_console }} → [su aplicación] → Push → Enviar notificaciones → Valores personalizados iOS**. Basándose en el valor de la categoría, se visualizan los botones de acción de la notificación. Por ejemplo:
 
-![Setting categories for iOS interactive notifications in the {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
+![Establecer categorías para notificaciones interactivas de iOS en {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
 
-## Handling interactive push notifications in Cordova applications
+## Manejo de notificaciones push interactivas en aplicaciones Cordova
 {: #handling-interactive-push-notifications-in-cordova-applications }
-To receive interactive notifications, follow these steps:
+Para recibir notificaciones interactivas, siga estos pasos:
 
-1. In the main JavaScript, define the registered categories for interactive notification and pass it to device register call `MFPPush.registerDevice`.
+1. En la sección JavaScript main, defina las categorías registradas para la notificación interactiva y pásela a la llamada de registro de dispositivo `MFPPush.registerDevice`.
 
    ```javascript
    var options = {
@@ -74,7 +74,7 @@ To receive interactive notifications, follow these steps:
    }
    ```
 
-2. Pass the `options` object while registering device for push notifications.
+2. Pase el objeto `options` mientras registra el dispositivo para las notificaciones push.
 
    ```javascript
    MFPPush.registerDevice(options, function(successResponse) {
@@ -83,12 +83,12 @@ To receive interactive notifications, follow these steps:
    });  
    ```
 
-## Handling interactive push notifications in native iOS applications
+## Manejo de notificaciones push interactivas en aplicaciones iOS nativas
 {: #handling-interactive-push-notifications-in-native-ios-applications }
-Follow these steps to receive interactive notifications:
+Siga estos pasos para recibir notificaciones interactivas:
 
-1. Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.
-2. Define registered categories for interactive notifications and pass them as options to `MFPPush.registerDevice`.
+1. Habilite la funcionalidad de la aplicación para realizar tareas de fondo al recibir las notificaciones remotas. Este paso es necesario si algunas de las acciones están habilitadas para procesos de fondo.
+2. Defina categorías registradas para las notificaciones interactivas y páselas como opciones a `MFPPush.registerDevice`.
 
    ```swift
    //define categories for Interactive Push

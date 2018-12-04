@@ -1,103 +1,113 @@
 ---
-layout: tutorial
-title: Log and trace collection
-relevantTo: [ios,android,windows,javascript]
-weight: 1
+layout: redirect
+new_url: /404/
+sitemap: false
+#layout: tutorial
+#title: Log and trace collection
+#relevantTo: [ios,android,windows,javascript]
+#weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview 
+## Visión general
 {: #overview }
-IBM Containers for Bluemix provides some built-in logging and monitoring capabilites around container CPU, memory, and networking. You can optionally change the log levels for your {{ site.data.keys.product_adj }} containers.
+IBM Containers para IBM Cloud incluye funciones de registro y supervisión relacionadas con la CPU, la memoria y las redes. Opcionalmente, puede cambiar los niveles de registro para sus contenedores de {{ site.data.keys.product_adj }}.
 
-The option to create log files for the {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} containers is enabled by default (using level `*=info`). You can change the log levels by either adding a code override manually or by injecting code using a given script file. Both container logs and server or runtime logs can be viewed from a Bluemix logmet console by means of the Kibana visualization tool. Monitoring can be done from a Bluemix logmet console by means of Grafana, an open source metrics dashboard and graph editor.
+La opción para crear archivos de registro para contenedores de {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} y {{ site.data.keys.mf_app_center }} está habilitada de forma predeterminada (utilizando el nivel (`*=info`). Puede cambiar los niveles de registro añadiendo una alteración manual de código o inyectando código mediante un archivo de script determinado. Los registros de contenedor, servidor y tiempo de ejecución se pueden visualizar desde una consola logmet de IBM Cloud mediante la herramienta de visualización Kibana. La supervisión se puede llevar a cabo desde una consola logmet de IBM Cloud mediante Grafana, un panel de control de métricas de código abierto y un editor de gráficos.
 
-When your {{ site.data.keys.product_adj }} container is created with a Secure Shell (SSH) key and bound to a public IP address, a suitable private key can be used to securely view the logs for the container instance.
+Cuando crea se crea su contenedor {{ site.data.keys.product_adj }} con una clave SSH (Secure Shell) y se enlaza a una dirección IP pública, puede utilizar una clave privada adecuada para ver de forma segura los registros de la instancia del contenedor.
 
-### Logging overrides
+### Alteraciones temporales del registro
 {: #logging-overrides }
-You can change the log levels by either adding a code override manually or by injecting code using a given script file. Adding a code override manually to change the log level must be done when you are first preparing the image. You must add the new logging configuration to the **package\_root/mfpf-[analytics|server]/usr/config** folder as a separate configuration snippet, which gets copied to the configDropins/overrides folder on the Liberty server.
+Puede cambiar los niveles de registro añadiendo una alteración manual de código o inyectando código mediante un archivo de script determinado. La adición de una alteración temporal de código para cambiar el nivel de registro se debe realizar cuando se prepara por primera vez la imagen. Debe añadir la nueva configuración del registro a la carpeta **package\_root/mfpf-[analytics|server]/usr/config** y a la carpeta **package_root/mfp-appcenter/usr/config** como un fragmento de código de configuración separado, que se copia en la carpeta configDropins/overrides del servidor Liberty.
 
-Injecting code using a given script file to change the log level can be accomplished by using certain command-line arguments when running any of the start\*.sh script files provided in the V8.0.0 package (**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**). The following optional command-line arguments are applicable:
+Se puede llevar a cabo la inyección de código mediante un archivo de script concreto utilizando determinados argumentos de línea de mandatos, cuando se ejecuta cualquiera de los archivos de script start\*.sh proporcionados en el paquete V8.0.0 (**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**, **startappcenter.sh**, **startappcentergroup.sh**). Los siguientes argumentos de línea de mandatos son aplicables:
 
 * `[-tr|--trace]` trace_specification
 * `[-ml|--maxlog]` maximum\_number\_of\_log\_files
 * `[-ms|--maxlogsize]` maximum\_size\_of\_log\_files
 
-## Container log files
+## Archivos de registro de contenedor
 {: #container-log-files }
-Log files are generated for {{ site.data.keys.mf_server }} and Liberty Profile runtime activities for each container instance and can be found in the following locations:
+Los archivos de registro se generan para las actividades de {{ site.data.keys.mf_server }} y del tiempo de ejecución Liberty Profile de cada instancia de contenedor y se pueden encontrar en las ubicaciones siguientes:
 
 * /opt/ibm/wlp/usr/servers/mfp/logs/messages.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/console.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/trace.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/ffdc/*
 
-You can log in to the container by following the steps in Accessing log files and access the log files.
+Los archivos de registro se generan para las actividades del servidor de {{ site.data.keys.mf_app_center }} y del tiempo de ejecución Liberty Profile de cada instancia de contenedor y se pueden encontrar en las ubicaciones siguientes:
 
-To persist log files, even after a container no longer exists, enable a volume. (Volume is not enabled by default.) Having volume enabled can also allow you to view the logs from Bluemix using the logmet interface (such as https://logmet.ng.bluemix.net/kibana).
+* /opt/ibm/wlp/usr/servers/appcenter/logs/messages.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/console.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/trace.log
+* /opt/ibm/wlp/usr/servers/appcenter/logs/ffdc/*
 
-**Enabling volume**
-Volume allows for containers to persist log files. The volume for {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analyics }} container logs is not enabled by default.
+Puede iniciar sesión en el contenedor siguiendo los siguientes pasos que se describen en la sección Acceso a los archivos de registro y, a continuación, podrá acceder a los archivos de registro.
 
-You can enable volume when running the **start*.sh** scripts by setting `ENABLE_VOLUME [-v | --volume]` to `Y`. This is also configurable in the **args/startserver.properties** and **args/startanalytics.properties** files for interactive execution of the scripts.
+Para que persistan los archivos, incluso después de que deje de existir un contenedor, habilite un volumen. (De forma predeterminada, el volumen no está habilitado). Si habilita un volumen también puede ver los registros desde IBM Cloud utilizando la interfaz logmet, tal como: //logmet.ng.bluemix.net/kibana.
 
-The persisted log files are saved in the **/var/log/rsyslog** and **/opt/ibm/wlp/usr/servers/mfp/logs** folders in the container.  
-The logs can be accessed by issuing an SSH request to the container.
+**Habilitación de un volumen**
+Un volumen permite que la persistencia de archivos de registro en contenedores. El volumen para los registros de contenedor de {{ site.data.keys.mf_server }} y de {{ site.data.keys.mf_analyics }} no está habilitado de forma predeterminada.
 
-## Accessing log files
+Puede habilitar el volumen cuando ejecuta los scripts **start*.sh**, estableciendo `ENABLE_VOLUME [-v | --volume]` en `Y`. Esto también se puede configurar en los archivos **args/startserver.properties** y **args/startanalytics.properties** para la ejecución interactiva de los scripts.
+
+Los archivos de registro persistentes se guardan en las carpetas **/var/log/rsyslog** y **/opt/ibm/wlp/usr/servers/mfp/logs** del contenedor.  
+Se puede acceder a los registros emitiendo una solicitud SSH para el contenedor.
+
+## Acceso a archivos de registro
 {: #accessing-log-files }
-Logs are created for each container instance. You can access log files using the IBM Container Cloud Service REST API, by using `cf ic` commands, or by using the Bluemix logmet console.
+Los registros se crean para cada instancia de contenedor. Puede acceder a los archivos de registros utilizando la API REST de IBM Container Cloud Service, mediante los mandatos `cf ic` o mediante la consola logmet de IBM Cloud.
 
-### IBM Container Cloud Service REST API
+### API REST de IBM Container Cloud Service
 {: #ibm-container-cloud-service-rest-api }
-For any container instance, the **docker.log** and **/var/log/rsyslog/syslog** can be viewed using the [Bluemix logmet service](https://logmet.ng.bluemix.net/kibana/). The log activities can be seen using the Kibana dashboard of the same.
+Para cualquier instancia de contenedor, se puede visualizar **docker.log** y **/var/log/rsyslog/syslog** mediante el [servicio logmet de IBM Cloud](https://logmet.ng.bluemix.net/kibana/). Las actividades del registro se pueden visualizar utilizando el panel de control Kibana similar.
 
-IBM Containers CLI commands (`cf ic exec`) can be used to gain access to running container instances. Alternatively, you can obtain container log files through Secure Shell (SSH).
+Se pueden utilizar los mandatos de IBM Containers (`cf ic exec`) para acceder a las instancias de contenedor en ejecución. De forma alternativa, puede obtener los archivos de registro de contenedor mediante SSH (Secure Shell).
 
-### Enabling SSH
+### Habilitación de SSH
 {: #enabling-ssh}
-To enable SSH, copy the SSH public key to the **package_root/[mfpf-server or mfpf-analytics]/usr/ssh** folder before you run the **prepareserver.sh** or the **prepareanalytics.sh** scripts. This builds the image with SSH enabled. Any container created from that particular image will have the SSH enabled.
+Para habilitar SSH, copie la clave pública SSH en la carpeta **package_root/[mfpf-server o mfpf-analytics]/usr/ssh** antes de ejecutar los scripts **prepareserver.sh** o **prepareanalytics.sh**. Esto crea la imagen con SSH habilitado. Cualquier contenedor creado desde dicha imagen concreta tendrá habilitado SSH.
 
-If SSH is not enabled as part of the image customization, you can enable it for the container using the SSH\_ENABLE and SSH\_KEY arguments when executing the **startserver.sh** or **startanalytics.sh** scripts. You can optionally customize the related script .properties files to include the key content.
+Si no se habilita SSH como parte de la personalización de la imagen, puede habilitarlo para el contenedor utilizando los argumentos SSH\_ENABLE y SSH\_KEY, cuando ejecuta los scripts **startserver.sh** o **startanalytics.sh** scripts. Opcionalmente, puede personalizar los archivos .properties del script para incluir el contenido de la clave.
 
-The container logs endpoint gets stdout logs with the given ID of the container instance.
+El punto final de los registros del contenedor obtiene los registros stdout con el ID de la instancia de contenedor especificado.
 
-Example: `GET /containers/{container_id}/logs`
+Ejemplo: `GET /containers/{container_id}/logs`
 
-#### Accessing containers from the command line
+#### Acceso a contenedores desde la línea de mandatos
 {: #accessing-containers-from-the-command-line }
-You can access running {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} container instances from the command line to obtain logs and traces.
+Puede acceder a las instancias de contenedor de {{ site.data.keys.mf_server }} y de {{ site.data.keys.mf_analytics }} desde la línea de mandatos para obtener los registros y los rastreos.
 
-1. Create an interactive terminal within the container instance by running the following command: `cf ic exec -it container_instance_id "bash"`.
-2. To locate the log files or traces, use the following command example:
+1. Cree un terminal interactivo en la instancia del contenedor ejecutando el mandato siguiente: `cf ic exec -it container_instance_id "bash"`.
+2. Para localizar los archivos de registro o los rastreos, utilice el siguiente mandato de ejemplo:
 
    ```bash
-   container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp 
+   container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
    container_instance@root# vi messages.log
    ```
 
-3. To copy the logs to your local workstation, use the following command example:
+3. Para copiar los registros en su estación de trabajo local, utilice el siguiente mandato de ejemplo:
 
    ```bash
    my_local_workstation# cf ic exec -it container_instance_id
    "cat" " /opt/ibm/wlp/usr/servers/mfp/messages.log" > /tmp/local_messages.log
    ```
 
-#### Accessing containers using SSH
+#### Acceso a los contenedores mediante SSH
 {: #accessing-containers-using-ssh }
-You can get the syslogs and Liberty logs by using Secure Shell (SSH) to access your {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} containers.
+Puede obtener los syslogs y los registros de Liberty utilizando SSH (Secure Shell) para acceder a sus contenedores de {{ site.data.keys.mf_server }} y de {{ site.data.keys.mf_analytics }}.
 
-If you are running a container group, you can bind a public IP address to each instance and view the logs securely using SSH. To enable SSH, make sure to copy the SSH public key to the **mfp-server\server\ssh** folder before you run the **startservergroup.sh** script.
+Si está ejecutando un grupo de contenedores, puede enlazar una dirección IP pública con cada instancia y ver los registros de forma segura mediante SSH. Para habilitar SSH, asegúrese de copiar la clave pública de SSH en la carpeta **mfp-server\server\ssh** antes de ejecutar el script **startservergroup.sh**.
 
-1. Make an SSH request to the container. Example: `mylocal-workstation# ssh -i ~/ssh_key_directory/id_rsa root@public_ip`
-2. Archive the log file location. Example:
+1. Realice una solicitud SSH para el contenedor. Ejemplo: `mylocal-workstation# ssh -i ~/ssh_key_directory/id_rsa root@public_ip`
+2. Archive la ubicación del archivo de registro. Ejemplo:
 
 ```bash
 container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
 container_instance@root# tar czf logs_archived.tar.gz logs/
 ```
 
-Download the log archive to your local workstation. Example: 
+Descargue el archivo de registro en su estación de trabajo. Ejemplo:
 
 ```bash
 mylocal-workstation# scp -i ~/ssh_key_directory/id_rsa root@public_ip:/opt/ibm/wlp/usr/servers/mfp/logs_archived.tar.gz /local_workstation_dir/target_location/

@@ -31,8 +31,7 @@ Benachrichtigungen senden → Angepasste iOS-Einstellungen** den entsprechenden 
 > **Hinweis:** Wenn die Benachrichtigung im Hintergrund erfolgt,
 werden die Eigenschaften **alert**, **sound** und **badge** ignoriert. 
 
-![Benachrichtigungstyp für Benachrichtigungen im Hintergrund unter iOS
-in der {{ site.data.keys.mf_console }} festlegen](notification-type-for-silent-notifications.png)
+![Benachrichtigungstyp für iOS-Benachrichtigungen im Hintergrund in der {{ site.data.keys.mf_console }} festlegen](notification-type-for-silent-notifications.png)
 
 ## Benachrichtigungen im Hintergrund in Cordova-Anwendungen
 {: #handling-silent-push-notifications-in-cordova-applications }

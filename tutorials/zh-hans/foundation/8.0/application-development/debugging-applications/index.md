@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: 调试 JavaScript（Cordova、Web）应用程序
-breadcrumb_title: 调试应用程序        
+title: 调试 JavaScript（Cordova 或 Web）应用程序
+breadcrumb_title: Debugging applications        
 relevantTo: [javascript]
 weight: 10
 ---
@@ -10,12 +10,13 @@ weight: 10
 {: #overview }
 调试的过程包含查找应用程序代码和应用程序用户界面中缺陷原因。
 
-* JavaScript（Cordova、Web）应用程序由基于 Web 的资源组成，例如，HTML、JavaScript 和 CSS。Cordova 应用程序也可能包含可选本机代码（以 Java、Objective-C、Swift 和 C#...编写）。
+* JavaScript（Cordova、Web）应用程序由基于 Web 的资源组成，例如，HTML、JavaScript 和 CSS。 Cordova 应用程序也可能包含可选本机代码（以 Java、Objective-C、Swift 和 C#...编写）。
 * 可使用平台 SDK 提供的标准工具来调试本机代码，例如，XCode、Android 或 Microsoft Visual Studio。
 
 本教程探讨了调试基于 JavaScript 的应用程序的各种方法，无论是通过仿真器、模拟器、物理设备还是在 Web 浏览器中本地运行。
 
 > 了解有关 Cordova 调试的更多信息并在 Cordova Web 站点中进行测试：[调试应用程序](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)。
+
 #### 跳转至：
 {: #jump-to }
 
@@ -41,7 +42,8 @@ mfpdev app preview
 mfpdev app preview -p <platform>
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要信息：**预览功能具有多个已知限制。在预览期间，应用程序表现可能与期望不同。例如，其使用保密客户机绕过安全功能，因此不会触发验证问题处理程序。
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要信息：**预览功能具有多个已知限制。 在预览期间，应用程序表现可能与期望不同。 例如，其使用保密客户机绕过安全功能，因此不会触发验证问题处理程序。 
+
 ### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator}
 
@@ -53,10 +55,11 @@ mfpdev app preview -p <platform>
 ![MBS](simple.png)
 
 > 在[使用 {{ site.data.keys.mf_cli }} 来管理 {{ site.data.keys.product_adj }} 工件](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts)教程中了解有关 {{ site.data.keys.mf_cli }} 的更多信息。
+
 ## 使用 Ripple 进行调试
 {: #debugging-with-ripple }
 Apache Ripple™ 是一个基于 Web 的移动环境模拟器，用于调试移动 Web 应用程序。  
-它使您能够在浏览器中运行 Cordova 应用程序并模拟各种 Cordova f功能。例如，可通过让您从计算机本地选择照片来模拟照相机 API。  
+它使您能够在浏览器中运行 Cordova 应用程序并模拟各种 Cordova f功能。 例如，可通过让您从计算机本地选择照片来模拟照相机 API。  
 
 ### 安装 Ripple
 {: #installing-ripple }
@@ -80,9 +83,10 @@ ripple emulate
 ![Ripple 仿真器](Ripple2.png)
 
 > 可在 [Apache Ripple 页面](http://ripple.incubator.apache.org/)或 [npm ripple-emulator 页面](https://www.npmjs.com/package/ripple-emulator)上找到有关 Apache Ripple™ 的更多信息。
+
 ## 使用 iOS Remote Web Inspector 进行调试
 {: #debugging-with-ios-remote-web-inspector }
-从 iOS 6 开始，Apple 引入一个远程 [Web Inspector](https://developer.apple.com/safari/tools/) 以供调试 iOS 设备上的 Web 应用程序。要进行调试，请确保设备（或 iOS 模拟器）已关闭**秘密浏览**选项。  
+从 iOS 6 开始，Apple 引入一个远程 [Web Inspector](https://developer.apple.com/safari/tools/) 以供调试 iOS 设备上的 Web 应用程序。 要进行调试，请确保设备（或 iOS 模拟器）已关闭**秘密浏览**选项。  
 
 1. 要在设备上启用 Web Inspector，请点击**设置 > Safari > 高级 > Web Inspector**。
 2. 要启动调试，请将 iOS 设备连接到 Mac，或者启动模拟器。
@@ -94,7 +98,7 @@ ripple emulate
 ## 使用 Chrome Remote Web Inspector 进行调试
 {: #debugging-with-chrome-remote-web-inspector }
 使用 Google Chrome，可在 Android 设备或 Android 仿真器上远程检查 Web 应用程序。  
-此操作需要 Android 4.4 或更高版本或者 Chrome 32 或更高版本。此外，在 `AndroidManifest.xml` 文件中，需要 `targetSdkVersion = 19` 或更高版本。在 `project.properties` 文件中，需要 `target = 19` 或更高版本。
+此操作需要 Android 4.4 或更高版本或者 Chrome 32 或更高版本。 此外，在 `AndroidManifest.xml` 文件中，需要 `targetSdkVersion = 19` 或更高版本。 在 `project.properties` 文件中，需要 `target = 19` 或更高版本。
 
 1. 在 Android 仿真器或已连接的设备中启动应用程序。
 2. 在 Chrome 的地址栏中输入以下 URL：`chrome://inspect`。

@@ -6,7 +6,8 @@ show_disqus: false
 show_breadcrumb: true
 breadcrumb_title: Deutsch
 use_dropdown: true
-use_dropdown_home: foundation/8.0/all-tutorials
+use_dropdown_home: foundation/8.0/
+use_dropdown_url_replace: false
 print_pdf: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -20,8 +21,8 @@ The Tutorials section is a collection of self-paced tutorials and sample applica
 * [MobileFirst Platform Foundation 6.3]({{site.baseurl}}/tutorials/en/foundation/6.3/all-tutorials/)
 
 ### [Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/)
-* [MobileFirst Quality Assurance as a Bluemix Service for MobileFirst Platform Foundation 8.0]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/)
-* [MobileFirst Quality Assurance as a Bluemix Service for MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview/)
+* [MobileFirst Quality Assurance as a IBM Cloud Service for MobileFirst Platform Foundation 8.0]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/)
+* [MobileFirst Quality Assurance as a IBM Cloud Service for MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview/)
 * [MobileFirst Quality Assurance 6.3 and 7.0](https://www-01.ibm.com/support/knowledgecenter/SSFRDS_6.3.0/com.ibm.mqa.uau.doc/mqa630_welcome.html)
 
 ### [Cloudant]({{site.baseurl}}/tutorials/en/cloudant/)

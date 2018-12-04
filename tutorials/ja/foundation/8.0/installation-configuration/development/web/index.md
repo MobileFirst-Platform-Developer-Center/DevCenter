@@ -11,7 +11,7 @@ weight: 6
 Web アプリケーションの開発およびテストは、任意の Web ブラウザーでローカル HTML ファイルをプレビューするのと同じくらいに簡単です。  
 開発者は、任意の IDE、およびニーズに合ったフレームワークを使用できます。
 
-ただし、Web アプリケーションの開発で壁となる可能性があることが 1 つあります。Web アプリケーションで、[同一オリジン・ポリシー](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)違反によるエラーが発生することがあります。同一オリジン・ポリシーは、Web ブラウザーに課された制限です。例えば、あるアプリケーションがドメイン **example.com** でホストされている場合、同じアプリケーションが別のサーバー、つまり {{ site.data.keys.mf_server }} から使用可能なコンテンツにもアクセスすることは許されません。
+ただし、Web アプリケーションの開発で壁となる可能性があることが 1 つあります。 Web アプリケーションで、[同一オリジン・ポリシー](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)違反によるエラーが発生することがあります。 同一オリジン・ポリシーは、Web ブラウザーに課された制限です。 例えば、あるアプリケーションがドメイン **example.com** でホストされている場合、同じアプリケーションが別のサーバー、つまり {{ site.data.keys.mf_server }} から使用可能なコンテンツにもアクセスすることは許されません。
 
 [{{ site.data.keys.product }} Web SDK を使用する Web アプリケーション](../../../application-development/sdk/web)は、サポートされるトポロジーで処理される必要があります。例えば、リバース・プロキシーを使用して、同じ単一オリジンを維持しながら適切なサーバーに要求を内部的にリダイレクトして行います。
 
@@ -30,17 +30,17 @@ Web アプリケーションの開発およびテストは、任意の Web ブ�
 ## 前提条件
 {: #prerequisites }
 -   {: #web-app-supported-browsers }
-    Web アプリケーションは、以下のブラウザーのバージョンでサポートされています。バージョン番号は、それぞれのブラウザーで完全にサポートされる最初のバージョンを示します。
+    Web アプリケーションは、以下のブラウザーのバージョンでサポートされています。 バージョン番号は、それぞれのブラウザーで完全にサポートされる最初のバージョンを示します。
 
-    | ブラウザー            | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android ブラウザー|
+    | ブラウザー               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android ブラウザー   |
     |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
-    | **サポートされるバージョン** | {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
+    | **サポートされるバージョン** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
 
-    <sup>*</sup> Safari では、プライベート・ブラウズ・モードは SPA (Single-page Application) に対してのみサポートされます。他のアプリケーションでは予期しない動作を生じる可能性があります。
+    <sup>*</sup> Safari では、プライベート・ブラウズ・モードは SPA (Single-page Application) に対してのみサポートされます。 他のアプリケーションでは予期しない動作を生じる可能性があります。
 
-    {% comment %} [sharonl][c-web-browsers-ms-edge] タスク 111165 での Microsoft Edge サポートに関する情報を参照してください。{% endcomment %}
+    {% comment %} [sharonl][c-web-browsers-ms-edge] タスク 111165 での Microsoft Edge サポートに関する情報を参照してください。 {% endcomment %}
 
--   以下のセットアップ手順では、Apache Maven または Node.js が開発者のワークステーションにインストールされていることが必要です。詳しい手順については、[インストール・ガイド](../mobilefirst/installation-guide/)を参照してください。
+-   以下のセットアップ手順では、Apache Maven または Node.js が開発者のワークステーションにインストールされていることが必要です。 詳しい手順については、[インストール・ガイド](../mobilefirst/installation-guide/)を参照してください。
 
 ## WebSphere Liberty プロファイルを使用した Web アプリケーション・リソースの処理
 {: #using-websphere-liberty-profile-to-serve-the-web-application-resources }
@@ -71,7 +71,7 @@ Web アプリケーションのリソースを処理するには、これらが 
 ### アプリケーション・サーバーへの Maven webapp の追加
 {: #adding-the-maven-webapp-to-the-application-server }
 1. WebSphere Application Server の **server.xml ファイル**を編集します。  
-    {{ site.data.keys.mf_dev_kit }} を使用している場合、ファイルは [**{{ site.data.keys.mf_dev_kit }}] →「mfp-server」→「user」→「servers」→「mfp」**フォルダーにあります。以下の項目を追加します。
+    {{ site.data.keys.mf_dev_kit }} を使用している場合、ファイルは [**{{ site.data.keys.mf_dev_kit }}] →「mfp-server」→「user」→「servers」→「mfp」**フォルダーにあります。 以下の項目を追加します。
 
    ```xml
    <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>

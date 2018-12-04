@@ -4,14 +4,14 @@ title: 在 Android 中处理推送通知
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: 下载 Android Studio 项目
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-在 Android 应用程序处理已收到的任何推送通知之前，需要配置 Google Play Services 支持。在配置应用程序后，可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。在本教程中，您将学会如何在 Android 应用程序中处理推送通知。
+在 Android 应用程序处理已收到的任何推送通知之前，需要配置 Google Play Services 支持。 在配置应用程序后，可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备以及预订和取消预订标记。 在本教程中，您将学会如何在 Android 应用程序中处理推送通知。
 
 **先决条件：**
 
@@ -28,6 +28,7 @@ weight: 6
 * [通知 API](#notifications-api)
 * [处理推送通知](#handling-a-push-notification)
 * [样本应用程序](#sample-application)
+* [在 Android 上将客户机应用程序迁移到 FCM](#migrate-to-fcm)
 
 ## 通知配置
 {: #notifications-configuration }
@@ -41,7 +42,7 @@ weight: 6
    ```bash
    com.google.android.gms:play-services-gcm:9.0.2
    ```
-   - **注：**存在一个[已知的 Google 缺陷](https://code.google.com/p/android/issues/detail?id=212879)，此缺陷将阻止使用最新的 Play Services 版本（当前为 9.2.0）。请使用较低的版本。
+   - **注：**存在一个[已知的 Google 缺陷](https://code.google.com/p/android/issues/detail?id=212879)，此缺陷将阻止使用最新的 Play Services 版本（当前为 9.2.0）。 请使用较低的版本。
 
    以及：
 
@@ -104,7 +105,7 @@ weight: 6
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-
+      
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -124,7 +125,7 @@ weight: 6
 {: #notifications-api }
 ### MFPPush 实例
 {: #mfppush-instance }
-必须在一个 `MFPPush` 实例上发出所有 API 调用。为此，需要创建一个类级别字段（例如 `private MFPPush push = MFPPush.getInstance();`），然后在该类中调用 `push.<api-call>`。
+必须在一个 `MFPPush` 实例上发出所有 API 调用。  为此，需要创建一个类级别字段（例如 `private MFPPush push = MFPPush.getInstance();`），然后在该类中调用 `push.<api-call>`。
 
 也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.getInstance().<api_call>`。
 
@@ -133,6 +134,7 @@ weight: 6
 如果 `push.mobileclient` 作用域映射到**安全性检查**，那么需要确保在使用任何推送 API 之前，存在已注册的匹配**验证问题处理程序**。
 
 > 在[凭证验证](../../../authentication-and-security/credentials-validation/android)教程中了解有关验证问题处理程序的更多信息。
+
 ### 客户端
 {: #client-side }
 
@@ -287,7 +289,7 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 
 ## 处理推送通知
 {: #handling-a-push-notification }
-要处理推送通知，需要设置 `MFPPushNotificationListener`。可实现以下某种方法来执行此操作。
+要处理推送通知，需要设置 `MFPPushNotificationListener`。  可实现以下某种方法来执行此操作。
 
 ### 选项 1
 {: #option-one }
@@ -299,9 +301,9 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 
    ```java
    @Override
-   public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
+    public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
         // Handle push notification here
-   }
+    }
    ```
 
 3. 在此方法中，您将收到 `MFPSimplePushNotification`，并可以处理关于期望行为的通知。
@@ -320,6 +322,7 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ```
 
 <img alt="样本应用程序图像" src="notifications-app.png" style="float:right"/>
+
 ## 样本应用程序
 {: #sample-application }
 
@@ -328,3 +331,102 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ### 用法样例
 {: #sample-usage }
 请查看样本的 README.md 文件以获取指示信息。
+
+## 在 Android 上将客户机应用程序迁移到 FCM
+{: #migrate-to-fcm }
+
+Google Cloud Messaging (GCM) 已[不推荐使用](https://developers.google.com/cloud-messaging/faq)，它已与 Firebase Cloud Messaging (FCM) 集成。Google 将在 2019 年 4 月之前关闭大多数 GCM 服务。
+
+如果您正在使用 GCM 项目，那么请[将 Android 上的 GCM 客户机应用程序迁移到 FCM](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)。
+
+目前，使用 GCM 服务的现有应用程序将继续按原样运行。由于推送通知服务已更新为使用 FCM 端点，因此以后所有新应用程序必须使用 FCM。
+
+**注**：在迁移到 FCM 后，更新您的项目以使用 FCM 凭证（而不是旧的 GCM 凭证）。
+
+### FCM 项目设置
+
+与旧的 GCM 模型相比，在 FCM 中设置应用程序稍有不同。 
+
+ 1. 获取通知提供程序凭证、创建一个 FCM 项目并将相同内容添加到 Android 应用程序。包含应用程序包名称 `com.ibm.mobilefirstplatform.clientsdk.android.push`。请参阅[此处的文档](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)，直至您已完成生成 `google-services.json` 文件的步骤
+
+ 2. 配置您的 Gradle 文件。在应用程序的 `build.gradle` 文件中添加以下内容 
+
+    ```xml
+    dependencies {
+       ......
+       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       .....
+
+    }
+    ```
+	
+    apply plugin: 'com.google.gms.google-services'
+    
+    - 在 `buildscript` 文件中添加以下依赖关系 -
+    
+    `classpath 'com.google.gms:google-services:3.0.0'`
+
+ 3. 配置 AndroidManifest 文件。`Android manifest.xml` 中需要进行以下更改 
+
+**移除以下条目：**
+
+```xml
+    <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+    </receiver>  
+	
+    <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
+        <intent-filter>
+            <action android:name="com.google.android.gms.iid.InstanceID" />
+        </intent-filter>
+    </service>
+
+    <uses-permission android:name="your.application.package.name.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+```
+
+**下列条目需要修改：**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        </intent-filter>
+    </service>
+```
+
+**将条目修改为：**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+```
+
+**添加以下条目：**
+
+```xml
+    <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+    </service>
+```
+	
+ 4. 在 Android Studio 中打开应用程序。复制您在应用程序目录内的 **step-1** 中创建的 `google-services.json` 文件。请注意，`google-service.json` 文件将包含您添加的包名称。		
+		
+ 5. 编译 SDK。构建应用程序。
+
+
+
+

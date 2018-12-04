@@ -151,7 +151,7 @@ JSONStore is similar to technologies such as LocalStorage, Indexed DB, Cordova S
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
 | Android Support (Cordova &amp; Native Applications)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
 | iOS Support (Cordova & Native Applications)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Windows 8.1 Universal anND Windows 10 UWP          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
+| Windows 8.1 Universal and Windows 10 UWP (Cordova Applications)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
 | Data encryption	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
 | Maximum Storage	                                 |Available Space |    ~5MB     |   ~5MB 	 | Available Space	   | Available Space  |
 | Reliable Storage (See note)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
@@ -548,6 +548,176 @@ Similarly, you can remove a document, and opt to mark the removal as dirty or no
 accessor.remove(doc, {markDirty: true})
 ```
 
+
+### Automatic sync with CloudantDB
+Starting from Mobile Foundation [CD Update 2](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/8-0-cd-update-release), the MFP JSONStore SDK can be used to automate the synchronization of data between a JSONStore collection on a device with any CouchDB database including Cloudant. This feature is available in iOS, android, cordova-android and cordova-ios.
+
+#### Setting up the synchronization between JSONStore and Cloudant
+To setup automatic synchronization between JSONStore and Cloudant complete the following steps:
+
+1. Define the Sync Policy on your mobile app.
+2. Deploy the Sync Adapter on IBM Mobile Foundation.
+
+#### Defining the Sync Policy
+The method of synchronization between a JSONStore collection and a Cloudant database is defined by the Sync Policy. You can specify the Sync Policy in your app for each collection.
+
+A JSONStore collection can be initialized with a Sync Policy. Sync Policy can be one of the following three policies:
+
+<b>SYNC_DOWNSTREAM : </b>
+Use this policy when you want to download data from Cloudant on to the JSONStore collection. This is typically used for static data that is required for offline storage. For example, price list of items in a catalog. Each time the collection is initialized on the device, data is refreshed from the remote Cloudant database. While the entire database is downloaded for the first time, subsequent refreshes will download only delta, comprising of the changes made on the remote database.
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_DOWNSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
+}
+```
+
+<b>SYNC_ UPSTREAM : </b>
+Use this policy when you want to push local data to a Cloudant database. For example, uploading of sales data captured offline to a Cloudant database. When a collection is defined with the SYNC_UPSTREAM policy, any new records added to the collection creates a new record in Cloudant. Similarly, any document modified in the collection on the device will modify the document on Cloudant and documents deleted in the collection will also be deleted from the Cloudant database.
+
+
+Android :
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_UPSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
+}
+```
+
+<b>SYNC_NONE : </b>
+This is the default policy. Choose this policy for synchronization to not take place.
+
+<b><i>Important:</i></b> The Sync Policy is attributed to a JSONStore Collection. Once a collection is initialized with a particular Sync Policy, it should not be changed. Modifying the Sync Policy can lead to undesirable results.
+
+<b>syncAdapterPath</b>
+
+This is the adapter name that is deployed.
+
+
+Android:
+```
+//Here "JSONStoreCloudantSync" is the name of the sync adapter deployed on MFP server.
+initOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+iOS:
+```
+openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy://One of the three sync policies,
+	syncAdapterPath : 'JSONStoreCloudantSync'
+}
+```
+
+#### Deploying the sync adapter
+Download the JSONStoreSync adapter from <a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">here</a>, configure cloudant credentials in path ‘src/main/adapter-resources/adapter.xml’ and deploy it in your MobileFirst server.
+Configure the credentials to the backend Cloudant database also through the mfpconsole like below :
+
+|---------------------------|-------------------------|
+|![Configure Cloudant]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/configure-cloudant.png)    |   ![Cloudant credentials]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/CloudantCreds.jpg)|
+
+#### Few points to consider before using this feature
+This feature is available for Android, iOS, cordova-android and cordova-ios only.
+
+The name of the JSONStore collection and CouchDB database name must be the same. Carefully, refer to your CouchDB database naming syntax before naming your JSONStore collection.
+
+In Android, define the sync callback listener as a part of the *init* options like below : 
+
+```
+//import com.worklight.jsonstore.api.JSONStoreSyncListener;
+JSONStoreSyncListener syncListener = new JSONStoreSyncListener() {
+	@Override
+	public void onSuccess(JSONObject json) {
+		//Implement success action
+	}
+
+	@Override
+	public void onFailure(JSONStoreException ex) {
+		//Implement failure action
+	}
+
+};
+initOptions.setSyncListener(syncListener);
+```
+
+In iOS, use the overloaded `opencollections` api that has a completion handler to enable sync including call backs like below:
+
+```
+JSONStore.sharedInstance().openCollections([collections], with: options, completionHandler: { (success, msg) in
+	self.logMessage("msg is : " + msg!);
+	//success flag is true if the sync succeeds, else on failure it is false and the message from the SDK is available through 'msg' argument.
+})
+```
+
+In Cordova, define your success and failure callbacks as a part of the sync objects as below :
+
+```
+function onsuccess(msg) {
+//Implement success action
+}
+
+function onfailure(msg) {
+//Implement failure action
+}
+
+collection.sync = {
+	syncPolicy : WL.JSONStore.syncOptions.SYNC_UPSTREAM, 
+	syncAdapterPath : 'JSONStoreCloudantSync',
+	onSyncSuccess : onsuccess,
+	onSyncFailure : onfailure
+};
+```
+
+A JSONStoreCollection can be defined with only one of the allowed Sync Policies, i.e., SYNC_DOWNSTREAM, SYNC_UPSTREAM or SYNC_NONE.
+
+If an upstream or downstream sync has to be performed at any time after the initialization explicitly, the following API can be used :
+
+`sync()`
+
+This performs a downstream sync if the calling collection has a sync policy set to ‘SYNC_ DOWNSTREAM’. Else, if the sync policy is set to ‘SYNC_ UPSTREAM’, an upstream sync for added, deleted and replaced documents from jsonstore to Cloudant database is performed. 
+
+
+Android:   
+```
+WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
+```
+
+iOS:
+```
+collection.sync(); //Here collection is the JSONStore collection object that was initialized
+```
+
+Cordova:
+```
+WL.JSONStore.get(collectionName).sync();
+```
+>**Note:** The success and failure callbacks for the sync api will be triggered to the sync listener (in Android), completion handler (in IOS) and callbacks defined (in Cordova) that were declared during initialization of the collection.
+
 ### Push
 {: #push }
 Many systems use the term push to refer to sending data to an external source.
@@ -568,7 +738,7 @@ This source is typically a database, REST or SOAP endpoint, among others, that r
 
 All of the following code examples are written in pseudocode that looks similar to JavaScript.
 
-**Note:** Use adapters for the Transport Layer. Some of the advantages of using adapters are XML to JSON, security, filtering, and decoupling of server-side code and client-side code.
+>**Note:** Use adapters for the Transport Layer. Some of the advantages of using adapters are XML to JSON, security, filtering, and decoupling of server-side code and client-side code.
 
 **Internal Data Source API: JSONStore**  
 After you have an accessor to the collection, you can call the `getAllDirty` API to get all documents that are marked as dirty. These documents have local-only changes that you want to send to the external data source through a transport layer.
@@ -616,7 +786,7 @@ You can choose to send dirty documents to a adapter. Assume that you have a `peo
 })
 ```
 
-**Note:** You might want to take advantage of the `compressResponse`, `timeout`, and other parameters that can be passed to the `WLResourceRequest` API.
+>**Note:** You might want to take advantage of the `compressResponse`, `timeout`, and other parameters that can be passed to the `WLResourceRequest` API.
 
 On the {{ site.data.keys.mf_server }}, the adapter has the `updatePeople` procedure, which might look like the following example:
 

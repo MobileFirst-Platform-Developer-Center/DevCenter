@@ -1,20 +1,20 @@
 ---
 layout: tutorial
-title: iOS アプリケーション内の JSONStore
+title: iOS アプリケーションでの JSONStore
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 downloads:
-  - name: Xcode プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
-  - name: アダプター Maven プロジェクトのダウンロード
-    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - name: Download Xcode project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
+  - name: Download Adapter Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
 {: #prerequisites }
 * [JSONStore 親チュートリアル](../)を読む。
-* {{ site.data.keys.product_adj }} ネイティブ SDK が Xcode プロジェクトに追加されていることを確認する。[『iOS アプリケーションへの {{ site.data.keys.product }} SDK の追加』](../../../application-development/sdk/ios/)チュートリアルに従ってください。
+* {{ site.data.keys.product_adj }} ネイティブ SDK が Xcode プロジェクトに追加されていることを確認する。 [『iOS アプリケーションへの {{ site.data.keys.product }} SDK の追加』](../../../application-development/sdk/ios/)チュートリアルに従ってください。
 
 #### ジャンプ先:
 {: #jump-to }
@@ -63,7 +63,7 @@ let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
 collection.setSearchField("name", withType: JSONStore_String)
 collection.setSearchField("age", withType: JSONStore_Integer)
 
-do  {
+do {
   try JSONStore.sharedInstance().openCollections([collection], withOptions: nil)
 } catch let error as NSError {
   // handle error
@@ -72,7 +72,7 @@ do  {
 
 ### 取得
 {: #get }
-コレクションへのアクセス機能を作成するには、`getCollectionWithName` を使用します。`getCollectionWithName` を呼び出す前に `openCollections` を呼び出す必要があります。
+コレクションへのアクセス機能を作成するには、`getCollectionWithName` を使用します。 `getCollectionWithName` を呼び出す前に `openCollections` を呼び出す必要があります。
 
 ```swift
 let collectionName:String = "people"
@@ -91,7 +91,7 @@ let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWit
 
 let data = ["name" : "yoel", "age" : 23]
 
-do  {
+do {
   try collection.addData([data], andMarkDirty: true, withOptions: nil)
 } catch let error as NSError {
   // handle error
@@ -100,7 +100,7 @@ do  {
 
 ### 検索
 {: #find }
-照会を使用してコレクション内のドキュメントを見つけるには、`findWithQueryParts` を使用します。 コレクション内のすべてのドキュメントを取り出すには、`findAllWithOptions` を使用します。ドキュメントの固有 ID で検索するには、`findWithIds` を使用します。
+照会を使用してコレクション内のドキュメントを見つけるには、`findWithQueryParts` を使用します。 コレクション内のすべてのドキュメントを取り出すには、`findAllWithOptions` を使用します。 ドキュメントの固有 ID で検索するには、`findWithIds` を使用します。
 
 ```swift
 let collectionName:String = "people"
@@ -113,7 +113,7 @@ options.limit = 10
 let query:JSONStoreQueryPart = JSONStoreQueryPart()
 query.searchField("name", like: "yoel")
 
-do  {
+do {
   let results:NSArray = try collection.findWithQueryParts([query], andOptions: options)
 } catch let error as NSError {
   // handle error
@@ -122,7 +122,7 @@ do  {
 
 ### 置換
 {: #replace }
-コレクション内のドキュメントを変更するには、`replaceDocuments` を使用します。置換の実行に使用するフィールドは `_id,` で、これはドキュメントの固有 ID です。
+コレクション内のドキュメントを変更するには、`replaceDocuments` を使用します。 置換の実行に使用するフィールドは `_id,` で、これはドキュメントの固有 ID です。
 
 ```swift
 let collectionName:String = "people"
@@ -148,13 +148,13 @@ do {
 ### 削除
 {: #remove }
 ドキュメントをコレクションから削除するには、`removeWithIds` を使用します。
-`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{ site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
+`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。 詳しくは、このチュートリアルの後半にある**{{ site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
-do  {
+do {
   try collection.removeWithIds([1], andMarkDirty: true)
 } catch let error as NSError {
   // handle error
@@ -169,7 +169,7 @@ do  {
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
-do  {
+do {
   try collection.removeCollection()
 } catch let error as NSError {
   // handle error
@@ -197,12 +197,12 @@ do {
 {: #advanced-usage }
 ### セキュリティー
 {: #security }
-`JSONStoreOpenOptions` オブジェクトとパスワードを `openCollections` 関数に渡すことにより、ストア内のすべてのコレクションを保護できます。パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
+`JSONStoreOpenOptions` オブジェクトとパスワードを `openCollections` 関数に渡すことにより、ストア内のすべてのコレクションを保護できます。 パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
 
 一部のセキュリティー・メタデータはキーチェーンに保管されます (iOS)。  
-ストアは 256 ビットの Advanced Encryption Standard (AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation Function 2 (PBKDF2) により強化されています。
+ストアは 256 ビットの Advanced Encryption Standard (AES) 鍵で暗号化されます。 すべての鍵は Password-Based Key Derivation Function 2 (PBKDF2) により強化されています。
 
-`closeAllCollections` を使用して、`openCollections` を再度呼び出すまですべてのコレクションへのアクセスをロックします。`openCollections` をログイン関数と考えると、`closeAllCollections` はそれに対応するログアウト関数と考えることができます。
+`closeAllCollections` を使用して、`openCollections` を再度呼び出すまですべてのコレクションへのアクセスをロックします。 `openCollections` をログイン関数と考えると、`closeAllCollections` はそれに対応するログアウト関数と考えることができます。
 
 `changeCurrentPassword` を使用して、パスワードを変更します。
 
@@ -223,7 +223,7 @@ do {
 
 ### 複数ユーザー・サポート
 {: #multiple-user-support }
-単一の {{ site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名は「jsonstore」です。
+単一の {{ site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。 `openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。 ユーザー名が指定されていない場合、デフォルトのユーザー名は「jsonstore」です。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -242,16 +242,16 @@ do {
 
 ### {{ site.data.keys.product_adj }} アダプターの統合
 {: #mobilefirst-adapter-integration }
-このセクションは、ユーザーがアダプターについて理解していることを前提とします。アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。
+このセクションは、ユーザーがアダプターについて理解していることを前提とします。 アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。
 
 `WLResourceRequest` などの関数を使用することで、これらの目標を達成できます。
 
 #### アダプターの実装
 {: #adapter-implementation }
-アダプターを作成し、"**People**" という名前を付けます。このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
+アダプターを作成し、"**People**" という名前を付けます。 このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
-function getPeople() {
+function getPeople () {
 	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
 	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
@@ -312,7 +312,7 @@ pull.sendWithDelegate(loadDelegate)
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
-do  {
+do {
   let dirtyDocs:NSArray = try collection.allDirty()
 } catch let error as NSError {
   // handle error
@@ -323,7 +323,7 @@ JSONStore でドキュメントが「ダーティー」とマーキングされ�
 
 #### 変更のプッシュ
 {: #push-changes }
-変更をアダプターにプッシュするには、`allDirty` を呼び出して変更が含まれるドキュメントのリストを取得し、その後 `WLResourceRequest` を使用します。データが送信され、成功応答を受信した後、`markDocumentsClean` を呼び出す必要があります。
+変更をアダプターにプッシュするには、`allDirty` を呼び出して変更が含まれるドキュメントのリストを取得し、その後 `WLResourceRequest` を使用します。 データが送信され、成功応答を受信した後、`markDocumentsClean` を呼び出す必要があります。
 
 ```swift
 // Start - PushToAdapter
@@ -341,7 +341,7 @@ class PushToAdapter: NSObject, WLDelegate {
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
-do  {
+do {
   let dirtyDocs:NSArray = try collection.allDirty()
   let pushData:NSData = NSKeyedArchiver.archivedDataWithRootObject(dirtyDocs)
 

@@ -18,9 +18,12 @@ On the day of the first total solar eclipse to sweep across the US in 99 years, 
 
 Android Oreo has introduced a variety of new [features and capabilities](http://www.androidauthority.com/android-8-0-review-758783/) such as notification channels and notification dots for managing push notifications, Picture-in-Picture mode and autofill framework for managing user input. Behind the scenes, Android Oreo also introduces changes to limits on background operations and background location tracking.
 
-### What does it mean for MobileFirst apps ?
+### What does it mean for MobileFirst apps?
+
+If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation/) customer, then read further to learn about  Mobile Foundation support for Android Oreo .
 
 In general, both native and hybrid/Cordova apps built with IBM MobileFirst v7.1 and 8.0 work well with Android Oreo.
+
 
 In our [earlier blog post from March 2017](https://mobilefirstplatform.ibmcloud.com/blog/2017/07/03/mobilefirst-android-o/), we had documented our experience with the developer previews of Android O. Also with the release version of Android Oreo,
 we have verified all of the features of MobileFirst Platform Foundation.

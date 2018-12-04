@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Protokollierung und Traceerstellung für das Application Center im Anwendungsserver festlegen
-breadcrumb_title: Protokollierung und Traceerstellung einrichten
+breadcrumb_title: Setting up logging and tracing
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -116,8 +116,8 @@ Die folgenden JNDI-Eigenschaften gelten für die Webanwendung
 für die Application-Center-Services
 (**applicationcenter.war**).
 
-| Eigenschaftseinstellungen | Einstellung | Beschreibung | 
+|Eigenschaftseinstellungen|Einstellung|Beschreibung|
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn Sie die JSON-Ausgabe für eine bessere Lesbarkeit der Protokolldateien mit Leerzeichen formatieren möchten.  | 
-| ibm.appcenter.logging.tosystemerror | true | Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn alle Protokollnachrichten zu Systemfehlern in Protokolldateien ausgegeben werden sollen. Mit dieser Eigenschaft können Sie die Protokollierung global aktivieren.  | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE | Bei Verwendung dieser Einstellung werden alle generierten SQL-Anweisungen in den Protokolldateien ausgegeben. | 
+|ibm.appcenter.logging.formatjson|true|Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn Sie die JSON-Ausgabe für eine bessere Lesbarkeit der Protokolldateien mit Leerzeichen formatieren möchten. |
+|ibm.appcenter.logging.tosystemerror|true|Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn alle Protokollnachrichten zu Systemfehlern in Protokolldateien ausgegeben werden sollen. Mit dieser Eigenschaft können Sie die Protokollierung global aktivieren. |
+|ibm.appcenter.openjpa.Log|DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE|Bei Verwendung dieser Einstellung werden alle generierten SQL-Anweisungen in den Protokolldateien ausgegeben.|

@@ -10,20 +10,22 @@ show_breadcrumb: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-{{ site.data.keys.product_full }} radically simplifies building, managing, and updating your mobile application with a pre-integrated, comprehensive set of mobile application services.
+{{ site.data.keys.product_full }} помогает значительно упростить процессы компоновки, управления и обновления мобильных приложений за счет применения предварительно интегрированного набора служб для мобильных приложений.
 
-Developers can build their application using the front-end framework and tools of their choice, and easily add push, authentication, offline sync, and business logic to their apps with the {{ site.data.keys.product }} software development kit (SDK) available across a wide range of supported mobile platforms. {{ site.data.keys.product }} enables you to control your application from client to server, and thus allows you to capture business data at the point of interaction. {{ site.data.keys.product }} apps also enable you to employ a streamlined and repeatable process for incremental app updates and run your apps in flexible hybrid cloud patterns.
+Разработчики могут создавать приложения с помощью привычной клиентской среды и инструментов. В приложения можно добавить push-уведомления, идентификацию, автономную синхронизацию и бизнес-логику с помощью комплекта для разработки программного обеспечения (SDK) {{ site.data.keys.product }}, доступного для широкого спектра поддерживаемых мобильных платформ. {{ site.data.keys.product }} позволяет управлять клиентским приложением с сервера, чтобы получать бизнес-данные на этапе взаимодействия. Кроме того, приложения {{ site.data.keys.product }} позволяют реализовать оптимизированный и повторяемый процесс инкрементального обновления и запускать приложения в гибких гибридных облачных шаблонах.
 
-To review all categories and tutorials visit:
+Для просмотра всех категорий и учебников обратитесь к разделу:
 
-* [All Tutorials](all-tutorials/)
+* [Все учебники](all-tutorials/)
 
-For curated content visit: 
+Рекомендованные материалы доступны в следующих ресурсах:
 
-* [Cordova development](cordova-tutorials/)
-* [iOS development](ios-tutorials/) 
-* [Android development](android-tutorials/) 
-* [Windows 8.1 Universal and Windows 10 UWP development](windows-8-10-tutorials/)
-* [Xamarin development](xamarin-tutorials/)
-* [Web application development](web-tutorials/)
-* [Server-side development](server-side-tutorials/)
+* [Разработка Cordova](cordova-tutorials/)
+* [Разработка Ionic](ionic-tutorials/)
+* [Разработка iOS ](ios-tutorials/)
+* [Разработка Android](android-tutorials/)
+* [Разработка Windows 8.1 Universal и Windows 10 UWP](windows-8-10-tutorials/)
+* [Разработка Xamarin](xamarin-tutorials/)
+* [Разработка React Native](reactnative-tutorials/) 
+* [Разработка веб-приложений](web-tutorials/)
+* [Разработка на уровне сервера](server-side-tutorials/)

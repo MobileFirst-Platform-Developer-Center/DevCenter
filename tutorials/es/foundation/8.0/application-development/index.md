@@ -1,171 +1,249 @@
 ---
 layout: tutorial
-title: Developing Applications
+title: Desarrollo de aplicaciones
 show_children: true
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Development Concepts and Overview
+## Visión general y conceptos para el desarrollo
 {: #development-concepts-and-overview }
-When you develop your app with the {{ site.data.keys.product_full }} set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly.
+Cuando desarrolla una aplicación con el conjunto de herramientas de {{ site.data.keys.product_full }}, debe desarrollar o configurar distintos componentes y elementos.
+Conocer los componentes y los elementos involucrados al desarrollar una aplicación le ayudará a que proceso de desarrollo transcurra adecuadamente.
 
-In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
 
-You can either navigate to the relevant topic from the sidebar navigation, or continue reading to learn more about the various {{ site.data.keys.product_adj }} components.
+Además de familiarizarse con estos conceptos, también aprenderá sobre las API que {{ site.data.keys.product_adj }} proporciona para aplicaciones web, Cordova y nativas como, por ejemplo, JSONStore y WLResourceRequest, así como a depurar aplicaciones, utilizar Direct Update para renovar los recursos web, utilizar Live Update para segmentar su base de usuarios así como a manejar aplicaciones, adaptadores y otros artefactos utilizando {{ site.data.keys.mf_cli }}.
 
-#### Jump to
+
+Navegue al tema relevante desde la navegación lateral, o continúe leyendo para obtener más información sobre los distintos componentes de {{ site.data.keys.product_adj }}.
+
+
+#### Ir a 
 {: #jump-to }
-* [Applications](#applications)
+* [Aplicaciones](#applications)
 * [{{ site.data.keys.mf_server }}](#mobilefirst-server)
-* [Adapters](#adapters)
-* [Client-side tutorials to follow](#client-side-tutorials-to-follow)
+* [Adaptadores](#adapters)
+* [Guías de aprendizaje del lado del cliente con las que continuar](#client-side-tutorials-to-follow)
 
-### Applications
+### Aplicaciones
 {: #applications }
-Applications are built for a target {{ site.data.keys.mf_server }} and have a server-side configuration on the target server. You must register your applications on the {{ site.data.keys.mf_server }} before you can configure them.
+Las aplicaciones se compilan para una instancia de {{ site.data.keys.mf_server }} de destino  y tienen una configuración del lado del servidor en dicho servidor de destino.
+Debe registrar las aplicaciones en {{ site.data.keys.mf_server }} para poder configurarlas.
 
-Applications are identified by the following elements:
 
-* An app ID
-* A version number
-* A target deployment platform
+Las aplicaciones se identifican con los siguientes elementos:
 
-> **Note:** The version number is not applicable to web applications. You cannot have multiple versions of the same web application.
+* ID de aplicación
+* Número de versión
+* Plataforma de despliegue de destino
 
-These identifiers are used on both the client-side and the server-side to ensure that apps are deployed correctly and use only resources that are assigned to them. Different parts of {{ site.data.keys.product }} use various combinations of these identifiers in different ways.
+> **Nota:** El número de versión no se aplica a las aplicaciones web.
+No se pueden tener varias versiones de la misma aplicación web.
 
-The app ID depends on the target deployment platform:
+
+Estos identificadores se utilizan tanto en el lado del cliente como en el lado del servidor para asegurarse de que las aplicaciones se despliegan correctamente y únicamente utilizan los recursos que tienen asignados.
+Las distintas partes de {{ site.data.keys.product }} utilizan diversas combinaciones de estos identificadores de distintas formas.
+
+
+El ID de aplicación depende de la plataforma de despliegue de destino:
 
 **Android**  
-The identifier is the application package name.
+El identificador es el nombre del paquete de la aplicación. 
 
 **iOS**  
-The identifier is the application bundle ID.
+El identificador es el nombre del ID del paquete de la aplicación. 
 
 **Windows**  
-The identifier is the application assembly name.
+El identificador es el nombre del ensamblaje de la aplicación. 
 
 **Web**  
-The identifier is a unique ID that is assigned by the developer.
+El identificador es un identificador exclusivo asignado por el desarrollador.
 
-If apps for different target platforms all have the same app ID, then the {{ site.data.keys.mf_server }} considers all of these apps to be the same app with different platform instances. For example, the following apps are considered to be different platform instances of *the same app*:
+Si las aplicaciones para las distintas plataformas de destino tienen todas el mismo ID de aplicación, {{ site.data.keys.mf_server }} considera que todas estas aplicaciones son la misma con diferentes instancias de plataforma.
+Por ejemplo, las siguientes aplicaciones se consideran instancias de plataforma diferentes de *la misma aplicación*:
 
-* An iOS app with a bundle ID of `com.mydomain.mfp`.
-* An Android app with a package name of `com.mydomain.mfp`.
-* A Windows 10 Universal Windows Platform app with an assembly name of `com.mydomain.mfp`.
-* A web app with an assigned ID of `com.mydomain.mfp`.
+* Una aplicación iOS con un ID de paquete `com.mydomain.mfp`.
+* Una aplicación Android con un nombre de paquete `com.mydomain.mfp`.
+* Una aplicación de plataforma Windows 10 Universal Windows Platform con un nombre de ensamblaje `com.mydomain.mfp`.
+* Una aplicación web con el ID `com.mydomain.mfp`.
 
-The target deployment platform for the app is independent of whether the app was developed as a native app or as a Cordova app. For example, the following apps are both considered to be iOS apps in {{ site.data.keys.product }}:
+La plataforma de despliegue de destino para la aplicación es independiente de si la aplicación se ha desarrollado como una aplicación nativa o de Cordova.
+Por ejemplo, las siguientes aplicaciones se consideran que son aplicaciones de iOS en {{ site.data.keys.product }}:
 
-* An iOS app that you develop with Xcode and native code
-* An iOS app that you develop with Cordova cross-platform development technologies
 
-> **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
+* Una aplicación iOS desarrollada con Xcode y código nativo. 
+* Una aplicación iOS desarrollada con tecnologías de desarrollo entre plataformas de Cordova
 
-### Application configuration
+> **Nota:** La funcionalidad de **compartición de la cadena de claves** es obligatoria al ejecutar aplicaciones iOS en el simulador de iOS al utilizar Xcode 8. Necesitará habilitar esta funcionalidad de forma manual antes de compilar el proyecto Xcode.
+
+
+
+### Configuración de la aplicación
 {: #application-configuration }
-As mentioned, an application is configured on both the client-side and the server-side.  
+Como se ha mencionado, una aplicación se configura tanto en el lado del cliente como en el lado del servidor.
+  
 
-For native and Cordova iOS, Android, and Windows applications, the client configuration is stored in a client properties file (**mfpclient.plist** for iOS, **mfpclient.properties** for Android, or **mfpclient.resw** for Windows). For web applications, the configuration properties are passed as parameters to the SDK [initialization method](../application-development/sdk/web).
+Para aplicaciones nativas, Cordova iOS, Android y Windows, la configuración de cliente se almacena en un archivo de propiedades de cliente (**mfpclient.plist** en iOS, **mfpclient.properties** en Android o **mfpclient.resw** en Windows).
+En el caso de aplicaciones web, las propiedades de configuración se pasan como parámetros al [método de inicialización](../application-development/sdk/web) del SDK.
 
-The client configuration properties include the application ID and information such as the URL of the {{ site.data.keys.mf_server }} runtime and security keys that are required to access to the server.  
-The server configuration for the app includes information like app management status, web resources for Direct Update, configured security scopes, and log configuration.
 
-> Learn how to add the {{ site.data.keys.product_adj }} client SDKs in the [Adding the {{ site.data.keys.product }} SDK tutorials](sdk).
+Las propiedades de configuración del cliente incluyen el ID de la aplicación e información como el URL del tiempo de ejecución de {{ site.data.keys.mf_server }} y claves de seguridad que se necesitan para acceder al servidor.
+  
+La configuración del servidor para la aplicación incluye información como, por ejemplo, el estado de gestión de la aplicación, los recursos web para Direct Update, ámbitos de seguridad configurados y configuración de registro.
 
-The client configuration must be defined before you build the application. The client-app configuration properties must match the properties that are defined for this app in the {{ site.data.keys.mf_server }} runtime. For example, security keys in the client configuration must match the keys on the server. For non-web apps, you can change the client configuration with the {{ site.data.keys.mf_cli }}.
 
-The server configuration for an app is tied to the combination of app ID, version number, and target platform. You must register your app to a {{ site.data.keys.mf_server }} runtime before you can add server-side configurations for the app. Configuring the server side of an app is typically done with the {{ site.data.keys.mf_console }}. You can also configure the server side of an app with the following methods:
+> Aprenda a añadir los SDK de cliente de {{ site.data.keys.product_adj }} en las guías de aprendizaje de [Adición de SDK de {{ site.data.keys.product }}](sdk).
 
-* Grab existing JSON configuration files from the server with the `mfpdev app pull` command, update the file, and upload the changed configuration with the `mfpdev app push` command.
-* Use the **mfpadm** program or Ant task. For information about using mfpadm, see [Administering {{ site.data.keys.product_adj }} applications through the command line](../administering-apps/using-cli) and [Administering {{ site.data.keys.product_adj }} applications through Ant](../administering-apps/using-ant).
-* Use the REST API of the {{ site.data.keys.product_adj }} administration service. For information about the REST API, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi).
+La configuración el cliente se debe definir antes de compilar la aplicación.
+Las propiedades de configuración de la aplicación del cliente deben coincidir con las propiedades definidas para esta aplicación en el tiempo de ejecución de {{ site.data.keys.mf_server }}.
+Por ejemplo, las claves de seguridad en la configuración del cliente deben coincidir con las claves en el servidor.
+Para aplicaciones no web, cambie la configuración del cliente con {{ site.data.keys.mf_cli }}.
 
-You can also use these methods to automate configuration of the {{ site.data.keys.mf_server }}.
+La configuración del servidor para las aplicaciones está relacionada con la combinación del ID de aplicación, el número de versión y la plataforma de destino.
+Debe registrar su aplicación en un tiempo de ejecución de {{ site.data.keys.mf_server }} antes de añadir configuraciones del lado del servidor para la aplicación.
+La configuración del lado del servidor de una aplicación suele llevarse a cabo con {{ site.data.keys.mf_console }}. También puede configurar el lado del servidor de una aplicación con los métodos siguientes:
 
-> **Remember:** You can modify the server configuration even while a {{ site.data.keys.mf_server }} is running and receiving traffic from apps. You do not need to stop the server to change the server configuration for an app.
 
-On a production server, the app version typically corresponds to the version of the application published to an app store. Some server configuration elements like the configuration for app authenticity, are unique to the app published to the store.
+* Tomar los archivos de configuración JSON existentes del servidor con el mandato `mfpdev app pull`, y subir la configuración cambiada con el mandato `mfpdev app push`.
+
+* Utilizar la tarea Ant o el programa **mfpadm**.
+Para obtener información sobre la utilización de mfpadm, consulte [Administración de aplicaciones de {{ site.data.keys.product_adj }} a través de la línea de mandatos](../administering-apps/using-cli) y [Administración de aplicaciones de {{ site.data.keys.product_adj }} a través de Ant](../administering-apps/using-ant).
+
+* Utilice la API REST del servicio de administración de {{ site.data.keys.product_adj }}.
+Para obtener información sobre la API REST, consulte [API REST para el servicio de administración de {{ site.data.keys.mf_server }}](../api/rest/admin-apis/).
+
+También puede utilizar estos métodos para automatizar la configuración de {{ site.data.keys.mf_server }}.
+
+> **Recuerde: ** La configuración del servidor se puede modificar incluso cuando {{ site.data.keys.mf_server }} está en ejecución y recibiendo tráfico de las aplicaciones.
+No es necesario detener el servidor para cambiar la configuración del servidor para una aplicación.
+
+
+En un servidor de producción, la versión de la aplicación normalmente se corresponde con la versión de la aplicación publicada en la tienda de aplicaciones.
+Algunos elementos de configuración como, por ejemplo, la configuración para la autenticidad de la aplicación, son exclusivos para la aplicación publicada en la tienda.
+
 
 ## {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-The server-side of your mobile app is {{ site.data.keys.mf_server }}. {{ site.data.keys.mf_server }} gives you access to features like application management and application security, as well giving your mobile app secure access to your other backend systems through adapters.
+El lado del servidor de su aplicación móvil es {{ site.data.keys.mf_server }}. {{ site.data.keys.mf_server }} da acceso a características tales como las de gestión y  seguridad de la aplicación, así como proporciona acceso seguro a su aplicación móvil para otros sistemas de fondo a través de adaptadores.
 
-{{ site.data.keys.mf_server }} is the core component that delivers many {{ site.data.keys.product }} features, including the following features:
 
-* Application management
-* Application security, including authenticating devices and users and verifying application authenticity
-* Secure access to backend services through adapters
-* Updating Cordova app Web resources with Direct Update
-* Push notifications and push subscriptions
-* App analytics
+{{ site.data.keys.mf_server }} es el componente principal que proporciona muchas características de {{ site.data.keys.product }}, entre otras:
 
-You need to use {{ site.data.keys.mf_server }} throughout your app's lifecycle from development and test through to production deployment and maintenance.  
 
-> A preconfigured server is available for you to use when you develop your app. For information about the {{ site.data.keys.mf_server }} to use when you develop your app, see [Setting up the {{ site.data.keys.product_adj }} Development Environment](../installation-configuration/development).
+* Gestión de aplicaciones
+* Seguridad de aplicaciones, incluidos usuarios y dispositivos de autenticación con sus funciones de verificación de autenticidad 
+* Acceso seguro a los servicios de fondo a través de adaptadores
+* Actualización de recursos web de aplicaciones Cordova a través de Direct Update
+* Notificaciones push y suscripciones push
+* Analíticas de aplicaciones
 
-{{ site.data.keys.mf_server }} consists of the following components. All of these components are also included in the {{ site.data.keys.mf_server }}. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these {{ site.data.keys.mf_server }} components, see [Topologies and network flows](../installation-configuration/production/topologies).
+Necesitará utilizar {{ site.data.keys.mf_server }} durante el ciclo de vida de la aplicación, desde el desarrollo hasta las pruebas a través del mantenimiento y despliegue de producción.
+  
 
-### {{ site.data.keys.product_adj }} and the {{ site.data.keys.mf_server }} administration service
+> Existe un servidor configurado de forma previa para que lo pueda utilizar al desarrollar sus aplicaciones.
+Para obtener información sobre {{ site.data.keys.mf_server }} y cómo utilizarlo mientras desarrolla sus aplicaciones, consulte [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../installation-configuration/development).
+
+
+
+{{ site.data.keys.mf_server }} consta de los siguientes componentes.
+Todos estos componentes también se incluyen en {{ site.data.keys.mf_server }}.
+En los casos simples, todos se ejecutan en el mismo servidor de aplicaciones, sin embargo, en un entorno de producción o prueba, los componentes se puede ejecutar en diferentes servidores de aplicaciones.
+Para obtener información sobre posibles topologías para estos componentes de {{ site.data.keys.mf_server }}, consulte [Topologías y los flujos de red](../installation-configuration/production/prod-env/topologies).
+
+### {{ site.data.keys.product_adj }} y el servicio de administración de {{ site.data.keys.mf_server }}
+
 {: #mobilefirst-and-the-mobilefirst-server-administration-service }
-The operations console is a web interface that you can use to view and edit the {{ site.data.keys.mf_server }} configurations. You can also access the {{ site.data.keys.mf_analytics_console }} from here. The context root for the operations console in the development server is **/mfpconsole**.
+La consola de operaciones es una interfaz web que sirve para ver y editar las configuraciones de {{ site.data.keys.mf_server }}.
+Acceda a {{ site.data.keys.mf_analytics_console }} desde aquí.
+La raíz de contexto para la consola de operaciones en el servidor de desarrollo es **/mfpconsole**.
 
-The administration service is the main entry point for managing your apps. You can access the administration service through a web-based interface with the {{ site.data.keys.mf_console }}. You can also access the administration service with the **mfpadm** command-line tool or the administration service REST API.
+El servicio de administración es el punto de entrada principal para gestionar sus aplicaciones.
+Acceda al servicio de administración a través de una interfaz basada en la web con {{ site.data.keys.mf_console }}.
+También puede acceder al servicio de administración con la herramienta de línea de mandatos **mfpadm** o con la API REST del servicio de administración.
 
-> Learn more about the [{{ site.data.keys.mf_console }} features](../product-overview/components/console).
 
-### {{ site.data.keys.product_adj }} runtime
+> Aprenda más sobre las [Características de {{ site.data.keys.mf_console }}](../product-overview/components/console).
+
+### Tiempo de ejecución de {{ site.data.keys.product_adj }}
 {: #mobilefirst-runtime }
-The runtime is the main entry point for a {{ site.data.keys.product_adj }} client app. The runtime is also the default authorization server for the {{ site.data.keys.product }} OAuth implementation.
+El tiempo de ejecución es el punto de entrada principal para una aplicación de cliente de {{ site.data.keys.product_adj }}.
+El tiempo de ejecución también es el servidor de autorización predeterminado para la implementación OAuth de {{ site.data.keys.product }}.
 
-In advanced and rare cases, you can have multiple instances of a device runtime in a single {{ site.data.keys.mf_server }}. Each instance has its own context root. The context root is used to display the name of a runtime in the operations console. Use multiple instances in cases where you require different server-level configuration such as secret keys for keystore.
 
-If you have only one instance of a device runtime in {{ site.data.keys.mf_server }}, you do not typically need to know the runtime context root. For example, when you register an application to a runtime with the `mfpdev app register` command when the {{ site.data.keys.mf_server }} has only one runtime, the application is registered automatically to that runtime.
+En casos especiales, es posible tener varias instancias de un tiempo de ejecución de dispositivo en un único {{ site.data.keys.mf_server }}.
+Cada instancia tiene su propia raíz de contexto.
+La raíz de contexto se utiliza para visualizar el nombre de un tiempo de ejecución en la consola de operaciones.
+Utilice varias instancias en aquellos casos en los que necesite configuraciones de lado del servidor diferentes como, por ejemplo, para las claves secretas para un almacén de claves.
 
-### {{ site.data.keys.mf_server }} push service
+
+Si solo tiene una instancia de un tiempo de ejecución de dispositivo en {{ site.data.keys.mf_server }}, normalmente no necesitará conocer la raíz de contexto del tiempo de ejecución.
+Por ejemplo, cuando se registra una aplicación para un tiempo de ejecución con el mandato `mfpdev app register` cuando {{ site.data.keys.mf_server }} sólo tiene un tiempo de ejecución, la aplicación se registra de forma automática para dicho tiempo de ejecución.
+
+
+### Servicio push de {{ site.data.keys.mf_server }}
 {: #mobilefirst-server-push-service }
-The push service is your main access point for push-related operations like push notifications and push subscriptions. To contact the push services, client apps use the URL of the runtime but replace the context root with /mfppush. You can configure and manage the push service with the {{ site.data.keys.mf_console }} or the push service REST API.
+El servicio push es el punto de acceso principal para las operaciones relacionadas con push, por ejemplo, notificaciones push y suscripciones push.
+Para ponerse en contacto con los servicios push, las aplicaciones de cliente utilizan el URL del tiempo de ejecución sustituyendo la raíz de contexto por /mfppush.
+El servicio push se puede configurar y gestionar con {{ site.data.keys.mf_console }} con la API REST del servicio push.
 
-If you run the push services in a separate application server from the {{ site.data.keys.product_adj }} runtime, you must route the push service traffic to the correct application server with your HTTP server.
 
-### {{ site.data.keys.mf_analytics }} and the {{ site.data.keys.mf_analytics_console }}
+Si ejecuta los servicios push en un servidor de aplicaciones distinto del tiempo de ejecución de {{ site.data.keys.product_adj }}, debe direccionar el tráfico del servicio push al servidor de aplicaciones correcto con su servidor HTTP.
+
+
+### {{ site.data.keys.mf_analytics }} y {{ site.data.keys.mf_analytics_console }}
 {: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
-{{ site.data.keys.mf_analytics_full }} is an optional component that provides a scalable analytics feature that you can access from the {{ site.data.keys.mf_console }}. This analytics feature lets you search for patterns, problems and platform usage statistics across logs and events that are collected from devices, apps, and servers.
+{{ site.data.keys.mf_analytics_full }} es un componente opcional que proporciona una característica de analíticas escalables a la que es posible acceder desde {{ site.data.keys.mf_console }}.
+Esta característica de analíticas permite buscar patrones, estadísticas de uso de plataforma y problemas a través de registros y sucesos que se recopilan desde dispositivos, aplicaciones y servidores.
 
-From the {{ site.data.keys.mf_console }}, you can define filters to enable or disable data forwarding to the analytics service. You can also filter the type of information that is sent. On the client side, you can use the client-side log capture API to send events and data to the analytics server.
 
-After you install and configure {{ site.data.keys.mf_server }} into the topology that you want, any further configuration of {{ site.data.keys.mf_server }} and its applications can be done entirely through any of the following methods:
+Desde {{ site.data.keys.mf_console }}, defina filtros para habilitar o inhabilitar el reenvío de datos de las analíticas Service.
+También se puede filtrar el tipo de información que se envía.
+En el lado del cliente, utilice la API de captura de registro del lado del cliente para enviar sucesos y datos al servidor de analíticas.
 
-* The {{ site.data.keys.mf_console }}
-* The {{ site.data.keys.mf_server }} administration service REST API
-* The **mfpadm** command-line tool
 
-After the initial installation and configuration, you do not need to access any application server console or interface to configure {{ site.data.keys.product }}.  
-When you deploy your app to production, you can deploy your app to the following {{ site.data.keys.mf_server }} production environments:
+Después de instalar y configurar {{ site.data.keys.mf_server }} en la topología que desee, cualquier configuración adicional de {{ site.data.keys.mf_server }} y sus aplicaciones se puede realizar totalmente a través de cualquiera de los métodos siguientes:
 
-#### On-premises
+
+* {{ site.data.keys.mf_console }}
+* API REST del servicio de administración de {{ site.data.keys.mf_server }} 
+* Herramienta de línea de mandatos **mfpadm**
+
+Después de la instalación y configuración inicial, no es necesario acceder a ninguna interfaz o consola del servidor de aplicaciones para configurar {{ site.data.keys.product }}.
+  
+Cuando despliegue su aplicación en el entorno de producción, podrá hacerlo en los siguientes entornos de producción de {{ site.data.keys.mf_server }}:
+
+
+#### Localmente
 {: #on-premises }
-> For information about installing and configuring {{ site.data.keys.mf_server }} for your on-premises environment, see [Installing IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver).
+> Para obtener información sobre cómo instalar y configurar {{ site.data.keys.mf_server }} en un entorno local, consulte [Instalación de IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/prod-env/appserver).
 
-#### On the cloud
+
+#### En la nube
 {: #on-the-cloud }
-* [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
-* [Using {{ site.data.keys.mf_server }} on IBM PureApplication](../installation-configuration/production/pure-application).
+* [Utilización de {{ site.data.keys.mf_server }} en IBM Cloud](../bluemix).
+* [Utilización de {{ site.data.keys.mf_server }} en IBM PureApplication](../installation-configuration/production/pure-application).
 
-## Adapters
+## Adaptadores
 {: #adapters }
-Adapters in {{ site.data.keys.product }} securely connect your back-end systems to client applications and cloud services.  
+Los adaptadores en {{ site.data.keys.product }} permiten conectar de forma segura sus sistemas de fondo con servicios de nube y aplicaciones de cliente.   
 
-You can write adapters in either JavaScript or Java, and you can build and deploy adapters as Maven projects.  
-Adapters are deployed to a {{ site.data.keys.product_adj }} runtime in {{ site.data.keys.mf_server }}.
+Los adaptadores se pueden codificar en JavaScript o Java y se compilan y despliegan como proyectos Maven.
+  
+Los adaptadores se despliegan en un tiempo de ejecución de {{ site.data.keys.product_adj }} en {{ site.data.keys.mf_server }}.
 
-In a production system, adapters typically run in a cluster of application servers. Implement your adapters as REST services with no session information and stored locally on the server to ensure that your adapter works well in a clustered environment.
 
-An adapter can have user-defined properties. These properties can be configured on the server side without redeploying the adapter. For example, you can change the URL that your adapter uses to access resources when you move from test to production.
+En un sistema de producción, los adaptadores suelen ejecutarse en un clúster de servidores de aplicaciones.
+Implemente los adaptadores como servicios REST sin información de sesión y almacenados de forma local en el servidor para asegurarse de que el adaptador funciona bien en un entorno en clúster.
 
-You can deploy an adapter to a {{ site.data.keys.product_adj }} runtime from the {{ site.data.keys.mf_console }}, by using the mfpdev adapter deploy command, or directly from Maven.
 
-> Learn more about adapters and how to develop JavaScript and Java adapters in the [Adapters category](../adapters).
+Un adaptador puede tener propiedades definidas por el usuario.
+Estas propiedades se pueden configurar en el lado del servidor sin volver a desplegar el adaptador.
+Por ejemplo, puede cambiar el URL que el adaptador utiliza para acceder a los recursos al moverlo desde el entorno de prueba al de producción.
 
-## Client-side tutorials to follow
+
+Despliegue un adaptador en un tiempo de ejecución de {{ site.data.keys.product_adj }} desde {{ site.data.keys.mf_console }} mediante un mandato mfpdev de despliegue de adaptador o directamente desde Maven.
+
+
+> Aprenda más sobre los adaptadores y el desarrollo de adaptadores Java y JavaScript en la categoría de [Adaptadores](../adapters). 
+
+## Guías de aprendizaje del lado del cliente con las que continuar
 {: #client-side-tutorials-to-follow }

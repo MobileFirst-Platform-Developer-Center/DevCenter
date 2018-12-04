@@ -15,7 +15,7 @@ Examinez attentivement la façon dont les éléments des fonctions et des API su
 
 ## Fonctions abandonnées et fonctions absentes de la version 8.0
 {: #dicontinued-features-and-features-that-are-not-included-in-v-80 }
-{{ site.data.keys.product }}La version 8.0 a été simplifiée de manière radicale par rapport à la version précédente. En conséquences, certaines fonctions de la version 7.1 ne sont pas suivies dans la version 8.0. Dans la plupart des cas, une autre manière de les implémenter est proposée. Ces fonctions sont signalées comme abandonnées. D'autres fonctions de la version V7.1. n'ont pas été reconduites en version 8.0, sans que cela soit dû au remaniement de celle-ci. Pour les distinguer des fonctions abandonnées à partir de la version 8.0, elles sont signalées comme non disponibles en version 8.0.
+La version 8.0 de {{ site.data.keys.product }} a été simplifiée de manière radicale par rapport à la version précédente. En conséquences, certaines fonctions de la version 7.1 ne sont pas suivies dans la version 8.0. Dans la plupart des cas, une autre manière de les implémenter est proposée. Ces fonctions sont signalées comme abandonnées. D'autres fonctions de la version V7.1. n'ont pas été reconduites en version 8.0, sans que cela soit dû au remaniement de celle-ci. Pour les distinguer des fonctions abandonnées à partir de la version 8.0, elles sont signalées comme non disponibles en version 8.0.
 
 <table class="table table-striped">
     <tr>
@@ -155,8 +155,7 @@ Examinez attentivement la façon dont les éléments des fonctions et des API su
         <td>Abandonnée. Utilisez l'API de périphérique natif ou les plug-in Cordova tiers pour la géolocalisation.</td>
     </tr>
     <tr>
-        <td>La fonction {{ site.data.keys.product_adj }} Data
-Proxy est abandonnée. Les API Cloudant IMFData et CloudantToolkit sont également abandonnées.	</td>
+        <td>La fonction {{ site.data.keys.product_adj }} Data Proxy est abandonnée. Les API Cloudant IMFData et CloudantToolkit sont également abandonnées.	</td>
         <td>Abandonnée. Pour plus d'informations sur le remplacement des API IMFData et CloudantToolkit dans vos applications, voir la rubrique Migration d'applications qui stockent des données mobiles dans Cloudant à l'aide du kit de développement de logiciels IMFData ou Cloudant.</td>
     </tr>
     <tr>
@@ -296,8 +295,7 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 | `WL.Device.setFriendlyName()` | Utilisez `WL.Client.setDeviceDisplayName` |
 | `WL.Device.getNetworkInfo(callback)` | Utilisez les plug-in Cordova qui fournissent cette fonctionnalité. **Remarque :** A titre d'information, le plug-in **cordova-plugin-network-information** fournit cette fonction. |
 | `WLUtils.wlCheckReachability()` | Créez un adaptateur personnalisé pour vérifier la disponibilité de serveur. |
-| `WL.EncryptedCache` | Utilisez JSONStore pour stocker des données chiffrées localement. JSONStore se trouve dans le plug-in **cordova-plugin-mfp-jsonstore**. Pour plus d'informations, voir
-[JSONStore](../../../application-development/jsonstore). |
+| `WL.EncryptedCache` | Utilisez JSONStore pour stocker des données chiffrées localement. JSONStore se trouve dans le plug-in **cordova-plugin-mfp-jsonstore**. Pour plus d'informations, voir [JSONStore](../../../application-development/jsonstore). |
 | `WL.SecurityUtils.remoteRandomString(bytes)` | Créez un adaptateur personnalisé qui fournit la même fonctionnalité. |
 | `WL.Client.getAppProperty(property)` | Vous pouvez extraite la propriété de version d'application à l'aide du plug-in **cordova-plugin-appversion**. La version renvoyée est la version d'application native (Android et iOS uniquement). |
 | `WL.Client.Push.*` | Utilisez l'API push côté client JavaScript à partir du plug-in **cordova-plugin-mfp-push**. |
@@ -373,7 +371,7 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 | `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | Utilisez la nouvelle API `WLResourceRequest.getHeaders(String headerName)` à la place. |
 | `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | Utilisez la nouvelle API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` à la place. |
 | `WLResourceRequest.setHeader(org.apache.http.Header header)` | Utilisez la nouvelle API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` à la place. |
-| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | Remplacé par `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
+| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | Remplacé par `ClearableCookieJar WLClient.getPersistentCookies()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | Pas de remplacement. Le client MFP autorise des redirections circulaires. |
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | Retiré en raison des dépendances Apache HTTP Client dépréciées. Créez votre propre demande afin de disposer d'un contrôle complet sur la demande et la réponse. |
 

@@ -9,7 +9,7 @@ weight: 3
 ## Übersicht
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} verwendet **Elasticsearch 1.5x**, um Daten zu speichern und Suchabfragen auszuführen.   
+{{ site.data.keys.mf_analytics_full }} verwendet **Elasticsearch 1.7.5**, um Daten zu speichern und Suchabfragen auszuführen.   
 
 Elasticsearch ist eine verteilte Echtzeitsuchmaschine und -analyseengine, mit der mehr Daten in kürzerer Zeit gespeichert und durchsucht werden können. Elasticsearch wird für die Volltextsuche und die strukturierte Suche verwendet. 
 
@@ -22,7 +22,7 @@ Die Elasticsearch-Instanzen werden in Echtzeit abgefragt, um die {{ site.data.ke
 Elasticsearch-Abfragen, vom Elasticsearch-Debugging und von der Elasticsearch-Optimierung profitieren. 
 
 Weitere Informationen zu weiteren, hier nicht beschriebenen Elasticsearch-Funktionen finden Sie in der
-[Elasticsearch-Dokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+[Elasticsearch-Dokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html).
 
 ## Elasticsearch in {{ site.data.keys.mf_analytics_server }} verwalten
 {: #managing-elasticsearch-on-the-mobilefirst-analytics-server }
@@ -33,6 +33,8 @@ Elasticsearch ist in den {{ site.data.keys.mf_analytics_server }} eingebettet un
 im [{{ site.data.keys.mf_analytics_server }} Konfigurationshandbuch](../../installation-configuration/production/analytics/configuration)
 unter [Cluster-Management und
 Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch).
+
+
 
 ### Elasticsearch-Eigenschaften
 {: #elasticsearch properties }
@@ -80,4 +82,5 @@ http://localhost:9500/*/_mapping
 ```
 
 > Elasticsearch macht viele weitere REST-Endpunkte zugänglich. Weitere Informationen finden Sie in der
-[Elasticsearch-Dokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+[Elasticsearch-Dokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.7/index.html).
+

@@ -15,7 +15,7 @@ With Cordova applications you can use your preferred code editor, such as Atom.i
 
 ## Installing the Cordova CLI
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }} supports Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova).  
+{{ site.data.keys.product }} supports Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) or greater.  
 To install:
 
 1. Download and install [NodeJS](https://nodejs.org/en/).
@@ -27,4 +27,4 @@ To continue with {{ site.data.keys.product_adj }} development in Cordova applica
 
 * Learn how to add the [{{ site.data.keys.product_adj }} SDK to Cordova applications](../../../application-development/sdk/cordova/).
 * For applications development, refer to the [Using the {{ site.data.keys.product }} SDK](../../../application-development/) tutorials.
-* For adapters develpment, refer to the [Adapters](../../../adapters/) category.
+* For adapters development, refer to the [Adapters](../../../adapters/) category.

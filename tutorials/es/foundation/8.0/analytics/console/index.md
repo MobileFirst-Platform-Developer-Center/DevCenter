@@ -1,128 +1,130 @@
 ---
 layout: tutorial
-title: Operations and Analytics Consoles
+title: Consolas de operaciones y de analíticas
 breadcrumb_title: Analytics Console
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-## Overview
-Configure the way the client works with the {{ site.data.keys.mf_analytics_server }}, configure and view a wide range of reports using the Operations and Analytics Consoles.
+## Visión general
+Configure el modo en que el cliente funcionará con {{ site.data.keys.mf_analytics_server }}, configure y visualice una amplia gama de informes utilizando las consolas de analíticas y operaciones.
 
 ## {{ site.data.keys.mf_analytics_console_full }}
-From the {{ site.data.keys.mf_analytics_console }}, view and configure the Analytics reports. Manage alerts and view client logs.
+Desde la {{ site.data.keys.mf_analytics_console }}, visualice y configure los informes de las analíticas. Gestione alertas y visualice registros de cliente.
 
-You can open the {{ site.data.keys.mf_analytics_console_short }} from the {{ site.data.keys.mf_console }} by clicking the  **Analytics Console**  link in the top-right navigation bar.
+Abra {{ site.data.keys.mf_analytics_console_short }} desde {{ site.data.keys.mf_console }} pulsando el enlace **Analytics Console** en la barra de navegación superior derecha.
 
-![Analytics console button](analytics-console-button.png)
+![Botón de la consola de analíticas](analytics-console-button.png)
 
-After navigating to the {{ site.data.keys.mf_analytics_console_short }}, the default **Dashboard** panel appears. If a client application has already sent logs and analytics data to the server, the relevant reports are populated. The **Apps** and **Infrastructure** can be chosen from the navigation bar.
+Después de navegar a {{ site.data.keys.mf_analytics_console_short }}, aparece el **Panel de control** predeterminado. Si una aplicación de cliente ya ha enviado registros y datos de analíticas al servidor, los informes relevantes aparecen cumplimentados. Desde la barra de navegación se pueden elegir **Aplicaciones** e **Infraestructura**.
 
-![Analytics console](analytics-console.png)
+![Analytics Console](analytics-console.png)
 
-### Dashboard
-In the **Dashboard** panel, you can review collected analytics data related to application crashes, application sessions, and server processing time. Additionally you can create custom charts as well as manage alerts.
+### Panel de control
+En el **Panel de control**, puede revisar los datos de las analíticas recopiladas relacionados con bloqueos de aplicación, sesiones de aplicación y tiempo de proceso del servidor. Además puede crear gráficos personalizados y gestionar alertas.
 
-### Apps
-In the **Apps** panel, you can review in-depth analytics data related to usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data. Search through client logs for specific apps and devices (**Apps → Client Log Search**).
-
-
-### Infrastructure
-In the **Infrastructure** panel you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time, and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
-
-> Learn more in the [Analytics Workflows](../workflows/) tutorial.
-
-## Analytics features
-
-### App Analytics
-From the **Apps → Usage and Devices** tab, you can view App Session charts and App Usage charts to find out which app is being used most frequently by your users.
-
-### Built-in Analytics
-When you use the {{ site.data.keys.product_adj }} client SDK together with the {{ site.data.keys.mf_server }}, analytics data automatically gets collected for any request that your app makes to the {{ site.data.keys.mf_server }}. From **Dashboard → Overview** view basic device metadata that gets collected and reported to the {{ site.data.keys.mf_analytics_server }}.
-
-### Custom Analytics
-You can have your app send custom data and create custom charts for your custom data.
-
-> Learn how to send custom analytics in the [Analytics API](../analytics-api/) tutorial.
-
-### Custom charts
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console_short }} (**Dashboard → Custom Charts**). This visualization feature is a powerful way to analyze business-critical data.
-
-> Learn how to create custom charts in the [Creating Custom Charts](custom-charts/) tutorial.
-
-### Manage alerts
-Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console }} regularly.
-
-From the **Dashboard → Alert Management** tab, you can configure thresholds which, if exceeded, trigger alerts to notify administrators. You can visualize the triggered alerts on the console or handle them by using a custom web hook. A custom web hook allows you to control who is notified when an alert is triggered, and how.
-
-> Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
-
-### Monitor app crashes
-App crashes are visualized on the {{ site.data.keys.mf_analytics_console_short }} (**Apps → Crashes**), where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server *once the application is running again*. When crash logs are sent to the analytics server, they automatically populate the crash charts.
-
-### Monitor server and network data
-The {{ site.data.keys.mf_analytics_console_short }} monitors network data when it is sent to the Analytics Server, and allows the user to query this information in different ways (**Infrastructure → Servers and Networks**).
+### Aplicaciones
+En el panel **Aplicaciones**, revise en profundidad datos de analíticas relacionadas con el uso y los dispositivos (como, por ejemplo, el total de sesiones de aplicaciones y dispositivos, usuarios activos, uso de aplicaciones, nuevos dispositivos, uso de modelo y sistema operativo), así como datos relacionados con los bloqueos. Busque en los registros de cliente aplicaciones y dispositivos específicos (**Aplicaciones → Buscar en registro de clientes**).
 
 
-### Collect, search, and report on client logs
-Client logs can be sent to the server and included in analytics reports.
+### Infraestructura
+El panel **Infraestructura** permite revisar los datos de las analíticas relacionadas con: el tiempo de proceso de sesión, el tamaño medio de las solicitudes, las solicitudes de servidor, el tiempo de respuesta de los adaptadores, el tiempo de respuesta de los procedimientos y el tamaño y uso de los adaptadores, así como datos de las notificaciones push como, por ejemplo, solicitudes de notificación e información de mediador. También es posible buscar información en los registros de servidor.
 
-To include logging information in a report:
+> Obtenga más información en la guía de aprendizaje de [Flujos de trabajo de analíticas](../workflows/).
 
-1. From the {{ site.data.keys.mf_analytics_console_short }}, choose the **Dashboard → Custom Charts** tab.
+> **Nota:**Las funcionalidades de datos del registro cliente/servidor **Buscar** y **Exportar** no invocan una acción en el suceso de click de ratón cuando se modifica el filtro de fecha, tal y como se observa en versiones recientes del navegador Chrome. Este comportamiento viene causado por un problema con el navegador Chrome y también por una limitación conocida. Este problema no se produce en otros navegadores ni en versiones de Chrome anteriores a la *v54.0.2840.71*. En las versiones más recientes del navegador Chrome, los usuarios pueden utilizar el método alternativo de establecer la fecha requerida y a continuación actualizar la página antes de pulsar el botón de Buscar/Exportar, o pueden pulsar la tecla Intro/Return para llevar a cabo la acción seleccionada.
 
-2. Choose **Client Logs** from the **Event Type** pull-down menu.
+## Características de analíticas
 
-For more information on **Custom Charts**, see [Creating Custom Charts](custom-charts/).
+### Analíticas de aplicaciones
+Desde el separador **Aplicaciones → Uso y dispositivos**, visualice gráficos de Sesiones de aplicación y Uso de aplicaciones para encontrar la aplicación que sus usuarios están utilizando con más frecuencia.
 
-Logging data can be filtered. Log filters can be configured and saved on the Analytics Server, and then retrieved by client applications.
+### Analíticas incorporadas
+Cuando se utiliza el SDK de cliente de {{ site.data.keys.product_adj }} junto con {{ site.data.keys.mf_server }}, se recopilan de forma automática todos los datos de las solicitudes que su aplicación realiza a {{ site.data.keys.mf_server }}. Desde **Panel de control → Visión general** visualice metadatos de dispositivos que se recopilan y de los que se informa a {{ site.data.keys.mf_analytics_server }}.
 
-For information on configuring log filters, see [Client log searches](log-filters/) tutorial.
+### Analíticas personalizadas
+Puede hacer que su aplicación envíe datos personalizados y cree gráficos personalizados con dichos datos.
 
-For more information on sending logs from the client, see [Client log collection](../../application-development/client-side-log-collection/).
+> Aprenda a enviar analíticas personalizadas con la ayuda de la guía de aprendizaje de [API de analíticas](../analytics-api/).
+
+### Gráficos personalizados
+Los gráficos personalizados permiten visualizar los datos recopilados en el almacén de datos de analíticas como gráficos que no están disponibles de forma predeterminada en {{ site.data.keys.mf_analytics_console_short }} (**Panel de control → Gráficos personalizados**). Esta característica de visualización es una manera efectiva de analizar los datos más significativos de la empresa.
+
+> Aprenda a crear gráficos personalizados en la guía de aprendizaje [Creación de gráficos personalizados](custom-charts/).
+
+### Gestión de alertas
+Las alertas proporcionan unos medios proactivos para supervisar la salida de las aplicaciones móviles sin tener que comprobar {{ site.data.keys.mf_analytics_console }} de forma periódica.
+
+Desde el separador **Panel de control → Gestión de alertas**, puede configurar umbrales, que si se superan, desencadenan alertas para notificar a los administradores. Las alertas que se desencadenan se pueden visualizar en la consola o se puede permitir que enganches web personalizados las manejen. Un enganche web personalizado permite controlar quién será notificado cuando se desencadene una alerta y cómo.
+
+> Aprenda a gestionar alertas en la guía de aprendizaje [Gestión de alertas](alerts/).
+
+### Supervisión de bloqueos de aplicaciones
+Los bloqueos de las aplicaciones se visualizan en {{ site.data.keys.mf_analytics_console_short }} (**Aplicaciones → Bloqueos**), que permite visualizar con rapidez bloqueos para actuar en consecuencia. De forma predeterminada, los registros de bloqueos se recopilan en el dispositivo y se envían al servidor *una vez la aplicación se ejecuta de nuevo*. Cuando los registros de bloqueo se envían a las analíticas servidor, automáticamente cumplimentan los gráficos de bloqueos.
+
+### Supervisión del servidor y datos de red
+{{ site.data.keys.mf_analytics_console_short }} supervisa los datos de red cuando se envían al servidor de analíticas y permite al usuario consultar esta información de distintas formas (**Infraestructura → Servidores y redes**).
+
+
+### Recopilación, búsqueda e información sobre los registros de cliente
+Los registros de cliente se pueden enviar al servidor para incluirlos en informes de analíticas.
+
+Para incluir información de registro en un informe:
+
+1. Desde {{ site.data.keys.mf_analytics_console_short }}, elija el separador **Panel de control → Gráficos personalizados**.
+
+2. Elija **Registros de cliente** en el menú desplegable **Tipo de suceso**.
+
+Para obtener más información sobre los **Gráficos personalizados**, consulte [Creación de gráficos personalizados](custom-charts/).
+
+Los datos de registro se pueden filtrar. Los filtros de registro se configuran y guardan en el servidor de analíticas y, a continuación, las aplicaciones de cliente los recuperan.
+
+Para obtener información sobre cómo configurar los filtros de registro, consulte la guía de aprendizaje de [Búsquedas de registro de cliente](log-filters/).
+
+Para obtener más información sobre cómo enviar registros desde el cliente, consulte [Recopilación de registros de cliente](../../application-development/client-side-log-collection/).
 
 
 
 ## {{ site.data.keys.mf_console_full }}
-Configure and administer the Analytics Server with the {{ site.data.keys.mf_console }}.
+Configuración y administración del servidor de analíticas con {{ site.data.keys.mf_console }}.
 
-If you are in the {{ site.data.keys.mf_analytics_console_short }}, access the {{ site.data.keys.mf_console }} by clicking the **Operations Console** button in the top navigation bar.
+Si se encuentra en {{ site.data.keys.mf_analytics_console_short }}, acceda a {{ site.data.keys.mf_console }} pulsando el botón **Consola de operaciones** en la parte superior barra de navegación.
 
-### Collect analytics data from additional logger packages
-By default, only logging from the package `com.worklight` is sent to analytics. In order to add logging from additional packages see [Forwarding logs to the Analytics Server](../../adapters/server-side-log-collection/java-adapter/#forwarding-logs-to-the-analytics-server).
+### Recopilación de datos de analíticas de paquetes registradores adicionales
+De forma predeterminada, solo se envían como analíticas los registros del paquete `com.worklight`. Para añadir registros y paquetes adicionales, consulte [Reenvío de registros al servidor de analíticas](../../adapters/server-side-log-collection/java-adapter/#forwarding-logs-to-the-analytics-server).
 
 
-### Enable/disable Analytics support
+### Habilitación e inhabilitación del soporte de analíticas
 {: #enabledisable-analytics-support}
 
-The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
+De forma predeterminada está habilitada la recopilación de datos para el análisis por parte del servidor de analíticas. Existe la posibilidad de inhabilitarla, por ejemplo para ahorrar tiempo de proceso.
 
-1. In the navigation sidebar, click on **Runtime settings**. To avoid inadvertent changes, runtime properties are displayed in read-only mode.
-2. To make the settings editable, click the **Edit** button. If you logged in with a role other than *administrator* or *deployer*, the **Edit** button is not visible because you are not allowed to modify runtime properties.
-3. From the **Data collection enabled** drop-down menu, select **false** to disable data collection.
-4. Click **Save**.
-5. Click the **Read Only** button to lock the properties again.
-
-
-![Enable or disable analytics support in the console](enable-disable-analytics.png)
+1. En la barra lateral de navegación, pulse en **Valores de tiempo de ejecución**. Para evitar de cambios accidentales, las propiedades de tiempo de ejecución se muestran en una modalidad de sólo lectura.
+2. Para editar los valores, pulse el botón **Editar**. Se inicia una sesión con un rol distinto de *administrator* o *deployer*, el botón **Editar** no está visible porque no está autorizado a modificar propiedades de tiempo de ejecución.
+3. Desde el menú desplegable **Habilitada la recopilación de datos**, seleccione **falso** para inhabilitar la recopilación de datos.
+4. Pulse **Guardar**.
+5. Pulse el botón de **Sólo lectura** para bloquear de nuevo las propiedades.
 
 
-### Role-based access control
-Content in the {{ site.data.keys.mf_analytics_console_short }} is restricted by predefined security roles.  
-The {{ site.data.keys.mf_analytics_console_short }} displays different content based on the security role of the logged-in user. The following table shows the security roles and their access to the {{ site.data.keys.mf_analytics_console_short }}.
+![Habilitar o inhabilitar el soporte de analíticas en la consola](enable-disable-analytics.png)
 
-| Role           | Role name                | Viewing Access                                                     | Editing Access  |
+
+### Control de acceso basado en el rol
+El contenido en {{ site.data.keys.mf_analytics_console_short }} viene restringido por roles de seguridad definidos de forma previa.  
+{{ site.data.keys.mf_analytics_console_short }} visualiza contenidos diferentes en función del rol de seguridad del usuario que ha iniciado la sesión. En la tabla siguiente se muestran los roles de seguridad y su acceso a {{ site.data.keys.mf_analytics_console_short }}.
+
+|Rol           |Nombre de rol                |Acceso de visualización                                                     |Acceso de edición  |
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-| Administrator  | analytics_administrator  | Everything.	                                                     | Everything.     |
-| Infrastructure | analytics_infrastructure	| Everything.	                                                     | Everything.     |
-| Developer      | analytics_developer	    | Everything except for the Administration pages.		             | Everything.     |
-| Support        | analytics_support        | Everything except for the Administration pages.		             | Everything.     |
-| Business       | analytics_business       | Everything except for the Administration and Infrastructure pages. | Everything.     |
+|Administrator  |analytics_administrator  |Todo.	                                                     |Todo.     |
+|Infrastructure |analytics_infrastructure	|Todo.	                                                     |Todo.     |
+|Developer      |analytics_developer	    |Todo excepto páginas del administrador.		             |Todo.     |
+|Support        |analytics_support        |Todo excepto páginas del administrador.		             |Todo.     |
+|Business       |analytics_business       |Todo excepto páginas del administrador y de infraestructura. |Todo.     |
 
-> For information on setting up roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
+> Para obtener información sobre cómo configurar roles, consulte [Configuración de la autenticación de usuarios para la administración de {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
 
 
-## Related blog posts
-* [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
-* [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
+## Artículos de blog relacionados
+* [Más información sobre la instrumentación de analíticas personalizadas]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
+* ´[Más información sobre los enganches web]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

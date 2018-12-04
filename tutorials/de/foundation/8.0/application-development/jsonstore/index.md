@@ -76,7 +76,7 @@ var doc = { _id: 1, json: {name: 'carlos', age: 99} };
 
 ```javascript
 var docs = [
-  { _id: 1, json: {name: 'carlos', age: 99} },
+{ _id: 1, json: {name: 'carlos', age: 99} },
   { _id: 2, json: {name: 'tim', age: 100} }
 ]
 ```
@@ -154,7 +154,7 @@ Für diese Beispiele wird davon ausgegangen, dass das Suchfeld "name" vom Typ St
 var query1 = {name: 'carlos'};
 ```
 
-**Suche nach Dokumenten mit dem Namen ``carlos`` und dem Alter `99`**
+**Suche nach Dokumenten mit dem Namen `carlos` und der Altersangabe `99`**
 
 ```javascript
 var query2 = {name: 'carlos', age: 99};
@@ -192,18 +192,18 @@ API vergleichbar. Die Tabelle zeigt, wie einige
 JSONStore-Features im Vergleich mit anderen Technologien aussehen. JSONStore ist nur für
 iOS- und Android-Geräte bzw. -Simulatoren verfügbar.
 
-| Feature                                            | JSONStore      | LocalStorage | IndexedDB | Cordova-API Storage | Cordova-API File |
+|Feature |JSONStore      |LocalStorage |IndexedDB |Cordova-API Storage |Cordova-API File |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-| Android-Unterstützung (Cordova-Anwendungen &amp; native Anwendungen)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| iOS-Unterstützung (Cordova-Anwendungen & native Anwendungen)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Windows 8.1 Universal und Windows 10 UWP (Cordova-Anwendungen)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
-| Datenverschlüsselung	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Maximaler Speicher	                                 |Verfügbarer Speicherplatz |    ~5MB     |   ~5MB 	 | Verfügbarer Speicherplatz	   | Verfügbarer Speicherplatz  |
-| Zuverlässiger Speicher (siehe Hinweis)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
-| Verfolgung lokaler Änderungen	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Mehrbenutzerunterstützung                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Indexierung	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
-| Art der Speichers	                                 | JSON-Dokumente | Schlüssel-Wert-Paare | JSON-Dokumente | Relational (SQL) | Zeichenfolgen     |
+|Android-Unterstützung (Cordova-Anwendungen &amp; native Anwendungen)|	     ✔ 	      |✔	      |✔	      |✔	    |✔	     |
+|iOS-Unterstützung (Cordova-Anwendungen & native Anwendungen) |	     ✔ 	      |✔	      |✔	      |✔	    |✔	     |
+|Windows 8.1 Universal und Windows 10 UWP (Cordova-Anwendungen)|	     ✔ 	      |✔	      |✔	      |        -	           |✔	      |
+|Datenverschlüsselung |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+|Maximaler Speicher |Verfügbarer Speicherplatz|~5 MB |~5 MB | Verfügbarer Speicherplatz | Verfügbarer Speicherplatz |
+|Zuverlässiger Speicher (siehe Hinweis)|	     ✔ 	      |      -	    |     -	     |✔	      |✔	      |
+|Verfolgung lokaler Änderungen |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+|Mehrbenutzerunterstützung|	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+|Indexierung |	     ✔ 	      |      -	    |✔	      |✔	      |         -	      |
+|Art der Speichers |JSON-Dokumente|Schlüssel-Wert-Paare|JSON-Dokumente|Relational (SQL)|Zeichenfolgen |
 
 **Hinweis:** Zuverlässiger Speicher bedeutet, dass Ihre Daten erst gelöscht werden, wenn eines der folgenden Ereignisse eintritt:
 
@@ -316,13 +316,13 @@ der Datei **sqlite3.dll**.Es gibt eine Version für x86, eine für x64 und eine 
 ARM.
 
    ```bash
-   C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLCipher.WinRT81\3.0.1\Redist\Retail\<platform>
+   C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLCipher.WinRT81\3.0.1\Redist\Retail\<Plattform>
    ```
     
 3. Kopieren Sie diese Datei in ihre {{ site.data.keys.product_adj }}-Anwendung, um die vorhandene Datei zu ersetzen.
 
    ```bash
-   <Worklight-Projektname>\apps\<application name>\windows8\native\buildtarget\<platform>
+   <Worklight-Projektname>\apps\<Anwendungsname>\windows8\native\buildtarget\<Plattform>
    ```
 
 ## Leistung
@@ -409,7 +409,7 @@ Führen Sie Aktionen aus, die auf den an den Ereignislistener
 
 ```javascript
 var asyncOperation = function () {
-  // Vorausgesetzt wird, dass Sie jQuery über $ in der Umgebung definiert haben.
+// Vorausgesetzt wird, dass Sie jQuery über $ in der Umgebung definiert haben.
   var deferred = $.Deferred();
 
   setTimeout(function() {
@@ -433,7 +433,7 @@ asyncOperation.then(function (response) {
 
 ```javascript
 var asyncOperation = function (callback) {
-  setTimeout(function() {
+setTimeout(function() {
 callback('Hello');
   }, 1000);
 };
@@ -452,8 +452,7 @@ asyncOperation(function (response) {
 
 ```javascript
 $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collectionName) {
-
-  // evt - Enthält Informationen zum Ereignis
+// evt - Enthält Informationen zum Ereignis
   // data - Daten, die nach Abschluss der Operation (add, find usw.) gesendet werden
   // src - Name der Operation (add, find, push usw.)
   // collectionName - Name der Sammlung
@@ -546,15 +545,16 @@ Diese Komponente umfasst die JSONStore-APIs, mit denen Sie JSON-Daten zu einer S
 
 Alle nachfolgenden Codebeispiele sind Pseudocode, der so ähnlich wie JavaScript aussieht.
 
-**Hinweis:** Verwenden Sie für die Transportschicht Adapter. Zu den Vorteilen, die Sie bei Verwendung von Adaptern haben, gehören die XML-JSON-Umsetzung, die Sicherheit, Filter und die Entkopplung von server- und clientseitigem Code.
+**Hinweis:** Verwenden Sie für die Transportschicht Adapter. Zu den Vorteilen, die Sie
+bei Verwendung von Adaptern haben, gehören die XML-JSON-Umsetzung, die Sicherheit, Filter und die Entkopplung
+von server- und clientseitigem Code.
 
 **Externe Datenquelle: Back-End-REST-Endpunkt**  
 Stellen Sie sich vor, Sie hätten einen REST-Endpunkt, der Daten aus einer Datenbank liest und als Array mit JSON-Objekten zurückgibt.
 
 ```javascript
 app.get('/people', function (req, res) {
-
-  var people = database.getAll('people');
+var people = database.getAll('people');
 
   res.json(people);
 });
@@ -575,8 +575,8 @@ Die Prozedur ruft den REST-Endpunkt auf und gibt das Array mit JSON-Objekten an 
 an den Client zurückgegeben wird.
 
 ```javascript
-function getPeople() {
-	var input = {
+function getPeople () {
+var input = {
     method : 'get',
     path : '/people'
   };
@@ -618,11 +618,8 @@ $.ajax({
 ```
 
 **Interne Datenaquellen-API: JSONStore**
-Wenn Sie die Antwort vom Back-End empfangen haben, können Sie JSONStore verwenden, um mit den
-Daten zu arbeiten.
-In JSONStore gibt es eine Möglichkeit, lokale Änderungen zu verfolgen, nämlich APIs, die Dokumente als vorläufig markieren. Die
-API erfasst die letzte für das Dokument ausgeführte Operation und den Zeitpunkt, zu dem das Dokument als vorläufig markiert wurde. Diese Informationen können Sie
-nutzen, um Features wie die Datensynchronisation zu implementieren.
+Wenn Sie die Antwort vom Back-End empfangen haben, können Sie JSONStore verwenden, um mit den Daten zu arbeiten.
+In JSONStore gibt es eine Möglichkeit, lokale Änderungen zu verfolgen, nämlich APIs, die Dokumente als vorläufig markieren. Die API erfasst die letzte für das Dokument ausgeführte Operation und den Zeitpunkt, zu dem das Dokument als vorläufig markiert wurde. Diese Informationen können Sie nutzen, um Features wie die Datensynchronisation zu implementieren.
 
 Die API change akzeptiert die Daten und einige Optionen:
 
@@ -633,55 +630,43 @@ Diese Suchfelder sind Teil der Eingabedaten. Sie werden verwendet, um bereits in
 ['id', 'ssn']
 ```
 
-ist Ihr ausgewähltes
-Ersetzungskriterium und Sie übergeben das folgende Array als Eingabedaten:
+Dies ist Ihr ausgewähltes Ersetzungskriterium und Sie übergeben das folgende Array als Eingabedaten:
 
 ```javascript
 [{id: 1, ssn: '111-22-3333', name: 'Carlos'}]
 ```
 
-und die Sammlung
-`people` enthält bereits das folgende Dokument:
+Die Sammlung `people` enthält bereits das folgende Dokument:
 
 ```javascript
 {_id: 1,json: {id: 1, ssn: '111-22-3333', name: 'Carlitos'}}
 ```
 
-Die Operation
-`change` sucht nach einem Dokument, das exakt mit der folgenden Abfrage übereinstimmt:
+Die Operation `change` sucht nach einem Dokument, das exakt mit der folgenden Abfrage übereinstimmt:
 
 ```javascript
 {id: 1, ssn: '111-22-3333'}
 ```
 
-Die Operation
-`change` führt dann eine Ersetzung mit den Eingabedaten durch, sodass die Sammlung Folgendes enthält:
+Die Operation `change` führt dann eine Ersetzung mit den Eingabedaten durch, sodass die Sammlung Folgendes enthält:
 
 ```javascript
 {_id: 1, json: {id:1, ssn: '111-22-3333', name: 'Carlos'}}
 ```
 
-Der Name wurde
-von
-`Carlitos` in `Carlos` geändert.
-Wenn mehrere Dokumente das Ersetzungskriterium erfüllen, wird in allen diesen Dokumenten die Ersetzung mit den jeweiligen Eingabedaten
-durchgeführt.
+Der Name wurde von `Carlitos` in `Carlos` geändert. Wenn mehrere Dokumente das Ersetzungskriterium erfüllen, wird in allen diesen Dokumenten die Ersetzung mit den jeweiligen Eingabedaten durchgeführt.
 
 **addNew**  
-Wenn keine Dokumente den Ersetzungskriterien entsprechen, prüft die API change den Wert dieser
-Option. Ist die Option auf **true** gesetzt, erstellt
-die API change ein neues Dokument und fügt es zum Store hinzu. Andernfalls wird keine weitere Aktion ausgeführt.
+Wenn keine Dokumente den Ersetzungskriterien entsprechen, prüft die API change den Wert dieser Option. Ist die Option auf **true** gesetzt, erstellt die API change ein neues Dokument und fügt es zum Store hinzu. Andernfalls wird keine weitere Aktion ausgeführt.
 
 **markDirty**  
 Bestimmt, ob die API change ersetzte oder hinzugefügte Dokumente als vorläufig markiert.
 
-Der
-Adapter gibt ein Daten-Array zurück:
+Der Adapter gibt ein Daten-Array zurück:
 
 ```javascript
 .then(function (responseFromAdapter) {
-
-  var accessor = WL.JSONStore.get('people');
+var accessor = WL.JSONStore.get('people');
 var data = responseFromAdapter.responseJSON;
 var changeOptions = {
 replaceCriteria : ['id', 'ssn'],
@@ -697,41 +682,203 @@ replaceCriteria : ['id', 'ssn'],
 })
 ```
 
-Sie können andere APIs verwenden, um Änderungen an gespeicherten lokalen Dokumenten zu verfolgen. Verwenden Sie für die Sammlung, für die Sie Operationen
-ausführen, immer einen Zugriffsmechanismus.
+Sie können andere APIs verwenden, um Änderungen an gespeicherten lokalen Dokumenten zu verfolgen. Verwenden Sie für die Sammlung, für die Sie Operationen ausführen, immer einen Zugriffsmechanismus.
 
 ```javascript
 var accessor = WL.JSONStore.get('people')
 ```
 
-Dann können Sie
-Daten (Array mit JSON-Objekten) hinzufügen und entscheiden, ob diese als vorläufig markiert werden sollen. Normalerweise werden Sie die Option markDirty auf "false" setzen, wenn Sie Änderungen von der externen Quelle abrufen. Setzen Sie die Option auf "true", wenn Sie Daten lokal hinzufügen.
+Dann können Sie Daten (Array mit JSON-Objekten) hinzufügen und entscheiden, ob diese als vorläufig markiert werden sollen. Normalerweise werden Sie die Option markDirty auf "false" setzen, wenn Sie Änderungen von der externen Quelle abrufen. Setzen Sie die Option auf "true", wenn Sie Daten lokal hinzufügen.
 
 ```javascript
 accessor.add(data, {markDirty: true})
 ```
 
-Sie können auch ein Dokument ersetzen und
-bei Bedarf entscheiden, das Dokument mit den Ersetzungen als vorläufig zu markieren.
+Sie können auch ein Dokument ersetzen und bei Bedarf entscheiden, das Dokument mit den Ersetzungen als vorläufig zu markieren.
 
 ```javascript
 accessor.replace(doc, {markDirty: true})
 ```
 
-Auf die gleiche Weise können Sie
-ein Dokument entfernen und das Entfernen bei Bedarf als vorläufig markieren. Dokumente, die entfernt und als vorläufig markiert wurden, werden nicht angezeigt, wenn Sie die
-API find verwenden. Sie befinden sich aber noch in der Sammlung, bis Sie die API
-`markClean` verwenden, die die Dokumente physisch aus der Sammlung entfernt. Wenn das Dokument nicht als vorläufig markiert ist,
-wird es physisch aus der Sammlung entfernt.
+Auf die gleiche Weise können Sie ein Dokument entfernen und das Entfernen bei Bedarf als vorläufig markieren. Dokumente, die entfernt und als vorläufig markiert wurden, werden nicht angezeigt, wenn Sie die API find verwenden. Sie befinden sich aber noch in der Sammlung, bis Sie die API `markClean` verwenden, die die Dokumente physisch aus der Sammlung entfernt. Wenn das Dokument nicht als vorläufig markiert ist, wird es physisch aus der Sammlung entfernt.
 
 ```javascript
 accessor.remove(doc, {markDirty: true})
 ```
 
+
+### Automatische Synchronisation mit der Cloudant-DB
+Ab Mobile Foundation [CD Update 2](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/8-0-cd-update-release) können Sie das MFP-JSONStore-SDK verwenden, um die Datensynchronisation einer JSONStore-Sammlung auf einem Gerät mit jeder CouchD-Datenbank, einschließlich Cloudant, zu automatisieren. Dieses Feature ist für iOS, Android, Cordova-Android und Cordova-iOS verfügbar.
+
+#### Synchronisierung von JSONStore und Cloudant einrichten
+Führen Sie die folgenden Schritte aus, um die automatische Synchronisation von JSONStore und Cloudant einzurichten:
+
+1. Definieren Sie die Synchronisationsrichtlinie für Ihre mobile App.
+2. Implementieren Sie den Synchronisationsadapter in der IBM Mobile Foundation.
+
+#### Synchronisationsrichtlinie definieren
+Die Synchronisationsrichtlinie legt die Methode der Synchronisation einer JSONStore-Sammlung mit einer Cloudant-Datenbank fest. Sie können die Synchronisationsrichtlinie in Ihrer App für jede Sammlung angeben. 
+
+Eine JSONStore-Sammlung kann mit einer Synchronisationsrichtlinie initialisiert werden. Als Synchronisationsrichtlinie kommt eine der drei folgenden Richtlinien infrage: 
+
+<b>SYNC_DOWNSTREAM:</b>
+Verwenden Sie diese Richtlinie, wenn Sie Daten von Cloudant in die JSONStore-Sammlung herunterladen möchten. Diese Richtlinie wird normalerweise für statische Daten verwendet, die für einen Offlinespeicher erforderlich sind, z. B. die Preisliste für Artikel in einem Katalog. Jedes Mal, wenn die Sammlung auf dem Gerät initialisiert wird, werden die Daten aus der fernen Cloudant-Datenbank aktualisiert. Beim ersten Mal wird die gesamte Datenbank heruntergeladen. Bei nachfolgenden Aktualisierungen wird dagegen nur das Delta heruntergeladen, d. h. die Änderungen, die an der fernen Datenbank vorgenommen wurden. 
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_DOWNSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
+}
+```
+
+<b>SYNC_ UPSTREAM: </b>
+Verwenden Sie diese Richtlinie, wenn Sie lokale Daten per Push-Operation in eine Cloudant-Datenbank übertragen möchten. Sie könnten beispielsweise offline erfasste Verkaufsdaten in eine Cloudant-Datenbank hochladen. Wenn für eine Sammlung die Richtlinie SYNC_UPSTREAM definiert ist, bewirkt das Hinzufügen eines neuen Datensatzes zu der Sammlung die Erstellung eines neuen Datensatzes in Cloudant. Analog dazu bewirkt jedes modifizierte Dokument in der Sammlung auf dem Gerät eine Modifikation des Dokuments in Cloudant. Aus der Sammlung gelöschte Dokumente werden ebenso aus der Cloudant-Datenbank gelöscht. 
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_UPSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
+}
+```
+
+<b>SYNC_NONE: </b>
+Dies ist die Standardrichtlinie. Wählen Sie diese Richtlinie, wenn keine Synchronisation stattfinden soll. 
+
+<b><i>Wichtiger Hinweis:</i></b> Die Synchronisationsrichtlinie wird einer JSONStore-Sammlung zugeordnet. Sobald eine Sammlung mit einer bestimmten Synchronisationsrichtlinie initialisiert wurde, sollte die Richtlinie nicht geändert werden. Das Modifizieren der Synchronisationsrichtlinie kann zu unerwünschten Ergebnissen führen.
+
+<b>syncAdapterPath</b>
+
+Dies ist der Name des Adapters, der implementiert wird.
+
+
+Android:
+```
+// Hier ist "JSONStoreCloudantSync" der Name des in MFP Server implementierten Synchronisationsadapters.
+initOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+iOS:
+```
+openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:// eine der drei Synchronisationsrichtlinien
+	syncAdapterPath : 'JSONStoreCloudantSync'
+}
+```
+
+#### Synchronisierungsadapter implementieren
+Laden Sie <a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">hier</a> den Adapter JSONStoreSync herunter, konfigurieren Sie Cloudant-Berechtigungsnachweise in ‘src/main/adapter-resources/adapter.xml’ und implementieren Sie den Adapter in Ihrem MobileFirst Server.
+Konfigurieren Sie außerdem die Berechtigungsnachweise für die Back-End-Cloudant-Datenbank. Verwenden Sie dazu wie folgt die MPF-Konsole:
+
+|---------------------------|-------------------------|
+|![Cloudant konfigurieren]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/configure-cloudant.png)    |   ![Cloudant-Berechtigungsnachweise]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/CloudantCreds.jpg)|
+
+#### Wichtige Hinweise zur Verwendung dieses Features
+Dieses Feature ist nur für Android, iOS, Cordova-Android und Cordova-iOS verfügbar.
+
+Der Name der JSONStore-Sammlung muss mit dem der CouchDB-Datenbank übereinstimmen. Informieren Sie sich gründlich über die Syntax für die Benennung Ihrer CouchDB-Datenbank, bevor Sie Ihrer JSONStore-Sammlung einen Namen geben. 
+
+In Android müssen Sie wie folgt den Callback-Listener für die Synchronisation als Teil der *init*-Optionen definieren: 
+
+```
+// import com.worklight.jsonstore.api.JSONStoreSyncListener;
+JSONStoreSyncListener syncListener = new JSONStoreSyncListener() {
+	@Override
+	public void onSuccess(JSONObject json) {
+		// Erfolgsaktion implementieren
+	}
+
+	@Override
+	public void onFailure(JSONStoreException ex) {
+		// Fehleraktion implementieren
+	}
+
+};
+initOptions.setSyncListener(syncListener);
+```
+
+Verwenden Sie in iOS zum Aktivieren der Synchronistion mit Callbacks wie folgt die überladene API `opencollections`, die über einen Completion-Handler verfügt:
+
+```
+JSONStore.sharedInstance().openCollections([collections], with: options, completionHandler: { (success, msg) in
+	self.logMessage("msg is : " + msg!);
+	// Das Flag success hat den Wert 'true', wenn die Synchronisation erfolgreich ist. Andernfalls hat das Flag den Wert 'false' und die Nachricht vom SDK ist über das Argument 'msg' verfügbar.
+})
+```
+
+Definieren Sie in Cordova wie folgt Ihre Erfolgs- und Fehler-Callbacks als Teil der Synchronisationsobjekte:
+
+```
+function onsuccess(msg) {
+// Erfolgsaktion implementieren
+}
+
+function onfailure(msg) {
+// Fehleraktion implementieren
+}
+
+collection.sync = {
+	syncPolicy : WL.JSONStore.syncOptions.SYNC_UPSTREAM, 
+	syncAdapterPath : 'JSONStoreCloudantSync',
+	onSyncSuccess : onsuccess,
+	onSyncFailure : onfailure
+};
+```
+
+Eine JSONStoreCollection kann mit nur einer der zulässigen Synchronisationsrichtlinien definiert werden, d. h. mit SYNC_DOWNSTREAM, SYNC_UPSTREAM oder SYNC_NONE.
+
+Falls nach der Initialisierung explizit eine Upstream- oder Downstream-Synchronisation durchgeführt werden muss, kann die folgende API verwendet werden:
+
+`sync()`
+
+Die API führt eine Downstream-Synchronisation durch, wenn die aufrufende Sammlung mit SYNC_DOWNSTREAM definiert ist. Ist SYNC_UPSTREAM als Richtlinie festgelegt, wird eine Upstream-Synchronisation für hinzugefügte, gelöschte und ersetzte JSONStore-Dokumente in der Cloudant-Datenbank durchgeführt.  
+
+
+Android:   
+```
+WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
+```
+
+iOS:
+```
+collection.sync(); // Hier steht collection für das initialisierte JSONStore-Sammlungsobjekt
+```
+
+Cordova:
+```
+WL.JSONStore.get(collectionName).sync();
+```
+>**Hinweis:** Die Erfolgs- und Fehler-Callbacks für die Synchronisations-API werden (in Android) über den Synchronisations-Listener, (in iOS= über den Completion-Handler und (in Cordova) über definierte Callbacks ausgelöst, die während der Initialisierung der Sammlung deklariert wurden.
+
 ### Push
 {: #push }
-Viele Systeme verwenden den Begriff Push für das Senden von Daten an eine
-externe Quelle.
+Viele Systeme verwenden den Begriff Push für das Senden von Daten an eine externe Quelle.
 
 Es gibt drei wichtige Komponenten:
 
@@ -745,13 +892,11 @@ Diese Komponente definiert, wie Sie Kontakt mit der externen Datenquelle aufnehm
 
 #### Externe Datenquelle
 {: #external-data-source-push }
-Diese Quelle ist in der Regel eine Datenbank, ein REST- oder SOAP-Endpunkt oder Ähnliches, die bzw. der die vom Client an den Daten vorgenommenen Aktualisierungen
-empfängt.
+Diese Quelle ist in der Regel eine Datenbank, ein REST- oder SOAP-Endpunkt oder Ähnliches, die bzw. der die vom Client an den Daten vorgenommenen Aktualisierungen empfängt.
 
-Alle nachfolgenden Codebeispiele sind Pseudocode, der so ähnlich wie
-JavaScript aussieht.
+Alle nachfolgenden Codebeispiele sind Pseudocode, der so ähnlich wie JavaScript aussieht.
 
-**Hinweis:** Verwenden Sie für die Transportschicht Adapter. Zu den Vorteilen, die Sie
+>**Hinweis:** Verwenden Sie für die Transportschicht Adapter. Zu den Vorteilen, die Sie
 bei Verwendung von Adaptern haben, gehören die XML-JSON-Umsetzung, die Sicherheit, Filter und die Entkopplung
 von server- und clientseitigem Code.
 
@@ -762,7 +907,6 @@ externe Datenquelle senden möchten.
 
 ```javascript
 var accessor = WL.JSONStore.get('people');
-
 accessor.getAllDirty()
 .then(function (dirtyDocs) {
 // ...
@@ -794,7 +938,7 @@ Nehmen wir an, Sie haben einen Adapter
 
 ```javascript
 .then(function (dirtyDocs) {
-  var adapter = 'people',
+var adapter = 'people',
   procedure = 'updatePeople';
  
   var resource = new WLResourceRequest('/adapters/' + adapter + '/' + procedure, WLResourceRequest.GET)
@@ -807,7 +951,7 @@ Nehmen wir an, Sie haben einen Adapter
 })
 ```
 
-**Hinweis:** Sie können auch von den Vorteilen profitieren, die mit der Übergabe von `compressResponse`, `timeout`
+>**Hinweis:** Sie können auch von den Vorteilen profitieren, die mit der Übergabe von `compressResponse`, `timeout`
 und anderen Parametern an die API `WLResourceRequest` verbunden sind. 
 
 Im
@@ -816,8 +960,7 @@ die Prozedur `updatePeople`, die wie im folgenden Beispiel aussehen könnte:
 
 ```javascript
 function updatePeople (dirtyDocs) {
-
-  var input = {
+var input = {
     method : 'post',
     path : '/people',
     body: {
@@ -891,8 +1034,7 @@ direkt Kontakt zum REST-Endpunkt aufnehmen.
 
 ```javascript
 .then(function (dirtyDocs) {
-
-  return $.ajax({
+return $.ajax({
     type: 'POST',
     url: 'http://example.org/updatePeople',
     data: dirtyDocs
@@ -911,8 +1053,7 @@ markClean übergeben.
 
 ```javascript
 .then(function (responseFromAdapter) {
-
-  if (responseFromAdapter is successful) {
+if (responseFromAdapter is successful) {
 WL.JSONStore.get('people').markClean(dirtyDocs);
   }
 })

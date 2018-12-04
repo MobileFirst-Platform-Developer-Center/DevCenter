@@ -1,8 +1,9 @@
 ---
 layout: tutorial
 title: Distribution d'applications mobiles avec IBM Application Center
+breadcrumb_title: Distributing apps with Application Center
 relevantTo: [ios,android,windows8,cordova]
-show_in_nav: false
+show_in_nav: true
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -50,7 +51,7 @@ Si vous ne disposez pas d'une base de données installée, le processus d'instal
 
     > Pour plus d'informations, voir la rubrique sur l'[installation de {{ site.data.keys.mf_server }}](../../installation-configuration).
 
-    Étant donné que iOS 7.1 prend uniquement en charge le protocole https, le serveur Application Center doit être sécurisé avec SSL (au moins avec TLS v.1) si vous prévoyez de distribuer des applications pour des appareils exécutant iOS 7.1 ou version ultérieure. Les certificats auto-signés ne sont pas recommandés, mais peuvent être utilisés à des fins de test, à condition que les certificats d'AC auto-signés soient distribués aux appareils.
+    Etant donné que iOS 7.1 prend uniquement en charge le protocole https, le serveur Application Center doit être sécurisé avec SSL (au moins avec TLS v.1) si vous prévoyez de distribuer des applications pour des appareils exécutant iOS 7.1 ou version ultérieure. Les certificats auto-signés ne sont pas recommandés, mais peuvent être utilisés à des fins de test, à condition que les certificats d'AC auto-signés soient distribués aux appareils.
 
 2. Une fois Application Center installé avec IBM Installation Manager, ouvrez la console : `http://localhost:9080/appcenterconsole`
 
@@ -58,7 +59,7 @@ Si vous ne disposez pas d'une base de données installée, le processus d'instal
 
 4. A ce stade, vous pouvez configurer l'authentification des utilisateurs. Par exemple, vous pouvez vous connecter à un référentiel LDAP.
 
-    > Pour plus d'informations, voir la rubrique sur la [configuration Application Center après l'installation](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
+    > Pour plus d'informations, voir la rubrique sur la [configuration d'Application après l'installation](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
 
 5. Préparez le client mobile pour Android, iOS, BlackBerry 6/7 et Windows Phone 8
 
@@ -173,11 +174,11 @@ Application Center gère uniquement les applications de société qui sont sign�
 {: #for-windows-store-apps-for-windows-81-pro }
 * Le fichier **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** contient l'exécutable du client Application Center. Transmettez ce fichier à l'ordinateur client et décompressez-le. Il contient le programme exécutable.
 
-* L'installation d'une application Windows Store (fichier de type `appx`) sans utiliser Microsoft Windows Store s'appelle chargement indépendant (<em>sideloading</em>) d'une application. Pour charger une application, vous devez respecter les prérequis de la page [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+* L'installation d'une application Windows Store (fichier de type `appx`) sans utiliser Microsoft Windows Store s'appelle chargement indépendant (<em>sideloading</em>) d'une application. Pour effectuer un chargement indépendant d'une application, vous devez respecter les prérequis énoncés dans [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx). La mise à jour de Windows 8.1.1 simplifie les prérequis pour le chargement indépendant (sideloading). For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
 
 ## Gestion des applications dans la console Application Center
 {: #managing-applications-in-the-application-center-console }
-![Image de la gestion des applications dans Application Center]({{ site.baseurl }}/assets/backup/overview1.png)
+![Illustration de la gestion des applications dans App Center]({{ site.baseurl }}/assets/backup/overview1.png)
 
 Utilisez la console Application Center pour gérer les applications dans le catalogue de la manière suivante :
 
@@ -190,7 +191,7 @@ Utilisez la console Application Center pour gérer les applications dans le cata
 
 ### Ajout de nouvelles applications au magasin
 {: #adding-new-applications-to-the-store }
-![Image d'ajout d'applications à Application Center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
+![Illustration de l'ajout d'applications dans App Center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
 Pour ajouter de nouvelles applications au magasin :
 
@@ -213,7 +214,7 @@ Pour ajouter de nouvelles applications au magasin :
 
 La nouvelle application est ajoutée au magasin.
 
-![Image du contrôle d'accès dans Application Center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
+![Illustration du contrôle d'accès dans App Center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
 
 Par défaut, une application peut être installée par tout utilisateur autorisé du magasin.
 
@@ -252,7 +253,7 @@ Il n'est pas nécessaire d'ajouter le client Application Center pour Windows 8.1
 {: #windows-phone-8 }
 Sous Windows Phone 8, vous devez également installer le jeton d'inscription que vous avez reçu avec votre compte de société dans la console Application Center afin que les utilisateurs puissent inscrire leurs appareils. Vous utilisez la page Settings Application Center que vous pouvez ouvrir à l'aide de l'icône représentant une roue dentée.
 
-![Image de l'inscription d'application Windows Phone 8]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
+![Illustration de l'enregistrement des applications dans Windows Phone 8]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
 
 Avant d'installer le client mobile, vous devez inscrire l'appareil auprès de la société en installant le jeton d'inscription :
 

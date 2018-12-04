@@ -1,8 +1,11 @@
 ---
-layout: tutorial
-title: Container schützen
-relevantTo: [ios,android,windows,javascript]
-weight: 2
+layout: redirect
+new_url: /404/
+sitemap: false
+#layout: tutorial
+#title: Securing containers
+#relevantTo: [ios,android,windows,javascript]
+#weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -12,6 +15,7 @@ Nachfolgend sind mehrere mögliche Methoden für den Schutz Ihres IBM Containers
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 * [App Transport Security (ATS) konfigurieren](#configuring-app-transport-security-ats)
+* [SSL-Konfiguration für das {{ site.data.keys.mf_app_center }}](#ssl-configuration-for-application-center)
 * [Sicherheitskonfiguration für die {{ site.data.keys.product_full }} in IBM Containern](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
 * [LDAP-Konfiguration für Container](#ldap-configuration-for-containers)
 
@@ -21,8 +25,9 @@ Die ATS-Konfiguration hat keinen Einfluss auf Anwendungen, die von anderen Betri
 mit Servern mit ATS-Konfiguration. Halten Sie die generierten Zertifikate bereit, wenn Sie Ihr Container-Image
 konfigurieren. Bei den folgenden Schritten wird davon ausgegangen, dass die Keystore-Datei **ssl_cert.p12** das persönliche Zertifikat enthält und dass **ca.crt** das Signaturzertifikat ist. 
 
-1. Kpieren Sie die Datei **ssl_cert.p12** in den Ordner **mfpf-server/usr/security/**. 
-2. Modifizieren Sie die Datei **mfpf-server/usr/config/keystore.xml**. Orientieren Sie sich dabei an der folgenden Beispielkonfiguration: 
+1. Kopieren Sie die Datei **ssl_cert.p12** in den Ordner **mfpf-server/usr/security/** oder für das Application Center in den Ordner **mfp-appcenter/user/security/**. 
+
+2. Modifizieren Sie die Datei **mfpf-server/usr/config/keystore.xml** und die Datei **appcenter/usr/config/keystore.xml** (für das Application Center). Orientieren Sie sich dabei an der folgenden Beispielkonfiguration:
 
    ```bash
    <server>
@@ -51,7 +56,7 @@ Für die folgenden Chiffrierwerte sind JCE-Richtlinieneinstellungen (Java Crypto
 
 Wenn Sie diese Chiffrierwerte verwenden und mit einem IBM Java-SDK arbeiten, können Sie die Richtliniendateien [herunterladen](https://www.ibm.com/marketing/iwm/iwm/web/preLogin.do?source=jcesdk). Es gibt die beiden Dateien
 **US_export_policy.jar** und **local_policy.jar**.
-Fügen Sie beide Dateien zum Ordner **mfpf-server/usr/security** hinzu. Fügen Sie dann die folgende
+Fügen Sie beide Dateien zum Ordner **mfpf-server/usr/security** und zum Ordner **mfp-appcenter/usr/security** (für das Application Center) hinzu. Fügen Sie dann die folgende
 JVM-Option zur Datei
 **mfpf-server/usr/env/jvm.options** hinzu:
 `Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`.
@@ -66,7 +71,20 @@ Während der Entwicklungsphase können Sie ATS inaktivieren, indem Sie die folge
 </dict>
 ```
 
-## Sicherheitskonfiguration für die {{ site.data.keys.product_full }} in IBM Containern	
+## SSL-Konfiguration für das {{ site.data.keys.mf_app_center }}
+{: #ssl-configuration-for-application-center }
+
+### SSL für die MobileFirst-Application-Center-Konsole konfigurieren
+{: #configure-ssl-for-application-center-console }
+
+Sie können den Zugriff auf die MobileFirst-Application-Center-Konsole schützen, indem Sie auf dem MobileFirst-Application-Center-Server HTTP über SSL (HTTPS) aktivieren. Erstellen Sie den Keystore mit dem Zertifikat und stellen Sie ihn in den Ordner `usr/security`, um für das {{ site.data.keys.mf_app_center }} HTTPS zu aktivieren. Aktualisieren Sie dann die Datei `usr/config/keystore.xml`, damit der konfigurierte Keystore verwendet wird. 
+
+### Verbindung zum Back-End schützen
+{: #securing-a-connection-to-the-back-end }
+Wenn Sie eine sichere Verbindung zwischen Ihrem Container und einem Back-End-System vor Ort benötigen, können Sie den Cloud-Service IBM Secure Gateway verwenden. Die Konfigurationsdetails sind im
+folgenden Blogbeitrag angegeben: [Connecting Securely to On-Premise Backends from Mobile Foundation on IBM Cloud containers](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/).
+
+## Sicherheitskonfiguration für die {{ site.data.keys.product_full }} in IBM Containern
 {: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
 Ihre Sicherheitskonfiguration für die Instanz der {{ site.data.keys.product }} in IBM Containern
 sollte verschlüsselte Kennwörter, die aktivierte Prüfung der Anwendungsauthentizität und einen sicheren Zugriff auf die Konsolen umfassen. 
@@ -87,18 +105,18 @@ auf
 {: #configure-ssl-for-mobilefirst-operations-console-and-mobilefirst-analytics-console }
 Sie können den Zugriff
 auf die {{ site.data.keys.mf_console }} und die {{ site.data.keys.mf_analytics_console }} schützen, indem Sie für {{ site.data.keys.mf_server }} HTTP über SSL (HTTPS) aktivieren.   
-Erstellen Sie den Keystore mit dem Zeritifikat und stellen Sie ihn in den Ordner **usr/security**, um für {{ site.data.keys.mf_server }} HTTPS zu aktivieren. Aktualisieren Sie dann die Datei
-**usr/config/keystore.xml** so, dass der konfigurierte Keystore verwendet wird. 
+Erstellen Sie den Keystore mit dem Zertifikat und stellen Sie ihn in den Ordner **usr/security**, um für {{ site.data.keys.mf_server }} HTTPS zu aktivieren. Aktualisieren Sie dann die Datei **usr/config/keystore.xml**, damit der konfigurierte Keystore verwendet wird. 
 
-### Verbindung zum Back-End schützen
+<!-- Duplicate section
+### Securing a connection to the back end
 {: #securing-a-connection-to-the-back-end }
-Wenn Sie eine sichere Verbindung zwischen Ihrem Container und einem Back-End-System vor Ort benötigen, können Sie den Service Bluemix Secure Gateway verwenden. Die Konfigurationsdetails sind im folgenden Artikel
-angegeben: "Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on Bluemix containers". 
+If you need a secure connection between your container and an on-premise back-end system, you can use the IBM Cloud  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on IBM Cloud containers.
+-->
 
 #### Kennwörter für in {{ site.data.keys.mf_server }} konfigurierte Benutzerrollen verschlüsseln
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
 Die Kennwörter für Benutzerrollen, die für {{ site.data.keys.mf_server }} konfiguriert sind, können verschlüsselt werden.   
-Kennwörter werden in der Datei **server.env** in den Ordnern **package_root/mfpf-server/usr/env** une **package_root/mfpf-analytics/usr/env** konfiguriert. Sie sollten Kennwörter in einem verschlüsselten Format
+Kennwörter werden in der Datei **server.env** in den Ordnern **Paketstammverzeichnis/mfpf-server/usr/env** und **Paketstammverzeichnis/mfpf-analytics/usr/env** konfiguriert. Sie sollten Kennwörter in einem verschlüsselten Format
 speichern. 
 
 1. Zum Verschlüsseln des Kennworts können Sie den Befehl `securityUtility` von Liberty Profile verwenden. Wählen Sie für die Verschlüsselung des Kennworts die XOR- oder AES-Verschlüsselung aus. 
@@ -113,7 +131,7 @@ speichern.
 </server>
 ```
 
-#### Containerkommunikation mit einer privaten IP-Adresse schützen	
+#### Containerkommunikation mit einer privaten IP-Adresse schützen
 {: securing-container-communication-using-a-private-ip-address }
 Für eine sichere Kommunikation zwischen dem MobileFirst-Server-Container und dem Container mit {{ site.data.keys.mf_analytics }} müssen Sie die private IP-Adresse des Containers mit {{ site.data.keys.mf_analytics }} in die Datei `mfpfProperties.xml` aufnehmen. 
 
@@ -125,10 +143,10 @@ Führen Sie die folgenden Bearbeitungsschritte für die Datei mfpf-server/usr/co
 1. Setzen Sie die Eigenschaft **mfp.analytics.url** auf die private IP-Adresse des Containers mit {{ site.data.keys.mf_analytics }}. Beispiel: `<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
 
     Wenn sich eine private IP-Adresse ändert, müssen Sie in der Datei mfpfproperties.xml die neue IP-Adresse angeben und anschließend den Container neu erstellen und implementieren, indem Sie das Script prepareserver.sh und das Script starterserver.sh ausführen. 
-    
+
 2. Stellen Sie sicher, dass über das Netz auf die {{ site.data.keys.mf_analytics_console }} zugegriffen werden kann. Setzen Sie dazu die Eigenschaft **mfp.analytics.console.url** auf die öffentliche IP-Adresse des Containers mit {{ site.data.keys.mf_analytics }}. Beispiel: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
-#### Zugriff auf die in Containern ausgeführten Konsolen einschränken	
+#### Zugriff auf die in Containern ausgeführten Konsolen einschränken
 {: #restricting-access-to-the-consoles-running-on-containers }
 In Produktionsumgebungen können Sie den Zugriff auf die {{ site.data.keys.mf_console }} und die {{ site.data.keys.mf_analytics_console }} einschränken, indem Sie einen TAI (Trust Association Interceptor) erstellen und implementieren. Dieser TAI fängt Anforderungen an die in
 IBM Containern ausgeführten Konsolen ab. 
@@ -154,7 +172,6 @@ festzustellen, ob Zugriff auf die {{ site.data.keys.mf_console }} gewährt werde
    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
    public class MFPConsoleTAI implements TrustAssociationInterceptor {
-    	
        String allowedIP =null;
 
        public MFPConsoleTAI() {
@@ -168,14 +185,14 @@ festzustellen, ob Zugriff auf die {{ site.data.keys.mf_console }} gewährt werde
     public boolean isTargetInterceptor(HttpServletRequest req)
                   throws WebTrustAssociationException {
       // Logik hinzufügen, die festlegt, ob diese Anforderung abgefangen werden soll
-    	
+
     	   boolean interceptMFPConsoleRequest = false;
-    	   String requestURI = req.getRequestURI();
-    	
-    	   if(requestURI.contains("worklightConsole")) {
+	   String requestURI = req.getRequestURI();
+	
+	   if(requestURI.contains("worklightConsole")) {
     		   interceptMFPConsoleRequest = true;
     	   }
-    		
+
     	   return interceptMFPConsoleRequest;
        }
 
@@ -189,31 +206,31 @@ festzustellen, ob Zugriff auf die {{ site.data.keys.mf_console }} gewährt werde
             String tai_user = "MFPConsoleCheck";
 
             if(allowedIP != null) {
-            	
+
             	String ipAddress = request.getHeader("X-FORWARDED-FOR");
             	if (ipAddress == null) {
-            	  ipAddress = request.getRemoteAddr();
+            	  ipAddress = request.getRemoteAddr();  
             	}
-            	
+
             	if(checkIPMatch(ipAddress, allowedIP)) {
             		TAIResult.create(HttpServletResponse.SC_OK, tai_user);
             	}
             	else {
             		TAIResult.create(HttpServletResponse.SC_FORBIDDEN, tai_user);
             	}
-            		
+
             }
             return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
         }
 
        private static boolean checkIPMatch(String ipAddress, String pattern) {
-    	
+
     	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
     		      return true;
 
     	   String[] mask = pattern.split("\\.");
     	   String[] ip_address = ipAddress.split("\\.");
-    	   
+
     	   for (int i = 0; i < mask.length; i++)
     	   {
     		   if (mask[i].equals("*") || mask[i].equals(ip_address[i]))
@@ -260,7 +277,7 @@ festzustellen, ob Zugriff auf die {{ site.data.keys.mf_console }} gewährt werde
         {}
    }
    ```
-    
+
 2. Exportieren Sie die Implementierung des angepassten TAI in eine JAR-Datei und stellen Sie diese in den betreffenden Ordner **env** (**mfpf-server/usr/env** oder **mfpf-analytics/usr/env**).
 3. Erstellen Sie eine XML-Konfigurationsdatei mit den Details des TAI (siehe Beispielcode für eine TAI-Konfiguration in Schritt 1) und fügen Sie Ihre XML-Datei zum betreffenden Ordner (**mfpf-server/usr/config** oder **mfpf-analytics/usr/config**) hinzu. Ihre .xml-Datei sollte dem folgenden Beispiel ähneln.
 **Tipp:** Vergessen Sie nicht, den Klassennamen und die Eigenschaften an Ihre Implementierung anzupassen. 
@@ -274,7 +291,7 @@ festzustellen, ob Zugriff auf die {{ site.data.keys.mf_console }} gewährt werde
 
         <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
                           failOverToAppAuthType="false">
-            <interceptors id="MFPConsoleTAI" enabled="true"
+            <interceptors id="MFPConsoleTAI" enabled="true"  
                           className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
                           invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
                 <properties allowedIPs="9.182.149.*"/>
@@ -296,7 +313,7 @@ Sie können einen Container mit der {{ site.data.keys.product }} so konfiguriere
 
 Die externe LDAP-Registry kann für folgende Zwecke in einem Container verwendet werden: 
 
-* Um die {{ site.data.keys.product_adj }}-Verwaltungssicherheit mit einer externen LDAP-Registry zu konfigurieren
+* Um die {{ site.data.keys.product_adj }}-Verwaltungssicherheit oder die Sicherheit des {{ site.data.keys.mf_app_center }} mit einer externen LDAP-Registry zu konfigurieren
 * Um mobile {{ site.data.keys.product_adj }}-Anwendungen für eine externe LDAP-Registry zu konfigurieren
 
 ### Verwaltungssicherheit mit LDAP konfigurieren
@@ -306,7 +323,7 @@ Der Konfigurationsprozess umfasst die folgenden Schritte:
 
 * LDAP-Repository einrichten und konfigurieren
 * Registry-Datei (registry.xml) ändern
-* Geschütztes Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in Bluemix.) 
+* Geschütztes Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in IBM Cloud.)
 
 #### LDAP-Repository
 {: #ldap-repository }
@@ -317,7 +334,7 @@ Erstellen Sie Benutzer und Gruppen in der LDAP-Repository. Die Autorisierung fü
 1. Öffnen Sie die Datei **registry.xml** und suchen Sie das Element `basicRegistry`. Ersetzen Sie das Element `basicRegistry` durch ähnlichen Code wie im folgenden Snippet: 
 
    ```xml
-   <ldapRegistry 
+   <ldapRegistry
         id="ldap"
         host="1.234.567.8910" port="1234" ignoreCase="true"
         baseDN="dc=worklight,dc=com"
@@ -332,15 +349,15 @@ Erstellen Sie Benutzer und Gruppen in der LDAP-Repository. Die Autorisierung fü
         groupMemberIdMap="groupOfNames:member"/>
    </ldapRegistry>
    ```
-    
-  Eintrag | Beschreibung
+
+    Eintrag |Beschreibung 
     --- | ---
-    `host` und `port` | Hostname (IP-Adresse) und Portnummer Ihres lokalen LDAP-Servers
-`baseDN` | Domänenname (DN) in LDAP mit allen Details einer bestimmten Organisation
-`bindDN="uid=admin,ou=system"	` | Bindungsdetails des LDAP-Servers. Für einen Apache Directory Service würden die Standardwerte beispielsweise `uid=admin,ou=system` lauten.
-`bindPassword="secret"	` | Bindungskennwort für den LDAP-Server. Der Standardwert für einen Apache Directory Service wäre beispielsweise `secret`.
-`<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | Angepasste Filter für das Abfragen des Verzeichnisservice (z. B. Apache) während der Authentifizierung und Autorisierung
-        
+    `host` und `port` |Hostname (IP-Adresse) und Portnummer Ihres lokalen LDAP-Servers 
+    `baseDN` |Domänenname (DN) in LDAP mit allen Details einer bestimmten Organisation 
+    `bindDN="uid=admin,ou=system"	` |Bindungsdetails des LDAP-Servers. Für einen Apache Directory Service würden die Standardwerte beispielsweise `uid=admin,ou=system` lauten. 
+    `bindPassword="secret"` |Bindungskennwort für den LDAP-Server. Der Standardwert für einen Apache Directory Service wäre beispielsweise `secret`. 
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` |Angepasste Filter für das Abfragen des Verzeichnisservice (z. B. Apache) während der Authentifizierung und Autorisierung 
+
 2. Stellen Sie sicher, dass die folgenden Features für `appSecurity-2.0` und `ldapRegistry-3.0` aktiviert sind:
 
    ```xml
@@ -349,21 +366,20 @@ Erstellen Sie Benutzer und Gruppen in der LDAP-Repository. Die Autorisierung fü
         <feature>ldapRegistry-3.0</feature>
    </featureManager>
    ```
-    
+
     Einzelheiten zum Konfigurieren verschiedener LDAP-Server-Repositorys finden Sie im [Knowledge Center zu WebSphere Application Server Liberty](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
-    
+
 #### Geschütztes Gateway
 {: #secure-gateway }
-Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in Bluemix eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern.
-Für diese Aufgabe benötigen Sie den Hostnamen und die Portnummer Ihres lokalen LDAP-Servers. 
+Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in IBM Cloud eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern. Für diese Aufgabe benötigen Sie den Hostnamen und die Portnummer Ihres lokalen LDAP-Servers. 
 
-1. Melden Sie sich bei Bluemix an und wählen Sie **Katalog, Kategorie > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
-2. Wählen Sie unter "Service hinzufügen" eine App aus und klicken Sie auf **Erstellen**. Der Service ist jetzt an Ihre App gebunden. 
-3. Öffnen Sie das Bluemix-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Gateway hinzufügen**.
-4. Benennen Sie das Gateway und klicken Sie auf **Ziele hinzufügen**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein. 
-5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird. 
-6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server. 
-7. Notieren Sie die Werte für **Ziel-ID** und **Cloud-Host: Port**. Öffnen Sie die Datei registry.xml und ersetzen Sie die vorhandenen Werte durch die gerade notierten Werte. Das folgende Beispiel zeigt ein aktualisiertes Code-Snippet aus der Datei registry.xml:
+1. Melden Sie sich bei IBM Cloud an und wählen Sie **Catalog, Category > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
+2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden. 
+3. Öffnen Sie das IBM Cloud-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Add Gateway**.
+4. Benennen Sie das Gateway und klicken Sie auf **Add Destinations**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein.
+5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird.
+6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server.
+7. Notieren Sie die Werte für **Destination ID** und **Cloud Host : Port**. Öffnen Sie die Datei registry.xml und ersetzen Sie die vorhandenen Werte durch die gerade notierten Werte. Das folgende Beispiel zeigt ein aktualisiertes Code-Snippet aus der Datei registry.xml:
 
 
 ```xml
@@ -386,18 +402,17 @@ Für diese Aufgabe benötigen Sie den Hostnamen und die Portnummer Ihres lokalen
 ### Apps für LDAP konfigurieren
 {: #configuring-apps-to-work-with-ldap }
 Konfigurieren Sie mobile {{ site.data.keys.product_adj }}-Apps für die Verwendung mit einer externen LDAP-Registry.   
-Zum Konfigurationsprozess gehört der Schritt, ein sicheres Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container zu konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in Bluemix.) 
+Zum Konfigurationsprozess gehört der Schritt, ein sicheres Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container zu konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in IBM Cloud.)
 
-Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in Bluemix eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern.
-Für diesen Schritt benötigen Sie den Namen und die Portnummer Ihres lokalen LDAP-Hosts. 
+Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in IBM Cloud eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern. Für diesen Schritt benötigen Sie den Namen und die Portnummer Ihres lokalen LDAP-Hosts. 
 
-1. Melden Sie sich bei Bluemix an und wählen Sie **Katalog, Kategorie > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
-2. Wählen Sie unter "Service hinzufügen" eine App aus und klicken Sie auf **Erstellen**. Der Service ist jetzt an Ihre App gebunden. 
-3. Öffnen Sie das Bluemix-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Gateway hinzufügen**.
-4. Benennen Sie das Gateway und klicken Sie auf **Ziele hinzufügen**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein. 
-5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird. 
-6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server. 
-7. Notieren Sie die Werte für **Ziel-ID** und **Cloud-Host: Port**. Geben Sie diese Werte für das LDAP-Anmeldemodul an. 
+1. Melden Sie sich bei IBM Cloud an und wählen Sie **Catalog, Category > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
+2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden. 
+3. Öffnen Sie das IBM Cloud-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Add Gateway**.
+4. Benennen Sie das Gateway und klicken Sie auf **Add Destinations**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein.
+5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird.
+6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server.
+7. Notieren Sie die Werte für **Destination ID** und **Cloud Host : Port**. Geben Sie diese Werte für das LDAP-Anmeldemodul an. 
 
 **Ergebnisse**  
-Die {{ site.data.keys.product_adj }}-App im Container in Bluemix kann jetzt mit Ihrem lokalen LDAP-Server kommunizieren. Die Authentifizierung und Autorisierung der Bluemix-App wird anhand Ihres lokalen LDAP-Servers validiert. 
+Die {{ site.data.keys.product_adj }}-App im Container in IBM Cloud kann jetzt mit Ihrem lokalen LDAP-Server kommunizieren. Die Authentifizierung und Autorisierung der IBM Cloud-App wird anhand Ihres lokalen LDAP-Servers validiert. 

@@ -1,149 +1,177 @@
 ---
 layout: tutorial
-title: MobileFirst Foundation development in Cordova applications
+title: Desarrollo de MobileFirst Foundation en aplicaciones Cordova
 breadcrumb_title: Cordova application development
 relevantTo: [cordova]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-From [http://cordova.apache.org/](http://cordova.apache.org/):
+De [http://cordova.apache.org/](http://cordova.apache.org/):
 
-> Apache Cordova is an open-source mobile development framework. It allows you to use standard web technologies such as HTML5, CSS3, and JavaScript for cross-platform development, avoiding each mobile platforms' native development language. Applications execute within wrappers targeted to each platform, and rely on standards-compliant API bindings to access each device's sensors, data, and network status.
+> Apache Cordova es una infraestructura de desarrollo móvil de código abierto.
+Permite utilizar tecnologías web estándar como, por ejemplo, HTML5, CSS3 y JavaScript para un desarrollo entre varias plataformas, evitando el lenguaje de desarrollo nativo de cada plataforma móvil.
+Las aplicaciones se ejecutan dentro de derivadores destinados a cada plataforma, y se basan en enlaces de API que siguen los estándares para acceder a los sensores de los dispositivos, a los datos y al estado de la red.
 
-{{ site.data.keys.product_full }} provides an SDK in the form of several Cordova plug-ins. Learn how to [Add the {{ site.data.keys.product }} SDK to Cordova applications](../../application-development/sdk/cordova).
 
-> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in {{ site.data.keys.product_full }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
 
-#### Jump to:
+{{ site.data.keys.product_full }} proporciona un SDK en forma de varios plugins de Cordova.
+Aprenda a [Añadir {{ site.data.keys.product }} SDK a aplicaciones Cordova](../../application-development/sdk/cordova).
+
+> **Nota:** Los archivos de archivado/IPA generados mediante Test Flight o iTunes Connect para almacenar envíos/validación de aplicaciones iOS, podrían originar fallos/bloqueos en tiempo de ejecución. Consulte el blog [
+Preparación de aplicaciones iOS para enviarlas a App Store en {{ site.data.keys.product_full }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) para obtener más información.
+
+
+#### Ir a:
 {: #jump-to }
 
-* [Cordova application development](#cordova-application-development)
-* [{{ site.data.keys.product_adj }} APIs](#mobilefirst-apis)
-* [{{ site.data.keys.product_adj }} SDK Startup Flow](#mobilefirst-sdk-startup-flow)
-* [Cordova Application Security](#cordova-application-security)
-* [Cordova Application Resources](#cordova-application-resources)
-* [Previewing an application's web resources](#previewing-an-applications-web-resources)
-* [Implementing JavaScript Code](#implementing-javascript-code)
-* [CrossWalk support for Android](#crosswalk-support-for-android)
-* [WKWebView support for iOS](#wkwebview-support-for-ios)
-* [Further reading](#further-reading)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [Desarrollo de aplicaciones Cordova](#cordova-application-development)
+* API de [{{ site.data.keys.product_adj }}](#mobilefirst-apis)
+* Flujo inicial del SDK de [{{ site.data.keys.product_adj }}](#mobilefirst-sdk-startup-flow)
+* [Seguridad de aplicaciones Cordova](#cordova-application-security)
+* [Recursos de aplicación de Cordova](#cordova-application-resources)
+* [Vista previa de una recurso web de una aplicación](#previewing-an-applications-web-resources)
+* [Implementación de código JavaScript](#implementing-javascript-code)
+* [Soporte de CrossWalk para Android](#crosswalk-support-for-android)
+* [Soporte de WKWebView para iOS](#wkwebview-support-for-ios)
+* [Lectura adicional](#further-reading)
+* [Guías de aprendizaje con las que continuar](#tutorials-to-follow-next)
 
-## Cordova application development
+## Desarrollo de aplicaciones Cordova
 {: #cordova-application-development }
-Applications developed with Cordova can be further enhanced by using the following Cordova-provided development paths and features:
+Las aplicaciones desarrolladas con Cordova se pueden mejorar mediante las siguientes características y métodos de desarrollo proporcionados para Cordova:
 
-### Hooks
+
+### Enganches
 {: #hooks }
-Cordova Hooks are scripts that provide developers with the ability to customize Cordova commands, enabling to create for example custom build flows.  
-Read more about [Cordova Hooks](http://cordova.apache.org/docs/en/dev/guide/appdev/hooks/index.html#Hooks%20Guide).
+Los enganches de Cordova son scripts que proporcionan a los desarrolladores la posibilidad de personalizar mandatos de Cordova, permitiendo crear por ejemplo flujos de compilación personalizados.
+  
+Obtenga más información sobre los [Enganches de Cordova](http://cordova.apache.org/docs/en/dev/guide/appdev/hooks/index.html#Hooks%20Guide).
 
-### Merges
+
+### Carpeta Merges
 {: #merges }
-The Merges folder provides the ability to have platform-specific web resources (HTML, CSS and JavaScript files). These web resources are then deployed during the `cordova prepare` step to the appropriate native directory. Files placed under the **merges/** folder will override matching files in the **www/** folder of the relevant platform. Read more about [the Merges folder](https://github.com/apache/cordova-cli#merges).
+La carpeta Merges proporciona la posibilidad de tener recursos web específicos de plataforma (archivos HTML, CSS y JavaScript).
+Estos recursos web se despliegan durante el paso `cordova prepare` para el directorio nativo apropiado.
+Los archivos colocados bajo la carpeta **merges/** remplazarán los archivos coincidentes en la carpeta **www/** de la plataforma pertinente.
+Obtenga más información sobre la [Carpeta Merges](https://github.com/apache/cordova-cli#merges).
 
-### Cordova plug-ins
+
+### Plugins de Cordova
 {: #cordova-plug-ins }
-Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on).
+La utilización de plugins de Cordova puede proporcionar mejoras como, por ejemplo, la adición de elementos de interfaz de usuario nativos (diálogos, barras de separadores, selectores, etc.) así como funcionalidades más avanzadas como, por ejemplo, la correlación y geoubicación, la carga de contenido externo, teclados personalizados o la integración de dispositivos (cámaras, contactos, sensores etc.).
 
-You can find Cordova plug-ins on [GitHub.com](https://github.com) and in popular Cordova plug-ins websites, such as [Plugreg](http://plugreg.com/) and [NPM](http://npmjs.org).
 
-Example plug-ins:
+Encontrará plugins de Cordova en [GitHub.com](https://github.com) y en otros sitios web populares de plugins de Cordova como, por ejemplo, [Plugreg](http://plugreg.com/) y [NPM](http://npmjs.org).
+
+Plugins de ejemplo: 
 
 - [cordova-plugin-dialogs](https://www.npmjs.com/package/cordova-plugin-dialogs)
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
-### 3rd-party frameworks
+>**Nota:** La modificación del comportamiento predeterminado de una aplicación Cordova (por ejemplo, modificando el comportamiento del botón de ir hacia atrás) cuando {{ site.data.keys.product_adj }} Cordova SDK se añade al proyecto, puede hacer que Google Play Store la rechace cuando la envíe.
+
+Póngase en contacto con el soporte de Google para conocer otras anomalías al enviar una aplicación a Google Play Store.
+
+
+
+### Infraestructuras de terceros
 {: #3rd-party-frameworks }
-Cordova application development can be further enhanced by using frameworks such as [Ionic](http://ionicframework.com/), [AngularJS](https://angularjs.org/), [jQuery Mobile](http://jquerymobile.com/), [Backbone](http://backbonejs.org/) and many others.
+El desarrollo de aplicaciones de Cordova se puede mejorar aún más utilizando infraestructuras como, por ejemplo, [Ionic](http://ionicframework.com/), [AngularJS](https://angularjs.org/), [jQuery Mobile](http://jquerymobile.com/) o [Backbone](http://backbonejs.org/) entre muchas otras.
 
-**Integration blog posts**
 
-* [Best Practices for building AngularJS apps with MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/08/11/best-practices-for-building-angularjs-apps-with-mobilefirst-foundation-8.0/)
-* [Integrating {{ site.data.keys.product }} in Ionic-based apps]({{site.baseurl}}/blog/2016/07/19/integrating-mobilefirst-foundation-8-in-ionic-based-apps/)
-* [Integrating {{ site.data.keys.product }} in Ionic 2 based apps]({{site.baseurl}}/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/)
+**Artículos de blogs sobre la integración**
 
-### 3rd-party packages
+* [Procedimientos recomendados para crear aplicaciones Angular JS con MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/08/11/best-practices-for-building-angularjs-apps-with-mobilefirst-foundation-8.0/)
+* [Integración de {{ site.data.keys.product }} en aplicaciones basadas en Ionic]({{site.baseurl}}/blog/2016/07/19/integrating-mobilefirst-foundation-8-in-ionic-based-apps/)
+* [
+Integración de {{ site.data.keys.product }} en aplicaciones basadas en Ionic 2]({{site.baseurl}}/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/)
+
+### Paquetes de terceros
 {: #3rd-party-packages }
-Applications can be modified using 3rd party packages to achieve requirements such as Minification &amp; Concatenation of the application's web resources and more. Popular packages to do so are:
+Las aplicaciones se pueden modificar utilizando paquetes de terceros para lograr requisitos como, por ejemplo, la minificación y la concatenación de recursos web de aplicaciones, entre otros.
+Paquetes populares para ello son:
+
 
 - [uglify-js](https://www.npmjs.com/package/uglify-js)
 - [clean-css](https://www.npmjs.com/package/clean-css)
 
-## {{ site.data.keys.product_adj }} APIs
+## API de {{ site.data.keys.product_adj }}
 {: #mobilefirst-apis }
-After [adding the {{ site.data.keys.product_adj }} Cordova SDK](../../application-development/sdk/cordova) to a Cordova application, the {{ site.data.keys.product_adj }} set of API methods is now available for use.
+Después de [añadir {{ site.data.keys.product_adj }} Cordova SDK](../../application-development/sdk/cordova) a una aplicación Cordova, tendrá disponible el conjunto de {{ site.data.keys.product_adj }} de métodos de API para ser utilizados.
 
-> For a complete list of available API methods, see the [API Reference](../../api).
 
-## {{ site.data.keys.product_adj }} SDK Startup Flow
+> Consulte la [Referencia de API](../../api) para obtener una lista completa de métodos de API disponibles.
+
+
+## Flujo inicial del SDK de {{ site.data.keys.product_adj }}
 {: #mobilefirst-sdk-startup-flow }
-<div class="panel-group accordion" id="startup-flows" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="startup-flows" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-flow">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Android startup flow</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Flujo inicial de Android</b></a>
             </h4>
         </div>
 
         <div id="collapse-android-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-flow">
             <div class="panel-body">
-                <p>In Android Studio, you can review the start-up process of the Cordova app for Android with {{ site.data.keys.product_adj }}. The {{ site.data.keys.product_adj }} Cordova plug-in, <b>cordova-plugin-mfp</b>, has native asynchronous bootstrap sequence. The bootstrap sequence must be completed before the Cordova application loads the application's main html file.</p>
-                
-                <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application instruments the application's <b>AndroidManifest.xml</b> file and the <code>MainActivity</code> file (which extends <code>CordovaActivity</code>) native code to perform the {{ site.data.keys.product_adj }} initialization.</p>
-        
-                <p>The application native code instrumentation consists of:</p>
+                <p>En Android Studio, revise el proceso de inicio de la aplicación Cordova para Android con {{ site.data.keys.product_adj }}. El plugin Cordova de {{ site.data.keys.product_adj }} <b>cordova-plugin-mfp</b> tiene una secuencia de arranque asíncrona. Se debe completar la secuencia de arranque antes que la aplicación Cordova cargue el archivo html principal de la aplicación. </p>
+
+                <p>La adición del plugin <b>cordova-plugin-mfp</b> a una aplicación Cordova instrumenta el archivo <b>AndroidManifest.xml</b> de la aplicación y el código nativo (que extiende <code>CordovaActivity</code>) del archivo <code>MainActivity</code> para realizar la inicialización de {{ site.data.keys.product_adj }}. </p>
+
+                <p>La instrumentación de código nativo de la aplicación está formada por: </p>
                 <ul>
-                    <li>Adding <code>com.worklight.androidgap.api.WL</code> API calls to perform the {{ site.data.keys.product_adj }} initialization.</li>
-                    <li>In the <b>AndroidManifest.xml</b> file adding
+                    <li>Adición de llamadas de API de <code>com.worklight.androidgap.api.WL</code> para realizar la inicialización de {{ site.data.keys.product_adj }}. </li>
+                    <li>En el archivo <b>AndroidManifest.xml</b> la adición de
                         <ul>
-                            <li>An activity called <code>MFPLoadUrlActivity</code> to allow proper {{ site.data.keys.product_adj }} initialization in case the <b>cordova-plugin-crosswalk-webview</b> has been installed.</li>
-                            <li>A custom attribute <b>android:name="com.ibm.MFPApplication</b>" to the <code>application</code> element (see below).</li>
+                            <li>Una actividad denominada <code>MFPLoadUrlActivity</code> para permitir una inicialización de {{ site.data.keys.product_adj }} adecuada en el caso de que se haya instalado <b>cordova-plugin-crosswalk-webview</b>. </li>
+                            <li>Un atributo personalizado <b>android:name="com.ibm.MFPApplication</b>" para el elemento <code>application</code> (consulte más abajo). </li>
                         </ul>
                     </li>
                 </ul>
-                
-                <h3>Implementing WLInitWebFrameworkListener and creating the WL object</h3>
-                <p>The <b>MainActivity.java</b> file creates the initial <code>MainActivity</code> class extending the <code>CordovaActivity</code> class. The <code>WLInitWebFrameworkListener</code> receives notification when the {{ site.data.keys.product_adj }} framework is initialized.</p>
-                
+
+                <h3>Implementación de WLInitWebFrameworkListener y creación del objeto WL</h3>
+                <p>El archivo <b>MainActivity.java</b> crea la clase <code>MainActivity</code> inicial extendiendo la clase <code>CordovaActivity</code>. <code>WLInitWebFrameworkListener</code> recibe notificaciones cuando se inicializa la infraestructura de {{ site.data.keys.product_adj }}. </p>
+
 {% highlight java %}
 public class MainActivity extends CordovaActivity implements WLInitWebFrameworkListener {
 {% endhighlight %}
 
-                <p>The <code>MFPApplication</code> class is called from within <code>onCreate</code> and creates a {{ site.data.keys.product_adj }} client instance (<code>com.worklight.androidgap.api.WL</code>) that is used throughout the app. The <code>onCreate</code> method initializes the <b>WebView framework</b>.</p>
-                
+                <p>Se llama a la clase <code>MFPApplication</code> desde dentro de <code>onCreate</code> y crea una instancia de cliente de {{ site.data.keys.product_adj }} (<code>com.worklight.androidgap.api.WL</code>) que se utiliza a través de la aplicación.
+El método <code>onCreate</code> inicializa la <b>infraestructura WebView</b>.</p>
+
 {% highlight java %}
 @Overridepublic void onCreate(Bundle savedInstanceState){
 super.onCreate(savedInstanceState);
 
 if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
            WL.getInstance().showSplashScreen(this);
-       } 
+       }
    init();
    WL.getInstance().initializeWebFramework(getApplicationContext(), this);
 }
 {% endhighlight %}
 
-                <p>The <code>MFPApplication</code> class has two functions:</p>
+                <p>La clase <code>MFPApplication</code> tiene dos funciones: </p>
                 <ul>
-                    <li>Defines the <code>showSplashScreen</code> method for loading a splash screen if one exists.</li>
-                    <li>Creates two listeners for enabling analytics. These listeners can be removed if not needed.</li>
+                    <li>Define el método <code>showSplashScreen</code> para cargar una pantalla inicial (si existe una). </li>
+                    <li>Crea dos escuchas para habilitar las analíticas. Estos escuchas se pueden eliminar si no son necesarios. </li>
                 </ul>
-                
-                <h3>Loading the WebView</h3>
-                <p>The <b>cordova-plugin-mfp</b> plug-in adds an activity to the <b>AndroidManifest.xml</b> file that is required for initializing the Crosswalks WebView:</p>
+
+                <h3>Carga de WebView</h3>
+                <p>El plugin <b>cordova-plugin-mfp</b> añade una actividad al archivo <b>AndroidManifest.xml</b> que se necesita para inicializar Crosswalks WebView:</p>
 
 {% highlight xml %}
 <activity android:name="com.ibm.MFPLoadUrlActivity" />
 {% endhighlight %}
 
-                <p>This activity is used to ensure the asynchronous initialization of the Crosswalk WebView as follows:</p>
-                
-                <p>After the {{ site.data.keys.product_adj }} framework is initialized and ready to load in the WebView, the <code>onInitWebFrameworkComplete</code> connects to the URL if <code>WLInitWebFrameworkResult</code> succeeds.</p>
-                
+                <p>Esta actividad se utiliza para garantizar la inicialización asíncrona de Crosswalk WebView tal como se indica a continuación:</p>
+
+                <p>Después de que se inicialice la infraestructura de {{ site.data.keys.product_adj }} y esté lista para ser cargada en WebView, <code>onInitWebFrameworkComplete</code> se conecta al URL si <code>WLInitWebFrameworkResult</code> finaliza de forma satisfactoria. </p>
+
 {% highlight java %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
 if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
@@ -155,284 +183,357 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 {% endhighlight %}
 
 
-            
+
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Sección de cierre</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-flow">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>iOS startup flow</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>Flujo de inicio de iOS</b></a>
             </h4>
         </div>
 
         <div id="collapse-ios-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-flow">
             <div class="panel-body">
-                <p>The {{ site.data.keys.product_adj }} framework is initialized in the iOS platform to display a WebView in the Cordova app with {{ site.data.keys.product_adj }}.</p>
+                <p>La infraestructura de {{ site.data.keys.product_adj }} se inicializa en la plataforma iOS para visualizar una instancia de WebView en la aplicación Cordova con {{ site.data.keys.product_adj }}. </p>
 
-                <b>main.m</b>
-                <p>In the <code>main.m</code> file the {{ site.data.keys.product_adj }} plug-in replaces the default main application <code>AppDelegate</code> with <code>MFPAppDelegate</code>.</p>
+                <b>AppDelegate.m</b>
+                <p>El archivo <code>AppDelegate.m</code> se encuentra en la carpeta Classes. Inicializa la infraestructura de {{ site.data.keys.product_adj }} antes de que el controlador de vista cargue la instancia de WebView.</p>
 
-{% highlight objc %}
-#import <UIKit/UIKit.h>
-int main(int argc, char *argv[]) {
- @autoreleasepool
-    {    
-        int retVal = UIApplicationMain(argc, argv, nil, @"MFPAppDelegate");   
-        return retVal; 
-    }
-}
-{% endhighlight %}
-
-                <b>MFPAppDelegate.m</b>
-                <p>The <code>MFPAppDelegate.m</code> file is found in the plugins folder. This replaces the default Cordova <code>AppDelegate.m</code> file and initializes the {{ site.data.keys.product_adj }} framework before the view controller loads the WebView.</p>
-
-                <p>The <code>didFinishLaunchingWithOptions</code> method initializes the framework:</p>
+                <p>El método <code>didFinishLaunchingWithOptions</code> inicializa la infraestructura: </p>
 
 {% highlight objc %}
 [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
 {% endhighlight %}
 
-                <p>Once the initialization succeeds the <code>wlInitWebFrameworkDidCompleteWithResult</code> checks that the {{ site.data.keys.product_adj }} framework has been loaded, invokes <code>wlInitDidCompleteSuccessfully</code> and creates listeners for receiving data. <code>wlInitDidCompleteSuccessfully</code> creates a <code>cordovaViewController</code> that connects to the default <b>index.html</b> page.</p>
+                <p>Una vez que la inicialización finalice de forma satisfactoria, <code>wlInitWebFrameworkDidCompleteWithResult</code> comprueba que se haya cargado la infraestructura de {{ site.data.keys.product_adj }} y crea un <code>MainViewController</code> que se conecta a la página <b>index.html</b> predeterminada. </p>
 
-                <p>Once the iOS Cordova app is built in Xcode without errors, you can proceed to add features to the native platform and WebView.</p>
-            
+                <p>Una vez que la aplicación Cordova de iOS está compilada en Xcode sin errores, puede continuar añadiendo característica para la plataforma nativa y WebView. </p>
+
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>Sección de cierre</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="windows-flow">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Windows startup flow</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Flujo de inicio de Windows</b></a>
             </h4>
         </div>
 
         <div id="collapse-windows-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="windows-flow">
             <div class="panel-body">
-                <p>The {{ site.data.keys.product_adj }} Cordova plug-in, <b>cordova-plugin-mfp</b> has native asynchronous bootstrap sequence. The bootstrap sequence must be completed before the Cordova application loads the application's main HTML file.</p>
+                <p>El plugin Cordova de {{ site.data.keys.product_adj }} <b>cordova-plugin-mfp</b> tiene una secuencia de arranque asíncrona. Se debe completar la secuencia de arranque antes que la aplicación Cordova cargue el archivo HTML principal de la aplicación. </p>
 
-                <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application adds the <b>index.html</b> file to the application's <b>appxmanifest</b> file. This extends the <code>CordovaActivity</code> native code to perform the {{ site.data.keys.product_adj }} initialization.</p>
-            
+                <p>La adición del plugin <b>cordova-plugin-mfp</b> a una aplicación Cordova añade el archivo <b>index.html</b> al archivo <b>appxmanifest</b> de la aplicación. Esto amplía el código nativo <code>CordovaActivity</code> para realizar la inicialización de {{ site.data.keys.product_adj }}. </p>
+
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Sección de cierre</b></a>
             </div>
         </div>
     </div>
 </div>
 
-## Cordova Application Security
+## Seguridad de aplicaciones Cordova
 {: #cordova-application-security }
-{{ site.data.keys.product_full }} provides security features that help you protect your Cordova apps.
+{{ site.data.keys.product_full }} proporciona características de seguridad que ayudan a proteger las aplicaciones Cordova.
 
-Much of the content in a cross-platform app can be more easily modified by an unauthorized person than for a native app. Because much of the common content in a cross-platform app is in a readable format, IBM MobileFirst Foundation provides features that can provide a higher level of security for your cross-platform Cordova apps. 
 
-> Learn more about the [{{ site.data.keys.product_adj }} security framework](../../authentication-and-security)
+Una gran parte del contenido en una aplicación entra plataformas se modifica más fácilmente por una persona no autorizada que para una aplicación nativa.
+Puesto que una gran parte del contenido común en una aplicación entre plataformas está en un formato legible, IBM MobileFirst Foundation proporciona características que proporcionan un mayor nivel de seguridad para sus aplicaciones Cordova entre plataformas.
 
-Use the following features to improve security on your Cordova apps:
 
-* [Encrypting the web resources of your Cordova packages](securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)  
-    Encrypts the contents in the www folder of your Cordova app, and decrypts it when the app is installed and run for the first time. This encryption makes it more difficult for someone to view or modify the content in that folder while the app is packaged.
-* [Enabling the web resources checksum feature](securing-apps/#enabling-the-web-resources-checksum-feature)  
-    Ensures the integrity of the app when it starts by comparing the contents to the baseline checksum results that were gathered the first time the app was started. This test helps prevent the modification of an app that is already installed.
-* [Enabling FIPS 140-2](../../administering-apps/federal/#enabling-fips-140-2)  
-    Ensures that the encryption algorithms that are used to encrypt data at rest and data in motion are compliant with the Federal Information Processing Standards (FIPS) 140-2 standard.
-* [Certificate Pinning](../../authentication-and-security/certificate-pinning)  
-    Helps you prevent man-in-the-middle attacks by associating a host with its expected public key.
+> Obtenga más información sobre la [infraestructura de seguridad de {{ site.data.keys.product_adj }}](../../authentication-and-security)
 
-## Cordova Application Resources
+Utilice las siguientes características para mejorar la seguridad en sus aplicaciones Cordova:
+
+* [Cifrado de recursos web de sus paquetes Cordova](securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)  
+Cifra el contenido en la carpeta www de su aplicación Cordova y lo descifra cuando la aplicación se instala y ejecuta por primera vez.
+Este cifrado hace que sea más difícil para alguien el ver o modificar el contenido en dicha carpeta mientras la aplicación está empaquetada.
+
+* [Habilitación de la característica de suma de comprobación de recursos web](securing-apps/#enabling-the-web-resources-checksum-feature)  
+ Asegura la integridad de la aplicación cuando esta se inicia al comparar el contenido con los resultados de la suma de comprobación de la línea base que se recopila la primera vez que se inicia la aplicación.
+Esta prueba ayuda a impedir la modificación de una aplicación que ya está instalada.
+
+* [Habilitación de FIPS 140-2](../../administering-apps/federal/#enabling-fips-140-2)  
+Asegura que los algoritmos de cifrado que se utilizan para cifrar datos fijos y datos dinámicos satisfacen el estándar FIPS (Federal Information Processing Standards) 140-2.
+
+* [Fijación de certificados](../../authentication-and-security/certificate-pinning)  
+Ayuda a impedir ataques de intermediario asociando un host con su clave pública esperada.
+
+
+## Recursos de aplicación de Cordova
 {: #cordova-application-resources }
-Certain resources are needed as part of the Cordova application. In most cases, they are generated for you when you create your Cordova app with your preferred Cordova development tools. If you use the {{ site.data.keys.product }} template, then splash screens and icons are also provided.
+Determinados recursos son necesarios como parte de la aplicación Cordova.
+En la mayoría de los casos, se generan en su nombre al crear su aplicación Cordova con sus herramientas preferidas de desarrollo de Cordova.
+Si utiliza la plantilla de {{ site.data.keys.product }}, también se proporcionan iconos y pantallas iniciales.
 
-You can use a project template that is provided by IBM for use with Cordova projects that are enabled to use {{ site.data.keys.product_adj }} features. If you use this {{ site.data.keys.product_adj }} template, the following resources are made available to you as a starting point. If you do not use the {{ site.data.keys.product_adj }} template, all of the resources are provided except splash screens and icons. You add the template by specifying the `--template` option and the {{ site.data.keys.product_adj }} template when you initially create your Cordova project.
 
-If you change the default file names and paths of any resources, you must also specify such changes in the Cordova configuration file (config.xml). In addition, in some cases, you can change the default names and paths with the mfpdev app config command. If you can change names and paths with the mfpdev app config command, it is noted in the section about the specific resource.
+Se puede habilitar una plantilla de proyecto que IBM proporciona para utilizar con proyectos de Cordova que se habilitan para utilizar las características de {{ site.data.keys.product_adj }}.
+Si utiliza esta plantilla de {{ site.data.keys.product_adj }}, tendrá disponibles los siguientes recursos como un punto de partida.
+Si no utiliza la plantilla de {{ site.data.keys.product_adj }}, se proporcionan todos los recursos excepto los iconos y las pantallas iniciales.
+Añada la plantilla especificando la opción `--template` y la plantilla {{ site.data.keys.product_adj }} cuando inicialmente cree su proyecto de Cordova.
 
-### Cordova configuration file (config.xml)
+
+Si cambia los nombres de archivo y las vías de acceso predeterminadas de los recursos, también debe especificar dichos cambios en el archivo de configuración de Cordova (config.xml).
+Además, en algunos casos, puede cambiar las vías de acceso y los nombres predeterminados con el mandato mfpdev app config.
+Si puede cambiar los nombres y las vías de acceso con el mandato mfpdev app config, se indica en la sección sobre el recurso específico.
+
+
+### Archivo de configuración de Cordova (config.xml)
 {: #cordova-configuration-file-configxml }
-The Cordova configuration file is a required XML file that contains application metadata and is stored in the root directory of the app. The file is automatically generated when you create a Cordova application. You can modify it to add custom properties by using the mfpdev app config command. 
+El archivo de configuración de Cordova es un archivo XML necesario que contiene metadatos de aplicación y que se almacena en el directorio raíz de la aplicación.
+El archivo se genera de forma automática al crear una aplicación Cordova.
+Puede modificarla para añadir propiedades personalizadas mediante el mandato mfpdev app config.
 
-### Main file (index.html)
+
+### Archivo principal (index.html)
 {: #main-file-indexhtml}
-This main file is an HTML5 file that contains the application skeleton. This file loads all the web resources (scripts and stylesheets) that are necessary to define the general components of the application and to hook to required document events. You can find this file in the **your-project-name/www** directory. You can change the name of this file with the `mfpdev app config` command.
+Este archivo principal es un archivo HTML5 que contiene el esqueleto de la aplicación.
+Este archivo carga todos los recursos web (scripts y hojas de estilo) que se necesitan para definir los componentes generales de la aplicación y para el enganche a los sucesos de documento necesarios.
+Encontrará este archivo en el directorio **su_nombre_de_proyecto/www**.
+El nombre de este archivo se puede cambiar con el mandato `mfpdev app config`.
 
-### Thumbnail image
+
+### Imagen en miniatura
 {: #thumbnail-image }
-The thumbnail image provides a graphical identification for the application on the {{ site.data.keys.mf_console }}. It must be a square image, preferably of size 90 by 90 pixels.  
-A default thumbnail image is provided when you use the template. You can override the default image by using the same file name with a replacement image. You can find thumbnail.png in the **your-project-name/www/img** folder. You can change the name or path of this file with the `mfpdev app config` command.
+La imagen en miniatura proporciona una identificación gráfica de la aplicación en {{ site.data.keys.mf_console }}.
+Debe ser una imagen cuadrada, preferiblemente con un tamaño de 90 por 90 píxeles.
+  
+Se proporciona una imagen en miniatura predeterminada cuando se utiliza la plantilla.
+La imagen predeterminada se puede modificar utilizando el mismo nombre de archivo con otra imagen.
+El archivo thumbnail.png se encuentra en la carpeta **su_nombre_de_proyecto/www/img**.
+El nombre de este archivo o su vía de acceso se puede cambiar con el mandato `mfpdev app config`.
 
-### Splash image
+
+### Imagen de bienvenida
 {: #splash-image }
-The splash image is displayed while the application is being initialized. If you use the {{ site.data.keys.product_adj }} default template, splash images are provided. These default images are stored in the following directories:
+La imagen de bienvenida se visualiza cuando se está inicializando la aplicación.
+Si utiliza la plantilla predeterminada de {{ site.data.keys.product_adj }}, se proporcionan imágenes de bienvenida.
+Estas imágenes predeterminadas se almacenan en los directorios siguientes:
 
-* iOS: <your project name>/res/screen/ios/
-* Android: <your project name>/res/screen/android/
-* Windows: <your project name>/res/screen/windows/
 
-Various default splash images are included that are appropriate for different displays, and for iOS and Windows, different versions of the operating system. You can replace the default image that is provided by the template with your own splash image, or add an image if you did not use the template. When you use the {{ site.data.keys.product_adj }} template to build your app for the Android platform, the **cordova-plugin-splashscreen** plug-in is installed. When this plug-in is integrated, the splash images that Cordova uses are displayed instead of the images that are used by {{ site.data.keys.product }}. The images in the folder with the screen.png format are the Cordova standard splash images. You can specify which splash images display by changing the settings in the Cordova **config.xml** file.
+* iOS: <su nombre de proyecto>/res/screen/ios/
+* Android: <su nombre de proyecto>/res/screen/android/
+* Windows: <su nombre de proyecto>/res/screen/windows/
 
-If you do not use the {{ site.data.keys.product_adj }} template, the default splash images that are displayed are the images that are used by the {{ site.data.keys.product }} plug-in. The file names of the default {{ site.data.keys.product_adj }} source splash images are in the form **splash-string.9.png**.
+Se incluyen varias imágenes de bienvenida predeterminadas para las distintas visualizaciones y para iOS y Windows y para distintas versiones del sistema operativo.
+Es posible sustituir la imagen predeterminada que la plantilla proporciona con su propia imagen de bienvenida, o se puede añadir una imagen si no utilizó la plantilla.
+Cuando se utiliza la plantilla de {{ site.data.keys.product_adj }} para compilar su aplicación para la plataforma Android, se instala el plugin **cordova-plugin-splashscreen**.
+Cuando se integra este plugin, se visualizan las imágenes de bienvenida que Cordova utiliza en lugar de las imágenes que {{ site.data.keys.product }} utiliza.
+Las imágenes en la carpeta con el formato screen.png están en las imágenes de bienvenida estándar de Cordova.
+Puede especificar las imágenes a visualizar cambiando los valores en el archivo **config.xml** de Cordova.
 
-> For more information about using your own splash images, see [Adding custom splash screens and icons to Cordova apps](adding-images-and-icons).
 
-### Application icons
+Si no utiliza la plantilla de {{ site.data.keys.product_adj }}, las imágenes de bienvenida predeterminadas que se visualizan son las que utiliza el plugin de {{ site.data.keys.product }}.
+Los nombres de archivo de las imágenes de bienvenida de origen de {{ site.data.keys.product_adj }} predeterminadas están como **splash-string.9.png**.
+
+
+> Para obtener más información sobre la utilización de sus propias pantallas iniciales, consulte [Adición de iconos y pantallas iniciales a las aplicaciones para Cordova](adding-images-and-icons).
+
+
+### Iconos de aplicación
 {: #application-icons }
-Default images for application icons are provided with the template. These default images are stored in the following directories:
+Las imágenes predeterminadas para los iconos de aplicación se proporcionan con la plantilla.
+Estas imágenes predeterminadas se almacenan en los directorios siguientes:
 
-* iOS: <your project name>/res/icon/ios/
-* Android: <your project name>/res/icon/android/
-* Windows: <your project name>/res/icon/windows/
 
-You can replace the default image with your own image. Your custom application image must match the size of the default application image that you are replacing, and must use the same file name. Various default images are provided, appropriate to different displays and operating system versions.
+* iOS: <su nombre de proyecto>/res/icon/ios/
+* Android: <su nombre de proyecto>/res/icon/android/
+* Windows: <su nombre de proyecto>/res/icon/windows/
 
-> For more information about using your own splash images, see [Adding custom splash screens and icons to Cordova apps](adding-images-and-icons).
+Puede sustituir la imagen predeterminada con su propia imagen.
+Su imagen de aplicación personalizada debe coincidir con el tamaño de la imagen de aplicación predeterminada que sustituye, y debe utilizar el mismo nombre de archivo.
+Se proporcionan varias imágenes predeterminadas, de acuerdo a distintas versiones de sistemas operativos y pantallas.
 
-### Stylesheets
+
+> Para obtener más información sobre la utilización de sus propias pantallas iniciales, consulte [Adición de iconos y pantallas iniciales a las aplicaciones para Cordova](adding-images-and-icons).
+
+
+### Hojas de estilo
 {: #stylesheets }
-The app code can include CSS files to define the application view.
+El código de la aplicación puede incluir archivos CSS para definir la vista de la aplicación.
 
-The stylesheet files are located in the <your project name>/www/css directory, and are copied to the following platform-specific folders:
 
-* iOS: <your project name>/platforms/ios/www/css
-* Android: <your project name>/platforms/android/assets/www/css
-* Windows: <your project name>/platforms/windows/www/css
+Las hojas de estilo se encuentran en el directorio <su nombre de proyecto>/www/css y se copian a las siguientes carpetas específicas de cada plataforma:
+
+
+* iOS: <su nombre de proyecto>/platforms/ios/www/css
+* Android: <su nombre de proyecto>/platforms/android/assets/www/css
+* Windows: <su nombre de proyecto>/platforms/windows/www/css
 
 ### Scripts
 {: #scripts }
-Your app code can include JavaScript files that implement various functions of your app such as interactive user interface components, business logic, and back-end query integration.
+El código de la aplicación puede incluir archivos JavaScript que implementan distintas funciones de su aplicación como, por ejemplo, los componentes de interfaz de usuario interactivo, la lógica empresarial y la integración de las consultas en un segundo plano.
 
-The JavaScript file index.js is provided by the template, and is located in the **your-project-name/www/js** folder. This file is copied to the following platform-specific folders:
 
-* iOS: <your project name>/platforms/ios/www/js
-* Android: <your project name>/platforms/android/assets/www/js
-* Windows: <your project name>/platforms/windows/assets/www/js
+La plantilla proporciona el archivo JavaScript index.js y que se encuentra en la carpeta **su_nombre_proyecto/www/js**.
+Este archivo se copia a las siguientes carpetas específicas de cada plataforma:
 
-## Previewing an application's web resources
+* iOS: <su nombre de proyecto>/platforms/ios/www/js
+* Android: <su nombre de proyecto>/platforms/android/assets/www/js
+* Windows: <su nombre de proyecto>/platforms/windows/assets/www/js
+
+## Vista previa de una recurso web de una aplicación
 {: #previewing-an-applications-web-resources }
-A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator, or physical devices. In {{ site.data.keys.product }}, two additional live-preview options are available: {{ site.data.keys.mf_mbs_full }} and Simple Browser rendering.
+Obtenga una vista previa de los recursos web de una aplicación Cordova en los emuladores de iOS, Android, Windows o en los dispositivos físicos.
+En {{ site.data.keys.product }}, hay disponibles dos opciones de vista previa dinámica adicionales: la representación de {{ site.data.keys.mf_mbs_full }} y el Navegador simple.
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Security Restriction:** You can preview your web resources, however not all {{ site.data.keys.product_adj }} JavaScript APIs are supported by the simulator. In particular, the OAuth protocol is not fully supported. However, you can test calls to adapters with `WLResourceRequest`. In this case,
-> 
-> * Security checks are not run on the server-side and security challenges are not sent to the client that runs in the {{ site.data.keys.mf_mbs }}.
-> * If you do not use the {{ site.data.keys.mf_server }} in a development environment , register a confidential client that has the adapter's scope in its list of allowed scopes. You can define a confidential client with the {{ site.data.keys.mf_console }}, by using the Runtime/Settings menu. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
-> 
-> **Note:** The {{ site.data.keys.mf_server }} in a development environment includes a confidential client "test" that has an unlimited allowed scope ("*"). By default mfpdev app preview uses this confidential client.
 
-#### Simple Browser
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Restricción de seguridad: ** Puede obtener una vista previa de los recursos web, si embargo el simulador no da soporte a todas las API de JavaScript de {{ site.data.keys.product_adj }}.
+En concreto, no hay un soporte completo al protocolo OAuth.
+Sin embargo, puede probar las llamadas a adaptadores con `WLResourceRequest`.
+En este caso,
+
+>
+> * Las comprobaciones de seguridad no se ejecutan en el lado del servidor y los retos de seguridad no se envían al cliente que se ejecuta en {{ site.data.keys.mf_mbs }}.
+> * Si no utiliza {{ site.data.keys.mf_server }} en un entorno de desarrollo, registre un cliente confidencial que tenga el ámbito del adaptador en su lista de ámbitos permitidos.
+Defina un cliente confidencial con {{ site.data.keys.mf_console }}, mediante el menú Tiempo de ejecución/Valores.
+Para obtener más información sobre los clientes confidenciales, consulte [Clientes confidenciales](../../authentication-and-security/confidential-clients).
+
+>
+> **Nota:** {{ site.data.keys.mf_server }} en un entorno de desarrollo incluye un cliente confidencial "test" con un ámbito permitido ilimitado ("*").
+De forma predeterminada la aplicación mfpdev utiliza este cliente confidencial.
+
+
+#### Navegador simple
 {: #simple-browser }
-In Simple Browser previewing, the web resources of the application are being rendered in the desktop browser without being treated as an "app", allowing easy debugging of just the web resources.  
+La vista previa del Navegador simple, los recursos web de la aplicación se representan en el navegador de escritorio sin que sean tratados como una aplicación móvil, permitiendo una depuración sencilla de tan solo recursos web.
+  
 
 #### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator }
-The {{ site.data.keys.mf_mbs }} is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device.
+{{ site.data.keys.mf_mbs }} es una aplicación web que permite probar aplicaciones Cordova  simulando características del dispositivo sin la necesidad de instalar la aplicación en un emulador o dispositivo físico.
 
-**Supported browsers:**
 
-* Firefox version 38 and later
-* Chrome 49 and later
-* Safari 9 and later
+**Navegadores soportados:**
 
-### Previewing
+* Firefox versión 38 y posterior
+* Chrome 49 y posterior
+* Safari 9 y posterior
+
+### Vista previa
 {: #previewing }
-1. From a **Command-line** window, run the command:
+1. Desde una ventana de **línea de mandatos**, ejecute el mandato:
+
 
     ```bash
-    mfpdev app preview
-    ```
+mfpdev app preview
+```
 
-2. Select a preview option:
+2. Seleccione una opción de vista previa: 
 
     ```bash
-    ? Select how to preview your app: (Use arrow keys)
-    ❯ browser: Simple browser rendering
-    mbs: Mobile Browser Simulator
+    ? Seleccione cómo obtener una vista previa de su aplicación: (Utilice las teclas de cursor)
+      navegador: representación de navegador simple
+      mbs: Mobile Browser Simulator
     ```
-3. Select a platform to preview (only added platform will be displayed):
+3. Seleccione una plataforma para la vista previa (únicamente se visualizará la plataforma añadida): 
 
     ```bash
     ❯◯ android
     ◯ ios
 	```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Consejo:** Obtenga más información acerca de los numerosos mandatos CLI en el tutorial [Utilización del CLI para administrar artefactos {{ site.data.keys.product_adj }}](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
 
-### Live preview
+### Vista previa en directo 
 {: #live-preview }
-Applicative code (HTML, CSS and JS) can now be edited in real-time with live-preview.   
-After making a change to a resource, save the change and it will be immediately reflected in the browser.
+El código de la aplicación (HTML, CSS y JS) puede editarse ahora en tiempo real con la
+vista previa en directo.   
+Después de realizar un cambio a un recurso, guarde el cambio y dicho cambio será reflejado de forma inmediata en el navegador.
 
-### Live reload
+
+
+### Recarga en directo 
 {: #live-reload }
-To achieve a similar effect while previewing in physical devices or simulators/emulators, add the **cordova-plugin-livereload** plug-in. For usage instructions, [see the plug-ins GitHub page](https://github.com/omefire/cordova-plugin-livereload).
+Para obtener un efecto similar al realizar una vista previa en dispositivos físicos o en simuladores/emuladores, añada el plugin **cordova-plugin-livereload**. Para obtener las instrucciones de uso,[ consulte la página de plugins GitHub](https://github.com/omefire/cordova-plugin-livereload).
 
-### Running the application on emulator or on a physical device
+### Ejecución de la aplicación en el emulador o en un dispositivo físico 
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-To emulate the application execute the Cordova CLI command `cordova emulate ios|android|windows`. For example:
+Para emular la aplicación, ejecute el mandato Cordova CLI `cordova emulate ios|android|windows`. Por ejemplo:
+
 
 ```bash
 cordova emulate ios
 ```
 
-To run the application on a physical device, attached to the development workstation a run the Cordova CLI command `cordova run ios|android|windows`. For example:
+Para ejecutar la aplicación en un dispositivo físico, conectado a la estación de trabajo de desarrollo ejecute el mandato
+Cordova CLI `cordova run ios|android|windows`. Por ejemplo:
+
 
 ```bash
 cordova run ios
 ```
 
-## Implementing JavaScript Code
+## Implementación de código de JavaScript Code
 {: #implementing-javascript-code }
-Editing the WebView resources is more convenient using an IDE that provides autocompletion for JavaScript.
+La edición de los recursos WebView es más adecuada mediante un entorno integrado (IDE) que proporciona cumplimentación automática para JavaScript.
 
-Xcode, Android Studio, and Visual Studio provide full editing capabilities for editing Objective C, Swift, C#, and Java, however they may be limited in how they assist the editing of JavaScript. To facilitate JavaScript editing, the {{ site.data.keys.product_adj }} Cordova project contains a defintion file for providing autocomplete for {{ site.data.keys.product_adj }} API elements.
+Xcode, Android Studio y Visual Studio proporcionan funcionalidades de edición completas para Objective C, Swift, C# y Java, sin embargo, pueden estar limitadas para dar soporte a la edición en JavaScript.
+Para facilitar la edición de JavaScript, el proyecto de Cordova de {{ site.data.keys.product_adj }} contiene un archivo de definición para poder cumplimentar de forma automática elementos de API de {{ site.data.keys.product_adj }}.
 
-Each {{ site.data.keys.product_adj }} Cordova plug-in provides a `d.ts` configuration file for each {{ site.data.keys.product_adj }} JavaScript files. The `d.ts` file name matches the corresponding JavaScript file name and is located within the plug-in folder. For example for the main {{ site.data.keys.product_adj }} SDK the file is here: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
 
-The `d.ts` configuration files provides autocomplete for all IDEs with TypeScript support: [TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript).
+Cada plugin Cordova de {{ site.data.keys.product_adj }} proporciona un archivo de configuración `d.ts` para cada archivo JavaScript  de {{ site.data.keys.product_adj }}. El nombre del archivo `d.ts` coincide con el correspondiente nombre de archivo JavaScript y se encuentra ubicado en la carpeta del plugin. Por ejemplo, para el SDK principal  {{ site.data.keys.product_adj }} el archivo se encuentra en: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
 
-The resources (HTML and JavaScript files) for the WebView are located in the **[myapp]\www** folder. When the project is built with the cordova build command, or the cordova prepare command is run, these resources are copied to the corresponding **www** folder in the **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www**, or **[myapp]\platforms\windows\www** folder.
+Los archivos de configuración `d.ts` proporcionan funcionalidades de autocompletado para los IDEs
+con soporte TypeScript: [TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript).
 
-When you open the main app folder with one of the previous IDEs, the context is preserved. The IDE editor will now be linked to the relevant `d.ts` files and autocomplete the {{ site.data.keys.product_adj }} API elements as you type.
+Los recursos (archivos HTML y JavaScript) para WebView se encuentran en la carpeta **[myapp]\www**. Cuando el proyecto se compila con el mandato cordova build, o cuando se ejecuta el mandato cordova prepare, estos recursos se copian a la correspondiente carpeta
+**www** en la carpeta **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www**, o **[myapp]\platforms\windows\www**.
 
-## CrossWalk support for Android
+Cuando abre la carpeta de aplicación principal con uno de los anteriores IDE, se conserva el contexto.
+El editor IDE estará ahora enlazado a los archivos `d.ts` relevantes y los elementos de la API {{ site.data.keys.product_adj }} se autocompletarán a medida  que escribe.
+
+## Soporte de CrossWalk para Android 
 {: #crosswalk-support-for-android }
-Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  
-To add it:
+En las aplicaciones de Cordova para la plataforma Android se pueden sustituir sus WebView predeterminadas con [CrossWalk WebView](https://crosswalk-project.org/).
 
-1. From a **Command-line** line, run the command:
+> **Nota:** El proyecto de CrossWalk [ya no está mantenido](https://crosswalk-project.org/blog/crosswalk-final-release.html) por la comunidad ni sus mantenedores. Por lo tanto, no hay ninguna opción de que haya errores o problemas en CrossWalk que puedan afectar al funcionamiento de los SDK de MobileFirst en un CrossWalk WebView. Por lo tanto, no se recomienda utilizar CrossWalk WebViews en sus aplicaciones. 
+
+Para añadirlo:
+
+
+
+1. Desde una línea de **línea de mandatos**, ejecute el mandato:
 
    ```bash
    cordova plugin add cordova-plugin-crosswalk-webview
    ```
 
-   This command will add the CrossWalk WebView to the application.  
-    Behind the scenes, the {{ site.data.keys.product_adj }} Cordova SDK will adjust the Android project activity for using it.
+   Este mandato añadirá CrossWalk WebView a la aplicación.
+  
+Internamente, {{ site.data.keys.product_adj }} Cordova SDK ajustará la actividad del proyecto Android para utilizarlo.
 
-2. Build the project by running the command:
+
+
+2. Compile el proyecto ejecutando el mandato:
 
    ```bash
-   cordova build
-   ```
+cordova build```
 
-## WKWebView support for iOS
+## Soporte de WKWebView para iOS
 {: #wkwebview-support-for-ios }
-The default UIWebView used in Cordova iOS applications can be replaced with [Apple's WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/).  
-To add, run the following command from a command-line window: `cordova plugin add cordova-plugin-wkwebview-engine`.
+El UIWebView predeterminado utilizado en las aplicaciones Cordova iOS pueden sustituirse
+con [WKWebView de Apple](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/).  
+Para añadirlo, ejecute el siguiente mandato desde una ventana de línea de mandatos: `cordova plugin add cordova-plugin-wkwebview-engine`.
 
-> Learn more about the [Cordova WKWebView plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine).
+> Obtenga más información acerca del plugin [Cordova WKWebView](https://github.com/apache/cordova-plugin-wkwebview-engine).
 
-## Further reading
+## Lectura adicional 
 {: #further-reading }
-Learn more about Cordova:
+Obtenga más información acerca de Cordova:
 
-- [Cordova Overview](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
-- [Cordova best practices, testing, debugging, cosiderations and keeping up](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
-- [Get started with Cordova applications development](https://cordova.apache.org/#getstarted)
+- [Visión general de Cordova](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
+- [Procedimientos recomendados, realización de pruebas, depuración, consideraciones y mantenimiento de Cordova](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
+- [Iniciación con el desarrollo de las aplicaciones de Cordova](https://cordova.apache.org/#getstarted)
 
-## Tutorials to follow next
+## Guías de aprendizaje con las que continuar 
 {: #tutorials-to-follow-next }
-Get started by [adding the MobileFirst SDK to your Cordova application](../../application-development/sdk/cordova), and review {{ site.data.keys.product_adj }}-provided features in the [All Tutorials](../../all-tutorials/) section.
+Empiece con [añadiendo MobileFirst SDK a la aplicación Cordova](../../application-development/sdk/cordova), y revise las funciones   {{ site.data.keys.product_adj }} provistas en la sección [Todos los tutoriales](../../all-tutorials/).

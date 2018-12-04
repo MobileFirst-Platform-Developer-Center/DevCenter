@@ -1,44 +1,44 @@
 ---
 layout: tutorial
-title: Using Analytics API in Client Applications
+title: 클라이언트 애플리케이션에서 Analytics API 사용
 breadcrumb_title: Analytics API
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to set up analytics support on the client application, and lists available APIs.
+{{ site.data.keys.mf_analytics_full }}는 사용자가 애플리케이션에 대한 Analytics 데이터 수집을 시작하는 데 도움이 되는 클라이언트 측 API를 제공합니다. 이 학습서에서는 클라이언트 애플리케이션에서 Analytics 지원을 설정하는 방법에 대한 정보를 제공하고 사용 가능한 API를 나열합니다.
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
 
-* [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
-* [Sending Analytics Data](#sending-analytics-data)
-* [Enabling/Disabling Client Events](#enablingdisabling-client-event-types)
-* [Custom Events](#custom-events)
-* [Tracking Users](#tracking-users)
+* [클라이언트 측에서 Analytics 구성](#configuring-analytics-on-the-client-side)
+* [Analytics 데이터 전송](#sending-analytics-data)
+* [클라이언트 이벤트 사용/사용 안함](#enablingdisabling-client-event-types)
+* [사용자 정의 이벤트](#custom-events)
+* [사용자 추적](#tracking-users)
 
-## Configuring analytics on the client side
+## 클라이언트 측에서 Analytics 구성
 {: #configuring-analytics-on-the-client-side }
 
-Before you can start collecting the predefined data that {{ site.data.keys.mf_analytics }} provides, you must first import the corresponding libraries to initialize the analytics support.
+{{ site.data.keys.mf_analytics }}가 제공하는 사전 정의된 데이터 수집을 시작하려면 먼저 해당 라이브러리를 가져와서 Analytics 지원을 초기화해야 합니다.
 
-### JavaScript (Cordova)
+### JavaScript(Cordova)
 {: #javascript-cordova }
 
-In Cordova applications, no setup is required and initialization is built-in.  
+Cordova 애플리케이션에서는 설정이 필요하지 않으며 초기화가 기본 제공됩니다.  
 
-### JavaScript (Web)
+### JavaScript(웹)
 {: #javascript-web }
 
-In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the {{ site.data.keys.product_adj }} Web SDK. For more information, see [Adding the {{ site.data.keys.product_adj }} SDK to Web applications](../../application-development/sdk/web) tutorial.  
+웹 애플리케이션에서는 Analytics JavaScript 파일을 참조해야 합니다. 먼저 {{ site.data.keys.product_adj }} 웹 SDK를 추가해야 합니다. 자세한 정보는 [웹 애플리케이션에 {{ site.data.keys.product_adj }} SDK 추가](../../application-development/sdk/web) 학습서를 참조하십시오.  
 
-Depending on how you've added the {{ site.data.keys.product_adj }} Web SDK, proceed in either of the following ways:
+{{ site.data.keys.product_adj }} 웹 SDK를 추가한 방식에 따라 다음 방법 중 하나를 진행하십시오.
 
 
-Reference {{ site.data.keys.mf_analytics }} in the `HEAD` element:
+`HEAD` 요소에 있는 {{ site.data.keys.mf_analytics }}를 참조하십시오.
 
 ```html
 <head>
@@ -48,7 +48,7 @@ Reference {{ site.data.keys.mf_analytics }} in the `HEAD` element:
 </head>
 ```
 
-Or, if using RequireJS, write:
+또는 RequireJS를 사용 중인 경우 다음을 작성하십시오.
 
 ```javascript
 require.config({
@@ -63,19 +63,19 @@ require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
 });
 ```
 
-Note that you can select your own namespace to replace "ibmmfpfanalytics".
+"ibmmfpfanalytics"를 대체할 자체 네임스페이스를 선택할 수 있습니다.
 
 
 ```javascript
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
- **Important**: Some JavaScript API differences exist between the Cordova and Web SDKs. Please refer to the [API Reference topic](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in the user documentation.
+ **중요**: Cordova와 웹 SDK 사이에는 일부 JavaScript API 차이가 존재합니다. 사용자 문서에서 [API 참조서 주제](../../api/)를 참조하십시오.
 
 ### iOS
 {: #ios }
 
-#### Import the WLAnalytics library
+#### WLAnalytics 라이브러리 가져오기
 {: #importing-the-wlanalytics-library }
 
 **Objective-C**
@@ -90,107 +90,107 @@ import "WLAnalytics.h"
 import IBMMobileFirstPlatformFoundation
 ```
 
-#### Initialize Analytics
-{: #initialize-analytics }
+#### Analytics 초기화
+{: #initialize-analytics-ios }
 
 **Objective-C**  
-No setup required. Pre-initialized by default.
+설정이 필요하지 않습니다. 기본적으로 미리 초기화됩니다.
 
 **Swift**  
-Before calling other methods of the **WLAnalytics** class, call `WLAnalytics.sharedInstance()`.
+**WLAnalytics** 클래스의 다른 메소드를 호출하기 전에 `WLAnalytics.sharedInstance()`를 호출하십시오.
 
 ### Android
-#{: #android }
+{: #android }
 
-#### Import WLAnalytics
+#### WLAnalytics 가져오기
 {: #import-wlanalytics }
 
 ```java
 import com.worklight.common.WLAnalytics;
 ```
 
-#### Initialize Analytics
-{: #initialize-analytics }
+#### Analytics 초기화
+{: #initialize-analytics-android }
 
-Inside the `onCreate` method of your main activity include:
+기본 활동의 `onCreate` 메소드 안에는 다음이 포함되어 있습니다.
 
 ```java
 WLAnalytics.init(this.getApplication());
 ```
 
 
-## Enabling/disabling client event types
+## 클라이언트 이벤트 유형 사용/사용 안함
 {: #enablingdisabling-client-event-types }
 
-The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their {{ site.data.keys.mf_analytics_console }}.
+Analytics API는 개발자에게 {{ site.data.keys.mf_analytics_console }}에서 시각화할 이벤트에 대한 Analytics 수집을 사용 및 사용 안함으로 설정할 수 있는 자유를 부여합니다.
 
-The {{ site.data.keys.mf_analytics }} API allows for the capturing of the following metrics.
+{{ site.data.keys.mf_analytics }} API를 사용하면 다음과 같은 메트릭을 캡처할 수 있습니다.
 
-* **Lifecycle events**: app usage rates, usage duration, app crash rates
-* **Network usage**: breakdown of API call frequencies, network performance metrics
-* **Users**: users of the app that are identified by a supplied user ID
-* **Custom analytics**: custom key/value pairs that are defined by the app developer
+* **라이프사이클 이벤트**: 앱 사용률, 사용 기간, 앱 충돌 비율
+* **네트워크 사용**: API 호출 빈도 분석, 네트워크 성능 메트릭
+* **사용자**: 제공된 사용자 ID로 식별되는 앱의 사용자
+* **사용자 정의 분석**: 앱 개발자가 정의하는 사용자 정의 키/값 쌍
 
-The initialization of the analytics API must be written in native code, even in Cordova apps.
+Analytics API의 초기화는 Cordova 앱에서도 네이티브 코드로 작성되어야 합니다.
 
- * To capture app usage, you must register app lifecycle event listeners before the relevant event occurs and before sending the data to the server.
- * To use the file system or native language and device features, the API must be initialized. If the API is used in a way that requires native device features (like the file system), but was not initialized, the API call fails. This behavior is especially true on Android.
+ * 앱 사용을 캡처하려면 관련 이벤트가 발생하고 데이터를 서버에 전송하기 전에 앱 라이프사이클 이벤트 리스너를 등록해야 합니다.
+ * 파일 시스템 또는 고유 언어 및 디바이스 기능을 사용하려면 API를 초기화해야 합니다. API가 고유 디바이스 기능(예: 파일 시스템)이 필요한 방식으로 사용되지만 초기화되지 않은 경우 API 호출이 실패합니다. 이 작동은 특히 Android에서 유효합니다.
 
-**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, see [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events).
+**참고**: Cordova 애플리케이션을 빌드하기 위해 JavaScript Analytics API는 `LIFECYCLE` 또는 `NETWORK` 이벤트의 콜렉션을 사용 또는 사용 안함으로 설정하는 메소드를 가지고 있지 않습니다. 즉, Cordova 애플리케이션은 기본적으로 미리 사용으로 설정된 `LIFECYCLE` 및 `NETWORK` 이벤트와 함께 제공됩니다. 이러한 이벤트를 사용 안함으로 설정하려면 [클라이언트 라이프사이클 이벤트](#client-lifecycle-events) 및 [클라이언트 네트워크 이벤트](#client-lifecycle-events)를 참조하십시오.
 
-### Client lifecycle events
+### 클라이언트 라이프사이클 이벤트
 {: #client-lifecycle-events }
 
-After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in {{ site.data.keys.mf_analytics }} is recorded when the app is moved from the foreground to the background, which creates a session on the {{ site.data.keys.mf_analytics_console_short }}.
+Analytics SDK가 구성되고 나면 사용자의 디바이스에서 앱 세션 기록이 시작됩니다. {{ site.data.keys.mf_analytics }}에서 세션은 앱이 포그라운드에서 백그라운드로 이동할 때 기록되며, {{ site.data.keys.mf_analytics_console_short }}에서 세션을 작성합니다.
 
-As soon as the device is set up to record sessions and you send your data, you can see the {{ site.data.keys.mf_analytics_console_short }} populated with data, as shown below.
+디바이스가 세션을 기록하도록 설정되고 사용자가 데이터를 전송하는 즉시 아래에 표시된 대로 데이터로 채워진 {{ site.data.keys.mf_analytics_console_short }}을 볼 수 있습니다.
 
-![sessions-chart](analytics-app-sessions.png)
+![세션-차트](analytics-app-sessions.png)
 
-Enable or disable the collecting of app sessions using the {{ site.data.keys.mf_analytics_short }} API.
+{{ site.data.keys.mf_analytics_short }} API를 사용하여 앱 세션 콜렉션을 사용 또는 사용 안함으로 설정하십시오.
 
 #### JavaScript
-{: #javascript }
+{: #javascript-lifecycle-events }
 
-**Web**  
-To use client lifecycle events, initialize analytics:
+**웹**  
+클라이언트 라이프사이클 이벤트를 사용하려면 Analytics를 초기화하십시오.
 
 ```javascript
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
 **Cordova**  
-To enable the capture of the lifecycle events, it must be initialized in the native platform of the Cordova app.
+라이프사이클 이벤트 캡처를 사용으로 설정하려면 Cordova 앱의 네이티브 플랫폼에서 이를 초기화해야 합니다.
 
-* For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the  **AppDelegate.m** (Objective-C) or **AppDelegate.swift** (Swift) file.
-	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* iOS 플랫폼의 경우:
+	* **[Cordova 애플리케이션 루트 폴더] → platforms → ios → Classes** 폴더를 열고 **AppDelegate.m**(Objective-C) 또는 **AppDelegate.swift**(Swift) 파일을 찾으십시오.
+	* 아래의 iOS 지침을 따라 `LIFECYCLE` 활동을 사용 또는 사용 안함으로 설정하십시오.
+	* `cordova build` 명령을 실행하여 Cordova 프로젝트를 빌드하십시오.
 
-* For the Android platform:
-	* Open the  **[Cordova application root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java** file.
-	* Look for the `onCreate` method and follow the Android guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* Android 플랫폼의 경우:
+	* **[Cordova 애플리케이션 루트 폴더] → platforms → android → src → com → sample → [app-name] → MainActivity.java** 파일을 여십시오.
+	* `onCreate` 메소드를 찾은 후 아래의 Android 지침을 따라 `LIFECYCLE` 활동을 사용 또는 사용 안함으로 설정하십시오.
+	* `cordova build` 명령을 실행하여 Cordova 프로젝트를 빌드하십시오.
 
 #### Android
-{: #android }
+{: #android-lifecycle-events }
 
-To enable client lifecycle event logging:
+클라이언트 라이프사이클 이벤트 로깅을 사용으로 설정하려는 경우:
 
 ```java
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
-To disable client lifecycle event logging:
+클라이언트 라이프사이클 이벤트 로깅을 사용 안함으로 설정하려는 경우:
 
 ```java
 WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
 #### iOS
-{: #ios }
+{: #ios-lifecycle-events }
 
-To enable client lifecycle event logging:
+클라이언트 라이프사이클 이벤트 로깅을 사용으로 설정하려는 경우:
 
 **Objective-C:**
 
@@ -204,7 +204,7 @@ To enable client lifecycle event logging:
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 ```
 
-To disable client lifecycle event logging:
+클라이언트 라이프사이클 이벤트 로깅을 사용 안함으로 설정하려는 경우:
 
 **Objective-C:**
 
@@ -218,44 +218,44 @@ To disable client lifecycle event logging:
 WLAnalytics.sharedInstance().removeDeviceEventListener(LIFECYCLE);
 ```
 
-### Client Network Activities
+### 클라이언트 네트워크 활동
 {: #client-network-activities }
 
-Collection on adapters and the network occur in two different locations: on the client and on the server:
+네트워크와 어댑터에 대한 콜렉션은 서버와 클라이언트라는 두 개의 다른 위치에서 발생합니다.
 
-* The client collects information such as roundtrip time and payload size when you start collecting on the `NETWORK` device event.
+* 클라이언트는 `NETWORK` 디바이스 이벤트에서 수집을 시작할 때 라운드트립 시간 및 페이로드 크기 등의 정보를 수집합니다.
 
-* The server collects back-end information such as server processing time, adapter usage, used procedures.
+* 서버는 서버 처리 시간, 어댑터 사용, 사용된 프로시저 등의 백엔드 정보를 수집합니다.
 
-Because the client and the server each collect their own information, charts do not display data until the client is configured to do so. To configure your client, you need to start collecting for the `NETWORK` device event and send it to the server.
+클라이언트와 서버는 각각 고유 정보를 수집하므로 클라이언트가 차트에 데이터를 표시하도록 구성될 때까지 차트에 데이터가 표시되지 않습니다. 클라이언트를 구성하려면 `NETWORK` 디바이스 이벤트에 대한 수집을 시작한 후 이를 서버에 전송해야 합니다.
 
 #### JavaScript
 {: #javascript }
 
-**Web**  
-To use client network events, initialize analytics:
+**웹**  
+클라이언트 네트워크 이벤트를 사용하려면 Analytics를 초기화하십시오.
 
 ```javascript
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
 **Cordova**  
-To enable the capture of the network events, it must be initialized in the native platform of the Cordova app.
+네트워크 이벤트 캡처를 사용으로 설정하려면 Cordova 앱의 네이티브 플랫폼에서 이를 초기화해야 합니다.
 
-* For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the **AppDelegate.m** (Objective-C) or **AppDelegate.swift** file.
-	* Follow the iOS guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* iOS 플랫폼의 경우:
+	* **[Cordova 애플리케이션 루트 폴더] → platforms → ios → Classes** 폴더를 열고 **AppDelegate.m**(Objective-C) 또는 **AppDelegate.swift** 파일을 찾으십시오.
+	* 아래의 iOS 지침을 따라 `NETWORK` 활동을 사용 또는 사용 안함으로 설정하십시오.
+	* `cordova build` 명령을 실행하여 Cordova 프로젝트를 빌드하십시오.
 
-* For the Android platform: navigate to the subactivity of the main activity to disable.
-	* Open the  **[Cordova application root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java** file.
-	* Look for the `onCreate` method and follow the Android guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* Android 플랫폼의 경우: 사용 안함으로 설정할 기본 활동의 하위 활동으로 이동하십시오.
+	* **[Cordova 애플리케이션 루트 폴더] → platforms → ios → src → com → sample → [app-name] → MainActivity.java** 파일을 여십시오.
+	* `onCreate` 메소드를 찾은 후 아래의 Android 지침을 따라 `NETWORK` 활동을 사용 또는 사용 안함으로 설정하십시오.
+	* `cordova build` 명령을 실행하여 Cordova 프로젝트를 빌드하십시오.
 
 #### iOS
-{: #ios }
+{: #ios-network-activities }
 
-To enable client network-event logging:
+클라이언트 네트워크 이벤트 로깅을 사용으로 설정하려는 경우:
 
 **Objective-C:**
 
@@ -269,7 +269,7 @@ To enable client network-event logging:
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK);
 ```
 
-To disable client network-event logging:
+클라이언트 네트워크 이벤트 로깅을 사용 안함으로 설정하려는 경우:
 
 **Objective-C:**
 
@@ -284,36 +284,36 @@ WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
 
 #### Android
-{: #android }
+{: #android-network-activities }
 
-To enable client network-event logging:
+클라이언트 네트워크 이벤트 로깅을 사용으로 설정하려는 경우:
 
 ```java
 WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
 ```
 
-To disable client network-event logging:
+클라이언트 네트워크 이벤트 로깅을 사용 안함으로 설정하려는 경우:
 
 ```java
 WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 ```
 
-## Custom events
+## 사용자 정의 이벤트
 {: #custom-events }
 
-Use the following API methods to create custom events.
+다음 API 메소드를 사용하여 사용자 정의 이벤트를 작성하십시오.
 
-#### JavaScript (Cordova)
-{: #javascript-cordova }
+#### JavaScript(Cordova)
+{: #javascript-cordova-custom-events }
 
 ```javascript
 WL.Analytics.log({"key" : 'value'});
 ```
 
-#### JavaScript (Web)
-{: #javascript-web }
+#### JavaScript(웹)
+{: #javascript-web-custom-events }
 
-For the web API, custom data is sent with the `addEvent` method.
+Web API의 경우 `addEvent` 메소드를 사용하여 사용자 정의 데이터를 전송합니다.
 
 ```javascript
 ibmmfpfanalytics.addEvent({'Purchases':'radio'});
@@ -321,9 +321,9 @@ ibmmfpfanalytics.addEvent({'src':'App landing page','target':'About page'});
 ```
 
 #### Android
-{: #android }
+{: #android-custom-events }
 
-After setting the first two configurations, you can start to log data as in this example:
+처음 두 구성을 설정한 후 다음 예와 같이 데이터 로그를 시작할 수 있습니다.
 
 ```java
 JSONObject json = new JSONObject();
@@ -338,9 +338,9 @@ WLAnalytics.log("Message", json);
 ```
 
 #### iOS
-{: #ios }
+{: #ios-custom-events }
 
-After importing WLAnalytics, you can now use the API to collect custom data, as follows:
+WLAnalytics를 가져오고 나면 이제 API를 사용하여 다음과 같이 사용자 정의 데이터를 수집할 수 있습니다.
 
 **Objective-C:**
 
@@ -360,17 +360,17 @@ let metadata: [NSObject: AnyObject] = ["foo": "bar"];
 WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
 ```
 
-## Tracking users
+## 사용자 추적
 {: #tracking-users }
 
-To track individual users, use the `setUserContext` method:
+개별 사용자를 추적하려면 `setUserContext` 메소드를 사용하십시오.
 
 #### Cordova
-{: #cordova }
+{: #cordova-tracking-users }
 
-Not supported.
+지원되지 않습니다.
 
-#### Web applications
+#### 웹 애플리케이션
 {: #web-applications }
 
 ```javascript
@@ -378,7 +378,7 @@ ibmmfpfanalytics.setUserContext(user);
 ```
 
 #### iOS
-{: #ios }
+{: #ios-tracking-users }
 
 **Objective-C**
 
@@ -393,26 +393,26 @@ WLAnalytics.sharedInstance().setUserContext("John Doe")
 ```
 
 #### Android
-{: #android }
+{: #android-tracking-users }
 
 ```java
 WLAnalytics.setUserContext("John Doe");
 ```
 
-To un-track individual users, use the `unsetUserContext` method:
+개별 사용자를 추적 해제하려면 `unsetUserContext` 메소드를 사용하십시오.
 
 #### Cordova
-{: #cordova }
+{: #cordova-untracking-users }
 
-Not supported.
+지원되지 않습니다.
 
-#### Web applications
-{: #web-applications }
+#### 웹 애플리케이션
+{: #web-applications-untracking-users }
 
-There is no `unsetUserContext` in the {{ site.data.keys.product_adj }} Web SDK. The user session ends after 30 minutes of inactivity, unless another call is made to `ibmmfpfanalytics.setUserContext(user)`.
+{{ site.data.keys.product_adj }} 웹 SDK에는 `unsetUserContext`가 없습니다. `ibmmfpfanalytics.setUserContext(user)`에 대해 다른 호출이 작성되지 않으면 사용자 세션은 30분의 비활동 기간 후 종료됩니다.
 
 #### iOS
-{: #ios }
+{: #ios-untracking-users }
 
 **Objective-C**
 
@@ -427,39 +427,39 @@ WLAnalytics.sharedInstance().unsetUserContext
 ```
 
 #### Android
-{: #android }
+{: #android-untracking-users }
 
 ```java
 WLAnalytics.unsetUserContext();
 ```
 
-## Sending Analytics data
+## Analytics 데이터 전송
 {: #sending-analytics-data }
 
-Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the {{ site.data.keys.mf_analytics_server }} by using `send` method of the Analytics API.
+Analytics 데이터 전송은 Analytics Server에서 클라이언트 측 분석을 보기 위해 중요한 단계입니다. Analytics를 위해 구성된 이벤트 유형에 대한 데이터가 수집되면 Analytics 로그가 클라이언트 디바이스의 로그 파일에 저장됩니다. 이 파일의 데이터는 Analytics API의 `send` 메소드를 사용하여 {{ site.data.keys.mf_analytics_server }}에 전송됩니다.
 
-Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the {{ site.data.keys.mf_analytics_console }}.
+캡처된 로그를 주기적으로 서버에 전송하는 것을 고려해 보십시오. 정기적으로 데이터를 전송하면 {{ site.data.keys.mf_analytics_console }}에서 최신 분석 데이터를 볼 수 있습니다.
 
-#### JavaScript (Cordova)
-{: #javascript-cordova }
+#### JavaScript(Cordova)
+{: #javascript-cordova-sending-data }
 
-In a Cordova application, use the following JavaScript API method:
+Cordova 애플리케이션에서는 다음 JavaScript API 메소드를 사용하십시오.
 
 ```javascript
 WL.Analytics.send();
 ```
 
-#### JavaScript (Web)
-{: #javascript-web }
+#### JavaScript(웹)
+{: #javascript-web-sending-data }
 
-In a Web application, use the following JavaScript API method (depending on the namespace you've selected):
+웹 애플리케이션에서는 선택한 네임스페이스에 따라 다음 JavaScript API 메소드를 사용하십시오.
 
 ```javascript
 ibmmfpfanalytics.send();
 ```
 
 #### iOS
-{: #ios }
+{: #ios-sending-data }
 
 **Objective-C**
 
@@ -474,9 +474,9 @@ WLAnalytics.sharedInstance().send();
 ```
 
 #### Android
-{: #android }
+{: #android-sending-data }
 
-In an Android application, use the following Java API method:
+Android 애플리케이션에서는 다음 Java API 메소드를 사용하십시오.
 
 ```java
 WLAnalytics.send();

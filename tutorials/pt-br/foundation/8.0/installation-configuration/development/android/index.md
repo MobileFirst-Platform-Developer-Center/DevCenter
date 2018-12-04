@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configurando o ambiente de desenvolvimento do Android
-breadcrumb_title: android
+breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---
@@ -19,7 +19,7 @@ Esse tutorial explica as etapas que um desenvolvedor precisa seguir para poder d
 ### Android Studio
 Siga as etapas fornecidas no [website Android Developers](http://developer.android.com/develop/index.html) para fazer download e instalar o Android Studio.
 
-![Configurar o Android SDK](android-studio.png)
+![Configure o Android SDK](android-studio.png)
 
 ### SDK do Android
 O Android SDK fornece as ferramentas e APIs necessárias para desenvolver aplicativos na plataforma Android, usando a linguagem de programação Java.

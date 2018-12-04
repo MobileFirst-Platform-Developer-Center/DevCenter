@@ -223,7 +223,7 @@ WLClient client = WLClient.getInstance();
 boolean supported = client.getPush().isPushSupported();
 {% endhighlight %} 
 
-<code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.
+<code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications. The call does not connect to the server, it returns the local state.
 
 {% highlight java  %} 
 WLClient client = WLClient.getInstance();

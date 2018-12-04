@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Notifications push des mises à jour de l'application
-breadcrumb_title: Notifications push
+breadcrumb_title: Push notifications
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
@@ -106,7 +106,7 @@ Pour activer Google Cloud Messaging (GCM) pour une application, vous devez assoc
 
    La propriété JNDI doit être définie en fonction des exigences de votre serveur d'applications.  
    Voir [Propriétés JNDI pour Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) pour obtenir une liste complète des propriétés que vous pouvez définir.
-    
+
 **Important :**
 
 * Si vous utilisez GCM avec des versions antérieures d'Android, vous devrez peut-être appairer votre appareil avec un compte Google existant pour que GCM fonctionne efficacement. Voir [GCM service](http://developer.android.com/google/gcm/gcm.html) : "Il utilise une connexion existante pour les services Google. Pour les appareils antérieurs à la version 3.0, les utilisateurs doivent configurer leur compte Google sur leurs appareils mobiles. Un compte Google n'est pas obligatoire pour les appareils fonctionnant sous Android 4.0.4 ou version ultérieure."
@@ -137,7 +137,7 @@ Où x est un nombre entier.
 2. Si vous souhaitez tester ou déboguer Application Center sur un appareil en le lançant directement depuis XCode, dans la fenêtre "Xcode Organizer", accédez à la section "Provisioning Profiles" et installez le profil sur votre appareil mobile.
 
 3. Créez un certificat de signature utilisé par les services Application Center pour sécuriser la communication avec le serveur APN. Ce serveur utilise le certificat à des fins de signature de chaque demande push vers le serveur APN. Ce certificat de signature est produit à partir de votre profil de mise à disposition.
-    
+
 * Ouvrez l'utilitaire "Keychain Access" et cliquez sur la catégorie **My Certificates** dans le volet gauche.
 * Recherchez le certificat que vous souhaitez installer et divulguez son contenu. Vous voyez à la fois un certificat et une clé privée ; pour Application Center, la ligne de certificat contient le bundle d'applications d'Application Center **com.ibm.imf.AppCenter**.
 * Sélectionnez **File → Export Items** pour sélectionner à la fois le certificat et la clé et exportez-les en tant que fichier d'échange d'informations personnelles (.p12). Ce fichier .p12 contient la clé privée requise lorsque le protocole d'établissement de liaison sécurisé est impliqué pour communiquer avec le serveur APN.
@@ -145,11 +145,11 @@ Où x est un nombre entier.
 
 Les exemples du tableau montrent comment les propriétés JNDI sont définies dans le fichier server.xml du serveur Apache Tomcat.
 
-| Propriété JNDI	| Type et description | Exemple pour le serveur Apache Tomcat | 
+| Propriété JNDI	| Type et description | Exemple pour le serveur Apache Tomcat |
 |---------------|----------------------|----------------------------------|
 | ibm.appcenter.apns.p12.certificate.location | Valeur de chaîne qui définit le chemin d'accès complet au certificat .p12. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password | Valeur de chaîne définissant le mot de passe nécessaire pour accéder au certificat. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	Valeur booléenne (identifiée comme true ou false) qui définit si le profil de mise à disposition utilisé pour générer le certificat d'authentification était ou non un certificat de développement. | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.password | Valeur de chaîne définissant le mot de passe nécessaire pour accéder au certificat. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	Valeur booléenne (identifiée comme true ou false) qui définit si le profil de mise à disposition utilisé pour générer le certificat d'authentification était ou non un certificat de développement. | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` |
 
 Consultez [Propriétés JNDI pour Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) pour obtenir une liste complète des propriétés JNDI que vous pouvez définir.
 
@@ -162,7 +162,7 @@ Application Center dépend de la disponibilité de l'API Google Cloud Messaging 
 1. Vérifiez que les notifications push sont désactivées en vérifiant que le fichier **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** contient cette ligne : `"gcmProjectId": "" ,`.
 2. Supprimez de deux endroits dans le fichier **IBMAppCenter/apps/AppCenter/android/native/AndroidManifest.xml** toutes les lignes qui se trouvent entre ces commentaires : `<!-- AppCenter Push configuration -->` et `<!-- end of AppCenter Push configuration -->`.
 3. Supprimez la classe **IBMAppCenter/apps/AppCenter/android/native/src/com/ibm/appcenter/GCMIntenteService.java**.
-4. Dans Eclipse, exécutez "Build Android Environment" dans le dossier IBMAppCenter/apps/AppCenter/android folder.
+4. Dans Eclipse, exécutez "Build Android Environment" dans le dossier IBMAppCenter/apps/AppCenter/android.
 5. Supprimez le fichier **IBMAppCenter/apps/AppCenter/android/native/libs/gcm.jar** qui a été créé par le plug-in MobileFirst lorsque vous avez exécuté la commande précédente "Build Android Environment".
 6. Actualisez le nouveau projet IBMAppCenterAppCenterAndroid, afin que la suppression de la bibliothèque GCM soit prise en compte.
 7. Créez le fichier .apk d'Application Center.

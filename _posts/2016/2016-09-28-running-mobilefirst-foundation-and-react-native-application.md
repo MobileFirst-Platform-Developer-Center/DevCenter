@@ -11,6 +11,8 @@ author:
 additional_authors:
   - Carmel Schindelhaim
 ---
+> This blog post is obsolete. You can now use the MobileFirst SDK for React Native apps to connect your React Native with IBM MobileFirst Foundation. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/).
+
 
 ## Introduction
 Mobile native development can be challenging for many organizations. You need developers with special, and often 'expensive' skills. And it's likely harder to find developers with these skills, since according to [Github](http://githut.info/) and [stackOverflow](http://stackoverflow.com/research/developer-survey-2016#technology), JavaScript is by far the most popular programming language today.
@@ -27,7 +29,7 @@ So what's so great about React Native? The main advantage is that it allows you 
 
 If you use any of these JavaScript based frameworks, you'll still need some developers with native programming skills on your team. Like when you want to add a new native capability, or call a custom native API. But you can probably achieve a balance that is heavily skewed towards JavaScript - maybe 90% of your team.
 
-In this blog we'll walk through some key points about React Native development, and how to call [MobileFirst Foundation](https://mobilefirstplatform.ibmcloud.com/) native APIs in iOS or Android if you are using React Native.
+f you are an on-premise 8.0 customer or [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, read this post as in this blog we'll walk through some key points about React Native development, and how to call [MobileFirst Foundation](https://mobilefirstplatform.ibmcloud.com/) native APIs in iOS or Android if you are using React Native.
 
 ## Demo
 

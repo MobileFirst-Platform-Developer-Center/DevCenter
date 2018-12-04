@@ -5,11 +5,11 @@ breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
 downloads:
-  - name: Projekt PreemptiveLogin herunterladen
+  - name: Download PreemptiveLogin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80
-  - name: Projekt RememberMe herunterladen
+  - name: Download RememberMe project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeAndroid/tree/release80
-  - name: Maven-Projekt SecurityCheck herunterladen
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -27,8 +27,7 @@ die bevorrechtigte Anmeldung und Abmeldung sowie das bevorrechtigte Abrufen eine
 In diesem Beispiel erwartet `UserLogin`, dass die Schlüsselwerte (*key:values*) `username` und `password` aufgerufen werden. Optional wird auch ein boolescher Schlüssel `rememberMe` akzeptiert, der
 die Sicherheitsüberprüfung auffordert, sich diesen Benutzer für einen längeren Zeitraum zu merken, In der Beispielanwendung wird dieser boolesche Wert in Form eines Kontrollkästchens im Anmeldeformular erfasst. 
 
-Das Argument `credentials` ist ein `JSONObject`,
-das `username`, `password` und `rememberMe` enthält:
+Das Argument `credentials` ist ein `JSONObject`, das `username`, `password` und `rememberMe` enthält:
 
 ```java
 submitChallengeAnswer(credentials);
@@ -81,7 +80,9 @@ public void login(JSONObject credentials){
 >Die `WLAuthorizationManager`-API `login()` hat ihre eigenen
 Methoden `onSuccess` und `onFailure`. Die Methode `handleSuccess` oder `handleFailure` des
 betreffenden Abfrage-Handlers
-wird **ebenfalls** aufgerufen. ## Zugriffstoken anfordern
+wird **ebenfalls** aufgerufen. 
+
+## Zugriffstoken anfordern
 {: #obtaining-an-access-token }
 Da diese Sicherheitsüberprüfung die Funktion **RememberMe** (in Form des booleschen Schlüssels
 `rememberMe`) unterstützt, sollte sinnvollerweise überprüft werden,

@@ -211,13 +211,11 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
 
 * <a href="../starter-application-samples/">Starter Application sample application</a>
 
-### <a href="../ibm-containers/">IBM Containers</a>
-Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
+### <a href="../ibm-containers/mobilefirst-server-on-kubernetes-using-scripts/">Kubernetes Cluster on IBM Cloud</a>
+Deploy MobileFirst platform to cloud using Kubernetes on IBM Cloud.
 
-* <a href="../ibm-containers/">Overview</a>
-* <a href="../ibm-containers/evaluate/">Evaluate</a>
-* <a href="../ibm-containers/run/">Run</a>
-* <a href="../ibm-containers/sample-app/">Sample application</a>
+* <a href="../ibm-containers/mobilefirst-server-on-kubernetes-using-scripts/">Setting Up MobileFirst Server on IBM Cloud Kubernetes Cluster</a>
+
 
 ### <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview">Integrate with MobileFirst Quality Assurance</a>
 Add testing capabilities to your application.

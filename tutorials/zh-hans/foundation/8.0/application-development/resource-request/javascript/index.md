@@ -4,11 +4,11 @@ title: 来自 JavaScript（Cordova 或 Web）应用程序的资源请求
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 downloads:
-  - name: 下载 Web 项目
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
-  - name: 下载适配器 Maven 项目
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
@@ -39,7 +39,7 @@ var resourceRequest = new WLResourceRequest(
 ```
 
 * 对于 **JavaScript 适配器**，请使用 `/adapters/{AdapterName}/{procedureName}`
-* 对于 **Java 适配器**，请使用 `/adapters/{AdapterName}/{path}`。`path` 取决于您如何在 Java 代码中定义 `@Path` 注释。这也将包含您使用的任何 `@PathParam`。
+* 对于 **Java 适配器**，请使用 `/adapters/{AdapterName}/{path}`。 `path` 取决于您如何在 Java 代码中定义 `@Path` 注释。 这也将包含您使用的任何 `@PathParam`。
 * 要访问项目外面的资源，请根据外部服务器的需求使用完整 URL。
 * **超时**：可选，请求超时（毫秒）
 
@@ -68,7 +68,7 @@ resourceRequest.setQueryParameter("param2", "value2");
 
 #### JavaScript 适配器
 {: #javascript-adapters-setquery}
-JavaScript 适配器使用有序的无名参数。要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
+JavaScript 适配器使用有序的无名参数。 要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
 
 > **注：**`params` 值应该是数组的*字符串表示*。
 
@@ -88,7 +88,7 @@ resourceRequest.setHeader("Header-Name","value");
 
 ### sendFormParameters(json)
 {: #sendformparamtersjson }
-要发送 URL 编码的表单参数，请改用 `sendFormParameters(json)` 方法。此方法会将 JSON 转换为 URL 编码的字符串，请将 `content-type` 设置为 `application/x-www-form-urlencoded`，然后将其设置为 HTTP 主体：
+要发送 URL 编码的表单参数，请改用 `sendFormParameters(json)` 方法。 此方法会将 JSON 转换为 URL 编码的字符串，请将 `content-type` 设置为 `application/x-www-form-urlencoded`，然后将其设置为 HTTP 主体：
 
 ```js
 var formParams = {"param1": "value1", "param2": "value2"};
@@ -97,7 +97,7 @@ resourceRequest.sendFormParameters(formParams);
 
 #### JavaScript 适配器
 {: #javascript-adapters-sendform }
-JavaScript 适配器使用有序的无名参数。要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
+JavaScript 适配器使用有序的无名参数。 要将参数传递到 JavaScript 适配器，请设置名称为 `params` 的参数数组：
 
 ```js
 var formParams = {"params":"['value1', 'value2']"};
@@ -110,7 +110,7 @@ var formParams = {"params":"['value1', 'value2']"};
 
 ## 响应
 {: #the-response }
-`onSuccess` 和 `onFailure` 回调将收到 `response` 对象。`response` 对象包含响应数据，并且您可以使用其属性来检索必需信息。常用属性包括：`responseText`、`responseJSON`（JSON 对象，如果以 JSON 格式响应）和 `status`（响应的 HTTP 状态）。
+`onSuccess` 和 `onFailure` 回调将收到 `response` 对象。 `response` 对象包含响应数据，并且您可以使用其属性来检索必需信息。 常用属性包括：`responseText`、`responseJSON`（JSON 对象，如果以 JSON 格式响应）和 `status`（响应的 HTTP 状态）。
 
 在请求失败情况下，`response` 对象还包含 `errorMsg` 属性。  
 根据使用 Java 还是 JavaScript 适配器，响应可能包含其他属性，如 `responseHeaders`、`responseTime`、`statusCode`、`statusReason` 和 `totalTime`。

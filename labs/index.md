@@ -10,16 +10,16 @@ show_disqus: false
 
         <ul>
             <li>As a developer, experience first-hand the many possibilities available to you when using the {{ site.data.keys.product_full }} suite of products.</li>
-            <li>As an administrator, learn how to setup {{ site.data.keys.product }} on Linux, Windows and IBM Bluemix.</li>
+            <li>As an administrator, learn how to setup {{ site.data.keys.product }} on Linux, Windows and IBM Cloud.</li>
         </ul>
     </article>
-    
+
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#forDevelopers" aria-controls="developers" role="tab" data-toggle="tab">For Developers</a></li>
         <li role="presentation"><a href="#forAdministrators" aria-controls="administrators" role="tab" data-toggle="tab">For Administrators</a></li>
         <li role="presentation"><a href="#downloadAssets" aria-controls="assets" role="tab" data-toggle="tab">Assets</a></li>
     </ul>
-    
+
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="forDevelopers">
             <br/>
@@ -32,11 +32,11 @@ show_disqus: false
             <p>Administrators can follow the different labs presented below to learn how to setup different {{ site.data.keys.product_adj }} environments.</p>
             <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/administrators/7.1/intro/" role="button">7.1 labs</a>
         </div>
-        
+
         <div role="tabpanel" class="tab-pane" id="downloadAssets">
             <br/>
             <p>The following applications are used throughout the lab sessions for developers.</p>
-            
+
             <ul>
                 <li><strong><a href="https://github.com/andriivasylchenko/advancedMessenger">Advanced Messenger</a></strong><br/>
                 {{ site.data.keys.product }} 8.0 application. Based on Ionic framework.</li>

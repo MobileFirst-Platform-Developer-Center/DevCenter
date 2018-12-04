@@ -14,7 +14,7 @@ indexed: false
 <div id="container">
     <div class="row">
         <div id="categoryBoxes">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="search" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
                     <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="検索対象..." name="q">
                 </div>
@@ -58,26 +58,27 @@ indexed: false
 
 <div id="tutorials-list">
     <hr/>
-
-    <h2><a href="../product-overview/">製品の概要</a></h2>
-    {{ site.data.keys.product }} オファリングについて学びます。
+<!--
+    <h2><a href="../product-overview/">Product Overview</a></h2>
+    Learn about the {{ site.data.keys.product }} offering.
 
     <ul>
-        <li><a href="../product-overview/capabilities">主な機能</a></li>
-        <li><a href="../product-overview/components">製品のコンポーネント</a></li>
-        <li><a href="../product-overview/requirements">システム要件</a></li>
-        <li><a href="../product-overview/licensing">{{ site.data.keys.mf_server }} のライセンス</a></li>
-        <li><a href="../product-overview/features-matrix">機能とプラットフォームのマトリックス</a></li>
-        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }} のアクセシビリティー機能</a></li>
-        <li><a href="../product-overview/release-notes">リリース・ノート</a></li>
+        <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
+        <li><a href="../product-overview/components">Product Components</a></li>
+        <li><a href="../product-overview/requirements">System Requirements</a></li>
+        <li><a href="../product-overview/licensing">Licensing in {{ site.data.keys.mf_server }}</a></li>
+        <li><a href="../product-overview/features-matrix">Matrix of features and platforms</a></li>
+        <li><a href="../product-overview/accessibility">Accessibility features for {{ site.data.keys.product_full }}</a></li>
+        <li><a href="../product-overview/release-notes">Release Notes</a></li>
     </ul>
-
+-->
     <h2><a href="../installation-configuration">インストールおよび構成</a></h2>
     {{ site.data.keys.product_full }} で作業するための開発環境をセットアップします。
 
     <ul>
         <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 開発環境のセットアップ</a></li>
         <li><a href="../installation-configuration/development/cordova/">Cordova 開発環境のセットアップ</a></li>
+        <li><a href="../application-development/cordova-apps/developing-ui/">Cordova アプリケーションの UI 開発</a></li>
         <li><a href="../product-overview/components/console/">{{ site.data.keys.mf_console }} の使用</a></li>
     </ul>
 
@@ -245,23 +246,30 @@ indexed: false
         <li><a href="../analytics/workflows/">Analytics ワークフロー</a></li>
     </ul>
 
-    <h2><a href="../bluemix">Bluemix 上の Foundation</a></h2>
-    Bluemix を使用して、{{ site.data.keys.product }} をクラウドにデプロイします。
-
+    <h2><a href="../bluemix">IBM Cloud の概要</a></h2>
+    IBM Cloud を使用して、{{ site.data.keys.product }} をクラウドにデプロイします。
     <ul>
-        <li><a href="../bluemix/">Bluemix 上の {{ site.data.keys.product_full }} の概要</a></li>
-        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation Bluemix サービスを使用した {{ site.data.keys.mf_server }} インスタンスの作成</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">IBM Container サービスのスクリプトを使用した、IBM Containers 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+        <!--<li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on IBM Containers using Scripts on IBM Container Service</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">ログとトレースの収集</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">コンテナーの保護</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">トラブルシューティング</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </li>-->
+        <li><a href="../bluemix/">IBM Cloud 上の {{ site.data.keys.product_full }} の概要</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation IBM Cloud サービスを使用した {{ site.data.keys.mf_server }} インスタンスの作成</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-kubernetes/">IBM Cloud Kubernetes Cluster 上での MobileFirst Server のセットアップ</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">IBM Cloud Kubernetes Cluster 上での MobileFirst Appcenter のセットアップ</a>
+            </li>
             </ul>
         </li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Liberty for Java のスクリプトを使用した、Bluemix 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Liberty for Java のスクリプトを使用した、IBM Cloud 上の {{ site.data.keys.mf_server }} のセットアップ</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">コンテナーの保護</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">トラブルシューティング</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">コンテナーの保護</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">トラブルシューティング</a></li>
             </ul>
         </li>
     </ul>

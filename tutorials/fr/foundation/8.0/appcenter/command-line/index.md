@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Outil de ligne de commande permettant de télécharger ou de supprimer une application
-breadcrumb_title: Téléchargement ou suppression d'une application
+breadcrumb_title: Uploading or deleting an app
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
@@ -39,26 +39,26 @@ Utilisez l'outil autonome en suivant ces étapes.
 2. Appelez l'outil de téléchargement à partir de la ligne de commande :
 
    ```bash
-   java com.ibm.appcenter.Upload [options] [files]
+   java com.ibm.appcenter.Upload [options] [fichiers]
    ```
 
 Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
 
 | Option | Contenu indiqué par | Description |
 |--------|----------------------|-------------|
-| -s | serverpath | Chemin d'accès au serveur Application Center. |
-| -c | context | Contexte de l'application Web Application Center. |
-| -u | user | Données d'identification de l'utilisateur pour accéder à Application Center. |
-| -p | password | Mot de passe de l'utilisateur. |
-| -d | description | Description de l'application à télécharger. |
-| -l | label | Etiquette de réserve. Normalement, l'étiquette est extraite du descripteur d'application stocké dans le fichier à télécharger. Si le descripteur d'application ne contient pas d'étiquette, l'étiquette de réserve est utilisée. |
-| -isActive | true ou false | L'application est stockée dans Application Center en tant qu'application active ou inactive. |
-| -isInstaller | true ou false | L'application est stockée dans Application Center avec l'indicateur "installer" correctement défini. |
-| -isReadyForProduction | true ou false | L'application est stockée dans Application Center avec l'indicateur "ready-for-production" correctement défini. |
-| -isRecommended | true ou false | L'application est stockée dans Application Center avec l'indicateur "recommended" correctement défini. |
-| -e	  |  | Affiche la trace de la pile d'exception complète en cas d'échec. |
-| -f	  |  | Force le téléchargement des applications, même si elles existent déjà. |
-| -y	  |  | Désactive la vérification de la sécurité SSL, qui permet la publication sur des hôtes sécurisés sans vérification du certificat SSL. |  L'utilisation de cet indicateur est un risque de sécurité, mais peut être appropriée pour tester l'hôte local avec des certificats SSL auto-signés temporaires. |
+| -s | serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -d | description | The description of the application to be uploaded. |
+| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. |
+| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. |
+| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. |
+| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. |
+| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. |
+| -e	  |  | Shows the full exception stack trace on failure. |
+| -f	  |  | Force uploading of applications, even if they exist already. |
+| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 Le paramètre files peut spécifier des fichiers de type fichiers de modules d'application Android (.apk) ou fichiers d'application iOS (.ipa).  
 Dans cet exemple, le mot de passe de la démonstration de l'utilisateur est demopassword. Utilisez cette ligne de commande.
@@ -76,18 +76,18 @@ Utilisez l'outil autonome en suivant ces étapes.
 2. Appelez l'outil de téléchargement à partir de la ligne de commande :
 
    ```bash
-   java com.ibm.appcenter.Upload -delete [options] [files or applications]
+   java com.ibm.appcenter.Upload -delete [options] [fichiers ou applications]
    ```
 
 Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
 
 | Option | Contenu indiqué par	| Description |
 |--------|----------------------|-------------|
-| -s |serverpath | Chemin d'accès au serveur Application Center. |
-| -c | context | Contexte de l'application Web Application Center. |
-| -u | user | Données d'identification de l'utilisateur pour accéder à Application Center. |
-| -p | password | Mot de passe de l'utilisateur. |
-| -y | | Désactive la vérification de la sécurité SSL, qui permet la publication sur des hôtes sécurisés sans vérification du certificat SSL. L'utilisation de cet indicateur est un risque de sécurité, mais peut être appropriée pour tester l'hôte local avec des certificats SSL auto-signés temporaires. |
+| -s |serverpath | The path to the Application Center server. |
+| -c | context | The context of the Application Center web application. |
+| -u | user | The user credentials to access the Application Center. |
+| -p | password | The password of the user. |
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
 
 Vous pouvez spécifier des fichiers ou le module d'application, le système d'exploitation et la version. Si des fichiers sont spécifiés, le module, le système d'exploitation et la version sont déterminés à partir du fichier et l'application correspondante est supprimée d'Application Center. Si des applications sont spécifiées, elles doivent être à l'un des formats suivants :
 
@@ -122,11 +122,11 @@ Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
 
 | Option | Contenu indiqué par | Description |
 |--------|----------------------|-------------|
-| -s | serverpath | Chemin d'accès au serveur Application Center.|
-| -c | context | Contexte de l'application Web Application Center.|
-| -u | user | Données d'identification de l'utilisateur pour accéder à Application Center.|
-| -p | password | Mot de passe de l'utilisateur.|
-| -y | | Désactive la vérification de la sécurité SSL, qui permet la publication sur des hôtes sécurisés sans vérification du certificat SSL. L'utilisation de cet indicateur est un risque de sécurité, mais peut être appropriée pour tester l'hôte local avec des certificats SSL auto-signés temporaires.|
+| -s | serverpath | The path to the Application Center server.|
+| -c | context | The context of the Application Center web application.|
+| -u | user | The user credentials to access the Application Center.|
+| -p | password | The password of the user.|
+| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.|
 
 #### Exemple
 {: #example-cache }

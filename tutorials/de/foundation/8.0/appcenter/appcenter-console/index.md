@@ -2,7 +2,7 @@
 layout: tutorial
 title: Application-Center-Konsole
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -190,7 +190,7 @@ Windows-Entwicklerdokumentation zu Paketen und zur Anwendungsimplementierung im 
    ### Windows 10 Universal
    {: windows-10-universal}
    Die Anwendungsdateierweiterung ist **.appx**.
-   
+
 
 
 4. Klicken Sie auf **Weiter**, um auf die Eigenschaften zuzugreifen und die Anwendungsdefinition zu vervollständigen.
@@ -199,7 +199,7 @@ Windows-Entwicklerdokumentation zu Paketen und zur Anwendungsimplementierung im 
 6. Klicken Sie auf
 **Fertigstellen**.
 
-![Anwendungseigenschaften beim Hinzufügen einer Anwendung](ac_add_app_props.jpg)
+![Anwendungseigenschaften - Anwendung hinzufügen](ac_add_app_props.jpg)
 
 ## Anwendung aus einem öffentlichen App Store hinzufügen
 {: #adding-an-application-from-a-public-app-store }
@@ -215,7 +215,9 @@ an derselben Stelle wie eine im eigenen Unternehmen erstellte Anwendung hinzu
 
 > **Hinweis:** Zurzeit unterstützt das
 Application Center nur Google Play und Apple iTunes. Windows Phone Store und Windows Store
-werden noch nicht unterstützt.Anstelle der ausführbaren Datei
+werden noch nicht unterstützt.
+
+Anstelle der ausführbaren Datei
 der Anwendung müssen Sie eine URL für den Application Store des anderen Anbieters bereitstellen, in dem
 die Anwendung gespeichert ist. Damit Sie den richtigen Anwendungslink leichter finden, stellt die Konsole auf der Seite
 **Add an application** direkte Links zu den Websites unterstützter Application Stores von anderen Anbietern bereit.
@@ -253,7 +255,7 @@ Linkerstellung abbrechen.
 Anschließend können Sie die Anwendungsbeschreibung in den Anwendungseigenschaften modifizieren, bevor Sie
 mit dem nächsten Schritt fortfahren. 
 
-    ![In den Anwendungseigenschaften modifizierte Anwendungsbeschreibung](ac_add_public_app_details.jpg)
+    ![Modifizierte Anwendungsbeschreibung in den Anwendungseigenschaften](ac_add_public_app_details.jpg)
 
 4. Klicken Sie auf **Done**, um den Anwendungslink zu erstellen.
 
@@ -401,7 +403,9 @@ Gehen Sie wie folgt vor, um die Eigenschaften einer hochgeladenen Anwendung zu b
 3. Bearbeiten Sie die gewünschten editierbaren Eigenschaften. Ausführliche Informationen zu diesen Eigenschaften finden Sie im Artikel [Anwendungseigenschaften](#application-properties). Der Name der aktuellen Anwendungsdatei wird nach den Eigenschaften angezeigt.
 
     > **Wichtiger Hinweis:** Wenn Sie die Datei aktualisieren wollen, muss sie zum gleichen Paket gehören und die gleiche Versionsnummer haben. Stimmt eine
-dieser Eigenschaften nicht überein, müssen Sie zur Anwendungsliste zurückkehren und zuerst die neue Version hinzufügen.4. Klicken Sie auf **OK**, um Ihre Änderungen zu speichern
+dieser Eigenschaften nicht überein, müssen Sie zur Anwendungsliste zurückkehren und zuerst die neue Version hinzufügen.
+
+4. Klicken Sie auf **OK**, um Ihre Änderungen zu speichern
 und zu den verfügbaren Anwendungen zurückzukehren, oder auf **Apply**, um die Anwendungsdetails geöffnet zu lassen.
 
 ![Editierbare Anwendungseigenschaften](ac_edit_app_props.jpg)
@@ -410,6 +414,9 @@ und zu den verfügbaren Anwendungen zurückzukehren, oder auf **Apply**, um die 
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
 > Diese Funktion wird nur für Android, iOS und Windows Phone unterstützt und derzeit nicht für Windows 10 Universal, Blackberry oder Windows 8 Universal unterstützt.
+
+
+
 
 
 Für implementierte mobile Anwendungen können Sie ohne großen Aufwand ein Upgrade durchführen, indem Sie
@@ -436,8 +443,7 @@ durchführen. Gehen Sie wie folgt vor, um die neue Version der Anwendung zu impl
 1. Implementieren Sie HelloWorld 2.0 im Application Center (siehe [Mobile Anwendung hinzufügen](#adding-a-mobile-application)).
 2. Kopieren Sie auf der Seite "Anwendungsdetails" die Einstellung für die externe URL.
 
-    ![Kopieren der externen URL
-aus den Anwendungsdetails](ac_copy_ext_url.jpg)
+    ![Externe URL aus den Anwendungsdetails kopieren](ac_copy_ext_url.jpg)
 
 3. Wenn Sie die externe URL in die Zwischenablage kopiert haben, öffnen Sie die
 {{ site.data.keys.mf_console }}.
@@ -449,7 +455,7 @@ inaktiviert".
 zu {{ site.data.keys.mf_server }} herstellt und versucht,
 HelloWorld Version 1.0 auszuführen, wird der Gerätebenutzer aufgefordert, ein Upgrade auf die neue Anwendungsversion durchzuführen. 
 
-    ![Alte Version einer Anwendung über Fernzugriff inaktivieren](ac_remote_disable_app_cli.jpg)
+    ![Ferne Inaktivierung einer alten Version einer Anwendung](ac_remote_disable_app_cli.jpg)
 
 6. Klicken Sie auf **Upgrade**, um den Application-Center-Client zu öffnen. Bei richtiger Angabe der Anmeldedetails können Sie direkt auf die Seite "Details" von HelloWorld Version 2.0 zugreifen.
 
@@ -477,7 +483,7 @@ von Benutzern oder Testern mobiler Anwendungen zu einer Anwendungsversion anzuze
 
 1. Wählen Sie **Anwendungen** aus, um  die Liste der hochgeladenen Anwendungen unter **Verfügbare Anwendungen** zu sehen.
 2. Wählen Sie die Anwendungsversion aus.
-3. Wählen Sie im Menü **Reviews** aus.
+3. Wählen Sie im Menü **Rezensionen** aus.
 
     ![Rezensionen zu Anwendungsversionen](ac_appfeedbk.jpg)
 
@@ -510,7 +516,7 @@ registrierter Benutzer des Application Center mit folgenden Einträgen:
 * Lokale Gruppenmitglieder
 * Einträge in einer Zugriffssteuerungsliste
 
-![Liste der registrierten Benutzer im Application Center](ac_reg_users.jpg)
+![Liste der registrierten Benutzer des Application Center](ac_reg_users.jpg)
 
 Wenn das Application Center mit einem LDAP-Repository verbunden
 ist, können Sie die Anzeigenamen von Benutzern nicht bearbeiten. Wenn das Repository kein LDAP-Repository ist, können
@@ -586,7 +592,7 @@ Sie können die Zugriffssteuerung wie folgt bearbeiten:
 
 1. Klicken Sie im Anwendungsmanagement unter "Verfügbare Anwendungen" auf den Installationszustand "unrestricted" oder "restricted" für eine Anwendung.
 
-    ![Klickposition für uneingeschränkten oder eingeschränkten Modus](ac_app_access_state.jpg)
+    ![Klicken für den uneingeschränkten oder eingeschränkten Modus](ac_app_access_state.jpg)
 
 2. Wählen Sie **Access control enabled** aus, um die Zugriffssteuerung zu aktivieren.
 3. Fügen Sie Benutzer oder Gruppen zur Zugriffsliste hinzu.
@@ -607,7 +613,7 @@ Wenn Sie alle Benutzer einer Anwendung hinzufügen möchten, klicken Sie auf **A
 und wählen Sie die zutreffende Anwendung aus.  
 Wenn Sie das Zugriffsrecht für einen Benutzer oder eine Gruppe entfernen möchten, klicken Sie rechts neben dem Namen auf das Kreuz. 
 
-![Benutzer in Zugriffsliste hinzufügen oder entfernen](ac_instal_access.jpg)
+![Benutzer zur Zugriffsliste hinzufügen oder aus der Liste entfernen](ac_instal_access.jpg)
 
 ## Geräteverwaltung
 {: #device-management }
@@ -636,7 +642,9 @@ bearbeiten.
 > **Hinweis:** Unter iOS kann der Benutzer diesen Namen in den Geräteeinstellungen
 unter "Einstellungen" > "Allgemein" > "Informationen" > "Name" bearbeiten. Der Name wird
 in
-iTunes angezeigt.**User Name**  
+iTunes angezeigt.
+
+**User Name**  
 Name des ersten Benutzers, der sich bei dem Gerät angemeldet hat.
 
 **Manufacturer**  

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 实施安全直接更新
-breadcrumb_title: 安全直接更新
+breadcrumb_title: Secure Direct Update
 relevantTo: [cordova]
 weight: 2
 ---
@@ -10,11 +10,11 @@ weight: 2
 {: #overview }
 要使安全直接更新生效，必须在 {{ site.data.keys.mf_server }} 中部署用户定义的密钥库文件，并且部署的客户机应用程序中必须包含匹配公用密钥的副本。
 
-本主题描述如何将公用密钥绑定到新客户机应用程序和升级的现有客户机应用程序。有关在 {{ site.data.keys.mf_server }} 中配置密钥库的更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 密钥库](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
+本主题描述如何将公用密钥绑定到新客户机应用程序和升级的现有客户机应用程序。 有关在 {{ site.data.keys.mf_server }} 中配置密钥库的更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 密钥库](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
 
 服务器提供内置密钥库，可用于针对开发阶段测试安全直接更新。
 
-**注：**在将公用密钥绑定到客户机应用程序并重新构建后，无需重新将其上载到 {{ site.data.keys.mf_server }}。但是，如果预先将应用程序发布到市场，而无公用密钥，那么必须重新发布。
+**注：**在将公用密钥绑定到客户机应用程序并重新构建后，无需重新将其上载到 {{ site.data.keys.mf_server }}。 但是，如果预先将应用程序发布到市场，而无公用密钥，那么必须重新发布。
 
 针对开发目的，随 {{ site.data.keys.mf_server }} 一起提供以下缺省哑元公用密钥：
 
@@ -40,7 +40,7 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 
 ## 生成和部署密钥库
 {: #generating-and-deploying-the-keystore }
-可使用多种工具从密钥库生成证书和抽取公用密钥。以下示例演示使用 JDK 密钥工具实用程序和 openSSL 的过程。
+可使用多种工具从密钥库生成证书和抽取公用密钥。 以下示例演示使用 JDK 密钥工具实用程序和 openSSL 的过程。
 
 1. 从在 {{ site.data.keys.mf_server }} 中部署的密钥库文件抽取公用密钥。  
    注：公用密钥必须为 Base64 编码。

@@ -42,7 +42,7 @@ In diesem Lernprogramm werden wir uns mit der Installation des Plug-ins THyM und
 2. Suchen Sie nach "{{ site.data.keys.product_adj }}" und klicken Sie auf "Go". 
 3. Klicken Sie auf "Install". 
 
-	![MobileFirst-Studio-Installation](mff_install.png)
+	![Installation von {{ site.data.keys.mf_studio }}](mff_install.png)
 
 4. Schließen Sie den Installationsprozess ab. 
 5. Starten Sie Eclipse neu, damit die Installation wirksam wird. 
@@ -66,9 +66,7 @@ In diesem Lernprogramm werden wir uns mit der Installation des Plug-ins THyM und
 In diesem Abschnitt geht es um die Ertellung eines neuen Cordova-Projekts unter Verwendung von THyM.
 
 1. Klicken Sie in Eclipse auf **Datei → Neu → Andere...**
-2. Grenzen Sie die Optionen ein, indem Sie nach "Cordova" suchen.
-Wählen Sie unter **Mobile** den Eintrag **Hybrid Mobile (Cordova) Application Project** aus und klicken Sie auf
-**Weiter**. 
+2. Grenzen Sie die Optionen ein, indem Sie nach "Cordova" suchen. Wählen Sie unter **Mobile** den Eintrag **Hybrid Mobile (Cordova) Application Project** aus und klicken Sie auf **Next**.
 
 	![Assistent für neues Cordova-Projekt](New_cordova_wizard.png)
 
@@ -90,9 +88,8 @@ In diesem Abschnitt geht es um den Import eines vorhandenen Cordova-Projekts, da
 4. Vergewissern Sie sich, dass das Projekt im Abschnitt "Projekte:" markiert ist. Klicken Sie dann auf **Fertigstellen**.
 	![Import eines Cordova-Projekts](Import_cordova.png)
 
-Wenn Sie ein Projekt ohne Plattformen importieren, wird der folgende Fehler angezeigt.
-Im Abschnitt [Plattformen hinzufügen](#adding-platforms) erfahren Sie, wie dieser Fehler behoben wird.
-![Fehler durch fehlende Plattformen](no-platforms-error.png)
+Wenn Sie ein Projekt ohne Plattformen importieren, wird der folgende Fehler angezeigt. Im Abschnitt [Plattformen hinzufügen](#adding-platforms) erfahren Sie, wie dieser Fehler behoben wird.
+![Fehler wegen fehlender Plattformen](no-platforms-error.png)
 
 **Hinweis**: Wenn Sie nach einem Import zusätzliche Plattformen benötigen, lesen Sie die Informationen unter [Plattformen hinzufügen](#adding-platforms). 
 
@@ -118,15 +115,18 @@ und navigieren Sie zu **IBM MobileFirst Foundation**.
 
 Die folgenden Befehle stehen zur Auswahl: 
 
-| Menüoption         | Aktion                                                                                                                                       | Äquivalent auf der MobileFirst-Befehlszeilenschnittstelle |
+| Menüoption| Aktion| Äquivalent auf der MobileFirst-Befehlszeilenschnittstelle|
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Open Server Console | Wenn die Serverdefinition bereits vorhanden ist, wird die Konsole geöffnet, sodass Sie die Aktionen des angegebenen Servers sehen können.                                     | mfpdev server console                         |
-| Preview App         | Öffnet die App im Browservorschaumodus                                                                                                   | mfpdev app preview    |
-| Register App        | Registriert die App bei dem in Ihren Serverdefinitionen angegebenen Server                                                               | mfpdev app register                           |
-| Encrypt App         | Führt für Ihre App das Verschlüsselungstool für Webressourcen aus                                                                                           | mfpdev app webencrypt                         |
-| Pull App            | Ruft die vorhandene App-Konfiguration von dem in der Serverdefinition angegebenen Server ab                                         | mfpdev app pull                               |
-| Push App            | Sendet die Konfiguration Ihrer aktuellen App an den in der Builddefinition angegebenen Server, sodass Sie sie für eine andere App wiederverwenden können | mfpdev app push                               |
-| Update App         | Packt den Inhalt des Ordners "www" zu einer ZIP-Datei und ersetzt die Version auf dem Server durch das Paket                             | mfpdev app webupdate                          |
+| Open Server Console| Wenn die Serverdefinition bereits vorhanden ist, wird die Konsole geöffnet, sodass Sie die Aktionen des angegebenen Servers sehen können. | mfpdev server console
+|
+| Preview App| Öffnet die App im Browservorschaumodus | mfpdev app preview|
+| Register App| Registriert die App bei dem in Ihren Serverdefinitionen angegebenen Server | mfpdev app register                           |
+| Encrypt App| Führt für Ihre App das Verschlüsselungstool für Webressourcen aus| mfpdev app webencrypt|
+| Pull App| Ruft die vorhandene App-Konfiguration von dem in der Serverdefinition angegebenen Server ab| mfpdev app pull
+|
+| Push App| Sendet die Konfiguration Ihrer aktuellen App an den in der Builddefinition angegebenen Server, sodass Sie sie für eine andere App wiederverwenden können | mfpdev app push
+|
+| Update App| Packt den Inhalt des Ordners "www" zu einer ZIP-Datei und ersetzt die Version auf dem Server durch das Paket| mfpdev app webupdate                          |
 
 
 ## Tipps und Tricks
@@ -160,8 +160,7 @@ THyM nicht intuitiv ist. Es gibt daher die beiden folgenden zusätzlichen Mögli
 	1. Nun müssten Sie neben der Konsole in Eclipse eine neue Registerkarte sehen. 
 	1. Auf dieser Registerkarte können Sie Cordova-CLI-Befehle ausführen, um manuell Plattformen hinzuzufügen. 
 		*  Mit `cordova platform ls` können Sie die installierten und verfügbaren Plattformen auflisten. 
-		*  Mit `cordova platform add <Plattform>`
-wird die angegebene Plattform zum Projekt hinzugefügt. Hier steht *<Plattform>* für die gewünschte Plattform. 
+		*  Mit `cordova platform add <Plattform>` wird die angegebene Plattform zum Projekt hinzugefügt. Hier steht *<Plattform>* für die gewünschte Plattform. 
 		*  Informationen zu plattformspezifischen Cordova-Befehlen finden Sie
 in der Dokumentation <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova platform command</a>.
 

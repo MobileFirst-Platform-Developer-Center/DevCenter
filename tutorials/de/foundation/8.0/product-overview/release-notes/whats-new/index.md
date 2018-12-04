@@ -7,7 +7,9 @@ weight: 1
 <br/>
 In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen für eine zeitgemäße Entwicklung, Implementierung und Verwaltung Ihrer {{ site.data.keys.product_adj }}-Anwendungen.
 
-<div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
+
+
+<div class="panel-group accordion" id="release-notes" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
@@ -134,6 +136,9 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <h3>Aktualisierte REST-API für die Laufzeit</h3>
                 <p>Die REST-API für die {{ site.data.keys.product_adj }}-Laufzeit stellt jetzt diverse Services bereit, mit denen mobile und vertrauliche Clients Adapter aufrufen, Zugriffstoken anfordern, Inhalte der direkten Aktualisierung abrufen können und vieles mehr. Die meisten REST-API-Endpunkte werden mit OAuth geschützt. Auf einem Entwicklungsserver können Sie das Swagger-Dokument zur Laufzeit-API unter <code>http(s)://Server-IP-Adresse:Server-Port/Kontextstammverzeichnis/doc</code> anzeigen.</p>
+
+                <h3>Unterstützung für mehrfaches Certificate Pinning</h3>
+                <p>Ab iFix 8.0.0.0-IF201706240159 unterstützt die {{ site.data.keys.mf_bm_short }} das Certificate Pinning für mehrere Zertifikate, um Benutzern den sicheren Zugriff auf mehrere Hosts zu ermöglichen. Bis zu diesem iFix hat die {{ site.data.keys.mf_bm_short }} das Certificate Pinning nur für ein Zertifikat unterstützt. In der {{ site.data.keys.mf_bm_short }} gibt es eine neue API, die dem Benutzer das Herstellen von Verbindungen zu mehreren Hosts ermöglicht, indem er die öffentlichen Schlüssel von mehreren X509-Zertifikaten (die er bei einer Zertifizierungsstelle gekauft hat) in der Clientanwendung verankert. Eine Kopie aller Zertifikate sollten Sie in Ihre Clientanwendung aufnehmen. Beim SSL-Handshake überprüft das Client-SDK der {{ site.data.keys.product_full }}, ob der öffentliche Schlüssel des Serverzertifikats mit dem öffentlichen Schlüssel eines der in der App gespeicherten Zertifikate übereinstimmt. </p>
             </div>
         </div>
     </div>
@@ -250,7 +255,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
             </h4>
         </div>
 
-        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
+        <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
                 <p>In die {{ site.data.keys.product }} wurden neue Leistungsmerkmale integriert, die Sie bei der Implementierung und Verwaltung Ihrer Apps unterstützen sollen. Sie können Ihre Apps und Adapter jetzt aktualisieren, ohne {{ site.data.keys.mf_server }} neu zu starten.</p>
 
@@ -270,11 +275,11 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
                 <p>Zu den Entwicklungsartefakten, die Sie auf den Server hochladen, gehören Adapter und ihre Konfiguration, Sicherheitskonfigurationen für Ihre Apps, Zertifikate für Push-Benachrichtigungen und Protokollfilter.</p>
 
-                <h3>In IBM Bluemix erstellte Anwendungen in der {{ site.data.keys.product }} ausführen</h3>
-                <p>Entwickler können IBM Bluemix-Anwendungen für die Ausführung in der {{ site.data.keys.product }} umstellen. Dafür muss Ihre Clientanwendung geändert und an die APIs der {{ site.data.keys.product }} angeglichen werden.</p>
+                <h3>In IBM Cloud erstellte Anwendungen in der {{ site.data.keys.product }} ausführen</h3>
+                <p>Entwickler können IBM Cloud-Anwendungen für die Ausführung in der {{ site.data.keys.product }} umstellen. Dafür muss Ihre Clientanwendung geändert und an die APIs der {{ site.data.keys.product }} angeglichen werden.</p>
 
-                <h3>{{ site.data.keys.product }} als Service in IBM Bluemix</h3>
-                <p>Sie können jetzt den Service {{ site.data.keys.mf_bm_full }}  in IBM Bluemix verwenden, um Ihre mobilen Unternehmens-Apps zu erstellen und auszuführen.</p>
+                <h3>{{ site.data.keys.product }} als Service in IBM Cloud</h3>
+                <p>Sie können jetzt den Service {{ site.data.keys.mf_bm_full }}  in IBM Cloud verwenden, um Ihre mobilen Unternehmens-Apps zu erstellen und auszuführen.</p>
 
                 <h3>Keine .wlapp-Dateien</h3>
                 <p>In den Vorgängerversionen wurden Anwendungen implementiert, indem eine <b>.wlapp</b>-Datei auf den {{ site.data.keys.mf_server }} hochgeladen wurde. Die Datei enthielt beschreibende Daten für die Anwendung und im Falle von Hybridanwendungen auch die erforderlichen Webressourcen. In Version 8.0.0 verwenden Sie keine <b>.wlapp</b>-Datei. Stattdessen gehen Sie wie folgt vor:</p>
@@ -309,7 +314,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
                 <p>JAX-RS 2.0 stellt neue serverseitige Funktionen bereit, zu denen asynchrones serverseitiges HTTP, Filter und Abfangprozesse gehören. Adapter können diese Features jetzt nutzen.</p>
 
                 <h3>{{ site.data.keys.product }} für IBM Container</h3>
-                <p>Die mit Version 8.0 freigegebene {{ site.data.keys.product }} für IBM Container ist auf der Website <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage</a> verfügbar. Diese Version der {{ site.data.keys.product }} für IBM Container ist bereit für den Produktionseinsatz und unterstützt den dashDB™-Plan "Enterprise Transactional" von IBM Bluemix.</p>
+                <p>Die mit Version 8.0 freigegebene {{ site.data.keys.product }} für IBM Container ist auf der Website <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage</a> verfügbar. Diese Version der {{ site.data.keys.product }} für IBM Container ist bereit für den Produktionseinsatz und unterstützt den dashDB™-Plan "Enterprise Transactional" von IBM Cloud.</p>
 
                 <p><b>Hinweis:</b> Informieren Sie sich über die Voraussetzungen für die Implementierung der {{ site.data.keys.product }} in IBM Containern.</p>
 
@@ -470,7 +475,7 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>Das {{ site.data.keys.mf_app_center }} wird jetzt über BYOL-Scripts in Bluemix (auf der Basis von Containern) unterstützt. </p>
+                <p>Das {{ site.data.keys.mf_app_center }} wird jetzt über BYOL-Scripts in IBM Cloud(auf der Basis von Containern) unterstützt. </p>
             </div>
         </div>
     </div>

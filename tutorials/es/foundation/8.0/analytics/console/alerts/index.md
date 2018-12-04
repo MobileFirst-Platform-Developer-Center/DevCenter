@@ -1,61 +1,61 @@
 ---
 layout: tutorial
-title: Managing Alerts
+title: Gestión de alertas
 breadcrumb_title: Alerts
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
 
-Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console_full }} regularly.  
-You can set reactive thresholds in the {{ site.data.keys.mf_analytics_console }} to trigger alerts when a specific criteria is met.
+Las alertas proporcionan unos medios proactivos para supervisar la salida de las aplicaciones móviles sin tener que comprobar {{ site.data.keys.mf_analytics_console_full }} de forma periódica.  
+Establezca umbrales reactivos en {{ site.data.keys.mf_analytics_console }} para desencadenar alertas cuando se satisfaga un criterio dado.
 
-You can set thresholds at a broad level (a specific app) or at a granular level (a specific app instance or device). Alert notifications can be configured to display in the {{ site.data.keys.mf_analytics_console_short }}, and also be sent to a pre-configured REST endpoint or custom webhook.
+Establezca umbrales en un nivel amplio (en una aplicación específica) o en un nivel granular (en un dispositivo o en una instancia de aplicación específica). Las configuraciones de alerta se pueden configurar para visualizar información en {{ site.data.keys.mf_analytics_console_short }} y también para enviarla a un enganche o a un punto final REST configurado de forma previa.
 
-Once alerts are triggered, the **Alert** icon (in the title bar of the {{ site.data.keys.mf_analytics_console_short }}) displays the alert count in red (<img  alt="alert icon" style="margin:0;display:inline" src="alertIcon.png"/>). Click the **Alert** icon to view the alerts.
+Una vez que se desencadenan las alertas, el icono de **Alerta** (en la barra del título de {{ site.data.keys.mf_analytics_console_short }}) visualiza el recuento de alertas en rojo (<img  alt="icono de alerta" style="margin:0;display:inline" src="alertIcon.png"/>). Pulse el icono **Alerta** para ver las alertas.
 
-Alternate methods are available for distributing the alerts.
+Hay métodos alternativos disponibles para distribuir las alertas.
 
-**Prerequisite:** Ensure that the {{ site.data.keys.mf_analytics_server }} is started and ready to receive client logs.
+**Requisito previo:** Asegúrese de que {{ site.data.keys.mf_analytics_server }} se ha iniciado y está preparado para recibir registros de cliente.
 
-## Alert management
+## Gestión de alertas
 {: #alert-management }
 
-### Creating an alert
+### Creación de una alerta
 {: #creating-an-alert }
 
-In the {{ site.data.keys.mf_analytics_console }}:
+En {{ site.data.keys.mf_analytics_console }}:
 
-1. Select the **Dashboard→Alert Management** tab. Click the **Create Alert** button.
+1. Seleccione el separador **Panel de control→Gestión de alertas**. Pulse el botón **Crear Alerta**.
 
-   ![Alert Management Tab](alert_management_tab.png)
+   ![Separador Gestión de alertas](alert_management_tab.png)
 
-2. Provide the following values: Alert Name, Message, Query Frequency, and Event Type. Depending on the Event Type, populate the additional text boxes that appear with the appropriate values.
-3. Once all values are entered, click **Next**. The **Distribution Method** tab appears.
+2. Proporcione los valores siguientes: Nombre de alerta, Mensaje, Frecuencia de consulta y Tipo de suceso. Dependiendo del tipo de suceso, cumplimente los recuadros de texto adicionales que aparezcan con los valores apropiados.
+3. Una vez se haya especificado todos los valores, pulse **Siguiente**. Aparece el separador **Método de distribución**.
 
-### Distribution Method tab
+### Separador Método de distribución
 {: #distribution-method-tab }
 
-By default, the alert is displayed in the {{ site.data.keys.mf_analytics_console_short }}.
+De forma predeterminada, la alerta se visualiza en {{ site.data.keys.mf_analytics_console_short }}.
 
-You can also send a POST message with a JSON payload to both the {{ site.data.keys.mf_analytics_console_short }} and to a customized URL by selecting the **Analytics Console and Network Post** option.
+También puede enviar un mensaje POST con una carga útil JSON tanto a {{ site.data.keys.mf_analytics_console_short }} como a un URL personalizado seleccionando la opción **Analytics Console y Publicación de red**.
 
-The following fields are available if you choose this option:
+Los campos siguientes están disponibles si elige esta opción:
 
-* Network POST URL (*required*)
-* Headers (*optional*)
-* Authentication Type (*required*)
+* URL de publicación de red (*necesario*)
+* Cabeceras (*opcional*)
+* Tipo de autenticación (*necesario*)
 
-<img class="gifplayer"  alt="Creating an alert" src="creating-an-alert.png"/>
+<img class="gifplayer"  alt="Creación de una alerta" src="creating-an-alert.png"/>
 
-## Custom web hook
+## Enganche web personalizado
 {: #custom-web-hook }
 
-You can set up a custom distribution method for an alert. For example: define a web hook to which a payload is sent to when an alert threshold is triggered.
+Puede configurar un método de distribución personalizado para una alerta. Por ejemplo: definir un enganche web al que se envía a una carga útil cuando se desencadena una alerta cuando se supera el umbral.
 
-Example payload:
+Ejemplo de carga útil:
 
 ```json
 {
@@ -76,24 +76,24 @@ Example payload:
 }
 ```
 
-The POST request includes the following attributes:
+El mensaje POST incluye los siguientes atributos:
 
-* **timestamp** - the time at which the alert notification was created.
-* **condition** - the threshold that was set by the user (for example, greater than or equals 5).
-* **eventType** - the eventType that was queried.
-* **property** - the property of the eventType that was queried.
-* **value** - the value of the property that was queried.
-* **offenders** - a list of apps or devices that triggered the alert.
-* **title** - the user-defined title.
-* **message** - the user-defined message.
+* **timestamp** - tiempo en el que se creó la notificación de alerta.
+* **condition** - umbral que el usuario estableció (por ejemplo, mayor que o igual a 5).
+* **eventType** - eventType que se consultó.
+* **property** - propiedad del eventType que se consultó.
+* **value** - valor de la propiedad que se consultó.
+* **offenders** - lista de aplicaciones o dispositivos que desencadenaron la alerta.
+* **title** - título definido por el usuario.
+* **message** - mensaje definido por el usuario.
 
-## Viewing alert details
+## Visualización de detalles de alerta
 {: #viewing-alert-details }
 
-Alert details can be viewed from the **Dashboard→Alert Log** tab in the {{ site.data.keys.mf_analytics_console }}.
+Los detalles de la alerta se pueden visualizar desde el separador **Panel de control→Registro de alertas** en {{ site.data.keys.mf_analytics_console }}.
 
-![A new alert log](alert-log.png)
+![Un nuevo registro de alerta](alert-log.png)
 
-Click the **+** icon for any of the available incoming alerts. This action displays the **Alert Definition** and **Alert Instances** sections. The following image shows the Alert Definition and Alert Instances sections:
+Pulse el icono **+** para cualquiera de las alertas entrantes. Esta acción muestra las secciones **Definición de alerta** e **Instancias de alerta**. La imagen siguiente muestra las secciones Definición de alertas e Instancias de alertas:
 
-![Alert definitiosns and instances](alert-definitions-and-instances.png)
+![Instancias y definiciones de alerta](alert-definitions-and-instances.png)

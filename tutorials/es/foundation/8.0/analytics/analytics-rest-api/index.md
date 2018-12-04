@@ -1,60 +1,60 @@
 ---
 layout: tutorial
-title: Using Analytics REST API
+title: Utilización de la API REST de analíticas
 breadcrumb_title: Analytics REST API
 relevantTo: [ios,android,cordova]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} provides REST APIs to help developers with importing (POST) and exporting (GET) analytics data.
+{{ site.data.keys.mf_analytics_full }} proporciona determinadas API REST para ayudar a los desarrolladores con la importación (POST) y exportación (GET) de los datos de las analíticas.
 
-## Jump to:
+## Ir a:
 {: #jump-to }
 
-* [Analytics REST API](#analytics-rest-api)
-* [Try It Out on Swagger Docs](#try-it-out-on-swagger-docs)
+* [API REST de analíticas](#analytics-rest-api)
+* [Pruébelo en Swagger Docs](#try-it-out-on-swagger-docs)
 
-## Analytics REST API
+## API REST de analíticas
 {: #analytics-rest-api }
 
-To use the analytics REST API:
+Para utilizar las API REST de analíticas:
 
-**Base URL**
+**URL base**
 
 `/analytics-service/rest`
 
-**Example**
+**Ejemplo**
 
 `https://example.com:9080/analytics-service/v3/applogs`
 
 
-REST API Method | Endpoint | Description
+Método API REST |Punto final |Descripción
 --- | --- | ---
-Application Logs (POST) | /v3/applogs | Creates a new application log.
-Application Session (POST) | /v3/appsession | Creates an application session or updates an existing one when reporting with the same appSessionID.
-Bulk (POST) | /v3/bulk | Reports events in bulk.
-Custom Chart (GET)| /v3/customchart | Exports all custom chart definitions.
-Custom Chart (POST) | /v3/customchart/import | Imports a list of custom charts.
-Custom Data (POST) | /v3/customdata | Creates new custom data.
-Device (POST) | /v3/device | Creates or updates a device.
-Export Data (GET) | /v3/export | Exports data to the specified data format.
-Network Transaction (POST) | /v3/networktransaction |  Creates a new network transaction.
-Server Log (POST) | /v3/serverlog | Creates a new server log.
-User (POST) | /v3/user | Creates a new user.
+Registros de aplicación (POST) |/v3/applogs |Crea un nuevo registro de aplicación.
+Sesión de aplicación (POST) |/v3/appsession |Crea una sesión de aplicación o actualiza una existente al informar con el mismo appSessionID.
+Genérico (POST) |/v3/bulk |Sucesos de informes genéricos.
+Gráfico personalizado (GET)|/v3/customchart |Exporta todas las definiciones de gráfico personalizado.
+Gráfico personalizado (POST) |/v3/customchart/import |Importa una lista de gráficos personalizados.
+Datos personalizados (POST) |/v3/customdata |Crea nuevos datos personalizados.
+Dispositivo (POST) |/v3/device |Crea o actualiza un dispositivo.
+Exportar datos (GET) |/v3/export |Exporta datos en el formato de datos especificado.
+Transacción de red (POST) |/v3/networktransaction |Crea un nueva transacción de red.
+Registro de servidor (POST) |/v3/serverlog |Crea un nuevo registro de servidor.
+Usuario (POST) |/v3/user |Crea un nuevo usuario.
 
-## Try it out on Swagger docs
+## Pruébelo en Swagger Docs
 {: #try-it-out-on-swagger-docs }
 
-Try out the analytics REST API on Swagger Docs.  
-In a {{ site.data.keys.mf_server }} configuration with Analytics enabled, visit: `<ipaddress>:<port>/analytics-service`.
+Pruebe las API REST de analíticas en Swagger Docs.  
+En una configuración de {{ site.data.keys.mf_server }} donde se haya habilitado las analíticas, visite `<ipaddress>:<port>/analytics-service`.
 
-![{{ site.data.keys.mf_analytics }} Swagger Docs UI](analytics-swagger.png)
+![Interfaz de usuario de {{ site.data.keys.mf_analytics }} Swagger Docs](analytics-swagger.png)
 
-By clicking on **Expand Operations**, you can see the implementation notes, parameters, and response messages for each method.
+Pulsando en **Ampliar operaciones**, podrá ver notas de implementación, parámetros y mensajes de respuesta para cada método.
 
-> Warning: Any data that you send by using **Try it out!** might interfere with data already in the data store. If you are not specifically trying to send data to your production environment, use a test name for the `x-mfp-analytics-api-key`.
+> Aviso: Todos los datos que envíe mediante **Try it out!** podrían interferir con datos que ya estén en el almacén de datos. Si no está probando de forma específica enviar datos a su entorno de producción, utilice un nombre de prueba para la `x-mfp-analytics-api-key`.
 
-![Test Swagger Docs](test-swagger.png)
+![Probar Swagger Docs](test-swagger.png)

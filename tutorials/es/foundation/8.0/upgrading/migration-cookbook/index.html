@@ -87,7 +87,7 @@ weight: 1
         <p>Before migration can begin, you need a running {{ site.data.keys.mf_server }} instance and the Migration assistance tool.</p>
 
         <h3>{{ site.data.keys.mf_server }}</h3>
-        <p>You can set up a {{ site.data.keys.mf_server }} on <a href="https://bluemix.net">IBM Bluemix</a> by using the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile Foundation Bluemix service</a>. Alternatively, you can use the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> to set up a server that runs locally.</p>
+        <p>You can set up a {{ site.data.keys.mf_server }} on <a href="https://bluemix.net">IBM Cloud</a> by using the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile Foundation IBM Cloud service</a>. Alternatively, you can use the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> to set up a server that runs locally.</p>
 
         <h3>Migration Assistance tool</h3>
         <p>After the {{ site.data.keys.mf_server }} is up and running, and because you will use the Migration Assistance tool later on, first install the tool.</p>
@@ -118,7 +118,7 @@ weight: 1
 
         <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova application development</a>.</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
                     <h4 class="panel-title">
@@ -169,15 +169,15 @@ weight: 1
                         <h4>Step 3</h4>
                         <p>With the application's source code now in the Cordova app, you must now add or edit a few code blocks.</p>
 
-                        <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="setupCordova" role="tablist">
                         <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="setupCordova">
+                            <div class="panel-heading" role="tab" id="setupCordova-inner">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#setupCordova" data-target="#collapseCordova" aria-expanded="false" aria-controls="collapseCordova">Click for instructions</a>
                                 </h4>
                             </div>
 
-                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova-inner">
                                 <div class="panel-body">
                                     <ol>
                                         <li>Update the <b>www/index.html</b> file.
@@ -304,11 +304,11 @@ if (document.addEventListener) {
 
         <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Web application development</a>.</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-web" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-web-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">Migrating Mobile Web/Desktop Browser applications</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-web" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">Migrating Mobile Web/Desktop Browser applications</a>
                     </h4>
                 </div>
 
@@ -367,11 +367,11 @@ if (document.addEventListener) {
 
         <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">Native application development</a>.</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-native" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-native-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">Updating the SDKs in native applications</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-native" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">Updating the SDKs in native applications</a>
                     </h4>
                 </div>
 
@@ -413,7 +413,7 @@ if (document.addEventListener) {
                         </ul>
 
                         <br/>
-                        <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion1" role="tablist">
                            <div class="panel panel-default">
                               <div class="panel-heading" role="tab" id="removeiOSSDK">
                                  <h4 class="panel-title">
@@ -526,7 +526,7 @@ end{% endhighlight %}
                         <br/>
 
                         <b>Android</b><br/>
-                        <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion2" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeAndroidSDK">
                                     <h4 class="panel-title">
@@ -603,7 +603,7 @@ transitive: true{% endhighlight %}</li>
                         <br/>
 
                         <b>Windows</b><br/>
-                        <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion3" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeWindowsSDK">
                                     <h4 class="panel-title">
@@ -697,11 +697,11 @@ transitive: true{% endhighlight %}</li>
         <br/>
         <p>The steps to migrate your adapters into Maven projects include: creating a matching new Maven project and copying into it the existing adapter's source code (with some modifications). This is then followed by building the Maven project to find any errors.</p>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration-maven" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="prereqs">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Prerequisites for setting up Apache Maven</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Prerequisites for setting up Apache Maven</a>
                     </h4>
                 </div>
 
@@ -740,7 +740,7 @@ export MVN_PATH="/usr/local/bin"
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="create-adapter">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">Creating a new Maven project</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">Creating a new Maven project</a>
                     </h4>
                 </div>
 
@@ -761,6 +761,57 @@ export MVN_PATH="/usr/local/bin"
                     </div>
                 </div>
             </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="migrationassistant">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseMigrationassistant" aria-expanded="false" aria-controls="collapseMigrationassistant">Using Migration Assistance tool</a>
+                        </h4>
+                    </div>
+                    <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
+                        <div class="panel-body">
+                            <ol>
+                              <li>Run the migration Assistance tool with <i>server</i> option and specify the <i>root</i> directory of your older worklight project.
+                                <br/>
+                                <code>
+                                mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
+                                </code>
+                                <br/><br/>
+                                <blockquote>
+                                <h4>SYNTAX</h4>
+                                <pre><span id='code-span'>mfpmigrate server [--in|-i &lt;sourceDirectory&gt;] [--out|-o &lt;destinationDirectory&gt;] [--projectName|-p &lt;newProjectDirectory&gt;]</span></pre>
+                                <br/>
+                                <h4>DESCRIPTION</h4>
+                                <p>Performs the migration of security realms and adapters from an existing MobileFirst project.</p>
+                                <br/>
+                                <h4>OPTIONS</h4>
+                                <p><b><i>&lt;sourceDirectory&gt;</i></b>: The <i>&lt;sourceDirectory&gt;</i> must be the <i>root</i> folder within your MobileFirst project that you want to migrate. This is required and not an optional parameter.</p>
+
+                                <p><b><i>&lt;destinationDirectory&gt;</i></b>: The <i>&lt;destinationDirectory&gt;</i> is the directory where you expect the adapters to be migrated to.</p>
+                              </blockquote>
+                                <p>Migration tool scans through the Adapters and realms and:</p>
+                                <ol><li>Creates a template for the Adapters and supported security checks.</li>
+                                    <li>Moves the Adapter sources into the newly created maven artifact.</li>
+                                    <li>Updates project <i>pom</i> with the dependencies.</li>
+                                    <li>Creates a summary report of what is done using this tool and what other changes are to be done manually to complete the migration.</li>
+                                </ol>
+                              </li>
+
+                              <li>
+                                <p>Use Summary report to:</p>
+                                <ol>
+                                  <li>Understand what has been through the migration assistance tool.</li>
+                                  <li>Map unsupported to Supported APIs where straight forward migration is possible.</li>
+                                  <li>Identify unsupported adapters/realms used in your legacy worklight project.</li>
+                                  <li>Understand what are the other technical challenges or bottlenecks with your existing design and refer to the new development concepts below to see how they can be addressed.</li>
+                                </ol>
+                              </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
 
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-js-adapter">
@@ -968,7 +1019,7 @@ export MVN_PATH="/usr/local/bin"
 
         <blockquote>Learn how to migrate security in the tutorial on <a href="../migrating-security/" target="_blank"> Migrating Authentication and Security</a>. To learn more about the security framework and authorization concepts see <a href="../../authentication-and-security/" target="_blank">the Authentication and security tutorials</a>. </blockquote>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="security-framework">
                     <h4 class="panel-title">

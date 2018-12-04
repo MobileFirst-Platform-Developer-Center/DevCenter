@@ -41,7 +41,7 @@ weight: 1
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
-                        <h3 class="migratingApplications no-anchor">アプリケーションの<br/>マイグレーション</h3>
+                        <h3 class="migratingApplications no-anchor"><br/>アプリケーションのマイグレーション</h3>
 
                         <ul class="topics">
                             <li><a href="#applications">クラシック・ハイブリッド/MFPF<br/>Cordova アプリケーションの標準 Cordova<br/>アプリケーションへのマイグレーション</a></li>
@@ -52,7 +52,7 @@ weight: 1
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
-                        <h3 class="migratingAdapters no-anchor">アダプターの<br/>マイグレーション</h3>
+                        <h3 class="migratingAdapters no-anchor">マイグレーション<br/>アダプター</h3>
 
                         <ul class="topics">
                             <li><a href="#migrating-adapters">Apache Maven のセットアップ<br/>の前提条件</a></li>
@@ -87,7 +87,7 @@ weight: 1
         <p>マイグレーションを開始するためには、稼働している {{ site.data.keys.mf_server }} インスタンスと、マイグレーション・アシスト・ツールが必要です。</p>
 
         <h3>{{ site.data.keys.mf_server }}</h3>
-        <p><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile Foundation Bluemix サービス</a>を使用すると、<a href="https://bluemix.net">IBM Bluemix</a> 上に {{ site.data.keys.mf_server }} をセットアップできます。または、 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> を使用して、ローカルに稼働するサーバーをセットアップできます。</p>
+        <p><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile Foundation IBM Cloud サービス</a>を使用すると、<a href="https://bluemix.net">IBM Cloud</a> 上に {{ site.data.keys.mf_server }} をセットアップできます。または、 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> を使用して、ローカルに稼働するサーバーをセットアップできます。</p>
 
         <h3>マイグレーション・アシスト・ツール</h3>
         <p>{{ site.data.keys.mf_server }} が稼働したら、まず最初に、後で使用することになるマイグレーション・アシスト・ツールをインストールします。</p>
@@ -118,7 +118,7 @@ weight: 1
 
         <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova アプリケーション開発</a>についてもっとよく知る。</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
                     <h4 class="panel-title">
@@ -169,15 +169,15 @@ weight: 1
                         <h4>ステップ 3</h4>
                         <p>Cordova アプリケーションにアプリケーションのソース・コードが含まれています。次に、いくつかのコード・ブロックを追加または編集する必要があります。</p>
 
-                        <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="setupCordova" role="tablist">
                         <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="setupCordova">
+                            <div class="panel-heading" role="tab" id="setupCordova-inner">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#setupCordova" data-target="#collapseCordova" aria-expanded="false" aria-controls="collapseCordova">クリックして手順を表示</a>
                                 </h4>
                             </div>
 
-                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova-inner">
                                 <div class="panel-body">
                                     <ol>
                                         <li><b>www/index.html</b> ファイルを更新します。
@@ -304,11 +304,11 @@ if (document.addEventListener) {
 
         <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Web アプリケーション開発</a>についてもっとよく知る。</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-web" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-web-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">モバイル Web/デスクトップ・ブラウザー・アプリケーションのマイグレーション</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-web" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">モバイル Web/デスクトップ・ブラウザー・アプリケーションのマイグレーション</a>
                     </h4>
                 </div>
 
@@ -316,7 +316,7 @@ if (document.addEventListener) {
                     <div class="panel-body">
                         <h4>ステップ 1</h4>
                         <p>マイグレーション・アシスト・ツールを使用して API レポートを生成します。<br/>
-コマンド・ライン・ウィンドウを開き、次のような方法でマイグレーション・アシスト・ツールを使用します。<br/>
+                        コマンド・ライン・ウィンドウを開き、次のような方法でマイグレーション・アシスト・ツールを使用します。<br/>
                         これは、インターネットの接続状況によって、完了までに時間がかかることがあります。</p>
 
 {% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory{% endhighlight %}
@@ -367,11 +367,11 @@ if (document.addEventListener) {
 
         <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">ネイティブ・アプリケーション開発</a>についてもっとよく知る。</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-native" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-native-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">ネイティブ・アプリケーションの SDK の更新</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-native" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">ネイティブ・アプリケーションの SDK の更新</a>
                     </h4>
                 </div>
 
@@ -413,7 +413,7 @@ if (document.addEventListener) {
                         </ul>
 
                         <br/>
-                        <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion1" role="tablist">
                            <div class="panel panel-default">
                               <div class="panel-heading" role="tab" id="removeiOSSDK">
                                  <h4 class="panel-title">
@@ -526,7 +526,7 @@ end{% endhighlight %}
                         <br/>
 
                         <b>Android</b><br/>
-                        <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion2" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeAndroidSDK">
                                     <h4 class="panel-title">
@@ -603,7 +603,7 @@ transitive: true{% endhighlight %}</li>
                         <br/>
 
                         <b>Windows</b><br/>
-                        <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion3" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeWindowsSDK">
                                     <h4 class="panel-title">
@@ -697,11 +697,11 @@ transitive: true{% endhighlight %}</li>
         <br/>
         <p>アダプターを Maven プロジェクトにマイグレーションする場合は、適合する新規 Maven プロジェクトを作成する、作成した Maven プロジェクトに既存のアダプターのソース・コードをコピーする  (一部変更を加える)、といった手順を踏みます。その後、Maven プロジェクトをビルドして、エラーがないか探します。</p>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration-maven" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="prereqs">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Apache Maven のセットアップの前提条件</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Apache Maven のセットアップの前提条件</a>
                     </h4>
                 </div>
 
@@ -740,7 +740,7 @@ export MVN_PATH="/usr/local/bin"
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="create-adapter">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">新規 Maven プロジェクトの作成</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">新規 Maven プロジェクトの作成</a>
                     </h4>
                 </div>
 
@@ -761,6 +761,57 @@ export MVN_PATH="/usr/local/bin"
                     </div>
                 </div>
             </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="migrationassistant">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseMigrationassistant" aria-expanded="false" aria-controls="collapseMigrationassistant">マイグレーション・アシスト・ツールの使用</a>
+                        </h4>
+                    </div>
+                    <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
+                        <div class="panel-body">
+                            <ol>
+                              <li>マイグレーション・アシスト・ツールを、<i>server</i> オプションを指定し、より古い worklight プロジェクトの <i>root</i> ディレクトリーを指定して実行します。
+                                <br/>
+                                <code>
+                                mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
+                                </code>
+                                <br/><br/>
+                                <blockquote>
+                                <h4>構文</h4>
+                                <pre><span id='code-span'>mfpmigrate server [--in|-i &lt;sourceDirectory&gt;] [--out|-o &lt;destinationDirectory&gt;] [--projectName|-p &lt;newProjectDirectory&gt;]</span></pre>
+                                <br/>
+                                <h4>説明</h4>
+                                <p>既存の MobileFirst プロジェクトからセキュリティー・レルムとアダプターのマイグレーションを実行します。</p>
+                                <br/>
+                                <h4>オプション</h4>
+                                <p><b><i>&lt;sourceDirectory&gt;</i></b>: <i>&lt;sourceDirectory&gt;</i> は、マイグレーションする MobileFirst プロジェクトの <i>root</i> フォルダーでなければなりません。これは必須であり、オプション・パラメーターではありません。</p>
+
+                                <p><b><i>&lt;destinationDirectory&gt;</i></b>: <i>&lt;destinationDirectory&gt;</i> は、アダプターのマイグレーション先となるディレクトリーです。</p>
+                              </blockquote>
+                                <p>マイグレーション・ツールは、アダプターとレルムをスキャンします。次に、以下を行います。</p>
+                                <ol><li>アダプターおよびサポートされているセキュリティー検査用のテンプレートを作成します。</li>
+                                    <li>アダプター・ソースを、新しく作成した Maven 成果物に移動します。</li>
+                                    <li>依存関係を使用して、プロジェクト <i>pom</i> を更新します。</li>
+                                    <li>このツールを使用して実行された内容と、マイグレーションを完了するために手動で実行されるその他の変更内容を記したサマリー・レポートを作成します。</li>
+                                </ol>
+                              </li>
+
+                              <li>
+                                <p>サマリー・レポートは、次のように使用します。</p>
+                                <ol>
+                                  <li>マイグレーション・アシスト・ツールを使用して実行された内容を理解します。</li>
+                                  <li>単純なマイグレーションが可能な個所で、サポートされていない API をサポートされている API にマップします。</li>
+                                  <li>レガシー worklight プロジェクトで使用している、サポートされていないアダプターとレルムを識別します。</li>
+                                  <li>既存の設計に存在するその他の技術的課題やボトルネックについて理解し、以下に記した新しい開発概念を参照して、そのような課題にどのように対処できるかを確認します。</li>
+                                </ol>
+                              </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
 
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-js-adapter">
@@ -968,7 +1019,7 @@ export MVN_PATH="/usr/local/bin"
 
         <blockquote><a href="../migrating-security/" target="_blank">認証およびセキュリティーのマイグレーション</a>に関するチュートリアルで、セキュリティーのマイグレーション方法を学ぶ。セキュリティー・フレームワークおよび許可の概念について詳しくは、<a href="../../authentication-and-security/" target="_blank">認証およびセキュリティーのチュートリアル</a>を参照してください。</blockquote>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="security-framework">
                     <h4 class="panel-title">

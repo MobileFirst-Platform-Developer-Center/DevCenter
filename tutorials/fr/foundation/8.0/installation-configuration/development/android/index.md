@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuration de l'environnement de développement Android
-environment breadcrumb_title: Android
+breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---
@@ -10,7 +10,7 @@ weight: 4
 {: #overview }
 Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications Android. Elles consistent à installer Android Studio et à définir le logiciel SDK Android.
 
-**Prérequis :** lorsque vous configurez votre environnement de développement Android, lisez également le tutoriel [Configuration de l'environnement de développement {{ site.data.keys.product_adj }}](../mobilefirst/).
+**Prérequis :** Lors de la configuration de votre environnement de développement Android, lisez également le tutoriel [Configuration de l'environnement de développement {{ site.data.keys.product_adj }}](../mobilefirst/).
 
 #### Niveau de prise en charge
 {: #support-level }

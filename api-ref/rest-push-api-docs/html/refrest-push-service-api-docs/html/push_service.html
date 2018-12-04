@@ -1,0 +1,4605 @@
+<HTML>
+
+<body>
+    <h2>
+        Push Applications (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves all the applications.</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/?expand=true&amp;filter=platform==A&amp;offset=0&amp;size=10</code></p>
+
+    <h3>
+        Query Parameters
+    </h3>
+    Query parameters are optional.
+    <dl>
+        <dt><b>expand</b></dt>
+        <dd>Retrieves detailed information about applications.</dd>
+        <dt><b>filter</b></dt>
+        <dd>Search criteria filter. Refer to the filter section for detailed syntax.</dd>
+        <dt><b>offset</b></dt>
+        <dd>Pagination offset that is normally used along with the size.</dd>
+        <dt><b>size</b></dt>
+        <dd>Pagination size that is normally used along with the offset to retrieve a subset.</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apps.read" and "push.application.*" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    The details of all the applications.
+    <p>JSON Example:</p>
+    <pre>{
+  "applications" : [
+    {
+      "applicationId" : "testApp",
+    },
+    ...
+  ],
+  "pageInfo" : {
+    "count" : "2",
+    "next" : "",
+    "previous" : "",
+    "totalCount" : "10",
+  },
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>applications</b></dt>
+        <dd>The array of applications.</dd>
+        <dt><b>pageInfo</b></dt>
+        <dd>The pagination information</dd>
+    </dl>
+
+    <p>The <em>applications</em> has the following properties:</p>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The applicationId.</dd>
+    </dl>
+
+    <p>The <em>pageInfo</em> has the following properties:</p>
+    <dl>
+        <dt><b>count</b></dt>
+        <dd>The number of applications that are retrieved</dd>
+        <dt><b>next</b></dt>
+        <dd>A hyperlink to the next page</dd>
+        <dt><b>previous</b></dt>
+        <dd>A hyperlink to the previous page</dd>
+        <dt><b>totalCount</b></dt>
+        <dd>The total number of applications present for the given search criteria</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Application (POST)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Creates a new server application for the push service.</p>
+    <p>The applicationId is an unique application ID for this application. Application is a parent resource for devices, subscriptions, tags and messages. The application must be created before accessing any of the child resources. If the application is
+        deleted, all the children are deleted. The application holds the configurations, such as the Apple Push Notification Service (APNS) and Google Cloud Message (GCM) configuration, which is required by the push service to send messages. The API first
+        creates the application and then sets the APNS and GCM settings.</p>
+
+    <h3>
+        Method
+    </h3>
+    POST
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/</code></p>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apps.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "applicationId" : "testApp",
+  "enabled" : "true",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The application Id.</dd>
+        <dt><b>enabled</b></dt>
+        <dd>Optinal. The status of the applicaton. Default is true</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "applicationId" : "testApp",
+  "enabled" : "true",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The application Id.</dd>
+        <dt><b>enabled</b></dt>
+        <dd>The status of the application.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid JSON could result in this error code.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Application (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves the application, which is referenced by the applicationId parameter.</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apps.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    The details of the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "applicationId" : "testApp",
+  "enabled" : "true",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The application Id.</dd>
+        <dt><b>enabled</b></dt>
+        <dd>The status of the application.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Application (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Deletes an application, which is referenced by the applicationId parameter.</p>
+    <p>After the application is deleted the tags, devices, subscriptions and message resources associated with the application are also deleted.</p>
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apps.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Application Settings (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves appplication settings</p>
+    <p>This can be used to find the mode of the application.</p>
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "settings.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    Retrieve application settings.
+    <p>JSON Example:</p>
+    <pre>{
+  "apnsConf" : "https://example.com:443/imfpush/v1/apps/testApp/settings/apnsConf",
+  "applicationId" : "testApp",
+  "gcmConf" : "https://example.com:443/imfpush/v1/apps/testApp/settings/gcmConf",
+  "mode" : "PRODUCTION",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>apnsConf</b></dt>
+        <dd>Reference link to APNS settings.</dd>
+        <dt><b>applicationId</b></dt>
+        <dd>The application Id.</dd>
+        <dt><b>gcmConf</b></dt>
+        <dd>Reference link to GCM settings.</dd>
+        <dt><b>mode</b></dt>
+        <dd>The operation mode</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push APNS Certificate Settings (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves APNS certificate for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/apnsCert</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/apnsCert</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apnsCert.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/octet-stream
+
+    <h3>
+        Response
+    </h3>
+    Retrieves APNS certificate for the application.
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push APNS Settings (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves APNS settings for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/apnsConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/apnsConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apnsConf.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    Retrieves APNS settings for the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "certificate" : "apns-certificate.p12",
+  "isSandBox" : "true",
+  "validUntil" : "2016-09-06T05:51:11.000Z",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>certificate</b></dt>
+        <dd>The name of the certificate.</dd>
+        <dt><b>isSandBox</b></dt>
+        <dd>The certificate type.</dd>
+        <dt><b>validUntil</b></dt>
+        <dd>The certificate validity date.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push APNS settings (PUT)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Uploads an APNS certificate to the application referenced by the applicationId</p>
+
+
+    <h3>
+        Form-data Parameters
+    </h3>
+    <dl>
+        <dt><b>certificate</b></dt>
+        <dd>(file) The APNS certificate.</dd>
+        <dt><b>password</b></dt>
+        <dd>(String) Password for the APNS certificate</dd>
+        <dt><b>isSandBox</b></dt>
+        <dd>(boolean) The APNS certificate type.</dd>
+    </dl>
+
+    <h3>
+        Method
+    </h3>
+    PUT
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/apnsConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/apnsConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apnsConf.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the content type. For example: multipart/form-data. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    multipart/form-data
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    Successfully updated the APNS settings.
+    <p>JSON Example:</p>
+    <pre>{
+  "certificate" : "apns-certificate.p12",
+  "isSandBox" : "true",
+  "validUntil" : "2016-09-06T05:51:11.000Z",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>certificate</b></dt>
+        <dd>The name of the APNS certificate.</dd>
+        <dt><b>isSandBox</b></dt>
+        <dd>The APNS certificate type.</dd>
+        <dt><b>validUntil</b></dt>
+        <dd>The APNS certificate validity date.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid data in the input.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push APNS settings (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Deletes APNS settings for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/apnsConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/apnsConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apnsConf.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push GCM Settings (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves GCM settings for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/gcmConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/gcmConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "gcmConf.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    Retrieves GCM settings for the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "apiKey" : "AxBNGYUwehjokn",
+  "senderId" : "123456789",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>apiKey</b></dt>
+        <dd>The GCM API Key.</dd>
+        <dt><b>senderId</b></dt>
+        <dd>The GCM SenderId.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push GCM Settings (PUT)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Updates GCM settings referenced by the applicationId</p>
+
+
+    <h3>
+        Method
+    </h3>
+    PUT
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/gcmConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/gcmConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apnsConf.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the gcm settings.
+    <p>JSON Example:</p>
+    <pre>{
+  "apiKey" : "AxBNGYUwehjokn",
+  "senderId" : "123456789",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>apiKey</b></dt>
+        <dd>The GCM API Key.</dd>
+        <dt><b>senderId</b></dt>
+        <dd>The GCM SenderId.</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    Retrieves GCM settings for the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "apiKey" : "AxBNGYUwehjokn",
+  "senderId" : "123456789",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>apiKey</b></dt>
+        <dd>The GCM API Key.</dd>
+        <dt><b>senderId</b></dt>
+        <dd>The GCM SenderId.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid data in the input.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push GCM Settings (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Deletes GCM settings for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/gcmConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/gcmConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "gcmConf.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push GCM Public Settings (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves GCM settings for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/gcmConfPublic</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/gcmConfPublic</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "gcmConfPublic.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    Retrieves GCM settings for the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "senderId" : "123456789",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>senderId</b></dt>
+        <dd>The GCM SenderId.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push SMS Settings (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves SMS settings for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/smsConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/smsConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "smsConf.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    Retrieves SMS settings for the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "host" : "xyz.com",
+  "name" : "TestGateway",
+  "parameters" : [
+    {
+      "encode" : "true",
+      "name" : "TestKey",
+      "value" : "TestValue",
+    },
+    ...
+  ],
+  "port" : "80",
+  "programName" : "/sendsms",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>host</b></dt>
+        <dd>The host name of the SMS Gateway</dd>
+        <dt><b>name</b></dt>
+        <dd>The name of the SMS Gateway</dd>
+        <dt><b>parameters</b></dt>
+        <dd>The array of parameters</dd>
+        <dt><b>port</b></dt>
+        <dd>The port number of the SMS Gateway</dd>
+        <dt><b>programName</b></dt>
+        <dd>The path of the SMS Gateway</dd>
+    </dl>
+
+    <p>The <em>parametersArray</em> has the following properties:</p>
+    <dl>
+        <dt><b>encode</b></dt>
+        <dd>The parameter should be encoded or not </dd>
+        <dt><b>name</b></dt>
+        <dd>The name of the parameter</dd>
+        <dt><b>value</b></dt>
+        <dd>The value of the parameter</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push SMS Settings (PUT)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Updates SMS settings referenced by the applicationId</p>
+
+
+    <h3>
+        Method
+    </h3>
+    PUT
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/smsConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/smsConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "smsConf.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the sms settings.
+    <p>JSON Example:</p>
+    <pre>{
+  "host" : "xyz.com",
+  "name" : "TestGateway",
+  "parameters" : [
+    {
+      "encode" : "true",
+      "name" : "TestKey",
+      "value" : "TestValue",
+    },
+    ...
+  ],
+  "port" : "80",
+  "programName" : "/sendsms",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>host</b></dt>
+        <dd>The host name of the SMS Gateway</dd>
+        <dt><b>name</b></dt>
+        <dd>The name of the SMS Gateway</dd>
+        <dt><b>parameters</b></dt>
+        <dd>The array of parameters</dd>
+        <dt><b>port</b></dt>
+        <dd>The port number of the SMS Gateway</dd>
+        <dt><b>programName</b></dt>
+        <dd>The path of the SMS Gateway</dd>
+    </dl>
+
+    <p>The <em>parametersArray</em> has the following properties:</p>
+    <dl>
+        <dt><b>encode</b></dt>
+        <dd>The parameter should be encoded or not </dd>
+        <dt><b>name</b></dt>
+        <dd>The name of the parameter</dd>
+        <dt><b>value</b></dt>
+        <dd>The value of the parameter</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    Successfully updated the SMS settings.
+    <p>JSON Example:</p>
+    <pre>{
+  "host" : "xyz.com",
+  "name" : "TestGateway",
+  "parameters" : [
+    {
+      "encode" : "true",
+      "name" : "TestKey",
+      "value" : "TestValue",
+    },
+    ...
+  ],
+  "port" : "80",
+  "programName" : "/sendsms",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>host</b></dt>
+        <dd>The host name of the SMS Gateway</dd>
+        <dt><b>name</b></dt>
+        <dd>The name of the SMS Gateway</dd>
+        <dt><b>parameters</b></dt>
+        <dd>The array of parameters</dd>
+        <dt><b>port</b></dt>
+        <dd>The port number of the SMS Gateway</dd>
+        <dt><b>programName</b></dt>
+        <dd>The path of the SMS Gateway</dd>
+    </dl>
+
+    <p>The <em>parametersArray</em> has the following properties:</p>
+    <dl>
+        <dt><b>encode</b></dt>
+        <dd>The parameter should be encoded or not </dd>
+        <dt><b>name</b></dt>
+        <dd>The name of the parameter</dd>
+        <dt><b>value</b></dt>
+        <dd>The value of the parameter</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid data in the input.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push SMS settings (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Deletes SMS settings for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/smsConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/smsConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "smsConf.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push WNS Settings (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves WNS settings for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/wnsConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/wnsConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "wnsConf.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    Retrieves WNS settings for the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "clientSecret" : "Vex8L9WOFZuj95euaLrvSH7XyoDhLJc7",
+  "packageSID" : "ms-app://S-1-15-2-2972962901-2322836549-3722629029-1345238579-3987825745-2155616079-650196962",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>clientSecret</b></dt>
+        <dd>The Client secret.</dd>
+        <dt><b>packageSID</b></dt>
+        <dd>Package SID</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push WNS Settings (PUT)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Updates WNS settings referenced by the applicationId</p>
+
+
+    <h3>
+        Method
+    </h3>
+    PUT
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/wnsConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/wnsConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "wnsConf.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the wns settings.
+    <p>JSON Example:</p>
+    <pre>{
+  "clientSecret" : "Vex8L9WOFZuj95euaLrvSH7XyoDhLJc7",
+  "packageSID" : "ms-app://S-1-15-2-2972962901-2322836549-3722629029-1345238579-3987825745-2155616079-650196962",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>clientSecret</b></dt>
+        <dd>The Client secret.</dd>
+        <dt><b>packageSID</b></dt>
+        <dd>Package SID</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    Successfully updated the WNS settings.
+    <p>JSON Example:</p>
+    <pre>{
+  "clientSecret" : "Vex8L9WOFZuj95euaLrvSH7XyoDhLJc7",
+  "packageSID" : "ms-app://S-1-15-2-2972962901-2322836549-3722629029-1345238579-3987825745-2155616079-650196962",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>clientSecret</b></dt>
+        <dd>The Client secret.</dd>
+        <dt><b>packageSID</b></dt>
+        <dd>Package SID</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid data in the input.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push WNS settings (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Deletes WNS settings for the application</p>
+
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/settings/wnsConf</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/settings/wnsConf</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "wnsConf.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Application (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves the application, which is referenced by the applicationId parameter.</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/status</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/status</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apps.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    The status of the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "enabled" : "true",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>enabled</b></dt>
+        <dd>The status of the application.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Application (PUT)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Updates an existing application status. The API can be used to enable or disable an application.</p>
+
+
+    <h3>
+        Method
+    </h3>
+    PUT
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/status</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/status</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "apps.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "enabled" : "true",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>enabled</b></dt>
+        <dd>The status of the application</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "applicationId" : "testApp",
+  "enabled" : "true",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The application Id.</dd>
+        <dt><b>enabled</b></dt>
+        <dd>The status of the application.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid JSON could result in this error code.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The applicationId does not exist.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Device Registrations (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves all or a subset of existing device registration(s) of push.</p>
+    <p>Device registrations for the push service are retrieved for the specified criteria</p>
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/devices</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/devices?expand=true&amp;filter=platform==A&amp;offset=0&amp;size=10&amp;userId=admin</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Query Parameters
+    </h3>
+    Query parameters are optional.
+    <dl>
+        <dt><b>expand</b></dt>
+        <dd>Retrieves additional metadata for every device registration that is returned in the response.</dd>
+        <dt><b>filter</b></dt>
+        <dd>Search criteria filter. Refer to the filter section for detailed syntax.</dd>
+        <dt><b>offset</b></dt>
+        <dd>Pagination offset that is normally used along with the size.</dd>
+        <dt><b>size</b></dt>
+        <dd>Pagination size that is normally used along with the offset to retrieve a subset.</dd>
+        <dt><b>userId</b></dt>
+        <dd>Retrieves device registrations only for the specified user.</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages.. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "devices.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    The details of the device registration that is retrieved.
+    <p>JSON Example:</p>
+    <pre>{
+  "devices" : [
+    {
+      "deviceId" : "12345-6789",
+      "href" : "http://localhost:9080/imfpush/v1/apps/appName/devices/12345-6789",
+      "phoneNumber" : "123456789",
+      "platform" : "A",
+      "token" : "xyz",
+      "userId" : "admin",
+    },
+    ...
+  ],
+  "pageInfo" : {
+    "count" : "2",
+    "next" : "",
+    "previous" : "",
+    "totalCount" : "10",
+  },
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>devices</b></dt>
+        <dd>The array of device registrations with Push.</dd>
+        <dt><b>pageInfo</b></dt>
+        <dd>The pagination information</dd>
+    </dl>
+
+    <p>The <em>devices</em> has the following properties:</p>
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>The unique id of the device.</dd>
+        <dt><b>href</b></dt>
+        <dd>The REST URL to get device details</dd>
+        <dt><b>phoneNumber</b></dt>
+        <dd>Phone number to be used for SMS based notification.</dd>
+        <dt><b>platform</b></dt>
+        <dd>The device platform.</dd>
+        <dt><b>token</b></dt>
+        <dd>The unique push token of the device.</dd>
+        <dt><b>userId</b></dt>
+        <dd>The userId of the device.</dd>
+    </dl>
+
+    <p>The <em>pageInfo</em> has the following properties:</p>
+    <dl>
+        <dt><b>count</b></dt>
+        <dd>The number of device registration that are retrieved</dd>
+        <dt><b>next</b></dt>
+        <dd>A hyperlink to the next page</dd>
+        <dt><b>previous</b></dt>
+        <dd>A hyperlink to the previous page</dd>
+        <dt><b>totalCount</b></dt>
+        <dd>The total number of device registration present for the given search criteria</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Device Registration (POST)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Creates a device registration with the push service.</p>
+    <p>The device registrations happens from the device. The deviceId is the unique ID for the device for the application.</p>
+
+    <h3>
+        Method
+    </h3>
+    POST
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/devices</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/devices</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "devices.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the device registration.
+    <p>JSON Example:</p>
+    <pre>{
+  "deviceId" : "12345-6789",
+  "phoneNumber" : "123456789",
+  "platform" : "A",
+  "token" : "xyz",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>Unique id of the device.</dd>
+        <dt><b>phoneNumber</b></dt>
+        <dd>Phone number to be used for SMS based notification.</dd>
+        <dt><b>platform</b></dt>
+        <dd>The device platform. 'A' refers to Apple(iOS) devices, 'G' refers to Google(Android) and 'W' refers to Microsoft(Windows) devices</dd>
+        <dt><b>token</b></dt>
+        <dd>Device token obtained via the service provider</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the application.
+    <p>JSON Example:</p>
+    <pre>{
+  "createdMode" : "API",
+  "createdTime" : "2015-05-20T11:42:11Z",
+  "deviceId" : "12345-6789",
+  "href" : "http://localhost:9080/imfpush/v1/apps/appName/devices/12345-6789",
+  "lastUpdatedTime" : "2015-05-20T11:42:11Z",
+  "phoneNumber" : "123456789",
+  "platform" : "A",
+  "token" : "xyz",
+  "userAgent" : "TestUserAgent",
+  "userId" : "admin",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>createdMode</b></dt>
+        <dd>The mode of creation.</dd>
+        <dt><b>createdTime</b></dt>
+        <dd>The date and time when the push device registration was created on the server in ISO 8601 format.</dd>
+        <dt><b>deviceId</b></dt>
+        <dd>Unique id of the device.</dd>
+        <dt><b>href</b></dt>
+        <dd>The REST URL to get device details</dd>
+        <dt><b>lastUpdatedTime</b></dt>
+        <dd>The date and time when the push device registration was last updated on the server in ISO 8601 format.</dd>
+        <dt><b>phoneNumber</b></dt>
+        <dd>Phone number to be used for SMS based notification.</dd>
+        <dt><b>platform</b></dt>
+        <dd>The device platform. 'A' refers to Apple(iOS) devices, 'G' refers to Google(Android) and 'W' refers to Microsoft(Windows) devices</dd>
+        <dt><b>token</b></dt>
+        <dd>Device token obtained via the service provider</dd>
+        <dt><b>userAgent</b></dt>
+        <dd>The user agent for the the device registration</dd>
+        <dt><b>userId</b></dt>
+        <dd>The user identifier for the the device registration</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid JSON could result in this error code.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Device Registration (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves an existing device registration of push</p>
+    <p>Device registrations for a push service that are retrieved for a specific deviceId.</p>
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/devices/&lt;deviceId&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/devices/12345-6789</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>The device identifier</dd>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "devices.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    The details of the device registration that is retrieved.
+    <p>JSON Example:</p>
+    <pre>{
+  "createdMode" : "API",
+  "createdTime" : "2015-05-20T11:42:11Z",
+  "deviceId" : "12345-6789",
+  "href" : "http://localhost:9080/imfpush/v1/apps/appName/devices/12345-6789",
+  "lastUpdatedTime" : "2015-05-20T11:42:11Z",
+  "phoneNumber" : "123456789",
+  "platform" : "A",
+  "token" : "12345-6789",
+  "userId" : "admin",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>createdMode</b></dt>
+        <dd>The mode of creation.</dd>
+        <dt><b>createdTime</b></dt>
+        <dd>The date and time when the push device registration was created on the server in ISO 8601 format.</dd>
+        <dt><b>deviceId</b></dt>
+        <dd>The unique id of the device.</dd>
+        <dt><b>href</b></dt>
+        <dd>The REST Url to get device details</dd>
+        <dt><b>lastUpdatedTime</b></dt>
+        <dd>The date and time when the push device registration was last updated on the server in ISO 8601 format.</dd>
+        <dt><b>phoneNumber</b></dt>
+        <dd>Phone number to be used for SMS based notification.</dd>
+        <dt><b>platform</b></dt>
+        <dd>The device platform.</dd>
+        <dt><b>token</b></dt>
+        <dd>The unique push token of the device.</dd>
+        <dt><b>userId</b></dt>
+        <dd>The userId of the device.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>A device registration with the specified deviceId is not found.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Device Registration (PUT)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Updates an existing device registration for the push service.</p>
+    <p>The push device registration is updated with the new user ID or the token specified. In most use cases this call is used to update the userId only.</p>
+
+    <h3>
+        Method
+    </h3>
+    PUT
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/devices/&lt;deviceId&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/devices/12345-6789</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>The device identifier</dd>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "devices.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the device registration will be updated.
+    <p>JSON Example:</p>
+    <pre>{
+  "deviceId" : "12345-6789",
+  "phoneNumber" : "123456789",
+  "token" : "xyz",
+  "userId" : "admin",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>The unique id of the device.</dd>
+        <dt><b>phoneNumber</b></dt>
+        <dd>Phone number to be used for SMS based notification.</dd>
+        <dt><b>token</b></dt>
+        <dd>The token of the device. Its optional to set this.</dd>
+        <dt><b>userId</b></dt>
+        <dd>The userId of the device. Its optional to set this.</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the device registration that is updated.
+    <p>JSON Example:</p>
+    <pre>{
+  "createdMode" : "API",
+  "createdTime" : "2015-05-20T11:42:11Z",
+  "deviceId" : "12345-6789",
+  "href" : "http://localhost:9080/imfpush/v1/apps/appName/devices/12345-6789",
+  "lastUpdatedTime" : "2015-05-20T11:42:11Z",
+  "phoneNumber" : "123456789",
+  "platform" : "A",
+  "token" : "xyz",
+  "userId" : "admin",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>createdMode</b></dt>
+        <dd>The mode of creation.</dd>
+        <dt><b>createdTime</b></dt>
+        <dd>The date and time when the push device registration was created on the server in ISO 8601 format.</dd>
+        <dt><b>deviceId</b></dt>
+        <dd>The unique id of the device.</dd>
+        <dt><b>href</b></dt>
+        <dd>The REST Url to get device details</dd>
+        <dt><b>lastUpdatedTime</b></dt>
+        <dd>The date and time when the push device registration was last updated on the server in ISO 8601 format.</dd>
+        <dt><b>phoneNumber</b></dt>
+        <dd>Phone number to be used for SMS based notification.</dd>
+        <dt><b>platform</b></dt>
+        <dd>The device platform.</dd>
+        <dt><b>token</b></dt>
+        <dd>The unique push token of the device.</dd>
+        <dt><b>userId</b></dt>
+        <dd>The userId of the device.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>A device registration has userId longer than 254 characters.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>A device registration with the specified deviceId is not found.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Device Registration (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Deletes(unregisters) an existing device registration from the push service</p>
+    <p>The device registrations of push service is deleted for the given deviceId. The call returns HTTP response code 204 with no content on successful deletion of the device registration. </p>
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/devices/&lt;deviceId&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/devices/12345-6789</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>The device identifier</dd>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages.. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "devices.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>A device registration with the specified deviceId is not found.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Message (POST)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Send message with different options.</p>
+    <p>Sends a push notifications to the specified targets and returns HTTP return code 202 when the request to send the message is accepted.</p>
+
+    <h3>
+        Method
+    </h3>
+    POST
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/messages</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/messages</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "messages.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The payload in JSON format has values for message, target, and settings.
+    <p>JSON Example:</p>
+    <pre>{
+  "message" : {
+    "alert" : "Test message",
+  },
+  "notificationType" : 1,
+  "settings" : {
+    "apns" : {
+      "attachmentUrl": "http://test.com/test.png",
+      "subtitle": "Sub Title",
+      "title": "Title",      
+      "badge" : 1,
+      "category" : 1,
+      "iosActionKey" : "Ok",
+      "payload" : {"custom":"data"},
+      "sound" : "song.mp3",
+      "type" : "SILENT",
+    },
+    "gcm" : {
+      "bridge" : false,
+      "category" : "email",
+      "collapseKey" : "testkey",
+      "delayWhileIdle" : false,
+      "payload" : {"custom":"data"},
+      "priority" : "low",
+      "redact" : "Test Redact Message",
+      "sound" : "song.mp3",
+      "sync" : false,
+      "timeToLive" : 10,
+      "visibility" : "public",
+    },
+    "wns" : {
+      "badge" : {"value":"10"},
+      "cachePolicy" : false,
+      "expirationTime" : 20,
+      "raw" : {"payload":{"custom":"data"}},
+      "tile" : {"visual":{"binding":[{"template":"TileSquareText04", "text": [{"content":"Text1"}]}, {"template":"TileWideText04","text": [{"content":"Text1"}]}]}},
+      "toast" : {"launch":{"custom":"data"}, "visual":{"binding":{"template":"ToastText04","text":[{"content":"Text1"},{"content":"Text2"},{"content":"Text3"}]}},
+    },
+  },
+  "target" : {
+    "deviceIds" : [ "MyDeviceId1", ... ],
+    "platforms" : [ "A,G", ... ],
+    "tagNames" : [ "Gold", ... ],
+    "userIds" : [ "MyUserId", ... ],
+  },
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>message</b></dt>
+        <dd>The alert message to be sent</dd>
+        <dt><b>notificationType</b></dt>
+        <dd>Integer value to indicate the channel (Push/SMS) used to send message. Allowed values are 1 (only Push), 2 (only SMS) and 3 (Push and SMS)</dd>
+        <dt><b>settings</b></dt>
+        <dd>The settings are the different attributes of the notification.</dd>
+        <dt><b>target</b></dt>
+        <dd>Set of targets can be user Ids, devices, platforms, or tags. Only one of the targets can be set.</dd>
+    </dl>
+
+    <p>The <em>message</em> has the following properties:</p>
+    <dl>
+        <dt><b>alert</b></dt>
+        <dd>A string to be displayed in the alert.</dd>
+    </dl>
+
+    <p>The <em>settings</em> has the following properties:</p>
+    <dl>
+        <dt><b>apns</b></dt>
+        <dd>Attributes for sending message to an iOS device.</dd>
+        <dt><b>gcm</b></dt>
+        <dd>Attributes for sending message to an Android device.</dd>
+        <dt><b>wns</b></dt>
+        <dd>Attributes for sending message to a windows device.</dd>
+    </dl>
+
+    <p>The <em>apns</em> has the following properties:</p>
+    <dl>
+        <dt><b>attachmentUrl</b></dt>
+
+        <dd>The link to the iOS notifications media (video, audio, GIF, images - Supported only on iOS 10 and above).</dd>
+        <dt><b>subtitle</b></dt>
+
+        <dd>The subtitle of the Rich Notifications.(Supported only on iOS 10 and above).</dd>
+        <dt><b>title</b></dt>
+
+        <dd>The title of Rich Push notifications (Supported only on iOS 10 and above).</dd>
+        <dt><b>badge</b></dt>
+        <dd>An integer value to be displayed in a badge on the application icon.</dd>
+        <dt><b>category</b></dt>
+        <dd>Name of the category for iOS8 interactive push notifications.</dd>
+        <dt><b>iosActionKey</b></dt>
+        <dd>The label of the dialog box button that allows the user to open the app upon receiving the notification.</dd>
+        <dt><b>payload</b></dt>
+        <dd>A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.</dd>
+        <dt><b>sound</b></dt>
+        <dd>The name of a file to play when the notification arrives.</dd>
+        <dt><b>type</b></dt>
+        <dd>Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT</dd>
+    </dl>
+
+    <p>The <em>gcm</em> has the following properties:</p>
+    <dl>
+        <dt><b>bridge</b></dt>
+        <dd>A Boolean value that indicates whether the notification should be bridged or not to other devices connected to this handheld device. Only applies to Android 5.0 or higher.</dd>
+        <dt><b>category</b></dt>
+        <dd>A string value that indicates the category to which this notification belongs. Allowed values are 'call', 'alarm', 'email', 'err', 'event', 'msg', 'progress', 'promo', 'recommendation', 'service', 'social', 'status', and 'transport'. Only applies
+            to Android 5.0 or higher.</dd>
+        <dt><b>collapseKey</b></dt>
+        <dd>A string value that indicates that the message can be replaced. When multiple messages are queued up in GCM Servers with the same key, only the last one is delivered. </dd>
+        <dt><b>delayWhileIdle</b></dt>
+        <dd>A Boolean value that indicates that the message must not be sent if the device is idle. The server waits for the device to become active before the message is sent. Default value is false</dd>
+        <dt><b>payload</b></dt>
+        <dd>A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.</dd>
+        <dt><b>priority</b></dt>
+        <dd>A string value that indicates the priority of this notification. Allowed values are 'max', 'high', 'default', 'low' and 'min'. High/Max priority notifications along with 'sound' field may be used for Heads up notification in Android 5.0 or higher.</dd>
+        <dt><b>redact</b></dt>
+        <dd>A string to be displayed in the alert as a redacted version of the original content when the visibility level is 'private'. Only applies to Android 5.0 or higher.</dd>
+        <dt><b>sound</b></dt>
+        <dd>The name of a sound file on the device to play when the notification arrives to the device.</dd>
+        <dt><b>sync</b></dt>
+        <dd>A Boolean value that indicates whether the notification should be sync'd between devices of the same user, that is, if a notification is handled on a device it gets dismissed on the other devices of the same user</dd>
+        <dt><b>timeToLive</b></dt>
+        <dd>The duration (in seconds) that the message is kept on GCM storage if the device is offline. Default value is 4 weeks, and must be set as a JSON number.</dd>
+        <dt><b>visibility</b></dt>
+        <dd>A string value that indicates the visibility level of notification content on the secured lock screen in Android L devices. Allowed values are 'public, 'private' and 'secret'. Only applies to Android 5.0 or higher.</dd>
+    </dl>
+
+    <p>The <em>wns</em> has the following properties:</p>
+    <dl>
+        <dt><b>badge</b></dt>
+        <dd></dd>
+        <dt><b>cachePolicy</b></dt>
+        <dd>A boolean value that indicates if the notification should be cached or not.</dd>
+        <dt><b>expirationTime</b></dt>
+        <dd>Optional. Expriry time of the notification.</dd>
+        <dt><b>raw</b></dt>
+        <dd></dd>
+        <dt><b>tile</b></dt>
+        <dd></dd>
+        <dt><b>toast</b></dt>
+        <dd></dd>
+    </dl>
+
+    <p>The <em>badge</em> has the following properties:</p>
+    <dl>
+        <dt><b>value</b></dt>
+        <dd>Optional. A numeric or string value that indicates a prdefined glyph to be displayed.</dd>
+        <dt><b>version</b></dt>
+        <dd>Optional. Version of the payload.</dd>
+    </dl>
+
+    <p>The <em>raw</em> has the following properties:</p>
+    <dl>
+        <dt><b>payload</b></dt>
+        <dd>Optional. A JSON block that is transferred to the application only if the application is already open.</dd>
+    </dl>
+
+    <p>The <em>tile</em> has the following properties:</p>
+    <dl>
+        <dt><b>tag</b></dt>
+        <dd>Optional. A string value that is set as label for the notification. Used in notification cycling.</dd>
+        <dt><b>visual</b></dt>
+        <dd></dd>
+    </dl>
+
+    <p>The <em>visual</em> has the following properties:</p>
+    <dl>
+        <dt><b>addImageQuery</b></dt>
+        <dd>Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
+        <dt><b>baseUri</b></dt>
+        <dd>Optional. Base URI to be combined with the relative URIs.</dd>
+        <dt><b>binding</b></dt>
+        <dd>For tile notifications, its a JSON array containing JSON blocks of binding attributes. For toast notification, its a JSON block of binding attributes.</dd>
+        <dt><b>branding</b></dt>
+        <dd>Optional. Indicates whether logo or app's name to be shown. Default is None.</dd>
+        <dt><b>contentId</b></dt>
+        <dd>Optional. A string value that identifies the notification content. Only applies to tile notifications.</dd>
+        <dt><b>lang</b></dt>
+        <dd>Optional. Locale of the payload.</dd>
+        <dt><b>version</b></dt>
+        <dd>Optional. Version of the payload.</dd>
+    </dl>
+
+    <p>The <em>binding</em> has the following properties:</p>
+    <dl>
+        <dt><b>addImageQuery</b></dt>
+        <dd>Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
+        <dt><b>baseUri</b></dt>
+        <dd>Optional. Base URI to be combined with the relative URIs.</dd>
+        <dt><b>branding</b></dt>
+        <dd>Optional. Indicates whether logo or app's name to be shown. Default is None.</dd>
+        <dt><b>contentId</b></dt>
+        <dd>Optional. A string value that identifies the notification content. Only applies to tile notifications.</dd>
+        <dt><b>fallback</b></dt>
+        <dd>Optional. Template to be used as a fallback.</dd>
+        <dt><b>image</b></dt>
+        <dd>Optional. A JSON array containing JSON blocks of following image attributes.</dd>
+        <dt><b>lang</b></dt>
+        <dd>Optional. Locale of the payload.</dd>
+        <dt><b>template</b></dt>
+        <dd>Mandatory. Template type of the notification.</dd>
+        <dt><b>text</b></dt>
+        <dd>Optional. A JSON array containing JSON blocks of following text attributes.</dd>
+    </dl>
+
+    <p>The <em>image</em> has the following properties:</p>
+    <dl>
+        <dt><b>addImageQuery</b></dt>
+        <dd>Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
+        <dt><b>alt</b></dt>
+        <dd>Optional. Image description.</dd>
+        <dt><b>src</b></dt>
+        <dd>Mandatory. Image URI.</dd>
+    </dl>
+
+    <p>The <em>text</em> has the following properties:</p>
+    <dl>
+        <dt><b>content</b></dt>
+        <dd>Mandatory. A string value that is displayed in the toast.</dd>
+        <dt><b>lang</b></dt>
+        <dd>Optional. Locale of the payload.</dd>
+    </dl>
+
+    <p>The <em>toast</em> has the following properties:</p>
+    <dl>
+        <dt><b>audio</b></dt>
+        <dd></dd>
+        <dt><b>duration</b></dt>
+        <dd>Optional. Notification will be displayed for the specified duration. Should be 'short' or 'long'.</dd>
+        <dt><b>launch</b></dt>
+        <dd>Optional. A string value that is passed to the application when it is launched by tapping or clicking the toast notification.</dd>
+        <dt><b>visual</b></dt>
+        <dd></dd>
+    </dl>
+
+    <p>The <em>audio</em> has the following properties:</p>
+    <dl>
+        <dt><b>loop</b></dt>
+        <dd>Optional. A boolean value to indicate if the sound should be repeated or not.</dd>
+        <dt><b>silent</b></dt>
+        <dd>Optional. A boolean value to indicate if the sound should be played or not.</dd>
+        <dt><b>src</b></dt>
+        <dd>Optional. A string value that specifies the notification sound type or path to local audio file.</dd>
+    </dl>
+
+    <p>The <em>target</em> has the following properties:</p>
+    <dl>
+        <dt><b>deviceIds</b></dt>
+        <dd>An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notification</dd>
+        <dt><b>platforms</b></dt>
+        <dd>An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and W (Microsoft/Windows).</dd>
+        <dt><b>tagNames</b></dt>
+        <dd>An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications</dd>
+        <dt><b>userIds</b></dt>
+        <dd>An array of users represented by their userIds to send the notification. This is a unicast notification.</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the message that is retrieved.
+    <p>JSON Example:</p>
+    <pre>{
+  "message" : {
+    "message" : {
+      "alert" : "TestMessage",
+    },
+  },
+  "messageId" : "1234",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>message</b></dt>
+        <dd>The array of messages to be sent</dd>
+        <dt><b>messageId</b></dt>
+        <dd>The unique identifier of the message.</dd>
+    </dl>
+
+    <p>The <em>messages</em> has the following properties:</p>
+    <dl>
+        <dt><b>message</b></dt>
+        <dd>The message to be sent</dd>
+    </dl>
+
+    <p>The <em>message</em> has the following properties:</p>
+    <dl>
+        <dt><b>alert</b></dt>
+        <dd>The message text.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Invalid JSON.</dd>
+        <dt><b>403</b></dt>
+        <dd>The user is not authorized to call this service.</dd>
+        <dt><b>404</b></dt>
+        <dd>The corresponding runtime is not found or not running.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Bulk Push Messages (POST)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Send bulk messages with different options that you can specify.</p>
+
+
+    <h3>
+        Method
+    </h3>
+    POST
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/messages/bulk</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/messages/bulk</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "messages.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The payload in JSON format has values for array of messages, target, and settings.
+    <p>JSON Example:</p>
+    <pre>{
+  "//ArrayOfMessageBody" : [
+    {
+      "messages" : {
+        "alert" : "Test message",
+      },
+      "notificationType" : 1,
+      "settings" : {
+        "apns" : {
+          "badge" : 1,
+          "iosActionKey" : "Ok",
+          "payload" : {"custom":"data"},
+          "sound" : "song.mp3",
+          "type" : "SILENT",
+        },
+        "gcm" : {
+          "delayWhileIdle" : false,
+          "payload" : {"custom":"data"},
+          "sound" : "song.mp3",
+          "timeToLive" : 10,
+        },
+        "wns" : {
+          "badge" : {"value":"10"},
+          "cachePolicy" : false,
+          "expirationTime" : 20,
+          "raw" : {"payload":{"custom":"data"}},
+          "tile" : {"visual":{"binding":[{"template":"TileSquareText04", "text": [{"content":"Text1"}]}, {"template":"TileWideText04","text": [{"content":"Text1"}]}]}},
+          "toast" : {"launch":{"custom":"data"}, "visual":{"binding":{"template":"ToastText04","text":[{"content":"Text1"},{"content":"Text2"},{"content":"Text3"}]}},
+        },
+      },
+      "target" : {
+        "deviceIds" : [ "MyDeviceId1", ... ],
+        "platforms" : [ "A,G", ... ],
+        "tagNames" : [ "Gold", ... ],
+        "userIds" : [ "MyUserId", ... ],
+      },
+    },
+    ...
+  ],
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>//ArrayOfMessageBody</b></dt>
+        <dd>The array of message</dd>
+    </dl>
+
+    <p>The <em>bulk-messages</em> has the following properties:</p>
+    <dl>
+        <dt><b>messages</b></dt>
+        <dd>The array of message</dd>
+        <dt><b>notificationType</b></dt>
+        <dd>Integer value to indicate the channel (Push/SMS) used to send message. Allowed values are 1 (only Push), 2 (only SMS) and 3 (Push and SMS)</dd>
+        <dt><b>settings</b></dt>
+        <dd>The settings are the different attributes of the notification.</dd>
+        <dt><b>target</b></dt>
+        <dd>Set of targets can be userIds, devices, platforms, or tags.</dd>
+    </dl>
+
+    <p>The <em>message</em> has the following properties:</p>
+    <dl>
+        <dt><b>alert</b></dt>
+        <dd>A string to be displayed in the alert.</dd>
+    </dl>
+
+    <p>The <em>settings</em> has the following properties:</p>
+    <dl>
+        <dt><b>apns</b></dt>
+        <dd>Attributes for sending message to an iOS device.</dd>
+        <dt><b>gcm</b></dt>
+        <dd>Attributes for sending message to an Android device.</dd>
+        <dt><b>wns</b></dt>
+        <dd>Attributes for sending message to a windows device.</dd>
+    </dl>
+
+    <p>The <em>apns</em> has the following properties:</p>
+    <dl>
+        <dt><b>badge</b></dt>
+        <dd>An integer value to be displayed in a badge on the application icon.</dd>
+        <dt><b>iosActionKey</b></dt>
+        <dd>The label of the dialog box button that allows the user to open the app upon receiving the notification.</dd>
+        <dt><b>payload</b></dt>
+        <dd>A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.</dd>
+        <dt><b>sound</b></dt>
+        <dd>The name of a file to play when the notification arrives.</dd>
+        <dt><b>type</b></dt>
+        <dd>Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT</dd>
+    </dl>
+
+    <p>The <em>gcm</em> has the following properties:</p>
+    <dl>
+        <dt><b>delayWhileIdle</b></dt>
+        <dd>A Boolean value that indicates that the message must not be sent if the device is idle. The server waits for the device to become active before the message is sent.</dd>
+        <dt><b>payload</b></dt>
+        <dd>A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.</dd>
+        <dt><b>sound</b></dt>
+        <dd>The name of a sound file on the device to play when the notification arrives to the device.</dd>
+        <dt><b>timeToLive</b></dt>
+        <dd>The duration (in seconds) that the message is kept on GCM storage if the device is offline. Default value is 4 weeks, and must be set as a JSON number.</dd>
+    </dl>
+
+    <p>The <em>wns</em> has the following properties:</p>
+    <dl>
+        <dt><b>badge</b></dt>
+        <dd></dd>
+        <dt><b>cachePolicy</b></dt>
+        <dd>A boolean value that indicates if the notification should be cached or not.</dd>
+        <dt><b>expirationTime</b></dt>
+        <dd>Optional. Expriry time of the notification.</dd>
+        <dt><b>raw</b></dt>
+        <dd></dd>
+        <dt><b>tile</b></dt>
+        <dd></dd>
+        <dt><b>toast</b></dt>
+        <dd></dd>
+    </dl>
+
+    <p>The <em>badge</em> has the following properties:</p>
+    <dl>
+        <dt><b>value</b></dt>
+        <dd>Optional. A numeric or string value that indicates a prdefined glyph to be displayed.</dd>
+        <dt><b>version</b></dt>
+        <dd>Optional. Version of the payload.</dd>
+    </dl>
+
+    <p>The <em>raw</em> has the following properties:</p>
+    <dl>
+        <dt><b>payload</b></dt>
+        <dd>Optional. A JSON block that is transferred to the application only if the application is already open.</dd>
+    </dl>
+
+    <p>The <em>tile</em> has the following properties:</p>
+    <dl>
+        <dt><b>tag</b></dt>
+        <dd>Optional. A string value that is set as label for the notification. Used in notification cycling.</dd>
+        <dt><b>visual</b></dt>
+        <dd></dd>
+    </dl>
+
+    <p>The <em>visual</em> has the following properties:</p>
+    <dl>
+        <dt><b>addImageQuery</b></dt>
+        <dd>Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
+        <dt><b>baseUri</b></dt>
+        <dd>Optional. Base URI to be combined with the relative URIs.</dd>
+        <dt><b>binding</b></dt>
+        <dd>For tile notifications, its a JSON array containing JSON blocks of binding attributes. For toast notification, its a JSON block of binding attributes.</dd>
+        <dt><b>branding</b></dt>
+        <dd>Optional. Indicates whether logo or app's name to be shown. Default is None.</dd>
+        <dt><b>contentId</b></dt>
+        <dd>Optional. A string value that identifies the notification content. Only applies to tile notifications.</dd>
+        <dt><b>lang</b></dt>
+        <dd>Optional. Locale of the payload.</dd>
+        <dt><b>version</b></dt>
+        <dd>Optional. Version of the payload.</dd>
+    </dl>
+
+    <p>The <em>binding</em> has the following properties:</p>
+    <dl>
+        <dt><b>addImageQuery</b></dt>
+        <dd>Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
+        <dt><b>baseUri</b></dt>
+        <dd>Optional. Base URI to be combined with the relative URIs.</dd>
+        <dt><b>branding</b></dt>
+        <dd>Optional. Indicates whether logo or app's name to be shown. Default is None.</dd>
+        <dt><b>contentId</b></dt>
+        <dd>Optional. A string value that identifies the notification content. Only applies to tile notifications.</dd>
+        <dt><b>fallback</b></dt>
+        <dd>Optional. Template to be used as a fallback.</dd>
+        <dt><b>image</b></dt>
+        <dd>Optional. A JSON array containing JSON blocks of following image attributes.</dd>
+        <dt><b>lang</b></dt>
+        <dd>Optional. Locale of the payload.</dd>
+        <dt><b>template</b></dt>
+        <dd>Mandatory. Template type of the notification.</dd>
+        <dt><b>text</b></dt>
+        <dd>Optional. A JSON array containing JSON blocks of following text attributes.</dd>
+    </dl>
+
+    <p>The <em>image</em> has the following properties:</p>
+    <dl>
+        <dt><b>addImageQuery</b></dt>
+        <dd>Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
+        <dt><b>alt</b></dt>
+        <dd>Optional. Image description.</dd>
+        <dt><b>src</b></dt>
+        <dd>Mandatory. Image URI.</dd>
+    </dl>
+
+    <p>The <em>text</em> has the following properties:</p>
+    <dl>
+        <dt><b>content</b></dt>
+        <dd>Mandatory. A string value that is displayed in the toast.</dd>
+        <dt><b>lang</b></dt>
+        <dd>Optional. Locale of the payload.</dd>
+    </dl>
+
+    <p>The <em>toast</em> has the following properties:</p>
+    <dl>
+        <dt><b>audio</b></dt>
+        <dd></dd>
+        <dt><b>duration</b></dt>
+        <dd>Optional. Notification will be displayed for the specified duration. Should be 'short' or 'long'.</dd>
+        <dt><b>launch</b></dt>
+        <dd>Optional. A string value that is passed to the application when it is launched by tapping or clicking the toast notification.</dd>
+        <dt><b>visual</b></dt>
+        <dd></dd>
+    </dl>
+
+    <p>The <em>audio</em> has the following properties:</p>
+    <dl>
+        <dt><b>loop</b></dt>
+        <dd>Optional. A boolean value to indicate if the sound should be repeated or not.</dd>
+        <dt><b>silent</b></dt>
+        <dd>Optional. A boolean value to indicate if the sound should be played or not.</dd>
+        <dt><b>src</b></dt>
+        <dd>Optional. A string value that specifies the notification sound type or path to local audio file.</dd>
+    </dl>
+
+    <p>The <em>target</em> has the following properties:</p>
+    <dl>
+        <dt><b>deviceIds</b></dt>
+        <dd>An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notification</dd>
+        <dt><b>platforms</b></dt>
+        <dd>An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and W (Microsoft/Windows).</dd>
+        <dt><b>tagNames</b></dt>
+        <dd>An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications</dd>
+        <dt><b>userIds</b></dt>
+        <dd>An array of users represented by their userIds to send the notification. This is a unicast notification.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid JSON could result in this error code.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The application does not exist.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Message (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves the message details by messageId</p>
+    <p>Requires below JNDI properties to be set for the MobileFirst Push.
+        <ui>
+            <li>imfpush/mfp.push.messages.persist.size (Queue size to store messages before writing to Database).</li>
+            <li>imfpush/mfp.push.messages.persist.delay.mins (Delay in minitues to write sent messages in Database).</li>
+        </ui>
+    </p>
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/messages/&lt;messageId&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/messages/mymessage</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+        <dt><b>messageId</b></dt>
+        <dd>The identifier of the message</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "messages.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    The details of the message that is retrieved.
+    <p>JSON Example:</p>
+    <pre>{
+  "alert" : "TestMessage",
+  "messageId" : "1234",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>alert</b></dt>
+        <dd>The message text.</dd>
+        <dt><b>messageId</b></dt>
+        <dd>The unique identifier of the message.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The message with the specified messageId is not found.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Message (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Deletes the message details by messageId</p>
+
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/messages/&lt;messageId&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/messages/mymessage</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+        <dt><b>messageId</b></dt>
+        <dd>The identifier of the message</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "messages.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The message with the specified messageId is not found.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Device Subscriptions (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves all or a subset of existing subscriptions</p>
+    <p>Retrieves subscriptions for the push service for the specified criteria.</p>
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/subscriptions</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/subscriptions?deviceId=12345-6789&amp;expand=true&amp;filter=tagName=@tag&amp;offset=0&amp;size=10&amp;tagName=sports&amp;userId=user1</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Query Parameters
+    </h3>
+    Query parameters are optional.
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>Retrieves subscriptions only for the specified deviceId</dd>
+        <dt><b>expand</b></dt>
+        <dd>Retrieves additional metadata for every subscription that is returned in the response</dd>
+        <dt><b>filter</b></dt>
+        <dd>The filter specifies the search criteria. Refer to the filter section for detailed syntax</dd>
+        <dt><b>offset</b></dt>
+        <dd>Pagination offset that is normally used along with the size</dd>
+        <dt><b>size</b></dt>
+        <dd>Pagination size that is normally used along with the offset to retrieve a subset</dd>
+        <dt><b>tagName</b></dt>
+        <dd>Retrieves subscriptions only for the specified tagName</dd>
+        <dt><b>userId</b></dt>
+        <dd>Retrives subscriptions only for the specified userId</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "subscriptions.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    The details of the device subscription that is retrieved.
+    <p>JSON Example:</p>
+    <pre>{
+  "pageInfo" : {
+    "count" : "2",
+    "next" : "",
+    "previous" : "",
+    "totalCount" : "10",
+  },
+  "subscriptions" : [
+    {
+      "deviceId" : "12345-6789",
+      "href" : "http://localhost:9080/imfpush/v1/apps/appName/subscriptions?deviceId=12345-6789&tagName=testTag",
+      "subscriptionId" : "1",
+      "tagName" : "testTag",
+      "userId" : "admin",
+    },
+    ...
+  ],
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>pageInfo</b></dt>
+        <dd>The pagination information</dd>
+        <dt><b>subscriptions</b></dt>
+        <dd>The array of device subscriptions.</dd>
+    </dl>
+
+    <p>The <em>pageInfo</em> has the following properties:</p>
+    <dl>
+        <dt><b>count</b></dt>
+        <dd>The number of device registration that are retrieved</dd>
+        <dt><b>next</b></dt>
+        <dd>A hyperlink to the next page</dd>
+        <dt><b>previous</b></dt>
+        <dd>A hyperlink to the previous page</dd>
+        <dt><b>totalCount</b></dt>
+        <dd>The total number of device registration present for the given search criteria</dd>
+    </dl>
+
+    <p>The <em>subscriptions</em> has the following properties:</p>
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>The unique id of the device.</dd>
+        <dt><b>href</b></dt>
+        <dd>The REST URL to get subscriptions details.</dd>
+        <dt><b>subscriptionId</b></dt>
+        <dd>The unique id of subscription</dd>
+        <dt><b>tagName</b></dt>
+        <dd>The tag name to subscribe</dd>
+        <dt><b>userId</b></dt>
+        <dd>The userId of the device.</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Device Subscription (POST)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Creates a new subscription for a tag.</p>
+    <p>Given the deviceId and the tag name, the request creates a new subscription which subscribes the device to the tag specified</p>
+
+    <h3>
+        Method
+    </h3>
+    POST
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/subscriptions</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/subscriptions</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "subscriptions.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the device and the tag name to which it has to subscribe.
+    <p>JSON Example:</p>
+    <pre>{
+  "deviceId" : "12345-6789",
+  "tagName" : "testTag",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>The unique id of the device.</dd>
+        <dt><b>tagName</b></dt>
+        <dd>The tag name to subscribe.</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the device subscription that is updated.
+    <p>JSON Example:</p>
+    <pre>{
+  "deviceId" : "12345-6789",
+  "href" : "http://localhost:9080/imfpush/v1/apps/appName/subscriptions?deviceId=12345-6789&tagName=testTag",
+  "subscriptionId" : "1",
+  "tagName" : "testTag",
+  "userId" : "admin",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>The unique id of the device.</dd>
+        <dt><b>href</b></dt>
+        <dd>The REST URL to get subscriptions details.</dd>
+        <dt><b>subscriptionId</b></dt>
+        <dd>The unique id of subscription</dd>
+        <dt><b>tagName</b></dt>
+        <dd>The tag name to subscribe.</dd>
+        <dt><b>userId</b></dt>
+        <dd>The user id for subscription</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>A device registraion has userId longer than 254 characters.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>A device registraion with the specified deviceId is not found.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Device Subscription By Tag Name (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Unsubscribes the specified device from a tag.</p>
+    <p>Given the deviceId and the tag name, the request deletes a existing subscription from a tag specified. It will return HTTP response code 204 with no content on successfully unsubscribing</p>
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/subscriptions</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/subscriptions?deviceId=12345-6789&amp;tagName=testTag</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Query Parameters
+    </h3>
+    Query parameters are optional.
+    <dl>
+        <dt><b>deviceId</b></dt>
+        <dd>The unique ID for the device</dd>
+        <dt><b>tagName</b></dt>
+        <dd>The tag name to unsubscribe</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "subscriptions.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>A device registraion has userId longer than 254 characters.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>A device registraion with the specified deviceId is not found.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Tags (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves all tags of Push</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/tags</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/tags?expand=true&amp;filter=platform==A&amp;offset=0&amp;size=10&amp;subscriptionCount=10</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Query Parameters
+    </h3>
+    Query parameters are optional.
+    <dl>
+        <dt><b>expand</b></dt>
+        <dd>Retrieves detailed information about applications.</dd>
+        <dt><b>filter</b></dt>
+        <dd>Search criteria filter. Refer to the filter section for detailed syntax.</dd>
+        <dt><b>offset</b></dt>
+        <dd>Pagination offset that is normally used along with the size.</dd>
+        <dt><b>size</b></dt>
+        <dd>Pagination size that is normally used along with the offset to retrieve a subset.</dd>
+        <dt><b>subscriptionCount</b></dt>
+        <dd>Retrieves the number of tag subscriptions</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "tags.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    The details of the tag that is retrieved.
+    <p>JSON Example:</p>
+    <pre>{
+  "pageInfo" : {
+    "count" : "2",
+    "next" : "",
+    "previous" : "",
+    "totalCount" : "10",
+  },
+  "tags" : [
+    {
+      "createdMode" : "API",
+      "createdTime" : "2015-08-22T18:19:58Z",
+      "description" : "Description about SampleTag",
+      "href" : "https://example.com:443/imfpush/v1/apps/testApp/tags/SampleTag",
+      "lastUpdatedTime" : "2015-08-22T18:19:58Z",
+      "name" : "SampleTag",
+    },
+    ...
+  ],
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>pageInfo</b></dt>
+        <dd>The pagination information</dd>
+        <dt><b>tags</b></dt>
+        <dd>The array of applications.</dd>
+    </dl>
+
+    <p>The <em>pageInfo</em> has the following properties:</p>
+    <dl>
+        <dt><b>count</b></dt>
+        <dd>The number of tags that are retrieved</dd>
+        <dt><b>next</b></dt>
+        <dd>A hyperlink to the next page</dd>
+        <dt><b>previous</b></dt>
+        <dd>A hyperlink to the previous page</dd>
+        <dt><b>totalCount</b></dt>
+        <dd>The total number of application tags present for the given search criteria</dd>
+    </dl>
+
+    <p>The <em>tagnames</em> has the following properties:</p>
+    <dl>
+        <dt><b>createdMode</b></dt>
+        <dd>Defaults to API</dd>
+        <dt><b>createdTime</b></dt>
+        <dd>The time at which the tag was created</dd>
+        <dt><b>description</b></dt>
+        <dd>The description of the tag</dd>
+        <dt><b>href</b></dt>
+        <dd>The URL to the tag</dd>
+        <dt><b>lastUpdatedTime</b></dt>
+        <dd>The time at which the tag was last updated</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the tag in the application</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>A tag with the specified name is not found.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Tag (POST)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Creates a tag.</p>
+    <p>Creates a tag with the unique name in the application, which is referenced by the applicationId parameter. The tag has associated with a description about the tag. The tag name cannot be updated after it is created</p>
+
+    <h3>
+        Method
+    </h3>
+    POST
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/tags</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/tags</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "tags.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Consumes
+    </h3>
+    application/json
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the tag.
+    <p>JSON Example:</p>
+    <pre>{
+  "description" : "Description about SampleTag",
+  "name" : "SampleTag",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>description</b></dt>
+        <dd>The description of the tag</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the tag in the application</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the tag.
+    <p>JSON Example:</p>
+    <pre>{
+  "createdMode" : "API",
+  "createdTime" : "2015-08-22T18:19:58Z",
+  "description" : "Description about SampleTag",
+  "href" : "https://example.com:443/imfpush/v1/apps/testApp/tags/SampleTag",
+  "lastUpdatedTime" : "2015-08-22T18:19:58Z",
+  "name" : "SampleTag",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>createdMode</b></dt>
+        <dd>Defaults to API</dd>
+        <dt><b>createdTime</b></dt>
+        <dd>The time at which the tag was created</dd>
+        <dt><b>description</b></dt>
+        <dd>The description of the tag</dd>
+        <dt><b>href</b></dt>
+        <dd>The URL to the tag</dd>
+        <dt><b>lastUpdatedTime</b></dt>
+        <dd>The time at which the tag was last updated</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the tag in the application</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid JSON could result in this error code.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Tag (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Retrieves an existing tag of Push</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/tags/&lt;tagName&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/tags/sports</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+        <dt><b>tagName</b></dt>
+        <dd>The name of the tag</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "tags.read" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Response
+    </h3>
+    The details of the tag that is retrieved.
+    <p>JSON Example:</p>
+    <pre>{
+  "createdMode" : "API",
+  "createdTime" : "2015-08-22T18:19:58Z",
+  "description" : "Description about SampleTag",
+  "lastUpdatedTime" : "2015-08-22T18:19:58Z",
+  "name" : "SampleTag",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>createdMode</b></dt>
+        <dd>Defaults to API</dd>
+        <dt><b>createdTime</b></dt>
+        <dd>The time at which the tag was created</dd>
+        <dt><b>description</b></dt>
+        <dd>The description of the tag</dd>
+        <dt><b>lastUpdatedTime</b></dt>
+        <dd>The time at which the tag was last updated</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the tag in the application</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The tag with the specified tagName is not found.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Tag (PUT)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Updates tag information</p>
+    <p>Updates the tag referenced by the tagName of the application referenced by the applicationId.</p>
+
+    <h3>
+        Method
+    </h3>
+    PUT
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/tags/&lt;tagName&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/tags/sports</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+        <dt><b>tagName</b></dt>
+        <dd>The name of the tag</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "tags.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the tag.
+    <p>JSON Example:</p>
+    <pre>{
+  "description" : "Description about SampleTag",
+  "name" : "SampleTag",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>description</b></dt>
+        <dd>The description of the tag</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the tag in the application</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the tag.
+    <p>JSON Example:</p>
+    <pre>{
+  "createdMode" : "API",
+  "createdTime" : "2015-08-22T18:19:58Z",
+  "description" : "Description about SampleTag",
+  "href" : "https://example.com:443/imfpush/v1/apps/testApp/tags/SampleTag",
+  "lastUpdatedTime" : "2015-08-22T18:19:58Z",
+  "name" : "SampleTag",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>createdMode</b></dt>
+        <dd>Defaults to API</dd>
+        <dt><b>createdTime</b></dt>
+        <dd>The time at which the tag was created</dd>
+        <dt><b>description</b></dt>
+        <dd>The description of the tag</dd>
+        <dt><b>href</b></dt>
+        <dd>The URL to the tag</dd>
+        <dt><b>lastUpdatedTime</b></dt>
+        <dd>The time at which the tag was last updated</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the tag in the application</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid JSON could result in this error code.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The tag with the specified tagName is not found.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Tag (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Delete the tag in the application.</p>
+
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/tags/&lt;tagName&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/tags/sports</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+        <dt><b>tagName</b></dt>
+        <dd>The name of the tag</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "tags.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The tag with the specified tagName is not found.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Webhooks (POST)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Creates a webhook.</p>
+    <p>Creates a webhook with the unique name in the application, which is referenced by the applicationId parameter. The webhook has associated with a name, url and event types. The webhook name cannot be updated after it is created</p>
+
+    <h3>
+        Method
+    </h3>
+    POST
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/webhooks</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/webhooks</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "webhooks.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the webhook.
+    <p>JSON Example:</p>
+    <pre>{
+  "eventTypes" : "onDeviceRegister,onDeviceUpdate,onDeviceUnregister,onSubscribe,onUnsubscribe",
+  "name" : "SampleWebhook",
+  "url" : "http://samplewebhook.com",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>eventTypes</b></dt>
+        <dd>The list of event types comma separated</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the webhook in the application</dd>
+        <dt><b>url</b></dt>
+        <dd>The url of the webhook</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the webhook.
+    <p>JSON Example:</p>
+    <pre>{
+  "eventTypes" : "onDeviceRegister,onDeviceUpdate,onDeviceUnregister,onSubscribe,onUnsubscribe",
+  "name" : "SampleWebhook",
+  "url" : "http://samplewebhook.com",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>eventTypes</b></dt>
+        <dd>The list of event types comma separated</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the webhook in the application</dd>
+        <dt><b>url</b></dt>
+        <dd>The description of the webhook</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid JSON could result in this error code.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Webhooks (PUT)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Updates an existing webhook.</p>
+
+
+    <h3>
+        Method
+    </h3>
+    PUT
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/webhooks/&lt;webhookName&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/webhooks/mywebhook</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+        <dt><b>webhookName</b></dt>
+        <dd>The identifier of the webhook</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "webhooks.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+        <dt><b>Content-Type</b></dt>
+        <dd>Specify the JSON content type. For example: application/json. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Payload input
+    </h3>
+    The details of the webhook.
+    <p>JSON Example:</p>
+    <pre>{
+  "eventTypes" : "onDeviceRegister,onDeviceUpdate,onDeviceUnregister,onSubscribe,onUnsubscribe",
+  "name" : "SampleWebhook",
+  "url" : "http://samplewebhook.com",
+}</pre>
+
+    <h3>
+        Payload Properties
+    </h3>
+    The payload has the following properties:
+    <dl>
+        <dt><b>eventTypes</b></dt>
+        <dd>The list of event types comma separated</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the webhook in the application</dd>
+        <dt><b>url</b></dt>
+        <dd>The url of the webhook</dd>
+    </dl>
+
+
+
+    <h3>
+        Response
+    </h3>
+    The details of the webhook.
+    <p>JSON Example:</p>
+    <pre>{
+  "eventTypes" : "onDeviceRegister,onDeviceUpdate,onDeviceUnregister,onSubscribe,onUnsubscribe",
+  "name" : "SampleWebhook",
+  "url" : "http://samplewebhook.com",
+}</pre>
+
+    <h3>
+        Response Properties
+    </h3>
+    The response has the following properties:
+    <dl>
+        <dt><b>eventTypes</b></dt>
+        <dd>The list of event types comma separated</dd>
+        <dt><b>name</b></dt>
+        <dd>An unique name of the webhook in the application</dd>
+        <dt><b>url</b></dt>
+        <dd>The description of the webhook</dd>
+    </dl>
+
+
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>400</b></dt>
+        <dd>Bad Request - The request was not understood by the push server. An invalid JSON could result in this error code.</dd>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The webhook does not exist.</dd>
+        <dt><b>405</b></dt>
+        <dd>Unsupported Content type - The content type specified in Content-Type header is not application/json.</dd>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Webhook (DELETE)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Delete the webhook in the application.</p>
+
+
+    <h3>
+        Method
+    </h3>
+    DELETE
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/apps/&lt;applicationId&gt;/webhooks/&lt;webhookName&gt;</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/apps/myapp/webhooks/mywebhook</code></p>
+
+    <h3>
+        Path Parameters
+    </h3>
+    <dl>
+        <dt><b>applicationId</b></dt>
+        <dd>The name or identifier of the application</dd>
+        <dt><b>webhookName</b></dt>
+        <dd>The identifier of the webhook</dd>
+    </dl>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+        <dt><b>Authorization</b></dt>
+        <dd>The token with the scope "webhooks.write" and "push.application.<i>&lt;applicationId&gt;</i>" obtained using the confidential client in the format Bearer <i>token</i>.. This parameter has to be mandatorily set.</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>401</b></dt>
+        <dd>Unauthorized - The caller is either not authenticated or not authorized to make this request.</dd>
+        <dt><b>404</b></dt>
+        <dd>The webhook with the specified name is not found.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+    <h2>
+        Push Health Checker (GET)
+    </h2>
+
+    <h3>
+        Description
+    </h3>
+    <p>Checks the status of Push Service.</p>
+
+
+    <h3>
+        Method
+    </h3>
+    GET
+
+    <h3>
+        Path
+    </h3>
+    <p><b>/health/status</b></p>
+    <p>Example:</p>
+    <p><code>https://example.com:443/imfpush/v1/health/status</code></p>
+
+    <h3>
+        Header Parameters
+    </h3>
+    <dl>
+        <dt><b>Accept-Language</b></dt>
+        <dd>(Optional) The preferred language to use for error messages. Default:en-US</dd>
+    </dl>
+
+    <h3>
+        Produces
+    </h3>
+    application/json
+
+    <h3>
+        Errors
+    </h3>
+    <dl>
+        <dt><b>406</b></dt>
+        <dd>Unsupported Accept type - The content type specified in Accept header is not application/json.</dd>
+        <dt><b>500</b></dt>
+        <dd>An internal error occurred.</dd>
+    </dl>
+
+
+
+
+</body>
+
+</HTML>

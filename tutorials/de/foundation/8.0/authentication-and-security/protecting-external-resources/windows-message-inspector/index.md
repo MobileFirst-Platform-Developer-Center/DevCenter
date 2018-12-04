@@ -5,7 +5,7 @@ breadcrumb_title: Windows .NET Message Inspector
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:
-  - name: Beispiel herunterladen
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -81,6 +81,8 @@ Unser Service ist bereit, sodass wir jetzt in der Datei App.config konfigurieren
 ```
 Zum Schluss sollten wir den Service mit der Methode `Main` des Bereitstellungsprogramms ausführen:
 
+
+
 ```csharp
 static void Main(string[] args) {
   // ServiceHost erstellen
@@ -104,6 +106,8 @@ static void Main(string[] args) {
 
 > Weitere Informationen zu WCF-REST-Services finden Sie
 unter [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).
+
+
 
 ## Message Inspector definieren
 {: #define-a-message-inspector}
@@ -203,12 +207,11 @@ private const string filterUserName = "USERNAME"; // Benutzername des vertraulic
 private const string filterPassword = "PASSWORD";  // Geheimer Schlüssel des vertraulichen Clients
 ```
 
-Als Nächstes werden wir unsere Methode `validateRequest` erstellen, die den Ausgangspunkt
-für den Validierungsprozess bildet, den wir in unserem Message Inspector implementieren werden. Im Anschluss werden wir
+Als Nächstes werden wir unsere Methode `validateRequest` erstellen, die den Ausgangspunkt für den Validierungsprozess bildet, den wir in unserem Message Inspector implementieren werden. Im Anschluss werden wir
 einen Aufruf dieser Methode in die zuvor erwähnte Methode `AfterReceiveRequest` einfügen: 
 
 ```csharp
-public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
+public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext){
   validateRequest(request);
   return null;
 }
@@ -431,7 +434,7 @@ Antwort des {{ site.data.keys.product_adj }}-Autorisierungsservers definiert ist
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
 {
-  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Sicherstellen, dass HttpStatusCode = 200 OK (bevor active==true und Bereich überprüft werden)
+  if (introspectionResponse.StatusCode != HttpStatusCode.OK) // Make sure that HttpStatusCode = 200 ok (before checking active==true & scope)
   {
     if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized) // Wir haben ein Problem, weil wir bereits ein neues Token angefordert haben.
     {

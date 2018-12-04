@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: 在 JavaScript（Cordova 和 Web）应用程序中实现验证问题处理程序
+title: 在 JavaScript（Cordova、Web）应用程序中实施验证问题处理程序
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 weight: 2
 downloads:
-  - name: 下载 Web 项目
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80
-  - name: 下载 Cordova 项目
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80
-  - name: 下载 SecurityCheck Maven 项目
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -36,7 +36,7 @@ downloads:
 {: creating-the-challenge-handler }
 验证问题处理程序可处理 {{ site.data.keys.mf_server }} 发送的验证问题，如显示登录屏幕、收集凭证和将其提交回安全性检查。
 
-在此示例中，安全性检查为 `PinCodeAttempts`，在[实现 CredentialsValidationSecurityCheck](../security-check) 中定义。此安全性检查发送的验证问题包含剩余登录尝试次数 (`remainingAttempts`) 以及可选 `errorMsg`。
+在此示例中，安全性检查为 `PinCodeAttempts`，在[实现 CredentialsValidationSecurityCheck](../security-check) 中定义。 此安全性检查发送的验证问题包含剩余登录尝试次数 (`remainingAttempts`) 以及可选 `errorMsg`。
 
 
 使用 `WL.Client.createSecurityCheckChallengeHandler()` API 方法创建和注册验证问题处理程序：
@@ -47,7 +47,7 @@ PinCodeChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("PinCode
 
 ## 处理验证问题
 {: #handling-the-challenge }
-`createSecurityCheckChallengeHandler` 协议的最低要求是实现 `handleChallenge()` 方法，它负责请求用户提供凭证。`handleChallenge` 方法会接收作为 `JSON` 对象的验证问题。
+`createSecurityCheckChallengeHandler` 协议的最低要求是实现 `handleChallenge()` 方法，它负责请求用户提供凭证。 `handleChallenge` 方法会接收作为 `JSON` 对象的验证问题。
 
 在此示例中，警报会提示用户输入 PIN 码：
 
@@ -79,7 +79,7 @@ PinCodeChallengeHandler.handleChallenge = function(challenge) {
 
 ## 提交验证问题的答案
 {: #submitting-the-challenges-answer }
-在从 UI 收集凭证之后，使用 `createSecurityCheckChallengeHandler` 的 `submitChallengeAnswer()` 将答案发送回安全性检查。在此示例中，`PinCodeAttempts` 预期有一个名为 `pin` 且包含提交的 PIN 码的属性：
+在从 UI 收集凭证之后，使用 `createSecurityCheckChallengeHandler` 的 `submitChallengeAnswer()` 将答案发送回安全性检查。 在此示例中，`PinCodeAttempts` 预期有一个名为 `pin` 且包含提交的 PIN 码的属性：
 
 ```javascript
 PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
@@ -96,17 +96,17 @@ PinCodeChallengeHandler.cancel();
 
 ## 处理故障
 {: #handling-failures }
-某些场景可能会触发故障（如达到最大尝试次数）。要处理这些场景，请实现 `createSecurityCheckChallengeHandler` 的 `handleFailure()`。  
+某些场景可能会触发故障（如达到最大尝试次数）。 要处理这些场景，请实现 `createSecurityCheckChallengeHandler` 的 `handleFailure()`。  
 作为参数传递的 JSON 对象的结构很大程度上取决于故障性质。
 
 ```javascript
 PinCodeChallengeHandler.handleFailure = function(error) {
     WL.Logger.debug("Challenge Handler Failure!");
 
-    if(error.failure && error.failure == "account blocked") {
+    if(error.failure &&  error.failure == "account blocked") {
         alert("No Remaining Attempts!");  
     } else {
-alert("Error! " + JSON.stringify(error));
+        alert("Error! " + JSON.stringify(error));
     }
 };
 ```
@@ -115,7 +115,7 @@ alert("Error! " + JSON.stringify(error));
 {: #handling-successes }
 通常，该框架会自动处理成功情况，以支持应用程序的其余部分继续运作。
 
-您还可以通过实现 `createSecurityCheckChallengeHandler` 的 `handleSuccess()`，选择在框架关闭验证问题处理程序流之前执行某些操作。同样，`success` JSON 对象的内容和结构取决于安全性检查发送的内容。
+您还可以通过实现 `createSecurityCheckChallengeHandler` 的 `handleSuccess()`，选择在框架关闭验证问题处理程序流之前执行某些操作。 同样，`success` JSON 对象的内容和结构取决于安全性检查发送的内容。
 
 在 `PinCodeAttemptsCordova` 样本应用程序中，成功不包含任何其他数据。
 

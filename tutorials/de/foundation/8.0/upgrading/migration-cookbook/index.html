@@ -66,7 +66,7 @@ Implementierung und Konfiguation von Sicherheit und Authentifizierung und zu vie
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
-                        <h3 class="migratingAdapters no-anchor">Adapter<br/>umstellen</h3>
+                        <h3 class="migratingAdapters no-anchor">Adapter<br/>migrieren</h3>
 
                         <ul class="topics">
                             <li><a href="#migrating-adapters">Voraussetzungen für das<br/>Apache-Maven-Setup</a></li>
@@ -101,8 +101,8 @@ Implementierung und Konfiguation von Sicherheit und Authentifizierung und zu vie
         <p>Vor Beginn der Migration benötigen Sie eine aktive MobileFirst-Server-Instanz und das Unterstützungstool für die Migration. </p>
 
         <h3>{{ site.data.keys.mf_server }}</h3>
-        <p>Sie können einen {{ site.data.keys.mf_server }} in <a href="https://bluemix.net">IBM Bluemix</a> einrichten.
-Verwenden Sie dafür den <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile-Foundation-Bluemix-Service</a>. Alternativ können Sie
+        <p>Sie können einen {{ site.data.keys.mf_server }} in <a href="https://bluemix.net">IBM Cloud</a> einrichten.
+Verwenden Sie dafür den <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">IBM Cloud-Service 'Mobile Foundation'</a>. Alternativ können Sie
 das <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> verwenden,
 jum einen lokal ausgeführten Server einzurichten. </p>
 
@@ -136,7 +136,7 @@ installieren Sie zunächst das Unterstützungstool für die Migration, das Sie s
 
         <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Entwicklung von Cordova-Anwendungen</a>.</blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
                     <h4 class="panel-title">
@@ -192,15 +192,15 @@ können Sie diese mit <a href="http://cordova.apache.org/docs/en/latest/guide/cl
                         <h4>Schritt 3</h4>
                         <p>Jetzt, da sich der Quellcode der Anwendung in der Cordova-App befindet, müssen Sie ein paar Codeblöcke hinzufügen oder bearbeiten. </p>
 
-                        <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
+                        <div class="panel-group accordion" id="setupCordova" role="tablist">
                         <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="setupCordova">
+                            <div class="panel-heading" role="tab" id="setupCordova-inner">
                                 <h4 class="panel-title">
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#setupCordova" data-target="#collapseCordova" aria-expanded="false" aria-controls="collapseCordova">Für Anweisungen hier klicken</a>
                                 </h4>
                             </div>
 
-                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova-inner">
                                 <div class="panel-body">
                                     <ol>
                                         <li>Aktualisieren Sie die Datei <b>www/index.html</b>. <ul>
@@ -234,10 +234,8 @@ jQuery-Version herunterladen und wie in der folgenden Codezeile angegeben laden.
 <br />
 							<code>&lt;script src="lib/jquery.min.js"&gt;&lt;/script&gt;</code>
 							<br />
-Sie müssen die optionale
-jQuery-Ergänzung nicht in den Ordner lib verschieben.
-Sie können diese Ergänzung an eine beliebige Position verschieben, müssen jedoch in der Datei
-index.html einen ordnungsgemäßen Verweis angeben. </li>
+                                                        Sie müssen die optionale jQuery-Ergänzung nicht in den Ordner lib verschieben. Sie können diese Ergänzung an eine beliebige Position verschieben, müssen jedoch in der Datei index.html einen ordnungsgemäßen Verweis angeben.
+                                                    </li>
                                                 </ul>
                                             </li>
 
@@ -343,11 +341,11 @@ Die Bereitstellung von Services für die Webanwendung erfolgt mit Standardmethod
 
         <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Entwicklung von Webanwendungen</a>. </blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-web" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-web-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">Mobile-Web- bzw. Desktop-Browser-Anwendungen umstellen</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-web" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">Mobile-Web- bzw. Desktop-Browser-Anwendungen umstellen</a>
                     </h4>
                 </div>
 
@@ -419,11 +417,11 @@ und <a href="https://www.nuget.org/" target="_blank">NuGet für Windows</a>. Mit
 
         <blockquote>Informieren Sie sich über die <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">Entwicklung nativer Anwendungen</a>. </blockquote>
 
-        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="application-migration-native" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-native-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">SDKs in nativen Anwendungen aktualisieren</a></h4>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration-native" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">SDKs in nativen Anwendungen aktualisieren</a></h4>
                 </div>
 
                 <div id="collapseMigrateNative" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-native-apps">
@@ -465,7 +463,7 @@ und <a href="https://www.nuget.org/" target="_blank">NuGet für Windows</a>. Mit
                         </ul>
 
                         <br/>
-                        <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion1" role="tablist">
                            <div class="panel panel-default">
                               <div class="panel-heading" role="tab" id="removeiOSSDK">
                                  <h4 class="panel-title">
@@ -547,11 +545,8 @@ die in der Podfile und in den Abhängigkeiten angegeben sind. Anschließend gene
 {{ site.data.keys.product_adj }}-SDK in das Clientprojekt. </li>
                                           </ul>
                                        </li>
-                                       <li>Öffnen Sie Ihre Datei <b>Projektname.xcworkspace</b> in
-Xcode. Geben Sie dazu in einer Befehlszeile <b>open Projektname.xcworkspace</b> ein. Die Datei befindet sich in demselben Verzeichnis wie die Datei
-Projektname.xcodeproj. Sie können auch im Finder doppelt auf die Datei klicken. </li>
-                                       <li>Ersetzen Sie alle vorhandenen MobileFirst-Importe in Headern durch
-nur einen Eintrag im folgenden neuen Umbrella-Header: <br/>
+                                       <li>Öffnen Sie Ihre Datei <b>Projektname.xcworkspace</b> in Xcode. Geben Sie dazu in einer Befehlszeile <b>open Projektname.xcworkspace</b> ein. Die Datei befindet sich in demselben Verzeichnis wie die Datei Projektname.xcodeproj. Sie können auch im Finder doppelt auf die Datei klicken.</li>
+                                       <li>Ersetzen Sie alle vorhandenen MobileFirst-Importe in Headern durch nur einen Eintrag im folgenden neuen Umbrella-Header:<br/>
 
                                             <b>Objective-C:</b><br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code>
@@ -561,21 +556,19 @@ nur einen Eintrag im folgenden neuen Umbrella-Header: <br/>
                                        </li>
                                        <li>Fügen Sie auf der Registerkarte <b>Build Settings</b> unter <b>Other Linker Flags</b> am Anfang des Flags <b>-ObjC</b> <code>$(inherited)</code> hinzu. </li>
                                        <li>Wenn Sie Push-Benachrichtigungen oder JSONStore verwenden, müssen Sie einen unabhängigen Import aufnehmen.
-<br/><br/>
+                                            <br/><br/>
                                             <b>Push-Benachrichtigungen</b><br/>
-Objective-C:<br/>
+                                            Objective-C:<br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundationPush/IBMMobileFirstPlatformFoundationPush.h&gt;</code>
                                             <br/><br/>
-Swift:
-<br/>
+                                            Swift:<br/>
                                             <code>import IBMMobileFirstPlatformFoundationPush</code>
                                             <br/><br/>
                                             <b>JSONStore</b><br/>
-Objective-C:<br/>
+                                            Objective-C:<br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h&gt;</code>
                                             <br/><br/>
-Swift:
-<br/>
+                                            Swift:<br/>
                                             <code>import IBMMobileFirstPlatformFoundationJSONStore</code>
                                        </li>
                                     </ol>
@@ -587,7 +580,7 @@ Swift:
                         <br/>
 
                         <b>Android</b><br/>
-                        <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion2" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeAndroidSDK">
                                     <h4 class="panel-title">
@@ -665,7 +658,7 @@ transitive: true{% endhighlight %}</li>
                         <br/>
 
                         <b>Windows</b><br/>
-                        <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
+                        <div class="panel-group accordion" id="accordion3" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeWindowsSDK">
                                     <h4 class="panel-title">
@@ -770,11 +763,11 @@ live in der {{ site.data.keys.mf_console }} konfigurieren, ohne den Adapter erne
         <p>Zu den Schritten für die Umstellung Ihrer Adapter auf Maven-Projekte gehören die Erstellung eines passenden neuen Maven-Projekts und das Kopieren des
 Projekts in den Quellcode des vorhandenen Adapters (mit einigen Modifikationen). Im Anschluss wird der Maven-Projektbuild erstellt, um Fehler zu finden. </p>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration-maven" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="prereqs">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Voraussetzungen für die Einrichtung von Apache Maven</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Voraussetzungen für die Einrichtung von Apache Maven</a>
                     </h4>
                 </div>
 
@@ -815,7 +808,7 @@ auch über das Download-Center in der {{ site.data.keys.mf_console }} herunterla
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="create-adapter">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">Neues Maven-Projekt erstellen</a>
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">Neues Maven-Projekt erstellen</a>
                     </h4>
                 </div>
 
@@ -838,6 +831,57 @@ den zuvor verwendeten
                     </div>
                 </div>
             </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="migrationassistant">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#adapter-migration-maven" href="#collapseMigrationassistant" aria-expanded="false" aria-controls="collapseMigrationassistant">Unterstützungstool für die Migration verwenden</a>
+                        </h4>
+                    </div>
+                    <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
+                        <div class="panel-body">
+                            <ol>
+                              <li>Führen Sie das Unterstützungstool für die Migration mit der Option <i>server</i> aus und geben Sie das <i>Stammverzeichnis</i> Ihres älteren Worklight-Projekts an.
+                                <br/>
+                                <code>
+                                mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
+                                </code>
+                                <br/><br/>
+                                <blockquote>
+                                <h4>SYNTAX</h4>
+                                <pre><span id='code-span'>mfpmigrate server [--in|-i &lt;Quellenverzeichnis&gt;] [--out|-o &lt;Zielverzeichnis&gt;] [--projectName|-p &lt;neues_Projektverzeichnis&gt;]</span></pre>
+                                <br/>
+                                <h4>BESCHREIBUNG</h4>
+                                <p>Das Tool führt eine Migration für sichere Realms und Adapter eines vorhandenen MobileFirst-Projekts durch. </p>
+                                <br/>
+                                <h4>OPTIONEN</h4>
+                                <p><b><i>&lt;Quellenverzeichnis&gt;</i></b>: Das <i>&lt;Quellenverzeichnis&gt;</i> muss der <i>Stammordner</i> des zu migrierenden MobileFirst-Projekts sein. Dieser Parameter ist erforderlich.</p>
+
+                                <p><b><i>&lt;Zielverzeichnis&gt;</i></b>: Das <i>&lt;Zielverzeichnis&gt;</i> ist das Verzeichnis, das nach der Migration die Adapter enthalten soll.</p>
+                              </blockquote>
+                                <p>Das Migrationstool scannt die Adapter und Realms und führt die folgenden Schritte aus:</p>
+                                <ol><li>Es erstellt eine Schablone für die Adapter und unterstützten Sicherheitsüberprüfungen.</li>
+                                    <li>Es verschiebt die Adapterquellen in das neu erstellte Maven-Artefakt.</li>
+                                    <li>Es aktualisiert das <i>POM</i> mit den Abhängigkeiten.</li>
+                                    <li>Es erstellt einen zusammenfassenden Bericht über die ausgeführten Schritte und die Änderungen, die manuell vorgenommen werden müssen, um die Migration abzuschließen.</li>
+                                </ol>
+                              </li>
+
+                              <li>
+                                <p>Nutzen Sie den zusammenfassenden Bericht wie folgt:</p>
+                                <ol>
+                                  <li>Verschaffen Sie sich einen Überblick über die Schritte des Unterstützungstools für die Migration.</li>
+                                  <li>Ordnen Sie nicht unterstützte APIs unterstützten APIs zu, wenn eine direkte Migration nicht möglich ist.</li>
+                                  <li>Stellen Sie fest, welche nicht unterstützten Adapter/Realms in Ihrem traditionellen Worklight-Projekt verwendet werden.</li>
+                                  <li>Gewinnen Sie Einblicke in andere technische Herausforderungen oder Engpässe Ihres bestehenden Entwurfs und lesen Sie die folgenden Informationen zu neuen Entwicklungskonzepten für die Meisterung dieser Herausforderungen.</li>
+                                </ol>
+                              </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
 
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-js-adapter">
@@ -1068,7 +1112,7 @@ bisher bekannten Entitäten wie Sicherheitstests, Realms und Anmeldemodule erset
 zum Sicherheitsframework und zu Autorisierungskonzepten finden Sie in den
 Lernprogrammen zur <a href="../../authentication-and-security/" target="_blank">Authentifizierung und Sicherheit</a>. </blockquote>
 
-        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+        <div class="panel-group accordion" id="adapter-migration" role="tablist">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="security-framework">
                     <h4 class="panel-title">
@@ -1144,8 +1188,7 @@ externer Ressourcen oder Apps verwendet werden können. Dies ist mit dem Konzept
                             </tr>
 
                             <tr>
-                                <td><b>Definition
-</b></td>
+                                <td><b>Definition</b></td>
                                 <td>Definition in der Datei <b>authenticationConfig.xml</b> mit einem Namen, einem oder mehreren Sicherheitstests und mindestens einem Sicherheitstestsfür die Definition der Benutzer-ID (<code>UserID</code>).
 
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">

@@ -1,32 +1,32 @@
 ---
 layout: tutorial
-title: Java 토큰 유효성 검증기
-breadcrumb_title: Java 토큰 유효성 검증기
+title: Java Token Validator
+breadcrumb_title: Java Token Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 1
-다운로드:
-  - 이름: 샘플 다운로드
+downloads:
+  - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-{{ site.data.keys.product_full }}은 외부 자원에서 보안 기능을 강제 실행하기 위해 Java 라이브러리를 제공합니다.   
-Java 라이브러리는 JAR 파일(**mfp-java-token-validator-8.0.0.jar**)로서 제공됩니다. 
+{{ site.data.keys.product_full }}은 외부 자원에서 보안 기능을 강제 실행하기 위해 Java 라이브러리를 제공합니다.  
+Java 라이브러리는 JAR 파일(**mfp-java-token-validator-8.0.0.jar**)로서 제공됩니다.
 
-이 학습서는 범위(`accessRestricted`)를 사용하여 단순 Java Servlet, `GetBalance`를 보호하는 방법을 보여줍니다. 
+이 학습서는 범위(`accessRestricted`)를 사용하여 단순 Java Servlet, `GetBalance`를 보호하는 방법을 보여줍니다.
 
 **전제조건:
 **
 
-* [외부 자원을 인증하기 위해 {{ site.data.keys.mf_server }} 사용](../) 학습서를 읽으십시오. 
-* [{{ site.data.keys.product_adj }} Foundation 보안 프레임워크](../../)를 이해하십시오. 
+* [외부 자원을 인증하기 위해 {{ site.data.keys.mf_server }} 사용](../) 학습서를 읽으십시오.
+* [{{ site.data.keys.product_adj }} Foundation 보안 프레임워크](../../)를 이해하십시오.
 
 ![플로우](JTV_flow.jpg)
 
 ## .jar 파일 종속성 추가
 {: #adding-the-jar-file-dependency }
-**mfp-java-token-validator-8.0.0.jar** 파일은 **maven 종속성**으로 사용 가능합니다. 
+**mfp-java-token-validator-8.0.0.jar** 파일은 **maven 종속성**으로 사용 가능합니다.
 
 ```xml
 <dependency>
@@ -38,17 +38,17 @@ Java 라이브러리는 JAR 파일(**mfp-java-token-validator-8.0.0.jar**)로서
 
 ## TokenValidationManager 인스턴스화
 {: #instantiating-the-tokenvalidationmanager }
-토큰을 유효성 검증할 수 있으려면 `TokenValidationManager`를 인스턴스화하십시오. 
+토큰을 유효성 검증할 수 있으려면 `TokenValidationManager`를 인스턴스화하십시오.
 
 ```java
 TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret);
 ```
 
-- `authorizationURI`: 권한 부여 서버, 일반적으로 {{ site.data.keys.mf_server }}의 URI입니다. 예를 들어 **http://localhost:9080/mfp/api**입니다. 
-- `clientId`: {{ site.data.keys.mf_console }}에서 구성한 기밀 클라이언트 ID입니다. 
-- `clientSecret`: {{ site.data.keys.mf_console }}에서 구성한 기밀 클라이언트 본인확인정보입니다. 
+- `authorizationURI`: 권한 부여 서버, 일반적으로 {{ site.data.keys.mf_server }}의 URI입니다. 예를 들어 **http://localhost:9080/mfp/api**입니다.
+- `clientId`: {{ site.data.keys.mf_console }}에서 구성한 기밀 클라이언트 ID입니다.
+- `clientSecret`: {{ site.data.keys.mf_console }}에서 구성한 기밀 클라이언트 본인확인정보입니다.
 
-> 라이브러리는 권한 부여 서버의 자체 점검 엔드포인트와 상호작용을 캡슐화하고 단순화하는 API를 표시합니다. 자세한 API 참조는 [{{site.data.keys.product_adj }} Java 토큰 유효성 검증기 API 참조](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)를 참조하십시오.
+> 라이브러리는 권한 부여 서버의 자체 점검 엔드포인트와 상호작용을 캡슐화하고 단순화하는 API를 표시합니다. 자세한 API 참조는 [{{ site.data.keys.product_adj }} Java Token Validator API 참조](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)를 참조하십시오.
 
 ## 신임 정보 유효성 검증
 {: #validating-the-credentials }
@@ -59,7 +59,7 @@ public TokenValidationResult validate(java.lang.String authorizationHeader, java
 ```
 
 - `authorizationHeader`: 액세스 토큰인 `Authorization`
-HTTP 헤더의 컨텐츠입니다. 예를 들어 `HttpServletRequest`("`httpServletRequest.getHeader("Authorization)`)에서 얻을 수 있습니다. 
+HTTP 헤더의 컨텐츠입니다. 예를 들어 `HttpServletRequest`("`httpServletRequest.getHeader("Authorization)`)에서 얻을 수 있습니다.
 - `expectedScope`: 토큰을 유효성 검증할 범위입니다(예:`accessRestricted`).
 
 오류에 대해 또는 유효한 자체 점검 데이터에 대해 결과로 생기는 `TokenValidationResult` 오브젝트를 조회할 수 있습니다.
@@ -91,9 +91,9 @@ String username = introspectionData.getUsername();
 
 ## 캐시
 {: #cache }
-`TokenValidationManager` 클래스는 토큰과 자체 점검 데이터를 캐시하는 내부 캐시와 함께 제공됩니다. 캐시의 목적은 요청이 동일한 헤더로 작성된 경우, 권한 부여 서버에 대해 수행되는 토큰 *자체 점검*의 양을 줄이는 것입니다. 
+`TokenValidationManager` 클래스는 토큰과 자체 점검 데이터를 캐시하는 내부 캐시와 함께 제공됩니다. 캐시의 목적은 요청이 동일한 헤더로 작성된 경우, 권한 부여 서버에 대해 수행되는 토큰 *자체 점검*의 양을 줄이는 것입니다.
 
-기본 캐시 크기는 **50000개 항목**입니다. 이 용량에 도달한 후 가장 오래된 토큰이 제거됩니다.   
+기본 캐시 크기는 **50000개 항목**입니다. 이 용량에 도달한 후 가장 오래된 토큰이 제거됩니다.  
 
 `TokenValidationManager`의 생성자는 또한 저장할 `cacheSize`(자체 점검 데이터 항목의 수)를 승인할 수 있습니다.
 
@@ -118,7 +118,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    }
    ```
 
-2. 지정된 범위에 대한 권한 부여 헤더를 유효성 검증할 `javax.servlet.Filter`라는 `JTVFilter` 구현을 작성하십시오. 
+2. 지정된 범위에 대한 권한 부여 헤더를 유효성 검증할 `javax.servlet.Filter`라는 `JTVFilter` 구현을 작성하십시오.
 
    ```java
    public class JTVFilter implements Filter {
@@ -199,13 +199,13 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
 {: #sample-application }
 
 지원되는 애플리케이션 서버(Tomcat, WebSphere Application
-Server 전체 프로파일 및 WebSphere Application Server Liberty 프로파일)에서 프로젝트를 배치할 수 있습니다.   
+Server 전체 프로파일 및 WebSphere Application Server Liberty 프로파일)에서 프로젝트를 배치할 수 있습니다.  
 [단순 Java 서블릿을 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80)하십시오.
 
 ### 샘플 사용법
 {: #sample-usage }
 1. [기밀 클라이언트](../#confidential-client) 및 본인확인정보 값을 {{ site.data.keys.mf_console }}에서 업데이트하십시오.
-2. **[UserLogin](../../user-authentication/security-check/)** 또는 **[PinCodeAttempts](../../credentials-validation/security-check/)** 보안 검사 중 하나를 배치하십시오. 
-3. 일치하는 애플리케이션을 등록하십시오. 
-4. `accessRestricted` 범위를 보안 검사에 맵핑하십시오. 
-5. 서블릿 URL에 대한 `WLResourceRequest`를 작성하기 위해 클라이언트 애플리케이션을 업데이트하십시오. 
+2. **[UserLogin](../../user-authentication/security-check/)** 또는 **[PinCodeAttempts](../../credentials-validation/security-check/)** 보안 검사 중 하나를 배치하십시오.
+3. 일치하는 애플리케이션을 등록하십시오.
+4. `accessRestricted` 범위를 보안 검사에 맵핑하십시오.
+5. 서블릿 URL에 대한 `WLResourceRequest`를 작성하기 위해 클라이언트 애플리케이션을 업데이트하십시오.

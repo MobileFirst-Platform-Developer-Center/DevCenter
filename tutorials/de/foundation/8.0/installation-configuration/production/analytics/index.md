@@ -1,17 +1,28 @@
 ---
 layout: tutorial
-title: Installing and Configuring the MobileFirst Analytics Server	
+title: MobileFirst Analytics Server installieren und konfigurieren
 breadcrumb_title: Installing MobileFirst Analytics Server
-weight: 7
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The {{ site.data.keys.mf_analytics_server }} is delivered as two separate WAR files. For convenience in deploying on WebSphere  Application Server or WebSphere Application Server Liberty, {{ site.data.keys.mf_analytics_server }} is also delivered as an EAR file that contains the two WAR files.
+{{ site.data.keys.mf_analytics_server }} wird in Form zweier WAR-Dateien bereitgestellt. Für eine komfortable Implementierung in
+WebSphere Application Server
+oder WebSphere Application Server Liberty
+wird {{ site.data.keys.mf_analytics_server }} auch als eine EAR-Datei, die die beiden WAR-Dateien enthält,
+bereitgestellt.
 
-> **Note:** Do not install more than one instance of {{ site.data.keys.mf_analytics_server }} on a single host machine. For more information about managing your cluster, see the Elasticsearch documentation.
+> **Hinweis:** Installieren Sie auf einer Hostmaschine nicht mehr als eine Instanz von
+{{ site.data.keys.mf_analytics_server }}. Weitere Informationen zur Verwaltung Ihres Clusters
+finden Sie in der Elasticsearch-Dokumentation. 
 
-The analytics WAR and EAR files are included with the MobileFirst Server installation. For more information, see Distribution structure of MobileFirst Server. When you deploy the WAR file, the MobileFirst Analytics Console is available at: `http://<hostname>:<port>/analytics/console`, for example: `http://localhost:9080/analytics/console`.
+Die Analyse-WAR-Dateien und die Analyse-EAR-Datei werden bei der Installation von
+MobileFirst Server ebenfalls installiert.
+Weitere Informationen finden Sie unter "MobileFirst-Server-Verteilungsstruktur". Wenn Sie die WAR-Datei implementieren, ist die MobileFirst Analytics Console unter `http://<Hostname>:<Port>/analytics/console` verfügbar, z. B. unter `http://localhost:9080/analytics/console`.
 
-* For more information about how to install {{ site.data.keys.mf_analytics_server }}, see [{{ site.data.keys.mf_analytics_server }} installation guide](installation).
-* For more information about how to configure IBM MobileFirst Analytics, see [Configuration guide](configuration).
+* Weitere Informationen zur Installation von
+{{ site.data.keys.mf_analytics_server }} finden Sie im
+[{{ site.data.keys.mf_analytics_server }} Installationshandbuch](installation).
+* Weitere Informationen zur Konfiguration von IBM MobileFirst Analytics enthält das
+[Konfigurationshandbuch](configuration).

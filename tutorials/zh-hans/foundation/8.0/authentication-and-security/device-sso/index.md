@@ -1,14 +1,14 @@
 ---
 layout: tutorial
 title: 配置设备单点登录 (SSO)
-breadcrumb_title: 设备 SSO
+breadcrumb_title: Device SSO
 relevantTo: [android,ios,windows,cordova]
 weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-{{ site.data.keys.product_full }} 提供单点登录 (SSO) 功能，支持在同一设备上的多个应用程序间共享任何定制安全性检查的状态。例如，通过使用设备 SSO，用户可成功登录到其设备上的一个应用程序，也可以在使用同一实现的相同设备上的其他应用程序上进行认证。
+{{ site.data.keys.product_full }} 提供单点登录 (SSO) 功能，支持在同一设备上的多个应用程序间共享任何定制安全性检查的状态。 例如，通过使用设备 SSO，用户可成功登录到其设备上的一个应用程序，也可以在使用同一实现的相同设备上的其他应用程序上进行认证。
 
 **先决条件**：确保阅读[认证和安全](../)教程。
 
@@ -28,7 +28,7 @@ weight: 11
 
 1. 从**命令行窗口**导航至项目的根文件夹，然后运行 `mfpdev app pull`。
 2. 打开位于 **[project-folder]\mobilefirst** 文件夹的配置文件。
-3. 编辑文件，为所选定制安全性检查启用设备 SSO：通过将定制安全性检查的 `enableSSO` 属性设置为 `true` 来启用设备 SSO。该属性配置包含在 `securityCheckConfigurations` 对象中嵌套的安全性检查对象内。在应用程序描述符文件中查找这些对象，如果缺失，就创建这些对象。例如：
+3. 编辑文件，为所选定制安全性检查启用设备 SSO：通过将定制安全性检查的 `enableSSO` 属性设置为 `true` 来启用设备 SSO。 该属性配置包含在 `securityCheckConfigurations` 对象中嵌套的安全性检查对象内。 在应用程序描述符文件中查找这些对象，如果缺失，就创建这些对象。 例如：
 
    ```xml
    "securityCheckConfigurations": {
@@ -49,10 +49,10 @@ weight: 11
 
 1. 遵循[样本使用指示信息](../credentials-validation/javascript/#sample-usage)。
 2. 使用不同的样本名称和应用程序标识重复这些步骤。
-3. 在相同的设备上运行两个应用程序。请注意在每个应用程序中是如何提示您输入 PIN 码 ("1234") 的。
+3. 在相同的设备上运行两个应用程序。 请注意在每个应用程序中是如何提示您输入 PIN 码 ("1234") 的。
 4. 如上所指示，在 {{ site.data.keys.mf_console }} 中，针对每个应用程序将`启用设备 SSO` 设置为 `true`。
-5. 退出两个应用程序，然后重试。在打开的第一个应用程序中，会提示您点击**获取余额**按钮来输入 PIN 码一次。打开第二个应用程序并点击**获取余额**按钮后，无需再次输入 PIN 码来获取余额。
+5. 退出两个应用程序，然后重试。 在打开的第一个应用程序中，会提示您点击**获取余额**按钮来输入 PIN 码一次。 打开第二个应用程序并点击**获取余额**按钮后，无需再次输入 PIN 码来获取余额。
 `
-请注意，`PinCodeAttempts` 安全性检查有一个 60 秒到期令牌。因此，在 60 秒过后再次尝试后，第二个应用程序将需要 PIN 码。
+请注意，`PinCodeAttempts` 安全性检查有一个 60 秒到期令牌。 因此，在 60 秒过后再次尝试后，第二个应用程序将需要 PIN 码。
 
 ![PIN 码 Cordova 样本应用程序](pincode-attempts-cordova.png)
