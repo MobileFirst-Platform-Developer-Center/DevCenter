@@ -356,19 +356,20 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
-
     }
+    
+    apply plugin: 'com.google.gms.google-services'
     ```
 
-    apply plugin: 'com.google.gms.google-services'
+    
 
-    - Add the below dependency in the `buildscript` file
+    - Add the following dependency in the root build.gradle's `buildscript` section
 
       `classpath 'com.google.gms:google-services:3.0.0'`
 
-    - Remove below GCM plugin from build.gradle file compile `com.google.android.gms:play-services-gcm:+`
+    - Remove below GCM plugin from build.gradle file `compile  com.google.android.gms:play-services-gcm:+`
 
- 3. Configure the AndroidManifest file. Following changes are required in the `Android manifest.xml`
+ 3. Configure the AndroidManifest file. Following changes are required in the `AndroidManifest.xml`
 
 **Remove the following entries :**
 
