@@ -16,7 +16,7 @@ author:
 The feature of automated sync in JSONStore is available in native iOS, native Android, cordova iOS and Cordova Android platforms. Details on enabling this feature can be found [here](https://mobilefirstplatform.ibmcloud.com/blog/2018/02/23/jsonstoresync-couchdb-databases/) and in [this](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/jsonstoresync-couchdb-databases-ios-and-cordova/) post. This blog post provides details regarding the performance of the JSONStore automated sync feature on Android and iOS devices.
 
 ### Factors and assumptions involved in the performance analysis
-The devices used for testing are Apple iPhone 6 plus running iOS 8.0 and Mi A2 running Android 8.1.0 OS. The Cloudant DB is located in the Sydney region.
+The devices used for testing are Apple iPhone 6 plus running iOS 8.0 and Mi A2 running Android 8.1.0 OS. The Cloudant DB is located in the Dallas region.
 The WiFi network used for the testing has a download bandwidth of 38 Mbps and upload speed of 8 Mbps. The 4G connections are on a moderate strength network.
 The time measurements have been calculated in seconds using a javascript stopwatch and the time considered is from the button click on the client app(for initialization/add/update or delete) to when the client app receives a response from Cloudant DB on the same network on which the request has been made.
 
