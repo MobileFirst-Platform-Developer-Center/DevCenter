@@ -119,7 +119,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
 
   </br>
     <h4><font color="DarkTurquoise">Step 2.3:</font> Additional platform sepcific steps </h4>
-    <p> <b> Android </b> </br>
+    <p> <b> Android </b> </p></br>
     Add the following lines to <b>AndroidManifest.xml</b> <i>({project-folder}/android/app/src/main/)</i> :
       {% highlight xml %}
       <![CDATA[
@@ -131,7 +131,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
     ]]>
     {% endhighlight %}
   </br>
-  <p> <b> iOS </b> </br>
+  <p> <b> iOS </b></p> </br>
     Open your project in XCode. In the project navigator, drag and drop mfpclient.plist from ios folder.
   </br>
 
@@ -235,42 +235,127 @@ Develop your React Native applications by following the tutorials bellow: set-up
 
   </div>
   <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
-  <h2><a href="../adapters/">Developing Adapters</a></h2>
-    Develop server-side code to integrate with enterprise back-end systems and cloud services.
+  <h2>React Native SDK for IBM MobileFirst JSONStore</h2>
+    The IBM Mobile Foundation JSONStore is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of JSON documents. Documents in an application are available in JSONStore even when the device is offline. This persistent, always-available storage can be useful to give users access to documents when,for example, there is no network connection available in the device.
 
+    <h3>Installation</h3>
+      <p>IBM MobileFirst JSONStore SDK for React Native apps depends on the <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst" target="_blank">IBM MobileFirst Foundation SDK</a>. Add the IBM MobileFirst Foundation SDK to your app.</p>
+      <p>Navigate to the folder of your React Native app and run the following command to install the JSONStore SDK for React Native apps. </p>
+      {% highlight bash  %}
+      npm install react-native-ibm-mobilefirst-jsonstore --save
+      {% endhighlight %}
+      <blockquote>
+        Supported platforms are Android and iOS.
+      </blockquote>
+
+    <h3>Getting started</h3>
+    <h4>Prerequisites</h4>
     <ul>
-        <li><a href="../adapters/">Adapters overview</a></li>
-        <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
-        <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a>
-            <ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
-                    <ul>
-                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Using SSL in JavaScript HTTP Adapters</a></li>
-                    </ul>
-                </li>
-                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Using Java in JavaScript Adapters</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/java-adapters/">Java Adapters</a>
-            <ul>
-                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP adapter</a></li>
-                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
-        <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
-        <li>Server-side log collection
-            <ul>
-                <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
-                <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
-                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
-        <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
+      <li>Make sure you have considered all the prerequisites for a React Native app. See the <a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank">React Native Getting Started</a> page, if you are new to React Native.</li>
+      <li>A <a href="https://console.bluemix.net/catalog/services/Mobile%20Foundation">Mobile Foundation instance on IBM Cloud</a> OR an <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/" target="_blank">on-premise installation</a> of the IBM Mobile Foundation server.</li>
     </ul>
 
+    <h4>Create a React Native Project </h4>
+    <ol>
+    <li>The first step is to create a React Native project. Let's call the app as the <code>JSONStoreApp</code>. Use the React Native CLI to create a new project.
+      {% highlight bash  %}
+      react-native init JSONStoreApp
+      cd JSONStoreApp
+      {% endhighlight %}
+    </li>
+    <li>Install the MobileFirst Core SDK and complete the <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst" target="_blank">Getting Started Instructions</a>.</li>
+    <li>Add the IBM MobileFirst JSONStore SDK to your app.
+      {% highlight bash  %}
+      npm install react-native-ibm-mobilefirst-jsonstore —-save
+      {% endhighlight %}
+    </li>
+    <li>Link your project so that all native dependencies are added to your React Native project.
+      {% highlight bash  %}
+      react-native link
+      {% endhighlight %}
+   </li>
+  </ol>
+
+  <h4>Configure your Android App</h4>
+  <ul>
+    <li>Add the following lines to the <code>android</code> section of <code><React-Native-Project>/android/app/build.gradle</code>:
+    {% highlight gradle  %}
+    packagingOptions{
+    	exclude 'META-INF/ASL2.0'
+    }
+    {% endhighlight %}
+    </li>
+    </ul>
+
+   <h4>Creating a JSONStore Collection</h4>
+    <p>The first step in using the JSONStore API is to create a JSONStore Collection.</p>
+    <ol>
+    <li>Import the JSONStore classes into your application. Open <code>App.js</code> and add the following line among the other import statements
+    {% highlight bash  %}
+    import {WLJSONStore, JSONStoreCollection} from 'react-native-ibm-mobilefirst-jsonstore';
+    {% endhighlight %}
+    </li>
+    <li>Create and open a collection. You can open multiple collections at the same time. Pass a <code>JSONStoreInitOptions</code> parameter for advanced options such as protecting your collection with a password, setting up sync policies etc.
+    {% highlight javascript  %}
+    var dogs = new JSONStoreCollection('dogs');
+    WLJSONStore.openCollections(['dogs']);  // Provide the name of the collection as a string.
+    {% endhighlight %}
+    </li>
+    </ol>
+
+    <h4>Adding data to a collection</h4>
+    <p>Add JSON data to your collection.</p>
+    {% highlight javascript  %}
+    	var hachi = { "name" : "Hachiko" , "breed" : "Akita" , "country" : "Japan"};
+        dogs.addData(hachi).then( ()=> {
+          // Data was added to the collection successfully.
+        }).catch ( (err) => {
+          // Error adding data. See the err object for more information on the error
+        })
+    {% endhighlight %}
+
+    <h4>Querying data from a collection</h4>
+    <p>Use any of the JSONStoreCollection.find* APIs to query a collection.
+    Use JSONStoreQueryPart and JSONStoreQuery APIs for advanced filtering and querying of JSON data.</p>
+    {% highlight javascript  %}
+    	dogs.findAllDocuments().then( (result) => {
+           // result will have all the documents in the collection
+           // E.g. [ {"json": {"name":"Hachiko","breed":"Akita","country":"Japan"},"_id":2}]
+         }).catch((error) => {
+            console.error ("Error finding docs " +  JSON.stringify(error));
+         });
+    {% endhighlight %}
+
+    <h4>Closing, clearing and destroying your collection</h4>
+    <p>Closing your collection will close your JSONStore collection for further access until it is opened again using the <code>openCollections</code> API.</p>
+    {% highlight javascript  %}
+    WLJSONStore.closeAll()
+    {% endhighlight %}
+
+    <p>Clearing a collection will remove all documents from a collection but does not destroy it.</p>
+    {% highlight javascript  %}
+    	dogs.clearCollection().then (()=>{
+    		// All documents cleared successfully
+         }).catch( (err) => {
+           // An error occurred while clearing the collection.
+         })
+    {% endhighlight %}
+
+    <p>Destroying a collection will permanently delete all data, all accessors and security artifacts. A collection once destroyed cannot be restored. All collections of the app will be destroyed.</p>
+
+    {% highlight javascript  %}
+    	WLJSONStore.destroy()
+    {% endhighlight %}
+
+    <h3>Further reading</h3>
+    For details on JSONStore in React Native applications, see <a href="../application-development/jsonstore/reactnative/">here</a>.
+    
+    <h3>Reference</h3>
+    <ul>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/" target="_blank">Developer Center</a></li>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/reactnative-tutorials/" target="_blank">Getting Started</a></li>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/api/client-side-api/reactnative/jsonstore/" target="_blank">API Reference</a></li>
+    </ul>
   </div>
 </div>
 </div>
