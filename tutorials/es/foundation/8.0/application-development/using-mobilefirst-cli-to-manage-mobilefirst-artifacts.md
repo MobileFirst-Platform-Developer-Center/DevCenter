@@ -54,7 +54,11 @@ node -v
 v6.11.1
 ```
 
-> **Nota:** La versión de **node.js** mínima soportada es **4.2.3**. Además, con los paquetes en rápida evolución de **node** y **npm**, la CLI de MobileFirst puede no ser totalmente funcional con todas las versiones disponibles de **node** y **npm** incluidas las versiones más recientes. Asegúrese de que **node** tenga la versión **6.11.1** y **npm** tenga la versión **3.10.10**, para el funcionamiento adecuado de la CLI.
+> **Nota:** La versión de **node.js** mínima soportada es **4.2.3**. Además, con los paquetes en rápida evolución de **node** y **npm**, la CLI de MobileFirst puede no ser totalmente funcional con todas las versiones disponibles de **node** y **npm** incluidas las versiones más recientes.  
+> 
+> Para las versiones de la CLI de MobileFirst hasta iFix versión 8.0.2018040312, inclusive, asegúrese de que **node** tenga la versión **6.11.1** y que **npm** tenga la versión **3.10.10**, para el funcionamiento adecuado de la CLI.
+>
+> Para la CLI de MobileFirst iFix versiones 8.0.2018100112 y posteriores, puede utilizar Node versión 8.x o 10.x
 
 ## Instalación de {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
@@ -62,8 +66,9 @@ Para instalar la interfaz de línea de mandatos ejecute el mandato:
 
 
 ```bash
-npm install -g mfpdev-cli
+npm install -g mfpdev-cli --no-optional
 ```
+
 
 Si el archivo .zip de la interfaz de línea de mandatos (CLI) se descargó desde el Centro de descargas de {{ site.data.keys.mf_console }}, utilice el mandato:
 
@@ -436,14 +441,14 @@ Complete los siguientes pasos:
  3. Ejecute el siguiente mandato: 
 
     ```bash
-    cordova prepare
-    ```
+   cordova prepare
+   ```
 
  4. Obtenga una vista previa de la aplicación Cordova ejecutando el siguiente mandato desde la carpeta raíz de la aplicación Cordova: 
 
     ```bash
-    mfpdev app preview
-    ```
+mfpdev app preview
+```
 
 Se le solicitará que seleccione la plataforma para la vista previa y el tipo de vista previa a utilizar.
 Hay dos opciones de vista previa: MBS (Mobile Browser Simulator) y navegador. 
