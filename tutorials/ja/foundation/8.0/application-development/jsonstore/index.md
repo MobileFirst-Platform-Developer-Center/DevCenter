@@ -147,18 +147,18 @@ JSONStore は、{{ site.data.keys.product_adj }} プラグインを使用する 
 
 JSONStore は、LocalStorage、Indexed DB、Cordova Storage API、Cordova File API などのテクノロジーと似ています。 以下の表は、JSONStore によって提供されるいくつかのフィーチャーが他のテクノロジーと比べてどうであるかを示しています。 JSONStore フィーチャーは、iOS および Android のデバイスおよびシミュレーターのみで使用可能です。
 
-|機能                                            | JSONStore      | LocalStorage | IndexedDB | Cordova ストレージ API | Cordova ファイル API |
+| 機能                                            | JSONStore      | LocalStorage | IndexedDB | Cordova ストレージ API | Cordova ファイル API |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-|Android サポート (Cordova &amp; ネイティブ・アプリケーション)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-|iOS サポート (Cordova & ネイティブ・アプリケーション)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-|Windows 8.1 Universal および Windows 10 UWP (Cordova アプリケーション)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
-|データ暗号化	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-|最大ストレージ	                                 |使用可能なスペース |最大 5 MB     |最大 5 MB 	 |使用可能なスペース  |使用可能なスペース  |
-|信頼性の高いストレージ (注を参照)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
-|ローカルでの変更のトラッキング	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-|マルチユーザーのサポート                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-|索引付け	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
-|ストレージのタイプ	                                 |JSON ドキュメント |鍵と値のペア |JSON ドキュメント |リレーショナル (SQL) |ストリング     |
+| Android サポート (Cordova &amp; ネイティブ・アプリケーション)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| iOS サポート (Cordova & ネイティブ・アプリケーション)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Windows 8.1 Universal および Windows 10 UWP (Cordova アプリケーション)          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
+| データ暗号化	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 最大ストレージ	                                 |使用可能なスペース |    最大 5 MB     |   最大 5 MB 	 | 使用可能なスペース	   | 使用可能なスペース  |
+| 信頼性の高いストレージ (注を参照)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
+| ローカルでの変更のトラッキング	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| マルチユーザーのサポート                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 索引付け	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
+| ストレージのタイプ	                                 | JSON ドキュメント | 鍵と値のペア | JSON ドキュメント | リレーショナル (SQL) | ストリング     |
 
 **注:** 信頼性の高いストレージ は、以下のイベントのいずれかが発生しない限り、データが削除されないことを意味します。
 
@@ -548,6 +548,176 @@ accessor.replace(doc, {markDirty: true})
 accessor.remove(doc, {markDirty: true})
 ```
 
+
+### CloudantDB との自動同期
+Mobile Foundation [CD Update 2](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/8-0-cd-update-release) から、MFP JSONStore SDK を使用して、デバイス上の JSONStore コレクションと、Cloudant を含む任意の CouchDB データベースとの間でデータの同期を自動化できます。 この機能は、iOS、Android、Cordova-Android、および Cordova-iOS で使用可能です。
+
+#### JSONStore と Cloudant の間の同期のセットアップ
+JSONStore と Cloudant の間の自動同期をセットアップするには、以下のステップを実行します。
+
+1. モバイル・アプリケーションに同期ポリシーを定義します。
+2. IBM Mobile Foundation に同期アダプターをデプロイします。
+
+#### 同期ポリシーの定義
+JSONStore コレクションと Cloudant データベースの間の同期方式は、同期ポリシーによって定義されます。 コレクションごとにアプリケーション内で同期ポリシーを指定できます。
+
+JSONStore コレクションは、同期ポリシーを使用して初期化できます。 同期ポリシーは、以下の 3 つのポリシーのいずれかにできます。
+
+<b>SYNC_DOWNSTREAM : </b>
+Cloudant から JSONStore コレクションにデータをダウンロードする必要がある場合、このポリシーを使用します。 これは通常、オフライン・ストレージに必要な静的データに対して使用されます。 例えば、カタログ内のアイテムの価格リストなどです。 デバイス上でコレクションが初期化されるたび、データはリモート Cloudant データベースから更新されます。 初回はデータベース全体がダウンロードされますが、以降の更新では、リモート・データベース上で行われた変更で構成される差分のみがダウンロードされます。
+
+
+Android:
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_DOWNSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_DOWNSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_DOWNSTREAM
+}
+```
+
+<b>SYNC_ UPSTREAM : </b>
+ローカル・データを Cloudant データベースにプッシュする必要がある場合、このポリシーを使用します。 例えば、オフラインで収集された販売データを Cloudant データベースにアップロードする場合などです。 SYNC_UPSTREAM ポリシーが設定されたコレクションが定義されると、コレクションへの新規レコードの追加によって、Cloudant 内に新規レコードが作成されます。 同様に、デバイス上のコレクション内でドキュメントが変更されると、Cloudant 上のドキュメントも変更されます。また、コレクション内で削除されたドキュメントは、Cloudant データベースからも削除されます。
+
+
+Android :
+```
+initOptions.setSyncPolicy(JSONStoreSyncPolicy.SYNC_UPSTREAM);
+```
+
+iOS:
+```
+openOptions.syncPolicy = SYNC_UPSTREAM;
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy:WL.JSONStore.syncOptions.SYNC_UPSTREAM
+}
+```
+
+<b>SYNC_NONE : </b>
+これがデフォルト・ポリシーです。 同期を行わない場合、このポリシーを選択します。
+
+<b><i>重要:</i></b> 同期ポリシーは、JSONStore コレクションに割り当てられます。 特定の同期ポリシーを使用してコレクションが初期化された後は、ポリシーを変更しないでください。 同期ポリシーを変更すると、望ましくない結果が生じる可能性があります。
+
+<b>syncAdapterPath</b>
+
+これは、デプロイされるアダプター名です。
+
+
+Android:
+```
+//Here "JSONStoreCloudantSync" is the name of the sync adapter deployed on MFP server.
+initOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+iOS:
+```
+openOptions.syncAdapterPath = "JSONStoreCloudantSync"; 
+```
+
+Cordova:
+```
+collection.sync = {
+	syncPolicy://One of the three sync policies,
+	syncAdapterPath : 'JSONStoreCloudantSync'
+}
+```
+
+#### 同期アダプターのデプロイ
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCloudantSync/">ここ</a>から JSONStoreSync アダプターをダウンロードし、パス「src/main/adapter-resources/adapter.xml」に Cloudant 資格情報を構成し、それを MobileFirst Server にデプロイします。
+以下のように、mfpconsole を使用して、バックエンド Cloudant データベースにも資格情報を構成します。
+
+|---------------------------|-------------------------|
+|![Cloudant の構成]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/configure-cloudant.png)    |   ![Cloudant 資格情報]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore/CloudantCreds.jpg)|
+
+#### この機能を使用する前に考慮すべきいくつかのポイント
+この機能は、Android、iOS、Cordova-Android、および Cordova-iOS でのみ使用可能です。
+
+JSONStore コレクションの名前と CouchDB データベース名は同じでなければなりません。 JSONStore コレクションに名前を付ける前に、CouchDB データベースの命名構文規則を注意深く参照してください。
+
+Android では、以下のように、*init* オプションの一部として同期コールバック・リスナーを定義します。 
+
+```
+//import com.worklight.jsonstore.api.JSONStoreSyncListener;
+JSONStoreSyncListener syncListener = new JSONStoreSyncListener() {
+	@Override
+	public void onSuccess(JSONObject json) {
+		//Implement success action
+	}
+
+	@Override
+	public void onFailure(JSONStoreException ex) {
+		//Implement failure action
+	}
+
+};
+initOptions.setSyncListener(syncListener);
+```
+
+iOS では、以下のように、完了ハンドラーを持つ多重定義の `opencollections` api を使用して、コールバックを含む同期を有効にします。
+
+```
+JSONStore.sharedInstance().openCollections([collections], with: options, completionHandler: { (success, msg) in
+	self.logMessage("msg is : " + msg!);
+	//success flag is true if the sync succeeds, else on failure it is false and the message from the SDK is available through 'msg' argument.
+})
+```
+
+Cordova では、以下のように、sync オブジェクトの一部として成功コールバックと失敗コールバックを定義します。
+
+```
+function onsuccess(msg) {
+//Implement success action
+}
+
+function onfailure(msg) {
+//Implement failure action
+}
+
+collection.sync = {
+	syncPolicy : WL.JSONStore.syncOptions.SYNC_UPSTREAM, 
+	syncAdapterPath : 'JSONStoreCloudantSync',
+	onSyncSuccess : onsuccess,
+	onSyncFailure : onfailure
+};
+```
+
+JSONStoreCollection は、許可される同期ポリシー (SYNC_DOWNSTREAM、SYNC_UPSTREAM、または SYNC_NONE) のいずれか 1 つのみを使用して定義できます。
+
+初期化後の任意の時点で、アップストリームまたはダウンストリームの同期を明示的に実行する必要がある場合は、以下の API を使用できます。
+
+`sync()`
+
+これにより、呼び出し元のコレクションの同期ポリシーが SYNC_ DOWNSTREAM に設定されている場合はダウンストリームの同期が実行されます。 反対に、同期ポリシーが SYNC_ UPSTREAM に設定されている場合は、追加、削除、および置換されたドキュメントを対象にした、JSONStore から Cloudant データベースへのアップストリームの同期が実行されます。 
+
+
+Android:   
+```
+WLJSONStore.getInstance(context).getCollectionByName(collection_name).sync();
+```
+
+iOS:
+```
+collection.sync(); //Here collection is the JSONStore collection object that was initialized
+```
+
+Cordova:
+```
+WL.JSONStore.get(collectionName).sync();
+```
+>**注:** sync API の成功コールバックと失敗コールバックは、コレクションの初期化時に宣言された同期リスナー (Android)、完了ハンドラー (IOS)、および定義済みコールバック (Cordova) に対してトリガーされます。
+
 ### プッシュ
 {: #push }
 多くのシステムでは、プッシュ という用語を使って、外部ソースにデータを送ることを表します。
@@ -568,7 +738,7 @@ accessor.remove(doc, {markDirty: true})
 
 以下のコード例はすべて、JavaScript に類似した疑似コードで書かれています。
 
-**注:** トランスポート層の場合、アダプターを使用します。 アダプターを使用することの利点として、XML から JSONへの変換、セキュリティー、フィルタリング、サーバー・サイド・コードとクライアント・サイド・コードの分離などが挙げられます。
+>**注:** トランスポート層の場合、アダプターを使用します。 アダプターを使用することの利点として、XML から JSONへの変換、セキュリティー、フィルタリング、サーバー・サイド・コードとクライアント・サイド・コードの分離などが挙げられます。
 
 **内部データ・ソース API: JSONStore**  
 コレクションに対するアクセサーを取得したら、`getAllDirty` API を呼び出して、ダーティーとしてマーク付けされたすべてのドキュメントを取得することができます。 これらのドキュメントは、トランスポート層を通じて外部データ・ソースに送りたいローカルのみの変更を含むものです。
@@ -616,7 +786,7 @@ accessor.getAllDirty()
 })
 ```
 
-**注:** `WLResourceRequest` API に渡すことができる `compressResponse`、`timeout`、または他のパラメーターを活用することもできます。
+>**注:** `WLResourceRequest` API に渡すことができる `compressResponse`、`timeout`、または他のパラメーターを活用することもできます。
 
 {{ site.data.keys.mf_server }} では、アダプターに以下の例のような `updatePeople` プロシージャーがあります。
 

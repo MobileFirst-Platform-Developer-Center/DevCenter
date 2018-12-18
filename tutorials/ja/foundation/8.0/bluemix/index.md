@@ -54,7 +54,7 @@ Liberty for Java ランタイムには liberty-for-java ビルドパックの機
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
 
-* [IBM 提供のスクリプトを使用して](mobilefirst-server-using-kubernetes/)、IBM Cloud の Kubernetes クラスター上に {{site.data.keys.mf_bm_short }} インスタンスを作成します。
+* [IBM 提供のスクリプトを使用して](mobilefirst-server-on-kubernetes-using-scripts/)、IBM Cloud の Kubernetes クラスター上に {{site.data.keys.mf_bm_short }} インスタンスを作成します。
 * [{{ site.data.keys.mf_bm }} サービスのセットアップ](using-mobile-foundation/)のチュートリアルを使用して、{{ site.data.keys.mf_server }} インスタンスを作成します。
 <!--* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.-->
 * [IBM 提供のスクリプトを使用し](mobilefirst-server-using-scripts-lbp/)、IBM Cloud 上で Liberty for Java を使用して {{ site.data.keys.mf_server }} インスタンスを作成します。
