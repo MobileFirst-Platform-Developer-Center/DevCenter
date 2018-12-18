@@ -53,7 +53,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
             ext: 'aar',
             transitive: true
    ```
-    
+
    O en una sola línea:
 
    ```xml
@@ -73,7 +73,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
       ```
-      
+
 	* Añada lo siguiente a la etiqueta `application`:
 
 	  ```xml
@@ -105,7 +105,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-      
+
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -113,14 +113,14 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
 	  > **Nota:** Asegúrese de sustituir `your.application.package.name` con el nombre de paquete real de su aplicación.
 
     * Añada el siguiente `intent-filter` a la actividad de la aplicación.
-      
+
       ```xml
       <intent-filter>
           <action android:name="your.application.package.name.IBMPushNotification" />
           <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
       ```
-      
+
 ## API de notificaciones
 {: #notifications-api }
 ### Instancia de MFPPush
@@ -346,28 +346,30 @@ Por ahora, las aplicaciones existentes que utilizan servicios de GCM seguirán f
 
 ### Configuración del proyecto de FCM
 
-La configuración de una aplicación en FCM es algo distinta en comparación con el antiguo modelo de GCM. 
+La configuración de una aplicación en FCM es algo distinta en comparación con el antiguo modelo de GCM.
 
  1. Obtenga sus credenciales del proveedor de notificaciones, cree un proyecto de FCM y añada el mismo a la aplicación de Android. Incluya el nombre del paquete de la aplicación como `com.ibm.mobilefirstplatform.clientsdk.android.push`. Consulte la [documentación aquí](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android), hasta el paso donde haya terminado de generar el archivo `google-services.json`
 
- 2. Configure el archivo de Gradle. Añada lo siguiente en el archivo `build.gradle` de la aplicación 
+ 2. Configure el archivo de Gradle. Añada lo siguiente en el archivo `build.gradle` de la aplicación
 
     ```xml
     dependencies {
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
-
     }
-    ```
-	
-    apply plugin: 'com.google.gms.google-services'
     
-    - Añada la dependencia siguiente en el archivo `buildscript` -
-    
-    `classpath 'com.google.gms:google-services:3.0.0'`
+    apply plugin: 'com.google.gms.google-services'```
 
- 3. Configure el archivo AndroidManifest. Son necesarios los cambios siguientes en el `Android manifest.xml` 
+    
+
+    - Añada la siguiente dependencia en el apartado raíz build.gradle `buildscript`
+
+      `classpath 'com.google.gms:google-services:3.0.0'`
+
+    - Elimine el siguiente plugin GCM desde el archivo build.gradle `compile com.google.android.gms:play-services-gcm:+`
+
+ 3. Configure el archivo AndroidManifest. Son necesarios los cambios siguientes en el `AndroidManifest.xml`
 
 **Elimine las entradas siguientes:**
 
@@ -423,11 +425,7 @@ La configuración de una aplicación en FCM es algo distinta en comparación con
             </intent-filter>
     </service>
 ```
-	
+
  4. Abra la aplicación en Android Studio. Copie el archivo `google-services.json` que ha creado en el **step-1** dentro del directorio de aplicación. Tenga en cuenta que el archivo `google-service.json` incluye el nombre del paquete que ha añadido.		
-		
+
  5. Compile el SDK. Cree la aplicación.
-
-
-
-

@@ -72,7 +72,7 @@ Se puede acceder a [{{ site.data.keys.mf_console }}]({{site.baseurl}}/tutorials/
 
 **Requisito previo:**  
 1. NodeJS y NPM son requisitos para poder instalar {{ site.data.keys.mf_cli }}.  
- Descargue e instale [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) y NPM v3.10.10.
+ Descargue e instale [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) y NPM v3.10.10. Para la versión MobileFirst CLI version 8.0.2018100112 o superiores, puede utilizar Node v8.x o v10.x. 
 
  Para verificar la instalación, abra una ventana de línea de mandatos y ejecute `node -v`.
 
