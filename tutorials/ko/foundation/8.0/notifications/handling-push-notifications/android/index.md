@@ -53,7 +53,7 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
             ext: 'aar',
             transitive: true
    ```
-    
+
    또는 단일 행으로 다음 행을 추가하십시오.
 
    ```xml
@@ -73,7 +73,7 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
       ```
-      
+
 	* `application` 태그에 다음을 추가하십시오.
 
 	  ```xml
@@ -105,7 +105,7 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-      
+
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -113,14 +113,14 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
 	  > **참고:** `your.application.package.name`을 애플리케이션의 실제 패키지 이름으로 대체해야 합니다.
 
     * 애플리케이션의 활동에 다음 `intent-filter`를 추가하십시오.
-      
+
       ```xml
       <intent-filter>
           <action android:name="your.application.package.name.IBMPushNotification" />
           <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
       ```
-      
+
 ## 알림 API
 {: #notifications-api }
 ### MFPPush 인스턴스
@@ -345,28 +345,31 @@ GCM 프로젝트를 사용하는 경우, [ Android의 GCM 클라이언트 앱을
 
 ### FCM 프로젝트 설정
 
-FCM에서 애플리케이션을 설정하는 작업은 이전 GCM 모델에서와는 조금 다릅니다. 
+FCM에서 애플리케이션을 설정하는 작업은 이전 GCM 모델에서와는 조금 다릅니다.
 
  1. 알림 제공자 신임 정보를 확보하고, FCM 프로젝트를 작성한 다음, Android 애플리케이션에 동일한 사항을 추가하십시오. 애플리케이션의 패키지 이름으로 `com.ibm.mobilefirstplatform.clientsdk.android.push`를 포함하십시오. `google-services.json` 파일 생성을 완료하는 단계까지 [여기 문서](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)를 참조하십시오.
 
- 2. Gradle 파일을 구성하십시오. 앱의 `build.gradle` 파일에 다음을 추가하십시오. 
+ 2. Gradle 파일을 구성하십시오. 앱의 `build.gradle` 파일에 다음을 추가하십시오.
 
     ```xml
     dependencies {
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
-
     }
-    ```
-	
+    
     apply plugin: 'com.google.gms.google-services'
-    
-    - `buildscript` 파일에서 아래 종속성을 추가하십시오.
-    
-    `classpath 'com.google.gms:google-services:3.0.0'`
+    ```
 
- 3. AndroidManifest 파일을 구성하십시오. `Android manifest.xml`에서 다음과 같이 변경해야 합니다. 
+    
+
+    - 루트 build.gradle의 `buildscript` 섹션에서 다음 종속 항목을 추가하십시오.
+
+      `classpath 'com.google.gms:google-services:3.0.0'`
+
+    - build.gradle 파일에서 다음 GCM 플러그인을 제거하십시오. `compile  com.google.android.gms:play-services-gcm:+`
+
+ 3. AndroidManifest 파일을 구성하십시오. `AndroidManifest.xml`에서 다음과 같이 변경해야 합니다.
 
 **다음 항목을 제거하십시오.**
 
@@ -381,7 +384,7 @@ FCM에서 애플리케이션을 설정하는 작업은 이전 GCM 모델에서�
             <category android:name="your.application.package.name" />
         </intent-filter>
     </receiver>  
-	
+
     <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
         <intent-filter>
             <action android:name="com.google.android.gms.iid.InstanceID" />
@@ -422,11 +425,7 @@ FCM에서 애플리케이션을 설정하는 작업은 이전 GCM 모델에서�
             </intent-filter>
     </service>
 ```
-	
+
  4. Android Studio에서 앱을 여십시오. 앱 디렉토리 내 **step-1**에서 작성한 `google-services.json` 파일을 복사하십시오. `google-service.json` 파일은 추가된 패키지 이름을 포함합니다.		
-		
- 5. SDK를 컴파일하십시오. 애플리케이션을 빌드하십시오. 
 
-
-
-
+ 5. SDK를 컴파일하십시오. 애플리케이션을 빌드하십시오.

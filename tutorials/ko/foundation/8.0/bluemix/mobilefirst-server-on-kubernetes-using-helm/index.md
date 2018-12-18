@@ -1,19 +1,19 @@
 ---
 layout: tutorial
-title: IBM Cloud Private에서 MobileFirst Server 설정
-breadcrumb_title: Foundation on IBM Cloud Private
+title: Helm을 사용하여 IBM Cloud Kubernetes Cluster에 Mobile Foundation 설정
+breadcrumb_title: Foundation on Kubernetes Cluster using Helm
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-{{ site.data.keys.prod_icp }}에서 {{ site.data.keys.mf_server }} 인스턴스 및 {{ site.data.keys.mf_analytics }} 인스턴스를 구성하려면 아래의 지시사항을 수행하십시오.
+Helm 차트를 사용하여 IBM Cloud Kubernetes Cluster(IKS)에서 {{ site.data.keys.mf_server }} 인스턴스 및 {{ site.data.keys.mf_analytics }} 인스턴스를 구성하려면 아래의 지시사항을 따르십시오.
 
-* IBM Cloud Private Kubernetes Cluster를 설정하십시오.
-* 필수 도구(Docker, IBM Cloud CLI( bx ), {{ site.data.keys.prod_icp }}(icp) IBM Cloud CLI를 위한 플러그인(bx pr), Kubernetes CLI(kubectl)) 및 Helm CLI(helm))를 사용하여 호스트 컴퓨터를 설정하십시오.
+* IBM Cloud Kubernetes Cluster를 설정하십시오.
+* IBM Cloud CLI를 사용하여 호스트 컴퓨터를 설정하십시오.
 * {{ site.data.keys.prod_icp }}용 {{ site.data.keys.product_full }}의 Passport Advantage 아카이브(PPA 아카이브)를 다운로드하십시오.
-* {{ site.data.keys.prod_icp }} 클러스터의 PPA 아카이브를 로드하십시오.
+* IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하십시오.
 * 마지막으로 {{ site.data.keys.mf_analytics }}(선택사항) 및 {{ site.data.keys.mf_server }}를 구성 및 설치하십시오.
 
 #### 다음으로 이동:
@@ -30,17 +30,16 @@ weight: 2
 ## 전제조건
 {: #prereqs}
 
-{{ site.data.keys.prod_icp }} 계정이 있어야 하며 [{{ site.data.keys.prod_icp }} 클러스터 설치](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html)의 문서에 따라 Kubernetes Cluster를 설정해야 합니다..
+IBM Cloud 계정이 있어야 하며 [IBM Cloud Kubernetes Cluster 서비스](https://console.bluemix.net/docs/containers/cs_tutorials.html)의 문서에 따라 Kubernetes Cluster를 설정해야 합니다.
 
-컨테이너 및 이미지를 관리하려면 {{ site.data.keys.prod_icp }} 설치의 일부로 호스트 시스템에 다음 도구를 설치해야 합니다.
+컨테이너 및 이미지를 관리하려면 IBM Cloud CLI 플러그인 설치의 일부로 호스트 시스템에 다음 도구를 설치해야 합니다.
 
-* Docker
-* IBM Cloud CLI(`bx`)
-* {{ site.data.keys.prod_icp }}(ICP) IBM Cloud CLI를 위한 플러그인( `bx pr` )
-* Kubernetes CLI(`kubectl`)
-* Helm(`helm`)
+* IBM Cloud CLI 
+* Kubernetes CLI
+* IBM Cloud Container Registry 플러그인
+* IBM Cloud Container Service 플러그인
 
-CLI를 사용하여 {{ site.data.keys.prod_icp }} 클러스터에 액세스하려면 *kubectl* 클라이언트를 구성해야 합니다. [자세히 알아보기](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_cluster/cfc_cli.html).
+CLI를 사용하여 IBM Cloud Kubernetes Cluster에 액세스하려면 IBM Cloud 클라이언트를 구성해야 합니다. [자세히 알아보기](https://console.bluemix.net/docs/cli/index.html).
 
 ## IBM Mobile Foundation Passport Advantage 아카이브 다운로드
 {: #download-the-ibm-mfpf-ppa-archive}
@@ -53,35 +52,36 @@ CLI를 사용하여 {{ site.data.keys.prod_icp }} 클러스터에 액세스하�
 {: #load-the-ibm-mfpf-ppa-archive}
 {{ site.data.keys.product }}의 PPA 아카이브를 로그하기 전에 Docker를 설치해야 합니다. [여기](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html)에서 지시사항을 확인하십시오.
 
-PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려면 아래에 제공된 단계를 따르십시오.
+IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 제공된 단계를 따르십시오.
 
-  1. IBM Cloud ICP 플러그인(`bx pr`)을 사용하여 클러스터에 로그인하십시오.
-      >{{ site.data.keys.prod_icp }} 문서의 [CLI 명령 참조서](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html)를 확인하십시오.
+  1. IBM Cloud 플러그인을 사용하여 클러스터에 로그인하십시오.
+
+      >IBM Cloud CLI 문서의 [CLI 명령 참조서](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli)를 참조하십시오.
 
       예를 들어, 다음과 같습니다.
       ```bash
-      bx pr login -a https://ip:port
+      ibmcloud login -a https://ip:port
       ```
       선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
+      
+  2. 다음 명령을 사용하여 IBM Cloud Container 레지스트리에 로그인하고 Container Service를 초기화하십시오.
+      ```bash
+      ibmcloud cr login
+      ibmcloud cs init
+      ```  
+  3. 다음 명령을 사용하여 배치 영역을 설정하십시오(예: us-south)
+      ```bash
+      ibmcloud cr region-set
+      ```    
 
-  2. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
+  4. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
       ```
       bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       {{ site.data.keys.product }}의 *archive_name*은 IBM Passport Advantage에서 다운로드한 PPA 아카이브의 이름입니다.
 
-      이전 단계를 수행하고 `bx pr`의 기본값으로 클러스터 엔드포인트를 작성한 경우 `--clustername`은 무시할 수 있습니다.
 
-  3. PPA 아카이브를 로드한 후 저장소를 동기화하면 **카탈로그**의 Helm Charts 목록이 표시됩니다. {{ site.data.keys.prod_icp }} 관리 콘솔에서 이 작업을 완료할 수 있습니다.
-      * **관리 > 저장소**를 선택하십시오.
-      * **저장소 동기화**를 클릭하십시오.
-
-  4.  {{ site.data.keys.prod_icp }} 관리 콘솔에서 Docker 이미지 및 Helm Charts를 보십시오.
-      Docker 이미지를 보려면 다음과 같이 하십시오.
-      * **플랫폼 > 이미지**를 선택하십시오.
-      * Helm Charts가 **카탈로그**에 표시됩니다.
-
-  위의 단계를 완료하면 {{ site.data.keys.prod_adj }} Helm Charts의 업로드된 버전이 ICP 카탈로그에 표시됩니다. {{ site.data.keys.mf_server }}는 **ibm-mfpf-server-prod**로 나열되고 {{ site.data.keys.mf_analytics }}는 **ibm-mfpf-analytics-prod**로 나열됩니다.
+  helm 차트는 클라이언트 또는 로컬에 저장됩니다(IBM Cloud Private helm 저장소에 저장되는 ICP helm 차트와 다름). 차트는 `ppa-import/charts` 디렉토리 내에 위치할 수 있습니다.
 
 ## IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성
 {: #configure-install-mf-helmcharts}
@@ -112,12 +112,12 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 
 ### {{ site.data.keys.mf_analytics }}에 대한 환경 변수
 {: #env-mf-analytics }
-아래의 표에서는 {{ site.data.keys.prod_icp }}의 {{ site.data.keys.mf_analytics }}에서 사용되는 환경 변수를 제공합니다.
+아래의 표에서는 IBM Cloud Kubernetes Cluster의 {{ site.data.keys.mf_analytics }}에서 사용되는 환경 변수를 제공합니다.
 
 | 규정자 | 매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
 | arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
-| image | pullPolicy | 이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
+| image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
 |  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
 |  | name | Docker 이미지 이름 | {{ site.data.keys.prod_adj }} Operational Analytics Docker 이미지의 이름. |
 | scaling | replicaCount | 작성해야 하는 {{ site.data.keys.prod_adj }} Operational Analytics의 인스턴스(포드) 수 | 양의 정수<br/>기본값은 **2**입니다. |
@@ -129,9 +129,9 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 |  | replicasPerShard | {{ site.data.keys.prod_adj }} Analytics에 대해 각 샤드별로 유지보수할 Elasticsearch 복제본 수 | 양의 정수<br/>기본값은 **2**입니다. |
 | keystores | keystoresSecretName | 키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts)을 참조하십시오. |  |
 | jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} Operational Analytics 사용자 정의를 위해 지정할 JNDI 특성 | 쉼표로 구분된 이름 값 쌍을 제공하십시오. |
-| resources |limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
+| resources | limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. | 기본값은 **1000m**입니다. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. |기본값은 **1000m**입니다. |
 |  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 양의 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **2048Mi**입니다. |
 | persistence |existingClaimName | 기존 지속성 볼륨 클레임(PVC)의 이름 |  |
 | logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
@@ -141,12 +141,12 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 
 ### {{ site.data.keys.mf_server }}에 대한 환경 변수
 {: #env-mf-server }
-아래의 표에서는 {{ site.data.keys.prod_icp }}의 {{ site.data.keys.mf_server }}에서 사용되는 환경 변수를 제공합니다.
+아래의 표에서는 IBM Cloud Kubernetes Cluster의 {{ site.data.keys.mf_server }}에서 사용되는 환경 변수를 제공합니다.
 
 | 규정자 | 매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
 | arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
-| image | pullPolicy | 이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
+| image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
 |  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
 |  | name | Docker 이미지 이름 | {{ site.data.keys.prod_adj }} Server Docker 이미지의 이름입니다. |
 | scaling | replicaCount | 작성해야 하는 {{ site.data.keys.prod_adj }} Server의 인스턴스(포드) 수 | 양의 정수<br/>기본값은 **3**입니다. |
@@ -167,7 +167,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 | jndiConfigurations | mfpfProperties | 배치 사용자 정의를 위한 {{ site.data.keys.prod_adj }} Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍입니다. |
 | resources | limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. | 기본값은 **1000m**입니다. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. |기본값은 **1000m**입니다. |
 |  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **2048Mi**입니다. |
 | logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
 |  | consoleLogLevel | 컨테이너 로그로 이동하는 메시지 유형을 제어합니다. | 기본값은 **info**입니다. |
@@ -175,7 +175,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 
 > Kibana를 사용한 {{ site.data.keys.prod_adj }} 로그 분석에 대한 학습서는 [여기](analyzing-mobilefirst-logs-on-icp/)를 참조하십시오.
 
-### ICP 카탈로그에서 {{ site.data.keys.prod_adj }} Helm Charts 설치
+### Helm 차트 설치
 {: #install-hmc-icp}
 
 #### {{ site.data.keys.mf_analytics }} 설치
@@ -183,58 +183,118 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 
 {{ site.data.keys.mf_analytics }} 설치는 선택사항입니다. {{ site.data.keys.mf_server }}에서 Analytics를 사용으로 설정하려면 {{ site.data.keys.mf_server }}를 설치하기 전에 {{ site.data.keys.mf_analytics }}를 먼저 구성하고 설치해야 합니다.
 
-{{ site.data.keys.mf_analytics }} Chart를 설치하기 전에 **지속적 볼륨**을 구성하십시오. {{ site.data.keys.mf_analytics }}를 구성하려면 **지속적 볼륨**을 제공하십시오. **지속적 볼륨**을 작성하려면 [{{ site.data.keys.prod_icp }} 문서](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/create_volume.html)에 자세히 설명된 단계를 따르십시오.
+{{ site.data.keys.mf_analytics }} Chart를 설치하기 전에 **지속적 볼륨**을 구성하십시오. {{ site.data.keys.mf_analytics }}를 구성하려면 **지속적 볼륨**을 제공하십시오. **지속적 볼륨**을 작성하려면 [IBM Cloud Kubernetes 문서](https://console.bluemix.net/docs/containers/cs_storage_file.html#file_storage)에 자세히 설명된 단계를 따르십시오.
 
-{{ site.data.keys.prod_icp }} 관리 콘솔에서 IBM {{ site.data.keys.mf_analytics }}를 설치 및 구성하려면 아래의 단계를 따르십시오.
+IBM Cloud Kubernetes Cluster에 IBM {{ site.data.keys.mf_analytics }}를 설치하고 구성하려면 아래의 단계를 따르십시오.
 
-1. 관리 콘솔에서 **카탈로그**로 이동하십시오.
-2. **ibm-mfpf-analytics-prod** helm chart를 선택하십시오.
-3. **구성**을 클릭하십시오.
-4. 환경 변수를 제공하십시오. 자세한 정보는 [{{ site.data.keys.mf_analytics }}에 대한 환경 변수](#env-mf-analytics)를 참조하십시오.
-5. **라이센스 계약**에 동의하십시오.
-6. **설치**를 클릭하십시오.
+1. Kubernetes Cluster를 구성하려면 아래의 명령을 실행하십시오.
+    ```bash
+    ibmcloud cs cluster-config <iks-cluster-name>
+    ```
+2. 다음 명령을 사용하여 기본 helm 차트 값을 가져오십시오.
+    ```bash
+    helm inspect values <mfp-analytics-helm-chart.tgz>  > values.yaml
+    ```
+    {{ site.data.keys.mf_analytics }}에 대한 예제:
+    ```bash
+    helm inspect values ibm-mfpf-analytics-prod-1.0.17.tgz > values.yaml
+    ```    
+
+3. **values.yaml**을 수정하여 helm 차트를 배치하는 데 적합한 값을 추가하십시오. [ingress](https://console.bluemix.net/docs/containers/cs_ingress.html).hostname 세부사항, 스케일링 등이 추가되었는지 확인하고 values.yaml을 저장하십시오.
+
+4. helm 차트를 배치하려면 다음 명령을 실행하십시오.
+    ```bash
+    helm install -n <iks-cluster-name> -f values.yaml <mfp-analytics-helm-chart.tgz>
+    ```
+    Analytics Server 배치를 위한 예제:
+    ```bash
+    helm install -n mfpanalyticsonkubecluster -f analytics-values.yaml ./ibm-mfpf-analytics-prod-1.0.17.tgz
+    ```    
 
 #### {{ site.data.keys.mf_server }} 설치
 {: #install-mf-server}
 
 {{ site.data.keys.mf_server }}를 설치하기 전에 DB2 데이터베이스가 사전 구성되어 있는지 확인하십시오.
 
+IBM Cloud Kubernetes Cluster에 IBM {{ site.data.keys.mf_server }}를 설치하고 구성하려면 아래의 단계를 따르십시오.
 
-{{ site.data.keys.prod_icp }} 관리 콘솔에서 IBM {{ site.data.keys.mf_server }}를 설치 및 구성하려면 아래의 단계를 따르십시오.
+1. Kube Cluster를 구성하십시오.
+    ```bash
+    ibmcloud cs cluster-config <iks-cluster-name>
+    ```   
 
-1. 관리 콘솔에서 **카탈로그**로 이동하십시오.
-2. **ibm-mfpf-server-prod** helm chart를 선택하십시오.
-3. **구성**을 클릭하십시오.
-4. 환경 변수를 제공하십시오. 자세한 정보는 [{{ site.data.keys.mf_server }}에 대한 환경 변수](#env-mf-server)를 참조하십시오.
-5. **라이센스 계약**에 동의하십시오.
-6. **설치**를 클릭하십시오.
+2. 다음 명령을 사용하여 기본 helm 차트 값을 가져오십시오.
+    ```bash
+    helm inspect values <mfp-server-helm-chart.tgz>  > values.yaml
+    ```   
+    {{ site.data.keys.mf_server }}에 대한 예제:
+    ```bash
+    helm inspect values ibm-mfpf-server-prod-1.0.17.tgz > values.yaml
+    ```   
+
+3. **values.yaml**을 수정하여 helm 차트를 배치하는 데 적합한 값을 추가하십시오. 데이터베이스 세부사항, 수신(ingress), 스케일링 등이 추가되었는지 확인하고 values.yaml을 저장하십시오.
+
+4. helm 차트를 배치하려면 다음 명령을 실행하십시오.
+    ```bash
+    helm install -n <iks-cluster-name> -f values.yaml <mfp-server-helm-chart.tgz>
+    ```   
+    서버 배치를 위한 예제:
+    ```bash
+    helm install -n mfpserveronkubecluster -f server-values.yaml ./ibm-mfpf-server-prod-1.0.17.tgz
+    ``` 
+
+>**참고:** AppCenter를 설치하려면 해당 helm 차트(예: ibm-mfpf-appcenter-prod-1.0.17.tgz)를 사용하여 위의 단계를 수행해야 합니다.
 
 ## 설치 확인
 {: #verify-install}
 
-{{ site.data.keys.mf_analytics }}(선택사항) 및 {{ site.data.keys.mf_server }}를 설치 및 구성한 후 다음을 완료하여 설치 및 배치된 포드 상태를 확인할 수 있습니다.
+{{ site.data.keys.mf_analytics }}(선택사항) 및 {{ site.data.keys.mf_server }}를 설치하고 구성한 후에는 IBM Cloud CLI, Kubernetes CLI 및 helm 명령을 사용하여 설치와 배치된 팟(Pod)의 상태를 확인할 수 있습니다.
 
-{{ site.data.keys.prod_icp }} 관리 콘솔에서 **워크로드 > Helm 릴리스**를 선택하십시오. 설치의 *릴리스 이름*을 클릭하십시오.
+IBM Cloud CLI 문서의 [CLI 명령 참조서](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli)와 [Helm 문서](https://docs.helm.sh/helm/)의 Helm CLI를 참조하십시오.
 
+IBM Cloud Portal의 IBM Cloud Kubernetes Cluster 페이지에서 **시작** 단추를 사용하여 Kubernetes 콘솔을 열어 클러스터 아티팩트를 관리할 수 있습니다.
 
 ## {{ site.data.keys.prod_adj }} 콘솔 액세스
 {: #access-mf-console}
 
-설치 완료 후 `<protocol>://<ip_address>:<port>/mfpconsole`을 사용하여 {{ site.data.keys.prod_adj }} Operational Console에 액세스할 수 있습니다.
-IBM {{ site.data.keys.mf_analytics }} Console은 `<protocol>://<ip_address>:<port>/analytics/console`을 사용하여 액세스할 수 있습니다.
+배치에 성공하면 노트가 터미널에 출력으로 표시됩니다. 직접 명령을 실행하여 *NodePort*를 통해 콘솔 URL을 가져올 수 있습니다.
 
-프로토콜은 `http` 또는 `https`일 수 있습니다. 또한 **NodePort** 배치의 경우 포트는 **NodePort**가 됩니다. 설치된 {{ site.data.keys.prod_adj }} Chart의 ip_address 및 **NodePort**를 가져오려면 아래의 단계를 따르십시오.
+예를 들어, Mobile Foundation Server의 경우 표시되는 노트는 다음과 같습니다.
 
-1. {{ site.data.keys.prod_icp }} 관리 콘솔에서 **워크로드 > Helm 릴리스**를 선택하십시오.
-2. helm chart 설치의 *릴리스 이름*을 클릭하십시오.
-3. **참고** 섹션을 확인하십시오.
+```text
+The Notes displayed as follows as the result of the helm deployment
+Get the Server URL by running these commands:
+1. For http endpoint:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=“{.spec.ports[0].nodePort}” services monitor-mfp-ibm-mfpf-server-prod)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=“{.items[0].status.addresses[0].address}“)
+ echo http://$NODE_IP:$NODE_PORT/mfpconsole
+2. For https endpoint:
+ export NODE_PORT=$(kubectl get --namespace default -o jsonpath=“{.spec.ports[1].nodePort}” services monitor-mfp-ibm-mfpf-server-prod)
+ export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=“{.items[0].status.addresses[0].address}“)
+ echo https://$NODE_IP:$NODE_PORT/mfpconsole
+```
+
+유사한 설치 방법을 사용하는 경우, `<protocol>://<ip_address>:<node_port>/analytics/console`을 사용하여 IBM MobileFirst Analytics Console에 액세스하고 <`protocol>://<ip_address>:<node_port>/appcenter/console`을 사용하여 IBM Mobile Foundation Application Center에 액세스할 수 있습니다.
+콘솔에 액세스하기 위한 *NodePort* 방법 이외에, [수신](https://console.bluemix.net/docs/containers/cs_ingress.html) 호스트를 통해서도 서비스에 액세스할 수 있습니다.
+
+콘솔에 액세스하려면 아래의 단계를 따르십시오.
+
+1. [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps/)로 이동하십시오.
+2. `Analytics/Server/AppCenter`가 배치된 Kubernetes Cluster를 선택하여 **개요** 페이지를 여십시오.
+3. 수신 호스트 이름의 수신 서브도메인을 찾아 다음과 같이 콘솔에 액세스하십시오.
+    * 다음을 사용하여 IBM Mobile Foundation Operational Console에 액세스하십시오.
+     `<protocol>://<ingress-hostname>/mfpconsole`
+    * 다음을 사용하여 IBM Mobile Foundation Analytics Console에 액세스하십시오.
+     `<protocol>://<ingress-hostname>/analytics/console`
+    * 다음을 사용하여 IBM Mobile Foundation Application Center Console에 액세스하십시오.
+     `<protocol>://<ingress-hostname>/appcenter/console`
 
 >**참고:** 포트 9600은 Kubernetes 서비스에서 내부적으로 노출되며 {{ site.data.keys.prod_adj }} Analytics 인스턴스가 전송 포트로 사용됩니다.
 
 
 ## 샘플 애플리케이션
 {: #sample-app}
-샘플 어댑터를 배치하고 {{ site.data.keys.prod_icp }}에서 실행되는 IBM {{ site.data.keys.mf_server }}에 샘플 어댑터를 배치하고 샘플 애플리케이션을 실행하려면 [{{ site.data.keys.prod_adj }} 학습서](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/)를 참조하십시오.
+샘플 어댑터를 배치하고 IBM Cloud Kubernetes Cluster에서 실행되는 IBM {{ site.data.keys.mf_server }}에서 샘플 애플리케이션을 실행하려면 [{{ site.data.keys.prod_adj }} 학습서](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/)를 참조하십시오.
 
 ## {{ site.data.keys.prod_adj }} Helm Charts 및 릴리스 업그레이드
 {: #upgrading-mf-helm-charts}
