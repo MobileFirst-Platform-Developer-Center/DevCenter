@@ -118,7 +118,7 @@ react-native-ibm-mobilefirst 플러그인은 React Native의 핵심 {{ site.data
 
 원격 서버를 사용하는 경우 `mfpdev server add` [명령을 사용](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 이를 추가하십시오.
 
-`mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록합니다. 각 플랫폼은 {{ site.data.keys.mf_server }}에 애플리케이션으로 등록됩니다.
+`mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록합니다. 	각 플랫폼은 {{ site.data.keys.mf_server }}에 애플리케이션으로 등록됩니다.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **팁:** {{ site.data.keys.mf_console }}에서 애플리케이션을 등록할 수도 있습니다.    
 >

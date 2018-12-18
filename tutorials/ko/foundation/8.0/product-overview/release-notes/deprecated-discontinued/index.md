@@ -420,7 +420,7 @@ weight: 3
 |API 요소           |마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
 |`ChallengeHandler` |사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오. |
-|`ChallengeHandler.isCustomResponse()` |`GatewayChallengeHandler.canHandleResponse()`를 사용하십시오. |
+|`ChallengeHandler. isCustomResponse()` |`GatewayChallengeHandler.canHandleResponse()`를 사용하십시오. |
 |`ChallengeHandler.submitAdapterAuthentication` |인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 `GatewayChallengeHandler`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 `SecurityCheckChallengeHandler`를 사용하십시오. |
 |`ChallengeHandler.submitFailure(WLResponse wlResponse)` |사용자 정의 게이트웨이 인증 확인 핸들러의 경우 `GatewayChallengeHandler.Shouldcancel()`을 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 `SecurityCheckChallengeHandler.ShouldCancel()`을 사용하십시오. |
 |`WLAuthorizationManager` |대신 `WorklightClient.WorklightAuthorizationManager`를 사용하십시오. |
