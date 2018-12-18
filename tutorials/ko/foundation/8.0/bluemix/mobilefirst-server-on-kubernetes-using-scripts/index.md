@@ -1,11 +1,14 @@
 ---
 layout: tutorial
-title: IBM Cloud Kubernetes Cluster에서 MobileFirst Server 설정
-breadcrumb_title: Mobile Foundation on Kubernetes Cluster
+title: 스크립트를 사용하여 IBM Cloud Kubernetes Cluster에 MobileFirst Server 설정
+breadcrumb_title: Foundation on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+<br/>
+>**참고:** Kubernetes Cluster에 소프트웨어를 배치하는 데 권장되는 방법은 Helm입니다. [helm 차트를 사용하여 IBM Cloud Kubernetes Cluster에 Mobile Foundation을](../mobilefirst-server-on-kubernetes-using-helm) 배치하는 방법에 대해 알아보십시오.
+
 ## 개요
 {: #overview }
 IBM Cloud에서 {{ site.data.keys.mf_server }} 인스턴스와 {{ site.data.keys.mf_analytics }} 인스턴스를 구성하려면 아래의 지시사항을 수행하십시오. 이를 달성하기 위해 다음 단계를 수행합니다.
@@ -22,15 +25,19 @@ IBM Cloud에서 {{ site.data.keys.mf_server }} 인스턴스와 {{ site.data.keys
 
 #### 다음으로 이동:
 {: #jump-to }
-* [IBM Cloud에서 계정 등록](#register-an-account-on-ibmcloud)
-* [호스트 시스템 설정](#set-up-your-host-machine)
-* [IBM Cloud Container Service를 사용하여 Kubernetes Cluster 작성 및 설정](#setup-kube-cluster)
-* [{{ site.data.keys.mf_bm_pkg_name }} 아카이브 다운로드](#download-the-ibm-mfpf-container-8000-archive)
-* [전제조건](#prerequisites)
-* [IBM Containers를 사용하여 Kubernetes Cluster에서 {{ site.data.keys.product_adj }} 및 Analytics Servers 설정](#setting-up-the-mobilefirst-and-analytics-servers-on-kube-with-ibm-containers)
-* [{{ site.data.keys.mf_server }} 수정사항 적용](#applying-mobilefirst-server-fixes)
-* [IBM Cloud에서 Kubernetes 배치 제거](#removing-kube-deployments)
-* [IBM Cloud에서 데이터베이스 서비스 구성 제거](#removing-the-database-service-configuration-from-ibmcloud)
+- [개요](#overview)
+        - [다음으로 이동:](#jump-to)
+- [IBM Cloud에서 계정 등록](#register-an-account-on-ibm-cloud)
+    - [IBM Cloud 대시보드](#ibm-cloud-dashboard)
+- [호스트 시스템 설정](#set-up-your-host-machine)
+- [IBM Cloud Container Service를 사용하여 Kubernetes Cluster 작성 및 설정](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [{{ site.data.keys.mf_bm_pkg_name }} 아카이브 다운로드](#download-the--sitedatakeysmf_bm_pkg_name--archive)
+- [전제조건](#prerequisites)
+- [IBM Containers를 사용하여 Kubernetes Cluster에서 {{ site.data.keys.product_adj }} 및 Analytics Servers 설정](#setting-up-the--sitedatakeysproduct_adj--and-analytics-servers-on-kubernetes-cluster-with-ibm-containers)
+- [{{ site.data.keys.mf_server }} 수정사항 적용](#applying--sitedatakeysmf_server--fixes)
+    - [iFix 적용 단계:](#steps-to-apply-the-ifix)
+- [IBM Cloud에서 Kubernetes 배치 제거](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [IBM Cloud에서 데이터베이스 서비스 구성 제거](#removing-the-database-service-configuration-from-ibm-cloud)
 
 ## IBM Cloud에서 계정 등록
 {: #register-an-account-on-ibmcloud }

@@ -308,11 +308,11 @@ WebSphere Application Server Network Deployment의 각 노드에 Rational Common
 
 다음 표에서는 토큰 라이센싱이 사용되는 {{ site.data.keys.mf_server }}를 지원하는 플랫폼에 대해 설명합니다.
 
-| 운영 체제                    | 운영 체제 버전           |	하드웨어 아키텍처     |
+| 운영 체제             | 운영 체제 버전 |	하드웨어 아키텍처 |
 |------------------------------|--------------------------|-----------------------|
-| AIX                          | 7.1                      |	POWER8(64비트 전용)   |
+| AIX                          | 7.1                      |	POWER8(64비트 전용) |
 | SUSE Linux Enterprise Server | 11	                      | x86-64 전용           |
-| Windows Server               | 2012	                    | x86-64 전용           |
+| Windows Server               | 2012	                  | x86-64 전용           |
 
 토큰 라이센싱은 32비트 JRE(Java Runtime Environment)를 지원하지 않습니다. 애플리케이션 서버가 64비트 JRE를 사용하는지 확인하십시오.
 

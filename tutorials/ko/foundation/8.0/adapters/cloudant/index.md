@@ -136,4 +136,4 @@ Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/Mobile
 
 ### 샘플 사용법
 {: #sample-usage }
-샘플 README.md 파일의 지시사항을 따르십시오.
+샘플의 README.md 파일에 있는 지시사항을 따르십시오.

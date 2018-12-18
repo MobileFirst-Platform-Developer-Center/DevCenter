@@ -145,7 +145,7 @@ Apple 푸시 알림 서비스(APN)로 iOS 프로젝트를 구성하려면 사용
 
 표의 예는 Apache Tomcat 서버의 server.xml 파일에서 JNDI 특성이 정의되는 방식을 보여줍니다.
 
-| JNDI 특성 | 유형 및 설명 | Apache Tomcat 서버의 예 |
+| JNDI 특성	| 유형 및 설명 | Apache Tomcat 서버의 예 |
 |---------------|----------------------|----------------------------------|
 | ibm.appcenter.apns.p12.certificate.location | .p12 인증서의 전체 경로를 정의하는 문자열 값. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
 | ibm.appcenter.apns.p12.certificate.password | 인증서에 액세스하는 데 필요한 비밀번호를 정의하는 문자열 값. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` |
