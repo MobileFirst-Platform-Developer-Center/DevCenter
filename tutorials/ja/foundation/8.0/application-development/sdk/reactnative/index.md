@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-このチュートリアルでは、React Native CLI を使用して作成された新規または既存の React Native アプリケーションに {{ site.data.keys.product_adj }} SDK を追加する方法について学習します。また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法と、プロジェクト内で変更する {{ site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
+このチュートリアルでは、React Native CLI を使用して作成された新規または既存の React Native アプリケーションに {{ site.data.keys.product_adj }} SDK を追加する方法について学習します。 また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法と、プロジェクト内で変更する {{ site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
 
 {{ site.data.keys.product_adj }} React Native SDK は、React Native NPM プラグインとして提供され、[NPM](https://www.npmjs.com/package/react-native-ibm-mobilefirst) に登録されます。  
 
@@ -29,7 +29,7 @@ weight: 1
 {: #react-native-sdk-components }
 #### react-native-ibm-mobilefirst
 {: #react-native-ibm-mobilefirst }
-react-native-ibm-mobilefirst プラグインは、React Native 用のコア {{ site.data.keys.product_adj }} プラグインであり、必須です。他の {{ site.data.keys.product_adj }} プラグインのいずれかをインストールすると、react-native-ibm-mobilefirst プラグインも自動的にインストールされます (まだインストールされていない場合)。
+react-native-ibm-mobilefirst プラグインは、React Native 用のコア {{ site.data.keys.product_adj }} プラグインであり、必須です。 他の {{ site.data.keys.product_adj }} プラグインのいずれかをインストールすると、react-native-ibm-mobilefirst プラグインも自動的にインストールされます (まだインストールされていない場合)。
 
 **前提条件:**
 
@@ -105,20 +105,20 @@ react-native-ibm-mobilefirst プラグインは、React Native 用のコア {{ s
 
   * **iOS** :
 
-    プラットフォームが iOS の場合は、アプリケーションのバンドル ID を指定するように求められます。**重要**: バンドル ID **は大/小文字が区別**されます。
+    プラットフォームが iOS の場合は、アプリケーションのバンドル ID を指定するように求められます。 **重要**: バンドル ID **は大/小文字が区別**されます。
 
     `mfpdev app register` CLI コマンドは、まず、MobileFirst Server に接続してアプリケーションを登録し、次に、Xcode プロジェクトのルートに **mfpclient.plist** ファイルを生成し、そこに MobileFirst Server を識別するメタデータを追加します。
 
   *  **Android** :
 
-      プラットフォームが Android の場合は、アプリケーションのパッケージ名を指定するように求められます。**重要**: パッケージ名は**大/小文字が区別**されます。
+      プラットフォームが Android の場合は、アプリケーションのパッケージ名を指定するように求められます。 **重要**: パッケージ名は**大/小文字が区別**されます。
 
        `mfpdev app register` CLI コマンドは、まず、MobileFirst Server に接続してアプリケーションを登録し、続けて **mfpclient.properties** ファイルを Android Studio プロジェクトの **[project root]/app/src/main/assets/** フォルダー内に生成し、そこに MobileFirst Server を識別するメタデータを追加します。
 
 
 リモート・サーバーを使用する場合は、[`mfpdev server add` コマンドを使用](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)して、そのサーバーを追加します。
 
-`mfpdev app register` CLI コマンドは、まず、{{ site.data.keys.mf_server }} に接続してアプリケーションを登録します。各プラットフォームはアプリケーションとして {{ site.data.keys.mf_server }} に登録されます。
+`mfpdev app register` CLI コマンドは、まず、{{ site.data.keys.mf_server }} に接続してアプリケーションを登録します。 	各プラットフォームはアプリケーションとして {{ site.data.keys.mf_server }} に登録されます。
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** 次のように、{{ site.data.keys.mf_console }} からアプリケーションを登録することもできます。    
 >

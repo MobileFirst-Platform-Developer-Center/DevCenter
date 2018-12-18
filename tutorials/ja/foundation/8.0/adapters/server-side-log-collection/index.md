@@ -28,5 +28,4 @@ WebSphere のフル・プロファイルおよび Liberty プロファイルで�
     * [IBM WebSphere Application Server の Liberty プロファイル](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
 * クラウド・デプロイメントでログを取得するには、以下を使用します。
-    * IBM Containers または Liberty Build Pack。[IBM Containers ログおよびトレースの収集](../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/)チュートリアルを参照してください。
     * Mobile Foundation IBM Cloud サービス。[Mobile Foundation の使用](../../bluemix/using-mobile-foundation)チュートリアルの[サーバー・ログへのアクセス](../../bluemix/using-mobile-foundation/#accessing-server-logs)セクションを参照してください。

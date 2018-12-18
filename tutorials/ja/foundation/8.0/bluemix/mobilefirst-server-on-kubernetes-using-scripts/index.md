@@ -1,11 +1,14 @@
 ---
 layout: tutorial
-title: IBM Cloud Kubernetes クラスター上の MobileFirst Server のセットアップ
-breadcrumb_title: Mobile Foundation on Kubernetes Cluster
+title: スクリプトを使用した IBM Cloud Kubernetes クラスター上の MobileFirst サーバーのセットアップ
+breadcrumb_title: Foundation on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+<br/>
+>**注:** Kubernetes クラスターにソフトウェアをデプロイする際の推奨されるアプローチは、Helm です。[Helm チャートを使用した IBM Cloud Kubernetes クラスター上の Mobile Foundation](../mobilefirst-server-on-kubernetes-using-helm) のデプロイについて学習してください。
+
 ## 概説
 {: #overview }
 下記の指示に従って {{ site.data.keys.mf_server }} インスタンスおよび {{ site.data.keys.mf_analytics }} インスタンスを IBM Cloud 上で構成します。 これは、次のような手順で行います。
@@ -22,15 +25,19 @@ weight: 2
 
 #### ジャンプ先:
 {: #jump-to }
-* [IBM Cloud でアカウントを登録する](#register-an-account-on-ibmcloud)
-* [ホスト・マシンをセットアップする](#set-up-your-host-machine)
-* [IBM Cloud Container Service を使用して Kubernetes クラスターを作成およびセットアップする](#setup-kube-cluster)
-* [{{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする](#download-the-ibm-mfpf-container-8000-archive)
-* [前提条件](#prerequisites)
-* [IBM Containers を使用して Kubernetes クラスター上の {{ site.data.keys.product_adj }} および Analytics サーバーをセットアップする](#setting-up-the-mobilefirst-and-analytics-servers-on-kube-with-ibm-containers)
-* [{{ site.data.keys.mf_server }} 修正の適用](#applying-mobilefirst-server-fixes)
-* [IBM Cloud からの Kubernetes デプロイメントの削除](#removing-kube-deployments)
-* [IBM Cloud からのデータベース・サービス構成の削除](#removing-the-database-service-configuration-from-ibmcloud)
+- [概説](#overview)
+        - [ジャンプ先:](#jump-to)
+- [IBM Cloud でアカウントを登録する](#register-an-account-on-ibm-cloud)
+    - [IBM Cloud ダッシュボード](#ibm-cloud-dashboard)
+- [ホスト・マシンをセットアップする](#set-up-your-host-machine)
+- [IBM Cloud Container Service を使用して Kubernetes クラスターを作成およびセットアップする](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [{{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする](#download-the--sitedatakeysmf_bm_pkg_name--archive)
+- [前提条件](#prerequisites)
+- [IBM Containers を使用して Kubernetes クラスター上の {{ site.data.keys.product_adj }} および Analytics サーバーをセットアップする](#setting-up-the--sitedatakeysproduct_adj--and-analytics-servers-on-kubernetes-cluster-with-ibm-containers)
+- [{{ site.data.keys.mf_server }} 修正の適用](#applying--sitedatakeysmf_server--fixes)
+    - [iFix を適用するためのステップ:](#steps-to-apply-the-ifix)
+- [IBM Cloud からの Kubernetes デプロイメントの削除](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [IBM Cloud からのデータベース・サービス構成の削除](#removing-the-database-service-configuration-from-ibm-cloud)
 
 ## IBM Cloud でアカウントを登録する
 {: #register-an-account-on-ibmcloud }
