@@ -1,11 +1,14 @@
 ---
 layout: tutorial
-title: 在 IBM Cloud Kubernetes 集群上设置 MobileFirst Application Center
-breadcrumb_title: Application Center on Kubernetes Cluster
+title: 使用脚本在 IBM Cloud Kubernetes 集群上设置 MobileFirst Application Center
+breadcrumb_title: AppCenter on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+<br/>
+>**注：**Helm 是用于在 Kubernetes 集群上部署软件的推荐方法。了解有关[在 IBM Cloud Kubernetes 集群上使用 helm 图表部署 Mobile Foundation](../../mobilefirst-server-on-kubernetes-using-helm) 的信息。
+
 ## 概述
 {: #overview }
 遵循以下指示信息，在 IBM Cloud 上配置 {{ site.data.keys.mf_app_center }} 实例。 为此您需要完成以下步骤：
@@ -22,15 +25,19 @@ weight: 1
 
 #### 跳转至：
 {: #jump-to }
-* [在 IBM Cloud 上注册帐户](#register-an-account-on-ibmcloud)
-* [设置主机](#set-up-your-host-machine)
-* [使用 IBM Cloud Container Service 创建并设置 Kubernetes 集群](#setup-kube-cluster)
-* [下载 {{ site.data.keys.mf_bm_pkg_name }} 归档](#download-the-ibm-mfpf-container-8000-archive)
-* [先决条件](#prerequisites)
-* [使用 IBM Containers 在 Kubernetes 集群上设置 {{ site.data.keys.mf_app_center }}](#setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers)
-* [从 IBM Cloud 中除去容器](#removing-the-container-from-ibmcloud)
-* [从 IBM Cloud 中除去 Kubernetes 部署](#removing-kube-deployments)
-* [从 IBM Cloud 中除去数据库服务配置](#removing-the-database-service-configuration-from-ibmcloud)
+- [概述](#overview)
+        - [跳转至：](#jump-to)
+- [在 IBM Cloud 上注册帐户](#register-an-account-on-ibm-cloud)
+    - [IBM Cloud 仪表板](#ibm-cloud-dashboard)
+- [设置主机](#set-up-your-host-machine)
+- [使用 IBM Cloud Container Service 创建并设置 Kubernetes 集群](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [下载 {{ site.data.keys.mf_bm_pkg_name }} 归档](#download-the--sitedatakeysmfbmpkgname--archive)
+- [先决条件](#prerequisites)
+- [使用 IBM Containers 在 Kubernetes 集群上设置 {{ site.data.keys.mf_app_center }}](#setting-up-the--sitedatakeysmfappcenter--on-kubernetes-cluster-with-ibm-containers)
+    - [应用 iFix 的步骤：](#steps-to-apply-the-ifix)
+- [从 IBM Cloud 中除去容器](#removing-the-container-from-ibm-cloud)
+- [从 IBM Cloud 中除去 Kubernetes 部署](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [从 IBM Cloud 中除去数据库服务配置](#removing-the-database-service-configuration-from-ibm-cloud)
 
 ## 在 IBM Cloud 上注册帐户
 {: #register-an-account-on-ibmcloud }

@@ -54,7 +54,7 @@ Liberty for Java 运行时由 liberty-for-java buildpack 给予支持。 liberty
 ## 后续教程
 {: #tutorials-to-follow-next }
 
-* [使用 IBM 提供的脚本](mobilefirst-server-using-kubernetes/)在 IBM Cloud 中的 Kubernetes 集群上创建 {{ site.data.keys.mf_bm_short }} 实例。
+* [使用 IBM 提供的脚本](mobilefirst-server-on-kubernetes-using-scripts/)在 IBM Cloud 中的 Kubernetes 集群上创建 {{ site.data.keys.mf_bm_short }} 实例。
 * 使用教程[设置 {{ site.data.keys.mf_bm }} 服务](using-mobile-foundation/)创建 {{ site.data.keys.mf_server }} 实例。
 <!--* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.-->
 * [使用 IBM 提供的脚本](mobilefirst-server-using-scripts-lbp/)在 IBM Cloud 上创建 {{ site.data.keys.mf_server }} 实例（使用 Liberty for Java）。

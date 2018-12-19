@@ -31,14 +31,19 @@ weight: 1
 
 #### 跳转至：
 {: #jump-to}
-* [设置 {{ site.data.keys.mf_bm_short }} 服务](#setting-up-the-mobile-foundation-service)
-* [使用 {{ site.data.keys.mf_bm_short }} 服务](#using-the-mobile-foundation-service)
-* [服务器配置](#server-configuration)
-* [高级服务器配置](#advanced-server-configuration)
-* [应用 {{ site.data.keys.mfound_server }} 修订](#applying-mobilefirst-server-fixes)
-* [访问服务器日志](#accessing-server-logs)
-* [故障诊断](#troubleshooting)
-* [补充阅读](#further-reading)
+- [概述](#overview)
+    - [跳转至：](#jump-to)
+- [设置 {{ site.data.keys.mf_bm_short }} 服务](#setting-up-the--sitedatakeysmfbmshort--service)
+  - [设置 *developer* 计划](#setting-up-the-developer-plan)
+  - [设置 *Professional 1 Application* 和 *Professional Per Device* 计划](#setting-up-the-professional-1-application-and-professional-per-device-plan)
+- [使用 {{ site.data.keys.mf_bm_short }} 服务](#using-the--sitedatakeysmfbmshort--service)
+  - [服务器配置](#server-configuration)
+  - [高级服务器配置](#advanced-server-configuration)
+- [应用 {{ site.data.keys.mfound_server }} 修订](#applying--sitedatakeysmfoundserver--fixes)
+- [访问服务器日志](#accessing-server-logs)
+    - [跟踪](#tracing)
+- [故障诊断](#troubleshooting)
+- [补充阅读](#further-reading)
 
 ## 设置 {{ site.data.keys.mf_bm_short }} 服务
 {: #setting-up-the-mobile-foundation-service }

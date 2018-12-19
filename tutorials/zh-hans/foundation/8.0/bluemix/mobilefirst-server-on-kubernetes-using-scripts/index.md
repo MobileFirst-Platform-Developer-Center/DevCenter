@@ -1,11 +1,14 @@
 ---
 layout: tutorial
-title: 在 IBM Cloud Kubernetes 集群上设置 MobileFirst Server
-breadcrumb_title: Mobile Foundation on Kubernetes Cluster
+title: 使用脚本在 IBM Cloud Kubernetes 集群上设置 MobileFirst Server
+breadcrumb_title: Foundation on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+<br/>
+>**注：**Helm 是用于在 Kubernetes 集群上部署软件的推荐方法。了解有关[在 IBM Cloud Kubernetes 集群上使用 helm 图表部署 Mobile Foundation](../mobilefirst-server-on-kubernetes-using-helm) 的信息。
+
 ## 概述
 {: #overview }
 遵循以下指示信息，以在 IBM Cloud 上配置 {{ site.data.keys.mf_server }} 实例以及 {{ site.data.keys.mf_analytics }} 实例。 为此您需要完成以下步骤：
@@ -22,15 +25,19 @@ weight: 2
 
 #### 跳转至：
 {: #jump-to }
-* [在 IBM Cloud 上注册帐户](#register-an-account-on-ibmcloud)
-* [设置主机](#set-up-your-host-machine)
-* [使用 IBM Cloud Container Service 创建并设置 Kubernetes 集群](#setup-kube-cluster)
-* [下载 {{ site.data.keys.mf_bm_pkg_name }} 归档](#download-the-ibm-mfpf-container-8000-archive)
-* [先决条件](#prerequisites)
-* [使用 IBM Containers 在 Kubernetes 集群上设置 {{ site.data.keys.product_adj }} 和 Analytics Server](#setting-up-the-mobilefirst-and-analytics-servers-on-kube-with-ibm-containers)
-* [应用 {{ site.data.keys.mf_server }} 修订](#applying-mobilefirst-server-fixes)
-* [从 IBM Cloud 中除去 Kubernetes 部署](#removing-kube-deployments)
-* [从 IBM Cloud 中除去数据库服务配置](#removing-the-database-service-configuration-from-ibmcloud)
+- [概述](#overview)
+        - [跳转至：](#jump-to)
+- [在 IBM Cloud 上注册帐户](#register-an-account-on-ibm-cloud)
+    - [IBM Cloud 仪表板](#ibm-cloud-dashboard)
+- [设置主机](#set-up-your-host-machine)
+- [使用 IBM Cloud Container Service 创建并设置 Kubernetes 集群](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [下载 {{ site.data.keys.mf_bm_pkg_name }} 归档](#download-the--sitedatakeysmf_bm_pkg_name--archive)
+- [先决条件](#prerequisites)
+- [使用 IBM Containers 在 Kubernetes 集群上设置 {{ site.data.keys.product_adj }} 和 Analytics Server](#setting-up-the--sitedatakeysproduct_adj--and-analytics-servers-on-kubernetes-cluster-with-ibm-containers)
+- [应用 {{ site.data.keys.mf_server }} 修订](#applying--sitedatakeysmf_server--fixes)
+    - [应用 iFix 的步骤：](#steps-to-apply-the-ifix)
+- [从 IBM Cloud 中除去 Kubernetes 部署](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [从 IBM Cloud 中除去数据库服务配置](#removing-the-database-service-configuration-from-ibm-cloud)
 
 ## 在 IBM Cloud 上注册帐户
 {: #register-an-account-on-ibmcloud }
