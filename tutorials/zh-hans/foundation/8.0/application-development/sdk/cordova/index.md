@@ -24,8 +24,8 @@ weight: 1
 MobileFirst 插件支持的 Cordova 平台版本包括：
 
 * cordova-ios：**>= 4.1.1 以及 < 5.0**
-* cordova-android：**>= 6.1.2 and <= 7.0**
-* cordova-windows：**>= 4.3.2 以及 < 6.0**
+* cordova-android：**>= 6.1.2 以及 <= 8.0**
+* cordova-windows：**>= 4.3.2 以及 < 7.0**
 
 #### 跳转至：
 {: #jump-to }

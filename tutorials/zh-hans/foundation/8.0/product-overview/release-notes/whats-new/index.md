@@ -41,8 +41,7 @@ weight: 1
                 <h3>使用首选的 Cordova 工具开发跨平台应用程序</h3>
                 <p>您现在可以使用首选的 Cordova 工具（如 Apache Cordova CLI 或 Ionic Framework）开发跨平台混合应用程序。 独立于 {{ site.data.keys.product }} 获取这些工具，然后添加 {{ site.data.keys.product_adj }} 插件以提供 {{ site.data.keys.product_adj }} 后端功能。</p>
 
-                <p>您可以安装 {{ site.data.keys.product }} Studio
-Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product }} 支持的跨平台 Cordova 应用程序。 {{ site.data.keys.product }} Studio 插件还提供了可从 Eclipse 环境内部运行的其他 {{ site.data.keys.mf_cli }} 命令。</p>
+                <p>您可以安装 {{ site.data.keys.product }} Studio Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product }} 支持的跨平台 Cordova 应用程序。 {{ site.data.keys.product }} Studio 插件还提供了可从 Eclipse 环境内部运行的其他 {{ site.data.keys.mf_cli }} 命令。</p>
 
                 <h3>SDK 组件化</h3>
                 <p>之前，将 {{ site.data.keys.product_adj }} 客户机 SDK 作为单框架或 JAR 文件提供。 您现在可以选择包含或排除特定功能。 除了核心 SDK 之外，每个 {{ site.data.keys.product_adj }} API 还具有自己的可选组件集。</p>

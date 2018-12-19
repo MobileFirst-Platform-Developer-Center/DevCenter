@@ -53,7 +53,7 @@ weight: 6
             ext: 'aar',
             transitive: true
    ```
-    
+
    或在单独一行中：
 
    ```xml
@@ -73,7 +73,7 @@ weight: 6
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
       ```
-      
+
 	* 向 `application` 标记添加以下内容：
 
 	  ```xml
@@ -105,7 +105,7 @@ weight: 6
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-      
+
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -113,14 +113,14 @@ weight: 6
 	  > **注：**请确保将 `your.application.package.name` 替换为您应用程序的实际包名。
 
     * 向应用程序的活动中添加以下 `intent-filter`。
-      
+
       ```xml
       <intent-filter>
           <action android:name="your.application.package.name.IBMPushNotification" />
           <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
       ```
-      
+
 ## 通知 API
 {: #notifications-api }
 ### MFPPush 实例
@@ -345,28 +345,31 @@ Google Cloud Messaging (GCM) 已[不推荐使用](https://developers.google.com/
 
 ### FCM 项目设置
 
-与旧的 GCM 模型相比，在 FCM 中设置应用程序稍有不同。 
+与旧的 GCM 模型相比，在 FCM 中设置应用程序稍有不同。
 
  1. 获取通知提供程序凭证、创建一个 FCM 项目并将相同内容添加到 Android 应用程序。包含应用程序包名称 `com.ibm.mobilefirstplatform.clientsdk.android.push`。请参阅[此处的文档](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)，直至您已完成生成 `google-services.json` 文件的步骤
 
- 2. 配置您的 Gradle 文件。在应用程序的 `build.gradle` 文件中添加以下内容 
+ 2. 配置您的 Gradle 文件。在应用程序的 `build.gradle` 文件中添加以下内容
 
     ```xml
     dependencies {
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
-
     }
-    ```
-	
+    
     apply plugin: 'com.google.gms.google-services'
-    
-    - 在 `buildscript` 文件中添加以下依赖关系 -
-    
-    `classpath 'com.google.gms:google-services:3.0.0'`
+    ```
 
- 3. 配置 AndroidManifest 文件。`Android manifest.xml` 中需要进行以下更改 
+    
+
+    - 在根 build.gradle 的 `buildscript` 部分中添加以下依赖关系
+
+      `classpath 'com.google.gms:google-services:3.0.0'`
+
+    - 从 build.gradle 文件 `compile  com.google.android.gms:play-services-gcm:+` 中除去下面的 GCM 插件
+
+ 3. 配置 AndroidManifest 文件。`AndroidManifest.xml` 中需要进行以下更改
 
 **移除以下条目：**
 
@@ -381,7 +384,7 @@ Google Cloud Messaging (GCM) 已[不推荐使用](https://developers.google.com/
             <category android:name="your.application.package.name" />
         </intent-filter>
     </receiver>  
-	
+
     <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
         <intent-filter>
             <action android:name="com.google.android.gms.iid.InstanceID" />
@@ -422,11 +425,7 @@ Google Cloud Messaging (GCM) 已[不推荐使用](https://developers.google.com/
             </intent-filter>
     </service>
 ```
-	
+
  4. 在 Android Studio 中打开应用程序。复制您在应用程序目录内的 **step-1** 中创建的 `google-services.json` 文件。请注意，`google-service.json` 文件将包含您添加的包名称。		
-		
+
  5. 编译 SDK。构建应用程序。
-
-
-
-
