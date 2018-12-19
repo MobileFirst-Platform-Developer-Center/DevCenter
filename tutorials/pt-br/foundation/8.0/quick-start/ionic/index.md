@@ -10,14 +10,15 @@ weight: 1
 {: #overview }
 O propósito dessa demonstração é explicar um fluxo completo. As etapas a seguir são executadas.
 
-1. Um aplicativo de amostra que é pré-empacotado com o SDK do cliente {{ site.data.keys.product_adj }} é registrado e transferido por download a partir do {{ site.data.keys.mf_console }}.
+1. Um aplicativo de amostra que é pré-empacotado com o SDK do cliente {{ site.data.keys.product_adj }} é registrado e transferido
+por download a partir do {{ site.data.keys.mf_console }}.
 2. Um adaptador novo ou fornecido é implementado no {{ site.data.keys.mf_console }}.  
 3. A lógica de aplicativo é alterada para fazer uma solicitação de recurso.
 
 **Resultado final**:
 
 * Ping de {{ site.data.keys.mf_server }} executado com sucesso.
-* Recuperação de dados usando adaptador realizada com sucesso.
+* Recuperação de dados usando um adaptador executada com sucesso.
 
 ### Pré-requisitos:
 {: #prerequisites }
@@ -47,7 +48,7 @@ Abra o {{site.data.keys.mf_console }} carregando a URL: `http://your-server-host
 ### Etapa 3: Incluindo o SDK do MobileFirst no aplicativo Ionic
 {: #adding_mfp_ionic_sdk}
 
-Siga as etapas abaixo para incluir o SDK MobileFirst do Ionic no aplicativo de amostra Ionic transferido por download. 
+Siga as etapas abaixo para incluir o SDK MobileFirst do Ionic no aplicativo de amostra Ionic transferido por download.
 
 1. Navegue até a raiz de seu projeto Ionic existente e inclua o plug-in Ionic Cordova principal {{ site.data.keys.product_adj }}.
 
@@ -60,7 +61,7 @@ Por exemplo:
    ionic cordova plugin add cordova-plugin-mfp
    ```
 
-   > O comando acima inclui o plug-in do SDK principal do MobileFirst no projeto Ionic. 
+   > O comando acima inclui o plug-in do SDK principal do MobileFirst no projeto Ionic.
 
 4. Inclua uma ou mais plataformas suportadas no projeto Cordova usando o comando da CLI do Ionic: `ionic cordova platform add ios|android|windows|browser`. Por
 exemplo:
@@ -79,7 +80,7 @@ exemplo:
 {: #3-editing-application-logic }
 1. Abra o projeto Ionic no editor de código de sua escolha.
 
-2. Selecione o arquivo **src/js/index.js** e cole o seguinte fragmento de código, substituindo a função `WLAuthorizationManager.obtainAccessToken()` existente: 
+2. Selecione o arquivo **src/js/index.js** e cole o seguinte fragmento de código, substituindo a função `WLAuthorizationManager.obtainAccessToken()` existente:
 
 ```javascript
 WLAuthorizationManager.obtainAccessToken("").then(
@@ -155,7 +156,8 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
     mfpdev app register myIBMCloudServer
     ```
 
-Se um dispostivo estiver conectado, o aplicativo será instalado e ativado no dispostivo. Caso contrário, o simulador ou emulador será usado.
+Se um dispostivo estiver conectado, o aplicativo será instalado e ativado no dispostivo.
+Caso contrário, o simulador ou emulador será usado.
 
 <br clear="all"/>
 ### Resultados

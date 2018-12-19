@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Configuración de MobileFirst Server en IBM Cloud Private
-breadcrumb_title: Mobile Foundation on IBM Cloud Private
+breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
@@ -114,26 +114,26 @@ Antes de instalar y configurar {{ site.data.keys.mf_server }}, debe tener lo sig
 {: #env-mf-analytics }
 La tabla siguiente indica las variables de entorno utilizadas en {{ site.data.keys.mf_analytics }} en {{ site.data.keys.prod_icp }}.
 
-|Calificador |Parámetro |Definición |Valor permitido |
+| Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
-|arch |  |Arquitectura de nodo de trabajador |Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
-|image |pullPolicy |Política de extracción de imágenes |El valor predeterminado es **IfNotPresent**. |
-|  |tag |Etiqueta de imagen Docker |Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
-|  |name |Nombre de imagen Docker |Nombre de la imagen docker de {{ site.data.keys.prod_adj }} Operational Analytics. |
-|scaling |replicaCount |Número de instancias (pods) de {{ site.data.keys.prod_adj }} Operational Analytics que deben crearse |Número entero positivo<br/>El valor predeterminado es **2** |
-|mobileFirstAnalyticsConsole |user |Nombre de usuario de {{ site.data.keys.prod_adj }} Operational Analytics | El valor predeterminado es **admin**. |
-|  |password |Contraseña de {{ site.data.keys.prod_adj }} Operational Analytics |El valor predeterminado es **admin**.|
-|analyticsConfiguration |clusterName |Nombre del clúster de {{ site.data.keys.prod_adj }} Analytics |El valor predeterminado es **mobilefirst** |
-|  |analyticsDataDirectory |Vía de acceso donde se almacenan los datos de análisis. *La vía de acceso será la misma si la reclamación de volumen persistente se monta dentro del contenedor*. |El valor predeterminado es `/analyticsData` |
-|  |numberOfShards |Número de fragmentos Elasticsearch de {{ site.data.keys.prod_adj }} Analytics |Número entero positivo<br/>El valor predeterminado es **2** |
-|  |replicasPerShard |Número de réplicas Elasticsearch que se van a mantener por cada fragmento de {{ site.data.keys.prod_adj }} Analytics |Número entero positivo<br/>El valor predeterminado es **2** |
-|keystores |keystoresSecretName |Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
-|jndiConfigurations |mfpfProperties |Propiedades {{ site.data.keys.prod_adj }} JNDI que se deben especificar para personalizar Operational Analytics |Proporcione pares nombre-valor separados por comas. |
-|resources |limits.cpu |Describe la cantidad máxima de CPU permitidas |El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  |limits.memory |Describe la cantidad máxima de memoria permitida |El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-|  |requests.cpu |Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado será *limits* (si se especifica) o el valor definido por implementación. |El valor predeterminado es **1000m**. |
-|  |requests.memory |Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado de la cantidad de memoria será *limits* (si se especifica) o el valor definido por implementación. |El valor predeterminado es **2048Mi**. |
-|persistence |existingClaimName |El nombre de la reclamación de volumen de persistencia (PVC) |  |
+| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
+| image | pullPolicy | Política de extracción de imágenes | El valor predeterminado es **IfNotPresent**. |
+|  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
+|  | name | Nombre de imagen Docker | Nombre de la imagen docker de {{ site.data.keys.prod_adj }} Operational Analytics. |
+| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Operational Analytics que deben crearse | Número entero positivo<br/>El valor predeterminado es **2** |
+| mobileFirstAnalyticsConsole | user | Nombre de usuario de {{ site.data.keys.prod_adj }} Operational Analytics | El valor predeterminado es **admin**. |
+|  | password | Contraseña de {{ site.data.keys.prod_adj }} Operational Analytics | El valor predeterminado es **admin**. |
+| analyticsConfiguration | clusterName | Nombre del clúster de {{ site.data.keys.prod_adj }} Analytics | El valor predeterminado es **mobilefirst** |
+|  | analyticsDataDirectory | Vía de acceso donde se almacenan los datos de análisis. *La vía de acceso será la misma si la reclamación de volumen persistente se monta dentro del contenedor*. | El valor predeterminado es `/analyticsData` |
+|  | numberOfShards | Número de fragmentos Elasticsearch de {{ site.data.keys.prod_adj }} Analytics | Número entero positivo<br/>El valor predeterminado es **2** |
+|  | replicasPerShard | Número de réplicas Elasticsearch que se van a mantener por cada fragmento de {{ site.data.keys.prod_adj }} Analytics | Número entero positivo<br/>El valor predeterminado es **2** |
+| keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
+| jndiConfigurations | mfpfProperties | Propiedades {{ site.data.keys.prod_adj }} JNDI que se deben especificar para personalizar Operational Analytics | Proporcione pares nombre-valor separados por comas. |
+| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas | El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | limits.memory | Describe la cantidad máxima de memoria permitida | El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|  | requests.cpu | Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado será *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1000m**. |
+|  | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado de la cantidad de memoria será *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **2048Mi**. |
+| persistence | existingClaimName | El nombre de la reclamación de volumen de persistencia (PVC) |  |
 | logs | consoleFormat | Especifica el formato de salida del registro del contenedor. | El valor predeterminado es **json**. |
 |  | consoleLogLevel | Controla la granularidad de los mensajes que van al registro del contenedor. | El valor predeterminado es **info**. |
 |  | consoleSource | Especifica los orígenes que se escriben en el registro del contenedor. Utilice una lista separada por comas para varios orígenes. | El valor predeterminado es **message**, **trace**, **accessLog**, **ffdc**. |
@@ -143,32 +143,32 @@ La tabla siguiente indica las variables de entorno utilizadas en {{ site.data.ke
 {: #env-mf-server }
 La tabla siguiente indica las variables de entorno utilizadas en {{ site.data.keys.mf_server }} en {{ site.data.keys.prod_icp }}.
 
-|Calificador |Parámetro |Definición |Valor permitido |
+| Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
-|arch |  |Arquitectura de nodo de trabajador |Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
-|image |pullPolicy |Política de extracción de imágenes |El valor predeterminado es **IfNotPresent**. |
-|  |tag |Etiqueta de imagen Docker |Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
-|  |name |Nombre de imagen Docker |Nombre de la imagen Docker de {{ site.data.keys.prod_adj }} Server. |
-|scaling |replicaCount |Número de instancias (pods) de {{ site.data.keys.prod_adj }} Server que deben crearse |Número entero positivo<br/>El valor predeterminado es **3** |
-|mobileFirstOperationsConsole |user |Nombre de usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
-|  |password |Contraseña del usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
-|existingDB2Details |db2Host |Dirección IP o HOST de la base de datos DB2 donde se deben configurar las tablas de {{ site.data.keys.prod_adj }} Server |Actualmente, solo se admite DB2. |
-|  |db2Port |Puerto en el que está configurada la base de datos DB2 |  |
-|  |db2Database |Nombre de la base de datos que está preconfigurada para utilizar en DB2 |  |
-|  |db2Username |Nombre de usuario de DB2 para acceder a la base de datos DB2 |El usuario debe tener acceso para crear tablas y crear el esquema si no existe todavía. |
-|  |db2Password |Contraseña de DB2 de la base de datos proporcionada  |  |
-|  |db2Schema |Esquema de DB2 de servidor que se va a crear |  |
-|  |db2ConnectionIsSSL |Tipo de conexión de DB2 |Especifique si la conexión de la base de datos debe ser **http** o **https**. El valor predeterminado es **false** (http).<br/>Asegúrese de que el puerto de DB2 también esté configurado para la misma modalidad de conexión. |
-|existingMobileFirstAnalytics |analyticsEndPoint |URL del servidor de análisis |Por ejemplo: `http://9.9.9.9:30400`.<br/> No especifique la vía de acceso a la consola, se añadirá durante el despliegue.
+| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
+| image | pullPolicy | Política de extracción de imágenes | El valor predeterminado es **IfNotPresent**. |
+|  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
+|  | name | Nombre de imagen Docker | Nombre de la imagen Docker de {{ site.data.keys.prod_adj }} Server. |
+| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Server que deben crearse | Número entero positivo<br/>El valor predeterminado es **3** |
+| mobileFirstOperationsConsole | user | Nombre de usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
+|  | password | Contraseña del usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
+| existingDB2Details | db2Host | Dirección IP o HOST de la base de datos DB2 donde se deben configurar las tablas de {{ site.data.keys.prod_adj }} Server | Actualmente, solo se admite DB2. |
+|  | db2Port | Puerto en el que está configurada la base de datos DB2 |  |
+|  | db2Database | Nombre de la base de datos que está preconfigurada para utilizar en DB2 |  |
+|  | db2Username | Nombre de usuario de DB2 para acceder a la base de datos DB2 | El usuario debe tener acceso para crear tablas y crear el esquema si no existe todavía. |
+|  | db2Password | Contraseña de DB2 de la base de datos proporcionada  |  |
+|  | db2Schema | Esquema de DB2 de servidor que se va a crear |  |
+|  | db2ConnectionIsSSL | Tipo de conexión de DB2 | Especifique si la conexión de la base de datos debe ser **http** o **https**. El valor predeterminado es **false** (http).<br/>Asegúrese de que el puerto de DB2 también esté configurado para la misma modalidad de conexión. |
+| existingMobileFirstAnalytics | analyticsEndPoint | URL del servidor de análisis | Por ejemplo: `http://9.9.9.9:30400`.<br/> No especifique la vía de acceso a la consola, se añadirá durante el despliegue.
  |
-|  |analyticsAdminUser |Nombre de usuario del usuario administrador de analítica |  |
-|  |analyticsAdminPassword |Contraseña del usuario administrador de analítica |  |
-|keystores |keystoresSecretName |Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
-|jndiConfigurations |mfpfProperties |Propiedades JNDI de servidor {{ site.data.keys.prod_adj }} para personalizar el despliegue |Pares nombre-valor separados por comas. |
-|resources |limits.cpu |Describe la cantidad máxima de CPU permitidas |El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  |limits.memory |Describe la cantidad máxima de memoria permitida |El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-|  |requests.cpu |Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación. |El valor predeterminado es **1000m**. |
-|  |requests.memory |Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación |El valor predeterminado es **2048Mi**. |
+|  | analyticsAdminUser | Nombre de usuario del usuario administrador de analítica |  |
+|  | analyticsAdminPassword | Contraseña del usuario administrador de analítica |  |
+| keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
+| jndiConfigurations | mfpfProperties | Propiedades JNDI de servidor {{ site.data.keys.prod_adj }} para personalizar el despliegue | Pares nombre-valor separados por comas. |
+| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas | El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | limits.memory | Describe la cantidad máxima de memoria permitida | El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|  | requests.cpu | Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1000m**. |
+|  | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación | El valor predeterminado es **2048Mi**. |
 | logs | consoleFormat | Especifica el formato de salida del registro del contenedor. | El valor predeterminado es **json**. |
 |  | consoleLogLevel | Controla la granularidad de los mensajes que van al registro del contenedor. | El valor predeterminado es **info**. |
 |  | consoleSource | Especifica los orígenes que se escriben en el registro del contenedor. Utilice una lista separada por comas para varios orígenes. | El valor predeterminado es **message**, **trace**, **accessLog**, **ffdc**. |
@@ -188,7 +188,7 @@ Antes de empezar la instalación del gráfico de {{ site.data.keys.mf_analytics 
 Siga estos pasos para instalar y configurar IBM {{ site.data.keys.mf_analytics }} desde la consola de gestión de {{ site.data.keys.prod_icp }}.
 
 1. Vaya a **Catálogo** en la consola de gestión.
-2. Seleccione el gráfico helm **ibm-mfpf-analytics-prod**.
+2. Seleccione el gráfico Helm **ibm-mfpf-analytics-prod**.
 3. Pulse **Configurar**.
 4. Proporcione las variables de entorno. Consulte [Variables de entorno de {{ site.data.keys.mf_analytics }}](#env-mf-analytics) para obtener más información.
 5. Acepte el **Acuerdo de licencia**.
@@ -203,7 +203,7 @@ Antes de empezar la instalación de {{ site.data.keys.mf_server }}, preconfigure
 Siga estos pasos para instalar y configurar IBM {{ site.data.keys.mf_server }} desde la consola de gestión de {{ site.data.keys.prod_icp }}.
 
 1. Vaya a **Catálogo** en la consola de gestión.
-2. Seleccione el gráfico helm **ibm-mfpf-server-prod**.
+2. Seleccione el gráfico Helm **ibm-mfpf-server-prod**.
 3. Pulse **Configurar**.
 4. Proporcione las variables de entorno. Consulte [Variables de entorno de {{ site.data.keys.mf_server }}](#env-mf-server) para obtener más información.
 5. Acepte el **Acuerdo de licencia**.
@@ -226,7 +226,7 @@ Se puede acceder a la consola de IBM {{ site.data.keys.mf_analytics }} mediante 
 El protocolo puede ser `http` o `https`. Además, tenga en cuenta que el puerto será **NodePort** en el caso del despliegue de **NodePort**. Para obtener los valores de ip_address y **NodePort** de los gráficos {{ site.data.keys.prod_adj }} instalados, siga estos pasos:
 
 1. En la consola de gestión de {{ site.data.keys.prod_icp }}, seleccione **Cargas de trabajo > Releases de Helm**.
-2. Pulse el *nombre de release* de la instalación de gráfico helm.
+2. Pulse el *nombre de release* de la instalación de gráfico Helm.
 3. Consulte la sección **Notas**.
 
 >**Nota:** El puerto 9600 se expone internamente en el servicio Kubernetes y las instancias de {{ site.data.keys.prod_adj }} Analytics lo utilizan como puerto de transporte.
