@@ -1,11 +1,14 @@
 ---
 layout: tutorial
-title: MobileFirst Server in einem IBM Cloud-Kubernetes-Cluster einrichten
-breadcrumb_title: Mobile Foundation on Kubernetes Cluster
+title: MobileFirst Server mit Scripts in einem IBM Cloud-Kubernetes-Cluster einrichten
+breadcrumb_title: Foundation on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+<br/>
+>**Hinweis:** Für die Softwareimplementierung in einem Kubernetes-Cluster sollten Sie Helm nutzen. Informieren Sie sich über die Implementierung der [Mobile Foundation in einem IBM Cloud-Kubernetes-Cluster unter Verwendung von Helm-Charts](../mobilefirst-server-on-kubernetes-using-helm).
+
 ## Übersicht
 {: #overview }
 Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz und eine Instanz von {{ site.data.keys.mf_analytics }} für IBM Cloud zu konfigurieren. Gehen Sie dazu die folgenden Schritte durch: 
@@ -17,20 +20,24 @@ Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz und
 
 >**Hinweis:**  
 >
-* Das Windows-Betriebssystem wird derzeit nicht für die Ausführung dieser Scripts unterstützt.   
-* Die MobileFirst-Server-Konfigurationstools können nicht für die Implementierung in IBM Containern genutzt werden. 
+* Das Windows-Betriebssystem wird derzeit nicht für die Ausführung dieser Scripts unterstützt.  
+* Die MobileFirst-Server-Konfigurationstools können nicht für die Implementierung in IBM Containern genutzt werden.
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Konto in IBM Cloud registrieren](#register-an-account-on-ibmcloud)
-* [Hostmaschine einrichten](#set-up-your-host-machine)
-* [Kubernetes-Cluster mit dem Container-Service von IBM Cloud erstellen und einrichten](#setup-kube-cluster)
-* [Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen](#download-the-ibm-mfpf-container-8000-archive)
-* [Voraussetzungen](#prerequisites)
-* [{{ site.data.keys.product_adj }} Server und Analytics Server im Kubernetes-Cluster mit IBM Containern einrichten](#setting-up-the-mobilefirst-and-analytics-servers-on-kube-with-ibm-containers)
-* [Fixes für {{ site.data.keys.mf_server }} anwenden](#applying-mobilefirst-server-fixes)
-* [Kubernetes-Implementierungen aus IBM Cloud entfernen](#removing-kube-deployments)
-* [Datenbankservicekonfiguration aus IBM Cloud entfernen](#removing-the-database-service-configuration-from-ibmcloud)
+- [Übersicht](#overview)
+        - [Fahren Sie mit folgenden Abschnitten fort: ](#jump-to)
+- [Konto in IBM Cloud registrieren](#register-an-account-on-ibm-cloud)
+    - [IBM Cloud-Dashboard](#ibm-cloud-dashboard)
+- [Hostmaschine einrichten](#set-up-your-host-machine)
+- [Kubernetes-Cluster mit dem Container-Service von IBM Cloud erstellen und einrichten](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen](#download-the--sitedatakeysmf_bm_pkg_name--archive)
+- [Voraussetzungen](#prerequisites)
+- [{{ site.data.keys.product_adj }} Server und Analytics Server in einem Kubernetes-Cluster mit IBM Containern einrichten](#setting-up-the--sitedatakeysproduct_adj--and-analytics-servers-on-kubernetes-cluster-with-ibm-containers)
+- [Fixes für {{ site.data.keys.mf_server }} anwenden](#applying--sitedatakeysmf_server--fixes)
+    - [Anwendung des iFix:](#steps-to-apply-the-ifix)
+- [Kubernetes-Implementierungen aus IBM Cloud entfernen](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [Datenbankservicekonfiguration aus IBM Cloud entfernen](#removing-the-database-service-configuration-from-ibm-cloud)
 
 ## Konto in IBM Cloud registrieren
 {: #register-an-account-on-ibmcloud }
@@ -391,7 +398,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
                     </ol>
                     Führen Sie den folgenden Befehl aus: <br/>
                     <code>kubectl create -f ./args/mfpf-deployment-all.yaml</code>
-                    <blockquote><b>Hinweis:<br/></b>Folgende YAML-Schablonendateien werden bereitgestellt: <br/>
+                    <blockquote><b>Hinweis:<br/></b>Folgende YAML-Schablonendateien werden bereitgestellt:<br/>
                     <ul><li><b>mfpf-deployment-all.yaml</b>: Implementiert {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }} mit HTTP. </li>
                       <li><b>mfpf-deployment-all-tls.yaml</b>: Implementiert {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }} mit HTTPS. </li>
                       <li><b>mfpf-deployment-server.yaml</b>: Implementiert {{ site.data.keys.mf_server }} mit HTTP. </li>

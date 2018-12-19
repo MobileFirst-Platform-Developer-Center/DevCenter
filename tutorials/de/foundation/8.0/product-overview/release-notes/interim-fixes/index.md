@@ -12,53 +12,157 @@ Vorläufige Fixes sind kumulativ. Wenn Sie den neusten vorläufigen Fix für Ver
 
 Laden Sie den neuesten vorläufigen Fix herunter und installieren Sie ihn. Sie erhalten damit alle in den folgenden Abschnitten beschriebenen Korrekturen. Wenn Sie frühere Fixes installieren, erhalten Sie möglicherweise nicht alle der hier beschriebenen Korrekturen. 
 
-> Eine Liste der iFix-Releases für {{ site.data.keys.product }} 8.0 finden Sie [in diesen Blogbeiträgen]({{site.baseurl}}/blog/tag/iFix_8.0/).
+> Eine Liste der iFix-Releases für {{ site.data.keys.product }} 8.0 finden Sie [hier]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
 Wenn eine APAR-Nummer aufgeführt ist, können Sie überprüfen, ob das betreffende Feature in einem vorläufigen Fix enthalten ist, indem Sie in der Readme-Datei zum vorläufigen Fix nach dieser APAR-Nummer suchen. 
 
-### Lizenzierung
+### Mit CD-Update 3 (8.0.0.0-MFPF-IF201811050432-CDUpdate-03) eingeführte Features
+
+##### <span style="color:NAVY">**Unterstützung für Aktualisierungstoken unter iOS**</span>
+
+Die Mobile Foundation stellt das Feature für Aktualisierungstoken ab diesem CD-Update bereit. [Weitere Informationen finden Sie hier]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
+
+##### <span style="color:NAVY">**CLI für Verwaltung (*mfpadm*) über die Mobile-Foundation-Konsole herunterladen**</span>
+
+Die Mobile-Foundation-CLI für Verwaltung (*mfpadm*) kann jetzt vom *Download-Center* der Mobile-Foundation-Konsole aus heruntergeladen werden.
+
+##### <span style="color:NAVY">**Unterstützung der MobileFirst-CLI für Node Version 8.x**</span>
+
+Ab diesem iFix (*8.0.0.0-MFPF-IF201810040631*) bietet die MobileFirst-CLI der Mobile Foundation Unterstützung für Node Version 8.x.
+
+##### <span style="color:NAVY">**Abhängigkeit von *libstdc++* für Cordova-Projekte entfernen**</span>
+
+Ab diesem iFix (*8.0.0.0-MFPF-IF201809041150*) gibt es eine Änderung. Die Abhängigkeit von *libstdc++* wird für Cordova-Projekte entfernt. Dies ist für neue Apps, die unter iOS 12 ausgeführt werden, erforderlich. Ausführliche Informationen hierzu sowie eine Ausweichlösung finden Sie in [diesem Blogbeitrag](https://mobilefirstplatform.ibmcloud.com/blog/2018/07/23/mfp-support-for-ios12/).
+
+### Mit CD-Update 2 (8.0.0.0-MFPF-IF201807180449-CDUpdate-02) eingeführte Features
+
+##### <span style="color:NAVY">**Unterstützung für die React-Native-Entwicklung**</span>
+
+Beginnend mit dem CD-Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*) wird mit der Verfügbarkeit des IBM Mobile-Foundation-SDK für React-Native-Apps in der Mobile Foundation die Unterstützung der React-Native-Entwicklung [angekündigt]({{site.baseurl}}/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/). [Weitere Informationen finden Sie hier]({{site.baseurl}}/tutorials/en/foundation/8.0/reactnative-tutorials/).
+
+##### <span style="color:NAVY">**Automatisierte Synchronisation von JSONStore-Sammlungen mit CouchDB-Datenbanken für das iOS- und Cordova-SDK**</span>
+
+Wenn Sie das MobileFirst-SDK für iOS und Cordova verwenden, können Sie beginnend mit dem CD-Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*) die Synchronisation von Daten einer JSONStore-Sammlung auf einem Gerät mit jeder Art von CouchDB-Datenbank, einschließlich [Cloudant](https://www.ibm.com/in-en/marketplace/database-management), automatisieren. Weitere Informationen zu diesem Feature enthält dieser [Blogbeitrag]({{site.baseurl}}/blog/2018/07/24/jsonstoresync-couchdb-databases-ios-and-cordova/).
+
+##### <span style="color:NAVY">**Einführung von Aktualisierungstoken**</span>
+
+Beginnend mit dem CD-Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*) gibt es in der Mobile Foundation eine besondere Art von Token, die als Aktualisierungstoken bezeichnet werden und zum Anfordern eines neuen Zugriffstokens verwendet werden können. [Weitere Informationen finden Sie hier]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
+
+##### <span style="color:NAVY">**Unterstützung für Cordova Version 8 und Cordova Android Version 7**</span>
+
+Beginnend mit diesem iFix (*8.0.0.0-MFPF-IF201804051553*) werden MobileFirst-Cordova-Plug-ins für Cordova Version 8 und Cordova Android Version 7 unterstützt. Um mit der genannten Cordova-Version arbeiten zu können, müssen Sie die neuesten MobileFirst-Plug-ins abrufen und ein Upgrade auf die neueste CLI-Version (mfpdev-cli) durchführen. Ausführliche Informationen zu unterstützten Versionen für einzelne Plattformen finden Sie unter [MobileFirst-Foundation-SDK zu Cordova-Anwendungen hinzufügen]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/cordova/#support-levels).
+
+##### <span style="color:NAVY">**Automatisierte Synchronisation von JSONStore-Sammlungen mit CouchDB-Datenbanken**</span>
+
+Wenn Sie das MobileFirst-Android-SDK verwenden, können Sie ab diesem iFix (*8.0.0.0-MFPF-IF201802201451*) die Synchronisation von Daten einer JSONStore-Sammlung auf einem Gerät mit jeder Art von CouchDB-Datenbank, einschließlich [Cloudant](https://www.ibm.com/in-en/marketplace/database-management), automatisieren. Weitere Informationen zu diesem Feature enthält dieser [Blogbeitrag]({{site.baseurl}}/blog/2018/02/23/jsonstoresync-couchdb-databases/).
+
+### Mit CD-Update 1 (8.0.0.0-MFPF-IF201711230641-CDUpdate-01) eingeführte Features
+
+##### <span style="color:NAVY">**Unterstützung für den Eclipse-UI-Editor**</span>
+
+Beginnend mit dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* stellt das MobileFirst Studio einen Eclipse-WYSIWYG-Editor bereit. Entwickler können die Benutzeroberfläche für ihre Cordova-Anwendungen mit diesem UI-Editor entwerfen und implementieren. [Weitere Informationen finden Sie hier](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/developing-ui/).
+
+##### <span style="color:NAVY">**Neue Adapter zum Erstellen kognitiver Apps**</span>
+
+Beginnend mit dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* gibt es in der Mobile Foundation zwei neue vorgefertigte kognitive Serviceadapter für die Services [*Watson Tone Analyzer*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonToneAnalyzer) und [*Language Translator*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonLanguageTranslator). Diese Adapter können über das *Download-Center* der Mobile-Foundation-Konsole heruntergeladen und implementiert werden.
+
+##### <span style="color:NAVY">**Dynamische App-Authentizität**</span>
+
+Ab dem iFix *8.0.0.0-MFPF-IF20170220-1900* gibt es eine neue Implementierung der *Anwendungsauthentizität*. Diese Implementierung erfordert nicht das Offlinetool *mfp-app-authenticity* zum Generieren der Datei *.authenticity_data*. Sie können die *Anwendungsauthentizität* vielmehr über die MobileFirst-Konsole aktivieren oder inaktivieren. Weitere Informationen finden Sie unter [Anwendungsauthentizität konfigurieren](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/application-authenticity).
+
+##### <span style="color:NAVY">**Application-Center-Unterstützung (Client & Server) für Windows 10**</span>
+
+Ab dem iFix *8.0.0.0-MFPF-IF20170327-1055* werden Windows-10-UWP-Apps im IBM Application Center unterstützt. Benutzer können jetzt Windows-10-UWP-Apps hochladen und auf ihrem Gerät installieren. Das Windows-10-UWP-Clientprojekt für die Installation der UWP-App wird jetzt mit dem Application Center bereitgestellt. Sie können das Projekt in Visual Studio öffnen und eine Binärdatei (z. B. *.appx *) für die Verteilung erstellen. Das Application Center stellt keine vordefinierte Methode für die Verteilung des mobilen Clients bereit. Weitere Informationen finden Sie unter [IBM Application-Center-Client für Microsoft Windows 10 Universal (nativ)](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/appcenter/preparations/#microsoft-windows-10-universal-native-ibm-appcenter-client).
+
+##### <span style="color:NAVY">**Unterstützung des MobileFirst-Eclipse-Plug-ins für Eclipse Neon**</span>
+
+Ab dem iFix *8.0.0.0-MFPF-IF20170426-1210* gibt es ein aktualisiertes MobileFirst-Eclipse-Plug-in mit Unterstützung für Eclipse Neon.
+
+##### <span style="color:NAVY">**Android-SDK für Verwendung einer neueren Version von OkHttp (Version 3.4.1) modifiziert**</span>
+
+Ab dem iFix *8.0.0.0-MFPF-IF20170605-2216* gibt es ein modifiziertes Android-SDK, das eine neuere Version von *OkHttp (Version 3.4.1)* anstelle der alten Version aus dem bisherigen MobileFirst-SDK für Android verwendet. OkHttp ist nicht Bestandteil des SDK-Bundles, sondern wurde als Abängigkeit hinzugefügt. So haben Sie die freie Wahl bei der Verwendung der OkHttp-Bibliothek für Entwickler und können Konflikte durch mehrere Versionen von OkHttp vermeiden.
+
+##### <span style="color:NAVY">**Unterstützung für Cordova Version 7**</span>
+
+Ab dem iFix *8.0.0.0-MFPF-IF20170608-0406* wird Cordova Version 7 unterstützt. Ausführliche Informationen zu unterstützten Versionen für einzelne Plattformen finden Sie unter [MobileFirst-Foundation-SDK zu Cordova-Anwendungen hinzufügen](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/sdk/cordova/).
+
+##### <span style="color:NAVY">**Unterstützung für mehrfaches Certificate Pinning**</span>
+
+Ab dem iFix (*8.0.0.0-MFPF-IF20170624-0159*) unterstützt die Mobile Foundation das Pinning für mehrere Zertifikate. Bis zu diesem iFix hat die Mobile Foundation nur das Pinning eines Zertifikats unterstützt. In der Mobile Foundation gibt es eine neue API, die dem Benutzer das Herstellen von Verbindungen zu mehreren Hosts ermöglicht, indem er die öffentlichen Schlüssel von mehreren X509-Zertifikaten in der Clientanwendung verankert. Dieses Feature wird nur für native Android- und iOS-Apps unterstützt. Weitere Informationen zur *Unterstützung für das mehrfache Certificate Pinning* finden Sie unter [Neuerungen](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/whats-new/) im Abschnitt *Neuerungen bei den MobileFirst-APIs*.
+
+##### <span style="color:NAVY">**Adapter zum Erstellen einer kognitiven App**</span>
+
+Ab dem iFix (*8.0.0.0-MFPF-IF20170710-1834*) gibt es in der Mobile Foundation vorgefertigte Adapter für kognitive Watson-Services wie [*WatsonConversation*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonConversationAdapter), [*WatsonDiscovery*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonDiscoveryAdapter) und [*WatsonNLU (Natural Language Understanding)*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonNLUAdapter). Diese Adapter können über das *Download-Center* der Mobile-Foundation-Konsole heruntergeladen und implementiert werden.
+
+##### <span style="color:NAVY">**Cloud-Functions-Adapter zum Erstellen einer serverlosen App**</span>
+
+Ab dem iFix (*8.0.0.0-MFPF-IF20170710-1834*) gibt es in der Mobile Foundation einen vorgefertigten [*Cloud Functions Adapter*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/OpenWhiskAdapter) für die [Cloud Functions Platform](https://console.bluemix.net/openwhisk/). Dieser Adapter kann über das *Download-Center* der Mobile-Foundation-Konsole heruntergeladen und implementiert werden.
+
+##### <span style="color:NAVY">**Unterstützung für mehrfaches Certificate Pinning im Cordova-SDK**</span>
+
+Ab diesem iFix (*8.0.0.0-MFPF-IF20170803-1112*) wird das mehrfache Certificate Pinning vom Cordova-SDK unterstützt. Weitere Informationen zur *Unterstützung für das mehrfache Certificate Pinning* finden Sie unter [Neuerungen](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/whats-new/) im Abschnitt *Neuerungen bei den MobileFirst-APIs*.
+
+##### <span style="color:NAVY">**Unterstützung für die Cordova-Browserplattform**</span>
+
+Ab dem iFix (*8.0.0.0-MFPF-IF20170823-1236*) bietet die {{ site.data.keys.product }} neben den bisher unterstützten Plattformen (Cordova Windows, Cordova Android und Cordova iOS) Unterstützung für die Cordova-Browserplattform. [Weitere Informationen finden Sie hier](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/29/cordova-browser-compatibility-with-MFP/).
+
+##### <span style="color:NAVY">**Adapter aus der zugehörigen OpenAPI-Spezifikation generieren**</span>
+
+Ab dem iFix (*8.0.0.0-MFPF-IF20170901-1903*) kann in der {{ site.data.keys.product }} ein Adapter automatisch aus der zugehörigen OpenAPI-Spezifikation generiert werden. Benutzer der {{ site.data.keys.product }} können sich jetzt auf die Anwendungslogik konzentrieren, anstatt den Mobile-Foundation-Adapter zu erstellen, der die Anwendung mit dem gewünschten Back-End-Service verbindet. [Weitere Informationen finden Sie hier]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/microservice-adapter/).
+
+##### <span style="color:NAVY">**Unterstützung für iOS 11 und iPhone X**</span>
+
+Beginnend mit dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* wird für Version 8.0 der Mobile Foundation die Untertsützung für iOS 11 und iPhone X angekündigt. Weitere Einzelheiten enthält der Blogbeitrag [IBM MobileFirst Platform Foundation Support for iOS 11 and iPhone X](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/18/mfp-support-for-ios11/).
+
+##### **<span style="color:NAVY">Unterstützung für Android Oreo</span>**
+
+Beginnend mit dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* wird mit diesem [Blogbeitrag](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/22/mobilefirst-android-Oreo/) für die Mobile Foundation die Untertsützung für Android Oreo angekündigt. Sowohl native Android-Apps als auch Hybrid-Cordova-Apps, die für ältere Versionen von Android erstellt wurden, funktionieren unter Android Oreo wie erwartet, wenn das Gerät mittels OTA (Over-the-Air-Update) aktualisiert wird.
+
+##### <span style="color:NAVY">**Implementierung der Mobile Foundation in Kubernetes-Clustern möglich**</span>
+
+Ab dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* kann der Benutzer die Mobile Foundation (einschließlich Mobile Foundation Server, Mobile Analytics Server und Application Center) in Kubernetes-Clustern implementieren. Das Implementierungspaket wurde aktualisiert, sodass jetzt eine Kubernetes-Implementierung unterstützt wird. Lesen Sie hierzu die entsprechende [Ankündigung](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/09/mobilefoundation-on-kube/).
+
+<!--
+### Licensing
 {: #licensing }
-#### PVU-Lizenzierung
+#### PVU licensing
 {: #pvu-licensing }
-{{ site.data.keys.product }} Extension Version 8.0.0 ist als neues Angebot mit PVU-Lizenzierung (Prozessor-Value-Unit) erhältlich. Weitere Informationen zur PVU-Lizenzierung
-für {{ site.data.keys.product }} Extension finden Sie unter [{{ site.data.keys.product_adj }}-Lizenzierung](../../licensing).
+A new offering, {{ site.data.keys.product }} Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for {{ site.data.keys.product }} Extension, see [Licensing {{ site.data.keys.product_adj }}](../../licensing).
 
-### Webanwendungen
+
+### Web applications
 {: #web-applications }
-#### Webanwendungen über die {{ site.data.keys.mf_cli }} registrieren (APAR PI65327)
+#### Registering web applications from the {{ site.data.keys.mf_cli }} (APAR PI65327)
 {: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-Alternativ zur Registrierung von Clientanwendungen in der {{ site.data.keys.mf_console }}
-können Sie die Anwendungen jetzt über die {{ site.data.keys.mf_cli }} (mfpdev) bei {{ site.data.keys.mf_server }} registrieren. Weitere Informationen finden Sie unter "Webanwendungen über die
-{{ site.data.keys.mf_cli }} registrieren". 
+You can now register client web applications to {{ site.data.keys.mf_server }} by using the {{ site.data.keys.mf_cli }} (mfpdev) as an alternative to registration from the {{ site.data.keys.mf_console }}. For more information, see Registering web applications from the {{ site.data.keys.mf_cli }}.
 
-### Cordova-Anwendungen
+### Cordova applications
 {: #cordova-applications }
-#### Native IDE für ein Cordova-Projekt mit dem Studio-Plug-in in Eclipse öffnen
+#### Opening the native IDE for a Cordova project from Eclipse with the Studio plug-in
 {: #opening-the-native-ide-for-a-cordova-project-from-eclipse-with-the-studio-plug-in }
-Wenn Sie das Studio-Plug-in in Ihrer Eclipse-IDE installiert haben, können Sie
-von der Eclipse-Schnittstelle aus ein vorhandenes Cordova-Projekt in Android Studio oder Xcode öffnen, einen Projektbuild erstellen und das Projekt ausführen. 
+With the Studio plug-in installed in your Eclipse IDE, you can open an existing Cordova project in Android Studio or Xcode from the Eclipse interface to build and run the project.
 
-#### Neues Verzeichnis *projectName* als Option bei Verwendung des Unterstützungstools für die Migration
+#### Added *projectName* directory as an option when you use the Migration Assistance tool
 {: #added-projectname-directory-as-an-option-when-you-use-the-migration-assistance-tool }
-Wenn Sie das Unterstützungstool für die Migration verwenden, um Projekte zu migrieren, können Sie einen Namen für das Verzeichnis Ihres Cordova-Projekts angeben. Falls Sie keinen Namen angeben, wird der Standardname *App-Name-App-ID-Version* verwendet.
+You can specify a name for your Cordova project directory when you migrate projects with the migration assistance tool. If you do not provide a name, the default name is *app_name-app_id-version*.
 
-#### Verbesserung der Benutzerfreundlichkeit des Unterstützungstools für die Migration
+#### Usability improvements to the Migration Assistance tool
 {: #usability-improvements-to-the-migration-assistance-tool }
-Es wurden folgende Änderungen vorgenommen, um die Benutzerfreundlichkeit des Unterstützungstools für die Migration zu verbessern: 
+Made the following changes to improve the usability of the Migration Assistance tool:
 
-* Das Unterstützungstool für die Migration scannt HTML-Dateien und JavaScript-Dateien. 
-* Im Anschluss an den Scan wird automatisch der Scanbericht in Ihrem Standardbrowser geöffnet. 
-* Das Flag *--out* ist optional. Wenn kein Verzeichnis angegeben ist, wird das Arbeitsverzeichnis verwendet. 
-* Wenn das Flag *--out* angegeben und das Verzeichnis nicht vorhanden ist, wird das Verzeichnis erstellt. 
+* The Migration Assistance tool scans HTML files and JavaScript files.
+* The scan report opens in your default browser automatically after the scan is finished.
+* The *--out* flag is optional. The working directory is used if it is not specified.
+* When the *--out* flag is specified and the directory does not exist, the directory is created.
 
-### Adapter
+### Adapters
 {: #adapters }
-#### Neue Befehle `mfpdev push` und `mfpdev pull` für die Konfiguration von Java- und JavaScript-Adaptern
+#### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-Sie können die {{ site.data.keys.mf_cli }} verwenden, um die Konfiguration von Java- und JavaScript-Adaptern
-per Push-Operation zu {{ site.data.keys.mf_server }} zu übertragen und Adapterkonfigurationen per Pull-Operation von {{ site.data.keys.mf_server }} abzurufen. 
+You can use {{ site.data.keys.mf_cli }} to push Java and JavaScript adapter configurations to the {{ site.data.keys.mf_server }} and pull adapter configurations from the {{ site.data.keys.mf_server }}.
 
 ### Application Center
 {: #application-center}
 
-Für iOS und Android ist jetzt ein Cordova-basierter Application-Center-Client verfügbar. 
+Cordova based application center client is now available for iOS and Android.
+-->
