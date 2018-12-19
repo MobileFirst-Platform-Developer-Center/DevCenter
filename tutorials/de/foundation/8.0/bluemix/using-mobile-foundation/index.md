@@ -32,14 +32,19 @@ Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen a
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to}
-* [{{ site.data.keys.mf_bm_short }} Service einrichten](#setting-up-the-mobile-foundation-service)
-* [{{ site.data.keys.mf_bm_short }} Service verwenden](#using-the-mobile-foundation-service)
-* [Serverkonfiguration](#server-configuration)
-* [Erweiterte Serverkonfiguration](#advanced-server-configuration)
-* [Fixes für {{ site.data.keys.mfound_server }} anwenden](#applying-mobilefirst-server-fixes)
-* [Zugriff auf Serverprotokolle](#accessing-server-logs)
-* [Fehlerbehebung](#troubleshooting)
-* [Weiterführende Informationen](#further-reading)
+- [Übersicht](#overview)
+    - [Fahren Sie mit folgenden Abschnitten fort: ](#jump-to)
+- [{{ site.data.keys.mf_bm_short }} Service einrichten](#setting-up-the--sitedatakeysmfbmshort--service)
+  - [Plan *Developer* einrichten](#setting-up-the-developer-plan)
+  - [Pläne *Professional 1 Application* und *Professional Per Device* einrichten](#setting-up-the-professional-1-application-and-professional-per-device-plan)
+- [{{ site.data.keys.mf_bm_short }} Service verwenden](#using-the--sitedatakeysmfbmshort--service)
+  - [Serverkonfiguration](#server-configuration)
+  - [Erweiterte Serverkonfiguration](#advanced-server-configuration)
+- [Fixes für {{ site.data.keys.mfound_server }} anwenden](#applying--sitedatakeysmfoundserver--fixes)
+- [Zugriff auf Serverprotokolle](#accessing-server-logs)
+    - [Tracefunktion](#tracing)
+- [Fehlerbehebung](#troubleshooting)
+- [Weiterführende Informationen](#further-reading)
 
 ## {{ site.data.keys.mf_bm_short }} Service einrichten
 {: #setting-up-the-mobile-foundation-service }

@@ -71,7 +71,7 @@ ein Update für Liveanwendungen mittels direkter Aktualisierung durchführen und
 
 **Voraussetzungen:**  
 1. Node.js und NPM sind Voraussetzungen für die Installation der {{ site.data.keys.mf_cli }}.  
- Sie müssen [NodeJS Version 6.11.1](https://nodejs.org/download/release/v6.11.1/) und NPM Version 3.10.10 herunterladen und installieren.
+ Sie müssen [NodeJS Version 6.11.1](https://nodejs.org/download/release/v6.11.1/) und NPM Version 3.10.10 herunterladen und installieren. Für die MobileFirst-CLI ab Version 8.0.2018100112 können Sie Node Version 8.x oder Version 10.x verwenden. 
 
  Überprüfen Sie die Installation. Öffnen Sie ein Befehlszeilenfenster und führen Sie den Befehl `node -v` aus.
 

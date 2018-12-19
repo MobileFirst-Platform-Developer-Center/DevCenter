@@ -62,7 +62,7 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
             ext: 'aar',
             transitive: true
    ```
-    
+
    Oder in einer einzelnen Zeile: 
 
    ```xml
@@ -82,7 +82,7 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
       ```
-      
+
 	* Fügen Sie Folgendes zum Tag `application` hinzu: 
 
 	  ```xml
@@ -114,7 +114,7 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-      
+
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -122,14 +122,14 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
 	  > **Hinweis:** Sie müssen `your.application.package.name` durch den Paketnamen Ihrer Anwendung ersetzen. 
 
     * Fügen Sie den folgenden `intent-filter` zur Aktivität der Anwendung hinzu. 
-      
+
       ```xml
       <intent-filter>
           <action android:name="your.application.package.name.IBMPushNotification" />
           <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
       ```
-      
+
 ## API für Benachrichtigungen
 {: #notifications-api }
 ### MFPPush-Instanz
@@ -302,12 +302,11 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 
 ## Handhabung von Push-Benachrichtigungen
 {: #handling-a-push-notification }
-Für die Handhabung von Push-Benachrichtigungen müssen Sie einen `MFPPushNotificationListener` einrichten. Zu diesem Zweck können Sie eine der
-folgenden Methoden implementieren. 
+Für die Handhabung von Push-Benachrichtigungen müssen Sie einen `MFPPushNotificationListener` einrichten. Zu diesem Zweck können Sie eine der folgenden Methoden implementieren.
 
 ### Option eins
 {: #option-one }
-Führen Sie in der Aktivität, in der Sie Push-Benachrichtigungen behandeln möchten, die folgenden Schritte aus: 
+Führen Sie in der Aktivität, in der Sie Push-Benachrichtigungen behandeln möchten, die folgenden Schritte aus:
 
 1. Fügen Sie `implements MFPPushNofiticationListener` zur Klassendeklaration hinzu.
 2. Definieren Sie die Klasse als Listener, indem Sie `MFPPush.getInstance().listen(this)` in der Methode `onCreate` aufrufen.
@@ -359,28 +358,31 @@ Momentan funktionieren die vorhandenen Anwendungen, die GCM-Services nutzen, unv
 
 ### Einrichtung eines FCM-Projekts
 
-Die Einrichtung einer Anwendung in FCM unterscheidet sich vom alten GCM-Modell.  
+Die Einrichtung einer Anwendung in FCM unterscheidet sich vom alten GCM-Modell. 
 
  1. Fordern Sie die Berechtigungsnachweise Ihres Benachrichtigungsproviders an, erstellen Sie ein FCM-Projekt und fügen Sie beides zu Ihrer Android-Anwendung hinzu. Nehmen Sie als Paketnamen Ihrer Anwendung `com.ibm.mobilefirstplatform.clientsdk.android.push` auf. Folgen Sie [hier der Dokumentation](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android) bis zu dem Schritt, nach dem Sie die Datei `google-services.json` generiert haben.
 
- 2. Konfigurieren Sie Ihre Gradle-Datei. Fügen Sie Folgendes zur Datei `build.gradle` der App hinzu: 
+ 2. Konfigurieren Sie Ihre Gradle-Datei. Fügen Sie Folgendes zur Datei `build.gradle` der App hinzu:
 
     ```xml
     dependencies {
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
-
     }
-    ```
-	
+    
     apply plugin: 'com.google.gms.google-services'
-    
-    - Fügen Sie die folgende Abhängigkeit zur `buildscript`-Datei hinzu:
-    
-    `classpath 'com.google.gms:google-services:3.0.0'`
+    ```
 
- 3. Konfigurieren Sie die Android-Manifestdatei. Die folgenden Änderungen an der Datei `Android manifest.xml` sind erforderlich: 
+    
+
+    - Fügen Sie im Stammabschnitt `buildscript` der Datei build.gradle die folgende Abhängigkeit hinzu:
+
+      `classpath 'com.google.gms:google-services:3.0.0'`
+
+    - Entfernen Sie das folgende GCM-Plug-in aus der Datei build.gradle: `compile  com.google.android.gms:play-services-gcm:+`.
+
+ 3. Konfigurieren Sie die Android-Manifestdatei. Die folgenden Änderungen an der Datei `AndroidManifest.xml` sind erforderlich:
 
 **Entfernen Sie folgende Einträge:**
 
@@ -436,11 +438,7 @@ Die Einrichtung einer Anwendung in FCM unterscheidet sich vom alten GCM-Modell.
             </intent-filter>
     </service>
 ```
-	
+
  4. Öffnen Sie die App in Android Studio. Kopieren Sie die Datei `google-services.json`, die Sie in **Schritt 1** erstellt haben, in das App-Verzeichnis. Die Datei `google-service.json` enthält den Paketnamen, den Sie hinzugefügt haben.		
-		
+
  5. Kompilieren Sie das SDK. Erstellen Sie die Anwendung.
-
-
-
-

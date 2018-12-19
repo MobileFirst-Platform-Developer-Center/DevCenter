@@ -1,11 +1,14 @@
 ---
 layout: tutorial
-title: MobileFirst Application Center in einem IBM Cloud-Kubernetes-Cluster einrichten
-breadcrumb_title: Application Center on Kubernetes Cluster
+title: MobileFirst Application Center mit Scripts in einem IBM Cloud-Kubernetes-Cluster einrichten
+breadcrumb_title: AppCenter on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+<br/>
+>**Hinweis:** Für die Softwareimplementierung in einem Kubernetes-Cluster sollten Sie Helm nutzen. Informieren Sie sich über die Implementierung der [Mobile Foundation in einem IBM Cloud-Kubernetes-Cluster unter Verwendung von Helm-Charts](../../mobilefirst-server-on-kubernetes-using-helm).
+
 ## Übersicht
 {: #overview }
 Folgen Sie den Anweisungen in diesem Abschnitt, um eine MobileFirst-Application-Center-Instanz in IBM Cloud zu konfigurieren. Gehen Sie dazu die folgenden Schritte durch: 
@@ -17,20 +20,24 @@ Folgen Sie den Anweisungen in diesem Abschnitt, um eine MobileFirst-Application-
 
 >**Hinweis:**  
 >
-* Das Windows-Betriebssystem wird derzeit nicht für die Ausführung dieser Scripts unterstützt.   
-* Die MobileFirst-Server-Konfigurationstools können nicht für die Implementierung in IBM Containern genutzt werden. 
+* Das Windows-Betriebssystem wird derzeit nicht für die Ausführung dieser Scripts unterstützt.  
+* Die MobileFirst-Server-Konfigurationstools können nicht für die Implementierung in IBM Containern genutzt werden.
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Konto in IBM Cloud registrieren](#register-an-account-on-ibmcloud)
-* [Hostmaschine einrichten](#set-up-your-host-machine)
-* [Kubernetes-Cluster mit dem Container-Service von IBM Cloud erstellen und einrichten](#setup-kube-cluster)
-* [Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen](#download-the-ibm-mfpf-container-8000-archive)
-* [Voraussetzungen](#prerequisites)
-* [{{ site.data.keys.mf_app_center }} in einem Kubernetes-Cluster mit IBM Containern einrichten](#setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers)
-* [Container in IBM Cloud entfernen](#removing-the-container-from-ibmcloud)
-* [Kubernetes-Implementierungen aus IBM Cloud entfernen](#removing-kube-deployments)
-* [Datenbankservicekonfiguration aus IBM Cloud entfernen](#removing-the-database-service-configuration-from-ibmcloud)
+- [Übersicht](#overview)
+        - [Fahren Sie mit folgenden Abschnitten fort: ](#jump-to)
+- [Konto in IBM Cloud registrieren](#register-an-account-on-ibm-cloud)
+    - [IBM Cloud-Dashboard](#ibm-cloud-dashboard)
+- [Hostmaschine einrichten](#set-up-your-host-machine)
+- [Kubernetes-Cluster mit dem Container-Service von IBM Cloud erstellen und einrichten](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen](#download-the--sitedatakeysmfbmpkgname--archive)
+- [Voraussetzungen](#prerequisites)
+- [{{ site.data.keys.mf_app_center }} in einem Kubernetes-Cluster mit IBM Containern einrichten](#setting-up-the--sitedatakeysmfappcenter--on-kubernetes-cluster-with-ibm-containers)
+    - [Anwendung des iFix:](#steps-to-apply-the-ifix)
+- [Container in IBM Cloud entfernen](#removing-the-container-from-ibm-cloud)
+- [Kubernetes-Implementierungen aus IBM Cloud entfernen](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [Datenbankservicekonfiguration aus IBM Cloud entfernen](#removing-the-database-service-configuration-from-ibm-cloud)
 
 ## Konto in IBM Cloud registrieren
 {: #register-an-account-on-ibmcloud }
@@ -316,7 +323,7 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
                     </ol>
                     Führen Sie den folgenden Befehl aus: <br/>
                     <code>kubectl create -f ./args/mfp-deployment-appcenter.yaml</code>
-                    <blockquote><b>Hinweis:<br/></b>Folgende YAML-Schablonendateien werden bereitgestellt: <br/>
+                    <blockquote><b>Hinweis:<br/></b>Folgende YAML-Schablonendateien werden bereitgestellt:<br/>
                     <ul><li><b>mfp-deployment-appcenter.yaml</b>: Implementiert das {{ site.data.keys.mf_app_center }} mit HTTP. </li>
                       <li><b>mfp-deployment-appcenter-with-tls.yaml</b>: Implementiert das {{ site.data.keys.mf_app_center }} mit HTTPS. </li>
                     </ul></blockquote>
