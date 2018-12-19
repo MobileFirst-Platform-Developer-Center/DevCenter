@@ -1,117 +1,117 @@
 ---
 layout: tutorial
-title: Setting up MobileFirst Application Center on IBM Cloud Kubernetes Cluster using scripts
+title: Configuración de MobileFirst Application Center en IBM Cloud Kubernetes Cluster mediante scripts
 breadcrumb_title: AppCenter on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
->**Note:** Helm is the recommended approach to deploy software on Kubernetes Cluster. Learn about deploying [Mobile Foundation on IBM Cloud Kubernetes Cluster using helm charts](../../mobilefirst-server-on-kubernetes-using-helm).
+>**Nota:** Se recomienda utilizar Helm para desplegar software en Kubernetes Cluster. Obtenga información sobre cómo desplegar [Mobile Foundation en IBM Cloud Kubernetes Cluster mediante gráficos Helm](../../mobilefirst-server-on-kubernetes-using-helm).
 
-## Overview
+## Visión general
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_app_center }} instance on IBM Cloud. To achieve this you will go through the following steps:
+Siga estas instrucciones para configurar una instancia de {{ site.data.keys.mf_app_center }} en IBM Cloud. Para llevarlo a cabo, realice los pasos siguientes:
 
-* Create a Kubernetes Cluster of type: Standard (paid cluster).
-* Setup your host computer with the required tools (Docker, Cloud Foundry CLI ( cf ), IBM Cloud CLI ( bx ), Container Service Plugin for IBM Cloud CLI ( bx cs ), Container Registry Plugin for IBM Cloud CLI ( bx cr ), Kubernetes CLI (kubectl)).
-* Build a {{ site.data.keys.mf_app_center }} Docker image and push it to the IBM Cloud repository.
-* Finally, you will run the Docker image on a Kubernetes Cluster.
+* Cree un tipo de Kubernetes Cluster: Estándar (clúster de pago).
+* Configure el sistema host con las herramientas necesarias [Docker, Cloud Foundry CLI ( cf ), IBM Cloud CLI ( bx ), Container Service Plugin for IBM Cloud CLI ( bx cs ), Container Registry Plugin for IBM Cloud CLI ( bx cr ), Kubernetes CLI (kubectl)].
+* Cree una imagen Docker de {{ site.data.keys.mf_app_center }} y envíela por push al repositorio de IBM Cloud.
+* Finalmente, ejecutará la imagen de Docker en Kubernetes Cluster.
 
->**Note:**  
+>**Nota:**  
 >
-* Windows OS is currently not supported for running these scripts.  
-* The {{ site.data.keys.mf_server }} Configuration tools cannot be used for deployments to IBM Containers.
+* Actualmente el sistema operativo Windows no está soportado para ejecutar estos scripts.  
+* Las herramientas de configuración de {{ site.data.keys.mf_server }} no se pueden utilizar para despliegues en IBM Containers.
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-- [Overview](#overview)
-        - [Jump to:](#jump-to)
-- [Register an account on IBM Cloud](#register-an-account-on-ibm-cloud)
-    - [IBM Cloud Dashboard](#ibm-cloud-dashboard)
-- [Set up your host machine](#set-up-your-host-machine)
-- [Create and setup a Kubernetes Cluster with IBM Cloud Container Service](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
-- [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the--sitedatakeysmfbmpkgname--archive)
-- [Prerequisites](#prerequisites)
-- [Setting Up the {{ site.data.keys.mf_app_center }} on Kubernetes Cluster with IBM Containers](#setting-up-the--sitedatakeysmfappcenter--on-kubernetes-cluster-with-ibm-containers)
-    - [Steps to apply the iFix:](#steps-to-apply-the-ifix)
-- [Removing the Container from IBM Cloud](#removing-the-container-from-ibm-cloud)
-- [Removing the Kubernetes deployments from IBM Cloud](#removing-the-kubernetes-deployments-from-ibm-cloud)
-- [Removing the database service configuration from IBM Cloud](#removing-the-database-service-configuration-from-ibm-cloud)
+- [Visión general](#overview)
+        - [Ir a:](#jump-to)
+- [Registrar una cuenta en IBM Cloud](#register-an-account-on-ibm-cloud)
+    - [Panel de control de IBM Cloud](#ibm-cloud-dashboard)
+- [Configurar la máquina host](#set-up-your-host-machine)
+- [Crear y configurar Kubernetes Cluster con IBM Cloud Container Service](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}](#download-the--sitedatakeysmfbmpkgname--archive)
+- [Requisitos previos](#prerequisites)
+- [Configuración de {{ site.data.keys.mf_app_center }} en Kubernetes Cluster con IBM Containers](#setting-up-the--sitedatakeysmfappcenter--on-kubernetes-cluster-with-ibm-containers)
+    - [Pasos para aplicar iFix:](#steps-to-apply-the-ifix)
+- [Eliminar el contenedor de IBM Cloud](#removing-the-container-from-ibm-cloud)
+- [Eliminar los despliegues de Kubernetes de IBM Cloud](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [Eliminar la configuración del servicio de base de datos de IBM Cloud](#removing-the-database-service-configuration-from-ibm-cloud)
 
-## Register an account on IBM Cloud
+## Registrar una cuenta en IBM Cloud
 {: #register-an-account-on-ibmcloud }
-If you do not have an account yet, visit the [IBM Cloud website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You need to fill up a registration form before you can move on to the next step.
+Si todavía no tiene una cuenta, vaya al [sitio web de IBM Cloud](https://bluemix.net) y pulse **Iniciación gratuita** o **Iniciar sesión**. Debe rellenar un formulario de registro para ir al paso siguiente.
 
-### IBM Cloud Dashboard
+### Panel de control de IBM Cloud
 {: #the-ibmcloud-dashboard }
-After signing in to IBM Cloud, you are presented with the IBM Cloud Dashboard, which provides an overview of the active IBM Cloud **space**. By default, this work area receives the name *dev*. You can create multiple work areas/spaces if needed.
+Después de iniciar sesión en IBM Cloud, se le presentará el panel de control de IBM Cloud, que proporciona una visión general del **espacio** activo de IBM Cloud. De forma predeterminada, esta área de trabajo recibe el nombre de *dev*. Puede crear varios espacios o áreas de trabajo, si es necesario.
 
-## Set up your host machine
+## Configurar la máquina host
 {: #set-up-your-host-machine }
-To manage containers and images, you need to install the following tools:
+Para gestionar los contenedores y las imágenes, debe instalar las herramientas siguientes:
 * Docker
 * IBM Cloud CLI (bx)
 * Container Service Plugin for IBM Cloud CLI ( bx cs )
 * Container Registry Plugin for IBM Cloud CLI ( bx cr )
 * Kubernetes CLI (kubectl)
 
-Refer to the IBM Cloud documentation for [steps to setup the prerequisite CLIs](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps).
+Consulte la documentación de IBM Cloud para obtener información acerca de los [pasos para configurar CLI de requisito previo](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps).
 
-## Create and setup a Kubernetes Cluster with IBM Cloud Container Service
+## Crear y configurar Kubernetes Cluster con IBM Cloud Container Service
 {: #setup-kube-cluster}
-Refer to the IBM Cloud documentation to [setup a Kubernetes Cluster on IBM Cloud](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli).
+Consulte la documentación de IBM Cloud para [configurar Kubernetes Cluster en IBM Cloud](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli).
 
->**Note:** Kubernetes Cluster Type: Standard (paid cluster) is required for deploying {{ site.data.keys.mf_bm_short }}.
+>**Nota:** Tipo de Kubernetes Cluster: Se requiere Estándar (clúster de pago) para desplegar {{ site.data.keys.mf_bm_short }}.
 
-## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
+## Descargar el archivo {{ site.data.keys.mf_bm_pkg_name }}
 {: #download-the-ibm-mfpf-container-8000-archive}
-To set up {{ site.data.keys.mf_app_center }} as a Kubernetes Cluster using IBM Cloud containers, you must first create an image that will later be pushed to IBM Cloud.<br/>
-Interim fixes for the MobileFirst Server on IBM Containers can be obtained from the [IBM Fix Central](http://www.ibm.com/support/fixcentral).<br/>
-Download the latest interim fix from Fix central. Kubernetes support is available from iFix **8.0.0.0-IF201708220656**.
+Para configurar {{ site.data.keys.mf_app_center }} como Kubernetes Cluster utilizando contenedores de IBM Cloud, en primer lugar, debe crear una imagen que posteriormente se enviará mediante push a IBM Cloud.<br/>
+Se pueden obtener los arreglos internos para MobileFirst Server en IBM Containers en [IBM Fix Central](http://www.ibm.com/support/fixcentral).<br/>
+Descargue el arreglo temporal más reciente desde Fix central. El soporte de Kubernetes está disponible en iFix **8.0.0.0-IF201708220656**.
 
-The archive file contains the files for building an image (**dependencies** and **mfpf-libs**) and the files for building and deploying a {{ site.data.keys.mf_app_center }} on Kubernetes (bmx-kubernetes).
+El archivo contiene los archivos para crear una imagen (**dependencies** y **mfpf-libs**) y los archivos para compilar y desplegar un {{ site.data.keys.mf_app_center }} en Kubernetes (bmx-kubernetes).
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click to read more about the archive file contents and available environment properties to use</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Pulse para obtener más información sobre el contenido del archivo comprimido y las propiedades de entorno disponibles que se han de utilizar</b></a>
             </h4>
         </div>
 
         <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
-                <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
-                <h4>bmx-kubernetes folder</h4>
-                <p>Contains the customization files and scripts required to deploy to a Kubernetes Cluster with IBM Cloud Container Service.</p>
+                <img src="zip.png" alt="Imagen que muestra la estructura del sistema de archivos del archivo comprimido" style="float:right;width:570px"/>
+                <h4>carpeta bmx-kubernetes</h4>
+                <p>Contiene los archivos de personalización y los scripts necesarios para desplegar Kubernetes Cluster con IBM Cloud Container Service.</p>
 
                 <h4>Dockerfile-mfp-appcenter</h4>
 
                 <ul>
-                    <li><b>Dockerfile-mfp-appcenter</b>: Text document that contains all the commands that are necessary to build the {{ site.data.keys.mf_app_center }} image.</li>
-                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts required to log into IBM Cloud, building a {{ site.data.keys.mf_app_center }} image and for pushing and running the image on IBM Cloud. You can choose to run the scripts interactively or by pre-configuring the configuration files, explained later. Other than the customizable args /*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
-                    <li><b>usr-mfp-appcenter</b> folder:
+                    <li><b>Dockerfile-mfp-appcenter</b>: Documento de texto que contiene todos los mandatos necesarios para crear la imagen de {{ site.data.keys.mf_app_center }}.</li>
+                    <li>Carpeta <b>scripts</b>: Esta carpeta contiene la carpeta <b>args</b> que incluye un conjunto de archivos de configuración. También contiene los scripts necesarios para iniciar sesión en IBM Cloud, crear una imagen de {{ site.data.keys.mf_app_center }} para enviarla por push y ejecutar la imagen en IBM Cloud. Puede optar por ejecutar los scripts de forma interactiva o configurar previamente los archivos de configuración, como se describe más adelante. Aparte de los archivos args/*.properties personalizables, no modifique ningún elemento de esta carpeta. Para obtener ayuda sobre el uso de scripts, utilice los argumentos de línea de mandatos <code>-h</code> o <code>--help</code>, por ejemplo, <code>scriptname.sh --help</code>.</li>
+                    <li>Carpeta <b>usr-mfp-appcenter</b>:
                         <ul>
-                            <li><b>bin</b> folder: Contains the script file (mfp-appcenter-init) that gets executed when the container starts. You can add your own custom code to be executed.</li>
-                            <li><b>config</b> folder: Contains the server configuration fragments (keystore, server properties, user registry) used by {{ site.data.keys.mf_app_center }}.</li>
-                            <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
-                            <li><b>ltpa.xml</b> - the configuration file defining the LTPA key and its password.</li>
-                            <li><b>appcentersqldb.xml</b> - JDBC Data source definition to connect to the DB2 or dashDB database.</li>
-                            <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
-                            <li><b>tracespec.xml</b> - Trace specification to enable debugging as well as logging levels.</li>
+                            <li>Carpeta <b>bin</b> folder: Contiene el archivo de script (mfp-appcenter-init) que se ejecuta cuando se inicia el contenedor. Puede añadir su propio código personalizado para ejecutarlo.</li>
+                            <li>Carpeta <b>config</b>: Contiene los fragmentos de configuración del servidor (almacén de claves, propiedades del servidor, registro de usuarios) que utiliza {{ site.data.keys.mf_app_center }}.</li>
+                            <li><b>keystore.xml</b> - la configuración del repositorio de los certificados de seguridad que se utilizan para el cifrado SSL. Debe hacerse referencia a los archivos listados en la carpeta ./usr/security.</li>
+                            <li><b>ltpa.xml</b> - el archivo de configuración que define la clave LTPA y su contraseña.</li>
+                            <li><b>appcentersqldb.xml</b>: Definición de origen de datos JDBC para conectar con la base de datos DB2 o dashDB.</li>
+                            <li><b>registry.xml</b> - configuración del registro de usuarios. La configuración de basicRegistry (de forma predeterminada, se proporciona una configuración de registro de usuarios básico basado en XML). Se pueden configurar los nombres de usuarios y las contraseñas para basicRegistry o puede configurar ldapRegistry.</li>
+                            <li><b>tracespec.xml</b> - La especificación de rastreo para habilitar la depuración, así como los niveles de registro.</li>
                         </ul>
                     </li>
-                    <li><b>jre-security</b> folder: You can update the JRE security-related files (truststore, policy JAR files, and so on) by placing them in this folder. The files in this folder get copied to the <b>JAVA_HOME/jre/lib/security/</b> folder in the container.</li>
-                    <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
-                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).</li>
+                    <li>Carpeta <b>jre-security</b>: Puede actualizar los archivos relacionados con la seguridad JRE (almacén de claves, archivos JAR de políticas, etc.) colocándolos en esta carpeta. Los archivos de esta carpeta se copian en la carpeta <b>JAVA_HOME/jre/lib/security/</b> del contenedor.</li>
+                    <li>Carpeta <b>security</b>: Se utiliza para los archivos del almacén de claves, el almacén de confianza y las claves LTPA (ltpa.keys).</li>
+                    <li>Carpeta <b>env</b>: Contiene las propiedades del entorno que se utilizan para la inicialización del servidor (server.env) y las opciones de JVM personalizadas (jvm.options).</li>
 
                     <br/>
                     <div class="panel-group accordion" id="terminology" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Click for a list of supported server environment properties</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Pulse para obtener una lista de las propiedades de entorno del servidor soportadas</b></a>
                                 </h4>
                             </div>
 
@@ -119,123 +119,123 @@ The archive file contains the files for building an image (**dependencies** and 
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
-                                            <td><b>Property</b></td>
-                                            <td><b>Default Value</b></td>
-                                            <td><b>Description</b></td>
+                                            <td><b>Propiedad</b></td>
+                                            <td><b>Valor predeterminado</b></td>
+                                            <td><b>Descripción</b></td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_SERVER_HTTPPORT</td>
                                             <td>9080*</td>
-                                            <td>The port used for client HTTP requests. Use -1 to disable this port.</td>
+                                            <td>El puerto utilizado para las solicitudes HTTP de cliente. Utilice -1 para inhabilitar este puerto.</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_SERVER_HTTPSPORT	</td>
                                             <td>9443*	</td>
-                                            <td>The port used for client HTTP requests secured with SSL (HTTPS). Use -1 to disable this port.</td>
+                                            <td>El puerto utilizado para las solicitudes HTTP de cliente protegidas con SSL (HTTPS). Utilice -1 para inhabilitar este puerto.</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_ROOT	</td>
                                             <td>applicationcenter</td>
-                                            <td>The context root at which the {{ site.data.keys.mf_app_center }} Administration Services are made available.</td>
+                                            <td>La raíz de contexto en la que estarán disponibles los servicios de administración de {{ site.data.keys.mf_app_center }}.</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_CONSOLE_ROOT	</td>
                                             <td>appcenterconsole</td>
-                                            <td>The context root at which the {{ site.data.keys.mf_app_center }} console is made available.</td>
+                                            <td>La raíz de contexto en la que estará disponible la consola de {{ site.data.keys.mf_app_center }}.</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_ADMIN_GROUP</td>
                                             <td>appcenteradmingroup</td>
-                                            <td>The name of the user group assigned the predefined role <code>appcenteradmin</code>.</td>
+                                            <td>El nombre del grupo de usuarios que tiene asignado el rol <code>appcenteradmin</code> predefinido.</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_USER_GROUP	</td>
                                             <td>appcenterusergroup</td>
-                                            <td>The name of the user group assigned the predefined role <code>appcenteruser</code>.</td>
+                                            <td>El nombre del grupo de usuarios que tiene asignado el rol <code>appcenteruser</code> predefinido.</td>
                                         </tr>
                                     </table>
 
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Cerrar sección</b></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <li><b>dependencies</b> folder: Contains the {{ site.data.keys.mf_bm_short }} runtime and IBM Java JRE 8.</li>
-                    <li><b>mfpf-libs folder</b> folder: Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</li>
+                    <li>Carpeta <b>dependencies</b>: Contiene el tiempo de ejecución de {{ site.data.keys.mf_bm_short }} junto con IBM Java JRE 8.</li>
+                    <li>Carpeta <b>mfpf-libs</b>: Contiene las bibliotecas de componentes del producto {{ site.data.keys.product_adj }} y CLI.</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Cerrar sección</b></a>
             </div>
         </div>
     </div>
 </div>
 
-## Prerequisites
+## Requisitos previos
 {: #prerequisites }
 
-You need to have a working knowledge of Kubernetes. Refer to [Kubernetes docs](https://kubernetes.io/docs/concepts/), to learn more.
+Debe tener conocimientos para trabajar con Kubernetes. Consulte los [documentos de Kubernetes](https://kubernetes.io/docs/concepts/), para obtener más información.
 
 
-## Setting Up the {{ site.data.keys.mf_app_center }} on Kubernetes Cluster with IBM Containers
+## Configuración de {{ site.data.keys.mf_app_center }} en Kubernetes Cluster con IBM Containers
 {: #setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers }
-As explained above, you can choose to run the scripts interactively or by using the configuration files:
+Como se ha descrito anteriormente, puede optar por ejecutar los scripts de forma interactiva o utilizar los archivos de configuración:
 
-* **Using the configuration files** - run the scripts and pass the respective configuration file as an argument.
-* **Interactively** - run the scripts without any arguments.
+* **Utilización de los archivos de configuración** - Ejecute los scripts y pase el archivo de configuración respectivo como un argumento.
+* **Interactivamente** - Ejecute los scripts sin argumentos.
 
->**Note:** If you choose to run the scripts interactively, you can skip the configuration, but it is strongly suggested to read and understand the arguments that you will need to provide.
+>**Nota:** Si opta por ejecutar los scripts de forma interactiva, puede omitir la configuración, pero se le recomienda que lea y comprenda los argumentos que deberá proporcionar.
 
-When you run interactively, a copy of the arguments provided is saved in a directory: `./recorded-args/`. So you can use the interactive mode for the first time and reuse the property files as a reference for future deployments.
+Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos proporcionados en un directorio: `./recorded-args/`. De este modo, puede utilizar la modalidad interactiva la primera vez y reutilizar los archivos de propiedades como una referencia para despliegues futuros.
 
 <div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Using the configuration files</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Utilización de los archivos de configuración</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-                The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:<br/>
+                La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Rellene los valores de los argumentos en los archivos siguientes:<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>IBM_CLOUD_API_URL - </b>The geo or region where you want your deployment.<br>
-                      <blockquote>For example: <i>api.ng.bluemix.net</i> for US region or <i>api.eu-de.bluemix.net</i> for Germany or <i>api.au-syd.bluemix.net</i> for Sydney</blockquote>
+                    <li><b>IBM_CLOUD_API_URL - </b>Zona geográfica o región en que desea realizar el despliegue.<br>
+                      <blockquote>Por ejemplo: <i>api.ng.bluemix.net</i> para la región de EE.UU. o <i>api.eu-de.bluemix.net</i> para Alemania o <i>api.au-syd.bluemix.net</i> para Sydney</blockquote>
                     </li>
-                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>Your account id, which is an alpha-numeric value such as <i>a1b1b111d11e1a11d1fa1cc999999999</i><br>	Use the command <code>bx target</code> to get the Account id.</li>
-                    <li><b>IBM_CLOUD_USER - </b>Your IBM Cloud username (email).</li>
-                    <li><b>IBM_CLOUD_PASSWORD - </b>Your IBM Cloud password.</li>
-                    <li><b>IBM_CLOUD_ORG - </b>Your IBM Cloud organization name.</li>
-                    <li><b>IBM_CLOUD_SPACE - </b>Your IBM Cloud space (as explained previously).</li>
+                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>Su ID de cuenta, que es un valor alfanumérico, como <i>a1b1b111d11e1a11d1fa1cc999999999</i><br>	Utilice el mandato <code>bx target</code> para obtener el ID de cuenta.</li>
+                    <li><b>IBM_CLOUD_USER - </b>Su nombre de usuario de IBM Cloud (correo electrónico).</li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>Su contraseña de IBM Cloud.</li>
+                    <li><b>IBM_CLOUD_ORG - </b>El nombre de su organización de IBM Cloud.</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>Su espacio IBM Cloud (como se ha descrito anteriormente).</li>
                 </ul><br/>
                 <h4>prepareappcenterdbs.properties</h4>
-                The {{ site.data.keys.mf_app_center }} requires an external <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 on cloud</i></a> instance.<br/>
-                <blockquote><b>Note:</b> You can also use your own DB2 database. The IBM Cloud Kubernetes Cluster should be configured to connect to the database.</blockquote>
-                After you have set up your DB2 instance, provide the required arguments:
+                {{ site.data.keys.mf_app_center }} requiere una instancia de <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 en Cloud</i></a>.<br/>
+                <blockquote><b>Nota:</b> También puede utilizar su propia base de datos DB2. IBM Cloud Kubernetes Cluster se debe configurar para su conexión con la base de datos.</blockquote>
+                Después de configurar la instancia de DB2, proporcione los argumentos necesarios:
                 <ul>
-                    <li><b>DB_TYPE</b> - <i>dashDB</i> ( if you are using DB2 on Cloud ) or <i>DB2</i> if you are using your own DB2 database.</li>
-                    <li>Provide the following if you are using your own DB2 database (i.e. DB_TYPE=DB2).
-                      <ul><li><b>DB2_HOST</b> - hostname of your DB2 setup.</li>
-                          <li><b>DB2_DATABASE</b> - name of the database.</li>
-                          <li><b>DB2_PORT</b> - port on which you will connect to the database.</li>
-                          <li><b>DB2_USERNAME</b> - the DB2 database user ( the user should have the permissions to create Tables within the schema provided or if the schema does not already exist, the user should be able to create a schema )</li>
-                          <li><b>DB2_PASSWORD</b> - DB2 user's password.</li>
+                    <li><b>DB_TYPE</b> - <i>dashDB</i> ( si utiliza DB2 on Cloud ) o <i>DB2</i> si utiliza su propia base de datos DB2.</li>
+                    <li>Proporcione lo siguiente si utiliza su propia base de datos DB2 (por ejemplo, DB_TYPE=DB2).
+                      <ul><li><b>DB2_HOST</b> - Nombre de host de su configuración de DB2.</li>
+                          <li><b>DB2_DATABASE</b> - Nombre de la base de datos.</li>
+                          <li><b>DB2_PORT</b> - Puerto en el que se conectará a la base de datos.</li>
+                          <li><b>DB2_USERNAME</b> - El usuario de la base de datos DB2 (el usuario debe tener los permisos para crear tablas en el esquema proporcionado o, si el esquema no existe todavía, el usuario debe poder crear un esquema)</li>
+                          <li><b>DB2_PASSWORD</b> - La contraseña del usuario de DB2.</li>
                       </ul>
                     </li>
-                    <li>Provide the following if you are using DB2 on Cloud (i.e DB_TYPE=dashDB).
-                      <ul><li><b>APPCENTER_DB_SRV_NAME</b> - Your dashDB service instance name for storing appcenter data.</li>
+                    <li>Proporcione lo siguiente si utiliza DB2 on Cloud (por ejemplo, DB_TYPE=dashDB).
+                      <ul><li><b>APPCENTER_DB_SRV_NAME</b>: El nombre de su instancia de servicio de dashDB, para almacenar los datos de Appcenter.</li>
                       </ul>
                     </li>
-                    <li><b>APPCENTER_SCHEMA_NAME</b> - Your schema name for appcenter data. The default is <i>APPCNTR</i>.</li>
-                    <blockquote><b>Note:</b> If your DB2 database service instance is being shared by many users or by multiple {{ site.data.keys.mf_app_center }} deployments, make sure that you provide unique schema names.</blockquote>
+                    <li><b>APPCENTER_SCHEMA_NAME</b>: Su nombre de esquema para los datos de Appcenter. El valor predeterminado es <i>APPCNTR</i>.</li>
+                    <blockquote><b>Nota:</b> Si su instancia de servicio de base de datos DB2 la comparten muchos usuarios o varios despliegues de {{ site.data.keys.mf_app_center }}, asegúrese de que proporciona nombres de esquema exclusivos.</blockquote>
                 </ul><br/>
                 <h4>prepareappcenter.properties</h4>
                 <ul>
-                  <li><b>SERVER_IMAGE_TAG</b> - A tag for the image. Should be of the form: <em>registry-url/namespace/image:tag</em>.</li>
-                  <blockquote>For example: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>If you have not yet created a docker registry namespace, create the registry namespace using one of these commands:<br/>
+                  <li><b>SERVER_IMAGE_TAG</b> - Una etiqueta para la imagen. Debe tener el formato: <em>registry-url/namespace/image:tag</em>.</li>
+                  <blockquote>Por ejemplo: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>Si todavía no ha creado un espacio de nombres de registro, cree el espacio de nombres de registro utilizando uno de estos mandatos:<br/>
                   <ul><li><code>bx cr namespace-add <em>myuniquenamespace</em></code></li><li><code>bx cr namespace-list</code></li></ul>
                   </blockquote>
                 </ul>
@@ -246,28 +246,28 @@ When you run interactively, a copy of the arguments provided is saved in a direc
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Running the scripts</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Ejecución de los scripts</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to in a non-interactive mode:</p>
+            <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
 
             <ol>
-                <li><b>initenv.sh – Logging in to IBM Cloud </b><br />
-                    Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.mf_app_center }} on IBM Containers:
-                    <b>Interactive Mode</b>
+                <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
+                    Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.mf_app_center }} en IBM Containers:
+                    <b>Modo interactivo</b>
 {% highlight bash %}
 ./initenv.sh
 {% endhighlight %}
-                    <b>Non-interactive Mode</b>
+                    <b>Modo no interactivo</b>
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                 </li>
-                <li><b>prepareappcenterdbs.sh - Prepare the {{ site.data.keys.mf_app_center }} database</b><br />
-                    The <b>prepareappcenterdbs.sh</b> script is used to configure your {{ site.data.keys.mf_app_center }} with the DB2 database service. The service instance of the DB2 service should be available in the Organization and Space that you logged in to in step 1. Run the following:
+                <li><b>prepareappcenterdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_app_center }} </b><br />
+                    El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos DB2. La instancia de servicio de DB2 debe estar disponible en la Organización y Espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
                     <b>Interactive Mode</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh
@@ -277,56 +277,56 @@ When you run interactively, a copy of the arguments provided is saved in a direc
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
                 </li>
-                <li><b>initenv.sh(Optional) – Logging in to IBM Cloud </b><br />
-                      This step is required only if you need to create your containers in a different Organization and Space than where the DB2 service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
+                <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
+                      Este paso solo es necesario si necesita crear contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de DB2. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
                 </li>
-                <li><b>prepareappcenter.sh - Prepare a {{ site.data.keys.mf_app_center }} image</b><br />
-                    Run the <b>prepareappcenter.sh</b> script in order to build the {{ site.data.keys.mf_app_center }} image and push it to your IBM Cloud repository. To view all available images in your IBM Cloud repository, run: <code>bx cr image-list</code><br/>
-                    The list contains the image name, date of creation, and ID.<br/>
-                    <b>Interactive Mode</b>
+                <li><b>prepareappcenter.sh - Prepare una imagen de {{ site.data.keys.mf_app_center }}</b><br />
+                    Ejecute el script <b>prepareappcenter.sh</b> para crear la imagen de {{ site.data.keys.mf_app_center }} y enviarla mediante push al repositorio de IBM Cloud. Para ver todas las imágenes disponibles en el repositorio de IBM Cloud, ejecute: <code>bx cr image-list</code><br/>
+                    La lista contiene el nombre, la fecha de creación y el ID de la imagen.<br/>
+                    <b>Modo interactivo</b>
 {% highlight bash %}
 ./prepareappcenter.sh
 {% endhighlight %}
-                    <b>Non-interactive Mode</b>
+                    <b>Modo no interactivo</b>
 {% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
                 </li>
-                <li>Deploy {{ site.data.keys.mf_app_center }} on Docker containers on a Kubernetes cluster using IBM Cloud Container Service.
+                <li>Despliegue {{ site.data.keys.mf_app_center }} en contenedores Docker en Kubernetes Cluster utilizando IBM Cloud Container Service.
                 <ol>
-                  <li>Set your terminal context to your cluster<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
-                  To know your Cluster name, run the following command: <br/><code>bx cs clusters</code><br/>
-                  In the output, the path to your configuration file is displayed as a command to set an environment variable, for example:<br/>
+                  <li>Establezca el contexto del terminal en su clúster<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
+                  Para averiguar el nombre del clúster, ejecute el mandato siguiente: <br/><code>bx cs clusters</code><br/>
+                  En la salida, la vía de acceso del archivo de configuración se muestra como un mandato para establecer la variable de entorno, por ejemplo:<br/>
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
-                  Copy and paste the command above, after replacing <em>my-cluster</em> with your Cluster name, to set the environment variable in your terminal and press <b>Enter</b>.
+                  Copie y pegue el mandato anterior, después de sustituir <em>my-cluster</em> por el nombre de clúster, establezca la variable de entorno de su terminal y pulse <b>Intro</b>.
                   </li>
-                  <li>To get your <b>Ingress domain</b> run the following command:<br/>
+                  <li>Para obtener su <b>dominio de ingreso</b>, ejecute el mandato siguiente:<br/>
                    <code>bx cs cluster-get <em>my-cluster</em></code><br/>
-                   Note down your Ingress domain. If you need to configure TLS, note down the <b>Ingress secret</b>.</li>
-                  <li>Create the Kubernetes deployments<br/>Edit the yaml file <b>args/mfp-deployment-appcenter.yaml</b>, and fill out the details. All the variables have to be substituted with their values before executing the <em>kubectl</em> command.<br/>
-                  <b>./args/mfp-deployment-appcenter.yaml</b> contains the deployment for the following:
+                   Anote el dominio de ingreso. Si necesita configurar TLS, anote el <b>secreto de ingreso</b>.</li>
+                  <li>Cree los despliegues de Kubernetes<br/>Edite el archivo yaml <b>args/mfp-deployment-appcenter.yaml</b> y rellene los detalles. Se deben sustituir todas las variables por sus valores antes de ejecutar el mandato <em>kubectl</em>.<br/>
+                  <b>./args/mfp-deployment-appcenter.yaml</b> contiene el despliegue para lo siguiente:
                   <ul>
-                    <li>a kubernetes deployment for {{ site.data.keys.mf_app_center }} consisting of 1 instance (replica), of 1024MB memory and 1Core CPU.</li>
-                    <li>a kubernetes service for {{ site.data.keys.mf_app_center }}.</li>
-                    <li>an ingress for the whole setup including all the REST endpints for {{ site.data.keys.mf_app_center }}.</li>
-                    <li>a configMap to make the environment variables available in the {{ site.data.keys.mf_app_center }} instance.</li>
+                    <li>un despliegue de kubernetes para {{ site.data.keys.mf_app_center }} que consta de 1 instancia (réplica), con una memoria de 1024 MB y CPU de 1 núcleo.</li>
+                    <li>un servicio de kubernetes para {{ site.data.keys.mf_app_center }}.</li>
+                    <li>un ingreso para toda la configuración que incluya todos los puntos finales REST para {{ site.data.keys.mf_app_center }}.</li>
+                    <li>un configMap para que las variables de entorno estén disponibles en las instancias de {{ site.data.keys.mf_app_center }} instance.</li>
                   </ul>
-                  Following values have to be edited in the YAML file:<br/>
-                    <ol><li>Different occurences of <em>my-cluster.us-south.containers.mybluemix.net</em> with the output of <b>Ingress Domain</b> from the output of <code>bx cs cluster-get</code> command as stated above.</li>
-                    <li><em>registry.ng.bluemix.net/repository/mfpappcenter:latest</em> - Use the same names that you used in prepareappcenter.sh to upload the image.</li>
+                  Los valores siguientes se deben editar en el archivo YAML:<br/>
+                    <ol><li>Las diferentes apariciones de <em>my-cluster.us-south.containers.mybluemix.net</em> con la salida del <b>Dominio de ingreso</b> de la salida del mandato <code>bx cs cluster-get</code>, como se ha indicado anteriormente.</li>
+                    <li><em>registry.ng.bluemix.net/repository/mfpappcenter:latest</em>: Utilice los mismos nombres que ha utilizado en prepareappcenter.sh para subir la imagen.</li>
                     </ol>
-                    Execute the following command:<br/>
+                    Ejecute el mandato siguiente:<br/>
                     <code>kubectl create -f ./args/mfp-deployment-appcenter.yaml</code>
-                    <blockquote><b>Note:<br/></b>The following template yaml files are supplied:<br/>
-                    <ul><li><b>mfp-deployment-appcenter.yaml</b>: Deploys the {{ site.data.keys.mf_app_center }} with http.</li>
-                      <li><b>mfp-deployment-appcenter-with-tls.yaml</b>: Deploys the {{ site.data.keys.mf_app_center }} with https.</li>
+                    <blockquote><b>Nota:<br/></b>Se proporcionan los siguientes archivos yaml de plantilla:<br/>
+                    <ul><li><b>mfp-deployment-appcenter.yaml</b>: Despliega {{ site.data.keys.mf_app_center }} con http.</li>
+                      <li><b>mfp-deployment-appcenter-with-tls.yaml</b>: Despliega {{ site.data.keys.mf_app_center }} con https.</li>
                     </ul></blockquote>
-                      After creation, to use the Kubernetes dashboard, execute the following command:<br/>
-                      <code>kubectl proxy</code><br/>Open <b>localhost:8001/ui</b>, in your browser.
+                      Después de su creación, para utilizar el panel de control de Kubernetes, ejecute el siguiente mandato:<br/>
+                      <code>kubectl proxy</code><br/>Abra <b>localhost:8001/ui</b>, en su navegador.
                   </li>
                 </ol>
                 </li>
@@ -361,40 +361,40 @@ Before you apply an interim fix, back up your existing configuration files. The 
 -->
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## Removing the Container from IBM Cloud
+## Eliminar el contenedor de IBM Cloud
 {: #removing-the-container-from-ibmcloud }
-When you remove a container from IBM Cloud, you must also remove the image name from the registry.  
-Run the following commands to remove a container from IBM Cloud:
+Cuando elimina un contenedor de IBM Cloud, también debe eliminar el nombre de imagen del registro.  
+Ejecute los mandatos siguientes para eliminar un contenedor desde IBM Cloud:
 
-1. `cf ic ps` (Lists the containers currently running)
-2. `cf ic stop container_id` (Stops the container)
-3. `cf ic rm container_id` (Removes the container)
+1. `cf ic ps` (Lista los contenedores que se están ejecutando)
+2. `cf ic stop container_id` (Detiene el contenedor)
+3. `cf ic rm container_id` (Elimina el contenedor)
 
-Run the following cf ic commands to remove an image name from the IBM Cloud registry:
+Ejecute los siguientes mandatos cf ic para eliminar un nombre de imagen del registro de IBM Cloud:
 
-1. `cf ic images` (Lists the images in the registry)
-2. `cf ic rmi image_id` (Removes the image from the registry)
+1. `cf ic images` (Lista las imágenes del registro)
+2. `cf ic rmi image_id` (Elimina la imagen del registro)
 
-## Removing the Kubernetes deployments from IBM Cloud
+## Eliminar los despliegues de Kubernetes de IBM Cloud
 {: #removing-kube-deployments}
 
-Run the following commands to remove your deployed instances from  IBM Cloud Kubernetes cluster:
+Ejecute los mandatos siguientes para eliminar las instancias desplegadas de IBM Cloud Kubernetes Cluster:
 
-`kubectl delete -f mfp-deployment-appcenter.yaml` ( Removes all the kubernetes types defined in the yaml )
+`kubectl delete -f mfp-deployment-appcenter.yaml` (Elimina todos los tipos de kubernetes definidos en el archivo yaml).
 
-Run the following commands to remove image name from the IBM Cloud registry:
+Ejecute los siguientes mandatos para eliminar el nombre de imagen del registro de IBM Cloud:
 ```bash
-bx cr image-list (Lists the images in the registry)
-bx cr image-rm image-name (Removes the image from the registry)
+bx cr image-list (Lista las imágenes del registro)
+bx cr image-rm image-name (Elimina la imagen del registro)
 ```
 
-## Removing the database service configuration from IBM Cloud
+## Eliminar la configuración del servicio de base de datos de IBM Cloud
 {: #removing-the-database-service-configuration-from-ibmcloud }
-If you ran the **prepareappcenterdbs.sh** script during the configuration of the {{ site.data.keys.mf_app_center }} image, the configurations and database tables required for {{ site.data.keys.mf_app_center }} are created. This script also creates the database schema for the container.
+Si ha ejecutado el script **prepareappcenterdbs.sh** durante la configuración de la imagen de {{ site.data.keys.mf_app_center }}, se crean las configuraciones y tablas de base de datos necesarias para {{ site.data.keys.mf_app_center }}. Este script también crea el esquema de base de datos para el contenedor.
 
-To remove the database service configuration from IBM Cloud, perform the following procedure using IBM Cloud dashboard.
+Para eliminar la configuración del servicio de base de datos desde IBM Cloud, realice el siguiente procedimiento utilizando el panel de control de IBM Cloud.
 
-1. From the IBM Cloud dashboard, select the DB2 on cloud service you have used. Choose the DB2 service name that you had provided as parameter while running the **prepareappcenterdbs.sh** script.
-2. Launch the DB2 console to work with the schemas and database objects of the selected DB2 service instance.
-3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareappcenterdbs.sh** script.
-4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from IBM Cloud.
+1. En el panel de control de IBM Cloud, seleccione el servicio DB2 on Cloud que ha utilizado. Seleccione el nombre del servicio DB2 on Cloud que ha proporcionado como un parámetro cuando ejecutaba el script **prepareappcenterdbs.sh**.
+2. Inicie la consola de DB2 para trabajar con los esquemas y los objetos de base de datos de la instancia de servicio DB2 seleccionada.
+3. Seleccione los esquemas relacionados con la configuración de IBM {{ site.data.keys.mf_server }}. Los nombres de esquemas son los que ha proporcionado durante la ejecución del script **prepareappcenterdbs.sh**.
+4. Suprima cada esquema después de inspeccionar detenidamente los nombres de esquemas y los objetos que se encuentran debajo de los mismos. Las configuraciones de base de datos se eliminan de IBM Cloud.

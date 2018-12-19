@@ -8,9 +8,10 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
 {: #overview }
-O propósito dessa demonstração é explicar um fluxo completo: 
+O propósito dessa demonstração é explicar um fluxo completo:
 
-1. Um aplicativo de amostra que é pré-empacotado com o SDK do cliente {{ site.data.keys.product_adj }} é registrado e transferido por download a partir do {{ site.data.keys.mf_console }}.
+1. Um aplicativo de amostra que é pré-empacotado com o SDK do cliente {{ site.data.keys.product_adj }} é registrado e transferido
+por download a partir do {{ site.data.keys.mf_console }}.
 2. Um adaptador novo ou fornecido é implementado no {{ site.data.keys.mf_console }}.  
 3. A lógica de aplicativo é alterada para fazer uma solicitação de recurso.
 
@@ -46,9 +47,9 @@ Abra o {{ site.data.keys.mf_console }} carregando a URL: `http://your-server-hos
 
 ### Etapa 3. Editando a lógica do aplicativo
 {: #3-editing-application-logic }
-1. Abra o projeto React Native em seu editor de código de escolha. 
+1. Abra o projeto React Native em seu editor de código de escolha.
 
-2. Selecione o arquivo **app.js**, localizado na pasta raiz do projeto, e cole o seguinte fragmento de código, substituindo a função `WLAuthorizationManager.obtainAccessToken()` existente: 
+2. Selecione o arquivo **app.js**, localizado na pasta raiz do projeto, e cole o seguinte fragmento de código, substituindo a função `WLAuthorizationManager.obtainAccessToken()` existente:
 
 ```javascript
   WLAuthorizationManager.obtainAccessToken("").then(
@@ -98,7 +99,7 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
 
 ### Etapa 5. Testando o aplicativo
 {: #5-testing-the-application }
-1.  Certifique-se de ter instalado o {{ site.data.keys.mf_cli }} e, em seguida, navegue até a pasta raiz da plataforma específica (iOS ou Android) e execute o comando `mfpdev app register`. Se um {{ site.data.keys.mf_server }} remoto for usado, [execute o comando](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para incluir o servidor, 
+1.  Certifique-se de ter instalado o {{ site.data.keys.mf_cli }} e, em seguida, navegue até a pasta raiz da plataforma específica (iOS ou Android) e execute o comando `mfpdev app register`. Se um {{ site.data.keys.mf_server }} remoto for usado, [execute o comando](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para incluir o servidor,
 ```bash
 Servidor mfpdev add
 ```
@@ -106,7 +107,7 @@ seguido do comando para regisrar o aplicativo, por exemplo:
 ```bash
 mfpdev app register myIBMCloudServer
 ```
-2. Execute o seguinte comando para executar o aplicativo: 
+2. Execute o seguinte comando para executar o aplicativo:
 ```bash
 react-native run-ios|run-android
 ```
