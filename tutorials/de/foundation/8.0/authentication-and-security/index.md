@@ -216,7 +216,7 @@ Dank dieses Gültigkeitszeitraums kann ein Client ein Aktualisierungstoken verwe
         <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
             <div class="panel-body">
             <p>Aktualisierungstoken können mit den folgenden Eigenschaften jeweils auf der Client- und der Serverseite aktiviert werden. </p>
-            <b>Clientseitige Eigenschaft</b><br/>
+            <b>Clientseitige Eigenschaft (Android)</b><br/>
 
             <i>Dateiname</i>:            mfpclient.properties<br/>
             <i>Eigenschaftsname</i>:   wlEnableRefreshToken<br/>
@@ -224,6 +224,16 @@ Dank dieses Gültigkeitszeitraums kann ein Client ein Aktualisierungstoken verwe
 
             Beispiel:<br/>
             <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>Clientseitige Eigenschaft (iOS)</b><br/>
+
+            <i>Dateiname</i>:            mfpclient.plist<br/>
+            <i>Eigenschaftsname</i>:   wlEnableRefreshToken<br/>
+            <i>Eigenschaftswert</i>:   true<br/>
+
+            Beispiel:<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
 
             <b>Serverseitige Eigenschaft</b><br/>
 
@@ -280,7 +290,9 @@ Pragma: no-cache
 </div>
 
 
->**Hinweis:** Aktualisierungstoken sind im Vergleich zu Zugriffstoken langlebig. Daher sollten Sie Aktualisierungstoken mit Vorsicht verwenden. Anwendungen, die keine regelmäßige Benutzerauthentifizierung erfordern, sind ideale Kandidaten für die Verwendung von Aktualisierungstoken. MobileFirst unterstützt Aktualisierungstoken derzeit nur für die Android-Plattform. Sie sollten für Android- und iOS-Anwendungen unterschiedliche Bundle-IDs verwenden. 
+>**Hinweis:** Aktualisierungstoken sind im Vergleich zu Zugriffstoken langlebig. Daher sollten Sie Aktualisierungstoken mit Vorsicht verwenden. Anwendungen, die keine regelmäßige Benutzerauthentifizierung erfordern, sind ideale Kandidaten für die Verwendung von Aktualisierungstoken.  
+>
+> Ab CD-Update 3 unterstützt MobileFirst Aktualisierungstoken für iOS.  
 
 
 ### Sicherheitsüberprüfungen

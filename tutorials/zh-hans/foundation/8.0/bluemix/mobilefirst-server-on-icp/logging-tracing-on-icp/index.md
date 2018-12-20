@@ -8,7 +8,8 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-{{ site.data.keys.product_full }} 将错误、警告和参考消息记录到日志文件中。 日志记录的底层机制因应用程序服务器而异。 在 {{ site.data.keys.prod_icp }} 中，唯一支持的应用程序服务器为 Liberty。
+{{ site.data.keys.product_full }} 将错误、警告和参考消息记录到日志文件中。 日志记录的底层机制因应用程序服务器而异。 在 {{ site.data.keys.prod_icp }} 中，唯一支持的应用程序服务器
+为 Liberty。
 
 以下文档阐述如何为在 {{ site.data.keys.prod_icp }} 上的 Kubernetes 集群中运行的 {{ site.data.keys.mf_server }} 启用跟踪和收集日志。
 

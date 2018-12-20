@@ -1,51 +1,51 @@
 ---
 layout: tutorial
-title: Monitoring Mobile Foundation in IBM Cloud Private (ICP)
+title: Supervisión de Mobile Foundation en IBM Cloud Private (ICP)
 breadcrumb_title: Monitoring Mobile Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
 
-This tutorial outlines how to integrate **Prometheus** to monitor Mobile Foundation running on IBM Cloud Private.
+Esta guía de aprendizaje describe cómo integrar **Prometheus** para supervisar Mobile Foundation en ejecución en IBM Cloud Private.
 
-IBM Mobile Foundation provides monitoring capability by enabling `mpMetrics-1.0` feature to monitor Mobile Foundation Server, Analytics and Application Center that are instrumented with the *MicroProfile metrics* API. This helps to monitor the JVM and system level metrics of your Mobile Foundation containers deployed on ICP.
+IBM Mobile Foundation proporciona capacidad de supervisión mediante la habilitación de la característica `mpMetrics-1.0` para supervisar Mobile Foundation Server, Analytics y Application Center que se instrumentan con la API de *métricas de MicroProfile*. Esto ayuda a supervisar las métricas en el nivel de JVM y del sistema de sus contenedores Mobile Foundation desplegados en ICP.
 
-The default response formats to `/metrics` API request is a text format, which is compatible with **Prometheus**.
+El formato de respuesta predeterminado para la API `/metrics` es un formato de texto, compatible con **Prometheus**.
 
 
-## Procedure
+## Procedimiento
 {: #procedure}
 
-Complete the steps below to set up the monitoring of Mobile Foundation on {{ site.data.keys.prod_icp }}.
+Realice los pasos siguientes para configurar la supervisión de Mobile Foundation en {{ site.data.keys.prod_icp }}.
 
-### Step 1: Deploy the IBM Monitoring service
-a.  Deploy the Monitoring service from {{ site.data.keys.prod_icp }} catalog.<br/>
-b.  Go to **Catalog** , select **ibm-icpmonitoring** helm chart and install. The helm chart will get installed in your {{ site.data.keys.prod_icp }}.<br/>
-    ![Select icpmonitoring helm](select-monitoring-helm.png)
+### Paso 1: Desplegar el servicio IBM Monitoring
+a.  Despliegue el servicio Monitoring desde el catálogo de {{ site.data.keys.prod_icp }}.<br/>
+b.  Vaya a **Catálogo**, seleccione el gráfico Helm **ibm-icpmonitoring** e instálelo. El gráfico Helm se instalará en su {{ site.data.keys.prod_icp }}.<br/>
+    ![Seleccionar helm icpmonitoring](select-monitoring-helm.png)
 
-### Step 2: Update **Prometheus** *configmap* configuration
+### Paso 2: Actualizar la configuración *configmap* de **Prometheus**
 
-Run the following command, from a properly sourced terminal, which is a CLI instance having the contextual configuration information of the ICP cluster:<br/>
+Ejecute el mandato siguiente desde un terminal de origen adecuado, que es una instancia de CLI que tiene la información de configuración contextual del clúster de ICP:<br/>
 ```bash
 kubectl get svc | grep prometheus
 ```
 <br/>
-You will see a number of services getting deployed by the `ibm-icpmonitoring` chart. In this tutorial, we will focus on and use the service named `<name used for the helm release>-promethues` (mfp-prometheus-prometheus), as shown in the screenshot below:<br/>
+Verá que el gráfico `ibm-icpmonitoring` despliega una serie de servicios. En esta guía de aprendizaje nos centraremos en el servicio `<name used for the helm release>-promethues` (mfp-prometheus-prometheus) y lo utilizaremos, tal como se muestra en la captura de pantalla siguiente:<br/>
 
-![Get services deployed](get-svcs-helm.png)
+![Desplegar servicios](get-svcs-helm.png)
 <br/>
-Each of these services has an associated *configmap* object. To get the metrics data of the Mobile Foundation pods, you need to modify the *configmap* associated with the **mfp-prometheus-prometheus** service by adding the `mfpfserver` annotation for Mobile Foundation server, `mfpfanalytics` annotation for Analytics and `mfpfappcenter` annotation for Application Center to the service deployment, along with a few other attributes.<br/>
-The simplest way to achieve this is to edit the intended *configmap* object from a sourced terminal using the command below:<br/>
+Cada uno de estos servicios tiene un objeto *configmap* asociado. Para obtener los datos de métricas de los pods de Mobile Foundation, debe modificar el objeto *configmap* asociado con el servicio **mfp-prometheus-prometheus** añadiendo la anotación `mfpfserver` para Mobile Foundation Server, la anotación `mfpfanalytics` para Analytics y la anotación `mfpfappcenter` para Application Center al despliegue de servicios, junto con algunos otros atributos.<br/>
+La manera más sencilla de hacerlo es editar el objeto *configmap* que se desea desde un terminal de origen mediante el mandato siguiente:<br/>
 ```bash
   kubectl edit configmap mfp-prometheus-prometheus
   ```
 <br/>
-This command will bring up the requested YAML file in the vi editor.  Scroll down to the end of the file and insert the text below, just before the line `kind: ConfigMap`.
+Este mandato mostrará el archivo YAML solicitada en el editor vi. Desplácese hasta el final del archivo e inserte el texto siguiente, inmediatamente antes de la línea `kind: ConfigMap`.
 
-Mobile Foundation server Metrics configuration, YAML snippet below:<br/>
+Configuración de métricas de Mobile Foundation Server, fragmento de código YAML siguiente:<br/>
 
 ```yaml
 # Configuration for MFP Server Monitoring
@@ -72,7 +72,7 @@ relabel_configs:
 ```    
 <br/>
 
-Configuration for Mobile Foundation server health check monitoring,YAML snippet below:<br/>
+Configuración de la supervisión de comprobación de estado de Mobile Foundation Server, fragmento de código YAML siguiente:<br/>
 
 ```yaml
 # Configuration for MFP Health check  Monitoring<br/>
@@ -99,66 +99,66 @@ relabel_configs:
     regex: __meta_kubernetes_service_label_(.+)
 ```
 <br/>
-> **Note:** Mobile Foundation Analytics and Application Center deployments follow the similar Metrics configuration.
+> **Nota:** Los despliegues de Analytics y Application Center de Mobile Foundation siguen la configuración similar de métricas.
 
-Value of *job_name* and *source_labels* changes as described earlier.
+Valor de los cambios de *job_name* y *source_labels* tal como se han descrito anteriormente.
   
-### Step 3: Reload **Prometheus** configuration after updating the jobs
-Execute the curl command below:<br/>
+### Paso 3: Volver a cargar la configuración de **Prometheus** tras actualizar los trabajos
+Ejecute el mandato curl siguiente:<br/>
 ```cURL
-curl -s -XPOST http://<ip address of the proxy node>:31271/-/reload
+curl -s -XPOST http://<dirección ip del nodo de proxy>:31271/-/reload
 ```
 <br/>
-![Prometheus config](prometheus-config.png)
+![Configuración de Prometheus](prometheus-config.png)
 
-### Step 4: Monitoring the Mobile Foundation statistics
+### Paso 4: Supervisión de las estadísticas de Mobile Foundation
 
-a. Browse to the **Prometheus** console from a browser using the URL: <br/>
+a. Vaya a la consola de **Prometheus** desde un navegador utilizando el URL: <br/>
 ```
-http://<ip address of the Proxy Node>:31271
+http://<dirección IP del nodo de proxy>:31271
 ```
-b. In the **Prometheus** console, first click on **Status** and then select **Targets** from the drop-down as shown in the screenshot below:<br/>
-  ![Prometheus console](prometheus-console.png)
-c. You should see all the **Targets** whose statistics is being obtained by Prometheus.<br/>
-  ![Target appcenter](target-appcenter.png)<br/>
-  ![Target all](target-all.png)
+b. En la consola de **Prometheus**, pulse primero en **Estado** y a continuación seleccione **Destinos** en el menú desplegable, tal como se muestra en la captura de pantalla siguiente:<br/>
+  ![Consola de Prometheus](prometheus-console.png)
+c. Debería ver todos los **Destinos** cuyas estadísticas obtiene Prometheus.<br/>
+  ![Appcenter de destino](target-appcenter.png)<br/>
+  ![Todos como destino](target-all.png)
 <br/>
-  This screenshot above clearly shows the Mobile Foundation Server, Analytics and Application Center **Targets**. Refer to the value of *job_name* attribute of the *configmap* YAML file shown in step 2.<br/>
-  We scaled up our deployment sample to two replicas, and which is why **Prometheus** shows two endpoints getting scraped for Server.<br/>
+  Esta captura de pantalla muestra claramente los **Destinos** Mobile Foundation Server, Analytics y Application Center. Consulte el valor del atributo *job_name* del archivo YAML *configmap* que se muestra en el paso 2.<br/>
+  Hemos ampliado nuestro despliegue de ejemplo a dos réplicas, y es por esto que **Prometheus** muestra que el servidor reúne dos puntos finales.<br/>
 
-  If you click on **Graph** in the **Prometheus** console and in the subsequent panel, click the **insert metric at cursor** as shown in screenshot below:<br/>
-  ![Prometheus graph](graph-config.png)
+  Si pulsa en **Gráfico** en la consola de **Prometheus** y en el panel subsiguiente, pulse **insertar métrica en el cursor** tal como se muestra en la siguiente captura de pantalla:<br/>
+  ![Gráfico de Prometheus](graph-config.png)
 
-  You will see a number of metrics that can be monitored by the present **Prometheus** configuration. Among the metrics in the long list, the metric names starting with **base:** are from the Mobile Foundation containers contributed by the `mpMetrics-1.0` feature.<br/>
-  ![Mobile Foundation metrics](metrics.png)
+  Verá una serie de métricas que puede supervisar la configuración actual de **Prometheus**. Entre las métricas de la larga lista, los nombres de métrica que empiezan por **base:** son los contenedores de Mobile Foundation con los que ha contribuido la característica `mpMetrics-1.0`.<br/>
+  ![Métricas de Mobile Foundation](metrics.png)
 
-  Selecting any Liberty metric (eg: **base:thread_count**), you can see the values from both the Mobile foundation Server pods in the Prometheus graph, as shown in screenshot below:<br/>
-  ![Thread count graph](thread-count-graph.png)
+  Si selecciona alguna métrica de Liberty (por ejemplo, **base:thread_count**), puede ver los valores de ambos pods de Mobile foundation Server en el gráfico de Prometheus, tal como se muestra en la captura de pantalla siguiente:<br/>
+  ![Gráfico de recuento de hebras](thread-count-graph.png)
 
-  You can explore other relevant metrics in **Prometheus** in graphical as well as in numeric form by clicking **Console**.<br/>
-  You can also scale your deployments. Within a short period of time the number of endpoints in the Prometheus console will match the number of replicas.  <br/>
+  Puede explorar otras métricas relevantes en **Prometheus** en formato gráfico así como en formato numérico pulsando **Consola**.<br/>
+  También puede ampliar sus despliegues. En un breve periodo de tiempo, el número de puntos finales en la consola de Prometheus coincidirá con el número de réplicas.  <br/>
 
-  >**Note:** Though we have used clear text for password in the *configmap* file of Prometheus, Prometheus will not display the password when its configuration is viewed in the Prometheus panel.
+  >**Nota:** Aunque hemos utilizado texto sin cifrar para las contraseñas en el archivo *configmap* de Prometheus, Prometheus no mostrará la contraseña cuando se visualice su configuración en el panel de Prometheus.
 
-### Step 5: View Metrics on **Grafana** dashboard
-Mobile Foundation helm charts contains sample Grafana dashboard json files, Monitoring service deployed in step 1 has Grafana in place.<br/>
+### Paso 5: Ver métricas en el panel **Grafana**
+Los gráficos Helm de Mobile Foundation contiene archivos jason de panel Grafana de ejemplo. El servicio de supervisión desplegado en el paso 1 tiene Grafana aplicado.<br/>
 
-Importing a Grafana dashboard from a JSON file is as below:<br/>
+La importación de un panel Grafana desde un archivo JSON se realiza de la forma siguiente:<br/>
 
-* Launch Grafana from the deployed monitoring service.<br/>
-  <b>Workloads -> Helm releases -> `<name used for the helm release>`(ex: mfp-prometheus) ->Launch)</b>
+* Inicie Grafana desde el servicio de supervisión desplegado.<br/>
+  <b>Cargas de trabajo -> Versiones de Helm -> `<name used for the helm release>`(ej.: mfp-prometheus) -> Iniciar)</b>
 
-* Download the JSON dashboard file from [GitHub](https://github.ibm.com/IBMPrivateCloud/charts/tree/master/stable/ibm-mfpf-server-prod/additionalFiles/ibm-mfpf-server-prod-grafanadashboard.json) to your local workstation.   <br/>
+* Descargue el archivo de panel JSON desde [GitHub](https://github.ibm.com/IBMPrivateCloud/charts/tree/master/stable/ibm-mfpf-server-prod/additionalFiles/ibm-mfpf-server-prod-grafanadashboard.json) en su estación de trabajo local.<br/>
 
-* Click the *Home* button in the Grafana interface, then click **Import Dashboard**.<br/>
+* Pulse el botón *Inicio* en la interfaz de Grafana y a continuación pulse **Importar panel**.<br/>
 
-* Click the **Upload .json file** button and select the Grafana dashboard JSON file from your local filesystem.<br/>
+* Pulse el botón **Cargar archivo .json** y seleccione el archivo JSON del panel Grafana de su sistema de archivos local.<br/>
 
-* Select **prometheus** from the **Select a data source** menu, if it is not already selected.<br/>
+* Seleccione **prometheus** en el menú **Seleccionar un origen de datos**, si no está seleccionado aún.<br/>
 
-* Click **Import**.<br/>
+* Pulse **Importar**.<br/>
 
-Sample Monitoring Dashboard for Mobile Foundation Server is shown in the screenshot below:<br/>
-![Dashboard 1](dashboard-1.png)
-![Dashboard 2](dashboard-2.png)
-![Dashboard 3](dashboard-3.png)
+Un ejemplo de panel de supervisión par Mobile Foundation Server se muestra en la captura de pantalla siguiente:<br/>
+![Panel 1](dashboard-1.png)
+![Panel 2](dashboard-2.png)
+![Panel 3](dashboard-3.png)

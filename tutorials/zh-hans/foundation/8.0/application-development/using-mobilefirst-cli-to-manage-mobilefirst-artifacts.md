@@ -44,15 +44,20 @@ node -v
 v6.11.1
 ```
 
-> **注：****node.js** 的最低受支持版本为 **4.2.3**。 另外，**node** 和 **npm** 包发展很快，MobileFirst CLI 可能无法在所有版本的 **node** 和 **npm**（包括最新版本）上都能完全发挥作用。 要使 CLI 能够正常运行，请确保 **node** 的版本为 **6.11.1**，**npm** 的版本为 **3.10.10**。
+> **注：****node.js** 的最低受支持版本为 **4.2.3**。 另外，**node** 和 **npm** 包发展很快，MobileFirst CLI 可能无法在所有版本的 **node** 和 **npm**（包括最新版本）上都能完全发挥作用。  
+> 
+> 对于 iFix V8.0.2018040312 以下的 MobileFirst CLI 版本（包含 iFix V8.0.2018040312），请确保 **node** 的版本为 **6.11.1** 并且 **npm** 的版本为 **3.10.10**，以使 CLI 能够正常运行。
+>
+> 对于 MobileFirst CLI iFix V8.0.2018100112 和更高版本，您可以使用 Node V8.x 或 V10.x
 
 ## 安装 {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
 要安装命令行界面，请运行命令：
 
 ```bash
-npm install -g mfpdev-cli
+npm install -g mfpdev-cli --no-optional
 ```
+
 
 如果从 {{ site.data.keys.mf_console }} 的下载中心下载了 CLI .zip 文件，请使用命令：
 

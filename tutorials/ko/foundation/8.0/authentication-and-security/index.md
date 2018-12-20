@@ -173,14 +173,24 @@ MobileFirst 액세스 토큰과 마찬가지로, MobileFirst 새로 고치기 �
         <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
             <div class="panel-body">
             <p>새로 고치기 토큰 기능은 클라이언트 측 및 서버 측 각각에서 다음 특성을 사용하여 사용할 수 있습니다.</p>
-            <b>클라이언트 측 특성</b><br/>
+            <b>클라이언트 측 특성(Android)</b><br/>
 
-            <i>파일 이름</i>.:            mfpclient.properties<br/>
+            <i>파일 이름</i>:            mfpclient.properties<br/>
             <i>특성 이름</i>:   wlEnableRefreshToken<br/>
             <i>특성 값</i>:   true<br/>
 
             예를 들어, 다음과 같습니다.<br/>
             <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>클라이언트 측 특성(iOS)</b><br/>
+
+            <i>파일 이름</i>:            mfpclient.plist<br/>
+            <i>특성 이름</i>:   wlEnableRefreshToken<br/>
+            <i>특성 값</i>:   true<br/>
+
+            예를 들어, 다음과 같습니다.<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
 
             <b>서버 측 특성</b><br/>
 
@@ -238,7 +248,9 @@ Pragma: no-cache
 </div>
 
 
->**참고:** 새로 고치기 토큰은 액세스 토큰에 비해 유효 기간이 깁니다. 따라서 새로 고치기 토큰은 신중하게 사용해야 합니다. 정기적으로 사용자 인증이 필요하지 않은 애플리케이션이 새로 고치기 토큰 기능을 사용하는 데 적합한 후보입니다. 현재 MobileFirst는 Android 플랫폼에서만 새로 고치기 토큰 기능을 지원합니다. Android 및 iOS 애플리케이션에서는 다른 번들 ID를 사용하는 것이 좋습니다.
+>**참고:** 새로 고치기 토큰은 액세스 토큰에 비해 유효 기간이 깁니다. 따라서 새로 고치기 토큰은 신중하게 사용해야 합니다. 정기적으로 사용자 인증이 필요하지 않은 애플리케이션이 새로 고치기 토큰 기능을 사용하는 데 적합한 후보입니다. 
+>
+> MobileFirst는 CD 업데이트 3부터 iOS에서 새로 고치기 토큰 기능을 지원합니다. 
 
 
 ### 보안 검사
