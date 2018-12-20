@@ -31,14 +31,19 @@ El servicio de {{ site.data.keys.mf_bm_short }} ofrece las siguientes opciones d
 
 #### Ir a:
 {: #jump-to}
-* [Configuración del servicio {{ site.data.keys.mf_bm_short }}](#setting-up-the-mobile-foundation-service)
-* [Utilización del servicio {{ site.data.keys.mf_bm_short }}](#using-the-mobile-foundation-service)
-* [Configuración del servidor](#server-configuration)
-* [Configuración avanzada del servidor](#advanced-server-configuration)
-* [Aplicar arreglos de {{ site.data.keys.mfound_server }}](#applying-mobilefirst-server-fixes)
-* [Acceso a los registros del servidor](#accessing-server-logs)
-* [Resolución de problemas](#troubleshooting)
-* [Lectura adicional](#further-reading)
+- [Visión general](#overview)
+    - [Ir a:](#jump-to)
+- [Configuración del servicio {{ site.data.keys.mf_bm_short }}](#setting-up-the--sitedatakeysmfbmshort--service)
+  - [Configuración del plan de *desarrollador*](#setting-up-the-developer-plan)
+  - [Configuración del plan *Profesional de una aplicación* y *Profesional por dispositivo*](#setting-up-the-professional-1-application-and-professional-per-device-plan)
+- [Utilización del servicio {{ site.data.keys.mf_bm_short }}](#using-the--sitedatakeysmfbmshort--service)
+  - [Configuración del servidor](#server-configuration)
+  - [Configuración avanzada del servidor](#advanced-server-configuration)
+- [Aplicación de arreglos {{ site.data.keys.mfound_server }}](#applying--sitedatakeysmfoundserver--fixes)
+- [Acceso a los registros del servidor](#accessing-server-logs)
+    - [Rastreo](#tracing)
+- [Resolución de problemas](#troubleshooting)
+- [Lectura adicional](#further-reading)
 
 ## Configuración del servicio {{ site.data.keys.mf_bm_short }}
 {: #setting-up-the-mobile-foundation-service }

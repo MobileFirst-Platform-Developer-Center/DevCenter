@@ -182,13 +182,13 @@ SDK のリリースは、SDK の [JCenter リポジトリー](https://bintray.co
 {: #mfpclient.properties }
 Android Studio プロジェクトの **./app/src/main/assets/** フォルダー内に配置されているこのファイルは、{{ site.data.keys.mf_server }} に Android アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
 
-|プロパティー            |説明                                                         |値の例 |
+| プロパティー            | 説明                                                         | 値の例 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    |{{ site.data.keys.mf_server }} との通信プロトコル。             |http または https  |
-| wlServerHost        |{{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
-| wlServerPort        |{{ site.data.keys.mf_server }} のポート。                                 | 9080           |
-| wlServerContext     |{{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
-| languagePreferences |クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
+| wlServerProtocol    | {{ site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
+| wlServerHost        | {{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
+| wlServerPort        | {{ site.data.keys.mf_server }} のポート。                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
+| languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
 
 ## Javadoc および Android Service のサポート
 {: #support-for-javadoc-and-android-service }

@@ -30,5 +30,4 @@ Diesbezügliche Informationen enthalten die Lernprogramme für [Java-Adapter](ja
     * [IBM WebSphere Application Server Liberty Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
 * Abruf der Protokolle in einer Cloudimplementierung: 
-    * IBM Container- oder Liberty-Buildpack (siehe Lernprogramm [Protokoll und Traceerfassung in IBM Containern](../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/))
     * IBM Cloud-Service "Mobile Foundation" (siehe Abschnitt [Zugriff auf Serverprotokolle](../../bluemix/using-mobile-foundation/#accessing-server-logs) im Lernprogramm [Mobile Foundation verwenden](../../bluemix/using-mobile-foundation))

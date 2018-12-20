@@ -50,7 +50,7 @@ weight: 6
 **예:**
 
 Analytics Server에 대해 두 개의 노드가 있다고 가정합니다.
-이러한 경우, 분석용  MobileFirst Server 구성에 대한 권장사항은 다음과 같습니다.
+이러한 경우, 분석용 MobileFirst Server 구성에 대한 권장사항은 다음과 같습니다.
 
 **권장**<br/>
 
@@ -145,7 +145,7 @@ Elasticsearch 튜닝 매개변수는 환경의 기본 튜닝으로 고려되며 
 -	다중 노드 클러스터에서는 동일한 노드를 사용하여 이벤트를 분석 클러스터로 푸시하고 콘솔에 액세스하지 마십시오. 분석 클러스터 앞에서 로드 밸런서를 사용하는 것이 가장 좋습니다.
 -	Analytics 클러스터에 대해 기타 Application Server 클러스터링 방법론을 사용하지 마십시오. 기본 Elasticsearch에서는 노드 발견 메커니즘을 사용하여 자체적으로 클러스터를 작성합니다.
 -	IBM WebSphere Application Server 전체 프로파일 (또는) IBM WebSphere Application Server Network Deployment에서 Analytics에 대해 오픈 JDK(또는 Sun Java)를 사용하지 마십시오.
--	Analytics 최소/최대 힙 크기를 노드의 RAM 크기의 절반보다 큰 값으로  늘리지 마십시오. 예를 들어, RAM 크기가 16GB인 노드의 경우 분석을 위해 허용되는 최대 힙 크기는 8GB입니다.
+-	Analytics 최소/최대 힙 크기를 노드의 RAM 크기의 절반보다 큰 값으로 늘리지 마십시오. 예를 들어, RAM 크기가 16GB인 노드의 경우 분석을 위해 허용되는 최대 힙 크기는 8GB입니다.
 - 분석 클러스터 이름(**analytics/clustername** JNDI 특성)의 경우 고유한 클러스터 이름을 사용하십시오. 기본 이름 *worklight*를 사용하지 마십시오.
 
 ## {{ site.data.keys.mf_analytics_server }} - SDK 문제
@@ -156,11 +156,11 @@ Elasticsearch 튜닝 매개변수는 환경의 기본 튜닝으로 고려되며 
 
 MobileFirst Platform Foundation v8.0에서 앱이 백그라운드에서 포그라운드로 이동하면 앱 세션은 증가/기록됩니다.  
 
-AppSessions 캡처는 라이프사이클 이벤트용 리스너를 추가하여 사용할 수 있습니다. 네이티브 SDK에서 이러한 리스너를 추가하는 데 적합한 API를 제공합니다. 그러나 Cordova의 경우 이러한 라이프사이클 이벤트 리스너를 추가하기 위한 JavaScript API가 없습니다. 대신 Cordova애플리케이션에서도 네이티브 플랫폼 API를 사용하여 리스너를 추가해야 합니다.
+AppSessions 캡처는 라이프사이클 이벤트용 리스너를 추가하여 사용할 수 있습니다. 네이티브 SDK에서 이러한 리스너를 추가하는 데 적합한 API를 제공합니다.   그러나 Cordova의 경우 이러한 라이프사이클 이벤트 리스너를 추가하기 위한 JavaScript API가 없습니다. 대신 Cordova애플리케이션에서도 네이티브 플랫폼 API를 사용하여 리스너를 추가해야 합니다.
 
 [문서](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/analytics/analytics-api/#client-lifecycle-events)에서 다음과 같이 발췌하십시오.
 
-<blockquote>Analytics SDK가 구성되고 나면 사용자 디바이스에서 앱 세션 기록이 시작됩니다. MobileFirst Analytics에서 세션은 앱이 포그라운드에서 백그라운드로 이동할 때 기록되며, Analytics Console에서 세션을 작성합니다. 디바이스가 세션을 기록하도록 설정되어 있으면 사용자가 데이터를 전송하는 즉시 아래에 표시된 대로 데이터로 채워진 Analytics Console을 볼 수 있습니다.</blockquote>
+<blockquote>Analytics SDK가 구성되고 나면 사용자 디바이스에서 앱 세션 기록이 시작됩니다. MobileFirst Analytics에서 세션은 앱이 포그라운드에서 백그라운드로 이동할 때 기록되며, Analytics Console에서 세션을 작성합니다.  디바이스가 세션을 기록하도록 설정되어 있으면 사용자가 데이터를 전송하는 즉시 아래에 표시된 대로 데이터로 채워진 Analytics Console을 볼 수 있습니다.</blockquote>
 
 예를 들어, iOS 플랫폼(iOS)의 Cordova 앱의 경우 `AppDelegate.m`에 다음을 추가해야 합니다.
 ```

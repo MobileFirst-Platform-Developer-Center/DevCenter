@@ -396,27 +396,6 @@ und nicht gemäß den konfigurierten Vorgaben für die Anzeigesprache des Browse
 (siehe auch [Administratornachrichten
 in mehreren Sprachen definieren](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)). 
 
-### WKWebView-Unterstützung für iOS-Cordova-Anwendungen
-{: #wkwebview-support-for-ios-cordova-applications }
-In
-iOS-Cordova-Apps mit
-WKWebView funktionieren unter Umständen die Features für App-Benachrichtigungen und direkte Aktualisierung nicht ordnungsgemäß. 
-
-Diese Einschränkung
-ist auf den Fehler
-"file:// url XmlHttpRequests are not allowed in WKWebViewEgine"
-in **cordova-plugin-wkwebview-engine** zurückzuführen.
-
-Sie können dieses Problem umgehen, indem Sie in Ihrem Cordova-Projekt den folgenden Befehl ausführen:
-`cordova plugin add https://github.com/apache/cordova-plugins.git#master:wkwebview-engine-localhost`. 
-
-Wenn Sie diesen Befehl ausführen, wird ein lokaler Web-Server in Ihrer Cordova-Anwendung ausgeführt.
-Im Anschluss können Sie Ihre lokalen Dateien bereitstellen
-und aufrufen und müssen für die Arbeit mit lokalen Dateien nicht
-das URI-Schema file:// verwenden. 
-
-**Hinweis:** Dieses Cordova-Plug-in wird nicht in npm (Node Package Manager) veröffentlicht. 
-
 ### Cordova-Plug-in-Statusleiste (cordova-plugin-statusbar) funktioniert nicht in einer mit cordova-plugin-mfp geladenen Cordova-Anwendung
 {: #cordova-plugin-statusbar-does-not-work-with-cordova-application-loaded-with-cordova-plugin-mfp }
 Die Cordova-Plug-in-Statusleiste (cordova-plugin-statusbar) funktioniert nicht in einer mit cordova-plugin-mfp geladenen Cordova-Anwendung. 
@@ -430,7 +409,7 @@ Vorhandenes Code-Snippet:
 ```objc
 (void)wlInitDidCompleteSuccessfully
 {
- UIViewController* rootViewController = self.window.rootViewController;
+UIViewController* rootViewController = self.window.rootViewController;
 // Cordova-Ansichtencontroller erstellen
 CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
 cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
@@ -471,3 +450,42 @@ bei Übergabe an den Google Play Store zurückgewiesen wird.
 Sollte die Übergabe an den Google Play Store aus anderen Gründen fehlschlagen, wenden Sie sich an den Google-Support.
 
 >**Hinweis:** Wenn Sie die MobileFirst-8.0-iFix-Releaseversion von Januar 2018 oder eine aktuellere Version verwenden, sollten Sie eine Aktualisierung durchführen und den Server und den Client auf denselben Versionsstand bringen.
+
+### Zugriffsfehler bei der Installation der MobileFirst-CLI mit Node 8
+{:#mfpdev-cli-installation errors}
+Wenn Sie die MobileFirst-CLI mit npm installieren, werden möglicherweise die folgenden Fehler in der Terminalausgabe angezeigt.
+
+```
+> bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> utf-8-validate@1.2.2 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> fsevents@1.2.4 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/fsevents
+> node install
+```
+
+Dieser Fehler ist auf einen [bekannten Programmfehler in node-gyp](https://github.com/nodejs/node-gyp/issues/1547) zurückzuführen. Sie können diese Fehler ignorieren, da sie keinen Einfluss auf die Funktionsfähigkeit der MobileFirst-CLI haben. Dies gilt für *mfpdev-cli iFix-Version 8.0.2018100112* und aktuellere Versionen. Sie können dieses Problem meistern, indem Sie während der Installation das Flag `--no-optional` verwenden. Beispiel:
+
+```bash
+npm install -g mfpdev-cli --no-optional
+```

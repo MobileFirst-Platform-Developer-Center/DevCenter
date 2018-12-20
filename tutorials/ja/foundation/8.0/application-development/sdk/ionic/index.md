@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-このチュートリアルでは、Ionic CLI を使用して作成された新規または既存の Ionic アプリケーションに {{ site.data.keys.product_adj }} SDK を追加する方法について学習します。また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法と、プロジェクト内で変更する {{ site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
+このチュートリアルでは、Ionic CLI を使用して作成された新規または既存の Ionic アプリケーションに {{ site.data.keys.product_adj }} SDK を追加する方法について学習します。 また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法と、プロジェクト内で変更する {{ site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
 
 {{ site.data.keys.product_adj }} Ionic SDK は、Cordova プラグインとともに Typescript ラッパーのセットとして提供され、[NPM](https://www.npmjs.com/package/cordova-plugin-mfp) に登録されます。  
 
@@ -39,7 +39,7 @@ MobileFirst プラグインでサポートされる Ionic Cordova プラット�
 {: #ionic-sdk-components }
 #### cordova-plugin-mfp
 {: #cordova-plugin-mfp }
-*cordova-plugin-mfp* プラグインは、Cordova 用のコア {{ site.data.keys.product_adj }} プラグインであり、必須です。他の {{ site.data.keys.product_adj }} プラグインのいずれかをインストールすると、*cordova-plugin-mfp* プラグインも自動的にインストールされます (まだインストールされていない場合)。
+*cordova-plugin-mfp* プラグインは、Cordova 用のコア {{ site.data.keys.product_adj }} プラグインであり、必須です。 他の {{ site.data.keys.product_adj }} プラグインのいずれかをインストールすると、*cordova-plugin-mfp* プラグインも自動的にインストールされます (まだインストールされていない場合)。
 
 > 次の Cordova プラグインは、cordova-plugin-mfp の依存関係としてインストールされます。
 >   
@@ -50,19 +50,19 @@ MobileFirst プラグインでサポートされる Ionic Cordova プラット�
 
 #### cordova-plugin-mfp-jsonstore
 {: #cordova-plugin-mfp-jsonstore }
-*cordova-plugin-mfp-jsonstore* プラグインを使用すると、アプリケーションで JSONstore を使用できるようになります。JSONstore について詳しくは、[JSONStore に関するチュートリアル](../../jsonstore/cordova/)を参照してください。  
+*cordova-plugin-mfp-jsonstore* プラグインを使用すると、アプリケーションで JSONstore を使用できるようになります。 JSONstore について詳しくは、[JSONStore に関するチュートリアル](../../jsonstore/cordova/)を参照してください。  
 
 #### cordova-plugin-mfp-push
 {: #cordova-plugin-mfp-push }
-*cordova-plugin-mfp-push* プラグインは、Android アプリケーションに対し {{ site.data.keys.mf_server }} からのプッシュ通知を使用するために必要な許可を提供します。プッシュ通知を使用するための追加セットアップが必要です。 プッシュ通知について詳しくは、[プッシュ通知に関するチュートリアル](../../../notifications/)を参照してください。
+*cordova-plugin-mfp-push* プラグインは、Android アプリケーションに対し {{ site.data.keys.mf_server }} からのプッシュ通知を使用するために必要な許可を提供します。 プッシュ通知を使用するための追加セットアップが必要です。 プッシュ通知について詳しくは、[プッシュ通知に関するチュートリアル](../../../notifications/)を参照してください。
 
 #### cordova-plugin-mfp-fips
 {: #cordova-plugin-mfp-fips }
-*cordova-plugin-mfp-fips* プラグインは、Android プラットフォームの FIPS 140-2 をサポートします。詳しくは、[FIPS 140-2 サポート](../../../administering-apps/federal/#fips-140-2-support)を参照してください。
+*cordova-plugin-mfp-fips* プラグインは、Android プラットフォームの FIPS 140-2 をサポートします。 詳しくは、[FIPS 140-2 サポート](../../../administering-apps/federal/#fips-140-2-support)を参照してください。
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-*cordova-plugin-mfp-encrypt-utils* プラグインは、iOS プラットフォームでの Cordova アプリケーションの暗号化のための iOS OpenSSL フレームワークを提供します。詳しくは、[Cordova iOS での OpenSSL の有効化](../cordova/additional-information)を参照してください。
+*cordova-plugin-mfp-encrypt-utils* プラグインは、iOS プラットフォームでの Cordova アプリケーションの暗号化のための iOS OpenSSL フレームワークを提供します。 詳しくは、[Cordova iOS での OpenSSL の有効化](../cordova/additional-information)を参照してください。
 
 **前提条件:**
 
@@ -81,7 +81,7 @@ MobileFirst プラグインでサポートされる Ionic Cordova プラット�
 
 ### SDK の追加
 {: #adding-the-sdk }
-{{ site.data.keys.product_adj }} Ionic **アプリケーション・テンプレート**を使用してプロジェクトを作成することを検討してください。テンプレートを使用すると、{{ site.data.keys.product_adj }} 固有の必須プラグイン・エントリーが Ionic プロジェクトの **config.xml** ファイルに追加され、{{ site.data.keys.product_adj }} アプリケーション開発用に調整済みですぐに使用可能な、{{ site.data.keys.product_adj }} 固有の **index.js** ファイルが提供されます。
+{{ site.data.keys.product_adj }} Ionic **アプリケーション・テンプレート**を使用してプロジェクトを作成することを検討してください。 テンプレートを使用すると、{{ site.data.keys.product_adj }} 固有の必須プラグイン・エントリーが Ionic プロジェクトの **config.xml** ファイルに追加され、{{ site.data.keys.product_adj }} アプリケーション開発用に調整済みですぐに使用可能な、{{ site.data.keys.product_adj }} 固有の **index.js** ファイルが提供されます。
 
 #### 新規アプリケーション
 {: #new-application }
@@ -107,7 +107,7 @@ MobileFirst プラグインでサポートされる Ionic Cordova プラット�
 
    > 上記のコマンドは、MobileFirst コア SDK プラグインを Ionic プロジェクトに追加します。
 
-4. Ionic CLI コマンド `ionic cordova platform add ios|android|windows|browser` を使用して、サポートされる 1 つ以上のプラットフォームを Cordova プロジェクトに追加します。例えば、次のとおりです。
+4. Ionic CLI コマンド `ionic cordova platform add ios|android|windows|browser` を使用して、サポートされる 1 つ以上のプラットフォームを Cordova プロジェクトに追加します。 例えば、次のとおりです。
 
    ```bash
    cordova platform add ios
@@ -166,7 +166,7 @@ SDK のリリースは、SDK の [NPM リポジトリー](https://www.npmjs.com/
 ### config.xml
 {: #configxml }
 Ionic 構成ファイルは、アプリケーション・メタデータを含む必須の XML ファイルであり、アプリケーションのルート・ディレクトリーに保管されます。  
-{{ site.data.keys.product_adj }} Ionic SDK がプロジェクトに追加されると、Ionic が生成した **config.xml** ファイルは、名前空間 `mfp:` で識別された新規エレメントのセットを受け取ります。追加されるエレメントには、{{ site.data.keys.product_adj }} の各種フィーチャーおよび {{ site.data.keys.mf_server }} に関連した情報が含まれています。
+{{ site.data.keys.product_adj }} Ionic SDK がプロジェクトに追加されると、Ionic が生成した **config.xml** ファイルは、名前空間 `mfp:` で識別された新規エレメントのセットを受け取ります。 追加されるエレメントには、{{ site.data.keys.product_adj }} の各種フィーチャーおよび {{ site.data.keys.mf_server }} に関連した情報が含まれています。
 
 ### **config.xml** ファイルに追加される {{ site.data.keys.product_adj }} 設定の例
 {: #example-of-mobilefirst-settings-added-to-the-configxml-file}

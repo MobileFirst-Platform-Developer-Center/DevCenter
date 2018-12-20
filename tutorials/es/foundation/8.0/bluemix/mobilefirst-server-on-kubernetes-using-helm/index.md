@@ -1,328 +1,328 @@
 ---
 layout: tutorial
-title: Setting up Mobile Foundation on IBM Cloud Kubernetes Cluster using Helm
+title: Configuración de Mobile Foundation en IBM Cloud Kubernetes Cluster mediante Helm
 breadcrumb_title: Foundation on Kubernetes Cluster using Helm
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visión general
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance and {{ site.data.keys.mf_analytics }} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts:
+Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_server }} y una instancia de {{ site.data.keys.mf_analytics }} en IBM Cloud Kubernetes Cluster (IKS) mediante gráficos Helm:
 
-* Setup IBM Cloud Kubernetes Cluster.
-* Setup your host computer with IBM Cloud CLI.
-* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} .
-* Load the PPA archive in IBM Cloud Kubernetes Cluster.
-* Finally, you will configure and install the {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}.
+* Configure IBM Cloud Kubernetes Cluster.
+* Configure el sistema host con la CLI de IBM Cloud.
+* Descargue el archivo Passport Advantage (archivo PPA) de {{ site.data.keys.product_full }} para {{ site.data.keys.prod_icp }}.
+* Cargue el archivo PPA en IBM Cloud Kubernetes Cluster.
+* Finalmente, deberá configurar e instalar {{ site.data.keys.mf_analytics }} (opcional) y {{ site.data.keys.mf_server }}.
 
-#### Jump to:
+#### Ir a:
 {: #jump-to }
-* [Prerequisites](#prereqs)
-* [Download the IBM Mobile Foundation Passport Advantage Archive](#download-the-ibm-mfpf-ppa-archive)
-* [Load the IBM Mobile Foundation Passport Advantage Archive](#load-the-ibm-mfpf-ppa-archive)
-* [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
-* [Verifying the Installation](#verify-install)
-* [Sample application](#sample-app)
-* [Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases](#upgrading-mf-helm-charts)
-* [Uninstall](#uninstall)
+* [Requisitos previos](#prereqs)
+* [Descargar el archivo Passport Advantage de IBM Mobile Foundation](#download-the-ibm-mfpf-ppa-archive)
+* [Cargar el archivo Passport Advantage de IBM Mobile Foundation](#load-the-ibm-mfpf-ppa-archive)
+* [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts)
+* [Verificación de la instalación](#verify-install)
+* [Aplicación de ejemplo](#sample-app)
+* [Actualización de {{ site.data.keys.prod_adj }}releases y gráficos Helm](#upgrading-mf-helm-charts)
+* [Desinstalar](#uninstall)
 
-## Prerequisites
+## Requisitos previos
 {: #prereqs}
 
-You should have IBM Cloud account and must have set up the Kubernetes Cluster by following the documentation in [IBM Cloud Kubernetes Cluster service](https://console.bluemix.net/docs/containers/cs_tutorials.html).
+Debe tener una cuenta de IBM Cloud y haber configurado Kubernetes Cluster siguiendo la documentación del [servicio IBM Cloud Kubernetes Cluster](https://console.bluemix.net/docs/containers/cs_tutorials.html).
 
-To manage containers and images, you need to install the following tools on your host machine as part of IBM Cloud CLI plugins setup:
+Para gestionar los contenedores y las imágenes, debe instalar las herramientas siguientes en la máquina host como parte de la configuración de los plugins de la CLI de IBM Cloud:
 
-* IBM Cloud CLI 
-* Kubernetes CLI
-* IBM Cloud Container Registry plug-in
-* IBM Cloud Container Service plug-in
+* CLI de IBM Cloud 
+* CLI de Kubernetes
+* Plugin de IBM Cloud Container Registry
+* Plugin de IBM Cloud Container Service
 
-To access IBM Cloud Kubernetes Cluster using CLI, you should configure the IBM Cloud client. [Learn more](https://console.bluemix.net/docs/cli/index.html).
+Para acceder a IBM Cloud Kubernetes Cluster mediante la CLI, debe configurar el cliente IBM Cloud. [Más información](https://console.bluemix.net/docs/cli/index.html).
 
-## Download the IBM Mobile Foundation Passport Advantage Archive
+## Descargar el archivo Passport Advantage de IBM Mobile Foundation
 {: #download-the-ibm-mfpf-ppa-archive}
-The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is available [here](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The PPA archive of {{ site.data.keys.product }} will contain the docker images and Helm Charts of the following {{ site.data.keys.product }} components:
+El archivo Passport Advantage (PPA) de {{ site.data.keys.product_full }} está disponible [aquí](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). El archivo PPA de {{ site.data.keys.product }} contendrá las imágenes docker y los gráficos Helm de los componentes siguientes de {{ site.data.keys.product }}:
 * {{ site.data.keys.product_adj }} Server
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
 
-## Load the IBM Mobile Foundation Passport Advantage Archive
+## Cargar el archivo Passport Advantage de IBM Mobile Foundation
 {: #load-the-ibm-mfpf-ppa-archive}
-Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
+Antes de cargar el archivo PPA de {{ site.data.keys.product }}, debe configurar Docker. Consulte las instrucciones [aquí](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
 
-Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes Cluster:
+Siga los pasos siguientes para cargar el archivo PPA en IBM Cloud Kubernetes Cluster:
 
-  1. Log in to the cluster using IBM Cloud plugin.
+  1. Inicie sesión en el clúster mediante el plugin de IBM Cloud.
 
-      >See the [CLI Command Reference](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) in IBM Cloud CLI documentation.
+      >COnsulte la [Referencia de mandatos de CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) en la documentación de la CLI de IBM Cloud.
 
-      For example,
+      Por ejemplo:
       ```bash
       ibmcloud login -a https://ip:port
       ```
-      Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
+      Opcionalmente, si desea omitir la validación SSL, utilice el distintivo `--skip-ssl-validation` en el mandato anterior. Mediante esta opción, se solicitan los valores de `username` y `password` del punto final del clúster. Continúe con los pasos siguientes, una vez iniciada la sesión.
       
-  2. Login into the IBM Cloud Container registry & initialize the Container Service using the following commands:
+  2. Inicie sesión en IBM Cloud Container Registry e inicialice Container Service mediante los mandatos siguientes:
       ```bash
       ibmcloud cr login
       ibmcloud cs init
       ```  
-  3. Set the region of the deployment using the following command (e.g. us-south)
+  3. Establezca la región del despliegue mediante el mandato siguiente (p. ej. us-south)
       ```bash
       ibmcloud cr region-set
       ```    
 
-  4. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
+  4. Cargue el archivo PPA de {{ site.data.keys.product }} mediante el mandato siguiente:
       ```
       bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
-      *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
+      *archive_name* de {{ site.data.keys.product }} es el nombre del archivo PPA descargado desde IBM Passport Advantage,
 
 
-  The helm charts are stored in the client or local (unlike ICP helm chart stored in the IBM Cloud Private helm repository). Charts can be located within the `ppa-import/charts` directory.
+  Los gráficos Helm se almacenan en el cliente o localmente (a diferencia del gráfico Help de ICP almacenado en el repositorio Help de IBM Cloud Private). Los gráficos pueden estar en el directorio `ppa-import/charts`.
 
-## Install and configure IBM {{ site.data.keys.product }} Helm Charts
+## Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}
 {: #configure-install-mf-helmcharts}
 
-Before you install and configure {{ site.data.keys.mf_server }}, you should have the following:
+Antes de instalar y configurar {{ site.data.keys.mf_server }}, debe tener lo siguiente:
 
-* [**Mandatory**] a DB2 database configured and ready to use.
-  You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
+* [**Obligatorio**] una base de datos DB2 configurada y lista para utilizar.
+  Necesitará la información de base de datos para [configurar {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requiere un esquema y tablas, que se crearán (si no existen) en esta base de datos.
 
-* [**Optional**] a secret with your keystore and truststore.
-  You can provide your own keystore and truststore to the deployment by creating a secret with your own keystore and truststore.
+* [**Opcional**] un secreto con el almacén de claves y el almacén de confianza.
+  Puede proporcionar su propio almacén de claves y almacén de confianza para el despliegue creando un secreto con su propio almacén de claves y almacén de confianza.
 
-  Prior to the installation, follow the steps below:
+  Antes de la instalación, siga estos pasos:
 
-  * Create a secret with `keystore.jks`, `keystore-password.txt`, `truststore.jks`, `truststore-password.txt` and provide the secret name in the field *keystores.keystoresSecretName*.
+  * Cree un secreto con `keystore.jks`, `keystore-password.txt`, `truststore.jks`, `truststore-password.txt` y proporcione el nombre del secreto en el campo *keystores.keystoresSecretName*.
 
-  * Keep the files `keystore.jks` and its password in a file named `keystore-password.txt` and `truststore.jks` and its password in a file named `truststore-password.jks`.
+  * Guarde los archivos `keystore.jks` y su contraseña en un archivo denominado `keystore-password.txt`, y `truststore.jks` y su contraseña en un archivo denominado `truststore-password.jks`.
 
-  * Go to the command line and execute:
+  * Vaya a la línea de mandatos y ejecute:
     ```bash
     kubectl create secret generic mfpf-cert-secret --from-file keystore-password.txt --from-file truststore-password.txt --from-file keystore.jks --from-file truststore.jks
     ```
-    >**Note:** The names of the files should be the same as mentioned i.e, `keystore.jks`, `keystore-password.txt`, `truststore.jks` and `truststore-password.txt`.
+    >**Nota:** Los nombres de los archivos debe ser los mencionados, es decir, `keystore.jks`, `keystore-password.txt`, `truststore.jks` y `truststore-password.txt`.
 
-  * Provide the name of the secret in *keystoresSecretName* to override the default keystores.
+  * Proporcione el nombre del secreto en *keystoresSecretName* para sustituir los almacenes de claves predeterminados.
 
-  For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
+  Para obtener más información, consulte [Configuración del almacén de claves de MobileFirst Server]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
 
-### Environment variables for {{ site.data.keys.mf_analytics }}
+### Variables de entorno de {{ site.data.keys.mf_analytics }}
 {: #env-mf-analytics }
-The table below provides the environment variables used in {{ site.data.keys.mf_analytics }} on IBM Cloud Kubernetes Cluster.
+La tabla siguiente proporciona las variables de entrono que se utilizan en {{ site.data.keys.mf_analytics }} en IBM Cloud Kubernetes Cluster.
 
-| Qualifier | Parameter | Definition | Allowed Value |
+| Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
-| arch |  | Worker node architecture | Worker node architecture to which this chart should be deployed.<br/>Only **AMD64** platform is currently supported. |
-| image | pullPolicy | Image Pull Policy | Default is **IfNotPresent**. |
-|  | tag | Docker image tag | See [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
-|  | name | Docker image name | Name of the {{ site.data.keys.prod_adj }} Operational Analytics docker image. |
-| scaling | replicaCount | Number of instances (pods) of {{ site.data.keys.prod_adj }} Operational Analytics that need to be created | Positive integer<br/>Default is **2** |
-| mobileFirstAnalyticsConsole | user | Username for {{ site.data.keys.prod_adj }} Operational Analytics | Default is **admin**. |
-|  | password | Password for {{ site.data.keys.prod_adj }} Operational Analytics | Default is **admin**. |
-| analyticsConfiguration | clusterName | Name of the {{ site.data.keys.prod_adj }} Analytics cluster | Default is **mobilefirst** |
-|  | analyticsDataDirectory | Path where analytics data is stored. *It will also be the same path where the persistent volume claim is mounted inside the container*. | Defaults to `/analyticsData` |
-|  | numberOfShards | Number of Elasticsearch shards for {{ site.data.keys.prod_adj }} Analytics | Positive integer<br/>Default is **2** |
-|  | replicasPerShard | Number of Elasticsearch replicas to be maintained per each shard for {{ site.data.keys.prod_adj }} Analytics | Positive integer<br/>Default is **2** |
-| keystores | keystoresSecretName | Refer to [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts), describing the steps to create the secret with the keystores and their passwords. |  |
-| jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} JNDI properties to be specified to customize Operational Analytics | Provide comma separated name value pairs. |
-| resources | limits.cpu | Describes the maximum amount of CPU allowed | Default is **2000m**<br/>Read the [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describes the maximum amount of memory allowed | Default is **4096Mi**<br/>Read the [meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-|  | requests.cpu | Describes the minimum amount of CPU required. If not specified, this will default to *limits* (if specified) or otherwise implementation-defined value | Default is **1000m**. |
-|  | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the *limits* (if specified) or the implementation-defined value | Default is **2048Mi**. |
-| persistence | existingClaimName | The name of existing persistence volume claim (PVC) |  |
-| logs | consoleFormat | Specifies container log output format. | Default is **json**. |
-|  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
-|  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
+| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
+| image | pullPolicy | Política de extracción de imágenes | El valor predeterminado es **IfNotPresent**. |
+|  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
+|  | name | Nombre de imagen Docker | Nombre de la imagen docker de {{ site.data.keys.prod_adj }} Operational Analytics. |
+| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Operational Analytics que deben crearse | Número entero positivo<br/>El valor predeterminado es **2** |
+| mobileFirstAnalyticsConsole | user | Nombre de usuario de {{ site.data.keys.prod_adj }} Operational Analytics | El valor predeterminado es **admin**. |
+|  | password | Contraseña de {{ site.data.keys.prod_adj }} Operational Analytics | El valor predeterminado es **admin**. |
+| analyticsConfiguration | clusterName | Nombre del clúster de {{ site.data.keys.prod_adj }} Analytics | El valor predeterminado es **mobilefirst** |
+|  | analyticsDataDirectory | Vía de acceso donde se almacenan los datos de análisis. *La vía de acceso será la misma si la reclamación de volumen persistente se monta dentro del contenedor*. | El valor predeterminado es `/analyticsData` |
+|  | numberOfShards | Número de fragmentos Elasticsearch de {{ site.data.keys.prod_adj }} Analytics | Número entero positivo<br/>El valor predeterminado es **2** |
+|  | replicasPerShard | Número de réplicas Elasticsearch que se van a mantener por cada fragmento de {{ site.data.keys.prod_adj }} Analytics | Número entero positivo<br/>El valor predeterminado es **2** |
+| keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
+| jndiConfigurations | mfpfProperties | Propiedades {{ site.data.keys.prod_adj }} JNDI que se deben especificar para personalizar Operational Analytics | Proporcione pares nombre-valor separados por comas. |
+| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas | El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | limits.memory | Describe la cantidad máxima de memoria permitida | El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|  | requests.cpu | Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado será *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1000m**. |
+|  | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado de la cantidad de memoria será *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **2048Mi**. |
+| persistence | existingClaimName | El nombre de la reclamación de volumen de persistencia (PVC) |  |
+| logs | consoleFormat | Especifica el formato de salida del registro del contenedor. | El valor predeterminado es **json**. |
+|  | consoleLogLevel | Controla la granularidad de los mensajes que van al registro del contenedor. | El valor predeterminado es **info**. |
+|  | consoleSource | Especifica los orígenes que se escriben en el registro del contenedor. Utilice una lista separada por comas para varios orígenes. | El valor predeterminado es **message**, **trace**, **accessLog**, **ffdc**. |
 
 
-### Environment variables for {{ site.data.keys.mf_server }}
+### Variables de entorno de {{ site.data.keys.mf_server }}
 {: #env-mf-server }
-The table below provides the environment variables used in {{ site.data.keys.mf_server }} on IBM Cloud Kubernetes Cluster.
+La tabla siguiente proporciona las variables de entorno que se utilizan en {{ site.data.keys.mf_server }} en IBM Cloud Kubernetes Cluster.
 
-| Qualifier | Parameter | Definition | Allowed Value |
+| Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
-| arch |  | Worker node architecture | Worker node architecture to which this chart should be deployed.<br/>Only **AMD64** platform is currently supported. |
-| image | pullPolicy | Image Pull Policy | Defaults to **IfNotPresent**. |
-|  | tag | Docker image tag | See [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
-|  | name | Docker image name | Name of the {{ site.data.keys.prod_adj }} Server Docker image. |
-| scaling | replicaCount | Number of instances (pods) of {{ site.data.keys.prod_adj }} Server that need to be created | Positive integer<br/>Default is **3** |
-| mobileFirstOperationsConsole | user | Username of the {{ site.data.keys.prod_adj }} Server | Default is **admin**. |
-|  | password | Password for the user of {{ site.data.keys.prod_adj }} Server | Default is **admin**. |
-| existingDB2Details | db2Host | IP address or HOST of the DB2 Database where {{ site.data.keys.prod_adj }} Server tables need to be configured | Currently only DB2 is supported. |
-|  | db2Port | Port where DB2 database is setup |  |
-|  | db2Database | Name of the database that is pre-configured in DB2 for use |  |
-|  | db2Username | DB2 user name to access DB2 database | User should have access to create tables and create schema if it does not already exist. |
-|  | db2Password | DB2 password for the provided database  |  |
-|  | db2Schema | Server DB2 schema to be created |  |
-|  | db2ConnectionIsSSL | DB2 connection type | Specify if your Database connection has to be **http** or **https**. Default value is **false** (http).<br/>Make sure that the DB2 port is also configured for the same connection mode. |
-| existingMobileFirstAnalytics | analyticsEndPoint | URL of the analytics server | For example: `http://9.9.9.9:30400`.<br/> Do not specify the path to the console, this will be added during the deployment.
+| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
+| image | pullPolicy | Política de extracción de imágenes | El valor predeterminado es **IfNotPresent**. |
+|  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
+|  | name | Nombre de imagen Docker | Nombre de la imagen Docker de {{ site.data.keys.prod_adj }} Server. |
+| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Server que deben crearse | Número entero positivo<br/>El valor predeterminado es **3** |
+| mobileFirstOperationsConsole | user | Nombre de usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
+|  | password | Contraseña del usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
+| existingDB2Details | db2Host | Dirección IP o HOST de la base de datos DB2 donde se deben configurar las tablas de {{ site.data.keys.prod_adj }} Server | Actualmente, solo se admite DB2. |
+|  | db2Port | Puerto en el que está configurada la base de datos DB2 |  |
+|  | db2Database | Nombre de la base de datos que está preconfigurada para utilizar en DB2 |  |
+|  | db2Username | Nombre de usuario de DB2 para acceder a la base de datos DB2 | El usuario debe tener acceso para crear tablas y crear el esquema si no existe todavía. |
+|  | db2Password | Contraseña de DB2 de la base de datos proporcionada  |  |
+|  | db2Schema | Esquema de DB2 de servidor que se va a crear |  |
+|  | db2ConnectionIsSSL | Tipo de conexión de DB2 | Especifique si la conexión de la base de datos debe ser **http** o **https**. El valor predeterminado es **false** (http).<br/>Asegúrese de que el puerto de DB2 también esté configurado para la misma modalidad de conexión. |
+| existingMobileFirstAnalytics | analyticsEndPoint | URL del servidor de análisis | Por ejemplo: `http://9.9.9.9:30400`.<br/> No especifique la vía de acceso a la consola, se añadirá durante el despliegue.
  |
-|  | analyticsAdminUser | Username of the analytics admin user |  |
-|  | analyticsAdminPassword | Password of the analytics admin user |  |
-| keystores | keystoresSecretName | Refer to [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts), describing the steps to create the secret with the keystores and their passwords. |  |
-| jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} Server JNDI properties to customize deployment | Comma separated name value pairs. |
-| resources | limits.cpu | Describes the maximum amount of CPU allowed | Default is **2000m**<br/>Read the [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describes the maximum amount of memory allowed | Default is **4096Mi**<br/>Read the [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-|  | requests.cpu | Describes the minimum amount of CPU required. If not specified, this defaults to *limits* (if specified) or otherwise implementation-defined value. | Default is **1000m**. |
-|  | requests.memory | Describes the minimum amount of memory required. If not specified, this defaults to the *limits* (if specified) or the implementation-defined value | Default is **2048Mi**. |
-| logs | consoleFormat | Specifies container log output format. | Default is **json**. |
-|  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
-|  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
+|  | analyticsAdminUser | Nombre de usuario del usuario administrador de analítica |  |
+|  | analyticsAdminPassword | Contraseña del usuario administrador de analítica |  |
+| keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
+| jndiConfigurations | mfpfProperties | Propiedades JNDI de servidor {{ site.data.keys.prod_adj }} para personalizar el despliegue | Pares nombre-valor separados por comas. |
+| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas | El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | limits.memory | Describe la cantidad máxima de memoria permitida | El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|  | requests.cpu | Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1000m**. |
+|  | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación | El valor predeterminado es **2048Mi**. |
+| logs | consoleFormat | Especifica el formato de salida del registro del contenedor. | El valor predeterminado es **json**. |
+|  | consoleLogLevel | Controla la granularidad de los mensajes que van al registro del contenedor. | El valor predeterminado es **info**. |
+|  | consoleSource | Especifica los orígenes que se escriben en el registro del contenedor. Utilice una lista separada por comas para varios orígenes. | El valor predeterminado es **message**, **trace**, **accessLog**, **ffdc**. |
 
-> For the tutorial on analyzing {{ site.data.keys.prod_adj }} logs using Kibana, see [here](analyzing-mobilefirst-logs-on-icp/).
+> Para ver la guía de aprendizaje sobre el análisis de registros de {{ site.data.keys.prod_adj }} utilizando Kibana, consulte [aquí](analyzing-mobilefirst-logs-on-icp/).
 
-### Installing Helm Charts
+### Instalación de gráficos Helm
 {: #install-hmc-icp}
 
-#### Install {{ site.data.keys.mf_analytics }}
+#### Instalación de {{ site.data.keys.mf_analytics }}
 {: #install-mf-analytics}
 
-Installation of {{ site.data.keys.mf_analytics }} is optional. If you wish to enable analytics in {{ site.data.keys.mf_server }}, you should configure and install {{ site.data.keys.mf_analytics }} first, before installing {{ site.data.keys.mf_server }}.
+La instalación de {{ site.data.keys.mf_analytics }} es opcional. Si desea habilitar el análisis en {{ site.data.keys.mf_server }}, primero debe configurar e instalar {{ site.data.keys.mf_analytics }}, antes de instalar {{ site.data.keys.mf_server }}.
 
-Before you begin the installation of {{ site.data.keys.mf_analytics }} Chart, configure the **Persistent Volume**. Provide the **Persistent Volume** to configure {{ site.data.keys.mf_analytics }}. Follow the steps detailed in [IBM Cloud Kubernetes documentation](https://console.bluemix.net/docs/containers/cs_storage_file.html#file_storage) to create **Persistent Volume**.
+Antes de empezar la instalación del gráfico de {{ site.data.keys.mf_analytics }}, configure el **Volumen persistente**. Proporcione el **Volumen persistente** para configurar {{ site.data.keys.mf_analytics }}. Siga los pasos que se detallan en la [documentación de IBM Cloud Kubernetes](https://console.bluemix.net/docs/containers/cs_storage_file.html#file_storage) para crear el**Volumen persistente**.
 
-Follow the steps below to install and configure IBM {{ site.data.keys.mf_analytics }} on IBM Cloud Kubernetes Cluster.
+Siga los pasos siguientes para instalar y configurar IBM {{ site.data.keys.mf_analytics }} en IBM Cloud Kubernetes Cluster.
 
-1. To configure the Kubernetes Cluster execute the command below:
+1. Para configurar Kubernetes Cluster, ejecute el mandato siguiente:
     ```bash
     ibmcloud cs cluster-config <iks-cluster-name>
     ```
-2. Get the default helm chart values using the following command.
+2. Obtenga los valores predeterminados de gráfico Helm mediante el mandato siguiente.
     ```bash
     helm inspect values <mfp-analytics-helm-chart.tgz>  > values.yaml
     ```
-    Example for {{ site.data.keys.mf_analytics }}:
+    Ejemplo de {{ site.data.keys.mf_analytics }}:
     ```bash
     helm inspect values ibm-mfpf-analytics-prod-1.0.17.tgz > values.yaml
     ```    
 
-3. Modify the **values.yaml** to add appropriate values for deploying the helm chart. Make sure the [ingress](https://console.bluemix.net/docs/containers/cs_ingress.html).hostname details, scaling etc. are added and save the values.yaml.
+3. Modifique **values.yaml** para añadir los valores adecuados para el despliegue del gráfico Helm. Asegúrese de que se haya añadido la información de [ingress](https://console.bluemix.net/docs/containers/cs_ingress.html).hostname, escalado etc. y guardado values.yaml.
 
-4. To deploy the helm chart run the following command:
+4. Para desplegar el gráfico Helm, ejecute el mandato siguiente:
     ```bash
     helm install -n <iks-cluster-name> -f values.yaml <mfp-analytics-helm-chart.tgz>
     ```
-    Example for deploying analytics server:
+    Ejemplo de despliegue del servidor de Analytics:
     ```bash
     helm install -n mfpanalyticsonkubecluster -f analytics-values.yaml ./ibm-mfpf-analytics-prod-1.0.17.tgz
     ```    
 
-#### Install {{ site.data.keys.mf_server }}
+#### Instalación de {{ site.data.keys.mf_server }}
 {: #install-mf-server}
 
-Before you begin the installation of {{ site.data.keys.mf_server }} ensure that you have pre-configured a DB2 database.
+Antes de empezar la instalación de {{ site.data.keys.mf_server }}, preconfigure una base de datos DB2.
 
-Follow the steps below to install and configure IBM {{ site.data.keys.mf_server }} on IBM Cloud Kubernetes Cluster.
+Siga los pasos siguientes para instalar y configurar IBM {{ site.data.keys.mf_server }} en IBM Cloud Kubernetes Cluster.
 
-1. Configure the Kube Cluster:
+1. Configure Kubernetes Cluster:
     ```bash
     ibmcloud cs cluster-config <iks-cluster-name>
     ```   
 
-2. Get the default helm chart values using the following command:
+2. Obtenga los valores predeterminados de gráfico Helm mediante el mandato siguiente:
     ```bash
     helm inspect values <mfp-server-helm-chart.tgz>  > values.yaml
     ```   
-    Example for {{ site.data.keys.mf_server }}:
+    Ejemplo de {{ site.data.keys.mf_server }}:
     ```bash
     helm inspect values ibm-mfpf-server-prod-1.0.17.tgz > values.yaml
     ```   
 
-3. Modify the **values.yaml** to add appropriate values for deploying the helm chart. Make sure the database details, ingress, scaling etc. are added and save the values.yaml.
+3. Modifique **values.yaml** para añadir los valores adecuados para el despliegue del gráfico Helm. Asegúrese de que se haya añadido la información de base de datos, ingress, escalado etc. y guardado values.yaml.
 
-4. To deploy the helm chart run the following command.
+4. Para desplegar el gráfico Helm, ejecute el mandato siguiente.
     ```bash
     helm install -n <iks-cluster-name> -f values.yaml <mfp-server-helm-chart.tgz>
     ```   
-    Example for deploying server:
+    Ejemplo de despliegue de servidor:
     ```bash
     helm install -n mfpserveronkubecluster -f server-values.yaml ./ibm-mfpf-server-prod-1.0.17.tgz
     ``` 
 
->**Note:** For installing the AppCenter the above steps are to be followed with the corresponding helm chart (e.g. ibm-mfpf-appcenter-prod-1.0.17.tgz).
+>**Nota:** Para instalar AppCenter los pasos anteriores deben ir seguidos por el correspondiente gráfico Helm (p. ej. ibm-mfpf-appcenter-prod-1.0.17.tgz).
 
-## Verifying the Installation
+## Verificación de la instalación
 {: #verify-install}
 
-After you have installed and configured {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}, you can verify your installation and the status of the deployed pods by using IBM Cloud CLI, Kubernetes CLI and helm commands.
+Cuando haya instalado y configurado {{ site.data.keys.mf_analytics }} (opcional) y {{ site.data.keys.mf_server }}, puede verificar su instalación y el estado de los pods desplegados mediante la CLI de IBM Cloud, la CLI de Kubernetes y los mandatos Helm.
 
-See the [CLI Command Reference](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) in IBM Cloud CLI documentation and Helm CLI from [Helm documentation](https://docs.helm.sh/helm/).
+Consulte la [Referencia de mandatos de CLI](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) en la documentación de la CLI de IBM y la CLI de Helm de la [documentación de Helm](https://docs.helm.sh/helm/).
 
-From the IBM Cloud Kubernetes Cluster page on IBM Cloud Portal, one can use the **Launch** button to open the Kubernetes console to manage the cluster artifacts.
+En la página de IBM Cloud Kubernetes Cluster en IBM Cloud Portal, puede utilizar el botón **Iniciar** para abrir la consola de Kubernetes para gestionar los artefactos de clúster.
 
-## Accessing {{ site.data.keys.prod_adj }} console
+## Acceso a la consola {{ site.data.keys.prod_adj }}
 {: #access-mf-console}
 
-On successful deployment, the notes will be shown as output on the terminal. You can run the commands directly to get the console URL via *NodePort*.
+Cuando el despliegue se realice correctamente, las notas se mostrarán como salida en el terminal. Puede ejecutar los mandatos directamente para obtener el URL de la consola mediante *NodePort*.
 
-Example, for Mobile Foundation Server notes displayed is as follows:
+Por ejemplo, para Mobile Foundation Server las notas se muestran de la forma siguiente:
 
 ```text
-The Notes displayed as follows as the result of the helm deployment
-Get the Server URL by running these commands:
-1. For http endpoint:
+Las Notas se muestran de la forma siguiente como resultado del despliegue de Helm
+Obtenga el URL del servidor ejecutando estos mandatos:
+1. Para punto final http:
  export NODE_PORT=$(kubectl get --namespace default -o jsonpath=“{.spec.ports[0].nodePort}” services monitor-mfp-ibm-mfpf-server-prod)
  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=“{.items[0].status.addresses[0].address}“)
  echo http://$NODE_IP:$NODE_PORT/mfpconsole
-2. For https endpoint:
+2. Para punto final https:
  export NODE_PORT=$(kubectl get --namespace default -o jsonpath=“{.spec.ports[1].nodePort}” services monitor-mfp-ibm-mfpf-server-prod)
  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=“{.items[0].status.addresses[0].address}“)
  echo https://$NODE_IP:$NODE_PORT/mfpconsole
 ```
 
-Using similar installation method, you can access IBM MobileFirst Analytics Console using `<protocol>://<ip_address>:<node_port>/analytics/console`  and  IBM Mobile Foundation Application Center using <`protocol>://<ip_address>:<node_port>/appcenter/console`
-In addition to the *NodePort* approach to access the Console, the service can also be accessed via [Ingress](https://console.bluemix.net/docs/containers/cs_ingress.html) host.
+Utilizando un método de instalación similar, puede acceder a IBM MobileFirst Analytics Console mediante `<protocol>://<ip_address>:<node_port>/analytics/console` y a IBM Mobile Foundation Application Center mediante <`protocol>://<ip_address>:<node_port>/appcenter/console`
+Además del método *NodePort* para acceder a la consola, también se puede acceder al servicio mediante el host [Ingress](https://console.bluemix.net/docs/containers/cs_ingress.html).
 
-Follow the steps below to access the console:
+Siga los pasos siguientes para acceder a la consola:
 
-1. Go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps/).
-2. Choose the Kubernetes Cluster on which `Analytics/Server/AppCenter` has been deployed, to open the **Overview** page.
-3. Locate the Ingress subdomain for the ingress hostname and access the consoles as follows.
-    * Access the IBM Mobile Foundation Operational Console using:
+1. Vaya al [panel de IBM Cloud](https://console.bluemix.net/dashboard/apps/).
+2. Elija la instancia de Kubernetes Cluster donde se ha desplegado `Analytics/Server/AppCenter` para abrir la página **Visión general**.
+3. Localice el subdominio Ingress para el nombre de host ingress y acceda a las consolas de la forma siguiente.
+    * Acceda a IBM Mobile Foundation Operational Console mediante:
      `<protocol>://<ingress-hostname>/mfpconsole`
-    * Access the IBM Mobile Foundation Analytics Console using:
+    * Acceda a IBM Mobile Foundation Analytics Console mediante:
      `<protocol>://<ingress-hostname>/analytics/console`
-    * Access the IBM Mobile Foundation Application Center Console using:
+    * Acceda a IBM Mobile Foundation Application Center Console a:
      `<protocol>://<ingress-hostname>/appcenter/console`
 
->**Note:** The port 9600 is exposed internally in the Kubernetes service and is used by the {{ site.data.keys.prod_adj }} Analytics instances as the transport port.
+>**Nota:** El puerto 9600 se expone internamente en el servicio Kubernetes y las instancias de {{ site.data.keys.prod_adj }} Analytics lo utilizan como puerto de transporte.
 
 
-## Sample application
+## Aplicación de ejemplo
 {: #sample-app}
-See the [{{ site.data.keys.prod_adj }} tutorials](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/), to deploy the sample adapter and to run the sample application on IBM {{ site.data.keys.mf_server }} running on IBM Cloud Kubernetes Cluster.
+Consulte las [guías de aprendizaje de {{ site.data.keys.prod_adj }}](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/) para desplegar el adaptador de ejemplo y ejecutar la aplicación de ejemplo en IBM {{ site.data.keys.mf_server }} en ejecución en IBM Cloud Kubernetes Cluster.
 
-## Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases
+## Actualización de {{ site.data.keys.prod_adj }} releases y gráficos Helm
 {: #upgrading-mf-helm-charts}
 
-Please refer to [Upgrading bundled products](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/upgrade_helm.html) for instructions on how-to upgrade helm charts/releases.
+Consulte [Actualización de productos empaquetados](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/upgrade_helm.html) para obtener instrucciones sobre cómo actualizar los gráficos/releases de helm.
 
-### Sample scenarios for Helm release upgrades
+### Casos de ejemplo para las actualizaciones de release de Helm
 
-1. To upgrade helm release with changes in values of `values.yaml`, use the `helm upgrade` command with **--set** flag. You can specify **--set** flag multiple times. The priority will be given to the right most set specified in the command line.
+1. Para actualizar el release de helm con los cambios de los valores de `values.yaml`, utilice el mandato `helm upgrade` con el distintivo **--set**. Puede especificar el distintivo **--set** varias veces. Se dará prioridad al conjunto especificado más a la derecha en la línea de mandatos.
   ```bash
   helm upgrade --set <name>=<value> --set <name>=<value> <existing-helm-release-name> <path of new helm chart>
   ```
 
-2. To upgrade helm release by providing values in a file, use the `helm upgrade` command with **-f** flag. You can use **--values** or **-f** flag multiple times. The priority will be given to the right most file specified in the command line. In the following example, if both `myvalues.yaml` and `override.yaml` contain a key called *Test*, the value set in `override.yaml` would take precedence.
+2. Para actualizar el release de helm indicando valores en un archivo, utilice el mandato `helm upgrade` con el distintivo **-f**. Puede utilizar **--values** o el distintivo **-f** varias veces. Se dará prioridad al archivo especificado más a la derecha en la línea de mandatos. En el siguiente ejemplo, si `myvalues.yaml` y `override.yaml` contienen una clave denominada *Test*, tendrá prioridad el valor establecido en `override.yaml`.
   ```bash
   helm upgrade -f myvalues.yaml -f override.yaml <existing-helm-release-name> <path of new helm chart>
   ```
 
-3. To upgrade helm release by reusing the values from the last release and overriding some of them, a command such as below can be used:
+3. Para actualizar el release de helm reutilizando los valores del último release y sustituyendo algunos de ellos, se puede utilizar un mandato como el siguiente:
   ```bash
   helm upgrade --reuse-values --set <name>=<value> --set <name>=<value> <existing-helm-release-name> <path of new helm chart>
   ```
 
-## Uninstall
+## Desinstalar
 {: #uninstall}
-To uninstall {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }}, use the [Helm CLI](https://docs.helm.sh/using_helm/#installing-helm).
-Use the following command to completely delete the installed charts and the associated deployments:
+Para desinstalar {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }}, utilice [Helm CLI](https://docs.helm.sh/using_helm/#installing-helm).
+Utilice el mandato siguiente para suprimir completamente los gráficos instalados y los despliegues asociados:
 ```bash
 helm delete --purge <release_name>
 ```
-*release_name* is the deployed release name of the Helm Chart.
+*release_name* es el nombre de release desplegado del gráfico Helm.

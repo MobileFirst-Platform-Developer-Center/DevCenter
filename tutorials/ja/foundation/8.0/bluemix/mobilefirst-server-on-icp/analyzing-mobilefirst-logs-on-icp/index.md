@@ -9,9 +9,9 @@ weight: 3
 ## 概説
 {: #overview }
 
-{{ site.data.keys.prod_icp }} の{{ site.data.keys.prod_adj }}デプロイメントでは、コンソールで JSON 形式のロギングを使用して基になる Liberty を実行すると、ログ・イベントをフィールドに分割して Elasticsearch に保管することができます。Kibana を使用して、ダッシュボードと検索で複数の Liberty ポッドをモニターしたり、照会を使用して大量のログ・レコードをフィルター処理したりできます。
+{{ site.data.keys.prod_icp }} の{{ site.data.keys.prod_adj }}デプロイメントでは、コンソールで JSON 形式のロギングを使用して基になる Liberty を実行すると、ログ・イベントをフィールドに分割して Elasticsearch に保管することができます。 Kibana を使用して、ダッシュボードと検索で複数の Liberty ポッドをモニターしたり、照会を使用して大量のログ・レコードをフィルター処理したりできます。
 
-Kubernetes デプロイメントは、コンテナーで構成されるポッドから成ります。{{ site.data.keys.prod_icp }} では、各ポッドのコンソール出力は、自動的に組み込みのエラスティック・ロギング・スタックに転送されます。エラスティック・ロギングについて詳しくは、[{{ site.data.keys.prod_icp }} ロギング](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_metrics/logging_elk.html)を参照してください。
+Kubernetes デプロイメントは、コンテナーで構成されるポッドから成ります。 {{ site.data.keys.prod_icp }} では、各ポッドのコンソール出力は、自動的に組み込みのエラスティック・ロギング・スタックに転送されます。 エラスティック・ロギングについて詳しくは、[{{ site.data.keys.prod_icp }} ロギング](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_metrics/logging_elk.html)を参照してください。
 
 
 ## 手順
@@ -38,7 +38,7 @@ Kubernetes デプロイメントは、コンテナーで構成されるポッド
         </thead>
         <tbody>
           <tr>
-            <td>コンソールのロギング形式</td>
+            <td>コンソールのロギング形式 </td>
             <td>logs.consoleFormat</td>
             <td>json</td>
           </tr>
@@ -50,7 +50,7 @@ Kubernetes デプロイメントは、コンテナーで構成されるポッド
           <tr>
             <td>コンソールのロギング・ソース</td>
             <td>logs.consoleLogLevel</td>
-            <td>message、trace、accessLog、ffdc<br/><br/>サポートされるソース・タイプ: messages、traces、accessLog、ffdc <br/>コンソールのロギング・ソースで、各ソース・タイプをコンマ区切りのリストで指定します。<br/>accessLog を使用するには、<code>server.xml</code> ファイルに追加の設定が必要です。<br/>詳しくは、<a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_http_accesslogs.html?view=kc">HTTP アクセス・ロギング</a>を参照してください。</td>
+            <td>message、trace、accessLog、ffdc<br/><br/>サポートされるソース・タイプ: messages、traces、accessLog、ffdc  <br/>コンソールのロギング・ソースで、各ソース・タイプをコンマ区切りのリストで指定します。 <br/>accessLog を使用するには、<code>server.xml</code> ファイルに追加の設定が必要です。 <br/>詳しくは、<a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_http_accesslogs.html?view=kc">HTTP アクセス・ロギング</a>を参照してください。</td>
           </tr>
         </tbody>
       </table>
@@ -69,13 +69,13 @@ Kubernetes デプロイメントは、コンテナーで構成されるポッド
 
 4.  Kibana での索引パターンを作成します。<br/>
 
-      a.  Kibana から、**「管理」 > 「索引パターン (Index Patterns)」**をクリックします。索引名またはパターンに「`logstash-*`」を入力します。<br/>
+      a.  Kibana から、**「管理」 > 「索引パターン (Index Patterns)」**をクリックします。 索引名またはパターンに「`logstash-*`」を入力します。<br/>
       b.  *「時間フィルター (Time Filter)」*フィールド名として**「ibm_datetime」**を選択します。<br/>
       c.  **「作成」**をクリックします。<br/>
 
 5. 独自の照会を作成したり、視覚化したり、ダッシュボードを作成したりして、ログ・データを分析することができます。
 
-6. [こちら](https://github.com/WASdev/sample.dashboards)から、サンプル・ダッシュボードのセットをダウンロードします。ダッシュボードを Kibana にインポートするには、**「管理」 > 「保存されたオブジェクト (Saved Objects)」**を選択して、**「インポート (Import)」**をクリックします。
+6. [こちら](https://github.com/WASdev/sample.dashboards)から、サンプル・ダッシュボードのセットをダウンロードします。 ダッシュボードを Kibana にインポートするには、**「管理」 > 「保存されたオブジェクト (Saved Objects)」**を選択して、**「インポート (Import)」**をクリックします。
 
 ## 発展的なチュートリアル
 {: #further_reading}

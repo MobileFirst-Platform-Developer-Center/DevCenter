@@ -149,7 +149,7 @@ WLAuthorizationManager.obtainAccessToken("").then(
     mfpdev server add
     ```
      来添加服务器，后跟用于注册应用程序的命令，例如：
-     ```bash
+    ```bash
     mfpdev app register myIBMCloudServer
     ```
 
