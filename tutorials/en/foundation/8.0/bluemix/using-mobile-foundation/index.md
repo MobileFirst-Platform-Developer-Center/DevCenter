@@ -31,15 +31,14 @@ The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
 
 #### Jump to:
 {: #jump-to}
-- [Overview](#overview)
-    - [Jump to:](#jump-to)
-- [Setting up the {{ site.data.keys.mf_bm_short }} service](#setting-up-the--sitedatakeysmfbmshort--service)
+- [Setting up the Mobile Foundation service](#setting-up-the-mobile-foundation-service)
   - [Setting up the *developer* plan](#setting-up-the-developer-plan)
   - [Setting up the *Professional 1 Application* and *Professional Per Device* plan](#setting-up-the-professional-1-application-and-professional-per-device-plan)
-- [Using the {{ site.data.keys.mf_bm_short }} service](#using-the--sitedatakeysmfbmshort--service)
+- [Using the Mobile Foundation service](#using-the-mobile-foundation-service)
   - [Server configuration](#server-configuration)
   - [Advanced server configuration](#advanced-server-configuration)
-- [Applying {{ site.data.keys.mfound_server }} fixes](#applying--sitedatakeysmfoundserver--fixes)
+- [Migrating the Mobile Foundation service plan](#migrating-mobile-foundation-service-plan)  
+- [Applying Mobile Foundation server fixes](#applying-mobile-foundation-server-fixes)
 - [Accessing server logs](#accessing-server-logs)
     - [Tracing](#tracing)
 - [Troubleshooting](#troubleshooting)
@@ -92,7 +91,7 @@ Creating the {{ site.data.keys.mf_bm_short }} service creates the {{ site.data.k
 
     ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
 
-## Using the {{ site.data.keys.mf_bm_short }} service
+## Using the Mobile Foundation service
 {: #using-the-mobile-foundation-service }
 
 With the {{ site.data.keys.mfound_server }} now running, you are presented with the following dashboard:
@@ -176,8 +175,35 @@ Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 -->
 
-## Applying {{ site.data.keys.mfound_server }} fixes
-{: #applying-mobilefirst-server-fixes }
+## Migrating the Mobile Foundation service plan
+{: #migrating-mobile-foundation-service-plan }
+
+Mobile Foundation instances created using the deprecated plans need to be updated to the new plans. Plan update may also be needed based on the instance usage.
+
+### Sample scenario: Migrate from the Professional Per Device plan to the Professional 1 Application plan
+
+1. From the IBM Cloud dashboard, select the IBM Mobile Foundation instance you want to migrate.
+2. Select **Plan** from the left navigation.
+   ![Existing Mobile Foundation plan](existing-plan.png)
+3. From the listed pricing plans, select Professional 1 Application.
+   ![New Mobile Foundation plan](new-plan.png)
+4. Click the **Save** button and confirm the plan migration.
+     Migration to Professional 1 Application is now completed and all the existing data is retained. The billing is changed and there’s no downtime.
+5. After the plan migration, the Mobile Foundation instance needs to be re-created from the service dashboard for the right configuration to take effect. This update requires a short downtime. You'll need to plan for the downtime. Select **Manage** from the left navigation and click **Recreate**.
+
+>**Note:** If you’re on one of the deprecated plans, you must migrate to a new plan.
+
+### Supported plan migrations
+
+* *Developer* (deprecated) plan can be updated only to the new *Developer* plan.
+* *Developer Pro* (deprecated) plan can be updated only to *Professional Per Device* or *Professional 1 Application* plan.
+* *Professional Per Capacity* (deprecated) plan can be updated only to *Professional Per Device* or *Professional 1 Application* plan.
+* *Professional Per Device* plan can be updated only to *Professional 1 Application* plan.
+* *Professional 1 Application* plan can be updated only to *Professional Per Device* plan.
+* Plan update isn’t supported for the new *Developer* plan.
+
+## Applying Mobile Foundation server fixes
+{: #applying-mobile-foundation-server-fixes }
 Updates to the {{ site.data.keys.mf_bm }} services are applied automatically without a need for human intervention, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
 
 ## Accessing server logs
