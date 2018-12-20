@@ -8,30 +8,32 @@ print_pdf: false
 indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
+
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="{{site.baseurl}}/css/bulma-min.css" type="text/css" rel="stylesheet">-->
     <style>
-    .list-group > .list-group-item:first-child {
-      border-radius: 4px 4px 0 0;
-    }
-    .list-group > .list-group-item:last-child {
-      border-radius: 0 0 4px 4px;
-    }
+        .list-group>.list-group-item:first-child {
+            border-radius: 4px 4px 0 0;
+        }
 
-    .list-group > .list-group-item.is-primary {
-      background-color: hsl(171, 100%, 41%);
-      color: #fff;
-     }
-    .list-group > .list-group-item.is-info {
-      background-color: hsl(217, 71%, 53%);
-      color: #fff;
-    }
+        .list-group>.list-group-item:last-child {
+            border-radius: 0 0 4px 4px;
+        }
+
+        .list-group>.list-group-item.is-primary {
+            background-color: hsl(171, 100%, 41%);
+            color: #fff;
+        }
+
+        .list-group>.list-group-item.is-info {
+            background-color: hsl(217, 71%, 53%);
+            color: #fff;
+        }
     </style>
 </head>
-<br/>
-Учебники, посвященные разработке приложений: настройка среды разработки,
+<br/> Учебники, посвященные разработке приложений: настройка среды разработки,
 работа с продуктом и интеграция с предложениями {{ site.data.keys.product }} 8.0.<br/><br/>
 
 <div id="container">
@@ -39,13 +41,13 @@ indexed: false
         <div id="categoryBoxes" class="hidden-xs hidden-sm">
             <form style="margin: 0 0 10px 15px" role="textbox" aria-label="Встроенное поле поиска" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
-                    <input style="width: 206px" id="search-input" aria-label="поле поиска" type="text" class="form-control" placeholder="Найти..." name="q"/>
+                    <input style="width: 206px" id="search-input" aria-label="поле поиска" type="text" class="form-control" placeholder="Найти..." name="q" />
                 </div>
             </form>
             <div class="col-md-3">
                 <a href="#start-here">
                     <div class="categoryBox-start-here hidden-xs hidden-md">
-                        <img alt="значок навигации по учебникам"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                        <img alt="значок навигации по учебникам" src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg" />
                         Начните здесь
                     </div>
                 </a>
@@ -53,7 +55,7 @@ indexed: false
             <div class="col-md-3">
                 <a href="#get-sdk-and-apis">
                     <div class="categoryBox-sdk hidden-xs hidden-md">
-                        <img alt="значок навигации по учебникам"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                        <img alt="значок навигации по учебникам" src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg" />
                         Описание SDK и API
                     </div>
                 </a>
@@ -61,7 +63,7 @@ indexed: false
             <div class="col-md-3">
                 <a href="#implement-authentication-and-security">
                     <div class="categoryBox-security hidden-xs hidden-md">
-                        <img alt="значок навигации по учебникам"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        <img alt="значок навигации по учебникам" src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg" />
                         Добавление защиты
                     </div>
                 </a>
@@ -69,7 +71,7 @@ indexed: false
             <div class="col-md-3">
                 <a href="#measure-and-engage">
                     <div class="categoryBox-more hidden-xs hidden-md">
-                        <img alt="значок навигации по учебникам"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        <img alt="значок навигации по учебникам" src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg" />
                         Измерение и активация
                     </div>
                 </a>
@@ -82,12 +84,11 @@ indexed: false
 
 <div id="tutorials-list">
     <div class="content">
-    <h2><a href="../product-overview/">Обзор продукта</a></h2>
-    <h4><i>    Общие сведения о предложении {{ site.data.keys.product }}.
-    </i></h4>
+        <h2><a href="../product-overview/">Обзор продукта</a></h2>
+        <h4><i>    Общие сведения о предложении {{ site.data.keys.product }}. </i></h4>
 
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../product-overview/capabilities">Основные функции</a>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../product-overview/capabilities">Основные функции</a>
         <a class="panel-block list-group-item" href="../product-overview/components">Компоненты продукта&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../product-overview/components/server">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.mf_server }}</a>
         <a class="panel-block list-group-item" href="../product-overview/components/console">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ site.data.keys.mf_console }}</a>
@@ -97,9 +98,9 @@ indexed: false
         <a class="panel-block list-group-item" href="../product-overview/accessibility">Специальные возможности для {{ site.data.keys.product_full }}</a>
         <a class="panel-block list-group-item" href="../product-overview/release-notes">Информация о выпуске</a>
 
+        </div>
     </div>
-  </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
         <li><a href="../product-overview/components">Product Components</a>
             <ul>
@@ -114,36 +115,36 @@ indexed: false
         <li><a href="../product-overview/release-notes">Release Notes</a></li>
     </ul>-->
     <div class="content">
-    <h2><a href="../installation-configuration/">Установка и настройка</a></h2>
-    <h4><i>Настройте среду разработки или рабочую среду для работы с {{ site.data.keys.product_full }}. </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../installation-configuration/development">Настройка среды разработки&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среда {{ site.data.keys.product_adj }}&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/installation-guide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Руководство по установке</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Работа с {{ site.data.keys.mf_server }} в Eclipse</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среда Cordova</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среда iOS</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среда Android</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среды Windows 8.1 Universal и Windows 10 UWP</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/development/web/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Веб-среда</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка MobileFirst Platform Foundation&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/simple-install/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Простая установка MobileFirst Server&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/simple-install/tutorials/graphical-mode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка {{ site.data.keys.mf_server }} в графическом режиме</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/simple-install/tutorials/command-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка {{ site.data.keys.mf_server }} из командной строки</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка MobileFirst Server в рабочей среде&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/prereqs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Предварительные требования для установки</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/databases">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Настройка баз данных</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/topologies">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Топологии и сетевые архитектуры</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/appserver">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка {{ site.data.keys.mf_server }}</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/server-configuration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Настройка {{ site.data.keys.mf_server }}</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/token-licensing">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка и настройка лицензирования с помощью физического ключа</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/analytics">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка и настройка {{ site.data.keys.mf_analytics_server }}</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/appcenter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка и настройка Application Center</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/installation-reference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Справочник по установке</a></li>
-        <a class="panel-block list-group-item" href="../installation-configuration/production/pure-application">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Развертывание {{ site.data.keys.mf_server }} в IBM PureApplication System</a></li>
+        <h2><a href="../installation-configuration/">Установка и настройка</a></h2>
+        <h4><i>Настройте среду разработки или рабочую среду для работы с {{ site.data.keys.product_full }}. </i></h4>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../installation-configuration/development">Настройка среды разработки&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среда {{ site.data.keys.product_adj }}&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/installation-guide">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Руководство по установке</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Работа с {{ site.data.keys.mf_server }} в Eclipse</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/development/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среда Cordova</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/development/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среда iOS</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/development/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среда Android</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/development/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Среды Windows 8.1 Universal и Windows 10 UWP</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/development/web/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Веб-среда</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка MobileFirst Platform Foundation&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/simple-install/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Простая установка MobileFirst Server&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/simple-install/tutorials/graphical-mode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка {{ site.data.keys.mf_server }} в графическом режиме</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/simple-install/tutorials/command-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка {{ site.data.keys.mf_server }} из командной строки</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка MobileFirst Server в рабочей среде&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/prereqs">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Предварительные требования для установки</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/databases">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Настройка баз данных</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/topologies">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Топологии и сетевые архитектуры</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/prod-env/appserver">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка {{ site.data.keys.mf_server }}</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/server-configuration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Настройка {{ site.data.keys.mf_server }}</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/token-licensing">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка и настройка лицензирования с помощью физического ключа</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/analytics">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка и настройка {{ site.data.keys.mf_analytics_server }}</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/appcenter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Установка и настройка Application Center</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/installation-reference">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Справочник по установке</a></li>
+            <a class="panel-block list-group-item" href="../installation-configuration/production/pure-application">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Развертывание {{ site.data.keys.mf_server }} в IBM PureApplication System</a></li>
+        </div>
     </div>
-  </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../installation-configuration/development">Setting up the development environment</a>
             <ul>
                 <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} environment</a>
@@ -181,19 +182,19 @@ indexed: false
         <li><a href="../installation-configuration/production/pure-application">Deploying {{ site.data.keys.mf_server }} on IBM PureApplication System</a></li>
     </ul>-->
     <div class="content">
-    <h2><a href="../administering-apps/">Администрирование приложений</a></h2>
-    <h4><i>В {{ site.data.keys.product_full }} предлагается несколько способов администрирования приложений {{ site.data.keys.product_adj }} в среде разработки или в рабочей среде.</i></h4>
+        <h2><a href="../administering-apps/">Администрирование приложений</a></h2>
+        <h4><i>В {{ site.data.keys.product_full }} предлагается несколько способов администрирования приложений {{ site.data.keys.product_adj }} в среде разработки или в рабочей среде.</i></h4>
 
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../administering-apps/deployment">Развертывание приложений в тестовой и рабочей средах</a>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../administering-apps/deployment">Развертывание приложений в тестовой и рабочей средах</a>
         <a class="panel-block list-group-item" href="../administering-apps/using-console/">Администрирование приложений с помощью {{ site.data.keys.mf_console }}</a>
         <a class="panel-block list-group-item" href="../administering-apps/using-ant/">Администрирование приложений с помощью Ant</a>
         <a class="panel-block list-group-item" href="../administering-apps/using-cli/">Администрирование приложений с помощью командной строки</a>
         <a class="panel-block list-group-item" href="../administering-apps/federal/">Поддержка государственных стандартов в {{ site.data.keys.product }}</a>
         <a class="panel-block list-group-item" href="../administering-apps/license-tracking/">Отслеживание лицензий</a>
+        </div>
     </div>
-  </div>
-<!--    <ul>
+    <!--    <ul>
         <li><a href="../administering-apps/deployment">Deploying applications to test and production environments</a></li>
         <li><a href="../administering-apps/using-console/">Administrating applications through the {{ site.data.keys.mf_console }}</a></li>
         <li><a href="../administering-apps/using-ant/">Administrating applications through Ant</a></li>
@@ -202,24 +203,24 @@ indexed: false
         <li><a href="../administering-apps/license-tracking/">License tracking</a></li>
     </ul>-->
     <div class="content">
-    <h2 id="upgrading_to_current_version"><a href="../upgrading/">Обновление до {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}</a></h2>
-    <h4><i>    Рассмотрена процедура подготовки к миграции и планирования миграции приложений {{ site.data.keys.product_adj }}. </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../upgrading/">Миграция с ранних выпусков&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <h2 id="upgrading_to_current_version"><a href="../upgrading/">Обновление до {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}</a></h2>
+        <h4><i>    Рассмотрена процедура подготовки к миграции и планирования миграции приложений {{ site.data.keys.product_adj }}. </i></h4>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../upgrading/">Миграция с ранних выпусков&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../upgrading/migration-cookbook">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Справочник по миграции</a>
         <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция приложений клиента&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a> <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция существующих приложений Cordova и гибридных приложений</a>
         <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция существующих встроенных приложений iOS</a>
         <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция существующих встроенных приложений Android</a>
-        <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция существующих встроенных приложений Windows</a>
+            <a class="panel-block list-group-item" href="../upgrading/migrating-client-applications/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция существующих встроенных приложений Windows</a>
         <a class="panel-block list-group-item" href="../upgrading/migrating-security">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция принципов организации защиты и идентификации</a>
         <a class="panel-block list-group-item" href="../upgrading/migrating-adapters">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция существующих адаптеров</a>
         <a class="panel-block list-group-item" href="../upgrading/migrating-push-notifications">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция push-уведомлений</a>
         <a class="panel-block list-group-item" href="../upgrading/migrating-data">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Миграция приложений, сохраняющих мобильные данные в Cloudant</a>
 
 
+        </div>
     </div>
-  </div>
-  <!--
+    <!--
     <ul>
         <li><a href="../upgrading/migration-cookbook">Migration Cookbook</a></li>
         <li><a href="../upgrading/">Migrating from earlier releases</a>
@@ -239,20 +240,20 @@ indexed: false
         </li>
     </ul>
   -->
-    <hr id="start-here"/>
+    <hr id="start-here" />
     <div class="content">
-    <h2><a href="../quick-start/">Быстрое начало работы</a></h2>
-    <h4><i>Быстрое начало работы с {{ site.data.keys.product }}.</i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../quick-start/cordova/">Быстрое начало работы с Cordova</a>
+        <h2><a href="../quick-start/">Быстрое начало работы</a></h2>
+        <h4><i>Быстрое начало работы с {{ site.data.keys.product }}.</i></h4>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../quick-start/cordova/">Быстрое начало работы с Cordova</a>
         <a class="panel-block list-group-item" href="../quick-start/ios/">Быстрое начало работы с iOS</a>
         <a class="panel-block list-group-item" href="../quick-start/android/">Быстрое начало работы с Android</a>
         <a class="panel-block list-group-item" href="../quick-start/windows-8-10/">Быстрое начало работы с Windows 8.1 Universal и Windows 10 UWP</a>
         <a class="panel-block list-group-item" href="../quick-start/web/">Быстрое начало работы с веб-приложением</a>
         <a class="panel-block list-group-item" href="../quick-start/xamarin/">Быстрое начало работы с Xamarin</a>
+        </div>
     </div>
-  </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../quick-start/cordova/">Quick Start with Cordova</a></li>
         <li><a href="../quick-start/ios/">Quick Start with iOS</a></li>
         <li><a href="../quick-start/android/">Quick Start with Android</a></li>
@@ -261,19 +262,19 @@ indexed: false
         <li><a href="../quick-start/xamarin/">Quick Start with Xamarin</a></li>
     </ul>-->
     <div class="content">
-    <h2><a href="../api/">Справочник по API</a></h2>
-    <h4><i>Изучите доступные API.</i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../api/client-side-api/">API MobileFirst на стороне клиента</a>
+        <h2><a href="../api/">Справочник по API</a></h2>
+        <h4><i>Изучите доступные API.</i></h4>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../api/client-side-api/">API MobileFirst на стороне клиента</a>
         <a class="panel-block list-group-item" href="../api/server-side-api/">API MobileFirst на сервере</a>
         <a class="panel-block list-group-item" href="../api/java-token-validator/">API MobileFirst проверки маркеров Java</a>
         <a class="panel-block list-group-item" href="../api/rest/admin-apis/">API REST для службы администрирования MobileFirst Server</a>
         <a class="panel-block list-group-item" href="../api/rest/push-apis/">API REST для службы передачи информации сервером MobileFirst</a>
         <a class="panel-block list-group-item" href="../api/rest/runtime/">API REST для среды выполнения MobileFirst</a>
         <a class="panel-block list-group-item" href="../api/rest/analytics-logger/">API REST для MobileFirst Analytics and Logger</a>
+        </div>
     </div>
-  </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../api/client-side-api/">MobileFirst client-side API</a></li>
         <li><a href="../api/server-side-api/">MobileFirst server-side API</a></li>
         <li><a href="../api/java-token-validator/">MobileFirst Java Token Validator API</a></li>
@@ -283,19 +284,19 @@ indexed: false
         <li><a href="../api/rest/analytics-logger/">REST API for MobileFirst Analytics and Logger</a></li>
     </ul>-->
     <div class="content">
-    <h2><a href="../application-development/sdk">Добавление SDK {{ site.data.keys.product_adj }}</a></h2>
-    <h4><i>Добавьте SDK {{ site.data.keys.product }} в приложение Cordova либо нативное
+        <h2><a href="../application-development/sdk">Добавление SDK {{ site.data.keys.product_adj }}</a></h2>
+        <h4><i>Добавьте SDK {{ site.data.keys.product }} в приложение Cordova либо нативное
 приложение iOS, Android, Windows 8.1 Universal или Windows 10 UWP. </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../application-development/sdk/cordova/">Добавление SDK {{ site.data.keys.product }} в приложения Cordova</a>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../application-development/sdk/cordova/">Добавление SDK {{ site.data.keys.product }} в приложения Cordova</a>
         <a class="panel-block list-group-item" href="../application-development/sdk/ios/">Добавление SDK {{ site.data.keys.product }} в приложения iOS</a>
         <a class="panel-block list-group-item" href="../application-development/sdk/android/">Добавление SDK {{ site.data.keys.product }} в приложения Android</a>
         <a class="panel-block list-group-item" href="../application-development/sdk/windows-8-10/">Добавление SDK {{ site.data.keys.product }} в приложения Windows 8.1 Universal и Windows 10 UWP</a>
         <a class="panel-block list-group-item" href="../application-development/sdk/web/">Добавление  SDK {{ site.data.keys.product }} в веб-приложения</a>
         <a class="panel-block list-group-item" href="../application-development/sdk/xamarin/">Добавление SDK {{ site.data.keys.product }} в приложения Xamarin</a>
+        </div>
     </div>
-  </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../application-development/sdk/cordova/">Adding the {{ site.data.keys.product }} SDK to Cordova applications</a></li>
         <li><a href="../application-development/sdk/ios/">Adding the {{ site.data.keys.product }} SDK to iOS applications</a></li>
         <li><a href="../application-development/sdk/android/">Adding the {{ site.data.keys.product }} SDK to Android applications</a></li>
@@ -304,51 +305,51 @@ indexed: false
         <li><a href="../application-development/sdk/xamarin/">Adding the {{ site.data.keys.product }} SDK to Xamarin applications</a></li>
     </ul> -->
     <div class="content">
-    <hr id="get-sdk-and-apis"/>
+        <hr id="get-sdk-and-apis" />
 
-    <h2><a href="../application-development">Разработка приложений</a></h2>
-    <h4><i>    Описание API {{ site.data.keys.product_adj }}: прямое обновление,
+        <h2><a href="../application-development">Разработка приложений</a></h2>
+        <h4><i>    Описание API {{ site.data.keys.product_adj }}: прямое обновление,
 JSONStore, WLResourceRequest, перевод на уровне клиента, отладка приложений, {{ site.data.keys.mf_cli }} и т. д.
 </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../application-development/cordova-apps/">Разработка SDK {{ site.data.keys.product }} в приложениях Cordova&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../application-development/cordova-apps/">Разработка SDK {{ site.data.keys.product }} в приложениях Cordova&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../application-development/cordova-apps/adding-images-and-icons/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Добавление пользовательских заставок и значков в приложения Cordova</a>
         <a class="panel-block list-group-item" href="../application-development/cordova-apps/securing-apps/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Защита приложений Cordova</a>
         <a class="panel-block list-group-item" href="../application-development/cordova-apps/developing-ui/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Разработка пользовательского интерфейса для приложений Cordova</a>
         <a class="panel-block list-group-item" href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Использование {{ site.data.keys.mf_cli }} для управления артефактов {{ site.data.keys.product_adj }}</a>
         <a class="panel-block list-group-item" href="../application-development/using-mobilefirst-cli-in-eclipse/">Использование {{ site.data.keys.mf_cli }} в Eclipse</a>
 
-        <a class="panel-block list-group-item" href="../application-development/resource-request/">Запрос ресурсов из клиентских приложений&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../application-development/resource-request/">Запрос ресурсов из клиентских приложений&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../application-development/resource-request/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Запрос ресурсов из приложений JavaScript (Cordova, Web)</a>
         <a class="panel-block list-group-item" href="../application-development/resource-request/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Запрос ресурсов из приложений iOS</a>
         <a class="panel-block list-group-item" href="../application-development/resource-request/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Запрос ресурсов из приложений Android</a>
         <a class="panel-block list-group-item" href="../application-development/resource-request/windows/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Запрос ресурсов из приложений Windows 8.1 Universal или Windows 10 UWP</a>
         <a class="panel-block list-group-item" href="../application-development/resource-request/xamarin/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Запрос ресурсов из приложений Xamarin</a>
 
-        <a class="panel-block list-group-item" href="../application-development/jsonstore/">JSONStore&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../application-development/jsonstore/">JSONStore&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../application-development/jsonstore/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSONStore в приложениях Cordova</a>
         <a class="panel-block list-group-item" href="../application-development/jsonstore/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSONStore в приложениях iOS</a>
         <a class="panel-block list-group-item" href="../application-development/jsonstore/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JSONStore в приложениях Android</a>
         <a class="panel-block list-group-item" href="../application-development/jsonstore/security-utilities/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Утилиты обеспечения защиты</a>
         <a class="panel-block list-group-item" href="../application-development/jsonstore/code-examples/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Примеры кода</a>
 
-        <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/">Сбор данных протоколов на уровне клиента&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/">Сбор данных протоколов на уровне клиента&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сбор данных протоколов в приложениях JavaScript (Cordova, Web)</a>
         <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сбор данных протоколов в приложениях iOS</a>
         <a class="panel-block list-group-item" href="../application-development/client-side-log-collection/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сбор данных протоколов в приложениях Android</a>
 
-        <a class="panel-block list-group-item" href="../application-development/direct-update/">Использование прямого обновления в приложениях Cordova&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../application-development/direct-update/">Использование прямого обновления в приложениях Cordova&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../application-development/direct-update/cdn-support/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка запросов прямого обновления из CDN</a>
         <a class="panel-block list-group-item" href="../application-development/direct-update/secure-direct-update/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация защищенного прямого обновления</a>
 
-        <a class="panel-block list-group-item" href="../application-development/translation/">Перевод приложений JavaScript (Cordova, Web) на разные языки</a>
+            <a class="panel-block list-group-item" href="../application-development/translation/">Перевод приложений JavaScript (Cordova, Web) на разные языки</a>
         <a class="panel-block list-group-item" href="../application-development/debugging-applications/">Отладка приложений JavaScript (Cordova, Web)</a>
         <a class="panel-block list-group-item" href="../application-development/live-update/">Оперативное обновление</a>
         <a class="panel-block list-group-item" href="../application-development/watchos/">Разработка для Apple watchOS 2</a>
         <a class="panel-block list-group-item" href="../application-development/simple-data-sharing/">Простое совместное использование данных</a>
+        </div>
     </div>
-  </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../application-development/cordova-apps/">{{ site.data.keys.product }} SDK development in Cordova applications</a>
             <ul>
                 <li><a href="../application-development/cordova-apps/adding-images-and-icons">Adding custom splash screens and icons to Cordova apps</a></li>
@@ -397,33 +398,32 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
         <li><a href="../application-development/simple-data-sharing/">Simple Data Sharing</a></li>
     </ul>-->
     <div class="content">
-    <h2><a href="../adapters/">Разработка адаптеров</a></h2>
-    <h4><i>Разработка кода уровня сервера для интеграции с корпоративными базовыми
+        <h2><a href="../adapters/">Разработка адаптеров</a></h2>
+        <h4><i>Разработка кода уровня сервера для интеграции с корпоративными базовыми
 системами и облачными службами.
     </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../adapters/creating-adapters/">Создание адаптеров Java и JavaScript</a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/">Адаптеры JavaScript&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-http-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Адаптер HTTP JavaScript&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-http-adapter/using-ssl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Использование SSL в адаптерах HTTP JavaScript</a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-sql-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Адаптер SQL JavaScript</a>
-        <a class="panel-block list-group-item" href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Использование Java в адаптерах JavaScript</a>
-        <a class="panel-block list-group-item" href="../adapters/java-adapters/">Java Adapters&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../adapters/java-adapters/java-http-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Адаптер HTTP Java</a>
-        <a class="panel-block list-group-item" href="../adapters/java-adapters/java-sql-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Адаптер SQL Java</a>
-        <a class="panel-block list-group-item" href="../adapters/developing-adapters/">Разработка адаптеров в Eclipse</a>
-        <a class="panel-block list-group-item" href="../adapters/testing-and-debugging-adapters/">Тестирование и отладка адаптеров</a>
-        <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/">Сбор данных протоколов на уровне сервера&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/java-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сбор данных протоколов в адаптерах Java</a>
-        <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/javascript-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сбор данных протоколов в адаптерах JavaScript</a>
-        <a class="panel-block list-group-item" href="../adapters/advanced-adapter-usage-mashup/">Расширенное использование адаптера и гибрид</a>
-        <a class="panel-block list-group-item" href="../adapters/cloudant/">Интеграция с Cloudant с помощью адаптера</a>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../adapters/creating-adapters/">Создание адаптеров Java и JavaScript</a>
+            <a class="panel-block list-group-item" href="../adapters/javascript-adapters/">Адаптеры JavaScript&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-http-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Адаптер HTTP JavaScript&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-http-adapter/using-ssl">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Использование SSL в адаптерах HTTP JavaScript</a>
+            <a class="panel-block list-group-item" href="../adapters/javascript-adapters/js-sql-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Адаптер SQL JavaScript</a>
+            <a class="panel-block list-group-item" href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Использование Java в адаптерах JavaScript</a>
+            <a class="panel-block list-group-item" href="../adapters/java-adapters/">Адаптеры Java&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../adapters/java-adapters/java-http-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Адаптер HTTP Java</a>            <a class="panel-block list-group-item" href="../adapters/java-adapters/java-sql-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Адаптер SQL Java</a>
+            <a class="panel-block list-group-item" href="../adapters/developing-adapters/">Разработка адаптеров в Eclipse</a>
+            <a class="panel-block list-group-item" href="../adapters/testing-and-debugging-adapters/">Тестирование и отладка адаптеров</a>
+            <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/">Сбор данных протоколов на уровне сервера&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/java-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сбор данных протоколов в адаптерах Java</a>
+            <a class="panel-block list-group-item" href="../adapters/server-side-log-collection/javascript-adapter/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Сбор данных протоколов в адаптерах JavaScript</a>
+            <a class="panel-block list-group-item" href="../adapters/advanced-adapter-usage-mashup/">Расширенное использование адаптера и гибрид</a>
+            <a class="panel-block list-group-item" href="../adapters/cloudant/">Интеграция с Cloudant с помощью адаптера</a>
         <a class="panel-block list-group-item" href="../adapters/openwhisk-adapter/">Адаптер Cloud Functions</a>
         <a class="panel-block list-group-item" href="../adapters/cognitive-adapter/">Адаптеры для служб Watson</a>
-        <a class="panel-block list-group-item" href="../adapters/microservice-adapter/">Автоматическое создание адаптеров</a>
-      </div>
+            <a class="panel-block list-group-item" href="../adapters/microservice-adapter/">Автоматическое создание адаптера</a>
+        </div>
     </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../adapters/">Adapters overview</a></li>
         <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
         <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a>
@@ -461,42 +461,42 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
     </ul>
 -->
     <div class="content">
-    <hr id="implement-authentication-and-security"/>
+        <hr id="implement-authentication-and-security" />
 
-    <h2><a href="../authentication-and-security/">Идентификация и защита</a></h2>
-    <h4><i>    Добавление различных уровней защиты в приложения. </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../authentication-and-security/creating-a-security-check/">Создание проверки защиты&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/creating-a-security-check/contract/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Контракт на проверку защиты</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/security-check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация проверки защиты</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях JavaScript (Cordova, веб-приложения)</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях iOS</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях Android</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/windows-8-10/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях Windows 8.1 Universal и Windows 10 UWP</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/security-check/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация проверки защиты</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях JavaScript (Cordova, веб-приложения)</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях iOS</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях Android</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/windows-8-10/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях Windows 8.1 Universal и Windows 10 UWP</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/step-up/">Идентификация Step-Up</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/enrollment/">Регистрация</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/ltpa-security-check/">Проверка защиты LTPA</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/confidential-clients/">Конфиденциальные клиенты</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/">Защиты внешних ресурсов&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/tai">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Перехватчик группы доверия</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/jtv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Проверка маркеров Java</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/node-js">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Проверка Node.js</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/windows-message-inspector">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Инспектор сообщений Windows .NET</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/application-authenticity/">Подлинность приложений</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/device-sso/">Настройка единого входа на устройствах</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/certificate-pinning/">Прикрепление сертификатов</a>
-        <a class="panel-block list-group-item" href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Настройка хранилища ключей {{ site.data.keys.mf_server }}</a>
-      </div>
+        <h2><a href="../authentication-and-security/">Идентификация и защита</a></h2>
+        <h4><i>    Добавление различных уровней защиты в приложения. </i></h4>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../authentication-and-security/creating-a-security-check/">Создание проверки защиты&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/creating-a-security-check/contract/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Контракт на проверку защиты</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/security-check">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация проверки защиты</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях JavaScript (Cordova, веб-приложения)</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях iOS</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях Android</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/credentials-validation/windows-8-10/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях Windows 8.1 Universal и Windows 10 UWP</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/security-check/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация проверки защиты</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/javascript/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях в приложениях JavaScript (Cordova, Web)</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях в приложениях iOS</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях Android</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/user-authentication/windows-8-10/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Реализация обработчика идентификации в приложениях Windows 8.1 Universal и Windows 10 UWP</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/step-up/">Идентификация Step-Up</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/enrollment/">Регистрация</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/ltpa-security-check/">Проверка защиты LTPA</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/confidential-clients/">Конфиденциальные клиенты</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/">Защита внешних ресурсов&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/tai">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Перехватчик группы доверия</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/jtv">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Проверка маркеров Java</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/tai">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Проверка Node.js</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/protecting-external-resources/windows-message-inspector">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Инспектор сообщений Windows .NET</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/application-authenticity/">Подлинность приложений</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/device-sso/">Настройка единого входа на устройствах</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/certificate-pinning/">Прикрепление сертификатов</a>
+            <a class="panel-block list-group-item" href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Настройка хранилища ключей {{ site.data.keys.mf_server }}</a>
+        </div>
     </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../authentication-and-security/">Authorization concepts</a></li>
         <li><a href="../authentication-and-security/creating-a-security-check/">Creating a Security Check</a>
             <ul>
@@ -540,13 +540,13 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
         <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configuring the {{ site.data.keys.mf_server }} Keystore</a></li>
     </ul>-->
     <div class="content">
-    <hr id="measure-and-engage"/>
+        <hr id="measure-and-engage" />
 
-    <h2><a href="../notifications">Уведомления</a></h2>
-    <h4><i>Отправка уведомлений с помощью {{ site.data.keys.product_full }}.
+        <h2><a href="../notifications">Уведомления</a></h2>
+        <h4><i>Отправка уведомлений с помощью {{ site.data.keys.product_full }}.
     </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../notifications/sending-notifications/">Отправка уведомлений</a>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../notifications/sending-notifications/">Отправка уведомлений</a>
         <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/">Обработка push-уведомлений&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/cordova">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка Push-уведомлений в приложениях Cordova</a>
         <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/ios">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка Push-уведомлений в приложениях iOS</a>
@@ -554,15 +554,15 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
         <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/silent">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Неинтерактивные уведомления</a>
         <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/android">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка Push-уведомлений в приложениях Android</a>
         <a class="panel-block list-group-item" href="../notifications/handling-push-notifications/windows">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка Push-уведомлений в приложениях Windows</a>
-        <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/">Обработка уведомлений по SMS&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/">Обработка уведомлений по SMS&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/cordova/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка уведомлений по SMS в приложениях Cordova</a>
         <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/android/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка уведомлений по SMS в приложениях Android</a>
         <a class="panel-block list-group-item" href="../notifications/handling-sms-notifications/ios/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Обработка уведомлений по SMS в приложениях iOS</a>
         <a class="panel-block list-group-item" href="../notifications/analytics/">Настройка поддержки аналитики для Push-уведомлений</a>
         <a class="panel-block list-group-item" href="../notifications/rest-apis/">API REST службы Push-уведомлений</a>
-      </div>
+        </div>
     </div>
-<!--    <ul>
+    <!--    <ul>
         <li><a href="../notifications/">Notifications Overview</a></li>
         <li><a href="../notifications/sending-notifications/">Sending Notifications</a></li>
         <li><a href="../notifications/handling-push-notifications/">Handling push notifications</a>
@@ -594,11 +594,11 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
         <li><a href="../notifications/rest-apis/">Push Service REST APIs </a></li>
     </ul>-->
     <div class="content">
-    <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
-    <h4><i>    Мониторинг развернутых приложений и адаптеров, анализ использования приложений, поиск ошибок и другие возможности.
+        <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
+        <h4><i>    Мониторинг развернутых приложений и адаптеров, анализ использования приложений, поиск ошибок и другие возможности.
     </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../analytics">Введение в {{ site.data.keys.mf_analytics_full }}</a>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../analytics">Введение в {{ site.data.keys.mf_analytics_full }}</a>
         <a class="panel-block list-group-item" href="../analytics/analytics-api/">Применение API аналитики в приложениях клиентов</a>
         <a class="panel-block list-group-item" href="../analytics/analytics-rest-api/">Применение API REST аналитики</a>
         <a class="panel-block list-group-item" href="../analytics/elasticsearch/">Elasticsearch</a>
@@ -608,13 +608,13 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
         <a class="panel-block list-group-item" href="../analytics/console/custom-charts/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Создание пользовательских диаграмм</a>
         <a class="panel-block list-group-item" href="../analytics/console/scenario-loader/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Загрузчик сценариев</a>
         <a class="panel-block list-group-item" href="../analytics/console/push-notifications/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Push-уведомления</a>
-        <a class="panel-block list-group-item" href="../analytics/console/analytics-data-purge">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Хранение и очистка данных</a>
+            <a class="panel-block list-group-item" href="../analytics/console/analytics-data-purge">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Хранение и очистка данных</a>
         <a class="panel-block list-group-item" href="../analytics/workflows/">Потоки операций аналитики</a>
         <a class="panel-block list-group-item" href="../analytics/bestpractices-prod/">Рекомендации&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
         <a class="panel-block list-group-item" href="../analytics/bestpractices-prod/faq/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Вопросы и ответы</a>
-      </div>
+        </div>
     </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../analytics">Introduction to {{ site.data.keys.mf_analytics_full }}</a></li>
         <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
         <li><a href="../analytics/analytics-rest-api/">Using Analytics REST API</a></li>
@@ -632,21 +632,22 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
         <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
     </ul> -->
     <div class="content">
-    <h2><a href="../bluemix">Mobile Foundation on IBM Cloud</a></h2>
-    <h4><i>Разверните {{ site.data.keys.product }} в облачной среде с помощью IBM Cloud.</i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../bluemix/using-mobile-foundation/">Создайте экземпляр {{ site.data.keys.mf_server }} с помощью службы Mobile Foundation IBM Cloud</a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-kubernetes/">Настройка сервера MobileFirst в кластере IBM Cloud Kubernetes&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Настройка MobileFirst Application Center в кластере IBM Cloud Kubernetes</a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/">Настройка сервера MobileFirst в IBM Cloud Private&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/mobilefirst-appcenter-on-icp/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Настройка MobileFirst Application Center в IBM Cloud Private</a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/logging-tracing-on-icp/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ведение протоколов и трассировка в IBM Cloud Private</a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/">Настройка {{ site.data.keys.mf_server }} в IBM Cloud с помощью сценариев в Liberty для Java&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Защита контейнеров</a>
-        <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Устранение неполадок</a>
-      </div>
+        <h2><a href="../bluemix">Mobile Foundation on IBM Cloud</a></h2>
+        <h4><i>Разверните {{ site.data.keys.product }} в облачной среде с помощью IBM Cloud.</i></h4>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../bluemix/using-mobile-foundation/">Настройка экземпляра {{ site.data.keys.mf_server }} с помощью службы Mobile Foundation в IBM Cloud</a>
+            <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-kubernetes-using-helm/">Настройка Mobile Foundation в IBM Cloud Kubernetes Cluster с помощью диаграмм Helm</a>
+            <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-kubernetes-using-scripts/">Настройка сервера MobileFirst Server в IBM Cloud Kubernetes Cluster&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-kubernetes-using-scripts/mobilefirst-appcenter-on-kubernetes-using-scripts/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Настройка MobileFirst Application Center в IBM Cloud Kubernetes Cluster</a>
+            <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/">Настройка MobileFirst Server в IBM Cloud Private&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/mobilefirst-appcenter-on-icp/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Настройка MobileFirst Application Center в IBM Cloud Private</a>
+            <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-on-icp/logging-tracing-on-icp/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ведение протоколов и трассировка в IBM Cloud Private</a>
+            <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/">Настройка {{ site.data.keys.mf_server }} в IBM Cloud с помощью сценариев Liberty для Java&nbsp;&nbsp;<span class="icon"><i class="fa fa-chevron-down" aria-hidden="true"></i></span></a>
+            <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Защита контейнеров</a>
+            <a class="panel-block list-group-item" href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Устранение неполадок</a>
+        </div>
     </div>
-        <!--<li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
+    <!--<li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
         <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
         <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on IBM Containers using Scripts on IBM Container Service</a>
             <ul>
@@ -658,9 +659,11 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
     <!--  <ul>
         <li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on IBM Cloud</a></li>
         <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation IBM Cloud service</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-kubernetes/">Setting Up MobileFirst Server on IBM Cloud Kubernetes Cluster</a>
+        <li><a href="../bluemix/mobilefirst-server-on-kubernetes-using-helm/">Setting Up Mobile Foundation on IBM Cloud Kubernetes Cluster using Helm charts</a>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-on-kubernetes-using-scripts/">Setting Up MobileFirst Server on IBM Cloud Kubernetes Cluster</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-kubernetes/mobilefirst-appcenter-using-kubernetes/">Setting Up MobileFirst Appcenter on IBM Cloud Kubernetes Cluster</a></li>
+                <li><a href="../bluemix/mobilefirst-server-on-kubernetes-using-scripts/mobilefirst-appcenter-on-kubernetes-using-scripts/">Setting Up MobileFirst Appcenter on IBM Cloud Kubernetes Cluster</a></li>
             </ul>
         </li>
         <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Setting Up the {{ site.data.keys.mf_server }} on IBM Cloud using scripts on Liberty for Java</a>
@@ -671,20 +674,20 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
         </li>
     </ul> -->
     <div class="content">
-    <h2><a href="../appcenter">Application Center</a></h2>
-    <h4><i>    Установка, настройка и использование IBM MoblieFirst Foundation Application Center.
+        <h2><a href="../appcenter">Application Center</a></h2>
+        <h4><i>    Установка, настройка и использование IBM MoblieFirst Foundation Application Center.
     </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../appcenter/preparations">Подготовка к использованию мобильного клиента</a>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../appcenter/preparations">Подготовка к использованию мобильного клиента</a>
         <a class="panel-block list-group-item" href="../appcenter/push-notifications">Push-уведомления обновлений приложений</a>
         <a class="panel-block list-group-item" href="../appcenter/appcenter-console">Консоль Application Center</a>
         <a class="panel-block list-group-item" href="../appcenter/command-line">Утилита командной строки для передачи или удаления приложения</a>
         <a class="panel-block list-group-item" href="../appcenter/mobile-client">Мобильный клиент</a>
         <a class="panel-block list-group-item" href="../appcenter/logging-and-tracing">Настройка ведения протоколов и трассировки Application Center на сервере приложений</a>
         <a class="panel-block list-group-item" href="../appcenter/app-center-tutorial/">Учебник: распределение мобильных приложений с помощью Application Center</a>
-      </div>
+        </div>
     </div>
-  <!--  <ul>
+    <!--  <ul>
         <li><a href="../appcenter/">Application Center Overview</a></li>
         <li><a href="../appcenter/preparations">Preparations for using the mobile client</a></li>
         <li><a href="../appcenter/push-notifications">Push notifications of application updates</a></li>
@@ -695,29 +698,29 @@ JSONStore, WLResourceRequest, перевод на уровне клиента, �
         <li><a href="../appcenter/app-center-tutorial/">Distributing mobile applications with Application Center tutorial</a></li>
     </ul>-->
     <div class="content">
-    <h2><a href="../troubleshooting/">Устранение общих неполадок</a></h2>
-    <h4><i>Часто задаваемые вопросы и ответы.</i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../troubleshooting/notifications">Push-уведомления</a>
+        <h2><a href="../troubleshooting/">Устранение общих неполадок</a></h2>
+        <h4><i>Часто задаваемые вопросы и ответы.</i></h4>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../troubleshooting/notifications">Push-уведомления</a>
         <a class="panel-block list-group-item" href="../troubleshooting/jsonstore">JSONStore</a>
         <a class="panel-block list-group-item" href="../troubleshooting/analytics">Аналитика</a>
-      </div>
+        </div>
     </div>
-<!--    <ul>
+    <!--    <ul>
         <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
         <li><a href="../troubleshooting/analytics">Analytics</a></li>
     </ul>-->
 
     <div class="content">
-    <h2><a href="../../../../en/product-integration/8.0">Интеграция продукта</a></h2>
-    <h4><i>    Интеграция приложений {{ site.data.keys.product }} 8.0 с другими продуктами IBM.
+        <h2><a href="../../../../en/product-integration/8.0">Интеграция продукта</a></h2>
+        <h4><i>    Интеграция приложений {{ site.data.keys.product }} 8.0 с другими продуктами IBM.
     </i></h4>
-    <div class="panel list-group">
-        <a class="panel-block list-group-item" href="../../../../en/product-integration/8.0">Список доступных интеграций продуктов</a>
-      </div>
+        <div class="panel list-group">
+            <a class="panel-block list-group-item" href="../../../../en/product-integration/8.0">Список доступных интеграций продуктов</a>
+        </div>
     </div>
-<!--    <ul>
+    <!--    <ul>
         <li><a href="../../../product-integration/8.0">List of available product integrations</a></li>
     </ul>-->
     <br/>
