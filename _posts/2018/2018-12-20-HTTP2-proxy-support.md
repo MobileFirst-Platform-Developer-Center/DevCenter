@@ -1,6 +1,6 @@
 ---
 title: HTTP/2 APNs Push Notifications using Apache HTTP Server as Proxy
-date: 2018-12-20
+date: 2018-12-24
 version:
 - 8.0
 tags:
