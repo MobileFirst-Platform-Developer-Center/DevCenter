@@ -73,6 +73,7 @@ After the related modules are installed and enabled, to load and enable the prox
   /etc/init.d/apache2 start
 ```
 <br/>
+
 >**Note:** HTTP servers from other vendors might have different configurations. Steps above are specific to Apache HTTP Server.  
   
 ### Enable Push Notifications to be routed via the Proxy
