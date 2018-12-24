@@ -14,8 +14,6 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 
 #### Jump to
 {: #jump-to }
-- [Overview](#overview)
-    - [Jump to](#jump-to)
 - [Setting up Notifications](#setting-up-notifications)
   - [Firebase Cloud Messaging](#firebase-cloud-messaging)
     - [Notes](#notes)
