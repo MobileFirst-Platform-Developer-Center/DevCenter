@@ -23,7 +23,7 @@ A new iFix *7.1.0.0-MFPF-IF201812191245* has been released for MobileFirst Found
         </div>
         <div id="collapse-mfp-ifix-IF201812191245" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201812191245">
             <div class="panel-body">
-            iFix for MobileFirst Foundation 7.1, dated <b>December 5th, 2018</b>.
+            iFix for MobileFirst Foundation 7.1, dated <b>December 19th, 2018</b>.
             <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
 
             <h3>Changes included in this iFix</h3>
