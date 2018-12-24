@@ -30,7 +30,7 @@ A new iFix *7.1.0.0-MFPF-IF201812191245* has been released for MobileFirst Found
             <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
 
             <b>PH06599</b> CURRENCY UPGRADE TO LIBERTY (18.0.0.4) AND IBM JAVA 8.0.5.26.<br/>
-            <b>PH06421</b> THE JSP-2.3 FEATURE IN LIBERTY SERVER.XML CREATES A CONFLICT WITH THE SERVLET. RUNTIME DOES NOT COME UP.</br>
+            <b>PH06421</b> THE JSP-2.3 FEATURE IN LIBERTY SERVER.XML CREATES A CONFLICT WITH THE SERVLET. RUNTIME DOES NOT COME UP.<br/>
 
             </div>
         </div>      
