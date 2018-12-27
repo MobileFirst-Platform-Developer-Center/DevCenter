@@ -11,7 +11,7 @@ weight: 3
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance and {{ site.data.keys.mf_analytics }} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts:
 
 * Setup IBM Cloud Kubernetes Cluster.
-* Setup your host computer with IBM Cloud CLI.
+* Setup your host computer with IBM Cloud Kubernetes Service CLI (`ibmcloud`).
 * Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} .
 * Load the PPA archive in IBM Cloud Kubernetes Cluster.
 * Finally, you will configure and install the {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}.
@@ -34,10 +34,10 @@ You should have IBM Cloud account and must have set up the Kubernetes Cluster by
 
 To manage containers and images, you need to install the following tools on your host machine as part of IBM Cloud CLI plugins setup:
 
-* IBM Cloud CLI 
+* IBM Cloud CLI (`ibmcloud`)
 * Kubernetes CLI
-* IBM Cloud Container Registry plug-in
-* IBM Cloud Container Service plug-in
+* IBM Cloud Container Registry plug-in (`cr`)
+* IBM Cloud Container Service plug-in (`ks`)
 
 To access IBM Cloud Kubernetes Cluster using CLI, you should configure the IBM Cloud client. [Learn more](https://console.bluemix.net/docs/cli/index.html).
 
@@ -50,24 +50,24 @@ The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is ava
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
-Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
+Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html).
 
 Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes Cluster:
 
   1. Log in to the cluster using IBM Cloud plugin.
 
-      >See the [CLI Command Reference](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) in IBM Cloud CLI documentation.
+      >See the [CLI Command Reference](https://console.bluemix.net/docs/cli/index.html#overview) in IBM Cloud CLI documentation.
 
       For example,
       ```bash
       ibmcloud login -a https://ip:port
       ```
       Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
-      
+
   2. Login into the IBM Cloud Container registry & initialize the Container Service using the following commands:
       ```bash
       ibmcloud cr login
-      ibmcloud cs init
+      ibmcloud ks init
       ```  
   3. Set the region of the deployment using the following command (e.g. us-south)
       ```bash
@@ -76,7 +76,7 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
 
   4. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
       ```
-      bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
       ```
       *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
@@ -241,7 +241,7 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_server 
     Example for deploying server:
     ```bash
     helm install -n mfpserveronkubecluster -f server-values.yaml ./ibm-mfpf-server-prod-1.0.17.tgz
-    ``` 
+    ```
 
 >**Note:** For installing the AppCenter the above steps are to be followed with the corresponding helm chart (e.g. ibm-mfpf-appcenter-prod-1.0.17.tgz).
 
