@@ -16,6 +16,17 @@ Download and install the latest interim fix to obtain all of the fixes that are 
 
 Where an APAR number is listed, you can confirm that an interim fix has that feature by searching the interim fix README file for that APAR number.
 
+### Features included with CD update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
+
+##### <span style="color:NAVY">**HTTP/2 Support for APNs Push Notifications**</span>
+
+Push Notifications in MobileFirst now supports the HTTP/2 based APNs Push Notifications along with the legacy TCP Socket based notifications. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
+
+##### <span style="color:NAVY">**React Native Push SDK released**</span>
+
+React Native SDK for Push (*react-native-ibm-mobilefirst-push 1.0.0*) is released with this CD Update.
+
+
 ### Features introduced with CD update 3 (8.0.0.0-MFPF-IF201811050432-CDUpdate-03)
 
 ##### <span style="color:NAVY">**Support for refresh tokens on iOS**</span>
