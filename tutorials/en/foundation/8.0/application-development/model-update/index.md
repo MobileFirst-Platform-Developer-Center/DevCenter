@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using Model Update in iOS applications
+title: Using Model Update in applications
 breadcrumb_title: Model Update
 relevantTo: [iOS]
 weight: 9
