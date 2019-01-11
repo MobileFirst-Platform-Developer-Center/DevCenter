@@ -36,7 +36,7 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 -----END PUBLIC KEY-----
 ```
 
->**Important**: Do not use the public key for production purposes. 
+>**Important**: Do not use the public key for production purposes.
 
 ## Generating and deploying the keystore
 {: #generating-and-deploying-the-keystore }
@@ -64,5 +64,5 @@ There are many tools available for generating certificates and extracting public
 2. Perform the following steps:
     * Copy the resulting text, without the `BEGIN PUBLIC KEY` and `END PUBLIC KEY`.
     * In the client application, open the mobilefirst configuration file (i.e `mfpclient.plist` for iOS and `mfpclient.properties` for Android).
-    * Add the new key value called `wlSecureNativeUpdatePublicKey`.
+    * Add the new key value called `wlSecureModelUpdatePublicKey`.
     * Provide the public key for the corresponding key value and save.

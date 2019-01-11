@@ -4,9 +4,6 @@ title: Using Model Update in iOS applications
 breadcrumb_title: Model Update
 relevantTo: [iOS]
 weight: 9
-downloads:
-  - name: Download iOS project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -15,7 +12,7 @@ With the introduction of on-device machine learning (ML) models such as CoreML a
 
 To assist with this requirement, IBM Mobile Foundation introduces the Model Update feature. Mobile Foundation applications can now embed ML models, which can be updated "over-the-air" with newer versions. Organizations are thus able to ensure that end-users always use the updated AI models.
 
-Compress the latest model(s) into a zip format, in order to send the model version to an application. This `.zip` needs to be uploaded under the **Machine Learning** tab of the MobileFirst Operations console. Model Update is then activated whenever the application invokes `checkForModelUpdate` API.
+Compress the latest model(s) into a zip format, in order to send the model version to an application. This `.zip` needs to be uploaded under the **Machine Learning** tab of the MobileFirst Operations console. Model Update is then activated whenever the application invokes `downloadModelUpdate` API.
 
 >**Supported platforms:**  Currently, Model Update is supported only for iOS.  
 
@@ -29,14 +26,12 @@ Compress the latest model(s) into a zip format, in order to send the model versi
 - [How Model Update works](#how-model-update-works)
 - [Creating and deploying model packages](#creating-and-deploying-model-packages)
 - [Invoking an update](#invoking-an-update)
-- [Secure Model Update](#secure-model-update)
-- [Sample application](#sample-application)
 
 ## How Model Update works
 {: #how-model-update-works }
-The models are initially packaged with the application to ensure first offline availability. Later, the application checks for updates with the {{ site.data.keys.mf_server }} whenever the `checkForModelUpdate` API is invoked.
+The models are initially packaged with the application to ensure first offline availability. Later, the application checks for updates with the {{ site.data.keys.mf_server }} whenever the `downloadModelUpdate` API is invoked.
 
-After a Model Update, `checkForModelUpdate` API returns the location of the downloaded model and this location gets updated whenever an update is performed.
+After a Model Update, `downloadModelUpdate` API returns the location of the downloaded model and this location gets updated whenever an update is performed.
 
 ### Versioning
 {: #versioning }
@@ -59,12 +54,12 @@ Model update in the application can be checked by invoking the following API.
 ### iOS
 
 ```
- WLClient.sharedInstance().checkForModelUpdate(withHideProgressBar: Boolean)
+ WLClient.sharedInstance().downloadModelUpdate(completionHandler: CompletionHandler, hideProgressBar: Boolean);
 ```
 
 Typically, application developers should call this API during the startup of the application.
 
-The `checkForModelUpdate` API returns one of the following status codes and a link to the downloaded package, if the download is successful, or the path to the previously downloaded package is returned.
+The `downloadModelUpdate` API returns one of the following status codes and a link to the downloaded package, if the download is successful, or the path to the previously downloaded package is returned.
 
 The final status will be one of the following codes:
 
@@ -90,7 +85,7 @@ Using a preferred tool, extract the public key from the {{ site.data.keys.mf_ser
 The produced value should then be used as below:
 
 1. In the client application, open the mobilefirst configuration file (i.e `mfpclient.plist` for iOS and `mfpclient.properties` for Android).
-2. Add the new key value called `wlSecureNativeUpdatePublicKey`.
+2. Add the new key value called `wlSecureModelUpdatePublicKey`.
 3. Provide the public key for the corresponding key value and save.
 
 Any future Model Update deliveries to client applications will be protected by Model Update authenticity.
@@ -108,11 +103,3 @@ For the production or even pre-production testing phase, it is strongly recommen
 
 ### Model Update data transfer rates
 At optimal conditions, a single {{ site.data.keys.mf_server }} can push data to clients at the rate of 250 MB per second. If higher rates are required, consider a cluster or a CDN service.
-
-## Sample application
-{: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the iOS project.  
-
-### Sample usage
-{: #sample-usage }
-Follow the sample's README.md file for instructions.
