@@ -154,10 +154,10 @@ WebSphere Application Server Network Deployment Server 세트에서 Application 
     > **주의:** 애플리케이션 서버를 선택한 후 단일 관리 서버를 선택하지 마십시오. 이를 수행하면 배치 관리자가 실행 중인 머신에 설치하는지 아니면 다른 머신에 설치하는지에 관계없이 배치 관리자가 서버의 구성을 겹쳐씁니다.
 3. Application Center를 설치할 위치에 따라 필요한 범위를 선택하십시오. 다음 테이블에는 사용 가능한 범위가 나열되어 있습니다.
 
-    | 범위 	 | 설명        |
+    | 범위	 | 설명 |
     |--------|-------------|
-    | 셀	    | 셀의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
-    | 클러스터 | 지정된 클러스터의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
+    | 셀	 | 셀의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
+    | 클러스터| 지정된 클러스터의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
     | 노드   | (클러스터 제외) 클러스터에 없는 지정된 노드의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
     | 서버 | 클러스터에 없는 지정된 서버에서 Application Center를 설치합니다. |
 
@@ -912,7 +912,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * **새로 작성**을 클릭하십시오.
     * 다음 테이블에 표시된 대로 **JDBC 제공자** 필드에 기입을 완료하십시오.
 
-        | 필드  | 값    |
+        | 필드 | 값 |
         |-------|-------|
         | 데이터베이스 유형 | Oracle |
         | 제공자 유형 | Oracle JDBC 드라이버 |
@@ -1510,7 +1510,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile }
 **server.xml** 파일에서 데이터 소스 및 Application Center의 Java™ EE 보안 역할을 구성하십시오.
 
-보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. 각 `<application>` 요소의 `<application-bnd>` 요소에서 두 개의 `<security-role>` 요소를 작성하십시오. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이러한 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
+보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다.  각 `<application><application>` 요소의 `<application-bnd> ` 요소에서 두 개의 `<security-role>` 요소를 작성하십시오. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이러한 그룹은 ` <basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
 
 그런 다음 설치된 많은 애플리케이션(예: 80개의 애플리케이션)에 대한 신속한 응답 시간을 유지하기 위해 Application Center 데이터베이스에 대한 연결 풀을 구성해야 합니다.
 
@@ -1754,7 +1754,7 @@ Liberty 프로파일에 대한 LDAP을 사용하려면 LDAP 인증 및 LDAP ACL 
 LDAP 레지스트리 또는 여러 LDAP 레지스트리를 사용하는 연합 레지스트리(WebSphere Application Server Liberty 프로파일 V8.5.5 이후)를 정의하여 **server.xml** 파일에서 사용자 및 그룹의 LDAP 인증을 구성할 수 있습니다. 그런 다음 사용자 및 그룹을 Application Center 역할에 맵핑합니다. LDAP 인증과 기본 인증의 맵핑 구성은 동일합니다.
 
 1. **server.xml** 디스크립터 파일을 열려면 **{server.config.dir}/server.xml**을 입력하십시오.
-2. `<httpEndpoint>` 요소 다음에 하나 이상의 LDAP 레지스트리 정의를 추가하십시오. LDAP 레지스트리의 예:
+2. `<httpEndpoint>` 요소 뒤에 하나 이상의 LDAP 레지스트리 정의를 삽입하십시오. LDAP 레지스트리의 예:
 
    ```xml
    <ldapRegistry baseDN="o=ibm.com" host="employees.com" id="Employees"
@@ -1827,7 +1827,7 @@ JNDI 항목을 정의하려면 **server.xml** 파일에서 다음 기능을 정�
 * **JNDI\_property\_name**은 추가하는 특성의 이름입니다.
 * **property\_value**는 추가하는 특성의 값입니다.
 
-| 특성     | 설명        |
+| 특성 | 설명 |
 |----------|-------------|
 | ibm.appcenter.ldap.active | LDAP을 사용으로 설정하려면 true로 설정하고 LDAP을 사용 안함으로 설정하려면 false로 설정하십시오. |
 | ibm.appcenter.ldap.federated.active | WebSphere Application Server Liberty 프로파일 V8.5.5 이후: 연합 레지스트리 사용을 사용으로 설정하려면 true로 설정하고 연합 레지스트리 사용을 사용 안함으로 설정하려면 false(기본 설정)로 설정하십시오. |
@@ -1896,7 +1896,7 @@ Application Center의 ACL 관리를 구성하려면 이 프로세스를 수행�
 Application Center 서비스 웹 애플리케이션(**applicationcenter.war**) 및 Application Center 콘솔 웹 애플리케이션(**appcenterconsole.war**)의 web.xml 파일에서 보안(Java™ Platform, Enterprise Edition)을 구성하고 LDAP 인증을 위해 Apache Tomcat 서버를 구성합니다.
 
 **LDAP 사용자 인증**  
-**server.xml** 파일의 `<Host>` 요소에서 **JNDIRealm**을 구성해야 합니다. 영역 구성에 대한 자세한 정보는 Apache Tomcat 웹 사이트에서 영역 컴포넌트를 참조하십시오.
+`<Host>` 요소에서 **server.xml** 파일의 **JNDIRealm**을 구성해야 합니다. 영역 구성에 대한 자세한 정보는 Apache Tomcat 웹 사이트에서 영역 컴포넌트를 참조하십시오.
 
 **LDAP 서버에 대해 인증하기 위한 Apache Tomcat에서의 구성 예**  
 이 예에서는 LDAP 인증을 위해 사용으로 설정된 서버에서 이 사용자의 권한과 비교하여 Apache Tomcat 서버에서 사용자 인증을 구성하는 방법을 보여줍니다.
@@ -2034,7 +2034,7 @@ Application Center의 LDAP ACL 관리를 구성하려면 server.xml 파일에서
 * **JNDI\_property\_name**은 추가하는 특성의 이름입니다.
 * **property\_value**는 추가하는 특성의 값입니다.
 
-| 특성     | 설명        |
+| 특성 | 설명 |
 |----------|-------------|
 | ibm.appcenter.ldap.active | LDAP을 사용으로 설정하려면 true로 설정하고 LDAP을 사용 안함으로 설정하려면 false로 설정하십시오. |
 | ibm.appcenter.ldap.federated.active | WebSphere Application Server Liberty 프로파일 V8.5.5 이후: 연합 레지스트리 사용을 사용으로 설정하려면 true로 설정하고 연합 레지스트리 사용을 사용 안함으로 설정하려면 false(기본 설정)로 설정하십시오. |
@@ -2137,7 +2137,7 @@ Application Center 콘솔에서 모바일 애플리케이션을 추가할 때 �
 #### 엔드포인트 특성
 {: #endpoint-properties }
 
-| 특성 이름     | 용도    | 예      |
+| 특성 이름 | 용도 | 예 |
 |---------------|---------|---------|
 | ibm.appcenter.services.endpoint | 이 특성을 통해 Application Center 콘솔에서 Application Center REST 서비스를 찾을 수 있습니다. 이 특성의 값은 applicationcenter.war 웹 애플리케이션의 외부 주소 및 컨텍스트 루트로 지정되어야 합니다. 별표(\*) 문자를 와일드카드로 사용하여 Application Center REST 서비스가 Application Center 콘솔과 동일한 값을 사용하도록 지정할 수 있습니다. 예를 들어, *://*:*/appcenter는 Application Center 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 appcenter를 컨텍스트 루트로 사용함을 의미합니다. 이 특성은 Application Center 콘솔 애플리케이션에 대해 지정해야 합니다. | https://appcntr.net:443/applicationcenter |
 | ibm.appcenter.proxy.protocol | 이 특성은 외부 애플리케이션이 Application Center에 연결하기 위해 필요한 프로토콜을 지정합니다. | https |
@@ -2220,7 +2220,7 @@ IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하�
 * **JNDI\_property\_name**은 추가하는 특성의 이름입니다.
 * **property\_value**는 추가하는 특성의 값입니다.
 
-| 특성     | 설명        |
+| 특성 | 설명 |
 |----------|-------------|
 | ibm.appcenter.services.endpoint | Application Center REST 서비스의 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. |
 | ibm.appcenter.proxy.protocol	애플리케이션 자원 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
@@ -2249,7 +2249,7 @@ Apache Tomcat 서버의 경우 **server.xml** 파일에서 애플리케이션 �
 IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하기 위해 Application Center 클라이언트가 사용하는 URI 프로토콜, 호스트 이름 및 포트를 변경해야 하는 경우 이 프로시저를 수행하십시오.
 
 Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집하십시오.  
-해당 애플리케이션의 `<context>` 섹션에서 각 특성에 대한 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
+**server.xml** 파일의 `<context>` 섹션에서 각 특성에 대한 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
 
 ```xml
 <Environment name="JNDI_property_name" value="property_value" type="property_type" override="false"/>
@@ -2261,7 +2261,7 @@ Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집�
 * **property\_value**는 추가하는 특성의 값입니다.
 * **property\_type**은 추가하는 특성의 유형입니다.
 
-| 특성     | 유형 | 설명        |
+| 특성 | 유형 | 설명 |
 |----------|------|-------------|
 | ibm.appcenter.services.endpoint | java.lang.String | Application Center REST 서비스(applicationcenter.war)의 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. |
 | ibm.appcenter.proxy.protocol | java.lang.String | 애플리케이션 자원 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
@@ -2274,7 +2274,7 @@ Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집�
 {: #example-of-setting-serverxml-properties-for-configuring-the-endpoint }
 이 예에서는 **server.xml** 파일에서 애플리케이션 자원의 엔드포인트 구성을 위해 필요한 특성을 설정하는 것을 보여줍니다.
 
-Application Center 콘솔 애플리케이션의 `<context>` 섹션에서:
+`<context>` 섹션에서:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2282,7 +2282,7 @@ Application Center 콘솔 애플리케이션의 `<context>` 섹션에서:
 
 별표(\*) 문자를 와일드카드로 사용하여 Application Center REST 서비스가 Application Center 콘솔과 동일한 값을 사용하도록 지정할 수 있습니다. 예를 들어, `*://*:*/appcenter`는 Application Center 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 appcenter를 컨텍스트 루트로 사용함을 의미합니다.
 
-Application Center 서비스 애플리케이션의 `<context>` 섹션에서:
+`<context>` 섹션에서:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2427,7 +2427,7 @@ OTA(부트스트랩 페이지)에서 Application Center 모바일 클라이언�
 {: #jndi-properties-for-application-center }
 Application Center의 일부 JNDI 특성을 구성할 수 있습니다.
 
-| 특성     | 설명        |
+| 특성 | 설명 |
 |----------|-------------|
 | appcenter.database.type | appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 필요한 데이터베이스 유형입니다. |
 | appcenter.jndi.name | 데이터베이스의 JNDI 이름입니다. 이 매개변수는 데이터베이스를 지정하기 위한 일반 메커니즘입니다. 기본값은 java:comp/env/jdbc/AppCenterDS입니다. |

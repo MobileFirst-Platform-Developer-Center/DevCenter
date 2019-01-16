@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: 在 IBM Cloud Private 上设置 MobileFirst Server
-breadcrumb_title: Mobile Foundation on IBM Cloud Private
+breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -21,7 +21,7 @@ weight: 3
 * [先决条件](#prereqs)
 * [下载 IBM Mobile Foundation Passport Advantage 归档](#download-the-ibm-mfpf-ppa-archive)
 * [装入 IBM Mobile Foundation Passport Advantage 归档](#load-the-ibm-mfpf-ppa-archive)
-* [安装和配置 IBM {{site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)
+* [安装和配置 IBM {{ site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)
 * [验证安装](#verify-install)
 * [样本应用程序](#sample-app)
 * [升级 {{ site.data.keys.prod_adj }} Helm Chart 和发行版](#upgrading-mf-helm-charts)
@@ -127,16 +127,16 @@ weight: 3
 |  | analyticsDataDirectory | 存储分析数据的路径。 *它还将与在容器内安装持久卷声明的路径相同*。 | 缺省为 `/analyticsData` |
 |  | numberOfShards | {{ site.data.keys.prod_adj }} Analytics 的 Elasticsearch 分片数量 | 正整数<br/>缺省值为 **2** |
 |  | replicasPerShard | 针对 {{ site.data.keys.prod_adj }} Analytics 每个分片要维护的 Elasticsearch 副本数量 | 正整数<br/>缺省值为 **2** |
-| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
+| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{ site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
 | jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} JNDI 属性，为定制 Operational Analytics 而指定 | 提供逗号分隔的名称值对。 |
 | resources | limits.cpu | 描述允许的最大 CPU 量 | 缺省值为 **2000m**<br/>请阅读 [CPU 的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)。 |
 |  | limits.memory | 描述允许的最大内存量 | 缺省值为 **4096Mi**<br/>请阅读[内存的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)。 |
 |  | requests.cpu | 描述所需的最小 CPU 量。 如果未指定，那么缺省为 *limits*（如果已指定）或实现定义的值 | 缺省值为 **1000m**。 |
 |  | requests.memory | 描述所需的最小内存量。 如果未指定，那么内存量缺省为 *limits*（如果已指定）或实现定义的值 | 缺省值为 **2048Mi**。 |
 | persistence | existingClaimName | 现有持久卷声明 (PVC) 的名称 |  |
-| logs | consoleFormat |指定容器日志输出格式。|缺省值为 **json**。|
-|  | consoleLogLevel |控制转至容器日志的消息的详细程度。|缺省值为 **info**。|
-|  | consoleSource |指定写入容器日志的源。针对多个源，请使用逗号分隔的列表。|缺省值为 **message**, **trace**, **accessLog**, **ffdc**。|
+| logs | consoleFormat | 指定容器日志输出格式。| 缺省值为 **json**。|
+|  | consoleLogLevel | 控制转至容器日志的消息的详细程度。| 缺省值为 **info**。|
+|  | consoleSource | 指定写入容器日志的源。针对多个源，请使用逗号分隔的列表。| 缺省值为 **message**, **trace**, **accessLog**, **ffdc**。|
 
 
 ### {{ site.data.keys.mf_server }} 的环境变量
@@ -163,15 +163,15 @@ weight: 3
  |
 |  | analyticsAdminUser | 分析管理员用户的用户名 |  |
 |  | analyticsAdminPassword | 分析管理员用户的密码 |  |
-| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
+| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{ site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
 | jndiConfigurations | mfpfProperties | 用于定制部署的 {{ site.data.keys.prod_adj }} Server JNDI 属性 | 逗号分隔的名称值对。 |
 | resources | limits.cpu | 描述允许的最大 CPU 量 | 缺省值为 **2000m**<br/>请阅读 [CPU 的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)。 |
 |  | limits.memory | 描述允许的最大内存量 | 缺省值为 **4096Mi**<br/>请阅读[内存的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)。 |
 |  | requests.cpu | 描述所需的最小 CPU 量。 如果未指定，那么缺省为 *limits*（如果已指定）或实现定义的值。 | 缺省值为 **1000m**。 |
 |  | requests.memory | 描述所需的最小内存量。 如果未指定，那么缺省为 *limits*（如果已指定）或者实现定义的值 | 缺省值为 **2048Mi**。 |
-| logs | consoleFormat |指定容器日志输出格式。|缺省值为 **json**。|
-|  | consoleLogLevel |控制转至容器日志的消息的详细程度。|缺省值为 **info**。|
-|  | consoleSource |指定写入容器日志的源。针对多个源，请使用逗号分隔的列表。|缺省值为 **message**, **trace**, **accessLog**, **ffdc**。|
+| logs | consoleFormat | 指定容器日志输出格式。| 缺省值为 **json**。|
+|  | consoleLogLevel | 控制转至容器日志的消息的详细程度。| 缺省值为 **info**。|
+|  | consoleSource | 指定写入容器日志的源。针对多个源，请使用逗号分隔的列表。| 缺省值为 **message**, **trace**, **accessLog**, **ffdc**。|
 
 > 有关使用 Kibana 分析 {{ site.data.keys.prod_adj }} 日志的教程，请参阅[此处](analyzing-mobilefirst-logs-on-icp/)。
 

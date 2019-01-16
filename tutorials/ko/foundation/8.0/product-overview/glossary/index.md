@@ -28,7 +28,6 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 
 기타 용어 및 정의에 대해서는 [IBM 용어 웹 사이트](http://www.ibm.com/software/globalization/terminology/)를 참조하십시오.
 
-
 ## 가
 {: #가 }
 
@@ -440,7 +439,7 @@ UN/EDIFACT EDI 표준에서 EDI 컴포지트 데이터 요소의 일부분인 ED
 
 ### 하이브리드 애플리케이션(hybrid application)
 {: #hybrid-application }
-주로 웹 지향 언어(HTML5, CSS 및 JS)로 작성되었지만 앱이 고유 앱처럼 작동하여 사용자에게 고유 앱의 모든 기능을 제공하도록 고유 쉘에서 랩핑된 애플리케이션입니다.
+주로 웹 지향 언어(HTML5, CSS 및 JS)로 작성되었지만 앱이 네이티브 앱처럼 작동하여 사용자에게 네이티브 앱의 모든 기능을 제공하도록 네이티브 쉘에서 랩핑된 애플리케이션입니다.
 
 ### 환경(environment)
 {: #environment }

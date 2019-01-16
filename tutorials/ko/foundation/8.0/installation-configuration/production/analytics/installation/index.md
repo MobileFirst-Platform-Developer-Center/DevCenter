@@ -305,25 +305,25 @@ WebSphere Application Server Liberty 관리에 대한 자세한 정보는 WebSph
 
 다음 테이블은 이전 이벤트 유형과 새 이벤트 유형 사이의 맵핑을 보여줍니다. 일부 이벤트 유형은 변경되지 않았습니다.
 
-| 이전 이벤트 유형          | 새 이벤트 유형         |
+| 이전 이벤트 유형            | 새 이벤트 유형         |
 |---------------------------|------------------------|
-| AlertDefinition	          | AlertDefinition        |
+| AlertDefinition	        | AlertDefinition        |
 | AlertNotification	        | AlertNotification      |
-| AlertRunnerNode	          | AlertRunnerNode        |
+| AlertRunnerNode	        | AlertRunnerNode        |
 | AnalyticsConfiguration    | AnalyticsConfiguration |
-| CustomCharts	             | CustomChart            |
-| CustomData	               | CustomData             |
-| Devices	                  | Device                 |
+| CustomCharts	            | CustomChart            |
+| CustomData	            | CustomData             |
+| Devices	                | Device                 |
 | MfpAppLogs                | AppLog                 |
 | MfpAppPushAction          | AppPushAction          |
 | MfpAppSession	            | AppSession             |
-| ServerLogs	               | ServerLog              |
+| ServerLogs	            | ServerLog              |
 | ServerNetworkTransactions | NetworkTransaction     |
 | ServerPushNotifications   | PushNotification       |
 | ServerPushSubscriptions   | PushSubscription       |
 | Users	                    | User                   |
 | inboundRequestURL	        | resourceURL            |
-| mfpAppName	               | appName                |
+| mfpAppName	            | appName                |
 | mfpAppVersion	            | appVersion             |
 
 ### Analytics 데이터 마이그레이션

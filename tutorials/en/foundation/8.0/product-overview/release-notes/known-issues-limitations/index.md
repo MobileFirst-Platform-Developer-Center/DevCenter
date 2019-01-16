@@ -270,38 +270,41 @@ For other failures with submission to Google Play Store, you can contact Google 
 
 >**Note:** If you are using MobileFirst 8.0 iFix release version from Jan 2018 or later, it is recommended that you update both server and client to the same version.
 
-### Access errors while installing MobileFirst CLI using Node 8 
-{:#mfpdev-cli-installation errors} 
-While installing the MobileFirst CLI using npm, you may see the following errors in the Terminal output. 
+### Access errors while installing MobileFirst CLI using Node 8
+{:#mfpdev-cli-installation errors}
+While installing the MobileFirst CLI using npm, you may see the following errors in the Terminal output.
 
-```> bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+```
+> bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
 > node-gyp rebuild
 
-gyp ERR! clean error 
+gyp ERR! clean error
 gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
 gyp ERR! System Darwin 18.0.0
 gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
 gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
 gyp ERR! node -v v8.12.0
 gyp ERR! node-gyp -v v3.8.0
-gyp ERR! not ok 
+gyp ERR! not ok
 
 > utf-8-validate@1.2.2 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
 > node-gyp rebuild
 
-gyp ERR! clean error 
+gyp ERR! clean error
 gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
 gyp ERR! System Darwin 18.0.0
 gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
 gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
 gyp ERR! node -v v8.12.0
 gyp ERR! node-gyp -v v3.8.0
-gyp ERR! not ok 
+gyp ERR! not ok
 
 > fsevents@1.2.4 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/fsevents
 > node install
 ```
 
-This error is due a [known bug in node-gyp](https://github.com/nodejs/node-gyp/issues/1547). These errors can be ignored as this does not affect the functioning of the MobileFirst CLI. This is applicable for *mfpdev-cli iFix level 8.0.2018100112* and higher. To overcome this error, use the `--no-optional` flag during installation. For example, 
+This error is due a [known bug in node-gyp](https://github.com/nodejs/node-gyp/issues/1547). These errors can be ignored as this does not affect the functioning of the MobileFirst CLI. This is applicable for *mfpdev-cli iFix level 8.0.2018100112* and higher. To overcome this error, use the `--no-optional` flag during installation. For example,
 
-```npm install -g mfpdev-cli --no-optional```
+```bash
+npm install -g mfpdev-cli --no-optional
+```

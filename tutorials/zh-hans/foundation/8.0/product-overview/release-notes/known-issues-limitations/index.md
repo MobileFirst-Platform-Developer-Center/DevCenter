@@ -233,18 +233,6 @@ Web 应用程序具有以下限制：
 - {: #web_app_limit_ms_ie_n_edge }
 在 Microsoft Internet Explorer (IE) 和 Microsoft Edge 中，将根据操作系统的地区格式首选项而不根据配置的浏览器或操作系统显示语言首选项来显示管理应用程序消息和客户端 Web SDK 消息。 另请参阅[定义多种语言的管理员消息](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)。
 
-### 针对 iOS Cordova 应用程序的 WKWebView 支持
-{: #wkwebview-support-for-ios-cordova-applications }
-应用程序通知和“直接更新”功能可能在具有 WKWebView 的 iOS Cordova 应用程序中无法正确工作。
-
-此限制是由于 **cordova-plugin-wkwebview-engine** 中存在缺陷：file:// url XmlHttpRequests are not allowed in WKWebViewEgine。
-
-要避开此问题，请在 Cordova 项目中运行以下命令：`cordova plugin add https://github.com/apache/cordova-plugins.git#master:wkwebview-engine-localhost`
-
-执行此命令将在 Cordova 应用程序中运行本地 Web 服务器，然后您可以托管和访问本地文件，而无需使用文件 URI 方案 (file://) 来处理本地文件。
-
-**注：**此 Cordova 插件不发布至 Node Package Manager (npm)。
-
 ### cordova-plugin-statusbar 不适用于已装入 cordova-plugin-mfp 的 Cordova 应用程序。
 {: #cordova-plugin-statusbar-does-not-work-with-cordova-application-loaded-with-cordova-plugin-mfp }
 cordova-plugin-statusbar 不适用于已装入 cordova-plugin-mfp 的 Cordova 应用程序。
@@ -291,3 +279,42 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 如果在提交到 Google Play Store 时遇到其他失败情况，可以联系 Google 支持人员。
 
 >**注：**如果您使用的是 2018 年 1 月的 MobileFirst 8.0 iFix 发行版本或更高版本，建议您将服务器和客户机更新至同一版本。
+
+### 在使用 Node 8 安装 MobileFirst CLI 时发生访问错误
+{:#mfpdev-cli-installation errors}
+在使用 npm 安装 MobileFirst CLI 时，您可能会在终端输出中看到以下错误。
+
+```
+> bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> utf-8-validate@1.2.2 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> fsevents@1.2.4 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/fsevents
+> node install
+```
+
+出现该错误是因为 [node-gyp 中的已知错误](https://github.com/nodejs/node-gyp/issues/1547)。这些错误可以忽略，因为这不会影响 MobileFirst CLI 的运行。这适用于 *mfpdev-cli iFix level 8.0.2018100112* 和更高版本。要解决这一错误，请在安装期间使用 `--no-optional` 标志。例如，
+
+```bash
+npm install -g mfpdev-cli --no-optional
+```

@@ -92,12 +92,12 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 
 1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
 
-    Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
+    >Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
 
-2. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
+2. A partir d'une **fenêtre de ligne de commande**, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
 
     ```bash
-   mfpdev adapter build
+    mfpdev adapter build
     ```
 
 3. Une fois la génération terminée, déployez-la à partir de la console {{ site.data.keys.mf_console }} en utilisant l'option **Actions → Déployer un adaptateur**. L'adaptateur est disponible dans le dossier **[adaptateur]/target**.

@@ -33,14 +33,19 @@ weight: 1
 
 #### 다음으로 이동:
 {: #jump-to}
-* [{{ site.data.keys.mf_bm_short }} 서비스 설정](#setting-up-the-mobile-foundation-service)
-* [{{ site.data.keys.mf_bm_short }} 서비스 사용](#using-the-mobile-foundation-service)
-* [서버 구성](#server-configuration)
-* [고급 서버 구성](#advanced-server-configuration)
-* [{{ site.data.keys.mfound_server }} 수정사항 적용](#applying-mobilefirst-server-fixes)
-* [서버 로그에 액세스](#accessing-server-logs)
-* [문제점 해결](#troubleshooting)
-* [추가 정보](#further-reading)
+- [개요](#overview)
+    - [다음으로 이동:](#jump-to)
+- [{{ site.data.keys.mf_bm_short }} 서비스 설정](#setting-up-the--sitedatakeysmfbmshort--service)
+  - [*Developer* 플랜 설정](#setting-up-the-developer-plan)
+  - [*Professional(단일 애플리케이션)* 및 *Professional(디바이스별)* 플랜 설정](#setting-up-the-professional-1-application-and-professional-per-device-plan)
+- [{{ site.data.keys.mf_bm_short }} 서비스 사용](#using-the--sitedatakeysmfbmshort--service)
+  - [서버 구성](#server-configuration)
+  - [고급 서버 구성](#advanced-server-configuration)
+- [{{ site.data.keys.mfound_server }} 수정사항 적용](#applying--sitedatakeysmfoundserver--fixes)
+- [서버 로그에 액세스](#accessing-server-logs)
+    - [추적](#tracing)
+- [문제점 해결](#troubleshooting)
+- [추가 정보](#further-reading)
 
 ## {{ site.data.keys.mf_bm_short }} 서비스 설정
 {: #setting-up-the-mobile-foundation-service }

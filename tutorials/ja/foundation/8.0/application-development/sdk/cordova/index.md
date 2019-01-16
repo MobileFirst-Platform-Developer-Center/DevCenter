@@ -24,8 +24,8 @@ weight: 1
 MobileFirst プラグインでサポートされる Cordova プラットフォームのバージョンは次のとおりです。
 
 * cordova-ios: **>= 4.1.1 と < 5.0**
-* cordova-android: **>= 6.1.2 と <= 7.0**
-* cordova-windows: **>= 4.3.2 と < 6.0**
+* cordova-android: **>= 6.1.2 と <= 8.0**
+* cordova-windows: **>= 4.3.2 と < 7.0**
 
 #### ジャンプ先:
 {: #jump-to }
@@ -544,7 +544,7 @@ If you click the button to ping MFP on the browser running on port `8000`, the p
 mfpdev app preview
 ```
 
-サポートされるブラウザー・オプションは*「Simple Browser Rendering」* のみです。*「Mobile Browser Support」*オプションは Browser プラットフォームではサポートされません。
+サポートされるブラウザー・オプションは*「Simple Browser Rendering」* のみです。 *「Mobile Browser Support」*オプションは Browser プラットフォームではサポートされません。
 
 ### Cordova ブラウザー・リソースにサービス提供するための WebSphere Liberty の使用
 {: #using-liberty-cordova-browser}

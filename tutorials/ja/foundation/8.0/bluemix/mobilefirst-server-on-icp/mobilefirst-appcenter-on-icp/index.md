@@ -65,7 +65,7 @@ MobileFirst Application Center について詳しくは、[MobileFirst Applicati
       ```bash
       bx pr login -a https://<ip>:<port>
       ```
-      オプションで、SSL 検証をスキップする場合は、上記のコマンドでフラグ `--skip-ssl-validation` を使用します。このオプションを使用すると、クラスター・エンドポイントの `username` と `password` の入力を求めるプロンプトが出されます。 ログインに成功したら、以下のステップに進んでください。
+      オプションで、SSL 検証をスキップする場合は、上記のコマンドでフラグ `--skip-ssl-validation` を使用します。 このオプションを使用すると、クラスター・エンドポイントの `username` と `password` の入力を求めるプロンプトが出されます。 ログインに成功したら、以下のステップに進んでください。
 
   2. 以下のコマンドを使用して、{{ site.data.keys.product }} の PPA アーカイブをロードします。
       ```
@@ -92,7 +92,7 @@ MobileFirst Application Center について詳しくは、[MobileFirst Applicati
 
 | 修飾子 | パラメーター | 定義 | 使用可能な値 |
 |-----------|-----------|------------|---------------|
-| arch |  | ワーカー・ノード・アーキテクチャー | このチャートのデプロイ先となるワーカー・ノード・アーキテクチャー。現在、**AMD64** プラットフォームのみがサポートされています。 |
+| arch |  | ワーカー・ノード・アーキテクチャー | このチャートのデプロイ先となるワーカー・ノード・アーキテクチャー。 現在、**AMD64** プラットフォームのみがサポートされています。 |
 | image | pullPolicy | イメージ・プル・ポリシー | デフォルトは **IfNotPresent** |
 |  | name | Docker イメージ名 | {{ site.data.keys.mf_app_center }} Docker イメージの名前。 |
 |  | tag | Docker イメージ・タグ | [Docker タグの説明](https://docs.docker.com/engine/reference/commandline/image_tag/)を参照 |
@@ -104,12 +104,12 @@ MobileFirst Application Center について詳しくは、[MobileFirst Applicati
 |  | appCenterDB2Username | DB2 データベースにアクセスするための DB2 ユーザー名 | ユーザーには、表を作成するための権限と、スキーマがまだ存在しない場合、スキーマを作成するための権限が必要です。 |
 |  | appCenterDB2Password | 指定されたデータベースの DB2 パスワード |  |
 |  | appCenterDB2Schema | 作成する {{site.data.keys.mf_app_center_short }} DB2 スキーマ  |  |
-|  | appCenterDB2ConnectionIsSSL | DB2 接続タイプ | データベース接続が **http** と **https** のいずれであるかを指定します。デフォルト値は **false** (http) です。 DB2 ポートも同じ接続モード用に構成されていることを確認してください。 |
+|  | appCenterDB2ConnectionIsSSL | DB2 接続タイプ | データベース接続が **http** と **https** のいずれであるかを指定します。 デフォルト値は **false** (http) です。 DB2 ポートも同じ接続モード用に構成されていることを確認してください。 |
 | keystores | keystoresSecretName | 鍵ストアとそのパスワードを設定した秘密を作成するステップを説明している、[IBM {{site.data.keys.product }} Helm チャートのインストールおよび構成](../#configure-install-mf-helmcharts)を参照してください。 |  |
 | resources | limits.cpu | 許可される CPU の最大量 | デフォルトは **1000m**<br/>詳しくは、[ここ](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)を参照してください。 |
 |  | limits.memory | 許可されるメモリーの最大量 | デフォルトは **1024Mi**<br/>詳しくは、[ここ](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)を参照してください。 |
-| resources.requests | requests.cpu | 必要な CPU の最小量を記述します。指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1000m** |
-|  | requests.memory | 必要な最小メモリーを記述します。指定されない場合、メモリーは、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1024Mi** |
+| resources.requests | requests.cpu | 必要な CPU の最小量を記述します。 指定されない場合、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1000m** |
+|  | requests.memory | 必要な最小メモリーを記述します。 指定されない場合、メモリーは、*limits* が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1024Mi** |
 
 ## {{site.data.keys.mf_app_center }} のインストールおよび構成
 {: #configure-install-mf-appcenter-helmcharts}

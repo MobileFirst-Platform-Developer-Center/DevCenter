@@ -138,10 +138,7 @@ O instalador pode criar o banco de dados, exceto para o tipo de banco de dados O
     Os comandos no exemplo a seguir criam um usuário chamado APPCENTER para o banco de dados:
 
         ```bash
-        CONNECT SYSTEM/<SYSTEM_password>@ORCL
-        CREATE USER APPCENTER IDENTIFIED BY password DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
-        GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO APPCENTER;
-        DISCONNECT;
+        CONNECT SYSTEM/<SYSTEM_password>@ORCL CREATE USER APPCENTER IDENTIFIED BY password DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS; GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO APPCENTER; DISCONNECT;
         ```
 
 ### Instalando o Application Center no WebSphere Application Server Network Deployment
@@ -291,7 +288,9 @@ Use tarefas Ant para implementar o Application Center Console and Services em um
 Antes de iniciar,
 
 * Conclua o procedimento em [Criando e configurando o banco de dados para Application Center com tarefas Ant](#creating-and-configuring-the-database-for-application-center-with-ant-tasks).
-* Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos está instalado, ou o Network Deployment Manager para WebSphere Application Server Network Deployment. Se você deseja iniciar a tarefa Ant a partir de um computador no qual o {{ site.data.keys.mf_server }} não estiver instalado, deverá copiar os arquivos e diretórios a seguir em tal computador:
+* Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos está instalado, ou o Network Deployment Manager para WebSphere Application Server Network Deployment. Se você
+deseja iniciar a tarefa Ant a partir de um computador no qual o {{ site.data.keys.mf_server }} não estiver
+instalado, deverá copiar os arquivos e diretórios a seguir em tal computador:
 
     * A biblioteca **mf\_server\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar**
     * Os aplicativos da web (arquivos WAR e EAR) em **mf_server\_install\_dir/ApplicationCenter/console**
@@ -839,10 +838,7 @@ Conclua o procedimento a seguir para configurar o banco de dados Oracle.
     * Para criar o usuário usando o Oracle SQLPlus, insira os seguintes comandos:
 
       ```bash
-      CONNECT SYSTEM/<SYSTEM_password>@ORCL
-      CREATE USER APPCENTER IDENTIFIED BY password DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
-      GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO APPCENTER;
-      DISCONNECT;
+      CONNECT SYSTEM/<SYSTEM_password>@ORCL CREATE USER APPCENTER IDENTIFIED BY password DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS; GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO APPCENTER; DISCONNECT;
       ```
 
 3. Crie as tabelas para o banco de dados do Application Center:
@@ -1076,9 +1072,7 @@ Além das modificações para os bancos de dados descritos em [Instalando manual
     * Nos sistemas UNIX e Linux:
 
       ```bash
-      mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+      mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/ cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * Nos sistemas do Windows:
 
@@ -1352,9 +1346,7 @@ Além das modificações para os bancos de dados descritos em [Instalando manual
     * Nos sistemas UNIX e Linux:
 
       ```bash
-      mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+      mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/ cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * Nos sistemas do Windows:
 
@@ -2186,11 +2178,14 @@ Para obter uma lista completa de propriedades JNDI, consulte [Propriedades JNDI 
 1. Efetue login no console do WebSphere Application Server.
 2. Selecione **Aplicativos → Tipos de aplicativos → Aplicativos corporativos WebSphere**.
 3. Clique em **AppCenterEAR**.
-4. Na seção **Propriedades do Módulo da Web**, selecione **Entradas de ambiente para módulos da web**.
-5. Designe os valores apropriados para as seguintes entradas de ambiente:
+4. Na seção **Propriedades do Módulo da Web**, selecione **Entradas de
+ambiente para módulos da web**.
+5. Designe os valores apropriados para as seguintes entradas de
+ambiente:
     * Para **ibm.appcenter.proxy.host**, designe o nome do host.
     * Para **ibm.appcenter.proxy.port**, designe o número da porta.
-    * Para **ibm.appcenter.proxy.protocol**, designe o protocolo externo.
+    * Para **ibm.appcenter.proxy.protocol**,
+designe o protocolo externo.
 6. Para **ibm.appcenter.services.endpoint**, designe o URI completo dos serviços REST do Application Center (o URI do arquivo **applicationcenter.war**).
     * Em um cenário com um firewall ou um proxy reverso seguro, esse URI deve ser o URI externo e não o URI interno na LAN local.
     * É possível usar o caractere asterisco (\*) como curinga para especificar que os serviços REST do Application Center usam o mesmo valor que o console do Application Center.

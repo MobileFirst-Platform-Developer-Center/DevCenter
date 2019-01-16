@@ -62,7 +62,7 @@ MobileFirst 플러그인에서 지원되는 Ionic Cordova 플랫폼 버전은 �
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-*cordova-plugin-mfp-encrypt-utils* 플러그인은 iOS 플랫폼에 Cordova 애플리케이션의 암호화에 필요한 iOS OpenSSL을 제공합니다. 자세한 정보는 [Cordova iOS에 OpenSSL 사용](additional-information)을 참조하십시오.
+*cordova-plugin-mfp-encrypt-utils* 플러그인은 iOS 플랫폼에 Cordova 애플리케이션의 암호화에 필요한 iOS OpenSSL을 제공합니다. 자세한 정보는 [Cordova iOS에 OpenSSL 사용](../cordova/additional-information)을 참조하십시오.
 
 **전제조건:**
 
@@ -113,7 +113,7 @@ MobileFirst 플러그인에서 지원되는 Ionic Cordova 플랫폼 버전은 �
    cordova platform add ios
    ```
 
-4. `ionic cordova prepare command` 명령을 실행하여 애플리케이션 자원을 준비하십시오.
+4. `ionic cordova prepare command`를 실행하여 애플리케이션 자원을 준비하십시오.
 
    ```bash
    ionic cordova prepare
@@ -156,7 +156,7 @@ MobileFirst 플러그인에서 지원되는 Ionic Cordova 플랫폼 버전은 �
 이벤트를 호출한 후에 다양한 {{ site.data.keys.product_adj }} API 메소드를 호출하십시오.
 
 ## {{ site.data.keys.product_adj }} Ionic SDK 업데이트
-{: #updating-the-mobilefirst-cordova-sdk }
+{: #updating-the-mobilefirst-ionic-sdk }
 최신 릴리스로 {{ site.data.keys.product_adj }} Ionic Cordova SDK를 업데이트하려면 `ionic cordova plugin remove cordova-plugin-mfp` 명령을 실행하여 **cordova-plugin-mfp** 플러그인을 제거한 후에 `ionic cordova plugin add cordova-plugin-mfp` 명령을 실행하여 이를 다시 추가하십시오.
 
 SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/cordova-plugin-mfp)에 있습니다.

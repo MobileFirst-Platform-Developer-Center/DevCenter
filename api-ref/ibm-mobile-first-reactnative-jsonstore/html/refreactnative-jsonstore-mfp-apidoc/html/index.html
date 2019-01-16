@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">Home | IBM Mobile Foundation JSONStore SDK for React Native applications</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="This is the Mobile Foundation JSONStore SDK for React Native apps on Android and iOS. JSONStore is client-side API providing a lightweight, document-oriented storage system. JSONStore enables encrypted persistent storage of JSON documents."><meta property="og:type" content="website"><meta property="og:url" content="https://mobilefirstplatform.ibmcloud.com/"><meta property="og:site_name" content="IBM Mobile Foundation JSONStore SDK for React Native applications"><meta property="og:title" content="IBM Mobile Foundation JSONStore SDK for React Native applications"><meta property="og:image" content="../core/mfp_512x512.png"><meta property="og:description" content="This is the Mobile Foundation JSONStore SDK for React Native apps on Android and iOS. JSONStore is client-side API providing a lightweight, document-oriented storage system. JSONStore enables encrypted persistent storage of JSON documents."><meta property="og:author" content="IBM"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="IBM Mobile Foundation JSONStore SDK for React Native applications"><meta property="twitter:description" content="This is the Mobile Foundation JSONStore SDK for React Native apps on Android and iOS. JSONStore is client-side API providing a lightweight, document-oriented storage system. JSONStore enables encrypted persistent storage of JSON documents."><meta property="twitter:image" content="../core/mfp_512x512.png"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreAddOptions.js~JSONStoreAddOptions.html">JSONStoreAddOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreChangeOptions.js~JSONStoreChangeOptions.html">JSONStoreChangeOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreCollection.js~JSONStoreCollection.html">JSONStoreCollection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreFindOptions.js~JSONStoreFindOptions.html">JSONStoreFindOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreInitOptions.js~JSONStoreInitOptions.html">JSONStoreInitOptions</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreQueryPart.js~JSONStoreQueryPart.html">JSONStoreQueryPart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreSyncPolicy.js~JSONStoreSyncPolicy.html">JSONStoreSyncPolicy</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/WLJSONStore.js~WLJSONStore.html">WLJSONStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/WLLogger.js~WLLogger.html">WLLogger</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p># 
+&lt;!---
+   Licensed Materials - Property of IBM</p>
+<p>   (C) Copyright 2018 IBM Corp.</p>
+<p>   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+--&gt;</p>
+<h1 id="react-native-sdk-for-ibm-mobilefirst-jsonstore">React Native SDK for IBM MobileFirst JSONStore</h1><h2 id="description">Description</h2><p>The IBM Mobile Foundation JSONStore is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of JSON documents. Documents in an application are available in JSONStore even when the device is offline. This persistent, always-available storage can be useful to give users access to documents when,for example, there is no network connection available in the device.</p>
+<h3 id="key-features">Key features</h3><ul>
+<li>Automatic upstream or downstream synchronization of on-device data with a Cloudant database (or a database compliant with the Couch DB protocol).</li>
+<li>Data indexing for efficient searching</li>
+<li>Mechanism for tracking local-only changes to the stored data</li>
+<li>Support for multiple users</li>
+<li>AES 256 encryption of stored data provides security and confidentiality. You can segment protection by user with password-protection, in the case of more than one user on a single device.</li>
+</ul>
+<p>Read more about JSONStore <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/jsonstore/">here</a>.</p>
+<h2 id="changelog">Changelog</h2><p>For details of the changes in this latest release, visit the <a href="http://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/8-0-master-ifix-release">IBM Mobile Foundation Blog</a>.</p>
+<h2 id="installation">Installation</h2><p>The IBM MobileFirst&#x2122; JSONStore SDK for React Native apps is dependent on the <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst">IBM MobileFirst Foundation SDK</a>. If you have already added the IBM MobileFirst Foundation SDK to your app, continue with the instructions below.</p>
+<p>Navigate to the folder of your React Native app and run the following command to install the JSONStore SDK for React Native apps. </p>
+<p><code>npm install react-native-ibm-mobilefirst-jsonstore --save</code></p>
+<h2 id="getting-started">Getting Started</h2><h3 id="pre-requisites">Pre-requisites</h3><ol>
+<li><p>Make sure you have all the pre-requisites for a React Native app covered. See the <a href="https://facebook.github.io/react-native/docs/getting-started.html">React Native Getting Started</a> page if you&apos;re new to this whole stuff. </p>
+</li>
+<li><p>A [Mobile Foundation instance on IBM Cloud] (<a href="https://console.bluemix.net/catalog/services/Mobile%20Foundation">https://console.bluemix.net/catalog/services/Mobile%20Foundation</a>) OR
+an <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/">on-premise installation</a> of the IBM Mobile Foundation server. </p>
+</li>
+</ol>
+<h3 id="create-a-react-native-project">Create a React Native Project</h3><ul>
+<li>The first step is to create a React Native project. Let&apos;s call our app as the <code>JSONStoreApp</code>. Use the React Native CLI to create a new project. </li>
+</ul>
+<blockquote>
+<p><code>react-native init JSONStoreApp</code></p>
+<p><code>cd JSONStoreApp</code></p>
+</blockquote>
+<ul>
+<li><p>Install the MobileFirst Core SDK and complete the Getting Started Instructions from <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst">here</a>. </p>
+</li>
+<li><p>Next, add the IBM MobileFirst JSONStore SDK to your app</p>
+</li>
+</ul>
+<blockquote>
+<p><code>npm install react-native-ibm-mobilefirst-jsonstore &#x2014;-save</code></p>
+</blockquote>
+<ul>
+<li>Link your project so that all native dependencies are added to your React Native project. </li>
+</ul>
+<blockquote>
+<p><code>react-native link</code></p>
+</blockquote>
+<h3 id="creating-a-jsonstore-collection">Creating a JSONStore Collection</h3><p>The first step in using the JSONStore API is to create a JSONStore Collection. </p>
+<p>Import the JSONStore classes into your application. Open <code>App.js</code> and add the following line among the other import statements</p>
+<pre><code><code class="source-code prettyprint">import {WLJSONStore, JSONStoreCollection} from &apos;react-native-ibm-mobilefirst-jsonstore&apos;; </code>
+</code></pre><p>Next, create and open a collection. You can open multiple collections at once. Pass a <code>JSONStoreInitOptions</code> parameter for advanced options such as protecting your collection with a password, setting up sync policies etc. </p>
+<pre><code><code class="source-code prettyprint">var dogs = new JSONStoreCollection(&apos;dogs&apos;); 
+WLJSONStore.openCollections([&apos;dogs&apos;]);  // Provide the name of the collection as a string. </code>
+</code></pre><h3 id="adding-data-to-a-collection">Adding data to a collection</h3><p>Add JSON data to your collection. </p>
+<pre><code><code class="source-code prettyprint">    var hachi = { &quot;name&quot; : &quot;Hachiko&quot; , &quot;breed&quot; : &quot;Akita&quot; , &quot;country&quot; : &quot;Japan&quot;}; 
+    dogs.addData(hachi).then( ()=&gt; { 
+      // Data was added to the collection successfully.
+    }).catch ( (err) =&gt; { 
+      // Error adding data. See the err object for more information on the error 
+    })</code>
+</code></pre><h3 id="querying-data-from-a-collection">Querying data from a collection</h3><p>Use any of the JSONStoreCollection.find* APIs to query a collection. 
+Use JSONStoreQueryPart and JSONStoreQuery APIs for advanced filtering and querying of JSON data. </p>
+<pre><code><code class="source-code prettyprint">    dogs.findAllDocuments().then( (result) =&gt; { 
+       // result will have all the documents in the collection 
+       // E.g. [ {&quot;json&quot;: {&quot;name&quot;:&quot;Hachiko&quot;,&quot;breed&quot;:&quot;Akita&quot;,&quot;country&quot;:&quot;Japan&quot;},&quot;_id&quot;:2}]       
+     }).catch((error) =&gt; {
+        console.error (&quot;Error finding docs &quot; +  JSON.stringify(error));
+     });</code>
+</code></pre><h3 id="closing--clearing-and-destroying-your-collection">Closing, clearing and destroying your collection</h3><p>Closing your collection will close your JSONStore collection for further access until it is opened again using the <code>openCollections</code> API </p>
+<pre><code><code class="source-code prettyprint">WLJSONStore.closeAll()</code>
+</code></pre><p>Clearing a collection will remove all documents from a collection but does not destroy it. </p>
+<pre><code><code class="source-code prettyprint">    dogs.clearCollection().then (()=&gt;{
+        // All documents cleared successfully
+     }).catch( (err) =&gt; { 
+       // An error occurred while clearing the collection. 
+     })</code>
+</code></pre><p>Destroying a collection will permanently delete all data, all accessors and security artifacts. A collection once destroyed cannot be restored. All collections of the app will be destroyed. </p>
+<pre><code><code class="source-code prettyprint">    WLJSONStore.destroy()</code>
+</code></pre><h2 id="supported-platforms">Supported platforms</h2><ul>
+<li>Android</li>
+<li>iOS</li>
+</ul>
+<h2 id="documentation">Documentation</h2><ul>
+<li><p><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/">Developer Center</a></p>
+</li>
+<li><p><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/reactnative-tutorials/">Getting Started</a></p>
+</li>
+<li><p><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/api/client-side-api/reactnative/jsonstore/">API Reference</a> </p>
+</li>
+</ul>
+<p>Copyright 2018 IBM Corp.</p>
+<p>IBM - IBM MobileFirst Platform Foundation v8.0 license agreement</p>
+<p><a href="https://mobilefirstplatform.ibmcloud.com/licenses/ipla">Terms of Use</a></p>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

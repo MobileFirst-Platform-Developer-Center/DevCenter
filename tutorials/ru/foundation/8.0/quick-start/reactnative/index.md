@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Обзор
 {: #overview }
-В этой демонстрации рассматриваются все этапы потока. 
+В этой демонстрации рассматриваются все этапы потока.
 
 1. Пример приложения, поставляемый вместе с SDK клиента {{ site.data.keys.product_adj }}, регистрируется и загружается с помощью {{ site.data.keys.mf_console }}.
 2. В {{ site.data.keys.mf_console }} развертывается новый или предоставленный адаптер.  
@@ -16,8 +16,8 @@ weight: 1
 
 **Конечный результат**:
 
-* Успешная проверка связи с {{ site.data.keys.mf_server }}. 
-* Успешное извлечение данных с помощью адаптера. 
+* Успешная проверка связи с {{ site.data.keys.mf_server }}.
+* Успешное извлечение данных с помощью адаптера.
 
 ### Предварительные требования:
 {: #prerequisites }
@@ -28,11 +28,11 @@ weight: 1
 
 ### Шаг 1. Запуск {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation), либо в случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows). 
+Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation), либо в случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
 
 ### Шаг 2. Создание и регистрация приложения
 {: #2-creating-and-registering-an-application }
-В браузере откройте {{ site.data.keys.mf_console }} с помощью следующего URL: `http://your-server-host:server-port/mfpconsole`. Если сервер работает в локальном режиме, введите следующий адрес: `http://localhost:9080/mfpconsole`. *Идентификационные данные пользователя*: **admin/admin**. 
+В браузере откройте {{ site.data.keys.mf_console }} с помощью следующего URL: `http://your-server-host:server-port/mfpconsole`. Если сервер работает в локальном режиме, введите следующий адрес: `http://localhost:9080/mfpconsole`. *Идентификационные данные пользователя*: **admin/admin**.
 
 1. Нажмите кнопку **Создать** рядом с разделом **Приложения**
     * Выберите платформу: **Android, iOS**
@@ -42,11 +42,11 @@ weight: 1
 
     <img class="gifplayer" alt="Зарегистрировать приложение" src="register-an-application-reactnative.png"/>
 
-2. Загрузите пример приложения React Native с веб-сайта [Github](https://github.ibm.com/MFPSamples/MFPStarterReactNative). 
+2. Загрузите пример приложения React Native с веб-сайта [Github](https://github.ibm.com/MFPSamples/MFPStarterReactNative).
 
 ### Шаг 3. Изменение логики приложения
 {: #3-editing-application-logic }
-1. Откройте проект React Native в предпочитаемом редакторе кода. 
+1. Откройте проект React Native в предпочитаемом редакторе кода.
 
 2. Выберите файл **app.js**, расположенный в корневой папке проекта, и вставьте следующий фрагмент кода, заменив существующую функцию `WLAuthorizationManager.obtainAccessToken()`:
 
@@ -75,11 +75,11 @@ weight: 1
 
 ### Шаг 4. Развертывание адаптера
 {: #4-deploy-an-adapter }
-Загрузите [артефакт .adapter](../javaAdapter.adapter) и разверните его в {{ site.data.keys.mf_console }}, выбрав в меню **Действия → Развернуть адаптер**. 
+Загрузите [артефакт .adapter](../javaAdapter.adapter) и разверните его в {{ site.data.keys.mf_console }}, выбрав в меню **Действия → Развернуть адаптер**.
 
 Кроме того, можно нажать кнопку **Создать** рядом с разделом **Адаптеры**.  
 
-1. Выберите **Действия → Загрузить пример**. Загрузите пример адаптера **Java** *Hello World*. 
+1. Выберите **Действия → Загрузить пример**. Загрузите пример адаптера **Java** *Hello World*.
 
     Если Maven и {{ site.data.keys.mf_cli }} не установлены, выполните инструкции по **настройке среды разработки**.
 
@@ -111,12 +111,12 @@ mfpdev app register myIBMCloudServer
 react-native run-ios|run-android
 ```
 
-Если устройство подключено, приложение устанавливается и запускается на устройстве. В противном случае применяется симулятор или эмулятор. 
+Если устройство подключено, приложение устанавливается и запускается на устройстве. В противном случае применяется симулятор или эмулятор.
 
 <br clear="all"/>
 ### Результаты
 {: #results }
-* При нажатии кнопки **Проверить связь с {{ site.data.keys.mf_server }}** выдается сообщение **Установлено соединение с {{ site.data.keys.mf_server }}**. 
+* При нажатии кнопки **Проверить связь с {{ site.data.keys.mf_server }}** выдается сообщение **Установлено соединение с {{ site.data.keys.mf_server }}**.
 * Если приложению удалось подключиться к {{ site.data.keys.mf_server }}, ресурс запрашивается с помощью развернутого адаптера Java. Ответ адаптера отображается в предупреждении.
 
 ## Дальнейшие действия

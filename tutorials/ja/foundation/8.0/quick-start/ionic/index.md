@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-このデモンストレーションの目的は、エンドツーエンドのフローを説明することです。以下の手順を実行します。
+このデモンストレーションの目的は、エンドツーエンドのフローを説明することです。 以下の手順を実行します。
 
 1. {{ site.data.keys.product_adj }} クライアント SDK と事前にバンドルされているサンプル・アプリケーションは登録済みで、{{ site.data.keys.mf_console }} からダウンロードされています。
 2. 新規または提供済みのアダプターは {{ site.data.keys.mf_console }} にデプロイされています。  
@@ -32,7 +32,7 @@ weight: 1
 
 ### ステップ 2. アプリケーションの作成および登録
 {: #2-creating-and-registering-an-application }
-ブラウザーで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 サーバーがローカルで実行されている場合は、`http://localhost:9080/mfpconsole` を使用します。*ユーザー名/パスワード* は **admin/admin** です。
+ブラウザーで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 サーバーがローカルで実行されている場合は、`http://localhost:9080/mfpconsole` を使用します。 *ユーザー名/パスワード* は **admin/admin** です。
 
 1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
     * プラットフォームのリストから、次のいずれかを選択します。**Android、iOS、Windows、Browser**
@@ -159,7 +159,7 @@ WLAuthorizationManager.obtainAccessToken("").then(
 ### 結果
 {: #results }
 * **「{{ site.data.keys.mf_server }} への ping (Ping MobileFirst Server)」**ボタンをクリックすると、**「{{ site.data.keys.mf_server }} に接続されています (Connected to MobileFirst Server)」**が表示されます。
-* アプリケーションが {{ site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。その場合、アダプター応答がアラートに表示されます。
+* アプリケーションが {{ site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。 その場合、アダプター応答がアラートに表示されます。
 
 ## 次の手順
 {: #next-steps }

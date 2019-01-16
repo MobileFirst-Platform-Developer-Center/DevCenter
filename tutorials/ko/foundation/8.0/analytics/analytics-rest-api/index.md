@@ -26,7 +26,7 @@ Analytics REST API를 사용하려는 경우:
 
 `/analytics-service/rest`
 
-**예**
+**예제**
 
 `https://example.com:9080/analytics-service/v3/applogs`
 
