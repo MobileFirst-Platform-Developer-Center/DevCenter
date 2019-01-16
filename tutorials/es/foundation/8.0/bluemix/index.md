@@ -54,7 +54,7 @@ El tiempo de ejecución de Liberty for Java está basado en el paquete de compil
 ## Guías de aprendizaje que se han de seguir a continuación
 {: #tutorials-to-follow-next }
 
-* Crear una instancia de {{ site.data.keys.mf_bm_short }} en Kubernetes Cluster en IBM Cloud [mediante scripts proporcionados por IBM](mobilefirst-server-using-kubernetes/).
+* Crear una instancia de {{ site.data.keys.mf_bm_short }} en Kubernetes Cluster en IBM Cloud [mediante scripts proporcionados por IBM](mobilefirst-server-on-kubernetes-using-scripts/).
 * Crear una instancia de {{ site.data.keys.mf_server }} utilizando la guía de aprendizaje [Configuración del servicio de {{ site.data.keys.mf_bm }}](using-mobile-foundation/).
 <!--* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.-->
 * Crear una instancia de {{ site.data.keys.mf_server }} mediante Liberty for Java en IBM Cloud [mediante scripts proporcionados por IBM](mobilefirst-server-using-scripts-lbp/).

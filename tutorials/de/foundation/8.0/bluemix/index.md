@@ -54,7 +54,7 @@ Die Liberty-for-Java-Laufzeit basiert auf dem Buildpack liberty-for-java. Dieses
 ## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
 
-* Erstellen Sie in IBM Cloud [mit von IBM bereitgestellten Scripts](mobilefirst-server-using-kubernetes/) eine Mobile-Foundation-Instanz für Kubernetes-Cluster.
+* Erstellen Sie in IBM Cloud [mit von IBM bereitgestellten Scripts](mobilefirst-server-on-kubernetes-using-scripts/) eine Mobile-Foundation-Instanz für Kubernetes-Cluster.
 * Erstellen Sie eine MobileFirst-Server-Instanz. Nutzen Sie dazu das Lernprogramm [Service {{ site.data.keys.mf_bm }} einrichten](using-mobile-foundation/).
 <!--* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.-->
 * Erstellen Sie in IBM Cloud [mit von IBM bereitgestellten Scripts](mobilefirst-server-using-scripts-lbp/) eine MobileFirst-Server-Instanz unter Verwendung von Liberty for Java.

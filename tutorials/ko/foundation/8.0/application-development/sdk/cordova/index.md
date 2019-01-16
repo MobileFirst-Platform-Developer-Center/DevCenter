@@ -24,8 +24,8 @@ weight: 1
 MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음과 같습니다.
 
 * cordova-ios: **>= 4.1.1 및 < 5.0**
-* cordova-android: **>= 6.1.2 및 <= 7.0**
-* cordova-windows: **>= 4.3.2 및 < 6.0**
+* cordova-android: **>= 6.1.2 및 <= 8.0**
+* cordova-windows: **>= 4.3.2 및 < 7.0**
 
 #### 다음으로 이동:
 {: #jump-to }

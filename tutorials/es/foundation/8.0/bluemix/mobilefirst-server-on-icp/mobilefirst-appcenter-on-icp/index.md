@@ -30,7 +30,7 @@ Para obtener más información sobre MobileFirst Application Center, consulte la
 
 Debe tener una cuenta de {{ site.data.keys.prod_icp }} y debe haber configurado Kubernetes Cluster siguiendo la [documentación de  {{ site.data.keys.prod_icp }}](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html).
 
-Necesita una base de datos preconfigurada para instalar y configurar gráficos de {{ site.data.keys.mf_app_center }} en {{ site.data.keys.prod_icp }}. Deberá proporcionar la información de base de datos para configurar el gráfico helm de {{ site.data.keys.mf_app_center }}. Las tablas necesarias para {{ site.data.keys.mf_app_center }} se crearán en esta base de datos.
+Necesita una base de datos preconfigurada para instalar y configurar gráficos de {{ site.data.keys.mf_app_center }} en {{ site.data.keys.prod_icp }}. Deberá proporcionar la información de base de datos para configurar el gráfico Helm de {{ site.data.keys.mf_app_center }}. Las tablas necesarias para {{ site.data.keys.mf_app_center }} se crearán en esta base de datos.
 
 > Bases de datos soportadas: DB2.
 
@@ -103,7 +103,7 @@ La tabla siguiente indica las variables de entorno utilizadas en {{ site.data.ke
 |  | appCenterDB2Database | Nombre de la base de datos que se va a utilizar | La base de datos debe crearse previamente. |
 |  | appCenterDB2Username | Nombre de usuario de DB2 para acceder a la base de datos DB2 | El usuario debe tener acceso para crear tablas y crear el esquema si no existe todavía. |
 |  | appCenterDB2Password | Contraseña de DB2 de la base de datos proporcionada |  |
-|  | appCenterDB2Schema | Esquema de {{ site.data.keys.mf_app_center_short }} DB2 que se va a crear |  |
+|  | appCenterDB2Schema | Esquema de {{ site.data.keys.mf_app_center_short }} DB2 que se va a crear  |  |
 |  | appCenterDB2ConnectionIsSSL | Tipo de conexión de DB2 | Especifique si la conexión de la base de datos debe ser **http** o **https**. El valor predeterminado es **false** (http). Asegúrese de que el puerto de DB2 también esté configurado para la misma modalidad de conexión. |
 | keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](../#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
 | resources | limits.cpu | Cantidad máxima de CPU permitidas | El valor predeterminado es **1000m**<br/>Consulte
@@ -143,7 +143,7 @@ Antes de instalar y configurar {{ site.data.keys.mf_app_center }}, debe tener lo
 Siga estos pasos para instalar y configurar IBM {{ site.data.keys.mf_app_center }} desde la consola de gestión de {{ site.data.keys.prod_icp }}.
 
 1. Vaya a **Catálogo** en la consola de gestión.
-2. Seleccione el gráfico helm **ibm-mfpf-appcenter-prod**.
+2. Seleccione el gráfico Helm **ibm-mfpf-appcenter-prod**.
 3. Pulse **Configurar**.
 4. Proporcione las variables de entorno. Consulte [Variables de entorno de {{ site.data.keys.mf_app_center }}](#env-mf-appcenter) para obtener más información.
 5. Pulse **Instalar**.
@@ -163,7 +163,7 @@ Tras instalar correctamente el gráfico Helm de {{ site.data.keys.mf_app_center 
 El protocolo puede ser **http** o **https**. Además, tenga en cuenta que el puerto será NodePort, en caso de despliegue de NodePort. Para obtener los valores de ip_address y NodePort de los gráficos de {{ site.data.keys.mf_app_center }}, siga estos pasos:
 
 1. En la consola de gestión de {{ site.data.keys.prod_icp }}, seleccione **Cargas de trabajo > Releases de Helm**.
-2. Pulse el *nombre de release* de la instalación de gráfico helm.
+2. Pulse el *nombre de release* de la instalación de gráfico Helm.
 3. Consulte la sección **Notas**.
 
 > **Nota:** Para acceder al cliente móvil de {{ site.data.keys.mf_app_center }}, descargue el paquete del centro de aplicaciones de Passport Advantage. [Más información](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/appcenter/mobile-client/).

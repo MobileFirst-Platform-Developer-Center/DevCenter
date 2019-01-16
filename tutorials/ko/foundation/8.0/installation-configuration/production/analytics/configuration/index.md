@@ -78,7 +78,7 @@ WebSphere Application Server의 JNDI 특성은 환경 변수로 사용할 수 �
 {: #mobilefirst-server }
 다음 테이블에서는 {{ site.data.keys.mf_server }}에서 설정할 수 있는 특성을 보여줍니다.
 
-| 특성                               | 설명                                                  | 기본값        |
+| 특성                           | 설명                                           | 기본값 |
 |------------------------------------|-------------------------------------------------------|---------------|
 | mfp.analytics.console.url          | 이 특성을 {{ site.data.keys.mf_analytics_console }}의 URL로 설정하십시오. 예를 들어, http://hostname:port/analytics/console입니다. 이 특성을 설정하면 {{ site.data.keys.mf_console }}에서 분석 아이콘을 사용할 수 있습니다. | 없음 |
 | mfp.analytics.logs.forward         | 이 특성이 true로 설정되면 {{ site.data.keys.mf_server }}에서 기록되는 서버 로그가 {{ site.data.keys.mf_analytics }}에서 캡처됩니다. | true |
@@ -91,7 +91,7 @@ WebSphere Application Server의 JNDI 특성은 환경 변수로 사용할 수 �
 {: #mobilefirst-analytics-server }
 다음 테이블에서는 {{ site.data.keys.mf_analytics_server }}에서 설정할 수 있는 특성을 보여줍니다.
 
-| 특성                               | 설명                                                  | 기본값        |
+| 특성                           | 설명                                           | 기본값 |
 |------------------------------------|-------------------------------------------------------|---------------|
 | analytics/nodetype | Elasticsearch 노드 유형을 정의합니다. 올바른 값은 master 및 data입니다. 이 특성이 설정되지 않은 경우에는 노드가 마스터 적격 노드와 데이터 노드의 역할을 모두 수행합니다. | 	없음 |
 | analytics/shards | 색인당 샤드 수입니다. 이 값은 클러스터에서 시작되는 첫 번째 노드에서만 설정할 수 있으며 변경할 수 없습니다. | 1 |
@@ -214,7 +214,7 @@ Elasticsearch는 {{ site.data.keys.mf_analytics_server }}에 임베드되어 있
 
 2. JNDI 특성에 대한 애플리케이션 서버의 구성 파일을 편집(또는 시스템 환경 변수를 사용)하여 최소한 다음과 같은 플래그를 구성하십시오.
 
-    | 플래그 | 값(예)        | 기본값  | 참고 |
+    | 플래그 | 값(예) | 기본값 | 참고 |
     |------|-----------------|---------|------|
     | cluster.name | 	worklight	 | worklight | 	이 노드가 참여할 클러스터입니다. |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	실수로 클러스터에 참여하는 것을 방지하려면 false로 설정하십시오. |
@@ -244,7 +244,7 @@ Elasticsearch는 {{ site.data.keys.mf_analytics_server }}에 임베드되어 있
 2. 파일의 압축을 푸십시오.
 3. **config/elasticsearch.yml** 파일을 편집하고 최소한 다음과 같은 플래그를 구성하십시오.
 
-    | 플래그 | 값(예)        | 기본값  | 참고 |
+    | 플래그 | 값(예) | 기본값 | 참고 |
     |------|-----------------|---------|------|
     | cluster.name | 	worklight	 | worklight | 	이 노드가 참여할 클러스터입니다. |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	실수로 클러스터에 참여하는 것을 방지하려면 false로 설정하십시오. |

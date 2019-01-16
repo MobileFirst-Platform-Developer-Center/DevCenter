@@ -68,6 +68,7 @@ console`
 **Prérequis :**  
 1. NodeJS et NPM doivent être installés avant {{ site.data.keys.mf_cli }}.  
  Téléchargez et installez [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) et NPM v3.10.10.
+ Pour l'interface de ligne de commande MobileFirst version 8.0.2018100112 ou supérieure, vous pouvez utiliser Node v8.x ou v10.x. 
 
  Pour vérifier l'installation, ouvrez une fenêtre de ligne de commande et exécutez `node -v`.
 

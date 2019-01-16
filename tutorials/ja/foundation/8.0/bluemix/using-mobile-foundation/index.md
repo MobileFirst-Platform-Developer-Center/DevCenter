@@ -17,28 +17,33 @@ weight: 1
 
     > **注:** 「開発者」プランでは、永続的なデータベースは提供されません。したがって、[トラブルシューティング・セクション](#troubleshooting)にある説明のとおりに、必ず構成をバックアップしてください。
 
-2. **デバイスごとの商用 (Professional Per Device)**: このプランでは、ユーザーは実動モバイル・アプリケーションを作成、テスト、および実行できます。 1 日に接続されたクライアント・デバイスの数に基づいて請求されます。 このプランは、大規模なデプロイメントと高可用性をサポートします。 このプランでは、別途作成および請求される、IBM DB2 (**ライト**・プラン以外のプラン) のインスタンスまたは Compose for PostgreSQL サービスが必要です。このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが Liberty for Java 上でプロビジョンされます。 Liberty for Java の料金は別途請求され、このプランの一部には含まれません。<!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
+2. **デバイスごとの商用 (Professional Per Device)**: このプランでは、ユーザーは実動モバイル・アプリケーションを作成、テスト、および実行できます。 1 日に接続されたクライアント・デバイスの数に基づいて請求されます。 このプランは、大規模なデプロイメントと高可用性をサポートします。 このプランでは、別途作成および請求される、IBM DB2 (**ライト**・プラン以外のプラン) のインスタンスまたは Compose for PostgreSQL サービスが必要です。 このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが Liberty for Java 上でプロビジョンされます。 Liberty for Java の料金は別途請求され、このプランの一部には含まれません。<!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
 
 3. **1 つの商用アプリケーション**: このプランでは、モバイル・アプリケーションのユーザーまたはデバイスの数に関係なく、ユーザーは予測可能な料金で単一のモバイル・アプリケーションを作成および管理できます。 単一のモバイル・アプリケーションは、iOS、Android、Windows、Mobile Web など、複数のフレーバーにすることができます。 このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが Cloud Foundry アプリケーションとして Liberty for Java 上の拡張が容易な環境にプロビジョンされます。 Liberty for Java の料金は別途請求され、このプランの一部には含まれません。 このプランではまた、別途作成および請求される、IBM DB2 (**ライト**・プラン以外のプラン) または Compose for PostgreSQL サービス・インスタンスが必要です。<!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
 
-4. **開発者商用**: このプランでは {{ site.data.keys.mfound_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。ユーザーは、このプランを使用することで任意の数のモバイル・アプリケーションを開発およびテストできます。 このプランでは、別途作成および請求される、**DB2** (**ライト**・プラン以外のプラン) サービス・インスタンスが必要です。DB2 サービス・インスタンスは、別途作成および請求されます。このプランはサイズ制限があり、実動ではなく、チーム・ベースの開発アクティビティーとテスト・アクティビティーに使用することを目的としています。 料金は、ご使用の環境の合計サイズによって異なります。<!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
+4. **開発者商用**: このプランでは {{ site.data.keys.mfound_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。ユーザーは、このプランを使用することで任意の数のモバイル・アプリケーションを開発およびテストできます。 このプランでは、別途作成および請求される、**DB2** (**ライト**・プラン以外のプラン) サービス・インスタンスが必要です。 DB2 サービス・インスタンスは、別途作成および請求されます。 このプランはサイズ制限があり、実動ではなく、チーム・ベースの開発アクティビティーとテスト・アクティビティーに使用することを目的としています。 料金は、ご使用の環境の合計サイズによって異なります。<!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_**開発者商用** プランは、非推奨になりました。_
 
-5. **容量ごとの商用:** このプランにより、ユーザーはモバイル・ユーザーやデバイスの数に関係なく、任意の数のモバイル・アプリケーションを実動で作成、テスト、および実行できます。 大規模のデプロイメントと高可用性がサポートされます。 このプランでは、別途作成および請求される、**DB2** (**ライト**・プラン以外のプラン) サービス・インスタンスが必要です。DB2 サービス・インスタンスは、別途作成および請求されます。料金は、ご使用の環境の合計サイズによって異なります。<!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
+5. **容量ごとの商用:** このプランにより、ユーザーはモバイル・ユーザーやデバイスの数に関係なく、任意の数のモバイル・アプリケーションを実動で作成、テスト、および実行できます。 大規模のデプロイメントと高可用性がサポートされます。 このプランでは、別途作成および請求される、**DB2** (**ライト**・プラン以外のプラン) サービス・インスタンスが必要です。 DB2 サービス・インスタンスは、別途作成および請求されます。 料金は、ご使用の環境の合計サイズによって異なります。<!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_**容量ごとの商用**プランは、現在非推奨になりました。_
 
 > 使用可能なプランとそれぞれの請求について詳しくは、[サービスの詳細](https://console.bluemix.net/catalog/services/mobile-foundation/)を参照してください。
 
 #### ジャンプ先:
 {: #jump-to}
-* [{{ site.data.keys.mf_bm_short }} サービスのセットアップ](#setting-up-the-mobile-foundation-service)
-* [{{ site.data.keys.mf_bm_short }} サービスの使用](#using-the-mobile-foundation-service)
-* [サーバー構成](#server-configuration)
-* [拡張サーバー構成](#advanced-server-configuration)
-* [{{ site.data.keys.mfound_server }} 修正の適用](#applying-mobilefirst-server-fixes)
-* [サーバー・ログへのアクセス](#accessing-server-logs)
-* [トラブルシューティング](#troubleshooting)
-* [発展的なチュートリアル](#further-reading)
+- [概説](#overview)
+    - [ジャンプ先:](#jump-to)
+- [{{ site.data.keys.mf_bm_short }} サービスのセットアップ](#setting-up-the--sitedatakeysmfbmshort--service)
+  - [*開発者* プランのセットアップ](#setting-up-the-developer-plan)
+  - [*1 つの商用アプリケーション* および*デバイスごとの商用* プランのセットアップ](#setting-up-the-professional-1-application-and-professional-per-device-plan)
+- [{{ site.data.keys.mf_bm_short }} サービスの使用](#using-the--sitedatakeysmfbmshort--service)
+  - [サーバー構成](#server-configuration)
+  - [拡張サーバー構成](#advanced-server-configuration)
+- [{{ site.data.keys.mfound_server }} 修正の適用](#applying--sitedatakeysmfoundserver--fixes)
+- [サーバー・ログへのアクセス](#accessing-server-logs)
+    - [トレース](#tracing)
+- [トラブルシューティング](#troubleshooting)
+- [発展的なチュートリアル](#further-reading)
 
 ## {{ site.data.keys.mf_bm_short }} サービスのセットアップ
 {: #setting-up-the-mobile-foundation-service }

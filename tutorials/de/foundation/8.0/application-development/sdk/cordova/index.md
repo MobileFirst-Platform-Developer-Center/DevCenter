@@ -28,8 +28,8 @@ Folgende Plug-ins sind verfügbar:
 Von den MobileFirst-Plug-ins werden folgende Cordova-Plattformversionen unterstützt: 
 
 * cordova-ios: **>= 4.1.1 und < 5.0**
-* cordova-android: **>= 6.1.2 and <= 7.0**
-* cordova-windows: **>= 4.3.2 und < 6.0**
+* cordova-android: **>= 6.1.2 and <= 8.0**
+* cordova-windows: **>= 4.3.2 und < 7.0**
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }

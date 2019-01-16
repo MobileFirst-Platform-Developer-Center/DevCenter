@@ -225,18 +225,6 @@ Les applications Web sont soumises aux limitations suivantes :
 - {: #web_app_limit_ms_ie_n_edge }
 Dans Microsoft Internet Explorer (IE) et Microsoft Edge, des messages d'administration et des messages SDK Web client s'affichent en fonction de la définition des préférences de format de région du système d'exploitation et non en fonction des préférences de langue configurées pour le navigateur ou le système d'exploitation. Voir aussi [Définition de messages d'administrateur dans plusieurs langues](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
 
-### Support WKWebView pour les applications Cordova iOS
-{: #wkwebview-support-for-ios-cordova-applications }
-Les fonctions de notification d'applications et de mise à jour directe peuvent ne pas fonctionner correctement dans les applications Cordova iOS avec WKWebView.
-
-Cette limitation est due au défaut file:// url XmlHttpRequests are not allowed in WKWebViewEgine in **cordova-plugin-wkwebview-engine**.
-
-Pour contourner ce problème, exécutez la commande suivante dans votre projet Cordova : `cordova plugin add https://github.com/apache/cordova-plugins.git#master:wkwebview-engine-localhost`
-
-L'exécution de cette commande entraîne l'exécution d'un serveur Web local dans votre application Cordova et vous pouvez alors héberger et accéder à vos fichiers locaux au lieu d'utiliser le schéma d'URI de fichier (file://) pour gérer les fichiers locaux.
-
-**Remarque :** Ce plug-in Cordova n'est pas publié sur le gestionnaire de package de noeud (npm).
-
 ### La barre d'état du plug-in Cordova ne fonctionne pas avec l'application Cordova chargée avec cordova-plugin-mfp
 {: #cordova-plugin-statusbar-does-not-work-with-cordova-application-loaded-with-cordova-plugin-mfp }
 La barre d'état du plug-in Cordova ne fonctionnera pas avec l'application Cordova chargée avec cordova-plugin-mfp.
@@ -283,3 +271,42 @@ La modification du comportement par défaut d'une application Cordova (par exemp
 Pour d'autres types d'incident lors de la soumission à Google Play Store, vous pouvez contacter le support Google.
 
 >**Remarque :** Si vous utilisez une version de correctif temporaire de MobileFirst 8.0 datant de janvier 2018 ou d'une date ultérieure, il est recommandé de mettre à jour le client et le serveur à la même version.
+
+### Erreurs d'accès lors de l'installation de l'interface de ligne de commande MobileFirst avec Node 8
+{:#mfpdev-cli-installation errors}
+Lors de l'installation de l'interface de ligne de commande MobileFirst avec npm, vous risquez de rencontrer les erreurs suivantes dans la sortie de terminal :
+
+```
+> bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> utf-8-validate@1.2.2 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> fsevents@1.2.4 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/fsevents
+> node install
+```
+
+Ces erreurs sont dues à un [bogue connu dans node-gyp](https://github.com/nodejs/node-gyp/issues/1547). Vous pouvez les ignorer car elles n'affectent pas le fonctionnement de l'interface de ligne de commande MobileFirst. Cela s'applique à *mfpdev-cli iFix level 8.0.2018100112* et version ultérieure. Pour surmonter cette erreur, utilisez l'indicateur `--no-optional` pendant l'installation. Par exemple,
+
+```bash
+npm install -g mfpdev-cli --no-optional
+```

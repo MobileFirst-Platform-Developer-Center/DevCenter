@@ -234,42 +234,123 @@ indexed: false
 
   </div>
   <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
-  <h2><a href="../adapters/">アダプターの開発</a></h2>
-    企業のバックエンド・システムおよびクラウド・サービスと統合するためのサーバー・サイド・コードを開発します。
+  <h2>IBM MobileFirst JSONStore の React Native SDK</h2>
+    IBM Mobile Foundation JSONStore は、軽量で文書志向のストレージ・システムを提供する、オプションのクライアント・サイド API です。JSONStore は JSON 文書の永続ストレージを有効にします。アプリケーション内の文書は、デバイスがオフラインの時でも JSONStore 内で使用可能です。この永続的で常に使用可能なストレージは、例えばデバイスで使用できるネットワーク接続がない時などに、ユーザーに文書へのアクセス権限を与えるのに役立ちます。
 
+    <h3>インストール</h3>
+      <p>React Native アプリケーションの IBM MobileFirst JSONStore SDKは <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst" target="_blank">IBM MobileFirst Foundation SDK</a> に依存しています。IBM MobileFirst Foundation SDK をご使用のアプリケーションに追加します。</p>
+      <p>ご使用の React Native アプリケーションのフォルダーにナビゲートし、以下のコマンドを実行して、React Native アプリケーションの JSONStore SDK をインストールします。</p>
+      {% highlight bash  %}
+      npm install react-native-ibm-mobilefirst-jsonstore --save
+      {% endhighlight %}
+      <blockquote>
+        サポートされるプラットフォームは Android と iOS です。
+      </blockquote>
+
+    <h3>概要</h3>
+    <h4>前提条件</h4>
     <ul>
-        <li><a href="../adapters/">アダプターの概要</a></li>
-        <li><a href="../adapters/creating-adapters/">Java アダプターおよび JavaScript アダプターの作成</a></li>
-        <li><a href="../adapters/javascript-adapters/">JavaScript アダプター</a>
-            <ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP アダプター</a>
-                    <ul>
-                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">JavaScript HTTP アダプターでの SSL の使用</a></li>
-                    </ul>
-                </li>
-                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL アダプター</a></li>
-                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">JavaScript アダプターでの Java の使用</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/java-adapters/">Java アダプター</a>
-            <ul>
-                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP アダプター</a></li>
-                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL アダプター</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/developing-adapters/">IDE でのアダプターの開発</a></li>
-        <li><a href="../adapters/testing-and-debugging-adapters/">アダプターのテストおよびデバッグ</a></li>
-        <li>サーバー・サイドのログ収集
-            <ul>
-                <li><a href="../adapters/server-side-log-collection/">サーバー・サイドのログ収集の概要</a></li>
-                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java アダプターでのログ収集</a></li>
-                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript アダプターでのログ収集</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/advanced-adapter-usage-mashup/">アダプターの高度な使用方法とマッシュアップ</a></li>
-        <li><a href="../adapters/cloudant/">アダプターを使用した Cloudant との統合</a></li>
+      <li>React Native アプリケーションのすべての前提条件を、必ず確認してください。React Native を初めて使用する場合は、<a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank">React Native の概要</a>ページを参照してください。</li>
+      <li><a href="https://console.bluemix.net/catalog/services/Mobile%20Foundation">IBM Cloud の Mobile Foundation インスタンス</a>または IBM Mobile Foundation サーバーの<a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/" target="_blank">オンプレミス・インストール</a>。</li>
     </ul>
 
+    <h4>React Native プロジェクトの作成</h4>
+    <ol>
+    <li>最初のステップは React Native プロジェクトの作成です。このアプリケーションを <code>JSONStoreApp</code> と呼びましょう。React Native CLI を使用して、新規プロジェクトを作成します。
+      {% highlight bash  %}
+      react-native init JSONStoreApp
+      cd JSONStoreApp
+      {% endhighlight %}
+    </li>
+    <li>MobileFirst Core SDK をインストールし、<a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst" target="_blank">概要の説明</a>のとおりに実行します。</li>
+    <li>IBM MobileFirst JSONStore SDK をご使用のアプリケーションに追加します。
+      {% highlight bash  %}
+      npm install react-native-ibm-mobilefirst-jsonstore —-save
+      {% endhighlight %}
+    </li>
+    <li>すべてのネイティブ依存関係が React Native プロジェクトに追加されるように、プロジェクトにリンクします。
+             {% highlight bash %}
+        react-native link
+      {% endhighlight %}
+      </li>
+  </ol>
+
+  <h4>Android アプリケーションの構成</h4>
+  <ul>
+    <li><code><React-Native-Project>/android/app/build.gradle</code> の <code>android</code> セクションに以下の行を追加します。
+    {% highlight gradle  %}
+    packagingOptions{
+    	exclude 'META-INF/ASL2.0'
+    }
+        {% endhighlight %}
+  </li>
+    </ul>
+
+   <h4>JSONStore コレクションの作成</h4>
+    <p>JSONStore API 使用の最初のステップは、JSONStore コレクションの作成です。</p>
+    <ol>
+    <li>JSONStore クラスをアプリケーションにインポートします。<code>App.js</code> を開き、他のインポート・ステートメントに以下の行を追加します。
+    {% highlight bash  %}
+    import {WLJSONStore, JSONStoreCollection} from 'react-native-ibm-mobilefirst-jsonstore';
+    {% endhighlight %}
+    </li>
+    <li>コレクションを作成してオープンします。同時に複数のコレクションをオープンします。パスワードを使用したコレクションの保護や同期ポリシーのセットアップなどの拡張オプション用の <code>JSONStoreInitOptions</code> パラメーターを渡します。
+    {% highlight javascript  %}
+    var dogs = new JSONStoreCollection('dogs');
+    WLJSONStore.openCollections(['dogs']);  // Provide the name of the collection as a string.
+        {% endhighlight %}
+  </li>
+    </ol>
+
+    <h4>コレクションにデータを追加</h4>
+    <p>コレクションに JSON データを追加します。</p>
+    {% highlight javascript  %}
+    	var hachi = { "name" : "Hachiko" , "breed" : "Akita" , "country" : "Japan"};
+        dogs.addData(hachi).then( ()=> {
+          // Data was added to the collection successfully.
+        }).catch ( (err) => {
+          // Error adding data. See the err object for more information on the error
+        })
+        {% endhighlight %}
+  <h4>コレクションからデータを照会</h4>
+    <p>任意の JSONStoreCollection.find* API を使用して、コレクションを照会します。
+    JSON データの拡張フィルター処理と照会に、JSONStoreQueryPart と JSONStoreQuery API を使用します。</p>
+    {% highlight javascript  %}
+    	dogs.findAllDocuments().then( (result) => {
+           // result will have all the documents in the collection
+           // E.g. [ {"json": {"name":"Hachiko","breed":"Akita","country":"Japan"},"_id":2}]
+         }).catch((error) => {
+            console.error ("Error finding docs " +  JSON.stringify(error));
+         });
+    {% endhighlight %}
+
+    <h4>コレクションのクローズ、クリア、および破棄</h4>
+    <p>コレクションをクローズすると、<code>openCollections</code> API の使用に対してコレクションがオープンするまで、その後のアクセスのために JSONStore コレクションがクローズされます。</p>
+    {% highlight javascript  %}
+    WLJSONStore.closeAll()
+        {% endhighlight %}
+  <p>コレクションをクリアするとコレクションからのすべての文書が削除されますが、破棄はされません。</p>
+    {% highlight javascript  %}
+    	dogs.clearCollection().then (()=>{
+    		// All documents cleared successfully
+         }).catch( (err) => {
+           // An error occurred while clearing the collection.
+         })
+        {% endhighlight %}
+  <p>コレクションを破棄すると、すべてのデータ、すべてのアクセサー、およびセキュリティー成果物が永続的に削除されます。一度破棄されたコレクションは復元できません。アプリケーションのすべてのコレクションは破棄されます。</p>
+
+    {% highlight javascript  %}
+    	WLJSONStore.destroy()
+        {% endhighlight %}
+  <h3>追加情報</h3>
+    React Native アプリケーションの JSONStore について詳しくは、 <a href="../application-development/jsonstore/reactnative/">ここ</a>を参照してください。
+
+    <h3>参照</h3>
+    <ul>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/" target="_blank">開発者センター</a></li>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/reactnative-tutorials/" target="_blank">概要</a></li>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/api/client-side-api/reactnative/jsonstore/" target="_blank">API リファレンス</a></li>
+    </ul>
   </div>
 </div>
 </div>

@@ -65,7 +65,8 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 
 **前提条件:**  
 1. NodeJS と NPM は、{{ site.data.keys.mf_cli }} をインストールするための要件です。  
- [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) と NPM v3.10.10 をダウンロードしてインストールします。
+[NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) と NPM v3.10.10 をダウンロードしてインストールしてください。
+MobileFirst CLI バージョン 8.0.2018100112 以降では、Node v8.x または v10.x を使用できます。 
 
  インストールを検証するには、コマンド・ライン・ウィンドウを開いて以下を実行します。`node -v`
 

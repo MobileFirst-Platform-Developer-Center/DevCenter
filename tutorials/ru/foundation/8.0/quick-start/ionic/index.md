@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Обзор
 {: #overview }
-В этой демонстрации рассматриваются все этапы потока. Поток включает в себя следующие шаги: 
+В этой демонстрации рассматриваются все этапы потока. Поток включает в себя следующие шаги:
 
 1. Пример приложения, поставляемый вместе с SDK клиента {{ site.data.keys.product_adj }}, регистрируется и загружается с помощью {{ site.data.keys.mf_console }}.
 2. В {{ site.data.keys.mf_console }} развертывается новый или предоставленный адаптер.  
@@ -16,8 +16,8 @@ weight: 1
 
 **Конечный результат**:
 
-* Успешная проверка связи с {{ site.data.keys.mf_server }}. 
-* Успешное извлечение данных с помощью адаптера. 
+* Успешная проверка связи с {{ site.data.keys.mf_server }}.
+* Успешное извлечение данных с помощью адаптера.
 
 ### Предварительные требования:
 {: #prerequisites }
@@ -28,11 +28,11 @@ weight: 1
 
 ### Шаг 1. Запуск {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation), либо в случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows). 
+Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation), либо в случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
 
 ### Шаг 2. Создание и регистрация приложения
 {: #2-creating-and-registering-an-application }
-В браузере откройте {{ site.data.keys.mf_console }} с помощью следующего URL: `http://your-server-host:server-port/mfpconsole`. Если сервер работает в локальном режиме, введите следующий адрес: `http://localhost:9080/mfpconsole`. *Идентификационные данные пользователя*: **admin/admin**. 
+В браузере откройте {{ site.data.keys.mf_console }} с помощью следующего URL: `http://your-server-host:server-port/mfpconsole`. Если сервер работает в локальном режиме, введите следующий адрес: `http://localhost:9080/mfpconsole`. *Идентификационные данные пользователя*: **admin/admin**.
 
 1. Нажмите кнопку **Создать** рядом с разделом **Приложения**
     * Выберите платформу в списке: **Android, iOS, Windows, браузер**
@@ -42,14 +42,14 @@ weight: 1
 
     <img class="gifplayer" alt="Зарегистрировать приложение" src="register-an-application-ionic.png"/>
 
-2. Загрузите пример приложения Ionic с веб-сайта [Github](https://github.ibm.com/MFPSamples/MFPStarterIonic). 
+2. Загрузите пример приложения Ionic с веб-сайта [Github](https://github.ibm.com/MFPSamples/MFPStarterIonic).
 
 ### Шаг 3: Добавление SDK MobileFirst в приложение Ionic
 {: #adding_mfp_ionic_sdk}
 
-Следуя инструкциям ниже, добавьте SDK MobileFirst в загруженный пример приложения Ionic. 
+Следуя инструкциям ниже, добавьте SDK MobileFirst в загруженный пример приложения Ionic.
 
-1. Перейдите в корневую папку существующего проекта Ionic и добавьте {{ site.data.keys.product_adj }} базовый модуль Ionic Cordova. 
+1. Перейдите в корневую папку существующего проекта Ionic и добавьте {{ site.data.keys.product_adj }} базовый модуль Ionic Cordova.
 
 2. Перейдите в корневой каталог проекта Ionic: `cd MFPStarterIonic`
 
@@ -60,7 +60,7 @@ weight: 1
    ionic cordova plugin add cordova-plugin-mfp
    ```
 
-   > Указанная выше команда добавляет базовый модуль SDK MobileFirst в проект Ionic. 
+   > Указанная выше команда добавляет базовый модуль SDK MobileFirst в проект Ionic.
 
 4. Добавьте одну или несколько поддерживаемых платформ в проект Cordova с помощью следующей команды CLI Ionic: `ionic cordova platform add ios|android|windows|browser`. Пример:
 
@@ -76,7 +76,7 @@ weight: 1
 
 ### Шаг 4. Изменение логики приложения
 {: #3-editing-application-logic }
-1. Откройте проект Ionic в предпочитаемом редакторе кода. 
+1. Откройте проект Ionic в предпочитаемом редакторе кода.
 
 2. Выберите файл **src/js/index.js** и вставьте следующий фрагмент кода, заменив существующую функцию `WLAuthorizationManager.obtainAccessToken()`:
 
@@ -114,11 +114,11 @@ WLAuthorizationManager.obtainAccessToken("").then(
 
 ### Шаг 5. Развертывание адаптера
 {: #4-deploy-an-adapter }
-Загрузите этот [артефакт .adapter](../javaAdapter.adapter) и разверните его в {{ site.data.keys.mf_console }}, выбрав в меню **Действия → Развернуть адаптер**. 
+Загрузите этот [артефакт .adapter](../javaAdapter.adapter) и разверните его в {{ site.data.keys.mf_console }}, выбрав в меню **Действия → Развернуть адаптер**.
 
 Кроме того, можно нажать кнопку **Создать** рядом с разделом **Адаптеры**.  
 
-1. Выберите **Действия → Загрузить пример**. Загрузите пример адаптера **Java** *Hello World*. 
+1. Выберите **Действия → Загрузить пример**. Загрузите пример адаптера **Java** *Hello World*.
 
     Если Maven и {{ site.data.keys.mf_cli }} не установлены, выполните инструкции по **настройке среды разработки**.
 
@@ -138,8 +138,8 @@ WLAuthorizationManager.obtainAccessToken("").then(
 ### Шаг 6. Тестирование приложения
 {: #5-testing-the-application }
 1. В окне **Командная строка** перейдите в корневую папку проекта Cordova.
-2. Выполните команду: `ionic cordova platform add ios|android|windows|browser` для добавления платформы. 
-3. В проекте Ionic выберите файл **config.xml** и измените `<mfp:server ... url=" "/>` значения свойств **protocol**, **host** и **port** с учетом параметров {{ site.data.keys.mf_server }}. 
+2. Выполните команду: `ionic cordova platform add ios|android|windows|browser` для добавления платформы.
+3. В проекте Ionic выберите файл **config.xml** и измените `<mfp:server ... url=" "/>` значения свойств **protocol**, **host** и **port** с учетом параметров {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
     * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **адрес-сервера** и **443**.
     * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
@@ -154,12 +154,12 @@ WLAuthorizationManager.obtainAccessToken("").then(
     ```
 
 Если устройство подключено, приложение устанавливается и запускается на устройстве.
-В противном случае применяется симулятор или эмулятор. 
+В противном случае применяется симулятор или эмулятор.
 
 <br clear="all"/>
 ### Результаты
 {: #results }
-* При нажатии кнопки **Проверить связь с {{ site.data.keys.mf_server }}** выдается сообщение **Установлено соединение с {{ site.data.keys.mf_server }}**. 
+* При нажатии кнопки **Проверить связь с {{ site.data.keys.mf_server }}** выдается сообщение **Установлено соединение с {{ site.data.keys.mf_server }}**.
 * Если приложению удалось подключиться к {{ site.data.keys.mf_server }}, ресурс запрашивается с помощью развернутого адаптера Java. Ответ адаптера отображается в предупреждении.
 
 ## Дальнейшие действия

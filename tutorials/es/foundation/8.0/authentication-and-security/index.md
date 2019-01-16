@@ -173,14 +173,24 @@ El periodo de vencimiento de la señal para la señal de renovación es mayor qu
         <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
             <div class="panel-body">
             <p>La característica de señal de renovación se puede habilitar utilizando las propiedades siguientes en el lado del cliente y del servidor, respectivamente.</p>
-            <b>Propiedad del lado del cliente</b><br/>
+            <b>Propiedad del lado del cliente (Android)</b><br/>
 
-            <i>Nombre de archivo</i>.:            mfpclient.properties<br/>
+            <i>Nombre de archivo</i>:            mfpclient.properties<br/>
             <i>Nombre de propiedad</i>:   wlEnableRefreshToken<br/>
             <i>Valor de propiedad</i>:   true<br/>
 
             Por ejemplo,<br/>
             <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>Propiedad del lado del cliente (iOS)</b><br/>
+
+            <i>Nombre de archivo</i>:            mfpclient.plist<br/>
+            <i>Nombre de propiedad</i>:   wlEnableRefreshToken<br/>
+            <i>Valor de propiedad</i>:   true<br/>
+
+            Por ejemplo,<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
 
             <b>propiedad del lado del servidor</b><br/>
 
@@ -237,7 +247,9 @@ Pragma: no-cache
 </div>
 
 
->**Nota:** Las señales de renovación tienen una larga duración, en comparación con las señales de acceso. Por lo tanto, la característica de señal de renovación se debe utilizar con cuidado. Las aplicaciones donde la autenticación de usuario periódica no es necesaria son candidatos ideales para utilizar la característica de señal de renovación. En este momento, MobileFirst da soporte a la característica de señal de renovación solo en la plataforma Android. Se recomienda utilizar un ID de paquete distinto para aplicaciones Android e iOS.
+>**Nota:** Las señales de renovación tienen una larga duración, en comparación con las señales de acceso. Por lo tanto, la característica de señal de renovación se debe utilizar con cuidado. Las aplicaciones donde la autenticación de usuario periódica no es necesaria son candidatos ideales para utilizar la característica de señal de renovación.  
+>
+> MobileFirst da soporte a la característica de señal de renovación en iOS a partir de CD Update 3. 
 
 
 ### Comprobaciones de seguridad
