@@ -1,5 +1,5 @@
 ---
-title: Intergrating Siri Shorcuts in Mobile Foundation iOS Apps
+title: Integrating Siri Shortcuts in Mobile Foundation iOS Apps
 date: 2019-01-15
 tags:
 - MobileFirst_Foundation  
