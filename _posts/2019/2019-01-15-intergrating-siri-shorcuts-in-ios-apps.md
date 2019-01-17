@@ -19,6 +19,7 @@ In this tutorial, we will use [PincodeSwift iOS Application](https://mobilefirst
 #### Create an Intents Extension
 
 Open `PincodeSwift` in Xcode, Go to **File > New > Target** and Select `Intents Extension` and fill the product name as `BalanceIntent`, click **Finish**.
+
 ![Intents Extension]({{site.baseurl}}/assets/blog/2019-01-15-intergrating-siri-shorcuts-in-ios-apps/intents-extension.png)
 
 This will add a new Intent Extenions target to the iOS Application.
@@ -26,14 +27,17 @@ This will add a new Intent Extenions target to the iOS Application.
 #### Add SiriKit Intent Defnition
 
 - In the `BalanceIntent` folder, right click and select **New File > Add SiriKit Intent Defnition File**. Add it to `BalanceIntent` and `PincodeSwift` targets and save it as `GetBalance`.
+
 ![Siri Intents Definition]({{site.baseurl}}/assets/blog/2019-01-15-intergrating-siri-shorcuts-in-ios-apps/siri-intent-defnition.png)
 
 - Open the the GetBalance Intent Definition file, Press ➕ symbol to add new intent as `GetBalance`. Fill the details as shown in the image below.
+
 ![Custom Intent]({{site.baseurl}}/assets/blog/2019-01-15-intergrating-siri-shorcuts-in-ios-apps/custom-intent.png)
 
   Here we have selected intent category as `View` since we are viewing the information. We have defined the title & description of the Shorcut. I have defined `bankName` as a parameter, which is required if the developer wishes to create shorcuts to view balance for multiple banks. We have checked background execution with which shorcut can be executed without having to run the actual application.
 
 - Define the responses for the Intent as shown in the image below.
+
 ![Custom Intent Respone]({{site.baseurl}}/assets/blog/2019-01-15-intergrating-siri-shorcuts-in-ios-apps/custom-intent-response.png)
 
   Here we have defined success and two failure responses where default error response can be used if we don't have error info else custom error response, which can be used if we have the error info.
@@ -98,9 +102,11 @@ This will add a new Intent Extenions target to the iOS Application.
 #### Donate a Siri Shorcut
 
 - In `PincodeSwift` target, navigate to **Capabilities** and **Enable Siri**, which will enable Siri capability in the application.
+
 ![Siri Capability]({{site.baseurl}}/assets/blog/2019-01-15-intergrating-siri-shorcuts-in-ios-apps/siri-capability.png)
 
 - In the application's `Info.plist`, add the bundle identifier of the Intents Extension under `NSUserActivityTypes` as shown below.
+
 ![Info NSUserActivity]({{site.baseurl}}/assets/blog/2019-01-15-intergrating-siri-shorcuts-in-ios-apps/info-activity.png)
 
 - Replace the content of `ViewController.swift` with the following.
