@@ -1,6 +1,7 @@
 ---
-title: MobileFirst Foundation iFix release information for 8.0
-date: 2018-05-18
+title:  iFix and CD Update release information for Mobile Foundation v8.0
+date: 2019-01-18
+permalink: '/blog/2018/05/18/8-0-master-ifix-release/'
 version:
 - 8.0
 tags:
@@ -8,19 +9,91 @@ tags:
 - Announcement
 - iFix_8.0
 - iFix
-- All_8.0_iFixes
+- CDUpdate_iFix
 pinned: true
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *8.0.0.0-MFPF-IF201810040631*  released for MobileFirst Foundation 8.0, dated **October 4th, 2018**.
+Continuous delivery (CD) update 4 (*8.0.0.0-MFPF-IF201812191602-CDUpdate-04*) released for Mobile Foundation 8.0, dated **December 19th, 2018**.
 <br/>
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201812191602" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201812191602">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201812191602" href="#collapse-mfp-ifix-IF201812191602" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201810040631"><b>8.0.0.0-MFPF-IF201812191602-CDUpdate-04</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201812191602" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201812191602">
+            <div class="panel-body">
+            CD Update-04 for MobileFirst Foundation 8.0, dated <b>December 19th, 2018</b>.
+
+            <h2>Changes in this CD Update</h2>
+            <i>For a cumulative list of all previous CD Update announcements, see the <a href="http://mobilefirstplatform.ibmcloud.com/blog/tag/CDUpdate_8.0/">here</a>.</i><br/><br/>
+
+            <h2>Features</h2>
+            <blockquote>To view the details about the features included in this CD Update, see the <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/12/24/8-0-cd-update-release">announcement</a>.</blockquote>
+
+            <h3>APARs Fixed</h3>
+            <b>PH06599</b>  CURRENCY UPGRADE TO LIBERTY (18.0.0.4) AND IBM JAVA 8.0.5.26.<br/>
+            <b>PH06226</b>  THE MESSAGE RETURNING FROM MFP SERVER INCLUDES THE SERVER URL.<br/>
+            <b>PH05860</b>  THE MFPDEV-CLI FAILS USING THE COMMAND ‘MFPDEV  INFO’ AND ‘MFPDEV APP PREVIEW’ HAS ISSUE WITH LEFT PANEL AND AUTOMATIC RELOAD.<br/>
+            <b>PH05557</b>  GETTING ERROR FWLAC0101W WHEN ADDING LINK TO GOOGLE PLAY STORE.<br/>
+            <b>PH03741</b>  MOBILEFIRST BINARY USES BANNED API(S).<br/>
+            <b>PH03726</b>  XAMARIN IOS UI HANGS ON CALLING USERINPUTEVENT.WAITONE() API AFTER INVOKING A NEW UI.<br/>
+            <b>PH03491</b>  A MOBILEFIRST CORDOVA APP MIGHT CRASH ON IOS DEVICES AFTER A SERIES OF LOGINS/LOGOUTS.<br/>
+            <b>PH02986</b>  REGULAR CLEAN UP OF MFP SERVER TABLES TO REMOVE STALE RECORDS.<br/>
+            <b>PH02548</b> MOBILEFIRST SDK USES THE MALLOC API WITHOUT RELEASING MEMORY.<br/>
+
+
+        </div>
+    </div>
+</div>   
+</div>
+
+
+
+## Previous iFixes & CD Updates for MobileFirst Foundation 8.0
+
+IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<br/>
+*List below includes iFixes and CD Updates released since 2018 only.*
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201811050432" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201811050432">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201811050432" href="#collapse-mfp-ifix-IF201811050432" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201811050432"><b>8.0.0.0-MFPF-IF201811050432-CDUpdate-03</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201811050432" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201811050432">
+            <div class="panel-body">
+            CD Update-03 for MobileFirst Foundation 8.0, dated <b>November 5th, 2018</b>.
+
+            <h2>Changes in this CD Update</h2>
+            <i>For a cumulative list of all previous CD Update announcements, see the <a href="http://mobilefirstplatform.ibmcloud.com/blog/tag/CDUpdate_8.0/">here</a>.</i><br/><br/>
+
+            <h2>Features</h2>
+            <blockquote>To view the details about the features included in this CD Update, see the <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/11/15/8-0-cd-update-release/">announcement</a>.</blockquote>
+
+            <h3>APARs Fixed</h3>
+            <b>PH04756</b>  IOS APPS BUILT WITH MFP SDK MAY CRASH INTERMITTENTLY WHEN INVOKING OBTAINACCESSToken API.<br/>
+            <b>PH04503</b>  APP FALLS INTO INRECOVERABLE STATE AFTER DIRECT UPDATE FAILED.<br/>
+            <b>PH04229</b>  FWLST0904E ERROR OCCURS INTERMITTENTLY ON JAVASCRIPT PROCEDURE CALLS.<br/>
+            <b>PH04117</b>  MFP ADAPTER POTENTIAL SECURITY RISK WHEN CALLING NON-EXISTENCEADAPTER.<br/>
+            <b>PH04094</b>  PUSH NOTIFICATIONS MAY BE LOST IN CORDOVA-BASED ANDROID APPS IF MULTIPLE NOTIFICATIONS ARE RECEIVED WHILE THE APP IS RUNNING.<br/>
+            <b>PH03280</b>  VULNERABILITY IN ADVANCE ENCRYPTION STANDARD ALGORITHM.<br/>
+            <b>PH01886</b>  INCOMPATIBILITY IN API SIGNATURES BETWEEN THE CORDOVA SDK AND WEB SDK.<br/>
+
+        </div>
+    </div>
+</div>   
+</div>
 
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201810040631" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201810040631">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201810040631" href="#collapse-mfp-ifix-IF201810040631" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201810040631"><b>iFix 8.0.0.0-MFPF-IF201810040631</b> <span class="label label-primary">latest</span></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201810040631" href="#collapse-mfp-ifix-IF201810040631" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201810040631"><b>iFix 8.0.0.0-MFPF-IF201810040631</b> </a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201810040631" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201810040631">
@@ -182,11 +255,6 @@ A new iFix *8.0.0.0-MFPF-IF201810040631*  released for MobileFirst Foundation 8.
         </div>      
     </div>
 </div>   
-
-## Previous iFixes for MobileFirst Foundation 8.0
-
-IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<br/>
-*List below includes iFixes released in 2018 only.*
 
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201809041150" role="tablist">
     <div class="panel panel-default">
@@ -657,6 +725,39 @@ IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<
         </div>      
     </div>
 </div>   
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201807180449" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201807180449">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201807180449" href="#collapse-mfp-ifix-IF201807180449" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201807180449"><b>8.0.0.0-MFPF-IF201807180449-CDUpdate-02</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201807180449" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201807180449">
+            <div class="panel-body">
+            CD Update-02 for MobileFirst Foundation 8.0, dated <b>July 18th, 2018</b>.
+
+            <h2>Changes in this CD Update</h2>
+            <i>For a cumulative list of all previous CD Update announcements, see the <a href="http://mobilefirstplatform.ibmcloud.com/blog/tag/CDUpdate_8.0/">here</a>.</i><br/><br/>
+
+            <h2>Features</h2>
+            <blockquote>To view the details about the features included in this CD Update, see the <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/07/24/8-0-cd-update-release/">announcement</a>.</blockquote>
+
+            <h3>APARs Fixed</h3>
+            <b>PH00482</b>  SUPPORT FOR REFRESH TOKEN.<br/>
+            <b>PH00480</b>  UPGRADING JAVA AND LIBERTY VERSIONS FOR BYOL/ICP PACKAGES.<br/>
+            <b>PH00105</b>  USE OF ANALYTICS WEB SDK MODIFIES THE NATIVE OBJECT XMLHTTPREQUEST.<br/>
+            <b>PH00066</b>  DB2 Q-REPLICATION WITH MFP DB NOT WORKING IN MFP8.<br/>
+            <b>PI99445</b>  USE OF HARD-CODED PASSWORD IN JSONSTORE CODE.<br/>
+            <b>PI99056</b>  UNABLE TO REMOVE A COOKIE USING MOBILEFIRST V8 ANDROID SDK.<br/>
+            <b>PI97512</b>  HTTPS CONNECTION CREATES NEW SOCKET FOR ALL REQUESTS.<br/>
+
+        </div>
+    </div>
+</div>   
+</div>
+
+
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201807050331" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201807050331">
