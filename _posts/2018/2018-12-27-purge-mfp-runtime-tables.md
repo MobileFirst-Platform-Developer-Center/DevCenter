@@ -12,7 +12,7 @@ author:
   name: Smitha TV
 ---
 Mobile Foundation runtime supports relational databases such as IBM DB2, Oracle and MySQL.
-Database is required to store the data required for the running of Mobile Foundation applications. See [here](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_internal_ibm_worklight_database_tables.html), for more information on the database tables used by Mobile Foundation server.
+Database is required to store the data required for the running of Mobile Foundation applications. See [Internal runtime databases](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_internal_ibm_worklight_database_tables.html), for more information on the database tables used by Mobile Foundation server.
 
 Mobile Foundation runtime transactions like device registration, app registration, security checks, and OAuth flow update two tables, which are *MFP_PERSISTENT_DATA* and *MFP_TRANSIENT_DATA*.
 
@@ -22,22 +22,25 @@ Data in *MFP_TRANSIENT_DATA* table is deleted upon successful logout and on the 
 However, due to different reasons like incorrect usage of application or while doing an application delete and install instead of app upgrade, stale entries gets accumulated in the table and this can cause performance issues over time.
 
 Mobile Foundation runs a daily job, which currently takes care of tracking, archiving, decommissioning and deleting records for customers who use [license tracking](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/administering-apps/license-tracking/) feature.
-This is controlled by the flags for license tracking and device decommissioning. License tracking is enabled by default. See [here](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html), for more information.
+This is controlled by the flags for license tracking and device decommissioning. License tracking is enabled by default. See [List of JNDI properties for MobileFirst runtime](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html), for more information.
 
 For customers who do not use license tracking, there is a possibility of accumulation of stale records in the above mentioned tables.
 
 The Mobile Foundation job is now enhanced to take care of archiving and deleting expired records from the tables, for those who do not enable license tracking.
 
 This feature is driven by two new JNDI properties:
-* **mfp.purgedata.enabled:**
-    When this property is enabled, expired records from *MFP_TRANSIENT_DATA*  and *MFP_PERSISTENT_DATA* is deleted. Default value is true.
-* **mfp.purgeOldData.age:**
-    When this property is set to any non negative integer value, records from  *MFP_PERSISTENT_DATA* with last_activity_time field value prior to the given number of days is removed from the table. The records are archived into MobileFirst Server `home\devices_archive` directory.  Default value for this property is 0 and the recommended value for this is a number bigger than 90 days. Setting the number of days to less than 90 may cause active applications to go for re registration and can change client id.
 
-By default, when the customer is at the following iFix level, runtime deletes all stale records of *MFP_TRANSIENT_DATA*. However, delete of records in *MFP_PERSISTENT_DATA* is enabled only if `mfp.purgeOldData.age` is set by customer.
+<blockquote>
+<h4>mfp.purgedata.enabled:</h4>
+    When this property is enabled, expired records from <b>MFP_TRANSIENT_DATA</b> and <b>MFP_PERSISTENT_DATA</b> is deleted. Default value is true.
+<h4>mfp.purgeOldData.age:</h4>
+    When this property is set to a value greater than 0, records from <b>MFP_PERSISTENT_DATA</b> with last_activity_time field value prior to the given number of days is removed from the table. The records are archived into MobileFirst Server <filepath>home\devices_archive</filepath> directory. Customers are not recommended to have this property value less than 90. Default value: 0.
+</blockquote>
 
-This feature is available from [iFix 8.0.0.0-MFPF-IF201810040631](https://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/8-0-master-ifix-release/).
-<!--This feature has a dependency on SDK fix level.-->
+By default, for customers who do not use license tracking and are at MobileFirst iFix Level *8.0.0.0-MFPF-IF201812191602-CDUpdate-04* or above, runtime deletes all stale records of MFP_TRANSIENT_DATA.  Enabling mfp.purgeOldData.age for deleting records from MFP_PERSISTENT_DATA has dependency on SDK level iFix *8.0.0.0-MFPF-IF201810040631*. Customer's  MobileFirst plugin `cordova-plugin-mfp` version needs to be at this iFix level or  higher than this iFix level.
+ 
+>The feature and jndi properties discussed here is applicable only for customers who have not enabled license tracking.
+
 
 The number of expired records in the tables may be very high and enabling the feature may cause the queries to run for a long time. The job is triggered after 1 AM of server local time. The job is scheduled to start a few random minutes after 1 AM and is limited to run for a maximum of one hour. Any transaction during this time may face a delay. To avoid this, we recommend that the customer does an initial clean up of the tables before using this feature. This will ensure the job runs only for a few seconds or minutes and that there is minimal impact to any transaction.
 
