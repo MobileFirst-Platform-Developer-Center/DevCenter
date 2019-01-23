@@ -1,6 +1,7 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2018-05-18
+date: 2019-01-23
+permalink: '/blog/2018/05/18/7-1-master-ifix-release/'
 version:
 - 7.1
 tags:
@@ -28,6 +29,8 @@ A new iFix *7.1.0.0-MFPF-IF201812191245* has been released for MobileFirst Found
 
             <h3>Changes included in this iFix</h3>
             <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+            
+            <blockquote><h4>Features</h4><b>Support for latest APNS message structure in 7.1</b><br/>Latest APNS message structure is now supported. Users can now send <i>title</i>, <i>subtitle</i>, <i>attachment url</i> as part of a notification.</blockquote>
 
             <b>PH06599</b> CURRENCY UPGRADE TO LIBERTY (18.0.0.4) AND IBM JAVA 8.0.5.26.<br/>
             <b>PH06421</b> THE JSP-2.3 FEATURE IN LIBERTY SERVER.XML CREATES A CONFLICT WITH THE SERVLET. RUNTIME DOES NOT COME UP.<br/>
