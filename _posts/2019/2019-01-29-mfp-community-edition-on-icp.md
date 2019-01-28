@@ -14,6 +14,6 @@ We are excited to announce that IBM Mobile Foundation for Developers v8.0 is now
 * Mobile Foundation server
 * Mobile Analytics server
 
-Get started by downloading the IBM Cloud Private community edition at <TBD-Tirumala-input-here>. To deploy the Mobile Foundation components and to run a sample application, follow the instructions <TBD-Tirumala-input-here>.
+Get started by [installing the IBM Cloud Private community edition](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.1/installing/install_containers.html). To deploy the Mobile Foundation components and to run a sample application, follow the instructions [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-community-edition-on-icp/).
 
 To buy new Mobile Foundation v8.0 licenses, [contact our sales team](https://www.ibm.com/cloud/mobile-foundation). To contact IBM Cloud Private sales team, go [here](https://www.ibm.com/us-en/marketplace/ibm-cloud-private/purchase).
