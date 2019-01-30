@@ -161,19 +161,19 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
      default_admin_password: admin
      ansible_user: root
     ``` 
-  *  High Availability Settings
+  *  High Availability settings.
         
      ```bash
       vip_manager: etcd
      ```
-     High Availability Settings for master nodes.
+     High Availability settings for master nodes.
             
      ```bash
       vip_iface: ens7
      cluster_vip: 9.202.181.230
      ```
 
-     High Availability Settings for Proxy nodes.
+     High Availability settings for Proxy nodes.
             
      ```bash
       proxy_vip_iface: ens7
