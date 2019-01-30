@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Foundation
 - IBM_Cloud_Private
 - Customization
-- High Availability
+- High_Availability
 - Mobile_Foundation
 version:
 - 8.0
@@ -73,27 +73,26 @@ For enabling Highly Available Master nodes on ICP , You must set up shared stora
         /var/lib/icp/audit      *(rw,sync,fsid=0,crossmnt,no_subtree_check,no_root_squash)
        ```
 
-        >**Note:** : Instead of '*' in the above command , you can specify the hostname that requires access to NFS mount directories.
+        >**Note:** : Instead of `*` in the above command , you can specify the hostname that requires access to NFS mount directories.
 
     *  Next update the NFS table with the new sharing points by running the following command
 			
-		```bash
-            exportfs -a
+       ```bash
+        exportfs -a
        ```
 
     *  Finally start the NFS service as follows
     
-		```bash
-            service nfs-kernel-server start
-       ```
-
+	```bash
+         service nfs-kernel-server start
+      	```
 
 2. **On NFS Client End** : In our case it is the 2 Master Nodes which acts NFS client where we have created the shared directories. The below steps has to be carried out on both the master nodes.
 
    	```bash
         	sudo apt-get update
         	sudo apt-get install nfs-common
-   ```
+   	```
 
     *   Now create the NFS directory mount point
 
@@ -142,88 +141,93 @@ For enabling Highly Available Master nodes on ICP , You must set up shared stora
        ```
 #### Configure hosts file and config.yaml in boot node
 										
-		1. Changes to hosts file: Below is the sample of the host file entires for our topology.
-		
+1. Changes to hosts file: Below is the sample of the host file entires for our topology.
 			
-          ```bash
-            [master]
-            9.xxx.177.210
-            9.xxx.180.159
-            9.xxx.180.164
-            [worker]
-            9.xxx.180.212
-            9.xxx.181.13
-            [proxy]
-            9.xxx.177.210
-            9.xxx.180.159
-            9.xxx.180.164
-          ```
+   ```bash
+    [master]
+    9.xxx.177.210
+    9.xxx.180.159
+    9.xxx.180.164
+    [worker]
+    9.xxx.180.212
+    9.xxx.181.13
+    [proxy]
+    9.xxx.177.210
+    9.xxx.180.159
+    9.xxx.180.164
+    ```
             
-     2.Changes in config.yaml :
+2.Changes in config.yaml :
      
-     	 *	Under config.yaml , set the ansible_user as 'root'.
+  * Under `config.yaml`, set the *ansible_user* as 'root'.
             
-            ```bash
-            default_admin_user: admin
-            default_admin_password: admin
-            ansible_user: root
-            ``` 
-       *  High Availability Settings
+    ```bash
+     default_admin_user: admin
+     default_admin_password: admin
+     ansible_user: root
+    ``` 
+  *  High Availability Settings
         
-            ```bash
-            vip_manager: etcd
-            ```
-
-            High Availability Settings for master nodes
+     ```bash
+      vip_manager: etcd
+     ```
+     High Availability Settings for master nodes
             
-            ```bash
-            vip_iface: ens7
-            cluster_vip: 9.202.181.230
-            ```
+     ```bash
+      vip_iface: ens7
+     cluster_vip: 9.202.181.230
+     ```
 
-            High Availability Settings for Proxy nodes
+     High Availability Settings for Proxy nodes
             
-            ```bash
-            proxy_vip_iface: ens7
-            proxy_vip: 9.xxx.168.96
-            ```
+     ```bash
+      proxy_vip_iface: ens7
+      proxy_vip: 9.xxx.168.96
+     ```
 
-         We will understand what is etcd,vip_iface,cluster_vip and proxy_vip.
+     We will understand what is etcd,vip_iface,cluster_vip and proxy_vip.
             
-            * etcd is vip manager which is responsible for electing one of the active master as leader when one of the master node is down.
+  * `etcd` is vip manager which is responsible for electing one of the active master as leader when one of the master node is down.
              
-            * Parameter vip_iface is the Network interface Controller (NIC) .
+  * Parameter *vip_iface* is the Network interface Controller (NIC) .
             
-            * You can run the command 'ip a' to know the NIC value . 
+  * You can run the command 'ip a' to know the NIC value . 
             
-            * 'cluster_vip' and 'proxy_vip' are valid IP address present in the subnet.
+  * 'cluster_vip' and 'proxy_vip' are valid IP address present in the subnet.
 
-            ![Setup]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/fyre-setup.png)
+     ![Setup]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/fyre-setup.png)
 
-        *  Disable image-security-enforcement under management_services
+  *  Disable image-security-enforcement under management_services
 
-            ```bash
-            image-security-enforcement: disabled 
-            ```
+     ```bash
+      image-security-enforcement: disabled 
+     ```
 
 Now run the **install** command from the boot node where you install ICP . Please refer ICP [documentation] (https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_containers.html) for ICP setup and make sure you follow all necessary steps.
 
 For setting up of IBM MobileFoundation on the above setup, please refer to the [documentation](https://mobilefirstplatform.ibmcloud.com/tutorials/fr/foundation/8.0/bluemix/mobilefirst-server-on-icp/) of IBM Mobile Foundation Platform
 
-####Testing the HA
+#### Testing the HA
             
-Once the installation is successful, access the ICP console and follow the below procedure to validate the HA scenario
+After the installation is successful, access the ICP console and follow the below procedure to validate the HA scenario
 
-1. See the list of active nodes which includes master,proxy and worker nodes under platform -> Nodes.
+1. See the list of active nodes which includes master,proxy and worker nodes under **platform -> Nodes**.
+
 ![List of Active Nodes]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/list-of-active-nodes.png)
+
 2. Bring down active master which is currently acting as leader and assigned with cluster_vip address. The leader can be identified by running 'ip a' on each master node.
+
 ![Run ip a command]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/cluster-vip-address-to-master.png)
+
 ![Fyre Master Down]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/fyre-machine-setup-master-down.png)
+
 ![Master Down]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/leader-master-node-inactive.png)
-3. Now vip_manager(etcd) is responsible for electing one of the active master as leader and  assign the cluster_vip address.
+
+3. Now *vip_manager(etcd)* is responsible for electing one of the active master as leader and  assign the *cluster_vip address*.
 4. Even though active master which was acting as a leader earlier is down, we can see Mobile Foundation Operations Admin console is accessible due to the highly availability in our environment setup. 
+
 ![MFP Console]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/mfp-console.png)
 
-####Known Limitation
+#### Known Limitation
 
 Using low capacity VM's for the Master Nodes might experience the down time close to 3 minutes during the testing phase as mentioned above, this can be eliminated by using a better hardware (or physical machines) as per ICP recommendations.
