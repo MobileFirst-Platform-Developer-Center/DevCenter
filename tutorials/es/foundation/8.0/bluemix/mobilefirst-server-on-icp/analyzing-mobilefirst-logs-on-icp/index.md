@@ -38,7 +38,7 @@ Complete los pasos para examinar el catálogo de {{ site.data.keys.prod_icp }} y
         </thead>
         <tbody>
           <tr>
-            <td>Formato de registro de la consola</td>
+            <td>Formato de registro de la consola </td>
             <td>logs.consoleFormat</td>
             <td>json</td>
           </tr>

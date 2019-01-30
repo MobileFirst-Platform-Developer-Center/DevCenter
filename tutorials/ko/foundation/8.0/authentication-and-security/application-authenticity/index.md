@@ -14,7 +14,7 @@ weight: 9
 
 #### 가용성
 {: #availability }
-* 애플리케이션 인증은 지원되는 모든 플랫폼(iOS, Android, Windows 8.1 Universal, Windows 10 UWP)의 Cordova 및 기본 애플리케이션에서 사용 가능합니다.
+* 애플리케이션 인증은 지원되는 모든 플랫폼(iOS, Android, Windows 8.1 Universal, Windows 10 UWP)의 Cordova 및 네이티브 애플리케이션에서 사용 가능합니다.
 
 #### 제한사항
 {: #limitations }
@@ -35,6 +35,8 @@ weight: 9
 {: #application-authenticity-flow }
 애플리케이션 인증 보안 검사는 애플리케이션이 {{ site.data.keys.mf_server }}에 등록하는 동안 실행되며, 애플리케이션의 인스턴스가 서버에 처음 연결을 시도할 때 발생합니다. 기본적으로 인증 확인은 한 번만 실행됩니다.
 
+앱 인증이 사용으로 설정된 후에 고객이 애플리케이션에 변경사항을 도입해야 하는 경우 애플리케이션 버전을 업그레이드해야 합니다.
+
 이 동작을 사용자 정의하는 방법을 학습하려면 [애플리케이션 인증 구성](#configuring-application-authenticity)을 참조하십시오.
 
 ## 애플리케이션 인증 사용
@@ -46,6 +48,8 @@ weight: 9
 3. **상태** 상자의 **설정/해제** 단추를 토글하십시오.
 
 ![애플리케이션 인증 사용](enable_application_authenticity.png)
+
+MobileFirst Server는 서버에 처음 연결하는 시도에서 애플리케이션 인증 유효성을 검증합니다. 보호된 자원에도 이 유효성 검증을 적용하려면 `appAuthenticity` 보안 검사를 보호 범위에 추가하십시오.
 
 ### 애플리케이션 인증 사용 안함
 {: #disabling-application-authenticity }
@@ -100,11 +104,12 @@ Xcode에서 BTS 도구를 사용하려면 다음 작업을 수행하십시오.
 ### 유효성 검증 유형
 {: #validation }
 
-기본적으로 애플리케이션 인증은 사용으로 설정된 경우 **동적** 유효성 검증 알고리즘을 사용합니다. 동적 애플리케이션 인증 유효성 검증은 애플리케이션의 인증을 판별하기 위해 모바일 플랫폼 고유 기능을 사용합니다. 따라서 유효성 검증은 모바일 운영 체제에 이전 버전과 호환되지 않는 변경사항이 도입된 경우 영향을 받을 수 있으며, 이로 인해 인증된 애플리케이션이 서버에 연결하지 못하게 될 수 있습니다.
+Mobile First Platform Foundation에서는 애플리케이션에 대한 정적 및 동적 인증을 제공합니다. 이러한 유효성 검증 유형은 앱 인증 시드를 생성하는 데 사용되는 알고리즘 및 속성에서 차이가 납니다. 기본적으로 애플리케이션 인증은 사용으로 설정된 경우 **동적** 유효성 검증 알고리즘을 사용합니다. 두 유효성 검증 유형 모두 애플리케이션의 보안을 보장합니다. 동적 앱 인증은 엄격한 유효성 검증을 사용하며 앱 인증을 검사합니다. 정적 앱 인증의 경우 약간 완화된 알고리즘을 사용하며, 이 경우 동적 앱 인증에서와 같이 모든 유효성 검증 검사를 사용하지는 않습니다.
 
-이러한 잠재적 문제를 해결하기 위해 **정적** 유효성 검증 알고리즘이 사용 가능합니다. 이 유효성 검증 유형은 OS 고유 변경사항의 영향을 덜 받습니다.
+동적 앱 인증은 MobileFirst 콘솔에서 구성 가능합니다. 내부 알고리즘은 콘솔에서 선택한 옵션에 따라 앱 인증 데이터 생성을 처리합니다.
+정적 앱 인증의 경우 [**mfpadm** CLI](../../administering-apps/using-cli/)를 사용해야 합니다.
 
-유효성 검증 유형을 전환하려면 [**mfpadm** CLI](../../administering-apps/using-cli/)를 사용하여 다음 명령을 실행하십시오.
+정적 앱 인증을 사용으로 설정하고 유효성 검증 유형 간에 전환하려면 다음과 같이 [**mfpadm** CLI](../../administering-apps/using-cli/)를 사용하십시오.
 
 ```bash
 mfpadm --url=  --user=  --passwordfile= --secure=false app version [RUNTIME] [APPNAME] [ENVIRONMENT] [VERSION] set authenticity-validation TYPE

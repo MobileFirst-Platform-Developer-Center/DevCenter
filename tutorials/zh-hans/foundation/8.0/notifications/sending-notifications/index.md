@@ -38,7 +38,7 @@ weight: 3
 
 ### Firebase 云消息传递
 {: #firebase-cloud-messaging }
-> **注：**Google 具有[不推荐的 GCM](https://developers.google.com/cloud-messaging/faq)，并已将云消息传递与 Firebase 相集成。如果您正在使用 GCM 项目，请确保[将 Android 上的 GCM 客户机应用程序迁移到 FCM](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)。
+> **注：**Google 具有[不推荐的 GCM](https://developers.google.com/cloud-messaging/faq)，并已将云消息传递与 Firebase 相集成。 如果您正在使用 GCM 项目，请确保[将 Android 上的 GCM 客户机应用程序迁移到 FCM](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)。
 
 Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。  
 要设置 FCM：
@@ -57,7 +57,7 @@ Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。
 * 将防火墙配置为允许与 FCM 的连接，以便 FCM 客户机应用程序能够接收消息。
 * 需要打开的端口包括 5228、5229 和 5230。 FCM 通常只使用 5228，但有时也会使用 5229 和 5230。
 * FCM 没有提供特定的 IP，因此您必须允许防火墙接受与 Google ASN 15169 中所列 IP 块中的所有 IP 地址的出站连接。
-* 确保防火墙接受端口 443 上从 {{ site.data.keys.mf_server }} 到 android.googleapis.com 的出站连接。
+* 确保防火墙接受端口 443 上从 {{ site.data.keys.mf_server }} 到 fcm.googleapis.com 的出站连接。
 
 <img class="gifplayer" alt="添加 GCM 凭证的图像" src="gcm-setup.png"/>
 
@@ -66,7 +66,7 @@ Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。
 iOS 设备将 Apple 推送通知服务 (APNS) 用于推送通知。  
 要设置 APNS：
 
-1. 为开发或生产环境生成推送通知证书。 有关详细步骤，请参阅[此处](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)`针对 iOS` 部分。 
+1. 为开发或生产环境生成推送通知证书。 有关详细步骤，请参阅[此处](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)`针对 iOS` 部分。
 2. 在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 推送设置**中，选择证书类型并提供证书的文件和密码。 然后，单击**保存**。
 
 #### 注

@@ -54,7 +54,7 @@ Liberty for Java 런타임은 liberty-for-java 빌드팩으로 구현됩니다. 
 ## 다음 학습서
 {: #tutorials-to-follow-next }
 
-* [IBM에서 제공하는 스크립트를 사용](mobilefirst-server-using-kubernetes/)하여 IBM Cloud의 Kubernetes Cluster에서 {{ site.data.keys.mf_bm_short }} 인스턴스를 작성하십시오.
+* [IBM에서 제공하는 스크립트를 사용](mobilefirst-server-on-kubernetes-using-scripts/)하여 IBM Cloud의 Kubernetes Cluster에서 {{ site.data.keys.mf_bm_short }} 인스턴스를 작성하십시오.
 * [{{ site.data.keys.mf_bm }} 서비스 설정](using-mobile-foundation/) 학습서를 사용하여 {{ site.data.keys.mf_server }} 인스턴스를 작성하십시오.
 <!--* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.-->
 * [IBM에서 제공하는 스크립트를 사용](mobilefirst-server-using-scripts-lbp/)하여 IBM Cloud의 Liberty for Java를 사용하여 {{ site.data.keys.mf_server }} 인스턴스를 작성하십시오.

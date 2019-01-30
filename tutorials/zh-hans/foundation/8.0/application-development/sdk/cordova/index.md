@@ -24,8 +24,8 @@ weight: 1
 MobileFirst 插件支持的 Cordova 平台版本包括：
 
 * cordova-ios：**>= 4.1.1 以及 < 5.0**
-* cordova-android：**>= 6.1.2 and <= 7.0**
-* cordova-windows：**>= 4.3.2 以及 < 6.0**
+* cordova-android：**>= 6.1.2 以及 <= 8.0**
+* cordova-windows：**>= 4.3.2 以及 < 7.0**
 
 #### 跳转至：
 {: #jump-to }
@@ -69,7 +69,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 
 **先决条件：**
 
-- 安装在开发人员工作站上的 [Apache Cordova CLI](https://www.npmjs.com/package/cordova) 和 {{ site.data.keys.mf_cli }}。
+- [Apache Cordova CLI（>=6.x 并且 <9.0）](https://www.npmjs.com/package/cordova)和 {{ site.data.keys.mf_cli }} 已安装在开发人员工作站上。
 - {{ site.data.keys.mf_server }} 的本地或远程实例正在运行。
 - 阅读[设置您的 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/development/mobilefirst)和[设置您的 Cordova 开发环境](../../../installation-configuration/development/cordova)教程。
 - 对于 cordova-windows，必须安装与机器中已安装的 Visual Studio 和 .NET 版本兼容的 Visual C++ 版本。
@@ -101,7 +101,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
      - “HelloWorld”是应用程序的名称。
      - --template 将使用特定于 {{ site.data.keys.product_adj }} 的新增项来修改应用程序。
 
-    模板化的 **index.js** 使您能够使用其他 {{ site.data.keys.product_adj }} 功能，如[多语言应用程序翻译](../../translation)和初始化选项（请参阅用户文档以获取更多信息）。
+    > 模板化的 **index.js** 使您能够使用其他 {{ site.data.keys.product_adj }} 功能，如[多语言应用程序翻译](../../translation)和初始化选项（请参阅用户文档以获取更多信息）。
 
 2. 将目录更改为 Cordova 项目的根目录：`cd hello`
 
@@ -326,7 +326,7 @@ mfpdev app config
 
 MobileFirst 平台现在支持 Cordova 浏览器平台以及受支持的 Cordova Windows、Cordova Android 和 Cordova iOS 平台。
 
-将 Cordova 浏览器平台用于 MobileFirst Platform (MFP) 类似于将 MFP 用于任何其他平台。下面解释了用于演示此功能的样本。
+将 Cordova 浏览器平台用于 MobileFirst Platform (MFP) 类似于将 MFP 用于任何其他平台。 下面解释了用于演示此功能的样本。
 
 使用以下命令来创建 cordova 应用程序：
 ```bash
@@ -337,8 +337,8 @@ cordova create <your-appFolder-name> <package-name>
 使用以下命令来添加 MFP 插件：
 ```bash
 cordova plugin add cordova-plugin-mfp
-   ```
-添加一个可用于 ping MFP 服务器（此服务器可能是本地托管的服务器或 IBM Cloud 上的服务器）的按钮。单击此按钮以 Ping 您的 MFP 服务器。
+```
+添加一个可用于 ping MFP 服务器（此服务器可能是本地托管的服务器或 IBM Cloud 上的服务器）的按钮。 单击此按钮以 Ping 您的 MFP 服务器。
 您可以使用以下样本代码：
 
 #### index.html
@@ -385,13 +385,13 @@ cordova plugin add cordova-plugin-mfp
 ```javascript
 
 var Messages = {
-        // Add here your messages for the default language.
+  // Add here your messages for the default language.
   // Generate a similar file with a language suffix containing the translated messages.
   // key1 : message1,
 };
 
 var wlInitOptions = {
-    // Options to initialize with the WL.Client object.
+  // Options to initialize with the WL.Client object.
   // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.
    mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
     applicationId : 'io.cordova.hellocordova' // Replace with your own app id/package name.
@@ -531,9 +531,9 @@ cordova run
 
 If you click the button to ping MFP on the browser running on port `8000`, the ping will fail whereas clicking the button that runs on localhost port `9081` will be successful. All the cordova browser compatible cordova plugins and MFP features can be used without issues.-->
 
-这会启动运行在代理服务器上的浏览器（在端口 `9081` 上），然后连接到 MFP 服务器。cordova 浏览器的缺省代理服务器（运行在端口 `8000` 上）已被禁止，原因是该服务器由于 [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) 而无法连接到 MFP 服务器。
+这会启动运行在代理服务器上的浏览器（在端口 `9081` 上），然后连接到 MFP 服务器。 cordova 浏览器的缺省代理服务器（运行在端口 `8000` 上）已被禁止，原因是该服务器由于 [same-origin-policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) 而无法连接到 MFP 服务器。
 
-> 要运行的缺省浏览器设置为 **Chrome**。使用 `--target` 选项以在其他浏览器上运行，也可通过以下命令使用该选项：
+> 要运行的缺省浏览器设置为 **Chrome**。 使用 `--target` 选项以在其他浏览器上运行，也可通过以下命令使用该选项：
 ```bash
  cordova run --target=Firefox
  ```
@@ -544,14 +544,14 @@ If you click the button to ping MFP on the browser running on port `8000`, the p
 mfpdev app preview
 ```
 
-唯一受支持的浏览器选项是*简单浏览器呈现*。该浏览器平台不支持*移动浏览器支持*选项。
+唯一受支持的浏览器选项是*简单浏览器呈现*。 该浏览器平台不支持*移动浏览器支持*选项。
 
 ### 使用 WebSphere Liberty 提供 cordova 浏览器资源
 {: #using-liberty-cordova-browser}
 
 按照指示信息使用<a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/web/">本</a>教程中的 WebSphere Liberty，然后进行以下更改。
 
-将浏览器项目的 `www` 文件夹内容添加到 `[MyWebApp] → src → Main → webapp`，如本教程中**使用 Web 应用程序资源构建 Maven Web 应用程序**部分的步骤 1 中所述。最后，在 Liberty 服务器上注册您的应用程序，并在浏览器中使用路径 `localhost:9080/MyWebApp` 运行该应用程序以进行测试。另外将 `sjcl` 和 `jssha` 文件夹添加到其父文件夹，并更改其在 `ibmmfpf.js` 文件中的引用。
+将浏览器项目的 `www` 文件夹内容添加到 `[MyWebApp] → src → Main → webapp`，如本教程中**使用 Web 应用程序资源构建 Maven Web 应用程序**部分的步骤 1 中所述。 最后，在 Liberty 服务器上注册您的应用程序，并在浏览器中使用路径 `localhost:9080/MyWebApp` 运行该应用程序以进行测试。 另外将 `sjcl` 和 `jssha` 文件夹添加到其父文件夹，并更改其在 `ibmmfpf.js` 文件中的引用。
 
 ## 接下来要学习的教程
 {: #tutorials-to-follow-next }

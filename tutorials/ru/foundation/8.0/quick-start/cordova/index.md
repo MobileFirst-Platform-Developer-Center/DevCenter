@@ -97,7 +97,7 @@ WLAuthorizationManager.obtainAccessToken()
 2. В окне **Командная строка** перейдите в корневую папку проекта Maven адаптера и выполните следующую команду:
 
     ```bash
-   mfpdev adapter build
+    mfpdev adapter build
     ```
 
 3. После завершения компоновки разверните адаптер с помощью {{ site.data.keys.mf_console }}. Для этого выберите **Действия → Развернуть адаптер**. Адаптер расположен в папке **[adapter]/target**.
@@ -110,7 +110,7 @@ WLAuthorizationManager.obtainAccessToken()
 {: #5-testing-the-application }
 1. В окне **Командная строка** перейдите в корневую папку проекта Cordova.
 2. Выполните команду `cordova platform add ios|android|windows` для добавления платформы.
-3. В проекте Cordova выберите файл **config.xml** и укажите в элементе `<mfp:server ... url=" "/>` значения свойств **protocol**, **host** и **port** с учетом конфигурации {{ site.data.keys.mf_server }}.
+3. В проекте Cordova выберите файл **config.xml** и измените `<mfp:server ... url=" "/>` значения свойств **protocol**, **host** и **port** с учетом параметров {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
     * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **your-server-address** и **443**.
     * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.

@@ -66,8 +66,8 @@ get-icp-logs <helm_release_name> [<output_directory>] [<name_space>]
 ```
 La tabla siguiente describe cada uno de los parámetros utilizados por el script personalizado.
 
-|Opción |Descripción |Observaciones |
+| Opción | Descripción | Observaciones |
 |--------|-------------|---------|
-|helm_release_name |Nombre de release de la instalación del gráfico Helm respectivo |**Obligatorio** |
-|output_directory |Directorio de salida donde se colocan los registros recopilados |**Opcional**<br/>Valor predeterminado: **mfp-icp-logs** en el directorio de trabajo actual. |
-|name_space |Espacio de nombres donde se instala el gráfico Helm respectivo |**Opcional**<br/>Valor predeterminado: **default** |
+| helm_release_name | Nombre de release de la instalación del gráfico Helm respectivo | **Obligatorio** |
+| output_directory | Directorio de salida donde se colocan los registros recopilados | **Opcional**<br/>Valor predeterminado: **mfp-icp-logs** en el directorio de trabajo actual. |
+| name_space | Espacio de nombres donde se instala el gráfico Helm respectivo | **Opcional**<br/>Valor predeterminado: **default** |

@@ -41,8 +41,7 @@ weight: 1
                 <h3>使用首选的 Cordova 工具开发跨平台应用程序</h3>
                 <p>您现在可以使用首选的 Cordova 工具（如 Apache Cordova CLI 或 Ionic Framework）开发跨平台混合应用程序。 独立于 {{ site.data.keys.product }} 获取这些工具，然后添加 {{ site.data.keys.product_adj }} 插件以提供 {{ site.data.keys.product_adj }} 后端功能。</p>
 
-                <p>您可以安装 {{ site.data.keys.product }} Studio
-Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product }} 支持的跨平台 Cordova 应用程序。 {{ site.data.keys.product }} Studio 插件还提供了可从 Eclipse 环境内部运行的其他 {{ site.data.keys.mf_cli }} 命令。</p>
+                <p>您可以安装 {{ site.data.keys.product }} Studio Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product }} 支持的跨平台 Cordova 应用程序。 {{ site.data.keys.product }} Studio 插件还提供了可从 Eclipse 环境内部运行的其他 {{ site.data.keys.mf_cli }} 命令。</p>
 
                 <h3>SDK 组件化</h3>
                 <p>之前，将 {{ site.data.keys.product_adj }} 客户机 SDK 作为单框架或 JAR 文件提供。 您现在可以选择包含或排除特定功能。 除了核心 SDK 之外，每个 {{ site.data.keys.product_adj }} API 还具有自己的可选组件集。</p>
@@ -195,8 +194,7 @@ Eclipse 插件，以在 Eclipse 开发环境中管理 {{ site.data.keys.product 
                 <ul>
                     <li>提供新的可配置的 {{ site.data.keys.product_adj }} Java 令牌验证器访问令牌验证模块，以便使用 {{ site.data.keys.product_adj }} 安全框架保护任何外部 Java 服务器上的资源。 该模块作为 Java 库 (mfp-java-token-validator-8.0.0.jar) 提供，将替换使用废弃的 {{ site.data.keys.mf_server }} 令牌验证端点来创建定制的 Java 验证模块。</li>
                     <li>{{ site.data.keys.product_adj }} OAuth 信任关联拦截器 (TAI) 过滤器（用于保护外部 WebSphere Application Server 或 WebSphere Application Server Liberty 服务器上的 Java 资源）现在作为 Java 库 (com.ibm.imf.oauth.common_8.0.0.jar) 提供。 该库使用新的 Java 令牌验证器验证模块，并且所提供 TAI 的配置已更改。</li>
-                    <li>不再需要服务器端 {{ site.data.keys.product_adj }} OAuth
-TAI API，已将其除去。</li>
+                    <li>不再需要服务器端 {{ site.data.keys.product_adj }} OAuth TAI API，已将其除去。</li>
                     <li>已修改用于保护外部 Node.js 服务器上 Java 资源的 passport-mfp-token-validation {{ site.data.keys.product_adj }} Node.js 框架，以支持新的安全框架。</li>
                     <li>对于使用授权服务器的新自省端点的任何类型的资源服务器，您还可以编写自己的定制过滤器和验证模块。</li>
                 </ul>
@@ -210,8 +208,7 @@ TAI API，已将其除去。</li>
                 <h3>使用 {{ site.data.keys.mf_console }} 进行移动应用程序管理</h3>
                 <p>进行了一些更改，以支持通过 {{ site.data.keys.mf_console }} 跟踪和管理移动应用程序、用户和设备。 阻止设备或应用程序访问仅适用于尝试访问受保护的资源。</p>
 
-                <h3>{{ site.data.keys.mf_server }}
-密钥库</h3>
+                <h3>{{ site.data.keys.mf_server }} 密钥库</h3>
                 <p>单个 {{ site.data.keys.mf_server }} 密钥库用于签署 OAuth 令牌和“直接更新”包，并且用于相互 HTTPS (SSL) 认证。 您可以使用 {{ site.data.keys.mf_console }} 或 mfpadm 动态配置此密钥库。</p>
 
                 <h3>针对 iOS 的本机加密和解密</h3>
@@ -381,8 +378,7 @@ TAI API，已将其除去。</li>
 
         <div id="collapse-mobilefirst-analytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_analytics }}
-引入了重新设计的控制台，其中包含信息表示改进和基于角色的访问控制。 现在，可使用多种不同的语言访问此控制台。</p>
+                <p>{{ site.data.keys.mf_analytics }} 引入了重新设计的控制台，其中包含信息表示改进和基于角色的访问控制。 现在，可使用多种不同的语言访问此控制台。</p>
 
                 <p>{{ site.data.keys.mf_analytics_console }} 已重新设计，以直观且更有意义的方式提供信息，并对一些事件类型使用摘要数据。</p>
 
@@ -442,8 +438,7 @@ TAI API，已将其除去。</li>
                 <p>不支持基于事件源的模型。 在 {{ site.data.keys.product }} 上通过推送服务模型启用推送通知功能。</p>
 
                 <h3>推送 REST API</h3>
-                <p>您可以启用部署在 {{ site.data.keys.mf_server }} 外的后端服务器应用程序，以在 {{ site.data.keys.product }}
-运行时中使用推送 REST API 访问推送通知功能。</p>
+                <p>您可以启用部署在 {{ site.data.keys.mf_server }} 外的后端服务器应用程序，以在 {{ site.data.keys.product }} 运行时中使用推送 REST API 访问推送通知功能。</p>
 
                 <h3>从基于事件源的现有通知模型升级</h3>
                 <p>不支持基于事件源的模型。 可通过推送服务模型完全启用推送通知功能。 需要将所有基于事件源的现有应用程序迁移到新的推送服务模型中。</p>

@@ -51,6 +51,9 @@ APIs for React Native applications.
 * **[Client-side API](reactnative/client)**   
     Use this API to develop React Native apps.
 
+* **[Client-side JSONStore API](reactnative/jsonstore)**   
+    You can use JSONStore API to work with the store for the React Native environment.
+
 ### C Sharp
 {: #c-sharp }
 APIs for native Windows 10 UWP, Windows 8 Universal, Xamarin.iOS and Xamarin.Android applications.

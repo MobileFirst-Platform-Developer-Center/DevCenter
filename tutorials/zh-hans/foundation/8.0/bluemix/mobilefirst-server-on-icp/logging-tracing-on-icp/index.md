@@ -8,8 +8,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-{{site.data.keys.product_full }} 将错误、警告和参考消息记录到日志文件中。 日志记录的底层机制因应用程序服务器而异。 
-在 {{ site.data.keys.prod_icp }} 中，唯一支持的应用程序服务器
+{{ site.data.keys.product_full }} 将错误、警告和参考消息记录到日志文件中。 日志记录的底层机制因应用程序服务器而异。 在 {{ site.data.keys.prod_icp }} 中，唯一支持的应用程序服务器
 为 Liberty。
 
 以下文档阐述如何为在 {{ site.data.keys.prod_icp }} 上的 Kubernetes 集群中运行的 {{ site.data.keys.mf_server }} 启用跟踪和收集日志。
@@ -60,7 +59,7 @@ kubectl logs po/<pod_name>
 ## 使用 IBM 提供的定制脚本来收集日志
 {: #collect-logs-custom-script}
 
-可以使用脚本 [get-icp-logs.sh](get-icp-logs.sh) 来收集 {{site.data.keys.mf_server }} 日志和容器日志。 它将 *Helm 发行版名称*作为输入，并从部署的所有 pod 收集日志。
+可以使用脚本 [get-icp-logs.sh](get-icp-logs.sh) 来收集 {{ site.data.keys.mf_server }} 日志和容器日志。 它将 *Helm 发行版名称*作为输入，并从部署的所有 pod 收集日志。
 
 可如下所示执行脚本：
 ```bash

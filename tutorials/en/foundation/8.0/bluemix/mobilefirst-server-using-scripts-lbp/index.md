@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Setting up MobileFirst Server on IBM Cloud using scripts for Liberty for Java
-breadcrumb_title: Mobile Foundation on Liberty for Java
+breadcrumb_title: Foundation on Liberty for Java
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

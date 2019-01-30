@@ -325,13 +325,13 @@ LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 �
    </ldapRegistry>
    ```
 
-        항목 |설명
+    항목 | 설명
     --- | ---
-    `host` 및 `port` |로컬 LDAP 서버의 호스트 이름(IP 주소)과 포트 번호입니다.
-    `baseDN` |특정 조직에 대한 모든 세부사항을 캡처하는 LDAP의 도메인 이름(DN)입니다.
-    `bindDN="uid=admin,ou=system"	` |LDAP 서버의 바인딩 세부사항입니다. 예를 들어, Apache Directory Service의 기본값은 `uid=admin,ou=system`입니다.
-    `bindPassword="secret"	` |LDAP 서버의 바인딩 비밀번호입니다. 예를 들어, Apache Directory Service의 기본값은 `secret`입니다.
-    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` |인증과 권한 부여 중에 디렉토리 서비스(예: Apache)를 조회하는 데 사용되는 사용자 정의 필터입니다.
+    `host` 및 `port` | 로컬 LDAP 서버의 호스트 이름(IP 주소)과 포트 번호입니다.
+    `baseDN` | 특정 조직에 대한 모든 세부사항을 캡처하는 LDAP의 도메인 이름(DN)입니다.
+    `bindDN="uid=admin,ou=system"	` | LDAP 서버의 바인딩 세부사항입니다. 예를 들어, Apache Directory Service의 기본값은 `uid=admin,ou=system`입니다.
+    `bindPassword="secret"	` | LDAP 서버의 바인딩 비밀번호입니다. 예를 들어, Apache Directory Service의 기본값은 `secret`입니다.
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 인증과 권한 부여 중에 디렉토리 서비스(예: Apache)를 조회하는 데 사용되는 사용자 정의 필터입니다.
 
 2. `appSecurity-2.0`과 `ldapRegistry-3.0`에 다음 기능을 사용할 수 있는지 확인하십시오.
 

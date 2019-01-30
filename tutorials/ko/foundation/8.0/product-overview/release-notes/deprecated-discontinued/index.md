@@ -152,7 +152,7 @@ weight: 3
     </tr>
     <tr>
         <td>위치정보: {{ site.data.keys.product }} v8.0에서는 위치정보 지원이 중단되었습니다. 비컨 및 중개자에 대한 REST API가 중단되었습니다. 클라이언트 측 및 서버 측 API WL.Geo와 WL.Device는 중단되었습니다.	</td>
-        <td>더 이상 사용되지 않습니다. 위치 정보에 고유 디바이스 API 또는 써드파티 Cordova 플러그인을 사용하십시오.</td>
+        <td>더 이상 사용되지 않습니다. 위치 정보에 네이티브 디바이스 API 또는 써드파티 Cordova 플러그인을 사용하십시오.</td>
     </tr>
     <tr>
         <td>{{ site.data.keys.product_adj }} Data Proxy 기능이 중단되었습니다. Cloudant IMFData 및 CloudantToolkit API 또한 사용되지 않습니다.	</td>
@@ -278,17 +278,17 @@ weight: 3
 
 |API 요소           |마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
-|`WL.Client.checkForDirectUpdate(options)` |대체가 없습니다. **참고:** 사용 가능한 업데이트가 있는 경우 직접 업데이트를 트리거하기 위해 `WLAuthorizationManager.obtainAccessToken`을 호출할 수 있습니다. 서버에서 직접 업데이트가 있는 경우 보안 토큰에 액세스하여 직접 업데이트를 트리거합니다. 그러나 직접 업데이트는 On-Demand로 트리거할 수 없습니다. |
-|`WL.Client.setSharedToken({key: myName, value: myValue})`, `WL.Client.getSharedToken({key: myName})`, `WL.Client.clearSharedToken({key: myName})` |대체가 없습니다. |
+|`WL.Client.checkForDirectUpdate(options)` |대체 없음. **참고:** 사용 가능한 업데이트가 있는 경우 직접 업데이트를 트리거하기 위해 `WLAuthorizationManager.obtainAccessToken`을 호출할 수 있습니다. 서버에서 직접 업데이트가 있는 경우 보안 토큰에 액세스하여 직접 업데이트를 트리거합니다. 그러나 직접 업데이트는 On-Demand로 트리거할 수 없습니다. |
+|`WL.Client.setSharedToken({key: myName, value: myValue})`, `WL.Client.getSharedToken({key: myName})`, `WL.Client.clearSharedToken({key: myName})` |대체 없음. |
 |`WL.Client.isConnected()`, `connectOnStartup` init option |`WLAuthorizationManager.obtainAccessToken`을 사용하여 서버에 대한 연결성을 검사하고 애플리케이션 관리 규칙을 적용하십시오. |
-|`WL.Client.setUserPref(key,value, options)`, `WL.Client.setUserPrefs(userPrefsHash, options)`, `WL.Client.deleteUserPrefs(key, options)` |대체가 없습니다. 어댑터 및 `MFP.Server.getAuthenticatedUser` API를 사용하여 사용자 환경 설정을 관리할 수 있습니다. |
-|`WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` |대체가 없습니다. |
+|`WL.Client.setUserPref(key,value, options)`, `WL.Client.setUserPrefs(userPrefsHash, options)`, `WL.Client.deleteUserPrefs(key, options)` |대체 없음. 어댑터 및 `MFP.Server.getAuthenticatedUser` API를 사용하여 사용자 환경 설정을 관리할 수 있습니다. |
+|`WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` |대체 없음. |
 |`WL.Client.logActivity(activityType)` |`WL.Logger`를 사용하십시오. |
 |`WL.Client.login(realm, options)` |`WLAuthorizationManager.login`을 사용하십시오. 인증 및 보안을 시작하려면 인증 및 보안 학습서를 참조하십시오. |
 |`WL.Client.logout(realm, options)` |`WLAuthorizationManager.logout`을 사용하십시오. |
 |`WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` |`WLAuthorizationManager.obtainAccessToken`을 사용하십시오. |
 |`WL.Client.transmitEvent(event, immediate)`, `WL.Client.purgeEventTransmissionBuffer()`, `WL.Client.setEventTransmissionPolicy(policy)` |이러한 이벤트의 알림을 수신할 사용자 정의 어댑터를 작성하십시오. |
-|`WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` |위치정보에 대한 고유 API 또는 써드파티 Cordova 플러그인을 사용하십시오. |
+|`WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` |위치정보에 대한 네이티브 API 또는 써드파티 Cordova 플러그인을 사용하십시오. |
 |`WL.Client.makeRequest (url, options)` |동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오. |
 |`WLDevice.getID(options)` |이 기능을 제공하는 Cordova 플러그인을 사용하십시오. **참고:** 정보용으로 **cordova-plugin-device** 플러그인의 `device.uuid`가 이 기능을 제공합니다. |
 |`WL.Device.getFriendlyName()` |`WL.Client.getDeviceDisplayName`을 사용하십시오. |
@@ -297,22 +297,22 @@ weight: 3
 |`WLUtils.wlCheckReachability()` |사용자 정의 어댑터를 작성하여 서버 사용 가능성을 확인하십시오. |
 |`WL.EncryptedCache` |JSONStore를 사용하여 암호화된 데이터를 로컬에 저장하십시오. JSONStore는 **cordova-plugin-mfp-jsonstore** 플러그인에 있습니다. 자세한 정보는 [JSONStore](../../../application-development/jsonstore)를 참조하십시오. |
 |`WL.SecurityUtils.remoteRandomString(bytes)` |동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오. |
-|`WL.Client.getAppProperty(property)` |**cordova-plugin-appversion** 플러그인을 사용하여 앱 버전 특성을 검색할 수 있습니다. 리턴되는 버전은 기본 앱 버전입니다(Android 및 iOS만 해당). |
+|`WL.Client.getAppProperty(property)` |**cordova-plugin-appversion** 플러그인을 사용하여 앱 버전 특성을 검색할 수 있습니다. 리턴되는 버전은 네이티브 앱 버전입니다(Android 및 iOS만 해당). |
 |`WL.Client.Push.*` |**cordova-plugin-mfp-push** 플러그인에서 JavaScript 클라이언트 측 푸시 API를 사용하십시오. |
 |`WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` |푸시 및 SMS에 대한 디바이스를 등록하려면 `MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)`를 사용하십시오. |
 |`WLAuthorizationManager.obtainAuthorizationHeader(scope)` |필요한 범위에 대한 토큰을 얻으려면 `WLAuthorizationManager.obtainAccessToken`을 사용하십시오. |
 |`WLClient.getLastAccessToken(scope)` |Use `WLAuthorizationManager.obtainAccessToken` |
-|`WLClient.getLoginName()`, `WL.Client.getUserName(realm)` |대체 없음 |
+|`WLClient.getLoginName()`, `WL.Client.getUserName(realm)` |대체 없음. |
 |`WL.Client.getRequiredAccessTokenScope(status, header)` |`WLAuthorizationManager.isAuthorizationRequired` 및 `WLAuthorizationManager.getResourceScope`를 사용하십시오. |
-|`WL.Client.isUserAuthenticated(realm)` |대체 없음 |
-|`WLUserAuth.deleteCertificate(provisioningEntity)` |대체 없음 |
-|`WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` |대체 없음 |
+|`WL.Client.isUserAuthenticated(realm)` |대체 없음. |
+|`WLUserAuth.deleteCertificate(provisioningEntity)` |대체 없음. |
+|`WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` |대체 없음. |
 |`WL.Client.createChallengeHandler(realmName)` |사용자 정의 게이트웨이 인증 확인을 처리하기 위해 인증 확인 핸들러를 작성하려면 `WL.Client.createGatewayChallengeHandler(gatewayName)`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 처리를 위해 인증 확인 핸들러를 작성하려면 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`를 사용하십시오. |
 |`WL.Client.createWLChallengeHandler(realmName)` |`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`을 사용하십시오. |
 |`challengeHandler.isCustomResponse()` 여기서 challengeHandler는 `WL.Client.createChallengeHandler()`에서 리턴된 인증 확인 핸들러 오브젝트입니다. |`gatewayChallengeHandler.canHandleResponse()`를 사용하십시오. 여기서 `gatewayChallengeHandler`는 `WL.Client.createGatewayChallengeHandler()`에서 리턴되는 인증확인 핸들러 오브젝트입니다. |
 |`wlChallengeHandler.processSucccess()` 여기서 `wlChallengeHandler`는 `WL.Client.createWLChallengeHandler()`에서 리턴한 인증 확인 핸들러 오브젝트입니다. |`securityCheckChallengeHandler.handleSuccess()`를 사용하십시오. 여기서 `securityCheckChallengeHandler`는 `WL.Client.createSecurityCheckChallengeHandler()`에서 리턴되는 인증 확인 핸들러 오브젝트입니다. |
 |`WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` |인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우, `WL.Client.createGatewayChallengeHandler()`에서 리턴되는 인증 확인 핸들러 오브젝트를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우, `WL.Client.createSecurityCheckChallengeHandler()`에서 리턴되는 인증 확인 핸들러 오브젝트를 사용하십시오. |
-|`WL.Client.createProvisioningChallengeHandler()` |대체가 없습니다. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다. |
+|`WL.Client.createProvisioningChallengeHandler()` |대체 없음. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다. |
 
 #### 더 이상 사용되지 않는 JavaScript API
 {: #deprecated-javascript-apis }
@@ -331,10 +331,10 @@ weight: 3
 
 |API 요소           |마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
-|`WLConfig WLClient.getConfig()` |대체가 없습니다. |
+|`WLConfig WLClient.getConfig()` |대체 없음. |
 |`WLDevice WLClient.getWLDevice()`, `WLClient.transmitEvent(org.json.JSONObject event)`, `WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy)`, `WLClient.purgeEventTransmissionBuffer()` |위치정보에 대한 Android API 또는 써드파티 패키지를 사용하십시오. |
-|`WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` |대체가 없습니다. |
-|`WL.Client.getUserInfo(realm, key`, `WL.Client.updateUserInfo(options)` |대체가 없습니다. |
+|`WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` |대체 없음. |
+|`WL.Client.getUserInfo(realm, key`, `WL.Client.updateUserInfo(options)` |대체 없음. |
 |`WLClient.checkForNotifications()` |`WLAuthorizationManager.obtainAccessToken("", listener)`을 사용하여 서버에 대한 연결성을 검사하고 애플리케이션 관리 규칙을 적용하십시오. |
 |`WLClient.login(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`, `WLClient.login(java.lang.String realmName, WLRequestListener listener)` |`AuthorizationManager.login()`을 사용하십시오. |
 |`WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`, `WLClient.logout(java.lang.String realmName, WLRequestListener listener)` |`AuthorizationManager.logout()`을 사용하십시오. |
@@ -342,9 +342,9 @@ weight: 3
 |`WLClient.getLastAccessToken()`, `WLClient.getLastAccessToken(java.lang.String scope)` |`AuthorizationManager`를 사용하십시오. |
 |`WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` |`AuthorizationManager`를 사용하십시오. |
 |`WLClient.logActivity(java.lang.String activityType)` |`com.worklight.common.Logger`를 사용하십시오. 자세한 정보는 로거 SDK를 참조하십시오. |
-|`WLAuthorizationPersistencePolicy` |대체가 없습니다. 권한 지속성을 구현하려면 애플리케이션 코드에 인증 토큰을 저장하고 사용자 정의 HTTP 요청을 작성하십시오. |
+|`WLAuthorizationPersistencePolicy` |대체 없음. 권한 지속성을 구현하려면 애플리케이션 코드에 인증 토큰을 저장하고 사용자 정의 HTTP 요청을 작성하십시오. |
 |`WLSimpleSharedData.setSharedToken(myName, myValue)`, `WLSimpleSharedData.getSharedToken(myName)`, `WLSimpleSharedData.clearSharedToken(myName)` |애플리케이션에서 토큰을 공유하는 Android API를 사용하십시오. |
-|`WLUserCertificateManager.deleteCertificate(android.content.Context context)` |대체 없음 |
+|`WLUserCertificateManager.deleteCertificate(android.content.Context context)` |대체 없음. |
 |`BaseChallengeHandler.submitFailure(WLResponse wlResponse)` |`BaseChallengeHandler.cancel()`을 사용하십시오. |
 |`ChallengeHandler` |사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오. |
 |`WLChallengeHandler` |`SecurityCheckChallengeHandler`를 사용하십시오. |
@@ -371,8 +371,8 @@ weight: 3
 |`org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` |대신 새 `WLResourceRequest.getHeaders(String headerName)` API를 사용하십시오. |
 |`WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` |대신 새 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API를 사용하십시오. |
 |`WLResourceRequest.setHeader(org.apache.http.Header header)` |대신 새 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API를 사용하십시오. |
-|`org.apache.http.client.CookieStore WLClient.getCookieStore()` |`java.net.CookieStore getCookieStore WLClient.getCookieStore()`로 대체됩니다. |
-|`WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` |대체가 없습니다. MFP 클라이언트를 사용하면 순환하여 경로를 재지정할 수 있습니다. |
+|`org.apache.http.client.CookieStore WLClient.getCookieStore()` |`ClearableCookieJar WLClient.getPersistentCookies()`로 대체되었습니다. |
+|`WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` |대체 없음. MFP 클라이언트를 사용하면 순환하여 경로를 재지정할 수 있습니다. |
 |`WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` |더 이상 사용되지 않는 Apache HTTP 클라이언트 종속성으로 인해 제거되었습니다. 요청 및 응답을 완전히 제어하려면 자체 요청을 작성하십시오. |
 
 #### `com.worklight.androidgap.api` 패키지는 Cordova 앱에 대한 Android 플랫폼 기능을 제공합니다. {{ site.data.keys.product }}에서는 Cordova 통합을 수용하도록 여러 변경사항이 작성되었습니다.
@@ -391,9 +391,9 @@ weight: 3
 
 |API 요소           |마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
-|`[WLClient getWLDevice][WLClient transmitEvent:]`, `[WLClient setEventTransmissionPolicy]`, `[WLClient purgeEventTransmissionBuffer]` |위치정보가 제거되었습니다. 위치정보에 대한 기본 iOS 또는 써드파티 패키지를 사용하십시오. |
-|`WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` |대체가 없습니다. |
-|`WL.Client.deleteUserPref(key, options)` |대체가 없습니다. 어댑터 및 `MFP.Server.getAuthenticatedUser` API를 사용하여 사용자 환경 설정을 관리할 수 있습니다. |
+|`[WLClient getWLDevice][WLClient transmitEvent:]`, `[WLClient setEventTransmissionPolicy]`, `[WLClient purgeEventTransmissionBuffer]` |위치정보가 제거되었습니다. 위치정보에 대한 네이티브 iOS 또는 써드파티 패키지를 사용하십시오. |
+|`WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` |대체 없음. |
+|`WL.Client.deleteUserPref(key, options)` |대체 없음. 어댑터 및 `MFP.Server.getAuthenticatedUser` API를 사용하여 사용자 환경 설정을 관리할 수 있습니다. |
 |`[WLClient getRequiredAccessTokenScopeFromStatus]` |`WLAuthorizationManager obtainAccessTokenForScope`를 사용하십시오. |
 |`[WLClient login:withDelegate:]` |`WLAuthorizationManager login`을 사용하십시오. |
 |`[WLClient logout:withDelegate:]` |`WLAuthorizationManager logout`을 사용하십시오. |
@@ -406,7 +406,7 @@ weight: 3
 |`[WLClient (void) logActivity:(NSString *) activityType]` |제거되었습니다. Objective C 로거를 사용하십시오. |
 |`[WLSimpleDataSharing setSharedToken: myName value: myValue]`, `[WLSimpleDataSharing getSharedToken: myName]]`, `[WLSimpleDataSharing clearSharedToken: myName]` |애플리케이션 사이에서 토큰을 공유하려면 OS API를 사용하십시오. |
 |`BaseChallengeHandler.submitFailure(WLResponse *)challenge` |`BaseChallengeHandler.cancel()`을 사용하십시오. |
-|`BaseProvisioningChallengeHandler` |대체가 없습니다. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다. |
+|`BaseProvisioningChallengeHandler` |대체 없음. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다. |
 |`ChallengeHandler` |사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오. |
 |`WLChallengeHandler` |`SecurityCheckChallengeHandler`를 사용하십시오. |
 |`ChallengeHandler.isCustomResponse()` |`GatewayChallengeHandler.canHandleResponse()`를 사용하십시오. |

@@ -161,8 +161,7 @@ sitemap: false
                                         <tr>
                                             <td>MFPF_ADMIN_ROOT	</td>
                                             <td>mfpadmin</td>
-                                            <td>{{ site.data.keys.mf_server }} Administration
-Services 在其中可用的上下文根。</td>
+                                            <td>{{ site.data.keys.mf_server }} Administration Services 在其中可用的上下文根。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CONSOLE_ROOT	</td>
@@ -192,14 +191,12 @@ Services 在其中可用的上下文根。</td>
                                         <tr>
                                             <td>MFPF_SERVER_ADMIN_USER	</td>
                                             <td>WorklightRESTUser</td>
-                                            <td>{{ site.data.keys.mf_server }} Administration
-Services 的 Liberty 服务器管理员用户。</td>
+                                            <td>{{ site.data.keys.mf_server }} Administration Services 的 Liberty 服务器管理员用户。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_SERVER_ADMIN_PASSWORD	</td>
                                             <td>mfpadmin。 确保在部署到生产环境之前将缺省值更改为专用密码。</td>
-                                            <td>{{ site.data.keys.mf_server }} Administration
-Services 的 Liberty 服务器管理员用户的密码。</td>
+                                            <td>{{ site.data.keys.mf_server }} Administration Services 的 Liberty 服务器管理员用户的密码。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_USER	</td>
@@ -486,8 +483,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
 
                     <li><b>prepareappcenter.sh - 准备 {{ site.data.keys.mf_app_center }} 映像</b><br />
-                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像，并将其推送到 IBM Cloud 存储库。 要查看 IBM Cloud 存储库中的所有可用映像，请运行 <code>cf ic images</code>
-此列表包含映像名称、创建日期和标识。
+                    运行 <b>prepareappcenter.sh</b> 脚本以构建 {{ site.data.keys.mf_app_center }} 映像，并将其推送到 IBM Cloud 存储库。 要查看 IBM Cloud 存储库中的所有可用映像，请运行 <code>cf ic images</code> 此列表包含映像名称、创建日期和标识。
 
                         运行：
 {% highlight bash %}
@@ -527,8 +523,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                         </div>   
                     </li>
                     <li><b>startappcenter.sh - 在 IBM Container 中运行此映像</b><br/>
-                    使用 <b>startappcenter.sh</b> 脚本以在 IBM Container 中运行
-{{ site.data.keys.mf_app_center }} 映像。 它还会将映像绑定到您在 <b>SERVER_IP</b> 属性中配置的公共 IP。
+                    使用 <b>startappcenter.sh</b> 脚本以在 IBM Container 中运行 {{ site.data.keys.mf_app_center }} 映像。 它还会将映像绑定到您在 <b>SERVER_IP</b> 属性中配置的公共 IP。
 
                         运行：
 {% highlight bash %}

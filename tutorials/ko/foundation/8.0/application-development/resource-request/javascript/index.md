@@ -48,7 +48,7 @@ var resourceRequest = new WLResourceRequest(
 `.send()` 메소드를 사용하여 자원을 요청하십시오.  
 `send()` 메소드는 선택적 매개변수를 사용하여 HTTP 요청에 본문을 설정할 수 있으며, 이는 JSON 오브젝트 또는 단순 문자열일 수 있습니다.
 
-JavaScript **약속**을 사용하여 `onSuccess` 및 `onFailure` 콜백 함수를 정의할 수 있습니다.
+JavaScript **프라미스(promise)**를 사용하여 `onSuccess` 및 `onFailure` 콜백 함수를 정의할 수 있습니다.
 
 ```js
 resourceRequest.send().then(
@@ -76,7 +76,7 @@ JavaScript 어댑터는 이름이 없는 정렬된 매개변수를 사용합니�
 resourceRequest.setQueryParameter("params", "['value1', 'value2']");
 ```
 
-이는 `WLResourceRequest.GET`와 함께 사용해야 합니다.
+이는 `WLResourceRequest.GET`과 함께 사용해야 합니다.
 
 ### setHeader
 {: #setheader }
@@ -113,7 +113,7 @@ var formParams = {"params":"['value1', 'value2']"};
 `onSuccess` 및 `onFailure` 콜백은 둘 다 `response` 오브젝트를 수신합니다. `response` 오브젝트에는 응답 데이터가 포함되어 있으며 해당 특성을 사용하여 필수 정보를 검색할 수 있습니다. 일반적으로 사용되는 특성은 `responseText`, 응답이 JSON 형식인 경우 `responseJSON`(JSON 오브젝트) 및 `status`(응답의 HTTP 상태)입니다.
 
 요청이 실패하는 경우 `response` 오브젝트에는 `errorMsg` 특성도 포함됩니다.  
-Java를 사용하는지 또는 JavaScript 어댑터를 사용하는지 여부에 따라 응답에는 `responseHeaders`, `responseTime`, `statusCode`, `statusReason` 및 `totalTime`과 같은 다른 특성이 포함될 수 있습니다.
+Java 또는 JavaScript 어댑터를 사용하는지 여부에 따라 응답에는 `responseHeaders`, `responseTime`, `statusCode`, `statusReason` 및 `totalTime`과 같은 다른 특성이 포함될 수 있습니다.
 
 ```json
 {
@@ -154,7 +154,7 @@ onFailure: function(response) {
 
 ## 자세한 정보
 {: #for-more-information }
-> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조하십시오](../../../api/client-side-api/javascript/client/).
+> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조](../../../api/client-side-api/javascript/client/)하십시오.
 
 <img alt="샘플 애플리케이션 이미지" src="resource-request-success-cordova.png" style="float:right"/>
 ## 샘플 애플리케이션
@@ -162,9 +162,9 @@ onFailure: function(response) {
 **ResourceRequestWeb** 및 **ResourceRequestCordova** 프로젝트는 Java 어댑터를 사용하는 자원 요청을 보여줍니다.  
 어댑터 Maven 프로젝트에는 자원 요청 호출 중에 사용되는 Java 어댑터가 포함되어 있습니다.
 
-Cordova 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80)하십시오.  
-웹 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80)하십시오.  
-어댑터 Maven 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오.
+Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80)하십시오.  
+웹 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80)하십시오.  
+어댑터 Maven 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오.
 
 ### 샘플 사용법
 {: #sample-usage }

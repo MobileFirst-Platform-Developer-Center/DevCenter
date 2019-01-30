@@ -29,7 +29,7 @@ WYSIWYG 편집기는 개발자의 편의를 위해 HTML UI 위젯용 MobileFirst
 
 ## jQuery Mobile
 {: #jquery-mobile }
-jQuery는 신속한 웹 개발을 위해 HTML 문서 플로우, 이벤트 핸들링, 애니메이션 및 Ajax 상호작용을 단순화한 빠르고 간결한 JavaScript 프레임워크입니다. jQuery Mobile은 스마트폰 및 태블릿을 위한 터치에 최적화된 웹 프레임워크입니다. jQuery Mobile이 실행되려면 jQuery가 있어야 합니다.
+jQuery는 신속한 웹 개발을 위해 HTML 문서 플로우, 이벤트 처리, 애니메이션 및 Ajax 상호작용을 단순화한 빠르고 간결한 JavaScript 프레임워크입니다. jQuery Mobile은 스마트폰 및 태블릿을 위한 터치에 최적화된 웹 프레임워크입니다. jQuery Mobile이 실행되려면 jQuery가 있어야 합니다.
 
 애플리케이션에 jQuery Mobile을 추가하려면 다음을 수행하십시오.
 

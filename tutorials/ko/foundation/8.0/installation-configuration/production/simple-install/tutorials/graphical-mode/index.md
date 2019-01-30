@@ -128,7 +128,7 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
 5. **다음**을 클릭하십시오.
 6. **일반 설정** 패널의 **토큰 라이센싱 활성화** 섹션에서 **Rational License Key Server에서** **토큰 라이센싱을 활성화하지 않음** 옵션을 선택하십시오.
 
-    이 학습서에서는 토큰 라이센싱이 필요하지 않다고 가정하므로 토큰 라이센싱용으로 {{ site.data.keys.mf_server }}를 구성하는 단계가 포함되지 않습니다. 단, 프로덕션 설치의 경우 토큰 라이센싱 활성화가 필요한지 여부를 판별해야 합니다. Rational  License Key Server에서 토큰 라이센싱을 사용하는 계약이 있는 경우에는 Rational License Key Server에서 토큰 라이센싱 활성화 옵션을 선택하십시오. 토큰 라이센싱을 활성화한 후에는 추가 단계를 수행하여 {{ site.data.keys.mf_server }}를 구성해야 합니다.
+    이 학습서에서는 토큰 라이센싱이 필요하지 않다고 가정하므로 토큰 라이센싱용으로 {{ site.data.keys.mf_server }}를 구성하는 단계가 포함되지 않습니다. 단, 프로덕션 설치의 경우 토큰 라이센싱 활성화가 필요한지 여부를 판별해야 합니다. Rational License Key Server에서 토큰 라이센싱을 사용하는 계약이 있는 경우에는 Rational License Key Server에서 토큰 라이센싱 활성화 옵션을 선택하십시오. 토큰 라이센싱을 활성화한 후에는 추가 단계를 수행하여 {{ site.data.keys.mf_server }}를 구성해야 합니다.
 7. **일반 설정** 패널의 **{{ site.data.keys.product }} for iOS 설치** 섹션에서 기본 옵션(아니오)을 그대로 두십시오.
 8. Application Center가 설치되지 않도록 **구성 선택** 패널에서 아니오 옵션을 선택하십시오. 프로덕션 설치의 경우, Ant 태스크를 사용하여 Application Center를 설치하십시오. Ant 태스크를 사용하여 설치하면 {{ site.data.keys.mf_server }}에 대한 업데이트를 Application Center에 대한 업데이트에서 분리할 수 있습니다.
 9. **감사** 패널이 표시될 때까지 **다음**을 클릭하십시오. 그런 다음 설치를 계속하십시오.

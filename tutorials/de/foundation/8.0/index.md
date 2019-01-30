@@ -25,12 +25,14 @@ Besuchen Sie die folgenden Seiten, um sich einen Überblick über sämtliche Kat
 
 * [Alle Lernprogramme](all-tutorials/)
 
-Betreute Inhalte finden Sie auf folgenden Seiten: 
+Betreute Inhalte finden Sie auf folgenden Seiten:
 
 * [Cordova-Entwicklung ](cordova-tutorials/)
-* [iOS-Entwicklung](ios-tutorials/) 
-* [Android-Entwicklung](android-tutorials/) 
+* [Ionic-Entwicklung](ionic-tutorials/)
+* [iOS-Entwicklung](ios-tutorials/)
+* [Android-Entwicklung](android-tutorials/)
 * [Entwicklung für Windows 8.1 Universal und Windows 10 UWP](windows-8-10-tutorials/)
 * [Xamarin-Entwicklung](xamarin-tutorials/)
+* [React-Native-Entwicklung](reactnative-tutorials/) 
 * [Webanwendungsentwicklung](web-tutorials/)
 * [Serverseitige Entwicklung](server-side-tutorials/)

@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: IBM Cloud Private 上での MobileFirst Server のセットアップ
-breadcrumb_title: Mobile Foundation on IBM Cloud Private
+breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説

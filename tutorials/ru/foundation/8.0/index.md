@@ -18,12 +18,14 @@ show_breadcrumb: true
 
 * [Все учебники](all-tutorials/)
 
-Рекомендованные материалы доступны в следующих ресурсах: 
+Рекомендованные материалы доступны в следующих ресурсах:
 
 * [Разработка Cordova](cordova-tutorials/)
-* [Разработка iOS ](ios-tutorials/) 
-* [Разработка Android](android-tutorials/) 
+* [Разработка Ionic](ionic-tutorials/)
+* [Разработка iOS ](ios-tutorials/)
+* [Разработка Android](android-tutorials/)
 * [Разработка Windows 8.1 Universal и Windows 10 UWP](windows-8-10-tutorials/)
 * [Разработка Xamarin](xamarin-tutorials/)
+* [Разработка React Native](reactnative-tutorials/) 
 * [Разработка веб-приложений](web-tutorials/)
 * [Разработка на уровне сервера](server-side-tutorials/)

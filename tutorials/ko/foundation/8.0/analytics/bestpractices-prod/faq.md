@@ -168,7 +168,7 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-faq13">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq13" aria-expanded="true" aria-controls="collapse-mfp-faq13"><b>13.	앱 세션은 기본/Cordova 앱에 대해 무엇을 의미합니까?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-analytics-faqs" href="#collapse-mfp-faq13" aria-expanded="true" aria-controls="collapse-mfp-faq13"><b>13.	앱 세션은 네이티브/Cordova 앱에 대해 무엇을 의미합니까?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-faq13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq13">

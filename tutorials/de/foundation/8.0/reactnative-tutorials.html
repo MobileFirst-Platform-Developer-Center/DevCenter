@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Developing for React Native
+title: Entwicklung in React Native
 show_disqus: false
 use_dropdown: false
 print_pdf: false
@@ -25,52 +25,52 @@ indexed: false
 </style>
 </head>
 <br>
-Develop your React Native applications by following the tutorials bellow: set-up your development environment, experience the product and add value by integrating with {{ site.data.keys.product }} 8.0 offerings.<br/><br/>
+Nutzen Sie für die Entwicklung Ihrer React-Native-Anwendungen die folgenden Lernprogramme. Richten Sie Ihre Entwicklungsumgebung ein, probieren Sie das Produkt aus und erhalten Sie einen Mehrwert durch die Kombination mit den Angeboten von {{ site.data.keys.product }} 8.0.<br/><br/>
 
 <div class="container-fluid">
 <ul class="nav nav-pills" id="quickstartTab">
   <li class="nav-item">
-    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="basic" aria-selected="true"><h2 class="no-anchor">Basic Setup</h2></a>
+    <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab" aria-controls="basic" aria-selected="true"><h2 class="no-anchor">Basiskonfiguration</h2></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="quick-start-tab" data-toggle="tab" href="#quick-start" role="tab" aria-controls="quick-start" aria-selected="false"><h2 class="no-anchor">Quick Start</h2></a>
+    <a class="nav-link" id="quick-start-tab" data-toggle="tab" href="#quick-start" role="tab" aria-controls="quick-start" aria-selected="false"><h2 class="no-anchor">Schnelleinstieg</h2></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced" aria-selected="false"><h2 class="no-anchor">Advanced</h2></a>
+    <a class="nav-link" id="advanced-tab" data-toggle="tab" href="#advanced" role="tab" aria-controls="advanced" aria-selected="false"><h2 class="no-anchor">Erweitert</h2></a>
   </li>
 </ul>
 <div class="tab-content" id="quickstartTabContent">
   <div class="tab-pane fade in active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
-    <p>If you are a developer who has chosen React Native as the framework to develop your mobile or web app, the following sections help you get started with <a target="_blank "href="https://console.bluemix.net/catalog/services/mobile-foundation">IBM Mobile Foundation</a> SDK in your React Native app. </p>
+    <p>Wenn Sie ein Entwickler sind, der sich für React Native als Framework für die Entwicklung von mobilen oder Web-Apps entschieden hat, können Ihnen die folgenden Abschnitte bei Ihren ersten Schritten mit dem SDK der <a target="_blank "href="https://console.bluemix.net/catalog/services/mobile-foundation">IBM Mobile Foundation</a> in Ihrer React-Native-App helfen. </p>
 
-    <p>You can use your preferred code editor such as Atom.io, Visual Studio Code, Eclipse, IntelliJ or any other editor for writing your applications. </p>
+    <p>Sie können Ihren bevorzugten Codeeditor (Atom.io, Visual Studio Code, Eclipse, IntelliJ oder einen anderen Editor) verwenden, um Ihre Anwendungen zu schreiben. </p>
 
     <!--<p><b>Prerequisite:</b> As you setup your Ionic development environment, make sure to also read the <a target="_blank "href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">Setting up the MobileFirst development environment</a> tutorial.</p>-->
-<h2><font color="DodgerBlue">Step 1:</font> Installing the React Native CLI</h2>
-    <p>To get started with React Native development the first step required is to install the <a target="_blank" href="https://facebook.github.io/react-native/docs/getting-started.html#the-react-native-cli">React Native CLI</a>. </p>
+<h2><font color="DodgerBlue">Schritt 1:</font> React-Native-CLI installieren</h2>
+    <p>Der erste erforderliche Schritt für den Einstieg in die React-Native-Enwticklung ist die Installation der <a target="_blank" href="https://facebook.github.io/react-native/docs/getting-started.html#the-react-native-cli">React-Native-CLI</a>. </p>
 
-    <p>To install React Native CLI:</p>
+    <p>Gehen Sie wie folgt vor, um die React-Native-CLI zu installieren:</p>
 
-    <p>Download and install <a target="_blank" href="https://nodejs.org/en/">NodeJS</a>.</p>
-    <p>From a Command-line window, run the following command:</p>
+    <p>Laden Sie <a target="_blank" href="https://nodejs.org/en/">NodeJS</a> herunter und installieren Sie es.</p>
+    <p>Führen Sie in einem Befehlszeilenfenster den folgenden Befehl aus:</p>
     {% highlight bash %}
     npm install -g react-native-cli
    {% endhighlight %}
 
-   <p>Follow the instructions provided in the <a  target="_blank" href="https://facebook.github.io/react-native/docs/getting-started.html">Getting Started page in React Native docs</a>, to set up your machine for React Native development. </p>
-   <p>This includes the setup required for Android & iOS.</p>
+   <p>Folgen Sie den Anweisungen auf der <a  target="_blank" href="https://facebook.github.io/react-native/docs/getting-started.html">Seite 'Getting Started' der React-Native-Dokumentation</a>, um Ihre Maschine für die React-Native-Entwicklung einzurichten. </p>
+   <p>Dazu gehört auch das Setup, das für Android & iOS erforderlich ist.</p>
 
-   <h2><font color="DodgerBlue">Step 2:</font> Setting up the MobileFirst development environment</h2>
-   <p>After you have installed the React Native CLI, set up the MobileFirst development environment. For detailed information, refer to the tutorial <a target="_blank "href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">Setting up the MobileFirst development environment</a> to set up your MobileFirst development environment. </p>
+   <h2><font color="DodgerBlue">Schritt 2:</font> MobileFirst-Entwicklungsumgebung einrichten</h2>
+   <p>Wenn Sie die React-Native-CLI installiert haben, richten Sie die MobileFirst-Entwicklungsumgebung ein. Ausführliche Informationen dazu enthält das Lernprogramm <a target="_blank "href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst">MobileFirst-Entwicklungsumgebung einrichten</a>. </p>
    <br/>
-   <blockquote>Go to <font color="DodgerBlue">Quick Start</font> tab, to learn how to quickly get started with development using React Native SDK.</blockquote>
+   <blockquote>Auf der Registerkarte <font color="DodgerBlue">Schnelleinstieg</font> erfahren Sie, wie Sie das React-Native-SDK nutzen können, um rasch mit der Entwicklung zu beginnen. </blockquote>
 
   </div>
   <div class="tab-pane fade" id="quick-start" role="tabpanel" aria-labelledby="quick-start-tab">
-    <p>Follow the steps below to quickly get started with development using React Native on MobileFirst Platform Foundation.</p>
-    <p>The purpose of this quick start tutorial is to explain a simple end-to-end flow.</p>
-    <p>A sample application is provided in  <a target="_blank" href="https://github.ibm.com/MFPSamples/MFPStarterReactNative">Github</a>, the sample is downloaded and registered with {{ site.data.keys.mf_server }}. The provided adapter (or a new adapter) is deployed to the {{ site.data.keys.mf_console }}. The application logic is changed to make a resource request.</p>
-   <p><b>Expected result: </b>To successfully ping the {{ site.data.keys.mf_server }} and to successfully retrieve data using an adapter.</p>
+    <p>Führen Sie die folgenden Schritte aus, um unverzüglich mit der Entwicklung unter Verwendung von React Native für die MobileFirst Platform Foundation zu beginnen.</p>
+    <p>Ziel dieses Lernprogramms für den Schnellstart ist es, einen einfachen End-to-End-Ablauf zu erläutern. </p>
+    <p><a target="_blank" href="https://github.ibm.com/MFPSamples/MFPStarterReactNative">Github</a> stellt eine Beispielanwendung bereit, die heruntergeladen und bei {{ site.data.keys.mf_server }} registriert wird. Der zur Verfügung gestellte (oder neue) Adapter wird in der {{ site.data.keys.mf_console }} implementiert. Die Anwendungslogik wird so geändert, dass sie eine Ressourcenanforderung absetzt. </p>
+   <p><b>Erwartetes Ergebnis:</b> {{ site.data.keys.mf_server }} kann erfolgreich mit Ping überprüft werden und Daten können erfolgreich mithilfe eines Adapters abgerufen werden. </p>
 
     <!--  <h3><font color="DodgerBlue">Step 1:</font> Get the prerequisites</h3>
         <ul>
@@ -79,10 +79,10 @@ Develop your React Native applications by following the tutorials bellow: set-up
         <li><i>[Optional]</i> {{ site.data.keys.mf_cli }} <a target="_blank" href="{{site.baseurl}}/downloads">(download)</a></li>
         <li><i>[Optional]</i> Stand-alone {{ site.data.keys.mf_server }} <a target="_blank" href="{{site.baseurl}}/downloads">(download)</a></li>
       </ul>-->
-    <h3><font color="DodgerBlue">Step 1:</font> Starting the {{ site.data.keys.mf_server }}</h3>
-    <p>Make sure you have <a target="_blank" href="../bluemix/using-mobile-foundation">created a Mobile Foundation instance</a>, or
-      if you are using the <a target="_blank" href="../installation-configuration/development/mobilefirst">{{ site.data.keys.mf_dev_kit }}</a>, navigate to the server's folder and run the command: <code>./run.sh</code> in Mac and Linux or <code>run.cmd</code> in Windows.</p>
-    <h3><font color="DodgerBlue">Step 2:</font> Adding the React Native SDK</h3>
+    <h3><font color="DodgerBlue">Schritt 1:</font> {{ site.data.keys.mf_server }} starten</h3>
+    <p>Vergewissern Sie sich, dass eine <a target="_blank" href="../bluemix/using-mobile-foundation">Mobile-Foundation-Instanz</a> erstellt wurde, oder - falls Sie
+      das <a target="_blank" href="../installation-configuration/development/mobilefirst">{{ site.data.keys.mf_dev_kit }}</a> verwenden, navigieren Sie zum Serverordner und führen Sie den Befehl <code>./run.sh</code> unter Mac und Linux oder <code>run.cmd</code> unter Windows aus.</p>
+    <h3><font color="DodgerBlue">Schritt 2:</font> React-Native-SDK hinzufügen</h3>
     <!--<p>Open the {{ site.data.keys.mf_console }} by loading the URL: <code>http://your-server-host:server-port/mfpconsole</code> in a browser. </p>
       <ul><li>If the server is running locally, use: <code>http://localhost:9080/mfpconsole</code>. The <i>username/password</i> is <b>admin/admin</b>.</li>
         <li>If the server is running on IBM Cloud as Mobile Foundation service instance, use: <code>https://bluemix-mfp-server-hostname:443/mfpconsole</code>. The <i>username/password</i> can be obtained from the IBM Cloud Mobile Foundation Service Credentials.</li>
@@ -96,21 +96,21 @@ Develop your React Native applications by following the tutorials bellow: set-up
        <li>Click on <b>Register application</b></li>
      </ul>-->
      <!--<img class="gifplayer" alt="Register an application" src="{{site.baseurl}}/assets/tutorials/all-tutorials/register-an-application-cordova.png"/>-->
-     <h4><font color="DarkTurquoise">Step 2.1:</font> Downloading the React Native sample application from <a target="_blank" href="https://github.com/MobileFirst-Platform-Developer-Center/MFPStarterReactNative">Github</a>.</h4>
-     <h4><font color="DarkTurquoise">Step 2.2:</font> Adding the React Native SDK to the downloaded React Native sample application</h4>
-     <p>The MobileFirst SDK for React Native is available as a <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst">React Native module from NPM.</a></p>
+     <h4><font color="DarkTurquoise">Schritt 2.1:</font> Laden Sie die React-Native-Beispielanwendung von <a target="_blank" href="https://github.com/MobileFirst-Platform-Developer-Center/MFPStarterReactNative">Github</a> herunter.</h4>
+     <h4><font color="DarkTurquoise">Schritt 2.2:</font> Fügen Sie das React-Native-SDK zur heruntergeladenen React-Native-Beispielanwendung hinzu.</h4>
+     <p>Das MobileFirst-SDK für React Native ist als <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst">React-Native-Modul von NPM</a> verfügbar.</p>
      <ol>
-       <li> Navigate to the root of your downloaded React Native project and add the {{ site.data.keys.product_adj }} core React Native plug-in, change directory to the root of the React Native project: <code>cd MFPStarterReactNative</code></li>
-       <li> Add the MobileFirst Plugins by using the NPM CLI command: <code>npm install react-native-plugin-name</code><br/>
-         For example:
+       <li> Navigieren Sie zum Stammverzeichnis Ihres heruntergeladenen React-Native-Projekts und fügen Sie das zentrale {{ site.data.keys.product_adj }}-React-Native-Plug-in hinzu. Wechseln Sie dann zum Stammverzeichnis des React-Native-Projekts <code>cd MFPStarterReactNative</code>.</li>
+       <li> Fügen Sie die MobileFirst-Plug-ins mit dem NPM-CLI-Befehl <code>npm install React-Native-Plug-in-Name</code> hinzu.<br/>
+         Beispiel:
 
        {% highlight bash %}
         npm install react-native-ibm-mobilefirst --save
       {% endhighlight %}
 
-        <blockquote>The above command adds MobileFirst Core SDK Plugin to the React Native project.</blockquote>
+        <blockquote>Mit dem obigen Befehl wird das zentrale MobileFirst-SDK-Plug-in zum React-Native-Projekt hinzugefügt. </blockquote>
         </li>
-     <li>Link all native dependencies to your app <br/>
+     <li>Verbinden Sie alle nativen Abhängigkeiten mit Ihrer App. <br/>
        {% highlight bash %}
         react-native link
       {% endhighlight %}
@@ -118,9 +118,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
     </ol>
 
   </br>
-    <h4><font color="DarkTurquoise">Step 2.3:</font> Additional platform sepcific steps </h4>
-    <p> <b> Android </b> </br>
-    Add the following lines to <b>AndroidManifest.xml</b> <i>({project-folder}/android/app/src/main/)</i> :
+    <h4><font color="DarkTurquoise">Schritt 2.3:</font> Zusätzliche plattformspezifische Schritte</h4>
+    <p> <b>Android</b> </p></br>
+    Fügen Sie die folgenden Zeilen zur Datei <b>AndroidManifest.xml</b> <i>({project-folder}/android/app/src/main/)</i> hinzu:
       {% highlight xml %}
       <![CDATA[
       <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/  package="com.myapp">
@@ -131,12 +131,12 @@ Develop your React Native applications by following the tutorials bellow: set-up
     ]]>
     {% endhighlight %}
   </br>
-  <p> <b> iOS </b> </br>
-    Open your project in XCode. In the project navigator, drag and drop mfpclient.plist from ios folder.
+  <p> <b>iOS</b></p> </br>
+    Öffnen Sie Ihr Projekt in Xcode. Ziehen Sie im Projektnavigator die Datei mfpclient.plist mit der Maus aus dem iOS-Ordner.
   </br>
 
-    <h3><font color="DodgerBlue">Step 3:</font> Registering the application</h3>
-    <ol><li>Open a command-line window and navigate to the root of the  particular platform (iOS or Android) of the project.
+    <h3><font color="DodgerBlue">Schritt 3:</font> Anwendung registrieren</h3>
+    <ol><li>Öffnen Sie ein Befehlszeilenfenster und navigieren Sie zum Stammverzeichnis des Projekts für die entsprechende Plattform (iOS oder Android).
        {% highlight bash %}
         cd ios
       {% endhighlight %}
@@ -145,38 +145,38 @@ Develop your React Native applications by following the tutorials bellow: set-up
         cd android
       {% endhighlight %}
       </li>
-      <li>Run the following command to register the application:
+      <li>Führe Sie den folgenden Befehl aus, um die Anwendung zu registrieren:
        {% highlight bash %}
         mfpdev app register
       {% endhighlight %}
 
-      <p> If a remote server is used, <a target="_blank" href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance">use the command</a> <code>mfpdev server add</code> to add it.
+      <p> Falls ein ferner Server verwendet wird, <a target="_blank" href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance">verwenden Sie den Befehl</a> <code>mfpdev server add</code>, um den Server hinzuzufügen.
 
-      The <code>mfpdev app register</code> CLI command first connects to the {{ site.data.keys.mf_server }} to register the application. 	Each platform is registered as an application in {{ site.data.keys.mf_server }}.</p>
+      Der CLI-Befehl <code>mfpdev app register</code> stellt zunächst eine Verbindung zu {{ site.data.keys.mf_server }} her, um die Anwendung zu registrieren. Jede Plattform wird in {{ site.data.keys.mf_server }} als eine Anwendung registriert.</p>
       <ul>
       <li><h5>iOS</h5>
 
-      <p>If your platform is iOS then you are asked to provide the application’s BundleID. <b>Important</b>: The BundleID is <b>case sensitive</b>.</p>
-      <p> The <b>mfpdev app register</b> CLI command first connects to the MobileFirst Server to register the application, then updates the <b>mfpclient.plist</b> configuration file at the root of the Xcode project which contains metadata that identifies the MobileFirst Server.</p>
+      <p>Wenn Ihre Plattform iOS ist, werden Sie aufgefordert, die Bundle-ID (BundleID) der Anwendung anzugeben. <b>Wichtiger Hinweis</b>: Bei der Bundle-ID <b>muss die Groß-/Kleinschreibung beachtet werden</b>.</p>
+      <p> Der CLI-Befehl <b>mfpdev app register</b> stellt zunächst eine Verbindung zu MobileFirst Server her, um die Anwendung zu registrieren. Anschließend aktualisiert er die Konfigurationsdatei <b>mfpclient.plist</b> im Stammverzeichnis des Xcode-Projekts, die Metadaten zur Identifizierung des MobileFirst Server enthält.</p>
 
-      <p><b>Note :</b> In XCode, in the project navigator, drag and drop mfpclient.plist from ios folder. This step is applicable only for iOS platform.</p>
+      <p><b>Hinweis:</b> Ziehen Sie in Xcode im Projektnavigator die Datei mfpclient.plist mit der Maus aus dem iOS-Ordner. Dieser Schritt muss nur auf der Plattform iOS ausgeführt werden. </p>
       <li><h5>Android</h5>
 
-      <p>If your platform is Android then you are asked to provide the application’s package name. <b>Important</b>: The package name is <b>case sensitive</b>.</p>
-     <p>The <b>mfpdev app register</b> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <b>mfpclient.properties</b> file in the <b>[project root]/app/src/main/assets/</b> folder of the Android Studio project and to add to it the metadata that identifies the MobileFirst Server.</p>
+      <p>Wenn Ihre Plattform Android ist, werden Sie aufgefordert, den Paketnamen der Anwendung anzugeben. <b>Wichtiger Hinweis</b>: Beim Paketnamen <b>muss die Groß-/Kleinschreibung beachtet werden</b>.</p>
+     <p>Der CLI-Befehl <b>mfpdev app register</b> stellt zunächst eine Verbindung zu MobileFirst Server her, um die Anwendung zu registrieren. Anschließend generiert er die Datei <b>mfpclient.properties</b> im Ordner <b>[Projektstmmverzeichnis]/app/src/main/assets/</b> des Android-Studio-Projekts und fügt die Metadaten zur Identifizierung des MobileFirst Server zu dieser Datei hinzu.</p>
     </li>
     </ul>
     </li></ol>
-     <h3><font color="DodgerBlue">Step 4:</font> Editing the application logic</b></h3>
+     <h3><font color="DodgerBlue">Schritt 4:</font> Anwendungslogik bearbeiten</b></h3>
      <ol>
-       <li>Open the React native project in your code editor of choice.</li>
-         <li> Import the <b>WLAuthorizationManager</b> class into your <b>App.js</b></li>
+       <li>Öffnen Sie das React-Native-Projekt im Codeeditor Ihrer Wahl.</li>
+         <li> Importieren Sie die Klasse <b>WLAuthorizationManager</b> in Ihre Datei <b>App.js</b>.</li>
          {% highlight javascript %}
          import {WLAuthorizationManager, WLResourceRequest} from 'react-native-ibm-mobilefirst';
          {% endhighlight %}
 
-         <li>Select the <b>App.js</b> file, which is located at project's root folder and paste the following code snippet, replacing the existing <code>WLAuthorizationManager.obtainAccessToken()</code> function:
-         <blockquote>See the React Native Client-side API references <a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/api/client-side-api/reactnative/client/">here</a>.</blockquote>
+         <li>Wählen Sie die Datei <b>App.js</b> im Stammordner des Projekts aus und ersetzen Sie die vorhandene Funktion <code>WLAuthorizationManager.obtainAccessToken()</code> durch das folgende Code-Snippet:
+         <blockquote>Referenzinformationen zur cleintseitigen React-Native-API finden Sie <a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/api/client-side-api/reactnative/client/">hier</a>.</blockquote>
 
          {% highlight javascript %}
            WLAuthorizationManager.obtainAccessToken("").then(
@@ -188,7 +188,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
                  resourceRequest.setQueryParameters({ name: "world" });
                  resourceRequest.send().then(
                    (response) => {
-                     // Will display "Hello world" in an alert dialog.
+                     // Zeigt "Hello world" in einem Benachrichtigungsdialog an
                      alert("Success: " + response.responseText);
                    },
                    (error) => {
@@ -202,75 +202,156 @@ Develop your React Native applications by following the tutorials bellow: set-up
        {% endhighlight %}
        </li>
      </ol>
-  <h3><font color="DodgerBlue">Step 5: </font>Deploying an adapter</h3>
-  <p>Download <a href="../quick-start/javaAdapter.adapter">this prepared .adapter artifact</a> and deploy it from the {{ site.data.keys.mf_console }} using the <b>Actions → Deploy adapter</b> action.</p>
-  <h4><font color="DarkTurquoise">Step 5.1: </font>Select the <b>Actions → Download sample</b> option. Download the <i>Hello World</i> <b>Java</b> adapter sample</h4>
-  <p>Alternatively, click the <b>New</b> button next to <b>Adapters</b>.  </p>
-  <p><blockquote> If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen <b>Set up your development environment</b> instructions.</blockquote></p>
-  <h4><font color="DarkTurquoise">Step 5.2: </font>From a <b>Command-line</b> window, navigate to the adapter's Maven project root folder and run the command:</h4>
+  <h3><font color="DodgerBlue">Schritt 5: </font>Adapter implementieren</h3>
+  <p>Laden Sie <a href="../quick-start/javaAdapter.adapter">dieses vorbereitete Adapterartefakt</a> herunter und implementieren Sie es in der {{ site.data.keys.mf_console }} (<b>Akltionen → Adapter implementieren</b>). </p>
+  <h4><font color="DarkTurquoise">Schritt 5.1: </font>Wählen Sie die Option <b>Aktionen → Beispiel herunterladen</b> aus. Laden Sie das <b>Java</b>-Adapterbeispiel <i>Hello World</i> herunter.</h4>
+  <p>Sie können auch neben <b>Adapter</b> auf die Schaltfläche <b>Neu</b> klicken. </p>
+  <p><blockquote> Wenn Sie Maven und die {{ site.data.keys.mf_cli }} noch nicht installiert haben, folgen Sie den angezeigten Anweisungen unter <b>Entwicklungsumgebung einrichten</b>. </blockquote></p>
+  <h4><font color="DarkTurquoise">Schritt 5.2: </font>Navigieren Sie in einem <b>Befehlszeilenfenster</b> zum Stammordner des Adapter-Maven-Projekts und führen Sie folgenden Befehl aus: </h4>
   {% highlight bash %}
     mfpdev adapter build
   {% endhighlight %}
-  <h4><font color="DarkTurquoise">Step 5.3: </font>When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the <b>Actions → Deploy adapter</b> action. The adapter can be found in the <b>[adapter]/target</b> folder.</h4>
+  <h4><font color="DarkTurquoise">Scritt 5.3: </font>Wenn der Build erstellt ist, implementieren Sie den Adapter in der {{ site.data.keys.mf_console }} unter Verwendung der Option <b>Aktionen → Adapter implementieren</b>. Sie finden den Adapter im Ordner <b>[adapter]/target</b>.</h4>
   <!--<img class="gifplayer" alt="Deploy an adapter" src="{{site.baseurl}}/assets/tutorials/all-tutorials/create-an-adapter.png"/>-->
 
   <!--<img src="{{site.baseurl}}/assets/tutorials/all-tutorials/cordovaQuickStart.png" alt="sample application" style="float:right"/>-->
 
-  <h3><font color="DodgerBlue">Step 6: </font>Testing the application</h3>
+  <h3><font color="DodgerBlue">Schritt 6: </font>Anwendung testen</h3>
 
-    <p>Use the following command to run the application:</p>
+    <p>Führen Sie die Anwendung mit folgendem Befehl aus:</p>
     {% highlight bash %}
      react-native run-ios|run-android
     {% endhighlight %}
 
-    <p>If a device is connected, the application is installed and launched in the device. Otherwise the simulator or emulator will be used.</p>
+    <p>Wenn ein Gerät verbunden ist, wird die Anwendung auf dem Gerät installiert und gestartet. Andernfalls wird der Simulator oder Emulator verwendet.</p>
 
-    <blockquote>For detailed instructions on quick start steps, see <a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/reactnative/">here</a>.</blockquote>
+    <blockquote>Ausführliche Anweisungen zu den Schritten für den Schnelleinstieg finden Sie <a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/reactnative/">hier</a>.</blockquote>
 
-  <h3>Results</h3>
+  <h3>Ergebnisse</h3>
   <ul>
-    <li>Clicking the <b>Ping {{ site.data.keys.mf_server }}</b> button will display <b>Connected to {{ site.data.keys.mf_server }}</b>.</li>
-    <li>If the application is able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter takes place. The adapter response is then displayed in an alert.</li>
+    <li>Wenn Sie auf die Schaltfläche <b>Ping {{ site.data.keys.mf_server }}</b> klicken, wird <b>Connected to {{ site.data.keys.mf_server }}</b> angezeigt.</li>
+    <li>Falls die Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen kann, wird mithilfe des implementierten Java-Adapters eine Ressourcenanforderung abgesetzt. Die Adapterantwort wird dann in Form eines Alerts angezeigt.</li>
   </ul>
 
   </div>
   <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
-  <h2><a href="../adapters/">Developing Adapters</a></h2>
-    Develop server-side code to integrate with enterprise back-end systems and cloud services.
+  <h2>React-Native-SDK für IBM MobileFirst JSONStore</h2>
+    IBM Mobile Foundation JSONStore ist eine optionale clientseitige API für ein einfaches, dokumentorientiertes Speichersystem. JSONStore ermöglicht die permanente Speicherung von JSON-Dokumenten. Dokumente einer Anwendung sind auch dann in JSONStore verfügbar, wenn das Gerät offline ist. Dieser permanente und stets verfügbare Speicher kann nützlich sein, um Benutzern den Zugriff auf Dokumente zu ermöglichen, wenn das Gerät beispielsweise keine Netzverbindung herstellen kann.
 
+    <h3>Installation</h3>
+      <p>Das IBM MobileFirst-JSONStore-SDK für React-Native-Apps ist vom <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst" target="_blank">IBM MobileFirst-Foundation-SDK</a> abhängig. Fügben Sie das IBM MobileFirst-Foundation-SDK zu Ihrer App hinzu. </p>
+      <p>Navigieren Sie zu den Ordner Ihrer React-Native-App und führen Sie den folgenden Befehl aus, um das JSONStore-SDK für React-Native-Apps zu installieren. </p>
+      {% highlight bash  %}
+      npm install react-native-ibm-mobilefirst-jsonstore --save
+      {% endhighlight %}
+      <blockquote>
+        Unterstützte Plattformen sind Android und iOS.
+      </blockquote>
+
+    <h3>Erste Schritte</h3>
+    <h4>Voraussetzungen</h4>
     <ul>
-        <li><a href="../adapters/">Adapters overview</a></li>
-        <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
-        <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a>
-            <ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
-                    <ul>
-                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Using SSL in JavaScript HTTP Adapters</a></li>
-                    </ul>
-                </li>
-                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Using Java in JavaScript Adapters</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/java-adapters/">Java Adapters</a>
-            <ul>
-                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP adapter</a></li>
-                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
-        <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
-        <li>Server-side log collection
-            <ul>
-                <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
-                <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
-                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
-        <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
+      <li>Vergewissern Sie sich, dass Sie alle Voraussetzungen für eine React-Native-App bedacht haben. Sie können diese auf der Seite <a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank">React Native Getting Started</a> nachlesen, falls Sie noch nicht mit React Native vertraut sind.</li>
+      <li>Sie benötigen eine <a href="https://console.bluemix.net/catalog/services/Mobile%20Foundation">Mobile-Foundation-Instanz für IBM Cloud</a> ODER eine <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/" target="_blank">lokale Installation</a> von IBM Mobile Foundation Server.</li>
     </ul>
 
+    <h4>React-Native-Projekt erstellen</h4>
+    <ol>
+    <li>Der erste Schritt ist die Erstellung eines React-Native-Projekts. Die App wollen wir <code>JSONStoreApp</code> nennen. Erstellen Sie mithilfe der React-Native-CLI ein neues Projekt.
+      {% highlight bash  %}
+      react-native init JSONStoreApp
+      cd JSONStoreApp
+      {% endhighlight %}
+    </li>
+    <li>Installieren Sie das zentrale MobileFirst-SDK und führen Sie die Anweisungen auf der Seite <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst" target="_blank">Getting Started Instructions</a> aus.</li>
+    <li>Fügen Sie das IBM MobileFirst-JSONStore-SDK zu Ihrer App hinzu.
+      {% highlight bash  %}
+      npm install react-native-ibm-mobilefirst-jsonstore —-save
+      {% endhighlight %}
+    </li>
+    <li>Verlinken Sie Ihr Projekt so, dass alle nativen Abhängigkeiten zu Ihrem React-Native-Projekt hinzugefügt werden.
+             {% highlight bash %}
+        react-native link
+      {% endhighlight %}
+      </li>
+  </ol>
+
+  <h4>Android-App konfigurieren</h4>
+  <ul>
+    <li>Fügen Sie zum Abschnitt <code>android</code> der Datei <code><React-Native-Projekt>/android/app/build.gradle</code> die folgenden Zeilen hinzu:
+    {% highlight gradle  %}
+    packagingOptions{
+    	exclude 'META-INF/ASL2.0'
+    }
+        {% endhighlight %}
+  </li>
+    </ul>
+
+   <h4>JSONStore-Sammlung erstellen</h4>
+    <p>Der erste Schritt bei der Verwendung der JSONStore-API ist das Erstellen einer JSONStore-Sammlung.</p>
+    <ol>
+    <li>Importieren Sie die JSONStore-Klassen in Ihre Anwendung. Öffnen Sie die Datei <code>App.js</code> und fügen Sie bei den anderen Importanweisungen die folgende Zeile hinzu:
+    {% highlight bash  %}
+    import {WLJSONStore, JSONStoreCollection} from 'react-native-ibm-mobilefirst-jsonstore';
+    {% endhighlight %}
+    </li>
+    <li>Erstellen Sie eine Sammlung und öffnen Sie sie. Sie können mehrere Sammlungen auf einmal öffnen. Übergeben Sie den Parameter <code>JSONStoreInitOptions</code> für erweiterte Optionen, z. B. für den Schutz Ihrer Sammlung mit einem Kennwort, für das Einrichten von Synchronisationsrichtlinien usw.
+    {% highlight javascript  %}
+    var dogs = new JSONStoreCollection('dogs');
+    WLJSONStore.openCollections(['dogs']);  // Geben Sie den Namen der Sammlung als Zeichenfolge an.
+        {% endhighlight %}
+  </li>
+    </ol>
+
+    <h4>Daten zu einer Sammlung hinzufügen</h4>
+    <p>Fügen Sie JSON-Daten zu Ihrer Sammlung hinzu.</p>
+    {% highlight javascript  %}
+    	var hachi = { "name" : "Hachiko" , "breed" : "Akita" , "country" : "Japan"};
+        dogs.addData(hachi).then( ()=> {
+          // Daten wurden erfolgreich zur Sammlung hinzugefügt.
+        }).catch ( (err) => {
+          // Fehler beim Hinzufügen der Daten. Weitere Informationen zum Fehler enthält das err-Objekt.
+        })
+        {% endhighlight %}
+  <h4>Daten einer Sammlung abfragen</h4>
+    <p>Sie können eine der APIs JSONStoreCollection.find* verwenden, um eine Sammlung abzufragen.
+    Für erweiterte Filter- und Abfragefunktionen für JSON-Daten verwenden Sie die APIs JSONStoreQueryPart und JSONStoreQuery. </p>
+    {% highlight javascript  %}
+    	dogs.findAllDocuments().then( (result) => {
+           // Das Ergebnis umfasst alle Dokumente der Sammlung,
+           // z. B. [ {"json": {"name":"Hachiko","breed":"Akita","country":"Japan"},"_id":2}]
+         }).catch((error) => {
+            console.error ("Error finding docs " +  JSON.stringify(error));
+         });
+    {% endhighlight %}
+
+    <h4>Sammlung schließen, Inhalt löschen und Sammlung zerstören</h4>
+    <p>Wenn Sie Ihre JSONStore-Sammlung schließen, bleibt sie geschlossen, bis Sie sie erneut mit der API <code>openCollections</code> öffnen.</p>
+    {% highlight javascript  %}
+    WLJSONStore.closeAll()
+        {% endhighlight %}
+  <p>Wenn Sie den Inhalt einer Sammlung löschen, werden alle Dokumente aus der Sammlung entfernt, ohne dass die Sammlung zerstört wird.</p>
+    {% highlight javascript  %}
+    	dogs.clearCollection().then (()=>{
+    		// Inhalt aller Dokumente erfolgreich gelöscht
+         }).catch( (err) => {
+           // Beim Löschen des Inhalts der Sammlung ist ein Fehler aufgetreten.
+         })
+        {% endhighlight %}
+  <p>Beim Zerstören einer Sammlung werden alle Daten, alle Zugreifenden und alle Sicherheitsartefakte unwiderruflich gelöscht. Eine einmal zerstörte Sammlung kann nicht wiederhergestellt werden. Alle Sammlungen der App werden zerstört. </p>
+
+    {% highlight javascript  %}
+    	WLJSONStore.destroy()
+        {% endhighlight %}
+  <h3>Weitere Informationen</h3>
+    Einzelheiten zu JSONStore in React-Native-Anwendungen finden Sie <a href="../application-development/jsonstore/reactnative/">hier</a>.
+
+    <h3>Referenzinformationen</h3>
+    <ul>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/" target="_blank">Developer Center</a></li>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/reactnative-tutorials/" target="_blank">Einführung</a></li>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/api/client-side-api/reactnative/jsonstore/" target="_blank">API-Referenz</a></li>
+    </ul>
   </div>
 </div>
 </div>

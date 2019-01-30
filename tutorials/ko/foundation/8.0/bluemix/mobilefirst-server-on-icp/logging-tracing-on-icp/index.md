@@ -42,7 +42,7 @@ weight: 2
 ```
 -Dcom.ibm.ws.logging.trace.specification=com.ibm.mfp.*=all=enabled
 ```
-JNDI 구성을 사용하여 이 항목을 설정할 수도 있습니다. 자세한 정보는 [여기]({{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#env-mf-server)를 참조하십시오.
+ JNDI 구성을 사용하여 이 항목을 설정할 수도 있습니다. 자세한 정보는 [여기]({{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#env-mf-server)를 참조하십시오.
 
 
 ## *kubectl* 로그 수집
@@ -66,8 +66,8 @@ get-icp-logs <helm_release_name> [<output_directory>] [<name_space>]
 ```
 아래의 표에서는 사용자 정의 스크립트에서 사용되는 각 매개변수에 대해 설명합니다.
 
-|옵션 |설명 |비고 |
+| 옵션 | 설명 | 비고 |
 |--------|-------------|---------|
-|helm_release_name |각 Helm Chart 설치의 릴리스 이름 |**필수** |
-|output_directory |수집된 로그를 배치할 출력 디렉토리 |**선택사항**<br/>기본값: 현재 작업 디렉토리 아래의 **mfp-icp-logs**. |
-|name_space |각 Helm Chart가 설치된 네임스페이스 |**선택사항**<br/>기본값: **default**. |
+| helm_release_name | 각 Helm Chart 설치의 릴리스 이름 | **필수** |
+| output_directory | 수집된 로그를 배치할 출력 디렉토리 | **선택사항**<br/>기본값: 현재 작업 디렉토리 아래의 **mfp-icp-logs**. |
+| name_space | 각 Helm Chart가 설치된 네임스페이스 | **선택사항**<br/>기본값: **default**. |

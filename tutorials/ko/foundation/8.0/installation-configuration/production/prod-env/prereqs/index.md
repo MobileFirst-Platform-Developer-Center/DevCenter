@@ -14,7 +14,7 @@ MobileFirst Server를 설치하기 전에 다음 소프트웨어가 있어야 �
 * **DBMS(Database Management System)**
    DBMS는 MobileFirst Server 컴포넌트의 기술 데이터를 저장하는 데 필요합니다. 지원되는 다음 DBMS 중 하나를 사용해야 합니다.
 
-  * IBM  DB2
+  * IBM DB2
   * MySQL
   * Oracle
 

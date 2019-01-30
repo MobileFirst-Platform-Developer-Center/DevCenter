@@ -595,10 +595,8 @@ MobileFirst 安装程序必须激活 WebSphere Application Server 的应用程�
     * 单击**新建**。
     * 将**数据库类型**设置为**用户定义**。
     * 将**类实现名**设置为 **org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource40**。
-    * 将**名称**设置为 **Worklight
-- Derby JDBC 提供程序**。
-    * 将**描述**设置为 **Worklight 的 Derby
-JDBC 提供程序**。
+    * 将**名称**设置为 **Worklight - Derby JDBC 提供程序**。
+    * 将**描述**设置为 **Worklight 的 Derby JDBC 提供程序**。
     * 单击**下一步**。
     * 将**类路径**设置为步骤 1 中确定的目录中的 JAR 文件，并将 **was\_install\_dir/profiles/profile-name** 替换为 WebSphere Application Server 变量引用 **${USER\_INSTALL\_ROOT}**。
     * 单击**完成**。
@@ -606,12 +604,10 @@ JDBC 提供程序**。
     * 在 WebSphere Application Server 控制台中，单击**资源 → JDBC → 数据源**。
     * 从**作用域**组合框中，选择相应的作用域。
     * 单击**新建**。
-    * 将**数据源名称**设置为 **Application
-Center 数据库**。
+    * 将**数据源名称**设置为 **Application Center 数据库**。
     * 将 **JNDI** 名称设置为 **jdbc/AppCenterDS**。
     * 单击**下一步**。
-    * 选择名为 **Worklight
-- Derby JDBC 提供程序**的现有 JDBC 提供程序。
+    * 选择名为 **Worklight - Derby JDBC 提供程序**的现有 JDBC 提供程序。
     * 单击**下一步**。
     * 单击**下一步**。
     * 单击**完成**。
@@ -623,8 +619,7 @@ Center 数据库**。
     * 单击**确定**。
     * 单击**保存**。
     * 在该页面的顶部，单击 **Application Center 数据库**。
-    * 在**其他属性**下，单击 **WebSphere
-Application Server 数据源属性**。
+    * 在**其他属性**下，单击 **WebSphere Application Server 数据源属性**。
     * 选择**非事务数据源**。
     * 单击**确定**。
     * 单击**保存**。
@@ -1085,8 +1080,8 @@ JDBC 驱动程序数据源**。
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * 在 Windows 系统上：
 
@@ -1361,8 +1356,8 @@ JDBC 驱动程序数据源**。
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * 在 Windows 系统上：
 

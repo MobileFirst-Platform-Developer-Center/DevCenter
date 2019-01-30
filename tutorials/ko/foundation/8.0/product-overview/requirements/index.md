@@ -25,8 +25,7 @@ weight: 3
 {: #system-requirements-by-platform-detail }
 다음 링크의 요구사항은 설치 대상 플랫폼별로 구성됩니다.
 
-* [AIX
-](https://pic.dhe.ibm.com/infocenter/prodguid/v1r0/clarity-reports/report/html/softwareReqsForProduct?deliverableId=366EEBA00BA011E5A377F80D5A43BD22&osPlatform=AIX)
+* [AIX ](https://pic.dhe.ibm.com/infocenter/prodguid/v1r0/clarity-reports/report/html/softwareReqsForProduct?deliverableId=366EEBA00BA011E5A377F80D5A43BD22&osPlatform=AIX)
 * [Linux](https://pic.dhe.ibm.com/infocenter/prodguid/v1r0/clarity-reports/report/html/softwareReqsForProduct?deliverableId=366EEBA00BA011E5A377F80D5A43BD22&osPlatform=Linux)
 * [macOS](https://pic.dhe.ibm.com/infocenter/prodguid/v1r0/clarity-reports/report/html/softwareReqsForProduct?deliverableId=366EEBA00BA011E5A377F80D5A43BD22&osPlatform=Mac%20OS)
 * [Mobile OS](https://pic.dhe.ibm.com/infocenter/prodguid/v1r0/clarity-reports/report/html/softwareReqsForProduct?deliverableId=366EEBA00BA011E5A377F80D5A43BD22&osPlatform=Mobile%20OS)

@@ -219,14 +219,14 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
 **독립형 WebSphere Application Server Liberty 프로파일 서버**  
 관리 서비스 및 런타임에는 다음과 같은 글로벌 JNDI 특성이 필요합니다.
 
-|            JNDI 특성          |            값 |
+| JNDI 특성          | 값 |
 |--------------------------|--------|
-|            mfp.topology.platform	   |            Liberty |
-|            mfp.topology.clustermode |Standalone |
-|            mfp.admin.jmx.host       |WebSphere Application Server Liberty 프로파일 서버의 호스트 이름 |
-|            mfp.admin.jmx.port       |WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<httpEndpoint>` 요소에 선언된 httpsPort 속성의 포트인 REST 커넥터의 포트. 이 특성에는 기본값이 없습니다. |
-|            mfp.admin.jmx.user       |WebSphere Application Server Liberty 관리자의 사용자 이름. WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<administrator-role>` 요소에 정의된 이름과 동일해야 합니다. |
-|            mfp.admin.jmx.pwd        |            WebSphere Application Server Liberty 관리자의 비밀번호 |
+| mfp.topology.platform	   | Liberty |
+| mfp.topology.clustermode | Standalone |
+| mfp.admin.jmx.host       | WebSphere Application Server Liberty 프로파일 서버의 호스트 이름. |
+| mfp.admin.jmx.port       |WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<httpEndpoint>` 요소에 선언된 httpsPort 속성의 포트인 REST 커넥터의 포트. 이 특성에는 기본값이 없습니다. |
+| mfp.admin.jmx.user       |WebSphere Application Server Liberty 관리자의 사용자 이름. WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<administrator-role>` 요소에 정의된 이름과 동일해야 합니다. |
+| mfp.admin.jmx.pwd        | WebSphere Application Server Liberty 관리자의 비밀번호. |
 
 여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다.
 
@@ -238,10 +238,10 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
 **독립형 Apache Tomcat 서버**
 관리 서비스 및 런타임에는 다음과 같은 로컬 JNDI 특성이 필요합니다.
 
-|            JNDI 특성        |	            값    |
+| JNDI 특성        |	값    |
 |------------------------|------------|
-|            mfp.topology.platform   |Tomcat     |
-|            mfp.topology.clustermode |Standalone |
+| mfp.topology.platform   | Tomcat     |
+| mfp.topology.clustermode | Standalone |
 
 JVM 특성은 JMX(Java Management Extensions) RMI(Remote Method Invocation)를 정의하는 데도 필요합니다. 자세한 정보는 [Apache Tomcat용 JMX 연결 구성](../appserver/#apache-tomcat-prerequisites)을 참조하십시오.
 
@@ -256,11 +256,11 @@ Apache Tomcat 서버가 방화벽 뒤에서 실행 중이면 **mfp.admin.rmi.reg
 **독립형 WebSphere Application Server**  
 관리 서비스 및 런타임에는 다음과 같은 로컬 JNDI 특성이 필요합니다.
 
-|            JNDI 특성          |            값                 |
+| JNDI 특성          | 값                 |
 |--------------------------| -----------------------|
-|            mfp.topology.platform    |WAS                    |
-|            mfp.topology.clustermode |Standalone             |
-|mfp.admin.jmx.connector  |JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. |
+| mfp.topology.platform    | WAS                    |
+| mfp.topology.clustermode | Standalone             |
+| mfp.admin.jmx.connector  | JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. |
 
 여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다.  
 여러 관리 컴포넌트를 배치하는 경우 다음을 지정해야 합니다.
@@ -378,10 +378,10 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
 **Apache Tomcat 서버 팜**  
 팜의 각 서버에서는 관리 서비스 및 런타임에 다음과 같은 글로벌 JNDI 특성이 필요합니다.
 
-|            JNDI 특성          |	            값 |
+| JNDI 특성          |	값 |
 |--------------------------|-----------|
-|            mfp.topology.platform	   |Tomcat    |
-|            mfp.topology.clustermode |            Farm      |
+| mfp.topology.platform	   | Tomcat    |
+| mfp.topology.clustermode | Farm      |
 
 JVM 특성은 JMX(Java Management Extensions) RMI(Remote Method Invocation)를 정의하는 데도 필요합니다. 자세한 정보는 [Apache Tomcat용 JMX 연결 구성](../appserver/#apache-tomcat-prerequisites)을 참조하십시오.
 
@@ -397,19 +397,19 @@ JVM 특성은 JMX(Java Management Extensions) RMI(Remote Method Invocation)를 �
 **WebSphere Application Server 전체 프로파일 서버 팜**  
 팜의 각 서버에서는 관리 서비스 및 런타임에 다음과 같은 글로벌 JNDI 특성이 필요합니다.
 
-|            JNDI 특성            |            값 |
+| JNDI 특성            | 값 |
 |----------------------------|--------|
-|mfp.topology.platform	WAS  |WAS    |
-|            mfp.topology.clustermode   |            Farm   |
-|mfp.admin.jmx.connector    |SOAP   |
+| mfp.topology.platform	WAS  | WAS    |
+| mfp.topology.clustermode   | Farm   |
+| mfp.admin.jmx.connector    | SOAP   |
 
 관리 서비스에서 서버 팜 구성을 관리하려면 다음과 같은 JNDI 특성이 필요합니다.
 
-|            JNDI 특성    |            값 |
+| JNDI 특성    | 값 |
 |--------------------|--------|
-|            mfp.admin.jmx.user |WebSphere Application Server의 사용자 이름. WebSphere Application Server 사용자 레지스트리에 이 사용자가 정의되어 있어야 합니다. |
-|mfp.admin.jmx.pwd	 |WebSphere Application Server 사용자의 비밀번호입니다. |
-|mfp.admin.serverid |서버 ID. 팜에 있는 서버마다 달라야 하며 서버 팜 구성 파일에서 해당 서버에 사용된 이 특성의 값과 동일해야 합니다. |
+| mfp.admin.jmx.user | WebSphere Application Server의 사용자 이름. WebSphere Application Server 사용자 레지스트리에 이 사용자가 정의되어 있어야 합니다. |
+| mfp.admin.jmx.pwd	 | WebSphere Application Server 사용자의 비밀번호입니다. |
+| mfp.admin.serverid | 서버 ID. 팜에 있는 서버마다 달라야 하며 서버 팜 구성 파일에서 해당 서버에 사용된 이 특성의 값과 동일해야 합니다. |
 
 여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다.
 
@@ -548,9 +548,9 @@ Liberty Collective 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴�
 
 동일한 관리 컴포넌트를 사용하는 여러 제어기(복제본)가 사용되는 경우 런타임에 다음 JNDI 특성이 필요합니다.
 
-|            JNDI 특성 |            값 |
+| JNDI 특성 | 값 |
 |-----------------|--------|
-|mfp.admin.jmx.replica |서로 다른 제어기 복제본의 엔드포인트 목록(`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 구문을 사용함) |
+| mfp.admin.jmx.replica | 서로 다른 제어기 복제본의 엔드포인트 목록(`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 구문을 사용함) |
 
 여러 관리 컴포넌트가 제어기에 배치되는 경우, 각 런타임에서 로컬 **mfp.admin.environmentid** JNDI 특성의 값은 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일해야 합니다.
 
@@ -615,13 +615,13 @@ Liberty Collective 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴�
 
 관리 서비스 및 런타임에는 다음과 같은 로컬 JNDI 특성이 필요합니다.
 
-|            JNDI 특성 |	            값 |
+| JNDI 특성 |	값 |
 |-----------------|--------|
-|            mfp.topology.platform	|WAS |
-|            mfp.topology.clustermode |Cluster |
-|mfp.admin.jmx.connector |	배치 관리자와 연결하는 데 사용되는 JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. SOAP는 기본값이며 선호되는 값이기도 합니다. SOAP 포트가 사용되지 않는 경우에는 RMI를 사용해야 합니다. |
-|mfp.admin.jmx.dmgr.host |	배치 관리자의 호스트 이름입니다. |
-|mfp.admin.jmx.dmgr.port |	배치 관리자에서 사용하는 RMI 또는 SOAP 포트. mfp.admin.jmx.connector의 값에 따라 다릅니다. |
+| mfp.topology.platform	| WAS |
+| mfp.topology.clustermode | Cluster |
+| mfp.admin.jmx.connector |	배치 관리자와 연결하는 데 사용되는 JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. SOAP는 기본값이며 선호되는 값이기도 합니다. SOAP 포트가 사용되지 않는 경우에는 RMI를 사용해야 합니다. |
+| mfp.admin.jmx.dmgr.host |	배치 관리자의 호스트 이름입니다. |
+| mfp.admin.jmx.dmgr.port |	배치 관리자에서 사용하는 RMI 또는 SOAP 포트. mfp.admin.jmx.connector의 값에 따라 다릅니다. |
 
 여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트로 동일한 서버 또는 클러스터를 실행할 수 있습니다.
 
@@ -651,11 +651,11 @@ Liberty Collective 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴�
 
 리버스 프록시를 애플리케이션 서버 인프라 전면에서 사용하는 경우 관리 서비스에 대해 다음 JNDI 특성을 정의해야 합니다.
 
-|            JNDI 특성 |	            값 |
+| JNDI 특성 |	값 |
 |-----------------|--------|
-|mfp.admin.proxy.protocol |리버스 프록시와 통신하는 데 사용되는 프로토콜. HTTP 또는 HTTPS일 수 있습니다. |
-|mfp.admin.proxy.host |리버스 프록시의 호스트 이름 |
-|mfp.admin.proxy.port |리버스 프록시의 포트 번호 |
+| mfp.admin.proxy.protocol | 리버스 프록시와 통신하는 데 사용되는 프로토콜. HTTP 또는 HTTPS일 수 있습니다. |
+| mfp.admin.proxy.host | 리버스 프록시의 호스트 이름 |
+| mfp.admin.proxy.port | 리버스 프록시의 포트 번호 |
 
 리버스 프록시의 URL을 참조하는 **mfp.admin.endpoint** 특성은 {{ site.data.keys.mf_console }}에도 필요합니다.
 

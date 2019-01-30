@@ -13,34 +13,37 @@ weight: 1
 
 {{ site.data.keys.mf_bm_short }} 服务提供了以下计划选项：
 
-1. **Developer**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mfound_server }} 作为 Cloud Foundry 应用程序。 将单独对 Liberty for Java 费用收费，这些费用不包含在此计划中。 此计划不支持使用外部数据库并且仅限于开发和测试。 {{ site.data.keys.mf_bm_short }} 服务器 *Developer 计划*实例允许您注册任意数量的移动应用程序用于开发和测试，但是将连接的设备数限制为每天 10 台。 此计划还包含 {{ site.data.keys.mf_analytics_service }} 服务实例。 如果使用量超过 Mobile Analytics 免费层权利，那么会根据 Mobile Analytics 基本计划收取费用。
+1. **Developer**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mfound_server }} 作为 Cloud Foundry 应用程序。 将单独对 Liberty for Java 费用收费，这些费用不包含在此计划中。 此计划不支持使用外部数据库并且仅限于开发和测试。 {{ site.data.keys.mf_bm_short }} 服务器 *Developer 计划*实例允许您注册任意数量的移动应用程序用于开发和测试，但是将连接的设备数限制为每天 10 台。<!--This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.-->
 
     > **注：**“Developer”计划不提供持续性数据库，因此请务必备份配置，如[“故障诊断”部分中](#troubleshooting)所述。
 
-2. **Professional Per Device**：此计划允许用户在生产中构建、测试和运行移动应用程序。 将根据每天连接的客户机设备数进行计费。 此计划支持大型部署和高可用性。 此计划要求您具有单独创建和计费的 IBM Db2 on Cloud（现在称为 Db2 Hosted）服务实例。此计划在 Liberty for Java 上供应 Mobile Foundation 服务器，从最少 2 个 1 GB 的节点开始。 将单独对 Liberty for Java 费用收费，这些费用不包含在此计划中。 （可选）您可以添加 Mobile Analytics 服务实例。 Mobile Analytics 服务单独计费。
+2. **Professional Per Device**：此计划允许用户在生产中构建、测试和运行移动应用程序。 将根据每天连接的客户机设备数进行计费。 此计划支持大型部署和高可用性。 此计划要求您具有单独创建和计费的 IBM Db2（任何 **Lite** 计划以外的计划）或 Compose for PostgreSQL 服务的实例。此计划在 Liberty for Java 上供应 Mobile Foundation 服务器，从最少 2 个 1 GB 的节点开始。 将单独对 Liberty for Java 费用收费，这些费用不包含在此计划中。<!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
 
-3. **Professional 1 Application**：此计划允许用户以可预测的价格构建和管理单个移动应用程序，不限制移动应用程序用户或设备数量。 单个移动应用程序可以有多种类型，例如 iOS、Android、Windows 和 Mobile Web。 此计划在 Liberty for Java 上的可扩展环境中以 Cloud Foundry 应用程序形式供应 Mobile Foundation 服务器，从最少 2 个 1 GB 的节点开始。 将单独对 Liberty for Java 费用收费，这些费用不包含在此计划中。 此计划还要求您具有单独创建和计费的 IBM Db2 on Cloud (Db2 Hosted) 服务实例。（可选）您可以通过单击**添加分析**按钮来添加 {{ site.data.keys.mf_analytics_service }} 服务实例。 Mobile Analytics 服务单独计费。
+3. **Professional 1 Application**：此计划允许用户以可预测的价格构建和管理单个移动应用程序，不限制移动应用程序用户或设备数量。 单个移动应用程序可以有多种类型，例如 iOS、Android、Windows 和 Mobile Web。 此计划在 Liberty for Java 上的可扩展环境中以 Cloud Foundry 应用程序形式供应 Mobile Foundation 服务器，从最少 2 个 1 GB 的节点开始。 将单独对 Liberty for Java 费用收费，这些费用不包含在此计划中。 此计划还需要单独创建和计费的 IBM Db2（任何 **Lite** 计划以外的计划）或 Compose for PostgreSQL 服务实例。<!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
 
-4. **Developer Pro**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mfound_server }} 作为 Cloud Foundry 应用程序，并且允许用户开发和测试任意数量的移动应用程序。 此计划要求您具有 **Db2 Hosted** 服务实例。Db2 on Cloud 服务实例单独创建和计费。 此计划大小受限，并且旨在用于基于团队的开发和测试活动，不可用于生产活动。 费用取决于环境的总规模。 （可选）您可以通过单击**添加分析**按钮来添加 {{ site.data.keys.mf_analytics_service }} 服务。
+4. **Developer Pro**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mfound_server }} 作为 Cloud Foundry 应用程序，并且允许用户开发和测试任意数量的移动应用程序。 此计划要求您具有 **Db2**（任何 **Lite** 计划以外的计划）服务实例。Db2 服务实例是单独创建和计费的。此计划大小受限，并且旨在用于基于团队的开发和测试活动，不可用于生产活动。费用取决于环境的总规模。<!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_现在不推荐使用 **Developer Pro** 计划。_
 
-5. **Professional Per Capacity：**此计划允许用户在生产环境中构建、测试和运行任意数量的移动应用程序，不限制移动用户或设备数量。 它支持大型部署和高可用性。 此计划要求您具有 **Db2 Hosted** 服务实例。Db2 Hosted 服务实例是单独创建和计费的。费用取决于环境的总规模。 （可选）您可以通过单击**添加分析**按钮来添加 {{ site.data.keys.mf_analytics_service }} 服务。
+5. **Professional Per Capacity：**此计划允许用户在生产环境中构建、测试和运行任意数量的移动应用程序，不限制移动用户或设备数量。它支持大型部署和高可用性。此计划要求您具有 **Db2**（任何 **Lite** 计划以外的计划）服务实例。Db2 服务实例是单独创建和计费的。费用取决于环境的总规模。<!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_现在不推荐使用 **Professional Per Capacity** 计划。_
 
 > [请参阅服务详细信息](https://console.bluemix.net/catalog/services/mobile-foundation/)，以获取有关可用计划及其计费方式的更多信息。
 
 #### 跳转至：
 {: #jump-to}
-* [设置 {{ site.data.keys.mf_bm_short }} 服务](#setting-up-the-mobile-foundation-service)
-* [使用 {{ site.data.keys.mf_bm_short }} 服务](#using-the-mobile-foundation-service)
-* [服务器配置](#server-configuration)
-* [高级服务器配置](#advanced-server-configuration)
-* [添加分析支持](#adding-analytics-support)
-* [除去分析支持](#removing-analytics-support)
-* [应用 {{ site.data.keys.mfound_server }} 修订](#applying-mobilefirst-server-fixes)
-* [访问服务器日志](#accessing-server-logs)
-* [故障诊断](#troubleshooting)
-* [补充阅读](#further-reading)
+- [概述](#overview)
+    - [跳转至：](#jump-to)
+- [设置 {{ site.data.keys.mf_bm_short }} 服务](#setting-up-the--sitedatakeysmfbmshort--service)
+  - [设置 *developer* 计划](#setting-up-the-developer-plan)
+  - [设置 *Professional 1 Application* 和 *Professional Per Device* 计划](#setting-up-the-professional-1-application-and-professional-per-device-plan)
+- [使用 {{ site.data.keys.mf_bm_short }} 服务](#using-the--sitedatakeysmfbmshort--service)
+  - [服务器配置](#server-configuration)
+  - [高级服务器配置](#advanced-server-configuration)
+- [应用 {{ site.data.keys.mfound_server }} 修订](#applying--sitedatakeysmfoundserver--fixes)
+- [访问服务器日志](#accessing-server-logs)
+    - [跟踪](#tracing)
+- [故障诊断](#troubleshooting)
+- [补充阅读](#further-reading)
 
 ## 设置 {{ site.data.keys.mf_bm_short }} 服务
 {: #setting-up-the-mobile-foundation-service }
@@ -48,7 +51,7 @@ weight: 1
 
 1. 转至 [bluemix.net](http://bluemix.net) 并登录，然后单击**目录**。
 2. 搜索 **Mobile Foundation** 并单击生成的选项。
-3. *可选*。 输入服务实例的定制名称，或者使用提供的缺省名称。
+3. *可选*。输入服务实例的定制名称，或者使用提供的缺省名称。
 4. 选择期望的定价计划，然后单击**创建**。
 
     <img class="gifplayer" alt="创建一个 {{ site.data.keys.mf_bm_short }} 服务实例" src="mf-create-new.png"/>
@@ -64,15 +67,20 @@ weight: 1
 
 ### 设置 *Professional 1 Application* 和 *Professional Per Device* 计划
 {: #setting-up-the-professional-1-application-n-professional-per-device-plan }
-1. 这些计划需要外部 [Db2 Hosted 数据库实例](https://console.bluemix.net/catalog/services/db2-hosted/)。
+1. 这些计划需要外部 [Db2（任何**Lite** 计划以外的计划）数据库实例](https://console.bluemix.net/catalog/services/db2/)。
 
-    * 如果您具有现有的 Db2 Hosted 服务实例，请选择**使用现有服务**选项，并提供您的凭证：
+    * 如果您具有现有的 Db2 服务实例，请选择**使用现有服务**选项，并提供您的凭证：
 
-        ![{{ site.data.keys.mf_bm_short }} 设置的插图](create-db2-hosted-instance-existing.png)
+        ![{{ site.data.keys.mf_bm_short }} 设置图像](create-db2-instance-existing.png)
 
-    * 如果您当前没有 Db2 Hosted 服务实例，请选择**创建新服务**选项，并遵循屏幕上的指示信息进行操作：
+    * 如果您具有现有的 Compose for PostgreSQL 服务实例，请选择**使用现有服务**选项，并提供您的凭证：
 
-       ![{{ site.data.keys.mf_bm_short }} 设置的插图](create-db2-hosted-instance-new.png)
+        ![{{ site.data.keys.mf_bm_short }} 设置图像](create-postgres-instance-existing.png)
+
+
+    * 如果您当前没有 Db2 或 Compose for PostgreSQL 服务实例，请选择**创建新服务**选项并遵循屏幕上的指示信息进行操作：
+
+       ![{{ site.data.keys.mf_bm_short }} 设置图像](create-db2-instance-new.png)
 
 2. 启动 {{ site.data.keys.mfound_server }}。
     - 您可以保留服务器配置的基本级别，并单击**启动基本服务器**，或者
@@ -91,12 +99,17 @@ weight: 1
 
 ![{{ site.data.keys.mf_bm_short }} 设置图像](service-dashboard.png)
 
-单击**添加分析**以将 {{ site.data.keys.mf_analytics_service }} 支持添加到服务器实例中。
-在[添加分析支持](#adding-analytics-support)部分中了解更多信息。
+<!--Click on **Add Analytics** to add {{ site.data.keys.mf_analytics_service }} support to your server instance.
+Learn more in the [Adding Analytics support](#adding-analytics-support) section.-->
 
-单击**启动控制台**以打开 {{ site.data.keys.mf_console }}。 缺省用户名为“admin”，可通过单击“眼睛”图标来显示密码。
+* 单击**启动控制台**以打开 {{ site.data.keys.mf_console }}。缺省用户名为 *admin*，可通过单击密码字段中的眼睛图标来显示密码。
 
-![{{ site.data.keys.mf_bm_short }} 设置图像](dashboard.png)
+  ![{{ site.data.keys.mf_bm_short }} 设置图像](dashboard.png)
+
+* 从 {{ site.data.keys.mf_console }} 单击 **Analytics Console**，以打开 Mobile Analytics 控制台并查看分析数据，如下所示。
+
+  ![{{ site.data.keys.mf_analytics_service }} 控制台图像](analytics-dashboard.png)
+
 
 ### 服务器配置
 {: #server-configuration }
@@ -122,37 +135,38 @@ weight: 1
   * 从 IBM Java 或 Oracle Java 的最新修订包 Java 8 JDK 获取*可信证书*。
 
   * 使用以下命令将附加证书导入到信任库：
-```
+    ```
     keytool -import -file firstCA.cert -alias firstCA -keystore truststore.jks
     ```
 
   >**注**：您可以选择创建自己的信任库，但需要将缺省证书提供给 Mobile Foundation 服务以使其正常运行
 
-* {{ site.data.keys.mf_analytics_service }} 配置
+<!--* {{ site.data.keys.mf_analytics_service }} configuration-->
 * VPN
 
 ![{{ site.data.keys.mf_bm_short }} 设置图像](advanced-server-configuration.png)
 
-## 添加 {{ site.data.keys.mf_analytics_service }} 支持
+<!--
+## Adding {{ site.data.keys.mf_analytics_service }} support
 {: #adding-analytics-support }
-您可以通过单击服务的“仪表板”页面中的**添加分析**将 {{ site.data.keys.mf_analytics_service }} 支持添加到自己的 {{ site.data.keys.mf_bm_short }} 服务实例中。 此操作会提供 {{ site.data.keys.mf_analytics_service }} 服务实例。
+You can add {{ site.data.keys.mf_analytics_service }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions a {{ site.data.keys.mf_analytics_service }} service instance.
 
->创建或重新创建 {{ site.data.keys.mf_bm_short }} 服务的 **Developer** 计划实例时，缺省情况下会添加 {{ site.data.keys.mf_analytics_service }} 服务实例。
-
+>When you create or recreate the **Developer** plan instance of {{ site.data.keys.mf_bm_short }} service, the {{ site.data.keys.mf_analytics_service }} service instance is added by default.
+-->
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
+<!--
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_service_console }}.  
 
-操作完成后，请在浏览器中重新装入 {{ site.data.keys.mf_console }} 页面以访问 {{ site.data.keys.mf_analytics_service_console }}。  
+> Learn more about {{ site.data.keys.mf_analytics_service }} in the [{{ site.data.keys.mf_analytics_service }} category](../../analytics).
 
-> 在 [{{ site.data.keys.mf_analytics_service }}类别](../../analytics)中了解有关 {{ site.data.keys.mf_analytics_service }} 的更多信息。
-
-##  除去 {{ site.data.keys.mf_analytics_service }} 支持
+##  Removing {{ site.data.keys.mf_analytics_service }} support
 {: #removing-analytics-support}
 
-您可以通过单击服务的“仪表板”页面上的**删除分析**来除去针对 {{ site.data.keys.mf_bm_short }} 服务实例的 {{ site.data.keys.mf_analytics_service }} 支持。 此操作会删除 {{ site.data.keys.mf_analytics_service }} 服务实例。
+You can remove the {{ site.data.keys.mf_analytics_service }} support for your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Delete Analytics**  from the service’s Dashboard page. This action deletes the {{ site.data.keys.mf_analytics_service }} service instance.
 
-此操作完成后，请在浏览器中重新装入 {{ site.data.keys.mf_console }} 页面。
-
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
+-->
 <!--
 ##  Switching from Analytics deployed with IBM Containers to Analytics service
 {: #switching-from-analytics-container-to-analytics-service}
@@ -161,9 +175,10 @@ weight: 1
 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 -->
+
 ## 应用 {{ site.data.keys.mfound_server }} 修订
 {: #applying-mobilefirst-server-fixes }
-对 {{ site.data.keys.mf_bm }} 服务的更新会自动应用，无需人为干预，无需同意执行更新。 档更新可用时，会在服务的“仪表板”页面中显示一个条幅，其中包含指示信息和操作按钮。
+对 {{ site.data.keys.mf_bm }} 服务的更新会自动应用，无需人为干预，无需同意执行更新。档更新可用时，会在服务的“仪表板”页面中显示一个条幅，其中包含指示信息和操作按钮。
 
 ## 访问服务器日志
 {: #accessing-server-logs }
@@ -205,7 +220,7 @@ cf ssh <mfp_Appname> -c "/bin/cat logs/trace.log" > trace.log
 
 ## 故障诊断
 {: #troubleshooting }
-Developer 计划不提供持续性数据库，这有时可能会导致数据丢失。 要在此类情况下快速开始使用，请确保遵循如下最佳实践：
+Developer 计划不提供持续性数据库，这有时可能会导致数据丢失。要在此类情况下快速开始使用，请确保遵循如下最佳实践：
 
 * 每次执行以下任意服务器端操作时：
     * 部署适配器或者更新任何适配器配置或属性值

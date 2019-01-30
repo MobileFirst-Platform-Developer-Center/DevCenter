@@ -141,7 +141,7 @@ cordova build ios
 3. 프로젝트를 빌드하려면 **실행 도구 → MobileFirst Development Server에서 실행**을 사용하십시오.
 
 4. Xcode를 사용하여 Apple iOS 엔터프라이즈 프로파일이 포함된 애플리케이션을 빌드하고 서명하십시오.  
-생성되는 고유 프로젝트(**iphone\native**에서)를 Xcode에서 수동으로 열거나 iPhone 폴더를 마우스 오른쪽 단추로 클릭한 후 **실행 도구 → Xcode 프로젝트**를 선택할 수 있습니다. 이 조치는 프로젝트를 생성하고 Xcode에서 프로젝트를 엽니다.
+생성되는 네이티브 프로젝트(**iphone\native**에서)를 Xcode에서 수동으로 열거나 iPhone 폴더를 마우스 오른쪽 단추로 클릭한 후 **실행 도구 → Xcode 프로젝트**를 선택할 수 있습니다. 이 조치는 프로젝트를 생성하고 Xcode에서 프로젝트를 엽니다.
 
 > **참고:** Android 및 iOS AppCenter 클라이언트 빌드에 대해 Cordova 프레임워크를 사용 중인 경우 [Cordova 기반 IBM AppCenter 클라이언트](#cordova-based-ibm-appcenter-client)를 참조하십시오.
 

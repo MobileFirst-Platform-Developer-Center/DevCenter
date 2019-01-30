@@ -28,11 +28,12 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
 * [알림 API](#notifications-api)
 * [푸시 알림 처리](#handling-a-push-notification)
 * [샘플 애플리케이션](#sample-application)
+* [Android의 클라이언트 앱을 FCM으로 마이그레이션](#migrate-to-fcm)
 
 ## 알림 구성
 {: #notifications-configuration }
 새 Android Studio 프로젝트를 작성하거나 기존 프로젝트를 사용하십시오.  
-{{ site.data.keys.product_adj }} 고유 Android SDK가 아직 프로젝트에 없는 경우 [Android 애플리케이션에 {{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/android) 학습서의 지시사항을 따르십시오.
+{{ site.data.keys.product_adj }} 네이티브 Android SDK가 아직 프로젝트에 없는 경우 [Android 애플리케이션에 {{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/android) 학습서의 지시사항을 따르십시오.
 
 ### 프로젝트 설정
 {: #project-setup }
@@ -52,7 +53,7 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
             ext: 'aar',
             transitive: true
    ```
-    
+
    또는 단일 행으로 다음 행을 추가하십시오.
 
    ```xml
@@ -72,7 +73,7 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
       ```
-      
+
 	* `application` 태그에 다음을 추가하십시오.
 
 	  ```xml
@@ -104,7 +105,7 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-      
+
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -112,19 +113,19 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
 	  > **참고:** `your.application.package.name`을 애플리케이션의 실제 패키지 이름으로 대체해야 합니다.
 
     * 애플리케이션의 활동에 다음 `intent-filter`를 추가하십시오.
-      
+
       ```xml
       <intent-filter>
           <action android:name="your.application.package.name.IBMPushNotification" />
           <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
       ```
-      
+
 ## 알림 API
 {: #notifications-api }
 ### MFPPush 인스턴스
 {: #mfppush-instance }
-모든 API 호출은 `MFPPush`의 인스턴스에서 호출되어야 합니다.  이는 `private MFPPush push = MFPPush.getInstance();` 등의 클래스 레벨 필드를 작성한 후 클래스 전체에서 `push.<api-call>`를 호출하여 수행될 수 있습니다.
+모든 API 호출은 `MFPPush`의 인스턴스에서 호출되어야 합니다.  이는 `private MFPPush push = MFPPush.getInstance();` 등의 클래스 레벨 필드를 작성한 후 클래스 전체에서 `push.<api-call>`을 호출하여 수행될 수 있습니다.
 
 또는 푸시 API 메소드에 액세스해야 하는 각 인스턴스에 대해 `MFPPush.getInstance().<api_call>`을 호출할 수 있습니다.
 
@@ -321,11 +322,110 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ```
 
 <img alt="샘플 애플리케이션의 이미지" src="notifications-app.png" style="float:right"/>
+
 ## 샘플 애플리케이션
 {: #sample-application }
 
-Android Studio 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80)하십시오.
+Android Studio 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80)하십시오.
 
 ### 샘플 사용법
 {: #sample-usage }
 샘플의 README.md 파일에 있는 지시사항을 따르십시오.
+
+## Android의 클라이언트 앱을 FCM으로 마이그레이션
+{: #migrate-to-fcm }
+
+GCM(Google Cloud Messaging)은 [더 이상 사용되지 않으며](https://developers.google.com/cloud-messaging/faq), FCM(Firebase Cloud Messaging)과 통합되었습니다. Google은 2019년 4월까지 대부분의 GCM 기능을 중단합니다.
+
+GCM 프로젝트를 사용하는 경우, [ Android의 GCM 클라이언트 앱을 FCM으로 마이그레이션](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)하십시오.
+
+현재 GCM 서비스를 사용하는 기존 애플리케이션은 계속 그대로 사용할 수 있습니다. 푸시 알림 서비스는 FCM 엔드포인트를 사용하도록 업데이트되었기 때문에 앞으로 모든 새 애플리케이션에서는 FCM을 사용해야 합니다.
+
+**참고**: FCM으로 마이그레이션한 후에는 이전 GCM 신임 정보 대신 FCM 신임 정보를 사용하도록 프로젝트를 업데이트하십시오.
+
+### FCM 프로젝트 설정
+
+FCM에서 애플리케이션을 설정하는 작업은 이전 GCM 모델에서와는 조금 다릅니다.
+
+ 1. 알림 제공자 신임 정보를 확보하고, FCM 프로젝트를 작성한 다음, Android 애플리케이션에 동일한 사항을 추가하십시오. 애플리케이션의 패키지 이름으로 `com.ibm.mobilefirstplatform.clientsdk.android.push`를 포함하십시오. `google-services.json` 파일 생성을 완료하는 단계까지 [여기 문서](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)를 참조하십시오.
+
+ 2. Gradle 파일을 구성하십시오. 앱의 `build.gradle` 파일에 다음을 추가하십시오.
+
+    ```xml
+    dependencies {
+       ......
+       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       .....
+    }
+    
+    apply plugin: 'com.google.gms.google-services'
+    ```
+
+    
+
+    - 루트 build.gradle의 `buildscript` 섹션에서 다음 종속 항목을 추가하십시오.
+
+      `classpath 'com.google.gms:google-services:3.0.0'`
+
+    - build.gradle 파일에서 다음 GCM 플러그인을 제거하십시오. `compile  com.google.android.gms:play-services-gcm:+`
+
+ 3. AndroidManifest 파일을 구성하십시오. `AndroidManifest.xml`에서 다음과 같이 변경해야 합니다.
+
+**다음 항목을 제거하십시오.**
+
+```xml
+    <receiver android:exported="true" android:name="com.google.android.gms.gcm.GcmReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            <category android:name="your.application.package.name" />
+        </intent-filter>
+    </receiver>  
+
+    <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
+        <intent-filter>
+            <action android:name="com.google.android.gms.iid.InstanceID" />
+        </intent-filter>
+    </service>
+
+    <uses-permission android:name="your.application.package.name.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+```
+
+**다음 항목은 수정이 필요합니다.**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        </intent-filter>
+    </service>
+```
+
+**이 항목을 다음으로 수정하십시오.**
+
+```xml
+    <service android:exported="true" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+```
+
+**다음 항목을 추가하십시오.**
+
+```xml
+    <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+    </service>
+```
+
+ 4. Android Studio에서 앱을 여십시오. 앱 디렉토리 내 **step-1**에서 작성한 `google-services.json` 파일을 복사하십시오. `google-service.json` 파일은 추가된 패키지 이름을 포함합니다.		
+
+ 5. SDK를 컴파일하십시오. 애플리케이션을 빌드하십시오.

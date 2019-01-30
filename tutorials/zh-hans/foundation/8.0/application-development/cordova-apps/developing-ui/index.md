@@ -23,7 +23,7 @@ weight: 1
 ## 所见即所得编辑器
 {: #wysiwyg-editor }
 MobileFirst 平台 Eclipse 插件随附一个所见即所得编辑器，为开发人员在开发 HTML UI 窗口小部件时提供便利。
-该编辑器提供基本的选用板，供用户拖放 UI 窗口小部件，如按钮或文本框及其他 HTML 窗口小部件。这是一种“移动应用程序快速开发”工具，用于支持用户快速开发 Cordova 应用程序。
+该编辑器提供基本的选用板，供用户拖放 UI 窗口小部件，如按钮或文本框及其他 HTML 窗口小部件。 这是一种“移动应用程序快速开发”工具，用于支持用户快速开发 Cordova 应用程序。
 
 ![所见即所得编辑器](wysiwyg-editor.png)
 
@@ -86,4 +86,4 @@ jQuery 是快速简洁的 JavaScript 框架，可简化快速 Web 开发工作�
           	</body>
       </html>
     ```
-在 HTML 文件中添加对 jQuery Mobile 的引用之后，在 Eclipse 中关闭并重新打开此文件。您现在将在可拖放到 HTML 画布的“选用板”视图中看到 jQuery Mobile 窗口小部件。
+在 HTML 文件中添加对 jQuery Mobile 的引用之后，在 Eclipse 中关闭并重新打开此文件。 您现在将在可拖放到 HTML 画布的“选用板”视图中看到 jQuery Mobile 窗口小部件。 

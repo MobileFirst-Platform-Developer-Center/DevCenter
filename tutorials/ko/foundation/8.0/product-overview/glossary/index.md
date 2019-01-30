@@ -28,7 +28,6 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 
 기타 용어 및 정의에 대해서는 [IBM 용어 웹 사이트](http://www.ibm.com/software/globalization/terminology/)를 참조하십시오.
 
-
 ## 가
 {: #가 }
 
@@ -39,10 +38,6 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 ### 게이트웨이(gateway)
 {: #gateway }
 네트워크 또는 시스템을 다른 네트워크 아키텍처와 연결하는 데 사용되는 디바이스 또는 프로그램입니다.
-
-### 고유 앱(native app)
-{: #native-app }
-디바이스의 모바일 운영 체제에서 사용하도록 2진 코드로 컴파일되는 앱입니다.
 
 ### 공개 키(public key)
 {: #public-key }
@@ -63,6 +58,10 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 ## 나
 {: #나 }
 
+
+### 네이티브 앱(native app)
+{: #native-app }
+디바이스의 모바일 운영 체제에서 사용하도록 2진 코드로 컴파일되는 앱입니다.
 
 ### 노드(node)
 {: #node }
@@ -440,7 +439,7 @@ UN/EDIFACT EDI 표준에서 EDI 컴포지트 데이터 요소의 일부분인 ED
 
 ### 하이브리드 애플리케이션(hybrid application)
 {: #hybrid-application }
-주로 웹 지향 언어(HTML5, CSS 및 JS)로 작성되었지만 앱이 고유 앱처럼 작동하여 사용자에게 고유 앱의 모든 기능을 제공하도록 고유 쉘에서 랩핑된 애플리케이션입니다.
+주로 웹 지향 언어(HTML5, CSS 및 JS)로 작성되었지만 앱이 네이티브 앱처럼 작동하여 사용자에게 네이티브 앱의 모든 기능을 제공하도록 네이티브 쉘에서 랩핑된 애플리케이션입니다.
 
 ### 환경(environment)
 {: #environment }

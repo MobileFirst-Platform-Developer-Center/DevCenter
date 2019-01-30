@@ -8,39 +8,44 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-이 학습서에서는 {{ site.data.keys.mf_bm_full }}(**{{ site.data.keys.mf_bm_short }}**) 서비스를 사용하여 IBM Cloud에 {{ site.data.keys.mfound_server }} 인스턴스를 설정하는 단계별 지시사항을 제공합니다.   
+이 학습서에서는 {{ site.data.keys.mf_bm_full }}(**{{ site.data.keys.mf_bm_short }}**) 서비스를 사용하여 IBM Cloud에 {{ site.data.keys.mfound_server }} 인스턴스를 설정하는 단계별 지시사항을 제공합니다.  
 {{ site.data.keys.mf_bm_short }}은 **Liberty for Java 런타임**에 Mobile Foundation v8.0의 확장 가능한 개발자 환경과 프로덕션 환경을 빠르고 간편하게 설정할 수 있는 IBM Cloud 서비스입니다.
 
 {{ site.data.keys.mf_bm_short }} 서비스는 다음과 같은 플랜 옵션을 제공합니다.
 
-1. **Developer**: 이 플랜은 {{ site.data.keys.mfound_server }}를 Liberty for Java 런타임의 Cloud Foundry 애플리케이션으로 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜에 포함되지 않습니다. 이 플랜은 외부 데이터베이스의 사용을 지원하지 않으며 개발과 테스트에만 사용되도록 제한됩니다. {{ site.data.keys.mf_bm_short }}서버 *Developer 플랜* 인스턴스를 사용해서 개발과 테스트에 사용할 모바일 애플리케이션을 등록할 수 있지만 연결된 디바이스 수는 일일 10개로 제한합니다. 이 플랜은 {{ site.data.keys.mf_analytics_service }} 서비스 인스턴스도 포함합니다. 사용량이 Mobile Analytics 무료 티어 인타이틀먼트를 초과하는 경우 Mobile Analytics 기본 플랜당 비용이 적용됩니다.
+1. **Developer**: 이 플랜은 {{ site.data.keys.mfound_server }}를 Liberty for Java 런타임의 Cloud Foundry 애플리케이션으로 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜에 포함되지 않습니다. 이 플랜은 외부 데이터베이스의 사용을 지원하지 않으며 개발과 테스트에만 사용되도록 제한됩니다. {{ site.data.keys.mf_bm_short }}서버 *Developer 플랜* 인스턴스를 사용해서 개발과 테스트에 사용할 모바일 애플리케이션을 등록할 수 있지만 이 경우 연결된 디바이스 수는 일일 10개로 제한됩니다.
+<!--This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.-->
 
     > **참고:** Developer 플랜에서는 지속적 데이터베이스를 제공하지 않으므로 [문제점 해결 섹션](#troubleshooting)에 설명된 대로 구성을 백업하십시오.
 
-2. **Professional(디바이스별):** 이 플랜을 사용하면 프로덕션에서 모바일 애플리케이션을 빌드하고 테스트하며 실행할 수 있습니다. 일일 연결된 클라이언트 디바이스 수에 따라 비용이 청구됩니다. 이 플랜에서는 대규모 배치 및 고가용성이 지원됩니다. 이 플랜에는 별도로 작성되고 청구되는 IBM Db2 on Cloud(이제 DB2 Hosted로 불림) 서비스의 인스턴스가 있어야 합니다. 이 플랜은 최소 1GB인 두 개의 노드에서 시작하여 Liberty for Java에서 Mobile Foundation 서버를 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜의 일부로 포함되지 않습니다. 선택적으로 Mobile Analytics 서비스 인스턴스를 추가할 수 있습니다. Mobile Analytics 서비스는 별도로 청구됩니다.
+2. **Professional(디바이스별):** 이 플랜을 사용하면 프로덕션에서 모바일 애플리케이션을 빌드하고 테스트하며 실행할 수 있습니다. 일일 연결된 클라이언트 디바이스 수에 따라 비용이 청구됩니다. 이 플랜에서는 대규모 배치 및 고가용성이 지원됩니다. 이 플랜에는 별도로 작성되고 청구되는 IBM Db2(**Lite** 플랜 외 모든 플랜) 또는 Compose for PostgreSQL 서비스의 인스턴스가 있어야 합니다. 이 플랜은 최소 1GB인 두 개의 노드에서 시작하여 Liberty for Java에서 Mobile Foundation 서버를 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜의 일부로 포함되지 않습니다.
+<!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
 
-3. **Professional(단일 애플리케이션):**이 플랜은 사용자가 모바일 앱 사용자 또는 디바이스 수에 상관없이 예측 가능한 가격으로 단일 모바일 애플리케이션을 빌드하고 관리하도록 허용합니다. 단일 모바일 애플리케이션은 iOS, Android, Windows, Mobile Web과 같은 다중 플레이버로 구성될 수 있습니다. 이 플랜은 최소 1GB인 두 개의 노드에서 시작하여 Liberty for Java의 Cloud Foundry 애플리케이션으로 확장 가능한 환경에서 Mobile Foundation 서버를 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜의 일부로 포함되지 않습니다. 또한 이 플랜에는 별도로 작성되고 청구되는 IBM Db2 on Cloud(DB2 Hosted) 서비스 인스턴스가 필요합니다. 선택적으로 **Analytics 추가** 단추를 클릭하여 {{ site.data.keys.mf_analytics_service }} 서비스 인스턴스를 추가할 수 있습니다. Mobile Analytics 서비스는 별도로 청구됩니다.
+3. **Professional(단일 애플리케이션):**이 플랜은 사용자가 모바일 앱 사용자 또는 디바이스 수에 상관없이 예측 가능한 가격으로 단일 모바일 애플리케이션을 빌드하고 관리하도록 허용합니다. 단일 모바일 애플리케이션은 iOS, Android, Windows, Mobile Web과 같은 다중 플레이버로 구성될 수 있습니다. 이 플랜은 최소 1GB인 두 개의 노드에서 시작하여 Liberty for Java의 Cloud Foundry 애플리케이션으로 확장 가능한 환경에서 Mobile Foundation 서버를 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜의 일부로 포함되지 않습니다. 이 플랜에는 별도로 작성되고 청구되는 IBM Db2(**Lite** 플랜 외 모든 플랜) 또는 Compose for PostgreSQL 서비스 인스턴스가 있어야 합니다.  <!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
 
-4. **Developer Pro**: 이 플랜은 {{ site.data.keys.mfound_server }}를 Liberty for Java 런타임의 Cloud Foundry 앱으로 프로비저닝하며 사용자는 이 플랜을 사용해서 개수에 상관 없이 여러 모바일 애플리케이션을 개발하고 테스트할 수 있습니다. 이 플랜에는 **Db2 Hosted** 서비스 인스턴스가 있어야 합니다. Db2 on Cloud 서비스 인스턴스는 별도로 작성되고 청구됩니다. 이 플랜은 크기가 제한되어 있으며 프로덕션이 아닌 팀 기반 개발 활동과 테스트 활동에 사용됩니다. 비용은 환경의 전체 크기에 따라 다릅니다. 선택적으로 **Analytics 추가** 단추를 클릭하여 {{ site.data.keys.mf_analytics_service }} 서비스를 추가할 수 있습니다.
+4. **Developer Pro**: 이 플랜은 {{ site.data.keys.mfound_server }}를 Liberty for Java 런타임의 Cloud Foundry 앱으로 프로비저닝하며 사용자는 이 플랜을 사용해서 개수에 상관 없이 여러 모바일 애플리케이션을 개발하고 테스트할 수 있습니다. 이 플랜에는 **Db2**(**Lite** 플랜 외 모든 플랜) 서비스 인스턴스가 있어야 합니다. Db2 서비스 인스턴스는 별도로 작성되고 청구됩니다. 이 플랜은 크기가 제한되어 있으며 프로덕션이 아닌 팀 기반 개발 활동과 테스트 활동에 사용됩니다. 비용은 환경의 총 크기에 따라 다릅니다. <!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_**Developer Pro** 플랜은 이제 더 이상 사용되지 않습니다._
 
-5. **Professional(용량별):** 이 플랜을 사용하면 모바일 사용자 또는 디바이스의 수에 상관 없이 프로덕션에서 여러 모바일 애플리케이션을 빌드하고 테스트하며 실행할 수 있습니다. 이 플랜은 대규모 배치와 고가용성을 지원합니다. 플랜에는 **Db2 Hosted** 서비스 인스턴스가 있어야 합니다. Db2 Hosted 서비스 인스턴스는 별도로 작성되고 청구됩니다. 비용은 환경의 전체 크기에 따라 다릅니다. 선택적으로 **Analytics 추가** 단추를 클릭하여 {{ site.data.keys.mf_analytics_service }} 서비스를 추가할 수 있습니다.
+5. **Professional(용량별):** 이 플랜을 사용하면 모바일 사용자 또는 디바이스의 수에 상관 없이 프로덕션에서 여러 모바일 애플리케이션을 빌드하고 테스트하며 실행할 수 있습니다. 이 플랜은 대규모 배치와 고가용성을 지원합니다. 플랜에는 **Db2**(**Lite** 플랜 외 모든 플랜) 서비스 인스턴스가 있어야 합니다. Db2 서비스 인스턴스는 별도로 작성되고 청구됩니다. 비용은 환경의 총 크기에 따라 다릅니다. <!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_**Professional(용량별)** 플랜은 이제 더 이상 사용되지 않습니다._
 
 > 사용 가능한 플랜과 해당 비용 청구에 대한 자세한 정보는 [서비스 세부사항](https://console.bluemix.net/catalog/services/mobile-foundation/)을 참조하십시오.
 
 #### 다음으로 이동:
 {: #jump-to}
-* [{{ site.data.keys.mf_bm_short }} 서비스 설정](#setting-up-the-mobile-foundation-service)
-* [{{ site.data.keys.mf_bm_short }} 서비스 사용](#using-the-mobile-foundation-service)
-* [서버 구성](#server-configuration)
-* [고급 서버 구성](#advanced-server-configuration)
-* [Analytics 지원 추가](#adding-analytics-support)
-* [Analytics 지원 제거](#removing-analytics-support)
-* [{{ site.data.keys.mfound_server }} 수정사항 적용](#applying-mobilefirst-server-fixes)
-* [서버 로그에 액세스](#accessing-server-logs)
-* [문제점 해결](#troubleshooting)
-* [추가 정보](#further-reading)
+- [개요](#overview)
+    - [다음으로 이동:](#jump-to)
+- [{{ site.data.keys.mf_bm_short }} 서비스 설정](#setting-up-the--sitedatakeysmfbmshort--service)
+  - [*Developer* 플랜 설정](#setting-up-the-developer-plan)
+  - [*Professional(단일 애플리케이션)* 및 *Professional(디바이스별)* 플랜 설정](#setting-up-the-professional-1-application-and-professional-per-device-plan)
+- [{{ site.data.keys.mf_bm_short }} 서비스 사용](#using-the--sitedatakeysmfbmshort--service)
+  - [서버 구성](#server-configuration)
+  - [고급 서버 구성](#advanced-server-configuration)
+- [{{ site.data.keys.mfound_server }} 수정사항 적용](#applying--sitedatakeysmfoundserver--fixes)
+- [서버 로그에 액세스](#accessing-server-logs)
+    - [추적](#tracing)
+- [문제점 해결](#troubleshooting)
+- [추가 정보](#further-reading)
 
 ## {{ site.data.keys.mf_bm_short }} 서비스 설정
 {: #setting-up-the-mobile-foundation-service }
@@ -64,15 +69,20 @@ weight: 1
 
 ### *Professional(단일 애플리케이션)* 및 *Professional(디바이스별)* 플랜 설정
 {: #setting-up-the-professional-1-application-n-professional-per-device-plan }
-1. 이들 플랜을 사용하려면 외부 [Db2 Hosted 데이터베이스 인스턴스](https://console.bluemix.net/catalog/services/db2-hosted/)가 필요합니다.
+1. 이 플랜에는 외부 [Db2(**Lite** 플랜 외 모든 플랜) 데이터베이스 인스턴스](https://console.bluemix.net/catalog/services/db2/)가 필요합니다
 
-    * 기존 Db2 Hosted 서비스 인스턴스가 있는 경우에는 **기존 서비스 사용** 옵션을 선택하고 신임 정보를 제공하십시오.
+    * 기존 Db2 서비스 인스턴스가 있는 경우에는 **기존 서비스 사용** 옵션을 선택하고 신임 정보를 제공하십시오.
 
-        ![{{ site.data.keys.mf_bm_short }} 설정 이미지](create-db2-hosted-instance-existing.png)
+        ![{{ site.data.keys.mf_bm_short }} 설정 이미지](create-db2-instance-existing.png)
 
-    * 현재 Db2 Hosted 서비스 인스턴스가 없는 경우에는 **새 서비스 작성** 옵션을 선택하고 화면에 표시되는 지시사항을 수행하십시오.
+    * 기존 Compose for PostgreSQL 서비스 인스턴스가 있는 경우에는 **기존 서비스 사용** 옵션을 선택하고 신임 정보를 제공하십시오.
 
-       ![{{ site.data.keys.mf_bm_short }} 설정 이미지](create-db2-hosted-instance-new.png)
+        ![{{ site.data.keys.mf_bm_short }} 설정 이미지](create-postgres-instance-existing.png)
+
+
+    * 현재 Db2 또는 Compose for PostgreSQL 서비스 인스턴스가 없는 경우에는 **새 서비스 작성** 옵션을 선택하고 화면에 표시되는 지시사항을 수행하십시오.
+
+       ![{{ site.data.keys.mf_bm_short }} 설정 이미지](create-db2-instance-new.png)
 
 2. {{ site.data.keys.mfound_server }}를 시작하십시오.
     - 서버 구성을 기본 레벨로 유지하고 **기본 서버 시작**을 클릭할 수 있습니다. 또는
@@ -91,12 +101,17 @@ weight: 1
 
 ![{{ site.data.keys.mf_bm_short }} 설정 이미지](service-dashboard.png)
 
-서버 인스턴스에 {{ site.data.keys.mf_analytics_service }} 지원을 추가하려면 **Analytics 추가**를 클릭하십시오.
-[Analytics 지원 추가](#adding-analytics-support) 섹션에서 자세히 알아보십시오.
+<!--Click on **Add Analytics** to add {{ site.data.keys.mf_analytics_service }} support to your server instance.
+Learn more in the [Adding Analytics support](#adding-analytics-support) section.-->
 
-{{ site.data.keys.mf_console }}을 열려면 **콘솔 실행**을 클릭하십시오. 기본 사용자 이름은 "admin"이며 "눈" 아이콘을 클릭하여 비밀번호를 표시할 수 있습니다.
+* {{ site.data.keys.mf_console }}을 열려면 **콘솔 실행**을 클릭하십시오. 기본 사용자 이름은 *admin*이며, 비밀번호는 비밀번호 필드의 눈 모양 아이콘을 클릭하여 표시할 수 있습니다.
 
-![{{ site.data.keys.mf_bm_short }} 설정 이미지](dashboard.png)
+  ![{{ site.data.keys.mf_bm_short }} 설정 이미지](dashboard.png)
+
+* {{ site.data.keys.mf_console }}에서 **분석 콘솔**을 클릭하여 Mobile Analytics 콘솔을 열고 아래와 같이 분석 데이터를 보십시오.
+
+  ![{{ site.data.keys.mf_analytics_service }} 콘솔 이미지](analytics-dashboard.png)
+
 
 ### 서버 구성
 {: #server-configuration }
@@ -128,31 +143,32 @@ weight: 1
 
   >**참고** : 자체 TrustStore를 작성하도록 선택할 수 있지만 Mobile Foundation 서비스가 올바르게 작동하려면 기본 인증서를 사용해야 합니다.
 
-* {{ site.data.keys.mf_analytics_service }} 구성
+<!--* {{ site.data.keys.mf_analytics_service }} configuration-->
 * VPN
 
 ![{{ site.data.keys.mf_bm_short }} 설정 이미지](advanced-server-configuration.png)
 
-## {{ site.data.keys.mf_analytics_service }} 지원 추가
+<!--
+## Adding {{ site.data.keys.mf_analytics_service }} support
 {: #adding-analytics-support }
-서비스의 대시보드 페이지에서 **Analytics 추가**를 클릭하여 {{ site.data.keys.mf_analytics_service }} 지원을 {{ site.data.keys.mf_bm_short }} 서비스 인스턴스에 추가할 수 있습니다. 이 조치는 {{ site.data.keys.mf_analytics_service }} 서비스 인스턴스를 프로비저닝합니다.
+You can add {{ site.data.keys.mf_analytics_service }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions a {{ site.data.keys.mf_analytics_service }} service instance.
 
->{{ site.data.keys.mf_bm_short }} 서비스의 **개발자** 플랜 인스턴스를 작성하거나 다시 작성하는 경우 기본적으로 {{ site.data.keys.mf_analytics_service }} 서비스 인스턴스가 추가됩니다.
-
+>When you create or recreate the **Developer** plan instance of {{ site.data.keys.mf_bm_short }} service, the {{ site.data.keys.mf_analytics_service }} service instance is added by default.
+-->
 <!--* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_service }} service instance to your {{ site.data.keys.mf_server }} instance.  
 * When using the **Developer Pro**, **Professional Per Capacity** or **Professional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume. -->
+<!--
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_service_console }}.  
 
-조작이 완료되면 브라우저에서 {{ site.data.keys.mf_console }} 페이지를 다시 로드하여 {{ site.data.keys.mf_analytics_service_console }}에 액세스하십시오.  
+> Learn more about {{ site.data.keys.mf_analytics_service }} in the [{{ site.data.keys.mf_analytics_service }} category](../../analytics).
 
-> [{{ site.data.keys.mf_analytics_service }} 카테고리](../../analytics)에서 {{ site.data.keys.mf_analytics_service }}에 대해 자세히 알아보십시오.
-
-##  {{ site.data.keys.mf_analytics_service }} 지원 제거
+##  Removing {{ site.data.keys.mf_analytics_service }} support
 {: #removing-analytics-support}
 
-서비스의 대시보드 페이지에서 **Analytics 삭제**를 클릭하여 {{ site.data.keys.mf_bm_short }} 서비스 인스턴스에 대한 {{ site.data.keys.mf_analytics_service }} 지원을 제거할 수 있습니다. 이 조치는 {{ site.data.keys.mf_analytics_service }} 서비스 인스턴스를 삭제합니다.
+You can remove the {{ site.data.keys.mf_analytics_service }} support for your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Delete Analytics**  from the service’s Dashboard page. This action deletes the {{ site.data.keys.mf_analytics_service }} service instance.
 
-조작이 완료되면 브라우저에서 {{ site.data.keys.mf_console }} 페이지를 다시 로드하십시오.
-
+Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser.
+-->
 <!--
 ##  Switching from Analytics deployed with IBM Containers to Analytics service
 {: #switching-from-analytics-container-to-analytics-service}
@@ -161,6 +177,7 @@ weight: 1
 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 -->
+
 ## {{ site.data.keys.mfound_server }} 수정사항 적용
 {: #applying-mobilefirst-server-fixes }
 {{ site.data.keys.mf_bm }} 서비스의 업데이트는 업데이트 수행에 동의하는 외에는 사용자 개입이 없어도 자동으로 적용됩니다. 사용 가능한 업데이트가 있는 경우 서비스의 대시보드 페이지에 지시사항, 조치 단추와 함께 배너가 표시됩니다.

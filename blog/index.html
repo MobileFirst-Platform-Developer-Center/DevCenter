@@ -3,92 +3,93 @@ layout: default
 indexed: false
 title: Blog
 ---
+
 <head>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="{{site.baseurl}}/css/bulma-blog.css" type="text/css" rel="stylesheet">
     <style>
-
         .twoColumns {
             -webkit-columns: 2 200px;
-             -moz-columns: 2 200px;
-             columns: 2 200px;
-         }
+            -moz-columns: 2 200px;
+            columns: 2 200px;
+        }
 
         .postItem {
-           margin-bottom: 10px;
+            margin-bottom: 10px;
         }
-           .inline{
-             display: inline-block;
-             min-width: 268px;
-           }
 
-           .postTitle {
-              margin-bottom: 0;
-              color: #ffffff;
-              font-family: 'Lato', sans-serif;
-              font-weight: bold;
+        .inline {
+            display: inline-block;
+            min-width: 268px;
+        }
 
-           }
-           .postTitle1 {
-              margin-bottom: 0;
-              color: #337ab7;
-              font-family: 'Lato', sans-serif;
-              font-weight: bold;
+        .postTitle {
+            margin-bottom: 0;
+            color: #ffffff;
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+        }
 
-           }
-           .postsubTitle {
-              margin-bottom: 0;
-              color: #e5eaee;
-              font-family: 'Lato', sans-serif;
-              font-weight: bold;
+        .postTitle1 {
+            margin-bottom: 0;
+            color: #337ab7;
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+        }
 
-           }
-              a {
-                 color: #337ab7;
-                 text-decoration: none;
-              }
+        .postsubTitle {
+            margin-bottom: 0;
+            color: #e5eaee;
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+        }
 
-           .postDate {
-               font-family: 'Lato', sans-serif;
-               font-size: 80%;
-               padding: 0;
-               margin: 0;
-               font-weight: bold;
-           }
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
 
-           .postExcerpt {
-             font-family: 'Lato', sans-serif;
-             font-size: 85%;
-           }
+        .postDate {
+            font-family: 'Lato', sans-serif;
+            font-size: 80%;
+            padding: 0;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .postExcerpt {
+            font-family: 'Lato', sans-serif;
+            font-size: 85%;
+        }
     </style>
 </head>
 
 
-    <section class="hero is-dark">
-        <div class="hero-body">
-            <p class="title"><span class="postTitle">MOBILE FOUNDATION BLOG</span></p>
-              <span class="postsubTitle">INSIGHTS FROM MOBILE FOUNDATION DEVELOPERS</span><br/>
-              <span class="contribute-links"><a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">contribution guidelines</a> | <a href="{{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/">iFix v8.0 announcements</a> | <a href="{{ site.baseurl }}/blog/2018/05/18/7-1-master-ifix-release/">iFix v7.1 announcements</a> | <a href="{{ site.baseurl }}/blog/tag/iFix/">iFix announcements</a>  </span>
+<section class="hero is-dark">
+    <div class="hero-body">
+        <p class="title"><span class="postTitle">MOBILE FOUNDATION BLOG</span></p>
+        <span class="postsubTitle">INSIGHTS FROM MOBILE FOUNDATION DEVELOPERS</span><br/>
+        <span class="contribute-links"><a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">contribution guidelines</a> | <a href="{{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/">iFix v8.0 announcements</a> | <a href="{{ site.baseurl }}/blog/2018/05/18/7-1-master-ifix-release/">iFix v7.1 announcements</a> | <a href="{{ site.baseurl }}/blog/2018/09/27/6-3-master-ifix-release/">iFix v6.3 announcements</a></span>
 
-            <!--<p class="subtitle"><span class="postsubTitle">
+        <!--<p class="subtitle"><span class="postsubTitle">
                     <span class="icon has-text-info"><i class="fa fa-info-circle"></i></span> Contribute a blog post! See <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md"><span class="postsubTitle">our contribution guidelines</span></a>.</span>
                     <p class="postsubTitle">Read <a href="{{ site.baseurl }}/blog/tag/Announcement/"><span class="content is-link">product announcements</span></a>.</p>
                     <p class="postsubTitle">Read <a href="{{ site.baseurl }}/blog/tag/iFix/"><span class="content is-link">iFix availability announcements</span></a>.</p>
             </p>-->
-            </div>
-    </section>
+    </div>
+</section>
 
 <!-- <section class="container blogPostsList" role="main"> -->
- <div class="container is-fluid">
-  <!--<h2 class="title">Mobile Foundation Blog</h2>
+<div class="container is-fluid">
+    <!--<h2 class="title">Mobile Foundation Blog</h2>
   <p>Posts provide additional technical know-how that is required when working with Mobile Foundation offerings.<br/> Posts are broadly based on development, product features, and announcements.</p>
   <br/>
   <blockquote><span class="icon has-text-info"><i class="fa fa-info-circle"></i></span> Contribute a blog post! see <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">our contribution guidelines</a>.</blockquote>
   <blockquote>Read <a href="{{ site.baseurl }}/blog/tag/Announcement/">product announcements</a>.</blockquote>
   <blockquote>Read <a href="{{ site.baseurl }}/blog/tag/iFix/">iFix availability announcements</a>.</blockquote>
   -->
-  <br/>
-<!--  <div class="jumbotron">
+    <br/>
+    <!--  <div class="jumbotron">
     {% assign found = false %}
 
 {% for post in paginator.posts %}
@@ -106,58 +107,49 @@ title: Blog
   {% endfor %}
 
 </div>-->
-  <br/>
+    <br/>
 
-  <!--<h3 class="title is-4 is-info"><span class="postTitle1">Posts on product features</span></h3>-->
-  <div class="columns is-multiline">
-    {% for post in paginator.posts %}
-        {% for tag in post.tags %}
-            {% if tag == 'iFix' %}
-                {% assign found_ifix = true %}
-                {% break %}
-            {% endif %}
-        {% endfor%}
-        {% if found_ifix != true %}
+    <!--<h3 class="title is-4 is-info"><span class="postTitle1">Posts on product features</span></h3>-->
+    <div class="columns is-multiline">
+        {% for post in paginator.posts %} {% for tag in post.tags %} {% if tag == 'iFix' %} {% assign found_ifix = true %} {% break %} {% endif %} {% endfor%} {% if found_ifix != true %}
         <div class="column is-4">
-         <!-- START ARTICLE -->
-         <div class="card article" style="height: 24rem;">
-           <!--<div class="card-image img-fluid">
+            <!-- START ARTICLE -->
+            <div class="card article" style="height: 24rem;">
+                <!--<div class="card-image img-fluid">
               <figure class="image">
                 <img src="{{ site.baseurl }}/assets/front-page/carousel-background.png" alt="Placeholder image">
               </figure>
           </div>-->
-           <div class="card-content">
-             <div class="media">
-               <div class="media-content">
-                 <p class="title is-5 article-title"><span class="postTitle1">{{post.title}}</span></p>
-                 <p><span class="postDate"><span class="glyphicon glyphicon-pencil"></span>&nbsp;{{ post.author.name}} | <span class="glyphicon glyphicon-calendar"></span>&nbsp;{{post.date | date: '%B %d, %Y'}}</span></p>
-                 <!--<p><span class="postDate">{{post.date | date: '%B %d, %Y'}}</span></p>-->
-                 <br/>
-                 <p class="content is-12">
-                   <span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 50}}</span>
-                 </p>
-                 <a class="button is-info is-outlined" href="{{site.baseurl}}{{post.url}}">Read</a>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-         <!-- END ARTICLE -->
-         <br/>
-        {% endif %}
-        {% assign found_ifix = false %}
-    {% endfor %}
-</div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="title is-5 article-title"><span class="postTitle1">{{post.title}}</span></p>
+                            <p><span class="postDate"><span class="glyphicon glyphicon-pencil"></span>&nbsp;{{ post.author.name}} | <span class="glyphicon glyphicon-calendar"></span>&nbsp;{{post.date | date: '%B %d, %Y'}}</span>
+                            </p>
+                            <!--<p><span class="postDate">{{post.date | date: '%B %d, %Y'}}</span></p>-->
+                            <br/>
+                            <p class="content is-12">
+                                <span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 50}}</span>
+                            </p>
+                            <a class="button is-info is-outlined" href="{{site.baseurl}}{{post.url}}">Read</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END ARTICLE -->
+        <br/> {% endif %} {% assign found_ifix = false %} {% endfor %}
+    </div>
 
 
 
-   <!-- END ARTICLE FEED -->
-   <nav>
+    <!-- END ARTICLE FEED -->
+    <nav>
         <ul class="pagination">
-            <li {% if paginator.previous_page == null %}class="disabled"{% endif %}>
+            <li {% if paginator.previous_page==null %}class="disabled" {% endif %}>
                 <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous"><span aria-hidden="true">Previous</span></a>
             </li>
-            <li {% if paginator.next_page == null %}class="disabled"{% endif %}>
+            <li {% if paginator.next_page==null %}class="disabled" {% endif %}>
                 <a href="{% if paginator.next_page %}{{ paginator.next_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Next"><span aria-hidden="true">Next</span></a>
             </li>
         </ul>
@@ -166,40 +158,40 @@ title: Blog
 
 
 
-<hr/>
-<br/>
+    <hr/>
+    <br/>
 
 
     <h3 class="title is-4"><span class="postTitle1">Browse all the blog posts</span></h3>
-     <!--<section id="blogPostsList" class="container"> -->
+    <!--<section id="blogPostsList" class="container"> -->
 
-        <div class="twoColumns">
-            {% for post in paginator.posts %}
-            <div class="postItem inline">
-                <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
-                <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
-                <p class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</p>
-              </div>
-            {% endfor %}
+    <div class="twoColumns">
+        {% for post in paginator.posts %}
+        <div class="postItem inline">
+            <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
+            <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+            <p class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</p>
         </div>
-        <br/>
-        <!-- Pagination links -->
-       <nav>
-            <ul class="pagination">
-                <li {% if paginator.previous_page == null %}class="disabled"{% endif %}>
-                    <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous"><span aria-hidden="true">Previous</span></a>
-                </li>
-                <li {% if paginator.next_page == null %}class="disabled"{% endif %}>
-                    <a href="{% if paginator.next_page %}{{ paginator.next_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Next"><span aria-hidden="true">Next</span></a>
-                </li>
-            </ul>
-        </nav>
+        {% endfor %}
+    </div>
+    <br/>
+    <!-- Pagination links -->
+    <nav>
+        <ul class="pagination">
+            <li {% if paginator.previous_page==null %}class="disabled" {% endif %}>
+                <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous"><span aria-hidden="true">Previous</span></a>
+            </li>
+            <li {% if paginator.next_page==null %}class="disabled" {% endif %}>
+                <a href="{% if paginator.next_page %}{{ paginator.next_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Next"><span aria-hidden="true">Next</span></a>
+            </li>
+        </ul>
+    </nav>
 
-  <!-- </section> -->
+    <!-- </section> -->
 
-<br/>
+    <br/>
 
-   <!-- <hr>
+    <!-- <hr>
         <section class="hero is-white">
             <h3 class="title is-4">More blogs to follow</h3>
             <ul class="moreBlogs">
@@ -212,4 +204,4 @@ title: Blog
                 <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklightsmobileplayground/?lang=en" target="_blank">IBM Worklight Mobile Playground’s previous blog</a></b></li>
             </ul>
         </section>-->
-   <!-- </section> -->
+    <!-- </section> -->

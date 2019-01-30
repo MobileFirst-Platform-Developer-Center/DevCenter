@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: IBM Cloud Private에서 MobileFirst Server 설정
-breadcrumb_title: Mobile Foundation on IBM Cloud Private
+breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -62,7 +62,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
       ```bash
       bx pr login -a https://ip:port
       ```
-            선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
+      선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
 
   2. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
       ```
@@ -114,58 +114,66 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 {: #env-mf-analytics }
 아래의 표에서는 {{ site.data.keys.prod_icp }}의 {{ site.data.keys.mf_analytics }}에서 사용되는 환경 변수를 제공합니다.
 
-|규정자 |매개변수 |정의 |허용값 |
+| 규정자 | 매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
-|arch |  |작업자 노드 아키텍처 |이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
-|image |pullPolicy |이미지 가져오기 정책 |기본값은 **IfNotPresent**입니다. |
-|  |tag |Docker 이미지 태그 |[Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
-|  |name |Docker 이미지 이름 |{{ site.data.keys.prod_adj }} Operational Analytics Docker 이미지의 이름. |
-|scaling |replicaCount |작성해야 하는 {{ site.data.keys.prod_adj }} Operational Analytics의 인스턴스(포드) 수 |양의 정수<br/>기본값은 **2**입니다. |
-|mobileFirstAnalyticsConsole |user |{{ site.data.keys.prod_adj }} Operational Analytics의 사용자 이름 |기본값은 **admin**입니다. |
-|  |password |{{ site.data.keys.prod_adj }} Operational Analytics의 비밀번호 |기본값은 **admin**입니다. |
-|analyticsConfiguration |clusterName |{{ site.data.keys.prod_adj }} Analytics 클러스터의 이름 |기본값은 **mobilefirst**입니다. |
-|  |analyticsDataDirectory |분석 데이터가 저장된 경로. *또한 지속적 볼륨 클레임이 컨테이너 내부에 마운트된 경로와 동일합니다*. |기본값은 `/analyticsData`입니다. |
-|  |numberOfShards |{{ site.data.keys.prod_adj }} Analytics에 대한 Elasticsearch 샤드 수 |양의 정수<br/>기본값은 **2**입니다. |
-|  |replicasPerShard |{{ site.data.keys.prod_adj }} Analytics에 대해 각 샤드별로 유지보수할 Elasticsearch 복제본 수 |양의 정수<br/>기본값은 **2**입니다. |
-|keystores |keystoresSecretName |키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts)을 참조하십시오. |  |
-|jndiConfigurations |mfpfProperties |{{ site.data.keys.prod_adj }} Operational Analytics 사용자 정의를 위해 지정할 JNDI 특성 |쉼표로 구분된 이름 값 쌍을 제공하십시오. |
-|resources |limits.cpu |허용되는 최대 CPU 양 설명 |기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
-|  |limits.memory |허용되는 최대 메모리 양 설명 |기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  |requests.cpu |필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. |기본값은 **1000m**입니다. |
-|  |requests.memory |필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 양의 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. |기본값은 **2048Mi**입니다. |
-|persistence |existingClaimName |기존 지속성 볼륨 클레임(PVC)의 이름 |  |
+| arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
+| image | pullPolicy | 이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
+|  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
+|  | name | Docker 이미지 이름 | {{ site.data.keys.prod_adj }} Operational Analytics Docker 이미지의 이름. |
+| scaling | replicaCount | 작성해야 하는 {{ site.data.keys.prod_adj }} Operational Analytics의 인스턴스(포드) 수 | 양의 정수<br/>기본값은 **2**입니다. |
+| mobileFirstAnalyticsConsole | user | {{ site.data.keys.prod_adj }} Operational Analytics의 사용자 이름 | 기본값은 **admin**입니다. |
+|  | password | {{ site.data.keys.prod_adj }} Operational Analytics의 비밀번호 | 기본값은 **admin**입니다. |
+| analyticsConfiguration | clusterName |{{ site.data.keys.prod_adj }} Analytics 클러스터의 이름 | 기본값은 **mobilefirst**입니다. |
+|  | analyticsDataDirectory | 분석 데이터가 저장된 경로. *또한 지속적 볼륨 클레임이 컨테이너 내부에 마운트된 경로와 동일합니다*. | 기본값은 `/analyticsData`입니다. |
+|  | numberOfShards | {{ site.data.keys.prod_adj }} Analytics에 대한 Elasticsearch 샤드 수 | 양의 정수<br/>기본값은 **2**입니다. |
+|  | replicasPerShard | {{ site.data.keys.prod_adj }} Analytics에 대해 각 샤드별로 유지보수할 Elasticsearch 복제본 수 | 양의 정수<br/>기본값은 **2**입니다. |
+| keystores | keystoresSecretName | 키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts)을 참조하십시오. |  |
+| jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} Operational Analytics 사용자 정의를 위해 지정할 JNDI 특성 | 쉼표로 구분된 이름 값 쌍을 제공하십시오. |
+| resources |limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
+|  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. | 기본값은 **1000m**입니다. |
+|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 양의 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **2048Mi**입니다. |
+| persistence |existingClaimName | 기존 지속성 볼륨 클레임(PVC)의 이름 |  |
+| logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
+|  | consoleLogLevel | 컨테이너 로그로 이동하는 메시지 유형을 제어합니다. | 기본값은 **info**입니다. |
+|  | consoleSource | 컨테이너 로그에 기록되는 소스를 지정합니다. 여러 소스의 경우 쉼표로 구분된 목록을 사용합니다. | 기본값은 **message**, **trace**, **accessLog**, **ffdc**입니다. |
 
 
 ### {{ site.data.keys.mf_server }}에 대한 환경 변수
 {: #env-mf-server }
 아래의 표에서는 {{ site.data.keys.prod_icp }}의 {{ site.data.keys.mf_server }}에서 사용되는 환경 변수를 제공합니다.
 
-|규정자 |매개변수 |정의 |허용값 |
+| 규정자 | 매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
-|arch |  |작업자 노드 아키텍처 |이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
-|image |pullPolicy |이미지 가져오기 정책 |기본값은 **IfNotPresent**입니다. |
-|  |tag |Docker 이미지 태그 |[Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
-|  |name |Docker 이미지 이름 |{{ site.data.keys.prod_adj }} Server Docker 이미지의 이름입니다. |
-|scaling |replicaCount |작성해야 하는 {{ site.data.keys.prod_adj }} Server의 인스턴스(포드) 수 |양의 정수<br/>기본값은 **3**입니다. |
-|mobileFirstOperationsConsole |user |{{ site.data.keys.prod_adj }} Server의 사용자 이름 |기본값은 **admin**입니다. |
-|  |password |{{ site.data.keys.prod_adj }} Server 사용자의 비밀번호 |기본값은 **admin**입니다. |
-|existingDB2Details |db2Host |{{ site.data.keys.prod_adj }} Server 테이블을 구성해야 하는 DB2 데이터베이스의 IP 주소 또는 호스트 |현재 DB2만 지원됩니다. |
-|  |db2Port |DB2 데이터베이스가 설정된 포트 |  |
-|  |db2Database |DB2에서 사용하기 위해 사전 구성된 데이터베이스의 이름 |  |
-|  |db2Username |DB2 데이터베이스에 액세스할 DB2 사용자 이름 |사용자에게 테이블을 작성하고 스키마를 작성할 수 있는 액세스 권한이 있어야 합니다(아직 없는 경우). |
-|  |db2Password |제공된 데이터베이스의 DB2 비밀번호  |  |
-|  |db2Schema |작성할 서버 DB2 스키마 |  |
-|  |db2ConnectionIsSSL |DB2 연결 유형 |데이터베이스 연결이 **http**여야 하는지 또는 **https**여야 하는지 지정하십시오. 기본값은 **false**(http)입니다.<br/>또한 DB2 포트가 동일한 연결 모드로 구성되어 있는지 확인하십시오. |
-|existingMobileFirstAnalytics |analyticsEndPoint |Analytics Server의 URL |예를 들어, `http://9.9.9.9:30400`입니다.<br/> 콘솔에 대한 경로를 지정하지 마십시오. 이 경로는 배치 중에 추가됩니다.
+| arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
+| image | pullPolicy | 이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
+|  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
+|  | name | Docker 이미지 이름 | {{ site.data.keys.prod_adj }} Server Docker 이미지의 이름입니다. |
+| scaling | replicaCount | 작성해야 하는 {{ site.data.keys.prod_adj }} Server의 인스턴스(포드) 수 | 양의 정수<br/>기본값은 **3**입니다. |
+| mobileFirstOperationsConsole | user | {{ site.data.keys.prod_adj }} Server의 사용자 이름 | 기본값은 **admin**입니다. |
+|  | password | {{ site.data.keys.prod_adj }} Server 사용자의 비밀번호 | 기본값은 **admin**입니다. |
+| existingDB2Details | db2Host | {{ site.data.keys.prod_adj }} Server 테이블을 구성해야 하는 DB2 데이터베이스의 IP 주소 또는 호스트 | 현재 DB2만 지원됩니다. |
+|  | db2Port | DB2 데이터베이스가 설정된 포트 |  |
+|  | db2Database | DB2에서 사용하기 위해 사전 구성된 데이터베이스의 이름 |  |
+|  | db2Username | DB2 데이터베이스에 액세스할 DB2 사용자 이름 | 사용자에게 테이블을 작성하고 스키마를 작성할 수 있는 액세스 권한이 있어야 합니다(아직 없는 경우). |
+|  | db2Password | 제공된 데이터베이스의 DB2 비밀번호  |  |
+|  | db2Schema | 작성할 서버 DB2 스키마 |  |
+|  | db2ConnectionIsSSL | DB2 연결 유형 | 데이터베이스 연결이 **http**여야 하는지 또는 **https**여야 하는지 지정하십시오. 기본값은 **false**(http)입니다.<br/>또한 DB2 포트가 동일한 연결 모드로 구성되어 있는지 확인하십시오. |
+| existingMobileFirstAnalytics | analyticsEndPoint |Analytics Server의 URL | 예를 들어, `http://9.9.9.9:30400`입니다.<br/> 콘솔에 대한 경로를 지정하지 마십시오. 이 경로는 배치 중에 추가됩니다.
  |
-|  |analyticsAdminUser |Analytics 관리자의 사용자 이름 |  |
-|  |analyticsAdminPassword |Analytics 관리자의 비밀번호 |  |
-|keystores |keystoresSecretName |키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts)을 참조하십시오. |  |
-|jndiConfigurations |mfpfProperties |배치 사용자 정의를 위한 {{ site.data.keys.prod_adj }} Server JNDI 특성 |쉼표로 구분된 이름 값 쌍입니다. |
-|resources |limits.cpu |허용되는 최대 CPU 양 설명 |기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
-|  |limits.memory |허용되는 최대 메모리 양 설명 |기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  |requests.cpu |필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. |기본값은 **1000m**입니다. |
-|  |requests.memory |필요한 최소 메모리 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. |기본값은 **2048Mi**입니다. |
+|  | analyticsAdminUser | Analytics 관리자의 사용자 이름 |  |
+|  | analyticsAdminPassword | Analytics 관리자의 비밀번호 |  |
+| keystores | keystoresSecretName | 키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts)을 참조하십시오. |  |
+| jndiConfigurations | mfpfProperties | 배치 사용자 정의를 위한 {{ site.data.keys.prod_adj }} Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍입니다. |
+| resources | limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
+|  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. | 기본값은 **1000m**입니다. |
+|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **2048Mi**입니다. |
+| logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
+|  | consoleLogLevel | 컨테이너 로그로 이동하는 메시지 유형을 제어합니다. | 기본값은 **info**입니다. |
+|  | consoleSource | 컨테이너 로그에 기록되는 소스를 지정합니다. 여러 소스의 경우 쉼표로 구분된 목록을 사용합니다. | 기본값은 **message**, **trace**, **accessLog**, **ffdc**입니다. |
+
+> Kibana를 사용한 {{ site.data.keys.prod_adj }} 로그 분석에 대한 학습서는 [여기](analyzing-mobilefirst-logs-on-icp/)를 참조하십시오.
 
 ### ICP 카탈로그에서 {{ site.data.keys.prod_adj }} Helm Charts 설치
 {: #install-hmc-icp}

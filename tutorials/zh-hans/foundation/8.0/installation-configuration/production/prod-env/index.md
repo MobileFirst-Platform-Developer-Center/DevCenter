@@ -19,17 +19,17 @@ weight: 1
 ## 运行 IBM Installation Manager
 {: #run-install-mgr }
 
-IBM Installation Manager 在计算机上安装 IBM MobileFirst Platform Server 文件和工具。遵循本[教程以安装并运行 IBM Installation Manager](../installation-manager)。
+IBM Installation Manager 在计算机上安装 IBM MobileFirst Platform Server 文件和工具。 遵循本[教程以安装并运行 IBM Installation Manager](../installation-manager)。
 
 ## 设置数据库
 {: #databases }
 
-设置要供 MobileFirst Server 组件使用的数据库。遵循本[教程以设置数据库](databases)。
+设置要供 MobileFirst Server 组件使用的数据库。 遵循本[教程以设置数据库](databases)。
 
 ## 拓扑和网络流
 {: #topologies }
 
-有关 MobileFirst Server 组件的可能的服务器拓扑和网络流的主题。遵循本[教程以了解有关可能的服务器拓扑和网络流的信息](topologies)。
+有关 MobileFirst Server 组件的可能的服务器拓扑和网络流的主题。 遵循本[教程以了解有关可能的服务器拓扑和网络流的信息](topologies)。
 
 ## 将 MobileFirst Server 安装到应用程序服务器中
 {: #install-to-appserver }

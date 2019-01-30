@@ -1941,7 +1941,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                             <br/><br/>
                             이 서버 각각에는 {{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 하나 이상의 {{ site.data.keys.product_adj }} 런타임이 배치되어 있어야 합니다.
                             <br/><br/>
-                            서버 설정에 대한 자세한 정보는 <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건</a>을 참조하십시오. </li>
+                            서버 설정에 대한 자세한 정보는 <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건</a>을 참조하십시오.</li>
                             <li>각각의 신뢰 저장소에 있는 모든 서버 사이에서 서명자 인증서를 교환하십시오.
                             <br/><br/>
                             보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.

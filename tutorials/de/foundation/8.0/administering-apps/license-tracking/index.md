@@ -186,11 +186,11 @@ Server zugegriffen werden.
 Je nach Lizenztyp einer Anwendung werden die folgenden
 Features verwendet. 
 
-| Tokenlizenztyp| Featurename| 
+|Tokenlizenztyp|Featurename| 
 |--------------------|--------------|
-| APPLICATION| 	ibmmfpfa| 
-| ADDITIONAL\_BRAND\_DEPLOYMENT|	ibmmfpabd| 
-| NON_PRODUCTION	| (kein Feature)| 
+|APPLICATION| 	ibmmfpfa| 
+|ADDITIONAL\_BRAND\_DEPLOYMENT|	ibmmfpabd| 
+|NON_PRODUCTION	|(kein Feature)| 
 
 ## Integration des IBM License Metric Tool
 {: #integration-with-ibm-license-metric-tool }

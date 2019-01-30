@@ -81,7 +81,7 @@ Application Center에서 애플리케이션을 삭제하려면 명령행에서 �
 
 명령행에서 사용 가능한 옵션을 전달할 수 있습니다.
 
-| 옵션 | 컨텐츠 표시 | 설명 |
+| 옵션 | 컨텐츠 표시	| 설명 |
 |--------|----------------------|-------------|
 | -s |serverpath | The path to the Application Center server. |
 | -c | context | The context of the Application Center web application. |
@@ -143,8 +143,8 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 
 편의를 위해 Apache Ant 1.8.4는 {{ site.data.keys.mf_server }}에 포함되어 있습니다. product_install_dir/shortcuts/ 디렉토리에서 다음 스크립트가 제공됩니다.
 
-* UNIX/Linux용 ant
-* Windows용 ant.bat
+* UNIX/Linux의 경우 ant
+* Windows의 경우 ant.bat
 
 이러한 스크립트는 실행할 준비가 되어 있으며, 특정 환경 변수가 필요하지 않음을 의미합니다. 환경 변수 JAVA_HOME이 설정되어 있는 경우 스크립트는 이를 허용합니다.
 

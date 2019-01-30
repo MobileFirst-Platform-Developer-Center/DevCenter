@@ -64,8 +64,7 @@ Criando um banco de dados](#creating-a-database)
 
 ### Instalando o IBM Installation Manager
 {: #installing-ibm-installation-manager }
-Deve-se instalar o Installation Manager V1.8.4 ou posterior. As versões mais antigas do Installation Manager não são capazes de instalar o
-{{ site.data.keys.product }} V8.0 porque operações pós-instalação do produto requerem Java 7. As versões mais antigas do Installation Manager vêm com Java 6.
+Deve-se instalar o Installation Manager V1.8.4 ou posterior. As versões mais antigas do Installation Manager não são capazes de instalar o {{ site.data.keys.product }} V8.0 porque operações pós-instalação do produto requerem Java 7. As versões mais antigas do Installation Manager vêm com Java 6.
 
 1. Extraia o archive do IBM Installation Manager que foi transferido por download. É possível localizar o instalador em [Links de download do Installation Manager e Packaging Utility](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 2. Instale o Installation Manager:
@@ -74,8 +73,7 @@ Deve-se instalar o Installation Manager V1.8.4 ou posterior. As versões mais an
 
 ### Instalando o WebSphere Application Server Liberty Core
 {: #installing-websphere-application-server-liberty-core }
-O instalador do WebSphere Application Server Liberty Core é fornecido como parte do pacote para o {{ site.data.keys.product }}. Nesta tarefa, o perfil Liberty é instalado e uma instância de servidor é criada, de modo que seja possível instalar o
-{{ site.data.keys.mf_server }} nele.
+O instalador do WebSphere Application Server Liberty Core é fornecido como parte do pacote para o {{ site.data.keys.product }}. Nesta tarefa, o perfil Liberty é instalado e uma instância de servidor é criada, de modo que seja possível instalar o {{ site.data.keys.mf_server }} nele.
 
 1. Extraia o arquivo compactado para o WebSphere Application Server Liberty Core que foi transferido por download.
 2. Inicie o Installation Manager.
@@ -441,16 +439,16 @@ Quando você cria um farm, também é necessário configurar um servidor HTTP pa
 
     ```xml
     <httpEndpoint id="defaultHttpEndpoint"
-    httpPort="9080"
-    httpsPort="9443" />
+        httpPort="9080"
+        httpsPort="9443" />
     ```
 
     por:
 
     ```xml
     <httpEndpoint id="defaultHttpEndpoint"
-    httpPort="9081"
-    httpsPort="9444" />
+        httpPort="9081"
+        httpsPort="9444" />
     ```
 
     As portas HTTP e HTTPS do servidor mfp2 não entram em conflito com as portas do servidor mfp1 com essa mudança. Certifique-se de modificar as portas antes de executar a instalação do {{ site.data.keys.mf_server }}. Caso contrário, se você modificar a porta após a instalação ser feita, também será necessário refletir a mudança da porta na propriedade JNDI: **mfp.admin.jmx.port**.
@@ -461,14 +459,13 @@ Quando você cria um farm, também é necessário configurar um servidor HTTP pa
 
     > **Nota:**  
     >
-    > * Se você usar um ID de ambiente para o servidor mfp1 (não sugerido no tutorial), o mesmo ID de ambiente deverá ser usado para o servidor mfp2.
-* Se você modificar a raiz de contexto para alguns aplicativos, use a mesma raiz de contexto para o servidor mfp2. Os servidores de um farm devem ser simétricos.
+    > * Se você usar um ID de ambiente para o servidor mfp1 (não sugerido no tutorial), o mesmo ID de ambiente deverá ser usado para o servidor mfp2. * Se você modificar a raiz de contexto para alguns aplicativos, use a mesma raiz de contexto para o servidor mfp2. Os servidores de um farm devem ser simétricos.
     > * Se você criar um usuário padrão (admin/admin), crie o mesmo usuário no servidor mfp2.
 
     As tarefas Ant detectam que os bancos de dados existem e não criam as tabelas (consulte a extração de log a seguir). Em seguida, os aplicativos são implementados no servidor.
 
     ```xml
-    [configuredatabase] Checking connectivity to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser'...
+    [configuredatabase] Verificando a conectividade com o banco de dados MobileFirstAdmin MFPDATA com esquema 'MFPDATA' e usuário 'mfpuser'...
     [configuredatabase] Banco de dados MFPDATA existe.
     [configuredatabase] Conexão com o banco de dados MobileFirstAdmin MFPDATA com esquema 'MFPDATA' e usuário 'mfpuser' estabelecida com sucesso.
     [configuredatabase] Obtendo a versão do banco de dados MobileFirstAdmin MFPDATA...
@@ -514,8 +511,7 @@ Quando você cria um farm, também é necessário configurar um servidor HTTP pa
 1. Inicie os dois servidores:
 
     ```bash
-    server start mfp1
-    server start mfp2
+    server start mfp1 server start mfp2
     ```
 
 2. Acesse o console. Por exemplo, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) ou [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) em HTTPS. Na barra lateral esquerda, um menu extra rotulado como **Nós do Server Farm** aparece. Se você clicar em **Nós do Server Farm**, é possível ver o status de cada nó. Talvez você tenha que esperar um pouco até que os nós sejam iniciados.

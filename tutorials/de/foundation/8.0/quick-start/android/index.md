@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-Bei der folgende Demonstration geht es darum, einen End-to-End-Ablauf zu veranschaulichen:
+Bei der folgenden Demonstration geht es darum, einen End-to-End-Ablauf zu veranschaulichen:
 
 1. Eine im Lieferumfang des {{ site.data.keys.product_adj }}-Client-SDK enthaltene Beispielanwendung wird in der {{ site.data.keys.mf_console }} registriert und heruntergeladen.
 2. Ein neuer oder bereitgestellter Adapter wird über die {{ site.data.keys.mf_console }} implementiert.  

@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: 在 IBM Cloud Private 上设置 MobileFirst Server
-breadcrumb_title: Mobile Foundation on IBM Cloud Private
+breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -21,7 +21,7 @@ weight: 3
 * [先决条件](#prereqs)
 * [下载 IBM Mobile Foundation Passport Advantage 归档](#download-the-ibm-mfpf-ppa-archive)
 * [装入 IBM Mobile Foundation Passport Advantage 归档](#load-the-ibm-mfpf-ppa-archive)
-* [安装和配置 IBM {{site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)
+* [安装和配置 IBM {{ site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)
 * [验证安装](#verify-install)
 * [样本应用程序](#sample-app)
 * [升级 {{ site.data.keys.prod_adj }} Helm Chart 和发行版](#upgrading-mf-helm-charts)
@@ -32,8 +32,7 @@ weight: 3
 
 您应该具有 {{ site.data.keys.prod_icp }} 帐户，并且必须遵循 [{{ site.data.keys.prod_icp }} 集群安装](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html)中的文档设置 Kubernetes 集群。
 
-要管理容器和映像，需要在
-{{site.data.keys.prod_icp }} 设置期间在主机上安装以下工具：
+要管理容器和映像，需要在 {{ site.data.keys.prod_icp }} 设置期间在主机上安装以下工具：
 
 * Docker
 * IBM Cloud CLI (`bx`)
@@ -73,7 +72,7 @@ weight: 3
 
       如果已执行先前步骤并将集群端点设置为 `bx pr` 的缺省值，那么可忽略 `--clustername`。
 
-  3. 在装入 PPA 归档后，同步存储库，确保在**目录**中列出 Helm Chart。 您可以在 {{site.data.keys.prod_icp }} 管理控制台中执行此操作。
+  3. 在装入 PPA 归档后，同步存储库，确保在**目录**中列出 Helm Chart。 您可以在 {{ site.data.keys.prod_icp }} 管理控制台中执行此操作。
       * 选择**管理 > 存储库**。
       * 单击**同步存储库**。
 
@@ -82,12 +81,12 @@ weight: 3
       * 选择**平台 > 映像**。
       * 在**目录**中显示 Helm Chart。
 
-  在完成上述步骤后，您将看到在 ICP 目录中显示已上载版本的 {{site.data.keys.prod_adj }} Helm Chart。 {{ site.data.keys.mf_server }} 作为 **ibm-mfpf-server-prod** 列出，并且 {{ site.data.keys.mf_analytics }} 作为 **ibm-mfpf-analytics-prod** 列出。
+  在完成上述步骤后，您将看到在 ICP 目录中显示已上载版本的 {{ site.data.keys.prod_adj }} Helm Chart。 {{ site.data.keys.mf_server }} 作为 **ibm-mfpf-server-prod** 列出，并且 {{ site.data.keys.mf_analytics }} 作为 **ibm-mfpf-analytics-prod** 列出。
 
-## 安装和配置 IBM {{site.data.keys.product }} Helm Chart
+## 安装和配置 IBM {{ site.data.keys.product }} Helm Chart
 {: #configure-install-mf-helmcharts}
 
-在安装和配置 {{site.data.keys.mf_server }} 之前，您应具有以下内容：
+在安装和配置 {{ site.data.keys.mf_server }} 之前，您应具有以下内容：
 
 * [**必需**] 已配置且可供使用的 DB2 数据库。
   您将需要数据库信息以[配置 {{ site.data.keys.mf_server }} helm](#install-hmc-icp)。 {{ site.data.keys.mf_server }} 需要将在此数据库中创建（如果不存在）的模式和表。
@@ -128,13 +127,16 @@ weight: 3
 |  | analyticsDataDirectory | 存储分析数据的路径。 *它还将与在容器内安装持久卷声明的路径相同*。 | 缺省为 `/analyticsData` |
 |  | numberOfShards | {{ site.data.keys.prod_adj }} Analytics 的 Elasticsearch 分片数量 | 正整数<br/>缺省值为 **2** |
 |  | replicasPerShard | 针对 {{ site.data.keys.prod_adj }} Analytics 每个分片要维护的 Elasticsearch 副本数量 | 正整数<br/>缺省值为 **2** |
-| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
+| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{ site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
 | jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} JNDI 属性，为定制 Operational Analytics 而指定 | 提供逗号分隔的名称值对。 |
 | resources | limits.cpu | 描述允许的最大 CPU 量 | 缺省值为 **2000m**<br/>请阅读 [CPU 的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)。 |
 |  | limits.memory | 描述允许的最大内存量 | 缺省值为 **4096Mi**<br/>请阅读[内存的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)。 |
 |  | requests.cpu | 描述所需的最小 CPU 量。 如果未指定，那么缺省为 *limits*（如果已指定）或实现定义的值 | 缺省值为 **1000m**。 |
 |  | requests.memory | 描述所需的最小内存量。 如果未指定，那么内存量缺省为 *limits*（如果已指定）或实现定义的值 | 缺省值为 **2048Mi**。 |
 | persistence | existingClaimName | 现有持久卷声明 (PVC) 的名称 |  |
+| logs | consoleFormat | 指定容器日志输出格式。| 缺省值为 **json**。|
+|  | consoleLogLevel | 控制转至容器日志的消息的详细程度。| 缺省值为 **info**。|
+|  | consoleSource | 指定写入容器日志的源。针对多个源，请使用逗号分隔的列表。| 缺省值为 **message**, **trace**, **accessLog**, **ffdc**。|
 
 
 ### {{ site.data.keys.mf_server }} 的环境变量
@@ -161,12 +163,17 @@ weight: 3
  |
 |  | analyticsAdminUser | 分析管理员用户的用户名 |  |
 |  | analyticsAdminPassword | 分析管理员用户的密码 |  |
-| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
+| keystores | keystoresSecretName | 请参阅[安装和配置 IBM {{ site.data.keys.product }} Helm Chart](#configure-install-mf-helmcharts)，其中描述使用密钥库及其密码创建密钥的步骤。 |  |
 | jndiConfigurations | mfpfProperties | 用于定制部署的 {{ site.data.keys.prod_adj }} Server JNDI 属性 | 逗号分隔的名称值对。 |
 | resources | limits.cpu | 描述允许的最大 CPU 量 | 缺省值为 **2000m**<br/>请阅读 [CPU 的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)。 |
 |  | limits.memory | 描述允许的最大内存量 | 缺省值为 **4096Mi**<br/>请阅读[内存的含义](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)。 |
 |  | requests.cpu | 描述所需的最小 CPU 量。 如果未指定，那么缺省为 *limits*（如果已指定）或实现定义的值。 | 缺省值为 **1000m**。 |
 |  | requests.memory | 描述所需的最小内存量。 如果未指定，那么缺省为 *limits*（如果已指定）或者实现定义的值 | 缺省值为 **2048Mi**。 |
+| logs | consoleFormat | 指定容器日志输出格式。| 缺省值为 **json**。|
+|  | consoleLogLevel | 控制转至容器日志的消息的详细程度。| 缺省值为 **info**。|
+|  | consoleSource | 指定写入容器日志的源。针对多个源，请使用逗号分隔的列表。| 缺省值为 **message**, **trace**, **accessLog**, **ffdc**。|
+
+> 有关使用 Kibana 分析 {{ site.data.keys.prod_adj }} 日志的教程，请参阅[此处](analyzing-mobilefirst-logs-on-icp/)。
 
 ### 从 ICP 目录安装 {{ site.data.keys.prod_adj }} Helm Chart
 {: #install-hmc-icp}
@@ -190,7 +197,7 @@ weight: 3
 #### 安装 {{ site.data.keys.mf_server }}
 {: #install-mf-server}
 
-在开始安装 {{site.data.keys.mf_server }} 之前，确保您已预先配置 DB2 数据库。
+在开始安装 {{ site.data.keys.mf_server }} 之前，确保您已预先配置 DB2 数据库。
 
 
 遵循以下步骤以从 {{ site.data.keys.prod_icp }} 管理控制台安装和配置 IBM {{ site.data.keys.mf_server }}。
@@ -207,10 +214,10 @@ weight: 3
 
 在安装和配置 {{ site.data.keys.mf_analytics }}（可选）和 {{ site.data.keys.mf_server }} 后，您可以通过执行以下步骤来验证已部署的 pod 的安装和状态：
 
-在 {{site.data.keys.prod_icp }} 管理控制台中， 选择**工作负载 > Helm 发行版**。 单击您的安装的*发行版名称*。
+在 {{ site.data.keys.prod_icp }} 管理控制台中， 选择**工作负载 > Helm 发行版**。 单击您的安装的*发行版名称*。
 
 
-## 访问 {{site.data.keys.prod_adj }} 控制台
+## 访问 {{ site.data.keys.prod_adj }} 控制台
 {: #access-mf-console}
 
 在成功安装后，您可以使用以下方式访问 IBM {{ site.data.keys.prod_adj }} 操作控制台：`<protocol>://<ip_address>:<port>/mfpconsole`。
@@ -222,8 +229,7 @@ weight: 3
 2. 单击 helm chart 安装的*发行版名称*。
 3. 请参阅**注释**部分。
 
->**注：**端口 9600 在 Kubernetes 服务中内部公开，且供
-{{ site.data.keys.prod_adj }} Analytics 实例用作传输端口。
+>**注：**端口 9600 在 Kubernetes 服务中内部公开，且供 {{ site.data.keys.prod_adj }} Analytics 实例用作传输端口。
 
 
 ## 示例应用程序
