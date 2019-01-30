@@ -54,40 +54,37 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
         apt-get install nfs-kernel-server
       ```
 
-    *   Create directories `/var/lib/registry` and `/var/lib/icp/audit`.
+    * Create directories `/var/lib/registry` and `/var/lib/icp/audit`.
             
       ```bash
         mkdir -p /var/lib/registry
         mkdir -p /var/lib/icp/audit
       ```
 
-    *   Change the ownership of the directory as follows:
+    * Change the ownership of the directory as follows:
             
       ```bash
         chown nobody:nogroup /var/lib/registry
         chown nobody:nogroup /var/lib/icp/audit
       ```
 
-    *   Now we will share the NFS directory over the network by adding the below mount entries in the exports file (`/etc/exports`).
-
-       ```bash
-        /var/lib/registry       *(rw,sync,fsid=0,crossmnt,no_subtree_check,no_root_squash)
-        /var/lib/icp/audit      *(rw,sync,fsid=0,crossmnt,no_subtree_check,no_root_squash)
-       ```
+    * Now we will share the NFS directory over the network by adding the below mount entries in the exports file (`/etc/exports`).
+      ```bash
+       /var/lib/registry       *(rw,sync,fsid=0,crossmnt,no_subtree_check,no_root_squash)
+       /var/lib/icp/audit      *(rw,sync,fsid=0,crossmnt,no_subtree_check,no_root_squash)
+      ```
 
         >**Note:** : Instead of `*` in the above command , you can specify the hostname that requires access to NFS mount directories.
 
-    *  Next update the NFS table with the new sharing points by running the following command:
-			
-       ```bash
-        exportfs -a
-       ```
+    * Next update the NFS table with the new sharing points by running the following command:
+      ```bash
+       exportfs -a
+      ```
 
-    *  Finally, start the NFS service as follows:
-    
-	```bash
-         service nfs-kernel-server start
-      	```
+    * Finally, start the NFS service as follows:
+      ```bash
+       service nfs-kernel-server start
+      ```
 
 2. **At the NFS client end** : In our case it is the 2 Master Nodes that act as NFS client, where we have created the shared directories. The below steps has to be carried out on both the master nodes.
 
@@ -109,37 +106,35 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
       ```
 
     *  We are now connected with NFS Share and run the below command :
-
        ```bash
-       	mount -t nfs
-        root@mastericp721:~# mount -t nfs
-        9.204.168.113:/var/lib/registry on /var/lib/lib/registry type nfs (rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=9.204.168.113,mountvers=3,mountport=50736,mountproto=udp,local_lock=none,addr=9.204.168.113)
-        9.204.168.113:/var/lib/icp/audit on /var/lib/icp/audit type nfs (rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=9.204.168.113,mountvers=3,mountport=50736,mountproto=udp,local_lock=none,addr=9.204.168.113)
+       mount -t nfs
+       root@mastericp721:~# mount -t nfs
+       9.204.168.113:/var/lib/registry on /var/lib/lib/registry type nfs (rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=9.204.168.113,mountvers=3,mountport=50736,mountproto=udp,local_lock=none,addr=9.204.168.113)
+       9.204.168.113:/var/lib/icp/audit on /var/lib/icp/audit type nfs (rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=9.204.168.113,mountvers=3,mountport=50736,mountproto=udp,local_lock=none,addr=9.204.168.113)
        ```
 
     * Create a sample file using *touch* command to make sure the file is created on all the shared repositories. 
-            
-       ```bash
-        touch /var/lib/registry/testnfssahre
-       ```
+      ```bash
+       touch /var/lib/registry/testnfssahre
+      ```
     
-    *  **Permanent NFS Mouting** :
+    * **Permanent NFS Mouting** :
     
-        We need to mount the NFS share at client end permanently so that the directories are mounted even after the reboot. So,we need to add the NFS-share in **/etc/fstab** file of client machine as follows:
+      We need to mount the NFS share at client end permanently so that the directories are mounted even after the reboot. So, we need to add the NFS-share in **/etc/fstab** file of client machine as follows:
 
-       ```bash
+      ```bash
         9.aaa.bbb.ccc:/var/lib/registry  /var/lib/registry       nfs     defaults        0       0
         9.aaa.bbb.ccc:/var/lib/icp/audit  /var/lib/icp/audit        nfs     defaults        0       0
-       ```
+      ```
 
-        This sets a permanent mount of the NFS-share. Now you can reboot the machine.
+      This sets a permanent mount of the NFS-share. Now you can reboot the machine.
 
-        Next make the drives active by giving input as:
-            
-       ```bash
-       	mount -a
-       ```
-#### Configure hosts file and config.yaml in boot node
+      Next make the drives active by giving input as:
+      ```bash
+      mount -a
+      ```
+      
+#### Configure hosts file and `config.yaml` in boot node
 										
 1. Changes to hosts file: Below is the sample of the host file entires for our topology.
 			
@@ -157,7 +152,7 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
     9.xxx.180.164
     ```
             
-2. Changes in config.yaml :
+2. Changes in `config.yaml`:
      
   * Under `config.yaml`, set the *ansible_user* as *root*.
             
@@ -203,9 +198,9 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
       image-security-enforcement: disabled 
      ```
 
-Now run the **install** command from the boot node where you install ICP . Please refer ICP [documentation] (https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_containers.html) for ICP setup and make sure you follow all necessary steps.
+Now run the **install** command from the boot node where you install ICP . Please refer ICP [documentation](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_containers.html) for ICP setup and make sure you follow all necessary steps.
 
-For setting up of IBM MobileFoundation on the above setup, please refer to the [documentation](https://mobilefirstplatform.ibmcloud.com/tutorials/fr/foundation/8.0/bluemix/mobilefirst-server-on-icp/) of IBM Mobile Foundation Platform
+For setting up of IBM MobileFoundation on the above setup, please refer to the [documentation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/) of IBM Mobile Foundation Platform
 
 #### Testing the HA
             
