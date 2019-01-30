@@ -1,5 +1,5 @@
 ---
-title: Setting up an High Available (HA) Mobile Foundation environment on IBM Cloud Private (ICP)
+title: Setting up a High Available (HA) Mobile Foundation environment on IBM Cloud Private (ICP)
 date: 2019-01-30
 tags:
 - MobileFirst_Foundation
@@ -9,13 +9,11 @@ tags:
 - Mobile_Foundation
 version:
 - 8.0
-author: 
+author:
  name: Yathendra Prasad
 ---
 
-### Overview
-
-This blog post focuses on High Availability (HA) of Mobile Foundation on IBM Cloud Private, particularly about having Highly Available Master Nodes in the ICP topology. We will discuss about the **HA setup** with 3 Masters and 2 Worker Nodes topology. One of the three master nodes acts like a boot node here. This setup also considers having the proxy on the master nodes itself. 
+This post focuses on High Availability (HA) of Mobile Foundation on IBM Cloud Private, particularly about having Highly Available Master Nodes in the ICP topology. We will discuss about the **HA setup** with 3 Masters and 2 Worker Nodes topology. One of the three master nodes acts like a boot node here. This setup also considers having the proxy on the master nodes itself.
 
 ![HA Topology]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/ha-topology.png)
 
@@ -41,28 +39,28 @@ Error Message**:**set shared storage for /var/lib/registry
    ```
 >
 
-For enabling Highly Available Master nodes on ICP, you must set up shared storage across your master nodes. The storage must be a POSIX-compliant shared file system that is located outside of your IBM Cloud Private cluster. The file system must be accessible by the master nodes. We can configure to have storage provider's like NFS, GlusterFS, vSphere, etc. In this blog post we will use NFS as the file storage provider. 
+For enabling Highly Available Master nodes on ICP, you must set up shared storage across your master nodes. The storage must be a POSIX-compliant shared file system that is located outside of your IBM Cloud Private cluster. The file system must be accessible by the master nodes. We can configure to have storage provider's like NFS, GlusterFS, vSphere, etc. In this blog post we will use NFS as the file storage provider.
 
 #### Setting Up of NFS File Server and mount NFS shared directories
 
 1. **On NFS Server** : Follow the below instructions to install nfs server and configure NFS shared directories on seperate node.
 
     *   Install these packages.
-            
+
       ```bash
         apt-get update
         apt-get install nfs-kernel-server
       ```
 
     * Create directories `/var/lib/registry` and `/var/lib/icp/audit`.
-            
+
       ```bash
         mkdir -p /var/lib/registry
         mkdir -p /var/lib/icp/audit
       ```
 
     * Change the ownership of the directory as follows:
-            
+
       ```bash
         chown nobody:nogroup /var/lib/registry
         chown nobody:nogroup /var/lib/icp/audit
@@ -113,13 +111,13 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
        9.204.168.113:/var/lib/icp/audit on /var/lib/icp/audit type nfs (rw,relatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,mountaddr=9.204.168.113,mountvers=3,mountport=50736,mountproto=udp,local_lock=none,addr=9.204.168.113)
        ```
 
-    * Create a sample file using *touch* command to make sure the file is created on all the shared repositories. 
+    * Create a sample file using *touch* command to make sure the file is created on all the shared repositories.
       ```bash
        touch /var/lib/registry/testnfssahre
       ```
-    
+
     * **Permanent NFS Mouting** :
-    
+
       We need to mount the NFS share at client end permanently so that the directories are mounted even after the reboot. So, we need to add the NFS-share in **/etc/fstab** file of client machine as follows:
 
       ```bash
@@ -133,11 +131,11 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
       ```bash
       mount -a
       ```
-      
+
 #### Configure hosts file and `config.yaml` in boot node
-										
+
 1. Changes to hosts file: Below is the sample of the host file entires for our topology.
-			
+
    ```bash
     [master]
     9.xxx.177.210
@@ -151,43 +149,43 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
     9.xxx.180.159
     9.xxx.180.164
     ```
-            
+
 2. Changes in `config.yaml`:
-     
+
   * Under `config.yaml`, set the *ansible_user* as *root*.
-            
+
     ```bash
      default_admin_user: admin
      default_admin_password: admin
      ansible_user: root
-    ``` 
+    ```
   *  High Availability settings.
-        
+
      ```bash
       vip_manager: etcd
      ```
      High Availability settings for master nodes.
-            
+
      ```bash
       vip_iface: ens7
      cluster_vip: 9.202.181.230
      ```
 
      High Availability settings for Proxy nodes.
-            
+
      ```bash
       proxy_vip_iface: ens7
       proxy_vip: 9.xxx.168.96
      ```
 
      Let us understand what *etcd*,*vip_iface*,*cluster_vip* and *proxy_vip* are.
-            
+
   * `etcd` is vip manager which is responsible for electing one of the active master as leader when one of the master node is down.
-             
+
   * Parameter *vip_iface* is the Network interface Controller (NIC) .
-            
-  * You can run the command `ip a` to know the NIC value . 
-            
+
+  * You can run the command `ip a` to know the NIC value .
+
   * *cluster_vip* and *proxy_vip* are valid IP address present in the subnet.
 
      ![Setup]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/fyre-setup.png)
@@ -195,7 +193,7 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
   *  Disable image-security-enforcement under management_services
 
      ```bash
-      image-security-enforcement: disabled 
+      image-security-enforcement: disabled
      ```
 
 Now run the **install** command from the boot node where you install ICP. Please refer to [IBM Cloud Private documentation](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_containers.html) for ICP setup and make sure you follow all the necessary steps.
@@ -203,7 +201,7 @@ Now run the **install** command from the boot node where you install ICP. Please
 For setting up of IBM Mobile Foundation using the steps above, please refer to the [IBM Mobile Foundation Platform documentation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/).
 
 #### Testing the HA
-            
+
 After the installation is successful, access the ICP console and follow the below procedure to validate the HA scenario
 
 1. See the list of active nodes which includes master, proxy and worker nodes under **platform -> Nodes**.
@@ -219,7 +217,7 @@ After the installation is successful, access the ICP console and follow the belo
 ![Master Down]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/leader-master-node-inactive.png)
 
 3. Now *vip_manager(etcd)* is responsible for electing one of the active masters as the leader and assign the *cluster_vip address*.
-4. Even though the active master, which was acting as a leader earlier is down, we can see that the Mobile Foundation Operations admin console is accessible due to the highly availability in our environment setup. 
+4. Even though the active master, which was acting as a leader earlier is down, we can see that the Mobile Foundation Operations admin console is accessible due to the highly availability in our environment setup.
 
 ![MFP Console]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/mfp-console.png)
 
