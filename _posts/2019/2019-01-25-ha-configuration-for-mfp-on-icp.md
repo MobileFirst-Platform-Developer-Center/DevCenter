@@ -1,6 +1,6 @@
 ---
 title: Setting up an High Available (HA) Mobile Foundation environment on IBM Cloud Private (ICP)
-date: 2019-01-22
+date: 2019-01-30
 tags:
 - MobileFirst_Foundation
 - IBM_Cloud_Private
