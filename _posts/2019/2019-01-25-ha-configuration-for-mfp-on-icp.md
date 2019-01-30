@@ -15,11 +15,11 @@ author:
 
 ### Overview
 
-This blog focuses on High Availability in IBM Cloud Private, especially about having Highly Available Master Nodes in the ICP topology. We will discuss about the **HA setup** with 3 Masters and 2 Worker Nodes topology. One of the three master nodes acts like a boot node here. This setup also considers having the proxy on the master nodes itself. 
+This blog post focuses on High Availability (HA) in IBM Cloud Private, especially about having Highly Available Master Nodes in the ICP topology. We will discuss about the **HA setup** with 3 Masters and 2 Worker Nodes topology. One of the three master nodes act like a boot node here. This setup also considers having the proxy on the master nodes itself. 
 
 ![HA Topology]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/ha-topology.png)
 
-Following instructions and settings are to be incoporated before setting up the ICP environment.
+Sections below discusses the instructions and settings, which are to be incoporated before setting up the ICP environment.
 
 ### Configuration
 
@@ -30,9 +30,10 @@ On two master nodes (which doesn't act like boot), create the following director
 
 You must set the file permissions to **0755** for the above directories. In addition to that **create a hidden file** with name ***.file-check***. This hidden file creation is mandatory for HA configuration on ICP, if not set correctly the installation fails with below error message.
 
-`
+```
 Error Message**:**set shared storage for /var/lib/registry
-`
+```
+
 >**Note** : You can use below command to create hidden file under /var/lib/registry
         
    ```bash
@@ -90,23 +91,21 @@ For enabling Highly Available Master nodes on ICP , You must set up shared stora
 2. **On NFS Client End** : In our case it is the 2 Master Nodes which acts NFS client where we have created the shared directories. The below steps has to be carried out on both the master nodes.
 
    	```bash
-        	sudo apt-get update
-        	sudo apt-get install nfs-common
+         sudo apt-get update
+         sudo apt-get install nfs-common
    	```
 
-    *   Now create the NFS directory mount point
+    * Now create the NFS directory mount point
+      ```bash
+       sudo mkdir -p /var/lib/registry
+       sudo mkdir -p /var/lib/icp/audit
+      ```
 
-       ```bash
-        sudo mkdir -p /var/lib/registry
-        sudo mkdir -p /var/lib/icp/audit
-       ```
-
-    *  Next we will mount the NFS shared content in the client machine as shown below
-
-       ```bash
-        mount -t nfs <NFS_ServerIP>:/var/lib/registry /var/lib/registry/
-        mount -t nfs <NFS_ServerIP>:/var/lib/icp/audit /var/lib/icp/audit/
-       ```
+    * Next we will mount the NFS shared content in the client machine as shown below
+      ```bash
+       mount -t nfs <NFS_ServerIP>:/var/lib/registry /var/lib/registry/
+       mount -t nfs <NFS_ServerIP>:/var/lib/icp/audit /var/lib/icp/audit/
+      ```
 
     *  We are now connected with NFS Share and run the below command 
 
@@ -157,9 +156,9 @@ For enabling Highly Available Master nodes on ICP , You must set up shared stora
     9.xxx.180.164
     ```
             
-2.Changes in config.yaml :
+2. Changes in config.yaml :
      
-  * Under `config.yaml`, set the *ansible_user* as 'root'.
+  * Under `config.yaml`, set the *ansible_user* as *root*.
             
     ```bash
      default_admin_user: admin
@@ -185,15 +184,15 @@ For enabling Highly Available Master nodes on ICP , You must set up shared stora
       proxy_vip: 9.xxx.168.96
      ```
 
-     We will understand what is etcd,vip_iface,cluster_vip and proxy_vip.
+     We will understand what is *etcd*,*vip_iface*,*cluster_vip* and *proxy_vip*.
             
   * `etcd` is vip manager which is responsible for electing one of the active master as leader when one of the master node is down.
              
   * Parameter *vip_iface* is the Network interface Controller (NIC) .
             
-  * You can run the command 'ip a' to know the NIC value . 
+  * You can run the command `ip a` to know the NIC value . 
             
-  * 'cluster_vip' and 'proxy_vip' are valid IP address present in the subnet.
+  * *cluster_vip* and *proxy_vip* are valid IP address present in the subnet.
 
      ![Setup]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/fyre-setup.png)
 
@@ -215,7 +214,7 @@ After the installation is successful, access the ICP console and follow the belo
 
 ![List of Active Nodes]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/list-of-active-nodes.png)
 
-2. Bring down active master which is currently acting as leader and assigned with cluster_vip address. The leader can be identified by running 'ip a' on each master node.
+2. Bring down active master which is currently acting as leader and assigned with cluster_vip address. The leader can be identified by running `ip a` on each master node.
 
 ![Run ip a command]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/cluster-vip-address-to-master.png)
 
