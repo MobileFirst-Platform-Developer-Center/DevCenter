@@ -187,8 +187,6 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
 
     * *cluster_vip* and *proxy_vip* are valid IP address present in the subnet.
 
-       ![Setup]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/fyre-setup.png)
-
     *  Disable image-security-enforcement under management_services
 
        ```bash
@@ -207,7 +205,6 @@ After the installation is successful, access the ICP console and follow the belo
     ![List of Active Nodes]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/list-of-active-nodes.png)
 2. Bring down active master which is currently acting as the leader and is assigned with cluster_vip address. The leader can be identified by running `ip a` on each master node.
     ![Run ip a command]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/cluster-vip-address-to-master.png)
-    ![Fyre Master Down]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/fyre-machine-setup-master-down.png)
     ![Master Down]({{site.baseurl}}/assets/blog/2019-01-25-ha-configuration-for-mfp-on-icp/leader-master-node-inactive.png)
 3. Now *vip_manager(etcd)* is responsible for electing one of the active masters as the leader and assign the *cluster_vip address*.
 4. Even though the active master, which was acting as a leader earlier is down, we can see that the Mobile Foundation Operations admin console is accessible due to the highly availability in our environment setup.
