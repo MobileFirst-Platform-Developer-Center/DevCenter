@@ -54,8 +54,10 @@ Model update in the application can be checked by invoking the following API.
 ### iOS
 
 ```
- WLClient.sharedInstance().downloadModelUpdate(completionHandler: CompletionHandler, hideProgressBar: Boolean);
+ WLClient.sharedInstance().downloadModelUpdate(completionHandler: CompletionHandler, showProgressBar: Boolean);
 ```
+
+>**Note:** This API shouldn’t be invoked simultaneously with `ObtainAccessToken` or `WLResourceRequest` API.
 
 Typically, application developers should call this API during the startup of the application.
 
