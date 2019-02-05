@@ -32,12 +32,7 @@ A new iFix *8.0.0.0-MFPF-IF201902040810*  is released for Mobile Foundation 8.0,
             <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
 
             <h3>APARs Fixed</h3>
-            <b>PH07792</b>  PERFORMANCE OPTIMIZATION TO AVOID MULTIPLE DATABASE CONNECTIONS TO MFP RUNTIMES DATABASE.<br/>
-            <b>PH07459</b>  DIRECT UPDATE NOT TRIGGERED AFTER UPGRADING THE APP FROM APP STORE/GOOGLE PLAY STORE.<br/>
-            <b>PH07433</b>  THE AUTHORIZATION HEADER IN THE \AUTHORIZATION ENDPOINT REQUEST IS SENT EMPTY.<br/>
-            <b>PH07033</b>  AFTER FACTORY RESET AND RELOADING THE APP WLAUTHORIZATIONMANAGER.OBTAINACCESSTOKEN PUT NOT SUPPORTED ERROR.<br/>
-            <b>PH06633</b>  CORDOVA BUILD ANDROID FAILS WITH COMPILESDKVERSION ERROR.<br/>
-
+            <b>PH07909</b>  PUSH NOTIFICATION CONNECTIONS TO FCM NOT RELEASED.<br/>
 
             <h2>How to upgrade</h2>
             <b>Server</b>
