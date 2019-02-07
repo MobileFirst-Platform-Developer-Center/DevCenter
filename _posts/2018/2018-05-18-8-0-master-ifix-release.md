@@ -193,7 +193,7 @@ IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<
             <h2>Changes in this iFix</h2>
             <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
 
-            <blockquote>This iFix adds support for Model Update. Mobile Foundation applications can now embed Machine Learning models, which can be updated over-the-air with newer versions. [Learn more](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/model-update/).</blockquote>
+            <blockquote>This iFix adds support for Model Update. Mobile Foundation applications can now embed Machine Learning models, which can be updated over-the-air with newer versions. <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/model-update/">Learn more</a>.</blockquote>
 
             <h3>APARs Fixed</h3>
             <b>PH07792</b>  PERFORMANCE OPTIMIZATION TO AVOID MULTIPLE DATABASE CONNECTIONS TO MFP RUNTIMES DATABASE.<br/>
