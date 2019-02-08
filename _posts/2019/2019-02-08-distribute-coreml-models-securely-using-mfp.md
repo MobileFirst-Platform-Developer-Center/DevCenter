@@ -31,5 +31,5 @@ The ML capability is provided by a Watson Visual recognition model which is avai
 
 You can easily add ML capabilities to your apps and ensure security and management is provided by Mobile Foundation server.
 
->Try out this feature
+>**Try out this feature**<br/>
 This feature is available as part of the [iFix IF201902040810](https://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/8-0-master-ifix-release/).  Login to the admin console to upload a model for distribution to client devices.
