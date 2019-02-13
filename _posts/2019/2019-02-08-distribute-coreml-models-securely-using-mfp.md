@@ -29,6 +29,13 @@ Let’s look at an example use case from an insurance company, which uses a mobi
 
 The ML capability is provided by a Watson Visual recognition model which is available on the device. This model can identify damages like flat tire, broken windshield, scratches on the car body and dents.  The app uses the model to assess the damage and sends a report to the server.  Whenever there is a new version of the model the administrator uploads the same to the server and it gets published to the client devices.
 
+<br/>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/5R8OCpWnQeI?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+</div>
+
 You can easily add ML capabilities to your apps and ensure security and management is provided by Mobile Foundation server.
 
 >**Try out this feature**<br/>
