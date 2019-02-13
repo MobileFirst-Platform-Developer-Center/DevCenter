@@ -35,6 +35,7 @@ The ML capability is provided by a Watson Visual recognition model which is avai
         <iframe width="560" height="315" src="https://www.youtube.com/embed/5R8OCpWnQeI?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
 </div>
+<br/>
 
 You can easily add ML capabilities to your apps and ensure security and management is provided by Mobile Foundation server.
 
