@@ -14,20 +14,31 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 
 #### Jump to
 {: #jump-to }
-* [Setting-up Notifications](#setting-up-notifications)
-    * [Firebase Cloud Messaging](#firebase-cloud-messaging)
-    * [Apple Push Notifications Service](#apple-push-notifications-service)
-    * [Windows Push Notifications Service](#windows-push-notifications-service)
-    * [SMS Notification Service](#sms-notification-service)
-    * [Scope mapping](#scope-mapping)
-    * [Authenticated Notifications](#authenticated-notifications)
-* [Defining Tags](#defining-tags)
-* [Sending Notifications](#sending-notifications)    
-    * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
-    * [REST APIs](#rest-apis)
-    * [Customizing Notifications](#customizing-notifications)
-* [Proxy Support](#proxy-support)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+- [Setting up Notifications](#setting-up-notifications)
+  - [Firebase Cloud Messaging](#firebase-cloud-messaging)
+    - [Notes](#notes)
+  - [Apple Push Notifications Service](#apple-push-notifications-service)
+    - [Notes](#notes-1)
+  - [Windows Push Notifications Service](#windows-push-notifications-service)
+  - [SMS Notification Service](#sms-notification-service)
+  - [Scope mapping](#scope-mapping)
+  - [Authenticated Notifications](#authenticated-notifications)
+- [Defining Tags](#defining-tags)
+- [Sending Notifications](#sending-notifications)
+  - [{{ site.data.keys.mf_console }}](#sitedatakeysmfconsole)
+    - [Tag notifications](#tag-notifications)
+    - [Broadcast notifications](#broadcast-notifications)
+  - [REST APIs](#rest-apis)
+    - [Notification payload](#notification-payload)
+    - [Sending the notification](#sending-the-notification)
+  - [Customizing Notifications](#customizing-notifications)
+  - [Android](#android)
+  - [iOS](#ios)
+- [HTTP/2 Support for APNs Push Notifications](#http2-support-for-apns-push-notifications)
+  - [Enabling HTTP/2](#enabling-http2)
+  - [Proxy Support for HTTP/2](#proxy-support-for-http2)
+- [Proxy Support](#proxy-support)
+- [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Setting up Notifications
 {: #setting-up-notifications }
@@ -404,6 +415,32 @@ In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tag
 * Notification sound, custom payload, action key title, notification type and badge number.
 
 ![customizing push notifications](customizing-push-notifications.png)
+
+## HTTP/2 Support for APNs Push Notifications
+{: #http2-support-for-apns-push-notifications}
+
+Apple Push Notification service (APNs) supports a new API based on HTTP/2 network protocol. Support for HTTP/2 provides many  benefits, including those listed below:
+
+* Message length increased from 2 KB to 4 KB, which enables to add extra content to notifications.
+* Eliminates the need for multiple connections between client and server, this improves the throughput.
+* Universal Push Notification Client SSL Certificate support.
+
+>Push Notifications in MobileFirst now supports the HTTP/2 based APNs Push Notifications along with the legacy TCP Socket based notifications.
+
+### Enabling HTTP/2
+{: #enabling-http2}
+
+HTTP/2 based notifications can be enabled using a JNDI Property.
+```xml
+<jndiEntry jndiName="imfpush/mfp.push.apns.http2.enabled" value= "true"/>
+```
+
+>**Note:** If the above JNDI property is added, legacy TCP Socket based notifications will not be used and only the HTTP/2 based notifications will be enabled.
+
+### Proxy Support for HTTP/2
+{: #proxy-support-for-http2}
+
+HTTP/2 based notifications can be sent via a HTTP Proxy. To enable routing of the notifications via a proxy, see [here](#proxy-support).
 
 ## Proxy Support
 {: #proxy-support }
