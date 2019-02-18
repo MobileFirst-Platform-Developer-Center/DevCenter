@@ -207,7 +207,7 @@ El periodo de vencimiento de la señal para la señal de renovación es mayor qu
 
                                     <br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#refresh-token-expiration" data-target="#collapse-refresh-token-expiration" aria-expanded="false" aria-controls="collapse-refresh-token-expiration"><b>Cerrar sección</b></a>
-            </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -229,7 +229,8 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 Cache-Control: no-store
 Pragma: no-cache
-{"token_type": "Bearer",
+{
+            "token_type": "Bearer",
             "expires_in": 3600,
             "access_token": "yI6ICJodHRwOi8vc2VydmVyLmV4YW1",
             "scope": "scopeElement1 scopeElement2",
@@ -247,7 +248,7 @@ Pragma: no-cache
 </div>
 
 
->**Nota:** Las señales de renovación tienen una larga duración, en comparación con las señales de acceso. Por lo tanto, la característica de señal de renovación se debe utilizar con cuidado. Las aplicaciones donde la autenticación de usuario periódica no es necesaria son candidatos ideales para utilizar la característica de señal de renovación.  
+>**Nota:** Las señales de renovación tienen una larga duración, en comparación con las señales de acceso. Por lo tanto, la característica de señal de renovación se debe utilizar con cuidado. Las aplicaciones donde la autenticación de usuario periódica no es necesaria son candidatos ideales para utilizar la característica de señal de renovación. 
 >
 > MobileFirst da soporte a la característica de señal de renovación en iOS a partir de CD Update 3. 
 

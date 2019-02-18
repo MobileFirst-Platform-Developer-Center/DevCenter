@@ -183,7 +183,6 @@ Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, de
 
 > **Importante:** La plantilla de patrón de {{ site.data.keys.product }} (WAS ND) no soporta licencias de señales. Debe utilizar licencias perpetuas para desplegar patrones basados en la plantilla de patrón {{ site.data.keys.product }} (WAS ND). Todas las otras plantillas de patrón dan soporte a las licencias de señales.
 
-
 Su IBM Rational License Key Server debe ser externo a su PureApplication System. {{ site.data.keys.system_pattern }} no soporta el servicio compartido de PureApplication System para IBM Rational License Key Server.
 
 Además, debe saber la siguiente información sobre su Rational License Key Server para añadir la información del servidor de clave de licencia a sus atributos de patrón:
@@ -212,7 +211,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 1. Cree un patrón con la plantilla predefinida:
     * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. Se abre la página de Patrones de sistema virtual.
     * En la página **Patrones de sistema virtual**, pulse **Crear nuevo** y, a continuación, en la ventana emergente, seleccione **MobileFirst Platform (Nodo único Liberty)** en la lista de plantillas predefinidas. Si el nombre solo es visible parcialmente debido a su longitud, puede confirmar si la plantilla seleccionada es la correcta viendo su descripción en el separador **Más información**.
-    * En el campo **Nombre**, proporcione un nombre para el patrón. 
+    * En el campo **Nombre**, proporcione un nombre para el patrón.
     * En el campo **Versión**, especifique en número de versión del patrón.
     * Pulse **Iniciar construcción**.
 2. Obligatorio para AIX : En IBM PureApplication System que se ejecuta en Power, el nodo DB de MobileFirst Platform debe utilizar el complemento de componente específico de AIX "Default AIX add disk" para reemplazar el componente "Default add disk" en la plantilla para soportar el sistema de archivo jfs2:
@@ -229,7 +228,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -250,7 +248,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 5. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
-
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -259,7 +256,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 6. Opcional: Añada más aplicaciones o artefactos de adaptador para el despliegue:
     * En la barra de herramientas **Activos**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre a **{{ site.data.keys.product_adj }} App\_X** o **{{ site.data.keys.product_adj }} Adatper\_X** (donde la **X** es un número único para la diferenciación).
     * Pase el cursor por encima de la nueva aplicación o del componente de adaptador y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar su secuencia en el nodo. Asegúrese de que está colocado después del componente MFP Runtime Deployment pero antes del componente MFP Server Application Adapter Deployment.
-    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
+    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
     * Repita el paso 7 para añadir más aplicaciones y adaptadores para el despliegue.
 
 7. Opcional: Configure el despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de despliegue más adelante durante la fase de configuración del despliegue de patrón en el paso 9. Si ha especificado la credencial de usuario administrativo predeterminada en el paso 3, ahora puede especificar el usuario desplegador, que debe alinearse con la credencial de usuario administrativo:
@@ -268,7 +265,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
     * En los campos **deployer\_user** y **deployer\_password**, especifique el nombre de usuario y la contraseña.
 
 8. Configure e inicie el despliegue de patrón:
-    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. 
+    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**.
     * En la página **Patrones de sistema virtual**, utilice el campo de **Búsqueda** para encontrar el patrón que ha creado y, a continuación, seleccione el patrón.
     * En la barra de herramientas sobre el panel que muestra la información detallada sobre el patrón, pulse el botón Desplegar.
     * En la ventana Desplegar patrón, en el panel Configurar, seleccione el perfil de entorno correcto en la lista de **Perfil de entorno** y proporcione otros parámetros de entorno de IBM PureApplication System. Para obtener la información correcta, consulte a su administrador de IBM PureApplication System.
@@ -277,7 +274,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
         Proporcione la siguiente información en los campos suministrados:
 
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
         
         **admin\_user**  
         No es visible si se ha configurado en el paso 3. Cree una cuenta de administrador de {{ site.data.keys.mf_server }} predeterminada. Valor predeterminado: demo.
@@ -292,10 +288,12 @@ Para obtener más información sobre las opciones de composición y configuraci�
         No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el nombre completo de host o dirección IP de su dirección IP de Rational License Key Server. De lo contrario, deje este campo en blanco.
         
         **LMGRD\_PORT**   
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon gestor de licencias predeterminado es 27000.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon gestor de licencias predeterminado es 27000.
 
         **IBMRATL\_PORT**  
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon proveedor predeterminado es normalmente el 27001.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon proveedor predeterminado es normalmente el 27001.
 
         **runtime\_contextRoot**  
         No es visible si se ha configurado en el paso 5. Nombre de raíz de contexto para el tiempo de ejecución de {{ site.data.keys.mf_server }}. El nombre debe empezar con "/".
@@ -339,7 +337,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 1. Cree un patrón con la plantilla predefinida:
     * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. Se abre la página de **Patrones de sistema virtual**.
     * En la página **Patrones de sistema virtual**, pulse **Crear nuevo** y, a continuación, en la ventana emergente, seleccione **MobileFirst Platform (varios nodos Liberty)** en la lista de plantillas predefinidas. Si el nombre solo es visible parcialmente debido a su longitud, puede confirmar si la plantilla seleccionada es la correcta viendo su descripción en el separador **Más información**.
-    * En el campo **Nombre**, proporcione un nombre para el patrón. 
+    * En el campo **Nombre**, proporcione un nombre para el patrón.
     * En el campo **Versión**, especifique en número de versión del patrón.
     * Pulse **Iniciar construcción**.
 2. Obligatorio para AIX : En IBM PureApplication System que se ejecuta en Power, el nodo DB de MobileFirst Platform debe utilizar el complemento de componente específico de AIX "Default AIX add disk" para reemplazar el componente "Default add disk" en la plantilla para soportar el sistema de archivo **jfs2**:
@@ -356,7 +354,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -377,7 +374,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 5. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
-
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -386,7 +382,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 6. Opcional: Añada más aplicaciones o artefactos de adaptador para el despliegue:
     * En la barra de herramientas **Activos**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre a **{{ site.data.keys.product_adj }} App\_X** o **{{ site.data.keys.product_adj }} Adatper\_X** (donde la **X** es un número único para la diferenciación).
     * Pase el cursor por encima de la nueva aplicación o del componente de adaptador y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar su secuencia en el nodo. Asegúrese de que está colocado después del componente MFP Runtime Deployment pero antes del componente MFP Server Application Adapter Deployment.
-    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
+    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
     * Repita el paso 7 para añadir más aplicaciones y adaptadores para el despliegue.
 
 7. Opcional: Configure el despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de despliegue más adelante durante la fase de configuración del despliegue de patrón en el paso 9. Si ha especificado la credencial de usuario administrativo predeterminada en el paso 3, ahora puede especificar el usuario desplegador, que debe alinearse con la credencial de usuario administrativo:
@@ -399,7 +395,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
     * En el campo **Número de instancias**, especifique el número de nodos de servidor a instanciar durante el despliegue de patrón. El valor predeterminado es 2 en la plantilla predeterminada. Puesto que el escalado dinámico no esta soportado en este release, no especifique valores en el resto de los campos de atributo.
 
 9. Configure e inicie el despliegue de patrón:
-    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. 
+    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**.
     * En la página **Patrones de sistema virtual**, utilice el campo de **Búsqueda** para encontrar el patrón que ha creado y, a continuación, seleccione el patrón.
     * En la barra de herramientas sobre el panel que muestra la información detallada sobre el patrón, pulse el botón Desplegar.
     * En la ventana Desplegar patrón, en el panel Configurar, seleccione el perfil de entorno correcto en la lista de **Perfil de entorno** y proporcione otros parámetros de entorno de IBM PureApplication System. Para obtener la información correcta, consulte a su administrador de IBM PureApplication System.
@@ -408,7 +404,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
         Proporcione la siguiente información en los campos suministrados:
 
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
         
         **admin\_user**  
         No es visible si se ha configurado en el paso 3. Cree una cuenta de administrador de {{ site.data.keys.mf_server }} predeterminada. Valor predeterminado: demo.
@@ -423,10 +418,12 @@ Para obtener más información sobre las opciones de composición y configuraci�
         No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el nombre completo de host o dirección IP de su dirección IP de Rational License Key Server. De lo contrario, deje este campo en blanco.
         
         **LMGRD\_PORT**   
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon gestor de licencias predeterminado es 27000.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon gestor de licencias predeterminado es 27000.
 
         **IBMRATL\_PORT**  
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon proveedor predeterminado es normalmente el 27001.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon proveedor predeterminado es normalmente el 27001.
 
         **runtime\_contextRoot**  
         No es visible si se ha configurado en el paso 5. Nombre de raíz de contexto para el tiempo de ejecución de {{ site.data.keys.mf_server }}. El nombre debe empezar con "/".
@@ -470,7 +467,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 1. Cree un patrón con la plantilla predefinida:
     * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. Se abre la página de **Patrones de sistema virtual**.
     * En la página **Patrones de sistema virtual**, pulse **Crear nuevo** y, a continuación, en la ventana emergente, seleccione **MobileFirst Platform (Nodo único WAS)** en la lista de plantillas predefinidas. Si el nombre solo es visible parcialmente debido a su longitud, puede confirmar si la plantilla seleccionada es la correcta viendo su descripción en el separador **Más información**.
-    * En el campo **Nombre**, proporcione un nombre para el patrón. 
+    * En el campo **Nombre**, proporcione un nombre para el patrón.
     * En el campo **Versión**, especifique en número de versión del patrón.
     * Pulse **Iniciar construcción**.
 2. Obligatorio para AIX : En IBM PureApplication System que se ejecuta en Power, el nodo DB de MobileFirst Platform debe utilizar el complemento de componente específico de AIX "Default AIX add disk" para reemplazar el componente "Default add disk" en la plantilla para soportar el sistema de archivo **jfs2**:
@@ -487,7 +484,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -508,7 +504,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 5. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
-
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -517,7 +512,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 6. Opcional: Añada más aplicaciones o artefactos de adaptador para el despliegue:
     * En la barra de herramientas **Activos**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre a **{{ site.data.keys.product_adj }} App\_X** o **{{ site.data.keys.product_adj }} Adatper\_X** (donde la **X** es un número único para la diferenciación).
     * Pase el cursor por encima de la nueva aplicación o del componente de adaptador y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar su secuencia en el nodo. Asegúrese de que está colocado después del componente MFP Runtime Deployment pero antes del componente MFP Server Application Adapter Deployment.
-    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
+    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
     * Repita el paso 7 para añadir más aplicaciones y adaptadores para el despliegue.
 
 7. Opcional: Configure el despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de despliegue más adelante durante la fase de configuración del despliegue de patrón en el paso 9. Si ha especificado la credencial de usuario administrativo predeterminada en el paso 3, ahora puede especificar el usuario desplegador, que debe alinearse con la credencial de usuario administrativo:
@@ -526,16 +521,15 @@ Para obtener más información sobre las opciones de composición y configuraci�
     * En los campos **deployer\_user** y **deployer\_password**, especifique el nombre de usuario y la contraseña.
 
 8. Configurar la política de escalado base:
-    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. 
+    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**.
     * En la página **Patrones de sistema virtual**, utilice el campo de Búsqueda para encontrar el patrón que ha creado y, a continuación, seleccione el patrón.
     * En la barra de herramientas sobre el panel que muestra la información detallada sobre el patrón, pulse el botón **Desplegar**.
-    * En la ventana **Desplegar patrón**, en el panel **Configurar**, seleccione el **perfil de entorno** correcto y otros parámetros de entorno de IBM PureApplication System consultando a su administrador de IBM PureApplication System. 
+    * En la ventana **Desplegar patrón**, en el panel **Configurar**, seleccione el **perfil de entorno** correcto y otros parámetros de entorno de IBM PureApplication System consultando a su administrador de IBM PureApplication System.
     * En la columna del medio, pulse **Atributos de patrón** para definir atributos como nombres de usuario y contraseñas.
 
         Proporcione la siguiente información en los campos suministrados:
         
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
 
         **Nombre de usuario administrativo de WebSphere**  
         ID de usuario administrativo para el inicio de sesión en WebSphere Administration Console. Valor predeterminado: virtuser.
@@ -556,10 +550,12 @@ Para obtener más información sobre las opciones de composición y configuraci�
         No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el nombre completo de host o dirección IP de su dirección IP de Rational License Key Server. De lo contrario, deje este campo en blanco.
         
         **LMGRD\_PORT**   
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon gestor de licencias predeterminado es 27000.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon gestor de licencias predeterminado es 27000.
 
         **IBMRATL\_PORT**  
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon proveedor predeterminado es normalmente el 27001.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon proveedor predeterminado es normalmente el 27001.
 
         **runtime\_contextRoot**  
         No es visible si se ha configurado en el paso 5. Nombre de raíz de contexto para el tiempo de ejecución de {{ site.data.keys.mf_server }}. El nombre debe empezar con "/".
@@ -610,7 +606,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 1. Cree un patrón con la plantilla predefinida:
     * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. Se abre la página de Patrones de sistema virtual.
     * En la página **Patrones de sistema virtual**, pulse **Crear nuevo** y, a continuación, en la ventana emergente, seleccione **MobileFirst Platform (granja de servidores de WAS)** en la lista de plantillas predefinidas. Si el nombre solo es visible parcialmente debido a su longitud, puede confirmar si la plantilla seleccionada es la correcta viendo su descripción en el separador **Más información**.
-    * En el campo **Nombre**, proporcione un nombre para el patrón. 
+    * En el campo **Nombre**, proporcione un nombre para el patrón.
     * En el campo **Versión**, especifique en número de versión del patrón.
     * Pulse **Iniciar construcción**.
 2. Obligatorio para AIX : En IBM PureApplication System que se ejecuta en Power, el nodo DB de MobileFirst Platform debe utilizar el complemento de componente específico de AIX "Default AIX add disk" para reemplazar el componente "Default add disk" en la plantilla para soportar el sistema de archivo jfs2:
@@ -627,7 +623,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -648,7 +643,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 5. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
-
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -657,7 +651,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 6. Opcional: Añada más aplicaciones o artefactos de adaptador para el despliegue:
     * En la barra de herramientas **Activos**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre a **{{ site.data.keys.product_adj }} App\_X** o **{{ site.data.keys.product_adj }} Adatper\_X** (donde la **X** es un número único para la diferenciación).
     * Pase el cursor por encima de la nueva aplicación o del componente de adaptador y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar su secuencia en el nodo. Asegúrese de que está colocado después del componente MFP Runtime Deployment pero antes del componente MFP Server Application Adapter Deployment.
-    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
+    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
     * Repita el paso 7 para añadir más aplicaciones y adaptadores para el despliegue.
 
 7. Opcional: Configure el despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de despliegue más adelante durante la fase de configuración de despliegue de patrón en el paso 10. Si ha especificado la credencial de usuario administrativo predeterminada en el paso 3, ahora puede especificar el usuario desplegador, que debe alinearse con la credencial de usuario administrativo:
@@ -670,7 +664,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
     * En el campo **Número de instancias**, especifique el número de nodos de servidor a instanciar durante el despliegue de patrón. El valor predeterminado es 2 en la plantilla predeterminada. Puesto que el escalado dinámico no esta soportado en este release, no especifique valores en el resto de los campos de atributo.
 
 9. Configure e inicie el despliegue de patrón:
-    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. 
+    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**.
     * En la página **Patrones de sistema virtual**, utilice el campo de **Búsqueda** para encontrar el patrón que ha creado y, a continuación, seleccione el patrón.
     * En la barra de herramientas sobre el panel que muestra la información detallada sobre el patrón, pulse el botón Desplegar.
     * En la ventana Desplegar patrón, en el panel Configurar, seleccione el perfil de entorno correcto en la lista de **Perfil de entorno** y proporcione otros parámetros de entorno de IBM PureApplication System. Para obtener la información correcta, consulte a su administrador de IBM PureApplication System.
@@ -679,7 +673,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
         Proporcione la siguiente información en los campos suministrados:
 
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
         
         **runtime_contextRoot_list**  
         Nombre de raíz de contexto del tiempo de ejecución de {{ site.data.keys.mf_server }} en caso de que existan varios tiempos de ejecución. Utilice punto y coma, ";" para separar cada raíz de contexto de tiempo de ejecución; por ejemplo, **HelloMobileFirst;HelloWorld**.
@@ -705,10 +698,12 @@ Para obtener más información sobre las opciones de composición y configuraci�
         No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el nombre completo de host o dirección IP de su dirección IP de Rational License Key Server. De lo contrario, deje este campo en blanco.
         
         **LMGRD\_PORT**   
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon gestor de licencias predeterminado es 27000.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon gestor de licencias predeterminado es 27000.
 
         **IBMRATL\_PORT**  
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon proveedor predeterminado es normalmente el 27001.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon proveedor predeterminado es normalmente el 27001.
 
         **runtime\_contextRoot**  
         No es visible si se ha configurado en el paso 5. Nombre de raíz de contexto para el tiempo de ejecución de {{ site.data.keys.mf_server }}. El nombre debe empezar con "/".
@@ -745,7 +740,7 @@ Este procedimiento implica subir ciertos artefactos a IBM PureApplication System
 
 Si está ejecutando el supervisor del sistema para el servicio compartido de WebSphere Application Server, el entorno de ejecución de {{ site.data.keys.product }} podría no iniciarse correctamente al desplegar el patrón. Si es posible, detenga los servicios compartidos antes de continuar con este procedimiento. Si no puede detener el servicio compartido, deberá reiniciar el tiempo de ejecución de {{ site.data.keys.product }} desde la consola administrativa de WebSphere Application Server para arreglar el problema. Para obtener más información, consulte [Límite de sincronización de tiempo de ejecución de {{ site.data.keys.product }} con WebSphere Application Server Network Deployment](#mobilefirst-foundation-runtime-synchronization-limitation-with-websphere-application-server-network-deployment). 
 
-**Restricción de licencias de señales importante:** Esta plantilla de patrón no soporta las licencias de señales. Debe utilizar licencias perpetuas para desplegar patrones basados en la plantilla de patrón {{ site.data.keys.product }} (WAS ND). 
+**Restricción de licencias de señales importante:** Esta plantilla de patrón no soporta las licencias de señales. Debe utilizar licencias perpetuas para desplegar patrones basados en la plantilla de patrón {{ site.data.keys.product }} (WAS ND).
 
 Algunos parámetros de los paquetes script en la plantilla se han configurado con los valores recomendados y están cubiertos en este tema. Para fines de buen ajuste, consulte más información sobre todos los parámetros de los paquetes script en [Paquetes script para {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
 
@@ -754,7 +749,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 1. Cree un patrón con la plantilla predefinida:
     * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. Se abre la página de Patrones de sistema virtual.
     * En la página **Patrones de sistema virtual**, pulse **Crear nuevo** y, a continuación, en la ventana emergente, seleccione **MobileFirst Platform (WAS ND)** en la lista de plantillas predefinidas. Si el nombre solo es visible parcialmente debido a su longitud, puede confirmar si la plantilla seleccionada es la correcta viendo su descripción en el separador **Más información**.
-    * En el campo **Nombre**, proporcione un nombre para el patrón. 
+    * En el campo **Nombre**, proporcione un nombre para el patrón.
     * En el campo **Versión**, especifique en número de versión del patrón.
     * Pulse **Iniciar construcción**.
 2. Obligatorio para AIX : En IBM PureApplication System que se ejecuta en Power, el nodo DB de MobileFirst Platform debe utilizar el complemento de componente específico de AIX "Default AIX add disk" para reemplazar el componente "Default add disk" en la plantilla para soportar el sistema de archivo jfs2:
@@ -771,7 +766,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure la administración de {{ site.data.keys.mf_server }}. Puede saltarse este paso si desea especificar la credencial de usuario con privilegio de administración de {{ site.data.keys.mf_server }} más tarde durante la fase de configuración del despliegue del patrón en el paso 9. Para especificarlo ahora, complete estos pasos:
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
     * En el nodo MobileFirst Platform Server, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -792,19 +786,19 @@ Para obtener más información sobre las opciones de composición y configuraci�
 5. Opcional: Ajuste el número de nodos de servidor de aplicaciones en sus clústeres de WebSphere Application Server Network Deployment para el componente de administración de {{ site.data.keys.product_adj }} y el entorno de ejecución {{ site.data.keys.product }}.
 
     De forma predeterminada, el componente de administración y el entorno de ejecución tienen, cada uno, dos nodos de servidor de aplicaciones en sus respectivos clústeres.
-    * En el nodo DmgrNode, pulse el componente **MFP Server Administration**. Las propiedades del componente se muestran al lado del lienzo. 
+    * En el nodo DmgrNode, pulse el componente **MFP Server Administration**. Las propiedades del componente se muestran al lado del lienzo.
     * En el campo **NUMBER\_OF\_CLUSTERMEMBERS**, especifique el número de nodos de servidor de aplicaciones que desea en su clúster de WebSphere Application Server Network Deployment para el componente de administración de {{ site.data.keys.product_adj }}.
-    * En el nodo DmgrNode, pulse el componente **MFP Server Runtime Deployment**. Las propiedades del componente se muestran al lado del lienzo. 
+    * En el nodo DmgrNode, pulse el componente **MFP Server Runtime Deployment**. Las propiedades del componente se muestran al lado del lienzo.
     * En el campo **NUMBER\_OF\_CLUSTERMEMBERS**, especifique el número de nodos de servidor de aplicaciones que desea en su clúster de WebSphere Application Server Network Deployment para el entorno de ejecución de {{ site.data.keys.product }}.
-    * En el nodo CustomNode, pulse el componente **Política de escalado base**. 
-    * Ajuste el valor **Número de instancias** para contar el número total de nodos de servidor de aplicaciones que ha introducido en el campo **NUMBER\_OF\_CLUSTERMEMBERS** para cada componente. El valor mínimo para el **Número de instancias** es el número total de nodos de servidor para el componente de administración de {{ site.data.keys.product_adj }} y los entornos de ejecución de {{ site.data.keys.product }}.
+    * En el nodo CustomNode, pulse el componente **Política de escalado base**.
+    * Ajuste el valor **Número de instancias** para contar el número total de nodos de servidor de aplicaciones que ha introducido en el campo **NUMBER\_OF\_CLUSTERMEMBERS** para cada componente.
+    El valor mínimo para el **Número de instancias** es el número total de nodos de servidor para el componente de administración de {{ site.data.keys.product_adj }} y los entornos de ejecución de {{ site.data.keys.product }}.
 
     Por ejemplo, el valor predeterminado para el **Número de instancias** es 4 para la topología por defecto con dos nodos para el componente de administración y dos nodos para el entorno de ejecución. Si cambia los valores **NUMBER\_OF\_CLUSTERMEMBERS** del componente de administración a 3 y del entorno de ejecución a 5, el valor mínimo del Número de instancias es 8.
 
 6. Subir una aplicación y artefactos de adaptador:
 
     > **Importante:** Al especificar la vía de acceso de destino de las aplicaciones y adaptadores, asegúrese de que todas las aplicaciones y adaptadores están ubicados en el mismo directorio. Por ejemplo, si una vía de acceso de destino es **/opt/tmp/deploy/HelloWorld-common.json**, las demás vías de destino deben ser `/opt/tmp/deploy/*`.
-
     * En el nodo de MobileFirst Platform Server, pulse el componente **MFP Server Application** o **MFP Server Adapter**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.json**.
@@ -813,7 +807,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 7. Opcional: Añada más aplicaciones o artefactos de adaptador para el despliegue:
     * En la barra de herramientas **Componentes**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre a **{{ site.data.keys.product_adj }} App\_X** o **{{ site.data.keys.product_adj }} Adatper\_X** (donde la **X** es un número único para la diferenciación).
     * Pase el cursor por encima de la nueva aplicación o del componente de adaptador y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar su secuencia en el nodo. Asegúrese de que está colocado después del componente MFP Runtime Deployment pero antes del componente MFP Server Application Adapter Deployment.
-    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
+    * Pulse en la nueva aplicación o en el componente de adaptador. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba la aplicación o el artefacto de adaptador y especifique su vía de acceso de destino utilizando los pasos del paso 6.
     * En el campo **Archivo adicional**, pulse el botón **Examinar** para localizar y subir la aplicación o artefacto de adaptador.
     * En el campo **Target path**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/deploy/HelloWorld-common.wlapp**.
 
@@ -825,16 +819,15 @@ Para obtener más información sobre las opciones de composición y configuraci�
     * En los campos **deployer\_user** y **deployer\_password**, especifique el nombre de usuario y la contraseña.
 
 9. Configurar la política de escalado base:
-    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. 
+    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**.
     * En la página **Patrones de sistema virtual**, utilice el campo de Búsqueda para encontrar el patrón que ha creado y, a continuación, seleccione el patrón.
     * En la barra de herramientas sobre el panel que muestra la información detallada sobre el patrón, pulse el botón **Desplegar**.
-    * En la ventana **Desplegar patrón**, en el panel **Configurar**, seleccione el **perfil de entorno** correcto y otros parámetros de entorno de IBM PureApplication System consultando a su administrador de IBM PureApplication System. 
+    * En la ventana **Desplegar patrón**, en el panel **Configurar**, seleccione el **perfil de entorno** correcto y otros parámetros de entorno de IBM PureApplication System consultando a su administrador de IBM PureApplication System.
     * En la columna del medio, pulse **Atributos de patrón** para definir atributos como nombres de usuario y contraseñas.
 
         Proporcione la siguiente información en los campos suministrados:
         
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
 
         **Nombre de usuario administrativo de WebSphere**  
         ID de usuario administrativo para el inicio de sesión en WebSphere Administration Console. Valor predeterminado: virtuser.
@@ -855,10 +848,12 @@ Para obtener más información sobre las opciones de composición y configuraci�
         No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el nombre completo de host o dirección IP de su dirección IP de Rational License Key Server. De lo contrario, deje este campo en blanco.
         
         **LMGRD\_PORT**   
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon gestor de licencias predeterminado es 27000.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon gestor de licencias predeterminado es 27000.
 
         **IBMRATL\_PORT**  
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon proveedor predeterminado es normalmente el 27001.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon proveedor predeterminado es normalmente el 27001.
 
         **runtime\_contextRoot**  
         No es visible si se ha configurado en el paso 5. Nombre de raíz de contexto para el tiempo de ejecución de {{ site.data.keys.mf_server }}. El nombre debe empezar con "/".
@@ -901,19 +896,19 @@ Para obtener más información sobre las opciones de composición y configuraci�
 
 ### Límite de sincronización de tiempo de ejecución de {{ site.data.keys.product }} con WebSphere Application Server Network Deployment
 {: #mobilefirst-foundation-runtime-synchronization-limitation-with-websphere-application-server-network-deployment }
-Si despliega un patrón PureApplication basado en la plantilla de {{ site.data.keys.product }} (WAS ND) y ejecuta el servicio compartido de WebSphere Application Server, el entorno de tiempo de ejecución de {{ site.data.keys.product }} podría no iniciarse correctamente al desplegar el patrón. 
+Si despliega un patrón PureApplication basado en la plantilla de {{ site.data.keys.product }} (WAS ND) y ejecuta el servicio compartido de WebSphere Application Server, el entorno de tiempo de ejecución de {{ site.data.keys.product }} podría no iniciarse correctamente al desplegar el patrón.
 
 Un patrón de sistema virtual de PureApplication basado en la plantilla {{ site.data.keys.product }} (WAS ND) despliega el servicio de administración de {{ site.data.keys.product_adj }} y el tiempo de ejecución de {{ site.data.keys.product }} en diferentes clústeres de WebSphere Application Server Network Deployment. Para que el tiempo de ejecución de {{ site.data.keys.product }} funcione correctamente, debe iniciarse después del servicio de administración de {{ site.data.keys.product_adj }}. Si se inicia primero el tiempo de ejecución de {{ site.data.keys.product }}, el servicio de tiempo de ejecución falla al detectar el servicio de administración de {{ site.data.keys.product_adj }}, lo que causa errores en el servicio de tiempo de ejecución.
 
 Cuando el despliegue de un patrón de PureApplication está casi completo, el supervisor del sistema del servicio compartido de WebSphere Application Server reinicia todos los nodos de WebSphere Application Server desplegados desde el patrón. Los nodos se reinician de forma aleatoria, por lo que los nodos que contienen el tiempo de ejecución de {{ site.data.keys.product }} pueden reiniciarse antes que los nodos que contienen los servicios de administración de {{ site.data.keys.product_adj }}.
 
-Debe detener el supervisor del sistema del servicio compartido de WebSphere Application Server antes de desplegar el patrón. Si no puede detener el servicio compartido, deberá reiniciar el tiempo de ejecución de {{ site.data.keys.product }} desde la consola administrativa de WebSphere Application Server para arreglar el problema. 
+Debe detener el supervisor del sistema del servicio compartido de WebSphere Application Server antes de desplegar el patrón. Si no puede detener el servicio compartido, deberá reiniciar el tiempo de ejecución de {{ site.data.keys.product }} desde la consola administrativa de WebSphere Application Server para arreglar el problema.
 
 ### Reiniciar el tiempo de ejecución de {{ site.data.keys.product }} desde la consola de administración de WebSphere Application Server
 {: #restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console }
 Si su {{ site.data.keys.mf_console }} está vacía después de desplegar un patrón de PureApplication System  basado en la plantilla de {{ site.data.keys.product }} (WAS ND), debe reiniciar el tiempo de ejecución de IBM {{ site.data.keys.product }} desde la consola de administración de WebSphere Application Server.
 
-Este procedimiento solo se aplica al desplegar patrones de sistema virtual de PureApplication basados en la plantilla de {{ site.data.keys.product }} (WAS ND) cuando está ejecutando el supervisor del sistema para el servicio compartido de WebSphere Application Server. Si no utiliza este servicio compartido o está desplegando un patrón basado en una plantilla diferente, este procedimiento no es aplicable. 
+Este procedimiento solo se aplica al desplegar patrones de sistema virtual de PureApplication basados en la plantilla de {{ site.data.keys.product }} (WAS ND) cuando está ejecutando el supervisor del sistema para el servicio compartido de WebSphere Application Server. Si no utiliza este servicio compartido o está desplegando un patrón basado en una plantilla diferente, este procedimiento no es aplicable.
 
 Debe desplegar su patrón antes de realizar este procedimiento.
 
@@ -923,7 +918,6 @@ Para trabajar correctamente, los nodos de servicio de administración de {{ site
     * En el panel de control de PureApplication System, pulse Patrones y, a continuación, en Instancias de patrón, pulse Servicios compartidos.
 
         > **Importante:** Los servicios compartidos aparecen dos veces en el menú **Patrones**, asegúrese de pulsar en **Servicios compartidos** dentro de **Instancias de patrón** y no dentro de Patrones.
-
     * En la página de **Instancias de servicio compartido**, busque un nombre que empiece por **Supervisor del sistema para WebSphere Application Server**. Pulse ese nombre para expandir su entrada
     
         Si no ve una entrada de **Supervisor del sistema para WebSphere Application Server**, el supervisor del sistema para el servicio compartido de WebSphere Application Server no está desplegado y no es necesario continuar con este procedimiento.
@@ -937,7 +931,7 @@ Para trabajar correctamente, los nodos de servicio de administración de {{ site
     Para obtener instrucciones sobre cómo acceder a {{ site.data.keys.mf_console }} desde el panel de control de PureApplication System, consulte el paso 10 en [Despliegue de {{ site.data.keys.mf_server }} en clústeres de servidores de WebSphere Application Server Network Deployment](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers).
     
 3. Si la consola aparece vacía o no muestra los tiempos de ejecución de {{ site.data.keys.product }}, reinicie el nodo de tiempo de ejecución de {{ site.data.keys.product }} desde la consola de administración de WebSphere Application Server:
-    * En el panel de control de **PureApplication System**, pulse **Patrones → Instancias de sistema virtual**. 
+    * En el panel de control de **PureApplication System**, pulse **Patrones → Instancias de sistema virtual**.
     * En la página **Instancias de sistema virtual**, busque su instancia de patrón y confirme que está en ejecución. Si no está en ejecución, inicie la instancia de patrón.
     * Pulse el nombre de su instancia de patrón y en el panel de detalles, busque la sección **Perspectiva de máquina virtual**.
     * En la sección **Perspectiva de máquina virtual**, busque la máquina virtual cuyo nombre empiece con **DmgrNode** y anote su dirección IP pública.
@@ -976,7 +970,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 1. Cree un patrón con la plantilla predefinida:
     * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. Se abre la página de Patrones de sistema virtual.
     * En la página **Patrones de sistema virtual**, pulse **Crear nuevo** y, a continuación, en la ventana emergente, seleccione **MobileFirst Platform (Nodo único Liberty de AppCenter)** en la lista de plantillas predefinidas. Si el nombre solo es visible parcialmente debido a su longitud, puede confirmar si la plantilla seleccionada es la correcta viendo su descripción en el separador **Más información**.
-    * En el campo **Nombre**, proporcione un nombre para el patrón. 
+    * En el campo **Nombre**, proporcione un nombre para el patrón.
     * En el campo **Versión**, especifique en número de versión del patrón.
     * Pulse **Iniciar construcción**.
 2. Obligatorio para AIX : En IBM PureApplication System que se ejecuta en Power, el nodo DB de MobileFirst Platform debe utilizar el complemento de componente específico de AIX "Default AIX add disk" para reemplazar el componente "Default add disk" en la plantilla para soportar el sistema de archivo jfs2:
@@ -993,7 +987,6 @@ Para obtener más información sobre las opciones de composición y configuraci�
 3. Opcional: Configure **MFP Server Application Center** en el nodo **MFP AppCenter Server**.
     
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
     * En el nodo **MFP AppCenter Server**, pulse el componente **MFP Server Application Center**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -1004,7 +997,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
     Durante el despliegue de patrón se crea una cuenta de administración predeterminada para {{ site.data.keys.mf_server }}.
 
 4. Configure e inicie el despliegue de patrón:
-    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. 
+    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**.
     * En la página **Patrones de sistema virtual**, utilice el campo de **Búsqueda** para encontrar el patrón que ha creado y, a continuación, seleccione el patrón.
     * En la barra de herramientas sobre el panel que muestra la información detallada sobre el patrón, pulse el botón **Desplegar**.
     * En la ventana **Desplegar patrón**, en el panel **Configurar**, seleccione el perfil de entorno correcto en la lista de **Perfil de entorno** y proporcione otros parámetros de entorno de IBM PureApplication System. Para obtener la información correcta, consulte a su administrador de IBM PureApplication System.
@@ -1013,46 +1006,47 @@ Para obtener más información sobre las opciones de composición y configuraci�
     Proporcione la siguiente información en los campos suministrados:
 
     > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
     
     **admin\_user**  
-        No es visible si se ha configurado en el paso 3. Cree una cuenta de administrador de {{ site.data.keys.mf_server }} predeterminada. Valor predeterminado: demo.
+    No es visible si se ha configurado en el paso 3. Cree una cuenta de administrador de {{ site.data.keys.mf_server }} predeterminada. Valor predeterminado: demo.
     
     **admin\_password**  
-        No es visible si se ha configurado en el paso 3. Contraseña de cuenta de administrador predeterminada. Valor predeterminado: demo.
+    No es visible si se ha configurado en el paso 3. Contraseña de cuenta de administrador predeterminada. Valor predeterminado: demo.
     
     **ACTIVATE\_TOKEN\_LICENSE**  
-        No es visible si se ha configurado en el paso 3. Seleccione este campo para licenciar su patrón con licencias de señales. Deje este campo vacío si utiliza licencias perpetuas.
+    No es visible si se ha configurado en el paso 3. Seleccione este campo para licenciar su patrón con licencias de señales. Deje este campo vacío si utiliza licencias perpetuas.
     
     **LICENSE\_SERVER\_HOSTNAME**  
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el nombre completo de host o dirección IP de su dirección IP de Rational License Key Server. De lo contrario, deje este campo en blanco.
+    No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el nombre completo de host o dirección IP de su dirección IP de Rational License Key Server. De lo contrario, deje este campo en blanco.
     
     **LMGRD\_PORT**   
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon gestor de licencias predeterminado es 27000.
+    No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco.
+    El puerto daemon gestor de licencias predeterminado es 27000.
 
     **IBMRATL\_PORT**  
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon proveedor predeterminado es normalmente el 27001.
+    No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco.
+    El puerto daemon proveedor predeterminado es normalmente el 27001.
 
     **runtime\_contextRoot**  
-        No es visible si se ha configurado en el paso 5. Nombre de raíz de contexto para el tiempo de ejecución de {{ site.data.keys.mf_server }}. El nombre debe empezar con "/".
+    No es visible si se ha configurado en el paso 5. Nombre de raíz de contexto para el tiempo de ejecución de {{ site.data.keys.mf_server }}. El nombre debe empezar con "/".
     
     **deployer\_user**  
-        No es visible si se ha configurado en el paso 8. Nombre de usuario para la cuenta con privilegio de despliegue. Si no se ha configurado un servidor LDAP externo, debe introducir el mismo valor que se especificó al crear el usuario administrativo predeterminado para el servicio de administración, porque en este caso, el único usuario autorizado para el despliegue de aplicaciones y adaptadores es el usuario administrativo predeterminado.
+    No es visible si se ha configurado en el paso 8. Nombre de usuario para la cuenta con privilegio de despliegue. Si no se ha configurado un servidor LDAP externo, debe introducir el mismo valor que se especificó al crear el usuario administrativo predeterminado para el servicio de administración, porque en este caso, el único usuario autorizado para el despliegue de aplicaciones y adaptadores es el usuario administrativo predeterminado.
     
     **deployer\_password**  
-        No es visible si se ha configurado en el paso 8. Contraseña de usuario para el usuario con privilegio de despliegue.
+    No es visible si se ha configurado en el paso 8. Contraseña de usuario para el usuario con privilegio de despliegue.
     
     **MFP Vms Password(raíz)**  
-        Contraseña raíz para los nodos de base de datos de {{ site.data.keys.mf_server }} y {{ site.data.keys.product }}. Valor predeterminado: passw0rd.
+    Contraseña raíz para los nodos de base de datos de {{ site.data.keys.mf_server }} y {{ site.data.keys.product }}. Valor predeterminado: passw0rd.
     
     **MFP DB Password(Propietario de instancia)**  
-        Contraseña de propietario de instancia para el nodo MobileFirst Platform DB. Valor predeterminado: **passw0rd**.    
+    Contraseña de propietario de instancia para el nodo MobileFirst Platform DB. Valor predeterminado: **passw0rd**.    
 * Pulse **Despliegue rápido** para iniciar el despliegue de su patrón. Tras unos pocos segundos, se muestra un mensaje que indica que se ha iniciado el patrón. Puede pulsar el URL proporcionado en el mensaje para realizar el seguimiento del estado de despliegue de su patrón o ir a **Patrones → Instancias de sistema virtual** para abrir la página de Instancias de sistema virtual y buscar su patrón.
 
 5. Para acceder a {{ site.data.keys.mf_console }} realice los pasos siguientes:
-    * Pulse **Patrones → Instancias de sistema virtual** para abrir la página de **Instancias de sistema virtual** y buscar su patrón. 
+    * Pulse **Patrones → Instancias de sistema virtual** para abrir la página de **Instancias de sistema virtual** y buscar su patrón.
     * Seleccione su nombre de patrón y expanda la opción Perspectiva de máquina virtual en el panel que muestra detalles de la instancia seleccionada.
-    * Busque la máquina virtual de {{ site.data.keys.mf_server }} con un nombre similar a **MFP\_AppCenter\_Server.**, anote la dirección IP pública. 
+    * Busque la máquina virtual de {{ site.data.keys.mf_server }} con un nombre similar a **MFP\_AppCenter\_Server.**, anote la dirección IP pública.
     * En el explorador, abra {{ site.data.keys.mf_console }} componiendo su URL con uno de los formatos siguientes:
         * `http://{IP pública de la máquina virtual de MFP Server}:9080/appcenterconsole`
         * `https://{IP pública de la máquina virtual de MFP Server}:9443/appcenterconsole`
@@ -1073,7 +1067,7 @@ Para obtener más información sobre las opciones de composición y configuraci�
 1. Cree un patrón con la plantilla predefinida:
     * En el panel de control de **IBM PureApplication System**, pulse **Patrones → Patrones de sistema virtual**. Se abre la página de Patrones de sistema virtual.
     * En la página **Patrones de sistema virtual**, pulse **Crear nuevo** y, a continuación, en la ventana emergente, seleccione **MobileFirst Platform (Nodo único Liberty de AppCenter)** en la lista de plantillas predefinidas. Si el nombre solo es visible parcialmente debido a su longitud, puede confirmar si la plantilla seleccionada es la correcta viendo su descripción en el separador Más información.
-    * En el campo **Nombre**, proporcione un nombre para el patrón. 
+    * En el campo **Nombre**, proporcione un nombre para el patrón.
     * En el campo **Versión**, especifique en número de versión del patrón.
     * Pulse **Iniciar construcción**.
 2. Obligatorio para AIX : En IBM PureApplication System que se ejecuta en Power, el nodo DB de MobileFirst Platform debe utilizar el complemento de componente específico de AIX "Default AIX add disk" para reemplazar el componente "Default add disk" en la plantilla para soportar el sistema de archivo **jfs2**:
@@ -1092,14 +1086,13 @@ Para obtener más información sobre las opciones de composición y configuraci�
         Se alinea con el atributo **Mount point for instance owner** en el componente de servidor de base de datos en el nodo MobileFirst Platform DB. Valor de ejemplo: /dbinst.
 
         **VOLUME\_GROUP**  
-Valor de ejemplo: **group1**. Contacte con su administrador de IBM PureApplication System para obtener el valor correcto.
+        Valor de ejemplo: **group1**. Contacte con su administrador de IBM PureApplication System para obtener el valor correcto.
     * En el nodo **MFP AppCenter DB**, seleccione el componente **Default add disk** y, a continuación, pulse el icono de papelera para suprimirlo.
     * Guarde el patrón.
 
 3. Opcional: Configure **MFP Server Application Center** en el nodo **MFP AppCenter Server**.
 
     > **Nota:** Si desea configurar la seguridad de administración con un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
     * En el nodo **MFP AppCenter Server**, pulse el componente **MFP Server Administration**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * Junto a los campos **admin_user** y **admin_password**, pulse el botón Suprimir para borrar los valores de parámetros a nivel de patrón.
     * En los campos **admin_user** y **admin\_password**, especifique el nombre de usuario de administración y la contraseña.
@@ -1113,7 +1106,7 @@ Valor de ejemplo: **group1**. Contacte con su administrador de IBM PureApplicati
     Durante el despliegue de patrón se crea una cuenta de administración predeterminada para {{ site.data.keys.mf_server }}.
 
 4. Configure e inicie el despliegue de patrón:
-    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**. 
+    * En el panel de control de IBM PureApplication System, pulse **Patrones → Patrones de sistema virtual**.
     * En la página **Patrones de sistema virtual**, utilice el campo de **Búsqueda** para encontrar el patrón que ha creado y, a continuación, seleccione el patrón.
     * En la barra de herramientas sobre el panel que muestra la información detallada sobre el patrón, pulse el botón Desplegar.
     * En la ventana Desplegar patrón, en el panel Configurar, seleccione el perfil de entorno correcto en la lista de **Perfil de entorno** y proporcione otros parámetros de entorno de IBM PureApplication System. Para obtener la información correcta, consulte a su administrador de IBM PureApplication System.
@@ -1122,7 +1115,6 @@ Valor de ejemplo: **group1**. Contacte con su administrador de IBM PureApplicati
         Proporcione la siguiente información en los campos suministrados:
 
         > **Nota:** Realice los cambios necesarios en los valores predeterminados de los parámetros a nivel de patrón incluso si hay un servidor LDAP externo configurado. Si configura seguridad de administración utilizando un servidor LDAP, debe proporcionar información LDAP adicional. Para obtener más información, consulte [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-
         
         **admin\_user**  
         No es visible si se ha configurado en el paso 3. Cree una cuenta de administrador de {{ site.data.keys.mf_server }} predeterminada. Valor predeterminado: demo.
@@ -1137,10 +1129,12 @@ Valor de ejemplo: **group1**. Contacte con su administrador de IBM PureApplicati
         No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el nombre completo de host o dirección IP de su dirección IP de Rational License Key Server. De lo contrario, deje este campo en blanco.
         
         **LMGRD\_PORT**   
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon gestor de licencias predeterminado es 27000.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon gestor de licencias (lmrgd) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon gestor de licencias predeterminado es 27000.
 
         **IBMRATL\_PORT**  
-        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco. El puerto daemon proveedor predeterminado es normalmente el 27001.
+        No es visible si se ha configurado en el paso 3. Si utiliza licencias de señales para licenciar {{ site.data.keys.product }}, introduzca el número de puerto que escucha el daemon proveedor (ibmratl) para conexiones. De lo contrario, deje este campo en blanco.
+        El puerto daemon proveedor predeterminado es normalmente el 27001.
 
         **runtime\_contextRoot**  
         No es visible si se ha configurado en el paso 5. Nombre de raíz de contexto para el tiempo de ejecución de {{ site.data.keys.mf_server }}. El nombre debe empezar con "/".
@@ -1159,9 +1153,9 @@ Valor de ejemplo: **group1**. Contacte con su administrador de IBM PureApplicati
     * Pulse **Despliegue rápido** para iniciar el despliegue de su patrón. Tras unos pocos segundos, se muestra un mensaje que indica que se ha iniciado el patrón. Puede pulsar el URL proporcionado en el mensaje para realizar el seguimiento del estado de despliegue de su patrón o ir a **Patrones → Instancias de sistema virtual** para abrir la página de Instancias de sistema virtual y buscar su patrón.
 
 5. Para acceder a {{ site.data.keys.mf_console }} realice los pasos siguientes:
-    * Pulse **Patrones → Instancias de sistema virtual** para abrir la página de Instancias de sistema virtual y buscar su patrón. 
+    * Pulse **Patrones → Instancias de sistema virtual** para abrir la página de Instancias de sistema virtual y buscar su patrón.
     * Seleccione su nombre de patrón y expanda la opción Perspectiva de máquina virtual en el panel que muestra detalles de la instancia seleccionada.
-    * Busque la máquina virtual de {{ site.data.keys.mf_server }} con un nombre similar a **MFP\_AppCenter\_Server.**, anote la dirección IP pública. 
+    * Busque la máquina virtual de {{ site.data.keys.mf_server }} con un nombre similar a **MFP\_AppCenter\_Server.**, anote la dirección IP pública.
     * En el explorador, abra {{ site.data.keys.mf_console }} componiendo su URL con uno de los formatos siguientes:
         * `http://{IP pública de la máquina virtual de MFP Server}:9080/appcenterconsole`
         * `https://{IP pública de la máquina virtual de MFP Server}:9443/appcenterconsole`
@@ -1200,7 +1194,7 @@ Si el tiempo de ejecución a desplegar en el patrón está configurado para util
         Se alinea con el atributo **Mount point for instance owner** en el **componente de servidor de base de datos** en el nodo **MobileFirst Platform DB**. Valor de ejemplo: `/dbinst`.
         
         **VOLUME\_GROUP**  
-        Valor de ejemplo: `group1`.Contacte con su administrador de IBM PureApplication System para obtener el valor correcto.
+        Valor de ejemplo: `group1`. Contacte con su administrador de IBM PureApplication System para obtener el valor correcto.
     * En el nodo MobileFirst Platform DB, seleccione el componente Default add disk y, a continuación, pulse el icono de papelera para suprimirlo.
     * Guarde el patrón.
 
@@ -1268,7 +1262,7 @@ Si el tiempo de ejecución a desplegar en el patrón está configurado para util
     --- **Everyone**  
         Todos los usuarios.  
         
-    Valor predeterminado: None.Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    Valor predeterminado: None. Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
     
     **mfpdeployer**  
     Rol de desplegador para {{ site.data.keys.mf_server }}. Uno de los siguientes valores:
@@ -1279,7 +1273,7 @@ Si el tiempo de ejecución a desplegar en el patrón está configurado para util
     --- **Everyone**  
         Todos los usuarios.
     
-    Valor predeterminado: None.Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    Valor predeterminado: None. Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
     
     **mfpmonitor**  
     Rol de supervisor para {{ site.data.keys.mf_server }}. Uno de los siguientes valores:    
@@ -1290,7 +1284,7 @@ Si el tiempo de ejecución a desplegar en el patrón está configurado para util
     --- **Everyone**  
         Todos los usuarios.
     
-    Valor predeterminado: None.Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    Valor predeterminado: None. Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
     
     **mfpoperator**  
     Rol de operador para {{ site.data.keys.mf_server }}. Uno de los siguientes valores:
@@ -1301,12 +1295,12 @@ Si el tiempo de ejecución a desplegar en el patrón está configurado para util
     --- **Everyone**  
         Todos los usuarios.
 
-    Valor predeterminado: None.Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    Valor predeterminado: None. Para obtener más información sobre los roles de seguridad, consulte [Configuración de la autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 4. Opcional: Configure la conexión SSL LDAP. Este paso solo es necesario si ha establecido **REQUIRE_SSL** en true en el paso anterior para utilizar conexiones seguras en el servidor LDAP:
     * En la barra de herramientas **Activos**, expanda **Componentes de software** y, a continuación arrastre y suelte un componente de **Archivo adicional** en el lienzo del nodo MobileFirst Platform Server. Cambie el nombre al componente "MobileFirst LDAP Cert", por ejemplo.
     * Pase el cursor por encima del nuevo componente y, a continuación, pulse los botones **Mover hacia arriba** y **Mover hacia abajo** para ajustar la posición del componente en el nodo. Asegúrese de que se encuentra entre el componente **MFP Server Prerequisite** y el componente **MFP Server Administration**.
-    * Pulse el componente **MobileFirst LDAP Cert**. Las propiedades del componente seleccionado se muestran al lado del lienzo.Suba el artefacto de certificación LDAP en el campo **Archivo adicional** pulsando el botón **Explorar** para localizarlo
+    * Pulse el componente **MobileFirst LDAP Cert**. Las propiedades del componente seleccionado se muestran al lado del lienzo. Suba el artefacto de certificación LDAP en el campo **Archivo adicional** pulsando el botón **Explorar** para localizarlo
     * En el campo **Vía de acceso de destino**, especifique la vía de acceso completa para almacenar el artefacto, incluyendo su nombre de archivo. Por ejemplo, **/opt/tmp/tdscert.der**.
     * En el nodo MobileFirst Platform Server (o en el nodo DmgrNode cuando utiliza la plantilla {{ site.data.keys.product }} (WebSphere Application Server Network Deployment)), seleccione el componente MFP Server Administration y, a continuación, pulse el botón **Añadir referencia** junto el campo **CERT\_FILE\_PATH**. En la ventana emergente, pulse el separador **Parámetro a nivel de componente**. En la lista de componentes, seleccione **MobileFirst LDAP Cert**. En la lista de atributos de **Salida**, seleccione **target\_path**. Pulse el botón **Añadir** para actualizar el campo **Valor de salida** y, a continuación, pulse **Aceptar**.
 
@@ -1366,7 +1360,6 @@ Este procedimiento implica la configuración de los parámetros de base de datos
         Número de puerto de base de datos externa.
         
         > **Nota:** Si está utilizando la plantilla de patrón de {{ site.data.keys.product }} (WAS ND), también necesita configurar el atributo **Open firewall ports for WAS** en el número de puerto de base de datos externa.
-
     * En el nodo MobileFirst Platform Server (o en el nodo DmgrNode cuando utiliza la plantilla {{ site.data.keys.product }} (WAS ND)), seleccione el componente **MFP Server Runtime Deployment**. Las propiedades del componente seleccionado se muestran al lado del lienzo.
     * En **USE\_EXTERNAL\_DATABASE** configure los siguientes parámetros:
 
@@ -1391,7 +1384,6 @@ Si intenta utilizar un repositorio LDAP para proteger la consola de analíticas,
 
 > **Importante:** Cuando la configuración de repositorio LDAP está habilitada en el componente Analíticas, no se crea de forma automática un usuario de administración predeterminado para {{ site.data.keys.mf_analytics }}. En su lugar, debe especificar los valores del nombre de usuario de administración y la contraseña almacenados en el repositorio LDAP. Estos valores son necesarios para proteger la consola de analíticas.
 
-
 1. Compilar un patrón con la topología que necesite. Para obtener más información, consulte los siguientes temas:
     * [Despliegue de {{ site.data.keys.mf_server }} en un servidor de perfil de WebSphere Application Server Liberty de nodo único](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
     * [Despliegue de {{ site.data.keys.mf_server }} en un servidor de perfil de WebSphere Application Server Liberty de varios nodos](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
@@ -1412,11 +1404,10 @@ Si intenta utilizar un repositorio LDAP para proteger la consola de analíticas,
 
         Se crea un nodo nuevo con el nombre "OS Node". Cambie el nombre a "{{ site.data.keys.mf_analytics }}".
     * Realice los siguientes cambios de configuración dependiendo del tipo de servidor de aplicaciones en el que desee desplegar las analíticas:
-        * Si está desplegando {{ site.data.keys.mf_analytics }} en un perfil de Liberty de WebSphere Application Server Liberty, pulse **Servidor de perfil de Liberty** en el nodo {{ site.data.keys.mf_analytics }}. Las propiedades del componente seleccionado se muestran al lado del lienzo.En el campo **Ubicación de los datos de configuración**, introduzca la vía de acceso **/opt/IBM/WebSphere/Liberty** y especifique el nombre de usuario administrativo y la contraseña. Utilice los valores predeterminados para los demás parámetros.
-        * Si está desplegando {{ site.data.keys.mf_analytics }} en un perfil completo de WebSphere Application Server, pulse **Servidor autónomo** en el nodo {{ site.data.keys.mf_analytics }}. Las propiedades del componente seleccionado se muestran al lado del lienzo.En el campo **Ubicación de los datos de configuración**, introduzca la vía de acceso **/opt/IBM/WebSphere/AppServer/Profiles**, cambie el nombre del perfil por **AppSrv01** y especifique el nombre de usuario administrativo y la contraseña. Utilice los valores predeterminados para los demás parámetros.
+        * Si está desplegando {{ site.data.keys.mf_analytics }} en un perfil de Liberty de WebSphere Application Server Liberty, pulse **Servidor de perfil de Liberty** en el nodo {{ site.data.keys.mf_analytics }}. Las propiedades del componente seleccionado se muestran al lado del lienzo. En el campo **Ubicación de los datos de configuración**, introduzca la vía de acceso **/opt/IBM/WebSphere/Liberty** y especifique el nombre de usuario administrativo y la contraseña. Utilice los valores predeterminados para los demás parámetros.
+        * Si está desplegando {{ site.data.keys.mf_analytics }} en un perfil completo de WebSphere Application Server, pulse **Servidor autónomo** en el nodo {{ site.data.keys.mf_analytics }}. Las propiedades del componente seleccionado se muestran al lado del lienzo. En el campo **Ubicación de los datos de configuración**, introduzca la vía de acceso **/opt/IBM/WebSphere/AppServer/Profiles**, cambie el nombre del perfil por **AppSrv01** y especifique el nombre de usuario administrativo y la contraseña. Utilice los valores predeterminados para los demás parámetros.
     
         > **Importante:** El usuario administrativo de WebSphere Application Server se creará en el repositorio de usuarios de WebSphere Application Server. Si va a configurar LDAP para el servidor de analíticas, evite conflictos de nombre de usuario con el usuario administrativo de WebSphere Application Server. Por ejemplo, si el servidor LDAP va a introducir "user1" a través de su configuración, no establezca "user1" como nombre de usuario administrativo de WebSphere Application Server.
-
     * En la lista de componentes, expanda **Scripts** y, a continuación, arrastre y suelte un componente **MFP Server Prerequisite** y un componente MFP WAS SDK Level en el nodo {{ site.data.keys.mf_analytics }} en el lienzo.
     * En la lista de componentes, expanda **Scripts** y, a continuación, arrastre y suelte un componente **MFP Analytics** y un componente en el nodo {{ site.data.keys.mf_analytics }} en el lienzo. Asegúrese de que el componente MFP Analytics está situado después del componente de servidor de perfil de Liberty (o el componente de servidor autónomo).
     * Proporcione la siguiente información de {{ site.data.keys.mf_analytics }} en los campos suministrados:
@@ -1424,19 +1415,18 @@ Si intenta utilizar un repositorio LDAP para proteger la consola de analíticas,
         Los parámetros LDAP son exactamente los mismos que los parámetros de MFP Server Administration. Para obtener más información, consulte el paso "Configurar MFP Server Administration" en 3:
         
         > **Importante:** Para la configuración de conexión SSL LDAP en {{ site.data.keys.mf_analytics }}, asegúrese que en el paso 4b [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository), el componente CERT LDAP de {{ site.data.keys.product_adj }} arrastrado en el nodo {{ site.data.keys.mf_analytics }} debe moverse entre el servidor de perfil de Liberty (o servidor autónomo) y el paquete de script MFP Analytics.
-
         
    #### WAS_ROOT
     * Si se está instalando {{ site.data.keys.mf_analytics }} en un perfil de Liberty de WebSphere Application Server, especifique el directorio de instalación del perfil de Liberty para Analíticas:
         * Pulse el botón **Añadir referencia** junto al campo **WAS_ROOT** y en la ventana emergente, pulse el separador **Parámetro a nivel de componente**.
         * En el campo **Componente**, seleccione **Servidor de perfil de Liberty** (o **Servidor de perfil de Liberty\_1** si {{ site.data.keys.mf_server }} también está desplegado en el perfil de Liberty de WebSphere Application Server).
-        * En el campo **Atributo de salida**, seleccione **install_directory**.Pulse el botón **Añadir** para actualizar el campo Valor de salida y, a continuación, pulse **Aceptar**.
+        * En el campo **Atributo de salida**, seleccione **install_directory**. Pulse el botón **Añadir** para actualizar el campo Valor de salida y, a continuación, pulse **Aceptar**.
     * Si se está instalando {{ site.data.keys.mf_analytics }} en un perfil completo de WebSphere Application Server, especifique el directorio de instalación del perfil completo de WebSphere para Analíticas:
         * Pulse el botón **Añadir referencia** junto al campo WAS_ROOT y en la ventana emergente, pulse el separador **Parámetro a nivel de componente**.
         * En el campo **Componente**, seleccione **Servidor autónomo** (o **Servidor autónomo\_1** si {{ site.data.keys.mf_server }} también está desplegado en el perfil completo de WebSphere Application Server).
-        * En el campo **Atributo de salida**, seleccione **install_directory**.Pulse el botón **Añadir** para actualizar el campo Valor de salida y, a continuación, pulse **Aceptar**.
+        * En el campo **Atributo de salida**, seleccione **install_directory**. Pulse el botón **Añadir** para actualizar el campo Valor de salida y, a continuación, pulse **Aceptar**.
         
-   #### HEAP\_MIN\_SIZE 
+   #### HEAP\_MIN\_SIZE
    
     Aplicable solo en el perfil completo de WebSphere Application Server.
 
@@ -1456,7 +1446,7 @@ Si intenta utilizar un repositorio LDAP para proteger la consola de analíticas,
     ID de usuario administrativo de perfil completo de WebSphere Application Server para el servidor de analíticas.
         * Pulse el botón **Añadir referencia** junto al campo **WAS\_admin\_user** y en la ventana emergente, pulse el separador **Parámetro a nivel de componente**.
         * En el campo **Componente**, seleccione **Servidor autónomo** (o **Servidor autónomo_1** si {{ site.data.keys.mf_server }} también está desplegado en el perfil completo de WebSphere Application Server).
-        * En el campo **Atributo de salida**, seleccione **was\_admin**.Pulse el botón **Añadir** para actualizar el campo **Valor de salida** y, a continuación, pulse **Aceptar**.
+        * En el campo **Atributo de salida**, seleccione **was\_admin**. Pulse el botón **Añadir** para actualizar el campo **Valor de salida** y, a continuación, pulse **Aceptar**.
     
     Se puede utilizar el valor predeterminado para el perfil de Liberty.
     
@@ -1466,23 +1456,22 @@ Si intenta utilizar un repositorio LDAP para proteger la consola de analíticas,
     ID de usuario administrativo de perfil completo de WebSphere Application Server para el servidor de analíticas.
     * Pulse el botón **Añadir referencia** junto al campo **WAS\_admin\_password** y en la ventana emergente, pulse el separador **Parámetro a nivel de componente**.
     * En el campo **Componente**, seleccione **Servidor autónomo** (o **Servidor autónomo_1** si {{ site.data.keys.mf_server }} también está desplegado en el perfil completo de WebSphere Application Server).
-    * En el campo **Atributo de salida**, seleccione **was\_admin\_password**.Pulse el botón **Añadir** para actualizar el campo **Valor de salida** y, a continuación, pulse **Aceptar**.
+    * En el campo **Atributo de salida**, seleccione **was\_admin\_password**. Pulse el botón **Añadir** para actualizar el campo **Valor de salida** y, a continuación, pulse **Aceptar**.
     
     Se puede utilizar el valor predeterminado para el perfil de Liberty.
 
    #### admin_user
     * Si no hay un repositorio LDAP habilitado, cree un usuario de administración predeterminado para la protección de {{ site.data.keys.mf_analytics_console }}.
-    * Si hay un repositorio LDAP habilitado, especifique el nombre de usuario con privilegio de administración de {{ site.data.keys.mf_analytics }}. El valor se almacena en el repositorio LDAP. 
+    * Si hay un repositorio LDAP habilitado, especifique el nombre de usuario con privilegio de administración de {{ site.data.keys.mf_analytics }}. El valor se almacena en el repositorio LDAP.
 
    #### admin_password
     * Si no hay un repositorio LDAP habilitado, especifique la contraseña del usuario de administración predeterminado para la protección de {{ site.data.keys.mf_analytics_console }}.
-    * Si hay un repositorio LDAP habilitado, especifique la contraseña de usuario de administración. El valor se almacena en el repositorio LDAP. 
+    * Si hay un repositorio LDAP habilitado, especifique la contraseña de usuario de administración. El valor se almacena en el repositorio LDAP.
     
     Opcional: Habilite el repositorio LDAP para la protección de {{ site.data.keys.mf_analytics_console }}. Los parámetros LDAP de {{ site.data.keys.mf_analytics }} son exactamente los mismos que los de la administración de {{ site.data.keys.mf_server }}. Para obtener más información, consulte "Configurar MFP Server Administration" (paso 3) en [Configuración de la seguridad de administración de {{ site.data.keys.product_adj }} con un repositorio LDAP externo](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
 
-
 3. Configure el despliegue de tiempo de ejecución de {{ site.data.keys.mf_server }} para la conexión con {{ site.data.keys.mf_analytics }}:
-    * En el nodo MobileFirst Platform Server (o en el nodo DmgrNode cuando utiliza la plantilla {{ site.data.keys.product }} (WAS ND)), seleccione el componente **MFP Server Runtime Deployment**. 
+    * En el nodo MobileFirst Platform Server (o en el nodo DmgrNode cuando utiliza la plantilla {{ site.data.keys.product }} (WAS ND)), seleccione el componente **MFP Server Runtime Deployment**.
     * Arrastre un enlace desde el componente MFP Server Runtime Deployment hasta el componente de servidor de perfil de Liberty o hasta el componente de servidor autónomo en el nodo de {{ site.data.keys.mf_analytics }}, dependiendo del tipo de servidor de aplicaciones que se utilice. Se abre la ventana emergente de Configurar dependencias de datos.
     * Configurar las dependencias de datos:
         * En la ventana Configurar dependencias de datos, borre cualquier entrada de dependencia de datos recomendada pulsando el botón **X** junto a cada entrada.
@@ -1507,7 +1496,7 @@ Si intenta utilizar un repositorio LDAP para proteger la consola de analíticas,
 
     ![Nodo de {{ site.data.keys.mf_analytics }} añadido a un patrón WAS ND de {{ site.data.keys.product }}](pureapp_analytics_node.jpg)
 
-4. Configure e inicie el despliegue de patrón. 
+4. Configure e inicie el despliegue de patrón.
 
     En la página Desplegar patrón, puede ajustar sus valores de configuración de {{ site.data.keys.mf_analytics }} pulsando el componente {{ site.data.keys.mf_analytics }} en la columna central de la lista de nodos y expandiendo MFP Analytics.
 
@@ -1550,10 +1539,10 @@ El diagrama siguiente muestra la composición de la plantilla de "MobileFirst Pl
 
 La plantilla de {{ site.data.keys.product }} (Nodo único de Liberty) está compuesta de los siguientes nodos y componentes:
 
-|Nodo |Componentes | 
+| Nodo | Componentes | 
 |------|------------|
-|MobileFirst Platform Server |**Servidor de perfil de Liberty**<br/>Instalación de servidor de perfil de Liberty de WebSphere Application Server.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>**MFP Server Application**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>**MFP Server Adapter**<br/>. Un adaptador para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. | 
-|MobileFirst Platform DB |**Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de MobileFirst.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
+| MobileFirst Platform Server | **Servidor de perfil de Liberty**<br/>Instalación de servidor de perfil de Liberty de WebSphere Application Server.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>**MFP Server Application**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>**MFP Server Adapter**<br/>. Un adaptador para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. | 
+| MobileFirst Platform DB | **Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de MobileFirst.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
 
 ### Plantilla de {{ site.data.keys.product }} (granja de servidores Liberty)
 {: #mobilefirst-foundation-liberty-server-farm-template }
@@ -1563,11 +1552,11 @@ Plantilla de ![{{ site.data.keys.product }} (granja de servidores Liberty)](pure
 
 La plantilla de {{ site.data.keys.product }} (granja de servidores Liberty) está compuesta de los siguientes nodos y componentes:
 
-|Nodo |Componentes | 
+| Nodo | Componentes | 
 |------|------------|
-|IHS Server |**IBM HTTP servers**<br/>Instalación de IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuración automática de IBM HTTP Server. | 
-|MobileFirst Platform Server |**Servidor de perfil de Liberty**<br/>Instalación de servidor de perfil de Liberty de WebSphere Application Server.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>**MFP Server Application**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>**MFP Server Adapter**<br/>Un adaptador para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. <br/><br/>**Política de escalado base**<br/>Política de escalado de máquina virtual: Número de máquinas virtuales. | 
-|MobileFirst Platform DB |**Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
+| IHS Server | **IBM HTTP servers**<br/>Instalación de IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuración automática de IBM HTTP Server. | 
+| MobileFirst Platform Server | **Servidor de perfil de Liberty**<br/>Instalación de servidor de perfil de Liberty de WebSphere Application Server.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>**MFP Server Application**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>**MFP Server Adapter**<br/>Un adaptador para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}.<br/><br/>**Política de escalado base**<br/>Política de escalado de máquina virtual: Número de máquinas virtuales. | 
+| MobileFirst Platform DB | **Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
 
 ### Plantilla de {{ site.data.keys.product }} (Nodo único de WAS)
 {: #mobilefirst-foundation-was-single-node-template }
@@ -1577,10 +1566,10 @@ El diagrama siguiente muestra la composición de la plantilla de "MobileFirst Pl
 
 La plantilla de {{ site.data.keys.product }} (Nodo único de WAS) está compuesta de los siguientes nodos y componentes:
 
-|Nodo |Componentes | 
+| Nodo | Componentes | 
 |------|------------|
-|MobileFirst Platform Server |**Servidor autónomo**<br/>Instalación de servidor de perfil completo WebSphere Application Server.<br/><br/>Restricción:<br/>No cambie los valores de los siguientes atributos de componente:{::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>Aplicación de **{{ site.data.keys.product_adj }}**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>Adaptador de **{{ site.data.keys.product_adj }}**<br/>Adaptador de {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. | 
-|MobileFirst Platform DB |**Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
+| MobileFirst Platform Server | **Servidor autónomo**<br/>Instalación de servidor de perfil completo WebSphere Application Server.<br/><br/>Restricción:<br/>No cambie los valores de los siguientes atributos de componente: {::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>Aplicación de **{{ site.data.keys.product_adj }}**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>Adaptador de **{{ site.data.keys.product_adj }}**<br/>Adaptador de {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. | 
+| MobileFirst Platform DB | **Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
 
 ### Plantilla de {{ site.data.keys.product }} (granja de servidores de WAS)
 {: #mobilefirst-foundation-was-server-farm-template }
@@ -1590,11 +1579,11 @@ El diagrama siguiente muestra la composición de la plantilla de "MobileFirst Pl
 
 La plantilla de {{ site.data.keys.product }} (granja de servidores de WAS) está compuesta de los siguientes nodos y componentes:
 
-|Nodo |Componentes | 
+| Nodo | Componentes | 
 |------|------------|
-|IHS Server |**IBM HTTP servers**<br/>Instalación de IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuración automática de IBM HTTP Server. | 
-|MobileFirst Platform Server |**Servidor autónomo**<br/>Instalación de servidor de perfil completo WebSphere Application Server.<br/><br/>Restricción: No cambie los valores de los siguientes atributos de componente:{::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>Aplicación de **{{ site.data.keys.product_adj }}**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>Adaptador de **{{ site.data.keys.product_adj }}** Un adaptador para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. <br/><br/>**Política de escalado base**<br/>Política de escalado de máquina virtual: Número de máquinas virtuales. | 
-|MobileFirst Platform DB |**Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
+| IHS Server | **IBM HTTP servers**<br/>Instalación de IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuración automática de IBM HTTP Server. | 
+| MobileFirst Platform Server | **Servidor autónomo**<br/>Instalación de servidor de perfil completo WebSphere Application Server.<br/><br/>Restricción: No cambie los valores de los siguientes atributos de componente:{::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>Aplicación de **{{ site.data.keys.product_adj }}**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>Adaptador de **{{ site.data.keys.product_adj }}** Un adaptador para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}.<br/><br/>**Política de escalado base**<br/>Política de escalado de máquina virtual: Número de máquinas virtuales. | 
+| MobileFirst Platform DB | **Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
 
 ### Plantilla de {{ site.data.keys.product }} (WAS ND)
 {: #mobilefirst-foundation-was-nd-template }
@@ -1604,12 +1593,12 @@ El diagrama siguiente muestra la composición de la plantilla de "MobileFirst Pl
 
 La plantilla de {{ site.data.keys.product }} (WAS ND) está compuesta de los siguientes nodos y componentes:
 
-|Nodo |Componentes | 
+| Nodo | Componentes | 
 |------|------------|
-|IHS Server |**IBM HTTP servers**<br/>Instalación de IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuración automática de IBM HTTP Server. | 
-|DmgrNode |**Gestor de despliegue**<br/>Instalación del gestor de despliegue de WebSphere Application Server.<br/><br/>Restricción: No cambie los valores de los siguientes atributos de componente:{::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Runtime**<br/>Archivo WAR de tiempo de ejecución.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>**MFP Application**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>**MFP Adapter**<br/>Un adaptador para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. | 
-|MobileFirst Platform DB |**Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
-|CustomNode |**Nodos personalizados**<br/>Detalles de las celdas y nodos de los clústeres de los servidores de WebSphere Application Server Network Deployment.<br/><br/>Restricción: No cambie los valores de los siguientes atributos de componente:{::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>Puertos que deben abrirse para habilitar la conexión con el servidor de base de datos y el servidor LDAP.<br/><br/>**Política de escalado base**<br/>Número de instancias de máquina virtual necesarias para la topología seleccionada.| 
+| IHS Server | **IBM HTTP servers**<br/>Instalación de IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuración automática de IBM HTTP Server. | 
+| DmgrNode | **Gestor de despliegue**<br/>Instalación del gestor de despliegue de WebSphere Application Server.<br/><br/>Restricción: No cambie los valores de los siguientes atributos de componente:{::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Administration**<br/>Aplicación web de administración de {{ site.data.keys.mf_server }} incluyendo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Runtime**<br/>Archivo WAR de tiempo de ejecución.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuración raíz de contexto de tiempo de ejecución.<br/><br/>**MFP Application**<br/>Aplicación {{ site.data.keys.product_adj }} para añadir al despliegue.<br/><br/>**MFP Adapter**<br/>Un adaptador para añadir al despliegue.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Despliegue de aplicación y adaptador en {{ site.data.keys.mf_server }}. | 
+| MobileFirst Platform DB | **Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**MFP Administration DB**<br/>Instalación de esquema de base de datos de administración de {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalación de esquema de base de datos de tiempo de ejecución de {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
+| CustomNode | **Nodos personalizados**<br/>Detalles de las celdas y nodos de los clústeres de los servidores de WebSphere Application Server Network Deployment.<br/><br/>Restricción: No cambie los valores de los siguientes atributos de componente:{::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>Puertos que deben abrirse para habilitar la conexión con el servidor de base de datos y el servidor LDAP.<br/><br/>**Política de escalado base**<br/>Número de instancias de máquina virtual necesarias para la topología seleccionada. | 
 
 ### Plantilla de {{ site.data.keys.mf_app_center }} (Nodo único de Liberty)
 {: #mobilefirst-application-center-liberty-single-node-template }
@@ -1619,10 +1608,10 @@ El diagrama siguiente muestra la composición de la plantilla de "MobileFirst Pl
 
 La plantilla de {{ site.data.keys.mf_app_center }} (Nodo único de Liberty) está compuesta de los siguientes nodos y componentes:
 
-|Nodo |Componentes |
+| Nodo | Componentes |
 |------|------------|
-|MFP AppCenter DB |**Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
-|MFP AppCenter Server |**Servidor de perfil de Liberty**<br/>Instalación de servidor de perfil de Liberty de WebSphere Application Server.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Application Center**<br/>Este paquete script configura el servidor {{ site.data.keys.mf_app_center }} en un perfil completo de WebSphere Application Server o en un perfil de Liberty de WebSphere Application Server. | 
+| MFP AppCenter DB | **Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
+| MFP AppCenter Server | **Servidor de perfil de Liberty**<br/>Instalación de servidor de perfil de Liberty de WebSphere Application Server.<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Application Center**<br/>Este paquete script configura el servidor {{ site.data.keys.mf_app_center }} en un perfil completo de WebSphere Application Server o en un perfil de Liberty de WebSphere Application Server. | 
 
 ### Plantilla de {{ site.data.keys.mf_app_center }} (Nodo único de WAS)
 {: #mobilefirst-application-center-was-single-node-template }
@@ -1632,10 +1621,10 @@ El diagrama muestra la composición de la plantilla de "MobileFirst Platform App
 
 La plantilla de {{ site.data.keys.mf_app_center }} (Nodo único de WAS) está compuesta de los siguientes nodos y componentes:
 
-|Nodo |Componentes | 
+| Nodo | Componentes | 
 |------|------------|
-|MFP AppCenter DB |**Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
-|MFP AppCenter Server |**Servidor autónomo**<br/>Instalación de servidor de perfil completo WebSphere Application Server.<br/><br/>Restricción: No cambie los valores de los siguientes atributos de componente:{::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP WAS SDK Level**<br/>El propósito de este script es definir los niveles SDK necesarios como el SDK predeterminado para el perfil de WAS<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Application Center**<br/>Este paquete script configura el servidor {{ site.data.keys.mf_app_center }} en un perfil completo de WebSphere Application Server o en un perfil de Liberty de WebSphere Application Server. | 
+| MFP AppCenter DB | **Servidor de base de datos**<br/>Instalación de servidor de base de datos DB2.<br/><br/>**Default add disk**<br/>Configuración de tamaño del disco. | 
+| MFP AppCenter Server | **Servidor autónomo**<br/>Instalación de servidor de perfil completo WebSphere Application Server.<br/><br/>Restricción: No cambie los valores de los siguientes atributos de componente:{::nomarkdown}<ul><li>Nombre de celda</li><li>Nombre de nodo</li><li>Nombre de perfil</li></ul>{:/}Si cambia alguno de estos atributos, el despliegue de patrones basado en esta plantilla fallará.<br/><br/>**MFP WAS SDK Level**<br/>El propósito de este script es definir los niveles SDK necesarios como el SDK predeterminado para el perfil de WAS<br/><br/>**MFP Server Prerequisite**<br/>Requisitos previos para la instalación de {{ site.data.keys.mf_server }} incluyendo SSL y Ant.<br/><br/>**MFP Server Application Center**<br/>Este paquete script configura el servidor {{ site.data.keys.mf_app_center }} en un perfil completo de WebSphere Application Server o en un perfil de Liberty de WebSphere Application Server. | 
 
 
 ## Paquetes script para {{ site.data.keys.mf_server }}
@@ -1661,211 +1650,211 @@ Las siguientes secciones listan y describen los parámetros de cada paquete scri
 {: #mfp-administration-db }
 Este paquete script configura el esquema de base de datos de administración en una base de datos DB2. Debe utilizarse con el componente de software del servidor de base de datos (DB2).
 
-|Parámetro |Descripción | 
+| Parámetro | Descripción | 
 |-----------|-------------|
-|db_user |Obligatorio. Nombre de usuario para crear la base de datos de administración. Puede correlacionarse con el nombre de la instancia del componente del servidor de base de datos. Valor predeterminado: db2inst1. |
-|db_name	|Obligatorio. Nombre de base de datos para crear la base de datos de administración. Valor predeterminado: WLADM. |
-|db_password |	Obligatorio. Contraseña de usuario para crear la base de datos de administración. Puede correlacionarse con el propietario de la instancia del componente del servidor de base de datos. Valor predeterminado: passw0rd (como parámetro de nivel de patrón). |
-|other\_db\_args |Obligatorio. Cuatro parámetros para crear la base de datos de administración: Tipo SQL, Codeset, Territory y Collate. Valor predeterminado: DB2 UTF-8 US SYSTEM. |
+| db_user   | Obligatorio. Nombre de usuario para crear la base de datos de administración. Puede correlacionarse con el nombre de la instancia del componente del servidor de base de datos. Valor predeterminado: db2inst1. |
+| db_name	| Obligatorio. Nombre de base de datos para crear la base de datos de administración. Valor predeterminado: WLADM. |
+| db_password |	Obligatorio. Contraseña de usuario para crear la base de datos de administración. Puede correlacionarse con el propietario de la instancia del componente del servidor de base de datos. Valor predeterminado: passw0rd (como parámetro de nivel de patrón). |
+| other\_db\_args | Obligatorio. Cuatro parámetros para crear la base de datos de administración: Tipo SQL, Codeset, Territory y Collate. Valor predeterminado: DB2 UTF-8 US SYSTEM. |
 
 ### MFP Analytics
 {: #mfp-analytics }
 Este paquete script configura {{ site.data.keys.mf_analytics_server }} en un perfil completo de WebSphere Application Server o en un servidor de perfil de Liberty de WebSphere Application Server y configura la conexión y correlación de los roles de seguridad de administración de analíticas a un servidor TDS o AD externo. Debe utilizarse con el servidor de perfil de Liberty de WebSphere Application Server o con el componente de software de perfil completo de WebSphere Application Server (nombre de visualización: Servidor autónomo). Debe instalarse después del componente de software del perfil de Liberty o del servidor autónomo.
 
-|Parámetro |Descripción | 
+| Parámetro | Descripción | 
 |-----------|-------------|
-|WAS_ROOT  |Obligatorio. {::nomarkdown}<ul><li>Si se está instalando las analíticas en un perfil de Liberty de WebSphere Application Server, especifique el directorio de instalación del perfil de Liberty de WebSphere para Analíticas.</li><li>Si las analíticas están instaladas en un perfil completo de WebSphere Application Server, especifique el directorio de instalación del perfil completo de WebSphere para Analíticas.</li></ul>{:/} | 
-|HEAP\_MIN\_SIZE |Solo en el perfil completo de WebSphere Application Server.<br/><br/>Dependiendo de la cantidad de datos analíticos generados, se necesitará más memoria para gestionar más datos. Defínalo para permitir un tamaño mínimo de almacenamiento dinámico mayor para el perfil completo de WebSphere Application Server. Asegúrese de que el tamaño de memoria especificado en el componente Core OS de {{ site.data.keys.mf_analytics }} es mayor. Se recomienda establecer el mismo valor que en HEAP_MAX_SIZE.<br/><br/>Valor predeterminado: 4096 (MB). | 
-|HEAP\_MAX\_SIZE	|Solo en el perfil completo de WebSphere Application Server.<br/><br/>Dependiendo de la cantidad de datos analíticos generados, se necesitará más memoria para gestionar más datos. Defínalo para permitir un tamaño máximo de almacenamiento dinámico mayor para el perfil completo de WebSphere Application Server. Asegúrese de que el tamaño de memoria especificado en el componente Core OS de {{ site.data.keys.mf_analytics }} es mayor. Se recomienda establecer el mismo valor que en HEAP_MIN_SIZE.<br/><br/>Valor predeterminado: 4096 (MB). | 
-|WAS\_admin\_user |Solo en el perfil completo de WebSphere Application Server.<br/><br/>Usuario administrativo de perfil completo de WebSphere Application Server para el servidor de analíticas. Para el perfil de Liberty de WebSphere Application Server, deje el valor sin cambiarlo. | 
-|WAS\_admin\_password |Solo en el perfil completo de WebSphere Application Server.<br/><br/>Contraseña de usuario administrativo de perfil completo de WebSphere Application Server para el servidor de analíticas. Para el perfil de Liberty de WebSphere Application Server, deje el valor sin cambiarlo. | 
-|admin_user |Obligatorio. {::nomarkdown}<ul><li>Si no hay un repositorio LDAP habilitado, cree un usuario de administración predeterminado para la protección de {{ site.data.keys.mf_analytics_console }}.</li><li>Si hay un repositorio LDAP habilitado, especifique el nombre de usuario con privilegio de administración de {{ site.data.keys.mf_analytics }}. El valor se almacena en el repositorio LDAP. </li></ul> |
-|admin_password |Obligatorio. <ul><li>Si no hay un repositorio LDAP habilitado, especifique la contraseña del usuario de administración predeterminado para la protección de {{ site.data.keys.mf_analytics_console }}.</li><li>Si hay un repositorio LDAP habilitado, especifique la contraseña de usuario administrativo. El valor se almacena en el repositorio LDAP. </li></ul>{:/} | 
-|LDAP_TYPE |(Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios: <br/><br/>None<br/>La conexión LDAP está inhabilitada. Cuando se establece, todos los demás parámetros LDAP se tratan como solo marcadores.<br/><br/>TivoliDirectoryServer<br/>Selecciónelo si el repositorio LDAP es un IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecciónelo si el repositorio LDAP es un Microsoft Active Directory.<br/><br/>Valor predeterminado: None.| 
-|LDAP_IP |(Parámetro LDAP). Dirección IP del servidor LDAP.| 
-|LDAP\_SSL\_PORT |(Parámetro LDAP) Puerto LDAP para conexión segura. | 
-|LDAP_PORT |(Parámetro LDAP) Puerto LDAP para conexión no segura. | 
-|BASE_DN |(Parámetro LDAP) DN base.| 
-|BIND_DN |(Parámetro LDAP) Bind DN.| 
-|BIND_PASSWORD |(Parámetro LDAP) Contraseña de Bind DN.| 
-|REQUIRE_SSL |(Parámetro LDAP) Defínalo en true para una conexión segura al servidor LDAP.{::nomarkdown}<ul><li>Cuando está definido en true, se utiliza LDAP_SSL_PORT y CERT_FILE_PATH es necesario para localizar el archivo de certificación del servidor LDAP.</li><li>Cuando está definido en false, se utiliza LDAP_PORT.</li></ul>{:/}Valor predeterminado: false.| 
-|USER_FILTER |(Parámetro LDAP) Filtro de usuario LDAP que busca usuarios en un registro de usuarios existente. | 
-|GROUP_FILTER |(Parámetro LDAP) Filtro de grupo LDAP que busca grupos en un registro de usuarios existente. | 
-|LDAP\_REPOSITORY\_NAME |(Parámetro LDAP) Nombre de servidor LDAP. | 
-|CERT\_FILE\_PATH |(Parámetro LDAP) Vía de acceso de destino de la certificación de servidor LDAP cargada. Obligatorio cuando REQUIRE_SSL se establece en true. | 
-|mfpadmin |(Parámetro LDAP) Rol de administración de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
-|mfpdeployer |(Parámetro LDAP) Rol de desplegador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
-|mfpmonitor |(Parámetro LDAP) Rol de supervisor de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
-|mfpoperator |(Parámetro LDAP) Rol de operador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
+| WAS_ROOT  | Obligatorio.{::nomarkdown}<ul><li>Si se está instalando las analíticas en un perfil de Liberty de WebSphere Application Server, especifique el directorio de instalación del perfil de Liberty de WebSphere para Analíticas.</li><li>Si las analíticas están instaladas en un perfil completo de WebSphere Application Server, especifique el directorio de instalación del perfil completo de WebSphere para Analíticas.</li></ul>{:/} | 
+| HEAP\_MIN\_SIZE | Solo en el perfil completo de WebSphere Application Server.<br/><br/>Dependiendo de la cantidad de datos analíticos generados, se necesitará más memoria para gestionar más datos. Defínalo para permitir un tamaño mínimo de almacenamiento dinámico mayor para el perfil completo de WebSphere Application Server. Asegúrese de que el tamaño de memoria especificado en el componente Core OS de {{ site.data.keys.mf_analytics }} es mayor. Se recomienda establecer el mismo valor que en HEAP_MAX_SIZE.<br/><br/>Valor predeterminado: 4096 (MB). | 
+| HEAP\_MAX\_SIZE	| Solo en el perfil completo de WebSphere Application Server.<br/><br/>Dependiendo de la cantidad de datos analíticos generados, se necesitará más memoria para gestionar más datos. Defínalo para permitir un tamaño máximo de almacenamiento dinámico mayor para el perfil completo de WebSphere Application Server. Asegúrese de que el tamaño de memoria especificado en el componente Core OS de {{ site.data.keys.mf_analytics }} es mayor. Se recomienda establecer el mismo valor que en HEAP_MIN_SIZE.<br/><br/>Valor predeterminado: 4096 (MB). | 
+| WAS\_admin\_user | Solo en el perfil completo de WebSphere Application Server.<br/><br/>Usuario administrativo de perfil completo de WebSphere Application Server para el servidor de analíticas. Para el perfil de Liberty de WebSphere Application Server, deje el valor sin cambiarlo. | 
+| WAS\_admin\_password | Solo en el perfil completo de WebSphere Application Server.<br/><br/>Contraseña de usuario administrativo de perfil completo de WebSphere Application Server para el servidor de analíticas. Para el perfil de Liberty de WebSphere Application Server, deje el valor sin cambiarlo. | 
+| admin_user | Obligatorio.{::nomarkdown}<ul><li>Si no hay un repositorio LDAP habilitado, cree un usuario de administración predeterminado para la protección de {{ site.data.keys.mf_analytics_console }}.</li><li>Si hay un repositorio LDAP habilitado, especifique el nombre de usuario con privilegio de administración de {{ site.data.keys.mf_analytics }}. El valor se almacena en el repositorio LDAP.</li></ul> |
+| admin_password | Obligatorio.<ul><li>Si no hay un repositorio LDAP habilitado, especifique la contraseña del usuario de administración predeterminado para la protección de {{ site.data.keys.mf_analytics_console }}.</li><li>Si hay un repositorio LDAP habilitado, especifique la contraseña de usuario administrativo. El valor se almacena en el repositorio LDAP.</li></ul>{:/} | 
+| LDAP_TYPE | (Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios:<br/><br/>None<br/>La conexión LDAP está inhabilitada. Cuando se establece, todos los demás parámetros LDAP se tratan como solo marcadores.<br/><br/>TivoliDirectoryServer<br/>Selecciónelo si el repositorio LDAP es un IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecciónelo si el repositorio LDAP es un Microsoft Active Directory.<br/><br/>Valor predeterminado: None. | 
+| LDAP_IP | (Parámetro LDAP). Dirección IP del servidor LDAP. | 
+| LDAP\_SSL\_PORT | (Parámetro LDAP) Puerto LDAP para conexión segura. | 
+| LDAP_PORT | (Parámetro LDAP) Puerto LDAP para conexión no segura. | 
+| BASE_DN | (Parámetro LDAP) DN base. | 
+| BIND_DN | (Parámetro LDAP) Bind DN. | 
+| BIND_PASSWORD | (Parámetro LDAP) Contraseña de Bind DN. | 
+| REQUIRE_SSL | (Parámetro LDAP) Defínalo en true para una conexión segura al servidor LDAP.{::nomarkdown}<ul><li>Cuando está definido en true, se utiliza LDAP_SSL_PORT y CERT_FILE_PATH es necesario para localizar el archivo de certificación del servidor LDAP.</li><li>Cuando está definido en false, se utiliza LDAP_PORT.</li></ul>{:/}Valor predeterminado: false. | 
+| USER_FILTER | (Parámetro LDAP) Filtro de usuario LDAP que busca usuarios en un registro de usuarios existente. | 
+| GROUP_FILTER | (Parámetro LDAP) Filtro de grupo LDAP que busca grupos en un registro de usuarios existente. | 
+| LDAP\_REPOSITORY\_NAME | (Parámetro LDAP) Nombre de servidor LDAP. | 
+| CERT\_FILE\_PATH | (Parámetro LDAP) Vía de acceso de destino de la certificación de servidor LDAP cargada. Obligatorio cuando REQUIRE_SSL se establece en true. | 
+| mfpadmin | (Parámetro LDAP) Rol de administración de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
+| mfpdeployer | (Parámetro LDAP) Rol de desplegador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
+| mfpmonitor | (Parámetro LDAP) Rol de supervisor de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
+| mfpoperator | (Parámetro LDAP) Rol de operador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
-Este paquete script configura IBM HTTP Server para que funcione como equilibrador de carga para varias instancias de {{ site.data.keys.mf_server }}. Debe utilizarse con el componente de software de IBM HTTP servers. Debe instalarse antes del componente de software de IBM HTTP servers. 
+Este paquete script configura IBM HTTP Server para que funcione como equilibrador de carga para varias instancias de {{ site.data.keys.mf_server }}. Debe utilizarse con el componente de software de IBM HTTP servers. Debe instalarse antes del componente de software de IBM HTTP servers.
 
-|Parámetro |Descripción | 
+| Parámetro | Descripción | 
 |-----------|-------------|
-|WAS_ROOT  |Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server, o directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. | 
-|profile_name |Opcional. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server.<br/><br/>En las plantillas de patrón, se correlaciona con el atributo de salida **dmgr\_profile\_name** del gestor de despliegue o sa_profile_name del servidor autónomo. | 
-|runtime\_contextRoot\_list |Obligatorio. Lista de raíces de contexto de tiempo de ejecución que permite a IHS encaminar solicitudes que tengan raíces de contexto coincidentes. Utilice punto y coma (;) para separar las raíces de contexto de tiempo de ejecución. Por ejemplo, HelloMobileFirst;HelloWorld<br/><br/>Importante: debe alinearse con la raíz de contexto de especificada en MFP Server Runtime Deployment. De lo contrario, IHS no puede direccionar correctamente solicitudes que contengan la raíz de contexto de tiempo de ejecución. | 
-|http_port |Obligatorio. Abra el puerto de cortafuegos en el nodo IHS Server para permitir el transporte HTTP desde IHS Server a {{ site.data.keys.mf_server }}. Debe ser 9080. | 
-|https_port |Obligatorio. Abra el puerto de cortafuegos en el nodo IHS Server para permitir el transporte HTTPS desde IHS Server a {{ site.data.keys.mf_server }}. Debe ser 9443. | 
-|server_hostname |Obligatorio. Nombre de host de IBM HTTP servers. Está correlacionado con el atributo de salida del host de IBM HTTP servers en la plantilla de patrón. | 
+| WAS_ROOT | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server, o directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. | 
+| profile_name | Opcional. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server.<br/><br/>En las plantillas de patrón, se correlaciona con el atributo de salida **dmgr\_profile\_name** del gestor de despliegue o sa_profile_name del servidor autónomo. | 
+| runtime\_contextRoot\_list | Obligatorio. Lista de raíces de contexto de tiempo de ejecución que permite a IHS encaminar solicitudes que tengan raíces de contexto coincidentes. Utilice punto y coma (;) para separar las raíces de contexto de tiempo de ejecución. Por ejemplo, HelloMobileFirst;HelloWorld<br/><br/>Importante: debe alinearse con la raíz de contexto de especificada en MFP Server Runtime Deployment. De lo contrario, IHS no puede direccionar correctamente solicitudes que contengan la raíz de contexto de tiempo de ejecución. | 
+| http_port | Obligatorio. Abra el puerto de cortafuegos en el nodo IHS Server para permitir el transporte HTTP desde IHS Server a {{ site.data.keys.mf_server }}. Debe ser 9080. | 
+| https_port | Obligatorio. Abra el puerto de cortafuegos en el nodo IHS Server para permitir el transporte HTTPS desde IHS Server a {{ site.data.keys.mf_server }}. Debe ser 9443. | 
+| server_hostname | Obligatorio. Nombre de host de IBM HTTP servers. Está correlacionado con el atributo de salida del host de IBM HTTP servers en la plantilla de patrón. | 
 
 ### MFP Open Firewall Ports for WAS
 {: #mfp-open-firewall-ports-for-was }
 Este paquete script solo se aplica para los nodos personalizados en la plantilla de patrón de {{ site.data.keys.product_adj }} (WAS ND) (WebSphere Application Server Network Deployment). Su propósito es abrir los puertos de cortafuegos necesarios de los nodos personalizados que albergan los servicios de administración y tiempos de ejecución de {{ site.data.keys.product_adj }}. Además de definir algunos puertos predefinidos de WebSphere Application Server, debe especificar los otros puertos para conectarse al servidor DB2 y el servidor LDAP.
 
-|Parámetro |Descripción | 
+| Parámetro | Descripción | 
 |-----------|-------------|
-|WAS_ROOT  |Obligatorio. Directorio de instalación de nodos personalizados de WebSphere Application Server Network Deployment en el nodo CustomNode. En las plantillas de patrón está correlacionado con el atributo de salida install_directory del servidor de nodos personalizados. |
-|profile_name |Obligatorio. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón está correlacionado con el atributo de salida cn_profile_name de los nodos personalizados. | 
-|WAS\_admin\_user |Obligatorio. Está correlacionado con el atributo de salida del was_admin de los nodos personalizados en la plantilla de patrón. | 
-|Ports	|Obligatorio. Otros puertos que deben abrirse para conectarse con el servidor DB2 y el servidor LDAP (opcional). Los valores de puerto pueden separarse por punto y coma; por ejemplo, "50000;636"<br/><br/>Valor predeterminado: 50000. | 
+| WAS_ROOT | Obligatorio. Directorio de instalación de nodos personalizados de WebSphere Application Server Network Deployment en el nodo CustomNode. En las plantillas de patrón está correlacionado con el atributo de salida install_directory del servidor de nodos personalizados. |
+| profile_name | Obligatorio. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón está correlacionado con el atributo de salida cn_profile_name de los nodos personalizados. | 
+| WAS\_admin\_user | Obligatorio. Está correlacionado con el atributo de salida del was_admin de los nodos personalizados en la plantilla de patrón. | 
+| Ports	| Obligatorio. Otros puertos que deben abrirse para conectarse con el servidor DB2 y el servidor LDAP (opcional). Los valores de puerto pueden separarse por punto y coma; por ejemplo, "50000;636"<br/><br/>Valor predeterminado: 50000. | 
 
 ### MFP WAS SDK Level
 {: #mfp-was-sdk-level }
-Este paquete script solo se aplica si están disponibles los perfiles WAS en la plantilla de patrón de (WebSphere Application Server Network Deployment). 
+Este paquete script solo se aplica si están disponibles los perfiles WAS en la plantilla de patrón de (WebSphere Application Server Network Deployment).
 
-|Parámetro |Descripción | 
+| Parámetro | Descripción | 
 |-----------|-------------|
-|WAS_ROOT  |Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server o el directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida **install_directory** del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. |
-|profile_name |El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida **dmgr\_profile\_name** del gestor de despliegue o **sa\_profile\_name** del servidor autónomo. | 
-|SDK_name |Nombre del SDK que debe habilitarse para esta instalación de WebSphere| 
+| WAS_ROOT | Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server o el directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida **install_directory** del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. |
+| profile_name | El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida **dmgr\_profile\_name** del gestor de despliegue o **sa\_profile\_name** del servidor autónomo. | 
+| SDK_name | Nombre del SDK que debe habilitarse para esta instalación de WebSphere | 
 
 ### MFP Runtime DB
 {: #mfp-runtime-db }
-Este paquete script configura el esquema de base de datos de tiempo de ejecución en una base de datos DB2. 
+Este paquete script configura el esquema de base de datos de tiempo de ejecución en una base de datos DB2.
 
-|Parámetro |Descripción | 
+| Parámetro | Descripción | 
 |-----------|-------------|
-|db_user |Obligatorio. Nombre de usuario para crear la base de datos de tiempo de ejecución. Puede correlacionarse con el nombre de la instancia del componente del servidor de base de datos. Valor predeterminado: db2inst1. | 
-|db_name |Obligatorio. Nombre de base de datos para crear la base de datos de tiempo de ejecución. Valor predeterminado: WLRTIME. | 
-|db_password |Obligatorio. Contraseña de usuario para crear la base de datos de tiempo de ejecución. Puede correlacionarse con el propietario de la instancia del componente del servidor de base de datos. Valor predeterminado: passw0rd (como parámetro de nivel de patrón). | 
-|other\_db\_args |	Obligatorio. Cuatro parámetros para crear la base de datos de tiempo de ejecución: Tipo SQL, Codeset, Territory y Collate. Valor predeterminado: DB2 UTF-8 US SYSTEM. | 
+| db_user | Obligatorio. Nombre de usuario para crear la base de datos de tiempo de ejecución. Puede correlacionarse con el nombre de la instancia del componente del servidor de base de datos. Valor predeterminado: db2inst1. | 
+| db_name | Obligatorio. Nombre de base de datos para crear la base de datos de tiempo de ejecución. Valor predeterminado: WLRTIME. | 
+| db_password | Obligatorio. Contraseña de usuario para crear la base de datos de tiempo de ejecución. Puede correlacionarse con el propietario de la instancia del componente del servidor de base de datos. Valor predeterminado: passw0rd (como parámetro de nivel de patrón). | 
+| other\_db\_args |	Obligatorio. Cuatro parámetros para crear la base de datos de tiempo de ejecución: Tipo SQL, Codeset, Territory y Collate. Valor predeterminado: DB2 UTF-8 US SYSTEM. | 
 
 ### MFP Server Administration
 {: #mfp-server-administration }
-Este paquete script configura el componente de administración de {{ site.data.keys.product_adj }} (incluyendo {{ site.data.keys.mf_console }}) en un perfil completo de WebSphere Application Server o en un servidor de perfil de Liberty de WebSphere Application Server y configura la conexión y la correlación de los roles de seguridad de administración a un servidor TDS o AD externo. 
+Este paquete script configura el componente de administración de {{ site.data.keys.product_adj }} (incluyendo {{ site.data.keys.mf_console }}) en un perfil completo de WebSphere Application Server o en un servidor de perfil de Liberty de WebSphere Application Server y configura la conexión y la correlación de los roles de seguridad de administración a un servidor TDS o AD externo.
 
 El paquete script debe utilizarse con el componente de software del servidor de perfil de Liberty de WebSphere Application Server o el componente de software del perfil completo de WebSphere Application Server (nombre de visualización: Servidor autónomo), y debe instalarse después del MFP Server Prerequisite pero antes de otros paquetes script MFP * en el nodo de máquina virtual de {{ site.data.keys.mf_server }}.
 
-|Parámetro |Descripción |
+| Parámetro | Descripción |
 |-----------|-------------|
-|WAS_ROOT  |Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server o el directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. | 
-|profile_name |Opcional. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida dmgr_profile_name del gestor de despliegue o sa_profile_name del servidor autónomo. | 
-|NUMBER\_OF\_CLUSTERMEMBERS |Opcional. Solo aplicable para la plantilla de patrón de {{ site.data.keys.product }} (WAS ND). Especifica el número de miembros de clúster para que el clúster despliegue el servicio de administración de MFP. Valor predeterminado: 2. | 
-|db_user |Obligatorio. Nombre de usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_user del paquete script de MFP Administration DB en la plantilla de patrón. | 
-|db_name |Obligatorio. Nombre de la base de datos de administración. Está correlacionado con el atributo de salida `db_name` del paquete script de MFP Administration DB en la plantilla de patrón. | 
-|db_password |	Obligatorio. Contraseña del usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_password del paquete script de MFP Administration DB en la plantilla de patrón. | 
-|db_ip |Dirección IP del servidor DB donde está instalada la base de datos de administración. Está correlacionado con el atributo de salida IP del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. | 
-|db_port |Número de puerto del servidor DB donde está instalada la base de datos de administración. Está correlacionado con el atributo de salida instancePort del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. | 
-|admin_user |Nombre de usuario con privilegio de administración de {{ site.data.keys.mf_server }}. {::nomarkdown}<ul><li>Cuando LDAP_TYPE es None, cree el usuario administrativo predeterminado.</li><li>Cuando LDAP_TYPE se establece en TivoliDirectoryServer o ActiveDirectory y se especifican otros parámetros LDAP de acuerdo con su configuración de servidor LDAP, el valor admin_user debe tomarse del repositorio de usuario LDAP configurado. No es necesario cuando {{ site.data.keys.mf_server }} se va a desplegar en un nodo único del perfil completo de WebSphere Application Server.</li></ul> | 
-|admin_password |Contraseña del usuario administrativo.<ul><li>Cuando LDAP_TYPE es None, cree la contraseña del usuario administrativo predeterminado.</li><li>Cuando se configura un servidor LDAP externo, la contraseña de usuario se toma del repositorio LDAP. No es necesario cuando {{ site.data.keys.mf_server }} se va a desplegar en un nodo único del perfil completo de WebSphere Application Server.</li></ul> | 
-|install_console |Si debe desplegarse {{ site.data.keys.mf_console }} en el nodo MobileFirst Platform Server. Valor predeterminado: Seleccionado. (Recuadro de verificación) |
-|WAS\_admin\_user |Opcional. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was_admin del servidor autónomo en la plantilla de patrón. Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was_admin del gestor de despliegue en la plantilla de patrón. | 
-|WAS\_admin\_password |Opcional. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was\_admin\_password del servidor autónomo en la plantilla de patrón. Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was\_admin\_password del gestor de despliegue en la plantilla de patrón. | 
-|server_hostname |Obligatorio. Nombre de host de {{ site.data.keys.mf_server }} o del gestor de despliegue. Correlacionado con el atributo de salida de host del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. | 
-|server\_farm\_mode |Obligatorio. Si debe desplegarse {{ site.data.keys.mf_server }} en el nodo granja de servidores. Debe estar seleccionado para una topología de granja de servidores y debe estar deseleccionado para una topología autónoma. Valor predeterminado: establecer según la topología definida en la plantilla de patrón. | 
-|webserver_ip |Opcional. Cuando se despliega IBM HTTP servers en la plantilla de patrón, este parámetro se correlaciona con el atributo de salida IP de IBM HTTP servers. | 
-|LDAP_TYPE |(Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios. Uno de los siguientes valores:<ul>None: La conexión LDAP está inhabilitada. Cuando este valor está seleccionado, todos los demás parámetros LDAP se tratan como solo marcadores.</li><li>TivoliDirectoryServer: Seleccione este valor si el repositorio LDAP es IBM Tivoli Directory Server</li><li>ActiveDirectory: Seleccione este valor si el repositorio LDAP es Microsoft Active Directory</li></ul>{:/}Valor predeterminado: None.| 
-|LDAP_IP |(Parámetro LDAP) Dirección IP del servidor LDAP. | 
-|LDAP_SSL_PORT |(Parámetro LDAP) Puerto LDAP para conexión segura. | 
-|LDAP_PORT |(Parámetro LDAP) Puerto LDAP para conexión no segura. | 
-|BASE_DN |(Parámetro LDAP) DN base.| 
-|BIND_DN |(Parámetro LDAP) Bind DN.| 
-|BIND_PASSWORD |(Parámetro LDAP) Contraseña de Bind DN.| 
-|REQUIRE_SSL |(Parámetro LDAP) Defínalo en true para una conexión segura al servidor LDAP.{::nomarkdown}<ul><li>Cuando está definido en true, LDAP\_SSL\_PORT se utiliza y CERT\_FILE\_PATH es necesario para localizar el archivo de certificación del servidor LDAP.</li><li>Cuando está definido en false, se utiliza LDAP_PORT.</li></ul>{:/}Valor predeterminado: false.| 
-|USER_FILTER |(Parámetro LDAP) Filtro de usuario que busca usuarios en un registro de usuarios existente. | 
-|GROUP_FILTER |(Parámetro LDAP) Filtro de grupo LDAP que busca grupos en un registro de usuarios existente. | 
-|LDAP\_REPOSITORY\_NAME |(Parámetro LDAP) Nombre de servidor LDAP. | 
-|CERT\_FILE\_PATH |(Parámetro LDAP) Vía de acceso de destino de la certificación de servidor LDAP cargada. Obligatorio cuando REQUIRE_SSL se establece en true. | 
-|mfpadmin |    Rol de administración para {{ site.data.keys.mf_server }}. Uno de los siguientes valores:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
-|mfpdeployer |(Parámetro LDAP) Rol de desplegador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
-|mfpmonitor |(Parámetro LDAP) Rol de supervisor de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
-|mfpoperator |(Parámetro LDAP) Rol de operador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None.| 
+| WAS_ROOT | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server o el directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. | 
+| profile_name | Opcional. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida dmgr_profile_name del gestor de despliegue o sa_profile_name del servidor autónomo. | 
+| NUMBER\_OF\_CLUSTERMEMBERS | Opcional. Solo aplicable para la plantilla de patrón de {{ site.data.keys.product }} (WAS ND). Especifica el número de miembros de clúster para que el clúster despliegue el servicio de administración de MFP. Valor predeterminado: 2. | 
+| db_user | Obligatorio. Nombre de usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_user del paquete script de MFP Administration DB en la plantilla de patrón. | 
+| db_name | Obligatorio. Nombre de la base de datos de administración. Está correlacionado con el atributo de salida `db_name` del paquete script de MFP Administration DB en la plantilla de patrón. | 
+| db_password |	Obligatorio. Contraseña del usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_password del paquete script de MFP Administration DB en la plantilla de patrón.| 
+| db_ip | Dirección IP del servidor DB donde está instalada la base de datos de administración. Está correlacionado con el atributo de salida IP del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. | 
+| db_port |  Número de puerto del servidor DB donde está instalada la base de datos de administración. Está correlacionado con el atributo de salida instancePort del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. | 
+| admin_user | Nombre de usuario con privilegio de administración de {{ site.data.keys.mf_server }}.{::nomarkdown}<ul><li>Cuando LDAP_TYPE es None, cree el usuario administrativo predeterminado.</li><li>Cuando LDAP_TYPE se establece en TivoliDirectoryServer o ActiveDirectory y se especifican otros parámetros LDAP de acuerdo con su configuración de servidor LDAP, el valor admin_user debe tomarse del repositorio de usuario LDAP configurado. No es necesario cuando {{ site.data.keys.mf_server }} se va a desplegar en un nodo único del perfil completo de WebSphere Application Server.</li></ul> | 
+| admin_password | Contraseña del usuario administrativo.<ul><li>Cuando LDAP_TYPE es None, cree la contraseña del usuario administrativo predeterminado.</li><li>Cuando se configura un servidor LDAP externo, la contraseña de usuario se toma del repositorio LDAP. No es necesario cuando {{ site.data.keys.mf_server }} se va a desplegar en un nodo único del perfil completo de WebSphere Application Server.</li></ul> | 
+| install_console | Si debe desplegarse {{ site.data.keys.mf_console }} en el nodo MobileFirst Platform Server. Valor predeterminado: Seleccionado. (Recuadro de verificación) |
+| WAS\_admin\_user | Opcional. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was_admin del servidor autónomo en la plantilla de patrón. Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was_admin del gestor de despliegue en la plantilla de patrón. | 
+| WAS\_admin\_password | Opcional. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was\_admin\_password del servidor autónomo en la plantilla de patrón. Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was\_admin\_password del gestor de despliegue en la plantilla de patrón. | 
+| server_hostname | Obligatorio. Nombre de host de {{ site.data.keys.mf_server }} o del gestor de despliegue. Correlacionado con el atributo de salida de host del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. | 
+| server\_farm\_mode | Obligatorio. Si debe desplegarse {{ site.data.keys.mf_server }} en el nodo granja de servidores. Debe estar seleccionado para una topología de granja de servidores y debe estar deseleccionado para una topología autónoma. Valor predeterminado: establecer según la topología definida en la plantilla de patrón. | 
+| webserver_ip | Opcional. Cuando se despliega IBM HTTP servers en la plantilla de patrón, este parámetro se correlaciona con el atributo de salida IP de IBM HTTP servers. | 
+| LDAP_TYPE | (Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios. Uno de los siguientes valores:<ul>None: La conexión LDAP está inhabilitada. Cuando este valor está seleccionado, todos los demás parámetros LDAP se tratan como solo marcadores.</li><li>TivoliDirectoryServer: Seleccione este valor si el repositorio LDAP es IBM Tivoli Directory Server</li><li>ActiveDirectory: Seleccione este valor si el repositorio LDAP es Microsoft Active Directory</li></ul>{:/}Valor predeterminado: None. | 
+| LDAP_IP | (Parámetro LDAP) Dirección IP del servidor LDAP. | 
+| LDAP_SSL_PORT | (Parámetro LDAP) Puerto LDAP para conexión segura. | 
+| LDAP_PORT | (Parámetro LDAP) Puerto LDAP para conexión no segura. | 
+| BASE_DN | (Parámetro LDAP) DN base. | 
+| BIND_DN | (Parámetro LDAP) Bind DN. | 
+| BIND_PASSWORD | (Parámetro LDAP) Contraseña de Bind DN. | 
+| REQUIRE_SSL | (Parámetro LDAP) Defínalo en true para una conexión segura al servidor LDAP.{::nomarkdown}<ul><li>Cuando está definido en true, LDAP\_SSL\_PORT se utiliza y CERT\_FILE\_PATH es necesario para localizar el archivo de certificación del servidor LDAP.</li><li>Cuando está definido en false, se utiliza LDAP_PORT.</li></ul>{:/}Valor predeterminado: false. | 
+| USER_FILTER | (Parámetro LDAP) Filtro de usuario que busca usuarios en un registro de usuarios existente. | 
+| GROUP_FILTER | (Parámetro LDAP) Filtro de grupo LDAP que busca grupos en un registro de usuarios existente. | 
+| LDAP\_REPOSITORY\_NAME | (Parámetro LDAP) Nombre de servidor LDAP. | 
+| CERT\_FILE\_PATH | (Parámetro LDAP) Vía de acceso de destino de la certificación de servidor LDAP cargada. Obligatorio cuando REQUIRE_SSL se establece en true. | 
+| mfpadmin | Rol de administración para {{ site.data.keys.mf_server }}. Uno de los siguientes valores:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
+| mfpdeployer | (Parámetro LDAP) Rol de desplegador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
+| mfpmonitor | (Parámetro LDAP) Rol de supervisor de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
+| mfpoperator | (Parámetro LDAP) Rol de operador de {{ site.data.keys.mf_server }}:<br/><br/>None<br/>Sin usuario.<br/><br/>AllAuthenticatedUsers<br/>Usuarios autenticados<br/><br/>Everyone<br/>Todos los usuarios.<br/><br/>Valor predeterminado: None. | 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
 Este paquete script despliega aplicaciones y adaptadores en {{ site.data.keys.mf_server }}. Debe instalarse después del paquete script MFP Server Runtime Deployment correspondiente que instaló el tiempo de ejecución donde se desplegarán la aplicación y el adaptador.
 
-|Parámetro |Descripción | 
+| Parámetro | Descripción | 
 |-----------|-------------|
-|artifact_dir |Obligatorio. Vía de acceso de instalación de la aplicación y el adaptador a desplegar. Está correlacionado con el atributo de salida target_path del componente de aplicación de {{ site.data.keys.product_adj }} en la plantilla de patrón. | 
-|admin_context |Obligatorio. Debe ser mfpadmin. | 
-|runtime_context |Obligatorio. Se alinea con la raíz de contexto de tiempo de ejecución especificada en el componente MFP Server Runtime Deployment. Se correlaciona con el atributo de salida runtime_contextRoot del componente MFP Server Runtime Deployment. | 
-|deployer_user |Obligatorio. Cuenta de usuario con privilegio de despliegue de aplicación y adaptador. Definido como parámetro a nivel de patrón en la plantilla de patrón. | 
-|deployer_password |Obligatorio. Contraseña de usuario con privilegio de despliegue de aplicación y adaptador. Definido como parámetro a nivel de patrón en la plantilla de patrón. | 
-|webserver_ip |Opcional. Cuando se despliega IBM HTTP servers en la plantilla de patrón, se correlaciona con el mismo atributo de salida de MFP Server Administration. | 
+| artifact_dir | Obligatorio. Vía de acceso de instalación de la aplicación y el adaptador a desplegar. Está correlacionado con el atributo de salida target_path del componente de aplicación de {{ site.data.keys.product_adj }} en la plantilla de patrón. | 
+| admin_context | Obligatorio. Debe ser mfpadmin. | 
+| runtime_context | Obligatorio. Se alinea con la raíz de contexto de tiempo de ejecución especificada en el componente MFP Server Runtime Deployment. Se correlaciona con el atributo de salida runtime_contextRoot del componente MFP Server Runtime Deployment. | 
+| deployer_user | Obligatorio. Cuenta de usuario con privilegio de despliegue de aplicación y adaptador. Definido como parámetro a nivel de patrón en la plantilla de patrón. | 
+| deployer_password | Obligatorio. Contraseña de usuario con privilegio de despliegue de aplicación y adaptador. Definido como parámetro a nivel de patrón en la plantilla de patrón. | 
+| webserver_ip | Opcional. Cuando se despliega IBM HTTP servers en la plantilla de patrón, se correlaciona con el mismo atributo de salida de MFP Server Administration. | 
 
 ### MFP Server Application Center
 {: #mfp-server-application-center }
 Este paquete script configura el servidor {{ site.data.keys.mf_app_center }} en un perfil completo de WebSphere Application Server o en un perfil de Liberty de WebSphere Application Server. Debe utilizarse con el servidor de perfil de Liberty de WebSphere Application Server o con el perfil completo de WebSphere Application Server (Servidor autónomo), MFP WAS SDK Level y MFP Server Prerequisite. Debe instalarse después del componente de software del perfil de Liberty o del servidor autónomo.
 
-|Parámetro |Descripción | 
+| Parámetro | Descripción | 
 |-----------|-------------|
-|WAS_ROOT  |Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty o servidor autónomo. | 
-|profile_name |El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida sa_profile_name del servidor autónomo. | 
-|db_instance |Nombre de la instancia de base de datos. Está correlacionado con el atributo de salida instancePort del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. | 
-|db_user |Nombre de usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_user del paquete script de MFP Administration DB en la plantilla de patrón. | 
-|db_name |Nombre de la base de datos de administración. Está correlacionado con el atributo de salida `db_name` del paquete script de MFP Administration DB en la plantilla de patrón. |
-|db_password |Contraseña del usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_password del paquete script de MFP Administration DB en la plantilla de patrón. | 
-|db_ip |Dirección IP del servidor DB donde está instalada la base de datos de administración. Está correlacionado con el atributo de salida IP del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. | 
-|db_port |Número de puerto del servidor DB donde está instalada la base de datos de administración. Está correlacionado con el atributo de salida instancePort del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. |
-|admin_user |Nombre de usuario con privilegio de administración de {{ site.data.keys.mf_server }}. <br/><br/>En la plantilla de patrón, está asociado con el parámetro con el mismo nombre en el paquete script de MFP Server Administration como un parámetro a nivel de patrón para asegurarse de que están establecidos en el mismo valor | 
-|admin_password |Contraseña de usuario administrativo.<br/><br/>En la plantilla de patrón, está asociado con el parámetro con el mismo nombre en el paquete script de MFP Server Administration como un parámetro a nivel de patrón para asegurarse de que están establecidos en el mismo valor | 
-|WAS\_admin\_user |Obligatorio para WebSphere Application Server. Opcional para WebSphere Application Server Liberty. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was_admin del servidor autónomo en la plantilla de patrón. <br/><br/>Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was_admin del gestor de despliegue en la plantilla de patrón. | 
-|WAS\_admin\_password |Obligatorio para WebSphere Application Server. Opcional para WebSphere Application Server Liberty. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was\_admin\_password del servidor autónomo en la plantilla de patrón. |
-|server_hostname |Nombre de host de {{ site.data.keys.mf_server }}. Está correlacionada con el atributo de salida de host del servidor de perfil de Liberty o servidor autónomo. |
-|LDAP_TYPE |(Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios: <br/><br/>None<br/>La conexión LDAP está inhabilitada. Cuando se establece, todos los demás parámetros LDAP se tratan como solo marcadores.<br/><br/>TivoliDirectoryServer<br/>Selecciónelo si el repositorio LDAP es un IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecciónelo si el repositorio LDAP es un Microsoft Active Directory.<br/><br/>Valor predeterminado: None.| 
-|LDAP_IP |(Parámetro LDAP). Dirección IP del servidor LDAP.| 
-|LDAP\_SSL\_PORT |(Parámetro LDAP) Puerto LDAP para conexión segura. | 
-|LDAP_PORT |(Parámetro LDAP) Puerto LDAP para conexión no segura. | 
-|BASE_DN |(Parámetro LDAP) DN base.| 
-|BIND_DN |(Parámetro LDAP) Bind DN.| 
-|BIND_PASSWORD |(Parámetro LDAP) Contraseña de Bind DN.| 
-|REQUIRE_SSL |(Parámetro LDAP) Defínalo en true para una conexión segura al servidor LDAP.{::nomarkdown}<ul><li>Cuando está definido en true, se utiliza LDAP_SSL_PORT y CERT_FILE_PATH es necesario para localizar el archivo de certificación del servidor LDAP.</li><li>Cuando está definido en false, se utiliza LDAP_PORT.</li></ul>Valor predeterminado: false.| 
-|USER_FILTER |(Parámetro LDAP) Filtro de usuario LDAP que busca usuarios en un registro de usuarios existente. | 
-|GROUP_FILTER |(Parámetro LDAP) Filtro de grupo LDAP que busca grupos en un registro de usuarios existente. | 
-|LDAP\_REPOSITORY\_NAME |(Parámetro LDAP) Nombre de servidor LDAP. | 
-|CERT\_FILE\_PATH |(Parámetro LDAP) Vía de acceso de destino de la certificación de servidor LDAP cargada. Obligatorio cuando REQUIRE_SSL se establece en true. | 
-|appcenteradmin |Rol de administración para {{ site.data.keys.mf_app_center }}. Utilice uno de los siguientes valores:<ul><li>None</li><li>Sin usuario</li><li>AllAuthenticatedUsers</li>Usuarios autenticados</li><li>Everyone</li><li>Todos los usuarios</li></ul>{:/}Valor predeterminado: None | 
+| WAS_ROOT | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server. En las plantillas de patrón, se correlaciona con el atributo de salida `install_directory` del servidor de perfil de Liberty o servidor autónomo. | 
+| profile_name | El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida sa_profile_name del servidor autónomo. | 
+| db_instance | Nombre de la instancia de base de datos. Está correlacionado con el atributo de salida instancePort del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. | 
+| db_user | Nombre de usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_user del paquete script de MFP Administration DB en la plantilla de patrón. | 
+| db_name | Nombre de la base de datos de administración. Está correlacionado con el atributo de salida `db_name` del paquete script de MFP Administration DB en la plantilla de patrón. |
+| db_password | Contraseña del usuario que creó la base de datos de administración. Está correlacionado con el atributo de salida db_password del paquete script de MFP Administration DB en la plantilla de patrón. | 
+| db_ip | Dirección IP del servidor DB donde está instalada la base de datos de administración. Está correlacionado con el atributo de salida IP del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. | 
+| db_port | Número de puerto del servidor DB donde está instalada la base de datos de administración. Está correlacionado con el atributo de salida instancePort del paquete script del componente de software del servidor de base de datos en la plantilla de patrón.|
+| admin_user | Nombre de usuario con privilegio de administración de {{ site.data.keys.mf_server }}.<br/><br/>En la plantilla de patrón, está asociado con el parámetro con el mismo nombre en el paquete script de MFP Server Administration como un parámetro a nivel de patrón para asegurarse de que están establecidos en el mismo valor | 
+| admin_password | Contraseña de usuario administrativo.<br/><br/>En la plantilla de patrón, está asociado con el parámetro con el mismo nombre en el paquete script de MFP Server Administration como un parámetro a nivel de patrón para asegurarse de que están establecidos en el mismo valor | 
+| WAS\_admin\_user | Obligatorio para WebSphere Application Server. Opcional para WebSphere Application Server Liberty. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was_admin del servidor autónomo en la plantilla de patrón.<br/><br/>Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was_admin del gestor de despliegue en la plantilla de patrón. | 
+| WAS\_admin\_password | Obligatorio para WebSphere Application Server. Opcional para WebSphere Application Server Liberty. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was\_admin\_password del servidor autónomo en la plantilla de patrón. |
+| server_hostname | Nombre de host de {{ site.data.keys.mf_server }}. Está correlacionada con el atributo de salida de host del servidor de perfil de Liberty o servidor autónomo. |
+| LDAP_TYPE | (Parámetro LDAP) Obligatorio. Tipo de servidor LDAP de su registro de usuarios:<br/><br/>None<br/>La conexión LDAP está inhabilitada. Cuando se establece, todos los demás parámetros LDAP se tratan como solo marcadores.<br/><br/>TivoliDirectoryServer<br/>Selecciónelo si el repositorio LDAP es un IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecciónelo si el repositorio LDAP es un Microsoft Active Directory.<br/><br/>Valor predeterminado: None. | 
+| LDAP_IP | (Parámetro LDAP). Dirección IP del servidor LDAP. | 
+| LDAP\_SSL\_PORT | (Parámetro LDAP) Puerto LDAP para conexión segura. | 
+| LDAP_PORT | (Parámetro LDAP) Puerto LDAP para conexión no segura. | 
+| BASE_DN | (Parámetro LDAP) DN base. | 
+| BIND_DN | (Parámetro LDAP) Bind DN. | 
+| BIND_PASSWORD | (Parámetro LDAP) Contraseña de Bind DN. | 
+| REQUIRE_SSL | (Parámetro LDAP) Defínalo en true para una conexión segura al servidor LDAP.{::nomarkdown}<ul><li>Cuando está definido en true, se utiliza LDAP_SSL_PORT y CERT_FILE_PATH es necesario para localizar el archivo de certificación del servidor LDAP.</li><li>Cuando está definido en false, se utiliza LDAP_PORT.</li></ul>Valor predeterminado: false. | 
+| USER_FILTER | (Parámetro LDAP) Filtro de usuario LDAP que busca usuarios en un registro de usuarios existente. | 
+| GROUP_FILTER | (Parámetro LDAP) Filtro de grupo LDAP que busca grupos en un registro de usuarios existente. | 
+| LDAP\_REPOSITORY\_NAME | (Parámetro LDAP) Nombre de servidor LDAP. | 
+| CERT\_FILE\_PATH | (Parámetro LDAP) Vía de acceso de destino de la certificación de servidor LDAP cargada. Obligatorio cuando REQUIRE_SSL se establece en true. | 
+| appcenteradmin | Rol de administración para {{ site.data.keys.mf_app_center }}. Utilice uno de los siguientes valores:<ul><li>None</li><li>Sin usuario</li><li>AllAuthenticatedUsers</li>Usuarios autenticados</li><li>Everyone</li><li>Todos los usuarios</li></ul>{:/}Valor predeterminado: None | 
 
 ### MFP Server Prerequisite
 {: #mfp-server-prerequisite }
 Este paquete script incluye todos los requisitos previos necesarios para instalar {{ site.data.keys.mf_server }}, incluidos el controlador JDBC de DB2 y Apache Ant. El paquete script debe utilizarse con el componente de software del perfil de Liberty de WebSphere Application Server o el componente de software de perfil completo de WebSphere Application Server (nombre de visualización: Servidor autónomo), y debe instalarse después del componente de software del servidor pero antes que cualquier otro paquete script MFP* en el nodo MobileFirst Platform Server.
 
-|Parámetro |Descripción |
+| Parámetro | Descripción |
 |-----------|-------------|
-|Ninguno |Sin parámetros para este paquete script. | 
+| Ninguno | Sin parámetros para este paquete script. | 
 
 ### MFP Server Runtime Deployment
 {: #mfp-server-runtime-deployment }
-Este paquete script instala el tiempo de ejecución de {{ site.data.keys.product }} en un perfil completo de WebSphere Application Server o un servidor de perfil de Liberty de WebSphere Application Server con {{ site.data.keys.mf_console }} instalado. El paquete script también configura la conexión a {{ site.data.keys.mf_analytics_server }}. Debe instalarse antes del paquete script de MFP Server Administration. 
+Este paquete script instala el tiempo de ejecución de {{ site.data.keys.product }} en un perfil completo de WebSphere Application Server o un servidor de perfil de Liberty de WebSphere Application Server con {{ site.data.keys.mf_console }} instalado. El paquete script también configura la conexión a {{ site.data.keys.mf_analytics_server }}. Debe instalarse antes del paquete script de MFP Server Administration.
 
-|Parámetro |Descripción |
+| Parámetro | Descripción |
 |-----------|-------------|
-|WAS_ROOT  |Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server, o directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida install_directory del servidor de perfil de Liberty o servidor autónomo. | 
-|profile_name |Opcional. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida dmgr\_profile\_name del gestor de despliegue o sa\_profile\_name del servidor autónomo. |
-|NUMBER\_OF\_CLUSTERMEMBERS |Opcional. Solo aplicable para la plantilla de patrón de {{ site.data.keys.product }} (WAS ND). Especifica el número de miembros de clúster para que el clúster despliegue el tiempo de ejecución de MFP. Valor predeterminado: 2. | 
-|db_ip |Dirección IP del servidor DB donde está instalada la base de datos de tiempo de ejecución (y los informes opcionales). Está correlacionado con el atributo de salida IP del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. |
-|db_port |Número de puerto del servidor DB donde está instalada la base de datos de tiempo de ejecución (y los informes opcionales). Está correlacionado con el atributo de salida instancePort del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. |
-|admin_user |Obligatorio. Nombre de usuario con privilegio de administración de {{ site.data.keys.mf_server }}. En la plantilla de patrón, está asociado con el parámetro con el mismo nombre en el paquete script de MFP Server Administration como un parámetro a nivel de patrón para asegurarse de que están establecidos en el mismo valor | 
-|admin_password |Obligatorio. Contraseña de usuario administrativo.En la plantilla de patrón, está asociado con el parámetro con el mismo nombre en el paquete script de MFP Server Administration como un parámetro a nivel de patrón para asegurarse de que están establecidos en el mismo valor | 
-|runtime_path |Obligatorio. Vía de acceso de instalación del archivo WAR de tiempo de ejecución. Por ejemplo: puede correlacionarse con el atributo de salida target_path de MFP Server Runtime en la plantilla de patrón. | 
-|runtime_contextRoot |Obligatorio. Raíz de contexto de tiempo de ejecución. Debe empezar con una barra inclinada, /; por ejemplo, "/HelloWorld". Está definido como parámetro a nivel de patrón en la plantilla de patrón. | 
-|rtdb_name |Obligatorio. Nombre de la base de datos de tiempo de ejecución. Está correlacionado con el atributo de salida `db_name` del paquete script de MFP Runtime DB en la plantilla de patrón. | 
-|rtdb_user |Obligatorio. Usuario que creó la base de datos de tiempo de ejecución. Está correlacionado con el atributo de salida `db_user` del paquete script de MFP Runtime DB en la plantilla de patrón. |
-|rtdb_password |Obligatorio. Contraseña del usuario que creó la base de datos de tiempo de ejecución. Está correlacionado con el atributo de salida `db_password` del paquete script de MFP Runtime DB en la plantilla de patrón. |
-|rptdb_name |Opcional. Nombre de la base de datos de informes. Está correlacionado con el atributo de salida `db_name` del paquete script de MFP Reports DB en la plantilla de patrón. Déjelo en blanco si no desea conectarse a una base de datos de informes. |
-|rptdb_user |Opcional. Usuario que creó la base de datos de informes. Está correlacionado con el atributo de salida `db_user` del paquete script de MFP Reports DB en la plantilla de patrón. | 
-|rptdb_password |Opcional. Contraseña del usuario que creó la base de datos de informes. Está correlacionado con el atributo de salida `db_password` del paquete script de MFP Reports DB en la plantilla de patrón. \ 
-|was\_admin\_user	|Opcional. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was_admin del servidor autónomo en la plantilla de patrón. Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was_admin del gestor de despliegue en la plantilla de patrón. |
-|was_admin_password |Opcional. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was_admin_password del servidor autónomo en la plantilla de patrón. Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was_admin_password del gestor de despliegue en la plantilla de patrón. | 
-|server_farm_mode |Obligatorio. Correlaciónelo con el mismo atributo de MFP Server Administration. | 
-|server_hostname |Obligatorio. Nombre de host de {{ site.data.keys.mf_server }}. Está correlacionado con el atributo de salida de host del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. |
-|analytics_ip |Opcional. Dirección IP del nodo de {{ site.data.keys.mf_analytics }} para habilitar la funcionalidad analítica en MFP Server Runtime. |
-|analytics_admin_user |Opcional. Nombre de administrador de {{ site.data.keys.mf_analytics_server }}. | 
-|analytics_admin_password |Opcional. Contraseña de administrador de {{ site.data.keys.mf_analytics_server }}. | 
+| WAS_ROOT | Obligatorio. Directorio de instalación del perfil de Liberty de WebSphere Application Server o perfil completo de WebSphere Application Server en el nodo de MobileFirst Platform Server, o directorio de instalación del gestor de despliegue en el nodo DmgrNode. En las plantillas de patrón, se correlaciona con el atributo de salida install_directory del servidor de perfil de Liberty o servidor autónomo. | 
+| profile_name | Opcional. El nombre de perfil que contiene los archivos para el entorno de ejecución de WebSphere Application Server. En las plantillas de patrón, se correlaciona con el atributo de salida dmgr\_profile\_name del gestor de despliegue o sa\_profile\_name del servidor autónomo. |
+| NUMBER\_OF\_CLUSTERMEMBERS | Opcional. Solo aplicable para la plantilla de patrón de {{ site.data.keys.product }} (WAS ND). Especifica el número de miembros de clúster para que el clúster despliegue el tiempo de ejecución de MFP. Valor predeterminado: 2. | 
+| db_ip | Dirección IP del servidor DB donde está instalada la base de datos de tiempo de ejecución (y los informes opcionales). Está correlacionado con el atributo de salida IP del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. |
+| db_port | Número de puerto del servidor DB donde está instalada la base de datos de tiempo de ejecución (y los informes opcionales). Está correlacionado con el atributo de salida instancePort del paquete script del componente de software del servidor de base de datos en la plantilla de patrón. |
+| admin_user | Obligatorio. Nombre de usuario con privilegio de administración de {{ site.data.keys.mf_server }}. En la plantilla de patrón, está asociado con el parámetro con el mismo nombre en el paquete script de MFP Server Administration como un parámetro a nivel de patrón para asegurarse de que están establecidos en el mismo valor | 
+| admin_password | Obligatorio. Contraseña de usuario administrativo. En la plantilla de patrón, está asociado con el parámetro con el mismo nombre en el paquete script de MFP Server Administration como un parámetro a nivel de patrón para asegurarse de que están establecidos en el mismo valor | 
+| runtime_path | Obligatorio. Vía de acceso de instalación del archivo WAR de tiempo de ejecución. Por ejemplo: puede correlacionarse con el atributo de salida target_path de MFP Server Runtime en la plantilla de patrón. | 
+| runtime_contextRoot | Obligatorio. Raíz de contexto de tiempo de ejecución. Debe empezar con una barra inclinada, /; por ejemplo, "/HelloWorld". Está definido como parámetro a nivel de patrón en la plantilla de patrón. | 
+| rtdb_name | Obligatorio. Nombre de la base de datos de tiempo de ejecución. Está correlacionado con el atributo de salida `db_name` del paquete script de MFP Runtime DB en la plantilla de patrón. | 
+| rtdb_user | Obligatorio. Usuario que creó la base de datos de tiempo de ejecución. Está correlacionado con el atributo de salida `db_user` del paquete script de MFP Runtime DB en la plantilla de patrón. |
+| rtdb_password | Obligatorio. Contraseña del usuario que creó la base de datos de tiempo de ejecución. Está correlacionado con el atributo de salida `db_password` del paquete script de MFP Runtime DB en la plantilla de patrón. |
+| rptdb_name | Opcional. Nombre de la base de datos de informes. Está correlacionado con el atributo de salida `db_name` del paquete script de MFP Reports DB en la plantilla de patrón. Déjelo en blanco si no desea conectarse a una base de datos de informes. |
+| rptdb_user | Opcional. Usuario que creó la base de datos de informes. Está correlacionado con el atributo de salida `db_user` del paquete script de MFP Reports DB en la plantilla de patrón. | 
+| rptdb_password | Opcional. Contraseña del usuario que creó la base de datos de informes. Está correlacionado con el atributo de salida `db_password` del paquete script de MFP Reports DB en la plantilla de patrón. \ 
+| was\_admin\_user	| Opcional. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was_admin del servidor autónomo en la plantilla de patrón. Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was_admin del gestor de despliegue en la plantilla de patrón. |
+| was_admin_password | Opcional. Cuando se despliega {{ site.data.keys.mf_server }} en el perfil completo de WebSphere Application Server, se correlaciona con el atributo de salida was_admin_password del servidor autónomo en la plantilla de patrón. Cuando se despliega {{ site.data.keys.mf_server }} en WebSphere Application Server Network Deployment, se correlaciona con el atributo de salida was_admin_password del gestor de despliegue en la plantilla de patrón. | 
+| server_farm_mode | Obligatorio. Correlaciónelo con el mismo atributo de MFP Server Administration. | 
+| server_hostname | Obligatorio. Nombre de host de {{ site.data.keys.mf_server }}. Está correlacionado con el atributo de salida de host del servidor de perfil de Liberty, servidor autónomo o gestor de despliegue. |
+| analytics_ip | Opcional. Dirección IP del nodo de {{ site.data.keys.mf_analytics }} para habilitar la funcionalidad analítica en MFP Server Runtime. |
+| analytics_admin_user | Opcional. Nombre de administrador de {{ site.data.keys.mf_analytics_server }}. | 
+| analytics_admin_password | Opcional. Contraseña de administrador de {{ site.data.keys.mf_analytics_server }}. | 
 
 ## Actualización de {{ site.data.keys.mf_system_pattern }}
 {: #upgrading-mobilefirst-system-pattern }

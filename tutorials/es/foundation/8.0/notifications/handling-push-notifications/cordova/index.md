@@ -82,16 +82,16 @@ En Android Studio, añada la siguiente `actividad` a la etiqueta `application`:
 ### Lado del cliente
 {: #client-side }
 
-|Función Javascript |Descripción |
+| Función Javascript | Descripción |
 | --- | --- |
-|[`MFPPush.initialize(success, failure)`](#initialization) |Inicializa la instancia MFPPush. | 
-|[`MFPPush.isPushSupported(success, failure)`](#is-push-supported) |Indica si el dispositivo da soporte a notificaciones push. | 
-|[`MFPPush.registerDevice(options, success, failure)`](#register-device) |Registra el dispositivo con el servicio de notificaciones push. | 
-|[`MFPPush.getTags(success, failure)`](#get-tags) |Recupera todas las etiquetas disponibles en una instancia de servicio de notificaciones push. | 
-|[`MFPPush.subscribe(tag, success, failure)`](#subscribe) |Suscribe a una etiqueta concreta. | 
-|[`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) |Recupera las etiquetas de servicio a las que actualmente está suscrito. | 
-|[`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) |Anula la suscripción a una etiqueta concreta. | 
-|[`MFPPush.unregisterDevice(success, failure)`](#unregister) |Anula el registro del dispositivo del servicio notificaciones push. | 
+| [`MFPPush.initialize(success, failure)`](#initialization) | Inicializa la instancia MFPPush. | 
+| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Indica si el dispositivo da soporte a notificaciones push. | 
+| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registra el dispositivo con el servicio de notificaciones push. | 
+| [`MFPPush.getTags(success, failure)`](#get-tags) | Recupera todas las etiquetas disponibles en una instancia de servicio de notificaciones push. | 
+| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Suscribe a una etiqueta concreta. | 
+| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Recupera las etiquetas de servicio a las que actualmente está suscrito. | 
+| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Anula la suscripción a una etiqueta concreta. | 
+| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | Anula el registro del dispositivo del servicio notificaciones push. | 
 
 ### Implementación de API
 {: #api-implementation }

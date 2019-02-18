@@ -66,7 +66,7 @@ Se puede obtener una señal del {{ site.data.keys.mf_server }} **punto final de 
 **Para realizar pruebas**, puede utilizar Postman tal y como se describe a continuación.  
 En una situación real, implemente Postman en la lógica de fondo con la tecnología que desee.
 
-1.  Realice una solicitud **POST** a **http(s)://[ipaddress-or-hostname]: [port]/[runtime]/api/az/v1/token**.  
+1.  Realice una solicitud **POST** a **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**.  
     Por ejemplo: `http://localhost:9080/mfp/api/az/v1/token`
     - En un entorno de desarrollo, {{ site.data.keys.mf_server }} utiliza un tiempo de ejecución `mfp` preexistente.  
     - En un entorno de producción, sustituya el valor de tiempo de ejecución con el nombre de tiempo de ejecución.
