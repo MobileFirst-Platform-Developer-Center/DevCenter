@@ -9,11 +9,12 @@ downloads:
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visión general 
+## Visión general
 {: #overview }
-Ahora que se ha tratado la utilización básica de distintos tipos de adaptadores, es importante recordar que los adaptadores se pueden combinar para crear un procedimiento que utiliza distintos adaptadores para generar un resultado procesado (mashup). Existe la posibilidad de combinar distintos orígenes (distintos servidores HTTP, SQL, etc). 
+Ahora que se ha tratado la utilización básica de distintos tipos de adaptadores, es importante recordar que los adaptadores se pueden combinar para crear un procedimiento que utiliza distintos adaptadores para generar un resultado procesado (mashup). Existe la posibilidad de combinar distintos orígenes (distintos servidores HTTP, SQL, etc).
 
-En teoría, desde el lado del cliente, puede realizar varias solicitudes de forma sucesiva, cada una dependiendo de la otra. También tenga en cuenta que crear esta lógica en el lado del servidor podría ser más fácil y claro. 
+En teoría, desde el lado del cliente, puede realizar varias solicitudes de forma sucesiva, cada una dependiendo de la otra.
+También tenga en cuenta que crear esta lógica en el lado del servidor podría ser más fácil y claro.
 
 #### Ir a
 {: #jump-to}
@@ -28,9 +29,9 @@ En teoría, desde el lado del cliente, puede realizar varias solicitudes de form
 ### Llamada a un procedimiento de adaptador JavaScript desde otro adaptador JavaScript
 {: #calling-a-javascript-adapter-procedure-from-a-javascript-adapter }
 
-Cuando se llama a un procedimiento de adaptador de JavaScript desde otro adaptador JavaScript utilice la API `MFP.Server.invokeProcedure(invocationData)`. Esta API permite invocar a un procedimiento en cualquiera de sus adaptadores JavaScript. `MFP.Server.invokeProcedure(invocationData)` devuelve el objeto resultado recuperado del procedimiento al que se llama. 
+Cuando se llama a un procedimiento de adaptador de JavaScript desde otro adaptador JavaScript utilice la API `MFP.Server.invokeProcedure(invocationData)`. Esta API permite invocar a un procedimiento en cualquiera de sus adaptadores JavaScript. `MFP.Server.invokeProcedure(invocationData)` devuelve el objeto resultado recuperado del procedimiento al que se llama.
 
-La firma de la función `invocationData` es:   
+La firma de la función `invocationData` es:  
 `MFP.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
 
 Por ejemplo:
@@ -44,7 +45,7 @@ MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions
 ## API de adaptador Java
 {: #java-adapter-api }
 
-Antes de poder llamar a otro adaptador, se debe asignar AdaptersAPI a una variable: 
+Antes de poder llamar a otro adaptador, se debe asignar AdaptersAPI a una variable:
 
 ```java
 @Context
@@ -54,7 +55,8 @@ AdaptersAPI adaptersAPI;
 ### Llamada a un adaptador Java desde otro adaptador Java
 {: #calling-a-java-adapter-from-a-java-adapter }
 
-Utilice la API `executeAdapterRequest` para llamar a un procedimiento de adaptador desde un adaptador Java. Esta llamada devuelve un objeto `HttpResponse`. 
+Utilice la API `executeAdapterRequest` para llamar a un procedimiento de adaptador desde un adaptador Java.
+Esta llamada devuelve un objeto `HttpResponse`.
 
 ```java
 HttpUriRequest req = new HttpGet(JavaAdapterProcedureURL);
@@ -65,7 +67,7 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ### Llamada a un procedimiento de adaptador JavaScript desde un adaptador Java
 {: calling-a-javascript-adapter-procedure-from-a-java-adapter }
  
-Al llamar a un procedimiento de adaptador JavaScript desde un adaptador Java utilice tanto la API `executeAdapterRequest` como la API `createJavascriptAdapterRequest` que crea un `HttpUriRequest` para pasar como un parámetro a la llamada `executeAdapterRequest`. 
+Al llamar a un procedimiento de adaptador JavaScript desde un adaptador Java utilice tanto la API `executeAdapterRequest` como la API `createJavascriptAdapterRequest` que crea un `HttpUriRequest` para pasar como un parámetro a la llamada `executeAdapterRequest`.
 
 ```java
 HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
@@ -76,39 +78,39 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ## Ejemplo de mashup de datos
 {: #data-mashup-example }
 
-El siguiente ejemplo muestra como realizar un mashup de datos desde dos orígenes de datos, una *tabla de base de datos* y desde *Fixer.io (un servicio de conversión de monedas y tipos de cambio)* para devolver la secuencia de datos a la aplicación como un objeto individual. 
+El siguiente ejemplo muestra como realizar un mashup de datos desde dos orígenes de datos, una *tabla de base de datos* y desde *Fixer.io (un servicio de conversión de monedas y tipos de cambio)* para devolver la secuencia de datos a la aplicación como un objeto individual.
 
 En este ejemplo utilizaremos dos adaptadores:
 
-* Adaptador SQL: 
-  * Extrae una lista de monedas de una tabla de base de datos de monedas. 
+* Adaptador SQL:
+  * Extrae una lista de monedas de una tabla de base de datos de monedas.
   * El resultado contiene la lista de monedas. Cada moneda tendrá un identificador, un símbolo y un nombre. Por ejemplo: {3, EUR, Euro}
-  * Este adaptador también tendrá un procedimiento que llamará al adaptador HTTP pasando 2 parámetros, una moneda base y una moneda de destino para recuperar el tipo de cambio actualizado. 
-* Adaptador HTTP: 
-  * Conectar al servicio Fixer.io. 
-  * Extraer y actualizar la tasa de cambio de las monedas solicitadas que se recuperan como parámetros a través del adaptador SQL. 
+  * Este adaptador también tendrá un procedimiento que llamará al adaptador HTTP pasando 2 parámetros, una moneda base y una moneda de destino para recuperar el tipo de cambio actualizado.
+* Adaptador HTTP:
+  * Conectar al servicio Fixer.io.
+  * Extraer y actualizar la tasa de cambio de las monedas solicitadas que se recuperan como parámetros a través del adaptador SQL.
 
-Con posterioridad, los datos combinados se devuelven a la aplicación para que esta los visualice. 
+Con posterioridad, los datos combinados se devuelven a la aplicación para que esta los visualice.
 
 ![Diagrama de mashup de adaptadores](AdaptersMashupDiagram.jpg)
 
-El ejemplo que se proporciona en esta guía de aprendizaje muestra la implementación de este escenario utilizando 3 tipos de mashup diferentes.   
-En cada uno de ellos los nombres de los adaptadores son ligeramente diferentes.   
-A continuación se muestra una lista de tipos de mashup y los correspondientes nombres de adaptador: 
+El ejemplo que se proporciona en esta guía de aprendizaje muestra la implementación de este escenario utilizando 3 tipos de mashup diferentes.  
+En cada uno de ellos los nombres de los adaptadores son ligeramente diferentes.  
+A continuación se muestra una lista de tipos de mashup y los correspondientes nombres de adaptador:
 
-|Escenario |Nombre de adaptador SQL|Nombre de adaptador HTTP |  
+| Escenario                                         |      Nombre de adaptador SQL        |  Nombre de adaptador HTTP    |  
 |--------------------------------------------------|------------------------------|-----------------------|
-|Adaptador **JavaScript** → Adaptador **JavaScript** |SQLAdapterJS                 |HTTPAdapterJS         |  
-|Adaptador **Java** → Adaptador **JavaScript** |SQLAdapterJava               |HTTPAdapterJS         |  
-|Adaptador **Java** → Adaptador **Java** |SQLAdapterJava               |HTTPAdapterJava       |
+| Adaptador **JavaScript** → Adaptador **JavaScript**  | SQLAdapterJS                 | HTTPAdapterJS         |  
+| Adaptador **Java** → Adaptador **JavaScript**        | SQLAdapterJava               | HTTPAdapterJS         |  
+| Adaptador **Java** → Adaptador **Java**              | SQLAdapterJava               | HTTPAdapterJava       |
 
 
-### Flujo de ejemplo de mashup 
+### Flujo de ejemplo de mashup
 {: #mashup sample flow }
 
 **1. Crear un procedimiento / llamada de adaptador que crea una solicitud a un punto final de fondo para las monedas solicitadas y recupera los correspondientes datos: **  
 
-XML (Adaptador HTTPAdapterJS): 
+XML (Adaptador HTTPAdapterJS):
 
 ```xml
 <connectivity>
@@ -121,7 +123,7 @@ XML (Adaptador HTTPAdapterJS):
 </connectivity>
 ```
 
-JavaScript (Adaptador HTTPAdapterJS): 
+JavaScript (Adaptador HTTPAdapterJS):
 
 ```javascript
 function getExchangeRate(fromCurrencySymbol, toCurrencySymbol) {
@@ -139,7 +141,7 @@ function getPath(from, to) {
 }
 ```
 
-(Adaptador HTTPAdapterJava) 
+(Adaptador HTTPAdapterJava)
 
 ```java
 @GET
@@ -164,9 +166,9 @@ private Response execute(HttpUriRequest req) throws IOException, IllegalStateExc
 }
 ```
 
-**2. Crear un procedimiento que recupera los registros de monedas de la base de datos y devuelve un resultSet / JSONArray a la aplicación: **  
+**2. Crear un procedimiento que recupera los registros de monedas de la base de datos y devuelve un resultSet / JSONArray a la aplicación: **
 
-(Adaptador SQLAdapterJS) 
+(Adaptador SQLAdapterJS)
 
 ```javascript
 var getCurrenciesListStatement = "SELECT id, symbol, name FROM currencies;";
@@ -208,7 +210,7 @@ public JSONArray getCurrenciesList() throws SQLException, IOException {
 
 **3. Crear un procedimiento que llama al procedimiento HTTPAdapter (que se crea en el paso 1) con la moneda base y la moneda de destino: **
 
-(Adaptador SQLAdapterJS) 
+(Adaptador SQLAdapterJS)
 
 ```javascript
 function getExchangeRate(fromId, toId) {
@@ -305,28 +307,26 @@ public JSONObject getExchangeRate_JavaToJS(@QueryParam("fromCurrencyId") Integer
 [
 Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) el proyecto Cordova.
 
+**Nota:** el lado del cliente de la aplicación de ejemplo es para aplicaciones Cordova, sin embargo el código del lado del servidor en los adaptadores se aplica a todas las plataformas.
 
-**Nota:** el lado del cliente de la aplicación de ejemplo es para aplicaciones Cordova, sin embargo el código del lado del servidor en los adaptadores se aplica a todas las plataformas. 
-
-### Uso de ejemplo 
+### Uso de ejemplo
 {: #sample-usage }
 
-#### Configuración de adaptador 
+#### Configuración de adaptador
 {: #adapter-setup }
 
 Encontrará un ejemplo de lista de monedas en SQL en el proyecto Maven del adaptador proporcionado (ubicado dentro del proyecto Cordova), bajo `Utils/mobilefirstTraining.sql`.
 
-1. Ejecute el script .sql script en su base de datos SQL. 
+1. Ejecute el script .sql script en su base de datos SQL.
 2. Utilice Maven, {{ site.data.keys.mf_cli }} o el IDE de su elección para [compilar y desplegar los adaptadores](../../adapters/creating-adapters/).
-
 3. Abra {{ site.data.keys.mf_console }}
-    - Pulse en el adaptador **SQLAdapterJS** y actualice las propiedades de conectividad de la base de datos.  
-    - Pulse en el adaptador **SQLAdapterJava** y actualice las propiedades de conectividad de la base de datos.  
+    - Pulse en el adaptador **SQLAdapterJS** y actualice las propiedades de conectividad de la base de datos.
+    - Pulse en el adaptador **SQLAdapterJava** y actualice las propiedades de conectividad de la base de datos.
 
-#### Configuración de la aplicación 
+#### Configuración de la aplicación
 {: #application-setup }
 
-1. Desde la línea de mandatos, vaya a la carpeta raíz del proyecto **CordovaApp**.  
-2. Añada una plataforma ejecutando el mandato `cordova platform add`. 
+1. Desde la línea de mandatos, vaya a la carpeta raíz del proyecto **CordovaApp**.
+2. Añada una plataforma ejecutando el mandato `cordova platform add`.
 3. Registre la aplicación ejecutando el mandato: `mfpdev app register`.
-4. Ejecute la aplicación Cordova con el mandato `cordova run`. 
+4. Ejecute la aplicación Cordova con el mandato `cordova run`.

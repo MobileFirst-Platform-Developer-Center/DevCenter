@@ -98,8 +98,8 @@ Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.
 2. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto Maven del adaptador y ejecute el mandato:
 
     ```bash
-   mfpdev adapter build
-   ```
+    mfpdev adapter build
+    ```
 
 3. Cuando finalice la construcción, despliéguelo desde {{ site.data.keys.mf_console }} con la acción **Acciones → Desplegar adaptador**. El adaptador se puede encontrar en la carpeta **[adapter]/target**.
 

@@ -9,26 +9,23 @@ downloads:
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visión general 
+## Visión general
 {: #overview }
 
 Un adaptador SQL se diseña con el propósito de comunicarse con un origen de datos SQL. Utilice consultas SQL simples o procedimientos almacenados.
 
-
 Para conectarse a una base de datos, el código JavaScript necesita un controlador de conector JDBC para el tipo de base de datos específico. El controlador del conector JDBC se debe descargar de forma independiente para el tipo de base de datos específico y añadirlo como una dependencia en su proyecto. Para obtener más información sobre cómo añadir una dependencia, consulte la sección de Dependencias en la guía de aprendizaje [Creación de adaptadores Java y JavaScript](../../creating-adapters/#dependencies).
 
-
-En esta guía de aprendizaje y en el ejemplo que lo acompaña, aprenderá a utilizar un adaptador para conectarse a una base de datos MySQL. 
+En esta guía de aprendizaje y en el ejemplo que lo acompaña, aprenderá a utilizar un adaptador para conectarse a una base de datos MySQL.
 
 **Requisito previo:** Asegúrese de leer primero la guía de aprendizaje [Adaptadores JavaScript](../).
-
 
 ## El archivo XML
 {: #the-xml-file }
 
 El archivo XML contiene los valores y metadatos.
 
-En el archivo **adapter.xml**, declare los siguientes parámetros: 
+En el archivo **adapter.xml**, declare los siguientes parámetros:
 
  * Clase de controlador JDBC
  * URL de base de datos
@@ -82,7 +79,7 @@ En el archivo **adapter.xml**, declare los siguientes parámetros:
 </connectionPolicy>
 {% endhighlight %}</li>
 
-                    <li><b>dataSourceJNDIName</b>: <i>Opcional.</i> Conecta al origen de datos mediante el nombre JNDI de un origen de datos que el servidor de aplicaciones proporciona. El adaptador toma la conexión de la agrupación de conexiones del servidor que está asociado con el nombre JNDI. Los servidores de aplicaciones proporcionan una forma de configurar orígenes de datos. Para obtener más información, consulte Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones.  Por ejemplo:
+                    <li><b>dataSourceJNDIName</b>: <i>Opcional.</i> Conecta al origen de datos mediante el nombre JNDI de un origen de datos que el servidor de aplicaciones proporciona. El adaptador toma la conexión de la agrupación de conexiones del servidor que está asociado con el nombre JNDI. Los servidores de aplicaciones proporcionan una forma de configurar orígenes de datos. Para obtener más información, consulte Instalación de {{ site.data.keys.mf_server }} en un servidor de aplicaciones. Por ejemplo:
 
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -96,7 +93,7 @@ En el archivo **adapter.xml**, declare los siguientes parámetros:
 </div>
 
 
-Con `connectionPolicy` configurado, declare un procedimiento en el archivo XML del adaptador. 
+Con `connectionPolicy` configurado, declare un procedimiento en el archivo XML del adaptador.
 
 ```js
 <procedure name="getAccountTransactions1"/>
@@ -105,8 +102,8 @@ Con `connectionPolicy` configurado, declare un procedimiento en el archivo XML d
 ## Implementación JavaScript
 {: #javascript-implementation }
 
-El archivo JavaScript del adaptador se utiliza para implementar la lógica del procedimiento.   
-Hay dos formas de ejecutar sentencias SQL: 
+El archivo JavaScript del adaptador se utiliza para implementar la lógica del procedimiento.  
+Hay dos formas de ejecutar sentencias SQL:
 
 * Consulta de sentencia SQL
 * Procedimiento almacenado SQL
@@ -114,10 +111,10 @@ Hay dos formas de ejecutar sentencias SQL:
 ### Consulta de sentencia SQL
 {: #sql-statement-query }
 
-1. Asigne su consulta SQL a una variable. Esto se debe realizar siempre fuera del ámbito de la función. 
+1. Asigne su consulta SQL a una variable. Esto se debe realizar siempre fuera del ámbito de la función.
 2. Añada parámetros, si es necesario.
-3. Utilice el método `MFP.Server.invokeSQLStatement` para llamar a consultas preparadas. 
-4. Devuelva el resultado a la aplicación o a otro procedimiento. 
+3. Utilice el método `MFP.Server.invokeSQLStatement` para llamar a consultas preparadas.
+4. Devuelva el resultado a la aplicación o a otro procedimiento.
 
    ```javascript
    // 1. Assign your SQL query to a variable (outside the function scope)
@@ -142,7 +139,7 @@ Hay dos formas de ejecutar sentencias SQL:
 ### Procedimiento almacenado SQL
 {: #sql-stored-procedure }
 
-Para ejecutar un procedimiento almacenado SQL, utilice el método `MFP.Server.invokeSQLStoredProcedure`. Especifique un nombre de procedimiento almacenado SQL como parámetro de invocación. 
+Para ejecutar un procedimiento almacenado SQL, utilice el método `MFP.Server.invokeSQLStoredProcedure`. Especifique un nombre de procedimiento almacenado SQL como parámetro de invocación.
 
 ```javascript
 // Invoke stored SQL procedure and return invocation result
@@ -158,7 +155,7 @@ function getAccountTransactions2(accountId){
 ### Utilización de varios parámetros
 {: #using-multiple-parameters }
 
-Cuando se utiliza un único parámetro o varios parámetros en una consulta SQL asegúrese de aceptar las variables en la función y pasarlas a los parámetros `invokeSQLStatement` o `invokeSQLStoredProcedure` en una **matriz**.  
+Cuando se utiliza un único parámetro o varios parámetros en una consulta SQL asegúrese de aceptar las variables en la función y pasarlas a los parámetros `invokeSQLStatement` o `invokeSQLStoredProcedure` en una **matriz**.
 
 ```javascript
 var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
@@ -179,7 +176,7 @@ function getAccountTransactions1(fromAccount, toAccount){
 ## Resultados de invocación
 {: #invocation-results }
 
-El resultado se recupera como un objeto JSON: 
+El resultado se recupera como un objeto JSON:
 
 ```json
 {
@@ -202,7 +199,7 @@ El resultado se recupera como un objeto JSON:
 }
 ```
 * La propiedad `isSuccessful` define si la invocación ha sido satisfactoria.
-* El objeto `resultSet` es una matriz con los registros devueltos. 
+* El objeto `resultSet` es una matriz con los registros devueltos.
  * Para acceder al objeto `resultSet` en el lado del cliente: `result.invocationResult.resultSet`
  * Para acceder al objeto `resultSet` en el lado del servidor: `result.ResultSet`
 
@@ -211,20 +208,15 @@ El resultado se recupera como un objeto JSON:
 
 [Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) el proyecto Maven Adapters.
 
+El proyecto Maven Adapters incluye el adaptador **JavaScriptSQL** descrito con anterioridad.  
+También se incluye un script SQL en la carpeta **Utils**.
 
-El proyecto Maven Adapters incluye el adaptador **JavaScriptSQL** descrito con anterioridad.
-  
-También se incluye un script SQL en la carpeta **Utils**. 
-
-### Uso de ejemplo 
+### Uso de ejemplo
 {: #sample-usage }
 
-* Ejecute el script .sql script en su base de datos SQL. 
+* Ejecute el script .sql script en su base de datos SQL.
 * Asegúrese de que el usuario `mobilefirst@%` tiene todos los permisos de acceso asignados.
-
 * Utilice Maven, {{ site.data.keys.mf_cli }} o el IDE de su elección para [compilar y desplegar el adaptador JavaScriptSQL](../../creating-adapters/).
-
 * Para probar o depurar un adaptador, consulte la guía de aprendizaje [Pruebas y depuración de adaptadores](../../testing-and-debugging-adapters).
 
-
-Al realizar pruebas, el valor de la cuenta se debería pasar en una matriz: `["12345"]`. 
+Al realizar pruebas, el valor de la cuenta se debería pasar en una matriz: `["12345"]`.

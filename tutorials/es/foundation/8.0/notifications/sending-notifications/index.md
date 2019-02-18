@@ -14,20 +14,31 @@ Las notificaciones entonces se pueden enviar a: todos los dispositivos (difusió
 
 #### Ir a
 {: #jump-to }
-* [Configuración de notificaciones](#setting-up-notifications)
-    * [Firebase Cloud Messaging](#firebase-cloud-messaging)
-    * [Servicio de notificaciones push de Apple](#apple-push-notifications-service)
-    * [Servicio de notificaciones push de Windows](#windows-push-notifications-service)
-    * [Servicio de notificación SMS](#sms-notification-service)
-    * [Correlaciones de ámbito](#scope-mapping)
-    * [Notificaciones autenticadas](#authenticated-notifications)
-* [Definición de etiquetas](#defining-tags)
-* [Envío de notificaciones](#sending-notifications)    
-    * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
-    * [API REST](#rest-apis)
-    * [Personalización de notificaciones](#customizing-notifications)
-* [Soporte de proxy](#proxy-support)
-* [Guías de aprendizaje con las que continuar](#tutorials-to-follow-next)
+- [Configuración de notificaciones](#setting-up-notifications)
+  - [Firebase Cloud Messaging](#firebase-cloud-messaging)
+    - [Notas](#notes)
+  - [Servicio de notificaciones push de Apple](#apple-push-notifications-service)
+    - [Notas](#notes-1)
+  - [Servicio de notificaciones push de Windows](#windows-push-notifications-service)
+  - [Servicio de notificación SMS](#sms-notification-service)
+  - [Correlaciones de ámbito](#scope-mapping)
+  - [Notificaciones autenticadas](#authenticated-notifications)
+- [Definición de etiquetas](#defining-tags)
+- [Envío de notificaciones](#sending-notifications)
+  - [{{ site.data.keys.mf_console }}](#sitedatakeysmfconsole)
+    - [Notificaciones de etiqueta](#tag-notifications)
+    - [Notificaciones de difusión](#broadcast-notifications)
+  - [API REST](#rest-apis)
+    - [Carga útil de notificación](#notification-payload)
+    - [Envío de la notificación](#sending-the-notification)
+  - [Personalización de notificaciones](#customizing-notifications)
+  - [Android](#android)
+  - [iOS](#ios)
+- [Soporte de HTTP/2 para notificaciones push de APN](#http2-support-for-apns-push-notifications)
+  - [Habilitación de HTTP/2](#enabling-http2)
+  - [Soporte de proxy para HTTP/2](#proxy-support-for-http2)
+- [Soporte de proxy](#proxy-support)
+- [Guías de aprendizaje con las que continuar](#tutorials-to-follow-next)
 
 ## Configuración de notificaciones
 {: #setting-up-notifications }
@@ -290,17 +301,17 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 {: #notification-payload }
 La solicitud puede contener las siguientes propiedades de carga útil:
 
-Propiedades de carga útil|Definición
+Propiedades de carga útil| Definición
 --- | ---
-message |Mensaje de alerta a enviar.
-settings |Los valores son los distintos atributos de la notificación.
-target |Conjunto de destinos: etiquetas, plataformas, dispositivos o ID de consumidor. Solo se puede especificar uno de los destinos.
-deviceIds |Matriz de los dispositivos representados por los identificadores de dispositivo. Los dispositivos con estos identificadores recibirán la notificación. Se trata de una notificación de difusión única.
-notificationType |Valor entero para indicar el canal (Push/SMS) utilizado para enviar el mensaje. Los valores permitidos son 1 (solo push), 2 (solo SMS) y 3 (push y SMS)
-platforms |Matriz de plataformas de dispositivo. Los dispositivos que se ejecuten en estas plataformas recibirán la notificación. Los valores soportados son (Apple/iOS), G (Google/Android) y M (Microsoft/Windows).
-tagNames |Matriz de etiquetas especificados como tagNames. Los dispositivos suscritos a estas etiquetas recibirán la notificación. Este tipo de destino se utiliza con notificaciones basadas en etiquetas.
-userIds |Matriz de usuarios representados por sus userIds para enviar la notificación. Se trata de una notificación de difusión única.
-phoneNumber |Número de teléfono utilizado para registrar el dispositivo y recibir notificaciones. Se trata de una notificación de difusión única.
+message | Mensaje de alerta a enviar.
+settings | Los valores son los distintos atributos de la notificación.
+target | Conjunto de destinos: etiquetas, plataformas, dispositivos o ID de consumidor. Solo se puede especificar uno de los destinos.
+deviceIds | Matriz de los dispositivos representados por los identificadores de dispositivo. Los dispositivos con estos identificadores recibirán la notificación. Se trata de una notificación de difusión única.
+notificationType | Valor entero para indicar el canal (Push/SMS) utilizado para enviar el mensaje. Los valores permitidos son 1 (solo push), 2 (solo SMS) y 3 (push y SMS)
+platforms | Matriz de plataformas de dispositivo. Los dispositivos que se ejecuten en estas plataformas recibirán la notificación. Los valores soportados son (Apple/iOS), G (Google/Android) y M (Microsoft/Windows).
+tagNames | Matriz de etiquetas especificados como tagNames. Los dispositivos suscritos a estas etiquetas recibirán la notificación. Este tipo de destino se utiliza con notificaciones basadas en etiquetas.
+userIds | Matriz de usuarios representados por sus userIds para enviar la notificación. Se trata de una notificación de difusión única.
+phoneNumber | Número de teléfono utilizado para registrar el dispositivo y recibir notificaciones. Se trata de una notificación de difusión única.
 
 **Ejemplo JSON de carga útil de notificaciones push**
 
@@ -405,6 +416,32 @@ En {{ site.data.keys.mf_console }} → **[su aplicación] → Push → Etiquetas
 * Sonido de notificación, carga útil personalizada, título de clave de acción, tipo de notificación y número de identificador.
 
 ![personalización de notificaciones push](customizing-push-notifications.png)
+
+## Soporte de HTTP/2 para notificaciones push de APN
+{: #http2-support-for-apns-push-notifications}
+
+El servicio de notificaciones push de Apple (APNs) admite una nueva API basada en el protocolo de red HTTP/2. El soporte para HTTP/2 proporciona muchos beneficios, entre ellos los que se listan a continuación:
+
+* Longitud de mensaje incrementada de 2 KB a 4 KB, lo que permite añadir contenido extra a las notificaciones.
+* Elimina la necesidad de varias conexiones entre el cliente y el servidor, cosa que mejora el rendimiento.
+* Soporte para el certificado SSL de cliente universal de notificaciones push.
+
+>Las notificaciones push de MobileFirst ahora dan soporte a las notificaciones push de APN basadas en HTTP/2 además de las notificaciones heredadas basadas en sockets TCP.
+
+### Habilitación de HTTP/2
+{: #enabling-http2}
+
+Las notificaciones basadas en HTTP/2 pueden habilitarse mediante una propiedad JNDI.
+```xml
+<jndiEntry jndiName="imfpush/mfp.push.apns.http2.enabled" value= "true"/>
+```
+
+>**Nota:** Si se añade la propiedad JNDI indicada, las notificaciones heredadas basadas en socket TCP no se utilizarán, y solamente se habilitarán las notificaciones basadas en HTTP/2.
+
+### Soporte de proxy para HTTP/2
+{: #proxy-support-for-http2}
+
+Las notificaciones basadas en HTTP/2 pueden habilitarse mediante una propiedad HTTP. Para habilitar el direccionamiento de notificaciones a través de un proxy, consulte [aquí](#proxy-support).
 
 ## Soporte de proxy
 {: #proxy-support }

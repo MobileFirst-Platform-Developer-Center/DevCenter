@@ -13,13 +13,13 @@ Esta guía de aprendizaje proporciona instrucciones paso a paso para configurar 
 
 El servicio de {{ site.data.keys.mf_bm_short }} ofrece las siguientes opciones de planes:
 
-1. **Desarrollador**: Este plan proporciona un {{ site.data.keys.mfound_server }} como una aplicación Cloud Foundry en un tiempo de ejecución de Liberty for Java. Los cargos relacionados con Liberty for Java se facturan aparte y no se incluyen en este plan. El plan no permite utilizar las bases de datos externas y está restringido para fines de desarrollo y prueba. La instancia del *plan de desarrollador* del servidor de {{ site.data.keys.mf_bm_short }} le permite registrar cualquier número de aplicaciones móviles para desarrollo y pruebas, pero limita el número de dispositivos conectados a 10 al día. <!--This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.-->
+1. **Desarrollador**: Este plan proporciona un {{ site.data.keys.mfound_server }} como una aplicación Cloud Foundry en un tiempo de ejecución de Liberty for Java. Los cargos relacionados con Liberty for Java se facturan aparte y no se incluyen en este plan. El plan no permite utilizar las bases de datos externas y está restringido para fines de desarrollo y prueba. Mobile Analytics se ofrece sin cargo adicional y los sucesos se conservan durante 6 meses. La instancia del *plan de desarrollador* del servidor de {{ site.data.keys.mf_bm_short }} le permite registrar cualquier número de aplicaciones móviles para desarrollo y pruebas, pero limita el número de dispositivos conectados a 10 al día. <!--This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.-->
 
     > **Nota:** El plan del desarrollador no ofrece una base de datos persistente, por lo tanto, asegúrese de que realiza una copia de seguridad, como se describe en la sección [Resolución de problemas](#troubleshooting).
 
-2. **Profesional por dispositivo**: Este plan permite a los usuarios crear, probar y ejecutar aplicaciones en producción. Se factura en función del número de dispositivos cliente conectados al día. Este plan da soporte a despliegues de gran tamaño y a la alta disponibilidad. Este plan requiere que tenga una instancia de servicio de IBM Db2 (cualquier plan que no sea el plan **Lite**) o Compose for PostgreSQL, que se crea y se factura por separado. Este plan suministra un servidor Mobile Foundation en Liberty for Java, empezando con un mínimo de 2 nodos de 1 GB. Los cargos relacionados con Liberty for Java se facturan aparte y no se incluyen como parte de este plan. <!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
+2. **Profesional por dispositivo**: Este plan permite a los usuarios crear, probar y ejecutar hasta 5 aplicaciones en producción. Mobile Analytics se ofrece sin cargo adicional y los sucesos se conservan durante 6 meses. Este plan da soporte a despliegues de gran tamaño y a la alta disponibilidad. Este plan requiere que tenga una instancia de servicio de IBM Db2 (cualquier plan que no sea el plan **Lite**) o Compose for PostgreSQL, que se crea y se factura por separado. Este plan crea un servidor de Mobile Foundation en *Liberty for Java*, empezando con un mínimo de 2 nodos de 1 GB. Los cargos relacionados con *Liberty for Java* se facturan aparte y no se incluyen como parte de este plan. <!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
 
-3. **Profesional 1 de aplicación**: Este plan permite a los usuarios crear y gestionar una aplicación móvil individual con un precio predecible, independientemente del número de dispositivos o de usuarios de la aplicación móvil. La aplicación móvil individual puede ser de varios tipos, tales como iOS, Android, Windows y Mobile Web. Este plan suministra un servidor Mobile Foundation en un entorno escalable como una aplicación Cloud Foundry en Liberty for Java, empezando con un mínimo de 2 nodos de 1 GB. Los cargos relacionados con Liberty for Java se facturan aparte y no se incluyen como parte de este plan. Este plan también requiere una instancia de servicio de IBM Db2 (cualquier plan que no sea el plan **Lite**) o Compose for PostgreSQL, que se crea y se factura por separado. <!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
+3. **Profesional 1 aplicación**: Este plan permite a los usuarios crear, probar y ejecutar aplicaciones móviles en Mobile Foundation en producción. Mobile Analytics se ofrece sin cargo adicional y los sucesos se conservan durante 6 meses. Se factura en función del número de dispositivos cliente conectados al día. Este plan da soporte a despliegues de gran tamaño y a la alta disponibilidad. Este plan requiere que tenga una instancia de servicio de IBM Db2 (cualquier plan que no sea el plan **Lite**) o Compose for PostgreSQL, que se crea y se factura por separado. Este plan crea un servidor de Mobile Foundation en *Liberty for Java*, empezando con un mínimo de 2 nodos de 1 GB. Los cargos relacionados con *Liberty for Java* se facturan aparte y no se incluyen como parte de este plan. <!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
 
 4. **Desarrollador Pro**: Este plan proporciona un {{ site.data.keys.mfound_server }} como una aplicación Cloud Foundry en un tiempo de ejecución de  Liberty for Java y permite a los usuarios desarrollar y probar cualquier número de aplicaciones móviles. Este plan requiere que tenga una instancia de servicio de **Db2** (cualquier plan que no sea el plan **Lite**). La instancia de servicio de Db2 se crea y se factura por separado. Este plan está limitado por tamaño y está pensado para ser utilizado en actividades de desarrollo y prueba y no en producción. Los cargos dependen del tamaño total del entorno. <!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_El plan **Desarrollador Pro** está ahora en desuso._
@@ -31,15 +31,14 @@ El servicio de {{ site.data.keys.mf_bm_short }} ofrece las siguientes opciones d
 
 #### Ir a:
 {: #jump-to}
-- [Visión general](#overview)
-    - [Ir a:](#jump-to)
-- [Configuración del servicio {{ site.data.keys.mf_bm_short }}](#setting-up-the--sitedatakeysmfbmshort--service)
+- [Configuración del servicio Mobile Foundation](#setting-up-the-mobile-foundation-service)
   - [Configuración del plan de *desarrollador*](#setting-up-the-developer-plan)
   - [Configuración del plan *Profesional de una aplicación* y *Profesional por dispositivo*](#setting-up-the-professional-1-application-and-professional-per-device-plan)
-- [Utilización del servicio {{ site.data.keys.mf_bm_short }}](#using-the--sitedatakeysmfbmshort--service)
+- [Utilización del servicio Mobile Foundation](#using-the-mobile-foundation-service)
   - [Configuración del servidor](#server-configuration)
   - [Configuración avanzada del servidor](#advanced-server-configuration)
-- [Aplicación de arreglos {{ site.data.keys.mfound_server }}](#applying--sitedatakeysmfoundserver--fixes)
+- [Migración del plan de servicio de Mobile Foundation](#migrating-mobile-foundation-service-plan)  
+- [Aplicación de arreglos en el servidor de Mobile Foundation](#applying-mobile-foundation-server-fixes)
 - [Acceso a los registros del servidor](#accessing-server-logs)
     - [Rastreo](#tracing)
 - [Resolución de problemas](#troubleshooting)
@@ -92,7 +91,7 @@ La creación del servicio {{ site.data.keys.mf_bm_short }} crea   {{ site.data.k
 
     ![Imagen de la configuración de {{ site.data.keys.mf_bm_short }} ](overview-page.png)
 
-## Utilización del servicio {{ site.data.keys.mf_bm_short }}
+## Utilización del servicio Mobile Foundation
 {: #using-the-mobile-foundation-service }
 
 Cuando se ejecuta {{ site.data.keys.mfound_server }} verá el panel de control siguiente:
@@ -176,8 +175,35 @@ Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 -->
 
-## Aplicar arreglos de {{ site.data.keys.mfound_server }}
-{: #applying-mobilefirst-server-fixes }
+## Migración del plan de servicio de Mobile Foundation
+{: #migrating-mobile-foundation-service-plan }
+
+Las instancias de Mobile Foundation creadas utilizando los planes en desuso deben actualizarse a los nuevos planes. Es posible que la actualización del plan también sea necesaria en función del uso de la instancia.
+
+### Caso de ejemplo de muestra: Migrar del plan Profesional por dispositivo al plan Profesional 1 aplicación
+
+1. En el panel de control de IBM Cloud, seleccione la instancia de servicio de IBM Mobile Foundation que desee migrar.
+2. Seleccione **Plan** en la navegación de la izquierda.
+   ![plan de Mobile Foundation existente](existing-plan.png)
+3. En los planes de tarifas de la lista, seleccione Professional 1 Application.
+![Plan de Mobile Foundation nuevo](new-plan.png)
+4. Pulse en el botón **Guardar** y confirme la migración del plan.
+     La migración a Professional 1 Application ya se ha completado y todos los datos existentes se conservan. La facturación se ha modificado y no hay tiempo de inactividad.
+5. Tras la migración del plan, es necesario volver a crear la instancia de Mobile Foundation desde el panel de control de servicio para que la configuración correcta entre en vigor. Esta actualización requiere un tiempo de inactividad breve. Deberá realizar una planificación para el tiempo de inactividad. Seleccione **Gestionar** desde la navegación de la izquierda y pulse **Volver a crear**.
+
+>**Nota:** Si está en uno de los planes en desuso, deberá migrar a un plan nuevo.
+
+### Migraciones de plan soportadas
+
+* El plan *Developer* en desuso solo se puede actualizar al nuevo plan *Developer*.
+* El plan *Developer Pro* (en desuso) solo se puede actualizar a los planes *Profesional por dispositivo* o *Profesional 1 aplicación*.
+* El plan *Profesional por capacidad* (en desuso) solo se puede actualizar a los planes *Profesional por dispositivo* o *Profesional 1 aplicación*.
+* El plan *Profesional por dispositivo* solo se puede actualizar al plan *Profesional 1 aplicación*.
+* El plan *Profesional 1 aplicación* solo se puede actualizar al plan *Profesional por dispositivo*.
+* No se ofrece soporte a la actualización del plan para el plan *Desarrollador* nuevo.
+
+## Aplicación de arreglos en el servidor de Mobile Foundation
+{: #applying-mobile-foundation-server-fixes }
 Las actualizaciones de los servicios de {{ site.data.keys.mf_bm }} se aplican de forma automática sin intervención humana, salvo aceptar que se lleve a cabo la actualización. Cuando está disponible una actualización, en la página Panel de control del servicio se muestra un banner con las instrucciones y los botones de acción.
 
 ## Acceso a los registros del servidor

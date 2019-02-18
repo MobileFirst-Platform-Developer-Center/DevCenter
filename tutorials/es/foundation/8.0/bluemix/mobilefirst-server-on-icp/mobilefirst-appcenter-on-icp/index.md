@@ -28,19 +28,19 @@ Para obtener más información sobre MobileFirst Application Center, consulte la
 ## Requisitos previos
 {: #prereqs}
 
-Debe tener una cuenta de {{ site.data.keys.prod_icp }} y debe haber configurado Kubernetes Cluster siguiendo la [documentación de  {{ site.data.keys.prod_icp }}](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html).
+Debe tener una cuenta de {{ site.data.keys.prod_icp }} y debe haber configurado Kubernetes Cluster siguiendo la [documentación de  {{ site.data.keys.prod_icp }}](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
 
 Necesita una base de datos preconfigurada para instalar y configurar gráficos de {{ site.data.keys.mf_app_center }} en {{ site.data.keys.prod_icp }}. Deberá proporcionar la información de base de datos para configurar el gráfico Helm de {{ site.data.keys.mf_app_center }}. Las tablas necesarias para {{ site.data.keys.mf_app_center }} se crearán en esta base de datos.
 
-> Bases de datos soportadas: DB2.
+> Bases de datos soportadas: DB2, Oracle, MySQL, PostgreSQL.
 
 Para gestionar los contenedores y las imágenes, debe instalar las herramientas siguientes en la máquina host como parte de la configuración de {{ site.data.keys.prod_icp }}:
 
 * Docker
-* IBM Cloud CLI (`bx`)
-* {{ site.data.keys.prod_icp }} (ICP) plugin for IBM Cloud CLI ( `bx pr` )
-* Kubernetes CLI (`kubectl`)
+* CLI de IBM Cloud (`cloudctl`)
+* CLI de Kubernetes (`kubectl`)
 * Helm (`helm`)
+
 
 ## Descargar el archivo Passport Advantage de IBM {{ site.data.keys.mf_app_center }}
 {: #download-the-ibm-mac-ppa-archive}
@@ -54,26 +54,26 @@ Los arreglos temporales para {{ site.data.keys.mf_app_center }} se pueden obtene
 ## Cargar el archivo PPA de IBM {{ site.data.keys.mf_app_center }} en {{ site.data.keys.prod_icp }}
 {: #load-the-ibm-mfpf-appcenter-ppa-archive}
 
-Antes de cargar el archivo PPA de {{ site.data.keys.product }}, debe configurar Docker. Consulte las instrucciones [aquí](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
+Antes de cargar el archivo PPA de {{ site.data.keys.product }}, debe configurar Docker. Consulte las instrucciones [aquí](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html).
 
 Siga los pasos indicados a continuación para cargar el archivo PPA en el clúster de {{ site.data.keys.prod_icp }}:
 
-  1. Inicie sesión en el clúster con IBM Cloud ICP plugin (`bx pr`).
-      >Consulte [Referencia de mandatos de CLI](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html) en la documentación de {{ site.data.keys.prod_icp }}.
+  1. Inicie sesión en el clúster con el plugin IBM Cloud ICP (`cloudctl`).
+      >Consulte [Referencia de mandatos de CLI](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) en la documentación de {{ site.data.keys.prod_icp }}.
 
       Por ejemplo:
       ```bash
-      bx pr login -a https://<ip>:<port>
+      cloudctl login -a https://<ip>:<port>
       ```
       Opcionalmente, si desea omitir la validación SSL, utilice el distintivo `--skip-ssl-validation` en el mandato anterior. Mediante esta opción, se solicitan los valores de `username` y `password` del punto final del clúster. Continúe con los pasos siguientes, una vez iniciada la sesión.
 
   2. Cargue el archivo PPA de {{ site.data.keys.product }} mediante el mandato siguiente:
       ```
-      bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      cloudctl load-ppa-archive --archive <nombre_archivado> [--clustername <nombre_clúster>] [--namespace <espacio_nombres>]
       ```
       *archive_name* de {{ site.data.keys.product }} es el nombre del archivo PPA descargado desde IBM Passport Advantage,
 
-      `--clustername` puede ignorarse si se ha seguido el paso anterior y se ha establecido el punto final del clúster como valor predeterminado para `bx pr`.
+      `--clustername` puede ignorarse si se ha seguido el paso anterior y se ha establecido el punto final del clúster como valor predeterminado para `cloudctl`.
 
   3. Después de cargar el archivo PPA, sincronice los repositorios; de este modo, se asegura de que los gráficos Helm figuren en el **Catálogo**. Puede realizar esta acción en la consola de gestión de {{ site.data.keys.prod_icp }}.<br/>
      * Seleccione **Administración > Repositorios**.

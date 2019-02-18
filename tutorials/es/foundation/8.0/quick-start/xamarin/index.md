@@ -74,27 +74,19 @@ En una ventana de navegador, abra {{ site.data.keys.mf_console }} cargando el UR
             try
                    {
 
-                       
-
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-
-                       
 
                        if (accessToken.Value != null && accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
 
-                           
-
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
 
-                           
-
-System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
+                           System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
                        }
                    }
                    catch (Exception e)
@@ -145,8 +137,6 @@ Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.
 * Si la aplicación se pudo conectar a {{ site.data.keys.mf_server }}, tendrá lugar una llamada de solicitud de recurso con el adaptador Java desplegado.
 
 La respuesta del adaptador se imprime entonces en la consola de Xamarin Studio.
-
-
 
 ![Imagen de una aplicación que ha llamado de forma satisfactoria a un recurso desde {{ site.data.keys.mf_server }}](console-output.png)
 

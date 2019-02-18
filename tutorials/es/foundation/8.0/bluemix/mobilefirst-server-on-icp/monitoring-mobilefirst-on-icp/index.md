@@ -43,7 +43,7 @@ La manera más sencilla de hacerlo es editar el objeto *configmap* que se desea 
   kubectl edit configmap mfp-prometheus-prometheus
   ```
 <br/>
-Este mandato mostrará el archivo YAML solicitada en el editor vi. Desplácese hasta el final del archivo e inserte el texto siguiente, inmediatamente antes de la línea `kind: ConfigMap`.
+Este mandato mostrará el archivo YAML solicitada en el editor vi.  Desplácese hasta el final del archivo e inserte el texto siguiente, inmediatamente antes de la línea `kind: ConfigMap`.
 
 Configuración de métricas de Mobile Foundation Server, fragmento de código YAML siguiente:<br/>
 
@@ -148,7 +148,7 @@ La importación de un panel Grafana desde un archivo JSON se realiza de la forma
 * Inicie Grafana desde el servicio de supervisión desplegado.<br/>
   <b>Cargas de trabajo -> Versiones de Helm -> `<name used for the helm release>`(ej.: mfp-prometheus) -> Iniciar)</b>
 
-* Descargue el archivo de panel JSON desde [GitHub](https://github.ibm.com/IBMPrivateCloud/charts/tree/master/stable/ibm-mfpf-server-prod/additionalFiles/ibm-mfpf-server-prod-grafanadashboard.json) en su estación de trabajo local.<br/>
+* Descargue el archivo de panel JSON desde [GitHub](https://github.ibm.com/IBMPrivateCloud/charts/tree/master/stable/ibm-mfpf-server-prod/additionalFiles/ibm-mfpf-server-prod-grafanadashboard.json) en su estación de trabajo local.   <br/>
 
 * Pulse el botón *Inicio* en la interfaz de Grafana y a continuación pulse **Importar panel**.<br/>
 
