@@ -20,7 +20,7 @@ Where an APAR number is listed, you can confirm that an interim fix has that fea
 
 ##### <span style="color:NAVY">**HTTP/2 Support for APNs Push Notifications**</span>
 
-Push Notifications in MobileFirst now supports the HTTP/2 based APNs Push Notifications along with the legacy TCP Socket based notifications. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
+Push Notifications in MobileFirst now supports the HTTP/2 based APNs Push Notifications along with the legacy TCP Socket based notifications. [Learn more]({{site.baseurl}}/tutorials/ru/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
 
 ##### <span style="color:NAVY">**React Native Push SDK released**</span>
 
