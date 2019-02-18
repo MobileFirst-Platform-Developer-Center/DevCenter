@@ -3,7 +3,7 @@ layout: tutorial
 title: Configuración de MobileFirst Server en IBM Cloud Kubernetes Cluster mediante scripts
 breadcrumb_title: Foundation on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
@@ -14,7 +14,7 @@ weight: 4
 Siga las instrucciones siguientes para configurar una instancia de {{ site.data.keys.mf_server }}, así como una instancia de {{ site.data.keys.mf_analytics }} en IBM Cloud. Para llevarlo a cabo, realice los pasos siguientes:
 
 * Cree un tipo de Kubernetes Cluster: Estándar (clúster de pago).
-* Configure el sistema host con las herramientas necesarias [Docker, Cloud Foundry CLI ( cf ), IBM Cloud CLI ( bx ), Container Service Plugin for IBM Cloud CLI ( bx cs ), Container Registry Plugin for IBM Cloud CLI ( bx cr ), Kubernetes CLI (kubectl)].
+* Configure el sistema host con las herramientas necesarias (Docker, Cloud Foundry CLI ( cf ), IBM Cloud CLI ( bx ), Container Service Plugin for IBM Cloud CLI ( bx cs ), Container Registry Plugin for IBM Cloud CLI ( bx cr ), Kubernetes CLI (kubectl)).
 * Cree una imagen Docker de {{ site.data.keys.mf_server }} y envíela por push al repositorio de IBM Cloud.
 * Finalmente, ejecutará la imagen de Docker en Kubernetes Cluster.
 
@@ -373,7 +373,7 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
                   Copie y pegue el mandato anterior, después de sustituir <em>my-cluster</em> por el nombre de clúster, establezca la variable de entorno de su terminal y pulse <b>Intro</b>.
                   </li>
-                  <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]: </b> Cree una <b>Reclamación de volumen persistente</b>. Esto se utilizará para la persistencia de datos de Analytics. Este es un paso de una sola vez. Puede reutilizar <b>PVC</b> si ya ha lo ha creado anteriormente. Edite el archivo <em>yaml</em> <b>args/mfpf-persistent-volume-claim.yaml</b> y, a continuación, ejecute el mandato.
+                  <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]:</b> Cree una <b>Reclamación de volumen persistente</b>. Esto se utilizará para la persistencia de datos de Analytics. Este es un paso de una sola vez. Puede reutilizar <b>PVC</b> si ya ha lo ha creado anteriormente. Edite el archivo <em>yaml</em> <b>args/mfpf-persistent-volume-claim.yaml</b> y, a continuación, ejecute el mandato.
                   Se deben sustituir todas las variables por sus valores antes de ejecutar el mandato <em>kubectl</em> siguiente.<br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
                   Anote el nombre de la <b>Reclamación de volumen persistente</b>, ya que deberá proporcionarlo en el paso siguiente.
                   </li>

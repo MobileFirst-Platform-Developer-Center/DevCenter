@@ -64,16 +64,16 @@ Si el ámbito de `push.mobileclient` está correlacionado con la **comprobación
 ### Lado del cliente
 {: #client-side }
 
-|Métodos de C Sharp                                                                                                |Descripción                                                             |
+| Métodos de C Sharp                                                                                                | Descripción                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-|[`Initialize()`](#initialization)                                                                            |Inicia MFPPush con el contexto proporcionado.                               |
-|[`IsPushSupported()`](#is-push-supported)                                                                    |Indica si el dispositivo da soporte a notificaciones push.                             |
-|[`RegisterDevice(JObject options)`](#register-device--send-device-token)                  |Registra el dispositivo con el servicio de notificaciones push.               |
-|[`GetTags()`](#get-tags)                                |Recupera las etiquetas disponibles en una instancia del servicio de notificaciones push. |
-|[`Subscribe(String[] Tags)`](#subscribe)     |Suscribe el dispositivo para las etiquetas especificadas.                          |
-|[`GetSubscriptions()`](#get-subscriptions)              |Recupera todas las etiquetas a las que el dispositivo está actualmente suscrito.               |
-|[`Unsubscribe(String[] Tags)`](#unsubscribe) |Anula la suscripción de una o varias etiquetas.                                  |
-|[`UnregisterDevice()`](#unregister)                     |Anula el registro del dispositivo del servicio notificaciones push.              |
+| [`Initialize()`](#initialization)                                                                            | Inicia MFPPush con el contexto proporcionado.                               |
+| [`IsPushSupported()`](#is-push-supported)                                                                    | Indica si el dispositivo da soporte a notificaciones push.                             |
+| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registra el dispositivo con el servicio de notificaciones push.               |
+| [`GetTags()`](#get-tags)                                | Recupera las etiquetas disponibles en una instancia del servicio de notificaciones push. |
+| [`Subscribe(String[] Tags)`](#subscribe)     | Suscribe el dispositivo para las etiquetas especificadas.                          |
+| [`GetSubscriptions()`](#get-subscriptions)              | Recupera todas las etiquetas a las que el dispositivo está actualmente suscrito.               |
+| [`Unsubscribe(String[] Tags)`](#unsubscribe) | Anula la suscripción de una o varias etiquetas.                                  |
+| [`UnregisterDevice()`](#unregister)                     | Anula el registro del dispositivo del servicio notificaciones push.              |
 
 #### Inicialización
 {: #initialization }

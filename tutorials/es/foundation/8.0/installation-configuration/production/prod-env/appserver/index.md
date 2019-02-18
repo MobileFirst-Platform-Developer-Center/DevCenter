@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Instalación de MobileFirst Server en un servidor de aplicaciones 
+title: Instalación de MobileFirst Server en un servidor de aplicaciones
 breadcrumb_title: Installing MobileFirst Server to an application server
 weight: 4
 ---
@@ -801,7 +801,7 @@ Copie la característica de usuario decodificador de contraseñas en el perfil d
 {% endhighlight %}
 
                 <p>El valor típico para la propiedad mfp.admin.endpoint es <b>*://*:*/the-adminContextRoot</b>.<br/>
-Para obtener más información sobre las propiedades JNDI, consulte <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propiedades JNDI para {{ site.data.keys.mf_console }}</a>.</p>
+                Para obtener más información sobre las propiedades JNDI, consulte <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propiedades JNDI para {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Roles de seguridad</h3>
                 <p>Declare los roles siguientes en el elemento <b>application-bnd</b> de la aplicación:</p>
@@ -1145,7 +1145,7 @@ Copie la característica de usuario decodificador de contraseñas en el perfil d
 {% endhighlight %}
 
                 <p>El valor típico para la propiedad mfp.admin.endpoint es <b>*://*:*/the-adminContextRoot</b>.<br/>
-Para obtener más información sobre las propiedades JNDI, consulte <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propiedades JNDI para {{ site.data.keys.mf_console }}</a>.</p>
+                Para obtener más información sobre las propiedades JNDI, consulte <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propiedades JNDI para {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Roles de seguridad</h3>
                 <p>Declare los roles siguientes en el elemento <b>application-bnd</b> de la aplicación:</p>
@@ -1404,7 +1404,7 @@ Opcionalmente, es posible que desee activar el dominio de memoria si los usuario
                 <h3>Propiedades JNDI obligatorias</h3>
                 <p>Debe definir la propiedad <b>mfp.admin.endpoint</b>. El valor típico para esta propiedad es <b>*://*:*/the-adminContextRoot</b>.
                 <br/><br/>
-Para obtener más información sobre las propiedades JNDI, consulte <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propiedades JNDI para {{ site.data.keys.mf_console }}</a>.</p>
+                Para obtener más información sobre las propiedades JNDI, consulte <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propiedades JNDI para {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Roles de seguridad</h3>
                 <p>Los roles de seguridad disponibles para la aplicación son:</p>
@@ -1686,7 +1686,7 @@ Para establecer la delegación del cargador de clases a último padre una vez qu
                 <br/><br/>
                 Debe definir la propiedad <b>mfp.admin.endpoint</b>. El valor típico para esta propiedad es <b>*://*:*/the-adminContextRoot</b>.
                 <br/><br/>
-Para obtener más información sobre las propiedades JNDI, consulte <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propiedades JNDI para {{ site.data.keys.mf_console }}</a>.</p>
+                Para obtener más información sobre las propiedades JNDI, consulte <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propiedades JNDI para {{ site.data.keys.mf_console }}</a>.</p>
 
                 <h3>Roles de seguridad</h3>
                 <p>Los roles de seguridad disponibles para la aplicación son:</p>
@@ -1879,7 +1879,7 @@ Cuando planifique una granja de servidores con la Herramienta de configuración 
                                     <li>Perfil de Liberty de WebSphere Application Server</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-Para saber qué versiones de los servidores de aplicaciones están soportadas, consulte <a href="../../../../product-overview/requirements">Requisitos del sistema</a>.
+                                Para saber qué versiones de los servidores de aplicaciones están soportadas, consulte <a href="../../../../product-overview/requirements">Requisitos del sistema</a>.
 
                                 <blockquote><b>Importante:</b> {{ site.data.keys.product }} sólo da soporte a granjas de servidores homogéneas. Una granja de servidores es homogénea cuando conecta el mismo tipo de servidores de aplicaciones. Intentar asociar distintos tipos de servidores de aplicaciones puede dar lugar a un comportamiento impredecible en el tiempo de ejecución. Por ejemplo, una granja de servidores con una mezcla de servidores de Apache Tomcat y servidores de perfil completo de WebSphere Application Server es una configuración no válida.</blockquote>
                             </li>
@@ -1931,12 +1931,12 @@ Cuando planifique una granja de servidores con tareas Ant, cree en primer lugar 
                                     <li>Perfil de Liberty de WebSphere Application Server</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-Para saber qué versiones de los servidores de aplicaciones están soportadas, consulte <a href="../../../../product-overview/requirements">Requisitos del sistema</a>.
+                                Para saber qué versiones de los servidores de aplicaciones están soportadas, consulte <a href="../../../../product-overview/requirements">Requisitos del sistema</a>.
 
                                 <blockquote><b>Importante:</b> {{ site.data.keys.product }} sólo da soporte a granjas de servidores homogéneas. Una granja de servidores es homogénea cuando conecta el mismo tipo de servidores de aplicaciones. Intentar asociar distintos tipos de servidores de aplicaciones puede dar lugar a un comportamiento impredecible en el tiempo de ejecución. Por ejemplo, una granja de servidores con una mezcla de servidores de Apache Tomcat y servidores de perfil completo de WebSphere Application Server es una configuración no válida.</blockquote>
                             </li>
                             <li>Configure tantos servidores autónomos como el número de miembros que desee en la granja de servidores.
-                        <br/><br/>
+                            <br/><br/>
                             Cada uno de estos servidores autónomos debe comunicarse con la misma base de datos. Debe asegurarse de que cualquier puerto que utilice cualquiera de estos servidores no lo utilice también otro servidor configurado en el mismo host. Esta restricción se aplica a los puertos utilizados por los protocolos HTTP, HTTPS, REST, SOAP y RMI.
                             <br/><br/>
                             Cada uno de estos servidores debe tener el servicio de administración de {{ site.data.keys.mf_server }}, el servicio de Live Update de {{ site.data.keys.mf_server }} y uno o varios tiempos de ejecución de {{ site.data.keys.product_adj }} desplegados.
@@ -2049,7 +2049,7 @@ Cuando planifique una granja de servidores, cree en primer lugar servidores aut�
                             <li>Perfil de Liberty de WebSphere Application Server</li>
                             <li>Apache Tomcat</li>
                         </ul>
-Para saber qué versiones de los servidores de aplicaciones están soportadas, consulte <a href="../../../../product-overview/requirements">Requisitos del sistema</a>.
+                        Para saber qué versiones de los servidores de aplicaciones están soportadas, consulte <a href="../../../../product-overview/requirements">Requisitos del sistema</a>.
 
                         <blockquote><b>Importante:</b> {{ site.data.keys.product }} sólo da soporte a granjas de servidores homogéneas. Una granja de servidores es homogénea cuando conecta el mismo tipo de servidores de aplicaciones. Intentar asociar distintos tipos de servidores de aplicaciones puede dar lugar a un comportamiento impredecible en el tiempo de ejecución. Por ejemplo, una granja de servidores con una mezcla de servidores de Apache Tomcat y servidores de perfil completo de WebSphere Application Server es una configuración no válida.</blockquote>
                     </li>
