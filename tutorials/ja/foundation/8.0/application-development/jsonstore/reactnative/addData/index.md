@@ -46,11 +46,11 @@ JSONStore コレクションにデータを追加するためのステップは�
     ```javascript
     var favourites = new JSONStoreCollection('favourites');
     ```
-2.  コレクションのオープン。新規作成したコレクションで何かを行うには、そのコレクションを開く必要があります。コレクションを開くには、WLJSONStore の `openCollections` API を呼び出します。以下のサンプル・コードを参照してください。
+2.  コレクションのオープン。新規作成したコレクションで何かを行うには、そのコレクションを開く必要があります。 コレクションを開くには、WLJSONStore の `openCollections` API を呼び出します。 以下のサンプル・コードを参照してください。
     ```javascript
     WLJSONStore.openCollections(['favourites']).then(data => { console.log(data); }).catch(err =>{ console.log(err); });
     ```
-3. コレクションへのデータの追加。コレクションを開いた後で、内側または外側からデータ・トランザクションを開始します。以下の API を使用して、開いたコレクションにデータを追加できます。
+3. コレクションへのデータの追加。コレクションを開いた後で、内側または外側からデータ・トランザクションを開始します。 以下の API を使用して、開いたコレクションにデータを追加できます。
     ```javascript
     var favCollection = new JSONStoreCollection('favourites');
     favCollection.addData(myJsonData)
