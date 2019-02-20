@@ -1,117 +1,117 @@
 ---
 layout: tutorial
-title: Setting up MobileFirst Application Center on IBM Cloud Kubernetes Cluster using scripts
+title: スクリプトを使用した IBM Cloud Kubernetes クラスター上の MobileFirst Application Center のセットアップ
 breadcrumb_title: AppCenter on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
->**Note:** Helm is the recommended approach to deploy software on Kubernetes Cluster. Learn about deploying [Mobile Foundation on IBM Cloud Kubernetes Cluster using helm charts](../../mobilefirst-server-on-kubernetes-using-helm).
+>**注:** Kubernetes クラスターにソフトウェアをデプロイする際の推奨されるアプローチは、Helm です。 [Helm チャートを使用した IBM Cloud Kubernetes クラスター上の Mobile Foundation](../../mobilefirst-server-on-kubernetes-using-helm) のデプロイについて学習してください。
 
-## Overview
+## 概説
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_app_center }} instance on IBM Cloud. To achieve this you will go through the following steps:
+下記の指示に従って、{{ site.data.keys.mf_app_center }} インスタンスを IBM Cloud 上で構成します。 これは、次のような手順で行います。
 
-* Create a Kubernetes Cluster of type: Standard (paid cluster).
-* Setup your host computer with the required tools (Docker, Cloud Foundry CLI ( cf ), IBM Cloud CLI ( bx ), Container Service Plugin for IBM Cloud CLI ( bx cs ), Container Registry Plugin for IBM Cloud CLI ( bx cr ), Kubernetes CLI (kubectl)).
-* Build a {{ site.data.keys.mf_app_center }} Docker image and push it to the IBM Cloud repository.
-* Finally, you will run the Docker image on a Kubernetes Cluster.
+* タイプ: 標準 (有料クラスター) の Kubernetes クラスターを作成します。
+* 以下の必要なツールを使用して、ホスト・コンピューターをセットアップします。Docker、Cloud Foundry CLI ( cf )、IBM Cloud CLI ( bx )、Container Service Plugin for IBM Cloud CLI ( bx cs )、Container Registry Plugin for IBM Cloud CLI ( bx cr )、Kubernetes CLI (kubectl)
+* {{ site.data.keys.mf_app_center }} Docker イメージをビルドし、それを IBM Cloud リポジトリーにプッシュします。
+* 最後に、Kubernetes クラスター上で Docker イメージを実行します。
 
->**Note:**  
+>**注:**  
 >
-* Windows OS is currently not supported for running these scripts.  
-* The {{ site.data.keys.mf_server }} Configuration tools cannot be used for deployments to IBM Containers.
+* Windows OS でのこれらのスクリプトの実行は現在サポートされていません。  
+* {{ site.data.keys.mf_server }} 構成ツールは IBM Containers へのデプロイメントには使用できません。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-- [Overview](#overview)
-        - [Jump to:](#jump-to)
-- [Register an account on IBM Cloud](#register-an-account-on-ibm-cloud)
-    - [IBM Cloud Dashboard](#ibm-cloud-dashboard)
-- [Set up your host machine](#set-up-your-host-machine)
-- [Create and setup a Kubernetes Cluster with IBM Cloud Container Service](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
-- [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the--sitedatakeysmfbmpkgname--archive)
-- [Prerequisites](#prerequisites)
-- [Setting Up the {{ site.data.keys.mf_app_center }} on Kubernetes Cluster with IBM Containers](#setting-up-the--sitedatakeysmfappcenter--on-kubernetes-cluster-with-ibm-containers)
-    - [Steps to apply the iFix:](#steps-to-apply-the-ifix)
-- [Removing the Container from IBM Cloud](#removing-the-container-from-ibm-cloud)
-- [Removing the Kubernetes deployments from IBM Cloud](#removing-the-kubernetes-deployments-from-ibm-cloud)
-- [Removing the database service configuration from IBM Cloud](#removing-the-database-service-configuration-from-ibm-cloud)
+- [概説](#overview)
+        - [ジャンプ先:](#jump-to)
+- [IBM Cloud でアカウントを登録する](#register-an-account-on-ibm-cloud)
+    - [IBM Cloud ダッシュボード](#ibm-cloud-dashboard)
+- [ホスト・マシンをセットアップする](#set-up-your-host-machine)
+- [IBM Cloud Container Service を使用して Kubernetes クラスターを作成およびセットアップする](#create-and-setup-a-kubernetes-cluster-with-ibm-cloud-container-service)
+- [{{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする](#download-the--sitedatakeysmfbmpkgname--archive)
+- [前提条件](#prerequisites)
+- [IBM Containers を使用して Kubernetes クラスター上の {{ site.data.keys.mf_app_center }} をセットアップする](#setting-up-the--sitedatakeysmfappcenter--on-kubernetes-cluster-with-ibm-containers)
+    - [iFix を適用するためのステップ:](#steps-to-apply-the-ifix)
+- [IBM Cloud からのコンテナーの削除](#removing-the-container-from-ibm-cloud)
+- [IBM Cloud からの Kubernetes デプロイメントの削除](#removing-the-kubernetes-deployments-from-ibm-cloud)
+- [IBM Cloud からのデータベース・サービス構成の削除](#removing-the-database-service-configuration-from-ibm-cloud)
 
-## Register an account on IBM Cloud
+## IBM Cloud でアカウントを登録する
 {: #register-an-account-on-ibmcloud }
-If you do not have an account yet, visit the [IBM Cloud website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You need to fill up a registration form before you can move on to the next step.
+まだアカウントをお持ちでない場合は、[IBM Cloud Web サイト](https://bluemix.net)にアクセスし、**「無料で開始」**、または**「登録」**をクリックします。 次のステップに進むため、登録フォームに記入する必要があります。
 
-### IBM Cloud Dashboard
+### IBM Cloud ダッシュボード
 {: #the-ibmcloud-dashboard }
-After signing in to IBM Cloud, you are presented with the IBM Cloud Dashboard, which provides an overview of the active IBM Cloud **space**. By default, this work area receives the name *dev*. You can create multiple work areas/spaces if needed.
+IBM Cloud にサインインすると IBM Cloud ダッシュボードが表示され、アクティブな IBM Cloud **スペース**の概略が示されます。 デフォルトでは、この作業領域の名前は「*dev*」です。 必要に応じて、複数の作業領域/スペースを作成できます。
 
-## Set up your host machine
+## ホスト・マシンをセットアップする
 {: #set-up-your-host-machine }
-To manage containers and images, you need to install the following tools:
+コンテナーとイメージを管理するには、以下のツールをインストールする必要があります。
 * Docker
 * IBM Cloud CLI (bx)
 * Container Service Plugin for IBM Cloud CLI ( bx cs )
 * Container Registry Plugin for IBM Cloud CLI ( bx cr )
 * Kubernetes CLI (kubectl)
 
-Refer to the IBM Cloud documentation for [steps to setup the prerequisite CLIs](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps).
+[前提条件の CLI をセットアップする手順](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps)については、IBM Cloud 資料を参照してください。
 
-## Create and setup a Kubernetes Cluster with IBM Cloud Container Service
+## IBM Cloud Container Service を使用して Kubernetes クラスターを作成およびセットアップする
 {: #setup-kube-cluster}
-Refer to the IBM Cloud documentation to [setup a Kubernetes Cluster on IBM Cloud](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli).
+[IBM Cloud 上の Kubernetes クラスターをセットアップする](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli)には、IBM Cloud の資料を参照してください。
 
->**Note:** Kubernetes Cluster Type: Standard (paid cluster) is required for deploying {{ site.data.keys.mf_bm_short }}.
+>**注:** {{ site.data.keys.mf_bm_short }} のデプロイには、Kubernetes クラスター・タイプ: 標準 (有料クラスター) が必要です。
 
-## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
+## {{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする
 {: #download-the-ibm-mfpf-container-8000-archive}
-To set up {{ site.data.keys.mf_app_center }} as a Kubernetes Cluster using IBM Cloud containers, you must first create an image that will later be pushed to IBM Cloud.<br/>
-Interim fixes for the MobileFirst Server on IBM Containers can be obtained from the [IBM Fix Central](http://www.ibm.com/support/fixcentral).<br/>
-Download the latest interim fix from Fix central. Kubernetes support is available from iFix **8.0.0.0-IF201708220656**.
+IBM Cloud Container を使用して、{{ site.data.keys.mf_app_center }} を Kubernetes クラスターとしてセットアップするには、まず、後で IBM Cloud にプッシュするイメージを作成する必要があります。<br/>
+IBM Containers 上の MobileFirst Server 用の暫定修正を [IBM Fix Central](http://www.ibm.com/support/fixcentral) から取得できます。<br/>
+Fix Central から、最新の暫定修正をダウンロードします。 Kubernetes サポートは、iFix **8.0.0.0-IF201708220656** 以降で使用可能です。
 
-The archive file contains the files for building an image (**dependencies** and **mfpf-libs**) and the files for building and deploying a {{ site.data.keys.mf_app_center }} on Kubernetes (bmx-kubernetes).
+このアーカイブ・ファイルには、イメージをビルドするためのファイル (**dependencies** と **mfpf-libs**)、Kubernetes 上で {{ site.data.keys.mf_app_center }} をビルドしてデプロイするためのファイル (bmx-kubernetes) が含まれています。
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click to read more about the archive file contents and available environment properties to use</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>クリックすると、アーカイブ・ファイルの内容と使用できる環境プロパティーについて、詳細情報が表示されます</b></a>
             </h4>
         </div>
 
         <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
-                <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
-                <h4>bmx-kubernetes folder</h4>
-                <p>Contains the customization files and scripts required to deploy to a Kubernetes Cluster with IBM Cloud Container Service.</p>
+                <img src="zip.png" alt="アーカイブ・ファイルのファイル・システム構成を示すイメージ" style="float:right;width:570px"/>
+                <h4>bmx-kubernetes フォルダー</h4>
+                <p>IBM Cloud Container Service を使用して Kubernetes クラスターにデプロイするために必要な、カスタマイズ・ファイルとスクリプトが含まれています。</p>
 
                 <h4>Dockerfile-mfp-appcenter</h4>
 
                 <ul>
-                    <li><b>Dockerfile-mfp-appcenter</b>: Text document that contains all the commands that are necessary to build the {{ site.data.keys.mf_app_center }} image.</li>
-                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts required to log into IBM Cloud, building a {{ site.data.keys.mf_app_center }} image and for pushing and running the image on IBM Cloud. You can choose to run the scripts interactively or by pre-configuring the configuration files, explained later. Other than the customizable args /*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
-                    <li><b>usr-mfp-appcenter</b> folder:
+                    <li><b>Dockerfile-mfp-appcenter</b>: {{ site.data.keys.mf_app_center }} イメージをビルドするのに必要なコマンドがすべて含まれているテキスト文書です。</li>
+                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。 また、IBM Cloud へのログイン、{{ site.data.keys.mf_app_center }} イメージのビルド、およびイメージのプッシュと IBM Cloud での実行に必要なスクリプトも含まれます。 スクリプトは、対話式に実行することも、後述のように、構成ファイルを事前に設定することで実行することもできます。 カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。 スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
+                    <li><b>usr-mfp-appcenter</b> フォルダー:
                         <ul>
-                            <li><b>bin</b> folder: Contains the script file (mfp-appcenter-init) that gets executed when the container starts. You can add your own custom code to be executed.</li>
-                            <li><b>config</b> folder: Contains the server configuration fragments (keystore, server properties, user registry) used by {{ site.data.keys.mf_app_center }}.</li>
-                            <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
-                            <li><b>ltpa.xml</b> - the configuration file defining the LTPA key and its password.</li>
-                            <li><b>appcentersqldb.xml</b> - JDBC Data source definition to connect to the DB2 or dashDB database.</li>
-                            <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
-                            <li><b>tracespec.xml</b> - Trace specification to enable debugging as well as logging levels.</li>
+                            <li><b>bin</b> フォルダー: コンテナーの始動時に実行されるスクリプト・ファイル (mfp-appcenter-init) が入っています。 実行する独自のカスタム・コードを追加できます。</li>
+                            <li><b>config</b> フォルダー: {{ site.data.keys.mf_app_center }} によって使用されるサーバー構成フラグメント (鍵ストア、サーバー・プロパティー、ユーザー・レジストリー) が含まれます。</li>
+                            <li><b>keystore.xml</b> - SSL 暗号化に使用されるセキュリティー証明書のリポジトリーの構成が含まれています。 リストされたファイルは、./usr/security フォルダー内で参照される必要があります。</li>
+                            <li><b>ltpa.xml</b> - LTPA 鍵とそのパスワードを定義する構成ファイル。</li>
+                            <li><b>appcentersqldb.xml</b> - DB2 データベースまたは dashDB データベースに接続するための JDBC データ・ソース定義。</li>
+                            <li><b>registry.xml</b> - ユーザー・レジストリー構成。 basicRegistry (基本の XML ベースのユーザー・レジストリー構成がデフォルトとして提供されています。 basicRegistry 用にユーザー名とパスワードを構成できます。または ldapRegistry を構成することができます。</li>
+                            <li><b>tracespec.xml</b> - デバッグ・レベルだけでなく、ロギング・レベルを有効にするトレース仕様。</li>
                         </ul>
                     </li>
-                    <li><b>jre-security</b> folder: You can update the JRE security-related files (truststore, policy JAR files, and so on) by placing them in this folder. The files in this folder get copied to the <b>JAVA_HOME/jre/lib/security/</b> folder in the container.</li>
-                    <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
-                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).</li>
+                    <li><b>jre-security</b> フォルダー: JRE セキュリティー関連のファイル (トラストストア、ポリシー JAR ファイルなど) を、このフォルダーに配置することで更新できます。 このフォルダー内のファイルは、コンテナーの <b>JAVA_HOME/jre/lib/security/</b> フォルダーにコピーされます。</li>
+                    <li><b>security</b> フォルダー: 鍵ストア、トラストストア、および LTPA 鍵ファイル (ltpa.keys) の保管場所として使用します。</li>
+                    <li><b>env</b> フォルダー: サーバーの初期化に使用される環境プロパティー (server.env) およびカスタム JVM オプション (jvm.options) が含まれています。</li>
 
                     <br/>
                     <div class="panel-group accordion" id="terminology" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Click for a list of supported server environment properties</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>クリックすると、サポートされているサーバー環境プロパティーのリストが表示されます</b></a>
                                 </h4>
                             </div>
 
@@ -119,123 +119,123 @@ The archive file contains the files for building an image (**dependencies** and 
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
-                                            <td><b>Property</b></td>
-                                            <td><b>Default Value</b></td>
-                                            <td><b>Description</b></td>
+                                            <td><b>プロパティー</b></td>
+                                            <td><b>デフォルト値</b></td>
+                                            <td><b>説明</b></td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_SERVER_HTTPPORT</td>
                                             <td>9080*</td>
-                                            <td>The port used for client HTTP requests. Use -1 to disable this port.</td>
+                                            <td>クライアント HTTP 要求に使用されるポート。 このポートを無効にする場合は、-1 を使用します。</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_SERVER_HTTPSPORT	</td>
                                             <td>9443*	</td>
-                                            <td>The port used for client HTTP requests secured with SSL (HTTPS). Use -1 to disable this port.</td>
+                                            <td>SSL (HTTPS) で保護されたクライアント HTTP 要求に使用されるポート。 このポートを無効にする場合は、-1 を使用します。</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_ROOT	</td>
                                             <td>applicationcenter</td>
-                                            <td>The context root at which the {{ site.data.keys.mf_app_center }} Administration Services are made available.</td>
+                                            <td>{{ site.data.keys.mf_app_center }} Administration Services が使用可能になるコンテキスト・ルート。</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_CONSOLE_ROOT	</td>
                                             <td>appcenterconsole</td>
-                                            <td>The context root at which the {{ site.data.keys.mf_app_center }} console is made available.</td>
+                                            <td>{{ site.data.keys.mf_app_center }} コンソールが使用可能になるコンテキスト・ルート。</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_ADMIN_GROUP</td>
                                             <td>appcenteradmingroup</td>
-                                            <td>The name of the user group assigned the predefined role <code>appcenteradmin</code>.</td>
+                                            <td>事前定義の役割 <code>appcenteradmin</code> が割り当てられたユーザー・グループの名前。</td>
                                         </tr>
                                         <tr>
                                             <td>APPCENTER_USER_GROUP	</td>
                                             <td>appcenterusergroup</td>
-                                            <td>The name of the user group assigned the predefined role <code>appcenteruser</code>.</td>
+                                            <td>事前定義の役割 <code>appcenteruser</code> が割り当てられたユーザー・グループの名前。</td>
                                         </tr>
                                     </table>
 
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>セクションを閉じる</b></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <li><b>dependencies</b> folder: Contains the {{ site.data.keys.mf_bm_short }} runtime and IBM Java JRE 8.</li>
-                    <li><b>mfpf-libs folder</b> folder: Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</li>
+                    <li><b>dependencies</b> フォルダー: {{ site.data.keys.mf_bm_short }} ランタイムおよび IBM Java JRE 8 が含まれています。</li>
+                    <li><b>mfpf-libs folder</b> フォルダー: {{ site.data.keys.product_adj }} 製品コンポーネント・ライブラリーおよび CLI が含まれています。</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
 </div>
 
-## Prerequisites
+## 前提条件
 {: #prerequisites }
 
-You need to have a working knowledge of Kubernetes. Refer to [Kubernetes docs](https://kubernetes.io/docs/concepts/), to learn more.
+この手順を実行するには、操作者に、Kubernetes の実用的知識が必要です。 詳しくは、[Kubernetes 資料](https://kubernetes.io/docs/concepts/)を参照してください。
 
 
-## Setting Up the {{ site.data.keys.mf_app_center }} on Kubernetes Cluster with IBM Containers
+## IBM Containers を使用して Kubernetes クラスター上の {{ site.data.keys.mf_app_center }} をセットアップする
 {: #setting-up-the-mobilefirst-appcenter-on-kube-with-ibm-containers }
-As explained above, you can choose to run the scripts interactively or by using the configuration files:
+前述のとおり、スクリプトは、対話式に実行することも、構成ファイルを使用して実行することもできます。
 
-* **Using the configuration files** - run the scripts and pass the respective configuration file as an argument.
-* **Interactively** - run the scripts without any arguments.
+* **構成ファイルを使用する場合**: スクリプトを実行し、個々の構成ファイルを引数として渡します。
+* **対話式の場合**: 引数を付けずにスクリプトを実行します。
 
->**Note:** If you choose to run the scripts interactively, you can skip the configuration, but it is strongly suggested to read and understand the arguments that you will need to provide.
+>**注:** スクリプトを対話式に実行する場合は、この構成をスキップしてかまいませんが、指定することになる引数について一読し、理解しておくことを、強くお勧めします。
 
-When you run interactively, a copy of the arguments provided is saved in a directory: `./recorded-args/`. So you can use the interactive mode for the first time and reuse the property files as a reference for future deployments.
+対話式に実行する場合、指定された引数のコピーがディレクトリー: `./recorded-args/` に保存されます。 このため、初めて対話モードを使用したあと、その後のデプロイメントの参照としてプロパティー・ファイルを再使用できます。
 
 <div class="panel-group accordion" id="scripts2" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Using the configuration files</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">構成ファイルの使用</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-                The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:<br/>
+                <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。 以下のファイルに引数値を入力します。<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>IBM_CLOUD_API_URL - </b>The geo or region where you want your deployment.<br>
-                      <blockquote>For example: <i>api.ng.bluemix.net</i> for US region or <i>api.eu-de.bluemix.net</i> for Germany or <i>api.au-syd.bluemix.net</i> for Sydney</blockquote>
+                    <li><b>IBM_CLOUD_API_URL - </b>デプロイメントを行う地理的な場所や地域。<br>
+                      <blockquote>例: <i>api.ng.bluemix.net</i> は米国地域用、<i>api.eu-de.bluemix.net</i> はドイツ用、<i>api.au-syd.bluemix.net</i> はシドニー用。</blockquote>
                     </li>
-                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>Your account id, which is an alpha-numeric value such as <i>a1b1b111d11e1a11d1fa1cc999999999</i><br>	Use the command <code>bx target</code> to get the Account id.</li>
-                    <li><b>IBM_CLOUD_USER - </b>Your IBM Cloud username (email).</li>
-                    <li><b>IBM_CLOUD_PASSWORD - </b>Your IBM Cloud password.</li>
-                    <li><b>IBM_CLOUD_ORG - </b>Your IBM Cloud organization name.</li>
-                    <li><b>IBM_CLOUD_SPACE - </b>Your IBM Cloud space (as explained previously).</li>
+                    <li><b>IBM_CLOUD_ACCOUNT_ID - </b>ご使用のアカウント ID。これは、英数字で、例えば <i>a1b1b111d11e1a11d1fa1cc999999999</i> などです。<br>	コマンド <code>bx target</code> を使用してアカウント ID を取得します。</li>
+                    <li><b>IBM_CLOUD_USER - </b>ご使用の IBM Cloud ユーザー名 (E メール)。</li>
+                    <li><b>IBM_CLOUD_PASSWORD - </b>ご使用の IBM Cloud パスワード。</li>
+                    <li><b>IBM_CLOUD_ORG - </b>ご使用の IBM Cloud 組織名。</li>
+                    <li><b>IBM_CLOUD_SPACE - </b>ご使用の IBM Cloud スペース (前述のとおり)。</li>
                 </ul><br/>
                 <h4>prepareappcenterdbs.properties</h4>
-                The {{ site.data.keys.mf_app_center }} requires an external <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 on cloud</i></a> instance.<br/>
-                <blockquote><b>Note:</b> You can also use your own DB2 database. The IBM Cloud Kubernetes Cluster should be configured to connect to the database.</blockquote>
-                After you have set up your DB2 instance, provide the required arguments:
+                {{ site.data.keys.mf_app_center }} では、外部の <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 on cloud</i></a> インスタンスが必要です。<br/>
+                <blockquote><b>注:</b> 独自の DB2 データベースを使用することもできます。 IBM Cloud Kubernetes クラスターは、データベースに接続するように構成する必要があります。</blockquote>
+                DB2 インスタンスのセットアップが完了したら、必要な引数を入力します。
                 <ul>
-                    <li><b>DB_TYPE</b> - <i>dashDB</i> ( if you are using DB2 on Cloud ) or <i>DB2</i> if you are using your own DB2 database.</li>
-                    <li>Provide the following if you are using your own DB2 database (i.e. DB_TYPE=DB2).
-                      <ul><li><b>DB2_HOST</b> - hostname of your DB2 setup.</li>
-                          <li><b>DB2_DATABASE</b> - name of the database.</li>
-                          <li><b>DB2_PORT</b> - port on which you will connect to the database.</li>
-                          <li><b>DB2_USERNAME</b> - the DB2 database user ( the user should have the permissions to create Tables within the schema provided or if the schema does not already exist, the user should be able to create a schema )</li>
-                          <li><b>DB2_PASSWORD</b> - DB2 user's password.</li>
+                    <li><b>DB_TYPE</b> - <i>dashDB</i> (DB2 on Cloud を使用している場合) または <i>DB2</i> (独自の DB2 データベースを使用している場合)。</li>
+                    <li>独自の DB2 データベースを使用している (すなわち、DB_TYPE=DB2) 場合は、以下を指定します。
+                      <ul><li><b>DB2_HOST</b> - DB2 セットアップのホスト名。</li>
+                          <li><b>DB2_DATABASE</b> - データベースの名前。</li>
+                          <li><b>DB2_PORT</b> - データベースに接続するポート。</li>
+                          <li><b>DB2_USERNAME</b> - DB2 データベース・ユーザー (ユーザーには、指定されたスキーマ内で表を作成するための許可がある必要があります。あるいは、スキーマがまだ存在していない場合、ユーザーはスキーマを作成できる必要があります)</li>
+                          <li><b>DB2_PASSWORD</b> - DB2 ユーザーのパスワード。</li>
                       </ul>
                     </li>
-                    <li>Provide the following if you are using DB2 on Cloud (i.e DB_TYPE=dashDB).
-                      <ul><li><b>APPCENTER_DB_SRV_NAME</b> - Your dashDB service instance name for storing appcenter data.</li>
+                    <li>DB2 on Cloud を使用している (すなわち、DB_TYPE=dashDB) 場合は、以下を指定します。
+                      <ul><li><b>APPCENTER_DB_SRV_NAME</b> - appcenter データを保管するための dashDB サービス・インスタンス名。</li>
                       </ul>
                     </li>
-                    <li><b>APPCENTER_SCHEMA_NAME</b> - Your schema name for appcenter data. The default is <i>APPCNTR</i>.</li>
-                    <blockquote><b>Note:</b> If your DB2 database service instance is being shared by many users or by multiple {{ site.data.keys.mf_app_center }} deployments, make sure that you provide unique schema names.</blockquote>
+                    <li><b>APPCENTER_SCHEMA_NAME</b> - appcenter データ用のスキーマ名。 デフォルトは <i>APPCNTR</i> です。</li>
+                    <blockquote><b>注:</b> DB2 データベース・サービス・インスタンスが多数のユーザーや複数の {{ site.data.keys.mf_app_center }} デプロイメントによって共有されている場合は、必ず固有のスキーマ名を指定してください。</blockquote>
                 </ul><br/>
                 <h4>prepareappcenter.properties</h4>
                 <ul>
-                  <li><b>SERVER_IMAGE_TAG</b> - A tag for the image. Should be of the form: <em>registry-url/namespace/image:tag</em>.</li>
-                  <blockquote>For example: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>If you have not yet created a docker registry namespace, create the registry namespace using one of these commands:<br/>
+                  <li><b>SERVER_IMAGE_TAG</b> - 当該イメージのタグ。 <em>registry-url/namespace/image:tag</em> の形式でなければなりません。</li>
+                  <blockquote>例: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>Docker レジストリーの名前空間をまだ作成していない場合は、次のいずれかのコマンドを使用してレジストリーの名前空間を作成します。<br/>
                   <ul><li><code>bx cr namespace-add <em>myuniquenamespace</em></code></li><li><code>bx cr namespace-list</code></li></ul>
                   </blockquote>
                 </ul>
@@ -246,87 +246,87 @@ When you run interactively, a copy of the arguments provided is saved in a direc
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Running the scripts</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">スクリプトの実行</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to in a non-interactive mode:</p>
+            <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。 非対話モードでの実行を選択した場合は、コマンド・ライン引数のリストも使用可能です。</p>
 
             <ol>
-                <li><b>initenv.sh – Logging in to IBM Cloud </b><br />
-                    Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.mf_app_center }} on IBM Containers:
-                    <b>Interactive Mode</b>
+                <li><b>initenv.sh – IBM Cloud へのログイン</b><br />
+                    <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.mf_app_center }} をビルドおよび実行する環境を作成します。
+                    <b>対話モード</b>
 {% highlight bash %}
 ./initenv.sh
 {% endhighlight %}
-                    <b>Non-interactive Mode</b>
+                    <b>非対話モード</b>
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                 </li>
-                <li><b>prepareappcenterdbs.sh - Prepare the {{ site.data.keys.mf_app_center }} database</b><br />
-                    The <b>prepareappcenterdbs.sh</b> script is used to configure your {{ site.data.keys.mf_app_center }} with the DB2 database service. The service instance of the DB2 service should be available in the Organization and Space that you logged in to in step 1. Run the following:
-                    <b>Interactive Mode</b>
+                <li><b>prepareappcenterdbs.sh - {{ site.data.keys.mf_app_center }} データベースの準備</b><br />
+                    <b>prepareappcenterdbs.sh</b> スクリプトを使用して、DB2 データベース・サービスが含まれた {{ site.data.keys.mf_app_center }} を構成します。 DB2 サービスのサービス・インスタンスは、手順 1 でログインした組織およびスペースで使用可能でなければなりません。以下を実行します。
+                    <b>対話モード</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh
 {% endhighlight %}
-                    <b>Non-interactive Mode</b>
+                    <b>非対話モード</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
                 </li>
-                <li><b>initenv.sh(Optional) – Logging in to IBM Cloud </b><br />
-                      This step is required only if you need to create your containers in a different Organization and Space than where the DB2 service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
+                <li><b>initenv.sh(Optional) – IBM Cloud へのログイン</b><br />
+                      このステップは、DB2 サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにコンテナーを作成する必要がある場合にのみ必須です。 この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で initenv.properties を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
                 </li>
-                <li><b>prepareappcenter.sh - Prepare a {{ site.data.keys.mf_app_center }} image</b><br />
-                    Run the <b>prepareappcenter.sh</b> script in order to build the {{ site.data.keys.mf_app_center }} image and push it to your IBM Cloud repository. To view all available images in your IBM Cloud repository, run: <code>bx cr image-list</code><br/>
-                    The list contains the image name, date of creation, and ID.<br/>
-                    <b>Interactive Mode</b>
+                <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} イメージの準備</b><br />
+                    {{ site.data.keys.mf_app_center }} イメージをビルドし、これを IBM Cloud リポジトリーにプッシュするため、<b>prepareappcenter.sh</b> スクリプトを実行します。 IBM Cloud リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>bx cr image-list</code><br/>
+                    リストには、イメージ名、作成日、および ID が表示されます。<br/>
+                    <b>対話モード</b>
 {% highlight bash %}
 ./prepareappcenter.sh
 {% endhighlight %}
-                    <b>Non-interactive Mode</b>
+                    <b>非対話モード</b>
 {% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
                 </li>
-                <li>Deploy {{ site.data.keys.mf_app_center }} on Docker containers on a Kubernetes cluster using IBM Cloud Container Service.
+                <li>IBM Cloud Container Service を使用して、{{ site.data.keys.mf_app_center }} を Kubernetes クラスター上の Docker コンテナーにデプロイします。
                 <ol>
-                  <li>Set your terminal context to your cluster<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
-                  To know your Cluster name, run the following command: <br/><code>bx cs clusters</code><br/>
-                  In the output, the path to your configuration file is displayed as a command to set an environment variable, for example:<br/>
+                  <li>ターミナル・コンテキストをクラスターに設定します。<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
+                  クラスター名を知るには、次のコマンドを実行します。 <br/><code>bx cs clusters</code><br/>
+                  この出力に、環境変数を設定するコマンドとして構成ファイルへのパスが表示されます。例えば次のとおりです。<br/>
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
-                  Copy and paste the command above, after replacing <em>my-cluster</em> with your Cluster name, to set the environment variable in your terminal and press <b>Enter</b>.
+                  <em>my-cluster</em> をご使用のクラスター名に置き換えて上記のコマンドをコピーして貼り付けて、ターミナルに環境変数を設定し、<b>Enter</b> を押します。
                   </li>
-                  <li>To get your <b>Ingress domain</b> run the following command:<br/>
+                  <li><b>入口ドメイン</b>を取得するには、次のコマンドを実行します。<br/>
                    <code>bx cs cluster-get <em>my-cluster</em></code><br/>
-                   Note down your Ingress domain. If you need to configure TLS, note down the <b>Ingress secret</b>.</li>
-                  <li>Create the Kubernetes deployments<br/>Edit the yaml file <b>args/mfp-deployment-appcenter.yaml</b>, and fill out the details. All the variables have to be substituted with their values before executing the <em>kubectl</em> command.<br/>
-                  <b>./args/mfp-deployment-appcenter.yaml</b> contains the deployment for the following:
+                   入口ドメインをメモします。 TLS を構成する必要がある場合は、<b>入口秘密</b>をメモします。</li>
+                  <li>Kubernetes デプロイメントを作成します。<br/>yaml ファイル <b>args/mfp-deployment-appcenter.yaml</b> を編集して、詳細を設定します。 <em>kubectl</em> コマンドを実行する前に、すべての変数をその値に置き換える必要があります。<br/>
+                  <b>./args/mfp-deployment-appcenter.yaml</b> には次のデプロイメントが含まれています。
                   <ul>
-                    <li>a kubernetes deployment for {{ site.data.keys.mf_app_center }} consisting of 1 instance (replica), of 1024MB memory and 1Core CPU.</li>
-                    <li>a kubernetes service for {{ site.data.keys.mf_app_center }}.</li>
-                    <li>an ingress for the whole setup including all the REST endpints for {{ site.data.keys.mf_app_center }}.</li>
-                    <li>a configMap to make the environment variables available in the {{ site.data.keys.mf_app_center }} instance.</li>
+                    <li>1024 MB のメモリーと 1Core CPU で、1 個のインスタンス (レプリカ) で構成される {{ site.data.keys.mf_app_center }} の Kubernetes デプロイメント。</li>
+                    <li>{{ site.data.keys.mf_app_center }} の Kubernetes サービス。</li>
+                    <li>{{ site.data.keys.mf_app_center }} のすべての REST エンドポイントなど、セットアップ全体のための入口。</li>
+                    <li>{{ site.data.keys.mf_app_center }} インスタンスで環境変数を使用可能にするための configMap。</li>
                   </ul>
-                  Following values have to be edited in the YAML file:<br/>
-                    <ol><li>Different occurences of <em>my-cluster.us-south.containers.mybluemix.net</em> with the output of <b>Ingress Domain</b> from the output of <code>bx cs cluster-get</code> command as stated above.</li>
-                    <li><em>registry.ng.bluemix.net/repository/mfpappcenter:latest</em> - Use the same names that you used in prepareappcenter.sh to upload the image.</li>
+                  YAML ファイルの以下の値を編集する必要があります。<br/>
+                    <ol><li>上述のように、<b>入口ドメイン</b>の出力の <em>my-cluster.us-south.containers.mybluemix.net</em> が、<code>bx cs cluster-get</code> コマンドの出力と異なります。</li>
+                    <li><em>registry.ng.bluemix.net/repository/mfpappcenter:latest</em> - イメージをアップロードするために prepareappcenter.sh で使用したものと同じ名前を使用します。</li>
                     </ol>
-                    Execute the following command:<br/>
+                    次のコマンドを実行します。<br/>
                     <code>kubectl create -f ./args/mfp-deployment-appcenter.yaml</code>
-                    <blockquote><b>Note:<br/></b>The following template yaml files are supplied:<br/>
-                    <ul><li><b>mfp-deployment-appcenter.yaml</b>: Deploys the {{ site.data.keys.mf_app_center }} with http.</li>
-                      <li><b>mfp-deployment-appcenter-with-tls.yaml</b>: Deploys the {{ site.data.keys.mf_app_center }} with https.</li>
+                    <blockquote><b>注: <br/></b>以下のテンプレート yaml ファイルが提供されます。<br/>
+                    <ul><li><b>mfp-deployment-appcenter.yaml</b>: {{ site.data.keys.mf_app_center }} を http でデプロイします。</li>
+                      <li><b>mfp-deployment-appcenter-with-tls.yaml</b>: {{ site.data.keys.mf_app_center }} を https でデプロイします。</li>
                     </ul></blockquote>
-                      After creation, to use the Kubernetes dashboard, execute the following command:<br/>
-                      <code>kubectl proxy</code><br/>Open <b>localhost:8001/ui</b>, in your browser.
+                      作成後、Kubernetes ダッシュボードを使用するには、次のコマンドを実行します。<br/>
+                      <code>kubectl proxy</code><br/>ブラウザーに <b>localhost:8001/ui</b> を開きます。
                   </li>
                 </ol>
                 </li>
@@ -361,40 +361,40 @@ Before you apply an interim fix, back up your existing configuration files. The 
 -->
 <!--**Note:** When applying fixes for {{ site.data.keys.mf_app_center }} the folders are `mfp-appcenter-libertyapp/usr` and `mfp-appcenter/usr`.-->
 
-## Removing the Container from IBM Cloud
+## IBM Cloud からのコンテナーの削除
 {: #removing-the-container-from-ibmcloud }
-When you remove a container from IBM Cloud, you must also remove the image name from the registry.  
-Run the following commands to remove a container from IBM Cloud:
+IBM Cloud からコンテナーを削除する場合、レジストリーからイメージ名も削除する必要があります。  
+次のコマンドを実行して、IBM Cloud からコンテナーを削除します。
 
-1. `cf ic ps` (Lists the containers currently running)
-2. `cf ic stop container_id` (Stops the container)
-3. `cf ic rm container_id` (Removes the container)
+1. `cf ic ps` (現在実行中のコンテナーをリストします)
+2. `cf ic stop container_id` (コンテナーを停止します)
+3. `cf ic rm container_id` (コンテナーを削除します)
 
-Run the following cf ic commands to remove an image name from the IBM Cloud registry:
+以下の cf ic コマンドを実行して、IBM Cloud レジストリーからイメージ名を削除します。
 
-1. `cf ic images` (Lists the images in the registry)
-2. `cf ic rmi image_id` (Removes the image from the registry)
+1. `cf ic images` (レジストリー内のイメージをリストします)
+2. `cf ic rmi image_id` (レジストリーからイメージを削除します)
 
-## Removing the Kubernetes deployments from IBM Cloud
+## IBM Cloud からの Kubernetes デプロイメントの削除
 {: #removing-kube-deployments}
 
-Run the following commands to remove your deployed instances from  IBM Cloud Kubernetes cluster:
+次のコマンドを実行して、デプロイされたインスタンスを IBM Cloud Kubernetes クラスターから削除します。
 
-`kubectl delete -f mfp-deployment-appcenter.yaml` ( Removes all the kubernetes types defined in the yaml )
+`kubectl delete -f mfp-deployment-appcenter.yaml` (yaml で定義されたすべての Kubernetes タイプを削除します)
 
-Run the following commands to remove image name from the IBM Cloud registry:
+以下のコマンドを実行して、IBM Cloud レジストリーからイメージ名を削除します。
 ```bash
-bx cr image-list (Lists the images in the registry)
-bx cr image-rm image-name (Removes the image from the registry)
+bx cr image-list (レジストリー内のイメージをリストします)
+bx cr image-rm image-name (レジストリーからイメージを削除します)
 ```
 
-## Removing the database service configuration from IBM Cloud
+## IBM Cloud からのデータベース・サービス構成の削除
 {: #removing-the-database-service-configuration-from-ibmcloud }
-If you ran the **prepareappcenterdbs.sh** script during the configuration of the {{ site.data.keys.mf_app_center }} image, the configurations and database tables required for {{ site.data.keys.mf_app_center }} are created. This script also creates the database schema for the container.
+{{ site.data.keys.mf_app_center }} イメージの構成時に **prepareappcenterdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_app_center }} に必要な構成およびデータベース・テーブルが作成されます。 このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
 
-To remove the database service configuration from IBM Cloud, perform the following procedure using IBM Cloud dashboard.
+IBM Cloud からデータベース・サービス構成を削除するには、IBM Cloud ダッシュボードを使用して、以下の手順を実行します。
 
-1. From the IBM Cloud dashboard, select the DB2 on cloud service you have used. Choose the DB2 service name that you had provided as parameter while running the **prepareappcenterdbs.sh** script.
-2. Launch the DB2 console to work with the schemas and database objects of the selected DB2 service instance.
-3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareappcenterdbs.sh** script.
-4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from IBM Cloud.
+1. IBM Cloud ダッシュボードから、使用した DB2 on Cloud サービスを選択します。 **prepareappcenterdbs.sh** スクリプトの実行時にパラメーターとして指定した DB2 サービス名を選択します。
+2. 選択した DB2 サービス・インスタンスのスキーマおよびデータベース・オブジェクトを対処するために、DB2 コンソールを「起動」します。
+3. IBM {{ site.data.keys.mf_server }} 構成に関連したスキーマを選択します。 スキーマ名は、**prepareappcenterdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
+4. スキーマ名とその下のオブジェクトを慎重に調べた後で、それぞれのスキーマを削除します。 IBM Cloud からデータベース構成が削除されます。

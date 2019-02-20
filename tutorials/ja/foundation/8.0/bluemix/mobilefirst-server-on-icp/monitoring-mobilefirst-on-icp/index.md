@@ -11,7 +11,7 @@ weight: 2
 
 このチュートリアルでは、IBM Cloud Private 上で実行される Mobile Foundation をモニターするために **Prometheus** を統合する方法について概要を示します。
 
-IBM Mobile Foundation は、*MicroProfile メトリック* API によって計測される Mobile Foundation サーバー、Analytics、および Application Center をモニターする `mpMetrics-1.0` フィーチャーを有効にすることで、モニタリング機能を提供します。これは、ICP にデプロイされる Mobile Foundation コンテナーの JVM やシステム・レベルのメトリックをモニターするのに役立ちます。
+IBM Mobile Foundation は、*MicroProfile メトリック* API によって計測される Mobile Foundation サーバー、Analytics、および Application Center をモニターする `mpMetrics-1.0` フィーチャーを有効にすることで、モニタリング機能を提供します。 これは、ICP にデプロイされる Mobile Foundation コンテナーの JVM やシステム・レベルのメトリックをモニターするのに役立ちます。
 
 `/metrics` API 要求に対するデフォルトの応答フォーマットはテキスト・フォーマットで、これは **Prometheus** と互換性があります。
 
@@ -23,7 +23,7 @@ IBM Mobile Foundation は、*MicroProfile メトリック* API によって計�
 
 ### ステップ 1: IBM Monitoring サービスのデプロイ
 a.  {{ site.data.keys.prod_icp }} カタログから Monitoring サービスをデプロイします。<br/>
-b.  **「カタログ」**に移動し、**ibm-icpmonitoring** Helm チャートを選択してインストールします。Helm チャートは、{{ site.data.keys.prod_icp }} にインストールされます。<br/>
+b.  **「カタログ」**に移動し、**ibm-icpmonitoring** Helm チャートを選択してインストールします。 Helm チャートは、{{ site.data.keys.prod_icp }} にインストールされます。<br/>
     ![icpmonitoring Helm の選択](select-monitoring-helm.png)
 
 ### ステップ 2: **Prometheus** *configmap* 構成の更新
@@ -33,17 +33,17 @@ b.  **「カタログ」**に移動し、**ibm-icpmonitoring** Helm チャート
 kubectl get svc | grep prometheus
 ```
 <br/>
-`ibm-icpmonitoring` チャートによってデプロイされる多数のサービスが表示されます。このチュートリアルでは、以下のスクリーン・ショットに示すように、`<name used for the helm release>-promethues` (mfp-prometheus-prometheus) という名前のサービスにフォーカスを当て、使用します。<br/>
+`ibm-icpmonitoring` チャートによってデプロイされる多数のサービスが表示されます。 このチュートリアルでは、以下のスクリーン・ショットに示すように、`<name used for the helm release>-promethues` (mfp-prometheus-prometheus) という名前のサービスにフォーカスを当て、使用します。<br/>
 
 ![デプロイされるサービスの取得](get-svcs-helm.png)
 <br/>
-これらのサービスには、それぞれ *configmap* オブジェクトが関連付けられます。Mobile Foundation ポッドのメトリック・データを取得するには、**mfp-prometheus-prometheus** サービスに関連付けられている *configmap* を変更する必要があります。変更内容は、Mobile Foundation サーバー用の `mfpfserver` アノテーション、Analytics 用の `mfpfanalytics` アノテーション、および Application Center 用の `mfpfappcenter` アノテーションを、その他いくつかの属性とともにサービス・デプロイメントに追加することです。<br/>
+これらのサービスには、それぞれ *configmap* オブジェクトが関連付けられます。 Mobile Foundation ポッドのメトリック・データを取得するには、**mfp-prometheus-prometheus** サービスに関連付けられている *configmap* を変更する必要があります。変更内容は、Mobile Foundation サーバー用の `mfpfserver` アノテーション、Analytics 用の `mfpfanalytics` アノテーション、および Application Center 用の `mfpfappcenter` アノテーションを、その他いくつかの属性とともにサービス・デプロイメントに追加することです。<br/>
 これを達成するための最も簡単な方法は、以下のコマンドを使用して、ソース・ターミナルから目的の *configmap* オブジェクトを編集することです。<br/>
 ```bash
   kubectl edit configmap mfp-prometheus-prometheus
   ```
 <br/>
-このコマンドは、要求された YAML ファイルを vi エディターで開きます。ファイルの最後までスクロールダウンし、行 `kind: ConfigMap` の直前に下記のテキストを挿入します。
+このコマンドは、要求された YAML ファイルを vi エディターで開きます。  ファイルの最後までスクロールダウンし、行 `kind: ConfigMap` の直前に下記のテキストを挿入します。
 
 以下は、Mobile Foundation サーバーのメトリック構成、YAML のスニペットです。<br/>
 
@@ -113,7 +113,7 @@ curl -s -XPOST http://<ip address of the proxy node>:31271/-/reload
 
 ### ステップ 4: Mobile Foundation 統計のモニター
 
-a. 以下の URL を使用して、ブラウザーで **Prometheus** コンソールをブラウズします。<br/>
+a. 以下の URL を使用して、ブラウザーで **Prometheus** コンソールをブラウズします。 <br/>
 ```
 http://<ip address of the Proxy Node>:31271
 ```
@@ -123,20 +123,20 @@ c. Prometheus によって統計が取得されているすべての**ターゲ�
   ![appcenter ターゲット](target-appcenter.png)<br/>
   ![すべてのターゲット](target-all.png)
 <br/>
-  上のスクリーン・ショットには、Mobile Foundation サーバー、Analytics、および Application Center が**ターゲット**として明確に示されています。ステップ 2 で示した *configmap* YAML ファイルの *job_name* 属性の値を参照してください。<br/>
-以前、デプロイメント・サンプルを 2 つのレプリカに拡大しました。**Prometheus** が、サーバーに関して 2 つのエンドポイントをスクラップしているのはこのためです。<br/>
+  上のスクリーン・ショットには、Mobile Foundation サーバー、Analytics、および Application Center が**ターゲット**として明確に示されています。 ステップ 2 で示した *configmap* YAML ファイルの *job_name* 属性の値を参照してください。<br/>
+  以前、デプロイメント・サンプルを 2 つのレプリカに拡大しました。**Prometheus** が、サーバーに関して 2 つのエンドポイントをスクラップしているのはこのためです。<br/>
 
   **Prometheus** コンソールおよびそれ以降のパネルにある**「Graph」**をクリックした場合、下のスクリーン・ショットに示すように**「insert metric at cursor」**をクリックします。<br/>
   ![Prometheus グラフ](graph-config.png)
 
-  現在の **Prometheus** 構成でモニター可能な複数のメトリックが表示されます。長いメトリックのリストのうち、**base:** で始まるメトリック名が、`mpMetrics-1.0` フィーチャーによって提供される Mobile Foundation コンテナーからのものです。<br/>
+  現在の **Prometheus** 構成でモニター可能な複数のメトリックが表示されます。 長いメトリックのリストのうち、**base:** で始まるメトリック名が、`mpMetrics-1.0` フィーチャーによって提供される Mobile Foundation コンテナーからのものです。<br/>
   ![Mobile Foundation メトリック](metrics.png)
 
   任意の Liberty メトリック (例: **base:thread_count**) を選択すると、下のスクリーン・ショットに示すように、Mobile Foundation サーバーのポッドからの値を Prometheus グラフで表示できます。<br/>
   ![スレッド・カウント・グラフ](thread-count-graph.png)
 
   その他の関連メトリックを **Prometheus** でグラフィカルに探索したり、**「Console」**をクリックすることで、数値フォームでも探索したりできます。<br/>
-  デプロイメントを拡大することもできます。Prometheus コンソール内のエンドポイント数は、短期間でレプリカの数に一致するようになります。<br/>
+  デプロイメントを拡大することもできます。 Prometheus コンソール内のエンドポイント数は、短期間でレプリカの数に一致するようになります。  <br/>
 
   >**注:** ここでは、Prometheus の *configmap* ファイル内でパスワードに平文を使用しましたが、Prometheus は、Prometheus パネルで構成が表示されるとき、パスワードは表示しません。
 
@@ -148,7 +148,7 @@ JSON ファイルから Grafana ダッシュボードをインポートするに
 * デプロイ済みモニター・サービスから Grafana を起動します。<br/>
   <b>「ワークロード」->「Helm リリース」->「`<name used for the helm release>`」 (例: mfp-prometheus) ->「起動」</b>
 
-* [GitHub](https://github.ibm.com/IBMPrivateCloud/charts/tree/master/stable/ibm-mfpf-server-prod/additionalFiles/ibm-mfpf-server-prod-grafanadashboard.json) からローカル・ワークステーションに JSON ダッシュボード・ファイルをダウンロードします。<br/>
+* [GitHub](https://github.ibm.com/IBMPrivateCloud/charts/tree/master/stable/ibm-mfpf-server-prod/additionalFiles/ibm-mfpf-server-prod-grafanadashboard.json) からローカル・ワークステーションに JSON ダッシュボード・ファイルをダウンロードします。   <br/>
 
 * Grafana インターフェースの*「ホーム」*ボタンをクリックし、次に**「ダッシュボードのインポート」**をクリックします。<br/>
 

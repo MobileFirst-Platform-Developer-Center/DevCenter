@@ -12,7 +12,7 @@ downloads:
 ## 前提条件
 {: #prerequisites }
 * [JSONStore 親チュートリアル](../)を読む。
-* {{ site.data.keys.product_adj }} React Native コア SDK がプロジェクトに追加されていることを確認する。[『React-Native アプリケーションへの Mobile Foundation SDK の追加 (Adding the Mobile Foundation SDK to React-Native applications)』](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/reactnative-tutorials/)チュートリアルに従ってください。
+* {{ site.data.keys.product_adj }} React Native コア SDK がプロジェクトに追加されていることを確認する。 [『React-Native アプリケーションへの Mobile Foundation SDK の追加 (Adding the Mobile Foundation SDK to React-Native applications)』](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/reactnative-tutorials/)チュートリアルに従ってください。
 
 #### ジャンプ先:
 {: #jump-to}
@@ -34,8 +34,8 @@ React Native アプリケーションに JSONStore プラグインを追加す�
 {: #basic-usage }
 ### 新規 JSONStore コレクションの作成
 {: #create_new_jsonstore_collection}
-1.  `JSONStoreCollection` クラスを使用して、JSONStore のインスタンスを作成します。また、新規作成されたこの JSONStore コレクションに追加構成を設定することもできます (例: 検索フィールドの設定)。
-2.  既存の JSONStore コレクションとの対話 (例: データの追加や削除) を開始するには、コレクションを*開く* 必要があります。これを行うには、`openCollections()` API を使用します。
+1.  `JSONStoreCollection` クラスを使用して、JSONStore のインスタンスを作成します。 また、新規作成されたこの JSONStore コレクションに追加構成を設定することもできます (例: 検索フィールドの設定)。
+2.  既存の JSONStore コレクションとの対話 (例: データの追加や削除) を開始するには、コレクションを*開く* 必要があります。 これを行うには、`openCollections()` API を使用します。
     ```javascript
     var collection = new JSONStoreCollection('people');
     WLJSONStore.openCollections(['people'])
@@ -68,7 +68,7 @@ collection.addData(data)
 1.  照会を使用してコレクション内のドキュメントを見つけるには、`find` を使用します。
 2.  コレクション内のすべてのドキュメントを取り出すには、`findAllDocuments()` API を使用します。
 3.  ドキュメントの固有 ID を使用して検索するには、`findDocumentById()` API および `findDocumentsById()` API を使用します。
-4.  コレクションを照会するには、`findDocuments()` API を使用します。照会では、`JSONStoreQueryPart` クラス・オブジェクトを使用してデータをフィルターに掛けることができます。
+4.  コレクションを照会するには、`findDocuments()` API を使用します。 照会では、`JSONStoreQueryPart` クラス・オブジェクトを使用してデータをフィルターに掛けることができます。
 
 > `JSONStoreQueryPart` オブジェクトの配列をパラメーターとして `findDocuments` API に渡します。
 
@@ -127,7 +127,7 @@ npm install
 
 >**注:**  *mfpclient.properties* と *mfpclient.plist* が正しい MobileFirst Server を指していることを確認します。
 
-1. アプリケーションの登録。`android` ディレクトリーに移動して、次のコマンドを実行します。
+1. アプリケーションの登録。 `android` ディレクトリーに移動して、次のコマンドを実行します。
     ```bash
     mfpdev app register
     ```
@@ -151,7 +151,7 @@ npm install
         ```
       このステップは *react-native-ibm-mobilefirst-jsonstore* ライブラリーで必要です。
 
-3. アプリケーションの実行。ルート・ディレクトリーに戻って、`iOS` ディレクトリーにナビゲートし、`mfpdev app register` コマンドを実行します。
+3. アプリケーションの実行。 ルート・ディレクトリーに戻って、`iOS` ディレクトリーにナビゲートし、`mfpdev app register` コマンドを実行します。
 
 これで、アプリケーションを実行する準備ができました。
 Android で実行するには、次のコマンドを実行します。
