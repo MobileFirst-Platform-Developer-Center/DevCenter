@@ -730,18 +730,18 @@ haben).
 
 
     ```xml
-      <httpEndpoint id="defaultHttpEndpoint"
-        httpPort="9080"
-        httpsPort="9443" />
-      ```
+    <httpEndpoint id="defaultHttpEndpoint"
+    httpPort="9080"
+    httpsPort="9443" />
+    ```
 
     durch diese Zeilen: 
 
     ```xml
-      <httpEndpoint id="defaultHttpEndpoint"
-        httpPort="9081"
-        httpsPort="9444" />
-      ```
+    <httpEndpoint id="defaultHttpEndpoint"
+    httpPort="9081"
+    httpsPort="9444" />
+    ```
 
     Bei dieser Änderung erzeugen der HTTP- und HTTPS-Port des Servers mfp2 keinen Konflikt mit den Ports von Server mfp1. Sie müssen die Ports modifizieren, bevor Sie {{ site.data.keys.mf_server }} installieren. Wenn Sie den Port nach der Installation modifizieren, muss sich die Portänderung auch in der JNDI-Eigenschaft **mfp.admin.jmx.port** widerspiegeln.
 

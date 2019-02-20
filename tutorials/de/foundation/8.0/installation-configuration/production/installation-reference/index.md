@@ -1194,7 +1194,7 @@ Das Element `<mysql>` wird mit folgenden Attributen verwendet:
 |database	 |Datenbankname|Nein |Je nach Art der Datenbank MFPDATA, MFPADM, MFPCFG, MFPPUSH oder APPCNTR|
 |server	 |Hostname des Datenbankservers | |Ja |Keiner |
 |port	     |Port des Datenbankservers |Nein | 3306    |
-|user	            |Benutzername für den Datenbankzugriff. Dieser Benutzer benötigt keine erweiterten Zugriffsrechte für die Datenbanken. Wenn Sie Einschränkungen für die Datenbank implementieren, können Sie einen Benutzer mit den eingeschränkten Zugriffsrechten definieren, die unter "Datenbankbenutzer und Berechtigungen" aufgelistet sind.|Ja |Keiner |
+|user	            |Benutzername für den Datenbankzugriff. Dieser Benutzer benötigt keine erweiterten Zugriffsrechte für die Datenbanken. Wenn Sie Einschränkungen für die Datenbank implementieren, können Sie einen Benutzer mit den eingeschränkten Zugriffsrechten definieren, die unter "Datenbankbenutzer und Berechtigungen" aufgelistet sind.|Ja |Ja |Keiner |
 |password	 |Kennwort für den Datenbankzugriff|Nein |Interaktiv abgefragt |
 
 Anstelle von
