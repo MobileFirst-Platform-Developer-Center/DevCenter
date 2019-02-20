@@ -66,8 +66,8 @@ get-icp-logs <Helm-Releasename> [<Ausgabeverzeichnis>] [<Namespace>]
 ```
 In der folgenden Tabelle sind die von dem angepassten Script verwendeten Parameter beschrieben. 
 
-| Option | Beschreibung | Bemerkungen |
+|Option |Beschreibung |Bemerkungen |
 |--------|-------------|---------|
-| Helm-Releasename | Releasename der jeweiligen Helm-Chart-Installation| **Obligatorisch** |
-| Ausgabeverzeichnis | Ausgabeverzeichnis, in das die erfassten Protokolle gestellt werden sollen | **Optional**<br/>Standardeinstellung: Unterverzeichnis **mfp-icp-logs** unter dem aktuellen Arbeitsverzeichnis |
-| Namespace | Namespace, in dem das jeweilige Helm-Chart installiert ist | **Optional**<br/>Standardeinstellung: **default** |
+|Helm-Releasename |Releasename der jeweiligen Helm-Chart-Installation|**Obligatorisch** |
+|Ausgabeverzeichnis |Ausgabeverzeichnis, in das die erfassten Protokolle gestellt werden sollen |**Optional**<br/>Standardeinstellung: Unterverzeichnis **mfp-icp-logs** unter dem aktuellen Arbeitsverzeichnis |
+|Namespace |Namespace, in dem das jeweilige Helm-Chart installiert ist |**Optional**<br/>Standardeinstellung: **default** |

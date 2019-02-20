@@ -3,7 +3,7 @@ layout: tutorial
 title: Mobile Foundation mit Helm in einem IBM Cloud-Kubernetes-Cluster einrichten
 breadcrumb_title: Foundation on Kubernetes Cluster using Helm
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -11,7 +11,7 @@ weight: 3
 Folgen Sie den nachstehenden Anweisungen, um mit Helm-Charts eine MobileFirst-Server-Instanz und eine MobileFirst-Analytics-Instanz in einem IBM Cloud-Kubernetes-Cluster zu konfigurieren:
 
 * Richten Sie einen IBM Cloud-Kubernetes-Cluster ein.
-* Riden Sie Ihren Host-Computer mit der IBM Cloud-CLI ein.
+* Richten Sie Ihren Host-Computer mit der IBM Cloud-Kubernetes-Service-CLI (`ibmcloud`) ein.
 * Laden Sie das Passport-Advantage-Archiv mit der {{ site.data.keys.product_full }} für {{ site.data.keys.prod_icp }} herunter.
 * Laden Sie das PPA-Archiv in den IBM Cloud-Kubernetes-Cluster.
 * Abschließend werden Sie {{ site.data.keys.mf_analytics }} (optional) und {{ site.data.keys.mf_server }} installieren und konfigurieren.
@@ -34,10 +34,10 @@ Sie müssen über ein IBM Cloud-Konto verfügen und den Kubernetes-Cluster wie u
 
 Für die Verwaltung von Containern und Images müssen Sie im Rahmen der Einrichtung der IBM Cloud-CLI-Plug-ins die folgenden Tools auf Ihrer Hostmaschine installieren: 
 
-* IBM Cloud-CLI 
+* IBM Cloud-CLI (`ibmcloud`)
 * Kubernetes-CLI
-* IBM Cloud-Container-Registry-Plug-in
-* IBM Cloud-Container-Service-Plug-in
+* IBM Cloud-Container-Registry-Plug-in (`cr`)
+* IBM Cloud-Container-Service-Plug-in (`ks`)
 
 Für den Zugruff auf den IBM Cloud-Kubernetes-Cluster über die CLI sollten Sie den IBM Cloud-Client konfigurieren. [Hier finden Sie weitere Informationen](https://console.bluemix.net/docs/cli/index.html).
 
@@ -50,24 +50,24 @@ Das Passport-Advantage-Archiv mit dem {{ site.data.keys.product_full }} ist [hie
 
 ## Passport-Advantage-Archiv mit der IBM Mobile Foundation laden
 {: #load-the-ibm-mfpf-ppa-archive}
-Bevor Sie das Passport-Advantage-Archiv mit der {{ site.data.keys.product }} laden, müssen Sie Docker einrichten. Anweisungen finden Sie [hier](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
+Bevor Sie das Passport-Advantage-Archiv mit der {{ site.data.keys.product }} laden, müssen Sie Docker einrichten. Anweisungen finden Sie [hier](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html).
 
 Führen Sie die nachstehenden Schritte aus, um das Passport-Advantage-Archiv in den IBM Cloud-Kubernetes-Cluster zu laden:
 
   1. Melden Sie sich mit dem IBM Cloud-Plug-in beim Cluster an.
 
-      Lesen Sie die [CLI-Befehlsreferenz](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) in der Dokumentation zur IBM Cloud-CLI.
+      > Lesen Sie die [CLI-Befehlsreferenz](https://console.bluemix.net/docs/cli/index.html#overview) in der Dokumentation zur IBM Cloud-CLI. 
 
       Beispiel:
       ```bash
       ibmcloud login -a https://IP-Adresse:Port
       ```
       Falls Sie die SSL-Validierung übergehen möchten, können Sie im obigen Befehl die Option `--skip-ssl-validation` verwenden. Bei Verwendung dieser Option werden Sie zur Eingabe von `Benutzername` und `Kennwort` Ihres Clusterendpunkts aufgefordert. Fahren Sie nach erfolgreicher Anmeldung mit den nachstehenden Schritten fort. 
-      
+
   2. Melden Sie sich bei der IBM Cloud-Container-Registry an und initialisieren Sie den Containerservice mit folgenden Befehlen:
       ```bash
       ibmcloud cr login
-      ibmcloud cs init
+      ibmcloud ks init
       ```  
   3. Definieren Sie die Implementierungsregion (z. B. us-south) mit folgendem Befehl:
       ```bash
@@ -76,7 +76,7 @@ Führen Sie die nachstehenden Schritte aus, um das Passport-Advantage-Archiv in 
 
   4. Laden Sie mit folgendem Befehl das Passport-Advantage-Archiv mit der {{ site.data.keys.product }}:
       ```
-      bx pr load-ppa-archive --archive <Archivname> [--clustername <Clustername>] [--namespace <Namespace>]
+      ibmcloud cr ppa-archive-load --archive <Archivname> --namespace <Namespace> [--clustername <Clustername>]
       ```
       Der *Archivname* für die {{ site.data.keys.product }} ist der Name des Archivs, den Sie über IBM Passport Advantage heruntergeladen haben.
 
@@ -282,11 +282,11 @@ Führen Sie für den Zugriff auf die Konsole die folgenden Schritte aus:
 2. Wählen Sie den Kubernetes-Cluster aus, in dem `Analytics/Server/AppCenter` implementiert wurde, um die Seite **Overview** zu öffnen.
 3. Suchen Sie die Ingress-Unterdomäne für den Ingress-Hostnamen und greifen Sie wie folgt auf die Konsole zu:
     * Verwenden Sie für den Zugriff auf die IBM Mobile Foundation Operational Console Folgendes:
-     `<Protokoll>://<Ingress-Hostname>/mfpconsole`
+     `<protocol>://<Ingress-Hostname>/mfpconsole`
     * Verwenden Sie für den Zugriff auf die IBM Mobile Foundation Analytics Console Folgendes:
-     `<Protokoll>://<Ingress-Hostname>/analytics/console`
+     `<protocol>://<Ingress-Hostname>/analytics/console`
     * Verwenden Sie für den Zugriff auf die IBM Mobile-Foundation-Application-Center-Konsole Folgendes:
-     `<Protokoll>://<Ingress-Hostname>/appcenter/console`
+     `<protocol>://<Ingress-Hostname>/appcenter/console`
 
 >**Hinweis:** Der Port 9600 wird intern im Kubernetes-Service zugänglich gemacht und von den {{ site.data.keys.prod_adj }}-Analytics-Instanzen als Transportport verwendet. 
 

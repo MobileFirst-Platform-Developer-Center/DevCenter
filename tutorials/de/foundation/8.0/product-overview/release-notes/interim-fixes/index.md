@@ -16,6 +16,17 @@ Laden Sie den neuesten vorläufigen Fix herunter und installieren Sie ihn. Sie e
 
 Wenn eine APAR-Nummer aufgeführt ist, können Sie überprüfen, ob das betreffende Feature in einem vorläufigen Fix enthalten ist, indem Sie in der Readme-Datei zum vorläufigen Fix nach dieser APAR-Nummer suchen. 
 
+### Im CD-Update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04) enthaltene Features
+
+##### <span style="color:NAVY">**HTTP/2-Unterstützung für APNS-Push-Benachrichtigungen**</span>
+
+Neben den traditionellen TCP-Socket-basierten Benachrichtigungen bietet MobileFirst jetzt Unterstützung für HTTP/2-basierte APNS-Push-Benachrichtigungen. [Weitere Informationen finden Sie hier]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
+
+##### <span style="color:NAVY">**React-Native-SDK für Push freigegeben**</span>
+
+Mit diesem CD-Update wurd das React-Native-SDK für Push (*react-native-ibm-mobilefirst-push 1.0.0*) freigegeben. 
+
+
 ### Mit CD-Update 3 (8.0.0.0-MFPF-IF201811050432-CDUpdate-03) eingeführte Features
 
 ##### <span style="color:NAVY">**Unterstützung für Aktualisierungstoken unter iOS**</span>
@@ -121,48 +132,3 @@ Beginnend mit dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* wird mit d
 ##### <span style="color:NAVY">**Implementierung der Mobile Foundation in Kubernetes-Clustern möglich**</span>
 
 Ab dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* kann der Benutzer die Mobile Foundation (einschließlich Mobile Foundation Server, Mobile Analytics Server und Application Center) in Kubernetes-Clustern implementieren. Das Implementierungspaket wurde aktualisiert, sodass jetzt eine Kubernetes-Implementierung unterstützt wird. Lesen Sie hierzu die entsprechende [Ankündigung](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/09/mobilefoundation-on-kube/).
-
-<!--
-### Licensing
-{: #licensing }
-#### PVU licensing
-{: #pvu-licensing }
-A new offering, {{ site.data.keys.product }} Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for {{ site.data.keys.product }} Extension, see [Licensing {{ site.data.keys.product_adj }}](../../licensing).
-
-
-### Web applications
-{: #web-applications }
-#### Registering web applications from the {{ site.data.keys.mf_cli }} (APAR PI65327)
-{: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-You can now register client web applications to {{ site.data.keys.mf_server }} by using the {{ site.data.keys.mf_cli }} (mfpdev) as an alternative to registration from the {{ site.data.keys.mf_console }}. For more information, see Registering web applications from the {{ site.data.keys.mf_cli }}.
-
-### Cordova applications
-{: #cordova-applications }
-#### Opening the native IDE for a Cordova project from Eclipse with the Studio plug-in
-{: #opening-the-native-ide-for-a-cordova-project-from-eclipse-with-the-studio-plug-in }
-With the Studio plug-in installed in your Eclipse IDE, you can open an existing Cordova project in Android Studio or Xcode from the Eclipse interface to build and run the project.
-
-#### Added *projectName* directory as an option when you use the Migration Assistance tool
-{: #added-projectname-directory-as-an-option-when-you-use-the-migration-assistance-tool }
-You can specify a name for your Cordova project directory when you migrate projects with the migration assistance tool. If you do not provide a name, the default name is *app_name-app_id-version*.
-
-#### Usability improvements to the Migration Assistance tool
-{: #usability-improvements-to-the-migration-assistance-tool }
-Made the following changes to improve the usability of the Migration Assistance tool:
-
-* The Migration Assistance tool scans HTML files and JavaScript files.
-* The scan report opens in your default browser automatically after the scan is finished.
-* The *--out* flag is optional. The working directory is used if it is not specified.
-* When the *--out* flag is specified and the directory does not exist, the directory is created.
-
-### Adapters
-{: #adapters }
-#### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
-{: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-You can use {{ site.data.keys.mf_cli }} to push Java and JavaScript adapter configurations to the {{ site.data.keys.mf_server }} and pull adapter configurations from the {{ site.data.keys.mf_server }}.
-
-### Application Center
-{: #application-center}
-
-Cordova based application center client is now available for iOS and Android.
--->

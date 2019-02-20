@@ -28,19 +28,19 @@ Weitere Informationen zum MobileFirst Application Center finden Sie in der [Mobi
 ## Voraussetzungen
 {: #prereqs}
 
-Sie müssen über ein IBM Cloud-Private-Konto verfügen und den Kubernetes-Cluster gemäß der [Dokumentation in {{ site.data.keys.prod_icp }}](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html) eingerichtet haben.
+Sie müssen über ein IBM Cloud-Private-Konto verfügen und den Kubernetes-Cluster gemäß der [Dokumentation in {{ site.data.keys.prod_icp }}](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup) eingerichtet haben.
 
 Sie benötigen eine vorkonfigurierte Datenbank, um MobileFirst-Application-Center-Charts in {{site.data.keys.prod_icp }} installieren und konfigurieren zu können. Beim Konfigurieren des MobileFirst-Application-Center-Charts müssen Sie die Datenbankinformationen angeben. Die für das {{ site.data.keys.mf_app_center }} erforderlichen Tabellen werden in dieser Datenbank erstellt. 
 
-> Unterstützte Datenbanken: DB2
+> Unterstützte Datenbanken: DB2, Oracle, MySQL, PostgreSQL.
 
 Für die Verwaltung von Containern und Images müssen Sie im Rahmen des IBM Cloud-Private-Setups die folgenden Tools auf Ihrer Hostmaschine installieren: 
 
 * Docker
-* IBM Cloud-CLI (`bx`)
-* ICP-Plug-in ({{ site.data.keys.prod_icp }}) für die IBM Cloud-CLI ( `bx pr` )
+* IBM Cloud-CLI (`cloudctl`)
 * Kubernetes-CLI (`kubectl`)
 * Helm (`helm`)
+
 
 ## IBM Passport-Advantage-Archiv mit dem {{ site.data.keys.mf_app_center }} herunterladen
 {: #download-the-ibm-mac-ppa-archive}
@@ -54,26 +54,26 @@ Vorläufige Fixes für das {{ site.data.keys.mf_app_center }} können über [IBM
 ## IBM Passport-Advantage-Archiv mit dem {{ site.data.keys.mf_app_center }} in {{ site.data.keys.prod_icp }} laden
 {: #load-the-ibm-mfpf-appcenter-ppa-archive}
 
-Bevor Sie das Passport-Advantage-Archiv mit der {{ site.data.keys.product }} laden, müssen Sie Docker einrichten. Anweisungen finden Sie [hier](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
+Bevor Sie das Passport-Advantage-Archiv mit der {{ site.data.keys.product }} laden, müssen Sie Docker einrichten. Anweisungen finden Sie [hier](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html).
 
 Führen Sie die nachstehenden Schritte aus, um das Passport-Advantage-Archiv in den IBM Cloud-Private-Cluster zu laden:
 
-  1. Melden Sie sich mit dem IBM Cloud-Private-Plug-in (`bx pr`) beim Cluster an.
-      >Lesen Sie die [CLI-Befehlsreferenz](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html) in der Dokumentation zu {{ site.data.keys.prod_icp }}. 
+  1. Melden Sie sich mit dem IBM Cloud-ICP-Plug-in (`cloudctl`) beim Cluster an.
+      > Lesen Sie die [CLI-Befehlsreferenz](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in der Dokumentation zu {{ site.data.keys.prod_icp }}. 
 
-      Beispiel: 
+      Beispiel:
       ```bash
-      bx pr login -a https://<IP-Adresse>:<Port>
+      cloudctl login -a https://<IP-Adresse>:<Port>
       ```
       Falls Sie die SSL-Validierung übergehen möchten, können Sie im obigen Befehl die Option `--skip-ssl-validation` verwenden. Bei Verwendung dieser Option werden Sie zur Eingabe von `Benutzername` und `Kennwort` Ihres Clusterendpunkts aufgefordert. Fahren Sie nach erfolgreicher Anmeldung mit den nachstehenden Schritten fort. 
 
-  2. Laden Sie mit folgendem Befehl das Passport-Advantage-Archiv mit der {{ site.data.keys.product }}: 
+  2. Laden Sie mit folgendem Befehl das Passport-Advantage-Archiv mit der {{ site.data.keys.product }}:
       ```
-      bx pr load-ppa-archive --archive <Archivname> [--clustername <Clustername>] [--namespace <Namespace>]
+      cloudctl load-ppa-archive --archive <Archivname> [--clustername <Clustername>] [--namespace <Namespace>]
       ```
       Der *Archivname* für die {{ site.data.keys.product }} ist der Name des Archivs, den Sie über IBM Passport Advantage heruntergeladen haben.
 
-      Sie können `--clustername` ignorieren, wenn Sie den vorherigen Schritt ausgeführt und den Clusterendpunkt zum Standard für `bx pr` gemacht haben.
+      Sie können `--clustername` ignorieren, wenn Sie den vorherigen Schritt ausgeführt und den Clusterendpunkt zum Standard für `cloudctl` gemacht haben.
 
   3. Synchronisieren Sie nach dem Laden des Passport-Advantage-Archivs die Repositorys, um sicherzustellen, dass die Helm-Charts im **Katalog** aufgelistet werden. Diesen Schritt können Sie in der Managementkonsole von {{ site.data.keys.prod_icp }} ausführen. <br/>
      * Wählen Sie **Admin > Repositories** aus.
@@ -90,26 +90,26 @@ Führen Sie die nachstehenden Schritte aus, um das Passport-Advantage-Archiv in 
 {: #env-mf-appcenter }
 In der folgenden Tabelle sind die im {{ site.data.keys.mf_app_center }} in {{ site.data.keys.prod_icp }} verwendeten Umgebungsvariablen angegeben.
 
-| Qualifikationsmerkmal | Parameter | Definition | Zulässiger Wert |
+|Qualifikationsmerkmal |Parameter |Definition |Zulässiger Wert |
 |-----------|-----------|------------|---------------|
-| arch |  | Worker node architecture | Worker-Knotenarchitektur, in der dieses Chart implementiert werden soll. Derzeit wird nur die Plattform **AMD64** unterstützt. |
-| image | pullPolicy | Richtlinie für Image-Übertragung per Pull-Operation | Standardeinstellung: **IfNotPresent** |
-|  | name | Docker image name | Name des Docker-Image für das {{ site.data.keys.mf_app_center }} |
-|  | tag | Docker image tag | Siehe [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
-| mobileFirstAppCenterConsole | user | Benutzername für die MobileFirst-Application-Center-Konsole |  |
-|  | password | Kennwort für die MobileFirst-Application-Center-Konsole |  |
-| existingDB2Details | appCenterDB2Host | IP-Adresse des DB2-Servers, auf dem die MobileFirst-Application-Center-Datenbank konfiguriert wird |  |
-|  | appCenterDB2Port | Port der eingerichteten DB2-Datenbank |  |
-|  | appCenterDB2Database | Name der zu verwendenden Datenbank | Die Datenbank muss zuvor erstellt worden sein. |
-|  | appCenterDB2Username | DB2-Benutzername für den Zugriff auf die DB2-Datenbank | Der Benutzer sollte Zugriff haben, um Tabellen zu erstellen und ein Schema zu erstellen, falls es noch nicht vorhanden ist. |
-|  | appCenterDB2Password | DB2-Kennwort für die angegebene Datenbank |  |
-|  | appCenterDB2Schema | Zu erstellendes DB2-Schema für das {{ site.data.keys.mf_app_center_short }} |  |
-|  | appCenterDB2ConnectionIsSSL | DB2-Verbindungstyp | Geben Sie an, ob Ihre Datenbankverbindung über **http** oder **https** erfolgen muss. Der Standardwert ist **false** (http). Stellen Sie sicher, dass der DB2-Port für denselben Verbindungsmodus konfiguriert ist. |
-| keystores | keystoresSecretName | Unter [Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigurieren](../#configure-install-mf-helmcharts) sind die Schritte für die Erstellung des geheimen Schlüssels mit den Keystores und den zugehörigen Kennwörtern beschrieben. |  |
-| resources | limits.cpu | Maximal zulässige CPU-Kapazität | Standardeinstellung: **1000m** <br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Maximal zulässige Speicherkapazität | Standardeinstellung: **1024Mi** <br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-| resources.requests | requests.cpu | Beschreibt die erforderliche CPU-Mindestkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder ein anderweitig für die Implementierung definierter Wert. | Standardeinstellung: **1000m** |
-|  | requests.memory | Beschreibt die erforderliche Mindestspeicherkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder der für die Implementierung definierte Wert. | Standardeinstellung: **1024Mi** |
+|arch |  |Worker node architecture |Worker-Knotenarchitektur, in der dieses Chart implementiert werden soll. Derzeit wird nur die Plattform **AMD64** unterstützt. |
+|image |pullPolicy |Richtlinie für Image-Übertragung per Pull-Operation |Standardeinstellung: **IfNotPresent** |
+|  |name |Docker image name |Name des Docker-Image für das {{ site.data.keys.mf_app_center }} |
+|  |tag |Docker image tag |Siehe [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
+|mobileFirstAppCenterConsole |user |Benutzername für die MobileFirst-Application-Center-Konsole |  |
+|  |password |Kennwort für die MobileFirst-Application-Center-Konsole |  |
+|existingDB2Details |appCenterDB2Host |IP-Adresse des DB2-Servers, auf dem die MobileFirst-Application-Center-Datenbank konfiguriert wird |  |
+|  |appCenterDB2Port |Port der eingerichteten DB2-Datenbank |  |
+|  |appCenterDB2Database |Name der zu verwendenden Datenbank |Die Datenbank muss zuvor erstellt worden sein. |
+|  |appCenterDB2Username |DB2-Benutzername für den Zugriff auf die DB2-Datenbank |Der Benutzer sollte Zugriff haben, um Tabellen zu erstellen und ein Schema zu erstellen, falls es noch nicht vorhanden ist. |
+|  |appCenterDB2Password |DB2-Kennwort für die angegebene Datenbank |  |
+|  |appCenterDB2Schema |Zu erstellendes DB2-Schema für das {{ site.data.keys.mf_app_center_short }} |  |
+|  |appCenterDB2ConnectionIsSSL |DB2-Verbindungstyp |Geben Sie an, ob Ihre Datenbankverbindung über **http** oder **https** erfolgen muss. Der Standardwert ist **false** (http). Stellen Sie sicher, dass der DB2-Port für denselben Verbindungsmodus konfiguriert ist. |
+|keystores |keystoresSecretName |Unter [Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigurieren](../#configure-install-mf-helmcharts) sind die Schritte für die Erstellung des geheimen Schlüssels mit den Keystores und den zugehörigen Kennwörtern beschrieben. |  |
+|resources |limits.cpu |Maximal zulässige CPU-Kapazität |Standardeinstellung: **1000m** <br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  |limits.memory |Maximal zulässige Speicherkapazität |Standardeinstellung: **1024Mi** <br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|resources.requests |requests.cpu |Beschreibt die erforderliche CPU-Mindestkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder ein anderweitig für die Implementierung definierter Wert. |Standardeinstellung: **1000m** |
+|  |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder der für die Implementierung definierte Wert. |Standardeinstellung: **1024Mi** |
 
 ## {{ site.data.keys.mf_app_center }} installieren und konfigurieren
 {: #configure-install-mf-appcenter-helmcharts}
@@ -128,7 +128,7 @@ Bevor Sie das {{ site.data.keys.mf_app_center }} installieren und konfigurieren,
 
   * Speichern Sie die Datei `keystore.jks` mit dem zugehörigen Kennwort in einer Datei mit dem Namen `keystore-password.txt` und die Datei `truststore.jks` mit dem zugehörigen Kennwort its password in einer Datei mit dem Namen `truststore-password.jks`.
 
-  * Rufen Sie die Befehlszeile auf und führen Sie Folgendes aus: 
+  * Rufen Sie die Befehlszeile auf und führen Sie Folgendes aus:
     ```bash
     kubectl create secret generic mfpf-cert-secret --from-file keystore-password.txt --from-file truststore-password.txt --from-file keystore.jks --from-file truststore.jks
     ```

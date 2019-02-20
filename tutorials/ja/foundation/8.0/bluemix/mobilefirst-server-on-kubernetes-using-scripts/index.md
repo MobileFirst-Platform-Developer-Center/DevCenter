@@ -3,11 +3,11 @@ layout: tutorial
 title: スクリプトを使用した IBM Cloud Kubernetes クラスター上の MobileFirst サーバーのセットアップ
 breadcrumb_title: Foundation on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
->**注:** Kubernetes クラスターにソフトウェアをデプロイする際の推奨されるアプローチは、Helm です。[Helm チャートを使用した IBM Cloud Kubernetes クラスター上の Mobile Foundation](../mobilefirst-server-on-kubernetes-using-helm) のデプロイについて学習してください。
+>**注:** Kubernetes クラスターにソフトウェアをデプロイする際の推奨されるアプローチは、Helm です。 [Helm チャートを使用した IBM Cloud Kubernetes クラスター上の Mobile Foundation](../mobilefirst-server-on-kubernetes-using-helm) のデプロイについて学習してください。
 
 ## 概説
 {: #overview }

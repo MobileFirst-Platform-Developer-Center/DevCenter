@@ -3,7 +3,7 @@ layout: tutorial
 title: Liberty for Java 用のスクリプトを使用した IBM Cloud 上での MobileFirst Server のセットアップ
 breadcrumb_title: Foundation on Liberty for Java
 relevantTo: [ios,android,windows,javascript]
-weight: 5
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
