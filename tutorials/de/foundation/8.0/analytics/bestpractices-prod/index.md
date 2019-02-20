@@ -104,7 +104,7 @@ Dies hat viele Benutzer dazu bewogen, die **coreThreads** auf einen hohen Wert z
 Die Elasticsearch-Optimierung kann in einer separaten YAML-Datei (z. B. mit dem Namen `elasticsearchconfig.yml`) ausgeführt werden. Der Pfad zu dieser Datei kann in der Analytics-Server-Konfiguration (mit den JNDI-Eigenschaften) konfiguriert werden.
 
 **Eigenschaftsname:** *analytics/settingspath*<br/>
-**Wert:** *\<Pfad_zu_elasticsearchconfig.yml\>*
+**Wert:** *\<path_to_the_ES_config_yml\>*
 
 Wenden Sie die Elasticsearch-Optimierungsparameter an, indem Sie die Werte zu einer `.yml`-Datei hinzufügen und mit dem JNDI-Eintrag auf diese zugreifen.
 

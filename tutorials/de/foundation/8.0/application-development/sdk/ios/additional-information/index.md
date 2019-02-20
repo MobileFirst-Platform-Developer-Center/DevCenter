@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Zusätzliche Informationen
+title: Weitere Informationen
 breadcrumb_title: Zusätzliche Informationen
 relevantTo: [ios]
 weight: 1

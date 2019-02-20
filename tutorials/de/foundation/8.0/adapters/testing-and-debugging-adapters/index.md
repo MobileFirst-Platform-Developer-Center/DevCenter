@@ -164,6 +164,8 @@ Die Annotationen sind nur für Java-Adapter verfügbar.
 Wenn Sie eine Swagger-Dokumentation für Java-Adapter generieren möchten, verwenden Sie in Ihrer Java-Implementierung Swagger-Annotationen. 
 > Weitere Informationen zu Swagger-Annotationen finden Sie in der [Swagger-Dokumentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
 
+
+
 ```java
 @ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters by using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
 @ApiResponses(value = { @ApiResponse(code = 200, message = "A JSON object containing all the received parameters returned.") })

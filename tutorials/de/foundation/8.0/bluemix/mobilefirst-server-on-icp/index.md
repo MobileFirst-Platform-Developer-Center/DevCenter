@@ -3,7 +3,7 @@ layout: tutorial
 title: MobileFirst Server in IBM Cloud Private einrichten
 breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -11,7 +11,7 @@ weight: 2
 Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz und eine Instanz von {{ site.data.keys.mf_analytics }} für {{ site.data.keys.prod_icp }} zu konfigurieren. 
 
 * Richten Sie einen IBM Cloud-Private-Kubernetes-Cluster ein.
-* Richten Sie Ihren Host-Computer mit den erforderlichen Tools ein (Docker, IBM Cloud-CLI (bx), IBM Cloud-Private-Plug-in (icp) für die IBM Cloud-CLI (bx pr), Kubernetes-CLI (kubectl) und Helm-CLI (helm)).
+* Richten Sie Ihren Host-Computer mit den erforderlichen Tools ein (Docker-CLI, IBM Cloud-CLI (`cloudctl`), Kubernetes-CLI (`kubectl`) und Helm-CLI (`helm`)).
 * Laden Sie das Passport-Advantage-Archiv mit der {{ site.data.keys.product_full }} für {{ site.data.keys.prod_icp }} herunter.
 * Laden Sie das Passport-Advantage-Archiv in den IBM Cloud-Private-Cluster.
 * Abschließend werden Sie {{ site.data.keys.mf_analytics }} (optional) und {{ site.data.keys.mf_server }} installieren und konfigurieren.
@@ -30,17 +30,16 @@ Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz und
 ## Voraussetzungen
 {: #prereqs}
 
-Sie müssen über ein IBM Cloud-Private-Konto verfügen und den Kubernetes-Cluster wie unter [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html) dokumentiert eingerichtet haben.
+Sie müssen über ein IBM Cloud-Private-Konto verfügen und den Kubernetes-Cluster wie unter [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup) dokumentiert eingerichtet haben.
 
 Für die Verwaltung von Containern und Images müssen Sie im Rahmen des IBM Cloud-Private-Setups die folgenden Tools auf Ihrer Hostmaschine installieren: 
 
 * Docker
-* IBM Cloud-CLI (`bx`)
-* ICP-Plug-in ({{ site.data.keys.prod_icp }}) für die IBM Cloud-CLI ( `bx pr` )
+* IBM Cloud-CLI (`cloudctl`)
 * Kubernetes-CLI (`kubectl`)
 * Helm (`helm`)
 
-Für den Zugruff auf den IBM Cloud-Private-Cluster über die CLI sollten Sie den *kubectl*-Client konfigurieren. [Hier finden Sie weitere Informationen](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_cluster/cfc_cli.html).
+Für den Zugruff auf den IBM Cloud-Private-Cluster über die CLI sollten Sie den *kubectl*-Client konfigurieren. [Hier finden Sie weitere Informationen](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
 
 ## Passport-Advantage-Archiv mit der IBM Mobile Foundation herunterladen
 {: #download-the-ibm-mfpf-ppa-archive}
@@ -55,22 +54,22 @@ Bevor Sie das Passport-Advantage-Archiv mit der {{ site.data.keys.product }} lad
 
 Führen Sie die nachstehenden Schritte aus, um das Passport-Advantage-Archiv in den IBM Cloud-Private-Cluster zu laden:
 
-  1. Melden Sie sich mit dem IBM Cloud-Private-Plug-in (`bx pr`) beim Cluster an.
-      > Lesen Sie die [CLI-Befehlsreferenz](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html) in der Dokumentation zu {{ site.data.keys.prod_icp }}. 
+  1. Melden Sie sich mit dem IBM Cloud-ICP-Plug-in (`cloudctl`) beim Cluster an.
+      > Lesen Sie die [CLI-Befehlsreferenz](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in der Dokumentation zu {{ site.data.keys.prod_icp }}. 
 
       Beispiel:
       ```bash
-      bx pr login -a https://IP-Adresse:Port
+      cloudctl login -a https://IP-Adresse:Port
       ```
       Falls Sie die SSL-Validierung übergehen möchten, können Sie im obigen Befehl die Option `--skip-ssl-validation` verwenden. Bei Verwendung dieser Option werden Sie zur Eingabe von `Benutzername` und `Kennwort` Ihres Clusterendpunkts aufgefordert. Fahren Sie nach erfolgreicher Anmeldung mit den nachstehenden Schritten fort. 
 
   2. Laden Sie mit folgendem Befehl das Passport-Advantage-Archiv mit der {{ site.data.keys.product }}:
       ```
-      bx pr load-ppa-archive --archive <Archivname> [--clustername <Clustername>] [--namespace <Namespace>]
+      cloudctl load-ppa-archive --archive <Archivname> [--clustername <Clustername>] [--namespace <Namespace>]
       ```
       Der *Archivname* für die {{ site.data.keys.product }} ist der Name des Archivs, den Sie über IBM Passport Advantage heruntergeladen haben.
 
-      Sie können `--clustername` ignorieren, wenn Sie den vorherigen Schritt ausgeführt und den Clusterendpunkt zum Standard für `bx pr` gemacht haben.
+      Sie können `--clustername` ignorieren, wenn Sie den vorherigen Schritt ausgeführt und den Clusterendpunkt zum Standard für `cloudctl` gemacht haben.
 
   3. Synchronisieren Sie nach dem Laden des Passport-Advantage-Archivs die Repositorys, um sicherzustellen, dass die Helm-Charts im Katalog (**Catalog**) aufgelistet werden. Diesen Schritt können Sie in der Managementkonsole von {{ site.data.keys.prod_icp }} ausführen. 
       * Wählen Sie **Admin > Repositories** aus.
