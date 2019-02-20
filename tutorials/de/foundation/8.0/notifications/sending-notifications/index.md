@@ -30,6 +30,9 @@ oder augehend vom authentifizierten Benutzer.
     * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
     * [REST-APIs](#rest-apis)
     * [Benachrichtigungen anpassen](#customizing-notifications)
+* [HTTP/2-Unterstützung für APNS-Push-Benachrichtigungen](#http2-support-for-apns-push-notifications)
+  * [HTTP/2 aktivieren](#enabling-http2)
+  * [Proxyunterstützung für HTTP/2](#proxy-support-for-http2)
 * [Proxyunterstützung](#proxy-support)
 * [Nächste Lernprogramme](#tutorials-to-follow-next)
 

@@ -13,14 +13,14 @@ Der {{ site.data.keys.mf_bm_short }} Service ist ein IBM Cloud-Service für eine
 
 Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen an: 
 
-1. **Developer**: Dieser Plan stellt {{ site.data.keys.mfound_server }} als eine Cloud-Foundry-Anwendung in einer Liberty-for-Java-Laufzeit bereit. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht in diesem Plan enthalten. Der Plan unterstützt nicht die Verwendung externer Datenbanken. Er ist für Entwicklung und Tests bestimmt. Die Mobile-Foundation-Server-Instanz des Plans *Developer* ermöglicht Ihnen, beliebig viele mobile Anwendungen für Entwicklung und Tests zu registrieren. Die Anzahl verbundener Geräte ist allerdings auf 10 beschränkt.
+1. **Developer**: Dieser Plan stellt {{ site.data.keys.mfound_server }} als eine Cloud-Foundry-Anwendung in einer Liberty-for-Java-Laufzeit bereit. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht in diesem Plan enthalten. Der Plan unterstützt nicht die Verwendung externer Datenbanken. Er ist für Entwicklung und Tests bestimmt. Mobile Analytics wird für eine Aufbewahrungszeit für Ereignisse von sechs Monaten ohne Aufpreis angeboten. Die Mobile-Foundation-Server-Instanz des Plans *Developer* ermöglicht Ihnen, beliebig viele mobile Anwendungen für Entwicklung und Tests zu registrieren. Die Anzahl verbundener Geräte ist allerdings auf 10 beschränkt.
 
     > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenbank an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
 
 
-2. **Professional Per Device:** Dieser Plan ermöglicht Benutzern, in der Produktion mobile Anwendungen zu erstellen, zu testen und auszuführen. Die Gebühren richten sich nach der Anzahl der pro Tag verbundenen Clientgeräte. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Dieser Plan erfordert eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird. Mit diesem Plan wird ein Mobile Foundation Server in Liberty for Java mit mindestens 2 Knoten mit 1 GB bereitgestellt. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten.
+2. **Professional Per Device:** Dieser Plan ermöglicht Benutzern, in der Produktion bis zu fünf mobile Anwendungen mit der Mobile Foundation zu erstellen, zu testen und auszuführen. Mobile Analytics wird für eine Aufbewahrungszeit für Ereignisse von sechs Monaten ohne Aufpreis angeboten. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Dieser Plan erfordert eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird. Dieser Plan stellt einen Mobile Foundation Server in *Liberty for Java* mit mindestens zwei Knoten (1 GB) bereit. Die *Liberty-for-Java-Gebühren* werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten.
 
-3. **Professional 1 Application:** Dieser Plan ermöglicht Benutzern, eine mobile Anwendung mit einem verhersehbaren Preis zu erstellen und zu verwalten. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Diese eine mobile Anwendung kann es in mehreren Varianten geben, z. B. für iOS, Android, Windows und Mobile Web. Mit diesem Plan wird ein Mobile Foundation Server als Cloud-Foundry-Anwendung in Liberty for Java mit mindestens 2 Knoten mit 1 GB bereitgestellt. Die Liberty-for-Java-Gebühren werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten. Dieser Plan erfordert auch eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird.
+3. **Professional 1 Application:** Dieser Plan ermöglicht Benutzern, in der Produktion mobile Anwendungen mit der Mobile Foundation zu erstellen, zu testen und auszuführen. Mobile Analytics wird für eine Aufbewahrungszeit für Ereignisse von sechs Monaten ohne Aufpreis angeboten. Die Gebühren richten sich nach der Anzahl der pro Tag verbundenen Clientgeräte. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Dieser Plan erfordert eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird. Dieser Plan erstellt einen Mobile Foundation Server in *Liberty for Java* mit mindestens zwei Knoten (1 GB). Die *Liberty-for-Java-Gebühren* werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten.
 
 4. **Developer Pro**: Dieser Plan stellt {{ site.data.keys.mfound_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Dieser Plan erfordert eine Serviceinstanz von **Db2** (aus einem beliebigen Plan mit Ausnahme von **Lite**). Die Serviceinstanz von Db2 wird separat erstellt und in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung.
 >_Der Plan **Developer Pro** wird nicht weiter unterstützt._
@@ -32,15 +32,14 @@ Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen a
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to}
-- [Übersicht](#overview)
-    - [Fahren Sie mit folgenden Abschnitten fort: ](#jump-to)
-- [{{ site.data.keys.mf_bm_short }} Service einrichten](#setting-up-the--sitedatakeysmfbmshort--service)
+- [Mobile Foundation Service einrichten](#setting-up-the-mobile-foundation-service)
   - [Plan *Developer* einrichten](#setting-up-the-developer-plan)
   - [Pläne *Professional 1 Application* und *Professional Per Device* einrichten](#setting-up-the-professional-1-application-and-professional-per-device-plan)
-- [{{ site.data.keys.mf_bm_short }} Service verwenden](#using-the--sitedatakeysmfbmshort--service)
+- [Mobile Foundation Service verwenden](#using-the-mobile-foundation-service)
   - [Serverkonfiguration](#server-configuration)
   - [Erweiterte Serverkonfiguration](#advanced-server-configuration)
-- [Fixes für {{ site.data.keys.mfound_server }} anwenden](#applying--sitedatakeysmfoundserver--fixes)
+- [Mobile-Foundation-Serviceplan umstellen](#migrating-mobile-foundation-service-plan)  
+- [Mobile-Foundation-Server-Korrekturen anwenden](#applying-mobile-foundation-server-fixes)
 - [Zugriff auf Serverprotokolle](#accessing-server-logs)
     - [Tracefunktion](#tracing)
 - [Fehlerbehebung](#troubleshooting)
@@ -93,7 +92,7 @@ Wenn Sie den {{ site.data.keys.mf_bm_short }} Service erstellen, wird der {{ sit
 
     ![Mobile-Foundation-Setup](overview-page.png)
 
-## {{ site.data.keys.mf_bm_short }} Service verwenden
+## Mobile Foundation Service verwenden
 {: #using-the-mobile-foundation-service }
 
 Sobald {{ site.data.keys.mfound_server }} aktiv ist, wird das folgende Dashboard angezeigt: 
@@ -177,8 +176,35 @@ Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 -->
 
-## Fixes für {{ site.data.keys.mfound_server }} anwenden
-{: #applying-mobilefirst-server-fixes }
+## Mobile-Foundation-Serviceplan umstellen
+{: #migrating-mobile-foundation-service-plan }
+
+Mobile-Foundation-Instanzen, die mit nicht weiter verwendeten Plänen erstellt wurden, müssen auf den Stand der neuen Pläne gebracht werden. Je nach Instanzverwendung kann auch eine Planaktualisierung erforderlich sein. 
+
+### Beispielszenario: Umstellung vom Plan 'Professional Per Device' auf den Plan 'Professional 1 Application'
+
+1. Wählen Sie im IBM Cloud-Dashboard die IBM Mobile-Foundation-Instanz aus, die Sie umstellen möchten.
+2. Wählen Sie links im Navigationsbereich **Plan** aus.
+   ![Vorhandener Mobile-Foundation-Plan](existing-plan.png)
+3. Wählen Sie von den aufgelisteten Preistarifen 'Professional 1 Application' aus.
+   ![Neuer Mobile-Foundation-Plan](new-plan.png)
+4. Klicken Sie auf die Schaltfläche **Speichern** aus und bestätigen Sie die Planumstellung.
+     Die Umstellung auf 'Professional 1 Application' ist jetzt abgeschlossen. Alle vorhandenen Daten wurden beibehalten. Die Abrechnung wird geändert, und es gibt keine Ausfallzeiten.
+5. Nach der Planumstellung muss die Mobile-Foundation-Instanz im Servicedashboard neu erstellt werden, damit die richtige Konfiguration in Kraft tritt. Für diese Aktualisierung ist eine kurze Ausfallzeit erforderlich. Sie müssen diese Ausfallzeit planen. Wählen Sie links im Navigationsbereich **Verwalten** aus und klicken Sie auf **Neu erstellen**.
+
+>**Hinweis:** Falls Sie mit einem der nicht weiter unterstützten Pläne arbeiten, müssen Sie auf einen neuen Plan umstellen. 
+
+### Unterstützte Planumstellungen
+
+* Der (nicht mehr verwendete) Plan *Developer* kann nur auf den neuen Plan *Developer* umgestellt werden.
+* Der (nicht mehr verwendete) Plan *Developer Pro* kann nur auf den Plan *Professional Per Device* oder *Professional 1 Application* umgestellt werden.
+* Der (nicht mehr verwendete) Plan *Professional Per Capacity* kann nur auf den Plan *Professional Per Device* oder *Professional 1 Application* umgestellt werden.
+* Der Plan *Professional Per Device* kann nur auf den Plan *Professional 1 Application* umgestellt werden.
+* Der Plan *Professional 1 Application* kann nur auf den Plan *Professional Per Device* umgestellt werden.
+* Für den neuen Plan *Developer* wird keine Aktualisierung unterstützt.
+
+## Mobile-Foundation-Server-Korrekturen anwenden
+{: #applying-mobile-foundation-server-fixes }
 Aktualisierungen für die {{ site.data.keys.mf_bm }} Services werden automatisch und ohne manuellen Eingriff durchgeführt. Die Durchführung muss lediglich bestätigt werden. Wenn eine Aktualisierung verfügbar ist, wird auf der Dashboardseite des Service ein Banner mit Anweisungen und Aktionsschaltflächen angezeigt. 
 
 ## Zugriff auf Serverprotokolle
