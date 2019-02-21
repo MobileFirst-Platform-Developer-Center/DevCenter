@@ -3,7 +3,7 @@ layout: tutorial
 title: Helm을 사용하여 IBM Cloud Kubernetes Cluster에 Mobile Foundation 설정
 breadcrumb_title: Foundation on Kubernetes Cluster using Helm
 relevantTo: [ios,android,windows,javascript]
-weight: 3
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -11,7 +11,7 @@ weight: 3
 Helm 차트를 사용하여 IBM Cloud Kubernetes Cluster(IKS)에서 {{ site.data.keys.mf_server }} 인스턴스 및 {{ site.data.keys.mf_analytics }} 인스턴스를 구성하려면 아래의 지시사항을 따르십시오.
 
 * IBM Cloud Kubernetes Cluster를 설정하십시오.
-* IBM Cloud CLI를 사용하여 호스트 컴퓨터를 설정하십시오.
+* IBM Cloud CLI Kubernetes 서비스 CLI(`ibmcloud`)를 사용하여 호스트 컴퓨터를 설정하십시오.
 * {{ site.data.keys.prod_icp }}용 {{ site.data.keys.product_full }}의 Passport Advantage 아카이브(PPA 아카이브)를 다운로드하십시오.
 * IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하십시오.
 * 마지막으로 {{ site.data.keys.mf_analytics }}(선택사항) 및 {{ site.data.keys.mf_server }}를 구성 및 설치하십시오.
@@ -34,10 +34,10 @@ IBM Cloud 계정이 있어야 하며 [IBM Cloud Kubernetes Cluster 서비스](ht
 
 컨테이너 및 이미지를 관리하려면 IBM Cloud CLI 플러그인 설치의 일부로 호스트 시스템에 다음 도구를 설치해야 합니다.
 
-* IBM Cloud CLI 
+* IBM Cloud CLI(`ibmcloud`)
 * Kubernetes CLI
-* IBM Cloud Container Registry 플러그인
-* IBM Cloud Container Service 플러그인
+* IBM Cloud Container 레지스트리 플러그인(`cr`)
+* IBM Cloud Container 서비스 플러그인(`ks`)
 
 CLI를 사용하여 IBM Cloud Kubernetes Cluster에 액세스하려면 IBM Cloud 클라이언트를 구성해야 합니다. [자세히 알아보기](https://console.bluemix.net/docs/cli/index.html).
 
@@ -50,24 +50,24 @@ CLI를 사용하여 IBM Cloud Kubernetes Cluster에 액세스하려면 IBM Cloud
 
 ## IBM Mobile Foundation Passport Advantage 아카이브 로드
 {: #load-the-ibm-mfpf-ppa-archive}
-{{ site.data.keys.product }}의 PPA 아카이브를 로그하기 전에 Docker를 설치해야 합니다. [여기](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html)에서 지시사항을 확인하십시오.
+{{ site.data.keys.product }}의 PPA 아카이브를 로그하기 전에 Docker를 설치해야 합니다. [여기](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html)에서 지시사항을 확인하십시오.
 
 IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 제공된 단계를 따르십시오.
 
   1. IBM Cloud 플러그인을 사용하여 클러스터에 로그인하십시오.
 
-      >IBM Cloud CLI 문서의 [CLI 명령 참조서](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli)를 참조하십시오.
+      >IBM Cloud CLI 문서의 [CLI 명령 참조서](https://console.bluemix.net/docs/cli/index.html#overview)를 참조하십시오.
 
       예를 들어, 다음과 같습니다.
       ```bash
       ibmcloud login -a https://ip:port
       ```
       선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
-      
+
   2. 다음 명령을 사용하여 IBM Cloud Container 레지스트리에 로그인하고 Container Service를 초기화하십시오.
       ```bash
       ibmcloud cr login
-      ibmcloud cs init
+      ibmcloud ks init
       ```  
   3. 다음 명령을 사용하여 배치 영역을 설정하십시오(예: us-south)
       ```bash
@@ -76,7 +76,7 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
 
   4. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
       ```
-      bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
       ```
       {{ site.data.keys.product }}의 *archive_name*은 IBM Passport Advantage에서 다운로드한 PPA 아카이브의 이름입니다.
 
@@ -114,7 +114,7 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
 {: #env-mf-analytics }
 아래의 표에서는 IBM Cloud Kubernetes Cluster의 {{ site.data.keys.mf_analytics }}에서 사용되는 환경 변수를 제공합니다.
 
-| 규정자 | 매개변수 | 정의 | 허용값 |
+| 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
 | arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
 | image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
@@ -131,8 +131,8 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
 | jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} Operational Analytics 사용자 정의를 위해 지정할 JNDI 특성 | 쉼표로 구분된 이름 값 쌍을 제공하십시오. |
 | resources | limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. |기본값은 **1000m**입니다. |
-|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 양의 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **2048Mi**입니다. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의 값입니다. |기본값은 **1000m**입니다. |
+|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 양의 기본값은 *한계*(지정된 경우)이거나 구현 정의 값입니다. | 기본값은 **2048Mi**입니다. |
 | persistence |existingClaimName | 기존 지속성 볼륨 클레임(PVC)의 이름 |  |
 | logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
 |  | consoleLogLevel | 컨테이너 로그로 이동하는 메시지 유형을 제어합니다. | 기본값은 **info**입니다. |
@@ -143,7 +143,7 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
 {: #env-mf-server }
 아래의 표에서는 IBM Cloud Kubernetes Cluster의 {{ site.data.keys.mf_server }}에서 사용되는 환경 변수를 제공합니다.
 
-| 규정자 | 매개변수 | 정의 | 허용값 |
+| 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
 | arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
 | image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
@@ -167,8 +167,8 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
 | jndiConfigurations | mfpfProperties | 배치 사용자 정의를 위한 {{ site.data.keys.prod_adj }} Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍입니다. |
 | resources | limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. |기본값은 **1000m**입니다. |
-|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **2048Mi**입니다. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의 값입니다. |기본값은 **1000m**입니다. |
+|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 구현 정의 값입니다. | 기본값은 **2048Mi**입니다. |
 | logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
 |  | consoleLogLevel | 컨테이너 로그로 이동하는 메시지 유형을 제어합니다. | 기본값은 **info**입니다. |
 |  | consoleSource | 컨테이너 로그에 기록되는 소스를 지정합니다. 여러 소스의 경우 쉼표로 구분된 목록을 사용합니다. | 기본값은 **message**, **trace**, **accessLog**, **ffdc**입니다. |
@@ -241,7 +241,7 @@ IBM Cloud Kubernetes Cluster에 IBM {{ site.data.keys.mf_server }}를 설치하�
     서버 배치를 위한 예제:
     ```bash
     helm install -n mfpserveronkubecluster -f server-values.yaml ./ibm-mfpf-server-prod-1.0.17.tgz
-    ``` 
+    ```
 
 >**참고:** AppCenter를 설치하려면 해당 helm 차트(예: ibm-mfpf-appcenter-prod-1.0.17.tgz)를 사용하여 위의 단계를 수행해야 합니다.
 
@@ -299,7 +299,7 @@ Get the Server URL by running these commands:
 ## {{ site.data.keys.prod_adj }} Helm Charts 및 릴리스 업그레이드
 {: #upgrading-mf-helm-charts}
 
-helm charts/릴리스 업그레이드 방법에 대한 지시사항은 [번들 제품 업그레이드](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/upgrade_helm.html)를 참조하십시오.
+helm 차트/릴리스 업그레이드 방법에 대한 지시사항은 [번들 제품 업그레이드](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/upgrade_helm.html)를 참조하십시오.
 
 ### Helm 릴리스 업그레이드를 위한 샘플 시나리오
 

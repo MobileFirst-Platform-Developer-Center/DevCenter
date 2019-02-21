@@ -8,7 +8,7 @@ weight: 3
 ## 개요
 {: #overview }
 푸시 또는 SMS 알림을 iOS, Android 또는 Windows 디바이스에 전송하려면 먼저 FCM 세부사항(Android의 경우), APNS 인증서(iOS의 경우) 또는 WNS 신임 정보(Windows 8.1 Universal/Windows 10 UWP의 경우)를 사용하여 {{ site.data.keys.mf_server }}를 구성해야 합니다.
-그런 다음 알림은 모든 디바이스(브로드캐스트), 특정 태그에 등록된 디바이스, 단일 디바이스 ID 또는 사용자 ID에 전송되거나 iOS 디바이스, Android 디바이스 또는 Windows 디바이스에만 전송되거나 인증된 사용자를 기반으로 전송될 수 있습니다.
+그런 다음 알림은 모든 디바이스(브로드캐스트), 특정 태그에 등록된 디바이스, 단일 디바이스 ID 또는 사용자 ID에 전송되거나 iOS 디바이스, Android 디바이스 또는 Windows 디바이스에만 전송되거나, 인증된 사용자를 기반으로 전송될 수 있습니다.
 
 **전제조건**: [알림 개요](../) 학습서를 읽으십시오.
 
@@ -26,6 +26,12 @@ weight: 3
     * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
     * [REST API](#rest-apis)
     * [알림 사용자 정의](#customizing-notifications)
+* [APN 푸시 알림에 대한 HTTP/2 지원](#http2-support-for-apns-push-notifications)
+  * [HTTP/2 사용](#enabling-http2)
+  * [HTTP/2에 대한 프록시 지원](#proxy-support-for-http2)
+* [APN 푸시 알림에 대한 HTTP/2 지원](#http2-support-for-apns-push-notifications)
+  * [HTTP/2 사용](#enabling-http2)
+  * [HTTP/2에 대한 프록시 지원](#proxy-support-for-http2)
 * [프록시 지원](#proxy-support)
 * [다음 학습서](#tutorials-to-follow-next)
 
@@ -359,7 +365,6 @@ phoneNumber |디바이스 등록 및 알림 수신에 사용되는 전화번호�
 
 2. [액세스 토큰을 작성하십시오](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
 
-
 3. **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**에 대한 **POST** 요청을 작성하십시오.
     - 원격 {{ site.data.keys.product_adj }}를 사용하는 경우 `hostname` 및 `port` 값을 사용자 고유의 값으로 대체하십시오.
     - 애플리케이션 ID 값을 사용자 고유의 값으로 업데이트하십시오.
@@ -404,6 +409,32 @@ phoneNumber |디바이스 등록 및 알림 수신에 사용되는 전화번호�
 * 알림 사운드, 사용자 정의 페이로드, 조치 키 제목, 알림 유형 및 배지 번호
 
 ![푸시 알림 사용자 정의](customizing-push-notifications.png)
+
+## APN 푸시 알림에 대한 HTTP/2 지원
+{: #http2-support-for-apns-push-notifications}
+
+Apple Push Notification(APN) 서비스는 HTTP/2 네트워크 프로토콜 기반의 새로운 API를 지원합니다. HTTP/2에 대한 지원은 아래 나열된 내용을 포함하여 많은 혜택을 제공합니다. 
+
+* 메시지 길이가 2KB에서 4KB로 증가하여 알림에 더 많은 컨텐츠를 추가할 수 있습니다. 
+* 클라이언트와 서버 사이의 다중 연결이 필요 없으므로 처리량이 향상됩니다. 
+* 유니버셜 푸시 알림 클라이언트 SSL 인증서를 지원합니다. 
+
+>MobileFirst의 푸시 알림이 이제 기존의 TCP 소켓 기반 알림과 함께 HTTP/2 기반 APN 푸시 알림을 지원합니다. 
+
+### HTTP/2 사용
+{: #enabling-http2}
+
+JNDI 특성을 통해 HTTP/2 기반 알림을 사용할 수 있습니다.
+```xml
+<jndiEntry jndiName="imfpush/mfp.push.apns.http2.enabled" value= "true"/>
+```
+
+>**참고:** 위의 JNDI 특성이 추가되면 기존의 TCP 소켓 기반 알림이 사용되지 않고 HTTP/2 기반 알림만 사용됩니다. 
+
+### HTTP/2에 대한 프록시 지원
+{: #proxy-support-for-http2}
+
+HTTP/2 기반 알림은 HTTP 프록시를 통해서 전송될 수 있습니다. 프록시를 통한 알림 경로 지정을 사용하려면 [여기](#proxy-support)를 참조하십시오.
 
 ## 프록시 지원
 {: #proxy-support }

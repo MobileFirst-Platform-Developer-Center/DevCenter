@@ -73,7 +73,7 @@ Xcode 프로젝트 내에서 수동으로 기존 네이티브 iOS 프로젝트�
 
     이 프레임워크에서는 코어 {{ site.data.keys.product_adj }} 기능이 제공됩니다. 마찬가지로, [선택적 기능을 위한 기타 프레임워크](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk)를 추가할 수 있습니다.
 
-4. 이전 단계와 마찬가지로 **빌드 단계** 탭의 **라이브러리가 포함된 2진 링크** 섹션에서 프로젝트에 다음 자원을 링크하십시오.
+4. 이전 단계와 마찬가지로 **빌드 단계** 탭의 **라이브러리가 포함된 2진 링크** 섹션에서 프로젝트에 다음 리소스를 링크하십시오.
     * SystemConfiguration.framework
     * MobileCoreServices.framework
     * Security.framework
@@ -251,7 +251,7 @@ iOS API 변경사항을 아래 표에 나열했습니다.
 
 |API 요소 |마이그레이션 경로 |
 |-------------|----------------|
-| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} |위치정보가 제거되었습니다. 위치정보에 대한 네이티브 iOS 또는 써드파티 패키지를 사용하십시오. |
+| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} |위치정보가 제거되었습니다. 위치정보에 대한 네이티브 iOS 또는 서드파티 패키지를 사용하십시오. |
 | {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} |대체 없음. |
 |`WL.Client.deleteUserPref(key, options)` |대체 없음. 어댑터와 [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) API를 사용하여 사용자 환경 설정을 관리할 수 있습니다. |
 |`[WLClient getRequiredAccessTokenScopeFromStatus]` |[`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:)를 사용하십시오. |
