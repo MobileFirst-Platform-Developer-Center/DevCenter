@@ -27,22 +27,22 @@ IBM {{ site.data.keys.mf_server }}의 엔드포인트에 대해 화이트리스�
 
 > **참고:** {{ site.data.keys.product }}에서 공개하는 URL 관련 정보는 가이드라인으로서 제공됩니다. 조직에서는 화이트리스트 및 블랙리스트에 포함된 항목을 기반으로 URL이 엔터프라이즈 인프라에서 테스트되었는지 확인해야 합니다.
 
-| `<runtime context root>/api/` 아래의 API URL | 설명                               | 화이트리스트에 대해 제안? |
+| `<runtime context root>/api/` 아래의 API URL |설명                               | 화이트리스트에 대해 제안? |
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | 이름 지정된 어댑터에 대한 어댑터의 Swagger 문서 리턴 | 아니오. 관리자 및 개발자가 내부에서만 사용합니다. |
-| /adapters/*  | 어댑터에서 서비스 제공 | 예 |
-| /az/v1/authorization/* | 클라이언트에 특정 범위에 액세스할 수 있는 권한 부여 | 예 |
+| /adapters/*  | 어댑터에서 서비스 제공 |예 |
+| /az/v1/authorization/* | 클라이언트에 특정 범위에 액세스할 수 있는 권한 부여 |예 |
 | /az/v1/introspection | 클라이언트의 액세스 토큰 인트로스펙트 | 아니오. 이 API는 기밀 클라이언트 전용입니다. |
-| /az/v1/token | 클라이언트의 액세스 토큰 생성 | 예 |
-| /clientLogProfile/* | 클라이언트 로그 프로파일 가져오기 | 예 |
+| /az/v1/token | 클라이언트의 액세스 토큰 생성 |예 |
+| /clientLogProfile/* | 클라이언트 로그 프로파일 가져오기 |예 |
 | /directupdate/* | 직접 업데이트 .Zip 파일 가져오기 | 예. 직접 업데이트를 사용할 계획인 경우 |
-| /loguploader | 서버에 클라이언트 로그 업로드 | 예 |
-| /preauth/v1/heartbeat | 클라이언트로부터의 하트비트 승인 및 마지막 활동 시간 기록 | 예 |
-| /preauth/v1/logout | 보안 검사에서 로그아웃 | 예 |
-| /preauth/v1/preauthorize | 특정 범위에 대한 보안 검사 맵핑 및 실행 | 예 |
+| /loguploader | 서버에 클라이언트 로그 업로드 |예 |
+| /preauth/v1/heartbeat | 클라이언트로부터의 하트비트 승인 및 마지막 활동 시간 기록 |예 |
+| /preauth/v1/logout | 보안 검사에서 로그아웃 |예 |
+| /preauth/v1/preauthorize | 특정 범위에 대한 보안 검사 맵핑 및 실행 |예 |
 | /reach | 서버에 도달 가능 | 아니오. 내부적으로만 사용됩니다. |
 | /registration/v1/clients/* | 등록-서비스 클라이언트 API | 아니오. 이 API는 기밀 클라이언트 전용입니다. |
-| /registration/v1/self/* | 등록-서비스 클라이언트 자체-등록 API | 예 |
+| /registration/v1/self/* | 등록-서비스 클라이언트 자체-등록 API |예 |
 
 ## TLS V1.2를 사용할 수 있도록 {{ site.data.keys.mf_server }} 구성
 {: #configuring-mobilefirst-server-to-enable-tls-v12 }
@@ -109,8 +109,8 @@ Transport Layer Security(TLS) V1.2를 사용할 수 있도록 {{ site.data.keys.
 |                        | 관리자 | 배치자    | 운영자    | 모니터    |
 |------------------------|---------------|-------------|-------------|------------|
 | Java EE 보안 역할 | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| 애플리케이션 배치 | 예           | 예         | 아니오          | 아니오         |
-| 어댑터 배치     | 예           | 예         | 아니오          | 아니오         |
+| 애플리케이션 배치 |예           |예         |아니오          |아니오         |
+| 어댑터 배치     |예           |예         |아니오          |아니오         |
 
 #### {{ site.data.keys.mf_server }} 관리
 {: #mobilefirst-server-management }
@@ -118,7 +118,7 @@ Transport Layer Security(TLS) V1.2를 사용할 수 있도록 {{ site.data.keys.
 |                            | 관리자 | 배치자    | 운영자    | 모니터    |
 |----------------------------|---------------|-------------|-------------|------------|
 | Java EE 보안 역할     | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| 런타임 설정 구성| 예           | 예         | 아니오          | 아니오         |
+| 런타임 설정 구성|예           |예         |아니오          |아니오         |
 
 #### 애플리케이션 관리
 {: #application-management }
@@ -126,12 +126,12 @@ Transport Layer Security(TLS) V1.2를 사용할 수 있도록 {{ site.data.keys.
 |                                     | 관리자 | 배치자    | 운영자    | 모니터    |
 |-------------------------------------|---------------|-------------|-------------|------------|
 | Java EE 보안 역할              | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| 새 {{ site.data.keys.product_adj }} 애플리케이션 업로드 | 예           | 예         | 아니오          | 아니오         |
-| {{ site.data.keys.product_adj }} 애플리케이션 제거	  | 예           | 예         | 아니오          | 아니오         |
-| 새 어댑터 업로드     | 예           |예         | 아니오          | 아니오         |
-| 어댑터 제거         | 예           |예         | 아니오          | 아니오         |
-| 애플리케이션에 대한 애플리케이션 인증 테스트 켜기 또는 끄기 | 예 | 예 | 아니오 | 아니오    |
-| {{ site.data.keys.product_adj }} 애플리케이션 상태에 대한 특성 변경: 활성, 활성 알림, 사용 안함 | 예 | 예 | 예 | 아니오 |
+| 새 {{ site.data.keys.product_adj }} 애플리케이션 업로드 |예           |예         |아니오          |아니오         |
+| {{ site.data.keys.product_adj }} 애플리케이션 제거	  |예           |예         |아니오          |아니오         |
+| 새 어댑터 업로드     |예           |예         |아니오          |아니오         |
+| 어댑터 제거         |예           |예         |아니오          |아니오         |
+| 애플리케이션에 대한 애플리케이션 인증 테스트 켜기 또는 끄기 |예 |예 |아니오 |아니오    |
+| {{ site.data.keys.product_adj }} 애플리케이션 상태에 대한 특성 변경: 활성, 활성 알림, 사용 안함 |예 |예 |예 |아니오 |
 
 기본적으로 모든 역할이 GET 요청을 실행할 수 있고, **mfpadmin**, **mfpdeployer** 및 **mfpmonitor** 역할은 POST 및 PUT 요청도 실행할 수 있으며, **mfpadmin** 및 **mfpdeployer** 역할은 DELETE 요청도 실행할 수 있습니다.
 
@@ -141,9 +141,9 @@ Transport Layer Security(TLS) V1.2를 사용할 수 있도록 {{ site.data.keys.
 |                        | 관리자 | 배치자    | 운영자    | 모니터    |
 |------------------------|---------------|-------------|-------------|------------|
 | Java EE 보안 역할 | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| GET 요청 {::nomarkdown}<ul><li>애플리케이션에 대해 푸시 알림을 사용하는 모든 디바이스 목록 가져오기</li><li>특정 디바이스의 세부사항 가져오기</li><li>등록 목록 가져오기</li><li>등록 ID와 연관된 등록 정보 가져오기</li><li>GCM 구성의 세부사항 가져오기</li><li>APNS 구성의 세부사항 가져오기</li><li>애플리케이션에 대해 정의된 태그 목록 가져오기</li><li>특정 태그의 세부사항 가져오기</li></ul>{:/}| 예           | 예         | 예         | 예        |
-| POST 및 PUT 요청 {::nomarkdown}<ul><li>푸시 알림에 앱 등록</li><li>푸시 디바이스 등록 업데이트</li><li>등록 작성</li><li>GCM 구성 추가 또는 업데이트</li><li>APNS 구성 추가 또는 업데이트</li><li>디바이스에 알림 제출</li><li>업데이트 작성 또는 업데이트</li></ul>{:/} | 예           | 예         | 예         | 아니오         |
-| DELETE 요청 {::nomarkdown}<ul><li>푸시 알림에 대한 디바이스 등록 삭제</li><li>등록 삭제</li><li>태그에서 디바이스 등록 취소</li><li>GCM 구성 삭제</li><li>APNS 구성 삭제</li><li>태그 삭제</li></ul>{:/} | 예           | 예         | 아니오          | 아니오         |
+| GET 요청 {::nomarkdown}<ul><li>애플리케이션에 대해 푸시 알림을 사용하는 모든 디바이스 목록 가져오기</li><li>특정 디바이스의 세부사항 가져오기</li><li>등록 목록 가져오기</li><li>등록 ID와 연관된 등록 정보 가져오기</li><li>GCM 구성의 세부사항 가져오기</li><li>APNS 구성의 세부사항 가져오기</li><li>애플리케이션에 대해 정의된 태그 목록 가져오기</li><li>특정 태그의 세부사항 가져오기</li></ul>{:/}|예           |예         |예         |예        |
+| POST 및 PUT 요청 {::nomarkdown}<ul><li>푸시 알림에 앱 등록</li><li>푸시 디바이스 등록 업데이트</li><li>등록 작성</li><li>GCM 구성 추가 또는 업데이트</li><li>APNS 구성 추가 또는 업데이트</li><li>디바이스에 알림 제출</li><li>업데이트 작성 또는 업데이트</li></ul>{:/} |예           |예         |예         |아니오         |
+| DELETE 요청 {::nomarkdown}<ul><li>푸시 알림에 대한 디바이스 등록 삭제</li><li>등록 삭제</li><li>태그에서 디바이스 등록 취소</li><li>GCM 구성 삭제</li><li>APNS 구성 삭제</li><li>태그 삭제</li></ul>{:/} |예           |예         |아니오          |아니오         |
 
 #### 사용 안함
 {: #disabling }
@@ -151,8 +151,8 @@ Transport Layer Security(TLS) V1.2를 사용할 수 있도록 {{ site.data.keys.
 |                        | 관리자 | 배치자    | 운영자    | 모니터    |
 |------------------------|---------------|-------------|-------------|------------|
 | Java EE 보안 역할 | mfpadmin      | mfpdeployer | mfpoperator | mfpmonitor |
-| 특정 디바이스를 사용 불가능하게 설정하고 해당 상태를 유실됨 또는 도난됨으로 표시하여 해당 디바이스에 있는 애플리케이션으로부터의 액세스가 차단되도록 합니다.       | 예           | 예         | 예          | 아니오        |
-| 특정 애플리케이션을 사용 불가능하게 설정하고 해당 상태를 사용 안함으로 표시하여 디바이스에 있는 해당 특정 애플리케이션으로부터의 액세스가 차단되도록 합니다.              | 예           | 예         | 예         | 아니오         |
+| 특정 디바이스를 사용 불가능하게 설정하고 해당 상태를 유실됨 또는 도난됨으로 표시하여 해당 디바이스에 있는 애플리케이션으로부터의 액세스가 차단되도록 합니다.       |예           |예         |예          |아니오        |
+| 특정 애플리케이션을 사용 불가능하게 설정하고 해당 상태를 사용 안함으로 표시하여 디바이스에 있는 해당 특정 애플리케이션으로부터의 액세스가 차단되도록 합니다.              |예           |예         |예         |아니오         |
 
 LDAP와 같은 사용자 저장소를 통한 인증 방법을 사용하도록 선택하는 경우, 사용자 저장소와 함께 사용자 및 그룹을 사용하여 {{ site.data.keys.mf_server }} 관리의 ACL(Access Control List)을 정의할 수 있도록 {{ site.data.keys.mf_server }} 관리를 구성할 수 있습니다. 이 프로시저는 사용하는 웹 애플리케이션 서버의 유형 및 버전에 따라 다릅니다.
 
@@ -180,7 +180,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 {: #configuring-websphere-application-server-liberty-profile-for-mobilefirst-server-administration }
 WebSphere  Application Server Liberty 프로파일에서는 서버의 **server.xml** 구성 파일에 **mfpadmin**, **mfpdeployer**, **mfpmonitor** 및 **mfpoperator**의 역할을 구성합니다.
 
-보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. 각 `<application>` 요소의 `<application-bnd>` 요소에서, `<security-role>` 요소를 작성하십시오. 각 `<security-role>` 요소는 각 역할(**mfpadmin**, mfpdeployer, mfpmonitor 및 mfpoperator)에 대한 것입니다. 이러한 역할을 적절한 사용자 그룹 이름(이 예에서는 **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup** 또는 **mfpoperatorgroup**)에 맵핑하십시오. 이 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
+보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다.     `<application-bnd>` 요소의 `<application>` 요소에서, `<security-role>` 요소를 작성하십시오. 각 `<security-role>` 요소는 각 역할(**mfpadmin**, mfpdeployer, mfpmonitor 및 mfpoperator)에 대한 것입니다. 이러한 역할을 적절한 사용자 그룹 이름(이 예에서는 **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup** 또는 **mfpoperatorgroup**)에 맵핑하십시오. 이 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
 
 그런 다음, 다수의 애플리케이션(예를 들어, 80개의 애플리케이션)이 설치된 상태에서 양호한 응답 시간을 유지하기 위해 관리 데이터베이스에 대한 연결 풀을 구성해야 합니다.
 
@@ -350,7 +350,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: JMX
 {: #jndi-properties-for-administration-service-jmx }
 
-| 특성                 | 선택사항 또는 필수 | 설명 | 제한사항 |
+| 특성                 | 선택사항 또는 필수 |설명 | 제한사항 |
 |--------------------------|-----------------------|-------------|--------------|
 | mfp.admin.jmx.connector  | 선택사항	           | JMX(Java Management Extensions) 커넥터 유형입니다.<br/>가능한 값은 `SOAP` 및 `RMI`입니다. 기본값은 SOAP입니다. | WebSphere  Application Server 전용. |
 | mfp.admin.jmx.host       | 선택사항	           | JMX REST 연결을 위한 호스트 이름입니다. | Liberty 프로파일 전용. |
@@ -365,7 +365,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: 제한시간
 {: #jndi-properties-for-administration-service-timeout }
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.actions.prepareTimeout | 선택사항 | 배치 트랜잭션 중 관리 서비스의 데이터를 런타임에 전송할 때의 제한시간(밀리초 단위)입니다. 이 시간 내에 런타임에 도달할 수 없는 경우, 오류가 발생하고 배치 트랜잭션이 종료됩니다.<br/><br/>기본값: 1800000ms(30분) |
 | mfp.admin.actions.commitRejectTimeout | 선택사항 | 런타임에 접속하는 경우, 배치 트랜잭션을 커미트하거나 거부할 때의 제한시간(밀리초 단위)입니다. 이 시간 내에 런타임에 도달할 수 없는 경우, 오류가 발생하고 배치 트랜잭션이 종료됩니다.<br/><br/>기본값: 120000ms(2분) |
@@ -375,7 +375,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: 로깅
 {: #jndi-properties-for-administration-service-logging }
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.logging.formatjson | 선택사항 | 응답 및 로그 메시지에서 JSON 오브젝트의 Pretty 형식화를 사용하려면 이 특성을 true로 설정하십시오. 이 특성을 설정하면 서버를 디버그할 때 도움이 됩니다. 기본값: false. |
 | mfp.admin.logging.tosystemerror | 선택사항 | 모든 로깅 메시지가 System.Error로도 경로 지정되는지 여부를 지정합니다. 이 특성을 설정하면 서버를 디버그할 때 도움이 됩니다. |
@@ -383,7 +383,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: 프록시
 {: #jndi-properties-for-administration-service-proxies }
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.proxy.port | 선택사항 | {{ site.data.keys.product_adj }} 관리 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우, 이 특성은 호스트의 주소를 지정합니다. 방화벽 외부에 있는 사용자가 {{ site.data.keys.product_adj }} 관리 서버에 도달할 수 있도록 하려면 이 특성을 설정하십시오. 일반적으로 이 특성은 프록시의 포트입니다(예: 443). 외부 및 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
 | mfp.admin.proxy.protocol | 선택사항 | {{ site.data.keys.product_adj }} 관리 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우, 이 특성은 프로토콜(HTTP 또는 HTTPS)을 지정합니다. 방화벽 외부에 있는 사용자가 {{ site.data.keys.product_adj }} 관리 서버에 도달할 수 있도록 하려면 이 특성을 설정하십시오. 일반적으로 이 특성은 프록시의 프로토콜로 설정됩니다. 예를 들면, wl.net입니다. 이 특성은 외부 및 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
@@ -393,7 +393,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: 토폴로지
 {: #jndi-properties-for-administration-service-topologies }
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.audit | 선택사항 | {{ site.data.keys.mf_console }}의 감사 기능을 사용하지 않으려면 이 특성을 false로 설정하십시오. 기본값은 true입니다. |
 | mfp.admin.environmentid | 선택사항 | MBean의 등록을 위한 환경 ID입니다. {{ site.data.keys.mf_server }}의 서로 다른 인스턴스가 동일한 애플리케이션 서버에 설치되는 경우 이 ID를 사용하십시오. 이 ID는 동일한 설치에 속하는 관리 서비스, 콘솔 및 런타임을 판별합니다. 관리 서비스는 환경 ID가 동일한 런타임만 관리합니다. |
@@ -409,7 +409,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: 관계형 데이터베이스
 {: #jndi-properties-for-administration-service-relational-database }
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.db.jndi.name | 선택사항 | 데이터베이스의 JNDI 이름입니다. 이 매개변수는 데이터베이스를 지정하기 위한 일반 메커니즘입니다. 기본값은 **java:comp/env/jdbc/mfpAdminDS**입니다. |
 | mfp.admin.db.openjpa.ConnectionDriverName | 선택사항/조건부 필수 |데이터베이스 연결 드라이버 클래스의 완전한 이름입니다. **mfp.admin.db.jndi.name** 특성에 지정된 데이터 소스가 애플리케이션 서버 구성에 정의되어 있지 않는 경우에만 필수입니다. |
@@ -422,7 +422,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: 라이센싱
 {: #jndi-properties-for-administration-service-licensing }
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.license.key.server.host	| {::nomarkdown}<ul><li>영구적 라이센스의 경우 선택사항</li><li>토큰 라이센스의 경우 필수</li></ul>{:/} | Rational License Key Server의 호스트 이름입니다. |
 | mfp.admin.license.key.server.port	| {::nomarkdown}<ul><li>영구적 라이센스의 경우 선택사항</li><li>토큰 라이센스의 경우 필수</li></ul>{:/} | Rational License Key Server의 포트 번호입니다. |
@@ -430,7 +430,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: JNDI 구성
 {: #jndi-properties-for-administration-service-jndi-configurations }
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.jndi.configuration | 선택사항 | WAR 파일에 삽입된 특성 파일에서 JNDI 특성(이 특성 제외)을 읽어야 하는 경우 JNDI 구성의 이름입니다. 이 특성을 설정하지 않는 경우 JNDI 특성은 특성 파일에서 읽히지 않습니다. |
 | mfp.jndi.file | 선택사항 | 웹 서버에 설치된 파일에서 JNDI 특성(이 특성 제외)을 읽어야 하는 경우 JNDI 구성이 포함된 파일의 이름입니다. 이 특성을 설정하지 않는 경우 JNDI 특성은 특성 파일에서 읽히지 않습니다. |
@@ -440,7 +440,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: 라이브 업데이트 서비스
 {: #jndi-properties-for-administration-service-live-update-service }
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.config.service.url | 선택사항 | 라이브 업데이트 서비스의 URL입니다. 기본 URL은 관리 서비스의 컨텍스트 루트에 config를 추가함으로써 관리 서비스의 URL에서 파생됩니다. |
 | mfp.config.service.user | 필수 | 라이브 업데이트 서비스에 액세스하는 데 사용되는 사용자 이름입니다. 서버 팜 토폴로지에서는 팜에 있는 모든 멤버의 사용자 이름이 동일해야 합니다. |
@@ -452,7 +452,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 #### 관리 서비스의 JNDI 특성: 푸시 서비스
 {: #jndi-properties-for-administration-service-push-service }
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.push.url | 선택사항 | 푸시 서비스의 URL입니다. 이 특성이 지정되어 있지 않으면 푸시 서비스가 사용되지 않는 것으로 간주됩니다. 이 특성을 적절히 설정하지 않으면 관리 서비스는 푸시 서비스에 접속할 수 없으며 {{ site.data.keys.mf_console }}에서의 푸시 서비스 관리가 작동하지 않습니다. |
 | mfp.admin.authorization.server.url | 선택사항 | 푸시 서비스에서 사용하는 OAuth 권한 부여 서버의 URL입니다. 기본 URL은 컨텍스트 루트를 첫 번째로 설치된 런타임의 컨텍스트 루트로 변경함으로써 관리 서비스의 URL에서 파생됩니다. 여러 런타임을 설치하는 경우 이 특성을 설정하는 것이 가장 좋습니다. 이 특성을 적절히 설정하지 않으면 관리 서비스는 푸시 서비스에 접속할 수 없으며 {{ site.data.keys.mf_console }}에서의 푸시 서비스 관리가 작동하지 않습니다. |
@@ -465,7 +465,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 {: #jndi-properties-for-mobilefirst-operations-console }
 {{ site.data.keys.mf_console }}의 웹 애플리케이션(mfp-admin-ui.war)에서 다음 특성을 설정할 수 있습니다.
 
-| 특성                 | 선택사항 또는 필수 | 설명  |
+| 특성                 | 선택사항 또는 필수 |설명  |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.endpoint | 선택사항 | {{ site.data.keys.mf_console }}에서 {{ site.data.keys.mf_server }} 관리 REST 서비스를 찾을 수 있도록 합니다. **mfp-admin-service.war** 웹 애플리케이션의 외부 주소 및 컨텍스트 루트를 지정하십시오. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. 예: https://wl.net:443/mfpadmin. |
 | mfp.admin.global.logout | 선택사항 | 콘솔 로그아웃 중 WebSphere 사용자 인증 캐시를 지웁니다. 이 특성은 WebSphere Application Server V7에만 유용합니다. 기본값은 false입니다. |
@@ -477,7 +477,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 {: #list-of-jndi-properties-for-mobilefirst-server-live-update-service }
 사용하는 애플리케이션 서버에 적합하게 {{ site.data.keys.mf_server }} 라이브 업데이트 서비스를 구성하는 경우 다음 JNDI 특성을 설정할 수 있습니다. 다음 표에서는 IBM  관계형 데이터베이스 라이브 업데이트 서비스의 JNDI 특성을 나열합니다.
 
-| 특성 | 선택사항 또는 필수 | 설명 |
+| 특성 | 선택사항 또는 필수 |설명 |
 |----------|-----------------------|-------------|
 | mfp.db.relational.queryTimeout | 선택사항 | RDBMS에서 조회를 실행할 때의 제한시간(초 단위)입니다. 0의 값은 제한시간이 무한임을 의미합니다. 음수 값은 기본값(대체하지 않음)을 의미합니다.<br/><br/>값이 구성되어 있지 않는 경우 기본값이 사용됩니다. 자세한 정보는 [setQueryTimeout](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int)을 참조하십시오. |
 
@@ -488,7 +488,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 사용하는 애플리케이션 서버에 적합하게 {{ site.data.keys.mf_server }} 런타임을 구성하는 경우 선택적 또는 필수 JNDI 특성을 설정해야 합니다.  
 다음 표에는 JNDI 항목으로 항상 사용할 수 있는 {{ site.data.keys.product_adj }} 특성을 나열합니다.
 
-| 특성 | 설명 |
+| 특성 |설명 |
 |----------|-------------|
 | mfp.admin.jmx.dmgr.host | 필수. 배치 관리자의 호스트 이름입니다. WebSphere Application Server Network Deployment 전용. |
 | mfp.admin.jmx.dmgr.port | 필수. 배치 관리자의 RMI 또는 SOAP 포트입니다. WebSphere Application Server Network Deployment 전용. |
@@ -518,7 +518,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 ### {{ site.data.keys.mf_server }} 푸시 서비스의 JNDI 특성 목록
 {: #list-of-jndi-properties-for-mobilefirst-server-push-service }
 
-| 특성 | 선택사항 또는 필수 | 설명 |
+| 특성 | 선택사항 또는 필수 |설명 |
 |----------|-----------------------|-------------|
 | mfp.push.db.type | 선택사항 | 데이터베이스 유형입니다. 가능한 값: DB, CLOUDANT. 기본값: DB |
 | mfp.push.db.queue.connections | 선택사항 | 데이터베이스 조작을 수행하는 스레드 풀의 스레드 수입니다. 기본값: 3 |

@@ -13,15 +13,14 @@ weight: 1
 
 {{ site.data.keys.mf_bm_short }} 서비스는 다음과 같은 플랜 옵션을 제공합니다.
 
-1. **Developer**: 이 플랜은 {{ site.data.keys.mfound_server }}를 Liberty for Java 런타임의 Cloud Foundry 애플리케이션으로 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜에 포함되지 않습니다. 이 플랜은 외부 데이터베이스의 사용을 지원하지 않으며 개발과 테스트에만 사용되도록 제한됩니다. {{ site.data.keys.mf_bm_short }}서버 *Developer 플랜* 인스턴스를 사용해서 개발과 테스트에 사용할 모바일 애플리케이션을 등록할 수 있지만 이 경우 연결된 디바이스 수는 일일 10개로 제한됩니다.
+1. **Developer**: 이 플랜은 {{ site.data.keys.mfound_server }}를 Liberty for Java 런타임의 Cloud Foundry 애플리케이션으로 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜에 포함되지 않습니다. 이 플랜은 외부 데이터베이스의 사용을 지원하지 않으며 개발과 테스트에만 사용되도록 제한됩니다. Mobile Analytics는 6개월 동안 이벤트를 유지하는 기능과 함께 추가 비용 없이 제공됩니다. {{ site.data.keys.mf_bm_short }}서버 *Developer 플랜* 인스턴스를 사용해서 개발과 테스트에 사용할 모바일 애플리케이션을 등록할 수 있지만 이 경우 연결된 디바이스 수는 일일 10개로 제한됩니다.
 <!--This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.-->
 
     > **참고:** Developer 플랜에서는 지속적 데이터베이스를 제공하지 않으므로 [문제점 해결 섹션](#troubleshooting)에 설명된 대로 구성을 백업하십시오.
 
-2. **Professional(디바이스별):** 이 플랜을 사용하면 프로덕션에서 모바일 애플리케이션을 빌드하고 테스트하며 실행할 수 있습니다. 일일 연결된 클라이언트 디바이스 수에 따라 비용이 청구됩니다. 이 플랜에서는 대규모 배치 및 고가용성이 지원됩니다. 이 플랜에는 별도로 작성되고 청구되는 IBM Db2(**Lite** 플랜 외 모든 플랜) 또는 Compose for PostgreSQL 서비스의 인스턴스가 있어야 합니다. 이 플랜은 최소 1GB인 두 개의 노드에서 시작하여 Liberty for Java에서 Mobile Foundation 서버를 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜의 일부로 포함되지 않습니다.
-<!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
+2. **Professional(디바이스별):** 이 플랜을 사용하면 프로덕션에서 최대 5개 Mobile Foundation 모바일 애플리케이션을 빌드하고 테스트하며 실행할 수 있습니다. Mobile Analytics는 6개월 동안 이벤트를 유지하는 기능과 함께 추가 비용 없이 제공됩니다. 이 플랜에서는 대규모 배치 및 고가용성이 지원됩니다. 이 플랜에는 별도로 작성되고 청구되는 IBM Db2(**Lite** 플랜 외 모든 플랜) 또는 Compose for PostgreSQL 서비스의 인스턴스가 있어야 합니다. 이 플랜은 최소 1GB인 두 개의 노드에서 시작하여 *Liberty for Java*에서 Mobile Foundation 서버를 프로비저닝합니다. *Liberty for Java* 비용은 별도로 청구되며 이 플랜의 일부로 포함되지 않습니다. <!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
 
-3. **Professional(단일 애플리케이션):**이 플랜은 사용자가 모바일 앱 사용자 또는 디바이스 수에 상관없이 예측 가능한 가격으로 단일 모바일 애플리케이션을 빌드하고 관리하도록 허용합니다. 단일 모바일 애플리케이션은 iOS, Android, Windows, Mobile Web과 같은 다중 플레이버로 구성될 수 있습니다. 이 플랜은 최소 1GB인 두 개의 노드에서 시작하여 Liberty for Java의 Cloud Foundry 애플리케이션으로 확장 가능한 환경에서 Mobile Foundation 서버를 프로비저닝합니다. Liberty for Java 비용은 별도로 청구되며 이 플랜의 일부로 포함되지 않습니다. 이 플랜에는 별도로 작성되고 청구되는 IBM Db2(**Lite** 플랜 외 모든 플랜) 또는 Compose for PostgreSQL 서비스 인스턴스가 있어야 합니다.  <!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
+3. **Professional 1 Application** 이 플랜을 사용하면 프로덕션에서 Mobile Foundation의 모바일 애플리케이션을 빌드하고 테스트하며 실행할 수 있습니다. Mobile Analytics는 6개월 동안 이벤트를 유지하는 기능과 함께 추가 비용 없이 제공됩니다. 일일 연결된 클라이언트 디바이스 수에 따라 비용이 청구됩니다. 이 플랜에서는 대규모 배치 및 고가용성이 지원됩니다. 이 플랜에는 별도로 작성되고 청구되는 IBM Db2(**Lite** 플랜 외 모든 플랜) 또는 Compose for PostgreSQL 서비스의 인스턴스가 있어야 합니다. 이 플랜은 최소 1GB인 두 개의 노드에서 시작하여 *Liberty for Java*에서 Mobile Foundation 서버를 작성합니다. *Liberty for Java* 비용은 별도로 청구되며 이 플랜의 일부로 포함되지 않습니다. <!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
 
 4. **Developer Pro**: 이 플랜은 {{ site.data.keys.mfound_server }}를 Liberty for Java 런타임의 Cloud Foundry 앱으로 프로비저닝하며 사용자는 이 플랜을 사용해서 개수에 상관 없이 여러 모바일 애플리케이션을 개발하고 테스트할 수 있습니다. 이 플랜에는 **Db2**(**Lite** 플랜 외 모든 플랜) 서비스 인스턴스가 있어야 합니다. Db2 서비스 인스턴스는 별도로 작성되고 청구됩니다. 이 플랜은 크기가 제한되어 있으며 프로덕션이 아닌 팀 기반 개발 활동과 테스트 활동에 사용됩니다. 비용은 환경의 총 크기에 따라 다릅니다. <!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_**Developer Pro** 플랜은 이제 더 이상 사용되지 않습니다._
@@ -33,15 +32,14 @@ weight: 1
 
 #### 다음으로 이동:
 {: #jump-to}
-- [개요](#overview)
-    - [다음으로 이동:](#jump-to)
-- [{{ site.data.keys.mf_bm_short }} 서비스 설정](#setting-up-the--sitedatakeysmfbmshort--service)
+- [Mobile Foundation 서비스 설정](#setting-up-the-mobile-foundation-service)
   - [*Developer* 플랜 설정](#setting-up-the-developer-plan)
   - [*Professional(단일 애플리케이션)* 및 *Professional(디바이스별)* 플랜 설정](#setting-up-the-professional-1-application-and-professional-per-device-plan)
-- [{{ site.data.keys.mf_bm_short }} 서비스 사용](#using-the--sitedatakeysmfbmshort--service)
+- [Mobile Foundation 서비스 사용](#using-the-mobile-foundation-service)
   - [서버 구성](#server-configuration)
   - [고급 서버 구성](#advanced-server-configuration)
-- [{{ site.data.keys.mfound_server }} 수정사항 적용](#applying--sitedatakeysmfoundserver--fixes)
+- [Mobile Foundation 서비스 플랜 마이그레이션](#migrating-mobile-foundation-service-plan)  
+- [Mobile Foundation 서버 수정사항 적용](#applying-mobile-foundation-server-fixes)
 - [서버 로그에 액세스](#accessing-server-logs)
     - [추적](#tracing)
 - [문제점 해결](#troubleshooting)
@@ -94,7 +92,7 @@ weight: 1
 
     ![{{ site.data.keys.mf_bm_short }} 설정 이미지](overview-page.png)
 
-## {{ site.data.keys.mf_bm_short }} 서비스 사용
+## Mobile Foundation 서비스 사용
 {: #using-the-mobile-foundation-service }
 
 {{ site.data.keys.mfound_server }}가 이제 실행 중이므로 다음 대시보드가 표시됩니다.
@@ -178,8 +176,35 @@ Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in 
 User can delete current container by clicking on **Delete Analytics** button from service dashboard. This will remove the analytics instance and enable the **Add Analytics** button, which the user can click to add a new {{ site.data.keys.mf_analytics_service }} service instance.
 -->
 
-## {{ site.data.keys.mfound_server }} 수정사항 적용
-{: #applying-mobilefirst-server-fixes }
+## Mobile Foundation 서비스 플랜 마이그레이션
+{: #migrating-mobile-foundation-service-plan }
+
+더 이상 사용되지 않는 플랜을 사용하여 작성된 Mobile Foundation 인스턴스를 새 플랜으로 업데이트해야 합니다. 플랜 업데이트도 인스턴스 사용량에 따라서 필요할 수 있습니다. 
+
+### 샘플 시나리오: Professional(디바이스별) 플랜에서 Professional 1 Application 플랜으로 마이그레이션
+
+1. IBM Cloud 대시보드에서 마이그레이션하려는 IBM Mobile Foundation 인스턴스를 선택하십시오. 
+2. 왼쪽 탐색에서 **플랜**을 선택하십시오.
+   ![기존 Mobile Foundation 플랜](existing-plan.png)
+3. 나열된 가격 책정 플랜에서 Professional 1 Application을 선택하십시오.
+   ![새 Mobile Foundation 플랜](new-plan.png)
+4. **저장** 단추를 클릭하고 플랜 마이그레이션을 확인하십시오.
+     이제 Professional 1 Application으로의 마이그레이션이 완료되었으며 기존의 모든 데이터가 계속 유지됩니다. 청구가 변경되며 시스템 정지 시간은 없습니다. 
+5. 플랜 마이그레이션 후 올바른 구성이 적용되도록 서비스 대시보드에서 Mobile Foundation 인스턴스를 다시 작성해야 합니다. 이 업데이트에는 잠깐 동안 시스템 정지가 필요합니다. 시스템 정지에 대한 플랜이 필요합니다. 왼쪽 탐색에서 **관리**를 선택하고 **다시 작성**을 클릭하십시오. 
+
+>**참고:** 더 이상 사용되지 않은 플랜 중 하나를 이용하는 경우 새 플랜으로 마이그레이션해야 합니다. 
+
+### 지원되는 플랜 마이그레이션
+
+* *Developer* (더 이상 사용되지 않음) 플랜은 새 *Developer* 플랜으로만 업데이트할 수 있습니다. 
+* *Developer Pro* (더 이상 사용되지 않음) 플랜은 *Professional(디바이스별)* 또는 *Professional 1 Application* 플랜으로만 업데이트할 수 있습니다. 
+* *Professional(용량별)* (더 이상 사용되지 않음) 플랜은 *Professional(디바이스별)* 또는 *Professional 1 Application* 플랜으로만 업데이트할 수 있습니다. 
+* *Professional(디바이스별)* 플랜은 *Professional 1 Application* 플랜으로만 업데이트할 수 있습니다. 
+* *Professional 1 Application* 플랜은 *Professional(디바이스별)* 플랜으로만 업데이트할 수 있습니다. 
+* 플랜 업데이트는 새 *Developer* 플랜에는 지원되지 않습니다.
+
+## Mobile Foundation 서버 수정사항 적용
+{: #applying-mobile-foundation-server-fixes }
 {{ site.data.keys.mf_bm }} 서비스의 업데이트는 업데이트 수행에 동의하는 외에는 사용자 개입이 없어도 자동으로 적용됩니다. 사용 가능한 업데이트가 있는 경우 서비스의 대시보드 페이지에 지시사항, 조치 단추와 함께 배너가 표시됩니다.
 
 ## 서버 로그에 액세스

@@ -272,7 +272,7 @@ Google Play 스토어에 제출된 다른 오류는 Google 지원팀에 문의�
 
 ### Node 8을 사용하여 MobileFirst CLI를 설치하는 중 액세스 오류
 {:#mfpdev-cli-installation errors}
-npm을 사용하여 MobileFirst CLI를 설치하는 중에 터미널 출력에서 다음 오류가 표시될 수 있습니다. 
+npm을 사용하여 MobileFirst CLI를 설치하는 중에 터미널 출력에서 다음 오류가 표시될 수 있습니다.
 
 ```
 > bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil

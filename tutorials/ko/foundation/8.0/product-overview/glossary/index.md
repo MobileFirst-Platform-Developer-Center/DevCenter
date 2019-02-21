@@ -29,7 +29,7 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 기타 용어 및 정의에 대해서는 [IBM 용어 웹 사이트](http://www.ibm.com/software/globalization/terminology/)를 참조하십시오.
 
 ## 가
-{: #가 }
+{: #ga }
 
 ### 개인 키(private key)
 {: #private-key }
@@ -56,8 +56,7 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 명령 또는 명령문의 구성에 대한 규칙입니다.
 
 ## 나
-{: #나 }
-
+{: #na }
 
 ### 네이티브 앱(native app)
 {: #native-app }
@@ -68,8 +67,7 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 관리 서버의 논리 그룹입니다.
 
 ## 다
-{: #다 }
-
+{: #da }
 
 ### 데이터 소스(data source)
 {: #data-source }
@@ -95,9 +93,8 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #device }
 [모바일 디바이스(mobile device)](#mobile-device)를 참조하십시오.
 
-
 ## 라
-{: #라 }
+{: #ra }
 
 ### 라이브러리(library)
 {: #library }
@@ -120,9 +117,8 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #root }
 시스템에서 기타 모든 디렉토리가 포함된 디렉토리입니다.
 
-
 ## 마
-{: #마 }
+{: #ma }
 
 ### 모바일 디바이스(mobile device)
 {: #mobile-device }
@@ -136,9 +132,8 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #mobile }
 [모바일 디바이스(mobile device)](#mobile-device)를 참조하십시오.
 
-
 ## 바
-{: #바 }
+{: #ba }
 
 ### 배치(deployment)
 {: #deployment }
@@ -169,7 +164,7 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 빌드(예를 들어, 프로젝트 전체의 주간 통합 빌드)를 정의하는 오브젝트입니다.
 
 ## 사
-{: #사 }
+{: #sa }
 
 ### 사내 애플리케이션(in-house application)
 {: #in-house-application }
@@ -220,7 +215,7 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 객체 지향 프로그래밍에서 상태 전이를 실행하는 것입니다.
 
 ## 아
-{: #아 }
+{: #aa }
 
 ### 알림(notification)
 {: #notification }
@@ -286,6 +281,10 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #event }
 태스크 또는 시스템에 대한 중요한 발생사항입니다. 이벤트에는 조작 완료나 실패, 사용자 조치 또는 프로세스 상태 변경이 포함될 수 있습니다.
 
+### 인증
+{: #authentication }
+컴퓨터 시스템의 사용자가 본인임을 증명하는 증거를 제공하는 보안 서비스입니다. 이 서비스를 구현하기 위한 공통 메커니즘은 비밀번호 및 디지털 서명입니다.
+
 ### 인증 기관 엔터프라이즈 애플리케이션(certificate authority enterprise application)
 {: #certificate-authority-enterprise-application }
 클라이언트 애플리케이션에 관한 인증서 및 개인 키를 제공하는 회사 애플리케이션입니다.
@@ -297,10 +296,6 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 ### 인증 확인(challenge)
 {: #challenge }
 시스템에 대한 특정 정보 요청입니다. 이 요청에 대한 응답으로 서버에 다시 보내는 정보가 클라이언트 인증에 필요합니다.
-
-### 인증(authentication)
-{: #authentication }
-컴퓨터 시스템의 사용자가 본인임을 증명하는 증거를 제공하는 보안 서비스입니다. 이 서비스를 구현하기 위한 공통 메커니즘은 비밀번호 및 디지털 서명입니다.
 
 ### 인증서(certificate)
 {: #certificate }
@@ -315,21 +310,21 @@ ASCII PEM 형식 인증서의 2진 양식과 관련됩니다. Base64, 인코딩�
 Base64 인코드 인증서와 관련됩니다. Base64, 인코딩된 DER(DER encoded)도 참조하십시오.
 
 ## 자
-{: #자 }
+{: #ja }
 
 ### 지오코딩(geocoding)
 {: #geocoding }
 더 많은 전통적인 지리적 마커(주소, 우편번호 등)를 통해 지오코드를 식별하는 프로세스입니다. 예를 들어, 랜드마크는 두 가로의 교차점에 위치할 수 있지만 이 랜드마크의 지오코드는 일련의 번호로 구성됩니다.
 
 ## 차
-{: #차 }
+{: #cha }
 
 ### 차단(block)
 {: #block }
 여러 특성(예: 어댑터, 프로시저 또는 매개변수)의 콜렉션입니다.
 
 ## 카
-{: #카 }
+{: #ka }
 
 ### 카탈로그(catalog)
 {: #catalog }
@@ -369,7 +364,7 @@ Apple 소프트웨어용 비밀번호 관리 시스템입니다. 키 체인은 �
 레코드를 고유하게 식별하고 다른 레코드와 관련하여 해당 순서를 설정하는 데 사용되는 데이터의 품목에 있는 하나 이상의 문자입니다.
 
 ## 타
-{: #타 }
+{: #ta }
 
 ### 태그 기반 알림(tag-based notification)
 {: #tag-based-notification }
@@ -388,7 +383,7 @@ Apple 소프트웨어용 비밀번호 관리 시스템입니다. 키 체인은 �
 발생을 발견하고 응답으로 추가 처리를 발생시킬 수 있는 메커니즘입니다. 디바이스 컨텍스트에서 변경이 발생하면 트리거가 활성화될 수 있습니다. 디바이스 컨텍스트(device context)도 참조하십시오.
 
 ## 파
-{: #파 }
+{: #pa }
 
 ### 팜 노드(farm node)
 {: #farm-node }
@@ -431,7 +426,7 @@ XML 데이터 유형을 제한하는 XML 엔티티입니다.
 Telnet 또는 FTP와 같은 특정 네트워크 애플리케이션을 위해 두 네트워크를 연결하는 애플리케이션 게이트웨이입니다. 예를 들어, 방화벽의 프록시 Telnet 서버에서는 사용자에 대한 인증이 수행되며 그 이후의 트래픽은 프록시가 없는 것처럼 프록시를 통해 플로우됩니다. 클라이언트 워크스테이션이 아닌 방화벽에서 기능이 수행되므로 방화벽의 로드가 높습니다.
 
 ## 하
-{: #하 }
+{: #ha }
 
 ### 하위 요소(subelement)
 {: #subelement }
@@ -454,7 +449,7 @@ UN/EDIFACT EDI 표준에서 EDI 컴포지트 데이터 요소의 일부분인 ED
 다른 특정 애플리케이션이 모바일 디바이스에 설치되도록 배포할 수 있는 애플리케이션입니다. 예를 들어, Application Center는 회사 허브입니다. [Application Center](#application-center)도 참조하십시오.
 
 ## 숫자
-{: #숫자 }
+{: #num }
 
 ### 2진(binary)
 {: #binary }
@@ -592,7 +587,7 @@ PKI와 통신하는 데 사용자 인증서 인증(User Certificate Authenticati
 특정 운영 환경에 대해 또는 특정 컴퓨터 언어로 소프트웨어의 개발을 지원하기 위한 도구, API 및 문서 세트입니다.
 
 ## T
-{: #t}
+{: t}
 
 ### TAI / TAI(Trust Association Interceptor)
 {: #tai--trust-association-interceptor-tai }

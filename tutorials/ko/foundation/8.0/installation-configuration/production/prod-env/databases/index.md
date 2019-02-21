@@ -230,7 +230,7 @@ MySQL에 대한 데이터베이스 요구사항을 검토하십시오. 단계를
 ```sql
 db2 CONNECT TO MFPDATA
 db2 SET CURRENT SCHEMA = 'MFPSCM'
-db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-configservice-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t

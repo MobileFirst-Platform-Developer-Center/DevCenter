@@ -242,7 +242,7 @@ SDK 릴리스는 SDK의 [CocoaPods 저장소](https://cocoapods.org/?q=ibm%20mob
 {: #mfpclientplist }
 이 파일은 프로젝트의 루트에 있으며 {{ site.data.keys.mf_server }}에서 iOS 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-| 특성            | 설명                                                         | 예제 값 |
+| 특성            |설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
 | protocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
 | host        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |

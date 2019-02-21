@@ -11,7 +11,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## 전제조건
+## 선행 조건
 {: #prerequisites }
 
 * [JSONStore 상위 학습서](../)를 읽으십시오.

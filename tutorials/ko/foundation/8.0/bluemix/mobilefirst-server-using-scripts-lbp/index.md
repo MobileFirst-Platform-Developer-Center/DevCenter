@@ -3,7 +3,7 @@ layout: tutorial
 title: Liberty for Java의 스크립트를 사용하여 IBM Cloud에서 MobileFirst Server 설정
 breadcrumb_title: Foundation on Liberty for Java
 relevantTo: [ios,android,windows,javascript]
-weight: 5
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요

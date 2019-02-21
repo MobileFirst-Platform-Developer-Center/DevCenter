@@ -1652,7 +1652,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 {: #mfp-administration-db }
 이 스크립트 패키지는 DB2  데이터베이스에서 관리 데이터베이스 스키마를 설정합니다. 이는 Database Server(DB2) 소프트웨어 컴포넌트와 함께 사용해야 합니다.
 
-| 매개변수 | 설명 | 
+|매개변수 |설명 | 
 |-----------|-------------|
 | db_user   | 필수. 관리 데이터베이스를 작성하는 데 필요한 사용자 이름입니다. Database Server 컴포넌트의 인스턴스 이름에 맵핑할 수 있습니다. 기본값: db2inst1. |
 | db_name	| 필수. 관리 데이터베이스를 작성하는 데 필요한 데이터베이스 이름입니다. 기본값: WLADM. |
@@ -1663,7 +1663,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 {: #mfp-analytics }
 이 스크립트 패키지는 WebSphere Application Server 전체 프로파일 또는 WebSphere Application Server Liberty 프로파일 서버에서 {{ site.data.keys.mf_analytics_server }}를 설정하고 외부 TDS 또는 AD 서버로의 연결과 Analytics 관리 보안 역할 맵핑을 설정합니다. 이는 WebSphere Application Server Liberty 프로파일 서버 또는 WebSphere Application Server 전체 프로파일(표시 이름: Standalone server) 소프트웨어 컴포넌트와 함께 사용해야 합니다. Liberty profile 또는 Standalone server 소프트웨어 컴포넌트 다음에 설치해야 합니다.
 
-| 매개변수 | 설명 | 
+|매개변수 |설명 | 
 |-----------|-------------|
 | WAS_ROOT  | 필수.{::nomarkdown}<ul><li>Analytics가 WebSphere Application Server Liberty 프로파일에 설치된 경우, Analytics용 WebSphere Application Server Liberty 프로파일의 설치 디렉토리를 지정하십시오.</li><li>Analytics가 WebSphere Application Server 전체 프로파일에 설치된 경우, Analytics용 WebSphere Application Server 전체 프로파일의 설치 디렉토리를 지정하십시오.</li></ul>{:/} | 
 | HEAP\_MIN\_SIZE | WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>생성되는 Analytics 데이터의 양에 따라 추가 데이터 처리를 위한 추가 메모리가 필요합니다. WebSphere Application Server 전체 프로파일의 최소 힙 크기를 증가시킬 수 있도록 이 값을 설정하십시오. {{ site.data.keys.mf_analytics }}의 코어 OS 컴포넌트에서 지정된 메모리 크기가 이 값보다 커야 합니다. HEAP_MAX_SIZE와 동일한 값을 설정하는 것이 좋습니다.<br/><br/>기본값: 4096(MB). | 
@@ -1672,7 +1672,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 | WAS\_admin\_password | WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사용자 비밀번호입니다. WebSphere Application Server Liberty 프로파일의 경우 기본값을 변경하지 않고 그대로 두십시오. | 
 | admin_user | 필수.{::nomarkdown}<ul><li>LDAP 저장소가 사용되지 않는 경우 {{ site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자를 작성하십시오.</li><li>LDAP 저장소가 사용되는 경우에는 {{ site.data.keys.mf_analytics }} 관리 권한이 있는 사용자 이름을 지정하십시오. 값은 LDAP 저장소에 저장됩니다.</li></ul> |
 | admin_password | 필수.<ul><li>LDAP 저장소가 사용되지 않는 경우 {{ site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자의 비밀번호를 지정하십시오.</li><li>LDAP 저장소가 사용되는 경우에는 관리 사용자 비밀번호를 지정하십시오. 값은 LDAP 저장소에 저장됩니다.</li></ul>{:/} | 
-| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>    LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.<br/><br/>TivoliDirectoryServer<br/>    LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오.<br/><br/>ActiveDirectory<br/>    LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오.<br/><br/>기본값: None. | 
+| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>없음<br/>    LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.<br/><br/>TivoliDirectoryServer<br/>    LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오.<br/><br/>ActiveDirectory<br/>    LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오.<br/><br/>기본값: None. | 
 | LDAP_IP | (LDAP 매개변수).     LDAP 서버 IP 주소입니다. | 
 | LDAP\_SSL\_PORT | (LDAP 매개변수) 보안 연결을 위한 LDAP 포트입니다. | 
 | LDAP_PORT | (LDAP 매개변수) 비보안 연결을 위한 LDAP 포트입니다. | 
@@ -1684,16 +1684,16 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 | GROUP_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 그룹을 검색하는 LDAP 그룹 필터입니다. | 
 | LDAP\_REPOSITORY\_NAME | (LDAP 매개변수) LDAP 서버 이름입니다. | 
 | CERT\_FILE\_PATH | (LDAP 매개변수) 업로드된 LDAP 서버 인증의 대상 경로입니다. REQUIRE_SSL이 true로 설정된 경우 필수입니다. | 
-| mfpadmin | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나를 사용하십시오.<br/><br/>None<br/>        사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
-| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>None<br/>        사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
-| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>None<br/>        사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
-| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>None<br/>        사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
+| mfpadmin | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나를 사용하십시오.<br/><br/>없음<br/>        사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
+| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>없음<br/>        사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
+| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>없음<br/>        사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
+| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>없음<br/>        사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
 이 스크립트 패키지는 IBM HTTP Server가 {{ site.data.keys.mf_server }}의 복수 인스턴스에 대한 로드 밸런서로 작동하도록 구성합니다. IBM HTTP Server 소프트웨어 컴포넌트와 함께 사용해야 합니다. IBM HTTP Server 소프트웨어 컴포넌트 다음에 설치해야 합니다.
 
-| 매개변수 | 설명 | 
+|매개변수 |설명 | 
 |-----------|-------------|
 | WAS_ROOT | 필수. MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리이거나 DmgrNode 노드에 있는 Deployment Manager의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server, Standalone server 또는 Deployment Manager의 `install_directory` 출력 속성에 맵핑됩니다. | 
 | profile_name | 선택사항. WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다.<br/><br/>패턴 템플리트에서 Deployment Manager의 **dmgr\_profile\_name** 또는 Standalone server의 sa_profile_name 출력 속성에 맵핑됩니다. | 
@@ -1706,7 +1706,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 {: #mfp-open-firewall-ports-for-was }
 이 스크립트 패키지는 {{ site.data.keys.product_adj }}(WAS ND) 패턴 템플리트(WebSphere Application Server Network Deployment)의 사용자 정의 노드에만 적용 가능합니다. 이 스크립트 패키지는 {{ site.data.keys.product_adj }} 관리 서비스 및 런타임을 호스트하는 사용자 정의 노드의 필요한 방화벽 포트를 여는 데 사용됩니다. 일부 WebSphere Application Server의 사전 정의된 포트를 정의하는 것 외에, DB2 서버 및 LDAP 서버로의 연결을 위한 기타 포트를 지정해야 합니다.
 
-| 매개변수 | 설명 | 
+|매개변수 |설명 | 
 |-----------|-------------|
 | WAS_ROOT | 필수. CustomNode 노드에 있는 WebSphere Application Server Network Deployment 사용자 정의 노드의 설치 디렉토리입니다. 패턴 템플리트에서 Custom nodes 서버의 install_directory 출력 속성에 맵핑됩니다. |
 | profile_name | 필수. WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Custom nodes의 cn_profile_name 출력 속성에 맵핑됩니다. | 
@@ -1717,7 +1717,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 {: #mfp-was-sdk-level }
 이 스크립트 패키지는 패턴 템플리트(WebSphere Application Server Network Deployment)에서 WAS 프로파일이 사용 가능한 경우에만 적용할 수 있습니다.
 
-| 매개변수 | 설명 | 
+|매개변수 |설명 | 
 |-----------|-------------|
 | WAS_ROOT | MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리이거나 DmgrNode 노드에 있는 Deployment Manager의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server, Standalone server 또는 Deployment Manager의 **install_directory** 출력 속성에 맵핑됩니다. |
 | profile_name | WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Deployment Manager의 **dmgr\_profile\_name** 또는 Standalone server의 **sa\_profile\_name** 출력 속성에 맵핑됩니다. | 
@@ -1727,7 +1727,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 {: #mfp-runtime-db }
 이 스크립트 패키지는 DB2 데이터베이스에서 런타임 데이터베이스 스키마를 설정합니다.
 
-| 매개변수 | 설명 | 
+|매개변수 |설명 | 
 |-----------|-------------|
 | db_user | 필수. 런타임 데이터베이스를 작성하는 데 필요한 사용자 이름입니다. Database Server 컴포넌트의 인스턴스 이름에 맵핑할 수 있습니다. 기본값: db2inst1. | 
 | db_name | 필수. 런타임 데이터베이스를 작성하는 데 필요한 데이터베이스 이름입니다. 기본값: WLRTIME. | 
@@ -1740,7 +1740,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 
 이 스크립트 패키지는 WebSphere Application Server Liberty 프로파일 서버 소프트웨어 컴포넌트 또는 WebSphere Application Server 전체 프로파일 소프트웨어 컴포넌트(표시 이름: Standalone server)와 함께 사용해야 하며, MFP Server Prerequisite 다음에, 그리고 {{ site.data.keys.mf_server }} VM 노드 내의 다른 MFP * 스크립트 패키지 전에 설치해야 합니다.
 
-| 매개변수 | 설명 |
+|매개변수 |설명 |
 |-----------|-------------|
 | WAS_ROOT | 필수. MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리이거나 DmgrNode 노드에 있는 Deployment Manager의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server, Standalone server 또는 Deployment Manager의 `install_directory` 출력 속성에 맵핑됩니다. | 
 | profile_name | 선택사항. WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Deployment Manager의 dmgr_profile_name 또는 Standalone server의 sa_profile_name 출력 속성에 맵핑됩니다. | 
@@ -1770,16 +1770,16 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 | GROUP_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 그룹을 검색하는 LDAP 그룹 필터입니다. | 
 | LDAP\_REPOSITORY\_NAME | (LDAP 매개변수) LDAP 서버 이름입니다. | 
 | CERT\_FILE\_PATH | (LDAP 매개변수) 업로드된 LDAP 서버 인증의 대상 경로입니다. REQUIRE_SSL이 true로 설정된 경우 필수입니다. | 
-| mfpadmin | {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
-| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>None<br/>사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
-| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>None<br/>사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
-| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>None<br/>사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
+| mfpadmin | {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나입니다.<br/><br/>없음<br/>사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
+| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>없음<br/>사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
+| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>없음<br/>사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
+| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>없음<br/>사용자가 없습니다.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다.<br/><br/>기본값: None. | 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
 이 스크립트 패키지는 애플리케이션 및 어댑터를 {{ site.data.keys.mf_server }}에 배치합니다. 이 스크립트 패키지는 애플리케이션 및 어댑터가 배치되는 런타임을 설치한 해당 MFP Server Runtime Deployment 스크립트 패키지 다음에 설치해야 합니다.
 
-| 매개변수 | 설명 | 
+|매개변수 |설명 | 
 |-----------|-------------|
 | artifact_dir | 필수. 배치할 애플리케이션 및 어댑터의 설치 경로입니다. 패턴 템플리트에서 {{ site.data.keys.product_adj }} App 컴포넌트의 target_path 출력 속성에 맵핑됩니다. | 
 | admin_context | 필수. mfpadmin이어야 합니다. | 
@@ -1792,7 +1792,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 {: #mfp-server-application-center }
 이 스크립트 패키지는 WebSphere Application Server 전체 프로파일 또는 WebSphere Application Server Liberty 프로파일 서버에서 {{ site.data.keys.mf_app_center }} 서버를 설정합니다. 이 스크립트 패키지는 WebSphere Application Server Liberty 프로파일 서버 및 MFP Server Prerequisite, 또는 WebSphere Application Server 전체 프로파일(Standalone server), MFP WAS SDK Level 및 MFP Server Prerequisite과 함께 사용해야 합니다. Liberty profile 또는 Standalone server 소프트웨어 컴포넌트 다음에 설치해야 합니다.
 
-| 매개변수 | 설명 | 
+|매개변수 |설명 | 
 |-----------|-------------|
 | WAS_ROOT | 필수. MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server 또는 Standalone server의 `install_directory` 출력 속성에 맵핑됩니다. | 
 | profile_name | WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Standalone server의 sa_profile_name 출력 속성에 맵핑됩니다. | 
@@ -1807,7 +1807,7 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 | WAS\_admin\_user | WebSphere Application Server의 경우 필수입니다. WebSphere Application Server Liberty의 경우 선택사항입니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was_admin 출력 속성에 맵핑됩니다.<br/><br/>{{ site.data.keys.mf_server }}가 WebSphere Application Server Network Deployment에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Deployment Manager의 was_admin 출력 속성에 맵핑됩니다. | 
 | WAS\_admin\_password | WebSphere Application Server의 경우 필수입니다. WebSphere Application Server Liberty의 경우 선택사항입니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was\_admin\_password 출력 속성에 맵핑됩니다. |
 | server_hostname | {{ site.data.keys.mf_server }}의 호스트 이름입니다. Liberty profile server 또는 Standalone server의 host 출력 속성에 맵핑됩니다. |
-| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.<br/><br/>TivoliDirectoryServer<br/>    LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오.<br/><br/>ActiveDirectory<br/>    LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오.<br/><br/>기본값: None. | 
+| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>없음<br/>LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.<br/><br/>TivoliDirectoryServer<br/>    LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오.<br/><br/>ActiveDirectory<br/>    LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오.<br/><br/>기본값: None. | 
 | LDAP_IP | (LDAP 매개변수). LDAP 서버 IP 주소입니다. | 
 | LDAP\_SSL\_PORT | (LDAP 매개변수) 보안 연결을 위한 LDAP 포트입니다. | 
 | LDAP_PORT | (LDAP 매개변수) 비보안 연결을 위한 LDAP 포트입니다. | 
@@ -1819,21 +1819,21 @@ Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사�
 | GROUP_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 그룹을 검색하는 LDAP 그룹 필터입니다. | 
 | LDAP\_REPOSITORY\_NAME | (LDAP 매개변수) LDAP 서버 이름입니다. | 
 | CERT\_FILE\_PATH | (LDAP 매개변수) 업로드된 LDAP 서버 인증의 대상 경로입니다. REQUIRE_SSL이 true로 설정된 경우 필수입니다. | 
-| appcenteradmin | {{ site.data.keys.mf_app_center }}의 관리자 역할입니다. 다음 값 중 하나를 사용하십시오.<ul><li>None</li><li>사용자 없음</li><li>AllAuthenticatedUsers</li>인증된 사용자</li><li>Everyone</li><li>모든 사용자</li></ul>{:/}기본값: None | 
+| appcenteradmin | {{ site.data.keys.mf_app_center }}의 관리자 역할입니다. 다음 값 중 하나를 사용하십시오.<ul><li>없음</li><li>사용자 없음</li><li>AllAuthenticatedUsers</li>인증된 사용자</li><li>Everyone</li><li>모든 사용자</li></ul>{:/}기본값: None | 
 
 ### MFP Server Prerequisite
 {: #mfp-server-prerequisite }
 이 스크립트 패키지는 DB2 JDBC 드라이버 및 Apache Ant를 비롯하여 {{ site.data.keys.mf_server }}를 설치하는 데 필요한 모든 필수 소프트웨어를 포함합니다. 이 스크립트 패키지는 WebSphere Application Server Liberty 프로파일 서버 소프트웨어 컴포넌트 또는 WebSphere Application Server 전체 프로파일 소프트웨어 컴포넌트(표시 이름: Standalone server)와 함께 사용해야 하며, 서버 소프트웨어 컴포넌트 다음에, 그리고 MobileFirst Platform Server 노드 내의 다른 MFP * 스크립트 패키지 전에 설치해야 합니다.
 
-| 매개변수 | 설명 |
+|매개변수 |설명 |
 |-----------|-------------|
-| 없음 | 이 스크립트 패키지의 매개변수가 없습니다. | 
+|없음 | 이 스크립트 패키지의 매개변수가 없습니다. | 
 
 ### MFP Server Runtime Deployment
 {: #mfp-server-runtime-deployment }
 이 스크립트 패키지는 WebSphere Application Server 전체 프로파일 또는 WebSphere Application Server Liberty 프로파일 서버({{ site.data.keys.mf_console }}이 설치된 경우)에 {{ site.data.keys.product }} 런타임을 설치합니다. 또한 {{ site.data.keys.mf_analytics_server }}로의 연결을 설정합니다. 이 스크립트 패키지는 MFP Server Administration 스크립트 패키지 다음에 설치해야 합니다.
 
-| 매개변수 | 설명 |
+|매개변수 |설명 |
 |-----------|-------------|
 | WAS_ROOT | 필수. MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리이거나 DmgrNode 노드에 있는 Deployment Manager의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server 또는 Standalone server의 install_directory 출력 속성에 맵핑됩니다. | 
 | profile_name | 선택사항. WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Deployment Manager의 dmgr\_profile\_name 또는 Standalone server의 sa\_profile\_name 출력 속성에 맵핑됩니다. |

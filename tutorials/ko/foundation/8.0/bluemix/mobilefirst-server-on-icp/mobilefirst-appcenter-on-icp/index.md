@@ -28,19 +28,19 @@ MobileFirst Application Center에 대한 자세한 정보는 [MobileFirst Applic
 ## 전제조건
 {: #prereqs}
 
-{{ site.data.keys.prod_icp }} 계정이 있어야 하며 [{{ site.data.keys.prod_icp }}의 문서](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html)에 따라 Kubernetes Cluster를 설정해야 합니다.
+{{ site.data.keys.prod_icp }} 계정이 있어야 하며 [{{ site.data.keys.prod_icp }}의 문서](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup)에 따라 Kubernetes Cluster를 설정해야 합니다.
 
-{{ site.data.keys.prod_icp }}에 {{ site.data.keys.mf_app_center }} Charts를 설치 및 구성하려면 사전 구성된 데이터베이스가 필요합니다. {{ site.data.keys.mf_app_center }} helm chart를 구성하려면 데이터베이스 정보를 제공해야 합니다. {{ site.data.keys.mf_app_center }}에 필요한 테이블이 이 데이터베이스에 작성됩니다.
+{{ site.data.keys.prod_icp }}에 {{ site.data.keys.mf_app_center }} Charts를 설치 및 구성하려면 사전 구성된 데이터베이스가 필요합니다. {{ site.data.keys.mf_app_center }} helm 차트를 구성하려면 데이터베이스 정보를 제공해야 합니다. {{ site.data.keys.mf_app_center }}에 필요한 테이블이 이 데이터베이스에 작성됩니다.
 
-> 지원되는 데이터베이스는 DB2입니다.
+> 지원되는 데이터베이스는 DB2, Oracle, MySQL, PostgreSQL입니다.
 
 컨테이너 및 이미지를 관리하려면 {{ site.data.keys.prod_icp }} 설치의 일부로 호스트 시스템에 다음 도구를 설치해야 합니다.
 
 * Docker
-* IBM Cloud CLI(`bx`)
-* {{ site.data.keys.prod_icp }}(ICP) IBM Cloud CLI를 위한 플러그인( `bx pr` )
+* IBM Cloud CLI(`cloudctl`)
 * Kubernetes CLI(`kubectl`)
 * Helm(`helm`)
+
 
 ## IBM {{ site.data.keys.mf_app_center }} Passport Advantage 아카이브 다운로드
 {: #download-the-ibm-mac-ppa-archive}
@@ -54,26 +54,26 @@ MobileFirst Application Center에 대한 자세한 정보는 [MobileFirst Applic
 ## {{ site.data.keys.prod_icp }}에 IBM {{ site.data.keys.mf_app_center }} PPA 아카이브 로드
 {: #load-the-ibm-mfpf-appcenter-ppa-archive}
 
-{{ site.data.keys.product }}의 PPA 아카이브를 로그하기 전에 Docker를 설치해야 합니다. [여기](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html)에서 지시사항을 확인하십시오.
+{{ site.data.keys.product }}의 PPA 아카이브를 로그하기 전에 Docker를 설치해야 합니다. [여기](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html)에서 지시사항을 확인하십시오.
 
 PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려면 아래에 제공된 단계를 따르십시오.
 
-  1. IBM Cloud ICP 플러그인(`bx pr`)을 사용하여 클러스터에 로그인하십시오.
-      >{{ site.data.keys.prod_icp }} 문서의 [CLI 명령 참조서](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html)를 확인하십시오.
+  1. IBM Cloud ICP 플러그인(`cloudctl`)을 사용하여 클러스터에 로그인하십시오.
+      >{{ site.data.keys.prod_icp }} 문서의 [CLI 명령 참조서](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html)를 확인하십시오.
 
       예를 들어, 다음과 같습니다.
       ```bash
-      bx pr login -a https://<ip>:<port>
+      cloudctl login -a https://<ip>:<port>
       ```
       선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
 
   2. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
       ```
-      bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       {{ site.data.keys.product }}의 *archive_name*은 IBM Passport Advantage에서 다운로드한 PPA 아카이브의 이름입니다.
 
-      이전 단계를 수행하고 `bx pr`의 기본값으로 클러스터 엔드포인트를 작성한 경우 `--clustername`은 무시할 수 있습니다.
+      이전 단계를 수행하고 클러스터 엔드포인트를 `cloudctl`의 기본값으로 설정한 경우 `--clustername`은 무시할 수 있습니다.
 
   3. PPA 아카이브를 로드한 후 저장소를 동기화하면 Helm Charts가 **카탈로그**에 나열됩니다. {{ site.data.keys.prod_icp }} 관리 콘솔에서 이 작업을 완료할 수 있습니다.<br/>
      * **관리 > 저장소**를 선택하십시오.
@@ -90,7 +90,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 {: #env-mf-appcenter }
 아래의 표에서는 {{ site.data.keys.prod_icp }}의 {{ site.data.keys.mf_app_center }}에서 사용되는 환경 변수를 제공합니다.
 
-| 규정자 | 매개변수 | 정의 | 허용값 |
+| 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
 | arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처. **AMD64** 플랫폼만 현재 지원됩니다. |
 | image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
@@ -108,8 +108,8 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 | keystores | keystoresSecretName | 키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](../#configure-install-mf-helmcharts)을 참조하십시오. |  |
 | resources | limits.cpu | 허용되는 최대 CPU 양 | 기본값은 **1000m**입니다.<br/>자세한 정보는 [여기](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 | 기본값은 **1024Mi**입니다.<br/>자세한 정보는 [여기](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
-| resources.requests | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. |기본값은 **1000m**입니다. |
-|  | requests.memory | 필요한 최소 메모리 설명. 지정되지 않은 경우 메모리의 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **1024Mi**입니다. |
+| resources.requests | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의 값입니다. |기본값은 **1000m**입니다. |
+|  | requests.memory | 필요한 최소 메모리 설명. 지정되지 않은 경우 메모리의 기본값은 *한계*(지정된 경우)이거나 구현 정의 값입니다. | 기본값은 **1024Mi**입니다. |
 
 ## {{ site.data.keys.mf_app_center }} 설치 및 구성
 {: #configure-install-mf-appcenter-helmcharts}
@@ -141,7 +141,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 {{ site.data.keys.prod_icp }} 관리 콘솔에서 IBM {{ site.data.keys.mf_app_center }}를 설치 및 구성하려면 아래의 단계를 따르십시오.
 
 1. 관리 콘솔에서 **카탈로그**로 이동하십시오.
-2. **ibm-mfpf-appcenter-prod** helm chart를 선택하십시오.
+2. **ibm-mfpf-appcenter-prod** helm 차트를 선택하십시오.
 3. **구성**을 클릭하십시오.
 4. 환경 변수를 제공하십시오. 자세한 정보는 [{{ site.data.keys.mf_app_center }}에 대한 환경 변수](#env-mf-appcenter)를 참조하십시오.
 5. **설치**를 클릭하십시오.
@@ -161,7 +161,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 프로토콜은 **http** 또는 **https**일 수 있습니다. 또한 NodePort 배치의 경우 포트는 NodePort가 됩니다. 설치된 {{ site.data.keys.mf_app_center }} Chart의 ip_address 및 NodePort를 가져오려면 아래의 단계를 따르십시오.
 
 1. {{ site.data.keys.prod_icp }} 관리 콘솔에서 **워크로드 > Helm 릴리스**를 선택하십시오.
-2. helm chart 설치의 *릴리스 이름*을 클릭하십시오.
+2. helm 차트 설치의 *릴리스 이름*을 클릭하십시오.
 3. **참고** 섹션을 확인하십시오.
 
 > **참고:** {{ site.data.keys.mf_app_center }} 모바일 클라이언트에 액세스하려면 Passport Advantage에서 애플리케이션 센터 패키지를 다운로드하십시오. [자세히 알아보기](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/appcenter/mobile-client/).
@@ -169,7 +169,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 ## {{ site.data.keys.prod_adj }} Helm Charts 및 릴리스 업그레이드
 {: #upgrading-mf-helm-charts}
 
-helm charts/릴리스 업그레이드 방법에 대한 지시사항은 [번들 제품 업그레이드](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/upgrade_helm.html)를 참조하십시오.
+helm 차트/릴리스 업그레이드 방법에 대한 지시사항은 [번들 제품 업그레이드](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/upgrade_helm.html)를 참조하십시오.
 
 ### Helm 릴리스 업그레이드를 위한 샘플 시나리오
 
