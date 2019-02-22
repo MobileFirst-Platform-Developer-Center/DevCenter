@@ -43,7 +43,7 @@ kubectl get svc | grep prometheus
   kubectl edit configmap mfp-prometheus-prometheus
   ```
 <br/>
-이 명령은 vi 편집기에 요청된 YAML 파일을 가져옵니다. 파일 끝으로 화면 이동하여 `kind: ConfigMap` 바로 앞에 아래의 텍스트를 삽입하십시오.
+이 명령은 vi 편집기에 요청된 YAML 파일을 가져옵니다.  파일 끝으로 화면 이동하여 `kind: ConfigMap` 바로 앞에 아래의 텍스트를 삽입하십시오.
 
 Mobile Foundation Server 메트릭 구성(아래의 YAML 스니펫):<br/>
 
@@ -113,7 +113,7 @@ curl -s -XPOST http://<ip address of the proxy node>:31271/-/reload
 
 ### 4단계: Mobile Foundation 통계 모니터링
 
-a. 브라우저에서 URL을 사용하여 **Prometheus** 콘솔로 이동하십시오.<br/>
+a. 브라우저에서 URL을 사용하여 **Prometheus** 콘솔로 이동하십시오. <br/>
 ```
 http://<ip address of the Proxy Node>:31271
 ```
@@ -136,7 +136,7 @@ c. Prometheus가 통계를 얻고 있는 모든 **대상**이 표시됩니다.<b
   ![스레드 수 그래프](thread-count-graph.png)
 
   **콘솔**을 클릭하여 **Prometheus**에서 기타 관련 메트릭을 그래픽 및 숫자 형식으로 탐색할 수 있습니다.<br/>
-  배치를 스케일링할 수도 있습니다. 단기간 내에 Prometheus 콘솔의 엔드포인트 수가 복제본의 수와 일치하게 됩니다.<br/>
+  배치를 스케일링할 수도 있습니다. 단기간 내에 Prometheus 콘솔의 엔드포인트 수가 복제본의 수와 일치하게 됩니다.  <br/>
 
   >**참고:** Prometheus의 *configmap* 파일에서 비밀번호에 일반 텍스트를 사용했지만 Prometheus는 Prometheus 패널에 해당 구성이 표시될 때 비밀번호를 표시하지 않습니다.
 
@@ -148,7 +148,7 @@ JSON 파일에서 Grafana 대시보드를 가져오는 방법은 다음과 같�
 * 배치된 모니터링 서비스에서 Grafana를 시작하십시오.<br/>
   <b>워크로드 -> Helm 릴리스 -> `<name used for the helm release>`(예: mfp-prometheus) ->시작)</b>
 
-* [GitHub](https://github.ibm.com/IBMPrivateCloud/charts/tree/master/stable/ibm-mfpf-server-prod/additionalFiles/ibm-mfpf-server-prod-grafanadashboard.json)에서 로컬 워크스테이션으로 JSON 대시보드 파일을 다운로드하십시오.<br/>
+* [GitHub](https://github.ibm.com/IBMPrivateCloud/charts/tree/master/stable/ibm-mfpf-server-prod/additionalFiles/ibm-mfpf-server-prod-grafanadashboard.json)에서 로컬 워크스테이션으로 JSON 대시보드 파일을 다운로드하십시오.   <br/>
 
 * Grafana 인터페이스에서 *홈* 단추를 클릭한 후 **대시보드 가져오기**를 클릭하십시오.<br/>
 

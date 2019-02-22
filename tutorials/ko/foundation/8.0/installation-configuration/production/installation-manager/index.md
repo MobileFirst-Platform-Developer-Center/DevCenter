@@ -632,7 +632,7 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
 #### Analytics 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-| 항목 | 설명 |
+| 항목 |설명 |
 |------|-------------|
 | **analytics.ear** 및 **analytics-*.war** | {{ site.data.keys.mf_analytics }}를 설치하기 위한 EAR 및 WAR 파일. |
 | **configuration-samples** | Ant 태스크를 사용하여 {{ site.data.keys.mf_analytics }}를 설치하기 위한 샘플 Ant 파일을 포함합니다. |
@@ -640,7 +640,7 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
 #### ApplicationCenter 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-| 항목 | 설명 |
+| 항목 |설명 |
 |------|-------------|
 | **configuration-samples** | Application Center를 설치하기 위한 샘플 Ant 파일을 포함합니다. Ant 태스크는 데이터베이스 테이블을 작성하고 애플리케이션 서버에 WAR 파일을 배치합니다. |
 | **console** | Application Center를 설치하기 위한 EAR 및 WAR 파일을 포함합니다. 이 EAR 파일은 IBM  PureApplication  System에 고유하게 사용됩니다. |
@@ -651,7 +651,7 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
 #### {{ site.data.keys.mf_server }} 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-| 항목 | 설명 |
+| 항목 |설명 |
 |------|-------------|
 | **mfp-ant-deployer.jar** | {{ site.data.keys.mf_server }} Ant 태스크 세트. |
 | **mfp-*.war** | {{ site.data.keys.mf_server }} 컴포넌트의 WAR 파일. |
@@ -663,7 +663,7 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
 #### PushService 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-| 항목 | 설명 |
+| 항목 |설명 |
 |------|-------------|
 | **mfp-push-service.war** | {{ site.data.keys.mf_server }} 푸시 서비스를 설치하기 위한 WAR 파일. |
 | **databases** | {{ site.data.keys.mf_server }} 푸시 서비스용 테이블의 수동 작성에 사용되는 SQL 스크립트를 포함합니다. |
@@ -671,20 +671,20 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
 #### License 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-| 항목 | 설명 |
+| 항목 |설명 |
 |------|-------------|
 | **Text** | {{ site.data.keys.product }}에 대한 라이센스를 포함합니다. |
 
 #### {{ site.data.keys.mf_server }} 설치 디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-| 항목 | 설명 |
+| 항목 |설명 |
 |------|-------------|
 | **shortcuts** | {{ site.data.keys.mf_server }}와 함께 제공되는 Apache Ant용 실행기 스크립트, Server Configuration Tool 및 mfpadmin 명령. |
 
 #### tools 서브디렉토리의 파일 및 서브디렉토리
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-| 항목 | 설명 |
+| 항목 |설명 |
 |------|-------------|
 | **tools/apache-ant-version-number** | Server Configuration Tool에 의해 사용되는 Apache Ant의 2진 설치. 이는 Ant 태스크를 실행하는 데도 사용될 수 있습니다. |

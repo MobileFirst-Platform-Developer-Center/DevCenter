@@ -167,7 +167,7 @@ var  directUpdateCustomListener  = {
 * `onProgress`는 `UNZIP_IN_PROGRESS` 상태에서 호출됩니다.
 * `onFinish`는 다음 최종 상태 코드 중 하나로 호출됩니다.
 
-| 상태 코드 | 설명 |
+| 상태 코드 |설명 |
 |-------------|-------------|
 | `SUCCESS` | 직접 업데이트가 오류 없이 완료되었습니다. |
 | `CANCELED` | 직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서). |

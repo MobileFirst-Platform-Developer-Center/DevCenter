@@ -24,7 +24,7 @@ weight: 4
 
 |사용자 요구사항 |이벤트 소스 모델 |푸시 서비스 모델 |
 |------------------|--------------------|--------------------|
-|애플리케이션에서 푸시 알림 사용 | {::nomarkdown}<ul><li>이벤트 소스 어댑터를 작성하고 해당 어댑터 내에 EventSource를 작성하십시오.</li><li>푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오.</li></ul>{:/} |푸시 신임 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오. |
+|애플리케이션에서 푸시 알림 사용 | {::nomarkdown}<ul><li>이벤트 소스 어댑터를 작성하고 해당 어댑터 내에 EventSource를 작성하십시오.</li><li>푸시 인증 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오.</li></ul>{:/} |푸시 인증 정보를 사용하여 애플리케이션을 구성하거나 설정하십시오. |
 |모바일 클라이언트 애플리케이션에서 푸시 알림 사용 | {::nomarkdown}<ul><li>WLClient 작성</li><li>{{ site.data.keys.mf_server }}에 연결</li><li>푸시 클라이언트 인스턴스 가져오기</li><li>이벤트 소스에 등록</li></ul>{:/} |{::nomarkdown}<ul><li>푸시 클라이언트 인스턴스화</li><li>푸시 클라이언트 초기화</li><li>모바일 디바이스 등록</li></ul>{:/} |
 |특정 태그 기반의 알림에 모바일 클라이언트 애플리케이션 사용 |지원되지 않음. |태그 이름을 사용하여 관심있는 태그에 등록하십시오. |
 |모바일 클라이언트 애플리케이션에서 알림 수신 및 처리 |리스너 구현을 등록하십시오. |리스너 구현을 등록하십시오. |
@@ -126,9 +126,9 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
     * `notifyDeviceSubscription()`
     * `createEventSource()`
 2. 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
-    1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+    1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-        또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+        또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
     2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
     3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
     4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -241,9 +241,9 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -318,9 +318,9 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 어댑터에서 `WL.Server.sendMessage()`가 사용된 경우 이를 제거하십시오.  
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -423,9 +423,9 @@ V8.0.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변�
 어댑터에서 `WL.Server.sendMessage()`가 사용된 경우 이를 제거하십시오.  
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -511,9 +511,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -634,9 +634,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -707,9 +707,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -819,9 +819,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -901,9 +901,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -1004,9 +1004,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -1064,9 +1064,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -1154,9 +1154,9 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}을 사용하여 신임 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
+1. {{ site.data.keys.mf_console }}을 사용하여 인증 정보를 설정하십시오. [푸시 알림 설정 구성](../../notifications/sending-notifications)을 참조하십시오.
 
-    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 신임 정보를 설정할 수도 있습니다.
+    또한 Android 애플리케이션에 대해서는 [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API를 사용하고 iOS 애플리케이션에 대해서는 [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API를 사용하여 인증 정보를 설정할 수도 있습니다.
 2. **범위 요소 맵핑**에 `push.mobileclient` 범위를 추가하십시오.
 3. 등록자에게 푸시 알림이 전송될 수 있도록 태그를 작성하십시오. 푸시 알림에 대해서는 [태그 정의](../../notifications/sending-notifications/#defining-tags)를 참조하십시오.
 4. 다음 방법 중 하나를 사용하여 알림을 전송할 수 있습니다.
@@ -1236,7 +1236,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}의 **푸시 설정** 페이지에서 WNS 신임 정보를 설정하거나 WNS 설정 REST API를 사용하십시오.
+1. {{ site.data.keys.mf_console }}의 **푸시 설정** 페이지에서 WNS 인증 정보를 설정하거나 WNS 설정 REST API를 사용하십시오.
 2. {{ site.data.keys.mf_console }}의 보안 탭에서 **보안 검사에 범위 요소 맵핑** 섹션에 `push.mobileclient` 범위를 추가하십시오.
 3. [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`를 사용하여 메시지를 보낼 수도 있습니다.
 
@@ -1340,7 +1340,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}의 **푸시 설정** 페이지에서 WNS 신임 정보를 설정하거나 WNS 설정 REST API를 사용하십시오.
+1. {{ site.data.keys.mf_console }}의 **푸시 설정** 페이지에서 WNS 인증 정보를 설정하거나 WNS 설정 REST API를 사용하십시오.
 2. {{ site.data.keys.mf_console }}의 **보안** 탭에서 **보안 검사에 범위 요소 맵핑** 섹션에 `push.mobileclient` 범위를 추가하십시오.
 3. {{ site.data.keys.mf_console }}의 **태그** 페이지에서 Push 태그를 작성하십시오.
 4. [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`/`tagNames`를 대상으로 사용하여 메시지를 보낼 수도 있습니다.
@@ -1404,7 +1404,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}의 **푸시 설정** 페이지에서 WNS 신임 정보를 설정하거나 WNS 설정 REST API를 사용하십시오.
+1. {{ site.data.keys.mf_console }}의 **푸시 설정** 페이지에서 WNS 인증 정보를 설정하거나 WNS 설정 REST API를 사용하십시오.
 2. {{ site.data.keys.mf_console }}의 **보안** 탭에서 **보안 검사에 범위 요소 맵핑** 섹션에 `push.mobileclient` 범위를 추가하십시오.
 3. {{ site.data.keys.mf_console }}의 **태그** 페이지에서 Push 태그를 작성하십시오.
 4. [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`/`tagNames`를 대상으로 사용하여 메시지를 보낼 수도 있습니다.
@@ -1504,17 +1504,17 @@ class Pushlistener : MFPPushNotificationListener
 
 동일한 이벤트 소스를 사용한 모든 애플리케이션에 대해 다음 단계를 완료하십시오.
 
-1. {{ site.data.keys.mf_console }}의 **푸시 설정** 페이지에서 WNS 신임 정보를 설정하거나 WNS 설정 REST API를 사용하십시오.
+1. {{ site.data.keys.mf_console }}의 **푸시 설정** 페이지에서 WNS 인증 정보를 설정하거나 WNS 설정 REST API를 사용하십시오.
 2. {{ site.data.keys.mf_console }}의 **보안** 탭에서 **보안 검사에 범위 요소 맵핑** 섹션에 `push.mobileclient` 범위를 추가하십시오.
 3. {{ site.data.keys.mf_console }}의 **태그** 페이지에서 Push 태그를 작성하십시오.
 4. [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API와 `userId`/`deviceId`/`tagNames`를 대상으로 사용하여 메시지를 보낼 수도 있습니다.
 
 ## 마이그레이션 도구
 {: #migration-tool }
-마이그레이션 도구는 MobileFirst Platform Foundation 7.1 푸시 데이터(디바이스, 사용자 등록, 신임 정보 및 태그)를 {{ site.data.keys.product }} 8.0으로 마이그레이션하는 데 도움이 됩니다.  
+마이그레이션 도구는 MobileFirst Platform Foundation 7.1 푸시 데이터(디바이스, 사용자 등록, 인증 정보 및 태그)를 {{ site.data.keys.product }} 8.0으로 마이그레이션하는 데 도움이 됩니다.  
 마이그레이션 도구를 사용하면 다음 기능을 간단하게 처리할 수 있습니다.
 
-1. MobileFirst Platform Foundation 7.1 데이터베이스에서 각 애플리케이션의 디바이스, 신임 정보, 태그 및 사용자 등록을 읽습니다.
+1. MobileFirst Platform Foundation 7.1 데이터베이스에서 각 애플리케이션의 디바이스, 인증 정보, 태그 및 사용자 등록을 읽습니다.
 2. 각 애플리케이션에 대해 {{ site.data.keys.product }} 8.0 데이터베이스의 각 테이블로 데이터를 복사합니다.
 3. v8.0 애플리케이션의 환경에 관계 없이 모든 v7.1 환경의 모든 푸시 데이터를 마이그레이션합니다.
 
