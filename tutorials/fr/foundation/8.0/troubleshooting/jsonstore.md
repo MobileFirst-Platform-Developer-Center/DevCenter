@@ -84,9 +84,9 @@ La compréhension des caractéristiques JSONStore suivantes peut vous aider à r
 * Les transactions ne sont pas prises en charge dans Android 2.3.x pour les applications Cordova.
 * Lorsque vous utilisez JSONStore sur un appareil 64 bits, l'erreur suivante peut s'afficher : `java.lang.UnsatisfiedLinkError: dlopen failed: "..." is 32-bit instead of 64-bit`
 * Cette erreur signifie que vous disposez de bibliothèques natives 64 bits dans votre projet Android et que JSONStore ne fonctionne pas lorsque vous utilisez ces bibliothèques. Pour confirmation, accédez au répertoire **src/main/libs** ou **src/main/jniLibs** sous votre projet Android et vérifiez si le dossier x86_64 ou arm64-v8a existe. Si tel est le cas, supprimez-le ; JSONStore fonctionnera à nouveau.
-* Dans certains cas (ou environnements), le flux entre `wlCommonInit()` avant l'initialisation du plug-in JSONStore. Cela entraîne l'échec des appels d'API liés à JSONStore. L'amorçage de `cordova-plugin-mfp` appelle automatiquement `WL.Client.init`, qui, une fois terminé, déclenche la fonction `wlCommonInit`. Ce processus d'initialisation est différent pour le plug-in JSONStore. En effet, ce dernier ne dispose d'aucun moyen d'arrêter (_halt_) l'appel de `WL.Client.init`. Dans certains environnements, il peut arriver que le flux indique `wlCommonInit()` avant la fin de `mfpjsonjslloaded`.
-Pour garantir l'ordre des événements `mfpjsonjsloaded` et `mfpjsloaded`, le développeur a la possibilité d'appeler
-manuellement `WL.CLient.init`. Il n'est alors plus nécessaire de disposer d'un code spécifique à la plateforme.
+* Dans certains cas (ou environnements), le flux entre `wlCommonInit()` avant l'initialisation du plug-in JSONStore. Cela entraîne l'échec des appels d'API liés à JSONStore. L'amorçage de `cordova-plugin-mfp` appelle automatiquement `WL.Client.init`, qui, une fois terminé, déclenche la fonction `wlCommonInit`. Ce processus d'initialisation est différent pour le plug-in JSONStore. En effet, ce dernier ne dispose d'aucun moyen d'arrêter (_halt_) l'appel de `WL.Client.init`. Dans certains environnements, il peut arriver que le flux indique `wlCommonInit()` avant la fin de `mfpjsonjslloaded`. Pour garantir
+l'ordre des événements `mfpjsonjsloaded` et `mfpjsloaded`, le développeur a la possibilité d'appeler manuellement `WL.CLient.init`. Il n'est 
+alors plus nécessaire de disposer d'un code spécifique à la plateforme.
 
   Pour configurer l'appel de `WL.CLient.init` manuellement, suivez les étapes ci-après :                             
 
@@ -108,8 +108,8 @@ function initWL(){
 }                                                                      
 ```                                                                       
 
-  Cela permet d'attendre l'événement `mfpjsonjsloaded` (en dehors de `wlCommonInit`),
-Cela garantit le chargement du script et appelle ensuite `WL.Client.init` qui déclenchera `wlCommonInit`, qui appellera ensuite `WL.JSONStore.init`.
+Cela permet d'attendre l'événement `mfpjsonjsloaded` (en dehors de `wlCommonInit`),
+ce qui garantit le chargement du script et appelle ensuite `WL.Client.init` qui déclenchera `wlCommonInit`, qui appellera ensuite `WL.JSONStore.init`.
 
 ## Eléments internes du magasin
 {: #store-internals }

@@ -33,14 +33,14 @@ Utilisez la console Application Center pour les opérations suivantes :
 * [Ajout d'une application mobile](#adding-a-mobile-application)
 * [Ajout d'une application à partir d'un magasin d'applications public](#adding-an-application-from-a-public-app-store)
 * [Propriétés d'application](#application-properties)
-* [Edition des propriétés de l'application](#editing-application-properties)
+* [Edition des propriétés d'une application](#editing-application-properties)
 * [Mise à niveau d'une application mobile dans {{ site.data.keys.mf_server }} et Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
 * [Téléchargement d'un fichier d'application](#downloading-an-application-file)
 
 Dans la console Application Center, vous pouvez voir des commentaires envoyés par les utilisateurs sur les versions d'applications mobiles.
 
 * [Gestion des utilisateurs et des groupes](#user-and-group-management)
-* [Contrôle d'accès](#access-control)
+* [Contrôle des accès](#access-control)
 * [Gestion du contrôle d'accès](#managing-access-control)
 * [Gestion des appareils](#device-management)
 * [Jetons d'inscription d'application dans Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal)
@@ -150,7 +150,7 @@ Pour ajouter une application afin de la rendre disponible pour l'installation su
 5. Configurez les propriétés pour définir l'application. Voir [Propriétés d'application](#application-properties) pour plus d'informations sur la définition des valeurs de propriété.
 6. Cliquez sur **Finish**.
 
-![Propriétés d'une application, ajout d'une application](ac_add_app_props.jpg)
+![Propriétés de l'application, ajout d'une application](ac_add_app_props.jpg)
 
 ## Ajout d'une application à partir d'un magasin d'applications public
 {: #adding-an-application-from-a-public-app-store }
@@ -185,13 +185,13 @@ L'adresse d'Apple iTunes Store est [https://linkmaker.itunes.apple.com/](https:/
     * Si la validation échoue, un message d'erreur s'affiche dans la page **Add an application**. Vous pouvez essayer un autre lien ou annuler la tentative de création du lien en cours.
     * Si la validation est réussie, cette action permet d'afficher les propriétés de l'application. Vous pouvez ensuite modifier la description d'application dans les propriétés d'application avant de passer à l'étape suivante.
 
-    ![Description de l'application modifiée dans ses propriétés](ac_add_public_app_details.jpg)
+    ![Description de l'application modifiée dans les propriétés de l'application](ac_add_public_app_details.jpg)
 
 4. Cliquez sur **Done** pour créer le lien de l'application.
 
     Cette action met l'application à la disposition de la version correspondante du client mobile Application Center. Une petite icône de lien apparaît sur l'icône de l'application pour indiquer que cette application est stockée dans un magasin public d'applications et diffère d'une application binaire.
 
-    ![Lien à une application stockée dans Google play](ac_public_app_available.jpg)
+    ![Lien vers une application stockée dans Google play](ac_public_app_available.jpg)
 
 ## Propriétés d'application
 {: #application-properties }
@@ -264,7 +264,7 @@ La zone **Author** est en lecture seule. Elle affiche l'attribut **username** de
 {: #editable-properties }
 Vous pouvez modifier les zones suivantes :
 
-**Description**  
+** Description **  
 Cette zone permet de décrire l'application pour l'utilisateur mobile.
 
 **Recommended**  
@@ -295,7 +295,7 @@ Pour modifier les propriétés d'une application téléchargée :
 
 4. Cliquez sur **OK** pour enregistrer vos modifications et revenir aux applications disponibles ou sur **Apply** pour enregistrer et conserver les détails d'application ouverts.
 
-![Propriétés de l'application pour l'édition](ac_edit_app_props.jpg)
+![Propriétés de l'application pour édition](ac_edit_app_props.jpg)
 
 ## Mise à niveau d'une application mobile dans {{ site.data.keys.mf_server }} et Application Center
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
@@ -322,7 +322,7 @@ La version 2.0 de HelloWorld est disponible et vous souhaitez que les utilisateu
 
     Exécution du client : lorsqu'un appareil mobile se connecte à {{ site.data.keys.mf_server }} pour tenter de lancer HelloWorld version 1.0, l'utilisateur de l'appareil est invité à mettre à niveau la version de l'application.
 
-    ![Désactivation à distance d'une ancienne version d'une application](ac_remote_disable_app_cli.jpg)
+    ![Désactivation à distance d'une ancienne version de l'application](ac_remote_disable_app_cli.jpg)
 
 6. Cliquez sur **Upgrade** pour ouvrir le client Application Center. Lorsque les détails de connexion sont correctement remplis, vous accédez directement à la page Details de HelloWorld version 2.0.
 
@@ -348,7 +348,7 @@ Pour visualiser des revues d'utilisateurs mobiles ou de testeurs au sujet d'une 
 2. Sélectionnez la version de l'application.
 3. Dans le menu, sélectionnez **Reviews**.
 
-    ![Revues de versions d'application](ac_appfeedbk.jpg)
+    ![Revues des versions de l'application](ac_appfeedbk.jpg)
 
     L'évaluation est la moyenne des évaluations de toutes les revues enregistrées. Elle se compose d'une à cinq étoiles, où une étoile représente le plus faible niveau d'appréciation et cinq étoiles représentent le plus haut niveau d'appréciation. Le client ne peut pas envoyer une évaluation équivalente à zéro étoile.
 
@@ -427,7 +427,7 @@ Vous pouvez modifier le contrôle d'accès :
 
 1. Dans Application Management sous Available Applications, cliquez sur l'état non restreint ou restreint de l'installation d'une application.
 
-    ![Où cliquer en mode restreint ou non restreint](ac_app_access_state.jpg)
+    ![Clic sur l'état non restreint ou restreint](ac_app_access_state.jpg)
 
 2. Sélectionnez **Access control enabled** pour activer le contrôle d'accès.
 3. Ajoutez des utilisateurs ou des groupes à la liste d'accès.
