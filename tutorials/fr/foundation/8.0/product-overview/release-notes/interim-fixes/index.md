@@ -16,6 +16,17 @@ Téléchargez et installez le dernier correctif temporaire pour obtenir tous les
 
 Lorsqu'un numéro d'APAR est indiqué, vous pouvez vérifier qu'un correctif temporaire possède cette fonction en recherchant ce numéro dans le fichier README du correctif temporaire.
 
+### Fonctions incluses avec la mise à jour en distribution continue 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
+
+##### <span style="color:NAVY">**Prise en charge de HTTP/2 pour les notifications push APNs**</span>
+
+Les notifications push dans MobileFirst prennent maintenant en charge les notifications push APNs HTTP/2 avec les notifications via des sockets TCP existantes. [En savoir plus]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
+
+##### <span style="color:NAVY">**Logiciel SDK push React Native publié**</span>
+
+Le logiciel SDK React Native pour les notifications push (*react-native-ibm-mobilefirst-push 1.0.0*) est livré avec cette mise à jour en distribution continue.
+
+
 ### Fonctions introduites par la mise à jour en distribution continue 3 (8.0.0.0-MFPF-IF201811050432-CDUpdate-03)
 
 ##### <span style="color:NAVY">**Prise en charge des jetons d'actualisation sur iOS**</span>
@@ -46,7 +57,7 @@ A partir de la mise à jour en distribution continue (*8.0.0.0-MFPF-IF2018071804
 
 ##### <span style="color:NAVY">**Présentation des jetons d'actualisation**</span>
 
-A partir de la mise à jour en distribution continue (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), Mobile Foundation introduit des jetons spéciaux appelés jetons d'actualisation qui peuvent être utilisés pour demander un nouveau jeton d'accès. [En savoir plus]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
+A partir de la mise à jour en distribution continue (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), Mobile Foundation introduit des jetons spéciaux appelés jetons d'actualisation qui peuvent être utilisés pour demander un nouveau jeton d'accès.  [En savoir plus]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
 
 ##### <span style="color:NAVY">**Prise en charge de Cordova version 8 et Cordova Android version 7**</span>
 
@@ -121,48 +132,3 @@ A partir de la mise à jour en distribution continue *8.0.0.0-MFPF-IF20171123064
 ##### <span style="color:NAVY">**Possibilité de déploiement de Mobile Foundation sur les clusters Kubernetes**</span>
 
 A partir de la mise à jour en distribution continue *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, les utilisateurs de Mobile Foundation peuvent déployer Mobile Foundation, qui inclut le serveur Mobile Foundation, le serveur Mobile Analytics et Application Center, sur des clusters Kubernetes. Le package de déploiement a été mis à jour pour prendre en charge le déploiement Kubernetes. Lisez l'[annonce](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/09/mobilefoundation-on-kube/).
-
-<!--
-### Licensing
-{: #licensing }
-#### PVU licensing
-{: #pvu-licensing }
-A new offering, {{ site.data.keys.product }} Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for {{ site.data.keys.product }} Extension, see [Licensing {{ site.data.keys.product_adj }}](../../licensing).
-
-
-### Web applications
-{: #web-applications }
-#### Registering web applications from the {{ site.data.keys.mf_cli }} (APAR PI65327)
-{: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-You can now register client web applications to {{ site.data.keys.mf_server }} by using the {{ site.data.keys.mf_cli }} (mfpdev) as an alternative to registration from the {{ site.data.keys.mf_console }}. For more information, see Registering web applications from the {{ site.data.keys.mf_cli }}.
-
-### Cordova applications
-{: #cordova-applications }
-#### Opening the native IDE for a Cordova project from Eclipse with the Studio plug-in
-{: #opening-the-native-ide-for-a-cordova-project-from-eclipse-with-the-studio-plug-in }
-With the Studio plug-in installed in your Eclipse IDE, you can open an existing Cordova project in Android Studio or Xcode from the Eclipse interface to build and run the project.
-
-#### Added *projectName* directory as an option when you use the Migration Assistance tool
-{: #added-projectname-directory-as-an-option-when-you-use-the-migration-assistance-tool }
-You can specify a name for your Cordova project directory when you migrate projects with the migration assistance tool. If you do not provide a name, the default name is *app_name-app_id-version*.
-
-#### Usability improvements to the Migration Assistance tool
-{: #usability-improvements-to-the-migration-assistance-tool }
-Made the following changes to improve the usability of the Migration Assistance tool:
-
-* The Migration Assistance tool scans HTML files and JavaScript files.
-* The scan report opens in your default browser automatically after the scan is finished.
-* The *--out* flag is optional. The working directory is used if it is not specified.
-* When the *--out* flag is specified and the directory does not exist, the directory is created.
-
-### Adapters
-{: #adapters }
-#### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
-{: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-You can use {{ site.data.keys.mf_cli }} to push Java and JavaScript adapter configurations to the {{ site.data.keys.mf_server }} and pull adapter configurations from the {{ site.data.keys.mf_server }}.
-
-### Application Center
-{: #application-center}
-
-Cordova based application center client is now available for iOS and Android.
--->
