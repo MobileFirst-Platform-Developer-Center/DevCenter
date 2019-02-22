@@ -78,7 +78,7 @@ Vous devez inscrire tous les appareils mobiles à l'aide d'un jeton d'inscriptio
 
 Application Center vous aide à inscrire des appareils par le biais de fonctions pour distribuer le jeton d'inscription de l'application. Pour plus d'informations, voir [Jetons d'inscription d'application dans Windows 8 Universal](appcenter-console/#application-enrollment-tokens-in-windows-8-universal).
 
-Application Center prend en charge la distribution des applications telles que les fichiers de module d'application Windows Phone (.xap) pour Microsoft Windows Phone 8.0 et Microsoft Windows Phone 8.1. Avec Microsoft Windows Phone 8.1, Microsoft a introduit un nouveau format universel sous forme de fichiers de module d'application (.appx) pour Windows Phone. Actuellement, Application Center ne prend pas en charge la distribution de fichiers de module d'applications (.appx) pour Microsoft Windows Phone 8.1, mais est limité aux fichiers de module d'application Windows Phone (.xap) uniquement.
+Application Center prend en charge la distribution d'applications telles que les fichiers de package d'application Windows Phone (.xap) pour Microsoft Windows Phone 8.0 et Microsoft Windows Phone 8.1. Avec Microsoft Windows Phone 8.1, Microsoft a introduit un nouveau format universel de fichiers de package d'application (.appx) pour Windows Phone. Actuellement, Application Center ne prend pas en charge la distribution de fichiers de package d'application (.appx) pour Microsoft Windows Phone 8.1, mais est limité aux fichiers de package d'application Windows Phone (.xap). 
 
 Dans Application Center, les applications ne comportent qu'un seul numéro de version. Le numéro de version est utilisé pour distinguer la version la plus récente. Pour les applications Windows Phone 8, le numéro de version se trouve dans la zone **Version** du fichier **WMAppManifest.xml**. Le numéro de version doit être au format suivant : `a.b.c.d` où `a`, `b`, `c`, `d` sont des entiers non négatifs.
 
@@ -117,7 +117,7 @@ La console Web et l'application d'installation communiquent via les services RES
 
 Plusieurs services composent le composant côté serveur d'Application Center ; par exemple, un service qui répertorie les applications disponibles, un service qui fournit les fichiers binaires d'application à l'appareil mobile ou un service qui enregistre les commentaires et les évaluations.
 
-### Référentiel
+### Référentiel 
 {: #repository }
 Base de données qui stocke des informations telles que quelle application est installée sur quels appareils, les commentaires en retour sur les applications et les fichiers binaires de l'application mobile. L'application Application Center est associée à la base de données lorsque vous configurez Application Center pour un serveur d'applications Web particulier et une base de données prise en charge.
 
@@ -131,7 +131,7 @@ Vous utilisez le client mobile pour installer des applications sur un appareil m
 
 La figure suivante présente un aperçu de l'architecture.
 
-![Architecture Application Center](ac_arch.jpg)
+![Architecture d'Application Center](ac_arch.jpg)
 
 À partir de la console Application Center, vous pouvez effectuer les actions suivantes :
 
