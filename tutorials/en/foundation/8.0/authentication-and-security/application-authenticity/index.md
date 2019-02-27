@@ -87,6 +87,8 @@ To use the BTS tool in Xcode:
 
 For example, suppose if the watchOS extension package contains `HelloWatchOS.swift` file, the developer will need to pass `HelloWatchOS` as an argument along with the path of BTS tool.
 
+![BTS Tool](BTS_Tool.png)
+
 The tool should  be used when building a production version of the application.
 
 ## Troubleshooting
