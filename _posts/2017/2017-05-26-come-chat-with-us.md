@@ -30,7 +30,7 @@ Developers, evaluators, customers, sales and anybody who concerns himself/hersel
 
 ### How to join us on Slack
 
-1. Provide your email address in the comments section.
+1. Provide your email address in the comments section and express your interest to get invited.
 2. Check your inbox for an invite.
 3. Continue with the onboarding process.
 
