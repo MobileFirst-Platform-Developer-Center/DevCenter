@@ -254,17 +254,45 @@ indexed: false
   <!-- Blog -->
   <div id="index_benefits" class="container" role="complementary">
 
-     <div class="row hidden-xs hidden-sm hidden-md">
+     <div class="row">
       <!-- <h1 class="no-anchor">Latest in Mobile Foundation Blog</h1>-->
       <!--  <div class="col-md-6">
            <img class="foundation_diamond" src="{{site.baseurl}}/assets/front-page/foundation_logo.svg" alt="Foundation diamond icon"/>
         </div>-->
 
-        <div class="col-md-6 hidden-sm hidden-xs hidden-md">
+        <div class="col-sm-5">
+
+           <div class="benefits">
+             <div class="card" style="width: 45rem;">
+             <!--<img class="card-img-top" src="../assets/front-page/carousel-background.png" alt="Card image cap">-->
+
+             <div class="card-body">
+               <div class="card-header">
+                 <div class="alert alert-warning">
+                   <p class="card-title"><span class="postTitle">Features released in Mobile Foundation v8.0 CD Updates</span></p>
+                 </div>
+               </div>
+               <!--<h3 class="card-title"><span class="glyphicon glyphicon-bell"></span><span class="postsubTitle">&nbsp;Latest blog post</span></h3>-->
+               <!--<p class="card-title"><h3 class="no-anchor"><a class="badge badge-warning"><span class="postExcerpt">&nbsp;Latest in Mobile Foundation blog</span></a><br/>-->
+
+               <p class="card-text"><h4><span class="postExcerpt">Know why you should upgrade to the latest Mobile Foundation v8.0 CD Update.</span></h4></p>
+
+
+
+
+             </div>
+             <br/>
+             <div class="card-footer">
+               <a class="custombtn btn-lg btn-warning" href="{{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/release-notes/interim-fixes/"><span class="postsubTitle">&nbsp;Read more...</span></a>
+             </div>
+           </div>
+           </div>
+        </div>
+        <div class="col-sm-7 hidden-sm hidden-xs hidden-md">
 
            <div class="benefits">
              {% for post in site.posts limit:1 %}
-             <div class="card">
+             <div class="card" style="width: 68rem;">
              <!--<img class="card-img-top" src="../assets/front-page/carousel-background.png" alt="Card image cap">-->
 
              <div class="card-body">
@@ -275,6 +303,44 @@ indexed: false
                </div>
                <!--<h3 class="card-title"><span class="glyphicon glyphicon-bell"></span><span class="postsubTitle">&nbsp;Latest blog post</span></h3>-->
                <!--<p class="card-title"><h3 class="no-anchor"><a class="badge badge-warning"><span class="postExcerpt">&nbsp;Latest in Mobile Foundation blog</span></a><br/>-->
+
+               <p class="card-text"><span class="postExcerpt">{{post.date | date: '%B %d, %Y'}}</span></p>
+
+               <p class="card-text">
+                 <h4><span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</span></h4>
+
+
+             </div>
+             <br/>
+             <div class="card-footer">
+               <a class="custombtn btn-lg btn-primary" href="{{site.baseurl}}{{post.url}}"><span class="postsubTitle">&nbsp;Read more...</span></a>
+             </div>
+           </div>
+           {% endfor %}
+           </div>
+        </div>
+
+     </div>
+  </div>
+  <hr class="sm"/>
+
+<!--<div id="index_sections">
+  <div id="index_benefits" class="container" role="complementary">
+
+     <div class="row hidden-xs hidden-sm hidden-md">
+
+        <div class="col-md-4 hidden-sm hidden-xs hidden-md">
+
+           <div class="benefits">
+             {% for post in site.posts limit:1 %}
+             <div class="card">
+
+             <div class="card-body">
+               <div class="card-header">
+                 <div class="alert alert-info">
+                   <p class="card-title"><span class="postTitle">{{post.title}}</span></p>
+                 </div>
+               </div>
 
                <p class="card-text"><span class="postExcerpt">{{post.date | date: '%B %d, %Y'}}</span></p>
 
