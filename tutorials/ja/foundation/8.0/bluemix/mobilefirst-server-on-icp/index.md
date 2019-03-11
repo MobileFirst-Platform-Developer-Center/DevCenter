@@ -3,7 +3,7 @@ layout: tutorial
 title: IBM Cloud Private 上での MobileFirst Server のセットアップ
 breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
@@ -11,7 +11,7 @@ weight: 2
 下記の説明に従って、{{ site.data.keys.prod_icp }} 上で {{ site.data.keys.mf_server }} インスタンスおよび {{ site.data.keys.mf_analytics }} インスタンスを構成します。
 
 * IBM Cloud Private Kubernetes クラスターをセットアップします。
-* 必要なツール (Docker、IBM Cloud CLI (bx)、{{ site.data.keys.prod_icp }} (icp) Plugin for IBM Cloud CLI (bx pr)、Kubernetes CLI (kubectl)、および Helm CLI (helm)) を使用して、ホスト・コンピューターをセットアップします。
+* 必要なツール (Docker CLI、IBM Cloud CLI (`cloudctl`)、Kubernetes CLI (`kubectl`)、および Helm CLI (`helm`)) を組み込むよう、ホスト・コンピューターをセットアップします。
 * {{ site.data.keys.prod_icp }} 用の {{ site.data.keys.product_full }} のパスポート・アドバンテージ・アーカイブ (PPA アーカイブ) をダウンロードします。
 * PPA アーカイブを {{site.data.keys.prod_icp }} クラスターにロードします。
 * 最後に、{{site.data.keys.mf_analytics }} (オプション) および {{site.data.keys.mf_server }} を構成し、インストールします。
@@ -30,17 +30,16 @@ weight: 2
 ## 前提条件
 {: #prereqs}
 
-{{ site.data.keys.prod_icp }} アカウントを取得し、[{{ site.data.keys.prod_icp }} クラスター・インストール](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html)の資料に従って Kubernetes クラスターをセットアップしておく必要があります。
+{{ site.data.keys.prod_icp }} アカウントを取得し、[{{ site.data.keys.prod_icp }} クラスター・インストール](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup)の資料に従って Kubernetes クラスターをセットアップしておく必要があります。
 
 コンテナーおよびイメージを管理するために、{{site.data.keys.prod_icp }} セットアップの一環として、以下のツールをホスト・マシンにインストールする必要があります。
 
 * Docker
-* IBM Cloud CLI (`bx`)
-* {{ site.data.keys.prod_icp }} (ICP) Plugin for IBM Cloud CLI (`bx pr`)
+* IBM Cloud CLI (`cloudctl`)
 * Kubernetes CLI (`kubectl`)
 * Helm (`helm`)
 
-CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセスするために、*kubectl* クライアントを構成する必要があります。 [詳細はこちら](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_cluster/cfc_cli.html)。
+CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセスするために、*kubectl* クライアントを構成する必要があります。 [詳細はこちら](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html)。
 
 ## IBM Mobile Foundation パスポート・アドバンテージ・アーカイブのダウンロード
 {: #download-the-ibm-mfpf-ppa-archive}
@@ -55,22 +54,22 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 
 以下のステップに従って、PPA アーカイブを {{site.data.keys.prod_icp }} クラスターにロードします。
 
-  1. IBM Cloud ICP plugin (`bx pr`) を使用してクラスターにログインします。
-      >{{ site.data.keys.prod_icp }} の資料で、[CLI コマンド解説書](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html)を参照してください。
+  1. IBM Cloud ICP プラグイン (`cloudctl`) を使用してクラスターにログインします。
+      >{{ site.data.keys.prod_icp }} 資料で、[CLI コマンド・リファレンス](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html)を参照してください。
 
       以下に例を示します。
       ```bash
-      bx pr login -a https://ip:port
+      cloudctl login -a https://ip:port
       ```
       オプションで、SSL 検証をスキップする場合は、上記のコマンドでフラグ `--skip-ssl-validation` を使用します。 このオプションを使用すると、クラスター・エンドポイントの `username` と `password` の入力を求めるプロンプトが出されます。 ログインに成功したら、以下のステップに進んでください。
 
   2. 以下のコマンドを使用して、{{ site.data.keys.product }} の PPA アーカイブをロードします。
       ```
-      bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       {{ site.data.keys.product }} の *archive_name* は、IBM パスポート・アドバンテージからダウンロードした PPA アーカイブの名前です。
 
-      前のステップに従い、クラスター・エンドポイントを `bx pr` のデフォルトにした場合、`--clustername` は無視できます。
+      前のステップに従い、クラスター・エンドポイントを `cloudctl` のデフォルトにした場合、`--clustername` は無視できます。
 
   3. PPA アーカイブをロードした後、リポジトリーを同期化します。これにより、**カタログ**内に確実に Helm チャートがリストされるようになります。 これは、{{site.data.keys.prod_icp }} 管理コンソールで行うことができます。
       * **「管理」>「リポジトリー」**を選択します。
@@ -148,7 +147,7 @@ CLI を使用して {{site.data.keys.prod_icp }} クラスターにアクセス�
 | arch |  | ワーカー・ノード・アーキテクチャー | このチャートのデプロイ先となるワーカー・ノード・アーキテクチャー。<br/>現在、**AMD64** プラットフォームのみがサポートされています。 |
 | image | pullPolicy | イメージ・プル・ポリシー | デフォルトは **IfNotPresent** |
 |  | tag | Docker イメージ・タグ | [Docker タグの説明](https://docs.docker.com/engine/reference/commandline/image_tag/)を参照 |
-|  | name | Docker イメージ名 | {{site.data.keys.prod_adj }} Server Docker イメージの名前。 |
+|  | name | Docker イメージ名 | {{ site.data.keys.prod_adj }} サーバー Docker イメージの名前。 |
 | scaling | replicaCount | 作成する必要がある {{site.data.keys.prod_adj }} Server のインスタンス (ポッド) の数 | 正整数<br/>デフォルトは **3** |
 | mobileFirstOperationsConsole | user | {{site.data.keys.prod_adj }} サーバーのユーザー名 | デフォルトは **admin** |
 |  | password | {{site.data.keys.prod_adj }} Server のユーザーのパスワード | デフォルトは **admin** |

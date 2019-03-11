@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Ressourcenanforderung von JavaScript-Anwendungen (Cordova, Web)
+title: Ressourcenanforderung von JavaScript-Anwendungen (Cordova-Anwendungen, Webanwendungen)
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 downloads:

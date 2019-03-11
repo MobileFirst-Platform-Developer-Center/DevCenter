@@ -16,6 +16,17 @@ Faça download e instale a correção temporária mais recente para obter todas 
 
 Quando um número de APAR estiver listado, será possível confirmar se uma correção temporária tem esse recurso procurando o número do APAR no arquivo LEIA-ME da correção temporária.
 
+### Recursos incluídos na atualização 4 do CD (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
+
+##### <span style="color:NAVY">**Suporte de HTTP/2 para notificações push de APNs**</span>
+
+As notificações push no MobileFirst agora suportam as notificações push de APNs baseadas em HTTP/2 juntamente com as notificações anteriores baseadas no soquete TCP .[Saiba mais]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
+
+##### <span style="color:NAVY">**SDK do push nativo de reação liberado**</span>
+
+O SDK nativo de reação para push (*react-native-ibm-mobilefirst-push 1.0.0*) foi liberado com essa atualização do CD.
+
+
 ### Recursos introduzidos com o CD Update 3 (8.0.0.0-MFPF-IF201811050432-CDUpdate-03)
 
 ##### <span style="color:NAVY">**Suporte para tokens de atualização no iOS**</span>
@@ -46,7 +57,7 @@ Iniciando com o CD Update (*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*), usando o 
 
 ##### <span style="color:NAVY">**Introduzindo tokens de atualização** </span>
 
-Iniciando com o CD Update (*8.0.0.0-MFPF-IF201804180449-CDUpdate-02*), o Mobile Foundation agora introduz um tipo especial de token, chamado token de Atualização, que pode ser usado para solicitar um novo token de acesso. [Saiba mais]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
+Iniciando com o CD Update (*8.0.0.0-MFPF-IF201804180449-CDUpdate-02*), o Mobile Foundation agora introduz um tipo especial de token, chamado token de Atualização, que pode ser usado para solicitar um novo token de acesso.  [Saiba mais]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
 
 ##### <span style="color:NAVY">**Suporte para Cordova v8 e Cordova Android v7**</span>
 
@@ -64,7 +75,7 @@ Iniciando com o CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, o editor WY
 
 ##### <span style="color:NAVY">**Novos adaptadores para construção de apps cognitivos**</span>
 
-Iniciando com o CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, o Mobile Foundation introduziu dois novos adaptadores de serviços cognitivos pré-construídos para os serviços [*Watson Tone Analyzer*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonToneAnalyzer) e [*Language Translator*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonLanguageTranslator). Esses adaptadores estão disponíveis para serem transferidos por download e implementados por meio do *Centro de download* no Mobile Foundation Console.
+Iniciando com o CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, o Mobile Foundation introduziu dois novos adaptadores de serviços cognitivos pré-construídos para os serviços [*Watson Tone Analyzer*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonToneAnalyzer) e [*Language Translator*](https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonLanguageTranslator). Esses adaptadores estão disponíveis para serem transferidos por download e implementados por meio do *Centro de download* no Console do Mobile Foundation.
 
 ##### <span style="color:NAVY">**Autenticidade de app dinâmico**</span>
 
@@ -121,48 +132,3 @@ Iniciando com o CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, o Mobile Fo
 ##### <span style="color:NAVY">**O Mobile Foundation pode agora ser implementado em clusters do Kubernetes**</span>
 
 Iniciando com o CD Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*, o usuário do Mobile Foundation pode agora implementar o Mobile Foundation, que inclui o Mobile Foundation Server, o Mobile Analytics Server e o Application Center, em clusters do Kubernetes. O pacote de implementação foi atualizado para suportar a implementação do Kubernetes. Leia o [anúncio](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/09/mobilefoundation-on-kube/).
-
-<!--
-### Licensing
-{: #licensing }
-#### PVU licensing
-{: #pvu-licensing }
-A new offering, {{ site.data.keys.product }} Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for {{ site.data.keys.product }} Extension, see [Licensing {{ site.data.keys.product_adj }}](../../licensing).
-
-
-### Web applications
-{: #web-applications }
-#### Registering web applications from the {{ site.data.keys.mf_cli }} (APAR PI65327)
-{: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-You can now register client web applications to {{ site.data.keys.mf_server }} by using the {{ site.data.keys.mf_cli }} (mfpdev) as an alternative to registration from the {{ site.data.keys.mf_console }}. For more information, see Registering web applications from the {{ site.data.keys.mf_cli }}.
-
-### Cordova applications
-{: #cordova-applications }
-#### Opening the native IDE for a Cordova project from Eclipse with the Studio plug-in
-{: #opening-the-native-ide-for-a-cordova-project-from-eclipse-with-the-studio-plug-in }
-With the Studio plug-in installed in your Eclipse IDE, you can open an existing Cordova project in Android Studio or Xcode from the Eclipse interface to build and run the project.
-
-#### Added *projectName* directory as an option when you use the Migration Assistance tool
-{: #added-projectname-directory-as-an-option-when-you-use-the-migration-assistance-tool }
-You can specify a name for your Cordova project directory when you migrate projects with the migration assistance tool. If you do not provide a name, the default name is *app_name-app_id-version*.
-
-#### Usability improvements to the Migration Assistance tool
-{: #usability-improvements-to-the-migration-assistance-tool }
-Made the following changes to improve the usability of the Migration Assistance tool:
-
-* The Migration Assistance tool scans HTML files and JavaScript files.
-* The scan report opens in your default browser automatically after the scan is finished.
-* The *--out* flag is optional. The working directory is used if it is not specified.
-* When the *--out* flag is specified and the directory does not exist, the directory is created.
-
-### Adapters
-{: #adapters }
-#### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
-{: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-You can use {{ site.data.keys.mf_cli }} to push Java and JavaScript adapter configurations to the {{ site.data.keys.mf_server }} and pull adapter configurations from the {{ site.data.keys.mf_server }}.
-
-### Application Center
-{: #application-center}
-
-Cordova based application center client is now available for iOS and Android.
--->

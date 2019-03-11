@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript-SQL-Adapter
-breadcrumb_title: SQL-Adapter
+breadcrumb_title: SQL Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Adapter-Maven-Projekt herunterladen

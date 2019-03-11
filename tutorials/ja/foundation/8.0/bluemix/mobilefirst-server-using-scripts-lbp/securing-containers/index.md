@@ -294,8 +294,8 @@ LDAP リポジトリーにユーザーとグループを作成します。 グ�
     --- | ---
     `host` および `port` | ローカル LDAP サーバーのホスト名 (IP アドレス) およびポート番号。
     `baseDN` | 特定の組織に関するすべての詳細をキャプチャーする、LDAP 内のドメイン・ネーム (DN)。
-    `bindDN="uid=admin,ou=system"	` | LDAP サーバーのバインディング詳細。例えば、Apache Directory Service の場合のデフォルト値は `uid=admin,ou=system` です。
-    `bindPassword="secret"	` | LDAP サーバーのバインディング・パスワード。例えば、Apache Directory Service の場合のデフォルト値は `secret` です。
+    `bindDN="uid=admin,ou=system"	` | LDAP サーバーのバインディング詳細。 例えば、Apache Directory Service の場合のデフォルト値は `uid=admin,ou=system` です。
+    `bindPassword="secret"	` | LDAP サーバーのバインディング・パスワード。 例えば、Apache Directory Service の場合のデフォルト値は `secret` です。
     `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 認証および許可でディレクトリー・サービス (Apache など) に照会する際に使用するカスタム・フィルター。
 
 2. `appSecurity-2.0` および `ldapRegistry-3.0` で以下のフィーチャーが有効になっていることを確認します。

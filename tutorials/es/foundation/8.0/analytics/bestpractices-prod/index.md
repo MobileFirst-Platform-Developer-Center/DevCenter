@@ -73,7 +73,7 @@ De esta forma, el usuario puede reducir la carga en los nodos cuando ve la conso
 * Aumentar el número permitido de descriptores de archivos abiertos de 32k a 64k.
 * Aumentar los recuentos de correlación de memoria virtual.
 
->**Nota:** compruebe la documentación correspondiente para el sistema operativo. 
+>**Nota:** compruebe la documentación correspondiente para el sistema operativo.
 
 ### Ajuste del servidor de aplicaciones
 {: #app-server-tuning }
@@ -156,11 +156,11 @@ Los parámetros de ajuste de Elasticsearch se deben tener en cuenta para un ajus
 
 En MobileFirst Platform Foundation v8.0, las sesiones de aplicaciones se incrementan/graban cuando la aplicación se traslada desde el segundo plano al primer plano.  
 
-La captura de AppSessions se habilita añadiendo escuchas para los sucesos de ciclo de vida. Los SDK nativos proporcionan API adecuadas para añadir estos escuchas. Sin embargo, en el caso de Cordova, no hay ninguna API de JavaScript para añadir estos escuchas de sucesos de ciclo de vida. En su lugar, los escuchas se tienen que añadir mediante API de plataformas nativas, incluso para las aplicaciones Cordova.
+La captura de AppSessions se habilita añadiendo escuchas para los sucesos de ciclo de vida. Los SDK nativos proporcionan API adecuadas para añadir estos escuchas.   Sin embargo, en el caso de Cordova, no hay ninguna API de JavaScript para añadir estos escuchas de sucesos de ciclo de vida. En su lugar, los escuchas se tienen que añadir mediante API de plataformas nativas, incluso para las aplicaciones Cordova.
 
 Extracto de la [documentación](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/analytics/analytics-api/#client-lifecycle-events):
 
-<blockquote>Una vez que configurado el SDK de analíticas, las sesiones de la aplicación empiezan a ser grabadas en el dispositivo del usuario. Se graba una sesión en MobileFirst Analytics cuando la aplicación se pasa desde el primer plano al segundo plano, lo que crea una sesión en Analytics Console. Tan pronto como el dispositivo está configurado para registrar sesiones y envía los datos, puede ver Analytics Console cumplimentado con datos, tal como se muestra a continuación.</blockquote>
+<blockquote>Una vez que configurado el SDK de analíticas, las sesiones de la aplicación empiezan a ser grabadas en el dispositivo del usuario. Se graba una sesión en MobileFirst Analytics cuando la aplicación se pasa desde el primer plano al segundo plano, lo que crea una sesión en Analytics Console.  Tan pronto como el dispositivo está configurado para registrar sesiones y envía los datos, puede ver Analytics Console cumplimentado con datos, tal como se muestra a continuación.</blockquote>
 
 Por ejemplo, para una aplicación Cordova en la plataforma iOS (iOS), es obligatorio añadir lo siguiente bajo `AppDelegate.m`:
 ```

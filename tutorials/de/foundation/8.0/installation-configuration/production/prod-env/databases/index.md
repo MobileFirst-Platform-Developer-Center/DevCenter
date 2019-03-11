@@ -314,7 +314,7 @@ Führen Sie die folgenden DB2-Befehle als Benutzer mfpuser aus:
 ```sql
 db2 CONNECT TO MFPDATA
 db2 SET CURRENT SCHEMA = 'MFPSCM'
-db2 -vf MFP-Installationsverzeichnis/MobileFirstServer/databases/create-mfp-admin-db2.sql
+db2 -vf MFP-Installationsverzeichnis/MobileFirstServer/databases/create-mfp-admin-db2.sql -t
 db2 -vf MFP-Installationsverzeichnis/MobileFirstServer/databases/create-configservice-db2.sql -t
 db2 -vf MFP-Installationsverzeichnis/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf MFP-Installationsverzeichnis/PushService/databases/create-push-db2.sql -t

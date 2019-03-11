@@ -3,7 +3,7 @@ layout: tutorial
 title: IBM Cloud Private에서 MobileFirst Server 설정
 breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -11,7 +11,7 @@ weight: 2
 {{ site.data.keys.prod_icp }}에서 {{ site.data.keys.mf_server }} 인스턴스 및 {{ site.data.keys.mf_analytics }} 인스턴스를 구성하려면 아래의 지시사항을 수행하십시오.
 
 * IBM Cloud Private Kubernetes Cluster를 설정하십시오.
-* 필수 도구(Docker, IBM Cloud CLI( bx ), {{ site.data.keys.prod_icp }}(icp) IBM Cloud CLI를 위한 플러그인(bx pr), Kubernetes CLI(kubectl)) 및 Helm CLI(helm))를 사용하여 호스트 컴퓨터를 설정하십시오.
+* 필수 도구인 Docker CLI, IBM Cloud CLI(`cloudctl`), Kubernetes CLI (`kubectl`) 및 Helm CLI(`helm`)를 사용하여 호스트 컴퓨터를 설정하십시오.
 * {{ site.data.keys.prod_icp }}용 {{ site.data.keys.product_full }}의 Passport Advantage 아카이브(PPA 아카이브)를 다운로드하십시오.
 * {{ site.data.keys.prod_icp }} 클러스터의 PPA 아카이브를 로드하십시오.
 * 마지막으로 {{ site.data.keys.mf_analytics }}(선택사항) 및 {{ site.data.keys.mf_server }}를 구성 및 설치하십시오.
@@ -30,17 +30,16 @@ weight: 2
 ## 전제조건
 {: #prereqs}
 
-{{ site.data.keys.prod_icp }} 계정이 있어야 하며 [{{ site.data.keys.prod_icp }} 클러스터 설치](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html)의 문서에 따라 Kubernetes Cluster를 설정해야 합니다..
+{{ site.data.keys.prod_icp }} 계정이 있어야 하며 [{{ site.data.keys.prod_icp }} 클러스터 설치](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup)의 문서에 따라 Kubernetes Cluster를 설정해야 합니다..
 
 컨테이너 및 이미지를 관리하려면 {{ site.data.keys.prod_icp }} 설치의 일부로 호스트 시스템에 다음 도구를 설치해야 합니다.
 
 * Docker
-* IBM Cloud CLI(`bx`)
-* {{ site.data.keys.prod_icp }}(ICP) IBM Cloud CLI를 위한 플러그인( `bx pr` )
+* IBM Cloud CLI(`cloudctl`)
 * Kubernetes CLI(`kubectl`)
 * Helm(`helm`)
 
-CLI를 사용하여 {{ site.data.keys.prod_icp }} 클러스터에 액세스하려면 *kubectl* 클라이언트를 구성해야 합니다. [자세히 알아보기](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_cluster/cfc_cli.html).
+CLI를 사용하여 {{ site.data.keys.prod_icp }} Cluster에 액세스하려면 *kubectl* 클라이언트를 구성해야 합니다. [자세히 알아보기](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
 
 ## IBM Mobile Foundation Passport Advantage 아카이브 다운로드
 {: #download-the-ibm-mfpf-ppa-archive}
@@ -55,22 +54,22 @@ CLI를 사용하여 {{ site.data.keys.prod_icp }} 클러스터에 액세스하�
 
 PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려면 아래에 제공된 단계를 따르십시오.
 
-  1. IBM Cloud ICP 플러그인(`bx pr`)을 사용하여 클러스터에 로그인하십시오.
-      >{{ site.data.keys.prod_icp }} 문서의 [CLI 명령 참조서](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html)를 확인하십시오.
+  1. IBM Cloud ICP 플러그인(`cloudctl`)을 사용하여 클러스터에 로그인하십시오.
+      >{{ site.data.keys.prod_icp }} 문서의 [CLI 명령 참조서](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html)를 확인하십시오.
 
       예를 들어, 다음과 같습니다.
       ```bash
-      bx pr login -a https://ip:port
+      cloudctl login -a https://ip:port
       ```
       선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
 
   2. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
       ```
-      bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       {{ site.data.keys.product }}의 *archive_name*은 IBM Passport Advantage에서 다운로드한 PPA 아카이브의 이름입니다.
 
-      이전 단계를 수행하고 `bx pr`의 기본값으로 클러스터 엔드포인트를 작성한 경우 `--clustername`은 무시할 수 있습니다.
+      이전 단계를 수행하고 클러스터 엔드포인트를 `cloudctl`의 기본값으로 설정한 경우 `--clustername`은 무시할 수 있습니다.
 
   3. PPA 아카이브를 로드한 후 저장소를 동기화하면 **카탈로그**의 Helm Charts 목록이 표시됩니다. {{ site.data.keys.prod_icp }} 관리 콘솔에서 이 작업을 완료할 수 있습니다.
       * **관리 > 저장소**를 선택하십시오.
@@ -114,7 +113,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 {: #env-mf-analytics }
 아래의 표에서는 {{ site.data.keys.prod_icp }}의 {{ site.data.keys.mf_analytics }}에서 사용되는 환경 변수를 제공합니다.
 
-| 규정자 | 매개변수 | 정의 | 허용값 |
+| 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
 | arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
 | image | pullPolicy | 이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
@@ -131,8 +130,8 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 | jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} Operational Analytics 사용자 정의를 위해 지정할 JNDI 특성 | 쉼표로 구분된 이름 값 쌍을 제공하십시오. |
 | resources |limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. | 기본값은 **1000m**입니다. |
-|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 양의 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **2048Mi**입니다. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의 값입니다. | 기본값은 **1000m**입니다. |
+|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 양의 기본값은 *한계*(지정된 경우)이거나 구현 정의 값입니다. | 기본값은 **2048Mi**입니다. |
 | persistence |existingClaimName | 기존 지속성 볼륨 클레임(PVC)의 이름 |  |
 | logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
 |  | consoleLogLevel | 컨테이너 로그로 이동하는 메시지 유형을 제어합니다. | 기본값은 **info**입니다. |
@@ -143,7 +142,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 {: #env-mf-server }
 아래의 표에서는 {{ site.data.keys.prod_icp }}의 {{ site.data.keys.mf_server }}에서 사용되는 환경 변수를 제공합니다.
 
-| 규정자 | 매개변수 | 정의 | 허용값 |
+| 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
 | arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
 | image | pullPolicy | 이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
@@ -165,10 +164,10 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 |  | analyticsAdminPassword | Analytics 관리자의 비밀번호 |  |
 | keystores | keystoresSecretName | 키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts)을 참조하십시오. |  |
 | jndiConfigurations | mfpfProperties | 배치 사용자 정의를 위한 {{ site.data.keys.prod_adj }} Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍입니다. |
-| resources | limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
+| resources |limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의된 값입니다. | 기본값은 **1000m**입니다. |
-|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 구현 정의된 값입니다. | 기본값은 **2048Mi**입니다. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의 값입니다. | 기본값은 **1000m**입니다. |
+|  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 구현 정의 값입니다. | 기본값은 **2048Mi**입니다. |
 | logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
 |  | consoleLogLevel | 컨테이너 로그로 이동하는 메시지 유형을 제어합니다. | 기본값은 **info**입니다. |
 |  | consoleSource | 컨테이너 로그에 기록되는 소스를 지정합니다. 여러 소스의 경우 쉼표로 구분된 목록을 사용합니다. | 기본값은 **message**, **trace**, **accessLog**, **ffdc**입니다. |
@@ -203,7 +202,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 {{ site.data.keys.prod_icp }} 관리 콘솔에서 IBM {{ site.data.keys.mf_server }}를 설치 및 구성하려면 아래의 단계를 따르십시오.
 
 1. 관리 콘솔에서 **카탈로그**로 이동하십시오.
-2. **ibm-mfpf-server-prod** helm chart를 선택하십시오.
+2. **ibm-mfpf-server-prod** helm 차트를 선택하십시오.
 3. **구성**을 클릭하십시오.
 4. 환경 변수를 제공하십시오. 자세한 정보는 [{{ site.data.keys.mf_server }}에 대한 환경 변수](#env-mf-server)를 참조하십시오.
 5. **라이센스 계약**에 동의하십시오.
@@ -226,7 +225,7 @@ IBM {{ site.data.keys.mf_analytics }} Console은 `<protocol>://<ip_address>:<por
 프로토콜은 `http` 또는 `https`일 수 있습니다. 또한 **NodePort** 배치의 경우 포트는 **NodePort**가 됩니다. 설치된 {{ site.data.keys.prod_adj }} Chart의 ip_address 및 **NodePort**를 가져오려면 아래의 단계를 따르십시오.
 
 1. {{ site.data.keys.prod_icp }} 관리 콘솔에서 **워크로드 > Helm 릴리스**를 선택하십시오.
-2. helm chart 설치의 *릴리스 이름*을 클릭하십시오.
+2. helm 차트 설치의 *릴리스 이름*을 클릭하십시오.
 3. **참고** 섹션을 확인하십시오.
 
 >**참고:** 포트 9600은 Kubernetes 서비스에서 내부적으로 노출되며 {{ site.data.keys.prod_adj }} Analytics 인스턴스가 전송 포트로 사용됩니다.
@@ -239,7 +238,7 @@ IBM {{ site.data.keys.mf_analytics }} Console은 `<protocol>://<ip_address>:<por
 ## {{ site.data.keys.prod_adj }} Helm Charts 및 릴리스 업그레이드
 {: #upgrading-mf-helm-charts}
 
-helm charts/릴리스 업그레이드 방법에 대한 지시사항은 [번들 제품 업그레이드](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/upgrade_helm.html)를 참조하십시오.
+helm 차트/릴리스 업그레이드 방법에 대한 지시사항은 [번들 제품 업그레이드](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/upgrade_helm.html)를 참조하십시오.
 
 ### Helm 릴리스 업그레이드를 위한 샘플 시나리오
 

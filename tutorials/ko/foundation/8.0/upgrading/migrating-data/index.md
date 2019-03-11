@@ -51,7 +51,7 @@ Bluelist 어댑터 샘플의 두 가지 기본 기능은 다음과 같습니다.
 * Cloudant 세션 쿠키에 대해 {{ site.data.keys.product_adj }} OAuth 토큰 교환
 * Bluelist 샘플에서 Cloudant에 대해 필요한 관리 요청 수행
 
-샘플은 보안 서버에서 관리 액세스가 필요한 API 요청을 수행하는 방법을 설명합니다. 관리자 신임 정보를 모바일 디바이스에 배치할 수도 있지만 모바일 디바이스로부터의 액세스를 제한하는 것이 더 좋습니다.
+샘플은 보안 서버에서 관리 액세스가 필요한 API 요청을 수행하는 방법을 설명합니다. 관리자 인증 정보를 모바일 디바이스에 배치할 수도 있지만 모바일 디바이스로부터의 액세스를 제한하는 것이 더 좋습니다.
 
 Bluelist 샘플은 {{ site.data.keys.product_adj }} 보안을 Cloudant 보안과 통합합니다. 어댑터 샘플은 {{ site.data.keys.product_adj }} ID를 Cloudant ID에 맵핑합니다. 모바일 디바이스는 비관리 API 요청을 수행하기 위해 Cloudant 세션 쿠키를 수신합니다. 샘플은 Couch 보안 모델을 사용합니다.
 
@@ -65,8 +65,8 @@ Bluelist 샘플은 {{ site.data.keys.product_adj }} 보안을 Cloudant 보안과
 2. 모바일 디바이스가 어댑터에서 **/enroll** 엔드포인트를 호출합니다.
 3. 어댑터 샘플이 {{ site.data.keys.mf_server }}에 대해 {{ site.data.keys.product_adj }} OAuth 토큰을 유효성 검증합니다.
 4. 유효한 경우 Cloudant에 대해 관리 API 요청을 수행합니다. 샘플은 **_users** 데이터베이스에서 기존 Cloudant 사용자를 확인합니다.
-    * 해당 사용자가 존재하는 경우 **_users** 데이터베이스에서 Cloudant 사용자 신임 정보를 검색하십시오.
-    * 새 사용자가 전달된 경우, Coudant 관리자 신임 정보를 사용하여 새 Cloudant 사용자를 작성하고 **_users** 데이터베이스에 저장하십시오.
+    * 해당 사용자가 존재하는 경우 **_users** 데이터베이스에서 Cloudant 사용자 인증 정보를 검색하십시오.
+    * 새 사용자가 전달된 경우, Coudant 관리자 인증 정보를 사용하여 새 Cloudant 사용자를 작성하고 **_users** 데이터베이스에 저장하십시오.
     * 사용자를 위한 고유 데이터베이스 이름을 작성하고 그 이름으로 Cloudant에 원격 데이터베이스를 작성하십시오.
     * 새로 작성한 데이터베이스를 읽고 쓰기 위한 Cloudant 사용자 권한을 부여하십시오.
     * Bluelist 애플리케이션의 필수 색인을 작성하십시오.

@@ -28,19 +28,19 @@ MobileFirst Application Center について詳しくは、[MobileFirst Applicati
 ## 前提条件
 {: #prereqs}
 
-{{ site.data.keys.prod_icp }} アカウントを取得し、[{{ site.data.keys.prod_icp }} の資料](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html)に従って Kubernetes クラスターをセットアップしておく必要があります。
+{{ site.data.keys.prod_icp }} アカウントを取得し、[{{ site.data.keys.prod_icp }} の資料](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup)に従って Kubernetes クラスターをセットアップしておく必要があります。
 
 {{ site.data.keys.prod_icp }} に {{ site.data.keys.mf_app_center }} チャートをインストールし、構成するために、事前構成されたデータベースが必要です。 {{site.data.keys.mf_app_center }} Helm チャートを構成するには、データベース情報を指定する必要があります。 {{site.data.keys.mf_app_center }} に必要な表がこのデータベース内に作成されます。
 
-> サポートされるデータベース: DB2。
+> サポートされるデータベース: DB2、Oracle、MySQL、PostgreSQL。
 
 コンテナーおよびイメージを管理するために、{{site.data.keys.prod_icp }} セットアップの一環として、以下のツールをホスト・マシンにインストールする必要があります。
 
 * Docker
-* IBM Cloud CLI (`bx`)
-* {{ site.data.keys.prod_icp }} (ICP) Plugin for IBM Cloud CLI (`bx pr`)
+* IBM Cloud CLI (`cloudctl`)
 * Kubernetes CLI (`kubectl`)
 * Helm (`helm`)
+
 
 ## IBM {{ site.data.keys.mf_app_center }} パスポート・アドバンテージ・アーカイブのダウンロード
 {: #download-the-ibm-mac-ppa-archive}
@@ -54,26 +54,26 @@ MobileFirst Application Center について詳しくは、[MobileFirst Applicati
 ## {{ site.data.keys.prod_icp }} での IBM {{ site.data.keys.mf_app_center }} PPA アーカイブのロード
 {: #load-the-ibm-mfpf-appcenter-ppa-archive}
 
-{{site.data.keys.product }} の PPA アーカイブをロードする前に、Docker をセットアップする必要があります。 [こちら](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html)の説明を参照してください。
+{{site.data.keys.product }} の PPA アーカイブをロードする前に、Docker をセットアップする必要があります。 [こちら](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html)の説明を参照してください。
 
 以下のステップに従って、PPA アーカイブを {{site.data.keys.prod_icp }} クラスターにロードします。
 
-  1. IBM Cloud ICP plugin (`bx pr`) を使用してクラスターにログインします。
-      >{{ site.data.keys.prod_icp }} の資料で、[CLI コマンド解説書](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html)を参照してください。
+  1. IBM Cloud ICP プラグイン (`cloudctl`) を使用してクラスターにログインします。
+      >{{ site.data.keys.prod_icp }} 資料で、[CLI コマンド・リファレンス](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html)を参照してください。
 
       以下に例を示します。
       ```bash
-      bx pr login -a https://<ip>:<port>
+      cloudctl login -a https://<ip>:<port>
       ```
       オプションで、SSL 検証をスキップする場合は、上記のコマンドでフラグ `--skip-ssl-validation` を使用します。 このオプションを使用すると、クラスター・エンドポイントの `username` と `password` の入力を求めるプロンプトが出されます。 ログインに成功したら、以下のステップに進んでください。
 
   2. 以下のコマンドを使用して、{{ site.data.keys.product }} の PPA アーカイブをロードします。
       ```
-      bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       {{ site.data.keys.product }} の *archive_name* は、IBM パスポート・アドバンテージからダウンロードした PPA アーカイブの名前です。
 
-      前のステップに従い、クラスター・エンドポイントを `bx pr` のデフォルトにした場合、`--clustername` は無視できます。
+      前のステップに従い、クラスター・エンドポイントを `cloudctl` のデフォルトにした場合、`--clustername` は無視できます。
 
   3. PPA アーカイブをロードした後、リポジトリーを同期化します。これにより、Helm チャートが**カタログ**内に確実にリストされるようになります。 これは、{{site.data.keys.prod_icp }} 管理コンソールで行うことができます。<br/>
      * **「管理」>「リポジトリー」**を選択します。

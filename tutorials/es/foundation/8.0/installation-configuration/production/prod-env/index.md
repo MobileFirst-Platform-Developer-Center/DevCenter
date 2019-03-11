@@ -31,7 +31,7 @@ Configure la base de datos que utilizarán los componentes de MobileFirst Server
 
 Temas sobre las topologías de servidor posibles para los componentes y los flujos de red de MobileFirst Server. Siga esta [guía de aprendizaje para obtener información sobre las posibles topologías de servidor y los flujos de red](topologies).
 
-## Instalación de MobileFirst Server en un servidor de aplicaciones 
+## Instalación de MobileFirst Server en un servidor de aplicaciones
 {: #install-to-appserver }
 
 La instalación de los componentes se puede realizar utilizando Tareas Ant, la Herramienta de configuración del servidor, o manualmente. Descubra el requisito previo y los detalles sobre el proceso de instalación para que pueda instalar los componentes en el servidor de aplicaciones satisfactoriamente. Siga esta [guía de aprendizaje para saber cómo se pueden instalar los componentes de MobileFirst en el servidor de aplicaciones](appserver).

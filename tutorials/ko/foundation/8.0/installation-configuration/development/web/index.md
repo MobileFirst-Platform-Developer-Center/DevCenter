@@ -22,12 +22,12 @@ weight: 6
 
 #### 다음으로 이동
 {: #jump-to }
-- [전제조건](#prerequisites)
+- [선행 조건](#prerequisites)
 - [WebSphere Liberty 프로파일을 사용하여 웹 애플리케이션 자원 제공](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
 - [Node.js 사용](#using-nodejs)
 - [다음 단계](#next-steps)
 
-## 전제조건
+## 선행 조건
 {: #prerequisites }
 -   {: #web-app-supported-browsers }
     다음 브라우저 버전용 웹 애플리케이션이 지원됩니다. 버전 번호는 각 브라우저의 완전히 지원되는 버전 중 가장 빠른 버전을 나타냅니다.

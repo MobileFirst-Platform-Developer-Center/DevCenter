@@ -1,4 +1,4 @@
----
+﻿---
 layout: tutorial
 title: Glossaire
 weight: 8
@@ -114,8 +114,7 @@ Service de sécurité qui fournit la preuve qu'un utilisateur d'un ordinateur es
 
 ### Autorité de certification
 {: #ca--certificate-authority-ca }
-Organisation ou société tiers certifiée émettant les certificats numériques. L'autorité de certification vérifie l'identité des personnes auxquelles
-est accordé le certificat unique. Voir aussi [Certificat](#certificate).
+Organisation ou société tierce certifiée émettant les certificats numériques. L'autorité de certification vérifie l'identité des personnes auxquelles est accordé le certificat unique. Voir aussi [Certificat](#certificate).
 
 ## B
 {: #b }
@@ -193,7 +192,7 @@ Copie identique de la dernière version approuvée d'un composant dotée d'un no
 
 ### Cluster
 {: #cluster }
-Série de systèmes complets qui, ensemble, mettent à disposition une fonctionnalité de calcul unifiée.
+Série de systèmes complets qui, ensemble, mettent à disposition une capacité de calcul unifiée.
 
 ### Codé DER
 {: #der-encoded }
@@ -269,7 +268,7 @@ Processus consistant, pour un propriétaire, à enregistrer son appareil comme a
 {: #entity }
 Utilisateur, groupe ou ressource défini sur un service de sécurité.
 
-### environment
+### Environnement
 {: #environment }
 Instance caractéristique d'une configuration de matériel ou de logiciel.
 
@@ -317,8 +316,7 @@ Code exécutable qui permet à une couche logicielle de niveau inférieur d'appe
 {: #g }
 ### Géocodage
 {: #geocoding }
-Processus d'identification de géocodes à partir de marqueurs géographiques plus traditionnels (adresses, codes postaux etc...). Par exemple, un repère peut être situé à l'intersection de deux rues
-mais le géocode de ce repère représente une séquence de numéros.
+Processus d'identification de géocodes à partir de marqueurs géographiques plus traditionnels (adresses, codes postaux etc...). Par exemple, un repère peut être situé à l'intersection de deux rues mais le géocode de ce repère représente une suite de nombres.
 
 ### Géolocalisation
 {: #geolocation }
@@ -353,9 +351,7 @@ acceptée par le serveur proxy et l'intercepteur.
 
 ### JMX/Java Management Extensions (JMX)
 {: #jmx--java-management-extensions-jmx }
-Mode de gestion de et par la technologie Java. JMX est une extension libre et universelle du langage de
-programmation Java pour des opérations de gestion, déployables dans
-tous les secteurs d'activité.
+Mode de gestion de et par la technologie Java. JMX est une extension libre et universelle du langage de programmation Java destinée à la gestion et déployable dans tous les secteurs d'activité.
 
 ## L
 {: #l }
@@ -408,7 +404,7 @@ Interface Web utilisée pour contrôler et gérer les environnements d'exécutio
 Do not translate "MobileFirst Server" in the term above (site.data.keys.mf_server keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-Composant {{ site.data.keys.product_adj }} qui gère la sécurité, les connexions de back end, les notifications de commande push, la gestion des applications mobiles et les analyses. Le serveur {{ site.data.keys.mf_server }} est un ensemble d'applications qui s'exécutent sur un serveur d'applications. Il fait office de conteneur d'exécution pour les environnements d'exécution {{ site.data.keys.product_adj }}.
+Composant {{ site.data.keys.product_adj }} qui gère la sécurité, les connexions de back end, les notifications push, la gestion des applications mobiles et les analyses. Le serveur {{ site.data.keys.mf_server }} est un ensemble d'applications qui s'exécutent sur un serveur d'applications. Il fait office de conteneur d'exécution pour les environnements d'exécution {{ site.data.keys.product_adj }}.
 
 ### Modèle
 {: #template }
@@ -437,13 +433,13 @@ Dans un processus, occurrence pouvant déclencher une action. Les notifications 
 {: #tag-based-notification }
 Notification à destination des appareils ayant souscrit à une balise spécifique. Des balises sont utilisées pour représenter des rubriques susceptibles d'intéresser un utilisateur. Voir aussi Notification de diffusion.
 
-### Notification de commande push
-{: #push-notification }
-Alerte signalant une modification ou une mise à jour au niveau d'une icône d'application mobile.
-
 ### Notification de diffusion
 {: #broadcast-notification }
 Notification à destination de tous les utilisateurs d'une application {{ site.data.keys.product_adj }} spécifique. Voir aussi Notification basée sur des balises.
+
+### Notification push
+{: #push-notification }
+Alerte signalant une modification ou une mise à jour au niveau d'une icône d'application mobile.
 
 ## O
 {: #o }

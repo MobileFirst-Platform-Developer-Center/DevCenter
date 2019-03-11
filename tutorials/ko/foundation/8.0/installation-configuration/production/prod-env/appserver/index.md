@@ -520,7 +520,7 @@ Java EE 6 기능의 특정 레벨을 강제 실행하려면 `<websphereapplicati
 
 #### 데이터 소스 JDBC 특성 지정
 {: #specify-data-source-jdbc-properties }
-JDBC 연결에 대한 특성을 지정할 수 있습니다. `<database>` 요소의 `<property>` 요소를 사용하십시오. 이 요소는 **configureDatabase**, **installmobilefirstadmin**, **installmobilefirstruntime** 및 **installmobilefirstpush** Ant 태스크에서 사용할 수 있습니다. 예를 들어, 다음과 같습니다.
+JDBC 연결에 대한 특성을 지정할 수 있습니다. `<property>` 요소의 `<property>` 요소를 사용하십시오. 이 요소는 **configureDatabase**, **installmobilefirstadmin**, **installmobilefirstruntime** 및 **installmobilefirstpush** Ant 태스크에서 사용할 수 있습니다. 예를 들어, 다음과 같습니다.
 
 ```xml
 <configuredatabase kind="MobileFirstAdmin">
