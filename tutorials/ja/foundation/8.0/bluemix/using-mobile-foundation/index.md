@@ -13,13 +13,13 @@ weight: 1
 
 {{ site.data.keys.mf_bm_short }} サービスには、以下のプラン・オプションがあります。
 
-1. **開発者**: このプランでは、{{ site.data.keys.mfound_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。 Liberty for Java の料金は別に請求され、このプランには含まれていません。 このプランでは外部データベースの使用がサポートされておらず、開発とテストに制限されています。 Mobile Analytics は追加料金なしで提供され、イベントは 6 カ月間保持されます。{{ site.data.keys.mf_bm_short }} サーバーの*開発者プラン*のインスタンスでは、開発およびテスト用に任意の数のモバイル・アプリケーションを登録できます。ただし、接続デバイスの数は 1 日当たり 10 台に制限されます。<!--This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.-->
+1. **開発者**: このプランでは、{{ site.data.keys.mfound_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。 Liberty for Java の料金は別に請求され、このプランには含まれていません。 このプランでは外部データベースの使用がサポートされておらず、開発とテストに制限されています。 Mobile Analytics は追加料金なしで提供され、イベントは 6 カ月間保持されます。 {{ site.data.keys.mf_bm_short }} サーバーの*開発者プラン*のインスタンスでは、開発およびテスト用に任意の数のモバイル・アプリケーションを登録できます。ただし、接続デバイスの数は 1 日当たり 10 台に制限されます。<!--This plan also includes {{ site.data.keys.mf_analytics_service }} service instance. If your usage exceeds the Mobile Analytics free tier entitlements, then charges apply as per Mobile Analytics basic plan.-->
 
     > **注:** 「開発者」プランでは、永続的なデータベースは提供されません。したがって、[トラブルシューティング・セクション](#troubleshooting)にある説明のとおりに、必ず構成をバックアップしてください。
 
-2. **デバイスごとの商用**: このプランを使用すると、ユーザーは、Mobile Foundation モバイル・アプリケーション上で最大 5 つのモバイル・アプリケーションを実稼働で作成、テスト、実行できます。Mobile Analytics は追加料金なしで提供され、イベントは 6 カ月間保持されます。このプランは、大規模なデプロイメントと高可用性をサポートします。 このプランでは、別途作成および請求される、IBM DB2 (**ライト**・プラン以外のプラン) のインスタンスまたは Compose for PostgreSQL サービスが必要です。 このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが *Liberty for Java* 上でプロビジョンされます。*Liberty for Java* の料金は別途請求され、このプランの一部には含まれません。<!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
+2. **デバイスごとの商用**: このプランを使用すると、ユーザーは、Mobile Foundation モバイル・アプリケーション上で最大 5 つのモバイル・アプリケーションを実稼働で作成、テスト、実行できます。 Mobile Analytics は追加料金なしで提供され、イベントは 6 カ月間保持されます。 このプランは、大規模なデプロイメントと高可用性をサポートします。 このプランでは、別途作成および請求される、IBM DB2 (**ライト**・プラン以外のプラン) のインスタンスまたは Compose for PostgreSQL サービスが必要です。 このプランでは、最小 1 GB の 2 ノードから開始して、Mobile Foundation サーバーが *Liberty for Java* 上でプロビジョンされます。 *Liberty for Java* の料金は別途請求され、このプランの一部には含まれません。<!--Optionally, you can add  Mobile Analytics service instance. The Mobile Analytics service is billed separately.-->
 
-3. **1 つの商用アプリケーション**: このプランを使用すると、ユーザーは、Mobile Foundation 上でモバイル・アプリケーションを実稼働で作成、テスト、実行できます。Mobile Analytics は追加料金なしで提供され、イベントは 6 カ月間保持されます。課金は、日々の接続されたクライアント・デバイスの数に基づきます。このプランは、大規模なデプロイメントと高可用性をサポートします。 このプランでは、別途作成および請求される、IBM DB2 (**ライト**・プラン以外のプラン) のインスタンスまたは Compose for PostgreSQL サービスが必要です。 このプランでは、最小 1 GB の 2 ノードから開始して、*Liberty for Java* 上に Mobile Foundation サーバーが作成されます。*Liberty for Java* の料金は別途請求され、このプランの一部には含まれません。<!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
+3. **1 つの商用アプリケーション**: このプランを使用すると、ユーザーは、Mobile Foundation 上でモバイル・アプリケーションを実稼働で作成、テスト、実行できます。 Mobile Analytics は追加料金なしで提供され、イベントは 6 カ月間保持されます。 課金は、日々の接続されたクライアント・デバイスの数に基づきます。 このプランは、大規模なデプロイメントと高可用性をサポートします。 このプランでは、別途作成および請求される、IBM DB2 (**ライト**・プラン以外のプラン) のインスタンスまたは Compose for PostgreSQL サービスが必要です。 このプランでは、最小 1 GB の 2 ノードから開始して、*Liberty for Java* 上に Mobile Foundation サーバーが作成されます。 *Liberty for Java* の料金は別途請求され、このプランの一部には含まれません。<!--Optionally, you can add {{ site.data.keys.mf_analytics_service }} service instance by clicking the **Add Analytics** button. The Mobile Analytics service is billed separately.-->
 
 4. **開発者商用**: このプランでは {{ site.data.keys.mfound_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。ユーザーは、このプランを使用することで任意の数のモバイル・アプリケーションを開発およびテストできます。 このプランでは、別途作成および請求される、**DB2** (**ライト**・プラン以外のプラン) サービス・インスタンスが必要です。 DB2 サービス・インスタンスは、別途作成および請求されます。 このプランはサイズ制限があり、実動ではなく、チーム・ベースの開発アクティビティーとテスト・アクティビティーに使用することを目的としています。 料金は、ご使用の環境の合計サイズによって異なります。<!--Optionally, you can add a {{ site.data.keys.mf_analytics_service }} service by clicking the **Add Analytics** button.-->
 >_**開発者商用** プランは、非推奨になりました。_
@@ -178,7 +178,7 @@ User can delete current container by clicking on **Delete Analytics** button fro
 ## Mobile Foundation サービス・プランのマイグレーション
 {: #migrating-mobile-foundation-service-plan }
 
-非推奨プランを使用して作成された Mobile Foundation インスタンスは、新しいプランに更新する必要があります。インスタンスの使用状況に応じて、プランの更新が必要になる場合もあります。
+非推奨プランを使用して作成された Mobile Foundation インスタンスは、新しいプランに更新する必要があります。 インスタンスの使用状況に応じて、プランの更新が必要になる場合もあります。
 
 ### シナリオ例: 「デバイスごとの商用」プランから「1 つの商用アプリケーション」プランへのマイグレーション
 
@@ -188,8 +188,8 @@ User can delete current container by clicking on **Delete Analytics** button fro
 3. リストされた料金プランから、「1 つの商用アプリケーション」を選択します。
    ![新しい Mobile Foundation プラン](new-plan.png)
 4. **「保存」**ボタンをクリックし、プランのマイグレーションを確認します。
-     これで、「1 つの商用アプリケーション」へのマイグレーションが完了し、既存のデータはすべて保持されます。請求は変更され、ダウン時間はありません。
-5. プランのマイグレーション後、正しい構成を有効にするため、サービス・ダッシュボードから Mobile Foundation インスタンスを再作成する必要があります。この更新は短いダウン時間を必要とします。このダウン時間の計画を立てる必要があります。左側のナビゲーションで**「管理」**を選択し、**「再作成」**をクリックします。
+     これで、「1 つの商用アプリケーション」へのマイグレーションが完了し、既存のデータはすべて保持されます。 請求は変更され、ダウン時間はありません。
+5. プランのマイグレーション後、正しい構成を有効にするため、サービス・ダッシュボードから Mobile Foundation インスタンスを再作成する必要があります。 この更新は短いダウン時間を必要とします。 このダウン時間の計画を立てる必要があります。 左側のナビゲーションで**「管理」**を選択し、**「再作成」**をクリックします。
 
 >**注:** いずれかの非推奨プランを使用している場合、新しいプランにマイグレーションする必要があります。
 

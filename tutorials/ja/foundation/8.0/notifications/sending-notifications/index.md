@@ -26,6 +26,9 @@ weight: 3
     * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
     * [REST API](#rest-apis)
     * [通知のカスタマイズ](#customizing-notifications)
+* [APNs プッシュ通知の HTTP/2 サポート](#http2-support-for-apns-push-notifications)
+    * [HTTP/2 の有効化](#enabling-http2)
+    * [HTTP/2 の プロキシー・サポート](#proxy-support-for-http2)
 * [プロキシー・サポート](#proxy-support)
 * [次に使用するチュートリアル](#tutorials-to-follow-next)
 
@@ -404,6 +407,32 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 * 通知音、カスタム・ペイロード、アクション・キーのタイトル、通知タイプ、バッジの数値。
 
 ![プッシュ通知のカスタマイズ](customizing-push-notifications.png)
+
+## APNs プッシュ通知の HTTP/2 サポート
+{: #http2-support-for-apns-push-notifications}
+
+Apple Push Notification service (APNs) は、HTTP/2 ネットワーク・プロトコルに基づく新しい API をサポートします。 HTTP/2 のサポートには、以下に示すような多くの利点があります。
+
+* メッセージの長さが 2 KB から 4 KB に増加し、通知に余分なコンテンツを追加できるようになりました。
+* クライアントとサーバー間の複数の接続が不要になるため、スループットが向上します。
+* Universal Push Notification クライアント SSL 証明書をサポートします。
+
+>MobileFirst でのプッシュ通知は、レガシー TCP ソケット・ベースの通知とともに、HTTP/2 ベースの APNs プッシュ通知をサポートするようになりました。
+
+### HTTP/2 の有効化
+{: #enabling-http2}
+
+HTTP/2 ベースの通知は、JNDI プロパティーを使用して有効にすることができます。
+```xml
+<jndiEntry jndiName="imfpush/mfp.push.apns.http2.enabled" value= "true"/>
+```
+
+>**注:** 上記の JNDI プロパティーを追加すると、レガシー TCP ソケット・ベースの通知は使用されず、HTTP/2 ベースの通知のみが有効になります。
+
+### HTTP/2 の プロキシー・サポート
+{: #proxy-support-for-http2}
+
+HTTP/2 ベースの通知は、HTTP プロキシー経由で送信できます。 プロキシー経由での通知のルーティングを有効にするには、[ここ](#proxy-support)を参照してください。
 
 ## プロキシー・サポート
 {: #proxy-support }
