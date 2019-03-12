@@ -134,11 +134,11 @@ En los siguientes casos la validación de las licencias podría fallar cuando se
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
 Dependiendo del tipo de licencia de señal de una aplicación, se utilizan las siguientes características.
 
-|Tipo de licencia de señal |Nombre característica | 
+| Tipo de licencia de señal | Nombre característica | 
 |--------------------|--------------|
-|APPLICATION        | 	ibmmfpfa    | 
-|ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-|NON_PRODUCTION	|(sin característica) | 
+| APPLICATION        | 	ibmmfpfa    | 
+| ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
+| NON_PRODUCTION	| (sin característica) | 
 
 ## Integración con IBM License Metric Tool
 {: #integration-with-ibm-license-metric-tool }

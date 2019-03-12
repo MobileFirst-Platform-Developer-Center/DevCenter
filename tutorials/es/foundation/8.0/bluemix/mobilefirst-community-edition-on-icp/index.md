@@ -34,7 +34,7 @@ Para gestionar los contenedores y las imágenes, debe instalar las herramientas 
 
 * Docker
 * CLI de IBM Cloud (`cloudctl`)
-* Kubernetes CLI (`kubectl`)
+* CLI de Kubernetes (`kubectl`)
 * Helm (`helm`)
 
 Para acceder a {{ site.data.keys.prod_icp }} Cluster mediante CLI, debe configurar el cliente *kubectl*. [Más información](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
@@ -52,7 +52,7 @@ La tabla siguiente indica las variables de entorno utilizadas en IBM Mobile Foun
 | Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
 | arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
-| image | pullPolicy | Política de extracción de imágenes | Always, Never, o IfNotPresent.  <br/>El valor predeterminado es **IfNotPresent**. |
+| image | pullPolicy | Política de extracción de imágenes | Always, Never, o IfNotPresent. <br/>El valor predeterminado es **IfNotPresent**. |
 |  | repository | Nombre de imagen Docker | Nombre de la imagen Docker del servidor de {{ site.data.keys.prod_adj }}. |
 |  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
 | resources | limits.cpu | Describe la cantidad máxima de CPU permitidas | El valor predeterminado es 2000m. Consulte Kubernetes - [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
