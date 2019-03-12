@@ -28,19 +28,19 @@ For more information on MobileFirst Application Center, see [MobileFirst Applica
 ## Prerequisites
 {: #prereqs}
 
-You should have {{ site.data.keys.prod_icp }} account and must have set up the Kubernetes Cluster by following the [documentation in {{ site.data.keys.prod_icp }}](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html).
+You should have {{ site.data.keys.prod_icp }} account and must have set up the Kubernetes Cluster by following the [documentation in {{ site.data.keys.prod_icp }}](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
 
 You require a pre-configured database to install and configure {{ site.data.keys.mf_app_center }} Charts in {{ site.data.keys.prod_icp }}. You will need to provide the database information to configure {{ site.data.keys.mf_app_center }} helm chart. The tables required for {{ site.data.keys.mf_app_center }} will be created in this database.
 
-> Supported Databases: DB2.
+> Supported Databases: DB2, Oracle, MySQL, PostgreSQL.
 
 To manage containers and images, you need to install the following tools on your host machine as part of {{ site.data.keys.prod_icp }} setup:
 
 * Docker
-* IBM Cloud CLI (`bx`)
-* {{ site.data.keys.prod_icp }} (ICP) plugin for IBM Cloud CLI ( `bx pr` )
+* IBM Cloud CLI (`cloudctl`)
 * Kubernetes CLI (`kubectl`)
 * Helm (`helm`)
+
 
 ## Download the IBM {{ site.data.keys.mf_app_center }} Passport Advantage Archive
 {: #download-the-ibm-mac-ppa-archive}
@@ -54,26 +54,26 @@ Interim fixes for the {{ site.data.keys.mf_app_center }} can be obtained from th
 ## Load the IBM {{ site.data.keys.mf_app_center }} PPA Archive in {{ site.data.keys.prod_icp }}
 {: #load-the-ibm-mfpf-appcenter-ppa-archive}
 
-Before you load the PPA Archive of {{ site.data.keys.product }}, you must set up Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
+Before you load the PPA Archive of {{ site.data.keys.product }}, you must set up Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html).
 
 Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod_icp }} cluster:
 
-  1. Log in to the cluster using IBM Cloud ICP plugin (`bx pr`).
-      >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
+  1. Log in to the cluster using IBM Cloud ICP plugin (`cloudctl`).
+      >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
 
       For example,
       ```bash
-      bx pr login -a https://<ip>:<port>
+      cloudctl login -a https://<ip>:<port>
       ```
       Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
 
   2. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
       ```
-      bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
-      `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `bx pr`.
+      `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `cloudctl`.
 
   3. After you load the PPA Archive, synch the repositories, this ensures that the Helm Charts are listed in the **Catalog**. You can do this in {{ site.data.keys.prod_icp }} management console.<br/>
      * Select **Admin > Repositories**.

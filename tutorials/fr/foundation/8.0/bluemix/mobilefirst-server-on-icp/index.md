@@ -3,7 +3,7 @@ layout: tutorial
 title: Setting up MobileFirst Server on IBM Cloud Private
 breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -11,7 +11,7 @@ weight: 2
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance and {{ site.data.keys.mf_analytics }} instance on {{ site.data.keys.prod_icp }}:
 
 * Setup IBM Cloud Private Kubernetes Cluster.
-* Setup your host computer with the required tools (Docker, IBM Cloud CLI ( bx ), {{ site.data.keys.prod_icp }} (icp) Plugin for IBM Cloud CLI (bx pr), Kubernetes CLI (kubectl)), and Helm CLI (helm)).
+* Setup your host computer with the required tools (Docker CLI, IBM Cloud CLI (`cloudctl`), Kubernetes CLI (`kubectl`), and Helm CLI (`helm`)).
 * Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} .
 * Load the PPA archive in the {{ site.data.keys.prod_icp }} Cluster.
 * Finally, you will configure and install the {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}.
@@ -30,17 +30,16 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 ## Prerequisites
 {: #prereqs}
 
-You should have {{ site.data.keys.prod_icp }} account and must have set up the Kubernetes Cluster by following the documentation in [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/installing.html).
+You should have {{ site.data.keys.prod_icp }} account and must have set up the Kubernetes Cluster by following the documentation in [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
 
 To manage containers and images, you need to install the following tools on your host machine as part of {{ site.data.keys.prod_icp }} setup:
 
 * Docker
-* IBM Cloud CLI (`bx`)
-* {{ site.data.keys.prod_icp }} (ICP) plugin for IBM Cloud CLI ( `bx pr` )
+* IBM Cloud CLI (`cloudctl`)
 * Kubernetes CLI (`kubectl`)
 * Helm (`helm`)
 
-To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the *kubectl* client. [Learn more](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_cluster/cfc_cli.html).
+To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the *kubectl* client. [Learn more](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
 
 ## Download the IBM Mobile Foundation Passport Advantage Archive
 {: #download-the-ibm-mfpf-ppa-archive}
@@ -55,22 +54,22 @@ Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup 
 
 Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod_icp }} cluster:
 
-  1. Log in to the cluster using IBM Cloud ICP plugin (`bx pr`).
-      >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
+  1. Log in to the cluster using IBM Cloud ICP plugin (`cloudctl`).
+      >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
 
       For example,
       ```bash
-      bx pr login -a https://ip:port
+      cloudctl login -a https://ip:port
       ```
       Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
 
   2. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
       ```
-      bx pr load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
-      `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `bx pr`.
+      `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `cloudctl`.
 
   3. After you load the PPA Archive, synch the repositories, which ensures the listing of Helm Charts in the **Catalog**. You can do this in {{ site.data.keys.prod_icp }} management console.
       * Select **Admin > Repositories**.
