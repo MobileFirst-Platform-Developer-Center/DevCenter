@@ -31,6 +31,9 @@ A new iFix *8.0.0.0-MFPF-IF201903070211*  is released for Mobile Foundation 8.0,
             <h2>Changes in this iFix</h2>
             <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
 
+            <h3>Features</h3>
+            <blockquote>Starting with this iFix, support for cordova-android@8.0.0 is provided.</blockquote>
+
             <h3>APARs Fixed</h3>
             <b>PH09167</b>  THE CODE DOES NOT RECOGNISE THE TOMCAT V8.5 AND V9 DIRECTORY.<br/>
             <b>PH08712</b>  BUILDING AND UPGRADING LIBCRYPTO.SO FILE WITH LATEST OPENSSL AND OPENSSL-FIPS VERSION.<br/>

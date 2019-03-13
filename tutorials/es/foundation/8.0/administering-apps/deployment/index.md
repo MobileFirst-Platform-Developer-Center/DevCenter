@@ -76,7 +76,7 @@ En el ejemplo siguiente se muestra cómo completar la configuración utilizando 
 1. Cree un almacén de claves de servidor de fondos con un certificado privado de 365 días.
         
     ```bash
-   keytool -genkey -alias backend -keyalg RSA -validity 365 -keystore backend.keystore -storetype JKS
+    keytool -genkey -alias backend -keyalg RSA -validity 365 -keystore backend.keystore -storetype JKS
     ```
 
     > **Nota:** El campo **Nombre y apellido** contiene el URL de servidor, que se utiliza en el archivo de configuración **adapter.xml**, por ejemplo **mydomain.com** o **localhost**.
