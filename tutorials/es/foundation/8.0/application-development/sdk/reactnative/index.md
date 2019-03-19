@@ -14,7 +14,6 @@ El SDK de {{ site.data.keys.product_adj }} React Native se proporciona como un p
 
 Los plugins disponibles son:
 
-
 * **react-native-ibm-mobilefirst** - El plug-in de SDK de núcleo
 
 #### Ir a:
@@ -36,15 +35,13 @@ El plug-in react-native-ibm-mobilefirst es el plug-in de {{ site.data.keys.produ
 
 - [CLI de React Native](https://www.npmjs.com/package/react-native) y {{ site.data.keys.mf_cli }} están instalados en la estación de trabajo del desarrollador.
 - Una instancia remota o local de {{ site.data.keys.mf_server }} que esté en ejecución.
-
 - Lea las guías de aprendizaje [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/development/mobilefirst) y [Configuración del entorno de desarrollo de React Native](../../../installation-configuration/development/reactnative).
 
 ## Adición del SDK de {{ site.data.keys.product }} React Native
 {: #adding-the-mobilefirst-react-native-sdk }
 Siga las instrucciones siguientes para añadir el SDK de {{ site.data.keys.product }} React Native a un proyecto nuevo o existente de React Native, y regístrelo en {{ site.data.keys.mf_server }}.
 
-Antes de empezar, asegúrese de que {{ site.data.keys.mf_server }} está en ejecución.
-  
+Antes de empezar, asegúrese de que {{ site.data.keys.mf_server }} está en ejecución.  
 Si está utilizando un servidor instalado localmente: Desde una ventana de **línea de mandatos**, vaya a la carpeta del servidor y ejecute el mandato: `./run.sh`.
 
 ### Adición del SDK
@@ -53,8 +50,7 @@ Si está utilizando un servidor instalado localmente: Desde una ventana de **lí
 #### Nueva aplicación
 {: #new-application }
 1. Crear un proyecto de React Native: `react-native init projectName`.  
-Por ejemplo:
-
+   Por ejemplo:
 
    ```bash
    react-native init Hello
@@ -62,8 +58,6 @@ Por ejemplo:
      - *Hello* es el nombre de carpeta y el nombre de la aplicación.
 
     El archivo **index.js** de la plantilla permite utilizar características de {{ site.data.keys.product_adj }} adicionales como, por ejemplo, la [traducción de aplicación multilingüe](../../translation) y opciones de inicialización (consulte la documentación del usuario para obtener más información).
-
-
 
 2. Cambie el directorio a la raíz del proyecto de React Native: `cd hello`
 
@@ -113,7 +107,6 @@ Por ejemplo:
 
     Si su plataforma es iOS, se le solicitará que proporcione el BundleID de la aplicación. **Importante**: El BundleID es **sensible a las mayúsculas y minúsculas**.
 
-
     El mandato de interfaz de línea de mandatos (CLI) `mfpdev app register` se conecta primero al MobileFirst Server para registrar la aplicación, a continuación genera el archivo **mfpclient.plist** en la raíz del proyecto Xcode y le añade los metadatos que identifican al MobileFirst Server.
 
   *  **Android**:
@@ -125,14 +118,12 @@ Por ejemplo:
 
 Si se utiliza un servidor remoto, [utilice el mandato ](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) `mfpdev server add` para añadirlo.
 
-
 El mandato de CLI `mfpdev app register` primero se conecta al {{ site.data.keys.mf_server }} para registrar la aplicación. 	Cada plataforma se registra como una aplicación en {{ site.data.keys.mf_server }}.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Sugerencia:** También es posible registrar aplicaciones desde {{ site.data.keys.mf_console }}:    
 >
 > 1. Cargue {{ site.data.keys.mf_console }}.  
-> 2. Pulse el botón **Nuevo** junto a **Aplicaciones** para registrar una nueva aplicación y seguir las instrucciones en la pantalla.
-  
+> 2. Pulse el botón **Nuevo** junto a **Aplicaciones** para registrar una nueva aplicación y seguir las instrucciones en la pantalla.  
 
 
 ## Actualización del SDK de {{ site.data.keys.product_adj }} React Native
@@ -140,7 +131,6 @@ El mandato de CLI `mfpdev app register` primero se conecta al {{ site.data.keys.
 Para actualizar el SDK de {{ site.data.keys.product_adj }} React native con el último release, elimine el plug-in **react-native-ibm-mobilefirst**: ejecute el mandato `npm uninstall react-native-ibm-mobilefirst` y, a continuación, ejecute el mandato `npm install react-native-ibm-mobilefirst` para añadirlo de nuevo.
 
 Los releases de SDK se pueden encontrar en el [repositorio NPM ](https://www.npmjs.com/package/react-native-ibm-mobilefirst) de SDK.
-
 
 ## Artefactos generados del SDK de {{ site.data.keys.product_adj }} React Native
 {: #generated-mobilefirst-reactnative-sdk-artifacts }
@@ -151,14 +141,13 @@ Los releases de SDK se pueden encontrar en el [repositorio NPM ](https://www.npm
 {: #mfpclient.properties }
 Ubicado en la carpeta **./app/src/main/assets/** del proyecto Android Studio, este archivo define las propiedades utilizadas del lado del cliente para registrar su aplicación Android en {{ site.data.keys.mf_server }}.
 
-
-|Propiedad |Descripción |Valores de ejemplo |
+| Propiedad            | Descripción                                                         | Valores de ejemplo |
 |---------------------|---------------------------------------------------------------------|----------------|
-|wlServerProtocol    |Protocolo de comunicación con {{ site.data.keys.mf_server }}.             |http o https  |
-|wlServerHost        |Nombre de host de {{ site.data.keys.mf_server }}.                            |192.168.1.63   |
-|wlServerPort        |Puerto de {{ site.data.keys.mf_server }}.                           |9080           |
-|wlServerContext     |Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. |/mfp/          |
-|languagePreferences |Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente. |en             |
+| wlServerProtocol    | Protocolo de comunicación con {{ site.data.keys.mf_server }}.             | http o https  |
+| wlServerHost        | Nombre de host de {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
+| wlServerPort        | Puerto de {{ site.data.keys.mf_server }}.                                 | 9080           |
+| wlServerContext     | Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. | /mfp/          |
+| languagePreferences | Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente.           | en             |
 
 
 ### Entorno iOS
@@ -167,22 +156,21 @@ Ubicado en la carpeta **./app/src/main/assets/** del proyecto Android Studio, es
 {: #mfpclientplist }
 Ubicado en la raíz del proyecto, este archivo define las propiedades del lado del cliente utilizadas para registrar la aplicación iOS en {{ site.data.keys.mf_server }}.
 
-
-|Propiedad |Descripción |Valores de ejemplo |
+| Propiedad            | Descripción                                                         | Valores de ejemplo |
 |---------------------|---------------------------------------------------------------------|----------------|
-|protocol    |Protocolo de comunicación con {{ site.data.keys.mf_server }}.             |http o https  |
-|host        |Nombre de host de {{ site.data.keys.mf_server }}.                            |192.168.1.63   |
-|port        |Puerto de {{ site.data.keys.mf_server }}.                           |9080           |
-|wlServerContext     |Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. |/mfp/          |
-|languagePreferences |Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente. |en             |
+| protocol    | Protocolo de comunicación con {{ site.data.keys.mf_server }}.             | http o https  |
+| host        | Nombre de host de {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
+| port        | Puerto de {{ site.data.keys.mf_server }}.                                 | 9080           |
+| wlServerContext     | Vía de acceso de raíz de contexto de la aplicación en {{ site.data.keys.mf_server }}. | /mfp/          |
+| languagePreferences | Establece el idioma predeterminado para los mensajes de sistema del SDK de cliente.           | en             |
 
 
-## Guías de aprendizaje con las que continuar 
+## Guías de aprendizaje con las que continuar
 {: #tutorials-to-follow-next }
 Con el SDK de {{ site.data.keys.product_adj }} React Native ahora integrado, podrá:
 
 - Revisar las guías de aprendizaje de [Utilización de {{ site.data.keys.product }} SDK](../)
 - Revisar las guías de aprendizaje de [Desarrollo de adaptadores](../../../adapters/)
 - Revisar las guías de aprendizaje de [Autenticación y seguridad](../../../authentication-and-security/)
-- Revisar las guías de aprendizaje de [Notificaciones](../../../notifications/) 
+- Revisar las guías de aprendizaje de [Notificaciones](../../../notifications/)
 - Revisar [Todas las guías de aprendizaje](../../../all-tutorials)

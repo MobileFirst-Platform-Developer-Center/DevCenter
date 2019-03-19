@@ -1,26 +1,24 @@
 ---
 layout: tutorial
-title: O que há de novo nas correções temporárias
-breadcrumb_title: Interim iFixes
+title: O que há de novo nas atualizações do CD
+breadcrumb_title: CD Updates
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-As correções temporárias fornecem correções e atualizações para corrigir problemas e manter o {{ site.data.keys.product_full }} atual para novas liberações de sistemas operacionais de dispositivo móvel.
+Correções temporárias e atualizações do CD fornecem correções e atualizações para corrigir problemas e manter o {{ site.data.keys.product_full }} atualizado para novas liberações de sistemas operacionais móveis. As atualizações do CD também aprimoram a funcionalidade do produto, introduzindo novos recursos. 
 
-As correções temporárias são acumulativas. Ao fazer download da correção temporária mais recente da v8.0, você obtém todas as correções das correções temporárias anteriores.
+As correções temporárias e as atualizações do CD são cumulativas. Ao fazer download da correção temporária ou da atualização do CD mais recente da v8.0, você obtém todas as correções e recursos de correções temporárias e atualizações do CD anteriores. 
 
-Faça download e instale a correção temporária mais recente para obter todas as correções descritas nas seções a seguir. Se você instalar correções anteriores, pode ser que não obtenha todas as correções descritas aqui.
+Faça download e instale a atualização mais recente do CD para obter todos os recursos descritos nas seções a seguir. 
 
 > Para obter uma lista de liberações de iFix do {{ site.data.keys.product }} 8.0, [veja aqui]({{site.baseurl}}/blog/tag/iFix_8.0/).
-
-Quando um número de APAR estiver listado, será possível confirmar se uma correção temporária tem esse recurso procurando o número do APAR no arquivo LEIA-ME da correção temporária.
 
 ### Recursos incluídos na atualização 4 do CD (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
 
 ##### <span style="color:NAVY">**Suporte de HTTP/2 para notificações push de APNs**</span>
 
-As notificações push no MobileFirst agora suportam as notificações push de APNs baseadas em HTTP/2 juntamente com as notificações anteriores baseadas no soquete TCP .[Saiba mais]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
+As notificações push no MobileFirst agora suportam as notificações push de APNs baseadas em HTTP/2 juntamente com as notificações anteriores baseadas no soquete TCP . [Saiba mais]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
 
 ##### <span style="color:NAVY">**SDK do push nativo de reação liberado**</span>
 
