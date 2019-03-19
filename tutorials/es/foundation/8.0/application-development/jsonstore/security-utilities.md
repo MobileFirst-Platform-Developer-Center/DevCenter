@@ -7,56 +7,25 @@ weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
-La API del lado del cliente de {{ site.data.keys.product_full }} proporciona algunos programas de utilidad de seguridad para proteger los datos del usuario.
-Las características como JSONStore son de gran utilidad si desea proteger objetos JSON.
-Sin embargo, no se recomienda almacenar blobs binarios en una recopilación de JSONStore.
+La API del lado del cliente de {{ site.data.keys.product_full }} proporciona algunos programas de utilidad de seguridad para proteger los datos del usuario. Las características como JSONStore son de gran utilidad si desea proteger objetos JSON. Sin embargo, no se recomienda almacenar blobs binarios en una recopilación de JSONStore.
 
-
-En su lugar, almacene los datos binarios en el sistema de archivos, y almacene las vías de acceso de archivos y otros metadatos dentro de una recopilación JSONStore.
-Si desea proteger los archivos como, por ejemplo, imágenes, puede codificarlas como series base64, cifrarlas, y grabar la salida en el disco.
-Cuando llegue el momento de descifrar los datos, podrá buscar en los metadatos en una recopilación JSONStore, leer los datos cifrados del disco, y descifrarlos mediante los metadatos almacenados.
-Estos metadatos pueden incluir la clave, la sal, el vector de inicialización (IV), el tipo de archivo o la vía de acceso al archivo, entre otros.
-
+En su lugar, almacene los datos binarios en el sistema de archivos, y almacene las vías de acceso de archivos y otros metadatos dentro de una recopilación JSONStore. Si desea proteger los archivos como, por ejemplo, imágenes, puede codificarlas como series base64, cifrarlas, y grabar la salida en el disco. Cuando llegue el momento de descifrar los datos, podrá buscar en los metadatos en una recopilación JSONStore, leer los datos cifrados del disco, y descifrarlos mediante los metadatos almacenados. Estos metadatos pueden incluir la clave, la sal, el vector de inicialización (IV), el tipo de archivo o la vía de acceso al archivo, entre otros.
 
 A un alto nivel, las SecurityUtils API proporciona las siguientes API:
 
-
-* Generación de claves - En lugar de pasar directamente una contraseña a la función de cifrado, esta función de generación de claves utiliza PBKDF2 (Password Based Key Derivation Function v2) para generar una clave de 256 bits para la API de cifrado.
-Toma un parámetro para el número de iteraciones.
-Cuanto mayor sea el número, más tiempo necesitará un atacante para averiguar su clave mediante fuerza bruta.
-Utilice un valor de al menos 10.000.
-La sal, que debe ser única, hace que para los atacantes sea más difícil utilizar información de hash para atacar la contraseña.
-Utilice una longitud de 32 bytes.
-
-* Cifrado - La entrada se cifra utilizando AES (Advanced Encryption Standard).
-La API toma una clave que se genera con la API de generación de claves.
-Internamente, genera un vector de inicialización (VI) seguro, que se utiliza para añadir aleatorización al primer cifrado de bloque.
-Se cifra el texto.
-Si desea cifrar una imagen u otro formato binario, convierta su código binario en texto base64 utilizando estas API.
-Esta función de cifrado devuelve un objeto con las siguientes partes:
-
+* Generación de claves - En lugar de pasar directamente una contraseña a la función de cifrado, esta función de generación de claves utiliza PBKDF2 (Password Based Key Derivation Function v2) para generar una clave de 256 bits para la API de cifrado. Toma un parámetro para el número de iteraciones. Cuanto mayor sea el número, más tiempo necesitará un atacante para averiguar su clave mediante fuerza bruta. Utilice un valor de al menos 10.000. La sal, que debe ser única, hace que para los atacantes sea más difícil utilizar información de hash para atacar la contraseña. Utilice una longitud de 32 bytes.
+* Cifrado - La entrada se cifra utilizando AES (Advanced Encryption Standard). La API toma una clave que se genera con la API de generación de claves. Internamente, genera un vector de inicialización (VI) seguro, que se utiliza para añadir aleatorización al primer cifrado de bloque. Se cifra el texto. Si desea cifrar una imagen u otro formato binario, convierta su código binario en texto base64 utilizando estas API. Esta función de cifrado devuelve un objeto con las siguientes partes:
     * ct (texto cifrado, también denominado texto encriptado)
-    * IV (vector de inicialización) 
+    * IV (vector de inicialización)
     * v (versión, que permite que la API evolucione mientras es todavía compatible con una versión anterior)
-
 * Descifrado - Toma la salida de la API de cifrado como entrada y descifra el texto cifrado o encriptado en texto sin formato.
-
-* Serie aleatoria remota - Obtiene una serie hexadecimal aleatoria al ponerse en contacto con un generador aleatorio en {{ site.data.keys.mf_server }}.
-El valor predeterminado es de 20 bytes, pero este valor se puede incrementar hasta los 64 bytes.
-
-* Serie aleatoria local - Obtiene una serie hexadecimal aleatoria generando una de forma local, a diferencia de la API de la serie aleatoria remota que precisa de acceso de red.
-El valor predeterminado es de 32 bytes y no hay un valor máximo.
-El tiempo de la operación es proporcional al número de bytes.
-
-* Codificación base64 - Toma una serie y aplica la codificación base64.
-La utilización de la codificación base64 supone por la naturaleza del algoritmo que el tamaño de los datos se incrementa en aproximadamente 1.37 veces su tamaño original.
-
+* Serie aleatoria remota - Obtiene una serie hexadecimal aleatoria al ponerse en contacto con un generador aleatorio en {{ site.data.keys.mf_server }}. El valor predeterminado es de 20 bytes, pero este valor se puede incrementar hasta los 64 bytes.
+* Serie aleatoria local - Obtiene una serie hexadecimal aleatoria generando una de forma local, a diferencia de la API de la serie aleatoria remota que precisa de acceso de red. El valor predeterminado es de 32 bytes y no hay un valor máximo. El tiempo de la operación es proporcional al número de bytes.
+* Codificación base64 - Toma una serie y aplica la codificación base64. La utilización de la codificación base64 supone por la naturaleza del algoritmo que el tamaño de los datos se incrementa en aproximadamente 1.37 veces su tamaño original.
 * Decodificar base64 - Toma una serie codificada en base64 y aplica la descodificación base64.
-
 
 ## Configurar
 Asegúrese de importar los siguientes archivos para utilizar las API de los programas de utilidad de seguridad JSONStore.
-
 
 ### iOS
 
@@ -72,7 +41,6 @@ import com.worklight.wlclient.api.SecurityUtils
 
 ### JavaScript
 No es necesaria configuración alguna.
-
 
 ## Ejemplos
 ### iOS

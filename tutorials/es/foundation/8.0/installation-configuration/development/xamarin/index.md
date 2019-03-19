@@ -8,17 +8,17 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-En esta guía de aprendizaje se explican los pasos que debe seguir un desarrollador para poder desarrollar y probar aplicaciones C# Xamarin nativas para dispositivos iOS o Android. Estos pasos incluyen la instalación de Xamarin Studio.
+En esta guía de aprendizaje se explican los pasos que debe seguir un desarrollador para poder desarrollar y probar aplicaciones C# Xamarin nativas para dispositivos iOS o Android. Estos pasos incluyen la instalación de Visual Studio.
 
 **Requisito previo:** Como parte de la configuración de su entorno de desarrollo de Xamarin, asegúrese de leer la guía de aprendizaje [Configuración del entorno de desarrollo de MobileFirst](../../development/).
 
 ### Desarrollo
 {: #development }
-Las aplicaciones Xamarin se desarrollan mediante [Xamarin Studio](https://www.xamarin.com/studio) o [Microsoft Visual Studio](https://www.visualstudio.com/). Xamarin Studio se puede instalar en Mac OS o en Windows.  Otra posibilidad, en escritorios Windows 8.1 o 10, es añadir Xamarin como un plugin para Microsoft Visual Studio.   
+Las aplicaciones Xamarin se desarrollan mediante [Microsoft Visual Studio](https://www.visualstudio.com/). Visual Studio se puede instalar en Mac OS o en Windows.  
 
-Xamarin Studio se puede descargar en [Xamarin Studio Downloads](https://www.xamarin.com/download)
+Visual Studio se puede descargar en [Visual Studio Downloads](https://visualstudio.microsoft.com/downloads/)
 
-![Xamarin Studio](xamarin-studio.png)
+![Visual Studio](Visualstudio.png)
 
 ## A continuación
 {: #whats-next }
