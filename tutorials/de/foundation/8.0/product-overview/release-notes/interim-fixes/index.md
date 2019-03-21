@@ -1,20 +1,18 @@
 ---
 layout: tutorial
-title: Neuerungen in vorläufigen Fixes
-breadcrumb_title: Interim iFixes
+title: Neuerungen der CD-Updates
+breadcrumb_title: CD Updates
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Mit vorläufigen Fixes werden Patches und Aktualisierungen bereitgestellt, um Probleme zu lösen und die {{ site.data.keys.product_full }} hinsichtlich neuer Releases von Betriebssystemen für mobile Geräte auf dem neuesten Stand zu halten. 
+Mit vorläufigen Fixes und CD-Updates werden Patches und Aktualisierungen bereitgestellt, um Probleme zu lösen und die {{ site.data.keys.product_full }} hinsichtlich neuer Releases von Betriebssystemen für mobile Geräte auf dem neuesten Stand zu halten. Mit CD-Updates werden zudem neue Features vorgestellt, die die Funktionalität des Produkts erweitern. 
 
-Vorläufige Fixes sind kumulativ. Wenn Sie den neusten vorläufigen Fix für Version 8.0 herunterladen, erhalten Sie gleichzeitig die Korrekturen aus allen früheren vorläufigen Fixes. 
+Vorläufige Fixes und CD-Updates sind kumulativ. Wenn Sie den neusten vorläufigen Fix oder das neueste CD-Update für Version 8.0 herunterladen, erhalten Sie gleichzeitig die Korrekturen und Features aus allen früheren vorläufigen Fixes und CD-Updates.
 
-Laden Sie den neuesten vorläufigen Fix herunter und installieren Sie ihn. Sie erhalten damit alle in den folgenden Abschnitten beschriebenen Korrekturen. Wenn Sie frühere Fixes installieren, erhalten Sie möglicherweise nicht alle der hier beschriebenen Korrekturen. 
+Laden Sie das neueste CD-Update herunter und installieren Sie es. Sie erhalten damit alle in den folgenden Abschnitten beschriebenen Features. 
 
 > Eine Liste der iFix-Releases für {{ site.data.keys.product }} 8.0 finden Sie [hier]({{site.baseurl}}/blog/tag/iFix_8.0/).
-
-Wenn eine APAR-Nummer aufgeführt ist, können Sie überprüfen, ob das betreffende Feature in einem vorläufigen Fix enthalten ist, indem Sie in der Readme-Datei zum vorläufigen Fix nach dieser APAR-Nummer suchen. 
 
 ### Im CD-Update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04) enthaltene Features
 

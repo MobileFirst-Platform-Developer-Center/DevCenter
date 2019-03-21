@@ -240,7 +240,7 @@ Führen Sie die folgenden Schritte aus, um IBM {{ site.data.keys.mf_server }} in
     Beispiel für die Serverimplementierung:
     ```bash
     helm install -n mfpserveronkubecluster -f server-values.yaml ./ibm-mfpf-server-prod-1.0.17.tgz
-    ``` 
+    ```
 
 >**Hinweis:** Für die Installation des Application Center müssen Sie das entsprechende Helm-Chart verwenden (z. B. ibm-mfpf-appcenter-prod-1.0.17.tgz), wenn sie die obigen Schritte ausführen.
 
