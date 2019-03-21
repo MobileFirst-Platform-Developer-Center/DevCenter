@@ -44,21 +44,21 @@ Application Center에 대한 애플리케이션 배치를 빌드 프로세스에
 
 명령행에서 사용 가능한 옵션을 전달할 수 있습니다.
 
-| 옵션 | 컨텐츠 표시 | 설명 |
+| 옵션 | 컨텐츠 표시 |설명 |
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server. |
-| -c | context | The context of the Application Center web application. |
-| -u | user | The user credentials to access the Application Center. |
-| -p | password | The password of the user. |
-| -d | description | The description of the application to be uploaded. |
-| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. |
-| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. |
-| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. |
-| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. |
-| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. |
-| -e	  |  | Shows the full exception stack trace on failure. |
-| -f	  |  | Force uploading of applications, even if they exist already. |
-| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
+|-s |serverpath |Application Center 서버에 대한 경로. |
+|-c | context |Application Center 웹 애플리케이션의 컨텍스트. |
+|-u |user |Application Center에 액세스하기 위한 사용자 인증 정보. |
+|-p |비밀번호 |사용자의 비밀번호. |
+|-d |description |업로드할 애플리케이션에 대한 설명. |
+|-l |label |대체 레이블. 일반적으로 업로드할 파일에 저장되어 있는 애플리케이션 디스크립터에서 레이블을 가져옵니다. 애플리케이션 디스크립터에 레이블이 없는 경우 대체 레이블이 사용됩니다. |
+|-isActive |true 또는 false |애플리케이션이 활성 또는 비활성 애플리케이션으로 Application Center에 저장됩니다. |
+|-isInstaller |true 또는 false |애플리케이션이 "설치 프로그램" 플래그가 적절히 설정되어 Application Center에 저장됩니다. |
+|-isReadyForProduction |true 또는 false |애플리케이션이 "프로덕션 준비 완료" 플래그가 적절히 설정되어 Application Center에 저장됩니다. |
+|-isRecommended |true 또는 false |애플리케이션이 "권장" 플래그가 적절히 설정되어 Application Center에 저장됩니다. |
+|-e	  |  |실패 시 전체 예외 스택 추적을 표시합니다. |
+|-f	  |  |애플리케이션이 이미 있는 경우에도 애플리케이션을 강제로 업로드합니다. |
+|-y	  |  |SSL 보안 검사를 사용 안함으로 설정합니다. 이를 통해 SSL 인증서의 유효성을 검증하지 않고 보안 호스트에 공개할 수 있습니다. |이 플래그를 사용하면 보안 위험이 발생할 수 있지만, 임시 자체 서명 SSL 인증서로 로컬 호스트를 테스트하는 데 적합합니다. |
 
 파일 매개변수는 Android 애플리케이션 패키지(.apk) 파일 또는 iOS 애플리케이션(.ipa) 파일의 파일 유형을 지정할 수 있습니다.  
 이 예에서 사용자 demo의 비밀번호는 demopassword입니다. 이 명령행을 사용하십시오.
@@ -81,13 +81,13 @@ Application Center에서 애플리케이션을 삭제하려면 명령행에서 �
 
 명령행에서 사용 가능한 옵션을 전달할 수 있습니다.
 
-| 옵션 | 컨텐츠 표시	| 설명 |
+| 옵션 | 컨텐츠 표시	|설명 |
 |--------|----------------------|-------------|
-| -s |serverpath | The path to the Application Center server. |
-| -c | context | The context of the Application Center web application. |
-| -u | user | The user credentials to access the Application Center. |
-| -p | password | The password of the user. |
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
+|-s |serverpath |Application Center 서버에 대한 경로. |
+|-c | context |Application Center 웹 애플리케이션의 컨텍스트. |
+|-u |user |Application Center에 액세스하기 위한 사용자 인증 정보. |
+|-p |비밀번호 |사용자의 비밀번호. |
+|-y | |SSL 보안 검사를 사용 안함으로 설정합니다. 이를 통해 SSL 인증서의 유효성을 검증하지 않고 보안 호스트에 공개할 수 있습니다. 이 플래그를 사용하면 보안 위험이 발생할 수 있지만, 임시 자체 서명 SSL 인증서로 로컬 호스트를 테스트하는 데 적합합니다. |
 
 파일 또는 애플리케이션 패키지, 운영 체제, 버전을 지정할 수 있습니다. 파일이 지정되는 경우 패키지, 운영 체제 및 버전은 파일에서 결정되고 해당 애플리케이션이 Application Center에서 삭제됩니다. 애플리케이션이 지정되는 경우 형식은 다음 중 하나여야 합니다.
 
@@ -120,13 +120,13 @@ Application Center가 LDAP으로 구성된 경우 LDAP 서버에 있는 사용�
 
 명령행에서 사용 가능한 옵션을 전달할 수 있습니다.
 
-| 옵션 | 컨텐츠 표시 | 설명 |
+| 옵션 | 컨텐츠 표시 |설명 |
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server.|
-| -c | context | The context of the Application Center web application.|
-| -u | user | The user credentials to access the Application Center.|
-| -p | password | The password of the user.|
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.|
+|-s |serverpath |Application Center 서버에 대한 경로.|
+|-c | context |Application Center 웹 애플리케이션의 컨텍스트.|
+|-u |user |Application Center에 액세스하기 위한 사용자 인증 정보.|
+|-p |비밀번호 |사용자의 비밀번호.|
+|-y | |SSL 보안 검사를 사용 안함으로 설정합니다. 이를 통해 SSL 인증서의 유효성을 검증하지 않고 보안 호스트에 공개할 수 있습니다. 이 플래그를 사용하면 보안 위험이 발생할 수 있지만, 임시 자체 서명 SSL 인증서로 로컬 호스트를 테스트하는 데 적합합니다.|
 
 #### 예
 {: #example-cache }
@@ -150,7 +150,7 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 
 업로드 도구로 Ant 태스크를 사용하는 경우 업로드 Ant 태스크의 클래스 이름 값은 **com.ibm.appcenter.ant.UploadApps**입니다. 삭제 Ant 태스크의 클래스 이름 값은 **com.ibm.appcenter.ant.DeleteApps**입니다.
 
-| Ant 태스크의 매개변수 | 설명 |
+| Ant 태스크의 매개변수 |설명 |
 |------------------------|-------------|
 | serverPath | Application Center에 연결합니다. 기본값은 http://localhost:9080입니다. |
 | context | Application Center의 컨텍스트입니다. 기본값은 /applicationcenter입니다. |

@@ -12,13 +12,13 @@ Appcenter 설치 프로그램 애플리케이션은 모바일 디바이스에 �
 
 #### 다음으로 이동
 {: #jump-to }
-* [전제조건](#prerequisites)
+* [선행 조건](#prerequisites)
 * [Cordova 기반 IBM AppCenter 클라이언트](#cordova-based-ibm-appcenter-client)
 * [MobileFirst Studio 기반 IBM AppCenter 클라이언트](#mobilefirst-studio-based-ibm-appcenter-client)
 * [기능 사용자 정의(전문가용): Android, iOS, Windows Phone](#customizing-features-for-experts-android-ios-windows-phone)
 * [Application Center에 모바일 클라이언트 배치](#deploying-the-mobile-client)
 
-## 전제조건
+## 선행 조건
 {: #prerequisites }
 ### Android 운영 체제에 맞는 전제조건
 {: #prerequisites-specific-to-the-android-operating-system }
@@ -182,7 +182,7 @@ Windows 10 Universal 프로젝트를 빌드하려면 다음 단계를 따르십�
 
 ## 기능 사용자 정의(전문가용): Android, iOS, Windows Phone
 {: #customizing-features-for-experts-android-ios-windows-phone }
-중앙 특성 파일을 편집하고 일부 다른 자원을 조작하여 기능을 사용자 정의할 수 있습니다.
+중앙 특성 파일을 편집하고 일부 다른 리소스를 조작하여 기능을 사용자 정의할 수 있습니다.
 >이는 Android, iOS, Windows 8(Windows 스토어 패키지 한정) 또는 Windows Phone 8에서만 지원됩니다.
 
 
@@ -190,7 +190,7 @@ Windows 10 Universal 프로젝트를 빌드하려면 다음 단계를 따르십�
 
 이 파일에는 다음 표에 표시된 특성이 포함되어 있습니다.
 
-| 특성 | 설명 |
+| 특성 |설명 |
 |----------|-------------|
 | url | Application Center 서버의 하드코딩된 주소. 이 특성이 설정되면 로그인 보기의 주소 필드가 표시되지 않습니다. |
 | defaultPort | url 특성이 널인 경우 이 특성은 전화기에서 로그인 보기의 포트 필드에 미리 채워집니다. 이것이 기본값이며 사용자가 필드를 편집할 수 있습니다. |
@@ -205,9 +205,9 @@ Windows 10 Universal 프로젝트를 빌드하려면 다음 단계를 따르십�
 | gcmProjectId | Android 푸시 알림에 필요한 Google API 프로젝트 ID(프로젝트 이름 = com.ibm.appcenter). 예: 123456789012. |
 | allowAppLinkReview | 이 특성은 외부 애플리케이션 스토어에서 애플리케이션의 로컬 검토를 Application Center에서 등록하고 찾아볼 수 있는지 여부를 표시합니다. 이러한 로컬 검토는 외부 애플리케이션 스토어에서 볼 수 없습니다. 이러한 검토는 Application Center 서버에 저장됩니다. |
 
-### 기타 자원
+### 기타 리소스
 {: #other-resources }
-사용 가능한 기타 자원은 애플리케이션 아이콘, 애플리케이션 이름, 스플래시 화면 이미지, 아이콘, 애플리케이션의 변환 가능한 자원입니다.
+사용 가능한 기타 리소스는 애플리케이션 아이콘, 애플리케이션 이름, 스플래시 화면 이미지, 아이콘, 애플리케이션의 변환 가능한 리소스입니다.
 
 #### 애플리케이션 아이콘
 {: #application-icons }
@@ -237,7 +237,7 @@ Windows 10 Universal 프로젝트를 빌드하려면 다음 단계를 따르십�
 {: #icons }
 **IBMAppCenter/apps/AppCenter/common/css/images**.
 
-#### 애플리케이션의 변환 가능한 자원
+#### 애플리케이션의 변환 가능한 리소스
 {: #translatable-resources }
 **IBMAppCenter/apps/AppCenter/common/js/appcenter/nls/common.js**.
 

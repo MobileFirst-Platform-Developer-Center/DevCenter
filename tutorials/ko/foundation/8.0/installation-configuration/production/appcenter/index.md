@@ -51,7 +51,7 @@ IBM Installation Manager를 사용하여 IBM Application Center를 설치하려�
 {: #optional-creation-of-databases }
 {{ site.data.keys.mf_server }} 설치 프로그램을 실행할 때 Application Center를 설치하는 옵션을 활성화하려면 Application Center에 필요한 테이블을 작성할 수 있게 하는 특정 데이터베이스 액세스 권한이 있어야 합니다.
 
-충분한 데이터베이스 관리 신임 정보를 가지고 있는 경우 프롬프트가 표시될 때 설치 프로그램에서 관리자 이름 및 비밀번호를 입력하면 설치 프로그램이 사용자를 위해 데이터베이스를 작성할 수 있습니다. 그렇지 않으면 데이터베이스 관리자에게 필수 데이터베이스를 작성하도록 요청해야 합니다. {{ site.data.keys.mf_server }} 설치 프로그램을 시작하기 전에 데이터베이스를 작성해야 합니다.
+충분한 데이터베이스 관리 인증 정보를 가지고 있는 경우 프롬프트가 표시될 때 설치 프로그램에서 관리자 이름 및 비밀번호를 입력하면 설치 프로그램이 사용자를 위해 데이터베이스를 작성할 수 있습니다. 그렇지 않으면 데이터베이스 관리자에게 필수 데이터베이스를 작성하도록 요청해야 합니다. {{ site.data.keys.mf_server }} 설치 프로그램을 시작하기 전에 데이터베이스를 작성해야 합니다.
 
 다음 주제에서는 지원되는 데이터베이스 관리 시스템에 대한 프로시저를 설명합니다.
 
@@ -445,7 +445,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * [DB2 JDBC 드라이버 버전](http://www.ibm.com/support/docview.wss?uid=swg21363866)에서 다운로드하십시오.
     * DB2 서버의 **db2\_install\_dir/java** 디렉토리에서 가져오십시오.
 
-3. WebSphere Application Server 콘솔에서 **자원 → JDBC → JDBC 제공자**를 클릭하십시오.  
+3. WebSphere Application Server 콘솔에서 **리소스 → JDBC → JDBC 제공자**를 클릭하십시오.  
     * **범위** 조합 상자에서 적절한 범위를 선택하십시오.
     * **새로 작성**을 클릭하십시오.
     * **데이터베이스 유형**을 **DB2**로 설정하십시오.
@@ -461,7 +461,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * **저장**을 클릭하십시오.
 
 4. Application Center 데이터베이스에 대한 데이터 소스를 작성하십시오.
-    * **자원 → JDBC → 데이터 소스**를 클릭하십시오.
+    * **리소스 → JDBC → 데이터 소스**를 클릭하십시오.
     * **범위** 조합 상자에서 적절한 범위를 선택하십시오.
     * **새로 작성**을 클릭하여 데이터 소스를 작성하십시오.
     * **데이터 소스 이름**을 **Application Center 데이터베이스**로 설정하십시오.
@@ -477,7 +477,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * **컴포넌트 관리 인증 별명** 조합 상자(**컨테이너 관리 인증 별명** 조합 상자가 아님)에서 작성된 인증 별명을 선택하십시오.
     * **다음**을 클릭한 후 **완료**를 클릭하십시오.
     * **저장**을 클릭하십시오.
-    * **자원 → JDBC → 데이터 소스**에서 새 데이터 소스를 선택하십시오.
+    * **리소스 → JDBC → 데이터 소스**에서 새 데이터 소스를 선택하십시오.
     * **WebSphere Application Server 데이터 소스 특성**을 클릭하십시오.
     * **비트랜잭션 데이터 소스** 선택란을 선택하십시오.
     * **확인**을 클릭하십시오.
@@ -589,7 +589,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * WebSphere Application Server ND 서버에 배치의 경우 **was\_install\_dir/profiles/profile-name/config/cells/cell-name/nodes/node-name/servers/server-name/Worklight/derby**를 사용하십시오.
 2. **product\_install\_dir/ApplicationCenter/tools/lib/derby.jar**의 **Derby** JAR 파일을 1단계에서 판별된 디렉토리에 추가하십시오.
 3. JDBC 제공자를 설정하십시오.
-    * WebSphere Application Server 콘솔에서 **자원 → JDBC → JDBC 제공자**를 클릭하십시오.
+    * WebSphere Application Server 콘솔에서 **리소스 → JDBC → JDBC 제공자**를 클릭하십시오.
     * **범위** 조합 상자에서 적절한 범위를 선택하십시오.
     * **새로 작성**을 클릭하십시오.
     * **데이터베이스 유형**을 **사용자 정의**로 설정하십시오.
@@ -600,7 +600,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * **클래스 경로**를 1단계에서 판별된 디렉토리의 JAR 파일로 설정하고 **was\_install\_dir/profiles/profile-name**을 WebSphere Application Server 변수 참조 **${USER\_INSTALL\_ROOT}**로 바꾸십시오.
     * **완료**를 클릭하십시오.
 4. **Worklight** 데이터베이스에 대한 데이터 소스를 작성하십시오.
-    * WebSphere Application Server 콘솔에서 **자원 → JDBC → 데이터 소스**를 클릭하십시오.
+    * WebSphere Application Server 콘솔에서 **리소스 → JDBC → 데이터 소스**를 클릭하십시오.
     * **범위** 조합 상자에서 적절한 범위를 선택하십시오.
     * **새로 작성**을 클릭하십시오.
     * **데이터 소스 이름**을 **Application Center 데이터베이스**로 설정하십시오.
@@ -731,7 +731,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
 
 2. [Connector/J 다운로드](http://dev.mysql.com/downloads/connector/j/)에서 다운로드한 MySQL JDBC 드라이버 JAR 파일을 1단계에서 판별된 디렉토리에 추가하십시오.
 3. JDBC 제공자를 설정하십시오.
-    * WebSphere Application Server 콘솔에서 **자원 → JDBC → JDBC 제공자**를 클릭하십시오.
+    * WebSphere Application Server 콘솔에서 **리소스 → JDBC → JDBC 제공자**를 클릭하십시오.
     * **범위** 조합 상자에서 적절한 범위를 선택하십시오.
     * **새로 작성**을 클릭하십시오.
     * **MySQL**이라는 **JDBC 제공자**를 작성하십시오.
@@ -741,7 +741,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * **데이터베이스 클래스 경로**를 1단계에서 판별된 디렉토리에 있는 **JAR 파일**로 설정하고 **WAS\_INSTALL\_DIR/profiles/profile-name**을 WebSphere Application Server 변수 참조 **${USER_INSTALL_ROOT}**로 바꾸십시오.
     * 변경사항을 저장하십시오.
 4. IBM Application Center 데이터베이스에 대한 데이터 소스를 작성하십시오.
-    * **자원 → JDBC → 데이터 소스**를 클릭하십시오.
+    * **리소스 → JDBC → 데이터 소스**를 클릭하십시오.
     * **범위** 조합 상자에서 적절한 범위를 선택하십시오.
     * **새로 작성**을 클릭하여 데이터 소스를 작성하십시오.
     * 임의의 이름(예: Application Center 데이터베이스)을 입력하십시오.
@@ -766,7 +766,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     ```
 
 6. 새 데이터 소스의 WebSphere Application Server 사용자 정의 특성을 설정하십시오.
-    * **자원 → JDBC → 데이터 소스**에서 **새 데이터 소스**를 선택하십시오.
+    * **리소스 → JDBC → 데이터 소스**에서 **새 데이터 소스**를 선택하십시오.
     * **WebSphere Application Server 데이터 소스 특성**을 클릭하십시오.
     * **비트랜잭션 데이터 소스**를 선택하십시오.
     * **확인**을 클릭하십시오.
@@ -907,7 +907,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
 
 2. [JDBC 및 UCP(Universal Connection Pool)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html)에서 다운로드한 Oracle ﻿**ojdbc6.jar** 파일을 1단계에서 판별된 디렉토리에 추가하십시오.
 3. JDBC 제공자를 설정하십시오.
-    * WebSphere Application Server 콘솔에서 **자원 → JDBC → JDBC 제공자**를 클릭하십시오.
+    * WebSphere Application Server 콘솔에서 **리소스 → JDBC → JDBC 제공자**를 클릭하십시오.
     * **범위** 조합 상자에서 적절한 범위를 선택하십시오.
     * **새로 작성**을 클릭하십시오.
     * 다음 테이블에 표시된 대로 **JDBC 제공자** 필드에 기입을 완료하십시오.
@@ -925,7 +925,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     JDBC 제공자가 작성됩니다.
 
 4. Worklight 데이터베이스에 대한 데이터 소스를 작성하십시오.
-    * **자원 → JDBC → 데이터 소스**를 클릭하십시오.
+    * **리소스 → JDBC → 데이터 소스**를 클릭하십시오.
     * **범위** 조합 상자에서 적절한 범위를 선택하십시오.
     * **새로 작성**을 클릭하십시오.
     * **데이터 소스 이름**을 **Oracle JDBC 드라이버 데이터 소스**로 설정하십시오.
@@ -935,12 +935,12 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * **다음**을 클릭하십시오.
     * **URL** 값을 **jdbc:oracle:thin:@oserver:1521:ORCL**로 설정하십시오. 여기서 **oserver**는 Oracle 서버의 호스트 이름입니다(예를 들어, 동일한 머신에 있는 경우 **localhost**).
     * **다음**을 두 번 클릭하십시오.
-    * **자원 → JDBC → 데이터 소스 → Oracle JDBC 드라이버 데이터 소스 → 사용자 정의 특성**을 클릭하십시오.
+    * **리소스 → JDBC → 데이터 소스 → Oracle JDBC 드라이버 데이터 소스 → 사용자 정의 특성**을 클릭하십시오.
     * **oracleLogPackageName**을 **oracle.jdbc.driver**로 설정하십시오.
     * **user = APPCENTER**를 설정하십시오.
     * **password = APPCENTER_password**를 설정하십시오.
     * **확인**을 클릭하여 변경사항을 저장하십시오.
-    * **자원 → JDBC → 데이터 소스**에서 새 데이터 소스를 선택하십시오.
+    * **리소스 → JDBC → 데이터 소스**에서 새 데이터 소스를 선택하십시오.
     * **WebSphere Application Server 데이터 소스 특성**을 클릭하십시오.
     * **비트랜잭션 데이터 소스** 선택란을 선택하십시오.
     * **확인**을 클릭하십시오.
@@ -1144,7 +1144,7 @@ Application Center에 대해 수동으로 WebSphere Application Server를 구성
     * **applicationcenter.war**을 선택하고 **다음**을 클릭하십시오.
     * **애플리케이션 설치 방법** 페이지에서 **세부사항**을 클릭한 후 **다음**을 클릭하십시오.
     * **애플리케이션 보안 경고** 페이지에서 **계속**을 클릭하십시오.
-    * "자원에 자원 참조 맵핑" 페이지에 도달할 때까지 **다음**을 클릭하십시오.
+    * "리소스에 리소스 참조 맵핑" 페이지에 도달할 때까지 **다음**을 클릭하십시오.
     * **브라우저**를 클릭하고 **jdbc/AppCenterDS** JNDI 이름을 가진 데이터 소스를 선택하십시오.
     * **적용**을 클릭하십시오.
     * **컨텍스트 루트** 필드에 **/applicationcenter**를 입력하십시오.
@@ -1445,7 +1445,7 @@ Application Center EAR 파일을 배치한 후 Application Center에 대해 수�
 * [LDAP을 사용한 사용자 관리](#managing-users-with-ldap)
 * [WebSphere Application Server에서 DB2 JDBC 드라이버의 특성 구성](#configuring-properties-of-db2-jdbc-driver-in-websphere-application-server)
 * [DB2 트랜잭션 로그 크기 관리](#managing-the-db2-transaction-log-size)
-* [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)
+* [애플리케이션 리소스의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)
 * [SSL(Secure Sockets Layer) 구성](#configuring-secure-sockets-layer-ssl)
 * [Application Center에 대한 JNDI 특성](#jndi-properties-for-application-center)
 * [공용 앱 스토어의 애플리케이션을 지원하도록 WebSphere Application Server 구성](#configuring-websphere-application-server-to-support-applications-in-public-app-stores)
@@ -1466,7 +1466,7 @@ Application Center에는 두 개의 Java™ Platform, Enterprise Edition(Java EE
 
 LDAP 등의 사용자 저장소를 통해 인증 방법을 사용하도록 선택하는 경우에는 해당 사용자 저장소를 가진 사용자 및 그룹을 사용하여 Application Center의 ACL(Access Control List)을 정의할 수 있도록 Application Center를 구성할 수 있습니다. 이 프로시저는 사용하는 웹 애플리케이션 서버의 버전 및 유형별로 제어됩니다. Application Center와 함께 사용되는 LDAP에 대한 정보는 [LDAP을 사용한 사용자 관리](#managing-users-with-ldap)를 참조하십시오.
 
-Application Center의 사용자 인증을 구성한 후(LDAP 사용을 계획하는 경우 LDAP 구성 포함) 필요한 경우에는 애플리케이션 자원의 엔드포인트를 정의할 수 있습니다. 그런 다음 Application Center 모바일 클라이언트를 빌드해야 합니다. 모바일 클라이언트는 모바일 디바이스에 애플리케이션을 설치하는 데 사용됩니다. Application Center 모바일 클라이언트 빌드 방법은 [모바일 클라이언트 사용을 위한 준비](../../../appcenter/preparations/)를 참조하십시오.
+Application Center의 사용자 인증을 구성한 후(LDAP 사용을 계획하는 경우 LDAP 구성 포함) 필요한 경우에는 애플리케이션 리소스의 엔드포인트를 정의할 수 있습니다. 그런 다음 Application Center 모바일 클라이언트를 빌드해야 합니다. 모바일 클라이언트는 모바일 디바이스에 애플리케이션을 설치하는 데 사용됩니다. Application Center 모바일 클라이언트 빌드 방법은 [모바일 클라이언트 사용을 위한 준비](../../../appcenter/preparations/)를 참조하십시오.
 
 #### 다음으로 이동
 {: #jump-to-11 }
@@ -1527,7 +1527,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 
    이 예를 다음 위치에 포함해야 합니다.  
 
-   * WAR 파일을 배치한 경우에는 각 `<application>` 요소(**appcenterconsole** 및 **applicationcenter** 애플리케이션)의 `<application-bnd>` 요소.
+   * WAR 파일을 배치한 경우에는 `<application-bnd>` 요소의 `<application>` 요소: **appcenterconsole** 및 **applicationcenter** 애플리케이션.
    * EAR 파일을 배치한 경우에는 **applicationcenter** 애플리케이션의 `<application-bnd>` 요소.
 
    테스트용으로 설치 중에 작성된 `<security-role>` 요소를 대체하십시오.
@@ -1985,7 +1985,7 @@ LDAP 사용자가 **MyLdapAdmin** 및 **MyLdapUser**라는 LDAP 역할을 가진
 ```
 
 **auth-constraint 요소**  
-**security-role-ref** 및 **security-role** 요소를 편집한 후에는 **auth-constraint** 요소에서 정의되는 역할을 사용하여 웹 자원을 보호할 수 있습니다. **appcenterconsole** 및 **applicationcenter**의 **web.xml** 파일 모두에 있는 **appcenteradminConstraint** 요소와 **appcenterconsole** **web.xml** 파일에 있는 **appcenteruserConstraint** 요소에 대해 이 역할을 편집하십시오.
+**security-role-ref** 및 **security-role** 요소를 편집한 후에는 **auth-constraint** 요소에서 정의되는 역할을 사용하여 웹 리소스를 보호할 수 있습니다. **appcenterconsole** 및 **applicationcenter**의 **web.xml** 파일 모두에 있는 **appcenteradminConstraint** 요소와 **appcenterconsole** **web.xml** 파일에 있는 **appcenteruserConstraint** 요소에 대해 이 역할을 편집하십시오.
 
 ```xml
 <security-constraint>
@@ -2091,7 +2091,7 @@ Invalid operation: result set is closed. ERRORCODE=-4470, SQLSTATE=null
 이 예외를 방지하려면 Application Center 데이터 소스 레벨에서 WebSphere Application Server의 사용자 정의 특성을 추가해야 합니다.
 
 1. WebSphere Application Server 관리 콘솔에 로그인하십시오.
-2. **자원 → JDBC → 데이터 소스 → Application Center 데이터 소스 이름 → 사용자 정의 특성**을 선택한 후 **새로 작성**을 클릭하십시오.
+2. **리소스 → JDBC → 데이터 소스 → Application Center 데이터 소스 이름 → 사용자 정의 특성**을 선택한 후 **새로 작성**을 클릭하십시오.
 3. **이름** 필드에 **allowNextOnExhaustedResultSet**를 입력하십시오.
 4. **값** 필드에 **1**을 입력하십시오.
 5. 유형을 **java.lang.Integer**로 변경하십시오.
@@ -2122,13 +2122,13 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 `DB2 update db cfg` 명령을 사용하여 **LOGSECOND** 매개변수를 늘리십시오. 데이터베이스가 활성화된 경우 공간이 할당되지 않습니다. 대신 필요한 경우에만 공간이 할당됩니다.
 
-### 애플리케이션 자원의 엔드포인트 정의
+### 애플리케이션 리소스의 엔드포인트 정의
 {: #defining-the-endpoint-of-the-application-resources }
-Application Center 콘솔에서 모바일 애플리케이션을 추가할 때 서버 측 컴포넌트는 애플리케이션 자원(패키지 및 아이콘)에 대한 URI(Uniform Resource Identifier)를 작성합니다. 모바일 클라이언트는 이 URI를 사용하여 디바이스에서 애플리케이션을 관리합니다.
+Application Center 콘솔에서 모바일 애플리케이션을 추가할 때 서버 측 컴포넌트는 애플리케이션 리소스(패키지 및 아이콘)에 대한 URI(Uniform Resource Identifier)를 작성합니다. 모바일 클라이언트는 이 URI를 사용하여 디바이스에서 애플리케이션을 관리합니다.
 
 디바이스에서 애플리케이션을 관리하려면 Application Center 콘솔에서 Application Center REST 서비스를 찾고 모바일 클라이언트가 Application Center REST 서비스를 찾을 수 있게 하는 필요한 수의 URI를 생성할 수 있어야 합니다.
 
-기본적으로 URI 프로토콜, 호스트 이름 및 포트는 Application Center 콘솔에 액세스하는 데 사용되는 웹 애플리케이션 서버에서 정의된 것과 동일합니다. Application Center REST 서비스의 컨텍스트 루트는 **applicationcenter**입니다. Application Center REST 서비스의 컨텍스트 루트가 변경되거나 웹 애플리케이션 서버의 내부 URI가 모바일 클라이언트에서 사용할 수 있는 외부 URI와 다른 경우에는 웹 애플리케이션 서버를 구성하여 애플리케이션 자원의 외부 액세스 가능 엔드포인트(프로토콜, 호스트 이름 및 포트)를 정의해야 합니다. (예를 들어, 내부 URI와 외부 URI를 구분하는 이유는 HTTP 경로 재지정을 사용하는 안전한 리버스 프록시 또는 방화벽 때문일 수 있습니다.)
+기본적으로 URI 프로토콜, 호스트 이름 및 포트는 Application Center 콘솔에 액세스하는 데 사용되는 웹 애플리케이션 서버에서 정의된 것과 동일합니다. Application Center REST 서비스의 컨텍스트 루트는 **applicationcenter**입니다. Application Center REST 서비스의 컨텍스트 루트가 변경되거나 웹 애플리케이션 서버의 내부 URI가 모바일 클라이언트에서 사용할 수 있는 외부 URI와 다른 경우에는 웹 애플리케이션 서버를 구성하여 애플리케이션 리소스의 외부 액세스 가능 엔드포인트(프로토콜, 호스트 이름 및 포트)를 정의해야 합니다. (예를 들어, 내부 URI와 외부 URI를 구분하는 이유는 HTTP 경로 재지정을 사용하는 안전한 리버스 프록시 또는 방화벽 때문일 수 있습니다.)
 
 다음 그림에서는 내부 주소(192.168...)를 숨기는 안전한 리버스 프록시를 가진 구성을 보여줍니다. 모바일 클라이언트는 외부 주소(**appcntr.net**)를 사용해야 합니다.
 
@@ -2146,13 +2146,13 @@ Application Center 콘솔에서 모바일 애플리케이션을 추가할 때 �
 
 #### 다음으로 이동
 {: #jump-to-13 }
-* [애플리케이션 자원의 엔드포인트 구성(전체 프로파일)](#configuring-the-endpoint-of-application-resources-full-profile)
-* [애플리케이션 자원의 엔드포인트 구성(Liberty 프로파일)](#configuring-the-endpoint-of-the-application-resources-liberty-profile)
-* [애플리케이션 자원의 엔드포인트 구성(Apache Tomcat)](#configuring-the-endpoint-of-the-application-resources-apache-tomcat)
+* [애플리케이션 리소스의 엔드포인트 구성(전체 프로파일)](#configuring-the-endpoint-of-application-resources-full-profile)
+* [애플리케이션 리소스의 엔드포인트 구성(Liberty 프로파일)](#configuring-the-endpoint-of-the-application-resources-liberty-profile)
+* [애플리케이션 리소스의 엔드포인트 구성(Apache Tomcat)](#configuring-the-endpoint-of-the-application-resources-apache-tomcat)
 
-#### 애플리케이션 자원의 엔드포인트 구성(전체 프로파일)
+#### 애플리케이션 리소스의 엔드포인트 구성(전체 프로파일)
 {: #configuring-the-endpoint-of-application-resources-full-profile }
-WebSphere Application Server 전체 프로파일의 경우 Application Center 서비스 및 Application Center 콘솔 애플리케이션의 환경 항목에서 애플리케이션 자원의 엔드포인트를 구성하십시오. 프로시저는 WAR 파일 또는 EAR 파일을 배치했는지 여부에 따라 다릅니다.
+WebSphere Application Server 전체 프로파일의 경우 Application Center 서비스 및 Application Center 콘솔 애플리케이션의 환경 항목에서 애플리케이션 리소스의 엔드포인트를 구성하십시오. 프로시저는 WAR 파일 또는 EAR 파일을 배치했는지 여부에 따라 다릅니다.
 
 ##### WAR 파일을 배치한 경우
 {: #if-you-deployed-war-files }
@@ -2197,9 +2197,9 @@ JNDI 특성의 전체 목록은 [Application Center의 JNDI 특성](#jndi-proper
 예를 들어, `*://*:*/appcenter`는 Application Center 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 appcenter를 컨텍스트 루트로 사용함을 의미합니다.
 7. 확인을 클릭하고 구성을 저장하십시오.
 
-#### 애플리케이션 자원의 엔드포인트 구성(Liberty 프로파일)
+#### 애플리케이션 리소스의 엔드포인트 구성(Liberty 프로파일)
 {: #configuring-the-endpoint-of-the-application-resources-liberty-profile }
-Liberty 프로파일의 경우 JNDI 환경을 통해 애플리케이션 자원의 엔드포인트를 구성하십시오.
+Liberty 프로파일의 경우 JNDI 환경을 통해 애플리케이션 리소스의 엔드포인트를 구성하십시오.
 
 IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하기 위해 Application Center 클라이언트가 사용하는 URI 프로토콜, 호스트 이름 및 포트를 변경해야 하는 경우 이 프로시저를 수행하십시오.
 
@@ -2223,15 +2223,15 @@ IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하�
 | 특성 |설명 |
 |----------|-------------|
 | ibm.appcenter.services.endpoint | Application Center REST 서비스의 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. |
-| ibm.appcenter.proxy.protocol	애플리케이션 자원 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
-| ibm.appcenter.proxy.host | 애플리케이션 자원 URI의 호스트 이름입니다. |
-| ibm.appcenter.proxy.port | 애플리케이션 자원 URI의 포트입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
+| ibm.appcenter.proxy.protocol	애플리케이션 리소스 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
+| ibm.appcenter.proxy.host | 애플리케이션 리소스 URI의 호스트 이름입니다. |
+| ibm.appcenter.proxy.port | 애플리케이션 리소스 URI의 포트입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
 
 설정할 수 있는 LDAP 특성의 전체 목록은 [Application Center의 JNDI 특성](#jndi-properties-for-application-center)을 참조하십시오.
 
 ##### 엔드포인트 구성을 위한 특성 설정의 예
 {: #example-of-setting-properties-for-configuring-the-endpoint }
-이 예에서는 **server.xml** 파일에서 애플리케이션 자원의 엔드포인트 구성을 위해 필요한 특성을 설정하는 것을 보여줍니다.
+이 예에서는 **server.xml** 파일에서 애플리케이션 리소스의 엔드포인트 구성을 위해 필요한 특성을 설정하는 것을 보여줍니다.
 
 ```xml
 <jndiEntry jndiName="ibm.appcenter.services.endpoint" value=" https://appcntr.net:443/applicationcenter" />
@@ -2242,9 +2242,9 @@ IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하�
 
 별표(\*) 문자를 와일드카드로 사용하여 Application Center REST 서비스가 Application Center 콘솔과 동일한 값을 사용하도록 지정할 수 있습니다. 예를 들어, `*://*:*/appcenter`는 Application Center 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 **appcenter**를 컨텍스트 루트로 사용함을 의미합니다.
 
-#### 애플리케이션 자원의 엔드포인트 구성(Apache Tomcat)
+#### 애플리케이션 리소스의 엔드포인트 구성(Apache Tomcat)
 {: #configuring-the-endpoint-of-the-application-resources-apache-tomcat }
-Apache Tomcat 서버의 경우 **server.xml** 파일에서 애플리케이션 자원의 엔드포인트를 구성하십시오.
+Apache Tomcat 서버의 경우 **server.xml** 파일에서 애플리케이션 리소스의 엔드포인트를 구성하십시오.
 
 IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하기 위해 Application Center 클라이언트가 사용하는 URI 프로토콜, 호스트 이름 및 포트를 변경해야 하는 경우 이 프로시저를 수행하십시오.
 
@@ -2264,15 +2264,15 @@ Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집�
 | 특성 |유형 |설명 |
 |----------|------|-------------|
 | ibm.appcenter.services.endpoint | java.lang.String | Application Center REST 서비스(applicationcenter.war)의 URI입니다. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. |
-| ibm.appcenter.proxy.protocol | java.lang.String | 애플리케이션 자원 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
-| ibm.appcenter.proxy.host | java.lang.String | 애플리케이션 자원 URI의 호스트 이름입니다. |
-| ibm.appcenter.proxy.port | java.lang.Integer | 애플리케이션 자원 URI의 포트입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
+| ibm.appcenter.proxy.protocol | java.lang.String | 애플리케이션 리소스 URI의 프로토콜입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
+| ibm.appcenter.proxy.host | java.lang.String | 애플리케이션 리소스 URI의 호스트 이름입니다. |
+| ibm.appcenter.proxy.port | java.lang.Integer | 애플리케이션 리소스 URI의 포트입니다. 이 특성은 선택사항입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. |
 
 설정할 수 있는 JNDI 특성의 전체 목록은 [Application Center의 JNDI 특성](#jndi-properties-for-application-center)을 참조하십시오.
 
 ##### 엔드포인트 구성을 위한 server.xml 특성 설정의 예
 {: #example-of-setting-serverxml-properties-for-configuring-the-endpoint }
-이 예에서는 **server.xml** 파일에서 애플리케이션 자원의 엔드포인트 구성을 위해 필요한 특성을 설정하는 것을 보여줍니다.
+이 예에서는 **server.xml** 파일에서 애플리케이션 리소스의 엔드포인트 구성을 위해 필요한 특성을 설정하는 것을 보여줍니다.
 
 `<context>` 섹션에서:
 
@@ -2440,7 +2440,7 @@ Application Center의 일부 JNDI 특성을 구성할 수 있습니다.
 | ibm.appcenter.apns.p12.certificate.password | Application Center가 iOS 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 인증서의 비밀번호입니다. [Apple 푸시 알림 서비스에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#apns)을 참조하십시오. |
 | ibm.appcenter.forceUpgradeDBTo60 | 데이터베이스 디자인은 IBM Worklight 버전 6.0부터 변경되었습니다. Application Center 웹 애플리케이션이 시작될 때 데이터베이스가 자동으로 업데이트됩니다. 이 업데이트를 반복하려면 이 매개변수를 **true**로 설정하고 웹 애플리케이션을 다시 시작하십시오. 나중에 이 매개변수를 **false**로 재설정할 수 있습니다. |
 | ibm.appcenter.gcm.signature.googleapikey | Application Center가 Android 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 Google API 키입니다. 예를 들어, AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs입니다. [GCM(Google Cloud Messaging)에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#gcm)을 참조하십시오. |
-| ibm.appcenter.ios.plist.onetimeur | iOS plist Manifest에 저장된 URL이 신임 정보 없는 일회성 URL 메커니즘을 사용하는지 여부를 지정합니다. 이 특성을 true로 설정하면 보안 레벨이 중간입니다. 왜냐하면 누구도 URL을 추측할 수 없도록 일회성 URL이 암호화 메커니즘을 사용하여 생성되지만 사용자가 로그인하지 않아도 되기 때문입니다. 이 특성을 false로 설정하면 사용자가 URL마다 로그인해야 하므로 최고의 보안이 제공됩니다. 하지만 iOS 애플리케이션을 설치할 때 사용자에게 여러 번 로그인하도록 요청하면 사용자에게 안 좋은 느낌을 줄 수 있습니다. [iOS 모바일 디바이스에 클라이언트 설치](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device)를 참조하십시오. |
+| ibm.appcenter.ios.plist.onetimeur | iOS plist Manifest에 저장된 URL이 인증 정보 없는 일회성 URL 메커니즘을 사용하는지 여부를 지정합니다. 이 특성을 true로 설정하면 보안 레벨이 중간입니다. 왜냐하면 누구도 URL을 추측할 수 없도록 일회성 URL이 암호화 메커니즘을 사용하여 생성되지만 사용자가 로그인하지 않아도 되기 때문입니다. 이 특성을 false로 설정하면 사용자가 URL마다 로그인해야 하므로 최고의 보안이 제공됩니다. 하지만 iOS 애플리케이션을 설치할 때 사용자에게 여러 번 로그인하도록 요청하면 사용자에게 안 좋은 느낌을 줄 수 있습니다. [iOS 모바일 디바이스에 클라이언트 설치](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device)를 참조하십시오. |
 | ibm.appcenter.ldap.active | Application Center가 LDAP에 대해 구성되어 있는지 여부를 지정합니다. LDAP을 사용으로 설정하려면 이 특성을 true로 설정하고 LDAP을 사용 안함으로 설정하려면 false로 설정하십시오. [LDAP을 사용한 사용자 관리](#managing-users-with-ldap)를 참조하십시오. |
 | ibm.appcenter.ldap.cache.expiration.seconds | Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. LDAP 캐시의 항목 유효 기간(초)을 지정하십시오. LDAP 요청의 양을 줄이기 위해 이 특성을 3600(1시간)보다 큰 값으로 설정하십시오. 값을 입력하지 않은 경우 기본값은 86400(24시간)입니다. 수동으로 LDAP 데이터의 캐시를 지워야 하는 경우에는 `acdeploytool.sh -clearLdapCache -s serverurl -c context -u user -p password` 명령을 입력하십시오. [독립형 도구를 사용하여 LDAP 캐시 지우기](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache)를 참조하십시오. |
 | ibm.appcenter.ldap.connectionURL | VMM(Virtual Member Manager)이 사용되지 않을 때 LDAP 서버에 액세스하는 데 필요한 URL입니다. [LDAP ACL 관리 구성(Liberty 프로파일)](#configuring-ldap-acl-management-liberty-profile) 및 [LDAP ACL 관리 구성(Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat)을 참조하십시오. |
@@ -2466,13 +2466,13 @@ Application Center의 일부 JNDI 특성을 구성할 수 있습니다.
 | ibm.appcenter.logging.formatjson | 이 특성은 ibm.appcenter.logging.tosystemerror가 true로 설정된 경우에만 적용됩니다. 이 특성이 사용으로 설정된 경우 이 특성은 System.Error로 경로 지정되는 로깅 메시지의 JSON 응답을 형식화합니다. 이 특성을 설정하면 서버를 디버그할 때 도움이 됩니다. |
 | ibm.appcenter.logging.tosystemerror | 모든 로깅 메시지가 System.Error로도 경로 지정되는지 여부를 지정합니다. 이 특성을 설정하면 서버를 디버그할 때 도움이 됩니다. |
 | ibm.appcenter.openjpa.Log | 이 특성은 OpenJPA에 전달되며 JPA 로깅을 사용으로 설정합니다. 세부사항은 [Apache OpenJPA 사용자 안내서](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html)를 참조하십시오. |
-| ibm.appcenter.proxy.host | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 주소입니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
-| ibm.appcenter.proxy.port | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 포트입니다(예: 443). 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 이 특성이 필요합니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
-| ibm.appcenter.proxy.protocol | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 프로토콜(http 또는 https)을 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 프로토콜로 설정됩니다. 예를 들어, appcntr.net입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
+| ibm.appcenter.proxy.host | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 주소입니다. [애플리케이션 리소스의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
+| ibm.appcenter.proxy.port | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 포트입니다(예: 443). 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 이 특성이 필요합니다. [애플리케이션 리소스의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
+| ibm.appcenter.proxy.protocol | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 프로토콜(http 또는 https)을 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 프로토콜로 설정됩니다. 예를 들어, appcntr.net입니다. 이 특성은 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 필요합니다. [애플리케이션 리소스의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
 | ibm.appcenter.proxy.scheme | 이 특성은 단지 ibm.appcenter.proxy.protocol의 대체 이름입니다. |
 | ibm.appcenter.push.schedule.period.amount | 애플리케이션 업데이트의 푸시 알림을 전송할 때 시간 스케줄을 지정합니다. 서버에서 애플리케이션이 자주 변경되는 경우에는 이 특성을 설정하여 알림의 일괄처리를 전송하십시오. 예를 들어, 각각의 개별 알림을 전송하는 대신 이전 시간 내에 발생한 모든 알림을 전송합니다. |
 | ibm.appcenter.push.schedule.period.unit | 애플리케이션 업데이트의 푸시 알림을 전송할 때 시간 스케줄 단위를 지정합니다. |
-| ibm.appcenter.services.endpoint | Application Center 콘솔에서 Application Center REST 서비스를 찾을 수 있게 합니다. applicationcenter.war 웹 애플리케이션의 외부 주소 및 컨텍스트 루트를 지정하십시오. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. 예를 들어, https://appcntr.net:443/applicationcenter입니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
+| ibm.appcenter.services.endpoint | Application Center 콘솔에서 Application Center REST 서비스를 찾을 수 있게 합니다. applicationcenter.war 웹 애플리케이션의 외부 주소 및 컨텍스트 루트를 지정하십시오. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. 예를 들어, https://appcntr.net:443/applicationcenter입니다. [애플리케이션 리소스의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오. |
 | ibm.appcenter.services.iconCacheMaxAge | 캐시됨 아이콘이 Application Center 콘솔 및 클라이언트에 대해 유효한 기간(초)을 지정합니다. 애플리케이션 아이콘은 거의 변경되지 않으므로 캐시됩니다. 아이콘에 대한 데이터 전송의 양을 줄이기 위해 600(10분)보다 큰 값을 지정하십시오. |
 | mfp.jndi.configuration | 선택사항. JNDI 구성이 WAR 파일에 삽입되었거나 공유 라이브러리로 제공된 경우 이 특성의 값은 JNDI 구성의 이름입니다. 이 값을 시스템 특성으로 지정할 수도 있습니다. |
 | mfp.jndi.file | 선택사항. JNDI 구성이 외부 파일로 저장되는 경우 이 특성의 값은 JNDI 구성을 설명하는 파일의 경로입니다. 이 값을 시스템 특성으로 지정할 수도 있습니다. |
