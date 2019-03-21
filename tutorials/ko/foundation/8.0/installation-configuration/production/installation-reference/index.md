@@ -121,10 +121,10 @@ DB2 사용자 계정에 대한 자세한 정보는 [DB2 보안 모델 개요](ht
 | 요소      |설명                             | 개수   |
 |--------------|-----------------------------------------|---------|
 | `<property>` | JDBC 연결 특성입니다.           | 0..∞    |
-| `<dba>`      | 데이터베이스 관리자 신임 정보입니다. | 0..1    |
+| `<dba>`      | 데이터베이스 관리자 인증 정보입니다. | 0..1    |
 
 사용 가능한 특성은 [IBM Data Server Driver for JDBC and SQLJ에 대한 특성](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html)을 참조하십시오.  
-내부 요소 `<dba>`는 데이터베이스 관리자의 신임 정보를 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+내부 요소 `<dba>`는 데이터베이스 관리자의 인증 정보를 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성 |설명                            | 필수 | 기본값 |
 |-----------|----------------------------------------|----------|---------|
@@ -158,11 +158,11 @@ MySQL 사용자 계정에 대한 자세한 정보는 [MySQL 사용자 계정 관
 | 요소      |설명                                      | 개수 |
 |--------------|--------------------------------------------------|-------|
 | `<property>` | JDBC 연결 특성입니다.                    | 0..∞  |
-| `<dba>`      | 데이터베이스 관리자 신임 정보입니다.          | 0..1  |
+| `<dba>`      | 데이터베이스 관리자 인증 정보입니다.          | 0..1  |
 | `<client>`   | 데이터베이스에 대한 액세스가 허용되는 호스트입니다. | 0..∞  |
 
 사용 가능한 특성은 [Connector/J에 대한 드라이버/데이터 소스 클래스 이름, URL 구문 및 구성 특성](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html)을 참조하십시오.  
-내부 요소 `<dba>`는 데이터베이스 관리자 신임 정보를 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+내부 요소 `<dba>`는 데이터베이스 관리자 인증 정보를 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성 |설명                            | 필수 | 기본값 |
 |-----------|----------------------------------------|----------|---------|
@@ -213,10 +213,10 @@ Oracle 사용자 계정에 대한 자세한 정보는 [인증 방법 개요](htt
 | 요소      |설명                                      | 개수 |
 |--------------|--------------------------------------------------|-------|
 | `<property>` | JDBC 연결 특성입니다.                    | 0..∞  |
-| `<dba>`      | 데이터베이스 관리자 신임 정보입니다.          | 0..1  |
+| `<dba>`      | 데이터베이스 관리자 인증 정보입니다.          | 0..1  |
 
 사용 가능한 연결 특성에 대한 정보는 [클래스 OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html)를 참조하십시오.  
-내부 요소 `<dba>`는 데이터베이스 관리자 신임 정보를 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+내부 요소 `<dba>`는 데이터베이스 관리자 인증 정보를 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성      |설명                                                              | 필수 | 기본값 |
 |----------------|--------------------------------------------------------------------------|----------|---------|
@@ -1485,7 +1485,7 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 
 | 태스크                                                     | Derby                     |DB2                     | MySQL                     | Oracle                      |
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
-| 데이터베이스 관리자 신임 정보를 사용하여 데이터베이스 작성 | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
+| 데이터베이스 관리자 인증 정보를 사용하여 데이터베이스 작성 | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
 | Liberty에 {{ site.data.keys.mf_server }} 설치	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml |(MySQL에 대한 참고 참조) | configure-liberty-oracle.xml |
 | WebSphere Application Server 전체 프로파일에 {{ site.data.keys.mf_server }} 설치(단일 서버) |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml(MySQL에 대한 참고 참조) | configure-was-oracle.xml |
 | WebSphere Application Server Network Deployment에 {{ site.data.keys.mf_server }} 설치(구성 파일에 대한 참고 참조) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml |configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml |configure-wasnd-cluster-mysql.xml(MySQL에 대한 참고 참조), configure-wasnd-server-mysql.xml(MySQL에 대한 참고 참조), configure-wasnd-node-mysql.xml(MySQL에 대한 참고 참조), configure-wasnd-cell-mysql.xml |configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |

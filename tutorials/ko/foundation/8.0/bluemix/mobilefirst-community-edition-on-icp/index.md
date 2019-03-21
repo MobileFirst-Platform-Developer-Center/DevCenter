@@ -9,11 +9,11 @@ weight: 2
 ## 개요
 {: #overview }
 
-IBM Mobile Foundation for Developers 8.0 on {{ site.data.keys.prod_icp }}은 Mobile Foundation 서버와 Operational Analytics 컴포넌트로 구성된 Mobile Foundation의 개발자 에디션입니다. 서버 런타임에는 Mobile Foundation 데이터를 저장하기 위한 기본 제공 Derby 데이터베이스가 있습니다. 이로 인해 사용자는 {{ site.data.keys.prod_icp }}의 Kubernetes 배치에서 하나의 팟(Pod)으로만 제한됩니다. Community Edition은 {{ site.data.keys.prod_icp }}에서 Mobile Foundation 사용자에게 최소한의 구성 매개변수를 제공하고 Mobile Foundation 인스턴스를 쉽게 설정할 수 있는 개발자 환경을 제공합니다. 
+IBM Mobile Foundation for Developers 8.0 on {{ site.data.keys.prod_icp }}은 Mobile Foundation 서버와 Operational Analytics 컴포넌트로 구성된 Mobile Foundation의 개발자 에디션입니다. 서버 런타임에는 Mobile Foundation 데이터를 저장하기 위한 기본 제공 Derby 데이터베이스가 있습니다. 이로 인해 사용자는 {{ site.data.keys.prod_icp }}의 Kubernetes 배치에서 하나의 팟(Pod)으로만 제한됩니다. Community Edition은 {{ site.data.keys.prod_icp }}에서 Mobile Foundation 사용자에게 최소한의 구성 매개변수를 제공하고 Mobile Foundation 인스턴스를 쉽게 설정할 수 있는 개발자 환경을 제공합니다.
 
-{{ site.data.keys.prod_icp }}에 사전 구성된 Operational Analytics가 포함된 IBM Mobile Foundation 서버의 개발자 에디션을 설치하려면 아래 지시사항을 따르십시오. <br/>
+{{ site.data.keys.prod_icp }}에 사전 구성된 Operational Analytics가 포함된 IBM Mobile Foundation 서버의 개발자 에디션을 설치하려면 아래 지시사항을 따르십시오.<br/>
 * IBM Cloud Private Kubernetes Cluster(IBM Cloud Private CE 또는 Native/Enterprise)를 설정하십시오.
-* [선택사항] 필수 도구인 Docker CLI, IBM Cloud CLI(cloudctl), Kubernetes CLI(kubectl) 및 Helm CLI(helm)를 사용하여 호스트 컴퓨터를 설정하십시오. 
+* [선택사항] 필수 도구인 Docker CLI, IBM Cloud CLI(cloudctl), Kubernetes CLI(kubectl) 및 Helm CLI(helm)를 사용하여 호스트 컴퓨터를 설정하십시오.
 
 
 #### 다음으로 이동:
@@ -43,7 +43,7 @@ CLI를 사용하여 {{ site.data.keys.prod_icp }} Cluster에 액세스하려면 
 ## IBM Mobile Foundation for Developers 8.0 Helm Charts 설치 및 구성
 {: #install-the-ibm-mfpf-icp-catalog}
 
-카탈로그에서 IBM Mobile Foundation for Developers 8.0(**ibm-mobilefoundation-dev**) Helm Charts를 설치하려면 [카탈로그에서 Helm 차트 배치](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/app_center/create_release.html) 프로시저를 따르십시오. 
+카탈로그에서 IBM Mobile Foundation for Developers 8.0(**ibm-mobilefoundation-dev**) Helm Charts를 설치하려면 [카탈로그에서 Helm 차트 배치](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/app_center/create_release.html) 프로시저를 따르십시오.
 
 ### IBM Mobile Foundation for Developers 8.0 환경 변수
 {: #env-mf-developers }
@@ -66,7 +66,7 @@ CLI를 사용하여 {{ site.data.keys.prod_icp }} Cluster에 액세스하려면 
 ## 설치 확인
 {: #verify-install}
 
-Mobile Foundation for Developers 8.0을 설치한 후에 다음을 수행하여 설치 및 배치된 팟(Pod)의 상태를 확인할 수 있습니다. 
+Mobile Foundation for Developers 8.0을 설치한 후에 다음을 수행하여 설치 및 배치된 팟(Pod)의 상태를 확인할 수 있습니다.
 
 {{ site.data.keys.prod_icp }} 관리 콘솔에서 **워크로드 > Helm 릴리스**를 선택하십시오. 설치의 *릴리스 이름*을 클릭하십시오.
 
@@ -91,7 +91,7 @@ IBM {{ site.data.keys.mf_analytics }} Console은 `<protocol>://<ip_address>:<por
 {: #uninstall}
 {{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }}를 설치 제거하려면 [Helm CLI](https://docs.helm.sh/using_helm/#installing-helm)를 사용하십시오.
 
-대시보드에서 **워크로드 > Helm 릴리스**를 클릭하고 차트 배치에 사용된 *release_name*을 검색한 다음 **조치** 메뉴를 클릭하고 **삭제**를 선택하여 설치된 차트를 완전히 삭제하십시오. 
+대시보드에서 **워크로드 > Helm 릴리스**를 클릭하고 차트 배치에 사용된 *release_name*을 검색한 다음 **조치** 메뉴를 클릭하고 **삭제**를 선택하여 설치된 차트를 완전히 삭제하십시오.
 
 다음 명령을 사용하여 설치된 차트 및 연관된 배치를 완전히 삭제하십시오.
 ```bash
@@ -102,4 +102,4 @@ helm delete --purge <release_name>
 ## 제한사항
 {: #limitations}
 
-이 Helm Charts는 개발 및 테스트용으로만 제공됩니다. 데이터는 임베디드 Derby 데이터베이스에 저장됩니다. 데이터베이스 제한사항으로 인해 차트는 하나의 팟(Pod)에서만 작동합니다. 
+이 Helm Charts는 개발 및 테스트용으로만 제공됩니다. 데이터는 임베디드 Derby 데이터베이스에 저장됩니다. 데이터베이스 제한사항으로 인해 차트는 하나의 팟(Pod)에서만 작동합니다.

@@ -85,7 +85,7 @@ com.worklight.level = ALL
 
 다음 JNDI 특성을 Application Center 서비스(**applicationcenter.war**)에 대한 웹 애플리케이션에 적용할 수 있습니다.
 
-| 특성 설정 | 설정 | 설명 |
+| 특성 설정 | 설정 |설명 |
 |-------------------|---------|-------------|
 | ibm.appcenter.logging.formatjson | true | 기본적으로 이 특성은 false로 설정됩니다. true로 설정하면 로그 파일에서 쉽게 읽을 수 있도록 JSON 출력을 공백으로 형식화합니다. |
 | ibm.appcenter.logging.tosystemerror | true | 기본적으로 이 특성은 false로 설정됩니다. true로 설정하면 모든 로그 메시지를 로그 파일의 시스템 오류에 인쇄합니다. 해당 특성을 사용하여 글로벌 로깅을 켜십시오. |

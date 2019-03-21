@@ -22,13 +22,13 @@ IBM {{ site.data.keys.mf_console }} 사용하는 외에도 {{ site.data.keys.mf_
 * 앱 구성
 * 어댑터 작성, 빌드 및 배치
 * Cordova 앱 미리보기 및 업데이트
-* 자세한 정보는 [CLI를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 학습서를 참조하십시오.
+* 자세한 정보는 [CLI를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 튜토리얼을 참조하십시오.
 
 ### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
 {{ site.data.keys.mf_server }}는 안전한 백엔드 연결성, 애플리케이션 관리, 푸시 알림 지원 및 분석 기능과 {{ site.data.keys.product_adj }} 애플리케이션에 대한 모니터링을 제공합니다. 이는 Java Platform, Enterprise Edition(Java EE) 센스의 애플리케이션 서버가 아닙니다. {{ site.data.keys.product }} 애플리케이션 패키지에 대한 컨테이너의 역할을 하며, 사실 웹 애플리케이션의 콜렉션이고, 일반 애플리케이션 서버의 맨 위에서 실행되는 EAR(Enterprise Archive) 파일로 선택적으로 패키지됩니다.
 
-{{ site.data.keys.mf_server }}는 엔터프라이즈 환경으로 통합되며 기존 자원과 인프라를 사용합니다. 이 통합은 백엔드 엔터프라이즈 시스템과 클라우드 기반 서비스를 사용자 디바이스에 채널링할 책임이 있는 서버 측 소프트웨어 컴포넌트인 어댑터에 기반합니다. 어댑터를 사용하여 정보 소스에서 데이터를 검색하고 업데이트할 수 있으며 사용자가 트랜잭션을 수행하고 다른 서비스와 애플리케이션을 시작하도록 허용할 수 있습니다.
+{{ site.data.keys.mf_server }}는 엔터프라이즈 환경으로 통합되며 기존 리소스와 인프라를 사용합니다. 이 통합은 백엔드 엔터프라이즈 시스템과 클라우드 기반 서비스를 사용자 디바이스에 채널링할 책임이 있는 서버 측 소프트웨어 컴포넌트인 어댑터에 기반합니다. 어댑터를 사용하여 정보 소스에서 데이터를 검색하고 업데이트할 수 있으며 사용자가 트랜잭션을 수행하고 다른 서비스와 애플리케이션을 시작하도록 허용할 수 있습니다.
 
 [{{ site.data.keys.mf_server }}에 대해 자세히 알아보십시오](server).
 
@@ -77,13 +77,13 @@ Application Center는 회사에서 개인 용도로 작성되며 일부 모바�
 
 ### {{ site.data.keys.mf_system_pattern }}
 {: #mobilefirst-system-pattern }
-{{ site.data.keys.mf_system_pattern_full }}과 함께 IBM PureApplication System에 {{ site.data.keys.mf_server }} 및 SoftLayer에 IBM PureApplication Service를 배치할 수 있습니다. 이러한 패턴으로 관리자 및 회사는 사내 구축형 Cloud 기술을 활용함으로써 비즈니스 환경에서의 변경사항에 신속하게 대응할 수 있습니다. 이 접근방식을 통해 배치 프로세스가 간단해지고 모바일 수요 증가에 대응하기 위해 운영 효율성이 개선됩니다. 이러한 수요는 기존 수요 주기를 초과하는 솔루션 반복을 가속화합니다. {{ site.data.keys.mf_server }} 패턴을 사용하면 내장 스케일링 정책 같이 우수 사례 및 내장 전문 지식에 대한 액세스도 제공합니다.
+{{ site.data.keys.mf_system_pattern_full }}과 함께 IBM PureApplication System에 {{ site.data.keys.mf_server }} 및 SoftLayer에 IBM PureApplication Service를 배치할 수 있습니다. 이러한 패턴으로 관리자 및 회사는 온프레미스 Cloud 기술을 활용함으로써 비즈니스 환경에서의 변경사항에 신속하게 대응할 수 있습니다. 이 접근방식을 통해 배치 프로세스가 간단해지고 모바일 수요 증가에 대응하기 위해 운영 효율성이 개선됩니다. 이러한 수요는 기존 수요 주기를 초과하는 솔루션 반복을 가속화합니다. {{ site.data.keys.mf_server }} 패턴을 사용하면 내장 스케일링 정책 같이 우수 사례 및 내장 전문 지식에 대한 액세스도 제공합니다.
 
 #### PureApplication System
 {: #pureapplication-system }
 IBM PureApplication System은 클라우드 환경에서 애플리케이션 중심 컴퓨팅 모델을 제공하는 IBM X-Architecture를 기반으로 하는 확장성이 강한 통합형 시스템입니다.
 
-애플리케이션 중심 시스템은 복잡한 애플리케이션과 애플리케이션에서 호출하는 태스크 및 프로세스를 관리하기에 효과적인 방법입니다. 전체 시스템은 다양한 자원 구성이 다양한 애플리케이션 워크로드에 맞게 자동으로 조정되는 다양한 가상 컴퓨팅 환경을 구현합니다. IBM PureApplication System 플랫폼의 애플리케이션 관리 기능은 미들웨어 및 기타 애플리케이션 컴포넌트를 쉽고 빠르고 반복적으로 배치할 수 있게 해줍니다.
+애플리케이션 중심 시스템은 복잡한 애플리케이션과 애플리케이션에서 호출하는 태스크 및 프로세스를 관리하기에 효과적인 방법입니다. 전체 시스템은 다양한 리소스 구성이 다양한 애플리케이션 워크로드에 맞게 자동으로 조정되는 다양한 가상 컴퓨팅 환경을 구현합니다. IBM PureApplication System 플랫폼의 애플리케이션 관리 기능은 미들웨어 및 기타 애플리케이션 컴포넌트를 쉽고 빠르고 반복적으로 배치할 수 있게 해줍니다.
 
 IBM PureApplication System은 하나의 통합된 시스템에서 전달되는 가상화된 워크로드 및 확장 가능한 인프라를 제공합니다.
 
