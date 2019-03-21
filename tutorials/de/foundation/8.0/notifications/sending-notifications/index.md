@@ -31,8 +31,8 @@ oder augehend vom authentifizierten Benutzer.
     * [REST-APIs](#rest-apis)
     * [Benachrichtigungen anpassen](#customizing-notifications)
 * [HTTP/2-Unterstützung für APNS-Push-Benachrichtigungen](#http2-support-for-apns-push-notifications)
-  * [HTTP/2 aktivieren](#enabling-http2)
-  * [Proxyunterstützung für HTTP/2](#proxy-support-for-http2)
+    * [HTTP/2 aktivieren](#enabling-http2)
+    * [Proxyunterstützung für HTTP/2](#proxy-support-for-http2)
 * [Proxyunterstützung](#proxy-support)
 * [Nächste Lernprogramme](#tutorials-to-follow-next)
 
@@ -340,7 +340,7 @@ Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten:
 
 | Eigenschaften der Nutzdaten |Definition |
 
---- | ---
+| --- | --- |
 | message |Die zu sendende Alertnachricht |
 | settings |Die Einstellungen sind verschiedene Attribute der Benachrichtigung. |
 
@@ -463,6 +463,32 @@ den Abschnitt **Angepasste iOS/Android-Einstellungen** ein, um die Benachrichtig
 * Benachrichtigungsklang, angepasste Nutzdaten, Titel für Aktionsschlüssel, Benachrichtigungstyp und Kennzeichnungsnummer
 
 ![Push-Benachrichtigungen anpassen](customizing-push-notifications.png)
+
+## HTTP/2-Unterstützung für APNS-Push-Benachrichtigungen
+{: #http2-support-for-apns-push-notifications}
+
+Der Apple Push Notification Service (APNS) unterstützt ein neues, API-basiertes HTTP/2-Netzprotokoll. Die Unterstützung für HTTP/2 bringt viele Vorteile mit sich, zu denen unter anderem folgende gehören:
+
+* Die Nachrichtenlänge erhöht sich von 2 KB auf 4 KB, sodass es in Benachrichtigungen mehr Inhalt geben kann.
+* Zwischen Client und Server sind nicht mehr mehrere Verbindungen notwendig, sodass sich der Durchsatz verbessert.
+* Für universelle Push-Benachrichtigungen werden Client-SSL-Zertifikate unterstützt.
+
+>MobileFirst bietet jetzt neben der Unterstützung für traditionelle, auf TCP-Sockets basierende Benachrichtigungen auch Unterstützung für auf HTTP/2 basierende APNS-Push-Benachrichtigungen. 
+
+### HTTP/2 aktivieren
+{: #enabling-http2}
+
+HTTP/2-basierte Benachrichtigungen können über eine JNDI-Eigenschaft aktiviert werden. 
+```xml
+<jndiEntry jndiName="imfpush/mfp.push.apns.http2.enabled" value= "true"/>
+```
+
+>**Hinweis:** Wenn die obige JNDI-Eigenschaft hinzugefügt wird, werden keine traditionellen, auf TCP-Sockets basierenden Benachrichtungen verwendet, sondern nur die HTTP/2-basierten Benachrichtigungen.
+
+### Proxyunterstützung für HTTP/2
+{: #proxy-support-for-http2}
+
+HTTP/2-basierte Benachrichtigungen können über einen HTTP-Proxy gesendet werden. Informationen zur Weiterleitung der Benachrichtigungen über einen Proxy finden Sie [hier](#proxy-support).
 
 ## Proxyunterstützung
 {: #proxy-support }
