@@ -89,7 +89,7 @@ Application Center 모바일 클라이언트는 날짜 형식화와 같이 실�
 * 경보, 확인 및 프롬프트 메소드에 대한 사용자 정의 제목 및 단추 이름은 화면 가장자리에서 잘리지 않도록 짧게 유지해야 합니다.
 * JSONStore는 정규화를 처리하지 않습니다. JSONStore API에 대한 찾기 기능은 액센트 구분, 대소문자 구분, 1 대 2 맵핑과 같은 언어 민감성을 고려하지 않습니다.
 
-### 어댑터 및 써드파티 종속성
+### 어댑터 및 서드파티 종속성
 {: #adapters-and-third-party-dependencies }
 다음 알려진 문제는 {{ site.data.keys.product_adj }} 공유 라이브러리를 포함하여 애플리케이션 서버의 종속성 및 클래스 간 상호작용과 관련이 있습니다.
 
@@ -188,9 +188,9 @@ NuGet 패키지를 통해 {{ site.data.keys.product_adj }} SDK를 설치한 경�
 {: #nested-projects-can-result-in-unpredictable-results-with-the-cli }
 {{ site.data.keys.mf_cli }}를 사용하는 경우 하나의 프로젝트 내에 다른 프로젝트를 중첩시키지 마십시오. 중첩시키는 경우 예상했던 것과 다른 프로젝트에서 조치가 수행될 수 있습니다.
 
-### {{ site.data.keys.mf_mbs }}에서 Cordova 웹 자원 미리보기
+### {{ site.data.keys.mf_mbs }}에서 Cordova 웹 리소스 미리보기
 {: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
-{{ site.data.keys.mf_mbs }}로 웹 자원을 미리볼 수 있지만 일부 {{ site.data.keys.product_adj }} JavaScript API는 시뮬레이터에 의해 지원되지 않습니다. 특히, OAuth 프로토콜은 완전히 지원되지는 않습니다. 하지만 `WLResourceRequest`를 사용하여 어댑터에 대한 호출을 테스트할 수 있습니다.
+{{ site.data.keys.mf_mbs }}로 웹 리소스를 미리볼 수 있지만 일부 {{ site.data.keys.product_adj }} JavaScript API는 시뮬레이터에 의해 지원되지 않습니다. 특히, OAuth 프로토콜은 완전히 지원되지는 않습니다. 하지만 `WLResourceRequest`를 사용하여 어댑터에 대한 호출을 테스트할 수 있습니다.
 
 ### 확장된 앱 인증의 테스트에 필요한 실제 iOS 디바이스
 {: #physical-ios-device-required-for-testing-extended-app-authenticity }

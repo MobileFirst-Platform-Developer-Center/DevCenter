@@ -179,28 +179,28 @@ User can delete current container by clicking on **Delete Analytics** button fro
 ## Mobile Foundation 서비스 플랜 마이그레이션
 {: #migrating-mobile-foundation-service-plan }
 
-더 이상 사용되지 않는 플랜을 사용하여 작성된 Mobile Foundation 인스턴스를 새 플랜으로 업데이트해야 합니다. 플랜 업데이트도 인스턴스 사용량에 따라서 필요할 수 있습니다. 
+더 이상 사용되지 않는 플랜을 사용하여 작성된 Mobile Foundation 인스턴스를 새 플랜으로 업데이트해야 합니다. 플랜 업데이트도 인스턴스 사용량에 따라서 필요할 수 있습니다.
 
 ### 샘플 시나리오: Professional(디바이스별) 플랜에서 Professional 1 Application 플랜으로 마이그레이션
 
-1. IBM Cloud 대시보드에서 마이그레이션하려는 IBM Mobile Foundation 인스턴스를 선택하십시오. 
+1. IBM Cloud 대시보드에서 마이그레이션하려는 IBM Mobile Foundation 인스턴스를 선택하십시오.
 2. 왼쪽 탐색에서 **플랜**을 선택하십시오.
    ![기존 Mobile Foundation 플랜](existing-plan.png)
 3. 나열된 가격 책정 플랜에서 Professional 1 Application을 선택하십시오.
    ![새 Mobile Foundation 플랜](new-plan.png)
 4. **저장** 단추를 클릭하고 플랜 마이그레이션을 확인하십시오.
-     이제 Professional 1 Application으로의 마이그레이션이 완료되었으며 기존의 모든 데이터가 계속 유지됩니다. 청구가 변경되며 시스템 정지 시간은 없습니다. 
-5. 플랜 마이그레이션 후 올바른 구성이 적용되도록 서비스 대시보드에서 Mobile Foundation 인스턴스를 다시 작성해야 합니다. 이 업데이트에는 잠깐 동안 시스템 정지가 필요합니다. 시스템 정지에 대한 플랜이 필요합니다. 왼쪽 탐색에서 **관리**를 선택하고 **다시 작성**을 클릭하십시오. 
+     이제 Professional 1 Application으로의 마이그레이션이 완료되었으며 기존의 모든 데이터가 계속 유지됩니다. 청구가 변경되며 시스템 정지 시간은 없습니다.
+5. 플랜 마이그레이션 후 올바른 구성이 적용되도록 서비스 대시보드에서 Mobile Foundation 인스턴스를 다시 작성해야 합니다. 이 업데이트에는 잠깐 동안 시스템 정지가 필요합니다. 시스템 정지에 대한 플랜이 필요합니다. 왼쪽 탐색에서 **관리**를 선택하고 **다시 작성**을 클릭하십시오.
 
->**참고:** 더 이상 사용되지 않은 플랜 중 하나를 이용하는 경우 새 플랜으로 마이그레이션해야 합니다. 
+>**참고:** 더 이상 사용되지 않은 플랜 중 하나를 이용하는 경우 새 플랜으로 마이그레이션해야 합니다.
 
 ### 지원되는 플랜 마이그레이션
 
-* *Developer* (더 이상 사용되지 않음) 플랜은 새 *Developer* 플랜으로만 업데이트할 수 있습니다. 
-* *Developer Pro* (더 이상 사용되지 않음) 플랜은 *Professional(디바이스별)* 또는 *Professional 1 Application* 플랜으로만 업데이트할 수 있습니다. 
-* *Professional(용량별)* (더 이상 사용되지 않음) 플랜은 *Professional(디바이스별)* 또는 *Professional 1 Application* 플랜으로만 업데이트할 수 있습니다. 
-* *Professional(디바이스별)* 플랜은 *Professional 1 Application* 플랜으로만 업데이트할 수 있습니다. 
-* *Professional 1 Application* 플랜은 *Professional(디바이스별)* 플랜으로만 업데이트할 수 있습니다. 
+* *Developer* (더 이상 사용되지 않음) 플랜은 새 *Developer* 플랜으로만 업데이트할 수 있습니다.
+* *Developer Pro* (더 이상 사용되지 않음) 플랜은 *Professional(디바이스별)* 또는 *Professional 1 Application* 플랜으로만 업데이트할 수 있습니다.
+* *Professional(용량별)* (더 이상 사용되지 않음) 플랜은 *Professional(디바이스별)* 또는 *Professional 1 Application* 플랜으로만 업데이트할 수 있습니다.
+* *Professional(디바이스별)* 플랜은 *Professional 1 Application* 플랜으로만 업데이트할 수 있습니다.
+* *Professional 1 Application* 플랜은 *Professional(디바이스별)* 플랜으로만 업데이트할 수 있습니다.
 * 플랜 업데이트는 새 *Developer* 플랜에는 지원되지 않습니다.
 
 ## Mobile Foundation 서버 수정사항 적용

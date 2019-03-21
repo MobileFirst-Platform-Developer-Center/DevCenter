@@ -17,13 +17,13 @@ weight: 6
 
 정책 요구사항은 다음 방법 중 하나를 사용하여 충족할 수 있습니다.
 
-- {{ site.data.keys.mf_server }}도 호스팅하는 동일한 WebSphere Full/Liberty 프로파일 애플리케이션 서버에서 웹 애플리케이션 자원 제공
+- {{ site.data.keys.mf_server }}도 호스팅하는 동일한 WebSphere Full/Liberty 프로파일 애플리케이션 서버에서 웹 애플리케이션 리소스 제공
 - Node.js를 프록시로 사용하여 애플리케이션 요청의 경로를 {{ site.data.keys.mf_server }}로 재지정
 
 #### 다음으로 이동
 {: #jump-to }
 - [선행 조건](#prerequisites)
-- [WebSphere Liberty 프로파일을 사용하여 웹 애플리케이션 자원 제공](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
+- [WebSphere Liberty 프로파일을 사용하여 웹 애플리케이션 리소스 제공](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
 - [Node.js 사용](#using-nodejs)
 - [다음 단계](#next-steps)
 
@@ -42,9 +42,9 @@ weight: 6
 
 -   다음 설정 지시사항을 수행하려면 개발자의 워크스테이션에 Apache Maven 또는 Node.js가 설치되어 있어야 합니다. 추가 지시사항은 [설치 안내서](../mobilefirst/installation-guide/)를 참조하십시오.
 
-## WebSphere Liberty 프로파일을 사용하여 웹 애플리케이션 자원 제공
+## WebSphere Liberty 프로파일을 사용하여 웹 애플리케이션 리소스 제공
 {: #using-websphere-liberty-profile-to-serve-the-web-application-resources }
-웹 애플리케이션의 자원을 제공하려면 Maven webapp(**.war** 파일)에 이를 저장해야 합니다.
+웹 애플리케이션의 리소스를 제공하려면 Maven webapp(**.war** 파일)에 이를 저장해야 합니다.
 
 ### Maven webapp 원형 작성
 {: #creating-a-maven-webapp-archetype }
@@ -57,16 +57,16 @@ weight: 6
     - **MyCompany** 및 **MyWebApp**을 사용자의 고유 값으로 바꾸십시오.
     - 값을 하나씩 입력하려면 `-DinteractiveMode=false` 플래그를 제거하십시오.
 
-### 웹 애플리케이션의 자원을 사용하여 Maven webapp 빌드 
+### 웹 애플리케이션의 리소스를 사용하여 Maven webapp 빌드 
 {: #building-the-maven-webapp-with-the-web-applications-resources }
-1. 웹 애플리케이션의 자원(예: HTML, CSS, JavaScript 및 이미지 파일)을 생성된 **[MyWebApp] → src → Main → webapp** 폴더 내부에 배치하십시오.
+1. 웹 애플리케이션의 리소스(예: HTML, CSS, JavaScript 및 이미지 파일)를 생성된 **[MyWebApp] → src → Main → webapp** 폴더 내부에 배치하십시오.
 
     > 여기서부터 **webapp** 폴더를 웹 애플리케이션의 개발 위치로 간주하십시오.
 
-2. `mvn clean install` 명령을 실행하여 애플리케이션의 웹 자원이 포함된 .war 파일을 생성하십시오.  
+2. `mvn clean install` 명령을 실행하여 애플리케이션의 웹 리소스가 포함된 .war 파일을 생성하십시오.  
 생성된 .war 파일은 **[MyWebApp] → target** 폴더에 있습니다.
    
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 웹 자원을 업데이트할 때마다 `mvn clean install`을 실행해야 합니다.
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 웹 리소스를 업데이트할 때마다 `mvn clean install`을 실행해야 합니다.
 
 ### 애플리케이션 서버에 Maven webapp 추가
 {: #adding-the-maven-webapp-to-the-application-server }
@@ -142,5 +142,5 @@ Node.js는 웹 애플리케이션에서 {{ site.data.keys.mf_server }}로 요청
 웹 애플리케이션에서 {{ site.data.keys.product }} 개발을 계속하려면 {{ site.data.keys.product }} 웹 SDK를 웹 애플리케이션에 추가해야 합니다.
 
 * [{{ site.data.keys.product }} SDK를 웹 애플리케이션에](../../../application-development/sdk/web/) 추가하는 방법을 학습하십시오.
-* 애플리케이션 개발에 대해서는 [{{ site.data.keys.product }} SDK 사용](../../../application-development/) 학습서를 참조하십시오.
+* 애플리케이션 개발에 대해서는 [{{ site.data.keys.product }} SDK 사용](../../../application-development/) 튜토리얼을 참조하십시오.
 * 어댑터 개발에 대해서는 [어댑터](../../../adapters/) 카테고리를 참조하십시오.

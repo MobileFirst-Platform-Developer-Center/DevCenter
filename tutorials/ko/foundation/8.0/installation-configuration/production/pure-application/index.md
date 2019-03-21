@@ -317,7 +317,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
 9. {{ site.data.keys.mf_console }}에 액세스하십시오.
     * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오.
     * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오.
-    * 이름이 **MobileFirst\_Platform\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
+    * 이름이 **MobileFirst\_Platform\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공인 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
     * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오.
         * `http://{MFP Server VM Public IP}:9080/mfpconsole`
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
@@ -447,7 +447,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
 10. {{ site.data.keys.mf_console }}에 액세스하십시오.
     * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오.
     * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오.
-    * 이름이 **IHS\_Server.***와 유사한 IHS Server VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
+    * 이름이 **IHS\_Server.***와 유사한 IHS Server VM을 찾아 해당 공인 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
     * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오.
         * `http://{IHS Server VM Public IP}/mfpconsole`
         * `https://{IHS Server VM Public IP}/mfpconsole`
@@ -586,7 +586,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
 9. {{ site.data.keys.mf_console }}에 액세스하십시오.
     * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오.
     * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오.
-    * 이름이 **MobileFirst\_Platform\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
+    * 이름이 **MobileFirst\_Platform\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공인 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
     * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오.
         * `http://{MFP Server VM Public IP}:9080/mfpconsole`
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
@@ -727,7 +727,7 @@ Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Sup
 10. {{ site.data.keys.mf_console }}에 액세스하십시오.
     * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오.
     * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오.
-    * 이름이 **IHS\_Server.***와 유사한 IHS Server VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
+    * 이름이 **IHS\_Server.***와 유사한 IHS Server VM을 찾아 해당 공인 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
     * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오.
         * `http://{IHS Server VM Public IP}/mfpconsole`
         * `https://{IHS Server VM Public IP}/mfpconsole`
@@ -887,7 +887,7 @@ System Monitoring for WebSphere Application Server 공유 서비스를 실행 �
 10. {{ site.data.keys.mf_console }}에 액세스하십시오.
     * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오.
     * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오.
-    * 이름이 **MobileFirst\_Platform\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
+    * 이름이 **MobileFirst\_Platform\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공인 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다.
     * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오.
         * `http://{MFP Server VM Public IP}:9080/mfpconsole`
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
@@ -935,7 +935,7 @@ PureApplication 패턴의 배치가 거의 완료되면 System Monitoring for We
     * **PureApplication System** 대시보드에서 **패턴 → 가상 시스템 인스턴스**를 클릭하십시오.
     * **가상 시스템 인스턴스** 페이지에서 패턴 인스턴스를 찾아 실행 중인지 확인하십시오. 실행 중이 아니면 패턴 인스턴스를 시작하십시오.
     * 패턴 인스턴스의 이름을 클릭하고 세부사항 패널에서 **가상 머신 퍼스펙티브** 섹션을 찾으십시오.
-    * **가상 머신 퍼스펙티브** 섹션에서 이름이 **DmgrNode**로 시작하는 가상 머신을 찾아 해당 공용 IP 주소를 메모하십시오.
+    * **가상 머신 퍼스펙티브** 섹션에서 이름이 **DmgrNode**로 시작하는 가상 머신을 찾아 해당 공인 IP 주소를 메모하십시오.
     * 다음 URL에서 WebSphere Application Server 관리 콘솔을 여십시오.
     
         ```bash
@@ -1047,7 +1047,7 @@ PureApplication 패턴의 배치가 거의 완료되면 System Monitoring for We
 5. {{ site.data.keys.mf_console }}에 액세스하려면 다음 단계를 수행하십시오.
     * **패턴 → 가상 시스템 인스턴스**를 클릭하여 **가상 시스템 인스턴스** 페이지를 열고 거기서 패턴을 검색하십시오.
     * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 가상 머신 퍼스펙티브를 펼치십시오.
-    * 이름이 **MFP\_AppCenter\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오.
+    * 이름이 **MFP\_AppCenter\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공인 IP 주소를 메모하십시오.
     * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오.
         * `http://{MFP Server VM Public IP}:9080/appcenterconsole`
         * `https://{MFP Server VM Public IP}:9443/appcenterconsole`
@@ -1156,7 +1156,7 @@ PureApplication 패턴의 배치가 거의 완료되면 System Monitoring for We
 5. {{ site.data.keys.mf_console }}에 액세스하려면 다음 단계를 수행하십시오.
     * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오.
     * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 가상 머신 퍼스펙티브를 펼치십시오.
-    * 이름이 **MFP\_AppCenter\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오.
+    * 이름이 **MFP\_AppCenter\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공인 IP 주소를 메모하십시오.
     * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오.
         * `http://{MFP Server VM Public IP}:9080/appcenterconsole`
         * `https://{MFP Server VM Public IP}:9443/appcenterconsole`

@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-이 학습서에는 개발자가 iOS 애플리케이션을 개발하고 테스트하기 위해 수행해야 하는 단계가 설명되어 있습니다. 이 단계에는 Apple 개발자에서 등록하고 Xcode를 설치하는 것이 포함됩니다.
+이 튜토리얼에는 개발자가 iOS 애플리케이션을 개발하고 테스트하기 위해 수행해야 하는 단계가 설명되어 있습니다. 이 단계에는 Apple 개발자에서 등록하고 Xcode를 설치하는 것이 포함됩니다.
 
 #### 지원 레벨
 {: #support-level }
@@ -16,7 +16,7 @@ weight: 3
 * Xcode 7.1 이상
 * iOS 8 이상
 
-**전제조건:** iOS 개발 환경을 설정할 때는 [{{ site.data.keys.product }} 개발 환경 설정](../mobilefirst/) 학습서도 읽어야 합니다.
+**전제조건:** iOS 개발 환경을 설정할 때는 [{{ site.data.keys.product }} 개발 환경 설정](../mobilefirst/) 튜토리얼도 읽어야 합니다.
 
 ### 등록
 {: #registration }
@@ -50,5 +50,5 @@ Xcode는 애플리케이션을 테스트하는 데 필요한 iOS 시뮬레이터
 
 ## 다음 내용
 {: #whats-next }
-{{ site.data.keys.product_adj }} 및 iOS 개발 환경이 설정되었으니 계속해서 [빠른 시작](../../../quick-start/ios/) 카테고리로 이동하여 {{ site.data.keys.product }}을 경험하거나 [모든 학습서](../../../all-tutorials)로 이동하여 {{ site.data.keys.product }} 개발의 특정 측면을 학습하십시오.
+{{ site.data.keys.product_adj }} 및 iOS 개발 환경이 설정되었으니 계속해서 [빠른 시작](../../../quick-start/ios/) 카테고리로 이동하여 {{ site.data.keys.product }}을 경험하거나 [모든 튜토리얼](../../../all-tutorials)로 이동하여 {{ site.data.keys.product }} 개발의 특정 측면을 학습하십시오.
 
