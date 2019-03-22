@@ -10,7 +10,7 @@ weight: 13
 {: #overview }
 In this example, you will learn how  to set up the development environment for watchOS 2 and later using {{ site.data.keys.product_adj }} framework. The example is created and described using watchOS 2. It also works fine on watchOS 3.
 
->**Note:** Application Authenticity feature is supported in watchOS SDK from iFix <version> onwards.
+>**Note:** Application Authenticity feature is supported in watchOS SDK from *8.0.0.0-MFPF-IF201903190949-CDUpdate-05* onwards.
 
 ## Setup
 {: #setup }
