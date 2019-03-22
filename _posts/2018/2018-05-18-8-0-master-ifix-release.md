@@ -14,14 +14,42 @@ pinned: true
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *8.0.0.0-MFPF-IF201903181319*  is released for Mobile Foundation 8.0, dated **March 18th, 2019**.
+*8.0.0.0-MFPF-IF201903190949-CDUpdate-05* is released for Mobile Foundation 8.0, dated **March 19th, 2019**.
 <br/>
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201903190949" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201903190949">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201903190949" href="#collapse-mfp-ifix-IF201903190949" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201903190949"><b>8.0.0.0-MFPF-IF201903190949-CDUpdate-05</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201903190949" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201903190949">
+            <div class="panel-body">
+            CD Update-05 for MobileFirst Foundation 8.0, dated <b>March 19th, 2019</b>.
+
+            <h2>Changes in this CD Update</h2>
+            <i>For a cumulative list of all previous CD Update announcements, see the <a href="http://mobilefirstplatform.ibmcloud.com/blog/tag/CDUpdate_8.0/">here</a>.</i><br/>
+
+            <h2>Features</h2>
+            <blockquote>To view the details about the features included in this CD Update, see the <a href="{{site.baseurl}}/blog/2019/03/22/8-0-cd-update-release">announcement</a>.</blockquote>
+
+        </div>
+    </div>
+</div>   
+</div>
+
+
+## Previous iFixes & CD Updates for MobileFirst Foundation 8.0
+
+IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<br/>
+*List below includes iFixes and CD Updates released since 2018 only.*
 
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201903181319" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201903181319">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201903181319" href="#collapse-mfp-ifix-IF201903181319" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201903181319"><b>8.0.0.0-MFPF-IF201903181319</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201903181319" href="#collapse-mfp-ifix-IF201903181319" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201903181319"><b>8.0.0.0-MFPF-IF201903181319</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201903181319" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201903181319">
@@ -176,13 +204,6 @@ A new iFix *8.0.0.0-MFPF-IF201903181319*  is released for Mobile Foundation 8.0,
     </div>
 </div>   
 </div>
-
-
-## Previous iFixes & CD Updates for MobileFirst Foundation 8.0
-
-IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<br/>
-*List below includes iFixes and CD Updates released since 2018 only.*
-
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201903070211" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201903070211">
