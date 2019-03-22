@@ -10,6 +10,8 @@ weight: 13
 {: #overview }
 In this example, you will learn how  to set up the development environment for watchOS 2 and later using {{ site.data.keys.product_adj }} framework. The example is created and described using watchOS 2. It also works fine on watchOS 3.
 
+>**Note:** Application Authenticity feature is supported in watchOS SDK from *8.0.0.0-MFPF-IF201903190949-CDUpdate-05* onwards.
+
 ## Setup
 {: #setup }
 To set up the development environment for watchOS , create the Xcode project, add the watchOS framework, and set up the necessary targets.
@@ -66,7 +68,7 @@ Below is one example of creating an app with both an iPhone and an Apple Watch t
         * For com.worklight.[project_name] map it to the username/password check.
         * For com.worklight.[project_name].watchkitapp.watchkitextension map it to the pin code security check.
 
-## WatchOS Limitation
+## watchOS Limitation
 {: #watchos-limitation }
 The optional frameworks that add features to the {{ site.data.keys.product_adj }} app are not provided for watchOS development. Some other features are limited by constraints imposed by the watchOS or Apple Watch device.
 
@@ -76,7 +78,6 @@ The optional frameworks that add features to the {{ site.data.keys.product_adj }
 | JSONStore| Not supported |
 | Notifications | Not supported |
 | Message alerts displayed by the {{ site.data.keys.product_adj }} code | Not supported |
-| Application authenticity validation | Not compatible with bitcode, and therefore not supported |
 | Remote disable/notify	| Requires customization (see below) |
 | Usernames/password security check | use the CredentialsValidation security check |
 

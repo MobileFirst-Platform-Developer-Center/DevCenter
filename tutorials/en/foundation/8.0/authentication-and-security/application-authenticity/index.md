@@ -14,11 +14,7 @@ To enable application authenticity, you can either follow the on-screen instruct
 
 #### Availability
 {: #availability }
-* Application authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and native applications.
-
-#### Limitations
-{: #limitations }
-* Application authenticity does not support **Bitcode** in iOS. Therefore, before using application authenticity, disable Bitcode in the Xcode project properties.
+* Application authenticity is available in all supported platforms (iOS, watchOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and native applications.
 
 #### Jump to:
 {: #jump-to }
@@ -79,14 +75,19 @@ After an authenticity check has completed, it does not occur again until the tok
 
 ## Build Time Secret (BTS)
 {: #bts }
-The Build Time Secret (BTS) is an **optional tool to enhance authenticity validation**, for iOS applications only. The tool injects the application with a secret determined at build time, which is later used in the authenticity validation process.
+The Build Time Secret (BTS) is an **optional tool to enhance authenticity validation**, for iOS and watchOS applications only. The tool injects the application with a secret determined at build time, which is later used in the authenticity validation process.
 
 The BTS tool can be downloaded from the **{{ site.data.keys.mf_console }}** → **Download Center**.
 
 To use the BTS tool in Xcode:
 1. Under the **Build Phases** tab click the **+** button and create new **Run Script Phase**.
-2. Copy the path of BTS Tool and paste in the new "Run Script Phase" you have created.
-3. Drag the run script phase above the **Compile sources** phase.
+2. Copy the path of BTS Tool and paste in the new **Run Script Phase** you have created.
+3. Drag the **Run Script Phase** above the **Compile sources** phase.
+4. This step is required only if the application environment is watchOS. To enable BTS, developer needs to pass any swift file name, which is packaged in the watchOS extension after the BTS tool location.
+
+For example, suppose if the watchOS extension package contains `HelloWatchOS.swift` file, the developer will need to pass `HelloWatchOS` as an argument along with the path of BTS tool.
+
+![BTS Tool](BTS_Tool.png)
 
 The tool should  be used when building a production version of the application.
 
