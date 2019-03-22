@@ -8,7 +8,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications Android. Elles consistent à installer Android Studio et à définir le logiciel SDK Android.
+Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications Android. Elles comprennent l'installation d'Android Studio et le paramétrage du logiciel SDK pour Android.
 
 **Prérequis :** Lors de la configuration de votre environnement de développement Android, lisez également le tutoriel [Configuration de l'environnement de développement {{ site.data.keys.product_adj }}](../mobilefirst/).
 

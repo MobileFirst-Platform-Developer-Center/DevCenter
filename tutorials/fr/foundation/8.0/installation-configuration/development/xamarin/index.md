@@ -8,17 +8,17 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications Xamarin C# natives pour des appareils Android ou iOS. Elles consistent à installer Xamarin Studio.
+Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications Xamarin C# natives pour des appareils Android ou iOS. Elles comprennent l'installation de Visual Studio.
 
 **Prérequis :** Lors de la configuration de votre environnement de développement Xamarin, lisez également le tutoriel [Configuration de l'environnement de développement MobileFirst](../../development/).
 
 ### Développement
 {: #development }
-Les applications Xamarin sont développées à l'aide de [Xamarin Studio](https://www.xamarin.com/studio) ou [Microsoft Visual Studio](https://www.visualstudio.com/). Xamarin Studio peut être installé sous Mac OS ou Windows.  Autrement, sur les bureaux Windows 8.1 ou 10, Xamarin peut être ajouté sous forme de plug-in à Microsoft Visual Studio.   
+Les applications Xamarin sont développées à l'aide de [Microsoft Visual Studio](https://www.visualstudio.com/). Visual Studio peut être installé sous Mac OS ou Windows.  
 
-Vous pouvez télécharger Xamarin Studio depuis la page des [téléchargements de Xamarin Studio](https://www.xamarin.com/download).
+Vous pouvez télécharger Visual Studio depuis la page des [téléchargements de Visual Studio](https://visualstudio.microsoft.com/downloads/).
 
-![Xamarin Studio](xamarin-studio.png)
+![Visual Studio](Visualstudio.png)
 
 ## Etapes suivantes
 {: #whats-next }

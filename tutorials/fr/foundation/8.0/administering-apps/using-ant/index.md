@@ -210,7 +210,7 @@ Cette commande est basée sur le service REST [Global Configuration (GET)](http:
 <br/>
 #### Commande `show-user-config`
 {: #the-show-user-config-command }
-La commande `show-user-config`, spécifiée en dehors des éléments `<adapter>` et `<app-version>`, affiche la configuration utilisateur d'un environnement d'exécution. Elle possède les attributs suivants :
+La commande `show user-config`, en dehors des éléments `<adapter>` et `<app-version>`, affiche la configuration utilisateur d'un module d'exécution. Elle possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
@@ -230,7 +230,7 @@ Cette commande est basée sur le service REST [Runtime Configuration (GET)](http
 <br/>
 #### Commande `set-user-config`
 {: #the-set-user-config-command }
-La commande `set-user-config`, spécifiée en dehors des éléments `<adapter>` et `<app-version>`, spécifie la configuration utilisateur d'un environnement d'exécution. Elle possède les attributs suivants permettant de définir l'ensemble de la configuration :
+La commande `set-user-config`, en dehors des éléments `<adapter>` et `<app-version>`, définit la configuration utilisateur d'un module d'exécution. Elle possède les attributs suivants permettant de définir l'ensemble de la configuration :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
