@@ -1,20 +1,18 @@
 ---
 layout: tutorial
-title: Nouveautés des correctifs temporaires
-breadcrumb_title: Interim iFixes
+title: Nouveautés des mises à jour en distribution continue
+breadcrumb_title: CD Updates
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Les correctifs temporaires fournissent des modules de correction et de mises à jour permettant de corriger des problèmes et de maintenir {{ site.data.keys.product_full }} à jour pour les nouvelles éditions des systèmes d'exploitation mobiles.
+Les correctifs temporaires et les mises à jour en distribution continue fournissent des modules de correction et de mises à jour permettant de corriger des problèmes et de maintenir {{ site.data.keys.product_full }} à jour pour les nouvelles éditions des systèmes d'exploitation mobiles. Les mises à jour en distribution continue améliorent aussi les fonctionnalités du produit en y introduisant de nouvelles fonctions.
 
-Les correctifs temporaires sont cumulatifs. Lorsque vous téléchargez le dernier correctif temporaire version 8.0, vous obtenez tous les correctifs des correctifs temporaires antérieurs.
+Les correctifs temporaires et les mises à jour en distribution continue sont cumulatifs. Lorsque vous téléchargez le dernier correctif temporaire ou la dernière mise à jour en distribution continue de la version 8.0, vous obtenez l'ensemble des correctifs et des fonctions contenus dans les correctifs temporaires et les mises à jour en distribution continue précédents.
 
-Téléchargez et installez le dernier correctif temporaire pour obtenir tous les correctifs décrits dans les sections ci-après. Si vous installez des correctifs antérieurs, vous n'obtiendrez peut-être pas tous les correctifs décrits ci-après.
+Téléchargez et installez la dernière mise à jour en distribution continue pour obtenir toutes les fonctions décrites dans les sections qui suivent.
 
 > Pour obtenir la liste des éditions de correctif temporaire de {{ site.data.keys.product }} 8.0, [cliquez ici]({{site.baseurl}}/blog/tag/iFix_8.0/).
-
-Lorsqu'un numéro d'APAR est indiqué, vous pouvez vérifier qu'un correctif temporaire possède cette fonction en recherchant ce numéro dans le fichier README du correctif temporaire.
 
 ### Fonctions incluses avec la mise à jour en distribution continue 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
 
