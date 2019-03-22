@@ -25,17 +25,20 @@ We are pleased to announce the continuous delivery (CD) update 5 for Mobile Foun
 
 #### Features introduced with this CD update
 >
-##### <span style="color:NAVY">**CoreML Update**</span>
+##### <span style="color:NAVY">**CoreML model distribution**</span>
 >
-Mobile Foundation applications can now embed ML models using Model Update feature, which can be updated “over-the-air” with newer versions. Enterprises can now  ensure that their app users always use updated AI models. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/model-update/).
+ML (Machine Learning) models can be executed locally on the iOS mobile device using Apple’s CoreML framework.
+Mobile Foundation provides the ability to manage the distribution of these models to devices securely. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
 >
-##### <span style="color:NAVY">**App Authenticity for watchOS**</span>
+##### <span style="color:NAVY">**App Authenticity for WatchOS**</span>
 >
-WatchOS Application Authenticity feature protects applications against unlawful attempts to access MobileFirst Server by fake or tampered watchOS applications. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
+App Authenticity is a security feature, which validates the authenticity of the application before providing access. This feature was available for mobile apps. The feature is now extended for Apple WatchOS apps. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
 >
-##### <span style="color:NAVY">**Push Notifications - Additional message features and attributes for FCM**</span>
+##### <span style="color:NAVY">**Additional message features and attributes for FCM**</span>
 >
-We have now added support for notification styles like Inbox notification, BigText notification, Picture notification, and lights.
+Push Notifications now supports the following additional message attributes.
+1. Lights
+2. Styles (Inbox, BigText, PictureNotifications)
 >
 
 ## How to upgrade
