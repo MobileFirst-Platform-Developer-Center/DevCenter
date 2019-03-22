@@ -14,6 +14,21 @@ Download and install the latest CD Update to obtain all of the features that are
 
 > For a list of iFix releases of {{ site.data.keys.product }} 8.0, [see here]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
+### Features included with CD update 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
+
+##### <span style="color:NAVY">**CoreML Update**</span>
+
+Mobile Foundation applications can now embed ML models using Model Update feature, which can be updated “over-the-air” with newer versions. Enterprises can now  ensure that their app users always use updated AI models. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/model-update/).
+
+##### <span style="color:NAVY">**App Authenticity for watchOS**</span>
+
+WatchOS Application Authenticity feature protects applications against unlawful attempts to access MobileFirst Server by fake or tampered watchOS applications. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
+
+##### <span style="color:NAVY">**Push Notifications - Additional message features and attributes for FCM**</span>
+
+We have now added support for notification styles like Inbox notification, BigText notification, Picture notification, and lights.
+
+
 ### Features included with CD update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
 
 ##### <span style="color:NAVY">**HTTP/2 Support for APNs Push Notifications**</span>
