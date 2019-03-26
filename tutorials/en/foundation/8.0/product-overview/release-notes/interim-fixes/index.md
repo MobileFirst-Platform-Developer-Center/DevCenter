@@ -18,15 +18,18 @@ Download and install the latest CD Update to obtain all of the features that are
 
 ##### <span style="color:NAVY">**CoreML Update**</span>
 
-Mobile Foundation applications can now embed ML models using Model Update feature, which can be updated “over-the-air” with newer versions. Enterprises can now  ensure that their app users always use updated AI models. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/model-update/).
+ML (Machine Learning) models can be executed locally on the iOS mobile device using Apple’s CoreML framework.
+Mobile Foundation provides the ability to manage the distribution of these models to devices securely. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
 
 ##### <span style="color:NAVY">**App Authenticity for watchOS**</span>
 
-WatchOS Application Authenticity feature protects applications against unlawful attempts to access MobileFirst Server by fake or tampered watchOS applications. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
+App Authenticity is a security feature, which validates the authenticity of the application before providing access. This feature was available for mobile apps. The feature is now extended for Apple WatchOS apps. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
 
 ##### <span style="color:NAVY">**Push Notifications - Additional message features and attributes for FCM**</span>
 
-We have now added support for notification styles like Inbox notification, BigText notification, Picture notification, and lights.
+Push Notifications now supports the following additional message attributes.
+1. Lights
+2. Styles (Inbox, BigText, PictureNotifications)
 
 
 ### Features included with CD update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
