@@ -8,3 +8,6 @@ gem 'pdfkit'
 gem 'jekyll-sitemap'
 # gem 'pry'
 # gem 'pry-byebug'
+group :test do
+  gem 'rake'
+end
