@@ -31,6 +31,9 @@ A new iFix *8.0.0.0-MFPF-IF201903250706*  is released for Mobile Foundation 8.0,
             <h2>Changes in this iFix</h2>
             <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
 
+            <h3>APARs Fixed</h3>
+            <b>PH09118</b>  CLIENT JWT AUTHENTICATION FAILS IN WEB SDK ENVIRONMENTS.<br/>
+            
             <h2>How to upgrade</h2>
             <b>Server</b>
             To upgrade, download &amp; install the <a href="{{site.baseurl}}/downloads/">Developer Kit for evaluators</a>, <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">Developer Kit for customers / iFix package for on-prem production environment</a>(requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
