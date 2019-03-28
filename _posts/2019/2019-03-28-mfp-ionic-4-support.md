@@ -12,7 +12,7 @@ author:
 ---
 We are pleased to announce the official support of Ionic 4 in IBM Mobile Foundation v8.0. This support is introduced from iFix *8.0.0.0-MFPF-IF201903250706* onwards.
 
-You are required to install the ionic application with `cordova-plugin-mfp` version *8.0.2019030615* or greater.
+You are required to install the ionic application with `cordova-plugin-mfp` version *8.0.2019031808* or greater.
 
 We have validated the following Mobile Foundation v8.0 Foundation features with the stable release of Ionic 4.
 * Invoking back-end procedures through adapters
