@@ -29,7 +29,7 @@ weight: 1
             This class exposes methods that helps you to get information about the accesstoken received from the MobileFirst server.<br/>
 
     <br/>
-            2.12.1 Method Value</b><br/>
+            2.12.1 <b>Method Value</b><br/>
 
     <br/>
             <i>syntax</i><br/>
