@@ -24,6 +24,8 @@ The key features of IBM Digital App Builder 8.0.0 are,
 * Toggle to code view and start hacking code if you like working with code.
 * Preview the app before deployment.
 
+For more information on Digital App Builder, see the documentation [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/digital-app-builder/).
+
 We have a list of [videos](https://www.youtube.com/playlist?list=PLzJUGEaRNMft5CTvpusXgs4olpHl2BMIK) you can use to learn about the tool and get started.  We want to hear about your experience!  Join our [Slack](https://mobilefirstplatform.ibmcloud.com/blog/2017/05/26/come-chat-with-us/) channel or post a question using [StackOverflow](https://stackoverflow.com/questions/tagged/ibm-digital-app-builder). If you have a new feature which you want us to implement, open a [GIT](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/issues) issue and we will evaluate the feasibility of adding the feature in our roadmap.
 
 After trying out the tool don’t forget to share your [feedback](https://www.surveygizmo.com/s3/4627635/Digital-App-Builder-Feedback).
