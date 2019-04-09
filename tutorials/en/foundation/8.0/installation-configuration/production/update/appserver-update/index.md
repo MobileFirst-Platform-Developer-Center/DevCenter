@@ -67,6 +67,7 @@ If the MobileFirst server is installed using the Server Configuration Tool and t
     * On Windows, click **Start → Programs → IBM MobileFirst Platform Server → Server Configuration Tool**.
     * On MacOS, open a shell console. Go to `mfp_server_install_dir/shortcuts and type ./configuration-tool.sh`.
     * The `mfp_server_install_dir` directory is where you installed the MobileFirst Server.
+
 2.  Select the configuration that has to be rolled back. Click **Configurations** and select the option - **Edit and redeploy configuration**.
 
 3.  Click **Next** on each page, traverse till the end and click **Update**.
