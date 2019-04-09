@@ -110,5 +110,6 @@ If you use the sample Ant files that are provided in the `mfp_install_dir/Mobile
 
 If you use your own Ant file, make sure that for each update/rollback task (*installmobilefirstadmin*, *installmobilefirstruntime*, and *installmobilefirstpush*), you have a corresponding update task in your Ant file with the same parameters. The corresponding update tasks are *updatemobilefirstadmin*, *updatemobilefirstruntime*, and *updatemobilefirstpush*.
 
-1.  Verify the class path of the **taskdef** element for the `mfp-ant-deployer.jar` file. It must point to the mfp-ant-deployer.jar file in an MobileFirst server installation that the fix pack is applied. By default, the updated MobileFirst server WAR files are taken from the location of mfp-ant-deployer.jar.
-2.  Run the update tasks (*updatemobilefirstadmin*, *updatemobilefirstruntime*, and *updatemobilefirstpush*) of your Ant file.
+1.  Manually replace the MFP related war files by copying them from the backed up location of MFP install directory (`mfp_server_install_dir/MobileFirstServer`).
+2.  Verify the class path of the **taskdef** element for the `mfp-ant-deployer.jar` file. It must point to the mfp-ant-deployer.jar file in an MobileFirst server installation that the fix pack is applied. By default, the updated MobileFirst server WAR files are taken from the location of mfp-ant-deployer.jar.
+3.  Run the update tasks (*updatemobilefirstadmin*, *updatemobilefirstruntime*, and *updatemobilefirstpush*) of your Ant file.
