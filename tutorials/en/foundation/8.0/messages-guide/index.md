@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Message Guide
+title: Messages Guide
 weight: 17
 ---
 <!-- NLS_CHARSET=UTF-8 -->
