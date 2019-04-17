@@ -62,3 +62,13 @@ Find answers for some of the problems you may encounter while using IBM Digital 
 
         Adding `-U` will force maven to check any external dependencies that need to be updated based on the POM file.
 
+* Prerequisites Check fails for Android Studio even when it is installed.
+
+    Make sure you have the android executable (`<path to android sdk>/tools`) in the path and check for the prerequisites.
+
+* App creation and preview issue on Windows 7
+
+    You may get an error when trying to create a new app in a different disk drive location other than `C:`.
+
+    Make sure you create your app project under the drive `C://<your folder name/app name>`.
+

@@ -262,7 +262,7 @@ Helps you to view the code for each of the components. Also displays the informa
 
 Settings helps you to manage the app settings and rectify any errors during the build process. Settings consists of **App details**, **Server**, **Plugins**, and **Repair Project** tabs.
 
-#### App details
+#### **App details**
 {: #app-details}
 
 App details displays information about your app: **App Icon**, **Name**, **Location** where the files are stored, **Project/Bundle Id** provided at the time of creating the app, **Platforms** (channels) selected, **Service** enabled.
@@ -275,7 +275,7 @@ You can add/remove additional Platforms by checking/unchecking the checkbox near
 
 Click **Save** to update the changes.
 
-#### Server
+#### **Server**
 {: #server }
 
 The Server info displays the **Server details** you are currently working on. You can edit the information by clicking the **Edit** link. You can add or modify the confidential client authorization.
@@ -284,11 +284,13 @@ The Server info displays the **Server details** you are currently working on. Yo
 
 The Server tab also displays **Recent servers**.
 
+>**Note**: You can only able to delete a server added earlier at the time of creating an app using Digital App Builder and if not used by any of your app created by Digital App Studio.
+
 You can also add new server by clicking **Connect new +** button and provide the details in the **Connect to a new server** popup and click **Connect**.
 
 ![Settings new server](dab-settings-server-new-server.png)
 
-#### Plugins
+#### **Plugins**
 {: #plugins}
 
 Plugins displays list of plugins available in the Digital App Builder. Following actions can be performed:
