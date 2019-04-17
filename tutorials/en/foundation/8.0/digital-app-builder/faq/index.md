@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: FAQ
+title: Frequently Asked Questions
+breadcrumb_title: FAQs
 weight: 7
 show_children: true
 ---
@@ -10,18 +11,40 @@ show_children: true
 
 This topic describes the list of commonly asked questions related to IBM Digital App Builder.
 
-* How to create a **Platform API Keys**
-
-    1. Go to [https://cloud.ibm.com/iam#/users](https://cloud.ibm.com/iam#/users) after login to IBM Cloud.
-    2. Navigate to **Users**, click your name from the list and select the **User details** option.
-    3. Click **Create an IBM Cloud API key** window.
-    3. Enter the **Name** and **Description** for the new API Key.
-    4. Click **Create**.
-    4. Then, click **Show** to display the API key to copy and save it for later, or click **Download**.
-
-    >**Note**: For security reasons, the API key is only available to be copied or downloaded at the time of creation. If the API key is lost, you must create a new API key. For more information on user API Key, refer to [https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey](https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey).
-
-* Shared Server Limitations
-
-    The Shared Playground Server is a common server that is shared between many developers. This server should not be used for production apps. The data in this server can be deleted without notice. The server uptime is not guaranteed.
-
+<div class="panel-group accordion" id="mfp-dab-faqs" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. How to create a **Platform API Keys**?</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq1">
+            <div class="panel-body">
+                <p>
+                    <ol>
+                        <li>Go to <a href="https://cloud.ibm.com/iam#/users" target="_blank">https://cloud.ibm.com/iam#/users</a> after login to IBM Cloud.</li>
+                        <li>Navigate to <b>Users</b>, click your name from the list and select the <b>User details</b> option.</li>
+                        <li>Click <b>Create an IBM Cloud API key</b> window.</li>
+                        <li>Enter the <b>Name</b> and <b>Description</b> for the new API Key.</li>
+                        <li>Click <b>Create</b>.</li>
+                        <li>Then, click <b>Show</b> to display the API key to copy and save it for later, or click <b>Download</b>.</li>
+                    </ol>
+                    <b>Note</b>: For security reasons, the API key is only available to be copied or downloaded at the time of creation. If the API key is lost, you must create a new API key. For more information on user API Key, refer to <a href="https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey">https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey</a>.
+                </p>
+            </div>
+        </div>      
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq2" aria-expanded="true" aria-controls="collapse-mfp-dab-faq2"><b>B. Shared Server Limitations</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq2">
+            <div class="panel-body">
+                  <p>The Shared Playground Server is a common server that is shared between many developers. This server should not be used for production apps. The data in this server can be deleted without notice. The server uptime is not guaranteed.</p>
+            </div>
+        </div>      
+    </div>
+</div>
+<p>&nbsp;</p>       
