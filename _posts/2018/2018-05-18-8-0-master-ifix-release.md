@@ -175,7 +175,7 @@ A new iFix *8.0.0.0-MFPF-IF201904160914*  is released for Mobile Foundation 8.0,
         </div>
     </div>
 </div>   
-
+</div>   
 
 ## Previous iFixes & CD Updates for MobileFirst Foundation 8.0
 
@@ -338,6 +338,7 @@ IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<
             </div>        
         </div>
     </div>
+</div>   
 </div>   
 
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201903250706" role="tablist">
