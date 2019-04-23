@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications iOS. Elles consistent à s'enregistrer auprès d'Apple Developer et à installer Xcode.
+Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications iOS. Elles comprennent l'enregistrement auprès d'Apple Developer et l'installation de Xcode.
 
 #### Niveau de prise en charge
 {: #support-level }

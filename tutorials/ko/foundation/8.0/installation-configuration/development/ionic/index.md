@@ -14,7 +14,7 @@ Ionic은 HTML, CSS, Javascript와 같은 웹 기술을 사용하여 하이브리
 
 애플리케이션을 작성하는 데 선호하는 코드 편집기(예: Atom.io, Visual Studio Code, Eclipse, IntelliJ 등)를 사용할 수 있습니다.
 
-**전제조건:** Ionic 개발 환경을 설정할 때는 [MobileFirst 개발 환경 설정](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst) 학습서도 읽어야 합니다.
+**전제조건:** Ionic 개발 환경을 설정할 때는 [MobileFirst 개발 환경 설정](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst) 튜토리얼도 읽어야 합니다.
 
 ## Ionic CLI 설치
 {: #installing_cli }
@@ -33,4 +33,4 @@ Ionic 개발을 시작하려면 필요한 첫 번째 단계는 [Ionic CLI](https
 Ionic 애플리케이션에서 MobileFirst 개발을 계속하려면 Ionic 애플리케이션에 MobileFirst Cordova Native SDK 또는 플러그인을 추가해야 합니다.
 
 Cordova 애플리케이션에 MobileFirst SDK를 추가하는 방법을 학습하십시오.
-애플리케이션 개발의 경우 [Ionic 애플리케이션에 Mobile Foundation SDK 추가]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/ionic) 학습서를 참조하십시오.
+애플리케이션 개발의 경우 [Ionic 애플리케이션에 Mobile Foundation SDK 추가]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/ionic) 튜토리얼을 참조하십시오.

@@ -1,20 +1,18 @@
 ---
 layout: tutorial
-title: Novedades en los Arreglos temporales
-breadcrumb_title: Interim iFixes
+title: Novedades en los arreglos temporales de entrega continua
+breadcrumb_title: CD Updates
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Los arreglos temporales proporcionan parches y actualizaciones para corregir problemas y mantener {{ site.data.keys.product_full }} actualizado para nuevos releases de los sistemas operativos móviles.
+Los arreglos temporales y las actualizaciones de entrega continua proporcionan parches y actualizaciones para corregir problemas y mantener {{ site.data.keys.product_full }} actualizado para nuevos releases de los sistemas operativos móviles. Las actualizaciones de entrega continua también amplían la funcionalidad del producto añadiendo características nuevas.
 
-Los arreglos temporales son acumulativos. Cuando descarga los últimos arreglos temporales de la v8.0, obtiene todos los arreglos de anteriores arreglos temporales.
+Los arreglos temporales y las actualizaciones de entrega continua son acumulativos. Cuando descarga los últimos arreglos temporales o actualizaciones de entrega continua de la v8.0, obtiene todas las correcciones de arreglos temporales y actualizaciones de entrega continua anteriores.
 
-Descargue e instale el arreglo temporal más reciente para obtener todos los arreglos que se describen en las secciones siguientes. Si no instalar los últimos arreglos, podría no obtener todos los arreglos que se describen aquí.
+Descargue e instale la actualización de entrega continua más reciente para obtener todas las características que se describen en las secciones siguientes.
 
 > Para obtener una lista de releases de iFix de {{ site.data.keys.product }} 8.0, [lea esto]({{site.baseurl}}/blog/tag/iFix_8.0/).
-
-Donde aparezca una lista de números de APAR, podrá confirmar que un arreglo temporal tiene dicha característica buscando en el archivo README del arreglo temporal dicho número de APAR.
 
 ### Características incluidas en el disco compacto de actualización 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
 

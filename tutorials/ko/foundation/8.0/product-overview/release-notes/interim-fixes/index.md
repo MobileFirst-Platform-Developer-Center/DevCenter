@@ -1,37 +1,35 @@
 ---
 layout: tutorial
-title: 임시 수정사항의 새로운 기능
-breadcrumb_title: Interim iFixes
+title: CD 업데이트의 새로운 기능
+breadcrumb_title: CD Updates
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-임시 수정사항은 문제점 정정을 위한 패치 및 업데이트를 제공하고 모바일 운영 체제의 새 릴리스에 대해 현재 {{ site.data.keys.product_full }}을 유지합니다.
+임시 수정사항 및 CD 업데이트는 문제점 정정을 위한 패치 및 업데이트를 제공하고 모바일 운영 체제의 새 릴리스에 대해 현재 {{ site.data.keys.product_full }}을 유지합니다. CD 업데이트는 새 기능을 도입하여 제품의 기능을 개선합니다. 
 
-임시 수정사항은 누적됩니다. 최신 v8.0 임시 수정사항을 다운로드할 경우, 이전 임시 수정사항에서 모든 수정사항을 얻습니다.
+임시 수정사항 및 CD 업데이트는 누적됩니다. 최신 v8.0 임시 수정사항 또는 CD 업데이트를 다운로드할 경우, 이전 임시 수정사항에서 모든 수정사항을 얻습니다.
 
-다음 섹션에 설명된 모든 수정사항을 획득하기 위해 최근 임시 수정사항을 다운로드하고 설치하십시오. 이전 수정사항을 설치할 경우, 여기 설명된 일부 수정사항을 가져오지 않습니다.
+다음 섹션에 설명된 모든 수정사항을 획득하기 위해 최신 CD 업데이트를 다운로드하고 설치하십시오. 
 
 > {{ site.data.keys.product }} 8.0의 iFix 릴리스 목록에 대해서는 [여기를 참조하십시오]({{site.baseurl}}/blog/tag/iFix_8.0/).
-
-APAR 번호가 나열되면 해당 APAR 번호에 대한 임시 수정사항 README 파일을 검색함으로써 사용자는 임시 수정사항이 해당 기능을 가졌는지 확인할 수 있습니다.
 
 ### CD 업데이트 4에 포함된 기능 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
 
 ##### <span style="color:NAVY">**APNs 푸시 알림을 위한 HTTP/2 지원**</span>
 
-MobileFirst의 푸시 알림이 이제 기존의 TCP 소켓 기반 알림과 함께 HTTP/2 기반 APNs 푸시 알림을 지원합니다. [자세히 알아보기]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
+MobileFirst의 푸시 알림이 이제 기존의 TCP 소켓 기반 알림과 함께 HTTP/2 기반 APNs 푸시 알림을 지원합니다. [자세히 보기]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications).
 
 ##### <span style="color:NAVY">**React Native Push SDK 릴리스**</span>
 
-React Native SDK for Push(*react-native-ibm-mobilefirst-push 1.0.0*)가 이번 CD 업데이트에서 릴리스되었습니다. 
+React Native SDK for Push(*react-native-ibm-mobilefirst-push 1.0.0*)가 이번 CD 업데이트에서 릴리스되었습니다.
 
 
 ### CD 업데이트 3(8.0.0.0-MFPF-IF201811050432-CDUpdate-03)에서 도입된 기능
 
 ##### <span style="color:NAVY">**iOS에서 새로 고치기 토큰 지원**</span>
 
-Mobile Foundation은 이 CD 업데이트부터 iOS에서 새로 고치기 토큰 기능을 도입합니다. [자세히 알아보기]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
+Mobile Foundation은 이 CD 업데이트부터 iOS에서 새로 고치기 토큰 기능을 도입합니다. [자세히 보기]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
 
 ##### <span style="color:NAVY">**Mobile Foundation 콘솔에서 관리 CLI(*mfpadm*) 다운로드**</span>
 
@@ -49,7 +47,7 @@ Mobile Foundation은 이 CD 업데이트부터 iOS에서 새로 고치기 토큰
 
 ##### <span style="color:NAVY">**React Native 개발 지원**</span>
 
-CD 업데이트(*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*)부터 Mobile Foundation은 React Native 앱용 IBM Mobile Foundation SDK의 가용성과 함께 React Native 개발을 위한 지원을 [발표합니다]({{site.baseurl}}/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/). [자세히 알아보기]({{site.baseurl}}/tutorials/en/foundation/8.0/reactnative-tutorials/).
+CD 업데이트(*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*)부터 Mobile Foundation은 React Native 앱용 IBM Mobile Foundation SDK의 가용성과 함께 React Native 개발을 위한 지원을 [발표합니다]({{site.baseurl}}/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/). [자세히 보기]({{site.baseurl}}/tutorials/en/foundation/8.0/reactnative-tutorials/).
 
 ##### <span style="color:NAVY">**iOS 및 Cordova SDK 사용 시 JSONStore 콜렉션과 CouchDB 데이터베이스의 자동화된 동기화**</span>
 
@@ -57,7 +55,7 @@ CD 업데이트(*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*) 부터 MobileFirst iO
 
 ##### <span style="color:NAVY">**새로 고치기 토큰 도입**</span>
 
-CD 업데이트(*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*)부터 Mobile Foundation은 이제 새 액세스 토큰을 요청하는 데 사용할 수 있는 새로 고치기 토큰이라는 특별한 종류의 토큰을 도입합니다.  [자세히 알아보기]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
+CD 업데이트(*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*)부터 Mobile Foundation은 이제 새 액세스 토큰을 요청하는 데 사용할 수 있는 새로 고치기 토큰이라는 특별한 종류의 토큰을 도입합니다.  [자세히 보기]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens).
 
 ##### <span style="color:NAVY">**Cordova v8 및 Cordova Android v7의 지원**</span>
 
@@ -71,7 +69,7 @@ CD 업데이트(*8.0.0.0-MFPF-IF201807180449-CDUpdate-02*)부터 Mobile Foundati
 
 ##### <span style="color:NAVY">**Eclipse UI 편집기 지원**</span>
 
-CD 업데이트 *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*부터 MobileFirst Studio의 Eclipse에서 이제 WYSIWYG 편집기가 제공됩니다. 개발자는 이 UI 편집기를 사용하여 Cordova 애플리케이션용 UI를 디자인하고 구현할 수 있습니다. [자세히 알아보기](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/developing-ui/).
+CD 업데이트 *8.0.0.0-MFPF-IF201711230641-CDUpdate-01*부터 MobileFirst Studio의 Eclipse에서 이제 WYSIWYG 편집기가 제공됩니다. 개발자는 이 UI 편집기를 사용하여 Cordova 애플리케이션용 UI를 디자인하고 구현할 수 있습니다. [자세히 보기](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/developing-ui/).
 
 ##### <span style="color:NAVY">**코그너티브 앱을 빌드하기 위한 새로운 어댑터**</span>
 
@@ -115,11 +113,11 @@ iFix(*8.0.0.0-MFPF-IF20170803-1112*)부터 Cordova SDK에서 다중 인증서 �
 
 ##### <span style="color:NAVY">**Cordova 브라우저 플랫폼 지원**</span>
 
-iFix(*8.0.0.0-MFPF-IF20170823-1236*)부터 {{ site.data.keys.product }}에서는 지원되는 이전의 Cordova Windows, Cordova Android 및 Cordova iOS 플랫폼과 함께 Cordova 브라우저 플랫폼을 지원합니다. [자세히 알아보기](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/29/cordova-browser-compatibility-with-MFP/).
+iFix(*8.0.0.0-MFPF-IF20170823-1236*)부터 {{ site.data.keys.product }}에서는 지원되는 이전의 Cordova Windows, Cordova Android 및 Cordova iOS 플랫폼과 함께 Cordova 브라우저 플랫폼을 지원합니다. [자세히 보기](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/29/cordova-browser-compatibility-with-MFP/).
 
 ##### <span style="color:NAVY">**해당 OpenAPI 스펙에서 어댑터 생성**</span>
 
-iFix(*8.0.0.0-MFPF-IF20170901-1903*)부터 {{ site.data.keys.product }}에서는 해당 OpenAPI 스펙에서 어댑터를 자동으로 생성하는 기능을 도입했습니다. {{ site.data.keys.product }} 사용자는 이제 원하는 백엔드 서비스에 애플리케이션을 연결하는 {{ site.data.keys.product }} 어댑터를 작성하는 대신 애플리케이션 로직에 집중할 수 있습니다. [자세히 알아보기]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/microservice-adapter/).
+iFix(*8.0.0.0-MFPF-IF20170901-1903*)부터 {{ site.data.keys.product }}에서는 해당 OpenAPI 스펙에서 어댑터를 자동으로 생성하는 기능을 도입했습니다. {{ site.data.keys.product }} 사용자는 이제 원하는 백엔드 서비스에 애플리케이션을 연결하는 {{ site.data.keys.product }} 어댑터를 작성하는 대신 애플리케이션 로직에 집중할 수 있습니다. [자세히 보기]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/microservice-adapter/).
 
 ##### <span style="color:NAVY">**iOS 11 및 iPhone X 지원**</span>
 

@@ -37,7 +37,7 @@ iOS 및 최신 Android 운영 체제 버전은 개별 애플리케이션에서 �
 
 ## 애플리케이션 업데이트에 대해 푸시 알림 구성
 {: #configuring-push-notifications }
-써드파티 푸시 알림 서버와 통신하려면 Application Center 서비스의 신임 정보 또는 인증서를 구성해야 합니다.
+서드파티 푸시 알림 서버와 통신하려면 Application Center 서비스의 인증 정보 또는 인증서를 구성해야 합니다.
 
 ### Application Center의 서버 스케줄러 구성
 {: #configuring-the-server-scheduler }
@@ -88,7 +88,7 @@ WebSphere Application Server Liberty 프로파일에 맞게 JNDI 변수를 구�
     * 콘솔의 왼쪽에 있는 **API 액세스** 세로 탭을 클릭하십시오.
     * 단순 API 액세스 서버 키를 작성하거나, 기본 키가 이미 작성된 경우 기본 키의 세부사항을 확인하십시오. 현재 관심이 없는 두 가지 유형의 키가 있습니다.
     * 나중에 GCM을 통해 애플리케이션 통신에 사용할 수 있도록 단순 API 액세스 서버 키를 저장하십시오. 키는 길이가 약 40자이고 서버 측에서 나중에 필요한 Google API 키로 참조됩니다.
-5. Application Center Android 클라이언트의 JavaScript 프로젝트에서 문자열 자원 특성으로 GCM 프로젝트 ID를 입력하십시오. **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** 템플리트 파일에서 고유 값으로 이 행을 수정하십시오.
+5. Application Center Android 클라이언트의 JavaScript 프로젝트에서 문자열 리소스 특성으로 GCM 프로젝트 ID를 입력하십시오. **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** 템플리트 파일에서 고유 값으로 이 행을 수정하십시오.
 
    ```xml
    gcmProjectId:""// Google API project (project name = com.ibm.appcenter) ID needed for Android push.

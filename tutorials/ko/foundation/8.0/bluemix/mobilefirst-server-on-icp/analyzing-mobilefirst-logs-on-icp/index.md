@@ -23,7 +23,7 @@ Kubernetes 배치는 팟(Pod)으로 구성되며, 팟(Pod)은 컨테이너로 �
 
       a.  {{ site.data.keys.prod_icp }} 콘솔에서 **메뉴 > 카탈로그**를 클릭하십시오.<br/>
       b.  **로그** 섹션에서 **ibm-mfpfp-server-prod / ibm-mfpfp-analytics-prod / ibm-mfpf-appcenter-prod** Helm 차트를 선택하십시오.<br/>
-
+          
       **참고:**  콘솔에 액세스할 때 Helm 카탈로그가 이 Helm 차트를 포함하지 않으면 **관리 > Helm 저장소**를 선택하고 저장소를 동기화하는 단추를 클릭하여 카탈로그를 새로 고치십시오.
 
       c.  로깅 필드를 다음 기본값으로 설정하십시오. 또는 명령행에서 `--set` 플래그를 사용하여 {{ site.data.keys.prod_adj }} Helm 차트를 배치할 때 이전 값을 설정할 수 있습니다.<br/>

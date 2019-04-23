@@ -300,7 +300,7 @@ To edit the properties of an uploaded application:
 ## Upgrading a mobile application in {{ site.data.keys.mf_server }} and the Application Center
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
-> This is only supported for Android, iOS, and Windows Phone and is currently not supported for Windows 10 Universal, Blackberry, or Windows 8 Universal.
+> This is only supported for Android, iOS, and Windows Phone and is currently not supported for Windows 10 Universal, or Windows 8 Universal.
 
 
 You can easily upgrade deployed mobile applications by using a combination of {{ site.data.keys.mf_console }} and the Application Center.

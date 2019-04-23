@@ -13,7 +13,7 @@ weight: 1
 
 {{ site.data.keys.product }}의 컴포넌트에 대해 자세히 학습하기 위해 계속 읽으십시오.
 
-> {{ site.data.keys.product }}을 평가하려면 Mobile Foundation IBM Cloud 서비스를 사용하여 IBM Cloud에서 {{ site.data.keys.mf_server }}의 인스턴스를 스핀하기만 하면 됩니다. [Mobile Foundation 사용](../../../bluemix/using-mobile-foundation/) 학습서에서 지시사항을 참조하십시오. 로컬 설치를 위해 {{ site.data.keys.mf_dev_kit_short }}을 설치하도록 선택할 수도 있습니다.
+> {{ site.data.keys.product }}을 평가하려면 Mobile Foundation IBM Cloud 서비스를 사용하여 IBM Cloud에서 {{ site.data.keys.mf_server }}의 인스턴스를 스핀하기만 하면 됩니다. [Mobile Foundation 사용](../../../bluemix/using-mobile-foundation/) 튜토리얼에서 지시사항을 참조하십시오. 로컬 설치를 위해 {{ site.data.keys.mf_dev_kit_short }}을 설치하도록 선택할 수도 있습니다.
 
 #### 다음으로 이동:
 {: #jump-to }
@@ -22,7 +22,7 @@ weight: 1
 * [{{ site.data.keys.mf_dev_kit }}](#mobilefirst-developer-kit)
 * [{{ site.data.keys.product }} 컴포넌트](#mobilefirst-foundation-components)
 * [애플리케이션 및 어댑터 개발](#applications-and-adapters-development)
-* [다음 학습서](#tutorials-to-follow-next)
+* [다음 튜토리얼](#tutorials-to-follow-next)
 
 ## 설치 안내서
 {: #installation-guide }
@@ -72,7 +72,7 @@ weight: 1
 - iOS 및 Android 디바이스에 푸시 알림 보내기
 - 지속적인 통합 워크플로우 및 빠른 개발 주기를 위한 DevOps 스크립트 생성
 
-> [MobilFirst Operations Console 사용](../../../product-overview/components/console/) 학습서에서 {{ site.data.keys.mf_console }}에 대해 자세히 학습하십시오.
+> [MobilFirst Operations Console 사용](../../../product-overview/components/console/) 튜토리얼에서 {{ site.data.keys.mf_console }}에 대해 자세히 학습하십시오.
 
 ### {{ site.data.keys.product }} 명령행 인터페이스
 {: #mobilefirst-foundation-command-line-interface }
@@ -84,15 +84,15 @@ weight: 1
 * Cordova 앱 미리보기 및 업데이트
 
 > {{ site.data.keys.mf_cli }}를 다운로드하여 설치하려면 [다운로드]({{site.baseurl}}/downloads/) 페이지를 방문하십시오.  
->[CLI를 사용하여 MobileFirst 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 학습서에서 다양한 CLI 명령에 대해 자세히 학습하십시오.
+>[CLI를 사용하여 MobileFirst 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 튜토리얼에서 다양한 CLI 명령에 대해 자세히 학습하십시오.
 
 ### {{ site.data.keys.product }} 클라이언트 SDK 및 어댑터 도구
 {: #mobilefirst-foundation-client-sdks-and-adapter-tooling }
 {{ site.data.keys.product }}은 Cordova 애플리케이션 및 네이티브 플랫폼(iOS, Android 및 Windows 8.1 Universal &amp; Windows 10 UWP)용 클라이언트 SDK를 제공합니다. 어댑터 및 보안 검사 개발용 어댑터 도구도 사용할 수 있습니다.
 
-* {{ site.data.keys.product_adj }} 클라이언트 SDK를 사용하려면 [{{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/) 학습서 카테고리를 방문하십시오.  
-* 어댑터를 개발하려면 [어댑터](../../../adapters/) 학습서 카테고리를 방문하십시오.  
-* 보안 검사를 개발하려면 [인증 및 보안](../../../authentication-and-security/) 학습서 카테고리를 방문하십시오.  
+* {{ site.data.keys.product_adj }} 클라이언트 SDK를 사용하려면 [{{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/) 튜토리얼 카테고리를 방문하십시오.  
+* 어댑터를 개발하려면 [어댑터](../../../adapters/) 튜토리얼 카테고리를 방문하십시오.  
+* 보안 검사를 개발하려면 [인증 및 보안](../../../authentication-and-security/) 튜토리얼 카테고리를 방문하십시오.  
 
 ## 애플리케이션 및 어댑터 개발
 {: #applications-and-adapters-development }
@@ -109,6 +109,6 @@ weight: 1
 {: #adapters }
 어댑터를 사용하려면 Apache Maven을 설치해야 합니다. [어댑터](../../../adapters/) 카테고리를 참조하여 어댑터와 어댑터 작성, 개발 및 배치 방법에 대해 자세히 학습하십시오.
 
-## 다음 학습서
+## 다음 튜토리얼
 {: #tutorials-to-follow-next }
-[모든 학습서](../../../all-tutorials/) 페이지를 방문하여 다음으로 수행할 학습서 카테고리를 선택하십시오.
+[모든 튜토리얼](../../../all-tutorials/) 페이지를 방문하여 다음으로 수행할 튜토리얼 카테고리를 선택하십시오.

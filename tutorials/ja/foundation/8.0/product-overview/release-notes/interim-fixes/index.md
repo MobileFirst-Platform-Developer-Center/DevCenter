@@ -1,26 +1,24 @@
 ---
 layout: tutorial
-title: 暫定修正の新機能
-breadcrumb_title: Interim iFixes
+title: CD Update の新機能
+breadcrumb_title: CD Updates
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-暫定修正では、問題を修正し、モバイル・オペレーティング・システムの新しいリリースに対して {{ site.data.keys.product_full }} を最新にしておくためのパッチおよび更新を提供します。
+暫定修正および CD Update では、問題を修正し、モバイル・オペレーティング・システムの新しいリリースに対して {{ site.data.keys.product_full }} を最新にしておくためのパッチおよび更新を提供します。また、CD Update は、新しいフィーチャーを導入することにより、製品の機能を強化します。
 
-暫定修正は累積的です。 最新の V8.0 暫定修正をダウンロードすると、V8.0 より前の暫定修正のすべての修正が得られます。
+暫定修正および CD Update は累積的です。最新の v8.0 暫定修正または CD Update をダウンロードすると、v8.0 より前の暫定修正および CD Update のすべての修正とフィーチャーが得られます。
 
-以下のセクションに記載されているすべての修正を取得するには、最新の暫定修正をダウンロードしてインストールします。 最新より前の修正をインストールすると、ここで説明されている説明されている修正のすべては取得できない可能性があります。
+以下のセクションに記載されているすべてのフィーチャーを取得するには、最新の CD Update をダウンロードしてインストールします。
 
 > {{ site.data.keys.product }} 8.0 の iFix リリースのリストについては、[ここを参照してください]({{site.baseurl}}/blog/tag/iFix_8.0/)。
 
-APAR 番号がリストされている場合は、その APAR 番号について暫定修正の README ファイルを検索することで、暫定修正にその機能があるかどうかを確認できます。
-
-### CD Update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04) で導入された機能  
+### CD Update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04) で導入された機能
 
 ##### <span style="color:NAVY">**APNs プッシュ通知用の HTTP/2 サポート**</span>
 
-MobileFirst のプッシュ通知で、レガシーの TCP ソケット・ベースの通知と HTTP/2 ベースの APNs プッシュ通知がサポートされるようになりました。[詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications)。
+MobileFirst のプッシュ通知で、レガシーの TCP ソケット・ベースの通知と HTTP/2 ベースの APNs プッシュ通知がサポートされるようになりました。 [詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications)。
 
 ##### <span style="color:NAVY">**React Native Push SDK のリリース**</span>
 

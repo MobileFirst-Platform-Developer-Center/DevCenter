@@ -22,7 +22,7 @@ weight: 1
                 <p>앱 개발을 위한 새로운 기능에 대해 알아보려면 다음 절을 검토하십시오.</p>
 
                 <h3>새 개발 및 배치 프로세스</h3>
-                <p>애플리케이션 서버에 설치되어야 하는 프로젝트 WAR 파일을 더 이상 작성하지 않습니다. 대신 {{ site.data.keys.mf_server }}는 한 번 설치되며, 사용자 앱, 자원 보안 또는 푸시 서비스의 서버 측 구성을 서버에 업로드합니다. {{ site.data.keys.mf_console }}을 사용하여 앱 구성을 수정할 수 있습니다.</p>
+                <p>애플리케이션 서버에 설치되어야 하는 프로젝트 WAR 파일을 더 이상 작성하지 않습니다. 대신 {{ site.data.keys.mf_server }}는 한 번 설치되며, 사용자 앱, 리소스 보안 또는 푸시 서비스의 서버 측 구성을 서버에 업로드합니다. {{ site.data.keys.mf_console }}을 사용하여 앱 구성을 수정할 수 있습니다.</p>
 
                 <p>{{ site.data.keys.product_adj }} 프로젝트는 더 이상 존재하지 않습니다. 대신 사용자가 선택한 개발 환경으로 모바일 앱을 개발합니다.<br/>
                 {{ site.data.keys.mf_server }}를 중지하지 않고도 앱 및 어댑터의 서버 측 구성을 수정할 수 있습니다..</p>
@@ -164,14 +164,14 @@ weight: 1
                 <p>새로운 OAuth 보안 프레임워크를 사용하여 기밀 클라이언트에 대한 지원을 다시 디자인하고 다시 구현했습니다.</p>
 
                 <h3>웹 애플리케이션 보안</h3>
-                <p>수정된 OAuth 기반 보안 프레임워크가 웹 애플리케이션을 지원합니다. 이제 {{ site.data.keys.mf_server }}에 웹 애플리케이션을 등록하여 애플리케이션에 보안 기능을 추가하고 웹 자원에 대한 액세스를 보호할 수 있습니다. {{ site.data.keys.product_adj }} 웹 애플리케이션에 대한 자세한 정보는 웹 애플리케이션 개발을 참조하십시오. 애플리케이션 인증 보안 검사가 웹 애플리케이션에 지원되지 않습니다.</p>
+                <p>수정된 OAuth 기반 보안 프레임워크가 웹 애플리케이션을 지원합니다. 이제 {{ site.data.keys.mf_server }}에 웹 애플리케이션을 등록하여 애플리케이션에 보안 기능을 추가하고 웹 리소스에 대한 액세스를 보호할 수 있습니다. {{ site.data.keys.product_adj }} 웹 애플리케이션에 대한 자세한 정보는 웹 애플리케이션 개발을 참조하십시오. 애플리케이션 인증 보안 검사가 웹 애플리케이션에 지원되지 않습니다.</p>
 
                 <h3>크로스 플랫폼 애플리케이션(Cordova 앱), 새로운 보안 기능 및 변경된 보안 기능</h3>
                 <p>추가 보안 기능은 Cordova 앱 보호를 지원하기 위해 사용 가능합니다. 이러한 기능에는 다음이 포함됩니다.</p>
 
                 <ul>
-                    <li>웹 자원 암호화: Cordova 패키지의 웹 자원을 암호화하여 패키지를 수정하지 못하도록 하려면 이 기능을 사용하십시오.</li>
-                    <li>웹 자원 체크섬: 앱의 웹 자원에 대한 현재 통계와 앱이 처음 열렸을 때 설정된 기준선 통계를 비교하는 체크섬 테스트를 실행하려면 이 기능을 시용하십시오. 이 검사를 사용하면 앱이 설치되고 열린 후 앱이 수정되지 않도록 할 수 있습니다.</li>
+                    <li>웹 리소스 암호화: Cordova 패키지의 웹 리소스를 암호화하여 패키지를 수정하지 못하도록 하려면 이 기능을 사용하십시오.</li>
+                    <li>웹 리소스 체크섬: 앱의 웹 리소스에 대한 현재 통계와 앱이 처음 열렸을 때 설정된 기준선 통계를 비교하는 체크섬 테스트를 실행하려면 이 기능을 시용하십시오. 이 검사를 사용하면 앱이 설치되고 열린 후 앱이 수정되지 않도록 할 수 있습니다.</li>
                     <li>인증서 핀: 앱의 인증서와 호스트 서버의 인증서를 연관시키려면 이 기능을 사용하십시오. 이 기능을 사용하면 앱과 서버 사이에서 전달되는 정보가 표시되거나 수정되지 않습니다.</li>
                     <li>FIPS(Federal Information Processing Standard) 140-2에 대한 지원: 전송되는 데이터가 FIPS 140-2 암호화 표준을 준수하는지 확인하려면 이 기능을 사용하십시오.</li>
                     <li>OpenSSL: iOS 플랫폼에 대한 Cordova 앱과 함께 OpenSSL 데이터 암호화 및 복호화를 사용하기 위해 cordova-plugin-mfp-encrypt-utils Cordova 플러그인을 사용할 수 있습니다.</li>
@@ -184,19 +184,19 @@ weight: 1
                 <p>{{ site.data.keys.product_adj }}의 이전 버전과 달리 V8.0으로 시작</p>
 
                 <ul>
-                    <li>클라이언트 애플리케이션이 보호되지 않은 자원에 액세스하는 경우 {{ site.data.keys.mf_server }}에 사용 가능한 업데이트가 있더라도 애플리케이션에서 업데이트를 수신하지 않습니다.</li>
-                    <li>활성화된 후 직접 업데이트가 보호된 자원에 대한 모든 요청에 적용됩니다.</li>
+                    <li>클라이언트 애플리케이션이 보호되지 않은 리소스에 액세스하는 경우 {{ site.data.keys.mf_server }}에 사용 가능한 업데이트가 있더라도 애플리케이션에서 업데이트를 수신하지 않습니다.</li>
+                    <li>활성화된 후 직접 업데이트가 보호된 리소스에 대한 모든 요청에 적용됩니다.</li>
                 </ul>
 
-                <h3>외부 자원 보호</h3>
-                <p>외부 서버에서 자원을 보호하기 위해 지원되는 메소드 및 제공되는 아티팩트가 수정되었습니다.</p>
+                <h3>외부 리소스 보호</h3>
+                <p>외부 서버에서 리소스를 보호하기 위해 지원되는 메소드 및 제공되는 아티팩트가 수정되었습니다.</p>
 
                 <ul>
-                    <li>{{ site.data.keys.product_adj }} 보안 프레임워크를 사용하여 외부 Java 서버의 자원을 보호하기 위해 구성 가능한 새로운 {{ site.data.keys.product_adj }} Java Token Validator 액세스 토큰 유효성 검증 모듈이 제공됩니다. 모듈은 Java 라이브러리(mfp-java-token-validator-8.0.0.jar)로 제공되며, 폐기된 {{ site.data.keys.mf_server }} 토큰 유효성 검증 엔드포인트의 사용을 대체하여 사용자 정의 Java 유효성 검증 모듈을 작성합니다.</li>
-                    <li>외부 WebSphere Application Server 또는 WebSphere Application Server Liberty 서버에서 Java 자원을 보호하기 위한 {{ site.data.keys.product_adj }} OAuth Trust Association Interceptor(TAI) 필터는 이제 Java 라이브러리로 제공됩니다(com.ibm.imf.oauth.common_8.0.0.jar). 이 라이브러리는 새로운 Java Token Validator 유효성 검증 모듈 및 제공된 TAI의 변경된 구성을 사용합니다.</li>
+                    <li>{{ site.data.keys.product_adj }} 보안 프레임워크를 사용하여 외부 Java 서버의 리소스를 보호하기 위해 구성 가능한 새로운 {{ site.data.keys.product_adj }} Java Token Validator 액세스 토큰 유효성 검증 모듈이 제공됩니다. 모듈은 Java 라이브러리(mfp-java-token-validator-8.0.0.jar)로 제공되며, 폐기된 {{ site.data.keys.mf_server }} 토큰 유효성 검증 엔드포인트의 사용을 대체하여 사용자 정의 Java 유효성 검증 모듈을 작성합니다.</li>
+                    <li>외부 WebSphere Application Server 또는 WebSphere Application Server Liberty 서버에서 Java 리소스를 보호하기 위한 {{ site.data.keys.product_adj }} OAuth Trust Association Interceptor(TAI) 필터는 이제 Java 라이브러리로 제공됩니다(com.ibm.imf.oauth.common_8.0.0.jar). 이 라이브러리는 새로운 Java Token Validator 유효성 검증 모듈 및 제공된 TAI의 변경된 구성을 사용합니다.</li>
                     <li>서버 측 {{ site.data.keys.product_adj }} OAuth TAI API는 더 이상 필요하지 않으며 제거되었습니다.</li>
-                    <li>외부 Node.js 서버에 있는 Java 자원을 보호하기 위해 passport-mfp-token-validation {{ site.data.keys.product_adj }} Node.js 프레임워크가 새 보안 프레임워크를 지원하도록 수정되었습니다.</li>
-                    <li>모든 유형의 자원 서버에 대해 새로운 권한 부여 서버의 검사 엔드포인트를 사용하는 사용자 정의 필터 및 유효성 검증 모듈을 작성할 수도 있습니다.</li>
+                    <li>외부 Node.js 서버에 있는 Java 리소스를 보호하기 위해 passport-mfp-token-validation {{ site.data.keys.product_adj }} Node.js 프레임워크가 새 보안 프레임워크를 지원하도록 수정되었습니다.</li>
+                    <li>모든 유형의 리소스 서버에 대해 새로운 권한 부여 서버의 검사 엔드포인트를 사용하는 사용자 정의 필터 및 유효성 검증 모듈을 작성할 수도 있습니다.</li>
                 </ul>
 
                 <h3>WebSphere DataPower를 권한 부여 서버로 통합</h3>
@@ -206,7 +206,7 @@ weight: 1
                 <p>이제 새로 사전 정의된 LTPA 기반 싱글 사인온(SSO) 보안 검사를 통해 WebSphere LTPA(light-weight third-party authentication)를 사용한 서버 간 사용자 인증 공유가 지원됩니다. 이 검사는 더 이상 사용되지 않는 {{ site.data.keys.product_adj }} LTPA 영역을 대체하며 이전 필수 구성을 제거합니다.</p>
 
                 <h3>{{ site.data.keys.mf_console }}에서 모바일 애플리케이션 관리</h3>
-                <p>{{ site.data.keys.mf_console }}에서 모바일 애플리케이션, 사용자 및 디바이스를 추적하고 관리하는 작업에 대한 지원이 일부 변경되었습니다. 디바이스 또는 애플리케이션 액세스 차단은 보호된 자원에 대한 액세스 시도에만 적용됩니다.</p>
+                <p>{{ site.data.keys.mf_console }}에서 모바일 애플리케이션, 사용자 및 디바이스를 추적하고 관리하는 작업에 대한 지원이 일부 변경되었습니다. 디바이스 또는 애플리케이션 액세스 차단은 보호된 리소스에 대한 액세스 시도에만 적용됩니다.</p>
 
                 <h3>{{ site.data.keys.mf_server }} 키 저장소</h3>
                 <p>단일 {{ site.data.keys.mf_server }} 키 저장소는 OAuth 토큰 및 직접 업데이트 패키지 서명과 상호 HTTPS(SSL) 인증에 사용됩니다. {{ site.data.keys.mf_console }} 또는 mfpadm을 사용하여 이 키 저장소를 동적으로 구성할 수 있습니다.</p>
@@ -280,14 +280,14 @@ weight: 1
                 <p>이제 엔터프라이즈 모바일 앱을 작성 및 실행하기 위해 IBM Cloud에서 {{ site.data.keys.mf_bm_full }} 서비스를 사용할 수 있습니다.</p>
 
                 <h3>.wlapp 파일 없음</h3>
-                <p>이전 버전에서 <b>.wlapp</b> 파일을 업로드하여 애플리케이션을 {{ site.data.keys.mf_server }}에 배치했습니다. 파일에 애플리케이션 및 필수 웹 자원(하이브리드 애플리케이션의 경우)을 설명하는 데이터가 포함되었습니다. V8.0.0에서 <b>.wlapp</b> 파일 대신 다음을 수행하십시오.</p>
+                <p>이전 버전에서 <b>.wlapp</b> 파일을 업로드하여 애플리케이션을 {{ site.data.keys.mf_server }}에 배치했습니다. 파일에 애플리케이션 및 필수 웹 리소스(하이브리드 애플리케이션의 경우)를 설명하는 데이터가 포함되었습니다. V8.0.0에서 <b>.wlapp</b> 파일 대신 다음을 수행하십시오.</p>
 
                 <ul>
                     <li>애플리케이션 디스크립터 JSON 파일을 배치하여 {{ site.data.keys.mf_server }}에서 앱을 등록하십시오.</li>
-                    <li>직접 업데이트를 사용하여 Cordova 애플리케이션을 업데이트하려면 수정된 웹 자원의 아카이브(.zip 파일)를 서버에 업로드하십시오. 아카이브 파일에 이전 버전의 {{ site.data.keys.product }}에서 사용 가능한 웹 미리보기 파일 또는 스킨이 더 이상 포함되지 않습니다. 이는 더 이상 사용되지 않습니다. 아카이브에는 클라이언트로 전송된 웹 자원 및 직접 업데이트 유효성 검증을 위한 체크섬만 포함됩니다.</li>
+                    <li>직접 업데이트를 사용하여 Cordova 애플리케이션을 업데이트하려면 수정된 웹 리소스의 아카이브(.zip 파일)를 서버에 업로드하십시오. 아카이브 파일에 이전 버전의 {{ site.data.keys.product }}에서 사용 가능한 웹 미리보기 파일 또는 스킨이 더 이상 포함되지 않습니다. 이는 더 이상 사용되지 않습니다. 아카이브에는 클라이언트로 전송된 웹 리소스 및 직접 업데이트 유효성 검증을 위한 체크섬만 포함됩니다.</li>
                 </ul>
 
-                <p>일반 사용자 디바이스에 설치된 클라이언트 Cordova 앱의 직접 업데이트를 사용으로 설정하려면 수정된 웹 자원을 아카이브(.zip 파일)로 서버에 배치해야 합니다. 안전한 직접 업데이트를 사용으로 설정하려면 사용자 정의 키 저장소 파일을 {{ site.data.keys.mf_server }}에 배치하고 일치하는 공개 키 사본이 배치된 클라이언트 애플리케이션에 포함되어야 합니다.</p>
+                <p>일반 사용자 디바이스에 설치된 클라이언트 Cordova 앱의 직접 업데이트를 사용으로 설정하려면 수정된 웹 리소스를 아카이브(.zip 파일)로 서버에 배치해야 합니다. 안전한 직접 업데이트를 사용으로 설정하려면 사용자 정의 키 저장소 파일을 {{ site.data.keys.mf_server }}에 배치하고 일치하는 공개 키 사본이 배치된 클라이언트 애플리케이션에 포함되어야 합니다.</p>
 
                 <h3>어댑터</h3>
                 <h4>어댑터는 Apache Maven 프로젝트입니다.</h4>
@@ -300,10 +300,10 @@ weight: 1
                 </ul>
 
                 <h4>어댑터 디스크립터 파일의 변경사항</h4>
-                <p><b>adapter.xml</b> 디스크립터 파일이 약간 변경되었습니다. 어댑터의 어댑터 디스크립터 파일 구조에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">어댑터 학습서</a>를 참조하십시오.</p>
+                <p><b>adapter.xml</b> 디스크립터 파일이 약간 변경되었습니다. 어댑터의 어댑터 디스크립터 파일 구조에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">어댑터 튜토리얼</a>을 참조하십시오.</p>
 
                 <h4>Swagger UI와 통합</h4>
-                <p>{{ site.data.keys.mf_server }}는 이제 Swagger UI와 통합됩니다. 임의의 어댑터에 대해 {{ site.data.keys.mf_console }}의 자원 탭에 있는 Swagger 문서 보기를 클릭하여 연관된 API를 확인할 수 있습니다. 이 기능은 개발 환경에서만 사용할 수 있습니다.</p>
+                <p>{{ site.data.keys.mf_server }}는 이제 Swagger UI와 통합됩니다. 임의의 어댑터에 대해 {{ site.data.keys.mf_console }}의 리소스 탭에 있는 Swagger 문서 보기를 클릭하여 연관된 API를 확인할 수 있습니다. 이 기능은 개발 환경에서만 사용할 수 있습니다.</p>
 
                 <h4>JavaScript 어댑터에 대한 지원</h4>
                 <p>JavaScript 어댑터는 HTTP 및 SQL 연결성 유형으로만 지원됩니다.</p>
@@ -346,7 +346,7 @@ weight: 1
                     <li>앱 구성을 구체화하고 동적으로 변경합니다.</li>
                 </ul>
 
-                <p>{{ site.data.keys.mf_server }} 아티팩트는 {{ site.data.keys.mf_console }}의 자원을 제공합니다.</p>
+                <p>{{ site.data.keys.mf_server }} 아티팩트는 {{ site.data.keys.mf_console }}의 리소스를 제공합니다.</p>
 
                 <p>{{ site.data.keys.mf_server }}를 다시 디자인할 뿐 아니라 추가 설치 옵션을 제공합니다. 수동 설치뿐 아니라 {{ site.data.keys.product }}은 서버 팜에 {{ site.data.keys.mf_server }}를 설치하기 위한 두 가지 옵션을 제공합니다. 또한 Liberty Collective에 {{ site.data.keys.mf_server }}를 설치할 수도 있습니다.</p>
 
@@ -354,7 +354,7 @@ weight: 1
 
                 <ul>
                     <li>서버 팜 설치</li>
-                    <li>{{ site.data.keys.mf_server }} 설치에 대한 학습서</li>
+                    <li>{{ site.data.keys.mf_server }} 설치에 대한 튜토리얼</li>
                 </ul>
 
                 <p>{{ site.data.keys.mf_server }}는 또한 Liberty Collective도 지원합니다. 서버 토폴로지 및 다양한 설치 방법에 대한 자세한 정보는 다음 주제를 참조하십시오.</p>

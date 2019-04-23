@@ -107,4 +107,4 @@ weight: 1
 ###  사용법
 {: #usage }
 Apache Maven이 설치되어 있으니 이제 {{ site.data.keys.mf_cli }}를 사용하거나 Maven 명령행 명령을 통해 어댑터를 작성할 수 있습니다.  
-자세한 정보는 [어댑터 학습서]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)를 검토하십시오.
+자세한 정보는 [어댑터 튜토리얼]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)을 검토하십시오.

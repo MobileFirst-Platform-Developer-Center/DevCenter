@@ -27,11 +27,8 @@ weight: 3
     * [REST API](#rest-apis)
     * [알림 사용자 정의](#customizing-notifications)
 * [APN 푸시 알림에 대한 HTTP/2 지원](#http2-support-for-apns-push-notifications)
-  * [HTTP/2 사용](#enabling-http2)
-  * [HTTP/2에 대한 프록시 지원](#proxy-support-for-http2)
-* [APN 푸시 알림에 대한 HTTP/2 지원](#http2-support-for-apns-push-notifications)
-  * [HTTP/2 사용](#enabling-http2)
-  * [HTTP/2에 대한 프록시 지원](#proxy-support-for-http2)
+    * [HTTP/2 사용](#enabling-http2)
+    * [HTTP/2에 대한 프록시 지원](#proxy-support-for-http2)
 * [프록시 지원](#proxy-support)
 * [다음 학습서](#tutorials-to-follow-next)
 
@@ -365,6 +362,7 @@ phoneNumber |디바이스 등록 및 알림 수신에 사용되는 전화번호�
 
 2. [액세스 토큰을 작성하십시오](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
 
+
 3. **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**에 대한 **POST** 요청을 작성하십시오.
     - 원격 {{ site.data.keys.product_adj }}를 사용하는 경우 `hostname` 및 `port` 값을 사용자 고유의 값으로 대체하십시오.
     - 애플리케이션 ID 값을 사용자 고유의 값으로 업데이트하십시오.
@@ -413,13 +411,13 @@ phoneNumber |디바이스 등록 및 알림 수신에 사용되는 전화번호�
 ## APN 푸시 알림에 대한 HTTP/2 지원
 {: #http2-support-for-apns-push-notifications}
 
-Apple Push Notification(APN) 서비스는 HTTP/2 네트워크 프로토콜 기반의 새로운 API를 지원합니다. HTTP/2에 대한 지원은 아래 나열된 내용을 포함하여 많은 혜택을 제공합니다. 
+Apple Push Notification(APN) 서비스는 HTTP/2 네트워크 프로토콜 기반의 새로운 API를 지원합니다. HTTP/2에 대한 지원은 아래 나열된 내용을 포함하여 많은 혜택을 제공합니다.
 
-* 메시지 길이가 2KB에서 4KB로 증가하여 알림에 더 많은 컨텐츠를 추가할 수 있습니다. 
-* 클라이언트와 서버 사이의 다중 연결이 필요 없으므로 처리량이 향상됩니다. 
-* 유니버셜 푸시 알림 클라이언트 SSL 인증서를 지원합니다. 
+* 메시지 길이가 2KB에서 4KB로 증가하여 알림에 더 많은 컨텐츠를 추가할 수 있습니다.
+* 클라이언트와 서버 사이의 다중 연결이 필요 없으므로 처리량이 향상됩니다.
+* 유니버셜 푸시 알림 클라이언트 SSL 인증서를 지원합니다.
 
->MobileFirst의 푸시 알림이 이제 기존의 TCP 소켓 기반 알림과 함께 HTTP/2 기반 APN 푸시 알림을 지원합니다. 
+>MobileFirst의 푸시 알림이 이제 기존의 TCP 소켓 기반 알림과 함께 HTTP/2 기반 APN 푸시 알림을 지원합니다.
 
 ### HTTP/2 사용
 {: #enabling-http2}
@@ -429,7 +427,7 @@ JNDI 특성을 통해 HTTP/2 기반 알림을 사용할 수 있습니다.
 <jndiEntry jndiName="imfpush/mfp.push.apns.http2.enabled" value= "true"/>
 ```
 
->**참고:** 위의 JNDI 특성이 추가되면 기존의 TCP 소켓 기반 알림이 사용되지 않고 HTTP/2 기반 알림만 사용됩니다. 
+>**참고:** 위의 JNDI 특성이 추가되면 기존의 TCP 소켓 기반 알림이 사용되지 않고 HTTP/2 기반 알림만 사용됩니다.
 
 ### HTTP/2에 대한 프록시 지원
 {: #proxy-support-for-http2}

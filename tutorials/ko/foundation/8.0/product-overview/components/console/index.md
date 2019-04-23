@@ -71,7 +71,7 @@ weight: 2
 
 2. `mfpdev server console MyRemoteServer` 명령을 실행하십시오.
 
-> [CLI를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 학습서의 다양한 CLI 명령에 대해 자세히 알아보십시오.
+> [CLI를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 튜토리얼의 다양한 CLI 명령에 대해 자세히 알아보십시오.
 
 ## 콘솔 탐색
 {: #navigating-the-console }

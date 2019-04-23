@@ -210,7 +210,7 @@ WebSphere Application Server Liberty 프로파일의 경우 다음과 같은 조
 
 * Liberty 설치 디렉토리의 파일을 읽습니다.
 * Liberty 서버의 구성 디렉토리(일반적으로 usr/servers/server-name)에서 파일을 작성하여 백업 사본을 작성하고 server.xml 및 jvm.options를 수정합니다.
-* Liberty 공유 자원 디렉토리(일반적으로 usr/shared)에서 파일 및 디렉토리를 작성합니다.
+* Liberty 공유 리소스 디렉토리(일반적으로 usr/shared)에서 파일 및 디렉토리를 작성합니다.
 * Liberty 서버 앱 디렉토리(일반적으로 usr/servers/server-name/apps)에서 파일을 작성합니다.
 
 WebSphere Application Server 전체 프로파일 및 WebSphere Application Server Network Deployment의 경우 다음과 같은 조치를 수행하기 위해 필요한 권한을 가지고 있어야 합니다.
@@ -218,7 +218,7 @@ WebSphere Application Server 전체 프로파일 및 WebSphere Application Serve
 * WebSphere Application Server 설치 디렉토리의 파일을 읽습니다.
 * 선택한 WebSphere Application Server 전체 프로파일 또는 Deployment Manager 프로파일의 구성 파일을 읽습니다.
 * wsadmin 명령을 실행합니다.
-* 프로파일 구성 디렉토리에서 파일을 작성합니다. 설치 도구는 공유 라이브러리 또는 JDBC 드라이버 등의 자원을 해당 디렉토리에 배치합니다.
+* 프로파일 구성 디렉토리에서 파일을 작성합니다. 설치 도구는 공유 라이브러리 또는 JDBC 드라이버 등의 리소스를 해당 디렉토리에 배치합니다.
 
 Apache Tomcat의 경우 다음과 같은 조치를 수행하기 위해 필요한 권한을 가지고 있어야 합니다.
 
@@ -542,7 +542,7 @@ JDBC 연결에 대한 특성을 지정할 수 있습니다. `<property>` 요소�
 
 * Ant 설치
 * 원격 컴퓨터에 대한 **mfp-ant-deployer.jar** 파일의 사본. 이 라이브러리에는 Ant 태스크의 정의가 포함되어 있습니다.
-* 설치될 자원 지정. 기본적으로 WAR 파일은 **mfp-ant-deployer.jar** 근처에서 가져오지만 이 WAR 파일의 위치를 지정할 수 있습니다. 예를 들어, 다음과 같습니다.
+* 설치될 리소스 지정. 기본적으로 WAR 파일은 **mfp-ant-deployer.jar** 근처에서 가져오지만 이 WAR 파일의 위치를 지정할 수 있습니다. 예를 들어, 다음과 같습니다.
 
 ```xml
 <installmobilefirstadmin execute="true" contextroot="/mfpadmin" serviceWAR="/usr/mfp/mfp-admin-service.war">
@@ -1340,7 +1340,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
                 <p>JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록</a>을 참조하십시오.</p>
 
                 <h3>데이터 소스</h3>
-                <p>데이터 소스(jdbc/mfpAdminDS)는 **Context** 요소에서 자원으로 선언됩니다. 예를 들어, 다음과 같습니다.</p>
+                <p>데이터 소스(jdbc/mfpAdminDS)는 **Context** 요소에서 리소스로 선언됩니다. 예를 들어, 다음과 같습니다.</p>
 
 {% highlight xml %}
 <Resource name="jdbc/mfpAdminDS" type="javax.sql.DataSource" .../>
@@ -1373,7 +1373,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
                 라이브 업데이트 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>에 있습니다. 라이브 업데이트 서비스의 컨텍스트 루트는 다음과 같은 방식으로 정의되어야 합니다. <b>/the-adminContextRoot/config</b>. 예를 들어, 관리 서비스의 컨텍스트 루트가 <b>/mfpadmin</b>인 경우 라이브 업데이트 서비스의 컨텍스트 루트는 <b>/mfpadminconfig</b>여야 합니다.</p>
 
                 <h3>데이터 소스</h3>
-                <p>라이브 업데이트 서비스에 대한 데이터 소스의 JNDI 이름은 <code>jdbc/ConfigDS</code>로 정의되어야 합니다. <code>Context</code> 요소에서 자원으로 선언하십시오.</p>
+                <p>라이브 업데이트 서비스에 대한 데이터 소스의 JNDI 이름은 <code>jdbc/ConfigDS</code>로 정의되어야 합니다. <code>Context</code> 요소에서 리소스로 선언하십시오.</p>
 
                 <h3>보안 역할</h3>
                 <p>라이브 업데이트 서비스 애플리케이션에 사용 가능한 보안 역할은 <b>configadmin</b>입니다.
@@ -1456,7 +1456,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
                 <p>JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록</a>을 참조하십시오.</p>
 
                 <h3>데이터 소스</h3>
-                <p>런타임에 대한 데이터 소스의 JNDI 이름은 <b>jdbc/mfpDS</b>로 정의되어야 합니다. <b>Context</b> 요소에서 자원으로 선언하십시오.</p>
+                <p>런타임에 대한 데이터 소스의 JNDI 이름은 <b>jdbc/mfpDS</b>로 정의되어야 합니다. <b>Context</b> 요소에서 리소스로 선언하십시오.</p>
             </div>
         </div>
     </div>
@@ -2090,7 +2090,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                                 이 특성은 적절한 값으로 설정되어야 합니다.
                                 <ul>
                                     <li><b>mfp.admin.serverid</b>: 이 팜 멤버에 대해 정의된 ID입니다. 이 ID는 모든 팜 멤버에서 고유해야 합니다.</li>
-                                    <li><b>mfp.admin.jmx.user</b> 및 <b>mfp.admin.jmx.pwd</b>: 이 값은 <code>administrator-role</code> 요소에서 선언된 대로 사용자의 신임 정보와 일치해야 합니다.</li>
+                                    <li><b>mfp.admin.jmx.user</b> 및 <b>mfp.admin.jmx.pwd</b>: 이 값은 <code>administrator-role</code> 요소에서 선언된 대로 사용자의 인증 정보와 일치해야 합니다.</li>
                                     <li><b>mfp.admin.jmx.host</b>: 이 매개변수를 이 서버에 액세스하기 위해 원격 멤버가 사용하는 호스트 이름 또는 IP로 설정하십시오. 따라서 이를 <b>localhost</b>로 설정하지 마십시오. 이 호스트 이름은 팜의 기타 멤버에 의해 사용되며 모든 팜 멤버에 액세스할 수 있어야 합니다.</li>
                                     <li><b>mfp.admin.jmx.port</b>: 이 매개변수를 JMX REST 연결에 사용되는 서버 HTTPS 포트로 설정하십시오. <b>server.xml</b> 파일의 <code>httpEndpoint</code> 요소에서 값을 찾을 수 있습니다.</li>
                                 </ul>
@@ -2152,7 +2152,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                                 </blockquote>
                                 마지막으로 서버를 시작한 후 <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> 파일에서 com.ibm.ssl.trustStore가 포함된 행을 찾으십시오.
                                 <ul>
-                                    <li>팜에 있는 다른 서버의 공용 인증서를 서버의 <b>server.xml</b> 구성 파일이 참조하는 신뢰 저장소로 가져오십시오. <a href="../../simple-install/tutorials/graphical-mode">그래픽 모드에서 {{ site.data.keys.mf_server }} 설치</a> 학습서에서는 팜에 있는 두 Liberty 서버 사이에서 인증서를 교환하는 데 필요한 지시사항을 제공합니다. 자세한 정보는 <a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }}를 실행하는 두 개의 Liberty 서버로 구성된 팜 작성</a> 섹션의 5단계를 참조하십시오.</li>
+                                    <li>팜에 있는 다른 서버의 공용 인증서를 서버의 <b>server.xml</b> 구성 파일이 참조하는 신뢰 저장소로 가져오십시오. <a href="../../simple-install/tutorials/graphical-mode">그래픽 모드에서 {{ site.data.keys.mf_server }} 설치</a> 튜토리얼에서는 팜에 있는 두 Liberty 서버 사이에서 인증서를 교환하는 데 필요한 지시사항을 제공합니다. 자세한 정보는 <a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }}를 실행하는 두 개의 Liberty 서버로 구성된 팜 작성</a> 섹션의 5단계를 참조하십시오.</li>
                                     <li>WebSphere Application Server Liberty 프로파일의 각 인스턴스를 다시 시작하여 보안 구성을 적용하십시오. 싱글 사인온(SSO)이 작동하려면 다음의 단계가 필요합니다.</li>
                                     <li>팜의 한 멤버를 시작하십시오. 기본 LTPA 구성에서는 Liberty 서버가 정상적으로 시작되면 LTPA 키 저장소가 <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys</b>로 생성됩니다.</li>
                                     <li><b>ltpa.keys</b> 파일을 각 팜 멤버의 <b>${wlp.user.dir}/servers/server_name/resources/security</b> 디렉토리에 복사하여 팜 멤버 사이에서 LTPA 키 저장소를 복제하십시오. LTPA 구성에 대한 자세한 정보는 <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Liberty 프로파일에서 LTPA 구성</a>을 참조하십시오.</li>

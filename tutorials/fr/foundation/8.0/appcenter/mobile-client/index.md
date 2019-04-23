@@ -70,7 +70,7 @@ Vous pouvez installer le client mobile ou toute application signée portant l'in
 7. Lancez les applications **Android Download**. Sélectionnez le programme d'installation du client Application Center.
 8. Sélectionnez le programme d'installation du client Application Center. Vous pouvez voir l'accès accordé à l'application lorsque vous choisissez de l'installer.
 
-    ![Installation du client mobile dans Android](ac_instal_client_and_rights.jpg)
+    ![Installation du client mobile sous Android](ac_instal_client_and_rights.jpg)
 
 9. Sélectionnez **Install** pour installer le client mobile.
 10. Lorsque l'application est installée, sélectionnez **Open** pour ouvrir le client mobile ou **Done** pour fermer l'application Downloads.
@@ -132,7 +132,7 @@ L'installation du client mobile sur un appareil iOS est semblable à une install
 7. Saisissez vos données d'identification pour autoriser la transaction de téléchargement.
 8. Pour autoriser le téléchargement, appuyez sur **Install**.
 
-    ![Confirmation de l'installation de l'application](ac_instal_client_ios_conf.jpg)
+    ![Confirmer l'application à installer](ac_instal_client_ios_conf.jpg)
 
 9. Entrez vos données d'identification pour autoriser l'installation.
 10. Fermez le navigateur.
@@ -222,11 +222,11 @@ Vous pouvez installer le client mobile ou une application signée avec l'indicat
 
 3.  Entrez vos données d'identification pour autoriser l'accès au serveur.
 
-    ![Saisie des données d'identification permettant d'accéder au serveur](ac_wp10_enter_credentials.png)
+    ![Entrez les données d'identification pour l'accès au serveur](ac_wp10_enter_credentials.png)
 
 4.  Sélectionnez un élément dans la liste des applications disponibles pour afficher les détails d'une application.
 
-    ![Sélection d'une application pour afficher les détails correspondants](ac_wp10_apps_list.png)
+    ![Sélectionnez une application pour afficher ses détails](ac_wp10_apps_list.png)
 
 5.  Appuyez sur **Install** pour télécharger et installer le client mobile.
 
@@ -240,19 +240,19 @@ Vous pouvez installer le client mobile ou une application signée avec l'indicat
 
 1. Connectez-vous à Application Center.
 
-    ![Connexion à Application Center](ac_wp10_login.png)
+    ![Connectez-vous à Application Center](ac_wp10_login.png)
 
 2. Sélectionnez l'application à installer dans la liste des applications disponibles dans le catalogue.
 
-    ![Sélection d'une application dans le catalogue](ac_wp10_catalog_applisting.png)
+    ![Sélectionnez une application dans le catalogue](ac_wp10_catalog_applisting.png)
 
 3. Appuyez sur **Install** pour télécharger et installer l'application.
 
     ![Sélectionnez Install pour installer l'application](ac_wp10_app_details_installapp.png)
 
-4. Donnez un avis sur l'application en indiquant une note et en ajoutant des commentaires.
+4. Donnez un avis sur l'application en indiquant une notre et en ajoutant des commentaires.
 
-    ![Ajout de commentaires](ac_wp10_add_review.png)
+    ![Ajoutez des commentaires](ac_wp10_add_review.png)
 
 
 ## Vue de connexion
@@ -304,13 +304,13 @@ Si cette connexion aboutit, le nom d'utilisateur et l'adresse du serveur sont en
 Le client fournit des vues adaptées aux différentes tâches que vous souhaitez effectuer.  
 Après une connexion réussie, vous pouvez choisir parmi ces vues.
 
-![Vues de l'application client](ac_android_ios_views.jpg)
+![Vues dans l'application client](ac_android_ios_views.jpg)
 
 Utilisez ces vues pour communiquer avec un serveur pour envoyer ou récupérer des informations sur les applications ou pour gérer les applications se trouvant sur votre appareil.
 
 L'écran d'accueil du client Windows 8 affiche jusqu'à six applications dans chaque catégorie. Sur le client Windows 8, si vous souhaitez afficher la liste complète des applications dans une catégorie, cliquez sur le titre de la catégorie.
 
-![Ecran d'accueil sur Windows 8](ac_homeCatalog_w8.JPG)
+![Écran d'accueil du client sur Windows 8](ac_homeCatalog_w8.JPG)
 
 Voici la description des différentes vues :
 
@@ -324,9 +324,9 @@ Lorsque vous démarrez le client mobile pour la première fois, il ouvre la vue 
 {: #displays-on-different-device-types }
 La présentation des vues est spécifique à l'environnement Android, iOS, Windows Phone ou Windows 8, même si les fonctions courantes que vous pouvez effectuer dans les vues sont les mêmes pour tous les systèmes d'exploitation. Des types d'appareils différents peuvent avoir des affichages de page différents. Sur votre téléphone, une liste s'affiche. Sur une tablette, une grille d'applications est utilisée.
 
-![Vue Catalog sur un téléphone](ac_phone_catalog.jpg)
+![Vue de catalogue sur un téléphone](ac_phone_catalog.jpg)
 
-![Vue Catalog sur une tablette](ac_tablet_catalog.jpg)
+![Vue de catalogue sur une tablette](ac_tablet_catalog.jpg)
 
 ### Fonctions des vues
 {: #features-of-the-views }
@@ -385,13 +385,13 @@ Vous pouvez effectuer les actions suivantes dans cette vue.
 Dans la vue **Details**, vous pouvez installer une application sur votre appareil Android.  
 Dans la vue Details, si une version précédente de l'application n'est pas installée, vous pouvez installer cette version de l'application sur votre appareil Android.
 
-![Vue Details dans une version de l'application affichée sur un appareil Android](ac_phone_app_details.jpg)
+![Vue détaillée d'une version d'application sur votre appareil Android](ac_phone_app_details.jpg)
 
 1. Dans la vue **Details**, appuyez sur **Install**.
 
     L'application est téléchargée. Vous pouvez appuyer sur **Cancel** dans la vue **Details** à tout moment pendant le téléchargement pour annuler le téléchargement. (Le bouton **Cancel** n'apparaît que pendant les étapes d'installation.) Si vous laissez le téléchargement se terminer, vous verrez les droits qui sont accordés à l'application.
 
-    ![Droits de l'application sur un appareil Android](ac_app_rights_and.jpg)
+    ![Droits d'une application sur votre appareil Android](ac_app_rights_and.jpg)
 
 2. Appuyez sur **Install** pour confirmer l'installation de l'application ou sur **Cancel** pour annuler l'installation.
 
@@ -403,14 +403,14 @@ Dans la vue Details, si une version précédente de l'application n'est pas inst
 {: #installing-an-application-on-an-ios-device }
 Dans la vue **Details**, vous pouvez installer une version d'application sur votre appareil mobile iOS.
 
-![Vue Details dans une version de l'application affichée sur un appareil mobile iOS](ac_phone_app_details_ios.jpg)
+![Vue détaillée d'une version d'application sur votre appareil mobile iOS](ac_phone_app_details_ios.jpg)
 
 > **Important :** pour installer des applications sur des appareils iOS, vous devez d'abord configurer le serveur Application Center avec SSL. Voir [Configuration de Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
 
 1. Dans la vue **Details**, appuyez sur **Install**. Vous êtes invité à confirmer le téléchargement et l'installation de la version de l'application.
 2. Appuyez sur **Install** pour confirmer le téléchargement et l'installation de la version de l'application ou sur **Cancel** pour annuler l'installation.
 
-    ![Annulation de l'installation de l'application sur un appareil iOS](ac_app_inst_cancel_ios.jpg)
+    ![Annulation de l'installation d'une application sur votre appareil iOS](ac_app_inst_cancel_ios.jpg)
 
     Selon l'action effectuée, l'application est installée ou non. Lorsque l'application est installée, elle est également marquée comme application favorite.
 
@@ -445,7 +445,7 @@ Une fois la confiance confirmée, aucune application utilisant ce profil de mise
 Dans la vue **Details**, vous pouvez installer une application de société sur votre appareil Windows Phone.  
 La vue **Details** de l'application sélectionnée affiche des informations sur l'application que vous souhaitez installer.
 
-![Vue Details d'une version de l'application de la société pour installation sur un appareil Windows Phone](ac_phone_app_details_wp.jpg)
+![Vue détaillée d'une version d'application de société pour l'installation sur un appareil Windows Phone](ac_phone_app_details_wp.jpg)
 
 1. Dans la vue **Details**, appuyez sur **Install**. L'application est téléchargée et installée. Vous pouvez appuyer sur **Cancel** à tout moment pendant le téléchargement de l'application pour annuler l'activité. Le bouton **Cancel** apparaît uniquement pendant l'étape de téléchargement du processus d'installation.
 
@@ -453,7 +453,7 @@ La vue **Details** de l'application sélectionnée affiche des informations sur 
 
 2. Appuyez sur **Install** pour confirmer l'installation de l'application ou sur **Cancel** pour annuler l'installation. L'application est marquée comme une application favorite.
 
-    ![Confirmation ou annulation de l'installation de l'application de la société sur un appareil Windows Phone](ac_confirm_instal_app_wp.jpg)
+    ![Confirmation ou annulation de l'installation d'une application de société sur un appareil Windows Phone](ac_confirm_instal_app_wp.jpg)
 
 > **Astuce :** lorsque vous installez une application de société sur un appareil, cet appareil doit se connecter au serveur Microsoft pour vérifier la signature de l'application. Parfois, le serveur Microsoft ne répond pas. Dans ce cas, vous pouvez recommencer l'installation quelques minutes plus tard.
 
@@ -513,7 +513,7 @@ Les étapes suivantes décrivent comment effectuer l'installation d'une applicat
 1. Connectez-vous au client mobile Application Center pour les applications Windows Store.
 2. Sélectionnez l'application que vous souhaitez installer pour accéder à ses détails.
 
-    ![Vue Details pour l'installation d'une application Windows Store](ac_details_wstore_app.jpg)
+    ![Vue détaillée de l'installation d'une application Windows Store](ac_details_wstore_app.jpg)
 
 3. Pour installer l'application, appuyez sur **Install**. Si l'application est déjà installée et que d'autres versions sont disponibles, vous pouvez décider de mettre à jour vers une version ultérieure ou de revenir à une version précédente.
 
@@ -530,7 +530,7 @@ Les liens vers des applications Android stockées dans Google Play et vers des a
 2. Appuyez sur **Go to Store** pour ouvrir Google Play ou Apple iTunes.
 
     **Android**
-    ![Accès à une application dans Google play à partir du client mobile sur l'appareil](ac_and_link_app.jpg)
+    ![Accès à une application dans Google Play depuis le client mobile sur l'appareil](ac_and_link_app.jpg)
 
     **iOS**
     ![Accès à une application dans Apple iTunes depuis le client mobile sur l'appareil](ac_ios_link_app.jpg)
@@ -602,7 +602,7 @@ Si vous souhaitez désactiver la mise à niveau automatique, vous devez définir
 
 2. Appuyez sur **Install** pour installer la version ultérieure de l'application.
 
-    ![Confirmation de l'installation de la version mise à jour de l'application](ac_client_autoupgrade_install_app.jpg)
+    ![Confirmez l'installation de la version à jour de l'application](ac_client_autoupgrade_install_app.jpg)
 
 3. Appuyez sur **Open** pour démarrer l'application mise à jour.
 

@@ -40,7 +40,7 @@ weight: 3
 
 ## 데이터베이스 사용자 및 권한
 {: #database-users-and-privileges }
-런타임 시 애플리케이션 서버의 {{ site.data.keys.mf_server }} 애플리케이션은 데이터 소스를 자원으로 사용하여 관계형 데이터베이스에 연결합니다. 데이터 소스에는 데이터베이스에 액세스할 수 있는 특정 권한을 가진 사용자가 필요합니다.
+런타임 시 애플리케이션 서버의 {{ site.data.keys.mf_server }} 애플리케이션은 데이터 소스를 리소스로 사용하여 관계형 데이터베이스에 연결합니다. 데이터 소스에는 데이터베이스에 액세스할 수 있는 특정 권한을 가진 사용자가 필요합니다.
 
 관계형 데이터베이스에 대한 액세스 권한을 가지도록 애플리케이션 서버에 배치되는 각각의 {{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터 소스를 구성해야 합니다. 데이터 소스에는 데이터베이스에 액세스할 수 있는 특정 권한을 가진 사용자가 필요합니다. 작성해야 하는 사용자의 수는 {{ site.data.keys.mf_server }} 애플리케이션을 애플리케이션 서버에 배치하는 데 사용되는 설치 프로시저에 따라 다릅니다.
 
@@ -315,7 +315,7 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 
 Server Configuration Tool은 설치 프로세스의 일부로 데이터베이스 테이블을 작성할 수 있습니다. 일부 경우에는 {{ site.data.keys.mf_server }} 컴포넌트에 대한 데이터베이스 및 사용자도 작성할 수 있습니다. Server Configuration Tool을 사용한 설치 프로세스에 대한 개요는 [그래픽 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/tutorials/graphical-mode)를 참조하십시오.
 
-구성 신임 정보를 완료하고 Server Configuration Tool 분할창에서 **배치**를 클릭하면 다음과 같은 조작이 실행됩니다.
+구성 인증 정보를 완료하고 Server Configuration Tool 분할창에서 **배치**를 클릭하면 다음과 같은 조작이 실행됩니다.
 
 * 필요한 경우 데이터베이스 및 사용자를 작성합니다.
 * {{ site.data.keys.mf_server }} 테이블이 데이터베이스에 있는지 여부를 확인합니다. 해당 테이블이 없는 경우에는 해당 테이블을 작성합니다.
@@ -333,7 +333,7 @@ Server Configuration Tool을 실행하기 전에 수동으로 데이터베이스
 {: #creating-the-db2-database-tables-with-the-server-configuration-tool }
 {{ site.data.keys.mf_server }} 설치와 함께 제공되는 Server Configuration Tool을 사용하여 DB2 데이터베이스 테이블을 작성하십시오.
 
-Server Configuration Tool은 기본 DB2 인스턴스에서 데이터베이스를 작성할 수 있습니다. Server Configuration Tool의 **데이터베이스 선택** 패널에서 IBM DB2 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 신임 정보를 입력하십시오. **데이터베이스 추가 설정** 분할창에서 입력되는 데이터베이스 이름이 DB2 인스턴스에 없는 경우에는 추가 정보를 입력하여 도구가 사용자를 위해 데이터베이스를 작성하게 할 수 있습니다.
+Server Configuration Tool은 기본 DB2 인스턴스에서 데이터베이스를 작성할 수 있습니다. Server Configuration Tool의 **데이터베이스 선택** 패널에서 IBM DB2 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 인증 정보를 입력하십시오. **데이터베이스 추가 설정** 분할창에서 입력되는 데이터베이스 이름이 DB2 인스턴스에 없는 경우에는 추가 정보를 입력하여 도구가 사용자를 위해 데이터베이스를 작성하게 할 수 있습니다.
 
 Server Configuration Tool은 다음 SQL문을 사용하여 기본 설정으로 데이터베이스 테이블을 작성합니다.
 ```sql
@@ -346,7 +346,7 @@ CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 {: #creating-the-oracle-database-tables-with-the-server-configuration-tool }
 {{ site.data.keys.mf_server }} 설치와 함께 제공되는 Server Configuration Tool을 사용하여 Oracle 데이터베이스 테이블을 작성하십시오.
 
-Server Configuration Tool의 데이터베이스 선택 패널에서 **Oracle Standard 또는 Enterprise Edition, 11g 또는 12c** 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 신임 정보를 입력하십시오.
+Server Configuration Tool의 데이터베이스 선택 패널에서 **Oracle Standard 또는 Enterprise Edition, 11g 또는 12c** 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 인증 정보를 입력하십시오.
 
 **데이터베이스 추가 설정** 패널에서 Oracle 사용자 이름을 입력할 때 해당 이름은 대문자여야 합니다. Oracle 데이터베이스 사용자(FOO)가 있을 때 소문자로 된 사용자 이름(foo)을 입력하면 Server Configuration Tool은 이를 다른 사용자로 간주합니다. Oracle 데이터베이스에 대한 기타 도구와 달리 Server Configuration Tool은 사용자 이름이 자동으로 대문자로 변환되지 않도록 보호합니다.
 
@@ -385,7 +385,7 @@ Server Configuration Tool도 동일한 작업을 수행할 수 있지만 제한�
 {: #creating-the-mysql-database-tables-with-the-server-configuration-tool }
 {{ site.data.keys.mf_server }} 설치와 함께 제공되는 Server Configuration Tool을 사용하여 MySQL 데이터베이스 테이블을 작성하십시오.
 
-Server Configuration Tool은 사용자를 위해 MySQL 데이터베이스를 작성할 수 있습니다. Server Configuration Tool의 **데이터베이스 선택** 패널에서 **MySQL 5.5.x, 5.6.x 또는 5.7.x** 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 신임 정보를 입력하십시오. 데이터베이스 추가 설정 패널에서 입력하는 사용자 또는 데이터베이스가 없으면 도구가 이를 작성할 수 있습니다.
+Server Configuration Tool은 사용자를 위해 MySQL 데이터베이스를 작성할 수 있습니다. Server Configuration Tool의 **데이터베이스 선택** 패널에서 **MySQL 5.5.x, 5.6.x 또는 5.7.x** 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 인증 정보를 입력하십시오. 데이터베이스 추가 설정 패널에서 입력하는 사용자 또는 데이터베이스가 없으면 도구가 이를 작성할 수 있습니다.
 
 MySQL 서버가 [MySQL 데이터베이스 및 사용자 요구사항](#mysql-database-and-user-requirements)에서 권장되는 설정을 가지고 있지 않으면 Server Configuration Tool에 경고가 표시됩니다. Server Configuration Tool을 실행하기 전에 요구사항을 이행했는지 확인하십시오.
 
@@ -494,7 +494,7 @@ Ant 파일에서 Oracle 사용자 이름을 입력할 때 해당 이름은 대�
 4. 동일한 **oracle** 요소에서 작성될 데이터베이스의 **SYS** 사용자 및 **SYSTEM** 사용자에 대한 비밀번호도 입력하십시오. 속성은 **sysPassword** 및 **systemPassword**입니다. 해당 특성에서 값을 지정할 수 있습니다.
     * **database.oracle.sysPassword**
     * **database.oracle.systemPassword**
-5. Ant 파일에서 모든 데이터베이스 신임 정보를 입력한 후 이를 저장하고 **databases** Ant 대상을 실행하십시오.
+5. Ant 파일에서 모든 데이터베이스 인증 정보를 입력한 후 이를 저장하고 **databases** Ant 대상을 실행하십시오.
 
 **oracle** 요소의 데이터베이스에서 입력되는 SID 이름을 사용하여 데이터베이스가 작성됩니다. 이는 프로덕션용으로는 적합하지 않습니다.
 
@@ -513,7 +513,7 @@ Ant 파일에서 Oracle 사용자 이름을 입력할 때 해당 이름은 대�
 4. **dba** 요소에서 사용자를 작성할 수 있는 권한을 가진 Oracle 데이터베이스 사용자의 로그인 ID 및 비밀번호를 입력하십시오. 다음과 같은 특성에서 값을 지정할 수 있습니다.
     * **database.oracle.admin.username**
     * **database.oracle.admin.password**
-5. Ant 파일에서 모든 데이터베이스 신임 정보를 입력한 후 이를 저장하고 **databases** Ant 대상을 실행하십시오.
+5. Ant 파일에서 모든 데이터베이스 인증 정보를 입력한 후 이를 저장하고 **databases** Ant 대상을 실행하십시오.
 
 **oracle** 요소에서 입력되는 이름 및 비밀번호를 사용하여 데이터베이스 사용자가 작성됩니다. 이 사용자는 {{ site.data.keys.mf_server }} 테이블을 작성한 후 업그레이드하고 런타임 시 사용할 수 있는 권한을 가지고 있습니다.
 
@@ -533,4 +533,4 @@ MySQL 서버가 [MySQL 데이터베이스 및 사용자 요구사항](#mysql-dat
     * **database.mysql.admin.username**
     * **database.mysql.admin.password**
 2. **mysql** 요소에서 사용자가 데이터베이스에 연결할 수 있는 각 호스트에 대한 **client** 요소를 추가하십시오. 즉, {{ site.data.keys.mf_server }}가 실행되는 모든 호스트입니다.
-Ant 파일에서 모든 데이터베이스 신임 정보를 입력한 후 이를 저장하고 **databases** Ant 대상을 실행하십시오.
+Ant 파일에서 모든 데이터베이스 인증 정보를 입력한 후 이를 저장하고 **databases** Ant 대상을 실행하십시오.

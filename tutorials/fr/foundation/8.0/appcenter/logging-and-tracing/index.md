@@ -50,7 +50,7 @@ Vous pouvez définir les niveaux de journalisation et le fichier de sortie pour 
 
 Lorsque vous tentez de diagnostiquer des problèmes dans Application Center, il est important de pouvoir afficher les messages du journal. Pour imprimer des messages de journal lisibles dans des fichiers journaux, vous devez spécifier les paramètres applicables.
 
-Pour activer la journalisation de {{ site.data.keys.product }}, y compris Application Center, avec le niveau FINEST (équivalent à ALL), ajoutez une ligne au fichier server.xml. Exemple :
+Pour activer la journalisation de {{ site.data.keys.product }}, y compris Application Center, avec le niveau FINEST (équivalent à ALL), ajoutez une ligne au fichier server.xml. Par exemple :
 
 ```xml
 <logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.mfp.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>

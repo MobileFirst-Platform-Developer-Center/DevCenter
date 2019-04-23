@@ -24,7 +24,7 @@ Installation Manager를 실행하여 {{ site.data.keys.mf_server }}의 2진 파�
 {: #ibm-mobilefirst-foundation-application-center }
 Application Center는 {{ site.data.keys.product }}의 컴포넌트입니다. Application Center를 사용하면 조직 내에서 개발 중인 모바일 애플리케이션을 모바일 애플리케이션의 단일 저장소에서 공유할 수 있습니다.
 
-Installation Manager를 사용하여 Application Center를 설치하기로 선택하는 경우, Installation Manager에서 데이터베이스를 구성하고 Application Center를 애플리케이션 서버에 배치하도록 데이터베이스 및 애플리케이션 서버 매개변수를 제공해야 합니다. Installation Manager를 사용하여 Application Center를 설치하지 않기로 선택하는 경우, Installation Manager는 Application Center의 WAR 파일 및 자원을 디스크에 저장합니다. 데이터베이스를 설정하지 않으며 애플리케이션 서버에 Application Center WAR 파일을 배치하지도 않습니다. 이러한 작업은 나중에 Ant 태스크를 사용하거나 수동으로 수행할 수 있습니다. Application Center를 설치하는 이 옵션은 설치 프로세스 동안 그래픽 설치 마법사의 안내를 받으므로 Application Center를 검색하기 위한 편리한 방법입니다.
+Installation Manager를 사용하여 Application Center를 설치하기로 선택하는 경우, Installation Manager에서 데이터베이스를 구성하고 Application Center를 애플리케이션 서버에 배치하도록 데이터베이스 및 애플리케이션 서버 매개변수를 제공해야 합니다. Installation Manager를 사용하여 Application Center를 설치하지 않기로 선택하는 경우, Installation Manager는 Application Center의 WAR 파일 및 리소스를 디스크에 저장합니다. 데이터베이스를 설정하지 않으며 애플리케이션 서버에 Application Center WAR 파일을 배치하지도 않습니다. 이러한 작업은 나중에 Ant 태스크를 사용하거나 수동으로 수행할 수 있습니다. Application Center를 설치하는 이 옵션은 설치 프로세스 동안 그래픽 설치 마법사의 안내를 받으므로 Application Center를 검색하기 위한 편리한 방법입니다.
 
 그러나 프로덕션 설치의 경우 Ant 태스크를 사용하여 Application Center를 설치하십시오. Ant 태스크를 사용하여 설치하면 {{ site.data.keys.mf_server }}에 대한 업데이트를 Application Center에 대한 업데이트에서 분리할 수 있습니다.
 
@@ -70,7 +70,7 @@ Installation Manager 모드에 대한 자세한 정보는 IBM Installation Manag
 
 ## IBM Installation Manager 설치 마법사를 사용하여 설치
 {: #installing-by-using-ibm-installation-manager-install-wizard }
-다음 프로시저의 단계에 따라 {{ site.data.keys.mf_server }}의 자원과 도구(예: Server Configuration Tool, Ant 및 mfpadm 프로그램)를 설치하십시오.  
+다음 프로시저의 단계에 따라 {{ site.data.keys.mf_server }}의 리소스와 도구(예: Server Configuration Tool, Ant 및 mfpadm 프로그램)를 설치하십시오.  
 설치 마법사에서 다음 두 분할창의 의사결정은 필수입니다.
 
 * **일반 설정** 패널
@@ -112,9 +112,9 @@ Installation Manager 모드에 대한 자세한 정보는 IBM Installation Manag
     예를 선택하는 경우, 다음 분할창에서 사용할 예정인 데이터베이스에 대한 세부사항과 Application Center를 배치할 예정인 애플리케이션 서버에 대한 세부사항을 입력해야 합니다. 또한 해당 데이터베이스의 JDBC 드라이버도 사용 가능하도록 해야 합니다.
 9. **감사** 패널이 표시될 때까지 **다음**을 클릭하십시오. 그런 다음 설치를 계속하십시오.
 
-{{ site.data.keys.product_adj }} 컴포넌트를 설치하기 위한 자원이 포함된 설치 디렉토리가 설치됩니다.
+{{ site.data.keys.product_adj }} 컴포넌트를 설치하기 위한 리소스가 포함된 설치 디렉토리가 설치됩니다.
 
-다음 폴더에서 자원을 찾을 수 있습니다.
+다음 폴더에서 리소스를 찾을 수 있습니다.
 
 * {{ site.data.keys.mf_server }}에 대한 **MobileFirstServer** 폴더
 * {{ site.data.keys.mf_server }} 푸시 서비스에 대한 **PushService** 폴더
@@ -163,9 +163,9 @@ Installation Manager 모드에 대한 자세한 정보는 IBM Installation Manag
 
     imcl 명령에 대한 자세한 정보는 [Installation Manager: `imcl` 명령을 사용하여 패키지 설치](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en)를 참조하십시오.
 
-{{ site.data.keys.product_adj }} 컴포넌트를 설치하기 위한 자원이 포함된 설치 디렉토리가 설치됩니다.
+{{ site.data.keys.product_adj }} 컴포넌트를 설치하기 위한 리소스가 포함된 설치 디렉토리가 설치됩니다.
 
-다음 폴더에서 자원을 찾을 수 있습니다.
+다음 폴더에서 리소스를 찾을 수 있습니다.
 
 * {{ site.data.keys.mf_server }}에 대한 **MobileFirstServer** 폴더
 * {{ site.data.keys.mf_server }} 푸시 서비스에 대한 **PushService** 폴더
@@ -645,7 +645,7 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
 | **configuration-samples** | Application Center를 설치하기 위한 샘플 Ant 파일을 포함합니다. Ant 태스크는 데이터베이스 테이블을 작성하고 애플리케이션 서버에 WAR 파일을 배치합니다. |
 | **console** | Application Center를 설치하기 위한 EAR 및 WAR 파일을 포함합니다. 이 EAR 파일은 IBM  PureApplication  System에 고유하게 사용됩니다. |
 | **databases** | Application Center용 테이블의 수동 작성에 사용되는 SQL 스크립트를 포함합니다. |
-| **installer** | Application Center 클라이언트를 작성하기 위한 자원을 포함합니다. |
+| **installer** | Application Center 클라이언트를 작성하기 위한 리소스를 포함합니다. |
 | **tools** | Application Center의 도구. |
 
 #### {{ site.data.keys.mf_server }} 서브디렉토리의 파일 및 서브디렉토리
