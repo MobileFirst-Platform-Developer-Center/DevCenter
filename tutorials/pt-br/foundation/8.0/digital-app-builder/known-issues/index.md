@@ -1,23 +1,23 @@
 ---
 layout: tutorial
-title: Known Issues
+title: Problemas Conhecidos
 weight: 8
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #known-issues }
 
-Following are the known issues you may encounter while using IBM Digital App Builder.
+A seguir estão os problemas conhecidos que podem ser encontrados ao usar o IBM Digital App Builder.
 
-* Cannot preview an app on Windows
+* Não é possível visualizar um aplicativo no Windows
 
-    Run the Digital App Builder on Windows with Administrative privileges. You can do this by selecting the Digital App Builder icon and right-click and select "Run as administrator". 
+    Execute o Digital App Builder no Windows com privilégios Administrativos. É possível fazer isso selecionando o ícone do Digital App Builder, clicar com o botão direito e selecionar "Executar como administrador". 
 
-* Digital App Builder crashes when you create a page name with a number.
+* O Digital App Builder trava quando você cria um nome de página com um número.
 
-    Do not use numbers in a page name.
+    Não use números em um nome de página.
 
-* Camera in Watson Visual Recognition control will not work in web platform because of known issue in camera cordova plugin.
+* A câmera no controle do Watson Visual Recognition não funcionará na plataforma da web devido a um problema conhecido no plug-in da câmera do cordova.
  
-    Known bug in cordova camera plugin. For more information, visit [cordova camera plugin known issue](https://github.com/apache/cordova-plugin-camera/issues/399).
+    Erro conhecido no plugin da câmera do cordova. Para obter mais informações, visite o [problema conhecido do plugin da câmera do cordova](https://github.com/apache/cordova-plugin-camera/issues/399).
