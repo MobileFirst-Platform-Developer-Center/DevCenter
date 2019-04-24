@@ -1,56 +1,56 @@
 ---
 layout: tutorial
-title: Developing an app
+title: Desenvolvendo um app
 weight: 5
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #developing-an-app }
 
-Developing an app includes the following steps:
+O desenvolvimento de um aplicativo inclui as etapas a seguir:
 
-1. Create an app. Refer to [Creating an app](../getting-started/) section.
-2. Design your app by adding the required controls. For more information, refer to [Digital App Builder interface](../dab-interface/).
-3. Add the services you need (Watson Chat, Watson Visual Recognition, Push Notifications, Data Set) in your app.
-4. Add or modify the Platforms, if required. Refer to the [Settings > App details](../dab-interface/) section.
-5. Preview your app. Refer to [Preview the app using the simulator](#preview-the-app-using-the-simulator).
-6. After previewing your application and if it is ready for build, after rectifying any errors, perform the following steps for building the application:
+1. Criar um aplicativo. Consulte a seção [Criando um aplicativo](../getting-started/).
+2. Projetar seu aplicativo, incluindo os controles necessários. Para obter mais informações, consulte [Interface do Digital App Builder](../dab-interface/).
+3. Incluir os serviços necessários (Watson Chat, Watson Visual Recognition, Notificações Push, Conjunto de Dados) em seu aplicativo.
+4. Incluir ou modificar as Plataformas, se necessário. Consulte a seção [Configurações > Detalhes do aplicativo](../dab-interface/).
+5. Visualizar seu aplicativo. Consulte [Visualize o aplicativo usando o simulador](#preview-the-app-using-the-simulator).
+6. Depois de visualizar seu aplicativo e se ele estiver pronto para construção, depois de corrigir quaisquer erros, execute as etapas a seguir para construir o aplicativo:
 
-    * **For Android app:**
+    * **Para aplicativo Android:**
 
-        a. Navigate to the directory, which you have specified at the time of creating the app.
+        a. Navegue para o diretório que você especificou no momento da criação do aplicativo.
 
-        b. Go to ionic folder.
+        b. Acesse a pasta ionic.
 
-        c. Go to **Platform > Android**.
+        c. Acesse **Plataforma >Android**.
 
-        d. Open Android Studio and then go to **File > Open Project** > Choose the android folder mentioned in step c.
+        d. Abra o Android Studio e, em seguida, acesse **Arquivo >Abrir Projeto**>Escolha a pasta android mencionada na etapa c.
 
-        e. Build the project. 
+        e. Construa o projeto. 
 
-        >**Note**: For publishing and building follow the steps from tutorial [https://developer.android.com/studio/publish/](https://developer.android.com/studio/publish/).
+        >**Nota**: para publicar e construir, siga as etapas do tutorial [https://developer.android.com/studio/publish/](https://developer.android.com/studio/publish/).
 
-    * **For iOS app**:
+    * **Para aplicativo iOS**:
  
-        a. Navigate to the directory, which you have specified at the time of creating the app.
+        a. Navegue para o diretório que você especificou no momento da criação do aplicativo.
 
-        b. Go to ionic folder.
+        b. Acesse a pasta ionic.
 
-        c. Go to Platform > iOS.
+        c. Acesse Plataforma > iOS.
 
-        d. Open **Xcode** and then build the project. 
+        d. Abra **Xcode** e, em seguida, construa o projeto. 
 
-        >**Note**: For publishing and building follow the steps from tutorial [https://developer.apple.com/ios/submit/](https://developer.apple.com/ios/submit/).
+        >**Nota**: para publicar e construir, siga as etapas do tutorial [https://developer.apple.com/ios/submit/](https://developer.apple.com/ios/submit/).
 
 
-### Preview the app using the simulator
+### Visualize o aplicativo usando o simulador
 {: #preview-the-app-using-the-simulator }
 
-You can preview the app developed by connecting to the simulation to the channel selected.
+É possível visualizar o aplicativo desenvolvido conectando-se à simulação no canal selecionado.
 
-* To preview the App on iOS, download and install **XCode** from Apple App Store.
-* To preview the App on Android, 
-    * Install Android Studio and follow the instruction. [https://developer.android.com/studio/](https://developer.android.com/studio/)
-    * Configure an Android Virtual Machine. Follow the instructions [here](https://developer.android.com/studio/releases/emulator).
+* Para visualizar o aplicativo no iOS, faça download e instale o **XCode** a partir da Apple App Store.
+* Para visualizar o aplicativo no Android, 
+    * Instale o Android Studio e siga a instrução. [https://developer.android.com/studio/](https://developer.android.com/studio/)
+    * Configure uma Máquina Virtual Android. Siga as instruções [aqui](https://developer.android.com/studio/releases/emulator).
 

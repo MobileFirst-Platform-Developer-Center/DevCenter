@@ -1,317 +1,315 @@
 ---
 layout: tutorial
-title: Digital App Builder interface
+title: Interface do Digital App Builder
 weight: 4
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #digital-app-builder-interface }
 
 
-![DAB interface](dab-workbench-elements.png)
+![Interface do DAB](dab-workbench-elements.png)
 
-Digital App Builder interface consists of the following in the Left navigation panel:
+A interface do Digital App Builder consiste no seguinte no painel de navegação esquerdo:
 
-* **Workbench** - displays or hides the page details
-* **Data** - helps you to add a dataset by connecting to an existing data source or create a data source for a microservice using OpenAPI doc. 
-* **Watson** - consists of Image Recognition and Chatbot (Watson Assistant) components for configuring an existing instance or create a new instance. 
-* **Engagement** - You can increase your user engagement with the app by adding Push notifications services
-* **Console**: displays the console to see the activities and code for each component. 
-* **Settings**: displays the App details, Server info, Plugins, and Repair Project (like Rebuilding dependencies, Rebuilding platforms, Resetting IBM Cloud credentials).
+* **Ambiente de trabalho** - exibe ou oculta os detalhes da página
+* **Dados** - ajuda a incluir um conjunto de dados conectando-se a uma origem de dados existente ou criar uma origem de dados para um microsserviço usando o doc OpenAPI. 
+* **Watson** - consiste em componentes de Reconhecimento de Imagem e Robô de Bate-papo (Watson Assistant) para configurar uma instância existente ou criar uma nova instância. 
+* **Engajamento** - é possível aumentar seu engajamento de usuário com o aplicativo, incluindo serviços de notificações Push
+* **Console**: exibe o console para ver as atividades e o código para cada componente. 
+* **Configurações**: exibe os detalhes do aplicativo, informações do servidor, plug-ins e Reparar Projeto (como a Reconstrução de dependências, a Reconstrução de plataformas, a Reconfiguração de credenciais do IBM Cloud).
 
-### Workbench
+### Ambiente de trabalho
 {: #workbench }
 
-Workbench helps you to design the pages. Workbench consists of three work areas:
+O ambiente de trabalho ajuda você a projetar as páginas. O ambiente de trabalho consiste em três áreas de trabalho:
 
-![Workbench](dab-workbench.png)
+![Ambiente de trabalho](dab-workbench.png)
 
-1. **Pages/Controls**: This area displays the name of the pages created by default. Use **+** sign to create a new page. On clicking **Controls** icon, displays controls that helps in adding functionality to a page in an app. You can drag and drop the controls from the respective Controls pallette to a page's canvas. Each control has a set of properties and actions.
+1. **Páginas/Controles**: essa área exibe o nome das páginas criadas por padrão. Use o sinal **+** para criar uma nova página. Clicar no ícone **Controles**, exibe controles que ajudam a incluir funcionalidade em uma página em um aplicativo. É possível arrastar e soltar os controles da respectiva paleta de Controles para uma tela da página. Cada controle possui um conjunto de propriedades e ações.
 
-    Following is the list of controls provided available:
-    * **Basic**: You can drag-and-drop these basic controls (Button, Heading, Image, and Label) to the canvas and configure the properties and actions.
+    A seguir está a lista de controles fornecidos disponíveis:
+    * **Básico**: É possível arrastar e soltar estes controles básicos (Botão, Cabeçalho, Imagem e Rótulo) para a tela e configurar as propriedades e ações.
 
-        ![Pages / Congrols](dab-workbench-basic-controls.png)
+        ![Páginas/Controles](dab-workbench-basic-controls.png)
 
-        * **Button** - Buttons has a property to label. In the Action tab you can specify the page to navigate to on click of the Button.
-        * **Heading Text** - Helps you to add a heading text for the application such as Page Title.
-        * **Image** - Helps you upload a local image or provide a url of an image.
-        * **Label** - Helps you to add static text to your page body. 
-    * **Databound** - helps you to connect with a data set and operate on the entities in the data set. Databound consists of two components: **List** and **Connected Labels**
+        * **Botão**-Os botões têm uma propriedade para rotular. Na guia Ação, é possível especificar a página para navegar para o botão direito do mouse no Botão.
+        * **Texto de Título**-Ajuda você a incluir um texto de título para o aplicativo, como Título da Página.
+        * **Imagem**-Ajuda a fazer upload de uma imagem local ou fornecer uma url de uma imagem.
+        * **Rótulo**-Ajuda você a incluir texto estático em seu corpo da página. 
+    * **Databound** - ajuda você a se conectar com um conjunto de dados e a operar as entidades no conjunto de dados. O databound consiste em dois componentes: **Listar**e **Rótulos Conectados**
 
-        ![Databound controls](dab-workbench-databound-controls.png)
+        ![Controles de databound](dab-workbench-databound-controls.png)
 
-        * **List** - Create a new page and drag and drop the List component. Add the **List Title**, Choose the list type to work on, Add content to work on, and select the dataset to use.
+        * **Listar**-Criar uma nova página e arrastar e soltar o componente Lista. Inclua o **Título da Lista**, Escolha o tipo de lista para trabalhar em, Incluir conteúdo no trabalho e selecione o conjunto de dados a ser usado.
 
 
-    * **Login** - Login consists of the **Login Form** control. Drag and drop the login form to the page.
+    * **Login** - Login consiste no controle de **Formulário de Login**. Arraste e solte o formulário de login na página.
  
-        The Login Form control helps you to create a login page for your application to connect the user to the Mobile Foundation server. Mobile Foundation server provides a security framework to authenticate users and provide that security context to access the data sets. For more information read [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/creating-a-security-check/).
+        O controle de Formulário de Login ajuda você a criar uma página de login para seu aplicativo para conectar o usuário ao servidor Mobile Foundation. O servidor Mobile Foundation fornece uma estrutura de segurança para autenticar usuários e fornecer esse contexto de segurança para acessar os conjuntos de dados. Para obter mais informações, leia [aqui](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/creating-a-security-check/).
 
-        ![Login Form](dab-workbench-login-control.png)
+        ![Formulário de login](dab-workbench-login-control.png)
 
-        To enable Login Form, perform the following steps:
+        Para ativar o Formulário de login, execute as etapas a seguir:
 
-        1. Make the following changes on Mobile Foundation Server
-            * Deploy a security check adapter which would take username and password as input. You can use the sample adapter from [here](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80).
-            * In the mfpconsole, go to app's security tab and under Mandatory Application Scope, add the above created security definition as scope element.
-        2. Make the following configuration in your Application using the Builder.
-            * Add **Login Form** control to a page in the canvas.
-            * In **Properties** tab, provide the **Security check name** and the page to navigate **On Login Success**.
-            * Run the app.
-    * **AI** - AI controls allows you to add Watson AI capabilities to your app.
+        1. Faça as seguintes mudanças no Mobile Foundation Server
+            * Implemente um adaptador de verificação de segurança que aceitaria o nome de usuário e a senha como entrada. É possível usar o adaptador de amostra [aqui](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80).
+            * No mfpconsole, acesse a guia de segurança do aplicativo e sob o Escopo do Aplicativo Obrigatório, inclua a definição de segurança criada acima como elemento do escopo.
+        2. Faça a configuração a seguir em seu Aplicativo usando o Builder.
+            * Inclua o controle **Formulário de Login** em uma página na tela.
+            * Na guia **Propriedades**, forneça o **Nome da verificação de segurança** e a página para navegar em **Com êxito no login**.
+            * Execute o aplicativo.
+    * **IA** - os controles de IA permitem que você inclua recursos do Watson AI em seu aplicativo.
 
-        * **Watson Chat** - This control provides a complete chat interface that can be powered with Watson Assistant service on IBM Cloud. 
+        * **Watson Chat** - Este controle fornece uma interface de bate-papo completa que pode ser desenvolvida com o serviço do Watson Assistant no IBM Cloud. 
 
             ![Watson Assistant](dab-workbench-ai-watson-chat.png)
 
-            * In the properties section select the configured Watson Assistant service and select the Workspace you want to connect to. To define and train a Chat conversation see [Chatbot](#chatbot) under Watson.
+            * Na seção de propriedades, selecione o serviço do Watson Assistant configurado e selecione a Área de Trabalho à qual deseja se conectar. Para definir e treinar uma conversa de Bate-papo, consulte [Robô de bate-papo](#chatbot) sob Watson.
 
-        * **Watson Visual Recognition** - This control provides an ability to take a picture and have Watson Visual recognition service identify it for you.
+        * **Watson Visual Recognition** - Este controle fornece a capacidade de tirar uma foto e permitir que o serviço de reconhecimento visual do Watson identifique-a para você.
          
             ![Watson Visual Recognition](dab-workbench-ai-watson-vr.png)
  
-            *  In the properties section select the configured Visual Recognition service and the classification model. To define and train using your own images see [Image recognition](#image-recognition) under Watson.
+            *  Na seção de propriedades, selecione o serviço Reconhecimento Visual configurado e o modelo de classificação. Para definir e treinar usando suas próprias imagens, consulte [Reconhecimento de imagem](#image-recognition) sob Watson.
 
-2. **Canvas** section - This area consists of the Current Channel selected, Current Page name, Design/Code Toggle, and Canvas.
+2. Seção **Tela** - Essa área consiste no Canal Atual selecionado, no Nome da Página Atual, na Alternância de Design/Código e na Tela.
 
-    * **Channel** icon - This displays the current channel selected. You can add additional channels by selecting the required channels in the Platforms section under **Settings > App > App details**.
-    * Current Page Name - Displays the canvas page name. When switched between pages, the current page name gets updated to the selected page.
-    * **Design / Code** - This option brings the Code editor view to edit the code and enable to view the design back and debug any errors. In the canvas, switch from Design to Code, to view the code of the specific file in the project editor. Switching the Design to Code will display the following popup screen:
+    * Ícone **Canal** - Isso exibe o canal atual selecionado. É possível incluir canais adicionais, selecionando os canais necessários na seção Plataformas em **Configurações >Aplicativo >Detalhes do aplicativo**.
+    * Nome da página atual - Exibe o nome da página da tela. Quando alternado entre páginas, o nome da página atual é atualizado para a página selecionada.
+    * **Design/Código** - Essa opção traz a visualização do Editor de Código para editar o código e permite visualizar o design e depurar quaisquer erros. Na tela, alterne de Design para Código, para visualizar o código do arquivo específico no editor de projeto. A alternância de Design para Código exibirá a tela pop-up a seguir:
 
-        ![Design - Code Toggle alert](dab-design-code-editor.png)
+        ![Alerta de alternância de design - código](dab-design-code-editor.png)
 
-        **WARNING** - When you click **Create**, an editable version of your application is created locally. Any changes made in the editable version will not be reflected in the original app and vice versa. This will display the project explorer with all the project files for the application.
+        **AVISO** - Quando você clica em **Criar**, uma versão editável de seu aplicativo é criada localmente. Quaisquer mudanças feitas na versão editável não serão refletidas no aplicativo original e vice-versa. Isso exibirá o explorador de projetos com todos os arquivos de projeto para o aplicativo.
 
-    * **Canvas** - At the centre of this section is the canvas which displays either the design or the code. You can drag-and-drop the controls and create the app.
+    * **Tela** - No centro dessa seção está a tela que exibe o design ou o código. É possível arrastar e soltar os controles e criar o aplicativo.
 
-3. **Properties/Actions** tab - At the right-hand side is the properties and action tab. When a control is placed in the canvas, you can edit and modify the properties of the control and connect a control with a related action to perform.
+3. Guia **Propriedades/Ações** - No lado direito, está a guia Propriedades e ação. Quando um controle é colocado na tela, é possível editar e modificar as propriedades do controle e conectar um controle com uma ação relacionada a ser executada.
 
-### Data
+### Dados
 {: #dataset-integration}
 
-Creating a Data set for a micro service involves the following steps. After creating the data set, you can connect the data bound controls in your app.
+A criação de um conjunto de dados para um microsserviço envolve as etapas a seguir. Depois de criar o conjunto de dados, é possível conectar os controles de limite de dados em seu app.
 
-#### Creating a new data set
+#### Criando um Novo Conjunto de Dados
 
-1. From the landing page of the Digital App Builder, open any existing App or create one.
-2. Click **Data** on the left hand panel.
+1. Na página de entrada do Digital App Builder, abra qualquer Aplicativo existente ou crie um.
+2. Clique em **Dados** no painel à esquerda.
 
-    ![Data](dab-list-menu.png)
+    ![Dados](dab-list-menu.png)
 
-3. Click **Add new data set**. This displays the Add a data set window.
+3. Clique em **Incluir novo conjunto de dados**. Isso exibe a janela Incluir um conjunto de dados.
 
-    ![Add new data set](dab-list-add-data-set.png)
+    ![Incluir novo conjunto de dados](dab-list-add-data-set.png)
 
-4. Create a data set. You can either create from an existing source (default) or create a data source for a microservice using an OpenAPI doc.
-    * **Create from existing data source** (default) - This will populate the dropdown with all the Data sources (adapters) from the configured Mobile Foundation server instance. 
-    * **Create Data source for a microservice using OpenAPI doc** - This option lets you create a Data Source from an Open API specification document (Swagger json/yml) file, and a Data Set from it.
+4. Criar um conjunto de dados. É possível criar a partir de uma origem existente (padrão) ou criar uma origem de dados para um microsserviço usando um doc OpenAPI.
+    * **Criar a partir da origem de dados existente** (padrão) - Isso irá preencher a lista suspensa com todas as Origens de dados (adaptadores) da instância do servidor Mobile Foundation configurada. 
+    * **Criar origem de dados para um microsserviço usando o doc OpenAPI** - Essa opção permite criar uma Origem de Dados a partir de um arquivo do documento de especificação Open API (json/yml swagger) e um Conjunto de Dados a partir dele.
 
-#### Create a Data set from an existing Data Source
+#### Criar um conjunto de dados a partir de uma Origem de Dados existente
 
-1. Select the Datasource for which you want to create the Dataset.
-2. This will populate the available entities in the Data Source. Select the entity to be created.
-3. Give a name to the dataset and click the **Add** button. This will add the dataset and you will be able to see the Attributes and Actions associated with that dataset.
+1. Selecione a Origem de Dados para a qual você deseja criar o Conjunto de Dados.
+2. Isso preencherá as entidades disponíveis na Origem de Dados. Selecione a entidade a ser criada.
+3. Forneça um nome para o conjunto de dados e clique no botão **Incluir**. Isso incluirá o Conjunto de Dados e será possível ver os Atributos e Ações associados a esse conjunto de dados.
 
-    ![New dataset with attributes](dab-list-dataset-attributes.png)
+    ![Novo conjunto de dados com atributos](dab-list-dataset-attributes.png)
 
-4. You can Hide some of the attributes and Actions based on what you want to do with the data set.
-5. You can also edit the **Display Labels** for the attributes
-6. You can also Test any of the GET Actions by providing the required attributes and clicking on the **Run this action** which is part of the Action. Remember for this to work you should have specified the Confidential client name and password in the **Settings** tab.
+4. É possível Ocultar alguns dos atributos e Ações com base no que você deseja fazer com o conjunto de dados.
+5. Também é possível editar os **Rótulos de exibição** para os atributos
+6. Também é possível Testar qualquer uma das Ações GET fornecendo os atributos necessários e clicando em **Executar esta ação**, que faz parte da Ação. Lembre-se que, para que isso funcione, é necessário ter especificado o nome do cliente Confidencial e a senha na guia **Configurações**.
 
-#### Create a Data source for a Microservice using a swagger file
+#### Criar uma origem de dados para um microsserviço usando um arquivo swagger
 
-1. Select the **json/yml** file for which you want to create a datasource for and click **Generate**.
-2. This will generate an Adapter, which is a configuration artifact on the MF server that you can re-use and deploy it to the Mobile Foundation server instance.
-3. Select the entity for which you want to define the data source for.
-4. Give a name to the dataset and click on **Add** button.
-5. This will add the Dataset and you will be able to see the Attributes and Actions associated with that dataset.
+1. Selecione o arquivo **json/yml** para o qual você deseja criar uma origem de dados e clique em **Gerar**.
+2. Isso gerará um Adaptador, que é um artefato de configuração no servidor MF que você pode reutilizar e implementá-lo para a instância do servidor Mobile Foundation.
+3. Selecione a entidade para a qual você deseja definir a origem de dados.
+4. Forneça um nome para o conjunto de dados e clique no botão **Incluir**.
+5. Isso incluirá o Conjunto de Dados e será possível ver os Atributos e Ações associados a esse conjunto de dados.
 
-You can now bind this data set to any of the data bound controls.
+Agora é possível ligar esse conjunto de dados a qualquer um dos controles de limite de dados.
 
 ### Watson
 {: #integrating-with-watson-services}
 
-The Digital App Builder provides an ability to configure the app to connect to the various Watson services provisioned on IBM Cloud.
+O Digital App Builder fornece a capacidade de configurar o aplicativo para se conectar aos vários serviços do Watson provisionados no IBM Cloud.
 
-#### Chatbot
+#### Robô de bate-papo
 {: #chatbot }
 
-Chatbots are powered by Watson Assistant service on IBM Cloud. Create a Watson Assistant instance on IBM Cloud. For more information, see [here](https://cloud.ibm.com/catalog/services/watson-assistant-formerly-conversation).
+Os robôs de bate-papo são desenvolvidos com o serviço do Watson Assistant no IBM Cloud. Crie uma instância do Watson Assistant no IBM Cloud. Para obter informações adicionais, consulte [aqui](https://cloud.ibm.com/catalog/services/watson-assistant-formerly-conversation).
 
-Once configured you can create a new **Workspace**. The workspace is a set of conversations that make up a chatbot. After creating a Workspace, start creating the dialogs. Provide a set of questions for a intent and a set of answers for that intent. Watson Assistant uses Natural Language Understand to interpret the intent based on the sample questions you provided. It can then try to interpret the question that a user asks in various styles and map it to the intent.
+Depois de configurado, é possível criar uma nova **Área de Trabalho**. A área de trabalho é um conjunto de conversas que formam um robô de bate-papo. Depois de criar uma Área de Trabalho, inicie a criação dos diálogos. Forneça um conjunto de perguntas para uma intenção e um conjunto de respostas para essa intenção. O Watson Assistant usa o Entendimento de Língua Natural para interpretar a intenção com base nas perguntas de amostra que você forneceu. Em seguida, ele pode tentar interpretar a pergunta que um usuário pergunta em vários estilos e mapeia-a para a intenção.
 
-To enable a chatbot in your app, perform the following steps:
+Para ativar um robô de bate-papo em seu aplicativo, execute as etapas a seguir:
 
-1. Click **Watson** and then click **Chatbot**. This displays the **Work with Watson Assistant** screen.
+1. Clique em **Watson** e, em seguida, clique em **Robô de bate-papo**. Isso exibe a tela **Trabalhar com o Watson Assistant** .
 
     ![Watson Chatbot](dab-watson-chat.png)
 
-2. Click **Connect** to your Watson Assistance instance.
+2. Clique em **Conectar** em sua instância do Watson Assistant.
 
-    ![Watson Chat instance](dab-watson-chat-instance.png)
+    ![Instância do Watson Chat](dab-watson-chat-instance.png)
 
-3. Enter the **API key** details and specify the **URL** of your Watson Assistance instance. 
-4. Provide a **Name** to your chatbot and click **Connect**. This displays your chat service dashboard of the **Name** given.
+3. Insira os detalhes da **chave de API** e especifique a **URL** de sua instância do Watson Assistance. 
+4. Forneça um **Nome** para seu robô de bate-papo e clique em **Conectar**. Isso exibe o painel do serviço de bate-papo do **Nome**fornecido.
 
-    ![Watson Chatbot workspace](dab-watson-chat-workspace.png)
+    ![Área de trabalho do Watson Chatbot](dab-watson-chat-workspace.png)
 
-5. Add a workspace by clicking **Add a workspace** which displays the **Create a new model** popup.
+5. Inclua uma área de trabalho clicando em **Incluir uma área de trabalho** que exibe o pop-up **Criar um novo modelo**.
 
-    ![Watson Chatbot workspace new model](dab-watson-chat-new-model.png)
+    ![Novo modelo de área de trabalho do Watson Chatbot](dab-watson-chat-new-model.png)
 
-6. Enter the **Workspace name** and **Workspace description** and click **Create**. This creates three **Conversation** workspace (Welcome, No match found, and New conversation).
+6. Insira o **Nome da área de trabalho** e a **Descrição da área de trabalho** e clique em **Criar**. Isso cria três áreas de trabalho **Conversa** (Bem-vindo, Nenhuma correspondência localizada e Nova conversa).
 
-    ![Watson Chatbot default conversation](dab-watson-chat-conversations.png)
+    ![Conversa padrão do Watson Chatbot](dab-watson-chat-conversations.png)
 
-7. Click **New conversation** to educate the new chatbot model. 
+7. Clique em **Nova conversa** para educar o novo modelo de robô de bate-papo. 
 
-    ![Watson Chatbot Q&A](dab-watson-chat-questions.png)
+    ![P e R do Watson Chatbot](dab-watson-chat-questions.png)
 
-8. Add questions and the response either as a csv file or as an individual questions and the response. For example, **Add a user statement** for If the user intends to ask, and then **Add a bot response** for the **Then, the bot should respond with**. or you can upload questions and the responses for the bot to respond.
-9. Click **Save**.
-10. Click the Chatbot icon at the botton right-hand side to test the chatbot.
+8. Inclua perguntas e respostas como um arquivo csv ou como uma pergunta e resposta individuais. Por exemplo, **Incluir uma instrução do usuário** para Se o usuário pretende perguntar e, em seguida, **Incluir uma resposta do robô** para **Em seguida, o robô deve responder com**. Ou, é possível fazer upload de perguntas e respostas para que o robô responda.
+9. Clique em **Salvar**.
+10. Clique no ícone Robô de bate-papo no lado inferior direito para testar o robô de bate-papo.
 
-    ![Chatbot testing](dab-watson-chat-testing.png)
+    ![Teste do robô de bate-papo](dab-watson-chat-testing.png)
 
-#### Image Recognition 
+#### Reconhecimento de imagem 
 {: #image-recognition }
 
-Image recognition capability is powered by Watson Visual recognition service on IBM Cloud. Create a Watson Visual Recognition instance on IBM Cloud. For more information, see [here](https://cloud.ibm.com/catalog/services/visual-recognition).
+O recurso de reconhecimento de imagem é desenvolvido com o serviço do Watson Visual Recognition no IBM Cloud. Crie uma instância do Watson Visual Recognition no IBM Cloud. Para obter informações adicionais, consulte [aqui](https://cloud.ibm.com/catalog/services/visual-recognition).
 
-Once configured, you can now create a new Mobel and add classes to it. You can drag and drop images in to the Builder and then train your Model on those images. Once the training is complete, you can either download the CoreML model or use the Model in a AI control in your app.
+Depois de configurado, agora é possível criar um novo Modelo e incluir classes nele. É possível arrastar e soltar imagens no Builder e, em seguida, treinar seu Modelo nessas imagens. Quando o treinamento estiver concluído, será possível fazer download do modelo CoreML ou usar o Modelo em um controle de IA em seu aplicativo.
 
-To enable a Visual Recognition in your app, perform the following steps:
+Para ativar um Reconhecimento Visual em seu aplicativo, execute as etapas a seguir:
 
-1. Click **Watson** and then click **Image Recognition**. This displays the **Work with Watson Visual Recognition** screen.
+1. Clique em **Watson** e, em seguida, clique em **Reconhecimento de imagem**. Isso exibe a tela **Trabalhar com o Watson Visual Recognition**.
 
     ![Watson Visual Recognition](dab-watson-vr.png)
 
-2. Click **Connect** to your Watson Visual Recognition instance.
+2. Clique em **Conectar** em sua instância do Watson Visual Recognition.
 
-    ![Watson Visual Recognition Instance](dab-watson-vr-instance.png)
+    ![Instância do Watson Visual Recognition](dab-watson-vr-instance.png)
 
-3. Enter the **API key** details and specify the **URL** of your Watson Visual Recognition instance. 
-4. Provide a **Name** to your Image Recognition instance in the app and click **Connect**. This displays the dashboard for your model.
+3. Insira os detalhes da **Chave de API** e especifique a **URL** de sua instância do Watson Visual Recognition. 
+4. Forneça um **Nome** para a instância de Reconhecimento de Imagem no aplicativo e clique em **Conectar**. Isso exibe o painel para seu modelo.
 
-    ![Watson VR new model](dab-watson-vr-new-model.png)
+    ![Novo modelo do Watson VR](dab-watson-vr-new-model.png)
 
-5. Click **Add new model** to create a new model. This will display **Create a new Model** popup.
+5. Clique em **Incluir novo modelo** para criar um novo modelo. Isso exibirá o pop-up **Criar um novo modelo**.
 
-    ![Watson VR model name](dab-watson-vr-model-name.png)
+    ![Nome do modelo do Watson VR](dab-watson-vr-model-name.png)
 
-6. Enter the **Model name** and click **Create**. This will display the classes for that model and a **Negative** class.
+6. Insira o **Nome do modelo** e clique em **Criar**. Isso exibirá as classes para esse modelo e uma classe **Negativa**.
 
-    ![Watson VR Model Class](dab-watson-vr-model-class.png)
+    ![Classe de modelo do Watson VR](dab-watson-vr-model-class.png)
 
-7. Click **Add new class**. This will display a popup to specify a name for the new class.
+7. Clique em **Incluir nova classe**. Isso exibirá um pop-up para especificar um nome para a nova classe.
 
-    ![Watson VR Model Class Name](dab-watson-vr-model-class-name.png)
+    ![Nome da classe de modelo do Watson VR](dab-watson-vr-model-class-name.png)
 
-8. Enter the **Class name** for the new class and click **Create**. This will display the workspace to add your images for training the model.
+8. Insira o **Nome da Classe**para a nova classe e clique em **Criar**. Isso exibirá a área de trabalho para incluir suas imagens para treinamento do modelo.
 
-    ![Watson VR Model Class training](dab-watson-vr-model-class-train.png)
+    ![Treinamento de classe de modelo do Watson VR](dab-watson-vr-model-class-train.png)
 
-9. Add the images to the model either by drag and drop them into the workspace or use Browse to access the images.
+9. Inclua as imagens no modelo, arraste e solte-as na área de trabalho ou use Procurar para acessar as imagens.
 
-10. You can go back to your workspace after adding the images and test by clicking **Test Model**.
+10. É possível voltar para sua área de trabalho após a inclusão das imagens e testar clicando em **Testar modelo**.
 
-    ![Watson VR Model Class testing](dab-watson-vr-model-class-train-test.png)
+    ![Teste da classe de modelo do Watson VR](dab-watson-vr-model-class-train-test.png)
 
-11. In the **Try your model** section, add an image and then result is displayed.
+11. Na seção **Testar seu modelo**, inclua uma imagem e, em seguida, o resultado é exibido.
 
 
-### Engagement
+### Engajamento
 {: #engagement}
 
-You can add Push notifications to your app and increase user engagement.
+É possível incluir notificações Push em seu aplicativo e aumentar o engajamento do usuário.
 
-To add Push notifications to your app:
+Para incluir notificações Push em seu aplicativo:
 
-1. Select **Engagement**. This will display the list of available services. Currently only Push Notifications services is available.
+1. Selecione **Engajamento**. Isso exibirá a lista de serviços disponíveis. Atualmente, somente serviços de Notificações Push estão disponíveis.
 
-    ![Engagement Push](dab-engagement-push.png)
+    ![Push de engajamento](dab-engagement-push.png)
 
-2. In the **Push Notifications** click **Connect**. This displays the **Connect to Push Notification instance** dialog.
+2. Nas **Notificações push**, clique em **Conectar**. Isso exibe o diálogo **Conectar-se à instância de notificação push**.
 
-    ![Engagement Push Notifications instance](dab-engagement-push-instance.png)
+    ![Instância de engajamento de notificações push](dab-engagement-push-instance.png)
 
-3. Enter **Name**, **API Key**, **App GUID**, **Client Secret Key**, select the **Region** and click **Connect**.
-4. The Name entered above get added to the page under Engagement.
-5. Configure push notification for Android by providing **API Secret Key** and **Sender ID** and click **Save configuration**.
+3. Insira **Nome**, **Chave de API**, **GUID do aplicativo**, **Chave secreta do cliente**, selecione a **Região** e clique em **Conectar**.
+4. O Nome inserido acima é incluído na página sob Engajamento.
+5. Configure a notificação push para Android fornecendo **Chave secreta da API** e **ID do emissor** e clique em **Salvar configuração**.
 
-    ![Engagement Push Notification Android configuration](dab-engagement-push-android-configure.png)
+    ![Configuração de notificação push de engajamento do Android](dab-engagement-push-android-configure.png)
 
-6. Navigate to the iOS tab and provide push configuration details: select the **Environment**, provide the .p12 file with path, and enter the **Password** and click **Save configuration**.
+6. Navegue até a guia iOS e forneça detalhes de configuração de push: selecione o **Ambiente**, forneça um caminho ao arquivo .p12, insira a **Senha** e clique em **Salvar configuração**.
 
-    ![Engagement Push Notification iOS configuration](dab-engagement-push-ios-configure.png)
+    ![Configuração de notificação push de engajamento do iOS](dab-engagement-push-ios-configure.png)
 
 7.  
-    a. For Android, copy `google-services.json` (download from your firebase project) to `<path_to_app>/ionic/platforms/android/app` folder.
-    b. For iOS, open the xcode project `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` and enable push notification capability. For more details, refer to [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+    a. Para Android, copie `google-services.json` (faça download de seu projeto firebase) para `<path_to_app>/ionic/platforms/android/app` .
+    b. Para iOS, abra o projeto xcode `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` e ative o recurso de notificação push. Para obter mais detalhes, consulte [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
 
 ### Console
 {: #console }
 
-Helps you to view the code for each of the components. Also displays the information about various activities and errors.
+Ajuda a visualizar o código para cada um dos componentes. Além disso, exibe as informações sobre várias atividades e erros.
 
-### Settings
+### Configurações
 {: #settings}
 
-Settings helps you to manage the app settings and rectify any errors during the build process. Settings consists of **App details**, **Server**, **Plugins**, and **Repair Project** tabs.
+As configurações ajudam você a gerenciar as configurações do aplicativo e a retificar quaisquer erros durante o processo de construção. As configurações consistem nas guias **Detalhes do app**, **Servidor**, **Plug-ins** e **Reparar projeto**.
 
-#### **App details**
+#### Detalhes do aplicativo
 {: #app-details}
 
-App details displays information about your app: **App Icon**, **Name**, **Location** where the files are stored, **Project/Bundle Id** provided at the time of creating the app, **Platforms** (channels) selected, **Service** enabled.
+Os detalhes do aplicativo exibem informações sobre seu aplicativo: **Ícone do aplicativo**, **Nome**, **Local** em que os arquivos são armazenados, **ID do projeto/pacote configurável** fornecido no momento da criação do aplicativo, **Plataformas** (canais) selecionados, **Serviço** ativado.
 
-![Setting App details](dab-settings-app-details.png)
+![Configuração dos detalhes do aplicativo](dab-settings-app-details.png)
 
-You can change the **App icon** by clicking the icon and uploading a new icon.
+É possível mudar o **ícone do aplicativo** clicando no ícone e fazendo upload de um novo ícone.
 
-You can add/remove additional Platforms by checking/unchecking the checkbox near them.
+É possível incluir/remover Plataformas adicionais marcando/desmarcando a caixa de seleção perto delas.
 
-Click **Save** to update the changes.
+Clique em **Salvar** para atualizar as alterações.
 
-#### **Server**
+#### Servidor
 {: #server }
 
-The Server info displays the **Server details** you are currently working on. You can edit the information by clicking the **Edit** link. You can add or modify the confidential client authorization.
+As informações do Servidor exibem os **Detalhes do servidor** no qual você está trabalhando atualmente. É possível editar as informações clicando no link **Editar**. É possível incluir ou modificar a autorização do cliente confidencial.
 
-![Settings server details](dab-settings-server.png)
+![Configurações de detalhes do servidor](dab-settings-server.png)
 
-The Server tab also displays **Recent servers**.
+A guia Servidor também exibe **Servidores recentes**.
 
->**Note**: You can only able to delete a server added earlier at the time of creating an app using Digital App Builder and if not used by any of your app created by Digital App Studio.
+Também é possível incluir um novo servidor clicando no botão **Conectar novo +**, fornecendo os detalhes no pop-up **Conectar-se a um novo servidor** e clicando em **Conectar**.
 
-You can also add new server by clicking **Connect new +** button and provide the details in the **Connect to a new server** popup and click **Connect**.
+![Configurações do novo servidor](dab-settings-server-new-server.png)
 
-![Settings new server](dab-settings-server-new-server.png)
-
-#### **Plugins**
+#### Plug-ins
 {: #plugins}
 
-Plugins displays list of plugins available in the Digital App Builder. Following actions can be performed:
+Plug-ins exibe a lista de plug-ins disponíveis no Digital App Builder. As ações a seguir podem ser executadas:
 
-![Settings Plugins available](dab-settings-plugins.png)
+![Configurações de plug-ins disponíveis](dab-settings-plugins.png)
 
-* **Install new** - You can install new plugins by clicking this button. This displays the **New plugin** dialog. Enter the **Plugin name**, **Version** (optional), and if it is a **Local plugin**, enable the switch for the same and point to the location and click **Install**.
+* **Instalar novo** - É possível instalar novos plug-ins clicando nesse botão. Isso exibe o diálogo **Novo plug-in**. Insira o **Nome do plug-in**, a **Versão** (opcional) e, se for um **Plug-in local**, ative o comutador para ele, indique o local e clique em **Instalar**.
 
-![Settings New Plugins](dab-settings-new-plugins.png)
+![Configurações de novos plug-ins](dab-settings-new-plugins.png)
 
-* From the list of Plugins already installed, you can edit the version and reinstall the plugin or uninstall a plugin by selecting the link for the respective plugin.
+* Na lista de Plug-ins já instalados, é possível editar a versão e reinstalar o plug-in ou desinstalar um plug-in selecionando o link para o respectivo plug-in.
 
-#### Repair project
+#### Reparar projeto
 {: #repair-project}
 
-Repair project tab helps you to fix issues by clicking the respective options.
+A guia Reparar projeto ajuda você a corrigir problemas clicando nas respectivas opções.
 
-![Settings Repair](dab-settings-repair.png)
+![Reparo de configurações](dab-settings-repair.png)
 
-* **Rebuild dependencies** - If the project is unstable, you can try re-building dependencies.
-* **Rebuild platforms** - If you see any platform related errors in console, try rebuilding the platforms. if you have made any changes to the channels or added additional channels, use this option.
-* **Reset IBM Cloud credentials for Playground server** - You can reset the IBM Cloud Credentials used to login to the Playground Server. Resetting the Credentials cache will also clear out all your apps on the Playground server. **THIS OPERATION CANNOT BE REVERSED.**
+* **Reconstruir dependências** - Se o projeto estiver instável, é possível tentar recriar dependências.
+* **Reconstruir plataformas** - Se você vir quaisquer erros relacionados à plataforma no console, tente reconstruir as plataformas. Se você tiver feito qualquer mudança nos canais ou incluído canais adicionais, use essa opção.
+* **Reconfigurar as credenciais do IBM Cloud para o servidor Playground** - É possível reconfigurar as Credenciais do IBM Cloud usadas para efetuar login no Playground Server. A reconfiguração do cache de Credenciais também limpa todos os seus apps no servidor Playground. **ESTA OPERAÇÃO NÃO PODE SER REVERTIDA.**
 
  

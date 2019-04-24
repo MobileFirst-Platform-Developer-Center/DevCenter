@@ -5,26 +5,26 @@ weight: 16
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-**IBM Digital App Builder** helps you to quickly create mobile, web and PWA (Progressive Web App) multi-channel applications with AI capabilities powered by Watson services. The apps created using the Digital App Builder leverage IBM Mobile Foundation V8 (on-prem or cloud) for security, backend connectivity, and analytics.
+O **IBM Digital App Builder** ajuda você a criar rapidamente aplicativos móveis, da web e do PWA (Progressive Web App) com diversos canais com recursos de IA desenvolvidos com serviços do Watson. Os aplicativos criados usando o Digital App Builder alavancam o IBM Mobile Foundation V8 (no local ou na nuvem) para segurança, conectividade de back-end e análise de dados.
 
-The key features of the IBM Digital App Builder are as follows:
+Os recursos-chave do IBM Digital App Builder são os seguintes:
 
-* Developers can use this tool to quickly build digital apps that can run on multiple channels. The Digital App Builder provides the ability to drag-and-drop components to quickly build an app. This app can be targeted to multiple channels, like apps for iOS (iPhone, iPad), Android (Phone, Tabs), Progressive web apps (PWA), and web pages.
+* Os desenvolvedores podem usar essa ferramenta para construir rapidamente aplicativos digitais que podem ser executados em vários canais. O Digital App Builder fornece a capacidade de arrastar e soltar componentes para construir rapidamente um aplicativo. Esse aplicativo pode ser destinado a vários canais, como aplicativos para iOS (iPhone, iPad), Android (Telefone, Tabs), Progressive web apps (PWA) e páginas da web.
 
-* Developers can easily integrate Watson AI capabilities like Chatbot and Visual Recognition. Adding a chatbot or visual recognition capabilities to the app becomes as easy as adding a control. Developers can easily train the AI service by adding a set of questions and answers or drag-and-drop a set of images to classify. There is no need for a data scientist to build a complex machine-learning model.
+* Os desenvolvedores podem integrar facilmente recursos do Watson AI como o Robô de Bate-papo e o Reconhecimento Visual. A inclusão de um robô de bate-papo ou de recursos de reconhecimento visual para o aplicativo se torna tão fácil quanto a inclusão de um controle. Os desenvolvedores podem treinar facilmente o serviço de IA incluindo um conjunto de perguntas e respostas ou arrastar e soltar um conjunto de imagens para classificação. Não há necessidade de um cientista de dados construir um modelo complexo de aprendizado de máquina.
 
-* Developers can also add data bound controls for microservice backends. A wizard can be used to import an Open API specification (Swagger) for a microservice. This helps to create a dataset for building a frontend for the service which is bound to a data-bound UI control in the app. Switch to code view for performing advanced coding on the app.
+* Os desenvolvedores também podem incluir controles de limite de dados para back-ends de microsserviço. Um assistente pode ser usado para importar uma especificação de API aberta (Swagger) para um microsserviço. Isso ajuda a criar um conjunto de dados para a construção de um frontend para o serviço que está ligado a um controle de IU de limite de dados no aplicativo. Alterne para a visualização de código para executar a codificação avançada no aplicativo.
 
-* Developers can add push notifications services as part of Engagements.
+* Os desenvolvedores podem incluir serviços de notificações push como parte de Engajamentos.
 
-* An app owner can enable Analytics for the app. The app now sends data to the Mobile Foundation server.
+* Um proprietário do aplicativo pode ativar o Analytics para o aplicativo. O aplicativo agora envia dados para o servidor Mobile Foundation.
 
-The app created uses open source technologies like Cordova, Ionic, and Angular. You can preview the app for various form factors before it is deployed. You can also use the quick start templates to build your apps (only Watson chatbot available now). 
+O aplicativo criado usa tecnologias de software livre como Cordova, Ionic e Angular. É possível visualizar o aplicativo para vários fatores de forma antes de ele ser implementado. Também é possível usar os modelos de iniciação rápida para construir seus aplicativos (apenas o Watson Chatbot está disponível agora). 
 
-### Tutorials to follow
+### Tutoriais a serem seguidos
 {: #tutorials-to-follow }
 
-Find below further information about the product:
+Localize abaixo informações adicionais sobre o produto:
 

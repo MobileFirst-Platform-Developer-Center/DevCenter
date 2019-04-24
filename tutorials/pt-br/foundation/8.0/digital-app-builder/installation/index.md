@@ -1,55 +1,55 @@
 ---
 layout: tutorial
-title: Installation and Configuration
+title: Instalação e Configuração
 weight: 2
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #installation-and-configuration }
 
-You can install the Digital App Builder on MacOS and Windows platform.
+É possível instalar o Digital App Builder na plataforma MacOS e Windows.
 
-### Installing on MacOS
+### Instalando no MacOS
 {: #installing-on-macos }
 
-1. Install **Node.js** and **npm** by downloading the setup from [https://nodejs.org/en/download](https://nodejs.org/en/download) (Node.js 8.x or above). For more information on installation instructions, refer [here](https://nodejs.org/en/download/package-manager/). Check the node and npm version as shown below: 
+1. Instale **Node.js** e **npm** fazendo o download da configuração a partir de [https://nodejs.org/en/download](https://nodejs.org/en/download) (Node.js 8.x ou superior). Para obter mais informações sobre instruções de instalação, consulte [aqui](https://nodejs.org/en/download/package-manager/). Verifique a versão do nó e do npm, conforme mostrado abaixomarcar:
     ```java
     $node -v
     v8.10.0
     $npm -v
     6.4.1
     ```
-2. Install **Cordova**. You can download and install the package from [Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/index.html).
+2. Instale o **Cordova**. É possível fazer download e instalar o pacote a partir do [Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/index.html).
     ```java
     $ npm install -g cordova
     $ cordova –version
     7.0.1
     ```
 
-    >**Note**: If you are facing any permission issues in running `$ npm install -g cordova` command, install using elevated previleges (`$ sudo npm install -g cordova`).
+    >**Nota**: se você estiver enfrentando qualquer problema de permissão ao executar o comando `$ npm install -g cordova`, instale usando privilégios elevados (`$ sudo npm install -g cordova`).
 
-3. Install **ionic**. You can download and install the package from [ionic](https://ionicframework.com/docs/cli/).
+3. Instale o **ionic**. É possível fazer download e instalar o pacote a partir do [ionic](https://ionicframework.com/docs/cli/).
     ```java
     $ npm install -g ionic
     $ ionic –version
     4.2.0
     ```
 
-    >**Note**: If you are facing any permission issues in running `$ npm install -g ionic` command, install using elevated previleges (`$ sudo npm install -g ionic`).
+    >**Nota**: se você estiver enfrentando qualquer problema de permissão ao executar o comando `$ npm install -g ionic`, instale usando privilégios elevados (`$ sudo npm install -g ionic`).
 
-4. Download the .dmg (**IBM.Digital.App.Builder-8.0.0.dmg**) from [IBM passport advantage](https://www.ibm.com/software/passportadvantage/) or from [here](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
-5. Double click on .dmg file to mount the installer.
-6. In the window that the installer opens, drag and drop the IBM Digital App Builder to the **Applications** folder.
-7. Double click the IBM Digital App Builder icon or executable to open the Digital App Builder.
->**Note**: When the Digital App Builder is installed for the first time, the Digital App Builder opens up the interface and performs a [Prerequisites Check](#prerequisites-check). In case of any error, rectify the error and restart the Digital App Builder before creating an app.
+4. Faça download do .dmg (**IBM.Digital.App.Builder-8.0.0.dmg**) a partir do [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) ou [aqui](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
+5. Clique duas vezes no arquivo .dmg para montar o instalador.
+6. Na janela que o instalador abre, arraste e solte o IBM Digital App Builder na pasta **Aplicativos**.
+7. Clique duas vezes no ícone do IBM Digital App Builder ou no executável para abrir o Digital App Builder.
+>**Nota**: quando o Digital App Builder é instalado pela primeira vez, o Digital App Builder abre a interface e executa uma [Verificação de pré-requisitos](#prerequisites-check). No caso de qualquer erro, corrija o erro e reinicie o Digital App Builder antes de criar um aplicativo.
 
-### Installing on Windows
+### Instalando no Windows
 {: #installing-on-windows }
 
-Run the following commands from the command prompt opened in administrative mode:
+Execute os comandos a seguir no prompt de comandos aberto no modo administrativo:
 
-1. Install **Node.js** and **npm** by downloading the setup from [https://nodejs.org/en/download](https://nodejs.org/en/download) (Node.js 8.x or above). For more information on installation instructions, refer [here](https://nodejs.org/en/download/package-manager/). Check the node and npm version as shown below: 
+1. Instale **Node.js** e **npm** fazendo o download da configuração a partir de [https://nodejs.org/en/download](https://nodejs.org/en/download) (Node.js 8.x ou superior). Para obter mais informações sobre instruções de instalação, consulte [aqui](https://nodejs.org/en/download/package-manager/). Verifique a versão do nó e do npm, conforme mostrado abaixo: 
 
     ```java
     C:\>node -v
@@ -58,7 +58,7 @@ Run the following commands from the command prompt opened in administrative mode
     6.4.1
     ```
 
-2. Install **Cordova**. You can download and install the package from [Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/index.html).
+2. Instale o **Cordova**. É possível fazer download e instalar o pacote a partir do [Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/index.html).
 
     ```java
     C:\>npm install -g cordova
@@ -66,7 +66,7 @@ Run the following commands from the command prompt opened in administrative mode
     7.0.1
     ```
 
-3. Install **ionic**. You can download and install the package from [ionic](https://ionicframework.com/docs/cli/).
+3. Instale o **ionic**. É possível fazer download e instalar o pacote a partir do [ionic](https://ionicframework.com/docs/cli/).
 
     ```java
     C:\>npm install -g ionic
@@ -74,18 +74,18 @@ Run the following commands from the command prompt opened in administrative mode
     4.2.0
     ``` 
 
-4. Download the .exe (**IBM.Digital.App.Builder.Setup.8.0.0.exe**) from [IBM passport advantage](https://www.ibm.com/software/passportadvantage/) or from [here](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
-5. Double click the Digital App Builder executable to install. A short cut is also created in the **Start > Programs** in the desktop. The default installation folder is `<AppData>\Local\IBMDigitalAppBuilder\app-8.0.0`.
->**Note**: When the Digital App Builder is installed for the first time, the Digital App Builder opens up the interface and performs a [Prerequisites Check](#prerequisites-check). In case of any error, rectify the error and restart the Digital App Builder before creating an app.
+4. Faça download do .exe (**IBM.Digital.App.Builder.Setup.8.0.0.exe**) a partir do [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) ou [aqui](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
+5. Dê um clique duplo no executável do Digital App Builder a ser instalado. Um atalho também é criado em **Iniciar > Programas** na área de trabalho. A pasta de instalação padrão é `<AppData>\Local\IBMDigitalAppBuilder\app-8.0.0`.
+>**Nota**: quando o Digital App Builder é instalado pela primeira vez, o Digital App Builder abre a interface e executa uma [Verificação de pré-requisitos](#prerequisites-check). No caso de qualquer erro, corrija o erro e reinicie o Digital App Builder antes de criar um aplicativo.
 
-### Prerequisites Check
+### Verificação de pré-requisitos
 {: #prerequisites-check }
 
-You can perform a prerequisites check by selecting **Help > Prerequisites Check** before developing an app.
+É possível executar uma verificação de pré-requisitos selecionando **Ajuda > Verificação de pré-requisitos** antes de desenvolver um aplicativo.
 
-![Prerequisites Check](dab-prerequsites-check.png)
+![Verificação de pré-requisitos](dab-prerequsites-check.png)
 
-In case of any error, rectify the error and restart the Digital App Builder before creating an app.
+No caso de qualquer erro, corrija o erro e reinicie o Digital App Builder antes de criar um aplicativo.
 
->**Note**: [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods) are required for MacOS only.
+>**Nota**: [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods) são necessários somente para MacOS.
 
