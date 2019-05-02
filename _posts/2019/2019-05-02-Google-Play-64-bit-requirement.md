@@ -68,4 +68,4 @@ If data retention is essential to the app, then upgrading the app with the iFix 
 
 
 ###MobileFirst 7.1 apps 
-64-bit Support for MobileFirst 7.1 apps iwill be announced soon. 
+64-bit Support for MobileFirst 7.1 apps will be announced soon. 
