@@ -1,74 +1,64 @@
 ---
 layout: tutorial
-title: Troubleshooting
+title: Detecção de problemas
 weight: 6
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #troubleshooting }
 
-Find answers for some of the problems you may encounter while using IBM Digital App Builder.
+Localize respostas para alguns dos problemas que você pode encontrar ao usar o IBM Digital App Builder.
 
-* In case of any error, refer to:
+* No caso de qualquer erro, consulte:
 
-    * `log.log` file for the respective platform folder path:
+    * Arquivo `log.log` para o respectivo caminho de pasta de plataforma:
 
-        * On mac OS: `~/Library/Logs/IBM Digital App Builder/log.log`.
+        * No Mac OS: `~/Library/Logs/IBM Digital App Builder/log.log`.
 
-        * On Windows: `%USERPROFILE%\AppData\Roaming\IBM Digital App Builder\log.log`.
+        * No Windows: `%USERPROFILE%\AppData\Roaming\IBM Digital App Builder\log.log`.
 
-    * `applog.log` for your app related logs which can be found in `<APP LOCATION>/ibm/applog.log`.
+    * `applog.log` para logs relacionados ao aplicativo que podem ser localizados em `<APP LOCATION>/ibm/applog.log`.
 
-* Failure to create a Data set for a Microservice using a swagger file.
+* Falha ao criar um conjunto de dados para um Microsserviço usando um arquivo swagger.
 
-    For the first time users of the Builder, the microservice creation may fail due to network latency.
-    To get rid of this, follow these steps:
-    1. Open command prompt and go to the installed location of the app.
+    Para os usuários que estão usando o Builder pela primeira vez, a criação do microsserviço pode falhar devido à latência de rede.
+    Para livrar-se disso, siga estas etapas:
+    1. Abra o prompt de comandos e acesse o local instalado do aplicativo.
     2. `cd ibm\adapterGenerator`
-    3. Run the following command
+    3. Execute o comando a seguir
         `windows> execute.bat .`
         `mac>./execute.sh .`
-    4. On successful execution of the above command, you can start using microservice (swagger file) from the Digital App Builder.
+    4. Na execução bem-sucedida do comando acima, é possível começar a usar o microsserviço (arquivo swagger) do Digital App Builder.
 
-* Failure to preview the app on Windows.
+* Falha ao visualizar o aplicativo no Windows.
 
-    In the Digital App Builder, go to **Settings > Repair project** and click **Rebuild Dependencies** and **Rebuild Platforms** buttons.
+    No Digital App Builder, acesse **Configurações > Reparar projeto** e clique em **Reconstruir dependências** e **Reconstruir plataformas**.
 
-* Android App does not work after adding the List component to the app.
+* O aplicativo Android não funciona após a inclusão do componente Lista no aplicativo.
 
-    This is due to Android WebView version is less than 68.X.XXXX.XX. To resolve this, upgrade the Android WebView version to 68.X.XXXX.XX or above.
+    Isso é devido à versão do Android WebView ser menor que 68.X.XXXX.XX. Para resolver isso, faça upgrade da versão do Android WebView para 68.X.XXXX.XX ou superior.
 
-* In MacOS, preview of the app on an Android simulator fails with app crashes. With the following error:
+* No MacOS, a visualização do aplicativo em um simulador Android falha com travamentos do aplicativo. Com o erro a seguir:
 
-    `java.lang.RuntimeException: Unable to create application com.ibm.MFPApplication: java.lang.RuntimeException: Client configuration file mfpclient.properties not found in application assets. Use the MFP CLI command 'mfpdev app register' to create the file.`
+    `java.lang.RuntimeException: Não foi possível criar o aplicativo com.ibm.MFPApplication: java.lang.RuntimeException: Arquivo de configuração do cliente mfpclient.properties não localizado nos recursos do aplicativo. Use o comando da CLI MFP 'mfpdev app register' para criar o arquivo.`
 
-    To resolve this, from the terminal navigate to the app ionic directory and run the following commands:
+    Para resolver isso, a partir do terminal, navegue para o diretório ionic do aplicativo e execute os comandos a seguir:
 
     `ionic cordova plugin remove cordova-plugin-mfp
     ionic cordova plugin add cordova-plugin-mfp`
 
-    and preview from the Digital App Builder again.
+    e visualize a partir do Digital App Builder novamente.
 
-* Unable to generate the adapter when importing swagger json/yaml file.
+* Não é possível gerar o adaptador ao importar o arquivo swagger json/yaml.
 
-    Error when importing swagger json/yaml file and the error is due to Maven dependency.
+    Erro ao importar o arquivo swagger json/yaml e o erro é devido à dependência do Maven.
 
-    Ideally all the Maven dependencies if does not exists are downloaded and installed behind the scene. But there are somecases where Maven fails because of multiple Maven versions in the system. To solve this issue follow these steps:
+    Idealmente, todas as dependências do Maven, se não existirem, são transferidas por download e instaladas em segundo plano. Mas há alguns casos em que o Maven falha devido a várias versões do Maven no sistema. Para resolver esse problema, siga estas etapas:
 
-    a. Go to the Aa\pp location and open execute.sh / execute.bat file depending on the OS. (`<APP_LOCATION>\ibm\adapterGenerator`)
+    a. Acesse o local Aa\pp e abra o arquivo execute.sh/execute.bat, dependendo do S.O. (`<APP_LOCATION>\ibm\adapterGenerator`)
 
-    b. Edit all the `call %MAVEN_HOME% clean install` to `call %MAVEN_HOME% -U clean install`.
+    b. Edite todo o `call %MAVEN_HOME% clean install` para `call %MAVEN_HOME% -U clean install`.
 
-        Adding `-U` will force maven to check any external dependencies that need to be updated based on the POM file.
-
-* Prerequisites Check fails for Android Studio even when it is installed.
-
-    Make sure you have the android executable (`<path to android sdk>/tools`) in the path and check for the prerequisites.
-
-* App creation and preview issue on Windows 7
-
-    You may get an error when trying to create a new app in a different disk drive location other than `C:`.
-
-    Make sure you create your app project under the drive `C://<your folder name/app name>`.
+        A inclusão de `-U` forçará o Maven a verificar quaisquer dependências externas que precisem ser atualizadas com base no arquivo POM.
 
