@@ -25,7 +25,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 
 ### 1. Starting the {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
+Make sure you have [created a Mobile Foundation instance](../../ibmcloud/using-mobile-foundation), or  
 If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating an application
@@ -126,7 +126,7 @@ Alternatively, click the **New** button next to **Adapters**.
     * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
     * If using a remote {{ site.data.keys.mf_server }} (on IBM Cloud), the values are typically **https**, **your-server-address** and **443**.
     * If using a Kubernetes cluster on IBM Cloud Private and if the deployment is of type **NodePort**, the value of the port would typically be the **NodePort** exposed by the service in Kubernetes cluster.
-    
+
 2. Press the **Play** button.
 
 <br clear="all"/>

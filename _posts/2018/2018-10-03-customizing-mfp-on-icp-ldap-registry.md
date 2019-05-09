@@ -11,19 +11,19 @@ tags:
 - on-premise
 version:
 - 8.0
-author: 
+author:
     name: Krishna K Chandrasekar
 additional_authors:
 - Yathendra Prasad
 ---
 
-When Mobile Foundation (MFP) Server Helm chart is deployed on IBM Cloud Private it uses **basicRegistry** along with various other configuration details.  This user registry is good enough for basic development and testing environments, but for production scenarios LDAP registry is used. 
+When Mobile Foundation (MFP) Server Helm chart is deployed on IBM Cloud Private it uses **basicRegistry** along with various other configuration details.  This user registry is good enough for basic development and testing environments, but for production scenarios LDAP registry is used.
 
 This blog focuses on how to use Apache Directory Server as an LDAP registry against the Mobile Foundation server that is deployed on IBM Cloud Private (or IBM Cloud Kubernetes Service, IKS).
 
 This blog post focuses on how to use the Apache Directory Server as an LDAP Registry with Mobile Foundation Server on ICP and assumes the following:
 
-a) User has an MFP setup on IBM Cloud Private loaded with [IBM Mobile Foundation Passport Advantage Archive](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#download-the-ibm-mfpf-ppa-archive) on ICP.
+a) User has an MFP setup on IBM Cloud Private loaded with [IBM Mobile Foundation Passport Advantage Archive](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/#download-the-ibm-mfpf-ppa-archive) on ICP.
 
 b) User has the knowledge of LDAP Registry.
 
@@ -41,7 +41,7 @@ b) User has the knowledge of LDAP Registry.
 	[root@mymachine ~]# cd usr-mfpf-server/config
 	```
 	This creates the following directory structure that can be used to customize the image on the ICP for modifying the registry.xml
-	
+
 	```bash
 	icp-kubernetes/usr-mfpf-server
 	├── config
@@ -71,9 +71,9 @@ b) User has the knowledge of LDAP Registry.
 	</server>
 	```
 	>**Note:** Make sure the right user and group details are used according to your own LDAP server settings.
-	
+
 5. Create a Dockerfile to overwrite *registry.xml* as follows
-	
+
 	```bash
 	FROM mycluster.icp:8500/default/mfpf-server:1.0.0.1
 	COPY registry.xml /opt/ibm/wlp/usr/servers/config/registry.xml
@@ -104,8 +104,8 @@ This updates the existing mfp-server docker image with the customized registry.x
 	NAME                                     DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
 	mfpserver-ibm-mfpf-server-prod         2         2         2            2           5d
 	```
-10. Now update Mobile Foundation Server kubernetes deployment **mfpserver-ibm-mfpf-server-prod** to use the customized image. 
-	
+10. Now update Mobile Foundation Server kubernetes deployment **mfpserver-ibm-mfpf-server-prod** to use the customized image.
+
 	```bash
 	kubectl edit deployments mfpserver-ibm-mfpf-server-prod
 	```
