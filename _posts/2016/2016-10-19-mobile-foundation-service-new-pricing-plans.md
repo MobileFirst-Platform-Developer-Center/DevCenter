@@ -24,4 +24,4 @@ Also introduced is a new pricing plan for team-based development called **Develo
 
 For more details, see the [Mobile Foundation service page](https://console.bluemix.net/catalog/services/mobile-foundation) on Bluemix.net.
 
-> Get started with the Mobile Foundation Bluemix service [by following our tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/).
+> Get started with the Mobile Foundation Bluemix service [by following our tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/using-mobile-foundation/).

@@ -17,7 +17,7 @@ author:
 1. Using the [Mobile Foundation Bluemix service](https://console.bluemix.net/catalog/services/mobile-foundation)  
 2. Deploying Mobile Foundation on Bluemix using IBM-provided scripts that come with your on-prem License entitlement:  
 
-* Setting up the [MobileFirst Server on Bluemix using Scripts on Liberty for Java runtime](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/)  
+* Setting up the [MobileFirst Server on Bluemix using Scripts on Liberty for Java runtime](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-using-scripts-lbp/)  
 * Setting up the [MobileFirst Server on IBM Containers using Scripts on IBM Container Service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)  
 
 In any of the above options, MobileFirst Server needs a database to store administration and runtime data such as deployed adapters, application configuration data, registered devices and so on.  

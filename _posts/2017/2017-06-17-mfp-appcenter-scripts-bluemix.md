@@ -36,5 +36,5 @@ Finally, you will run the image on IBM Containers as a single Container or a Con
 
 **For more details on installation procedure refer the links below**
 
-* [IBM Containers](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts/)
-* [Liberty for java Runtime ](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/)
+* [IBM Containers](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-using-scripts/)
+* [Liberty for java Runtime ](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-using-scripts-lbp/)

@@ -137,7 +137,7 @@ This step adds the functionality of simple OAuth token fetch call with MobileFir
 ### Create MobileFirst Foundation service, Register App and Test
 {: #create-mf-service}
 
-- Create a Mobile Foundation service on IBM Cloud following the steps mentioned in [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation).
+- Create a Mobile Foundation service on IBM Cloud following the steps mentioned in [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/using-mobile-foundation).
 
 - Register the server profile of newly created Mobile Foundation service in MobileFirst CLI by running the following command in the terminal:
 
