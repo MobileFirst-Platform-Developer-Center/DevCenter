@@ -34,6 +34,8 @@ Workbench helps you to design the pages. Workbench consists of three work areas:
 
         ![Pages / Congrols](dab-workbench-basic-controls.png)
 
+        You can now modify styling for some of the basic controls like Button, Heading Text, etc. The styling that you can modify include: Color (background, foreground), Font weight, and Alignment (Left, Center, Right).
+
         * **Button** - Buttons has a property to label. In the Action tab you can specify the page to navigate to on click of the Button.
         * **Heading Text** - Helps you to add a heading text for the application such as Page Title.
         * **Image** - Helps you upload a local image or provide a url of an image.

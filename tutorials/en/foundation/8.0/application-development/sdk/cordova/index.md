@@ -27,11 +27,11 @@ The Cordova platform versions supported by the MobileFirst plug-ins, are:
 * cordova-android: **>= 6.1.2 and < 9.0**
 * cordova-windows: **>= 4.3.2 and < 8.0**
 
-> **Note:** The **cordova-windows** latest published version has a bug which will throw an exception during app launch .And Apach cordova has fixed the issue in development repository but it is not published yet .It is recommended to use the cordova-windows version from master repository which contains the fix . Here is the command which can be used to add the cordova-windows platform to have the fix in place .
+>**Note:** The **cordova-windows** latest published version has a bug, which will throw an exception during app launch. Apache Cordova has fixed the issue in the development repository but it is not published yet. It is recommended to use the *cordova-windows* version from the master repository that contains the fix. Below is the command that can be used to add the *cordova-windows* platform to have the fix in place.
 
 ```bash
-   cordova platform add https://github.com/apache/cordova-windows
-   ```
+cordova platform add https://github.com/apache/cordova-windows
+```
 
 #### Jump to:
 {: #jump-to }
