@@ -33,13 +33,13 @@ cordova plugin add cordova-plugin-mfp-jsonstore@latest
 Add the following line to the `<mfp:android>` section of `config.xml`
 
 ```bash
-<mfp:mode64bit>true</mfp: mode64bit>
+<mfp:mode64bit>true</mfp:mode64bit>
 ```
 to build the app in 64-bit mode. 
 
 #### Android:
 
-Edit your `app/build.gradle` file to include the following lines
+Edit your `app/build.gradle` file to include the following lines in the `dependencies` section.
 
 ```
 implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
