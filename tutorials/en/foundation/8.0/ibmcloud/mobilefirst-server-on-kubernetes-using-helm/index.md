@@ -74,14 +74,56 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       ibmcloud cr region-set
       ```    
 
-  4. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
+  4. Load the PPA Archive of {{ site.data.keys.product }} using the following steps:
+       1. Extract the PPA archive.
+       2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version.
+       3. Push the image.
+       4. Create and Push the manifests.
+
+      Below is the example for the mfpf-server
+      ```bash
+      mkdir -p ppatmp ; cd ppatmp
+
+      tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
+
+      cd ./images
+
+      for i in *; do docker load -i $i;done
+
+      docker tag mfpf-server:1.0.28-amd64 us.icr.io/default/mfpf-server:1.0.28-amd64
+      docker tag mfpf-server:1.0.28-s390x us.icr.io/default/mfpf-server:1.0.28-s390x
+      docker tag mfpf-server:1.0.28-ppc64le us.icr.io/default/mfpf-server/mfpf-server:1.0.28-ppc64le
+
+      # Push all the images
+
+      docker push  us.icr.io/default/mfpf-server:1.0.28-amd64
+      docker push us.icr.io/default/mfpf-server:1.0.28-s390x
+      docker push us.icr.io/default/mfpf-server:1.0.28-ppc64le
+
+      # Create manifest-lists
+      docker manifest create us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-amd64 us.icr.io/default/mfpf-server:1.0.28-s390x us.icr.io/default/mfpf-server:1.0.28-ppc64le --amend
+
+      # annotate the manifests
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-amd64 --os linux --arch amd64
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-ppc64le --os linux --arch ppc64le
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-s390x --os linux --arch s390x
+
+      # push manifest list
+      docker manifest push us.icr.io/default/mfpf-server:1.0.28
+
+      rm -rf ppatmp
       ```
+
+      >**Note:** The `ibmcloud cr ppa-archive load` command approach doesn’t support the PPA package with multi-arch support. Hence one has to extract and push the package manually to the IBM Cloud Container repository (users using older PPA versions need to use following command to load).
+
+      ```bash
       ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
       ```
       *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
+  >**Note:** Multi-architecture refers to architectures including intel (amd64), power64 (ppc64le) and s390x. Multi-arch is supported from ICP 3.1.1 only.
 
-  The helm charts are stored in the client or local (unlike ICP helm chart stored in the IBM Cloud Private helm repository). Charts can be located within the `ppa-import/charts` directory.
+  The helm charts are stored in the client or local (unlike ICP helm chart stored in the IBM Cloud Private helm repository). Charts can be located within the `ppa-import/charts` (or charts) directory.
 
 ## Install and configure IBM {{ site.data.keys.product }} Helm Charts
 {: #configure-install-mf-helmcharts}
