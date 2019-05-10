@@ -38,7 +38,7 @@ This feature is driven by two new JNDI properties:
 </blockquote>
 
 By default, for customers who do not use license tracking and are at MobileFirst iFix Level *8.0.0.0-MFPF-IF201812191602-CDUpdate-04* or above, runtime deletes all stale records of MFP_TRANSIENT_DATA.  Enabling mfp.purgeOldData.age for deleting records from MFP_PERSISTENT_DATA has dependency on SDK level iFix *8.0.0.0-MFPF-IF201810040631*. Customer's  MobileFirst plugin `cordova-plugin-mfp` version needs to be at this iFix level or  higher than this iFix level.
- 
+
 >The feature and jndi properties discussed here is applicable only for customers who have not enabled license tracking.
 
 
@@ -85,4 +85,4 @@ Time in millis for 12 AM today is 1545177600000
 delete from MFP_TRANSIENT_DATA where EXPIRESAT < 1545177600000
 ```
 
->For IBM Cloud Private (ICP) customers, to enable JNDI properties, follow the ICP documentation for [jndiConfigurations](https://mobilefirstplatform.ibmcloud.com/tutorials/it/foundation/8.0/bluemix/mobilefirst-server-on-icp/#env-mf-server).
+>For IBM Cloud Private (ICP) customers, to enable JNDI properties, follow the ICP documentation for [jndiConfigurations](https://mobilefirstplatform.ibmcloud.com/tutorials/it/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/#env-mf-server).

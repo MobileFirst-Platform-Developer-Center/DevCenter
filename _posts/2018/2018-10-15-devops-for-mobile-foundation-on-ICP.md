@@ -7,18 +7,18 @@ tags:
 - DevOps
 version:
 - 8.0
-author: 
+author:
     name: Shinoj Zacharias
 additional_authors:
 - Prashanth Bhat
 ---
 
 ## Introduction
-DevOps is a practice used by enterprises for faster delivery of software and to improve the time taken for go to market. The DevOps pipeline for [Mobile Foundation on IBM Cloud Private](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/) helps in automating tasks that are required to set up a continuous delivery of mobile apps. For Mobile Foundation on ICP, the tasks such as deploying Mobile Foundation (MF) on ICP, building and deploying apps and adapters to MF on ICP, testing apps and adapters, and deleting and updating the Mobile Foundation deployments on ICP needs to be automated. 
+DevOps is a practice used by enterprises for faster delivery of software and to improve the time taken for go to market. The DevOps pipeline for [Mobile Foundation on IBM Cloud Private](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/) helps in automating tasks that are required to set up a continuous delivery of mobile apps. For Mobile Foundation on ICP, the tasks such as deploying Mobile Foundation (MF) on ICP, building and deploying apps and adapters to MF on ICP, testing apps and adapters, and deleting and updating the Mobile Foundation deployments on ICP needs to be automated.
 
 In this blog post, we will walk you through the steps of creating a DevOps pipeline for Mobile Foundation on ICP using Jenkins. The Jenkins jobs use the combination of ICP, Helm and `mfpdev` command line to automate the different stages/jobs in the pipeline. The jobs can be configured in such a way that whenever developers commit a code change to a git repository, the pipeline automatically gets triggered to execute some of the Jenkins jobs. In a continuous build and test automation pipeline, the job execution can start with a fresh deployment of Mobile Foundation on ICP and then do the building of apps and adapter and subsequently register it with Mobile Foundation Server running on ICP followed by testing both apps and adapter and finally tearing down the Mobile Foundation deployment on ICP.
 
-This blog post assumes that you have already set up IBM Cloud Private and loaded the [IBM Mobile Foundation Passport Advantage Archive](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#download-the-ibm-mfpf-ppa-archive) on ICP.
+This blog post assumes that you have already set up IBM Cloud Private and loaded the [IBM Mobile Foundation Passport Advantage Archive](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/#download-the-ibm-mfpf-ppa-archive) on ICP.
 
 ## DevOps pipeline
 The DevOps pipeline that is described in this blog is built by using Jenkins. This blog post assumes that Jenkins is installed locally within the organization's intranet.  ICP provides helm charts for Jenkins deployments that you could use to build the DevOps pipeline, but ICP may run the Jenkins job on a new pod each time a job is run, and that would require every job to have the scripts to install the prerequisite software such as `mfpdev` command line, *maven*, *helm* etc., which is required to run the job. This may have a performance impact on the execution of jobs. It is hence recommended to have locally installed Jenkins server and client, which can connect to the ICP running on your data center. The Jenkins job that is used for creating DevOps pipeline for MF on ICP is shown below.
@@ -50,7 +50,7 @@ Once the Jenkins job is successfully completed, MF deployment can be seen from t
 ![MF Deployment on ICP]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/mf_deployment_on_icp.png)
 
 ### Build And Deploy Adapter
-After MF is deployed on ICP, adapters can be built and deployed on MF for testing the changes. This is automated by *build_and_deploy_adapter* Jenkins job. The job can be configured to be run after the previous job, *deploy_mfp_on_ICP* is successfully completed. This job builds the adapter using mfpdev CLI and uses the MF deployment endpoints to deploy the adapter to MF running on ICP. 
+After MF is deployed on ICP, adapters can be built and deployed on MF for testing the changes. This is automated by *build_and_deploy_adapter* Jenkins job. The job can be configured to be run after the previous job, *deploy_mfp_on_ICP* is successfully completed. This job builds the adapter using mfpdev CLI and uses the MF deployment endpoints to deploy the adapter to MF running on ICP.
 
 ![GIT Repository for MF Apps and Adapter]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/Git_repo_for_app_adapter.png)
 
@@ -102,18 +102,18 @@ The parameters required to run the Jenkins job requires the git repository where
 
 ![Test App With Bitbar Job Parameters]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/test_app_parameters.png)
 
-The script to run the tests on Bitbar is invoked using maven, which is shown in the screenshot 
+The script to run the tests on Bitbar is invoked using maven, which is shown in the screenshot
 
 ![Test Apps Script]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/test_app_scripts.png)
 
-Note that, we use Bitbar cloud for testing the app. You can use any of the testing tools of your choice for testing the apps that can be run locally on your organization's intranet, without going to the public network to connect to cloud testing vendors like Bitbar cloud. 
+Note that, we use Bitbar cloud for testing the app. You can use any of the testing tools of your choice for testing the apps that can be run locally on your organization's intranet, without going to the public network to connect to cloud testing vendors like Bitbar cloud.
 
 This job can be configured to run after the previous job *build_and_deploy_app* is completed successfully. Once the job is successfully completed, the status of the app tested can be viewed from the Bitbar dashboard.
 
 ![Bitbar Dashboard]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/bit_bar_test_status.png)
 
 ### Delete MF on ICP
-This Jenkins job will clean up the MF deployment on ICP after all the previous jobs are successfully completed. Cleaning up MF on ICP helps in leaving no traces of previous pipeline run and helps in tear down of the MF after completion of pipeline run. You can choose not to perform this phase in the pipeline if you don't wish to clean up the environment after every successful build of the pipeline. This means that the jobs for *deploying MF on ICP* and *deleting MF on ICP* can be taken out from the continuous build and testing of apps and adapter pipeline. 
+This Jenkins job will clean up the MF deployment on ICP after all the previous jobs are successfully completed. Cleaning up MF on ICP helps in leaving no traces of previous pipeline run and helps in tear down of the MF after completion of pipeline run. You can choose not to perform this phase in the pipeline if you don't wish to clean up the environment after every successful build of the pipeline. This means that the jobs for *deploying MF on ICP* and *deleting MF on ICP* can be taken out from the continuous build and testing of apps and adapter pipeline.
 
 For this job to be run, we need to provide the ICP cluster connection credentials and release name as shown in the image.
 
@@ -142,10 +142,3 @@ In the case of DevOps for production environment, you will not be using/running 
 
 ### Attachment
 The zip file [MF_on_ICP_Jenkins_Job_Scripts]({{site.baseurl}}/assets/blog/2018-10-15-devops-for-mobile-foundation-on-ICP/MFP_on_ICP_Jenkins_Job_Scripts.zip) includes all the scripts for all the Jenkins jobs described in this post. These scripts assume that Jenkins job parameters are set correctly before running the pipeline.
-
-
-
- 
-
-
-
