@@ -8,7 +8,6 @@ tags:
 - Android_Q
 version:
 - 8.0
-- 7.1
 author:
   name: VidyaSagar Gaikwad
   name: Shubha S
@@ -17,7 +16,7 @@ author:
 
 Google has announced the next version of Android, which is [Android Q](https://developer.android.com/preview/overview) . The developer preview of Android Q was launched in March 2019 and has been available for a while now for testing, development, and feedback. Android Q introduces a variety of new [features and capabilities](https://developer.android.com/preview/features.html) for end users which gives Security enhancements (such as Improved biometric authentication dialogs ,Improved fallback support for device credentials) ,TLS 1.3 support ,Connectivity ,system-wide dark mode, permissions usage, built in screen record features and many more.
 
-We have been testing the developer previews of Android Q Beta 2. We have verified various features of [MobileFirst Platform Foundation](https://console.bluemix.net/catalog/services/mobile-foundation) on the developer previews of Android Q for MobileFirst Platform Foundation v8.0 and v7.1.
+We have been testing the developer previews of Android Q Beta 2. We have verified various features of [MobileFirst Platform Foundation](https://console.bluemix.net/catalog/services/mobile-foundation) on the developer previews of Android Q for MobileFirst Platform Foundation v8.0 .
 
 ## MobileFirst Platform Foundation Support for Android Q(Beta 2)
 This post provides details about Android Q support in MobileFirst Platform v8.0 and the steps that developers and IT administrators might need to take.
