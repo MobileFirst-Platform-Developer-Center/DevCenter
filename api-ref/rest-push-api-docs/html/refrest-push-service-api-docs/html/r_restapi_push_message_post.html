@@ -278,6 +278,10 @@
 
                     <dd class="dd pd">Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT</dd>
 
+                    <dt class="dt pt dlterm">interactiveCategory (string, optional)</dt>
+
+                    <dd class="dd pd">The category identifier to be used for the interactive push notifications.</dd>
+
                 </dl>
 
                 <p class="p">The <var class="keyword varname">gcm</var> has the following properties:</p>
@@ -308,6 +312,8 @@
                   <dd>The duration (in seconds) that the message is kept on GCM storage if the device is offline. Default value is 4 weeks, and must be set as a JSON number.</dd>
                   <dt><b>visibility</b></dt>
                   <dd>A string value that indicates the visibility level of notification content on the secured lock screen in Android L devices. Allowed values are 'public, 'private' and 'secret'. Only applies to Android 5.0 or higher.</dd>
+                  <dt><b>interactiveCategory (string, optional)</b></dt>
+                  <dd>The category identifier to be used for the interactive push notifications.</dd>
                 </dl>
 
                 <p>The <em>lights</em> has the following properties:</p><dl>
