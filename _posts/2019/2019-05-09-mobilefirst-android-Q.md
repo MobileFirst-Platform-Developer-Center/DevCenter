@@ -8,6 +8,7 @@ tags:
 - Android_Q
 version:
 - 8.0
+- 7.1
 author:
   name: Vidyasagar Gaikwad
 additional_authors:
