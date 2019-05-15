@@ -244,7 +244,7 @@
 
                     <dd class="dd pd">An integer value to be displayed in a badge on the application icon.</dd>
 
-                    <dt class="dt pt dlterm">category (<b>Deprecated</b>. Use <i>interactiveCategory</i> for interactive push notification)</dt>
+                    <dt class="dt pt dlterm">category <!--(<b>Deprecated</b>. Use <i>interactiveCategory</i> for interactive push notification)--></dt>
 
                     <dd class="dd pd">Name of the category for iOS8 interactive push notifications.</dd>
 
@@ -278,9 +278,9 @@
 
                     <dd class="dd pd">Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT</dd>
 
-                    <dt class="dt pt dlterm">interactiveCategory (string, optional)</dt>
+                    <!--<dt class="dt pt dlterm">interactiveCategory (string, optional)</dt>
 
-                    <dd class="dd pd">The category identifier to be used for the interactive push notifications.</dd>
+                    <dd class="dd pd">The category identifier to be used for the interactive push notifications.</dd>-->
 
                 </dl>
 
@@ -288,7 +288,7 @@
                 <dl class="dl parml">
                   <dt><b>bridge</b></dt>
                   <dd>A Boolean value that indicates whether the notification should be bridged or not to other devices connected to this handheld device. Only applies to Android 5.0 or higher.</dd>
-                  <dt><b>category</b> (<b>Deprecated</b>. Use <i>interactiveCategory</i> for interactive push notification)</dt>
+                  <dt><b>category</b> <!--(<b>Deprecated</b>. Use <i>interactiveCategory</i> for interactive push notification)--></dt>
                   <dd>A string value that indicates the category to which this notification belongs. Allowed values are 'call', 'alarm', 'email', 'err', 'event', 'msg', 'progress', 'promo', 'recommendation', 'service', 'social', 'status', and 'transport'. Only applies to Android 5.0 or higher.</dd>
                   <dt><b>collapseKey</b></dt>
                   <dd>A string value that indicates that the message can be replaced. When multiple messages are queued up in GCM Servers with the same key, only the last one is delivered. </dd>
@@ -312,8 +312,8 @@
                   <dd>The duration (in seconds) that the message is kept on GCM storage if the device is offline. Default value is 4 weeks, and must be set as a JSON number.</dd>
                   <dt><b>visibility</b></dt>
                   <dd>A string value that indicates the visibility level of notification content on the secured lock screen in Android L devices. Allowed values are 'public, 'private' and 'secret'. Only applies to Android 5.0 or higher.</dd>
-                  <dt><b>interactiveCategory (string, optional)</b></dt>
-                  <dd>The category identifier to be used for the interactive push notifications.</dd>
+                  <!--<dt><b>interactiveCategory (string, optional)</b></dt>
+                  <dd>The category identifier to be used for the interactive push notifications.</dd>-->
                 </dl>
 
                 <p>The <em>lights</em> has the following properties:</p><dl>
