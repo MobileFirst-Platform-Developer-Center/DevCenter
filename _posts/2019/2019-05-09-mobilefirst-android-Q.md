@@ -1,6 +1,6 @@
 ---
 title: Mobile Foundation compatibility for Android Q Beta version
-date: 2019-05-10
+date: 2019-05-15
 tags:
 - MobileFirst_Platform
 - Mobile_Foundation
