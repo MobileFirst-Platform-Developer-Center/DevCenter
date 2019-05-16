@@ -8,7 +8,7 @@ tags:
 - Mobile_Foundation
 version:
 - 8.0
-author: 
+author:
     name: Krishna K Chandrasekar
 ---
 
@@ -18,12 +18,12 @@ This blog focuses on setting up of MobileFirst Server running on an IBM Cloud Pr
 
 >**Note:** The instructions in this blog post are documented with ICP 2.1.0.3 in place, one can also follow the same instructions for ICP 3.1 with suitable binaries for ICP.
 
-###	Prequisites 
+###	Prequisites
 
 This blog post focuses on how to use the Apache Directory Server as an LDAP Registry with Mobile Foundation Server on ICP and assumes having the following:
 
 1. IBM SoftLayer Account
-2. [IBM Mobile Foundation Passport Advantage Archive](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#download-the-ibm-mfpf-ppa-archive)
+2. [IBM Mobile Foundation Passport Advantage Archive](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/#download-the-ibm-mfpf-ppa-archive)
 3. IBM DB2 Server with Database configured (either community edition, enterprise or DB2 service on IBM Cloud)
 
 ###	Procedure
@@ -33,7 +33,7 @@ Instructions below lists the steps required to set up the Mobile Foundation Serv
 
 1. Log in to your [SoftLayer Account](https://control.softlayer.com/).
 2. Create two new Baremetal x86_64 bits machine with Ubuntu 16.04 installed in the required Region/Data Center (Recommended: 16Gig Memory, Quad Core, 250GB Storage).
-3. Wait for a few minutes for IBM SoftLayer to provision a Ubuntu 16.04 VM. 
+3. Wait for a few minutes for IBM SoftLayer to provision a Ubuntu 16.04 VM.
 
 #### B. Setting up the Master / Proxy / Worker Nodes for Installing ICP
 
@@ -41,7 +41,7 @@ For both master node (boot, master and proxy) and two worker nodes, both running
 
 1. From Terminal, log in to the Worker Node-1 as **root** user
 2. Disable the firewall.
-	
+
 	```bash
 	[root@ home]# /usr/sbin/ufw disable
 	```
@@ -52,7 +52,7 @@ For both master node (boot, master and proxy) and two worker nodes, both running
 	```
 
 4. Set **vm.max_map_count** to at least **262144**.
-	
+
 	```bash
 	[root@ home]# /sbin/sysctl -w vm.max_map_count=262144
 	[root@ home]# /bin/echo "vm.max_map_count=262144" | /usr/bin/tee -a /etc/sysctl.conf
@@ -67,14 +67,14 @@ For both master node (boot, master and proxy) and two worker nodes, both running
 	 [root@ home]# /usr/bin/apt-get --assume-yes install python-pip
 	 [root@ home]# /bin/systemctl start docker
 	```
-	
+
 6. Ensure the hostname is resolvable.
 
 	```bash
 	[root@ home]# ifconfig -a 
 	```
 	 Make a note of interface name the IP is bound to "eth0" or "ens7" or "eth1" etc.
-	
+
 	```bash
 	[root@ home]# IP=<IP_address_of_this_worker_machine>
 	[root@ home]# /bin/echo "${IP} $(hostname)" >> /etc/hosts
@@ -84,7 +84,7 @@ For both master node (boot, master and proxy) and two worker nodes, both running
 
 	```bash
 	[root@ home]# /bin/systemctl status docker
-	```	
+	```
 8. Check no docker containers exist at present.
 
 	```bash
@@ -104,16 +104,16 @@ For both master node (boot, master and proxy) and two worker nodes, both running
 
 Further configuration is required on the master node (please note this node is running boot, master and proxy functions). Log in to the Master Node as **root** user.
 
-1. Download ibm-cloud-private-*.tar.gz  from IBM Passport Advantage - do not unzip/untar as this gz file is used for the installation. 
+1. Download ibm-cloud-private-*.tar.gz  from IBM Passport Advantage - do not unzip/untar as this gz file is used for the installation.
 
 2. Unpack the ICP binary downloaded above, and load into docker.
-   
+
 	```bash
 	[root@ home]# TMP_DIR="$(/bin/mktemp -d)"
 	[root@ home]# cd "${TMP_DIR}"
 	```
 3. Move the ibm-cloud-private-x86_64-2.1.0.tar.gz file to the current directory.
-	
+
 	```bash
 	[root@ home]# mv <download_location>/ibm-cloud-private-x86_64-2.1.0.3.tar.gz .
 	[root@ home]# ls -l *.gz
@@ -147,11 +147,11 @@ Further configuration is required on the master node (please note this node is r
 	```
 
 	Add the worker node IPs
-	
+
 	```bash
 	/bin/echo "[worker]"     >> cluster/hosts
 	echo "x.x.x.x" >> cluster/hosts
-	echo "z.z.z.z" >> cluster/hosts     
+	echo "z.z.z.z" >> cluster/hosts    
 	```
 	Here x.x.x.x is the IP of the WorkerNode-1 (here for this topology, MasterNode IP) and z.z.z.z is the IP of the WorkerNode-2
 
@@ -171,7 +171,7 @@ Further configuration is required on the master node (please note this node is r
 	```
 
 8. Setup SSH keys from master node (boot, master and proxy) to remaining the nodes.
-	
+
 	```bash
 	ssh-keygen -b 4096 -f ~/.ssh/id_rsa -N ""
 	cat ~/.ssh/id_rsa.pub | sudo tee -a ~/.ssh/authorized_keys
@@ -179,11 +179,11 @@ Further configuration is required on the master node (please note this node is r
 	ssh-copy-id -i ~/.ssh/id_rsa.pub root@y.y.y.y   # copy key to worker nodes
 	chmod 400 /root/.ssh/id_rsa.pub
 	```
-	
+
 9. Test if ssh login works without a password.
 
 10. Move the key to ICP config
-	
+
 	```bash
 	cp ~/.ssh/id_rsa ${ICP_ROOT_DIR}-${ICP_VER}/cluster/ssh_key
 	```
@@ -201,7 +201,7 @@ Further configuration is required on the master node (please note this node is r
 	calico_ip_autodetection_method: interface=<your primary interface e.g. eth0>
 	cluster_access_ip: y.y.y.y   # The primary IP address of your master node
 	```
-	
+
 #### D. Deploying ICP Enterprise Edition
 
 You are now ready to run the ICP installation process, which are a set of Ansible playbooks.
@@ -210,7 +210,7 @@ You are now ready to run the ICP installation process, which are a set of Ansibl
 	cd "${ICP_ROOT_DIR}-${ICP_VER}/cluster"
 	/usr/bin/docker run -e LICENSE=accept --net=host -t -v "$(pwd)":/installer/cluster ${ICP_DOCKER_IMAGE}:${ICP_VER}-ee install | /usr/bin/tee install.log
 ```
-	
+
 This will take between 30-50 minutes, depending on your machine size and network speed. The installation script has to copy code to the worker nodes and install into containers.
 
 If you face any challenges during the installation that leads to failure, uninstall ICP, run the following command and retry the previous installation step.
@@ -276,16 +276,16 @@ Run the following instructions from the client terminal from which ICP environme
 
 **Load the MFP PPA archive to the ICP repo**
 
-1. Download the IBM Mobile Foundation for ICP archive from IBM Passport Advantage. 
+1. Download the IBM Mobile Foundation for ICP archive from IBM Passport Advantage.
 2. Log in to the ICP cluster
 
 	```bash
 	bx pr login -a https://mycluster.icp:8443 -u admin -p admin -c id-mycluster-account --skip-ssl-validation
 	```
 3. Load the PPA Archive of Mobile Foundation using the following command: (This takes around 30-40 minutes, depending on the network speed).
-	
+
 	`bx pr load-ppa-archive --archive <archive_name>`
-	
+
 	Example:
 	`bx pr load-ppa-archive --archive 8.0.0.0-MFPF-Server-ICp-XXXXX.tar.gz`
 4. After you load the PPA Archive, synch the repositories, which ensures the listing of Helm Charts in the Catalog. You can do this in IBM Cloud Private management console.
@@ -302,7 +302,7 @@ Run the following instructions from the client terminal from which ICP environme
 	   MFPF_ADMIN_DB2_USERNAME=admin
 	   MFPF_ADMIN_DB2_PASSWORD=thisisadummypassword
 	   MFPF_ADMIN_DB2_SCHEMA=<any_Schema_name>
-	```	
+	```
 2. From the ICP Catalog choose *ibm-mfpf-server-prod* helm chart to configure and click **Install**.
  
     Deployment takes around 10-15 minutes for the services to come up after completing the health checks and pod running.
@@ -319,6 +319,6 @@ Run the following instructions from the client terminal from which ICP environme
 
 #### References
 
-1. [Setting up MobileFirst Server on IBM Cloud Private](https://mobilefirstplatform.ibmcloud.com/tutorials/fr/foundation/8.0/bluemix/mobilefirst-server-on-icp/)
+1. [Setting up MobileFirst Server on IBM Cloud Private](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/)
 
 2. [Implementing IBM Cloud Private EE and CE on IBM Power8](https://www.ibm.com/developerworks/community/blogs/6eaa2884-e28a-4e0a-a158-7931abe2da4f/entry/Implementing_IBM_Cloud_Private_CE_and_EE_on_IBM_Power8?lang=en)

@@ -9,17 +9,17 @@ tags:
 - MFP
 version:
 - 8.0
-author: 
+author:
     name: Krishna K Chandrasekar
 ---
 
 During the deployment of the Mobile Foundation Helm charts on the IBM Cloud Private various configuration details are supplied. There are several cases, these configuration settings available on the deployed Mobile Foundation on the ICP needs customizations post deployment especially when the system runs in production scenarios or during the tests.
 
-This blog post assumes that you have already set up IBM Cloud Private and loaded the [IBM Mobile Foundation Passport Advantage Archive](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#download-the-ibm-mfpf-ppa-archive) on ICP.
+This blog post assumes that you have already set up IBM Cloud Private and loaded the [IBM Mobile Foundation Passport Advantage Archive](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/#download-the-ibm-mfpf-ppa-archive) on ICP.
 
-Following set of instructions shows how the Mobile Foundation artifacts can be customized once the base PPA package is loaded and the helm charts are deployed on the IBM Cloud Private. 
+Following set of instructions shows how the Mobile Foundation artifacts can be customized once the base PPA package is loaded and the helm charts are deployed on the IBM Cloud Private.
 
-The MobileFoundation for ICP PPA package contains a set of customizable mfp server artifacts structured as follows: 
+The MobileFoundation for ICP PPA package contains a set of customizable mfp server artifacts structured as follows:
 
 ```bash
 icp-kubernetes/usr-mfpf-server
@@ -45,21 +45,21 @@ icp-kubernetes/usr-mfpf-server
 ### Procedure
 Below are the set of steps, which explains how the `jvm.options` file can be customized (eg., to add the MaxHeap settings) and used for updating the Kubernetes pods on the Mobile Foundation Server deployments.
 
-1. As depicted in the mfp server artifacts directory structure, one can create a directory structure in the local directory 
+1. As depicted in the mfp server artifacts directory structure, one can create a directory structure in the local directory
 
 	```bash
 	[root@masternode1 ~]# mkdir -p usr-mfpf-server/env
 	[root@masternode1 ~]# cd usr-mfpf-server/env
 	```
 	This creates the following directory structure that can be used to customize the image on the ICP for modifying the `jvm.options`.
-	
+
 	```bash
 	icp-kubernetes/usr-mfpf-server
 	├── env
 	│   └── jvm.options
 	```
 2. Create a Dockerfile to overwrite `jvm.options` as follows:
-	
+
 	```bash
 	FROM mycluster.icp:8500/default/mfpf-server:1.0.0.1
 	COPY jvm.options /opt/ibm/wlp/usr/servers/mfp/jvm.options
@@ -96,7 +96,7 @@ This updates the existing mfp-server docker image with the customized `jvm.optio
 	mfpserver-ibm-mfpf-server-prod         2         2         2            2           5d
 	```
 8. Now update Mobile Foundation Server kubernetes deployment **mfpserver-ibm-mfpf-server-prod** to use the customized image.
-	
+
 	```bash
 	kubectl edit deployments mfpserver-ibm-mfpf-server-prod
 	```
@@ -112,7 +112,7 @@ This updates the existing mfp-server docker image with the customized `jvm.optio
 	```bash
 	# kubectl exec -it mfpserver-ibm-mfpf-server-prod-bbcf6bcd4-dprsz bash
 	root@mfpserver-ibm-mfpf-server-prod-sdd76xs82-pjswe:/# cat /opt/ibm/wlp/usr/servers/mfp/jvm.options
-	
+
 	-Dcom.ibm.ws.jmx.connector.client.rest.readTimeout=180000
 	-Xmx1024m
 	```

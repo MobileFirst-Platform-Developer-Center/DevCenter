@@ -18,9 +18,6 @@ Mobile Foundation runtime transactions like device registration, app registratio
 
 *MFP_TRANSIENT_DATA* stores the application transactions, security checks and their security states, including the expiry time of the security states. *MFP_PERSISTENT_DATA* holds the device to application relations, application access time in the device and maintains the version informations of the applications.
 
-Data in *MFP_TRANSIENT_DATA* table is deleted upon successful logout and on the expiry of security checks when the same application is accessed again. Similarly, the *MFP_PERSISTENT_DATA* entries also gets updated during a proper app upgrade.
-However, due to different reasons like incorrect usage of application or while doing an application delete and install instead of app upgrade, stale entries gets accumulated in the table and this can cause performance issues over time.
-
 Mobile Foundation runs a daily job, which currently takes care of tracking, archiving, decommissioning and deleting records for customers who use [license tracking](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/administering-apps/license-tracking/) feature.
 This is controlled by the flags for license tracking and device decommissioning. License tracking is enabled by default. See [List of JNDI properties for MobileFirst runtime](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html), for more information.
 
@@ -38,7 +35,7 @@ This feature is driven by two new JNDI properties:
 </blockquote>
 
 By default, for customers who do not use license tracking and are at MobileFirst iFix Level *8.0.0.0-MFPF-IF201812191602-CDUpdate-04* or above, runtime deletes all stale records of MFP_TRANSIENT_DATA.  Enabling mfp.purgeOldData.age for deleting records from MFP_PERSISTENT_DATA has dependency on SDK level iFix *8.0.0.0-MFPF-IF201810040631*. Customer's  MobileFirst plugin `cordova-plugin-mfp` version needs to be at this iFix level or  higher than this iFix level.
- 
+
 >The feature and jndi properties discussed here is applicable only for customers who have not enabled license tracking.
 
 
@@ -85,4 +82,4 @@ Time in millis for 12 AM today is 1545177600000
 delete from MFP_TRANSIENT_DATA where EXPIRESAT < 1545177600000
 ```
 
->For IBM Cloud Private (ICP) customers, to enable JNDI properties, follow the ICP documentation for [jndiConfigurations](https://mobilefirstplatform.ibmcloud.com/tutorials/it/foundation/8.0/bluemix/mobilefirst-server-on-icp/#env-mf-server).
+>For IBM Cloud Private (ICP) customers, to enable JNDI properties, follow the ICP documentation for [jndiConfigurations](https://mobilefirstplatform.ibmcloud.com/tutorials/it/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/#env-mf-server).
