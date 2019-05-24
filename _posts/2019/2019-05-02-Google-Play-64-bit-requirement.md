@@ -29,7 +29,7 @@ One of the [known limitations](https://mobilefirstplatform.ibmcloud.com/tutorial
 
 The 64-bit libraries for Android will use a different encryption library for performing the encryption compared to the existing libraries that offered only 32-bit support. As a result of this, any existing JSONStore Collections on the device will not be accessible when your app is built in 64-bit mode. The existing collection will have to be destroyed and a new one created.
 
-If data retention is essential to the app, then upgrading the app with the iFix version *8.0.0.0-MFPF-IF201905070819* in 32-bit mode will perform an in-place migration to use the new encryption library. Any subsequent upgrade to the app in 32 or 64-bit mode will retain the data.
+If data retention is essential to the app, then upgrading the app with the iFix version *8.0.0.0-MFPF-IF201905070819* (*7.1.0.0-MFPF-IF201905221643* for MobileFirst Foundation v7.1) in 32-bit mode will perform an in-place migration to use the new encryption library. Any subsequent upgrade to the app in 32 or 64-bit mode will retain the data.
 
 ## MobileFirst 8.0 apps
 
