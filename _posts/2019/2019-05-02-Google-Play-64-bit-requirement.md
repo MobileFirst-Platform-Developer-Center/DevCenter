@@ -1,6 +1,6 @@
 ---
 title: 64-bit Google Play Store Compliance for MobileFirst  
-date: 2019-05-10
+date: 2019-05-24
 tags:
 - MobileFirst_Platform
 - MobileFirst_Foundation
@@ -16,11 +16,25 @@ additional_authors:
 ---
 
 
-If you are tuned into the Android Developers Blog, then you would know by now that all apps to be published to the Google Play Store starting 1st Aug, 2019 are [required to publish both 32 and 64 bit versions of any native libraries](https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html). 
+If you are tuned into the Android Developers Blog, then you would know by now that all apps to be published to the Google Play Store starting 1st Aug, 2019 are [required to publish both 32 and 64 bit versions of any native libraries](https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html).
 
-The MobileFirst SDKs have shipped with 32-bit libraries so far. Today, we are releasing updates to the Android and Cordova plugins that comply with this Google Play Store requirement. This is applicable to both the Core SDK and the JSONStore SDK. Before you publish your app to the Play Store with 64-bit compliance, add the following SDKs to your project. 
+The MobileFirst SDKs have shipped with 32-bit libraries so far. Today, we are releasing updates to the Android and Cordova plugins that comply with this Google Play Store requirement. This is applicable to both the Core SDK and the JSONStore SDK.
 
-#### Cordova:
+## FIPS 140-2 Support
+
+One of the [known limitations](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/known-issues-limitations/#fips-104-2-feature-limitations) of MobileFirst is the restricted availability of FIPS 140-2 support for JSONStore data in 64-bit mode applications on Android. With the support for 64-bit for Android applications added, this limitation will continue to prevail and Android applications built in 64-bit mode will not be FIPS 140-2 compliant.
+
+## Backward compatibility
+
+The 64-bit libraries for Android will use a different encryption library for performing the encryption compared to the existing libraries that offered only 32-bit support. As a result of this, any existing JSONStore Collections on the device will not be accessible when your app is built in 64-bit mode. The existing collection will have to be destroyed and a new one created.
+
+If data retention is essential to the app, then upgrading the app with the iFix version *8.0.0.0-MFPF-IF201905070819* in 32-bit mode will perform an in-place migration to use the new encryption library. Any subsequent upgrade to the app in 32 or 64-bit mode will retain the data.
+
+## MobileFirst 8.0 apps
+
+Before you publish your app to the Play Store with 64-bit compliance, add the following SDKs to your project.
+
+### Cordova:
 
 ```bash
 cordova plugin remove cordova-plugin-mfp
@@ -35,9 +49,9 @@ Add the following line to the `<mfp:android>` section of `config.xml`
 ```bash
 <mfp:mode64bit>true</mfp:mode64bit>
 ```
-to build the app in 64-bit mode. 
+to build the app in 64-bit mode.
 
-#### Android:
+### Android:
 
 Edit your `app/build.gradle` file to include the following lines in the `dependencies` section.
 
@@ -46,7 +60,7 @@ implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+
 implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
 
-Edit the `app/build.gradle` file and add the following lines in the `packagingOptions` section 
+Edit the `app/build.gradle` file and add the following lines in the `packagingOptions` section
 
 ```
 packagingOptions {
@@ -57,17 +71,171 @@ packagingOptions {
 }
 ```
 
-## FIPS 140-2 Support
+## MobileFirst 7.1 apps
 
-One of the [known limitations](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/known-issues-limitations/#fips-104-2-feature-limitations) of MobileFirst is the restricted availability of FIPS 140-2 support for JSONStore data in 64-bit mode applications on Android. With the support for 64-bit for Android applications added, this limitation will continue to prevail and Android applications built in 64-bit mode will not be FIPS 140-2 compliant. 
+Before you publish your app to the Play Store with 64-bit compliance, add the following SDKs to your project.
 
-## Backward compatibility 
-
-The 64-bit libraries for Android will use a different encryption library for performing the encryption compared to the existing libraries that offered only 32-bit support. As a result of this, any existing JSONStore Collections on the device will not be accessible when your app is built in 64-bit mode. The existing collection will have to be destroyed and a new one created.
- 
-If data retention is essential to the app, then upgrading the app with the iFix version *8.0.0.0-MFPF-IF201905070819* in 32-bit mode will perform an in-place migration to use the new encryption library. Any subsequent upgrade to the app in 32 or 64-bit mode will retain the data. 
+### Hybrid Apps
+Follow the steps provided below to add 64-bit libraries to your app
 
 
-## MobileFirst 7.1 apps 
+#### Step 1: After you have built your `android` environment, copy the following files from
 
-64-bit Support for MobileFirst 7.1 apps will be announced soon. 
+```
+<ProjectName>/apps/<ApplicationName>/android/native/libs/64bit/arm64-v8a/libauthjni.so
+<ProjectName>/apps/<ApplicationName>/android/native/libs/64bit/x86_64/libauthjni.so
+```
+to
+
+```
+<ProjectName>/apps/<ApplicationName>/android/native/libs/arm64-v8a/libauthjni.so
+<ProjectName>/apps/<ApplicationName>/android/native/libs/x86_64/libauthjni.so
+```
+
+**Optional**: If you are using JSONStore in your app, copy the following additional files from
+
+```
+<ProjectName>/apps/<ApplicationName>/android/native/libs/64bit/arm64-v8a/libcrypto.so.1.1.zip
+<ProjectName>/apps/<ApplicationName>/android/native/libs/64bit/x86_64/libcrypto.so.1.1.zip
+
+<ProjectName>/apps/<ApplicationName>/android/native/libs/64bit/arm64-v8a/libcrypto.so
+<ProjectName>/apps/<ApplicationName>/android/native/libs/64bit/x86_64/libcrypto.so
+
+<ProjectName>/apps/<ApplicationName>/android/native/libs/64bit/arm64-v8a/libsqlcipher.so
+<ProjectName>/apps/<ApplicationName>/android/native/libs/64bit/x86_64/libsqlcipher.so
+```
+to
+
+```
+<ProjectName>/apps/<ApplicationName>/android/native/assets/featurelibs/arm64-v8a/libcrypto.so.1.1.zip
+<ProjectName>/apps/<ApplicationName>/android/native/assets/featurelibs/x86_64/libcrypto.so.1.1.zip
+
+<ProjectName>/apps/<ApplicationName>/android/native/libs/arm64-v8a/libcrypto.so
+<ProjectName>/apps/<ApplicationName>/android/native/libs/x86_64/libcrypto.so
+
+<ProjectName>/apps/<ApplicationName>/android/native/libs/arm64-v8a/libsqlcipher.so
+<ProjectName>/apps/<ApplicationName>/android/native/libs/x86_64/libsqlcipher.so
+```
+
+#### Step 2: Make the following build configuration
+
+**Projects using Android Studio**
+
+Edit the `app/build.gradle` file and add the following lines in the `packagingOptions` section
+
+```
+packagingOptions {
+   ...
+   exclude 'lib/armeabi/libopenssl_fips.so'
+   exclude 'lib/armeabi-v7a/libopenssl_fips.so'
+   exclude 'lib/x86/libopenssl_fips.so'
+}
+```
+
+**Projects using Eclipse based ADT**
+
+Delete the following files
+
+```
+<ProjectName>/apps/<ApplicationName>/android/native/libs/armeabi/libopenssl_fips.so
+<ProjectName>/apps/<ApplicationName>/android/native/libs/armeabi-v7a/libopenssl_fips.so
+<ProjectName>/apps/<ApplicationName>/android/native/libs/x86/libopenssl_fips.so
+```
+
+### Native Apps
+
+Refer to this [documentation page](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/7.1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/#localMethod) on how to add MobileFirst libraries to a native Android app.
+
+#### Step 1: In addition to the aforementioned steps, copy the following files into the `jniLibs` path of your project
+
+```
+<ProjectName>/apps/<ApplicationName>/64bit/arm64-v8a/libauthjni.so
+<ProjectName>/apps/<ApplicationName>/64bit/x86_64/libauthjni.so
+```
+
+**Optional**: If you are using JSONStore, copy these additional files into `jniLibs` path of your project.
+
+```
+<ProjectName>/apps/<ApplicationName>/64bit/arm64-v8a/libcrypto.so
+<ProjectName>/apps/<ApplicationName>/64bit/x86_64/libcrypto.so
+
+<ProjectName>/apps/<ApplicationName>/64bit/arm64-v8a/libsqlcipher.so
+<ProjectName>/apps/<ApplicationName>/64bit/x86_64/libsqlcipher.so
+```
+
+```
+<ProjectName>/apps/<ApplicationName>/64bit/arm64-v8a/libcrypto.so.1.1.zip
+<ProjectName>/apps/<ApplicationName>/64bit/x86_64/libcrypto.so.1.1.zip
+```
+to the `assets/featurelibs` path of your native project.
+
+#### Step 2: Make the following build configuration
+
+Edit your `app/build.gradle` file and add the following lines in the `packagingOptions` section
+
+```
+packagingOptions {
+   ...
+   exclude 'lib/armeabi/libopenssl_fips.so'
+   exclude 'lib/armeabi-v7a/libopenssl_fips.so'
+   exclude 'lib/x86/libopenssl_fips.so'
+}
+```
+
+
+### Cordova Apps
+
+####  Step 1: Remove and add the the MobileFirst plugins and the `android` platform.
+
+```
+mfp cordova plugin remove cordova-plugin-mfp-jsonstore
+mfp cordova plugin remove cordova-plugin-mfp
+mfp cordova plugin add cordova-plugin-mfp
+mfp cordova plugin add cordova-plugin-mfp-jsonstore
+mfp cordova platform remove android
+mfp cordova platform add android
+```
+####  Step 2: Copy the following files
+
+```
+<ProjectPath>/plugins/cordova-plugin-mfp/src/android/assets/featurelibs/arm64-v8a/*
+<ProjectPath>/plugins/cordova-plugin-mfp/src/android/assets/featurelibs/x86_64/*
+
+<ProjectPath>/plugins/cordova-plugin-mfp/src/android/libs/64bit/arm64-v8a/libauthjni.so
+<ProjectPath>/plugins/cordova-plugin-mfp/src/android/libs/64bit/x86_64/libauthjni.so
+```
+to
+
+```
+<ProjectPath>/platforms/android/assets/featurelibs/arm64-v8a/*
+<ProjectPath>/platforms/android/assets/featurelibs/x86_64/*
+
+<ProjectPath>/platforms/android/arm64-v8a/libauthjni.so
+<ProjectPath>/platforms/android/x86_64/libauthjni.so
+```
+
+**Optional**: If you are using JSONStore, copy the following files additionally.
+
+```
+<ProjectPath>/plugins/cordova-plugin-mfp-jsonstore/src/android/libs/64bit/arm64-v8a/libsqlcipher.so
+<ProjectPath>/plugins/cordova-plugin-mfp-jsonstore/src/android/libs/64bit/x86_64/libsqlcipher.so
+```
+to
+
+```
+<ProjectPath>/platforms/android/arm64-v8a/libsqlcipher.so
+<ProjectPath>/platforms/android/x86_64/libsqlcipher.so
+```
+
+####  Step 3: Make the following build configuration
+
+Edit your  `app/build.gradle` file and add the following lines in the `packagingOptions` section
+
+ ```
+packagingOptions {
+   ...
+   exclude 'lib/armeabi/libopenssl_fips.so'
+   exclude 'lib/armeabi-v7a/libopenssl_fips.so'
+   exclude 'lib/x86/libopenssl_fips.so'
+}
+```
