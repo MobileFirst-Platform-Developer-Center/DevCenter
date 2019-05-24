@@ -1,0 +1,50 @@
+---
+layout: tutorial
+title: WKWebView support for iOS apps
+show_children: true
+show_disqus: false
+print_pdf: false
+weight: 12
+---
+
+<h2>Overview</h2>
+<p>You can replace the default UIWebView in your MobileFirst hybrid iOS Cordova app with WKWebView.</p>
+
+
+<h3>About this task</h3>
+
+<p>With the latest iFix release IBM MobileFirst Platform Foundation V7.1.0 (<i>IF201905221643</i>), you can integrate WKWebView with your hybrid iOS Cordova MobileFirst app.</p>
+
+<p>WKWebView provides an improved WebView. WKWebView displays interactive web content, such as for an in-app browser.</p>
+
+<h3>Procedure</h3>
+<p>To enable the WKWebView in a Hybrid MobileFirst app for iOS, follow the below steps.</p>
+<ol>
+  <li>Open the MobileFirst Hybrid iOS application in Xcode IDE.</li>
+  <li>Add the following snippet inside <i>widget</i> tag in <code>config.xml</code>, which is located inside <b>Resources</b> folder.
+    <p><code>&lt;preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" /&gt;</code></p>
+</li>
+<li>Click <b>Build phases</b> -> <b>Link Binary with Libraries</b> -> <b>Search for Webkit.framework</b> and <b>Add</b> it.
+</li>
+<li>Click <b>CordovaLib.xcodeproj</b> -> <b>Build Phases</b></li>
+<li>Add the following header files in the <b>Headers</b> tab as <i>Public</i>. These files are located in <code>CordovaLib.xcodeproj/plugin/WKWebview</code>.
+  <ul><li>CDVWKWebViewUIDelegate.h</li>
+    <li>CDVWKProcessPoolFactory.h</li>
+    <li>CDVWKWebViewEngine.h</li>
+    <li>CDVWKWebViewEngine+FileXhrFix.h
+    </li>
+  </ul>
+</li>
+<li>Add the following source files in <b>Compile sources</b> tab. These files are located in <code>CordovaLib.xcodeproj/plugin/WKWebview</code>.
+  <ul><li>CDVWKProcessPoolFactory.m</li>
+    <li>CDVWKWebViewEngine+FileXhrFix.m</li>
+    <li>CDVWKWebViewUIDelegate.m</li>
+    <li>CDVWKWebViewEngine.m
+    </li>
+  </ul>
+</li>
+<li>Clean and Rebuild the application.</li>
+</ol>
+
+<h3>Results</h3>
+<p>Your MobileFirst hybrid app now uses the WKWebView component instead of the default UIWebView component.</p>
