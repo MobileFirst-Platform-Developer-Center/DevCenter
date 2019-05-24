@@ -8,7 +8,8 @@ tags:
 - 64-bit
 - Google Play Store
 version:
-- 7.1, 8.0
+- 7.1
+- 8.0
 author:
   name: Manjunath Kallanavar
 additional_authors:
@@ -34,7 +35,7 @@ If data retention is essential to the app, then upgrading the app with the iFix 
 
 Before you publish your app to the Play Store with 64-bit compliance, add the following SDKs to your project.
 
-### Cordova:
+### Cordova apps:
 
 ```bash
 cordova plugin remove cordova-plugin-mfp
@@ -51,7 +52,7 @@ Add the following line to the `<mfp:android>` section of `config.xml`
 ```
 to build the app in 64-bit mode.
 
-### Android:
+### Android Native apps:
 
 Edit your `app/build.gradle` file to include the following lines in the `dependencies` section.
 
@@ -75,7 +76,7 @@ packagingOptions {
 
 Before you publish your app to the Play Store with 64-bit compliance, add the following SDKs to your project.
 
-### Hybrid Apps
+### Hybrid apps
 Follow the steps provided below to add 64-bit libraries to your app
 
 
@@ -142,7 +143,7 @@ Delete the following files
 <ProjectName>/apps/<ApplicationName>/android/native/libs/x86/libopenssl_fips.so
 ```
 
-### Native Apps
+### Native apps
 
 Refer to this [documentation page](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/7.1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/#localMethod) on how to add MobileFirst libraries to a native Android app.
 
@@ -183,7 +184,7 @@ packagingOptions {
 ```
 
 
-### Cordova Apps
+### Cordova apps
 
 ####  Step 1: Remove and add the the MobileFirst plugins and the `android` platform.
 
