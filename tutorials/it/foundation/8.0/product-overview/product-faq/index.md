@@ -60,7 +60,7 @@ This topic describes the list of commonly asked questions related to IBM Mobile 
             <div class="panel-body">
                 <p>You can view the Mobile Foundation v8.0 on ICP announcement blog <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/01/31/mfp-on-ibmcloud-private-announce/" target="_blank">here</a>.<br/>
                 Mobile Foundation Developer edition was released on ICP and the announcement can be viewed from <a href="https://mobilefirstplatform.ibmcloud.com/blog/2019/01/29/mfp-community-edition-on-icp/" target="_blank">here</a>.<br/>
-                To get started with Mobile Foundation v8.0 on ICP refer to the <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/" target="_blank">documentation</a>.</p>
+                To get started with Mobile Foundation v8.0 on ICP refer to the <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/" target="_blank">documentation</a>.</p>
             </div>
         </div>      
     </div>

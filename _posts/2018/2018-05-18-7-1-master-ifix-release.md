@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2019-04-05
+date: 2019-05-24
 permalink: '/blog/2018/05/18/7-1-master-ifix-release/'
 version:
 - 7.1
@@ -13,13 +13,46 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *7.1.0.0-MFPF-IF201903291256* has been released for MobileFirst Foundation 7.1, dated **March 29th, 2019**.
+A new iFix *7.1.0.0-MFPF-IF201905221643* has been released for MobileFirst Foundation 7.1, dated **May 22nd, 2019**.
 <br/>
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201905221643" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201905221643">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201905221643" href="#collapse-mfp-ifix-IF201905221643" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201905221643"><b>iFix 7.1.0.0-MFPF-IF201905221643</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201905221643" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201905221643">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>May 22nd, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <blockquote><h4>Features</h4><br/>
+            This iFix includes the support for Android 64 bit apps. This support is added to comply with the requirement wherein starting Aug 1st, 2019, all new apps and app updates that include native code are required to provide 64-bit versions to Android Play Store. For more information on the requirement, read <a href="https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html" target="_blank">this blog</a> by Google. For information on the 64-bit support in MobileFirst Foundation, see <a href="{{site.baseurl}}/blog/2019/05/24/Google-Play-64-bit-requirement/" target="_blank">here</a>. <br/><br/>
+            This iFix also introduces the support for WKWebView for hybrid apps built using Cordova, since Apple has deprecated UIWebView and wants developers to use WKWebView for interactive web content. For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/wkwebview-support-for-ios-apps/" target="_blank">here</a>.
+            </blockquote>
+
+            <b>PH11725</b>  PROVIDE WKWEBVIEW SUPPORT FOR IOS IN MFP 7.1 FOR MOBILEFIRST STUDIO.<br/>
+            <b>PH10641</b>  JSONSTORE SUPPORT FOR 64 BIT ARCHITECTURES.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>     
+
+## Previous iFixes for MobileFirst Foundation 7.1
+
+IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
+*List below includes iFixes released in 2018 only.*
+
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201903291256" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201903291256">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201903291256" href="#collapse-mfp-ifix-IF201903291256" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201903291256"><b>iFix 7.1.0.0-MFPF-IF201903291256</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201903291256" href="#collapse-mfp-ifix-IF201903291256" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201903291256"><b>iFix 7.1.0.0-MFPF-IF201903291256</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201903291256" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201903291256">
@@ -35,13 +68,7 @@ A new iFix *7.1.0.0-MFPF-IF201903291256* has been released for MobileFirst Found
             </div>
         </div>      
     </div>
-</div>     
-
-## Previous iFixes for MobileFirst Foundation 7.1
-
-IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
-*List below includes iFixes released in 2018 only.*
-
+</div>  
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201903191506" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201903191506">
