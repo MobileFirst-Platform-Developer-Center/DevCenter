@@ -16,6 +16,7 @@ additional_authors:
 - Srihari Kulkarni
 ---
 
+> **Note:** 64-bit support is provided for apps developed using MobileFirst Platform Foundation v7.1 and Mobile Foundation v8.0. If you are using MobileFirst Platform Foundation v7.0 or lower, please upgrade to the latest version of Mobile Foundation v8.0.
 
 If you are tuned into the Android Developers Blog, then you would know by now that all apps to be published to the Google Play Store starting 1st Aug, 2019 are [required to publish both 32 and 64 bit versions of any native libraries](https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html).
 
