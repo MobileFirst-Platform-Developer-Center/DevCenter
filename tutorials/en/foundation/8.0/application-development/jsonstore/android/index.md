@@ -31,8 +31,13 @@ downloads:
 2. Add the following to the existing `dependencies` section:
 
 ```
-compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+Note :If you are using [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) feature :
+```
+api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+```
+
 3. Add the following to the "DefaultConfig" section of your build.gradle file.
 ```
   ndk {

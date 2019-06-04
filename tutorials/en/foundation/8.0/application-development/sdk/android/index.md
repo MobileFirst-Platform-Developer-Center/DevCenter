@@ -67,7 +67,7 @@ Create an Android Studio project or use an existing one.
 4. Add the following lines inside the `dependencies` section:
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
    name: 'ibmmobilefirstplatformfoundation',
    version: '8.0.+',
    ext: 'aar',
@@ -77,7 +77,12 @@ Create an Android Studio project or use an existing one.
    Or on a single line:
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+   ```
+  Note :If you are using [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) feature :
+   
+  ```xml
+   api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
    ```
 
 5. In **Android → app → manifests**, open the `AndroidManifest.xml` file. Add the following permissions above the **application** element:
