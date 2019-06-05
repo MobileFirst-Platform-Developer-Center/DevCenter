@@ -33,7 +33,7 @@ downloads:
 ```
 implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
-Note :If you are using [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) feature :
+Note :If you are using [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) feature and would like to refer MobileFirst APIs in feature module:
 ```
 api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
