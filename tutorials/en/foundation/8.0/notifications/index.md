@@ -57,7 +57,7 @@ Unicast notifications, or User Authenticated Notifications are secured with OAut
 
 #### Interactive notifications
 {: #interactive-notifications }
-With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message. Interactive notifications are supported on devices with iOS version 8 onwards and Android v7.0 (API level 24) onwards. If an interactive notification is sent to an iOS or Android device with earlier versions notification actions are not displayed.
+With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message. Currently, interactive notifications are supported on devices with iOS version 8 onwards. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
 
 > Learn how to handle [interactive notifications](handling-push-notifications/interactive).
 

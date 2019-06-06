@@ -10,19 +10,15 @@ weight: 2
 {: #overview }
 With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message.
 
-Interactive notifications are supported on devices with iOS version 8 onwards and Android v7.0 (API level 24) onwards. If an interactive notification is sent to an iOS or Android device with earlier versions notification actions are not displayed.
+Interactive notifications are supported on devices with iOS version 8 and above. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
 
 ## Sending interactive push notification
 {: #sending-interactive-push-notification }
 Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
 
-Interactive Notifications are centered around notification actions and grouping of notification actions into categories.  Firstly, define the various notification actions that can be offered to the application user.  Next, define categories where each category groups one or more notification actions.  Most importantly assign a unique identifier for each category.  Then, to send Interactive Push Notifications to iOS devices specify the category identifier under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**  and / or  **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → Android custom settings**   Based on the category identifier, the notification action buttons are displayed on the mobile device. For example:
+You can set a string to indicate the category of the notification with the notification object, under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. Based on the category value, the notification action buttons are displayed. For example:
 
 ![Setting categories for iOS interactive notifications in the {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
-
-To send interactive notifications to Android devices specify the interactive category identifier under  **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → Android custom settings** .   For example:
-
-![Setting categories for iOS interactive notifications in the {{ site.data.keys.mf_console }}](android-settings-interactive-notifications.png)
 
 ## Handling interactive push notifications in Cordova applications
 {: #handling-interactive-push-notifications-in-cordova-applications }
