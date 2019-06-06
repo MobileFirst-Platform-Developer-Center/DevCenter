@@ -136,20 +136,18 @@ application/json, application/xml, text/xml</p>
     "alert" : "New update available",
   },
   "settings" : {
-    "gcm" : {
+    "apns" : {
       "delayWhileIdle" : true,
       "payload" : "",
       "sound" : "song.mp3",
       "timeToLive" : 100,
-      "interactiveCategory" : "confirmOrder"
     },
-    "apns" : {
+    "gcm" : {
       "badge" : 1,
       "iosActionKey" : "Ok",
       "payload" : "",
       "sound" : "song.mp3",
       "type" : "SILENT",
-      "category" : "confirmOrder"
     },
     "wns" : {
       "badge" : ,
@@ -158,7 +156,7 @@ application/json, application/xml, text/xml</p>
       "raw" : ,
       "tile" : ,
       "toast" : ,
-    }, 
+    },
   },
   "target" : {
     "deviceIds" : "[TestDeviceId,..]",
@@ -174,19 +172,17 @@ application/json, application/xml, text/xml</p>
 &lt;send-message&gt;
   &lt;message alert="New update available"/&gt;
   &lt;settings&gt;
-    &lt;gcm
+    &lt;apns
       delayWhileIdle="true"
       payload=""
       sound="song.mp3"
-      timeToLive="100"
-      interactiveCategory="confirmOrder"/&gt;
-    &lt;apns
+      timeToLive="100"/&gt;
+    &lt;gcm
       badge="1"
       iosActionKey="Ok"
       payload=""
       sound="song.mp3"
-      type="SILENT"
-      interactiveCategory="confirmOrder"/&gt;
+      type="SILENT"/&gt;
     &lt;wns
       badge=""
       cachePolicy="false"
@@ -271,14 +267,6 @@ The payload has the following properties:<dl class="dl parml">
 
 <dd class="dd pd">Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT</dd>
 
-<dt class="dt pt dlterm">category</dt>
-
-<dd class="dd pd"> (Deprecated. Use <i>interactiveCategory</i> for interactive push notification)</dd>
-
-<dt class="dt pt dlterm">interactiveCategory</dt>
-
-<dd class="dd pd">Specify the identifier of the interactive notification action category</dd>
-
 </dl>
 
 <p class="p">The <var class="keyword varname">gcm settings</var> has the following properties:</p>
@@ -299,9 +287,6 @@ The payload has the following properties:<dl class="dl parml">
 
 <dd class="dd pd">The duration (in seconds) that the message is kept on GCM storage if the device is offline. The default value is 4 weeks, and must be set as a JSON number.</dd>
 
-<dt class="dt pt dlterm">interactiveCategory</dt>
-
-<dd class="dd pd">Specify the identifier of the interactive notification action category</dd>
 </dl>
 
 <p class="p">The <var class="keyword varname">wns settings</var> has the following properties:</p>
