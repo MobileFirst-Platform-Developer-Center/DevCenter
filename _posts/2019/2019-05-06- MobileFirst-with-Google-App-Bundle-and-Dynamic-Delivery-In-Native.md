@@ -19,7 +19,7 @@ author:
 
 [Google I/O 2018](https://events.google.com/io2018/) announced a new publishing format for Android Developers - [Android App Bundle](https://developer.android.com/platform/technology/app-bundle). 
 
-App Bundle enables you to deliver optimised App to the end user which is significantly smaller size than using the traditional apk. This technology extends to enable developers to roll out features on demand to users with [Dynamic App Delivery](https://developer.android.com/studio/projects/dynamic-delivery#dynamic_feature_modules).
+App Bundle enables you to deliver an optimised App to the end user which is significantly smaller in size than using the traditional apk. This technology extends to enable developers to roll out features on demand to users with [Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery#dynamic_feature_modules).
 
 
 ###MobileFirst with Dynamic Delivery 
@@ -27,12 +27,11 @@ App Bundle enables you to deliver optimised App to the end user which is signifi
 
 To create your app with Android App Bundle and Dynamic Delivery features follow the blog [Get started with Android App Bundles ](https://developer.android.com/guide/app-bundle/#get_started)
 
-In case if you would like to call MobileFirst APIs in your base application module only, then there is no additional configuration required.
+To call MobileFirst APIs from the base application module of a multi-feature app,no additional configuration is required.
 
-If you would like to call MobileFirst APIs in your feature module then 
-use `api` declaration instead `implementation`.Using `implementation` would restrict using MobileFirst APIs in the same module itself while using `api`  would make MobileFirst APIs available across all modules present in the app including feature modules.For more details read [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+To call MobileFirst APIs in a feature modules, use the `api` declaration instead `implementation`.Using implementation will restrict the access of the MobileFirst APIs within the same module, while using `api`  would make MobileFirst APIs available across all modules present in the app including feature modules.For more details read [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
 
-Do the following changes in  your base app's **build.gradle**: 
+Make the following change in your base app's **build.gradle** file in order to call MobileFirst APIs from an app enabled for Dynamic Delivery
 
 From
 
@@ -41,6 +40,9 @@ implementation ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0
 ```
 ```
 implementation ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0+
+```
+```
+implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
 ```
 
 To 
@@ -53,6 +55,10 @@ api ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0+’
 api ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0+’ 
 ```
 
+```
+api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+```
+
  
-We have validated all the MobileFirst functionalities in both base app and feature module of the app.You can exploit Google App Bundle and Dynamic Delivery features with your MobileFirst native Android apps.Refer the MobileFirst Native Android sample app with App Bundle and Dynamic Delivery features placed [here](https://github.com/MobileFirst-Platform-Developer-Center/mfp-appbundle-sample) .
+We have validated all the MobileFirst functionalities from both base module and feature module of an Android Native app.You can exploit Google App Bundle and Dynamic Delivery features with your MobileFirst native Android apps.Refer the MobileFirst Native Android sample app with App Bundle and Dynamic Delivery features placed [here](https://github.com/MobileFirst-Platform-Developer-Center/mfp-appbundle-sample) .
 
