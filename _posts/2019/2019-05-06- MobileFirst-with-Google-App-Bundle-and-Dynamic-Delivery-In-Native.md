@@ -25,7 +25,7 @@ App Bundle enables you to deliver an optimised app to the end user, this is sign
 ### MobileFirst with Dynamic Delivery 
 ####  Configuration 
 
-To create your app with Android App Bundle and Dynamic Delivery features follow the blog [Get started with Android App Bundles ](https://developer.android.com/guide/app-bundle/#get_started)
+To create your app with Android App Bundle and Dynamic Delivery features follow the blog [Get started with Android App Bundles ](https://developer.android.com/guide/app-bundle/#get_started).
 
 To call MobileFirst APIs from the base application module of a multi-feature app, no additional configuration is required.
 
