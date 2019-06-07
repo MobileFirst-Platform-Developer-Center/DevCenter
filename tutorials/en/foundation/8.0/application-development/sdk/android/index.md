@@ -79,7 +79,7 @@ Create an Android Studio project or use an existing one.
    ```xml
    implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
    ```
-   >**Note**: If you are using [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) feature and would like to call MobileFirst APIs in a feature module then use `api` declaration instead `implementation`.Using `implementation` would restrict using MobileFirst APIs in the same module itself while using `api`  would make MobileFirst APIs available across all modules present in the app including feature modules.For more details read [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+   >**Note**: If you are using [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) feature and would like to call MobileFirst APIs in a feature module then use `api` declaration instead of `implementation`. Using `implementation` would restrict using MobileFirst APIs in the same module itself while using `api` would make MobileFirst APIs available across all modules present in the app including feature modules. For more details read [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
    
   ```xml
    api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
