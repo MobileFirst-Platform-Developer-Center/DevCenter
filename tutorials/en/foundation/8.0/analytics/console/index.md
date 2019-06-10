@@ -84,7 +84,10 @@ For information on configuring log filters, see [Client log searches](log-filter
 
 For more information on sending logs from the client, see [Client log collection](../../application-development/client-side-log-collection/).
 
+### Capture and view In-App User Feedback
+Using the In-App User Feedback feature users of your applications can take screenshots of the the application, annotate them with markers and comments that describe their feedback and opinion about the application.   User feedback capture and sent from mobile devices is aggregated by the Mobile Foundation Analytics Service and presented on the Analytics Console for Application Owners and Developers to review, gather insights and take actions if necessary.  
 
+> Learn more about viewing in [In-App User Feedback](userfeedback/) tutorial.
 
 ## {{ site.data.keys.mf_console_full }}
 Configure and administer the Analytics Server with the {{ site.data.keys.mf_console }}.
