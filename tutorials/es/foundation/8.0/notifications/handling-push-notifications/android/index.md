@@ -138,16 +138,16 @@ Si el ámbito de `push.mobileclient` está correlacionado con la **comprobación
 ### Lado del cliente
 {: #client-side }
 
-|Métodos Java |Descripción |
+| Métodos Java | Descripción |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-|[`initialize(Context context);`](#initialization) |Inicia MFPPush con el contexto proporcionado. |
-|[`isPushSupported();`](#is-push-supported) |Indica si el dispositivo da soporte a notificaciones push. |
-|[`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) |Registra el dispositivo con el servicio de notificaciones push. |
-|[`getTags(MFPPushResponseListener)`](#get-tags) |Recupera las etiquetas disponibles en una instancia del servicio de notificaciones push. |
-|[`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) |Suscribe el dispositivo para las etiquetas especificadas. |
-|[`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) |Recupera todas las etiquetas a las que el dispositivo está actualmente suscrito. |
-|[`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) |Anula la suscripción de una o varias etiquetas. |
-|[`unregisterDevice(MFPPushResponseListener)`](#unregister) |Anula el registro del dispositivo del servicio notificaciones push. |
+| [`initialize(Context context);`](#initialization) | Inicia MFPPush con el contexto proporcionado. |
+| [`isPushSupported();`](#is-push-supported) | Indica si el dispositivo da soporte a notificaciones push. |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registra el dispositivo con el servicio de notificaciones push. |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | Recupera las etiquetas disponibles en una instancia del servicio de notificaciones push. |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Suscribe el dispositivo para las etiquetas especificadas. |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Recupera todas las etiquetas a las que el dispositivo está actualmente suscrito. |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Anula la suscripción de una o varias etiquetas. |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Anula el registro del dispositivo del servicio notificaciones push. |
 
 #### Inicialización
 {: #initialization }
@@ -359,7 +359,8 @@ La configuración de una aplicación en FCM es algo distinta en comparación con
        .....
     }
     
-    apply plugin: 'com.google.gms.google-services'```
+    apply plugin: 'com.google.gms.google-services'
+    ```
 
     
 
@@ -384,7 +385,7 @@ La configuración de una aplicación en FCM es algo distinta en comparación con
             <category android:name="your.application.package.name" />
         </intent-filter>
     </receiver>  
-	
+
     <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
         <intent-filter>
             <action android:name="com.google.android.gms.iid.InstanceID" />

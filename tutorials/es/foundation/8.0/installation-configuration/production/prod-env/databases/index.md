@@ -230,7 +230,7 @@ Ejecute DB2 con los mandatos siguientes con el usuario (mfpuser):
 ```sql
 db2 CONNECT TO MFPDATA
 db2 SET CURRENT SCHEMA = 'MFPSCM'
-db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-configservice-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t
@@ -471,7 +471,7 @@ Utilice las tareas Ant que se proporcionan con la instalación de {{ site.data.k
 
 Cuando especifique el nombre de usuario de Oracle en el archivo Ant, debe estar en mayúsculas. Si tiene un usuario de base de datos Oracle (FOO), pero especifica un nombre de usuario con minúsculas (foo), la tarea Ant **configureDatabase** lo considerará como otro usuario. A diferencia de otras herramientas para la base de datos Oracle, la tarea Ant **configureDatabase** protegerá el nombre de usuario contra la conversión automática a mayúscula.
 
-La tarea Ant **configureDatabase** utiliza un nombre de servicio o Identificador de sistema (SID) Oracle para identificar una base de datos. Sin embargo, si desea realizar la conexión a Oracle RAC, debe especificar un URL de JDBC complejo. En este caso, el elemento **oracle** que se encuentra de la tarea Ant **configureDatabase** debe utilizar los atributos (**url**, **usuario** y **contraseña**) en lugar de estos atributos (**base de datos**, **servidor**, **puerto**, **usuario** y **contraseña**). Para obtener más información, consulte la tabla de [Referencia de tarea Ant **configuredatabase**](../../installation-reference/#ant-configuredatabase-task-reference). Los archivos Ant de ejemplo de **mfp\_install\_dir/MobileFirstServer/configurations-samples** utilizan los atributos **base de datos**, **servidor**, **puerto**, **usuario** y **contraseña** del elemento **oracle**. Deben modificarse si necesita conectarse a Oracle con un URL de JDBC.
+La tarea Ant **configureDatabase** utiliza un nombre de servicio o Identificador de sistema (SID) Oracle para identificar una base de datos. Sin embargo, si desea realizar la conexión a Oracle RAC, debe especificar un URL de JDBC complejo. En este caso, el elemento **oracle** que se encuentra de la tarea Ant **configureDatabase** debe utilizar los atributos (**url**, **usuario** y **contraseña**) en lugar de estos atributos (**base de datos**, **servidor**, **puerto**, **usuario** y **contraseña**). Para obtener más información, consulte la tabla de [Referencia de tareas Ant **configuredatabase**](../../installation-reference/#ant-configuredatabase-task-reference). Los archivos Ant de ejemplo de **mfp\_install\_dir/MobileFirstServer/configurations-samples** utilizan los atributos **base de datos**, **servidor**, **puerto**, **usuario** y **contraseña** del elemento **oracle**. Deben modificarse si necesita conectarse a Oracle con un URL de JDBC.
 
 Para crear las tablas de base de datos en una base de datos que ya existe, consulte [Crear las tablas de base de datos con tareas Ant](#create-the-database-tables-with-ant-tasks).
 

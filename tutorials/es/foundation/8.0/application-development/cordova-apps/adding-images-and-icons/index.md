@@ -8,48 +8,32 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Si utilizó el plugin **cordova-plugin-mfp** y no utilizó la plantilla de {{ site.data.keys.product_adj }} o añadió el plugin **cordova-plugin-splashscreen** de Cordova en su aplicación, puede sustituir las imágenes de iconos y pantallas de inicio que {{ site.data.keys.product_full }} proporciona con sus propias imágenes.
-Si ha utilizado la plantilla, puede sustituir las imágenes iniciales que utiliza la aplicación Cordova, puesto que son archivos que se visualizan.
-
+Si utilizó el plugin **cordova-plugin-mfp** y no utilizó la plantilla de {{ site.data.keys.product_adj }} o añadió el plugin **cordova-plugin-splashscreen** de Cordova en su aplicación, puede sustituir las imágenes de iconos y pantallas de inicio que {{ site.data.keys.product_full }} proporciona con sus propias imágenes. Si ha utilizado la plantilla, puede sustituir las imágenes iniciales que utiliza la aplicación Cordova, puesto que son archivos que se visualizan.
 
 Debe crear una nueva carpeta para alojar las imágenes de inicio y los iconos, y modificar el archivo de configuración **config.xml** para que apunte a ellos.
 
-
-1. Cree una carpeta dentro del directorio raíz de su proyecto Cordova.
-La carpeta puede estar en cualquier nivel de subcarpeta anidado siempre que se encuentre bajo la raíz del proyecto Cordova.
-
+1. Cree una carpeta dentro del directorio raíz de su proyecto Cordova. La carpeta puede estar en cualquier nivel de subcarpeta anidado siempre que se encuentre bajo la raíz del proyecto Cordova.
 2. Coloque su imagen inicial e imágenes de icono propias en esta carpeta.
-
 3. Actualice el archivo de configuración **config.xml** para que apunte a sus archivos personalizados.
-
 
 ### Android
 {: #android }
 Si tiene una aplicación Android, los requisitos para identificar las imágenes iniciales dependen de si la aplicación se creó con o sin la plantilla de {{ site.data.keys.product_adj }}.
 
-
 #### Pantallas iniciales
 {: #splash-screens }
-Si *no* utilizó la plantilla {{ site.data.keys.product_adj }} al crear la aplicación, las imágenes de inicio que se visualizan son aquellas que se recuperan desde la ubicación de imágenes de {{ site.data.keys.product_adj }}.
-Los nombres de archivo y las vías de acceso de archivo de destino deben permanecer exactamente igual que en el ejemplo cuando no utilice la plantilla.
-Cambie los nombres de archivo y las vías de acceso de origen (`src`) con las vías de acceso de los archivos que desea visualizar.
-Añada líneas similares a las del ejemplo siguiente entre las etiquetas
+Si *no* utilizó la plantilla {{ site.data.keys.product_adj }} al crear la aplicación, las imágenes de inicio que se visualizan son aquellas que se recuperan desde la ubicación de imágenes de {{ site.data.keys.product_adj }}. Los nombres de archivo y las vías de acceso de archivo de destino deben permanecer exactamente igual que en el ejemplo cuando no utilice la plantilla. Cambie los nombres de archivo y las vías de acceso de origen (`src`) con las vías de acceso de los archivos que desea visualizar. Añada líneas similares a las del ejemplo siguiente entre las etiquetas
 `<platform name="android">` y `</platform>` en el archivo **config.xml**:
-
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
 <update src="res/screen/android/splash-ldpi.9.png" target="res/drawable-ldpi/splash.9.png" />
 <update src="res/screen/android/splash-mdpi.9.png" target="res/drawable-mdpi/splash.9.png" />
 <update src="res/screen/android/splash-xhdpi.9.png" target="res/drawable-xhdpi/splash.9.png" />
-<update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
+<update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" />
 ```
 
-Si utilizó la plantilla de {{ site.data.keys.product_adj }} para crear su aplicación, debe actualizar las imágenes de bienvenida que Cordova utiliza.
-Cambie los nombres de archivo y las vías de acceso de origen (src) con las vías de acceso de los archivos que desea visualizar.
-
-Añada líneas similares a las del siguiente ejemplo entre las etiquetas <platform name="android"> y </platform> en el archivo config.xml:
-
+Si utilizó la plantilla de {{ site.data.keys.product_adj }} para crear su aplicación, debe actualizar las imágenes de bienvenida que Cordova utiliza. Cambie los nombres de archivo y las vías de acceso de origen (src) con las vías de acceso de los archivos que desea visualizar. Añada líneas similares a las del siguiente ejemplo entre las etiquetas <platform name="android"> y </platform> en el archivo config.xml:
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -64,8 +48,7 @@ Añada líneas similares a las del siguiente ejemplo entre las etiquetas <platfo
 
 #### Iconos
 {: #icons }
-Los nombres de archivo de los archivos de icono deben ser los mismos que las entradas en el siguiente ejemplo. Las vías de acceso pueden ser cualesquiera.
-El nombre de cada imagen corresponde a su tamaño.
+Los nombres de archivo de los archivos de icono deben ser los mismos que las entradas en el siguiente ejemplo. Las vías de acceso pueden ser cualesquiera. El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <icon src="res/icon/android/icon-96-xhdpi.png" />
@@ -79,12 +62,11 @@ El nombre de cada imagen corresponde a su tamaño.
 ### iOS
 {: #ios }
 Si tiene una aplicación iOS, añada líneas similares a las del ejemplo siguiente entre las etiquetas
-`<platform name="ios">` y `</platform>`: 
+`<platform name="ios">` y `</platform>`:
 
 #### Pantallas iniciales
 {: #splash-screens-ios }
-Los nombres de archivo y las vías de acceso de los archivos de pantallas iniciales deben ser los mismos que los nombres en el siguiente ejemplo.
-El nombre de cada imagen corresponde a su tamaño.
+Los nombres de archivo y las vías de acceso de los archivos de pantallas iniciales deben ser los mismos que los nombres en el siguiente ejemplo. El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <splash height="480" src="res/screen/ios/Default˜iphone.png" width="320" />
@@ -100,9 +82,7 @@ El nombre de cada imagen corresponde a su tamaño.
 
 #### Iconos
 {: #icons-ios}
-Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo.
-Las vías de acceso pueden ser cualesquiera.
-El nombre de cada imagen corresponde a su tamaño.
+Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo. Las vías de acceso pueden ser cualesquiera. El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -146,7 +126,8 @@ A menos que lo requiera la legislación vigente o se acuerde por escrito,
 el software distribuido bajo la licencia se distribuye "TAL CUAL", SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ya sean expresas o implícitas.
    Consulte la Licencia para
 ver los permisos aplicables específicos del idioma y las limitaciones
-bajo la Licencia.*/
+bajo la Licencia.
+   */
   /*
    Con licencia para Apache Software Foundation (ASF) de conformidad con uno o
    más acuerdos de licencia de colaborador.  Consulte el archivo de AVISO
@@ -178,6 +159,7 @@ bajo la Licencia.*/
       }
       // Se ocultará la pantalla automáticamente de forma predeterminada cuando se complete el entorno Worklight JavaScript.
       // Para sustituir este comportamiento, establezca la propiedad autoHideSplash en initOptions.js a falso y utilice la API WL.App.hideSplashScreen().
+
       self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
      // UIViewController* rootViewController = self.window.rootViewController;
@@ -284,12 +266,11 @@ que se realicen estos cambios cómo y cuándo se necesitan.
 
 ### Windows
 {: #windows }
-Si tiene una aplicación Windows, añada líneas similares a las del ejemplo siguiente entre las etiquetas `<platform name="windows">` y `</platform>`: 
+Si tiene una aplicación Windows, añada líneas similares a las del ejemplo siguiente entre las etiquetas `<platform name="windows">` y `</platform>`:
 
 #### Pantallas iniciales
 {: #splash-screens-windows }
-Los nombres de archivo y las vías de acceso de los archivos de pantallas iniciales deben ser los mismos que los nombres en el siguiente ejemplo.
-El nombre de cada imagen corresponde a su tamaño.
+Los nombres de archivo y las vías de acceso de los archivos de pantallas iniciales deben ser los mismos que los nombres en el siguiente ejemplo. El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <splash src="res/screen/windows/SplashScreen.scale-100.png" width="620" height="300"/>
@@ -300,9 +281,7 @@ El nombre de cada imagen corresponde a su tamaño.
 
 #### Iconos
 {: #icons-windows }
-Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo.
-Las vías de acceso pueden ser cualesquiera.
-El nombre de cada imagen corresponde a su tamaño.
+Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo. Las vías de acceso pueden ser cualesquiera. El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <icon src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" height="30" />

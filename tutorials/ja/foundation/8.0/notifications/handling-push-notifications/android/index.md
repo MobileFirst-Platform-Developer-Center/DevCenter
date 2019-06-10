@@ -53,7 +53,7 @@ weight: 6
             ext: 'aar',
             transitive: true
    ```
-    
+
    または、以下のように 1 行にします。
 
    ```xml
@@ -73,7 +73,7 @@ weight: 6
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
       ```
-      
+
 	* 以下を `application` タグに追加します。
 
 	  ```xml
@@ -105,7 +105,7 @@ weight: 6
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-      
+
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -113,14 +113,14 @@ weight: 6
 	  > **注:** 必ず、ご使用のアプリケーションの実際のパッケージ名で `your.application.package.name` を置き換えてください。
 
     * 以下の `intent-filter` をアプリケーションのアクティビティーに追加します。
-      
+
       ```xml
       <intent-filter>
           <action android:name="your.application.package.name.IBMPushNotification" />
           <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
       ```
-      
+
 ## 通知 API
 {: #notifications-api }
 ### MFPPush インスタンス
@@ -335,38 +335,41 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ## Android 上のクライアント・アプリケーションの FCM へのマイグレーション
 {: #migrate-to-fcm }
 
-Google Cloud Messaging (GCM) は[非推奨](https://developers.google.com/cloud-messaging/faq)となっており、Firebase Cloud Messaging (FCM) と統合されています。Google は、2019 年 4 月までにほとんどの GCM サービスをオフにします。
+Google Cloud Messaging (GCM) は[非推奨](https://developers.google.com/cloud-messaging/faq)となっており、Firebase Cloud Messaging (FCM) と統合されています。 Google は、2019 年 4 月までにほとんどの GCM サービスをオフにします。
 
 GCM プロジェクトを使用する場合は、[Android 上の GCM クライアント・アプリケーションを FCM にマイグレーション](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)してください。
 
-現時点では、GCM サービスを使用する既存のアプリケーションは引き続きそのまま機能します。プッシュ通知サービスは FCM エンドポイントを使用するように更新されているため、将来はすべての新しいアプリケーションが FCM を使用する必要があります。
+現時点では、GCM サービスを使用する既存のアプリケーションは引き続きそのまま機能します。 プッシュ通知サービスは FCM エンドポイントを使用するように更新されているため、将来はすべての新しいアプリケーションが FCM を使用する必要があります。
 
 **注**: FCM へのマイグレーション後に、古い GCM 資格情報ではなく FCM 資格情報を使用するようにプロジェクトを更新してください。
 
 ### FCM プロジェクトのセットアップ
 
-FCM でのアプリケーションのセットアップは、古い GCM モデルと比較すると少し異なります。 
+FCM でのアプリケーションのセットアップは、古い GCM モデルと比較すると少し異なります。
 
- 1. 通知プロバイダーの資格情報を取得して、FCM プロジェクトを作成し、同じものを Android アプリケーションに追加します。アプリケーションのパッケージ名を `com.ibm.mobilefirstplatform.clientsdk.android.push` として含めます。`google-services.json` ファイルの生成を終了したステップまでは、[ここにある資料](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)を参照してください。
+ 1. 通知プロバイダーの資格情報を取得して、FCM プロジェクトを作成し、同じものを Android アプリケーションに追加します。 アプリケーションのパッケージ名を `com.ibm.mobilefirstplatform.clientsdk.android.push` として含めます。 `google-services.json` ファイルの生成を終了したステップまでは、[ここにある資料](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android)を参照してください。
 
- 2. Gradle ファイルを構成します。アプリケーションの `build.gradle` ファイルに以下のものを追加します。 
+ 2. Gradle ファイルを構成します。 アプリケーションの `build.gradle` ファイルに以下のものを追加します。
 
     ```xml
     dependencies {
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
-
     }
-    ```
-	
+    
     apply plugin: 'com.google.gms.google-services'
-    
-    - `buildscript` ファイルに以下の依存関係を追加します。
-    
-    `classpath 'com.google.gms:google-services:3.0.0'`
+    ```
 
- 3. AndroidManifest ファイルを構成します。`Android manifest.xml` では以下の変更が必要です。 
+    
+
+    - ルートの build.gradle の `buildscript` セクションに以下の依存関係を追加します。
+
+      `classpath 'com.google.gms:google-services:3.0.0'`
+
+    - 以下の GCM プラグインを build.gradle ファイルから除去します `compile  com.google.android.gms:play-services-gcm:+`
+
+ 3. AndroidManifest ファイルを構成します。 `AndroidManifest.xml`>で以下の変更が必要です。
 
 **以下の項目を削除します。**
 
@@ -380,8 +383,8 @@ FCM でのアプリケーションのセットアップは、古い GCM モデ�
             <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
             <category android:name="your.application.package.name" />
         </intent-filter>
-    </receiver>
-	
+    </receiver>  
+
     <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
         <intent-filter>
             <action android:name="com.google.android.gms.iid.InstanceID" />
@@ -422,11 +425,7 @@ FCM でのアプリケーションのセットアップは、古い GCM モデ�
             </intent-filter>
     </service>
 ```
-	
- 4. Android Studio でアプリケーションを開きます。**ステップ 1** で作成した `google-services.json` ファイルをアプリケーション・ディレクトリー内にコピーします。`google-service.json` ファイルには、追加したパッケージ名が含まれていることに注意してください。		
-		
- 5. SDK をコンパイルします。アプリケーションをビルドします。
 
+ 4. Android Studio でアプリケーションを開きます。 **ステップ 1** で作成した `google-services.json` ファイルをアプリケーション・ディレクトリー内にコピーします。 `google-service.json` ファイルには、追加したパッケージ名が含まれていることに注意してください。		
 
-
-
+ 5. SDK をコンパイルします。 アプリケーションをビルドします。

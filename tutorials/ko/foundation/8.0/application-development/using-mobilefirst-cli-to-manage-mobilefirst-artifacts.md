@@ -20,7 +20,7 @@ relevantTo: [ios,android,windows,javascript]
 
 #### 다음으로 이동
 {: #jump-to }
-* [전제조건](#prerequisites)
+* [선행 조건](#prerequisites)
 * [{{ site.data.keys.mf_cli }} 설치](#installing-the-mobilefirst-cli)
 * [CLI 명령 목록](#list-of-cli-commands)
 * [대화식 모드 및 직접 모드](#interactive-and-direct-modes)
@@ -30,7 +30,7 @@ relevantTo: [ios,android,windows,javascript]
 * [유용한 명령](#helpful-commands)
 * [명령행 인터페이스 업데이트 및 설치 제거](#update-and-uninstall-the-command-line-interface)
 
-## 전제조건
+## 선행 조건
 {: #prerequisites }
 {{ site.data.keys.mf_cli }}는 [NPM 레지스트리](https://www.npmjs.com/)에서 NPM 패키지로 사용 가능합니다.  
 
@@ -94,7 +94,7 @@ DESCRIPTION
 ## CLI 명령 목록
 {: #list-of-cli-commands }
 
-| 명령 접두부                                                | 명령 조치                               | 설명                                                             |
+| 명령 접두부                                                | 명령 조치                               |설명                                                             |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
 | `mfpdev app`	                                                | register                                     | {{ site.data.keys.mf_server }}에 앱을 등록합니다.                           |
 |                                                               | config                                       | 앱에 사용할 백엔드 서버 및 런타임을 지정할 수 있습니다. 또한 Cordova 앱의 경우 여러 가지 추가 측면(예: 시스템 메시지의 기본 언어 및 체크섬 보안 검사 수행 여부)을 구성할 수 있습니다. 그 외 Cordova 앱에 대한 다른 구성 매개변수가 포함되어 있습니다.                                                                                                                                                |

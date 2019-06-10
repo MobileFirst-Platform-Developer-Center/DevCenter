@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Authentifizierung einrichten
+title: Authentifizierung verstärken
 breadcrumb_title: Step Up Authentication
 relevantTo: [android,ios,windows,javascript]
 weight: 5

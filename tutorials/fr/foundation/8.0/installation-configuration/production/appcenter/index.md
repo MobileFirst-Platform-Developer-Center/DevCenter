@@ -1903,7 +1903,7 @@ Pour que vous puissiez définir des entrées JNDI, la fonction suivante doit êt
 <feature>jndi-1.0</feature>
 ```
 
-Ajoutez une entrée pour chaque propriété dans la section `<server>` de chaque fichier **server.xml**. Sa syntaxe doit être la suivante :
+Ajoutez une entrée pour chaque propriété dans la section `<server>` du fichier **server.xml**. Sa syntaxe doit être la suivante :
 
 ```xml
 <jndiEntry jndiName="nom_propriété_JNDI" value="valeur_propriété"/>
@@ -2297,7 +2297,7 @@ Editez le fichier **server.xml**. Pour que vous puissiez définir des entrées J
 <feature>jndi-1.0</feature>
 ```
 
-Ajoutez une entrée pour chaque propriété dans la section `<server>` de chaque fichier **server.xml**. Sa syntaxe doit être la suivante :
+Ajoutez une entrée pour chaque propriété dans la section `<server>` du fichier **server.xml**. Sa syntaxe doit être la suivante :
 
 ```xml
 <jndiEntry jndiName="nom_propriété_JNDI" value="valeur_propriété"/>

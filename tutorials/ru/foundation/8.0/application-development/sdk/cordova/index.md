@@ -23,9 +23,15 @@ Available plug-ins are:
 {: #support-levels }
 The Cordova platform versions supported by the MobileFirst plug-ins, are:
 
-* cordova-ios: **>= 4.1.1 and < 5.0**
-* cordova-android: **>= 6.1.2 and <= 8.0**
-* cordova-windows: **>= 4.3.2 and < 7.0**
+* cordova-ios: **>= 4.1.1 and < 6.0**
+* cordova-android: **>= 6.1.2 and < 9.0**
+* cordova-windows: **>= 4.3.2 and < 8.0**
+
+>**Note:** The **cordova-windows** latest published version has a bug, which will throw an exception during app launch. Apache Cordova has fixed the issue in the development repository but it is not published yet. It is recommended to use the *cordova-windows* version from the master repository that contains the fix. Below is the command that can be used to add the *cordova-windows* platform to have the fix in place.
+
+```bash
+cordova platform add https://github.com/apache/cordova-windows
+```
 
 #### Jump to:
 {: #jump-to }
@@ -69,7 +75,7 @@ The cordova-plugin-mfp-encrypt-utils plug-in provides iOS OpenSSL frameworks for
 
 **Prerequisites:**
 
-- [Apache Cordova CLI(>=6.x and <9.0)](https://www.npmjs.com/package/cordova) and {{ site.data.keys.mf_cli }} installed on the developer workstation.
+- [Apache Cordova CLI(>=6.x and <10.0)](https://www.npmjs.com/package/cordova) and {{ site.data.keys.mf_cli }} installed on the developer workstation.
 - A local or remote instance of {{ site.data.keys.mf_server }} is running.
 - Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Cordova development environment](../../../installation-configuration/development/cordova) tutorials.
 - For cordova-windows, a version of Visual C++ that is compatible to the Visual Studio and .NET versions installed in the machine have to be installed.

@@ -28,7 +28,7 @@ Entretanto, se você decidir instalar várias instâncias do tempo de execução
 > * Faça o download a imagem de ativação de uso restrito direetamente do [website do IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
 > * Aplicar o arquivo de licença de ativação de uso restrito **db2xxxx.lic** usando o comando **db2licm**
 >
-> Saiba mais no [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)
+> Saiba mais no [IBM Knowledge Center do DB2](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)
 
 #### Ir para
 {: #jump-to }
@@ -234,7 +234,7 @@ Execute o DB2 com os seguintes comandos com o usuário (mfpuser):
 ```sql
 db2 CONNECT TO MFPDATA
 db2 SET CURRENT SCHEMA = 'MFPSCM'
-db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-configservice-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t

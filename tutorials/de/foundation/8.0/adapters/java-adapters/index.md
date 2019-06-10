@@ -94,6 +94,8 @@ und später zur Laufzeit weiter angepasst werden.
 sich **unter** dem Element `JAXRSApplicationClass` befinden.   
 Im obigen Beispiel wurden die Verbindungseinstellungen definiert und Standardwerte für die Einstellungen festgelegt, sodass sie später in der Klasse AdapterApplication verwendet werden können.
 
+
+
 Das Element `<property>` wird mit folgenden Attributen verwendet:
 
 - **name**: Name der Eigenschaft, wie er in der Konfigurationsklasse definiert ist

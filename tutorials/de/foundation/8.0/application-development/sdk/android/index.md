@@ -203,13 +203,13 @@ Diese Datei befindet sich im Ordner **./app/src/main/assets/** des Android-Studi
 enthält die clientseitigen Eigenschaften für die Registrierung Ihrer
 Android-App bei {{ site.data.keys.mf_server }}. 
 
-| Eigenschaft | Beschreibung | Beispielwerte |
+| Eigenschaft |Beschreibung |Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} | http oder https |
-| wlServerHost | Hostname von {{ site.data.keys.mf_server }} | 192.168.1.63 |
-| wlServerPort | Port von {{ site.data.keys.mf_server }} | 9080 |
-| wlServerContext | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/ |
-| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest | en |
+|wlServerProtocol |Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} |http oder https |
+|wlServerHost |Hostname von {{ site.data.keys.mf_server }} |192.168.1.63 |
+|wlServerPort |Port von {{ site.data.keys.mf_server }} |9080 |
+|wlServerContext |Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} |/mfp/ |
+|languagePreferences |Legt die Standardsprache für Client-SDK-Systemnachrichten fest |en |
 
 ## Unterstützung für Javadoc und den Android-Service
 {: #support-for-javadoc-and-android-service }

@@ -55,7 +55,7 @@ Application Center 콘솔에서 사용자가 전송한 모바일 애플리케이
 3. 다음 URL `http://server/appcenterconsole`을 입력하십시오.
 4. 여기서 **server**는 Application Center가 설치되어 있는 서버의 주소 및 포트입니다. `http://localhost:9080/appcenterconsole`
 
-Application Center에 로그인하십시오. 시스템 관리자에게 문의하여 Application Center 콘솔에 로그인할 수 있도록 신임 정보를 얻으십시오.
+Application Center에 로그인하십시오. 시스템 관리자에게 문의하여 Application Center 콘솔에 로그인할 수 있도록 인증 정보를 얻으십시오.
 
 ![Application Center 콘솔 로그인](ac_startconsole.jpg)
 
@@ -75,7 +75,7 @@ Application Center가 Apache Tomcat에서 실행 중인 경우 잘못된 사용�
 
 동작은 j_security_check 서블릿의 Apache Tomcat에 의한 관리로 링크됩니다. 이 동작은 Apache Tomcat에 특정하며 WebSphere Application Server 프로파일에서는 발생하지 않습니다.
 
-임시 해결책으로는 로그인에 실패한 후 브라우저의 새로 고치기 단추를 클릭하여 웹 페이지를 새로 고치는 것입니다. 그런 다음, 올바른 신임 정보를 입력하십시오.
+임시 해결책으로는 로그인에 실패한 후 브라우저의 새로 고치기 단추를 클릭하여 웹 페이지를 새로 고치는 것입니다. 그런 다음, 올바른 인증 정보를 입력하십시오.
 
 ## Safari 브라우저의 손상된 로그인 페이지 문제점 해결
 {: #troubleshooting-a-corrupted-login-page-in-safari-browsers }
@@ -85,7 +85,7 @@ Application Center 콘솔을 Safari 브라우저에서 여는 경우 콘솔에�
 
 동작은 Safari 브라우저에서 캐싱 문제점으로 링크됩니다.
 
-임시 해결책은 신임 정보가 자동 완성되거나 입력하지 않고 로그인 페이지가 표시되는 경우 강제 다시 로드를 트리거하는 것입니다. 다음은 강제 다시 로드를 트리거하는 방법입니다.
+임시 해결책은 인증 정보가 자동 완성되거나 입력하지 않고 로그인 페이지가 표시되는 경우 강제 다시 로드를 트리거하는 것입니다. 다음은 강제 다시 로드를 트리거하는 방법입니다.
 
 * Mac 컴퓨터에서, Shift + **새로 고치기** 단추를 누르십시오.
 * iPad 또는 iPhone 디바이스의 경우: 새로 고치기 단추를 두 번 클릭하거나 Safari 브라우저를 닫아 캐시를 지우십시오. 홈 단추를 두 번 클릭한 후 Safari를 쓸어넘기십시오.
@@ -154,20 +154,20 @@ Application Center 콘솔을 사용하여 서버의 저장소에 애플리케이
 
 ## 공용 앱 스토어에서 애플리케이션 추가
 {: #adding-an-application-from-a-public-app-store }
-Application Center는 Google Play 또는 Apple iTunes와 같은 써드파티 애플리케이션 스토어에 저장되는 카탈로그 애플리케이션에 대한 추가 기능을 지원합니다.
+Application Center는 Google Play 또는 Apple iTunes와 같은 서드파티 애플리케이션 스토어에 저장되는 카탈로그 애플리케이션에 대한 추가 기능을 지원합니다.
 
-써드파티 앱 스토어의 애플리케이션은 다른 애플리케이션처럼 Application Center 카탈로그에 표시되지만, 사용자는 애플리케이션을 설치하기 위해 해당하는 공용 앱 스토어로 경로가 지정됩니다. 사용자 기업 내에서 작성한 애플리케이션을 추가하는 장소와 동일하게 콘솔의 공용 앱 스토어로부터 애플리케이션을 추가합니다. [모바일 애플리케이션 추가](#adding-a-mobile-application)를 참조하십시오.
+서드파티 앱 스토어의 애플리케이션은 다른 애플리케이션처럼 Application Center 카탈로그에 표시되지만, 사용자는 애플리케이션을 설치하기 위해 해당하는 공용 앱 스토어로 경로가 지정됩니다. 사용자 기업 내에서 작성한 애플리케이션을 추가하는 장소와 동일하게 콘솔의 공용 앱 스토어로부터 애플리케이션을 추가합니다. [모바일 애플리케이션 추가](#adding-a-mobile-application)를 참조하십시오.
 
 > **참고:** 현재 Application Center는 Google Play 및 Apple iTunes만 지원합니다. Windows Phone 스토어 및 Windows 스토어는 아직 지원되지 않습니다.
 
-애플리케이션 실행 파일 대신에 애플리케이션이 저장되는 써드파티 애플리케이션 스토어에 URL을 제공해야 합니다. 콘솔은 올바른 애플리케이션 링크를 쉽게 찾을 수 있도록 지원된 써드파티 애플리케이션 스토어 웹 사이트에 대한 직접 링크를 **애플리케이션 추가** 페이지에 제공합니다.
+애플리케이션 실행 파일 대신에 애플리케이션이 저장되는 서드파티 애플리케이션 스토어에 URL을 제공해야 합니다. 콘솔은 올바른 애플리케이션 링크를 쉽게 찾을 수 있도록 지원된 서드파티 애플리케이션 스토어 웹 사이트에 대한 직접 링크를 **애플리케이션 추가** 페이지에 제공합니다.
 
 Google Play 스토어 주소는 [https://play.google.com/store/apps](https://play.google.com/store/apps)입니다.
 
 Apple iTunes 스토어 주소는 [https://linkmaker.itunes.apple.com/](https://linkmaker.itunes.apple.com/)입니다. 노래, 팟캐스트 및 Apple에서 지원하는 다른 항목을 포함하여 모든 종류의 iTunes 항목에 대해 이 사이트를 검색할 수 있기 때문에 iTunes 사이트 대신 링크 메이커 사이트를 사용하십시오. iOS 애플리케이션 선택만으로 애플리케이션 링크를 작성하기 위한 호환 가능한 링크가 제공됩니다.
 
 1. 찾아보려는 공용 앱 스토어의 URL을 클릭하십시오.
-2. 써드파티 앱 스토어에서 애플리케이션의 URL을 Application Center 콘솔의 **애플리케이션 추가** 페이지에 있는 **애플리케이션 URL** 텍스트 필드에 복사하십시오.
+2. 서드파티 앱 스토어에서 애플리케이션의 URL을 Application Center 콘솔의 **애플리케이션 추가** 페이지에 있는 **애플리케이션 URL** 텍스트 필드에 복사하십시오.
     * **Google Play:**
         * 스토어에서 애플리케이션을 선택하십시오.
         * 애플리케이션의 세부사항 페이지를 클릭하십시오.
@@ -470,7 +470,7 @@ Application Center 모바일 클라이언트 및 해당 특성에서 Application
 **제조업체**  
 디바이스의 제조업체.
 
-**모델**  
+**모델 **  
 모델 ID.
 
 **운영 체제**  

@@ -231,10 +231,10 @@ Exécutez DB2 à l'aide des commandes suivantes avec l'utilisateur (utilisateurm
 ```sql
 db2 CONNECT TO MFPDATA
 db2 SET CURRENT SCHEMA = 'MFPSCM'
-db2 -vf rép_install_mfp/MobileFirstServer/databases/create-mfp-admin-db2.sql
-db2 -vf rép_install_mfp/MobileFirstServer/databases/create-configservice-db2.sql -t
-db2 -vf rép_install_mfp/MobileFirstServer/databases/create-runtime-db2.sql -t
-db2 -vf rép_install_mfp/PushService/databases/create-push-db2.sql -t
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql -t
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-configservice-db2.sql -t
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
+db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t
 ```
 
 Si les tables sont créées par utilisateurmfp, cet utilisateur dispose automatiquement des droits relatifs aux tables et peut les utiliser à l'exécution. Pour restreindre les droits de l'utilisateur d'exécution comme décrit dans [Utilisateurs de base de données et droits](#database-users-and-privileges) ou définir un contrôle plus précis des droits, voir la documentation de DB2.

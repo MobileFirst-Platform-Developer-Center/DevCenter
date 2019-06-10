@@ -26,6 +26,9 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
     * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
     * [REST APIs](#rest-apis)
     * [Customizing Notifications](#customizing-notifications)
+* [HTTP/2 Support for APNs Push Notifications](#http2-support-for-apns-push-notifications)
+    * [Enabling HTTP/2](#enabling-http2)
+    * [Proxy Support for HTTP/2](#proxy-support-for-http2)
 * [Proxy Support](#proxy-support)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -404,6 +407,32 @@ In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tag
 * Notification sound, custom payload, action key title, notification type and badge number.
 
 ![customizing push notifications](customizing-push-notifications.png)
+
+## HTTP/2 Support for APNs Push Notifications
+{: #http2-support-for-apns-push-notifications}
+
+Apple Push Notification service (APNs) supports a new API based on HTTP/2 network protocol. Support for HTTP/2 provides many  benefits, including those listed below:
+
+* Message length increased from 2 KB to 4 KB, which enables to add extra content to notifications.
+* Eliminates the need for multiple connections between client and server, this improves the throughput.
+* Universal Push Notification Client SSL Certificate support.
+
+>Push Notifications in MobileFirst now supports the HTTP/2 based APNs Push Notifications along with the legacy TCP Socket based notifications.
+
+### Enabling HTTP/2
+{: #enabling-http2}
+
+HTTP/2 based notifications can be enabled using a JNDI Property.
+```xml
+<jndiEntry jndiName="imfpush/mfp.push.apns.http2.enabled" value= "true"/>
+```
+
+>**Note:** If the above JNDI property is added, legacy TCP Socket based notifications will not be used and only the HTTP/2 based notifications will be enabled.
+
+### Proxy Support for HTTP/2
+{: #proxy-support-for-http2}
+
+HTTP/2 based notifications can be sent via a HTTP Proxy. To enable routing of the notifications via a proxy, see [here](#proxy-support).
 
 ## Proxy Support
 {: #proxy-support }

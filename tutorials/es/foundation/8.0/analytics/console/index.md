@@ -114,13 +114,13 @@ De forma predeterminada está habilitada la recopilación de datos para el anál
 El contenido en {{ site.data.keys.mf_analytics_console_short }} viene restringido por roles de seguridad definidos de forma previa.  
 {{ site.data.keys.mf_analytics_console_short }} visualiza contenidos diferentes en función del rol de seguridad del usuario que ha iniciado la sesión. En la tabla siguiente se muestran los roles de seguridad y su acceso a {{ site.data.keys.mf_analytics_console_short }}.
 
-|Rol           |Nombre de rol                |Acceso de visualización                                                     |Acceso de edición  |
+| Rol           | Nombre de rol                | Acceso de visualización                                                     | Acceso de edición  |
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-|Administrator  |analytics_administrator  |Todo.	                                                     |Todo.     |
-|Infrastructure |analytics_infrastructure	|Todo.	                                                     |Todo.     |
-|Developer      |analytics_developer	    |Todo excepto páginas del administrador.		             |Todo.     |
-|Support        |analytics_support        |Todo excepto páginas del administrador.		             |Todo.     |
-|Business       |analytics_business       |Todo excepto páginas del administrador y de infraestructura. |Todo.     |
+| Administrator  | analytics_administrator  | Todo.	                                                     | Todo.     |
+| Infrastructure | analytics_infrastructure	| Todo.	                                                     | Todo.     |
+| Developer      | analytics_developer	    | Todo excepto páginas del administrador.		             | Todo.     |
+| Support        | analytics_support        | Todo excepto páginas del administrador.		             | Todo.     |
+| Business       | analytics_business       | Todo excepto páginas del administrador y de infraestructura. | Todo.     |
 
 > Para obtener información sobre cómo configurar roles, consulte [Configuración de la autenticación de usuarios para la administración de {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
 

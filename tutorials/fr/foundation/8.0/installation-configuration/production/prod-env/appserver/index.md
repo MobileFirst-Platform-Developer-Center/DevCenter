@@ -338,7 +338,7 @@ Avant d'exécuter l'outil de configuration de serveur, vérifiez que les exigenc
                                                 <ul>
                                                     <li>Mappant un utilisateur au rôle de sécurité <b>configadmin</b> du service Live Update.</li>
                                                     <li>Ajoutant l'ID de connexion et le mot de passe de cet utilisateur dans les propriétés JNDI (<b>mfp.config.service.user</b> et <b>mfp.config.service.password</b>) du service d'administration.</li>
-                                                    <li>Mappant un ou plusieurs utilisateurs aux rôles de sécurité du service d'administration et de {{ site.data.keys.mf_console }}. See <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
+                                                    <li>Mappant un ou plusieurs utilisateurs aux rôles de sécurité du service d'administration et de {{ site.data.keys.mf_console }}. Voir <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuration de l'authentification d'utilisateur pour l'administration de {{ site.data.keys.mf_server }}</a>.</li>
                                                 </ul>
                                             </li>
                                         </ul>

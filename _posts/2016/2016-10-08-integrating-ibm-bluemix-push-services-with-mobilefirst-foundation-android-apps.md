@@ -9,24 +9,24 @@ tags:
 - Bluemix_Push_Service
 - Android
 author:
-  name: Josephine E. Justin 
+  name: Josephine E. Justin
 ---
 ## Overview
 Applications using the MobileFirst Foundation SDK can be integrated with Bluemix Push Services for the applications to receive notifications.  
 Follow the instructions in this blog post in order to integrate your Android application with the Bluemix Push Notifications service.
 
-> Learn more about [IBM Bluemix Push Notificaitons service](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_overview_push.html) and [IBM Bluemix Mobile Foundation service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/)
+> Learn more about [IBM Bluemix Push Notificaitons service](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_overview_push.html) and [IBM Bluemix Mobile Foundation service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/)
 
 ### Prerequisites
 1. Running a MobileFirst Server either locally or [Mobile Foundation service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation) on Bluemix.
 2. Instance of [IBM Bluemix Push Notification](https://new-console.ng.bluemix.net/catalog/services/push-notifications/)
 3. Push Notification instance created at step 2 should be configured with GCM credentials.
-4. Push Notification instance created at step 2 should contain few tags. 
+4. Push Notification instance created at step 2 should contain few tags.
 
 ## Setting up the Android application
 For the purpose of this blog post, the [RememberMe Android sample application]https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/android/ is used. Download the sample application and follow the instructions in the README.md file to setup and run the app.
 
-## Adding the IBM Bluemix Push Service SDK 
+## Adding the IBM Bluemix Push Service SDK
 With the application setup and working, we will add the push functionalities into the app using the IBM Bluemix Push Service SDK.
 
 * Open the **build.gradle** of the app (located at **RememberMeAndroid/app**)
@@ -46,7 +46,7 @@ compile "com.google.android.gms:play-services-gcm:9.0.2"
 > **Note:** The **okhttp** module is bundled with both the MFP SDK and the Push SDK.  This will cause runtime issues, and to avoid it exclude the module from the Push SDK dependencies.
 
 ## Adding Push Related artifacts into the App
-### Initializing the IBM Bluemix Push Service 
+### Initializing the IBM Bluemix Push Service
 Add the following code to the `RememberMeApplication.onCreate()` function. This code initializes the BMS Push Client and this needs to be called only once per application.
 
 ```java
@@ -109,7 +109,7 @@ android:name="your.application.package.name.permission.C2D_MESSAGE" android:prot
 
 > **Note:** You can choose to create a new button in the `ProtectedActivity` code for push related functionalities. For simplicity the instructions here reuse the “Get Balance” button as the “Push Registration” button. Modify the getBalance button in **activity_protected.xml** accordingly.
 
-On a click of button, registration of the device and tags subscriptions would happen in this app. Call the Push SDK in the ProtectedActivity “on click” event of the button. 
+On a click of button, registration of the device and tags subscriptions would happen in this app. Call the Push SDK in the ProtectedActivity “on click” event of the button.
 
 For more details on the SDK refer [here](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_android_enable.html)
 

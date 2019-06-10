@@ -46,19 +46,19 @@ Application Center コンソールの Web インターフェースを使用し�
 
 | オプション | 内容 | 説明 |
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server. |
-| -c | context | The context of the Application Center web application. |
-| -u | user | The user credentials to access the Application Center. |
-| -p | password | The password of the user. |
-| -d | description | The description of the application to be uploaded. |
-| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. |
-| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. |
-| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. |
-| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. |
-| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. |
-| -e	  |  | Shows the full exception stack trace on failure. |
-| -f	  |  | Force uploading of applications, even if they exist already. |
-| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
+| -s | serverpath |Application Center サーバーへのパス。|
+| -c | context |Application Center Web アプリケーションのコンテキスト。|
+| -u | user |Application Center にアクセスするためのユーザー資格情報。|
+| -p | password |ユーザーのパスワード。|
+| -d | description |アップロードするアプリケーションの説明。|
+| -l | label |フォールバック・ラベル。 通常、ラベルは、アップロードされるファイルに保管されたアプリケーション記述子から取得されます。 アプリケーション記述子にラベルが含まれていない場合は、フォールバック・ラベルが使用されます。 |
+| -isActive | true または false |アプリケーションは、アクティブまたは非アクティブ・アプリケーションとして Application Center に保管されます。 |
+| -isInstaller | true または false |アプリケーションは、「installer」フラグが適切に設定された Application Center に保管されます。 |
+| -isReadyForProduction | true または false |アプリケーションは、「ready-for-production」フラグが適切に設定された Application Center に保管されます。 |
+| -isRecommended | true または false |アプリケーションは、「recommended」フラグが適切に設定された Application Center に保管されます。 |
+| -e	  |  |失敗時にフル例外スタック・トレースを表示します。|
+| -f	  |  |既に存在する場合でもアプリケーションのアップロードを強制します。 |
+| -y	  |  |SSL セキュリティー検査を使用不可にします。SSL 証明書の検査なしで、機密保護機能のあるホストでの公開が許可されます。 |このフラグの使用はセキュリティー・リスクですが、一時自己署名 SSL 証明書による localhost のテストには適している場合があります。 |
 
 files パラメーターには、タイプが Android アプリケーション・パッケージ (.apk) のファイルまたは iOS アプリケーション (.ipa) のファイルを指定することができます。  
 この例では、ユーザー demo はパスワード demopassword を持っています。 次のコマンド・ラインを使用してください。
@@ -83,11 +83,11 @@ Application Center からアプリケーションを削除するには、コマ�
 
 | オプション | 内容	| 説明 |
 |--------|----------------------|-------------|
-| -s |serverpath | The path to the Application Center server. |
-| -c | context | The context of the Application Center web application. |
-| -u | user | The user credentials to access the Application Center. |
-| -p | password | The password of the user. |
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
+| -s |serverpath |Application Center サーバーへのパス。|
+| -c | context |Application Center Web アプリケーションのコンテキスト。|
+| -u | user |Application Center にアクセスするためのユーザー資格情報。|
+| -p | password |ユーザーのパスワード。|
+| -y | |SSL セキュリティー検査を使用不可にします。SSL 証明書の検査なしで、機密保護機能のあるホストでの公開が許可されます。 このフラグの使用はセキュリティー・リスクですが、一時自己署名 SSL 証明書による localhost のテストには適している場合があります。 |
 
 ファイルまたはアプリケーション・パッケージ、オペレーティング・システム、およびバージョンを指定することができます。 ファイルが指定された場合は、パッケージ、オペレーティング・システム、およびバージョンはファイルから決定され、対応するアプリケーションが Application Center から削除されます。 アプリケーションが指定された場合は、アプリケーションは次のいずれかの形式を持たなければなりません。
 
@@ -122,11 +122,11 @@ Application Center が LDAP で構成されると、LDAP サーバー上のユ�
 
 | オプション | 内容 | 説明 |
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server.|
-| -c | context | The context of the Application Center web application.|
-| -u | user | The user credentials to access the Application Center.|
-| -p | password | The password of the user.|
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.|
+| -s | serverpath |Application Center サーバーへのパス。|
+| -c | context |Application Center Web アプリケーションのコンテキスト。|
+| -u | user |Application Center にアクセスするためのユーザー資格情報。|
+| -p | password |ユーザーのパスワード。|
+| -y | |SSL セキュリティー検査を使用不可にします。SSL 証明書の検査なしで、機密保護機能のあるホストでの公開が許可されます。 このフラグの使用はセキュリティー・リスクですが、一時自己署名 SSL 証明書による localhost のテストには適している場合があります。|
 
 #### 例
 {: #example-cache }

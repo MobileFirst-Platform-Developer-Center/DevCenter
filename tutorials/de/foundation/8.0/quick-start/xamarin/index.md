@@ -79,7 +79,9 @@ Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
        
-                       if (accessToken.Value != null &&  accessToken.Value != "")
+                       
+
+                       if (accessToken.Value != null && accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
@@ -104,32 +106,37 @@ Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run
 
 ### 4. Adapter implementieren
 {: #4-deploy-an-adapter }
-Laden Sie [dieses vorbereitete Adapterartefakt](../javaAdapter.adapter) herunter und implementieren Sie das Artefakt in der {{ site.data.keys.mf_console }} mit der Option **Aktionen → Adapter implementieren**.
+Laden Sie [dieses vorbereitete Adapterartefakt](../javaAdapter.adapter) herunter und implementieren Sie
+es über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. 
 
-Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.
+Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.   
 
-1. Wählen Sie die Option **Aktionen → Beispiel herunterladen** aus. Laden Sie das Java-Adapterbeispiel "Hello World" herunter.
+1. Wählen Sie **Aktionen → Beispiel herunterladen** aus. Laden Sie das **Java**-Adapterbeispiel "Hello World" herunter.
 
-   > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind, folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
+   > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind,
+folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
 
-2. Navigieren Sie in einem Befehlszeilenfenster zum Stammverzeichnis des Adapter-Maven-Projekts und führen Sie den folgenden Befehl aus:
+
+
+2. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Adapter-Maven-Projekts und führen Sie den folgenden Befehl aus:
 
    ```bash
    mfpdev adapter build
    ```
 
-3. Wenn der Build fertiggestellt ist, implementieren Sie den Adapter in der {{ site.data.keys.mf_console }} mit der Option **Aktionen → Adapter implementieren**. Sie finden den Adapter im Ordner **[adapter]/target**.
+3. Wenn der Build fertiggestellt ist, implementieren Sie den Adapter über die
+{{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. Sie finden den Adapter im Ordner **[adapter]/target**.
 
    <img class="gifplayer" alt="Adapter implementieren" src="create-an-adapter.png"/>
 
 <!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
-### 5. Anwendung testen
+### 5. Awendung testen
 {: #5-testing-the-application }
-1. Wählen Sie in Xamarin Studio die Datei mfpclient.properties aus und bearbeiten Sie die Eigenschaften **protocol**, **host** und **port**. Geben Sie die für diese Eigenschaften die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} ein.
+1. Wählen Sie in Xamarin Studio die Datei `mfpclient.properties` aus und bearbeiten Sie die Eigenschaften **protocol**, **host** und **port**. Geben Sie die für diese Eigenschaften die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} ein.
     * Wenn Sie einen lokalen {{ site.data.keys.mf_server }} verwenden, lauten die Werte normalerweise **http**, **localhost** und **9080**.
     * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für IBM Cloud) verwenden, lauten die Werte in der Regel **https**, **Ihre_Serveradresse** und **443**.
     * Wenn Sie einen Kubernetes-Cluster in IBM Cloud Private verwenden und der Implementierungstyp **NodePort** ist, ist der Portwert in der Regel der **NodePort**, der vom Service im Kubernetes-Cluster zugänglich gemacht wird.
-
+    
 2. Klicken Sie auf die Schaltfläche **Play**.
 
 <br clear="all"/>
@@ -138,12 +145,14 @@ Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.
 * Wenn Sie auf die Schaltfläche **Ping MobileFirst Server** klicken, wird **Connected to MobileFirst Server** angezeigt.
 * Wenn die Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen konnte, findet ein Ressourcenanforderungsaufruf unter Verwendung des implementierten Java-Adapters statt.
 
-Die Antwort des Adapters wird in der Konsole von Xamarin Studio ausgegeben. ![Anwendung, die erfolgreich eine Ressource von {{ site.data.keys.mf_server }} aufgerufen hat](console-output.png)
+Die Antwort des Adapters wird in der Konsole von Xamarin Studio ausgegeben. 
+
+![Anwendung, die erfolgreich eine Ressource vom {{ site.data.keys.mf_server }}](console-output.png)
 
 ## Nächste Schritte
 {: #next-steps }
 Informieren Sie sich über die Verwendung von Adaptern in Anwendungen und über die Integration von zusätzlichen Services wie Push-Benachrichtigungen mithilfe des {{ site.data.keys.product_adj }}-Sicherheitsframeworks. Weitere Möglichkeiten sind:
 
 - Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../adapters/) durch.
-- Gehen Sie die Lernrprogramme zur [Authentifizierung und Sicherheit](../../authentication-and-security/) durch.
-- Gehen Sie [alle Lernprogramme](../../all-tutorials) durch.
+- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../authentication-and-security/) durch.
+- Sehen Sie sich [alle Lernprogramme](../../all-tutorials) an.

@@ -264,7 +264,7 @@ In dieser Datei, die sich im Stammverzeichnis des Projekts befindet, sind die cl
 iOS-App bei {{ site.data.keys.mf_server }}
 definiert.
 
-| Eigenschaft| Beschreibung | Beispielwerte |
+| Eigenschaft |Beschreibung |Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
 | protocol | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} | http oder https |
 | host | Hostname von {{ site.data.keys.mf_server }} | 192.168.1.63 |

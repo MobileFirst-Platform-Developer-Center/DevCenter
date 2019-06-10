@@ -9,7 +9,8 @@ weight: 1
 ## Visión general
 {: #overview }
 El diseño y la implementación de la interfaz de usuario de una aplicación es una parte importante del proceso de desarrollo. {{ site.data.keys.product_adj }} El plugin de Eclipse junto al plugin de Thym ayuda al desarrollo de aplicaciones cordova.
-Escribir un estilo CSS personalizado para cada componente desde cero puede proporcionar un alto nivel de personalización, pero esto requiere también una gran cantidad de recursos. A veces es mejor utilizar las infraestructuras de interfaz de usuario JavaScript existentes.
+Escribir un estilo CSS personalizado para cada componente desde cero puede proporcionar un alto nivel de personalización, pero esto requiere también una gran cantidad de recursos.
+A veces es mejor utilizar las infraestructuras de interfaz de usuario JavaScript existentes.
 Este tema describe cómo desarrollar aplicaciones {{ site.data.keys.product_adj }} con dos infraestructuras de interfaz de usuario jQuery Mobile y un editor WYSIWYG proporcionados en {{ site.data.keys.product_adj }} Studio Eclipse.
 
 Para desarrollar la interfaz de usuario para una aplicación Cordova mediante el plugin de MobileFirst Eclipse, lleve a cabo los pasos siguientes:
@@ -86,4 +87,4 @@ Para añadir jQuery mobile a su aplicación, lleve a cabo los pasos siguientes:
           	</body>
       </html>
     ```
-Una vez haya añadido las referencias a jQuery Mobile en el archivo HTML, cierre y vuelva a abrir el archivo en Eclipse. Ahora verá widgets jQuery Mobile en la vista de paleta que puede arrastrar y soltar en el lienzo HTML.
+Una vez haya añadido las referencias a jQuery Mobile en el archivo HTML, cierre y vuelva a abrir el archivo en Eclipse. Ahora verá widgets jQuery Mobile en la vista de paleta que puede arrastrar y soltar en el lienzo HTML. 

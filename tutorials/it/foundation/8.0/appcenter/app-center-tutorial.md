@@ -16,7 +16,7 @@ Application Center facilitates sharing mobile applications:
 * You can **share feedback and rating** information.  
 * You can use access control lists to limit who can install applications.
 
-Application Center works with {{ site.data.keys.product_adj }} apps and non-{{ site.data.keys.product_adj }} apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
+Application Center works with {{ site.data.keys.product_adj }} apps and non-{{ site.data.keys.product_adj }} apps, and supports any **iOS, Android**, and **Windows/Phone 8.x** applications.
 
 > **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
 
@@ -26,6 +26,8 @@ You can use Application Center in different contexts. For example:
 * During development to distribute applications within a team.
 
 > **Note:** to build the iOS AppCenter Installer application, MobileFirst 7.1 is required.
+>
+Studio is required to for 7.1 worklight apps and is not required for pure cordova apps.
 
 #### Jump to:
 {: #jump-to}
@@ -145,11 +147,13 @@ You can either open the resulting native project (in **iphone\native**) manually
 
 > **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
 
+<!--
 ### For Blackberry
 {: #for-blackberry }
 * To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
 
 A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+-->
 
 ### For Windows Phone 8
 {: #for-windows-phone-8}
@@ -200,7 +204,7 @@ To add new applications to the Store:
 3. Select an application file:
     * `.ipa`: iOS
     * `.apk`: Android
-    * `.zip`: BlackBerry 6/7
+    <!--* `.zip`: BlackBerry 6/7-->
     * `.xap`: Windows Phone 8.x
     * `.appx`: Windows Store 8.x
 

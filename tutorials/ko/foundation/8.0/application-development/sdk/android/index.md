@@ -182,7 +182,7 @@ SDK 릴리스는 SDK의 [JCenter 저장소](https://bintray.com/bintray/jcenter/
 {: #mfpclient.properties }
 이 파일은 Android Studio 프로젝트의 **./app/src/main/assets/** 폴더에 있으며, {{ site.data.keys.mf_server }}에서 Android 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-| 특성            | 설명                                                         | 예제 값 |
+| 특성            |설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
 | wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
 | wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |

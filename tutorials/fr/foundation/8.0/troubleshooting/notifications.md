@@ -87,7 +87,7 @@ Vous trouverez ici des informations qui vous aideront à résoudre les problème
 <div class="panel panel-default">
   <div class="panel-heading"><h4>Exceptions SSLHandshakeExceptions lors de l'envoi de notifications push à APNS</h4></div>
   <div class="panel-body">
-  <p>Par exemple :</p> <blockquote>ApnsConnection | com.ibm.mfp.push.server.notification.apns.Apns.Connectionlmpl sendMessage Failed to send message Message (Id=1;  Token=xxxx; Payload={"payload":{"\nid\":\"44b7f47\",\"tag\":\"Push.ALL\"}", "aps":{"alert":{"action-loc-key":null,"body":"TEST"}}})... trying again after delay javax.net.ssl.SSLHandshakeException:Received fatal alert: handshake_failure</blockquote>
+  <p>Exemple :</p> <blockquote>ApnsConnection | com.ibm.mfp.push.server.notification.apns.Apns.Connectionlmpl sendMessage Failed to send message Message (Id=1;  Token=xxxx; Payload={"payload":{"\nid\":\"44b7f47\",\"tag\":\"Push.ALL\"}", "aps":{"alert":{"action-loc-key":null,"body":"TEST"}}})... trying again after delay javax.net.ssl.SSLHandshakeException:Received fatal alert: handshake_failure</blockquote>
 <p>Ce problème a été signalé uniquement lors de l'utilisation de machines virtuelles IBM JDK 1.8. La solution consiste à mettre à niveau IBM JDK 1.8 vers la version 8.0.3.11 ou ultérieure.</p>
   </div>
 </div>

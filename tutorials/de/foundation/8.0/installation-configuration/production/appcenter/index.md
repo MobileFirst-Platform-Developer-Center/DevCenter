@@ -225,7 +225,7 @@ APPCENTER für die Datenbank:
 
         ```bash
         CONNECT SYSTEM/<SYSTEM-Kennwort>@ORCL
-        CREATE USER APPCENTER IDENTIFIED BY password DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
+        CREATE USER APPCENTER IDENTIFIED BY Kennwort DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
         GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO APPCENTER;
         DISCONNECT;
         ```
@@ -1183,7 +1183,7 @@ SQLPlus zu erstellen, geben Sie die folgenden Befehle ein:
 
       ```bash
         CONNECT SYSTEM/<SYSTEM-Kennwort>@ORCL
-        CREATE USER APPCENTER IDENTIFIED BY password DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
+        CREATE USER APPCENTER IDENTIFIED BY Kennwort DEFAULT TABLESPACE USERS QUOTA UNLIMITED ON USERS;
         GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO APPCENTER;
         DISCONNECT;
         ```
@@ -1628,14 +1628,14 @@ in Tomcat kopieren, Datenbanktreiber hinzufügen, die Datei **server.xml** bearb
     * Deklarieren Sie die Application-Center-Konsole und die Application-Center-Services sowie eine Benutzerregistry:
 
       ```xml
-      <!-- IBM Application-Center-Konsole deklarieren -->
+      <!-- Declare the IBM Application Center Console application. -->
       <Context path="/appcenterconsole" docBase="appcenterconsole">
 
-          <!-- DAppCenter-Serviceendpunkt definieren, damit die AppCenter-Konsole
-               den REST-Service aufrufen kann.
-               Diese Eigenschaft muss aktiviert werden, wenn sich der Server hinter einem
-               Reverse Proxy befindet oder wenn für das Application Center Services ein anderes
-               Kontextstammverzeichnis verwendet wird als '/applicationcenter'. -->
+          <!-- Define the AppCenter services endpoint in order for the AppCenter
+               console to be able to invoke the REST service.
+               You need to enable this property if the server is behind a reverse
+               proxy or if the context root of the Application Center Services
+               application is different from '/applicationcenter'. -->
           <!-- <Environment name="ibm.appcenter.services.endpoint"
                             value="http://proxy-host:proxy-port/applicationcenter"
                             type="java.lang.String" override="false"/>
@@ -1643,41 +1643,41 @@ in Tomcat kopieren, Datenbanktreiber hinzufügen, die Datei **server.xml** bearb
 
       </Context>
 
-            <!-- IBM Application-Center-Services deklarieren -->
+            <!-- Declare the IBM Application Center Services application. -->
       <Context path="/applicationcenter" docBase="applicationcenter">
-          <!-- Das Verzeichnis mit den Binärdateien des Programms 'aapt' aus
-               dem Plattformtoolpaket des Android SDK. -->
+          <!-- The directory with binaries of the 'aapt' program, from
+               the Android SDK's platform-tools package. -->
           <Environment name="android.aapt.dir"
                        value="product_install_dir/ApplicationCenter/tools/android-sdk"
                        type="java.lang.String" override="false"/>
-          <!-- Protokoll der Anwendungsressourcen-URI.
-               Diese Eigenschaft ist nur erforderlich, wenn das Protokoll
-               der externen URI von dem der internen URI abweicht. -->
+          <!-- The protocol of the application resources URI.
+               This property is optional. It is only needed if the protocol
+               of the external and internal URI are different. -->
           <!-- <Environment name="ibm.appcenter.proxy.protocol"
                             value="http" type="java.lang.String" override="false"/>
           -->
 
-          <!-- Hostname der Anwendungsressourcen-URI -->
+          <!-- The host name of the application resources URI. -->
           <!-- <Environment name="ibm.appcenter.proxy.host"
                             value="proxy-host"
                             type="java.lang.String" override="false"/>
           -->
 
-          <!-- Port der Anwendungsressourcen-URI.
-               Diese Eigenschaft ist optional. -->
+          <!-- The port of the application resources URI.
+               This property is optional. -->
           <!-- <Environment name="ibm.appcenter.proxy.port"
                             value="proxy-port"
                             type="java.lang.Integer" override="false"/> -->
 
-          <!--  Datenbank für IBM Application-Center-Services deklarieren -->
+          <!-- Declare the IBM Application Center Services database. -->
           <!-- <Resource name="jdbc/AppCenterDS" type="javax.sql.DataSource" ... -->
 
       </Context>
 
-      <!-- Benutzerregistry für IBM Application Center deklarieren.
-             Das MemoryRealm erkennt die in conf/tomcat-users.xml definierten Benutzer.
-             Weitere Auswahlmöglichkeiten enthält die Apache-Tomcat-Dokumentation in
-             "Realm Configuration HOW-TO" unter http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html. -->
+      <!-- Declare the user registry for the IBM Application Center.
+             The MemoryRealm recognizes the users defined in conf/tomcat-users.xml.
+             For other choices, see Apache Tomcat's "Realm Configuration HOW-TO"
+             http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html . -->
       <Realm className="org.apache.catalina.realm.MemoryRealm"/>
       ```
 
@@ -2348,7 +2348,7 @@ In Clusterumgebungen müssen Sie alle Server im Cluster auf dieselbe Art und Wei
 können Sie die LDAP-Daten im Cache mit dem folgenden Befehl löschen:
 
     ```xml
-     acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort
+    acdeploytool.sh -clearLdapCache -s Server-URL -c Kontext -u Benutzer -p Kennwort
     ```
 
     Weitere Informationen finden Sie unter
@@ -2380,7 +2380,7 @@ WebSphere Application Server.
 5. Führen Sie diesen Befehl für alle Gruppen aus, die den Rollen **appcenteruser** und **appcenteradmin** zugeordnet sind. Führen Sie für einzelne Benutzer, die nicht zu einer Gruppe gehören, den folgenden Befehl aus:
 
     ```bash
-    $AdminTask mapIdMgrUserToRole {-roleName IdMgrReader -userId Ihre_LDAP-Benutzer-ID}
+    $AdminTask mapIdMgrUserToRole {-roleName IdMgrReader -userId Ihre_LDDAP-Benutzer-ID}
     ```
 
     Sie können
@@ -2911,7 +2911,9 @@ interne Adresse (192.168...) verbirgt. Der mobile Client muss die externe Adress
 
 |Eigenschaftsname|Zweck|Beispiel|
 |---------------|---------|---------|
-|ibm.appcenter.services.endpoint|Diese Eigenschaft ermöglicht der Application-Center-Konsole, die Application-Center-REST-Services zu lokalisieren. Der Wert dieser Eigenschaft muss als externe Adresse und Kontextstammverzeichnis der Webanwendung applicationcenter.war angegeben werden. Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen. Die Angabe *://*:*/appcenter bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port wie die Application-Center-Konsole verwenden, aber appcenter als Kontextstammverzeichnis. Diese Eigenschaft muss für die Application-Center-Konsole angegeben werden. |https://appcntr.net:443/applicationcenter|
+|ibm.appcenter.services.endpoint|Diese Eigenschaft ermöglicht der Application-Center-Konsole, die Application-Center-REST-Services zu lokalisieren. Der Wert dieser Eigenschaft muss als externe Adresse und Kontextstammverzeichnis der Webanwendung applicationcenter.war angegeben werden. Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die
+Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen.
+Die Angabe *://*:*/appcenter bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port wie die Application-Center-Konsole verwenden, aber appcenter als Kontextstammverzeichnis. Diese Eigenschaft muss für die Application-Center-Konsole angegeben werden. |https://appcntr.net:443/applicationcenter|
 |ibm.appcenter.proxy.protocol|Diese Eigenschaft gibt das Protokoll an, das erforderlich ist, damit externe Anwendungen eine Verbindung mit
 dem Application Center herstellen können.|https|
 |ibm.appcenter.proxy.host|Diese Eigenschaft gibt den Hostnamen an, der erforderlich ist, damit externe Anwendungen eine Verbindung

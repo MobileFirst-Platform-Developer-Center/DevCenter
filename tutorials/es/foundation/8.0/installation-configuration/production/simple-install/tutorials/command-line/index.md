@@ -425,7 +425,7 @@ Cuando crea una granja de servidores, también debe configurar un servidor HTTP 
           ```
 
         * Copie las claves de LTPA del servidor mfp1 en el servidor mfp2.
-        Desde **liberty\_install\_dir/usr/servers** o **WLP\_USER\_DIR/servers**, ejecute el siguiente mandato dependiendo de su sistema operativo.
+            Desde **liberty\_install\_dir/usr/servers** o **WLP\_USER\_DIR/servers**, ejecute el siguiente mandato dependiendo de su sistema operativo.
             * En UNIX: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
             * En Windows: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
         * Reinicie los servidores. Conmutar de un separador del navegador a otro no requiere que vuelva a iniciar sesión. En una granja de servidores Liberty, todos los servidores deben tener las mismas claves LTPA.

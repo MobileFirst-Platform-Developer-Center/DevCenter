@@ -59,7 +59,7 @@ Sie können wählen, ob Sie den Befehl interaktiv oder direkt ausführen möchte
    mfpdev adapter create
    ```
 
-2. Geben Sie einen Adapternamen ein. Beispiel: 
+2. Geben Sie einen Adapternamen ein. Beispiel:
 
    ```bash
    ? Enter Adapter Name: SampleAdapter

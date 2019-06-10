@@ -303,7 +303,7 @@ gyp ERR! not ok
 > node install
 ```
 
-このエラーは [node-gyp の既知のバグ](https://github.com/nodejs/node-gyp/issues/1547)が原因です。これらのエラーは、MobileFirst CLI の機能に影響を与えないため無視しても構いません。これは、*mfpdev-cli iFix level 8.0.2018100112* 以降に適用されます。このエラーに対処するには、インストール時に `--no-optional` フラグを使用します。以下に例を示します。
+このエラーは [node-gyp の既知のバグ](https://github.com/nodejs/node-gyp/issues/1547)が原因です。 これらのエラーは、MobileFirst CLI の機能に影響を与えないため無視しても構いません。 これは、*mfpdev-cli iFix level 8.0.2018100112* 以降に適用されます。 このエラーに対処するには、インストール時に `--no-optional` フラグを使用します。 以下に例を示します。
 
 ```bash
 npm install -g mfpdev-cli --no-optional

@@ -33,7 +33,7 @@ React Native 用の JSONStore SDK は、[npm](https://www.npmjs.com/package/reac
     ```
 
 ## JSONStore コレクションからのデータの照会
-1 つのコレクション内のすべてのドキュメントを同時に取得する必要が生じることはほとんどありません。通常、コレクション内の既存のデータを照会できる必要があります。
+1 つのコレクション内のすべてのドキュメントを同時に取得する必要が生じることはほとんどありません。 通常、コレクション内の既存のデータを照会できる必要があります。
 
 `App.js` 内で以下のパッケージをインポートする必要があります。
 
@@ -48,7 +48,7 @@ JSONStore コレクションからデータを照会するためのステップ�
     WLJSONStore.openCollections(['favourites']).then(data => { console.log(data); }).catch(err =>{ console.log(err); });
     ```
 
-2. コレクションからのデータの取り出し。コレクションを開いた後で、特定の照会に基づいてドキュメントを取り出すことができます。JSONStore を照会するために、`JSONStoreQuery` および `JSONStoreQueryPart` とともに機能する 2 つのクラスが用意されています。<br/>
+2. コレクションからのデータの取り出し。コレクションを開いた後で、特定の照会に基づいてドキュメントを取り出すことができます。 JSONStore を照会するために、`JSONStoreQuery` および `JSONStoreQueryPart` とともに機能する 2 つのクラスが用意されています。<br/>
     配列内の各 JSONStoreQueryPart オブジェクトを渡すことで、同じ呼び出しに複数の JSONStoreQueryPart オブジェクトを使用できます。
     複数の JSONStoreQueryPart オブジェクトは OR ステートメントを使用して結合されます。
     1 つの JSONStoreQueryPart の複数の条件は AND ステートメントを使用して結合されます。

@@ -100,7 +100,7 @@ déplacez le répertoire **usr** qui contient les serveurs vers un emplacement n
     Par exemple, sous Windows : `WLP_USER_DIR=C:\LibertyServers\usr`
 7. Créez un serveur Liberty qui sera utilisé pour installer le premier noeud de {{ site.data.keys.mf_server }} ultérieurement dans le cadre du tutoriel.
     * Démarrez une session de ligne de commande.
-    * Accédez à l**iberty\_install\_dir/bin** et entrez `server create mfp1`.
+    * Accédez à **liberty\_install\_dir/bin** et entrez `server create mfp1`.
 
     Cette commande crée une instance de serveur Liberty nommée mfp1. Sa définition se trouve dans **liberty\_install\_dir/usr/servers/mfp1** ou **WLP\_USER\_DIR/servers/mfp1** (si vous modifiez le répertoire comme indiqué à l'étape 6).
 

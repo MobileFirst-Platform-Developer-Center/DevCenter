@@ -29,7 +29,7 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 기타 용어 및 정의에 대해서는 [IBM 용어 웹 사이트](http://www.ibm.com/software/globalization/terminology/)를 참조하십시오.
 
 ## 가
-{: #가 }
+{: #ga }
 
 ### 개인 키(private key)
 {: #private-key }
@@ -56,8 +56,7 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 명령 또는 명령문의 구성에 대한 규칙입니다.
 
 ## 나
-{: #나 }
-
+{: #na }
 
 ### 네이티브 앱(native app)
 {: #native-app }
@@ -68,8 +67,7 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 관리 서버의 논리 그룹입니다.
 
 ## 다
-{: #다 }
-
+{: #da }
 
 ### 데이터 소스(data source)
 {: #data-source }
@@ -95,14 +93,13 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #device }
 [모바일 디바이스(mobile device)](#mobile-device)를 참조하십시오.
 
-
 ## 라
-{: #라 }
+{: #ra }
 
 ### 라이브러리(library)
 {: #library }
 기타 오브젝트에 대해 디렉토리 역할을 하는 시스템 오브젝트입니다. 라이브러리는 관련 오브젝트들을 그룹화하므로 사용자는 이름으로 오브젝트를 찾을 수 있습니다.
-비즈니스 항목, 프로세스, 태스크, 자원 및 조직을 포함한 모델 요소의 콜렉션입니다.
+비즈니스 항목, 프로세스, 태스크, 리소스 및 조직을 포함한 모델 요소의 콜렉션입니다.
 
 ### 랩퍼(wrapper)
 {: #wrapper }
@@ -110,7 +107,7 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 
 ### 로드 밸런싱(load balancing)
 {: #load-balancing }
-여러 컴퓨터나 컴퓨터 클러스터, 네트워크 링크, 중앙 처리 장치, 디스크 드라이브 또는 기타 자원에 워크로드를 분배하기 위한 컴퓨터 네트워킹 방법입니다. 로드 밸런싱이 성공적으로 이루어지면 자원 사용이 최적화되고, 처리량이 극대화되며, 응답 시간이 최소화되고, 과부하가 방지됩니다.
+여러 컴퓨터나 컴퓨터 클러스터, 네트워크 링크, 중앙 처리 장치, 디스크 드라이브 또는 기타 리소스에 워크로드를 분배하기 위한 컴퓨터 네트워킹 방법입니다. 로드 밸런싱이 성공적으로 이루어지면 리소스 사용이 최적화되고, 처리량이 극대화되며, 응답 시간이 최소화되고, 과부하가 방지됩니다.
 
 ### 로컬 저장소(local store)
 {: #local-store }
@@ -120,9 +117,8 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #root }
 시스템에서 기타 모든 디렉토리가 포함된 디렉토리입니다.
 
-
 ## 마
-{: #마 }
+{: #ma }
 
 ### 모바일 디바이스(mobile device)
 {: #mobile-device }
@@ -136,9 +132,8 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #mobile }
 [모바일 디바이스(mobile device)](#mobile-device)를 참조하십시오.
 
-
 ## 바
-{: #바 }
+{: #ba }
 
 ### 배치(deployment)
 {: #deployment }
@@ -150,11 +145,11 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 
 ### 보기(view)
 {: #view }
-워크벤치에서 자원을 보거나 자원에 대해 작업하는 데 사용할 수 있는 편집기 영역 외부의 분할창입니다.
+워크벤치에서 리소스를 보거나 리소스에 대해 작업하는 데 사용할 수 있는 편집기 영역 외부의 분할창입니다.
 
 ### 보안 테스트(security test)
 {: #security-test }
-어댑터 프로시저, 애플리케이션 또는 정적 URL과 같은 자원을 보호하기 위해 사용되는 인증 영역의 정렬된 세트입니다.
+어댑터 프로시저, 애플리케이션 또는 정적 URL과 같은 리소스를 보호하기 위해 사용되는 인증 영역의 정렬된 세트입니다.
 
 ### 복제(clone)
 {: #clone }
@@ -164,12 +159,16 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #broadcast-notification }
 특정 {{ site.data.keys.product_adj }} 애플리케이션의 모든 사용자로 대상화되는 알림입니다. 태그 기반 알림(tag-based notification)도 참조하십시오.
 
+### 블록(block)
+{: #block }
+여러 특성(예: 어댑터, 프로시저 또는 매개변수)의 콜렉션입니다.
+
 ### 빌드 정의(build definition)
 {: #build-definition }
 빌드(예를 들어, 프로젝트 전체의 주간 통합 빌드)를 정의하는 오브젝트입니다.
 
 ## 사
-{: #사 }
+{: #sa }
 
 ### 사내 애플리케이션(in-house application)
 {: #in-house-application }
@@ -211,16 +210,12 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #system-message }
 예를 들어, 연결 성공 여부와 같은 운영 상태 또는 경보를 제공하는 모바일 디바이스의 자동화된 메시지입니다.
 
-### 신임 정보(credential)
-{: #credential }
-사용자에게 권한을 부여하거나 특정 액세스 권한을 처리하는 정보 세트입니다.
-
 ### 실행(fire)
 {: #fire }
 객체 지향 프로그래밍에서 상태 전이를 실행하는 것입니다.
 
 ## 아
-{: #아 }
+{: #aa }
 
 ### 알림(notification)
 {: #notification }
@@ -252,11 +247,15 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 
 ### 엔티티(entity)
 {: #entity }
-보안 서비스에 대해 정의되는 사용자, 그룹 또는 자원입니다.
+보안 서비스에 대해 정의되는 사용자, 그룹 또는 리소스입니다.
 
 ### 역방향 프록시(reverse proxy)
 {: #reverse-proxy }
 프록시가 백엔드 HTTP 서버를 대신하는 IP 전달 토폴로지입니다. HTTP를 사용하는 서버의 애플리케이션 프록시입니다.
+
+### 웹 리소스(web resource)
+{: #web-resource }
+웹 애플리케이션 개발 중에 작성되는 리소스(예: 웹 프로젝트, HTML 페이지, JSP(JavaServer Page) 파일, 서블릿, 사용자 정의 태그 라이브러리, 아카이브 파일) 중 하나입니다.
 
 ### 웹 애플리케이션 서버(web application server)
 {: #web-application-server }
@@ -265,10 +264,6 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 ### 웹 앱/애플리케이션(web app / application)
 {: #web-app--application }
 웹 브라우저를 통해 액세스할 수 있고 정적으로 정보를 표시하는 기능뿐 아니라 데이터베이스를 조회하는 등의 기능을 사용자에게 제공하는 애플리케이션입니다. 웹 애플리케이션의 공통 컴포넌트에는 HTML 페이지, JSP 페이지, 서블릿이 포함됩니다. [앱(app)](#A)도 참조하십시오.
-
-### 웹 자원(web resource)
-{: #web-resource }
-웹 애플리케이션 개발 중에 작성되는 자원(예: 웹 프로젝트, HTML 페이지, JSP(JavaServer Page) 파일, 서블릿, 사용자 정의 태그 라이브러리, 아카이브 파일) 중 하나입니다.
 
 ### 위젯(widget)
 {: #widget }
@@ -289,6 +284,10 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 ### 인증 기관 엔터프라이즈 애플리케이션(certificate authority enterprise application)
 {: #certificate-authority-enterprise-application }
 클라이언트 애플리케이션에 관한 인증서 및 개인 키를 제공하는 회사 애플리케이션입니다.
+
+### 인증 정보(credential)
+{: #credential }
+사용자에게 권한을 부여하거나 특정 액세스 권한을 처리하는 정보 세트입니다.
 
 ### 인증 확인 핸들러(challenge handler)
 {: #challenge-handler }
@@ -315,21 +314,14 @@ ASCII PEM 형식 인증서의 2진 양식과 관련됩니다. Base64, 인코딩�
 Base64 인코드 인증서와 관련됩니다. Base64, 인코딩된 DER(DER encoded)도 참조하십시오.
 
 ## 자
-{: #자 }
+{: #ja }
 
 ### 지오코딩(geocoding)
 {: #geocoding }
 더 많은 전통적인 지리적 마커(주소, 우편번호 등)를 통해 지오코드를 식별하는 프로세스입니다. 예를 들어, 랜드마크는 두 가로의 교차점에 위치할 수 있지만 이 랜드마크의 지오코드는 일련의 번호로 구성됩니다.
 
-## 차
-{: #차 }
-
-### 차단(block)
-{: #block }
-여러 특성(예: 어댑터, 프로시저 또는 매개변수)의 콜렉션입니다.
-
 ## 카
-{: #카 }
+{: #ka }
 
 ### 카탈로그(catalog)
 {: #catalog }
@@ -369,7 +361,7 @@ Apple 소프트웨어용 비밀번호 관리 시스템입니다. 키 체인은 �
 레코드를 고유하게 식별하고 다른 레코드와 관련하여 해당 순서를 설정하는 데 사용되는 데이터의 품목에 있는 하나 이상의 문자입니다.
 
 ## 타
-{: #타 }
+{: #ta }
 
 ### 태그 기반 알림(tag-based notification)
 {: #tag-based-notification }
@@ -388,7 +380,7 @@ Apple 소프트웨어용 비밀번호 관리 시스템입니다. 키 체인은 �
 발생을 발견하고 응답으로 추가 처리를 발생시킬 수 있는 메커니즘입니다. 디바이스 컨텍스트에서 변경이 발생하면 트리거가 활성화될 수 있습니다. 디바이스 컨텍스트(device context)도 참조하십시오.
 
 ## 파
-{: #파 }
+{: #pa }
 
 ### 팜 노드(farm node)
 {: #farm-node }
@@ -416,7 +408,7 @@ XML 데이터 유형을 제한하는 XML 엔티티입니다.
 
 ### 프로비저닝(provision)
 {: #provisin }
-서비스, 컴포넌트, 애플리케이션 또는 자원을 제공하고 배치하고 추적하는 것입니다.
+서비스, 컴포넌트, 애플리케이션 또는 리소스를 제공하고 배치하고 추적하는 것입니다.
 
 ### 프로젝트 WAR 파일(project WAR file)
 {: #project-war-file }
@@ -430,12 +422,12 @@ XML 데이터 유형을 제한하는 XML 엔티티입니다.
 {: #proxy }
 Telnet 또는 FTP와 같은 특정 네트워크 애플리케이션을 위해 두 네트워크를 연결하는 애플리케이션 게이트웨이입니다. 예를 들어, 방화벽의 프록시 Telnet 서버에서는 사용자에 대한 인증이 수행되며 그 이후의 트래픽은 프록시가 없는 것처럼 프록시를 통해 플로우됩니다. 클라이언트 워크스테이션이 아닌 방화벽에서 기능이 수행되므로 방화벽의 로드가 높습니다.
 
-## 하
-{: #하 }
-
 ### 하위 요소(subelement)
 {: #subelement }
 UN/EDIFACT EDI 표준에서 EDI 컴포지트 데이터 요소의 일부분인 EDI 데이터 요소입니다. 예를 들어, EDI 데이터 요소 및 규정자가 EDI 컴포지트 데이터 요소의 하위 요소입니다.
+
+## 하
+{: #ha }
 
 ### 하이브리드 애플리케이션(hybrid application)
 {: #hybrid-application }
@@ -452,9 +444,6 @@ UN/EDIFACT EDI 표준에서 EDI 컴포지트 데이터 요소의 일부분인 ED
 ### 회사 허브(Company Hub)
 {: #company-hub }
 다른 특정 애플리케이션이 모바일 디바이스에 설치되도록 배포할 수 있는 애플리케이션입니다. 예를 들어, Application Center는 회사 허브입니다. [Application Center](#application-center)도 참조하십시오.
-
-## 숫자
-{: #숫자 }
 
 ### 2진(binary)
 {: #binary }
@@ -490,7 +479,7 @@ Application Center에서 사용 가능한 애플리케이션의 카탈로그를 
 
 ### CA / 인증 기관(CA, Certificate Authority)
 {: #ca--certificate-authority-ca }
-디지털 인증서를 발행하는 신뢰할 수 있는 써드파티 조직 또는 회사입니다. 일반적으로 인증 기관은 고유 인증서를 부여받은 개인의 ID를 확인합니다. [인증서(certificate)](#certificate)도 참조하십시오.
+디지털 인증서를 발행하는 신뢰할 수 있는 서드파티 조직 또는 회사입니다. 일반적으로 인증 기관은 고유 인증서를 부여받은 개인의 ID를 확인합니다. [인증서(certificate)](#certificate)도 참조하십시오.
 
 ### CRL / 인증서 취소 목록(CRL, Certificate Revocation List)
 {: #crl-certificate-revocation-list-crl }
@@ -515,7 +504,7 @@ Java 기술을 통한 Java 기술 관리 수단입니다. JMX는 관리가 필�
 
 ### MBean / MBean(Managed Bean)
 {: #mbean--managed-bean-mbean}
-JMX(Java Management Extensions) 스펙에서, 자원 및 인스트루먼테이션을 구현하는 Java 오브젝트입니다.
+JMX(Java Management Extensions) 스펙에서, 리소스 및 인스트루먼테이션을 구현하는 Java 오브젝트입니다.
 
 ### MobileFirst Data Proxy
 {: #mobilefirst-data-proxy }
@@ -567,7 +556,7 @@ Do not translate "MobileFirst" in the term above (site.data.keys.product_adj key
 
 ### OAuth
 {: #oauth }
-자원 소유자, 클라이언트 및 자원 서버 간에 승인 상호작용을 작성하여 자원 소유자 대신 애플리케이션 범위에서 보호된 자원에 액세스할 수 있는 권한을 제공하는 HTTP 기반 인증 프로토콜입니다.
+리소스 소유자, 클라이언트 및 리소스 서버 간에 승인 상호작용을 작성하여 리소스 소유자 대신 애플리케이션 범위에서 보호된 리소스에 액세스할 수 있는 권한을 제공하는 HTTP 기반 인증 프로토콜입니다.
 
 ## P
 {: #p }
@@ -592,7 +581,7 @@ PKI와 통신하는 데 사용자 인증서 인증(User Certificate Authenticati
 특정 운영 환경에 대해 또는 특정 컴퓨터 언어로 소프트웨어의 개발을 지원하기 위한 도구, API 및 문서 세트입니다.
 
 ## T
-{: #t}
+{: t}
 
 ### TAI / TAI(Trust Association Interceptor)
 {: #tai--trust-association-interceptor-tai }

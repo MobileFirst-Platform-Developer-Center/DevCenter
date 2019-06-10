@@ -46,19 +46,19 @@ Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
 
 | Option | Contenu indiqué par | Description |
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server. |
-| -c | context | The context of the Application Center web application. |
-| -u | user | The user credentials to access the Application Center. |
-| -p | password | The password of the user. |
-| -d | description | The description of the application to be uploaded. |
-| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. |
-| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. |
-| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. |
-| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. |
-| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. |
-| -e	  |  | Shows the full exception stack trace on failure. |
-| -f	  |  | Force uploading of applications, even if they exist already. |
-| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
+| -s | serverpath | Chemin du serveur Application Center. |
+| -c | context | Contexte de l'application Web Application Center. |
+| -u | user | Données d'identification de l'utilisateur pour l'accès à Application Center. |
+| -p | password | Mot de passe de l'utilisateur. |
+| -d | description | Description de l'application à télécharger. |
+| -l | label | Libellé de rétromigration. Le libellé est normalement issu du descripteur d'application stocké dans le fichier à télécharger. Si le descripteur d'application ne contient aucun libellé, le libellé de rétromigration est utilisé. |
+| -isActive | true ou false | L'application est stockée dans Application Center en tant qu'application active ou inactive. |
+| -isInstaller | true ou false | L'application est stockée dans Application Center avec l'indicateur "installer" défini de manière appropriée. |
+| -isReadyForProduction | true ou false | L'application est stockée dans Application Center avec l'indicateur "ready-for-production" défini de manière appropriée. |
+| -isRecommended | true ou false | L'application est stockée dans Application Center avec l'indicateur "recommended" défini de manière appropriée. |
+| -e	  |  | Affiche la trace de pile d'exceptions lors d'un échec. |
+| -f	  |  | Force le téléchargement des applications, même si elles existent déjà. |
+| -y	  |  | Désactive le contrôle de sécurité SSL, ce qui permet de publier sur des hôtes sécurisés sans vérification du certificat SSL. | L'utilisation de cet indicateur présente un risque de sécurité, mais peut convenir au test d'un système hôte local avec des certificats SSL auto-signés temporaires. |
 
 Le paramètre files peut spécifier des fichiers de type fichiers de modules d'application Android (.apk) ou fichiers d'application iOS (.ipa).  
 Dans cet exemple, le mot de passe de la démonstration de l'utilisateur est demopassword. Utilisez cette ligne de commande.
@@ -83,11 +83,11 @@ Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
 
 | Option | Contenu indiqué par	| Description |
 |--------|----------------------|-------------|
-| -s |serverpath | The path to the Application Center server. |
-| -c | context | The context of the Application Center web application. |
-| -u | user | The user credentials to access the Application Center. |
-| -p | password | The password of the user. |
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
+| -s | serverpath | Chemin du serveur Application Center. |
+| -c | context | Contexte de l'application Web Application Center. |
+| -u | user | Données d'identification de l'utilisateur pour l'accès à Application Center. |
+| -p | password | Mot de passe de l'utilisateur. |
+| -y | | Désactive le contrôle de sécurité SSL, ce qui permet de publier sur des hôtes sécurisés sans vérification du certificat SSL. L'utilisation de cet indicateur présente un risque de sécurité, mais peut convenir au test d'un système hôte local avec des certificats SSL auto-signés temporaires. |
 
 Vous pouvez spécifier des fichiers ou le module d'application, le système d'exploitation et la version. Si des fichiers sont spécifiés, le module, le système d'exploitation et la version sont déterminés à partir du fichier et l'application correspondante est supprimée d'Application Center. Si des applications sont spécifiées, elles doivent être à l'un des formats suivants :
 
@@ -122,11 +122,11 @@ Vous pouvez transmettre l'une des options disponibles dans la ligne de commande.
 
 | Option | Contenu indiqué par | Description |
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server.|
-| -c | context | The context of the Application Center web application.|
-| -u | user | The user credentials to access the Application Center.|
-| -p | password | The password of the user.|
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.|
+| -s | serverpath | Chemin du serveur Application Center. |
+| -c | context | Contexte de l'application Web Application Center. |
+| -u | user | Données d'identification de l'utilisateur pour l'accès à Application Center. |
+| -p | password | Mot de passe de l'utilisateur. |
+| -y | | Désactive le contrôle de sécurité SSL, ce qui permet de publier sur des hôtes sécurisés sans vérification du certificat SSL. L'utilisation de cet indicateur présente un risque de sécurité, mais peut convenir au test d'un système hôte local avec des certificats SSL auto-signés temporaires. |
 
 #### Exemple
 {: #example-cache }
@@ -143,7 +143,7 @@ Apache Ant est nécessaire pour exécuter ces tâches. La version minimale prise
 
 Pour plus de commodité, Apache Ant 1.8.4 est inclus dans {{ site.data.keys.mf_server }}. Dans le répertoire product_install_dir/shortcuts/, les scripts suivants sont fournis :
 
-* ant pour UNIX / Linux
+* ant pour UNIX/Linux
 * ant.bat pour Windows
 
 Ces scripts sont prêts à être exécutés, ce qui signifie qu'ils ne nécessitent pas de variables d'environnement spécifiques. Si la variable d'environnement JAVA_HOME est définie, les scripts l'acceptent.
@@ -240,9 +240,9 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 | workspace.root | Par défaut, ../../ |
 | login.user | La valeur par défaut est appcenteradmin. |
 | login.pass | La valeur par défaut est admin. |
-| force	La valeur par défaut est true. |
+| force	 | La valeur par défaut est true. |
 
-Pour spécifier ces paramètres en ligne de commande lorsque vous appelez Ant, ajoutez -D avant le nom de la propriété. Par exemple :
+Pour spécifier ces paramètres en ligne de commande lorsque vous appelez Ant, ajoutez -D avant le nom de la propriété. Exemple :
 
 ```xml
 -Dserver.path=http://localhost:8888/

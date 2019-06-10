@@ -112,7 +112,7 @@ Add the following JNDI properties in the above mentioned xml file:
 ```
 
 After adding the properties deploy the {{ site.data.keys.product }} server using the scripts.
-In order to deploy the {{ site.data.keys.product }} server follow the steps given [here](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/#mobilefirst-server).
+In order to deploy the {{ site.data.keys.product }} server follow the steps given [here](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-using-scripts-lbp/#mobilefirst-server).
 
 ## Gathering Analytics data
 {: #gather-analytics }
@@ -126,7 +126,7 @@ Once you start using applications connected to the {{ site.data.keys.product }} 
   <div class="panel-heading"><h4>"CWPKI0022E: SSL HANDSHAKE FAILURE" displayed in server console or log files.</h4></div>
   <div class="panel-body">
     <p>If your {{ site.data.keys.product }} Server's keystore does not include the intermediate or root certificate for {{ site.data.keys.prod_ic }}, you may see the following error message in either the server's console or in the server's log files:</p>
-    
+
    <blockquote>
     [ERROR   ] CWPKI0022E: SSL HANDSHAKE FAILURE:  A signer with SubjectDN CN=*.ng.bluemix.net, O=International Business Machines Corporation, L=Armonk, ST=New York, C=US was sent from the target host.  The signer might need to be added to local trust store /Users/john_gerken/MobileFirst-8.0.0.0/mfp-server/usr/servers/mfp/resources/security/key.jks, located in SSL configuration alias defaultSSLConfig.  The extended error message from the SSL handshake exception is: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
    </blockquote>

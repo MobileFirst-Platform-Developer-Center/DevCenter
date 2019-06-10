@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Übersetzung von JavaScript-Anwendungen (Cordova, Web) in mehrere Sprachen
-breadcrumb_title: Übersetung in mehrere Sprachen
+title: Übersetzung von JavaScript-Anwendungen (Cordova-Anwendungen, Webanwendungen) in mehrere Sprachen
+breadcrumb_title: Multilingual translation
 relevantTo: [javascript]
 weight: 9
 downloads:

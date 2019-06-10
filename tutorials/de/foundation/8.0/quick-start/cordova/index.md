@@ -92,10 +92,7 @@ Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.
 
 1. Wählen Sie **Aktionen → Beispiel herunterladen** aus. Laden Sie das **Java**-Adapterbeispiel "Hello World" herunter. 
 
-    > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind,
-folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
-
-
+    > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind, folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**. 
 
 2. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Adapter-Maven-Projekts und führen Sie den folgenden Befehl aus:
 

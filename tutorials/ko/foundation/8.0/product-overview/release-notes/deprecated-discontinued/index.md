@@ -26,7 +26,7 @@ weight: 3
         <td><p>MobileFirst Studio는 Eclipse용 {{ site.data.keys.mf_studio }} 플러그인으로 대체됩니다.</p></td>
         <td><p>Eclipse용 {{ site.data.keys.mf_studio }} 플러그인으로 대체되고 표준 및 커뮤니티 기반 Eclipse 플러그인에 의해 제공됩니다. Visual Studio Code, Eclipse, IntelliJ 등과 같이 Apache Cordova CLI 또는 Cordova 사용 IDE로 직접 하이브리드 애플리케이션을 개발할 수 있습니다. Cordova 사용 IDE로 Eclipse를 사용하는 데 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">Eclipse에서 Cordova 프로젝트를 관리하기 위한 IBM {{ site.data.keys.mf_studio }} 플러그인</a>을 참조하십시오.</p>
 
-        <p>Apache Maven 또는 maven 사용 IDE(예: Eclipse, IntelliJ 및 기타)로 어댑터를 개발할 수 있습니다. 어댑터 개발에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">어댑터 카테고리</a>를 참조하십시오. Maven 사용 IDE로서 Eclipse 사용에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Eclipse에서 어댑터 개발 학습서</a>를 읽어보십시오.</p>
+        <p>Apache Maven 또는 maven 사용 IDE(예: Eclipse, IntelliJ 및 기타)로 어댑터를 개발할 수 있습니다. 어댑터 개발에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">어댑터 카테고리</a>를 참조하십시오. Maven 사용 IDE로서 Eclipse 사용에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Eclipse에서 어댑터 개발 튜토리얼</a>을 읽어보십시오.</p>
 
         <p>{{ site.data.keys.mf_server }}로 어댑터 및 애플리케이션을 테스트하기 위해 {{ site.data.keys.mf_dev_kit_full }}를 설치하십시오. 또한 인터넷 기반 저장소(예: NPM, Maven, Cocoapod 또는 NuGet)에서 다운로드하지 않으려면 {{ site.data.keys.product_adj }} 개발 도구 및 SDK에 액세스할 수 있습니다. {{ site.data.keys.mf_dev_kit }}에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{ site.data.keys.mf_dev_kit }}</a>의 내용을 참조하십시오.</p>
         </td>
@@ -43,7 +43,7 @@ weight: 3
     </tr>
     <tr>
         <td><p>암호화된 캐시는 더 이상 사용되지 않습니다.</p></td>
-        <td><p>더 이상 사용되지 않습니다. 암호화된 데이터를 로컬로 저장하려면 JSONStore를 사용하십시오. JSONStore에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore">JSONStore 학습서</a>를 참조하십시오.</p>
+        <td><p>더 이상 사용되지 않습니다. 암호화된 데이터를 로컬로 저장하려면 JSONStore를 사용하십시오. JSONStore에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/jsonstore">JSONStore 튜토리얼</a>을 참조하십시오.</p>
         </td>
     </tr>
     <tr>        
@@ -59,7 +59,7 @@ weight: 3
         <td><p>v8.0에 없습니다.</p></td>
     </tr>
     <tr>
-        <td><p>IBM Business Process Manager(IBM BPM) 프로세스 애플리케이션에 대한 서비스 발견 및 어댑터 생성, Microsoft Azure Marketplace DataMarket, OData RESTful API, RESTful 자원, SAP Netweaver Gateway에서 노출된 서비스 및 웹 서비스는 v8.0에 없습니다.</p></td>
+        <td><p>IBM Business Process Manager(IBM BPM) 프로세스 애플리케이션에 대한 서비스 발견 및 어댑터 생성, Microsoft Azure Marketplace DataMarket, OData RESTful API, RESTful 리소스, SAP Netweaver Gateway에서 노출된 서비스 및 웹 서비스는 v8.0에 없습니다.</p></td>
         <td><p>v8.0에 없습니다.</p></td>
     </tr>
     <tr>
@@ -152,7 +152,7 @@ weight: 3
     </tr>
     <tr>
         <td>위치정보: {{ site.data.keys.product }} v8.0에서는 위치정보 지원이 중단되었습니다. 비컨 및 중개자에 대한 REST API가 중단되었습니다. 클라이언트 측 및 서버 측 API WL.Geo와 WL.Device는 중단되었습니다.	</td>
-        <td>더 이상 사용되지 않습니다. 위치 정보에 네이티브 디바이스 API 또는 써드파티 Cordova 플러그인을 사용하십시오.</td>
+        <td>더 이상 사용되지 않습니다. 위치 정보에 네이티브 디바이스 API 또는 서드파티 Cordova 플러그인을 사용하십시오.</td>
     </tr>
     <tr>
         <td>{{ site.data.keys.product_adj }} Data Proxy 기능이 중단되었습니다. Cloudant IMFData 및 CloudantToolkit API 또한 사용되지 않습니다.	</td>
@@ -195,7 +195,7 @@ weight: 3
 |`WL.Server.setEventHandlers`         |이벤트 소스 기반 알림에서 태그 기반 알림으로 마이그레이션하려면 이벤트 소스 기반 알림에서 푸시 알림으로 마이그레이션을 참조하십시오.                                                     |
 |`WL.Server.createEventHandler`       |                                                |
 |`WL.Server.createSMSEventHandler`	 |SMS 메시지를 보내려면 푸시 서비스 REST API를 사용하십시오. 자세한 정보는 [알림 보내기](../../../notifications/sending-notifications)를 참조하십시오.                         |
-|`WL.Server.createUSSDEventHandler`	 |써드파티 서비스를 사용하여 USSD을 통합하십시오.  |
+|`WL.Server.createUSSDEventHandler`	 |서드파티 서비스를 사용하여 USSD을 통합하십시오.  |
 
 #### 푸시
 {: #push }
@@ -212,7 +212,7 @@ weight: 3
 
 |API 요소                                |대체 경로                               |
 |-------------------------------------------|------------------------------------------------|
-|`WL.Geo.*`	                                |써드파티 서비스를 사용하여 위치 정보 서비스를 통합하십시오. |
+|`WL.Geo.*`	                                |서드파티 서비스를 사용하여 위치 정보 서비스를 통합하십시오. |
 
 #### WS-Security
 {: #ws-security }
@@ -259,7 +259,7 @@ weight: 3
 
 ### JavaScript API
 {: #javascript-apis }
-사용자 인터페이스에 영향을 미치는 다음 JavaScript API는 v8.0에서 더 이상 지원되지 않습니다. 사용 가능한 써드파티 Cordova 플러그인으로 대체하거나 사용자 정의 Cordova 플러그인을 작성할 수 있습니다.
+사용자 인터페이스에 영향을 미치는 다음 JavaScript API는 v8.0에서 더 이상 지원되지 않습니다. 사용 가능한 서드파티 Cordova 플러그인으로 대체하거나 사용자 정의 Cordova 플러그인을 작성할 수 있습니다.
 
 |API 요소           |마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
@@ -270,7 +270,7 @@ weight: 3
 |`WL.App.overrideBackButton(callback)`, `WL.App.resetBackButton()` |이 기능을 제공하는 Cordova 플러그인을 사용하십시오. **참고:** 정보용으로 Cordova **backbutton** 플러그인이 이 기능을 제공합니다. |
 |`WL.App.getDeviceLanguage()` |이 기능을 제공하는 Cordova 플러그인을 사용하십시오. **참고:** 정보용으로 Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다. |
 |`WL.App.getDeviceLocale()` |이 기능을 제공하는 Cordova 플러그인을 사용하십시오. **참고:** 정보용으로 Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다. |
-|`WL.App.BackgroundHandler` |사용자 정의 핸들러 함수를 실행하려면 표준 Cordova 일시정지 이벤트 리스너를 사용하십시오. 개인정보 보호정책을 제공하는 Cordova 플러그인을 사용하여 iOS 및 Android 시스템과 사용자의 스냅샷 또는 화면 캡처를 찍지 않게 하십시오. 자세한 정보는 **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)**의 설명을 참조하십시오. |
+|`WL.App.BackgroundHandler` |사용자 정의 핸들러 함수를 실행하려면 표준 Cordova 일시정지 이벤트 리스너를 사용하십시오. 개인정보 보호를 제공하는 Cordova 플러그인을 사용하여 iOS 및 Android 시스템과 사용자의 스냅샷 또는 화면 캡처를 찍지 않게 하십시오. 자세한 정보는 **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)**의 설명을 참조하십시오. |
 |`WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` |{{ site.data.keys.product }} V8.0.0에서 지원되지 않는 Adobe AIR 플랫폼을 지원하기 위해 기능이 제공되었습니다. |
 |`WL.Toast.show(string)` |Toast에 대한 Cordova 플러그인을 사용하십시오. |
 
@@ -284,11 +284,11 @@ weight: 3
 |`WL.Client.setUserPref(key,value, options)`, `WL.Client.setUserPrefs(userPrefsHash, options)`, `WL.Client.deleteUserPrefs(key, options)` |대체 없음. 어댑터 및 `MFP.Server.getAuthenticatedUser` API를 사용하여 사용자 환경 설정을 관리할 수 있습니다. |
 |`WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` |대체 없음. |
 |`WL.Client.logActivity(activityType)` |`WL.Logger`를 사용하십시오. |
-|`WL.Client.login(realm, options)` |`WLAuthorizationManager.login`을 사용하십시오. 인증 및 보안을 시작하려면 인증 및 보안 학습서를 참조하십시오. |
+|`WL.Client.login(realm, options)` |`WLAuthorizationManager.login`을 사용하십시오. 인증 및 보안을 시작하려면 인증 및 보안 튜토리얼을 참조하십시오. |
 |`WL.Client.logout(realm, options)` |`WLAuthorizationManager.logout`을 사용하십시오. |
 |`WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` |`WLAuthorizationManager.obtainAccessToken`을 사용하십시오. |
 |`WL.Client.transmitEvent(event, immediate)`, `WL.Client.purgeEventTransmissionBuffer()`, `WL.Client.setEventTransmissionPolicy(policy)` |이러한 이벤트의 알림을 수신할 사용자 정의 어댑터를 작성하십시오. |
-|`WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` |위치정보에 대한 네이티브 API 또는 써드파티 Cordova 플러그인을 사용하십시오. |
+|`WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` |위치정보에 대한 네이티브 API 또는 서드파티 Cordova 플러그인을 사용하십시오. |
 |`WL.Client.makeRequest (url, options)` |동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오. |
 |`WLDevice.getID(options)` |이 기능을 제공하는 Cordova 플러그인을 사용하십시오. **참고:** 정보용으로 **cordova-plugin-device** 플러그인의 `device.uuid`가 이 기능을 제공합니다. |
 |`WL.Device.getFriendlyName()` |`WL.Client.getDeviceDisplayName`을 사용하십시오. |
@@ -332,7 +332,7 @@ weight: 3
 |API 요소           |마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
 |`WLConfig WLClient.getConfig()` |대체 없음. |
-|`WLDevice WLClient.getWLDevice()`, `WLClient.transmitEvent(org.json.JSONObject event)`, `WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy)`, `WLClient.purgeEventTransmissionBuffer()` |위치정보에 대한 Android API 또는 써드파티 패키지를 사용하십시오. |
+|`WLDevice WLClient.getWLDevice()`, `WLClient.transmitEvent(org.json.JSONObject event)`, `WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy)`, `WLClient.purgeEventTransmissionBuffer()` |위치정보에 대한 Android API 또는 서드파티 패키지를 사용하십시오. |
 |`WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` |대체 없음. |
 |`WL.Client.getUserInfo(realm, key`, `WL.Client.updateUserInfo(options)` |대체 없음. |
 |`WLClient.checkForNotifications()` |`WLAuthorizationManager.obtainAccessToken("", listener)`을 사용하여 서버에 대한 연결성을 검사하고 애플리케이션 관리 규칙을 적용하십시오. |
@@ -391,7 +391,7 @@ weight: 3
 
 |API 요소           |마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
-|`[WLClient getWLDevice][WLClient transmitEvent:]`, `[WLClient setEventTransmissionPolicy]`, `[WLClient purgeEventTransmissionBuffer]` |위치정보가 제거되었습니다. 위치정보에 대한 네이티브 iOS 또는 써드파티 패키지를 사용하십시오. |
+|`[WLClient getWLDevice][WLClient transmitEvent:]`, `[WLClient setEventTransmissionPolicy]`, `[WLClient purgeEventTransmissionBuffer]` |위치정보가 제거되었습니다. 위치정보에 대한 네이티브 iOS 또는 서드파티 패키지를 사용하십시오. |
 |`WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` |대체 없음. |
 |`WL.Client.deleteUserPref(key, options)` |대체 없음. 어댑터 및 `MFP.Server.getAuthenticatedUser` API를 사용하여 사용자 환경 설정을 관리할 수 있습니다. |
 |`[WLClient getRequiredAccessTokenScopeFromStatus]` |`WLAuthorizationManager obtainAccessTokenForScope`를 사용하십시오. |

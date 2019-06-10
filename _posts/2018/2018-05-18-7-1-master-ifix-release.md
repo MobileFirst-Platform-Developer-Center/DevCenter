@@ -1,6 +1,7 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2018-05-18
+date: 2019-06-07
+permalink: '/blog/2018/05/18/7-1-master-ifix-release/'
 version:
 - 7.1
 tags:
@@ -12,25 +13,26 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *7.1.0.0-MFPF-IF201812191245* has been released for MobileFirst Foundation 7.1, dated **December 19th, 2018**.
+A new iFix *7.1.0.0-MFPF-IF201905291324* has been released for MobileFirst Foundation 7.1, dated **May 29th, 2019**.
 <br/>
-<div class="panel-group accordion" id="mfp-7.1-ifix-IF201812191245" role="tablist">
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201905291324" role="tablist">
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="mfp-ifix-IF201812191245">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201905291324">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201812191245" href="#collapse-mfp-ifix-IF201812191245" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201812191245"><b>iFix 7.1.0.0-MFPF-IF201812191245</b> <span class="label label-primary">latest</span></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201905291324" href="#collapse-mfp-ifix-IF201905291324" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201905291324"><b>iFix 7.1.0.0-MFPF-IF201905291324</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
             </h4>
         </div>
-        <div id="collapse-mfp-ifix-IF201812191245" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201812191245">
+        <div id="collapse-mfp-ifix-IF201905291324" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201905291324">
             <div class="panel-body">
-            iFix for MobileFirst Foundation 7.1, dated <b>December 19th, 2018</b>.
+            iFix for MobileFirst Foundation 7.1, dated <b>May 29th, 2019</b>.
             <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
 
             <h3>Changes included in this iFix</h3>
             <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
 
-            <b>PH06599</b> CURRENCY UPGRADE TO LIBERTY (18.0.0.4) AND IBM JAVA 8.0.5.26.<br/>
-            <b>PH06421</b> THE JSP-2.3 FEATURE IN LIBERTY SERVER.XML CREATES A CONFLICT WITH THE SERVLET. RUNTIME DOES NOT COME UP.<br/>
+            <b>PH12573</b>  PROVIDE WKWEBVIEW SUPPORT FOR IOS IN MFP 7.1 FOR MOBILEFIRST CLI.<br/>
+            <b>PH12256</b>  MFP FORCE SYNC IMPL.<br/>
+            <b>PH11281</b>  MFP 7.1 INSTALLATION THROWS ERROR WITH WAS 9.0.<br/>
 
             </div>
         </div>      
@@ -41,6 +43,189 @@ A new iFix *7.1.0.0-MFPF-IF201812191245* has been released for MobileFirst Found
 
 IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
 *List below includes iFixes released in 2018 only.*
+
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201905221643" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201905221643">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201905221643" href="#collapse-mfp-ifix-IF201905221643" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201905221643"><b>iFix 7.1.0.0-MFPF-IF201905221643</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201905221643" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201905221643">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>May 22nd, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <blockquote><h4>Features</h4><br/>
+            This iFix includes the support for Android 64 bit apps. This support is added to comply with the requirement wherein starting Aug 1st, 2019, all new apps and app updates that include native code are required to provide 64-bit versions to Android Play Store. For more information on the requirement, read <a href="https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html" target="_blank">this blog</a> by Google. For information on the 64-bit support in MobileFirst Foundation, see <a href="{{site.baseurl}}/blog/2019/05/24/Google-Play-64-bit-requirement/" target="_blank">here</a>. <br/><br/>
+            This iFix also introduces the support for WKWebView for hybrid apps built using Cordova, since Apple has deprecated UIWebView and wants developers to use WKWebView for interactive web content. For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/wkwebview-support-for-ios-apps/" target="_blank">here</a>.
+            </blockquote>
+
+            <b>PH11725</b>  PROVIDE WKWEBVIEW SUPPORT FOR IOS IN MFP 7.1 FOR MOBILEFIRST STUDIO.<br/>
+            <b>PH10641</b>  JSONSTORE SUPPORT FOR 64 BIT ARCHITECTURES.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>     
+
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201903291256" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201903291256">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201903291256" href="#collapse-mfp-ifix-IF201903291256" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201903291256"><b>iFix 7.1.0.0-MFPF-IF201903291256</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201903291256" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201903291256">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>March 29th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH09324</b>  OPENSSL HAS RECEIVED SECURITY UPDATES 1.0.2R AND MUST BE UPGRADED TO THE LATEST VERSION.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>  
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201903191506" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201903191506">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201903191506" href="#collapse-mfp-ifix-IF201903191506" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201903191506"><b>iFix 7.1.0.0-MFPF-IF201903191506</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201903191506" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201903191506">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>March 19th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH09818</b>  JAVASCRIPT ADAPTER CLIENT ERROR HTML RESPONSES ARE STRINGIFIED AND NOT SENT AS JSON OBJECTS.<br/>
+            <b>PH09786</b>  MIGRATING FROM FCM TO GCM WHEN PUSH IS ENABLED RESULTS IN SEVERAL EXCEPTIONS (CRASH).<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>     
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201903121602" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201903121602">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201903121602" href="#collapse-mfp-ifix-IF201903121602" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201903121602"><b>iFix 7.1.0.0-MFPF-IF201903121602</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201903121602" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201903121602">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>March 12th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH08625</b>  APP CRASHES ON ANDROID WHEN INVOKING WINDOW.LOCATION.RELOAD().<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>     
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201902270558" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201902270558">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201902270558" href="#collapse-mfp-ifix-IF201902270558" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201902270558"><b>iFix 7.1.0.0-MFPF-IF201902270558</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201902270558" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201902270558">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>February 27th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH08712</b>  BUILDING AND UPGRADING LIBCRYPTO.SO FILE WITH LATEST OPENSSL ANDOPENSSL-FIPS VERSION IN MFP 7.1.<br/>
+            <b>PH08951</b>  WITH MULTIPLE PUSH SDK'S, APP CRASHES IF PAYLOAD STRING IS NOT PART OF NOTIFICATION JSON.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>   
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201902111712" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201902111712">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201902111712" href="#collapse-mfp-ifix-IF201902111712" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201902111712"><b>iFix 7.1.0.0-MFPF-IF201902111712</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201902111712" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201902111712">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>February 11th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH07893</b>  IOS DEVICE LOGS SHOW SENSITIVE DATA LIKE ADAPTER RESPONSES AND ACCESS TOKENS IN PLAIN TEXT.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>     
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201902051336" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201902051336">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201902051336" href="#collapse-mfp-ifix-IF201902051336" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201902051336"><b>iFix 7.1.0.0-MFPF-IF201902051336</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201902051336" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201902051336">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>February 5th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH07909</b> PUSH NOTIFICATION CONNECTIONS TO FCM NOT RELEASED.<br/>
+            <b>PH07112</b> THE JSP-2.3 FEATURE IN LIBERTY SERVER.XML CREATES A CONFLICT WITH THE SERVLET. APP CENTER CONSOLE DOES NOT COME UP.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>    
+
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201812191245" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201812191245">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201812191245" href="#collapse-mfp-ifix-IF201812191245" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201812191245"><b>iFix 7.1.0.0-MFPF-IF201812191245</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201812191245" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201812191245">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>December 19th, 2018</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <blockquote><h4>Features</h4><b>Support for latest APNS message structure in 7.1</b><br/>Latest APNS message structure is now supported. Users can now send <i>title</i>, <i>subtitle</i>, <i>attachment url</i> as part of a notification.</blockquote>
+
+            <b>PH06599</b> CURRENCY UPGRADE TO LIBERTY (18.0.0.4) AND IBM JAVA 8.0.5.26.<br/>
+            <b>PH06421</b> THE JSP-2.3 FEATURE IN LIBERTY SERVER.XML CREATES A CONFLICT WITH THE SERVLET. RUNTIME DOES NOT COME UP.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>     
 
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201812051106" role="tablist">
     <div class="panel panel-default">
