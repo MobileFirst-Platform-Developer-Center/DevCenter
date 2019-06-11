@@ -498,7 +498,7 @@ First add the following plug-in to include In-App Feedback capability into your 
 cordova plugin add cordova-plugin-mfp-analytics
 ```
 
-Now, use the following JavaScript API method in the action handler of your Cordova application
+Now, use the following JavaScript API method in the action handler of your Cordova application.
 
 ```javascript
 WL.Analytics.triggerFeedbackMode();
@@ -513,15 +513,18 @@ WL.Analytics.triggerFeedbackMode();
 {: #ios-sending-userfeedback-data }
 **Swift**
 
-First add the following to your application's podfile
+First add the following to your application's podfile.
+
 ```
 pod 'IBMMobileFirstPlatformFoundationAnalytics'
 ```
-Next ensure you update your pod by running the following command at the root of your XCode project
+
+Next ensure you update your pod by running the following command at the root of your XCode project.
 ```
 pod update
 ```
-Now call the following API in the action handler of your application
+
+Now call the following API in the action handler of your application.
 
 ```swift
 WLAnalytics.sharedInstance().triggerFeedbackMode();
@@ -530,7 +533,8 @@ WLAnalytics.sharedInstance().triggerFeedbackMode();
 #### Android
 {: #android-sending-userfeedback-data }
 
-First add the following dependency into your application's gradle script
+First add the following dependency into your application's gradle script.
+
 ```
 compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationanalytics:8.0.+@aar'
 ```
