@@ -44,10 +44,11 @@ Apart from the major comparisons highlighted above, the following table gives yo
 | Update download size                    | <span style="color:green">**Small. Only delta can be downloaded**</span>                                  | Full update is downloaded                                         |
 | Option of rejecting an update for users | <span style="color:green">**Yes**</span>                                                                  | Yes - only in a flexible update                                   |
 | Silent update                           | <span style="color:green">**Yes**</span>                                                                  | No                                                                |
-| Other Limitations                       |Installed app and update must be from the same version                                            |<span style="color:green">**Update must be of a higher version than the installed version**</span>
+| Other Limitations                       |Installed app and update must be from the same version                                            |<span style="color:green">**Update must be of a higher version than the installed version**</span>                                      |
+|Secure updates                           |<span style="color:green">**Yes**</span>        |<span style="color:green">**Yes** (delivered through Play Store)          |
 
 ### Conclusion
 
-If you're a native Android app developer, the in-app udpate is a new capability that fills the gap of proving an update without the user having to launch the Play Store. Exploiting this requires some amount of forethought and code even before you deliver any updates. All this is still subject to the restrictions of the feature and Play Store
+If you're a native Android app developer, the in-app udpate is a new capability that fills the gap of providing an update without the user having to launch the Play Store. Exploiting this requires some amount of forethought and code from the developer even before you deliver any updates. Additionally, you're still constrained by the restrictions of in-app updates and Play Store mentioned in the table above.
 
-Direct Update, on the other hand is restricted to only Cordova and Ionic apps, but is far more versatile and powerful in creating a compelling user experience. 
+Direct Update, on the other hand is available to only Cordova and Ionic apps, but is far more versatile and powerful in creating a compelling user experience. 
