@@ -1,5 +1,5 @@
 ---
-title: Should you App Update or Direct Update ? 
+title: Should I use App Update or Direct Update? 
 date: 2019-06-10
 tags:
 - MobileFirst_Platform
@@ -18,9 +18,9 @@ Google I/O 2019 brought in a flurry of new feature announcements. One of the les
 MobileFirst has had the ability to update app content from within the app for a long time now through [Direct Update](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/direct-update/). 
 
 So, 
-* How is Android in-app udpate different from Direct Update ?
-* Is one better than the other ? 
-* Which is the best way to update my app ? 
+* How is Android in-app udpate different from Direct Update?
+* Is one better than the other? 
+* Which is the best way to update my app? 
 
 In this post, I'll attempt to answer these questions and more.
 
@@ -46,7 +46,8 @@ Apart from the major comparisons highlighted above, the following table gives yo
 | Silent update                           | <span style="color:green">**Yes**</span>                                                                  | No                                                                |
 | Other Limitations                       |Installed app and update must be from the same version                                            |<span style="color:green">**Update must be of a higher version than the installed version**</span>
 
-###Conclusion
-If you're a native Android app developer, the in-app udpate is a new capability that fills the gap of proving an update without the user having to launch the Play Store. Exploiting this requires some amount of forethought and code even before you deliver any updates. All this is still subject to a the restrictions of the feature and Play Store
+### Conclusion
+
+If you're a native Android app developer, the in-app udpate is a new capability that fills the gap of proving an update without the user having to launch the Play Store. Exploiting this requires some amount of forethought and code even before you deliver any updates. All this is still subject to the restrictions of the feature and Play Store
 
 Direct Update, on the other hand is restricted to only Cordova and Ionic apps, but is far more versatile and powerful in creating a compelling user experience. 
