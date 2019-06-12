@@ -8,13 +8,15 @@ tags:
 - 64-bit
 - Google Play Store
 version:
-- 7.1, 8.0
+- 7.1
+- 8.0
 author:
   name: Manjunath Kallanavar
 additional_authors:
 - Srihari Kulkarni
 ---
 
+> **Note:** 64-bit support is provided for apps developed using MobileFirst Platform Foundation v7.1 and Mobile Foundation v8.0. If you are using MobileFirst Platform Foundation v7.0 or lower, please upgrade to the latest version of Mobile Foundation.
 
 If you are tuned into the Android Developers Blog, then you would know by now that all apps to be published to the Google Play Store starting 1st Aug, 2019 are [required to publish both 32 and 64 bit versions of any native libraries](https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html).
 
@@ -28,13 +30,13 @@ One of the [known limitations](https://mobilefirstplatform.ibmcloud.com/tutorial
 
 The 64-bit libraries for Android will use a different encryption library for performing the encryption compared to the existing libraries that offered only 32-bit support. As a result of this, any existing JSONStore Collections on the device will not be accessible when your app is built in 64-bit mode. The existing collection will have to be destroyed and a new one created.
 
-If data retention is essential to the app, then upgrading the app with the iFix version *8.0.0.0-MFPF-IF201905070819* in 32-bit mode will perform an in-place migration to use the new encryption library. Any subsequent upgrade to the app in 32 or 64-bit mode will retain the data.
+If data retention is essential to the app, then upgrading the app with the iFix version *8.0.0.0-MFPF-IF201905070819* (*7.1.0.0-MFPF-IF201905221643* for MobileFirst Foundation v7.1) in 32-bit mode will perform an in-place migration to use the new encryption library. Any subsequent upgrade to the app in 32 or 64-bit mode will retain the data.
 
 ## MobileFirst 8.0 apps
 
 Before you publish your app to the Play Store with 64-bit compliance, add the following SDKs to your project.
 
-### Cordova:
+### Cordova apps:
 
 ```bash
 cordova plugin remove cordova-plugin-mfp
@@ -51,7 +53,7 @@ Add the following line to the `<mfp:android>` section of `config.xml`
 ```
 to build the app in 64-bit mode.
 
-### Android:
+### Android Native apps:
 
 Edit your `app/build.gradle` file to include the following lines in the `dependencies` section.
 
@@ -75,7 +77,7 @@ packagingOptions {
 
 Before you publish your app to the Play Store with 64-bit compliance, add the following SDKs to your project.
 
-### Hybrid Apps
+### Hybrid apps
 Follow the steps provided below to add 64-bit libraries to your app
 
 
@@ -142,7 +144,7 @@ Delete the following files
 <ProjectName>/apps/<ApplicationName>/android/native/libs/x86/libopenssl_fips.so
 ```
 
-### Native Apps
+### Native apps
 
 Refer to this [documentation page](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/7.1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/#localMethod) on how to add MobileFirst libraries to a native Android app.
 
@@ -183,7 +185,7 @@ packagingOptions {
 ```
 
 
-### Cordova Apps
+### Cordova apps
 
 ####  Step 1: Remove and add the the MobileFirst plugins and the `android` platform.
 

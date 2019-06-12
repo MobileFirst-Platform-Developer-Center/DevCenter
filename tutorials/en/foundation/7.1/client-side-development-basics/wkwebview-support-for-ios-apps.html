@@ -20,14 +20,14 @@ weight: 12
 <h3>Procedure</h3>
 <p>To enable the WKWebView in a Hybrid MobileFirst app for iOS, follow the below steps.</p>
 <ol>
-  <li>Open the MobileFirst Hybrid iOS application in Xcode IDE.</li>
-  <li>Add the following snippet inside <i>widget</i> tag in <code>config.xml</code>, which is located inside <b>Resources</b> folder.
+  <li>Open the MobileFirst Hybrid iOS application in Xcode IDE (<code>&lt;ProjectName<&gt;/&lt;AppName&gt;/iphone/native</code>).</li>
+  <li>Navigate to the <code>Resources/config.xml</code> file and add the following preference under the &lt;widget&gt; tag.
     <p><code>&lt;preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" /&gt;</code></p>
 </li>
-<li>Click <b>Build phases</b> -> <b>Link Binary with Libraries</b> -> <b>Search for Webkit.framework</b> and <b>Add</b> it.
+<li>Click <b>Build phases</b> &gt; <b>Link Binary with Libraries</b> &gt; Search for <i>Webkit.framework</i> and add it.
 </li>
-<li>Click <b>CordovaLib.xcodeproj</b> -> <b>Build Phases</b></li>
-<li>Add the following header files in the <b>Headers</b> tab as <i>Public</i>. These files are located in <code>CordovaLib.xcodeproj/plugin/WKWebview</code>.
+<li>Click <b>CordovaLib.xcodeproj</b> &gt; <b>Build Phases</b></li>
+<li>Add the following header files in the <b>Headers</b> tab as <i>public</i>. These files are located in <code>CordovaLib.xcodeproj/plugin/WKWebview</code>.
   <ul><li>CDVWKWebViewUIDelegate.h</li>
     <li>CDVWKProcessPoolFactory.h</li>
     <li>CDVWKWebViewEngine.h</li>
