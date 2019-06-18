@@ -13,7 +13,7 @@ You can now install the Digital App Builder on MacOS and Windows platform. The i
 ### Installing on MacOS
 {: #installing-on-macos }
 
-1. Download the .dmg (**IBM.Digital.App.Builder-8.0.2.dmg**) from [IBM passport advantage](https://www.ibm.com/software/passportadvantage/) or from [here](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
+1. Download the .dmg (**IBM.Digital.App.Builder-n.n.n.dmg**, where `n.n.n` is the version number) from [IBM passport advantage](https://www.ibm.com/software/passportadvantage/) or from [here](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
 2. Double click on .dmg file to mount the installer.
 3. In the window that the installer opens, drag and drop the IBM Digital App Builder to the **Applications** folder.
 4. Double click the IBM Digital App Builder icon or executable to open the Digital App Builder.
@@ -50,7 +50,7 @@ You can now install the Digital App Builder on MacOS and Windows platform. The i
 
 Run the following commands from the command prompt opened in administrative mode:
 
-1. Download the .exe (**IBM.Digital.App.Builder.Setup.8.0.2.exe**) from [IBM passport advantage](https://www.ibm.com/software/passportadvantage/) or from [here](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
+1. Download the .exe (**IBM.Digital.App.Builder.Setup.n.n.n.exe**, where `n.n.n` is the version number)) from [IBM passport advantage](https://www.ibm.com/software/passportadvantage/) or from [here](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
 2. Double click the Digital App Builder executable to install.
 
     ![Installing Digital App Builder](dab-install-startup.png)

@@ -247,6 +247,15 @@ To add Push notifications to your app:
     a. For Android app, copy `google-services.json` (download from your firebase project) to `<path_to_app>/ionic/platforms/android/app` folder.
     b. For iOS app, open the xcode project `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` and enable push notification capability. For more details, refer to [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
+6. On the server side,
+ 
+    * Follow [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications) to enable push notifications on the server side.
+
+    * Follow [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications) to send notifications from the server
+
+**Note**:
+Push notifications from MFP server is used to enable the notification service. So if IBM Cloud push notification service was used before, follow the link to set up notifications in MFP server
+[http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications).
 
 ### Console
 {: #console }
