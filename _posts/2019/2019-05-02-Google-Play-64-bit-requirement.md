@@ -137,7 +137,7 @@ to
 <ProjectName>/apps/<ApplicationName>/android/native/libs/arm64-v8a/libsqlcipher.so
 <ProjectName>/apps/<ApplicationName>/android/native/libs/x86_64/libsqlcipher.so
 ```
-**NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your app,create them and then copy the files.
+>**NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your app,create them and then copy the files.
 
 #### Step 2: Make the following build configuration
 
@@ -191,7 +191,7 @@ Refer to this [documentation page](https://mobilefirstplatform.ibmcloud.com/tuto
 ```
 to the `assets/featurelibs` path of your native project.
 
-**NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your app,create them and then copy the files.
+>**NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your app,create them and then copy the files.
 
 #### Step 2: Make the following build configuration
 
