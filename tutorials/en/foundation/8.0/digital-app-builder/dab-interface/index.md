@@ -34,8 +34,6 @@ Workbench helps you to design the pages. Workbench consists of three work areas:
 
         ![Pages / Congrols](dab-workbench-basic-controls.png)
 
-        You can now modify styling for some of the basic controls like Button, Heading Text, etc. The styling that you can modify include: Color (background, foreground), Font weight, and Alignment (Left, Center, Right).
-
         * **Button** - Buttons has a property to label. In the Action tab you can specify the page to navigate to on click of the Button.
         * **Heading Text** - Helps you to add a heading text for the application such as Page Title.
         * **Image** - Helps you upload a local image or provide a url of an image.
@@ -235,24 +233,29 @@ To add Push notifications to your app:
 
     ![Engagement Push](dab-engagement-push.png)
 
-2. In the **Push Notifications** click **Connect**. This displays the **Connect to Push Notification instance** dialog.
+2. In **Push Notifications**, click **Enable**. This displays the **Push Notification instance** configuration dialog.
 
-    ![Engagement Push Notifications instance](dab-engagement-push-instance.png)
+3. Configure push notification for Android by providing **API Secret Key** and **Sender ID** and click **Save configuration**.
 
-3. Enter **Name**, **API Key**, **App GUID**, **Client Secret Key**, select the **Region** and click **Connect**.
-4. The Name entered above get added to the page under Engagement.
-5. Configure push notification for Android by providing **API Secret Key** and **Sender ID** and click **Save configuration**.
+    ![Engagement Push Notification Android configuration](dab-engagement-push-instance.png)
 
-    ![Engagement Push Notification Android configuration](dab-engagement-push-android-configure.png)
-
-6. Navigate to the iOS tab and provide push configuration details: select the **Environment**, provide the .p12 file with path, and enter the **Password** and click **Save configuration**.
+4. Navigate to the iOS tab and provide push configuration details: select the **Environment**, provide the .p12 file with path, and enter the **Password** and click **Save configuration**.
 
     ![Engagement Push Notification iOS configuration](dab-engagement-push-ios-configure.png)
 
-7.  
-    a. For Android, copy `google-services.json` (download from your firebase project) to `<path_to_app>/ionic/platforms/android/app` folder.
-    b. For iOS, open the xcode project `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` and enable push notification capability. For more details, refer to [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+5. Perform the following steps:
+    a. For Android app, copy `google-services.json` (download from your firebase project) to `<path_to_app>/ionic/platforms/android/app` folder.
+    b. For iOS app, open the xcode project `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` and enable push notification capability. For more details, refer to [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
+6. On the server side,
+ 
+    * Follow [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications) to enable push notifications on the server side.
+
+    * Follow [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications) to send notifications from the server
+
+**Note**:
+Push notifications from MFP server is used to enable the notification service. So if IBM Cloud push notification service was used before, follow the link to set up notifications in MFP server
+[http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications).
 
 ### Console
 {: #console }
