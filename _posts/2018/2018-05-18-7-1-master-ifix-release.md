@@ -81,7 +81,8 @@ IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<
 
             <blockquote><h4>Features</h4><br/>
             This iFix includes the support for Android 64 bit apps. This support is added to comply with the requirement wherein starting Aug 1st, 2019, all new apps and app updates that include native code are required to provide 64-bit versions to Android Play Store. For more information on the requirement, read <a href="https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html" target="_blank">this blog</a> by Google. For information on the 64-bit support in MobileFirst Foundation, see <a href="{{site.baseurl}}/blog/2019/05/24/Google-Play-64-bit-requirement/" target="_blank">here</a>. <br/><br/>
-            This iFix also introduces the support for WKWebView for hybrid apps built using Cordova, since Apple has deprecated UIWebView and wants developers to use WKWebView for interactive web content. For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/wkwebview-support-for-ios-apps/" target="_blank">here</a>.
+            This iFix also introduces the support for WKWebView for hybrid apps built using Cordova, since Apple has deprecated UIWebView and wants developers to use WKWebView for interactive web content. For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/wkwebview-support-for-ios-apps/" target="_blank">here</a>.<br/>
+            The <i>cordova-ios</i> version has been updated to 4.0.1 in this iFix release. Ensure that any additional third-party cordova plugin that is added to the project is compatible with the <i>cordova-ios</i> version 4.0.1.
             </blockquote>
 
             <b>PH11725</b>  PROVIDE WKWEBVIEW SUPPORT FOR IOS IN MFP 7.1 FOR MOBILEFIRST STUDIO.<br/>
