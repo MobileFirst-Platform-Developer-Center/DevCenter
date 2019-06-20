@@ -19,7 +19,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 * Successfully pinging the {{ site.data.keys.mf_server }}.
 * Successfully retrieving data using an adapter.
 
-#### Prerequisites:
+### Prerequisites:
 {: #prerequisites }
 * Android Studio
 * *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
