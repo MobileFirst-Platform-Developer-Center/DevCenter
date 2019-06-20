@@ -25,13 +25,7 @@ The Cordova platform versions supported by the MobileFirst plug-ins, are:
 
 * cordova-ios: **>= 4.1.1 and < 6.0**
 * cordova-android: **>= 6.1.2 and < 9.0**
-* cordova-windows: **>= 4.3.2 and < 8.0**
-
->**Note:** The **cordova-windows** latest published version has a bug, which will throw an exception during app launch. Apache Cordova has fixed the issue in the development repository but it is not published yet. It is recommended to use the *cordova-windows* version from the master repository that contains the fix. Below is the command that can be used to add the *cordova-windows* platform to have the fix in place.
-
-```bash
-cordova platform add https://github.com/apache/cordova-windows
-```
+* cordova-windows: **>= 4.3.2 and < 7.0**
 
 #### Jump to:
 {: #jump-to }
@@ -145,6 +139,16 @@ Consider creating the project by using the {{ site.data.keys.product_adj }} Cord
 
 The {{ site.data.keys.product_adj }} API methods are available after the {{ site.data.keys.product_adj }} client SDK has been loaded. The `wlCommonInit` function is then called.  
 Use this function to call the various {{ site.data.keys.product_adj }} API methods.
+
+### Manually adding SDK 
+We also have an option to install the plugin from local path. cordova-plugin-mfp can be downloaded from our MFP console and install it in cordova application .
+1. In MFP server console Dashboard ,Click on Download Center => Click on SDKs tab => Download the cordova SDK .
+
+2. Navigate to the root of your existing Cordova project and add the {{ site.data.keys.product_adj }} core Cordova plug-in:
+
+   ```bash
+   cordova plugin add [path-to downloaded mfp cordova plugin]/mfp-cordova/plugins/cordova-plugin-mfp
+   ```
 
 ### Registering the application
 {: #registering-the-application }
