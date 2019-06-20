@@ -140,6 +140,16 @@ Consider creating the project by using the {{ site.data.keys.product_adj }} Cord
 The {{ site.data.keys.product_adj }} API methods are available after the {{ site.data.keys.product_adj }} client SDK has been loaded. The `wlCommonInit` function is then called.  
 Use this function to call the various {{ site.data.keys.product_adj }} API methods.
 
+### Manually adding SDK 
+We also have an option to install the plugin from local path. cordova-plugin-mfp can be downloaded from our MFP console and install it in cordova application .
+1. In MFP server console Dashboard ,Click on Download Center => Click on SDKs tab => Download the cordova SDK .
+
+2. Navigate to the root of your existing Cordova project and add the {{ site.data.keys.product_adj }} core Cordova plug-in:
+
+   ```bash
+   cordova plugin add [path-to downloaded mfp cordova plugin]/mfp-cordova/plugins/cordova-plugin-mfp
+   ```
+
 ### Registering the application
 {: #registering-the-application }
 1. Open a **Command-line** window and navigate to the root of the Cordova project.  
