@@ -72,9 +72,9 @@ packagingOptions {
    exclude 'lib/x86/libopenssl_fips.so'
 }
 ```
-### React-Native Apps:
+### React-Native apps:
 
-64-bit support for Android apps on React Native is available in starting version 0.59 of [React Native](http://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059). MobileFirst support for React Native 64-bit Android apps available from iFix *8.0.0.0-MFPF-IF201906191215* onwards.
+64-bit support for Android apps on React Native is available in version starting 0.59 of [React Native](http://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059). Support for React Native 64-bit Android apps is available in IBM Mobile Foundation from iFix *8.0.0.0-MFPF-IF201906191215* onwards.
 
 
 
