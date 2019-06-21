@@ -86,7 +86,7 @@ npm install react-native-ibm-mobilefirst-jsonstore@latest
 npm install
 react-native link
 ```
-Edit the `&lt;ProjectName&gt;/android/app/build.gradle` file and add the following lines in the `packagingOptions` section
+Edit the `<ProjectName>/android/app/build.gradle` file and add the following lines in the `packagingOptions` section
 
 ```
 packagingOptions {
