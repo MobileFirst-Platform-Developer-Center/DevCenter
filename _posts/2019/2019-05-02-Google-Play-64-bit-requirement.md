@@ -74,7 +74,7 @@ packagingOptions {
 ```
 ### React-Native Apps:
 
-React Native community has released 64 bit support on Android in [React Native version 0.59] (http://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).MobileFirst support for React Native 64-bit Android apps available from iFix *8.0.0.0-MFPF-IF2019xxxxxxx*
+64-bit support for Android apps on React Native is available in starting version 0.59 of [React Native](http://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059). MobileFirst support for React Native 64-bit Android apps available from iFix *8.0.0.0-MFPF-IF2019xxxxxxx* onwards.
 
 
 
