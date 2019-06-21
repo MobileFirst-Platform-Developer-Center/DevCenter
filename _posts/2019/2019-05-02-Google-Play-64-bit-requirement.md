@@ -86,7 +86,7 @@ npm install react-native-ibm-mobilefirst-jsonstore@latest
 npm install
 react-native link
 ```
-Edit the `<ProjectName>/android/app/build.gradle` file and add the following lines in the `packagingOptions` section
+Edit the `&lt;ProjectName&gt;/android/app/build.gradle` file and add the following lines in the `packagingOptions` section
 
 ```
 packagingOptions {
@@ -142,7 +142,7 @@ to
 <ProjectName>/apps/<ApplicationName>/android/native/libs/arm64-v8a/libsqlcipher.so
 <ProjectName>/apps/<ApplicationName>/android/native/libs/x86_64/libsqlcipher.so
 ```
-**NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your project ,create these folders and then copy the files.
+> **NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your project ,create these folders and then copy the files.
 
 #### Step 2: Make the following build configuration
 
@@ -196,7 +196,7 @@ Refer to this [documentation page](https://mobilefirstplatform.ibmcloud.com/tuto
 ```
 to the `assets/featurelibs` path of your native project.
 
-**NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your project ,create these folders and then copy the files.
+> **NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your project ,create these folders and then copy the files.
 
 #### Step 2: Make the following build configuration
 
