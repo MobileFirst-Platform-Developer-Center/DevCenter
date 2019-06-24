@@ -1,29 +1,29 @@
 ---
 title: MobileFirst with Google App Bundle and Dynamic Delivery In Native Android Apps
-date: 2019-05-06
+date: 2019-06-13
 tags:
 - MobileFirst_Platform
 - MobileFirst_Foundation
 - Android
 - Android App Bundle
-- Dynamic Delivery 
+- Dynamic Delivery
 - Google Play Store
 version:
 - 8.0
 author:
-  name: Yash Soni 
+  name: Yash Soni
 additional_authors:
   - Srihari Kulkarni
   - Manjunath Kallannavar
 ---
 
-[Google I/O 2018](https://events.google.com/io2018/) announced a new publishing format for Android Developers - [Android App Bundle](https://developer.android.com/platform/technology/app-bundle). 
+[Google I/O 2018](https://events.google.com/io2018/) announced a new publishing format for Android Developers - [Android App Bundle](https://developer.android.com/platform/technology/app-bundle).
 
 App Bundle enables you to deliver an optimised app to the end user, this is significantly smaller in size than using the traditional *apk*. This technology extends to enable developers to roll out features on demand to users with [Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery#dynamic_feature_modules).
 
 
-### MobileFirst with Dynamic Delivery 
-####  Configuration 
+### MobileFirst with Dynamic Delivery
+####  Configuration
 
 To create your app with Android App Bundle and Dynamic Delivery features follow the blog [Get started with Android App Bundles ](https://developer.android.com/guide/app-bundle/#get_started).
 
@@ -36,7 +36,7 @@ Make the following changes in the **build.gradle** file of your base app to call
 **From**
 
 ```
-implementation ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0+’ 
+implementation ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0+’
 ```
 ```
 implementation ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0+
@@ -48,17 +48,16 @@ implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8
 **To**
 
 ```
-api ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0+’ 
+api ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0+’
 ```
 
 ```
-api ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0+’ 
+api ’com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0+’
 ```
 
 ```
 api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
 ```
 
- 
-We have validated all the MobileFirst functionalities from both base module and feature module of an Android Native app. You can exploit the Google App Bundle and Dynamic Delivery features with your MobileFirst native Android apps. Refer to the MobileFirst Native Android sample app with App Bundle and Dynamic Delivery features from [here](https://github.com/MobileFirst-Platform-Developer-Center/mfp-appbundle-sample).
 
+We have validated all the MobileFirst functionalities from both base module and feature module of an Android Native app. You can exploit the Google App Bundle and Dynamic Delivery features with your MobileFirst native Android apps. Refer to the MobileFirst Native Android sample app with App Bundle and Dynamic Delivery features from [here](https://github.com/MobileFirst-Platform-Developer-Center/mfp-appbundle-sample).

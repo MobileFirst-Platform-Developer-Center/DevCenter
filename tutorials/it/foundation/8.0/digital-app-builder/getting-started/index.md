@@ -56,6 +56,8 @@ You can create a new app by clicking **Create new app** icon from the Builder da
 
     * **Custom Professional Server** – You can connect to your own Mobile Foundation server either created on IBM Cloud or local. In the **Configure IBM Mobile Foundation instance** window you can either select an existing server or create a new server.
 
+        >**Note**: To easily get an instance of Mobile Foundation Server, you can provision it on IBM Cloud. You can refer to the documentation on how to provision and use the Mobile Foundation Server on IBM Cloud [here](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started-tutorial).
+
         ![Configure IBM Mobile Foundation instance](dab-config-ibm-cloud-instance.png)
  
         The **Configure IBM Mobile Foundation instance** window displays the list of Mobile Foundation server instances you have defined previously. On selecting the server, the **Server name**, **Server URL**, **Admin username**, **Admin password**, is displayed. To define a new server, you can click **Create new server** link. This will display the new **Configure IBM Mobile Foundation instance** window.
