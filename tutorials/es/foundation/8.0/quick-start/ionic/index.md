@@ -28,7 +28,7 @@ El propósito de esta demostración es explicar un flujo de principio a fin. Se 
 
 ### Paso 1. Cómo iniciar {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Asegúrese de haber [creado una instancia de Mobile Foundation](../../bluemix/using-mobile-foundation), o si está utilizando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), vaya hasta la carpeta del servidor y ejecute el mandato: `./run.sh` en Mac y Linux o `run.cmd` en Windows.
+Asegúrese de haber [creado una instancia de Mobile Foundation](../../ibmcloud/using-mobile-foundation), o si está utilizando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), vaya hasta la carpeta del servidor y ejecute el mandato: `./run.sh` en Mac y Linux o `run.cmd` en Windows.
 
 ### Paso 2. Creación y registro de una aplicación
 {: #2-creating-and-registering-an-application }
@@ -139,7 +139,7 @@ Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.
 {: #5-testing-the-application }
 1. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto Cordova.
 2. Ejecute el mandato: `ionic cordova platform add ios|android|windows|browser` para añadir una plataforma.
-3. En el proyecto Ionic, seleccione el archivo **config.xml** y edite el valor `<mfp:server ... url=" "/>` con las propiedades **protocol**, **host** y **port** con los valores correctos para su instancia de {{ site.data.keys.mf_server }}.
+3. En el proyecto de Ionic, seleccione el archivo **config.xml** y edite el valor `<mfp:server ... url=" "/>` con las propiedades **protocol**, **host** y **port** con los valores correctos para el servidor de {{ site.data.keys.mf_server }}.
     * Si está utilizando una instancia de {{ site.data.keys.mf_server }} local, los valores habitualmente son **http**, **localhost** y **9080**.
     * Si está utilizando una instancia remota de {{ site.data.keys.mf_server }} (en IBM Cloud), los valores habitualmente son **https**, **dirección-su-servidor** y **443**.
     * Si está utilizando un clúster Kubernetes en IBM Cloud Private y si el despliegue es de tipo **NodePort**, el valor del puerto será en general **NodePort** expuesto por el servicio en el clúster Kubernetes.
