@@ -2,16 +2,16 @@
 layout: labs
 title: MobileFirst Foundation 8.0 Developer Labs
 tabs:
-  - name: Lab selection
+  - name: Home
     path: /labs/developers/8.0/intro/
-  - name: Advanced Car Service
-    path: /labs/developers/8.0/advancedcarservice
-  - name: Advanced Utility Service
-    path: /labs/developers/8.0/advancedutilityservice
-  - name: Advanced Messenger
-    path: /labs/developers/8.0/advancedmessenger
-  - name: Advanced Wallet
-    path: /labs/developers/8.0/advancedwallet
+    #  - name: Advanced Car Service
+    #    path: /labs/developers/8.0/advancedcarservice
+    #  - name: Advanced Utility Service
+    #    path: /labs/developers/8.0/advancedutilityservice
+    #  - name: Advanced Messenger
+    #    path: /labs/developers/8.0/advancedmessenger
+    #  - name: Advanced Wallet
+    #    path: /labs/developers/8.0/advancedwallet
 ---
 
 ![lab session for 8.0](../advancedutilityservice/screenstory.png)

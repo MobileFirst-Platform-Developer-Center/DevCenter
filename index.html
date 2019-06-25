@@ -26,6 +26,14 @@ indexed: false
        font-size: 2rem;
 
     }
+    .postTitleLatest {
+       margin-bottom: 0;
+       color: #696969;
+       font-family: Lato;
+       font-weight: bold;
+       font-size: 2rem;
+
+    }
     .postsubTitleAlert {
        margin-bottom: 0;
        color: #ff0000;
@@ -45,6 +53,16 @@ indexed: false
           text-decoration: none;
        }
 
+     .postsubTitleVar {
+      margin-bottom: 0;
+        color: #DCDCDC;
+        font-family: Lato;
+     }
+        a {
+           color: #337ab7;
+           text-decoration: none;
+        }
+
     .postDate {
         font-family: Lato;
         font-size: 80%;
@@ -52,7 +70,13 @@ indexed: false
         margin: 0;
         font-weight: bold;
     }
+    .postsubTitleLatest {
+       margin-bottom: 0;
+       color: #696969;
+       font-family: Lato;
+       font-weight: bold;
 
+    }
     .postExcerpt {
       font-family: Lato;
       font-size: 85%;
@@ -139,7 +163,27 @@ indexed: false
 } ]
 </script>
 </head>
+<div id="blogPosts">
+   <div class="container" role="section">
+     <div class="row">
+			<div class="col-sm-2 hidden-sm hidden-xs hidden-md">
+        <!--<span class="postTitleLatest">&nbsp;Latest Blog Posts</span>-->
+        <button type="button" class="btn btn-primary btn-sm"><span class="postsubTitle">Recent Posts</span></button>
 
+      </div>
+
+     <div class="col-sm-10">
+     <marquee behavior="scroll" scrolldelay="600" direction="up" style="height: 30px">
+       {% for post in site.posts limit:10 %}  {% for tag in post.tags %} {% if tag == 'iFix' %} {% assign found_ifix = true %} {% break %} {% endif %} {% endfor%} {% if found_ifix != true %}
+       <ul style="list-style: none;">
+        <li><a href="{{site.baseurl}}{{post.url}}"><span class="postsubTitleVar">{{post.title}}</span></a></li>
+      </ul>
+       {% endif %} {% assign found_ifix = false %} {% endfor %}
+      </marquee>
+     </div>
+    </div>
+   </div>
+</div>
 <div id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel" role="banner">
    <!-- Carousel indicators -->
    <ul class="carousel-indicators">
@@ -246,14 +290,15 @@ indexed: false
       <span class="sr-only">Next</span>
    </a>
 </div>
-<div id="blogPosts">
+<div id="blogPosts" class="hidden-sm hidden-xs hidden-md">
    <div class="container" role="section">
-      <span class="postsubTitle"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;Stay up-to-date with all that is happening in Mobile Foundation. <a href="{{site.baseurl}}/blog/2019/05/30/leverage-ibm-support-portal/">Subscribe to be notified</a> on updates.</span>
+      <button type="button" class="btn btn-default btn-sm"><a href="{{site.baseurl}}/blog/2019/05/30/leverage-ibm-support-portal/"><span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;<span class="postsubTitle">Subscribe for updates & stay up-to-date with all that is happening in Mobile Foundation</span></a></button>
    </div>
 </div>
+
 <div id="index_sections">
   <!-- Blog -->
-  <div id="index_benefits" class="container" role="complementary">
+  <div id="index_benefits" class="container hidden-sm hidden-xs hidden-md" role="complementary">
 
      <div class="row">
       <!-- <h1 class="no-anchor">Latest in Mobile Foundation Blog</h1>-->
@@ -261,7 +306,7 @@ indexed: false
            <img class="foundation_diamond" src="{{site.baseurl}}/assets/front-page/foundation_logo.svg" alt="Foundation diamond icon"/>
         </div>-->
 
-        <div class="col-sm-5">
+        <div class="col-sm-5 hidden-sm hidden-xs hidden-md">
 
            <div class="benefits">
              <div class="card" style="width: 45rem;">
@@ -323,7 +368,7 @@ indexed: false
 
      </div>
   </div>
-  <hr class="sm"/>
+  <hr class="sm hidden-sm hidden-xs hidden-md"/>
 
 <!--<div id="index_sections">
   <div id="index_benefits" class="container" role="complementary">
