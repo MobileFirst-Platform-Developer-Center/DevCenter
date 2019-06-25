@@ -23,8 +23,8 @@ weight: 1
 {: #support-levels }
 MobileFirst 插件支持的 Cordova 平台版本包括：
 
-* cordova-ios：**>= 4.1.1 以及 < 5.0**
-* cordova-android：**>= 6.1.2 以及 <= 8.0**
+* cordova-ios：**>= 4.1.1 以及 < 6.0**
+* cordova-android：**>= 6.1.2 以及 < 9.0**
 * cordova-windows：**>= 4.3.2 以及 < 7.0**
 
 #### 跳转至：
@@ -69,7 +69,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 
 **先决条件：**
 
-- [Apache Cordova CLI（>=6.x 并且 <9.0）](https://www.npmjs.com/package/cordova)和 {{ site.data.keys.mf_cli }} 已安装在开发人员工作站上。
+- [Apache Cordova CLI（>=6.x 并且 <10.0）](https://www.npmjs.com/package/cordova)和 {{ site.data.keys.mf_cli }} 已安装在开发人员工作站上。
 - {{ site.data.keys.mf_server }} 的本地或远程实例正在运行。
 - 阅读[设置您的 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/development/mobilefirst)和[设置您的 Cordova 开发环境](../../../installation-configuration/development/cordova)教程。
 - 对于 cordova-windows，必须安装与机器中已安装的 Visual Studio 和 .NET 版本兼容的 Visual C++ 版本。

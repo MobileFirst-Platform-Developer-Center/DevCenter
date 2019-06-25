@@ -13,7 +13,7 @@ These components are available from online repositories and can be installed usi
 
 Continue reading to learn more about the components of {{ site.data.keys.product }}.
 
-> To evalute {{ site.data.keys.product }} all that is needed is to spin an instance of {{ site.data.keys.mf_server }} on IBM Cloud using the Mobile Foundation IBM Cloud service. See the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation/) tutorial for instructions. You may also choose to install the {{ site.data.keys.mf_dev_kit_short }} for a local installation.
+> To evalute {{ site.data.keys.product }} all that is needed is to spin an instance of {{ site.data.keys.mf_server }} on IBM Cloud using the Mobile Foundation IBM Cloud service. See the [Using Mobile Foundation](../../../ibmcloud/using-mobile-foundation/) tutorial for instructions. You may also choose to install the {{ site.data.keys.mf_dev_kit_short }} for a local installation.
 
 #### Jump to:
 {: #jump-to }

@@ -1,31 +1,30 @@
 ---
 layout: redirect
-new_url: /404/
-sitemap: false
+new_url: /tutorials/zh-hans/foundation/8.0/ibmcloud/mobilefirst-server-using-scripts/securing-containers/
 #layout: tutorial
 #title: Securing containers
 #relevantTo: [ios,android,windows,javascript]
 #weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## 概述
+## Overview
 {: #overview }
-以下是通过 {{ site.data.keys.mf_server }} 实例来保护 IBM Container 时可遵循的几种方法。
+Below are several methods you can follow in order to secure your IBM Container with {{ site.data.keys.mf_server }} instance.
 
-#### 跳转至
+#### Jump to
 {: #jump-to }
-* [配置应用程序传输安全性 (ATS)](#configuring-app-transport-security-ats)
-* [{{ site.data.keys.mf_app_center }}](#ssl-configuration-for-application-center) 的 SSL 配置
-* [IBM Containers 上 {{ site.data.keys.product_full }} 的安全配置](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
-* [容器的 LDAP 配置](#ldap-configuration-for-containers)
+* [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
+* [SSL configuration for {{ site.data.keys.mf_app_center }}](#ssl-configuration-for-application-center)
+* [Security configuration for {{ site.data.keys.product_full }} on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
+* [LDAP configuration for containers](#ldap-configuration-for-containers)
 
-## 配置应用程序传输安全性 (ATS)
+## Configuring App Transport Security (ATS)
 {: #configuring-app-transport-security-ats }
-ATS 配置不会影响从其他非 iOS 移动操作系统连接的应用程序。 其他移动操作系统不要求服务器在 ATS 安全级别上进行通信，但是仍可以与 ATS 配置的服务器进行通信。 在配置容器映像之前，准备好已生成的证书。 以下步骤假定密钥库文件 **ssl_cert.p12** 具有个人证书并且 **ca.crt** 是签名证书。
+ATS configuration does not impact applications connecting from other, non-iOS, mobile operating systems. Other mobile operating systems do not mandate that servers communicate on the ATS level of security but can still communicate with ATS-configured servers. Before configuring your container image, have the generated certificates ready. The following steps assume that the keystore file **ssl_cert.p12** has the personal certificate and **ca.crt** is the signing certificate.
 
-1. 将 **ssl_cert.p12** 文件复制到 **mfpf-server/usr/security/** 文件夹或 Application Center 的 **mfp-appcenter/user/security/** 中
+1. Copy the **ssl_cert.p12** file to the **mfpf-server/usr/security/** folder or **mfp-appcenter/user/security/** for application center
 
-2. 修改 **mfpf-server/usr/config/keystore.xml** 和 **appcenter/usr/config/keystore.xml**（针对 appcenter）文件，使其类似于以下示例配置：
+2. Modify the **mfpf-server/usr/config/keystore.xml** and **appcenter/usr/config/keystore.xml** (for appcenter) or file similar to the following example configuration:
 
    ```bash
    <server>
@@ -36,12 +35,12 @@ ATS 配置不会影响从其他非 iOS 移动操作系统连接的应用程序�
         <keyStore id="defaultKeyStore" location="ssl_cert.p12" password="*****" type="PKCS12"/>
    </server>
    ```
-    - **ssl-1.0** 添加为功能管理器中的功能，支持服务器使用 SSL 通信。
-    - 在 ssl 标记中添加 **sslProtocol="TLSv1.2"**，以要求服务器仅在传输层安全性 (TLS) V1.2 协议上进行通信。 可添加多个协议。 例如，添加 **sslProtocol="TLSv1+TLSv1.1+TLSv1.2"** 将确保服务器可在 TLS V1、V1.1 和 V1.2 上通信。 （iOS 9 应用程序需要 TLS V1.2。）
-    - 在 ssl 标记中添加 **enabledCiphers="TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384"**，从而使服务器强制仅使用此密码进行通信。
-    - **keyStore** 标记通知服务器使用依据上述需求创建的新证书。
+    - **ssl-1.0** is added as a feature in the feature manager to enable the server to work with SSL communication.
+    - **sslProtocol="TLSv1.2"** is added in the ssl tag to mandate that the server communicates only on Transport Layer Security (TLS) version 1.2 protocol. More than one protocol can be added. For example, adding **sslProtocol="TLSv1+TLSv1.1+TLSv1.2"** would ensure that the server could communicate on TLS V1, V1.1, and V1.2. (TLS V1.2 is required for iOS 9 apps.)
+    - **enabledCiphers="TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384"** is added in the ssl tag so that the server enforces communication using only that cipher.
+    - The **keyStore** tag tells the server to use the new certificates that are created as per the above requirements.
 
-以下特定密码需要 Java 密码术扩展 (JCE) 策略设置和其他 JVM 选项：
+The following specific ciphers require Java Cryptography Extension (JCE) policy settings and an additional JVM option:
 
 * TLS\_ECDHE\_ECDSA\_WITH\_AES\_256_GCM\_SHA384
 * TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_CBC\_SHA384
@@ -49,9 +48,9 @@ ATS 配置不会影响从其他非 iOS 移动操作系统连接的应用程序�
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384
 
-如果使用这些密码和 IBM Java SDK，[那么可以下载](https://www.ibm.com/marketing/iwm/iwm/web/preLogin.do?source=jcesdk)策略文件。 提供两个文件：**US_export_policy.jar** 和 **local_policy.jar**。 将这两个文件添加到 **mfpf-server/usr/security** 文件夹和 **mfp-appcenter/usr/security**（针对 appcenter），然后将以下 JVM 选项添加到 **mfpf-server/usr/env/jvm.options** 文件：`Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`。
+If you use these ciphers and use an IBM Java SDK, [you can download](https://www.ibm.com/marketing/iwm/iwm/web/preLogin.do?source=jcesdk) the policy files. There are two files: **US_export_policy.jar** and **local_policy.jar**. Add both the files to the **mfpf-server/usr/security** folder and **mfp-appcenter/usr/security** (for appcenter), then add the following JVM option to the **mfpf-server/usr/env/jvm.options** file: `Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`.
 
-仅对于开发阶段之目的，您可以通过向 info.plist 文件添加以下属性来禁用 ATS：
+For development-stage purposes only, you can disable ATS by adding following property to the info.plist file:
 
 ```xml
 <key>NSAppTransportSecurity</key>
@@ -61,34 +60,34 @@ ATS 配置不会影响从其他非 iOS 移动操作系统连接的应用程序�
 </dict>
 ```
 
-## {{ site.data.keys.mf_app_center }} 的 SSL 配置
+## SSL configuration for {{ site.data.keys.mf_app_center }}
 {: #ssl-configuration-for-application-center }
 
-### 为 {{ site.data.keys.mf_app_center }} Console 配置 SSL
+### Configure SSL for {{ site.data.keys.mf_app_center }} Console
 {: #configure-ssl-for-application-center-console }
 
-您可以通过在 {{ site.data.keys.mf_app_center }} Server 上启用基于 SSL 的 HTTP (HTTPS)，保护对 {{ site.data.keys.mf_app_center }} Console 的访问。 要在 {{ site.data.keys.mf_app_center }} Server 上启用 HTTPS，请创建包含证书的密钥库并将其放置在 `usr/security` 文件夹中。 然后，更新 `usr/config/keystore.xml` 文件以使用配置的密钥库。
+You can secure access to the {{ site.data.keys.mf_app_center }} Console by enabling HTTP over SSL (HTTPS) on the {{ site.data.keys.mf_app_center }} server. To enable HTTPS on the {{ site.data.keys.mf_app_center }} Server, create the keystore containing the certificate and place it in the `usr/security` folder. Then update the `usr/config/keystore.xml` file to use the keystore configured.
 
-### 保护后端连接的安全
+### Securing a connection to the back end
 {: #securing-a-connection-to-the-back-end }
-如果在容器和本地后端系统之间需要安全连接，可以使用 IBM Cloud Secure Gateway 服务。 博客帖子 [Connecting Securely to On-Premise Backends from Mobile Foundation on IBM Cloud containers](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/) 中提供了配置详细信息。
+If you need a secure connection between your container and an on-premise back-end system, you can use the IBM Cloud Secure Gateway service. Configuration details are provided in the blog post [Connecting Securely to On-Premise Backends from Mobile Foundation on IBM Cloud containers](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/27/connecting-securely-to-on-premise-backends-with-the-secure-gateway-service/).
 
-## IBM Containers 上 {{ site.data.keys.product_full }} 的安全配置
+## Security configuration for {{ site.data.keys.product_full }} on IBM Containers
 {: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
-IBM Containers 上的 {{ site.data.keys.product }} 实例的安全配置应包含加密密码，启用应用程序真实性检查以及保护对控制台的访问。
+Your {{ site.data.keys.product }} instance on IBM Containers security configuration should include encrypting passwords, enabling application authenticity checking, and securing access to the consoles.
 
-### 对密码进行加密
+### Encrypting passwords
 {: #encrypting-passwords }
-以加密格式存储 {{ site.data.keys.mf_server }} 用户的密码。 您可以使用 Liberty Profile 中提供的 securityUtility 命令以使用 XOR 或 AES 加密来编码密码。 然后，可以将加密密码复制到 /usr/env/server.env 文件。 请参阅“对 {{ site.data.keys.mf_server }} 中配置的用户角色的密码进行加密”以获取指示信息。
+Store the passwords for {{ site.data.keys.mf_server }} users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }} for instructions.
 
-### 应用程序真实性验证
+### Application-authenticity validation
 {: #application-authenticity-validation }
-要避免未经授权的移动应用程序访问 {{ site.data.keys.mf_server }}， [ 请启用应用程序真实性安全性检查](../../../authentication-and-security/application-authenticity)。
+To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, [enable the application-authenticity security check](../../../authentication-and-security/application-authenticity).
 
-### 为 {{ site.data.keys.mf_console }} 和 {{ site.data.keys.mf_analytics_console }} 配置 SSL
+### Configure SSL for {{ site.data.keys.mf_console }} and {{ site.data.keys.mf_analytics_console }}
 {: #configure-ssl-for-mobilefirst-operations-console-and-mobilefirst-analytics-console }
-您可以通过在 {{ site.data.keys.mf_server }} 上启用基于 SSL 的 HTTP (HTTPS)，保护对  {{ site.data.keys.mf_console }} 和 {{ site.data.keys.mf_analytics_console }} 的访问。  
-要在 {{ site.data.keys.mf_server }} 上启用 HTTPS，请创建包含证书的密钥库并将其放置在 **usr/security** 文件夹中。 然后，更新 **usr/config/keystore.xml** 文件以使用配置的密钥库。
+You can secure access to the {{ site.data.keys.mf_console }} and the {{ site.data.keys.mf_analytics_console }} by enabling HTTP over SSL (HTTPS) on the {{ site.data.keys.mf_server }}.  
+To enable HTTPS on the {{ site.data.keys.mf_server }}, create the keystore containing the certificate and place it in the **usr/security** folder. Then, update the **usr/config/keystore.xml** file to use the keystore configured.
 
 <!-- Duplicate section
 ### Securing a connection to the back end
@@ -96,14 +95,14 @@ IBM Containers 上的 {{ site.data.keys.product }} 实例的安全配置应包�
 If you need a secure connection between your container and an on-premise back-end system, you can use the IBM Cloud  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on IBM Cloud containers.
 -->
 
-#### 对 {{ site.data.keys.mf_server }} 中配置的用户角色的密码进行加密
+#### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
-可以对为 {{ site.data.keys.mf_server }} 配置的用户角色的密码进行加密。  
-在 **package_root/mfpf-server/usr/env** 和 **package_root/mfpf-analytics/usr/env** 文件夹的 **server.env** 文件中配置密码。 应以加密格式存储密码。
+The passwords for user roles that are configured for the {{ site.data.keys.mf_server }} can be encrypted.  
+Passwords are configured in the **server.env** files in the **package_root/mfpf-server/usr/env** and **package_root/mfpf-analytics/usr/env** folders. Passwords should be stored in an encrypted format.
 
-1. 您可以在 Liberty Profile 中使用 `securityUtility` 命令来编码密码。 选择 XOR 或 AES 加密来编码密码。
-2. 将已加密的密码复制到 **server.env** 文件。 示例：`MFPF_ADMIN_PASSWORD={xor}PjsyNjE=`
-3. 如果使用 AES 加密并且使用了自己的加密密钥代替缺省密钥，那么必须创建包含加密密钥的配置文件并将其添加到 **usr/config** 目录。 在运行时期间，Liberty 服务器访问文件以解密密码。 配置文件必须具有 .xml 文件扩展名且类似于以下格式：
+1. You can use the `securityUtility` command in the Liberty profile to encode the password. Choose either XOR or AES encryption to encode the password.
+2. Copy the encrypted password to the **server.env** file. Example: `MFPF_ADMIN_PASSWORD={xor}PjsyNjE=`
+3. If you are using AES encryption and used your own encryption key instead of the default key, you must create a configuration file that contains your encryption key and add it to the **usr/config** directory. The Liberty server accesses the file to decrypt the password during runtime. The configuration file must have the .xml file extension and resemble the following format:
 
 ```bash
 <?xml version="1.0" encoding="UTF-8"?>
@@ -112,29 +111,29 @@ If you need a secure connection between your container and an on-premise back-en
 </server>
 ```
 
-#### 使用专用 IP 地址来保护容器通信的安全
+#### Securing container communication using a private IP address
 {: securing-container-communication-using-a-private-ip-address }
-要在 {{ site.data.keys.mf_server }} 容器和 {{ site.data.keys.mf_analytics }} 容器之间实现安全通信，必须在 `mfpfProperties.xml` 文件中包含 {{ site.data.keys.mf_analytics }} 容器的专用 IP 地址。
+To have secure communication between the {{ site.data.keys.mf_server }} container and the {{ site.data.keys.mf_analytics }} container, you must include the private IP address of the {{ site.data.keys.mf_analytics }} container in the `mfpfProperties.xml` file.
 
-要完成此任务，需要 {{ site.data.keys.mf_analytics }} 容器的专用 IP，可使用以下命令获取此 IP：`cf ic inspect analytics_container_id`。 在命令输出中查找“IP 地址”字段。 **请记住：**如果将使用 {{ site.data.keys.mf_analytics }}，那么必须先配置、构建和运行 {{ site.data.keys.mf_analytics }} 映像，然后再配置、部署和运行 {{ site.data.keys.mf_server }} 映像。
+To complete this task, you need the private IP of the {{ site.data.keys.mf_analytics }} container, which you can obtain using the following command: `cf ic inspect analytics_container_id`. Look for the IP Address field in the command output. **Remember:** If you are going to use {{ site.data.keys.mf_analytics }}, you must configure, build, and run the {{ site.data.keys.mf_analytics }} image before configuring, deploying, and running the {{ site.data.keys.mf_server }} image.
 
-通过编辑 mfpf-server/usr/config/mfpfproperties.xml 文件完成以下步骤：
+Complete the following steps by editing the mfpf-server/usr/config/mfpfproperties.xml file:
 
-1. 将 **mfp.analytics.url** 属性设置为 {{ site.data.keys.mf_analytics }} 容器的专用 IP 地址。 示例：`<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
+1. Set the **mfp.analytics.url** property to the private IP address of the {{ site.data.keys.mf_analytics }} container. Example: `<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
 
-    在专用 IP 地址发生更改时，在 mfpfproperties.xml 文件中提供新的 IP 地址，并分别通过运行 prepareserver.sh 和 starterserver.sh 脚本重新构建和部署容器。
+    When a private IP address changes, provide the new IP address in the mfpfproperties.xml file and rebuild and deploy the container by running the prepareserver.sh and starterserver.sh scripts respectively.
 
-2. 要确保可在网络上访问 {{ site.data.keys.mf_analytics_console }}，请将 **mfp.analytics.console.url** 属性设置为 {{ site.data.keys.mf_analytics }} 容器的公共 IP 地址。 示例：`<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
+2. To ensure that the {{ site.data.keys.mf_analytics_console }} can be accessed on the network, set the **mfp.analytics.console.url** property to the public IP address of the {{ site.data.keys.mf_analytics }} container. Example: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
-#### 限制访问容器上运行的控制台
+#### Restricting access to the consoles running on containers
 {: #restricting-access-to-the-consoles-running-on-containers }
-您可以通过创建并部署信任关联拦截器 (TAI) 来拦截针对 IBM Containers 上运行的控制台的请求，来限制生产环境中对 {{ site.data.keys.mf_console }} 和 {{ site.data.keys.mf_analytics_console }} 的访问。
+You can restrict access to the {{ site.data.keys.mf_console }} and the {{ site.data.keys.mf_analytics_console }} in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles running on IBM  Containers.
 
-TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制台还是需要核准。 此过滤方法可使您灵活地添加自己的认证机制（如果需要）。
+The TAI can implement user-specific filtering logic that decides if a request is forwarded to the console or if an approval is required. This method of filtering provides the flexibility for you to add your own authentication mechanism if needed.
 
-另请参阅：[针对 Liberty Profile 开发定制 TAI](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dev_custom_tai.html?view=embed)
+See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dev_custom_tai.html?view=embed)
 
-1. 创建实施安全性机制以控制对 {{ site.data.keys.mf_console }} 的访问的定制 TAI。 以下定制 TAI 示例使用入局请求的 IP 地址来验证是否提供 {{ site.data.keys.mf_console }} 的访问。
+1. Create a custom TAI that implements your security mechanism to control access to the {{ site.data.keys.mf_console }}. The following example of a custom TAI uses the IP Address of the incoming request to validate whether to provide access to the {{ site.data.keys.mf_console }} or not.
 
    ```java
    package com.ibm.mfpconsole.interceptor;
@@ -255,14 +254,14 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
    }
    ```
 
-2. 将定制 TAI 实施导出到 .jar 文件并将其放置在适合的 **env** 文件夹（**mfpf-server/usr/env 或 mfpf-analytics/usr/env**）中。
-3. 创建包含 TAI 拦截器的详细信息的 XML 配置文件（请参阅步骤 1 中提供的 TAI 配置示例代码），然后将您的 .xml 文件添加到适合的文件夹（**mfpf-server/usr/config** 或 **mfpf-analytics/usr/config**）中。 您的 .xml 文件应当类似于以下示例。 **提示：**请确保更新类名和属性以反映您的实施。
+2. Export the custom TAI Implementation into a .jar file and place it in the applicable **env** folder (**mfpf-server/usr/env or mfpf-analytics/usr/env**).
+3. Create an XML configuration file that contains the details of the TAI interceptor (see the TAI configuration example code provided in step 1) and then add your .xml file to the applicable folder (**mfpf-server/usr/config** or **mfpf-analytics/usr/config**). Your .xml file should resemble the following example. **Tip:** Be sure to update the class name and properties to reflect your implementation.
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
         <server description="new server">
-        <featureManager> 
-            <feature>appSecurity-2.0</feature> 
+        <featureManager>
+            <feature>appSecurity-2.0</feature>
         </featureManager>
 
         <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
@@ -280,33 +279,33 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
    </server>
    ```
 
-4. [构建映像并运行容器](../)。 现在，仅在满足配置的 TAI 安全性机制时才可访问 {{ site.data.keys.mf_console }} 和 Analytics Console。
+4. [Build the image and run the container](../). The {{ site.data.keys.mf_console }} and the Analytics Console are now accessible only when the configured TAI security mechanism is satisfied.
 
-## 容器的 LDAP 配置
+## LDAP configuration for containers
 {: #ldap-configuration-for-containers }
-可以配置 {{ site.data.keys.product }} 容器以安全地连接到外部 LDAP 存储库。
+You can configure a {{ site.data.keys.product }} container to securely connect out to an external LDAP repository.
 
-可针对以下目的在容器中使用外部 LDAP 注册表：
+The external LDAP registry can be used in a container for the following purposes:
 
-* 通过外部 LDAP 注册表配置 {{ site.data.keys.product_adj }} 管理或 {{ site.data.keys.mf_app_center }} 安全性。
-* 配置 {{ site.data.keys.product_adj }} 移动应用程序以使用外部 LDAP 注册表。
+* To configure the {{ site.data.keys.product_adj }} administration or {{ site.data.keys.mf_app_center }} security with an external LDAP registry.
+* To configure the {{ site.data.keys.product_adj }} mobile applications to work with an external LDAP registry.
 
-### 通过 LDAP 配置管理安全性
+### Configuring administration security with LDAP
 {: #configuring-administration-security-with-ldap }
-通过外部 LDAP 注册表配置 {{ site.data.keys.product_adj }} 管理安全性。  
-配置过程包含以下步骤：
+Configure the {{ site.data.keys.product_adj }} administration security with an external LDAP registry.  
+The configuration process includes the following steps:
 
-* 设置和配置 LDAP 存储库
-* 更改注册表文件 (registry.xml)
-* 配置安全网关以连接到本地 LDAP 存储库和容器。 （对于本步骤，现有应用程序应位于 IBM Cloud 上。）
+* Setup and configuration of an LDAP repository
+* Changes to the registry file (registry.xml)
+* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on IBM Cloud  for this step.)
 
-#### LDAP 存储库
+#### LDAP repository
 {: #ldap-repository }
-在 LDAP 存储库中创建用户和组。 对于组，将根据用户成员资格来实施授权。
+Create users and groups in the LDAP repository. For groups, authorization is enforced based on user membership.
 
-#### 注册表文件
+#### Registry file
 {: #registry-file }
-1. 打开 **registry.xml** 并找到 `basicRegistry` 元素。 将 `basicRegistry` 元素替换为类似于以下片段的代码：
+1. Open the **registry.xml** and find the `basicRegistry` element. Replace the `basicRegistry` element with code that is similar to the following snippet:
 
    ```xml
    <ldapRegistry
@@ -325,16 +324,15 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
    </ldapRegistry>
    ```
 
-    条目 | 描述
+    Entry | Description
     --- | ---
-    `host` 和 `port` | 您的本地 LDAP 服务器的主机名（IP 地址）和端口号。
-    `baseDN` | LDAP 中捕获有关特定组织的所有详细信息的域名 (DN)。
-    `bindDN="uid=admin,ou=system"
-` | LDAP 服务器的绑定详细信息。 例如，Apache 目录服务的缺省值将为 `uid=admin,ou=system`。
-    `bindPassword="secret"	` | LDAP 服务器的绑定密码。 例如，Apache 目录服务的缺省值为 `secret`。
-    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 用于在认证和授权期间查询目录服务（如 Apache）的定制过滤器。
+    `host` and `port` | Host name (IP address) and port number of your local LDAP server.
+    `baseDN` | The domain name (DN) in LDAP that captures all details about a specific organization.
+    `bindDN="uid=admin,ou=system"	` | Binding details of the LDAP server. For example, the default values for an Apache Directory Service would be `uid=admin,ou=system`.
+    `bindPassword="secret"	` | Binding password for the LDAP server. For example, the default value for an Apache Directory Service is `secret`.
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | The custom filters that are used for querying the directory service (such as Apache) during authentication and authorization.
 
-2. 确保为 `appSecurity-2.0` 和 `ldapRegistry-3.0` 启用以下功能：
+2. Ensure that the following features are enabled for `appSecurity-2.0` and `ldapRegistry-3.0`:
 
    ```xml
    <featureManager>
@@ -343,19 +341,19 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
    </featureManager>
    ```
 
-    有关配置各种 LDAP 服务器存储库的详细信息，请参阅 [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html)。
+    For details about configuring various LDAP server repositories, see the [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
 
-#### 安全网关
+#### Secure gateway
 {: #secure-gateway }
-要配置到 LDAP 服务器的安全网关连接，必须在 IBM Cloud 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。 您需要本地 LDAP 主机名和端口号才能完成此任务。
+To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on IBM Cloud and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
 
-1. 登录到 IBM Cloud 并浏览至**目录，类别 > 集成**，然后单击**安全网关**。
-2. 在“添加服务”下，选择应用程序，然后单击**创建**。 这样就将服务绑定到了应用程序。
-3. 转至应用程序的 IBM Cloud 仪表板，单击**安全网关**服务实例，然后单击**添加网关**。
-4. 命名网关并单击**添加目标**，然后输入本地 LDAP 服务器的名称、IP 地址和端口。
-5. 按照提示完成连接。 要查看已初始化的目标，请导航至 LDAP 网关服务的“目标”屏幕。
-6. 要获取您所需的主机和端口信息，请单击 LDAP 网关服务实例（位于“安全网关”仪表板上）上的“信息”图标。 显示的详细信息是本地 LDAP 服务器的别名。
-7. 捕获**目标标识**和**云主机：端口**值。 转至 registry.xml 文件并添加这些值，取代任何现有值。 在 registry.xml 文件中查看以下更新代码片段示例：
+1. Log on to IBM Cloud and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
+2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
+3. Go to the IBM Cloud dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
+4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
+5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
+6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
+7. Capture the **Destination ID** and **Cloud Host : Port** values. Go to the registry.xml file and add these values, replacing any existing values. See the following example of an updated code snippet in the registry.xml file:
 
 ```xml
 <ldapRegistry
@@ -374,20 +372,20 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
 </ldapRegistry>
 ```
 
-### 配置应用程序以使用 LDAP
+### Configuring apps to work with LDAP
 {: #configuring-apps-to-work-with-ldap }
-配置 {{ site.data.keys.product_adj }} 移动应用程序以使用外部 LDAP 注册表。  
-配置流程包含以下步骤：配置安全网关以连接到本地 LDAP 存储库和容器。 （对于本步骤，现有应用程序应位于 IBM Cloud 上。）
+Configure {{ site.data.keys.product_adj }} mobile apps to work with an external LDAP registry.  
+The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on IBM Cloud for this step.)
 
-要配置到 LDAP 服务器的安全网关连接，必须在 IBM Cloud 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。 您需要本地 LDAP 主机名和端口号才能完成此步骤。
+To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on IBM Cloud and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this step.
 
-1. 登录到 IBM Cloud 并浏览至**目录，类别 > 集成**，然后单击**安全网关**。
-2. 在“添加服务”下，选择应用程序，然后单击**创建**。 这样就将服务绑定到了应用程序。
-3. 转至应用程序的 IBM Cloud 仪表板，单击**安全网关**服务实例，然后单击**添加网关**。
-4. 命名网关并单击**添加目标**，然后输入本地 LDAP 服务器的名称、IP 地址和端口。
-5. 按照提示完成连接。 要查看已初始化的目标，请导航至 LDAP 网关服务的“目标”屏幕。
-6. 要获取您所需的主机和端口信息，请单击 LDAP 网关服务实例（位于“安全网关”仪表板上）上的“信息”图标。 显示的详细信息是本地 LDAP 服务器的别名。
-7. 捕获**目标标识**和**云主机：端口**值。 针对 LDAP 登录模块提供这些值。
+1. Log on to IBM Cloud and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
+2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
+3. Go to the IBM Cloud dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
+4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
+5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
+6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
+7. Capture the **Destination ID** and **Cloud Host : Port** values. Provide these values for the LDAP login module.
 
-**结果**  
-这样将在 IBM Cloud 上容器中的 {{ site.data.keys.product_adj }} 应用程序与本地 LDAP 服务器之间建立通信。 通过本地 LDAP 服务器验证 IBM Cloud 应用程序的认证和授权。
+**Results**  
+The communication between the {{ site.data.keys.product_adj }} app in the container on IBM Cloud with your local LDAP server is established. The authentication and authorization from the IBM Cloud app is validated against your local LDAP server.
