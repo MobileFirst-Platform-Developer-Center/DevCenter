@@ -25,7 +25,7 @@ El propósito de esta demostración es presentar un flujo de principio a fin:
 
 ### 1. Cómo iniciar {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Asegúrese de haber [creado una instancia de Mobile Foundation](../../bluemix/using-mobile-foundation), o  
+Asegúrese de haber [creado una instancia de Mobile Foundation](../../ibmcloud/using-mobile-foundation), o  
 Si está utilizando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), vaya hasta la carpeta del servidor y ejecute el mandato `./run.sh` en Mac y Linux o `run.cmd` en Windows.
 
 ### 2. Creación de una aplicación
@@ -59,13 +59,13 @@ En una ventana de navegador, abra {{ site.data.keys.mf_console }} cargando el UR
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
-  >Sustituya `<ClassName>` con el nombre de su clase.
+  >Sustituya `<ClassName>` por el nombre de la Clase.
 * Si está desarrollando para Android, incluya la siguiente línea de código dentro del método **OnCreate** del archivo **MainActivity.cs**:
 
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
-  >Sustituya `<ClassName>` con el nombre de su clase.
+  >Sustituya `<ClassName>` por el nombre de la Clase.
 * Defina un método para obtener la señal de acceso y realizar una solicitud de recurso al servidor MFP tal como se indica a continuación.
 
     ```csharp
@@ -127,7 +127,7 @@ Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.
     * Si está utilizando una instancia de {{ site.data.keys.mf_server }} local, los valores habitualmente son **http**, **localhost** y **9080**.
     * Si está utilizando una instancia remota de {{ site.data.keys.mf_server }} (en IBM Cloud), los valores habitualmente son **https**, **dirección-su-servidor** y **443**.
     * Si está utilizando un clúster Kubernetes en IBM Cloud Private y si el despliegue es de tipo **NodePort**, el valor del puerto será en general **NodePort** expuesto por el servicio en el clúster Kubernetes.
-    
+
 2. Pulse el botón **Reproducir**.
 
 <br clear="all"/>
