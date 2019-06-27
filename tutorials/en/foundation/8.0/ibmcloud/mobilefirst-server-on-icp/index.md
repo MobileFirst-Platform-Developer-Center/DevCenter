@@ -22,6 +22,7 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Creating Required Secrets](#secrets)
 * [Download the IBM Mobile Foundation Passport Advantage Archive](#download-the-ibm-mfpf-ppa-archive)
 * [Load the IBM Mobile Foundation Passport Advantage Archive](#load-the-ibm-mfpf-ppa-archive)
+* [Resources Required](#resources-required)
 * [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
 * [Verifying the Installation](#verify-install)
 * [Sample application](#sample-app)
@@ -292,6 +293,18 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
       * Helm Charts are shown in the **Catalog**.
 
   On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mfpf-server-prod** and {{ site.data.keys.mf_analytics }} is listed as **ibm-mfpf-analytics-prod**.
+
+## Resources Required
+{: #resources-required}
+
+This chart uses the following resources by default:
+
+| Component | Requested CPU  | Requested Memory | Storage
+|---|---|---|---|
+| Mobile Foundation Server | 1 CPU core | 2 Gi memory | For database requirements, refer [Prerequisites](#Prerequisites)
+| Mobile Foundation Push | 1 CPU core | 2 Gi memory | For database requirements, refer [Prerequisites](#Prerequisites)
+| Mobile Foundation Analytics | 1 CPU core | 2 Gi memory | A Persistent Volume. Refer [Prerequisites](#Prerequisites) for more information
+| Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Prerequisites](#Prerequisites)
 
 ## Install and configure IBM {{ site.data.keys.product }} Helm Charts
 {: #configure-install-mf-helmcharts}
