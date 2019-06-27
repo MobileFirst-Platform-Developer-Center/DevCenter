@@ -8,13 +8,13 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance and {{ site.data.keys.mf_analytics }} instance on {{ site.data.keys.prod_icp }}:
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_appcenter }} instance on {{ site.data.keys.prod_icp }}:
 
 * Setup IBM Cloud Private Kubernetes Cluster.
 * Setup your host computer with the required tools (Docker CLI, IBM Cloud CLI (`cloudctl`), Kubernetes CLI (`kubectl`), and Helm CLI (`helm`)).
 * Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} .
 * Load the PPA archive in the {{ site.data.keys.prod_icp }} Cluster.
-* Finally, you will configure and install the {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}.
+* Finally, you will configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_push }} (optional) and {{ site.data.keys.mf_appcenter }} (optional).
 
 #### Jump to:
 {: #jump-to }
@@ -41,12 +41,26 @@ To manage containers and images, you need to install the following tools on your
 
 To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the *kubectl* client. [Learn more](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
 
+In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required. 
+
+	a. Install `kubectl` tooling from the IBM Cloud Private management console, click **Menu > Command Line Tools > Cloud Private CLI**.
+	b. Expand **Install Kubernetes CLI** to download the installer by using a `curl` command. Copy and run the curl command for your operating system, then continue the installation procedure:
+	c. Choose the curl command for the applicable operating system. For example, you can run the following command for macOS:
+	
+	```bash
+	curl -kLo <install_file> https://<cluster ip>:<port>/api/cli/kubectl-darwin-amd64
+	chmod 755 <path_to_installer>/<install_file>
+	sudo mv <path_to_installer>/<install_file> /usr/local/bin/kubectl
+	```
+	Reference : [Installing the Kubernetes CLI (kubectl)](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/manage_cluster/install_kubectl.html)
+  
 ## Download the IBM Mobile Foundation Passport Advantage Archive
 {: #download-the-ibm-mfpf-ppa-archive}
 The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is available [here](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The PPA archive of {{ site.data.keys.product }} will contain the docker images and Helm Charts of the following {{ site.data.keys.product }} components:
 * {{ site.data.keys.product_adj }} Server
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
+* {{ site.data.keys.product_adj }} Push
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
