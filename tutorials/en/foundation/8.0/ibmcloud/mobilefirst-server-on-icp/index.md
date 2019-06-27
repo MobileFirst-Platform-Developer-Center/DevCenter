@@ -28,6 +28,7 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Sample application](#sample-app)
 * [Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases](#upgrading-mf-helm-charts)
 * [Uninstall](#uninstall)
+* [Limitations](#limitations)
 
 ## Prerequisites
 {: #prereqs}
@@ -493,3 +494,10 @@ Use the following command to completely delete the installed charts and the asso
 helm delete --purge <release_name>
 ```
 *release_name* is the deployed release name of the Helm Chart.
+
+## Limitations
+{: #limitations}
+For databases other than IBM DB2® following are mandatory requirements
+
+1. The database and the relevant tables to be created before configuring/deploying the helm chart.
+2. Make sure the Docker image loaded via the PPA package (downloaded from IBM Passport Advantage) is extended to use the suitable database artifacts and the new docker tag is used to configure & deploy the helm chart.
