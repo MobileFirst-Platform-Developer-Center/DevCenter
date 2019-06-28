@@ -287,11 +287,11 @@ This section outlines the security mechanisms for controlling access to the data
 	 - name: <container-image-registry-hostname>/*
 	   policy: null
 	EOF
-  ```	
+   ```	
 	
-  ```bash	
-	kubectl create secret docker-registry -n <namespace> <container-image-registry-hostname> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password>
-  ```
+   ```bash	
+   kubectl create secret docker-registry -n <namespace> <container-image-registry-hostname> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password>
+   ```
 	
 > NOTE: text inside < > needs to be updated with right values.
 
