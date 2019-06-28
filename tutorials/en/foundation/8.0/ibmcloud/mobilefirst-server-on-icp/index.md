@@ -49,12 +49,11 @@ In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) an
 a. Install `kubectl` tooling from the IBM Cloud Private management console, click **Menu > Command Line Tools > Cloud Private CLI**.
 b. Expand **Install Kubernetes CLI** to download the installer by using a `curl` command. Copy and run the curl command for your operating system, then continue the installation procedure:
 c. Choose the curl command for the applicable operating system. For example, you can run the following command for macOS:
-	
-	```bash
-	curl -kLo <install_file> https://<cluster ip>:<port>/api/cli/kubectl-darwin-amd64
-	chmod 755 <path_to_installer>/<install_file>
-	sudo mv <path_to_installer>/<install_file> /usr/local/bin/kubectl
-	```
+   ```bash
+   curl -kLo <install_file> https://<cluster ip>:<port>/api/cli/kubectl-darwin-amd64
+   chmod 755 <path_to_installer>/<install_file>
+   sudo mv <path_to_installer>/<install_file> /usr/local/bin/kubectl
+   ```
 Reference : [Installing the Kubernetes CLI (kubectl)](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/manage_cluster/install_kubectl.html)
 
 ## Download the IBM Mobile Foundation Passport Advantage Archive
@@ -74,19 +73,19 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
   1. Log in to the cluster using IBM Cloud ICP plugin (`cloudctl`).
       >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
 
-      For example,
-      ```bash
-      cloudctl login -a https://ip:port
-      ```
+     For example,
+     ```bash
+     cloudctl login -a https://ip:port
+     ```
       Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
 
   2. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
-      ```
-      cloudctl catalog load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
-      ```
-      *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
+     ```
+     cloudctl catalog load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+     ```
+     *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
-      `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `cloudctl`.
+     `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `cloudctl`.
 
   3.  View the Docker images and Helm Charts in the {{ site.data.keys.prod_icp }} management console.
       To view Docker images,
@@ -106,72 +105,72 @@ Secret objects let you store and manage sensitive information, such as passwords
 
 1. (Mandatory) A pre-configured IBM DB2® database is required for Server and Application Center components and this information will be supplied to helm chart to create appropriate tables for Server and Application Center.  For Oracle, MySQL or PostgreSQL databases, the Mobile Foundation Server database tables has to be created [manually](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/) before the deployment of MFP Components.
 
-	NOTE: The base Docker image needs to be extended/customized for using databases other than IBM DB2®.
+  > NOTE: The base Docker image needs to be extended/customized for using databases other than IBM DB2®.
 	
 2. (Mandatory) A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
 	
-	```bash
-	kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
-	```
+   ```bash
+   kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
+   ```
 
-	For Analytics.
+   For Analytics.
 
-	```bash
-	kubectl create secret generic analyticslogin --from-literal=ANALYTICS_ADMIN_USER=admin --from-literal=ANALYTICS_ADMIN_PASSWORD=admin
-	```
+   ```bash
+   kubectl create secret generic analyticslogin --from-literal=ANALYTICS_ADMIN_USER=admin --from-literal=ANALYTICS_ADMIN_PASSWORD=admin
+   ```
 
-	For Application Center.
+   For Application Center.
 
-	```bash
-	kubectl create secret generic appcenterlogin --from-literal=APPCENTER_ADMIN_USER=admin --from-literal=APPCENTER_ADMIN_PASSWORD=admin
-	```
+   ```bash
+   kubectl create secret generic appcenterlogin --from-literal=APPCENTER_ADMIN_USER=admin --from-literal=APPCENTER_ADMIN_PASSWORD=admin
+   ```
 
-	NOTE: If these secrets are not provided, they are created with default username and password of admin/admin during the installation of Mobile Foundation helm chart
+   > NOTE: If these secrets are not provided, they are created with default username and password of admin/admin during the installation of Mobile Foundation helm chart
 
 3. (Optional) You can provide your own keystore and truststore to Server, Push, Analytics and Application Center deployment by creating a secret with your own keystore and truststore.
 
-	Pre-create a secret with `keystore.jks` and `truststore.jks` along with keystore and trustore password using the literals KEYSTORE_PASSWORD and TRUSTSTORE_PASSWORD  provide the secret name in the field keystoreSecret of respective component
+   Pre-create a secret with `keystore.jks` and `truststore.jks` along with keystore and trustore password using the literals KEYSTORE_PASSWORD and TRUSTSTORE_PASSWORD  provide the secret name in the field keystoreSecret of respective component
 
-	Keep the files `keystore.jks`, `truststore.jks` and its passwords as below  
+   Keep the files `keystore.jks`, `truststore.jks` and its passwords as below  
 
-	For example:
+   For example:
 
-	```bash
-	kubectl create secret generic server --from-file=./keystore.jks --from-file=./truststore.jks --from-literal=KEYSTORE_PASSWORD=worklight --from-literal=TRUSTSTORE_PASSWORD=worklight
-	```
+   ```bash
+   kubectl create secret generic server --from-file=./keystore.jks --from-file=./truststore.jks --from-literal=KEYSTORE_PASSWORD=worklight --from-literal=TRUSTSTORE_PASSWORD=worklight
+   ```
 
-	> NOTE: The names of the files and literals should be the same as mentioned in command above.	Provide this secret name in `keystoresSecretName` input field of respective component to override the default keystores when configuring the helm chart.
+   > NOTE: The names of the files and literals should be the same as mentioned in command above.	Provide this secret name in `keystoresSecretName` input field of respective component to override the default keystores when configuring the helm chart.
 
 4. (Optional) Mobile Foundation components can be configured with hostname based Ingress for external clients to reach them using hostname. The Ingress can be secured by using a TLS private key and certificate. The TLS private key and certificate must be defined in a secret with key names `tls.key` and `tls.crt`. 
 
-	The secret **mf-tls-secret** is created in the same namespace as the Ingress resource by using the following command:
+   The secret **mf-tls-secret** is created in the same namespace as the Ingress resource by using the following command:
 
-	```bash
-	kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/tls.crt
-	```
+   ```bash
+   kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/tls.crt
+   ```
 	
-	The name of the secret is then provided in the field global.ingress.secret
+   The name of the secret is then provided in the field global.ingress.secret
 
 5. (Optional) Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
 
-	These secrets can be created as follows: 
+   These secrets can be created as follows: 
 	
-	```bash
-	kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLIENTID=admin --from-literal=MFPF_ADMIN_AUTH_SECRET=admin
-	kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
-	```
+   ```bash
+   kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLIENTID=admin --from-literal=MFPF_ADMIN_AUTH_SECRET=admin
+   kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
+   ```
 	
-	NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart installation, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
+   > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart installation, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
 
 6. For Analytics deployment, one can choose below options for persisting analytics data
 
-	a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
+   a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
 	
-	For example: 
+      For example: 
 	
-	Sample `PersistentVolume.yaml`
+      Sample `PersistentVolume.yaml`
 	
-	 ```bash
+      ```bash
 	apiVersion: v1
 	kind: PersistentVolume
 	metadata:
@@ -186,12 +185,13 @@ Secret objects let you store and manage sensitive information, such as passwords
 	  nfs:
 	    path: <nfs_path>
 	    server: <nfs_server>
-	 ```
-	> NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
+      ```
 
-	Sample `PersistentVolumeClaim.yaml`
+      > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
+
+      Sample `PersistentVolumeClaim.yaml`
 		
-	```bash
+      ```bash
 	apiVersion: v1
 	kind: PersistentVolumeClaim
 	metadata:
@@ -221,9 +221,9 @@ Secret objects let you store and manage sensitive information, such as passwords
 7. (Mandatory) Creating **database secrets** for Server, Push and Application Center.
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
-Run the code snippet below to create a database secret for Mobile Foundation server:
+   Run the code snippet below to create a database secret for Mobile Foundation server:
 
-	```bash
+    ```bash
 	# Create mfpserver secret
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
@@ -239,11 +239,11 @@ Run the code snippet below to create a database secret for Mobile Foundation ser
 	 name: mfpserver-dbsecret
 	type: Opaque
 	EOF
-	```
+    ```
 	
 Run the below code snippet to create a database secret for Application Center
 	
-	```bash
+   ```bash
 	# create appcenter secret
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
@@ -255,24 +255,24 @@ Run the below code snippet to create a database secret for Application Center
 	  name: appcenter-dbsecret
 	type: Opaque
 	EOF
-	```
+   ```
 
 > NOTE: You may encode the username and password details using the below command - 
 	
-	```bash
+   ```bash
 	export $MY_USER_NAME=<myuser>
 	export $MY_PASSWORD=<mypassword>
 	
 	echo -n $MY_USER_NAME | base64
 	echo -n $MY_PASSWORD | base64
-	```
+   ```
 
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
 	
 8. (Optional) Create container **Image Policy** and **Image pull secrets** when the container images are pulled from a registry that is outside the IBM Cloud Private setup's container registry (DockerHub, private docker registry, etc.)
   
-	```bash
+   ```bash
 	# Create image policy
 	cat <<EOF | kubectl apply -f -
 	apiVersion: securityenforcement.admission.cloud.ibm.com/v1beta1
@@ -287,11 +287,11 @@ This section outlines the security mechanisms for controlling access to the data
 	 - name: <container-image-registry-hostname>/*
 	   policy: null
 	EOF
-	```	
+  ```	
 	
-	```bash	
+  ```bash	
 	kubectl create secret docker-registry -n <namespace> <container-image-registry-hostname> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password>
-	```
+  ```
 	
 > NOTE: text inside < > needs to be updated with right values.
 
