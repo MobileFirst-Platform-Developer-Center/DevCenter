@@ -19,7 +19,7 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 #### Jump to:
 {: #jump-to }
 * [Prerequisites](#prereqs)
-* [Creating Required Secrets](#secrets)
+* [Pre configuration](#pre-configuration)
 * [Download the IBM Mobile Foundation Passport Advantage Archive](#download-the-ibm-mfpf-ppa-archive)
 * [Load the IBM Mobile Foundation Passport Advantage Archive](#load-the-ibm-mfpf-ppa-archive)
 * [Resources Required](#resources-required)
@@ -58,8 +58,10 @@ c. Choose the curl command for the applicable operating system. For example, you
 	```
 Reference : [Installing the Kubernetes CLI (kubectl)](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/manage_cluster/install_kubectl.html)
 
-## Creating Required Secrets
-{: #secrets}
+## Pre configuration
+{: #pre-configuration}
+
+This section summarizes the steps for creating secrets.
 
 Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image. 
 
@@ -303,10 +305,10 @@ This chart uses the following resources by default:
 
 | Component | Requested CPU  | Requested Memory | Storage
 |---|---|---|---|
-| Mobile Foundation Server | 1 CPU core | 2 Gi memory | For database requirements, refer [Prerequisites](#Prerequisites)
-| Mobile Foundation Push | 1 CPU core | 2 Gi memory | For database requirements, refer [Prerequisites](#Prerequisites)
-| Mobile Foundation Analytics | 1 CPU core | 2 Gi memory | A Persistent Volume. Refer [Prerequisites](#Prerequisites) for more information
-| Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Prerequisites](#Prerequisites)
+| Mobile Foundation Server | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
+| Mobile Foundation Push | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
+| Mobile Foundation Analytics | 1 CPU core | 2 Gi memory | A Persistent Volume. Refer [Pre Configuration](#pre-configuration) for more information
+| Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
 
 ## Install and configure IBM {{ site.data.keys.product }} Helm Charts
 {: #configure-install-mf-helmcharts}
