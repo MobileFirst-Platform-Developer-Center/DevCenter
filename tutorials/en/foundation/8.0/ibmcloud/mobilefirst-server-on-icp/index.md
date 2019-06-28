@@ -8,13 +8,13 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_appcenter }} instance on {{ site.data.keys.prod_icp }}:
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_app_center}} instance on {{ site.data.keys.prod_icp }}:
 
 * Setup IBM Cloud Private Kubernetes Cluster.
 * Setup your host computer with the required tools (Docker CLI, IBM Cloud CLI (`cloudctl`), Kubernetes CLI (`kubectl`), and Helm CLI (`helm`)).
 * Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} .
 * Load the PPA archive in the {{ site.data.keys.prod_icp }} Cluster.
-* Finally, you will configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_push }} (optional) and {{ site.data.keys.mf_appcenter }} (optional).
+* Finally, you will configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_push }} (optional) and {{ site.data.keys.mf_app_center }} (optional).
 
 #### Jump to:
 {: #jump-to }
