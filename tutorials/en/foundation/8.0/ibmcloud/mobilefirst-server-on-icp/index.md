@@ -19,7 +19,6 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 #### Jump to:
 {: #jump-to }
 * [Prerequisites](#prereqs)
-* [Pre configuration](#pre-configuration)
 * [Download the IBM Mobile Foundation Passport Advantage Archive](#download-the-ibm-mfpf-ppa-archive)
 * [Load the IBM Mobile Foundation Passport Advantage Archive](#load-the-ibm-mfpf-ppa-archive)
 * [Resources Required](#resources-required)
@@ -58,8 +57,64 @@ c. Choose the curl command for the applicable operating system. For example, you
 	```
 Reference : [Installing the Kubernetes CLI (kubectl)](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/manage_cluster/install_kubectl.html)
 
-## Pre configuration
-{: #pre-configuration}
+## Download the IBM Mobile Foundation Passport Advantage Archive
+{: #download-the-ibm-mfpf-ppa-archive}
+The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is available [here](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The PPA archive of {{ site.data.keys.product }} will contain the docker images and Helm Charts of the following {{ site.data.keys.product }} components:
+* {{ site.data.keys.product_adj }} Server
+* {{ site.data.keys.product_adj }} Analytics
+* {{ site.data.keys.product_adj }} Application Center
+* {{ site.data.keys.product_adj }} Push
+
+## Load the IBM Mobile Foundation Passport Advantage Archive
+{: #load-the-ibm-mfpf-ppa-archive}
+Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
+
+Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod_icp }} cluster:
+
+  1. Log in to the cluster using IBM Cloud ICP plugin (`cloudctl`).
+      >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
+
+      For example,
+      ```bash
+      cloudctl login -a https://ip:port
+      ```
+      Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
+
+  2. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
+      ```
+      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      ```
+      *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
+
+      `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `cloudctl`.
+
+  3. After you load the PPA Archive, synch the repositories, which ensures the listing of Helm Charts in the **Catalog**. You can do this in {{ site.data.keys.prod_icp }} management console.
+      * Select **Admin > Repositories**.
+      * Click **Synch Repositories**.
+
+  4.  View the Docker images and Helm Charts in the {{ site.data.keys.prod_icp }} management console.
+      To view Docker images,
+      * Select **Platform > Images**.
+      * Helm Charts are shown in the **Catalog**.
+
+  On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mfpf-server-prod** and {{ site.data.keys.mf_analytics }} is listed as **ibm-mfpf-analytics-prod**.
+
+## Resources Required
+{: #resources-required}
+
+This chart uses the following resources by default:
+
+| Component | Requested CPU  | Requested Memory | Storage
+|---|---|---|---|
+| Mobile Foundation Server | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
+| Mobile Foundation Push | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
+| Mobile Foundation Analytics | 1 CPU core | 2 Gi memory | A Persistent Volume. Refer [Pre Configuration](#pre-configuration) for more information
+| Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
+
+## Install and configure IBM {{ site.data.keys.product }} Helm Charts
+{: #configure-install-mf-helmcharts}
+
+Before you install and configure {{ site.data.keys.mf_server }}, you should have the following:
 
 This section summarizes the steps for creating secrets.
 
@@ -182,7 +237,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 7. (Mandatory) Creating **database secrets** for Server, Push and Application Center.
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
-	Run the code snippet below to create a database secret for Mobile Foundation server:
+Run the code snippet below to create a database secret for Mobile Foundation server:
 
 	```bash
 	# Create mfpserver secret
@@ -202,7 +257,7 @@ This section outlines the security mechanisms for controlling access to the data
 	EOF
 	```
 	
-	Run the below code snippet to create a database secret for Application Center
+Run the below code snippet to create a database secret for Application Center
 	
 	```bash
 	# create appcenter secret
@@ -218,7 +273,7 @@ This section outlines the security mechanisms for controlling access to the data
 	EOF
 	```
 
-	> NOTE: You may encode the username and password details using the below command - 
+> NOTE: You may encode the username and password details using the below command - 
 	
 	```bash
 	export $MY_USER_NAME=<myuser>
@@ -228,7 +283,7 @@ This section outlines the security mechanisms for controlling access to the data
 	echo -n $MY_PASSWORD | base64
 	```
 
-	This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
+This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
 	
 8. (Optional) Create container **Image Policy** and **Image pull secrets** when the container images are pulled from a registry that is outside the IBM Cloud Private setup's container registry (DockerHub, private docker registry, etc.)
@@ -256,84 +311,6 @@ This section outlines the security mechanisms for controlling access to the data
 	
 > NOTE: text inside < > needs to be updated with right values.
 
-## Download the IBM Mobile Foundation Passport Advantage Archive
-{: #download-the-ibm-mfpf-ppa-archive}
-The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is available [here](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The PPA archive of {{ site.data.keys.product }} will contain the docker images and Helm Charts of the following {{ site.data.keys.product }} components:
-* {{ site.data.keys.product_adj }} Server
-* {{ site.data.keys.product_adj }} Analytics
-* {{ site.data.keys.product_adj }} Application Center
-* {{ site.data.keys.product_adj }} Push
-
-## Load the IBM Mobile Foundation Passport Advantage Archive
-{: #load-the-ibm-mfpf-ppa-archive}
-Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
-
-Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod_icp }} cluster:
-
-  1. Log in to the cluster using IBM Cloud ICP plugin (`cloudctl`).
-      >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
-
-      For example,
-      ```bash
-      cloudctl login -a https://ip:port
-      ```
-      Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
-
-  2. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
-      ```
-      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
-      ```
-      *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
-
-      `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `cloudctl`.
-
-  3. After you load the PPA Archive, synch the repositories, which ensures the listing of Helm Charts in the **Catalog**. You can do this in {{ site.data.keys.prod_icp }} management console.
-      * Select **Admin > Repositories**.
-      * Click **Synch Repositories**.
-
-  4.  View the Docker images and Helm Charts in the {{ site.data.keys.prod_icp }} management console.
-      To view Docker images,
-      * Select **Platform > Images**.
-      * Helm Charts are shown in the **Catalog**.
-
-  On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mfpf-server-prod** and {{ site.data.keys.mf_analytics }} is listed as **ibm-mfpf-analytics-prod**.
-
-## Resources Required
-{: #resources-required}
-
-This chart uses the following resources by default:
-
-| Component | Requested CPU  | Requested Memory | Storage
-|---|---|---|---|
-| Mobile Foundation Server | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
-| Mobile Foundation Push | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
-| Mobile Foundation Analytics | 1 CPU core | 2 Gi memory | A Persistent Volume. Refer [Pre Configuration](#pre-configuration) for more information
-| Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
-
-## Install and configure IBM {{ site.data.keys.product }} Helm Charts
-{: #configure-install-mf-helmcharts}
-
-Before you install and configure {{ site.data.keys.mf_server }}, you should have the following:
-
-* [**Mandatory**] a DB2 database configured and ready to use.
-  You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
-
-* [**Optional**] a secret with your keystore and truststore.
-  You can provide your own keystore and truststore to the deployment by creating a secret with your own keystore and truststore.
-
-  Prior to the installation, follow the steps below:
-
-  * Create a secret with `keystore.jks`, `keystore-password.txt`, `truststore.jks`, `truststore-password.txt` and provide the secret name in the field *keystores.keystoresSecretName*.
-
-  * Keep the files `keystore.jks` and its password in a file named `keystore-password.txt` and `truststore.jks` and its password in a file named `truststore-password.jks`.
-
-  * Go to the command line and execute:
-    ```bash
-    kubectl create secret generic mfpf-cert-secret --from-file keystore-password.txt --from-file truststore-password.txt --from-file keystore.jks --from-file truststore.jks
-    ```
-    >**Note:** The names of the files should be the same as mentioned i.e, `keystore.jks`, `keystore-password.txt`, `truststore.jks` and `truststore-password.txt`.
-
-  * Provide the name of the secret in *keystoresSecretName* to override the default keystores.
 
   For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
 
