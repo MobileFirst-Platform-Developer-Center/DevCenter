@@ -82,7 +82,7 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
 
   2. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
       ```
-      cloudctl catalog load-ppa-archive --archive <archive_name> --username admin --password admin
+      cloudctl catalog load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
@@ -311,6 +311,7 @@ This chart uses the following resources by default:
 | Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
 
 ## Configuration
+{: #configuration}
 
 ### Parameters
 The table below provides the environment variables used in {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_appcenter }} on {{ site.data.keys.prod_icp }}.
@@ -421,36 +422,47 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 ### Installing {{ site.data.keys.prod_adj }} Helm Charts from ICP Catalog
 {: #install-hmc-icp}
 
-#### Install {{ site.data.keys.mf_analytics }}
-{: #install-mf-analytics}
-
-Installation of {{ site.data.keys.mf_analytics }} is optional. If you wish to enable analytics in {{ site.data.keys.mf_server }}, you should configure and install {{ site.data.keys.mf_analytics }} first, before installing {{ site.data.keys.mf_server }}.
-
-Before you begin the installation of {{ site.data.keys.mf_analytics }} Chart, configure the **Persistent Volume**. Provide the **Persistent Volume** to configure {{ site.data.keys.mf_analytics }}. Follow the steps detailed in [{{ site.data.keys.prod_icp }} documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/create_volume.html) to create **Persistent Volume**.
-
-Follow the steps below to install and configure IBM {{ site.data.keys.mf_analytics }} from {{ site.data.keys.prod_icp }} management console.
-
-1. Go to **Catalog** in the management console.
-2. Select **ibm-mfpf-analytics-prod** helm chart.
-3. Click **Configure**.
-4. Provide the environment variables. Refer to [Environment Variables for {{ site.data.keys.mf_analytics }}](#env-mf-analytics) for more information.
-5. Accept the **License Agreement**.
-6. Click **Install**.
-
 #### Install {{ site.data.keys.mf_server }}
 {: #install-mf-server}
 
 Before you begin the installation of {{ site.data.keys.mf_server }} ensure that you have pre-configured a DB2 database.
 
-
 Follow the steps below to install and configure IBM {{ site.data.keys.mf_server }} from {{ site.data.keys.prod_icp }} management console.
 
 1. Go to **Catalog** in the management console.
-2. Select **ibm-mfpf-server-prod** helm chart.
+2. Select **ibm-mobilefoundation-prod** helm chart.
 3. Click **Configure**.
-4. Provide the environment variables. Refer to [Environment Variables for {{ site.data.keys.mf_server }}](#env-mf-server) for more information.
+4. Provide the environment variables. Refer to [Configuration](#configuration) for more information.
 5. Accept the **License Agreement**.
 6. Click **Install**.
+
+#### Install {{ site.data.keys.mf_analytics }}
+{: #install-mf-analytics}
+
+Installation of {{ site.data.keys.mf_analytics }} is optional. If you wish to enable analytics in {{ site.data.keys.mf_server }}, you should configure and install {{ site.data.keys.mf_analytics }} first, before installing {{ site.data.keys.mf_server }}. 
+
+Before you begin the installation of {{ site.data.keys.mf_analytics }} Chart, configure the **Persistent Volume**. Provide the **Persistent Volume** to configure {{ site.data.keys.mf_analytics }}. Follow the steps detailed in [{{ site.data.keys.prod_icp }} documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_cluster/create_volume.html) to create **Persistent Volume**. You may also refer the **section-6** in [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)for the sample yaml file.
+
+Follow the steps below to install and configure IBM {{ site.data.keys.mf_analytics }} from {{ site.data.keys.prod_icp }} management console.
+
+1. Go to **Catalog** in the management console.
+2. Select **ibm-mobilefoundation-prod** helm chart.
+3. Click **Configure**.
+4. Provide the environment variables. Refer to [Configuration](#configuration) for more information.
+5. Accept the **License Agreement**.
+6. Click **Install**.
+
+#### Install {{ site.data.keys.mf_app_center }}
+{: #install-mf-app-center}
+
+Follow the steps below to install and configure IBM {{ site.data.keys.mf_app_center }} from {{ site.data.keys.prod_icp }} management console.
+
+1. Go to **Catalog** in management console.
+2. Select **ibm-mobilefoundation-prod** helm chart.
+3. Click **Configure**.
+4. Provide the environment variables. Refer to [Configuration](#configuration) for more information.
+5. Click **Install**.
+
 
 ## Verifying the Installation
 {: #verify-install}
