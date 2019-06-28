@@ -21,8 +21,8 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Prerequisites](#prereqs)
 * [Download the IBM Mobile Foundation Passport Advantage Archive](#download-the-ibm-mfpf-ppa-archive)
 * [Load the IBM Mobile Foundation Passport Advantage Archive](#load-the-ibm-mfpf-ppa-archive)
-* [Resources Required](#resources-required)
 * [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+* [Resources Required](#resources-required)
 * [Verifying the Installation](#verify-install)
 * [Sample application](#sample-app)
 * [Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases](#upgrading-mf-helm-charts)
@@ -98,18 +98,6 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
       * Helm Charts are shown in the **Catalog**.
 
   On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mfpf-server-prod** and {{ site.data.keys.mf_analytics }} is listed as **ibm-mfpf-analytics-prod**.
-
-## Resources Required
-{: #resources-required}
-
-This chart uses the following resources by default:
-
-| Component | Requested CPU  | Requested Memory | Storage
-|---|---|---|---|
-| Mobile Foundation Server | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
-| Mobile Foundation Push | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
-| Mobile Foundation Analytics | 1 CPU core | 2 Gi memory | A Persistent Volume. Refer [Pre Configuration](#pre-configuration) for more information
-| Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Pre Configuration](#pre-configuration)
 
 ## Install and configure IBM {{ site.data.keys.product }} Helm Charts
 {: #configure-install-mf-helmcharts}
@@ -313,6 +301,18 @@ This section outlines the security mechanisms for controlling access to the data
 
 
   For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
+  
+## Resources Required
+{: #resources-required}
+
+This chart uses the following resources by default:
+
+| Component | Requested CPU  | Requested Memory | Storage
+|---|---|---|---|
+| Mobile Foundation Server | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+| Mobile Foundation Push | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+| Mobile Foundation Analytics | 1 CPU core | 2 Gi memory | A Persistent Volume. Refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts) for more information
+| Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
 
 ## Configuration
 
