@@ -459,21 +459,16 @@ After you have installed and configured {{ site.data.keys.mf_analytics }} (optio
 
 In the {{ site.data.keys.prod_icp }} Management Console. Select **Workloads > Helm Releases**. Click on the *release name* of your installation.
 
-
 ## Accessing {{ site.data.keys.prod_adj }} console
 {: #access-mf-console}
 
-After successful installation you can access, IBM {{ site.data.keys.prod_adj }} Operational Console using `<protocol>://<ip_address>:<port>/mfpconsole`.
-IBM {{ site.data.keys.mf_analytics }} Console can be accessed using `<protocol>://<ip_address>:<port>/analytics/console`.
+After successful installation, the deployment may take a few minutes to complete. 
 
-The protocol can be `http` or `https`. Also, note that, the port will be **NodePort** in the case of **NodePort** deployment. To get the ip_address and **NodePort** of your installed {{ site.data.keys.prod_adj }} Charts, follow the steps below:
-
-1. In {{ site.data.keys.prod_icp }} Management Console, select **Workloads > Helm Releases**.
-2. Click on the *release name* of your helm chart installation.
-3. See the **Notes** section.
-
->**Note:** The port 9600 is exposed internally in the Kubernetes service and is used by the {{ site.data.keys.prod_adj }} Analytics instances as the transport port.
-
+From a web browser, go to the IBM Cloud Private console page and navigate to the helm releases page as follows
+1. Click Menu on the Left Top of the Page.
+2. Select Workloads > Helm Releases.
+3. Click on the deployed IBM Mobile Foundation helm release.
+4. Refer the [NOTES](https://github.ibm.com/MobileFirst/ibm-mobilefoundation-prod/blob/development/stable/ibm-mobilefoundation-prod/templates/NOTES.txt) section for the procedure to access the Mobile Foundation Server Operations Console.
 
 ## Sample application
 {: #sample-app}
