@@ -67,7 +67,7 @@ The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is ava
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
-Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/manage_images/using_docker_cli.html).
+Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/manage_images/using_docker_cli.html).
 
 Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod_icp }} cluster:
 
