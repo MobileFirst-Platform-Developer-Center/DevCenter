@@ -47,7 +47,7 @@ To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure 
 In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required. 
 
 a. Install `kubectl` tooling from the IBM Cloud Private management console, click **Menu > Command Line Tools > Cloud Private CLI**.
-b. Expand **Install Kubernetes CLI** to download the installer by using a `curl` command. Copy and run the curl command for your operating system, then continue the installation procedure:
+b. Expand **Install Kubernetes CLI** to download the installer by using a `curl` command. Copy and run the curl command for your operating system, then continue the installation procedure.
 c. Choose the curl command for the applicable operating system. For example, you can run the following command for macOS:
    ```bash
    curl -kLo <install_file> https://<cluster ip>:<port>/api/cli/kubectl-darwin-amd64
