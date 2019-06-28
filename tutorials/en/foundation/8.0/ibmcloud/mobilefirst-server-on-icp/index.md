@@ -27,6 +27,7 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Verifying the Installation](#verify-install)
 * [Sample application](#sample-app)
 * [Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases](#upgrading-mf-helm-charts)
+* [Migrate to IBM Certified Cloud Pak for Mobile Foundation Platform](#migrate)
 * [Uninstall](#uninstall)
 * [Limitations](#limitations)
 
@@ -524,6 +525,18 @@ Please refer to [Upgrading bundled products](https://www.ibm.com/support/knowled
   ```bash
   helm upgrade --reuse-values --set <name>=<value> --set <name>=<value> <existing-helm-release-name> <path of new helm chart>
   ```
+
+## Migrate to IBM Certified Cloud Pak for Mobile Foundation Platform
+{: #migrate}
+
+With [IBM Certified Cloud Pak](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.2.0/app_center/cloud_paks_over.html), the Mobile Foundation is now available for deployment as a single helm chart. This replaces the earlier approach of using three different helm charts (viz. ibm-mfpf-server-prod, ibm-mfpf-analytics-prod and ibm-mfpf-appcenter-prod) for deploying the Mobile Foundation components.
+
+Migrating from the old Mobile Foundation components installed as separate helm releases on ICP deployment to the new consolidated single helm chart with IBM Certified Cloud Pak is simple,
+
+1. You may retain all the configuration parameters for Server, Push, Application Center and Analytics.
+2. If the Database details are used the same as old deployment, then your new Mobile Foundation deployment (Server, Push and Application Center) will have the same data as that of the old one.
+3. Notice the change in the database values to be entered. Access to the database is now controlled through secrets. Refer section-4 under [Prerequisites](#Prerequisites) to create secrets for any credentials (including Console logins, Database accounts, etc).
+4. Mobile Foundation Analytics data can be retained by re-using the same Persistence Volume Claim used in the old deployment.
 
 ## Uninstall
 {: #uninstall}
