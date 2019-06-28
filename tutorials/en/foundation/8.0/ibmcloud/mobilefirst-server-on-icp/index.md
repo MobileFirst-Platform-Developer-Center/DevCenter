@@ -82,19 +82,15 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
 
   2. Load the PPA Archive of {{ site.data.keys.product }} using the following command:
       ```
-      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
+      cloudctl catalog load-ppa-archive --archive <archive_name> --username admin --password admin
       ```
       *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
       `--clustername` can be ignored if you had followed the previous step and made the cluster endpoint as default for `cloudctl`.
 
-  3. After you load the PPA Archive, synch the repositories, which ensures the listing of Helm Charts in the **Catalog**. You can do this in {{ site.data.keys.prod_icp }} management console.
-      * Select **Admin > Repositories**.
-      * Click **Synch Repositories**.
-
-  4.  View the Docker images and Helm Charts in the {{ site.data.keys.prod_icp }} management console.
+  3.  View the Docker images and Helm Charts in the {{ site.data.keys.prod_icp }} management console.
       To view Docker images,
-      * Select **Platform > Images**.
+      * Select **Platform > Container Images**.
       * Helm Charts are shown in the **Catalog**.
 
   On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mfpf-server-prod** and {{ site.data.keys.mf_analytics }} is listed as **ibm-mfpf-analytics-prod**.
