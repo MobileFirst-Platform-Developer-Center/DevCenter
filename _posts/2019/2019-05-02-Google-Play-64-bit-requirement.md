@@ -72,6 +72,30 @@ packagingOptions {
    exclude 'lib/x86/libopenssl_fips.so'
 }
 ```
+### React-Native apps:
+
+64-bit support for Android apps on React Native is available in version starting 0.59 of [React Native](http://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059). Support for React Native 64-bit Android apps is available in IBM Mobile Foundation from iFix *8.0.0.0-MFPF-IF201906191215* onwards.
+
+
+
+```bash 
+npm uninstall react-native-ibm-mobilefirst
+npm uninstall react-native-ibm-mobilefirst-jsonstore
+npm install react-native-ibm-mobilefirst@latest
+npm install react-native-ibm-mobilefirst-jsonstore@latest
+npm install
+react-native link
+```
+Edit the `<ProjectName>/android/app/build.gradle` file and add the following lines in the `packagingOptions` section
+
+```
+packagingOptions {
+   ...
+   exclude 'lib/armeabi/libopenssl_fips.so'
+   exclude 'lib/armeabi-v7a/libopenssl_fips.so'
+   exclude 'lib/x86/libopenssl_fips.so'
+}
+```
 
 ## MobileFirst 7.1 apps
 
@@ -118,6 +142,7 @@ to
 <ProjectName>/apps/<ApplicationName>/android/native/libs/arm64-v8a/libsqlcipher.so
 <ProjectName>/apps/<ApplicationName>/android/native/libs/x86_64/libsqlcipher.so
 ```
+> **NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your project ,create these folders and then copy the files.
 
 #### Step 2: Make the following build configuration
 
@@ -170,6 +195,8 @@ Refer to this [documentation page](https://mobilefirstplatform.ibmcloud.com/tuto
 <ProjectName>/apps/<ApplicationName>/64bit/x86_64/libcrypto.so.1.1.zip
 ```
 to the `assets/featurelibs` path of your native project.
+
+> **NOTE**: If 64-bit folders x86_64 and arm64-v8a are not present in your project ,create these folders and then copy the files.
 
 #### Step 2: Make the following build configuration
 

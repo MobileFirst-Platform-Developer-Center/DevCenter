@@ -233,7 +233,7 @@ To add Push notifications to your app:
 
     ![Engagement Push](dab-engagement-push.png)
 
-2. In **Push Notifications**, click **Enable**. This displays the **Push Notification instance** configuration dialog.
+2. In **Push Notifications**, click **Enable**. This display the Push Notifications configuration page.
 
 3. Configure push notification for Android by providing **API Secret Key** and **Sender ID** and click **Save configuration**.
 

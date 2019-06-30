@@ -146,7 +146,7 @@ We also have an option to install the plugin from local path. cordova-plugin-mfp
 
 2. Navigate to the root of your existing Cordova project and add the {{ site.data.keys.product_adj }} core Cordova plug-in:
 
-```bash
+   ```bash
    cordova plugin add [path-to downloaded mfp cordova plugin]/mfp-cordova/plugins/cordova-plugin-mfp
    ```
 

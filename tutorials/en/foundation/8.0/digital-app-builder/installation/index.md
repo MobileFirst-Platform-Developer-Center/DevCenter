@@ -77,7 +77,7 @@ Run the following commands from the command prompt opened in administrative mode
 7. *Optional* - After installing the prerequisite software, the installer checks for JAVA as the Digital App Builder needs JAVA to work with your datasets. 
     >**Note**: You need to manually install JAVA, if not already installed. For installing Java, refer to [Installing Java](https://www.java.com/en/download/help/download_options.xml).
 8. *Optional* - The installer also checks for optional installation of Xcode (for previewing your app on iOS simulator during development, for MacOS only) and Android Studio (for previewing your Android app, for MacOS and Windows).
-    >**Note**: You need to manually install Xcode and Android Studio. For Cocoapods installation, refer to [Using CocoaPods](https://guides.cocoapods.org/using/using-cocoapods). For Android Studio installation, refer to [Installing Android Studio](https://developer.android.com/studio/). 
+    >**Note**: You need to manually install Android Studio. For Android Studio installation, refer to [Installing Android Studio](https://developer.android.com/studio/). 
 
 >**Note**: At any given point of time you can perform a [Prerequisites Check](#prerequisites-check) to verify the installation is fine to develop your app. In case of any error, rectify the error and restart the Digital App Builder before creating an app.
 
