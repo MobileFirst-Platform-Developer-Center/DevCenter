@@ -28,7 +28,7 @@ weight: 1
 
 ### ステップ 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
-[Mobile Foundation インスタンスを作成済み](../../bluemix/using-mobile-foundation)であることを確認します。あるいは、[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
+[Mobile Foundation インスタンスを作成済み](../../ibmcloud/using-mobile-foundation)であることを確認します。あるいは、[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
 
 ### ステップ 2. アプリケーションの作成および登録
 {: #2-creating-and-registering-an-application }

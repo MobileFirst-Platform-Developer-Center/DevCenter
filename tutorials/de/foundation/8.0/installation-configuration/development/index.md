@@ -21,7 +21,7 @@ Ausführliche schrittweise Anweisungen finden Sie in diesem [Installationshandbu
 
 ### Server
 {: #server }
-{{ site.data.keys.mf_server }} können Sie über den [IBM Cloud-Service Mobile Foundation](../../bluemix/using-mobile-foundation) nutzen oder
+{{ site.data.keys.mf_server }} können Sie über den [IBM Cloud-Service Mobile Foundation](../../ibmcloud/using-mobile-foundation) nutzen oder
 lokal über das {{ site.data.keys.mf_dev_kit_full }} (das für die lokale Entwicklung bestimmt ist). {{ site.data.keys.mf_server }} setzt
 Java 7 bzw. Java 8 voraus.
 

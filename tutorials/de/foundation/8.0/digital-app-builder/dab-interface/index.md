@@ -233,24 +233,29 @@ Gehen Sie wie folgt vor, um Push-Benachrichtigungen zu Ihrer App hinzuzufügen:
 
     ![Engagement - Push](dab-engagement-push.png)
 
-2. Klicken Sie für **Push-Benachrichtigungen** auf **Verbinden**. Daraufhin wird der Dialog **Verbindung zur Push-Benachrichtigungsinstanz herstellen** angezeigt.
+2. Klicken Sie für **Push-Benachrichtigungen** auf **Aktivieren**. Daraufhin wird die Konfigurationsseite für Push-Benachrichtigungen angezeigt.
 
-    ![Engagement - Push-Benachrichtigungsinstanz](dab-engagement-push-instance.png)
+3. Konfigurieren Sie Push-Benachrichtigungen für Android. Geben Sie dazu den **geheimen API-Schlüssel** und die **Absender-ID** an und klicken Sie auf **Konfiguration speichern**.
 
-3. Machen Sie Angaben für **Name**, **API-Schlüssel**, **App-GUID** und **Geheimer Clientschlüssel**. Wählen Sie die **Region** aus und klicken Sie auf **Verbinden**.
-4. Der oben eingegebene Name wird unter "Engagement" zur Seite hinzugefügt.
-5. Konfigurieren Sie Push-Benachrichtigungen für Android. Geben Sie dazu den **geheimen API-Schlüssel** und die **Absender-ID** an und klicken Sie auf **Konfiguration speichern**.
+    ![Engagement - Push-Benachrichtigungen - Android-Konfiguration](dab-engagement-push-instance.png)
 
-    ![Engagement - Push-Benachrichtigungen - Android-Konfiguration](dab-engagement-push-android-configure.png)
-
-6. Navigieren Sie zur Registerkarte "iOS" und geben Sie Push-Konfigurationsdetails an. Wählen Sie die **Umgebung**aus, geben Sie die . p12-Datei mit Pfad an und geben Sie das **Kennwort** ein. Klicken Sie dann auf **Konfiguration speichern**.
+4. Navigieren Sie zur Registerkarte "iOS" und geben Sie Push-Konfigurationsdetails an. Wählen Sie die **Umgebung**aus, geben Sie die . p12-Datei mit Pfad an und geben Sie das **Kennwort** ein. Klicken Sie dann auf **Konfiguration speichern**.
 
     ![Engagement - Push-Benachrichtigungen - iOS-Konfiguration](dab-engagement-push-ios-configure.png)
 
-7.   
-    a. Android: Kopieren Sie die Datei `google-services.json` (die Sie von Ihrem Firebase-Projekt herunterladen können) in den Ordner `<App-Pfad>/ionic/platforms/android/app`.
-    b. iOS: Öffnen Sie das Xcode-Projekt `<App-Pfad>/ionic/platforms/ios/<app>.xcodeproj` und aktivieren Sie die Funktion für Push-Benachrichtigungen. Weitere Informationen finden Sie unter [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+5. Führen Sie die folgenden Schritte aus:
+    a. Android-App: Kopieren Sie die Datei `google-services.json` (die Sie von Ihrem Firebase-Projekt herunterladen können) in den Ordner `<App-Pfad>/ionic/platforms/android/app`.
+    b. iOS-App: Öffnen Sie das Xcode-Projekt `<App-Pfad>/ionic/platforms/ios/<app>.xcodeproj` und aktivieren Sie die Funktion für Push-Benachrichtigungen. Weitere Informationen finden Sie unter [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
+6. Gehen Sie für die Serverseite wie folgt vor:
+ 
+    * Lesen Sie die Informationen unter [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications) zum Aktivieren von Push-Benachrichtigungen auf der Serverseite.
+
+    * Lesen Sie die Informationen unter [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications) zum Senden von Benachrichtigungen vom Server.
+
+**Hinweis**:
+Push-Benachrichtigungen von MFP Server werden zum Aktivieren des Benachrichtigungsservice verwendet. Falls der IBM Cloud-Service für Push-Benachrichtigungen bereits verwendet wurde, folgen Sie dem Link, um Benachrichtigungen in MFP Server
+einzurichten ([http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications)).
 
 ### Konsole
 {: #console }
@@ -262,7 +267,7 @@ In der Konsole können Sie den Code für die einzelnen Komponenten anzeigen. Hie
 
 Unter "Einstellungen" können Sie die App-Einstellungen verwalten und während des Erstellungsprozesses auftretende Fehler korrigieren. Zum Bereich der Einstellungen gehören die Registerkarten **App-Details**, **Server**, **Plug-ins** und **Projekt reparieren**.
 
-#### App-Details
+#### **App-Details**
 {: #app-details}
 
 Die App-Details sind Informationen zu Ihrer App: **App-Symbol**, **Name**, **Position**, an der Dateien gespeichert werden, bei der Erstellung der App angegebene **Projekt/Bundle-ID**, ausgewählte **Plattformen** (Kanäle) und aktivierter **Service**. 
@@ -275,7 +280,7 @@ Sie können zusätzliche Plattformen hinzufügen/entfernen, indem Sie das zugeh�
 
 Klicken Sie auf **Speichern**, um die Änderungen zu übernehmen.
 
-#### Server
+#### **Server**
 {: #server }
 
 Die Serverinformationen sind die **Serverdetails**, an denen Sie gerade arbeiten. Wenn Sie die Informationen bearbeiten möchten, klicken Sie auf den Link **Bearbeiten**. Sie können die Autorisierung für den vertraulichen Client hinzufügen oder modifizieren.
@@ -284,11 +289,13 @@ Die Serverinformationen sind die **Serverdetails**, an denen Sie gerade arbeiten
 
 Auf der Registerkarte "Server" werden auch **Letzte Server**angezeigt.
 
+>**Hinweis**: Sie können einen Server löschen, der zuvor beim Erstellen einer App mit Digital App Builder hinzugefügt wurde und nicht von keiner in Digital App Studio erstellten App verwendet wird. 
+
 Wenn Sie einen neuen Server hinzufügen möchten, klicken Sie auf die Schaltfläche **Neu verbinden +**. Geben Sie in dem daraufhin erscheinenden Fenster **Verbindung zu neuem Server herstellen** die Details an und klicken Sie auf **Verbinden**.
 
 ![Einstellungen - Neuer Server](dab-settings-server-new-server.png)
 
-#### Plug-ins
+#### **Plug-ins**
 {: #plugins}
 
 Es werden die im Digital App Builder verfügbaren Plug-ins aufgelistet. Folgende Aktionen können ausgeführt werden:

@@ -27,12 +27,12 @@ Bei der folgenden Demonstration geht es darum, einen End-to-End-Ablauf zu verans
 
 ### 1. {{ site.data.keys.mf_server }} starten
 {: #1-starting-the-mobilefirst-server }
-Stellen Sie sicher, dass eine [Mobile-Foundation-Instanz erstellt](../../bluemix/using-mobile-foundation) wurde oder,  
+Stellen Sie sicher, dass eine [Mobile-Foundation-Instanz erstellt](../../ibmcloud/using-mobile-foundation) wurde oder,  
 falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) verwenden, navigieren Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run.sh` oder unter Windows den Befehl `run.cmd` aus.
 
 ### 2. Anwendung erstellen
 {: #2-creating-an-application }
-Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://your-server-host:server-port/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
+Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://Ihr_Server-Host:Serverport/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
 
 1. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**.
     * Wählen Sie die **iOS**-Plattform aus.
@@ -48,7 +48,7 @@ falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration
 
 ### 3. Anwendungslogik bearbeiten
 {: #3-editing-application-logic }
-1. Öffnen Sie das Xcode-Projket. Klicken Sie dazu doppelt auf die Datei **.xcworkspace**.
+1. Öffnen Sie das Xcode-Projekt. Klicken Sie dazu doppelt auf die Datei **.xcworkspace**.
 
 2. Wählen Sie die Datei **[Projektstammverzeichnis]/ViewController.m/swift** aus und fügen Sie das folgende Code-Snippet als Ersatz für die vorhandene Funktion `getAccessToken()` ein:
 
@@ -155,7 +155,7 @@ folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsum
     <img class="gifplayer" alt="Adapter implementieren" src="create-an-adapter.png"/>   
 
 <img src="iosQuickStart.png" alt="Beispiel-App" style="float:right"/>
-### 5. Awendung testen
+### 5. Anwendung testen
 {: #5-testing-the-application }
 1. Wählen Sie in Xcode die Datei **mfpclient.plist** aus und bearbeiten Sie die Eigenschaften **protocol**, **host** und **port**. Geben Sie die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} an.
     * Wenn Sie einen lokalen {{ site.data.keys.mf_server }} verwenden, lauten die Werte normalerweise **http**, **localhost** und **9080**.
@@ -163,7 +163,7 @@ folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsum
     * Wenn Sie einen Kubernetes-Cluster in IBM Cloud Private verwenden und der Implementierungstyp **NodePort** ist, ist der Portwert in der Regel der **NodePort**, der vom Service im Kubernetes-Cluster zugänglich gemacht wird.
 
     Wenn Sie die {{ site.data.keys.mf_cli }} installiert haben, können Sie alternativ zum Projektstammverzeichnis navigieren und den Befehl `mfpdev app register` ausführen. Bei Verwendung eines fernen {{ site.data.keys.mf_server }} müssen Sie den [Befehl `mfpdev server add` ausführen](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance), um den Server hinzuzufügen, gefolgt beispielsweise von `mfpdev app register myIBMCloudServer`.
-    
+
 2. Klicken Sie auf die Schaltfläche **Play**.
 
 <br clear="all"/>

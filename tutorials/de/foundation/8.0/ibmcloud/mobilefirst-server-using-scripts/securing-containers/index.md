@@ -374,7 +374,7 @@ Erstellen Sie Benutzer und Gruppen in der LDAP-Repository. Die Autorisierung fü
 Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in IBM Cloud eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern. Für diese Aufgabe benötigen Sie den Hostnamen und die Portnummer Ihres lokalen LDAP-Servers. 
 
 1. Melden Sie sich bei IBM Cloud an und wählen Sie **Catalog, Category > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
-2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden. 
+2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden.
 3. Öffnen Sie das IBM Cloud-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Add Gateway**.
 4. Benennen Sie das Gateway und klicken Sie auf **Add Destinations**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein.
 5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird.

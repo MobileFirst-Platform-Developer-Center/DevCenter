@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore-Codebeispiele
-breadcrumb_title: Codebeispiele
+breadcrumb_title: Code examples
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
@@ -101,7 +101,7 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-  // Fehlerbehandlung
+  // Fehler behandeln
 });
 ```
 
@@ -124,11 +124,11 @@ WL.JSONStore.get(collectionName)
 .replace(docs, options)
 
 .then(function (numberOfDocumentsReplaced) {
-  // Behandlung bei Erfolg
+  // Erfolg behandeln
 })
 
 .fail(function (errorObject) {
-  // Fehlerbehandlung
+  // Fehler behandeln
 });
 ```
 
@@ -385,7 +385,7 @@ WL.JSONStore.get(collectionName)
 .removeCollection()
 
 .then(function () {
-  // Erfolg behandeln.
+  // Erfolg behandeln
 
   // Hinweis: Sie müssen die API 'init' aufrufen, um die leere Sammlung wiederzuverwenden.
   // Wenn Sie nur alle enthaltenen Daten entfernen möchten, lesen Sie die Infos zur API 'clear'.
@@ -405,7 +405,7 @@ WL.JSONStore.get(collectionName)
 .clear()
 
 .then(function () {
-  // Erfolg behandeln.
+  // Erfolg behandeln
 
   // Hinweis: Wenn Sie die Suchfelder ändern möchten, könnten Sie
   // stattdessen die API 'removeCollection' verwenden.
@@ -421,6 +421,7 @@ WL.JSONStore.get(collectionName)
 ```javascript
 WL.JSONStore.startTransaction()
 .then(function () {
+
   // Behandlung bei Erfolg von startTransaction
   // Sie können jede Methode der JSONStore-API außer init,
   // destroy, removeCollection und closeAll aufrufen.
@@ -431,8 +432,7 @@ WL.JSONStore.startTransaction()
 })
 
 .then(function () {
-
-  var docs = [{_id: 1, json: {name: 'carlos'}}];
+    var docs = [{_id: 1, json: {name: 'carlos'}}];
 
   return WL.JSONStore.get(collectionName).remove(docs);
 })
