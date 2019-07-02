@@ -20,7 +20,7 @@ Wenn Ihr {{ site.data.keys.product_adj }}-Container mit einem SSH-Schlüssel ers
 {: #logging-overrides }
 Sie können die Protokollebenen ändern, indem Sie manuell Korrekturcode hinzufügen oder indem Sie Code mit einer Scriptdatei injizieren. Das manuelle Hinzufügen von Korrekturcode zum Ändern der Protokollebene muss ausgeführt werden, wenn das Image zum ersten Mal erstellt wird. Sie müssen die neue Protokollierungskonfiguration als separates Code-Snippet zu den Ordnern **Paketstammverzeichnis/mfpf-[analytics|server]/usr/config** und **Paketstammverzeichnis/mfp-appcenter/usr/config** hinzufügen. Das Snippet wird dann in den Ordner configDropins/overrides des Liberty-Servers kopiert. 
 
-Wenn Sie zum Ändern der Protokollebene mit einer Scriptdatei Code injizieren möchten, können Sie bei der Ausührung der start*.sh-Scriptdateien aus dem Paket für Version 8.0.0 (**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**, **startappcenter.sh**, **startappcentergroup.sh**) bestimmte Befehlszeilenargumente angeben.
+Wenn Sie zum Ändern der Protokollebene mit einer Scriptdatei Code injizieren möchten, können Sie bei der Ausführung der start*.sh-Scriptdateien aus dem Paket für Version 8.0.0 (**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**, **startappcenter.sh**, **startappcentergroup.sh**) bestimmte Befehlszeilenargumente angeben.
 Die folgenden optionalen Befehlszeilenargumente können angewendet werden: 
 
 * `[-tr|--trace]` Tracespezifikation
@@ -107,14 +107,12 @@ SSH müssen Sie den öffentlichen SSH-Schlüssel in den Ordner **mfp-server\serv
 1. Richten Sie eine SSH-Anforderung an den Container. Beispiel: `mylocal-workstation# ssh -i ~/ssh_key_directory/id_rsa root@public_ip`
 2. Archivieren Sie die Position der Protokolldateien. Beispiel:
 
-
 ```bash
 container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
 container_instance@root# tar czf logs_archived.tar.gz logs/
 ```
 
 Laden Sie das Protokollarchiv auf Ihre lokale Workstation herunter. Beispiel:
-
 
 ```bash
 mylocal-workstation# scp -i ~/ssh_key_directory/id_rsa root@public_ip:/opt/ibm/wlp/usr/servers/mfp/logs_archived.tar.gz /local_workstation_dir/target_location/

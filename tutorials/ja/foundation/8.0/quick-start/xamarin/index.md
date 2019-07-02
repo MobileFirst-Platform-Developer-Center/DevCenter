@@ -25,7 +25,7 @@ weight: 6
 
 ### 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
-[Mobile Foundation インスタンスが作成済みである](../../bluemix/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
+[Mobile Foundation インスタンスが作成済みである](../../ibmcloud/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
 [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
 
 ### 2. アプリケーションの作成
@@ -126,7 +126,7 @@ weight: 6
     * ローカル {{ site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
     * リモート {{ site.data.keys.mf_server }} (IBM Cloud 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
     * IBM Cloud Private 上で Kubernetes クラスターを使用していて、デプロイメントのタイプが **NodePort** の場合、通常、ポートの値は、Kubernetes クラスターのサービスによって公開される **NodePort** です。
-    
+
 2. **「再生」**ボタンを押します。
 
 <br clear="all"/>

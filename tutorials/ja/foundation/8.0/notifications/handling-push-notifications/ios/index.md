@@ -281,7 +281,7 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 }
 ```
 
-> iOS での通知の処理について詳しくは、Apple の資料 (http://bit.ly/1ESSGdQ) を参照してください。
+> iOS での通知の処理について詳しくは、[Apple の資料](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1) を参照してください。
 
 <img alt="サンプル・アプリケーションのイメージ" src="notifications-app.png" style="float:right"/>
 

@@ -56,6 +56,8 @@ Klicken Sie zum Erstellen einer neuen App im Builder-Dashboard auf das Symbol **
 
     * **Angepasster professioneller Server** – Sie können eine Verbindung zu Ihrem eigenen, lokal oder in IBM Cloud erstellten Mobile Foundation Server herstellen. Im Fenster **Instanz der IBM Mobile Foundation konfigurieren** können Sie einen vorhandenen Server auswählen oder einen neuen Server erstellen.
 
+        >**Hinweis**: Sie können eine Instanz von Mobile Foundation Server in IBM Cloud bereitstellen, um ohne großen Aufwand auf diese zugreifen zu können. Wie Sie Mobile Foundation Server in IBM Cloud bereitstellen und verwenden können, erfahren Sie [hier](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started-tutorial) in der Dokumentation.
+
         ![Instanz der IBM Mobile Foundation konfigurieren](dab-config-ibm-cloud-instance.png)
  
         Im Fenster **Instanz der IBM Mobile Foundation konfigurieren** wird eine Liste der zuvor definierten Mobile-Foundation-Server-Instanzen angezeigt. Wenn Sie den Server auswählen, werden **Servername**, **Server-URL**, **Administratorbenutzername** und **Administratorkennwort** angezeigt. Zum Definieren eines neuen Servers können Sie auf den Link **Neuen Server erstellen** klicken. Daraufhin erscheint das neue Fenster **Instanz der IBM Mobile Foundation konfigurieren**.
