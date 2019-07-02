@@ -82,14 +82,15 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Dateilayouts (**d
                             <li>Ordner <b>config</b>: Für {{ site.data.keys.mf_server }} verwendete Serverkonfigurationsfragmente (Keystore, Servereigenschaften, Benutzerregistry)</li>
                             <li><b>keystore.xml</b>: Konfiguration des Repositorys mit Sicherheitszertifikaten für die SSL-Verschlüsselung. Im Ordner ./usr/security muss auf die aufgelisteten Dateien verwiesen werden.</li>
                             <li><b>mfpfproperties.xml</b> - Konfigurationseigenschaften für {{ site.data.keys.mf_server }}. Informieren Sie sich anhand der folgenden Dokumentationsabschnitte über die unterstützten Eigenschaften:<ul>
-                                <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Sever-Verwaltungsservice</a></li>
+                                <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a></li>
                                     <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a></li>
                                 </ul>
                             </li>
                             <li><b>registry.xml</b>: Benutzerregistrykonfiguration. Als Standardkonfiguration wird eine auf XML basierende Basisbenutzerregistrykonfiguration (basicRegistry) bereitgestellt. Sie können Namen und Kennwörter für basicRegistry konfigurieren oder ldapRegistry konfigurieren.</li>
                         </ul>
                     </li>
-                    <li>Ordner <b>env</b>: Enthält die Umgebungseigenschaften für die Serverinitialisierung (server.env) sowie angepasste JVM-Optionen (jvm.options).<br/>
+                    <li>Ordner <b>env</b>: Enthält die Umgebungseigenschaften für die Serverinitialisierung (server.env) sowie angepasste JVM-Optionen (jvm.options).
+                    <br/>
                     </li>
 
                     <li>Ordner <b>security</b>: Wird verwendet, um die Keystore-Datei, die Truststore-Datei und die LTPA-Schlüsseldatei (ltpa.keys) zu speichern.</li>
@@ -106,7 +107,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Dateilayouts (**d
 ## {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_app_center }} einrichten
 {: #setting-up-the-mobilefirst-server }
 Sie können die Scripts interaktiv ausführen oder die Konfigurationsdateien verwenden.
-Ein guter Ausgangspunkt ist die einmalige interaktive Ausführung der Scripts, wobei auch die Argumente erfasst werden (**recorded-args**). Später können Sie die Dateien mit den Argumenten verwenden, um die Scripts in einem nicht interkativen Modus auszuführen. 
+Ein guter Ausgangspunkt ist die einmalige interaktive Ausführung der Scripts, wobei auch die Argumente erfasst werden (**recorded-args**). Später können Sie die Dateien mit den Argumenten verwenden, um die Scripts in einem nicht interaktiven Modus auszuführen. 
 
 > **Hinweis:** Kennwörter werden nicht aufgezeichnet. Sie müssen die Kennwörter manuell zu den Dateien mit Argumenten hinzufügen. 
 
@@ -136,7 +137,7 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
             Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Die leeren Schablonendateien und eine Erläuterung der Argumente finden Sie im Ordner <b>args</b> oder nach einer interaktiven Ausführung der Scripts im Ordner <b>recorded-args</b>. Es handelt sich um folgende Dateien:<br/>
 
               <h4>initenv.properties</h4>
-              Diese Datei enhält Eigenschaften zum Ausführen der Umgebungsinitialisierung.
+              Diese Datei enthält Eigenschaften zum Ausführen der Umgebungsinitialisierung.
               <h4>prepareappcenterdbs.properties</h4>
 Das {{ site.data.keys.mf_app_center }} erfordert eine externe <a href="https://console.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB-Enterprise-Transactional-Datenbankinstanz</a> (einen mit "OLTP" oder "Transactional" bezeichneten Plan).<br/>
               <b>Hinweis:</b> Die Implementierung der dashDB-Enterprise-Transactional-Pläne erfolgt sofort, wenn die Pläne mit "pay as you go" gekennzeichnet sind. Vergewissern Sie sich, dass Sie einen passenden Plan ausgewählt haben, z. B. <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i>. <br/><br/>
@@ -174,7 +175,7 @@ Das {{ site.data.keys.mf_app_center }} erfordert eine externe <a href="https://c
 initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
 {% endhighlight %}
 
-                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
 
 {% highlight bash %}
 ./initenv.sh --help
@@ -192,7 +193,7 @@ initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_
 prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 {% endhighlight %}
 
-                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
 
 {% highlight bash %}
 ./prepareappcenterdbs.sh --help
@@ -200,16 +201,16 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 
                   </li>
                   <li><b>initenv.sh (optional) – Anmeldung bei IBM Cloud</b><br />
-                      Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
+                      Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Bereich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
                   <li><b>prepareappcenter.sh - Erstellung des {{ site.data.keys.mf_app_center }}</b><br />
-                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein {{ site.data.keys.mf_app_center }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in IBM Cloud zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben. <br/>
+                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein {{ site.data.keys.mf_app_center }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in IBM Cloud zu übertragen. Führen Sie <code>cf apps</code><br/>
 
 
-{% highlight bash %}
+ aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben. {% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
 
@@ -219,7 +220,7 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 prepareappcenter.sh --name APP_NAME
 {% endhighlight %}
 
-                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
 
 {% highlight bash %}
 ./prepareappcenter.sh --help
@@ -227,7 +228,7 @@ prepareappcenter.sh --name APP_NAME
 
                   </li>
                   <li><b>startappcenter.sh - Starten des {{ site.data.keys.mf_app_center }}</b><br />
-                  Das Script <b>startappcenter.sh</b> wird zum Starten von {{ site.data.keys.mf_app_center }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus: <p/>
+                  Das Script <b>startappcenter.sh</b> wird zum Starten von {{ site.data.keys.mf_app_center }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus:<p/>
 {% highlight bash %}
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
@@ -238,7 +239,7 @@ prepareappcenter.sh --name APP_NAME
 ./startappcenter.sh --name APP_NAME
 {% endhighlight %}
 
-                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
 
 {% highlight bash %}
 ./startappcenter.sh --help
@@ -270,7 +271,7 @@ Mit dem in IBM Cloud ausgeführten {{ site.data.keys.mf_app_center }} können Si
             Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Die leeren Schablonendateien und eine Erläuterung der Argumente finden Sie im Ordner <b>args</b> oder nach einer interaktiven Ausführung der Scripts im Ordner <b>recorded-args</b>. Es handelt sich um folgende Dateien:<br/>
 
               <h4>initenv.properties</h4>
-              Diese Datei enhält Eigenschaften zum Ausführen der Umgebungsinitialisierung.
+              Diese Datei enthält Eigenschaften zum Ausführen der Umgebungsinitialisierung.
               <h4>prepareserverdbs.properties</h4>
               Der {{ site.data.keys.mf_bm_short }} Service erfordert eine externe <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB-Enterprise-Transactional-Datenbankinstanz</a> (einen mit "OLTP" oder "Transactional" bezeichneten Plan).<br/>
               <b>Hinweis:</b> Die Implementierung der dashDB-Enterprise-Transactional-Pläne erfolgt sofort, wenn die Pläne mit "pay as you go" gekennzeichnet sind. Vergewissern Sie sich, dass Sie einen passenden Plan ausgewählt haben, z. B. <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i>. <br/><br/>
@@ -308,7 +309,7 @@ Mit dem in IBM Cloud ausgeführten {{ site.data.keys.mf_app_center }} können Si
 initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
 {% endhighlight %}
 
-                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
 
 {% highlight bash %}
 ./initenv.sh --help
@@ -327,23 +328,23 @@ oder einem zugänglichen DB2-Datenbankserver zu konfigurieren. Die DB2-Option ko
 prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 
-                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
 
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
 </li>
                   <li><b>initenv.sh (optional) – Anmeldung bei IBM Cloud</b><br />
-                      Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
+                      Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Bereich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
                   <li><b>prepareserver.sh - Erstellung eines {{ site.data.keys.mf_server }}</b><br />
-                    Führen Sie das Script <b>prepareserver.sh</b> aus, um einen {{ site.data.keys.mf_server }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in IBM Cloud zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben.<br/>
+                    Führen Sie das Script <b>prepareserver.sh</b> aus, um einen {{ site.data.keys.mf_server }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in IBM Cloud zu übertragen. Führen Sie <code>cf apps</code><br/>
 
 
-{% highlight bash %}
+ aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben.{% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
@@ -353,14 +354,14 @@ prepareserverdbs.sh --admindb MFPDashDBService
 prepareserver.sh --name APP_NAME
 {% endhighlight %}
 
-                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
 
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
 </li>
                   <li><b>startserver.sh - Starten des Servers</b><br />
-                  Das Script <b>startserver.sh</b> wird zum Starten von {{ site.data.keys.mf_server }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus: <p/>
+                  Das Script <b>startserver.sh</b> wird zum Starten von {{ site.data.keys.mf_server }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus:<p/>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -371,7 +372,7 @@ prepareserver.sh --name APP_NAME
 ./startserver.sh --name APP_NAME 
 {% endhighlight %}
 
-                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
+                        Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
 
 {% highlight bash %}
 ./startserver.sh --help
@@ -386,7 +387,7 @@ prepareserver.sh --name APP_NAME
 
 
 Starten Sie die {{ site.data.keys.mf_console }} über die URL `http://APP_HOST.mybluemix.net/mfpconsole`. (Der Start kann eine Weile dauern.)   
-Fügen Sie den fernen Server hinzu. Folgen Sie dfür den Anweisungen
+Fügen Sie den fernen Server hinzu. Folgen Sie den Anweisungen
 im Lernprogramm [{{ site.data.keys.mf_cli }} für die Verwaltung
 von {{ site.data.keys.product_adj }}-Artefakten verwenden](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance). 
 

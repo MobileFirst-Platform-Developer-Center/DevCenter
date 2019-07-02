@@ -27,8 +27,8 @@ Folgende Plug-ins sind verfügbar:
 {: #support-levels }
 Von den MobileFirst-Plug-ins werden folgende Cordova-Plattformversionen unterstützt: 
 
-* cordova-ios: **>= 4.1.1 und < 5.0**
-* cordova-android: **>= 6.1.2 and <= 8.0**
+* cordova-ios: **>= 4.1.1 und < 6.0**
+* cordova-android: **>= 6.1.2 und < 9.0**
 * cordova-windows: **>= 4.3.2 und < 7.0**
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
@@ -83,7 +83,7 @@ iOS-Plattform bereit. Weitere Informationen finden Sie unter [OpenSSL für Cordo
 
 **Voraussetzungen:**
 
-- [Apache Cordova CLI (>=6.x und <9.0)](https://www.npmjs.com/package/cordova) und {{ site.data.keys.mf_cli }} sind auf der Entwicklerworkstation installiert.
+- [Apache Cordova CLI (>=6.x und <10.0)](https://www.npmjs.com/package/cordova) und {{ site.data.keys.mf_cli }} sind auf der Entwicklerworkstation installiert.
 - Eine lokale oder ferne Instanz von {{ site.data.keys.mf_server }} ist aktiv. 
 - Sie haben die Lernprogramme [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/development/mobilefirst) und [Cordova-Entwicklungsumgebung einrichten](../../../installation-configuration/development/cordova) durchgearbeitet. 
 - Für Cordova für Windows muss eine Version von Visual C++ installiert sein, die mit den auf der Maschine installierten Versionen von Visual Studio und .NET kompatibel ist. 
@@ -168,6 +168,16 @@ Die {{ site.data.keys.product_adj }}-API-Methoden sind nach dem Laden des {{ sit
 `wlCommonInit` wird nach dem Laden aufgerufen.   
 Mit dieser Funktion können Sie die verschiedenen {{ site.data.keys.product_adj }}-API-Methoden aufrufen. 
 
+### SDK manuell hinzufügen 
+Das Plug-in kann auch von einem lokalen Pfad aus installiert werden. Sie können cordova-plugin-mfp über Ihre MFP-Konsole herunterladen und das Plugin in einer Cordova-Anwendung installieren.
+1. Klicken Sie im Daschboard der MFP-Server-Konsole auf das Download-Center. Auf der Registerkarte "SDKs" finden Sie die Option zum Herunterladen des Cordova-SDK.
+
+2. Navigieren Sie zum Stammverzeichnis Ihres vorhandenen Cordova-Projekts und fügen Sie das zentrale {{ site.data.keys.product_adj }}-Cordova-Plug-in hinzu:
+
+   ```bash
+   cordova plugin add [Pfad_zum_heruntergeladenen_MFP-Cordova-Plug-in]/mfp-cordova/plugins/cordova-plugin-mfp
+   ```
+
 ### Anwendung registrieren
 {: #registering-the-application }
 1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Cordova-Projekts.   
@@ -215,7 +225,7 @@ Die Cordova-Konfigurationsdatei ist eine obligatorische
 XML-Datei, die Anwendungsmetadaten enthält und im Stammverzeichnis der App gespeichert wird.   
 Wenn das {{ site.data.keys.product_adj }}-Cordova-SDK zum Projekt hinzugefügt wurde,
 empfängt die von Cordova generierte Datei **config.xml** neue Elemente,
-die über den Namespace `mfp:` identifiziert werden können. Die hinzugefügten Elemente enthalten Informtionen zu
+die über den Namespace `mfp:` identifiziert werden können. Die hinzugefügten Elemente enthalten Informationen zu
 {{ site.data.keys.product_adj }}-Features und zu {{ site.data.keys.mf_server }}.
 
 ### Beispiel für zur Datei **config.xml** hinzugefügte {{ site.data.keys.product_adj }}-Einstellungen
@@ -325,12 +335,12 @@ die über den Namespace `mfp:` identifiziert werden können. Die hinzugefügten 
                     <tr>
                         <td><b>mfp:appChecksum</b></td>
                         <td>Dieser Wert ist die Kontrollsumme der Anwendungswebressourcen. Er wird bei Ausführung von <code>mfpdev app webupdate</code> berechnet.</td>
-                        <td>Kann nicht vom Benutzer konfiguiert werden; der Kontrollsummenwert wird bei Ausführung des Befehls <code>mfpdev app webupdate</code> aktualisiert. Wenn Sie weitere Informationen zum Befehl <code>mfpdev app webupdate</code> benötigen, geben Sie im Befehlsfenster <code>mfpdev help app webupdate</code> ein.</td>
+                        <td>Kann nicht vom Benutzer konfiguriert werden; der Kontrollsummenwert wird bei Ausführung des Befehls <code>mfpdev app webupdate</code> aktualisiert. Wenn Sie weitere Informationen zum Befehl <code>mfpdev app webupdate</code> benötigen, geben Sie im Befehlsfenster <code>mfpdev help app webupdate</code> ein.</td>
                     </tr>
                     <tr>
                         <td><b>mfp:sdkChecksum</b></td>
                         <td>Dieser Wert ist die Kontrollsumme des IBM MobileFirst-Platform-SDK, über die der eindeutige Level des {{ site.data.keys.product_adj }}-SDK identifiziert wird.</td>
-                        <td>Kenn nicht vom Benutzer konfiguriert werden; standardmäßig festgelegter Wert</td>
+                        <td>Kann nicht vom Benutzer konfiguriert werden; standardmäßig festgelegter Wert</td>
                     </tr>
                     <tr>
                         <td><b>mfp:security</b></td>
@@ -361,7 +371,7 @@ mfpdev app config
 ## Unterstützung der Cordova-Browserplattform
 {: #cordova-browser-platform}
 
-Die MobileFirst Platform bietet jetzt unterstützung für die Cordova-Browserplattform sowie für andere unterstützte Plattformen von Cordova für Windows, Cordova für Android und Cordova für iOS.
+Die MobileFirst Platform bietet jetzt Unterstützung für die Cordova-Browserplattform sowie für andere unterstützte Plattformen von Cordova für Windows, Cordova für Android und Cordova für iOS.
 
 Die Verwendung der Cordova-Browserplattform zusammen mit der MobileFirst Platform (MFP) ist mit der gemeinsamen Verwendung der MFP und anderer Plattformen vergleichbar. Es folgt ein Beispiel, das dieses Feature veranschaulicht. 
 
@@ -430,7 +440,7 @@ Sie können den folgenden Beispielcode nutzen:
    var wlInitOptions = {
       // Optionen für eine Initialisierung mit dem WL.Client-Objekt.
   // Initialisierungsoptionen enthält das IBM MobileFirst Platform Foundation Knowledge Center.
-   mfpContextRoot : '/mfp', // "mfp" ist as Standardkontextstammverzeichnis für den MobileFirst-Entwicklungsserver
+   mfpContextRoot : '/mfp', // "mfp" ist das Standardkontextstammverzeichnis für den MobileFirst-Entwicklungsserver
     applicationId : 'io.cordova.hellocordova' // durch eigene App-ID bzw. eigenen Paketnamen ersetzen
 };
 

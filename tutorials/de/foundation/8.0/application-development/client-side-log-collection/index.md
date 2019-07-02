@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Clientseitige Protokollerfassung
-breadcrumb_title: Clientseitige Protokollerfassung
+breadcrumb_title: Client-side log collection
 relevantTo: [ios,android,javascript]
 weight: 7
 ---

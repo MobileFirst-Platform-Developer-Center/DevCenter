@@ -76,7 +76,7 @@ Gehen Sie wie folgt vor, um jQuery Mobile zu Ihrer Anwendung hinzuzufügen:
           	<body style="display: none;">
           		<div data-role="page" id="page">
           			<div data-role="content" style="padding: 15px">
-          				<!-- Hier kommt die Anwendungsbenutzerschnittstelle -->
+          				<!--application UI goes here-->
           				Hello MobileFirst
           			</div>
           		</div>

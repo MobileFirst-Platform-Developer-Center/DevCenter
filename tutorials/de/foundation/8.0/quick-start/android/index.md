@@ -19,7 +19,7 @@ Bei der folgenden Demonstration geht es darum, einen End-to-End-Ablauf zu verans
 * Erfolgreiches Absetzen eines Pingsignals an {{ site.data.keys.mf_server }}
 * Erfolgreiches Abrufen von Daten mit einem Adapter
 
-#### Voraussetzungen:
+### Voraussetzungen:
 {: #prerequisites }
 * Android Studio
 * *Optional*: {{ site.data.keys.mf_cli }} ([Download]({{site.baseurl}}/downloads))
@@ -27,12 +27,12 @@ Bei der folgenden Demonstration geht es darum, einen End-to-End-Ablauf zu verans
 
 ### 1. {{ site.data.keys.mf_server }} starten
 {: #1-starting-the-mobilefirst-server }
-Stellen Sie sicher, dass eine [Mobile-Foundation-Instanz erstellt](../../bluemix/using-mobile-foundation) wurde oder,  
+Stellen Sie sicher, dass eine [Mobile-Foundation-Instanz erstellt](../../ibmcloud/using-mobile-foundation) wurde oder,  
 falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) verwenden, navigieren Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run.sh` oder unter Windows den Befehl `run.cmd` aus.
 
 ### 2. Anwendung erstellen
 {: #2-creating-an-application }
-Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://your-server-host:server-port/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
+Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://Ihr_Server-Host:Serverport/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
 
 1. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**.
     * Wählen Sie die **Android**-Plattform aus.
@@ -136,7 +136,7 @@ Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.
     <img class="gifplayer" alt="Adapter implementieren" src="create-an-adapter.png"/>   
 
 <img src="androidQuickStart.png" alt="Beispiel-App" style="float:right"/>
-### 5. Awendung testen
+### 5. Anwendung testen
 {: #5-testing-the-application }
 
 1. Wählen Sie in Android Studio im Seitenleistenmenü **Project** die Datei **app → src → main →assets → mfpclient.properties** aus und bearbeiten Sie die Eigenschaften **protocol**, **host** und **port**. Geben Sie die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} an.

@@ -28,13 +28,13 @@ in der {{ site.data.keys.mf_console }} registriert und heruntergeladen.
 
 ### 1. {{ site.data.keys.mf_server }} starten
 {: #starting-the-mobilefirst-server }
-Stellen Sie sicher, dass eine [Mobile-Foundation-Instanz erstellt](../../bluemix/using-mobile-foundation) wurde oder,   
+Stellen Sie sicher, dass eine [Mobile-Foundation-Instanz erstellt](../../ibmcloud/using-mobile-foundation) wurde oder,  
 falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) verwenden, navigieren
 Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run.sh` oder unter Windows den Befehl `run.cmd` aus.
 
 ### 2. Anwendung erstellen und registrieren
 {: #creating-and-registering-an-application }
-Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://your-server-host:server-port/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
+Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://Ihr_Server-Host:Serverport/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
 
 1. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**. 
     * Wählen Sie die **Web**-Plattform aus. 
@@ -113,7 +113,7 @@ folgenden Befehl aus:
 
 
 <img src="web-success.png" alt="Beispielanwendung" style="float:right"/>
-### 5. Awendung testen
+### 5. Anwendung testen
 {: #testing-the-application }
 1. Navigieren Sie in einem **Befehlszeilenfenster** zum Ordner **[Projektstammverzeichnis] → node-server**.
 2. Öffnen Sie die Datei **[Projektstammverzeichnis] → node-server → server.js** und bearbeiten Sie die Variablen **host** und **port**. Geben Sie die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} an.

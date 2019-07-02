@@ -21,7 +21,7 @@ Folgen Sie den nachstehenden Anweisungen, um mit Helm-Charts eine MobileFirst-Se
 * [Voraussetzungen](#prereqs)
 * [Passport-Advantage-Archiv mit der IBM Mobile Foundation herunterladen](#download-the-ibm-mfpf-ppa-archive)
 * [Passport-Advantage-Archiv mit der IBM Mobile Foundation laden](#load-the-ibm-mfpf-ppa-archive)
-* [Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigrieren](#configure-install-mf-helmcharts)
+* [Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigurieren](#configure-install-mf-helmcharts)
 * [Installation überprüfen](#verify-install)
 * [Beispielanwendung](#sample-app)
 * [Upgrade für {{ site.data.keys.prod_adj }}-Helm-Charts und -Releases durchführen](#upgrading-mf-helm-charts)
@@ -39,7 +39,7 @@ Für die Verwaltung von Containern und Images müssen Sie im Rahmen der Einricht
 * IBM Cloud-Container-Registry-Plug-in (`cr`)
 * IBM Cloud-Container-Service-Plug-in (`ks`)
 
-Für den Zugruff auf den IBM Cloud-Kubernetes-Cluster über die CLI sollten Sie den IBM Cloud-Client konfigurieren. [Hier finden Sie weitere Informationen](https://console.bluemix.net/docs/cli/index.html).
+Für den Zugriff auf den IBM Cloud-Kubernetes-Cluster über die CLI sollten Sie den IBM Cloud-Client konfigurieren. [Hier finden Sie weitere Informationen](https://console.bluemix.net/docs/cli/index.html).
 
 ## Passport-Advantage-Archiv mit der IBM Mobile Foundation herunterladen
 {: #download-the-ibm-mfpf-ppa-archive}
@@ -74,16 +74,58 @@ Führen Sie die nachstehenden Schritte aus, um das Passport-Advantage-Archiv in 
       ibmcloud cr region-set
       ```    
 
-  4. Laden Sie mit folgendem Befehl das Passport-Advantage-Archiv mit der {{ site.data.keys.product }}:
+  4. Laden Sie mit folgenden Schritten das Passport-Advantage-Archiv mit der {{ site.data.keys.product }}:
+       1. Extrahieren Sie das PPA-Archiv.
+       2. Kennzeichnen Sie die geladenen Images mit dem Registry-Namespace von IBM Cloud Container und mit der richtigen Version.
+       3. Übertragen Sie das Image per Push-Operation.
+       4. Erstellen Sie die Manifeste und übertragen Sie per Push-Operation.
+
+      Beispiel für mfpf-server:
+      ```bash
+      mkdir -p ppatmp ; cd ppatmp
+
+      tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
+
+      cd ./images
+
+      for i in *; do docker load -i $i;done
+
+      docker tag mfpf-server:1.0.28-amd64 us.icr.io/default/mfpf-server:1.0.28-amd64
+      docker tag mfpf-server:1.0.28-s390x us.icr.io/default/mfpf-server:1.0.28-s390x
+      docker tag mfpf-server:1.0.28-ppc64le us.icr.io/default/mfpf-server/mfpf-server:1.0.28-ppc64le
+
+      # Alle Images per Push-Operation übertragen
+
+      docker push  us.icr.io/default/mfpf-server:1.0.28-amd64
+      docker push us.icr.io/default/mfpf-server:1.0.28-s390x
+      docker push us.icr.io/default/mfpf-server:1.0.28-ppc64le
+
+      # Manifestlisten erstellen
+      docker manifest create us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-amd64 us.icr.io/default/mfpf-server:1.0.28-s390x us.icr.io/default/mfpf-server:1.0.28-ppc64le --amend
+
+      # Manifeste mit Annotationen versehen
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-amd64 --os linux --arch amd64
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-ppc64le --os linux --arch ppc64le
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-s390x --os linux --arch s390x
+
+      # Manifestliste per Push-Operation übertragen
+      docker manifest push us.icr.io/default/mfpf-server:1.0.28
+
+      rm -rf ppatmp
       ```
+
+      >**Hinweis:** Der Befehl `ibmcloud cr ppa-archive load` bietet keine Unterstützung für das PPA-Paket mit Multiarchitekturunterstützung. Daher muss das Paket manuell extrahiert und per Push-Operation in das IBM Cloud-Container-Repository übertragen werden. (Benutzer, die ältere PPA-Versionen verwenden, müssen zum Laden den folgenden Befehl verwenden.)
+
+      ```bash
       ibmcloud cr ppa-archive-load --archive <Archivname> --namespace <Namespace> [--clustername <Clustername>]
       ```
       Der *Archivname* für die {{ site.data.keys.product }} ist der Name des Archivs, den Sie über IBM Passport Advantage heruntergeladen haben.
 
+  >**Hinweis:** Multiarchitektur bezieht sich auf mehrere Architekturen, einschließlich intel (amd64), power64 (ppc64le) und s390x. Mehrere Architekturen werden nur von ICP 3.1.1 unterstützt.
 
-  Die Helm-Charts werden im Client oder lokal gespeichert (im Gegensatz zum Helm-Chart für ICP, das im Helm-Repository für IBM Cloud Private gespeichert wird). Die Charts finden Sie im Verzeichnis `ppa-import/charts`. 
+  Die Helm-Charts werden im Client oder lokal gespeichert (im Gegensatz zum Helm-Chart für ICP, das im Helm-Repository für IBM Cloud Private gespeichert wird). Die Charts finden Sie im Verzeichnis `ppa-import/charts` (oder "charts"). 
 
-## Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigrieren
+## Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigurieren
 {: #configure-install-mf-helmcharts}
 
 Bevor Sie das {{ site.data.keys.mf_server }} installieren und konfigurieren, benötigen Sie Folgendes: 
@@ -98,7 +140,7 @@ Bevor Sie das {{ site.data.keys.mf_server }} installieren und konfigurieren, ben
 
   * Erstellen Sie mit den Dateien `keystore.jks`, `keystore-password.txt`, `truststore.jks`, `truststore-password.txt` einen geheimen Schlüssel und geben Sie im Feld *keystores.keystoresSecretName* den Namen des geheimen Schlüssels an.
 
-  * Speichern Sie die Datei `keystore.jks` mit dem zugehörigen Kennwort in einer Datei mit dem Namen `keystore-password.txt` und die Datei `truststore.jks` mit dem zugehörigen Kennwort its password in einer Datei mit dem Namen `truststore-password.jks`.
+  * Speichern Sie die Datei `keystore.jks` mit dem zugehörigen Kennwort in einer Datei mit dem Namen `keystore-password.txt` und die Datei `truststore.jks` mit dem zugehörigen Kennwort in einer Datei mit dem Namen `truststore-password.jks`.
 
   * Rufen Sie die Befehlszeile auf und führen Sie Folgendes aus:
     ```bash
@@ -116,21 +158,23 @@ In der folgenden Tabelle sind die in {{ site.data.keys.mf_analytics }} in einen 
 
 |Qualifikationsmerkmal |Parameter |Definition |Zulässiger Wert |
 |-----------|-----------|------------|---------------|
-|arch |  |Worker node architecture |Worker-Knotenarchitektur, in der dieses Chart implementiert werden soll. <br/>Derzeit wird nur die Plattform **AMD64** unterstützt. |
+|arch | amd64 | Planervorgabe für einen amd64-Worker-Knoten in einem Hybridcluster | 3 - Bevorzugt (Standardwert) |
+|  | ppcle64 | Planervorgabe für einen ppc64le-Worker-Knoten in einem Hybridcluster | 2 - Keine Vorgabe (Standardwert) |
+|  | s390x | Planervorgabe für einen S390x-Worker-Knoten in einem Hybridcluster | 2 - Keine Vorgabe (Standardwert) |
 |image |pullPolicy |Richtlinie für Image-Übertragung per Pull-Operation |Standardeinstellung: **IfNotPresent** |
 |  |tag |Docker image tag |Siehe [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
 |  |name |Docker image name |Name des Docker-Image für {{ site.data.keys.prod_adj }} Operational Analytics |
-|scaling |replicaCount |Anzahl der Instanzen (Pods) von {{ site.data.keys.prod_adj }} Operational Analytics, die erstellt werden müssen |Positive ganze Zahl<br/>Standardeinstellung: **2** |
+|scaling |replicaCount |Anzahl der Instanzen (Pods) von {{ site.data.keys.prod_adj }} Operational Analytics, die erstellt werden müssen | Positive ganze Zahl<br/>Standardwert: **2** |
 |mobileFirstAnalyticsConsole |user |Benutzername für {{ site.data.keys.prod_adj }} Operational Analytics |Standardeinstellung: **admin** |
 |  |password |Kennwort für {{ site.data.keys.prod_adj }} Operational Analytics |Standardeinstellung: **admin** |
 |analyticsConfiguration |clusterName |Name des {{ site.data.keys.prod_adj }}-Analytics-Clusters |Standardeinstellung: **mobilefirst** |
 |  |analyticsDataDirectory |Pfad für die Speicherung von Analytics-Daten. *Unter diesem Pfad wird auch die Forderung nach einem persistenten Datenträger innerhalb des Containers angehängt*. |Standardeinstellung: `/analyticsData` |
-|  |numberOfShards |Anzahl der Elasticsearch-Shards für {{ site.data.keys.prod_adj }} Analytics |Positive ganze Zahl<br/>Standardeinstellung: **2** |
-|  |replicasPerShard |Anzahl der Elasticsearch-Replikate, die pro Shard für {{site.data.keys.prod_adj }}  Analytics verwaltet werden sollen |Positive ganze Zahl<br/>Standardeinstellung: **2** |
+|  |numberOfShards |Anzahl der Elasticsearch-Shards für {{ site.data.keys.prod_adj }} Analytics | Positive ganze Zahl<br/>Standardwert: **2** |
+|  |replicasPerShard |Anzahl der Elasticsearch-Replikate, die pro Shard für {{site.data.keys.prod_adj }}  Analytics verwaltet werden sollen | Positive ganze Zahl<br/>Standardwert: **2** |
 |keystores |keystoresSecretName |Unter [Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigurieren](#configure-install-mf-helmcharts) sind die Schritte für die Erstellung des geheimen Schlüssels mit den Keystores und den zugehörigen Kennwörtern beschrieben. |  |
 |jndiConfigurations |mfpfProperties |Für die Anpassung von Operational Analytics anzugebende {{ site.data.keys.prod_adj }}-JNDI-Eigenschaften |Liste mit Name-Wert-Paaren, jeweils getrennt durch ein Komma angegeben |
-|resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität |Standardeinstellung: **2000m** <br/>Informieren Sie sich über die Bedeutung der CPU-Kapazität unter [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität |Standardeinstellung: **4096Mi** <br/>Informieren Sie sich über die Bedeutung der CPU-Kapazität unter [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität | Standardwert: **2000m**<br/>Informieren Sie sich über die Bedeutung der CPU-Kapazität unter [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität | Standardwert: **4096Mi**<br/>Informieren Sie sich über die Bedeutung der CPU-Kapazität unter [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |  |requests.cpu |Beschreibt die erforderliche CPU-Mindestkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder ein anderweitig für die Implementierung definierter Wert. |Standardeinstellung: **1000m** |
 |  |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder der für die Implementierung definierte Wert. |Standardeinstellung: **2048Mi** |
 |persistence |existingClaimName |Name der vorhandenen Forderung nach einem persistenten Datenträger |  |
@@ -145,11 +189,13 @@ In der folgenden Tabelle sind die in {{ site.data.keys.mf_server }} in einen IBM
 
 |Qualifikationsmerkmal |Parameter |Definition |Zulässiger Wert |
 |-----------|-----------|------------|---------------|
-|arch |  |Worker node architecture |Worker-Knotenarchitektur, in der dieses Chart implementiert werden soll. <br/>Derzeit wird nur die Plattform **AMD64** unterstützt. |
+|arch | amd64 | Planervorgabe für einen amd64-Worker-Knoten in einem Hybridcluster | 3 - Bevorzugt (Standardwert) |
+|  | ppcle64 | Planervorgabe für einen ppc64le-Worker-Knoten in einem Hybridcluster | 2 - Keine Vorgabe (Standardwert) |
+|  | s390x | Planervorgabe für einen S390x-Worker-Knoten in einem Hybridcluster | 2 - Keine Vorgabe (Standardwert) |
 |image |pullPolicy |Richtlinie für Image-Übertragung per Pull-Operation |Standardwert: **IfNotPresent** |
 |  |tag |Docker image tag |Siehe [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
 |  |name |Docker image name |Name des {{ site.data.keys.prod_adj }}-Server-Docker-Image |
-|scaling |replicaCount |Anzahl der {{ site.data.keys.prod_adj }}-Server-Instanzen (Pods), die erstellt werden müssen |Positive ganze Zahl<br/>Standardeinstellung: **3** |
+|scaling |replicaCount |Anzahl der {{ site.data.keys.prod_adj }}-Server-Instanzen (Pods), die erstellt werden müssen | Positive ganze Zahl<br/>Standardwert: **3** |
 |mobileFirstOperationsConsole |user |Benutzername für {{ site.data.keys.prod_adj }} Server |Standardeinstellung: **admin** |
 |  |password |Kennwort für den Benutzer von {{site.data.keys.prod_adj }} Server |Standardeinstellung: **admin** |
 |existingDB2Details |db2Host |IP-Adresse oder Host der DB2-Datenbank, in der die {{site.data.keys.prod_adj }}-Server-Tabellen konfiguriert werden müssen |Derzeit wird nur DB2 unterstützt. |
@@ -158,14 +204,14 @@ In der folgenden Tabelle sind die in {{ site.data.keys.mf_server }} in einen IBM
 |  |db2Username |DB2-Benutzername für den Zugriff auf die DB2-Datenbank |Der Benutzer sollte Zugriff haben, um Tabellen zu erstellen und ein Schema zu erstellen, falls es noch nicht vorhanden ist. |
 |  |db2Password |DB2-Kennwort für die angegebene Datenbank |  |
 |  |db2Schema |Zu erstellendes Server-DB2-Schema |  |
-|  |db2ConnectionIsSSL |DB2-Verbindungstyp |Geben Sie an, ob Ihre Datenbankverbindung über **http** oder **https** erfolgen muss. Der Standardwert ist **false** (http). <br/>Stellen Sie sicher, dass der DB2-Port für denselben Verbindungsmodus konfiguriert ist. |
-|existingMobileFirstAnalytics |analyticsEndPoint |URL des Analytics Server |Beispiel: `http://9.9.9.9:30400`<br/> Geben Sie nicht den Pfad zur Konsole an. Dieser wird während der Implementierung hinzugefügt.  |
+|  |db2ConnectionIsSSL |DB2-Verbindungstyp |Geben Sie an, ob Ihre Datenbankverbindung über **http** oder **https** erfolgen muss. Der Standardwert ist **false** (http).<br/>Stellen Sie sicher, dass der DB2-Port für denselben Verbindungsmodus konfiguriert ist. |
+|existingMobileFirstAnalytics |analyticsEndPoint |URL des Analytics Server | Beispiel: `http://9.9.9.9:30400`<br/> Geben Sie nicht den Pfad zur Konsole an. Dieser wird während der Implementierung hinzugefügt.  |
 |  |analyticsAdminUser |Benutzername des Analytics-Benutzers mit Verwaltungsaufgaben |  |
 |  |analyticsAdminPassword |Kennwort des Analytics-Benutzers mit Verwaltungsaufgaben |  |
 |keystores |keystoresSecretName |Unter [Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigurieren](#configure-install-mf-helmcharts) sind die Schritte für die Erstellung des geheimen Schlüssels mit den Keystores und den zugehörigen Kennwörtern beschrieben. |  |
 |jndiConfigurations |mfpfProperties |{{ site.data.keys.prod_adj }}-Server-JNDI-Eigenschaften für die Anpassung der Implementierung |Liste mit Name-Wert-Paaren, jeweils getrennt durch ein Komma angegeben |
-|resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität |Standardeinstellung: **2000m** <br/>Informieren Sie sich über die Bedeutung der CPU-Kapazität unter [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität |Standardeinstellung: **4096Mi** <br/>Informieren Sie sich über die Bedeutung der CPU-Kapazität unter [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität | Standardwert: **2000m**<br/>Informieren Sie sich über die Bedeutung der CPU-Kapazität unter [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität | Standardwert: **4096Mi**<br/>Informieren Sie sich über die Bedeutung der CPU-Kapazität unter [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |  |requests.cpu |Beschreibt die erforderliche CPU-Mindestkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder ein anderweitig für die Implementierung definierter Wert. |Standardeinstellung: **1000m** |
 |  |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder der für die Implementierung definierte Wert. |Standardeinstellung: **2048Mi** |
 | logs | consoleFormat | Gibt das Format der Containerprotokollausgabe an |Standardeinstellung: **json** |
@@ -199,7 +245,7 @@ Führen Sie die folgenden Schritte aus, um IBM {{ site.data.keys.mf_analytics }}
     helm inspect values ibm-mfpf-analytics-prod-1.0.17.tgz > values.yaml
     ```    
 
-3. Modifizieren Sie die Datei **values.yaml**. Fügen Sie die entsprechenden Werte für die Implmentierung des Helm-Charts hinzu. Vergewissern Sie sich, dass die Hostdetails für [Ingress](https://console.bluemix.net/docs/containers/cs_ingress.html), die Skalierung usw. hinzugefügt wurden, und speichern Sie die Datei values.yaml.
+3. Modifizieren Sie die Datei **values.yaml**. Fügen Sie die entsprechenden Werte für die Implementierung des Helm-Charts hinzu. Vergewissern Sie sich, dass die Hostdetails für [Ingress](https://console.bluemix.net/docs/containers/cs_ingress.html), die Skalierung usw. hinzugefügt wurden, und speichern Sie die Datei values.yaml.
 
 4. Führen Sie zum Implementieren des Helm-Charts den folgenden Befehl aus:
     ```bash
@@ -231,7 +277,7 @@ Führen Sie die folgenden Schritte aus, um IBM {{ site.data.keys.mf_server }} in
     helm inspect values ibm-mfpf-server-prod-1.0.17.tgz > values.yaml
     ```   
 
-3. Modifizieren Sie die Datei **values.yaml**. Fügen Sie die entsprechenden Werte für die Implmentierung des Helm-Charts hinzu. Vergewissern Sie sich, dass die Datenbankdetails, Ingress, die Skalierung usw. hinzugefügt wurden, und speichern Sie die Datei values.yaml.
+3. Modifizieren Sie die Datei **values.yaml**. Fügen Sie die entsprechenden Werte für die Implementierung des Helm-Charts hinzu. Vergewissern Sie sich, dass die Datenbankdetails, Ingress, die Skalierung usw. hinzugefügt wurden, und speichern Sie die Datei values.yaml.
 
 4. Führen Sie zum Implementieren des Helm-Charts den folgenden Befehl aus:
     ```bash
@@ -282,11 +328,11 @@ Führen Sie für den Zugriff auf die Konsole die folgenden Schritte aus:
 2. Wählen Sie den Kubernetes-Cluster aus, in dem `Analytics/Server/AppCenter` implementiert wurde, um die Seite **Overview** zu öffnen.
 3. Suchen Sie die Ingress-Unterdomäne für den Ingress-Hostnamen und greifen Sie wie folgt auf die Konsole zu:
     * Verwenden Sie für den Zugriff auf die IBM Mobile Foundation Operational Console Folgendes:
-     `<protocol>://<Ingress-Hostname>/mfpconsole`
+     `<Protokoll>://<Ingress-Hostname>/mfpconsole`
     * Verwenden Sie für den Zugriff auf die IBM Mobile Foundation Analytics Console Folgendes:
-     `<protocol>://<Ingress-Hostname>/analytics/console`
+     `<Protokoll>://<Ingress-Hostname>/analytics/console`
     * Verwenden Sie für den Zugriff auf die IBM Mobile-Foundation-Application-Center-Konsole Folgendes:
-     `<protocol>://<Ingress-Hostname>/appcenter/console`
+     `<Protokoll>://<Ingress-Hostname>/appcenter/console`
 
 >**Hinweis:** Der Port 9600 wird intern im Kubernetes-Service zugänglich gemacht und von den {{ site.data.keys.prod_adj }}-Analytics-Instanzen als Transportport verwendet. 
 
@@ -304,17 +350,17 @@ Unter [Upgrading bundled products](https://www.ibm.com/support/knowledgecenter/e
 
 1. Für das Upgrade eines Helm-Release mit einer Änderung der Werte von `values.yaml` können Sie den Befehl `helm upgrade` mit der Option **--set** verwenden. Sie können die Option **-- set** mehrfach angeben. Priorität erhält die in der Befehlszeile ganz rechts angegebene Option "set". 
   ```bash
-  helm upgrade --set <name>=<Wert> --set <name>=<Wert> <existing-helm-release-name> <Pfad_des_neuen_Helm-Charts>
+  helm upgrade --set <Name>=<Wert> --set <Name>=<Wert> <Name_des_vorhandenen_Helm-Release> <Pfad_des_neuen_Helm-Charts>
   ```
 
 2. Wenn Sie ein Upgrade für ein Helm-Release mit Angabe von Werten in einer Datei durchführen, verwenden Sie den Befehl `helm upgrade` mit der Option **-f**. Sie können die Option **--values** oder **-f** mehrfach verwenden. Priorität erhält die in der Befehlszeile ganz rechts angegebene Datei (Option "-f"). Wenn im folgenden Beispiel sowohl `myvalues.yaml` als auch `override.yaml` einen Schlüssel *Test* enthält, hat der in `override.yaml` festgelegte Wert Vorrang. 
   ```bash
-  helm upgrade -f myvalues.yaml -f override.yaml <existing-helm-release-name> <Pfad_des_neuen_Helm-Charts>
+  helm upgrade -f myvalues.yaml -f override.yaml <Name_des_vorhandenen_Helm-Release> <Pfad_des_neuen_Helm-Charts>
   ```
 
-3. Wenn Sie ein Uprade für ein Helm-Release durchführen und dabei die Werte des letzten Release wiederverwenden und einige der Werte überschreiben möchten, können Sie einen Befehl wie den folgenden verwenden: 
+3. Wenn Sie ein Upgrade für ein Helm-Release durchführen und dabei die Werte des letzten Release wiederverwenden und einige der Werte überschreiben möchten, können Sie einen Befehl wie den folgenden verwenden: 
   ```bash
-  helm upgrade --reuse-values --set <name>=<Wert> --set <name>=<Wert> <existing-helm-release-name> <Pfad_des_neuen_Helm-Charts>
+  helm upgrade --reuse-values --set <Name>=<Wert> --set <Name>=<Wert> <Name_des_vorhandenen_Helm-Release> <Pfad_des_neuen_Helm-Charts>
   ```
 
 ## Deinstallation

@@ -37,7 +37,7 @@ Für die Verwaltung von Containern und Images müssen Sie im Rahmen des IBM Clou
 * Kubernetes-CLI (`kubectl`)
 * Helm (`helm`)
 
-Für den Zugruff auf den IBM Cloud-Private-Cluster über die CLI sollten Sie den *kubectl*-Client konfigurieren. [Hier finden Sie weitere Informationen](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
+Für den Zugriff auf den IBM Cloud-Private-Cluster über die CLI sollten Sie den *kubectl*-Client konfigurieren. [Hier finden Sie weitere Informationen](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
 
 
 ## Helm-Chart für IBM Mobile Foundation for Developers 8.0 installieren und konfigurieren
@@ -51,7 +51,7 @@ In der folgenden Tabelle sind die Umgebungsvariablen angegeben, die in IBM Mobil
 
 |Qualifikationsmerkmal |Parameter |Definition |Zulässiger Wert |
 |-----------|-----------|------------|---------------|
-|arch |  |Worker node architecture |Worker-Knotenarchitektur, in der dieses Chart implementiert werden soll. <br/>Derzeit wird nur die Plattform **AMD64** unterstützt. |
+|arch |  |Worker node architecture | Worker-Knotenarchitektur, in der dieses Chart implementiert werden soll. Derzeit wird nur die Plattform **AMD64** unterstützt. |
 |image |pullPolicy |Richtlinie für Image-Übertragung per Pull-Operation | Always, Never oder IfNotPresent. <br/>Standardeinstellung: **IfNotPresent** |
 |  | repository |Docker image name | Name des {{ site.data.keys.prod_adj }}-Server-Docker-Image |
 |  |tag |Docker image tag |Siehe [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
@@ -66,7 +66,7 @@ In der folgenden Tabelle sind die Umgebungsvariablen angegeben, die in IBM Mobil
 ## Installation überprüfen
 {: #verify-install}
 
-Nach der Installation von Mobile Foundation for Developers 8.0 können Sie wie folgt Ihre Instalaltion und den Status der implementierten Pods überprüfen: 
+Nach der Installation von Mobile Foundation for Developers 8.0 können Sie wie folgt Ihre Installation und den Status der implementierten Pods überprüfen: 
 
 Wählen Sie in der Managementkonsole von {{ site.data.keys.prod_icp }} **Workloads > Helm Releases** aus. Klicken Sie auf den *Releasenamen* für Ihre Installation. 
 

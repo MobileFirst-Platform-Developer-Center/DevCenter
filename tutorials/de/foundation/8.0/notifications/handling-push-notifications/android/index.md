@@ -56,7 +56,7 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
    Fügen Sie außerdem folgende Zeilen hinzu: 
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
             name: 'ibmmobilefirstplatformfoundationpush',
             version: '8.0.+',
             ext: 'aar',
@@ -66,8 +66,14 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
    Oder in einer einzelnen Zeile: 
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
+   
+   >**Hinweis**: Wenn Sie das Feature [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) verwenden und MobileFirst-APIs von einem Zusatzmodul aus aufrufen möchten, verwenden Sie die `api`-Deklaration anstelle von `implementation`. Wenn Sie `implementation` verwenden, ist die Nutzung von MobileFirst-APIs auf dasselbe Modul beschränkt. Bei Verwendung von `api` werden die MobileFirst-APIs dagegen für alle in der App vorhandenen Module verfügbar gemacht. Dies gilt auch für Zusatzmodule. Weitere Details finden Sie unter [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+   
+```xml
+ api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+```
 
 2. Öffnen Sie unter **Android → app → manifests** die Datei `AndroidManifest.xml`. 
 	* Fügen Sie am Anfang des Tags `manifest` die folgenden Berechtigungen hinzu: 

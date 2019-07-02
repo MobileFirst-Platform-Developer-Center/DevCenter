@@ -88,10 +88,10 @@ folgen Sie den Anweisungen im Lernprogramm [SDK der {{ site.data.keys.product }}
 ### MFPPush-Instanz
 {: #mfppush-instance }
 Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie
-eine Variable (`var`) in einem Ahnsichtencontroller erstellen, z. B. `var push = MFPPush.sharedInstance();`,
+eine Variable (`var`) in einem Ansichtencontroller erstellen, z. B. `var push = MFPPush.sharedInstance();`,
 und dann im gesamten Ansichtencontroller `push.methodName()` aufrufen. 
 
-Alternativ dazu könen Sie `MFPPush.sharedInstance().methodName()` für jede Instanz aufrufen, in der
+Alternativ dazu können Sie `MFPPush.sharedInstance().methodName()` für jede Instanz aufrufen, in der
 Sie auf die Push-API-Methoden zugreifen müssen. 
 
 ### Abfrage-Handler
@@ -281,7 +281,7 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 
 Push-Benachrichtigungen werden direkt vom nativen iOS-Framework behandelt. Welche Methoden vom iOS-Framework aufgerufen werden, richtet sich nach Ihrem Anwendungslebenszyklus. 
 
-Wenn beispielsweise eine einfahce Benachrichtigung empfangen wird, währen die Anwendung aktiv ist,
+Wenn beispielsweise eine einfache Benachrichtigung empfangen wird, währen die Anwendung aktiv ist,
 wird `didReceiveRemoteNotification` von **AppDelegate** ausgelöst. 
 
 ```swift
@@ -296,7 +296,7 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 }
 ```
 
-> Weitere Informationen zur Handhabung von Benachrichtigungen in iOS finden Sie in der Apple-Dokumentation unter http://bit.ly/1ESSGdQ. 
+> Weitere Informationen zur Handhabung von Benachrichtigungen in iOS finden Sie in der [Apple-Dokumentation](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1). 
 
 <img alt="Beispielanwendung" src="notifications-app.png" style="float:right"/>
 
