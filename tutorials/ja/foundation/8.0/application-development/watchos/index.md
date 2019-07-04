@@ -10,6 +10,8 @@ weight: 13
 {: #overview }
 この例では、{{ site.data.keys.product_adj }} フレームワークを使用して watchOS 2 以降用の開発環境をセットアップする方法を学習します。 この例は、watchOS 2 を使用して作成され記述されていますが、watchOS 3 でも正常に動作します。
 
+>**注:** アプリケーション認証性フィーチャーは、*8.0.0.0-MFPF-IF201903190949-CDUpdate-05* 以降 watchOS SDK でサポートされます。
+
 ## セットアップ
 {: #setup }
 watchOS 用の開発環境をセットアップするには、Xcode プロジェクトを作成し、watchOS フレームワークを追加し、必要なターゲットをセットアップします。
@@ -66,7 +68,7 @@ Apple Watch デバイスと iPhone デバイスは物理的に異なります。
         * com.worklight.[project_name] はユーザー名/パスワードの検査にマップします。
         * com.worklight.[project_name].watchkitapp.watchkitextension は PIN コードのセキュリティー検査にマップします。
 
-## WatchOS の制限事項
+## watchOS の制限事項
 {: #watchos-limitation }
 {{ site.data.keys.product_adj }} アプリケーションにフィーチャーを追加するオプション・フレームワークは、watchOS 開発用には提供されていません。 他の一部のフィーチャーも、watchOS デバイスまたは Apple Watch デバイスによる制約によって制限を受けます。
 
@@ -76,7 +78,6 @@ Apple Watch デバイスと iPhone デバイスは物理的に異なります。
 | JSONStore| サポートされない |
 | 通知 | サポートされない |
 | {{ site.data.keys.product_adj }} コードによって表示されるメッセージ・アラート | サポートされない |
-| アプリケーションの認証性検証 | ビットコードとの互換性がないため、サポートされない |
 | リモートでの無効化/通知	| カスタマイズが必要 (下記参照) |
 | ユーザー名/パスワードでのセキュリティー検査 | CredentialsValidation セキュリティー検査を使用します |
 

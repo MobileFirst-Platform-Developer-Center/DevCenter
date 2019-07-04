@@ -10,11 +10,11 @@ show_children: true
 
 アプリケーションの開発では、以下のステップを実行します。
 
-1. アプリケーションを作成します。[アプリケーションの作成](../getting-started/)のセクションを参照してください。
-2. 必要なコントロールを追加して、アプリケーションを設計します。詳しくは、『[Digital App Builder インターフェース](../dab-interface/)』を参照してください。
+1. アプリケーションを作成します。 [アプリケーションの作成](../getting-started/)のセクションを参照してください。
+2. 必要なコントロールを追加して、アプリケーションを設計します。 詳しくは、『[Digital App Builder インターフェース](../dab-interface/)』を参照してください。
 3. 必要なサービス (Watson Chat、Watson Visual Recognition、Push Notifications、Data Set) をアプリケーションに追加します。
-4. 必要に応じて、プラットフォームを追加または変更します。[『設定』>『アプリケーションの詳細』](../dab-interface/)セクションを参照してください。
-5. アプリケーションをプレビューします。『[シミュレーターを使用したアプリケーションのプレビュー](#preview-the-app-using-the-simulator)』を参照してください。
+4. 必要に応じて、プラットフォームを追加または変更します。 [『設定』>『アプリケーションの詳細』](../dab-interface/)セクションを参照してください。
+5. アプリケーションをプレビューします。 『[シミュレーターを使用したアプリケーションのプレビュー](#preview-the-app-using-the-simulator)』を参照してください。
 6. アプリケーションをプレビューした後、エラーの修正後にビルドの準備ができたら、アプリケーションをビルドするための以下のステップを実行します。
 
     * **Android アプリケーションの場合:**
@@ -51,6 +51,6 @@ show_children: true
 
 * iOS でアプリケーションをプレビューするには、Apple App Store から **XCode** をダウンロードしてインストールします。
 * Android でアプリケーションをプレビューするには、以下のようにします。 
-    * Android Studio をインストールし、その指示に従います。[https://developer.android.com/studio/](https://developer.android.com/studio/)
-    * Android 仮想マシンを構成します。[こちら](https://developer.android.com/studio/releases/emulator)の説明を参照してください。
+    * Android Studio をインストールし、その指示に従います。 [https://developer.android.com/studio/](https://developer.android.com/studio/)
+    * Android 仮想マシンを構成します。 [こちら](https://developer.android.com/studio/releases/emulator)の説明を参照してください。
 

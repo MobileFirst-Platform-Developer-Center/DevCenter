@@ -1,315 +1,321 @@
 ---
 layout: tutorial
-title: Digital App Builder interface
+title: Digital App Builder インターフェース
 weight: 4
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #digital-app-builder-interface }
 
 
-![DAB interface](dab-workbench-elements.png)
+![DAB インターフェース](dab-workbench-elements.png)
 
-Digital App Builder interface consists of the following in the Left navigation panel:
+Digital App Builder インターフェースは、左ナビゲーション・パネルにある以下のコンポーネントで構成されます。
 
-* **Workbench** - displays or hides the page details
-* **Data** - helps you to add a dataset by connecting to an existing data source or create a data source for a microservice using OpenAPI doc. 
-* **Watson** - consists of Image Recognition and Chatbot (Watson Assistant) components for configuring an existing instance or create a new instance. 
-* **Engagement** - You can increase your user engagement with the app by adding Push notifications services
-* **Console**: displays the console to see the activities and code for each component. 
-* **Settings**: displays the App details, Server info, Plugins, and Repair Project (like Rebuilding dependencies, Rebuilding platforms, Resetting IBM Cloud credentials).
+* **ワークベンチ (Workbench)** - ページの詳細の表示/非表示を切り替えます。
+* **データ (Data)** - 既存のデータ・ソースに接続してデータ・セットを追加したり、OpenAPI 文書を使用してマイクロサービスのデータ・ソースを作成したりするのに役立ちます。 
+* **Watson** - 既存のインスタンスの構成または新規インスタンスの作成のための Image Recognition コンポーネント およびチャットボット (Watson Assistant) コンポーネントで構成されます。 
+* **エンゲージメント (Engagement)** - プッシュ通知サービスを追加して、アプリケーションでのユーザー・エンゲージメントを増やすことができます。
+* **コンソール (Console)**: 各コンポーネントのアクティビティーおよびコードを確認するためのコンソールが表示されます。 
+* **設定**: アプリケーションの詳細、サーバー情報、プラグイン、およびプロジェクトの修復 (依存関係の再ビルド、プラットフォームの再ビルド、IBM Cloud 資格情報のリセットなど) が表示されます。
 
-### Workbench
+### ワークベンチ (Workbench)
 {: #workbench }
 
-Workbench helps you to design the pages. Workbench consists of three work areas:
+ワークベンチ (Workbench) は、ページの設計に役立ちます。 ワークベンチ (Workbench) は、以下の 3 つの作業領域で構成されます。
 
-![Workbench](dab-workbench.png)
+![ワークベンチ (Workbench)](dab-workbench.png)
 
-1. **Pages/Controls**: This area displays the name of the pages created by default. Use **+** sign to create a new page. On clicking **Controls** icon, displays controls that helps in adding functionality to a page in an app. You can drag and drop the controls from the respective Controls pallette to a page's canvas. Each control has a set of properties and actions.
+1. **ページ/コントロール**: この領域には、デフォルトで作成されたページの名前が表示されます。 新規ページを作成するには、**+** 記号を使用します。 **「コントロール」**アイコンをクリックすると、アプリケーションのページに機能を追加するのに役立つコントロールが表示されます。 各コントロール・パレットのコントロールをページのキャンバスにドラッグ・アンド・ドロップできます。 各コントロールには、プロパティーとアクションのセットがあります。
 
-    Following is the list of controls provided available:
-    * **Basic**: You can drag-and-drop these basic controls (Button, Heading, Image, and Label) to the canvas and configure the properties and actions.
+    以下に、提供されている使用可能なコントロールのリストを示します。
+    * **基本**: 基本コントロール (ボタン (Button)、見出し (Heading)、画像 (Image)、ラベル (Label)) をキャンバスにドラッグ・アンド・ドロップし、プロパティーおよびアクションを構成できます。
 
-        ![Pages / Congrols](dab-workbench-basic-controls.png)
+        ![ページ/コントロール](dab-workbench-basic-controls.png)
 
-        * **Button** - Buttons has a property to label. In the Action tab you can specify the page to navigate to on click of the Button.
-        * **Heading Text** - Helps you to add a heading text for the application such as Page Title.
-        * **Image** - Helps you upload a local image or provide a url of an image.
-        * **Label** - Helps you to add static text to your page body. 
-    * **Databound** - helps you to connect with a data set and operate on the entities in the data set. Databound consists of two components: **List** and **Connected Labels**
+        * **ボタン (Button)** - ボタンには、ラベル付けするためのプロパティーがあります。 「アクション」タブで、ボタンのクリック時にナビゲートするページを指定できます。
+        * **見出しテキスト (Heading Text)** - 「ページ・タイトル」など、アプリケーションの見出しテキストを追加できます。
+        * **画像 (Image)** - ローカル画像をアップロードするか、画像の URL を指定できます。
+        * **ラベル (Label)** - 静的テキストをページ本体に追加できます。 
+    * **バインドされたデータ (Databound)** - データ・セットに接続し、データ・セット内のエンティティーを操作できます。 「バインドされたデータ (Databound)」は、**「リスト (List)」**と**「接続されたラベル (Connected Labels)」**という 2 つのコンポーネントで構成されます。
 
-        ![Databound controls](dab-workbench-databound-controls.png)
+        ![「バインドされたデータ (Databound)」のコントロール](dab-workbench-databound-controls.png)
 
-        * **List** - Create a new page and drag and drop the List component. Add the **List Title**, Choose the list type to work on, Add content to work on, and select the dataset to use.
+        * **リスト (List)** - 新規ページを作成し、リスト・コンポーネントをドラッグ・アンド・ドロップします。 **「リスト・タイトル (List Title)」**の追加、操作するリスト・タイプの選択、操作するコンテンツの追加、使用するデータ・セットの選択を行います。
 
 
-    * **Login** - Login consists of the **Login Form** control. Drag and drop the login form to the page.
+    * **ログイン** - 「ログイン」は、**「ログイン・フォーム (Login Form)」**コントロールで構成されます。 ログイン・フォームをページにドラッグ・アンド・ドロップします。
  
-        The Login Form control helps you to create a login page for your application to connect the user to the Mobile Foundation server. Mobile Foundation server provides a security framework to authenticate users and provide that security context to access the data sets. For more information read [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/creating-a-security-check/).
+        「ログイン・フォーム (Login Form)」コントロールにより、ユーザーを Mobile Foundation サーバーに接続するためのアプリケーションのログイン・ページを作成できます。 Mobile Foundation サーバーは、ユーザーを認証し、そのセキュリティー・コンテキストを提供してデータ・セットにアクセスできるようにするための、セキュリティー・フレームワークを提供します。 詳しくは、[こちら](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/creating-a-security-check/)を参照してください。
 
-        ![Login Form](dab-workbench-login-control.png)
+        ![ログイン・フォーム (Login Form)](dab-workbench-login-control.png)
 
-        To enable Login Form, perform the following steps:
+        「ログイン・フォーム (Login Form)」を有効にするには、以下のステップを実行します。
 
-        1. Make the following changes on Mobile Foundation Server
-            * Deploy a security check adapter which would take username and password as input. You can use the sample adapter from [here](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80).
-            * In the mfpconsole, go to app's security tab and under Mandatory Application Scope, add the above created security definition as scope element.
-        2. Make the following configuration in your Application using the Builder.
-            * Add **Login Form** control to a page in the canvas.
-            * In **Properties** tab, provide the **Security check name** and the page to navigate **On Login Success**.
-            * Run the app.
-    * **AI** - AI controls allows you to add Watson AI capabilities to your app.
+        1. Mobile Foundation Server で以下の変更を行います。
+            * ユーザー名とパスワードを入力として受け取るセキュリティー検査アダプターをデプロイします。 [こちら](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)のサンプル・アダプターを使用できます。
+            * mfpconsole で、アプリケーションのセキュリティー・タブに移動し、「必須アプリケーション・スコープ」で、上記で作成したセキュリティー定義をスコープ・エレメントとして追加します。
+        2. ビルダーを使用して、アプリケーションの以下の構成を行います。
+            * **「ログイン・フォーム (Login Form)」**コントロールをページのキャンバスに追加します。
+            * **「プロパティー」**タブで、**「セキュリティー検査名 (Security check name)」**および**「ログイン成功時 (On Login Success)」**にナビゲートするページを指定します。
+            * アプリケーションを実行します。
+    * **AI** - AI コントロールにより、Watson AI 機能をアプリケーションに追加できます。
 
-        * **Watson Chat** - This control provides a complete chat interface that can be powered with Watson Assistant service on IBM Cloud. 
+        * **Watson Chat** - このコントロールは、IBM Cloud 上の Watson Assistant サービスを利用できる完全なチャット・インターフェースを提供します。 
 
             ![Watson Assistant](dab-workbench-ai-watson-chat.png)
 
-            * In the properties section select the configured Watson Assistant service and select the Workspace you want to connect to. To define and train a Chat conversation see [Chatbot](#chatbot) under Watson.
+            * プロパティー・セクションで、構成済みの Watson Assistant サービスを選択し、接続先のワークスペースを選択します。 チャット会話を定義およびトレーニングするには、『Watson』の『[チャットボット](#chatbot)』を参照してください。
 
-        * **Watson Visual Recognition** - This control provides an ability to take a picture and have Watson Visual recognition service identify it for you.
+        * **Watson Visual Recognition** - このコントロールは、写真を撮って Watson Visual Recognition サービスによってそれを識別する機能を提供します。
          
             ![Watson Visual Recognition](dab-workbench-ai-watson-vr.png)
  
-            *  In the properties section select the configured Visual Recognition service and the classification model. To define and train using your own images see [Image recognition](#image-recognition) under Watson.
+            *  プロパティー・セクションで、構成済みの Visual Recognition サービスおよび分類モデルを選択します。 独自の画像を使用して定義およびトレーニングを行うには、『Watson』の『[画像認識](#image-recognition)』を参照してください。
 
-2. **Canvas** section - This area consists of the Current Channel selected, Current Page name, Design/Code Toggle, and Canvas.
+2. **「キャンバス (Canvas)」**セクション - この領域は、選択されている現行チャネル、現行ページ名、「設計」と「コード」のトグル、および「キャンバス (Canvas)」で構成されます。
 
-    * **Channel** icon - This displays the current channel selected. You can add additional channels by selecting the required channels in the Platforms section under **Settings > App > App details**.
-    * Current Page Name - Displays the canvas page name. When switched between pages, the current page name gets updated to the selected page.
-    * **Design / Code** - This option brings the Code editor view to edit the code and enable to view the design back and debug any errors. In the canvas, switch from Design to Code, to view the code of the specific file in the project editor. Switching the Design to Code will display the following popup screen:
+    * **「チャネル (Channel)」**アイコン - これにより、選択されている現行チャネルが表示されます。 **「設定」>「アプリ」>「アプリの詳細」**の「プラットフォーム」セクションで必要なチャネルを選択することで、チャネルをさらに追加できます。
+    * 現行ページ名 (Current Page Name) - キャンバス・ページ名が表示されます。 ページを切り替えると、現行ページ名は、選択されたページに更新されます。
+    * **設計/コード** - このオプションにより、コード・エディター・ビューを有効にしてコードを編集したり、設計を再度表示してエラーをデバッグしたりすることができます。 キャンバスで、「設計」から「コード」へ切り替えて、プロジェクト・エディター内で特定のファイルのコードを表示します。 「設計」から「コード」に切り替えると、以下のポップアップ画面が表示されます。
 
-        ![Design - Code Toggle alert](dab-design-code-editor.png)
+        ![「設計」-「コード」のトグルのアラート](dab-design-code-editor.png)
 
-        **WARNING** - When you click **Create**, an editable version of your application is created locally. Any changes made in the editable version will not be reflected in the original app and vice versa. This will display the project explorer with all the project files for the application.
+        **警告** - **「作成」**をクリックすると、アプリケーションの編集可能バージョンがローカルで作成されます。 編集可能バージョンで行った変更は、元のアプリケーションには反映されず、その逆も同様です。 これにより、プロジェクト・エクスプローラーがアプリケーションのすべてのプロジェクト・ファイルとともに表示されます。
 
-    * **Canvas** - At the centre of this section is the canvas which displays either the design or the code. You can drag-and-drop the controls and create the app.
+    * **キャンバス (Canvas)** - このセクションの中心に、設計またはコードのいずれかを表示するキャンバスがあります。 コントロールをドラッグアンドドロップして、アプリケーションを作成することができます。
 
-3. **Properties/Actions** tab - At the right-hand side is the properties and action tab. When a control is placed in the canvas, you can edit and modify the properties of the control and connect a control with a related action to perform.
+3. **「プロパティー」/「アクション」**タブ - 右側に、プロパティーとアクションのタブがあります。 コントロールがキャンバスに配置されると、コントロールのプロパティーを編集および変更したり、実行する関連アクションにコントロールを接続したりすることができます。
 
-### Data
+### データ (Data)
 {: #dataset-integration}
 
-Creating a Data set for a micro service involves the following steps. After creating the data set, you can connect the data bound controls in your app.
+マイクロサービスのデータ・セットを作成するには、以下のステップを実行します。 データ・セットの作成後、アプリケーションでデータ・バインドされたコントロールを接続することができます。
 
-#### Creating a new data set
+#### 新規データ・セットの作成
 
-1. From the landing page of the Digital App Builder, open any existing App or create one.
-2. Click **Data** on the left hand panel.
+1. Digital App Builder のランディング・ページで、既存のアプリケーションを開くか、アプリケーションを作成します。
+2. 左側のパネルにある**「データ (Data)」**をクリックします。
 
-    ![Data](dab-list-menu.png)
+    ![データ (Data)](dab-list-menu.png)
 
-3. Click **Add new data set**. This displays the Add a data set window.
+3. **「新規データ・セットの追加」**をクリックします。 これにより、「データ・セットの追加」ウィンドウが表示されます。
 
-    ![Add new data set](dab-list-add-data-set.png)
+    ![新規データ・セットの追加](dab-list-add-data-set.png)
 
-4. Create a data set. You can either create from an existing source (default) or create a data source for a microservice using an OpenAPI doc.
-    * **Create from existing data source** (default) - This will populate the dropdown with all the Data sources (adapters) from the configured Mobile Foundation server instance. 
-    * **Create Data source for a microservice using OpenAPI doc** - This option lets you create a Data Source from an Open API specification document (Swagger json/yml) file, and a Data Set from it.
+4. データ・セットを作成します。 既存のソースから作成する (デフォルト) か、OpenAPI 文書を使用してマイクロサービスのデータ・ソースを作成できます。
+    * **既存のデータ・ソースから作成します** (デフォルト) - これを使用すると、構成されている Mobile Foundation サーバー・インスタンスからのすべてのデータ・ソース (アダプター) がドロップダウンに取り込まれます。 
+    * **OpenAPI 文書を使用してマイクロサービスのデータ・ソースを作成します** - このオプションを使用すると、Open API 仕様文書 (Swagger json/yml) ファイルからデータ・ソースを作成し、そこからデータ・セットを作成できます。
 
-#### Create a Data set from an existing Data Source
+#### 既存のデータ・ソースからのデータ・セットの作成
 
-1. Select the Datasource for which you want to create the Dataset.
-2. This will populate the available entities in the Data Source. Select the entity to be created.
-3. Give a name to the dataset and click the **Add** button. This will add the dataset and you will be able to see the Attributes and Actions associated with that dataset.
+1. データ・セットを作成するデータ・ソースを選択します。
+2. これにより、データ・ソース内の使用可能なエンティティーが取り込まれます。 作成するエンティティーを選択します。
+3. データ・セットに名前を付け、**「追加」**ボタンをクリックします。 これによりデータ・セットが追加され、そのデータ・セットに関連付けられている属性およびアクションを確認できるようになります。
 
-    ![New dataset with attributes](dab-list-dataset-attributes.png)
+    ![新規データ・セットとその属性](dab-list-dataset-attributes.png)
 
-4. You can Hide some of the attributes and Actions based on what you want to do with the data set.
-5. You can also edit the **Display Labels** for the attributes
-6. You can also Test any of the GET Actions by providing the required attributes and clicking on the **Run this action** which is part of the Action. Remember for this to work you should have specified the Confidential client name and password in the **Settings** tab.
+4. データ・セットで行う内容に基づいて、一部の属性およびアクションを非表示にすることができます。
+5. 属性の**「表示ラベル (Display Labels)」**を編集することもできます。
+6. また、必要な属性を指定し、アクションの一部である**「このアクションを実行」**をクリックすることで、任意の GET アクションをテストすることもできます。 これが機能するには、**「設定」**タブで機密クライアント名およびパスワードを指定しておく必要があることに注意してください。
 
-#### Create a Data source for a Microservice using a swagger file
+#### swagger ファイルを使用したマイクロサービスのデータ・ソースの作成
 
-1. Select the **json/yml** file for which you want to create a datasource for and click **Generate**.
-2. This will generate an Adapter, which is a configuration artifact on the MF server that you can re-use and deploy it to the Mobile Foundation server instance.
-3. Select the entity for which you want to define the data source for.
-4. Give a name to the dataset and click on **Add** button.
-5. This will add the Dataset and you will be able to see the Attributes and Actions associated with that dataset.
+1. データ・ソースを作成する **json/yml** ファイルを選択し、**「生成 (Generate)」**をクリックします。
+2. これにより、アダプターが生成されます。アダプターは、再使用して Mobile Foundation サーバー・インスタンスにデプロイできる、MF サーバー上の構成アーティファクトです。
+3. データ・ソースの定義対象となるエンティティーを選択します。
+4. データ・セットに名前を付け、**「追加」**ボタンをクリックします。
+5. これによりデータ・セットが追加され、そのデータ・セットに関連付けられている属性およびアクションを確認できるようになります。
 
-You can now bind this data set to any of the data bound controls.
+これで、このデータ・セットを任意のデータ・バインドされたコントロールにバインドできるようになりました。
 
 ### Watson
 {: #integrating-with-watson-services}
 
-The Digital App Builder provides an ability to configure the app to connect to the various Watson services provisioned on IBM Cloud.
+Digital App Builder は、IBM Cloud でプロビジョンされたさまざまな Watson サービスに接続するようにアプリケーションを構成する機能を提供します。
 
-#### Chatbot
+#### チャットボット
 {: #chatbot }
 
-Chatbots are powered by Watson Assistant service on IBM Cloud. Create a Watson Assistant instance on IBM Cloud. For more information, see [here](https://cloud.ibm.com/catalog/services/watson-assistant-formerly-conversation).
+チャットボットは、IBM Cloud 上の Watson Assistant サービスによって提供されます。 IBM Cloud で Watson Assistant インスタンスを作成します。 詳しくは、[こちら](https://cloud.ibm.com/catalog/services/watson-assistant-formerly-conversation)を参照してください。
 
-Once configured you can create a new **Workspace**. The workspace is a set of conversations that make up a chatbot. After creating a Workspace, start creating the dialogs. Provide a set of questions for a intent and a set of answers for that intent. Watson Assistant uses Natural Language Understand to interpret the intent based on the sample questions you provided. It can then try to interpret the question that a user asks in various styles and map it to the intent.
+構成後、新規**ワークスペース**を作成できます。 ワークスペースは、チャットボットを構成する一連の会話です。 ワークスペースの作成後、ダイアログの作成を開始します。 特定のインテントの一連の質問と、そのインテントの一連の回答を提供します。 Watson Assistant は自然言語理解を使用し、提供されたサンプル質問に基づいてインテントを解釈します。 その後、ユーザーがさまざまなスタイルで尋ねた質問を解釈し、そのインテントにマップしようとすることができます。
 
-To enable a chatbot in your app, perform the following steps:
+アプリケーションでチャットボットを有効にするには、以下のステップを実行します。
 
-1. Click **Watson** and then click **Chatbot**. This displays the **Work with Watson Assistant** screen.
+1. **「Watson」**をクリックし、**「Chatbot」**をクリックします。 これにより、**「Watson Assistant の操作」**画面が表示されます。
 
     ![Watson Chatbot](dab-watson-chat.png)
 
-2. Click **Connect** to your Watson Assistance instance.
+2. **「接続」**をクリックして Watson Assistance インスタンスに接続します。
 
-    ![Watson Chat instance](dab-watson-chat-instance.png)
+    ![Watson Chat インスタンス](dab-watson-chat-instance.png)
 
-3. Enter the **API key** details and specify the **URL** of your Watson Assistance instance. 
-4. Provide a **Name** to your chatbot and click **Connect**. This displays your chat service dashboard of the **Name** given.
+3. **「API 鍵」**の詳細を入力し、Watson Assistance インスタンスの**「URL」**を指定します。 
+4. チャットボットの**「名前」**を指定し、**「接続」**をクリックします。 これにより、指定された**「名前」**のチャット・サービス・ダッシュボードが表示されます。
 
-    ![Watson Chatbot workspace](dab-watson-chat-workspace.png)
+    ![Watson チャットボット・ワークスペース](dab-watson-chat-workspace.png)
 
-5. Add a workspace by clicking **Add a workspace** which displays the **Create a new model** popup.
+5. **「ワークスペースの追加」**をクリックして、ワークスペースを追加します。これにより**「新規モデルの作成」**ポップアップが表示されます。
 
-    ![Watson Chatbot workspace new model](dab-watson-chat-new-model.png)
+    ![Watson チャットボット・ワークスペースの新規モデル](dab-watson-chat-new-model.png)
 
-6. Enter the **Workspace name** and **Workspace description** and click **Create**. This creates three **Conversation** workspace (Welcome, No match found, and New conversation).
+6. **「ワークスペース名」**および**「ワークスペースの説明」**を入力し、**「作成」**をクリックします。 これにより、3 つの**「会話」**ワークスペース (「ようこそ (Welcome)」、「一致なし (No match found)」、および「新規会話」) が作成されます。
 
-    ![Watson Chatbot default conversation](dab-watson-chat-conversations.png)
+    ![Watson チャットボットのデフォルト会話](dab-watson-chat-conversations.png)
 
-7. Click **New conversation** to educate the new chatbot model. 
+7. **「新規会話」**をクリックして、新規チャットボット・モデルをトレーニングします。 
 
-    ![Watson Chatbot Q&A](dab-watson-chat-questions.png)
+    ![Watson チャットボット Q&A](dab-watson-chat-questions.png)
 
-8. Add questions and the response either as a csv file or as an individual questions and the response. For example, **Add a user statement** for If the user intends to ask, and then **Add a bot response** for the **Then, the bot should respond with**. or you can upload questions and the responses for the bot to respond.
-9. Click **Save**.
-10. Click the Chatbot icon at the botton right-hand side to test the chatbot.
+8. 質問と回答を CSV ファイルとして、または個別の質問と回答として追加します。 例えば、「ユーザーが質問したい場合」に対して**「ユーザー文の追加」**を使用し、 **「ボットは以下のように応答する必要があります」**に対して**「ボット応答の追加」**を使用します。 あるいは、質問、およびボットが応答する回答をアップロードすることもできます。
+9. **「保存」**をクリックします。
+10. 右下にある「チャットボット」アイコンをクリックして、チャットボットをテストします。
 
-    ![Chatbot testing](dab-watson-chat-testing.png)
+    ![チャットボットのテスト](dab-watson-chat-testing.png)
 
-#### Image Recognition 
+#### 画像認識 
 {: #image-recognition }
 
-Image recognition capability is powered by Watson Visual recognition service on IBM Cloud. Create a Watson Visual Recognition instance on IBM Cloud. For more information, see [here](https://cloud.ibm.com/catalog/services/visual-recognition).
+画像認識機能は、IBM Cloud 上の Watson Visual Recognition サービスによって提供されます。 IBM Cloud で Watson Visual Recognition インスタンスを作成します。 詳しくは、[こちら](https://cloud.ibm.com/catalog/services/visual-recognition)を参照してください。
 
-Once configured, you can now create a new Mobel and add classes to it. You can drag and drop images in to the Builder and then train your Model on those images. Once the training is complete, you can either download the CoreML model or use the Model in a AI control in your app.
+構成後、新規モデルを作成し、クラスをそのモデルに追加できます。 画像をビルダーにドラッグ・アンド・ドロップしてから、該当する画像でモデルをトレーニングできます。 トレーニングの完了後、CoreML モデルをダウンロードすることも、作成したモデルをアプリケーションの AI コントロールで使用することもできます。
 
-To enable a Visual Recognition in your app, perform the following steps:
+アプリケーションで画像認識を有効にするには、以下のステップを実行します。
 
-1. Click **Watson** and then click **Image Recognition**. This displays the **Work with Watson Visual Recognition** screen.
+1. **「Watson」**をクリックし、**「Image Recognition」**をクリックします。 これにより、**「Watson Visual Recognition の操作」**画面が表示されます。
 
     ![Watson Visual Recognition](dab-watson-vr.png)
 
-2. Click **Connect** to your Watson Visual Recognition instance.
+2. **「接続」**をクリックして Watson Visual Recognition インスタンスに接続します。
 
-    ![Watson Visual Recognition Instance](dab-watson-vr-instance.png)
+    ![Watson Visual Recognition インスタンス](dab-watson-vr-instance.png)
 
-3. Enter the **API key** details and specify the **URL** of your Watson Visual Recognition instance. 
-4. Provide a **Name** to your Image Recognition instance in the app and click **Connect**. This displays the dashboard for your model.
+3. **「API 鍵」**の詳細を入力し、Watson Visual Recognition インスタンスの**「URL」**を指定します。 
+4. アプリケーションの Image Recognition インスタンスの**「名前」**を指定し、**「接続」**をクリックします。 これにより、モデルのダッシュボードが表示されます。
 
-    ![Watson VR new model](dab-watson-vr-new-model.png)
+    ![Watson VR の新規モデル](dab-watson-vr-new-model.png)
 
-5. Click **Add new model** to create a new model. This will display **Create a new Model** popup.
+5. **「新規モデルの追加」**をクリックして、新規モデルを作成します。 これにより、**「新規モデルの作成」**ポップアップが表示されます。
 
-    ![Watson VR model name](dab-watson-vr-model-name.png)
+    ![Watson VR モデル名](dab-watson-vr-model-name.png)
 
-6. Enter the **Model name** and click **Create**. This will display the classes for that model and a **Negative** class.
+6. **「モデル名」**を入力し、**「作成」**をクリックします。 これにより、そのモデルのクラスおよび**「ネガティブ」**クラスが表示されます。
 
-    ![Watson VR Model Class](dab-watson-vr-model-class.png)
+    ![Watson VR モデルのクラス](dab-watson-vr-model-class.png)
 
-7. Click **Add new class**. This will display a popup to specify a name for the new class.
+7. **「新規クラスの追加」**をクリックします。 これにより、新規クラスの名前を指定するためのポップアップが表示されます。
 
-    ![Watson VR Model Class Name](dab-watson-vr-model-class-name.png)
+    ![Watson VR モデルのクラス名](dab-watson-vr-model-class-name.png)
 
-8. Enter the **Class name** for the new class and click **Create**. This will display the workspace to add your images for training the model.
+8. 新規クラスの**「クラス名」**を入力し、**「作成」**をクリックします。 これにより、モデルをトレーニングするための画像を追加するワークスペースが表示されます。
 
-    ![Watson VR Model Class training](dab-watson-vr-model-class-train.png)
+    ![Watson VR モデルのクラスのトレーニング](dab-watson-vr-model-class-train.png)
 
-9. Add the images to the model either by drag and drop them into the workspace or use Browse to access the images.
+9. 画像をワークスペースにドラッグ・アンド・ドロップするか、「参照 (Browse)」を使用して画像にアクセスして、画像をモデルに追加します。
 
-10. You can go back to your workspace after adding the images and test by clicking **Test Model**.
+10. 画像を追加した後にワークスペースに戻って、**「モデルのテスト (Test Model)」**をクリックしてテストできます。
 
-    ![Watson VR Model Class testing](dab-watson-vr-model-class-train-test.png)
+    ![Watson VR モデルのクラスのテスト](dab-watson-vr-model-class-train-test.png)
 
-11. In the **Try your model** section, add an image and then result is displayed.
+11. **「モデルを試してみてください」**セクションで、画像を追加すると、結果が表示されます。
 
 
-### Engagement
+### エンゲージメント (Engagement)
 {: #engagement}
 
-You can add Push notifications to your app and increase user engagement.
+プッシュ通知をアプリケーションに追加し、ユーザー・エンゲージメントを増やすことができます。
 
-To add Push notifications to your app:
+プッシュ通知をアプリケーションに追加するには、以下のようにします。
 
-1. Select **Engagement**. This will display the list of available services. Currently only Push Notifications services is available.
+1. **「エンゲージメント (Engagement)」**を選択します。 これにより、使用可能なサービスのリストが表示されます。 現時点では、プッシュ通知サービスのみが使用可能です。
 
-    ![Engagement Push](dab-engagement-push.png)
+    ![エンゲージメントのプッシュ](dab-engagement-push.png)
 
-2. In the **Push Notifications** click **Connect**. This displays the **Connect to Push Notification instance** dialog.
+2. **「プッシュ通知」**で、**「有効にする (Enable)」**をクリックします。これにより、「プッシュ通知の構成 (Push Notifications configuration)」ページが表示されます。
 
-    ![Engagement Push Notifications instance](dab-engagement-push-instance.png)
+3. **「API 秘密鍵 (API Secret Key)」**および**「送信者 ID (Sender ID)」**を指定して Android のプッシュ通知を構成し、**「構成の保存 (Save configuration)」**をクリックします。
 
-3. Enter **Name**, **API Key**, **App GUID**, **Client Secret Key**, select the **Region** and click **Connect**.
-4. The Name entered above get added to the page under Engagement.
-5. Configure push notification for Android by providing **API Secret Key** and **Sender ID** and click **Save configuration**.
+    ![エンゲージメントのプッシュ通知の Android 構成](dab-engagement-push-instance.png)
 
-    ![Engagement Push Notification Android configuration](dab-engagement-push-android-configure.png)
+4. iOS タブにナビゲートし、プッシュ構成詳細を指定します。**「環境 (Environment)」**を選択し、.p12 ファイルをパスとともに指定し、**「パスワード」**を入力し、**「構成の保存 (Save configuration)」**をクリックします。
 
-6. Navigate to the iOS tab and provide push configuration details: select the **Environment**, provide the .p12 file with path, and enter the **Password** and click **Save configuration**.
+    ![エンゲージメントのプッシュ通知の iOS 構成](dab-engagement-push-ios-configure.png)
 
-    ![Engagement Push Notification iOS configuration](dab-engagement-push-ios-configure.png)
+5. 以下のステップを実行します。
+    a. Android アプリの場合、`google-services.json` (firebase プロジェクトからダウンロード) を `<path_to_app>/ionic/platforms/android/app` フォルダーにコピーします。
+    b. iOS アプリの場合、xcode プロジェクト `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` を開き、プッシュ通知機能を有効にします。詳しくは、[https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1) を参照してください。
 
-7.  
-    a. For Android, copy `google-services.json` (download from your firebase project) to `<path_to_app>/ionic/platforms/android/app` folder.
-    b. For iOS, open the xcode project `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` and enable push notification capability. For more details, refer to [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+6. サーバー・サイドで以下を行います。
+ 
+    * [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications) に従って、サーバー・サイドでプッシュ通知を有効にします。
 
+    * [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications) に従って、サーバーから通知を送信します。
 
-### Console
+**注**:
+MFP サーバーからのプッシュ通知は、通知サービスを有効にするために使用されます。したがって、IBM Cloud プッシュ通知サービスが以前に使用されていた場合は、リンク [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications) に従って MFP サーバーに通知を設定します。
+
+### コンソール (Console)
 {: #console }
 
-Helps you to view the code for each of the components. Also displays the information about various activities and errors.
+各コンポーネントのコードを表示できます。 また、さまざまなアクティビティーおよびエラーに関する情報も表示されます。
 
-### Settings
+### 設定
 {: #settings}
 
-Settings helps you to manage the app settings and rectify any errors during the build process. Settings consists of **App details**, **Server**, **Plugins**, and **Repair Project** tabs.
+「設定」は、アプリケーションの設定の管理およびビルド・プロセス時におけるエラーの修正に役立ちます。 「設定」は、**「アプリの詳細」**、**「サーバー」**、**「プラグイン」**、および**「プロジェクトの修復」**の各タブで構成されます。
 
-#### App details
+#### **アプリの詳細**
 {: #app-details}
 
-App details displays information about your app: **App Icon**, **Name**, **Location** where the files are stored, **Project/Bundle Id** provided at the time of creating the app, **Platforms** (channels) selected, **Service** enabled.
+「アプリの詳細」では、アプリケーションに関する情報 (**「アプリ・アイコン」**、**「名前」**、ファイルが保管される**「ロケーション」**、アプリケーションの作成時に指定された**「プロジェクト/バンドル ID」**、選択された**「プラットフォーム」**(チャネル)、有効になっている**「サービス」**) が表示されます。
 
-![Setting App details](dab-settings-app-details.png)
+![「アプリの詳細」の設定](dab-settings-app-details.png)
 
-You can change the **App icon** by clicking the icon and uploading a new icon.
+アイコンをクリックし、新しいアイコンをアップロードすることで、**「アプリ・アイコン」**を変更できます。
 
-You can add/remove additional Platforms by checking/unchecking the checkbox near them.
+プラットフォームを追加または削除するには、その近くのチェック・ボックスのチェック・マークを付けるか外します。
 
-Click **Save** to update the changes.
+**「保存」**をクリックして変更を更新します。
 
-#### Server
+#### **サーバー**
 {: #server }
 
-The Server info displays the **Server details** you are currently working on. You can edit the information by clicking the **Edit** link. You can add or modify the confidential client authorization.
+サーバーの情報では、現在作業している**「サーバー詳細」**が表示されます。 **「編集」**リンクをクリックして、情報を編集できます。 機密クライアント許可を追加または変更できます。
 
-![Settings server details](dab-settings-server.png)
+![「サーバー詳細」の設定](dab-settings-server.png)
 
-The Server tab also displays **Recent servers**.
+「サーバー」タブでは、**「最近のサーバー」**も表示されます。
 
-You can also add new server by clicking **Connect new +** button and provide the details in the **Connect to a new server** popup and click **Connect**.
+>**注**: Digital App Builder を使用してアプリを作成する時点よりも前に追加され、Digital App Studio によって作成されたアプリによって使用されていないサーバーのみ、削除できます。
 
-![Settings new server](dab-settings-server-new-server.png)
+**「新規に接続 +」**ボタンをクリックして新規サーバーを追加し、**「新規サーバーへの接続」**ポップアップに詳細を指定し、**「接続」**をクリックすることもできます。
 
-#### Plugins
+![新規サーバーの設定](dab-settings-server-new-server.png)
+
+#### **プラグイン**
 {: #plugins}
 
-Plugins displays list of plugins available in the Digital App Builder. Following actions can be performed:
+プラグインでは、Digital App Builder で使用可能なプラグインのリストが表示されます。 以下のアクションを実行できます。
 
-![Settings Plugins available](dab-settings-plugins.png)
+![使用可能なプラグインの設定](dab-settings-plugins.png)
 
-* **Install new** - You can install new plugins by clicking this button. This displays the **New plugin** dialog. Enter the **Plugin name**, **Version** (optional), and if it is a **Local plugin**, enable the switch for the same and point to the location and click **Install**.
+* **新規インストール** - このボタンをクリックして、新規プラグインをインストールできます。 これにより、**「新規プラグイン」**ダイアログが表示されます。 **「プラグイン名」**、**「バージョン (Version)」**(オプション) を入力し、**「ローカル・プラグイン (Local plugin)」**の場合は該当するスイッチを有効にしてロケーションを指定し、**「インストール」**をクリックします。
 
-![Settings New Plugins](dab-settings-new-plugins.png)
+![新規プラグインの設定](dab-settings-new-plugins.png)
 
-* From the list of Plugins already installed, you can edit the version and reinstall the plugin or uninstall a plugin by selecting the link for the respective plugin.
+* 既にインストールされているプラグインのリストから、バージョンを編集し、プラグインを再インストールするか、各プラグインのリンクを選択してプラグインをアンインストールできます。
 
-#### Repair project
+#### プロジェクトの修復
 {: #repair-project}
 
-Repair project tab helps you to fix issues by clicking the respective options.
+「プロジェクトの修復」タブでは、各オプションをクリックして問題を修正できます。
 
-![Settings Repair](dab-settings-repair.png)
+![修復の設定](dab-settings-repair.png)
 
-* **Rebuild dependencies** - If the project is unstable, you can try re-building dependencies.
-* **Rebuild platforms** - If you see any platform related errors in console, try rebuilding the platforms. if you have made any changes to the channels or added additional channels, use this option.
-* **Reset IBM Cloud credentials for Playground server** - You can reset the IBM Cloud Credentials used to login to the Playground Server. Resetting the Credentials cache will also clear out all your apps on the Playground server. **THIS OPERATION CANNOT BE REVERSED.**
+* **依存関係の再ビルド** - プロジェクトが不安定な場合は、依存関係の再ビルドを試行できます。
+* **プラットフォームの再ビルド** - コンソールでプラットフォーム関連のエラーが表示された場合は、プラットフォームの再ビルドを試行してください。 チャネルを変更した場合、またはチャネルを追加した場合は、このオプションを使用します。
+* **プレイグラウンド・サーバー用の IBM Cloud 資格情報のリセット** - プレイグラウンド・サーバーへのログインに使用する IBM Cloud 資格情報をリセットできます。 資格情報キャッシュをリセットすると、プレイグラウンド・サーバー上のアプリケーションもすべて消去されます。 **この操作を元に戻すことはできません。**
 
  

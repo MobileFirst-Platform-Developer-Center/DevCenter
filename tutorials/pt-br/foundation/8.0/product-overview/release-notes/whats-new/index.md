@@ -24,7 +24,7 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
                 <h3>Novo processo de desenvolvimento e implementação</h3>
                 <p>Você não cria mais um arquivo WAR do projeto que precisa ser instalado no servidor de aplicativos. Em vez disso, o {{ site.data.keys.mf_server }} é instalado uma vez e você faz upload da configuração do lado do servidor de seus aplicativos, da segurança do recurso ou do serviço de push para o servidor. É possível modificar a configuração de seus aplicativos com o {{ site.data.keys.mf_console }}.</p>
 
-                <p>Os projetos do {{ site.data.keys.product_adj }} não existem mais. Ao invés disso, você desenvolve seu aplicativo móvel com o ambiente de desenvolvimento de sua escolha.<br/>
+                <p>Os projetos do {{ site.data.keys.product_adj }} não existem mais. Em vez disso, você desenvolve seu aplicativo móvel com o ambiente de desenvolvimento de sua escolha.<br/>
                 É possível modificar a configuração do lado do servidor de seus aplicativos e adaptadores sem parar o {{ site.data.keys.mf_server }}.</p>
 
                 <ul>
@@ -400,7 +400,7 @@ dispositivo a partir dos dados de registro do
                     <li>Chinês tradicional</li>
                 </ul>
 
-                <p>O {{ site.data.keys.mf_analytics_console }} agora mostra conteúdo diferente baseado na função de segurança do usuário que efetuou login.<br/>
+                <p>Agora, o {{ site.data.keys.mf_analytics_console }} mostra conteúdos diferentes com base na função de segurança do usuário conectado.<br/>
                 Para obter mais informações, consulte <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Controle de acesso baseado em função</a>.</p>
 
                 <p>O {{ site.data.keys.mf_analytics_server }} usa o Elasticsearch V1.7.5.</p>

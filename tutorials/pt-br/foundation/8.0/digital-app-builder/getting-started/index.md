@@ -56,6 +56,8 @@ show_children: true
 
     * **Custom Professional Server** – É possível conectar-se ao seu próprio servidor Mobile Foundation criado no IBM Cloud ou local. Na janela **Configurar instância do IBM Mobile Foundation**, é possível selecionar um servidor existente ou criar um novo servidor.
 
+        >**Nota**: para obter uma instância do Mobile Foundation Server facilmente, basta provisioná-la no IBM Cloud. É possível consultar a documentação sobre como provisionar e usar o Mobile Foundation Server no IBM Cloud [aqui](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started-tutorial).
+
         ![Configurar instância do IBM Mobile Foundation](dab-config-ibm-cloud-instance.png)
  
         A janela **Configurar instância do IBM Mobile Foundation** exibe a lista de instâncias do servidor Mobile Foundation definidas anteriormente. Ao selecionar o servidor, o **Nome do servidor**, a **URL do servidor**, o **Nome do usuário administrativo** e a **Senha do administrador**, são exibidos. Para definir um novo servidor, é possível clicar no link **Criar novo servidor**. Isso exibirá a nova janela **Configurar instância do IBM Mobile Foundation**.

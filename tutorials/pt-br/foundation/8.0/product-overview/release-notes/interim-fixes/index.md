@@ -6,13 +6,30 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Correções temporárias e atualizações do CD fornecem correções e atualizações para corrigir problemas e manter o {{ site.data.keys.product_full }} atualizado para novas liberações de sistemas operacionais móveis. As atualizações do CD também aprimoram a funcionalidade do produto, introduzindo novos recursos. 
+Correções temporárias e atualizações do CD fornecem correções e atualizações para corrigir problemas e manter o {{ site.data.keys.product_full }} atualizado para novas liberações de sistemas operacionais móveis. As atualizações do CD também aprimoram a funcionalidade do produto, introduzindo novos recursos.
 
-As correções temporárias e as atualizações do CD são cumulativas. Ao fazer download da correção temporária ou da atualização do CD mais recente da v8.0, você obtém todas as correções e recursos de correções temporárias e atualizações do CD anteriores. 
+As correções temporárias e as atualizações do CD são cumulativas. Ao fazer download da correção temporária ou da atualização do CD mais recente da v8.0, você obtém todas as correções e recursos de correções temporárias e atualizações do CD anteriores.
 
-Faça download e instale a atualização mais recente do CD para obter todos os recursos descritos nas seções a seguir. 
+Faça download e instale a atualização mais recente do CD para obter todos os recursos descritos nas seções a seguir.
 
 > Para obter uma lista de liberações de iFix do {{ site.data.keys.product }} 8.0, [veja aqui]({{site.baseurl}}/blog/tag/iFix_8.0/).
+
+### Recursos incluídos com a atualização 5 do CD (8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
+
+##### <span style="color:NAVY">**Atualização do CoreML**</span>
+
+Os modelos de ML (Machine Learning) podem ser executados localmente no dispositivo móvel iOS usando a estrutura CoreML da Apple. A Mobile Foundation fornece a capacidade de gerenciar a distribuição desses modelos para dispositivos de forma segura. [Saiba mais](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
+
+##### <span style="color:NAVY">**App Authenticity for watchOS**</span>
+
+O App Authenticity é um recurso de segurança que valida a autenticidade do aplicativo antes de fornecer acesso. Esse recurso estava disponível para aplicativos móveis. Agora, ele foi estendido para aplicativos Apple WatchOS. [Saiba mais]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
+
+##### <span style="color:NAVY">**Notificações push - Recursos e atributos de mensagem adicionais para o FCM**</span>
+
+Agora, as notificações push suportam os seguintes atributos de mensagem adicionais.
+1. Luzes
+2. Estilos (caixa de entrada, BigText, PictureNotifications)
+
 
 ### Recursos incluídos na atualização 4 do CD (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
 
