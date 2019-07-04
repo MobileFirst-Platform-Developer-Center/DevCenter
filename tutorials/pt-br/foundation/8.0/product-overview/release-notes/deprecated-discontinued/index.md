@@ -365,9 +365,9 @@ Este conjunto de APIs não é mais suportado na v8.0.
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
 | `org.apache.http.Header[]` foi descontinuado. Portanto, os métodos a seguir foram removidos:||
-| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Em vez disso, use a API `Map<String, List<String>> WLResourceRequest.getAllHeaders()`. |
+| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Em vez disso, use a nova API `Map<String, List<String>> WLResourceRequest.getAllHeaders()`. |
 | `WLResourceRequest.addHeader(org.apache.http.Header header)` | Use a nova API `WLResourceRequest.addHeader(String name, String value)`. |
-| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | Em vez disso, use a API `List<String> WLResourceRequest.getHeaders(String headerName)`. |
+| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | Em vez disso, use a nova API `List<String> WLResourceRequest.getHeaders(String headerName)`. |
 | `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | Use no lugar a nova API `WLResourceRequest.getHeaders(String headerName)`. |
 | `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | Em vez disso, use a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. |
 | `WLResourceRequest.setHeader(org.apache.http.Header header)` | Em vez disso, use a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. |

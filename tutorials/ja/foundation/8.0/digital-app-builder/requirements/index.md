@@ -34,7 +34,7 @@ IBM Digital App Builder のシステム要件には、オペレーティング�
         * Android 仮想マシンの構成: [こちら](https://developer.android.com/studio/releases/emulator)の説明を参照してください。
     * Android WebView バージョン 68.X.XXXX.XX 以上
     * Chrome (Web プラットフォームをプレビューする場合)
-    * Xcode (iOS シミュレーターでアプリケーションをプレビューする場合)。MacOS の場合のみ、アプリケーションをプレビューするには、Apple App Store から XCode をダウンロードしてインストールしてください。
+    * Xcode (iOS シミュレーターでアプリケーションをプレビューする場合)。 MacOS の場合のみ、アプリケーションをプレビューするには、Apple App Store から XCode をダウンロードしてインストールしてください。
 
 * さまざまなサービスを使用するためのその他の要件
 
