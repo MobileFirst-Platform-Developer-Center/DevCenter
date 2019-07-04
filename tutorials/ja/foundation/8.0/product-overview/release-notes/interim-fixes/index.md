@@ -6,13 +6,31 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-暫定修正および CD Update では、問題を修正し、モバイル・オペレーティング・システムの新しいリリースに対して {{ site.data.keys.product_full }} を最新にしておくためのパッチおよび更新を提供します。また、CD Update は、新しいフィーチャーを導入することにより、製品の機能を強化します。
+暫定修正および CD Update では、問題を修正し、モバイル・オペレーティング・システムの新しいリリースに対して {{ site.data.keys.product_full }} を最新にしておくためのパッチおよび更新を提供します。 また、CD Update は、新しいフィーチャーを導入することにより、製品の機能を強化します。
 
-暫定修正および CD Update は累積的です。最新の v8.0 暫定修正または CD Update をダウンロードすると、v8.0 より前の暫定修正および CD Update のすべての修正とフィーチャーが得られます。
+暫定修正および CD Update は累積的です。 最新の v8.0 暫定修正または CD Update をダウンロードすると、v8.0 より前の暫定修正および CD Update のすべての修正とフィーチャーが得られます。
 
 以下のセクションに記載されているすべてのフィーチャーを取得するには、最新の CD Update をダウンロードしてインストールします。
 
 > {{ site.data.keys.product }} 8.0 の iFix リリースのリストについては、[ここを参照してください]({{site.baseurl}}/blog/tag/iFix_8.0/)。
+
+### CD update 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05) で導入された機能
+
+##### <span style="color:NAVY">**CoreML Update**</span>
+
+Apple の CoreML フレームワークを使用して、iOS モバイル・デバイスで ML (機械学習) モデルをローカルに実行できます。
+Mobile Foundation には、これらのモデルをデバイスに安全に配布するように管理する機能が用意されています。[詳細はこちらを参照してください](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/)。
+
+##### <span style="color:NAVY">**watchOS のアプリケーション認証性**</span>
+
+アプリケーション認証性は、アクセス提供前にアプリケーションの認証性を検証するセキュリティー機能です。この機能はモバイル・アプリで使用できました。この機能は今は Apple WatchOS アプリにまで拡張されています。[詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/)。
+
+##### <span style="color:NAVY">**プッシュ通知 - 追加メッセージのフィーチャーおよび FCM の属性**</span>
+
+プッシュ通知は、以下の追加メッセージの属性をサポートするようになりました。
+1. ライト
+2. スタイル (Inbox、BigText、PictureNotifications)
+
 
 ### CD Update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04) で導入された機能
 

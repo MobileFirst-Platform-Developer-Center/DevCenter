@@ -51,7 +51,7 @@ weight: 2
 #### デスクトップ・ブラウザー
 {: #desktop-browser-remote }
 任意のブラウザーから、URL `http://the-server-host:server-port-number/mfpconsole` をロードします。  
-ホスト・サーバーは、お客様所有のサーバーでも、IBM Cloud サービス (IBM [Mobile Foundation](../../../bluemix/)) でもかまいません。
+ホスト・サーバーは、お客様所有のサーバーでも、IBM Cloud サービス (IBM [Mobile Foundation](../../../ibmcloud/)) でもかまいません。
 
 #### コマンド・ライン
 {: #command-line-remote }

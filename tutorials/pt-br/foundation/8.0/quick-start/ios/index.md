@@ -28,7 +28,7 @@ por download a partir do {{ site.data.keys.mf_console }}.
 
 ### 1. Iniciando o {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Certifique-se de ter [criado uma instância do Mobile Foundation](../../bluemix/using-mobile-foundation) ou  
+Certifique-se de ter [criado uma instância do Mobile Foundation](../../ibmcloud/using-mobile-foundation) ou  
 Se estiver usando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navegue
 para a pasta do servidor e execute o comando: `./run.sh` em Mac e Linux ou `run.cmd` no Windows.
 
@@ -172,7 +172,7 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 
     Como alternativa, se você tiver instalado {{ site.data.keys.mf_cli }}, navegue para a pasta raiz do projeto e execute o comando
 `mfpdev app register`. Se um {{ site.data.keys.mf_server }} remoto for usado, [execute o comando `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para incluir o servidor, seguido por, por exemplo: `mfpdev app register myIBMCloudServer`.
-    
+
 2. Pressione o botão **Reproduzir**.
 
 <br clear="all"/>
