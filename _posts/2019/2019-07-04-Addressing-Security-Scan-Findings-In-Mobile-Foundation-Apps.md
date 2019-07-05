@@ -8,13 +8,13 @@ tags:
 - iOS
 - Security Scan
 - Vulnerability 
-
 version:
 - 7.1
 - 8.0
 author:
   name: Manjunath Kallannavar
-  name: Srihari Kulkarni
+additional_authors :  
+  - Srihari Kulkarni
 ---
 
 Most organisations mandate mobile apps to undergo code scanning and pen tests before they can be uploaded to the public app stores. This post aimed to be a primer to app developers in resolving some of the commonly reported findings of such scan results. Given below is a non-comprehensive list of some such findings reported against Mobile Foundation SDKs. 
