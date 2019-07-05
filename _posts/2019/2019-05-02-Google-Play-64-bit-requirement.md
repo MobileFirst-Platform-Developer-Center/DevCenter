@@ -99,7 +99,7 @@ packagingOptions {
 
 ## MobileFirst 7.1 apps
 
-Install iFix version *7.1.0.0-MFPF-IF201905221643* or higher to get support for 64 bit compatibility.Before you publish your app to the Play Store with 64-bit compliance, add the following SDKs to your project.
+Install iFix version *7.1.0.0-MFPF-IF201905221643* or higher to get support for 64 bit compatibility. Before you publish your app to the Play Store with 64-bit compliance, add the appropriate SDKs to your project.
 
 
 ### Hybrid apps
