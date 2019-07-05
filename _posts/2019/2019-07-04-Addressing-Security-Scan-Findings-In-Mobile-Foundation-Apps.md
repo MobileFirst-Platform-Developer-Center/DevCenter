@@ -1,5 +1,5 @@
 ---
-title:Addressing Security Scan Findings In Mobile Foundation Apps 
+title: Addressing Security Scan Findings In Mobile Foundation Apps 
 date: 2019-07-04
 tags:
 - MobileFirst_Platform
