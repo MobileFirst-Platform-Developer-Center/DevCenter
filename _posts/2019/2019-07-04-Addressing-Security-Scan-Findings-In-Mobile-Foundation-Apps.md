@@ -17,7 +17,7 @@ additional_authors :
   - Srihari Kulkarni
 ---
 
-Most organisations mandate mobile apps to undergo code scanning and pen tests before they can be uploaded to the public app stores. This post aimed to be a primer to app developers in resolving some of the commonly reported findings of such scan results. Given below is a non-comprehensive list of some such findings reported against Mobile Foundation SDKs. 
+Most organizations mandate mobile apps to undergo code scanning and pen tests before they can be uploaded to public app stores. This post is aimed to be a primer for app developers in resolving some of the commonly reported findings of such scan results. Given below is a non-comprehensive list of some such findings reported against Mobile Foundation SDKs. 
 
 <table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
         <col class="col0">
