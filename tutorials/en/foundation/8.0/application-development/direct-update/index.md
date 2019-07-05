@@ -2,7 +2,7 @@
 layout: tutorial
 title: Using Direct Update in Cordova and Ionic applications
 breadcrumb_title: Direct Update
-relevantTo: [cordova, ionic]
+relevantTo: [cordova,ionic]
 weight: 8
 downloads:
   - name: Download Cordova project
