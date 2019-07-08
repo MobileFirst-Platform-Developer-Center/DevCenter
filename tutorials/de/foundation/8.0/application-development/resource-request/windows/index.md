@@ -4,11 +4,11 @@ title: Ressourcenanforderung von Windows-Anwendungen
 breadcrumb_title: Windows
 relevantTo: [windows]
 downloads:
-  - name: Natives Windows-8-Projekt herunterladen
+  - name: Download Native Windows 8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
-  - name: Natives Windows-10-Projekt herunterladen
+  - name: Download Native Windows 10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
-  - name: Adapter-Maven-Projekt herunterladen
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---
@@ -132,6 +132,8 @@ Falls eine Anforderung fehlschlägt, enthält das Antwortobjekt auch eine Eigens
 ## Weitere Informationen
 {: #for-more-information }
 > Weitere Hinweise zu WLResourceRequest finden Sie in den [API-Referenzinformationen](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf).
+
+
 
 <img alt="Beispielanwendung" src="resource-request-success-win8-10.png" style="float:right"/>
 ## Beispielanwendung

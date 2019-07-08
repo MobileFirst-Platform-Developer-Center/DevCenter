@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java- und JavaScript-Adapter erstellen
-breadcrumb_title: Adapter erstellen
+breadcrumb_title: Creating Adapters
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2

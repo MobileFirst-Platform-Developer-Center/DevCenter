@@ -21,8 +21,8 @@ Abschließend werden Sie das Image als Einzelcontainer oder Containergruppe in I
 
 **Hinweise:**  
 
-* Das Windows-Betriebssystem wird derzeit nicht für die Ausführung dieser Scripts unterstützt.   
-* Die MobileFirst-Server-Konfigurationstools können nicht für die Implementierung in IBM Containern genutzt werden. 
+* Das Windows-Betriebssystem wird derzeit nicht für die Ausführung dieser Scripts unterstützt.  
+* Die MobileFirst-Server-Konfigurationstools können nicht für die Implementierung in IBM Containern genutzt werden.
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
@@ -118,7 +118,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
                             <li>Ordner <b>config</b>: Für {{ site.data.keys.mf_server }} bzw. {{ site.data.keys.mf_analytics }} verwendete Serverkonfigurationsfragmente (Keystore, Servereigenschaften, Benutzerregistry)</li>
                             <li><b>keystore.xml</b>: Konfiguration des Repositorys mit Sicherheitszertifikaten für die SSL-Verschlüsselung. Im Ordner ./usr/security muss auf die aufgelisteten Dateien verwiesen werden.</li>
                             <li><b>mfpfproperties.xml</b> - Konfigurationseigenschaften für {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }}. Informieren Sie sich anhand der folgenden Dokumentationsabschnitte über die unterstützten Eigenschaften:<ul>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Sever-Verwaltungsservice</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice</a></li>
                                     <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a></li>
                                 </ul>
                             </li>
@@ -201,12 +201,12 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_USER	</td>
-                                            <td>Administrator</td>
+                                            <td>admin</td>
                                             <td>Benutzername für die Administratorrolle für MobileFirst-Server-Operationen</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_PASSWORD	</td>
-                                            <td>Administrator</td>
+                                            <td>admin</td>
                                             <td>Kennwort für die Administratorrolle für MobileFirst-Server-Operationen</td>
                                         </tr>
                                     </table>
@@ -283,7 +283,7 @@ Die folgenden Schritte sind obligatorisch. Im folgenden Abschnitt werden Sie Bef
       * Organisation, falls es mehrere gibt
       * Bereich, falls es mehrere gibt
 
-2. Für die Ausführung von Befehlen des Service "IBM Containers" müssen Sie sich zunöchst beim Cloud-Service für IBM Container anmelden.
+2. Für die Ausführung von Befehlen des Service "IBM Containers" müssen Sie sich zunächst beim Cloud-Service für IBM Container anmelden.
   
 Führen Sie `cf ic login` aus.
 
@@ -340,7 +340,7 @@ Wenn Sie das {{ site.data.keys.mf_app_center }} verwenden möchten, beginnen Sie
               Wenn Sie Ihre dashDB-Instanz eingerichtet haben, geben Sie die folgenden erforderlichen Argumente an:
               <ul>
                   <li><b>APPCENTER_DB_SRV_NAME - </b>Name Ihrer dashDB-Serviceinstanz für das Speichern von Application-Center-Daten</li>
-                  <li><b>APPCENTER_SCHEMA_NAME - </b>Name Ihres Datenbankschmeas für das Speichern von Application-Center-Daten</li>
+                  <li><b>APPCENTER_SCHEMA_NAME - </b>Name Ihres Datenbankschemas für das Speichern von Application-Center-Daten</li>
                   <blockquote><b>Hinweis:</b> Wenn Ihre dashDB-Serviceinstanz von mehreren Benutzern gemeinsam genutzt wird, stellen Sie sicher, dass eindeutige Schemanamen angegeben werden.</blockquote>
 
               </ul>
@@ -459,7 +459,7 @@ initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_
                                             </tr>    
                                             <tr>
                                               <td>Optional: [-ds | --acds ] NAME-DES-APPLICATION-CENTER-SCHEMAS</td>
-                                              <td>Name des Datenbankschemas für den Application-Center-Sservice. Standardwert: <i>APPCNTR</i>.</td>
+                                              <td>Name des Datenbankschemas für den Application-Center-Service. Standardwert: <i>APPCNTR</i>.</td>
                                             </tr>    
                                         </table>
 
@@ -476,7 +476,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
 
                     </li>
                     <li><b>initenv.sh (optional) – Anmeldung bei IBM Cloud</b><br />
-                    Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei <b>initenv.properties</b> mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus: </li>
+                    Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Bereich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei <b>initenv.properties</b> mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus: </li>
 
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
@@ -724,7 +724,7 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
         <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
             Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Tragen Sie die Argumentwerte in den folgenden Dateien ein.<br/>
-            <b>Hinweis:</b> Hier sind nur die erforderlichen Argumente aufgeführt. Wenn Sie etwas zu den übrigen Argumenten erfahren möchten, sehen Sie sich die Dokumentation in den Eigenschaftendateien an.
+              <b>Hinweis:</b> Hier sind nur die erforderlichen Argumente aufgeführt. Wenn Sie etwas zu den übrigen Argumenten erfahren möchten, sehen Sie sich die Dokumentation in den Eigenschaftendateien an.
               <h4>initenv.properties</h4>
               <ul>
                   <li><b>IBM_CLOUD_USER - </b>Ihr IBM Cloud-Benutzername (E-Mail-Adresse) </li>
@@ -742,7 +742,7 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
                   <li><b>ANALYTICS_CONTAINER_NAME - </b>Name für Ihren IBM Cloud-Container</li>
                   <li><b>ANALYTICS_IP - </b>IP-Adresse, an die der IBM Cloud-Container gebunden werden soll<br/>
                   Führen Sie zum Zuweisen einer IP-Adresse <code>cf ic ip request</code> aus.<br/>
-                  IP-Adressen können in mehreren Containern eines Bereichs wiederverwendet werden. <br/>
+                  IP-Adressen können in mehreren Containern eines Bereichs wiederverwendet werden.<br/>
                   Wenn Sie bereits eine Adresse zugewiesen haben, können Sie <code>cf ic ip list</code> ausführen.</li>
               </ul>
               <h4>startanalyticsgroup.properties</h4>
@@ -827,8 +827,8 @@ initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
-                        Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus. <br/>
-                    Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.
+                        Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>cf ic images</code><br/> aus.
+                    Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID. 
 
                         <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
                             <div class="panel panel-default">
@@ -1087,7 +1087,7 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
                 Der {{ site.data.keys.mf_bm_short }} Service erfordert eine externe <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">Instanz der <i>dashDB-Enterprise-Transactional-Datenbank</i></a> (<i>Enterprise Transactional 2.8.500</i> oder <i>Enterprise Transactional 12.128.1400</i>).<br/>
-                <b>Hinweis:</b> Die Implementierung der dashDB-Enterprise-Transactional-Pläne erfolgt unter Umständen nicht sofort. Es kann sein, dass das Vertriebsteam vorher Kontakt mit Ihnen aufnimmt. <br/><br/>
+                <b>Hinweis:</b> Die Implementierung der dashDB-Enterprise-Transactional-Pläne erfolgt unter Umständen nicht sofort. Es kann sein, dass das Vertriebsteam vorher Kontakt mit Ihnen aufnimmt.<br/><br/>
                 Wenn Sie Ihre dashDB-Instanz eingerichtet haben, geben Sie die folgenden erforderlichen Argumente an:
                 <ul>
                     <li><b>ADMIN_DB_SRV_NAME - </b>Name Ihrer dashDB-Serviceinstanz für das Speichern von Verwaltungsdaten</li>
@@ -1106,8 +1106,8 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
                     <li><b>SERVER_CONTAINER_NAME - </b>Name für Ihren IBM Cloud-Container</li>
                     <li><b>SERVER_IP - </b>IP-Adresse, an die der IBM Cloud-Container gebunden werden soll<br/>
                     Führen Sie zum Zuweisen einer IP-Adresse <code>cf ic ip request</code> aus.<br/>
-                    IP-Adressen können in mehreren Containern eines Bereichs wiederverwendet werden. <br/>
-                    Wenn Sie bereits eine Adresse zugewiesen haben, können Sie <code>cf ic ip list</code> ausführen.</li>
+                  IP-Adressen können in mehreren Containern eines Bereichs wiederverwendet werden.<br/>
+                  Wenn Sie bereits eine Adresse zugewiesen haben, können Sie <code>cf ic ip list</code> ausführen.</li>
                     <li><b>MFPF_PROPERTIES - </b>Jeweils durch ein Komma (<b>ohne Leerzeichen</b>) getrennte JNDI-Eigenschaften von {{ site.data.keys.mf_server }}. Die für Analysen relevanten Eigenschaften werden wie folgt definiert: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
                 <h4>startservergroup.properties</h4>
@@ -1215,7 +1215,7 @@ initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_
                                         </tr>
                                         <tr>
                                             <td>[-as |--adminschema ] ADMIN_SCHEMA_NAME (optional)	</td>
-                                            <td>Name des Datenbankschemas für den Verwaltungsservice. Standrdwert: MFPDATA</td>
+                                            <td>Name des Datenbankschemas für den Verwaltungsservice. Standardwert: MFPDATA</td>
                                         </tr>
                                         <tr>
                                             <td>[-rd |--runtimedb ] RUNTIME_DB_SRV_NAME (optional)	</td>
@@ -1231,7 +1231,7 @@ initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_
                                         </tr>
                                         <tr>
                                             <td>[-ps |--pushschema ] PUSH_SCHEMA_NAME	</td>
-                                            <td>Name des Datenbankschemas für den Push-Service. Stndardmäßig der Name des Laufzeitschemas. </td>
+                                            <td>Name des Datenbankschemas für den Push-Service. Standardmäßig der Name des Laufzeitschemas. </td>
                                         </tr>
                                     </table>
 
@@ -1247,14 +1247,14 @@ prepareserverdbs.sh --admindb MFPDashDBService
                     </div>
                 </li>
                 <li><b>initenv.sh (optional) – Anmeldung bei IBM Cloud</b><br />
-                      Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
+                      Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Bereich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
                 </li>
                 <li><b>prepareserver.sh - Erstellung eines MobileFirst-Server-Image</b><br />
-                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus. <br/>
+                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>cf ic images</code><br/> aus.
                     Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/>
 
 {% highlight bash %}
@@ -1286,8 +1286,8 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
-<br/>
-                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Abschnitt schließen</b></a>
+
+                                  <br/><a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Abschnitt schließen</b></a>
                               </div>
                           </div>
                         </div>
@@ -1319,7 +1319,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                     </tr>
                                     <tr>
                                         <td>[-i|--ip] SERVER_IP	</td>
-                                        <td>IP-Adresse, an die der MoibleFirst-Server-Container gebunden werden soll. (Sie können eine verfügbare öffentliche IP-Adresse angeben oder mit dem Befehl <code>cf ic ip request</code> eine IP-Adresse anfordern.)</td>
+                                        <td>IP-Adresse, an die der MobileFirst-Server-Container gebunden werden soll. (Sie können eine verfügbare öffentliche IP-Adresse angeben oder mit dem Befehl <code>cf ic ip request</code> eine IP-Adresse anfordern.)</td>
                                     </tr>
                                     <tr>
                                         <td>[-si|--services] SERVICE_INSTANCES (optional)</td>
@@ -1438,7 +1438,7 @@ Führen Sie Folgendes aus:
                                             </tr>
                                             <tr>
                                                 <td>[-tr|--trace] TRACE_SPEC (optional)</td>
-                                                <td>Anzuwendende Tracespezifikation. Der Standarwert ist <code>*=info</code>. </td>
+                                                <td>Anzuwendende Tracespezifikation. Der Standardwert ist <code>*=info</code>. </td>
                                             </tr>
                                             <tr>
                                                 <td>[-ml|--maxlog] MAX_LOG_FILES (optional)</td>
@@ -1450,9 +1450,8 @@ Führen Sie Folgendes aus:
                                             </tr>
                                             <tr>
                                                 <td>[-e|--env] MFPF_PROPERTIES (optional)</td>
-                                                <td>Geben Sie jeweils durch ein Komma getrennte {{ site.data.keys.product_adj }}-Eigenschaften als Schlüssel-Wert-Paare an. Beispiel:
-<code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
-                                                <b>Hinweis:</b> Wenn Sie mit diesem Script Eigenschaften angeben, dürfen die Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein.</td>
+                                                <td>Geben Sie jeweils durch ein Komma getrennte {{ site.data.keys.product_adj }}-Eigenschaften als Schlüssel-Wert-Paare an. Beispiel: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
+                                                <b>Hinweis:</b> Wenn Sie mit diesem Script Eigenschaften angeben, dürfen die Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein. </td>
                                             </tr>
                                             <tr>
                                                 <td>[-m|--memory] SERVER_MEM (optional)</td>
@@ -1488,7 +1487,7 @@ Wenn sich beispielsweise ein Stammzertifikat ändert, muss nach dem Hinzufügen 
 gestartet werden. 
 
 Starten Sie die {{ site.data.keys.mf_console }} über die URL http://MF\_CONTAINER\_HOST/mfpconsole. (Der Start kann eine Weile dauern.)   
-Fügen Sie den fernen Server hinzu. Folgen Sie dfür den Anweisungen
+Fügen Sie den fernen Server hinzu. Folgen Sie den Anweisungen
 im Lernprogramm [{{ site.data.keys.mf_cli }} für die Verwaltung
 von {{ site.data.keys.product_adj }}-Artefakten verwenden](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance). 
 
@@ -1518,7 +1517,9 @@ Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen
 ```
 -javaagent:/opt/ibm/wlp/usr/servers/mfp/newrelic/newrelic.jar”
 ```
-    Jetzt können Sie einen aktualisierten Serverbuild erstellen und den Server implementieren. 
+    Jetzt können Sie einen aktualisierten Serverbuild erstellen und den Server implementieren.
+
+
 
     a. Führen Sie das Script `prepareserver.sh` aus, um das Server-Image neu zu erstellen und per Push-Operation zum Service "IBM Containers" zu übertragen.
 

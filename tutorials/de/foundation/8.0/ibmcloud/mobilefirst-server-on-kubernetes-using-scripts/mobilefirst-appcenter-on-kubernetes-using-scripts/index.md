@@ -62,11 +62,11 @@ In der IBM Cloud-Dokumentation sind die [Konfigurationsschritte für die vorausg
 {: #setup-kube-cluster}
 Informationen zum [Einrichten eines Kubernetes-Clusters in IBM Cloud](https://console.bluemix.net/docs/containers/cs_cluster.html#cs_cluster_cli) finden Sie in der IBM Cloud-Dokumentation.
 
->**Hinweis:** Für die Implementierung der {{ site.data.keys.mf_bm_short }} ist ein Kubernetes-Cluster vom Typ "Stadard" (bezahlter Cluster) erforderlich.
+>**Hinweis:** Für die Implementierung der {{ site.data.keys.mf_bm_short }} ist ein Kubernetes-Cluster vom Typ "Standard" (bezahlter Cluster) erforderlich.
 
 ## Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen
 {: #download-the-ibm-mfpf-container-8000-archive}
-Wenn Sie das {{ site.data.keys.mf_app_center }} als Kubernetes-Cluster mit IBM Cloud-Containern einrichten möchten, müssen Sie zunächst ein Image erstellen, das später per Push-Operation in IBM Cloud übertragen wird. <br/>
+Wenn Sie die {{ site.data.keys.mf_app_center }} als Kubernetes-Cluster mit IBM Cloud-Containern einrichten möchten, müssen Sie zunächst ein Image erstellen, das später per Push-Operation in IBM Cloud übertragen wird.<br/>
 Vorläufige Fixes für {{ site.data.keys.mf_server }} in IBM Containern können über [IBM Fix Central](http://www.ibm.com/support/fixcentral) abgerufen werden.<br/>
 Laden Sie den letzten vorläufigen Fix von Fix Central herunter. Ab iFix **8.0.0.0-IF201708220656** ist Kubernetes-Unterstützung verfügbar.
 
@@ -214,7 +214,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
                     <li><b>IBM_CLOUD_SPACE - </b>Ihr IBM Cloud-Bereich (wie oben erläutert)</li>
                 </ul><br/>
                 <h4>prepareappcenterdbs.properties</h4>
-                Das {{ site.data.keys.mf_app_center }} erfordert eine externe Instanz von <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>Db2 on Cloud</i></a>. <br/>
+                Das {{ site.data.keys.mf_app_center }} erfordert eine externe Instanz von <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>Db2 on Cloud</i></a>.<br/>
                 <blockquote><b>Hinweis:</b> Sie können auch Ihre eigene Db2-Datenbank verwenden. Der IBM Cloud-Kubernetes-Cluster muss für eine Verbindung zu der Datenbank konfiguriert werden. </blockquote>
                 Wenn Sie Ihre Db2-Instanz eingerichtet haben, geben Sie die folgenden erforderlichen Argumente an:
                 <ul>
@@ -237,7 +237,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
                 <h4>prepareappcenter.properties</h4>
                 <ul>
                   <li><b>SERVER_IMAGE_TAG</b> - Ein Tag für das Image. Der Tag sollte das Format <em>registry-url/namespace/image:tag</em> haben.</li>
-                  <blockquote>Beispiel: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>Wenn Sie noch keinen Docker-Registry-Namespace erstellt haben, erstellen Sie ihn mit einem der folgenden Befehle: <br/>
+                  <blockquote>Beispiel: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>Wenn Sie noch keinen Docker-Registry-Namespace erstellt haben, erstellen Sie ihn mit einem der folgenden Befehle:<br/>
                   <ul><li><code>bx cr namespace-add <em>myuniquenamespace</em></code></li><li><code>bx cr namespace-list</code></li></ul>
                   </blockquote>
                 </ul>
@@ -280,14 +280,14 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
 {% endhighlight %}
                 </li>
                 <li><b>initenv.sh (optional) – Anmeldung bei IBM Cloud</b><br />
-                      Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich ohne verfügbare Db2-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
+                      Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Bereich ohne verfügbare Db2-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
 </li>
                 <li><b>prepareappcenter.sh - Erstellung eines MobileFirst-Application-Center-Image</b><br />
-                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um das MobileFirst-Application-Center-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu stellen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>bx cr image-list</code> aus. <br/>
+                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um das MobileFirst-Application-Center-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu stellen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>bx cr image-list</code> aus.<br/>
                     Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/>
                     <b>Interaktiver Modus</b>
 {% highlight bash %}
@@ -300,16 +300,16 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
                 </li>
                 <li>Implementieren Sie das {{ site.data.keys.mf_app_center }} in Docker-Containern eines Kubernetes-Clusters mit dem Container-Service von IBM Cloud.
                 <ol>
-                  <li>Legen Sie Ihren Cluster als Terminalkontext fest: <br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
-                  Führen Sie den folgenden Befehl aus, um Ihren Clusternamen zu erfahren: <br/><code>bx cs clusters</code><br/>
-                  In der Ausgabe wird der Pfad zu Ihrer Konfigurationsdatei als Befehl zum Definieren einer Umgebungsvariablen angezeigt. Beispiel: <br/>
+                  <li>Setzen Sie Ihren Terminalkontext auf Ihren Cluster:<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
+                  Wenn Sie Ihren Clusternamen nicht kennen, führen Sie den folgenden Befehl aus:<br/><code>bx cs clusters</code><br/>
+                  In der Ausgabe wird der Pfad zu Ihrer Konfigurationsdatei als ein Befehl zum Setzen einer Umgebungsvariable angezeigt. Beispiel:<br/>
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
-                  Kopieren Sie den obigen Befehl. Ersetzen Sie <em>my-cluster</em> durch Ihren Clusternamen und fügen Sie den Befehl dann ein, um die Umgebungsvariable für Ihr Terminal festzulegen. Drücken Sie abschließend die <b>Eingabetaste</b>.
+                  Kopieren Sie den obigen Befehl, nachdem Sie <em>my-cluster</em> durch Ihren Clusternamen ersetzt haben, um die Umgebungsvariable Ihres Terminals zu setzen. Drücken Sie dann die Eingabetaste.
                   </li>
-                  <li>Führen Sie den folgenden Befehl aus, um Ihre <b>Ingress Domain</b> (Zugangsdomäne) abzurufen: <br/>
+                  <li>Führen Sie den folgenden Befehl aus, um Ihre <b>Ingress Domain</b> (Zugangsdomäne) abzurufen:<br/>
                    <code>bx cs cluster-get <em>my-cluster</em></code><br/>
                    Notieren Sie Ihre Zugangsdomäne. Wenn Sie TLS konfigurieren müssen, notieren Sie den geheimen Zugangsschlüssel (<b>Ingress Secret</b>).</li>
-                  <li>Erstellen Sie die Kubernetes-Implementierungen. <br/>Bearbeiten Sie die yaml-Datei <b>args/mfp-deployment-appcenter.yaml</b>. Tragen Sie alle Details ein. Alle Variablen müssen vor Ausführung des Befehls <em>kubectl</em> durch die entsprechenden Werte ersetzt werden. <br/>
+                  <li>Erstellen Sie die Kubernetes-Implementierungen.<br/>Bearbeiten Sie die yaml-Datei <b>args/mfp-deployment-appcenter.yaml</b>. Tragen Sie alle Details ein. Alle Variablen müssen vor Ausführung des Befehls <em>kubectl</em> durch die entsprechenden Werte ersetzt werden.<br/>
                   <b>./args/mfp-deployment-appcenter.yaml</b> enthält die Implementierung für Folgendes:
                   <ul>
                     <li>Kubernetes-Implementierung für das {{ site.data.keys.mf_app_center }}, bestehend aus einer Instanz (1 Replikat), mit einem Hauptspeicher von 1024 MB und einer CPU mit einem Kern </li>
@@ -317,17 +317,17 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
                     <li>Zugang für das gesamte Setup mit allen REST-Endpunkten für das {{ site.data.keys.mf_app_center }}</li>
                     <li>Konfigurationsübersicht (configMap), um die Umgebungsvariablen in der MobileFirst-Application-Center-Instanz verfügbar zu machen</li>
                   </ul>
-                  In der YAML-Datei müssen folgende Werte bearbeitet werden: <br/>
+                  In der YAML-Datei müssen folgende Werte bearbeitet werden:<br/>
                     <ol><li>Verschiedene Vorkommen von <em>my-cluster.us-south.containers.mybluemix.net</em> mit der vom obigen Befehl <code>bx cs cluster-get</code> ausgegebenen Zugangsdomäne (<b>Ingress Domain</b>)</li>
                     <li><em>registry.ng.bluemix.net/repository/mfpappcenter:latest</em> - Verwenden Sie zum Hochladen des Image die gleichen Namen wie in prepareappcenter.sh. </li>
                     </ol>
-                    Führen Sie den folgenden Befehl aus: <br/>
+                    Führen Sie den folgenden Befehl aus:<br/>
                     <code>kubectl create -f ./args/mfp-deployment-appcenter.yaml</code>
                     <blockquote><b>Hinweis:<br/></b>Folgende YAML-Schablonendateien werden bereitgestellt:<br/>
                     <ul><li><b>mfp-deployment-appcenter.yaml</b>: Implementiert das {{ site.data.keys.mf_app_center }} mit HTTP. </li>
                       <li><b>mfp-deployment-appcenter-with-tls.yaml</b>: Implementiert das {{ site.data.keys.mf_app_center }} mit HTTPS. </li>
                     </ul></blockquote>
-                      Nach der Erstellung müssen Sie den folgenden Befehl ausführen, um das Kubernetes-Dashboard verwenden zu können: <br/>
+                      Nach der Erstellung müssen Sie den folgenden Befehl ausführen, um das Kubernetes-Dashboard verwenden zu können:<br/>
                       <code>kubectl proxy</code><br/>Öffnen Sie <b>localhost:8001/ui</b> in Ihrem Browser.
                   </li>
                 </ol>

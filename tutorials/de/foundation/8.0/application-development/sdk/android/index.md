@@ -12,11 +12,11 @@ Das SDK der {{ site.data.keys.product_full }}
 besteht aus einer Reihe von Abhängigkeiten, die über [Maven Central](http://search.maven.org/) verfügbar sind und zu einem Android-Studio-Projekt hinzugefügt werden können. Die Abhängigkeiten entsprechen Kernfunktionen und anderen Funktionen:  
 
 * **IBMMobileFirstPlatformFoundation** - Implementiert Client-Server-Konnektivität, handhabt Authentifizierungs- und Sicherheitsaspekte, Ressourcenanforderungen und weitere erforderliche Kernfunktionen
-* **IBMMobileFirstPlatformFoundationJSONStore** - Enthält das JSONStore-Framework. Weitere Informationen enthält das Lernprogramm [JSONStore für Andoid](../../jsonstore/android/).
+* **IBMMobileFirstPlatformFoundationJSONStore** - Enthält das JSONStore-Framework. Weitere Informationen enthält das Lernprogramm [JSONStore für Android](../../jsonstore/android/).
 * **IBMMobileFirstPlatformFoundationPush** - Enthält das Framework für Push-Benachrichtigungen. Weitere Informationen enthalten die Lernprogramme zu [Benachrichtigungen](../../../notifications/).
 
 In diesem Lernprogramm erfahren Sie, wie das native {{ site.data.keys.product_adj }}-SDK mithilfe von Gradle
-zu einer neuen oder vorhandenen Android-Anwendung hinzugfügt wird. Sie werden auch lernen,
+zu einer neuen oder vorhandenen Android-Anwendung hinzugefügt wird. Sie werden auch lernen,
 wie {{ site.data.keys.mf_server }} konfiguriert werden muss, um die Anwendung zu erkennen.
 Außerdem erfahren Sie, wie Sie Informationen zu den {{ site.data.keys.product_adj }}-Konfigurationsdateien, die zum Projekt hinzugefügt werden, finden können. 
 
@@ -79,7 +79,7 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
 4. Fügen Sie im Abschnitt `dependencies` die folgenden Zeilen hinzu:
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
    name: 'ibmmobilefirstplatformfoundation',
    version: '8.0.+',
    ext: 'aar',
@@ -89,7 +89,12 @@ Erstellen Sie ein Android-Studio-Projekt oder verwenden Sie ein vorhandenes Proj
    Oder in einer einzelnen Zeile:
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+   ```
+   >**Hinweis**: Wenn Sie das Feature [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) verwenden und MobileFirst-APIs von einem Zusatzmodul aus aufrufen möchten, verwenden Sie die `api`-Deklaration anstelle von `implementation`. Wenn Sie `implementation` verwenden, ist die Nutzung von MobileFirst-APIs auf dasselbe Modul beschränkt. Bei Verwendung von `api` werden die MobileFirst-APIs dagegen für alle in der App vorhandenen Module verfügbar gemacht. Dies gilt auch für Zusatzmodule. Weitere Details finden Sie unter [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+   
+  ```xml
+   api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
    ```
 
 5. Öffnen Sie unter **Android → app → manifests** die Datei `AndroidManifest.xml`. Fügen Sie Folgendes über dem Element **application** hinzu: 
@@ -190,7 +195,7 @@ sollte im gesamten Anwendungslebenszyklus nur einmal erstellt werden. Es wird em
 ## Natives {{ site.data.keys.product_adj }}-SDK aktualisieren
 {: #updating-the-mobilefirst-native-sdk }
 Wenn Sie das native {{ site.data.keys.product_adj }}-SDK auf den neuesten Releasestand
-bringen möchten, suchen Sie die neueste Releaseversion und aktualisdieren Sie die Eigenschaft `version` in der Datei **build.gradle** entsprechend.   
+bringen möchten, suchen Sie die neueste Releaseversion und aktualisieren Sie die Eigenschaft `version` in der Datei **build.gradle** entsprechend.   
 (Vergleichen Sie dazu oben Schritt 4.) 
 
 SDK-Releases sind im [JCenter-Repository](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#) für das jeweilige SDK enthalten.

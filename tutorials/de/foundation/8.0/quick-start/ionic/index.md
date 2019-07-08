@@ -28,7 +28,7 @@ Bei der folgenden Demonstration geht es darum, einen End-to-End-Ablauf zu verans
 
 ### Schritt 1: {{ site.data.keys.mf_server }} starten
 {: #1-starting-the-mobilefirst-server }
-Sie müssen eine [Mobile-Foundation-Instanz erstellt](../../bluemix/using-mobile-foundation) haben. Falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) verwenden, navigieren Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run.sh` oder unter Windows den Befehl `run.cmd` aus.
+Sie müssen eine [Mobile-Foundation-Instanz erstellt](../../ibmcloud/using-mobile-foundation) haben. Falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) verwenden, navigieren Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run.sh` oder unter Windows den Befehl `run.cmd` aus.
 
 ### Schritt 2: Anwendung erstellen und registrieren
 {: #2-creating-and-registering-an-application }

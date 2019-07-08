@@ -14,6 +14,24 @@ Laden Sie das neueste CD-Update herunter und installieren Sie es. Sie erhalten d
 
 > Eine Liste der iFix-Releases für {{ site.data.keys.product }} 8.0 finden Sie [hier]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
+### Im CD-Update 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05) enthaltene Features
+
+##### <span style="color:NAVY">**CoreML-Update**</span>
+
+ML-Modelle (Machine Learning) können mit dem CoreML-Framework von Apple lokal auf dem mobilen iOS-Gerät ausgeführt werden.
+Die Mobile Foundation bietet die Möglichkeit, die Verteilung dieser Modelle auf Geräte sicher zu verwalten. [Weitere Informationen finden Sie hier](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
+
+##### <span style="color:NAVY">**App Authenticity für watchOS**</span>
+
+App Authenticity ist ein Sicherheitsfeature, das die Authentizität der Anwendung prüft, bevor der Zugriff gewährt wird. Dieses Feature ist für mobile Apps und jetzt auch für Apple-watchOS-Apps verfügbar. [Weitere Informationen finden Sie hier]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
+
+##### <span style="color:NAVY">**Push-Benachrichtigungen - Zusätzliche Nachrichtenfeatures und Attribute für FCM**</span>
+
+Push-Benachrichtigungen unterstützen jetzt die folgenden zusätzlichen Nachrichtenattribute: 
+1. Helligkeit
+2. Stile (Inbox, BigText, PictureNotifications)
+
+
 ### Im CD-Update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04) enthaltene Features
 
 ##### <span style="color:NAVY">**HTTP/2-Unterstützung für APNS-Push-Benachrichtigungen**</span>
@@ -22,7 +40,7 @@ Neben den traditionellen TCP-Socket-basierten Benachrichtigungen bietet MobileFi
 
 ##### <span style="color:NAVY">**React-Native-SDK für Push freigegeben**</span>
 
-Mit diesem CD-Update wurd das React-Native-SDK für Push (*react-native-ibm-mobilefirst-push 1.0.0*) freigegeben. 
+Mit diesem CD-Update wird das React-Native-SDK für Push (*react-native-ibm-mobilefirst-push 1.0.0*) freigegeben. 
 
 
 ### Mit CD-Update 3 (8.0.0.0-MFPF-IF201811050432-CDUpdate-03) eingeführte Features
@@ -89,7 +107,7 @@ Ab dem iFix *8.0.0.0-MFPF-IF20170426-1210* gibt es ein aktualisiertes MobileFirs
 
 ##### <span style="color:NAVY">**Android-SDK für Verwendung einer neueren Version von OkHttp (Version 3.4.1) modifiziert**</span>
 
-Ab dem iFix *8.0.0.0-MFPF-IF20170605-2216* gibt es ein modifiziertes Android-SDK, das eine neuere Version von *OkHttp (Version 3.4.1)* anstelle der alten Version aus dem bisherigen MobileFirst-SDK für Android verwendet. OkHttp ist nicht Bestandteil des SDK-Bundles, sondern wurde als Abängigkeit hinzugefügt. So haben Sie die freie Wahl bei der Verwendung der OkHttp-Bibliothek für Entwickler und können Konflikte durch mehrere Versionen von OkHttp vermeiden.
+Ab dem iFix *8.0.0.0-MFPF-IF20170605-2216* gibt es ein modifiziertes Android-SDK, das eine neuere Version von *OkHttp (Version 3.4.1)* anstelle der alten Version aus dem bisherigen MobileFirst-SDK für Android verwendet. OkHttp ist nicht Bestandteil des SDK-Bundles, sondern wurde als Abhängigkeit hinzugefügt. So haben Sie die freie Wahl bei der Verwendung der OkHttp-Bibliothek für Entwickler und können Konflikte durch mehrere Versionen von OkHttp vermeiden.
 
 ##### <span style="color:NAVY">**Unterstützung für Cordova Version 7**</span>
 
@@ -121,11 +139,11 @@ Ab dem iFix (*8.0.0.0-MFPF-IF20170901-1903*) kann in der {{ site.data.keys.produ
 
 ##### <span style="color:NAVY">**Unterstützung für iOS 11 und iPhone X**</span>
 
-Beginnend mit dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* wird für Version 8.0 der Mobile Foundation die Untertsützung für iOS 11 und iPhone X angekündigt. Weitere Einzelheiten enthält der Blogbeitrag [IBM MobileFirst Platform Foundation Support for iOS 11 and iPhone X](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/18/mfp-support-for-ios11/).
+Beginnend mit dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* wird für Version 8.0 der Mobile Foundation die Unterstützung für iOS 11 und iPhone X angekündigt. Weitere Einzelheiten enthält der Blogbeitrag [IBM MobileFirst Platform Foundation Support for iOS 11 and iPhone X](https://mobilefirstplatform.ibmcloud.com/blog/2017/09/18/mfp-support-for-ios11/).
 
 ##### **<span style="color:NAVY">Unterstützung für Android Oreo</span>**
 
-Beginnend mit dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* wird mit diesem [Blogbeitrag](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/22/mobilefirst-android-Oreo/) für die Mobile Foundation die Untertsützung für Android Oreo angekündigt. Sowohl native Android-Apps als auch Hybrid-Cordova-Apps, die für ältere Versionen von Android erstellt wurden, funktionieren unter Android Oreo wie erwartet, wenn das Gerät mittels OTA (Over-the-Air-Update) aktualisiert wird.
+Beginnend mit dem CD-Update *8.0.0.0-MFPF-IF201711230641-CDUpdate-01* wird mit diesem [Blogbeitrag](https://mobilefirstplatform.ibmcloud.com/blog/2017/08/22/mobilefirst-android-Oreo/) für die Mobile Foundation die Unterstützung für Android Oreo angekündigt. Sowohl native Android-Apps als auch Hybrid-Cordova-Apps, die für ältere Versionen von Android erstellt wurden, funktionieren unter Android Oreo wie erwartet, wenn das Gerät mittels OTA (Over-the-Air-Update) aktualisiert wird.
 
 ##### <span style="color:NAVY">**Implementierung der Mobile Foundation in Kubernetes-Clustern möglich**</span>
 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Ressourcenanforderungen in Clientanwendungen
-breadcrumb_title: Ressourcenanforderungen
+breadcrumb_title: Resource Requests
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 5

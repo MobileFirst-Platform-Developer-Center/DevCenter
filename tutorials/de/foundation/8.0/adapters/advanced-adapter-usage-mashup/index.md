@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: Erweiterte Verwendung von Adaptern und Adapterkombinationen
-breadcrumb_title: Adapterkombinationen
+breadcrumb_title: Adapter Mashup
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---
@@ -107,9 +107,9 @@ Es folgt eine Liste der Kombinationen mit den entsprechenden Adapternamen:
 
 |Szenario|Name des SQL-Adapters|Name des HTTP-Adapters|  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript**-Adapter → **JavaScript**-Adapter| SQLAdapterJS| HTTPAdapterJS|  
-| **Java**-Adapter → **JavaScript**-Adapter| SQLAdapterJava| HTTPAdapterJS|  
-| **Java**-Adapter → **Java**-Adapter| SQLAdapterJava| HTTPAdapterJava|
+|**JavaScript**-Adapter → **JavaScript**-Adapter|SQLAdapterJS|HTTPAdapterJS|  
+|**Java**-Adapter → **JavaScript**-Adapter|SQLAdapterJava|HTTPAdapterJS|  
+|**Java**-Adapter → **Java**-Adapter|SQLAdapterJava|HTTPAdapterJava|
 
 
 ### Ablauf des Kombinationsbeispiels
