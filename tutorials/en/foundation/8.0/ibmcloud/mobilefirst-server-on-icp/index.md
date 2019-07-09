@@ -388,15 +388,6 @@ You also need to create the `RoleBinding`:
 
 This chart uses the following resources by default:
 
-| Component | Requested CPU  | Requested Memory | Storage
-|---|---|---|---|
-| Mobile Foundation Server | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
-| Mobile Foundation Push | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
-| Mobile Foundation Analytics | 1 CPU core | 2 Gi memory | A Persistent Volume. Refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts) for more information
-| Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
-
-This is a test
-
 | Component | CPU  | Memory | Storage
 |---|---|---|---|
 | Mobile Foundation Server | **Min:** 1000m CPU, **Max:** 2000m CPU | **Min:** 2048 Mi memory, **Max:** 4096 Mi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
