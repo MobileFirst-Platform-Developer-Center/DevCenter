@@ -33,7 +33,7 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 ## Prerequisites
 {: #prereqs}
 
-You should have {{ site.data.keys.prod_icp }} account and must have set up the Kubernetes Cluster by following the documentation in [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
+You should have an {{ site.data.keys.prod_icp }} account and must have set up the {{ site.data.keys.prod_icp }} Cluster by following the documentation in [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
 
 To manage containers and images, you need to install the following tools on your host machine as part of {{ site.data.keys.prod_icp }} setup:
 
@@ -47,8 +47,11 @@ To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure 
 In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required. 
 
 a. Install `kubectl` tooling from the IBM Cloud Private management console, click **Menu > Command Line Tools > Cloud Private CLI**.
+
 b. Expand **Install Kubernetes CLI** to download the installer by using a `curl` command. Copy and run the curl command for your operating system, then continue the installation procedure.
+
 c. Choose the curl command for the applicable operating system. For example, you can run the following command for macOS:
+
    ```bash
    curl -kLo <install_file> https://<cluster ip>:<port>/api/cli/kubectl-darwin-amd64
    chmod 755 <path_to_installer>/<install_file>
@@ -74,6 +77,7 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
       >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
 
      For example,
+     
      ```bash
      cloudctl login -a https://ip:port
      ```
@@ -92,7 +96,7 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
       * Select **Platform > Container Images**.
       * Helm Charts are shown in the **Catalog**.
 
-  On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mfpf-server-prod** and {{ site.data.keys.mf_analytics }} is listed as **ibm-mfpf-analytics-prod**.
+  On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mobilefoundation-prod**.
 
 ## Install and configure IBM {{ site.data.keys.product }} Helm Charts
 {: #configure-install-mf-helmcharts}
@@ -105,7 +109,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 
 1. (Mandatory) A pre-configured IBM DB2® database is required for Server and Application Center components and this information will be supplied to helm chart to create appropriate tables for Server and Application Center.  For Oracle, MySQL or PostgreSQL databases, the Mobile Foundation Server database tables has to be created [manually](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/) before the deployment of MFP Components.
 
-  > NOTE: The base Docker image needs to be extended/customized for using databases other than IBM DB2®.
+    > NOTE: The base Docker image needs to be extended/customized for using databases other than IBM DB2®.
 	
 2. (Mandatory) A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
 	
@@ -164,7 +168,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 
 6. For Analytics deployment, one can choose below options for persisting analytics data
 
-   a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
+    a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
 	
       For example: 
 	
@@ -187,7 +191,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 	    server: <nfs_server>
       ```
 
-      > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
+    > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
 
       Sample `PersistentVolumeClaim.yaml`
 		
@@ -214,14 +218,14 @@ Secret objects let you store and manage sensitive information, such as passwords
 	    storage: 20Gi
 	```
 	
-	> NOTE: Make sure you add the right <namespace> in the above yaml.
+    > NOTE: Make sure you add the right <namespace> in the above yaml.
 
-	b) To choose dynamic provisioning in the chart.
+    b) To choose dynamic provisioning in the chart.
 
 7. (Mandatory) Creating **database secrets** for Server, Push and Application Center.
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
-   Run the code snippet below to create a database secret for Mobile Foundation server:
+Run the code snippet below to create a database secret for Mobile Foundation server:
 
     ```bash
 	# Create mfpserver secret
@@ -257,7 +261,7 @@ Run the below code snippet to create a database secret for Application Center
 	EOF
    ```
 
-> NOTE: You may encode the username and password details using the below command - 
+   > NOTE: You may encode the username and password details using the below command - 
 	
    ```bash
 	export $MY_USER_NAME=<myuser>
@@ -293,10 +297,10 @@ This section outlines the security mechanisms for controlling access to the data
    kubectl create secret docker-registry -n <namespace> <container-image-registry-hostname> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password>
    ```
 	
-> NOTE: text inside < > needs to be updated with right values.
+    > NOTE: text inside < > needs to be updated with right values.
 
 
-  For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
+For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
   
 ## Resources Required
 {: #resources-required}
@@ -471,16 +475,19 @@ Please refer to [Upgrading bundled products](https://www.ibm.com/support/knowled
 ### Sample scenarios for Helm release upgrades
 
 1. To upgrade helm release with changes in values of `values.yaml`, use the `helm upgrade` command with **--set** flag. You can specify **--set** flag multiple times. The priority will be given to the right most set specified in the command line.
+
   ```bash
   helm upgrade --set <name>=<value> --set <name>=<value> <existing-helm-release-name> <path of new helm chart>
   ```
 
 2. To upgrade helm release by providing values in a file, use the `helm upgrade` command with **-f** flag. You can use **--values** or **-f** flag multiple times. The priority will be given to the right most file specified in the command line. In the following example, if both `myvalues.yaml` and `override.yaml` contain a key called *Test*, the value set in `override.yaml` would take precedence.
+
   ```bash
   helm upgrade -f myvalues.yaml -f override.yaml <existing-helm-release-name> <path of new helm chart>
   ```
 
 3. To upgrade helm release by reusing the values from the last release and overriding some of them, a command such as below can be used:
+
   ```bash
   helm upgrade --reuse-values --set <name>=<value> --set <name>=<value> <existing-helm-release-name> <path of new helm chart>
   ```
@@ -501,6 +508,7 @@ Migrating from the old Mobile Foundation components installed as separate helm r
 {: #uninstall}
 To uninstall {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }}, use the [Helm CLI](https://docs.helm.sh/using_helm/#installing-helm).
 Use the following command to completely delete the installed charts and the associated deployments:
+
 ```bash
 helm delete --purge <release_name>
 ```
