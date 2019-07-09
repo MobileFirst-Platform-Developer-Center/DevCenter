@@ -27,6 +27,7 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Sample application](#sample-app)
 * [Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases](#upgrading-mf-helm-charts)
 * [Migrate to IBM Certified Cloud Pak for Mobile Foundation Platform](#migrate)
+* [Backup and recovery of MFP Analytics Data](#backup-analytics)
 * [Uninstall](#uninstall)
 * [Limitations](#limitations)
 
@@ -584,15 +585,39 @@ Migrating from the old Mobile Foundation components installed as separate helm r
 3. Notice the change in the database values to be entered. Access to the database is now controlled through secrets. Refer section-4 under [Prerequisites](#Prerequisites) to create secrets for any credentials (including Console logins, Database accounts, etc).
 4. Mobile Foundation Analytics data can be retained by re-using the same Persistence Volume Claim used in the old deployment.
 
+## Backup and recovery of MFP Analytics Data
+{: #backup-analytics}
+
+The MFP Analytics Data is available as a part of Kubernetes [PersistentVolume or PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#introduction). You might be using one among the [volume plugins that Kubernetes offers](https://kubernetes.io/docs/concepts/storage/volumes/#types-of-volumes).
+
+Backup and restore depends on the volume plugins that you use. There are various means/tools through which the volume can be backed up or restored.
+
+Kuberenetes provides [**VolumeSnapshot, VolumeSnapshotContent and Restore options**](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html#snapshot--restore-feature). You may take a copy of the [volume in the cluster](https://kubernetes.io/docs/concepts/storage/volume-snapshots/#introduction) that has been provisioned by an administrator.
+
+Use the following [example yaml files](https://github.com/kubernetes-csi/external-snapshotter/tree/master/examples/kubernetes) to test the snapshot feature.
+
+You may also leverage other tools to take a backup of the volume and restore the same -
+
+- IBM Cloud Automation Manager (CAM) on ICP
+    Leverage the capabilities of CAM and strategies for [Backup/Restore, High Availability (HA) and Disaster Recovery (DR) for CAM instances](https://developer.ibm.com/cloudautomation/2018/05/08/backup-ha-dr/)
+	   
+- [Portworx](https://portworx.com) on ICP
+    Is a storage solution designed for applications deployed as containers or via container orchestrators such as Kubernetes
+	   
+- Stash by [AppsCode](https://appscode.com/products/kubed/0.9.0/guides/disaster-recovery/stash/)
+    Using Stash, you can backup the volumes in Kubernetes 
+
 ## Uninstall
 {: #uninstall}
 To uninstall {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }}, use the [Helm CLI](https://docs.helm.sh/using_helm/#installing-helm).
 Use the following command to completely delete the installed charts and the associated deployments:
 
 ```bash
-helm delete --purge <release_name>
+helm delete <my-release> --purge --tls
 ```
-*release_name* is the deployed release name of the Helm Chart.
+*my-release* is the deployed release name of the Helm Chart.
+
+This command removes all the Kubernetes components (except any Persistent Volume Claims (PVC)) associated with the chart. This default Kubernetes behavior ensures that the valuable data is not deleted.
 
 ## Limitations
 {: #limitations}
