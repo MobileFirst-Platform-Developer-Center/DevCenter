@@ -72,7 +72,7 @@ Once work on new web resources, such as bug fixes or minor changes and the like,
 2. Run the command: `cordova build`.
 3. Run the command: `mfpdev app webupdate`.
 
-> **Note:** Build step is important in ionic applications before using the direct update command.
+> **Note:** Build step is important in ionic applications before using the direct update command, missing this step would not update the web resources.
 
 The `mfpdev app webupdate` command packages the updated web resources to a .zip file and uploads it to the default {{ site.data.keys.mf_server }} running in the developer workstation. The packaged web resources can be found at the  **[cordova-project-root-folder]/mobilefirst/** folder.
 
