@@ -372,16 +372,16 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
 
 The cluster admin can either paste the above PSP and ClusterRole definitions into the create resource screen in the UI or run the following two commands:
   
-    ```bash
+```bash
     kubectl create -f <PSP yaml file>
     kubectl create clusterrole ibm-mobilefoundation-prod-psp-clusterrole --verb=use --resource=podsecuritypolicy --resource-name=ibm-mobilefoundation-prod-psp
-    ```
+```
 
 You also need to create the `RoleBinding`:
 
-    ```bash
+```bash
     kubectl create rolebinding ibm-mobilefoundation-prod-psp-rolebinding --clusterrole=ibm-mobilefoundation-prod-psp-clusterrole --serviceaccount=<namespace>:default --namespace=<namespace>
-    ```
+```
   
 ## Resources Required
 {: #resources-required}
