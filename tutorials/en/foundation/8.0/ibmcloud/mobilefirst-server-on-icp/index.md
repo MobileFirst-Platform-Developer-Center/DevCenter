@@ -70,7 +70,7 @@ The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is ava
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
-Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/manage_images/using_docker_cli.html).
+Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html).
 
 Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod_icp }} cluster:
 
@@ -599,12 +599,15 @@ Use the following [example yaml files](https://github.com/kubernetes-csi/externa
 You may also leverage other tools to take a backup of the volume and restore the same -
 
 - IBM Cloud Automation Manager (CAM) on ICP
+    
     Leverage the capabilities of CAM and strategies for [Backup/Restore, High Availability (HA) and Disaster Recovery (DR) for CAM instances](https://developer.ibm.com/cloudautomation/2018/05/08/backup-ha-dr/)
 	   
 - [Portworx](https://portworx.com) on ICP
+    
     Is a storage solution designed for applications deployed as containers or via container orchestrators such as Kubernetes
 	   
 - Stash by [AppsCode](https://appscode.com/products/kubed/0.9.0/guides/disaster-recovery/stash/)
+    
     Using Stash, you can backup the volumes in Kubernetes 
 
 ## Uninstall
