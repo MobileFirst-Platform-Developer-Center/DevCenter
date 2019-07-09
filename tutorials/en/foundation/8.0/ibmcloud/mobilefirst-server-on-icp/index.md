@@ -129,7 +129,7 @@ Secret objects let you store and manage sensitive information, such as passwords
    kubectl create secret generic appcenterlogin --from-literal=APPCENTER_ADMIN_USER=admin --from-literal=APPCENTER_ADMIN_PASSWORD=admin
    ```
 
-   > NOTE: If these secrets are not provided, they are created with default username and password of admin/admin during the installation of Mobile Foundation helm chart
+   > NOTE: If these secrets are not provided, they are created with default username and password of admin/admin during the deployment of Mobile Foundation helm chart
 
 3. (Optional) You can provide your own keystore and truststore to Server, Push, Analytics and Application Center deployment by creating a secret with your own keystore and truststore.
 
@@ -154,6 +154,8 @@ Secret objects let you store and manage sensitive information, such as passwords
    ```
 	
    The name of the secret is then provided in the field global.ingress.secret
+   
+   > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
 
 5. (Optional) Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
 
@@ -164,7 +166,7 @@ Secret objects let you store and manage sensitive information, such as passwords
    kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
    ```
 	
-   > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart installation, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
+   > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
 
 6. For Analytics deployment, one can choose below options for persisting analytics data
 
@@ -300,7 +302,85 @@ This section outlines the security mechanisms for controlling access to the data
     > NOTE: text inside < > needs to be updated with right values.
 
 
-For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
+For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
+
+### PodSecurityPolicy Requirements
+
+This chart requires a PodSecurityPolicy to be bound to the target namespace prior to deployment. Choose either a predefined PodSecurityPolicy or have your cluster administrator create a custom PodSecurityPolicy for you:
+
+* Predefined PodSecurityPolicy name: [`ibm-restricted-psp`](https://ibm.biz/cpkspec-psp)
+* Custom PodSecurityPolicy definition:
+
+    ```bash
+	apiVersion: extensions/v1beta1
+	kind: PodSecurityPolicy
+	metadata:
+	  name: ibm-mobilefoundation-prod-psp
+	  annotations:
+	    apparmor.security.beta.kubernetes.io/allowedProfileNames: runtime/default
+	    apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default 
+	    seccomp.security.alpha.kubernetes.io/allowedProfileNames: docker/default
+	    seccomp.security.alpha.kubernetes.io/defaultProfileName: docker/default
+	spec:
+	  requiredDropCapabilities:
+	  - ALL
+	  volumes:
+	  - configMap
+	  - emptyDir
+	  - projected
+	  - secret
+	  - downwardAPI
+	  - persistentVolumeClaim
+	  seLinux:
+	    rule: RunAsAny
+	  runAsUser:
+	    rule: MustRunAsNonRoot
+	  supplementalGroups:
+	    rule: MustRunAs
+	    ranges:
+	    - min: 1
+	      max: 65535
+	  fsGroup:
+	    rule: MustRunAs
+	    ranges:
+	    - min: 1
+	      max: 65535
+	  allowPrivilegeEscalation: false
+	  forbiddenSysctls:
+	  - "*"
+    ```
+
+* Custom ClusterRole for the custom PodSecurityPolicy:
+
+    ```bash
+	apiVersion: rbac.authorization.k8s.io/v1
+	kind: ClusterRole
+	metadata:
+	  name: ibm-mobilefoundation-prod-psp-clusterrole
+	rules:
+	- apiGroups:
+	  - extensions
+	  resourceNames:
+	  - ibm-mobilefoundation-prod-psp
+	  resources:
+	  - podsecuritypolicies
+	  verbs:
+	  - use
+    ```
+    > NOTE: It is required to create the PodSecurityPolicy only once, if the PodSecurityPolicy already exists then skip this step.
+
+The cluster admin can either paste the above PSP and ClusterRole definitions into the create resource screen in the UI or run the following two commands:
+  
+    ```bash
+        kubectl create -f <PSP yaml file>
+        kubectl create clusterrole ibm-mobilefoundation-prod-psp-clusterrole --verb=use --resource=podsecuritypolicy --resource-name=ibm-mobilefoundation-prod-psp
+    ```
+
+You also need to create the `RoleBinding`:
+
+    ```bash
+        kubectl create rolebinding ibm-mobilefoundation-prod-psp-rolebinding --clusterrole=ibm-mobilefoundation-prod-psp-clusterrole --serviceaccount=<namespace>:default --namespace=<namespace>
+    ```
   
 ## Resources Required
 {: #resources-required}
