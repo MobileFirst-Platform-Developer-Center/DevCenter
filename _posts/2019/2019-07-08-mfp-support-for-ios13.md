@@ -7,7 +7,6 @@ tags:
 - iOS
 version:
 - 8.0
-- 7.1
 author:
   name: Sandhya Suman, Vidyasagar Gaiakwad
 ---
@@ -19,16 +18,16 @@ If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](http
 
 Apple announced iOS 13 during their annual *WWDC2019* conference.  You can read more about all the new features in iOS 13 [here](https://developer.apple.com/ios/whats-new/).
 
-We have been testing the iOS 13 beta with the latest being beta 3. We have verified various features of MobileFirst Platform Foundation on the iOS 13 beta 3 for MobileFirst Platform Foundation v7.1 and v8.0. For reference, make sure to read through our [support plan for newer iOS version](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
+We have been testing the iOS 13 beta with the latest being beta 3. We have verified various features of MobileFirst Platform Foundation on the iOS 13 beta 3 for MobileFirst Platform Foundation v8.0. For reference, make sure to read through our [support plan for newer iOS version](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
 
 We encourage you to start testing your application(s) with iOS 13.
 
 ## MobileFirst Platform Foundation Support for iOS 13(beta 3)
 
 #### Existing application
-Existing application(s) that were created using MobileFirst Platform v7.1 and v8.0 **will work** on iOS 13 as they did on previous versions of iOS.
+Existing application(s) that were created using MobileFirst Platform v8.0 **will work** on iOS 13 as they did on previous versions of iOS.
 
-Compatibility tests with [iOS 13 beta 3](https://developer.apple.com/download) have been performed using an iPhone 7 that was upgraded from iOS 12.3 to iOS 13 beta 3 for MobileFirst Foundation v8.0 and v7.1.
+Compatibility tests with [iOS 13 beta 3](https://developer.apple.com/download) have been performed using an iPhone 7 that was upgraded from iOS 12.3 to iOS 13 beta 3 for MobileFirst Foundation v8.0.
 
 For the tests, [XCode 11 beta 3](https://developer.apple.com/download) was used to compile native, hybrid and Cordova apps. 
 
@@ -40,7 +39,7 @@ Apps built with older Xcode(10.1 and above) can be still submitted to app Store.
 
 As per Apple you can submit apps in **Swift 4.0** to the App Store and migrate individual modules to Swift 5 when you are ready. We strongly encourage you to migrate your code to **Swift 5.0**.
 
-Highlighted features that were tested for Mobilefirst Foundation v7.1 and v8.0:
+Highlighted features that were tested for Mobilefirst Foundation v8.0:
 
 * OAuth Flow
 * Invoking backend procedures through adapters
@@ -65,6 +64,8 @@ iOS 13 compatibility tests are planned for following:
 * watchOS
 * iPADOS
 
-*Stay tuned for more updates.*
+We will be sharing the compatibility test results for Mobilefirst v7.1 soon.
+
+*Stay tuned for further updates.*
 
 > **Disclaimer:** *Some of the action items that are addressed in the list above are not under IBM’s control. Therefore, we expect developers and IT managers to ensure that their infrastructure is up-to-date according to Apple’s requirements.*
