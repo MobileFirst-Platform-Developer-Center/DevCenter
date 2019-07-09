@@ -14,7 +14,7 @@ additional_authors:
 ---
 
 
-If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about Mobile Foundation support for iOS 13.
+If you are an on-premise 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about Mobile Foundation support for iOS 13.
 
 Apple announced iOS 13 during their annual *WWDC2019* conference. You can read more about all the new features in iOS 13 [here](https://developer.apple.com/ios/whats-new/).
 
