@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Setting up MobileFirst Server on IBM Cloud Private
+title: Installing IBM Mobile Foundation on IBM Cloud Private
 breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
 weight: 3
