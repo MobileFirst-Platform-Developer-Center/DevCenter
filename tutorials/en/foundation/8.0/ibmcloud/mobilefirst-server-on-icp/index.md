@@ -390,10 +390,10 @@ This chart uses the following resources by default:
 
 | Component | CPU  | Memory | Storage
 |---|---|---|---|
-| Mobile Foundation Server | **Request/Min:** 750m CPU, **Limit/Max:** 1000m CPU | **Request/Min:** 1024 Mi memory, **Limit/Max:** 2048 Mi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
-| Mobile Foundation Push | **Request/Min:** 750m CPU, **Limit/Max:** 1000m CPU | **Request/Min:** 1024 Mi memory, **Limit/Max:** 2048 Mi memory  | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
-| Mobile Foundation Analytics | **Request/Min:** 750m CPU, **Limit/Max:** 1000m CPU  | **Request/Min:** 1024 Mi memory, **Limit/Max:** 2048 Mi memory  | A Persistent Volume. Refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts) for more information
-| Mobile Foundation Application Center | **Request/Min:** 750m CPU, **Limit/Max:** 1000m CPU | **Request/Min:** 1024 Mi memory, **Limit/Max:** 2048 Mi memory  | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+| Mobile Foundation Server | **Request/Min:** 1000m CPU, **Limit/Max:** 2000m CPU | **Request/Min:** 2048 Mi memory, **Limit/Max:** 4096 Mi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+| Mobile Foundation Push | **Request/Min:** 1000m CPU, **Limit/Max:** 2000m CPU | **Request/Min:** 2048 Mi memory, **Limit/Max:** 4096 Mi memory  | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+| Mobile Foundation Analytics | **Request/Min:** 1000m CPU, **Limit/Max:** 2000m CPU  | **Request/Min:** 2048 Mi memory, **Limit/Max:** 4096 Mi memory  | A Persistent Volume. Refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts) for more information
+| Mobile Foundation Application Center | **Request/Min:** 1000m CPU, **Limit/Max:** 2000m CPU | **Request/Min:** 2048 Mi memory, **Limit/Max:** 4096 Mi memory  | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
 
 ## Configuration
 {: #configuration}
