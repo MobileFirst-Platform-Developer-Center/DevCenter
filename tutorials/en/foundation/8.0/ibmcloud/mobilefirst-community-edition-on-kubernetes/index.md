@@ -39,7 +39,7 @@ To manage kube pods and helm deployment, you need to install the following tools
 
 To work with Kubernetes cluster using CLI, you should configure the *ibmcloud* client.
 
-1. Make sure you log in to the [Clusters page](https://cloud.ibm.com/kubernetes/clusters).
+1. Make sure you log in to the [Clusters page](https://cloud.ibm.com/kubernetes/clusters).(Note: [IBMid account](https://myibm.ibm.com/) is required)
 2. Click the Kubernetes cluster to which IBM Mobile Foundation Chart needs to be deployed.
 3. Follow the instructions in **Access** tab once the cluster is created.
 
@@ -54,22 +54,6 @@ From the IBM Cloud client terminal (*ibmcloud* CLI), follow  the procedure under
 ### Environment variables for IBM Mobile Foundation for Developers 8.0
 {: #env-mf-developers }
 The table below provides the environment variables used in IBM Mobile Foundation for Developers 8.0.
-
-| Qualifier | Parameter | Definition | Allowed Value |
-|-----------|-----------|------------|---------------|
-| arch |  | Worker node architecture | Worker node architecture to which this chart should be deployed.<br/>Only **AMD64** platform is currently supported. |
-| image | pullPolicy | Image Pull Policy | Always, Never, or IfNotPresent. <br/>Default is **IfNotPresent**. |
-|  | repository | Docker image name | Name of the {{ site.data.keys.prod_adj }} server docker image. |
-|  | tag | Docker image tag | See [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
-| resources | limits.cpu | Describes the maximum amount of CPU allowed | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describes the maximum amount of memory allowed | Default is 4096Mi. See Kubernetes - [meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-|  | requests.cpu | Describes the minimum amount of CPU required - if not specified will default to limit (if specified) or otherwise implementation-defined value | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the limit (if specified via values.yaml) or the implementation-defined value | Default is 2048Mi. See Kubernetes - [meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-| logs | consoleFormat | Specifies container log output format. | Default is **json**. |
-|  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
-|  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
-
-This is a test
 
 | Qualifier | Parameter | Definition | Allowed Value |
 |-----------|-----------|------------|---------------|
