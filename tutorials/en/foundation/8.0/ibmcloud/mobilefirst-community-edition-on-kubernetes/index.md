@@ -9,9 +9,9 @@ weight: 3
 ## Overview
 {: #overview }
 
-IBM Mobile Foundation for Developers 8.0 is a developer edition comprises of Server and Operational Analytics components.  
+IBM Mobile Foundation for Developers 8.0 is a developer edition comprises of Server and Operational Analytics components. 
 
-The server runtime has an in-built Derby database to store the Mobile Foundation data. This restricts the users to one pod in the IBM Cloud Kubernetes deployment. Community Edition provides Mobile Foundation users a developer experience with minimal configuration parameters and ease of setting up of the Mobile Foundation instance on IBM Cloud Kubernetes Service.
+The Mobile Foundation server runtime has an in-built Derby database to store the Mobile Foundation data. This restricts the users to one pod in the IBM Cloud Kubernetes deployment. Community Edition provides Mobile Foundation users a developer experience with minimal configuration parameters and ease of setting up of the Mobile Foundation instance on IBM Cloud Kubernetes Service.
 
 Follow the instructions below to install the developer edition of IBM Mobile Foundation server with pre-configured Operational Analytics on IBM Cloud Kubernetes Service:<br/>
 * Create and configure Kubernetes cluster from [here](https://cloud.ibm.com/kubernetes/clusters).
@@ -19,6 +19,7 @@ Follow the instructions below to install the developer edition of IBM Mobile Fou
 
 #### Jump to:
 {: #jump-to }
+
 * [Prerequisites](#prereqs)
 * [Install and configure IBM Mobile Foundation for Developers 8.0 from Helm Chart Catalog](#install-the-ibm-mfpf-iks-catalog)
 * [Verifying the Installation](#verify-install)
@@ -30,21 +31,15 @@ Follow the instructions below to install the developer edition of IBM Mobile Fou
 {: #prereqs}
 
 You should have IBM Cloud Kubernetes Service (Free plan) created using the [IBM Cloud](https://cloud.ibm.com/) portal. Refer to the  [documentation](https://cloud.ibm.com/docs/containers?topic=containers-getting-started) for setup instructions.
-
 To manage kube pods and helm deployment, you need to install the following tools on your host machine:
-
 * ibmcloud CLI (`ibmcloud`)
 * Kubernetes CLI (`kubectl`)
 * Helm (`helm`)
-
 To work with Kubernetes cluster using CLI, you should configure the *ibmcloud* client.
-
-1. Make sure you log in to the [Clusters page](https://cloud.ibm.com/kubernetes/clusters).(Note: [IBMid account](https://myibm.ibm.com/) is required)
+1. Make sure you log in to the [Clusters page](https://cloud.ibm.com/kubernetes/clusters). (Note: [IBMid account](https://myibm.ibm.com/) is required)
 2. Click the Kubernetes cluster to which IBM Mobile Foundation Chart needs to be deployed.
 3. Follow the instructions in **Access** tab once the cluster is created.
-
 >**Note:** Cluster creation takes few minutes. After the cluster is successfully created, click **Worker Nodes** tab and make a note of the *Public IP*.
-
 
 ## Install and configure IBM Mobile Foundation for Developers 8.0 Helm Chart
 {: #install-the-ibm-mfpf-iks-catalog}
@@ -53,6 +48,7 @@ From the IBM Cloud client terminal (*ibmcloud* CLI), follow  the procedure under
 
 ### Environment variables for IBM Mobile Foundation for Developers 8.0
 {: #env-mf-developers }
+
 The table below provides the environment variables used in IBM Mobile Foundation for Developers 8.0.
 
 | Qualifier | Parameter | Definition | Allowed Value |
@@ -73,13 +69,12 @@ The table below provides the environment variables used in IBM Mobile Foundation
 {: #verify-install}
 
 After you have installed Mobile Foundation for Developers 8.0, you can verify your installation and the status of the deployed pods by doing the following:
-
 1. From the [Clusters page](https://cloud.ibm.com/kubernetes/clusters), click on the Kubernetes Cluster on which IBM Mobile Foundation Chart has been deployed.
 2. Go to the Kube dashboard by clicking on the **Kubernetes dashboard** button.
 3. From the dashboard, check **Deployments** and **Pods**, they should be in **DEPLOYED** and **RUNNING** states respectively.
 4. Now you need *Public IP* and *Node Port* of the deployment to access the services
-	- To get **Public IP** - Select **Kubernetes** **>** **Worker Nodes**, note the IP address provided in *Public IP*.
-	- **Node port** can be found in **Kubernetes Dashboard** **>** **Select Services** under the internal endpoints, note the entry for *TCP Node Port* (a five digit port).
+    - To get **Public IP** - Select **Kubernetes** **>** **Worker Nodes**, note the IP address provided in *Public IP*.
+    - **Node port** can be found in **Kubernetes Dashboard** **>** **Select Services** under the internal endpoints, note the entry for *TCP Node Port* (a five digit port).
 5. Open a browser and enter `http://[public ip]:[node port]/mfpconsole` this should get you to Admin console.
 6. Enter default credentials user as `admin` and password as `admin` to log in to the Mobile Foundation Server Admin console.
 7. Ensure the Server Admin, Push, and Analytics operations are available.
@@ -87,44 +82,38 @@ After you have installed Mobile Foundation for Developers 8.0, you can verify yo
 ### [OPTIONAL] Using Command Line
 
 Alternatively, using command line one can follow the below procedure. Make sure the following command shows the **status** as *DEPLOYED*.
-
 ```bash
 helm list
 ```
 Run `kubectl` commands to check if the pods are in **RUNNING** state.
-
 1. Get the list of all deployments on the Kubernetes cluster, and note down the Mobile Foundation deployment name.
-
-	```bash
-	kubectl get deployments
-	```
+    ```bash
+    kubectl get deployments
+    ```
 2. Run the following commands to check the availability of the deployments and their status in detail. The kube pods should show availability with `(1/1) RUNNING` as their status.
-
-	```bash
-	kubectl describe deployment <deployment_name>
-	kubectl get pods
-	```
-
+    ```bash
+    kubectl describe deployment <deployment_name>
+    kubectl get pods
+    ```
 ## Accessing {{ site.data.keys.prod_adj }} console
 {: #access-mf-console}
 
 After successful installation you can access, IBM {{ site.data.keys.prod_adj }} Operational Console using `<protocol>://<public_ip>:<node_port>/mfpconsole`.
 IBM {{ site.data.keys.mf_analytics }} console can be accessed using `<protocol>://<public_ip>:<port>/analytics/console`.
-
 The protocol can be `http` or `https`. Also, note that the port will be **NodePort** in the case of **NodePort** deployment. To get the ip address and **NodePort** of your installed {{ site.data.keys.prod_adj }} Charts, follow the steps below from the Kubernetes Dashboard.
-	- To get **Public IP** - Select **Kubernetes** > **Worker Nodes** > Under Public IP - note the IP address.
-	- **Node port** can be found in **Kubernetes Dashboard** > Select **Services** > Under the **internal endpoints**, note the entry for *TCP Node Port* (a five digit port).
-
+    - To get **Public IP** - Select **Kubernetes** > **Worker Nodes** > Under Public IP - note the IP address.
+    - **Node port** can be found in **Kubernetes Dashboard** > Select **Services** > Under the **internal endpoints**, note the entry for *TCP Node Port* (a five digit port).
+    
 ## Sample application
 {: #sample-app}
+
 See the [{{ site.data.keys.prod_adj }} tutorials](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/), to deploy the sample adapter and to run the sample application on IBM {{ site.data.keys.mf_server }} running on IBM Cloud Kubernetes cluster.
 
 ## Uninstall
 {: #uninstall}
+
 To uninstall the `ibm-mobilefoundation-dev` helm chart, use the [Helm CLI](https://docs.helm.sh/using_helm/#installing-helm).
-
 Use the following command to completely delete the installed charts and the associated deployments:
-
 ```bash
 helm delete --purge <release_name>
 ```
