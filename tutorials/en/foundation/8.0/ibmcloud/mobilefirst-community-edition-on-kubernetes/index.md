@@ -9,7 +9,9 @@ weight: 3
 ## Overview
 {: #overview }
 
-IBM Mobile Foundation for Developers 8.0 is a developer edition of Mobile Foundation, which comprises of Server and Operational Analytics components. The server runtime has an in-built Derby database to store the Mobile Foundation data. This restricts the users to one pod in the IBM Cloud Kubernetes deployment. Community Edition provides Mobile Foundation users a developer experience with minimal configuration parameters and ease of setting up of the Mobile Foundation instance on IBM Cloud Kubernetes Service.
+IBM Mobile Foundation for Developers 8.0 is a developer edition comprises of Server and Operational Analytics components.  
+
+The server runtime has an in-built Derby database to store the Mobile Foundation data. This restricts the users to one pod in the IBM Cloud Kubernetes deployment. Community Edition provides Mobile Foundation users a developer experience with minimal configuration parameters and ease of setting up of the Mobile Foundation instance on IBM Cloud Kubernetes Service.
 
 Follow the instructions below to install the developer edition of IBM Mobile Foundation server with pre-configured Operational Analytics on IBM Cloud Kubernetes Service:<br/>
 * Create and configure Kubernetes cluster from [here](https://cloud.ibm.com/kubernetes/clusters).
@@ -63,6 +65,22 @@ The table below provides the environment variables used in IBM Mobile Foundation
 |  | limits.memory | Describes the maximum amount of memory allowed | Default is 4096Mi. See Kubernetes - [meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |  | requests.cpu | Describes the minimum amount of CPU required - if not specified will default to limit (if specified) or otherwise implementation-defined value | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
 |  | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the limit (if specified via values.yaml) or the implementation-defined value | Default is 2048Mi. See Kubernetes - [meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+| logs | consoleFormat | Specifies container log output format. | Default is **json**. |
+|  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
+|  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
+
+This is a test
+
+| Qualifier | Parameter | Definition | Allowed Value |
+|-----------|-----------|------------|---------------|
+| arch |  | Worker node architecture | Worker node architecture to which this chart should be deployed.<br/>Only **AMD64** platform is currently supported. |
+| image | pullPolicy | Image Pull Policy | Always, Never, or IfNotPresent. <br/>Default is **IfNotPresent**. |
+|  | repository | Docker image name | Name of the {{ site.data.keys.prod_adj }} server docker image. |
+|  | tag | Docker image tag | See [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
+| resources | limits.cpu | Describes the maximum amount of CPU allowed | Default is 1000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | limits.memory | Describes the maximum amount of memory allowed | Default is 2048Mi. See Kubernetes - [meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|  | requests.cpu | Describes the minimum amount of CPU required - if not specified will default to limit (if specified) or otherwise implementation-defined value | Default is 750m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the limit (if specified via values.yaml) or the implementation-defined value | Default is 1024Mi. See Kubernetes - [meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 | logs | consoleFormat | Specifies container log output format. | Default is **json**. |
 |  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
 |  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
