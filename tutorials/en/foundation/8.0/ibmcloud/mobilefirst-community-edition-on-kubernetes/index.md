@@ -9,7 +9,7 @@ weight: 3
 ## Overview
 {: #overview }
 
-IBM Mobile Foundation for Developers 8.0 is a developer edition comprises of Server and Operational Analytics components. 
+IBM Mobile Foundation for Developers 8.0 is a developer edition which comprises of Server and Operational Analytics components. 
 
 The Mobile Foundation server runtime has an in-built Derby database to store the Mobile Foundation data. This restricts the users to one pod in the IBM Cloud Kubernetes deployment. Community Edition provides Mobile Foundation users a developer experience with minimal configuration parameters and ease of setting up of the Mobile Foundation instance on IBM Cloud Kubernetes Service.
 
@@ -36,7 +36,7 @@ To manage kube pods and helm deployment, you need to install the following tools
 * Kubernetes CLI (`kubectl`)
 * Helm (`helm`)
 To work with Kubernetes cluster using CLI, you should configure the *ibmcloud* client.
-1. Make sure you log in to the [Clusters page](https://cloud.ibm.com/kubernetes/clusters). (Note: [IBMid account](https://myibm.ibm.com/) is required)
+1. Make sure you log in to the [Clusters page](https://cloud.ibm.com/kubernetes/clusters). (Note: [IBMid account](https://myibm.ibm.com/) is required.)
 2. Click the Kubernetes cluster to which IBM Mobile Foundation Chart needs to be deployed.
 3. Follow the instructions in **Access** tab once the cluster is created.
 >**Note:** Cluster creation takes few minutes. After the cluster is successfully created, click **Worker Nodes** tab and make a note of the *Public IP*.
@@ -98,11 +98,11 @@ Run `kubectl` commands to check if the pods are in **RUNNING** state.
 ## Accessing {{ site.data.keys.prod_adj }} console
 {: #access-mf-console}
 
-After successful installation you can access, IBM {{ site.data.keys.prod_adj }} Operational Console using `<protocol>://<public_ip>:<node_port>/mfpconsole`.
+After successful installation you can access, IBM {{ site.data.keys.prod_adj }} Operational Console using `<protocol>://<public_ip>:<node_port>/mfpconsole`.<br/>
 IBM {{ site.data.keys.mf_analytics }} console can be accessed using `<protocol>://<public_ip>:<port>/analytics/console`.
 The protocol can be `http` or `https`. Also, note that the port will be **NodePort** in the case of **NodePort** deployment. To get the ip address and **NodePort** of your installed {{ site.data.keys.prod_adj }} Charts, follow the steps below from the Kubernetes Dashboard.
-    - To get **Public IP** - Select **Kubernetes** > **Worker Nodes** > Under Public IP - note the IP address.
-    - **Node port** can be found in **Kubernetes Dashboard** > Select **Services** > Under the **internal endpoints**, note the entry for *TCP Node Port* (a five digit port).
+* To get **Public IP** - Select **Kubernetes** > **Worker Nodes** > Under Public IP - note the IP address.
+* **Node port** can be found in **Kubernetes Dashboard** > Select **Services** > Under the **internal endpoints**, note the entry for *TCP Node Port* (a five digit port).
     
 ## Sample application
 {: #sample-app}
