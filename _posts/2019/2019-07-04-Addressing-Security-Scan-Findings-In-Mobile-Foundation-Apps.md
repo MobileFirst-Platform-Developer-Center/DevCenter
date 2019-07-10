@@ -1,5 +1,5 @@
 ---
-title: Addressing Security Scan Findings In Mobile Foundation Apps 
+title: Addressing Security Scan Findings In Mobile Foundation Apps
 date: 2019-07-04
 tags:
 - MobileFirst_Platform
@@ -7,7 +7,7 @@ tags:
 - Android
 - iOS
 - Security Scan
-- Vulnerability 
+- Vulnerability
 version:
 - 7.1
 - 8.0
@@ -17,14 +17,11 @@ additional_authors :
   - Srihari Kulkarni
 ---
 
-Most organizations mandate mobile apps to undergo code scanning and pen tests before they can be uploaded to public app stores. This post is aimed to be a primer for app developers in resolving some of the commonly reported findings of such scan results. Given below is a non-comprehensive list of some such findings reported against Mobile Foundation SDKs. 
+Most organizations mandate mobile apps to undergo code scanning and pen tests before they can be uploaded to public app stores. This post is aimed to be a primer for app developers in resolving some of the commonly reported findings of such scan results.
 
-<table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
-        <col class="col0">
-        <col class="col1">
-        <col class="col2">
-        <col class="col3">
-        <col class="col4">
+Given below is a non-comprehensive list of some such findings reported against Mobile Foundation SDKs.
+
+<table border="0" cellpadding="0" cellspacing="0" id="sheet0" class="table table-striped">
         <tbody>
           <tr class="row0">
             <td class="column0 style1 s"><b>CWE ID</b></td>
@@ -61,7 +58,7 @@ Most organizations mandate mobile apps to undergo code scanning and pen tests be
           </tr>
           <tr class="row6">
             <td class="column2 style6 s style7" colspan="2">ProvisionActionDispatcher.java  </td>
-            <td class="column4 style10 s">Initialise 
+            <td class="column4 style10 s">Initialise
             <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/jsonstore/android/#security" >JSONStore collection </a> with password.</td>
           </tr>
           <tr class="row7">
@@ -108,4 +105,3 @@ Most organizations mandate mobile apps to undergo code scanning and pen tests be
           </tr>
         </tbody>
     </table>    
-    
