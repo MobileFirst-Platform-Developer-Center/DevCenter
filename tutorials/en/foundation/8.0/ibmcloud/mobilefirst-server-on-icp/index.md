@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Setting up MobileFirst Server on IBM Cloud Private
+title: Installing IBM Mobile Foundation on IBM Cloud Private
 breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
 weight: 4
@@ -27,13 +27,14 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Sample application](#sample-app)
 * [Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases](#upgrading-mf-helm-charts)
 * [Migrate to IBM Certified Cloud Pak for Mobile Foundation Platform](#migrate)
+* [Backup and recovery of MFP Analytics Data](#backup-analytics)
 * [Uninstall](#uninstall)
 * [Limitations](#limitations)
 
 ## Prerequisites
 {: #prereqs}
 
-You should have {{ site.data.keys.prod_icp }} account and must have set up the Kubernetes Cluster by following the documentation in [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
+You should have an {{ site.data.keys.prod_icp }} account and must have set up the {{ site.data.keys.prod_icp }} Cluster by following the documentation in [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
 
 To manage containers and images, you need to install the following tools on your host machine as part of {{ site.data.keys.prod_icp }} setup:
 
@@ -47,8 +48,11 @@ To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure 
 In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required. 
 
 a. Install `kubectl` tooling from the IBM Cloud Private management console, click **Menu > Command Line Tools > Cloud Private CLI**.
+
 b. Expand **Install Kubernetes CLI** to download the installer by using a `curl` command. Copy and run the curl command for your operating system, then continue the installation procedure.
+
 c. Choose the curl command for the applicable operating system. For example, you can run the following command for macOS:
+
    ```bash
    curl -kLo <install_file> https://<cluster ip>:<port>/api/cli/kubectl-darwin-amd64
    chmod 755 <path_to_installer>/<install_file>
@@ -66,7 +70,7 @@ The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is ava
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
-Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/manage_images/using_docker_cli.html).
+Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html).
 
 Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod_icp }} cluster:
 
@@ -74,6 +78,7 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
       >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
 
      For example,
+     
      ```bash
      cloudctl login -a https://ip:port
      ```
@@ -92,7 +97,7 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
       * Select **Platform > Container Images**.
       * Helm Charts are shown in the **Catalog**.
 
-  On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mfpf-server-prod** and {{ site.data.keys.mf_analytics }} is listed as **ibm-mfpf-analytics-prod**.
+  On completing the above steps, you will see the uploaded version of {{ site.data.keys.prod_adj }} Helm Charts appearing in the ICP Catalog. The {{ site.data.keys.mf_server }} is listed as **ibm-mobilefoundation-prod**.
 
 ## Install and configure IBM {{ site.data.keys.product }} Helm Charts
 {: #configure-install-mf-helmcharts}
@@ -105,7 +110,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 
 1. (Mandatory) A pre-configured IBM DB2® database is required for Server and Application Center components and this information will be supplied to helm chart to create appropriate tables for Server and Application Center.  For Oracle, MySQL or PostgreSQL databases, the Mobile Foundation Server database tables has to be created [manually](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/) before the deployment of MFP Components.
 
-  > NOTE: The base Docker image needs to be extended/customized for using databases other than IBM DB2®.
+    > NOTE: The base Docker image needs to be extended/customized for using databases other than IBM DB2®.
 	
 2. (Mandatory) A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
 	
@@ -125,7 +130,7 @@ Secret objects let you store and manage sensitive information, such as passwords
    kubectl create secret generic appcenterlogin --from-literal=APPCENTER_ADMIN_USER=admin --from-literal=APPCENTER_ADMIN_PASSWORD=admin
    ```
 
-   > NOTE: If these secrets are not provided, they are created with default username and password of admin/admin during the installation of Mobile Foundation helm chart
+   > NOTE: If these secrets are not provided, they are created with default username and password of admin/admin during the deployment of Mobile Foundation helm chart
 
 3. (Optional) You can provide your own keystore and truststore to Server, Push, Analytics and Application Center deployment by creating a secret with your own keystore and truststore.
 
@@ -150,6 +155,8 @@ Secret objects let you store and manage sensitive information, such as passwords
    ```
 	
    The name of the secret is then provided in the field global.ingress.secret
+   
+   > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
 
 5. (Optional) Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
 
@@ -160,11 +167,11 @@ Secret objects let you store and manage sensitive information, such as passwords
    kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
    ```
 	
-   > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart installation, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
+   > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
 
 6. For Analytics deployment, one can choose below options for persisting analytics data
 
-   a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
+    a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
 	
       For example: 
 	
@@ -187,7 +194,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 	    server: <nfs_server>
       ```
 
-      > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
+    > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
 
       Sample `PersistentVolumeClaim.yaml`
 		
@@ -214,32 +221,32 @@ Secret objects let you store and manage sensitive information, such as passwords
 	    storage: 20Gi
 	```
 	
-	> NOTE: Make sure you add the right <namespace> in the above yaml.
+    > NOTE: Make sure you add the right <namespace> in the above yaml.
 
-	b) To choose dynamic provisioning in the chart.
+    b) To choose dynamic provisioning in the chart.
 
 7. (Mandatory) Creating **database secrets** for Server, Push and Application Center.
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
-   Run the code snippet below to create a database secret for Mobile Foundation server:
+Run the code snippet below to create a database secret for Mobile Foundation server:
 
-    ```bash
+   ```bash
 	# Create mfpserver secret
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
 	data:
-	 MFPF_ADMIN_DB_USERNAME: encoded_uname 
-	 MFPF_ADMIN_DB_PASSWORD: encoded_password
-	 MFPF_RUNTIME_DB_USERNAME: encoded_uname 
-	 MFPF_RUNTIME_DB_PASSWORD: encoded_password
-	 MFPF_PUSH_DB_USERNAME: encoded_uname
-	 MFPF_PUSH_DB_PASSWORD: encoded_password
+	  MFPF_ADMIN_DB_USERNAME: encoded_uname 
+	  MFPF_ADMIN_DB_PASSWORD: encoded_password
+	  MFPF_RUNTIME_DB_USERNAME: encoded_uname 
+	  MFPF_RUNTIME_DB_PASSWORD: encoded_password
+	  MFPF_PUSH_DB_USERNAME: encoded_uname
+	  MFPF_PUSH_DB_PASSWORD: encoded_password
 	kind: Secret
 	metadata:
-	 name: mfpserver-dbsecret
+	  name: mfpserver-dbsecret
 	type: Opaque
 	EOF
-    ```
+   ```
 	
 Run the below code snippet to create a database secret for Application Center
 	
@@ -257,7 +264,7 @@ Run the below code snippet to create a database secret for Application Center
 	EOF
    ```
 
-> NOTE: You may encode the username and password details using the below command - 
+   > NOTE: You may encode the username and password details using the below command - 
 	
    ```bash
 	export $MY_USER_NAME=<myuser>
@@ -293,22 +300,100 @@ This section outlines the security mechanisms for controlling access to the data
    kubectl create secret docker-registry -n <namespace> <container-image-registry-hostname> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password>
    ```
 	
-> NOTE: text inside < > needs to be updated with right values.
+    > NOTE: text inside < > needs to be updated with right values.
 
 
-  For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
+For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
+
+### PodSecurityPolicy Requirements
+
+This chart requires a PodSecurityPolicy to be bound to the target namespace prior to deployment. Choose either a predefined PodSecurityPolicy or have your cluster administrator create a custom PodSecurityPolicy for you:
+
+* Predefined PodSecurityPolicy name: [`ibm-restricted-psp`](https://ibm.biz/cpkspec-psp)
+* Custom PodSecurityPolicy definition:
+
+    ```bash
+	apiVersion: extensions/v1beta1
+	kind: PodSecurityPolicy
+	metadata:
+	  name: ibm-mobilefoundation-prod-psp
+	  annotations:
+	    apparmor.security.beta.kubernetes.io/allowedProfileNames: runtime/default
+	    apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default 
+	    seccomp.security.alpha.kubernetes.io/allowedProfileNames: docker/default
+	    seccomp.security.alpha.kubernetes.io/defaultProfileName: docker/default
+	spec:
+	  requiredDropCapabilities:
+	  - ALL
+	  volumes:
+	  - configMap
+	  - emptyDir
+	  - projected
+	  - secret
+	  - downwardAPI
+	  - persistentVolumeClaim
+	  seLinux:
+	    rule: RunAsAny
+	  runAsUser:
+	    rule: MustRunAsNonRoot
+	  supplementalGroups:
+	    rule: MustRunAs
+	    ranges:
+	    - min: 1
+	      max: 65535
+	  fsGroup:
+	    rule: MustRunAs
+	    ranges:
+	    - min: 1
+	      max: 65535
+	  allowPrivilegeEscalation: false
+	  forbiddenSysctls:
+	  - "*"
+    ```
+
+* Custom ClusterRole for the custom PodSecurityPolicy:
+
+    ```bash
+	apiVersion: rbac.authorization.k8s.io/v1
+	kind: ClusterRole
+	metadata:
+	  name: ibm-mobilefoundation-prod-psp-clusterrole
+	rules:
+	- apiGroups:
+	  - extensions
+	  resourceNames:
+	  - ibm-mobilefoundation-prod-psp
+	  resources:
+	  - podsecuritypolicies
+	  verbs:
+	  - use
+    ```
+    > NOTE: It is required to create the PodSecurityPolicy only once, if the PodSecurityPolicy already exists then skip this step.
+
+The cluster admin can either paste the above PSP and ClusterRole definitions into the create resource screen in the UI or run the following two commands:
+  
+```bash
+    kubectl create -f <PSP yaml file>
+    kubectl create clusterrole ibm-mobilefoundation-prod-psp-clusterrole --verb=use --resource=podsecuritypolicy --resource-name=ibm-mobilefoundation-prod-psp
+```
+
+You also need to create the `RoleBinding`:
+
+```bash
+    kubectl create rolebinding ibm-mobilefoundation-prod-psp-rolebinding --clusterrole=ibm-mobilefoundation-prod-psp-clusterrole --serviceaccount=<namespace>:default --namespace=<namespace>
+```
   
 ## Resources Required
 {: #resources-required}
 
 This chart uses the following resources by default:
 
-| Component | Requested CPU  | Requested Memory | Storage
+| Component | CPU  | Memory | Storage
 |---|---|---|---|
-| Mobile Foundation Server | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
-| Mobile Foundation Push | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
-| Mobile Foundation Analytics | 1 CPU core | 2 Gi memory | A Persistent Volume. Refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts) for more information
-| Mobile Foundation Application Center | 1 CPU core | 2 Gi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+| Mobile Foundation Server | **Request/Min:** 1000m CPU, **Limit/Max:** 2000m CPU | **Request/Min:** 2048 Mi memory, **Limit/Max:** 4096 Mi memory | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+| Mobile Foundation Push | **Request/Min:** 1000m CPU, **Limit/Max:** 2000m CPU | **Request/Min:** 2048 Mi memory, **Limit/Max:** 4096 Mi memory  | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+| Mobile Foundation Analytics | **Request/Min:** 1000m CPU, **Limit/Max:** 2000m CPU  | **Request/Min:** 2048 Mi memory, **Limit/Max:** 4096 Mi memory  | A Persistent Volume. Refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts) for more information
+| Mobile Foundation Application Center | **Request/Min:** 1000m CPU, **Limit/Max:** 2000m CPU | **Request/Min:** 2048 Mi memory, **Limit/Max:** 4096 Mi memory  | For database requirements, refer [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
 
 ## Configuration
 {: #configuration}
@@ -471,16 +556,19 @@ Please refer to [Upgrading bundled products](https://www.ibm.com/support/knowled
 ### Sample scenarios for Helm release upgrades
 
 1. To upgrade helm release with changes in values of `values.yaml`, use the `helm upgrade` command with **--set** flag. You can specify **--set** flag multiple times. The priority will be given to the right most set specified in the command line.
+
   ```bash
   helm upgrade --set <name>=<value> --set <name>=<value> <existing-helm-release-name> <path of new helm chart>
   ```
 
 2. To upgrade helm release by providing values in a file, use the `helm upgrade` command with **-f** flag. You can use **--values** or **-f** flag multiple times. The priority will be given to the right most file specified in the command line. In the following example, if both `myvalues.yaml` and `override.yaml` contain a key called *Test*, the value set in `override.yaml` would take precedence.
+
   ```bash
   helm upgrade -f myvalues.yaml -f override.yaml <existing-helm-release-name> <path of new helm chart>
   ```
 
 3. To upgrade helm release by reusing the values from the last release and overriding some of them, a command such as below can be used:
+
   ```bash
   helm upgrade --reuse-values --set <name>=<value> --set <name>=<value> <existing-helm-release-name> <path of new helm chart>
   ```
@@ -497,14 +585,42 @@ Migrating from the old Mobile Foundation components installed as separate helm r
 3. Notice the change in the database values to be entered. Access to the database is now controlled through secrets. Refer section-4 under [Prerequisites](#Prerequisites) to create secrets for any credentials (including Console logins, Database accounts, etc).
 4. Mobile Foundation Analytics data can be retained by re-using the same Persistence Volume Claim used in the old deployment.
 
+## Backup and recovery of MFP Analytics Data
+{: #backup-analytics}
+
+The MFP Analytics Data is available as a part of Kubernetes [PersistentVolume or PersistentVolumeClaim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#introduction). You might be using one among the [volume plugins that Kubernetes offers](https://kubernetes.io/docs/concepts/storage/volumes/#types-of-volumes).
+
+Backup and restore depends on the volume plugins that you use. There are various means/tools through which the volume can be backed up or restored.
+
+Kuberenetes provides [**VolumeSnapshot, VolumeSnapshotContent and Restore options**](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html#snapshot--restore-feature). You may take a copy of the [volume in the cluster](https://kubernetes.io/docs/concepts/storage/volume-snapshots/#introduction) that has been provisioned by an administrator.
+
+Use the following [example yaml files](https://github.com/kubernetes-csi/external-snapshotter/tree/master/examples/kubernetes) to test the snapshot feature.
+
+You may also leverage other tools to take a backup of the volume and restore the same -
+
+- IBM Cloud Automation Manager (CAM) on ICP
+    
+    Leverage the capabilities of CAM and strategies for [Backup/Restore, High Availability (HA) and Disaster Recovery (DR) for CAM instances](https://developer.ibm.com/cloudautomation/2018/05/08/backup-ha-dr/)
+	   
+- [Portworx](https://portworx.com) on ICP
+    
+    Is a storage solution designed for applications deployed as containers or via container orchestrators such as Kubernetes
+	   
+- Stash by [AppsCode](https://appscode.com/products/kubed/0.9.0/guides/disaster-recovery/stash/)
+    
+    Using Stash, you can backup the volumes in Kubernetes 
+
 ## Uninstall
 {: #uninstall}
 To uninstall {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }}, use the [Helm CLI](https://docs.helm.sh/using_helm/#installing-helm).
 Use the following command to completely delete the installed charts and the associated deployments:
+
 ```bash
-helm delete --purge <release_name>
+helm delete <my-release> --purge --tls
 ```
-*release_name* is the deployed release name of the Helm Chart.
+*my-release* is the deployed release name of the Helm Chart.
+
+This command removes all the Kubernetes components (except any Persistent Volume Claims (PVC)) associated with the chart. This default Kubernetes behavior ensures that the valuable data is not deleted.
 
 ## Limitations
 {: #limitations}
