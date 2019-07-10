@@ -230,23 +230,23 @@ This section outlines the security mechanisms for controlling access to the data
 
 Run the code snippet below to create a database secret for Mobile Foundation server:
 
-    ```bash
+   ```bash
 	# Create mfpserver secret
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
 	data:
-	 MFPF_ADMIN_DB_USERNAME: encoded_uname 
-	 MFPF_ADMIN_DB_PASSWORD: encoded_password
-	 MFPF_RUNTIME_DB_USERNAME: encoded_uname 
-	 MFPF_RUNTIME_DB_PASSWORD: encoded_password
-	 MFPF_PUSH_DB_USERNAME: encoded_uname
-	 MFPF_PUSH_DB_PASSWORD: encoded_password
+	  MFPF_ADMIN_DB_USERNAME: encoded_uname 
+	  MFPF_ADMIN_DB_PASSWORD: encoded_password
+	  MFPF_RUNTIME_DB_USERNAME: encoded_uname 
+	  MFPF_RUNTIME_DB_PASSWORD: encoded_password
+	  MFPF_PUSH_DB_USERNAME: encoded_uname
+	  MFPF_PUSH_DB_PASSWORD: encoded_password
 	kind: Secret
 	metadata:
-	 name: mfpserver-dbsecret
+	  name: mfpserver-dbsecret
 	type: Opaque
 	EOF
-    ```
+   ```
 	
 Run the below code snippet to create a database secret for Application Center
 	
