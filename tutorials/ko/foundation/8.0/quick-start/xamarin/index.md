@@ -25,7 +25,7 @@ weight: 6
 
 ### 1. {{ site.data.keys.mf_server }} 시작
 {: #1-starting-the-mobilefirst-server }
-[Mobile Foundation 인스턴스를 작성](../../bluemix/using-mobile-foundation)했는지 확인하십시오. 또는  
+[Mobile Foundation 인스턴스를 작성](../../ibmcloud/using-mobile-foundation)했는지 확인하십시오. 또는  
 [ {{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/)를 사용하는 경우 서버의 폴더로 이동해서 `./run.sh`(Mac 및 Linux의 경우) 또는 `run.cmd`(Windows의 경우) 명령을 실행하십시오.
 
 ### 2. 애플리케이션 작성
@@ -126,7 +126,7 @@ weight: 6
     * 로컬 {{ site.data.keys.mf_server }}를 사용 중인 경우, 일반적으로 값은 **http**, **localhost** 및 **9080**입니다.
     * 원격 {{ site.data.keys.mf_server }}를 사용 중인 경우(IBM Cloud에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다.
     * IBM Cloud Private에서 Kubernetes 클러스터를 사용 중이고 배치 유형이 **NodePort**이면, 포트 값이 일반적으로 Kubernetes 클러스터의 서비스에서 공개하는 **NodePort**입니다.
-    
+
 2. **재생** 단추를 누르십시오.
 
 <br clear="all"/>
