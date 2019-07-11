@@ -26,7 +26,7 @@ El documento siguiente explica cómo habilitar el rastreo y recopilar los regist
 
 Instale y configure las siguientes herramientas necesarias para la recopilación de registros y la resolución de problemas:
 * Docker (`docker`)
-* Kubernetes CLI (`kubectl`)
+* CLI de Kubernetes (`kubectl`)
 
 Para configurar el cliente `kubectl` para el clúster que se ejecuta en {{ site.data.keys.prod_icp }}, siga los pasos descritos [aquí](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/manage_cluster/cfc_cli.html).
 
@@ -42,7 +42,7 @@ Por ejemplo, al añadir la siguiente entrada a `jvm.options`, se habilita el ras
 ```
 -Dcom.ibm.ws.logging.trace.specification=com.ibm.mfp.*=all=enabled
 ```
- También puede definir esta entrada mediante la configuración JNDI. Para obtener más información, consulte [aquí]({{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#env-mf-server).
+ También puede definir esta entrada mediante la configuración JNDI. Para obtener más información, consulte [aquí]({{ site.baseurl }}/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/#env-mf-server).
 
 
 ## Recopilación de los registros de *kubectl*
@@ -69,5 +69,5 @@ La tabla siguiente describe cada uno de los parámetros utilizados por el script
 | Opción | Descripción | Observaciones |
 |--------|-------------|---------|
 | helm_release_name | Nombre de release de la instalación del gráfico Helm respectivo | **Obligatorio** |
-| output_directory | Directorio de salida donde se colocan los registros recopilados | **Opcional**<br/>Valor predeterminado: **mfp-icp-logs** en el directorio de trabajo actual. |
+| output_directory | Directorio de salida donde se colocan los registros recopilados | **Opcional**<br/>Valor predeterminado: **mfp-icp-logs** bajo el directorio de trabajo actual. |
 | name_space | Espacio de nombres donde se instala el gráfico Helm respectivo | **Opcional**<br/>Valor predeterminado: **default** |

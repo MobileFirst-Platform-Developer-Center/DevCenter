@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: Instalación de MobileFirst Server en modalidad gráfica
-weight: 0
+breadcrumb_title: Graphical mode installation
+show_breadcrumb: true
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
@@ -387,13 +389,13 @@ Se ha modificado el archivo jvm.options del perfil de Liberty. Se define una pro
 Una vez finalizada la instalación, puede utilizar este procedimiento para probar los componentes instalados.
 
 1. Inicie el servidor utilizando el mandato **server start mfp1**. El archivo binario para el servidor está en **liberty\_install\_dir/bin**.
-2. Pruebe {{ site.data.keys.mf_console }} con un navegador web. Vaya a [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). De forma predeterminada, el servidor se ejecuta en el puerto 9080. Sin embargo, puede verificar el puerto en el elemento `<httpEndpoint>` como se define en el archivo **server.xml**. Se visualiza una pantalla de inicio de sesión.
+2. Pruebe {{ site.data.keys.mf_console }} con un navegador web. Vaya a [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). De forma predeterminada, el servidor se ejecuta en el puerto 9080. Sin embargo, puede verificar el puerto en el elemento `<httpEndpoint>` tal como se define en el archivo **server.xml**. Se visualiza una pantalla de inicio de sesión.
 
 ![La pantalla de inicio de sesión](mfpconsole_signin.jpg)
 
 3. Inicie sesión con **admin/admin**. Este usuario lo crea de forma predeterminada la Herramienta de configuración del servidor.
 
-    > **Nota:** Si se conecta con HTTP, el ID de inicio de sesión y la contraseña se envían como texto simple en la red. Para un inicio de sesión seguro, utilice HTTPS para iniciar sesión en el servidor. Puede ver el puerto HTTPS del servidor Liberty en el atributo httpsPort del elemento `<httpEndpoint>` del archivo **server.xml**. De forma predeterminada, el valor es 9443.
+    > **Nota:** Si se conecta con HTTP, el ID de inicio de sesión y la contraseña se envían como texto simple en la red. Para un inicio de sesión seguro, utilice HTTPS para iniciar sesión en el servidor. Puede ver el puerto HTTPS del servidor de Liberty en el atributo httpsPort del elemento `<httpEndpoint>` en el archivo **server.xml**. De forma predeterminada, el valor es 9443.
 
 4. Cierre la sesión de la consola con **Hola, administrador → Finalizar sesión**.
 5. Especifique el siguiente URL: [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) en el navegador web y acepte el certificado. De forma predeterminada, el servidor Liberty genera un certificado predeterminado que no es conocido por su navegador web, debe aceptar el certificado. Mozilla Firefox presenta esta certificación como excepción de seguridad.

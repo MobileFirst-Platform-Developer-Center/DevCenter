@@ -10,6 +10,8 @@ weight: 13
 {: #overview }
 En este ejemplo aprenderá a configurar un entorno de desarrollo para watchOS 2 y posterior utilizando la infraestructura de {{ site.data.keys.product_adj }}. El ejemplo se ha creado y se describe utilizando watchOS 2. También se puede hacer bajo watchOS 3.
 
+>**Nota:** la característica Application Authenticity recibe soporte en el SDK de watchOS de *8.0.0.0-MFPF-IF201903190949-CDUpdate-05* en adelante. 
+
 ## Configuración
 {: #setup }
 Para configurar el entorno de desarrollo para watchOS, cree el proyecto Xcode, añada la infraestructura watchOS y configure los destinos necesarios.
@@ -66,7 +68,7 @@ A continuación hay un ejemplo de la creación de una aplicación cuyo destino e
         * Para com.worklight.[nombre_proyecto] correlaciónelo con la comprobación de nombre de usuario/contraseña.
         * Para com.worklight.[nombre_proyecto].watchkitapp.watchkitextension correlaciónelo con la comprobación de seguridad de código de pin.
 
-## Limitación de WatchOS
+## Limitación de watchOS
 {: #watchos-limitation }
 Las infraestructuras opcionales que añaden características a la aplicación {{ site.data.keys.product_adj }} no se proporcionan para el desarrollo de watchOS. Algunas otras características están limitadas por las restricciones que el dispositivo watchOS o Apple Watch imponen.
 
@@ -76,7 +78,6 @@ Las infraestructuras opcionales que añaden características a la aplicación {{
 | JSONStore| No soportada |
 | Notificaciones | No soportada |
 | Alertas de mensajes visualizadas por el código de {{ site.data.keys.product_adj }} | No soportada |
-| Validación de autenticidad de aplicación | No compatible con bitcode, y por lo tanto, no soportada |
 | Notificación/inhabilitación remota	| Precisa personalización (consulte más abajo) |
 | Comprobación de seguridad de contraseña/nombres de usuario | Utilice la comprobación de seguridad CredentialsValidation |
 
