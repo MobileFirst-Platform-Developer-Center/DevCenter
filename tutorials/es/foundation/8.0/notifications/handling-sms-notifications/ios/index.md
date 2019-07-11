@@ -96,8 +96,8 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 {: #using-an-sms-subscribe-servlet }
 Las API REST sirven para enviar notificaciones a dispositivos registrados. Es posible enviar cualquier forma de notificación: notificaciones de difusión y etiqueta y notificaciones autenticadas
 
-Para enviar una notificación, realice una solicitud mediante POST al punto final REST:
-`imfpush/v1/apps/<application-identifier>/messages`.  
+Para enviar una notificación, realice una solicitud mediante POST al punto final REST: `imfpush/v1/apps/<application-identifier>/messages`.
+  
 URL de ejemplo:
 
 ```bash

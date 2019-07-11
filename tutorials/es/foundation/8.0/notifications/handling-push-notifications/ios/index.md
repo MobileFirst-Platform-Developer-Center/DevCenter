@@ -281,7 +281,7 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 }
 ```
 
-> Obtenga más información sobre el manejo de notificaciones en iOS de la documentación Apple: http://bit.ly/1ESSGdQ
+> Encontrará más información sobre cómo manejar las notificaciones en iOS en la [documentación de Apple](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)
 
 <img alt="Imagen de la aplicación de ejemplo" src="notifications-app.png" style="float:right"/>
 

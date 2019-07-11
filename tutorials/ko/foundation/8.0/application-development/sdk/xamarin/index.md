@@ -7,7 +7,7 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
-{: #overview }
+{: #overview
 {{ site.data.keys.product }} SDK는 [Nuget 패키지 관리자](https://www.nuget.org/packages?q=mobilefirst)에서 Xamarin 프로젝트에 추가할 수 있는 Nuget 패키지에 패키지된 종속 항목 콜렉션으로 구성됩니다.
 
 패키지는 핵심 기능 및 다른 기능에 해당됩니다.

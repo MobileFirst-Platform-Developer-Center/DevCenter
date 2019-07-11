@@ -290,7 +290,7 @@ Ejecute: `cf ic login`.
      * Puede tener entre 4 - 30 caracteres. Si tiene previsto gestionar los contenedores desde la línea de mandatos, es posible que prefiera que el espacio de nombres sea corto para poder escribirlo rápidamente.
      * Debe ser exclusivo en el registro de IBM Cloud.
 
-    Para establecer un espacio de nombres, ejecute el mandato: `cf ic namespace set <new_name>`.  
+    Para establecer un espacio de nombres, ejecute el mandato: `cf ic namespace set <new_name>`  
     Para obtener el espacio de nombres que ha ejecutado, ejecute el mandato: `cf ic namespace get`.
 
 > Para obtener más información acerca de los mandatos IC, ejecute el mandato `ic help`.

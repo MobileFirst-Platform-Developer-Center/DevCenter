@@ -134,15 +134,15 @@ npm install
 
 2. Configuración de la aplicación.
     (Para Android solamente)
-   *  Abra el archivo `android/app/src/main/AndroidManifest.xml` desde el directorio raíz del proyecto de React Native.<br/>
-    	 Añada la línea siguiente a la etiqueta `<manifest>`:<br/>
+   *  Abra el archivo `android/app/src/main/AndroidManifest.xml` del directorio raíz del proyecto React Native. <br/>
+    	 Añada la siguiente línea al código `<manifest>`:<br/>
     	`xmlns:tools="http://schemas.android.com/tools"`<br/>
-    	 Añada la línea siguiente a la etiqueta `<application>`:<br/>
+    	 Añada la siguiente línea al código `<application>`:<br/>
     	`tools:replace="android:allowBackup"`<br/><br/>
-    	 Este paso lo requiere la biblioteca *react-native-ibm-mobilefirst*.<br/>
+    	 La biblioteca *react-native-ibm-mobilefirst* necesita que se lleve a cabo este paso.<br/>
 
-	 *  Abra el archivo `android/app/build.gradle` desde el directorio raíz del proyecto de React Native.<br/>
-      Añada el código siguiente en *android {}*:<br/>
+	 *  Abra el archivo `android/app/build.gradle` del directorio raíz del proyecto React Native.<br/>
+      Añada la siguiente línea dentro de *android {}* :<br/>
 
         ```
         packagingOptions{

@@ -309,12 +309,12 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     * En UNIX: `chmod 600 <target-file.xml>`
     * En Windows: `cacls <target-file.xml> /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. De forma similar, si el servidor es un perfil de WebSphere Application Server Liberty o un servidor de Apache Tomcat, y el servidor está destinado a que se inicie únicamente desde su cuenta de usuario, también debe eliminar los permisos de lectura para usuarios distintos a usted mismo del archivo siguiente:
-    * Para el perfil de WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml`
+    * Para el perfil de WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml` 
     * Para Apache Tomcat: `conf/server.xml`
 4. Ajuste la lista de repositorios, en el elemento <server>. Para obtener más información sobre este paso, consulte la documentación de IBM Installation Manager en [Repositorios](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html).
 
-    En el elemento `<profile>`, ajuste los valores de cada par clave/valor.  
-    En el elemento `<offering>`, en el elemento `<install>`, establezca el atributo version para que coincida con el release que desea instalar, o elimine el atributo version si desea instalar la versión más reciente disponible en los repositorios.
+En el elemento `<profile>`, ajuste los valores de cada par clave/valor.  
+En el elemento `<offering>` del elemento `<install>`, establezca el atributo version para que coincida con el release que desea instalar, o elimine el atributo version si desea instalar la versión más reciente disponible en los repositorios.
 5. Escriba el siguiente mandato: `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
     Donde:
@@ -332,7 +332,7 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     * En UNIX: `chmod 600 response-file.xml`
     * En Windows: `cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. De forma similar, si el servidor es uno de WebSphere Application Server Liberty o de Apache Tomcat, y el servidor está pensado para iniciarse únicamente desde su cuenta de usuario, también debe eliminar los permisos de lectura para usuarios que no sean usted mismo desde el siguiente archivo:
-    * Para WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml`
+    * Para WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml` 
     * Para Apache Tomcat: `conf/server.xml`
 4. Modifique el archivo de respuestas para tener en cuenta las diferencias entre la máquina en la que se ha creado el archivo de respuestas y la máquina de destino.
 5. Instale {{ site.data.keys.mf_server }} mediante el archivo de respuestas en la máquina de destino, tal como se describe en [Instalar un paquete de forma silenciosa utilizando un archivo de respuestas](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
@@ -355,7 +355,7 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     <tr>
         <td>user.licensed.by.tokens</td>
         <td>Siempre</td>
-        <td>Activación de las licencias de señales. Si tiene pensado utilizar el producto con Rational License Key Server, debe activar las licencias de señales.<br/><br/>En este caso, establezca el valor en <code>true</code>. Si no tiene pensado utilizar el producto con Rational License Key Server, establezca el valor en <code>false</code>.<br/><br/>Si activa las señales de licencia, se necesitarán pasos de configuración específicos después de desplegar el producto en un servidor de aplicaciones. </td>
+        <td>Activación de las licencias de señales. Si tiene pensado utilizar el producto con Rational License Key Server, debe activar las licencias de señales. <br/><br/>En este caso, establezca el valor en <code>true</code>. Si no tiene pensado utilizar el producto con Rational License Key Server, establezca el valor en <code>false</code>.<br/><br/>Si activa las señales de licencia, se necesitarán pasos de configuración específicos después de desplegar el producto en un servidor de aplicaciones. </td>
         <td><code>true</code> o <code>false</code></td>    
     </tr>
     <tr>
@@ -391,7 +391,7 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     <tr>
         <td>user.appserver.was.scope</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>Tipo de granja de servidores en el que se instalan las aplicaciones.<br/><br/><code>server</code> significa un servidor autónomo.<br/><br/><code>nd-cell</code> significa una célula de WebSphere Application Server Network Deployment. <code>nd-cluster</code> significa un clúster de WebSphere Application Server Network Deployment.<br/><br/><code>nd-node</code> significa un nodo de WebSphere Application Server Network Deployment (excluyendo clústeres).<br/><br/><code>nd-server</code> significa un servidor gestionado de WebSphere Application Server Network Deployment.</td>
+        <td>Tipo de conjunto de servidores en el que se deben instalar las aplicaciones.<br/><br/><code>server</code> significa un servidor autónomo.<br/><br/><code>nd-cell</code> significa una celda de WebSphere Application Server Network Deployment. <code>nd-cluster</code> significa un clúster de WebSphere Application Server Network Deployment.<br/><br/><code>nd-node</code> significa un nodo de WebSphere Application Server Network Deployment (sin incluir clústeres).<br/><br/><code>nd-server</code> significa un servidor gestionado de WebSphere Application Server Network Deployment.</td>
         <td><code>server</code>, <code>nd-cell</code>, <code>nd-cluster</code>, <code>nd-node</code>, <code>nd-server</code></td>
     </tr>
     <tr>

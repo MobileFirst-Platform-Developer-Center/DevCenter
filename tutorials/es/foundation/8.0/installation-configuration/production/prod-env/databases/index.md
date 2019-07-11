@@ -422,7 +422,7 @@ En los archivos Ant, puede encontrar los destinos predefinidos que utilicen la t
 Los archivos Ant de ejemplo tienen destinos predefinidos. Siga este procedimiento para utilizar los archivos.
 
 1. Copie el archivo Ant según su servidor de aplicaciones y su configuración de base de datos en un directorio de trabajo.
-2. Edite el archivo y especifique los valores para la configuración en la sección `<! -- Start of Property Parameters -->` para el archivo Ant.
+2. Edite el archivo y especifique los valores para la configuración en la sección `<! -- Start of Property Parameters -->` correspondiente al archivo Ant. 
 3. Ejecute el archivo Ant con el destino de bases de datos: `mfp_install_dir/shortcuts/ant -f your_ant_file databases`.
 
 Este mandato crea las tablas de la base de datos y el esquema especificados para todas las aplicaciones de {{ site.data.keys.mf_server }} (servicio de administración de {{ site.data.keys.mf_server }}, servicio de Live Update de {{ site.data.keys.mf_server }}, servicio de envío por push de {{ site.data.keys.mf_server }} y tiempo de ejecución de {{ site.data.keys.mf_server }}). Se crea y se almacena en el disco un registro para las operaciones.
