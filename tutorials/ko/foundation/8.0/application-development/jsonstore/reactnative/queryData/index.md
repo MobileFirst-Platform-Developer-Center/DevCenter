@@ -48,8 +48,8 @@ import { JSONStoreCollection, WLJSONStore } from 'react-native-ibm-mobilefirst-j
     WLJSONStore.openCollections(['favourites']).then(data => { console.log(data); }).catch(err =>{ console.log(err); });
     ```
 
-2. 콜렉션에서 데이터 페치. 콜렉션을 열었으면 지정된 조회를 기반으로 문서를 페치할 수 있습니다. JSONStore를 조회하기 위해 `JSONStoreQuery` 및 `JSONStoreQueryPart`와 연동하는 두 개의 클래스가 제공됩니다.<br/>
-    하나의 배열에서 각 JSONStoreQueryPart 오브젝트를 전달하여 동일한 호출에 다중 JSONStoreQueryPart 오브젝트를 사용할 수 있습니다.
+2. 콜렉션에서 데이터 페치. 콜렉션을 열었으면 지정된 조회를 기반으로 문서를 페치할 수 있습니다. JSONStore를 조회하기 위해 `JSONStoreQuery` 및 `JSONStoreQueryPart`와 함께 작업하는 두 클래스가 제공됩니다.<br/>
+        하나의 배열에서 각 JSONStoreQueryPart 오브젝트를 전달하여 동일한 호출에 다중 JSONStoreQueryPart 오브젝트를 사용할 수 있습니다.
     다중 JSONStoreQueryPart 오브젝트는 OR 문으로 결합됩니다.
     하나의 JSONStoreQueryPart에 대한 다중 조건은 AND 문으로 결합됩니다.
 

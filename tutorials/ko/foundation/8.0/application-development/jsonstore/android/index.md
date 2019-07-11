@@ -31,8 +31,15 @@ downloads:
 2. 기존 `dependencies` 섹션에 다음을 추가하십시오.
 
 ```
-compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+
+>**참고**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) 기능을 사용 중이고 기능 모드에서 MobileFirst API를 호출하려는 경우 `implementation` 대신 `api` 선언을 사용하십시오. `api`를 사용하면 기능 모듈을 포함한 앱에 있는 모든 모듈에서 MobileFirst API가 사용 가능하도록 하는 반면 `implementation`을 사용하면 동일한 모듈 자체에서 MobileFirst API 사용을 제한합니다. 세부사항은 [API 및 구현 분리](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation)를 읽으십시오.
+
+```
+api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+```
+
 3. 다음을 build.gradle 파일의 "DefaultConfig" 섹션에 추가하십시오.
 ```
   ndk {
@@ -52,7 +59,7 @@ compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0
 초기화 시 사용할 수 있는 선택적 기능은 이 학습서의 두 번째 파트에서 **보안, 다중 사용자 지원** 및 **{{ site.data.keys.product_adj }} 어댑터 통합**을 참조하십시오.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
@@ -71,7 +78,7 @@ try {
 `getCollectionByName`을 사용하여 콜렉션에 대한 액세서를 작성하십시오. `getCollectionByName`을 호출하기 전에 `openCollections`를 먼저 호출해야 합니다.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -88,7 +95,7 @@ try {
 `addData`를 사용하여 데이터를 콜렉션 내에 문서로 저장하십시오.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -108,7 +115,7 @@ try {
 `findDocuments`를 사용하여 조회를 통해 콜렉션 내에서 문서를 찾으십시오. `findAllDocuments`를 사용하여 콜렉션 내의 모든 문서를 검색하십시오. `findDocumentById`를 사용하여 문서 고유 ID로 검색하십시오.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreQueryPart queryPart = new JSONStoreQueryPart();
@@ -132,7 +139,7 @@ try {
 `replaceDocument`를 사용하여 콜렉션 내의 문서를 수정하십시오. 대체 수행 시 사용하는 필드는 문서 고유 ID인 `_id,`입니다.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -155,7 +162,7 @@ try {
 `markDocumentClean`을 호출할 때까지 콜렉션에서 문서가 지워지지 않습니다. 자세한 정보는 이 학습서 뒤쪽에 있는 **{{ site.data.keys.product_adj }} 어댑터 통합** 절을 참조하십시오.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -174,7 +181,7 @@ try {
 `removeCollection`을 사용하여 콜렉션 내에 저장된 모든 문서를 삭제하십시오. 이 조작은 데이터베이스 용어로 된 테이블을 삭제하는 것과 유사합니다.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -195,7 +202,7 @@ try {
 * 모든 JSONStore 메타데이터 및 보안 아티팩트 - 이 학습서 뒤쪽의 **보안** 참조
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   WLJSONStore.getInstance(context).destroy();
   // handle success
@@ -218,7 +225,7 @@ try {
 `changePassword`를 사용하여 비밀번호를 변경하십시오.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
@@ -239,7 +246,7 @@ try {
 단일 {{ site.data.keys.product_adj }} 애플리케이션에 여러 콜렉션을 포함하는 다중 저장소를 작성할 수 있습니다. `openCollections` 함수는 사용자 이름을 사용하여 옵션 오브젝트를 가져올 수 있습니다. 사용자 이름이 없는 경우 기본 사용자 이름은 ""**jsonstore**""입니다.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
