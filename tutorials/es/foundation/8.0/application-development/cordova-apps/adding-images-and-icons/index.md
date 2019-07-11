@@ -22,8 +22,7 @@ Si tiene una aplicación Android, los requisitos para identificar las imágenes 
 
 #### Pantallas iniciales
 {: #splash-screens }
-Si *no* utilizó la plantilla {{ site.data.keys.product_adj }} al crear la aplicación, las imágenes de inicio que se visualizan son aquellas que se recuperan desde la ubicación de imágenes de {{ site.data.keys.product_adj }}. Los nombres de archivo y las vías de acceso de archivo de destino deben permanecer exactamente igual que en el ejemplo cuando no utilice la plantilla. Cambie los nombres de archivo y las vías de acceso de origen (`src`) con las vías de acceso de los archivos que desea visualizar. Añada líneas similares a las del ejemplo siguiente entre las etiquetas
-`<platform name="android">` y `</platform>` en el archivo **config.xml**:
+Si *no* utilizó la plantilla {{ site.data.keys.product_adj }} al crear la aplicación, las imágenes de inicio que se visualizan son aquellas que se recuperan desde la ubicación de imágenes de {{ site.data.keys.product_adj }}. Los nombres de archivo y las vías de acceso de archivo de destino deben permanecer exactamente igual que en el ejemplo cuando no utilice la plantilla. Cambie los nombres de archivo y las vías de acceso de origen (`src`) con las vías de acceso de los archivos que desea visualizar. Añada líneas parecidas a las del siguiente ejemplo entre los códigos `<platform name="android">` y `</platform>` en el archivo **config.xml**: 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -61,8 +60,7 @@ Los nombres de archivo de los archivos de icono deben ser los mismos que las ent
 
 ### iOS
 {: #ios }
-Si tiene una aplicación iOS, añada líneas similares a las del ejemplo siguiente entre las etiquetas
-`<platform name="ios">` y `</platform>`:
+Si tiene una app iOS, añada líneas similares a las del siguiente entre los códigos `<platform name="ios">` y `</platform>`: 
 
 #### Pantallas iniciales
 {: #splash-screens-ios }
@@ -141,8 +139,9 @@ bajo la Licencia.
    A menos que lo requiera la legislación vigente o se acuerde por escrito,
    el software distribuido bajo la Licencia se distribuye
    "TAL CUAL", SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO,
-   ya sean expresas o implícitas.  Consulte la Licencia para ver
-   los permisos aplicables específicos del idioma y las limitaciones bajo la Licencia.
+   ya sean expresas o implícitas.  Consulte la Licencia para
+ver los permisos aplicables específicos del idioma y las limitaciones
+bajo la Licencia.
    */
   #import "AppDelegate.h"
   #import <IBMMobileFirstPlatformFoundationHybrid/IBMMobileFirstPlatformFoundationHybrid.h>
@@ -266,7 +265,7 @@ que se realicen estos cambios cómo y cuándo se necesitan.
 
 ### Windows
 {: #windows }
-Si tiene una aplicación Windows, añada líneas similares a las del ejemplo siguiente entre las etiquetas `<platform name="windows">` y `</platform>`:
+Si tiene una app Windows, añada líneas similares a las del siguiente entre los códigos `<platform name="windows">` y `</platform>`: 
 
 #### Pantallas iniciales
 {: #splash-screens-windows }

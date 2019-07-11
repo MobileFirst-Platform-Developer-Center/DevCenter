@@ -212,9 +212,8 @@ Para acceder a los registros del servidor, siga los pasos siguientes.
 
 **Escenario 1:**
 
-1. Configure su máquina host.<br/>
-   Para gestionar la app IBM Cloud Cloud Foundry, debe instalar Cloud Foundry CLI.<br/>
-   Instale [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases).
+1. Configure la máquina host.<br/>
+      Para gestionar la app IBM Cloud Cloud Foundry, debe instalar Cloud Foundry CLI.<br/>    Instale [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases).
 2. Abra el terminal e inicie sesión en su *Organización* y *Espacio* mediante `cf login`.
 3. Ejecute el mandato siguiente en CLI:
 ```bash

@@ -32,7 +32,7 @@ Para ejecutar {{ site.data.keys.product}} en un tiempo de ejecución de IBM Clou
 
 ### Kubernetes Cluster en IBM Cloud
 Kubernetes es una herramienta de orquestación para planificar los contenedores de aplicación en un clúster de máquinas de sistemas. Con Kubernetes, los desarrolladores pueden desarrollar rápidamente aplicaciones de alta disponibilidad utilizando la potencia y la flexibilidad de los contenedores.
-Puede utilizar Kubernetes CLI para crear y gestionar los clústeres de Kubernetes.
+Puede utilizar la CLI de Kubernetes para crear y gestionar los clústeres de Kubernetes.
 
 [Obtenga más información acerca de Kubernetes Cluster en IBM Cloud](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_tutorials)
 

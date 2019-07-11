@@ -47,7 +47,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
    Y:
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
             name: 'ibmmobilefirstplatformfoundationpush',
             version: '8.0.+',
             ext: 'aar',
@@ -57,8 +57,14 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
    O en una sola línea:
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
+   
+   >**Nota**: si utiliza la característica [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) y desea llamar a las API de MobileFirst en un módulo de la característica, utilice la declaración `api` en lugar de `implementation`. Si utiliza `implementation`, se restringen las API de MobileFirst al mismo módulo, mientras que, si se utiliza `api`, las API de MobileFirst está disponibles en todos los módulos presentes en la app, incluidos los módulos de la característica. Para obtener más información, consulte [Separación de API e implementation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+   
+```xml
+ api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+```
 
 2. En **Android → app → manifiestos**, abra el archivo `AndroidManifest.xml`.
 	* Añada los siguientes permisos en la parte superior de la etiqueta `manifest`:
@@ -127,7 +133,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
 {: #mfppush-instance }
 Todas las llamadas de API se deben realizar en una instancia de `MFPPush`.  Esto se puede realizar creando un campo de nivel de clase como, por ejemplo, `private MFPPush push = MFPPush.getInstance();` y a continuación, llamando a `push.<api-call>` a través de la clase.
 
-De forma alternativa puede llamar a `MFPPush.getInstance().<api_call>` para cada instancia en la que necesita acceder a los métodos de API de push.
+Otra posibilidad es llamar a `MFPPush.getInstance().<api_call>` para cada instancia en la que necesita acceder a los métodos de API de push.
 
 ### Manejadores de desafíos
 {: #challenge-handlers }

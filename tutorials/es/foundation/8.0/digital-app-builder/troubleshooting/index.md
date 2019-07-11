@@ -18,7 +18,7 @@ Encuentre respuestas para algunos de los problemas que puede encontrar al utiliz
 
         * En Windows: `%USERPROFILE%\AppData\Roaming\IBM Digital App Builder\log.log`.
 
-    * `applog.log` para los registros relacionados con la aplicación que se pueden encontrar en `<APP LOCATION>/ibm/applog.log`.
+    * `applog.log` para los registros relacionados con la aplicación que se pueden encontrar en `<APP LOCATION>/ibm/applog.log`. 
 
 * No se ha podido crear un conjunto de datos para un microservicio utilizando un archivo swagger.
 
@@ -61,4 +61,14 @@ Encuentre respuestas para algunos de los problemas que puede encontrar al utiliz
     b. Cambie todas las `call %MAVEN_HOME% clean install` a `call %MAVEN_HOME% -U clean install`.
 
         Añadir `-U` forzará a maven a que compruebe todas las dependencias externas que sea necesario actualizar en base al archivo POM. 
+
+* La comprobación de requisitos previos falla para Android Studio aunque esté instalado. 
+
+    Asegúrese de que tiene el ejecutable de android (`<path to android sdk>/tools`) en la vía de acceso y compruebe los requisitos previos. 
+
+* Problema de creación de app y de vista previa en Windows 7
+
+    Es posible que reciba un error al intentar crear una app nueva en una ubicación de disco duro distinta de `C:`.
+
+    Asegúrese de crear el proyecto de la app bajo la unidad `C://<your folder name/app name>`.
 

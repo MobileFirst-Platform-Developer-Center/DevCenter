@@ -494,7 +494,7 @@ Para utilizar un usuario existente en lugar de crear un usuario nuevo, puede rea
        ...
    ```
 
-2. En el elemento `<configuration>`, especifique un usuario y una contraseña y establezca el valor del atributo **createConfigAdminUser** en false. Por ejemplo:
+2. En el elemento `<configuration>`, especifique un usuario y una contraseña, y establezca el valor del atributo **createConfigAdminUser** en false. Por ejemplo:
 
    ```xml
     <installmobilefirstadmin ...>
@@ -502,7 +502,7 @@ Para utilizar un usuario existente en lugar de crear un usuario nuevo, puede rea
         ...
    ```
 
-Además, el usuario que se crea mediante los archivos Ant de ejemplo se correlaciona con los roles de seguridad del servicio de administración y de la consola. Con este valor, puede utilizar este usuario para iniciar sesión en {{ site.data.keys.mf_server }} después de la instalación. Para cambiar dicho comportamiento, elimine el elemento `<user>` de los archivos Ant de ejemplo. Como alternativa, puede eliminar el atributo **password** del elemento `<user>`, y el usuario no se creará en el registro local del servidor de aplicaciones.
+Además, el usuario que se crea mediante los archivos Ant de ejemplo se correlaciona con los roles de seguridad del servicio de administración y de la consola. Con este valor, puede utilizar este usuario para iniciar sesión en {{ site.data.keys.mf_server }} después de la instalación. Para cambiar dicho comportamiento, elimine el elemento `<user>` de los archivos Ant de ejemplo. Como alternativa, puede eliminar el atributo **password** del elemento `<user>` y el usuario no se creará en el registro local del servidor de aplicaciones.
 
 #### Especificar el nivel de Liberty Java EE
 {: #specify-liberty-java-ee-level }
@@ -567,7 +567,7 @@ Los archivos de ejemplo como **configure-wasnd-cluster-dbms-name.xml**, **config
 
 #### Configuración manual del puerto RMI en Apache Tomcat
 {: #manual-configuration-of-the-rmi-port-on-apache-tomcat }
-De forma predeterminada, las tareas Ant modifican el archivo **setenv.bat** o el archivo **setenv.sh** para abrir el puerto RMI. Si prefiere abrir el puerto RMI manualmente, añada el atributo **tomcatSetEnvConfig** con el valor false en el elemento `<jmx>` de las tareas **installmobilefirstadmin**, **updatemobilefirstadmin** y **uninstallmobilefirstadmin**.
+De forma predeterminada, las tareas Ant modifican el archivo **setenv.bat** o el archivo **setenv.sh** para abrir el puerto RMI. Si prefiere abrir el puerto RMI manualmente, añada el atributo **tomcatSetEnvConfig** con el valor false al elemento `<jmx>` de las tareas **installmobilefirstadmin**, **updatemobilefirstadmin** y **uninstallmobilefirstadmin**.
 
 ## Instalación de los componentes de {{ site.data.keys.mf_server }} manualmente
 {: #installing-the-mobilefirst-server-components-manually }
