@@ -28,7 +28,7 @@ L'objectif de cette démonstration est de présenter un flux de bout en bout :
 
 ### Etape 1. Démarrage du serveur {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Vérifiez que vous avez [créé une instance Mobile Foundation](../../bluemix/using-mobile-foundation) ou, si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur puis exécutez la commande `./run.sh`sous Mac et Linux ou `run.cmd` sous Windows.
+Vérifiez que vous avez [créé une instance Mobile Foundation](../../ibmcloud/using-mobile-foundation) ou, si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur puis exécutez la commande `./run.sh`sous Mac et Linux ou `run.cmd` sous Windows.
 
 ### Etape 2. Création et enregistrement d'une application
 {: #2-creating-and-registering-an-application }

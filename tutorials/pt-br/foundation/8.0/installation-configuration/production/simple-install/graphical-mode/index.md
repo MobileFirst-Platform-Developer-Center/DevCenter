@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: Instalando o MobileFirst Server no modo gráfico
-weight: 0
+breadcrumb_title: Graphical mode installation
+show_breadcrumb: true
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
@@ -99,7 +101,7 @@ problema.
 administradores ou não raiz não poderão modificar os arquivos. Para o escopo deste tutorial, mova o diretório **usr** contendo os servidores para um local que não precise de privilégios específicos. Dessa forma, as operações de instalação podem ser feitas sem privilégios específicos.
     * Acesse o diretório de instalação do Liberty.
     * Crie um diretório chamado **etc**. São necessários privilégios de administrador.
-    * No diretório **etc**, crie um arquivo **server.env** com o seguinte conteúdo: `WLP_USER_DIR=<path to a directory where any user can write>`
+    * No diretório **etc**, crie um arquivo **server.env** com o conteúdo a seguir: `WLP_USER_DIR=<path to a directory where any user can write>`
 
     Por exemplo, no Windows: `WLP_USER_DIR=C:\LibertyServers\usr`
 7. Crie um servidor Liberty que será usado para instalar o primeiro nó do {{ site.data.keys.mf_server }} na parte posterior do tutorial.
@@ -409,13 +411,13 @@ O arquivo jvm.options do perfil Liberty é modificado. Uma propriedade (com.ibm.
 Após a instalação ser concluída, é possível usar esse procedimento para testar os componentes instalados.
 
 1. Inicie o servidor usando o comando **server start mfp1**. O arquivo binário para o servidor está em **liberty\_install\_dir/bin**.
-2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>` como definido no arquivo **server.xml**. Uma tela de login é exibida.
+2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>`, conforme definido no arquivo **server.xml**. Uma tela de login é exibida.
 
 ![A tela de login do console](mfpconsole_signin.jpg)
 
 3. Efetue login com **admin/admin**. Por padrão, esse usuário é criado pelo Server Configuration Tool.
 
-    > **Nota:** Se você se conectar ao HTTP, o ID e a senha de login serão enviados em texto não criptografado na rede. Para um login seguro, use HTTPS para efetuar login no servidor. É possível ver a porta HTTPS do servidor Liberty no atributo httpsPort do `<httpEndpoint>` elemento no arquivo **server.xml**. Por padrão, o valor é 9443.
+    > **Nota:** Se você se conectar ao HTTP, o ID e a senha de login serão enviados em texto não criptografado na rede. Para um login seguro, use HTTPS para efetuar login no servidor. É possível ver a porta HTTPS do servidor Liberty no atributo httpsPort do elemento `<httpEndpoint>` no arquivo **server.xml**. Por padrão, o valor é 9443.
 
 4. Efetue logout do console com **Hello Admin → Sair**.
 5. Insira a seguinte URL: [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) no navegador da web e aceite o certificado. Por padrão, o servidor Liberty gera um certificado padrão que não é conhecido pelo seu navegador da web e você precisa aceitar o certificado. Mozilla Firefox apresenta essa certificação como uma exceção de segurança.

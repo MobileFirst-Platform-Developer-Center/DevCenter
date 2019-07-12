@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: Instalando o MobileFirst Server da linha de comandos
-weight: 0
+breadcrumb_title: Command-line installation
+show_breadcrumb: true
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
@@ -64,7 +66,7 @@ O instalador do WebSphere Application Server Liberty Core é fornecido como part
 1. Revise o contrato de licença para o WebSphere Application Server Liberty Core. Os arquivos de licença podem ser visualizados quando se faz download do instalador a partir do Passport Advantage.
 2. Extraia o arquivo compactado do WebSphere Application Server Liberty Core, que foi transferido por download, em uma pasta.
 
-    Nas etapas seguintes, o diretório onde o instalador será extraído é referido como **liberty\_repository\_dir**. Ele contém um arquivo **repository.config** ou um arquivo **diskTag.inf** entre vários outros.
+    Nas próximas etapas, o diretório onde o instalador será extraído é referido como **liberty\_repository\_dir**. Ele contém um arquivo **repository.config** ou um arquivo **diskTag.inf** entre vários outros.
 
 3. Decida um diretório no qual o perfil Liberty deve ser instalado. É referido como liberty_install_dir nas próximas etapas.
 4. Inicie uma linha de comandos e acesse **installation\_manager\_install\_dir/tools/eclipse/**.
@@ -79,7 +81,7 @@ O instalador do WebSphere Application Server Liberty Core é fornecido como part
     Para o escopo desse tutorial, se **liberty\_install\_dir** apontar para um local onde usuários não administradores ou não raiz não podem modificar os arquivos, mova o diretório que contém os servidores para um local que não precisa de privilégios específicos. Dessa forma, as operações de instalação podem ser feitas sem privilégios específicos.
     * Acesse o diretório de instalação do Liberty.
     * Crie um diretório chamado etc. São necessários privilégios de administrador.
-    * No diretório **etc**, crie um arquivo **server.env** com o seguinte conteúdo: `WLP_USER_DIR=<path to a directory where any user can write>`. Por exemplo, no Windows: `WLP_USER_DIR=C:\LibertyServers\usr`.
+    * No diretório **etc**, crie um arquivo **server.env** com o conteúdo a seguir: `WLP_USER_DIR=<path to a directory where any user can write>`. Por exemplo, no Windows: `WLP_USER_DIR=C:\LibertyServers\usr`.
 7.  Crie um servidor Liberty que será usado para instalar o primeiro nó do {{ site.data.keys.mf_server }} na parte posterior do tutorial.
     * Inicie uma linha de comandos.
     * Acesse **liberty\_install\_dir/bin** e insira **server create mfp1**.
@@ -361,13 +363,13 @@ O arquivo **jvm.options** do perfil Liberty é modificado. Uma propriedade (**co
 Após a instalação ser concluída, é possível usar esse procedimento para testar os componentes instalados.
 
 1. Inicie o servidor usando o comando **server start mfp1**. O arquivo binário para o servidor está em **liberty\_install\_dir/bin**.
-2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>` como definido no arquivo **server.xml**. Uma tela de login é exibida.
+2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>`, conforme definido no arquivo **server.xml**. Uma tela de login é exibida.
 
 ![A tela de login do console](mfpconsole_signin.jpg)
 
 3. Efetue login com **admin/admin**. Por padrão, esse usuário é criado pelo Server Configuration Tool.
 
-    > **Nota:** Se você se conectar ao HTTP, o ID e a senha de login serão enviados em texto não criptografado na rede. Para um login seguro, use HTTPS para efetuar login no servidor. É possível ver a porta HTTPS do servidor Liberty no atributo httpsPort do `<httpEndpoint>` elemento no arquivo **server.xml**. Por padrão, o valor é 9443.
+    > **Nota:** Se você se conectar ao HTTP, o ID e a senha de login serão enviados em texto não criptografado na rede. Para um login seguro, use HTTPS para efetuar login no servidor. É possível ver a porta HTTPS do servidor Liberty no atributo httpsPort do elemento `<httpEndpoint>` no arquivo **server.xml**. Por padrão, o valor é 9443.
 
 4. Efetue logout do console com **Hello Admin → Sair**.
 5. Insira a seguinte URL: [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) no navegador da web e aceite o certificado. Por padrão, o servidor Liberty gera um certificado padrão que não é conhecido pelo seu navegador da web e você precisa aceitar o certificado. Mozilla Firefox apresenta essa certificação como uma exceção de segurança.

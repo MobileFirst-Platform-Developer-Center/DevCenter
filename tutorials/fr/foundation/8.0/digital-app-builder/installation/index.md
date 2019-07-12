@@ -8,77 +8,78 @@ show_children: true
 ## Présentation
 {: #installation-and-configuration }
 
-Vous pouvez installer Digital App Builder sur les plateformes MacOS et Windows.
+Vous pouvez désormais installer Digital App Builder sur les plateformes MacOS et Windows. L'installation initiale inclut également l'installation et la vérification des logiciels prérequis. Vous pouvez installer Java, Xcode et Android Studio pour la génération des adaptateurs et la prévisualisation de l'application au cours du développement.
 
 ### Installation sur MacOS
 {: #installing-on-macos }
 
-1. Installez **Node.js** et **npm** en les téléchargeant depuis [https://nodejs.org/en/download](https://nodejs.org/en/download) (Node.js 8.x ou version ultérieure). Pour plus d'informations sur les instructions d'installation, cliquez [ici](https://nodejs.org/en/download/package-manager/). Vérifiez la version de Node.js et de npm comme suit :
-    ```java
-    $node -v
-    v8.10.0
-    $npm -v
-    6.4.1
-    ```
-2. Installez **Cordova**. Vous pouvez télécharger et installer le package à partir de [Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/index.html).
-    ```java
-    $ npm install -g cordova
-    $ cordova –version
-    7.0.1
-    ```
+1. Téléchargez le fichier .dmg (**IBM.Digital.App.Builder-n.n.n.dmg**, où `n.n.n` correspond au numéro de version) depuis [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) ou en cliquant [ici](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
+2. Cliquez deux fois sur le fichier .dmg pour monter le programme d'installation.
+3. Dans la fenêtre ouverte par le programme d'installation, faites glisser et déposez IBM Digital App Builder dans le dossier **Applications**.
+4. Cliquez deux fois sur l'icône ou l'exécutable IBM Digital App Builder pour ouvrir Digital App Builder.
+    >**Remarque** : Lors de la première installation de Digital App Builder, Digital App Builder ouvrez l'interface permettant d'installer les logiciels prérequis.
+    
+    ![Installation de Digital App Builder](dab-install-startup.png)
 
-    >**Remarque** : Si vous rencontrez des problèmes de droits lors de l'exécution de la commande `$ npm install -g cordova`, effectuez l'installation avec des droits élevés (`$ sudo npm install -g cordova`).
+5. Cliquez sur **Commencer à configurer**. L'écran du contrat de licence s'affiche.
 
-3. Installez **ionic**. Vous pouvez télécharger et installer le package à partir de [ionic](https://ionicframework.com/docs/cli/).
-    ```java
-    $ npm install -g ionic
-    $ ionic –version
-    4.2.0
-    ```
+    ![Ecran du contrat de licence](dab-install-license.png)
 
-    >**Remarque** : Si vous rencontrez des problèmes de droits lors de l'exécution de la commande `$ npm install -g ionic`, effectuez l'installation avec des droits élevés (`$ sudo npm install -g ionic`).
+6. Acceptez le contrat de licence et cliquez sur **Suivant**. L'écran **Installer les prérequis** apparaît.
+    >**Remarque** : Une vérification permet de savoir si un des logiciels prérequis est déjà installé. Le statut correspondant s'affiche en regard de chacun d'entre eux.
 
-4. Téléchargez le fichier .dmg (**IBM.Digital.App.Builder-8.0.0.dmg**) depuis [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) ou en cliquant [ici](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
-5. Cliquez deux fois sur le fichier .dmg pour monter le programme d'installation.
-6. Dans la fenêtre ouverte par le programme d'installation, faites glisser et déposez IBM Digital App Builder dans le dossier **Applications**.
-7. Cliquez deux fois sur l'icône ou l'exécutable IBM Digital App Builder pour ouvrir Digital App Builder.
->**Remarque** : Lorsque Digital App Builder est installé pour la première fois, l'interface de Digital App Builder s'ouvre et réalise une [Vérification des prérequis](#prerequisites-check). En présence d'erreurs, procédez à la correction et redémarrez Digital App Builder avant de créer une application.
+    ![Ecran Installer les prérequis](dab-install-prereq.png)
+
+7. Cliquez sur **Installer** pour configurer les logiciels prérequis si l'un d'entre eux présente le statut **A installer**.
+
+    ![Ecran Installer les prérequis](dab-install-prereq-tobeinstalled.png)
+
+8. Une fois les logiciels prérequis installés, l'écran de démarrage de Digital App Builder apparaît. Cliquez sur **Commencer à générer**.
+
+    ![Démarrage de Digital App Builder](dab-install-startup-screen.png)
+
+9. *Facultatif* : une fois les logiciels prérequis installés, le programme d'installation vérifie la présence de JAVA  car Digital App Builder a besoin de JAVA pour utiliser vos jeux de données.
+    >**Remarque** : Vous devez installer manuellement JAVA, s'il n'est pas déjà installé. Pour connaître les instructions d'installation, voir [Installation de Java](https://www.java.com/en/download/help/download_options.xml).
+10. *Facultatif* : Le programme d'installation vérifie également la présence facultative de Xcode (pour la prévisualisation de votre application sur un simulateur iOS au cours du développement, sous MacOS uniquement) et sur Android Studio (pour la prévisualisation de votre application Android, sous MacOS et Windows).
+    >**Remarque** : Vous devez installer manuellement Xcode et Android Studio. Pour connaître les instructions d'installation de Cocoapods, voir [Utilisation de CocoaPods](https://guides.cocoapods.org/using/using-cocoapods). Pour connaître les instructions d'installation d'Android Studio, voir [Installation d'Android Studio](https://developer.android.com/studio/). 
+
+>**Remarque** : Vous pouvez à tout moment effectuer un [contrôle prérequis](#prerequisites-check) afin de vérifier que l'installation est adéquate pour le développement de votre application. En présence d'erreurs, procédez à la correction et redémarrez Digital App Builder avant de créer une application.
 
 ### Installation sur Windows
 {: #installing-on-windows }
 
 Exécutez les commandes suivantes à partir de l'invite de commande ouverte en mode d'administration :
 
-1. Installez **Node.js** et **npm** en les téléchargeant depuis [https://nodejs.org/en/download](https://nodejs.org/en/download) (Node.js 8.x ou version ultérieure). Pour plus d'informations sur les instructions d'installation, cliquez [ici](https://nodejs.org/en/download/package-manager/). Vérifiez la version de Node.js et de npm comme suit :  
+1. Téléchargez le fichier .exe (**IBM.Digital.App.Builder.Setup.n.n.n.exe**, où `n.n.n` correspond au numéro de version) depuis [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) ou en cliquant [ici](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
+2. Cliquez deux fois sur l'exécutable Digital App Builder pour procéder à l'installation.
 
-    ```java
-    C:\>node -v
-    v8.10.0
-    C:\>npm -v
-    6.4.1
-    ```
+    ![Installation de Digital App Builder](dab-install-startup.png)
 
-2. Installez **Cordova**. Vous pouvez télécharger et installer le package à partir de [Cordova](https://cordova.apache.org/docs/en/latest/guide/cli/index.html).
-    
+3. Cliquez sur **Commencer à configurer**. L'écran du contrat de licence s'affiche.
 
-    ```java
-    C:\>npm install -g cordova
-    C:\>cordova –v
-    7.0.1
-    ```
+    ![Ecran du contrat de licence](dab-install-license.png)
 
-3. Installez **ionic**. Vous pouvez télécharger et installer le package à partir de [ionic](https://ionicframework.com/docs/cli/).
-    
+4. Acceptez le contrat de licence et cliquez sur **Suivant**. L'écran **Installer les prérequis** apparaît.
+    >**Remarque** : Une vérification permet de savoir si un des logiciels prérequis est déjà installé. Le statut correspondant s'affiche en regard de chacun d'entre eux.
 
-    ```java
-    C:\>npm install -g ionic
-    C:\> ionic –version
-    4.2.0
-    ``` 
+    ![Ecran Installer les prérequis](dab-install-prereq.png)
 
-4. Téléchargez le fichier .exe (**IBM.Digital.App.Builder.Setup.8.0.0.exe**) depuis [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) ou en cliquant [ici](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
-5. Cliquez deux fois sur l'exécutable Digital App Builder pour procéder à l'installation. Un raccourci est également créé dans **Démarrer > Programmes** sur le bureau. Le dossier d'installation par défaut est `<AppData>\Local\IBMDigitalAppBuilder\app-8.0.0`.
->**Remarque** : Lorsque Digital App Builder est installé pour la première fois, l'interface de Digital App Builder s'ouvre et réalise une [Vérification des prérequis](#prerequisites-check). En présence d'erreurs, procédez à la correction et redémarrez Digital App Builder avant de créer une application.
+5. Cliquez sur **Installer** pour configurer les logiciels prérequis si l'un d'entre eux présente le statut **A installer**.
+
+    ![Ecran Installer les prérequis](dab-install-prereq-tobeinstalled.png)
+
+6. Une fois les logiciels prérequis installés, l'écran de démarrage de Digital App Builder apparaît. Cliquez sur **Commencer à générer**.
+
+    ![Démarrage de Digital App Builder](dab-install-startup-screen.png)
+
+    >**Remarque** : Un raccourci est également créé dans **Démarrer > Programmes** sur le bureau. Le dossier d'installation par défaut est `<AppData>\Local\IBMDigitalAppBuilder\app-8.0.2`.
+
+7. *Facultatif* : une fois les logiciels prérequis installés, le programme d'installation vérifie la présence de JAVA  car Digital App Builder a besoin de JAVA pour utiliser vos jeux de données.
+    >**Remarque** : Vous devez installer manuellement JAVA, s'il n'est pas déjà installé. Pour connaître les instructions d'installation, voir [Installation de Java](https://www.java.com/en/download/help/download_options.xml).
+8. *Facultatif* : Le programme d'installation vérifie également la présence facultative de Xcode (pour la prévisualisation de votre application sur un simulateur iOS au cours du développement, sous MacOS uniquement) et sur Android Studio (pour la prévisualisation de votre application Android, sous MacOS et Windows).
+    >**Remarque** : Vous devez installer manuellement Android Studio. Pour connaître les instructions d'installation d'Android Studio, voir [Installation d'Android Studio](https://developer.android.com/studio/). 
+
+>**Remarque** : Vous pouvez à tout moment effectuer un [contrôle prérequis](#prerequisites-check) afin de vérifier que l'installation est adéquate pour le développement de votre application. En présence d'erreurs, procédez à la correction et redémarrez Digital App Builder avant de créer une application.
 
 ### Vérification des prérequis
 {: #prerequisites-check }
