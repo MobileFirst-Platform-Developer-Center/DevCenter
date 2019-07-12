@@ -224,8 +224,8 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
 | mfp.topology.platform	   | Liberty |
 | mfp.topology.clustermode | Standalone |
 | mfp.admin.jmx.host       | WebSphere Application Server Liberty 프로파일 서버의 호스트 이름. |
-| mfp.admin.jmx.port       |WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<httpEndpoint>` 요소에 선언된 httpsPort 속성의 포트인 REST 커넥터의 포트. 이 특성에는 기본값이 없습니다. |
-| mfp.admin.jmx.user       |WebSphere Application Server Liberty 관리자의 사용자 이름. WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<administrator-role>` 요소에 정의된 이름과 동일해야 합니다. |
+| mfp.admin.jmx.port       | REST 커넥터의 포트이며 WebSphere Application Server Liberty 프로파일 서버의 server.xml 파일 `<httpEndpoint>` 요소에서 선언된 httpsPort 속성의 포트입니다. 이 특성에는 기본값이 없습니다. |
+| mfp.admin.jmx.user       | WebSphere Application Server Liberty 관리자의 사용자 이름이며 WebSphere Application Server Liberty 프로파일 서버의 server.xml 파일 `<administrator-role>` 요소에서 정의된 이름과 동일해야 합니다. |
 | mfp.admin.jmx.pwd        | WebSphere Application Server Liberty 관리자의 비밀번호. |
 
 여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다.

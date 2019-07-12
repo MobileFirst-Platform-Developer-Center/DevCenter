@@ -28,7 +28,7 @@ L'objectif de cette démonstration est de présenter un flux de bout en bout, qu
 
 ### Etape 1. Démarrage du serveur {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Vérifiez que vous avez [créé une instance Mobile Foundation](../../bluemix/using-mobile-foundation) ou, si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur puis exécutez la commande `./run.sh`sous Mac et Linux ou `run.cmd` sous Windows.
+Vérifiez que vous avez [créé une instance Mobile Foundation](../../ibmcloud/using-mobile-foundation) ou, si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur puis exécutez la commande `./run.sh`sous Mac et Linux ou `run.cmd` sous Windows.
 
 ### Etape 2. Création et enregistrement d'une application
 {: #2-creating-and-registering-an-application }
@@ -138,7 +138,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 {: #5-testing-the-application }
 1. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Cordova.
 2. Exécutez la commande `ionic cordova platform add ios|android|windows|browser` pour ajouter une plateforme.
-3. Dans le projet Ionic, sélectionnez le fichier **config.xml** et éditez la valeur `<mfp:server ... url=" "/>` avec les propriétés **protocol**, **host** et **port** en indiquant les valeurs correctes de votre serveur {{ site.data.keys.mf_server }}.
+3. Dans le projet Ionic, sélectionnez le fichier **config.xml** et modifiez les propriétés **protocol**, **host** et **port** de la valeur `<mfp:server ... url=" "/>` en entrant les valeurs correspondant à votre serveur {{ site.data.keys.mf_server }}.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur IBM Cloud), les valeurs sont généralement **https**, **your-server-address** et **443**.
     * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes.

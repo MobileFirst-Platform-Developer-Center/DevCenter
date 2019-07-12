@@ -19,7 +19,7 @@ weight: 3
 * Проверка связи с {{ site.data.keys.mf_server }}.
 * Успешное извлечение данных с помощью адаптера.
 
-#### Предварительные требования:
+### Предварительные требования:
 {: #prerequisites }
 * Android Studio
 * *Необязательно*. {{ site.data.keys.mf_cli }} ([загрузить]({{site.baseurl}}/downloads))
@@ -27,7 +27,7 @@ weight: 3
 
 ### 1. Запуск {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation) либо  
+Убедитесь, что [создан экземпляр Mobile Foundation](../../ibmcloud/using-mobile-foundation) либо  
 В случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
 
 ### 2. Создание приложения

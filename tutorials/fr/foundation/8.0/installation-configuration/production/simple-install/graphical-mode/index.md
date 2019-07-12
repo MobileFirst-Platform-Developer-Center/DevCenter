@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: Installation de MobileFirst Server en mode graphique
-weight: 0
+breadcrumb_title: Graphical mode installation
+show_breadcrumb: true
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation

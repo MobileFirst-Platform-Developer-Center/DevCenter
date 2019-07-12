@@ -6,13 +6,31 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-임시 수정사항 및 CD 업데이트는 문제점 정정을 위한 패치 및 업데이트를 제공하고 모바일 운영 체제의 새 릴리스에 대해 현재 {{ site.data.keys.product_full }}을 유지합니다. CD 업데이트는 새 기능을 도입하여 제품의 기능을 개선합니다. 
+임시 수정사항 및 CD 업데이트는 문제점 정정을 위한 패치 및 업데이트를 제공하고 모바일 운영 체제의 새 릴리스에 대해 현재 {{ site.data.keys.product_full }}을 유지합니다. CD 업데이트는 새 기능을 도입하여 제품의 기능을 개선합니다.
 
 임시 수정사항 및 CD 업데이트는 누적됩니다. 최신 v8.0 임시 수정사항 또는 CD 업데이트를 다운로드할 경우, 이전 임시 수정사항에서 모든 수정사항을 얻습니다.
 
-다음 섹션에 설명된 모든 수정사항을 획득하기 위해 최신 CD 업데이트를 다운로드하고 설치하십시오. 
+다음 섹션에 설명된 모든 수정사항을 획득하기 위해 최신 CD 업데이트를 다운로드하고 설치하십시오.
 
 > {{ site.data.keys.product }} 8.0의 iFix 릴리스 목록에 대해서는 [여기를 참조하십시오]({{site.baseurl}}/blog/tag/iFix_8.0/).
+
+### CD 업데이트 5에 포함된 기능(8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
+
+##### <span style="color:NAVY">**CoreML 업데이트**</span>
+
+기계 학습(ML) 모델은 Apple의 CoreML 프레임워크를 사용하여 iOS 모바일 디바이스에서 로컬로 실행할 수 있습니다.
+Mobile Foundation은 디바이스에 대해 안전한 모델 분배를 관리하기 위한 기능을 제공합니다. [자세히 보기](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
+
+##### <span style="color:NAVY">**watchOS를 위한 앱 인증**</span>
+
+앱 인증은 액세스를 제공하기 전에 애플리케이션의 인증을 유효성 검증하는 보안 기능입니다. 이 기능은 모바일 앱에 사용 가능했습니다. 기능은 이제 Apple WatchOS 앱으로 확장되었습니다. [자세히 보기]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
+
+##### <span style="color:NAVY">**푸시 알림 - FCM의 추가 메시지 기능 및 속성**</span>
+
+푸시 알림은 이제 다음 추가 메시지 속성을 지원합니다.
+1. 표시등
+2. 스타일(받은 편지함, BigText, PictureNotifications)
+
 
 ### CD 업데이트 4에 포함된 기능 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
 

@@ -47,7 +47,7 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
    그리고 다음 행을 추가하십시오.
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
             name: 'ibmmobilefirstplatformfoundationpush',
             version: '8.0.+',
             ext: 'aar',
@@ -57,8 +57,14 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
    또는 단일 행으로 다음 행을 추가하십시오.
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
+   
+   >**참고**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) 기능을 사용 중이고 기능 모듈에서 MobileFirst API를 호출하려는 경우 `implementation` 대신 `api` 선언을 사용하십시오. `api`를 사용하면 기능 모듈을 포함한 앱에 있는 모든 모듈에서 MobileFirst API가 사용 가능하도록 하는 반면 `implementation`을 사용하면 동일한 모듈 자체 내로만 MobileFirst API 사용을 제한합니다. 세부사항은 [API 및 구현 분리](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation)를 읽으십시오.
+   
+```xml
+ api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+```
 
 2. **Android → 앱 → Manifest**에서 `AndroidManifest.xml` 파일을 여십시오.
 	* `manifest` 태그 맨 위에 다음과 같은 권한을 추가하십시오.

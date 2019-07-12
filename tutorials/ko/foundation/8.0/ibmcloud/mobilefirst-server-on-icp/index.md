@@ -115,8 +115,10 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 
 | 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
-| arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
-| image | pullPolicy | 이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
+| arch | amd64 | 하이브리드 클러스터에서의 amd64 작업자 노드 스케줄러 선호사항 | 3 - 가장 선호(기본값). |
+|  | ppcle64 | 하이브리드 클러스터에서의 ppc64le 작업자 노드 스케줄러 선호사항 | 2 - 선호사항 없음(기본값). |
+|  | s390x | 하이브리드 클러스터에서의 S390x 작업자 노드 스케줄러 선호사항 | 2 - 선호사항 없음(기본값). |
+| image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
 |  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
 |  | name | Docker 이미지 이름 | {{ site.data.keys.prod_adj }} Operational Analytics Docker 이미지의 이름. |
 | scaling | replicaCount | 작성해야 하는 {{ site.data.keys.prod_adj }} Operational Analytics의 인스턴스(포드) 수 | 양의 정수<br/>기본값은 **2**입니다. |
@@ -128,9 +130,9 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 |  | replicasPerShard | {{ site.data.keys.prod_adj }} Analytics에 대해 각 샤드별로 유지보수할 Elasticsearch 복제본 수 | 양의 정수<br/>기본값은 **2**입니다. |
 | keystores | keystoresSecretName | 키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts)을 참조하십시오. |  |
 | jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} Operational Analytics 사용자 정의를 위해 지정할 JNDI 특성 | 쉼표로 구분된 이름 값 쌍을 제공하십시오. |
-| resources |limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
+| resources | limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의 값입니다. | 기본값은 **1000m**입니다. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의 값입니다. |기본값은 **1000m**입니다. |
 |  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 양의 기본값은 *한계*(지정된 경우)이거나 구현 정의 값입니다. | 기본값은 **2048Mi**입니다. |
 | persistence |existingClaimName | 기존 지속성 볼륨 클레임(PVC)의 이름 |  |
 | logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
@@ -144,8 +146,10 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 
 | 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
-| arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
-| image | pullPolicy | 이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
+| arch | amd64 | 하이브리드 클러스터에서의 amd64 작업자 노드 스케줄러 선호사항 | 3 - 가장 선호(기본값). |
+|  | ppcle64 | 하이브리드 클러스터에서의 ppc64le 작업자 노드 스케줄러 선호사항 | 2 - 선호사항 없음(기본값). |
+|  | s390x | 하이브리드 클러스터에서의 S390x 작업자 노드 스케줄러 선호사항 | 2 - 선호사항 없음(기본값). |
+| image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
 |  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
 |  | name | Docker 이미지 이름 | {{ site.data.keys.prod_adj }} Server Docker 이미지의 이름입니다. |
 | scaling | replicaCount | 작성해야 하는 {{ site.data.keys.prod_adj }} Server의 인스턴스(포드) 수 | 양의 정수<br/>기본값은 **3**입니다. |
@@ -164,9 +168,9 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 |  | analyticsAdminPassword | Analytics 관리자의 비밀번호 |  |
 | keystores | keystoresSecretName | 키 저장소 및 해당 비밀번호가 있는 시크릿 작성 단계를 설명하는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts)을 참조하십시오. |  |
 | jndiConfigurations | mfpfProperties | 배치 사용자 정의를 위한 {{ site.data.keys.prod_adj }} Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍입니다. |
-| resources |limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
+| resources | limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 **2000m**입니다.<br/>[CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 읽으십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 **4096Mi**입니다.<br/>[메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 읽으십시오. |
-|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의 값입니다. | 기본값은 **1000m**입니다. |
+|  | requests.cpu | 필요한 최소 CPU 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 그렇지 않으면 구현 정의 값입니다. |기본값은 **1000m**입니다. |
 |  | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 이 기본값은 *한계*(지정된 경우)이거나 구현 정의 값입니다. | 기본값은 **2048Mi**입니다. |
 | logs | consoleFormat | 컨테이너 로그 출력 형식을 지정합니다. | 기본값은 **json**입니다. |
 |  | consoleLogLevel | 컨테이너 로그로 이동하는 메시지 유형을 제어합니다. | 기본값은 **info**입니다. |
