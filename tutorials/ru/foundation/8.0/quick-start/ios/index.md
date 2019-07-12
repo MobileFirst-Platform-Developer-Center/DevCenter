@@ -27,7 +27,7 @@ weight: 2
 
 ### 1. Запуск {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation) либо  
+Убедитесь, что [создан экземпляр Mobile Foundation](../../ibmcloud/using-mobile-foundation) либо  
 В случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
 
 ### 2. Создание приложения
@@ -160,7 +160,7 @@ weight: 2
     * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
 
     Кроме того, если установлен {{ site.data.keys.mf_cli }}, перейдите в корневую папку проекта и выполните команду `mfpdev app register`. В случае применения удаленного экземпляра {{ site.data.keys.mf_server }} [выполните команду `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) для добавления сервера, а затем выполните команду, аналогичную следующей: `mfpdev app register myIBMCloudServer`.
-    
+
 2. Нажмите кнопку **Воспроизвести**.
 
 <br clear="all"/>

@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: 그래픽 모드에서 MobileFirst Server 설치
-weight: 0
+breadcrumb_title: Graphical mode installation
+show_breadcrumb: true
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -388,7 +390,7 @@ Liberty 프로파일 jvm.options 파일이 수정됩니다. 런타임이 관리 
 설치가 완료된 후에 이 프로시저를 사용하여 설치된 컴포넌트를 테스트할 수 있습니다.
 
 1. **server start mfp1** 명령을 사용하여 서버를 시작하십시오. 서버의 2진 파일은 **liberty\_install\_dir/bin**에 있습니다.
-2. 웹 브라우저를 사용하여 {{ site.data.keys.mf_console }}을 테스트하십시오. [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)로 이동하십시오. 기본적으로 서버는 9080 포트에서 실행됩니다. 단, **server.xml** 파일에 정의된 요소 `<httpEndpoint>`에서 포트를 확인할 수 있습니다. 로그인 화면이 표시됩니다.
+2. 웹 브라우저를 사용하여 {{ site.data.keys.mf_console }}을 테스트하십시오. [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)로 이동하십시오. 기본적으로 서버는 9080 포트에서 실행됩니다. 그러나 **server.xml** 파일에서 정의된 대로 `<httpEndpoint>` 요소에서 포트를 확인할 수 있습니다. 로그인 화면이 표시됩니다.
 
 ![콘솔의 로그인 화면](mfpconsole_signin.jpg)
 

@@ -285,7 +285,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -415,7 +415,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -547,7 +547,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -695,7 +695,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -845,7 +845,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -1017,7 +1017,7 @@ Para obter informações adicionais sobre opções de configuração e de config
     Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
     
     **LICENSE\_SERVER\_HOSTNAME**  
-    Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
+    Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
     
     **LMGRD\_PORT**   
     Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -1126,7 +1126,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -1545,8 +1545,8 @@ O modelo do {{ site.data.keys.product }} (único nó do Liberty) é composto dos
 
 | Nó | Componentes | 
 |------|------------|
-| MobileFirst Platform Server | **servidor de perfil Liberty**<br/>Instalação de servidor do perfil Liberty do WebSphere Application Server<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**MFP Server Application**<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**MFP Server Adapter**<br/>. Um adaptador a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}. | 
-| MobileFirst Platform DB | **Servidor de Banco de Dados**<br/>Instalação do servidor DB2 xdatabase<br/><br/>**MFP Administration DB**<br/>Instalação do esquema do banco de dados de administração MobileFirst.<br/><br/>**MFP Runtime DB**<br/>Instalação do esquema do banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
+| MobileFirst Platform Server | **Servidor do perfil Liberty**<br/>Instalação do servidor do perfil Liberty do WebSphere Application Server.<br/><br/>**Pré-requisito do Servidor MFP**<br/>Pré-requisitos para a instalação do {{ site.data.keys.mf_server }}, incluindo SSL e Ant.<br/><br/>**Administração do Servidor MFP**<br/>{{ site.data.keys.mf_server }} Aplicativo da web de administração, incluindo {{site.data.keys.mf_console }}.<br/>**Implementação do tempo de execução do Servidor MFP**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**Aplicativo do Servidor MFP**<br/>O aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**Adaptador do Servidor MFP**<br/>. Um adaptador a ser incluído na implementação.<br/><br/>**Implementação do adaptador de aplicativos do Servidor MFP**<br/>Implementação do aplicativo e do adaptador no {{ site.data.keys.mf_server }}. | 
+| MobileFirst Platform DB | **Servidor de banco de dados**<br/>Instalação do servidor xdatabase do DB2.<br/><br/>**BD de administração do MFP**<br/>Instalação do esquema de banco de dados de administração do MobileFirst.<br/><br/>**BD de tempo de execução do MFP**<br/>Instalação do esquema de banco de dados de execução do {{ site.data.keys.product }}.<br/><br/>**Inclusão de disco padrão**<br/>Configuração de tamanho do disco. | 
 
 ### Modelo do {{ site.data.keys.product }} (server farm do Liberty)
 {: #mobilefirst-foundation-liberty-server-farm-template }
@@ -1558,9 +1558,9 @@ O modelo do {{ site.data.keys.product }} (server farm do Liberty) é composto do
 
 | Nó | Componentes | 
 |------|------------|
-| Servidor IHS | **Servidores HTTP IBM**<br/>Instalação do IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuração automática do IBM HTTP Server. | 
-| MobileFirst Platform Server | **servidor de perfil Liberty**<br/>Instalação de servidor do perfil Liberty do WebSphere Application Server<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**MFP Server Application**<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**MFP Server Adapter**<br/>Um adaptador a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}.<br/><br/>**Política de ajuste de escala base**<br/>Política de ajuste de escala de VM: número de VMs. | 
-| MobileFirst Platform DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**MFP Administration DB**<br/>Instalação do esquema do banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalação do esquema do banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
+| Servidor IHS | **IBM HTTP Servers**<br/>Instalação do IBM HTTP Server.<br/><br/>**Configuração do MFP IHS**<br/>Configuração automática do IBM HTTP Server. | 
+| MobileFirst Platform Server | **Servidor do perfil Liberty**<br/>Instalação do servidor do perfil Liberty do WebSphere Application Server.<br/><br/>**Pré-requisito do Servidor MFP**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }}, incluindo SSL e Ant.<br/><br/>**Administração do Servidor MFP**<br/>Administração do aplicativo da web do {{site.data.keys.mf_server }}, incluindo {{ site.data.keys.mf_console }}.<br/><br/>**Implementação do tempo de execução do Servidor MFP**<br/>Configuração da raiz de contexto do tempo de execução.<br/><br/>**Aplicativo do Servidor MFP**<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**Adaptador do Servidor MFP**<br/>Um adaptador a ser incluído na implementação.<br/><br/>**Implementação do adaptador do aplicativo do Servidor MFP**<br/>Implementação do aplicativo e do adaptador no {{site.data.keys.mf_server }}.<br/><br/>**Política de ajuste de escala de base**<br/>Política de ajuste de escala da MV: número de MVs. | 
+| MobileFirst Platform DB | **Servidor de banco de dados**<br/>Instalação do servidor de banco de dados do DB2.<br/><br/>**BD de administração do MFP**<br/>Instalação do esquema de banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**BD de tempo de execução do MFP**<br/>Instalação do esquema de banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Inclusão de disco padrão**<br/>Configuração de tamanho do disco. | 
 
 ### Modelo do {{ site.data.keys.product }} (único nó do WAS)
 {: #mobilefirst-foundation-was-single-node-template }
@@ -1572,9 +1572,8 @@ O modelo do {{ site.data.keys.product }} (único nó do WAS) é composto dos seg
 
 | Nó | Componentes | 
 |------|------------|
-| MobileFirst Platform Server | **Servidor independente
-**<br/>Instalação de servidor do perfil integral do WebSphere Application Server.<br/><br/>Restrição:<br/>Não mude os valores para os atributos de componentes a seguir: {::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**Aplicativo {{ site.data.keys.product_adj }} **<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**<br/>Adaptador {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}. | 
-| MobileFirst Platform DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**MFP Administration DB**<br/>Instalação do esquema do banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalação do esquema do banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
+| MobileFirst Platform Server | **Servidor independente**<br/>Instalação do servidor de perfil integral do WebSphere Application Server.<br/><br/>Restrição:<br/>não altere os valores dos atributos de componente a seguir: {::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Ao alterar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**Pré-requisito do Servidor MFP**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }}, incluindo SSL e Ant.<br/><br/>**Administração do Servidor MFP**<br/>Aplicativo da web de Administração do {{ site.data.keys.mf_server }}, incluindo o {{ site.data.keys.mf_console }}.<br/><br/>**Implementação de tempo de execução do Servidor MFP**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**Aplicativo {{ site.data.keys.product_adj }}**<br/>O Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**Adaptador {{ site.data.keys.product_adj }}**<br/>O Adaptador {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**Implementação do adaptador de aplicativos do Servidor MFP**<br/>Implementação do aplicativo e do adaptador no {{ site.data.keys.mf_server }}. | 
+| MobileFirst Platform DB | **Servidor de banco de dados**<br/>Instalação do servidor de banco de dados do DB2.<br/><br/>**BD de administração do MFP**<br/>Instalação do esquema de banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**BD de tempo de execução do MFP**<br/>Instalação do esquema de banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Inclusão de disco padrão**<br/>Configuração de tamanho do disco. | 
 
 ### Modelo do {{ site.data.keys.product }} (server farm do WAS)
 {: #mobilefirst-foundation-was-server-farm-template }
@@ -1586,10 +1585,9 @@ O modelo do {{ site.data.keys.product }} (server farm do WAS) é composto dos se
 
 | Nó | Componentes | 
 |------|------------|
-| Servidor IHS | **Servidores HTTP IBM**<br/>Instalação do IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuração automática do IBM HTTP Server. | 
-| MobileFirst Platform Server | **Servidor independente
-**<br/>Instalação de servidor do perfil integral do WebSphere Application Server.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**Aplicativo {{ site.data.keys.product_adj }} **<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**Um adaptador a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}.<br/><br/>**Política de ajuste de escala base**<br/>Política de ajuste de escala de VM: número de VMs. | 
-| MobileFirst Platform DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**MFP Administration DB**<br/>Instalação do esquema do banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalação do esquema do banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
+| Servidor IHS | **IBM HTTP Servers**<br/>Instalação do IBM HTTP Server.<br/><br/>**Configuração do MFP IHS**<br/>Configuração automática do IBM HTTP Server. | 
+| MobileFirst Platform Server | **Servidor independente**<br/>Instalação do servidor de perfil integral do WebSphere Application Server.<br/><br/>Restrição: não altere os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/} Ao alterar qualquer um desses atributos, a implementação de padrões que são baseados nesse modelo falhará.<br/><br/>**Pré-requisito do Servidor MFP**<br/>Pré-requisitos para a instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**Administração do Servidor MFP**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }}, incluindo o {{site.data.keys.mf_console }}.<br/><br/>**Implementação de tempo de execução do Servidor MFP**<br/>Configuração da raiz de contexto do tempo de execução.<br/><br/>**Aplicativo {{ site.data.keys.product_adj }}O aplicativo **<br/>{{site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**Adaptador do {{ site.data.keys.product_adj }}**Um adaptador a ser incluído na implementação.<br/><br/>**Implementação do adaptador de aplicativo do Servidor MFP**<br/>Implementação de aplicativo e adaptador para o {{ site.data.keys.mf_server }}.<br/><br/>**Política de ajuste de escada de base**<br/>Política de ajuste de escala da MV: número de MVs. | 
+| MobileFirst Platform DB | **Servidor de banco de dados**<br/>Instalação do servidor de banco de dados do DB2.<br/><br/>**BD de administração do MFP**<br/>Instalação do esquema de banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**BD de tempo de execução do MFP**<br/>Instalação do esquema de banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Inclusão de disco padrão**<br/>Configuração de tamanho do disco. | 
 
 ### Modelo do {{ site.data.keys.product }} (WAS ND)
 {: #mobilefirst-foundation-was-nd-template }
@@ -1601,10 +1599,10 @@ O modelo do {{ site.data.keys.product }} (WAS ND) é composto dos seguintes nós
 
 | Nó | Componentes | 
 |------|------------|
-| Servidor IHS | **Servidores HTTP IBM**<br/>Instalação do IBM HTTP Server.<br/><br/>**MFP IHS Configuration**<br/>Configuração automática do IBM HTTP Server. | 
-| DmgrNode | **Gerenciador de implementação**<br/>Instalação do gerenciador de implementação do WebSphere Application Server.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Administration**<br/>Aplicativo da web de administração do {{ site.data.keys.mf_server }} incluindo {{ site.data.keys.mf_console }}.<br/><br/>**MFP Runtime**<br/>Arquivo WAR de tempo de execução.<br/><br/>**MFP Server Runtime Deployment**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**MFP Application**<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**MFP Adapter**<br/>Um adaptador a ser incluído na implementação.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Implementação do aplicativo e adaptador para {{ site.data.keys.mf_server }}. | 
-| MobileFirst Platform DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**MFP Administration DB**<br/>Instalação do esquema do banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**MFP Runtime DB**<br/>Instalação do esquema do banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
-| CustomNode | **Nós Personalizados**<br/>Detalhes das células e nós nos clusters de servidores do WebSphere Application Server Network Deployment.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>As portas que devem ser abertas para permitir conexão com o servidor de banco de dados e o servidor LDAP.<br/><br/>**Política de ajuste de escala base **<br/>Número de instâncias da máquina virtual necessárias para a topologia escolhida. | 
+| Servidor IHS | **IBM HTTP Servers**<br/>Instalação do IBM HTTP Server.<br/><br/>**Configuração do MFP IHS**<br/>Configuração automática do IBM HTTP Server. | 
+| DmgrNode | **Gerenciador de implementação**<br/>Instalação do gerenciador de implementação do WebSphere Application Server.<br/><br/>Restrição: não altere os valores para os atributos de componente a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Ao alterar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**Pré-requisito do Servidor MFP**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }}, incluindo SSL e Ant.<br/><br/>**Administração do Servidor MFP**<br/>Aplicativo da web de Administração do {{ site.data.keys.mf_server }}, incluindo o {{ site.data.keys.mf_console }}.<br/><br/>**Tempo de execução do MFP**<br/>Arquivo WAR de tempo de execução.<br/><br/>**Implementação do tempo de execução do Servidor MFP**<br/>Configuração da raiz de contexto de tempo de execução.<br/><br/>**Aplicativo MFP**<br/>Aplicativo {{ site.data.keys.product_adj }} a ser incluído na implementação.<br/><br/>**Adaptador MFP**<br/>Um adaptador a ser incluído na implementação.<br/><br/>**Implementação do adaptador de aplicativo do Servidor MFP**<br/>Implementação de aplicativo e adaptador no {{ site.data.keys.mf_server }}. | 
+| MobileFirst Platform DB | **Servidor de banco de dados**<br/>Instalação do servidor de banco de dados do DB2.<br/><br/>**BD de administração do MFP**<br/>Instalação do esquema de banco de dados de administração do {{ site.data.keys.product_adj }}.<br/><br/>**BD de tempo de execução do MFP**<br/>Instalação do esquema de banco de dados de tempo de execução do {{ site.data.keys.product }}.<br/><br/>**Inclusão de disco padrão**<br/>Configuração de tamanho do disco. | 
+| CustomNode | **Nós customizados**<br/>Detalhes das células e nós nos clusters dos servidores do WebSphere Application Server Network Deployment.<br/><br/>Restrição: não altere os valores para os seguintes atributos de componente:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Ao alterar qualquer um desses atributos, a implementação de padrões que são baseados nesse modelo falhará.<br/><br/>**Portas de firewall abertas do MFP para o WAS**<br/>Portas que devem ser abertas para ativar a conexão com o servidor de banco de dados e o servidor LDAP.<br/><br/>**Política de ajuste de escala de base**<br/>Número de instâncias de máquina virtual necessárias para a topologia escolhida. | 
 
 ### Modelo do {{ site.data.keys.mf_app_center }} (único nó do Liberty)
 {: #mobilefirst-application-center-liberty-single-node-template }
@@ -1616,8 +1614,8 @@ O modelo do {{ site.data.keys.mf_app_center }} (único nó do Liberty) é compos
 
 | Nó | Componentes |
 |------|------------|
-| MFP AppCenter DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
-| MFP AppCenter Server | **servidor de perfil Liberty**<br/>Instalação de servidor do perfil Liberty do WebSphere Application Server<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Application Center**<br/>Esse pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} em um perfil completo do WebSphere Application Server ou servidor de perfil Liberty do WebSphere Application Server. | 
+| MFP AppCenter DB | **Servidor de banco de dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**Inclusão de disco padrão**<br/>Configuração de tamanho de disco. | 
+| MFP AppCenter Server | **Servidor do perfil Liberty**<br/>Instalação do servidor do perfil Liberty do WebSphere Application Server.<br/><br/>**Pré-requisito do Servidor MFP**<br/>Pré-requisitos para a instalação do {{ site.data.keys.mf_server }}, incluindo SSL e Ant.<br/><br/>**MFP Server Application Center**<br/>Este pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} em um perfil completo do WebSphere Application Server ou do servidor do perfil Liberty do WebSphere Application Server. | 
 
 ### Modelo do {{ site.data.keys.mf_app_center }} (único nó do WAS)
 {: #mobilefirst-application-center-was-single-node-template }
@@ -1629,9 +1627,8 @@ O modelo do {{ site.data.keys.mf_app_center }} (único nó do WAS) é composto d
 
 | Nó | Componentes | 
 |------|------------|
-| MFP AppCenter DB | **Servidor de Banco de Dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**Default add disk**<br/>Configuração do tamanho do disco. | 
-| MFP AppCenter Server | **Servidor independente
-**<br/>Instalação de servidor do perfil integral do WebSphere Application Server.<br/><br/>Restrição: não mude os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/}Se você mudar qualquer um desses atributos, a implementação de padrões baseados nesse modelo falhará.<br/><br/>**MFP WAS SDK Level**<br/>O propósito desse script é configurar o nível de SDK necessário como o SDK padrão para o Perfil do WAS<br/><br/>**MFP Server Prerequisite**<br/>Pré-requisitos para instalação do {{ site.data.keys.mf_server }} incluindo SSL e Ant.<br/><br/>**MFP Server Application Center**<br/>Esse pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} em um perfil completo do WebSphere Application Server ou servidor de perfil Liberty do WebSphere Application Server. | 
+| MFP AppCenter DB | **Servidor de banco de dados**<br/>Instalação do servidor de banco de dados DB2.<br/><br/>**Inclusão de disco padrão**<br/>Configuração de tamanho de disco. | 
+| MFP AppCenter Server | **Servidor independente**<br/>Instalação do servidor de perfil integral do WebSphere Application Server.<br/><br/>Restrição: não altere os valores para os atributos de componentes a seguir:{::nomarkdown}<ul><li>Nome da célula</li><li>Nome do Nó</li><li>Nome do Perfil</li></ul>{:/} Ao alterar qualquer um desses atributos, a implementação de padrões que são baseados nesse modelo falhará.<br/><br/>**Nível de SDK do MFP WAS**<br/>A finalidade desse script é configurar o nível de SDK necessário como o SDK padrão para o perfil do WAS<br/><br/>**Pré-requisito do Servidor MFP**<br/>Pré-requisitos para a instalação do {{ site.data.keys.mf_server }}, incluindo SSL e Ant.<br/><br/>**MFP Server Application Center**<br/>Este pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} em um perfil completo do WebSphere Application Server ou servidor do perfil Liberty do WebSphere Application Server. | 
 
 
 ## Pacotes de scripts para {{ site.data.keys.mf_server }}
@@ -1657,7 +1654,7 @@ As seções a seguir listam e descrevem os parâmetros para cada pacote de scrip
 {: #mfp-administration-db }
 Este pacote de scripts configura o esquema do banco de dados de administração em um banco de dados DB2. Ele deve ser usado com o componente de software Database Server (DB2).
 
-| Parâmetro | Descrição (Description) | 
+| Parâmetro | Descrição | 
 |-----------|-------------|
 | db_user   | Obrigatório. Nome do usuário para criar o banco de dados de Administração. Ele pode ser mapeado para o nome da instância do componente Database Server. Valor padrão: db2inst1. |
 | db_name	| Obrigatório. Nome do banco de dados para criar o banco de dados de Administração. Valor padrão: WLADM. |
@@ -1668,16 +1665,16 @@ Este pacote de scripts configura o esquema do banco de dados de administração 
 {: #mfp-analytics }
 Esse pacote de scripts configura o {{ site.data.keys.mf_analytics_server }} em um perfil completo do WebSphere Application Server ou servidor de perfil Liberty do WebSphere Application Server, e configura a conexão e o mapeamento de funções de segurança de administração do Analytics para um servidor externo TDS ou AD. Deve ser usado com o servidor de perfil Liberty do WebSphere Application Server ou perfil completo do componente de software do WebSphere Application Server (nome de exibição: servidor independente). Deve ser instalado após o componente de software de perfil Liberty ou Servidor independente.
 
-| Parâmetro | Descrição (Description) | 
+| Parâmetro | Descrição | 
 |-----------|-------------|
 | WAS_ROOT  | Obrigatório.{::nomarkdown}<ul><li>Se o Analytics estiver instalado no perfil Liberty do WebSphere Application Server, especifique o diretório de instalação do perfil Liberty do WebSphere Application Server para Analytics.</li><li>Se o Analytics estiver instalado no perfil completo do WebSphere Application Server, especifique o diretório de instalação do perfil completo do WebSphere Application Server para Analytics.</li></ul>{:/} | 
-| HEAP\_MIN\_SIZE | Somente o perfil integral do WebSphere Application Server.<br/><br/>Dependendo da quantidade de dados de analítica que são gerados, mais memória será necessária para manipulação de mais dados. Configure essa opção para permitir um tamanho mínimo de heap maior para o perfil completo do WebSphere Application Server. Certifique-se de que o tamanho da memória especificado no componente Core OS do {{ site.data.keys.mf_analytics }} seja maior que esse. Recomenda-se configurar o mesmo valor como HEAP_MAX_SIZE.<br/><br/>Valor padrão: 4096 (MB). | 
-| HEAP\_MAX\_SIZE	| Somente o perfil integral do WebSphere Application Server.<br/><br/>Dependendo da quantidade de dados de analítica que são gerados, mais memória será necessária para manipulação de mais dados. Configure essa opção para permitir um tamanho máximo de heap maior para o perfil completo do WebSphere Application Server. Certifique-se de que o tamanho da memória especificado no componente Core OS do {{ site.data.keys.mf_analytics }} seja maior que esse. Recomenda-se configurar o mesmo valor como HEAP_MIN_SIZE.<br/><br/>Valor padrão: 4096 (MB). | 
-| WAS\_admin\_user | Somente o perfil integral do WebSphere Application Server.<br/><br/>Usuário administrativo de perfil integral do WebSphere Application Server para o servidor analítico. Para o perfil Liberty do WebSphere Application Server, deixe o valor padrão inalterado. | 
-| WAS\_admin\_password | Somente o perfil integral do WebSphere Application Server.<br/><br/>Senha do usuário administrativo de perfil integral do WebSphere Application Server para o servidor analítico. Para o perfil Liberty do WebSphere Application Server, deixe o valor padrão inalterado. | 
+| HEAP\_MIN\_SIZE | Apenas perfil completo do WebSphere Application Server.<br/><br/>Dependendo da quantidade de dados de Analítica gerados, há a necessidade de mais memória para manipular a maior quantidade de dados. Configure essa opção para permitir um tamanho mínimo de heap maior para o perfil completo do WebSphere Application Server. Certifique-se de que o tamanho da memória especificado no componente Core OS do {{ site.data.keys.mf_analytics }} seja maior que esse. É recomendável configurar o mesmo valor que HEAP_MAX_SIZE.<br/><br/>Valor padrão: 4096 (MB). | 
+| HEAP\_MAX\_SIZE	| Apenas perfil completo do WebSphere Application Server.<br/><br/>Dependendo da quantidade de dados de Analítica gerados, há a necessidade de mais memória para manipular a maior quantidade de dados. Configure essa opção para permitir um tamanho máximo de heap maior para o perfil completo do WebSphere Application Server. Certifique-se de que o tamanho da memória especificado no componente Core OS do {{ site.data.keys.mf_analytics }} seja maior que esse. É recomendável configurar o mesmo valor que HEAP_MIN_SIZE.<br/><br/>Valor padrão: 4096 (MB). | 
+| WAS\_admin\_user | Apenas perfil completo do WebSphere Application Server.<br/><br/>Usuário administrativo do perfil completo do WebSphere Application Server para o servidor Analítico. Para o perfil Liberty do WebSphere Application Server, deixe o valor padrão inalterado. | 
+| WAS\_admin\_password | Apenas perfil completo do WebSphere Application Server.<br/><br/>Senha do usuário administrativo do perfil completo do WebSphere Application Server para o servidor Analítico. Para o perfil Liberty do WebSphere Application Server, deixe o valor padrão inalterado. | 
 | admin_user | Obrigatório.{::nomarkdown}<ul><li>Se o repositório LDAP não estiver ativado, crie um usuário de administração padrão para proteção do {{ site.data.keys.mf_analytics_console }}.</li><li>Se o repositório LDAP estiver ativado, especifique o nome do usuário que tem privilégio administrativo do {{ site.data.keys.mf_analytics }}. O valor é armazenado no repositório LDAP.</li></ul> |
 | admin_password | Obrigatório.<ul><li>Se um repositório LDAP não estiver ativado, especifique a senha para o usuário de administração padrão para proteção do {{ site.data.keys.mf_analytics_console }}.</li><li>Se um repositório LDAP estiver ativado, especifique a senha de usuário administrativo. O valor é armazenado no repositório LDAP.</li></ul>{:/} | 
-| LDAP_TYPE | (parâmetro LDAP) Obrigatório. Tipo de servidor LDAP de seu registro do usuário:<br/><br/>Nenhuma<br/>A conexão LDAP está desativada. Quando essa opção é configurada, todos os outros parâmetros LDAP são tratados somente como itens temporários.<br/><br/>TivoliDirectoryServer<br/>Selecione essa opção se o repositório LDAP for um IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecione essa opção se o repositório LDAP for um Microsoft Active Directory.<br/><br/>Valor padrão: none. | 
+| LDAP_TYPE | (parâmetro LDAP) Obrigatório. Tipo de servidor LDAP do registro do usuário:<br/><br/>Nenhum<br/>A conexão LDAP está desativada. Quando isso for configurado, todos os outros parâmetros LDAP serão tratados apenas como itens temporários.<br/><br/>TivoliDirectoryServer<br/>Selecione essa opção se o repositório LDAP for um IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecione essa opção se o repositório LDAP for um Microsoft Active Directory.<br/><br/>Valor padrão: Nenhum. | 
 | LDAP_IP | (parâmetro LDAP). Endereço IP do servidor LDAP. | 
 | LDAP\_SSL\_PORT | (parâmetro LDAP) Porta LDAP para conexão segura. | 
 | LDAP_PORT | (parâmetro LDAP) Porta LDAP para conexão não segura. | 
@@ -1689,20 +1686,20 @@ Esse pacote de scripts configura o {{ site.data.keys.mf_analytics_server }} em u
 | GROUP_FILTER | (parâmetro LDAP) Filtro de grupo LDAP que procura grupos no registro do usuário existente. | 
 | LDAP\_REPOSITORY\_NAME | (parâmetro LDAP) Nome do servidor LDAP. | 
 | CERT\_FILE\_PATH | (parâmetro LDAP) Caminho de destino da certificação do servidor LDAP transferido por upload. É obrigatório quando REQUIRE_SSL está configurado como true. | 
-| mfpadmin | (Parâmetro LDAP) função administrativa para {{ site.data.keys.mf_server }}:<br/><br/>Nenhuma<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Everyone<br/>Todos os usuários.<br/><br/>Valor padrão: none. | 
-| mfpdeployer | (Parâmetro LDAP) função de implementador para {{ site.data.keys.mf_server }}:<br/><br/>Nenhuma<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Everyone<br/>Todos os usuários.<br/><br/>Valor padrão: none. | 
-| mfpmonitor | (Parâmetro LDAP) função de monitor para {{ site.data.keys.mf_server }}:<br/><br/>Nenhuma<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Everyone<br/>Todos os usuários.<br/><br/>Valor padrão: none. | 
-| mfpoperator | (Parâmetro LDAP) função de operador para {{ site.data.keys.mf_server }}:<br/><br/>Nenhuma<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Everyone<br/>Todos os usuários.<br/><br/>Valor padrão: none. | 
+| mfpadmin | (Parâmetro LDAP) Função administrativa para {{ site.data.keys.mf_server }}:<br/><br/>Nenhum<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Todos<br/>Todos os usuários.<br/><br/>Valor padrão: Nenhum. | 
+| mfpdeployer | (Parâmetro LDAP) Função de implementador para o {{ site.data.keys.mf_server }}:<br/><br/>Nenhum<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Todos<br/>Todos os usuários.<br/><br/>Valor padrão: Nenhum. | 
+| mfpmonitor | (Parâmetro LDAP) Função de monitor para {{ site.data.keys.mf_server }}:<br/><br/>Nenhum<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Todos<br/>Todos os usuários.<br/><br/>Valor padrão: Nenhum. | 
+| mfpoperator | (Parâmetro LDAP) Função de operador para o {{ site.data.keys.mf_server }}:<br/><br/>Nenhum<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Todos<br/>Todos os usuários.<br/><br/>Valor padrão: nenhum. | 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
 Esse pacote de scripts configura o IBM HTTP Server para funcionar como um balanceador de carga para várias instâncias do {{ site.data.keys.mf_server }}. Deve ser usado com o componente de software IBM HTTP Servers. Deve ser instalado após o componente de software IBM HTTP Servers.
 
-| Parâmetro | Descrição (Description) | 
+| Parâmetro | Descrição | 
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação do perfil Liberty do WebSphere Application Server ou perfil completo do WebSphere Application Server no nó MobileFirst Platform Server, ou diretório de instalação do Deployment manager no nó DmgrNode. Nos modelos padrão, ele é mapeado para o atributo de saída `install_directory` do servidor de perfil Liberty, Servidor independente ou Deployment manager. | 
-| profile_name | Opcional. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server.<br/><br/>Nos modelos padrão, ele é mapeado para o atributo de saída **dmgr\_profile\_name** do gerenciador de implementação ou sa_profile_name do servidor independente. | 
-| runtime\_contextRoot\_list | Obrigatório. Lista de raiz de contexto de tempo de execução que permite que o IHS roteie solicitações que possuem raízes de contexto correspondentes. Use pontos e vírgulas (;) para separar as raízes de contexto de tempo de execução. Por exemplo, HelloMobileFirst;HelloWorld<br/><br/>Importante: deve ser alinhado com a raiz de contexto especificada no MFP Server Runtime Deployment. Caso contrário, o IHS não poderá rotear corretamente solicitações que contêm a raiz de contexto de Tempo de execução. | 
+| profile_name | Opcional. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server.<br/><br/>Nos modelos padrão, ele é mapeado para o atributo de saída **dmgr\_profile\_name** do gerenciador de Implementação ou sa_profile_name do servidor Independente. | 
+| runtime\_contextRoot\_list | Obrigatório. Lista de raiz de contexto de tempo de execução que permite que o IHS roteie solicitações que possuem raízes de contexto correspondentes. Use pontos e vírgulas (;) para separar as raízes de contexto de tempo de execução. Por exemplo, HelloMobileFirst;HelloWorld<br/><br/>Importante: ele deve se alinhar com a raiz de contexto especificada na Implementação de tempo de execução do Servidor MFP. Caso contrário, o IHS não poderá rotear corretamente solicitações que contêm a raiz de contexto de Tempo de execução. | 
 | http_port | Obrigatório. Abra a porta do firewall no nó do IHS Server para permitir o transporte HTTP do IHS Server para o {{ site.data.keys.mf_server }}. Deve ser 9080. | 
 | https_port | Obrigatório. Abra a porta de firewall no nó do IHS Server para permitir o transporte HTTPS do IHS Server para o {{ site.data.keys.mf_server }}. Deve ser 9443. | 
 | server_hostname | Obrigatório. Nome do host de IBM HTTP Servers. É mapeado para o atributo de saída do host de IBM HTTP Servers no modelo padrão. | 
@@ -1711,18 +1708,18 @@ Esse pacote de scripts configura o IBM HTTP Server para funcionar como um balanc
 {: #mfp-open-firewall-ports-for-was }
 Esse pacote de scripts é aplicável somente para Nós customizados no modelo padrão do {{ site.data.keys.product_adj }} (WAS ND) (WebSphere Application Server Network Deployment). Seu propósito é abrir as portas de firewall necessárias dos Nós customizados que hospedam o {{ site.data.keys.product_adj }} Administration Services e o tempo de execução. Além de definir algumas portas predefinidas do WebSphere Application Server, é preciso especificar as outras portas para conexão com o servidor DB2 e o servidor LDAP.
 
-| Parâmetro | Descrição (Description) | 
+| Parâmetro | Descrição | 
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação de Nós customizados do WebSphere Application Server Network Deployment no nó CustomNode. Nos modelos padrão, ele é mapeado para o atributo de saída install_directory do servidor de Nós customizados. |
 | profile_name | Obrigatório. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída cn_profile_name de Nós customizados. | 
 | WAS\_admin\_user | Obrigatório. É mapeado para o atributo de saída was_admin de Nós customizados no modelo padrão. | 
-| Ports	| Obrigatório. Outras portas que precisam ser abertas para conexão com o servidor DB2 e o servidor LDAP (opcional). Os valores de porta podem ser separados por ponto-e-vírgula; por exemplo, '50000;636'<br/><br/>Valor padrão: 50000. | 
+| Ports	| Obrigatório. Outras portas que precisam ser abertas para conexão com o servidor DB2 e o servidor LDAP (opcional). Os valores de porta podem ser separados por caracteres de ponto e vírgula; por exemplo, '50000;636'<br/><br/>Valor padrão: 50000. | 
 
 ### MFP WAS SDK Level
 {: #mfp-was-sdk-level }
 Esse pacote de scripts é aplicável somente onde os Perfis do WAS estiverem disponíveis no modelo padrão (WebSphere Application Server Network Deployment).
 
-| Parâmetro | Descrição (Description) | 
+| Parâmetro | Descrição | 
 |-----------|-------------|
 | WAS_ROOT | Diretório de instalação do perfil Liberty do WebSphere Application Server ou do perfil completo do WebSphere Application Server no nó do MobileFirst Platform Server ou o diretório de instalação do Deployment manager no nó DmgrNode. Nos modelos padrão, ele é mapeado para o atributo de saída **install_directory** do servidor de perfil Liberty, Servidor independente ou Deployment manager. |
 | profile_name | O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída **dmgr\_profile\_name** do Deployment manager ou **sa\_profile\_name** do Servidor independente. | 
@@ -1732,7 +1729,7 @@ Esse pacote de scripts é aplicável somente onde os Perfis do WAS estiverem dis
 {: #mfp-runtime-db }
 Esse pacote de scripts configura o esquema do banco de dados de tempo de execução em um banco de dados DB2.
 
-| Parâmetro | Descrição (Description) | 
+| Parâmetro | Descrição | 
 |-----------|-------------|
 | db_user | Obrigatório. Nome do usuário para criar o banco de dados de Tempo de execução. Ele pode ser mapeado para o nome da instância do componente Database Server. Valor padrão: db2inst1. | 
 | db_name | Obrigatório. Nome do banco de dados para criar o banco de dados de Tempo de execução. Valor padrão: WLRTIME. | 
@@ -1745,7 +1742,7 @@ Esse pacote de scripts configura o componente {{ site.data.keys.product_adj }} A
 
 O pacote de scripts deve ser usado com o componente de software do servidor de perfil Liberty do WebSphere Application Server ou o componente de software de perfil completo do WebSphere Application Server (nome de exibição: servidor independente), e deve ser instalado após o MFP Server Prerequisite mas antes de quaisquer outros Pacotes de scripts do MFP * no nó da VM do {{ site.data.keys.mf_server }}.
 
-| Parâmetro | Descrição (Description) |
+| Parâmetro | Descrição |
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação do perfil Liberty do WebSphere Application Server ou do perfil completo do WebSphere Application Server no nó do MobileFirst Platform Server ou o diretório de instalação do Deployment manager no nó DmgrNode. Nos modelos padrão, ele é mapeado para o atributo de saída `install_directory` do servidor de perfil Liberty, Servidor independente ou Deployment manager. | 
 | profile_name | Opcional. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída dmgr_profile_name do Deployment manager ou sa_profile_name do Servidor independente. | 
@@ -1775,16 +1772,16 @@ O pacote de scripts deve ser usado com o componente de software do servidor de p
 | GROUP_FILTER | (parâmetro LDAP) Filtro de grupo LDAP que procura grupos no registro do usuário existente. | 
 | LDAP\_REPOSITORY\_NAME | (parâmetro LDAP) Nome do servidor LDAP. | 
 | CERT\_FILE\_PATH | (parâmetro LDAP) Caminho de destino da certificação do servidor LDAP transferido por upload. É obrigatório quando REQUIRE_SSL está configurado como true. | 
-| mfpadmin | Função administrativa para {{ site.data.keys.mf_server }}. Um dos seguintes valores:<br/><br/>Nenhuma<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Everyone<br/>Todos os usuários.<br/><br/>Valor padrão: none. | 
-| mfpdeployer | (Parâmetro LDAP) função de implementador para {{ site.data.keys.mf_server }}:<br/><br/>Nenhuma<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Everyone<br/>Todos os usuários.<br/><br/>Valor padrão: none. | 
-| mfpmonitor | (Parâmetro LDAP) função de monitor para {{ site.data.keys.mf_server }}:<br/><br/>Nenhuma<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Everyone<br/>Todos os usuários.<br/><br/>Valor padrão: none. | 
-| mfpoperator | (Parâmetro LDAP) função de operador para {{ site.data.keys.mf_server }}:<br/><br/>Nenhuma<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Everyone<br/>Todos os usuários.<br/><br/>Valor padrão: none. | 
+| mfpadmin | Função administrativa para {{ site.data.keys.mf_server }}. Um dos valores a seguir:<br/><br/>Nenhum<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Todos<br/>Todos os usuários.<br/><br/>Valor padrão: Nenhum. | 
+| mfpdeployer | (Parâmetro LDAP) Função de implementador para o {{ site.data.keys.mf_server }}:<br/><br/>Nenhum<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Todos<br/>Todos os usuários.<br/><br/>Valor padrão: Nenhum. | 
+| mfpmonitor | (Parâmetro LDAP) Função de monitor para {{ site.data.keys.mf_server }}:<br/><br/>Nenhum<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Todos<br/>Todos os usuários.<br/><br/>Valor padrão: Nenhum. | 
+| mfpoperator | (Parâmetro LDAP) Função de operador para o {{ site.data.keys.mf_server }}:<br/><br/>Nenhum<br/>Nenhum usuário.<br/><br/>AllAuthenticatedUsers<br/>Usuários autenticados<br/><br/>Todos<br/>Todos os usuários.<br/><br/>Valor padrão: nenhum. | 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
 Este pacote de scripts implementa aplicativos e adaptadores no {{ site.data.keys.mf_server }}. Ele deve ser instalado após o pacote de scripts MFP Server Runtime Deployment correspondente que instalou o tempo de execução onde o aplicativo e o adaptador serão implementados.
 
-| Parâmetro | Descrição (Description) | 
+| Parâmetro | Descrição | 
 |-----------|-------------|
 | artifact_dir | Obrigatório. Caminho de instalação do aplicativo e adaptador para implementação. É mapeado para o atributo de saída target_path do componente {{ site.data.keys.product_adj }} App no modelo padrão. | 
 | admin_context | Obrigatório. Deve ser mfpadmin. | 
@@ -1797,7 +1794,7 @@ Este pacote de scripts implementa aplicativos e adaptadores no {{ site.data.keys
 {: #mfp-server-application-center }
 Esse pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} em um perfil completo do WebSphere Application Server ou servidor de perfil Liberty do WebSphere Application Server. Ele deve ser usado com o servidor de perfil Liberty do WebSphere Application Server e o perfil completo do MFP Server Prerequisite ou do WebSphere Application Server (Servidor independente), MFP WAS SDK Level e MFP Server Prerequisite. Deve ser instalado após o componente de software de perfil Liberty ou Servidor independente.
 
-| Parâmetro | Descrição (Description) | 
+| Parâmetro | Descrição | 
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação do perfil Liberty do WebSphere Application Server ou do perfil completo do WebSphere Application Server no nó do MobileFirst Platform Server. Nos modelos padrão, ele é mapeado para o atributo de saída `install_directory` do servidor de perfil Liberty ou Servidor independente. | 
 | profile_name | O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída sa_profile_name do Servidor independente. | 
@@ -1807,12 +1804,12 @@ Esse pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} e
 | db_password | Senha do usuário que criou o banco de dados de Administração. É mapeado para o atributo de saída db_password do pacote de scripts MFP Administration DB no modelo padrão. | 
 | db_ip | Endereço IP do servidor de banco de dados no qual o banco de dados de Administração está instalado. É mapeado para o atributo de saída IP do componente de software Database Server no modelo padrão. | 
 | db_port | Número da porta do servidor de banco de dados no qual o banco de dados de Administração está instalado. É mapeado para o atributo de saída instancePort do componente de software Database Server no modelo padrão.|
-| admin_user | Nome do usuário que tem privilégio administrativo do {{ site.data.keys.mf_server }}.<br/><br/>No modelo padrão, está associado ao parâmetro de mesmo nome no pacote de scripts MFP Server Administration que um parâmetro de nível padrão para assegurar que sejam configurados como o mesmo valor | 
-| admin_password | Senha de usuário administrativo.<br/><br/>No modelo padrão, está associado ao parâmetro de mesmo nome no pacote de scripts MFP Server Administration que um parâmetro de nível padrão para assegurar que sejam configurados como o mesmo valor | 
-| WAS\_admin\_user | Obrigatório para WebSphere Application Server. Opcional para WebSphere Application Server Liberty. Quando o {{ site.data.keys.mf_server }} for implementado no perfil completo do WebSphere Application Server, ele será mapeado para o atributo de saída was_admin do Servidor independente no modelo padrão.<br/><br/>Quando o {{ site.data.keys.mf_server }} for implementado no WebSphere Application Server Network Deployment, ele será mapeado para o atributo de saída was_admin do Deployment manager no modelo padrão. | 
+| admin_user | O nome do usuário que possui o privilégio de administração do {{ site.data.keys.mf_server }}.<br/><br/>No modelo padrão, está associado ao parâmetro de mesmo nome no pacote de scripts de Administração do Servidor MFP como um parâmetro de nível padrão, para assegurar que sejam configurados com o mesmo valor | 
+| admin_password | Senha do usuário administrativo.<br/><br/>No modelo padrão, está associado ao parâmetro de mesmo nome no pacote de scripts de Administração do Servidor MFP como um parâmetro de nível padrão, para assegurar que sejam configurados com o mesmo valor | 
+| WAS\_admin\_user | Obrigatório para WebSphere Application Server. Opcional para WebSphere Application Server Liberty. Quando o {{ site.data.keys.mf_server }} é implementado no perfil completo do WebSphere Application Server, ele é mapeado para o atributo was_adminoutput do servidor Independente no modelo padrão.<br/><br/>Quando o {{ site.data.keys.mf_server }} é implementado no WebSphere Application Server Network Deployment, ele é mapeado para o atributo de saída was_admin do gerenciador de Implementação no modelo padrão. | 
 | WAS\_admin\_password | Obrigatório para WebSphere Application Server. Opcional para WebSphere Application Server Liberty. Quando o {{ site.data.keys.mf_server }} for implementado no perfil completo do WebSphere Application Server, ele será mapeado para o atributo de saída was\_admin\_password do Servidor independente no modelo padrão. |
 | server_hostname | O nome do host do {{ site.data.keys.mf_server }}. É mapeado para o atributo de saída host do servidor de perfil Liberty ou Servidor Independente. |
-| LDAP_TYPE | (parâmetro LDAP) Obrigatório. Tipo de servidor LDAP de seu registro do usuário:<br/><br/>Nenhuma<br/>A conexão LDAP está desativada. Quando essa opção é configurada, todos os outros parâmetros LDAP são tratados somente como itens temporários.<br/><br/>TivoliDirectoryServer<br/>Selecione essa opção se o repositório LDAP for um IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecione essa opção se o repositório LDAP for um Microsoft Active Directory.<br/><br/>Valor padrão: none. | 
+| LDAP_TYPE | (parâmetro LDAP) Obrigatório. Tipo de servidor LDAP do registro do usuário:<br/><br/>Nenhum<br/>A conexão LDAP está desativada. Quando isso for configurado, todos os outros parâmetros LDAP serão tratados apenas como itens temporários.<br/><br/>TivoliDirectoryServer<br/>Selecione essa opção se o repositório LDAP for um IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Selecione essa opção se o repositório LDAP for um Microsoft Active Directory.<br/><br/>Valor padrão: Nenhum. | 
 | LDAP_IP | (parâmetro LDAP). Endereço IP do servidor LDAP. | 
 | LDAP\_SSL\_PORT | (parâmetro LDAP) Porta LDAP para conexão segura. | 
 | LDAP_PORT | (parâmetro LDAP) Porta LDAP para conexão não segura. | 
@@ -1830,7 +1827,7 @@ Esse pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} e
 {: #mfp-server-prerequisite }
 Esse pacote de scripts inclui todos os pré-requisitos necessários para instalar o {{ site.data.keys.mf_server }}, incluindo o driver DB2 JDBC e Apache Ant. O pacote de scripts deve ser usado com o componente de software do servidor de perfil Liberty do WebSphere Application Server ou o componente de software de perfil completo do WebSphere Application Server (nome de exibição: servidor independente), e deve ser instalado após o componente de software do servidor mas antes de quaisquer outros pacotes de scripts MFP* no nó do MobileFirst Platform Server.
 
-| Parâmetro | Descrição (Description) |
+| Parâmetro | Descrição |
 |-----------|-------------|
 | Nenhuma | Não há parâmetros para este pacote de scripts. | 
 
@@ -1838,7 +1835,7 @@ Esse pacote de scripts inclui todos os pré-requisitos necessários para instala
 {: #mfp-server-runtime-deployment }
 Esse pacote de scripts instala o tempo de execução do {{ site.data.keys.product }} em um perfil completo do WebSphere Application Server ou no servidor de perfil Liberty do WebSphere Application Server com o {{ site.data.keys.mf_console }} instalado. O pacote de scripts também configura a conexão com o {{ site.data.keys.mf_analytics_server }}. Ele deve ser instalado após o pacote de scripts MFP Server Administration.
 
-| Parâmetro | Descrição (Description) |
+| Parâmetro | Descrição |
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação do perfil Liberty do WebSphere Application Server ou perfil completo do WebSphere Application Server no nó MobileFirst Platform Server, ou diretório de instalação do Deployment manager no nó DmgrNode. Nos modelos padrão, ele é mapeado para o atributo de saída install_directory do servidor de perfil Liberty ou Servidor independente. | 
 | profile_name | Opcional. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída dmgr\_profile\_name do Deployment manager ou sa\_profile\_name do Servidor independente. |

@@ -365,12 +365,12 @@ weight: 3
 |API 요소           |마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
 |`org.apache.http.Header[]`는 이제 더 이상 사용되지 않습니다. 따라서 다음 메소드가 제거됩니다.||
-|`org.apache.http.Header[] WLResourceRequest.getAllHeaders()` |대신 새 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API를 사용하십시오. |
+|`org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 대신 새 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API를 사용하십시오. |
 |`WLResourceRequest.addHeader(org.apache.http.Header header)` |대신 새 `WLResourceRequest.addHeader(String name, String value)` API를 사용하십시오. |
-|`org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` |대신 새 `List<String> WLResourceRequest.getHeaders(String headerName)` API를 사용하십시오. |
+|`org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 대신 새 `List<String> WLResourceRequest.getHeaders(String headerName)` API를 사용하십시오. |
 |`org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` |대신 새 `WLResourceRequest.getHeaders(String headerName)` API를 사용하십시오. |
-|`WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` |대신 새 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API를 사용하십시오. |
-|`WLResourceRequest.setHeader(org.apache.http.Header header)` |대신 새 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API를 사용하십시오. |
+|`WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 대신 새 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API를 사용하십시오. |
+|`WLResourceRequest.setHeader(org.apache.http.Header header)` | 대신 새 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API를 사용하십시오. |
 |`org.apache.http.client.CookieStore WLClient.getCookieStore()` |`ClearableCookieJar WLClient.getPersistentCookies()`로 대체되었습니다. |
 |`WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` |대체 없음. MFP 클라이언트를 사용하면 순환하여 경로를 재지정할 수 있습니다. |
 |`WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` |더 이상 사용되지 않는 Apache HTTP 클라이언트 종속성으로 인해 제거되었습니다. 요청 및 응답을 완전히 제어하려면 자체 요청을 작성하십시오. |

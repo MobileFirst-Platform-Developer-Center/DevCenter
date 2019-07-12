@@ -51,7 +51,7 @@ weight: 2
 #### 데스크탑 브라우저
 {: #desktop-browser-remote }
 선택한 브라우저에서 URL `http://the-server-host:server-port-number/mfpconsole`을 로드하십시오.  
-호스트 서버는 고객 소유 서버 또는 IBM Cloud 서비스, IBM [Mobile Foundation](../../../bluemix/) 중 하나일 수 있습니다.
+호스트 서버는 고객 소유 서버 또는 IBM Cloud 서비스, IBM [Mobile Foundation](../../../ibmcloud/) 중 하나일 수 있습니다.
 
 #### 명령행
 {: #command-line-remote }

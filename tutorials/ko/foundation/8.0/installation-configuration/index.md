@@ -10,7 +10,7 @@ weight: 3
 
 ### 개발 환경 설정
 {: #installing-a-development-environment }
-모바일 애플리케이션의 서버 측 또는 클라이언트 측을 개발하는 경우 [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) 또는 [{{ site.data.keys.mf_bm }} 서비스](../bluemix/using-mobile-foundation)를 사용하여 시작하십시오.
+모바일 애플리케이션의 서버 측 또는 클라이언트 측을 개발하는 경우 [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) 또는 [{{ site.data.keys.mf_bm }} 서비스](../ibmcloud/using-mobile-foundation)를 사용하여 시작하십시오.
 
 **{{ site.data.keys.mf_dev_kit }} 사용**
 {: #using-the-dev-kit }

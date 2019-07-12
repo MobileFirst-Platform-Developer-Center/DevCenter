@@ -14,12 +14,12 @@ weight: 1
 ## {{ site.data.keys.mf_server }}를 그래픽 모드로 설치
 {: #graphical-mode }
 
-[그래픽 모드에서 {{ site.data.keys.mf_server }} 설치를 위한 튜토리얼](tutorials/graphical-mode)의 다음 단계를 따라서 IBM Installation Manager와 Server Configuration Tool의 그래픽 모드를 사용하여 {{ site.data.keys.mf_server }}를 설치합니다.
+[그래픽 모드에서 {{ site.data.keys.mf_server }} 설치를 위한 튜토리얼](graphical-mode)의 다음 단계를 따라서 IBM Installation Manager와 Server Configuration Tool의 그래픽 모드를 사용하여 {{ site.data.keys.mf_server }}를 설치합니다.
 
 ## 명령행 모드로 {{ site.data.keys.mf_server }} 설치
 {: #cli-mode }
 
-[명령행 모드에서 {{ site.data.keys.mf_server }} 설치를 위한 튜토리얼](tutorials/command-line)의 다음 단계를 따라서 IBM Installation Manager의 명령행 모드와 Ant 태스크를 사용하여 {{ site.data.keys.mf_server }}를 설치합니다.
+[명령행 모드에서 {{ site.data.keys.mf_server }} 설치를 위한 튜토리얼](command-line)의 다음 단계를 따라서 IBM Installation Manager의 명령행 모드와 Ant 태스크를 사용하여 {{ site.data.keys.mf_server }}를 설치합니다.
 
 ## 다음 단계
 {: #whats-next }
