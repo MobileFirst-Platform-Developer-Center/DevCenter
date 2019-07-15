@@ -111,12 +111,14 @@ The payload in JSON format has values for array of messages, target, and setting
           "payload" : {"custom":"data"},
           "sound" : "song.mp3",
           "type" : "SILENT",
+          "category" : "confirmOrder"
         },
         "gcm" : {
           "delayWhileIdle" : false,
           "payload" : {"custom":"data"},
           "sound" : "song.mp3",
           "timeToLive" : 10,
+          "interactiveCategory" : "confirmOrder"
         },
         "wns" : {
           "badge" : {"value":"10"},
@@ -214,6 +216,14 @@ The payload has the following properties:<dl class="dl parml">
 
 <dd class="dd pd">Specify the type of APNS notification. It should be either DEFAULT, MIXED or SILENT</dd>
 
+<dt class="dt pt dlterm">category</dt>
+
+<dd class="dd pd"> (Deprecated. Use <i>interactiveCategory</i> for interactive push notification)</dd>
+
+<dt class="dt pt dlterm">interactiveCategory</dt>
+
+<dd class="dd pd">Specify the identifier of the interactive notification action category</dd>
+
 </dl>
 
 <p class="p">The <var class="keyword varname">gcm</var> has the following properties:</p>
@@ -233,6 +243,10 @@ The payload has the following properties:<dl class="dl parml">
 <dt class="dt pt dlterm">timeToLive</dt>
 
 <dd class="dd pd">The duration (in seconds) that the message is kept on GCM storage if the device is offline. Default value is 4 weeks, and must be set as a JSON number.</dd>
+
+<dt class="dt pt dlterm">interactiveCategory</dt>
+
+<dd class="dd pd">Specify the identifier of the interactive notification action category</dd>
 
 </dl>
 
