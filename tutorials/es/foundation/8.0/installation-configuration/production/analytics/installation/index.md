@@ -106,7 +106,7 @@ Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. 
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Añada el archivo **analytics.ear** a la carpeta `./usr/servers/<serverName>/apps` del servidor de Liberty.
+3. Añada el archivo **analytics.ear** a la carpeta `./usr/servers/<serverName>/apps` de su servidor Liberty.
 4. Sustituya el contenido de la etiqueta `<featureManager>` del archivo `./usr/servers/<serverName>/server.xml` por el contenido siguiente:
 
    ```xml
@@ -254,11 +254,10 @@ Los pasos siguientes describen cómo instalar y ejecutar el archivo EAR de Analy
 9. Para habilitar el acceso al servicio de analíticas a través de la documentación de Swagger, complete los pasos siguientes:
     * Pulse **Servidores > Tipos de servidores > Servidores de aplicaciones de WebSphere** y elija el servidor en el que está desplegado el servicio de Analytics, en la lista de servidores.
     * En **Infraestructura del servidor**, pulse **Java** y vaya a **Gestión de procesos > Definición de procesos > Máquina virtual Java > Propiedades personalizadas**.
-      - Establezca la propiedad personalizada siguiente<br/>
-        **Nombre de propiedad:** *com.ibm.ws.classloader.strict*<br/>
-        **Valor:** *true*
+      - Establezca la siguiente propiedad personalizada<br/>
+**Nombre de propiedad:***com.ibm.ws.classloader.strict*<br/>**Valor:***true*
 
-10. Inicie la aplicación {{ site.data.keys.mf_analytics }} y vaya al enlace del navegador: `http://<hostname>:<port>/analytics/console`.
+10. Inicie la aplicación {{ site.data.keys.mf_analytics }} y vaya al enlace en el navegador: `http://<hostname>:<port>/analytics/console`.
 
 ## Instalación de {{ site.data.keys.mf_analytics }} con tareas Ant
 {: #installing-mobilefirst-analytics-with-ant-tasks }

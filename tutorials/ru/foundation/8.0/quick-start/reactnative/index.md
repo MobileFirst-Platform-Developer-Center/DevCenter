@@ -28,7 +28,7 @@ weight: 1
 
 ### Шаг 1. Запуск {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation), либо в случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
+Убедитесь, что [создан экземпляр Mobile Foundation](../../ibmcloud/using-mobile-foundation), либо в случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
 
 ### Шаг 2. Создание и регистрация приложения
 {: #2-creating-and-registering-an-application }

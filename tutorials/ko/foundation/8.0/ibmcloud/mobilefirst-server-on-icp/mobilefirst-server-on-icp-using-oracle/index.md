@@ -38,7 +38,7 @@ Mobile Foundation 서버의 Docker 이미지에는 Oracle DB 지원을 이용하
 
 1.	ICP 콘솔 **카탈로그**에서 `ibm-mfpf-*` helm 차트가 로드되었는지 확인하십시오.
 2.	첨부 파일(`mfp-icp-oracle.zip`)의 압축을 풀어서 사용할 샘플 `Dockerfile` 및 디렉토리 구조를 보여주는 `Dockerfile` 및 `usr-mfpf-server`를 찾으십시오.
-3.	Docker 이미지가 확장되어야 하는 이미지 버전 수정을 사용할 수 있도록 `Dockerfile`을 수정하십시오.<br/>
+3.	Docker 이미지가 확장되어야 하는 이미지 버전 수정을 사용할 수 있도록 해당 방법으로 `Dockerfile`을 수정하십시오.<br/>
      *예:*<br/>
       `FROM mycluster.icp:8500/default/mfpf-server:<a.b.c.d>`<br/>
        *a.b.c.d*는 이미지 레지스트리에서 사용 가능한 이미지 버전입니다.

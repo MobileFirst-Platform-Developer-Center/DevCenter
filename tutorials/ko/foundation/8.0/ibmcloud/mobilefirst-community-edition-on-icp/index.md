@@ -11,7 +11,7 @@ weight: 2
 
 IBM Mobile Foundation for Developers 8.0 on {{ site.data.keys.prod_icp }}은 Mobile Foundation 서버와 Operational Analytics 컴포넌트로 구성된 Mobile Foundation의 개발자 에디션입니다. 서버 런타임에는 Mobile Foundation 데이터를 저장하기 위한 기본 제공 Derby 데이터베이스가 있습니다. 이로 인해 사용자는 {{ site.data.keys.prod_icp }}의 Kubernetes 배치에서 하나의 팟(Pod)으로만 제한됩니다. Community Edition은 {{ site.data.keys.prod_icp }}에서 Mobile Foundation 사용자에게 최소한의 구성 매개변수를 제공하고 Mobile Foundation 인스턴스를 쉽게 설정할 수 있는 개발자 환경을 제공합니다.
 
-{{ site.data.keys.prod_icp }}에 사전 구성된 Operational Analytics가 포함된 IBM Mobile Foundation 서버의 개발자 에디션을 설치하려면 아래 지시사항을 따르십시오.<br/>
+{{ site.data.keys.prod_icp }}에 사전 구성된 Operational Analytics가 있는 IBM Mobile Foundation 서버의 개발자 에디션을 설치하려면 아래의 지시사항을 따르십시오.<br/>
 * IBM Cloud Private Kubernetes Cluster(IBM Cloud Private CE 또는 Native/Enterprise)를 설정하십시오.
 * [선택사항] 필수 도구인 Docker CLI, IBM Cloud CLI(cloudctl), Kubernetes CLI(kubectl) 및 Helm CLI(helm)를 사용하여 호스트 컴퓨터를 설정하십시오.
 
@@ -49,13 +49,13 @@ CLI를 사용하여 {{ site.data.keys.prod_icp }} Cluster에 액세스하려면 
 {: #env-mf-developers }
 아래 표에서는 IBM Mobile Foundation for Developers 8.0에 사용되는 환경 변수를 보여줍니다.
 
-| 규정자 | 매개변수 | 정의 | 허용값 |
+| 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
-| arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
-| image | pullPolicy | 이미지 가져오기 정책 | Always, Never 또는 IfNotPresent. <br/> 기본값은 **IfNotPresent**입니다. |
+| arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처입니다.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
+| image | pullPolicy |이미지 가져오기 정책 | Always, Never 또는 IfNotPresent. <br/>기본값은 **IfNotPresent**입니다. |
 |  | repository | Docker 이미지 이름 | {{ site.data.keys.prod_adj }} Server Docker 이미지의 이름입니다. |
 |  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
-| resources |limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 2000m입니다. Kubernetes - [CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+| resources | limits.cpu | 허용되는 최대 CPU 양 설명 | 기본값은 2000m입니다. Kubernetes - [CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |  | limits.memory | 허용되는 최대 메모리 양 설명 | 기본값은 4096Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
 |  | requests.cpu |필요한 최소 CPU 양을 설명. 지정하지 않으면 한계(지정된 경우) 또는 구현 정의 값으로 기본 설정됩니다. | 기본값은 2000m입니다. Kubernetes - [CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |  | requests.memory | 필요한 최소 메모리 양 설명. 지정하지 않으면 메모리 양이 한계(지정된 경우) 또는 구현 정의 값으로 기본 설정됩니다. | 기본값은 2048Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |

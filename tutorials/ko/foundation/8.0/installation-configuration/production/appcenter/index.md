@@ -986,7 +986,7 @@ Apache Tomcat 서버를 가진 Application Center에 대해 수동으로 Oracle 
 Application Center에 대해 수동으로 WebSphere Application Server Liberty 프로파일을 구성하려면 **server.xml** 파일을 수정해야 합니다.  
 [수동으로 Application Center 설치](#manually-installing-application-center)에 설명된 데이터베이스에 대한 수정사항 외에도 **server.xml** 파일에 대해 다음과 같은 수정사항을 작성해야 합니다.
 
-1. `<featureManager>` 요소에 최소한 다음과 같은 `<feature>` 요소가 포함되어 있는지 확인하십시오.
+1. `<featureManager>` 요소가 다음 `<feature>` 요소를 하나 이상 포함하는지 확인하십시오.
 
    ```xml
    <feature>jdbc-4.0</feature>
@@ -1175,7 +1175,7 @@ Application Center에 대해 수동으로 WebSphere Application Server를 구성
     * WebSphere Application Server Network Deployment의 경우 **시스템 관리 → 노드**를 클릭하고 노드를 선택한 후 **전체 동기화**를 클릭하십시오.
     * 환경 항목(JNDI 특성) android.aapt.dir을 구성한 후 하위 단계 a에서 판별된 디렉토리를 해당 값으로 설정하십시오. **WAS\_INSTALL\_DIR/profiles/profile-name** 프로파일은 WebSphere Application Server 변수 참조 **${USER\_INSTALL\_ROOT}**로 대체됩니다.
 
-이제 `http://<server>:<port>/appcenterconsole`에서 Application Center에 액세스할 수 있습니다. 여기서 server는 서버의 호스트 이름이고 port는 포트 번호(기본값은 9080)입니다.
+이제 `http://<server>:<port>/appcenterconsole`에서 Application Center에 액세스할 수 있습니다. 여기서 server는 서버의 호스트 이름이며 port는 포트 번호(기본값은 9080)입니다.
 
 ##### Application Center에 대해 수동으로 Apache Tomcat 구성
 {: #configuring-apache-tomcat-for-application-center-manually }
@@ -1240,7 +1240,7 @@ Application Center에 대해 수동으로 Apache Tomcat을 구성하려면 JAR �
       <Realm className="org.apache.catalina.realm.MemoryRealm"/>
       ```
 
-    여기서 다음 절 중 하나에 설명된 대로 `<Resource>` 요소를 채우십시오.
+    섹션 중 하나에서 설명된 대로 여기서 `<Resource>` 요소를 채웁니다.
 
     * [Application Center에 대해 수동으로 DB2용 Apache Tomcat 구성](#configuring-apache-tomcat-for-db2-manually-for-application-center)
     * [Application Center에 대해 수동으로 Derby용 Apache Tomcat 구성](#configuring-apache-tomcat-for-derby-manually-for-application-center)
@@ -1276,7 +1276,7 @@ Application Center EAR 파일을 배치한 후 Application Center에 대해 수�
 
 [수동으로 Application Center 설치](#manually-installing-application-center)에 설명된 데이터베이스에 대한 수정사항 외에도 **server.xml** 파일에 대해 다음과 같은 수정사항을 작성해야 합니다.
 
-1. `<featureManager>` 요소에 최소한 다음과 같은 `<feature>` 요소가 포함되어 있는지 확인하십시오.
+1. `<featureManager>` 요소가 다음 `<feature>` 요소를 하나 이상 포함하는지 확인하십시오.
 
    ```xml
    <feature>jdbc-4.0</feature>
@@ -1320,7 +1320,7 @@ Application Center EAR 파일을 배치한 후 Application Center에 대해 수�
    </basicRegistry>
    ```
 
-   **basicRegistry** 요소에서 정의되는 그룹 및 사용자는 예제 로그인이며 Application Center를 테스트하는 데 사용할 수 있습니다. 마찬가지로 Application Center 콘솔 및 Application Center 서비스에 대해 `<security-role name="appcenteradmin">` 요소에서 정의되는 그룹은 예입니다. 이 그룹을 수정하는 방법에 대한 자세한 정보는 [WebSphere Application Server Liberty 프로파일에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)을 참조하십시오.
+   **basicRegistry** 요소에서 정의되는 그룹 및 사용자는 예제 로그인이며 Application Center를 테스트하는 데 사용할 수 있습니다. 마찬가지로 `<security-role name="appcenteradmin">` 요소에서 정의되는 그룹은 예입니다. 이 그룹을 수정하는 방법에 대한 자세한 정보는 [WebSphere Application Server Liberty 프로파일에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)을 참조하십시오.
 
 3. 데이터베이스가 Oracle인 경우에는 **commonLibraryRef** 속성을 Application Center 애플리케이션의 클래스 로더에 추가하십시오.
 
@@ -1433,7 +1433,7 @@ Application Center EAR 파일을 배치한 후 Application Center에 대해 수�
     * WebSphere Application Server Network Deployment의 경우 **시스템 관리 → 노드**를 클릭하고 노드를 선택한 후 **전체 동기화**를 클릭하십시오.
     * 환경 항목(JNDI 특성) **android.aapt.dir**을 구성한 후 하위 단계 a에서 판별된 디렉토리를 해당 값으로 설정하십시오. **WAS\_INSTALL\_DIR/profiles/profile-name** 프로파일은 WebSphere Application Server 변수 참조 **${USER\_INSTALL\_ROOT}**로 대체됩니다.
 
-    이제 `http://<server>:<port>/appcenterconsole`에서 Application Center에 액세스할 수 있습니다. 여기서 server는 서버의 호스트 이름이고 port는 포트 번호(기본값은 9080)입니다.
+    이제 `http://<server>:<port>/appcenterconsole`에서 Application Center에 액세스할 수 있습니다. 여기서 server는 서버의 호스트 이름이며 port는 포트 번호(기본값은 9080)입니다.
 
 ## 설치 후 Application Center 구성
 {: #configuring-application-center-after-installation }
@@ -1510,7 +1510,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile }
 **server.xml** 파일에서 데이터 소스 및 Application Center의 Java™ EE 보안 역할을 구성하십시오.
 
-보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. `<application-bnd>` 요소의 `<application>` 요소에서 두 개의 `<security-role>` 요소를 작성하십시오. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
+보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. 각 `<application>` 요소의 `<application-bnd>` 요소에서 두 `<security-role>` 요소를 작성하십시오. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이러한 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
 
 그런 다음 설치된 많은 애플리케이션(예: 80개의 애플리케이션)에 대한 신속한 응답 시간을 유지하기 위해 Application Center 데이터베이스에 대한 연결 풀을 구성해야 합니다.
 
@@ -1527,10 +1527,10 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 
    이 예를 다음 위치에 포함해야 합니다.  
 
-   * WAR 파일을 배치한 경우에는 `<application-bnd>` 요소의 `<application>` 요소: **appcenterconsole** 및 **applicationcenter** 애플리케이션.
+   * WAR 파일을 배치한 경우 각 `<application>` 요소의 `<application-bnd>` 요소에서 **appcenterconsole** 및 **applicationcenter** 애플리케이션.
    * EAR 파일을 배치한 경우에는 **applicationcenter** 애플리케이션의 `<application-bnd>` 요소.
 
-   테스트용으로 설치 중에 작성된 `<security-role>` 요소를 대체하십시오.
+   테스트를 위해 설치 중에 작성된 `<security-role>` 요소를 대체하십시오.
 
    ```xml
    <basicRegistry id="appcenter">
@@ -1555,7 +1555,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
    <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
    ```
 
-3. `<dataSource>` 요소에서 연결 관리자에 대한 참조를 정의하십시오.
+3. `<dataSource>` 요소에서 커넥터 관리자에 대한 참조를 정의하십시오.
 
    ```xml
    <dataSource id="APPCNTR" jndiName="jdbc/AppCenterDS" connectionManagerRef="AppCenterPool">
@@ -1816,7 +1816,7 @@ JNDI 항목을 정의하려면 **server.xml** 파일에서 다음 기능을 정�
 <feature>jndi-1.0</feature>
 ```
 
-**server.xml** 파일의 `<server>` 섹션에서 각 특성에 대한 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
+**server.xml** 파일의 `<server>` 섹션에서 각 특성의 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
 
 ```xml
 <jndiEntry jndiName="JNDI_property_name" value="property_value"/>
@@ -1896,7 +1896,7 @@ Application Center의 ACL 관리를 구성하려면 이 프로세스를 수행�
 Application Center 서비스 웹 애플리케이션(**applicationcenter.war**) 및 Application Center 콘솔 웹 애플리케이션(**appcenterconsole.war**)의 web.xml 파일에서 보안(Java™ Platform, Enterprise Edition)을 구성하고 LDAP 인증을 위해 Apache Tomcat 서버를 구성합니다.
 
 **LDAP 사용자 인증**  
-`<Host>` 요소에서 **server.xml** 파일의<Host> **JNDIRealm**을 구성해야 합니다. 영역 구성에 대한 자세한 정보는 Apache Tomcat 웹 사이트에서 영역 컴포넌트를 참조하십시오.
+`<Host>` 요소의 **server.xml** 파일에서 **JNDIRealm**을 구성해야 합니다. 영역 구성에 대한 자세한 정보는 Apache Tomcat 웹 사이트에서 영역 컴포넌트를 참조하십시오.
 
 **LDAP 서버에 대해 인증하기 위한 Apache Tomcat에서의 구성 예**  
 이 예에서는 LDAP 인증을 위해 사용으로 설정된 서버에서 이 사용자의 권한과 비교하여 Apache Tomcat 서버에서 사용자 인증을 구성하는 방법을 보여줍니다.
@@ -2023,7 +2023,7 @@ LDAP 사용자가 **MyLdapAdmin** 및 **MyLdapUser**라는 LDAP 역할을 가진
 {: #configuring-ldap-acl-management-apache-tomcat }
 JNDI를 통해 Application Center LDAP 특성을 정의하여 Application Center를 사용하여 모바일 애플리케이션을 설치할 수 있는 사용자 및 그룹을 정의하려면 LDAP을 사용하십시오.
 
-Application Center의 LDAP ACL 관리를 구성하려면 server.xml 파일에서 IBM Application Center 서비스 애플리케이션의 `<context>` 섹션에 있는 각 특성에 대한 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
+Application Center의 LDAP ACL 관리를 구성하려면 server.xml 파일에 있는 IBM Application Center 서비스 애플리케이션의 `<context>` 섹션에서 각 특성의 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
 
 ```xml
 <Environment name="JNDI_property_name" value="property_value" type="java.lang.String" override="false"/>
@@ -2203,13 +2203,13 @@ Liberty 프로파일의 경우 JNDI 환경을 통해 애플리케이션 리소�
 
 IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하기 위해 Application Center 클라이언트가 사용하는 URI 프로토콜, 호스트 이름 및 포트를 변경해야 하는 경우 이 프로시저를 수행하십시오.
 
-**server.xml** 파일을 편집하십시오. JNDI 항목을 정의하려면 `<feature>` 요소가 **server.xml** 파일에서 올바르게 정의되어야 합니다.
+**server.xml** 파일을 편집하십시오. JNDI 항목을 정의하려면 **server.xml** 파일에서 `<feature>` 요소를 올바르게 정의해야 합니다.
 
 ```xml
 <feature>jndi-1.0</feature>
 ```
 
-**server.xml** 파일의 `<server>` 섹션에서 각 특성에 대한 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
+**server.xml** 파일의 `<server>` 섹션에서 각 특성의 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
 
 ```xml
 <jndiEntry jndiName="JNDI_property_name" value="property_value"/>
@@ -2249,7 +2249,7 @@ Apache Tomcat 서버의 경우 **server.xml** 파일에서 애플리케이션 �
 IBM Worklight V6.0부터는 디바이스에서 애플리케이션을 관리하기 위해 Application Center 클라이언트가 사용하는 URI 프로토콜, 호스트 이름 및 포트를 변경해야 하는 경우 이 프로시저를 수행하십시오.
 
 Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집하십시오.  
-**server.xml** 파일의 `<context>` 섹션에서 각 특성에 대한 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
+해당 애플리케이션의 `<context>` 섹션에서 각 특성의 항목을 추가하십시오. 이 항목은 다음 구문을 가지고 있어야 합니다.
 
 ```xml
 <Environment name="JNDI_property_name" value="property_value" type="property_type" override="false"/>
@@ -2274,7 +2274,7 @@ Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집�
 {: #example-of-setting-serverxml-properties-for-configuring-the-endpoint }
 이 예에서는 **server.xml** 파일에서 애플리케이션 리소스의 엔드포인트 구성을 위해 필요한 특성을 설정하는 것을 보여줍니다.
 
-`<context>` 섹션에서:
+Application Center 콘솔 애플리케이션의 `<context>` 섹션에서:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2282,7 +2282,7 @@ Apache Tomcat 설치의 conf 디렉토리에서 **server.xml** 파일을 편집�
 
 별표(\*) 문자를 와일드카드로 사용하여 Application Center REST 서비스가 Application Center 콘솔과 동일한 값을 사용하도록 지정할 수 있습니다. 예를 들어, `*://*:*/appcenter`는 Application Center 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 appcenter를 컨텍스트 루트로 사용함을 의미합니다.
 
-`<context>` 섹션에서:
+Application Center 서비스 애플리케이션의 `<context>` 섹션에서:
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>

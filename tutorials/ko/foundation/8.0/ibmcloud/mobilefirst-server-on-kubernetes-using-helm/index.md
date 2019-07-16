@@ -74,14 +74,56 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
       ibmcloud cr region-set
       ```    
 
-  4. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
+  4. 다음 단계를 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
+       1. PPA 아카이브를 추출하십시오.
+       2. 로드된 이미지에 IBM Cloud Container 레지스트리 네임스페이스 및 올바른 버전으로 태그를 지정하십시오.
+       3. 이미지를 푸시하십시오.
+       4. Manifest를 작성하고 푸시하십시오.
+
+      아래는 mfpf-server의 예입니다.
+      ```bash
+      mkdir -p ppatmp ; cd ppatmp
+
+      tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
+
+      cd ./images
+
+      for i in *; do docker load -i $i;done
+
+      docker tag mfpf-server:1.0.28-amd64 us.icr.io/default/mfpf-server:1.0.28-amd64
+      docker tag mfpf-server:1.0.28-s390x us.icr.io/default/mfpf-server:1.0.28-s390x
+      docker tag mfpf-server:1.0.28-ppc64le us.icr.io/default/mfpf-server/mfpf-server:1.0.28-ppc64le
+
+      # Push all the images
+
+      docker push  us.icr.io/default/mfpf-server:1.0.28-amd64
+      docker push us.icr.io/default/mfpf-server:1.0.28-s390x
+      docker push us.icr.io/default/mfpf-server:1.0.28-ppc64le
+
+      # Create manifest-lists
+      docker manifest create us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-amd64 us.icr.io/default/mfpf-server:1.0.28-s390x us.icr.io/default/mfpf-server:1.0.28-ppc64le --amend
+
+      # annotate the manifests
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-amd64 --os linux --arch amd64
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-ppc64le --os linux --arch ppc64le
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-s390x --os linux --arch s390x
+
+      # push manifest list
+      docker manifest push us.icr.io/default/mfpf-server:1.0.28
+
+      rm -rf ppatmp
       ```
+
+      >**참고:** `ibmcloud cr ppa-archive load` 명령 접근 방식은 다중 아키텍처 지원이 있는 PPA 패키지를 지원하지 않습니다. 그러므로 IBM Cloud Container 저장소에 수동으로 패키지를 추출하고 푸시해야 합니다(이전 PPA 버전을 사용하는 사용자는 로드에 다음 명령을 사용해야 함).
+
+      ```bash
       ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
       ```
       {{ site.data.keys.product }}의 *archive_name*은 IBM Passport Advantage에서 다운로드한 PPA 아카이브의 이름입니다.
 
+  >**참고:** 다중 아키텍처는 intel(amd64), power64(ppc64le), s390x를 포함한 아키텍처를 참조합니다. 다중 아키텍처는 ICP 3.1.1에서만 지원됩니다.
 
-  helm 차트는 클라이언트 또는 로컬에 저장됩니다(IBM Cloud Private helm 저장소에 저장되는 ICP helm 차트와 다름). 차트는 `ppa-import/charts` 디렉토리 내에 위치할 수 있습니다.
+  helm 차트는 클라이언트 또는 로컬에 저장됩니다(IBM Cloud Private helm 저장소에 저장되는 ICP helm 차트와 다름). 차트는 `ppa-import/charts`(또는 charts) 디렉토리 내에 위치할 수 있습니다.
 
 ## IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성
 {: #configure-install-mf-helmcharts}
@@ -116,7 +158,9 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
 
 | 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
-| arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
+| arch | amd64 | 하이브리드 클러스터에서의 amd64 작업자 노드 스케줄러 선호사항 | 3 - 가장 선호(기본값). |
+|  | ppcle64 | 하이브리드 클러스터에서의 ppc64le 작업자 노드 스케줄러 선호사항 | 2 - 선호사항 없음(기본값). |
+|  | s390x | 하이브리드 클러스터에서의 S390x 작업자 노드 스케줄러 선호사항 | 2 - 선호사항 없음(기본값). |
 | image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
 |  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
 |  | name | Docker 이미지 이름 | {{ site.data.keys.prod_adj }} Operational Analytics Docker 이미지의 이름. |
@@ -145,7 +189,9 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
 
 | 규정자 |매개변수 | 정의 | 허용값 |
 |-----------|-----------|------------|---------------|
-| arch |  | 작업자 노드 아키텍처 | 이 차트를 배치해야 하는 작업자 노드 아키텍처.<br/>**AMD64** 플랫폼만 현재 지원됩니다. |
+| arch | amd64 | 하이브리드 클러스터에서의 amd64 작업자 노드 스케줄러 선호사항 | 3 - 가장 선호(기본값). |
+|  | ppcle64 | 하이브리드 클러스터에서의 ppc64le 작업자 노드 스케줄러 선호사항 | 2 - 선호사항 없음(기본값). |
+|  | s390x | 하이브리드 클러스터에서의 S390x 작업자 노드 스케줄러 선호사항 | 2 - 선호사항 없음(기본값). |
 | image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
 |  | tag | Docker 이미지 태그 | [Docker 태그 설명](https://docs.docker.com/engine/reference/commandline/image_tag/)을 참조하십시오. |
 |  | name | Docker 이미지 이름 | {{ site.data.keys.prod_adj }} Server Docker 이미지의 이름입니다. |
@@ -274,8 +320,8 @@ Get the Server URL by running these commands:
  echo https://$NODE_IP:$NODE_PORT/mfpconsole
 ```
 
-유사한 설치 방법을 사용하는 경우, `<protocol>://<ip_address>:<node_port>/analytics/console`을 사용하여 IBM MobileFirst Analytics Console에 액세스하고 <`protocol>://<ip_address>:<node_port>/appcenter/console`을 사용하여 IBM Mobile Foundation Application Center에 액세스할 수 있습니다.
-콘솔에 액세스하기 위한 *NodePort* 방법 이외에, [수신](https://console.bluemix.net/docs/containers/cs_ingress.html) 호스트를 통해서도 서비스에 액세스할 수 있습니다.
+유사한 설치 방법을 사용하여 IBM MobileFirst Analytics Console(`<protocol>://<ip_address>:<node_port>/analytics/console` 사용) 및 IBM Mobile Foundation Application Center(<`protocol>://<ip_address>:<node_port>/appcenter/console` 사용)에 액세스할 수 있습니다.
+콘솔에 액세스하기 위한 *NodePort* 접근 방식 외에도 서비스는 [수신](https://console.bluemix.net/docs/containers/cs_ingress.html) 호스트를 통해 액세스할 수 있습니다.
 
 콘솔에 액세스하려면 아래의 단계를 따르십시오.
 

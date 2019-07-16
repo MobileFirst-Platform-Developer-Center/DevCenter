@@ -13,7 +13,7 @@ Esses componentes estão disponíveis nos repositórios on-line e podem ser inst
 
 Continue lendo para saber mais sobre os componentes do {{ site.data.keys.product }}.
 
-> Para avaliar o {{ site.data.keys.product }}, é necessário girar uma instância do {{ site.data.keys.mf_server }} no IBM Cloud usando o serviço Mobile Foundation IBM Cloud. Consulte o tutorial [Usando o Mobile Foundation](../../../bluemix/using-mobile-foundation/) para obter instruções. Também é possível optar por instalar o {{ site.data.keys.mf_dev_kit_short }} para uma instalação local.
+> Para avaliar o {{ site.data.keys.product }}, é necessário girar uma instância do {{ site.data.keys.mf_server }} no IBM Cloud usando o serviço Mobile Foundation IBM Cloud. Consulte o tutorial [Usando o Mobile Foundation](../../../ibmcloud/using-mobile-foundation/) para obter instruções. Também é possível optar por instalar o {{ site.data.keys.mf_dev_kit_short }} para uma instalação local.
 
 #### Ir para:
 {: #jump-to }

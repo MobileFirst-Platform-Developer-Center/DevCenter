@@ -184,14 +184,14 @@ En el despliegue simétrico, debe instalar los componentes de administración de
 
 **Despliegue asimétrico**  
 En el despliegue asimétrico, puede instalar los tiempos de ejecución en diferentes servidores de aplicaciones desde los componentes de administración de {{ site.data.keys.product }}.  
-El despliegue asimétrico solo está soportado en la topología de celda de WebSphere Application Server Network Deployment y para la topología de colectividad de Liberty.
+El despliegue asimétrico solo está soportado en la topología de celda de WebSphere Application Server Network Deployment y para la topología de colectivo de Liberty.
 
 #### Seleccionar una topología
 {: #select-a-topology }
 
 * [Topología de servidor autónomo](#stand-alone-server-topology)
 * [Topología de granja de servidores](#server-farm-topology)
-* [Topología de colectividad de Liberty](#liberty-collective-topology)
+* [Topología de colectivo de Liberty](#liberty-collective-topology)
 * [Topologías de WebSphere Application Server Network Deployment](#websphere-application-server-network-deployment-topologies)
 * [Utilización de un proxy inverso con topologías de granja de servidores y WebSphere Application Server Network Deployment](#using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies)
 
@@ -224,8 +224,8 @@ Las siguientes propiedades JNDI globales son necesarias para los servicios de ad
 | mfp.topology.platform	   | Liberty |
 | mfp.topology.clustermode | Autónomo |
 | mfp.admin.jmx.host       | El nombre de host del servidor de perfil de Liberty de WebSphere Application Server. |
-| mfp.admin.jmx.port       | El puerto del conector REST que es el puerto del atributo httpsPort declarado en el elemento `<httpEndpoint>` del archivo server.xml del servidor de perfil de Liberty de WebSphere Application Server. Esta propiedad no tiene valor predeterminado. |
-| mfp.admin.jmx.user       | El nombre de usuario del administrador de WebSphere Application Server Liberty, que debe ser idéntico al nombre definido en el elemento `<administrator-role>` del archivo server.xml del servidor de perfil de Liberty de WebSphere Application Server. |
+| mfp.admin.jmx.port       | El puerto del conector REST que constituye el puerto del atributo httpsPort declarado en el elemento `<httpEndpoint>` del archivo server.xml del servidor de perfil de WebSphere Application Server Liberty. Esta propiedad no tiene valor predeterminado. |
+| mfp.admin.jmx.user       | El nombre de usuario del administrador de WebSphere Application Server Liberty, que debe ser idéntico al nombre definido en el elemento `<administrator-role>` del archivo server.xml del servidor de perfil de WebSphere Application Server Liberty. |
 | mfp.admin.jmx.pwd        | La contraseña del usuario administrador de WebSphere Application Server Liberty. |
 
 Se pueden desplegar varios componentes de administración para habilitar la ejecución de misma JVM en componentes de administración separados que gestionan diferentes tiempos de ejecución.
@@ -418,13 +418,13 @@ Cuando despliega varios los componentes de administración, debe especificar los
 * En cada servicio de administración, un valor exclusivo para la propiedad JNDI **mfp.admin.environmentid** local.
 * En cada tiempo de ejecución, el mismo valor para la propiedad JNDI **mfp.admin.environmentid** local como el valor definido para el servicio de administración que gestiona el tiempo de ejecución.
 
-### Topología de colectividad de Liberty
+### Topología de colectivo de Liberty
 {: #liberty-collective-topology }
-Puede desplegar los componentes de {{ site.data.keys.mf_server }} en una topología de colectividad de Liberty.
+Puede desplegar los componentes de {{ site.data.keys.mf_server }} en una topología de colectivo de Liberty.
 
-En la topología de colectividad de Liberty, los componentes de administración de {{ site.data.keys.mf_server }} ({{ site.data.keys.mf_console }}, el servicio de administración y el servicio Live Update) se despliegan en un controlador colectivo y los tiempos de ejecución de {{ site.data.keys.product }} en un miembro de colectivo. Esta topología solo soporta el despliegue asimétrico, los tiempos de ejecución no pueden desplegarse en un controlador colectivo.
+En la topología de colectivo de Liberty, los componentes de administración de {{ site.data.keys.mf_server }} ({{ site.data.keys.mf_console }}, el servicio de administración y el servicio Live Update) se despliegan en un controlador colectivo y los tiempos de ejecución de {{ site.data.keys.product }} en un miembro de colectivo. Esta topología solo soporta el despliegue asimétrico, los tiempos de ejecución no pueden desplegarse en un controlador colectivo.
 
-![Topología para colectividad de Liberty](liberty_collective_topology.jpg)
+![Topología para colectivo de Liberty](liberty_collective_topology.jpg)
 
 El despliegue de esta topología tiene las características siguientes:
 
@@ -438,7 +438,7 @@ El despliegue de esta topología tiene las características siguientes:
 
 #### Configuración de propiedades JNDI
 {: #configuration-of-jndi-properties-2 }
-Las siguientes tablas listan las propiedades JNDI son necesarias para habilitar la comunicación JMX entre el servicio de administración y el tiempo de ejecución y para definir el servicio de administración que gestiona un tiempo de ejecución. Para obtener más información sobre estas propiedades, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) y [Lista de propiedades JNDI para el tiempo de ejecución de {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). Para obtener instrucciones sobre cómo instalar una colectividad de Liberty manualmente, consulte [Instalación manual en la colectividad de Liberty de WebSphere Application Server](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
+Las siguientes tablas listan las propiedades JNDI son necesarias para habilitar la comunicación JMX entre el servicio de administración y el tiempo de ejecución y para definir el servicio de administración que gestiona un tiempo de ejecución. Para obtener más información sobre estas propiedades, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) y [Lista de propiedades JNDI para el tiempo de ejecución de {{ site.data.keys.product_adj }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). Para obtener instrucciones sobre cómo instalar un colectivo de Liberty manualmente, consulte [Instalación manual en el colectivo de Liberty de WebSphere Application Server](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
 
 Las siguientes propiedades JNDI globales son necesarias para los servicios de administración:
 

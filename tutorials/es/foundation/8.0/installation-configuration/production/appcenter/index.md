@@ -712,7 +712,7 @@ Si desea establecer y configurar manualmente la base de datos de MySQL para Appl
 
    Donde **worklight** después de **user=** es el nombre de usuario, **worklight** después de **password=** es la contraseña del usuario y **mysqlserver** es el nombre de host del servidor de MySQL (por ejemplo, localhost, si se encuentra en la misma máquina).
 
-3. Puede cifrar la contraseña de base de datos con el programa securityUtility en `<liberty_install_dir>/bin`.
+3. Puede cifrar la contraseña de base de datos con el programa securityUtility en `<liberty_install_dir>/bin`. 
 
 ##### Configuración de WebSphere Application Server for MySQL manualmente para Application Center
 {: #configuring-websphere-application-server-for-mysql-manually-for-application-center }
@@ -986,7 +986,7 @@ Si prefiere utilizar el proceso manual, siga estos pasos para configurar el serv
 Para configurar el perfil de Liberty de WebSphere Application Server manualmente para Application Center, debe modificar el archivo **server.xml**.  
 Además de modificaciones para las bases de datos que se describen en [Instalación manual de Application Center](#manually-installing-application-center), debe realizar las siguientes modificaciones en el archivo **server.xml**.
 
-1. Asegúrese de que el elemento `<featureManager>` contenga al menos los elementos `<feature>` siguientes:
+1. Asegúrese de que el elemento `<featureManager>` contenga al menos los siguientes elementos de `<feature>`:
 
    ```xml
    <feature>jdbc-4.0</feature>
@@ -1044,7 +1044,7 @@ Además de modificaciones para las bases de datos que se describen en [Instalaci
    </basicRegistry>
    ```
 
-   Los grupos y usuarios definidos en `basicRegistry` son inicios de sesión de ejemplo que puede utilizar para probar Application Center. Asimismo, los grupos definidos en el elemento `<security-role name="appcenteradmin">` para la consola de Application Center y el servicio de Application Center son ejemplos. Para obtener más información sobre cómo modificar estos grupos, consulte [Configuración de los roles de seguridad de Java EE en el perfil de Liberty de WebSphere Application Server](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile).
+   Los grupos y usuarios definidos en `basicRegistry` son inicios de sesión de ejemplo que puede utilizar para probar Application Center. De forma similar, los grupos definidos en `<security-role name="appcenteradmin">` para la consola de Application Center y el servicio de Application Center son ejemplos. Para obtener más información sobre cómo modificar estos grupos, consulte [Configuración de los roles de seguridad de Java EE en el perfil de Liberty de WebSphere Application Server](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile).
 
 3. Si la base de datos es Oracle, añada el atributo **commonLibraryRef** al cargador de clases de la aplicación de servicio de Application Center.
 
@@ -1176,7 +1176,7 @@ Para configurar WebSphere Application Server for Application Center manualmente,
     * Para WebSphere Application Server Network Deployment, pulse **Administración del sistema → Nodos**, seleccione los nodos y pulse **Sincronización completa**.
     * Configure la entrada de entorno (propiedad JNDI) android.aapt.dir, y establezca su valor en el directorio que ha determinado en el Subpaso a. El perfil **WAS\_INSTALL\_DIR/profiles/profile-name** se sustituye por la referencia de variable de WebSphere Application Server **${USER\_INSTALL\_ROOT}**.
 
-Ahora puede acceder al Application Center en `http://<server>:<port>/appcenterconsole`, donde el servidor es el nombre de host del servidor y el puerto es el número de puerto (de forma predeterminada, 9080).
+Ahora puede acceder a Application Center en `http://<server>:<port>/appcenterconsole`, donde el servidor es el nombre de host del servidor y el puerto es el número de puerto (de forma predeterminada, 9080).
 
 ##### Configuración de Apache Tomcat for Application Center manualmente
 {: #configuring-apache-tomcat-for-application-center-manually }
@@ -1184,7 +1184,7 @@ Para configurar Apache Tomcat for Application Center manualmente, debe copiar lo
 
 1. Añada los controladores de base de datos al directorio lib de Tomcat. Consulte las instrucciones para DBMS apropiado en [Instalación manual de Application Center](#manually-installing-application-center).
 2. Edite **tomcat\_install\_dir/conf/server.xml**.
-    * Descomente el elemento siguiente, que está inicialmente comentado: `<Valve className="org.apache.catalina.authenticator.SingleSignOn" />`.
+    * Descomente el elemento siguiente, que está inicialmente comentado: `<Valve className="org.apache.catalina.authenticator.SingleSignOn" />`. 
     * Declare la consola de Application Center y las aplicaciones de servicios y un registro de usuarios:
 
       ```xml
@@ -1241,7 +1241,7 @@ Para configurar Apache Tomcat for Application Center manualmente, debe copiar lo
       <Realm className="org.apache.catalina.realm.MemoryRealm"/>
       ```
 
-    Donde rellene el elemento `<Resource>` tal como se describe en una de las secciones:
+    Donde debe cumplimentar el elemento `<Resource>` tal como se describe en una de las secciones:
 
     * [Configuración de Apache Tomcat for DB2 manualmente para Application Center](#configuring-apache-tomcat-for-db2-manually-for-application-center)
     * [Configuración de Apache Tomcat for Derby manualmente para Application Center](#configuring-apache-tomcat-for-derby-manually-for-application-center)
@@ -1277,7 +1277,7 @@ Una vez que despliegue el archivo EAR de Application Center, para configurar el 
 
 Además de modificaciones para las bases de datos que se describen en [Instalación manual de Application Center](#manually-installing-application-center), debe realizar las siguientes modificaciones en el archivo **server.xml**.
 
-1. Asegúrese de que el elemento `<featureManager>` contenga al menos los elementos `<feature>` siguientes:
+1. Asegúrese de que el elemento `<featureManager>` contenga al menos los siguientes elementos de `<feature>`:
 
    ```xml
    <feature>jdbc-4.0</feature>
@@ -1434,7 +1434,7 @@ Después de desplegar el archivo EAR de Application Center, para configurar el p
     * Para WebSphere Application Server Network Deployment, pulse **Administración del sistema → Nodos**, seleccione los nodos y pulse **Sincronización completa**.
     * Configure la entrada de entorno (propiedad JNDI) **android.aapt.dir** y establézcalo como valor del directorio que ha determinado en el Subpaso a. El perfil **WAS\_INSTALL\_DIR/profiles/profile-name** se sustituirá por la referencia de la variable de WebSphere Application Server **${USER\_INSTALL\_ROOT}**.
 
-    Ahora puede acceder al Application Center en `http://<server>:<port>/appcenterconsole`, donde el servidor es el nombre de host del servidor y el puerto es el número de puerto (de forma predeterminada, 9080).
+    Ahora puede acceder a Application Center en `http://<server>:<port>/appcenterconsole`, donde el servidor es el nombre de host del servidor y el puerto es el número de puerto (de forma predeterminada, 9080).
 
 ## Configuración de Application Center tras la instalación
 {: #configuring-application-center-after-installation }
@@ -1511,7 +1511,7 @@ Defina los aspectos básicos de la configuración de usuario en la consola de We
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile }
 Configure los roles de seguridad de Java™ EE del Application Center y el origen de datos del archivo **server.xml**.
 
-Para configurar los roles de seguridad, debe editar el archivo **server.xml**. En el elemento `<application-bnd>` de cada elemento `<application>`, cree dos elementos `<security-role>`. Un elemento `<security-role>` es para el rol **appcenteruser** y el otro es para el rol **appcenteradmin**. Correlacione los roles con el nombre de grupo de usuarios apropiado **appcenterusergroup** o **appcenteradmingroup**. Estos grupos se definen mediante el elemento `<basicRegistry>`. Puede personalizar este elemento o sustituirlo por completo por un elemento `<ldapRegistry>` o un elemento `<safRegistry>`.
+Para configurar los roles de seguridad, debe editar el archivo **server.xml**. En el elemento `<application-bnd>` de cada elemento `<application>`, cree dos elementos `<security-role>`. Un elemento `<security-role>` es para el rol **appcenteruser** y el otro es para el rol **appcenteradmin**. Correlacione los roles con el nombre de grupo de usuarios apropiado **appcenterusergroup** o **appcenteradmingroup**. Estos grupos se definen mediante el elemento `<basicRegistry>`. Puede personalizar este elemento o sustituirlo por completo por un elemento `<ldapRegistry>` o por un elemento `<safRegistry>`.
 
 A continuación, para mantener buenos tiempos de respuesta con un gran número de aplicaciones instaladas, por ejemplo con 80 aplicaciones, debe configurar una agrupación de conexiones para la base de datos de Application Center.
 
@@ -2024,7 +2024,7 @@ and
 {: #configuring-ldap-acl-management-apache-tomcat }
 Utilice LDAP para definir los usuarios y grupos que pueden instalar aplicaciones móviles con el Application Center definiendo las propiedades LDAP de Application Center mediante JNDI.
 
-Para configurar la gestión de ACL de LDAP del Application Center, añada una entrada para cada propiedad de la sección `<context>` de la aplicación IBM Application Center Services del archivo server.xml. Esta entrada debe tener la sintaxis siguiente:
+Para configurar la gestión de ACL de LDAP de Application Center, añada una entrada para cada propiedad en la sección `<context>` de la aplicación IBM  Application Center Services en el archivo server.xml. Esta entrada debe tener la sintaxis siguiente:
 
 ```xml
 <Environment name="JNDI_property_name" value="property_value" type="java.lang.String" override="false"/>
@@ -2204,7 +2204,7 @@ Para el perfil de Liberty, configure el punto final de los recursos de aplicacio
 
 Desde IBM Worklight V6.0, siga este procedimiento cuando deba cambiar el protocolo de URI, el nombre de host y el puerto utilizados por el cliente de Application Center para gestionar las aplicaciones en el dispositivo.
 
-Edite el archivo **server.xml**. Para poder definir entradas de JNDI, el elemento `<feature>` debe estar definido correctamente en el archivo **server.xml**:
+Edite el archivo **server.xml**. Para poder definir entradas de JNDI, el elemento `<feature>` debe estar correctamente definido en el archivo **server.xml**:
 
 ```xml
 <feature>jndi-1.0</feature>
@@ -2275,7 +2275,7 @@ Para obtener una lista completa de las propiedades JNDI que puede establecer, co
 {: #example-of-setting-serverxml-properties-for-configuring-the-endpoint }
 Este ejemplo muestra los valores de las propiedades del archivo **server.xml** necesarios para configurar el punto final de los recursos de aplicaciones.
 
-En el elemento `<context>` de la aplicación de consola de Application Center:
+En la sección `<context>` de la aplicación de consola de Application Center: 
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
@@ -2283,7 +2283,7 @@ En el elemento `<context>` de la aplicación de consola de Application Center:
 
 Puede utilizar el carácter de asterisco (\*) como comodín para especificar que los servicios REST de Application Center utilicen el mismo valor que la consola de Application Center. Por ejemplo: `*://*:*/appcenter` significa utilizar el mismo protocolo, host y puerto que la consola de Application Center, pero utilizar appcenter como raíz de contexto.
 
-En el elemento `<context>` de la aplicación de servicios de Application Center:
+En la sección `<context>` de la aplicación de servicios de Application Center: 
 
 ```xml
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>

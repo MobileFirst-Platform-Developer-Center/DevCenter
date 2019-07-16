@@ -27,7 +27,7 @@ Digital App Builder 인터페이스는 왼쪽 탐색 패널에서 다음으로 �
 
 ![워크벤치](dab-workbench.png)
 
-1. **페이지/제어**: 이 영역은 기본적으로 작성된 페이지의 이름을 표시합니다. **+** 부호를 사용하여 새 페이지를 작성하십시오. **제어** 아이콘을 클릭하면 앱의 페이지에 기능 추가를 돕는 제어를 표시합니다. 각 제어 팔레트에서 페이지의 캔버스로 제어를 끌어서 놓기할 수 있습니다.각 제어에는 일련의 특성 및 조치가 있습니다.
+1. **페이지/제어**: 이 영역은 기본적으로 작성된 페이지의 이름을 표시합니다. **+** 부호를 사용하여 새 페이지를 작성하십시오. **제어** 아이콘을 클릭하면 앱의 페이지에 기능 추가를 돕는 제어를 표시합니다. 각 제어 팔레트에서 페이지의 캔버스로 제어를 끌어서 놓기할 수 있습니다. 각 제어에는 일련의 특성 및 조치가 있습니다.
 
     다음은 사용 가능한 제어 목록입니다.
     * **기본**: 캔버스에 해당 기본 제어(단추, 표제, 이미지, 레이블)를 끌어서 놓기하여 특성 및 조치를 구성할 수 있습니다.
@@ -35,7 +35,7 @@ Digital App Builder 인터페이스는 왼쪽 탐색 패널에서 다음으로 �
         ![페이지/제어](dab-workbench-basic-controls.png)
 
         * **단추** - 단추에는 레이블할 특성이 있습니다. 조치 탭에서 단추 클릭 시 이동할 페이지를 지정할 수 있습니다.
-        * **표제 텍스트** - 페이지 제목과 같은 애플리케이션의 표제 텍스트를 추가하도록 돕습니다. 
+        * **표제 텍스트** - 페이지 제목과 같은 애플리케이션의 표제 텍스트를 추가하도록 돕습니다.
         * **이미지** - 로컬 이미지를 업로드하거나 이미지의 URL을 제공하도록 돕습니다.
         * **레이블** - 정적 텍스트를 페이지 본문에 추가하도록 돕습니다. 
     * **데이터 바운드** - 데이터 세트와 연결하고 데이터 세트의 엔티티에서 작동하도록 돕습니다. 데이터 바운드는 **목록** 및 **연결된 레이블**, 두 컴포넌트로 구성됩니다.
@@ -233,24 +233,29 @@ Digital App Builder는 IBM Cloud에서 프로비저닝된 다양한 Watson 서�
 
     ![참여 푸시](dab-engagement-push.png)
 
-2. **푸시 알림**에서 **연결**을 클릭하십시오. **푸시 알림 인스턴스에 연결** 대화 상자가 표시됩니다.
+2. **푸시 알림**에서 **사용**을 클릭하십시오. 그러면 푸시 알림 구성 페이지가 표시됩니다.
 
-    ![참여 푸시 알림 인스턴스](dab-engagement-push-instance.png)
+3. **API 비밀 키** 및 **발신인 ID**를 제공하여 Android용 푸시 알림을 구성하고 **구성 저장**을 클릭하십시오.
 
-3. **이름**, **API 키**, **앱 GUID**, **클라이언트 비밀 키**를 입력하고 **지역**을 선택한 후 **연결**을 클릭하십시오.
-4. 위에 입력된 이름은 참여 아래의 페이지에 추가됩니다.
-5. **API 비밀 키** 및 **발신인 ID**를 제공하여 Android용 푸시 알림을 구성하고 **구성 저장**을 클릭하십시오.
+    ![참여 푸시 알림 Android 구성](dab-engagement-push-instance.png)
 
-    ![참여 푸시 알림 Android 구성](dab-engagement-push-android-configure.png)
-
-6. iOS 탭으로 이동하고 푸시 구성 세부사항을 제공하십시오. **환경**을 선택하고 경로가 있는 .p12 파일을 제공한 후 **비밀번호**를 입력하고 **구성 저장**을 클릭하십시오.
+4. iOS 탭으로 이동하고 푸시 구성 세부사항을 제공하십시오. **환경**을 선택하고 경로가 있는 .p12 파일을 제공한 후 **비밀번호**를 입력하고 **구성 저장**을 클릭하십시오.
 
     ![참여 푸시 알림 iOS 구성](dab-engagement-push-ios-configure.png)
 
-7.  
-    a. Android의 경우 `google-services.json`(firebase 프로젝트에서 다운로드)을 `<path_to_app>/ionic/platforms/android/app` 폴더에 복사하십시오.
-    b. iOS의 경우 xcode 프로젝트 `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj`를 열고 푸시 알림 기능을 사용으로 설정하십시오. 세부사항은 [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1)을 참조하십시오.
+5. 다음 단계를 수행하십시오.
+    a. Android 앱의 경우 `google-services.json`(firebase 프로젝트에서 다운로드)을 `<path_to_app>/ionic/platforms/android/app` 폴더에 복사하십시오.
+    b. iOS 앱의 경우 xcode 프로젝트 `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj`를 열고 푸시 알림 기능을 사용으로 설정하십시오. 세부사항은 [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1)을 참조하십시오.
 
+6. 서버 측에서 다음을 수행하십시오.
+ 
+    * [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications) 를 따라 서버 측에서 푸시 알림을 사용으로 설정하십시오.
+
+    * [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications)를 따라 서버에서 알림을 전송하십시오.
+
+**참고**:
+MFP 서버의 푸시 알림은 알림 서비스를 사용으로 설정하는 데 사용됩니다. 그러므로 IBM Cloud 푸시 알림 서비스가 이전에 사용된 경우 링크를 따라 MFP 서버의 알림을 설정하십시오.
+[http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications).
 
 ### 콘솔
 {: #console }
@@ -262,7 +267,7 @@ Digital App Builder는 IBM Cloud에서 프로비저닝된 다양한 Watson 서�
 
 설정은 앱 설정을 관리하고 빌드 프로세스 중에 오류를 수정하도록 돕습니다. 설정은 **앱 세부사항**, **서버**, **플러그인**, **프로젝트 복구** 탭으로 구성됩니다.
 
-#### 앱 세부사항
+#### **앱 세부사항**
 {: #app-details}
 
 앱 세부사항은 앱에 대한 정보를 표시합니다. **앱 아이콘**, **이름**, 파일이 저장되는 **위치**, 앱 작성 시 제공된 **프로젝트/번들 ID**, 선택된 **플랫폼**(채널), 사용으로 설정된 **서비스**.
@@ -275,7 +280,7 @@ Digital App Builder는 IBM Cloud에서 프로비저닝된 다양한 Watson 서�
 
 **저장**을 클릭하여 변경사항을 업데이트하십시오.
 
-#### 서버
+#### **서버**
 {: #server }
 
 서버 정보는 사용자가 현재 작업 중인 **서버 세부사항**을 표시합니다. **편집** 링크를 클릭하여 정보를 편집할 수 있습니다. 기밀 클라이언트 권한을 추가하거나 수정할 수 있습니다.
@@ -284,11 +289,13 @@ Digital App Builder는 IBM Cloud에서 프로비저닝된 다양한 Watson 서�
 
 서버 탭은 또한 **최근 서버**를 표시합니다.
 
+>**참고**: Digital App Builder를 사용하여 앱을 작성할 때 및 Digital App Studio가 작성한 앱에서 사용하지 않는 경우 이전에 추가된 서버를 삭제할 수 있습니다.
+
 또한 **새로 연결 +** 단추를 클릭하여 새 서버를 추가하고 **새 서버에 연결** 팝업에서 세부사항을 제공하고 **연결**을 클릭할 수 있습니다.
 
 ![새 서버 설정](dab-settings-server-new-server.png)
 
-#### 플러그인
+#### **플러그인**
 {: #plugins}
 
 플러그인은 Digital App Builder에서 사용할 수 있는 플러그인의 목록을 표시합니다. 다음 조치를 수행할 수 있습니다.

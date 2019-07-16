@@ -233,24 +233,27 @@ Pour ajouter des notifications push à votre application, procédez comme suit :
 
     ![Notifications push d'engagement](dab-engagement-push.png)
 
-2. Dans **Notifications push**, cliquez sur **Se connecter**. La boîte de dialogue **Se connecter à l'instance de notification push** apparaît.
+2. Dans **Notifications push**, cliquez sur **Activer**. La page de configuration des Notifications push apparaît.
 
-    ![Instance Notifications push d'engagement](dab-engagement-push-instance.png)
+3. Configurez la notification push pour Android en indiquant la **Clé secrète d'API** et l'**ID d'émetteur**, puis cliquez sur **Sauvegarder la configuration**.
 
-3. Entrez le **Nom**, la **Clé d'API**, l'**ID global unique de l'application** et la **Clé secrète du client**, sélectionnez la **Région**, puis cliquez sur **Se connecter**.
-4. Le nom saisi ci-dessus est ajouté à la page, sous Engagement.
-5. Configurez la notification push pour Android en indiquant la **Clé secrète d'API** et l'**ID d'émetteur**, puis cliquez sur **Sauvegarder la configuration**.
+    ![Configuration de la notification push d'engagement pour Android](dab-engagement-push-instance.png)
 
-    ![Configuration de la notification push d'engagement pour Android](dab-engagement-push-android-configure.png)
-
-6. Accédez à l'onglet iOS et indiquez les détails de configuration de la configuration push : sélectionnez l'**Environnement**, saisissez le fichier .p12 avec son chemin et entrez le **Mot de passe**, puis cliquez sur **Sauvegarder la configuration**.
+4. Accédez à l'onglet iOS et indiquez les détails de configuration de la configuration push : sélectionnez l'**Environnement**, saisissez le fichier .p12 avec son chemin et entrez le **Mot de passe**, puis cliquez sur **Sauvegarder la configuration**.
 
     ![Configuration de la notification push d'engagement pour iOS](dab-engagement-push-ios-configure.png)
 
-7.  
-    a. Pour Android, copiez `google-services.json` (téléchargez-le à partir de votre projet Firebase) dans le dossier `<path_to_app>/ionic/platforms/android/app`.
-    b. Pour iOS, ouvrez le projet xcode `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` et activez la fonctionnalité de notification push. Pour plus de détails, voir [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+5. Effectuez les opérations suivantes :
+    a. Pour l'application Android, copiez `google-services.json` (téléchargez-le à partir de votre projet Firebase) dans le dossier `<path_to_app>/ionic/platforms/android/app`.
+    b. Pour l'application iOS, ouvrez le projet xcode `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` et activez la fonctionnalité de notification push. Pour plus de détails, voir [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
+6. Côté serveur :
+ 
+    * Suivez les instructions indiquées dans [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications) pour activer les notifications push côté serveur.
+
+    * Suivez les instructions indiquées dans [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications) pour envoyer des notifications à partir du serveur.
+
+**Remarque** : Les notifications push issues du serveur MFP permettent d'activer le service de notification. Par conséquent, si le service de notification push IBM Cloud a été utilisé auparavant, suivez les instructions indiquées dans [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications) pour configurer les notifications dans le serveur MFP.
 
 ### Console
 {: #console }
@@ -262,7 +265,7 @@ La console permet de visualiser le code de chaque composant. Elle affiche égale
 
 Cette section vous permet de gérer les paramètres de l'application et de rectifier d'éventuelles erreurs pendant le processus de construction. Elle est composée des onglets **Détails de l'application**, **Serveur**, **Plug-in** et **Réparer le projet**.
 
-#### Détails de l'application
+#### **Détails de l'application**
 {: #app-details}
 
 L'onglet Détails de l'application affiche des informations sur votre application : **Icône de l'application**, **Nom**, **Emplacement** de stockage des fichiers, **Projet/ID de bundle** fourni à la création de l'application, **Plateformes** (canaux) sélectionnées et **Service** activé.
@@ -275,7 +278,7 @@ Vous pouvez ajouter/retirer des plateformes supplémentaires en cochant/déséle
 
 Cliquez sur **Sauvegarder** pour mettre à jour les modifications.
 
-#### Serveur
+#### **Serveur**
 {: #server }
 
 L'onglet Serveur indique les **Détails du serveur** en cours d'utilisation. Vous pouvez éditer ces informations en cliquant sur le lien **Editer**. Vous pouvez ajouter ou modifier l'autorisation du client confidentiel.
@@ -284,11 +287,13 @@ L'onglet Serveur indique les **Détails du serveur** en cours d'utilisation. Vou
 
 L'onglet Serveur affiche également les **Serveurs récents**.
 
+>**Remarque** : Vous ne pouvez supprimer un serveur que s'il a été ajouté précédemment lors de la création d'une application avec Digital App Builder et s'il n'est utilisé par aucune application créée avec Digital App Studio.
+
 Vous pouvez aussi ajouter un nouveau serveur en cliquant sur le bouton **Connecter un nouveau +**, en indiquant les détails dans la fenêtre contextuelle **Se connecter à un nouveau serveur**, puis en cliquant sur **Se connecter**.
 
 ![Paramètres - Nouveau serveur](dab-settings-server-new-server.png)
 
-#### Plug-in
+#### **Plug-in**
 {: #plugins}
 
 L'onglet Plug-in affiche la liste des plug-in disponibles dans Digital App Builder. Vous pouvez effectuer les actions suivantes :

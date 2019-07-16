@@ -1142,8 +1142,7 @@ le superdomaine de l'application**.
     * Dans la liste des applications, cliquez sur **appcenterconsole\_war**.
     * Dans la section **Propriétés du détail**, cliquez sur le lien **Chargement de classes et détection de mise à
 jour**.
-    * Dans la sous-fenêtre **Ordre du chargeur de classes**, cliquez sur **Classes chargées en premier avec un chargeur
-de classe local (dernier parent)**.
+    * Dans la sous-fenêtre **Ordre du chargeur de classes**, cliquez sur **Classes chargées en premier avec un chargeur de classe local (dernier parent)**.
     * Cliquez sur **OK**.
     * Dans la section **Modules**, cliquez sur **Gestion des modules**.
     * Dans la liste des modules, cliquez sur **ApplicationCenterConsole**.
@@ -1213,7 +1212,7 @@ Afin de configurer Apache Tomcat pour Application Center manuellement, vous deve
 
 1. Ajoutez les pilotes de base de données dans le répertoire lib de Tomcat. Voir les instructions relatives au système de gestion de base de données approprié dans [Installation manuelle d'Application Center](#manually-installing-application-center).
 2. Editez **rép\_install\_tomcat/conf/server.xml**.
-    * Supprimez la mise en commentaire de l'élément suivant, qui est au départ mis en commentaire : `<Valve className="org.apache.catalina.authenticator.SingleSignOn" />`.
+    * Supprimez la mise en commentaire de l'élément suivant, initialement mis en commentaire : `<Valve className="org.apache.catalina.authenticator.SingleSignOn" />`.
     * Déclarez les applications des services et de la console Application Center ainsi qu'un registre d'utilisateurs :
 
       ```xml
@@ -1452,17 +1451,14 @@ le superdomaine de l'application**.
     * Dans la liste des applications, cliquez sur **AppCenterEAR**.
     * Dans la section **Propriétés du détail**, cliquez sur le lien **Chargement de classes et détection de mise à
 jour**.
-    * Dans la sous-fenêtre **Ordre du chargeur de classes**, cliquez sur **Classes chargées en premier avec un chargeur
-de classe local (dernier parent)**.
+    * Dans la sous-fenêtre **Ordre du chargeur de classes**, cliquez sur **Classes chargées en premier avec un chargeur de classe local (dernier parent)**.
     * Cliquez sur **OK**.
     * Dans la section **Modules**, cliquez sur **Gestion des modules**.
     * Dans la liste des modules, cliquez sur **ApplicationCenterConsole**.
-    * Dans la sous-fenêtre **Ordre du chargeur de classes**, cliquez sur **Classes chargées en premier avec un chargeur
-de classe local (dernier parent)**.
+    * Dans la sous-fenêtre **Ordre du chargeur de classes**, cliquez sur **Classes chargées en premier avec un chargeur de classe local (dernier parent)**.
     * Cliquez sur **OK**.
     * Dans la liste des modules, cliquez sur **ApplicationCenterServices**.
-    * Dans la sous-fenêtre **Ordre du chargeur de classes**, cliquez sur **Classes chargées en premier avec un chargeur
-de classe local (dernier parent)**.
+    * Dans la sous-fenêtre **Ordre du chargeur de classes**, cliquez sur **Classes chargées en premier avec un chargeur de classe local (dernier parent)**.
     * Cliquez sur **OK** deux fois.
     * Cliquez sur **Sauvegarder**.
     * Sélectionnez **appcenterconsoleEAR** et cliquez sur **Démarrer**.

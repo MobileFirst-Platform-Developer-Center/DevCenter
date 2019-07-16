@@ -106,7 +106,7 @@ Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Inclua o arquivo **analytics.ear** na pasta `./usr/servers/<serverName>/apps` de seu Liberty Server.
+3. Inclua o arquivo **analytics.ear** na pasta `./usr/servers/<serverName>/apps` do servidor Liberty.
 4. Substitua o conteúdo da tag `<featureManager>` do arquivo `./usr/servers/<serverName>/server.xml` pelo conteúdo a seguir:
 
    ```xml
@@ -264,7 +264,7 @@ As etapas a seguir descrevem como instalar e executar o arquivo EAR do Analytics
 {: #installing-mobilefirst-analytics-with-ant-tasks }
 Certifique-se de que tenha os arquivos WAR e de configuração necessários: **analytics-ui.war** e **analytics-service.war**. Para obter informações adicionais sobre os artefatos de instalação, consulte [Instalando o {{ site.data.keys.mf_server }} em um servidor de aplicativos](../../prod-env/appserver). Os arquivos **analytics-ui.war** e **analytics-service.war** estão localizados em **MobileFirst_Platform_Server\analytics**.
 
-Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos está instalado, ou o Network Deployment Manager para WebSphere Application Server Network Deployment. Se você deseja iniciar a tarefa Ant de um computador no qual {{ site.data.keys.mf_server }} não está instalado, deve-se copiar o arquivo **\<mf_server_install_dir\>/MobileFirstServer/mfp-ant-deployer.jar** para esse computador.
+Deve-se executar a tarefa Ant no computador em que o servidor de aplicativos está instalado, ou o Network Deployment Manager para WebSphere Application Server Network Deployment. Para iniciar a tarefa Ant a partir de um computador no qual o {{ site.data.keys.mf_server }} não está instalado, deve-se copiar o arquivo **\<mf_server_install_dir\>/MobileFirstServer/mfp-ant-deployer.jar** para esse computador.
 
 > Nota: o item temporário **mf_server_install_dir** é o diretório onde o {{ site.data.keys.mf_server }} foi instalado.
 

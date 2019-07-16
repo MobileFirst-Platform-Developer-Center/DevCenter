@@ -74,14 +74,56 @@ Siga los pasos siguientes para cargar el archivo PPA en IBM Cloud Kubernetes Clu
       ibmcloud cr region-set
       ```    
 
-  4. Cargue el archivo PPA de {{ site.data.keys.product }} mediante el mandato siguiente:
+  4. Cargue el archivo PPA de {{ site.data.keys.product }} siguiendo estos pasos: 
+       1. Extraiga el archivo de archivado PPA. 
+       2. Etiquete las imágenes cargadas con el espacio de nombres de registro de IBM Cloud Container y con la versión adecuada. 
+       3. Envíe la imagen. 
+       4. Cree y envíe los manifiestos.
+
+      A continuación encontrará un ejemplo de mfpf-server
+      ```bash
+      mkdir -p ppatmp ; cd ppatmp
+
+      tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
+
+      cd ./images
+
+      for i in *; do docker load -i $i;done
+
+      docker tag mfpf-server:1.0.28-amd64 us.icr.io/default/mfpf-server:1.0.28-amd64
+      docker tag mfpf-server:1.0.28-s390x us.icr.io/default/mfpf-server:1.0.28-s390x
+      docker tag mfpf-server:1.0.28-ppc64le us.icr.io/default/mfpf-server/mfpf-server:1.0.28-ppc64le
+
+      # Enviar todas las imágenes
+
+      docker push  us.icr.io/default/mfpf-server:1.0.28-amd64
+      docker push us.icr.io/default/mfpf-server:1.0.28-s390x
+      docker push us.icr.io/default/mfpf-server:1.0.28-ppc64le
+
+      # Crear manifest-lists
+      docker manifest create us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-amd64 us.icr.io/default/mfpf-server:1.0.28-s390x us.icr.io/default/mfpf-server:1.0.28-ppc64le --amend
+
+      # anotar los manifiestos
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-amd64 --os linux --arch amd64
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-ppc64le --os linux --arch ppc64le
+      docker manifest annotate us.icr.io/default/mfpf-server:1.0.28 us.icr.io/default/mfpf-server:1.0.28-s390x --os linux --arch s390x
+
+      # enviar lista de manifiestos
+      docker manifest push us.icr.io/default/mfpf-server:1.0.28
+
+      rm -rf ppatmp
       ```
-      ibmcloud cr ppa-archive-load --archive <nombre_archivado> --namespace <espacio_nombres> [--clustername <nombre_clúster>]
+
+      >**Nota:** el enfoque del mandato `ibmcloud cr ppa-archive load` no da soporte al paquete PPA con soporte de varias arquitecturas. Por lo tanto, hay que extraer y enviar el paquete manualmente al repositorio de IBM Cloud Container (los usuarios que utilicen versiones PPA más antiguas tienen que utilizar el siguiente mandato para la carga). 
+
+      ```bash
+      ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
       ```
       *archive_name* de {{ site.data.keys.product }} es el nombre del archivo PPA descargado desde IBM Passport Advantage,
 
+  >**Nota:** varias arquitecturas se refiere a arquitecturas que incluyen intel (amd64), power64 (ppc64le) y s390x. Solo se da soporte a varias arquitecturas a partir de ICP 3.1.1. 
 
-  Los gráficos Helm se almacenan en el cliente o localmente (a diferencia del gráfico Help de ICP almacenado en el repositorio Help de IBM Cloud Private). Los gráficos pueden estar en el directorio `ppa-import/charts`.
+  Los gráficos Helm se almacenan en el cliente o localmente (a diferencia del gráfico Help de ICP almacenado en el repositorio Help de IBM Cloud Private). Los gráficos pueden estar en el directorio `ppa-import/charts` (o charts).
 
 ## Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}
 {: #configure-install-mf-helmcharts}
@@ -116,21 +158,23 @@ La tabla siguiente proporciona las variables de entrono que se utilizan en {{ si
 
 | Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
-| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
+| arch | amd64 | Preferencia de planificador de nodos trabajadores de amd64 en un clúster híbtido | 3 - Preferido (valor predeterminado). |
+|  |  ppcle64 | Preferencia de planificador de nodos trabajadores de ppc64le en un clúster híbtido | 2 - Sin preferencia (valor predeterminado). |
+|  | s390x | Preferencia de planificador de nodos trabajadores de S390x en un clúster híbtido | 2 - Sin preferencia (valor predeterminado). |
 | image | pullPolicy | Política de extracción de imágenes | El valor predeterminado es **IfNotPresent**. |
 |  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
 |  | name | Nombre de imagen Docker | Nombre de la imagen docker de {{ site.data.keys.prod_adj }} Operational Analytics. |
-| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Operational Analytics que deben crearse | Número entero positivo<br/>El valor predeterminado es **2** |
+| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Operational Analytics que deben crearse | Entero positivo<br/>El valor predeterminado es **2** |
 | mobileFirstAnalyticsConsole | user | Nombre de usuario de {{ site.data.keys.prod_adj }} Operational Analytics | El valor predeterminado es **admin**. |
 |  | password | Contraseña de {{ site.data.keys.prod_adj }} Operational Analytics | El valor predeterminado es **admin**. |
 | analyticsConfiguration | clusterName | Nombre del clúster de {{ site.data.keys.prod_adj }} Analytics | El valor predeterminado es **mobilefirst** |
 |  | analyticsDataDirectory | Vía de acceso donde se almacenan los datos de análisis. *La vía de acceso será la misma si la reclamación de volumen persistente se monta dentro del contenedor*. | El valor predeterminado es `/analyticsData` |
-|  | numberOfShards | Número de fragmentos Elasticsearch de {{ site.data.keys.prod_adj }} Analytics | Número entero positivo<br/>El valor predeterminado es **2** |
-|  | replicasPerShard | Número de réplicas Elasticsearch que se van a mantener por cada fragmento de {{ site.data.keys.prod_adj }} Analytics | Número entero positivo<br/>El valor predeterminado es **2** |
+|  | numberOfShards | Número de fragmentos Elasticsearch de {{ site.data.keys.prod_adj }} Analytics | Entero positivo<br/>El valor predeterminado es **2** |
+|  | replicasPerShard | Número de réplicas Elasticsearch que se van a mantener por cada fragmento de {{ site.data.keys.prod_adj }} Analytics | Entero positivo<br/>El valor predeterminado es **2** |
 | keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
 | jndiConfigurations | mfpfProperties | Propiedades {{ site.data.keys.prod_adj }} JNDI que se deben especificar para personalizar Operational Analytics | Proporcione pares nombre-valor separados por comas. |
-| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas | El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describe la cantidad máxima de memoria permitida | El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas |El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | limits.memory | Describe la cantidad máxima de memoria permitida |El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |  | requests.cpu | Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado será *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1000m**. |
 |  | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado de la cantidad de memoria será *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **2048Mi**. |
 | persistence | existingClaimName | El nombre de la reclamación de volumen de persistencia (PVC) |  |
@@ -145,11 +189,13 @@ La tabla siguiente proporciona las variables de entorno que se utilizan en {{ si
 
 | Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
-| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
+| arch | amd64 | Preferencia de planificador de nodos trabajadores de amd64 en un clúster híbtido | 3 - Preferido (valor predeterminado). |
+|  |  ppcle64 | Preferencia de planificador de nodos trabajadores de ppc64le en un clúster híbtido | 2 - Sin preferencia (valor predeterminado). |
+|  | s390x | Preferencia de planificador de nodos trabajadores de S390x en un clúster híbtido | 2 - Sin preferencia (valor predeterminado). |
 | image | pullPolicy | Política de extracción de imágenes | El valor predeterminado es **IfNotPresent**. |
 |  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
 |  | name | Nombre de imagen Docker | Nombre de la imagen Docker de {{ site.data.keys.prod_adj }} Server. |
-| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Server que deben crearse | Número entero positivo<br/>El valor predeterminado es **3** |
+| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Server que deben crearse | Entero positivo<br/>El valor predeterminado es **3** |
 | mobileFirstOperationsConsole | user | Nombre de usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
 |  | password | Contraseña del usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
 | existingDB2Details | db2Host | Dirección IP o HOST de la base de datos DB2 donde se deben configurar las tablas de {{ site.data.keys.prod_adj }} Server | Actualmente, solo se admite DB2. |
@@ -165,8 +211,8 @@ La tabla siguiente proporciona las variables de entorno que se utilizan en {{ si
 |  | analyticsAdminPassword | Contraseña del usuario administrador de analítica |  |
 | keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
 | jndiConfigurations | mfpfProperties | Propiedades JNDI de servidor {{ site.data.keys.prod_adj }} para personalizar el despliegue | Pares nombre-valor separados por comas. |
-| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas | El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describe la cantidad máxima de memoria permitida | El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas |El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | limits.memory | Describe la cantidad máxima de memoria permitida |El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |  | requests.cpu | Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1000m**. |
 |  | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación | El valor predeterminado es **2048Mi**. |
 | logs | consoleFormat | Especifica el formato de salida del registro del contenedor. | El valor predeterminado es **json**. |
@@ -274,19 +320,19 @@ Obtenga el URL del servidor ejecutando estos mandatos:
  echo https://$NODE_IP:$NODE_PORT/mfpconsole
 ```
 
-Utilizando un método de instalación similar, puede acceder a IBM MobileFirst Analytics Console mediante `<protocol>://<ip_address>:<node_port>/analytics/console` y a IBM Mobile Foundation Application Center mediante <`protocol>://<ip_address>:<node_port>/appcenter/console`
-Además del método *NodePort* para acceder a la consola, también se puede acceder al servicio mediante el host [Ingress](https://console.bluemix.net/docs/containers/cs_ingress.html).
+Con un método de instalación similar, puede acceder a la consola de IBM MobileFirst Analytics utilizando `<protocol>://<ip_address>:<node_port>/analytics/console` y a IBM Mobile Foundation Application Center utilizando <`protocol>://<ip_address>:<node_port>/appcenter/console`
+Además del enfoque *NodePort* para acceder a la consola, también se puede acceder al servicio mediante un host [Ingress](https://console.bluemix.net/docs/containers/cs_ingress.html). 
 
 Siga los pasos siguientes para acceder a la consola:
 
 1. Vaya al [panel de IBM Cloud](https://console.bluemix.net/dashboard/apps/).
 2. Elija la instancia de Kubernetes Cluster donde se ha desplegado `Analytics/Server/AppCenter` para abrir la página **Visión general**.
 3. Localice el subdominio Ingress para el nombre de host ingress y acceda a las consolas de la forma siguiente.
-    * Acceda a IBM Mobile Foundation Operational Console mediante:
+    * Acceda a la consola de IBM Mobile Foundation Operational mediante:
      `<protocol>://<ingress-hostname>/mfpconsole`
-    * Acceda a IBM Mobile Foundation Analytics Console mediante:
+    * Acceda a la consola de IBM Mobile Foundation Analytics mediante:
      `<protocol>://<ingress-hostname>/analytics/console`
-    * Acceda a IBM Mobile Foundation Application Center Console a:
+    * Acceda a la consola de IBM Mobile Foundation Application Center mediante:
      `<protocol>://<ingress-hostname>/appcenter/console`
 
 >**Nota:** El puerto 9600 se expone internamente en el servicio Kubernetes y las instancias de {{ site.data.keys.prod_adj }} Analytics lo utilizan como puerto de transporte.

@@ -281,7 +281,7 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 }
 ```
 
-> 다음 Apple 문서에서 iOS에서의 알림 처리에 대해 자세히 학습하십시오. http://bit.ly/1ESSGdQ
+> [Apple 문서](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)의 iOS에서 알림 처리에 대해 자세히 학습하십시오.
 
 <img alt="샘플 애플리케이션의 이미지" src="notifications-app.png" style="float:right"/>
 

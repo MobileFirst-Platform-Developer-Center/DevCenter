@@ -13,7 +13,7 @@ weight: 1
 
 {{ site.data.keys.product }}의 컴포넌트에 대해 자세히 학습하기 위해 계속 읽으십시오.
 
-> {{ site.data.keys.product }}을 평가하려면 Mobile Foundation IBM Cloud 서비스를 사용하여 IBM Cloud에서 {{ site.data.keys.mf_server }}의 인스턴스를 스핀하기만 하면 됩니다. [Mobile Foundation 사용](../../../bluemix/using-mobile-foundation/) 튜토리얼에서 지시사항을 참조하십시오. 로컬 설치를 위해 {{ site.data.keys.mf_dev_kit_short }}을 설치하도록 선택할 수도 있습니다.
+> {{ site.data.keys.product }}을 평가하려면 Mobile Foundation IBM Cloud 서비스를 사용하여 IBM Cloud에서 {{ site.data.keys.mf_server }}의 인스턴스를 스핀하기만 하면 됩니다. [Mobile Foundation 사용](../../../ibmcloud/using-mobile-foundation/) 튜토리얼에서 지시사항을 참조하십시오. 로컬 설치를 위해 {{ site.data.keys.mf_dev_kit_short }}을 설치하도록 선택할 수도 있습니다.
 
 #### 다음으로 이동:
 {: #jump-to }
