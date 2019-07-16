@@ -8,7 +8,7 @@ weight: 5
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance and {{ site.data.keys.mf_analytics }} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts:
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_push }},  {{ site.data.keys.mf_analytics }} instance and {{ site.data.keys.mf_app_center}} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts:
 
 * Setup IBM Cloud Kubernetes Cluster.
 * Setup your host computer with IBM Cloud Kubernetes Service CLI (`ibmcloud`).
@@ -30,7 +30,7 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 ## Prerequisites
 {: #prereqs}
 
-You should have IBM Cloud account and must have set up the Kubernetes Cluster by following the documentation in [IBM Cloud Kubernetes Cluster service](https://console.bluemix.net/docs/containers/cs_tutorials.html).
+You should have IBM Cloud account and must have set up the Kubernetes Cluster by following the documentation in [IBM Cloud Kubernetes Cluster service](https://cloud.ibm.com/docs/containers?topic=containers-cs_cluster_tutorial).
 
 To manage containers and images, you need to install the following tools on your host machine as part of IBM Cloud CLI plugins setup:
 
@@ -39,12 +39,14 @@ To manage containers and images, you need to install the following tools on your
 * IBM Cloud Container Registry plug-in (`cr`)
 * IBM Cloud Container Service plug-in (`ks`)
 
-To access IBM Cloud Kubernetes Cluster using CLI, you should configure the IBM Cloud client. [Learn more](https://console.bluemix.net/docs/cli/index.html).
+To access IBM Cloud Kubernetes Cluster using CLI, you should configure the IBM Cloud client. [Learn more](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started).
 
 ## Download the IBM Mobile Foundation Passport Advantage Archive
 {: #download-the-ibm-mfpf-ppa-archive}
 The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is available [here](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The PPA archive of {{ site.data.keys.product }} will contain the docker images and Helm Charts of the following {{ site.data.keys.product }} components:
 * {{ site.data.keys.product_adj }} Server
+* {{ site.data.keys.product_adj }} Push
+* {{ site.data.keys.product_adj }} DB-Init 
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
 
