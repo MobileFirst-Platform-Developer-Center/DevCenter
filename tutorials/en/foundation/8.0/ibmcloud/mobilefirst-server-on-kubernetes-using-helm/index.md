@@ -58,24 +58,57 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
 
   1. Log in to the cluster using IBM Cloud plugin.
 
-      >See the [CLI Command Reference](https://console.bluemix.net/docs/cli/index.html#overview) in IBM Cloud CLI documentation.
+      >See the [CLI Command Reference](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#overview) in IBM Cloud CLI documentation.
 
       For example,
       ```bash
-      ibmcloud login -a https://ip:port
+      ibmcloud login -a cloud.ibm.com
       ```
       Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
 
   2. Login into the IBM Cloud Container registry & initialize the Container Service using the following commands:
       ```bash
       ibmcloud cr login
+      
       ibmcloud ks init
       ```  
   3. Set the region of the deployment using the following command (e.g. us-south)
       ```bash
       ibmcloud cr region-set
-      ```    
+      ```  
+  
+  4. Download and install a few CLI tools and the Kubernetes Service plug-in.
+      ```bash
+      curl -sL https://ibm.biz/idt-installer | bash
+      ```
+  
+  5. Follow steps 1 - 4 to Gain access to your cluster
 
+     - Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
+ 
+      ```bash
+      ibmcloud login -a cloud.ibm.com -r us-south -g Default
+      ```
+      
+      - Download the kubeconfig files for your cluster.
+      
+      ```bash
+      ibmcloud ks cluster-config --cluster my_cluster_name
+      ```
+      
+      - Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+      
+      ```bash
+      export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/mfpcloudpaknew/kube-config-dal10-mfpcloudpaknew.yml
+      ```
+      
+      Alternatively, you can directly [download](https://cloud.ibm.com/kubernetes/api/clusters/c49fbca5a4434d84b76e019520d12618/kubeconfig?accountId=e733353724b14ac99eac08c3cb46c596&region=us-south&resourceGroup=e0286c32e2ad40c891af0dac45be4155) your kubeconfig files to manually configure the cluster context.
+      
+      - Verify that you can connect to your cluster by listing your worker nodes.
+      ```bash
+      kubectl get nodes
+      ```
+      
   4. Load the PPA Archive of {{ site.data.keys.product }} using the following steps:
        1. Extract the PPA archive.
        2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version.
