@@ -22,10 +22,12 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Download the IBM Mobile Foundation Passport Advantage Archive](#download-the-ibm-mfpf-ppa-archive)
 * [Load the IBM Mobile Foundation Passport Advantage Archive](#load-the-ibm-mfpf-ppa-archive)
 * [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
+* [Installing Helm Charts](#install-hmc-icp)
 * [Verifying the Installation](#verify-install)
 * [Sample application](#sample-app)
 * [Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases](#upgrading-mf-helm-charts)
 * [Uninstall](#uninstall)
+* [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
 {: #prereqs}
@@ -211,32 +213,6 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
 
 Before you install and configure {{ site.data.keys.mf_server }}, you should have the following:
 
-* [**Mandatory**] a DB2 database configured and ready to use.
-  You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
-
-* [**Optional**] a secret with your keystore and truststore.
-  You can provide your own keystore and truststore to the deployment by creating a secret with your own keystore and truststore.
-
-  Prior to the installation, follow the steps below:
-
-  * Create a secret with `keystore.jks`, `keystore-password.txt`, `truststore.jks`, `truststore-password.txt` and provide the secret name in the field *keystores.keystoresSecretName*.
-
-  * Keep the files `keystore.jks` and its password in a file named `keystore-password.txt` and `truststore.jks` and its password in a file named `truststore-password.jks`.
-
-  * Go to the command line and execute:
-    ```bash
-    kubectl create secret generic mfpf-cert-secret --from-file keystore-password.txt --from-file truststore-password.txt --from-file keystore.jks --from-file truststore.jks
-    ```
-    >**Note:** The names of the files should be the same as mentioned i.e, `keystore.jks`, `keystore-password.txt`, `truststore.jks` and `truststore-password.txt`.
-
-  * Provide the name of the secret in *keystoresSecretName* to override the default keystores.
-
-  For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
-  
-### UPDATE Start
-
-Before you install and configure {{ site.data.keys.mf_server }}, you should have the following:
-
 This section also summarizes the steps for creating secrets.
 
 Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image. 
@@ -351,12 +327,6 @@ Run the below code snippet to create a database secret for Application Center
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
 
 
-### UPDATE END
-
-
-
-
-
 ### Environment variables for {{ site.data.keys.mf_analytics }}
 {: #env-mf-analytics }
 The table below provides the environment variables used in {{ site.data.keys.mf_analytics }} on IBM Cloud Kubernetes Cluster.
@@ -426,10 +396,10 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 
 > For the tutorial on analyzing {{ site.data.keys.prod_adj }} logs using Kibana, see [here](analyzing-mobilefirst-logs-on-icp/).
 
-### Installing Helm Charts
+## Installing Helm Charts
 {: #install-hmc-icp}
 
-#### Install {{ site.data.keys.mf_analytics }}
+### Install {{ site.data.keys.mf_analytics }}
 {: #install-mf-analytics}
 
 Installation of {{ site.data.keys.mf_analytics }} is optional. If you wish to enable analytics in {{ site.data.keys.mf_server }}, you should configure and install {{ site.data.keys.mf_analytics }} first, before installing {{ site.data.keys.mf_server }}.
@@ -462,7 +432,7 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_analyti
     helm install -n mfpanalyticsonkubecluster -f analytics-values.yaml ./ibm-mfpf-analytics-prod-1.0.17.tgz
     ```    
 
-#### Install {{ site.data.keys.mf_server }}
+### Install {{ site.data.keys.mf_server }}
 {: #install-mf-server}
 
 Before you begin the installation of {{ site.data.keys.mf_server }} ensure that you have pre-configured a DB2 database.
@@ -577,3 +547,26 @@ Use the following command to completely delete the installed charts and the asso
 helm delete --purge <release_name>
 ```
 *release_name* is the deployed release name of the Helm Chart.
+
+## Troubleshooting
+{: #troubleshooting}
+
+1. Helm install failed. ***Error: could not find a ready tiller pod***
+
+- Run the below set of commands as it is and re-try helm install
+
+  ```bash
+  helm init
+
+  kubectl create serviceaccount --namespace kube-system tiller
+
+  kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+
+  kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+
+  helm init --service-account tiller --upgrade
+  ```
+
+
+
+
