@@ -22,7 +22,7 @@ We have been testing the iOS 13 beta with the latest being beta 3. We have verif
 
 We encourage you to start testing your application(s) with iOS 13.
 
-## MobileFirst Platform Foundation Support for iOS 13(beta 3)
+## MobileFirst Platform Foundation Support for iOS 13 (beta 3)
 
 #### Existing application
 Existing application(s) that were created using MobileFirst Platform **will work** on iOS 13 as they did on previous versions of iOS.
@@ -46,6 +46,7 @@ Features that were tested for Mobilefirst Foundation (MFP) v8.0:
 * Challenge Handling
 * JSONStore
 * Direct Update
+* Secure Direct Update
 * Application Management
 * Application Authenticity
 * Remote Disable
@@ -53,7 +54,7 @@ Features that were tested for Mobilefirst Foundation (MFP) v8.0:
 * Push notifications
 * Certificate Pinning
 
-Features that were tested for Mobilefirst Foundation (MFP) v8.0:
+Features that were tested for Mobilefirst Foundation (MFP) v7.1:
 * OAuth Flow
 * Invoking backend procedures through adapters
 * Challenge Handling
@@ -64,6 +65,8 @@ Features that were tested for Mobilefirst Foundation (MFP) v8.0:
 * Remote Disable
 * Push notifications
 * Certificate Pinning
+
+> **Note:** Adapter calls to server in MFP 7.1 have problem connecting on physical device having iOS 13. We are investigating the issue and will update the blog soon.
 
 We have also verified MFP based cordova, ionic and react-native apps.
 
