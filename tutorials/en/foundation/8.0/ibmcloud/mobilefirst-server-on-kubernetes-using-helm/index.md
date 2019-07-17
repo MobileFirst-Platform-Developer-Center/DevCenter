@@ -231,7 +231,131 @@ Before you install and configure {{ site.data.keys.mf_server }}, you should have
 
   * Provide the name of the secret in *keystoresSecretName* to override the default keystores.
 
-  For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).  
+  For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
+  
+### UPDATE Start
+
+Before you install and configure {{ site.data.keys.mf_server }}, you should have the following:
+
+This section also summarizes the steps for creating secrets.
+
+Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image. 
+
+* [**Mandatory**] A DB2 database configured and ready to use.
+  You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
+
+* [**Mandatory**] Creating **database secrets** for Server, Push and Application Center.
+This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
+
+Run the code snippet below to create a database secret for Mobile Foundation server:
+
+   ```bash
+	# Create mfpserver secret
+	cat <<EOF | kubectl apply -f -
+	apiVersion: v1
+	data:
+	  MFPF_ADMIN_DB_USERNAME: encoded_uname 
+	  MFPF_ADMIN_DB_PASSWORD: encoded_password
+	  MFPF_RUNTIME_DB_USERNAME: encoded_uname 
+	  MFPF_RUNTIME_DB_PASSWORD: encoded_password
+	  MFPF_PUSH_DB_USERNAME: encoded_uname
+	  MFPF_PUSH_DB_PASSWORD: encoded_password
+	kind: Secret
+	metadata:
+	  name: mfpserver-dbsecret
+	type: Opaque
+	EOF
+   ```
+	
+Run the below code snippet to create a database secret for Application Center
+	
+   ```bash
+	# create appcenter secret
+	cat <<EOF | kubectl apply -f -
+	apiVersion: v1
+	data:
+	  APPCNTR_DB_USERNAME: Ymx1YWRtaW4=
+	  APPCNTR_DB_PASSWORD: TlRaallXSmtZamRqTm1RMw==
+	kind: Secret
+	metadata:
+	  name: appcenter-dbsecret
+	type: Opaque
+	EOF
+   ```
+
+   > NOTE: You may encode the username and password details using the below command - 
+	
+   ```bash
+	export $MY_USER_NAME=<myuser>
+	export $MY_PASSWORD=<mypassword>
+	
+	echo -n $MY_USER_NAME | base64
+	echo -n $MY_PASSWORD | base64
+   ```
+   
+* [**Mandatory**] A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
+	
+   ```bash
+   kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
+   ```
+
+   For Analytics.
+
+   ```bash
+   kubectl create secret generic analyticslogin --from-literal=ANALYTICS_ADMIN_USER=admin --from-literal=ANALYTICS_ADMIN_PASSWORD=admin
+   ```
+
+   For Application Center.
+
+   ```bash
+   kubectl create secret generic appcenterlogin --from-literal=APPCENTER_ADMIN_USER=admin --from-literal=APPCENTER_ADMIN_PASSWORD=admin
+   ```
+
+   > NOTE: If these secrets are not provided, they are created with default username and password of admin/admin during the deployment of Mobile Foundation helm chart
+   
+* [**Optional**] You can provide your own keystore and truststore to Server, Push, Analytics and Application Center deployment by creating a secret with your own keystore and truststore.
+
+   Pre-create a secret with `keystore.jks` and `truststore.jks` along with keystore and trustore password using the literals KEYSTORE_PASSWORD and TRUSTSTORE_PASSWORD  provide the secret name in the field keystoreSecret of respective component
+
+   Keep the files `keystore.jks`, `truststore.jks` and its passwords as below  
+
+   For example:
+
+   ```bash
+   kubectl create secret generic server --from-file=./keystore.jks --from-file=./truststore.jks --from-literal=KEYSTORE_PASSWORD=worklight --from-literal=TRUSTSTORE_PASSWORD=worklight
+   ```
+
+   > NOTE: The names of the files and literals should be the same as mentioned in command above.	Provide this secret name in `keystoresSecretName` input field of respective component to override the default keystores when configuring the helm chart.
+   
+* [**Optional**] Mobile Foundation components can be configured with hostname based Ingress for external clients to reach them using hostname. The Ingress can be secured by using a TLS private key and certificate. The TLS private key and certificate must be defined in a secret with key names `tls.key` and `tls.crt`. 
+
+   The secret **mf-tls-secret** is created in the same namespace as the Ingress resource by using the following command:
+
+   ```bash
+   kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/tls.crt
+   ```
+	
+   The name of the secret is then provided in the field global.ingress.secret
+   
+   > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
+   
+* [**Optional**] Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
+
+   These secrets can be created as follows: 
+	
+   ```bash
+   kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLIENTID=admin --from-literal=MFPF_ADMIN_AUTH_SECRET=admin
+   kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
+   ```
+	
+   > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
+
+
+### UPDATE END
+
+
+
+
 
 ### Environment variables for {{ site.data.keys.mf_analytics }}
 {: #env-mf-analytics }
