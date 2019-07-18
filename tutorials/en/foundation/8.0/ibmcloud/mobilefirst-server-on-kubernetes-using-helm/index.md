@@ -32,7 +32,7 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 ## Prerequisites
 {: #prereqs}
 
-You should have an IBM Cloud account and must have set up the [IBM Cloud Kubernetes Cluster](https://cloud.ibm.com/docs/containers?topic=containers-cs_cluster_tutorial).
+You should have an **IBM Cloud account** and must have set up the [**IBM Cloud Kubernetes Cluster**](https://cloud.ibm.com/docs/containers?topic=containers-cs_cluster_tutorial).
 
 To manage the containers and images, install the following tools on your host machine as part of IBM Cloud CLI plugins setup:
 
@@ -80,40 +80,42 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
   4. Follow the below steps to Gain access to your cluster -
   
   
-      - Download and install a few CLI tools and the Kubernetes Service plug-in.
+      1. Download and install a few CLI tools and the Kubernetes Service plug-in.
      
       ```bash
       curl -sL https://ibm.biz/idt-installer | bash
       ```
       
-      - Download the kubeconfig files for your cluster.
+      2. Download the kubeconfig files for your cluster.
       
       ```bash
       ibmcloud ks cluster-config --cluster my_cluster_name
       ```
       
-      - Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+      3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
       
       ```bash
       export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/my_namespace/kube-config-dal10-my_namespace.yml
       ```
       
-      - Verify that you can connect to your cluster by listing your worker nodes.
+      4. Verify that you can connect to your cluster by listing your worker nodes.
       
       ```bash
       kubectl get nodes
       ```
       
-  6. Load the PPA Archive of {{ site.data.keys.product }} using the following steps:
-       1. Extract the PPA archive.
-       2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version.
-       3. Push the image.
-       4. Create and Push the manifests.
+  5. Load the PPA Archive of {{ site.data.keys.product }} using the following steps:
+       1. **Extract** the PPA archive
+       2. **Tag** the loaded images with the IBM Cloud Container registry namespace and with the right version
+       3. **Push** the image
+       4. Create and Push the **manifests**
 
-      Below is the example for the mfpf-server
+      Below is the example for the **mfpf-server**
+      
       ```bash
       
-      # 1. Extract the PPA archive. 
+      # 1. Extract the PPA archive
+      
       mkdir -p ppatmp ; cd ppatmp
 
       tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
@@ -156,7 +158,7 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       docker push us.icr.io/my_namespace/mfpf-push:1.1.0-s390x
       docker push us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
 
-      # 4. Create and Push the manifests.
+      # 4. Create and Push the manifests
       
       ## 4.1 Create manifest-lists
       
@@ -211,8 +213,7 @@ This section also summarizes the steps for creating secrets.
 
 Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image. 
 
-* [**Mandatory**] A DB2 database configured and ready to use.
-  You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
+* [**Mandatory**] A DB2 database configured and ready to use. You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
 
 * [**Mandatory**] Creating **database secrets** for Server, Push and Application Center.
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
@@ -244,8 +245,8 @@ Run the below code snippet to create a database secret for Application Center
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
 	data:
-	  APPCNTR_DB_USERNAME: Ymx1YWRtaW4=
-	  APPCNTR_DB_PASSWORD: TlRaallXSmtZamRqTm1RMw==
+	  APPCNTR_DB_USERNAME: encoded_uname
+	  APPCNTR_DB_PASSWORD: encoded_password
 	kind: Secret
 	metadata:
 	  name: appcenter-dbsecret
@@ -494,15 +495,15 @@ In addition to the *NodePort* approach to access the Console, the service can al
 
 Follow the steps below to access the console:
 
-1. Go to the [IBM Cloud Dashboard](https://console.bluemix.net/dashboard/apps/).
-2. Choose the Kubernetes Cluster on which `Analytics/Server/AppCenter` has been deployed, to open the **Overview** page.
+1. Go to the [**IBM Cloud Dashboard**](https://console.bluemix.net/dashboard/apps/).
+2. Choose the **Kubernetes Cluster** on which `Analytics/Server/AppCenter` has been deployed and open the **Overview** page.
 3. Locate the Ingress subdomain for the ingress hostname and access the consoles as follows.
     * Access the IBM Mobile Foundation Operational Console using:
      `<protocol>://<ingress-hostname>/mfpconsole`
     * Access the IBM Mobile Foundation Analytics Console using:
      `<protocol>://<ingress-hostname>/analytics/console`
     * Access the IBM Mobile Foundation Application Center Console using:
-     `<protocol>://<ingress-hostname>/appcenter/console`
+     `<protocol>://<ingress-hostname>/appcenterconsole`
 
 >**Note:** The port 9600 is exposed internally in the Kubernetes service and is used by the {{ site.data.keys.prod_adj }} Analytics instances as the transport port.
 
@@ -544,6 +545,8 @@ helm delete --purge <release_name>
 
 ## Troubleshooting
 {: #troubleshooting}
+
+This section guides you in identifying and resolving the likely error scenarios you might encounter while deploying Mobile Foundation
 
 1. Helm install failed. `Error: could not find a ready tiller pod`
 
