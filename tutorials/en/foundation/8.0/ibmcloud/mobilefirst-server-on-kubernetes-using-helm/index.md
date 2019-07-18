@@ -225,27 +225,27 @@ This section outlines the security mechanisms for controlling access to the data
 
 Run the code snippet below to create a database secret for Mobile Foundation server:
 
-      ```bash
-      # Create mfpserver secret
-      cat <<EOF | kubectl apply -f -
-      apiVersion: v1
-      data:
-	MFPF_ADMIN_DB_USERNAME: encoded_uname 
-	MFPF_ADMIN_DB_PASSWORD: encoded_password
-	MFPF_RUNTIME_DB_USERNAME: encoded_uname 
-	MFPF_RUNTIME_DB_PASSWORD: encoded_password
-	MFPF_PUSH_DB_USERNAME: encoded_uname
-	MFPF_PUSH_DB_PASSWORD: encoded_password
-      kind: Secret
+   ```bash
+	# Create mfpserver secret
+	cat <<EOF | kubectl apply -f -
+	apiVersion: v1
+	data:
+	  MFPF_ADMIN_DB_USERNAME: encoded_uname 
+	  MFPF_ADMIN_DB_PASSWORD: encoded_password
+	  MFPF_RUNTIME_DB_USERNAME: encoded_uname 
+	  MFPF_RUNTIME_DB_PASSWORD: encoded_password
+	  MFPF_PUSH_DB_USERNAME: encoded_uname
+	  MFPF_PUSH_DB_PASSWORD: encoded_password
+	kind: Secret
 	metadata:
 	  name: mfpserver-dbsecret
 	type: Opaque
 	EOF
-      ```
-	
+   ```
+		
 Run the below code snippet to create a database secret for Application Center
 	
-      ```bash
+   ```bash
 	# create appcenter secret
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
@@ -257,35 +257,35 @@ Run the below code snippet to create a database secret for Application Center
 	  name: appcenter-dbsecret
 	type: Opaque
 	EOF
-      ```
-
+   ```
    > NOTE: You may encode the username and password details using the below command - 
 	
-      ```bash
+   ```bash
 	export $MY_USER_NAME=<myuser>
 	export $MY_PASSWORD=<mypassword>
 	
 	echo -n $MY_USER_NAME | base64
 	echo -n $MY_PASSWORD | base64
-      ```
+   ```
+
    
 * [**Mandatory**] A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
 	
-      ```bash
-         kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
-      ```
+   ```bash
+   kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
+   ```
 
    For Analytics.
 
-      ```bash
-         kubectl create secret generic analyticslogin --from-literal=ANALYTICS_ADMIN_USER=admin --from-literal=ANALYTICS_ADMIN_PASSWORD=admin
-      ```
+   ```bash
+   kubectl create secret generic analyticslogin --from-literal=ANALYTICS_ADMIN_USER=admin --from-literal=ANALYTICS_ADMIN_PASSWORD=admin
+   ```
 
    For Application Center.
 
-      ```bash
-         kubectl create secret generic appcenterlogin --from-literal=APPCENTER_ADMIN_USER=admin --from-literal=APPCENTER_ADMIN_PASSWORD=admin
-      ```
+   ```bash
+   kubectl create secret generic appcenterlogin --from-literal=APPCENTER_ADMIN_USER=admin --from-literal=APPCENTER_ADMIN_PASSWORD=admin
+   ```
 
    > NOTE: If these secrets are not provided, they are created with default username and password of admin/admin during the deployment of Mobile Foundation helm chart
    
@@ -297,9 +297,9 @@ Run the below code snippet to create a database secret for Application Center
 
    For example:
 
-      ```bash
-         kubectl create secret generic server --from-file=./keystore.jks --from-file=./truststore.jks --from-literal=KEYSTORE_PASSWORD=worklight --from-literal=TRUSTSTORE_PASSWORD=worklight
-      ```
+   ```bash
+   kubectl create secret generic server --from-file=./keystore.jks --from-file=./truststore.jks --from-literal=KEYSTORE_PASSWORD=worklight --from-literal=TRUSTSTORE_PASSWORD=worklight
+   ```
 
    > NOTE: The names of the files and literals should be the same as mentioned in command above. Provide this secret name in `keystoresSecretName` input field of respective component to override the default keystores when configuring the helm chart.
    
@@ -307,9 +307,9 @@ Run the below code snippet to create a database secret for Application Center
 
    The secret **mf-tls-secret** is created in the same namespace as the Ingress resource by using the following command:
 
-      ```bash
-         kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/tls.crt
-      ```
+   ```bash
+   kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/tls.crt
+   ```
 	
    The name of the secret is then provided in the field global.ingress.secret
    
@@ -319,11 +319,11 @@ Run the below code snippet to create a database secret for Application Center
 
    These secrets can be created as follows: 
 	
-      ```bash
-         kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLIENTID=admin --from-literal=MFPF_ADMIN_AUTH_SECRET=admin
-         kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
-      ```
-	
+   ```bash
+   kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLIENTID=admin --from-literal=MFPF_ADMIN_AUTH_SECRET=admin
+   kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
+   ```
+		
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
 
 
@@ -551,12 +551,13 @@ helm delete --purge <release_name>
 ## Troubleshooting
 {: #troubleshooting}
 
-1. Helm install failed. ***Error: could not find a ready tiller pod***
+1. Helm install failed. `Error: could not find a ready tiller pod`
 
  - Run the below set of commands as it is and re-try helm install
 
   ```bash
-  helm init
+  
+  helm init
 
   kubectl create serviceaccount --namespace kube-system tiller
 
@@ -568,9 +569,9 @@ helm delete --purge <release_name>
   
   ```
   
-  2. Unable to pull images while deploying the Helm chart
+  2. Unable to pull images while deploying the Helm chart - `Failed to pull image, Error: ErrImagePull`
   
-   - To resolve the issue, create a pull secret and provide this secret name under the input field `pullSecret` in the values.yaml.
+   - To resolve the issue, create a pull secret and provide this secret name under the input field `pullSecret` of the values.yaml file.
  
  Example for creating a pull secret:
    
@@ -578,7 +579,7 @@ helm delete --purge <release_name>
  kubectl create secret docker-registry iks-secret-name --docker-server=us.icr.io --docker-username=iamapikey --docker-password=Your_IBM_Cloud_API_key --docker-email=your_email_id
   
   ```
-  
+
   > Note: Keep the value of `--docker-username=iamapikey` as it is, if you are using the IBM Cloud API key for authentication.
   
    
