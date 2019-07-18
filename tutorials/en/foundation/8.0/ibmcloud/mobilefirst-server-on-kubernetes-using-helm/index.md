@@ -10,11 +10,11 @@ weight: 5
 {: #overview }
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_push }},  {{ site.data.keys.mf_analytics }} instance and {{ site.data.keys.mf_app_center}} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts:
 
-* Setup IBM Cloud Kubernetes Cluster.
-* Setup your host computer with IBM Cloud Kubernetes Service CLI (`ibmcloud`).
-* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} .
-* Load the PPA archive in IBM Cloud Kubernetes Cluster.
-* Finally, you will configure and install the {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}.
+* Setup IBM Cloud Kubernetes Cluster
+* Setup your host computer with IBM Cloud Kubernetes Service CLI (`ibmcloud`)
+* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} 
+* Load the PPA archive in IBM Cloud Kubernetes Cluster
+* Configure and install the {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_app_center}} (optional) and {{ site.data.keys.mf_server }}
 
 #### Jump to:
 {: #jump-to }
@@ -32,9 +32,9 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 ## Prerequisites
 {: #prereqs}
 
-You should have IBM Cloud account and must have set up the Kubernetes Cluster by following the documentation in [IBM Cloud Kubernetes Cluster service](https://cloud.ibm.com/docs/containers?topic=containers-cs_cluster_tutorial).
+You should have an IBM Cloud account and must have set up the [IBM Cloud Kubernetes Cluster](https://cloud.ibm.com/docs/containers?topic=containers-cs_cluster_tutorial).
 
-To manage the containers and images, you need to install the following tools on your host machine as part of IBM Cloud CLI plugins setup:
+To manage the containers and images, install the following tools on your host machine as part of IBM Cloud CLI plugins setup:
 
 * IBM Cloud CLI (`ibmcloud`)
 * Kubernetes CLI
@@ -58,15 +58,13 @@ Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup 
 
 Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes Cluster:
 
-  1. Log in to the cluster using IBM Cloud plugin.
-
-      >See the [CLI Command Reference](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#overview) in IBM Cloud CLI documentation.
+  1. Log in to the cluster using IBM Cloud plugin. Refer the [IBM Cloud CLI documentation] (https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#overview) for Command Reference.
 
       For example,
       ```bash
       ibmcloud login -a cloud.ibm.com
       ```
-      Optionally, if you intend to skip SSL validation use the flag `--skip-ssl-validation` in the command above. Using this option prompts for `username` and `password` of your cluster endpoint. Proceed with the steps below, on successful login.
+      Include the --sso option if using a federated ID. Optionally, you may intend to skip SSL validation use the flag `--skip-ssl-validation` in the above command. This would bypass SSL validation of HTTP requests. Using this parameter might cause security problems.
 
   2. Login into the IBM Cloud Container registry & initialize the Container Service using the following commands:
       ```bash
@@ -79,17 +77,13 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       ibmcloud cr region-set
       ```  
   
-  4. Download and install a few CLI tools and the Kubernetes Service plug-in.
+  4. Follow the below steps to Gain access to your cluster -
+  
+  
+      - Download and install a few CLI tools and the Kubernetes Service plug-in.
+     
       ```bash
       curl -sL https://ibm.biz/idt-installer | bash
-      ```
-  
-  5. Follow steps 1 - 4 to Gain access to your cluster
-
-     - Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
- 
-      ```bash
-      ibmcloud login -a cloud.ibm.com
       ```
       
       - Download the kubeconfig files for your cluster.
