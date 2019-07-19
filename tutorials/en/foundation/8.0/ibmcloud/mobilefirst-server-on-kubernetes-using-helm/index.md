@@ -400,6 +400,7 @@ The table below provides the environment variables used in the {{ site.data.keys
 
 | Qualifier | Parameter | Definition | Allowed Value |
 |-----------|-----------|------------|---------------|
+| **Global Variables** |  |  |  |
 | arch | amd64 | amd64 worker node scheduler preference in a hybrid cluster | 3 - Most preferred (Default). |
 |  | ppcle64 | ppc64le worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
 |  | s390x | S390x worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
@@ -413,16 +414,39 @@ The table below provides the environment variables used in the {{ site.data.keys
 | | repository | Docker image repository for database initialization | Repository of the Mobile Foundation database docker image |
 |  | tag | Docker image tag | See Docker tag description |
 |  | replicas | The number of instances (pods) of Mobile Foundation DBinit that need to be created | Positive integer (Default: 1) |
+| **Mobile Foundation Server Variables** |  |  |  |
 | mfpserver | enabled | Flag to enable Server | true (default) or false |
 |  | repository | Docker image repository | Repository of the Mobile Foundation Server docker image |
 |  | tag | Docker image tag | See Docker tag description |
 |  | consoleSecret | A pre-created secret for login | Check Prerequisites section |
-|  mfpserver.db | host | IP address or hostname of the database where Mobile Foundation Server tables need to be configured. | IBM DB2® (default). |
+|  db | host | IP address or hostname of the database where Mobile Foundation Server tables need to be configured. | IBM DB2® (default). |
 | | port | Port where database is setup | |
 | | secret | A precreated secret which has database credentials| |
 | | name | Name of the Mobile Foundation Server database | |
 |  | schema | Server db schema to be created. | If the schema already present, it will be used. Otherwise, it will be created. |
 |  | ssl | Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
+| adminClientSecret | Secify the name of the secret | Admin client secret | Specify the Client Secret name created. [Refer](#configure-install-mf-helmcharts) |
+| pushClientSecret | Secify the name of the secret | Push client secret | Specify the Client Secret name created. [Refer](#configure-install-mf-helmcharts) |
+| internalConsoleSecretDetails | consoleUser: "admin" |  |  |
+|  | consolePassword: "admin" |  |  |
+| internalClientSecretDetails | adminClientSecretId: admin |  |  |
+| | adminClientSecretPassword: nimda |  |  |
+| | pushClientSecretId: push |  |  |
+| | pushClientSecretPassword: hsup |  |  |
+| replicas | 3 | The number of instances (pods) of Mobile Foundation Server that need to be created | Positive integer (Default: 3) |
+| autoscaling | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicas field. | false (default) or true |
+| | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+| | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than min. | Positive integer (default to 10) |
+| | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+| pdb | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
+| | min  | minimum available pods | Positive integer (default to 1) |
+| mfpserver.jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
+| mfpserver | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
+| mfpserver.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
+|                  | limits.memory | Describes the maximum amount of memory allowed. | Default is 4096Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
+|           | requests.cpu  | Describes the minimum amount of CPU required - if not specified will default to limit (if specified) or otherwise implementation-defined value.  | Default is 1000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
+|           | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the limit (if specified) or the implementation-defined value. | Default is 2048Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
+
 
 
 
