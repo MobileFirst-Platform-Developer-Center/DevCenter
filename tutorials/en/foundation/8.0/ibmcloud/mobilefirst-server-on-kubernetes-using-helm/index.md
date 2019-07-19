@@ -8,13 +8,14 @@ weight: 5
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_push }},  {{ site.data.keys.mf_analytics }} instance and {{ site.data.keys.mf_app_center}} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts:
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_push }},  {{ site.data.keys.mf_analytics }} instance and {{ site.data.keys.mf_app_center}} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts.
 
-* Setup IBM Cloud Kubernetes Cluster
-* Setup your host computer with IBM Cloud Kubernetes Service CLI (`ibmcloud`)
+Below are the steps to get you started:
+
+* Complete the prerequisites
 * Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} 
 * Load the PPA archive in IBM Cloud Kubernetes Cluster
-* Configure and install the {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_app_center}} (optional) and {{ site.data.keys.mf_server }}
+* Configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_app_center}} (optional) 
 
 #### Jump to:
 {: #jump-to }
@@ -32,9 +33,9 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 ## Prerequisites
 {: #prereqs}
 
-You should have an **IBM Cloud account** and must have set up the [**IBM Cloud Kubernetes Cluster**](https://cloud.ibm.com/docs/containers?topic=containers-cs_cluster_tutorial).
+You should have an [**IBM Cloud account**](http://cloud.ibm.com/) and must have set up the [**IBM Cloud Kubernetes Cluster**](https://cloud.ibm.com/docs/containers?topic=containers-cs_cluster_tutorial).
 
-To manage the containers and images, install the following tools on your host machine as part of IBM Cloud CLI plugins setup:
+To manage the containers and images, install the following on your host machine as part of IBM Cloud CLI plugins setup:
 
 * IBM Cloud CLI (`ibmcloud`)
 * Kubernetes CLI
