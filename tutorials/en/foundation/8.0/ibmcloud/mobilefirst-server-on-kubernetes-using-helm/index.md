@@ -393,35 +393,30 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
 
 
-### Environment variables for {{ site.data.keys.mf_app_center }}
+### Environment variables
 {: #env-mf-app-center }
-The table below provides the environment variables used in {{ site.data.keys.mf_app_center }} on IBM Cloud Kubernetes Cluster.
+The table below provides the environment variables used in the {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_app_center }}
 
 | Qualifier | Parameter | Definition | Allowed Value |
 |-----------|-----------|------------|---------------|
 | arch | amd64 | amd64 worker node scheduler preference in a hybrid cluster | 3 - Most preferred (Default). |
 |  | ppcle64 | ppc64le worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
 |  | s390x | S390x worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
-| image | pullPolicy | Image Pull Policy | Default is **IfNotPresent**. |
+| image | pullPolicy | Image Pull Policy | Defaults to **IfNotPresent**. |
 |  | pullSecret | Image Pull Secret |  |
-|  | tag | Docker image tag | See [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
-|  | name | Docker image name | Name of the {{ site.data.keys.prod_adj }} Operational AppCenter docker image. |
-| scaling | replicaCount | Number of instances (pods) of {{ site.data.keys.prod_adj }} Operational AppCenter that need to be created | Positive integer<br/>Default is **2** |
-| mobileFirstAppCenter Console | user | Username for {{ site.data.keys.prod_adj }} Operational Analytics | Default is **admin**. |
-|  | password | Password for {{ site.data.keys.prod_adj }} Operational AppCenter | Default is **admin**. |
-| analyticsConfiguration | clusterName | Name of the {{ site.data.keys.prod_adj }} AppCenter cluster | Default is **mobilefirst** |
-|  | analyticsDataDirectory | Path where analytics data is stored. *It will also be the same path where the persistent volume claim is mounted inside the container*. | Defaults to `/analyticsData` |
-|  | numberOfShards | Number of Elasticsearch shards for {{ site.data.keys.prod_adj }} Analytics | Positive integer<br/>Default is **2** |
-|  | replicasPerShard | Number of Elasticsearch replicas to be maintained per each shard for {{ site.data.keys.prod_adj }} Analytics | Positive integer<br/>Default is **2** |
-| keystores | keystoresSecretName | Refer to [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts), describing the steps to create the secret with the keystores and their passwords. |  |
-| jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} JNDI properties to be specified to customize Operational Analytics | Provide comma separated name value pairs. |
-| resources | limits.cpu | Describes the maximum amount of CPU allowed | Default is **2000m**<br/>Read the [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describes the maximum amount of memory allowed | Default is **4096Mi**<br/>Read the [meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-|  | requests.cpu | Describes the minimum amount of CPU required. If not specified, this will default to *limits* (if specified) or otherwise implementation-defined value | Default is **1000m**. |
-|  | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the *limits* (if specified) or the implementation-defined value | Default is **2048Mi**. |
-| logs | consoleFormat | Specifies container log output format. | Default is **json**. |
-|  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
-|  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
+| ingress | hostname | The external hostname or IP address to be used by external clients | Balances network traffic workloads in your cluster by forwarding public or private requests to your apps |
+|  | secret | TLS secret name | Specifies the name of the secret for the certificate that has to be used in the Ingress definition. The secret has to be pre-created using the relevant certificate and key. Mandatory if SSL/TLS is enabled. Pre-create the secret with Certificate & Key before supplying the name here |
+|  | sslPassThrough | Enable SSL passthrough | Specifies is the SSL request should be passed through to the Mobile Foundation service - SSL termination occurs in the Mobile Foundation service. Default: false |
+| https | true |  |  |
+| dbinit | enabled | Enable initialization of Server, Push and Application Center databases | Initializes databases and create schemas / tables for Server, Push and Application Center deployment.(Not required for Analytics). Default: true |
+| | repository | Docker image repository for database initialization | Repository of the Mobile Foundation database docker image |
+|  | tag | Docker image tag | See Docker tag description |
+
+
+
+
+
+
 
 > For the tutorial on analyzing {{ site.data.keys.prod_adj }} logs using Kibana, see [here](analyzing-mobilefirst-logs-on-icp/).
 
