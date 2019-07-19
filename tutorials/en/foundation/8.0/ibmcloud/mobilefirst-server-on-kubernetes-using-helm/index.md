@@ -323,6 +323,61 @@ Run the below code snippet to create a database secret for Application Center
    ```
 		
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
+   
+* [**Mandatory**] For Analytics deployment, one can choose below options for persisting analytics data
+
+    a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
+	
+      For example: 
+	
+      Sample `PersistentVolume.yaml`
+	
+      ```bash
+	apiVersion: v1
+	kind: PersistentVolume
+	metadata:
+	  labels:
+	    name: mfvol
+	  name: mfvol
+	spec:
+	  accessModes:
+	  - ReadWriteMany
+	  capacity:
+	    storage: 20Gi
+	  nfs:
+	    path: <nfs_path>
+	    server: <nfs_server>
+      ```
+
+    > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
+
+      Sample `PersistentVolumeClaim.yaml`
+		
+      ```bash
+	apiVersion: v1
+	kind: PersistentVolumeClaim
+	metadata:
+	  name: mfvolclaim
+	  namespace: <namespace>
+	spec:
+	  accessModes:
+	  - ReadWriteMany
+	  resources:
+	    requests:
+	      storage: 20Gi
+	  selector:
+	    matchLabels:
+	      name: mfvol
+	  volumeName: mfvol
+	status:
+	  accessModes:
+	  - ReadWriteMany
+	  capacity:
+	    storage: 20Gi
+	```
+	
+    > NOTE: Make sure you add the right <namespace> in the above yaml.
+
 
 
 ## Environment variables
@@ -331,7 +386,7 @@ The table below provides the environment variables used in the {{ site.data.keys
 
 | Qualifier | Parameter | Definition | Allowed Value |
 |-----------|-----------|------------|---------------|
-| ***`Global Configuration`*** | | | |
+| ***`Global Configuration`*** | |  |  |
 | arch | amd64 | amd64 worker node scheduler preference in a hybrid cluster | 3 - Most preferred (Default). |
 |  | ppcle64 | ppc64le worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
 |  | s390x | S390x worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
@@ -454,7 +509,7 @@ The table below provides the environment variables used in the {{ site.data.keys
 
 Installation of {{ site.data.keys.mf_analytics }} is optional. If you wish to enable analytics in {{ site.data.keys.mf_server }}, you should configure and install {{ site.data.keys.mf_analytics }} first, before installing {{ site.data.keys.mf_server }}.
 
-Before you begin the installation of {{ site.data.keys.mf_analytics }} Chart, configure the **Persistent Volume**. Provide the **Persistent Volume** to configure {{ site.data.keys.mf_analytics }}. Follow the steps detailed in [IBM Cloud Kubernetes documentation](https://console.bluemix.net/docs/containers/cs_storage_file.html#file_storage) to create **Persistent Volume**.
+Before you begin the installation, ensure that you have covered all the **Mandatory** sections under ***[Install and configure IBM {{ site.data.keys.product }} Helm Charts]***(#configure-install-mf-helmcharts).
 
 Follow the steps below to install and configure IBM {{ site.data.keys.mf_analytics }} on IBM Cloud Kubernetes Cluster.
 
