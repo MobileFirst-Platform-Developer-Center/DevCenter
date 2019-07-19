@@ -22,6 +22,7 @@ Below are the steps to get you started:
 * [Prerequisites](#prereqs)
 * [Download the IBM Mobile Foundation Passport Advantage Archive](#download-the-ibm-mfpf-ppa-archive)
 * [Load the IBM Mobile Foundation Passport Advantage Archive](#load-the-ibm-mfpf-ppa-archive)
+* [Environment variables](#env-variables)
 * [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)
 * [Installing Helm Charts](#install-hmc-icp)
 * [Verifying the Installation](#verify-install)
@@ -393,8 +394,8 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
 
 
-### Environment variables
-{: #env-mf-app-center }
+## Environment variables
+{: #env-variables }
 The table below provides the environment variables used in the {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_app_center }}
 
 | Qualifier | Parameter | Definition | Allowed Value |
@@ -411,6 +412,17 @@ The table below provides the environment variables used in the {{ site.data.keys
 | dbinit | enabled | Enable initialization of Server, Push and Application Center databases | Initializes databases and create schemas / tables for Server, Push and Application Center deployment.(Not required for Analytics). Default: true |
 | | repository | Docker image repository for database initialization | Repository of the Mobile Foundation database docker image |
 |  | tag | Docker image tag | See Docker tag description |
+|  | replicas | The number of instances (pods) of Mobile Foundation DBinit that need to be created | Positive integer (Default: 1) |
+| mfpserver | enabled | Flag to enable Server | true (default) or false |
+|  | repository | Docker image repository | Repository of the Mobile Foundation Server docker image |
+|  | tag | Docker image tag | See Docker tag description |
+|  | consoleSecret | A pre-created secret for login | Check Prerequisites section |
+|  mfpserver.db | host | IP address or hostname of the database where Mobile Foundation Server tables need to be configured. | IBM DB2® (default). |
+| | port | Port where database is setup | |
+| | secret | A precreated secret which has database credentials| |
+| | name | Name of the Mobile Foundation Server database | |
+|  | schema | Server db schema to be created. | If the schema already present, it will be used. Otherwise, it will be created. |
+|  | ssl | Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
 
 
 
