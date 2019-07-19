@@ -41,6 +41,7 @@ To manage the containers and images, install the following on your host machine 
 * Kubernetes CLI
 * IBM Cloud Container Registry plug-in (`cr`)
 * IBM Cloud Container Service plug-in (`ks`)
+* Install and setup [Docker](https://docs.docker.com/install/)
 
 To access IBM Cloud Kubernetes Cluster using CLI, you should configure the IBM Cloud client. [Learn more](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started).
 
@@ -55,7 +56,6 @@ The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is ava
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
-Before you load the PPA Archive of {{ site.data.keys.product }}, you must setup Docker. See the instructions [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/using_docker_cli.html).
 
 Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes Cluster:
 
@@ -111,7 +111,7 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
        3. **Push** the image
        4. Create and Push the **manifests**
 
-      Below is the example for the **mfpf-server**
+      Below is the example for the **mfpf-server**. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
       
       ```bash
       
@@ -194,23 +194,24 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       rm -rf ppatmp
       ```
 
-      >**Note:** The `ibmcloud cr ppa-archive load` command approach doesn’t support the PPA package with multi-arch support. Hence one has to extract and push the package manually to the IBM Cloud Container repository (users using older PPA versions need to use following command to load).
+      >**Note:** 
+      > 1. The `ibmcloud cr ppa-archive load` command approach doesn’t support the PPA package with multi-arch support. Hence one has to extract and push the package manually to the IBM Cloud Container repository (users using older PPA versions need to use following command to load). 
+      
+      > 2. Multi-architecture refers to architectures including intel (amd64), power64 (ppc64le) and s390x. Multi-arch is supported from ICP 3.1.1 only.
 
       ```bash
       ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
       ```
       *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
-  >**Note:** Multi-architecture refers to architectures including intel (amd64), power64 (ppc64le) and s390x. Multi-arch is supported from ICP 3.1.1 only.
-
-  The helm charts are stored in the client or local (unlike ICP helm chart stored in the IBM Cloud Private helm repository). Charts can be located within the `ppa-import/charts` (or charts) directory.
+The helm charts are stored in the client or local (unlike ICP helm chart stored in the IBM Cloud Private helm repository). Charts can be located within the `ppa-import/charts` (or charts) directory.
 
 ## Install and configure IBM {{ site.data.keys.product }} Helm Charts
 {: #configure-install-mf-helmcharts}
 
 Before you install and configure {{ site.data.keys.mf_server }}, you should have the following:
 
-This section also summarizes the steps for creating secrets.
+This section summarizes the steps for creating secrets.
 
 Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image. 
 
