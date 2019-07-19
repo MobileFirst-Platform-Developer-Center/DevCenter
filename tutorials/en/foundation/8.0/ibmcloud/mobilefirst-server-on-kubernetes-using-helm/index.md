@@ -400,7 +400,7 @@ The table below provides the environment variables used in the {{ site.data.keys
 
 | Qualifier | Parameter | Definition | Allowed Value |
 |-----------|-----------|------------|---------------|
-| **Global Variables** |  |  |  |
+| ***`Global Variables`*** | | | |
 | arch | amd64 | amd64 worker node scheduler preference in a hybrid cluster | 3 - Most preferred (Default). |
 |  | ppcle64 | ppc64le worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
 |  | s390x | S390x worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
