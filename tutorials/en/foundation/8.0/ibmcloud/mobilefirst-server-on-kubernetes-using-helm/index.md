@@ -325,82 +325,13 @@ Run the below code snippet to create a database secret for Application Center
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
 
 
-### Environment variables for {{ site.data.keys.mf_analytics }}
-{: #env-mf-analytics }
-The table below provides the environment variables used in {{ site.data.keys.mf_analytics }} on IBM Cloud Kubernetes Cluster.
-
-| Qualifier | Parameter | Definition | Allowed Value |
-|-----------|-----------|------------|---------------|
-| arch | amd64 | amd64 worker node scheduler preference in a hybrid cluster | 3 - Most preferred (Default). |
-|  | ppcle64 | ppc64le worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
-|  | s390x | S390x worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
-| image | pullPolicy | Image Pull Policy | Default is **IfNotPresent**. |
-|  | pullSecret | Image Pull Secret |  |
-|  | tag | Docker image tag | See [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
-|  | name | Docker image name | Name of the {{ site.data.keys.prod_adj }} Operational Analytics docker image. |
-| scaling | replicaCount | Number of instances (pods) of {{ site.data.keys.prod_adj }} Operational Analytics that need to be created | Positive integer<br/>Default is **2** |
-| mobileFirstAnalyticsConsole | user | Username for {{ site.data.keys.prod_adj }} Operational Analytics | Default is **admin**. |
-|  | password | Password for {{ site.data.keys.prod_adj }} Operational Analytics | Default is **admin**. |
-| analyticsConfiguration | clusterName | Name of the {{ site.data.keys.prod_adj }} Analytics cluster | Default is **mobilefirst** |
-|  | analyticsDataDirectory | Path where analytics data is stored. *It will also be the same path where the persistent volume claim is mounted inside the container*. | Defaults to `/analyticsData` |
-|  | numberOfShards | Number of Elasticsearch shards for {{ site.data.keys.prod_adj }} Analytics | Positive integer<br/>Default is **2** |
-|  | replicasPerShard | Number of Elasticsearch replicas to be maintained per each shard for {{ site.data.keys.prod_adj }} Analytics | Positive integer<br/>Default is **2** |
-| keystores | keystoresSecretName | Refer to [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts), describing the steps to create the secret with the keystores and their passwords. |  |
-| jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} JNDI properties to be specified to customize Operational Analytics | Provide comma separated name value pairs. |
-| resources | limits.cpu | Describes the maximum amount of CPU allowed | Default is **2000m**<br/>Read the [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describes the maximum amount of memory allowed | Default is **4096Mi**<br/>Read the [meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-|  | requests.cpu | Describes the minimum amount of CPU required. If not specified, this will default to *limits* (if specified) or otherwise implementation-defined value | Default is **1000m**. |
-|  | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the *limits* (if specified) or the implementation-defined value | Default is **2048Mi**. |
-| persistence | existingClaimName | The name of existing persistence volume claim (PVC) |  |
-| logs | consoleFormat | Specifies container log output format. | Default is **json**. |
-|  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
-|  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
-
-
-### Environment variables for {{ site.data.keys.mf_server }}
-{: #env-mf-server }
-The table below provides the environment variables used in {{ site.data.keys.mf_server }} on IBM Cloud Kubernetes Cluster.
-
-| Qualifier | Parameter | Definition | Allowed Value |
-|-----------|-----------|------------|---------------|
-| arch | amd64 | amd64 worker node scheduler preference in a hybrid cluster | 3 - Most preferred (Default). |
-|  | ppcle64 | ppc64le worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
-|  | s390x | S390x worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
-| image | pullPolicy | Image Pull Policy | Defaults to **IfNotPresent**. |
-|  | pullSecret | Image Pull Secret |  |
-|  | tag | Docker image tag | See [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
-|  | name | Docker image name | Name of the {{ site.data.keys.prod_adj }} Server Docker image. |
-| scaling | replicaCount | Number of instances (pods) of {{ site.data.keys.prod_adj }} Server that need to be created | Positive integer<br/>Default is **3** |
-| mobileFirstOperationsConsole | user | Username of the {{ site.data.keys.prod_adj }} Server | Default is **admin**. |
-|  | password | Password for the user of {{ site.data.keys.prod_adj }} Server | Default is **admin**. |
-| existingDB2Details | db2Host | IP address or HOST of the DB2 Database where {{ site.data.keys.prod_adj }} Server tables need to be configured | Currently only DB2 is supported. |
-|  | db2Port | Port where DB2 database is setup |  |
-|  | db2Database | Name of the database that is pre-configured in DB2 for use |  |
-|  | db2Username | DB2 user name to access DB2 database | User should have access to create tables and create schema if it does not already exist. |
-|  | db2Password | DB2 password for the provided database  |  |
-|  | db2Schema | Server DB2 schema to be created |  |
-|  | db2ConnectionIsSSL | DB2 connection type | Specify if your Database connection has to be **http** or **https**. Default value is **false** (http).<br/>Make sure that the DB2 port is also configured for the same connection mode. |
-| existingMobileFirstAnalytics | analyticsEndPoint | URL of the analytics server | For example: `http://9.9.9.9:30400`.<br/> Do not specify the path to the console, this will be added during the deployment.|
-|  | analyticsAdminUser | Username of the analytics admin user |  |
-|  | analyticsAdminPassword | Password of the analytics admin user |  |
-| keystores | keystoresSecretName | Refer to [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts), describing the steps to create the secret with the keystores and their passwords. |  |
-| jndiConfigurations | mfpfProperties | {{ site.data.keys.prod_adj }} Server JNDI properties to customize deployment | Comma separated name value pairs. |
-| resources | limits.cpu | Describes the maximum amount of CPU allowed | Default is **2000m**<br/>Read the [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describes the maximum amount of memory allowed | Default is **4096Mi**<br/>Read the [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
-|  | requests.cpu | Describes the minimum amount of CPU required. If not specified, this defaults to *limits* (if specified) or otherwise implementation-defined value. | Default is **1000m**. |
-|  | requests.memory | Describes the minimum amount of memory required. If not specified, this defaults to the *limits* (if specified) or the implementation-defined value | Default is **2048Mi**. |
-| logs | consoleFormat | Specifies container log output format. | Default is **json**. |
-|  | consoleLogLevel | Controls the granularity of messages that go to the container log. | Default is **info**. |
-|  | consoleSource | Specify sources that are written to the container log. Use a comma separated list for multiple sources. | Default is **message**, **trace**, **accessLog**, **ffdc**. |
-
-
 ## Environment variables
 {: #env-variables }
 The table below provides the environment variables used in the {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_app_center }}
 
 | Qualifier | Parameter | Definition | Allowed Value |
 |-----------|-----------|------------|---------------|
-| ***`Global Variables`*** | | | |
+| ***`Global Configuration`*** | | | |
 | arch | amd64 | amd64 worker node scheduler preference in a hybrid cluster | 3 - Most preferred (Default). |
 |  | ppcle64 | ppc64le worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
 |  | s390x | S390x worker node scheduler preference in a hybrid cluster | 2 - No preference (Default). |
@@ -414,7 +345,7 @@ The table below provides the environment variables used in the {{ site.data.keys
 | | repository | Docker image repository for database initialization | Repository of the Mobile Foundation database docker image |
 |  | tag | Docker image tag | See Docker tag description |
 |  | replicas | The number of instances (pods) of Mobile Foundation DBinit that need to be created | Positive integer (Default: 1) |
-| **Mobile Foundation Server Variables** |  |  |  |
+| ***`MFP Server Configuration`*** | | | |
 | mfpserver | enabled | Flag to enable Server | true (default) or false |
 |  | repository | Docker image repository | Repository of the Mobile Foundation Server docker image |
 |  | tag | Docker image tag | See Docker tag description |
@@ -440,18 +371,77 @@ The table below provides the environment variables used in the {{ site.data.keys
 | | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | pdb | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 | | min  | minimum available pods | Positive integer (default to 1) |
-| mfpserver.jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
-| mfpserver | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
-| mfpserver.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
+| jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
+| | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
+| resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |                  | limits.memory | Describes the maximum amount of memory allowed. | Default is 4096Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
 |           | requests.cpu  | Describes the minimum amount of CPU required - if not specified will default to limit (if specified) or otherwise implementation-defined value.  | Default is 1000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |           | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the limit (if specified) or the implementation-defined value. | Default is 2048Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
-
-
-
-
-
-
+| ***`MFP Push Configuration`*** | | | |
+| mfppush | enabled | Flag to enable Mobile Foundation Push | true (default) or false |
+|           | repository | Docker image repository |Repository of the Mobile Foundation Push docker image |
+|           | tag | Docker image tag | See Docker tag description |
+| replicas | | The number of instances (pods) of Mobile Foundation Server that need to be created | Positive integer (Default: 3) |
+| autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
+|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
+|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+| pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
+|           | min  | minimum available pods | Positive integer (default to 1) |
+| jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
+| | keystoresSecretName | Refer the configuration section to pre-create the secret with keystores and their passwords.|
+| resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
+|                  | limits.memory | Describes the maximum amount of memory allowed. | Default is 4096Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
+|           | requests.cpu  | Describes the minimum amount of CPU required - if not specified will default to limit (if specified) or otherwise implementation-defined value.  | Default is 1000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
+|           | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the limit (if specified) or the implementation-defined value. | Default is 2048Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
+| ***`MFP Analytics Configuration`*** | | | |
+| mfpanalytics | enabled          | Flag to enable analytics | false (default) or true |
+| image | repository          | Docker image repository | Repository of the Mobile Foundation Operational Analytics docker image |
+|           | tag          | Docker image tag | See Docker tag description |
+|           | consoleSecret | A pre-created secret for login | Check Prerequisites section|
+| replicas |  | The number of instances (pods) of Mobile Foundation Operational Analytics that need to be created | Positive integer (Default: 2) |
+| autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
+|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
+|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|  shards|  | Number of Elasticsearch shards for Mobile Foundation Analytics | default to 2|             
+|  replicasPerShard|  | Number of Elasticsearch replicas to be maintained per each shard for Mobile Foundation Analytics | default to 2|
+| persistence | enabled | Use a PersistentVolumeClaim to persist data                        | true |                                                 |
+|  |useDynamicProvisioning | Specify a storageclass or leave empty  | false  |                                                  |
+| |volumeName| Provide an volume name  | data-stor (default) |
+|   |claimName| Provide an existing PersistentVolumeClaim  | nil |
+|   |storageClassName     | Storage class of backing PersistentVolumeClaim | nil |
+|   |size    | Size of data volume      | 20Gi |
+| pdb  | enabled | Specify whether to enable/disable PDB. | true (default) or false |
+|   | min  | minimum available pods | Positive integer (default to 1) |
+| jndiConfigurations | mfpfProperties | Mobile Foundation JNDI properties to be specified to customize operational analytics| Supply comma separated name value pairs  |
+|  | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
+| resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
+|   | limits.memory | Describes the maximum amount of memory allowed. | Default is 4096Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
+|   | requests.cpu  | Describes the minimum amount of CPU required - if not specified will default to limit (if specified) or otherwise implementation-defined value.  | Default is 1000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
+|   | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the limit (if specified) or the implementation-defined value. | Default is 2048Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
+| ***`MFP Application center Configuration`*** | | | |
+| mfpappcenter | enabled          | Flag to enable Application Center | false (default) or true |  
+| image | repository          | Docker image repository | Repository of the Mobile Foundation Application Center docker image |
+|           | tag          | Docker image tag | See Docker tag description |
+|           | consoleSecret | A pre-created secret for login | Check Prerequisites section|
+| db | host | IP address or hostname of the database where Appcenter database needs to be configured	| |
+|   | port | 	Port of the database  | |             
+| | name | Name of the database to be used | The database has to be precreated.|
+|   | secret | A precreated secret which has database credentials| |
+|   | schema | Application Center database schema to be created. | If the schema already exists, it will be used. If not, one will be created. |
+|   | ssl |Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
+| autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
+|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
+|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+| pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
+|           | min  | minimum available pods | Positive integer (default to 1) |
+|  | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
+| resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 1000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
+|                  | limits.memory | Describes the maximum amount of memory allowed. | Default is 1024Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
+|           | requests.cpu  | Describes the minimum amount of CPU required - if not specified will default to limit (if specified) or otherwise implementation-defined value.  | Default is 1000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
+|           | requests.memory | Describes the minimum amount of memory required. If not specified, the memory amount will default to the limit (if specified) or the implementation-defined value. | Default is 1024Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
 
 
 > For the tutorial on analyzing {{ site.data.keys.prod_adj }} logs using Kibana, see [here](analyzing-mobilefirst-logs-on-icp/).
