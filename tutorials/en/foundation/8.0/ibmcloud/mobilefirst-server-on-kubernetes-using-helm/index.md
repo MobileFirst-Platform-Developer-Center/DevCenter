@@ -330,9 +330,9 @@ Run the below code snippet to create a database secret for Application Center
 	
       For example: 
 	
-      Sample `PersistentVolume.yaml`
+     Sample `PersistentVolume.yaml`
 	
-      ```bash
+    ```bash
 	apiVersion: v1
 	kind: PersistentVolume
 	metadata:
@@ -347,13 +347,13 @@ Run the below code snippet to create a database secret for Application Center
 	  nfs:
 	    path: <nfs_path>
 	    server: <nfs_server>
-      ```
+    ```
 
     > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
 
-      Sample `PersistentVolumeClaim.yaml`
+     Sample `PersistentVolumeClaim.yaml`
 		
-      ```bash
+    ```bash
 	apiVersion: v1
 	kind: PersistentVolumeClaim
 	metadata:
@@ -374,7 +374,7 @@ Run the below code snippet to create a database secret for Application Center
 	  - ReadWriteMany
 	  capacity:
 	    storage: 20Gi
-	```
+    ```
 	
     > NOTE: Make sure you add the right <namespace> in the above yaml.
 
