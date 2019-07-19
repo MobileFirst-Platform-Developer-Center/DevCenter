@@ -377,8 +377,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |  | db2Password | DB2 password for the provided database  |  |
 |  | db2Schema | Server DB2 schema to be created |  |
 |  | db2ConnectionIsSSL | DB2 connection type | Specify if your Database connection has to be **http** or **https**. Default value is **false** (http).<br/>Make sure that the DB2 port is also configured for the same connection mode. |
-| existingMobileFirstAnalytics | analyticsEndPoint | URL of the analytics server | For example: `http://9.9.9.9:30400`.<br/> Do not specify the path to the console, this will be added during the deployment.
- |
+| existingMobileFirstAnalytics | analyticsEndPoint | URL of the analytics server | For example: `http://9.9.9.9:30400`.<br/> Do not specify the path to the console, this will be added during the deployment.|
 |  | analyticsAdminUser | Username of the analytics admin user |  |
 |  | analyticsAdminPassword | Password of the analytics admin user |  |
 | keystores | keystoresSecretName | Refer to [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts), describing the steps to create the secret with the keystores and their passwords. |  |
