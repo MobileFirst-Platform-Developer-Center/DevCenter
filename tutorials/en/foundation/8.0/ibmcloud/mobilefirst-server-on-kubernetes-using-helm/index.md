@@ -50,9 +50,10 @@ To access IBM Cloud Kubernetes Cluster using CLI, you should configure the IBM C
 The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is available [here](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The PPA archive of {{ site.data.keys.product }} will contain the docker images and Helm Charts of the following {{ site.data.keys.product }} components:
 * {{ site.data.keys.product_adj }} Server
 * {{ site.data.keys.product_adj }} Push
-* {{ site.data.keys.product_adj }} DB Initialization 
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
+
+A ***{{ site.data.keys.product_adj }} DB Initialization*** component is used or facilitating the database intialization tasks. This takes care of creating Mobile Foundation Schema and Tables (if  required) in the database (if it does not exist).
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
@@ -109,9 +110,9 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
        1. **Extract** the PPA archive
        2. **Tag** the loaded images with the IBM Cloud Container registry namespace and with the right version
        3. **Push** the image
-       4. Create and Push the **manifests**
+       4. [Optional] Create and Push the **manifests**, if the worker nodes are based on a combination of architectures (such as amd64, ppc64le, s390x).
 
-      Below is the example for the **mfpf-server**. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
+      Below is the example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on amd64 architecture. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
       
       ```bash
       
@@ -130,59 +131,36 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       ## 2.1 Tagging mfpf-server
       
       docker tag mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
-      docker tag mfpf-server:1.1.0-s390x us.icr.io/my_namespace/mfpf-server:1.1.0-s390x
-      docker tag mfpf-server:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le
       
       ## 2.2 Tagging mfpf-dbinit
       
       docker tag mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
-      docker tag mfpf-dbinit:1.1.0-s390x us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x
-      docker tag mfpf-dbinit:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le
       
       ## 2.3 Tagging mfpf-push
       
       docker tag mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
-      docker tag mfpf-push:1.1.0-s390x us.icr.io/my_namespace/mfpf-push:1.1.0-s390x
-      docker tag mfpf-push:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
 
       # 3. Push all the images
       
       docker push us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
-      docker push us.icr.io/my_namespace/mfpf-server:1.1.0-s390x
-      docker push us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le
-      
+ 
       docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
-      docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x
-      docker push us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le
-      
-      docker push us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
-      docker push us.icr.io/my_namespace/mfpf-push:1.1.0-s390x
-      docker push us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
 
-      # 4. Create and Push the manifests
+      docker push us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
+
+      # 4. [Optional] Create and Push the manifests
       
       ## 4.1 Create manifest-lists
       
       docker manifest create us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-s390x us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le  --amend
-      docker manifest create us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le  --amend
-      docker manifest create us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-s390x us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le  --amend
 
       ## 4.2 Annotate the manifests
       
       docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 --os linux --arch amd64
-      docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-s390x --os linux --arch s390x
-      docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le --os linux --arch ppc64le
-
 
       docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64 --os linux --arch amd64
-      docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x --os linux --arch s390x
-      docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le --os linux --arch ppc64le
-
 
       docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64 --os linux --arch amd64
-      docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-s390x --os linux --arch s390x
-      docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le --os linux --arch ppc64le
-      
       
 
       ## 4.3 Push the manifest list
@@ -190,7 +168,9 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       docker manifest push us.icr.io/my_namespace/mfpf-server:1.1.0
       docker manifest push us.icr.io/my_namespace/mfpf-dbinit:1.1.0
       docker manifest push us.icr.io/my_namespace/mfpf-push:1.1.0
-
+      
+      # 5. Cleanup the extracted archive
+     
       rm -rf ppatmp
       ```
 
@@ -522,7 +502,7 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_analyti
     ```
     Example for {{ site.data.keys.mf_analytics }}:
     ```bash
-    helm inspect values ibm-mfpf-analytics-prod-1.0.17.tgz > values.yaml
+    helm inspect values ibm-mfpf-analytics-prod-2.0.0.tgz > values.yaml
     ```    
 
 3. Modify the **values.yaml** to add appropriate values for deploying the helm chart. Make sure the [ingress](https://console.bluemix.net/docs/containers/cs_ingress.html).hostname details, scaling etc. are added and save the values.yaml.
@@ -554,8 +534,8 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_server 
     ```   
     Example for {{ site.data.keys.mf_server }}:
     ```bash
-    helm inspect values ibm-mfpf-server-prod-1.0.17.tgz > values.yaml
-    ```   
+    helm inspect values ibm-mfpf-server-prod-2.0.0.tgz > values.yaml
+    ``` 
 
 3. Modify the **values.yaml** to add appropriate values for deploying the helm chart. Make sure the database details, ingress, scaling etc. are added and save the values.yaml.
 
@@ -568,7 +548,7 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_server 
     helm install -n mfpserveronkubecluster -f server-values.yaml ./ibm-mfpf-server-prod-1.0.17.tgz
     ```
 
->**Note:** For installing the AppCenter the above steps are to be followed with the corresponding helm chart (e.g. ibm-mfpf-appcenter-prod-1.0.17.tgz).
+>**Note:** For installing the AppCenter the above steps are to be followed with the corresponding helm chart (e.g. ibm-mfpf-appcenter-prod-2.0.0.tgz.tgz).
 
 ## Verifying the Installation
 {: #verify-install}
