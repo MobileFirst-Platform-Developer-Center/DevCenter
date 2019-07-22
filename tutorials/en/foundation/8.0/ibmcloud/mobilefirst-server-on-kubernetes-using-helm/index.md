@@ -303,61 +303,9 @@ Run the below code snippet to create a database secret for Application Center
 		
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
    
-* [**Mandatory**] For Analytics deployment, one can choose below options for persisting analytics data
-
-    a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
-	
-      For example: 
-	
-     Sample `PersistentVolume.yaml`
-	
-    ```bash
-	apiVersion: v1
-	kind: PersistentVolume
-	metadata:
-	  labels:
-	    name: mfvol
-	  name: mfvol
-	spec:
-	  accessModes:
-	  - ReadWriteMany
-	  capacity:
-	    storage: 20Gi
-	  nfs:
-	    path: <nfs_path>
-	    server: <nfs_server>
-    ```
-
-    > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
-
-     Sample `PersistentVolumeClaim.yaml`
-		
-    ```bash
-	apiVersion: v1
-	kind: PersistentVolumeClaim
-	metadata:
-	  name: mfvolclaim
-	  namespace: <namespace>
-	spec:
-	  accessModes:
-	  - ReadWriteMany
-	  resources:
-	    requests:
-	      storage: 20Gi
-	  selector:
-	    matchLabels:
-	      name: mfvol
-	  volumeName: mfvol
-	status:
-	  accessModes:
-	  - ReadWriteMany
-	  capacity:
-	    storage: 20Gi
-    ```
+* [**Mandatory**] Before you begin the installation of MobileFirst Analytics Chart, configure the Persistent Volume. Provide the Persistent Volume to configure MobileFirst Analytics. Follow the steps detailed in [IBM Cloud Kubernetes documentation to create Persistent Volume](https://cloud.ibm.com/docs/containers?topic=containers-file_storage#file_storage).
 	
     > NOTE: Make sure you add the right <namespace> in the above yaml.
-
-
 
 ## Environment variables
 {: #env-variables }
