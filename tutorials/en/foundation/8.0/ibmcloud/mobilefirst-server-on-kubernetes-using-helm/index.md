@@ -288,7 +288,7 @@ Run the below code snippet to create a database secret for Application Center
    kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/tls.crt
    ```
 	
-   The name of the secret is then provided in the field global.ingress.secret
+   The name of the secret is then provided in the field global.ingress.secret. Modify the **values.yaml** to add appropriate ingress hostname and the ingress secret while deploying the helm chart
    
    > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
    
@@ -572,7 +572,7 @@ See the [{{ site.data.keys.prod_adj }} tutorials](https://mobilefirstplatform.ib
 ## Upgrading {{ site.data.keys.prod_adj }} Helm Charts and Releases
 {: #upgrading-mf-helm-charts}
 
-Please refer to [Upgrading bundled products](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0/installing/upgrade_helm.html) for instructions on how-to upgrade helm charts/releases.
+Please refer to [Upgrading bundled products](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/installing/upgrade_helm.html) for instructions on how-to upgrade helm charts/releases.
 
 ### Sample scenarios for Helm release upgrades
 
