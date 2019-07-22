@@ -10,8 +10,7 @@ weight: 5
 {: #overview }
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_push }},  {{ site.data.keys.mf_analytics }} instance and {{ site.data.keys.mf_app_center}} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts.
 
-Below are the steps to get you started:
-
+Follow the instructions below to install the IBM Mobile Foundation server on IBM Cloud Kubernetes Service:<br/>
 * Complete the prerequisites
 * Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} 
 * Load the PPA archive in IBM Cloud Kubernetes Cluster
