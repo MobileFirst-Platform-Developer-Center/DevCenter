@@ -562,9 +562,13 @@ From the IBM Cloud Kubernetes Cluster page on IBM Cloud Portal, one can use the 
 ## Accessing {{ site.data.keys.prod_adj }} console
 {: #access-mf-console}
 
-On successful deployment, the notes will be shown as output on the terminal. You can run the commands directly to get the console URL via *NodePort*.
+After successful installation you can access, IBM {{ site.data.keys.prod_adj }} Operational Console using `<protocol>://<public_ip>:<node_port>/mfpconsole`.<br/>
+IBM {{ site.data.keys.mf_analytics }} console can be accessed using `<protocol>://<public_ip>:<port>/analytics/console`.
+The protocol can be `http` or `https`. Also, note that the port will be **NodePort** in the case of **NodePort** deployment. To get the ip address and **NodePort** of your installed {{ site.data.keys.prod_adj }} Charts, follow the steps below from the Kubernetes Dashboard.
+* To get **Public IP** - Select **Kubernetes** > **Worker Nodes** > Under Public IP - note the IP address.
+* **Node port** can be found in **Kubernetes Dashboard** > Select **Services** > Under the **internal endpoints**, note the entry for *TCP Node Port* (a five digit port).
 
-Example, for Mobile Foundation Server notes displayed is as follows:
+On successful deployment, the notes will be shown as output on the terminal. Example, for Mobile Foundation Server notes displayed is as follows:
 
 ```text
 The Notes displayed as follows as the result of the helm deployment
@@ -579,7 +583,6 @@ Get the Server URL by running these commands:
  echo https://$NODE_IP:$NODE_PORT/mfpconsole
 ```
 
-Using similar installation method, you can access IBM MobileFirst Analytics Console using `<protocol>://<ip_address>:<node_port>/analytics/console`  and  IBM Mobile Foundation Application Center using <`protocol>://<ip_address>:<node_port>/appcenter/console`
 In addition to the *NodePort* approach to access the Console, the service can also be accessed via [Ingress](https://console.bluemix.net/docs/containers/cs_ingress.html) host.
 
 Follow the steps below to access the console:
@@ -593,26 +596,26 @@ Follow the steps below to access the console:
      `<protocol>://<ingress-hostname>/analytics/console`
     * Access the IBM Mobile Foundation Application Center Console using:
      `<protocol>://<ingress-hostname>/appcenterconsole`
+4. The SSL services support is disabled by default on nginx ingress. You may notice connectivity while accessing the console through https. Follow the below steps to enable SSL services on ingress -
+    1. From IBM Cloud Kubernetes Cluster page, launch the Kubernetes dashboard
+    2. On the Left hand side panel, click on the option Ingresses
+    3. Select the Ingress name
+    4. Click on the Edit button on your top right
+    5. Modify the yaml file and add the ssl-services annotation 
+    Example :
 
->**Note:** The port 9600 is exposed internally in the Kubernetes service and is used by the {{ site.data.keys.prod_adj }} Analytics instances as the transport port.
-
-> **Note:** The SSL services support is disabled by default on nginx ingress. You may notice connectivity while accessing the console through https. Follow the below steps to enable SSL services on ingress -
-1. From IBM Cloud Kubernetes Cluster page, launch the Kubernetes dashboard
-2. On the Left hand side panel, click on the option Ingresses
-3. Select the Ingress name
-4. Click on the Edit button on your top right
-5. Modify the yaml file and add the ssl-services annotation 
-Example :
-```
-"annotations": {
+    ```bash
+    "annotations": {
       "ingress.bluemix.net/ssl-services": "ssl-service=my_service_name1;ssl-service=my_service_name2",
       .....
       ....
       ...
       ...
     }
-```
-6. Click Update 
+    ```
+   6. Click Update 
+
+>**Note:** The port 9600 is exposed internally in the Kubernetes service and is used by the {{ site.data.keys.prod_adj }} Analytics instances as the transport port.
 
 ## Sample application
 {: #sample-app}
