@@ -578,7 +578,7 @@ After you have installed and configured {{ site.data.keys.mf_analytics }} (optio
 
 See the [CLI Command Reference](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) in IBM Cloud CLI documentation and Helm CLI from [Helm documentation](https://docs.helm.sh/helm/).
 
-From the IBM Cloud Kubernetes Cluster page on IBM Cloud Portal, one can use the **Launch** button to open the Kubernetes console to manage the cluster artifacts.
+From the IBM Cloud Kubernetes Cluster page on IBM Cloud Portal, one can use the **Kubernetes Dashboard** button to open the Kubernetes console to manage the cluster artifacts.
 
 ## Accessing {{ site.data.keys.prod_adj }} console
 {: #access-mf-console}
@@ -617,6 +617,23 @@ Follow the steps below to access the console:
 
 >**Note:** The port 9600 is exposed internally in the Kubernetes service and is used by the {{ site.data.keys.prod_adj }} Analytics instances as the transport port.
 
+> **Note:** The SSL services support is disabled by default on nginx ingress. You may notice connectivity while accessing the console through https. Follow the below steps to enable SSL services on ingress -
+1. From IBM Cloud Kubernetes Cluster page, launch the Kubernetes dashboard
+2. On the Left hand side panel, click on the option Ingresses
+3. Select the Ingress name
+4. Click on the Edit button on your top right
+5. Modify the yaml file and add the ssl-services annotation 
+Example :
+```
+"annotations": {
+      "ingress.bluemix.net/ssl-services": "ssl-service=my_service_name1;ssl-service=my_service_name2",
+      .....
+      ....
+      ...
+      ...
+    }
+```
+6. Click Update 
 
 ## Sample application
 {: #sample-app}
