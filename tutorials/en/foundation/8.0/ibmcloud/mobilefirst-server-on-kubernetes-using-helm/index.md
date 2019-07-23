@@ -112,7 +112,7 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
        3. **Push** the image
        4. [Optional] Create and Push the **manifests**, if the worker nodes are based on a combination of architectures (such as amd64, ppc64le, s390x).
 
-      Below is the example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on amd64 architecture. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
+      Below is the example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on **amd64** architecture. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
       
       ```bash
       
@@ -304,8 +304,7 @@ Run the below code snippet to create a database secret for Application Center
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
    
 * [**Mandatory**] Before you begin the installation of MobileFirst Analytics Chart, configure the Persistent Volume. Provide the Persistent Volume to configure MobileFirst Analytics. Follow the steps detailed in [IBM Cloud Kubernetes documentation to create Persistent Volume](https://cloud.ibm.com/docs/containers?topic=containers-file_storage#file_storage).
-	
-    > NOTE: Make sure you add the right <namespace> in the above yaml.
+
 
 ## Environment variables
 {: #env-variables }
