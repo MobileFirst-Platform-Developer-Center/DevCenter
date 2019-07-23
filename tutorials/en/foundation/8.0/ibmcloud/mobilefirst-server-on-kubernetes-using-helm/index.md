@@ -10,7 +10,7 @@ weight: 5
 {: #overview }
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_push }},  {{ site.data.keys.mf_analytics }} instance and {{ site.data.keys.mf_app_center}} instance on IBM Cloud Kubernetes Cluster (IKS) using Helm charts.
 
-Follow the instructions below to install the IBM Mobile Foundation server on IBM Cloud Kubernetes Service:<br/>
+Below are the basic steps that will get you started:<br/>
 * Complete the prerequisites
 * Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} 
 * Load the PPA archive in IBM Cloud Kubernetes Cluster
@@ -38,10 +38,16 @@ You should have an [**IBM Cloud account**](http://cloud.ibm.com/) and must have 
 To manage the containers and images, install the following on your host machine as part of IBM Cloud CLI plugins setup:
 
 * IBM Cloud CLI (`ibmcloud`)
-* Kubernetes CLI
+* Kubernetes CLI (`kubectl`)
 * IBM Cloud Container Registry plug-in (`cr`)
 * IBM Cloud Container Service plug-in (`ks`)
 * Install and setup [Docker](https://docs.docker.com/install/)
+* Helm (`helm`)
+To work with Kubernetes cluster using CLI, you should configure the *ibmcloud* client.
+1. Make sure you log in to the [Clusters page](https://cloud.ibm.com/kubernetes/clusters). (Note: [IBMid account](https://myibm.ibm.com/) is required.)
+2. Click the Kubernetes cluster to which IBM Mobile Foundation Chart needs to be deployed.
+3. Follow the instructions in **Access** tab once the cluster is created.
+>**Note:** Cluster creation takes few minutes. After the cluster is successfully created, click **Worker Nodes** tab and make a note of the *Public IP*.
 
 To access IBM Cloud Kubernetes Cluster using CLI, you should configure the IBM Cloud client. [Learn more](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started).
 
@@ -81,21 +87,17 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
   
   4. Follow the below steps to Gain access to your cluster -
   
-  
       1. Download and install a few CLI tools and the Kubernetes Service plug-in.
-     
       ```bash
       curl -sL https://ibm.biz/idt-installer | bash
       ```
       
       2. Download the kubeconfig files for your cluster.
-      
       ```bash
       ibmcloud ks cluster-config --cluster my_cluster_name
       ```
       
       3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
-      
       ```bash
       export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/my_namespace/kube-config-dal10-my_namespace.yml
       ```
@@ -110,9 +112,9 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
        1. **Extract** the PPA archive
        2. **Tag** the loaded images with the IBM Cloud Container registry namespace and with the right version
        3. **Push** the image
-       4. [Optional] Create and Push the **manifests**, if the worker nodes are based on a combination of architectures (such as amd64, ppc64le, s390x).
+       4. [Optional] Create and **Push the manifests**, if the worker nodes are based on a combination of architectures (such as amd64, ppc64le, s390x).
 
-      Below is the example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on **amd64** architecture. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
+      Below is an example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on **amd64** architecture. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
       
       ```bash
       
@@ -174,7 +176,7 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       rm -rf ppatmp
       ```
       
-In case of **multi-architecture** based worker nodes, below is the example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
+Below is an example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on **multi-architecture**. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
 
    ```bash
       # 1. Extract the PPA archive
@@ -283,7 +285,7 @@ This section summarizes the steps for creating secrets.
 
 Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image. 
 
-* [**Mandatory**] A DB2 database configured and ready to use. You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
+* [**Mandatory**] A DB2 database instance should be configured and has to be ready to use. You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
 
 * [**Mandatory**] Creating **database secrets** for Server, Push and Application Center.
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
@@ -370,13 +372,13 @@ Run the below code snippet to create a database secret for Application Center
    
 * [**Optional**] Mobile Foundation components can be configured with hostname based Ingress for external clients to reach them using hostname. The Ingress can be secured by using a TLS private key and certificate. The TLS private key and certificate must be defined in a secret with key names `tls.key` and `tls.crt`. 
 
-   The secret **mf-tls-secret** is created in the same namespace as the Ingress resource by using the following command:
+   The secret **mf-tls-secret** has to be created in the same namespace as the Ingress resource by using the following command:
 
    ```bash
    kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/tls.crt
    ```
 	
-   The name of the secret is then provided in the field global.ingress.secret. Modify the **values.yaml** to add appropriate ingress hostname and the ingress secret while deploying the helm chart
+   The ingress hostname and the name of the secret is then provided in the field global.ingress.secret. Modify the **values.yaml** to add appropriate ingress hostname and the ingress secret name while deploying the helm chart.
    
    > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
    
@@ -525,7 +527,7 @@ Installation of {{ site.data.keys.mf_analytics }} is optional. If you wish to en
 
 Before you begin the installation, ensure that you have covered all the **Mandatory** sections under ***[Install and configure IBM {{ site.data.keys.product }} Helm Charts]***(#configure-install-mf-helmcharts).
 
-Follow the steps below to install and configure IBM {{ site.data.keys.mf_analytics }} on IBM Cloud Kubernetes Cluster.
+Follow the below steps to install and configure IBM {{ site.data.keys.mf_analytics }} on IBM Cloud Kubernetes Cluster.
 
 1. To configure the Kubernetes Cluster execute the command below:
     ```bash
@@ -540,7 +542,8 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_analyti
     helm inspect values ibm-mfpf-analytics-prod-2.0.0.tgz > values.yaml
     ```    
 
-3. Modify the **values.yaml** to add appropriate values for deploying the helm chart. Make sure the [ingress](https://console.bluemix.net/docs/containers/cs_ingress.html).hostname details, scaling etc. are added and save the values.yaml.
+3. Modify the **values.yaml** to add appropriate values before deploying the helm chart. Make sure the [ingress](https://console.bluemix.net/docs/containers/cs_ingress.html)hostname details, scaling etc. are added in the values.yaml.
+Refer the section [Environment variables](#env-variables) for more details.
 
 4. To deploy the helm chart run the following command:
     ```bash
@@ -548,7 +551,7 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_analyti
     ```
     Example for deploying analytics server:
     ```bash
-    helm install -n mfpanalyticsonkubecluster -f analytics-values.yaml ./ibm-mfpf-analytics-prod-1.0.17.tgz
+    helm install -n mfpanalyticsonkubecluster -f analytics-values.yaml ./ibm-mfpf-analytics-prod-2.0.0.tgz
     ```    
 
 ### Install {{ site.data.keys.mf_server }}
@@ -580,7 +583,7 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_server 
     ```   
     Example for deploying server:
     ```bash
-    helm install -n mfpserveronkubecluster -f server-values.yaml ./ibm-mfpf-server-prod-1.0.17.tgz
+    helm install -n mfpserveronkubecluster -f server-values.yaml ./ibm-mfpf-server-prod-2.0.0.tgz
     ```
 
 >**Note:** For installing the AppCenter the above steps are to be followed with the corresponding helm chart (e.g. ibm-mfpf-appcenter-prod-2.0.0.tgz.tgz).
