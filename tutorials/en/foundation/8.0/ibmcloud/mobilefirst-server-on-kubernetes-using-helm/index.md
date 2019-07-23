@@ -239,16 +239,22 @@ Below is an example for loading the **mfpf-server** and **mfpf-push** images to 
 
       ## 4.2 Annotate the manifests
       
+      ### mfpf-server
+      
       docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 --os linux --arch amd64
       docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-s390x --os linux --arch s390x
       docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le --os linux --arch ppc64le
 
 
+      ### mfpf-dbinit
+      
       docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64 --os linux --arch amd64
       docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x --os linux --arch s390x
       docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le --os linux --arch ppc64le
 
 
+      ### mfpf-push
+      
       docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64 --os linux --arch amd64
       docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-s390x --os linux --arch s390x
       docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le --os linux --arch ppc64le
@@ -591,7 +597,7 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_server 
 ## Verifying the Installation
 {: #verify-install}
 
-After you have installed and configured {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_server }}, you can verify your installation and the status of the deployed pods by using IBM Cloud CLI, Kubernetes CLI and helm commands.
+After you have installed and configured the Mobile Foundation components, you can verify your installation and the status of the deployed pods by using IBM Cloud CLI, Kubernetes CLI and helm commands.
 
 See the [CLI Command Reference](https://console.bluemix.net/docs/cli/reference/ibmcloud/bx_cli.html#ibmcloud_cli) in IBM Cloud CLI documentation and Helm CLI from [Helm documentation](https://docs.helm.sh/helm/).
 
@@ -605,21 +611,6 @@ IBM {{ site.data.keys.mf_analytics }} console can be accessed using `<protocol>:
 The protocol can be `http` or `https`. Also, note that the port will be **NodePort** in the case of **NodePort** deployment. To get the ip address and **NodePort** of your installed {{ site.data.keys.prod_adj }} Charts, follow the steps below from the Kubernetes Dashboard.
 * To get **Public IP** - Select **Kubernetes** > **Worker Nodes** > Under Public IP - note the IP address.
 * **Node port** can be found in **Kubernetes Dashboard** > Select **Services** > Under the **internal endpoints**, note the entry for *TCP Node Port* (a five digit port).
-
-On successful deployment, the notes will be shown as output on the terminal. Example, for Mobile Foundation Server notes displayed is as follows:
-
-```text
-The Notes displayed as follows as the result of the helm deployment
-Get the Server URL by running these commands:
-1. For http endpoint:
- export NODE_PORT=$(kubectl get --namespace default -o jsonpath=“{.spec.ports[0].nodePort}” services monitor-mfp-ibm-mfpf-server-prod)
- export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=“{.items[0].status.addresses[0].address}“)
- echo http://$NODE_IP:$NODE_PORT/mfpconsole
-2. For https endpoint:
- export NODE_PORT=$(kubectl get --namespace default -o jsonpath=“{.spec.ports[1].nodePort}” services monitor-mfp-ibm-mfpf-server-prod)
- export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath=“{.items[0].status.addresses[0].address}“)
- echo https://$NODE_IP:$NODE_PORT/mfpconsole
-```
 
 In addition to the *NodePort* approach to access the Console, the service can also be accessed via [Ingress](https://console.bluemix.net/docs/containers/cs_ingress.html) host.
 
