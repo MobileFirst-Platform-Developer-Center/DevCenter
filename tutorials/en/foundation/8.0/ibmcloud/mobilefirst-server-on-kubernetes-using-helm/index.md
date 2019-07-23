@@ -75,14 +75,11 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       Include the `--sso` option if using a federated ID. Optionally, you may intend to skip SSL validation use the flag `--skip-ssl-validation` in the above command. This would bypass SSL validation of HTTP requests. Using this parameter might cause security problems.
 
   2. Login into the IBM Cloud Container registry & initialize the Container Service using the following commands:
-  
       ```bash
       ibmcloud cr login
-      
       ibmcloud ks init
       ```  
   3. Set the region of the deployment using the following command (e.g. us-south)
-  
       ```bash
       ibmcloud cr region-set
       ```  
@@ -105,7 +102,6 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       ```
       
       4. Verify that you can connect to your cluster by listing your worker nodes.
-      
       ```bash
       kubectl get nodes
       ```
@@ -132,15 +128,15 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
 
       # 2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version
       
-      docker tag mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
-      docker tag mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
-      docker tag mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
+      docker tag mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0
+      docker tag mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0
+      docker tag mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0
 
       # 3. Push all the images
       
-      docker push us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
-      docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
-      docker push us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
+      docker push us.icr.io/my_namespace/mfpf-server:1.1.0
+      docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0
+      docker push us.icr.io/my_namespace/mfpf-push:1.1.0
 
       # 4. Cleanup the extracted archive
      
