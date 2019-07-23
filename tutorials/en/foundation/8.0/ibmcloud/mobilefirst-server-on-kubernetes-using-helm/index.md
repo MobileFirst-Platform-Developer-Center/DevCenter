@@ -119,11 +119,8 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       # 1. Extract the PPA archive
       
       mkdir -p ppatmp ; cd ppatmp
-
       tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
-
       cd ./images
-
       for i in *; do docker load -i $i;done
 
       # 2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version
@@ -149,11 +146,8 @@ Below is an example for loading the **mfpf-server** and **mfpf-push** images to 
       # 1. Extract the PPA archive
       
       mkdir -p ppatmp ; cd ppatmp
-
       tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
-
       cd ./images
-
       for i in *; do docker load -i $i;done
 
       # 2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version
@@ -358,7 +352,6 @@ Run the below code snippet to create a database secret for Application Center
 * [**Optional**] Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
 
    These secrets can be created as follows: 
-	
    ```bash
    kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLIENTID=admin --from-literal=MFPF_ADMIN_AUTH_SECRET=admin
    kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
@@ -657,19 +650,12 @@ This section guides you in identifying and resolving the likely error scenarios 
 1. Helm install failed. `Error: could not find a ready tiller pod`
 
  - Run the below set of commands as it is and re-try helm install
-
   ```bash
-  
   helm init
-
   kubectl create serviceaccount --namespace kube-system tiller
-
   kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-
   kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-
   helm init --service-account tiller --upgrade
-  
   ```
   
   2. Unable to pull images while deploying the Helm chart - `Failed to pull image, Error: ErrImagePull`
