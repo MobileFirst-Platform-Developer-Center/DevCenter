@@ -152,7 +152,7 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       
       ## 4.1 Create manifest-lists
       
-      docker manifest create us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-s390x us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le  --amend
+      docker manifest create us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64  --amend
 
       ## 4.2 Annotate the manifests
       
@@ -173,11 +173,99 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
      
       rm -rf ppatmp
       ```
-
-      >**Note:** 
-      > 1. The `ibmcloud cr ppa-archive load` command approach doesn’t support the PPA package with multi-arch support. Hence one has to extract and push the package manually to the IBM Cloud Container repository (users using older PPA versions need to use following command to load). 
       
-      > 2. Multi-architecture refers to architectures including intel (amd64), power64 (ppc64le) and s390x. Multi-arch is supported from ICP 3.1.1 only.
+In case of **multi-architecture** based worker nodes, below is the example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
+
+   ```bash
+      # 1. Extract the PPA archive
+      
+      mkdir -p ppatmp ; cd ppatmp
+
+      tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
+
+      cd ./images
+
+      for i in *; do docker load -i $i;done
+
+      # 2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version
+      
+      ## 2.1 Tagging mfpf-server
+      
+      docker tag mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
+      docker tag mfpf-server:1.1.0-s390x us.icr.io/my_namespace/mfpf-server:1.1.0-s390x
+      docker tag mfpf-server:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le
+    
+      ## 2.2 Tagging mfpf-dbinit
+     
+      docker tag mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
+      docker tag mfpf-dbinit:1.1.0-s390x us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x
+      docker tag mfpf-dbinit:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le
+      
+      ## 2.3 Tagging mfpf-push
+      
+      docker tag mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
+      docker tag mfpf-push:1.1.0-s390x us.icr.io/my_namespace/mfpf-push:1.1.0-s390x
+      docker tag mfpf-push:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
+
+      # 3. Push all the images
+      
+      ## 3.1 Pushing mfpf-server images
+      
+      docker push us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
+      docker push us.icr.io/my_namespace/mfpf-server:1.1.0-s390x
+      docker push us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le
+      
+      ## 3.3 Pushing mfpf-dbinit images
+ 
+      docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
+      docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x
+      docker push us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le
+      
+      ## 3.3 Pushing mfpf-push images
+
+      docker push us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
+      docker push us.icr.io/my_namespace/mfpf-push:1.1.0-s390x
+      docker push us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
+
+      # 4. [Optional] Create and Push the manifests
+      
+      ## 4.1 Create manifest-lists
+      
+      docker manifest create us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-s390x us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le  --amend
+      docker manifest create us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le  --amend
+      docker manifest create us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-s390x us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le  --amend
+
+      ## 4.2 Annotate the manifests
+      
+      docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 --os linux --arch amd64
+      docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-s390x --os linux --arch s390x
+      docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le --os linux --arch ppc64le
+
+
+      docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64 --os linux --arch amd64
+      docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x --os linux --arch s390x
+      docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le --os linux --arch ppc64le
+
+
+      docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64 --os linux --arch amd64
+      docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-s390x --os linux --arch s390x
+      docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le --os linux --arch ppc64le
+
+      ## 4.3 Push the manifest list
+      
+      docker manifest push us.icr.io/my_namespace/mfpf-server:1.1.0
+      docker manifest push us.icr.io/my_namespace/mfpf-dbinit:1.1.0
+      docker manifest push us.icr.io/my_namespace/mfpf-push:1.1.0
+      
+      # 5. Cleanup the extracted archive
+     
+      rm -rf ppatmp
+   ```
+      
+>**Note:** 
+> 1. The `ibmcloud cr ppa-archive load` command approach doesn’t support the PPA package with multi-arch support. Hence one has to extract and push the package manually to the IBM Cloud Container repository (users using older PPA versions need to use following command to load). 
+      
+> 2. Multi-architecture refers to architectures including intel (amd64), power64 (ppc64le) and s390x. Multi-arch is supported from ICP 3.1.1 only.
 
       ```bash
       ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
