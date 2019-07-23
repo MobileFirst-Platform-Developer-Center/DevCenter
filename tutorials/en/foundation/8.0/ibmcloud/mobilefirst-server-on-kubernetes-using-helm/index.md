@@ -59,7 +59,7 @@ The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is ava
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
 
-A ***{{ site.data.keys.product_adj }} DB Initialization*** component is used or facilitating the database intialization tasks. This takes care of creating Mobile Foundation Schema and Tables (if  required) in the database (if it does not exist).
+A {{ site.data.keys.product_adj }} *DB Initialization* component is used or facilitating the database intialization tasks. This takes care of creating Mobile Foundation Schema and Tables (if  required) in the database (if it does not exist).
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
@@ -72,15 +72,17 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       ```bash
       ibmcloud login -a cloud.ibm.com
       ```
-      Include the --sso option if using a federated ID. Optionally, you may intend to skip SSL validation use the flag `--skip-ssl-validation` in the above command. This would bypass SSL validation of HTTP requests. Using this parameter might cause security problems.
+      Include the `--sso` option if using a federated ID. Optionally, you may intend to skip SSL validation use the flag `--skip-ssl-validation` in the above command. This would bypass SSL validation of HTTP requests. Using this parameter might cause security problems.
 
   2. Login into the IBM Cloud Container registry & initialize the Container Service using the following commands:
+  
       ```bash
       ibmcloud cr login
       
       ibmcloud ks init
       ```  
   3. Set the region of the deployment using the following command (e.g. us-south)
+  
       ```bash
       ibmcloud cr region-set
       ```  
@@ -97,7 +99,7 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       ibmcloud ks cluster-config --cluster my_cluster_name
       ```
       
-      3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+      3. Set the *KUBECONFIG* environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
       ```bash
       export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/my_namespace/kube-config-dal10-my_namespace.yml
       ```
@@ -130,48 +132,17 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
 
       # 2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version
       
-      ## 2.1 Tagging mfpf-server
-      
       docker tag mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
-      
-      ## 2.2 Tagging mfpf-dbinit
-      
       docker tag mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
-      
-      ## 2.3 Tagging mfpf-push
-      
       docker tag mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
 
       # 3. Push all the images
       
       docker push us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
- 
       docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
-
       docker push us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
 
-      # 4. [Optional] Create and Push the manifests
-      
-      ## 4.1 Create manifest-lists
-      
-      docker manifest create us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64  --amend
-
-      ## 4.2 Annotate the manifests
-      
-      docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 --os linux --arch amd64
-
-      docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64 --os linux --arch amd64
-
-      docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64 --os linux --arch amd64
-      
-
-      ## 4.3 Push the manifest list
-      
-      docker manifest push us.icr.io/my_namespace/mfpf-server:1.1.0
-      docker manifest push us.icr.io/my_namespace/mfpf-dbinit:1.1.0
-      docker manifest push us.icr.io/my_namespace/mfpf-push:1.1.0
-      
-      # 5. Cleanup the extracted archive
+      # 4. Cleanup the extracted archive
      
       rm -rf ppatmp
       ```
@@ -276,9 +247,9 @@ Below is an example for loading the **mfpf-server** and **mfpf-push** images to 
 > 2. Multi-architecture refers to architectures including intel (amd64), power64 (ppc64le) and s390x. Multi-arch is supported from ICP 3.1.1 only.
 
       ```bash
-      ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
+         ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
       ```
-      *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
+*archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
 The helm charts are stored in the client or local (unlike ICP helm chart stored in the IBM Cloud Private helm repository). Charts can be located within the `ppa-import/charts` (or charts) directory.
 
@@ -399,7 +370,7 @@ Run the below code snippet to create a database secret for Application Center
 		
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
    
-* [**Mandatory**] Before you begin the installation of MobileFirst Analytics Chart, configure the Persistent Volume. Provide the Persistent Volume to configure MobileFirst Analytics. Follow the steps detailed in [IBM Cloud Kubernetes documentation to create Persistent Volume](https://cloud.ibm.com/docs/containers?topic=containers-file_storage#file_storage).
+* [**Mandatory**] Before you begin the installation of Mobile Foundation Analytics Chart, configure the Persistent Volume and Persistent Volume Claim accordingly. Provide the Persistent Volume to configure Mobile Foundation Analytics. Follow the steps detailed in [IBM Cloud Kubernetes documentation to create Persistent Volume](https://cloud.ibm.com/docs/containers?topic=containers-file_storage#file_storage).
 
 
 ## Environment variables
@@ -548,7 +519,8 @@ Follow the below steps to install and configure IBM {{ site.data.keys.mf_analyti
     helm inspect values ibm-mfpf-analytics-prod-2.0.0.tgz > values.yaml
     ```    
 
-3. Modify the **values.yaml** to add appropriate values before deploying the helm chart. Make sure the [ingress](https://console.bluemix.net/docs/containers/cs_ingress.html)hostname details, scaling etc. are added in the values.yaml.
+3. Modify the **values.yaml** to add appropriate values before deploying the helm chart. Make sure database details, ingress hostname, secrets, etc. are added and save the values.yaml.
+
 Refer the section [Environment variables](#env-variables) for more details.
 
 4. To deploy the helm chart run the following command:
@@ -706,13 +678,12 @@ This section guides you in identifying and resolving the likely error scenarios 
   
   2. Unable to pull images while deploying the Helm chart - `Failed to pull image, Error: ErrImagePull`
   
-   - To resolve the issue, create a pull secret and provide this secret name under the input field `pullSecret` of the values.yaml file.
+  - Make sure the image pullSecret has been added to the values.yaml before helm deployment. If image pull secret doesn't exist, create a pull secret and assign it to `image.pullSecret` in the *values.yaml* file.
  
  Example for creating a pull secret:
    
   ```bash
  kubectl create secret docker-registry iks-secret-name --docker-server=us.icr.io --docker-username=iamapikey --docker-password=Your_IBM_Cloud_API_key --docker-email=your_email_id
-  
   ```
 
   > Note: Keep the value of `--docker-username=iamapikey` as it is, if you are using the IBM Cloud API key for authentication.
