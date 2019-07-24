@@ -158,7 +158,36 @@ Secret objects let you store and manage sensitive information, such as passwords
    
    > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
 
-5. (Optional) Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
+5. (Optional) To customise the configuration (example: modifying a log trace setting, adding a new jndi property and so on), you will have to create a configmap with the configuration XML file. This allows you to add a new configuration setting or override the existing configurations of the Mobile Foundation components.
+
+    The custom configuration is accessed by the Mobile Foundation components through a configMap (mfpserver-custom-config) which can be created as follows -
+
+	```bash
+	kubectl create configmap mfpserver-custom-config --from-file=<configuration file in XML format>
+	```
+	
+    The configmap created using the above command should be provided in the **Custom Server Configuration** in the Helm chart while deploying Mobile Foundation.
+
+    Below is an example of setting the trace log specification to warning (The default setting is info) using mfpserver-custom-config configmap.
+
+    - Sample config XML (logging.xml)
+
+	```bash
+    <server>
+          <logging maxFiles="5" traceSpecification="com.ibm.mfp.*=debug:*=warning"
+          maxFileSize="20" />
+    </server>
+	```
+ 
+    - Creating configmap and add the same during the helm chart deployment
+
+	```bash
+    kubectl create configmap mfpserver-custom-config --from-file=logging.xml
+	```
+
+    - Notice the change in the messages.log (of Mobile Foundation components) - ***Property traceSpecification will be set to com.ibm.mfp.=debug:\*=warning.***
+
+6. (Optional) Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
 
    These secrets can be created as follows: 
 	
@@ -169,7 +198,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 	
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
 
-6. For Analytics deployment, one can choose below options for persisting analytics data
+7. For Analytics deployment, one can choose below options for persisting analytics data
 
     a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
 	
@@ -225,7 +254,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 
     b) To choose dynamic provisioning in the chart.
 
-7. (Mandatory) Creating **database secrets** for Server, Push and Application Center.
+8. (Mandatory) Creating **database secrets** for Server, Push and Application Center.
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
 Run the code snippet below to create a database secret for Mobile Foundation server:
@@ -277,7 +306,7 @@ Run the below code snippet to create a database secret for Application Center
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
 	
-8. (Optional) Create container **Image Policy** and **Image pull secrets** when the container images are pulled from a registry that is outside the IBM Cloud Private setup's container registry (DockerHub, private docker registry, etc.)
+9. (Optional) Create container **Image Policy** and **Image pull secrets** when the container images are pulled from a registry that is outside the IBM Cloud Private setup's container registry (DockerHub, private docker registry, etc.)
   
    ```bash
 	# Create image policy
