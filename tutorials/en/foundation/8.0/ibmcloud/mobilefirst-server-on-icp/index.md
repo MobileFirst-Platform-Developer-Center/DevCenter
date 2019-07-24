@@ -10,11 +10,10 @@ weight: 4
 {: #overview }
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_app_center}} instance on {{ site.data.keys.prod_icp }}:
 
-* Setup IBM Cloud Private Kubernetes Cluster.
-* Setup your host computer with the required tools (Docker CLI, IBM Cloud CLI (`cloudctl`), Kubernetes CLI (`kubectl`), and Helm CLI (`helm`)).
-* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} .
-* Load the PPA archive in the {{ site.data.keys.prod_icp }} Cluster.
-* Finally, you will configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_push }} (optional) and {{ site.data.keys.mf_app_center }} (optional).
+* Complete the prerequisites
+* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} 
+* Load the PPA archive in the {{ site.data.keys.prod_icp }} Cluster
+* Configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_push }} (optional) and {{ site.data.keys.mf_app_center }} (optional)
 
 #### Jump to:
 {: #jump-to }
@@ -34,16 +33,16 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 ## Prerequisites
 {: #prereqs}
 
-You should have an {{ site.data.keys.prod_icp }} account and must have set up the {{ site.data.keys.prod_icp }} Cluster by following the documentation in [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
+You should have an {{ site.data.keys.prod_icp }} account and must have set up the [{{ site.data.keys.prod_icp }} Cluster](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
 
-To manage containers and images, you need to install the following tools on your host machine as part of {{ site.data.keys.prod_icp }} setup:
+To manage containers and images, you need to install the following on your host machine as part of {{ site.data.keys.prod_icp }} setup:
 
-* Docker
+* Install and setup [Docker](https://docs.docker.com/install/)
 * IBM Cloud CLI (`cloudctl`)
 * Kubernetes CLI (`kubectl`)
 * Helm (`helm`)
 
-To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the *kubectl* client. [Learn more](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
+To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the [***kubectl client***.](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
 
 In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required. 
 
