@@ -77,7 +77,7 @@ The feature impacted because of the issues are
 * Invoking backend procedures through adapters
 * Challenge Handling
 
-> **Note**: We will release iFix soon to address the multiple redirect issue seen in Oauth flow for v7.1.
+> **Note**: We will release an iFix soon to address the multiple redirect issue seen in Oauth flow for v7.1.
 
 #### WatchOS 6
 We have verified basic OAuth Flow and Application Authenticity on watchOS 6.
