@@ -7,14 +7,15 @@ tags:
 - iOS
 version:
 - 8.0
+- 7.1
 author:
-  name: Sandhya Suman, 
+  name: Sandhya Suman
 additional_authors:  
   - Vidyasagar Gaikwad
 ---
 
 
-If you are an on-premise 8.0, 7.1 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about Mobile Foundation support for iOS 13.
+If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about Mobile Foundation support for iOS 13.
 
 Apple announced iOS 13 during their annual *WWDC2019* conference. You can read more about all the new features in iOS 13 [here](https://developer.apple.com/ios/whats-new/).
 
@@ -55,18 +56,37 @@ Features that were tested for Mobilefirst Foundation (MFP) v8.0:
 * Certificate Pinning
 
 Features that were tested for Mobilefirst Foundation (MFP) v7.1:
-* OAuth Flow
-* Invoking backend procedures through adapters
-* Challenge Handling
 * JSONStore
 * Direct Update
 * Application Management
 * Application Authenticity
 * Remote Disable
+* Device SSO
 * Push notifications
 * Certificate Pinning
 
-> **Note:** Adapter calls to server in MFP 7.1 have problem connecting on physical device having iOS 13. We are investigating the issue and will update the blog soon.
+#### Known Issues
+
+While Testing OAuth Flow on v7.1 we found the following issues in App.
+
+<Screenshot of error for  Multiple redirect>
+
+The feature impacted because of teh issues are 
+
+* OAuth Flow
+* Invoking backend procedures through adapters
+* Challenge Handling
+
+Note: We will release iFix soon to address the multiple redirect issue seen in Oauth flow for v7.1.
+
+#### WatchOS 6
+We have verified basic OAuth Flow and Application Authenticity on watchOS 6.
+
+#### iPadOS 13
+iPadOS 13 doesnt have a separate SDK with Xcode 11 beta. So we have not done any separate testing for iPad OS. iPAD avilable with Xcode11 still using iOS 13 only.
+
+<IMAGE  file="iPadOS 13 deployment info.png">
+<IMAGE file="xcode11SDKs.png">  
 
 We have also verified MFP based cordova, ionic and react-native apps.
 
