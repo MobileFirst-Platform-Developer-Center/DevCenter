@@ -38,8 +38,8 @@ You should have an {{ site.data.keys.prod_icp }} account and must have set up th
 To manage containers and images, you need to install the following on your host machine as part of {{ site.data.keys.prod_icp }} setup:
 
 * Install and setup [Docker](https://docs.docker.com/install/)
-* IBM Cloud CLI (`cloudctl`)
-* Kubernetes CLI (`kubectl`)
+* [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started) (`cloudctl`)
+* [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`)
 * Helm (`helm`)
 
 To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the [***kubectl client***.](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
@@ -63,9 +63,11 @@ Reference : [Installing the Kubernetes CLI (kubectl)](https://www.ibm.com/suppor
 {: #download-the-ibm-mfpf-ppa-archive}
 The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is available [here](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The PPA archive of {{ site.data.keys.product }} will contain the docker images and Helm Charts of the following {{ site.data.keys.product }} components:
 * {{ site.data.keys.product_adj }} Server
+* {{ site.data.keys.product_adj }} Push
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
-* {{ site.data.keys.product_adj }} Push
+
+A {{ site.data.keys.product_adj }} *DB Initialization* component is used or facilitating the database intialization tasks. This takes care of creating Mobile Foundation Schema and Tables (if  required) in the database (if it does not exist).
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
