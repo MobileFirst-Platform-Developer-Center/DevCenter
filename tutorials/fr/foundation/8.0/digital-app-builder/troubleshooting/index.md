@@ -18,11 +18,12 @@ Vous trouverez ci-après les réponses à certains problèmes que vous êtes sus
 
         * Sur Windows : `%USERPROFILE%\AppData\Roaming\IBM Digital App Builder\log.log`
 
-    * `applog.log` lié à votre application et qui se trouve dans `<APP LOCATION>/ibm/applog.log`.
+    * `applog.log` pour les journaux liés à votre application qui se trouvent dans `<APP LOCATION>/ibm/applog.log`.
 
 * Echec de la création d'un jeu de données pour un microservice à l'aide d'un fichier swagger.
 
-    Lors de la première utilisation de Builder, la création de microservice peut échouer en raison du temps d'attente des réseaux. Pour vous affranchir de ce problème, procédez comme suit :
+    Lors de la première utilisation de Builder, la création de microservice peut échouer en raison du temps d'attente des réseaux.
+    Pour vous affranchir de ce problème, procédez comme suit :
     1. Ouvrez l'invite de commande et accédez à l'emplacement d'installation de l'application.
     2. `cd ibm\adapterGenerator`
     3. Exécutez la commande suivante :
@@ -60,4 +61,14 @@ Vous trouverez ci-après les réponses à certains problèmes que vous êtes sus
     b. Modifiez toutes les occurrences de `call %MAVEN_HOME% clean install` en `call %MAVEN_HOME% -U clean install`.
 
         Le fait d'ajouter `-U` force Maven à vérifier toutes les dépendances externes qui doivent être mises à jour en fonction du fichier POM.
+
+* Le contrôle prérequis échoue pour Android Studio même s'il est installé.
+
+    Vérifiez que l'exécutable Android (`<path to android sdk>/tools`) figure dans le chemin et vérifiez les prérequis.
+
+* Problème de création et de prévisualisation d'application sur Windows 7
+
+    Vous risquez d'obtenir une erreur lorsque vous tentez de créer une application à un emplacement d'unité de disque autre que `C:`.
+
+    Veillez à créer votre unité d'application sous l'unité `C://<your folder name/app name>`.
 

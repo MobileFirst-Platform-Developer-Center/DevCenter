@@ -14,7 +14,7 @@ weight: 4
 Siga estas instrucciones para configurar una instancia de {{ site.data.keys.mf_app_center }} en IBM Cloud. Para llevarlo a cabo, realice los pasos siguientes:
 
 * Cree un tipo de Kubernetes Cluster: Estándar (clúster de pago).
-* Configure el sistema host con las herramientas necesarias [Docker, Cloud Foundry CLI ( cf ), IBM Cloud CLI ( bx ), Container Service Plugin for IBM Cloud CLI ( bx cs ), Container Registry Plugin for IBM Cloud CLI ( bx cr ), Kubernetes CLI (kubectl)].
+* Configure el sistema host con las herramientas necesarias (Docker, Cloud Foundry CLI ( cf ), IBM Cloud CLI ( bx ), Container Service Plugin for IBM Cloud CLI ( bx cs ), Container Registry Plugin for IBM Cloud CLI ( bx cr ), Kubernetes CLI (kubectl)].
 * Cree una imagen Docker de {{ site.data.keys.mf_app_center }} y envíela por push al repositorio de IBM Cloud.
 * Finalmente, ejecutará la imagen de Docker en Kubernetes Cluster.
 
@@ -51,10 +51,10 @@ Después de iniciar sesión en IBM Cloud, se le presentará el panel de control 
 {: #set-up-your-host-machine }
 Para gestionar los contenedores y las imágenes, debe instalar las herramientas siguientes:
 * Docker
-* IBM Cloud CLI (bx)
-* Container Service Plugin for IBM Cloud CLI ( bx cs )
-* Container Registry Plugin for IBM Cloud CLI ( bx cr )
-* Kubernetes CLI (kubectl)
+* CLI de IBM Cloud (bx)
+* CLI de Container Service Plugin for IBM Cloud ( bx cs )
+* CLI de Container Registry Plugin for IBM Cloud ( bx cr )
+* CLI de Kubernetes (kubectl)
 
 Consulte la documentación de IBM Cloud para obtener información acerca de los [pasos para configurar CLI de requisito previo](https://console.bluemix.net/docs/containers/cs_cli_install.html#cs_cli_install_steps).
 

@@ -10,7 +10,7 @@ weight: 3
 
 ### 開発環境のセットアップ
 {: #installing-a-development-environment }
-モバイル・アプリケーションのクライアント・サイドまたはサーバー・サイドを開発する場合、[{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) または [{{ site.data.keys.mf_bm }} サービス](../bluemix/using-mobile-foundation)を使用して始めてください。
+モバイル・アプリケーションのクライアント・サイドまたはサーバー・サイドを開発する場合、[{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) または [{{ site.data.keys.mf_bm }} サービス](../ibmcloud/using-mobile-foundation)を使用して始めてください。
 
 **{{ site.data.keys.mf_dev_kit }}** の使用
 {: #using-the-dev-kit }

@@ -233,24 +233,28 @@ Para incluir notificações Push em seu aplicativo:
 
     ![Push de engajamento](dab-engagement-push.png)
 
-2. Nas **Notificações push**, clique em **Conectar**. Isso exibe o diálogo **Conectar-se à instância de notificação push**.
+2. Em **Notificações push**, clique em **Ativar**. Isso exibe a página de configuração Notificações push.
 
-    ![Instância de engajamento de notificações push](dab-engagement-push-instance.png)
+3. Configure a notificação push para Android fornecendo **Chave secreta da API** e **ID do emissor** e clique em **Salvar configuração**.
 
-3. Insira **Nome**, **Chave de API**, **GUID do aplicativo**, **Chave secreta do cliente**, selecione a **Região** e clique em **Conectar**.
-4. O Nome inserido acima é incluído na página sob Engajamento.
-5. Configure a notificação push para Android fornecendo **Chave secreta da API** e **ID do emissor** e clique em **Salvar configuração**.
+    ![Configuração de notificação push de engajamento do Android](dab-engagement-push-instance.png)
 
-    ![Configuração de notificação push de engajamento do Android](dab-engagement-push-android-configure.png)
-
-6. Navegue até a guia iOS e forneça detalhes de configuração de push: selecione o **Ambiente**, forneça um caminho ao arquivo .p12, insira a **Senha** e clique em **Salvar configuração**.
+4. Navegue até a guia iOS e forneça detalhes de configuração de push: selecione o **Ambiente**, forneça um caminho ao arquivo .p12, insira a **Senha** e clique em **Salvar configuração**.
 
     ![Configuração de notificação push de engajamento do iOS](dab-engagement-push-ios-configure.png)
 
-7.  
-    a. Para Android, copie `google-services.json` (faça download de seu projeto firebase) para `<path_to_app>/ionic/platforms/android/app` .
-    b. Para iOS, abra o projeto xcode `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` e ative o recurso de notificação push. Para obter mais detalhes, consulte [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
+5. Executar as etapas a seguir:
+    a. Para o aplicativo Android, copie `google-services.json` (faça download de seu projeto firebase) para a pasta `<path_to_app>/ionic/platforms/android/app`. 
+    b. Para o aplicativo iOS, abra o projeto xcode `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` e permita o recurso de notificação push. Para obter mais detalhes, consulte [https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
+6. No lado do servidor,
+ 
+    * Siga [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications) para ativar as notificações push no lado do servidor.
+
+    * Siga [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#sending-notifications) para enviar notificações do servidor
+
+**Nota**:
+As notificações push do servidor MFP são usadas para ativar o serviço de notificação. Portanto, se o serviço de notificação push do IBM Cloud foi usado antes, siga o link para configurar notificações no servidor MFP [http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/notifications/sending-notifications/#setting-up-notifications).
 
 ### Console
 {: #console }
@@ -262,7 +266,7 @@ Ajuda a visualizar o código para cada um dos componentes. Além disso, exibe as
 
 As configurações ajudam você a gerenciar as configurações do aplicativo e a retificar quaisquer erros durante o processo de construção. As configurações consistem nas guias **Detalhes do app**, **Servidor**, **Plug-ins** e **Reparar projeto**.
 
-#### Detalhes do aplicativo
+#### **Detalhes do aplicativo**
 {: #app-details}
 
 Os detalhes do aplicativo exibem informações sobre seu aplicativo: **Ícone do aplicativo**, **Nome**, **Local** em que os arquivos são armazenados, **ID do projeto/pacote configurável** fornecido no momento da criação do aplicativo, **Plataformas** (canais) selecionados, **Serviço** ativado.
@@ -275,7 +279,7 @@ Os detalhes do aplicativo exibem informações sobre seu aplicativo: **Ícone do
 
 Clique em **Salvar** para atualizar as alterações.
 
-#### Servidor
+#### **Servidor**
 {: #server }
 
 As informações do Servidor exibem os **Detalhes do servidor** no qual você está trabalhando atualmente. É possível editar as informações clicando no link **Editar**. É possível incluir ou modificar a autorização do cliente confidencial.
@@ -283,6 +287,8 @@ As informações do Servidor exibem os **Detalhes do servidor** no qual você es
 ![Configurações de detalhes do servidor](dab-settings-server.png)
 
 A guia Servidor também exibe **Servidores recentes**.
+
+>**Nota**: somente será possível excluir um servidor incluído anteriormente no momento da criação de um aplicativo por meio do Digital App Builder e se ele não for usado por qualquer um de seus aplicativos criados pelo Digital App Studio.
 
 Também é possível incluir um novo servidor clicando no botão **Conectar novo +**, fornecendo os detalhes no pop-up **Conectar-se a um novo servidor** e clicando em **Conectar**.
 

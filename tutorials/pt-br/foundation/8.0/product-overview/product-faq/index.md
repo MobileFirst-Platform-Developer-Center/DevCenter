@@ -9,7 +9,7 @@ weight: 1
 ## Visão Geral
 {: #overview }
 
-Esse tópico descreve a lista de perguntas mais frequentes relacionadas ao IBM Mobile Foundation. 
+Esse tópico descreve a lista de perguntas mais frequentes relacionadas ao IBM Mobile Foundation.
 
 <div class="panel-group accordion" id="mfp-product-faqs" role="tablist">
     <div class="panel panel-default">
@@ -20,7 +20,7 @@ Esse tópico descreve a lista de perguntas mais frequentes relacionadas ao IBM M
         </div>
         <div id="collapse-mfp-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq1">
             <div class="panel-body">
-              <p>O IBM Mobile Foundation v8.0 tem uma política de suporte de entrega contínua. <br/>
+              <p>O IBM Mobile Foundation v8.0 tem uma política de suporte de Entrega Contínua.<br/>
               Para saber mais sobre o modelo de suporte de entrega contínua, consulte o <a href="https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/0/897/ENUS217-390/index.html&request_locale=en" target="_blank">anúncio de suporte do CD do Mobile Foundation v8.0</a>.
 .</p>
          </div>
@@ -34,7 +34,7 @@ Esse tópico descreve a lista de perguntas mais frequentes relacionadas ao IBM M
         </div>
         <div id="collapse-mfp-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq2">
             <div class="panel-body">
-                  <p>É possível localizar informações relacionadas à lista de todos os iFixes e atualizações do CD liberados para o Mobile Foundation v8.0 <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/8-0-master-ifix-release/" target="_blank">aqui</a>. </p>
+                  <p>É possível localizar informações relacionadas à lista de todos os iFixes e atualizações do CD liberados para o Mobile Foundation v8.0 <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/05/18/8-0-master-ifix-release/" target="_blank">aqui</a>.</p>
             </div>
         </div>      
     </div>
@@ -46,7 +46,7 @@ Esse tópico descreve a lista de perguntas mais frequentes relacionadas ao IBM M
         </div>
         <div id="collapse-mfp-faq3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq3">
             <div class="panel-body">
-                  <p>É possível visualizar a lista de recursos liberados nas atualizações do CD do Mobile Foundation v8.0 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/release-notes/interim-fixes/">aqui</a>. </p>
+                  <p>É possível visualizar a lista de recursos liberados nas atualizações do CD do Mobile Foundation v8.0 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/release-notes/interim-fixes/">aqui</a>.</p>
             </div>
         </div>      
     </div>
@@ -58,9 +58,9 @@ Esse tópico descreve a lista de perguntas mais frequentes relacionadas ao IBM M
         </div>
         <div id="collapse-mfp-faq4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq4">
             <div class="panel-body">
-                <p>É possível visualizar o blog de anúncio do Mobile Foundation v8.0 no ICP <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/01/31/mfp-on-ibmcloud-private-announce/" target="_blank">aqui</a>.<br/>
-                O Mobile Foundation Developer edition foi liberado no ICP e o anúncio pode ser visualizado <a href="https://mobilefirstplatform.ibmcloud.com/blog/2019/01/29/mfp-community-edition-on-icp/" target="_blank">aqui</a>.<br/>
-                Para começar a usar o Mobile Foundation v8.0 no ICP, consulte a <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/" target="_blank">documentação</a>.</p>
+                <p>É possível visualizar o blog de anúncios do Mobile Foundation v8.0 no ICP <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/01/31/mfp-on-ibmcloud-private-announce/" target="_blank">aqui</a>.<br/>
+                O Mobile Foundation Developer Edition foi liberado no ICP e o anúncio pode ser visualizado <a href="https://mobilefirstplatform.ibmcloud.com/blog/2019/01/29/mfp-community-edition-on-icp/" target="_blank">aqui</a>.<br/>
+                Para começar a usar o Mobile Foundation v8.0 no ICP, consulte a <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/" target="_blank">documentação</a>.</p>
             </div>
         </div>      
     </div>

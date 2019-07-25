@@ -42,7 +42,7 @@ Wenn Sie zu `jvm.options` beispielsweise den folgenden Eintrag hinzufügen, wird
 ```
 -Dcom.ibm.ws.logging.trace.specification=com.ibm.mfp.*=all=enabled
 ```
- Sie können diesen Eintrag auch mithilfe der JNDI-Konfiguration festlegen. Weitere Informationen finden Sie [hier]({{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#env-mf-server).
+ Sie können diesen Eintrag auch mithilfe der JNDI-Konfiguration festlegen. Weitere Informationen finden Sie [hier]({{ site.baseurl }}/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/#env-mf-server).
 
 
 ## *kubectl*-Protokolle erfassen
@@ -58,7 +58,7 @@ Weitere Informationen zum Befehl `kubectl logs` finden Sie in der [Kubernetes-Do
 ## Protokolle mit einem angepassten Script von IBM erfassen
 {: #collect-logs-custom-script}
 
-Die MobileFirts-Server und Containerprotokolle können mit dem Script [get-icp-logs.sh](get-icp-logs.sh) erfasst werden. Das Script verwendet den *Helm-Releasenamen* als Eingabe und erfasst die Protokolle von allen implementierten Pods. 
+Die MobileFirst-Server und Containerprotokolle können mit dem Script [get-icp-logs.sh](get-icp-logs.sh) erfasst werden. Das Script verwendet den *Helm-Releasenamen* als Eingabe und erfasst die Protokolle von allen implementierten Pods. 
 
 Das Script kann wie folgt ausgeführt werden: 
 ```bash
@@ -69,5 +69,5 @@ In der folgenden Tabelle sind die von dem angepassten Script verwendeten Paramet
 |Option |Beschreibung |Bemerkungen |
 |--------|-------------|---------|
 |Helm-Releasename |Releasename der jeweiligen Helm-Chart-Installation|**Obligatorisch** |
-|Ausgabeverzeichnis |Ausgabeverzeichnis, in das die erfassten Protokolle gestellt werden sollen |**Optional**<br/>Standardeinstellung: Unterverzeichnis **mfp-icp-logs** unter dem aktuellen Arbeitsverzeichnis |
-|Namespace |Namespace, in dem das jeweilige Helm-Chart installiert ist |**Optional**<br/>Standardeinstellung: **default** |
+|Ausgabeverzeichnis |Ausgabeverzeichnis, in das die erfassten Protokolle gestellt werden sollen | **Optional**<br/>Standardeinstellung: Unterverzeichnis **mfp-icp-logs** unter dem aktuellen Arbeitsverzeichnis |
+|Namespace |Namespace, in dem das jeweilige Helm-Chart installiert ist | **Optional**<br/>Standardeinstellung: **default** |

@@ -102,12 +102,13 @@ body {
 }
 
 #flashBlogPosts {
-	background-color: #EE7A55;
-	font-family: HelvNeuLightForIBM;
+	background-color: #DCDCDC;
+	font-family: Lato;
 	color: white;
 	width: 100%;
-	padding: 10px 0 10px 0;
-	font-size: 120%;
+	padding: 2px 0 2px 0;
+	font-size: 100%;
+  height: 35px;
 
 	.flashPost {
 		margin-right: 5px;
@@ -116,8 +117,9 @@ body {
 
 	.flashPostTitle {
 		font-size: 85%;
+    font-family: Lato;
 		a {
-			color: white;
+			color: #1E90FF;
 			text-decoration: underline;
 
 			&:hover {
@@ -126,7 +128,7 @@ body {
 
 			&:visited {
 				text-decoration: underline;
-				color: white;
+				color: #1E90FF;
 			}
 		}
 	}

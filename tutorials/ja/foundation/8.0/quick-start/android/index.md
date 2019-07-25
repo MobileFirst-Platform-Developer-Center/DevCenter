@@ -19,7 +19,7 @@ weight: 3
 * {{ site.data.keys.mf_server }} を正常に ping している。
 * アダプターを使用してデータを正常に取得している。
 
-#### 前提条件:
+### 前提条件:
 {: #prerequisites }
 * Android Studio
 * *オプション*。 {{ site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
@@ -27,7 +27,7 @@ weight: 3
 
 ### 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
-[Mobile Foundation インスタンスが作成済みである](../../bluemix/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
+[Mobile Foundation インスタンスが作成済みである](../../ibmcloud/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
 [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
 
 ### 2. アプリケーションの作成

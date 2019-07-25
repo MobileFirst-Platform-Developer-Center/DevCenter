@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: Perguntas Mais Frequentes
+title: Perguntas frequentes
+breadcrumb_title: FAQs
 weight: 7
 show_children: true
 ---
@@ -10,18 +11,40 @@ show_children: true
 
 Este tópico descreve a lista de perguntas mais comuns relacionadas ao IBM Digital App Builder.
 
-* Como criar uma **Chave de API da plataforma**
-
-    1. Acesse [https://cloud.ibm.com/iam#/users](https://cloud.ibm.com/iam#/users) após efetuar login no IBM Cloud.
-    2. Navegue para **Usuários**, clique em seu nome na lista e selecione a opção **Detalhes do usuário**.
-    3. Clique na janela **Criar uma chave de API do IBM Cloud**.
-    3. Insira o **Nome** e a **Descrição** para a nova Chave de API.
-    4. Clique em **Criar**.
-    4. Em seguida, clique em **Mostrar** para exibir a chave de API para copiá-la e salvá-la para mais tarde ou clique em **Fazer download**.
-
-    >**Nota**: por motivos de segurança, a chave de API está disponível apenas para ser copiada ou transferida por download no momento da criação. Se a chave de API for perdida, uma nova chave de API deverá ser criada. Para obter mais informações sobre a chave de API do usuário, consulte [https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey](https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey).
-
-* Limitações do servidor compartilhado
-
-    O Shared Playground Server é um servidor comum que é compartilhado entre muitos desenvolvedores. Esse servidor não deve ser usado para aplicativos de produção. Os dados nesse servidor podem ser excluídos sem aviso prévio. O tempo de atividade do servidor não é garantido.
-
+<div class="panel-group accordion" id="mfp-dab-faqs" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. Como criar **chaves de API da plataforma**?</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq1">
+            <div class="panel-body">
+                <p>
+                    <ol>
+                        <li>Acesse <a href="https://cloud.ibm.com/iam#/users" target="_blank">https://cloud.ibm.com/iam#/users</a> após efetuar login no IBM Cloud.</li>
+                        <li>Navegue para <b>Usuários</b>, clique em seu nome na lista e selecione a opção <b>Detalhes do usuário</b>.</li>
+                        <li>Clique na janela <b>Criar uma chave de API do IBM Cloud</b>.</li>
+                        <li>Insira o <b>Nome</b> e a <b>Descrição</b> para a nova Chave de API.</li>
+                        <li>Clique em <b>Criar</b>.</li>
+                        <li>Em seguida, clique em <b>Mostrar</b> para exibir a chave de API para copiá-la e salvá-la para mais tarde ou clique em <b>Fazer download</b>.</li>
+                    </ol>
+                    <b>Nota</b>: por motivos de segurança, a chave de API está disponível apenas para ser copiada ou transferida por download no momento da criação. Se a chave de API for perdida, uma nova chave de API deverá ser criada. Para obter mais informações sobre a chave de API do usuário, consulte <a href="https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey">https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey</a>.
+                </p>
+            </div>
+        </div>      
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq2" aria-expanded="true" aria-controls="collapse-mfp-dab-faq2"><b>B. Limitações do servidor compartilhado</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq2">
+            <div class="panel-body">
+                  <p>O Shared Playground Server é um servidor comum que é compartilhado entre muitos desenvolvedores. Esse servidor não deve ser usado para aplicativos de produção. Os dados nesse servidor podem ser excluídos sem aviso prévio. O tempo de atividade do servidor não é garantido.</p>
+            </div>
+        </div>      
+    </div>
+</div>
+<p>&nbsp;</p>       

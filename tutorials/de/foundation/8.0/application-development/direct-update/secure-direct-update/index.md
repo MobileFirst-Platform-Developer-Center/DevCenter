@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Sichere direkte Aktualisierung implementieren
-breadcrumb_title: Sichere direkte Aktualisierung
+breadcrumb_title: Secure Direct Update
 relevantTo: [cordova]
 weight: 2
 ---

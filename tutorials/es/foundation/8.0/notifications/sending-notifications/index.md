@@ -279,8 +279,8 @@ En {{ site.data.keys.mf_console }} → **[su aplicación] → Push → separador
 {: #rest-apis }
 Cuando se utilizan API REST para enviar notificaciones, se pueden enviar todos los tipos de notificaciones: notificaciones de etiqueta y difusión y notificaciones autenticadas.
 
-Para enviar una notificación, realice una solicitud mediante POST al punto final REST:
-`imfpush/v1/apps/<application-identifier>/messages`.  
+Para enviar una notificación, realice una solicitud mediante POST al punto final REST: `imfpush/v1/apps/<application-identifier>/messages`.
+  
 URL de ejemplo:
 
 ```bash
@@ -357,7 +357,7 @@ La notificación se puede envían utilizando diferentes herramientas.
 Para realizar pruebas, se utiliza Postman tal como se describe a continuación:
 
 1. [Configuración de un cliente confidencial](../../authentication-and-security/confidential-clients/).   
-    El envío de una notificación push a través de la API REST utiliza elementos de ámbito separados por espacios `messages.write` y `push.application.<applicationId>.`
+    El envío de una notificación push a través de la API REST utiliza elementos de ámbito separados por espacios `messages.write` y `push.application.<applicationId>.` 
 
     <img class="gifplayer" alt="Configuración de un cliente confidencial" src="push-confidential-client.png"/>
 

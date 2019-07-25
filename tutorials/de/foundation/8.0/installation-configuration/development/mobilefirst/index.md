@@ -16,7 +16,7 @@ Wenn Sie die neueste Version verwenden möchten, müssen Sie einen neuen Develop
 
 Informieren Sie sich nun tiefergehend über die Komponenten der {{ site.data.keys.product }}.
 
-> Um die {{ site.data.keys.product }} zu bewerten, müssen Sie nur mit dem IBM Cloud-Service "Mobile Foundation" eine Instanz von {{ site.data.keys.mf_server }} in IBM Cloud aktivieren. Anweisungen enthält das Lernpgoramm [Mobile Foundation verwenden](../../../bluemix/using-mobile-foundation/). Für eine lokale Installation können Sie auch das {{ site.data.keys.mf_dev_kit_short }} installieren.
+> Um die {{ site.data.keys.product }} zu bewerten, müssen Sie nur mit dem IBM Cloud-Service "Mobile Foundation" eine Instanz von {{ site.data.keys.mf_server }} in IBM Cloud aktivieren. Anweisungen enthält das Lernpgoramm [Mobile Foundation verwenden](../../../ibmcloud/using-mobile-foundation/). Für eine lokale Installation können Sie auch das {{ site.data.keys.mf_dev_kit_short }} installieren.
 
 #### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }

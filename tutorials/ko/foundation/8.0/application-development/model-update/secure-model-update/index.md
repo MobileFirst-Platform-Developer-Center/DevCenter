@@ -62,8 +62,8 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 
    >**참고:** Keytool만 사용하여 Base64 형식으로 공개 키를 추출할 수는 없습니다.
 
-2. 다음 단계를 수행하십시오. 
+2. 다음 단계를 수행하십시오.
     * `BEGIN PUBLIC KEY` 및 `END PUBLIC KEY`를 사용하지 말고 결과 텍스트를 복사하십시오.
     * 클라이언트 애플리케이션에서 mobilefirst 구성 파일(즉, iOS용 `mfpclient.plist` 및 Android용 `mfpclient.properties`)을 여십시오.
     * `wlSecureModelUpdatePublicKey`라고 하는 새 키 값을 추가하십시오.
-    * 해당 키에 적합한 공개 키를 제공하고 저장하십시오. 
+    * 해당 키에 적합한 공개 키를 제공하고 저장하십시오.

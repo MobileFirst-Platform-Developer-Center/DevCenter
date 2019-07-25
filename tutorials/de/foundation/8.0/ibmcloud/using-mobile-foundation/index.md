@@ -18,9 +18,9 @@ Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen a
     > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenbank an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
 
 
-2. **Professional Per Device:** Dieser Plan ermöglicht Benutzern, in der Produktion bis zu fünf mobile Anwendungen mit der Mobile Foundation zu erstellen, zu testen und auszuführen. Mobile Analytics wird für eine Aufbewahrungszeit für Ereignisse von sechs Monaten ohne Aufpreis angeboten. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Dieser Plan erfordert eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird. Dieser Plan stellt einen Mobile Foundation Server in *Liberty for Java* mit mindestens zwei Knoten (1 GB) bereit. Die *Liberty-for-Java-Gebühren* werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten.
+2. **Professional Per Device:** Dieser Plan ermöglicht Benutzern, in der Produktion bis zu fünf mobile Anwendungen mit der Mobile Foundation zu erstellen, zu testen und auszuführen. Mobile Analytics wird für eine Aufbewahrungszeit für Ereignisse von sechs Monaten ohne Aufpreis angeboten. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Dieser Plan erfordert eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird. Dieser Plan stellt einen Mobile Foundation Server in *Liberty for Java* mit mindestens zwei Knoten (1 GB) bereit. Die *Liberty-for-Java-Gebühren* werden gesondert in Rechnung gestellt und sind nicht als diesem Plan enthalten.
 
-3. **Professional 1 Application:** Dieser Plan ermöglicht Benutzern, in der Produktion mobile Anwendungen mit der Mobile Foundation zu erstellen, zu testen und auszuführen. Mobile Analytics wird für eine Aufbewahrungszeit für Ereignisse von sechs Monaten ohne Aufpreis angeboten. Die Gebühren richten sich nach der Anzahl der pro Tag verbundenen Clientgeräte. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Dieser Plan erfordert eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird. Dieser Plan erstellt einen Mobile Foundation Server in *Liberty for Java* mit mindestens zwei Knoten (1 GB). Die *Liberty-for-Java-Gebühren* werden gesondert in Rechnung gestellt und sind nicht as diesem Plan enthalten.
+3. **Professional 1 Application:** Dieser Plan ermöglicht Benutzern, in der Produktion mobile Anwendungen mit der Mobile Foundation zu erstellen, zu testen und auszuführen. Mobile Analytics wird für eine Aufbewahrungszeit für Ereignisse von sechs Monaten ohne Aufpreis angeboten. Die Gebühren richten sich nach der Anzahl der pro Tag verbundenen Clientgeräte. Dieser Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Dieser Plan erfordert eine Serviceinstanz von IBM Db2 (aus einem beliebigen Plan mit Ausnahme von **Lite**) oder von Compose for PostgreSQL, die separat erstellt und in Rechnung gestellt wird. Dieser Plan erstellt einen Mobile Foundation Server in *Liberty for Java* mit mindestens zwei Knoten (1 GB). Die *Liberty-for-Java-Gebühren* werden gesondert in Rechnung gestellt und sind nicht als diesem Plan enthalten.
 
 4. **Developer Pro**: Dieser Plan stellt {{ site.data.keys.mfound_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Dieser Plan erfordert eine Serviceinstanz von **Db2** (aus einem beliebigen Plan mit Ausnahme von **Lite**). Die Serviceinstanz von Db2 wird separat erstellt und in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung.
 >_Der Plan **Developer Pro** wird nicht weiter unterstützt._
@@ -71,7 +71,7 @@ Wenn Sie den {{ site.data.keys.mf_bm_short }} Service erstellen, wird der {{ sit
 
     * Wenn Sie bereits eine Db2-Serviceinstanz haben, wählen Sie die Option **Vorhandenen Service verwenden** aus und geben Sie Ihre Berechtigungsnachweise an.
 
-        ![Eichritung von {{ site.data.keys.mf_bm_short }}](create-db2-instance-existing.png)
+        ![Einrichtung von {{ site.data.keys.mf_bm_short }}](create-db2-instance-existing.png)
 
     * Wenn Sie bereits eine Serviceinstanz von Compose for PostgreSQL haben, wählen Sie die Option **Vorhandenen Service verwenden** aus und geben Sie Ihre Berechtigungsnachweise an.
 
@@ -213,7 +213,7 @@ Führen Sie für den Zugriff auf Serverprotokolle die folgenden Schritte aus.
 
 **Szenario 1:**
 
-1. Richten Sie Ihre Hostmaschine ein. <br/>
+1. Richten Sie Ihre Hostmaschine ein.<br/>
    Für die Verwaltung der IBM Cloud-Cloud-Foundry-App müssen Sie die Cloud-Foundry-CLI installieren.<br/>
    Installieren Sie die [Cloud-Foundry-CLI](https://github.com/cloudfoundry/cli/releases).
 2. Öffnen Sie das Terminal und melden Sie sich mit `cf login` für Ihre *Organisation* und Ihren *Bereich* an.

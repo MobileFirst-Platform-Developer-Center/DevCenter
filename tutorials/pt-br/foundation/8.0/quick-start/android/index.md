@@ -19,7 +19,7 @@ O propósito desta demonstração é experimentar um fluxo de ponta a ponta:
 * Ping de {{ site.data.keys.mf_server }} executado com sucesso.
 * Recuperação de dados usando adaptador realizada com sucesso.
 
-#### Pré-requisitos:
+### Pré-requisitos:
 {: #prerequisites }
 * Android Studio
 * *Opcional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
@@ -27,7 +27,7 @@ O propósito desta demonstração é experimentar um fluxo de ponta a ponta:
 
 ### 1. Iniciando o {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Certifique-se de ter [criado uma instância do Mobile Foundation](../../bluemix/using-mobile-foundation) ou  
+Certifique-se de ter [criado uma instância do Mobile Foundation](../../ibmcloud/using-mobile-foundation) ou  
 Se estiver usando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navegue para a pasta do servidor e execute o comando: `./run.sh` em Mac e Linux ou `run.cmd` no Windows.
 
 ### 2. Criando um aplicativo

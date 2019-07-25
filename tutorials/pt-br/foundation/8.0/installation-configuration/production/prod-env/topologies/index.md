@@ -113,7 +113,7 @@ O tempo de execução envia dados para o {{ site.data.keys.mf_analytics }} por m
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service }
 O serviço de administração comunica-se com o serviço de atualização em tempo real para armazenar e recuperar informações de configuração sobre os artefatos do {{ site.data.keys.product }}. A comunicação é executada por meio de HTTP ou HTTPS.
 
-A URL para conectar o serviço de atualização em tempo real é gerada automaticamente pelo serviço de administração. Ambos os serviços devem estar no mesmo servidor de aplicativos. A raiz de contexto do serviço de atualização em tempo real deve ser definida da seguinte forma: `<adminContextRoot>config`. Por exemplo, se a raiz de contexto do serviço de administração for
+A URL para conectar o serviço de atualização em tempo real é gerada automaticamente pelo serviço de administração. Ambos os serviços devem estar no mesmo servidor de aplicativos. A raiz de contexto do serviço de atualização em tempo real deve ser definida desta maneira: `<adminContextRoot>config`. Por exemplo, se a raiz de contexto do serviço de administração for
 **mfpadmin**, a raiz de contexto do serviço de atualização em tempo real deverá ser **mfpadminconfig**. É possível substituir a geração de URL padrão definindo as propriedades JNDI (**mfp.admin.proxy.port**, **mfp.admin.proxy.protocol** e
 **mfp.admin.proxy.host**) no serviço de administração.
 
@@ -174,7 +174,7 @@ Entenda as restrições nos vários componentes do {{ site.data.keys.mf_server }
 {: #constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime }
 Descubra as restrições e o modo de implementação do serviço de administração, serviço de atualização em tempo real e tempo de execução por topologia de servidor.
 
-O serviço de atualização em tempo real deve ser sempre instalado com o serviço de administração no mesmo servidor de aplicativos, conforme explicado em [Serviço de administração do {{ site.data.keys.mf_server }} para o serviço de atualização em tempo real do {{ site.data.keys.mf_server }}](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service). A raiz de contexto do serviço de atualização em tempo real deve ser definida da seguinte forma: `/<adminContextRoot>config`. Por exemplo, se a raiz de contexto do serviço de administração for **/mfpadmin**, a raiz de contexto do serviço de atualização em tempo real deverá ser **/mfpadminconfig**.
+O serviço de atualização em tempo real deve ser sempre instalado com o serviço de administração no mesmo servidor de aplicativos, conforme explicado em [Serviço de administração do {{ site.data.keys.mf_server }} para o serviço de atualização em tempo real do {{ site.data.keys.mf_server }}](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service). A raiz de contexto do serviço de atualização em tempo real deve ser definida desta maneira: `/<adminContextRoot>config`. Por exemplo, se a raiz de contexto do serviço de administração for **/mfpadmin**, a raiz de contexto do serviço de atualização em tempo real deverá ser **/mfpadminconfig**.
 
 É possível usar as seguintes topologias de servidores de aplicativos:
 
@@ -232,8 +232,8 @@ As propriedades JNDI globais são necessárias para serviços de administração
 | mfp.topology.platform	   | Liberty |
 | mfp.topology.clustermode | Standalone |
 | mfp.admin.jmx.host       | O nome do host do servidor de perfil Liberty do WebSphere Application Server. |
-| mfp.admin.jmx.port       | A porta do conector REST que é a porta do atributo httpsPort declarado no `<httpEndpoint>` elemento do arquivo server.xml do servidor de perfil do WebSphere Application Server Liberty. Essa propriedade não tem nenhum valor padrão. |
-| mfp.admin.jmx.user       | O nome do usuário do administrador do WebSphere Application Server Liberty, que deve ser idêntico ao nome definido no `<administrator-role>` elemento do arquivo server.xml do servidor de perfil do WebSphere Application Server Liberty. |
+| mfp.admin.jmx.port       | A porta do conector REST que é a porta do atributo httpsPort declarado no elemento `<httpEndpoint>` do arquivo server.xml do servidor do perfil Liberty do WebSphere Application Server. Essa propriedade não tem nenhum valor padrão. |
+| mfp.admin.jmx.user       | O nome do usuário do administrador do Liberty do WebSphere Application Server, que deve ser idêntico ao nome definido no elemento `<administrator-role>` do arquivo server.xml do servidor do perfil Liberty do WebSphere Application Server. |
 | mfp.admin.jmx.pwd        | A senha do usuário administrador do WebSphere Application Server Liberty. |
 
 Vários componentes de administração podem ser implementados para ativar a mesma JVM para executar em componentes de administração separados que gerenciam diferentes tempos de execução.

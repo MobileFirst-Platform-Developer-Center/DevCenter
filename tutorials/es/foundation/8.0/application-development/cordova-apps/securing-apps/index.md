@@ -36,7 +36,7 @@ Si ejecuta alguno de los mandatos de la lista después de cifrar los recursos we
     - Los recursos web de sus paquetes de Cordova también se pueden cifrar añadiendo el distintivo `mfpwebencrypt` al mandato `cordova compile` o `cordova build` al compilar sus paquetes.
         - `cordova compile -- --mfpwebencrypt` | `cordova build -- --mfpwebencrypt`
     <br/>
-    La información sobre el sistema operativo en la carpeta **www**
+        La información sobre el sistema operativo en la carpeta **www**
 se sustituye por un archivo **resources.zip** que contiene el contenido cifrado.  
     Si su aplicación está dirigida al sistema operativo Android y el archivo **resources.zip** es mayor de 1 MB, el archivo **resources.zip** se divide en archivos .zip de 768 KB más pequeños denominados **resources.zip.nnn**. La variable nnn es un número de 001 a 999.
 4. Pruebe la aplicación con los recursos cifrados mediante el emulador que se proporciona con las herramientas específicas de la plataforma. Por ejemplo, se puede utilizar el emulador en Android Studio para Android o Xcode para iOS.

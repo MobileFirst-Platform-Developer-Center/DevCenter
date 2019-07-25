@@ -10,7 +10,7 @@ O {{ site.data.keys.product_full }} fornece ferramentas de desenvolvimento e com
 
 ### Configurando um Ambiente de Desenvolvimento
 {: #installing-a-development-environment }
-Se você desenvolver o lado do cliente ou o lado do servidor de aplicativos móveis, use os serviços [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou [{{ site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation) para começar.
+Ao desenvolver o lado do cliente ou o lado do servidor de aplicativos móveis, use o [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou o serviço [{{ site.data.keys.mf_bm }}](../ibmcloud/using-mobile-foundation) para começar.
 
 **Usando o {{ site.data.keys.mf_dev_kit }}**
 {: #using-the-dev-kit }

@@ -21,7 +21,7 @@ Weitere Informationen zum MobileFirst Application Center finden Sie in der [Mobi
 * [{{ site.data.keys.mf_app_center }} installieren und konfigurieren](#configure-install-mf-appcenter-helmcharts)
 * [Installation überprüfen](#verify-install)
 * [Zugriff auf das {{ site.data.keys.mf_app_center }}](#access-mf-appcenter-console)
-* [Upgrade für {{ site.data.keys.prod_adj }}-Helm-Charts und -Releases](#upgrading-mf-helm-charts)
+* [Upgrade für {{ site.data.keys.prod_adj }}-Helm-Charts und -Releases durchführen](#upgrading-mf-helm-charts)
 * [Deinstallation](#uninstall)
 * [Referenzinformationen](#references)
 
@@ -75,12 +75,12 @@ Führen Sie die nachstehenden Schritte aus, um das Passport-Advantage-Archiv in 
 
       Sie können `--clustername` ignorieren, wenn Sie den vorherigen Schritt ausgeführt und den Clusterendpunkt zum Standard für `cloudctl` gemacht haben.
 
-  3. Synchronisieren Sie nach dem Laden des Passport-Advantage-Archivs die Repositorys, um sicherzustellen, dass die Helm-Charts im **Katalog** aufgelistet werden. Diesen Schritt können Sie in der Managementkonsole von {{ site.data.keys.prod_icp }} ausführen. <br/>
+  3. Synchronisieren Sie nach dem Laden des Passport-Advantage-Archivs die Repositorys, um sicherzustellen, dass die Helm-Charts im **Katalog** aufgelistet werden. Diesen Schritt können Sie in der Managementkonsole von {{ site.data.keys.prod_icp }} ausführen.<br/>
      * Wählen Sie **Admin > Repositories** aus.
      * Klicken Sie auf **Synch Repositories**.
 
-  4.  Sie können die Docker-Images und Helm-Charts in der Managementkonsole von {{ site.data.keys.prod_icp }} anzeigen. <br/>
-      Gehen Sie zum Anzeigen von Docker-Images wie folgt vor: 
+  4.  Sie können die Docker-Images und Helm-Charts in der Managementkonsole von {{ site.data.keys.prod_icp }} anzeigen.<br/>
+      Gehen Sie zum Anzeigen von Docker-Images wie folgt vor:
       * Wählen Sie **Platform > Images** aus.
       * Helm-Charts werden im Katalog (**Catalog**) angezeigt.
 
@@ -106,8 +106,8 @@ In der folgenden Tabelle sind die im {{ site.data.keys.mf_app_center }} in {{ si
 |  |appCenterDB2Schema |Zu erstellendes DB2-Schema für das {{ site.data.keys.mf_app_center_short }} |  |
 |  |appCenterDB2ConnectionIsSSL |DB2-Verbindungstyp |Geben Sie an, ob Ihre Datenbankverbindung über **http** oder **https** erfolgen muss. Der Standardwert ist **false** (http). Stellen Sie sicher, dass der DB2-Port für denselben Verbindungsmodus konfiguriert ist. |
 |keystores |keystoresSecretName |Unter [Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigurieren](../#configure-install-mf-helmcharts) sind die Schritte für die Erstellung des geheimen Schlüssels mit den Keystores und den zugehörigen Kennwörtern beschrieben. |  |
-|resources |limits.cpu |Maximal zulässige CPU-Kapazität |Standardeinstellung: **1000m** <br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  |limits.memory |Maximal zulässige Speicherkapazität |Standardeinstellung: **1024Mi** <br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|resources |limits.cpu |Maximal zulässige CPU-Kapazität | Standardeinstellung: **1000m**<br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  |limits.memory |Maximal zulässige Speicherkapazität | Standardeinstellung: **1024Mi**<br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |resources.requests |requests.cpu |Beschreibt die erforderliche CPU-Mindestkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder ein anderweitig für die Implementierung definierter Wert. |Standardeinstellung: **1000m** |
 |  |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder der für die Implementierung definierte Wert. |Standardeinstellung: **1024Mi** |
 
@@ -126,7 +126,7 @@ Bevor Sie das {{ site.data.keys.mf_app_center }} installieren und konfigurieren,
 
   * Erstellen Sie mit den Dateien `keystore.jks`, `keystore-password.txt`, `truststore.jks`, `truststore-password.txt` einen geheimen Schlüssel und geben Sie im Feld *keystores.keystoresSecretName* den Namen des geheimen Schlüssels an.
 
-  * Speichern Sie die Datei `keystore.jks` mit dem zugehörigen Kennwort in einer Datei mit dem Namen `keystore-password.txt` und die Datei `truststore.jks` mit dem zugehörigen Kennwort its password in einer Datei mit dem Namen `truststore-password.jks`.
+  * Speichern Sie die Datei `keystore.jks` mit dem zugehörigen Kennwort in einer Datei mit dem Namen `keystore-password.txt` und die Datei `truststore.jks` mit dem zugehörigen Kennwort in einer Datei mit dem Namen `truststore-password.jks`.
 
   * Rufen Sie die Befehlszeile auf und führen Sie Folgendes aus:
     ```bash
@@ -161,8 +161,8 @@ Nach der erfolgreichen Installation des Helm-Charts für das MobileFirst Applica
 Das Protokoll kann **http** oder **https** sein. Beachten Sie außerdem, dass der Port im Falle einer NodePort-Implementierung NodePort lautet. Führen Sie die folgenden Schritte aus, um die IP-Adresse und den NodePort Ihres installierten MobileFirst-Application-Center-Charts zu erhalten: 
 
 1. Wählen Sie in der Managementkonsole von {{ site.data.keys.prod_icp }} **Workloads > Helm Releases** aus.
-2. Klicken Sie auf den *Releasenamen* für Ihre Helm-Chart-Installation. 
-3. Lesen Sie die Informationen im Abschnitt **Notes**. 
+2. Klicken Sie auf den *Releasenamen* für Ihre Helm-Chart-Installation.
+3. Lesen Sie die Informationen im Abschnitt **Hinweise**.
 
 > **Hinweis:** Für den Zugriff auf den mobilen MobileFirst-Application-Center-Client müssen Sie das Application-Center-Paket über Passport Advantage herunterladen. [Hier finden Sie weitere Informationen](http://mobilefirstplatform.ibmcloud.com/tutorials/de/foundation/8.0/appcenter/mobile-client/).
 
@@ -175,17 +175,17 @@ Unter [Upgrading bundled products](https://www.ibm.com/support/knowledgecenter/e
 
 1. Für das Upgrade eines Helm-Release mit einer Änderung der Werte von `values.yaml` können Sie den Befehl `helm upgrade` mit der Option **--set** verwenden. Sie können die Option **-- set** mehrfach angeben. Priorität erhält die in der Befehlszeile ganz rechts angegebene Option "set". 
   ```bash
-  helm upgrade --set <name>=<Wert> --set <name>=<Wert> <existing-helm-release-name> <Pfad_des_neuen_Helm-Charts>
+  helm upgrade --set <Name>=<Wert> --set <Name>=<Wert> <Name_des_vorhandenen_Helm-Release> <Pfad_des_neuen_Helm-Charts>
   ```
 
 2. Wenn Sie ein Upgrade für ein Helm-Release mit Angabe von Werten in einer Datei durchführen, verwenden Sie den Befehl `helm upgrade` mit der Option **-f**. Sie können die Option **--values** oder **-f** mehrfach verwenden. Priorität erhält die in der Befehlszeile ganz rechts angegebene Datei (Option "-f"). Wenn im folgenden Beispiel sowohl `myvalues.yaml` als auch `override.yaml` einen Schlüssel *Test* enthält, hat der in `override.yaml` festgelegte Wert Vorrang. 
   ```bash
-  helm upgrade -f myvalues.yaml -f override.yaml <existing-helm-release-name> <Pfad_des_neuen_Helm-Charts>
+  helm upgrade -f myvalues.yaml -f override.yaml <Name_des_vorhandenen_Helm-Release> <Pfad_des_neuen_Helm-Charts>
   ```
 
-3. Wenn Sie ein Uprade für ein Helm-Release durchführen und dabei die Werte des letzten Release wiederverwenden und einige der Werte überschreiben möchten, können Sie einen Befehl wie den folgenden verwenden: 
+3. Wenn Sie ein Upgrade für ein Helm-Release durchführen und dabei die Werte des letzten Release wiederverwenden und einige der Werte überschreiben möchten, können Sie einen Befehl wie den folgenden verwenden: 
   ```bash
-  helm upgrade --reuse-values --set <name>=<Wert> --set <name>=<Wert> <existing-helm-release-name> <Pfad_des_neuen_Helm-Charts>
+  helm upgrade --reuse-values --set <Name>=<Wert> --set <Name>=<Wert> <Name_des_vorhandenen_Helm-Release> <Pfad_des_neuen_Helm-Charts>
   ```
 
 ## Deinstallation

@@ -14,7 +14,7 @@ Installationsszenario.
 {: #installing-a-development-environment }
 Wenn Sie die Client- oder Serverseite mobiler Anwendungen entwickeln möchten, beginnen Sie mit
 dem [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) oder
-dem Service [{{ site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation).
+dem Service [{{ site.data.keys.mf_bm }}](../ibmcloud/using-mobile-foundation).
 
 **Verwendung des {{ site.data.keys.mf_dev_kit }}**
 {: #using-the-dev-kit }
