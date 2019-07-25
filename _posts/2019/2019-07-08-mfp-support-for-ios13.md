@@ -71,7 +71,7 @@ While Testing OAuth Flow on v7.1 we found the following issues in App.
 
 IMAGE file="too many HTTP redirect.png"
 
-The feature impacted because of teh issues are 
+The feature impacted because of the issues are 
 
 * OAuth Flow
 * Invoking backend procedures through adapters
