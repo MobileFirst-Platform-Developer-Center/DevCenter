@@ -42,7 +42,7 @@ To manage containers and images, you need to install the following on your host 
 * [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`)
 * Helm (`helm`)
 
-To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the [***kubectl client***.](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
+To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the [***kubectl client***](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
 
 In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required. 
 
@@ -285,8 +285,8 @@ Run the below code snippet to create a database secret for Application Center
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
 	data:
-	  APPCNTR_DB_USERNAME: Ymx1YWRtaW4=
-	  APPCNTR_DB_PASSWORD: TlRaallXSmtZamRqTm1RMw==
+	  APPCNTR_DB_USERNAME: encoded_uname
+	  APPCNTR_DB_PASSWORD: encoded_password
 	kind: Secret
 	metadata:
 	  name: appcenter-dbsecret
@@ -306,8 +306,47 @@ Run the below code snippet to create a database secret for Application Center
 
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
+9. (Optional) A separate Database Admin secret can be provided. The user details provided in the Database Admin secret will be used to execute the  DB Initialization tasks, which would in turn create the required Mobile Foundation schema and tables in the database (if it does not exist). Through the Database Admin secret, you can control the DDL operations on your Database instance.
+
+    If the `MFP Server DB Admin Secret` and `MFP Appcenter DB Admin Secret` details are not provided, then the default `Database Secret Name` will be used to perform DB initialization tasks.
+
+    Run the below code snippet to create a `MFP Server DB Admin Secret` for Mobile Foundation server:
+
+      ```bash
+      # Create MFP Server Admin DB secret update the same in the Helm chart while deploying Mobile Foundation server component
+      cat <<EOF | kubectl apply -f -
+      apiVersion: v1
+      data:
+        MFPF_ADMIN_DB_ADMIN_USERNAME: encoded_uname
+        MFPF_ADMIN_DB_ADMIN_PASSWORD: encoded_password
+        MFPF_RUNTIME_DB_ADMIN_USERNAME: encoded_uname
+        MFPF_RUNTIME_DB_ADMIN_PASSWORD: encoded_password
+        MFPF_PUSH_DB_ADMIN_USERNAME: encoded_uname
+        MFPF_PUSH_DB_ADMIN_PASSWORD: encoded_password
+      kind: Secret
+      metadata:
+        name: mfpserver-dbadminsecret
+      type: Opaque
+      EOF
+      ```
+      
+    Run the below code snippet to create a `MFP Appcenter DB Admin Secret` for Mobile Foundation server:      
 	
-9. (Optional) Create container **Image Policy** and **Image pull secrets** when the container images are pulled from a registry that is outside the IBM Cloud Private setup's container registry (DockerHub, private docker registry, etc.)
+      ```bash
+      # Create Appcenter Admin DB secret and update the same in the Helm chart while deploying Mobile Foundation AppCenter   component
+      cat <<EOF | kubectl apply -f -
+      apiVersion: v1
+      data:
+        APPCNTR_DB_ADMIN_USERNAME: encoded_uname
+        APPCNTR_DB_ADMIN_PASSWORD: encoded_password
+      kind: Secret
+      metadata:
+      name: appcenter-dbadminsecret
+      type: Opaque
+      EOF
+      ```
+	
+10. (Optional) Create container **Image Policy** and **Image pull secrets** when the container images are pulled from a registry that is outside the IBM Cloud Private setup's container registry (DockerHub, private docker registry, etc.)
   
    ```bash
 	# Create image policy
@@ -458,9 +497,9 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |  | pushClientSecret | Push client secret | Specify the Client Secret name created. Refer #6 in [Prerequisites](#Prerequisites) |
 | mfpserver.replicas |  | The number of instances (pods) of Mobile Foundation Server that need to be created | Positive integer (Default: 3) |
 | mfpserver.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicas field. | false (default) or true |
-|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
-|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than min. | Positive integer (default to 10) |
-|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than min. | Positive integer (default to 10) |
+|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | mfpserver.pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
 | mfpserver.jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
@@ -474,9 +513,9 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |           | tag          | Docker image tag | See Docker tag description |
 | mfppush.replicas | | The number of instances (pods) of Mobile Foundation Server that need to be created | Positive integer (Default: 3) |
 | mfppush.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
-|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
-|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
-|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
+|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | mfppush.pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
 | mfppush.jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
@@ -491,9 +530,9 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |           | consoleSecret | A pre-created secret for login | Check Prerequisites section|
 | mfpanalytics.replicas |  | The number of instances (pods) of Mobile Foundation Operational Analytics that need to be created | Positive integer (Default: 2) |
 | mfpanalytics.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
-|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
-|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
-|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
+|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 |  mfpanalytics.shards|  | Number of Elasticsearch shards for Mobile Foundation Analytics | default to 2|             
 |  mfpanalytics.replicasPerShard|  | Number of Elasticsearch replicas to be maintained per each shard for Mobile Foundation Analytics | default to 2|
 | mfpanalytics.persistence | enabled         | Use a PersistentVolumeClaim to persist data                        | true |                                                 |
@@ -521,9 +560,9 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |                       | schema | Application Center database schema to be created. | If the schema already exists, it will be used. If not, one will be created. |
 |                       | ssl |Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
 | mfpappcenter.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
-|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
-|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
-|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
+|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | mfpappcenter.pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
 | mfpappcenter | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
