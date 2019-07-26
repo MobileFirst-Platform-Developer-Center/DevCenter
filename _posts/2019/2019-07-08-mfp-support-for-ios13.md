@@ -69,7 +69,7 @@ Features that were tested for Mobilefirst Foundation (MFP) v7.1:
 
 While Testing OAuth Flow on v7.1 we found the following issues in App.
 
-IMAGE file="too many HTTP redirect.png"
+![too many HTTP redirect]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/too many HTTP redirect.png)
 
 The feature impacted because of the issues are 
 
@@ -85,8 +85,9 @@ We have verified basic OAuth Flow and Application Authenticity on watchOS 6.
 #### iPadOS 13
 iPadOS 13 doesnt have a separate SDK with Xcode 11 beta. So we have not done any separate testing for iPad OS. iPAD avilable with Xcode11 still using iOS 13 only.
 
-IMAGE  file="iPadOS 13 deployment info.png"
-IMAGE file="xcode11SDKs.png"
+![iPadOS 13 deployment info]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/iPadOS 13 deployment info.png)
+
+![xcode11SDKs]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/xcode11SDKs.png)
 
 We have also verified MFP based cordova, ionic and react-native apps.
 
