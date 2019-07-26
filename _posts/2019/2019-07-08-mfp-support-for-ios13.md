@@ -7,27 +7,28 @@ tags:
 - iOS
 version:
 - 8.0
+- 7.1
 author:
-  name: Sandhya Suman, 
+  name: Sandhya Suman
 additional_authors:  
-  - Vidyasagar Gaiakwad
+  - Vidyasagar Gaikwad
 ---
 
 
-If you are an on-premise 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about Mobile Foundation support for iOS 13.
+If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](https://console.bluemix.net/catalog/services/mobile-foundation) customer, then read further to learn about Mobile Foundation support for iOS 13.
 
 Apple announced iOS 13 during their annual *WWDC2019* conference. You can read more about all the new features in iOS 13 [here](https://developer.apple.com/ios/whats-new/).
 
-We have been testing the iOS 13 beta with the latest being beta 3. We have verified various features of MobileFirst Platform Foundation on the iOS 13 beta 3 for MobileFirst Platform Foundation v8.0. For reference, make sure to read through our [support plan for newer iOS version](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
+We have been testing the iOS 13 beta with the latest being beta 3. We have verified various features of MobileFirst Platform Foundation on the iOS 13 beta 3 for MobileFirst Platform Foundation v7.1 and v8.0. For reference, make sure to read through our [support plan for newer iOS version](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
 
 We encourage you to start testing your application(s) with iOS 13.
 
-## MobileFirst Platform Foundation Support for iOS 13(beta 3)
+## MobileFirst Platform Foundation Support for iOS 13 (beta 3)
 
 #### Existing application
-Existing application(s) that were created using MobileFirst Platform v8.0 **will work** on iOS 13 as they did on previous versions of iOS.
+Existing application(s) that were created using MobileFirst Platform v7.1 and v8.0 **will work** on iOS 13 as they did on previous versions of iOS.
 
-Compatibility tests with [iOS 13 beta 3](https://developer.apple.com/download) have been performed using an iPhone 7 that was upgraded from iOS 12.3 to iOS 13 beta 3 for MobileFirst Foundation v8.0.
+Compatibility tests with [iOS 13 beta 3](https://developer.apple.com/download) have been performed using an iPhone 7 that was upgraded from iOS 12.3 to iOS 13 beta 3 for MobileFirst Foundation v7.1 and v8.0.
 
 For the tests, [XCode 11 beta 3](https://developer.apple.com/download) was used to compile native, hybrid and Cordova apps. 
 
@@ -46,12 +47,47 @@ Features that were tested for Mobilefirst Foundation (MFP) v8.0:
 * Challenge Handling
 * JSONStore
 * Direct Update
+* Secure Direct Update
 * Application Management
 * Application Authenticity
 * Remote Disable
 * Device SSO
 * Push notifications
 * Certificate Pinning
+
+Features that were tested for Mobilefirst Foundation (MFP) v7.1:
+* JSONStore
+* Direct Update
+* Application Management
+* Application Authenticity
+* Remote Disable
+* Device SSO
+* Push notifications
+* Certificate Pinning
+
+#### Known Issues
+
+While Testing OAuth Flow on v7.1 we found the following issues in App.
+
+![too many HTTP redirect]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/too many HTTP redirect.png)
+
+The feature impacted because of the issues are 
+
+* OAuth Flow
+* Invoking backend procedures through adapters
+* Challenge Handling
+
+> **Note**: We will release an iFix soon to address the multiple redirect issue seen in Oauth flow for v7.1.
+
+#### WatchOS 6
+We have verified basic OAuth Flow and Application Authenticity on watchOS 6.
+
+#### iPadOS 13
+iPadOS 13 doesnt have a separate SDK with Xcode 11 beta. So we have not done any separate testing for iPad OS. iPAD avilable with Xcode11 still using iOS 13 only.
+
+![iPadOS 13 deployment info]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/iPadOS 13 deployment info.png)
+
+![xcode11SDKs]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/xcode11SDKs.png)
 
 We have also verified MFP based cordova, ionic and react-native apps.
 
@@ -60,10 +96,6 @@ All the above features were validated to work on iOS 13 beta 3.
 iOS 13 compatibility tests are planned for the following:
 
 * Application Center
-* watchOS
-* iPadOS
-
-We will be sharing the compatibility test results for Mobilefirst v7.1 soon.
 
 *Stay tuned for further updates.*
 
