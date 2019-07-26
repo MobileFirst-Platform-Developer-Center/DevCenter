@@ -14,12 +14,12 @@ Dieses einführende Lernprogramm führt Sie durch den Installationsprozess für 
 ## {{ site.data.keys.mf_server }} im Grafikmodus installieren
 {: #graphical-mode }
 
-Sie können {{ site.data.keys.mf_server }} im Grafikmodus von IBM Installation Manager und des Server Configuration Tool installieren. Gehen Sie dazu gemäß Anleitung im [Lernprogramm zur Installation von {{ site.data.keys.mf_server }} im Grafikmodus](tutorials/graphical-mode) vor. 
+Sie können {{ site.data.keys.mf_server }} im Grafikmodus von IBM Installation Manager und des Server Configuration Tool installieren. Gehen Sie dazu gemäß Anleitung im [Lernprogramm zur Installation von {{ site.data.keys.mf_server }} im Grafikmodus](graphical-mode) vor. 
 
 ## {{ site.data.keys.mf_server }} über im Befehlszeilenmodus installieren
 {: #cli-mode }
 
-Verwenden Sie den Befehlszeilenmodus von IBM Installation Manager und Ant-Tasks, um {{ site.data.keys.mf_server }} zu installieren. Gehen Sie gemäß der Anleitung im [Lernprogramm für die Installation von {{ site.data.keys.mf_server }} im Befehlszeilenmodus](tutorials/command-line) vor.
+Verwenden Sie den Befehlszeilenmodus von IBM Installation Manager und Ant-Tasks, um {{ site.data.keys.mf_server }} zu installieren. Gehen Sie gemäß der Anleitung im [Lernprogramm für die Installation von {{ site.data.keys.mf_server }} im Befehlszeilenmodus](command-line) vor.
 
 ## Nächster Schritt
 {: #whats-next }

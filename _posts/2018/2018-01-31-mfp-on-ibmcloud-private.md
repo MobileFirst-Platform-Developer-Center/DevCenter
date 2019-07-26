@@ -14,7 +14,7 @@ Mobile Foundation is now available for IBM Cloud Private (ICP) deployment. The P
 The following video demonstrates how you can load the PPA Archive of Mobile Foundation for IBM Cloud Private onto an ICP Kubernetes cluster.
 This video demonstrates how to configure the host to access the ICP Kubernetes cluster and how to load the PPA archive of IBM MobileFirst Foundation for ICP.
 
-Additionally, the video shows how you can configure and install Mobile Foundation Server and Mobile Analytics Server. The detailed documentation on the same can be found [here]({{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/). This video further demonstrates running of a sample application. For more information on the same, follow the tutorials [here]({{ site.baseurl }}/tutorials/en/foundation/8.0/all-tutorials/).
+Additionally, the video shows how you can configure and install Mobile Foundation Server and Mobile Analytics Server. The detailed documentation on the same can be found [here]({{ site.baseurl }}/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/). This video further demonstrates running of a sample application. For more information on the same, follow the tutorials [here]({{ site.baseurl }}/tutorials/en/foundation/8.0/all-tutorials/).
 <br/>
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">

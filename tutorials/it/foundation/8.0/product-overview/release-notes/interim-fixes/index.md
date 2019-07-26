@@ -1,20 +1,36 @@
 ---
 layout: tutorial
-title: What's new in Interim Fixes
-breadcrumb_title: Interim iFixes
+title: What's new in CD Updates
+breadcrumb_title: CD Updates
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Interim fixes provide patches and updates to correct problems and keep {{ site.data.keys.product_full }} current for new releases of mobile operating systems.
+Interim fixes and CD Updates provide patches and updates to correct problems and keep {{ site.data.keys.product_full }} current for new releases of mobile operating systems. CD Updates also enhance the functionality of the product by introducing new features.
 
-Interim fixes are cumulative. When you download the latest v8.0 interim fix, you get all of the fixes from earlier interim fixes.
+Interim fixes and CD Updates are cumulative. When you download the latest v8.0 interim fix or CD Update, you get all of the fixes and features from earlier interim fixes and CD Updates.
 
-Download and install the latest interim fix to obtain all of the fixes that are described in the following sections. If you install earlier fixes, you might not get all of the fixes described here.
+Download and install the latest CD Update to obtain all of the features that are described in the following sections.
 
 > For a list of iFix releases of {{ site.data.keys.product }} 8.0, [see here]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
-Where an APAR number is listed, you can confirm that an interim fix has that feature by searching the interim fix README file for that APAR number.
+### Features included with CD update 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
+
+##### <span style="color:NAVY">**CoreML Update**</span>
+
+ML (Machine Learning) models can be executed locally on the iOS mobile device using Apple’s CoreML framework.
+Mobile Foundation provides the ability to manage the distribution of these models to devices securely. [Learn more](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
+
+##### <span style="color:NAVY">**App Authenticity for watchOS**</span>
+
+App Authenticity is a security feature, which validates the authenticity of the application before providing access. This feature was available for mobile apps. The feature is now extended for Apple WatchOS apps. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
+
+##### <span style="color:NAVY">**Push Notifications - Additional message features and attributes for FCM**</span>
+
+Push Notifications now supports the following additional message attributes.
+1. Lights
+2. Styles (Inbox, BigText, PictureNotifications)
+
 
 ### Features included with CD update 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
 

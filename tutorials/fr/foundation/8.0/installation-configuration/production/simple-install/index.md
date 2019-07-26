@@ -14,12 +14,12 @@ Ce tutoriel de mise en route vous guide dans la procédure d'installation afin q
 ## Installation de {{ site.data.keys.mf_server }} en mode graphique
 {: #graphical-mode }
 
-Utilisez le mode graphique d'IBM Installation Manager et l'outil de configuration de serveur pour installer {{ site.data.keys.mf_server }} en suivant la procédure décrite dans le [tutoriel présentant l'installation de {{ site.data.keys.mf_server }} en mode graphique](tutorials/graphical-mode).
+Utilisez le mode graphique d'IBM Installation Manager et l'outil de configuration de serveur pour installer {{ site.data.keys.mf_server }} en suivant la procédure décrite dans le [tutoriel présentant l'installation de {{ site.data.keys.mf_server }} en mode graphique](graphical-mode).
 
 ## Installation de {{ site.data.keys.mf_server }} en mode de ligne de commande
 {: #cli-mode }
 
-Utilisez le mode de ligne de commande d'IBM Installation Manager et les tâches Ant pour installer {{ site.data.keys.mf_server }} en suivant la procédure du [tutoriel présentant l'installation de {{ site.data.keys.mf_server }} en mode de ligne de commande](tutorials/command-line).
+Utilisez le mode de ligne de commande d'IBM Installation Manager et les tâches Ant pour installer {{ site.data.keys.mf_server }} en suivant la procédure du [tutoriel présentant l'installation de {{ site.data.keys.mf_server }} en mode de ligne de commande](command-line).
 
 ## Etape suivante
 {: #whats-next }

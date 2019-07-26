@@ -196,7 +196,7 @@ Vous pouvez aussi utiliser l'élément `<mysql>` avec les attributs suivants :
 | user	    | Nom d'utilisateur permettant d'accéder aux bases de données. | Oui      | Aucune                  |
 | password	| Nom d'utilisateur permettant d'accéder aux bases de données.	 | Non       | Demandée en mode interactif |
 
-> `Remarque :` Si vous spécifiez la base de données avec des attributs alternatifs, cette base de données doit exister, le compte utilisateur doit exister et la base de données doit être déjà accessible pour l'utilisateur. Dans ce cas, la tâche **configuredatabase** ne tente pas de créer la base de données ou l'utilisateur ni d'accorder l'accès à l'utilisateur. La tâche **configuredatabase** garantit seulement que la base de données comporte les tables requises pour la version en cours de {{ site.data.keys.mf_server }}. Vous n'avez pas besoin de spécifier les éléments internes `<dba>` ou `<client>`.
+> `Remarque :` Si vous spécifiez la base de données avec des attributs alternatifs, cette base de données doit exister, le compte utilisateur doit exister et la base de données doit être déjà accessible pour l'utilisateur. Dans ce cas, la tâche **configuredatabase** ne tente pas de créer la base de données ou l'utilisateur ni d'accorder l'accès à l'utilisateur. La tâche **configuredatabase** garantit seulement que la base de données comporte les tables requises pour la version en cours de {{ site.data.keys.mf_server }}. Vous n'avez pas besoin de spécifier l'élément interne `<dba>` ou `<client>`.
 
 #### Oracle
 {: #oracle }

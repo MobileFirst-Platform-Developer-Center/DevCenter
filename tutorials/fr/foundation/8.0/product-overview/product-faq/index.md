@@ -60,7 +60,7 @@ Cette rubrique contient la liste des questions fréquemment posées sur IBM Mobi
             <div class="panel-body">
                 <p>Le blogue d'annonces dédié à Mobile Foundation v8.0 sur ICP peut être consulté <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/01/31/mfp-on-ibmcloud-private-announce/" target="_blank">ici</a>.<br/>
                 La disponibilité de Mobile Foundation Developer Edition pour ICP a été publiée et vous pouvez lire l'annonce <a href="https://mobilefirstplatform.ibmcloud.com/blog/2019/01/29/mfp-community-edition-on-icp/" target="_blank">ici</a>.<br/>
-                Pour commencer à utiliser Mobile Foundation version 8.0 sur ICP, reportez-vous à la <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/" target="_blank">documentation</a>.</p>
+                Pour commencer à utiliser Mobile Foundation version 8.0 sur ICP, reportez-vous à la <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/" target="_blank">documentation</a>.</p>
             </div>
         </div>      
     </div>

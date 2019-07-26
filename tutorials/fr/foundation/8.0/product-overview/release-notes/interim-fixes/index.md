@@ -14,6 +14,24 @@ Téléchargez et installez la dernière mise à jour en distribution continue po
 
 > Pour obtenir la liste des éditions de correctif temporaire de {{ site.data.keys.product }} 8.0, [cliquez ici]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
+### Fonctions incluses avec la mise à jour en distribution continue 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
+
+##### <span style="color:NAVY">**Mise à jour CoreML**</span>
+
+Les modèles d'apprentissage automatique (ML - Machine Learning) peuvent être exécutés en local sur l'appareil mobile iOS à l'aide de l'infrastructure CoreML d'Apple.
+Mobile Foundation permet de gérer la distribution de ces modèles aux appareils en toute sécurité. [En savoir plus](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
+
+##### <span style="color:NAVY">**App Authenticity for watchOS**</span>
+
+App Authenticity est une fonction de sécurité qui valide l'authenticité de l'application avant de lui donner accès. Cette fonction était disponible pour les applications mobiles. La fonction est désormais étendue aux applications Apple WatchOS. [En savoir plus]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/).
+
+##### <span style="color:NAVY">**Notifications push - Davantage de fonctions et d'attributs de message pour FCM**</span>
+
+Les notifications push prennent désormais en charge les attributs de message suivants.
+1. Voyants
+2. Styles (Inbox, BigText, PictureNotifications)
+
+
 ### Fonctions incluses avec la mise à jour en distribution continue 4 (8.0.0.0-MFPF-IF201812191602-CDUpdate-04)
 
 ##### <span style="color:NAVY">**Prise en charge de HTTP/2 pour les notifications push APNs**</span>

@@ -5,7 +5,7 @@ breadcrumb_title: Multilingual translation
 relevantTo: [javascript]
 weight: 9
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->

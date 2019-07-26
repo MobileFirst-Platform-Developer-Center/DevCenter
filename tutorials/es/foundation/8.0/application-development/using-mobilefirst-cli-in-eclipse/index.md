@@ -145,7 +145,7 @@ La adición de plataformas adicionales es un proceso simple que el plugin THyM n
 	1. Esto debería añadir un separador junto a la consola en Eclipse
 	1. Aquí podrá añadir manualmente plataformas mediante los mandatos de la interfaz de línea de mandatos (CLI) de Cordova
 		*  `cordova platform ls` listará las plataformas disponibles e instaladas
-		*  `cordova platform add <platform>`, donde *<platform>* es la plataforma que desea, añadirá una plataforma al proyecto.
+		*  `cordova platform add <platform>`, donde *<platform>* es la plataforma deseada, añadirá la plataforma especificada al proyecto. 
 		*  Para obtener más información sobre mandatos específicos de la plataforma Cordova, consulte <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Documentación de mandatos de la plataforma Cordova</a>.
 
 ### Modalidad de depuración

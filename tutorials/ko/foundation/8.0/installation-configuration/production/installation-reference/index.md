@@ -33,7 +33,7 @@ configuredatabase Ant 태스크에 대한 참조 정보입니다. 이 참조 정
 또한 다음 조건 중 하나가 충족되는 경우:
 
 * DBMS 유형이 Derby입니다.
-* 내부 요소 `<dba>`가 있습니다.
+* `<dba>` 내부 요소가 있습니다.
 * DBMS 유형이 DB2이고 지정된 사용자에게 데이터베이스를 작성할 수 있는 권한이 있습니다.
 
 이 태스크는 다음과 같은 영향을 미칠 수 있습니다.
@@ -76,7 +76,7 @@ configuredatabase Ant 태스크에 대한 참조 정보입니다. 이 참조 정
 | `<oracle>`          |	Oracle에 대한 매개변수입니다.  | 0..1  |
 | `<driverclasspath>` | JDBC 드라이버 클래스 경로입니다. | 0..1  |
 
-각 데이터베이스 유형에 대해 `<property>` 요소를 사용하여 데이터베이스에 액세스하는 데 필요한 JDBC 연결 특성을 지정할 수 있습니다. `<property>` 요소에는 다음과 같은 속성이 있습니다.
+각 데이터베이스 유형에 대해 `<property>` 요소를 사용하여 데이터베이스에 액세스하는 데 필요한 JDBC 연결 특성을 지정할 수 있습니다. `<property>` 요소에는 다음 속성이 있습니다.
 
 | 속성 |설명                | 필수 | 기본값 |
 |-----------|----------------------------|----------|---------|
@@ -85,7 +85,7 @@ configuredatabase Ant 태스크에 대한 참조 정보입니다. 이 참조 정
 
 #### Apache Derby
 {: #apache-derby }
-`<derby>` 요소에는 다음과 같은 속성이 있습니다.
+`<derby>` 요소에는 다음 속성이 있습니다.
 
 | 속성 |설명                                | 필수 | 기본값                                                                      |
 |-----------|--------------------------------------------|----------|------------------------------------------------------------------------------|
@@ -93,7 +93,7 @@ configuredatabase Ant 태스크에 대한 참조 정보입니다. 이 참조 정
 | datadir   | 데이터베이스가 포함된 디렉토리입니다. |예      |없음                                                                         |
 | schema	| 스키마 이름입니다.                           |아니오       | 유형에 따라 MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH 또는 APPCENTER |
 
-`<derby>` 요소에서는 다음 요소를 지원합니다.
+`<derby>` 요소는 다음 속성을 지원합니다.
 
 | 요소      |설명                     | 개수   |
 |--------------|---------------------------------|---------|
@@ -103,11 +103,11 @@ configuredatabase Ant 태스크에 대한 참조 정보입니다. 이 참조 정
 
 #### DB2
 {: #db2 }
-`<db2>` 요소에는 다음과 같은 속성이 있습니다.
+`<db2>` 요소에는 다음 속성이 있습니다.
 
 | 속성 |설명                            | 필수 | 기본값 |
 |-----------|----------------------------------------|----------|---------|
-| database  | 데이터베이스 이름입니다.                     |아니오       | 유형에 따라 MFPDATA, MFPADM, MFPCFG, MFPPUSH 또는 APPCNTR |
+| database  | 데이터베이스 이름입니다.                     |아니오       |유형에 따라 MFPDATA, MFPADM, MFPCFG, MFPPUSH 또는 APPCNTR |
 | server    | 데이터베이스 서버의 호스트 이름입니다.	 |예      |없음  |
 | port      | 데이터베이스 서버의 포트입니다.       | 아니오	    | 50000 |
 | user      | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. | 예	    |없음  |
@@ -116,7 +116,7 @@ configuredatabase Ant 태스크에 대한 참조 정보입니다. 이 참조 정
 | schema    | 스키마 이름입니다.                       | 아니오	    | 사용자에 따라 다름   |
 
 DB2 사용자 계정에 대한 자세한 정보는 [DB2 보안 모델 개요](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)를 참조하십시오.  
-`<db2>` 요소에서는 다음 요소를 지원합니다.
+`<db2>` 요소는 다음 요소를 지원합니다.
 
 | 요소      |설명                             | 개수   |
 |--------------|-----------------------------------------|---------|
@@ -124,7 +124,7 @@ DB2 사용자 계정에 대한 자세한 정보는 [DB2 보안 모델 개요](ht
 | `<dba>`      | 데이터베이스 관리자 인증 정보입니다. | 0..1    |
 
 사용 가능한 특성은 [IBM Data Server Driver for JDBC and SQLJ에 대한 특성](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html)을 참조하십시오.  
-내부 요소 `<dba>`는 데이터베이스 관리자의 인증 정보를 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<dba>` 내부 요소는 데이터베이스 관리자의 인증 정보를 지정합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성 |설명                            | 필수 | 기본값 |
 |-----------|----------------------------------------|----------|---------|
@@ -133,7 +133,7 @@ DB2 사용자 계정에 대한 자세한 정보는 [DB2 보안 모델 개요](ht
 
 `<dba>` 요소에 지정된 사용자는 SYSADM 또는 SYSCTRL DB2 권한이 있어야 합니다. 자세한 정보는 [권한 개요](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html)를 참조하십시오.
 
-`<driverclasspath>` 요소에는 DB2 JDBC 드라이버 및 관련 라이센스의 JAR 파일이 있어야 합니다. 다음 방법 중 하나로 해당 파일을 검색할 수 있습니다.
+`<driverclasspath>` 요소는 DB2 JDBC 드라이버 및 연관된 라이센스의 JAR 파일을 포함해야 합니다. 다음 방법 중 하나로 해당 파일을 검색할 수 있습니다.
 
 * [DB2 JDBC 드라이버 버전](http://www.ibm.com/support/docview.wss?uid=swg21363866) 페이지에서 DB2 JDBC 드라이버 다운로드
 * 또는 DB2 서버의 **DB2_INSTALL_DIR/java** 디렉토리에서 **db2jcc4.jar** 파일 및 관련 **db2jcc_license_*.jar** 파일을 페치하십시오.
@@ -146,14 +146,14 @@ Ant 태스크를 사용하여 테이블스페이스 등의 테이블 할당에 �
 
 | 속성 |설명                            | 필수 | 기본값 |
 |-----------|----------------------------------------|----------|---------|
-| database	| 데이터베이스 이름입니다.	                 |아니오       | 유형에 따라 MFPDATA, MFPADM, MFPCFG, MFPPUSH 또는 APPCNTR |
+| database	| 데이터베이스 이름입니다.	                 |아니오       |유형에 따라 MFPDATA, MFPADM, MFPCFG, MFPPUSH 또는 APPCNTR |
 | server	| 데이터베이스 서버의 호스트 이름입니다.	 | 예	    |없음 |
 | port	    | 데이터베이스 서버의 포트입니다.	     | 아니오	    | 3306 |
 | user	    | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. | 예	    |없음 |
 | password	| 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	 | 아니오	    | 대화식으로 조회됨 |
 
 MySQL 사용자 계정에 대한 자세한 정보는 [MySQL 사용자 계정 관리](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html)를 참조하십시오.  
-`<mysql>` 요소에서는 다음 요소를 지원합니다.
+`<mysql>` 요소는 다음 요소를 지원합니다.
 
 | 요소      |설명                                      | 개수 |
 |--------------|--------------------------------------------------|-------|
@@ -162,7 +162,7 @@ MySQL 사용자 계정에 대한 자세한 정보는 [MySQL 사용자 계정 관
 | `<client>`   | 데이터베이스에 대한 액세스가 허용되는 호스트입니다. | 0..∞  |
 
 사용 가능한 특성은 [Connector/J에 대한 드라이버/데이터 소스 클래스 이름, URL 구문 및 구성 특성](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html)을 참조하십시오.  
-내부 요소 `<dba>`는 데이터베이스 관리자 인증 정보를 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<dba>` 내부 요소는 데이터베이스 관리자 인증 정보를 지정합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성 |설명                            | 필수 | 기본값 |
 |-----------|----------------------------------------|----------|---------|
@@ -171,7 +171,7 @@ MySQL 사용자 계정에 대한 자세한 정보는 [MySQL 사용자 계정 관
 
 `<dba>` 요소에 지정된 사용자는 MySQL 수퍼유저 계정이어야 합니다. 자세한 정보는 [초기 MySQL 계정 보호](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html)를 참조하십시오.
 
-각 `<client>` 내부 요소는 클라이언트 컴퓨터 또는 클라이언트 컴퓨터의 와일드카드를 지정하는 데 사용합니다. 이 컴퓨터는 데이터베이스에 연결할 수 있습니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+각 `<client>` 내부 요소는 클라이언트 컴퓨터 또는 클라이언트 컴퓨터의 와일드카드를 지정합니다. 이 컴퓨터는 데이터베이스에 연결할 수 있습니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성 |설명                                                              | 필수 | 기본값 |
 |-----------|--------------------------------------------------------------------------|----------|---------|
@@ -179,7 +179,7 @@ MySQL 사용자 계정에 대한 자세한 정보는 [MySQL 사용자 계정 관
 
 hostname 구문에 대한 자세한 정보는 [계정 이름 지정](http://dev.mysql.com/doc/refman/5.5/en/account-names.html)을 참조하십시오.
 
-`<driverclasspath>` 요소에는 MySQL Connector/J JAR 파일이 있어야 합니다. [Connector/J 다운로드](http://www.mysql.com/downloads/connector/j/) 페이지에서 해당 파일을 다운로드할 수 있습니다.
+`<driverclasspath>` 요소는 MySQL Connector/J JAR 파일을 포함해야 합니다. [Connector/J 다운로드](http://www.mysql.com/downloads/connector/j/) 페이지에서 해당 파일을 다운로드할 수 있습니다.
 
 또는 다음 속성이 있는 `<mysql>` 요소를 사용할 수 있습니다.
 
@@ -189,7 +189,7 @@ hostname 구문에 대한 자세한 정보는 [계정 이름 지정](http://dev.
 | user	    | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. |예      |없음                  |
 | password	| 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	 |아니오       | 대화식으로 조회됨 |
 
-> `참고:` 대체 속성을 사용하여 데이터베이스를 지정하는 경우에는 이 데이터베이스가 존재해야 하고 사용자 계정이 존재해야 하고 사용자가 이미 데이터베이스에 액세스할 수 있어야 합니다. 이 경우 **configuredatabase** 태스크는 데이터베이스 또는 사용자 작성을 시도하지 않고 사용자에 대한 액세스 권한 부여도 시도하지 않습니다. **configuredatabase** 태스크는 데이터베이스에 현재 {{ site.data.keys.mf_server }} 버전에 대한 필수 테이블이 있는지만 확인합니다. 내부 요소 `<dba>` 또는 `<client>`.
+> `참고:` 대체 속성을 사용하여 데이터베이스를 지정하는 경우에는 이 데이터베이스가 존재해야 하고 사용자 계정이 존재해야 하고 사용자가 이미 데이터베이스에 액세스할 수 있어야 합니다. 이 경우 **configuredatabase** 태스크는 데이터베이스 또는 사용자 작성을 시도하지 않고 사용자에 대한 액세스 권한 부여도 시도하지 않습니다. **configuredatabase** 태스크는 데이터베이스에 현재 {{ site.data.keys.mf_server }} 버전에 대한 필수 테이블이 있는지만 확인합니다. `<dba>` 또는 `<client>` 내부 요소를 지정하지 않아도 됩니다.
 
 #### Oracle
 {: #oracle }
@@ -208,7 +208,7 @@ hostname 구문에 대한 자세한 정보는 [계정 이름 지정](http://dev.
 > `참고:` user 속성의 경우 대문자로 된 사용자 이름을 사용하는 것이 좋습니다. Oracle 사용자 이름은 일반적으로 대문자입니다. 다른 데이터베이스 도구와 달리 **configuredatabase** Ant 태스크는 사용자 이름의 소문자를 대문자로 변환하지 않습니다. **configuredatabase** Ant 태스크가 데이터베이스에 연결하는 데 실패하면 **user** 속성에 대한 값을 대문자로 입력하십시오.
 
 Oracle 사용자 계정에 대한 자세한 정보는 [인증 방법 개요](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374)를 참조하십시오.  
-`<oracle>` 요소에서는 다음 요소를 지원합니다.
+`<oracle>` 요소는 다음 요소를 지원합니다.
 
 | 요소      |설명                                      | 개수 |
 |--------------|--------------------------------------------------|-------|
@@ -216,14 +216,14 @@ Oracle 사용자 계정에 대한 자세한 정보는 [인증 방법 개요](htt
 | `<dba>`      | 데이터베이스 관리자 인증 정보입니다.          | 0..1  |
 
 사용 가능한 연결 특성에 대한 정보는 [클래스 OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html)를 참조하십시오.  
-내부 요소 `<dba>`는 데이터베이스 관리자 인증 정보를 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<dba>` 내부 요소는 데이터베이스 관리자 인증 정보를 지정합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성      |설명                                                              | 필수 | 기본값 |
 |----------------|--------------------------------------------------------------------------|----------|---------|
 | user	         | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 테이블 아래의 참고를 참조하십시오.	|예      |없음    |
 | password	     | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.                                    |아니오       | 대화식으로 조회됨 |
 
-`<driverclasspath>` 요소에는 Oracle JDBC 드라이버 JAR 파일이 있어야 합니다. [JDBC, SQLJ, Oracle JPublisher 및 UCP(Universal Connection Pool)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html)에서 Oracle JDBC 드라이버를 다운로드할 수 있습니다.
+`<driverclasspath>` 요소는 Oracle JDBC 드라이버 JAR 파일을 포함해야 합니다. [JDBC, SQLJ, Oracle JPublisher 및 UCP(Universal Connection Pool)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html)에서 Oracle JDBC 드라이버를 다운로드할 수 있습니다.
 
 Ant 태스크를 사용하여 테이블스페이스 등의 테이블 할당에 대한 세부사항을 지정할 수 없습니다. 테이블스페이스를 제어하려면 Ant 태스크를 실행하기 전에 수동으로 사용자 계정을 작성하여 이 사용자 계정에 기본 테이블스페이스를 지정하십시오. 기타 세부사항을 제어하려면 [Oracle 데이터베이스 및 사용자 요구사항](../prod-env/databases/#oracle-database-and-user-requirements) 절에 있는 수동 지시사항을 사용해야 합니다.
 
@@ -333,7 +333,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | `<applicationserver>` | 애플리케이션 서버입니다.                          |1     |
 | `<configuration>`     | 라이브 업데이트 서비스입니다.	                       |1     |
 | `<console>`           | 관리 콘솔입니다.                      | 0..1  |
-| `<database>`          | 데이터베이스입니다.                                   |1     |
+| `<database>`          |데이터베이스입니다.                                   |1     |
 | `<jmx>`               | JMX(Java Management Extensions)를 사용으로 설정합니다.	           |1     |
 | `<property>`          | 특성입니다.	                               | 0..   |
 | `<push>`              | 푸시 서비스.	                               | 0..1  |
@@ -341,7 +341,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 ### {{ site.data.keys.mf_console }} 지정
 {: #to-specify-a-mobilefirst-operations-console }
-`<console>` 요소는 {{ site.data.keys.mf_console }}의 설치를 사용자 정의하는 정보를 수집합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<console>` 요소는 {{ site.data.keys.mf_console }}의 설치를 사용자 정의하기 위한 정보를 수집합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성         |설명                                                               | 필수 | 기본값     |
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
@@ -349,14 +349,14 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | install           | {{ site.data.keys.mf_console }}을 설치해야 하는지 여부를 표시합니다. |아니오       |예         |
 | warfile           | 콘솔 WAR 파일입니다.	                                                    |아니오        | mfp-admin-ui.war 파일은 mfp-ant-deployer.jar 파일과 동일한 디렉토리에 있습니다. |
 
-`<console>` 요소에서는 다음 요소를 지원합니다.
+`<console>` 요소는 다음 속성을 지원합니다.
 
 | 요소               |설명                                      | 개수 |
 |-----------------------|--------------------------------------------------|-------|
 | `<artifacts>`         | {{ site.data.keys.mf_server }} 아티팩트입니다.                | 0..1  |
 | `<property>`	        | 특성입니다.	                               | 0..   |
 
-`<artifacts>` 요소에는 다음과 같은 속성이 있습니다.
+`<artifacts>` 요소에는 다음 속성이 있습니다.
 
 | 속성         |설명                                                               | 필수 | 기본값     |
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
@@ -365,7 +365,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 이 요소를 사용하면 자체 JNDI 특성을 정의하거나 {{ site.data.keys.mf_console }} WAR 파일 및 관리 서비스에서 제공하는 JNDI 특성의 기본값을 대체할 수 있습니다.
 
-`<property>` 요소는 Application Server에 정의할 배치 특성을 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<property>` 요소는 애플리케이션 서버에서 정의할 배치 특성을 지정합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성  |설명                | 필수 | 기본값 |
 |------------|----------------------------|----------|---------|
@@ -378,11 +378,11 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 ### 애플리케이션 서버 지정
 {: #to-specify-an-application-server }
-`<applicationserver>` 요소를 사용하여 기본 Application Server에 따라 다른 매개변수를 정의하십시오. `<applicationserver>` 요소에서는 다음 요소를 지원합니다.
+`<applicationserver>` 요소를 사용하여 기본 애플리케이션 서버에 따라 달라지는 매개변수를 정의하십시오. `<applicationserver>` 요소는 다음 요소를 지원합니다.
 
 | 요소                                   |설명                                      | 개수 |
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` 또는 `<was>` | WebSphere Application Server에 대한 매개변수입니다. <br/><br/>`<websphereapplicationserver>` 요소(줄여서 `was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.               | 0..1  |
+| `<websphereapplicationserver>` 또는 `<was>` |WebSphere Application Server에 대한 매개변수입니다. <br/><br/>`<websphereapplicationserver>` 요소(또는 줄여서 `was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.               | 0..1  |
 | `<tomcat>`                                | Apache Tomcat에 대한 매개변수입니다.	               | 0..1  |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블에 설명되어 있습니다.  
@@ -392,7 +392,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 |--------------------------|----------------------------------|-------|
 | `<collectiveController>` | Liberty Collective 제어기입니다. |	0..1  |
 
-`<collectiveController>` 요소에는 다음과 같은 속성이 있습니다.
+`<collectiveController>` 요소에는 다음 속성이 있습니다.
 
 | 속성                |설명                            | 필수 | 기본값 |
 |--------------------------|----------------------------------------|----------|---------|
@@ -403,7 +403,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 ### 라이브 업데이트 서비스 구성 지정
 {: #to-specify-the-live-update-service-configuration }
-`<configuration>` 요소는 라이브 업데이트 서비스에 따라 달라지는 매개변수를 정의하는 데 사용합니다. `<configuration>` 요소에는 다음과 같은 속성이 있습니다.
+`<configuration>` 요소를 사용하여 라이브 업데이트 서비스에 따라 달라지는 매개변수를 정의하십시오. `<configuration>` 요소에는 다음 속성이 있습니다.
 
 | 속성                |설명                                                    | 필수 | 기본값 |
 |--------------------------|----------------------------------------------------------------|----------|---------|
@@ -413,14 +413,14 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 | createConfigAdminUser	   | 관리자가 누락된 경우 애플리케이션 서버의 기본 레지스트리에서 관리자를 작성할지 여부를 표시합니다. |아니오 | true |
 | warFile                  | 라이브 업데이트 서비스 WAR 파일입니다.	                            |아니오         | mfp-live-update.war 파일은 mfp-ant-deployer.jar 파일과 동일한 디렉토리에 있습니다. |
 
-`<configuration>` 요소에서는 다음 요소를 지원합니다.
+`<configuration>` 요소는 다음 요소를 지원합니다.
 
 | 요소      |설명                           | 개수 |
 |--------------|---------------------------------------|-------|
 | `<user>`     | 라이브 업데이트 서비스의 사용자입니다. | 0..1  |
 | `<property>` | 특성입니다.	                   | 0..   |
 
-`<user>` 요소는 애플리케이션의 특정 보안 역할에 포함할 사용자에 대한 매개변수를 수집하는 데 사용합니다.
+`<user>` 요소는 애플리케이션의 특정 보안 역할에 포함할 사용자에 대한 매개변수를 수집합니다.
 
 | 속성   |설명                                                             | 필수 | 기본값 |
 |-------------|-------------------------------------------------------------------------|----------|---------|
@@ -434,7 +434,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 > **팁:** 사용자가 외부 LDAP 디렉토리에 있는 경우에는 **role** 및 **name** 속성만 설정하고 비밀번호는 정의하지 마십시오.
 
-`<property>` 요소는 Application Server에 정의할 배치 특성을 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<property>` 요소는 애플리케이션 서버에서 정의할 배치 특성을 지정합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성  |설명                | 필수 | 기본값 |
 |------------|----------------------------|----------|---------|
@@ -445,11 +445,11 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 ### 애플리케이션 서버 지정
 {: #to-specify-an-application-server-1 }
-`<applicationserver>` 요소를 사용하여 기본 Application Server에 따라 다른 매개변수를 정의하십시오. `<applicationserver>` 요소에서는 다음 요소를 지원합니다.
+`<applicationserver>` 요소를 사용하여 기본 애플리케이션 서버에 따라 달라지는 매개변수를 정의하십시오. `<applicationserver>` 요소는 다음 요소를 지원합니다.
 
 | 요소      |설명                                              | 개수 |
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` 또는 `<was>`	| WebSphere Application Server에 대한 매개변수입니다.<br/><br/><websphereapplicationserver> 요소(줄여서 <was>)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. | 0..1  |
+| `<websphereapplicationserver>` 또는 `<was>`	| WebSphere Application Server의 매개변수입니다.<br/><br/><websphereapplicationserver> 요소(또는 줄여서 <was>)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. | 0..1  |
 | `<tomcat>`   | Apache Tomcat에 대한 매개변수입니다.                        | 0..1  |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블에 설명되어 있습니다.  
@@ -457,9 +457,9 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 요소               |설명                  | 개수 |
 |-----------------------|----------------------------- |-------|
-| `<collectiveMember>`	|Liberty Collective 멤버입니다. | 0..1  |
+| `<collectiveMember>`	| Liberty Collective 멤버입니다. | 0..1  |
 
-`<collectiveMember>` 요소에는 다음과 같은 속성이 있습니다.
+`<collectiveMember>` 요소에는 다음 속성이 있습니다.
 
 | 속성   |설명                                             | 필수 | 기본값 |
 |-------------|---------------------------------------------------------|----------|---------|
@@ -486,7 +486,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 **analyticsURL**  
 수신되는 Analytics 데이터를 수신하는 {{ site.data.keys.mf_analytics }}에 의해 노출되는 URL을 지정하려면 analyticsURL 속성을 사용하십시오.
 
-예: `http://<hostname>:<port>/analytics-service/rest`
+예를 들어, `http://<hostname>:<port>/analytics-service/rest`입니다.
 
 **username**  
 {{ site.data.keys.mf_analytics }}에 대한 데이터 시작점이 기본 인증으로 보호되는 경우 사용되는 사용자 이름을 지정하려면 username 속성을 사용하십시오.
@@ -500,18 +500,18 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 ### 푸시 서비스 데이터베이스에 대한 연결 지정
 {: #to-specify-a-connection-to-the-push-service-database }
 
-`<database>` 요소는 Application Server에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 푸시 서비스 데이터베이스에 액세스합니다.
+`<database>` 요소는 애플리케이션 서버에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 푸시 서비스 데이터베이스에 액세스합니다.
 
-단일 데이터베이스를 선언해야 합니다. `<database kind="Push">`. `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고, configuredatabase Ant 태스크와 비슷하게 `<database>` 요소를 지정합니다. `<dba>` 및 `<client>` 요소가 있을 수 있습니다. `<property>` 요소가 있을 수 있습니다.
+단일 데이터베이스를 선언해야 합니다: `<database kind="Push">`. `<database>` 요소에 `<dba>` 및 `<client>` 요소가 없음을 제외하고 configuredatabase Ant와 유사하게 `<database>` 요소를 지정합니다. 여기에는 `<property>` 요소가 있을 수 있습니다.
 
-`<database>` 요소에는 다음과 같은 속성이 있습니다.
+`<database>` 요소에는 다음 속성이 있습니다.
 
 | 속성     |설명                                     | 필수 | 기본값 |
 |---------------|-------------------------------------------------|----------|---------|
 | kind          | 데이터베이스의 유형입니다(Push).	                  | 예	     |없음    |
 | validate	    | 데이터베이스에 액세스할 수 있는지 여부를 유효성 검증합니다. |아니오       | true    |
 
-`<database>` 요소에서는 다음 요소를 지원합니다. 관계형 DBMS에 대한 이 데이터베이스 요소의 구성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블을 참조하십시오.
+`<database>` 요소는 다음 요소를 지원합니다. 관계형 DBMS에 대한 이 데이터베이스 요소의 구성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블을 참조하십시오.
 
 | 요소            |설명                                                      | 개수 |
 |--------------------|----------------------------------------------------------------- |-------|
@@ -522,7 +522,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 | <cloudant>	     | Cloudant 데이터베이스에 대한 매개변수입니다.	                        | 0..1  |
 | <driverclasspath>	 | JDBC 드라이버 클래스 경로에 대한 매개변수입니다(관계형 DBMS 전용). | 0..1  |
 
-> **참고: ** `<cloudant>` 요소의 속성은 런타임과 약간 다릅니다. 자세한 정보는 다음 테이블을 참조하십시오.
+> **참고:** `<cloudant>` 요소의 속성은 런타임과 약간 다릅니다. 자세한 정보는 다음 테이블을 참조하십시오.
 
 | 속성     |설명                                     | 필수 | 기본값                   |
 |---------------|-------------------------------------------------|----------|---------------------------|
@@ -614,7 +614,7 @@ JNDI 환경 항목을 사용하여 푸시 서비스에 대한 구성 특성을 �
 {: #pushclientsecret }
 권한 부여 서버의 기밀 클라이언트로서 이 푸시 서비스 인스턴스의 본인확인정보 키입니다. ID 및 본인확인정보를 권한 부여 서버에 대해 등록해야 합니다. **installmobilefirstadmin** Ant 태스크를 사용하거나 {{ site.data.keys.mf_console }}에서 등록할 수 있습니다.
 
-`<property>` 요소는 Application Server에 정의할 배치 특성을 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<property>` 요소는 애플리케이션 서버에서 정의할 배치 특성을 지정합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성  |설명                | 필수 | 기본값 |
 |------------|----------------------------|----------|---------|
@@ -627,11 +627,11 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 
 ### 애플리케이션 서버 지정
 {: #to-specify-an-application-server-2 }
-`<applicationserver>` 요소를 사용하여 기본 Application Server에 따라 다른 매개변수를 정의하십시오. `<applicationserver>` 요소에서는 다음 요소를 지원합니다.
+`<applicationserver>` 요소를 사용하여 기본 애플리케이션 서버에 따라 달라지는 매개변수를 정의하십시오. `<applicationserver>` 요소는 다음 요소를 지원합니다.
 
 | 요소                               |설명                                      | 개수 |
 |---------------------------------------|--------------------------------------------------|-------|
-| <websphereapplicationserver> 또는 <was>	|WebSphere Application Server에 대한 매개변수입니다. |`<websphereapplicationserver>` 요소(줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. | 0..1 |
+| <websphereapplicationserver> 또는 <was>	|WebSphere Application Server에 대한 매개변수입니다. | `<websphereapplicationserver>` 요소(또는 줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. | 0..1 |
 | `<tomcat>` | Apache Tomcat에 대한 매개변수입니다. | 0..1 |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블에 설명되어 있습니다.
@@ -642,7 +642,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 |----------------------|------------------------------|-------|
 | `<collectiveMember>` | Liberty Collective 멤버입니다. |	0..1  |
 
-`<collectiveMember>` 요소에는 다음과 같은 속성이 있습니다.
+`<collectiveMember>` 요소에는 다음 속성이 있습니다.
 
 | 속성   |설명                        | 필수 | 기본값 |
 |-------------|------------------------------------|----------|---------|
@@ -670,7 +670,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 #### analyticsURL
 {: #analyticsurl }
 수신되는 Analytics 데이터를 수신하는 {{ site.data.keys.mf_analytics }}에 의해 노출되는 URL을 지정하려면 **analyticsURL** 속성을 사용하십시오.  
-예: `http://<hostname>:<port>/analytics-service/rest`
+예를 들어, `http://<hostname>:<port>/analytics-service/rest`입니다.
 
 #### username
 {: #username }
@@ -686,18 +686,18 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 
 ### 푸시 서비스 데이터베이스에 대한 연결 지정
 {: #to-specify-a-connection-to-the-push-service-database-1 }
-`<database>` 요소는 Application Server에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 푸시 서비스 데이터베이스에 액세스합니다.
+`<database>` 요소는 애플리케이션 서버에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 푸시 서비스 데이터베이스에 액세스합니다.
 
-단일 데이터베이스를 선언해야 합니다. `<database kind="Push">`. `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고, configuredatabase Ant 태스크와 비슷하게 `<database>` 요소를 지정합니다. `<dba>` 및 `<client>` 요소가 있을 수 있습니다. `<property>` 요소가 있을 수 있습니다.
+단일 데이터베이스를 선언해야 합니다: `<database kind="Push">`. `<database>` 요소에 `<dba>` 및 `<client>` 요소가 없음을 제외하고 configuredatabase Ant와 유사하게 `<database>` 요소를 지정합니다. 여기에는 `<property>` 요소가 있을 수 있습니다.
 
-`<database>` 요소에는 다음과 같은 속성이 있습니다.
+`<database>` 요소에는 다음 속성이 있습니다.
 
 | 속성    |설명                  | 필수 | 기본값 |
 |--------------|------------------------------|----------|---------|
 | kind         | 데이터베이스의 유형입니다(Push). |예      |없음    |
 | validate	   | 데이터베이스에 액세스할 수 있는지 여부를 유효성 검증합니다. |아니오 | true |
 
-`<database>` 요소에서는 다음 요소를 지원합니다. 관계형 DBMS에 대한 이 데이터베이스 요소의 구성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블을 참조하십시오.
+`<database>` 요소는 다음 요소를 지원합니다. 관계형 DBMS에 대한 이 데이터베이스 요소의 구성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블을 참조하십시오.
 
 | 요소              |설명                               | 개수 |
 |----------------------|-------------------------------------------|-------|
@@ -708,7 +708,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 | `<cloudant>`	       | Cloudant 데이터베이스에 대한 매개변수입니다.     | 0..1  |
 | `<driverclasspath>`  | JDBC 드라이버 클래스 경로에 대한 매개변수입니다(관계형 DBMS 전용). | 0..1 |
 
-> **참고: ** `<cloudant>` 요소의 속성은 런타임과 약간 다릅니다. 자세한 정보는 다음 테이블을 참조하십시오.
+> **참고:** `<cloudant>` 요소의 속성은 런타임과 약간 다릅니다. 자세한 정보는 다음 테이블을 참조하십시오.
 
 | 속성    |설명                            | 필수   | 기본값 |
 |--------------|----------------------------------------|------------|---------|
@@ -782,26 +782,26 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 | 요소               |설명                                      | 개수 |
 |-----------------------|--------------------------------------------------|-------|
-| `<property>`          |특성입니다.	                               |0..   |
-| `<applicationserver>` |애플리케이션 서버입니다.                          |1     |
+| `<property>`          | 특성입니다.	                               | 0..   |
+| `<applicationserver>` | 애플리케이션 서버입니다.                          |1     |
 | `<database>`          |데이터베이스입니다.                                   |1     |
-| `<analytics>`         |Analytics입니다.                                   |0..1  |
+| `<analytics>`         |Analytics입니다.                                   | 0..1  |
 
-`<property>` 요소는 Application Server에 정의할 배치 특성을 지정하는 데 사용합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<property>` 요소는 애플리케이션 서버에서 정의할 배치 특성을 지정합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성 |설명                | 필수 | 기본값 |
 |-----------|----------------------------|----------|---------|
 |이름      | 특성의 이름입니다.	 |예      |없음    |
 | value	    | 특성의 값입니다.| 예	    |없음    |  
 
-`<applicationserver>` 요소는 {{ site.data.keys.product_adj }} 애플리케이션이 배치될 Application Server를 설명합니다. 이 요소는 다음 요소 중 하나의 컨테이너입니다.
+`<applicationserver>` 요소는 {{ site.data.keys.product_adj }} 애플리케이션이 배치되는 애플리케이션 서버를 설명합니다. 이 요소는 다음 요소 중 하나의 컨테이너입니다.
 
 | 요소                                    |설명                                      | 개수 |
 |--------------------------------------------|--------------------------------------------------|-------|
 | `<websphereapplicationserver>` 또는 `<was>`  | WebSphere Application Server에 대한 매개변수입니다.	| 0..1  |
 | `<tomcat>`                                 | Apache Tomcat에 대한 매개변수입니다.                | 0..1  |
 
-`<websphereapplicationserver>` 요소(줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. `<websphereapplicationserver>` 요소에는 다음과 같은 속성이 있습니다.
+`<websphereapplicationserver>` 요소(또는 줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. `<websphereapplicationserver>` 요소에는 다음 속성이 있습니다.
 
 | 속성       |설명                                            | 필수                 | 기본값 |
 |-----------------|--------------------------------------------------------|--------------------------|---------|
@@ -832,7 +832,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 |-----------------------|------------------------------|-------|
 | `<collectiveMember>`  | Liberty Collective 멤버입니다. | 0..1  |
 
-`<collectiveMember>` 요소에는 다음과 같은 속성이 있습니다.
+`<collectiveMember>` 요소에는 다음 속성이 있습니다.
 
 | 속성               |설명      | 필수 | 기본값 |
 |-------------------------|------------------|----------|---------|
@@ -856,19 +856,19 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 `<cell>` 요소에 속성이 없습니다.
 
-`<cluster>` 요소에는 다음과 같은 속성이 있습니다.
+`<cluster>` 요소에는 다음 속성이 있습니다.
 
 | 속성 |설명       | 필수 | 기본값 |
 |-----------|-------------------|----------|---------|
 |이름      | 클러스터 이름입니다. | 예	   |없음    |
 
-`<node>` 요소에는 다음과 같은 속성이 있습니다.
+`<node>` 요소에는 다음 속성이 있습니다.
 
 | 속성 |설명    | 필수 | 기본값 |
 |-----------|----------------|----------|---------|
 |이름      | 노드 이름입니다. | 예	    |없음    |
 
-`<server>` 요소(Network Deployment 컨텍스트에서 사용됨)에는 다음과 같은 속성이 있습니다.
+Network Deployment 컨텍스트에서 사용되는 `<server>` 요소에는 다음 속성이 있습니다.
 
 | 속성  |설명      | 필수 | 기본값 |
 |------------|------------------|----------|---------|
@@ -883,14 +883,14 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | configureFarm | 서버가 서버 팜 멤버인지 여부를 지정합니다. 가능한 값은 true 또는 false입니다.	|아니오 | false |
 | farmServerId	| 서버 팜에서 서버를 고유하게 식별하는 문자열입니다. {{ site.data.keys.mf_server }} 관리 서비스 및 이와 통신하는 모든 {{ site.data.keys.product_adj }} 런타임은 동일한 값을 공유해야 합니다. |예 |없음 |
 
-`<database>` 요소는 특정 데이터베이스에 액세스하는 데 필요한 정보를 지정합니다. `<database>` 요소는 `<dba>` 및 `<client>` 요소가 없다는 점을 제외하고는, configuredatabase Ant 태스크와 마찬가지로 지정됩니다. 그러나 `<property>` 요소가 있을 수 있습니다. `<database>` 요소에는 다음과 같은 속성이 있습니다.
+`<database>` 요소는 특정 데이터베이스에 액세스하는 데 필요한 정보를 지정합니다. `<dba>` 및 `<client>` 요소가 없음을 제외하고 `<database>` 요소는 configuredatabase Ant 태스크와 같이 지정됩니다. 그러나 여기에는 `<property>` 요소가 있을 수 있습니다. `<database>` 요소에는 다음 속성이 있습니다.
 
-| 속성 |설명                                | 필수 |  기본값 |
+| 속성 |설명                                | 필수 | 기본값 |
 |-----------|--------------------------------------------|----------|---------|
 | kind      | 데이터베이스의 유형입니다({{ site.data.keys.product_adj }} 런타임). |예 |없음 |
 | validate  | 데이터베이스에 액세스 가능한지 여부를 유효성 검증합니다. 가능한 값은 true 또는 false입니다. |아니오 | true |
 
-`<database>` 요소에서는 다음 요소를 지원합니다.
+`<database>` 요소는 다음 요소를 지원합니다.
 
 | 요소             | 설명	                | 개수 |
 |---------------------|-----------------------------|-------|
@@ -898,7 +898,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | `<db2>`             |	DB2에 대한 매개변수입니다.     | 0..1  |
 | `<mysql>`           |	MySQL에 대한 매개변수입니다.   | 0..1  |
 | `<oracle>`          |	Oracle에 대한 매개변수입니다.  | 0..1  |
-| `<driverclasspath>` | JDBC 드라이버 클래스 경로입니다. |0..1  |
+| `<driverclasspath>` | JDBC 드라이버 클래스 경로입니다. | 0..1  |
 
 `<analytics>` 요소는 {{ site.data.keys.product_adj }} 런타임을 이미 설치된 {{ site.data.keys.mf_analytics_console }} 및 서비스에 연결하려 함을 나타냅니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
@@ -919,12 +919,12 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 #### analyticsURL
 {: #analyticsurl-1 }
 수신되는 Analytics 데이터를 수신하는 {{ site.data.keys.mf_analytics }}에 의해 노출되는 URL을 지정하려면 **analyticsURL** 속성을 사용하십시오.  
-예: `http://<hostname>:<port>/analytics-service/rest`
+예를 들어, `http://<hostname>:<port>/analytics-service/rest`입니다.
 
 #### consoleURL
 {: #consoleurl }
 {{ site.data.keys.mf_analytics_console }}에 링크되는 {{ site.data.keys.mf_analytics }}에 의해 노출되는 URL에 대해 **consoleURL** 속성을 사용하십시오.  
-예: `http://<hostname>:<port>/analytics/console`
+예를 들어, `http://<hostname>:<port>/analytics/console`입니다.
 
 #### username
 {: #username-1 }
@@ -944,7 +944,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 ### Apache Derby 데이터베이스 지정
 {: #to-specify-an-apache-derby-database }
-`<derby>` 요소에는 다음과 같은 속성이 있습니다.
+`<derby>` 요소에는 다음 속성이 있습니다.
 
 | 속성  |설명                                | 필수 | 기본값 |
 |------------|--------------------------------------------|----------|---------|
@@ -952,7 +952,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | datadir	 | 데이터베이스가 포함된 디렉토리입니다. |	예	     |없음    |
 | schema     |	스키마 이름입니다.                          |	아니오	     | 유형에 따라 MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH 또는 APPCENTER |
 
-`<derby>` 요소에서는 다음 요소를 지원합니다.
+`<derby>` 요소는 다음 속성을 지원합니다.
 
 | 요소       | 설명	                | 개수 |
 |---------------|-------------------------------|-------|
@@ -966,7 +966,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 ### DB2 데이터베이스 지정
 {: #to-specify-a-db2-database }
-`<db2>` 요소에는 다음과 같은 속성이 있습니다.
+`<db2>` 요소에는 다음 속성이 있습니다.
 
 | 속성  |설명                                | 필수 | 기본값 |
 |------------|--------------------------------------------|----------|---------|
@@ -978,7 +978,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 | schema     | 스키마 이름입니다.                           |아니오       | 사용자에 따라 다름 |
 
 DB2 사용자 계정에 대한 자세한 정보는 [DB2 보안 모델 개요](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)를 참조하십시오.  
-`<db2>` 요소에서는 다음 요소를 지원합니다.
+`<db2>` 요소는 다음 속성을 지원합니다.
 
 | 요소       | 설명	                | 개수 |
 |---------------|-------------------------------|-------|
@@ -988,19 +988,19 @@ DB2 사용자 계정에 대한 자세한 정보는 [DB2 보안 모델 개요](ht
 
 Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [Liberty 프로파일: server.xml 파일의 구성 요소](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html)에서 **properties.db2.jcc** 절을 참조하십시오.
 
-`<driverclasspath>` 요소에는 DB2 JDBC 드라이버 및 관련 라이센스의 JAR 파일이 있어야 합니다. [DB2 JDBC 드라이버 버전](http://www.ibm.com/support/docview.wss?uid=swg21363866)에서 DB2 JDBC 드라이버를 다운로드할 수 있습니다.
+`<driverclasspath>` 요소는 DB2 JDBC 드라이버 및 연관된 라이센스의 JAR 파일을 포함해야 합니다. [DB2 JDBC 드라이버 버전](http://www.ibm.com/support/docview.wss?uid=swg21363866)에서 DB2 JDBC 드라이버를 다운로드할 수 있습니다.
 
 ### MySQL 데이터베이스 지정
 {: #to-specify-a-mysql-database }
-`<mysql>` 요소에는 다음과 같은 속성이 있습니다.
+`<mysql>` 요소에는 다음 속성이 있습니다.
 
 | 속성  |설명                                | 필수 | 기본값 |
 |------------|--------------------------------------------|----------|---------|
 | database	 | 데이터베이스 이름입니다.	                      |아니오       |유형에 따라 MFPDATA, MFPADM, MFPCFG, MFPPUSH 또는 APPCNTR |
-| server	 | 데이터베이스 서버의 호스트 이름입니다.	  |예      |없음    |
-| port	     | 데이터베이스 서버의 포트입니다.           | 아니오	     | 3306    |
+|server	 | 데이터베이스 서버의 호스트 이름입니다.	  |예      |없음    |
+|port	     | 데이터베이스 서버의 포트입니다.           | 아니오	     | 3306    |
 | user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. | 예 |예 |없음 |
-| password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	  | 아니오	     | 대화식으로 조회됨 |
+|password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	  | 아니오	     | 대화식으로 조회됨 |
 
 **database**, **server** 및 **port** 대신 URL을 지정할 수도 있습니다. 이 경우에는 다음과 같은 속성을 사용하십시오.
 
@@ -1008,11 +1008,11 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 |------------|--------------------------------------------|----------|---------|
 | url	     | 데이터베이스에 연결하는 데 필요한 URL입니다.	  | 예	     |없음    |
 | user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. |예  |없음 |
-| password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	  |아니오       | 대화식으로 조회됨 |
+|password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	  |아니오       | 대화식으로 조회됨 |
 
 MySQL 사용자 계정에 대한 자세한 정보는 [MySQL 사용자 계정 관리](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html)를 참조하십시오.
 
-`<mysql>` 요소에서는 다음 요소를 지원합니다.
+`<mysql>` 요소는 다음 속성을 지원합니다.
 
 | 요소       | 설명	                | 개수 |
 |---------------|-------------------------------|-------|
@@ -1022,18 +1022,18 @@ MySQL 사용자 계정에 대한 자세한 정보는 [MySQL 사용자 계정 관
 
 Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [Liberty 프로파일: server.xml 파일의 구성 요소](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html)에서 특성 절을 참조하십시오.
 
-`<driverclasspath>` 요소에는 MySQL Connector/J JAR 파일이 있어야 합니다. [Connector/J 다운로드](http://www.mysql.com/downloads/connector/j/)에서 다운로드할 수 있습니다.
+`<driverclasspath>` 요소는 MySQL Connector/J JAR 파일을 포함해야 합니다. [Connector/J 다운로드](http://www.mysql.com/downloads/connector/j/)에서 다운로드할 수 있습니다.
 
 ### Oracle 데이터베이스 지정
 {: #to-specify-an-oracle-database }
-`<oracle>` 요소에는 다음과 같은 속성이 있습니다.
+`<oracle>` 요소에는 다음 속성이 있습니다.
 
 | 속성  |설명                                | 필수 | 기본값 |
 |------------|--------------------------------------------|----------|---------|
-|database   | 데이터베이스 이름 또는 Oracle 서비스 이름입니다. 참고: 항상 서비스 이름을 사용하여 PDB 데이터베이스에 연결해야 합니다. |아니오 | ORCL |
+| database   | 데이터베이스 이름 또는 Oracle 서비스 이름입니다. 참고: 항상 서비스 이름을 사용하여 PDB 데이터베이스에 연결해야 합니다. |아니오 | ORCL |
 |server	 | 데이터베이스 서버의 호스트 이름입니다.	I 예 I 없음 I
 |port	     | 데이터베이스 서버의 포트입니다.	I 없음 I 1521 I
-|user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오. |예 |없음 |
+| user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오. |예 |없음 |
 |password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	  |아니오       | 대화식으로 조회됨 |
 
 > **참고:** **user** 속성의 경우 대문자로 된 사용자 이름을 사용하는 것이 좋습니다. Oracle 사용자 이름은 일반적으로 대문자입니다. 다른 데이터베이스 도구와 달리 **installmobilefirstruntime** Ant 태스크는 사용자 이름의 소문자를 대문자로 변환하지 않습니다. **installmobilefirstruntime** Ant 태스크가 데이터베이스에 연결하는 데 실패하면 **user** 속성의 값을 대문자로 입력하십시오.
@@ -1044,7 +1044,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 |------------|--------------------------------------------|----------|---------|
 | url	     | 데이터베이스에 연결하는 데 필요한 URL입니다.	  |예      |없음    |
 | user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오. |예 |없음 |
-| password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	  | 아니오	     | 대화식으로 조회됨 |
+|password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	  | 아니오	     | 대화식으로 조회됨 |
 
 > **참고:** **user** 속성의 경우 대문자로 된 사용자 이름을 사용하는 것이 좋습니다. Oracle 사용자 이름은 일반적으로 대문자입니다. 다른 데이터베이스 도구와 달리 **installmobilefirstruntime** Ant 태스크는 사용자 이름의 소문자를 대문자로 변환하지 않습니다. **installmobilefirstruntime** Ant 태스크가 데이터베이스에 연결하는 데 실패하면 **user** 속성의 값을 대문자로 입력하십시오.
 
@@ -1062,9 +1062,9 @@ Oracle 데이터베이스 연결 URL에 대한 자세한 정보는 [데이터 �
 
 Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [Liberty 프로파일: server.xml 파일의 구성 요소](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html)에 있는 **properties.oracle** 절을 참조하십시오.
 
-`<driverclasspath>` 요소에는 Oracle JDBC 드라이버 JAR 파일이 있어야 합니다. [JDBC, SQLJ, Oracle JPublisher 및 UCP(Universal Connection Pool)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html)에서 Oracle JDBC 드라이버를 다운로드할 수 있습니다.
+`<driverclasspath>` 요소는 Oracle JDBC 드라이버 JAR 파일을 포함해야 합니다. [JDBC, SQLJ, Oracle JPublisher 및 UCP(Universal Connection Pool)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html)에서 Oracle JDBC 드라이버를 다운로드할 수 있습니다.
 
-`<property>` 요소(`<derby>`, `<db2>`,` <mysql>` 또는 `<oracle>` 요소에서 사용할 수 있음)에는 다음과 같은 속성이 있습니다.
+`<derby>`, `<db2>`,` <mysql>` 또는 `<oracle>` 요소 내에서 사용할 수 있는 `<property>` 요소에는 다음 속성이 있습니다.
 
 | 속성  |설명                                | 필수 | 기본값 |
 |------------|--------------------------------------------|----------|---------|
@@ -1074,13 +1074,13 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 ## Application Center 설치를 위한 Ant 태스크
 {: #ant-tasks-for-installation-of-application-center }
-`<installApplicationCenter>`, `<updateApplicationCenter>` 및 `<uninstallApplicationCenter>` Ant 태스크는 Application Center 콘솔 및 서비스의 설치용으로 제공됩니다.
+`<installApplicationCenter>`, `<updateApplicationCenter>`, `<uninstallApplicationCenter>` Ant 태스크는 Application Center 콘솔 및 서비스의 설치에 대해 제공됩니다.
 
 ### 태스크 영향
 {: #task-effects-3 }
 ### installApplicationCenter
 {: #installapplicationcenter }
-`<installApplicationCenter>` 태스크는 Application Center 서비스 WAR 파일을 웹 애플리케이션으로 실행하고 Application Center 콘솔을 설치하도록 Application Server를 구성합니다. 이 태스크는 다음과 같은 영향을 미칩니다.
+`<installApplicationCenter>` 태스크는 Application Center 서비스 WAR 파일을 웹 애플리케이션으로 실행하고 Application Center 콘솔을 설치하도록 애플리케이션 서버를 구성합니다. 이 태스크는 다음과 같은 영향을 미칩니다.
 
 * /applicationcenter 컨텍스트 루트에서 Application Center 서비스 웹 애플리케이션을 선언합니다.
 * 데이터 소스를 선언하며 WebSphere Application Server 전체 프로파일에서는 Application Center 서비스에 대한 JDBC 제공자도 선언합니다.
@@ -1093,7 +1093,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 #### updateApplicationCenter
 {: #updateApplicationCenter }
-`<updateApplicationCenter>` 태스크는 Application Server에 이미 구성된 Application Center 애플리케이션을 업데이트합니다. 이 태스크는 다음과 같은 영향을 미칩니다.
+`<updateApplicationCenter>` 태스크는 애플리케이션 서버에서 이미 구성된 Application Center 애플리케이션을 업데이트합니다. 이 태스크는 다음과 같은 영향을 미칩니다.
 
 * Application Center 서비스 WAR 파일을 업데이트합니다. 이 파일은 이전에 배치된 해당 WAR 파일과 동일한 기본 이름을 가지고 있어야 합니다.
 * Application Center 콘솔 WAR 파일을 업데이트합니다. 이 파일은 이전에 배치된 해당 WAR 파일과 동일한 기본 이름을 가지고 있어야 합니다.
@@ -1115,7 +1115,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 ### 속성 및 요소
 {: #attributes-and-elements-3 }
-`<installApplicationCenter>`, `<updateApplicationCenter>` 및 `<uninstallApplicationCenter>` 태스크에는 다음 속성이 있습니다.
+`<installApplicationCenter>`, `<updateApplicationCenter>`, `<uninstallApplicationCenter>` 태스크에는 다음 속성이 있습니다.
 
 | 속성    |설명                                | 필수 | 기본값 |
 |--------------|--------------------------------------------|----------|---------|
@@ -1144,7 +1144,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 **aapt** 프로그램은 {{ site.data.keys.product }} 배포의 일부입니다. **product_install_dir/ApplicationCenter/tools/android-sdk**.  
 이 속성이 설정되지 않은 경우 apk 애플리케이션 업로드 중에 Application Center는 제한이 있는 자체 코드를 사용하여 해당 애플리케이션을 구문 분석합니다.
 
-`<installApplicationCenter>`, `<updateApplicationCenter>` 및 `<uninstallApplicationCenter>` 태스크에서는 다음 요소를 지원합니다.
+`<installApplicationCenter>`, `<updateApplicationCenter>`, `<uninstallApplicationCenter>` 태스크는 다음 요소를 지원합니다.
 
 | 요소           | 설명	                            | 개수 |
 |-------------------|-------------------------------------------|-------|
@@ -1155,7 +1155,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 ### Application Center 콘솔 지정
 {: #to-specify-an-application-center-console }
-`<console>` 요소는 Application Center 콘솔의 설치를 사용자 정의하기 위한 정보를 수집합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<console>` 요소는 정보를 수집하여 Application Center 콘솔의 설치를 사용자 정의합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성    |설명                                      | 필수 | 기본값 |
 |--------------|--------------------------------------------------|----------|---------|
@@ -1163,29 +1163,29 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 ### 애플리케이션 서버 지정
 {: #to-specify-an-application-server-3 }
-`<applicationserver>` 요소를 사용하여 기본 Application Server에 따라 다른 매개변수를 정의하십시오. `<applicationserver>` 요소에서는 다음 요소를 지원합니다.
+`<applicationserver>` 요소를 사용하여 기본 애플리케이션 서버에 따라 달라지는 매개변수를 정의하십시오. `<applicationserver>` 요소는 다음 요소를 지원합니다.
 
 | 요소           | 설명	                            | 개수 |
 |-------------------|-------------------------------------------|-------|
-| **websphereapplicationserver** 또는 **was**	| WebSphere Application Server에 대한 매개변수입니다. `<websphereapplicationserver>` 요소(줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core도 지원됩니다. Application Center의 경우 Liberty Collective는 지원되지 않습니다. | 0..1 |
+| **websphereapplicationserver** 또는 **was**	|WebSphere Application Server에 대한 매개변수입니다. `<websphereapplicationserver>` 요소(또는 줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core도 지원됩니다. Application Center의 경우 Liberty Collective는 지원되지 않습니다. | 0..1 |
 | tomcat            | Apache Tomcat에 대한 매개변수입니다. | 0..1 |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) 페이지의 테이블에 설명되어 있습니다.
 
 ### 서비스 데이터베이스에 대한 연결 지정
 {: #to-specify-a-connection-to-the-services-database }
-`<database>` 요소는 Application Server에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 서비스 데이터베이스에 액세스합니다.
+`<database>` 요소는 애플리케이션 서버에서 데이터 소스 선언을 지정하는 매개변수를 수집하여 서비스 데이터베이스에 액세스합니다.
 
-단일 데이터베이스를 선언해야 합니다. `<database kind="ApplicationCenter">`. `<database>` 요소에는 다음 예외를 제외하고 `<configuredatabase>` Ant 태스크와 비슷하게 저정합니다. 예외: `<database>` 요소에는 `<dba>` 및 `<client>` 요소가 없습니다. `<property>` 요소가 있을 수 있습니다.
+단일 데이터베이스를 선언해야 합니다: `<database kind="ApplicationCenter">`. `<database>` 요소에 `<dba>` 및 `<client>` 요소가 없음을 제외하고 `<configuredatabase>` Ant 태스크와 유사하게 `<database>` 요소를 지정합니다. 여기에는 `<property>` 요소가 있을 수 있습니다.
 
-`<database>` 요소에는 다음과 같은 속성이 있습니다.
+`<database>` 요소에는 다음 속성이 있습니다.
 
 | 속성    |설명                                            | 필수 | 기본값 |
 |--------------|--------------------------------------------------------|----------|---------|
 | kind         | 데이터베이스의 유형입니다(ApplicationCenter).              |예      |없음    |
 | validate	   | 데이터베이스에 액세스 가능한지 여부를 유효성 검증합니다. |아니오       | True    |
 
-`<database>` 요소에서는 다음 요소를 지원합니다. 이 데이터베이스 요소의 구성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블을 참조하십시오.
+`<database>` 요소는 다음 요소를 지원합니다. 이 데이터베이스 요소의 구성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블을 참조하십시오.
 
 | 요소           | 설명	                            | 개수 |
 |-------------------|-------------------------------------------|-------|
@@ -1197,7 +1197,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 ### 사용자 및 보안 역할 지정
 {: #to-specify-a-user-and-a-security-role }
-`<user>` 요소는 애플리케이션의 특정 보안 역할에 포함할 사용자에 대한 매개변수를 수집하는 데 사용합니다.
+`<user>` 요소는 애플리케이션의 특정 보안 역할에 포함할 사용자에 대한 매개변수를 수집합니다.
 
 | 속성    |설명                                            | 필수 | 기본값 |
 |--------------|--------------------------------------------------------|----------|---------|
@@ -1251,7 +1251,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 {: #servicewar-2 }
 {{ site.data.keys.mf_analytics }} 서비스 WAR 파일에 대해 다른 디렉토리를 지정하려면 **serviceWar** 속성을 사용하십시오. 절대 경로 또는 상대 경로를 사용하여 이 WAR 파일의 이름을 지정할 수 있습니다.
 
-`<installanalytics>`, `<updateanalytics>` 및 `<uninstallanalytics>` 태스크에서는 다음 요소를 지원합니다.
+`<installanalytics>`, `<updateanalytics>`, `<uninstallanalytics>` 태스크는 다음 요소를 지원합니다.
 
 | 속성         |설명                               | 필수 | 기본값 |
 |-------------------|-------------------------------------------|----------|---------|
@@ -1263,7 +1263,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 ### {{ site.data.keys.mf_analytics_console }} 지정
 {: #to-specify-a-mobilefirst-analytics-console }
-`<console>` 요소는 {{ site.data.keys.mf_analytics_console }}의 설치를 사용자 정의하는 정보를 수집합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
+`<console>` 요소는 {{ site.data.keys.mf_analytics_console }}의 설치를 사용자 정의하기 위한 정보를 수집합니다. 이 요소는 다음과 같은 속성을 가지고 있습니다.
 
 | 속성    |설명                                  | 필수 | 기본값 |
 |--------------|----------------------------------------------|----------|---------|
@@ -1283,7 +1283,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 > 참고: 이 바로 가기는 ElasticSearch 테넌트 매개변수를 포함하지 않습니다.
 
-`<console>` 요소에서는 다음과 같은 중첩 요소를 지원합니다.
+`<console>` 요소는 다음 중첩 요소를 지원합니다.
 
 | 요소  | 설명	| 개수 |
 |----------|----------------|-------|
@@ -1291,7 +1291,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 이 요소를 사용하면 자체 JNDI 특성을 정의할 수 있습니다.
 
-`<property>` 요소에는 다음과 같은 속성이 있습니다.
+`<property>` 요소에는 다음 속성이 있습니다.
 
 | 속성  |설명                | 필수 | 기본값 |
 |------------|----------------------------|----------|---------|
@@ -1300,7 +1300,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 ### 사용자 및 보안 역할 지정
 {: #to-specify-a-user-and-a-security-role-1 }
-`<user>` 요소는 애플리케이션의 특정 보안 역할에 포함할 사용자에 대한 매개변수를 수집하는 데 사용합니다.
+`<user>` 요소는 애플리케이션의 특정 보안 역할에 포함할 사용자에 대한 매개변수를 수집합니다.
 
 | 속성   |설명                                   | 필수 | 기본값 |
 |-------------|-----------------------------------------------|----------|---------|
@@ -1317,7 +1317,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 ### {{ site.data.keys.mf_analytics }}에 대한 스토리지 유형 지정
 {: #to-specify-a-type-of-storage-for-mobilefirst-analytics }
-`<storage>` 요소는 {{ site.data.keys.mf_analytics }}에서 수집하는 정보와 데이터를 저장하기 위해 사용하는 기본 스토리지 유형을 나타냅니다.
+`<storage>` 요소는 {{ site.data.keys.mf_analytics }}에서 수집하는 정보 및 데이터를 저장하기 위해 사용하는 기본 스토리지 유형을 나타냅니다.
 
 이 요소는 다음과 같은 요소를 지원합니다.
 
@@ -1330,7 +1330,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 | 속성        |설명                                   | 필수 | 기본값   |
 |------------------|-----------------------------------------------|----------|-----------|
 | clusterName	   | ElasticSearch 클러스터 이름입니다.	           |아니오       | worklight |
-| nodeName	       | ElasticSearch 노드 이름입니다. 이 이름은 ElasticSearch 클러스터에서 고유해야 합니다.	|아니오 |`worklightNode_<random number>` |
+| nodeName	       | ElasticSearch 노드 이름입니다. 이 이름은 ElasticSearch 클러스터에서 고유해야 합니다.	|아니오 | `worklightNode_<random number>` |
 | mastersList	   | ElasticSearch 클러스터에서 ElasticSearch 마스터 노드의 호스트 이름 및 포트가 포함된 쉼표로 구분된 문자열입니다(예: hostname1:transport-port1,hostname2:transport-port2).	           |아니오       |	토폴로지에 따라 다름 |
 | dataPath	       | ElasticSearch 클러스터 위치입니다.	       | 아니오	      | 애플리케이션 서버에 따라 다름 |
 | shards	       | ElasticSearch 클러스터가 작성하는 샤드의 수입니다. 이 값은 ElasticSearch 클러스터에서 작성되는 마스터 노드에 의해서만 설정될 수 있습니다.	|아니오 |5 |
@@ -1386,7 +1386,7 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 
 ### 애플리케이션 서버 지정
 {: #to-specify-an-application-server-4 }
-`<applicationserver>` 요소를 사용하여 기본 Application Server에 따라 다른 매개변수를 정의하십시오. `<applicationserver>` 요소에서는 다음 요소를 지원합니다.
+`<applicationserver>` 요소를 사용하여 기본 애플리케이션 서버에 따라 달라지는 매개변수를 정의하십시오. `<applicationserver>` 요소는 다음 요소를 지원합니다.
 
 **참고:** 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블에 설명되어 있습니다.
 
@@ -1397,7 +1397,7 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 
 ### 사용자 정의 JNDI 특성 지정
 {: #to-specify-custom-jndi-properties }
-`<installanalytics>`, `<updateanalytics>` 및 `<uninstallanalytics>` 요소에서는 다음 요소를 지원합니다.
+`<installanalytics>`, `<updateanalytics>`, `<uninstallanalytics>` 요소는 다음 요소를 지원합니다.
 
 | 요소  |설명 | 개수 |
 |----------|-------------|-------|
@@ -1422,7 +1422,7 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 
 | 관계형 데이터베이스 테이블 이름 |설명 | 크기의 정도 |
 |--------------------------------|-------------|--------------------|
-| LICENSE_TERMS	                 | 디바이스 역할 해제 태스크가 실행될 때마다 캡처되는 다양한 라이센스 메트릭을 저장합니다. | 수십 개의 행. 이 값은 JNDI 특성 mfp.device.decommission.when 특성에 의해 설정된 값을 초과하지 않습니다. JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. |
+| LICENSE_TERMS	                 | 디바이스 역할 해제 태스크가 실행될 때마다 캡처되는 다양한 라이센스 메트릭을 저장합니다. | 수십 개의 행 이 값은 JNDI 특성 mfp.device.decommission.when 특성에 의해 설정된 값을 초과하지 않습니다. JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. |
 | ADDRESSABLE_DEVICE	         | 주소 지정 가능한 디바이스 메트릭을 매일 저장합니다. 또한 클러스터가 시작될 때마다 항목이 추가됩니다.	| 약 400개의 행. 13개월보다 오래된 항목은 매일 삭제됩니다. |
 | MFP_PERSISTENT_DATA	         | 클라이언트와 연관된 디바이스, 애플리케이션, 사용자에 대한 정보 및 디바이스 상태를 포함하여 OAuth 서버에 등록된 클라이언트 애플리케이션의 인스턴스를 저장합니다. | 디바이스 및 애플리케이션 쌍당 하나의 행 |
 | MFP_PERSISTENT_CUSTOM_ATTR	 | 클라이언트 애플리케이션의 인스턴스와 연관된 사용자 정의 속성입니다. 사용자 정의 속성은 애플리케이션이 각 클라이언트 인스턴스에 대해 등록한 애플리케이션별 속성입니다. | 디바이스 및 애플리케이션 쌍당 0개 이상의 행 |
@@ -1505,7 +1505,7 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 {: #sample-configuration-files-for-mobilefirst-analytics }
 {{ site.data.keys.product }}에는 {{ site.data.keys.mf_analytics }} 서비스 및 {{ site.data.keys.mf_analytics_console }}을 설치하기 위해 Ant 태스크를 시작하는 데 도움이 되는 다수의 샘플 구성 파일이 포함되어 있습니다.
 
-`<installanalytics>`, `<updateanalytics>` 및 `<uninstallanalytics>` Ant 태스크를 시작하는 가장 쉬운 방법은  {{ site.data.keys.mf_server }} 배포의 **Analytics/configuration-samples/** 디렉토리에서 제공되는 샘플 구성 파일을 사용하여 작업하는 것입니다.
+`<installanalytics>`, `<updateanalytics>`, `<uninstallanalytics>` Ant 태스크를 시작하는 가장 쉬운 방법은 {{ site.data.keys.mf_server }} 배포의 **Analytics/configuration-samples/** 디렉토리에서 제공된 샘플 구성 파일을 사용하여 작업하는 것입니다.
 
 ### 1단계
 {: #step-1 }

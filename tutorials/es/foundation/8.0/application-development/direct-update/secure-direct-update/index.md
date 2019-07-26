@@ -66,7 +66,7 @@ Hay muchas herramientas disponibles para generar certificados y extraer las clav
 2. Siga uno de los siguientes procedimientos:
     * Copie el texto resultante, sin los marcadores `BEGIN PUBLIC KEY` y `END PUBLIC KEY` en el archivo de propiedades mfpclient de la aplicación, inmediatamente después de `wlSecureDirectUpdatePublicKey`.
     * Desde el indicador de mandatos, emita el siguiente mandato:
-`mfpdev app config direct_update_authenticity_public_key <public_key>`
+`mfpdev app config direct_update_authenticity_public_key <public_key>` 
     
     Para `<public_key>`, pegue el texto que se obtiene del Paso 1, sin los marcadores `BEGIN PUBLIC KEY` y `END PUBLIC KEY`.
 

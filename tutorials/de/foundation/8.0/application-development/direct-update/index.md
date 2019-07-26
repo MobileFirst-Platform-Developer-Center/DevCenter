@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Direkte Aktualisierung in Cordova-Anwendungen
-breadcrumb_title: Direkte Aktualisierung
+breadcrumb_title: Direct Update
 relevantTo: [cordova]
 weight: 8
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -213,17 +213,17 @@ angibt.
 * Die Methode `onFinish` wird mit einem der abschließenden Statuscodes
 aufgerufen:      
 
-| Statuscode| Beschreibung |
+|Statuscode|Beschreibung |
 |-------------|-------------|
-| `SUCCESS` | Die direkte Aktualisierung wurde fehlerfrei abgeschlossen.|
-| `CANCELED` | Die direkte Aktualisierung wurde abgebrochen (weil beispielsweise die Methode `stop()` aufgerufen wurde).|
-| `FAILURE_NETWORK_PROBLEM` | Es gab während der Aktualisierung ein Problem mit einer Netzverbindung.|
-| `FAILURE_DOWNLOADING` | Die Datei wurde nicht vollständig heruntergeladen.|
-| `FAILURE_NOT_ENOUGH_SPACE` | Auf dem Gerät ist nicht genug Speicher verfügbar, um die Aktualisierungsdatei herunterzuladen und zu entpacken.|
-| `FAILURE_UNZIPPING` | Beim Entpacken der Aktualisierungsdatei ist ein Problem aufgetreten. |
-| `FAILURE_ALREADY_IN_PROGRESS` | Die Startmethode wurde aufgerufen, als die direkte Aktualisierung bereits lief.|
-| `FAILURE_INTEGRITY` | Die Authentizität der Aktualisierungsdatei kann nicht verifiziert werden.|
-| `FAILURE_UNKNOWN` | Unerwarteter interner Fehler|
+|`SUCCESS` |Die direkte Aktualisierung wurde fehlerfrei abgeschlossen.|
+|`CANCELED` |Die direkte Aktualisierung wurde abgebrochen (weil beispielsweise die Methode `stop()` aufgerufen wurde).|
+|`FAILURE_NETWORK_PROBLEM` |Es gab während der Aktualisierung ein Problem mit einer Netzverbindung.|
+|`FAILURE_DOWNLOADING` |Die Datei wurde nicht vollständig heruntergeladen.|
+|`FAILURE_NOT_ENOUGH_SPACE` |Auf dem Gerät ist nicht genug Speicher verfügbar, um die Aktualisierungsdatei herunterzuladen und zu entpacken.|
+|`FAILURE_UNZIPPING` |Beim Entpacken der Aktualisierungsdatei ist ein Problem aufgetreten. |
+|`FAILURE_ALREADY_IN_PROGRESS` |Die Startmethode wurde aufgerufen, als die direkte Aktualisierung bereits lief.|
+|`FAILURE_INTEGRITY` |Die Authentizität der Aktualisierungsdatei kann nicht verifiziert werden.|
+|`FAILURE_UNKNOWN` |Unerwarteter interner Fehler|
 
 Wenn Sie einen angepassten Listener für die direkte Aktualisierung implementieren, müssen Sie sicherstellen, dass
 nach Abschluss der direkten Aktualisierung

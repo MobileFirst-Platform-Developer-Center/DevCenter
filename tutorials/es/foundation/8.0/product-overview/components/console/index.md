@@ -51,7 +51,7 @@ Desde la ventana de **línea de mandatos**, con {{ site.data.keys.mf_cli }} inst
 #### Navegador de escritorio
 {: #desktop-browser-remote }
 Desde el navegador que desee, cargue el URL `http://host-servidor:número-puerto-servidor/mfpconsole`.  
-El servidor host puede ser un servidor del propio cliente, o el servicio IBM Cloud, IBM [Mobile Foundation](../../../bluemix/).
+El servidor host puede ser un servidor del propio cliente, o el servicio de IBM Cloud, IBM [Mobile Foundation](../../../ibmcloud/).
 
 #### Línea de mandatos
 {: #command-line-remote }
