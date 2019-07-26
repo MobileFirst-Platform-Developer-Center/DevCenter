@@ -19,16 +19,16 @@ If you are an on-premise 7.1 or 8.0 customer or [Mobile Foundation Service](http
 
 Apple announced iOS 13 during their annual *WWDC2019* conference. You can read more about all the new features in iOS 13 [here](https://developer.apple.com/ios/whats-new/).
 
-We have been testing the iOS 13 beta with the latest being beta 3. We have verified various features of MobileFirst Platform Foundation on the iOS 13 beta 3 for MobileFirst Platform Foundation. For reference, make sure to read through our [support plan for newer iOS version](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
+We have been testing the iOS 13 beta with the latest being beta 3. We have verified various features of MobileFirst Platform Foundation on the iOS 13 beta 3 for MobileFirst Platform Foundation v7.1 and v8.0. For reference, make sure to read through our [support plan for newer iOS version](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/).
 
 We encourage you to start testing your application(s) with iOS 13.
 
 ## MobileFirst Platform Foundation Support for iOS 13 (beta 3)
 
 #### Existing application
-Existing application(s) that were created using MobileFirst Platform **will work** on iOS 13 as they did on previous versions of iOS.
+Existing application(s) that were created using MobileFirst Platform v7.1 and v8.0 **will work** on iOS 13 as they did on previous versions of iOS.
 
-Compatibility tests with [iOS 13 beta 3](https://developer.apple.com/download) have been performed using an iPhone 7 that was upgraded from iOS 12.3 to iOS 13 beta 3 for MobileFirst Foundation.
+Compatibility tests with [iOS 13 beta 3](https://developer.apple.com/download) have been performed using an iPhone 7 that was upgraded from iOS 12.3 to iOS 13 beta 3 for MobileFirst Foundation v7.1 and v8.0.
 
 For the tests, [XCode 11 beta 3](https://developer.apple.com/download) was used to compile native, hybrid and Cordova apps. 
 
@@ -96,8 +96,6 @@ All the above features were validated to work on iOS 13 beta 3.
 iOS 13 compatibility tests are planned for the following:
 
 * Application Center
-* watchOS
-* iPadOS
 
 *Stay tuned for further updates.*
 
