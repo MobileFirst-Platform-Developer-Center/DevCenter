@@ -306,65 +306,29 @@ indexed: false
            <img class="foundation_diamond" src="{{site.baseurl}}/assets/front-page/foundation_logo.svg" alt="Foundation diamond icon"/>
         </div>-->
 
-        <div class="col-sm-5 hidden-sm hidden-xs hidden-md">
-
-           <div class="benefits">
-             <div class="card" style="width: 45rem;">
-             <!--<img class="card-img-top" src="../assets/front-page/carousel-background.png" alt="Card image cap">-->
-
-             <div class="card-body">
-               <div class="card-header">
-                 <div class="alert alert-warning">
-                   <p class="card-title"><span class="postTitle">Features released in Mobile Foundation v8.0 CD Updates</span></p>
-                 </div>
-               </div>
-               <!--<h3 class="card-title"><span class="glyphicon glyphicon-bell"></span><span class="postsubTitle">&nbsp;Latest blog post</span></h3>-->
-               <!--<p class="card-title"><h3 class="no-anchor"><a class="badge badge-warning"><span class="postExcerpt">&nbsp;Latest in Mobile Foundation blog</span></a><br/>-->
-
-               <p class="card-text"><h4><span class="postExcerpt">Know why you should upgrade to the latest Mobile Foundation v8.0 CD Update.</span></h4></p>
-
-
-
-
-             </div>
-             <br/>
-             <div class="card-footer">
-               <a class="custombtn btn-lg btn-warning containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/release-notes/interim-fixes/"><span class="postsubTitle">&nbsp;Read more...</span></a>
-             </div>
-           </div>
-           </div>
-        </div>
-        <div class="col-sm-7 hidden-sm hidden-xs hidden-md">
+        <div class="col-sm-12 hidden-sm hidden-xs hidden-md">
 
            <div class="benefits">
              {% for post in site.posts limit:1 %}
-             <div class="card" style="width: 68rem;">
-             <!--<img class="card-img-top" src="../assets/front-page/carousel-background.png" alt="Card image cap">-->
-
-             <div class="card-body">
+             <div class="card text-center">
                <div class="card-header">
                  <div class="alert alert-info">
-                   <p class="card-title"><span class="postTitle">{{post.title}}</span></p>
+                   <p class="card-title"><span class="postTitle">Featured</span></p>
                  </div>
                </div>
-               <!--<h3 class="card-title"><span class="glyphicon glyphicon-bell"></span><span class="postsubTitle">&nbsp;Latest blog post</span></h3>-->
-               <!--<p class="card-title"><h3 class="no-anchor"><a class="badge badge-warning"><span class="postExcerpt">&nbsp;Latest in Mobile Foundation blog</span></a><br/>-->
-
-               <p class="card-text"><span class="postExcerpt">{{post.date | date: '%B %d, %Y'}}</span></p>
-
-               <p class="card-text">
-                 <h4><span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</span></h4>
-
-
+               <div class="card-body">
+                 <h5 class="card-title"><span class="postTitle">{{post.title}}</h5>
+                 <p class="card-text">
+                <h4><span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}...</span><a href="{{site.baseurl}}{{post.url}}"><span class="postsubTitleMore">&nbsp;more...</span></a></h4>
+                <!--<a class="btn btn-primary btn-sm" href="{{site.baseurl}}{{post.url}}"><span class="postsubTitle">&nbsp;Read more...</span></a>-->
+               </div>
+               <div class="card-footer text-muted">
+                 <p class="card-text">
+                  <a class="btn btn-default btn-md" href="{{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/release-notes/interim-fixes/"><span class="postsubTitle">&nbsp;Know why you should upgrade to the latest Mobile Foundation v8.0 CD Update</span></a>
+               </div>
              </div>
-             <br/>
-             <div class="card-footer">
-               <a class="custombtn btn-lg btn-primary containers" href="{{site.baseurl}}{{post.url}}"><span class="postsubTitle">&nbsp;Read more...</span></a>
-             </div>
+             {% endfor %}
            </div>
-           {% endfor %}
-           </div>
-        </div>
 
      </div>
   </div>
