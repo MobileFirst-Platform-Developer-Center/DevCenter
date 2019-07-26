@@ -92,6 +92,14 @@ For example:
    react-native link
    ```
 
+   Note : This command is not required from react-native 0.60
+
+3. For iOS only, install newly added Mobilefisrt Pods
+
+   ```bash
+   cd ios && pod install 
+   ```
+
 ### Registering the application
 {: #registering-the-application }
 
