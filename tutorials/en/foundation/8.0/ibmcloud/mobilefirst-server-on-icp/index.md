@@ -44,8 +44,7 @@ To manage containers and images, you need to install the following on your host 
 > Find the supported Docker CLI Version [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/supported_system_config/supported_docker.html)
 > Install the same Kube CLI, IBM Cloud CLI and Helm version as in your ICP cluster (Download from IBM Cloud Private management console, click **Menu > Command Line Tools > Cloud Private CLI** )
 
-
-To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the [***kubectl client***](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
+For example:
 
 In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required. 
 
