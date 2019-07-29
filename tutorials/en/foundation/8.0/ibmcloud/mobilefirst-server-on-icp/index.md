@@ -40,7 +40,7 @@ To manage containers and images, you need to install the following on your host 
 * Install and setup [Docker](https://docs.docker.com/install/)
 * [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started) (`cloudctl`)
 * [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`)
-* Helm (`helm`)
+* [Helm](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/app_center/create_helm_cli.html) (`helm`)
 
 To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the [***kubectl client***](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
 
