@@ -649,6 +649,10 @@ Follow the steps below to install and configure IBM Mobile Foundation from {{ si
 5. Accept the **License Agreement**.
 6. Click **Install**.
 
+> Note: The latest Mobile Foundation on ICP package bundles following supported softwares - 
+> 1. IBM JRE8 SR5 FP37 (8.0.5.37)
+> 2. IBM WebSphere Liberty v18.0.0.5
+
 ## Verifying the Installation
 {: #verify-install}
 
