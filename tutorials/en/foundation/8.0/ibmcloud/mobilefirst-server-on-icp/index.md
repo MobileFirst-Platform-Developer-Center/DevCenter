@@ -140,9 +140,7 @@ Secret objects let you store and manage sensitive information, such as passwords
        EOF
       ```
       > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
-      
-      4. Create a Persistent Volume Claim (PVC) and provide PVC name in the helm chart. Below is a sample `PersistentVolumeClaim.yaml` 
-	  
+      4. Create a Persistent Volume Claim (PVC) and provide the PVC name in the Helm chart while deploying. Below is a sample `PersistentVolumeClaim.yaml` 
       ```bash 
       cat <<EOF | kubectl apply -f -
       apiVersion: v1
@@ -167,8 +165,7 @@ Secret objects let you store and manage sensitive information, such as passwords
           storage: 20Gi
       EOF
       ```
-     
->NOTE: Make sure you add the right namespace in the above yaml
+     >NOTE: Make sure you add the right namespace in the above yaml
 	
 2. (Mandatory) A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
 	
