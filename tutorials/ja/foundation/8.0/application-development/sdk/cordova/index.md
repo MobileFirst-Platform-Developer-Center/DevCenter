@@ -23,8 +23,8 @@ weight: 1
 {: #support-levels }
 MobileFirst プラグインでサポートされる Cordova プラットフォームのバージョンは次のとおりです。
 
-* cordova-ios: **>= 4.1.1 と < 5.0**
-* cordova-android: **>= 6.1.2 と <= 8.0**
+* cordova-ios: **>= 4.1.1 と < 6.0**
+* cordova-android: **>= 6.1.2 と < 9.0**
 * cordova-windows: **>= 4.3.2 と < 7.0**
 
 #### ジャンプ先:
@@ -69,7 +69,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 
 **前提条件:**
 
-- [Apache Cordova CLI (>=6.x および <9.0)](https://www.npmjs.com/package/cordova) と {{ site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
+- [Apache Cordova CLI(>=6.x および <10.0)](https://www.npmjs.com/package/cordova) と {{ site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
 - {{ site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
 - [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/mobilefirst)、および [Cordova 開発環境のセットアップ](../../../installation-configuration/development/cordova)の両チュートリアルを読む。
 - cordova-windows の場合、マシンにインストールされている Visual Studio と .NET のバージョンと互換性のある Visual C++ のバージョンがインストールされている必要があります。
@@ -139,6 +139,16 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 
 {{ site.data.keys.product_adj }} API メソッドは、{{ site.data.keys.product_adj }} クライアント SDK がロードされた後で使用可能になります。 これで `wlCommonInit` 関数が呼び出されます。  
 この関数を使用して、各種 {{ site.data.keys.product_adj }} API メソッドを呼び出します。
+
+### SDK の手動での追加 
+ローカル・パスからプラグインをインストールするオプションもあります。cordova-plugin-mfp は MFP コンソールからダウンロードできます。それを Cordova アプリケーションにインストールします。
+1. MFP サーバー・コンソール Dashboard で、「ダウンロード・センター」をクリックし =>「SDK」タブをクリックし => Cordova SDK をダウンロードします。
+
+2. 既存の Cordova プロジェクトのルートに移動し、次のように {{ site.data.keys.product_adj }} コア Cordova プラグインを追加します。
+
+   ```bash
+   cordova plugin add [path-to downloaded mfp cordova plugin]/mfp-cordova/plugins/cordova-plugin-mfp
+   ```
 
 ### アプリケーションの登録
 {: #registering-the-application }

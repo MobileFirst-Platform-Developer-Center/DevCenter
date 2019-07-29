@@ -23,8 +23,8 @@ Los plugins disponibles son:
 {: #support-levels }
 Los plugins de MobileFirst dan soporte a las siguientes versiones de plataforma Cordova:
 
-* cordova-ios: **>= 4.1.1 y < 5.0**
-* cordova-android: **>= 6.1.2 y <= 8.0**
+* cordova-ios: **>= 4.1.1 y < 6.0**
+* cordova-android: **>= 6.1.2 y < 9.0**
 * cordova-windows: **>= 4.3.2 y < 7.0**
 
 #### Ir a:
@@ -69,10 +69,9 @@ El plugin cordova-plugin-mfp-encrypt-utils proporciona infraestructuras de cifra
 
 **Requisitos previos:**
 
-- [Apache Cordova CLI(>=6.x y <9.0)](https://www.npmjs.com/package/cordova) y {{ site.data.keys.mf_cli }} instalado en la estación de trabajo del desarrollador.
+- [Apache Cordova CLI(>=6.x y <10.0)](https://www.npmjs.com/package/cordova) y {{ site.data.keys.mf_cli }} instalado en la estación de trabajo del desarrollador.
 - Una instancia remota o local de {{ site.data.keys.mf_server }} que esté en ejecución.
-- Lea las guías de aprendizaje [
-Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/development/mobilefirst) y [Configuración del entorno de desarrollo de Cordova](../../../installation-configuration/development/cordova).
+- Lea las guías de aprendizaje [Configuración del entorno de desarrollo de {{ site.data.keys.product_adj }}](../../../installation-configuration/development/mobilefirst) y [Configuración del entorno de desarrollo de Cordova](../../../installation-configuration/development/cordova).
 - Para cordova-windows, debe instalarse una versión de Visual C++ que sea compatible con las versiones de Visual Studio y .NET instaladas en la máquina.
 - En el caso de Windows Phone SDK 8.0 y Visual Studio Tools for Universal Windows Apps, asegúrese de que las aplicaciones cordova-windows creadas tengan todas las bibliotecas de soporte necesarias.
 
@@ -102,7 +101,7 @@ Considere la posibilidad de crear el proyecto mediante la **plantilla de aplicac
      - "HelloWorld" es el nombre de la aplicación.
      - --template modifica la aplicación con añadidos específicos de {{ site.data.keys.product_adj }}.
 
-    El archivo **index.js** de la plantilla permite utilizar características de {{ site.data.keys.product_adj }} adicionales como, por ejemplo, la [traducción de aplicación multilingüe](../../translation) y opciones de inicialización (consulte la documentación del usuario para obtener más información).
+    > El archivo **index.js** de la plantilla permite utilizar características de {{ site.data.keys.product_adj }} adicionales como, por ejemplo, la [traducción de aplicación multilingüe](../../translation) y opciones de inicialización (consulte la documentación del usuario para obtener más información).
 
 2. Cambie al directorio raíz del proyecto Cordova: `cd hello`
 
@@ -112,7 +111,7 @@ Considere la posibilidad de crear el proyecto mediante la **plantilla de aplicac
    cordova platform add ios
    ```
 
-   > **Nota:** Puesto que la aplicación se configuró mediante la plantilla {{ site.data.keys.product_adj }}, el plugin principal de Cordova {{ site.data.keys.product_adj }} se añadió de forma automática con la plataforma en el paso 3.
+   > **Nota:** Puesto que la aplicación se configuró mediante la plantilla {{ site.data.keys.product_adj }}, el plugin principal de Cordova {{ site.data.keys.product_adj }} se añadió de forma automática con la plataforma en el paso 3. 
 
 4. Prepare los recursos de la aplicación ejecutando el mandato `cordova prepare`:
 
@@ -140,6 +139,16 @@ Considere la posibilidad de crear el proyecto mediante la **plantilla de aplicac
 
 Los métodos de API de {{ site.data.keys.product_adj }} estarán disponibles después de que se haya cargado el SDK de cliente de {{ site.data.keys.product_adj }}. Se llama entonces a la función `wlCommonInit`.  
 Utilice esta función para llamar a los diversos métodos de API de {{ site.data.keys.product_adj }}.
+
+### Adición manual de un SDK 
+También ofrecemos la opción de instalar el plugin desde la vía de acceso local. cordova-plugin-mfp se puede descargar desde la consola de MFP e instalar en la aplicación cordova.
+1. En el panel de control de la consola del servidor de MFP, pulse Download Center => Pulse el separador SDK => Descargue el SDK de cordova.
+
+2. Vaya a la raíz de su proyecto Cordova existente y añada el plugin de Cordova principal de {{ site.data.keys.product_adj }}:
+
+   ```bash
+   cordova plugin add [path-to downloaded mfp cordova plugin]/mfp-cordova/plugins/cordova-plugin-mfp
+   ```
 
 ### Registro de la aplicación
 {: #registering-the-application }

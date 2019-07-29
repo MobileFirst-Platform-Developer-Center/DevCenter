@@ -25,7 +25,7 @@ weight: 6
 
 ### 1. Запуск {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation) либо  
+Убедитесь, что [создан экземпляр Mobile Foundation](../../ibmcloud/using-mobile-foundation) либо  
 В случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
 
 ### 2. Создание приложения
@@ -126,7 +126,7 @@ weight: 6
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
     * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **адрес-сервера** и **443**.
     * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
-    
+
 2. Нажмите кнопку **Воспроизвести**.
 
 <br clear="all"/>

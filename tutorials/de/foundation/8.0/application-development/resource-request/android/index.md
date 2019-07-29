@@ -4,9 +4,9 @@ title: Ressourcenanforderung von Android-Anwendungen
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Android-Studio-Projekt herunterladen
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
-  - name: Adapter-Maven-Projekt herunterladen
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
@@ -132,6 +132,8 @@ Verwenden Sie die Objekte `WLResponse response` und `WLFailResponse response`, u
 ## Weitere Informationen
 {: #for-more-information }
 > Weitere Hinweise zu WLResourceRequest finden Sie in den [API-Referenzinformationen](../../../api/client-side-api/java/client/).
+
+
 
 <img alt="Beispielanwendung" src="resource-request-success-android.png" style="float:right"/>
 ## Beispielanwendung

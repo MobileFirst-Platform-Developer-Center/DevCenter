@@ -4,9 +4,9 @@ title: Ressourcenanforderung von iOS-Anwendungen
 breadcrumb_title: iOS
 relevantTo: [ios]
 downloads:
-  - name: Xcode-Projekt herunterladen
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
-  - name: Adapter-Maven-Projekt herunterladen
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 4
 ---
@@ -246,6 +246,8 @@ Verwenden Sie die Objekte `response` und `error`, um die vom Adapter abgerufenen
 ## Weitere Informationen
 {: #for-more-information }
 > Weitere Hinweise zu WLResourceRequest finden Sie in den [API-Referenzinformationen](../../../api/client-side-api/objc/client/).
+
+
 
 <img alt="Beispielanwendung" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
 ## Beispielanwendung

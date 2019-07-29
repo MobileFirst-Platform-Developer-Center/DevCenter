@@ -31,8 +31,15 @@ downloads:
 2. Añada lo siguiente a la sección de `dependencies` existente:
 
 ```
-compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+
+>**Nota**: si utiliza la característica [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) y desea llamar a las API de MobileFirst en un módulo de la característica, utilice la declaración `api` en lugar de `implementation`. Si utiliza `implementation`, se restringen las API de MobileFirst al mismo módulo, mientras que, si se utiliza `api`, las API de MobileFirst está disponibles en todos los módulos presentes en la app, incluidos los módulos de la característica. Para obtener más información, consulte [Separación de API e implementation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+
+```
+api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+```
+
 3. Añada lo siguiente a la sección "DefaultConfig" del archivo build.gradle.
 ```
   ndk {
@@ -52,7 +59,7 @@ Iniciar o aprovisionar una recopilación significa crear el almacenamiento persi
 Para obtener más información sobre las características opcionales que es posible habilitar en el tiempo de inicialización, consulte **Seguridad, Soporte a múltiples usuarios** e **Integración de adaptadores de {{ site.data.keys.product_adj }}** en la segunda parte de esta guía de aprendizaje.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
@@ -71,7 +78,7 @@ try {
 Utilice `getCollectionByName` para crear un accesor a la recopilación. Es necesario llamar a `openCollections` antes de llamar a `getCollectionByName`.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -88,7 +95,7 @@ La variable `collection` se puede utilizar ahora para realizar operaciones en la
 Utilice `addData` para almacenar datos como documentos dentro de la recopilación.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -108,7 +115,7 @@ try {
 Utilice `findDocuments` para encontrar documentos dentro de una recopilación utilizando una consulta. Utilice `findAllDocuments` para recuperar todos los documentos dentro de una recopilación. Utilice `findDocumentById` para buscar documentos según su identificador exclusivo de documento.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreQueryPart queryPart = new JSONStoreQueryPart();
@@ -132,7 +139,7 @@ try {
 Utilice `replaceDocument` para modificar documentos dentro de una recopilación. El campo que se utiliza para realizar la sustitución es `_id,` el identificador exclusivo de documento.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -155,7 +162,7 @@ Utilice `removeDocumentById` para suprimir un documento de una recopilación.
 Los documentos no se quitan de la recopilación hasta que no llame a `markDocumentClean`. Para obtener más información, consulte la sección **Integración de adaptadores de {{ site.data.keys.product_adj }}** más adelante en esta guía de aprendizaje.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -174,7 +181,7 @@ try {
 Utilice `removeCollection` para suprimir todos los documentos que se almacenan dentro de una recopilación. Esta operación es similar a descartar una tabla en términos de una base de datos.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -195,7 +202,7 @@ Utilice `destroy` para eliminar los siguientes datos:
 * Todos los artefactos de seguridad y metadatos de JSONStore - Consulte **Seguridad** más adelante en esta guía de aprendizaje
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   WLJSONStore.getInstance(context).destroy();
   // handle success
@@ -218,7 +225,7 @@ Utilice `closeAll` para bloquear el acceso a las recopilaciones hasta que llame 
 Utilice `changePassword` para cambiar la contraseña.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);
@@ -239,7 +246,7 @@ try {
 Es posible crear varios almacenes con varias recopilaciones en una única aplicación de {{ site.data.keys.product_adj }}. La función `openCollections` puede tomar un objeto de opciones con un nombre de usuario. Si no se proporciona un nombre de usuario, el predeterminado es ""**jsonstore**"".
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   JSONStoreCollection people = new JSONStoreCollection("people");
   people.setSearchField("name", SearchFieldType.STRING);

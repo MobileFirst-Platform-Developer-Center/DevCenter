@@ -14,7 +14,7 @@ weight: 3
 
 ### 開発
 {: #development }
-Xamarin アプリケーションは、[Microsoft Visual Studio](https://www.visualstudio.com/) を使用して開発されます。Visual Studio は、Mac OS または Windows にインストールできます。    
+Xamarin アプリケーションは、[Microsoft Visual Studio](https://www.visualstudio.com/) を使用して開発されます。 Visual Studio は、Mac OS または Windows にインストールできます。  
 
 Visual Studio は、[Visual Studio のダウンロード](https://visualstudio.microsoft.com/downloads/)でダウンロード可能です。
 

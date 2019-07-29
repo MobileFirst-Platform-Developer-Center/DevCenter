@@ -27,7 +27,7 @@ weight: 5
 
 ### 1. {{ site.data.keys.mf_server }} 시작
 {: #starting-the-mobilefirst-server }
-[Mobile Foundation 인스턴스를 작성](../../bluemix/using-mobile-foundation)했는지 확인하십시오. 또는  
+[Mobile Foundation 인스턴스를 작성](../../ibmcloud/using-mobile-foundation)했는지 확인하십시오. 또는  
 [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)를 사용하는 경우 서버의 폴더로 이동해서 `./run.sh`(Mac 및 Linux의 경우) 또는 `run.cmd`(Windows의 경우) 명령을 실행하십시오.
 
 ### 2. 애플리케이션 작성 및 등록

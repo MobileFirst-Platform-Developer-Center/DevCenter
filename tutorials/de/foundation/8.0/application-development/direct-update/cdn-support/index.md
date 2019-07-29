@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Anforderungen nach direkter Aktualisierung mit einem CDN bedienen
-breadcrumb_title: CDN-Unterstützung
+breadcrumb_title: CDN Support
 relevantTo: [cordova]
 weight: 1
 ---
@@ -99,11 +99,11 @@ Wert **Custom Forward Host Header** auf die neu erstellte Domäne.
     
 5. Legen Sie Werte ähnlich den folgenden fest, um das Caching-Verhalten so zu konfigurieren, dass die URL für direkte Aktualisierung zwischengespeichert und die Lebensdauer (TTL) festgelegt wird.
 
-    | Feld | Wert |
+    |Feld |Wert |
     |-------|-------|
-    | Caching Option | Cache |
-    | Force Revaluation of Stale Objects | Serve stale if unable to validate |
-    | Max-Age | 3 minutes |
+    |Caching Option |Cache |
+    |Force Revaluation of Stale Objects |Serve stale if unable to validate |
+    |Max-Age |3 minutes |
 
     ![Werte zum Konfigurieren des Caching-Verhaltens festlegen](direct_update_cdn_7.jpg)
 

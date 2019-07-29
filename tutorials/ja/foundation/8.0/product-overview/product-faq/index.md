@@ -60,7 +60,7 @@ weight: 1
             <div class="panel-body">
                 <p>Mobile Foundation v8.0 on ICP 発表ブログを<a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/01/31/mfp-on-ibmcloud-private-announce/" target="_blank">ここ</a>から表示できます。<br/>
                 Mobile Foundation 開発者エディションが ICP でリリースされ、発表は<a href="https://mobilefirstplatform.ibmcloud.com/blog/2019/01/29/mfp-community-edition-on-icp/" target="_blank">ここ</a>から表示できます。<br/>
-                Mobile Foundation v8.0 on ICP を開始するには、<a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/" target="_blank">資料</a>を参照してください。</p>
+                Mobile Foundation v8.0 on ICP を開始するには <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/" target="_blank"> の資料</a>を参照してください。</p>
             </div>
         </div>      
     </div>

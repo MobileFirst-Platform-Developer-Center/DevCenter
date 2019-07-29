@@ -29,7 +29,7 @@ por download a partir do {{ site.data.keys.mf_console }}.
 
 ### Etapa 1. Iniciando o {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Certifique-se de ter [criado uma instância do Mobile Foundation](../../bluemix/using-mobile-foundation) ou, se estiver usando o [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navegue até a pasta do servidor e execute o comando: `./run.sh` no Mac e no Linux ou `run.cmd` no Windows.
+Certifique-se de ter [criado uma instância do Mobile Foundation](../../ibmcloud/using-mobile-foundation) ou, se estiver usando o [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navegue até a pasta do servidor e execute o comando: `./run.sh` no Mac e no Linux ou `run.cmd` no Windows.
 
 ### Etapa 2. Criando e registrando um aplicativo
 {: #2-creating-and-registering-an-application }
@@ -141,7 +141,7 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
 {: #5-testing-the-application }
 1. Em uma janela de **Linha de Comandos**, navegue para a pasta raiz do projeto Cordova:
 2. Execute o comando: `ionic cordova platform add ios|android|windows|browser` para incluir uma plataforma.
-3. No projeto Ionic, selecione o arquivo **config.xml** e edite o `<mfp:server ... url=" "/>` valor com as propriedades **protocolo**, **host** e **porta** com os valores corretos para o seu {{ site.data.keys.mf_server }}.
+3. No projeto Ionic, selecione o arquivo **config.xml** e edite o valor `<mfp:server ... url=" "/>` com as propriedades de **protocolo**, **host** e **porta** com os valores corretos para o seu {{ site.data.keys.mf_server }}.
     * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**, **localhost** e **9080**.
     * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.
     * Se você estiver usando um cluster do Kubernetes no IBM Cloud Private, e se a implementação for do tipo **NodePort**, normalmente o valor da porta será **NodePort**, exposto pelo serviço no cluster do Kubernetes.

@@ -43,7 +43,8 @@ En el DNS para el nuevo dominio `cdn.yourcompany.com`, establecerá un `CNAME` a
 
 #### Administrador de {{ site.data.keys.product_adj }}
 {: #mobilefirst-administrator }
-Establecerá el dominio nuevo cdn.yourcompany.com como el URL de {{ site.data.keys.mf_server }} para las aplicaciones de {{ site.data.keys.product_adj }}. Por ejemplo, para la tarea de compilación de Ant, la propiedad es: `<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`.
+Establecerá el dominio nuevo cdn.yourcompany.com como el URL de {{ site.data.keys.mf_server }} para las aplicaciones de {{ site.data.keys.product_adj }}. Por ejemplo, para la tarea de compilación de Ant, la propiedad es:
+`<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`.
 
 #### Administrador de Akamai
 {: #akamai-administrator }

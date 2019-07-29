@@ -463,7 +463,7 @@ As seções a seguir fornecem os detalhes sobre como é possível modificar os a
 
 #### Especifique propriedades JNDI extra
 {: #specify-extra-jndi-properties }
-As tarefas Ant **installmobilefirstadmin**, **installmobilefirstruntime** e **installmobilefirstpush** declaram os valores para as propriedades JNDI necessárias para os componentes funcionarem. Essas propriedades JNDI são usadas para definir a comunicação JMX e também os links para outros componentes (como serviço de atualização em tempo real, serviço de push, o serviço de análise de dados ou serviço de autorização). Entretanto, também é possível definir valores para outras propriedades JNDI. Use o elemento `<property>` que existe para essas três tarefas. Para obter uma lista de propriedades JNDI, consulte:
+As tarefas Ant **installmobilefirstadmin**, **installmobilefirstruntime** e **installmobilefirstpush** declaram os valores para as propriedades JNDI necessárias para os componentes funcionarem. Essas propriedades JNDI são usadas para definir a comunicação JMX e também os links para outros componentes (como serviço de atualização em tempo real, serviço de push, o serviço de análise de dados ou serviço de autorização). Entretanto, também é possível definir valores para outras propriedades JNDI. Use o elemento `<property>` existente para essas três tarefas. Para obter uma lista de propriedades JNDI, consulte:
 
 * [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
 * [Lista de propriedades JNDI para o serviço de push do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
@@ -486,7 +486,7 @@ Por padrão, a tarefa Ant **installmobilefirstadmin** cria usuários:
 
 Para usar um usuário existente em vez de criar um novo, é possível executar as operações a seguir:
 
-1. No elemento `<jmx>`, especifique um usuário e uma senha e configure o valor do atributo **createLibertyAdmin** como false. Por exemplo:
+1. No elemento `<jmx>`, especifique um usuário e senha e configure o valor do atributo **createLibertyAdmin** como false. Por exemplo:
 
    ```xml
    <installmobilefirstadmin ...>
@@ -494,7 +494,7 @@ Para usar um usuário existente em vez de criar um novo, é possível executar a
        ...
    ```
 
-2. No elemento `<configuration>`, especifique um usuário e uma senha e configure o valor do atributo **createConfigAdminUser** como false. Por exemplo:
+2. No elemento `<configuration>`, especifique um usuário e senha e configure o valor do atributo **createConfigAdminUser** como false. Por exemplo:
 
    ```xml
     <installmobilefirstadmin ...>
@@ -503,13 +503,13 @@ Para usar um usuário existente em vez de criar um novo, é possível executar a
    ```
 
 Além disso, o usuário que é criado pelos arquivos Ant de amostra é mapeado para as funções de segurança do serviço de administração e do console. Com essa configuração, é possível usar esse usuário para efetuar logon no
-{{ site.data.keys.mf_server }} após a instalação. Para mudar esse comportamento, remova o elemento `<user>` dos arquivos Ant de amostra. Como alternativa, é possível remover o atributo **password** do elemento `<user>` e o usuário não é criado no registro local do servidor de aplicativos.
+{{ site.data.keys.mf_server }} após a instalação. Para alterar esse comportamento, remova o elemento `<user>` dos arquivos Ant de amostra. Como alternativa, é possível remover o atributo **password** do elemento `<user>` e o usuário não será criado no registro local do servidor de aplicativos.
 
 #### Especifique o nível Liberty Java EE
 {: #specify-liberty-java-ee-level }
 Algumas distribuições do WebSphere Application Server Liberty suportam recursos de Java EE 6 ou de Java EE 7. Por padrão, as tarefas Ant detectam automaticamente os recursos a serem instalados. Por exemplo, o recurso do Liberty **jdbc-4.0** é instalado para Java EE 6 e o recurso **jdbc-4.1** é instalado no caso do Java EE 7. Se a instalação do Liberty suportar ambos os recursos do Java EE 6 e Java EE 7, talvez você queira forçar um certo nível de recursos. Um exemplo pode ser que você pretende executar o {{ site.data.keys.mf_server }} V8.0.0 e V7.1.0 no mesmo servidor Liberty. O {{ site.data.keys.mf_server }} V7.1.0 ou anterior suporta somente recursos de Java EE 6.
 
-Para forçar um certo nível de recursos do Java EE 6, use o atributo jeeversion do elemento `<websphereapplicationserver>`. Por exemplo:
+Para forçar um determinado nível de recursos Java EE 6, use o atributo jeeversion do elemento `<websphereapplicationserver>`. Por exemplo:
 
 ```xml
 <installmobilefirstadmin execute="${mfp.process.admin}" contextroot="${mfp.admin.contextroot}">
@@ -568,7 +568,7 @@ Os arquivos de amostra, como **configure-wasnd-cluster-dbms-name.xml**, **config
 
 #### Configuração manual da porta RMI no Apache Tomcat
 {: #manual-configuration-of-the-rmi-port-on-apache-tomcat }
-Por padrão, as tarefas Ant modificam o arquivo **setenv.bat** ou o arquivo **setenv.sh** para abrir a porta RMI. Se você preferir abrir a porta RMI manualmente, inclua o atributo **tomcatSetEnvConfig** com o valor como false no elemento `<jmx>` das tarefas **installmobilefirstadmin**, **updatemobilefirstadmin** e **uninstallmobilefirstadmin**.
+Por padrão, as tarefas Ant modificam o arquivo **setenv.bat** ou o arquivo **setenv.sh** para abrir a porta RMI. Caso prefira abrir a porta RMI manualmente, inclua o atributo **tomcatSetEnvConfig** com o valor false no elemento `<jmx>` das tarefas **installmobilefirstadmin**, **updatemobilefirstadmin** e **uninstallmobilefirstadmin**.
 
 ## Instalando componentes do {{ site.data.keys.mf_server }} manualmente
 {: #installing-the-mobilefirst-server-components-manually }
@@ -609,7 +609,7 @@ Opcionalmente, para evitar problemas de tempo limite que interrompem a sequênci
   stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```
 
-Também é possível configurar o elemento **tcpOptions** e o atributo **soReuseAddr** para `true`: `<tcpOptions soReuseAddr="true"/>`.
+Também é possível configurar o elemento **tcpOptions** e definir o atributo **soReuseAddr** como `true`: `<tcpOptions soReuseAddr="true"/>`.
 
 #### Recursos do Liberty requeridos pelos aplicativos {{ site.data.keys.mf_server }}
 {: #liberty-features-required-by-the-mobilefirst-server-applications }
@@ -944,7 +944,7 @@ Opcionalmente, para evitar problemas de tempo limite que interrompem a sequênci
   stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```
 
-Também é possível configurar o elemento **tcpOptions** e o atributo **soReuseAddr** para `true`: `<tcpOptions soReuseAddr="true"/>`.
+Também é possível configurar o elemento **tcpOptions** e definir o atributo **soReuseAddr** como `true`: `<tcpOptions soReuseAddr="true"/>`.
 
 #### Recursos do Liberty requeridos pelos aplicativos {{ site.data.keys.mf_server }}
 {: #liberty-features-required-by-the-mobilefirst-server-applications-collective }
@@ -1030,10 +1030,8 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
 
         <div id="collapse-admin-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-collective">
             <div class="panel-body">
-                <p>O serviço de administração é empacotado como um aplicativo WAR para você implementar no controlador do Liberty Collective. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do controlador Liberty Collective.
-                <br/><br/>
-                Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalação manual no WebSphere Application Server Liberty Collective</a> para obter os detalhes de configuração que são comuns a todos os serviços.
-                <br/><br/>
+                <p>O serviço de administração é empacotado como um aplicativo WAR para você implementar no controlador do Liberty Collective. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do controlador Liberty Collective. <br/><br/>
+                Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalação manual no Liberty Collective do WebSphere Application Server</a> para obter os detalhes de configuração que são comuns a todos os serviços. <br/><br/>
                 O arquivo WAR do serviço de administração está em <b>mfp_install_dir/MobileFirstServer/mfp-admin-service-collective.war</b>. É possível definir a raiz de contexto conforme desejado. No entanto, geralmente ela é <b>/mfpadmin</b>.</p>
 
                 <h3>Propriedades JNDI obrigatórias</h3>
@@ -1087,10 +1085,9 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
 
         <div id="collapse-live-update-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-collective">
             <div class="panel-body">
-                <p>O serviço de atualização em tempo real é empacotado como um aplicativo WAR para implementação no controlador do Liberty Collective. É preciso fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do controlador do Liberty Collective.
+                <p>O serviço de atualização em tempo real é empacotado como um aplicativo WAR para implementação no controlador do Liberty Collective. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do controlador Liberty Collective.
                 <br/><br/>
-                Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalação manual no WebSphere Application Server Liberty Collective</a> para obter os detalhes de configuração que são comuns a todos os serviços.
-                <br/><br/>
+                Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalação manual no Liberty Collective do WebSphere Application Server</a> para obter os detalhes de configuração que são comuns a todos os serviços. <br/><br/>
                 O arquivo WAR do serviço de atualização em tempo real está em <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. A raiz de contexto do serviço de atualização em tempo real deve ser definida desta forma: <b>/the-adminContextRootconfig</b>. Por exemplo, se a raiz de contexto do serviço de administração for <b>/mfpadmin</b>, a raiz de contexto do serviço de atualização em tempo real deverá ser <b>/mfpadminconfig</b>.</p>
 
                 <h3>Origem de dados</h3>
@@ -1122,8 +1119,7 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
         <div id="collapse-console-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-collective">
             <div class="panel-body">
                 <p>O console é empacotado como um aplicativo WAR para você implementar no controlador do Liberty Collective. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do controlador Liberty Collective.
-                <br/><br/>Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalação manual no WebSphere Application Server Liberty</a> para obter os detalhes de configuração que são comuns a todos os serviços.
-                <br/><br/>
+                <br/><br/>Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalação manual no Liberty do WebSphere Application Server</a> para obter os detalhes de configuração que são comuns a todos os serviços. <br/><br/>
                 O arquivo WAR do console está em <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>. É possível definir a raiz de contexto conforme desejado. No entanto, geralmente ela é <b>/mfpconsole</b>.</p>
 
                 <h3>Propriedades JNDI obrigatórias</h3>
@@ -1157,10 +1153,9 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
 
         <div id="collapse-runtime-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-collective">
             <div class="panel-body">
-                <p>O tempo de execução é empacotado como um aplicativo WAR para você implementar nos membros do cluster do Liberty Collective. Você precisa fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> de cada membro de cluster do Liberty Collective.
+                <p>O tempo de execução é empacotado como um aplicativo WAR para você implementar nos membros do cluster do Liberty Collective. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> de cada membro de cluster do Liberty Collective.
                 <br/><br/>
-                Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalação manual no WebSphere Application Server Liberty Collective</a> para obter os detalhes de configuração que são comuns a todos os serviços.
-                <br/><br/>
+                Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalação manual no Liberty Collective do WebSphere Application Server</a> para obter os detalhes de configuração que são comuns a todos os serviços. <br/><br/>
                 O arquivo WAR de tempo de execução está em <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. É possível definir a raiz de contexto conforme desejado. Entretanto, por padrão, ela é <b>/mfp</b>.</p>
 
                 <h3>Propriedades JNDI obrigatórias</h3>
@@ -1205,10 +1200,8 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
 
         <div id="collapse-push-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration">
             <div class="panel-body">
-                <p>O serviço de push é empacotado como um aplicativo WAR para você implementar em um membro de cluster do Liberty Collective ou servidora Liberty. Se você instalar o serviço de push em um servidor Liberty, consulte <a href="#configuration-details-liberty">detalhes de configuração do serviço de push do {{ site.data.keys.mf_server }}</a> em <a href="#manual-installation-on-websphere-application-server-liberty">Instalação Manual no WebSphere Application Server Liberty</a>.
-                <br/><br/>
-                Quando o serviço de push do {{ site.data.keys.mf_server }} é instalado em um Liberty Collective, ele pode ser instalado no mesmo cluster que o tempo de execução ou em outro cluster.
-                <br/><br/>
+                <p>O serviço de push é empacotado como um aplicativo WAR para você implementar em um membro de cluster do Liberty Collective ou servidora Liberty. Ao instalar o serviço de push em um servidor Liberty, consulte <a href="#configuration-details-liberty">Detalhes de configuração do serviço de push do {{ site.data.keys.mf_server }}</a> em <a href="#manual-installation-on-websphere-application-server-liberty">Instalação manual no Liberty do WebSphere Application Server</a>. <br/><br/>
+                Quando o serviço de push do {{ site.data.keys.mf_server }} for instalado em um Liberty Collective, ele pode ser instalado no mesmo cluster que o tempo de execução ou em outro cluster. <br/><br/>
                 Você precisa fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> de cada membro de cluster do Liberty Collective. Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-liberty-collective">Instalação manual no WebSphere Application Server Liberty Collective</a> para obter os detalhes de configuração que são comuns a todos os serviços.    
                 <br/><br/>
                 O arquivo WAR do serviço de push está em <b>mfp_install_dir/PushService/mfp-push-service.war</b>. Deve-se definir a raiz de contexto como <b>/imfpush</b>. Caso contrário, os dispositivos do cliente não poderão se conectar a ela, já que a raiz de contexto está codificada permanentemente no SDK.</p>
@@ -1294,10 +1287,9 @@ Opcionalmente, talvez você queira ativar a região da memória se os usuários 
 
         <div id="collapse-admin-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-tomcat">
             <div class="panel-body">
-                <p>O serviço de administração é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É preciso fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos.
+                <p>O serviço de administração é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos.
                 <br/><br/>
-                Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços.
-                <br/><br/>
+                Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços. <br/><br/>
                 O arquivo WAR do serviço de administração está em <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>. É possível definir a raiz de contexto conforme desejado. No entanto, geralmente ela é <b>/mfpadmin</b>.</p>
 
                 <h3>Propriedades JNDI obrigatórias</h3>
@@ -1355,10 +1347,9 @@ Opcionalmente, talvez você queira ativar a região da memória se os usuários 
 
         <div id="collapse-live-update-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-tomcat">
             <div class="panel-body">
-                <p>O serviço de atualização em tempo real é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml </b>.
+                <p>O serviço de atualização em tempo real é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b>.
                 <br/><br/>
-                Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços.
-                <br/><br/>
+                Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços. <br/><br/>
                 O arquivo WAR do serviço de atualização em tempo real está em <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. A raiz de contexto do serviço de atualização em tempo real deve ser definida dessa forma: <b>/the-adminContextRoot/config</b>. Por exemplo, se a raiz de contexto do serviço de administração for <b>/mfpadmin</b>, a raiz de contexto do serviço de atualização em tempo real deverá ser <b>/mfpadminconfig</b>.</p>
 
                 <h3>Origem de dados</h3>
@@ -1385,9 +1376,8 @@ Opcionalmente, talvez você queira ativar a região da memória se os usuários 
 
         <div id="collapse-console-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-tomcat">
             <div class="panel-body">
-                <p>O console é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É preciso fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos.
-                <br/><br/>Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços.
-                <br/><br/>
+                <p>O console é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos.
+                <br/><br/>Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços. <br/><br/>
                 O arquivo WAR do console está em <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>. É possível definir a raiz de contexto conforme desejado. No entanto, geralmente ela é <b>/mfpconsole</b>.</p>
 
                 <h3>Propriedades JNDI obrigatórias</h3>
@@ -1415,10 +1405,9 @@ Opcionalmente, talvez você queira ativar a região da memória se os usuários 
 
         <div id="collapse-runtime-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-tomcat">
             <div class="panel-body">
-                <p>O tempo de execução é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml </b>.
+                <p>O tempo de execução é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b>.
                 <br/><br/>
-                Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços.
-                <br/><br/>
+                Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços. <br/><br/>
                 O arquivo WAR de tempo de execução está em <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. É possível definir a raiz de contexto conforme desejado. Entretanto, por padrão, ela é <b>/mfp</b>.</p>
 
                 <h3>Propriedades JNDI obrigatórias</h3>
@@ -1492,7 +1481,7 @@ Opcionalmente, talvez você queira ativar a região da memória se os usuários 
 
         <div id="collapse-artifacts-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration-tomcat">
             <div class="panel-body">
-                <p>O componente de artefatos é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É preciso fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos. Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços.</p>
+                <p>O componente de artefatos é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos. Antes de continuar, revise <a href="#manual-installation-on-apache-tomcat">Instalação manual no Apache Tomcat</a> para obter os detalhes de configuração que são comuns a todos os serviços.</p>
 
                 <p>O arquivo WAR para esse componente está em <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>. Deve-se definir a raiz de contexto como <b>/mfp-dev-artifacts</b>.</p>
             </div>
@@ -1567,7 +1556,7 @@ Para configurar a delegação de carregador de classes para o último pai após 
 
         <div id="collapse-admin-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-nd">
             <div class="panel-body">
-                <p>O serviço de administração é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É preciso fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos.
+                <p>O serviço de administração é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos.
                 <br/><br/>
                 Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalação manual no WebSphere Application Server e no WebSphere Application Server Network Deployment</a> para obter os detalhes de configuração que são comuns a todos os serviços.
                 <br/><br/>
@@ -1636,7 +1625,7 @@ Para configurar a delegação de carregador de classes para o último pai após 
 
         <div id="collapse-live-update-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-nd">
             <div class="panel-body">
-                <p>O serviço de atualização em tempo real é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml </b>.
+                <p>O serviço de atualização em tempo real é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b>.
                 <br/><br/>
                 Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalação manual no WebSphere Application Server e no WebSphere Application Server Network Deployment</a> para obter os detalhes de configuração que são comuns a todos os serviços.
                 <br/><br/>
@@ -1646,7 +1635,7 @@ Para configurar a delegação de carregador de classes para o último pai após 
                 <p>Crie uma origem de dados para o serviço de atualização em tempo real e mapeie-a para <b>jdbc/ConfigDS</b>.</p>
 
                 <h3>Funções de segurança</h3>
-                <p>A função <b>configadmin</b> é definida para esse aplicativo.
+                <p>A função <b>configadmin</b> é definida para este aplicativo.
                 <br/><br/>
                 Pelo menos um usuário deve ser mapeado para essa função. O usuário e sua senha devem ser fornecidos para as seguintes propriedades JNDI do serviço de administração:</p>
 
@@ -1666,14 +1655,13 @@ Para configurar a delegação de carregador de classes para o último pai após 
 
         <div id="collapse-console-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-nd">
             <div class="panel-body">
-                <p>O console é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É preciso fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos.
+                <p>O console é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos.
                 <br/><br/>Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalação manual no WebSphere Application Server e no WebSphere Application Server Network Deployment</a> para obter os detalhes de configuração que são comuns a todos os serviços.
                 <br/><br/>
                 O arquivo WAR do console está em <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>. É possível definir a raiz de contexto conforme desejado. No entanto, geralmente ela é <b>/mfpconsole</b>.</p>
 
                 <h3>Propriedades JNDI obrigatórias</h3>
-                <p>É possível configurar propriedades JNDI com o console de administração do WebSphere Application Server. Acesse <b>Aplicativos → Tipos de aplicativos → Aplicativos corporativos WebSphere → application_name → Entradas de Ambiente</b> para os módulos da web e configure as entradas.
-                <br/><br/>
+                <p>É possível configurar propriedades JNDI com o console de administração do WebSphere Application Server. Acesse as entradas <b>Aplicativos → Tipos de aplicativos → Aplicativos corporativos WebSphere → application_name → Ambientes</b> para módulos da web w configure as entradas. <br/><br/>
                 É preciso definir a propriedade <b>mfp.admin.endpoint</b>. O valor típico para essa propriedade é <b>*://*:*/the-adminContextRoot</b>.
                 <br/><br/>
                 Para obter mais informações sobre as propriedades JNDI, consulte <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propriedades JNDI para {{ site.data.keys.mf_console }}</a>.</p>
@@ -1699,7 +1687,7 @@ Para configurar a delegação de carregador de classes para o último pai após 
 
         <div id="collapse-runtime-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-nd">
             <div class="panel-body">
-                <p>O tempo de execução é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml </b>.
+                <p>O tempo de execução é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b>.
                 <br/><br/>
                 Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalação manual no WebSphere Application Server e no WebSphere Application Server Network Deployment</a> para obter os detalhes de configuração que são comuns a todos os serviços.
                 <br/><br/>
@@ -1708,7 +1696,7 @@ Para configurar a delegação de carregador de classes para o último pai após 
                 <h3>Propriedades JNDI obrigatórias</h3>
                 <p>É possível configurar propriedades JNDI com o console de administração do WebSphere Application Server. Acesse <b>Aplicativos → Tipos de aplicativos → Aplicativos corporativos WebSphere → application_name → Entradas de Ambiente</b> para os módulos da web e configure as entradas.</p>
 
-                <p>Deve-se definir a propriedade <b>mfp.authorization.server</b> com o valor como integrado.<br/>
+                <p>Você deve definir a propriedade <b>mfp.authorization.server</b> com o valor como integrado.<br/>
                 Além disso, defina as propriedades JNDI a seguir para ativer a comunicação JMX com o serviço de administração:</p>
 
                 <b>No WebSphere Application Server Network Deployment</b>
@@ -1793,7 +1781,7 @@ Para configurar a delegação de carregador de classes para o último pai após 
 
         <div id="collapse-artifacts-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration-nd">
             <div class="panel-body">
-                <p>O componente de artefatos é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É preciso fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos. Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalação manual no WebSphere Application Server e no WebSphere Application Server Network Deployment</a> para obter os detalhes de configuração que são comuns a todos os serviços.</p>
+                <p>O componente de artefatos é empacotado como um aplicativo WAR para você implementar no servidor de aplicativos. É necessário fazer algumas configurações específicas para esse aplicativo no arquivo <b>server.xml</b> do servidor de aplicativos. Antes de continuar, revise <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Instalação manual no WebSphere Application Server e no WebSphere Application Server Network Deployment</a> para obter os detalhes de configuração que são comuns a todos os serviços.</p>
 
                 <p>O arquivo WAR para esse componente está em <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>. Deve-se definir a raiz de contexto como <b>/mfp-dev-artifacts</b>.</p>
             </div>
@@ -1864,8 +1852,8 @@ Quando você planejar um server farm com o Server Configuration Tool, primeiro c
                         <ul>
                             <li>Escolha o tipo de servidor de aplicativos que usará para configurar os membros do server farm. {{ site.data.keys.product }} suporta os servidores de aplicativos a seguir em server farms:
                                 <ul>
-                                    <li>WebSphere Application Server Full Profile<br/>
-                                    <b>Nota:</b> Em uma topologia de farm, não é possível usar o conector JMX RMI. Nessa topologia, somente o conector SOAP é suportado pelo {{ site.data.keys.product }}.</li>
+                                    <li>Perfil completo do WebSphere Application Server<br/>
+                                    <b>Nota:</b> em uma topologia de farm, não é possível usar o conector JMX RMI. Nessa topologia, somente o conector SOAP é suportado pelo {{ site.data.keys.product }}.</li>
                                     <li>perfil Liberty do WebSphere Application Server</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
@@ -1875,13 +1863,12 @@ Quando você planejar um server farm com o Server Configuration Tool, primeiro c
                             </li>
                             <li>Configure tantos servidores independentes quanto o número de membros que você deseja no farm.
                                 <ul>
-                                    <li>Cada um desses servidores independentes deve se comunicar com o mesmo banco de dados. Você deve se certificar também de que nenhuma porta usada por qualquer um desses servidores seja usada por outro servidor configurado no mesmo host. Essa restrição aplica-se a portas usadas pelos protocolos HTTP, HTTPS, REST, SOAP e RMI.</li>
+                                    <li>Cada um desses servidores independentes deve se comunicar com o mesmo banco de dados. Você deve se certificar também de que nenhuma porta usada por qualquer um desses servidores seja usada por outro servidor configurado no mesmo host. Essa restrição se aplica a portas usadas pelos protocolos HTTP, HTTPS, REST, SOAP e RMI.</li>
                                     <li>Cada um desses servidores deve ter o serviço de administração do {{ site.data.keys.mf_server }}, o serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e um ou mais tempos de execução do {{ site.data.keys.product_adj }} implementados.</li>
                                     <li>Para obter informações adicionais sobre como configurar um servidor, consulte <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Restrições no serviço de administração do {{ site.data.keys.mf_server }}, serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e tempo de execução do {{ site.data.keys.product_adj }}</a>.</li>
                                 </ul>
                             </li>
-                            <li>Troque os certificados de assinante entre todos os servidores em seus respectivos armazenamentos confiáveis.
-                            <br/><br/>
+                            <li>Troque os certificados de assinante entre todos os servidores em seus respectivos truststores. <br/><br/>
                             Esta etapa é obrigatória para os farms que usam o perfil integral do WebSphere Application Server ou o Liberty, pois a segurança deve ser ativada. Além disso, para farms do Liberty, a mesma configuração de LTPA deve ser replicada em cada servidor para assegurar o recurso de conexão única. Para fazer essa configuração, siga as diretrizes na etapa 6 de <a href="#configuring-a-server-farm-manually">Configurando um server farm manualmente</a>.
                             </li>
                         </ul>
@@ -1925,15 +1912,13 @@ Ao planejar um server farm com tarefas Ant, primeiro crie os servidores independ
 
                                 <blockquote><b>Importante:</b> O {{ site.data.keys.product }} suporta apenas server farms homogêneos. Um server farm é homogêneo quando se conecta ao mesmo tipo de servidores de aplicativos. Tentar associar tipos diferentes de servidores de aplicativos levaria a um comportamento imprevisível no tempo de execução. Por exemplo, um farm com uma combinação de servidores Apache Tomcat e servidores de perfil completo do WebSphere Application Server é uma configuração inválida.</blockquote>
                             </li>
-                            <li>Configure tantos servidores independentes quanto o número de membros que você deseja no farm.
-                            <br/><br/>
-                            Cada um desses servidores independentes deve se comunicar com o mesmo banco de dados. Você deve se certificar também de que nenhuma porta usada por qualquer um desses servidores seja usada por outro servidor configurado no mesmo host. Essa restrição aplica-se a portas usadas pelos protocolos HTTP, HTTPS, REST, SOAP e RMI.
+                            <li>Configure os servidores independentes em número igual ao número de membros que se deseja no farm. <br/><br/>
+                            Cada um desses servidores independentes deve se comunicar com o mesmo banco de dados. Você deve se certificar também de que nenhuma porta usada por qualquer um desses servidores seja usada por outro servidor configurado no mesmo host. Essa restrição se aplica às portas usadas pelos protocolos HTTP, HTTPS, REST, SOAP e RMI.
                             <br/><br/>
                             Cada um desses servidores deve ter o serviço de administração do {{ site.data.keys.mf_server }}, o serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e um ou mais tempos de execução do {{ site.data.keys.product_adj }} implementados.
                             <br/><br/>
                             Para obter informações adicionais sobre como configurar um servidor, consulte <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Restrições no serviço de administração do {{ site.data.keys.mf_server }}, serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e tempo de execução do {{ site.data.keys.product_adj }}</a>.</li>
-                            <li>Troque os certificados de assinante entre todos os servidores em seus respectivos armazenamentos confiáveis.
-                            <br/><br/>
+                            <li>Troque os certificados de assinante entre todos os servidores em seus respectivos truststores. <br/><br/>
                             Esta etapa é obrigatória para os farms que usam o perfil integral do WebSphere Application Server ou o Liberty, pois a segurança deve ser ativada. Além disso, para farms do Liberty, a mesma configuração de LTPA deve ser replicada em cada servidor para assegurar o recurso de conexão única. Para fazer essa configuração, siga as diretrizes na etapa 6 de <a href="#configuring-a-server-farm-manually">Configurando um server farm manualmente</a>.
                             </li>
                         </ul>
@@ -1949,15 +1934,14 @@ Ao planejar um server farm com tarefas Ant, primeiro crie os servidores independ
                                 <blockquote>Nota: não use o banco de dados Derby em uma topologia de farm porque o banco de dados Derby permite apenas uma única conexão de cada vez.</blockquote>
 
                             </li>
-                            <li>Edite o arquivo Ant e insira todas as propriedades necessárias para o banco de dados.
-                            <br/><br/>
+                            <li>Edite o arquivo Ant e insira todas as propriedades necessárias para o banco de dados. <br/><br/>
                             Para ativar a configuração do banco de dados usada pelos componentes do {{ site.data.keys.mf_server }}, configure os valores das propriedades a seguir:
                                 <ul>
                                     <li>Configure <b>mfp.process.admin</b> como <b>true</b>. Para configurar o banco de dados para o serviço de administração e o serviço de atualização em tempo real.</li>
                                     <li>Configure <b>mfp.process.runtime</b> como <b>true</b>. Para configurar o banco de dados para o tempo de execução.</li>
                                 </ul>
                             </li>
-                            <li>Execute os seguintes comandos a partir do diretório <b>mfp_install_dir/MobileFirstServer/configuration-samples</b>, em que <b>create-database-ant-file.xml</b> deve ser substituído pelo nome do arquivo Ant real escolhido: <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> e <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>.
+                            <li>Execute os comandos a seguir a partir do diretório <b>mfp_install_dir/MobileFirstServer/configuration-samples</b>, em que <b>create-database-ant-file.xml</b> deve ser substituído pelo nome do arquivo Ant real escolhido: <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> e <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>.
                             <br/><br/>
                             Como os bancos de dados do {{ site.data.keys.mf_server }} são compartilhados entre os servidores de aplicativos de um farm, esses dois comandos só devem ser executados uma vez, seja qual for o número de servidores no farm.
                             </li>
@@ -1966,12 +1950,10 @@ Ao planejar um server farm com tarefas Ant, primeiro crie os servidores independ
                     </li>
                     <li>Implemente o serviço de administração, o serviço de atualização em tempo real e o tempo de execução nos servidores e configure esses servidores como membros de um server farm.
                         <ul>
-                            <li>Escolha o arquivo Ant que corresponde a seu servidor de aplicativos e seu banco de dados no diretório <b>mfp\_install\_dir/MobileFirstServer/configuration-samples</b> para implementar o serviço de administração, o serviço de atualização em tempo real e o tempo de execução nos servidores.
-                            <br/><br/>
-                            Por exemplo, escolha o arquivo <b>configure-liberty-db2.xml</b> para uma implementação no servidor Liberty com o banco de dados DB2. Faça a quantidade de cópias desse arquivo de acordo com o número de membros que você deseja ter no farm.
-                            <br/><br/>
+                            <li>Escolha ao arquivo Ant que corresponde ao seu servidor de aplicativos e seu banco de dados no diretório <b>mfp\_install\_dir/MobileFirstServer/configuration-samples</b> para implementar o serviço de administração, o serviço de atualização em tempo real e o tempo de execução nos servidores. <br/><br/>
+                            Por exemplo, escolha o arquivo <b>configure-liberty-db2.xml</b> para uma implementação no servidor Liberty com o banco de dados DB2. Faça cópias desse arquivo em número igual ao número de membros que se deseja no farm. <br/><br/>
                             <b>Nota:</b> mantenha esses arquivos após a configuração, pois eles podem ser reutilizados para fazer upgrade dos componentes do {{ site.data.keys.mf_server }} que já foram implementados, ou para desinstalá-los de cada membro do farm.</li>
-                            <li>Edite cada cópia do arquivo Ant, insira as mesmas propriedades para o banco de dados que são usadas na etapa 2, e também insira as outras propriedades necessárias para o servidor de aplicativos.
+                            <li>Edite cada cópia do arquivo Ant, insira para o banco de dados as mesmas propriedades usadas na etapa 2 e também insira as outras propriedades necessárias para o servidor de aplicativos.
                             <br/><br/>
                             Para configurar o servidor como um server farm member, configure os valores das propriedades a seguir:
                                 <ul>
@@ -1986,7 +1968,7 @@ Ao planejar um server farm com tarefas Ant, primeiro crie os servidores independ
                                         <li>Configure <b>mfp.process.runtime</b> como <b>true</b>. Para implementar o arquivo WAR do tempo de execução.</li>
                                     </ul>
                                 <br/>
-                                <b>Nota:</b> se você planeja instalar mais de um tempo de execução nos servidores do farm, especifique o ID de atributo e configure um valor, que deve ser exclusivo para cada tempo de execução nas tarefas Ant <b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b> e <b>uninstallmobilefirstruntime</b>.
+                                <b>Nota:</b> caso planeje instalar mais de um ambiente de execução nos servidores do farm, especifique o ID do atributo e configure um valor que deve ser exclusivo para cada tempo de execução nas tarefas Ant <b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b> e <b>uninstallmobilefirstruntime</b>.
                                 <br/>
                                 Por exemplo,
 {% highlight xml %}
@@ -1994,7 +1976,7 @@ Ao planejar um server farm com tarefas Ant, primeiro crie os servidores independ
     <installmobilefirstruntime execute="true" contextroot="/runtime1" id="rtm1">
 {% endhighlight %}
                             </li>
-                            <li>Para cada servidor, execute os seguintes comandos em que <b>configure-appserver-database-ant-file.xml</b> deve ser substituído pelo nome do arquivo Ant real escolhido: <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> e <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>.
+                            <li>Para cada servidor, execute os comandos a seguir, em que <b>configure-appserver-database-ant-file.xml</b> deve ser substituído pelo nome do arquivo Ant real escolhido: <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> e <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>.
                             <br/><br/>
                             Esses comandos executam as tarefas Ant <b>installmobilefirstadmin</b> e <b>installmobilefirstruntime</b>. Para obter mais informações sobre essas tarefas, consulte <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, administração do {{ site.data.keys.mf_server }} e serviços de atualização em tempo real</a> e <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}</a>.
                             </li>
@@ -2034,8 +2016,8 @@ Ao planejar um server farm, crie primeiramente servidores independentes que se c
                 <ol>
                     <li>Escolha o tipo de servidor de aplicativos que usará para configurar os membros do server farm. {{ site.data.keys.product }} suporta os servidores de aplicativos a seguir em server farms:
                         <ul>
-                            <li>WebSphere Application Server Full Profile<br/>
-                            <b>Nota:</b> Em uma topologia de farm, não é possível usar o conector JMX RMI. Nessa topologia, somente o conector SOAP é suportado pelo {{ site.data.keys.product }}.</li>
+                            <li>Perfil completo do WebSphere Application Server<br/>
+                                    <b>Nota:</b> em uma topologia de farm, não é possível usar o conector JMX RMI. Nessa topologia, somente o conector SOAP é suportado pelo {{ site.data.keys.product }}.</li>
                             <li>perfil Liberty do WebSphere Application Server</li>
                             <li>Apache Tomcat</li>
                         </ul>
@@ -2058,13 +2040,13 @@ Ao planejar um server farm, crie primeiramente servidores independentes que se c
                     </li>
                     <li>Configure tantos servidores independentes quanto o número de membros que você deseja no farm.
                         <ul>
-                            <li>Cada um desses servidores independentes deve se comunicar com o mesmo banco de dados. Você deve se certificar também de que nenhuma porta usada por qualquer um desses servidores seja usada por outro servidor configurado no mesmo host. Essa restrição aplica-se a portas usadas pelos protocolos HTTP, HTTPS, REST, SOAP e RMI.</li>
+                            <li>Cada um desses servidores independentes deve se comunicar com o mesmo banco de dados. Você deve se certificar também de que nenhuma porta usada por qualquer um desses servidores seja usada por outro servidor configurado no mesmo host. Essa restrição se aplica a portas usadas pelos protocolos HTTP, HTTPS, REST, SOAP e RMI.</li>
                             <li>Cada um desses servidores deve ter o serviço de administração do {{ site.data.keys.mf_server }}, o serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e um ou mais tempos de execução do {{ site.data.keys.product_adj }} implementados.</li>
                             <li>Quando cada um desses servidores está trabalhando corretamente em uma topologia independente, é possível transformá-los em membros de um server farm.</li>
                         </ul>
                     </li>
                     <li>Pare todos os servidores que devem ser membros do farm.</li>
-                    <li>Configure cada servidor apropriadamente para o tipo de servidor de aplicativos.<br/>Deve-se configurar algumas propriedades JNDI corretamente. Em uma topologia de server farm, as propriedades JNI mfp.config.service.user e mfp.config.service.password devem ter o mesmo valor para todos os membros do farm. Para o Apache Tomcat, deve-se também verificar se os argumentos da JVM estão definidos adequadamente.
+                    <li>Configure adequadamente cada servidor para o tipo de servidor de aplicativos.<br/>Algumas propriedades JNDI devem ser configuradas corretamente. Em uma topologia de server farm, as propriedades JNI mfp.config.service.user e mfp.config.service.password devem ter o mesmo valor para todos os membros do farm. Para o Apache Tomcat, deve-se também verificar se os argumentos da JVM estão definidos adequadamente.
                         <ul>
                             <li><b>Perfil Liberty do WebSphere Application Server</b>
                                 <br/>
@@ -2092,7 +2074,7 @@ Ao planejar um server farm, crie primeiramente servidores independentes que se c
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
 <Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                A propriedade <b>mfp.admin.serverid</b> deve ser configurada para o identificador definido para esse membro do farm. Esse identificador deve ser exclusivo entre todos os membros do farm.
+                                A propriedade <b>mfp.admin.serverid</b> deve ser configurada para o identificador definido para esse membro do farm. Esse identificador deve ser exclusivo em todos os membros do farm.
                                 <br/>
                                 Você deve se certificar de que o argumento de JVM <code>-Djava.rmi.server.hostname</code> esteja configurado para o IP ou nome do host usados pelos membros remotos para acessar esse servidor. Portanto, não o configure para <b>localhost</b>. Além disso, você deve se certificar de que o argumento da JVM <code>-Dcom.sun.management.jmxremote.port</code> esteja configurado com uma porta que ainda não estejam em uso para ativar conexões JMX RMI. Ambos os argumentos são configurados na variável de ambiente <b>CATALINA_OPTS</b>.
                             </li>

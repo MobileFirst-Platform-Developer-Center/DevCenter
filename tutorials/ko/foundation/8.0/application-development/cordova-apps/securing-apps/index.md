@@ -36,7 +36,7 @@ weight: 1
     - 패키지 빌드 시에 `cordova compile` 또는 `cordova build` 명령에 `mfpwebencrypt` 플래그를 추가하여 Cordova 패키지의 웹 자원을 암호화할 수도 있습니다.
         - `cordova compile -- --mfpwebencrypt` | `cordova build -- --mfpwebencrypt`
     <br/>
-    **www** 폴더의 운영 체제 정보는 암호화된 컨텐츠를 포함하는 **resources.zip** 파일로 대체됩니다.  
+        **www** 폴더의 운영 체제 정보는 암호화된 컨텐츠를 포함하는 **resources.zip** 파일로 대체됩니다.  
 Android 운영 체제용 앱이고 **resources.zip** 파일 크기가 1MB를 초과하는 경우 **resources.zip** 파일은 이름이 **resources.zip.nnn**이고 크기가 768KB로 줄어든 여러 개의 .zip 파일로 분할됩니다. nnn 변수는 001에서 999 사이의 숫자입니다.
 4. 플랫폼별 도구와 함께 제공되는 에뮬레이터를 사용하여 암호화된 자원이 있는 애플리케이션을 테스트합니다. 예를 들어 Android에는 Android Studio를 사용하고 iOS에는 Xcode를 사용할 수 있습니다.
 

@@ -60,7 +60,7 @@ If you have deployed Mobile Foundation on IBM Cloud using IBM-provided scripts t
 **If you are on Mobile Foundation V8.0:**  
 The latest iFix available at the time of publishing this document is `8.0.0.0-MFPF-IF201706052216`  
 
-Follow the instructions available in this [document](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-using-scripts-lbp/#applying-mobilefirst-server-fixes) to apply Mobile Foundation server iFixes.
+Follow the instructions available in this [document](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-using-scripts-lbp/#applying-mobilefirst-server-fixes) to apply Mobile Foundation server iFixes.
 
 **If you are on Mobile Foundation V7.1:**  
 The latest iFix available at the time of publishing this document is `7.1.0.0-MFPF-IF201706081107`  

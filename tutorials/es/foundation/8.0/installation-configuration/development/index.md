@@ -21,7 +21,7 @@ También encontrará instrucciones detalladas paso a paso [en esta guía de inst
 
 ### Servidor
 {: #server }
-Puede utilizar {{ site.data.keys.mf_server }} a través del servicio [Mobile Foundation IBM Cloud](../../bluemix/using-mobile-foundation), o de forma local mediante {{ site.data.keys.mf_dev_kit_full }} (utilizado a efectos de un desarrollo local). {{ site.data.keys.mf_server }} necesita Java 7 u 8 para poder ejecutarse.
+Puede utilizar {{ site.data.keys.mf_server }} a través del servicio [Mobile Foundation IBM Cloud](../../ibmcloud/using-mobile-foundation), o de forma local mediante {{ site.data.keys.mf_dev_kit_full }} (utilizado a efectos de un desarrollo local). {{ site.data.keys.mf_server }} necesita Java 7 u 8 para poder ejecutarse.
 
 Si tiene previsto utilizar el servicio Mobile Foundation IBM Cloud, se necesita una cuenta en bluemix.net.
 

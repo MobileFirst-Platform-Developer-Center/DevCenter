@@ -11,11 +11,13 @@ tags:
 author:
   name: Krishnakumar Bala
 ---
+> **Deprecation Note**: This blog post is deprecated. Digital App Builder is now generally available. For more information, see [here]({{site.baseurl}}/blog/2019/04/05/digital-app-builder-ga-announce/).
+
 ![Digital App Builder]({{site.baseurl}}/assets/blog/2018-12-18-announcement-digital-app-builder/banner-digital-app-builder.png)
 
 Today we are excited to announce the beta launch of **IBM Digital App Builder**. This tool will change the way citizen developers build smart web and mobile apps. The tool  provides a drag and drop experience for the user to add building blocks, connect to microservices, embed AI capabilities for creating multi-channel apps.
 
-[![Digital App Builder]({{site.baseurl}}/assets/blog/2018-12-18-announcement-digital-app-builder/download-dab.png)](https://epwt-www.mybluemix.net/software/support/trial/cst/programwebsite.wss?siteId=505&tabId=939&w=ua0vqv&p=za6q9ljnm){:target="_blank"}
+<!--[![Digital App Builder]({{site.baseurl}}/assets/blog/2018-12-18-announcement-digital-app-builder/download-dab.png)](https://epwt-www.mybluemix.net/software/support/trial/cst/programwebsite.wss?siteId=505&tabId=939&w=ua0vqv&p=za6q9ljnm){:target="_blank"} -->
 
 ## The changing application landscape
 

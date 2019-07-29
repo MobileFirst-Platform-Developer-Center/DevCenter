@@ -51,12 +51,17 @@ APIs for React Native applications.
 * **[Client-side API](reactnative/client)**   
     Use this API to develop React Native apps.
 
+* **[Client-side JSONStore API](reactnative/jsonstore)**   
+    You can use JSONStore API to work with the store for the React Native environment.
+
 ### C Sharp
 {: #c-sharp }
 APIs for native Windows 10 UWP, Windows 8 Universal, Xamarin.iOS and Xamarin.Android applications.
 * **[Client-side API for Windows 10 Universal Windows Platform and Windows 8 Universal, Xamarin.iOS and Xamarin.Android apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_api.pdf)**  
     You can use C# API to develop apps for the Windows 10 Universal Windows Platform (UWP), Windows 8 Universal,Xamarin.iOS and Xamarin.Android
     environment.
+
+    > **Note:** For updates on the Client-side API documentation for Windows 10 Universal Windows Platform and Windows 8 Universal apps, see [here](csharp/updates/).
 
 * **[Client-side push API for Windows 10 Universal Windows Platform and Windows 8 Universal, Xamarin.iOS and Xamarin.Android apps](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/mfpf_csharp_win8_native_client_push_api.pdf)**  
     You can use C# push APIs to develop apps which can send push notifications, for the Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal, Xamarin.iOS and Xamarin.Android environment.

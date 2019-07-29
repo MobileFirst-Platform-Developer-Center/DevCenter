@@ -47,7 +47,7 @@ weight: 6
    以下も追加します。
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
             name: 'ibmmobilefirstplatformfoundationpush',
             version: '8.0.+',
             ext: 'aar',
@@ -57,8 +57,14 @@ weight: 6
    または、以下のように 1 行にします。
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
+   
+   >**注**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) フィーチャーを使用していて、MobileFirstAPI をフィーチャー・モジュールから呼び出したい場合は、`inplementation` ではなく `api` 宣言を使用してください。`implementation` を使用すると同じモジュール内での MobileFirst API の使用が制限される可能性がありますが、 `api`  を使用すると、フィーチャー・モジュールを含むアプリ内のすべてのモジュールで MobileFirst API を利用できます。詳しくは、 [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation)を参照してください。
+   
+```xml
+ api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+```
 
 2. **Android →「app」→「manifests」**で、`AndroidManifest.xml` ファイルを開きます。
 	* 以下の許可を `manifest` タグの上部に追加します。

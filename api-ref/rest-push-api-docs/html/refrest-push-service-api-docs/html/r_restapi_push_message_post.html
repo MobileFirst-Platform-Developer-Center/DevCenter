@@ -132,75 +132,44 @@
   "notificationType": 1,
   "settings": {
     "apns": {
-      "attachmentUrl": "http://test.com/test.png",
-      "subtitle": "Sub Title",
-      "title": "Title",
-      "badge": 1,
-      "category": 1,
-      "iosActionKey": "Ok",
-      "payload": {
-        "custom": "data"
-      },
-      "sound": "song.mp3",
-      "type": "SILENT"
+      "attachmentUrl" : "http://test.com/test.png",
+      "badge" : 1,
+      "iosActionKey" : "Ok",
+      "launchImage" : "test.png",
+      "locArgs" : [ "["Shelly"]", ... ],
+      "locKey" : "REQ_FORMAT",
+      "payload" : {"custom":"data"},
+      "sound" : "song.mp3",
+      "subtitle" : "Sub Title",
+      "title" : "Title",
+      "titleLocArgs" : [ "["Shelly"]", ... ],
+      "titleLocKey" : "REQ_FORMAT",
+      "type" : "SILENT",
+      "category" : "confirmOrder"
     },
     "gcm": {
-      "bridge": false,
-      "category": "email",
-      "collapseKey": "testkey",
-      "delayWhileIdle": false,
-      "payload": {
-        "custom": "data"
-      },
-      "priority": "low",
-      "redact": "Test Redact Message",
-      "sound": "song.mp3",
-      "sync": false,
-      "timeToLive": 10,
-      "visibility": "public"
+      "bridge" : false,
+      "category" : "email",
+      "collapseKey" : "testkey",
+      "delayWhileIdle" : false,
+      "lights" : {"ledArgb":"green","ledOnMs": 100,"ledOffMs" : 100},
+      "payload" : {"custom":"data"},
+      "priority" : "low",
+      "redact" : "Test Redact Message",
+      "sound" : "song.mp3",
+      "style" : {"notification_type":"inbox_notification","lines":["first line","second line","third line"],"title" : "This is the title."},
+      "sync" : false,
+      "timeToLive" : 10,
+      "visibility" : "public",
+      "interactiveCategory" : "confirmOrder"
     },
     "wns": {
-      "badge": {
-        "value": "10"
-      },
-      "cachePolicy": false,
-      "expirationTime": 20,
-      "raw": {
-        "payload": {
-          "custom": "data"
-        }
-      },
-      "tile": {
-        "visual": {
-          "binding": [{
-            "template": "TileSquareText04",
-            "text": [{
-              "content": "Text1"
-            }]
-          }, {
-            "template": "TileWideText04",
-            "text": [{
-              "content": "Text1"
-            }]
-          }]
-        }
-      },
-      "toast": {
-        "launch": {
-          "custom": "data"
-        },
-        "visual": {
-          "binding": {
-            "template": "ToastText04",
-            "text": [{
-              "content": "Text1"
-            }, {
-              "content": "Text2"
-            }, {
-              "content": "Text3"
-            }]
-          }
-        }
+      "badge" : {"value":"10"},
+      "cachePolicy" : false,
+      "expirationTime" : 20,
+      "raw" : {"payload":{"custom":"data"}},
+      "tile" : {"visual":{"binding":[{"template":"TileSquareText04", "text": [{"content":"Text1"}]}, {"template":"TileWideText04","text": [{"content":"Text1"}]}]}},
+      "toast" : {"launch":{"custom":"data"}, "visual":{"binding":{"template":"ToastText04","text":[{"content":"Text1"},{"content":"Text2"},{"content":"Text3"}]}}
       }
     },
     "target": {
@@ -210,7 +179,7 @@
       "userIds": ["MyUserId", ...],
     }
   }
-} 
+}
 </code></pre></div>
 
 
@@ -278,11 +247,29 @@
 
                     <dt class="dt pt dlterm">category</dt>
 
-                    <dd class="dd pd">Name of the category for iOS8 interactive push notifications.</dd>
+                    <dd class="dd pd"> (Deprecated. Use <i>interactiveCategory</i> for interactive push notification)</dd>
+
+                    <dt class="dt pt dlterm">interactiveCategory</dt>
+
+                    <dd class="dd pd">Specify the identifier of the interactive notification action category</dd>
 
                     <dt class="dt pt dlterm">iosActionKey</dt>
 
                     <dd class="dd pd">The label of the dialog box button that allows the user to open the app upon receiving the notification.</dd>
+                    <dt><b>launchImage</b></dt>
+                    <dd>The filename of an image file in the app bundle, with or without the filename extension. The image is used as the launch image when users tap the action button or move the action slider.</dd>
+                    <dt><b>locArgs</b></dt>
+                    <dd>Variable string values to appear in place of the format specifiers in locKey.</dd>
+                    <dt><b>locKey</b></dt>
+                    <dd>A key to an alert-message string in a Localizabl.strings file for the current localization (which is set by the userÃ¢â‚¬â„¢s language preference). The key string can be formatted with %@ and %n$@ specifiers to take the variables specified in the locArgs array.</dd>
+                    <dt><b>subtitle</b></dt>
+                    <dd>The subtitle of the Rich Notifications.(Supported only on iOS 10 and above).</dd>
+                    <dt><b>title</b></dt>
+                    <dd>The title of Rich Push notifications (Supported only on iOS 10 and above).</dd>
+                    <dt><b>titleLocArgs</b></dt>
+                    <dd>Variable string values to appear in place of the format specifiers in title-loc-key.</dd>
+                    <dt><b>titleLocKey</b></dt>
+                    <dd>The key to a title string in the Localizable.strings file for the current localization. The key string can be formatted with %@ and %n$@ specifiers to take the variables specified in the titleLocArgs array.</dd>
 
                     <dt class="dt pt dlterm">payload</dt>
 
@@ -300,52 +287,57 @@
 
                 <p class="p">The <var class="keyword varname">gcm</var> has the following properties:</p>
                 <dl class="dl parml">
-                    <dt class="dt pt dlterm">bridge</dt>
+                  <dt><b>bridge</b></dt>
+                  <dd>A Boolean value that indicates whether the notification should be bridged or not to other devices connected to this handheld device. Only applies to Android 5.0 or higher.</dd>
+                  <dt><b>category</b> </dt>
+                  <dd>A string value that indicates the category to which this notification belongs. Allowed values are 'call', 'alarm', 'email', 'err', 'event', 'msg', 'progress', 'promo', 'recommendation', 'service', 'social', 'status', and 'transport'. Only applies to Android 5.0 or higher.</dd>
+                  <dt><b>collapseKey</b></dt>
+                  <dd>A string value that indicates that the message can be replaced. When multiple messages are queued up in GCM Servers with the same key, only the last one is delivered. </dd>
+                  <dt><b>delayWhileIdle</b></dt>
+                  <dd>A Boolean value that indicates that the message must not be sent if the device is idle. The server waits for the device to become active before the message is sent. Default value is false</dd>
+                  <dt><b>lights</b></dt>
+                  <dd>Optional. A JSON object with different color options for notification LED.</dd>
+                  <dt><b>payload</b></dt>
+                  <dd>A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.</dd>
+                  <dt><b>priority</b></dt>
+                  <dd>A string value that indicates the priority of this notification. Allowed values are 'max', 'high', 'default', 'low' and 'min'. High/Max priority notifications along with 'sound' field may be used for Heads up notification in Android 5.0 or higher.</dd>
+                  <dt><b>redact</b></dt>
+                  <dd>A string to be displayed in the alert as a redacted version of the original content when the visibility level is 'private'. Only applies to Android 5.0 or higher.</dd>
+                  <dt><b>sound</b></dt>
+                  <dd>The name of a sound file on the device to play when the notification arrives to the device.</dd>
+                  <dt><b>style</b></dt>
+                  <dd>Optional. A JSON object with different types of notification styles.</dd>
+                  <dt><b>sync</b></dt>
+                  <dd>A Boolean value that indicates whether the notification should be sync'd between devices of the same user, that is, if a notification is handled on a device it gets dismissed on the other devices of the same user</dd>
+                  <dt><b>timeToLive</b></dt>
+                  <dd>The duration (in seconds) that the message is kept on GCM storage if the device is offline. Default value is 4 weeks, and must be set as a JSON number.</dd>
+                  <dt><b>visibility</b></dt>
+                  <dd>A string value that indicates the visibility level of notification content on the secured lock screen in Android L devices. Allowed values are 'public, 'private' and 'secret'. Only applies to Android 5.0 or higher.</dd>
+                  <dt class="dt pt dlterm">interactiveCategory</dt>
 
-                    <dd class="dd pd">A Boolean value that indicates whether the notification should be bridged or not to other devices connected to this handheld device. Only applies to Android 5.0 or higher.</dd>
+                    <dd class="dd pd">Specify the identifier of the interactive notification action category</dd>
+                </dl>
 
-                    <dt class="dt pt dlterm">category</dt>
+                <p>The <em>lights</em> has the following properties:</p><dl>
+                  <dt><b>ledArgb</b></dt>
+                  <dd>A color name to display in LED</dd>
+                  <dt><b>ledOffMs</b></dt>
+                  <dd>Time to keep LED off in milliseconds.</dd>
+                  <dt><b>ledOnMs</b></dt>
+                  <dd>Time to keep LED on in milliseconds.</dd>
+                </dl>
 
-                    <dd class="dd pd">A string value that indicates the category to which this notification belongs. Allowed values are 'call', 'alarm', 'email', 'err', 'event', 'msg', 'progress', 'promo', 'recommendation', 'service', 'social', 'status', and 'transport'.
-                        Only applies to Android 5.0 or higher.</dd>
-
-                    <dt class="dt pt dlterm">collapseKey</dt>
-
-                    <dd class="dd pd">A string value that indicates that the message can be replaced. When multiple messages are queued up in GCM Servers with the same key, only the last one is delivered. </dd>
-
-                    <dt class="dt pt dlterm">delayWhileIdle</dt>
-
-                    <dd class="dd pd">A Boolean value that indicates that the message must not be sent if the device is idle. The server waits for the device to become active before the message is sent. Default value is false</dd>
-
-                    <dt class="dt pt dlterm">payload</dt>
-
-                    <dd class="dd pd">A JSON block that is transferred to the application if the application is opened by the user when the notification is received, or if the application is already open.</dd>
-
-                    <dt class="dt pt dlterm">priority</dt>
-
-                    <dd class="dd pd">A string value that indicates the priority of this notification. Allowed values are 'max', 'high', 'default', 'low' and 'min'. High/Max priority notifications along with 'sound' field may be used for Heads up notification in Android
-                        5.0 or higher.</dd>
-
-                    <dt class="dt pt dlterm">redact</dt>
-
-                    <dd class="dd pd">A string to be displayed in the alert as a redacted version of the original content when the visibility level is 'private'. Only applies to Android 5.0 or higher.</dd>
-
-                    <dt class="dt pt dlterm">sound</dt>
-
-                    <dd class="dd pd">The name of a sound file on the device to play when the notification arrives to the device.</dd>
-
-                    <dt class="dt pt dlterm">sync</dt>
-
-                    <dd class="dd pd">A Boolean value that indicates whether the notification should be sync'd between devices of the same user, that is, if a notification is handled on a device it gets dismissed on the other devices of the same user</dd>
-
-                    <dt class="dt pt dlterm">timeToLive</dt>
-
-                    <dd class="dd pd">The duration (in seconds) that the message is kept on GCM storage if the device is offline. Default value is 4 weeks, and must be set as a JSON number.</dd>
-
-                    <dt class="dt pt dlterm">visibility</dt>
-
-                    <dd class="dd pd">A string value that indicates the visibility level of notification content on the secured lock screen in Android L devices. Allowed values are 'public, 'private' and 'secret'. Only applies to Android 5.0 or higher.</dd>
-
+                <p>The <em>style</em> has the following properties:</p><dl>
+                  <dt><b>lines</b></dt>
+                  <dd>Different lines to form inbox style notification</dd>
+                  <dt><b>notification_type</b></dt>
+                  <dd>Type of style of notification to send. Different values are 'PICTURE_NOTIFICATION','INBOX_NOTIFICATION','BIGTEXT_NOTIFICATION'</dd>
+                  <dt><b>text</b></dt>
+                  <dd>Big text to be sent as a notification.</dd>
+                  <dt><b>title</b></dt>
+                  <dd>Title for notification.</dd>
+                  <dt><b>url</b></dt>
+                  <dd>The link to the  notifications media ( GIF, images)</dd>
                 </dl>
 
                 <p class="p">The <var class="keyword varname">wns</var> has the following properties:</p>
@@ -376,191 +368,97 @@
 
                 </dl>
 
-                <p class="p">The <var class="keyword varname">badge</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">value</dt>
-
-                    <dd class="dd pd">Optional. A numeric or string value that indicates a prdefined glyph to be displayed.</dd>
-
-                    <dt class="dt pt dlterm">version</dt>
-
-                    <dd class="dd pd">Optional. Version of the payload.</dd>
-
+                <p>The <em>badge</em> has the following properties:</p><dl>
+                  <dt><b>value</b></dt>
+                  <dd>Optional. A numeric or string value that indicates a prdefined glyph to be displayed.</dd>
+                  <dt><b>version</b></dt>
+                  <dd>Optional. Version of the payload.</dd>
                 </dl>
 
-                <p class="p">The <var class="keyword varname">raw</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">payload</dt>
-
-                    <dd class="dd pd">Optional. A JSON block that is transferred to the application only if the application is already open.</dd>
-
+                <p>The <em>raw</em> has the following properties:</p><dl>
+                  <dt><b>payload</b></dt>
+                  <dd>Optional. A JSON block that is transferred to the application only if the application is already open.</dd>
                 </dl>
 
-                <p class="p">The <var class="keyword varname">tile</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">tag</dt>
-
-                    <dd class="dd pd">Optional. A string value that is set as label for the notification. Used in notification cycling.</dd>
-
-                    <dt class="dt pt dlterm">visual</dt>
-
-                    <dd class="dd pd"></dd>
-
+                <p>The <em>tile</em> has the following properties:</p><dl>
+                  <dt><b>tag</b></dt>
+                  <dd>Optional. A string value that is set as label for the notification. Used in notification cycling.</dd>
+                  <dt><b>visual</b></dt>
+                  <dd></dd>
                 </dl>
 
-                <p class="p">The <var class="keyword varname">visual</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">addImageQuery</dt>
-
-                    <dd class="dd pd">Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
-
-                    <dt class="dt pt dlterm">baseUri</dt>
-
-                    <dd class="dd pd">Optional. Base URI to be combined with the relative URIs.</dd>
-
-                    <dt class="dt pt dlterm">binding</dt>
-
-                    <dd class="dd pd">For tile notifications, its a JSON array containing JSON blocks of binding attributes. For toast notification, its a JSON block of binding attributes.</dd>
-
-                    <dt class="dt pt dlterm">branding</dt>
-
-                    <dd class="dd pd">Optional. Indicates whether logo or app's name to be shown. Default is None.</dd>
-
-                    <dt class="dt pt dlterm">contentId</dt>
-
-                    <dd class="dd pd">Optional. A string value that identifies the notification content. Only applies to tile notifications.</dd>
-
-                    <dt class="dt pt dlterm">lang</dt>
-
-                    <dd class="dd pd">Optional. Locale of the payload.</dd>
-
-                    <dt class="dt pt dlterm">version</dt>
-
-                    <dd class="dd pd">Optional. Version of the payload.</dd>
-
+                <p>The <em>visual</em> has the following properties:</p><dl>
+                  <dt><b>addImageQuery</b></dt>
+                  <dd>Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
+                  <dt><b>baseUri</b></dt>
+                  <dd>Optional. Base URI to be combined with the relative URIs.</dd>
+                  <dt><b>binding</b></dt>
+                  <dd>For tile notifications, its a JSON array containing JSON blocks of binding attributes. For toast notification, its a JSON block of binding attributes.</dd>
+                  <dt><b>branding</b></dt>
+                  <dd>Optional. Indicates whether logo or app's name to be shown. Default is None.</dd>
+                  <dt><b>contentId</b></dt>
+                  <dd>Optional. A string value that identifies the notification content. Only applies to tile notifications.</dd>
+                  <dt><b>lang</b></dt>
+                  <dd>Optional. Locale of the payload.</dd>
+                  <dt><b>version</b></dt>
+                  <dd>Optional. Version of the payload.</dd>
                 </dl>
 
-                <p class="p">The <var class="keyword varname">binding</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">addImageQuery</dt>
-
-                    <dd class="dd pd">Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
-
-                    <dt class="dt pt dlterm">baseUri</dt>
-
-                    <dd class="dd pd">Optional. Base URI to be combined with the relative URIs.</dd>
-
-                    <dt class="dt pt dlterm">branding</dt>
-
-                    <dd class="dd pd">Optional. Indicates whether logo or app's name to be shown. Default is None.</dd>
-
-                    <dt class="dt pt dlterm">contentId</dt>
-
-                    <dd class="dd pd">Optional. A string value that identifies the notification content. Only applies to tile notifications.</dd>
-
-                    <dt class="dt pt dlterm">fallback</dt>
-
-                    <dd class="dd pd">Optional. Template to be used as a fallback.</dd>
-
-                    <dt class="dt pt dlterm">image</dt>
-
-                    <dd class="dd pd">Optional. A JSON array containing JSON blocks of following image attributes.</dd>
-
-                    <dt class="dt pt dlterm">lang</dt>
-
-                    <dd class="dd pd">Optional. Locale of the payload.</dd>
-
-                    <dt class="dt pt dlterm">template</dt>
-
-                    <dd class="dd pd">Mandatory. Template type of the notification.</dd>
-
-                    <dt class="dt pt dlterm">text</dt>
-
-                    <dd class="dd pd">Optional. A JSON array containing JSON blocks of following text attributes.</dd>
-
+                <p>The <em>binding</em> has the following properties:</p><dl>
+                  <dt><b>addImageQuery</b></dt>
+                  <dd>Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
+                  <dt><b>baseUri</b></dt>
+                  <dd>Optional. Base URI to be combined with the relative URIs.</dd>
+                  <dt><b>branding</b></dt>
+                  <dd>Optional. Indicates whether logo or app's name to be shown. Default is None.</dd>
+                  <dt><b>contentId</b></dt>
+                  <dd>Optional. A string value that identifies the notification content. Only applies to tile notifications.</dd>
+                  <dt><b>fallback</b></dt>
+                  <dd>Optional. Template to be used as a fallback.</dd>
+                  <dt><b>image</b></dt>
+                  <dd>Optional. A JSON array containing JSON blocks of following image attributes.</dd>
+                  <dt><b>lang</b></dt>
+                  <dd>Optional. Locale of the payload.</dd>
+                  <dt><b>template</b></dt>
+                  <dd>Mandatory. Template type of the notification.</dd>
+                  <dt><b>text</b></dt>
+                  <dd>Optional. A JSON array containing JSON blocks of following text attributes.</dd>
                 </dl>
 
-                <p class="p">The <var class="keyword varname">image</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">addImageQuery</dt>
-
-                    <dd class="dd pd">Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
-
-                    <dt class="dt pt dlterm">alt</dt>
-
-                    <dd class="dd pd">Optional. Image description.</dd>
-
-                    <dt class="dt pt dlterm">src</dt>
-
-                    <dd class="dd pd">Mandatory. Image URI.</dd>
-
+                <p>The <em>image</em> has the following properties:</p><dl>
+                  <dt><b>addImageQuery</b></dt>
+                  <dd>Optional. A boolean value that indicates if the query string need to be appended to image URI.</dd>
+                  <dt><b>alt</b></dt>
+                  <dd>Optional. Image description.</dd>
+                  <dt><b>src</b></dt>
+                  <dd>Mandatory. Image URI.</dd>
                 </dl>
 
-                <p class="p">The <var class="keyword varname">text</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">content</dt>
-
-                    <dd class="dd pd">Mandatory. A string value that is displayed in the toast.</dd>
-
-                    <dt class="dt pt dlterm">lang</dt>
-
-                    <dd class="dd pd">Optional. Locale of the payload.</dd>
-
+                <p>The <em>text</em> has the following properties:</p><dl>
+                  <dt><b>content</b></dt>
+                  <dd>Mandatory. A string value that is displayed in the toast.</dd>
+                  <dt><b>lang</b></dt>
+                  <dd>Optional. Locale of the payload.</dd>
                 </dl>
 
-                <p class="p">The <var class="keyword varname">toast</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">audio</dt>
-
-                    <dd class="dd pd"></dd>
-
-                    <dt class="dt pt dlterm">duration</dt>
-
-                    <dd class="dd pd">Optional. Notification will be displayed for the specified duration. Should be 'short' or 'long'.</dd>
-
-                    <dt class="dt pt dlterm">launch</dt>
-
-                    <dd class="dd pd">Optional. A string value that is passed to the application when it is launched by tapping or clicking the toast notification.</dd>
-
-                    <dt class="dt pt dlterm">visual</dt>
-
-                    <dd class="dd pd"></dd>
-
+                <p>The <em>toast</em> has the following properties:</p><dl>
+                  <dt><b>audio</b></dt>
+                  <dd></dd>
+                  <dt><b>duration</b></dt>
+                  <dd>Optional. Notification will be displayed for the specified duration. Should be 'short' or 'long'.</dd>
+                  <dt><b>launch</b></dt>
+                  <dd>Optional. A string value that is passed to the application when it is launched by tapping or clicking the toast notification.</dd>
+                  <dt><b>visual</b></dt>
+                  <dd></dd>
                 </dl>
 
-                <p class="p">The <var class="keyword varname">audio</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">loop</dt>
-
-                    <dd class="dd pd">Optional. A boolean value to indicate if the sound should be repeated or not.</dd>
-
-                    <dt class="dt pt dlterm">silent</dt>
-
-                    <dd class="dd pd">Optional. A boolean value to indicate if the sound should be played or not.</dd>
-
-                    <dt class="dt pt dlterm">src</dt>
-
-                    <dd class="dd pd">Optional. A string value that specifies the notification sound type or path to local audio file.</dd>
-
-                </dl>
-
-                <p class="p">The <var class="keyword varname">target</var> has the following properties:</p>
-                <dl class="dl parml">
-                    <dt class="dt pt dlterm">deviceIds</dt>
-
-                    <dd class="dd pd">An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notification</dd>
-
-                    <dt class="dt pt dlterm">platforms</dt>
-
-                    <dd class="dd pd">An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and W (Microsoft/Windows).</dd>
-
-                    <dt class="dt pt dlterm">tagNames</dt>
-
-                    <dd class="dd pd">An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications</dd>
-
-                    <dt class="dt pt dlterm">userIds</dt>
-
-                    <dd class="dd pd">An array of users represented by their userIds to send the notification. This is a unicast notification.</dd>
+                <p>The <em>audio</em> has the following properties:</p><dl>
+                  <dt><b>loop</b></dt>
+                  <dd>Optional.  A boolean value to indicate if the sound should be repeated or not.</dd>
+                  <dt><b>silent</b></dt>
+                  <dd>Optional. A boolean value to indicate if the sound should be played or not.</dd>
+                  <dt><b>src</b></dt>
+                  <dd>Optional. A string value that specifies the notification sound type or path to local audio file.</dd>
 
                 </dl>
 

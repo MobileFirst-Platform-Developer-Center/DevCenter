@@ -27,7 +27,7 @@ weight: 2
 
 ### 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
-[Mobile Foundation インスタンスが作成済みである](../../bluemix/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
+[Mobile Foundation インスタンスが作成済みである](../../ibmcloud/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
 [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
 
 ### 2. アプリケーションの作成
@@ -160,7 +160,7 @@ weight: 2
     * IBM Cloud Private 上で Kubernetes クラスターを使用していて、デプロイメントのタイプが **NodePort** の場合、通常、ポートの値は、Kubernetes クラスターのサービスによって公開される **NodePort** です。
 
     あるいは、{{ site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。 リモート {{ site.data.keys.mf_server }} が使用されている場合は、[コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myIBMCloudServer` を実行します。
-    
+
 2. **「再生」**ボタンを押します。
 
 <br clear="all"/>

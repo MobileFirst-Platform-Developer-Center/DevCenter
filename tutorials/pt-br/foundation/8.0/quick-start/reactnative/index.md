@@ -29,7 +29,7 @@ por download a partir do {{ site.data.keys.mf_console }}.
 
 ### Etapa 1. Iniciando o {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Certifique-se de ter [criado uma instância do Mobile Foundation](../../bluemix/using-mobile-foundation) ou, se estiver usando o [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navegue até a pasta do servidor e execute o comando: `./run.sh` no Mac e no Linux ou `run.cmd` no Windows.
+Certifique-se de ter [criado uma instância do Mobile Foundation](../../ibmcloud/using-mobile-foundation) ou, se estiver usando o [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navegue até a pasta do servidor e execute o comando: `./run.sh` no Mac e no Linux ou `run.cmd` no Windows.
 
 ### Etapa 2. Criando e registrando um aplicativo
 {: #2-creating-and-registering-an-application }

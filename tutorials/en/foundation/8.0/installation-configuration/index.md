@@ -10,7 +10,7 @@ weight: 3
 
 ### Setting up a development environment
 {: #installing-a-development-environment }
-If you develop the client-side or the server-side of mobile applications, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../bluemix/using-mobile-foundation) to get started.
+If you develop the client-side or the server-side of mobile applications, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../ibmcloud/using-mobile-foundation) to get started.
 
 **Using the {{ site.data.keys.mf_dev_kit }}**
 {: #using-the-dev-kit }

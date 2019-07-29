@@ -195,7 +195,7 @@ For enabling Highly Available Master nodes on ICP, you must set up shared storag
 
 Now run the **install** command from the boot node where you install ICP. Please refer to [IBM Cloud Private documentation](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_containers.html) for ICP setup and make sure you follow all the necessary steps.
 
-For setting up of IBM Mobile Foundation using the steps above, please refer to the [IBM Mobile Foundation Platform documentation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/).
+For setting up of IBM Mobile Foundation using the steps above, please refer to the [IBM Mobile Foundation Platform documentation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/).
 
 #### Testing the HA
 
