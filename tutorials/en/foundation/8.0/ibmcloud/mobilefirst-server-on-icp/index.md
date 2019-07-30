@@ -121,10 +121,9 @@ Secret objects let you store and manage sensitive information, such as passwords
      - **Oracle**
     
    1. If the type of Database you are using is **IBM DB2®** , then the DB Initialization component facilitates the database intialization tasks. This takes care of creating Mobile Foundation Schema and Tables in the database (if it does not exist).
-   2. For **Oracle, MySQL or PostgreSQL databases**
-      1. The Mobile Foundation Server database tables has to be created [manually](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/) before deploying the MFP Components.
-      2. The JDBC drivers for Oracle and MySQL or PostgreSQL are not included in the Mobile Foundation installer. Make sure that you have the JDBC driver (For MySQL - use the Connector/J JDBC driver,  For Oracle - use the Oracle thin JDBC driver). Create a Mounted Volume and place the JDBC driver in the location `/nfs/share/dbdrivers`
-      3. Create a Persistent Volume (PV) by providing the NFS host details and the path where the JDBC driver is stored. Below is a sample `PersistentVolume.yaml`
+   2. For **Oracle and MySQL databases**
+      1. The JDBC drivers for Oracle and MySQL or PostgreSQL are not included in the Mobile Foundation installer. Make sure that you have the JDBC driver (For MySQL - use the Connector/J JDBC driver,  For Oracle - use the Oracle thin JDBC driver). Create a Mounted Volume and place the JDBC driver in the location `/nfs/share/dbdrivers`
+      2. Create a Persistent Volume (PV) by providing the NFS host details and the path where the JDBC driver is stored. Below is a sample `PersistentVolume.yaml`
       ```
       cat <<EOF | kubectl apply -f -
       apiVersion: v1
@@ -144,7 +143,7 @@ Secret objects let you store and manage sensitive information, such as passwords
        EOF
       ```
       > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
-      4. Create a Persistent Volume Claim (PVC) and provide the PVC name in the Helm chart while deploying. Below is a sample `PersistentVolumeClaim.yaml` 
+      3. Create a Persistent Volume Claim (PVC) and provide the PVC name in the Helm chart while deploying. Below is a sample `PersistentVolumeClaim.yaml` 
       ```bash 
       cat <<EOF | kubectl apply -f -
       apiVersion: v1
