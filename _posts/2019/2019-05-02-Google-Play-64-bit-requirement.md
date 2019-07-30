@@ -15,8 +15,7 @@ author:
 additional_authors:
 - Srihari Kulkarni
 ---
-**UPDATE:** 
-We have released new MobileFirst SDKs in v8 to get full 64-bit support without having needed to follow extra steps  mentioned in this blog. Even if you have already  followed this blog earlier and released an apk, JSONStore data will be retained updating your app to latest SDKs. 
+**Update 30 Jul 2019:** A new set of JSONStore SDKs have been published ( Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar), Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore)) for 64-bit compatibility. These are enhanced from the previous release and do not require the intermediate build in 32-bit mode to ensure data retention. Use these versions of the SDK to ensure JSONStore data will be retained across app upgrades irrespective of the mode and the iFix level of the SDK in the previously built app.
 
 To get full 64-bit support add the following SDKs to your project. 
 
