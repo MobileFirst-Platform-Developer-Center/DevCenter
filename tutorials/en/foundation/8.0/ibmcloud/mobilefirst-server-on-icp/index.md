@@ -552,6 +552,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |                       | name | Name of the Mobile Foundation Server database | |
 |                       | schema | Server db schema to be created. | If the schema already present, it will be used. Otherwise, it will be created. |
 |                       | ssl | Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
+|                       | driverPvc | Persistent Volume Claim to access the JDBC Database Driver| Specify the name of the persistent volume claim that hosts the JDBC database driver. Required if the database type selected is not DB2 |
 | mfpserver | adminClientSecret | Admin client secret | Specify the Client Secret name created. Refer #6 in [Prerequisites](#Prerequisites) |
 |  | pushClientSecret | Push client secret | Specify the Client Secret name created. Refer #6 in [Prerequisites](#Prerequisites) |
 | mfpserver.replicas |  | The number of instances (pods) of Mobile Foundation Server that need to be created | Positive integer (Default: 3) |
@@ -618,6 +619,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |                       | secret | A precreated secret which has database credentials| |
 |                       | schema | Application Center database schema to be created. | If the schema already exists, it will be used. If not, one will be created. |
 |                       | ssl |Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
+|                       | driverPvc | 	Persistent Volume Claim to access the JDBC Database Driver  | Specify the name of the persistent volume claim that hosts the JDBC database driver. Required if the database type selected is not DB2 |  
 | mfpappcenter.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
 |           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
 |           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
