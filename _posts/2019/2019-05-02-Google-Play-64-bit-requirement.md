@@ -15,6 +15,40 @@ author:
 additional_authors:
 - Srihari Kulkarni
 ---
+**UPDATE:** 
+We have released new MobileFirst SDKs in v8 to get full 64-bit support without having needed to follow extra steps  mentioned in this blog.To get full 64-bit support add the following SDKs to your project. 
+
+### Cordova apps:
+```bash
+cordova plugin remove cordova-plugin-mfp
+cordova plugin remove cordova-plugin-mfp-jsonstore
+
+cordova plugin add cordova-plugin-mfp@latest
+cordova plugin add cordova-plugin-mfp-jsonstore@latest
+```
+
+###Android Native apps:
+
+If you have already followed the steps mentioned in the section  **Android Native apps** of this blog and excluded the libopenssl_fips.so libraries in the `packagingOptions` section like below.Remove the `exclude ` lines from it.
+
+```
+packagingOptions {
+   ...
+   exclude 'lib/armeabi/libopenssl_fips.so'
+   exclude 'lib/armeabi-v7a/libopenssl_fips.so'
+   exclude 'lib/x86/libopenssl_fips.so'
+}
+```
+
+Edit your `app/build.gradle` file to include the following lines in the `dependencies` section.
+
+```
+implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+```
+
+
+
 
 > **Note:** 64-bit support is provided for apps developed using MobileFirst Platform Foundation v7.1 and Mobile Foundation v8.0. If you are using MobileFirst Platform Foundation v7.0 or lower, please upgrade to the latest version of Mobile Foundation.
 
