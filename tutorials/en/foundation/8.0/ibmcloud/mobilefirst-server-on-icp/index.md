@@ -41,7 +41,9 @@ To manage containers and images, you need to install the following on your host 
 * [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started) (`cloudctl`)
 * [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`)
 * [Helm](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/app_center/create_helm_cli.html) (`helm`)
+
 > Find the supported Docker CLI Version [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/supported_system_config/supported_docker.html)
+
 > Install the same Kube CLI, IBM Cloud CLI and Helm version as in your ICP cluster (Download from IBM Cloud Private management console, click **Menu > Command Line Tools > Cloud Private CLI** )
 
 For example:
