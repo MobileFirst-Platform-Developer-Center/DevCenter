@@ -317,7 +317,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 8. (Mandatory) Creating **database secrets** for Server, Push and Application Center.
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
-Run the code snippet below to create a database secret for Mobile Foundation server:
+   Run the code snippet below to create a database secret for Mobile Foundation server:
 
    ```bash
 	# Create mfpserver secret
@@ -337,7 +337,7 @@ Run the code snippet below to create a database secret for Mobile Foundation ser
 	EOF
    ```
 	
-Run the below code snippet to create a database secret for Application Center
+   Run the below code snippet to create a database secret for Application Center
 	
    ```bash
 	# create appcenter secret
@@ -363,7 +363,7 @@ Run the below code snippet to create a database secret for Application Center
 	echo -n $MY_PASSWORD | base64
    ```
 
-This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
+   This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
 9. (Optional) A separate Database Admin secret can be provided. The user details provided in the Database Admin secret will be used to execute the  DB Initialization tasks, which would in turn create the required Mobile Foundation schema and tables in the database (if it does not exist). Through the Database Admin secret, you can control the DDL operations on your Database instance.
 
@@ -431,7 +431,7 @@ This section outlines the security mechanisms for controlling access to the data
    > NOTE: text inside < > needs to be updated with right values.
 
 
-For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
+   For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
 
 ### PodSecurityPolicy Requirements
 
@@ -479,7 +479,7 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
 	  - "*"
     ```
 
-* Custom ClusterRole for the custom PodSecurityPolicy:
+   * Custom ClusterRole for the custom PodSecurityPolicy:
 
     ```bash
 	apiVersion: rbac.authorization.k8s.io/v1
@@ -498,14 +498,14 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
     ```
     > NOTE: It is required to create the PodSecurityPolicy only once, if the PodSecurityPolicy already exists then skip this step.
 
-The cluster admin can either paste the above PSP and ClusterRole definitions into the create resource screen in the UI or run the following two commands:
+   The cluster admin can either paste the above PSP and ClusterRole definitions into the create resource screen in the UI or run the following two commands:
   
 ```bash
     kubectl create -f <PSP yaml file>
     kubectl create clusterrole ibm-mobilefoundation-prod-psp-clusterrole --verb=use --resource=podsecuritypolicy --resource-name=ibm-mobilefoundation-prod-psp
 ```
 
-You also need to create the `RoleBinding`:
+   You also need to create the `RoleBinding`:
 
 ```bash
     kubectl create rolebinding ibm-mobilefoundation-prod-psp-rolebinding --clusterrole=ibm-mobilefoundation-prod-psp-clusterrole --serviceaccount=<namespace>:default --namespace=<namespace>
