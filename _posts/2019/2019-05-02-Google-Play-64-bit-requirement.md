@@ -16,7 +16,9 @@ additional_authors:
 - Srihari Kulkarni
 ---
 **UPDATE:** 
-We have released new MobileFirst SDKs in v8 to get full 64-bit support without having needed to follow extra steps  mentioned in this blog.To get full 64-bit support add the following SDKs to your project. 
+We have released new MobileFirst SDKs in v8 to get full 64-bit support without having needed to follow extra steps  mentioned in this blog. Even if you have already  followed this blog earlier and released an apk, JSONStore data will be retained updating your app to latest SDKs. 
+
+To get full 64-bit support add the following SDKs to your project. 
 
 ### Cordova apps:
 ```bash
