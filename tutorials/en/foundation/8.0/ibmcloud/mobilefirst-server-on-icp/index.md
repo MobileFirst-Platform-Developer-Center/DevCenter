@@ -28,7 +28,6 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Migrate to IBM Certified Cloud Pak for Mobile Foundation Platform](#migrate)
 * [Backup and recovery of MFP Analytics Data](#backup-analytics)
 * [Uninstall](#uninstall)
-* [Limitations](#limitations)
 
 ## Prerequisites
 {: #prereqs}
@@ -116,14 +115,16 @@ Secret objects let you store and manage sensitive information, such as passwords
 1. (Mandatory) A pre-configured database is required to store the technical data of the Mobile Foundation Server and Application Center components. 
 
    You must use one of the below supported DBMS:
-     - **IBM DB2** 
-     - **MySQL**
-     - **Oracle**
-    
-   1. If the type of Database you are using is **IBM DB2®** , then the DB Initialization component facilitates the database intialization tasks. This takes care of creating Mobile Foundation Schema and Tables in the database (if it does not exist).
-   2. For **Oracle and MySQL databases**
-      1. The JDBC drivers for Oracle and MySQL or PostgreSQL are not included in the Mobile Foundation installer. Make sure that you have the JDBC driver (For MySQL - use the Connector/J JDBC driver,  For Oracle - use the Oracle thin JDBC driver). Create a Mounted Volume and place the JDBC driver in the location `/nfs/share/dbdrivers`
-      2. Create a Persistent Volume (PV) by providing the NFS host details and the path where the JDBC driver is stored. Below is a sample `PersistentVolume.yaml`
+   
+     1. **IBM DB2** 
+     2. **MySQL**
+     3. **Oracle**
+
+   Follow the below steps, if you are using the ***Oracle or MySQL database -***
+
+   - The JDBC drivers for Oracle and MySQL are not included in the Mobile Foundation installer. Make sure that you have the JDBC driver (For MySQL - use the Connector/J JDBC driver,  For Oracle - use the Oracle thin JDBC driver). Create a Mounted Volume and place the JDBC driver in the location `/nfs/share/dbdrivers`
+   
+   - Create a Persistent Volume (PV) by providing the NFS host details and the path where the JDBC driver is stored. Below is a sample `PersistentVolume.yaml`
       ```
       cat <<EOF | kubectl apply -f -
       apiVersion: v1
@@ -143,7 +144,8 @@ Secret objects let you store and manage sensitive information, such as passwords
        EOF
       ```
       > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
-      3. Create a Persistent Volume Claim (PVC) and provide the PVC name in the Helm chart while deploying. Below is a sample `PersistentVolumeClaim.yaml` 
+      
+    - Create a Persistent Volume Claim (PVC) and provide the PVC name in the Helm chart while deploying. Below is a sample `PersistentVolumeClaim.yaml` 
       ```bash 
       cat <<EOF | kubectl apply -f -
       apiVersion: v1
@@ -168,7 +170,7 @@ Secret objects let you store and manage sensitive information, such as passwords
           storage: 20Gi
       EOF
       ```
-     >NOTE: Make sure you add the right namespace in the above yaml
+   >NOTE: Make sure you add the right namespace in the above yaml
 	
 2. (Mandatory) A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
 	
@@ -426,7 +428,7 @@ This section outlines the security mechanisms for controlling access to the data
    kubectl create secret docker-registry -n <namespace> <container-image-registry-hostname> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password>
    ```
 	
-    > NOTE: text inside < > needs to be updated with right values.
+   > NOTE: text inside < > needs to be updated with right values.
 
 
 For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
@@ -652,7 +654,7 @@ Follow the steps below to install and configure IBM Mobile Foundation from {{ si
 5. Accept the **License Agreement**.
 6. Click **Install**.
 
-> Note: The latest Mobile Foundation on ICP package bundles following supported softwares - 
+> NOTE: The latest Mobile Foundation on ICP package bundles following supported softwares - 
 > 1. IBM JRE8 SR5 FP37 (8.0.5.37)
 > 2. IBM WebSphere Liberty v18.0.0.5
 
@@ -751,10 +753,3 @@ helm delete <my-release> --purge --tls
 *my-release* is the deployed release name of the Helm Chart.
 
 This command removes all the Kubernetes components (except any Persistent Volume Claims (PVC)) associated with the chart. This default Kubernetes behavior ensures that the valuable data is not deleted.
-
-## Limitations
-{: #limitations}
-For databases other than IBM DB2® following are mandatory requirements
-
-1. The database and the relevant tables to be created before configuring/deploying the helm chart.
-2. Make sure the Docker image loaded via the PPA package (downloaded from IBM Passport Advantage) is extended to use the suitable database artifacts and the new docker tag is used to configure & deploy the helm chart.
