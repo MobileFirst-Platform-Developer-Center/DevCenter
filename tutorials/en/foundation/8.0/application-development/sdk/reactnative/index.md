@@ -92,9 +92,9 @@ For example:
    react-native link
    ```
 
-   Note : This command is not required from react-native 0.60
+   >Note: This command is not required from react-native 0.60.
 
-3. For iOS only, install newly added Mobilefisrt Pods
+3. For iOS only, install the newly added MobileFirst Pods
 
    ```bash
    cd ios && pod install 
