@@ -94,7 +94,7 @@ For example:
 
    >Note: This command is not required from react-native 0.60.
 
-3. For iOS only, install the newly added MobileFirst Pods
+3. For iOS only, install the newly added MobileFirst Pods.
 
    ```bash
    cd ios && pod install 
