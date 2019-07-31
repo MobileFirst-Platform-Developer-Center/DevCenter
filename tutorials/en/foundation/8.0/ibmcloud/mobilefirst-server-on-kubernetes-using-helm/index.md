@@ -140,9 +140,9 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       rm -rf ppatmp
       ```
       
-Below is an example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on **multi-architecture**. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
+      Below is an example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on **multi-architecture**. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
 
-   ```bash
+      ```bash
       # 1. Extract the PPA archive
       
       mkdir -p ppatmp ; cd ppatmp
@@ -229,19 +229,19 @@ Below is an example for loading the **mfpf-server** and **mfpf-push** images to 
       # 5. Cleanup the extracted archive
      
       rm -rf ppatmp
-   ```
+      ```
       
->**Note:** 
-> 1. The `ibmcloud cr ppa-archive load` command approach doesn’t support the PPA package with multi-arch support. Hence one has to extract and push the package manually to the IBM Cloud Container repository (users using older PPA versions need to use following command to load). 
+   >**Note:** 
+   > 1. The `ibmcloud cr ppa-archive load` command approach doesn’t support the PPA package with multi-arch support. Hence one has to extract and push the package manually to the IBM Cloud Container repository (users using older PPA versions need to use following command to load). 
       
-> 2. Multi-architecture refers to architectures including intel (amd64), power64 (ppc64le) and s390x. Multi-arch is supported from ICP 3.1.1 only.
+   > 2. Multi-architecture refers to architectures including intel (amd64), power64 (ppc64le) and s390x. Multi-arch is supported from ICP 3.1.1 only.
 
   ```bash
   ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
   ```
-*archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
+   *archive_name* of {{ site.data.keys.product }} is the name of the PPA archive downloaded from IBM Passport Advantage,
 
-The helm charts are stored in the client or local (unlike ICP helm chart stored in the IBM Cloud Private helm repository). Charts can be located within the `ppa-import/charts` (or charts) directory.
+   The helm charts are stored in the client or local (unlike ICP helm chart stored in the IBM Cloud Private helm repository). Charts can be located within the `ppa-import/charts` (or charts) directory.
 
 ## Install and configure IBM {{ site.data.keys.product }} Helm Charts
 {: #configure-install-mf-helmcharts}
@@ -658,9 +658,9 @@ This section guides you in identifying and resolving the likely error scenarios 
   helm init --service-account tiller --upgrade
   ```
   
-  2. Unable to pull images while deploying the Helm chart - `Failed to pull image, Error: ErrImagePull`
+2. Unable to pull images while deploying the Helm chart - `Failed to pull image, Error: ErrImagePull`
   
-  - Make sure the image pullSecret has been added to the values.yaml before helm deployment. If image pull secret doesn't exist, create a pull secret and assign it to `image.pullSecret` in the *values.yaml* file.
+ - Make sure the image pullSecret has been added to the values.yaml before helm deployment. If image pull secret doesn't exist, create a pull secret and assign it to `image.pullSecret` in the *values.yaml* file.
  
  Example for creating a pull secret:
    
@@ -669,6 +669,30 @@ This section guides you in identifying and resolving the likely error scenarios 
   ```
 
   > Note: Keep the value of `--docker-username=iamapikey` as it is, if you are using the IBM Cloud API key for authentication.
+  
+3. Connectivity issues while accessing the console though ingress 
+
+ - To resolve the issue, launch the Kubernetes dashboard and select the option 'Ingresses'. Edit the Ingress yaml and add the Ingress host details as below -
+   
+    Example :
+    ```
+ 
+   "spec": {
+       "tls": [
+         {
+           "hosts": [
+             “ingress_host_name”
+           ],
+           "secretName": "ingress-secret-name"
+         }
+       ],
+       "rules": [
+         {
+        ….
+	….
+     ```
+
+
   
    
    
