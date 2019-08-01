@@ -553,6 +553,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |                       | schema | Server db schema to be created. | If the schema already present, it will be used. Otherwise, it will be created. |
 |                       | ssl | Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
 |                       | driverPvc | Persistent Volume Claim to access the JDBC Database Driver| Specify the name of the persistent volume claim that hosts the JDBC database driver. Required if the database type selected is not DB2 |
+|                       | adminCredentialsSecret | MFPServer DB Admin Secret | If you have enabled DB initialization ,then provide the secret to create database tables and schemas for Mobile Foundation components |
 | mfpserver | adminClientSecret | Admin client secret | Specify the Client Secret name created. Refer #6 in [Prerequisites](#Prerequisites) |
 |  | pushClientSecret | Push client secret | Specify the Client Secret name created. Refer #6 in [Prerequisites](#Prerequisites) |
 | mfpserver.replicas |  | The number of instances (pods) of Mobile Foundation Server that need to be created | Positive integer (Default: 3) |
@@ -562,6 +563,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | mfpserver.pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
+|    mfpserver.customConfiguration |  |  Custom server configuration (Optional)  | Provide server specific additional configuration reference to a pre-created config map |
 | mfpserver.jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
 | mfpserver | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
 | mfpserver.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
@@ -578,6 +580,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | mfppush.pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
+| mfppush.customConfiguration |  |  Custom configuration (Optional)  | Provide Push specific additional configuration reference to a pre-created config map |
 | mfppush.jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
 | mfppush | keystoresSecretName | Refer the configuration section to pre-create the secret with keystores and their passwords.|
 | mfppush.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
@@ -603,6 +606,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |           |size             | Size of data volume      | 20Gi |
 | mfpanalytics.pdb     | enabled | Specify whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
+|    mfpanalytics.customConfiguration |  |  Custom configuration (Optional)  | Provide Analytics specific additional configuration reference to a pre-created config map |
 | mfpanalytics.jndiConfigurations | mfpfProperties | Mobile Foundation JNDI properties to be specified to customize operational analytics| Supply comma separated name value pairs  |
 | mfpanalytics | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
 | mfpanalytics.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
@@ -619,13 +623,15 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |                       | secret | A precreated secret which has database credentials| |
 |                       | schema | Application Center database schema to be created. | If the schema already exists, it will be used. If not, one will be created. |
 |                       | ssl |Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
-|                       | driverPvc | 	Persistent Volume Claim to access the JDBC Database Driver  | Specify the name of the persistent volume claim that hosts the JDBC database driver. Required if the database type selected is not DB2 |  
+|                       | driverPvc | 	Persistent Volume Claim to access the JDBC Database Driver  | Specify the name of the persistent volume claim that hosts the JDBC database driver. Required if the database type selected is not DB2 |
+|                       | adminCredentialsSecret | Application Center DB Admin Secret | If you have enabled DB initialization ,then provide the secret to create database tables and schemas for Mobile Foundation components |
 | mfpappcenter.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
 |           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
 |           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
 |           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | mfpappcenter.pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
+| mfpappcenter.customConfiguration |  |  Custom configuration (Optional)  | Provide Application Center specific additional configuration reference to a pre-created config map |
 | mfpappcenter | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
 | mfpappcenter.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 1000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |                  | limits.memory | Describes the maximum amount of memory allowed. | Default is 1024Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
