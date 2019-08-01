@@ -16,7 +16,7 @@ additional_authors:
 - Srihari Kulkarni
 ---
 
->**Update 30 Jul 2019:** A new set of JSONStore SDKs have been published (Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar), Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore) for 64-bit compatibility. These are enhanced from the previous release and do not require the intermediate build in 32-bit mode to ensure data retention. Use these versions of the SDK to ensure JSONStore data retention across app upgrades irrespective of the mode and the iFix level of the SDK in the previously built app.
+**Update 31 Jul 2019:** A new set of JSONStore SDKs have been published ( Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar), Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore) for MFP v8 and [iFix 7.1.0.0-MFPF-IF201907301558 ](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR)for MFP v7.1) for 64-bit compatibility. These are enhanced from the previous release and do not require the intermediate build in 32-bit mode to ensure data retention. Use these versions of the SDK to ensure JSONStore data will be retained across app upgrades irrespective of the mode and the iFix level of the SDK in the previously built app.
 
 To get full 64-bit support add the following SDKs to your project. 
 
@@ -48,7 +48,9 @@ Edit your `app/build.gradle` file to include the following lines in the `depende
 implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
 implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+### MobileFirst 7.1 apps
 
+Install iFix version *[iFix 7.1.0.0-MFPF-IF201907301558 ](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR)* or higher to get support for 64 bit compatibility.
 
 > **Note:** 64-bit support is provided for apps developed using MobileFirst Platform Foundation v7.1 and Mobile Foundation v8.0. If you are using MobileFirst Platform Foundation v7.0 or lower, please upgrade to the latest version of Mobile Foundation.
 
