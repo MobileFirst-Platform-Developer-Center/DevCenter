@@ -16,7 +16,7 @@ additional_authors:
 - Srihari Kulkarni
 ---
 
-**Update 31 Jul 2019:** A new set of JSONStore SDKs have been published ( Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar), Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore) for Mobile Foundation v8 and [iFix 7.1.0.0-MFPF-IF201907301558 ](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR)for Mobile Foundation v7.1) for 64-bit compatibility. These are enhanced from the previous release and do not require the intermediate build in 32-bit mode to ensure data retention. Use these versions of the SDK to ensure JSONStore data will be retained across app upgrades irrespective of the mode and the iFix level of the SDK in the previously built app.
+**Update 31 Jul 2019:** A new set of JSONStore SDKs have been published ( Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar), Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore) for Mobile Foundation v8 and [iFix 7.1.0.0-MFPF-IF201907301558 ](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR)for Mobile Foundation v7.1) for 64-bit compatibility. These are enhanced from the previous release and do not require the intermediate build in 32-bit mode to ensure data retention. Use these versions of the SDK to ensure JSONStore data retention across app upgrades irrespective of the mode and the iFix level of the SDK in the previously built app.
 
 
 > **Note:** 64-bit support is provided for apps developed using MobileFirst Platform Foundation v7.1 and Mobile Foundation v8.0. If you are using MobileFirst Platform Foundation v7.0 or lower, please upgrade to the latest version of Mobile Foundation.
@@ -30,7 +30,7 @@ The MobileFirst SDKs have shipped with 32-bit libraries so far. Today, we are re
 One of the [known limitations](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/known-issues-limitations/#fips-104-2-feature-limitations) of MobileFirst is the restricted availability of FIPS 140-2 support for JSONStore data in 64-bit mode applications on Android. This limitation is no longer applicable if you are on JSONStore SDK level Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar) or above, Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore) or above for Mobile Foundation v8 and [iFix 7.1.0.0-MFPF-IF201907301558 ](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or above for Mobile Foundation v7.1 .
 
 ## Backward compatibility
->**Update:** This section is not applicable if you are on JSONStore SDK level Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar) or above, Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore) or above for Mobile Foundation v8 and [iFix 7.1.0.0-MFPF-IF201907301558 ](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or above for Mobile Foundation v7.1 .
+>**Update:** This section is not applicable if you are on JSONStore SDK level Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar) or above, Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore) or above for Mobile Foundation v8.0 and [iFix 7.1.0.0-MFPF-IF201907301558](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or above for Mobile Foundation v7.1.
 
 	
 The 64-bit libraries for Android will use a different encryption library for performing the encryption compared to the existing libraries that offered only 32-bit support. As a result of this, any existing JSONStore Collections on the device will not be accessible when your app is built in 64-bit mode. The existing collection will have to be destroyed and a new one created.
@@ -51,7 +51,7 @@ cordova plugin add cordova-plugin-mfp@latest
 cordova plugin add cordova-plugin-mfp-jsonstore@latest
 ```
 
-Add the following line to the `<mfp:android>` section of `config.xml`(This step is not needed if you are on JSONStore SDK level Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar) or above , Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore) or above).
+Add the following line to the `<mfp:android>` section of `config.xml`(This step is not needed if you are on JSONStore SDK level Android Native [ibmmobilefirstplatformfoundationjsonstore v8.0.2019072505](https://search.maven.org/artifact/com.ibm.mobile.foundation/ibmmobilefirstplatformfoundationjsonstore/8.0.2019072505/aar) or above, Cordova [cordova-plugin-mfp-jsonstore v8.0.2019072908](https://www.npmjs.com/package/cordova-plugin-mfp-jsonstore) or above).
 
 ```bash
 <mfp:mode64bit>true</mfp:mode64bit>
@@ -111,7 +111,7 @@ Install iFix version *7.1.0.0-MFPF-IF201905221643* or higher to get support for 
 ### Hybrid apps
 Follow the steps provided below to add 64-bit libraries to your app
 
->**Update** : Below steps are not needed if you are on iFix level [7.1.0.0-MFPF-IF201907301558 ](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or above .
+>**Update** : Below steps are not needed if you are on iFix level [7.1.0.0-MFPF-IF201907301558](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or above.
 
 #### Step 1: After you have built your `android` environment, copy the following files from
 
@@ -181,7 +181,7 @@ Delete the following files
 
 Refer to this [documentation page](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/7.1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/#localMethod) on how to add MobileFirst libraries to a native Android app.
 
->**Update** : Below steps are not needed if you are on iFix level [7.1.0.0-MFPF-IF201907301558 ](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or above.
+>**Update** : Below steps are not needed if you are on iFix level [7.1.0.0-MFPF-IF201907301558](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or above.
 
 #### Step 1: In addition to the aforementioned steps, copy the following files into the `jniLibs` path of your project
 
@@ -234,7 +234,7 @@ mfp cordova plugin add cordova-plugin-mfp-jsonstore
 mfp cordova platform remove android
 mfp cordova platform add android
 ```
->**Update** : Below steps are not needed if you are on iFix level [7.1.0.0-MFPF-IF201907301558 ](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or above.
+>**Update** : Below steps are not needed if you are on iFix level [7.1.0.0-MFPF-IF201907301558](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or above.
 
 ####  Step 2: Copy the following files
 
