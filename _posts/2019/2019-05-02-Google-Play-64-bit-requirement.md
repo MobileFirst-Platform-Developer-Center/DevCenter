@@ -52,6 +52,17 @@ implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonst
 
 Install iFix version [*iFix 7.1.0.0-MFPF-IF201907301558*](http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201907301558&source=SAR) or higher to get support for 64 bit compatibility.
 
+If you have already followed old steps and excluded the libopenssl_fips.so libraries in the `packagingOptions` section like below.Remove the `exclude ` lines from it.
+
+```
+packagingOptions {
+   ...
+   exclude 'lib/armeabi/libopenssl_fips.so'
+   exclude 'lib/armeabi-v7a/libopenssl_fips.so'
+   exclude 'lib/x86/libopenssl_fips.so'
+}
+```
+
 > **Note:** 64-bit support is provided for apps developed using MobileFirst Platform Foundation v7.1 and Mobile Foundation v8.0. If you are using MobileFirst Platform Foundation v7.0 or lower, please upgrade to the latest version of Mobile Foundation.
 
 If you are tuned into the Android Developers Blog, then you would know by now that all apps to be published to the Google Play Store starting 1st Aug, 2019 are [required to publish both 32 and 64 bit versions of any native libraries](https://android-developers.googleblog.com/2019/01/get-your-apps-ready-for-64-bit.html).
