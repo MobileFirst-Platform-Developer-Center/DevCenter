@@ -1,0 +1,23 @@
+[{
+    "name": "Documentation",
+    "path": "",
+    "children": [{
+        "name": "Server",
+        "path": "/tutorials/en/mobileservices_icpa/server"
+    },{
+        "name": "Analytics",
+        "path": "/tutorials/en/mobileservices_icpa/analytics"
+    },{
+        "name": "Push Notifications",
+        "path": "/tutorials/en/mobileservices_icpa/notifications"
+    },{
+        "name": "Application Center",
+        "path": "/tutorials/en/mobileservices_icpa/appcenter"
+    }]
+}, {
+    "name": "Blog",
+    "path": "/blog"
+}, {
+    "name": "Help",
+    "path": "/help/icpa"
+}]
