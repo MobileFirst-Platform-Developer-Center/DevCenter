@@ -1,0 +1,29 @@
+toc:
+  - title: Analytics
+    tutorial:
+      - page: Analytics API
+        url: /analytics-api/
+      - page: Analytics REST API
+        url: /analytics-rest-api/
+      - page: Best Practices
+        url: /bestpractices-prod/
+        childtutorial:
+          - page: FAQs
+            url: /faq/
+      - page: Analytics Console
+        url: /console/
+        childtutorial:
+          - page: Alerts
+            url: /alerts/
+          - page: Analytics Data Purge
+            url: /analytics-data-purge/
+          - page: Custom Charts
+            url: /custom-charts/
+          - page: Log Filters
+            url: /log-filters/
+          - page: Push Notifications
+            url: /push-notifications/
+          - page: Scenario Loader
+            url: /scenario-loader/
+          - page: User Feedback
+            url: /userfeedback/

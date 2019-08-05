@@ -1,7 +1,4 @@
 [{
-    "name": "Features",
-    "path": "/features"
-},{
     "name": "Developers",
     "path": "/tutorials/en",
     "children": [{
@@ -93,6 +90,9 @@
             "path": "/6.3"
         }]
     }, {
+        "name": "Features",
+        "path": "../../../features"
+    }, {
         "name": "Learn More",
         "path": "../../../learn-more"
     }]
@@ -130,6 +130,9 @@
 }, {
     "name": "Video Gallery",
     "path": "/video-gallery"
+}, {
+    "name": "Mobile Services - IBM Cloud Pak for Application",
+    "path": "/tutorials/en/mobileservices_icpa"
 }, {
     "name": "Help",
     "path": "/help"
