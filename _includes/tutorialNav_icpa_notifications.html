@@ -1,0 +1,32 @@
+<nav class="navmenu navmenu-default" aria-label="sidebar navigation">
+    <ul role="menu" aria-label="Sidebar menu">
+
+  {% if site.data.icpatoc-analytics.toc[0] %}
+  {% for item in site.data.icpatoc-notifications.toc %}
+    <li class="open" role="menuitem">
+      <a href="javascript:void(0)" class="navmenu-brand dropdown-toggle" data-toggle="dropdown">{{ item.title }}</a>
+      {% if item.tutorial[0] %}
+        <ul class="dropdown-menu navmenu-nav">
+          {% for entry in item.tutorial %}
+              <li {% if page.url contains tutorial.url %} class="active" role="menuitem" {% endif %}>
+                <a href="{{site.baseurl}}{{entry.url}}">{{entry.page}}</a>
+                {% if entry.childtutorial[0] %}
+                  <ul role="group">
+                  {% for subentry in entry.childtutorial %}
+                      <li {% if page.url == subentry.url %} role="menuitem" class="active"{% elsif page.url contains subentry.url %} class="parent-active" {% endif %}>
+                        <a href="{{site.baseurl}}{{subentry.url}}">{{subentry.page}}</a>
+                      </li>
+                  {% endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+          {% endfor %}
+        </ul>
+        </li>
+      {% endif %}
+    {% endfor %}
+{% endif %}
+
+
+</ul>
+</nav>
