@@ -114,16 +114,19 @@ Develop your React Native applications by following the tutorials bellow: set-up
        {% highlight bash %}
         react-native link
       {% endhighlight %}
+
+        <b>Note</b>: This step is not required for react-native version 0.60 and above.
+
       </li>
     </ol>
 
   </br>
-    <h4><font color="DarkTurquoise">Step 2.3:</font> Additional platform sepcific steps </h4>
+    <h4><font color="DarkTurquoise">Step 2.3:</font> Additional platform specific steps </h4>
     <p> <b> Android </b> </p></br>
     Add the following lines to <b>AndroidManifest.xml</b> <i>({project-folder}/android/app/src/main/)</i> :
       {% highlight xml %}
       <![CDATA[
-      <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/  package="com.myapp">
+      <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"  package="com.myapp">
         ...
         <application tools:replace="android:allowBackup"
         ...
@@ -132,7 +135,9 @@ Develop your React Native applications by following the tutorials bellow: set-up
     {% endhighlight %}
   </br>
   <p> <b> iOS </b></p> </br>
-    Open your project in XCode. In the project navigator, drag and drop mfpclient.plist from ios folder.
+    Install Mobilefirst specific cocopods dependencies to the project.
+    <code>cd ios && pod install</code>
+    This step is applicable only for the iOS platform.
   </br>
 
     <h3><font color="DodgerBlue">Step 3:</font> Registering the application</h3>
@@ -179,26 +184,27 @@ Develop your React Native applications by following the tutorials bellow: set-up
          <blockquote>See the React Native Client-side API references <a target="_blank" href="{{site.baseurl}}/tutorials/en/foundation/8.0/api/client-side-api/reactnative/client/">here</a>.</blockquote>
 
          {% highlight javascript %}
-           WLAuthorizationManager.obtainAccessToken("").then(
-               (token) => {
-                 console.log('-->  pingMFP(): Success ', token);
-                 var resourceRequest = new WLResourceRequest("/adapters/javaAdapter/resource/greet/",
-                   WLResourceRequest.GET
-                 );
-                 resourceRequest.setQueryParameters({ name: "world" });
-                 resourceRequest.send().then(
-                   (response) => {
-                     // Will display "Hello world" in an alert dialog.
-                     alert("Success: " + response.responseText);
-                   },
-                   (error) => {
-                     alert("Failure: " + JSON.stringify(error));
-                   }
-                 );
-               }, (error) => {
-                 console.log('-->  pingMFP(): failure ', error.responseText);
-                 alert("Failed to connect to MobileFirst Server");
-               });
+         WLAuthorizationManager.obtainAccessToken("").then(
+          (token) => {
+            console.log('-->  pingMFP(): Success ', token);
+            var resourceRequest = new WLResourceRequest("/adapters/javaAdapter/resource/greet/",
+              WLResourceRequest.GET
+            );
+            resourceRequest.setQueryParameters({ name: "world" });
+            resourceRequest.send().then(
+              (response) => {
+                // Will display "Hello world" in an alert dialog.
+                alert("Success: " + response.responseText);
+              },
+              (error) => {
+                console.error(error);
+                alert("Failure: Resource Request");
+              }
+            );
+          }, (error) => {
+            console.error(error);
+            alert("Failed to connect to MobileFirst Server");
+        });
        {% endhighlight %}
        </li>
      </ol>
@@ -273,6 +279,7 @@ Develop your React Native applications by following the tutorials bellow: set-up
       {% highlight bash  %}
       react-native link
       {% endhighlight %}
+      <b>Note</b>: This command is not required from react-native 0.60 and above.
    </li>
   </ol>
 
