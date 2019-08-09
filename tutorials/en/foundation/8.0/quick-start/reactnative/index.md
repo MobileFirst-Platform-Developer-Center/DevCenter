@@ -64,11 +64,12 @@ Open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server
             alert("Success: " + response.responseText);
           },
           (error) => {
-            alert("Failure: ");
+            console.error(error);
+            alert("Failure: Resource Request");
           }
         );
       }, (error) => {
-        console.error('-->  pingMFP(): failure ', error.responseText);
+        console.error(error);
         alert("Failed to connect to MobileFirst Server");
       });
 ```
