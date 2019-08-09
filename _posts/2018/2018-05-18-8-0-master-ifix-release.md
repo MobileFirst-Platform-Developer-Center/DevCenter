@@ -31,6 +31,9 @@ A new iFix *8.0.0.0-MFPF-IF201908051227*  is released for Mobile Foundation 8.0,
             <h2>Changes in this iFix</h2>
             <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
 
+            <h3>Features</h3>
+            <p>Support for React Native 0.60 has been added to MobileFirst react native plugins.</p>
+
             <h3>APARs</h3>
             <b>PH14751</b> JSONSTORE SUPPORT FOR 64-BIT ARCHITECTURE USING OPENSSL-FIPS LIBRARY.<br/>
 
