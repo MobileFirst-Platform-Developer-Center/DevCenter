@@ -76,7 +76,7 @@ For example:
    ```bash
    react-native link
    ```
-  Note : This command is not required from react-native 0.60
+  **Note**: This command is not required from react-native 0.60
 
 5. For iOS only, install Mobilefirst Pod dependencies
 
@@ -98,7 +98,7 @@ For example:
    ```bash
    react-native link
    ```
-   Note : This command is not required from react-native 0.60
+   **Note**: This command is not required from react-native 0.60
 
 3. For iOS only, install Mobilefirst Pod dependencies
 
