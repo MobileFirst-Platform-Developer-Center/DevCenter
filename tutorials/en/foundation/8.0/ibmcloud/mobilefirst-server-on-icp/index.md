@@ -10,11 +10,10 @@ weight: 4
 {: #overview }
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_app_center}} instance on {{ site.data.keys.prod_icp }}:
 
-* Setup IBM Cloud Private Kubernetes Cluster.
-* Setup your host computer with the required tools (Docker CLI, IBM Cloud CLI (`cloudctl`), Kubernetes CLI (`kubectl`), and Helm CLI (`helm`)).
-* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} .
-* Load the PPA archive in the {{ site.data.keys.prod_icp }} Cluster.
-* Finally, you will configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_push }} (optional) and {{ site.data.keys.mf_app_center }} (optional).
+* Complete the prerequisites
+* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} 
+* Load the PPA archive in the {{ site.data.keys.prod_icp }} Cluster
+* Configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_push }} (optional) and {{ site.data.keys.mf_app_center }} (optional)
 
 #### Jump to:
 {: #jump-to }
@@ -29,21 +28,24 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 * [Migrate to IBM Certified Cloud Pak for Mobile Foundation Platform](#migrate)
 * [Backup and recovery of MFP Analytics Data](#backup-analytics)
 * [Uninstall](#uninstall)
-* [Limitations](#limitations)
 
 ## Prerequisites
 {: #prereqs}
 
-You should have an {{ site.data.keys.prod_icp }} account and must have set up the {{ site.data.keys.prod_icp }} Cluster by following the documentation in [{{ site.data.keys.prod_icp }} Cluster installation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
+You should have an {{ site.data.keys.prod_icp }} account and must have set up the [{{ site.data.keys.prod_icp }} Cluster](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/installing/install_containers.html#setup).
 
-To manage containers and images, you need to install the following tools on your host machine as part of {{ site.data.keys.prod_icp }} setup:
+To manage containers and images, you need to install the following on your host machine as part of {{ site.data.keys.prod_icp }} setup:
 
-* Docker
-* IBM Cloud CLI (`cloudctl`)
-* Kubernetes CLI (`kubectl`)
-* Helm (`helm`)
+* Install and setup [Docker](https://docs.docker.com/install/)
+* [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started) (`cloudctl`)
+* [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (`kubectl`)
+* [Helm](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.1/app_center/create_helm_cli.html) (`helm`)
 
-To access {{ site.data.keys.prod_icp }} Cluster using CLI, you should configure the *kubectl* client. [Learn more](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
+> Find the supported Docker CLI Version [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/supported_system_config/supported_docker.html)
+
+> Install the same Kube CLI, IBM Cloud CLI and Helm version as in your ICP cluster (Download from IBM Cloud Private management console, click **Menu > Command Line Tools > Cloud Private CLI** )
+
+For example:
 
 In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required. 
 
@@ -64,9 +66,11 @@ Reference : [Installing the Kubernetes CLI (kubectl)](https://www.ibm.com/suppor
 {: #download-the-ibm-mfpf-ppa-archive}
 The Passport Advantage Archive (PPA) of {{ site.data.keys.product_full }} is available [here](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). The PPA archive of {{ site.data.keys.product }} will contain the docker images and Helm Charts of the following {{ site.data.keys.product }} components:
 * {{ site.data.keys.product_adj }} Server
+* {{ site.data.keys.product_adj }} Push
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
-* {{ site.data.keys.product_adj }} Push
+
+A {{ site.data.keys.product_adj }} *DB Initialization* component is used or facilitating the database intialization tasks. This takes care of creating Mobile Foundation Schema and Tables (if  required) in the database (if it does not exist).
 
 ## Load the IBM Mobile Foundation Passport Advantage Archive
 {: #load-the-ibm-mfpf-ppa-archive}
@@ -108,9 +112,65 @@ This section summarizes the steps for creating secrets.
 
 Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image. 
 
-1. (Mandatory) A pre-configured IBM DB2® database is required for Server and Application Center components and this information will be supplied to helm chart to create appropriate tables for Server and Application Center.  For Oracle, MySQL or PostgreSQL databases, the Mobile Foundation Server database tables has to be created [manually](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/) before the deployment of MFP Components.
+1. (Mandatory) A pre-configured database is required to store the technical data of the Mobile Foundation Server and Application Center components. 
 
-    > NOTE: The base Docker image needs to be extended/customized for using databases other than IBM DB2®.
+   You must use one of the below supported DBMS:
+   
+     1. **IBM DB2** 
+     2. **MySQL**
+     3. **Oracle**
+
+   Follow the below steps, if you are using the ***Oracle or MySQL database -***
+
+   - The JDBC drivers for Oracle and MySQL are not included in the Mobile Foundation installer. Make sure that you have the JDBC driver (For MySQL - use the Connector/J JDBC driver,  For Oracle - use the Oracle thin JDBC driver). Create a Mounted Volume and place the JDBC driver in the location `/nfs/share/dbdrivers`
+   
+   - Create a Persistent Volume (PV) by providing the NFS host details and the path where the JDBC driver is stored. Below is a sample `PersistentVolume.yaml`
+      ```
+      cat <<EOF | kubectl apply -f -
+      apiVersion: v1
+      kind: PersistentVolume
+      metadata:
+        labels:
+          name: mfppvdbdrivers
+        name: mfppvdbdrivers
+      spec:
+        accessModes:
+        - ReadWriteMany
+        capacity:
+          storage: 20Gi
+        nfs:
+          path: <nfs_path>
+          server: <nfs_server>
+       EOF
+      ```
+      > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
+      
+    - Create a Persistent Volume Claim (PVC) and provide the PVC name in the Helm chart while deploying. Below is a sample `PersistentVolumeClaim.yaml` 
+      ```bash 
+      cat <<EOF | kubectl apply -f -
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        name: mfppvc
+        namespace: my_namespace
+      spec:
+        accessModes:
+        - ReadWriteMany
+        resources:
+          requests:
+             storage: 20Gi
+        selector:
+          matchLabels:
+            name: mfppvdbdrivers
+        volumeName: mfppvdbdrivers
+      status:
+        accessModes:
+        - ReadWriteMany
+        capacity:
+          storage: 20Gi
+      EOF
+      ```
+   >NOTE: Make sure you add the right namespace in the above yaml
 	
 2. (Mandatory) A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
 	
@@ -158,7 +218,36 @@ Secret objects let you store and manage sensitive information, such as passwords
    
    > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
 
-5. (Optional) Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
+5. (Optional) To customise the configuration (example: modifying a log trace setting, adding a new jndi property and so on), you will have to create a configmap with the configuration XML file. This allows you to add a new configuration setting or override the existing configurations of the Mobile Foundation components.
+
+    The custom configuration is accessed by the Mobile Foundation components through a configMap (mfpserver-custom-config) which can be created as follows -
+
+	```bash
+	kubectl create configmap mfpserver-custom-config --from-file=<configuration file in XML format>
+	```
+	
+    The configmap created using the above command should be provided in the **Custom Server Configuration** in the Helm chart while deploying Mobile Foundation.
+
+    Below is an example of setting the trace log specification to warning (The default setting is info) using mfpserver-custom-config configmap.
+
+    - Sample config XML (logging.xml)
+
+	```bash
+    <server>
+          <logging maxFiles="5" traceSpecification="com.ibm.mfp.*=debug:*=warning"
+          maxFileSize="20" />
+    </server>
+	```
+ 
+    - Creating configmap and add the same during the helm chart deployment
+
+	```bash
+    kubectl create configmap mfpserver-custom-config --from-file=logging.xml
+	```
+
+    - Notice the change in the messages.log (of Mobile Foundation components) - ***Property traceSpecification will be set to com.ibm.mfp.=debug:\*=warning.***
+
+6. (Optional) Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
 
    These secrets can be created as follows: 
 	
@@ -169,7 +258,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 	
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
 
-6. For Analytics deployment, one can choose below options for persisting analytics data
+7. For Analytics deployment, one can choose below options for persisting analytics data
 
     a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
 	
@@ -225,10 +314,10 @@ Secret objects let you store and manage sensitive information, such as passwords
 
     b) To choose dynamic provisioning in the chart.
 
-7. (Mandatory) Creating **database secrets** for Server, Push and Application Center.
+8. (Mandatory) Creating **database secrets** for Server, Push and Application Center.
 This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
-Run the code snippet below to create a database secret for Mobile Foundation server:
+   Run the code snippet below to create a database secret for Mobile Foundation server:
 
    ```bash
 	# Create mfpserver secret
@@ -248,15 +337,15 @@ Run the code snippet below to create a database secret for Mobile Foundation ser
 	EOF
    ```
 	
-Run the below code snippet to create a database secret for Application Center
+   Run the below code snippet to create a database secret for Application Center
 	
    ```bash
 	# create appcenter secret
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
 	data:
-	  APPCNTR_DB_USERNAME: Ymx1YWRtaW4=
-	  APPCNTR_DB_PASSWORD: TlRaallXSmtZamRqTm1RMw==
+	  APPCNTR_DB_USERNAME: encoded_uname
+	  APPCNTR_DB_PASSWORD: encoded_password
 	kind: Secret
 	metadata:
 	  name: appcenter-dbsecret
@@ -274,10 +363,49 @@ Run the below code snippet to create a database secret for Application Center
 	echo -n $MY_PASSWORD | base64
    ```
 
-This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
+   This section outlines the security mechanisms for controlling access to the database. Create a secret using specified subcommand and provide the created secret name under the database details.
 
+9. (Optional) A separate Database Admin secret can be provided. The user details provided in the Database Admin secret will be used to execute the  DB Initialization tasks, which would in turn create the required Mobile Foundation schema and tables in the database (if it does not exist). Through the Database Admin secret, you can control the DDL operations on your Database instance.
+
+    If the `MFP Server DB Admin Secret` and `MFP Appcenter DB Admin Secret` details are not provided, then the default `Database Secret Name` will be used to perform DB initialization tasks.
+
+    Run the below code snippet to create a `MFP Server DB Admin Secret` for Mobile Foundation server:
+
+      ```bash
+      # Create MFP Server Admin DB secret update the same in the Helm chart while deploying Mobile Foundation server component
+      cat <<EOF | kubectl apply -f -
+      apiVersion: v1
+      data:
+        MFPF_ADMIN_DB_ADMIN_USERNAME: encoded_uname
+        MFPF_ADMIN_DB_ADMIN_PASSWORD: encoded_password
+        MFPF_RUNTIME_DB_ADMIN_USERNAME: encoded_uname
+        MFPF_RUNTIME_DB_ADMIN_PASSWORD: encoded_password
+        MFPF_PUSH_DB_ADMIN_USERNAME: encoded_uname
+        MFPF_PUSH_DB_ADMIN_PASSWORD: encoded_password
+      kind: Secret
+      metadata:
+        name: mfpserver-dbadminsecret
+      type: Opaque
+      EOF
+      ```
+      
+    Run the below code snippet to create a `MFP Appcenter DB Admin Secret` for Mobile Foundation server:      
 	
-8. (Optional) Create container **Image Policy** and **Image pull secrets** when the container images are pulled from a registry that is outside the IBM Cloud Private setup's container registry (DockerHub, private docker registry, etc.)
+      ```bash
+      # Create Appcenter Admin DB secret and update the same in the Helm chart while deploying Mobile Foundation AppCenter   component
+      cat <<EOF | kubectl apply -f -
+      apiVersion: v1
+      data:
+        APPCNTR_DB_ADMIN_USERNAME: encoded_uname
+        APPCNTR_DB_ADMIN_PASSWORD: encoded_password
+      kind: Secret
+      metadata:
+      name: appcenter-dbadminsecret
+      type: Opaque
+      EOF
+      ```
+	
+10. (Optional) Create container **Image Policy** and **Image pull secrets** when the container images are pulled from a registry that is outside the IBM Cloud Private setup's container registry (DockerHub, private docker registry, etc.)
   
    ```bash
 	# Create image policy
@@ -300,10 +428,10 @@ This section outlines the security mechanisms for controlling access to the data
    kubectl create secret docker-registry -n <namespace> <container-image-registry-hostname> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password>
    ```
 	
-    > NOTE: text inside < > needs to be updated with right values.
+   > NOTE: text inside < > needs to be updated with right values.
 
 
-For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
+   For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
 
 ### PodSecurityPolicy Requirements
 
@@ -351,7 +479,7 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
 	  - "*"
     ```
 
-* Custom ClusterRole for the custom PodSecurityPolicy:
+   * Custom ClusterRole for the custom PodSecurityPolicy:
 
     ```bash
 	apiVersion: rbac.authorization.k8s.io/v1
@@ -370,14 +498,14 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
     ```
     > NOTE: It is required to create the PodSecurityPolicy only once, if the PodSecurityPolicy already exists then skip this step.
 
-The cluster admin can either paste the above PSP and ClusterRole definitions into the create resource screen in the UI or run the following two commands:
+   The cluster admin can either paste the above PSP and ClusterRole definitions into the create resource screen in the UI or run the following two commands:
   
 ```bash
     kubectl create -f <PSP yaml file>
     kubectl create clusterrole ibm-mobilefoundation-prod-psp-clusterrole --verb=use --resource=podsecuritypolicy --resource-name=ibm-mobilefoundation-prod-psp
 ```
 
-You also need to create the `RoleBinding`:
+   You also need to create the `RoleBinding`:
 
 ```bash
     kubectl create rolebinding ibm-mobilefoundation-prod-psp-rolebinding --clusterrole=ibm-mobilefoundation-prod-psp-clusterrole --serviceaccount=<namespace>:default --namespace=<namespace>
@@ -424,15 +552,18 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |                       | name | Name of the Mobile Foundation Server database | |
 |                       | schema | Server db schema to be created. | If the schema already present, it will be used. Otherwise, it will be created. |
 |                       | ssl | Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
+|                       | driverPvc | Persistent Volume Claim to access the JDBC Database Driver| Specify the name of the persistent volume claim that hosts the JDBC database driver. Required if the database type selected is not DB2 |
+|                       | adminCredentialsSecret | MFPServer DB Admin Secret | If you have enabled DB initialization ,then provide the secret to create database tables and schemas for Mobile Foundation components |
 | mfpserver | adminClientSecret | Admin client secret | Specify the Client Secret name created. Refer #6 in [Prerequisites](#Prerequisites) |
 |  | pushClientSecret | Push client secret | Specify the Client Secret name created. Refer #6 in [Prerequisites](#Prerequisites) |
 | mfpserver.replicas |  | The number of instances (pods) of Mobile Foundation Server that need to be created | Positive integer (Default: 3) |
 | mfpserver.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicas field. | false (default) or true |
-|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
-|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than min. | Positive integer (default to 10) |
-|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than min. | Positive integer (default to 10) |
+|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | mfpserver.pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
+|    mfpserver.customConfiguration |  |  Custom server configuration (Optional)  | Provide server specific additional configuration reference to a pre-created config map |
 | mfpserver.jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
 | mfpserver | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
 | mfpserver.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
@@ -444,11 +575,12 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |           | tag          | Docker image tag | See Docker tag description |
 | mfppush.replicas | | The number of instances (pods) of Mobile Foundation Server that need to be created | Positive integer (Default: 3) |
 | mfppush.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
-|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
-|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
-|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
+|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | mfppush.pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
+| mfppush.customConfiguration |  |  Custom configuration (Optional)  | Provide Push specific additional configuration reference to a pre-created config map |
 | mfppush.jndiConfigurations | mfpfProperties | Mobile Foundation Server JNDI properties to customize deployment | Supply comma separated name value pairs |
 | mfppush | keystoresSecretName | Refer the configuration section to pre-create the secret with keystores and their passwords.|
 | mfppush.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
@@ -461,9 +593,9 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |           | consoleSecret | A pre-created secret for login | Check Prerequisites section|
 | mfpanalytics.replicas |  | The number of instances (pods) of Mobile Foundation Operational Analytics that need to be created | Positive integer (Default: 2) |
 | mfpanalytics.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
-|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
-|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
-|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
+|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 |  mfpanalytics.shards|  | Number of Elasticsearch shards for Mobile Foundation Analytics | default to 2|             
 |  mfpanalytics.replicasPerShard|  | Number of Elasticsearch replicas to be maintained per each shard for Mobile Foundation Analytics | default to 2|
 | mfpanalytics.persistence | enabled         | Use a PersistentVolumeClaim to persist data                        | true |                                                 |
@@ -474,6 +606,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |           |size             | Size of data volume      | 20Gi |
 | mfpanalytics.pdb     | enabled | Specify whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
+|    mfpanalytics.customConfiguration |  |  Custom configuration (Optional)  | Provide Analytics specific additional configuration reference to a pre-created config map |
 | mfpanalytics.jndiConfigurations | mfpfProperties | Mobile Foundation JNDI properties to be specified to customize operational analytics| Supply comma separated name value pairs  |
 | mfpanalytics | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
 | mfpanalytics.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 2000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
@@ -490,12 +623,15 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 |                       | secret | A precreated secret which has database credentials| |
 |                       | schema | Application Center database schema to be created. | If the schema already exists, it will be used. If not, one will be created. |
 |                       | ssl |Database connection type  | Specify if you database connection has to be http or https. Default value is false (http). Make sure that the database port is also configured for the same connection mode |
+|                       | driverPvc | 	Persistent Volume Claim to access the JDBC Database Driver  | Specify the name of the persistent volume claim that hosts the JDBC database driver. Required if the database type selected is not DB2 |
+|                       | adminCredentialsSecret | Application Center DB Admin Secret | If you have enabled DB initialization ,then provide the secret to create database tables and schemas for Mobile Foundation components |
 | mfpappcenter.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | false (default) or true |
-|           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
-|           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
-|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to 1) |
+|           | maxReplicas | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to 10) |
+|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 | mfpappcenter.pdb     | enabled | Specifu whether to enable/disable PDB. | true (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
+| mfpappcenter.customConfiguration |  |  Custom configuration (Optional)  | Provide Application Center specific additional configuration reference to a pre-created config map |
 | mfpappcenter | keystoreSecret | Refer the configuration section to pre-create the secret with keystores and their passwords.|
 | mfpappcenter.resources | limits.cpu  | Describes the maximum amount of CPU allowed.  | Default is 1000m. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |                  | limits.memory | Describes the maximum amount of memory allowed. | Default is 1024Mi. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
@@ -525,6 +661,10 @@ Follow the steps below to install and configure IBM Mobile Foundation from {{ si
 4. Provide the environment variables. Refer to [Configuration](#configuration) for more information.
 5. Accept the **License Agreement**.
 6. Click **Install**.
+
+> NOTE: The latest Mobile Foundation on ICP package bundles following supported softwares - 
+> 1. IBM JRE8 SR5 FP37 (8.0.5.37)
+> 2. IBM WebSphere Liberty v18.0.0.5
 
 ## Verifying the Installation
 {: #verify-install}
@@ -621,10 +761,3 @@ helm delete <my-release> --purge --tls
 *my-release* is the deployed release name of the Helm Chart.
 
 This command removes all the Kubernetes components (except any Persistent Volume Claims (PVC)) associated with the chart. This default Kubernetes behavior ensures that the valuable data is not deleted.
-
-## Limitations
-{: #limitations}
-For databases other than IBM DB2® following are mandatory requirements
-
-1. The database and the relevant tables to be created before configuring/deploying the helm chart.
-2. Make sure the Docker image loaded via the PPA package (downloaded from IBM Passport Advantage) is extended to use the suitable database artifacts and the new docker tag is used to configure & deploy the helm chart.
