@@ -1,5 +1,5 @@
 ---
-layout: default_icpa
+layout: default
 indexed: false
 title: Mobile services in IBM Cloud Pak for Applications
 ---
@@ -7,6 +7,7 @@ title: Mobile services in IBM Cloud Pak for Applications
 <head>
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <link href="../../../css/bulma-blog.css" type="text/css" rel="stylesheet">
+
 <style>
     .twoColumns {
         -webkit-columns: 2 200px;
@@ -25,7 +26,7 @@ title: Mobile services in IBM Cloud Pak for Applications
 
     .postTitle {
         margin-bottom: 0;
-        color: #000000;
+        color: DodgerBlue;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
         font-size: 200%
@@ -36,72 +37,77 @@ title: Mobile services in IBM Cloud Pak for Applications
         color: #DB4322;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
+        font-size: 120%;
     }
     .postTitleAnalytics {
         margin-bottom: 0;
         color: #228ADB;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
+        font-size: 120%;
     }
     .postTitlePush {
         margin-bottom: 0;
         color: #6B5D5F;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
+        font-size: 120%;
     }
     .postTitleAC {
         margin-bottom: 0;
         color: #208C2B;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
+        font-size: 120%;
     }
     .postTitleDAB {
         margin-bottom: 0;
         color: #50218A;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
+        font-size: 120%;
     }
 
     .postsubTitle {
         margin-bottom: 0;
-        color: #e5eaee;
+        color: #000000;
         font-family: 'Lato', sans-serif;
-        font-weight: bold;
+
     }
     .postsubTitleServer {
         margin-bottom: 0;
         color: #DB4322;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
-        font-size: 80%;
+        font-size: 100%;
     }
     .postsubTitleAnalytics {
         margin-bottom: 0;
         color: #228ADB;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
-        font-size: 80%;
+        font-size: 100%;
     }
     .postsubTitlePush {
         margin-bottom: 0;
         color: #6B5D5F;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
-        font-size: 80%;
+        font-size: 100%;
     }
     .postsubTitleAC {
         margin-bottom: 0;
         color: #208C2B;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
-        font-size: 80%;
+        font-size: 100%;
     }
     .postsubTitleDAB {
         margin-bottom: 0;
         color: #50218A;
         font-family: 'Lato', sans-serif;
         font-weight: bold;
-        font-size: 80%;
+        font-size: 100%;
     }
 
     a {
@@ -128,29 +134,32 @@ title: Mobile services in IBM Cloud Pak for Applications
 <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <span class="postTitle">Mobile services in IBM Cloud Pak for Applications</span>
-        <p>Expedite the movement of your enterprise workloads to the cloud by using <a href="https://www.ibm.com/cloud/cloud-pak-for-applications" target="_blank">IBM Cloud Pak for Applications</a>, which is an enterprise-grade environment that provides end-to-end capabilities to modernize your existing workloads or to build new cloud-native apps. Mobile services in IBM Cloud Pak for Applications enables you to create a mobile channel for your applications, solving some of the modern-day business challenges and fostering the fulfillment of some of the innovative business use cases.</p>
-        <p><a style="text-decoration:none" class="button is-primary" href="{{site.baseurl}}analytics/">GET STARTED</a></p>
+        <p><span class="postsubTitle">Expedite the movement of your enterprise workloads to the cloud by using <a href="https://www.ibm.com/cloud/cloud-pak-for-applications" target="_blank">IBM Cloud Pak for Applications</a>, which is an enterprise-grade environment that provides end-to-end capabilities to modernize your existing workloads or to build new cloud-native apps. Mobile services in IBM Cloud Pak for Applications enables you to create a mobile channel for your applications, solving some of the modern-day business challenges and fostering the fulfillment of some of the innovative business use cases.</span></p>
+        <p><a style="text-decoration:none" class="button is-info" href="../foundation/8.0/gettingstarted-mobile-icpa/">Get Started</a></p>
       </div>
 </div>
 <br>
+
 <div class="container is-fluid">
   <div class="columns is-multiline">
 
       <div class="column is-3 text-center">
           <!-- START ARTICLE -->
-          <div class="card card-block d-flex border-primary mb-3" style="max-width: 20rem; height: 20rem">
+          <div class="card card-block d-flex rounded-sm border text-primary border-primary mb-3 box-shadow" style="height: 20rem">
+            <!--<div class="card-header text-white" style="background-color: #DB4322;">
 
-          <!--<div class="card-header"></div>-->
+            </div>
+          <div class="card-header"></div>-->
           <br/>
           <div class="card-body align-items-center d-flex justify-content-center">
             <span style="font-size: 3em; color: #DB4322;"><i class="fas fa-cogs"></i></span>
             <h5 class="card-title"><span class="postTitleServer">MANAGE AND CONTROL</span></h5>
             <br/>
-            <p class="card-text"><span class="postExcerpt">Application Lifecycle, Security Feature Toggle, Offline DataSync</span></p>
+            <p class="card-text"><span class="postExcerpt">Application Lifecycle, Security Feature Toggle, <br/>Offline DataSync</span></p>
             <br/>
             <p class="card-text"><span class="postsubTitleServer"><b>FOUNDATION SERVICES</b></p>
               <br/>
-            <a style="text-decoration:none" class="button is-info is-outlined" href="{{site.baseurl}}server/">Learn</a>
+            <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/all-tutorials/">Learn</a>
           </div>
         <!--  <div class="card article" style="height: 26rem;">
 
@@ -172,19 +181,21 @@ title: Mobile services in IBM Cloud Pak for Applications
           </div>
           </div>
           <div class="column is-3 text-center">
-            <div class="card card-block d-flex border-primary mb-3" style="max-width: 20rem; height: 20rem">
+            <div class="card card-block d-flex border-primary mb-3" style="height: 20rem">
+              <!--<div class="card-header text-white" style="background-color: DodgerBlue;">
 
-            <!--<div class="card-header"></div>-->
+              </div>
+            <div class="card-header"></div>-->
             <br/>
             <div class="card-body align-items-center d-flex justify-content-center">
               <span style="font-size: 3em; color: DodgerBlue;"><i class="fas fa-chart-line"></i></span>
               <h5 class="card-title"><span class="postTitleAnalytics">SENSE AND RESPOND</span></h5>
               <br/>
-              <p class="card-text"><span class="postExcerpt">Application Usage, Network Interactions, Application Stability, In-app User Feedback</span></p>
+              <p class="card-text"><span class="postExcerpt">Application Usage, Network Interactions, <br/>Application Stability, In-app User Feedback</span></p>
               <br/>
               <p class="card-text"><span class="postsubTitleAnalytics"><b>MOBILE ANALYTICS</b></p>
                 <br/>
-              <a style="text-decoration:none" class="button is-info is-outlined" href="{{site.baseurl}}analytics/">Learn</a>
+              <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/analytics/">Learn</a>
             </div>
             </div>
         <!--  <div class="card article" style="height: 26rem;">
@@ -204,19 +215,21 @@ title: Mobile services in IBM Cloud Pak for Applications
           </div>-->
           </div>
           <div class="column is-3 text-center">
-            <div class="card card-block d-flex border-primary mb-3" style="max-width: 20rem; height: 20rem">
+            <div class="card card-block d-flex border-primary mb-3" style="height: 20rem">
+              <!--<div class="card-header text-white" style="background-color: #6B5D5F;">
 
-            <!--<div class="card-header"></div>-->
+              </div>
+            <div class="card-header"></div>-->
             <br/>
             <div class="card-body align-items-center d-flex justify-content-center">
               <span style="font-size: 3em; color: #6B5D5F;"><i class="far fa-handshake"></i></span>
               <h5 class="card-title"><span class="postTitlePush">ENGAGE</span></h5>
               <br/>
-              <p class="card-text"><span class="postExcerpt">Push Notifications - Android, iOS, Windows and Web</span></p>
+              <p class="card-text"><span class="postExcerpt">Push Notifications - Android, iOS, Windows and <br/>Web</span></p>
               <br/>
               <p class="card-text"><span class="postsubTitlePush"><b>PUSH NOTIFICATIONS</b></span></p>
                 <br/>
-              <a style="text-decoration:none" class="button is-info is-outlined" href="{{site.baseurl}}notifications/">Learn</a>
+              <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/notifications/">Learn</a>
             </div>
             </div>
         <!--  <div class="card article" style="height: 26rem;">
@@ -239,19 +252,21 @@ title: Mobile services in IBM Cloud Pak for Applications
           </div>-->
           </div>
           <div class="column is-3 text-center">
-            <div class="card card-block d-flex border-primary mb-3" style="max-width: 20rem; height: 20rem">
+            <div class="card card-block d-flex border-primary mb-3" style="height: 20rem">
+              <!--<div class="card-header text-white" style="background-color: #208C2B;">
 
-            <!--<div class="card-header"></div>-->
+              </div>
+            <div class="card-header"></div>-->
             <br/>
             <div class="card-body align-items-center d-flex justify-content-center">
               <span style="font-size: 3em; color: #208C2B;"><i class="fas fa-cubes"></i></span>
               <h5 class="card-title"><span class="postTitleAC">PACKAGE AND DISTRIBUTE</span></h5>
               <br/>
-              <p class="card-text"><span class="postExcerpt">Enterprise App Store - iOS, Android, Windows and User Feedback</span></p>
+              <p class="card-text"><span class="postExcerpt">Enterprise App Store - iOS, Android, Windows <br/>and User Feedback</span></p>
               <br/>
               <p class="card-text"><span class="postsubTitleAC"><b>APPLICATION CENTER</b></span></p>
                 <br/>
-              <a style="text-decoration:none" class="button is-info is-outlined" href="{{site.baseurl}}appcenter/">Learn</a>
+              <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/appcenter/">Learn</a>
             </div>
             </div>
           <!--<div class="card article" style="height: 26rem;">
@@ -277,18 +292,21 @@ title: Mobile services in IBM Cloud Pak for Applications
 
       <div class="column is-12 text-center">
         <div class="card card-block d-flex border-primary mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="height: 12rem">
+          <!--<div class="card-header text-white" style="background-color: #50218A;">
 
-        <!--<div class="card-header"></div>-->
+          </div>
+        <div class="card-header"></div>-->
 
         <div class="card-body align-items-center d-flex justify-content-center">
           <span style="font-size: 3em; color: #50218A;"><i class="fas fa-tools"></i></span>
+
           <h5 class="card-title"><span class="postTitleDAB">ACCELERATE DEVELOPMENT</span></h5>
 
           <p class="card-text"><span class="postExcerpt">Application Time to Market reduced with low-code</span></p>
 
           <p class="card-text"><span class="postsubTitleDAB"><b>DIGITAL APP BUILDER</b></span></p>
 
-          <a style="text-decoration:none" class="button is-info is-outlined" href="{{site.baseurl}}digital-app-builder/">Learn</a>
+          <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/digital-app-builder/">Learn</a>
         </div>
         </div>
 

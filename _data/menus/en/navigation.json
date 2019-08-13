@@ -125,9 +125,6 @@
     "path": "/downloads",
     "extraClasses": "hidden-xs hidden-sm hidden-md"
 }, {
-    "name": "Webinars",
-    "path": "/webinars",
-}, {
     "name": "Video Gallery",
     "path": "/video-gallery"
 }, {
