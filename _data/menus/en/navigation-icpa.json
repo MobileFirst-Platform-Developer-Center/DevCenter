@@ -3,16 +3,16 @@
     "path": "",
     "children": [{
         "name": "Server",
-        "path": "/tutorials/en/mobileservices_icpa/server"
+        "path": "/tutorials/en/mobileservices-icpa/server"
     },{
         "name": "Analytics",
-        "path": "/tutorials/en/mobileservices_icpa/analytics"
+        "path": "/tutorials/en/mobileservices-icpa/analytics"
     },{
         "name": "Push Notifications",
-        "path": "/tutorials/en/mobileservices_icpa/notifications"
+        "path": "/tutorials/en/mobileservices-icpa/notifications"
     },{
         "name": "Application Center",
-        "path": "/tutorials/en/mobileservices_icpa/appcenter"
+        "path": "/tutorials/en/mobileservices-icpa/appcenter"
     }]
 }, {
     "name": "Blog",
