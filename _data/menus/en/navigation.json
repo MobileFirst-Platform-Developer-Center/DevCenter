@@ -125,14 +125,11 @@
     "path": "/downloads",
     "extraClasses": "hidden-xs hidden-sm hidden-md"
 }, {
-    "name": "Webinars",
-    "path": "/webinars",
-}, {
     "name": "Video Gallery",
     "path": "/video-gallery"
 }, {
     "name": "Mobile Services - IBM Cloud Pak for Application",
-    "path": "/tutorials/en/mobileservices_icpa"
+    "path": "/tutorials/en/mobileservices-icpa"
 }, {
     "name": "Help",
     "path": "/help"
