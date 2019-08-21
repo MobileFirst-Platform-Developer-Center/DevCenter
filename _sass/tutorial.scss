@@ -57,8 +57,8 @@ $color_wild_sand_approx: #f5f5f5;
 	}
 	.sidebar {
 		padding: 23px 0 0 7px;
-		background-color: #f2f2f2;
-    border-color: #f2f2f2;
+		background-color: #fcfcfc;
+    border-color: #fcfcfc;
 
 		ul {
 			// affects all ULs in the sidebar
@@ -102,13 +102,13 @@ $color_wild_sand_approx: #f5f5f5;
 					font-weight: bold;
 				}
 				> ul {
-					background-color: #f5f5f5;
+					background-color: #fcfcfc;
 					border-left: 1px solid #6aa8c3;
 					padding-left: 0;
 					> li {
 						list-style-type: none;
 						&.active {
-							background-color: #f5f5f5;
+							background-color: #fcfcfc;
 							&.nochildren {
 								background-color: #89d1ef;
 							}
@@ -199,7 +199,7 @@ $color_wild_sand_approx: #f5f5f5;
 		line-height: 1.7em;
 	}
 	.outerbreadcrumb.row {
-		background-color: #f5f5f5;
+		background-color: #fcfcfc;
 		border-radius: 4px;
 		margin-right:0;
 		margin-left:0;
@@ -281,7 +281,7 @@ $color_wild_sand_approx: #f5f5f5;
 		    display: inline-block;
 		    height: 120px;
 		    width: 170px;
-		    background-color: #f5f5f5;
+		    background-color: #fcfcfc;
 		    border-bottom: 35px solid #325c80;
 		    margin-right: 10px;
 			margin-bottom: 14px;
