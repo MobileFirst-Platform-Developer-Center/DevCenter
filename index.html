@@ -43,7 +43,7 @@ indexed: false
 
     .postsubTitle {
        margin-bottom: 0;
-       color: #e5eaee;
+       color: #ffffff;
        font-family: Lato;
        font-weight: bold;
 
@@ -164,7 +164,7 @@ indexed: false
 </script>
 </head>
 <div id="blogPosts">
-   <div class="container" role="section">
+   <div class="container">
      <div class="row">
 			<div class="col-sm-2 hidden-sm hidden-xs hidden-md">
         <!--<span class="postTitleLatest">&nbsp;Latest Blog Posts</span>-->
@@ -200,8 +200,8 @@ indexed: false
                <div class="col-md-7 carousel-caption" role="tab">
                  <h1 class="no-anchor"><!--<a href="https://console.bluemix.net/catalog/services/mobile-foundation" target="_blank" rel="noopener"><span class="badge badge-primary">&nbsp;Try it!</span></a><br/>-->
                   <a href="{{site.baseurl}}/blog/2019/04/05/digital-app-builder-ga-announce/" target="_blank" rel="noopener" class="badge badge-info"><span class="postsubTitle">Change the way you build smart web and mobile apps</span></a><br/>
-                  Announcing the General Availability of Digital App Builder 8.0.0&nbsp;<a class="badge badge-info" href="https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases/download/8.0.1/IBM.Digital.App.Builder-8.0.1.dmg"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;Mac</a>
-                    <a class="badge badge-info" href="https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases/download/8.0.1/IBM.Digital.App.Builder.Setup.8.0.1.exe"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;Windows</a>
+                  Announcing the General Availability of Digital App Builder 8.0.0&nbsp;<a class="badge badge-light" href="https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases/download/8.0.2/IBM.Digital.App.Builder-8.0.2.dmg"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;<span class="postsubTitle">Mac</span></a>
+                    <a class="badge badge-light" href="https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases/download/8.0.2/IBM.Digital.App.Builder.Setup.8.0.2.exe"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;<span class="postsubTitle">Windows</span></a>
 </h1>
                   <p class="caption-text">Drag and drop to build apps that connect to microservices, embed AI capabilities<br/>and are multi-channel.<br/><br/></p>
 
@@ -291,14 +291,14 @@ indexed: false
    </a>
 </div>
 <div id="blogPosts" class="hidden-sm hidden-xs hidden-md">
-   <div class="container" role="section">
+   <div class="container">
       <button type="button" class="btn btn-default btn-sm"><a href="{{site.baseurl}}/blog/2019/05/30/leverage-ibm-support-portal/"><span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;<span class="postsubTitle">Subscribe for updates & stay up-to-date with all that is happening in Mobile Foundation</span></a></button>
    </div>
 </div>
 
 <div id="index_sections">
   <!-- Blog -->
-  <div id="index_benefits" class="container hidden-sm hidden-xs hidden-md" role="complementary">
+  <div id="index_posts" class="container hidden-sm hidden-xs hidden-md" role="complementary">
 
      <div class="row">
       <!-- <h1 class="no-anchor">Latest in Mobile Foundation Blog</h1>-->
@@ -306,65 +306,29 @@ indexed: false
            <img class="foundation_diamond" src="{{site.baseurl}}/assets/front-page/foundation_logo.svg" alt="Foundation diamond icon"/>
         </div>-->
 
-        <div class="col-sm-5 hidden-sm hidden-xs hidden-md">
-
-           <div class="benefits">
-             <div class="card" style="width: 45rem;">
-             <!--<img class="card-img-top" src="../assets/front-page/carousel-background.png" alt="Card image cap">-->
-
-             <div class="card-body">
-               <div class="card-header">
-                 <div class="alert alert-warning">
-                   <p class="card-title"><span class="postTitle">Features released in Mobile Foundation v8.0 CD Updates</span></p>
-                 </div>
-               </div>
-               <!--<h3 class="card-title"><span class="glyphicon glyphicon-bell"></span><span class="postsubTitle">&nbsp;Latest blog post</span></h3>-->
-               <!--<p class="card-title"><h3 class="no-anchor"><a class="badge badge-warning"><span class="postExcerpt">&nbsp;Latest in Mobile Foundation blog</span></a><br/>-->
-
-               <p class="card-text"><h4><span class="postExcerpt">Know why you should upgrade to the latest Mobile Foundation v8.0 CD Update.</span></h4></p>
-
-
-
-
-             </div>
-             <br/>
-             <div class="card-footer">
-               <a class="custombtn btn-lg btn-warning containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/release-notes/interim-fixes/"><span class="postsubTitle">&nbsp;Read more...</span></a>
-             </div>
-           </div>
-           </div>
-        </div>
-        <div class="col-sm-7 hidden-sm hidden-xs hidden-md">
+        <div class="col-sm-12 hidden-sm hidden-xs hidden-md">
 
            <div class="benefits">
              {% for post in site.posts limit:1 %}
-             <div class="card" style="width: 68rem;">
-             <!--<img class="card-img-top" src="../assets/front-page/carousel-background.png" alt="Card image cap">-->
-
-             <div class="card-body">
+             <div class="card text-center">
                <div class="card-header">
                  <div class="alert alert-info">
-                   <p class="card-title"><span class="postTitle">{{post.title}}</span></p>
+                   <p class="card-title"><span class="postTitle">Featured</span></p>
                  </div>
                </div>
-               <!--<h3 class="card-title"><span class="glyphicon glyphicon-bell"></span><span class="postsubTitle">&nbsp;Latest blog post</span></h3>-->
-               <!--<p class="card-title"><h3 class="no-anchor"><a class="badge badge-warning"><span class="postExcerpt">&nbsp;Latest in Mobile Foundation blog</span></a><br/>-->
-
-               <p class="card-text"><span class="postExcerpt">{{post.date | date: '%B %d, %Y'}}</span></p>
-
-               <p class="card-text">
-                 <h4><span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</span></h4>
-
-
+               <div class="card-body">
+                 <h5 class="card-title"><span class="postTitle">{{post.title}}</h5>
+                 <p class="card-text">
+                <h4><span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}...</span><a href="{{site.baseurl}}{{post.url}}"><span class="postsubTitleMore">&nbsp;more...</span></a></h4>
+                <!--<a class="btn btn-primary btn-sm" href="{{site.baseurl}}{{post.url}}"><span class="postsubTitle">&nbsp;Read more...</span></a>-->
+               </div>
+               <div class="card-footer text-muted">
+                 <p class="card-text">
+                  <a class="btn btn-default btn-md" href="{{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/release-notes/interim-fixes/"><span class="postsubTitle">&nbsp;Know why you should upgrade to the latest Mobile Foundation v8.0 CD Update</span></a>
+               </div>
              </div>
-             <br/>
-             <div class="card-footer">
-               <a class="custombtn btn-lg btn-primary containers" href="{{site.baseurl}}{{post.url}}"><span class="postsubTitle">&nbsp;Read more...</span></a>
-             </div>
+             {% endfor %}
            </div>
-           {% endfor %}
-           </div>
-        </div>
 
      </div>
   </div>
