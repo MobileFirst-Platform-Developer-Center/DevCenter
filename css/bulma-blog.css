@@ -6514,14 +6514,14 @@ a.dropdown-item.is-active {
 .pagination-previous,
 .pagination-next,
 .pagination-link {
-  border-color: #dbdbdb;
+  border-color: #b5b5b5;
   min-width: 2.25em;
 }
 
 .pagination-previous:hover,
 .pagination-next:hover,
 .pagination-link:hover {
-  border-color: #b5b5b5;
+  border-color: #000000;
   color: #363636;
 }
 
@@ -6541,8 +6541,8 @@ a.dropdown-item.is-active {
 .pagination-previous[disabled],
 .pagination-next[disabled],
 .pagination-link[disabled] {
-  background-color: #dbdbdb;
-  border-color: #dbdbdb;
+  background-color: #b5b5b5;
+  border-color: #b5b5b5;
   -webkit-box-shadow: none;
           box-shadow: none;
   color: #7a7a7a;
