@@ -72,15 +72,15 @@ Download the latest interim fix from Fix central. Kubernetes support is availabl
 
 The archive file contains the files for building an image (**dependencies** and **mfpf-libs**) and the files for building and deploying a {{ site.data.keys.mf_app_center }} on Kubernetes (bmx-kubernetes).
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology1" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click to read more about the archive file contents and available environment properties to use</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapsezip-file" aria-expanded="true" aria-controls="collapsezip-file"><b>Click to read more about the archive file contents and available environment properties to use</b></a>
             </h4>
         </div>
 
-        <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+        <div id="collapsezip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
                 <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
                 <h4>bmx-kubernetes folder</h4>
@@ -107,15 +107,15 @@ The archive file contains the files for building an image (**dependencies** and 
                     <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).</li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist">
+                    <div class="panel-group accordion" id="terminology2" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Click for a list of supported server environment properties</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapseserver-env" aria-expanded="true" aria-controls="collapseserver-env"><b>Click for a list of supported server environment properties</b></a>
                                 </h4>
                             </div>
 
-                            <div id="collapse-server-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+                            <div id="collapseserver-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
@@ -156,7 +156,7 @@ The archive file contains the files for building an image (**dependencies** and 
                                     </table>
 
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
+                                    <a class="preventScroll" data-toggle="collapse" role="button" data-parent="#server-env" data-target="#collapseserver-env" aria-expanded="true" aria-controls="collapseserver-env"><b>Close section</b></a>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +165,7 @@ The archive file contains the files for building an image (**dependencies** and 
                     <li><b>mfpf-libs folder</b> folder: Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapsezip-file" aria-expanded="true" aria-controls="collapsezip-file"><b>Close section</b></a>
             </div>
         </div>
     </div>
@@ -192,11 +192,11 @@ When you run interactively, a copy of the arguments provided is saved in a direc
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Using the configuration files</a>
+                <a class="preventScroll"  role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapsestep-foundation-1" aria-expanded="true" aria-controls="collapsestep-foundation-1">Using the configuration files</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapsestep-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
                 The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:<br/>
 
@@ -246,11 +246,11 @@ When you run interactively, a copy of the arguments provided is saved in a direc
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Running the scripts</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapsestep-foundation-2" aria-expanded="true" aria-controls="collapsestep-foundation-2">Running the scripts</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapsestep-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to in a non-interactive mode:</p>
 
