@@ -121,74 +121,76 @@ margin-bottom: 1.2em;
 padding: 0.25em 1em 0.2em 1em;
 }
 
+.postTitle {
+    margin-bottom: 0;
+    color: DodgerBlue;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 150%
+}
+
+.postsubTitle {
+    margin-bottom: 0;
+    color: #000000;
+    font-family: 'Lato', sans-serif;
+    font-size: 125%
+
+}
+.jumbotron {
+  background-size: cover;
+  min-height: 300px;
+}
+.li{
+  margin: 50px 0;
+}
+.row-bottom-margin { margin-bottom:5px; }
 </style>
+<script src="https://kit.fontawesome.com/b1689ecae8.js"></script>
 </head>
 <br/>
 
-
-<script>
-
-</script>
-</head>
-
-<body>
-
-<ul class="timeline" style="list-style: none">
-<li class="timeline-event">
-  <label class="timeline-event-icon"></label>
-  <div class="timeline-event-copy">
-    <p class="timeline-event-thumbnail"><font style="color: #ffffff"><b>Introduction</b></font></p>
-    <h3>Getting started with Mobile services in IBM Cloud Pak for Applications</h3>
-
-    <ul>
-      <li>Manage and Control your mobile applications using Mobile Foundation services.</li>
-      <li>Sense and respond to usage and feedback for your applications using Mobile Analytics.</li>
-      <li>Engage with your application customers through Push Notifications.</li>
-      <li>Package and distribute your mobile apps using an enterprise app store such as Application Center.</li>
-    </ul>
-  </div>
-</li>
-<li class="timeline-event">
-  <label class="timeline-event-icon"></label>
-  <div class="timeline-event-copy">
-    <p class="timeline-event-thumbnail"><b>Task 1</b></p>
-    <h4>Install and Configure Mobile services in IBM Cloud Pak for Applications</h4>
-    <h5><i>Prerequisite setup</i></h5>
-    <p>Please follow the instructions found in the <a href="" target="_blank">Install IBM Cloud Pak for Applications</a>.</p>
-  </div>
-</li>
-<li class="timeline-event">
-  <label class="timeline-event-icon"></label>
-  <div class="timeline-event-copy">
-    <p class="timeline-event-thumbnail"><b>Task 2</b></p>
-    <h4>Installing Mobile services</h4>
-    <p>Go to the overview page <a href="" target="_blank">here</a>.</p>
-  </div>
-</li>
-<li class="timeline-event">
-  <label class="timeline-event-icon"></label>
-  <div class="timeline-event-copy">
-    <p class="timeline-event-thumbnail"><b>Task 3</b></p>
-    <h4>Configuring Mobile services on IBM Cloud Pak for Applications</h4>
-    <p>Follow the <a href="" target="_blank">steps described in this section</a> and learn how to setup and configure the Mobile services on IBM Cloud Pak for Applications.</p>
-  </div>
-</li>
-<li class="timeline-event">
-  <label class="timeline-event-icon"></label>
-  <div class="timeline-event-copy">
-    <p class="timeline-event-thumbnail"><b>Task 4</b></p>
-    <h4>Verifying Mobile services in IBM Cloud Pak for Applications</h4>
-    <p>Head over to <a href="" target="_blank">this section</a> where you will learn how to quickly verify if the Mobile services are installed and configured correctly.</p>
-  </div>
-</li>
-<li class="timeline-event">
-  <label class="timeline-event-icon"></label>
-  <div class="timeline-event-copy">
-    <p class="timeline-event-thumbnail"><b>Task 5</b></p>
-    <h4>Install Digital App Builder and try our sample</h4>
-    <p>Go to <a href="" target="_blank">this page</a> where you will learn how to install and work with the sample app provided in the Digital App Builder.</p>
-    <p>Description of Motocorp sample.</p>
-    <p>View <a href="" target="_blank">this video</a> to learn how the sample app was created.</p>
-  </div>
-</li>
-</ul>
+<div class="row row-bottom-margin">
+    <div class="container flex">
+<div style="background:transparent !important" class="jumbotron  text-left col-md-6 jumbotron-fluid">
+      <div class="container">
+        <img src='{{site.baseurl}}/assets/icpa/getstarted-01.png' alt="Get started with Mobile Foundation on ICPA" style="text-align:center; width: 450px"/>
+      </div>
+</div>
+<div style="background:transparent !important" class="jumbotron  text-left col-md-6 jumbotron-fluid">
+      <div class="container">
+        <p><span class="postTitle">Build and Test</span></p>
+        <ul class="fa-ul">
+          <li><i class="fa-li fa fa-check-square-o"></i><span class="postsubTitle"><a href="../../../../../tutorials/en/foundation/8.0/ibmcloudpakforapplications/install-mf/" target="_blank">Download</a> and install DevKit.<br/></li>
+          <li><i class="fa-li fa fa-check-square-o"></i><span class="postsubTitle">Start MobileFirst services from DevKit (CLI).</span><br/></li>
+          <li><i class="fa-li fa fa-check-square-o"></i><span class="postsubTitle"><a href="../../../../../downloads#digital-app-builder" target="_blank">Download</a> and install IBM Digital App Builder.<br/></span>
+            <ul>
+              <li><span class="postsubTitle">Low-code your first hybrid mobile application with IBM MobileFirst backend capabilities and test the app.<br/></span></li>
+              <li><span class="postsubTitle">Export your MobileFirst application configurations (CLI).</span><br/></li>
+            </ul>
+          </li>
+          <li><i class="fa-li fa fa-check-square-o"></i><span class="postsubTitle">Publish Mobile client application to AppStores or to IBM MobileFirst Application Center.</span><br/></li>
+        </ul>
+      </div>
+</div>
+</div>
+</div>
+<div class="row">
+    <div class="container">
+<div style="background:transparent !important" class="jumbotron  text-left col-md-6 jumbotron-fluid">
+      <div class="container">
+        <p><span class="postTitle">Deploy and Manage</span></p>
+        <ul class="fa-ul">
+          <li><i class="fa-li fa fa-check-square-o"></i><span class="postsubTitle"><a href="" target="_blank">Install ICPA</a>.</span><br/></li>
+          <li><i class="fa-li fa fa-check-square-o"></i><span class="postsubTitle">Import your Mobile Foundation application configuration (CLI).</span><br/></li>
+          <li><i class="fa-li fa fa-check-square-o"></i><span class="postsubTitle">Start IBM Mobile Foundation Operations console & Analytics console and start managing your apps.</span><br/></li>
+          <li><i class="fa-li fa fa-check-square-o"></i><span class="postsubTitle">Publish Mobile client application to AppStores or to IBM MobileFirst Application Center.</span><br/></li>
+        </ul>
+      </div>
+</div>
+<div style="background:transparent !important" class="jumbotron  text-left col-md-6 jumbotron-fluid">
+      <div class="container">
+        <img src='{{site.baseurl}}/assets/icpa/getstarted-02.png' alt="Get started with Mobile Foundation on ICPA" style="text-align:center; width: 450px"/>
+      </div>
+</div>
+</div>
+</div>
