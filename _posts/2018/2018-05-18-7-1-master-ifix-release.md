@@ -25,6 +25,7 @@ A new iFix *7.1.0.0-MFPF-IF201908200824* has been released for MobileFirst Found
         <div id="collapse-mfp-ifix-IF201908200824" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201908200824">
             <div class="panel-body">
             iFix for MobileFirst Foundation 7.1, dated <b>August 20th, 2019</b>.
+
             <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
 
             <h3>Changes included in this iFix</h3>
@@ -63,6 +64,7 @@ IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<
         </div>      
     </div>
 </div>   
+
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201907040841" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201907040841">
