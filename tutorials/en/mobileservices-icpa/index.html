@@ -1,398 +1,597 @@
----
-layout: default
-indexed: false
-title: Mobile services in IBM Cloud Pak for Applications
----
 <!-- NLS_CHARSET=UTF-8 -->
 <head>
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-<link href="../../../css/bulma-blog.css" type="text/css" rel="stylesheet">
+<link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet">
+<script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+<script src="https://kit.fontawesome.com/b1689ecae8.js"></script>
 
 <style>
-    .twoColumns {
-        -webkit-columns: 2 200px;
-        -moz-columns: 2 200px;
-        columns: 2 200px;
-    }
-
-    .postItem {
-        margin-bottom: 10px;
-    }
-
-    .inline {
-        display: inline-block;
-        min-width: 268px;
-    }
-
-    .postTitle {
-        margin-bottom: 0;
-        color: DodgerBlue;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 200%
-    }
-
-    .postTitleServer {
-        margin-bottom: 0;
-        color: #DB4322;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 120%;
-    }
-    .postTitleAnalytics {
-        margin-bottom: 0;
-        color: #228ADB;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 120%;
-    }
-    .postTitlePush {
-        margin-bottom: 0;
-        color: #6B5D5F;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 120%;
-    }
-    .postTitleAC {
-        margin-bottom: 0;
-        color: #208C2B;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 120%;
-    }
-    .postTitleDAB {
-        margin-bottom: 0;
-        color: #50218A;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 120%;
-    }
-
-    .postsubTitle {
-        margin-bottom: 0;
-        color: #000000;
-        font-family: 'Lato', sans-serif;
-
-    }
-    .postsubTitle2 {
-        margin-bottom: 0;
-        color: #000000;
-        font-family: 'Lato', sans-serif;
-        font-size: 90%;
-    }
-    .postsubTitle3 {
-        margin-bottom: 0;
-        color: #000000;
-        font-family: 'Lato', sans-serif;
-        font-size: 90%;
-    }
-    .postsubTitleServer {
-        margin-bottom: 0;
-        color: #DB4322;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 100%;
-    }
-    .postsubTitleAnalytics {
-        margin-bottom: 0;
-        color: #228ADB;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 100%;
-    }
-    .postsubTitlePush {
-        margin-bottom: 0;
-        color: #6B5D5F;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 100%;
-    }
-    .postsubTitleAC {
-        margin-bottom: 0;
-        color: #208C2B;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 100%;
-    }
-    .postsubTitleDAB {
-        margin-bottom: 0;
-        color: #50218A;
-        font-family: 'Lato', sans-serif;
-        font-weight: bold;
-        font-size: 100%;
-    }
-
-    a {
-        color: #337ab7;
-        text-decoration: none;
-    }
-
-    .postDate {
-        font-family: 'Lato', sans-serif;
-        font-size: 80%;
-        padding: 0;
-        margin: 0;
-        font-weight: bold;
-    }
-
-    .postExcerpt {
-        font-family: 'Lato', sans-serif;
-        font-size: 85%;
-    }
-
-    .ul.youtube {
-      list-style-image: url('/images/leaf_icon.jpg');
-    }
-    .jumbotron {
-      background-size: cover;
-      min-height: 300px;
-    }
-
+  $feature-flags: (
+    grid-columns-16: true
+  );
 </style>
-<script src="https://kit.fontawesome.com/b1689ecae8.js"></script>
 </head>
 
+<header class="bx--header" role="banner" aria-label="IBM Platform Name" data-header>
+  <a class="bx--skip-to-content" href="#main-content" tabindex="0">Skip to main content</a>
 
-<div class="jumbotron  text-center jumbotron-fluid">
-      <div class="container">
-        <span class="postTitle">Mobile services in IBM Cloud Pak for Applications</span>
-        <p><span class="postsubTitle2">Expedite the movement of your enterprise workloads to the cloud by using <a href="https://www.ibm.com/cloud/cloud-pak-for-applications" target="_blank">IBM Cloud Pak for Applications</a>, which is an enterprise-grade environment that provides end-to-end capabilities to modernize your existing workloads or to build new cloud-native apps.</span> </p>
-          <hr class="my-4">
-          <p><span class="postsubTitle2">Mobile services in IBM Cloud Pak for Applications enables you to create a mobile channel for your applications, solving some of the modern-day business challenges and fostering innovation.</span></p>
-          <a style="text-decoration:none" class="button is-info" href="../foundation/8.0/gettingstarted-mobile-icpa/">Get Started</a>
+  <a class="bx--header__name" href="" title="">
+    <span class="bx--header__name--prefix">
+      Mobile&nbsp;Foundation&nbsp;{dev}
+    </span>
+  </a>
 
-      </div>
-</div>
-<!--<div class="column is-6 text-center">
-  <div class="card card-block d-flex border-primary mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="height: 12rem">
+  <nav class="bx--header__nav" aria-label="Platform Name" data-header-nav>
+    <ul class="bx--header__menu-bar" role="menubar" aria-label="Platform Name">
+      <li>
+        <a class="bx--header__menu-item" href="../../../features/" role="menuitem" tabindex="0">
+          Features
+        </a>
+      </li>
 
-  <div class="card-body align-items-center d-flex justify-content-center">
-    <span style="font-size: 3em; color: #50218A;"><i class="fas fa-tools"></i></span>
-
-    <h5 class="card-title"><span class="postTitleDAB">ACCELERATE DEVELOPMENT</span></h5>
-
-    <p class="card-text"><span class="postExcerpt">Application Time to Market reduced with low-code</span></p>
-
-    <p class="card-text"><span class="postsubTitleDAB"><b>DIGITAL APP BUILDER</b></span></p>
-    <ul class="fa-ul">
-    <li><span style="color: #50218A;"><i class="fa-li fab fa-youtube"></i></span><span class="postsubTitle2">Watch the quick assembly of a hybrid, cross platform mobile application that is enabled with security and analytics.</span></li>
-    <li><span style="color: #50218A;"><i class="fa-li fab fa-youtube"></i></span><span class="postsubTitle2">Watch how to low-code engagement capabiities into your mobile applications enabling Push Notifications, Feature Toggle, Chatbot Integration and In-app Feedback.</span></li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Developers
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Developers">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Native
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Hybrid
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Cross Platform
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Web
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Docs
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Docs">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                All Docs
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Admins
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Product Integration
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Learn More
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Labs
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="L1 link 4">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Developers
+                <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+                  <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+                </svg>
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="javascript:void(0)" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Administrators
+                <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+                  <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+                </svg>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a class="bx--header__menu-item" href="../../../blog/" role="menuitem" tabindex="0">
+          Blog
+        </a>
+      </li>
+      <li>
+        <a class="bx--header__menu-item" href="../../../downloads/" role="menuitem" tabindex="0">
+          Downloads
+        </a>
+      </li>
+      <li>
+        <a class="bx--header__menu-item" href="../../../video-gallery/" role="menuitem" tabindex="0">
+          Video&nbsp;Gallery
+        </a>
+      </li>
+      <li>
+        <a class="bx--header__menu-item" href="../../../help/" role="menuitem" tabindex="0">
+          Help
+        </a>
+      </li>
     </ul>
-    <br/>
+  </nav>
 
-    <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/digital-app-builder/">Learn</a>
+
+<div class="bx--form-item">
+  <div data-search role="search" class="bx--search bx--search--xl bx--search--gray" style="background-color: #000000">
+    <label id="search-input-label-1" class="bx--label" for="search__input-1">Search</label>
+    <input class="bx--search-input" type="text" id="search__input-1" placeholder="Search">
+    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--search-magnifier" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M15 14.3L10.7 10c1.9-2.3 1.6-5.8-.7-7.7S4.2.7 2.3 3 .7 8.8 3 10.7c2 1.7 5 1.7 7 0l4.3 4.3.7-.7zM2 6.5C2 4 4 2 6.5 2S11 4 11 6.5 9 11 6.5 11 2 9 2 6.5z"></path></svg>
+    <button class="bx--search-close bx--search-close--hidden" title="Clear search
+        input" aria-label="Clear search input">
+      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--search-clear" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M12 4.7l-.7-.7L8 7.3 4.7 4l-.7.7L7.3 8 4 11.3l.7.7L8 8.7l3.3 3.3.7-.7L8.7 8z"></path></svg>
+
+    </button>
   </div>
-  </div>-->
-<!--<div style="background:transparent !important" class="jumbotron  text-center col-md-6">
-      <div class="card card-block d-flex border-primary mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="height: 28rem">
-        <div class="card-body align-items-center d-flex justify-content-center">
-          <span style="font-size: 3em; color: #50218A;"><i class="fas fa-tools"></i></span>
-
-          <h5 class="card-title"><span class="postTitleDAB">ACCELERATE DEVELOPMENT</span></h5>
-
-          <p class="card-text"><span class="postExcerpt">Application Time to Market reduced with low-code</span></p>
-
-          <p class="card-text"><span class="postsubTitleDAB"><b>DIGITAL APP BUILDER</b></span></p>
-
-          <ul class="fa-ul">
-          <li><span style="color: #50218A;"><a href="" target="_blank"><i class="fa-li fab fa-youtube"></i></a></span><span class="postsubTitle3">Watch the quick assembly of a hybrid, cross platform mobile application that is enabled with security and analytics.</span></li>
-          <li><span style="color: #50218A;"><a href="" target="_blank"><i class="fa-li fab fa-youtube"></i></a></span><span class="postsubTitle3">Watch how to low-code engagement capabiities into your mobile applications enabling Push Notifications, Feature Toggle, Chatbot Integration and In-app Feedback.</span></li>
-          </ul>
-          <br/>
-          <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/digital-app-builder/">Learn</a>
-          </div>
-      </div>
-</div>-->
-
-
-<!--<div class="column is-6 text-center">
-  <div class="card card-block d-flex border-primary mb-3 shadow-lg p-3 mb-5 bg-white rounded" style="height: 12rem">
-
-  <div class="card-body align-items-center d-flex justify-content-center">
-    <span style="font-size: 3em; color: #50218A;"><i class="fas fa-tools"></i></span>
-
-    <h5 class="card-title"><span class="postTitleDAB">ACCELERATE DEVELOPMENT</span></h5>
-
-    <p class="card-text"><span class="postExcerpt">Application Time to Market reduced with low-code</span></p>
-
-    <p class="card-text"><span class="postsubTitleDAB"><b>DIGITAL APP BUILDER</b></span></p>
-
-    <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/digital-app-builder/">Learn</a>
   </div>
+
+</header>
+
+<div class="bx--content" style="background-image: url('header.jpg')">
+<!--  <div class="bx--grid bx--grid--full-width landing-page">
+    <div class="bx--row landing-page__banner">
+      <div class="bx--col-lg-16">1</div>
+    </div>
+    <div class="bx--row landing-page__r2">
+      <div class="bx--col-md-4 bx--col-lg-7">7/16</div>
+      <div class="bx--col-md-4 bx--offset-lg-1 bx--col-lg-8">8/16</div>
+    </div>
+    <div class="bx--row landing-page__r3">
+      <div class="bx--col-md-4 bx--col-lg-4">1/4</div>
+      <div class="bx--col-md-4 bx--col-lg-4">1/4</div>
+      <div class="bx--col-md-4 bx--col-lg-4">1/4</div>
+      <div class="bx--col-md-4 bx--col-lg-4">1/4</div>
+    </div>
   </div>-->
+  <div class="bx--row landing-page__banner" >
+    <div class="bx--col-lg-12"><h2 style="color:white">Mobile services in IBM Cloud Pak for Applications</h2>
+      <br/>
+      <p style="color:white">Modernize your existing workloads or build new cloud-native apps using enterprise grade environment with built-in capabilities. <br/>Create a mobile channel for your applications and solve some of the modern-day business challenges <br/>and foster the fulfillment of innovative usecases.</p>
+        <br/>
+      <button  class="bx--btn bx--btn--primary" type="button">Get Started
 
-<br/>
+      </button>
+    </div>
+  </div>
+</div>
+  <br/>
+  <br/>
+<div class="bx--grid bx--grid--full-width landing-page">
 
-<div class="container is-fluid">
-  <div class="columns is-multiline">
-      <div class="column is-3 text-center">
-          <!-- START ARTICLE -->
-          <div class="card card-block d-flex rounded-sm border text-primary border-primary mb-3 box-shadow" style="height: 20rem">
-            <!--<div class="card-header text-white" style="background-color: #DB4322;">
+  <div class="bx--row" style="width: 100%">
+      <div class="bx--col bx--col-max-2 bx--col-sm-2">
+        <p>Explore our capabilities</p>
+        </div>
+    <div class="bx--col bx--col-md-10 bx--col-sm-10">
+      <div class="bx--row">
 
+        <div class="bx--col bx--col-md-10 bx--col-sm-10">
+          <div data-tile="readonly" class="bx--tile bx--tile--readonly" style="background-color: #ffffff" tabindex="0">
+            <svg width="23" height="23" fill-rule="evenodd"><path d="M5.8 1.2v4.7H1.2V1.2h4.6zM7 0H0v7h7V0zM13.8 1.2v4.7H9.2V1.2h4.6zM15 0H8v7h7V0zM21.8 1.2v4.7h-4.7V1.2h4.7zM23 0h-7v7h7V0zM5.8 9.2v4.7H1.2V9.2h4.6zM7 8H0v7h7V8zM13.8 9.2v4.7H9.2V9.2h4.6zM15 8H8v7h7V8zM21.8 9.2v4.7h-4.7V9.2h4.7zM23 8h-7v7h7V8zM5.8 17.2v4.7H1.2v-4.7h4.6zM7 16H0v7h7v-7zM13.8 17.2v4.7H9.2v-4.7h4.6zM15 16H8v7h7v-7zM21.8 17.2v4.7h-4.7v-4.7h4.7zM23 16h-7v7h7v-7z"></path></svg>
+            <br/>
+            <br/>
+            <h3>Accelerate Development</h3>
+            <br/>
+            <p>Quickly build digital apps that can run on multiple channels. The Digital App Builder provides the ability to drag-and-drop components to quickly build an app.</p>
+            <br/>
+            <section class="bx--structured-list">
+            <div class="bx--structured-list-thead">
+              <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                  <div class="bx--structured-list-th">Digital App Builder</div>
+
+              </div>
             </div>
-          <div class="card-header"></div>-->
-          <br/>
-          <div class="card-body align-items-center d-flex justify-content-center">
-            <span style="font-size: 3em; color: #DB4322;"><i class="fas fa-cogs"></i></span>
-            <h5 class="card-title"><span class="postTitleServer">MANAGE AND CONTROL</span></h5>
-            <br/>
-            <p class="card-text"><span class="postExcerpt">Application Lifecycle, Security Feature Toggle, <br/>Offline DataSync</span></p>
-            <br/>
-            <p class="card-text"><span class="postsubTitleServer"><b>FOUNDATION SERVICES</b></p>
-              <br/>
-            <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/all-tutorials/">Learn</a>
-          </div>
-        <!--  <div class="card article" style="height: 26rem;">
+            <div class="bx--structured-list-tbody">
+                  <div class="bx--structured-list-row">
 
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-content">
-                          <p class="title is-5 article-title"><span class="postTitle1">Foundation Server</span></p>
-                          <p><span class="postExcerpt">Mobile Foundation service simplifies building, managing, and updating your mobile applications with a comprehensive set of mobile application services.<br/>Developers can build their application using the front-end framework and tools of choice, and easily add push, authentication, offline sync, and business logic to their apps with the Mobile software development kit (SDK) that is available across a wide range of supported mobile platforms.</span></p>
-
-                          <br/>
-                          <br/>-->
-                          <!--<p class="content is-12">
-                              <span class="postExcerpt">Developers can build their application using the front-end framework and tools of their choice, and easily add push, authentication, offline sync, and business logic to their apps with the Mobile software development kit (SDK) available across a wide range of supported mobile platforms. Mobile Foundation service enables you to control your application from client to server.</span>
-                          </p>-->
-                        <!--  <a style="text-decoration:none" class="button is-info is-outlined" href="{{site.baseurl}}server/">Learn</a>
-                      </div>
+                      <div class="bx--structured-list-td">Digital App Builder with AI capabilities leveraging Watson services.</div>
                   </div>
-              </div>-->
+
+            </div>
+          </section>
+            <button  style="width: 100%" class="bx--btn bx--btn--primary" type="button">Find out more
+          </button>
           </div>
-          </div>
-          <div class="column is-3 text-center">
-            <div class="card card-block d-flex border-primary mb-3" style="height: 20rem">
-              <!--<div class="card-header text-white" style="background-color: DodgerBlue;">
-
-              </div>
-            <div class="card-header"></div>-->
-            <br/>
-            <div class="card-body align-items-center d-flex justify-content-center">
-              <span style="font-size: 3em; color: DodgerBlue;"><i class="fas fa-chart-line"></i></span>
-              <h5 class="card-title"><span class="postTitleAnalytics">SENSE AND RESPOND</span></h5>
-              <br/>
-              <p class="card-text"><span class="postExcerpt">Application Usage, Network Interactions, <br/>Application Stability, In-app User Feedback</span></p>
-              <br/>
-              <p class="card-text"><span class="postsubTitleAnalytics"><b>MOBILE ANALYTICS</b></p>
-                <br/>
-              <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/analytics/">Learn</a>
-            </div>
-            </div>
-        <!--  <div class="card article" style="height: 26rem;">
-
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-content">
-                          <p class="title is-5 article-title"><span class="postTitle1">Mobile Analytics</span></p>
-                          <p><span class="postExcerpt">To keep your user engagement relevant and effective you must obtain insights into how your application is performing with users. Mobile Analytics service provides this capability with in-built visualizations (charts and tables). With very minimal instrumentation of your application, you can readily visualize, on the Mobile Foundation Analytics console insights such as User Onboarding & Retention Patterns, Device & OS Distribution, Backend Performance, Application Stability, and more.</span></p>
-
-                          <br/>
-
-                          <a style="text-decoration:none" class="button is-info is-outlined" href="{{site.baseurl}}analytics/">Learn</a>
-                      </div>
-                  </div>
-              </div>
-          </div>-->
-          </div>
-          <div class="column is-6 text-center">
-                <div class="card text-white bg-info mb-3" style="height: 20rem">
-                  <div class="card-body align-items-center d-flex justify-content-center">
-                    <span style="font-size: 3em; color: #50218A;"><i class="fas fa-tools"></i></span>
-
-                    <h5 class="card-title"><span class="postTitleDAB">ACCELERATE DEVELOPMENT</span></h5>
-
-                    <p class="card-text"><span class="postExcerpt">Application Time to Market reduced with low-code</span></p>
-
-                    <p class="card-text"><span class="postsubTitleDAB"><b>DIGITAL APP BUILDER</b></span></p>
-
-                    <ul class="fa-ul">
-                    <li><span style="color: #50218A;"><a href="" target="_blank"><i class="fa-li fab fa-youtube"></i></a></span><span class="postsubTitle3">Watch the quick assembly of a hybrid, cross platform mobile application that is enabled with security and analytics.</span></li>
-                    <li><span style="color: #50218A;"><a href="" target="_blank"><i class="fa-li fab fa-youtube"></i></a></span><span class="postsubTitle3">Watch how to low-code engagement capabiities into your mobile applications enabling Push Notifications, Feature Toggle, Chatbot Integration and In-app Feedback.</span></li>
-                    </ul>
-                    <br/>
-                    <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/digital-app-builder/">Learn</a>
-                    </div>
-                </div>
-          </div>
-          <div class="column is-6 text-center">
-            <div class="card card-block d-flex border-primary mb-3" style="height: 20rem">
-              <!--<div class="card-header text-white" style="background-color: #6B5D5F;">
-
-              </div>
-            <div class="card-header"></div>-->
-            <br/>
-            <div class="card-body align-items-center d-flex justify-content-center">
-              <span style="font-size: 3em; color: #6B5D5F;"><i class="far fa-handshake"></i></span>
-              <h5 class="card-title"><span class="postTitlePush">ENGAGE</span></h5>
-              <br/>
-              <p class="card-text"><span class="postExcerpt">Push Notifications - Android, iOS, Windows and <br/>Web</span></p>
-              <br/>
-              <p class="card-text"><span class="postsubTitlePush"><b>PUSH NOTIFICATIONS</b></span></p>
-                <br/>
-              <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/notifications/">Learn</a>
-            </div>
-            </div>
-        <!--  <div class="card article" style="height: 26rem;">
-
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-content">
-                          <p class="title is-5 article-title"><span class="postTitle1">Application Center</span></p>
-                          <p><span class="postExcerpt">Application Center is a tool to make sharing mobile applications within an organization easier. You can use the Application Center as an enterprise application store. With the Application Center, you can target some mobile applications to particular groups of users within the company.<br/>Developers can use the Application Center for collaborative application development.</span></p>
-
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-
-                          <a style="text-decoration:none" class="button is-info is-outlined" href="{{site.baseurl}}appcenter/">Learn</a>
-                      </div>
-                  </div>
-              </div>
-          </div>-->
-          </div>
-          <div class="column is-6 text-center">
-            <div class="card card-block d-flex border-primary mb-3" style="height: 20rem">
-              <!--<div class="card-header text-white" style="background-color: #208C2B;">
-
-              </div>
-            <div class="card-header"></div>-->
-            <br/>
-            <div class="card-body align-items-center d-flex justify-content-center">
-              <span style="font-size: 3em; color: #208C2B;"><i class="fas fa-cubes"></i></span>
-              <h5 class="card-title"><span class="postTitleAC">PACKAGE AND DISTRIBUTE</span></h5>
-              <br/>
-              <p class="card-text"><span class="postExcerpt">Enterprise App Store - iOS, Android, Windows <br/>and User Feedback</span></p>
-              <br/>
-              <p class="card-text"><span class="postsubTitleAC"><b>APPLICATION CENTER</b></span></p>
-                <br/>
-              <a style="text-decoration:none" class="button is-dark is-outlined" href="../foundation/8.0/appcenter/">Learn</a>
-            </div>
-            </div>
-          <!--<div class="card article" style="height: 26rem;">
-
-              <div class="card-content">
-                  <div class="media">
-                      <div class="media-content">
-                          <p class="title is-5 article-title"><span class="postTitle1">Push Notifications</span></p>
-                          <p><span class="postExcerpt">Notifications is the ability to push a message from the application backend running on the server to a mobile application user delivered on the device.<br/>Push Notifications service provides a unified set of API methods to send either push or SMS notifications to iOS, Android, Windows 8.1 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. The notifications are sent from the Mobile Server to the vendor (Apple, Google, Microsoft, SMS Gateways) infrastructure, and from there to the relevant devices.</span>
-                           </p>
-
-                          <br/>
-
-                          <a style="text-decoration:none" class="button is-info is-outlined" href="{{site.baseurl}}notifications/">Learn</a>
-                      </div>
-                  </div>
-              </div>
-          </div>-->
-      </div>
-
-
-      <!-- END ARTICLE -->
-
-
+        </div>
       </div>
       <br/>
+    <div class="bx--row" style="width: 100%">
+      <div class="bx--col bx--col-max-3 bx--col-sm-3">
+        <div data-tile="readonly" class="bx--tile bx--tile--readonly" style="background-color: #ffffff" tabindex="0">
+          <svg width="23" height="24" fill-rule="evenodd"><path d="M20.5 18v-6h-9V5.9C12.9 5.7 14 4.5 14 3c0-1.7-1.3-3-3-3S8 1.3 8 3c0 1.5 1.1 2.7 2.5 2.9V12h-8v6.1C1.1 18.4 0 19.6 0 21c0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.5-1.1-2.7-2.5-2.9V13h16v5.1c-1.4.2-2.5 1.5-2.5 2.9 0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.5-1-2.8-2.5-3zM9 3c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zM5 21c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm15 2c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></svg>
+          <br/>
+          <br/>
+          <h3>Manage and Control</h3>
+          <br/>
+          <p>Enable developers to rapidly build, deploy and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.</p>
+          <br/>
+          <br/>
+          <section class="bx--structured-list">
+          <div class="bx--structured-list-thead">
+            <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                <div class="bx--structured-list-th">Foundation services</div>
+
+            </div>
+          </div>
+          <div class="bx--structured-list-tbody">
+                <div class="bx--structured-list-row">
+
+                    <div class="bx--structured-list-td">Application Lifecycle</div>
+                </div>
+                <div class="bx--structured-list-row">
+
+                    <div class="bx--structured-list-td">Security Feature Toggle</div>
+                </div>
+                <div class="bx--structured-list-row">
+
+                    <div class="bx--structured-list-td">Offline data sync</div>
+                </div>
+          </div>
+        </section>
+        <br/>
+
+
+          <button  style="width: 100%" class="bx--btn bx--btn--primary" type="button">Find out more
+        </button>
+        </div>
+      </div>
+      <div class="bx--col bx--col-max-3 bx--col-sm-3">
+        <div data-tile="readonly" class="bx--tile bx--tile--readonly" style="background-color: #ffffff" tabindex="0">
+          <svg width="24" height="24" fill-rule="evenodd"><path d="M0 0v24h24V0H0zm22.1 7l-7.2 8.9-9.2-3.8c-.2-.1-.4 0-.6.1L1 16.6V7h21.1zm.9 16H1v-4.9l4.6-5 9.2 3.8c.2.1.4 0 .6-.1L23 7.5V23zm0-17H1V1h22v5z"></path></svg>
+          <br/>
+          <br/>
+          <h3>Sense and Respond</h3>
+          <br/>
+          <p>Keep your user engagement relevant and effective by obtaining insights into how your application is performing with users, with the help of built-in visualizations.</p>
+          <br/>
+          <section class="bx--structured-list">
+          <div class="bx--structured-list-thead">
+            <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                <div class="bx--structured-list-th">Mobile Analytics</div>
+
+            </div>
+          </div>
+          <div class="bx--structured-list-tbody">
+                <div class="bx--structured-list-row">
+
+                    <div class="bx--structured-list-td">Application usage and stability</div>
+                </div>
+                <div class="bx--structured-list-row">
+
+                    <div class="bx--structured-list-td">Network interactions</div>
+                </div>
+                <div class="bx--structured-list-row">
+
+                    <div class="bx--structured-list-td">In-app user feedback</div>
+                </div>
+          </div>
+        </section>
+
+
+          <button  style="width: 100%" class="bx--btn bx--btn--primary" type="button">Find out more
+        </button>
+        </div>
+      </div>
+      <div class="bx--col bx--col-max-3 bx--col-sm-3">
+        <div data-tile="readonly" class="bx--tile bx--tile--readonly" style="background-color: #ffffff" tabindex="0">
+          <svg width="24" height="24" fill-rule="evenodd"><path d="M21 13V3h-3v1h2v9h-3v11h7V13h-3zm2 10h-5v-9h5v9zM17 3.5L11 0v3H3v13h1V4h7v3l6-3.5zm-5-1.8l3 1.8-3 1.8V1.7zM16 20H6.4c-.3-1.4-1.6-2.5-3.2-2.5C1.4 17.5 0 19 0 20.7 0 22.5 1.5 24 3.2 24c1.7 0 3.1-1.3 3.2-3h9.5l.1-1zM3.2 23C2 23 1 22 1 20.7c0-1.2 1-2.2 2.2-2.2 1.2 0 2.2 1 2.2 2.2.1 1.3-.9 2.3-2.2 2.3z"></path></svg>
+          <br/>
+          <br/>
+          <h3>Engage with your users</h3>
+          <br/>
+          <p>Engage your audience through unified notification mechanism that makes the entire process completely transparent to the developer.</p>
+          <br/>
+          <br/>
+          <section class="bx--structured-list">
+          <div class="bx--structured-list-thead">
+            <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                <div class="bx--structured-list-th">Push Notifications</div>
+
+            </div>
+          </div>
+          <div class="bx--structured-list-tbody">
+                <div class="bx--structured-list-row">
+
+                    <div class="bx--structured-list-td">Push notifications for iOS, Android, Windows and Web.</div>
+                </div>
+
+          </div>
+        </section>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+
+          <button  style="width: 100%" class="bx--btn bx--btn--primary" type="button">Find out more
+        </button>
+        </div>
+      </div>
+      <div class="bx--col bx--col-max-3 bx--col-sm-3">
+        <div data-tile="readonly" class="bx--tile bx--tile--readonly" style="background-color: #ffffff" tabindex="0">
+          <svg width="24" height="24" fill-rule="evenodd"><path d="M14 1v22H1V1h13zm1-1H0v24h15V0zM23 1v22h-5V1h5zm1-1h-7v24h7V0z"></path><path d="M12 4v4H3V4h9zm1-1H2v6h11V3zM21 3v1h-1V3h1zm1-1h-3v3h3V2zM21 7v1h-1V7h1zm1-1h-3v3h3V6zM21 11v1h-1v-1h1zm1-1h-3v3h3v-3zM21 15v1h-1v-1h1zm1-1h-3v3h3v-3zM21 19v1h-1v-1h1zm1-1h-3v3h3v-3z"></path></svg>
+          <br/>
+          <br/>
+          <h3>Package and Distribute</h3>
+          <br/>
+          <p>Use the application center as an enterprise application store and target some mobile applications to particular groups of users within the company.</p>
+          <br/>
+          <br/>
+          <section class="bx--structured-list">
+          <div class="bx--structured-list-thead">
+            <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                <div class="bx--structured-list-th">Application Center</div>
+
+            </div>
+          </div>
+          <div class="bx--structured-list-tbody">
+                <div class="bx--structured-list-row">
+
+                    <div class="bx--structured-list-td">Enterprise app store for iOS, Android and Windows.</div>
+                </div>
+
+          </div>
+        </section>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+          <button  style="width: 100%" class="bx--btn bx--btn--primary" type="button">Find out more
+        </button>
+        </div>
+      </div>
+
+    </div>
+    <br/>
+
+
+    </div>
   </div>
+
+<br/>
+<br/>
+  <div class="bx--row" style="background-color: #f0f3f6">
+      <div class="bx--col bx--col-md-6 bx--col-sm-6">
+        <br/>
+        <br/>
+        <h4 style="color:black">View the documentation</h4>
+        </div>
+    <div class="bx--col bx--col-max-10 bx--col-sm-10">
+
+    <div class="bx--row" style="width: 100%">
+      <div class="bx--col bx--col-max-6 bx--col-sm-6">
+        <div data-tile="readonly" class="bx--tile bx--tile--readonly" style="background-color: #f0f3f6" tabindex="0">
+
+
+
+          <div class="bx--tile" style="background-color: #f0f3f6"><iframe width="570" height="200" src="https://www.youtube.com/embed/d6cMoUtaGk8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+        </div>
+      </div>
+      <div class="bx--col bx--col-max-6 bx--col-sm-6" style="background-color: #f0f3f6">
+        <div data-tile="readonly" class="bx--tile bx--tile--readonly" style="background-color: #f0f3f6 width:100%" tabindex="0">
+          <svg width="12" height="16" fill-rule="evenodd"><path d="M10.581 3.996L8.014 1.429l.026 2.559 2.541.008zM7.011 1H1v14h10V4.997l-2.963-.01a1 1 0 0 1-.997-.99L7.01 1zM1 0h7l4 4v11a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" fill-rule="nonzero"></path><path d="M3 9h6v1H3zM3 12h6v1H3z"></path></svg>
+            <br/>
+            <br/>
+            <h4 style="color:black"><b>Explore the docs</b></h4>
+            <br/>
+            <br/>
+          <p style="color:black">View the complete documentation <br/>on Mobile Foundation.</p>
+          <br/>
+          <br/>
+          <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://mobilefirstplatform.ibmcloud.com/"><svg width="16" height="14" fill-rule="evenodd"><path d="M11.95 5.997L7.86 2.092 9.233.639l6.763 6.356-6.763 6.366L7.86 11.91l4.092-3.912H-.003v-2h11.952z" fill-rule="nonzero"></path></svg></a>
+
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+    </div>
+  </div>
+
+  <div class="bx--row" style="background-color: #f0f3f6">
+      <div class="bx--col bx--col-md-6 bx--col-sm-6">
+        <br/>
+
+        <h4 style="color:black">I am a...</h4>
+        </div>
+    <div class="bx--col bx--col-max-10 bx--col-sm-10">
+
+    <div class="bx--row" style="width: 100%">
+      <div class="bx--col bx--col-max-6 bx--col-sm-6">
+        <div data-tile="readonly" class="bx--tile bx--tile--readonly" style="background-color: #3d70b2" tabindex="0">
+
+
+          <h4 style="color:white"><b>Front-end developer</b></h4>
+          <br/>
+          <p style="color:white">Quickly create mobile, web and PWA (Progressive Web App) multi-channel applications having AI capabilities with low-code approach.</p>
+          <br/>
+          <br/>
+          <br/>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <a href="front-end-developer-journey/"><svg width="16" height="14" color=white fill-rule="evenodd"><path d="M11.95 5.997L7.86 2.092 9.233.639l6.763 6.356-6.763 6.366L7.86 11.91l4.092-3.912H-.003v-2h11.952z" fill-rule="nonzero"></path></svg></a>
+        </div>
+      </div>
+      <div class="bx--col bx--col-max-6 bx--col-sm-6">
+        <div data-tile="readonly" class="bx--tile bx--tile--readonly" style="background-color: #f0f3f6" tabindex="0">
+          <h4><b>Solution architect</b></h4>
+          <br/>
+          <p>Keep up with the latest technology advancements and maximize the returns on software investments.</p>
+          <br/>
+          <br/>
+          <br/>
+
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <svg width="16" height="14" fill-rule="evenodd"><path d="M11.95 5.997L7.86 2.092 9.233.639l6.763 6.356-6.763 6.366L7.86 11.91l4.092-3.912H-.003v-2h11.952z" fill-rule="nonzero"></path></svg>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="bx--row" style="width: 100%; background-color: $ui-05; border: 1">
+  <div class="bx--col-lg-12">
+    <div class="bx--row" style="width: 100%">
+      <div class="bx--col bx--col-max-12 bx--col-sm-12">
+        <div class="bx--row" style="height: 50">
+          <div class="bx--col bx--col-max-6 bx--col-sm-4">
+
+              <h3>I would like to...</h3>
+
+          </div>
+
+          <div class="bx--col bx--col-max-6 bx--col-sm-6" height="300rem">
+
+              <div class="bx--tile">
+                <br/>
+                <br/>
+                <h3>Front-end developer</h3>
+                <br/>
+                <br/>
+              <p>Quickly create mobile, web and PWA (Progressive Web App) multi-channel applications having AI capabilities with low-code approach.</p>
+              <br/>
+              <br/>
+              <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <svg width="16" height="14" fill-rule="evenodd"><path d="M11.95 5.997L7.86 2.092 9.233.639l6.763 6.356-6.763 6.366L7.86 11.91l4.092-3.912H-.003v-2h11.952z" fill-rule="nonzero"></path></svg>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>-->
+
+<!--<div class="bx--row" style="width: 100%; background-color: $ui-05; border: 1">
+  <div class="bx--col-lg-12">
+    <div class="bx--row" style="width: 100%">
+      <div class="bx--col bx--col-max-12 bx--col-sm-12">
+        <div class="bx--row" style="height: 50">
+          <div class="bx--col bx--col-md-4 bx--col-sm-4">
+
+              <h4>View the documentation</h4>
+
+          </div>
+          <div class="bx--col bx--col-md-4 bx--col-sm-4">
+
+
+                <div class="bx--tile"><iframe width="500" height="220" src="https://www.youtube.com/embed/d6cMoUtaGk8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
+          </div>
+          <div class="bx--col bx--col-md-4 bx--col-sm-4" height="300rem">
+
+              <div class="bx--tile"><svg width="12" height="16" fill-rule="evenodd"><path d="M10.581 3.996L8.014 1.429l.026 2.559 2.541.008zM7.011 1H1v14h10V4.997l-2.963-.01a1 1 0 0 1-.997-.99L7.01 1zM1 0h7l4 4v11a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V1a1 1 0 0 1 1-1z" fill-rule="nonzero"></path><path d="M3 9h6v1H3zM3 12h6v1H3z"></path></svg>
+                <br/>
+                <br/>
+                <h3>Explore the docs</h3>
+                <br/>
+                <br/>
+              <p>View the complete documentation <br/>on Mobile Foundation.</p>
+              <br/>
+              <br/>
+              <br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <svg width="14" height="14" fill-rule="evenodd"><path fill-rule="nonzero" d="M5.569 5.994L0 .726.687 0l6.336 5.994-6.335 6.002L0 11.27z"></path></svg>
+              </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>-->
+
+<br/>
