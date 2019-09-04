@@ -27,16 +27,14 @@ With the final release of Android 10, we have validated Mobile Foundation v8.0 a
 * Oauth handshake with Mobile Foundation server 
 * Push notifications
 
-![Sample Images]({{site.baseurl}}/assets/blog/2019-09-04-mobilefirst-android-Q/sampleimages.png)
 
 
 ### Dark theme in Android 10
 [Dark theme](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme) is available in Android 10. As a developer, you'll have to adapt your app for the dark theme. Read [this](https://developer.android.com/guide/topics/ui/look-and-feel/darktheme#supporting_dark_theme_in_your_app) document to know what changes you will have to make.  
 
 ### Targeting your apps for Android 10
-Mobile Foundation apps built on v7.1 and v8.0 have been validated with `targetSdkVersion` set to 29. Do note that if your application has minSdkVersion less than 23 then you will get a warning message saying that "This app was built for an older version of Android and may not work properly" as shown in the below image. Increase the `minSdkVersion` of your app to 23 or higher to ensure the warning is not seen on Android 10. 
+Mobile Foundation apps built on v7.1 and v8.0 have been validated with `targetSdkVersion` set to 29. Do note that if your application has minSdkVersion less than 23 then you will get a warning message saying that "This app was built for an older version of Android and may not work properly". Increase the `minSdkVersion` of your app to 23 or higher to ensure the warning is not seen on Android 10. 
 
-![Min SDK issue]({{site.baseurl}}/assets/blog/2019-09-04-mobilefirst-android-Q/minsdkissue.png)
 
 ### Known issues
 On Mobile Foundation v7.1 application, if the application is in background and several push notifications are sent to the application, clicking the received push notifications from the notification panel would not show the first notification in the app view. Rest of the notifications will be seen in the app view normally.
