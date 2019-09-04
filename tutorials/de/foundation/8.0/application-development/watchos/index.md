@@ -10,6 +10,8 @@ weight: 13
 {: #overview }
 In diesem Beispiel lernen Sie, wie die Entwicklungsumgebung für watchOS 2 eingerichtet und das {{ site.data.keys.product_adj }}-Framework verwendet wird. Das erstellte und verwendete Beispiel gilt für watchOS 2. Es funktioniert aber auch unter watchOS 3.
 
+>**Hinweis:** Das Feature für Anwendungsauthentizität wird vom watchOS-SDK ab *8.0.0.0-MFPF-IF201903190949-CDUpdate-05* unterstützt. 
+
 ## Setup
 {: #setup }
 Erstellen Sie das Xcode-Projekt, fügen Sie das
@@ -67,9 +69,9 @@ watchOS-2-App ist die Datei **InterfaceController.swift** im Ordner **[Projektna
 
 ## {{ site.data.keys.product_adj }}-Sicherheit für eine iPhone-App und eine watchOS-App einrichten
 {: #setting-up-mobilefirst-security-for-the-iphone-app-and-the-watchos-app }
-Die Apple Watch unterscheidet sich physisch vom iPhone. Die Sicherheitsüberprüfungen müssen daher zum jweiligen Eingabegerät
+Die Apple Watch unterscheidet sich physisch vom iPhone. Die Sicherheitsüberprüfungen müssen daher zum jeweiligen Eingabegerät
 passen. Die Apple
-Watch hag beispielsweise nur einen Ziffernblick, sodass die übliche Sicherheitsüberprüfung mit Benutzernamen/Kennwort nicht möglich ist. Der Zugriff auf geschützte Ressourcen auf dem Server könnte dafür über
+Watch hat beispielsweise nur einen Ziffernblick, sodass die übliche Sicherheitsüberprüfung mit Benutzernamen/Kennwort nicht möglich ist. Der Zugriff auf geschützte Ressourcen auf dem Server könnte dafür über
 einen PIN-Code aktiviert werden. Aufgrund dieser und vergleichbarer Unterschiede ist es notwendig, für jedes Ziel andere Sicherheitsüberprüfungen
 einzurichten. 
 
@@ -96,15 +98,14 @@ zu den {{ site.data.keys.product_adj }}-Apps hinzufügen, werden nicht für die
 watchOS-Entwicklung bereitgestellt. Darüber hinaus gibt es Features, für die es Einschränkungen seitens
 der Uhr mit watchOS oder der Apple Watch gibt. 
 
-| Feature | Einschränkung |
+|Feature |Einschränkung |
 |---------|------------|
-| openSSL| Nicht unterstützt |
-| JSONStore| Nicht unterstützt |
-| Benachrichtigungen| Nicht unterstützt |
-| Vom {{ site.data.keys.product_adj }}-Code angezeigte Nachrichtenalerts| Nicht unterstützt |
-| Validierung der Anwendungsauthentizität| Nicht mit Bitcode kompatibel und daher nicht unterstützt|
-| Ferne Inaktivierung/Benachrichtigung | Erfordert Anpassungen (siehe unten)|
-| Sicherheitsüberprüfung mit Benutzernamen/Kennwort| Sicherheitsüberprüfung CredentialsValidation verwenden|
+|openSSL|Nicht unterstützt |
+|JSONStore|Nicht unterstützt |
+|Benachrichtigungen|Nicht unterstützt |
+|Vom {{ site.data.keys.product_adj }}-Code angezeigte Nachrichtenalerts|Nicht unterstützt |
+|Ferne Inaktivierung/Benachrichtigung |Erfordert Anpassungen (siehe unten)|
+|Sicherheitsüberprüfung mit Benutzernamen/Kennwort|Sicherheitsüberprüfung CredentialsValidation verwenden|
 
 ### Inaktivierung/Benachrichtigung über Fernzugriff
 {: #remote-disablenotify }

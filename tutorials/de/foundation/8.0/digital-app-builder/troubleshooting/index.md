@@ -62,3 +62,13 @@ Hier finden Sie Hinweise zu einigen Problemen, die bei der Verwendung von IBM Di
 
         Wenn Sie `-U` hinzufügen, wird Maven gezwungen, alle externen Abhängigkeiten zu überprüfen, die gemäß der POM-Datei aktualisiert werden müssen.
 
+* Die Prüfung der Voraussetzungen für Android Studio schlägt fehl, obwohl die vorausgesetzten Komponenten installiert sind.
+
+    Stellen Sie sicher, dass sich die ausführbare Android-Datei im Pfad befindet (`<Pfad zum Android-SDK>/tools`), wenn Sie die Voraussetzungen überprüfen.
+
+* Problem bei der App-Erstellung und -Voranzeige unter Windows 7
+
+    Wenn Sie versuchen, eine neue App an einer anderen Plattenlaufwerkposition als `C:` zu erstellen, wird möglicherweise ein Fehler gemeldet.
+
+    Sie müssen Ihr App-Projekt an der Laufwerkposition `C://<Ihr Ordnername/App-Name>` erstellen.
+

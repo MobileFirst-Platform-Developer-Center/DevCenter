@@ -57,7 +57,7 @@ Si está utilizando un servidor instalado localmente: Desde una ventana de **lí
    ```
      - *Hello* es el nombre de carpeta y el nombre de la aplicación.
 
-    El archivo **index.js** de la plantilla permite utilizar características de {{ site.data.keys.product_adj }} adicionales como, por ejemplo, la [traducción de aplicación multilingüe](../../translation) y opciones de inicialización (consulte la documentación del usuario para obtener más información).
+    > El archivo **index.js** de la plantilla permite utilizar características de {{ site.data.keys.product_adj }} adicionales como, por ejemplo, la [traducción de aplicación multilingüe](../../translation) y opciones de inicialización (consulte la documentación del usuario para obtener más información).
 
 2. Cambie el directorio a la raíz del proyecto de React Native: `cd hello`
 

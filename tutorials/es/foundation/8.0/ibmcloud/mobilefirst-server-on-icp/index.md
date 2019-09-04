@@ -36,7 +36,7 @@ Para gestionar los contenedores y las imágenes, debe instalar las herramientas 
 
 * Docker
 * CLI de IBM Cloud (`cloudctl`)
-* Kubernetes CLI (`kubectl`)
+* CLI de Kubernetes (`kubectl`)
 * Helm (`helm`)
 
 Para acceder a {{ site.data.keys.prod_icp }} Cluster mediante CLI, debe configurar el cliente *kubectl*. [Más información](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/cfc_cli.html).
@@ -65,7 +65,7 @@ Siga los pasos indicados a continuación para cargar el archivo PPA en el clúst
 
   2. Cargue el archivo PPA de {{ site.data.keys.product }} mediante el mandato siguiente:
       ```
-      cloudctl load-ppa-archive --archive <nombre_archivado> [--clustername <nombre_clúster>] [--namespace <espacio de nombres>]
+      cloudctl load-ppa-archive --archive <archive_name> [--clustername <cluster_name>] [--namespace <namespace>]
       ```
       *archive_name* de {{ site.data.keys.product }} es el nombre del archivo PPA descargado desde IBM Passport Advantage,
 
@@ -115,21 +115,23 @@ La tabla siguiente indica las variables de entorno utilizadas en {{ site.data.ke
 
 | Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
-| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
+| arch | amd64 | Preferencia de planificador de nodos trabajadores de amd64 en un clúster híbtido | 3 - Preferido (valor predeterminado). |
+|  | ppcle64 | Preferencia de planificador de nodos trabajadores de ppc64le en un clúster híbtido | 2 - Sin preferencia (valor predeterminado). |
+|  | s390x | Preferencia de planificador de nodos trabajadores de S390x en un clúster híbtido | 2 - Sin preferencia (valor predeterminado). |
 | image | pullPolicy | Política de extracción de imágenes | El valor predeterminado es **IfNotPresent**. |
 |  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
 |  | name | Nombre de imagen Docker | Nombre de la imagen docker de {{ site.data.keys.prod_adj }} Operational Analytics. |
-| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Operational Analytics que deben crearse | Número entero positivo<br/>El valor predeterminado es **2** |
+| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Operational Analytics que deben crearse | Entero positivo<br/>El valor predeterminado es **2** |
 | mobileFirstAnalyticsConsole | user | Nombre de usuario de {{ site.data.keys.prod_adj }} Operational Analytics | El valor predeterminado es **admin**. |
 |  | password | Contraseña de {{ site.data.keys.prod_adj }} Operational Analytics | El valor predeterminado es **admin**. |
 | analyticsConfiguration | clusterName | Nombre del clúster de {{ site.data.keys.prod_adj }} Analytics | El valor predeterminado es **mobilefirst** |
 |  | analyticsDataDirectory | Vía de acceso donde se almacenan los datos de análisis. *La vía de acceso será la misma si la reclamación de volumen persistente se monta dentro del contenedor*. | El valor predeterminado es `/analyticsData` |
-|  | numberOfShards | Número de fragmentos Elasticsearch de {{ site.data.keys.prod_adj }} Analytics | Número entero positivo<br/>El valor predeterminado es **2** |
-|  | replicasPerShard | Número de réplicas Elasticsearch que se van a mantener por cada fragmento de {{ site.data.keys.prod_adj }} Analytics | Número entero positivo<br/>El valor predeterminado es **2** |
+|  | numberOfShards | Número de fragmentos Elasticsearch de {{ site.data.keys.prod_adj }} Analytics | Entero positivo<br/>El valor predeterminado es **2** |
+|  | replicasPerShard | Número de réplicas Elasticsearch que se van a mantener por cada fragmento de {{ site.data.keys.prod_adj }} Analytics | Entero positivo<br/>El valor predeterminado es **2** |
 | keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
 | jndiConfigurations | mfpfProperties | Propiedades {{ site.data.keys.prod_adj }} JNDI que se deben especificar para personalizar Operational Analytics | Proporcione pares nombre-valor separados por comas. |
-| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas | El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describe la cantidad máxima de memoria permitida | El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas |El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | limits.memory | Describe la cantidad máxima de memoria permitida |El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |  | requests.cpu | Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado será *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1000m**. |
 |  | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado de la cantidad de memoria será *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **2048Mi**. |
 | persistence | existingClaimName | El nombre de la reclamación de volumen de persistencia (PVC) |  |
@@ -144,11 +146,13 @@ La tabla siguiente indica las variables de entorno utilizadas en {{ site.data.ke
 
 | Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
-| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
+| arch | amd64 | Preferencia de planificador de nodos trabajadores de amd64 en un clúster híbtido | 3 - Preferido (valor predeterminado). |
+|  | ppcle64 | Preferencia de planificador de nodos trabajadores de ppc64le en un clúster híbtido | 2 - Sin preferencia (valor predeterminado). |
+|  | s390x | Preferencia de planificador de nodos trabajadores de S390x en un clúster híbtido | 2 - Sin preferencia (valor predeterminado). |
 | image | pullPolicy | Política de extracción de imágenes | El valor predeterminado es **IfNotPresent**. |
 |  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |
 |  | name | Nombre de imagen Docker | Nombre de la imagen Docker de {{ site.data.keys.prod_adj }} Server. |
-| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Server que deben crearse | Número entero positivo<br/>El valor predeterminado es **3** |
+| scaling | replicaCount | Número de instancias (pods) de {{ site.data.keys.prod_adj }} Server que deben crearse | Entero positivo<br/>El valor predeterminado es **3** |
 | mobileFirstOperationsConsole | user | Nombre de usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
 |  | password | Contraseña del usuario de {{ site.data.keys.prod_adj }} Server | El valor predeterminado es **admin**. |
 | existingDB2Details | db2Host | Dirección IP o HOST de la base de datos DB2 donde se deben configurar las tablas de {{ site.data.keys.prod_adj }} Server | Actualmente, solo se admite DB2. |
@@ -164,8 +168,8 @@ La tabla siguiente indica las variables de entorno utilizadas en {{ site.data.ke
 |  | analyticsAdminPassword | Contraseña del usuario administrador de analítica |  |
 | keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
 | jndiConfigurations | mfpfProperties | Propiedades JNDI de servidor {{ site.data.keys.prod_adj }} para personalizar el despliegue | Pares nombre-valor separados por comas. |
-| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas | El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  | limits.memory | Describe la cantidad máxima de memoria permitida | El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+| resources | limits.cpu | Describe la cantidad máxima de CPU permitidas |El valor predeterminado es **2000m**<br/>Lea el [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  | limits.memory | Describe la cantidad máxima de memoria permitida |El valor predeterminado es **4096Mi**<br/>Lea el [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |  | requests.cpu | Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1000m**. |
 |  | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación | El valor predeterminado es **2048Mi**. |
 | logs | consoleFormat | Especifica el formato de salida del registro del contenedor. | El valor predeterminado es **json**. |
@@ -219,8 +223,7 @@ En la consola de gestión de {{ site.data.keys.prod_icp }}. Seleccione **Cargas 
 ## Acceso a la consola {{ site.data.keys.prod_adj }}
 {: #access-mf-console}
 
-Una vez realizada la instalación correctamente, puede acceder a la consola operativa de IBM {{ site.data.keys.prod_adj }} mediante `<protocol>://<ip_address>:<port>/mfpconsole`.
-Se puede acceder a la consola de IBM {{ site.data.keys.mf_analytics }} mediante `<protocol>://<ip_address>:<port>/analytics/console`.
+Una vez realizada la instalación correctamente, puede acceder a la consola operativa de IBM {{ site.data.keys.prod_adj }} mediante `<protocol>://<ip_address>:<port>/mfpconsole`. Se puede acceder a la consola de IBM {{ site.data.keys.mf_analytics }} mediante `<protocol>://<ip_address>:<port>/analytics/console`.
 
 El protocolo puede ser `http` o `https`. Además, tenga en cuenta que el puerto será **NodePort** en el caso del despliegue de **NodePort**. Para obtener los valores de ip_address y **NodePort** de los gráficos {{ site.data.keys.prod_adj }} instalados, siga estos pasos:
 

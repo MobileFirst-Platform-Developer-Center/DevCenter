@@ -48,8 +48,7 @@ Hay dos pasos para consultar los datos de una recopilación de JSONStore:
     WLJSONStore.openCollections(['favourites']).then(data => { console.log(data); }).catch(err =>{ console.log(err); });
     ```
 
-2. Captar datos de una recopilación: tras abrir una recopilación, puede captar los documentos según una consulta determinada. Para consultar JSONStore, se proporcionan dos clases con las que trabajar: `JSONStoreQuery` y `JSONStoreQueryPart`.<br/>
-    Puede utilizar varios objetos JSONStoreQueryPart para la misma llamada pasando cada objeto JSONStoreQueryPart en una matriz.
+2. Captar datos de una recopilación: tras abrir una recopilación, puede captar los documentos según una consulta determinada. Para consultar JSONStore, se proporcionan dos clases con las que trabajar: `JSONStoreQuery` y `JSONStoreQueryPart`.<br/>     Puede utilizar varios objetos JSONStoreQueryPart para la misma llamada pasando cada objeto JSONStoreQueryPart en una matriz.
     Los distintos objetos JSONStoreQueryPart se unen mediante una sentencia OR.
     Las distintas condiciones de un objeto JSONStoreQueryPart se unen mediante una sentencia AND.
 

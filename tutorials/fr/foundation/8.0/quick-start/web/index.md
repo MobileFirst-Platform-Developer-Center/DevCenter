@@ -27,7 +27,7 @@ Cette démonstration présente un processus complet :
 
 ### 1. Démarrage du serveur {{ site.data.keys.mf_server }}
 {: #starting-the-mobilefirst-server }
-Assurez-vous d'avoir [créé une instance Mobile Foundation](../../bluemix/using-mobile-foundation), ou  
+Assurez-vous d'avoir [créé une instance Mobile Foundation](../../ibmcloud/using-mobile-foundation), ou  
 Si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur puis exécutez la commande `./run.sh` sous Mac et Linux ou `run.cmd` sous Windows.
 
 ### 2. Création et enregistrement d'une application

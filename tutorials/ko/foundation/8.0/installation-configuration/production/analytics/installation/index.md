@@ -258,7 +258,7 @@ WebSphere Application Server Liberty 관리에 대한 자세한 정보는 WebSph
         **특성 이름:** *com.ibm.ws.classloader.strict*<br/>
         **값:** *true*
 
-10. {{ site.data.keys.mf_analytics }} 애플리케이션을 시작한 후 브라우저에서 `http://<hostname>:<port>/analytics/console` 링크로 이동하십시오.
+10. {{ site.data.keys.mf_analytics }} 애플리케이션을 시작하고 브라우저의 링크로 이동하십시오. `http://<hostname>:<port>/analytics/console`.
 
 ## Ant 태스크를 사용한 {{ site.data.keys.mf_analytics }} 설치
 {: #installing-mobilefirst-analytics-with-ant-tasks }

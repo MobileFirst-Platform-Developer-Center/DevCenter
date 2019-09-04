@@ -19,7 +19,7 @@ Nachfolgend sind mehrere mögliche Methoden für den Schutz Ihrer MobileFirst-Se
 Die ATS-Konfiguration hat keinen Einfluss auf Anwendungen, die von anderen Betriebssystemen für mobile Geräte als iOS eine Verbindung herstellen. Andere Betriebssysteme für mobile Geräte erfordern nicht, dass Server auf ATS-Sicherheitsniveau kommunizieren, ermöglichen jedoch eine Kommunikation
 mit Servern mit ATS-Konfiguration. Halten Sie die generierten Zertifikate bereit, wenn Sie Ihr Container-Image konfigurieren. Bei den folgenden Schritten wird davon ausgegangen, dass die Keystore-Datei **ssl_cert.p12** das persönliche Zertifikat enthält und dass **ca.crt** das Signaturzertifikat ist. 
 
-1. Kopieren Se die Datei **ssl_cert.p12** in den Ordner **mfpf-server-libertyapp/usr/security/**. 
+1. Kopieren Sie die Datei **ssl_cert.p12** in den Ordner **mfpf-server-libertyapp/usr/security/**. 
 2. Modifizieren Sie die Datei **mfpf-server-libertyapp/usr/config/keystore.xml** und die Datei **appcenter/usr/config/keystore.xml** (für das Application Center). Orientieren Sie sich dabei an der folgenden Beispielkonfiguration: 
 
    ```xml
@@ -122,8 +122,8 @@ Lesen Sie hierzu auch den Artikel [Angepassten TAI für das Liberty-Profil entwi
 
    public class MFPConsoleTAI implements TrustAssociationInterceptor {
 
-       String allowedIP =null; 
-       
+       String allowedIP =null;
+
        public MFPConsoleTAI() {
           super();
        }
@@ -136,7 +136,7 @@ Lesen Sie hierzu auch den Artikel [Angepassten TAI für das Liberty-Profil entwi
                   throws WebTrustAssociationException {
       // Logik hinzufügen, die festlegt, ob diese Anforderung abgefangen werden soll
 
-    boolean interceptMFPConsoleRequest = false;
+    	   boolean interceptMFPConsoleRequest = false;
 	   String requestURI = req.getRequestURI();
 	
 	   if(requestURI.contains("mfpconsole")) {
@@ -325,11 +325,11 @@ Erstellen Sie Benutzer und Gruppen in der LDAP-Repository. Die Autorisierung fü
 Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in IBM Cloud eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern. Für diese Aufgabe benötigen Sie den Hostnamen und die Portnummer Ihres lokalen LDAP-Servers. 
 
 1. Melden Sie sich bei IBM Cloud an und wählen Sie **Catalog, Category > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
-2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden. 
+2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden.
 3. Öffnen Sie das IBM Cloud-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Add Gateway**.
 4. Benennen Sie das Gateway und klicken Sie auf **Add Destinations**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein.
-5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird. 
-6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server. 
+5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird.
+6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server.
 7. Notieren Sie die Werte für **Destination ID** und **Cloud Host : Port**. Öffnen Sie die Datei registry.xml und ersetzen Sie die vorhandenen Werte durch die gerade notierten Werte. Das folgende Beispiel zeigt ein aktualisiertes Code-Snippet aus der Datei registry.xml:
 
 
@@ -358,11 +358,11 @@ Zum Konfigurationsprozess gehört der Schritt, ein sicheres Gateway für die Ver
 Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in IBM Cloud eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern. Für diesen Schritt benötigen Sie den Namen und die Portnummer Ihres lokalen LDAP-Hosts. 
 
 1. Melden Sie sich bei IBM Cloud an und wählen Sie **Catalog, Category > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
-2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden. 
+2. Wählen Sie unter "Add Service" eine App aus und klicken Sie auf **Create**. Der Service ist jetzt an Ihre App gebunden.
 3. Öffnen Sie das IBM Cloud-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Add Gateway**.
 4. Benennen Sie das Gateway und klicken Sie auf **Add Destinations**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein.
-5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird. 
-6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server. 
+5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird.
+6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server.
 7. Notieren Sie die Werte für **Destination ID** und **Cloud Host : Port**. Geben Sie diese Werte für das LDAP-Anmeldemodul an. 
 
 **Ergebnisse**  

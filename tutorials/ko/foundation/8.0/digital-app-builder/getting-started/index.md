@@ -56,6 +56,8 @@ show_children: true
 
     * **사용자 정의 Professional 서버** – IBM Cloud 또는 로컬에서 작성된 고유한 Mobile Foundation 서버에 연결할 수 있습니다. **IBM Mobile Foundation 인스턴스 구성** 창에서 기존 서버를 선택하거나 새 서버를 작성할 수 있습니다.
 
+        >**참고**: Mobile Foundation 서버의 인스턴스를 쉽게 가져오기 위해 IBM Cloud에서 프로비저닝할 수 있습니다. [여기](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started-tutorial)에서 IBM Cloud의 Mobile Foundation 서버를 프로비저닝하고 사용하는 방법에 대한 문서를 참조할 수 있습니다.
+
         ![IBM Mobile Foundation 인스턴스 구성](dab-config-ibm-cloud-instance.png)
  
         **IBM Mobile Foundation 인스턴스 구성** 창에 이전에 정의한 Mobile Foundation 서버 인스턴스 목록이 표시됩니다. 서버 선택 시 **서버 이름**, **서버 URL**, **관리 사용자 이름**, **관리 비밀번호**가 표시됩니다. 새 서버를 정의하기 위해 **새 서버 작성** 링크를 클릭할 수 있습니다. 그러면 새 **IBM Mobile Foundation 인스턴스 구성** 창이 표시됩니다.

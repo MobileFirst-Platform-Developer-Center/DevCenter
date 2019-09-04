@@ -25,7 +25,7 @@ El propósito de esta demostración es presentar un flujo de principio a fin:
 
 ### 1. Cómo iniciar {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Asegúrese de haber [creado una instancia de Mobile Foundation](../../ibmcloud/using-mobile-foundation), o  
+Asegúrese de haber [creado una instancia de Mobile Foundation](../../ibmcloud/using-mobile-foundation), o bien  
 Si está utilizando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), vaya hasta la carpeta del servidor y ejecute el mandato `./run.sh` en Mac y Linux o `run.cmd` en Windows.
 
 ### 2. Creación de una aplicación
@@ -59,13 +59,13 @@ En una ventana de navegador, abra {{ site.data.keys.mf_console }} cargando el UR
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
-  >Sustituya `<ClassName>` por el nombre de la Clase.
+  >Sustituya `<ClassName>` por el nombre de su clase.
 * Si está desarrollando para Android, incluya la siguiente línea de código dentro del método **OnCreate** del archivo **MainActivity.cs**:
 
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
-  >Sustituya `<ClassName>` por el nombre de la Clase.
+  >Sustituya `<ClassName>` por el nombre de su clase.
 * Defina un método para obtener la señal de acceso y realizar una solicitud de recurso al servidor MFP tal como se indica a continuación.
 
     ```csharp

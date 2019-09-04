@@ -10,7 +10,7 @@ weight: 3
 
 ### Configuration d'un environnement de développement
 {: #installing-a-development-environment }
-Si vous développez le côté client ou le côté serveur d'applications mobiles, utilisez [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou le [service {{ site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation) pour commencer.
+Si vous développez le côté client ou le côté serveur d'applications mobiles, utilisez [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou le [service {{ site.data.keys.mf_bm }}](../ibmcloud/using-mobile-foundation) pour commencer.
 
 **Utilisation du kit {{ site.data.keys.mf_dev_kit }}**
 {: #using-the-dev-kit }

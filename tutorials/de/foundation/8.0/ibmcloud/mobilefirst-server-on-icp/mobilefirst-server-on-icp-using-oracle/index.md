@@ -19,7 +19,7 @@ Für die Fortsetzung des Lernprogramms wird Folgendes vorausgesetzt:
 * Die für einen fernen Oracle-Datenbankserver erstellten Mobile-Foundation-Datenbanktabellen sind eingerichtet (siehe [Download]((customizable-db-artifacts-for-mfp-icp.zip) und Datenbankscripts für Oracle-Datenbanken für Mobile Foundation Server).
 * Die Befehlszeilentools von IBM Cloud Private (`bx pr`, `docker`, `kube` oder `cloudctl` usw.) wurden auf dem lokalen Computer installiert.
 
->**Hinweis:** Wählrend der Helm-Implementierung für Db2-Datenbanken werden die Tabellen automatisch erstellt. Für Oracle, PostgreSQL oder MySQL müssen Sie die Tabellen manuell erstellen, bevor Sie das Helm-Chart implementieren.
+>**Hinweis:** Während der Helm-Implementierung für Db2-Datenbanken werden die Tabellen automatisch erstellt. Für Oracle, PostgreSQL oder MySQL müssen Sie die Tabellen manuell erstellen, bevor Sie das Helm-Chart implementieren.
 
 ## Anzupassende Artefakte
 {: #artifacts-to-be-customized }
@@ -40,8 +40,8 @@ Zum Docker-Image für Mobile Foundation Server gehören bestimmte Artefakte, die
 2.	Entpacken Sie den Anhang (`mfp-icp-oracle.zip`), um `Dockerfile` und `usr-mfpf-server` (Verzeichnisstruktur und Beispiel für eine `Dockerfile`) zu finden.
 3.	Modifizieren Sie die `Dockerfile` so, dass die korrigierte Image-Version für die Erweiterung des Docker-Image verwendet wird.<br/>
      *Beispiel:*<br/>
-      `In mycluster.icp:8500/default/mfpf-server:<a.b.c.d>`<br/>
-       ist *a.b.c.d* die in der Image-Registry verfügbare Version.
+      `FROM mycluster.icp:8500/default/mfpf-server:<a.b.c.d>`<br/>
+       Hier ist *a.b.c.d* die in der Image-Registry verfügbare Image-Version.
 4.	Folgen Sie den Anweisungen im Blog, um das Docker-Image anzupassen und die Mobile-Foundation-Server-Pods zu erstellen.
 5.	Wenn Sie das Docker-Image mit den obigen Schritten erweitert haben, können Sie das Helm-Chart für Mobile Foundation Server in der ICP-Konsole implementieren. Stellen Sie sicher, dass das neue Image bereitgestellt wurde.
 

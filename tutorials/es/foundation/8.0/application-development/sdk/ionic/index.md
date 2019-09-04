@@ -95,7 +95,7 @@ Considere la posibilidad de crear el proyecto mediante la **plantilla de aplicac
      - "Hello" es el nombre de carpeta y el nombre de la aplicación.
      - "blank" es el nombre de la plantilla de iniciador.
 
-    El archivo **index.js** de la plantilla permite utilizar características de {{ site.data.keys.product_adj }} adicionales como, por ejemplo, la [traducción de aplicación multilingüe](../../translation) y opciones de inicialización (consulte la documentación del usuario para obtener más información).
+    > El archivo **index.js** de la plantilla permite utilizar características de {{ site.data.keys.product_adj }} adicionales como, por ejemplo, la [traducción de aplicación multilingüe](../../translation) y opciones de inicialización (consulte la documentación del usuario para obtener más información).
 
 2. Cambie el directorio a la raíz del proyecto de Ionic: `cd hello`
 

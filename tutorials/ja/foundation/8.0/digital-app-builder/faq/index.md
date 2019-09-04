@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: FAQ
+title: よくある質問
+breadcrumb_title: FAQs
 weight: 7
 show_children: true
 ---
@@ -10,18 +11,40 @@ show_children: true
 
 このトピックでは、IBM Digital App Builder に関連するよく寄せられる質問のリストについて説明します。
 
-* **プラットフォーム API キー**の作成方法
-
-    1. IBM Cloud へのログイン後、[https://cloud.ibm.com/iam#/users](https://cloud.ibm.com/iam#/users) にアクセスします。
-    2. **「ユーザー」**にナビゲートし、リストから自分の名前をクリックして、**「ユーザーの詳細」**オプションを選択します。
-    3. **「IBM Cloud API キーの作成」**ウィンドウをクリックします。
-    3. 新しい API キーの**「名前」**と**「説明」**を入力します。
-    4. **「作成」**をクリックします。
-    4. 次に、**「表示」**をクリックして API キーを表示し、後で使用するためにコピーして保存するか、または**「ダウンロード」**をクリックします。
-
-    >**注**: 安全上の理由により、API キーをコピーまたはダウンロードできるのは作成時のみになります。API キーを紛失した場合は、新しい API キーを作成する必要があります。ユーザー API キーについて詳しくは、[https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey](https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey) を参照してください。
-
-* 共有サーバーの制限事項
-
-    共有プレイグラウンド・サーバーは、多数の開発者で共有された共通サーバーです。このサーバーは、実動アプリケーションには使用しないでください。このサーバー内のデータは、予告なく削除されることがあります。サーバーのアップタイムは保証されません。
-
+<div class="panel-group accordion" id="mfp-dab-faqs" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq1">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. **プラットフォーム API キー**の作成方法は?</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq1">
+            <div class="panel-body">
+                <p>
+                    <ol>
+                        <li>IBM Cloud へのログイン後、<a href="https://cloud.ibm.com/iam#/users" target="_blank">https://cloud.ibm.com/iam#/users</a> にアクセスします。</li>
+                        <li><b>「ユーザー」</b>にナビゲートし、リストから自分の名前をクリックして、<b>「ユーザーの詳細」</b>オプションを選択します。</li>
+                        <li><b>「IBM Cloud API キーの作成」</b>ウィンドウをクリックします。</li>
+                        <li>新しい API キーの<b>「名前」</b>と<b>「説明」</b>を入力します。</li>
+                        <li><b>「作成」</b>をクリックします。</li>
+                        <li>次に、<b>「表示」</b>をクリックして API キーを表示し、後で使用するためにコピーして保存するか、または<b>「ダウンロード」</b>をクリックします。</li>
+                    </ol>
+                    <b>注</b>: 安全上の理由により、API キーをコピーまたはダウンロードできるのは作成時のみになります。 API キーを紛失した場合は、新しい API キーを作成する必要があります。 ユーザー API キーについて詳しくは、<a href="https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey">https://cloud.ibm.com/docs/iam/userid_keys.html#userapikey</a> を参照してください。
+                </p>
+            </div>
+        </div>      
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq2">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq2" aria-expanded="true" aria-controls="collapse-mfp-dab-faq2"><b>B. 共有サーバーの制限事項</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq2">
+            <div class="panel-body">
+                  <p>共有プレイグラウンド・サーバーは、多数の開発者で共有された共通サーバーです。 このサーバーは、実動アプリケーションには使用しないでください。 このサーバー内のデータは、予告なく削除されることがあります。 サーバーのアップタイムは保証されません。</p>
+            </div>
+        </div>      
+    </div>
+</div>
+<p>&nbsp;</p>       

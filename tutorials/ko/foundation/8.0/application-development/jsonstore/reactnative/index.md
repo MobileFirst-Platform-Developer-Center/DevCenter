@@ -139,7 +139,7 @@ npm install
     	`xmlns:tools="http://schemas.android.com/tools"`<br/>
     	 다음 행을 `<application>` 태그에 추가하십시오.<br/>
     	`tools:replace="android:allowBackup"`<br/><br/>
-    	 이 단계는 *react-native-ibm-mobilefirst* 라이브러리에서 필요합니다.<br/>
+    	 이 단계는 *react-native-ibm-mobilefirst* 라이브러리에 필요합니다.<br/>
 
 	 *  React Native 프로젝트 루트 디렉토리에서 `android/app/build.gradle` 파일을 여십시오.<br/>
       *android {}* 내에 다음 코드를 추가하십시오.<br/>

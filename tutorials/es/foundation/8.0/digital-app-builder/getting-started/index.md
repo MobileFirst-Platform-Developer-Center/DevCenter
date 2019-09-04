@@ -56,6 +56,8 @@ Puede crear una nueva aplicación pulsando el icono **Crear aplicación** desde 
 
     * **Servidor profesional personalizado** – Puede conectarse a su propio servidor de Mobile Foundation ya sea creado en IBM Cloud o localmente. En la ventana **Configurar la instancia de IBM Mobile Foundation**, seleccione un servidor existente o cree un nuevo servidor.
 
+        >**Nota**: para obtener fácilmente una instancia de Mobile Foundation Server, puede suministrarla en IBM Cloud. Consulte la documentación sobre cómo se suministra y se utiliza Mobile Foundation Server en IBM Cloud [aquí](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started-tutorial).
+
         ![Configuración de la instancia de IBM Mobile Foundation](dab-config-ibm-cloud-instance.png)
  
         La ventana **Configurar la instancia de IBM Mobile Foundation** muestra la lista de instancias de servidor de Mobile Foundation que ha definido anteriormente. Al seleccionar el servidor, se visualiza el **Nombre de servidor**, el **URL de servidor**, el **Nombre de usuario administrador** y la **Contraseña de administrador**. Para definir un nuevo servidor, puede pulsar el enlace **Crear nuevo servidor**. Esto mostrará la nueva ventana **Configurar la instancia de IBM Mobile Foundation**. 

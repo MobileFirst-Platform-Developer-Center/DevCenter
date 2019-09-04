@@ -88,8 +88,7 @@ El archivo comprimido contiene los archivos para crear un diseño de archivo (**
                             <li><b>registry.xml</b> - configuración del registro de usuarios. La configuración de basicRegistry (de forma predeterminada, se proporciona una configuración de registro de usuarios básico basado en XML). Se pueden configurar los nombres de usuarios y las contraseñas para basicRegistry o puede configurar ldapRegistry.</li>
                         </ul>
                     </li>
-                    <li>Carpeta <b>env</b>: Contiene las propiedades del entorno que se utilizan para la inicialización del servidor (server.env) y las opciones de JVM personalizadas (jvm.options).
-                    <br/>
+                    <li>Carpeta <b>env</b>: Contiene las propiedades del entorno que se utilizan para la inicialización del servidor (server.env) y las opciones de JVM personalizadas (jvm.options).<br/>
                     </li>
 
                     <li>Carpeta <b>security</b>: Se utiliza para los archivos del almacén de claves, el almacén de confianza y las claves LTPA (ltpa.keys).</li>
@@ -130,14 +129,12 @@ Si opta por ejecutar los scripts de forma interactiva, puede omitir el paso de c
 
         <div id="collapse-step-appcenter-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Puede buscar los archivos de plantilla vacíos y la descripción de los argumentos en la carpeta <b>args</b> o, después de ejecutar los scripts de forma interactiva, en la carpeta <b>recorded-args</b>. Los siguientes son los archivos:<br/>
+            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Puede buscar los archivos de plantilla vacíos y la descripción de los argumentos en la carpeta <b>args</b> o, después de ejecutar los scripts de forma interactiva, en la carpeta <b>recorded-args</b>. Estos son los archivos:<br/> 
 
               <h4>initenv.properties</h4>
               Este archivo contiene propiedades que se utilizan para inicializar el entorno.
               <h4>prepareappcenterdbs.properties</h4>
-              {{ site.data.keys.mf_app_center }} requiere una <a href="https://console.bluemix.net/catalog/services/dashdb/" target="\_blank">instancia de base de datos de dashDB Enterprise Transactional</a> (Cualquier plan marcado como OLTP o Transactional).<br/>
-              <b>Nota:</b> El despliegue de los planes dashDB Enterprise Transactional es inmediato para los planes marcados como "pago por uso". Asegúrese de que selecciona uno de los planes adecuados, como <i>Enterprise for Transactions High Availability 2.8.500 (Pago por uso)</i> <br/><br/>
-              Después de configurar la instancia de dashDB, proporcione los argumentos necesarios.
+              {{ site.data.keys.mf_app_center }} requiere una <a href="https://console.bluemix.net/catalog/services/dashdb/" target="\_blank">instancia de base de datos de dashDB Enterprise Transactional</a> (Cualquier plan marcado como OLTP o Transactional).<br/> <b>Nota:</b> El despliegue de los planes dashDB Enterprise Transactional es inmediato para los planes marcados como "pago por uso". Asegúrese de que selecciona uno de los planes adecuados, como <i>Enterprise for Transactions High Availability 2.8.500 (Pago por uso)</i> <br/><br/>               Después de configurar la instancia de dashDB, proporcione los argumentos necesarios.
 
               <h4>prepareappcenter.properties</h4>
               Este archivo se utiliza para el script prepareappcenter.sh. Esto prepara el diseño de archivos de {{ site.data.keys.mf_app_center_short }} y lo transfiere mediante push a IBM Cloud como una aplicación Cloud Foundry.
@@ -204,8 +201,6 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
                   </li>
                   <li><b>prepareappcenter.sh - Prepare {{ site.data.keys.mf_app_center }}</b><br />
                     Ejecute el script <b>prepareappcenter.sh</b> para crear un {{ site.data.keys.mf_app_center }} y enviarlo mediante push a IBM Cloud como una aplicación Cloud Foundry. Para ver todas las aplicaciones de Cloud Foundry y sus URL de la organización y espacio de inicio de sesión, ejecute: <code>cf apps</code><br/>
-
-
 {% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
@@ -264,14 +259,12 @@ Ahora, con {{ site.data.keys.mf_app_center }} ejecutándose en IBM Cloud, puede 
 
         <div id="collapse-step-foundation-1-mf" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Puede buscar los archivos de plantilla vacíos y la descripción de los argumentos en la carpeta <b>args</b> o, después de ejecutar los scripts de forma interactiva, en la carpeta <b>recorded-args</b>. Los siguientes son los archivos:<br/>
+            La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Puede buscar los archivos de plantilla vacíos y la descripción de los argumentos en la carpeta <b>args</b> o, después de ejecutar los scripts de forma interactiva, en la carpeta <b>recorded-args</b>. Estos son los archivos:<br/> 
 
               <h4>initenv.properties</h4>
               Este archivo contiene propiedades que se utilizan para inicializar el entorno.
               <h4>prepareserverdbs.properties</h4>
-              El servicio de {{ site.data.keys.mf_bm_short }} requiere una <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">instancia de base de datos de dashDB Enterprise Transactional</a> (Cualquier plan marcado como OLTP o Transactional).<br/>
-              <b>Nota:</b> El despliegue de los planes dashDB Enterprise Transactional es inmediato para los planes marcados como "pago por uso". Asegúrese de que selecciona uno de los planes adecuados, como <i>Enterprise for Transactions High Availability 2.8.500 (Pago por uso)</i> <br/><br/>
-              Después de configurar la instancia de dashDB, proporcione los argumentos necesarios.
+              El servicio {{ site.data.keys.mf_bm_short }} requiere una <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">instancia de base de datos de dashDB Enterprise Transactional</a> (Cualquier plan marcado como OLTP o Transactional).<br/> <b>Nota:</b> El despliegue de los planes dashDB Enterprise Transactional es inmediato para los planes marcados como "pago por uso". Asegúrese de que selecciona uno de los planes adecuados, como <i>Enterprise for Transactions High Availability 2.8.500 (Pago por uso)</i> <br/><br/>               Después de configurar la instancia de dashDB, proporcione los argumentos necesarios.
 
               <h4>prepareserver.properties</h4>
               Este archivo se utiliza para el script prepareserver.sh. Esto prepara el diseño de archivos y lo transfiere mediante push a IBM Cloud como una aplicación Cloud Foundry.
@@ -338,8 +331,6 @@ prepareserverdbs.sh --admindb MFPDashDBService
                   </li>
                   <li><b>prepareserver.sh - Preparar {{ site.data.keys.mf_server }}</b><br />
                     Ejecute el script <b>prepareserver.sh</b> para crear un {{ site.data.keys.mf_server }} y enviarlo mediante push a IBM Cloud como una aplicación Cloud Foundry. Para ver todas las aplicaciones de Cloud Foundry y sus URL de la organización y espacio de inicio de sesión, ejecute: <code>cf apps</code><br/>
-
-
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
@@ -397,7 +388,7 @@ Es posible que necesite aplicar cambios en el diseño del servidor después de d
 
 ### Añadir la configuración del servidor de Analytics a {{ site.data.keys.mf_server }}
 {: #adding-analytics-server-configuration-to-mobilefirst-server }
-Si ha configurado un servidor de Analytics y desea conectarlo a este {{ site.data.keys.mf_server }}, edite el archivo **mfpfproperties.xml** de la carpeta **package_root/mfpf-server-libertyapp/usr/config**, como se especifica a continuación. Sustituya las señales marcadas con `<>` por los valores correctos de su despliegue.
+Si ha configurado un servidor de Analytics y desea conectarlo a este {{ site.data.keys.mf_server }}, edite el archivo **mfpfproperties.xml** de la carpeta **package_root/mfpf-server-libertyapp/usr/config**, como se especifica a continuación. Sustituya las señales marcadas con `<>` por los valores correctos para su despliegue.
 
 ```xml
 <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.url" value='"https://<AnalyticsContainerGroupRoute>:443/analytics-service/rest"'/>

@@ -167,6 +167,6 @@ Using the {{ site.data.keys.mf_dev_kit }}, You can couple together the above wit
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">
-   		<iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+   		<iframe title="Demo video" src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
 	</div>
 </div>

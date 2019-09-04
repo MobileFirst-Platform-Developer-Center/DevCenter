@@ -1284,7 +1284,8 @@ Schritt 1 bestimmten Verzeichnis hinzu.
         |Name |Oracle-JDBC-Treiber |
     * Klicken Sie auf **Weiter**.
     * Setzen Sie den **Klassenpfad** der Datenbank auf die JAR-Datei in dem in Schritt 1 bestimmten Verzeichnis und ersetzen Sie dabei **WAS-Installationsverzeichnis/profiles/Profilname** durch die WebSphere-Application-Server-Variablenreferenz **${USER_INSTALL_ROOT}**.
-    * Klicken Sie auf **Weiter**.
+    * Klicken Sie auf
+**Weiter**.
 
     Der JDBC-Provider wird erstellt.
 
@@ -3077,7 +3078,9 @@ Im Abschnitt `<context>` der Application-Center-Konsole können Sie Folgendes an
 <Environment name="ibm.appcenter.services.endpoint" value="https://appcntr.net:443/applicationcenter" type="java.lang.String" override="false"/>
 ```
 
-Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen. Die Angabe `*://*:*/appcenter` bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port
+Sie können den Stern (\*) als Platzhalterzeichen verwenden, wenn Sie angeben möchten, dass die
+Application-Center-REST-Services denselben Wert wie die Application-Center-Konsole verwenden sollen.
+Die Angabe `*://*:*/appcenter` bedeutet beispielsweise, dass die Services dasselbe Protokoll, denselben Host und denselben Port
 wie die Application-Center-Konsole verwenden, aber **appcenter** als Kontextstammverzeichnis. 
 
 Im Abschnitt `<context>` der Application-Center-Services können Sie Folgendes angeben: 

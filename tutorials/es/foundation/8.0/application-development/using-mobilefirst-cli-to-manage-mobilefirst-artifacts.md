@@ -274,7 +274,7 @@ Para registrar una aplicación en un tiempo de ejecución y en un servidor que n
 mfpdev app register <server> <runtime>
 ```
 
-Con la plataforma Cordova Windows, el argumento `-w <platform>` se debe añadir al mandato.  `<platform>` es una lista separada por comas de plataformas windows a registrar. Los valores válidos son `windows`,`windows8` y `windowsphone8`.
+Para la plataforma Cordova Windows, se debe añadir el argumento `-w <platform>` al mandato.  El argumento `<platform>` es una lista de plataformas de Windows que se deben registrar separadas por comas. Los valores válidos son `windows`,`windows8` y `windowsphone8`.
 
 ```
 mfpdev app register -w windows8
@@ -296,8 +296,8 @@ Las configuraciones disponibles son:
 
 * El tiempo de ejecución y la dirección de servidor que se registrarán
 
-    > **Caso de uso de ejemplo:** para registrar una aplicación en un  {{ site.data.keys.mf_server }} con una dirección determinada, pero tener también la aplicación conectada a una dirección de servidor distinta, por ejemplo, un dispositivo
-DataPower: >
+    > **Caso de uso de ejemplo:** para registrar una aplicación en un  {{ site.data.keys.mf_server }} con una dirección determinada, pero tener también la aplicación conectada a una dirección de servidor distinta, por ejemplo, un dispositivo DataPower:
+    >
     > 1. Ejecute `mfpdev app register` para registrar la aplicación en la dirección de {{ site.data.keys.mf_server }} esperada.
     > 2. Ejecute `mfpdev app config` y cambie el valor de la propiedad **server** para que coincida con la dirección del dispositivo DataPower. También puede ejecutar el mandato en la **modalidad directa**:
 `mfpdev app config server http(s)://server-ip-or-host:port`.

@@ -27,7 +27,7 @@ Cette démonstration présente un processus complet :
 
 ### 1. Démarrage du serveur {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Assurez-vous d'avoir [créé une instance Mobile Foundation](../../bluemix/using-mobile-foundation), ou  
+Assurez-vous d'avoir [créé une instance Mobile Foundation](../../ibmcloud/using-mobile-foundation), ou  
 Si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur puis exécutez la commande `./run.sh` sous Mac et Linux ou `run.cmd` sous Windows.
 
 ### 2. Création d'une application
@@ -160,7 +160,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
     * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes.
 
     Par ailleurs, si vous avez installé l'interface {{ site.data.keys.mf_cli }}, accédez au dossier racine du projet puis exécutez la commande `mfpdev app register`. Si un serveur {{ site.data.keys.mf_server }} distant est utilisé, [exécutez la commande `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) pour ajouter le serveur, suivi par exemple de la commande `mfpdev app register myIBMCloudServer`.
-    
+
 2. Appuyez sur le bouton **Play**.
 
 <br clear="all"/>

@@ -67,7 +67,7 @@ Cree un proyecto de Android Studio o utilice uno existente.
 4. Añada las siguientes líneas dentro de la sección `dependencies`:
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
    name: 'ibmmobilefirstplatformfoundation',
    version: '8.0.+',
    ext: 'aar',
@@ -77,7 +77,12 @@ Cree un proyecto de Android Studio o utilice uno existente.
    O en una única línea:
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+   ```
+   >**Nota**: si utiliza la característica [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) y desea llamar a las API de MobileFirst en un módulo de la característica, utilice la declaración `api` en lugar de `implementation`. Si utiliza `implementation`, se restringen las API de MobileFirst al mismo módulo, mientras que, si se utiliza `api`, las API de MobileFirst está disponibles en todos los módulos presentes en la app, incluidos los módulos de la característica. Para obtener más información, consulte [Separación de API e implementation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+   
+  ```xml
+   api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
    ```
 
 5. En **Android → app → manifiestos**, abra el archivo `AndroidManifest.xml`. Añada los siguientes permisos por encima del elemento **application**:

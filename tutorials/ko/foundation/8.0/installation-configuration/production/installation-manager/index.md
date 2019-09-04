@@ -314,7 +314,7 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
 4. <server> 요소의 저장소 목록을 조정하십시오. 이 단계에 대한 자세한 정보는 [저장소](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html)에 있는 IBM Installation Manager 문서를 참조하십시오.
 
     `<profile>` 요소에서 각 키/값 쌍의 값을 조정하십시오.  
-    `<offering>` 요소(`<install>` 요소에 있음)에서 설치하려는 릴리스와 일치하도록 버전 속성을 설정하거나, 저장소에 있는 최신 버전을 설치하려는 경우, 버전 속성을 제거하십시오.
+    `<install>` 요소의 `<offering>` 요소에서 설치하려는 릴리스와 일치하도록 버전 속성을 설정하거나 저장소에서 사용 가능한 최신 버전을 설치하려는 경우 버전 속성을 제거하십시오.
 5. 다음 명령을 입력하십시오. `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
     여기서:
@@ -355,7 +355,7 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
     <tr>
         <td>user.licensed.by.tokens</td>
         <td>항상</td>
-        <td>토큰 라이센싱의 활성화. 제품을 Rational License Key Server와 함께 사용할 계획인 경우 토큰 라이센싱을 활성화해야 합니다.<br/><br/>이 경우에는 값을 <code>true</code>로 설정하십시오. 제품을 Rational License Key Server와 함께 사용할 계획이 아니면 값을 <code>false</code>로 설정하십시오.<br/><br/>라이센스 토큰을 활성화하는 경우, 애플리케이션 서버에 제품을 배치한 후에 특정 구성 단계를 수행해야 합니다. </td>
+        <td>토큰 라이센싱의 활성화. 제품을 Rational License Key Server와 함께 사용하려는 경우 토큰 라이센싱을 활성화해야 합니다.<br/><br/>이 경우 값을 <code>true</code>로 설정하십시오. 제품을 Rational License Key Server와 함께 사용하지 않으려는 경우 값을 <code>false</code>로 설정하십시오.<br/><br/>라이센스 토큰을 활성화하면 애플리케이션 서버에 제품을 배치한 후에 특정 구성 단계가 필요합니다. </td>
         <td><code>true</code> 또는 <code>false</code></td>    
     </tr>
     <tr>
@@ -391,7 +391,7 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
     <tr>
         <td>user.appserver.was.scope</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>애플리케이션을 설치하는 서버 세트의 유형입니다.<br/><br/><code>server</code>는 독립형 서버를 의미합니다.<br/><br/><code>nd-cell</code>은 WebSphere Application Server Network Deployment 셀을 의미합니다. <code>nd-cluster</code>은 WebSphere Application Server Network Deployment 클러스터를 의미합니다.<br/><br/><code>nd-node</code>는 WebSphere Application Server Network Deployment 노드(클러스터 제외)를 의미합니다.<br/><br/><code>nd-server</code>는 관리되는 WebSphere Application Server Network Deployment 서버를 의미합니다.</td>
+        <td>애플리케이션을 설치하는 서버 세트의 유형입니다.<br/><br/><code>server</code>는 독립형 서버를 의미합니다.<br/><br/><code>nd-cell</code>은 WebSphere Application Server Network Deployment 셀을 의미합니다. <code>nd-cluster</code>는 WebSphere Application Server Network Deployment 클러스터를 의미합니다.<br/><br/><code>nd-node</code>는 WebSphere Application Server Network Deployment 노드(클러스터 제외)를 의미합니다.<br/><br/><code>nd-server</code>는 관리 WebSphere Application Server Network Deployment 서버를 의미합니다.</td>
         <td><code>server</code>, <code>nd-cell</code>, <code>nd-cluster</code>, <code>nd-node</code>, <code>nd-server</code></td>
     </tr>
     <tr>
