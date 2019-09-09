@@ -1,6 +1,6 @@
 ---
 title: IBM MobileFirst Platform Foundation Support for iOS 13
-date: 2019-07-08
+date: 2019-09-09
 tags:
 - MobileFirst_Platform
 - Announcement
@@ -67,6 +67,7 @@ Features that were tested for Mobilefirst Foundation (MFP) v7.1:
 
 #### Known Issues
 
+##### Too Many HTTP Redirect on v7.1
 While Testing OAuth Flow on v7.1 we found the following issues in App.
 
 ![too many HTTP redirect]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/too many HTTP redirect.png)
@@ -77,7 +78,24 @@ The feature impacted because of the issues are
 * Invoking backend procedures through adapters
 * Challenge Handling
 
-> **Note**: We will release an iFix soon to address the multiple redirect issue seen in Oauth flow for v7.1.
+>**Update:** We don't see `Too Many HTTP Redirect` issue anymore with iOS 13 beta 8. Therefore, we are not publishing any fixes for the issue.
+
+##### CNCopyCurrentNetworkInfo Returns Nil
+MobileFirst SDK for v7.1 makes use of `CNCopyCurrentNetworkInfo` inside `Device->wifi->getConnectedAccessPoint` API. As per Apple iOS 13 guideline one of the following conditions should be met in order to get a correct response from `CNCopyCurrentNetworkInfo`, else it returns nil.
+- The app uses Core Location, and has the user's authorization to use location information.
+- The app uses the NEHotspotConfiguration API to configure the current Wi-Fi network.
+- The app has active VPN configurations installed.
+
+Learn more by reading the updated documentation or viewing the the Advances in Networking session video from WWDC19. Also refer [here](
+https://developer.apple.com/documentation/systemconfiguration/1614126-cncopycurrentnetworkinfo
+), for more details.
+
+Apple further recommends *If your app is using this API, we encourage you to adopt alternative approaches that don't require Wi-Fi or network information. Valid SSID and BSSID information from CNCopyCurrentNetworkInfo will still be provided to VPN apps, apps that have used NEHotspotConfiguration to configure the current Wi-Fi network, and apps that have obtained permission to access user location through Location Services.*
+
+##### Push Notification Registration Issue
+While fresh installation of apps using MobileFirst Push notification on iOS 13, regresitration is failing due to error in parsing the token from APNS server. The issue is similar to one reported on [Apple developer Forum](https://forums.developer.apple.com/thread/117545).
+
+>**Note** Customer should upgrade to cocopod version `IBMMobileFirstPlatformFoundationPush@8.0.2019082914` for v8 native app and npm version `cordova-plugin-mfp-push@8.0.2019090606` for v8 cordova apps.
 
 #### WatchOS 6
 We have verified basic OAuth Flow and Application Authenticity on watchOS 6.
@@ -89,6 +107,10 @@ iPadOS 13 doesnt have a separate SDK with Xcode 11 beta. So we have not done any
 
 ![xcode11SDKs]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/xcode11SDKs.png)
 
+
+>**Update:** We had used iPadOS 13 beta restore images on iPad and verified all Major features of MFP. We found an issue with Direct Update feature only for ionic apps. We are investigating further.
+
+
 We have also verified MFP based cordova, ionic and react-native apps.
 
 All the above features were validated to work on iOS 13 beta 3.  
@@ -96,6 +118,7 @@ All the above features were validated to work on iOS 13 beta 3.
 iOS 13 compatibility tests are planned for the following:
 
 * Application Center
+
 
 *Stay tuned for further updates.*
 
