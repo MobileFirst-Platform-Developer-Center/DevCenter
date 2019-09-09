@@ -78,7 +78,7 @@ The feature impacted because of the issues are
 * Invoking backend procedures through adapters
 * Challenge Handling
 
->**Update** We Dont see `Too Many HTTP Redirect` issue anymore with iOS 13 beta 8 . Therefore we are not publishing any fixes for the issue.
+>**Update:** We don't see `Too Many HTTP Redirect` issue anymore with iOS 13 beta 8. Therefore, we are not publishing any fixes for the issue.
 
 ##### CNCopyCurrentNetworkInfo Returns Nil
 MFP SDK for v7.1 make use of `CNCopyCurrentNetworkInfo` inside `Device->wifi->getConnectedAccessPoint` API . As per Apple iOS 13 guideline one of the following condition should be met in order to get correct response from `CNCopyCurrentNetworkInfo` else it returns nil.
@@ -108,7 +108,7 @@ iPadOS 13 doesnt have a separate SDK with Xcode 11 beta. So we have not done any
 ![xcode11SDKs]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/xcode11SDKs.png)
 
 
->**Update** We had used iPadOS 13 beta restore images on iPad and verified all Major features of MFP. We found an issue with Direct Update feature only for ionic apps. We are investigating further.
+>**Update:** We had used iPadOS 13 beta restore images on iPad and verified all Major features of MFP. We found an issue with Direct Update feature only for ionic apps. We are investigating further.
 
 
 We have also verified MFP based cordova, ionic and react-native apps.
