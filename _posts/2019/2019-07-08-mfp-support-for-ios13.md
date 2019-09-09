@@ -81,16 +81,16 @@ The feature impacted because of the issues are
 >**Update:** We don't see `Too Many HTTP Redirect` issue anymore with iOS 13 beta 8. Therefore, we are not publishing any fixes for the issue.
 
 ##### CNCopyCurrentNetworkInfo Returns Nil
-MFP SDK for v7.1 make use of `CNCopyCurrentNetworkInfo` inside `Device->wifi->getConnectedAccessPoint` API . As per Apple iOS 13 guideline one of the following condition should be met in order to get correct response from `CNCopyCurrentNetworkInfo` else it returns nil.
+MobileFirst SDK for v7.1 makes use of `CNCopyCurrentNetworkInfo` inside `Device->wifi->getConnectedAccessPoint` API. As per Apple iOS 13 guideline one of the following conditions should be met in order to get a correct response from `CNCopyCurrentNetworkInfo`, else it returns nil.
 - The app uses Core Location, and has the user's authorization to use location information.
 - The app uses the NEHotspotConfiguration API to configure the current Wi-Fi network.
 - The app has active VPN configurations installed.
 
 Learn more by reading the updated documentation or viewing the the Advances in Networking session video from WWDC19. Also refer [here](
 https://developer.apple.com/documentation/systemconfiguration/1614126-cncopycurrentnetworkinfo
-) for more details.
+), for more details.
 
-Apple further recommends ```If your app is using this API, we encourage you to adopt alternative approaches that don't require Wi-Fi or network information. Valid SSID and BSSID information from CNCopyCurrentNetworkInfo will still be provided to VPN apps, apps that have used NEHotspotConfiguration to configure the current Wi-Fi network, and apps that have obtained permission to access user location through Location Services. ```
+Apple further recommends *If your app is using this API, we encourage you to adopt alternative approaches that don't require Wi-Fi or network information. Valid SSID and BSSID information from CNCopyCurrentNetworkInfo will still be provided to VPN apps, apps that have used NEHotspotConfiguration to configure the current Wi-Fi network, and apps that have obtained permission to access user location through Location Services.*
 
 ##### Push Notification Registration Issue
 While fresh installation of apps using MobileFirst Push notification on iOS 13, regresitration is failing due to error in parsing the token from APNS server. The issue is similar to one reported on [Apple developer Forum](https://forums.developer.apple.com/thread/117545).
