@@ -157,10 +157,10 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OCP pa
     ```
 
 5.  Create secret for the IBM Mobile Foundation deployment to access the database.
-    >Refer to documentation [here](../install-mf/#install-mf).
+    >Refer to the documentation [here](../install-mf/#install-mf).
 
 6.  Create Persistent Volume and Volume Claim for Analytics.
-    >Refer to documentation [here](../install-mf/#install-mf).
+    >Refer to the documentation [here](../install-mf/#install-mf).
 
 7.  Deploy IBM Mobile Foundation components.
     To deploy any of the Mobile Foundation components, modify the appropriate custom resource values in the `deploy/crds/charts_v1_mfoperator_cr.yaml`.
@@ -179,11 +179,12 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OCP pa
 
     b.  To access the image registry add the **pullSecret** in `deploy/crds/charts_v1_mfoperator_cr.yaml` file.
 
-        Modify the `deploy/crds/charts_v1_mfoperator_cr.yaml` to add the required details. The secret definition may look similar to the following snippet.
+    Modify the `deploy/crds/charts_v1_mfoperator_cr.yaml` to add the required details. The secret definition may look similar to the following snippet.
+
     ```yaml
     image:
       pullPolicy: IfNotPresent
       pullSecret: push-secret
     ```
 
-    Refer to documentation [here](../install-mf/#deploy-mf-operator) for completing the other configurations.
+    Refer to the documentation [here](../install-mf/#deploy-mf-operator) to complete the rest of the configurations.
