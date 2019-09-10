@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-breadcrumb_title: Deploy Mobile Foundation on public OpenShift cluster
-title: Deploy Mobile Foundation OCP package on public OpenShift cluster
+breadcrumb_title: Deploy Mobile Foundation on Red Hat OpenShift cluster on IBM Cloud
+title: Deploy Mobile Foundation on Red Hat OpenShift cluster on IBM Cloud
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-Follow the steps outlined in this section to deploy the Mobile Foundation OCP package to OCP cluster on Public cloud.
+Follow the steps outlined in this section to deploy the Mobile Foundation OpenShift Container Platform (OCP) package to Red Hat OpenShift cluster on IBM Cloud.
 
-1.  Create the public OpenShift cluster.
+1.  Create an OpenShift cluster on IBM Cloud.
 
 2.  Push the image into your private registry and create a secret which can be used at the time of pulling the image.
 
