@@ -6,9 +6,9 @@ weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-IBM Cloud Pak for Applications is an enterprise-ready, containerized software solution for modernizing existing applications and developing new cloud-native apps that run on RedHat OpenShift.
+IBM Cloud Pak for Applications is an enterprise-ready, containerized software solution for modernizing existing applications and developing new cloud-native apps that run on Red Hat OpenShift.
 
-Built on IBM offerings and RedHat OpenShift Container platform with IBM Kabanero Enterprise, IBM Cloud Pak for Applications  provides a long-term solution to help you transition between public, private, and hybrid clouds, and create new business applications. IBM Cloud Pak for Applications also provides:
+Built on IBM offerings and Red Hat OpenShift Container platform with IBM Kabanero Enterprise, IBM Cloud Pak for Applications  provides a long-term solution to help you transition between public, private, and hybrid clouds, and create new business applications. IBM Cloud Pak for Applications also provides:
 
 * Modernization tools such as IBM Cloud Transformation Advisor to assist with your move to the cloud.
 * Developer tools such as Eclipse Codewind to build and deploy your new cloud-native applications with the IDE of your choice.

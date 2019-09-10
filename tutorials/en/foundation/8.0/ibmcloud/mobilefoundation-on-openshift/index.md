@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-breadcrumb_title: Mobile Foundation in an OpenShift cluster
-title: Install Mobile Foundation in an OpenShift cluster
+breadcrumb_title: Deploy Mobile Foundation to an existing OpenShift cluster
+title: Deploy Mobile Foundation to an existing OpenShift cluster
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -13,9 +13,9 @@ Learn how to install the Mobile Foundation instance on an OpenShift cluster usin
 
 Following are the prerequisites before you begin the process of installing Mobile Foundation instance using the Mobile Foundation Operator.
 
-* Docker
-* OpenShift cluster (preferably multi-node) v3.11
-* OpenShift client tools (`oc`)
+- Docker
+- OpenShift cluster (preferably multi-node) v3.11
+- OpenShift client tools (`oc`)
 
 ## Installing an IBM Mobile Foundation instance
 
