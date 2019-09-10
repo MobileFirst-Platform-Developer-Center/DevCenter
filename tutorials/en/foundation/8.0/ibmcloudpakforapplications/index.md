@@ -31,6 +31,6 @@ Learn more about Cloud Pak for Applications and what it can do for your business
 
 To download and install Mobile Foundation with Cloud Pak for Applications:
 
-* Download Mobile Foundation from [Passport Advantage](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
-* Installation instructions [here](../mobilefoundation-on-openshift/)
-* Download [Digital App Builder]({{site.baseurl}}downloads/)
+* Download Mobile Foundation from [Passport Advantage](https://www-01.ibm.com/software/passportadvantage/pao_customer.html).
+* Installation instructions [here](../ibmcloud/mobilefoundation-on-openshift/).
+* Download [Digital App Builder](../../../../../downloads/).
