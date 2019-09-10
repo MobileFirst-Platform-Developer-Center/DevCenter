@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Mobile Foundation on IBM Cloud
+breadcrumb_title: Mobile Foundation on cloud
 title: IBM Mobile Foundation on IBM Cloud
 relevantTo: [ios,android,windows,javascript]
 weight: 11
