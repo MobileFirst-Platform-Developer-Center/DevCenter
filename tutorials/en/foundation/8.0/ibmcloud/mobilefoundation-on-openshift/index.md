@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-breadcrumb_title: Install Mobile Foundation in ICP4A
-title: Install Mobile Foundation in IBM Cloud Pak for Applications
+breadcrumb_title: Mobile Foundation in an OpenShift cluster
+title: Install Mobile Foundation in an OpenShift cluster
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
