@@ -39,23 +39,23 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
     ```bash
     docker images
     ```
-        The output should list mf-operator, mfpf-dbinit, mfpf-server, mfpf-push, mfpf-analytics, and mfpf-appcenter.
+    The output should list mf-operator, mfpf-dbinit, mfpf-server, mfpf-push, mfpf-analytics, and mfpf-appcenter.
 
     f.  Tag and Push all the images.
     ```bash
-    docker tag mf-operator:<image_tag> <registry_info>//mf-operator:<image_tag>
-    docker tag mfpf-server:<image_tag> <registry_info>//mfpf-server:<image_tag>
-    docker tag mfpf-push:<image_tag> <registry_info>//mfpf-push:<image_tag>
-    docker tag mfpf-appcenter:<image_tag> <registry_info>//mfpf-appcenter:<image_tag>
-    docker tag mfpf-dbinit:<image_tag> <registry_info>//mfpf-dbinit:<image_tag>
-    docker tag mfpf-analytics:<image_tag> <registry_info>//mfpf-analytics:<image_tag>
+    docker tag mf-operator:<image_tag> <registry_info>/<namespace name>/mf-operator:<image_tag>
+    docker tag mfpf-server:<image_tag> <registry_info>/<namespace name>/mfpf-server:<image_tag>
+    docker tag mfpf-push:<image_tag> <registry_info>/<namespace name>/mfpf-push:<image_tag>
+    docker tag mfpf-appcenter:<image_tag> <registry_info>/<namespace name>/mfpf-appcenter:<image_tag>
+    docker tag mfpf-dbinit:<image_tag> <registry_info>/<namespace name>/mfpf-dbinit:<image_tag>
+    docker tag mfpf-analytics:<image_tag> <registry_info>/<namespace name>/mfpf-analytics:<image_tag>
 
-    docker push <registry_info>//mf-operator:<image_tag>
-    docker push <registry_info>//mfpf-server:<image_tag>
-    docker push <registry_info>//mfpf-push:<image_tag>
-    docker push <registry_info>//mfpf-appcenter:<image_tag>
-    docker push <registry_info>//mfpf-dbinit:<image_tag>
-    docker push <registry_info>//mfpf-analytics:<image_tag>
+    docker push <registry_info>/<namespace name>/mf-operator:<image_tag>
+    docker push <registry_info>/<namespace name>/mfpf-server:<image_tag>
+    docker push <registry_info>/<namespace name>/mfpf-push:<image_tag>
+    docker push <registry_info>/<namespace name>/mfpf-appcenter:<image_tag>
+    docker push <registry_info>/<namespace name>/mfpf-dbinit:<image_tag>
+    docker push <registry_info>/<namespace name>/mfpf-analytics:<image_tag>
     ```
 
     For example,
@@ -66,9 +66,9 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
 
     g.  Create a secret to pull the images from the registry.
     ```bash
-    ibmcloud iam api-key-create mofo-registry-access
+    ibmcloud iam api-key-create <api key name>
     ```
-        use the apikey from the output of the command above as the docker-password in the command below.
+    save the iam apikey from the output of the command above to create a secret that is to be used as the docker-password in the command below.
 
     ```bash
     oc create secret docker-registry push-secret --docker-username=iamapikey --docker-password= --docker-server=us.icr.io
@@ -90,7 +90,10 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
     ibmcloud oc cluster-config --cluster
     ```
 
-    d.  Set the cluster config details.
+    d.  Set the cluster config details, which is the output of the following command.
+    ```bash
+    ibmcloud oc cluster-config --cluster
+    ```
 
     e.  Log in using `oc`.
     ```bash
@@ -106,7 +109,7 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
 
     a.  Create an **imagePullSecret** to be able to pull the images from the container registry.
     ```bash
-    oc create secret docker-registry <image_pull_secret_name> --docker-server=<image_registry_server> --docker-username=<user_name> --docker-password=<password>
+    oc create secret docker-registry <secret-name> --docker-username = <iamapikey> --docker-password = <output of the api-key-create which was saved earlier> --docker-server=us.icr.io
     ```
 
     b.  Go to the folder where the PPA images are extracted.
