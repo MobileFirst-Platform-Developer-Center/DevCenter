@@ -22,16 +22,10 @@ Following are the prerequisites before you begin the process of installing Mobil
 
 ## Installing an IBM Mobile Foundation instance
 
-### Unpack the IBM Mobile Foundation package
-{: #unpack-mf-package}
+### Download the IBM Mobile Foundation package
+{: #download-mf-package}
 
 Download the IBM Mobile Foundation package for Openshift from [IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). Unpack the archive to a directory called `workdir`.
-
-Unpack the package using the following command.
-
-```bash
-tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C <workdir>/
-```
 
 ### Validating IBM Mobile Foundation archive downloaded from Passport Advantage Archive (Optional)
 {: #validating-mf-from-ppa}
@@ -57,6 +51,15 @@ IBM Mobile Foundation package for Red Hat OpenShift Container Platform, which is
   ```bash
   openssl dgst -sha256 -verify CC3FFEN.pub -signature CC3FEEN.sig CC3FDEN.tar.gz
   ```  
+
+### Unpack the IBM Mobile Foundation package
+{: #unpack-mf-package}
+
+Unpack the IBM Mobile Foundation package for Openshift using the following command.
+
+```bash
+tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C <workdir>/
+```
 
 ### Setup the OpenShift project for Mobile Foundation
 {: #setup-openshift-for-mf}
