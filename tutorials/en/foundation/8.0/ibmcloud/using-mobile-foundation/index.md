@@ -3,7 +3,7 @@ layout: tutorial
 title: Using Mobile Foundation service on IBM Cloud
 breadcrumb_title: Setting up Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

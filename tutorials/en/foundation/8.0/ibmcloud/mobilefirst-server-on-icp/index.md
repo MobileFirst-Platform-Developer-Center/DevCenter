@@ -3,7 +3,7 @@ layout: tutorial
 title: Installing IBM Mobile Foundation on IBM Cloud Private
 breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -11,7 +11,7 @@ weight: 4
 Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance, {{ site.data.keys.mf_analytics }}, {{ site.data.keys.mf_push }} and {{ site.data.keys.mf_app_center}} instance on {{ site.data.keys.prod_icp }}:
 
 * Complete the prerequisites
-* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} 
+* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }}
 * Load the PPA archive in the {{ site.data.keys.prod_icp }} Cluster
 * Configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional), {{ site.data.keys.mf_push }} (optional) and {{ site.data.keys.mf_app_center }} (optional)
 
@@ -47,7 +47,7 @@ To manage containers and images, you need to install the following on your host 
 
 For example:
 
-In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required. 
+In order to create Kubernetes artifacts like Secrets, Persistent Volumes (PV) and Persistent Volume Claims (PVC) on IBM Cloud Private, `kubectl` cli is required.
 
 a. Install `kubectl` tooling from the IBM Cloud Private management console, click **Menu > Command Line Tools > Cloud Private CLI**.
 
@@ -82,7 +82,7 @@ Follow the steps given below to load the PPA Archive into {{ site.data.keys.prod
       >See the [CLI Command Reference](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_cluster/cli_commands.html) in {{ site.data.keys.prod_icp }} documentation.
 
      For example,
-     
+
      ```bash
      cloudctl login -a https://ip:port
      ```
@@ -110,20 +110,20 @@ Before you install and configure {{ site.data.keys.mf_server }}, you should have
 
 This section summarizes the steps for creating secrets.
 
-Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image. 
+Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image.
 
-1. (Mandatory) A pre-configured database is required to store the technical data of the Mobile Foundation Server and Application Center components. 
+1. (Mandatory) A pre-configured database is required to store the technical data of the Mobile Foundation Server and Application Center components.
 
    You must use one of the below supported DBMS:
-   
-     1. **IBM DB2** 
+
+     1. **IBM DB2**
      2. **MySQL**
      3. **Oracle**
 
    Follow the below steps, if you are using the ***Oracle or MySQL database -***
 
    - The JDBC drivers for Oracle and MySQL are not included in the Mobile Foundation installer. Make sure that you have the JDBC driver (For MySQL - use the Connector/J JDBC driver,  For Oracle - use the Oracle thin JDBC driver). Create a Mounted Volume and place the JDBC driver in the location `/nfs/share/dbdrivers`
-   
+
    - Create a Persistent Volume (PV) by providing the NFS host details and the path where the JDBC driver is stored. Below is a sample `PersistentVolume.yaml`
       ```
       cat <<EOF | kubectl apply -f -
@@ -144,9 +144,9 @@ Secret objects let you store and manage sensitive information, such as passwords
        EOF
       ```
       > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
-      
-    - Create a Persistent Volume Claim (PVC) and provide the PVC name in the Helm chart while deploying. Below is a sample `PersistentVolumeClaim.yaml` 
-      ```bash 
+
+    - Create a Persistent Volume Claim (PVC) and provide the PVC name in the Helm chart while deploying. Below is a sample `PersistentVolumeClaim.yaml`
+      ```bash
       cat <<EOF | kubectl apply -f -
       apiVersion: v1
       kind: PersistentVolumeClaim
@@ -171,9 +171,9 @@ Secret objects let you store and manage sensitive information, such as passwords
       EOF
       ```
    >NOTE: Make sure you add the right namespace in the above yaml
-	
+
 2. (Mandatory) A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
-	
+
    ```bash
    kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
    ```
@@ -206,16 +206,16 @@ Secret objects let you store and manage sensitive information, such as passwords
 
    > NOTE: The names of the files and literals should be the same as mentioned in command above.	Provide this secret name in `keystoresSecretName` input field of respective component to override the default keystores when configuring the helm chart.
 
-4. (Optional) Mobile Foundation components can be configured with hostname based Ingress for external clients to reach them using hostname. The Ingress can be secured by using a TLS private key and certificate. The TLS private key and certificate must be defined in a secret with key names `tls.key` and `tls.crt`. 
+4. (Optional) Mobile Foundation components can be configured with hostname based Ingress for external clients to reach them using hostname. The Ingress can be secured by using a TLS private key and certificate. The TLS private key and certificate must be defined in a secret with key names `tls.key` and `tls.crt`.
 
    The secret **mf-tls-secret** is created in the same namespace as the Ingress resource by using the following command:
 
    ```bash
    kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/tls.crt
    ```
-	
+
    The name of the secret is then provided in the field global.ingress.secret
-   
+
    > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
 
 5. (Optional) To customise the configuration (example: modifying a log trace setting, adding a new jndi property and so on), you will have to create a configmap with the configuration XML file. This allows you to add a new configuration setting or override the existing configurations of the Mobile Foundation components.
@@ -225,7 +225,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 	```bash
 	kubectl create configmap mfpserver-custom-config --from-file=<configuration file in XML format>
 	```
-	
+
     The configmap created using the above command should be provided in the **Custom Server Configuration** in the Helm chart while deploying Mobile Foundation.
 
     Below is an example of setting the trace log specification to warning (The default setting is info) using mfpserver-custom-config configmap.
@@ -238,7 +238,7 @@ Secret objects let you store and manage sensitive information, such as passwords
           maxFileSize="20" />
     </server>
 	```
- 
+
     - Creating configmap and add the same during the helm chart deployment
 
 	```bash
@@ -247,25 +247,25 @@ Secret objects let you store and manage sensitive information, such as passwords
 
     - Notice the change in the messages.log (of Mobile Foundation components) - ***Property traceSpecification will be set to com.ibm.mfp.=debug:\*=warning.***
 
-6. (Optional) Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
+6. (Optional) Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields.
 
-   These secrets can be created as follows: 
-	
+   These secrets can be created as follows:
+
    ```bash
    kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLIENTID=admin --from-literal=MFPF_ADMIN_AUTH_SECRET=admin
    kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
    ```
-	
+
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
 
 7. For Analytics deployment, one can choose below options for persisting analytics data
 
-    a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart, 
-	
-      For example: 
-	
+    a) To have `Persistent Volume (PV)`  and `Persistent Volume Claim (PVC)` ready and provide PVC name in the helm chart,
+
+      For example:
+
       Sample `PersistentVolume.yaml`
-	
+
       ```bash
 	apiVersion: v1
 	kind: PersistentVolume
@@ -286,7 +286,7 @@ Secret objects let you store and manage sensitive information, such as passwords
     > NOTE: Make sure you add the <nfs_server> and <nfs_path> entries in the above yaml.
 
       Sample `PersistentVolumeClaim.yaml`
-		
+
       ```bash
 	apiVersion: v1
 	kind: PersistentVolumeClaim
@@ -309,7 +309,7 @@ Secret objects let you store and manage sensitive information, such as passwords
 	  capacity:
 	    storage: 20Gi
 	```
-	
+
     > NOTE: Make sure you add the right <namespace> in the above yaml.
 
     b) To choose dynamic provisioning in the chart.
@@ -324,9 +324,9 @@ This section outlines the security mechanisms for controlling access to the data
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
 	data:
-	  MFPF_ADMIN_DB_USERNAME: encoded_uname 
+	  MFPF_ADMIN_DB_USERNAME: encoded_uname
 	  MFPF_ADMIN_DB_PASSWORD: encoded_password
-	  MFPF_RUNTIME_DB_USERNAME: encoded_uname 
+	  MFPF_RUNTIME_DB_USERNAME: encoded_uname
 	  MFPF_RUNTIME_DB_PASSWORD: encoded_password
 	  MFPF_PUSH_DB_USERNAME: encoded_uname
 	  MFPF_PUSH_DB_PASSWORD: encoded_password
@@ -336,9 +336,9 @@ This section outlines the security mechanisms for controlling access to the data
 	type: Opaque
 	EOF
    ```
-	
+
    Run the below code snippet to create a database secret for Application Center
-	
+
    ```bash
 	# create appcenter secret
 	cat <<EOF | kubectl apply -f -
@@ -353,12 +353,12 @@ This section outlines the security mechanisms for controlling access to the data
 	EOF
    ```
 
-   > NOTE: You may encode the username and password details using the below command - 
-	
+   > NOTE: You may encode the username and password details using the below command -
+
    ```bash
 	export $MY_USER_NAME=<myuser>
 	export $MY_PASSWORD=<mypassword>
-	
+
 	echo -n $MY_USER_NAME | base64
 	echo -n $MY_PASSWORD | base64
    ```
@@ -388,9 +388,9 @@ This section outlines the security mechanisms for controlling access to the data
       type: Opaque
       EOF
       ```
-      
+
     Run the below code snippet to create a `MFP Appcenter DB Admin Secret` for Mobile Foundation server:      
-	
+
       ```bash
       # Create Appcenter Admin DB secret and update the same in the Helm chart while deploying Mobile Foundation AppCenter   component
       cat <<EOF | kubectl apply -f -
@@ -404,9 +404,9 @@ This section outlines the security mechanisms for controlling access to the data
       type: Opaque
       EOF
       ```
-	
+
 10. (Optional) Create container **Image Policy** and **Image pull secrets** when the container images are pulled from a registry that is outside the IBM Cloud Private setup's container registry (DockerHub, private docker registry, etc.)
-  
+
    ```bash
 	# Create image policy
 	cat <<EOF | kubectl apply -f -
@@ -422,16 +422,16 @@ This section outlines the security mechanisms for controlling access to the data
 	 - name: <container-image-registry-hostname>/*
 	   policy: null
 	EOF
-   ```	
-	
-   ```bash	
+   ```
+
+   ```bash
    kubectl create secret docker-registry -n <namespace> <container-image-registry-hostname> --docker-username=<docker-registry-username> --docker-password=<docker-registry-password>
    ```
-	
+
    > NOTE: text inside < > needs to be updated with right values.
 
 
-   For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/). 
+   For more information refer to [Configuring the MobileFirst Server Keystore]({{ site.baseurl }}/tutorials/en/foundation/8.0/authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 ### PodSecurityPolicy Requirements
 
@@ -447,7 +447,7 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
 	  name: ibm-mobilefoundation-prod-psp
 	  annotations:
 	    apparmor.security.beta.kubernetes.io/allowedProfileNames: runtime/default
-	    apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default 
+	    apparmor.security.beta.kubernetes.io/defaultProfileName: runtime/default
 	    seccomp.security.alpha.kubernetes.io/allowedProfileNames: docker/default
 	    seccomp.security.alpha.kubernetes.io/defaultProfileName: docker/default
 	spec:
@@ -499,7 +499,7 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
     > NOTE: It is required to create the PodSecurityPolicy only once, if the PodSecurityPolicy already exists then skip this step.
 
    The cluster admin can either paste the above PSP and ClusterRole definitions into the create resource screen in the UI or run the following two commands:
-  
+
 ```bash
     kubectl create -f <PSP yaml file>
     kubectl create clusterrole ibm-mobilefoundation-prod-psp-clusterrole --verb=use --resource=podsecuritypolicy --resource-name=ibm-mobilefoundation-prod-psp
@@ -510,7 +510,7 @@ This chart requires a PodSecurityPolicy to be bound to the target namespace prio
 ```bash
     kubectl create rolebinding ibm-mobilefoundation-prod-psp-rolebinding --clusterrole=ibm-mobilefoundation-prod-psp-clusterrole --serviceaccount=<namespace>:default --namespace=<namespace>
 ```
-  
+
 ## Resources Required
 {: #resources-required}
 
@@ -648,7 +648,7 @@ The table below provides the environment variables used in {{ site.data.keys.mf_
 
 Along with the {{ site.data.keys.mf_server }}, you may also deploy {{ site.data.keys.mf_analytics }} and {{ site.data.keys.mf_app_center }} from the same chart. However, deploying  {{ site.data.keys.mf_analytics }} and {{ site.data.keys.mf_app_center }}  is optional.
 
-Note : 
+Note :
 
 1. Before you begin the installation of {{ site.data.keys.mf_server }} ensure that you have pre-configured a DB2 database.
 2. Before you begin the installation of {{ site.data.keys.mf_analytics }} Chart, configure the **Persistent Volume**. Provide the **Persistent Volume** to configure {{ site.data.keys.mf_analytics }}. Follow the steps detailed in [{{ site.data.keys.prod_icp }} documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/manage_cluster/create_volume.html) to create **Persistent Volume**. You may also refer the **section-6** in [Install and configure IBM {{ site.data.keys.product }} Helm Charts](#configure-install-mf-helmcharts)for the sample yaml file.
@@ -662,7 +662,7 @@ Follow the steps below to install and configure IBM Mobile Foundation from {{ si
 5. Accept the **License Agreement**.
 6. Click **Install**.
 
-> NOTE: The latest Mobile Foundation on ICP package bundles following supported softwares - 
+> NOTE: The latest Mobile Foundation on ICP package bundles following supported softwares -
 > 1. IBM JRE8 SR5 FP37 (8.0.5.37)
 > 2. IBM WebSphere Liberty v18.0.0.5
 
@@ -676,7 +676,7 @@ In the {{ site.data.keys.prod_icp }} Management Console. Select **Workloads > He
 ## Accessing {{ site.data.keys.prod_adj }} console
 {: #access-mf-console}
 
-After successful installation, the deployment may take a few minutes to complete. 
+After successful installation, the deployment may take a few minutes to complete.
 
 From a web browser, go to the IBM Cloud Private console page and navigate to the helm releases page as follows
 1. Click Menu on the Left Top of the Page.
@@ -739,16 +739,16 @@ Use the following [example yaml files](https://github.com/kubernetes-csi/externa
 You may also leverage other tools to take a backup of the volume and restore the same -
 
 - IBM Cloud Automation Manager (CAM) on ICP
-    
+
     Leverage the capabilities of CAM and strategies for [Backup/Restore, High Availability (HA) and Disaster Recovery (DR) for CAM instances](https://developer.ibm.com/cloudautomation/2018/05/08/backup-ha-dr/)
-	   
+
 - [Portworx](https://portworx.com) on ICP
-    
+
     Is a storage solution designed for applications deployed as containers or via container orchestrators such as Kubernetes
-	   
+
 - Stash by [AppsCode](https://appscode.com/products/kubed/0.9.0/guides/disaster-recovery/stash/)
-    
-    Using Stash, you can backup the volumes in Kubernetes 
+
+    Using Stash, you can backup the volumes in Kubernetes
 
 ## Uninstall
 {: #uninstall}
