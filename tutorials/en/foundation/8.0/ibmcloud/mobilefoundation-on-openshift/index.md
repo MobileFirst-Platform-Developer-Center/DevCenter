@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-breadcrumb_title: Deploy Mobile Foundation to an existing OpenShift cluster
-title: Deploy Mobile Foundation to an existing OpenShift cluster
+breadcrumb_title: Foundation on Red Hat OpenShift
+title: Deploy Mobile Foundation to an existing Red Hat OpenShift cluster
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -13,23 +13,121 @@ Learn how to install the Mobile Foundation instance on an OpenShift cluster usin
 
 Following are the prerequisites before you begin the process of installing Mobile Foundation instance using the Mobile Foundation Operator.
 
-- Docker
-- OpenShift cluster (preferably multi-node) v3.11
-- OpenShift client tools (`oc`)
+- OpenShift cluster v3.11
+- [OpenShift client tools](https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html) (`oc`)
+- Mobile Foundation requires a database. Create a supported database and keep the database access details handy for further use. See [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/databases/).
+- Mobile Foundation Analytics requires mounted storage volume for persisting Analytics data (NFS recommended).
+
+
 
 ## Installing an IBM Mobile Foundation instance
 
 ### Unpack the IBM Mobile Foundation package
 {: #unpack-mf-package}
 
-Download the IBM Mobile Foundation package for Openshift from [Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). For internal or development use, obtain the package from [here](https://na.artifactory.swg-devops.com/artifactory/list/hyc-mobilefoundation-dev-generic-local/IBM-MobileFoundation-Openshift-Pak-1.0.0.tar.gz).
+Download the IBM Mobile Foundation package for Openshift from [IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). Unpack the archive to a directory called `workdir`.
 
 Unpack the package using the following command.
 
 ```bash
-mkdir mfospkg
-tar xzvf IBM-MobileFoundation-Openshift-Pak-1.0.0.tar.gz -C mfospkg/
+tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C <workdir>/
 ```
+
+> **Note**: Follow the instructions [here](../../product-overview/requirements/ppa-verification/), to verify the integrity of the package downloaded from PPA.
+
+
+### Setup the OpenShift project for Mobile Foundation
+{: #setup-openshift-for-mf}
+
+1. Log in to OpenShift cluster and create a new project.
+   ```bash
+   export MFOS_PROJECT=<project-name>
+   oc login -u <username> -p <password> <cluster-url>
+   oc new-project $MFOS_PROJECT
+   ```
+
+2. Load and push the images to OpenShift registry from local.
+   ```bash
+    docker login -u <username> -p $(oc whoami -t) $(oc registry info)
+    cd <workdir>/images
+    ls * | xargs -I{} docker load --input {}
+
+    for file in * ; do
+      docker tag ${file/.tar.gz/} $(oc registry info)/$MFOS_PROJECT/${file/.tar.gz/}
+      docker push $(oc registry info)/$MFOS_PROJECT/${file/.tar.gz/}
+    done
+   ```
+
+3. Create a secret with database credentials.
+   ```yaml
+   cat <<EOF | oc apply -f -
+   apiVersion: v1
+   data:
+   	MFPF_ADMIN_DB_USERNAME: <base64-encoded-string>
+   	MFPF_ADMIN_DB_PASSWORD: <base64-encoded-string>
+   	MFPF_RUNTIME_DB_USERNAME: <base64-encoded-string>
+   	MFPF_RUNTIME_DB_PASSWORD: <base64-encoded-string>
+   	MFPF_PUSH_DB_USERNAME: <base64-encoded-string>
+   	MFPF_PUSH_DB_PASSWORD: <base64-encoded-string>
+   	MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
+   	MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
+   kind: Secret
+   metadata:
+   	name: mobilefoundation-db-secret
+   type: Opaque
+   EOF
+   ```
+  > **Note**: An encoded string can be obtained using `echo -n <string-to-encode> | base64`.
+
+4. For Mobile Foundation Analytics, configure a persistent volume (PV).
+
+   ```yaml
+   cat <<EOF | oc apply -f -
+   apiVersion: v1
+   kind: PersistentVolume
+   metadata:
+   labels:
+   name: mfanalyticspv
+   name: mfanalyticspv
+   spec:
+   accessModes:
+   - ReadWriteMany
+   capacity:
+   storage: 20Gi
+   nfs:
+   path: <nfs-mount-volume-path>
+   server: <nfs-server-hostname-or-ip>
+   EOF
+   ```
+
+5. For Mobile Foundation Analytics, configure a persistent volume claim (PVC).
+
+   ```yaml
+   cat <<EOF | oc apply -f -
+   apiVersion: v1
+   kind: PersistentVolumeClaim
+   metadata:
+   name: mfanalyticsvolclaim
+   namespace: <project-name-or-namespace>
+   spec:
+   accessModes:
+   - ReadWriteMany
+   resources:
+   	requests:
+   	storage: 20Gi
+   selector:
+   	matchLabels:
+   	name: mfanalyticspv
+   volumeName: mfanalyticspv
+   status:
+   accessModes:
+   - ReadWriteMany
+   capacity:
+   	storage: 20Gi
+   EOF
+   ```
+
+<!--   
 
 ### Load the IBM Mobile Foundation images to the local docker registry
 {: #load-mf-local-registry}
@@ -81,7 +179,7 @@ Follow the steps below to make the IBM Mobile Foundation images available to you
 
 6.  Set the Mobile Foundation Operator image name in the `deploy/operator.yaml`, optionally you can use `sed` utility as follows.
     ```bash
-    sed -i "" 's|REPLACE_IMAGE|docker-registry.default.svc:5000/mf/mf-operator:v1.0.0|g' deploy/operator.yaml
+    sed -i "" 's|REPLACE_IMAGE|docker-registry.default.svc:5000/mf/mf-operator:<VERSION>|g' deploy/operator.yaml
     ```
 
 ### Accessing Mobile Foundation images from an external registry with ImagePullSecrets and ImagePolicies
@@ -117,17 +215,39 @@ If the Mobile Foundation images are available under a different OpenShift projec
 imagePullSecrets:
 - name: <image_pull_secret_name>
 ```
-
+-->
 
 ### Deploy the IBM Mobile Foundation Operator
 {: #deploy-mf-operator}
 
-Use the following commands in the OpenShift client to deploy the Mobile Foundation Operator.
+1.  Ensure the Operator image name (*mf-operator*) with tag is set for the operator in `deploy/operator.yaml` (**REPO_URL**).
+    ```bash
+    sed -i 's|REPO_URL|<image-repo-url>:<image-tag>|g' deploy/operator.yaml
+    ```
+
+2.  Ensure the namespace is set for the cluster role binding definition in `deploy/cluster_role_binding.yaml` (**REPLACE_NAMESPACE**).
+    ```bash
+    sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/cluster_role_binding.yaml
+    ```
+
+3.  Run the following commands to deploy CRD, operator and install Security Context Constraints (SCC).
+    ```bash
+    oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
+    oc create -f deploy/
+    oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
+    ```
+
+### Deploy IBM Mobile Foundation components
+{: #deploy-mf-components}
+
+To deploy any of the Mobile Foundation components, modify the custom resource configuration `deploy/crds/charts_v1_mfoperator_cr.yaml` according to your requirements. Complete reference to the custom configuration is found [here](https://github.ibm.com/MobileFirst/ibm-mobilefoundation-helm-operator/blob/development/cr-configuration.md).
 
 ```bash
-oc create -f deploy/crds/charts_v1alpha1_ibmmf_crd.yaml
-oc create -f deploy/operator.yaml
+oc apply -f deploy/crds/charts_v1_mfoperator_cr.yaml
 ```
+
+Access the Mobile Foundation server console from `https://<openshift-cluster-url>/mfpconsole`.
+
 
 ### Install the Mobile Foundation instance
 {: #install-mf}
@@ -272,9 +392,9 @@ The properties that can be customized can be found [here]().
 
 Use the following commands to perform a post installation clean up.
 ```bash
-oc delete -f deploy/crds/charts_v1alpha1_ibmmf_cr.yaml
-oc delete -f deploy/operator.yaml
-oc delete -f deploy/crds/charts_v1alpha1_ibmmf_crd.yaml
+oc delete -f deploy/crds/charts_v1_mfoperator_cr.yaml
+oc delete -f deploy/
+oc delete -f deploy/crds/charts_v1_mfoperator_crd.yaml
 ```
 
 ## Using Oracle (or) MySQL as IBM Mobile Foundation database
@@ -392,6 +512,7 @@ Various [example yaml files](https://github.com/kubernetes-csi/external-snapshot
 
 You may also leverage other tools like [AppsCode Stash](https://appscode.com/products/kubed/0.9.0/guides/disaster-recovery/stash/) to take a backup of the volume and restore the same.
 
+<!--
 ## Known issues and work arounds
 {: #known-issues}
 
@@ -419,3 +540,4 @@ You may also leverage other tools like [AppsCode Stash](https://appscode.com/pro
   ```
   {: codeblock}
  >Remember to delete the Custom Resource Object and re-apply the configuration.
+-->

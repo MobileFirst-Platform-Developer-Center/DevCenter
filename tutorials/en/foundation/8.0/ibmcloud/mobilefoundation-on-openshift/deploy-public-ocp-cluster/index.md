@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Deploy Mobile Foundation on Red Hat OpenShift cluster on IBM Cloud
+breadcrumb_title: Foundation on IBM Cloud OpenShift
 title: Deploy Mobile Foundation on Red Hat OpenShift cluster on IBM Cloud
 weight: 2
 ---
