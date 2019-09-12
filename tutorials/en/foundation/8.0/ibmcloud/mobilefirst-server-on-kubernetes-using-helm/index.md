@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Setting up Mobile Foundation on IBM Cloud Kubernetes Cluster using Helm
-breadcrumb_title: Foundation on Kubernetes Cluster using Helm
+breadcrumb_title: Foundation on Kubernetes using Helm
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview

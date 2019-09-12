@@ -3,6 +3,7 @@ layout: tutorial
 breadcrumb_title: Get started with Foundation on OpenShift
 title: Get started with Mobile Foundation on an OpenShift cluster
 weight: 1
+show_in_nav: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 

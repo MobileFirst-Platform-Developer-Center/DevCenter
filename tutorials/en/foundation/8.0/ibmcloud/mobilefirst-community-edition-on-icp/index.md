@@ -3,7 +3,7 @@ layout: tutorial
 title: Deploying IBM Mobile Foundation for Developers 8.0 on IBM Cloud Private
 breadcrumb_title: Foundation for Developers on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 5
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
