@@ -1,6 +1,6 @@
 ---
 title: Announcing the availability of IBM Mobile Foundation for Red Hat OpenShift Container platform
-date: 2019-09-12
+date: 2019-09-13
 tags:
 - MobileFirst_Platform
 - Announcement
