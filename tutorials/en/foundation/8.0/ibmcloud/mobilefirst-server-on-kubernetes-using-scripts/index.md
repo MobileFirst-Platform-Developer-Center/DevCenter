@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Setting up MobileFirst Server on IBM Cloud Kubernetes Cluster using scripts
-breadcrumb_title: Foundation on Kubernetes Cluster using scripts
+breadcrumb_title: Foundation on Kubernetes using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>

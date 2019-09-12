@@ -2,11 +2,18 @@
 layout: tutorial
 breadcrumb_title: Foundation on Red Hat OpenShift
 title: Deploy Mobile Foundation to an existing Red Hat OpenShift Container Platform
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
 Learn how to install the Mobile Foundation instance on an OpenShift cluster using the IBM Mobile Foundation Operator.
+
+There are two ways of getting the entitlement to OpenShift Container Platform.
+
+* You have the entitlement to IBM Cloud Pak for Applications, which includes the OpenShift Container Platform entitlement.
+* You have an existing OpenShift Container Platform (bought from Red Hat).
+
+The steps to deploy Mobile Foundation on OCP are the same irrespective of how you have obtained the OCP entitlement.
 
 ### Prerequisites
 {: #prereqs}

@@ -3,7 +3,7 @@ layout: tutorial
 title: Installing IBM Mobile Foundation on IBM Cloud Private
 breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
