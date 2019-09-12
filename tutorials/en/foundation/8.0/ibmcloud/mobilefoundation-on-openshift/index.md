@@ -427,6 +427,9 @@ oc delete -f deploy/crds/charts_v1_mfoperator_crd.yaml
 
 A pre-configured database is required to store the data for Mobile Foundation server, Push and Application Center components.
 
+Follow the instructions [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/#mysql-database-and-user-requirements) to setup Mobile Foundation with a non-DB2 database.
+
+<!--
 By default, Mobile Foundation installers is packaged with IBM DB2 JDBC drivers. For Oracle and MySQL, make sure that the JDBC driver (for MySQL - use the Connector/J JDBC driver,  for Oracle - use the Oracle thin JDBC driver) is placed within a Persistent Volume.
 
 1. Place the JDBC driver in a NFS mounted volume. Example: */nfs/share/dbdrivers*
@@ -523,7 +526,7 @@ name: appcenter-dbadminsecret
 type: Opaque
 EOF
 ```
-
+-->
 ## Backup and recovery of Mobile Foundation Analytics data
 {: #backup-recovery-mf-analytics-data}
 
