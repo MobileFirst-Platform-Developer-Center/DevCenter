@@ -84,46 +84,46 @@ tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C <workdir>/
    ```
 
 3. Create a secret with database credentials.
-   ```yaml
-   cat <<EOF | oc apply -f -
-   apiVersion: v1
-   data:
-   	MFPF_ADMIN_DB_USERNAME: <base64-encoded-string>
-   	MFPF_ADMIN_DB_PASSWORD: <base64-encoded-string>
-   	MFPF_RUNTIME_DB_USERNAME: <base64-encoded-string>
-   	MFPF_RUNTIME_DB_PASSWORD: <base64-encoded-string>
-   	MFPF_PUSH_DB_USERNAME: <base64-encoded-string>
-   	MFPF_PUSH_DB_PASSWORD: <base64-encoded-string>
-   	MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
-   	MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
-   kind: Secret
-   metadata:
-   	name: mobilefoundation-db-secret
-   type: Opaque
-   EOF
-   ```
+  ```yaml
+  cat <<EOF | oc apply -f -
+  apiVersion: v1
+  data:
+      MFPF_ADMIN_DB_USERNAME: <base64-encoded-string>
+      MFPF_ADMIN_DB_PASSWORD: <base64-encoded-string>
+      MFPF_RUNTIME_DB_USERNAME: <base64-encoded-string>
+      MFPF_RUNTIME_DB_PASSWORD: <base64-encoded-string>
+      MFPF_PUSH_DB_USERNAME: <base64-encoded-string>
+      MFPF_PUSH_DB_PASSWORD: <base64-encoded-string>
+      MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
+      MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
+  kind: Secret
+  metadata:
+  name: mobilefoundation-db-secret
+  type: Opaque
+  EOF
+  ```
   > **Note**: An encoded string can be obtained using `echo -n <string-to-encode> | base64`.
 
 4. For Mobile Foundation Analytics, configure a persistent volume (PV).
 
-   ```yaml
-   cat <<EOF | oc apply -f -
-   apiVersion: v1
-   kind: PersistentVolume
-   metadata:
-   labels:
-   name: mfanalyticspv
-   name: mfanalyticspv
-   spec:
-   accessModes:
-   - ReadWriteMany
-   capacity:
-   storage: 20Gi
-   nfs:
-   path: <nfs-mount-volume-path>
-   server: <nfs-server-hostname-or-ip>
-   EOF
-   ```
+    ```yaml
+    cat <<EOF | oc apply -f -
+    apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+        labels:
+            name: mfanalyticspv
+            name: mfanalyticspv
+    spec:
+        accessModes:
+        - ReadWriteMany
+           capacity:
+           storage: 20Gi
+           nfs:
+           path: <nfs-mount-volume-path>
+           server: <nfs-server-hostname-or-ip>
+    EOF
+    ```
 
 5. For Mobile Foundation Analytics, configure a persistent volume claim (PVC).
 
@@ -132,23 +132,23 @@ tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C <workdir>/
    apiVersion: v1
    kind: PersistentVolumeClaim
    metadata:
-   name: mfanalyticsvolclaim
+    name: mfanalyticsvolclaim
    namespace: <project-name-or-namespace>
    spec:
-   accessModes:
-   - ReadWriteMany
-   resources:
-   	requests:
-   	storage: 20Gi
-   selector:
-   	matchLabels:
-   	name: mfanalyticspv
-   volumeName: mfanalyticspv
-   status:
-   accessModes:
-   - ReadWriteMany
-   capacity:
-   	storage: 20Gi
+    accessModes:
+    - ReadWriteMany
+    resources:
+   	  requests:
+   	  storage: 20Gi
+    selector:
+   	 matchLabels:
+   	  name: mfanalyticspv
+      volumeName: mfanalyticspv
+    status:
+     accessModes:
+     - ReadWriteMany
+     capacity:
+   	  storage: 20Gi
    EOF
    ```
 
@@ -301,14 +301,14 @@ Access the Mobile Foundation server console from `https://<openshift-cluster-url
     cat <<EOF | oc apply -f -
     apiVersion: v1
     data:
-     MFPF_ADMIN_DB_USERNAME: Ymx1YWRtaW4=
-     MFPF_ADMIN_DB_PASSWORD: TkdZeE9UTmhNV0V5WkRJeQ==
-     MFPF_RUNTIME_DB_USERNAME: Ymx1YWRtaW4=
-     MFPF_RUNTIME_DB_PASSWORD: TkdZeE9UTmhNV0V5WkRJeQ==
-     MFPF_PUSH_DB_USERNAME: Ymx1YWRtaW4=
-     MFPF_PUSH_DB_PASSWORD: TkdZeE9UTmhNV0V5WkRJeQ==
-     MFPF_APPCNTR_DB_USERNAME: Ymx1YWRtaW4=
-     MFPF_APPCNTR_DB_PASSWORD: TkdZeE9UTmhNV0V5WkRJeQ==
+     MFPF_ADMIN_DB_USERNAME: <base64-encoded-string>
+     MFPF_ADMIN_DB_PASSWORD: <base64-encoded-string>
+     MFPF_RUNTIME_DB_USERNAME: <base64-encoded-string>
+     MFPF_RUNTIME_DB_PASSWORD: <base64-encoded-string>
+     MFPF_PUSH_DB_USERNAME: <base64-encoded-string>
+     MFPF_PUSH_DB_PASSWORD: <base64-encoded-string>
+     MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
+     MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
     kind: Secret
     metadata:
      name: mobilefoundation-db
@@ -321,8 +321,8 @@ Access the Mobile Foundation server console from `https://<openshift-cluster-url
    cat <<EOF | oc apply -f -
    apiVersion: v1
    data:
-    MFPF_APPCNTR_ADMIN_USER: YWRtaW4=
-    MFPF_APPCNTR_ADMIN_PASSWORD: YWRtaW4=
+    MFPF_APPCNTR_ADMIN_USER: <base64-encoded-string>
+    MFPF_APPCNTR_ADMIN_PASSWORD: <base64-encoded-string>
    kind: Secret
    metadata:
     name: appcntrlogin
@@ -334,8 +334,8 @@ Access the Mobile Foundation server console from `https://<openshift-cluster-url
     cat <<EOF | oc apply -f -
     apiVersion: v1
     data:
-     MFPF_APPCNTR_DB_USERNAME: Ymx1YWRtaW4=
-     MFPF_APPCNTR_DB_PASSWORD: TkdZeE9UTmhNV0V5WkRJeQ==
+     MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
+     MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
     kind: Secret
     metadata:
      name: appcenter-dbsecret
@@ -351,7 +351,7 @@ Access the Mobile Foundation server console from `https://<openshift-cluster-url
 
 5.  To add details like database hostname, port, secret, ingress hostname and more, customize the Custom Resource (CR) with the configuration of the Mobile Foundation instance and create the Custom Resource.
     ```yaml
-    oc apply -f deploy/crds/charts_v1alpha1_ibmmf_cr.yaml
+    oc apply -f deploy/crds/charts_v1_mfoperator_cr.yaml
     ```
 
 The properties that can be customized can be found [here]().

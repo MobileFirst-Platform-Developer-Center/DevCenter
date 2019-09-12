@@ -6,6 +6,16 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
+### Prerequisites
+{: #prereqs}
+
+Following are the prerequisites before you begin the process of installing Mobile Foundation instance.
+
+- IBM Cloud CLI (`ibmcloud`)
+
+### Steps to deploy Mobile Foundation to Red Hat OpenShift cluster on IBM Cloud
+{: #steps-deployment}
+
 Follow the steps outlined in this section to deploy the Mobile Foundation OpenShift Container Platform (OCP) package to Red Hat OpenShift cluster on IBM Cloud.
 
 1.  Create an OpenShift cluster on IBM Cloud.
@@ -24,13 +34,13 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
 
     c.  Create a namespace.
     ```bash
-    ibmcloud cr namespace-add
+    ibmcloud cr namespace-add <namespace name>
     ```
 
     d.  Unpack the PPA archive and load the IBM Mobile Foundation images locally.
     ```bash
     mkdir mfospkg
-    tar xzvf IBM-MobileFoundation-Openshift-Pak-1.0.0.tar.gz -C mfospkg/
+    tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C mfospkg/
     cd mfospkg/images
     ls * | xargs -I{} docker load --input {}
     ```
@@ -60,8 +70,8 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
 
     For example,
     ```bash
-    docker tag mf-operator:1.0.0 us.icr.io/mofo/mf-operator:1.0.0
-    docker push us.icr.io/mofo/mf-operator:1.0.0
+    docker tag mf-operator:<version> us.icr.io/mofo/mf-operator:<version>
+    docker push us.icr.io/mofo/mf-operator:<version>
     ```
 
     g.  Create a secret to pull the images from the registry.
