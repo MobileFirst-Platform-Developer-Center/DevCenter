@@ -15,6 +15,12 @@ In this documentation, you can find the description of {{ site.data.keys.product
 * When the known limitation applies to a specific feature, you can find its description in the topic that explains this specific feature. You can then immediately identify how it affects the feature.
 * When the known limitation is general, that is, applies to different and possibly not directly related topics, you can find its description here.
 
+### Mobile Foundation for Openshift Container Platform (also applies to Mobile Foundation in ICPA)
+The following known limitations exist with Mobile Foundation package for OpenShift Container Platform and Mobile Foundation in ICPA.   These limitations will be addressed in the near future release of the package:-
+
+* The InApp Feedback feature of Mobile Foundation Analytics is not available.   All other features of Mobile Foundation Analytics are available and supported
+
+
 ### Globalization
 {: #globalization }
 If you are developing globalized apps, the following restrictions apply:
