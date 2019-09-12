@@ -1,6 +1,6 @@
 ---
 title: Announcing the availability of IBM Mobile Foundation for Red Hat OpenShift Container platform
-date: 2019-09-11
+date: 2019-09-12
 tags:
 - MobileFirst_Platform
 - Announcement
@@ -16,7 +16,7 @@ We are happy to announce the availability of IBM Mobile Foundation for [Red HatÂ
 
 OpenShift offers a consistent hybrid cloud foundation for building and scaling containerized applications and delivers a comprehensive solution for hybrid cloud, enterprise container, and Kubernetes development and deployments. It includes an enterprise-grade LinuxÂ® operating system, container runtime, networking, monitoring, container registry, authentication, and authorization solutions. These components are tested together for unified operations on a complete Kubernetes platform spanning every cloud.
 
-Mobile Foundation offers an industry-leading secured platform for developers to rapidly build and deploy the next generation of digital apps, including mobile, wearables, conversation, web, and PWAs. With Mobile Foundation, developers get containerized mobile back-end services covering comprehensive security, application life cycle management, push notifications, feature toggle, off-line sync, and back-end integration. The platform also ships a low-code studio, private app store, and rich SDKs for widely used mobile frameworks for both native and hybrid developers.
+Mobile Foundation offers an industry-leading secured platform for developers to rapidly build and deploy the next generation of digital apps, including mobile, wearables, conversation, web, and PWAs. With Mobile Foundation, developers get containerized mobile back-end services covering comprehensive security, application life cycle management, push notifications, feature toggle, off-line sync, and back-end integration. The platform also ships a low-code tool for rapid application development called Digital App Builder, private app store, and rich SDKs for widely used mobile frameworks for both native and hybrid developers.
 
 The options to use this platform are
 
