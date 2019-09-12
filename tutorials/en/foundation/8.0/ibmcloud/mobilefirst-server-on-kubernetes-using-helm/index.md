@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Setting up Mobile Foundation on IBM Cloud Kubernetes Cluster using Helm
-breadcrumb_title: Foundation on Kubernetes Cluster using Helm
+breadcrumb_title: Foundation on Kubernetes using Helm
 relevantTo: [ios,android,windows,javascript]
-weight: 5
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -12,9 +12,9 @@ Follow the instructions below to configure a {{ site.data.keys.mf_server }} inst
 
 Below are the basic steps that will get you started:<br/>
 * Complete the prerequisites
-* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }} 
+* Download the Passport Advantage Archive (PPA Archive) of {{ site.data.keys.product_full }} for {{ site.data.keys.prod_icp }}
 * Load the PPA archive in IBM Cloud Kubernetes Cluster
-* Configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_app_center}} (optional) 
+* Configure and install the {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_analytics }} (optional) and {{ site.data.keys.mf_app_center}} (optional)
 
 #### Jump to:
 {: #jump-to }
@@ -83,29 +83,29 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       ```bash
       ibmcloud cr region-set
       ```  
-  
+
   4. Follow the below steps to Gain access to your cluster -
-  
+
       1. Download and install a few CLI tools and the Kubernetes Service plug-in.
       ```bash
       curl -sL https://ibm.biz/idt-installer | bash
       ```
-      
+
       2. Download the kubeconfig files for your cluster.
       ```bash
       ibmcloud ks cluster-config --cluster my_cluster_name
       ```
-      
+
       3. Set the *KUBECONFIG* environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
       ```bash
       export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/my_namespace/kube-config-dal10-my_namespace.yml
       ```
-      
+
       4. Verify that you can connect to your cluster by listing your worker nodes.
       ```bash
       kubectl get nodes
       ```
-      
+
   5. Load the PPA Archive of {{ site.data.keys.product }} using the following steps:
        1. **Extract** the PPA archive
        2. **Tag** the loaded images with the IBM Cloud Container registry namespace and with the right version
@@ -113,77 +113,77 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
        4. [Optional] Create and **Push the manifests**, if the worker nodes are based on a combination of architectures (such as amd64, ppc64le, s390x).
 
       Below is an example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on **amd64** architecture. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
-      
+
       ```bash
-      
+
       # 1. Extract the PPA archive
-      
+
       mkdir -p ppatmp ; cd ppatmp
       tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
       cd ./images
       for i in *; do docker load -i $i;done
 
       # 2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version
-      
+
       docker tag mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0
       docker tag mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0
       docker tag mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0
 
       # 3. Push all the images
-      
+
       docker push us.icr.io/my_namespace/mfpf-server:1.1.0
       docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0
       docker push us.icr.io/my_namespace/mfpf-push:1.1.0
 
       # 4. Cleanup the extracted archive
-     
+
       rm -rf ppatmp
       ```
-      
+
       Below is an example for loading the **mfpf-server** and **mfpf-push** images to the Worker Nodes based on **multi-architecture**. You should follow the same process for **mfpf-appcenter** and **mfpf-analytics**.
 
       ```bash
       # 1. Extract the PPA archive
-      
+
       mkdir -p ppatmp ; cd ppatmp
       tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
       cd ./images
       for i in *; do docker load -i $i;done
 
       # 2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version
-      
+
       ## 2.1 Tagging mfpf-server
-      
+
       docker tag mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
       docker tag mfpf-server:1.1.0-s390x us.icr.io/my_namespace/mfpf-server:1.1.0-s390x
       docker tag mfpf-server:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le
-    
+
       ## 2.2 Tagging mfpf-dbinit
-     
+
       docker tag mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
       docker tag mfpf-dbinit:1.1.0-s390x us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x
       docker tag mfpf-dbinit:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le
-      
+
       ## 2.3 Tagging mfpf-push
-      
+
       docker tag mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
       docker tag mfpf-push:1.1.0-s390x us.icr.io/my_namespace/mfpf-push:1.1.0-s390x
       docker tag mfpf-push:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
 
       # 3. Push all the images
-      
+
       ## 3.1 Pushing mfpf-server images
-      
+
       docker push us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
       docker push us.icr.io/my_namespace/mfpf-server:1.1.0-s390x
       docker push us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le
-      
+
       ## 3.3 Pushing mfpf-dbinit images
- 
+
       docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
       docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x
       docker push us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le
-      
+
       ## 3.3 Pushing mfpf-push images
 
       docker push us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
@@ -191,49 +191,49 @@ Follow the steps given below to load the PPA Archive into IBM Cloud Kubernetes C
       docker push us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
 
       # 4. [Optional] Create and Push the manifests
-      
+
       ## 4.1 Create manifest-lists
-      
+
       docker manifest create us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-s390x us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le  --amend
       docker manifest create us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le  --amend
       docker manifest create us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-s390x us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le  --amend
 
       ## 4.2 Annotate the manifests
-      
+
       ### mfpf-server
-      
+
       docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 --os linux --arch amd64
       docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-s390x --os linux --arch s390x
       docker manifest annotate us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le --os linux --arch ppc64le
 
 
       ### mfpf-dbinit
-      
+
       docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64 --os linux --arch amd64
       docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x --os linux --arch s390x
       docker manifest annotate us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le --os linux --arch ppc64le
 
 
       ### mfpf-push
-      
+
       docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64 --os linux --arch amd64
       docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-s390x --os linux --arch s390x
       docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le --os linux --arch ppc64le
 
       ## 4.3 Push the manifest list
-      
+
       docker manifest push us.icr.io/my_namespace/mfpf-server:1.1.0
       docker manifest push us.icr.io/my_namespace/mfpf-dbinit:1.1.0
       docker manifest push us.icr.io/my_namespace/mfpf-push:1.1.0
-      
+
       # 5. Cleanup the extracted archive
-     
+
       rm -rf ppatmp
       ```
-      
-   >**Note:** 
-   > 1. The `ibmcloud cr ppa-archive load` command approach doesn’t support the PPA package with multi-arch support. Hence one has to extract and push the package manually to the IBM Cloud Container repository (users using older PPA versions need to use following command to load). 
-      
+
+   >**Note:**
+   > 1. The `ibmcloud cr ppa-archive load` command approach doesn’t support the PPA package with multi-arch support. Hence one has to extract and push the package manually to the IBM Cloud Container repository (users using older PPA versions need to use following command to load).
+
    > 2. Multi-architecture refers to architectures including intel (amd64), power64 (ppc64le) and s390x. Multi-arch is supported from ICP 3.1.1 only.
 
   ```bash
@@ -250,7 +250,7 @@ Before you install and configure {{ site.data.keys.mf_server }}, you should have
 
 This section summarizes the steps for creating secrets.
 
-Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image. 
+Secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, ssh keys and so on. Putting this information in a secret is safer and more flexible than putting it in a Pod definition or in a container image.
 
 * [**Mandatory**] A DB2 database instance should be configured and has to be ready to use. You will need the database information to [configure {{ site.data.keys.mf_server }} helm](#install-hmc-icp). {{ site.data.keys.mf_server }} requires schema and tables, which will be created (if it does not exist) in this database.
 
@@ -264,9 +264,9 @@ Run the code snippet below to create a database secret for Mobile Foundation ser
 	cat <<EOF | kubectl apply -f -
 	apiVersion: v1
 	data:
-	  MFPF_ADMIN_DB_USERNAME: encoded_uname 
+	  MFPF_ADMIN_DB_USERNAME: encoded_uname
 	  MFPF_ADMIN_DB_PASSWORD: encoded_password
-	  MFPF_RUNTIME_DB_USERNAME: encoded_uname 
+	  MFPF_RUNTIME_DB_USERNAME: encoded_uname
 	  MFPF_RUNTIME_DB_PASSWORD: encoded_password
 	  MFPF_PUSH_DB_USERNAME: encoded_uname
 	  MFPF_PUSH_DB_PASSWORD: encoded_password
@@ -276,9 +276,9 @@ Run the code snippet below to create a database secret for Mobile Foundation ser
 	type: Opaque
 	EOF
    ```
-		
+
 Run the below code snippet to create a database secret for Application Center
-	
+
    ```bash
 	# create appcenter secret
 	cat <<EOF | kubectl apply -f -
@@ -292,19 +292,19 @@ Run the below code snippet to create a database secret for Application Center
 	type: Opaque
 	EOF
    ```
-   > NOTE: You may encode the username and password details using the below command - 
-	
+   > NOTE: You may encode the username and password details using the below command -
+
    ```bash
 	export $MY_USER_NAME=<myuser>
 	export $MY_PASSWORD=<mypassword>
-	
+
 	echo -n $MY_USER_NAME | base64
 	echo -n $MY_PASSWORD | base64
    ```
 
-   
+
 * [**Mandatory**] A pre-created **Login Secret** is required for Server, Analytics and Application Center console login. For example:
-	
+
    ```bash
    kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
    ```
@@ -322,7 +322,7 @@ Run the below code snippet to create a database secret for Application Center
    ```
 
    > NOTE: If these secrets are not provided, they are created with default username and password of admin/admin during the deployment of Mobile Foundation helm chart
-   
+
 * [**Optional**] You can provide your own keystore and truststore to Server, Push, Analytics and Application Center deployment by creating a secret with your own keystore and truststore.
 
    Pre-create a secret with `keystore.jks` and `truststore.jks` along with keystore and trustore password using the literals KEYSTORE_PASSWORD and TRUSTSTORE_PASSWORD  provide the secret name in the field keystoreSecret of respective component
@@ -336,29 +336,29 @@ Run the below code snippet to create a database secret for Application Center
    ```
 
    > NOTE: The names of the files and literals should be the same as mentioned in command above. Provide this secret name in `keystoresSecretName` input field of respective component to override the default keystores when configuring the helm chart.
-   
-* [**Optional**] Mobile Foundation components can be configured with hostname based Ingress for external clients to reach them using hostname. The Ingress can be secured by using a TLS private key and certificate. The TLS private key and certificate must be defined in a secret with key names `tls.key` and `tls.crt`. 
+
+* [**Optional**] Mobile Foundation components can be configured with hostname based Ingress for external clients to reach them using hostname. The Ingress can be secured by using a TLS private key and certificate. The TLS private key and certificate must be defined in a secret with key names `tls.key` and `tls.crt`.
 
    The secret **mf-tls-secret** has to be created in the same namespace as the Ingress resource by using the following command:
 
    ```bash
    kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/tls.crt
    ```
-	
-   The ingress hostname and the name of the secret is then provided in the field global.ingress.secret. Modify the **values.yaml** to add appropriate ingress hostname and the ingress secret name while deploying the helm chart.
-   
-   > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
-   
-* [**Optional**] Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields. 
 
-   These secrets can be created as follows: 
+   The ingress hostname and the name of the secret is then provided in the field global.ingress.secret. Modify the **values.yaml** to add appropriate ingress hostname and the ingress secret name while deploying the helm chart.
+
+   > NOTE: Avoid using same ingress hostname if it was already used for any other helm releases.
+
+* [**Optional**] Mobile Foundation Server is predefined with confidential clients for Admin Service. The credentials for these clients are provided in the `mfpserver.adminClientSecret` and `mfpserver.pushClientSecret` fields.
+
+   These secrets can be created as follows:
    ```bash
    kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLIENTID=admin --from-literal=MFPF_ADMIN_AUTH_SECRET=admin
    kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
    ```
-		
+
    > NOTE: If the values for these fields `mfpserver.pushClientSecret` and `mfpserver.adminClientSecret` are not provided during Mobile Foundation helm chart deployment, default auth ID / client Secret of `admin / nimda` for `mfpserver.adminClientSecret` and `push / hsup` for `mfpserver.pushClientSecret` are generated and utilized.
-   
+
 * [**Mandatory**] Before you begin the installation of Mobile Foundation Analytics Chart, configure the Persistent Volume and Persistent Volume Claim accordingly. Provide the Persistent Volume to configure Mobile Foundation Analytics. Follow the steps detailed in [IBM Cloud Kubernetes documentation to create Persistent Volume](https://cloud.ibm.com/docs/containers?topic=containers-file_storage#file_storage).
 
 
@@ -540,7 +540,7 @@ Follow the steps below to install and configure IBM {{ site.data.keys.mf_server 
     Example for {{ site.data.keys.mf_server }}:
     ```bash
     helm inspect values ibm-mfpf-server-prod-2.0.0.tgz > values.yaml
-    ``` 
+    ```
 
 3. Modify the **values.yaml** to add appropriate values for deploying the helm chart. Make sure the database details, ingress, scaling etc. are added and save the values.yaml.
 
@@ -591,7 +591,7 @@ Follow the steps below to access the console:
     2. On the Left hand side panel, click on the option Ingresses
     3. Select the Ingress name
     4. Click on the Edit button on your top right
-    5. Modify the yaml file and add the ssl-services annotation 
+    5. Modify the yaml file and add the ssl-services annotation
     Example :
 
     ```bash
@@ -603,7 +603,7 @@ Follow the steps below to access the console:
       ...
     }
     ```
-   6. Click Update 
+   6. Click Update
 
 >**Note:** The port 9600 is exposed internally in the Kubernetes service and is used by the {{ site.data.keys.prod_adj }} Analytics instances as the transport port.
 
@@ -657,26 +657,26 @@ This section guides you in identifying and resolving the likely error scenarios 
   kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
   helm init --service-account tiller --upgrade
   ```
-  
+
 2. Unable to pull images while deploying the Helm chart - `Failed to pull image, Error: ErrImagePull`
-  
+
  - Make sure the image pullSecret has been added to the values.yaml before helm deployment. If image pull secret doesn't exist, create a pull secret and assign it to `image.pullSecret` in the *values.yaml* file.
- 
+
  Example for creating a pull secret:
-   
+
   ```bash
  kubectl create secret docker-registry iks-secret-name --docker-server=us.icr.io --docker-username=iamapikey --docker-password=Your_IBM_Cloud_API_key --docker-email=your_email_id
   ```
 
   > Note: Keep the value of `--docker-username=iamapikey` as it is, if you are using the IBM Cloud API key for authentication.
-  
-3. Connectivity issues while accessing the console though ingress 
+
+3. Connectivity issues while accessing the console though ingress
 
  - To resolve the issue, launch the Kubernetes dashboard and select the option 'Ingresses'. Edit the Ingress yaml and add the Ingress host details as below -
-   
+
     Example :
     ```
- 
+
    "spec": {
        "tls": [
          {
@@ -691,14 +691,3 @@ This section guides you in identifying and resolving the likely error scenarios 
         ….
 	….
      ```
-
-
-  
-   
-   
-   
-   
-
-
-
-
