@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Troubleshooting
-weight: 6
+weight: 17
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -72,3 +72,14 @@ Find answers for some of the problems you may encounter while using IBM Digital 
 
     Make sure you create your app project under the drive `C://<your folder name/app name>`.
 
+* Digital App Builder crashes with red screen.
+
+    If you see a crash wiht red screen, check the logs at this location:
+    * On MacOS- `/Users/<username>/Library/Logs/IBM Digital App Builder/log.log`
+    * On Windows - `C:\\Users\<username>\AppData\Roming\IBM Digital App Builder\log.log`
+
+    If the error is about a `getPath` from `rendered.js`, it is a known [electron issue](https://github.com/electron/electron/issues/8205).
+
+    This happens randomly.
+
+    Please restart Digital App Builder and your scenario should work.

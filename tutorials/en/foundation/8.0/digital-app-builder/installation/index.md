@@ -8,7 +8,7 @@ show_children: true
 ## Overview
 {: #installation-and-configuration }
 
-You can now install the Digital App Builder on MacOS and Windows platform. The installation also includes prerequisites software installed during the first time installation and verified. You can install Java, Xcode, and Android Studio for adapter generation and previewing the app during development.
+Digital App Builder can be installed on MacOS and Windows platform. The installation also includes prerequisites software installed during the first time installation and verified. Install Java, Xcode, and Android Studio for adapter generation and previewing the app during development.
 
 ### Installing on MacOS
 {: #installing-on-macos }
@@ -17,7 +17,7 @@ You can now install the Digital App Builder on MacOS and Windows platform. The i
 2. Double click on .dmg file to mount the installer.
 3. In the window that the installer opens, drag and drop the IBM Digital App Builder to the **Applications** folder.
 4. Double click the IBM Digital App Builder icon or executable to open the Digital App Builder.
-    >**Note**: When the Digital App Builder is installed for the first time, the Digital App Builder opens up the interface to install the prerequisite software.
+    >**Note**: When the Digital App Builder is installed for the first time, the Digital App Builder opens up the interface to install the prerequisite software. In case a previous version of Digital App Builder exists, a pre-requisites check is performed and may need to upgrade or downgrade some software to meet the pre-requisites.
     
     ![Installing Digital App Builder](dab-install-startup.png)
 
@@ -34,24 +34,23 @@ You can now install the Digital App Builder on MacOS and Windows platform. The i
 
     ![Install Pre-requisites screen](dab-install-prereq-tobeinstalled.png)
 
-8. After installing the prerequisite software, the Digital App Builder startup screen is displayed. Click **Start building**.
+8. *Optional* - After installing the prerequisite software, the installer checks for JAVA as the Digital App Builder needs JAVA to work with datasets. 
+    >**Note**: Manual installation of Java may be needed, if not already installed. For installing Java, refer to [Installing Java](https://www.java.com/en/download/help/download_options.xml).
+
+9. After installing the software required, the Digital App Builder startup screen is displayed. Click **Start building**.
 
     ![Digital App Builder startup](dab-install-startup-screen.png)
 
-9. *Optional* - After installing the prerequisite software, the installer checks for JAVA as the Digital App Builder needs JAVA to work with your datasets. 
-    >**Note**: You need to manually install JAVA, if not already installed. For installing Java, refer to [Installing Java](https://www.java.com/en/download/help/download_options.xml).
-10. *Optional* - The installer also checks for optional installation of Xcode (for previewing your app on iOS simulator during development, for MacOS only) and Android Studio (for previewing your Android app, for MacOS and Windows).
-    >**Note**: You need to manually install Xcode and Android Studio. For Cocoapods installation, refer to [Using CocoaPods](https://guides.cocoapods.org/using/using-cocoapods). For Android Studio installation, refer to [Installing Android Studio](https://developer.android.com/studio/). 
+10. *Optional* - The installer also checks for optional installation of Xcode (for previewing app on iOS simulator during development, for MacOS only) and Android Studio (for previewing your Android app, for MacOS and Windows).
+    >**Note**: Manual install of Xcode and Android Studio may be needed. For Cocoapods installation, refer to [Using CocoaPods](https://guides.cocoapods.org/using/using-cocoapods). For Android Studio installation, refer to [Installing Android Studio](https://developer.android.com/studio/). 
 
->**Note**: At any given point of time you can perform a [Prerequisites Check](#prerequisites-check) to verify the installation is fine to develop your app. In case of any error, rectify the error and restart the Digital App Builder before creating an app.
+>**Note**: At any given point of time perform a [Prerequisites Check](#prerequisites-check) to verify the installation is fine to develop the app. In case of any error, rectify the error and restart the Digital App Builder before creating an app.
 
 ### Installing on Windows
 {: #installing-on-windows }
 
-Run the following commands from the command prompt opened in administrative mode:
-
 1. Download the .exe (**IBM.Digital.App.Builder.Setup.n.n.n.exe**, where `n.n.n` is the version number)) from [IBM passport advantage](https://www.ibm.com/software/passportadvantage/) or from [here](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
-2. Double click the Digital App Builder executable to install.
+2. Run the downloaded executable (**IBM.Digital.App.Builder.Setup.n.n.n.exe**) in administrative mode.
 
     ![Installing Digital App Builder](dab-install-startup.png)
 
@@ -68,27 +67,27 @@ Run the following commands from the command prompt opened in administrative mode
 
     ![Install Pre-requisites screen](dab-install-prereq-tobeinstalled.png)
 
-6. After installing the prerequisite software, the Digital App Builder startup screen is displayed. Click **Start building**.
+6. *Optional* - After installing the prerequisite software, the installer checks for JAVA as the Digital App Builder needs JAVA to work with your datasets. 
+    >**Note**: Manual installation of Java may be needed, if not already installed. For installing Java, refer to [Installing Java](https://www.java.com/en/download/help/download_options.xml).
+
+7. After installing the prerequisite software, the Digital App Builder startup screen is displayed. Click **Start building**.
 
     ![Digital App Builder startup](dab-install-startup-screen.png)
 
     >**Note**: A short cut is also created in the **Start > Programs** in the desktop. The default installation folder is `<AppData>\Local\IBMDigitalAppBuilder\app-8.0.2`.
 
-7. *Optional* - After installing the prerequisite software, the installer checks for JAVA as the Digital App Builder needs JAVA to work with your datasets. 
-    >**Note**: You need to manually install JAVA, if not already installed. For installing Java, refer to [Installing Java](https://www.java.com/en/download/help/download_options.xml).
 8. *Optional* - The installer also checks for optional installation of Xcode (for previewing your app on iOS simulator during development, for MacOS only) and Android Studio (for previewing your Android app, for MacOS and Windows).
-    >**Note**: You need to manually install Android Studio. For Android Studio installation, refer to [Installing Android Studio](https://developer.android.com/studio/). 
+    >**Note**: Manually install Android Studio. For Android Studio installation, refer to [Installing Android Studio](https://developer.android.com/studio/). 
 
->**Note**: At any given point of time you can perform a [Prerequisites Check](#prerequisites-check) to verify the installation is fine to develop your app. In case of any error, rectify the error and restart the Digital App Builder before creating an app.
+>**Note**: At any given point of time perform a [Prerequisites Check](#prerequisites-check) to verify the installation is fine to develop the app. In case of any error, rectify the error and restart the Digital App Builder before creating an app.
 
 ### Prerequisites Check
 {: #prerequisites-check }
 
-You can perform a prerequisites check by selecting **Help > Prerequisites Check** before developing an app.
+Perform a prerequisites check by selecting **Help > Prerequisites Check** before developing an app.
 
 ![Prerequisites Check](dab-prerequsites-check.png)
 
 In case of any error, rectify the error and restart the Digital App Builder before creating an app.
 
 >**Note**: [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods) are required for MacOS only.
-
