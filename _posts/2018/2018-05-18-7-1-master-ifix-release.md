@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2019-08-23
+date: 2019-09-13
 permalink: '/blog/2018/05/18/7-1-master-ifix-release/'
 version:
 - 7.1
