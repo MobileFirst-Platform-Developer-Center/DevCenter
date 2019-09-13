@@ -195,7 +195,7 @@ IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201908051227">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201908051227" href="#collapse-mfp-ifix-IF201908051227" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201908051227"><b>8.0.0.0-MFPF-IF201908051227</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201908051227" href="#collapse-mfp-ifix-IF201908051227" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201908051227"><b>8.0.0.0-MFPF-IF201908051227</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201908051227" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201908051227">
