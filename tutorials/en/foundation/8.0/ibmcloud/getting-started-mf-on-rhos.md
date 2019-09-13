@@ -3,7 +3,6 @@ layout: tutorial
 breadcrumb_title: Get started with Foundation on OpenShift
 title: Get started with Mobile Foundation on an OpenShift cluster
 weight: 1
-show_in_nav: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
@@ -21,7 +20,14 @@ Mobile Foundation offers an industry-leading secured platform for developers to 
 * Containerized mobile back-end services for OpenShift Container Platform covering comprehensive security, application life cycle management, offline data sync and back-end integration.
 * Low-code studio to build digital apps and rich SDKs for widely used mobile frameworks both native and hybrid developers.
 * A private App Store to publish your apps for consumption by users
-* User engagement by means of  analytics service for application insights, feedback using In-App feedback, Push notifications, Feature Toggle and A/B testing. 
+* User engagement by means of  analytics service for application insights, feedback using In-App feedback, Push notifications, Feature Toggle and A/B testing.
+
+## Architecture
+{: #architecture}
+
+Image below shows the high level architecture of the Mobile Foundation deployment on Red Hat OpenShift cluster.
+
+![Architecture](architecture-mf-on-openshift.png)
 
 ## Installing Mobile Foundation
 {: #install-mf}
@@ -38,7 +44,6 @@ You can quickly and easily develop Mobile Applications that use Mobile Foundatio
 
 ## Deploying Applications
 {: #deploying-apps}
-Every Mobile Foundation Application has two deployables: - 
+Every Mobile Foundation Application has two deployables: 
 * Mobile Client Applications which can be deployed to the Mobile Foundation App Center or any other public App Store
 * Mobile Foundation Service Configurations for Application Lifecycle, Security, Push Notifications, LiveUpdate.  These configurations can be exported from Mobile Foundation development enviroment and imported into a Mobile Foundation staging or production environment.  
-
