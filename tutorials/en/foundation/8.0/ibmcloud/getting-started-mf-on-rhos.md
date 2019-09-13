@@ -32,7 +32,7 @@ Image below shows the high level architecture of the Mobile Foundation deploymen
 ## Installing Mobile Foundation
 {: #install-mf}
 
-To install Mobile Foundation on an existing OpenShift cluster follow the instructions [here](../).
+To install Mobile Foundation on an existing OpenShift cluster follow the instructions [here](../mobilefoundation-on-openshift/).
 
 ## Developing Applications
 {: #develop-apps}

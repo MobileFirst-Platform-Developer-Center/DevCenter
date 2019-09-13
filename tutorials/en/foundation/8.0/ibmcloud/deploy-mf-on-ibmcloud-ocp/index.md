@@ -58,13 +58,11 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
     ```bash
     mkdir mfospkg
     tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C mfospkg/
-    ```
 
-    ```bash
     cd mfospkg/images
     ls * | xargs -I{} docker load --input {}
     export MFOS_PROJECT=<my_namespace>
-    export CONTAINER_REGISTRY_URL=<docker-registry-url>   # e.g. us.icr.io
+    export CONTAINER_REGISTRY_URL=<docker-registry-url>    # e.g. docker-registry-default.-xxxx.appdomain.cloud
     ```
 
     d. Load and push the images to OpenShift registry from local machine.
