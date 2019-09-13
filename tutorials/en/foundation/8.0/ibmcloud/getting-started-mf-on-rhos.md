@@ -27,7 +27,7 @@ Mobile Foundation offers an industry-leading secured platform for developers to 
 
 Image below shows the high level architecture of the Mobile Foundation deployment on Red Hat OpenShift cluster.
 
-![Architecture](architecture-mf-on-openshift.png)
+![Architecture](../architecture-mf-on-openshift.png)
 
 ## Installing Mobile Foundation
 {: #install-mf}
@@ -44,6 +44,9 @@ You can quickly and easily develop Mobile Applications that use Mobile Foundatio
 
 ## Deploying Applications
 {: #deploying-apps}
-Every Mobile Foundation Application has two deployables: 
+Every Mobile Foundation Application has two deployables:
 * Mobile Client Applications which can be deployed to the Mobile Foundation App Center or any other public App Store
 * Mobile Foundation Service Configurations for Application Lifecycle, Security, Push Notifications, LiveUpdate.  These configurations can be exported from Mobile Foundation development enviroment and imported into a Mobile Foundation staging or production environment.  
+
+Refer to the following for more information related to exporting and importing Mobile Foundation Service configurations across deployments:
+[Different ways of exporting and importing Mobile Foundation server artifacts](http://mobilefirstplatform.ibmcloud.com/blog/2016/07/25/how-to-replicate-mobilefirst-environment/).
