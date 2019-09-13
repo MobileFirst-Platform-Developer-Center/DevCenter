@@ -1,0 +1,14 @@
+toc:
+  - title: Application Center
+    tutorial:
+      - page: Widget 1
+        url: /widget1.html
+        childtutorial:
+          - page: Subwidget 1
+            url: /subwidget1.html
+          - page: Subwidget 2
+            url: /subwidget2.html
+      - page: Widget 2
+        url: /widget2.html
+      - page: Widget 3
+        url: /widget3.html

@@ -4,7 +4,7 @@ title: MobileFirst Analytics
 breadcrumb_title: Analytics
 show_children: true
 relevantTo: [ios,android,javascript]
-weight: 9
+weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -21,7 +21,7 @@ To keep your user engagement relevant and effective you must obtain insights int
 * **In-App User Experience:** What is the actual interactive experience your users are undergoing while they use the app and how do they feel, do you need to revisit your user-study?
 * **Custom Trails:** Custom charts, which are defined and plotted around custom data that is logged as part of application-specific trails and flows, also provides the flexibility to extend and define your own insights that can help your business decisions too.
 
-{{ site.data.keys.mf_analytics_full }} collects data from app-to-server activities, client logs, client crashes, in-app user feedback, and server-side logs from the {{ site.data.keys.mf_server }} and client devices. The collected data then provides a rich view into both the mobile landscape and server infrastructure. 
+{{ site.data.keys.mf_analytics_full }} collects data from app-to-server activities, client logs, client crashes, in-app user feedback, and server-side logs from the {{ site.data.keys.mf_server }} and client devices. The collected data then provides a rich view into both the mobile landscape and server infrastructure.
 
 {{ site.data.keys.mf_server }} comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems. In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client-side and on the {{ site.data.keys.mf_analytics_server }}. You choose the verbosity and data retention policy of the reported events, set conditional alerts, build custom charts and engage with new data.
 
