@@ -24,69 +24,62 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
 
 1.  Push the image into your private registry and create a secret which can be used at the time of pulling the image.
 
-    a.  Log in to IBM Cloud.
+    a. Log in to IBM Cloud.
 
     ```bash
     ibmcloud login
     ```
 
-    b. Run the `ibmcloud cr login` command to log your local Docker daemon into IBM Cloud Container Registry.
+    b. Login into OpenShift's internal docker registry by running the following commands.
 
     ```bash
-    ibmcloud cr login
+    # Create a route from the terminal to the docker registry
+    oc create route reencrypt --service=docker-registry -n default
+    oc get route docker-registry -n default
+
+    # login into the OpenShift internal container registry
+    docker login -u $(oc whoami) -p $(oc whoami -t) <docker-registry-url>
     ```
 
-    c.  Add a namespace to create your own image repository. Replace <my_namespace> with your preferred namespace.
+    For example,
 
     ```bash
-    ibmcloud cr namespace-add <my_namespace>
-    ```
+    $ oc get route docker-registry -n default
+    NAME              HOST/PORT                                              PATH      SERVICES          PORT       TERMINATION   WILDCARD
+    docker-registry   docker-registry-default.-xxxx.appdomain.cloud    docker-registry                   5000-tcp   reencrypt     None
 
-    d. To ensure that your namespace is created, run the `ibmcloud cr namespace-list` command.
+    $ docker login -u $(oc whoami) -p $(oc whoami -t) docker-registry-default.-xxxx.appdomain.cloud
+    Login Succeeded
+    ````
 
-    ```bash
-    ibmcloud cr namespace-list
-    ```
 
-    e.  Unpack the PPA archive into a work directory called `mfoskpg` and load the IBM Mobile Foundation images locally.
+    c. Unpack the PPA archive into a work directory (say `mfoskpg`) and load the IBM Mobile Foundation images locally.
 
     ```bash
     mkdir mfospkg
     tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C mfospkg/
     ```
 
-    Go to step (g) if you have the images loaded already in an external registry.
-
     ```bash
     cd mfospkg/images
     ls * | xargs -I{} docker load --input {}
     export MFOS_PROJECT=<my_namespace>
-    export CONTAINER_REGISTRY=<my_container_registry>   # e.g. us.icr.io
+    export CONTAINER_REGISTRY_URL=<docker-registry-url>   # e.g. us.icr.io
     ```
 
-    f. Load and push the images to OpenShift registry from local machine.
+    d. Load and push the images to OpenShift registry from local machine.
 
     ```bash
     cd <workdir>/images
     ls * | xargs -I{} docker load --input {}
 
     for file in * ; do
-    docker tag ${file/.tar.gz/} $CONTAINER_REGISTRY/$MFOS_PROJECT/${file/.tar.gz/}
-    docker push $CONTAINER_REGISTRY/$MFOS_PROJECT/${file/.tar.gz/}
+    docker tag ${file/.tar.gz/} $CONTAINER_REGISTRY_URL/$MFOS_PROJECT/${file/.tar.gz/}
+    docker push $CONTAINER_REGISTRY_URL/$MFOS_PROJECT/${file/.tar.gz/}
     done
     ```
 
-    g. Create an IAM ApiKey using the following command and save the output.
-
-    ```bash
-    ibmcloud iam api-key-create <api_key_name>
-    ```
-
-    h. Create an **imagePullSecret** using the <iam_apikey_password> shown in the above command output.
-
-    ```bash
-    oc create secret docker-registry push-secret --docker-username=iamapikey --docker-password=<iam_apikey_password> --docker-server=<my_container_registry>
-    ```
+    > **IMPORTANT NOTE:** Here after, to access the container images from the OpenShift's internal container registry use the image url as `docker-registry.default.svc:5000/<project_name>/<image_name>:<image_tag>`.
 
 2. Create an OpenShift project.
 
@@ -100,13 +93,11 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
 
 3. Deploy the Operator.
 
-    a. From terminal, go into the work directory (`mfospkg`) where the PPA images are extracted. Set the **imagePullSecret** name for the Operator's Service Account definition in `deploy/operator.yaml`.
+    a. Ensure the MF operator image (**mf-operator**) with tag is set for the operator in `deploy/operator.yaml`. (Replace the placeholder REPO_URL with openshift container internal registry url. e.g. `docker-registry.default.svc:5000/myprojectname/mf-operator:1.0.1`)
 
-    b. Ensure the MF operator image (**mf-operator**) with tag is set for the operator in `deploy/operator.yaml`. (Replace the placeholder REPO_URL.)
+    b. Ensure the OpenShift Project name is set for the cluster role binding definition in `deploy/cluster_role_binding.yaml`. (Replace the placeholder REPLACE_NAMESPACE.)
 
-    c. Ensure the OpenShift Project name is set for the cluster role binding definition in `deploy/cluster_role_binding.yaml`. (Replace the placeholder REPLACE_NAMESPACE.)
-
-    d. Run the below commands to deploy the operator and install Security Context Constraints (SCC).
+    c. Run the below commands to deploy the operator and install Security Context Constraints (SCC).
 
     ```bash
      oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
@@ -134,9 +125,9 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
 
     To deploy any of the Mobile Foundation components, modify the appropriate custom resource values in the `deploy/crds/charts_v1_mfoperator_cr.yaml`.
 
-    a.  Set the docker repository url in `deploy/crds/charts_v1_mfoperator_cr.yaml` by replacing the placeholder REPO_URL (e.g. us.icr.io/mycrnamespace ).
+    a.  Set the docker repository url in `deploy/crds/charts_v1_mfoperator_cr.yaml` by replacing the placeholder REPO_URL (e.g. `docker-registry.default.svc:5000/myprojectname/mfpf-server:2.0.1` ).
 
-    b.  To access the image registry add the **pullSecret** in `deploy/crds/charts_v1_mfoperator_cr.yaml` file. The secret definition may look similar to the following sample snippet.
+    b.  [OPTIONAL] If the image registry is outside OpenShift cluster, add the **pullSecret** in `deploy/crds/charts_v1_mfoperator_cr.yaml` file. The secret definition may look similar to the following sample snippet.
 
     ```yaml
     image:
