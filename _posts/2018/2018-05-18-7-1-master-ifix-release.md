@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2019-09-12
+date: 2019-09-13
 permalink: '/blog/2018/05/18/7-1-master-ifix-release/'
 version:
 - 7.1
@@ -16,6 +16,7 @@ author:
 A new iFix *7.1.0.0-MFPF-IF201909091200* has been released for MobileFirst Foundation 7.1, dated **September 9th, 2019**.
 <br/>
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201909091200" role="tablist">
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201909091200">
             <h4 class="panel-title">
@@ -46,7 +47,7 @@ IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201908200824">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201908200824" href="#collapse-mfp-ifix-IF201908200824" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201908200824"><b>iFix 7.1.0.0-MFPF-IF201908200824</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201908200824" href="#collapse-mfp-ifix-IF201908200824" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201908200824"><b>iFix 7.1.0.0-MFPF-IF201908200824</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201908200824" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201908200824">
@@ -63,7 +64,7 @@ IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<
             </div>
         </div>      
     </div>
-</div>   
+</div>  
 
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201907301558" role="tablist">
     <div class="panel panel-default">
