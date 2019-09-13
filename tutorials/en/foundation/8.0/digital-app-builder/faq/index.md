@@ -2,7 +2,7 @@
 layout: tutorial
 title: Frequently Asked Questions
 breadcrumb_title: FAQs
-weight: 7
+weight: 18
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -43,6 +43,23 @@ This topic describes the list of commonly asked questions related to IBM Digital
         <div id="collapse-mfp-dab-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq2">
             <div class="panel-body">
                   <p>The Shared Playground Server is a common server that is shared between many developers. This server should not be used for production apps. The data in this server can be deleted without notice. The server uptime is not guaranteed.</p>
+            </div>
+        </div>      
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq3" aria-expanded="true" aria-controls="collapse-mfp-dab-faq3"><b>C. How to completely uninstall Digital App Builder?</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq3">
+            <div class="panel-body">
+                  <p>You can completely uninstall Digital App Builder by the following steps:
+                  <ol><li>Uninstall the Digital App Builder the regular way for each OS.</li>
+                      <li>Delete the following files manually for your	OS.
+                      <ul><li>**Windows** - `Users\worklight\AppData\Roaming\IBM Digital App Builder`</li>
+                          <li>**MacOS** - `Users/<systemname>/Library/Application Support/IBM Digital App Builder`</li></li>
+                  </ol></p>
             </div>
         </div>      
     </div>

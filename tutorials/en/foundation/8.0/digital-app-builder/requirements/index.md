@@ -12,8 +12,7 @@ System requirements for IBM Digital App Builder includes operating system, other
 
 * Supported development platform: 
 
-    * MacOS 10.13
-    * MacOS 10.14
+    * MacOS 10.13 (High Sierra or above)
     * Windows 10
     * Windows 10 Home
     * Windows 10 Pro
@@ -21,13 +20,17 @@ System requirements for IBM Digital App Builder includes operating system, other
 
 * Software requirements (**Prerequisites**) for using the Digital App Builder:
 
-    * Node Package Manager (npm) (Node.js 8.x or above)
-    * Cordova 8.0.0 or more
-    * Ionic 4.2.0 or more
+    * Node Package Manager (npm) (Node.js 10.x)
+    * Cordova 9.0.0
+    * Ionic 4.12.0
     * CocoaPods (MacOS only)
     * Android Studio 2.x.x or above (To preview the app on Android emulator)
+    * A Mobile Foundation Server
+        * The [Mobile Foundation DevKit](http://mobilefirstplatform.ibmcloud.com/downloads/#developer-kit)
+        * [Mobile Foundation Instance](https://cloud.ibm.com/catalog/services/mobile-foundation) on IBM Cloud
+        * Standalone Mobile Foundation Server
 
-* Requirements for previewing the app:
+* Prerequisites for running the app on device or emulator/simulator:
 
     * Android Studio (To preview the app on Android emulator)
         * For Installation instructions, refer [here](https://developer.android.com/studio/)
@@ -36,11 +39,9 @@ System requirements for IBM Digital App Builder includes operating system, other
     * Chrome (To preview web platform)
     * Xcode (To preview the app on iOS simulator). For MacOS only, download and install XCode from Apple App Store to preview the app.
 
-* Other requirements for using various services
+* Other requirements
 
     * [IBM Cloud account](https://cloud.ibm.com/registration)
-    * [Mobile Foundation](https://cloud.ibm.com/catalog/services/mobile-foundation) Server account (on-prem or cloud).
     * [IBM Watson Assistant](https://cloud.ibm.com/catalog/services/watson-assistant) service account (for adding Chat service to the app)
     * [IBM Watson Visual Recognition](https://cloud.ibm.com/developer/watson/starter-kits/watson-visual-recognition-basic) service account (for adding Visual recogntion service to the app)
-    * [Push Notifications](https://cloud.ibm.com/catalog/services/push-notifications) service account (for enabling push notifications service in the app)
 
