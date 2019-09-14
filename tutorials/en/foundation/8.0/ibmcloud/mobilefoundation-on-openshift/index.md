@@ -547,32 +547,5 @@ Various [example yaml files](https://github.com/kubernetes-csi/external-snapshot
 
 You may also leverage other tools like [AppsCode Stash](https://appscode.com/products/kubed/0.9.0/guides/disaster-recovery/stash/) to take a backup of the volume and restore the same.
 
-<!--
-## Known issues and work arounds
-{: #known-issues}
-
-* `https:true` does not work. We are working on this issue.     
-
-* Deleting CRs/CRDs hangs at times. We're investigating the issue. Meanwhile, the work around is to patch the CR/CD as follows and then delete.
-  ```bash
-  oc patch crd/ibmmf.charts.helm.k8s.io -p '{"metadata":{"finalizers":[]}}' --type=merge
-  ```
-  {: codeblock}
-
-* If MySQL DB is used as Mobile Foundation database and if it is not created with UTF8 character set encoding
-  `dbinit pod` will fail and the pods will not start.
-  Use the following command to create the database with the required encoding.
-  ```bash
-  # DB creation with character set encoding
-  CREATE DATABASE CHARACTER SET utf8 COLLATE utf8_general_ci;
-  ```
-  {: codeblock}
-
-  If the database is already created, use the ALTER command to enforce the character set encoding.
-  ```bash
-  # DB alter with character set encoding
-  ALTER DATABASE CHARACTER SET utf8 COLLATE utf8_general_ci;
-  ```
-  {: codeblock}
- >Remember to delete the Custom Resource Object and re-apply the configuration.
--->
+## Known Issues
+There are three known issues with Mobile Foundation deployed on OpenShift Container Platform. See [here](../../product-overview/release-notes/known-issues-limitations/#mobile-foundation-for-openshift-container-platform-also-applies-to-mobile-foundation-in-icpa)
