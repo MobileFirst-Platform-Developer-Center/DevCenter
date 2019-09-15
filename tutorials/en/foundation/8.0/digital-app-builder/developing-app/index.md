@@ -12,8 +12,8 @@ Developing an app includes the following steps:
 
 1. Create an app. Refer to [Creating an app](../getting-started/) section.
 2. Design your app by adding the required controls. For more information, refer to [Digital App Builder interface](../dab-interface/).
-3. Add the services you need (Watson Chat, Watson Visual Recognition, Push Notifications, Data Set) in your app.
-4. Add or modify the Platforms, if required. Refer to the [Settings > App details](../dab-interface/) section.
+3. Add the services you need (Watson Chat, Watson Visual Recognition, Push Notifications, Data Set, Live Update) in your app.
+4. Add or modify the Platforms, if required. Refer to the [Settings > App details](../settings/) section.
 5. Preview your app. Refer to [Preview the app using the simulator](#preview-the-app-using-the-simulator).
 6. After previewing your application and if it is ready for build, after rectifying any errors, perform the following steps for building the application:
 
@@ -44,8 +44,8 @@ Developing an app includes the following steps:
         >**Note**: For publishing and building follow the steps from tutorial [https://developer.apple.com/ios/submit/](https://developer.apple.com/ios/submit/).
 
 
-### Preview the app using the simulator
-{: #preview-the-app-using-the-simulator }
+### Previewing the app
+{: #preview-the-app }
 
 You can preview the app developed by connecting to the simulation to the channel selected.
 
@@ -54,3 +54,6 @@ You can preview the app developed by connecting to the simulation to the channel
     * Install Android Studio and follow the instruction. [https://developer.android.com/studio/](https://developer.android.com/studio/)
     * Configure an Android Virtual Machine. Follow the instructions [here](https://developer.android.com/studio/releases/emulator).
 
+>**Note**: To quickly preview your app, select the Preview App option and it will open a new window with your app running. You can set it to different platform models and change the orientation as well. The changes made in the app will be reflected live in this preview window.
+
+>**Note**: File > Export to Code will export the project to code mode. (the app code will be saved in a new folder thus not disturbing the design mode.) after exporting to code mode, you cannot open the exported project in design mode.

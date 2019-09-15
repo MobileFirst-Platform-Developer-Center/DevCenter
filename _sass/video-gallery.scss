@@ -143,7 +143,8 @@
     color: #fff;
     font-style: normal;
     font-size: 28px;
-    font-family: Arial, Baskerville, monospace;
+    //font-family: Arial, Baskerville, monospace;
+    font-family: 'IBM Plex Sans', sans-serif;
   }
   .mfp-close:hover,
   .mfp-close:focus {
@@ -434,11 +435,11 @@
       cursor: pointer;
       display: inline-block;
     }
-    
+
     .label-info {
       background-color: #075d77;
     }
-    
+
     .label-success {
       background-color: #107d10;
    }
