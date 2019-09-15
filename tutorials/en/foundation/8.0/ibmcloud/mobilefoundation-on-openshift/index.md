@@ -25,7 +25,12 @@ Following are the prerequisites before you begin the process of installing Mobil
 - Mobile Foundation requires a database. Create a supported database and keep the database access details handy for further use. See [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/databases/).
 - Mobile Foundation Analytics requires mounted storage volume for persisting Analytics data (NFS recommended).
 
+## Architecture
+{: #architecture}
 
+Image below shows the internal architecture of Mobile services on Red Hat OpenShift.
+
+![Architecture](./architecture-mf-on-openshift.png)
 
 ## Installing an IBM Mobile Foundation instance
 
