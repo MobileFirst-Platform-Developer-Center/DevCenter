@@ -74,7 +74,7 @@ Digital App Builder can be installed on MacOS and Windows platform. The installa
 
     ![Digital App Builder startup](dab-install-startup-screen.png)
 
-    >**Note**: A short cut is also created in the **Start > Programs** in the desktop. The default installation folder is `<AppData>\Local\IBMDigitalAppBuilder\app-8.0.2`.
+    >**Note**: A short cut is also created in the **Start > Programs** in the desktop. The default installation folder is `<AppData>\Local\IBMDigitalAppBuilder\app-8.0.3`.
 
 8. *Optional* - The installer also checks for optional installation of Xcode (for previewing your app on iOS simulator during development, for MacOS only) and Android Studio (for previewing your Android app, for MacOS and Windows).
     >**Note**: Manually install Android Studio. For Android Studio installation, refer to [Installing Android Studio](https://developer.android.com/studio/). 
