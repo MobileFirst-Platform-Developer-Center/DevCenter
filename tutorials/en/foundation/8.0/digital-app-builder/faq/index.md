@@ -15,7 +15,7 @@ This topic describes the list of commonly asked questions related to IBM Digital
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-dab-faq1">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. How to create a **Platform API Keys**?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. How to create a Platform API Keys?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-dab-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq1">
@@ -57,8 +57,9 @@ This topic describes the list of commonly asked questions related to IBM Digital
                   <p>You can completely uninstall Digital App Builder by the following steps:
                   <ol><li>Uninstall the Digital App Builder the regular way for each OS.</li>
                       <li>Delete the following files manually for your	OS.
-                      <ul><li>**Windows** - `Users\worklight\AppData\Roaming\IBM Digital App Builder`</li>
-                          <li>**MacOS** - `Users/<systemname>/Library/Application Support/IBM Digital App Builder`</li></li>
+                      <ul><li><b>Windows</b> - <i>Users\worklight\AppData\Roaming\IBM Digital App Builder</i></li>
+                          <li><b>MacOS</b> - <i>Users/&lt;systemname&gt;/Library/Application Support/IBM Digital App Builder</i></li>
+                      </ul></li>
                   </ol></p>
             </div>
         </div>      
