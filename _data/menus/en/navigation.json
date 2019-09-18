@@ -1,7 +1,4 @@
 [{
-    "name": "Features",
-    "path": "/features"
-},{
     "name": "Developers",
     "path": "/tutorials/en",
     "children": [{
@@ -93,6 +90,9 @@
             "path": "/6.3"
         }]
     }, {
+        "name": "Features",
+        "path": "../../../features"
+    }, {
         "name": "Learn More",
         "path": "../../../learn-more"
     }]
@@ -125,11 +125,11 @@
     "path": "/downloads",
     "extraClasses": "hidden-xs hidden-sm hidden-md"
 }, {
-    "name": "Webinars",
-    "path": "/webinars",
-}, {
     "name": "Video Gallery",
     "path": "/video-gallery"
+}, {
+    "name": "Mobile Services - IBM Cloud Pak for Applications",
+    "path": "/tutorials/en/mobileservices-icpa"
 }, {
     "name": "Help",
     "path": "/help"

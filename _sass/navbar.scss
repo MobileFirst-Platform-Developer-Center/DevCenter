@@ -10,8 +10,8 @@ $color_celeste_approx: #ccc;
     //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
     border-radius: 0;
     margin-bottom: 0;
-    background-color: $color_rhino_approx;
-    border-color: $color_rhino_approx;
+    background-color: #3d3d3d;
+    border-color: #3d3d3d;
     .logo {
       margin-top: -2px;
       margin-left: 0px;
@@ -45,12 +45,12 @@ $color_celeste_approx: #ccc;
             background-color: $mine_shaft;
             color: $white;
             &:hover {
-              background-color: $mine_shaft;
+              background-color: #3d3d3d;
               border: 1px solid #00BFFF;
               color: $white;
             }
             &:focus {
-              background-color: $mine_shaft;
+              background-color: #3d3d3d;
               border: 1px solid #00BFFF;
               color: $white;
             }
@@ -66,23 +66,23 @@ $color_celeste_approx: #ccc;
           }
         }
         &.active > a {
-          background-color: $mine_shaft;
+          background-color: #3d3d3d;
           border: 1px solid #00BFFF;
           color: $white;
           &:hover {
-            background-color: $mine_shaft;
+            background-color: #3d3d3d;
             border: 1px solid #00BFFF;
             color: $white;
           }
           &:focus {
-            background-color: $mine_shaft;
+            background-color: #3d3d3d;
             border: 1px solid #00BFFF;
             color: $white;
           }
         }
       }
       > .active > a:focus {
-        background-color: $mine_shaft;
+        background-color: #3d3d3d;
         border: 1px solid #00BFFF;
         color: $white;
       }
