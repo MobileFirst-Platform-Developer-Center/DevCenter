@@ -39,7 +39,7 @@ Image below shows the internal architecture of Mobile services on Red Hat OpenSh
 
 Download the IBM Mobile Foundation package for Openshift from [IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). Unpack the archive to a directory called `workdir`.
 
-  > **NOTE:** Refer [here](./additional-docs/validating-ppa.md) if you want to validate the PPA package and verify the signature.
+  > **NOTE:** Refer [here](./additional-docs/validating-ppa/) if you want to validate the PPA package and verify the signature.
 
 ### Setup the OpenShift project for Mobile Foundation
 {: #setup-openshift-for-mf}
@@ -155,9 +155,9 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
 ### Deploy IBM Mobile Foundation components
 {: #deploy-mf-components}
 
-1. To deploy any of the Mobile Foundation components, modify the custom resource configuration `deploy/crds/charts_v1_mfoperator_cr.yaml` according to your requirements. Complete reference to the custom configuration is found [here](./additional-docs/cr-configuration.md).
+1. To deploy any of the Mobile Foundation components, modify the custom resource configuration `deploy/crds/charts_v1_mfoperator_cr.yaml` according to your requirements. Complete reference to the custom configuration is found [here](./additional-docs/cr-configuration/).
 
-   > **IMPORTANT NOTE** : To access the Mobile Foundation instances after deployment we need to configure ingress hostname. Please make sure ingress is configured in the custom resource configuration. Refer this [link](./additional-docs/enable-ingress.md) on configuring the same.
+   > **IMPORTANT NOTE** : To access the Mobile Foundation instances after deployment we need to configure ingress hostname. Please make sure ingress is configured in the custom resource configuration. Refer this [link](./additional-docs/enable-ingress/) on configuring the same.
 
     ```bash
     oc apply -f deploy/crds/charts_v1_mfoperator_cr.yaml
