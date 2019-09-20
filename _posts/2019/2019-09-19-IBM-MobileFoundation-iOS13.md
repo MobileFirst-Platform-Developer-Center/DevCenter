@@ -34,7 +34,7 @@ We have validated Mobile Foundation v8.0 and v7.1 with the GM release of iOS13, 
 
 While fresh installation of apps using MobileFirst Push notification on iOS 13, registration fails due to error in parsing the token from APNS server. The issue is similar to one reported on [Apple developer Forum](https://forums.developer.apple.com/thread/117545).
 
->**Note** Customer should upgrade to cocopod version `IBMMobileFirstPlatformFoundationPush@8.0.2019082914` for v8 native app and npm version `cordova-plugin-mfp-push@8.0.2019090606` for v8 cordova apps.
+>**Note** Customer should upgrade to cocopod version `IBMMobileFirstPlatformFoundationPush@8.0.2019082914` for v8 native app and npm version `cordova-plugin-mfp-push@8.0.2019090606` for v8 cordova apps. For MFP v7.1 install iFix version `7.1.0.0-MFPF-IF201909091200` or higher.
 
 
 #### iPadOS on ios 13
