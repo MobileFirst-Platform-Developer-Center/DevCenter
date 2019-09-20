@@ -30,6 +30,12 @@ We have validated Mobile Foundation v8.0 and v7.1 with the GM release of iOS13, 
 * Oauth handshake with Mobile Foundation server
 * Push notifications
 
+
+![Sample Images]({{site.baseurl}}/assets/blog/2019-09-19-IBM-MobileFoundation-iOS13/ios13_mfp_screenshots.png)
+
+
+![Sample Images PushNotifications]({{site.baseurl}}/assets/blog/2019-09-19-IBM-MobileFoundation-iOS13/ios13_push_notification_screenshots.png)
+
 #### Push Notification registration issue
 
 While fresh installation of apps using MobileFirst Push notification on iOS 13, registration fails due to error in parsing the token from APNS server. The issue is similar to one reported on [Apple developer Forum](https://forums.developer.apple.com/thread/117545).
