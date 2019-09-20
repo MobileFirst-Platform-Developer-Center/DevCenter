@@ -1,11 +1,11 @@
 ---
-title: IBM Mobile Foundation and iOS12
+title: IBM Mobile Foundation and iOS 13
 date: 2019-09-19
 tags:
 - MobileFirst_Platform
 - Mobile_Foundation
 - Announcement
-- iOS13
+- iOS 13
 version:
 - 7.1
 - 8.0
@@ -15,12 +15,12 @@ additional_authors:
   - Vidyasagar Gaikwad
 ---
 
-iOS13 is [here](https://developer.apple.com/download/) and IBM Mobile Foundation is pleased to announce that we have embraced the iOS13 upgrade gracefully like every year.
+iOS 13 is [here](https://developer.apple.com/download/) and IBM Mobile Foundation is pleased to announce that we have embraced the iOS 13 upgrade gracefully like every year.
 
-In our previous [blog post]({{site.baseurl}}/blog/2019/09/09/mfp-support-for-ios13/), we mentioned about the various new changes seen in iOS13 and what you, as a developer should be doing about it.
-Existing application(s) that were created using Mobile Foundation Platform v7.1 and v8.0 **will work** as they did on previous versions of iOS even after upgrade to iOS13.
+In our previous [blog post]({{site.baseurl}}/blog/2019/09/09/mfp-support-for-ios13/), we mentioned about the various new changes seen in iOS 13 and what you, as a developer should be doing about it.
+Existing application(s) that were created using Mobile Foundation Platform v7.1 and v8.0 **will work** as they did on previous versions of iOS even after upgrade to iOS 13.
 
-We have validated Mobile Foundation v8.0 and v7.1 with the GM release of iOS13, and the all the major features listed below work fine on iOS13.
+We have validated Mobile Foundation v8.0 and v7.1 with the GM release of iOS 13, and the all the major features listed below work fine on iOS 13.
 
 * Invoking backend procedures through adapters
 * Application Authenticity
