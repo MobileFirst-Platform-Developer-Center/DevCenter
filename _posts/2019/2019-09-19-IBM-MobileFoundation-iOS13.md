@@ -20,7 +20,7 @@ iOS 13 is [here](https://developer.apple.com/download/) and IBM Mobile Foundatio
 In our previous [blog post]({{site.baseurl}}/blog/2019/09/09/mfp-support-for-ios13/), we mentioned about the various new changes seen in iOS 13 and what you, as a developer should be doing about it.
 Existing application(s) that were created using Mobile Foundation Platform v7.1 and v8.0 **will work** as they did on previous versions of iOS even after upgrade to iOS 13.
 
-We have validated Mobile Foundation v8.0 and v7.1 with the GM release of iOS 13, and the all the major features listed below work fine on iOS 13.
+We have validated Mobile Foundation v8.0 and v7.1 with the GM release of iOS 13, and all the major features listed below work fine on iOS 13.
 
 * Invoking backend procedures through adapters
 * Application Authenticity
