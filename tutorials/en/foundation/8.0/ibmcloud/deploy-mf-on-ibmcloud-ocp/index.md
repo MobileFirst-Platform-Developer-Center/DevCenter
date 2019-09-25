@@ -190,3 +190,39 @@ Following steps can be used to cleanup the deployment.
 	oc delete -f deploy/crds/charts_v1_mfoperator_crd.yaml
 	oc patch crd/ibmmf.charts.helm.k8s.io -p '{"metadata":{"finalizers":[]}}' --type=merge
 	```
+
+### Additional information
+
+To work around the permission issue to write the analytics data into the persistent volume, for Mobile Foundation Analytics using File Storage on IBM Cloud, please run the following command.
+
+```bash
+oc run perms-pod --overrides='
+{
+        "spec": {
+            "containers": [
+                {
+                    "command": [
+                        "/bin/sh",
+                        "-c",
+                        "mkdir -p /usr/ibm/wlp/usr/servers/mfpf-analytics/analyticsData && chown -R 1001:0 /usr/ibm/wlp/usr/servers/mfpf-analytics/analyticsData"
+                    ],
+                    "image": "alpine:3.2",
+                    "name": "perms-pod",
+                    "volumeMounts": [{
+                        "mountPath": "/opt/ibm/wlp/usr/servers/mfpf-analytics/analyticsData",
+                        "name": "pvc-data"
+                    }]
+                }
+            ],        
+            "volumes": [
+                {
+                    "name": "pvc-data",
+                    "persistentVolumeClaim": {
+                        "claimName": "<pvc-name>"
+                    }
+                }
+            ]
+        }
+}
+'  --image=notused --restart=Never
+```
