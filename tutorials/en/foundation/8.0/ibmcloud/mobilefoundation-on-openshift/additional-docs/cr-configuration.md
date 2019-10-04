@@ -215,3 +215,31 @@ kubectl create configmap mfpserver-custom-config --from-file=logging.xml
 ```
 
 - Notice the change in the messages.log (of Mobile Foundation components) - ***Property traceSpecification will be set to com.ibm.mfp.=debug:\*=warning.***
+
+## [OPTIONAL] Using custom generated LTPA keys
+
+By default, the images of Mobile Foundation bundles a set of `ltpa.keys` for each Mobile Foundation component. In production environment, when there is a need to update the out-of-the-box `ltpa.keys` with custom generated ones, you can use custom configuration to add any custom generated `ltpa.keys` along with the config xml.
+
+Following is the config sample `ltpa.xml`.
+
+```xml
+<server description="mfpserver">
+    <ltpa
+        keysFileName="ltpa.keys" />
+    <webAppSecurity ssoUseDomainFromURL="true" />
+</server>
+```
+
+The following command is an example of adding the custom LTPA keys.
+
+```bash
+kubectl create configmap mfpserver-custom-config --from-file=ltpa.xml --from-file=ltpa.keys
+```
+
+For more details about the LTPA keys generation and other details, refer to the [Liberty documentation](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_sec_ltpa.html).
+
+**Note:** Having multiple custom-configmaps is not supported for adding custom configuration, instead it is recommended to create the custom configuration *configmap* as follows.
+
+```bash
+kubectl create configmap mfpserver-custom-config --from-file=ltpa.xml --from-file=ltpa.keys --from-file=moreconfig.xml
+```
