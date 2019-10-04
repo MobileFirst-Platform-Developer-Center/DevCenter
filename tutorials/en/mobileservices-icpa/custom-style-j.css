@@ -3,6 +3,7 @@
 }
 .bx--col {
   margin: 10px;
+  min-width: 25%;
 }
 .bx--col-md-12 {
   padding: 10px;
@@ -32,6 +33,8 @@
 div#card{
   position: relative;
   height: 250px;
+  text-overflow: ellipsis;
+  overflow: scroll;
 }
 div#card h4{
   font-family: 'IBM Plex Sans SemiBold', 'IBMPlexSans-SemiBold', sans-serif;

@@ -29,7 +29,6 @@ div.rectangle .p{
   background-color: #ffffff;
   padding: 20px;
   height: auto;
-  margin-right: 98px;
 }
 #expdocs .h4{
   margin-left: 48px;
@@ -101,12 +100,11 @@ div.banner button.bx--btn.bx--btn--primary{
 div.banner p{
   margin-right: 128px;
 }
-div#inner-col.bx--col.bx--col-md-6.bx--col-sm-6{
+div#inner-col.bx--col{
   padding-top: 0px;
 }
-div#inner-dab-v.bx--col.bx--col-md-6{
+div#inner-dab-v.bx--col{
   padding-top: 10px;
-  margin-right: 98px;
 }
 div.m-vid .bx--col.bx--col-md-5.bx--col-sm-12{
   padding-top: 48px;
