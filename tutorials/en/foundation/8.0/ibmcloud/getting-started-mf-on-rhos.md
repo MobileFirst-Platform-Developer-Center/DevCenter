@@ -38,6 +38,8 @@ Image below shows the high level architecture of the Mobile Foundation deploymen
 
 To install Mobile Foundation on an existing OpenShift cluster follow the instructions [here](../mobilefoundation-on-openshift).
 
+>**Note:** To install Mobile Foundation on Red Hat OpenShift Container Platform on IBM Cloud, follow the instructions [here](../deploy-mf-on-ibmcloud-ocp).
+
 ## Developing Applications
 {: #develop-apps}
 
