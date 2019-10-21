@@ -78,7 +78,7 @@ A new iFix *8.0.0.0-MFPF-IF201910101148*  is released for Mobile Foundation 8.0,
                               cordova-plugin-mfp-encrypt-utils   8.0.2019070909<br/>
                               cordova-plugin-mfp-fips            8.0.2019070909<br/>
                               cordova-plugin-mfp-jsonstore      8.0.2019072908<br/>
-                              cordova-plugin-mfp-push            8.0.2019082914<br/>
+                              cordova-plugin-mfp-push            8.0.2019090606<br/>
                               cordova-template-mfp               8.0.2017060206<br/>
                               cordova-plugin-mfp-analytics      8.0.2019090714<br/>
                               ibm-mfp-web-sdk                     8.0.2019070909<br/>
@@ -242,7 +242,7 @@ IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<
                               cordova-plugin-mfp-encrypt-utils   8.0.2019070909<br/>
                               cordova-plugin-mfp-fips            8.0.2019070909<br/>
                               cordova-plugin-mfp-jsonstore      8.0.2019072908<br/>
-                              cordova-plugin-mfp-push            8.0.2019082914<br/>
+                              cordova-plugin-mfp-push            8.0.2019090606<br/>
                               cordova-template-mfp               8.0.2017060206<br/>
                               cordova-plugin-mfp-analytics      8.0.2019090714<br/>
                               ibm-mfp-web-sdk                     8.0.2019070909<br/>
@@ -407,7 +407,7 @@ IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<
                               cordova-plugin-mfp-encrypt-utils   8.0.2019070909<br/>
                               cordova-plugin-mfp-fips            8.0.2019070909<br/>
                               cordova-plugin-mfp-jsonstore      8.0.2019072908<br/>
-                              cordova-plugin-mfp-push            8.0.2019082914<br/>
+                              cordova-plugin-mfp-push            8.0.2019090606<br/>
                               cordova-template-mfp               8.0.2017060206<br/>
                               cordova-plugin-mfp-analytics      8.0.2019090714<br/>
                               ibm-mfp-web-sdk                     8.0.2019070909<br/>
@@ -576,7 +576,7 @@ IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<
                               cordova-plugin-mfp-encrypt-utils   8.0.2019070909<br/>
                               cordova-plugin-mfp-fips            8.0.2019070909<br/>
                               <b>cordova-plugin-mfp-jsonstore      8.0.2019072908</b><br/>
-                              <b>cordova-plugin-mfp-push            8.0.2019082914</b><br/>
+                              <b>cordova-plugin-mfp-push            8.0.2019090606</b><br/>
                               cordova-template-mfp               8.0.2017060206<br/>
                               <b>cordova-plugin-mfp-analytics      8.0.2019090714</b><br/>
                               ibm-mfp-web-sdk                     8.0.2019070909<br/>
