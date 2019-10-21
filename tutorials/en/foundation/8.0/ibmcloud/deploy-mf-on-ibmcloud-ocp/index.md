@@ -114,10 +114,10 @@ Follow the steps outlined in this section to deploy the Mobile Foundation OpenSh
     ```
 
 4.  Create secret for the IBM Mobile Foundation deployment to access the database.
-    >Refer to the documentation [here](../getting-started-mf-on-rhos/#install-mf).
+    >Refer to the documentation [here](../mobilefoundation-on-openshift/#setup-openshift-for-mf).
 
 5.  Create Persistent Volume and Volume Claim for Analytics.
-    >Refer to the documentation [here](../getting-started-mf-on-rhos/#install-mf).
+    >Refer to the documentation [here](../mobilefoundation-on-openshift/#setup-openshift-for-mf).
 
 6.  Deploy IBM Mobile Foundation components.
 
