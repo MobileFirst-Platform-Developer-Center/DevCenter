@@ -81,7 +81,7 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
       MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
     kind: Secret
     metadata:
-    name: mobilefoundation-db-secret
+      name: mobilefoundation-db-secret
     type: Opaque
     EOF
     ```
