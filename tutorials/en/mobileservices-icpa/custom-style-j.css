@@ -109,3 +109,7 @@ a#tab-link-3.bx--tabs__nav-link{
 a#tab-link-4.bx--tabs__nav-link{
   border-bottom: none;
 }
+
+.p {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
