@@ -110,7 +110,7 @@ Settings helps you to manage the app settings and rectify any errors during the 
 
 ### Digital App Builder interface in Code mode
 
-![DAB interface in Design mode](dab-workbench-elements-codemode.png)
+![DAB interface in Code mode](dab-workbench-elements-codemode.png)
 
 Digital App Builder interface in Code mode consists of the following in the Left navigation panel:
 
@@ -126,7 +126,7 @@ Digital App Builder interface in Code mode consists of the following in the Left
 
 Workbench helps you to design the pages. Workbench consists of two work areas:
 
-1. **Project Files**: This area displays the list of files associated with this app. filesname of the pages created by default. Use **+** sign to create a new page. On clicking **Controls** icon (**</>**), displays the **Code Snippets** panel. You can drag and drop these code snippets to your code and modify the properties of each of the controls selected.
+1. **Project Files**: This area displays the list of files associated with this app created by default. Use **+** sign to create a new page. On clicking **Controls** icon (**</>**), displays the **Code Snippets** panel. You can drag and drop these code snippets to your code and modify the properties of each of the controls selected.
 
 #### Code Snippets (Code mode only)
 {: #code-snippets}

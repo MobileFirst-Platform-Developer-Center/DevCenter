@@ -22,8 +22,9 @@ To add one of these controls to your app, simply drag-and-drop to the canvas and
 * **Button** - Use this control to add a button and associate an action to it. The **Button** control has the folllowing properties:
     * Text Value
     * Style (Alignment, Text Color, Background color, Font weight)
-    Assign an action to this button **On click Navigate to** another page by selecting the page name or click **+** to add a new page.
-* **Image** - Use this control to add an image. Specify the image source as Local image or Provide URL. You can also upload an image and add it to the app source. Assign an action to this image On click Navigate to another page by selecting the page name or click **+** to add a new page.
+    You can assign an action to this button from the **Actions** tab. Select **On click Navigate to** button to navigate to another page by selecting the page name or click **+** to add a new page.
+* **Image** - Use this control to add an image. Specify the image source as Local image or Provide URL. You can also upload an image and add it to the app source. 
+    You can assign an action to this image from the **Actions** tab. Select **On click Navigate to** button to navigate to another page by selecting the page name or click **+** to add a new page.
 * **Label** - Use this control to add a label. You can change the **Text Value**, **Style** (Alignment, Text Color, Font weight). No actions available for this control. 
 
 To add the basic controls to your project in design mode:
