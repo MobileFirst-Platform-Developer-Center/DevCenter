@@ -33,8 +33,8 @@ show_in_nav: false
 |                       | ssl | Database connection type  | Specify if you database connection has to be http or https. Default value is **false** (http). Make sure that the database port is also configured for the same connection mode |
 |                       | driverPvc | Persistent Volume Claim to access the JDBC Database Driver| Specify the name of the persistent volume claim that hosts the JDBC database driver. Required if the database type selected is not DB2 |
 |                       | adminCredentialsSecret | MFPServer DB Admin Secret | If you have enabled DB initialization ,then provide the secret to create database tables and schemas for Mobile Foundation components. |
-| mfpserver | adminClientSecret | Admin client secret | Specify the Client Secret name created. Refer [here](#[optional]-creating-secrets-for-confidential-clients)  |
-|  | pushClientSecret | Push client secret | Specify the Client Secret name created. Refer [here](#[optional]-creating-secrets-for-confidential-clients) |
+| mfpserver | adminClientSecret | Admin client secret | Specify the Client Secret name created. Refer [here](#optional-creating-secrets-for-confidential-clients)  |
+|  | pushClientSecret | Push client secret | Specify the Client Secret name created. Refer [here](#optional-creating-secrets-for-confidential-clients) |
 | mfpserver.replicas |  | The number of instances (pods) of Mobile Foundation Server that need to be created | Positive integer (Default: **3**) |
 | mfpserver.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicas field. | **false** (default) or true |
 |           | minReplicas  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to **1**) |
