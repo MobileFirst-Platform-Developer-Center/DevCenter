@@ -2,7 +2,7 @@
 layout: tutorial
 title: Häufig gestellte Fragen
 breadcrumb_title: FAQs
-weight: 7
+weight: 18
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -15,7 +15,8 @@ In diesem Abschnitt sind die häufig zu IBM Digital App Builder gestellten Frage
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-dab-faq1">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. Vorgehensweise beim Erstellen eines **Plattform-API-Schlüssels**</b></a></h4>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. Vorgehensweise beim Erstellen eines Plattform-API-Schlüssels</b></a>
+            </h4>
         </div>
         <div id="collapse-mfp-dab-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq1">
             <div class="panel-body">
@@ -41,6 +42,24 @@ In diesem Abschnitt sind die häufig zu IBM Digital App Builder gestellten Frage
         <div id="collapse-mfp-dab-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq2">
             <div class="panel-body">
                   <p>Der gemeinsam genutzte Playground-Server ist ein allgemeiner Server, der von vielen Entwicklern genutzt wird. Dieser Server sollte nicht für Produktions-Apps verwendet werden. Die Daten in diesem Server können ohne Vorankündigung gelöscht werden. Es gibt keine garantierte Verfügbarkeitszeit für den Server.</p>
+            </div>
+        </div>      
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq3" aria-expanded="true" aria-controls="collapse-mfp-dab-faq3"><b>C. Vollständige Deinstallation des Digital App Builder</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq3">
+            <div class="panel-body">
+                  <p>Sie können den Digital App Builder wie folgt vollständig deinstallieren:
+                  <ol><li>Gehen Sie beim Deinstallieren des Digital App Builder wie für das jeweilige Betriebssystem vorgesehen vor.</li>
+                      <li>Löschen Sie die folgenden Dateien manuell:
+                      <ul><li><b>Windows</b> - <i>Users\worklight\AppData\Roaming\IBM Digital App Builder</i></li>
+                          <li><b>Mac OS</b> - <i>Users/&lt;Systemname&gt;/Library/Application Support/IBM Digital App Builder</i></li>
+                      </ul></li>
+                  </ol></p>
             </div>
         </div>      
     </div>

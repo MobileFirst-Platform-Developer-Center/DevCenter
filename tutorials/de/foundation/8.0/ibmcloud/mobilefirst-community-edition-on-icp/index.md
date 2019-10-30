@@ -3,7 +3,7 @@ layout: tutorial
 title: IBM Mobile Foundation for Developers 8.0 in IBM Cloud Private implementieren
 breadcrumb_title: Foundation for Developers on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -51,7 +51,7 @@ In der folgenden Tabelle sind die Umgebungsvariablen angegeben, die in IBM Mobil
 
 |Qualifikationsmerkmal |Parameter |Definition |Zulässiger Wert |
 |-----------|-----------|------------|---------------|
-|arch |  |Worker node architecture | Worker-Knotenarchitektur, in der dieses Chart implementiert werden soll. Derzeit wird nur die Plattform **AMD64** unterstützt. |
+|arch |  |Worker node architecture |Worker-Knotenarchitektur, in der dieses Chart implementiert werden soll. <br/>Derzeit wird nur die Plattform **AMD64** unterstützt. |
 |image |pullPolicy |Richtlinie für Image-Übertragung per Pull-Operation | Always, Never oder IfNotPresent. <br/>Standardeinstellung: **IfNotPresent** |
 |  | repository |Docker image name | Name des {{ site.data.keys.prod_adj }}-Server-Docker-Image |
 |  |tag |Docker image tag |Siehe [Docker tag description](https://docs.docker.com/engine/reference/commandline/image_tag/) |
