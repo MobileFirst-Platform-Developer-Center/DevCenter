@@ -39,65 +39,53 @@
       "path": "/foundation/8.0/web-tutorials"
     }
 ]}, {
-    "name": "Blog",
-    "path": "/blog"
-}, {
-    "name": "Docs",
+    "name": "Documentation",
     "path": "/tutorials/en",
     "children": [{
-        "name": "All Docs",
-        "path": "",
-        "children": [{
-            "name": "Foundation 8.0",
+        "name": "Digital App Builder",
+        "path": "/foundation/8.0/digital-app-builder"
+      }, {
+            "name": "Mobile Foundation on IBM Cloud Pak for Applications",
+            "path": "/mobileservices-icpa"
+        },{
+            "name": "Mobile Foundation on Red Hat OpenShift",
+            "path": "/foundation/8.0/ibmcloud/getting-started-mf-on-rhos/"
+        },{
+            "name": "Mobile Foundation 8.0",
             "path": "/foundation/8.0/all-tutorials"
         }, {
-            "name": "Foundation 7.1",
+            "name": "Mobile Foundation 7.1",
             "path": "/foundation/7.1/all-tutorials"
-        }, {
-            "name": "Foundation 7.0",
-            "path": "/foundation/7.0/all-tutorials"
-        }, {
-            "name": "Foundation 6.3",
-            "path": "/foundation/6.3/all-tutorials"
         }]
+  }, {
+    "name": "Releases",
+    "path": "",
+    "children": [{
+        "name": "Downloads",
+        "path": "/downloads",
+        "extraClasses": "hidden-xs hidden-sm hidden-md"
     }, {
-        "name": "Admins",
+        "name": "Release notes",
+        "path": "/releases"
+    }, {
+        "name": "Announcements",
+        "path": "/blog/tag/Announcement"
+    },{
+        "name": "iFix notes ",
         "path": "",
         "children": [{
-            "name": "Installation and Configuration",
-            "path": "/foundation/8.0/installation-configuration"
-        }, {
-            "name": "Administering Applications",
-            "path": "/foundation/8.0/administering-apps"
-        }, {
-            "name": "Application Center",
-            "path": "/foundation/8.0/appcenter"
-        }]
-    }, {
-        "name": "Product Integration",
-        "path": "/product-integration",
-        "children": [{
             "name": "Foundation 8.0",
-            "path": "/8.0"
+            "path": "/blog/2018/05/18/8-0-master-ifix-release/"
         }, {
             "name": "Foundation 7.1",
-            "path": "/7.1"
-        }, {
-            "name": "Foundation 7.0",
-            "path": "/7.0"
-        }, {
-            "name": "Foundation 6.3",
-            "path": "/6.3"
+            "path": "/blog/2018/05/18/7-1-master-ifix-release/"
         }]
-    }, {
-        "name": "Features",
-        "path": "../../../features"
-    }, {
-        "name": "Learn More",
-        "path": "../../../learn-more"
     }]
-}, {
-    "name": "Labs",
+  },{
+      "name": "Blog",
+      "path": "/blog"
+  },{
+    "name": "Samples",
     "path": "/labs",
     "children": [{
         "name": "Developers",
@@ -108,9 +96,6 @@
         }, {
             "name": "Foundation 7.1 Labs",
             "path": "/developers/7.1/setup"
-        }, {
-            "name": "Foundation 7.0 Labs",
-            "path": "/developers/7.0/setup"
         }]
     }, {
         "name": "Administrators",
@@ -119,18 +104,11 @@
             "name": "Foundation 7.1 Labs",
             "path": "/administrators/7.1/intro"
         }]
+    }, {
+        "name": "Video Gallery",
+        "path": "/video-gallery"
     }]
-}, {
-    "name": "Downloads",
-    "path": "/downloads",
-    "extraClasses": "hidden-xs hidden-sm hidden-md"
-}, {
-    "name": "Video Gallery",
-    "path": "/video-gallery"
-}, {
-    "name": "Mobile Services - IBM Cloud Pak for Applications",
-    "path": "/tutorials/en/mobileservices-icpa"
-}, {
+},  {
     "name": "Help",
     "path": "/help"
 }]
