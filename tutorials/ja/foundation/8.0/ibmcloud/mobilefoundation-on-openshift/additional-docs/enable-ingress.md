@@ -1,17 +1,17 @@
 ---
 layout: tutorial
 breadcrumb_title: Enabling Ingress parameters
-title: Enabling Ingress parameters
+title: Ingress パラメーターの有効化
 weight: 4
 show_in_nav: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Enabling Ingress parameters
+## Ingress パラメーターの有効化
 {: #enable-ingress-parameters}
 
-To access the deployed Mobile Foundation instances on OpenShift Cluster, one need to configure the ingress. Following scenarios helps one to achieve the same.
+OpenShift クラスターにデプロイされた Mobile Foundation インスタンスにアクセスするには、ingress を構成する必要があります。以下のシナリオで、同じことを実現できます。
 
-1. For **HTTP Deployments**, ingress section in `deploy/crds/charts_v1_mfoperator_cr.yaml` looks as below:
+1. **HTTP デプロイメント**の場合、`deploy/crds/charts_v1_mfoperator_cr.yaml` の ingress セクションは以下のようになります。
 
     ```yaml
     ingress:
@@ -20,8 +20,8 @@ To access the deployed Mobile Foundation instances on OpenShift Cluster, one nee
       sslPassThrough: false
     ```
 
-2. For **HTTPS deployments**, TLS secret is mandatory.
-    * Generate `tls.key` and `tls.crt` using the following command:
+2. **HTTPS デプロイメント**の場合、TLS 秘密が必要です。
+    * 以下のコマンドを使用して `tls.key` および `tls.crt` を生成します。
 
       ```bash
       openssl genrsa -out tls.key 2048
@@ -29,13 +29,13 @@ To access the deployed Mobile Foundation instances on OpenShift Cluster, one nee
       oc create secret tls mf-tls-secret --cert=tls.cert --key=tls.key
       ```
 
-    * Create ingress tls secret using following command:
+    * 以下のコマンドを使用して ingress tls 秘密を作成します。
 
       ```bash
       kubectl create secret tls mf-tls-secret --key=tls.key --cert=tls.crt
       ```
 
-    ingress section in `deploy/crds/charts_v1_mfoperator_cr.yaml` looks as below:
+    `deploy/crds/charts_v1_mfoperator_cr.yaml` の ingress セクションは以下のようになります。
 
     ```yaml
     ingress:
@@ -44,21 +44,21 @@ To access the deployed Mobile Foundation instances on OpenShift Cluster, one nee
       sslPassThrough: false
     ```
 
-3. For **HTTPS to backend services**, `tls.crt` needs to be imported to `keystore.jks` and `truststore.jks`.
+3. **バックエンド・サービスに対する HTTPS** では、`tls.crt` を `keystore.jks` および `truststore.jks` にインポートする必要があります。
 
-    Pre-create a secret with `keystore.jks` and `truststore.jks` by including the `tls.crt` created in step 2 into the keystore and truststore along with keystore and truststore password using the literals KEYSTORE_PASSWORD and TRUSTSTORE_PASSWORD. Provide the secret name in the field *keystoreSecret* of respective component in the `deploy/crds/charts_v1_mfoperator_cr.yaml`.
+    `keystore.jks` および `truststore.jks` で秘密を事前に作成します。このために、リテラル KEYSTORE_PASSWORD および TRUSTSTORE_PASSWORD を使用して、鍵ストアおよびトラストストアのパスワードとともに、ステップ 2 で作成した `tls.crt` を鍵ストアおよびトラストストアに組み込みます。`deploy/crds/charts_v1_mfoperator_cr.yaml` 内の各構成要素の *keystoreSecret* フィールドに秘密名を指定します。
 
-    Keep the files `keystore.jks`, `truststore.jks` and its passwords as below.
+    以下のように、ファイル `keystore.jks`、`truststore.jks` とそのパスワードを保持します。
 
-    For example,
+    以下に例を示します。
 
     ```bash
     oc create secret generic server-stores --from-file=./keystore.jks --from-file=./truststore.jks --from-literal=KEYSTORE_PASSWORD=worklight --from-literal=TRUSTSTORE_PASSWORD=worklight
     ```
 
-    >**NOTE**: The names of the files and literals should be the same as mentioned in command above.	Provide this secret name in *keystoreSecret* input field of respective component to override the default keystores when configuring custom resource.
+    >**注**: ファイルおよびリテラルの名前は、上記のコマンドで示したものと同じでなければなりません。カスタム・リソースの構成時にデフォルトの鍵ストアをオーバーライドするには、各構成要素の *keystoreSecret* 入力フィールドにこの秘密名を指定します。
 
-    ingress section in `deploy/crds/charts_v1_mfoperator_cr.yaml` looks as below:
+    `deploy/crds/charts_v1_mfoperator_cr.yaml` の ingress セクションは以下のようになります。
 
     ```yaml
     ingress:

@@ -1,22 +1,22 @@
 ---
 layout: tutorial
 breadcrumb_title: Using Oracle (or) MySQL as IBM Mobile Foundation database
-title: Using Oracle (or) MySQL as IBM Mobile Foundation database
+title: Oracle (または) MySQL を IBM Mobile Foundation データベースとして使用する
 weight: 2
 show_in_nav: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Using Oracle (or) MySQL as IBM Mobile Foundation database
+## Oracle (または) MySQL を IBM Mobile Foundation データベースとして使用する
 
-A pre-configured database is required to store the data for Mobile Foundation server, Push and Application Center components.
+Mobile Foundation サーバー、Push および Application Center コンポーネントのデータを保管するために、事前構成済みのデータベースが必要です。
 
-Follow the instructions [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/#mysql-database-and-user-requirements) to setup Mobile Foundation with a non-DB2 database.
+DB2 以外のデータベースを使用して Mobile Foundation をセットアップするには、[ここ](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/#mysql-database-and-user-requirements)にある指示に従います。
 
-By default, Mobile Foundation installers is packaged with IBM DB2 JDBC drivers. For Oracle and MySQL, make sure that the JDBC driver (for MySQL - use the Connector/J JDBC driver,  for Oracle - use the Oracle thin JDBC driver) is placed within a Persistent Volume.
+デフォルトでは、Mobile Foundation インストーラーは IBM DB2 JDBC ドライバーとともにパッケージ化されています。Oracle および MySQL の場合、JDBC ドライバー (MySQL の場合、Connector/J JDBC ドライバーを使用し、Oracle の場合、Oracle シン JDBC ドライバーを使用します) が永続ボリューム内に配置されていることを確認してください。
 
-1. Place the JDBC driver in a NFS mounted volume. Example: */nfs/share/dbdrivers*
+1. JDBC ドライバーを NFS マウント・ボリュームに配置します。例: */nfs/share/dbdrivers*
 
-2. Create a Persistent Volume (PV) and Persistent Volume Claim (PVC) by providing the correct NFS server details and the path where the JDBC driver is stored. Sample yaml is shown below.
+2. NFS サーバーの正しい詳細および JDBC ドライバーが保管されている場所のパスを指定することで、永続ボリューム (PV) および永続ボリューム要求 (PVC) を作成します。サンプル yaml を以下に示します。
 
     ```yaml
      # Sample PersistentVolume.yaml
@@ -64,16 +64,16 @@ By default, Mobile Foundation installers is packaged with IBM DB2 JDBC drivers. 
       EOF
     ```   
 
-    > **NOTE**: Make sure you add the right *projectname-or-namespace* in the yaml above.
+    > **注**: 上記の yaml に正しい *projectname-or-namespace* を追加したことを確認します。
 
-### [OPTIONAL] Handling Mobile Foundation database operations with special (admin) privileges
+### [オプション] 特権 (admin) を使用して Mobile Foundation データベース操作を処理する
 {: #handle-mf-db-operations}
 
-We can have a separate database admin secret to execute the database initialization tasks, which would in turn create the required Mobile Foundation schema and tables in the database (if it does not already exist). Through the database Admin secret, you can control the DDL operations on your database instance.
+個別のデータベース管理秘密を使用して、データベースの初期化タスクを実行できます。これにより、必要な Mobile Foundation スキーマおよび表がデータベースに作成されます (まだ存在しない場合)。データベース管理秘密を使用して、データベース・インスタンスでの DDL 操作を制御できます。
 
-If the `MFP Server DB Admin Secret` and `MFP Appcenter DB Admin Secret` details are not provided, then the default `Database Secret Name` will be used to perform database initialization tasks.
+`MFP サーバー DB 管理秘密`および `MFP Appcenter DB 管理秘密`の詳細が指定されていない場合、デフォルトの`データベース秘密名`を使用してデータベース初期化タスクが実行されます。
 
-Run the below code snippet to create a `MFP Server DB Admin Secret` for Mobile Foundation Server.
+Mobile Foundation サーバー用の `MFP サーバー DB 管理秘密`を作成するには、以下のコード・スニペットを実行します。
 
 ```yaml
 # Create MFP Server Admin DB secret for Mobile Foundation server component
@@ -93,7 +93,7 @@ type: Opaque
 EOF
 ```
 
-Run the below code snippet to create a `MFP Appcenter DB Admin Secret` for Appcenter.
+Appcenter 用の `MFP Appcenter DB 管理秘密`を作成するには、以下のコード・スニペットを実行します。
 
 ```yaml
 # Create Appcenter Admin DB secret for Mobile Foundation Appcenter

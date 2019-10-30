@@ -49,7 +49,7 @@ REST API メソッド | エンドポイント | 説明
 {: #try-it-out-on-swagger-docs }
 
 Swagger Docs 上にある Analytics REST API を実際に使用してみましょう。  
-{{ site.data.keys.mf_server }} 構成で Analytics を有効にした状態で、`<ipaddress>:<port>/analytics-service` にアクセスします。
+Analytics が有効にされた {{ site.data.keys.mf_server }} 構成で、`<ipaddress>:<port>/analytics-service` にアクセスします。
 
 ![{{ site.data.keys.mf_analytics }} Swagger Docs UI](analytics-swagger.png)
 

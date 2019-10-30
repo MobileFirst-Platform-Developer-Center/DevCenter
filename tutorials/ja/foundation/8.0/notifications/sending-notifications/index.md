@@ -356,7 +356,7 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 テスト目的では、以下で説明するように Postman が使用されます。
 
 1. [機密クライアントを構成します](../../authentication-and-security/confidential-clients/)。   
-    REST API 経由でプッシュ通知を送信する場合、スペースで区切られたスコープ・エレメント `messages.write` と `push.application.<applicationId>` を使用します。
+    REST API 経由でプッシュ通知を送信する場合、スペースで区切られたスコープ・エレメント `messages.write` と `push.application.<applicationId>.` を使用します。
 
     <img class="gifplayer" alt="機密クライアントの構成" src="push-confidential-client.png"/>
 

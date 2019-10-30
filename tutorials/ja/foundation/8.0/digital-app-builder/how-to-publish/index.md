@@ -1,40 +1,40 @@
 ---
 layout: tutorial
-title: Publishing an app to IBM App Center
+title: IBM App Center へのアプリケーションの公開
 weight: 14
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-## Publishing an app to App Center
+## App Center へのアプリケーションの公開
 {: #dab-app-publish }
 
-IBM MobileFirst Foundation Application Center is a repository of mobile applications similar to public app stores but focused on the needs of an organization or a team. It is a private app store. For more information about App Center, refer [here](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/appcenter/app-center-tutorial/).
+IBM MobileFirst Foundation Application Center は、モバイル・アプリケーションのリポジトリーです。公開アプリケーション・ストアに似ていますが、組織またはチームのニーズに焦点を置いています。 これはプライベートなアプリケーション・ストアです。 App Center について詳しくは、[こちら](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/appcenter/app-center-tutorial/)を参照してください。
 
-You can add your app to the repository on the server by using the **Publish** function in the Digital App Builder.
+Digital App Builder の**「公開 (Publish)」**機能を使用して、アプリケーションをサーバー上のリポジトリーに追加できます。
 
->**Note**: Make sure your app is built without any error before publishing to app center.
+>**注**: App Center へ公開する前に、エラーなしの状態でアプリケーションがビルドされていることを確認してください。
 
-1. From your app project, click **Publish**. This will open up a popup with the platforms selected.
+1. アプリケーション・プロジェクトで、**「公開 (Publish)」**をクリックします。 これにより、プラットフォームが選択された状態のポップアップが表示されます。
 
-    ![Publish](dab-publish.png)
+    ![公開](dab-publish.png)
 
-2. Click **Publish to App Center**.
+2. **「App Center に公開する (Publish to App Center)」**をクリックします。
 
-    ![Publish to App Center](dab-publish-app-center.png)
+    ![「App Center に公開する (Publish to App Center)」](dab-publish-app-center.png)
 
-3. Select an existing App Center or click **Connect New**. Click **Connect**.
-4. This will build the package for the selected platform.
-5. *For iOS only*: Edit the *app-build.json* file and update the `developmentTeam` field with your Apple Developer Team ID. To find out the Team ID, login to [Apple Developer Account](https://developer.apple.com/account/#/membership). 
+3. 既存の App Center を選択するか、**「新規接続 (Connect New)」**をクリックします。 **「接続」**をクリックします。
+4. これにより、選択されたプラットフォーム向けのパッケージがビルドされます。
+5. *iOS のみ*: *app-build.json* ファイルを編集し、`developmentTeam` フィールドを Apple Developer チーム ID で更新してください。 チーム ID を見つけるには、[Apple Developer アカウント](https://developer.apple.com/account/#/membership)にログインしてください。 
 
-    ![Publish iOS](dab-publish-ios.png)
+    ![iOS 公開](dab-publish-ios.png)
 
-6. Click **Publish** once the packages are ready.
-7. On successful publishing, QR code is generated.
+6. パッケージの準備ができたら、**「公開 (Publish)」**をクリックします。
+7. 正常に公開されると、QR コードが生成されます。
 
-    ![Publish to App Center QR code](dab-publish-code-scan.png)
+    ![App Center への公開と QR コード](dab-publish-code-scan.png)
 
-8. You can verify the app is available in the App Center by logging into **App Center** > **Application Management**.
+8. **App Center** > **「アプリケーション管理 (Application Management)」**にログインすることで、App Center 内でアプリケーションが使用可能であることを検証できます。
 
->**Note**: You can reselect the platform required and build and publish the app to **App Center**.
+>**注**: 必要なプラットフォームを再度選択し、アプリケーションをビルドして**「App Center」**へ公開できます。
 

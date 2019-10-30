@@ -1,46 +1,46 @@
 ---
 layout: tutorial
-title: Adding a Chatbot
+title: チャットボットの追加
 weight: 9
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Watson Chatbot
+## Watson チャットボット
 {: #dab-chatbot }
 
-Chatbots are powered by Watson Assistant service on IBM Cloud. Create a Watson Assistant instance on IBM Cloud. For more information, see [here](https://cloud.ibm.com/catalog/services/watson-assistant-formerly-conversation).
+チャットボットは、IBM Cloud 上の Watson Assistant サービスによって提供されます。 IBM Cloud で Watson Assistant インスタンスを作成します。 詳しくは、[こちら](https://cloud.ibm.com/catalog/services/watson-assistant-formerly-conversation)を参照してください。
 
-Once configured you can create a new **Workspace**. The workspace is a set of conversations that make up a chatbot. After creating a Workspace, start creating the dialogs. Provide a set of questions for a intent and a set of answers for that intent. Watson Assistant uses Natural Language Understand to interpret the intent based on the sample questions you provided. It can then try to interpret the question that a user asks in various styles and map it to the intent.
+構成後、新規**ワークスペース**を作成できます。 ワークスペースは、チャットボットを構成する一連の会話です。 ワークスペースの作成後、ダイアログの作成を開始します。 特定のインテントの一連の質問と、そのインテントの一連の回答を提供します。 Watson Assistant は自然言語理解を使用し、提供されたサンプル質問に基づいてインテントを解釈します。 その後、ユーザーがさまざまなスタイルで尋ねた質問を解釈し、そのインテントにマップしようとすることができます。
 
-To enable a chatbot in your app, perform the following steps:
+アプリケーションでチャットボットを有効にするには、以下のステップを実行します。
 
-1. Click **Watson** and then click **Chatbot**. This displays the **Work with Watson Assistant** screen.
+1. **「Watson」**をクリックし、**「Chatbot」**をクリックします。 これにより、**「Watson Assistant の操作」**画面が表示されます。
 
     ![Watson Chatbot](dab-watson-chat.png)
 
-2. Click **Connect** to your Watson Assistance instance.
+2. **「接続」**をクリックして Watson Assistance インスタンスに接続します。
 
-    ![Watson Chat instance](dab-watson-chat-instance.png)
+    ![Watson Chat インスタンス](dab-watson-chat-instance.png)
 
-3. Enter the **API key** details and specify the **URL** of your Watson Assistance instance. 
-4. Provide a **Name** to your chatbot and click **Connect**. This displays your chat service dashboard of the **Name** given.
+3. **「API 鍵」**の詳細を入力し、Watson Assistance インスタンスの**「URL」**を指定します。 
+4. チャットボットの**「名前」**を指定し、**「接続」**をクリックします。 これにより、指定された**「名前」**のチャット・サービス・ダッシュボードが表示されます。
 
-    ![Watson Chatbot workspace](dab-watson-chat-workspace.png)
+    ![Watson チャットボット・ワークスペース](dab-watson-chat-workspace.png)
 
-5. Add a workspace by clicking **Add a workspace** which displays the **Create a new model** popup.
+5. **「ワークスペースの追加」**をクリックして、ワークスペースを追加します。これにより**「新規モデルの作成」**ポップアップが表示されます。
 
-    ![Watson Chatbot workspace new model](dab-watson-chat-new-model.png)
+    ![Watson チャットボット・ワークスペースの新規モデル](dab-watson-chat-new-model.png)
 
-6. Enter the **Workspace name** and **Workspace description** and click **Create**. This creates three **Conversation** workspace (Welcome, No match found, and New conversation).
+6. **「ワークスペース名」**および**「ワークスペースの説明」**を入力し、**「作成」**をクリックします。 これにより、3 つの**「会話」**ワークスペース (「ようこそ (Welcome)」、「一致なし (No match found)」、および「新規会話」) が作成されます。
 
-    ![Watson Chatbot default conversation](dab-watson-chat-conversations.png)
+    ![Watson チャットボットのデフォルト会話](dab-watson-chat-conversations.png)
 
-7. Click **New conversation** to educate the new chatbot model. 
+7. **「新規会話」**をクリックして、新規チャットボット・モデルをトレーニングします。 
 
-    ![Watson Chatbot Q&A](dab-watson-chat-questions.png)
+    ![Watson チャットボット Q&A](dab-watson-chat-questions.png)
 
-8. Add questions and the response either as a csv file or as an individual questions and the response. For example, **Add a user statement** for If the user intends to ask, and then **Add a bot response** for the **Then, the bot should respond with**. or you can upload questions and the responses for the bot to respond.
-9. Click **Save**.
-10. Click the Chatbot icon at the botton right-hand side to test the chatbot.
+8. 質問と回答を CSV ファイルとして、または個別の質問と回答として追加します。 例えば、「ユーザーが質問したい場合」に対して**「ユーザー文の追加」**を使用し、 **「ボットは以下のように応答する必要があります」**に対して**「ボット応答の追加」**を使用します。 あるいは、質問、およびボットが応答する回答をアップロードすることもできます。
+9. **「保存」**をクリックします。
+10. 右下にある「チャットボット」アイコンをクリックして、チャットボットをテストします。
 
-    ![Chatbot testing](dab-watson-chat-testing.png)
+    ![チャットボットのテスト](dab-watson-chat-testing.png)

@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: IBM Cloud 上での Mobile Foundation サービスの使用
-breadcrumb_title: Setting up Mobile Foundation service
+title: IBM Cloud 上での Mobile Foundation サービス
+breadcrumb_title: Foundation on IBM Cloud
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
