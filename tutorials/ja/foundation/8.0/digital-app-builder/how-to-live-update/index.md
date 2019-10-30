@@ -1,75 +1,75 @@
 ---
 layout: tutorial
-title: Feature toggle using Live Update
+title: ライブ・アップデートを使用した機能のトグル
 weight: 12
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Feature Toggle using Live Update
+## ライブ・アップデートを使用した機能のトグル
 {: #dab-feature-toggle-live-update }
 
-Use Live Update to make different aspects of your app configurable, to turn features on or off, remotely. Also dynamically control the properties of the app by changing the values of variables directly from the MobileFirst Operations Console.
+ライブ・アップデートを使用して、アプリケーションのいろいろな側面を構成可能にし、リモートから機能をオンにしたりオフにしたりします。 また、MobileFirst Operations Console から変数の値を直接変更することにより、アプリケーションのプロパティーを動的に制御します。
 
-Feature is an on/off binary value that is used to turn an app's feature on or off.
+「フィーチャー (Feature)」は、アプリケーションの機能をオンまたはオフにするために使用されるオン/オフのバイナリー値です。
 
-Properties are name value pairs which can be used to control the behaviour of the app.
+「プロパティー」は、アプリケーションの動作を制御するために使用できる名前値ペアです。
 
->**Note**: Live Update will be available only when the app is ready.
+>**注**: ライブ・アップデートは、アプリケーションが作動可能になって初めて使用可能になります。
 
 
-### Adding Live Update in Design mode
+### 設計 (Design) モードでのライブ・アップデートの追加
 
-To add Live Update to your app:
+ライブ・アップデートをアプリケーションに追加するには、以下のようにします。
 
-1. Select **Engagement**. This will display the list of available services.
+1. **「エンゲージメント (Engagement)」**を選択します。 これにより、使用可能なサービスのリストが表示されます。
 
-    ![Engagement Live Update](dab-live-update.png)
+    ![「エンゲージメント (Engagement)」-「ライブ・アップデート (Live Update)」](dab-live-update.png)
 
-2. Select **Live Update** and click **Enable**. This will configure the live update in the Mobile Foundation server. On successful enablement of the live update, a popup will be displayed.
+2. **「ライブ・アップデート (Live Update)」**を選択し、**「有効にする (Enable)」**をクリックします。 これで、Mobile Foundation サーバー内にライブ・アップデートが構成されます。 ライブ・アップデートが正常に有効化されると、ポップアップが表示されます。
 
-    ![Enable Live Update](dab-live-update-enable.png)
+    ![ライブ・アップデートの有効化](dab-live-update-enable.png)
 
-3. Click **+ New Feature** to define a new feature in the Mobile Foundation server. This displays the below screen.
+3. Mobile Foundation サーバー内に新規フィーチャーを定義するための**「+ 新規フィーチャー (+ New Feature)」**をクリックします。 これにより、下の画面が表示されます。
 
-    ![new feature](dab-live-update-new-feature.png)
+    ![新規フィーチャー](dab-live-update-new-feature.png)
 
-4. Enter the **Feature ID** and **Feature Name** and set the default **Visibility**.
+4. **「フィーチャー ID (Feature ID)」**と**「フィーチャー名 (Feature Name)」**を入力し、デフォルトの**「表示設定 (Visibility)」**を設定します。
 
-    * **Feature ID** - A unique identifier for your feature.
-    * **Feature Name** - Give a name to describe your feature
+    * **フィーチャー ID (Feature ID)** - フィーチャーの固有 ID
+    * **フィーチャー名 (Feature Name)** - フィーチャーを説明する名前
 
-    ![new property](dab-live-update-feature-new.png)
+    ![新規プロパティー](dab-live-update-feature-new.png)
 
-5. Click **Create**.
+5. **「作成」**をクリックします。
 
-6. Similarly, define a Live Update property by providing the following details:
+6. 以下の詳細を指定して、ライブ・アップデートのプロパティーを同様に定義します。
 
-    * **PropertyID**
-    * **Property Name**
-    * **Property Value**
+    * **プロパティー ID**
+    * **プロパティー名**
+    * **プロパティー値**
 
-### Adding Live Update in Code mode
+### コード・モードでのライブ・アップデートの追加
 
-To add Live Update to your app:
+ライブ・アップデートをアプリケーションに追加するには、以下のようにします。
 
-**Method 1**
+**方法 1**
 
-1. Open the app in code mode
-2. Navigate to you `projectname/ionic/src/app/app.component.ts`
+1. アプリケーションをコード・モードで開きます。
+2. `projectname/ionic/src/app/app.component.ts` にナビゲートします。
 
-    ![new property method 1](dab-live-update-new-feature-code.png)
+    ![新規プロパティーの方法 1](dab-live-update-new-feature-code.png)
 
-3. Go to initialize live update method.
-4. Edit the code to show/hide a control and property to set the property of the control.
+3. ライブ・アップデート初期化メソッドに移動します。
+4. コードを編集してコントロールやプロパティーを表示/非表示にして、コントロールのプロパティーを設定します。
 
-**Method 2**
+**方法 2**
 
-1. Open the app in code mode.
-2. Go and click the Code Snippet **</>**.
-3. under Live Update > Live Update Configuration.
+1. アプリケーションをコード・モードで開きます。
+2. コード・スニペットに移動し、**「</>」**をクリックします。
+3. 「ライブ・アップデート (Live Update)」>「ライブ・アップデート構成 (Live Update Configuration)」を選択します。
 
-    ![new property method 2](dab-live-update-new-feature-code-snippet.png)
+    ![新規プロパティーの方法 2](dab-live-update-new-feature-code-snippet.png)
 
-4. Drag and drop the **LiveUpdate Configuration** code snippet.
-5. Edit the code to show/hide a control and property to set the property of the control.
+4. **「LiveUpdate 構成 (LiveUpdate Configuration)」**コード・スニペットをドラッグ・アンド・ドロップします。
+5. コードを編集してコントロールやプロパティーを表示/非表示にして、コントロールのプロパティーを設定します。
 

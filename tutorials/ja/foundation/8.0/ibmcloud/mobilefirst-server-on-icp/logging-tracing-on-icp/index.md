@@ -42,7 +42,7 @@ weight: 2
 ```
 -Dcom.ibm.ws.logging.trace.specification=com.ibm.mfp.*=all=enabled
 ```
- このエントリーは、JNDI 構成を使用して設定することもできます。 詳しくは、[こちら]({{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/mobilefirst-server-on-icp/#env-mf-server)を参照してください。
+ このエントリーは、JNDI 構成を使用して設定することもできます。 詳しくは、[こちら]({{ site.baseurl }}/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/#env-mf-server)を参照してください。
 
 
 ## *kubectl* ログの収集

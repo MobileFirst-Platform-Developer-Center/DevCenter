@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: スクリプトを使用した IBM Cloud Kubernetes クラスター上の MobileFirst サーバーのセットアップ
-breadcrumb_title: Foundation on Kubernetes Cluster using scripts
+breadcrumb_title: Foundation on Kubernetes using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
@@ -450,13 +450,13 @@ IBM Containers 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM 
 
 以下のコマンドを実行して、IBM Cloud レジストリーからイメージ名を削除します。
 ```bash
-bx cr image-list (レジストリー内のイメージをリストします)
-bx cr image-rm image-name (レジストリーからイメージを削除します)
+bx cr image-list (Lists the images in the registry)
+bx cr image-rm image-name (Removes the image from the registry)
 ```
 
 ## IBM Cloud からのデータベース・サービス構成の削除
 {: #removing-the-database-service-configuration-from-ibmcloud }
-{{ site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_server }} に必要な構成およびデータベース・テーブルが作成されます。 このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
+{{ site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_server }} に必要な構成およびデータベース表が作成されます。 このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
 
 IBM Cloud からデータベース・サービス構成を削除するには、IBM Cloud ダッシュボードを使用して、以下の手順を実行します。
 

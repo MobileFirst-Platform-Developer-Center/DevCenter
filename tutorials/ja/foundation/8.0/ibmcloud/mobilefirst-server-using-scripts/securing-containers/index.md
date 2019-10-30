@@ -106,7 +106,7 @@ If you need a secure connection between your container and an on-premise back-en
 3. AES 暗号化を使用しており、デフォルトの鍵の代わりに独自の暗号鍵を使用した場合、その暗号鍵を含む構成ファイルを作成して、**usr/config** ディレクトリーに追加する必要があります。 Liberty サーバーは、実行時にこのファイルにアクセスして、パスワードを暗号化解除します。 構成ファイルは、.xml ファイル拡張子を持ち、以下のフォーマットに似たものでなければなりません。
 
 ```bash
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <server>
     <variable name="wlp.password.encryption.key" value="yourKey" />
 </server>

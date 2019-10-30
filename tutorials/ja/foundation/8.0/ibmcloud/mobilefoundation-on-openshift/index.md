@@ -1,60 +1,60 @@
 ---
 layout: tutorial
 breadcrumb_title: Foundation on Red Hat OpenShift
-title: Deploy Mobile Foundation to an existing Red Hat OpenShift Container Platform
+title: 既存の Red Hat OpenShift Container Platform への Mobile Foundation のデプロイ
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-Learn how to install the Mobile Foundation instance on an OpenShift cluster using the IBM Mobile Foundation Operator.
+IBM Mobile Foundation Operator を使用して OpenShift クラスターに Mobile Foundation インスタンスをインストールする方法について説明します。
 
-There are two ways of getting the entitlement to OpenShift Container Platform.
+OpenShift Container Platform の使用権を取得する方法は 2 つあります。
 
-* You have the entitlement to IBM Cloud Pak for Applications, which includes the OpenShift Container Platform entitlement.
-* You have an existing OpenShift Container Platform (bought from Red Hat).
+* OpenShift Container Platform の使用権を含む IBM Cloud Pak for Applications の使用権を所持している。
+* 既存の OpenShift Container Platform (Red Hat から購入) を所持している。
 
-The steps to deploy Mobile Foundation on OCP are the same irrespective of how you have obtained the OCP entitlement.
+OCP に Mobile Foundation をデプロイする手順は、OCP の使用権を取得した方法にかかわらず同じです。
 
-## Prerequisites
+## 前提条件
 {: #prereqs}
 
-Following are the prerequisites before you begin the process of installing Mobile Foundation instance using the Mobile Foundation Operator.
+以下は、Mobile Foundation Operator を使用して Mobile Foundation インスタンスをインストールするプロセスを開始する前に満たす必要がある前提条件です。
 
-- OpenShift cluster v3.11 or above.
-- [OpenShift client tools](https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html) (`oc`).
-- Mobile Foundation requires a database. Create a supported database and keep the database access details handy for further use. See [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/databases/).
-- Mobile Foundation Analytics requires mounted storage volume for persisting Analytics data (NFS recommended).
+- OpenShift クラスター v3.11 以上。
+- [OpenShiftクライアント・ツール](https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html) (`oc`)。
+- Mobile Foundation にはデータベースが必要です。サポートされているデータベースを作成し、データベース・アクセスの詳細を以後使用できるように用意します。[ここ](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/databases/)を参照してください。
+- Mobile Foundation Analytics には、Analytics データを保持するためのマウント済みストレージ・ボリュームが必要です (NFS 推奨)。
 
-## Architecture
+## アーキテクチャー
 {: #architecture}
 
-Image below shows the internal architecture of Mobile services on Red Hat OpenShift.
+以下の図は、Red Hat OpenShift でのモバイル・サービスの内部アーキテクチャーを示しています。
 
-![Architecture](./architecture-mf-on-openshift.png)
+![アーキテクチャー](./architecture-mf-on-openshift.png)
 
-## Installing an IBM Mobile Foundation instance
+## IBM Mobile Foundation インスタンスのインストール
 
-### Download the IBM Mobile Foundation package
+### IBM Mobile Foundation パッケージのダウンロード
 {: #download-mf-package}
 
-Download the IBM Mobile Foundation package for Openshift from [IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html). Unpack the archive to a directory called `workdir`.
+[IBM パスポート・アドバンテージ (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html) から Openshift 用の IBM Mobile Foundation パッケージをダウンロードします。アーカイブを `workdir` という名前のディレクトリーに解凍します。
 
-  > **NOTE:** Refer [here](./additional-docs/validating-ppa/) if you want to validate the PPA package and verify the signature.
+  > **注:** PPA パッケージを確認し、署名を検証する場合、[ここ](./additional-docs/validating-ppa/)を参照してください。
 
-### Setup the OpenShift project for Mobile Foundation
+### Mobile Foundation 用の OpenShift プロジェクトのセットアップ
 {: #setup-openshift-for-mf}
 
-1. Log in to OpenShift cluster and create a new project.   
+1. OpenShift クラスターにログインし、新規プロジェクトを作成します。   
    ```bash
    export MFOS_PROJECT=<project-name>
    oc login -u <username> -p <password> <cluster-url>
    oc new-project $MFOS_PROJECT
    ```
-2. Unpack the IBM Mobile Foundation package for Openshift using the following command.
+2. 以下のコマンドを使用して、Openshift 用の IBM Mobile Foundation パッケージを解凍します。
   ```bash
   tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C <workdir>/
   ```
-3. Load and push the images to OpenShift registry from local.   
+3. ローカルからイメージをロードし、OpenShift レジストリーにプッシュします。   
    ```bash
     docker login -u <username> -p $(oc whoami -t) $(oc registry info)
     cd <workdir>/images
@@ -65,7 +65,7 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
       docker push $(oc registry info)/$MFOS_PROJECT/${file/.tar.gz/}
     done
    ```
-4. Create a secret with database credentials.
+4. データベース資格情報を使用して秘密を作成します。
 
     ```yaml
     cat <<EOF | oc apply -f -
@@ -85,9 +85,9 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
     type: Opaque
     EOF
     ```
-  > **NOTE**: An encoded string can be obtained using `echo -n <string-to-encode> | base64`.
+  > **注**: `echo -n <string-to-encode> | base64` を使用して、エンコードされたストリングを取得できます。
 
-5. For Mobile Foundation Analytics, configure a persistent volume (PV).
+5. Mobile Foundation Analytics の場合、永続ボリューム (PV) を構成します。
     ```yaml
     cat <<EOF | kubectl apply -f -
     apiVersion: v1
@@ -108,7 +108,7 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
     EOF
     ```
 
-6. For Mobile Foundation Analytics, configure a persistent volume claim (PVC).
+6. Mobile Foundation Analytics の場合、永続ボリューム要求 (PVC) を構成します。
    ```yaml
    cat <<EOF | kubectl apply -f -
     apiVersion: v1
@@ -129,22 +129,22 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
     EOF
    ```
 
-### Deploy the IBM Mobile Foundation Operator
+### IBM Mobile Foundation Operator のデプロイ
 {: #deploy-mf-operator}
 
-1. Ensure the Operator image name (*mf-operator*) with tag is set for the operator in `deploy/operator.yaml` (**REPO_URL**).
+1. `deploy/operator.yaml` (**REPO_URL**) で、タグ付きの Operator イメージ名 (*mf-operator*) がオペレーターに対して設定されていることを確認します。
 
     ```bash
     sed -i 's|REPO_URL|<image-repo-url>:<image-tag>|g' deploy/operator.yaml
     ```
 
-2. Ensure the namespace is set for the cluster role binding definition in `deploy/cluster_role_binding.yaml` (**REPLACE_NAMESPACE**).
+2. `deploy/cluster_role_binding.yaml` (**REPLACE_NAMESPACE**) で、クラスター・ロール・バインディング定義に対して名前空間が設定されていることを確認します。
 
     ```bash
     sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/cluster_role_binding.yaml
     ```
 
-3. Run the following commands to deploy CRD, operator and install Security Context Constraints (SCC).
+3. 以下のコマンドを実行して CRD、オペレーターをデプロイし、セキュリティー・コンテキスト制約 (SCC) をインストールします。
 
     ```bash
     oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
@@ -152,17 +152,17 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
     oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
     ```
 
-### Deploy IBM Mobile Foundation components
+### IBM Mobile Foundation コンポーネントのデプロイ
 {: #deploy-mf-components}
 
-1. To deploy any of the Mobile Foundation components, modify the custom resource configuration `deploy/crds/charts_v1_mfoperator_cr.yaml` according to your requirements. Complete reference to the custom configuration is found [here](./additional-docs/cr-configuration/).
+1. いずれかの Mobile Foundation コンポーネントをデプロイするには、要件に従いカスタム・リソース構成 `deploy/crds/charts_v1_mfoperator_cr.yaml` を変更します。[ここ](./additional-docs/cr-configuration/)に、カスタム構成の全リファレンスがあります。
 
-   > **IMPORTANT NOTE** : To access the Mobile Foundation instances after deployment we need to configure ingress hostname. Please make sure ingress is configured in the custom resource configuration. Refer this [link](./additional-docs/enable-ingress/) on configuring the same.
+   > **重要事項**: デプロイメント後に Mobile Foundation インスタンスにアクセスするには、入口ホスト名を構成する必要があります。カスタム・リソース構成で入口が構成されていることを確認してください。この構成については、この[リンク](./additional-docs/enable-ingress/)を参照してください。
 
     ```bash
     oc apply -f deploy/crds/charts_v1_mfoperator_cr.yaml
     ```
-2. Run the following command and ensure the pods are created and running successfully. In a deployment scenario where Mobile Foundation Server and push are enabled with 3 replicas each (default), the output looks as shown below.
+2. 以下のコマンドを実行し、ポッドが正常に作成され、実行されていることを確認します。Mobile Foundation サーバーおよび Push が 3 つの各レプリカ (デフォルト) で有効になっているデプロイメント・シナリオでは、出力は以下のようになります。
 
       ```bash
       $ oc get pods
@@ -175,8 +175,8 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
       mfpf-push-29kw92mdlw-882pa     1/1       Running   0          52s
       mfpf-push-1b2w2s973c-983lw     1/1       Running   0          52s
       ```
-    > **NOTE:** Pods in Running (1/1) status shows the service is available for access.
-3. Check if the routes are created for accessing the Mobile Foundation endpoints by running the following command.
+    > **注:** Running (1/1) 状況のポッドは、サービスにアクセスできることを示します。
+3. 以下のコマンドを実行して、Mobile Foundation エンドポイントにアクセスするためのルートが作成されているかどうか確認します。
 
     ```bash
     $ oc get routes
@@ -189,18 +189,18 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
     ibm-mf-cr-1fdub-mfp-ingress-xt66r   myhost.mydomain.com   /mfp              ibm-mf-cr--mfpserver   9080                    None
     ```
 
-### Accessing the console of IBM Mobile Foundation components
+### IBM Mobile Foundation コンポーネントのコンソールへのアクセス
 
-Following are the endpoints for accessing the consoles of Mobile Foundation components
+以下は、Mobile Foundation コンポーネントのコンソールにアクセスするためのエンドポイントです。
 
-  * **Mobile Foundation Server Administration Console** - `http://<ingress_hostname>/mfpconsole`
-  * **Operational Analytics Console** - `http://<ingress_hostname>/analytics/console`
-  * **Application Center Console** - `http://<ingress_hostname>/appcenterconsole`
+  * **Mobile Foundation サーバーの管理コンソール** - `http://<ingress_hostname>/mfpconsole`
+  * **Operational Analytics コンソール** - `http://<ingress_hostname>/analytics/console`
+  * **Application Center コンソール** - `http://<ingress_hostname>/appcenterconsole`
 
-## Uninstall
+## アンインストール
 {: #uninstall}
 
-Use the following commands to perform a post installation clean up.
+以下のコマンドを使用して、インストール後のクリーンアップを実行します。
 
 ```bash
 oc delete -f deploy/crds/charts_v1_mfoperator_cr.yaml
@@ -209,9 +209,9 @@ oc delete -f deploy/crds/charts_v1_mfoperator_crd.yaml
 oc patch crd/ibmmf.charts.helm.k8s.io -p '{"metadata":{"finalizers":[]}}' --type=merge
 ```
 
-### Additional References
+### その他の参照情報
 
-1. [Setting up of Mobile Foundation databases](../../installation-configuration/production/prod-env/databases/)
-2. [Using Oracle (or) MySQL as IBM Mobile Foundation database](additional-docs/advanced-db-config/)
-3. [Custom  Resource configuration parameters for Mobile Foundation](additional-docs/cr-configuration/)
-4. [Scenarios in enabling Ingress](additional-docs/enable-ingress/)
+1. [Mobile Foundation データベースのセットアップ](../../installation-configuration/production/prod-env/databases/)
+2. [Oracle (または) MySQL を IBM Mobile Foundation データベースとして使用する](additional-docs/advanced-db-config/)
+3. [Mobile Foundation のカスタム・リソース構成パラメーター](additional-docs/cr-configuration/)
+4. [入口の有効化のシナリオ](additional-docs/enable-ingress/)

@@ -1,33 +1,33 @@
 ---
 layout: tutorial
-title: Connect to Microservices using the API Proxy
+title: API プロキシーを使用したマイクロサービスへの接続
 weight: 15
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-## API Proxy
+## API プロキシー
 {: #dab-api-proxy }
 
-When connecting to the enterprise backend, it is possible to leverage the security and analytics of MobileFirst platform using the API Proxy. As the name suggests, it is a proxy that can be used to proxy over the requests to the actual backend.
+エンタープライズ・バックエンドに接続するときは、API プロキシーを使用して、MobileFirst プラットフォームのセキュリティーと分析機能を利用できます。 名前が示すとおり、これは実際のバックエンドに要求を送信するために使用できるプロキシーです。
 
-### Some of the Advantages of using the API Proxy
+### API プロキシーを使用することの利点
 
-* The actual backend host is not exposed to the mobile app and stays secure in MobileFirst server.
-* Get the analytics of the requests that are made to the backend
+* 実際のバックエンド・ホストがモバイル・アプリケーションに公開されることがなく、MobileFirst サーバー内で保護される。
+* バックエンドに対して行われる要求の分析を取得できる。
 
-### How to use the API Proxy?
+### API プロキシーの使用法
 
-1. Download the Mobile API Proxy adapter from the Mobile Foundation Console.
+1. Mobile Foundation コンソールからモバイル API プロキシー・アダプターをダウンロードします。
 
-    ![API Proxy](dab-api-proxy.png)
+    ![API プロキシー](dab-api-proxy.png)
 
-2. Deploy the API Proxy adapter to Mobile Foundation server.
+2. Mobile Foundation サーバーに API プロキシー・アダプターをデプロイします。
 
-3. Configure the backend URI in the API Proxy adapter configuration. The URI should be of the format `protocol:host:port/context`. For example, `http://secure-backend/basecontext/`.
-4. Make the requests to the backend using the `WLResourceRequest API`. Use the API call code snippet from the **MOBILE CORE** section. Alter the options object to set `useAPIProxy` key to true.
+3. API プロキシー・アダプター構成内にバックエンド URI を構成します。 URI の形式は、`protocol:host:port/context` のようにする必要があります。 例えば、`http://secure-backend/basecontext/` です。
+4. `WLResourceRequest API` を使用してバックエンドへの要求を行います。 **「モバイル・コア (MOBILE CORE)」**セクションにある API 呼び出しのコード・スニペットを使用します。 オプション・オブジェクトを変更して、`useAPIProxy` キーを true に設定します。
 
-    Example:
+    例:
     ```
     var resourceRequest = new WLResourceRequest(
         "weather/city/Miami",

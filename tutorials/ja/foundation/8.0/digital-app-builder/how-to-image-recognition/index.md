@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adding Image Recognition to the App
+title: アプリケーションへの画像認識の追加
 weight: 10
 show_children: true
 ---
@@ -8,46 +8,46 @@ show_children: true
 ## Watson Visual Recognition
 {: #dab-watson-vr }
 
-Image recognition capability is powered by Watson Visual recognition service on IBM Cloud. Create a Watson Visual Recognition instance on IBM Cloud. For more information, see [here](https://cloud.ibm.com/catalog/services/visual-recognition).
+画像認識機能は、IBM Cloud 上の Watson Visual Recognition サービスによって提供されます。 IBM Cloud で Watson Visual Recognition インスタンスを作成します。 詳しくは、[こちら](https://cloud.ibm.com/catalog/services/visual-recognition)を参照してください。
 
-Once configured, you can now create a new Mobel and add classes to it. You can drag and drop images in to the Builder and then train your Model on those images. Once the training is complete, you can either download the CoreML model or use the Model in a AI control in your app.
+構成後、新規モデルを作成し、クラスをそのモデルに追加できます。 画像をビルダーにドラッグ・アンド・ドロップしてから、該当する画像でモデルをトレーニングできます。 トレーニングの完了後、CoreML モデルをダウンロードすることも、作成したモデルをアプリケーションの AI コントロールで使用することもできます。
 
-To enable a Visual Recognition in your app, perform the following steps:
+アプリケーションで画像認識を有効にするには、以下のステップを実行します。
 
-1. Click **Watson** and then click **Image Recognition**. This displays the **Work with Watson Visual Recognition** screen.
+1. **「Watson」**をクリックし、**「Image Recognition」**をクリックします。 これにより、**「Watson Visual Recognition の操作」**画面が表示されます。
 
     ![Watson Visual Recognition](dab-watson-vr.png)
 
-2. Click **Connect** to your Watson Visual Recognition instance.
+2. **「接続」**をクリックして Watson Visual Recognition インスタンスに接続します。
 
-    ![Watson Visual Recognition Instance](dab-watson-vr-instance.png)
+    ![Watson Visual Recognition インスタンス](dab-watson-vr-instance.png)
 
-3. Enter the **API key** details and specify the **URL** of your Watson Visual Recognition instance. 
-4. Provide a **Name** to your Image Recognition instance in the app and click **Connect**. This displays the dashboard for your model.
+3. **「API 鍵」**の詳細を入力し、Watson Visual Recognition インスタンスの**「URL」**を指定します。 
+4. アプリケーションの Image Recognition インスタンスの**「名前」**を指定し、**「接続」**をクリックします。 これにより、モデルのダッシュボードが表示されます。
 
-    ![Watson VR new model](dab-watson-vr-new-model.png)
+    ![Watson VR の新規モデル](dab-watson-vr-new-model.png)
 
-5. Click **Add new model** to create a new model. This will display **Create a new Model** popup.
+5. **「新規モデルの追加」**をクリックして、新規モデルを作成します。 これにより、**「新規モデルの作成」**ポップアップが表示されます。
 
-    ![Watson VR model name](dab-watson-vr-model-name.png)
+    ![Watson VR モデル名](dab-watson-vr-model-name.png)
 
-6. Enter the **Model name** and click **Create**. This will display the classes for that model and a **Negative** class.
+6. **「モデル名」**を入力し、**「作成」**をクリックします。 これにより、そのモデルのクラスおよび**「ネガティブ」**クラスが表示されます。
 
-    ![Watson VR Model Class](dab-watson-vr-model-class.png)
+    ![Watson VR モデルのクラス](dab-watson-vr-model-class.png)
 
-7. Click **Add new class**. This will display a popup to specify a name for the new class.
+7. **「新規クラスの追加」**をクリックします。 これにより、新規クラスの名前を指定するためのポップアップが表示されます。
 
-    ![Watson VR Model Class Name](dab-watson-vr-model-class-name.png)
+    ![Watson VR モデルのクラス名](dab-watson-vr-model-class-name.png)
 
-8. Enter the **Class name** for the new class and click **Create**. This will display the workspace to add your images for training the model.
+8. 新規クラスの**「クラス名」**を入力し、**「作成」**をクリックします。 これにより、モデルをトレーニングするための画像を追加するワークスペースが表示されます。
 
-    ![Watson VR Model Class training](dab-watson-vr-model-class-train.png)
+    ![Watson VR モデルのクラスのトレーニング](dab-watson-vr-model-class-train.png)
 
-9. Add the images to the model either by drag and drop them into the workspace or use Browse to access the images.
+9. 画像をワークスペースにドラッグ・アンド・ドロップするか、「参照 (Browse)」を使用して画像にアクセスして、画像をモデルに追加します。
 
-10. You can go back to your workspace after adding the images and test by clicking **Test Model**.
+10. 画像を追加した後にワークスペースに戻って、**「モデルのテスト (Test Model)」**をクリックしてテストできます。
 
-    ![Watson VR Model Class testing](dab-watson-vr-model-class-train-test.png)
+    ![Watson VR モデルのクラスのテスト](dab-watson-vr-model-class-train-test.png)
 
-11. In the **Try your model** section, add an image and then result is displayed.
+11. **「モデルを試してみてください」**セクションで、画像を追加すると、結果が表示されます。
 

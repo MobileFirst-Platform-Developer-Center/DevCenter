@@ -1,70 +1,70 @@
 ---
 layout: tutorial
-title: Digital App Builder Settings
+title: Digital App Builder 設定
 weight: 16
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-## Digital App Builder Settings
+## Digital App Builder 設定
 {: #dab-app-settings }
 
-Settings helps you to manage the app settings and rectify any errors during the build process. Settings consists of **App details**, **Server**, **Plugins**, **Theme** and **Repair Project** tabs.
+「設定」は、アプリケーションの設定の管理およびビルド・プロセス時におけるエラーの修正に役立ちます。 「設定」は、**「アプリの詳細」**、**「サーバー」**、**「プラグイン」**、**「テーマ」**、および**「プロジェクトの修復」**の各タブで構成されます。
 
-### App details
+### アプリの詳細
 {: #app-details}
 
-App details displays information about your app: **App Icon**, **Name**, **Location** where the files are stored, **Project/Bundle Id** provided at the time of creating the app, **Platforms** (channels) selected, **Service** enabled.
+「アプリの詳細」では、アプリケーションに関する情報 (**「アプリ・アイコン」**、**「名前」**、ファイルが保管される**「ロケーション」**、アプリケーションの作成時に指定された**「プロジェクト/バンドル ID」**、選択された**「プラットフォーム」**(チャネル)、有効になっている**「サービス」**) が表示されます。
 
-![Setting App details](dab-settings.png)
+![「アプリの詳細」の設定](dab-settings.png)
 
-You can change the **App icon** by clicking the icon and uploading a new icon.
+アイコンをクリックし、新しいアイコンをアップロードすることで、**「アプリ・アイコン」**を変更できます。
 
-You can add/remove additional Platforms by checking/unchecking the checkbox near them.
+プラットフォームを追加または削除するには、その近くのチェック・ボックスのチェック・マークを付けるか外します。
 
-Click **Save** to update the changes.
+**「保存」**をクリックして変更を更新します。
 
-### Server
+### サーバー
 {: #server }
 
-The Server info displays the **Server details** you are currently working on. You can edit the information by clicking the **Edit** link. You can add or modify the confidential client authorization.
+サーバーの情報では、現在作業している**「サーバー詳細」**が表示されます。 **「編集」**リンクをクリックして、情報を編集できます。 機密クライアント許可を追加または変更できます。
 
-![Settings server details](dab-settings-server.png)
+![「サーバー詳細」の設定](dab-settings-server.png)
 
-The Server tab also displays **Recent servers**.
+「サーバー」タブでは、**「最近のサーバー」**も表示されます。
 
->**Note**: You can only able to delete a server added earlier at the time of creating an app using Digital App Builder and if not used by any of your app created by Digital App Builder.
+>**注**: Digital App Builder を使用してアプリケーションを作成する時点よりも前に追加され、Digital App Builder によって作成されたアプリケーションによって使用されていないサーバーのみを削除できます。
 
-You can also add new server by clicking **Connect new +** button and provide the details in the **Connect to a new server** popup and click **Connect**.
+**「新規に接続 +」**ボタンをクリックして新規サーバーを追加し、**「新規サーバーへの接続」**ポップアップに詳細を指定し、**「接続」**をクリックすることもできます。
 
-![Settings new server](dab-settings-new-server.png)
+![新規サーバーの設定](dab-settings-new-server.png)
 
-### **Plugins**
+### **プラグイン**
 {: #plugins}
 
-Plugins displays list of plugins available in the Digital App Builder. Following actions can be performed:
+プラグインでは、Digital App Builder で使用可能なプラグインのリストが表示されます。 以下のアクションを実行できます。
 
-![Settings Plugins available](dab-settings-plugins.png)
+![使用可能なプラグインの設定](dab-settings-plugins.png)
 
-* **Install new** - You can install new plugins by clicking this button. This displays the **New plugin** dialog. Enter the **Plugin name**, **Version** (optional), and if it is a **Local plugin**, enable the switch for the same and point to the location and click **Install**.
+* **新規インストール** - このボタンをクリックして、新規プラグインをインストールできます。 これにより、**「新規プラグイン」**ダイアログが表示されます。 **「プラグイン名」**、**「バージョン (Version)」**(オプション) を入力し、**「ローカル・プラグイン (Local plugin)」**の場合は該当するスイッチを有効にしてロケーションを指定し、**「インストール」**をクリックします。
 
-![Settings New Plugins](dab-settings-new-plugins.png)
+![新規プラグインの設定](dab-settings-new-plugins.png)
 
-* From the list of Plugins already installed, you can edit the version and reinstall the plugin or uninstall a plugin by selecting the link for the respective plugin.
+* 既にインストールされているプラグインのリストから、バージョンを編集し、プラグインを再インストールするか、各プラグインのリンクを選択してプラグインをアンインストールできます。
 
 
-### Theme
+### テーマ
 {: #dab-theme}
 
-Customize the look and feel of your app by specifying the theme for your app (Dark or Light). 
+アプリケーションのテーマ (「ダーク (Dark)」または「ライト (Light)」) を指定することで、アプリケーションのルック・アンド・フィールをカスタマイズできます。 
 
-### Repair project
+### プロジェクトの修復
 {: #repair-project}
 
-Repair project tab helps you to fix issues by clicking the respective options.
+「プロジェクトの修復」タブでは、各オプションをクリックして問題を修正できます。
 
-![Settings Repair](dab-settings-repair.png)
+![修復の設定](dab-settings-repair.png)
 
-* **Rebuild dependencies** - If the project is unstable, you can try re-building dependencies.
-* **Rebuild platforms** - If you see any platform related errors in console, try rebuilding the platforms. if you have made any changes to the channels or added additional channels, use this option.
-* **Reset IBM Cloud credentials for Playground server** - You can reset the IBM Cloud Credentials used to login to the Playground Server. Resetting the Credentials cache will also clear out all your apps on the Playground server. **THIS OPERATION CANNOT BE REVERSED.**
+* **依存関係の再ビルド** - プロジェクトが不安定な場合は、依存関係の再ビルドを試行できます。
+* **プラットフォームの再ビルド** - コンソールでプラットフォーム関連のエラーが表示された場合は、プラットフォームの再ビルドを試行してください。 チャネルを変更した場合、またはチャネルを追加した場合は、このオプションを使用します。
+* **プレイグラウンド・サーバー用の IBM Cloud 資格情報のリセット** - プレイグラウンド・サーバーへのログインに使用する IBM Cloud 資格情報をリセットできます。 資格情報キャッシュをリセットすると、プレイグラウンド・サーバー上のアプリケーションもすべて消去されます。 **この操作を元に戻すことはできません。**

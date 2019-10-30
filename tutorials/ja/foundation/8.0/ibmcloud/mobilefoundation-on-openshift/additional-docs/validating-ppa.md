@@ -1,32 +1,32 @@
 ---
 layout: tutorial
 breadcrumb_title: Validating Mobile Foundation archive from PPA
-title: Validating IBM Mobile Foundation archive downloaded from Passport Advantage Archive
+title: パスポート・アドバンテージ・アーカイブからダウンロードした IBM Mobile Foundation アーカイブの検証
 weight: 5
 show_in_nav: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Validating IBM Mobile Foundation archive downloaded from Passport Advantage Archive (Optional)
+### パスポート・アドバンテージ・アーカイブからダウンロードした IBM Mobile Foundation アーカイブの検証 (オプション)
 
-IBM Mobile Foundation package for Red Hat OpenShift Container Platform, which is available in Passport Advantage, is code signed (with Digi Cert) to enforce integrity of the package. A `.sig` (signature file) and a `.pub` (RSA public key) file are shipped to the Passport Advantage along with the IBM MobileFirst Platform Foundation V8.0 .tar.gz file of IBM MobileFirst Platform Server on Red Hat OpenShift Container Platform. Customers can validate the integrity of the package by verifying the signature as below.
+パスポート・アドバンテージで入手できる Red Hat OpenShift Container Platform 用の IBM Mobile Foundation パッケージでは、パッケージの整合性を強化するために (Digi Cert により) コードに署名されています。Red Hat OpenShift Container Platform 上の IBM MobileFirst Platform Server の IBM MobileFirst Platform Foundation V8.0 .tar.gz ファイルとともに、`.sig` (署名ファイル) および `.pub` (RSA 公開鍵) ファイルがパスポート・アドバンテージに公開されています。お客様は、以下のように署名を検証することで、パッケージの整合性を確認できます。
 
-#### Package Information as available in Passport Advantage
+#### パスポート・アドバンテージで入手できるパッケージ情報
 
-**Package**: IBM MobileFirst Platform Foundation V8.0 .tar.gz file of IBM MobileFirst Platform Server on Red Hat OpenShift Container Platform English (Example: eImage Part Number: CC3FDEN)
+**パッケージ**: Red Hat OpenShift Container Platform 上の IBM MobileFirst Platform Server の IBM MobileFirst Platform Foundation V8.0 .tar.gz ファイル (英語)(例: eImage パーツ番号: CC3FDEN)
 
-**Signature File**: Signature file for IBM MobileFirst Platform Foundation V8.0 .tar.gz file of IBM MobileFirst Platform Server on Red Hat OpenShift Container Platform English (Example: eImage Part Number: CC3FEEN)
+**署名ファイル**: Red Hat OpenShift Container Platform 上の IBM MobileFirst Platform Server の IBM MobileFirst Platform Foundation V8.0 .tar.gz ファイルの署名ファイル (英語)(例: eImage パーツ番号: CC3FEEN)
 
-**RSA Public Key**: Public Key file for IBM MobileFirst Platform Foundation V8.0 .tar.gz file of IBM MobileFirst Platform Server on Red Hat OpenShift Container Platform English (eImage Part Number: CC3FFEN)
+**RSA 公開鍵**: Red Hat OpenShift Container Platform 上の IBM MobileFirst Platform Server の IBM MobileFirst Platform Foundation V8.0 .tar.gz ファイルの公開鍵ファイル (英語)(eImage パーツ番号: CC3FFEN)
 
-#### Steps to verify the signature
+#### 署名を検証する手順
 
-* [openssl](https://www.openssl.org), download and install the openssl toolkit.
-* Now verify the IBM Mobile Foundation package using the following command.
+* [openssl](https://www.openssl.org): openssl ツールキットをダウンロードし、インストールします。
+* その後、以下のコマンドを使用して IBM Mobile Foundation パッケージを検証します。
 
   ```bash
   openssl dgst -sha256 -verify <PUBLIC_KEY> -signature <SIGNATURE_FILE> <IBM MOBILE FOUNDATION PACKAGE ARCHIVE>
   ```
-  For example,
+  以下に例を示します。
 
   ```bash
   openssl dgst -sha256 -verify CC3FFEN.pub -signature CC3FEEN.sig CC3FDEN.tar.gz

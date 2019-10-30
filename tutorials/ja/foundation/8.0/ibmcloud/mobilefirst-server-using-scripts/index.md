@@ -1536,7 +1536,7 @@ IBM Cloud からコンテナーを削除する場合、レジストリーから�
 
 ## IBM Cloud からのデータベース・サービス構成の削除
 {: #removing-the-database-service-configuration-from-bluemix }
-{{ site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_server }} に必要な構成およびデータベース・テーブルが作成されます。 このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
+{{ site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_server }} に必要な構成およびデータベース表が作成されます。 このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
 
 IBM Cloud からデータベース・サービス構成を削除するには、IBM Cloud ダッシュボードを使用して、以下の手順を実行します。
 
