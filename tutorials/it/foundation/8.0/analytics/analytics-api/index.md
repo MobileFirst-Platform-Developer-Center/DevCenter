@@ -19,6 +19,7 @@ weight: 1
 * [Enabling/Disabling Client Events](#enablingdisabling-client-event-types)
 * [Custom Events](#custom-events)
 * [Tracking Users](#tracking-users)
+* [Capture & Send In-App User Feedback](#sending-userfeedback-data)
 
 ## Configuring analytics on the client side
 {: #configuring-analytics-on-the-client-side }
@@ -480,4 +481,66 @@ In an Android application, use the following Java API method:
 
 ```java
 WLAnalytics.send();
+```
+
+## Capturing & Sending In-App User Feedback
+{: #sending-userfeedback-data }
+
+Use In-App User Feedback to deepen your application performance analysis. You can enable your application users and testers to provide rich contextual feedback to the app owners. App owners get real-time feedback from its users on the application usage experience which App owners and Developers can further act on. This feature brings in significant agility to application up-keep. Use the following API to switch your application to Interactive Feedback Mode in any action handler in your application, for example, when you handle the click of a button or the selection of a menu item.
+
+> This feature is not supported for Web Applications.
+
+#### JavaScript (Cordova)
+{: #javascript-cordova-sending-userfeedback-data }
+
+First add the following plug-in to include In-App Feedback capability into your Cordova application and ensure that the plugin is successfully added
+```
+cordova plugin add cordova-plugin-mfp-analytics
+```
+
+Now, use the following JavaScript API method in the action handler of your Cordova application.
+
+```javascript
+WL.Analytics.triggerFeedbackMode();
+```
+
+#### JavaScript (Web)
+{: #javascript-web-ssending-userfeedback-data }
+
+**Not Supported**
+
+#### iOS
+{: #ios-sending-userfeedback-data }
+**Swift**
+
+First add the following to your application's podfile.
+
+```
+pod 'IBMMobileFirstPlatformFoundationAnalytics'
+```
+
+Next ensure you update your pod by running the following command at the root of your XCode project.
+```
+pod update
+```
+
+Now call the following API in the action handler of your application.
+
+```swift
+WLAnalytics.sharedInstance().triggerFeedbackMode();
+```
+
+#### Android
+{: #android-sending-userfeedback-data }
+
+First add the following dependency into your application's gradle script.
+
+```
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationanalytics:8.0.+@aar'
+```
+
+Then in your Android application, use the following Java API method in the action handler:
+
+```java
+WLAnalytics.triggerFeedbackMode();
 ```
