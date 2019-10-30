@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 스크립트를 사용하여 IBM Cloud Kubernetes Cluster에 MobileFirst Application Center 설정
-breadcrumb_title: AppCenter on Kubernetes Cluster using scripts
+breadcrumb_title: AppCenter on Kubernetes using scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
@@ -66,21 +66,21 @@ IBM Cloud에 로그인하면 활성 IBM Cloud **영역**의 개요를 제공하�
 
 ## {{ site.data.keys.mf_bm_pkg_name }} 아카이브 다운로드
 {: #download-the-ibm-mfpf-container-8000-archive}
-{{ site.data.keys.mf_app_center }}의 경우 IBM Cloud Containers를 사용하여 Kubernetes Cluster로 설정하려면 나중에 IBM Cloud에 푸시할 이미지를 먼저 작성해야 합니다.<br/>
+IBM Cloud Containers를 사용하여 Kubernetes Cluster로 {{ site.data.keys.mf_app_center }}를 설정하려면 나중에 IBM Cloud에 푸시할 이미지를 먼저 작성해야 합니다.<br/>
 [IBM Fix Central](http://www.ibm.com/support/fixcentral)에서 IBM Containers의 MobileFirst Server에 대한 임시 수정사항을 얻을 수 있습니다.<br/>
 Fix Central에서 최신 임시 수정사항을 다운로드하십시오. Kubernetes 지원은 iFix **8.0.0.0-IF201708220656**에서 사용할 수 있습니다.
 
 아카이브 파일에는 이미지를 빌드하는 데 필요한 파일(**dependencies** 및 **mfpf-libs**)과 Kubernetes에서 {{ site.data.keys.mf_app_center }}를 빌드하고 배치하는 데 필요한 파일(bmx-kubernetes)이 포함되어 있습니다.
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology1" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>클릭하면 사용할 아카이브 파일 컨텐츠와 사용 가능한 환경 특성에 대해 자세히 볼 수 있습니다.</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapsezip-file" aria-expanded="true" aria-controls="collapsezip-file"><b>클릭하면 사용할 아카이브 파일 컨텐츠와 사용 가능한 환경 특성에 대해 자세히 볼 수 있습니다.</b></a>
             </h4>
         </div>
 
-        <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+        <div id="collapsezip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
                 <img src="zip.png" alt="아카이브 파일의 파일 시스템 구조를 표시하는 이미지" style="float:right;width:570px"/>
                 <h4>bmx-kubernetes 폴더</h4>
@@ -107,15 +107,15 @@ Fix Central에서 최신 임시 수정사항을 다운로드하십시오. Kubern
                     <li><b>env</b> 폴더: 서버 초기화에 사용되는 환경 특성(server.env)과 사용자 정의 JVM 옵션(jvm.options)이 들어 있습니다.</li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist">
+                    <div class="panel-group accordion" id="terminology2" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>클릭하면 지원되는 서버 환경 특성의 목록이 표시됩니다.</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapseserver-env" aria-expanded="true" aria-controls="collapseserver-env"><b>클릭하면 지원되는 서버 환경 특성의 목록이 표시됩니다.</b></a>
                                 </h4>
                             </div>
 
-                            <div id="collapse-server-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+                            <div id="collapseserver-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
@@ -156,7 +156,7 @@ Fix Central에서 최신 임시 수정사항을 다운로드하십시오. Kubern
                                     </table>
 
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>섹션 닫기</b></a>
+                                    <a class="preventScroll" data-toggle="collapse" role="button" data-parent="#server-env" data-target="#collapseserver-env" aria-expanded="true" aria-controls="collapseserver-env"><b>섹션 닫기</b></a>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +165,7 @@ Fix Central에서 최신 임시 수정사항을 다운로드하십시오. Kubern
                     <li><b>mfpf-libs folder</b> 폴더: {{ site.data.keys.product_adj }} 제품 컴포넌트 라이브러리와 CLI를 포함합니다.</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>섹션 닫기</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapsezip-file" aria-expanded="true" aria-controls="collapsezip-file"><b>섹션 닫기</b></a>
             </div>
         </div>
     </div>
@@ -192,13 +192,13 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">구성 파일 사용</a>
+                <a class="preventScroll"  role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapsestep-foundation-1" aria-expanded="true" aria-controls="collapsestep-foundation-1">구성 파일 사용</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapsestep-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-                <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일의 인수 값을 채우십시오.<br/>
+                <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다.  다음 파일의 인수 값을 채우십시오.<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
@@ -212,7 +212,7 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
                     <li><b>IBM_CLOUD_SPACE - </b>IBM Cloud 영역(앞서 설명함)입니다.</li>
                 </ul><br/>
                 <h4>prepareappcenterdbs.properties</h4>
-                {{ site.data.keys.mf_app_center }}에는 외부 <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 on Cloud</i></a> 인스턴스가 필요합니다.<br/>
+                {{ site.data.keys.mf_app_center }}를 사용하려면 외부 <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>DB2 on Cloud</i></a> 인스턴스가 필요합니다.<br/>
                 <blockquote><b>참고:</b> 사용자 고유의 DB2 데이터베이스도 사용할 수 있습니다. 데이터베이스에 연결하도록 IBM Cloud Kubernetes Cluster를 구성해야 합니다.</blockquote>
                 DB2 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오.
                 <ul>
@@ -235,7 +235,7 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
                 <h4>prepareappcenter.properties</h4>
                 <ul>
                   <li><b>SERVER_IMAGE_TAG</b> - 이미지에 대한 태그입니다. <em>registry-url/namespace/image:tag</em> 양식이어야 합니다.</li>
-                  <blockquote>예: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>아직 Docker 레지스트리 네임스페이스를 작성하지 않은 경우 해당 명령 중 하나를 사용하여 레지스트리 네임스페이스를 작성하십시오.<br/>
+                  <blockquote>예: <em>registry.ng.bluemix.net/myuniquenamespace/myappcenter:v1</em><br/>아직 Docker 레지스트리 네임스페이스를 작성하지 않은 경우 다음 명령 중 하나를 사용하여 레지스트리 네임스페이스를 작성하십시오.<br/>
                   <ul><li><code>bx cr namespace-add <em>myuniquenamespace</em></code></li><li><code>bx cr namespace-list</code></li></ul>
                   </blockquote>
                 </ul>
@@ -246,11 +246,11 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">스크립트 실행</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapsestep-foundation-2" aria-expanded="true" aria-controls="collapsestep-foundation-2">스크립트 실행</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapsestep-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 선택해야 하는 명령행 인수의 목록도 사용 가능합니다.</p>
 
@@ -285,7 +285,7 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
 
                 </li>
                 <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} 이미지 준비</b><br />
-                    {{ site.data.keys.mf_app_center }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용 가능한 모든 이미지를 보려면 <code>bx cr image-list</code>를 실행하십시오.<br/>
+                    {{ site.data.keys.mf_app_center }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>bx cr image-list</code>를 실행하십시오.<br/>
                     목록은 이미지 이름, 작성 날짜, ID를 포함합니다.<br/>
                     <b>대화식 모드</b>
 {% highlight bash %}
@@ -298,16 +298,16 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
                 </li>
                 <li>IBM Cloud Container Service를 사용하여 Kubernetes 클러스터의 Docker 컨테이너에 {{ site.data.keys.mf_app_center }}를 배치하십시오.
                 <ol>
-                  <li>터미널 컨텍스트를 클러스터로 설정하십시오.<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
-                  클러스터 이름을 알려면 다음 명령을 실행하십시오. <br/><code>bx cs clusters</code><br/>
-                  출력에서 구성 파일에 대한 경로가 환경 변수를 설정하기 위한 명령으로 표시됩니다. 예를 들어, 다음과 같습니다.<br/>
+                  <li>터미널 컨텍스트를 클러스터에 설정하십시오.<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
+                  클러스터 이름을 확인하려면 다음 명령을 실행하십시오. <br/><code>bx cs clusters</code><br/>
+                  출력에서 구성 파일에 대한 경로가 환경 변수를 설정하는 명령으로 표시됩니다. 예를 들면, 다음과 같습니다.<br/>
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
-                  <em>my-cluster</em>를 클러스터 이름으로 대체한 후에 위의 명령을 복사하고 붙여넣어 터미널의 환경 변수를 설정하고 <b>Enter</b>를 누르십시오.
+                  <em>my-cluster</em>를 클러스터 이름으로 대체한 후 위의 명령을 복사하고 붙여넣어 터미널에서 환경 변수를 설정하고 <b>Enter</b>를 누르십시오.
                   </li>
                   <li><b>수신 도메인</b>을 가져오려면 다음 명령을 실행하십시오.<br/>
                    <code>bx cs cluster-get <em>my-cluster</em></code><br/>
                    수신 도메인을 기록해 두십시오. TLS를 구성해야 하는 경우 <b>수신 시크릿</b>을 기록해 두십시오.</li>
-                  <li>Kubernetes 배치를 작성하십시오.<br/>yaml 파일 <b>args/mfp-deployment-appcenter.yaml</b>을 편집하고 세부사항을 채우십시오. <em>kubectl</em> 명령을 실행하기 전에 모든 변수를 해당 값으로 대체해야 합니다.<br/>
+                  <li>Kubernetes 배치를 작성하십시오.<br/>yaml 파일 <b>args/mfp-deployment-appcenter.yaml</b>을 편집하고 세부사항을 기입하십시오. <em>kubectl</em> 명령을 실행하기 전에 모든 변수가 해당 값으로 대체되어야 합니다.<br/>
                   <b>./args/mfp-deployment-appcenter.yaml</b>에는 다음 항목에 대한 배치가 포함됩니다.
                   <ul>
                     <li>{{ site.data.keys.mf_app_center }}의 Kubernetes 배치: 하나의 인스턴스(복제본), 1024MB 메모리 및 1Core CPU로 구성.</li>
@@ -384,8 +384,8 @@ IBM Cloud Kubernetes 클러스터에서 배치된 인스턴스를 제거하려�
 
 IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 명령을 실행하십시오.
 ```bash
-bx cr image-list(레지스트리의 이미지 나열)
-bx cr image-rm image-name(레지스트리에서 이미지 제거)
+bx cr image-list (Lists the images in the registry)
+bx cr image-rm image-name (Removes the image from the registry)
 ```
 
 ## IBM Cloud에서 데이터베이스 서비스 구성 제거

@@ -290,7 +290,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 I
      * 4 - 30자입니다. 명령행에서 컨테이너를 관리하려는 경우 빨리 입력할 수 있는 짧은 네임스페이스를 선호할 수 있습니다.
      * IBM Cloud 레지스트리에서 고유해야 합니다.
 
-    네임스페이스를 설정하려면 `cf ic namespace set <new_name>` 명령을 실행하십시오.  
+    네임스페이스를 설정하려면 다음 명령을 실행하십시오. `cf ic namespace set <new_name>`.  
     설정한 네임스페이스를 가져오려면 `cf ic namespace get` 명령을 실행하십시오.
 
 > IC 명령에 대해 자세히 알아보려면 `ic help` 명령을 사용하십시오.
@@ -321,7 +321,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 I
 
         <div id="collapseStep1appcenter" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일에서 인수 값을 채우십시오.<br/>
+            <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일의 인수 값을 채우십시오.<br/>
               <h4>initenv.properties</h4>
               <ul>
                   <li><b>IBM_CLOUD_USER - </b>IBM Cloud 사용자 이름(이메일)입니다.</li>
@@ -430,7 +430,7 @@ initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOU
                         </div>
                     </li>
                     <li><b>prepareappcenterdbs.sh - {{ site.data.keys.mf_app_center }} 데이터베이스 준비</b><br/>
-                    <b>prepareappcenterdbs.sh</b> 스크립트는 dashDB 데이터베이스 서비스로 {{ site.data.keys.mf_app_center }} 구성에 사용됩니다. 1단계에서 로그인한 조직과 영역에서 dashDB 서비스의 서비스 인스턴스를 사용할 수 있어야 합니다.
+                    <b>prepareappcenterdbs.sh</b> 스크립트는 dashDB 데이터베이스 서비스를 사용해서 {{ site.data.keys.mf_app_center }}를 구성하는 데 사용됩니다. 1단계에서 로그인한 조직과 영역에서 dashDB 서비스의 서비스 인스턴스를 사용할 수 있어야 합니다.
                     다음을 실행하십시오.
 
 {% highlight bash %}
@@ -524,7 +524,7 @@ prepareappcenter.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                         </div>   
                     </li>
                     <li><b>startappcenter.sh - IBM Container에서 이미지 실행</b><br/>
-                    <b>startappcenter.sh</b> 스크립트는 IBM Container에서 {{ site.data.keys.mf_app_center }} 이미지를 실행하기 위해 사용됩니다. 또한 <b>SERVER_IP</b> 특성에서 구성한 공용 IP에 이미지를 바인드합니다.
+                    <b>startappcenter.sh</b> 스크립트는 IBM Container에서 {{ site.data.keys.mf_app_center }} 이미지를 실행하는 데 사용됩니다. 또한 <b>SERVER_IP</b> 특성에서 구성한 공용 IP에 이미지를 바인드합니다.
 
                         다음을 실행하십시오.
 {% highlight bash %}
@@ -722,7 +722,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 
         <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-            <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일에서 인수 값을 채우십시오.<br/>
+            <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일의 인수 값을 채우십시오.<br/>
             <b>참고:</b> 필수 인수만 포함합니다. 추가 인수에 대해 자세히 알아보려면 특성 파일에 있는 문서를 참조하십시오.
               <h4>initenv.properties</h4>
               <ul>
@@ -739,10 +739,10 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
               <ul>
                   <li><b>ANALYTICS_IMAGE_TAG - </b><em>prepareserver.sh</em>의 경우와 동일합니다.</li>
                   <li><b>ANALYTICS_CONTAINER_NAME - </b>IBM Cloud Container의 이름입니다.</li>
-                  <li><b>ANALYTICS_IP - </b>IBM Cloud Container를 바인드해야 하는 IP 주소입니다.<br/>
+                  <li><b>ANALYTICS_IP - </b>IBM Cloud Container를 바인드할 IP 주소입니다.<br/>
                   IP 주소를 지정하려면 <code>cf ic ip request</code>를 실행하십시오.<br/>
-                  IP 주소는 영역의 여러 컨테이너에서 재사용할 수 있습니다.<br/>
-                                    IP 주소를 하나 이미 지정한 경우에는 <code>cf ic ip list</code>를 실행할 수 있습니다.</li>
+                  영역의 여러 컨테이너에서 IP 주소를 재사용할 수 있습니다.<br/>
+                  IP 주소를 하나 이미 지정한 경우에는 <code>cf ic ip list</code>를 실행할 수 있습니다.</li>
               </ul>
               <h4>startanalyticsgroup.properties</h4>
               <ul>
@@ -827,7 +827,7 @@ initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOU
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
-                        IBM Cloud 저장소에서 사용 가능한 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오.<br/>
+                        IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오.<br/>
                         목록은 이미지 이름, 작성 날짜, ID를 포함합니다.
 
                         <div class="panel-group accordion" id="terminology-analytics-prepareanalytics" role="tablist">
@@ -1077,7 +1077,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel">
             <div class="panel-body">
-                <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일의 인수 값을 채우십시오.<br/>
+                <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다.  다음 파일의 인수 값을 채우십시오.<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
@@ -1087,9 +1087,9 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                     <li><b>IBM_CLOUD_SPACE - </b>IBM Cloud 영역(앞서 설명함)입니다.</li>
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
-                {{ site.data.keys.mf_bm_short }} 서비스에는 외부 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional 데이터베이스</i> 인스턴스</a>(<i>Enterprise Transactional 2.8.500</i> 또는 <i>Enterprise Transactional 12.128.1400</i>)가 필요합니다.<br/>
+                 {{ site.data.keys.mf_bm_short }} 서비스에는 외부 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional 데이터베이스</i> 인스턴스</a>(<i>Enterprise Transactional 2.8.500</i> 또는 <i>Enterprise Transactional 12.128.1400</i>)가 필요합니다.<br/>
                 <b>참고:</b> dashDB Enterprise Transactional 플랜의 배치는 즉각적이지 않을 수 있습니다. 서비스 배치 전에 영업 팀에서 연락을 드릴 수 있습니다.<br/><br/>
-                                dashDB 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오.
+                dashDB 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오.
                 <ul>
                     <li><b>ADMIN_DB_SRV_NAME - </b>관리 데이터를 저장하는 데 사용할 dashDB 서비스 인스턴스 이름입니다.</li>
                     <li><b>ADMIN_SCHEMA_NAME - </b>관리 데이터의 스키마 이름입니다. 기본값은 MFPDATA입니다.</li>
@@ -1105,10 +1105,10 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                 <ul>
                     <li><b>SERVER_IMAGE_TAG - </b><em>prepareserver.sh</em>의 경우와 동일합니다.</li>
                     <li><b>SERVER_CONTAINER_NAME - </b>IBM Cloud Container의 이름입니다.</li>
-                    <li><b>SERVER_IP - </b>IBM Cloud Container를 바인드해야 하는 IP 주소입니다.<br/>
-                    IP 주소를 지정하려면 <code>cf ic ip request</code>를 실행하십시오.<br/>
-                    IP 주소는 영역의 여러 컨테이너에서 재사용할 수 있습니다.<br/>
-                                      IP 주소를 하나 이미 지정한 경우에는 <code>cf ic ip list</code>를 실행할 수 있습니다.</li>
+                    <li><b>SERVER_IP - </b>IBM Cloud Container를 바인드할 IP 주소입니다.<br/>
+                  IP 주소를 지정하려면 <code>cf ic ip request</code>를 실행하십시오.<br/>
+                  영역의 여러 컨테이너에서 IP 주소를 재사용할 수 있습니다.<br/>
+                  IP 주소를 하나 이미 지정한 경우에는 <code>cf ic ip list</code>를 실행할 수 있습니다.</li>
                     <li><b>MFPF_PROPERTIES - </b>쉼표로 구분된(<b>공백 없음</b>) {{ site.data.keys.mf_server }} JNDI 특성입니다. 여기서 분석 관련 특성을 정의합니다. <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
                 <h4>startservergroup.properties</h4>
@@ -1255,7 +1255,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                 </li>
                 <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} 이미지 준비</b><br />
-                    {{ site.data.keys.mf_server }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareserver.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용 가능한 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오.<br/>
+                    {{ site.data.keys.mf_server }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareserver.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>cf ic images</code>를 실행하십시오.<br/>
                     목록은 이미지 이름, 작성 날짜, ID를 포함합니다.<br/>
 
 {% highlight bash %}
@@ -1453,7 +1453,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                             <tr>
                                                 <td>선택사항. [-e|--env] MFPF_PROPERTIES	</td>
                                                 <td>{{ site.data.keys.product_adj }} 특성을 쉼표로 구분된 키:값 쌍으로 지정합니다. 예: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
-                                                <b>참고:</b> 이 스크립트를 사용하여 특성을 지정하는 경우 usr/config 폴더의 구성 파일에서 동일한 특성이 설정되지 않았는지 확인하십시오.</td>
+                                                <b>참고:</b> 이 스크립트를 사용하여 특성을 지정하는 경우 동일한 특성이 usr/config 폴더의 구성 파일에 설정되지 않았는지 확인하십시오.</td>
                                             </tr>
                                             <tr>
                                                 <td>선택사항. [-m|--memory] SERVER_MEM	</td>
