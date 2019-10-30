@@ -229,14 +229,16 @@ unterstützt. Welche Tomcat-Version Java 7 unterstützt erfahren Sie unter
 [Apache Tomcat
 Versions](http://tomcat.apache.org/whichversion.html).
 
-1. Fügen Sie die Dateien **analytics-service.war** und **analytics-ui.war** zum Tomcat-Ordner **webapps** hinzu.
-2. Entfernen Sie in der Datei **conf/server.xml** das Kommentarzeichen vor dem folgenden Abschnitt, der in einem neu heruntergeladenen Tomcat-Archiv vorhanden, aber auf Kommentar gesetzt ist.
+1. Fügen Sie die Dateien **analytics-service.war** und **analytics-ui.war** zum Tomcat-Ordner **webapps**
+hinzu. 
+2. Entfernen Sie in der Datei **conf/server.xml** das Kommentarzeichen vor dem folgenden Abschnitt, der in einem neu heruntergeladenen Tomcat-Archiv vorhanden, aber auf
+Kommentar gesetzt ist. 
 
    ```xml
    <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
    ```
 
-3. Deklarieren Sie die beiden WAR-Dateien in der Datei **conf/server.xml** und definieren Sie eine Benutzerregistry.
+3. Deklarieren Sie die beiden WAR-Dateien in der Datei **conf/server.xml** und definieren Sie eine Benutzerregistry. 
 
    ```xml
    <Context docBase ="analytics-service" path ="/analytics-service"></Context>
@@ -251,7 +253,7 @@ Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
 
 4. Fügen Sie die folgenden Abschnitte zur Datei **conf/tomcat-users.xml** hinzu, um ein
 **MemoryRealm** zu konfigurieren.
-    * Fügen Sie die Sicherheitsrollen hinzu.
+    * Fügen Sie die Sicherheitsrollen hinzu. 
 
       ```xml
       <role rolename="analytics_administrator"/>
@@ -260,7 +262,7 @@ Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
       <role rolename="analytics_developer"/>
       <role rolename="analytics_business"/>
       ```
-    * Fügen Sie ein paar Benutzer mit den gewünschten Rollen hinzu.
+    * Fügen Sie ein paar Benutzer mit den gewünschten Rollen hinzu. 
 
       ```xml
       <user name="admin" password="admin" roles="analytics_administrator"/>

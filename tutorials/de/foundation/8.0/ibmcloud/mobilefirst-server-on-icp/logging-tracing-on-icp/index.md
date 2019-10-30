@@ -69,5 +69,5 @@ In der folgenden Tabelle sind die von dem angepassten Script verwendeten Paramet
 |Option |Beschreibung |Bemerkungen |
 |--------|-------------|---------|
 |Helm-Releasename |Releasename der jeweiligen Helm-Chart-Installation|**Obligatorisch** |
-|Ausgabeverzeichnis |Ausgabeverzeichnis, in das die erfassten Protokolle gestellt werden sollen | **Optional**<br/>Standardeinstellung: Unterverzeichnis **mfp-icp-logs** unter dem aktuellen Arbeitsverzeichnis |
-|Namespace |Namespace, in dem das jeweilige Helm-Chart installiert ist | **Optional**<br/>Standardeinstellung: **default** |
+|Ausgabeverzeichnis |Ausgabeverzeichnis, in das die erfassten Protokolle gestellt werden sollen |**Optional**<br/>Standardeinstellung: Unterverzeichnis **mfp-icp-logs** unter dem aktuellen Arbeitsverzeichnis |
+|Namespace |Namespace, in dem das jeweilige Helm-Chart installiert ist |**Optional**<br/>Standardeinstellung: **default** |

@@ -104,7 +104,7 @@ Dies hat viele Benutzer dazu bewogen, die **coreThreads** auf einen hohen Wert z
 Die Elasticsearch-Optimierung kann in einer separaten YAML-Datei (z. B. mit dem Namen `elasticsearchconfig.yml`) ausgeführt werden. Der Pfad zu dieser Datei kann in der Analytics-Server-Konfiguration (mit den JNDI-Eigenschaften) konfiguriert werden.
 
 **Eigenschaftsname:** *analytics/settingspath*<br/>
-**Wert:** *\<path_to_the_ES_config_yml\>*
+**Wert:** *\<Pfad_zu_ES-YML-Konfigurationsdatei\>*
 
 Wenden Sie die Elasticsearch-Optimierungsparameter an, indem Sie die Werte zu einer `.yml`-Datei hinzufügen und mit dem JNDI-Eintrag auf diese zugreifen.
 
@@ -167,10 +167,10 @@ Für eine Cordova-App auf der iOS-Plattform muss beispielsweise Folgendes zur Da
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
 [[WLAnalytics sharedInstance] send];
 ```
-### 2. Anzeige angepasster Daten in der Analytics Console
+### 2. Anzeige kundenspezifischer Daten in der Analytics Console
 {: #view-custom-data-console }
 
-Für ein schnelles Auffinden der angepassten, an Analytics Server gesendeten Daten mithilfe der Analytics-Client-SDK-APIs können Sie den folgenden Schritt ausführen. 
+Für ein schnelles Auffinden der kundenspezifischen und an Analytics Server gesendeten Daten mithilfe der Analytics-Client-SDK-APIs können Sie den folgenden Schritt ausführen. 
 
 Navigieren Sie zu **Analytics Console > Dashboard > Kundenspezifische Diagramme > Kundenspezifisches Diagramm erstellen**.
 

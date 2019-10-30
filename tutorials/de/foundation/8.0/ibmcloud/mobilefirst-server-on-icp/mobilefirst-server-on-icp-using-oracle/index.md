@@ -40,8 +40,8 @@ Zum Docker-Image für Mobile Foundation Server gehören bestimmte Artefakte, die
 2.	Entpacken Sie den Anhang (`mfp-icp-oracle.zip`), um `Dockerfile` und `usr-mfpf-server` (Verzeichnisstruktur und Beispiel für eine `Dockerfile`) zu finden.
 3.	Modifizieren Sie die `Dockerfile` so, dass die korrigierte Image-Version für die Erweiterung des Docker-Image verwendet wird.<br/>
      *Beispiel:*<br/>
-      `FROM mycluster.icp:8500/default/mfpf-server:<a.b.c.d>`<br/>
-       Hier ist *a.b.c.d* die in der Image-Registry verfügbare Image-Version.
+      `In mycluster.icp:8500/default/mfpf-server:<a.b.c.d>`<br/>
+       ist *a.b.c.d* die in der Image-Registry verfügbare Version.
 4.	Folgen Sie den Anweisungen im Blog, um das Docker-Image anzupassen und die Mobile-Foundation-Server-Pods zu erstellen.
 5.	Wenn Sie das Docker-Image mit den obigen Schritten erweitert haben, können Sie das Helm-Chart für Mobile Foundation Server in der ICP-Konsole implementieren. Stellen Sie sicher, dass das neue Image bereitgestellt wurde.
 

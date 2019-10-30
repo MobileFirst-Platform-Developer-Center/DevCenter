@@ -75,12 +75,12 @@ Führen Sie die nachstehenden Schritte aus, um das Passport-Advantage-Archiv in 
 
       Sie können `--clustername` ignorieren, wenn Sie den vorherigen Schritt ausgeführt und den Clusterendpunkt zum Standard für `cloudctl` gemacht haben.
 
-  3. Synchronisieren Sie nach dem Laden des Passport-Advantage-Archivs die Repositorys, um sicherzustellen, dass die Helm-Charts im **Katalog** aufgelistet werden. Diesen Schritt können Sie in der Managementkonsole von {{ site.data.keys.prod_icp }} ausführen.<br/>
+  3. Synchronisieren Sie nach dem Laden des Passport-Advantage-Archivs die Repositorys, um sicherzustellen, dass die Helm-Charts im **Katalog** aufgelistet werden. Diesen Schritt können Sie in der Managementkonsole von {{ site.data.keys.prod_icp }} ausführen. <br/>
      * Wählen Sie **Admin > Repositories** aus.
      * Klicken Sie auf **Synch Repositories**.
 
-  4.  Sie können die Docker-Images und Helm-Charts in der Managementkonsole von {{ site.data.keys.prod_icp }} anzeigen.<br/>
-      Gehen Sie zum Anzeigen von Docker-Images wie folgt vor:
+  4.  Sie können die Docker-Images und Helm-Charts in der Managementkonsole von {{ site.data.keys.prod_icp }} anzeigen. <br/>
+      Gehen Sie zum Anzeigen von Docker-Images wie folgt vor: 
       * Wählen Sie **Platform > Images** aus.
       * Helm-Charts werden im Katalog (**Catalog**) angezeigt.
 
@@ -106,8 +106,8 @@ In der folgenden Tabelle sind die im {{ site.data.keys.mf_app_center }} in {{ si
 |  |appCenterDB2Schema |Zu erstellendes DB2-Schema für das {{ site.data.keys.mf_app_center_short }} |  |
 |  |appCenterDB2ConnectionIsSSL |DB2-Verbindungstyp |Geben Sie an, ob Ihre Datenbankverbindung über **http** oder **https** erfolgen muss. Der Standardwert ist **false** (http). Stellen Sie sicher, dass der DB2-Port für denselben Verbindungsmodus konfiguriert ist. |
 |keystores |keystoresSecretName |Unter [Helm-Charts für die IBM {{ site.data.keys.product }} installieren und konfigurieren](../#configure-install-mf-helmcharts) sind die Schritte für die Erstellung des geheimen Schlüssels mit den Keystores und den zugehörigen Kennwörtern beschrieben. |  |
-|resources |limits.cpu |Maximal zulässige CPU-Kapazität | Standardeinstellung: **1000m**<br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
-|  |limits.memory |Maximal zulässige Speicherkapazität | Standardeinstellung: **1024Mi**<br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|resources |limits.cpu |Maximal zulässige CPU-Kapazität |Standardeinstellung: **1000m** <br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
+|  |limits.memory |Maximal zulässige Speicherkapazität |Standardeinstellung: **1024Mi** <br/>Weitere Informationen finden Sie [hier](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 |resources.requests |requests.cpu |Beschreibt die erforderliche CPU-Mindestkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder ein anderweitig für die Implementierung definierter Wert. |Standardeinstellung: **1000m** |
 |  |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Wenn keine Angabe gemacht wird, wird standardmäßig *limits* verwendet (falls angegeben) oder der für die Implementierung definierte Wert. |Standardeinstellung: **1024Mi** |
 

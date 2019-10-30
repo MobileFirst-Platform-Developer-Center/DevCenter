@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: MobileFirst Server mit Scripts in einem IBM Cloud-Kubernetes-Cluster einrichten
-breadcrumb_title: Foundation on Kubernetes Cluster using scripts
+breadcrumb_title: Foundation on Kubernetes using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
@@ -66,7 +66,7 @@ Informationen zum [Einrichten eines Kubernetes-Clusters in IBM Cloud](https://co
 
 ## Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen
 {: #download-the-ibm-mfpf-container-8000-archive}
-Wenn Sie die {{ site.data.keys.mf_bm_short }} als Kubernetes-Cluster mit IBM Cloud-Containern einrichten möchten, müssen Sie zunächst ein Image erstellen, das später per Push-Operation in IBM Cloud übertragen wird.<br/>
+Wenn Sie die {{ site.data.keys.mf_bm_short }} als Kubernetes-Cluster mit IBM Cloud-Containern einrichten möchten, müssen Sie zunächst ein Image erstellen, das später per Push-Operation in IBM Cloud übertragen wird. <br/>
 Vorläufige Fixes für {{ site.data.keys.mf_server }} in IBM Containern können über [IBM Fix Central](http://www.ibm.com/support/fixcentral) abgerufen werden.<br/>
 Laden Sie den letzten vorläufigen Fix von Fix Central herunter. Ab iFix **8.0.0.0-IF201707051849** ist Kubernetes-Unterstützung verfügbar.
 
@@ -277,7 +277,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
                     <li><b>IBM_CLOUD_SPACE - </b>Ihr IBM Cloud-Bereich (wie oben erläutert)</li>
                 </ul><br/>
                 <h4>prepareserverdbs.properties</h4>
-                Der {{ site.data.keys.mf_bm_short }} Service erfordert eine externe Instanz von <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>Db2 on Cloud</i></a>.<br/>
+                Der {{ site.data.keys.mf_bm_short }} Service erfordert eine externe Instanz von <a href="https://console.bluemix.net/catalog/services/db2-on-cloud/" target="\_blank"><i>Db2 on Cloud</i></a>. <br/>
                 <blockquote><b>Hinweis:</b> Sie können auch Ihre eigene Db2-Datenbank verwenden. Der IBM Cloud-Kubernetes-Cluster muss für eine Verbindung zu der Datenbank konfiguriert werden. </blockquote>
                 Wenn Sie Ihre Db2-Instanz eingerichtet haben, geben Sie die folgenden erforderlichen Argumente an:
                 <ul>
@@ -305,7 +305,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
                 <ul>
                   <li><b>SERVER_IMAGE_TAG</b> - Ein Tag für das Image. Der Tag sollte das Format <em>registry-url/namespace/image:tag</em> haben.</li>
                   <li><b>ANALYTICS_IMAGE_TAG</b> - Ein Tag für das Image. Der Tag sollte das Format <em>registry-url/namespace/image:tag</em> haben.</li>
-                  <blockquote>Beispiel: <em>registry.ng.bluemix.net/myuniquenamespace/mymfpserver:v1</em><br/>Wenn Sie noch keinen Docker-Registry-Namespace erstellt haben, erstellen Sie ihn mit einem der folgenden Befehle:<br/>
+                  <blockquote>Beispiel: <em>registry.ng.bluemix.net/myuniquenamespace/mymfpserver:v1</em><br/>Wenn Sie noch keinen Docker-Registry-Namespace erstellt haben, erstellen Sie ihn mit einem der folgenden Befehle: <br/>
                   <ul><li><code>bx cr namespace-add <em>myuniquenamespace</em></code></li><li><code>bx cr namespace-list</code></li></ul>
                   </blockquote>
                 </ul>
@@ -355,7 +355,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
 
 </li>
                 <li><b>prepareserver.sh - Erstellung eines MobileFirst-Server-Image</b><br />
-                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image und ein MobileFirst-Analytics-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>bx cr image-list</code> aus.<br/>
+                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image und ein MobileFirst-Analytics-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>bx cr image-list</code> aus. <br/>
                     Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/>
                     <b>Interaktiver Modus</b>
 {% highlight bash %}
@@ -368,20 +368,20 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
                 </li>
                 <li>Implementieren Sie {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }} in Docker-Containern eines Kubernetes-Clusters mit dem Container-Service von IBM Cloud.
                 <ol>
-                  <li>Setzen Sie Ihren Terminalkontext auf Ihren Cluster:<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
-                  Wenn Sie Ihren Clusternamen nicht kennen, führen Sie den folgenden Befehl aus:<br/><code>bx cs clusters</code><br/>
-                  In der Ausgabe wird der Pfad zu Ihrer Konfigurationsdatei als ein Befehl zum Setzen einer Umgebungsvariable angezeigt. Beispiel:<br/>
+                  <li>Legen Sie Ihren Cluster als Terminalkontext fest: <br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
+                  Führen Sie den folgenden Befehl aus, um Ihren Clusternamen zu erfahren: <br/><code>bx cs clusters</code><br/>
+                  In der Ausgabe wird der Pfad zu Ihrer Konfigurationsdatei als Befehl zum Definieren einer Umgebungsvariablen angezeigt. Beispiel: <br/>
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
-                  Kopieren Sie den obigen Befehl, nachdem Sie <em>my-cluster</em> durch Ihren Clusternamen ersetzt haben, um die Umgebungsvariable Ihres Terminals zu setzen. Drücken Sie dann die Eingabetaste.
+                  Kopieren Sie den obigen Befehl. Ersetzen Sie <em>my-cluster</em> durch Ihren Clusternamen und fügen Sie den Befehl dann ein, um die Umgebungsvariable für Ihr Terminal festzulegen. Drücken Sie abschließend die <b>Eingabetaste</b>.
                   </li>
                   <li><b>[Mandatory for {{ site.data.keys.mf_analytics }}]: </b> Erstellen Sie ein <b>Persistent Volume Claim</b> (eine Anforderung für einen persistenten Datenträger) zum persistenten Speichern von Analysedaten. Dieser Schritt muss nur einmal ausgeführt werden. Falls Sie bereits ein <b>Persistent Volume Claim</b> (Anforderung für einen persistenten Datenträger) erstellt hatten, können Sie diese Anforderung wiederverwenden. Bearbeiten Sie die <em>yaml</em>-Datei <b>args/mfpf-persistent-volume-claim.yaml</b> und führen Sie den Befehl aus.
-                  Alle Variablen müssen vor Ausführung des Befehls <em>kubectl</em> durch die entsprechenden Werte ersetzt werden.<br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
+                  Alle Variablen müssen vor Ausführung des folgenden Befehls <em>kubectl</em> durch die entsprechenden Werte ersetzt werden. <br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
                   Notieren Sie den Namen des <b>Persistent Volume Claim</b>. Sie müssen ihn in einem nachfolgenden Schritt angeben.
                   </li>
-                  <li>Führen Sie den folgenden Befehl aus, um Ihre <b>Ingress Domain</b> (Zugangsdomäne) abzurufen:<br/>
+                  <li>Führen Sie den folgenden Befehl aus, um Ihre <b>Ingress Domain</b> (Zugangsdomäne) abzurufen: <br/>
                    <code>bx cs cluster-get <em>my-cluster</em></code><br/>
                    Notieren Sie Ihre Zugangsdomäne. Wenn Sie TLS konfigurieren müssen, notieren Sie den geheimen Zugangsschlüssel (<b>Ingress Secret</b>).</li>
-                  <li>Erstellen Sie die Kubernetes-Implementierungen.<br/>Bearbeiten Sie die yaml-Datei <b>args/mfpf-deployment-all.yaml</b>. Tragen Sie alle Details ein. Alle Variablen müssen vor Ausführung des Befehls <em>kubectl</em> durch die entsprechenden Werte ersetzt werden.<br/>
+                  <li>Erstellen Sie die Kubernetes-Implementierungen. <br/>Bearbeiten Sie die yaml-Datei <b>args/mfpf-deployment-all.yaml</b>. Tragen Sie alle Details ein. Alle Variablen müssen vor Ausführung des Befehls <em>kubectl</em> durch die entsprechenden Werte ersetzt werden. <br/>
                   <b>./args/mfpf-deployment-all.yaml</b> enthält die Implementierung für Folgendes:
                   <ul>
                     <li>Kubernetes-Implementierung für {{ site.data.keys.mf_server }}, bestehend aus 3 Instanzen (Replikaten), mit einem Hauptspeicher von 1024 MB und einer CPU mit einem Kern </li>
@@ -391,19 +391,19 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
                     <li>Zugang für das gesamte Setup mit allen REST-Endpunkten für {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }}</li>
                     <li>Konfigurationsübersicht (configMap), um die Umgebungsvariablen in den Instanzen von {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }} verfügbar zu machen</li>
                   </ul>
-                  In der YAML-Datei müssen folgende Werte bearbeitet werden:<br/>
+                  In der YAML-Datei müssen folgende Werte bearbeitet werden: <br/>
                     <ol><li>Verschiedene Vorkommen von <em>my-cluster.us-south.containers.mybluemix.net</em> mit der vom obigen Befehl <code>bx cs cluster-get</code> ausgegebenen Zugangsdomäne (<b>Ingress Domain</b>)</li>
                     <li><em>registry.ng.bluemix.net/repository/mfpfanalytics:latest</em> und <em>registry.ng.bluemix.net/repository/mfpfserver:latest</em> - Verwenden Sie zum Hochladen der Images die gleichen Namen wie in prepareserver.sh. </li>
-                    <li><b>claimName</b>: <em>mfppvc</em> - Verwenden Sie für die Anforderung für einen persistenten Datenträger (Persistent Volume Claim) den Namen, den Sie bei der Erstellung der Anforderung angegeben haben.<br/></li>
+                    <li><b>claimName</b>: <em>mfppvc</em> - Verwenden Sie für die Anforderung für einen persistenten Datenträger (Persistent Volume Claim) den Namen, den Sie bei der Erstellung der Anforderung angegeben haben. <br/></li>
                     </ol>
-                    Führen Sie den folgenden Befehl aus:<br/>
+                    Führen Sie den folgenden Befehl aus: <br/>
                     <code>kubectl create -f ./args/mfpf-deployment-all.yaml</code>
                     <blockquote><b>Hinweis:<br/></b>Folgende YAML-Schablonendateien werden bereitgestellt:<br/>
                     <ul><li><b>mfpf-deployment-all.yaml</b>: Implementiert {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }} mit HTTP. </li>
                       <li><b>mfpf-deployment-all-tls.yaml</b>: Implementiert {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }} mit HTTPS. </li>
                       <li><b>mfpf-deployment-server.yaml</b>: Implementiert {{ site.data.keys.mf_server }} mit HTTP. </li>
                       <li><b>mfpf-deployment-analytics.yaml</b>: Implementiert {{ site.data.keys.mf_analytics }} mit HTTP. </li></ul></blockquote>
-                      Nach der Erstellung müssen Sie den folgenden Befehl ausführen, um das Kubernetes-Dashboard verwenden zu können:<br/>
+                      Nach der Erstellung müssen Sie den folgenden Befehl ausführen, um das Kubernetes-Dashboard verwenden zu können: <br/>
                       <code>kubectl proxy</code><br/>Öffnen Sie <b>localhost:8001/ui</b> in Ihrem Browser.
                   </li>
                 </ol>

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Fehlerbehebung
-weight: 6
+weight: 17
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -72,3 +72,14 @@ Hier finden Sie Hinweise zu einigen Problemen, die bei der Verwendung von IBM Di
 
     Sie müssen Ihr App-Projekt an der Laufwerkposition `C://<Ihr Ordnername/App-Name>` erstellen.
 
+* Digital App Builder stürzt mit rotem Bildschirm ab.
+
+    Wenn Sie bei einem Absturz einen roten Bildschirm sehen, überprüfen Sie die Protokolle an folgender Position:
+    * Mac OS - `/Users/<Benutzername>/Library/Logs/IBM Digital App Builder/log.log`
+    * Windows - `C:\\Users\<Benutzername>\AppData\Roming\IBM Digital App Builder\log.log`
+
+    Wenn es sich um einen Fehler bei `getPath` aus `rendered.js` handelt, ist es ein bekanntes [Electron-Problem](https://github.com/electron/electron/issues/8205).
+
+    Dies kommt gelegentlich vor.
+
+    Nach einem Neustart des Digital App Builder sollte Ihr Szenario wieder funktionieren.
