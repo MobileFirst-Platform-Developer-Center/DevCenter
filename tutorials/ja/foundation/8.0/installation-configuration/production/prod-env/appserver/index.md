@@ -421,7 +421,7 @@ Ant タスクの参照は以下のとおりです。
 * [{{ site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
 * [{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-サンプル構成ファイルとタスクを使用したインストールの概要については、[コマンド・ライン・モードでの {{ site.data.keys.mf_server }} のインストール](../../simple-install/tutorials/command-line)を参照してください。
+サンプル構成ファイルとタスクを使用したインストールの概要については、[コマンド・ライン・モードでの {{ site.data.keys.mf_server }} のインストール](../../simple-install/command-line)を参照してください。
 
 Ant ファイルは、製品インストールの一部である Ant ディストリビューションを使用して実行できます。 例えば、WebSphere Application Server Network Deployment クラスターがあり、データベースが IBM DB2 の場合は、**mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-wasnd-cluster-db2.xml** Ant ファイルを使用できます。 このファイルを編集し、必要なすべてのプロパティーを入力したら、**mfp\_install\_dir/MobileFirstServer/configuration-samples** ディレクトリーから以下のコマンドを実行できます。
 
@@ -2152,7 +2152,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                                 </blockquote>
                                 最後に、サーバーを始動し、<b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> ファイル内で com.ibm.ssl.trustStore を含む行を見つけます。
                                 <ul>
-                                    <li>ファーム内の他のサーバーの公開証明書を、サーバーの <b>server.xml</b> 構成ファイルによって参照されているトラストストアにインポートします。 <a href="../../simple-install/tutorials/graphical-mode">グラフィカル・モードでの {{ site.data.keys.mf_server }} のインストール</a>のチュートリアルに、ファーム内の 2 つの Liberty サーバー間で証明書を交換する手順が説明されています。 詳しくは、<a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成</a>セクションのステップ 5 を参照してください。</li>
+                                    <li>ファーム内の他のサーバーの公開証明書を、サーバーの <b>server.xml</b> 構成ファイルによって参照されているトラストストアにインポートします。 <a href="../../simple-install/graphical-mode">グラフィカル・モードでの {{ site.data.keys.mf_server }} のインストール</a>のチュートリアルに、ファーム内の 2 つの Liberty サーバー間で証明書を交換する手順が説明されています。 詳しくは、<a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成</a>セクションのステップ 5 を参照してください。</li>
                                     <li>WebSphere Application Server Liberty プロファイルの各インスタンスを再始動して、セキュリティー構成を有効にします。 以下のステップは、シングル・サインオン (SSO) を機能させる場合に必須です。</li>
                                     <li>ファームのメンバーの 1 つを始動します。 デフォルトの LTPA 構成では、Liberty サーバーが正常に始動すると、LTPA 鍵ストアを <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys</b> として生成します。</li>
                                     <li><b>ltpa.keys</b> ファイルを各ファーム・メンバーの <b>${wlp.user.dir}/servers/server_name/resources/security</b> ディレクトリーにコピーして、ファーム・メンバー全体にわたって LTPA 鍵ストアを複製します。 LTPA 構成について詳しくは、<a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Liberty プロファイル上での LTPA の構成</a>を参照してください。</li>
