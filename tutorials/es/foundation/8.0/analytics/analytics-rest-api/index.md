@@ -49,7 +49,7 @@ Usuario (POST) | /v3/user | Crea un nuevo usuario.
 {: #try-it-out-on-swagger-docs }
 
 Pruebe las API REST de analíticas en Swagger Docs.  
-En una configuración de {{ site.data.keys.mf_server }} donde se haya habilitado las analíticas, visite `<ipaddress>:<port>/analytics-service`.
+En una configuración de {{ site.data.keys.mf_server }} en que se han habilitado las analíticas, vaya a: `<ipaddress>:<port>/analytics-service`.
 
 ![Interfaz de usuario de {{ site.data.keys.mf_analytics }} Swagger Docs](analytics-swagger.png)
 

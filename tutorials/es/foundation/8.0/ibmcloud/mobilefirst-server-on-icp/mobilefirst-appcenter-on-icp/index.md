@@ -49,7 +49,7 @@ El archivo Passport Advantage (PPA) de {{ site.data.keys.mf_app_center }} está 
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
 
-Los arreglos temporales para {{ site.data.keys.mf_app_center }} se pueden obtener en [IBM Fix Central](http://www.ibm.com/support/fixcentral).<br/> 
+Los arreglos temporales para {{ site.data.keys.mf_app_center }} se pueden obtener en [IBM Fix Central](http://www.ibm.com/support/fixcentral).<br/>
 
 ## Cargar el archivo PPA de IBM {{ site.data.keys.mf_app_center }} en {{ site.data.keys.prod_icp }}
 {: #load-the-ibm-mfpf-appcenter-ppa-archive}
@@ -75,11 +75,12 @@ Siga los pasos indicados a continuación para cargar el archivo PPA en el clúst
 
       `--clustername` puede ignorarse si se ha seguido el paso anterior y se ha establecido el punto final del clúster como valor predeterminado para `cloudctl`.
 
-  3. Después de cargar el archivo PPA, sincronice los repositorios; de este modo, se asegura de que los gráficos Helm figuren en el **Catálogo**. Puede realizar esta acción en la consola de gestión de {{ site.data.keys.prod_icp }}.<br/> 
+  3. Después de cargar el archivo PPA, sincronice los repositorios; de este modo, se asegura de que los gráficos Helm figuren en el **Catálogo**. Puede realizar esta acción en la consola de gestión de {{ site.data.keys.prod_icp }}.<br/>
      * Seleccione **Administración > Repositorios**.
      * Pulse **Sincronizar repositorios**.
 
-  4.  Puede ver las imágenes Docker y los gráficos Helm en la consola de gestión de {{ site.data.keys.prod_icp }}<br/>.Para ver las imágenes Docker,
+  4.  Puede ver las imágenes Docker y los gráficos Helm en la consola de gestión de {{ site.data.keys.prod_icp }}.<br/>
+      Para ver las imágenes Docker,
       * Seleccione **Plataforma > Imágenes**.
       * Los gráficos Helm se muestran en el **Catálogo**.
 
@@ -105,8 +106,10 @@ La tabla siguiente indica las variables de entorno utilizadas en {{ site.data.ke
 |  | appCenterDB2Schema | Esquema de {{ site.data.keys.mf_app_center_short }} DB2 que se va a crear  |  |
 |  | appCenterDB2ConnectionIsSSL | Tipo de conexión de DB2 | Especifique si la conexión de la base de datos debe ser **http** o **https**. El valor predeterminado es **false** (http). Asegúrese de que el puerto de DB2 también esté configurado para la misma modalidad de conexión. |
 | keystores | keystoresSecretName | Consulte [Instalar y configurar gráficos Helm de IBM {{ site.data.keys.product }}](../#configure-install-mf-helmcharts), donde se describen los pasos para crear el secreto con los almacenes y sus contraseñas. |  |
-| resources | limits.cpu | Cantidad máxima de CPU permitidas | El valor predeterminado es **1000m**<br/>Consulte [aquí](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) para obtener más información. |
-|  | limits.memory | Cantidad máxima de memoria permitida |El valor predeterminado es **1024Mi**<br/>Consulte [aquí](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) para obtener más información. |
+| resources | limits.cpu | Cantidad máxima de CPU permitidas | El valor predeterminado es **1000m**<br/>Consulte
+[aquí](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) para obtener más información. |
+|  | limits.memory | Cantidad máxima de memoria permitida | El valor predeterminado es **1024Mi**<br/>Consulte
+[aquí](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) para obtener más información. |
 | resources.requests | requests.cpu | Describe la cantidad mínima de CPU necesarias. Si no se especifica, el valor predeterminado es *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1000m**. |
 |  | requests.memory | Describe la memoria mínima necesaria. Si no se especifica, el valor predeterminado de la memoria será *limits* (si se especifica) o el valor definido por implementación. | El valor predeterminado es **1024Mi**. |
 

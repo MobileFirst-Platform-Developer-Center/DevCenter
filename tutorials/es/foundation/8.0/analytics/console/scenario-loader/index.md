@@ -37,7 +37,7 @@ El cargador de escenarios se ha empaquetado junto a {{ site.data.keys.mf_analyti
 
 1. Para habilitar el cargador de escenarios, establezca el argumento JVM `-DwlDevEnv=true` o la variable de entorno `ANALYTICS_DEBUG=true`.
 
-2. Acceda al cargador de escenarios en su navegador utilizando el URL de consola: `http://<console-path>/scenarioLoader` donde `<console-path>` es el valor de la propiedad JNDI que se define en el archivo `mfp-server/usr/servers/mfp/server.xml` como, por ejemplo:
+2. Acceda al cargador de escenarios en su navegador utilizando el URL de consola: `http://<console-path>/scenarioLoader`, donde `<console-path>` es el valor de la propiedad JNDI definida en el archivo `mfp-server/usr/servers/mfp/server.xml`, por ejemplo:
 
     `<jndiEntry jndiName="mfp/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>`
 

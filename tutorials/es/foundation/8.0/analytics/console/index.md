@@ -84,7 +84,10 @@ Para obtener información sobre cómo configurar los filtros de registro, consul
 
 Para obtener más información sobre cómo enviar registros desde el cliente, consulte [Recopilación de registros de cliente](../../application-development/client-side-log-collection/).
 
+### Capturar y ver comentarios de usuarios de aplicación interna 
+Utilizando la característica Comentarios de usuarios de la aplicación interna, los usuarios de sus aplicaciones puede realizar capturas de pantalla de la aplicación, anotarlas con marcadores y comentarios que describen sus comentarios y opiniones acerca de la aplicación.Los comentarios de los usuarios capturados y enviados desde los dispositivos móviles se agregan a Mobile Foundation Analytics Service y se presentan en Analytics Console para que los propietarios y desarrolladores de aplicaciones los revisen, recopilen conocimientos y realicen acciones, si es necesario.  
 
+> Obtenga más información acerca de cómo visualizar en la guía de aprendizaje de [Comentarios de usuarios de aplicación interna](userfeedback/).
 
 ## {{ site.data.keys.mf_console_full }}
 Configuración y administración del servidor de analíticas con {{ site.data.keys.mf_console }}.
