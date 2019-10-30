@@ -16,4 +16,4 @@ On a development server, you can test the runtime REST API with Swagger UI.
 
 ## API Reference
 {: #api-reference }
-<iframe width="100%" height="1000px" frameBorder="0" src="../../../../../../../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/overview.html"></iframe>
+<iframe title="rest-runtime-api" width="100%" height="1000px" frameBorder="0" src="../../../../../../../../api-ref/rest-api-docs/html/refrest-mfp-server-runtime/html/overview.html"></iframe>
