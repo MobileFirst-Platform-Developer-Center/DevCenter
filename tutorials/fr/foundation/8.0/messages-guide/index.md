@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Messages Guide
+title: Guide des messages
 weight: 17
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-Find information about messages that appear in client and server logs created by {{ site.data.keys.product }} 8.0.
+Ce document présente les messages apparaissant dans les journaux client et serveur créés par {{ site.data.keys.product }} 8.0.
 
 * [Mobile Foundation Server](server)

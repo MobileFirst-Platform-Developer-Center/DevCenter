@@ -70,8 +70,8 @@ Prenez connaissance des informations ci-dessous concernant la préparation et l'
 
 Pour plus d'informations sur le processus d'installation de {{ site.data.keys.mf_server }}, reportez-vous aux instructions permettant de créer un cluster {{ site.data.keys.mf_server }} fonctionnel avec deux noeuds sur le profil WebSphere Application Server Liberty. L'installation peut être effectuée grâce aux outils graphiques (interface graphique) ou via la ligne de commande.
 
-* [Installation en mode interface graphique avec IBM Installation Manager et l'outil de configuration de serveur](production/simple-install/tutorials/graphical-mode).
-* [Installation en mode ligne de commande avec l'outil de ligne de commande](production/simple-install/tutorials/command-line).
+* [Installation en mode interface graphique avec IBM Installation Manager et l'outil de configuration de serveur](production/simple-install/graphical-mode).
+* [Installation en mode ligne de commande avec l'outil de ligne de commande](production/simple-install/command-line).
 
 Après avoir procédé à l'installation via l'une des deux méthodes ci-dessus, il se peut que vous deviez effectuer une [configuration](production/server-configuration) supplémentaire pour terminer l'installation selon les exigences de l'environnement.
 
