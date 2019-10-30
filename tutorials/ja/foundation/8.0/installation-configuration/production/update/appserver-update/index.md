@@ -37,9 +37,9 @@ MobileFirst Server はこれら 3 つのコンポーネントから構成され�
 更新手順は、初期インストール時に使用した方法によって決まります。
 
 >**注:**  MobileFirst Server を更新する前に、既存の MFP インストール・ディレクトリーをバックアップすることをお勧めします。
-> これらのファイルをバックアップするときに特別な手順は不要ですが、MobileFirst Server は必ず停止してください。そうでないと、データがバックアップの実行中に変更される可能性があり、メモリーに保管されたデータが、ファイル・システムに書き込まれない可能性があります。 データの不整合が発生しないようにするために、バックアップの開始前に MobileFirst Server を停止してください。
+> これらのファイルをバックアップするときに特別な手順は不要ですが、MobileFirst Server は必ず停止してください。  そうでないと、データがバックアップの実行中に変更される可能性があり、メモリーに保管されたデータが、ファイル・システムに書き込まれない可能性があります。 データの不整合が発生しないようにするために、バックアップの開始前に MobileFirst Server を停止してください。
 >
-MFP は IBM Installation Manager (IM) を使用したアップデート/暫定修正のロールバックをサポートしていません。ただし、更新前にバックアップされた MFP 関連の WAR ファイルを使用すれば、ANT タスクまたはサーバー構成ツール (SCT) を使用したロールバックが可能です。
+MFP は IBM Installation Manager (IM) を使用したアップデート/暫定修正のロールバックをサポートしていません。 ただし、更新前にバックアップされた MFP 関連の WAR ファイルを使用すれば、ANT タスクまたはサーバー構成ツール (SCT) を使用したロールバックが可能です。
 >
 
 <!-- **Note:** Installation Manager(IM) does not support rolling back of an update/iFix. However, rollback is possible using Ant or Server Configuration Tool, if you have the old war files. -->
@@ -65,10 +65,10 @@ MobileFirst Server がサーバー構成ツールを使用してインストー�
     * MFP 関連の WAR ファイルを、MFP インストール・ディレクトリー (`mfp_server_install_dir/MobileFirstServer`) のバックアップされた場所からコピーして、手動で置き換えます。
     * Linux の場合、アプリケーションのショートカットから**「アプリケーション」→「IBM MobileFirst Platform Server」→「サーバー構成ツール」**とクリックします。
     * Windows の場合、**「スタート」→「プログラム」→「IBM MobileFirst Platform Server」→「サーバー構成ツール」**とクリックします。
-    * MacOS の場合、シェル・コンソールを開きます。`mfp_server_install_dir/shortcuts` に移動し、`./configuration-tool.sh` と入力します。
+    * MacOS の場合、シェル・コンソールを開きます。 `mfp_server_install_dir/shortcuts` に移動し、`./configuration-tool.sh` と入力します。
     * `mfp_server_install_dir` ディレクトリーが、MobileFirst Server をインストールした場所です。
 
-2.  ロールバックする必要がある構成を選択します。**「構成」**をクリックし、**「構成の編集と再デプロイ (Edit and redeploy configuration)」**オプションを選択します。
+2.  ロールバックする必要がある構成を選択します。 **「構成」**をクリックし、**「構成の編集と再デプロイ (Edit and redeploy configuration)」**オプションを選択します。
 
 3.  各ページで**「次へ」**をクリックしながら、最後まで全探索したら、**「更新」**をクリックします。
 
@@ -96,7 +96,7 @@ MobileFirst Server がサーバー構成ツールを使用してインストー�
 #### サンプル Ant ファイルを使用したロールバック
 {: #rollback-with-the-sample-ant-file }
 
-`mfp_install_dir/MobileFirstServer/configuration-samples` ディレクトリー内に用意されているサンプル Ant ファイルを使用して MobileFirst Server をインストールする場合、この Ant ファイルのコピーを再使用してフィックスパックをロールバックできます。パスワードの値には、実際の値の代わりに 12 個の星印 (`*`) を入力することができます。こうすると Ant ファイルの実行時に対話式にプロンプトが出されます。
+`mfp_install_dir/MobileFirstServer/configuration-samples` ディレクトリー内に用意されているサンプル Ant ファイルを使用して MobileFirst Server をインストールする場合、この Ant ファイルのコピーを再使用してフィックスパックをロールバックできます。 パスワードの値には、実際の値の代わりに 12 個の星印 (`*`) を入力することができます。こうすると Ant ファイルの実行時に対話式にプロンプトが出されます。
 
 1.  MFP 関連の WAR ファイルを、MFP インストール・ディレクトリー (`mfp_server_install_dir/MobileFirstServer`) のバックアップされた場所からコピーして、手動で置き換えます。
 2.  Ant ファイルの **mfp.server.install.dir** プロパティーの値を確認します。 この値は、更新済みの MobileFirst Server WAR ファイルを取得するのに使用されます。
@@ -108,8 +108,8 @@ MobileFirst Server がサーバー構成ツールを使用してインストー�
 #### 独自の Ant ファイルを使用したロールバック
 {: #rollback-with-own-ant-file }
 
-独自の Ant ファイルを使用する場合、それぞれの更新/ロールバック・タスク (*installmobilefirstadmin*、*installmobilefirstruntime*、および *installmobilefirstpush*) に対応する、同じパラメーターを持つ更新タスクを、Ant ファイルに含めるようにしてください。対応する更新タスクは、*updatemobilefirstadmin*、*updatemobilefirstruntime*、および *updatemobilefirstpush* です。
+独自の Ant ファイルを使用する場合、それぞれの更新/ロールバック・タスク (*installmobilefirstadmin*、*installmobilefirstruntime*、および *installmobilefirstpush*) に対応する、同じパラメーターを持つ更新タスクを、Ant ファイルに含めるようにしてください。 対応する更新タスクは、*updatemobilefirstadmin*、*updatemobilefirstruntime*、および *updatemobilefirstpush* です。
 
 1.  MFP 関連の WAR ファイルを、MFP インストール・ディレクトリー (`mfp_server_install_dir/MobileFirstServer`) のバックアップされた場所からコピーして、手動で置き換えます。
-2.  **mfp-ant-deployer.jar** ファイルの `taskdef` エレメントのクラスパスを確認します。 これは、MobileFirst Server のインストール済み環境内の、フィックスパックの適用された mfp-ant-deployer.jar ファイルを指している必要があります。デフォルトでは、更新された MobileFirst Server WAR ファイルは、mfp-ant-deployer.jar の場所から取得されます。
+2.  **mfp-ant-deployer.jar** ファイルの `taskdef` エレメントのクラスパスを確認します。 これは、MobileFirst Server のインストール済み環境内の、フィックスパックの適用された mfp-ant-deployer.jar ファイルを指している必要があります。 デフォルトでは、更新された MobileFirst Server WAR ファイルは、mfp-ant-deployer.jar の場所から取得されます。
 3.  ご使用の Ant ファイルの更新タスク (*updatemobilefirstadmin*、*updatemobilefirstruntime*、および *updatemobilefirstpush*) を実行します。

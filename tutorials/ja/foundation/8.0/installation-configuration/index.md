@@ -70,8 +70,8 @@ weight: 3
 
 2 つのノードを持つ機能する {{ site.data.keys.mf_server }} クラスターを WebSphere Application Server Liberty プロファイル上に作成する手順を行うことで、{{ site.data.keys.mf_server }} のインストール・プロセスを説明します。 このインストールは、グラフィック・ツール (GUI) を使用するかコマンド・ラインから実行できます。
 
-* [IBM Installation Manager とサーバー構成ツールを使用した GUI モードでのインストール](production/simple-install/tutorials/graphical-mode)。
-* [コマンド・ライン・ツールを使用したコマンド・ラインでのインストール](production/simple-install/tutorials/command-line)。
+* [IBM Installation Manager とサーバー構成ツールを使用した GUI モードでのインストール](production/simple-install/graphical-mode)。
+* [コマンド・ライン・ツールを使用したコマンド・ラインでのインストール](production/simple-install/command-line)。
 
 上記の 2 つの方法のいずれかを使用してインストールを実行したら、セットアップを完了するために、要件に応じてさらに[構成](production/server-configuration)が必要になることがあります。
 
