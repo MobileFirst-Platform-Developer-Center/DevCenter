@@ -3,7 +3,7 @@ layout: tutorial
 title: Despliegue de IBM Mobile Foundation for Developers 8.0 on IBM Cloud Private
 breadcrumb_title: Foundation for Developers on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
@@ -11,7 +11,7 @@ weight: 2
 
 IBM Mobile Foundation for Developers 8.0 on {{ site.data.keys.prod_icp }} es una edición de Mobile Foundation para desarrolladores, que se compone del servidor de Mobile Foundation server y componentes de Operational Analytics. El entorno de ejecución del servidor tiene una base de datos Derby incorporada para almacenar los datos de Mobile Foundation. Esto restringe a los usuarios a un pod en el despliegue de Kubernetes en {{ site.data.keys.prod_icp }}. La Community Edition proporciona a los usuarios de Mobile Foundation una experiencia de desarrollador con parámetros de configuración mínimos y facilidad de configuración de la instancia de Mobile Foundation en {{ site.data.keys.prod_icp }}.
 
-Siga las instrucciones que se detallan a continuación para instalar la edición de desarrollador de IBM Mobile Foundation server con Operational Analytics pre-configurado en {{ site.data.keys.prod_icp }}:<br/> 
+Siga las instrucciones que se detallan a continuación para instalar la edición de desarrollador de IBM Mobile Foundation server con Operational Analytics pre-configurado en {{ site.data.keys.prod_icp }}:<br/>
 * Configure IBM Cloud Private Kubernetes Cluster (IBM Cloud Private CE o Native/Enterprise).
 * [Opcional] Configure su sistema host con las herramientas necesarias: CLI de Docker, de IBM Cloud (cloudctl), de Kubernetes (kubectl) y de Helm (helm).
 
@@ -51,7 +51,7 @@ La tabla siguiente indica las variables de entorno utilizadas en IBM Mobile Foun
 
 | Calificador | Parámetro | Definición | Valor permitido |
 |-----------|-----------|------------|---------------|
-| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo trabajador en la que se debe desplegar este gráfico.<br/>Actualmente solo se da soporte a la plataforma **AMD64**. |
+| arch |  | Arquitectura de nodo de trabajador | Arquitectura de nodo de trabajador en la que debe desplegarse este gráfico.<br/>Actualmente, solo se admite la plataforma **AMD64**. |
 | image | pullPolicy | Política de extracción de imágenes | Always, Never, o IfNotPresent. <br/>El valor predeterminado es **IfNotPresent**. |
 |  | repository | Nombre de imagen Docker | Nombre de la imagen Docker del servidor de {{ site.data.keys.prod_adj }}. |
 |  | tag | Etiqueta de imagen Docker | Consulte [Descripción de etiquetas de Docker](https://docs.docker.com/engine/reference/commandline/image_tag/) |

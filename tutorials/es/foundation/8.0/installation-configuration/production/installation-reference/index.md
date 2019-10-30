@@ -396,9 +396,9 @@ El elemento `<collectiveController>` tiene los atributos siguientes:
 
 | Atributo                | Descripción                                  | Obligatorio | Predeterminado |
 |--------------------------|----------------------------------------|----------|---------|
-| serverName               | El nombre del controlador colectivo.	| Sí      | Ninguno    |
-| controllerAdminName      | El nombre de usuario administrativo definido en el controlador colectivo. Este es el mismo usuario que se utiliza para unirse a nuevos miembros en el colectivo.                                                         | Sí      | Ninguno    |
-| controllerAdminPassword  | La contraseña de usuario administrativo.	    | Sí      | Ninguno    |
+| serverName               | El nombre del controlador colectivo.	| Sí      |  Ninguno   |
+| controllerAdminName      | El nombre de usuario administrativo definido en el controlador colectivo. Este es el mismo usuario que se utiliza para unirse a nuevos miembros en el colectivo.                                                         | Sí      |  Ninguno   |
+| controllerAdminPassword  | La contraseña de usuario administrativo.	    | Sí      |  Ninguno   |
 | createControllerAdmin    | Para indicar si el usuario administrativo debe crearse en el registro básico del controlador colectivo. Los valores posibles son true o false.                                                              | No	   | true    |
 
 ### Para especificar la configuración del servicio de Live Update
@@ -407,7 +407,7 @@ Utilice el elemento `<configuration>` para definir los parámetros que dependen 
 
 | Atributo                | Descripción                                  | Obligatorio | Predeterminado |
 |--------------------------|----------------------------------------------------------------|----------|---------|
-| install                  | Para indicar si se debe instalar el servicio de Live Update.	| Sí | true |
+| install                  | Para indicar si se debe instalar el servicio de Live Update.	| Sí  | true |
 | configAdminUser	       | El administrador para el servicio de Live Update.	                | No. Sin embargo, es necesario para una topología de granja de servidores. |Si no está definido, se generará un usuario. En una topología de granja de servidores, el nombre de usuario debe ser el mismo para todos los miembros de la granja de servidores. |
 | configAdminPassword      | La contraseña del administrador para el usuario de servicio de Live Update.       | Si se especifica un usuario para **configAdminUser**. | Ninguno. En una topología de granja de servidores, la contraseña debe ser el mismo para todos los miembros de la granja de servidores. |
 | createConfigAdminUser	   | Para indicar si se creará un usuario admin en el registro básico del servidor de aplicaciones, si falta. | No | true |
@@ -415,7 +415,7 @@ Utilice el elemento `<configuration>` para definir los parámetros que dependen 
 
 El elemento `<configuration>` da soporte a los elementos siguientes:
 
-| Elemento      | Descripción                            | Recuento |
+| Elemento      | Descripción                                  | Recuento |
 |--------------|---------------------------------------|-------|
 | `<user>`     | El usuario para el servicio de Live Update. | 0..1  |
 | `<property>` | Las propiedades.	                   | 0..   |
@@ -424,9 +424,9 @@ El elemento `<user>` recopila los parámetros sobre un usuario para inclulos en 
 
 | Atributo   | Descripción                                  | Obligatorio | Predeterminado |
 |-------------|-------------------------------------------------------------------------|----------|---------|
-| role	      | Un rol de seguridad válido para la aplicación. Valor posible: configadmin.	| Sí      | Ninguno    |
-| name	      | El nombre de usuario.	                                                        | Sí      | Ninguno    |
-| password	  | La contraseña si el usuario debe crearse.	                        | No       | Ninguno    |
+| role	      | Un rol de seguridad válido para la aplicación. Valor posible: configadmin.	| Sí      |  Ninguno   |
+| name	      | El nombre de usuario.	                                                        | Sí      |  Ninguno   |
+| password	  | La contraseña si el usuario debe crearse.	                        |No       |  Ninguno   |
 
 Después de definir los usuarios mediante el elemento `<user>`, puede correlacionarlos con cualquiera de los roles siguientes para la autenticación en {{ site.data.keys.mf_console }}: `configadmin`.
 
@@ -438,8 +438,8 @@ El elemento `<property>` especifica una propiedad de despliegue que se va a defi
 
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|----------------------------|----------|---------|
-| name       | El nombre de la propiedad.  | Sí      | Ninguno    |
-| value	     | El valor de la propiedad. |	Sí      | Ninguno    |
+| name       | El nombre de la propiedad.  | Sí      |  Ninguno   |
+| value	     | El valor de la propiedad. |	Sí      |  Ninguno   |
 
 Al utilizar este elemento, puede definir sus propias propiedades JNDI o sobrescribir el valor predeterminado de las propiedades JNDI que proporciona el servicio de administración y los archivos WAR de {{ site.data.keys.mf_console }}. Para obtener más información sobre las propiedades JNDI, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
@@ -449,13 +449,13 @@ Utilice el elemento `<applicationserver>` para definir los parámetros que depen
 
 | Elemento      | Descripción                                  | Recuento |
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` o `<was>`	| Los parámetros de WebSphere Application Server.<br/><br/>El elemento <websphereapplicationserver> (o <was> en su forma abreviada) indica una instancia de WebSphere Application Server. Se da soporte al perfil completo de WebSphere Application Server (Base, y Network Deployment), por lo que es WebSphere Application Server Liberty Core y WebSphere Application Server Liberty Network Deployment. | 0..1  |
+| `<websphereapplicationserver>` o `<was>`	| Los parámetros para WebSphere Application Server.	<br/><br/>El elemento <websphereapplicationserver> (o <was> en su forma abreviada) indica una instancia de WebSphere Application Server. Se da soporte al perfil completo de WebSphere Application Server (Base, y Network Deployment), por lo que es WebSphere Application Server Liberty Core y WebSphere Application Server Liberty Network Deployment. | 0..1  |
 | `<tomcat>`   | Los parámetros para Apache Tomcat.                        | 0..1  |
 
 Los atributos y los elementos internos de estos elementos están descritos en las tablas de [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
 Sin embargo, para el elemento interno del elemento <was> para el colectivo de Liberty, consulte la tabla siguiente:
 
-| Elemento               | Descripción                  | Recuento |
+| Elemento               | Descripción                                      | Recuento |
 |-----------------------|----------------------------- |-------|
 | `<collectiveMember>`	| Un miembro de colectivo de Liberty. | 0..1  |
 
@@ -463,8 +463,8 @@ El elemento `<collectiveMember>` tiene los atributos siguientes:
 
 | Atributo   | Descripción                                             | Obligatorio | Predeterminado |
 |-------------|---------------------------------------------------------|----------|---------|
-| serverName  |	El nombre del miembro de colectivo.                      | Sí      | Ninguno    |
-| clusterName |	El nombre de clúster al que pertenece el miembro de colectivo. | Sí	   | Ninguno    |
+| serverName  |	El nombre del miembro de colectivo.                      | Sí      |  Ninguno   |
+| clusterName |	El nombre de clúster al que pertenece el miembro de colectivo. | Sí	   |  Ninguno   |
 
 > **Nota:** Si el servicio de envío por push y los componentes de tiempo de ejecución están instalados en el mismo miembro de colectivo, deben tener el mismo nombre de clúster. Si estos componentes están instalados en miembros distintos del mismo colectivo, los nombres de clúster pueden ser distintos.
 
@@ -474,10 +474,10 @@ El elemento `<analytics>` indica que desea conectar el servicio push {{ site.dat
 
 | Atributo     | Descripción                                  | Obligatorio | Predeterminado |
 |---------------|---------------------------------------------------------------------------|----------|---------|
-| install	    | Para indicar si se debe conectar el servicio de envío por push a {{ site.data.keys.mf_analytics }}. | No       | false   |
-| analyticsURL 	| El URL de los servicios de {{ site.data.keys.mf_analytics }}.	                            | Sí	   | Ninguno    |
-| username	    | El nombre de usuario.	                                                        | Sí	   | Ninguno    |
-| password	    | La contraseña.	                                                            | Sí	   | Ninguno    |
+| install	    | Para indicar si se debe conectar el servicio de envío por push a {{ site.data.keys.mf_analytics }}. |No       | false   |
+| analyticsURL 	| El URL de los servicios de {{ site.data.keys.mf_analytics }}.	                            | Sí	   |  Ninguno   |
+| username	    | El nombre de usuario.	                                                        | Sí	   |  Ninguno   |
+| password	    | La contraseña.	                                                            | Sí	   |  Ninguno   |
 | validate	    | Para validar si se puede acceder a {{ site.data.keys.mf_analytics_console }} o no.	| No	   | true    |
 
 **install**  
@@ -508,8 +508,8 @@ El elemento `<database>` tiene los atributos siguientes:
 
 | Atributo     | Descripción                                     | Obligatorio | Predeterminado |
 |---------------|-------------------------------------------------|----------|---------|
-| kind          | El tipo de base de datos (Push).	                  | Sí	     | Ninguno    |
-| validate	    | Para validar si se puede acceder a la base de datos. | No       | true    |
+| kind          | El tipo de base de datos (Push).	                  | Sí	     |  Ninguno   |
+| validate	    | Para validar si se puede acceder a la base de datos. |No       | true    |
 
 El elemento `<database>` da soporte a los elementos siguientes.Para obtener más información sobre la configuración de estos elementos de base de datos para DBMS relacional, consulte las tablas de [tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
@@ -524,12 +524,12 @@ El elemento `<database>` da soporte a los elementos siguientes.Para obtener más
 
 > **Nota:** Los atributos del elemento `<cloudant>` son ligeramente distintos de los de tiempo de ejecución. Para obtener más información, consulte la siguiente tabla:
 
-| Atributo     | Descripción                                     | Obligatorio | Predeterminado                   |
+| Atributo     | Descripción                                     | Obligatorio | Predeterminado   |
 |---------------|-------------------------------------------------|----------|---------------------------|
-| url           | El URL de la cuenta de Cloudant.                | No       | https://user.cloudant.com |
+| url           | El URL de la cuenta de Cloudant.                |No       | https://user.cloudant.com |
 | user          | El nombre de usuario de la cuenta de Cloudant.	      | Sí	     | Ninguno                      |
 | password      | La contraseña de la cuenta de Cloudant.	          | No	     | Consultado de forma interactiva     |
-| dbName        | El nombre de base de datos de Cloudant. **Importante:** Este nombre de base de datos debe comenzar por una letra en minúscula y contener sólo caracteres en minúscula (a-z), dígitos (0-9), cualquiera de los caracteres _, $, y -.                                | No       | mfp_push_db               |
+| dbName        | El nombre de base de datos de Cloudant. **Importante:** Este nombre de base de datos debe comenzar por una letra en minúscula y contener sólo caracteres en minúscula (a-z), dígitos (0-9), cualquiera de los caracteres _, $, y -.                                |No       | mfp_push_db               |
 
 ## Tareas Ant para la instalación del servicio de envío por push de {{ site.data.keys.mf_server }}
 {: #ant-tasks-for-installation-of-mobilefirst-server-push-service }
@@ -592,8 +592,8 @@ El elemento `<authorization>` recopila información para configurar el servidor 
 | auto               | Para indicar si el URL del servidor de autorizaciones está calculado. Los valores posibles son true o false.	| Necesario en un clúster o en un nodo de WebSphere Application Server Network Deployment.   	 | true |
 | authorizationURL   | El URL del servidor de autorizaciones.	 | Si la modalidad no es auto. | La raíz de contexto del tiempo de ejecución en el servidor local. |
 | runtimeContextRoot | La raíz de contexto del tiempo de ejecución.	     | No	     | /mfp       |
-| pushClientID	     | El ID confidencial del servicio de envío por push del servidor de autorizaciones.  | Sí |  Ninguno   |
-| pushClientSecret	 | La contraseña de cliente confidencial del servicio de envío por push del servidor de autorizaciones. | Sí |  Ninguno   |
+| pushClientID	     | El ID confidencial del servicio de envío por push del servidor de autorizaciones.  | Sí  |  Ninguno   |
+| pushClientSecret	 | La contraseña de cliente confidencial del servicio de envío por push del servidor de autorizaciones. | Sí  |  Ninguno   |
 
 #### auto
 {: #auto }
@@ -618,8 +618,8 @@ El elemento `<property>` especifica una propiedad de despliegue que se va a defi
 
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|----------------------------|----------|---------|
-| name       | El nombre de la propiedad.  |	Sí	     | Ninguno    |
-| value	     | El valor de la propiedad. |	Sí	     | Ninguno    |
+| name       | El nombre de la propiedad.  |	Sí	     |  Ninguno   |
+| value	     | El valor de la propiedad. |	Sí	     |  Ninguno   |
 
 Al utilizar este elemento, puede definir sus propias propiedades JNDI o sobrescribir el valor predeterminado de las propiedades JNDI que proporciona el archivo WAR del servicio de envío por push.
 
@@ -638,7 +638,7 @@ Los atributos y los elementos internos de estos elementos están descritos en la
 
 Sin embargo, para el elemento interno del elemento `<was>` del colectivo de Liberty, consulte la tabla siguiente:
 
-| Elemento              | Descripción                  | Recuento |
+| Elemento              | Descripción                                      | Recuento |
 |----------------------|------------------------------|-------|
 | `<collectiveMember>` | Un miembro de colectivo de Liberty. |	0..1  |
 
@@ -646,8 +646,8 @@ El elemento `<collectiveMember>` tiene los atributos siguientes:
 
 | Atributo   | Descripción                        | Obligatorio | Predeterminado |
 |-------------|------------------------------------|----------|---------|
-| serverName  | El nombre del miembro de colectivo. | Sí      | Ninguno    |
-| clusterName |	El nombre de clúster al que pertenece el miembro de colectivo. | Sí | Ninguno |
+| serverName  | El nombre del miembro de colectivo. | Sí      |  Ninguno   |
+| clusterName |	El nombre de clúster al que pertenece el miembro de colectivo. | Sí  |  Ninguno   |
 
 > **Nota:** Si el servicio de envío por push y los componentes de tiempo de ejecución están instalados en el mismo miembro de colectivo, deben tener el mismo nombre de clúster. Si estos componentes están instalados en miembros distintos del mismo colectivo, los nombres de clúster pueden ser distintos.
 
@@ -658,9 +658,9 @@ El elemento `<analytics>` indica que desea conectar el servicio push {{ site.dat
 | Atributo    | Descripción                        | Obligatorio | Predeterminado |
 |--------------|------------------------------------|----------|---------|
 | install	   | Para indicar si se debe conectar el servicio de envío por push a {{ site.data.keys.mf_analytics }}. | No | false |
-| analyticsURL | El URL de los servicios de {{ site.data.keys.mf_analytics }}. | Sí |  Ninguno   |
-| username	   | El nombre de usuario. | Sí |  Ninguno   |
-| password	   | La contraseña. | Sí |  Ninguno   |
+| analyticsURL | El URL de los servicios de {{ site.data.keys.mf_analytics }}. | Sí  |  Ninguno   |
+| username	   | El nombre de usuario. | Sí  |  Ninguno   |
+| password	   | La contraseña. | Sí  |  Ninguno   |
 | validate	   | Para validar si se puede acceder a {{ site.data.keys.mf_analytics_console }} o no. | No | true |
 
 #### install
@@ -692,9 +692,9 @@ Debe declarar una única base de datos: `<database kind="Push">`. Especifique el
 
 El elemento `<database>` tiene los atributos siguientes:
 
-| Atributo    | Descripción                  | Obligatorio | Predeterminado |
+| Atributo    | Descripción                                      | Obligatorio | Predeterminado |
 |--------------|------------------------------|----------|---------|
-| kind         | El tipo de base de datos (Push). | Sí      | Ninguno    |
+| kind         | El tipo de base de datos (Push). | Sí      |  Ninguno   |
 | validate	   | Para validar si se puede acceder a la base de datos. | No | true |
 
 El elemento `<database>` da soporte a los elementos siguientes.Para obtener más información sobre la configuración de estos elementos de base de datos para DBMS relacionales, consulte las tablas de las [tareas Ant para la instalación de los entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
@@ -710,10 +710,10 @@ El elemento `<database>` da soporte a los elementos siguientes.Para obtener más
 
 > **Nota:** Los atributos del elemento `<cloudant>` son ligeramente distintos de los de tiempo de ejecución. Para obtener más información, consulte la siguiente tabla:
 
-| Atributo    | Descripción                                  | Obligatorio   | Predeterminado |
+| Atributo    | Descripción                                  | Obligatorio                 | Predeterminado |
 |--------------|----------------------------------------|------------|---------|
 | url	       | El URL de la cuenta de Cloudant.       | No         | https://user.cloudant.com |
-| user	       | El nombre de usuario de la cuenta de Cloudant. | Sí |  Ninguno   |
+| user	       | El nombre de usuario de la cuenta de Cloudant. | Sí  |  Ninguno   |
 | password	   | La contraseña de la cuenta de Cloudant.	| No  | Consultado de forma interactiva |
 | dbName	   | El nombre de base de datos de Cloudant. **Importante:** Este nombre de base de datos debe comenzar por una letra en minúscula y contener sólo caracteres en minúscula (a-z), dígitos (0-9), cualquiera de los caracteres _, $, y -. |No	| mfp_push_db |
 
@@ -752,7 +752,7 @@ La tarea Ant **uninstallmobilefirstruntime** deshace los efectos de una ejecuci�
 {: #attributes-and-elements-2 }
 Las tareas Ant **installmobilefirstruntime**, **updatemobilefirstruntime**, y **uninstallmobilefirstruntime** tienen los siguientes atributos:
 
-| Atributo    | Descripción                  | Obligatorio | Predeterminado |
+| Atributo        | Descripción                  | Obligatorio                 | Predeterminado   |
 |-------------------|-----------------------------------------------------------------------------|------------|---------------------------|
 | contextroot       | El prefijo común en los URL con la aplicación (raíz de contexto).                | No | /mfp  |
 | id	            | Para distinguir los distintos despliegues.                                       | No | Vacío |
@@ -791,8 +791,8 @@ El elemento `<property>` especifica una propiedad de despliegue que se va a defi
 
 | Atributo | Descripción                                  | Obligatorio | Predeterminado |
 |-----------|----------------------------|----------|---------|
-| name      | El nombre de la propiedad.	 | Sí      | Ninguno    |
-| value	    | El valor de la propiedad.| Sí	    | Ninguno    |  
+| name      | El nombre de la propiedad.	 | Sí      |  Ninguno   |
+| value	    | El valor de la propiedad.| Sí	    |  Ninguno   |  
 
 El elemento `<applicationserver>` describe el servidor de aplicaciones en el que se despliega la aplicación {{ site.data.keys.product_adj }}. Es un contenedor para uno de los elementos siguientes:
 
@@ -805,9 +805,9 @@ El elemento `<applicationserver>` describe el servidor de aplicaciones en el que
 
 | Atributo       | Descripción                                            | Obligatorio                 | Predeterminado |
 |-----------------|--------------------------------------------------------|--------------------------|---------|
-| installdir      |	Directorio de instalación de WebSphere Application Server.   | Sí                      | Ninguno    |
-| profile         |	Perfil de WebSphere Application Server, o Liberty.      | Sí	                  | Ninguno    |
-| user	| Nombre del administrador de WebSphere Application Server.	               | Sí, excepto para Liberty  | Ninguno    |
+| installdir      |	Directorio de instalación de WebSphere Application Server.   | Sí                      |  Ninguno   |
+| profile         |	Perfil de WebSphere Application Server, o Liberty.      | Sí	                  |  Ninguno   |
+| user	| Nombre del administrador de WebSphere Application Server.	               | Sí, excepto para Liberty  |  Ninguno   |
 | password        | Contraseña del administrador de WebSphere Application Server.   | No	| Consultado de forma interactiva |         |
 | libertyEncoding |	El algoritmo para codificar las contraseñas de origen de datos para WebSphere Application Server Liberty. Los valores posibles son none, xor, y aes. Ya se utilice la codificación xor o aes, se pasará la contraseña borrada como argumento al programa securityUtility, que se llamará a través de un proceso externo. Puede ver la contraseña con un mandato ps, o en el sistema de archivos /proc en sistemas operativos UNIX.                                                         | No                       |	xor     |
 | jeeVersion      |	Para el perfil de Liberty. Para especificar si se instalarán las características del perfil web de JEE6 o del perfil web de JEE7. Los valores posibles son 6, 7, o auto.| No | auto |
@@ -824,7 +824,7 @@ El elemento <server>, que se utiliza en este contexto, tiene el atributo siguien
 
 | Atributo | Descripción      | Obligatorio | Predeterminado |
 |-----------|------------------|----------|---------|
-| name	    | El nombre del servidor. | Sí      | Ninguno    |
+| name	    | El nombre del servidor. | Sí      |  Ninguno   |
 
 Se da soporte a los siguientes elementos para el colectivo de Liberty:
 
@@ -836,13 +836,13 @@ El elemento `<collectiveMember>` tiene los atributos siguientes:
 
 | Atributo               | Descripción      | Obligatorio | Predeterminado |
 |-------------------------|------------------|----------|---------|
-| serverName              |	El nombre del miembro de colectivo.                       | Sí |  Ninguno   |
-| clusterName             |	El nombre de clúster al que pertenece el miembro de colectivo.  | Sí |  Ninguno   |
-| serverId                |	Un serie que identifica de forma exclusiva al miembro de colectivo. | Sí |  Ninguno   |
-| controllerHost          |	El nombre del controlador colectivo.                   | Sí      | Ninguno    |
-| controllerHttpsPort     |	El puerto HTTPS del controlador colectivo.             | Sí | Ninguno    |
-| controllerAdminName     |	El nombre de usuario administrativo definido en el controlador colectivo. Este es el mismo usuario que se utiliza para unirse a nuevos miembros en el colectivo. | Sí |  Ninguno   |
-| controllerAdminPassword |	La contraseña de usuario administrativo.	                     | Sí |  Ninguno   |
+| serverName              |	El nombre del miembro de colectivo.                       | Sí  |  Ninguno   |
+| clusterName             |	El nombre de clúster al que pertenece el miembro de colectivo.  | Sí  |  Ninguno   |
+| serverId                |	Un serie que identifica de forma exclusiva al miembro de colectivo. | Sí  |  Ninguno   |
+| controllerHost          |	El nombre del controlador colectivo.                   | Sí  |  Ninguno   |
+| controllerHttpsPort     |	El puerto HTTPS del controlador colectivo.             | Sí  |  Ninguno   |
+| controllerAdminName     |	El nombre de usuario administrativo definido en el controlador colectivo. Este es el mismo usuario que se utiliza para unirse a nuevos miembros en el colectivo. | Sí  |  Ninguno   |
+| controllerAdminPassword |	La contraseña de usuario administrativo.	                     | Sí  |  Ninguno   |
 | createControllerAdmin   |	Para indicar si se debe crear el usuario administrativo en el registro básico del miembro de colectivo. Los valores posibles son true o false. | No | true |
 
 Se da soporte a los siguientes elementos para Network Deployment:
@@ -860,34 +860,34 @@ El elemento `<cluster>` tiene el atributo siguiente:
 
 | Atributo | Descripción       | Obligatorio | Predeterminado |
 |-----------|-------------------|----------|---------|
-| name      | El nombre de clúster. | Sí	   | Ninguno    |
+| name      | El nombre de clúster. | Sí	   |  Ninguno   |
 
 El elemento `<node>` tiene el atributo siguiente:
 
 | Atributo | Descripción    | Obligatorio | Predeterminado |
 |-----------|----------------|----------|---------|
-| name      | El nombre de nodo. | Sí	    | Ninguno    |
+| name      | El nombre de nodo.   | Sí	    |  Ninguno   |
 
 El elemento `<server>`, que se utiliza en un contexto de Network Deployment, tiene los atributos siguientes:
 
 | Atributo  | Descripción      | Obligatorio | Predeterminado |
 |------------|------------------|----------|---------|
-| nodeName   | El nombre de nodo.   | Sí	   | Ninguno    |
-| serverName | El nombre del servidor. | Sí      | Ninguno    |
+| nodeName   | El nombre de nodo.   | Sí	   |  Ninguno   |
+| serverName | El nombre del servidor. | Sí      |  Ninguno   |
 
 El elemento `<tomcat>` indica un servidor Apache Tomcat. Tiene el atributo siguiente:
 
 | Atributo     | Descripción      | Obligatorio | Predeterminado |
 |---------------|------------------|----------|---------|
-| installdir    | El directorio de instalación de Apache Tomcat. Para una instalación de Tomcat que se divide entre un directorio CATALINA_HOME y un directorio CATALINA_BASE, especifique el valor de la variable de entorno CATALINA_BASE.     | Sí | Ninguno    |
+| installdir    | El directorio de instalación de Apache Tomcat. Para una instalación de Tomcat que se divide entre un directorio CATALINA_HOME y un directorio CATALINA_BASE, especifique el valor de la variable de entorno CATALINA_BASE.     | Sí  |  Ninguno   |
 | configureFarm | Para especificar si el servidor es un miembro de la granja de servidores. Los valores posibles son true o false.	| No | false |
-| farmServerId	| Una serie que identifica de forma exclusiva un servidor de la granja de servidores. Los servicios de administración de {{ site.data.keys.mf_server }} y todos los tiempos de ejecución de {{ site.data.keys.product_adj }} que se comunican con él deben compartir el mismo valor. | Sí |  Ninguno   |
+| farmServerId	| Una serie que identifica de forma exclusiva un servidor de la granja de servidores. Los servicios de administración de {{ site.data.keys.mf_server }} y todos los tiempos de ejecución de {{ site.data.keys.product_adj }} que se comunican con él deben compartir el mismo valor. | Sí  |  Ninguno   |
 
 El elemento `<database>` especifica la información necesaria para acceder a una base de datos concreta. El elemento `<database>` se especifica como la tarea de Ant configuredatabase, excepto en que no tiene los elementos `<dba>` y `<client>`. Sin embargo, es posible que tenga elementos `<property>`. El elemento `<database>` tiene los atributos siguientes:
 
 | Atributo | Descripción                                  | Obligatorio | Predeterminado |
 |-----------|--------------------------------------------|----------|---------|
-| kind      | El tipo de base de datos (Tiempo de ejecución de {{ site.data.keys.product_adj }}). | Sí |  Ninguno   |
+| kind      | El tipo de base de datos (Tiempo de ejecución de {{ site.data.keys.product_adj }}). | Sí  |  Ninguno   |
 | validate  | Para validar si se puede acceder a la base de datos o no. Los valores posibles son true o false. | No | true |
 
 El elemento `<database>` da soporte a los elementos siguientes:
@@ -904,13 +904,13 @@ El elemento `<analytics>` indica que desea conectar el entorno de ejecución de 
 
 | Atributo    | Descripción                                                                      | Obligatorio | Predeterminado |
 |--------------|----------------------------------------------------------------------------------|----------|---------|
-| install      | Para indicar si conectará el tiempo de ejecución de {{ site.data.keys.product_adj }} a {{ site.data.keys.mf_analytics }}. | No       | false   |
-| analyticsURL | El URL de los servicios de {{ site.data.keys.mf_analytics }}.	                                      | Sí      | Ninguno    |
-| consoleURL   | El URL de {{ site.data.keys.mf_analytics_console }}.	                                      | Sí      | Ninguno    |
-| username     | El nombre de usuario.	                                                                  | Sí      | Ninguno    |
-| password     | La contraseña.	                                                                  | Sí      | Ninguno    |
+| install      | Para indicar si conectará el tiempo de ejecución de {{ site.data.keys.product_adj }} a {{ site.data.keys.mf_analytics }}. |No       | false   |
+| analyticsURL | El URL de los servicios de {{ site.data.keys.mf_analytics }}.	                                      | Sí      |  Ninguno   |
+| consoleURL   | El URL de {{ site.data.keys.mf_analytics_console }}.	                                      | Sí      |  Ninguno   |
+| username     | El nombre de usuario.	                                                                  | Sí      |  Ninguno   |
+| password     | La contraseña.	                                                                  | Sí      |  Ninguno   |
 | validate     | Para validar si se puede acceder a {{ site.data.keys.mf_analytics_console }} o no.	      | No	     | true    |
-| tenant       | El arrendatario para los datos de indexación que se recopilan de un tiempo de ejecución de {{ site.data.keys.product_adj }}.	      | No       | Identificador interno |
+| tenant       | El arrendatario para los datos de indexación que se recopilan de un tiempo de ejecución de {{ site.data.keys.product_adj }}.	      |No       | Identificador interno |
 
 #### install
 {: #install-1 }
@@ -948,8 +948,8 @@ El elemento `<derby>` tiene los atributos siguientes:
 
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| database	 | El nombre de la base de datos.	                      | No       |	MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
-| datadir	 | El directorio que contiene las bases de datos. |	Sí	     | Ninguno    |
+| database	 | El nombre de la base de datos.	                      |No       |	MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
+| datadir	 | El directorio que contiene las bases de datos. |	Sí	     |  Ninguno   |
 | schema     |	El nombre de esquema.                          |	No	     | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, o APPCENTER, dependiendo del tipo. |
 
 El elemento `<derby>` da soporte al elemento siguiente:
@@ -971,11 +971,11 @@ El elemento `<db2>` tiene los atributos siguientes:
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
 | database   | El nombre de la base de datos. | No	| MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
-| server     | El nombre de host del servidor de bases de datos.      | Sí	     | Ninguno    |
+| server     | El nombre de host del servidor de bases de datos.      | Sí	     |  Ninguno   |
 | port       | El puerto en el servidor de bases de datos.           | No	     | 50000   |
 | user       | El nombre de usuario para acceder a las bases de datos.     | Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos                                 | que se listan en Usuarios de base de datos y privilegios. | Sí	| Ninguno |
-| password   | La contraseña para acceder a las bases de datos.      | No       | Consultado de forma interactiva |
-| schema     | El nombre de esquema.                           | No       | Depende del usuario |
+| password   | La contraseña para acceder a las bases de datos.      |No       | Consultado de forma interactiva |
+| schema     | El nombre de esquema.                           |No       | Depende del usuario |
 
 Para obtener más información sobre las cuentas de usuario de DB2, consulte [Visión general del modelo de seguridad de DB2](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
 El elemento `<db2>` da soporte al elemento siguiente:
@@ -996,19 +996,19 @@ El elemento `<mysql>` tiene los atributos siguientes:
 
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| database	 | El nombre de la base de datos.	                      | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
-| server	 | El nombre de host del servidor de bases de datos.	  | Sí      | Ninguno    |
+| database	 | El nombre de la base de datos.	                      |No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, o APPCNTR, dependiendo del tipo. |
+| server	 | El nombre de host del servidor de bases de datos.	  | Sí      |  Ninguno   |
 | port	     | El puerto en el servidor de bases de datos.           | No	     | 3306    |
-| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos | que se listan en Usuarios de base de datos y privilegios. | Sí |  Ninguno   |
+| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos | que se listan en Usuarios de base de datos y privilegios. | Sí  |  Ninguno   |
 | password	 | La contraseña para acceder a las bases de datos.	  | No	     | Consultado de forma interactiva |
 
 En lugar de **database**, **server** y **port**, también puede especificar un URL. En este caso, utilice los siguientes atributos:
 
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| url	     | El URL para la conexión a la base de datos.	  | Sí	     | Ninguno    |
+| url	     | El URL para la conexión a la base de datos.	  | Sí	     |  Ninguno   |
 | user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos que se listan en Usuarios de base de datos y privilegios. | Sí  |  Ninguno   |
-| password	 | La contraseña para acceder a las bases de datos.	  | No       | Consultado de forma interactiva |
+| password	 | La contraseña para acceder a las bases de datos.	  |No       | Consultado de forma interactiva |
 
 Para obtener más información sobre las cuentas de usuario de MySQL, consulte [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).
 
@@ -1033,8 +1033,8 @@ El elemento `<oracle>` tiene los atributos siguientes:
 | database   | El nombre de base de datos, o el nombre de servicio de Oracle. Nota: Siempre debe utilizar un nombre de servicio para conectarse a una base de datos PDB. | No | ORCL |
 | server	 | El nombre de host del servidor de bases de datos.	Sí	| Ninguno
 | port	     | El puerto en el servidor de bases de datos.	No	| 1521
-| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos que se listan en Usuarios de base de datos y privilegios. Consulte la nota bajo esta tabla. | Sí |  Ninguno   |
-| password	 | La contraseña para acceder a las bases de datos.	  | No       | Consultado de forma interactiva |
+| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos que se listan en Usuarios de base de datos y privilegios. Consulte la nota bajo esta tabla. | Sí  |  Ninguno   |
+| password	 | La contraseña para acceder a las bases de datos.	  |No       | Consultado de forma interactiva |
 
 > **Nota:** Para el atributo **user**, utilice preferiblemente un nombre de usuario en letras mayúsculas. Los nombres de usuario de Oracle están generalmente en letras mayúsculas. A diferencia de otras herramientas de base de datos, la tarea Ant **installmobilefirstruntime** no convierte letras minúsculas a mayúsculas en el nombre de usuario. Si la tarea Ant **installmobilefirstruntime** no puede conectarse a la base de datos, intente escribir el valor para el atributo **user** en letras mayúsculas.
 
@@ -1042,8 +1042,8 @@ En lugar de **database**, **server** y **port**, también puede especificar un U
 
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| url	     | El URL para la conexión a la base de datos.	  | Sí      | Ninguno    |
-| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos que se listan en Usuarios de base de datos y privilegios. Consulte la nota bajo esta tabla. | Sí |  Ninguno   |
+| url	     | El URL para la conexión a la base de datos.	  | Sí      |  Ninguno   |
+| user	     | El nombre de usuario para acceder a las bases de datos. Este usuario no necesita privilegios ampliado en las bases de datos. Si implementa restricciones en la base de datos, puede establecer un usuario con los privilegios restringidos que se listan en Usuarios de base de datos y privilegios. Consulte la nota bajo esta tabla. | Sí  |  Ninguno   |
 | password	 | La contraseña para acceder a las bases de datos.	  | No	     | Consultado de forma interactiva |
 
 > **Nota:** Para el atributo **user**, utilice preferiblemente un nombre de usuario en letras mayúsculas. Los nombres de usuario de Oracle están generalmente en letras mayúsculas. A diferencia de otras herramientas de base de datos, la tarea Ant **installmobilefirstruntime** no convierte letras minúsculas a mayúsculas en el nombre de usuario. Si la tarea Ant **installmobilefirstruntime** no puede conectarse a la base de datos, intente escribir el valor para el atributo **user** en letras mayúsculas.
@@ -1068,7 +1068,7 @@ El elemento `<property>`, que se puede utilizar dentro de los elementos `<derby>
 
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|--------------------------------------------|----------|---------|
-| name       | El nombre de la propiedad.	              | Sí      | Ninguno    |
+| name       | El nombre de la propiedad.	              | Sí      |  Ninguno   |
 | type	     | Tipo Java de los valores de propiedades, normalmente java.lang.String/Integer/Boolean. | No | java.lang.String |
 | value	     | El valor de la propiedad.	              | Sí      |  Ninguno   |
 
@@ -1183,7 +1183,7 @@ El elemento `<database>` tiene los atributos siguientes:
 | Atributo    | Descripción                                            | Obligatorio | Predeterminado |
 |--------------|--------------------------------------------------------|----------|---------|
 | kind         | El tipo de base de datos (ApplicationCenter).              | Sí      |  Ninguno   |
-| validate	   | Para validar si se puede acceder a la base de datos o no. | No       | True    |
+| validate	   | Para validar si se puede acceder a la base de datos o no. |No       | True    |
 
 El elemento `<database>` da soporte a los elementos siguientes.Para obtener más información sobre la configuración de estos elementos de base de datos, consulte las tablas de [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
 
@@ -1201,8 +1201,8 @@ El elemento `<user>` recopila los parámetros sobre un usuario para inclulos en 
 
 | Atributo    | Descripción                                            | Obligatorio | Predeterminado |
 |--------------|--------------------------------------------------------|----------|---------|
-| role         | El rol de usuario appcenteradmin. | Sí |  Ninguno   |
-| name	       | El nombre de usuario. | Sí |  Ninguno   |
+| role         | El rol de usuario appcenteradmin. | Sí  |  Ninguno   |
+| name	       | El nombre de usuario. | Sí  |  Ninguno   |
 | password	   | La contraseña, si debe crear el usuario.	| No |  Ninguno   |
 
 ## Tareas Ant para la instalación de {{ site.data.keys.mf_analytics }}
@@ -1245,7 +1245,7 @@ Las tareas **installanalytics**, **updateanalytics**, y **uninstallanalytics** t
 
 | Atributo    | Descripción                                            | Obligatorio | Predeterminado |
 |--------------|--------------------------------------------------------|----------|---------|
-| serviceWar   | El archivo WAR para {{ site.data.keys.mf_analytics }} Service     | No       | El archivo analytics-service.war se encuentra en el directorio Analytics. |
+| serviceWar   | El archivo WAR para {{ site.data.keys.mf_analytics }} Service     |No       | El archivo analytics-service.war se encuentra en el directorio Analytics. |
 
 #### serviceWar
 {: #servicewar-2 }
@@ -1253,7 +1253,7 @@ Utilice el atributo **serviceWar** para especificar un directorio distinto para 
 
 Las tareas `<installanalytics>`, `<updateanalytics>` y `<uninstallanalytics>` dan soporte a los elementos siguientes:
 
-| Atributo         | Descripción                               | Obligatorio | Predeterminado |
+| Atributo        | Descripción                               | Obligatorio | Predeterminado |
 |-------------------|-------------------------------------------|----------|---------|
 | console	        | {{ site.data.keys.mf_analytics }}   	                | Sí	   | 1       |
 | user	            | El usuario que se correlacionará con un rol de seguridad.	| No	   | 0..     |
@@ -1268,7 +1268,7 @@ El elemento `<console>` recopila información para personalizar la instalación 
 | Atributo    | Descripción                                  | Obligatorio | Predeterminado |
 |--------------|----------------------------------------------|----------|---------|
 | warfile	   | El archivo WAR de la consola	                      | No	     | El archivo analytics-ui.war se encuentra en el directorio Analytics. |
-| shortcutsdir | El directorio donde coloca los atajos. | No	     | Ninguno    |
+| shortcutsdir | El directorio donde coloca los atajos. | No	     |  Ninguno   |
 
 #### warFile
 {: #warfile-2 }
@@ -1295,8 +1295,8 @@ El elemento `<property>` tiene los atributos siguientes:
 
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|----------------------------|----------|---------|
-| name       | El nombre de la propiedad.  | Sí      | Ninguno    |
-| value	     | El valor de la propiedad. |	Sí      | Ninguno    |
+| name       | El nombre de la propiedad.  | Sí      |  Ninguno   |
+| value	     | El valor de la propiedad. |	Sí      |  Ninguno   |
 
 ### Para especificar un usuario y un rol de seguridad
 {: #to-specify-a-user-and-a-security-role-1 }
@@ -1304,9 +1304,9 @@ El elemento `<user>` recopila los parámetros sobre un usuario para inclulos en 
 
 | Atributo   | Descripción                                   | Obligatorio | Predeterminado |
 |-------------|-----------------------------------------------|----------|---------|
-| role	      | Un rol de seguridad válido para la aplicación.    | Sí      | Ninguno    |
-| name	      | El nombre de usuario.	                              | Sí      | Ninguno    |
-| password	  | La contraseña si el usuario debe crearse. | No       | Ninguno    |
+| role	      | Un rol de seguridad válido para la aplicación.    | Sí      |  Ninguno   |
+| name	      | El nombre de usuario.	                              | Sí      |  Ninguno   |
+| password	  | La contraseña si el usuario debe crearse. |No       |  Ninguno   |
 
 Después de definir usuarios mediante el elemento `<user>`, puede correlacionarlos con cualquiera de los roles siguientes para la autenticación en {{ site.data.keys.mf_console }}:
 
@@ -1329,9 +1329,9 @@ El elemento `<elasticsearch>` recopila los parámetros acerca de un clúster Ela
 
 | Atributo        | Descripción                                   | Obligatorio | Predeterminado   |
 |------------------|-----------------------------------------------|----------|-----------|
-| clusterName	   | El nombre de clúster de ElasticSearch.	           | No | worklight |
+| clusterName	   | El nombre de clúster de ElasticSearch.	           |No       | worklight |
 | nodeName	       | El nombre de nodo de ElasticSearch. Este nombre debe ser exclusivo en un clúster de ElasticSearch.	| No | `worklightNode_<random number>` |
-| mastersList	   | Una serie delimitada por comas que contiene el nombre de host y los puertos de los nodos maestro de ElasticSearch en el clúster de ElasticSearch (Por ejemplo: hostname1:transport-port1,hostname2:transport-port2)	           | No       |	Depende de la topología |
+| mastersList	   | Una serie delimitada por comas que contiene el nombre de host y los puertos de los nodos maestro de ElasticSearch en el clúster de ElasticSearch (Por ejemplo: hostname1:transport-port1,hostname2:transport-port2)	           |No       |	Depende de la topología |
 | dataPath	       | La ubicación del clúster de ElasticSearch.	       | No	      | Depende del servidor de aplicaciones |
 | shards	       | El número de fragmentos que crea el clúster de ElasticSearch. Este valor sólo lo pueden establecer los nodos maestro creados en el clúster de ElasticSearch.	| No | 5 |
 | replicasPerShard | El número de réplicas para cada fragmento del clúster de ElasticSearch. Este valor sólo lo pueden establecer los nodos maestro creados en el clúster de ElasticSearch. | No | 1 |
@@ -1409,8 +1409,8 @@ Este elemento tiene los siguientes atributos:
 
 | Atributo  | Descripción                                  | Obligatorio | Predeterminado |
 |------------|----------------------------|----------|---------|
-| name       | El nombre de la propiedad.  | Sí      | Ninguno    |
-| value	     | El valor de la propiedad. |	Sí      | Ninguno    |
+| name       | El nombre de la propiedad.  | Sí      |  Ninguno   |
+| value	     | El valor de la propiedad. |	Sí      |  Ninguno   |
 
 ## Bases de datos de tiempo de ejecución interno
 {: #internal-runtime-databases }

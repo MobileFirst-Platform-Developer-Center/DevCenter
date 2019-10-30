@@ -72,8 +72,8 @@ Lea más adelante, para obtener información sobre la preparación e instalació
 
 Obtenga más información sobre el proceso de instalación de {{ site.data.keys.mf_server }} siguiendo las instrucciones para crear un clúster funcional de {{ site.data.keys.mf_server }} con dos nodos en el perfil de WebSphere Application Server Liberty. La instalación puede completarse utilizando herramientas gráficas (GUI) o líneas de mandatos.
 
-* [La instalación del modo GUI con IBM Installation Manager y la herramienta de configuración del servidor ](production/simple-install/tutorials/graphical-mode).
-* [Instalación de la línea de mandatos con la herramienta de línea de mandatos](production/simple-install/tutorials/command-line).
+* [La instalación del modo GUI con IBM Installation Manager y la herramienta de configuración del servidor ](production/simple-install/graphical-mode).
+* [Instalación de la línea de mandatos con la herramienta de línea de mandatos](production/simple-install/command-line).
 
 Después de completar la instalación mediante uno de los dos métodos anteriores, podría necesitarse la [configuración](production/server-configuration) posterior según los requisitos.
 
