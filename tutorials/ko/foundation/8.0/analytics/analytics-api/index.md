@@ -19,6 +19,7 @@ weight: 1
 * [클라이언트 이벤트 사용/사용 안함](#enablingdisabling-client-event-types)
 * [사용자 정의 이벤트](#custom-events)
 * [사용자 추적](#tracking-users)
+* [인앱 사용자 피드백 캡처 및 전송](#sending-userfeedback-data)
 
 ## 클라이언트 측에서 Analytics 구성
 {: #configuring-analytics-on-the-client-side }
@@ -480,4 +481,66 @@ Android 애플리케이션에서는 다음 Java API 메소드를 사용하십시
 
 ```java
 WLAnalytics.send();
+```
+
+## 인앱 사용자 피드백 캡처 및 전송
+{: #sending-userfeedback-data }
+
+인앱 사용자 피드백을 사용하여 애플리케이션 성능 분석을 강화할 수 있습니다. 애플리케이션 사용자와 검사자가 앱 소유자에게 풍부한 컨텍스트 피드백을 제공하도록 할 수 있습니다. 앱 소유자는 앱 소유자와 개발자가 추가로 작업할 수 있는 애플리케이션 사용 환경에서 해당 사용자로부터 실시간 피드백을 받을 수 있습니다. 이 기능은 애플리케이션 가동 유지에 상당한 기민성을 제공합니다. 다음의 API를 사용하면 애플리케이션의 조치 핸들러에서 애플리케이션을 대화식 피드백 모드로 전환할 수 있습니다(예: 메뉴 항목 선택 또는 단추 클릭을 처리하는 경우).
+
+> 이 기능은 웹 애플리케이션에는 지원되지 않습니다.
+
+#### JavaScript(Cordova)
+{: #javascript-cordova-sending-userfeedback-data }
+
+우선 다음 플러그인을 추가하여 Cordova 애플리케이션에 인앱 피드백 기능을 포함하고 플러그인이 정상적으로 추가되었는지 확인하십시오.
+```
+cordova plugin add cordova-plugin-mfp-analytics
+```
+
+이제 Cordova 애플리케이션의 조치 핸들러에서 다음의 JavaScript API 메소드를 사용하십시오.
+
+```javascript
+WL.Analytics.triggerFeedbackMode();
+```
+
+#### JavaScript(웹)
+{: #javascript-web-ssending-userfeedback-data }
+
+**지원되지 않음**
+
+#### iOS
+{: #ios-sending-userfeedback-data }
+**Swift**
+
+우선 다음을 애플리케이션의 podfile에 추가하십시오.
+
+```
+pod 'IBMMobileFirstPlatformFoundationAnalytics'
+```
+
+그 다음에는 XCode 프로젝트의 루트에서 다음 명령을 실행하여 반드시 팟(Pod)을 업데이트하십시오.
+```
+pod update
+```
+
+이제 애플리케이션의 조치 핸들러에서 다음 API를 호출하십시오.
+
+```swift
+WLAnalytics.sharedInstance().triggerFeedbackMode();
+```
+
+#### Android
+{: #android-sending-userfeedback-data }
+
+우선 애플리케이션의 gradle 스크립트에 다음의 종속 항목을 추가하십시오.
+
+```
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationanalytics:8.0.+@aar'
+```
+
+그 다음에는 Android 애플리케이션의 조치 핸들러에서 다음의 Java API 메소드를 사용하십시오.
+
+```java
+WLAnalytics.triggerFeedbackMode();
 ```

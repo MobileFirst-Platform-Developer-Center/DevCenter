@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
+<link href="custom-style.css" type="text/css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet"/>
+<script type="text/javascript" src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+
+<style>
+  .bx--col{
+    padding-right: 0rem;
+    padding-left: 2%;
+    padding-top: 2%;
+    margin-right: 2%;
+
+  }
+  #wrapper {
+      margin-left:auto;
+      margin-right:auto;
+  }
+  .wrapper {
+      margin-left:auto;
+      margin-right:auto;
+  }
+
+</style>
+
+</head>
+<body>
+<div class="wrapper" style="width: 100%">
+<header class="bx--header" role="banner" aria-label="IBM 플랫폼 이름" data-header>
+  <a class="bx--skip-to-content" href="#main-content" tabindex="0">기본 컨텐츠로 건너뛰기</a>
+
+  <a class="bx--header__name" href="" title="">
+    <span class="bx--header__name--prefix">
+      Mobile&nbsp;Foundation&nbsp;{dev}
+    </span>
+  </a>
+
+  <nav class="bx--header__nav" aria-label="플랫폼 이름" data-header-nav>
+    <ul class="bx--header__menu-bar" role="menubar" aria-label="플랫폼 이름">
+      <li>
+        <a class="bx--header__menu-item" href="../../../../features/" role="menuitem" tabindex="0">
+          기능
+        </a>
+      </li>
+
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          개발자
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="개발자">
+              <li class="bx--header__submenu" data-header-submenu>
+                <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ios-tutorials/" tabindex="-1">
+                  <span class="bx--text-truncate--end">
+                    iOS
+                  </span>
+                </a>
+                </li>
+                <li class="bx--header__submenu" data-header-submenu>
+                  <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/android-tutorials/" tabindex="-1">
+                    <span class="bx--text-truncate--end">
+                      Android
+                    </span>
+                  </a>
+                  </li>
+                  <li class="bx--header__submenu" data-header-submenu>
+                    <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/windows-8-10-tutorials/" tabindex="-1">
+                      <span class="bx--text-truncate--end">
+                        Windows 8 및 10
+                      </span>
+                    </a>
+                    </li>
+              <li role="none">
+                <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/cordova-tutorials/" tabindex="-1">
+                  <span class="bx--text-truncate--end">
+                    Cordova
+                  </span>
+                </a>
+                </li>
+                <li role="none">
+                  <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ionic-tutorials/" tabindex="-1">
+                    <span class="bx--text-truncate--end">
+                      Ionic
+                    </span>
+                  </a>
+                  </li>
+
+              <li role="none">
+                <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/xamarin-tutorials/" tabindex="-1">
+                  <span class="bx--text-truncate--end">
+                    Xamarin
+                  </span>
+                </a>
+                </li>
+                <li role="none">
+                  <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/reactnative-tutorials/" tabindex="-1">
+                    <span class="bx--text-truncate--end">
+                      React Native
+                    </span>
+                  </a>
+                  </li>
+
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/web-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                웹
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          문서
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="문서">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 8.0
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.1/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.1
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.0/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.0
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/6.3/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 6.3
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          실습
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="실습">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/8.0/intro/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 8.0 실습
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.1/setup/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.1 실습
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.0/setup/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.0 실습
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          리소스
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="리소스">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../blog/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                블로그
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../downloads/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                다운로드
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../video-gallery/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                비디오&nbsp;갤러리
+              </span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a class="bx--header__menu-item" href="../../../../help/" role="menuitem" tabindex="0">
+          도움말
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+
+</header>
+
+<div class="bx--content" style="background-image: url('header.jpg')">
+  <div class="banner">
+  <div class="bx--row" >
+    <div class="bx--col" style="padding-left: 0px"><h2 style="color:white">IBM Cloud Pak for Applications의 Mobile Foundation Services</h2>
+      <p style="color:white">모바일, 웨어러블, 대화, 웹 및 PWA를 포함하여 차세대 다중 채널 디지털 앱을 빠르게 빌드하고 배치합니다. 컨테이너형 모바일 백엔드 서비스로 앱을 강화하십시오.</p>
+      <a href="../../../../tutorials/en/foundation/8.0/ibmcloud/getting-started-mf-on-rhos/" target="_blank"><button  class="bx--btn bx--btn--primary" type="button">시작하기
+      </button></a>
+      <br/>
+    </div>
+    <br/>
+  </div>
+</div>
+</div>
+
+<div class="wrapper" style="width: 100%">
+  <div class="bx--row" style="width: 100%">
+      <div class="bx--col bx--col-max-1 bx--col-md-1" style="margin-right: 0px; max-width: 15%">
+        <div class="bx--row" style="margin-left: 4%">
+          <div class="bx--col">
+        <p>기능 탐색</p>
+        </div>
+        </div>
+      </div>
+      <div class="bx--col bx--col-md-11" style="max-width: 85%">
+        <div class="bx--row">
+          <div id="inner-col" class="bx--col">
+            <div class="dab">
+              <svg width="23" height="23" fill-rule="evenodd"><path d="M5.8 1.2v4.7H1.2V1.2h4.6zM7 0H0v7h7V0zM13.8 1.2v4.7H9.2V1.2h4.6zM15 0H8v7h7V0zM21.8 1.2v4.7h-4.7V1.2h4.7zM23 0h-7v7h7V0zM5.8 9.2v4.7H1.2V9.2h4.6zM7 8H0v7h7V8zM13.8 9.2v4.7H9.2V9.2h4.6zM15 8H8v7h7V8zM21.8 9.2v4.7h-4.7V9.2h4.7zM23 8h-7v7h7V8zM5.8 17.2v4.7H1.2v-4.7h4.6zM7 16H0v7h7v-7zM13.8 17.2v4.7H9.2v-4.7h4.6zM15 16H8v7h7v-7zM21.8 17.2v4.7h-4.7v-4.7h4.7zM23 16h-7v7h7v-7z"></path></svg>
+
+              <h3>개발 가속화</h3>
+              <p>다중 채널에서 실행할 수 있는 디지털 앱을 빠르게 빌드합니다. Digital App Builder는 컴포넌트를 끌어서 놓아 앱을 빠르게 빌드할 수 있는 기능을 제공합니다.</p>
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Digital App Builder</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Watson 서비스를 활용하는 AI 기능을 갖춘 Digital App Builder입니다.</div>
+                    </div>
+
+              </div>
+            </section>
+              <a href="../../../../tutorials/en/foundation/8.0/digital-app-builder/" target="_blank"><button class="bx--btn bx--btn--primary" type="button">자세히 알아보기
+            </button></a>
+            </div>
+          </div>
+          <div id="inner-dab-v" class="bx--col">
+            <div class="dab-video" style="background-color: #ffffff" tabindex="0">
+              <iframe width="90%" height="300px" src="https://www.youtube.com/embed/x9_XjyKR8K8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="bx--row">
+          <div class="bx--col">
+          <div class="bx--row">
+          <div class="bx--col">
+            <div class="bx--row">
+              <div class="bx--col">
+            <div class="mc" style="background-color: #ffffff" tabindex="0">
+              <svg width="23" height="24" fill-rule="evenodd"><path d="M20.5 18v-6h-9V5.9C12.9 5.7 14 4.5 14 3c0-1.7-1.3-3-3-3S8 1.3 8 3c0 1.5 1.1 2.7 2.5 2.9V12h-8v6.1C1.1 18.4 0 19.6 0 21c0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.5-1.1-2.7-2.5-2.9V13h16v5.1c-1.4.2-2.5 1.5-2.5 2.9 0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.5-1-2.8-2.5-3zM9 3c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zM5 21c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm15 2c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></svg>
+              <h3>관리 및 제어</h3>
+              <p>개발자는 계속 증가하는 사용 가능한 서비스 및 런타임 프레임워크로 이루어진 에코시스템을 이용하면서, 자신의 클라우드 애플리케이션을 빠르게 빌드, 배치 및 관리할 수 있습니다.</p>
+
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Foundation 서비스</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">애플리케이션 라이프사이클</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">보안 기능 토글</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">오프라인 데이터 동기화</div>
+                    </div>
+              </div>
+            </section>
+
+
+
+
+            </div>
+            </div>
+            </div>
+
+          </div>
+          <div class="bx--col">
+            <div class="bx--row">
+              <div class="bx--col">
+            <div class="sr" style="background-color: #ffffff" tabindex="0">
+              <svg width="24" height="24" fill-rule="evenodd"><path d="M0 0v24h24V0H0zm22.1 7l-7.2 8.9-9.2-3.8c-.2-.1-.4 0-.6.1L1 16.6V7h21.1zm.9 16H1v-4.9l4.6-5 9.2 3.8c.2.1.4 0 .6-.1L23 7.5V23zm0-17H1V1h22v5z"></path></svg>
+              <h3>인지 및 대응</h3>
+              <p>기본 제공 시각화를 통해 애플리케이션이 사용자들과 어떻게 수행하고 있는지에 대한 인사이트를 얻어 사용자 참여를 적절하고 효과적으로 유지합니다.</p>
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Mobile Analytics</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">애플리케이션 사용 및 안정성</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">네트워크 상호작용</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">인앱 사용자 피드백</div>
+                    </div>
+
+              </div>
+            </section>
+          </div>
+          </div>
+          </div>
+
+
+            </div>
+          <div class="bx--col">
+            <div class="bx--row">
+              <div class="bx--col">
+            <div class="pn" style="background-color: #ffffff" tabindex="0">
+              <svg width="24" height="24" fill-rule="evenodd"><path d="M21 13V3h-3v1h2v9h-3v11h7V13h-3zm2 10h-5v-9h5v9zM17 3.5L11 0v3H3v13h1V4h7v3l6-3.5zm-5-1.8l3 1.8-3 1.8V1.7zM16 20H6.4c-.3-1.4-1.6-2.5-3.2-2.5C1.4 17.5 0 19 0 20.7 0 22.5 1.5 24 3.2 24c1.7 0 3.1-1.3 3.2-3h9.5l.1-1zM3.2 23C2 23 1 22 1 20.7c0-1.2 1-2.2 2.2-2.2 1.2 0 2.2 1 2.2 2.2.1 1.3-.9 2.3-2.2 2.3z"></path></svg>
+              <h3>사용자 참여</h3>
+              <p>알림 전송에 대한 전체 프로세스를 개발자가 완전히 알 수 있도록 하는 통합 알림 메커니즘을 통해 사용자를 참여시킵니다.</p>
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Push Notifications</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">iOS용 알림.</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Android용 알림.</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Windows 및 웹용 알림.</div>
+                    </div>
+
+
+              </div>
+            </section>
+
+
+          </div>
+        </div>
+        </div>
+
+        </div>
+          <div class="bx--col">
+            <div class="bx--row">
+              <div class="bx--col">
+            <div class="pd" style="background-color: #ffffff" tabindex="0">
+              <svg width="24" height="24" fill-rule="evenodd"><path d="M14 1v22H1V1h13zm1-1H0v24h15V0zM23 1v22h-5V1h5zm1-1h-7v24h7V0z"></path><path d="M12 4v4H3V4h9zm1-1H2v6h11V3zM21 3v1h-1V3h1zm1-1h-3v3h3V2zM21 7v1h-1V7h1zm1-1h-3v3h3V6zM21 11v1h-1v-1h1zm1-1h-3v3h3v-3zM21 15v1h-1v-1h1zm1-1h-3v3h3v-3zM21 19v1h-1v-1h1zm1-1h-3v3h3v-3z"></path></svg>
+              <h3>패키징 및 배포</h3>
+              <p>애플리케이션 센터를 엔터프라이즈 애플리케이션 저장소로 사용하고 일부 모바일 애플리케이션을 회사 내 특정 사용자 그룹만 사용할 수 있도록 지정할 수 있습니다.</p>
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Application Center</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">iOS용 엔터프라이즈 앱 저장소.</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Android용 엔터프라이즈 앱 저장소.</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Windows용 엔터프라이즈 앱 저장소.</div>
+                    </div>
+
+
+              </div>
+            </section>
+
+          </div>
+          </div>
+          </div>
+
+
+        </div>
+          </div>
+          <div class="bx--row">
+            <div class="bx--col">
+              <a href="../../../../tutorials/en/foundation/8.0/application-development/" target="_blank"><button class="bx--btn bx--btn--primary" type="button">자세히 알아보기
+            </button></a>
+            </div>
+            <div class="bx--col">
+
+              <a href="../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><button  class="bx--btn bx--btn--primary" type="button">자세히 알아보기
+            </button></a>
+            </div>
+
+              <div class="bx--col">
+                <a href="../../../../tutorials/en/foundation/8.0/notifications/" target="_blank"><button class="bx--btn bx--btn--primary" type="button">자세히 알아보기
+            </button></a>
+
+            </div>
+              <div class="bx--col">
+            <a href="../../../../tutorials/en/foundation/8.0/appcenter/" target="_blank"><button  class="bx--btn bx--btn--primary" type="button">자세히 알아보기
+            </button></a>
+            </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+</div>
+</div>
+
+</div>
+
+<div class="rectangle">
+  <div class="bx--row" style="background-color: #f0f3f6">
+      <div class="bx--col bx--col-max-2 bx--col-sm-12">
+        <h4 style="color:black">문서 보기</h4>
+        </div>
+
+
+      <div class="bx--col bx--col-md-3 bx--col-sm-6" style="margin-left: 0px; margin-right: 98px">
+        <div class="expdocs">
+          <img src="Explore-docs-icon.svg" alt="문서 탐색"/>
+            <h4 style="color:black"><b>문서 탐색</b></h4>
+          <p style="color:black">Mobile Foundation에 대한 전체 문서를 봅니다.</p>
+        <div style="text-align:right;">
+        <a href="../../../../tutorials/en/foundation/8.0/all-tutorials/"><img src="arrow-black-32.svg" alt="이동"/></a>
+        </div>
+        </div>
+      </div>
+
+
+
+
+  </div>
+
+  <div class="bx--row" style="background-color: #f0f3f6">
+      <div class="bx--col bx--col-max-2 bx--col-sm-12" style="background-color: #f3f3f3">
+
+        <h4 style="color:black">과정 결정에 도움 받기</h4>
+        </div>
+
+      <div class="bx--col bx--col-md-3 bx--col-sm-6" style="margin-left: 0px; margin-right: 98px">
+        <div class="personaljourney1" style="background-color: #000000" tabindex="0">
+
+          <h3 style="color:white">나는...</h3>
+          <h4 style="color:white">프론트 엔드 개발자</h4>
+          <p style="color:white">코드를 적게 사용하는(low-code) 방식으로 AI 기능을 갖춘 모바일, 웹 및 PWA(Progressive Web App) 다중 채널 애플리케이션을 빠르게 작성합니다.</p>
+          <br/>
+        <div style="text-align:right;">
+        <a href="../../../../tutorials/en/mobileservices-icpa/front-end-developer-journey/"><img src="arrow-white-32.svg" alt="이동"/></a>
+        </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+</div>
+    </body>

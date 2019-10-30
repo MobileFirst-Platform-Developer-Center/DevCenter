@@ -434,7 +434,7 @@ Android 디바이스에서 데이터를 암호화하려면 애플리케이션에
    ##### 이후(Cloudant Sync 사용): Android 디바이스의 데이터 암호화:
    {: #after-with-cloudant-sync-encrypt-android-devices }
     ```xml
-    repositories {
+   repositories {
         mavenLocal()
         maven { url "http://cloudant.github.io/cloudant-sync-eap/repository/" }
         mavenCentral()

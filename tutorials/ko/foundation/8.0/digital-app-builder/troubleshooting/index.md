@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 문제점 해결
-weight: 6
+weight: 17
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -18,7 +18,8 @@ IBM Digital App Builder를 사용하는 중에 발생할 수 있는 일부 문�
 
         * Windows에서: `%USERPROFILE%\AppData\Roaming\IBM Digital App Builder\log.log`.
 
-    * `<APP LOCATION>/ibm/applog.log`에서 찾을 수 있는 앱 관련 로그 `applog.log`.
+    * `<APP LOCATION>/ibm/applog.log`에서 찾을 수 있는 앱 관련 로그의 `applog.log`입니다.
+
 
 * Swagger 파일을 사용하여 마이크로서비스의 데이터 세트 작성 실패
 
@@ -64,11 +65,22 @@ IBM Digital App Builder를 사용하는 중에 발생할 수 있는 일부 문�
 
 * 설치된 경우에도 Android Studio에 대한 필수 소프트웨어 확인은 실패합니다.
 
-    경로에서 Android 실행 파일(`<path to android sdk>/tools`)이 있는지 확인하고 필수 소프트웨어를 확인하십시오.
+    경로에 Android 실행 파일((`<path to android sdk>/tools`)이 있는지 확인하고 필수 소프트웨어를 확인하십시오.
 
 * Windows 7에서 앱 작성 및 문제 미리보기
 
     `C:`가 아닌 다른 디스크 드라이브 위치에서 새 앱을 작성하려고 하면 오류가 발생할 수 있습니다.
 
-    `C://<your folder name/app name>` 드라이브 아래에서 앱 프로젝트를 작성하십시오.
+    반드시 `C://<your folder name/app name>` 드라이브에서 앱 프로젝트를 작성하십시오.
 
+* Digital App Builder는 빨간색 화면에서 충돌합니다.
+
+    빨간색 화면에서 충돌이 나타나면 아래의 위치에서 로그를 확인하십시오.
+    * MacOS- `/Users/<username>/Library/Logs/IBM Digital App Builder/log.log`
+    * Windows - `C:\\Users\<username>\AppData\Roming\IBM Digital App Builder\log.log`
+
+    `rendered.js`의 `getPath`에 대한 오류인 경우, 이는 알려진 [전자 문제](https://github.com/electron/electron/issues/8205)입니다.
+
+    이는 무작위로 발생합니다.
+
+    Digital App Builder를 다시 시작하십시오. 사용자의 시나리오가 작동해야 합니다.

@@ -356,7 +356,7 @@ phoneNumber |디바이스 등록 및 알림 수신에 사용되는 전화번호�
 테스트용으로 Postman이 아래에 설명된 대로 사용됩니다.
 
 1. [기밀 클라이언트를 구성하십시오](../../authentication-and-security/confidential-clients/).   
-    REST API를 통한 푸시 알림 전송에서는 공백으로 구분된 범위 요소 `messages.write` 및 `push.application.<applicationId>를 사용합니다. `
+    REST API를 통한 푸시 알림 전송에서는 공백으로 구분된 범위 요소 `messages.write` 및 `push.application.<applicationId>를 사용합니다.`
 
     <img class="gifplayer" alt="기밀 클라이언트 구성" src="push-confidential-client.png"/>
 
