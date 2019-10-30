@@ -8,23 +8,24 @@ show_children: true
 ## Visão Geral
 {: #getting-started }
 
-É possível ativar o Digital App Builder a partir de:
+Ative o Digital App Builder a partir de:
 
 * No **MacOS**, clique duas vezes no **ícone do IBM Digital App Builder** para abrir o Digital App Builder.
 * No **Windows**, ative o Digital App Builder selecionando **Iniciar > Programas > IBM Digital App Builder**.
 
->**Nota**: se você estiver abrindo o Digital App Builder pela primeira vez, **Aceite** a **Licença para usar o IBM Digital App Builder** na tela flash para prosseguir. Depois de aceitar o contrato de licença, a **Verificação de Pré-requisitos** é executada automaticamente pela primeira vez. Clique em **OK** para continuar, se nenhum erro for localizado, caso contrário, corrija os erros e, em seguida, reinicie o Digital App Builder.
+>**Nota**: Se o Digital App Builder for aberto pela primeira vez, **Aceite** a **Licença para usar o IBM Digital App Builder** na tela flash para avançar. Depois de aceitar o contrato de licença, a **Verificação de Pré-requisitos** é executada automaticamente pela primeira vez. Clique em **OK** para continuar, se nenhum erro for localizado, caso contrário, corrija os erros e, em seguida, reinicie o Digital App Builder.
 
 ![IBM Digital App Builder](dab-home-screen.png)
 
-É possível **Criar novo aplicativo** ou **Abrir um aplicativo** ou usar os Modelos disponíveis para construir seu aplicativo.
->**Nota**: é possível ver seu aplicativo recém-criado sob a seção **Recente**. Para uma nova instalação, você não verá a seção **Recente**.
-
+**Criar novo aplicativo** ou **Abrir um aplicativo** ou usar os modelos disponíveis para melhorar a construção do aplicativo.
+>**Nota**: Os aplicativos criados recentemente serão exibidos na seção **Recente**. Para uma nova instalação, a seção **Recente** não será exibida.
 
 ### Criar novo aplicativo
 {: #create-new-app }
 
-É possível criar um novo aplicativo clicando no ícone **Criar novo aplicativo** a partir do painel do Builder.
+>**Nota**: Criar novo aplicativo em dois modos: Modo de **Design** - ajuda a projetar o aplicativo pelo método arrastar e soltar e modo de **Código** - ajuda a projetar o aplicativo no modo do editor de código.
+
+Criar um novo aplicativo clicando no ícone **Criar novo aplicativo** no painel do Builder.
 
 1. Clique no ícone **Criar novo aplicativo**. Isso exibirá a janela **Selecionar Canal**.
 
@@ -56,11 +57,11 @@ show_children: true
 
     * **Custom Professional Server** – É possível conectar-se ao seu próprio servidor Mobile Foundation criado no IBM Cloud ou local. Na janela **Configurar instância do IBM Mobile Foundation**, é possível selecionar um servidor existente ou criar um novo servidor.
 
-        >**Nota**: para obter uma instância do Mobile Foundation Server facilmente, basta provisioná-la no IBM Cloud. É possível consultar a documentação sobre como provisionar e usar o Mobile Foundation Server no IBM Cloud [aqui](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started-tutorial).
+        >**Nota**: para obter uma instância do Mobile Foundation Server facilmente, basta provisioná-la no IBM Cloud. É possível consultar a documentação sobre como provisionar e usar o Mobile Foundation Server no IBM Cloud [aqui](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started).
 
         ![Configurar instância do IBM Mobile Foundation](dab-config-ibm-cloud-instance.png)
  
-        A janela **Configurar instância do IBM Mobile Foundation** exibe a lista de instâncias do servidor Mobile Foundation definidas anteriormente. Ao selecionar o servidor, o **Nome do servidor**, a **URL do servidor**, o **Nome do usuário administrativo** e a **Senha do administrador**, são exibidos. Para definir um novo servidor, é possível clicar no link **Criar novo servidor**. Isso exibirá a nova janela **Configurar instância do IBM Mobile Foundation**.
+        A janela **Configurar instância do IBM Mobile Foundation** exibe a lista de instâncias do servidor Mobile Foundation definidas anteriormente. Ao selecionar o servidor, são exibidos a **URL do servidor**, o **Nome do usuário Admin** e a **senha Admin**. Para definir um novo servidor, é possível clicar no link **Criar novo servidor**. Isso exibirá a nova janela **Configurar instância do IBM Mobile Foundation**.
 
         ![Criar novo servidor](dab-custom-professional-server.png)
 
@@ -70,27 +71,59 @@ show_children: true
         * Clique em **Conectar**.
 
 5. Ao efetuar login/conectar-se com êxito, a janela **Criar aplicativo** é exibida, na qual é possível selecionar uma definição de aplicativo existente que você possa ter criado ou criar uma nova, inserindo os detalhes. 
-    * Para um novo aplicativo, forneça: **Nome** do aplicativo, **Local** no qual os arquivos do projeto serão armazenados, **ID do projeto/pacote configurável** e **Versão** do aplicativo. 
+    * Para um novo aplicativo: 
+        * Forneça o **Nome** do aplicativo, o **Local** em que os arquivos de projeto serão armazenados, o **ID do Projeto/Pacote configurável** e a **Versão** do aplicativo. 
  
-        ![Shared Playground Server](dab-create-app.png)
+            ![Shared Playground Server](dab-create-app.png)
 
-    * Clique em **Criar** para criar o aplicativo. Esta ação exibe a janela **Bem-vindo ao Workbench**.
-    * Clique em **Iniciar**. Isso abre a área de trabalho do Digital App Builder para criar um novo aplicativo/modificar um aplicativo existente.
+        * Clique em **Criar** para criar o aplicativo. Isso exibe as janelas **Modo de seleção**.
 
-        ![Área de trabalho do DAB](dab-workbench.png)
+            ![Modo de seleção](dab-select-mode.png)
+
+        * Selecione o modo de Design ou de Código e clique em **Introdução**.
+            * Modo de Design - Permite criar o aplicativo arrastando e soltando controles em uma tela.
+            * Modo de Código - Permite criar o aplicativo gravando código ou usando os Fragmentos de código.
+        * Se você selecionou o modo de Design, clicar em **Introdução** exibe a tela pop-up **Bem-vindo ao Ambiente de trabalho**.
+            ![Welcome to workbench](dab-welcome.png)
+        * Clique em **Vamos iniciar** para exibir a área de trabalho do Digital App Builder para criar um novo aplicativo no modo de Design.
+
+            ![Área de trabalho do DAB](dab-workbench.png)
+
+        * Se você selecionou o modo de Código, clicar em **Introdução** exibe a área de trabalho do Digital App Builder para criar um novo aplicativo no modo de Código.
+
+            ![Área de trabalho do DAB](dab-create-code-mode.png)
 
 ### Abrir um aplicativo existente
 {: #open-an-existing-app }
  
->**Nota**: é possível abrir um aplicativo existente desenvolvido usando o Digital App Builder apenas.
+>**Nota**: é possível abrir um aplicativo existente desenvolvido usando o Digital App Builder apenas. Por padrão, o aplicativo é aberto no modo de design.
 
 É possível abrir um aplicativo existente de uma das maneiras a seguir:
 
 * Clicar em **Abrir um aplicativo** na página inicial abre o explorador de arquivos. Navegue para a pasta do projeto do aplicativo e clique em **OK**para abrir o aplicativo para edições adicionais.
 * Opcionalmente, é possível abrir o aplicativo a partir da lista de aplicativos recentes, se listados, clicando duas vezes no nome do aplicativo.
 
+    >**Nota**: Se você selecionou um projeto existente desenvolvido usando o modo de design, ele será aberto no modo de design. Se você tiver o projeto desenvolvido no modo de código, o projeto será aberto no modo de código. 
+
+* Selecione um aplicativo existente e especifique o **Local** em que os arquivos de projeto serão armazenados, o **ID do Projeto/Pacote configurável** e a **Versão** do aplicativo.
+* Clique em **Abrir**. Isso exibe as janelas **Modo de seleção**.
+
+    ![Modo de seleção](dab-select-mode.png)
+
+* Selecione o modo de Design ou de Código e clique em **Introdução**.
+    * Modo de Design - Permite criar o aplicativo arrastando e soltando controles em uma tela.
+    * Modo de Código - Permite criar o aplicativo gravando código ou usando os Fragmentos de código.
+* Se você selecionou o modo de Design, clicar em **Introdução** exibe a área de trabalho do Digital App Builder para atualizar um aplicativo existente.
+
+    ![Área de trabalho do DAB](dab-workbench.png)
+
+* Se você selecionou o modo de Código, clicar em **Introdução** exibe a área de trabalho do Digital App Builder para atualizar um aplicativo existente.
+
+    ![Área de trabalho do DAB](dab-create-code-mode.png)
+
 ### Usando modelos
 {: #using-templates }
 
-É possível usar modelos para construir rapidamente seu aplicativo. Esses são modelos de aplicativo ativados para recursos específicos que o ajudarão a modificar e desenvolver rapidamente o aplicativo. Somente o robô de bate-papo do Watson está disponível a partir de agora.
+É possível usar modelos para construir rapidamente seu aplicativo. Esses são modelos de aplicativo ativados para recursos específicos que o ajudarão a modificar e desenvolver rapidamente o aplicativo.
 
+**Recursos de mod**: Este modelo fornece um aplicativo de amostra com o caso de uso do aplicativo de recursos. Ele contém o módulo de login, o módulo de bate-papo, o modo de feedback no aplicativo com os quais iniciar. Será necessário implementar o adaptador de Login e configurar suas próprias credenciais de robô de bate-papo.

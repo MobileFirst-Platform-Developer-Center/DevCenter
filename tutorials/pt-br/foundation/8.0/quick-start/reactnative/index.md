@@ -65,11 +65,12 @@ Abra o {{ site.data.keys.mf_console }} carregando a URL: `http://your-server-hos
             alert("Success: " + response.responseText);
           },
           (error) => {
-            alert("Failure: " + JSON.stringify(error));
+            console.error(error);
+            alert("Failure: Resource Request");
           }
         );
       }, (error) => {
-        console.log('-->  pingMFP(): failure ', error.responseText);
+        console.error(error);
         alert("Failed to connect to MobileFirst Server");
       });
 ```
@@ -90,7 +91,8 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
     mfpdev adapter build
     ```
 
-3. Quando a compilação for concluída, implemente-a a partir do {{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/target**.
+3. Quando a compilação for concluída, implemente-a a partir do {{ site.data.keys.mf_console }} usando a ação **Ações →
+Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/target**.
 
     <img class="gifplayer" alt="Implemente um adaptador" src="create-an-adapter.png"/>   
 

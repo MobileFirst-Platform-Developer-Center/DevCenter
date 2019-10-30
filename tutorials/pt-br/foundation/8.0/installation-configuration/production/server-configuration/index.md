@@ -27,7 +27,7 @@ Considere sua política de backup e recuperação, otimize a configuração do {
 
 > **Nota:** As informações referentes a URLs que são expostas pelo {{ site.data.keys.product }} são fornecidas como uma diretriz. As organizações devem assegurar que as URLs sejam testadas em uma infraestrutura corporativa, com base no que estiver ativado para as listas de bloqueio e desbloqueio.
 
-| URL da API em `<runtime context root>/api/` | Descrição                               | Sugerido para a lista de desbloqueio? |
+| URL da API URL em `<runtime context root>/api/` | Descrição                               | Sugerido para a lista de desbloqueio? |
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | Retornar documentação do swagger do adaptador para o adaptador nomeado | Não. Usado apenas internamente pelo administrador e pelos desenvolvedores |
 | /adapters/*  | Entrega de adaptadores | Sim |
@@ -71,7 +71,7 @@ As etapas para configurar o {{ site.data.keys.mf_server }} para ativar a Seguran
         * Oracle JRE 1.7.0_75 ou mais recente
         * Oracle JRE 1.8.0_31 ou mais recente
 2. Se você usar um IBM Java SDK, edite o arquivo **server.xml**.
-    * Inclua a linha a seguir: `<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="SSL_TLSv2"/>`
+    * Inclua a seguinte linha: `<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="SSL_TLSv2"/>`
     * Inclua o atributo `sslProtocol="SSL_TLSv2"` em todos os elementos `<ssl>` existentes.
 
 ### WebSphere Application Server Full Profile
@@ -181,8 +181,8 @@ Defina os conceitos básicos da configuração de usuário no console do WebSphe
 {: #configuring-websphere-application-server-liberty-profile-for-mobilefirst-server-administration }
 No perfil Liberty do WebSphere Application Server, configure as funções de **mfpadmin**, **mfpdeployer**, **mfpmonitor** e **mfpoperator** no arquivo de configuração **server.xml** do servidor.
 
-Para configurar as funções de segurança, você deve editar o arquivo **server.xml**. No elemento `<application-bnd>` de cada elemento `<application>`, crie elementos `<security-role>`. Cada elemento `<security-role>` destina-se a cada uma das funções: **mfpadmin**, mfpdeployer, mfpmonitor e mfpoperator. Mapeie as funções para o nome do grupo de usuários apropriado, neste exemplo: **mfpadmingroup**, **mfpdeployergroup**,
-**mfpmonitorgroup** ou **mfpoperatorgroup**. Esses grupos são definidos por meio do elemento `<basicRegistry>`. É possível customizar esse elemento ou substituí-lo completamente por um elemento `<ldapRegistry>` ou um elemento `<safRegistry>`.
+Para configurar as funções de segurança, você deve editar o arquivo **server.xml**. No elemento `<application-bnd>` de cada elemento `<application>`, crie elementos `<security-role>`. Cada elemento `<security-role>` é destinado a cada uma das funções: **mfpadmin**, mfpdeployer, mfpmonitor e mfpoperator. Mapeie as funções para o nome do grupo de usuários apropriado, neste exemplo: **mfpadmingroup**, **mfpdeployergroup**,
+**mfpmonitorgroup** ou **mfpoperatorgroup**. Esses grupos são definidos por meio do elemento `<basicRegistry>`. É possível customizar esse elemento ou substituí-lo totalmente por um elemento `<ldapRegistry>` ou um elemento `<safRegistry>`.
 
 Em seguida, para manter tempos bons de resposta com um grande número de aplicativos instalados, por exemplo com 80 aplicativos, você deve configurar um conjunto de conexões para o banco de dados de administração.
 
@@ -315,7 +315,7 @@ Configure as entradas de ambiente JNDI de uma das seguintes formas:
       </Context>
       ```
 
-        * O prefixo do caminho de contexto não é necessário, porque as entradas JNDI são definidas dentro do elemento `<Context>` de um aplicativo.
+        * O prefixo do caminho de contexto não é necessário porque as entradas JNDI são definidas dentro do elemento `<Context>` de um aplicativo.
         * `override="false"` é obrigatório.
         * O atribuo `type` é sempre `java.lang.String`, a menos que seja especificado de modo diferente para a propriedade.
 
@@ -331,8 +331,8 @@ Configure as entradas de ambiente JNDI de uma das seguintes formas:
 
   Em **mfp_install_dir/MobileFirstServer/configuration-samples**, edite o arquivo XML de configuração para as tarefas Ant, e declare os valores para as propriedades JNDI usando o elemento da propriedade dentro das seguintes tags:
 
-  * `<installmobilefirstadmin>`, para {{site.data.keys.mf_server }} administração, {{site.data.keys.mf_console }}e serviços de atualização em tempo real. Para obter informações adicionais, consulte [Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, administração do {{ site.data.keys.mf_server }} e serviços de atualização em tempo real](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
-  * `<installmobilefirstruntime>`, para  {{ site.data.keys.product_adj }} propriedades de configuração de tempo de execução do. Para obter informações adicionais, consulte [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+  * `<installmobilefirstadmin>`, para administração do {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_console }} e serviços de atualização em tempo real. Para obter informações adicionais, consulte [Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, administração do {{ site.data.keys.mf_server }} e serviços de atualização em tempo real](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
+  * `<installmobilefirstruntime>`, para propriedades de configuração de tempo de execução do {{ site.data.keys.product_adj }}. Para obter informações adicionais, consulte [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
   * `<installmobilefirstpush>`, para configuração do serviço de push. Para obter informações adicionais, consulte [Tarefas Ant para instalação do serviço de push do {{ site.data.keys.mf_server }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service).
 
   Por exemplo:
@@ -357,8 +357,8 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 | mfp.admin.jmx.connector  | Opcional	           | O tipo de conector Java Management Extensions (JMX).<br/>Os valores possíveis são `SOAP` e `RMI`. O valor padrão é SOAP. | Somente WebSphere Application Server. |
 | mfp.admin.jmx.host       | Opcional	           | nome do host para a conexão JMX REST. | perfil do Liberty apenas. |
 | mfp.admin.jmx.port	   | Opcional	           | Porta para a conexão JMX REST. | perfil do Liberty apenas. |
-| mfp.admin.jmx.user       | Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | nome do usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: o nome do usuário para a conexão REST do JMX REST.<br/><br/>Farm do WebSphere Application Server: o nome do usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: o nome do usuário do administrador do WebSphere se o host virtual mapeado para o aplicativo de administração do {{site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: o nome do usuário do administrador do controlador que está definido no elemento `<administrator-role>` do arquivo server.xml do controlador do Liberty. |
-| mfp.admin.jmx.pwd	| Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | Senha de usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: a senha do usuário para a conexão REST do JMX.<br/><br/>Farm do WebSphere Application Server: a senha do usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: a senha do usuário do administrador do WebSphere se o host virtual que é mapeado para o aplicativo de administração do servidor {{site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: a senha do administrador do controlador que é definido no elemento `<administrator-role>` do arquivo server.xml do controlador do Liberty. |
+| mfp.admin.jmx.user       | Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | nome do usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: o nome do usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: o nome do usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: o nome do usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: O nome do usuário do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.pwd	| Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | Senha de usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: a senha de usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: a senha de usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: a senha de usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do servidor do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: a senha do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
 | mfp.admin.rmi.registryPort | Opcional | porta do registro RMI para a conexão JMX através de um firewall. | Tomcat apenas. |
 | mfp.admin.rmi.serverPort | Opcional | porta do servidor RMI para a conexão JMX através de um firewall. | Tomcat apenas. |
 | mfp.admin.jmx.dmgr.host | Obrigatório | nome do host do gerenciador de implementação. | Somente WebSphere Application Server Network Deployment. |
@@ -369,10 +369,10 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 
 | Propriedade                 | Opcional ou obrigatório | Descrição  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.actions.prepareTimeout | Opcional | Tempo limite em segundos para transferir dados do serviço de administração para o tempo de execução durante uma transação de implementação. Caso o tempo de execução não possa ser atingido dentro desse tempo, um erro será gerado e a transação de implementação terminará.<br/><br/>Valor padrão: 1800000 ms (30 min.) |
-| mfp.admin.actions.commitRejectTimeout | Opcional | tempo limite em milissegundos, quando um tempo de execução é contatado, para confirmar ou rejeitar a transação de implementação. Caso o tempo de execução não possa ser atingido dentro desse tempo, um erro será gerado e a transação de implementação terminará.<br/><br/>Valor padrão: 120000 ms (2 min.) |
-| mfp.admin.lockTimeoutInMillis | Opcional |tempo limite em milissegundos para obter o bloqueio de transação. Como as transações de implementação são executados seqüencialmente, eles utilizam um bloqueio. Portanto, uma transação deve esperar até que uma transação anterior esteja concluído. Esse tempo limite é o tempo máximo durante o qual uma transação aguarda.<br/><br/>Valor padrão: 1200000 ms (20 min.) |
-| mfp.admin.maxLockTimeInMillis | Opcional | O tempo máximo durante o qual um processo pode levar o bloqueio de transação. Como as transações de implementação são executados seqüencialmente, eles utilizam um bloqueio. Se o servidor de aplicativos falha enquanto um bloqueio é executada, ela pode ocorrer em raras situações em que o bloqueio não é liberado no próximo reinício do servidor de aplicativos. Neste caso, o bloqueio é liberado automaticamente após o tempo de bloqueio máximo para que o servidor não esteja bloqueado indefinidamente. Configure um tempo que seja mais longo do que uma transação normal.<br/><br/>Valor padrão: 1800000 (30 min.) |
+| mfp.admin.actions.prepareTimeout | Opcional | Tempo limite em segundos para transferir dados do serviço de administração para o tempo de execução durante uma transação de implementação. Se o tempo de execução não pode ser alcançado dentro deste tempo, um erro será levantado e a transação de implementação termina.<br/><br/>Valor padrão : 1800000 ms (30 min) |
+| mfp.admin.actions.commitRejectTimeout | Opcional | tempo limite em milissegundos, quando um tempo de execução é contatado, para confirmar ou rejeitar a transação de implementação. Se o tempo de execução não pode ser alcançado dentro deste tempo, um erro será levantado e a transação de implementação termina.<br/><br/>Valor padrão : 120000 ms (2 min) |
+| mfp.admin.lockTimeoutInMillis | Opcional |tempo limite em milissegundos para obter o bloqueio de transação. Como as transações de implementação são executados seqüencialmente, eles utilizam um bloqueio. Portanto, uma transação deve esperar até que uma transação anterior esteja concluído. Esse tempo limite é o tempo máximo durante o qual uma transação aguarda.<br/><br/>Valor padrão : 1200000 ms (20 min) |
+| mfp.admin.maxLockTimeInMillis | Opcional | O tempo máximo durante o qual um processo pode levar o bloqueio de transação. Como as transações de implementação são executados seqüencialmente, eles utilizam um bloqueio. Se o servidor de aplicativos falha enquanto um bloqueio é executada, ela pode ocorrer em raras situações em que o bloqueio não é liberado no próximo reinício do servidor de aplicativos. Neste caso, o bloqueio é liberado automaticamente após o tempo de bloqueio máximo para que o servidor não esteja bloqueado indefinidamente. Defina um tempo que seja maior do que uma transação normal.<br/><br/>Valor padrão: 1800000 (30 min) |
 
 #### Propriedades JNDI para serviço de administração: criação de log
 {: #jndi-properties-for-administration-service-logging }
@@ -399,12 +399,12 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 |--------------------------|-----------------------|--------------|
 | mfp.admin.audit | Opcional. | Configure esta propriedade como false para desativar o recurso de auditoria do {{ site.data.keys.mf_console }}. O valor-padrão é true. |
 | mfp.admin.environmentid | Opcional. | O identificador de ambiente para o registro dos MBeans. Use esse identificador quando diferentes instâncias do {{ site.data.keys.mf_server }} estiverem instaladas no mesmo servidor de aplicativos. O identificador determina qual serviço de administração, qual console e quais tempos de execução pertencem à mesma instalação. O serviço de administração gerencia somente os tempos de execução que têm o mesmo identificador de ambiente. |
-| mfp.admin.serverid | Obrigatório para server farms e Liberty Collective; caso contrário, opcional. | Server farm: o identificador do servidor. Deve ser diferente para cada servidor no farm.<br/><br/> Liberty Collective: o valor deve ser controller. |
+| mfp.admin.serverid | Obrigatório para server farms e Liberty Collective; caso contrário, opcional. | Server farm: o identificador do servidor. Deve ser diferente para cada servidor na fazenda.<br/><br/> Liberty Collective: o valor deve ser controller. |
 | mfp.admin.hsts | Opcional. | Defina como true para ativar HTTP Estrita Transport Security de acordo com a RFC 6797. |
 | mfp.topology.platform | Opcional | Tipo de servidor. Valores válidos:{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}Se você não configurar o valor, o aplicativo tentará adivinhar o tipo de servidor. |
 | mfp.topology.clustermode | Opcional | Além do tipo de servidor, especifique aqui a topologia do servidor. Valores válidos: {::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{:/} O valor padrão é Standalone. |
-| mfp.admin.farm.heartbeat | Opcional | Esta propriedade permite que você configure, em minutos, a taxa de pulsação que é usada em topologias de server farm. O valor padrão é 2 minutos.<br/><br/>Em um server farm, todos os membros devem usar a mesma taxa de pulsação. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
-| mfp.admin.farm.missed.heartbeats.timeout | Opcional | Esta propriedade permite que você configure o número de pulsações perdidas de um membro do farm antes que o status do membro do farm seja considerado como com falha ou inativo. O valor padrão é 2.<br/><br/>Em um server farm, todos os membros devem usar o mesmo valor de pulsação ausente. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.heartbeat | Opcional | Esta propriedade permite que você configure, em minutos, a taxa de pulsação que é usada em topologias de server farm. O valor padrão é 2 minutos.<br/><br/>Em uma server farm, todos os membros devem usar a mesma taxa de pulsação. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
+| mfp.admin.farm.missed.heartbeats.timeout | Opcional | Esta propriedade permite que você configure o número de pulsações perdidas de um membro do farm antes que o status do membro do farm seja considerado como com falha ou inativo. O valor padrão é 2.<br/><br/>Em uma server farm, todos os membros devem usar o mesmo valor de pulsação perdido. Se você configurar ou alterar este valor de JNDI no mesmo servidor no farm, também é necessário configurar o mesmo valor em cada um dos outros servidores no farm. Para obter informações adicionais, consulte [Ciclo de vida de um nó server farm](../prod-env/appserver/#lifecycle-of-a-server-farm-node). |
 | mfp.admin.farm.reinitialize | Opcional | Um valor booleano (true ou false) para registrar novamente ou reinicializar o membro do farm. |
 | Mfp.server.swagger.ui.url | Opcional | Esta propriedade define a URL da interface com o usuário do Swagger a ser exibida no console de administração. |
 
@@ -483,7 +483,7 @@ Quando você configura o serviço de atualização em tempo real do {{ site.data
 
 | Propriedade | Opcional ou obrigatório | Descrição |
 |----------|-----------------------|-------------|
-| mfp.db.relational.queryTimeout | Opcional | Tempo limite para executar uma consulta em RDBMS, em segundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (sem substituição).<br/><br/>Caso nenhum valor seja configurado, o valor padrão será usado. Para obter informações adicionais, consulte [setQueryTimeout](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int)). |
+| mfp.db.relational.queryTimeout | Opcional | Tempo limite para executar uma consulta em RDBMS, em segundos. Um valor zero significa um tempo limite infinito. Um valor negativo significa o padrão (nenhuma substituição).<br/><br/>Caso nenhum valor esteja configurado, um valor padrão será usado. Para obter informações adicionais, consulte [setQueryTimeout](http://docs.oracle.com/javase/7/docs/api/java/sql/Statement.html#setQueryTimeout(int)). |
 
 Para saber como configurar essas propriedades, consulte [Configurando propriedades JNDI para aplicativos da web do {{ site.data.keys.mf_server }}](#setting-up-jndi-properties-for-mobilefirst-server-web-applications).
 
@@ -497,21 +497,21 @@ A tabela a seguir lista as propriedades do {{ site.data.keys.product_adj }} que 
 | mfp.admin.jmx.dmgr.host | Obrigatório. O nome do host do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.dmgr.port | Obrigatório. A porta RMI ou SOAP do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.host | Somente Liberty. O nome do host da conexão REST JMX. Para Liberty Collective, use o nome do host do controlador. |
-| mfp.admin.jmx.port | Somente Liberty. O número da porta para a conexão REST JMX. Para o Liberty Collective, a porta do conector REST deve ser idêntica ao valor do atributo httpsPort que é declarado no elemento `<httpEndpoint>`. Esse elemento é declarado no arquivo server.xml do controlador Liberty. |
-| mfp.admin.jmx.user | Opcional. Farm do WebSphere Application Server: o nome do usuário da conexão SOAP.<br/><br/>Liberty Collective: o nome do usuário do administrador do controle que está definido no elemento `<administrator-role>` do arquivo server.xml do controlador do Liberty. |
-| mfp.admin.jmx.pwd | Opcional. Farm do WebSphere Application Server: a senha do usuário da conexão SOAP.<br/><br/>Liberty Collective: a senha do administrador do controlador que está definida no elemento `<administrator-role>` do arquivo server.xml do Liberty Controller. |
-| mfp.admin.serverid | Obrigatório para server farms e Liberty Collective, caso contrário, opcional.<br/><br/>Server farm: o identificador do servidor. Deve ser diferente para cada servidor no farm.<br/><br/>Liberty Collective: o identificador de membro. O identificador deve ser diferente para cada membro no Collective. O controlador de valor não pode ser usado, pois está reservado para o controlador coletivo. |
+| mfp.admin.jmx.port | Somente Liberty. O número da porta para a conexão REST JMX. Para Liberty Collective, a porta do conector REST deve ser idêntica ao valor do atributo httpsPort que é declarado no elemento `<httpEndpoint>`. Esse elemento é declarado no arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.user | Opcional. Farm do WebSphere Application Server: o nome do usuário da conexão SOAP.<br/><br/>Liberty Collective: O nome do usuário do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.pwd | Opcional. Farm do WebSphere Application Server: a senha de usuário da conexão SOAP.<br/><br/>Liberty Collective: a senha do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
+| mfp.admin.serverid | Obrigatório para server farms e Liberty Collective; caso contrário, opcional.<br/><br/>Server farm: o identificador do servidor. Deve ser diferente para cada servidor na fazenda.<br/><br/>Liberty Collective: o identificador do membro. O identificador deve ser diferente para cada membro no Collective. O controlador de valor não pode ser usado, pois está reservado para o controlador coletivo. |
 | mfp.topology.platform | Opcional. O tipo de servidor. Os valores válidos são:<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Se você não configurar o valor, o aplicativo tenta adivinhar o tipo de servidor. |
 | mfp.topology.clustermode | Opcional. Além do tipo de servidor, especifique aqui a topologia do servidor. Valores válidos:<ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>O valor padrão é Standalone. |
-| mfp.admin.jmx.replica | Opcional. Apenas para o Liberty Collective.<br/><br/>Configure esta propriedade apenas quando os componentes de administração que gerenciam esse tempo de execução forem implementados em diferentes Liberty Controllers (réplicas).<br/><br/>Lista de terminais das diferentes réplicas do controlador com a sintaxe a seguir: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
+| mfp.admin.jmx.replica | Opcional. Somente para Liberty Collective.<br/><br/>Configure essa propriedade somente quando os componentes de administração que gerenciam esse tempo de execução forem implementados em controladores (réplicas) diferentes do Liberty.<br/><br/>Lista de endpoints das diferentes réplicas do controlador com a sintaxe a seguir: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 | mfp.analytics.console.url | Opcional. A URL que é exportada pelo IBM {{ site.data.keys.mf_analytics }} que se vincula ao console do Analytics. Configure essa propriedade se desejar acessar o console do Analytics a partir de {{ site.data.keys.mf_console }}. Por exemplo, `http://<hostname>:<port>/analytics/console` |
 | mfp.analytics.password | A senha que será usada se o ponto de entrada de dados para o IBM {{ site.data.keys.mf_analytics }} for protegido com autenticação básica. |
 | mfp.analytics.url | A URL que é exposta pelo IBM {{ site.data.keys.mf_analytics }} que recebe dados de análise de dados de entrada. Por exemplo, `http://<hostname>:<port>/analytics-service/rest` |
 | mfp.analytics.username | O nome do usuário que será usado se o ponto de entrada de dados para o IBM {{ site.data.keys.mf_analytics }} for protegido com autenticação básica.|
 | mfp.device.decommissionProcessingInterval | Define com que frequência (em segundos) a tarefa de desatribuição é executada. Padrão: 86400, que é um dia. |
 | mfp.device.decommission.when | O número de dias de inatividade após o qual um dispositivo do cliente é desatribuído pela tarefa de desatribuição de dispositivo. Padrão: 90 dias. |
-| mfp.device.archiveDecommissioned.when | O número de dias de inatividade, após o qual um dispositivo de cliente que foi desatribuído é arquivado.<br/><br/>Esta tarefa grava em um archive os dispositivos do cliente que foram desatribuídos. Os dispositivos do cliente arquivados são gravados em um arquivo no diretório **home\devices_archive** do {{ site.data.keys.mf_server }}. O nome do arquivo contém o registro de data e hora em que o archive foi criado. Padrão: 90 dias. |
-| mfp.licenseTracking.enabled | Um valor usado para ativar ou desativar o rastreamento de dispositivos no {{ site.data.keys.product }}.<br/><br/>Por motivos de desempenho, é possível desativar o rastreamento de dispositivos quando o {{ site.data.keys.product }} executar somente aplicativos B2C (Business-to-Consumer). Quando o rastreamento de dispositivos está desativado, os relatórios de licença também ficam desativados e nenhuma métrica de licença é gerada.<br/><br/>Os valores possíveis são true (padrão) e false. |
+| mfp.device.archiveDecommissioned.when | O número de dias de inatividade após o qual um dispositivo do cliente que foi desatribuído é arquivado.<br/><br/>Essa tarefa grava os dispositivos do cliente que foram desatribuídos em um archive. Os dispositivos do cliente arquivados são gravados em um arquivo no diretório **home\devices_archive** do {{ site.data.keys.mf_server }}. O nome do arquivo contém o registro de data e hora em que o archive foi criado. Padrão: 90 dias. |
+| mfp.licenseTracking.enabled | Um valor usado para ativar ou desativar o rastreamento de dispositivo no {{ site.data.keys.product }}.<br/><br/>Por motivos de desempenho, é possível desativar o rastreamento de dispositivo quando o {{ site.data.keys.product }} executa somente aplicativos Business-to-Consumer (B2C). Quando o rastreamento de dispositivo for desativado, os relatórios de licença também serão desativados e nenhuma métrica de licença será gerada.<br/><br/>Os valores possíveis são true (padrão) e false. |
 | mfp.runtime.temp.folder | Define a pasta de arquivos temporários do tempo de execução. Usa o local da pasta temporária padrão do contêiner da web quando não configurada. |
 | mfp.adapter.invocation.url | A URL a ser usada para chamar procedimentos do adaptador de dentro de adaptadores Java, ou adaptadores JavaScript, que são chamados usando o terminal rest. Se essa propriedade não for configurada, a URL da solicitação atualmente em execução será usada (esse é o comportamento padrão). Esse valor deve conter a URL completa, incluindo a raiz de contexto. |
 | mfp.authorization.server | Modo de servidor de autorizações. Pode ser um dos modos a seguir:{::nomarkdown}<ul><li>integrado: use o servidor de autorizações do {{ site.data.keys.product_adj }}.</li><li>externo: use um servidor de autorizações externo</li></ul>{:/}. Durante a configuração desse valor, também deve-se configurar as propriedades **mfp.external.authorization.server.secret** e **mfp.external.authorization.server.introspection.url** para seu servidor externo. |
@@ -639,7 +639,7 @@ Ao implementar um aplicativo que tem pelo menos 40 MB com o IBM {{ site.data.key
 A seguinte saída do sistema é um exemplo do código de erro de log de transações cheio.
 
 ```bash
-Erro de DB2 SQL: SQLCODE=-964, SQLSTATE=57011
+DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 ```
 
 O conteúdo de cada aplicativo é armazenado no banco de dados de administração do {{ site.data.keys.product_adj }}.
@@ -706,7 +706,7 @@ Quando um aplicativo tenta conectar ao banco de dados após o fechamento da cone
 com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after statement closed.
 ```
 
-Edite os arquivos **server.xml** e **context.xml** e, para cada elemento `<Resource>`, inclua as seguintes propriedades:
+Edite os arquivos **server.xml** e **context.xml**, e para cada elemento `<Resource>`, inclua as seguintes propriedades:
 
 * **testOnBorrow="true"**
 * **validationQuery="select 1"**
@@ -725,7 +725,7 @@ Por exemplo:
 
 #### Configuração de perfil Liberty do WebSphere Application Server
 {: #websphere-application-server-liberty-profile-configuration-1 }
-Edite o arquivo **server.xml** e, para cada elemento `<dataSource>` (tempo de execução e bancos de dados do Application Center), inclua um elemento `<connectionManager>` com a propriedade agedTimeout:
+Edite o arquivo **server.xml** e, para cada elemento `<dataSource>` (bancos de dados de tempo de execução e do Application Center), inclua um elemento `<connectionManager>` com a propriedade agedTimeout:
 
 ```xml
 <connectionManager agedTimeout="timeout_value"/>
