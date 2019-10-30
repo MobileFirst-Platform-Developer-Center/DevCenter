@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="utf-8">
+<link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
+<link href="../custom-style-j.css" type="text/css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600&display=swap" rel="stylesheet"/>
+<script type="text/javascript" src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+
+<style>
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+}
+.wrapper {
+    margin-left:auto;
+    margin-right:auto;
+}
+</style>
+
+</head>
+
+<body style="background-color: #f3f3f3">
+<header class="bx--header" role="banner" aria-label="Nom de la plateforme IBM" data-header>
+  <a class="bx--skip-to-content" href="#main-content" tabindex="0">Passer au contenu principal</a>
+  <a class="bx--header__name" href="" title="">
+    <span class="bx--header__name--prefix">
+      Mobile&nbsp;Foundation&nbsp;{dev}
+    </span>
+  </a>
+
+  <nav class="bx--header__nav" aria-label="Nom de la plateforme" data-header-nav>
+    <ul class="bx--header__menu-bar" role="menubar" aria-label="Nom de la plateforme">
+    <li>
+        <a class="bx--header__menu-item" href="../../../../features/" role="menuitem" tabindex="0">
+          Fonctions
+        </a>
+      </li>
+
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Développeurs
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Développeurs">
+              <li class="bx--header__submenu" data-header-submenu>
+                <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ios-tutorials/" tabindex="-1">
+                  <span class="bx--text-truncate--end">
+                    iOS
+                  </span>
+                </a>
+                </li>
+                <li class="bx--header__submenu" data-header-submenu>
+                  <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/android-tutorials/" tabindex="-1">
+                    <span class="bx--text-truncate--end">
+                      Android
+                    </span>
+                  </a>
+                  </li>
+                  <li class="bx--header__submenu" data-header-submenu>
+                    <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/windows-8-10-tutorials/" tabindex="-1">
+                      <span class="bx--text-truncate--end">
+                        Windows 8 et 10
+                      </span>
+                    </a>
+                    </li>
+              <li role="none">
+                <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/cordova-tutorials/" tabindex="-1">
+                  <span class="bx--text-truncate--end">
+                    Cordova
+                  </span>
+                </a>
+                </li>
+                <li role="none">
+                  <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ionic-tutorials/" tabindex="-1">
+                    <span class="bx--text-truncate--end">
+                      Ionic
+                    </span>
+                  </a>
+                  </li>
+
+              <li role="none">
+                <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/xamarin-tutorials/" tabindex="-1">
+                  <span class="bx--text-truncate--end">
+                    Xamarin
+                  </span>
+                </a>
+                </li>
+                <li role="none">
+                  <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/reactnative-tutorials/" tabindex="-1">
+                    <span class="bx--text-truncate--end">
+                      React Native
+                    </span>
+                  </a>
+                  </li>
+
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/web-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Web
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Documentation
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Documentation">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 8.0
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.1/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.1
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.0/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.0
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/6.3/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 6.3
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Labs
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Labs">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/8.0/intro/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Labs Foundation 8.0
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.1/setup/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Labs Foundation 7.1
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.0/setup/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Labs Foundation 7.0
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Ressources
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Ressources">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../blog/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Blogue
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../downloads/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Téléchargements
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../video-gallery/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Galerie&nbsp;vidéo
+              </span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a class="bx--header__menu-item" href="../../../../help/" role="menuitem" tabindex="0">
+          Aide
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+
+
+</header>
+
+
+<div class="bx--row landing-page__banner" style="background-color: #000000">
+
+    <div class="bx--col-md-12">
+      <h2 style="color:white">Parcours d'un développeur front-end</h2>
+      <br/>
+      <p style="color:white">Créez rapidement des applications multicanal mobiles, Web et PWA (Progressive Web App) dotées de capacités d'IA grâce à une approche ne nécessitant que peu de code.</p>
+        <br/>
+  <div data-tabs class="bx--tabs">
+  <div class="bx--tabs-trigger" tabindex="0">
+    <a href="javascript:void(0)" class="bx--tabs-trigger-text" tabindex="-1"></a>
+    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M5 6L0 1 .7.3 5 4.6 9.3.3l.7.7z"></path></svg>
+  </div>
+  <ul class="bx--tabs__nav bx--tabs__nav--hidden" role="tablist">
+    <li
+      class="bx--tabs__nav-item bx--tabs__nav-item--selected "
+      data-target=".tab-1" role="presentation">
+      <a tabindex="0" id="tab-link-1" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-1"  aria-selected="true" ><p style="text-align: center; color:white; font-size: 18px">Cordova</p></a>
+    </li>
+    <li
+      class="bx--tabs__nav-item "
+      data-target=".tab-2" role="presentation">
+      <a tabindex="0" id="tab-link-2" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-2" ><p style="text-align: center; color:white; font-size: 18px">Ionic</p></a>
+    </li>
+    <li
+      class="bx--tabs__nav-item "
+      data-target=".tab-3" role="presentation">
+      <a tabindex="0" id="tab-link-3" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-3" ><p style="text-align: center; color:white; font-size: 18px">Android</p></a>
+    </li>
+    <li
+      class="bx--tabs__nav-item  bx--tabs__nav-item "
+      data-target=".tab-4" role="presentation">
+      <a tabindex="0" id="tab-link-4" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-4" ><p style="text-align: center; color:white; font-size: 18px">iOS</p></a>
+    </li>
+  </ul>
+</div>
+</div>
+</div>
+<div>
+  <div id="tab-panel-1" class="tab-1" role="tabpanel" aria-labelledby="tab-link-1"
+    aria-hidden="false" >
+
+    <div class="bx--grid bx--grid--full-width landing-page">
+
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <p>Procédure de création d'une application Cordova</p>
+        </div>
+      </div>
+      <div class="bx--row" style="width: 100%">
+
+        <div class="bx--col">
+
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Installation et configuration</h4>
+                <p>Permettez aux développeurs de créer rapidement, déployer et gérer leurs applications de cloud en vous appuyant sur un écosystème en pleine croissance de services disponibles et d'infrastructures d'exécution.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+            <div class="bx--col">
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Ajout du SDK MobileFirst</h4>
+                <p>Maintenez la pertinence et l'efficacité de l'engagement de vos utilisateurs en réalisant des analyses sur les performances de votre application vis-à-vis des utilisateurs grâce à des visualisations intégrées.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+            <div class="bx--col">
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Envoi de notifications</h4>
+                <p>Mobilisez votre public grâce à un mécanisme de notification unifié qui rend le processus entièrement transparent pour le développeur.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="bx--col">
+
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Ajout de fonctions d'authentification et de sécurité</h4>
+                <p>Ajoutez diverses couches de protection à vos applications.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+
+          <div class="bx--col">
+            <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+              <h4>Mesure et engagement</h4>
+              <p>Envoyez des notifications avec IBM Mobile Foundation. Surveillez et analysez l'utilisation de l'application.</p>
+
+              <div id="go" style="text-align:right;">
+              <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  <div id="tab-panel-2" class="tab-2" role="tabpanel" aria-labelledby="tab-link-2"
+    aria-hidden="true"  hidden >
+
+    <div class="bx--grid bx--grid--full-width landing-page">
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <p>Procédure de création d'une application Ionic</p>
+        </div>
+      </div>
+      <div class="bx--row" style="width: 100%">
+
+        <div class="bx--col">
+
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Installation et configuration</h4>
+                <p>Permettez aux développeurs de créer rapidement, déployer et gérer leurs applications de cloud en vous appuyant sur un écosystème en pleine croissance de services disponibles et d'infrastructures d'exécution.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+            <div class="bx--col">
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Ajout du SDK MobileFirst</h4>
+                <p>Maintenez la pertinence et l'efficacité de l'engagement de vos utilisateurs en réalisant des analyses sur les performances de votre application vis-à-vis des utilisateurs grâce à des visualisations intégrées.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+            <div class="bx--col">
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Envoi de notifications</h4>
+                <p>Mobilisez votre public grâce à un mécanisme de notification unifié qui rend le processus entièrement transparent pour le développeur.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="bx--col">
+
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Ajout de fonctions d'authentification et de sécurité</h4>
+                <p>Ajoutez diverses couches de protection à vos applications.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+
+          <div class="bx--col">
+            <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+              <h4>Mesure et engagement</h4>
+              <p>Envoyez des notifications avec IBM Mobile Foundation. Surveillez et analysez l'utilisation de l'application.</p>
+
+              <div id="go" style="text-align:right;">
+              <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="tab-panel-3" class="tab-3" role="tabpanel" aria-labelledby="tab-link-3"
+    aria-hidden="true"  hidden >
+
+    <div class="bx--grid bx--grid--full-width landing-page">
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <p>Procédure de création d'une application Android</p>
+        </div>
+      </div>
+      <div class="bx--row" style="width: 100%">
+
+        <div class="bx--col">
+
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Installation et configuration</h4>
+                <p>Permettez aux développeurs de créer rapidement, déployer et gérer leurs applications de cloud en vous appuyant sur un écosystème en pleine croissance de services disponibles et d'infrastructures d'exécution.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/android/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+            <div class="bx--col">
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Ajout du SDK MobileFirst</h4>
+                <p>Maintenez la pertinence et l'efficacité de l'engagement de vos utilisateurs en réalisant des analyses sur les performances de votre application vis-à-vis des utilisateurs grâce à des visualisations intégrées.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/android/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+            <div class="bx--col">
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Envoi de notifications</h4>
+                <p>Mobilisez votre public grâce à un mécanisme de notification unifié qui rend le processus entièrement transparent pour le développeur.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="bx--col">
+
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Ajout de fonctions d'authentification et de sécurité</h4>
+                <p>Ajoutez diverses couches de protection à vos applications.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+
+          <div class="bx--col">
+            <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+              <h4>Mesure et engagement</h4>
+              <p>Envoyez des notifications avec IBM Mobile Foundation. Surveillez et analysez l'utilisation de l'application.</p>
+
+              <div id="go" style="text-align:right;">
+              <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="tab-panel-4" class="tab-4" role="tabpanel" aria-labelledby="tab-link-4"
+    aria-hidden="true"  hidden >
+
+    <div class="bx--grid bx--grid--full-width landing-page">
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <p>Procédure de création d'une application iOS</p>
+        </div>
+      </div>
+      <div class="bx--row" style="width: 100%">
+
+        <div class="bx--col">
+
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Installation et configuration</h4>
+                <p>Permettez aux développeurs de créer rapidement, déployer et gérer leurs applications de cloud en vous appuyant sur un écosystème en pleine croissance de services disponibles et d'infrastructures d'exécution.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+            <div class="bx--col">
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Ajout du SDK MobileFirst</h4>
+                <p>Maintenez la pertinence et l'efficacité de l'engagement de vos utilisateurs en réalisant des analyses sur les performances de votre application vis-à-vis des utilisateurs grâce à des visualisations intégrées.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+            <div class="bx--col">
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Envoi de notifications</h4>
+                <p>Mobilisez votre public grâce à un mécanisme de notification unifié qui rend le processus entièrement transparent pour le développeur.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="bx--col">
+
+              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+                <h4>Ajout de fonctions d'authentification et de sécurité</h4>
+                <p>Ajoutez diverses couches de protection à vos applications.</p>
+
+                <div id="go" style="text-align:right;">
+                <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+              </div>
+            </div>
+
+          <div class="bx--col">
+            <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
+
+              <h4>Mesure et engagement</h4>
+              <p>Envoyez des notifications avec IBM Mobile Foundation. Surveillez et analysez l'utilisation de l'application.</p>
+
+              <div id="go" style="text-align:right;">
+              <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Accéder"/></a>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+</body>

@@ -318,7 +318,7 @@ SOURCE rép_install_mfp/PushService/databases/create-push-mysql.sql;
 Vous pouvez créer les tables de base de données pour les applications {{ site.data.keys.mf_server }} manuellement à l'aide de tâches Ant ou avec l'outil de configuration de serveur. Les rubriques ci-après expliquent en détail comment configurer la base de données lorsque vous installez
 {{ site.data.keys.mf_server }} avec l'outil de configuration de serveur.
 
-L'outil de configuration de serveur peut créer les tables de base de données dans le cadre du processus d'installation. Dans certains cas, il peut même créer une base de données et un utilisateur pour les composants {{ site.data.keys.mf_server }}. Pour une présentation du processus d'installation avec l'outil de configuration de serveur, voir [Installation de {{ site.data.keys.mf_server }} en mode graphique](../../simple-install/tutorials/graphical-mode).
+L'outil de configuration de serveur peut créer les tables de base de données dans le cadre du processus d'installation. Dans certains cas, il peut même créer une base de données et un utilisateur pour les composants {{ site.data.keys.mf_server }}. Pour une présentation du processus d'installation avec l'outil de configuration de serveur, voir [Installation de {{ site.data.keys.mf_server }} en mode graphique](../../simple-install/graphical-mode).
 
 Une fois que vous avez indiqué les données d'identification de configuration et cliqué sur **Deploy** dans la sous-fenêtre Server Configuration Tool, les opérations suivantes sont exécutées :
 
@@ -406,7 +406,7 @@ Vous pouvez créer les tables de base de données pour les applications {{ site.
 
 Vous trouverez dans cette section des informations pertinentes relatives à la configuration de la base de données si {{ site.data.keys.mf_server }} est installé à l'aide de tâches Ant.
 
-Vous pouvez utiliser des tâches Ant pour configurer les tables de base de données {{ site.data.keys.mf_server }}. Dans certains cas, vous pouvez également créer une base de données et un utilisateur à l'aide de ces tâches. Pour une présentation du processus d'installation à l'aide de tâches Ant, voir [Installation de {{ site.data.keys.mf_server }} en mode de ligne de commande](../../simple-install/tutorials/command-line).
+Vous pouvez utiliser des tâches Ant pour configurer les tables de base de données {{ site.data.keys.mf_server }}. Dans certains cas, vous pouvez également créer une base de données et un utilisateur à l'aide de ces tâches. Pour une présentation du processus d'installation à l'aide de tâches Ant, voir [Installation de {{ site.data.keys.mf_server }} en mode de ligne de commande](../../simple-install/command-line).
 
 Un ensemble d'exemples de fichier Ant est fourni avec l'installation pour vous initier aux tâches Ant. Les fichiers se trouvent dans **rép\_install\_mfp/MobileFirstServer/configurations-samples**. Ils sont nommés selon le modèle suivant :
 
