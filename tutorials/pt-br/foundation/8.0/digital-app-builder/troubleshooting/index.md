@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Detecção de problemas
-weight: 6
+weight: 17
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -18,7 +18,7 @@ Localize respostas para alguns dos problemas que você pode encontrar ao usar o 
 
         * No Windows: `%USERPROFILE%\AppData\Roaming\IBM Digital App Builder\log.log`.
 
-    * `applog.log` para os logs relacionados ao seu app, que podem ser localizados em `<APP LOCATION>/ibm/applog.log`.
+    * `applog.log` para logs relacionados ao seu aplicativo, que podem ser localizados em `<APP LOCATION>/ibm/applog.log`.
 
 * Falha ao criar um conjunto de dados para um Microsserviço usando um arquivo swagger.
 
@@ -64,7 +64,7 @@ Localize respostas para alguns dos problemas que você pode encontrar ao usar o 
 
 * A verificação de pré-requisitos falha para o Android Studio, mesmo quando ele está instalado.
 
-    Certifique-se de ter o executável do android (`<path to android sdk>/tools`) no caminho e verifique os pré-requisitos.
+    Certifique-se de que tenha o executável do android (`<path to android sdk>/tools`) no caminho e verifique os pré-requisitos.
 
 * Problema de criação e visualização do aplicativo no Windows 7
 
@@ -72,3 +72,14 @@ Localize respostas para alguns dos problemas que você pode encontrar ao usar o 
 
     Certifique-se de criar seu projeto de aplicativo na unidade `C://<your folder name/app name>`.
 
+* O Digital App Builder trava com uma tela vermelha.
+
+    Se você vir um travamento com tela vermelha, verifique os logs neste local:
+    * No MacOS - `/Users/<username>/Library/Logs/IBM Digital App Builder/log.log`
+    * No Windows - `C:\\Users\<username>\AppData\Roming\IBM Digital App Builder\log.log`
+
+    Se o erro for sobre um `getPath` de `rendered.js`, ele será um [erro de elétron](https://github.com/electron/electron/issues/8205) conhecido.
+
+    Isso acontece aleatoriamente.
+
+    Reinicie o Digital App Builder e seu cenário deve funcionar.
