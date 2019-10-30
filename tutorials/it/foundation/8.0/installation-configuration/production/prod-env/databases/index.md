@@ -313,7 +313,7 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 {: #create-the-database-tables-with-the-server-configuration-tool }
 The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details about database setup when you install {{ site.data.keys.mf_server }} with the Server Configuration Tool.
 
-The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the {{ site.data.keys.mf_server }} components. For an overview of the installation process with the Server Configuration Tool, see [Installing {{ site.data.keys.mf_server }} in graphical mode](../../simple-install/tutorials/graphical-mode).
+The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the {{ site.data.keys.mf_server }} components. For an overview of the installation process with the Server Configuration Tool, see [Installing {{ site.data.keys.mf_server }} in graphical mode](../../simple-install/graphical-mode).
 
 After you complete the configuration credentials and click **Deploy** in the Server Configuration Tool pane, the following operations are run:
 
@@ -400,7 +400,7 @@ The database tables for the {{ site.data.keys.mf_server }} applications can be c
 
 You can find relevant information in this section about the setting up of the database if {{ site.data.keys.mf_server }} is installed with Ant Tasks.
 
-You can use Ant Tasks to set up the {{ site.data.keys.mf_server }} database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing {{ site.data.keys.mf_server }} in command line mode](../../simple-install/tutorials/command-line).
+You can use Ant Tasks to set up the {{ site.data.keys.mf_server }} database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing {{ site.data.keys.mf_server }} in command line mode](../../simple-install/command-line).
 
 A set of sample Ant files is provided with the installation to help you get started with the Ant tasks. You can find the files in **mfp\_install\_dir/MobileFirstServer/configurations-samples**. The files are named after the following patterns:
 
