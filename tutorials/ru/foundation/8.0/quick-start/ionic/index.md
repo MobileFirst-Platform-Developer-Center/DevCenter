@@ -139,12 +139,12 @@ WLAuthorizationManager.obtainAccessToken("").then(
 {: #5-testing-the-application }
 1. В окне **Командная строка** перейдите в корневую папку проекта Cordova.
 2. Выполните команду: `ionic cordova platform add ios|android|windows|browser` для добавления платформы.
-3. В проекте Ionic выберите файл **config.xml** и измените значение `<mfp:server ... url=" "/>` свойств **protocol**, **host** и **port** с учетом параметров {{ site.data.keys.mf_server }}.
+3. В проекте Ionic выберите файл **config.xml** и измените строку `<mfp:server ... url=" "/>` со свойствами **protocol**, **host** и **port**, указав правильные значения для {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
     * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **адрес-сервера** и **443**.
     * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.
 
-    Кроме того, если установлен {{ site.data.keys.mf_cli }}, перейдите в корневую папку проекта и выполните команду `mfpdev app register`. В случае применения удаленного экземпляра {{ site.data.keys.mf_server }} [выполните команду](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)
+    Кроме того, если установлен {{ site.data.keys.mf_cli }}, перейдите в корневую папку проекта и выполните команду `mfpdev app register`. В случае использования удаленного экземпляра {{ site.data.keys.mf_server }} [выполните команду](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)
     ```bash
     mfpdev server add
     ```
