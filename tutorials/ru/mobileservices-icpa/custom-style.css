@@ -1,0 +1,207 @@
+div.rectangle{
+  background-color: #f3f3f3;
+  padding: 20px;
+  margin-top: 48px;
+}
+div.rectangle .h4{
+  margin-left: 48px;
+  font-family: IBMPlexSans;
+  font-size: 20px;
+  color: #171717;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+div.rectangle .h3{
+  font-family: IBMPlexSans;
+  font-size: 42px;
+  color: #FFFFFF;
+  line-height: 34px;
+}
+
+div.rectangle .p{
+  font-family: IBMPlexSans;
+  font-size: 16px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+.expdocs{
+  background-color: #ffffff;
+  padding: 20px;
+  height: auto;
+}
+#expdocs .h4{
+  margin-left: 48px;
+  font-family: IBMPlexSans;
+  font-size: 18px;
+  color: #171717;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+#expdocs .p{
+  font-family: IBMPlexSans;
+  font-size: 12px;
+  color: #171717;
+  letter-spacing: 0;
+  margin-right: 98px;
+}
+.bx--content{
+  padding-top: 0px;
+}
+.main{
+  background-color: #ffffff;
+  margin-right: 98px;
+}
+.dab{
+  background-color: #ffffff;
+  padding: 0px;
+}
+.mc {
+  background-color: #ffffff;
+  padding: 5px;
+}
+div.mc button.bx--btn.bx--btn--primary{
+  position: relative;
+}
+.pn {
+  background-color: #ffffff;
+  padding: 5px;
+}
+div.pn button.bx--btn.bx--btn--primary{
+  position: relative;
+}
+.pd {
+  background-color: #ffffff;
+  padding: 5px;
+}
+div.pd button.bx--btn.bx--btn--primary{
+  position: relative;
+}
+.sr {
+  background-color: #ffffff;
+  padding: 5px;
+}
+div.sr button.bx--btn.bx--btn--primary{
+  position: relative;
+}
+.dab-video {
+  background-color: #ffffff;
+  padding: 5px;
+}
+div.dab button.bx--btn.bx--btn--primary{
+  position: relative;
+}
+div.banner button.bx--btn.bx--btn--primary{
+  position: relative;
+  margin-top: 20px;
+}
+div.banner p{
+  margin-right: 128px;
+}
+div#inner-col.bx--col{
+  padding-top: 0px;
+}
+div#inner-dab-v.bx--col{
+  padding-top: 10px;
+}
+div.m-vid .bx--col.bx--col-md-5.bx--col-sm-12{
+  padding-top: 48px;
+  margin-right: 98px;
+}
+div.banner .bx--col.bx--col-md-12 {
+  padding-left: 48px;
+  margin-right: 200px;
+}
+div.banner .h2 {
+  padding-bottom: 20px;
+  margin-right: 200px;
+}
+div.personaljourneys .bx--col.bx--col-md-3.bx--col-sm-6{
+  margin-left: 0px;
+}
+.personaljourney1{
+  background-color: #000000;
+  padding: 20px;
+  margin-bottom: 58px;
+
+}
+div.rectangle .personaljourney1 .h3{
+  font-family: IBMPlexSans;
+  font-size: 42px;
+  color: #FFFFFF;
+  line-height: 34px;
+}
+div.rectangle .personaljourney1 .h4{
+  font-family: IBMPlexSans;
+  font-size: 20px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+div.rectangle .personaljourney1 .p{
+  font-family: IBMPlexSans;
+  font-size: 16px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+div.rectangle .personaljourney2{
+  background-color: #ffffff;
+  padding: 20px;
+  margin-right: 98px;
+  margin-bottom: 58px;
+
+}
+div.rectangle .personaljourney2 .h3{
+  font-family: IBMPlexSans;
+  font-size: 42px;
+  color: #FFFFFF;
+  line-height: 34px;
+}
+div.rectangle .personaljourney2 .h4{
+  font-family: IBMPlexSans;
+  font-size: 20px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+div.rectangle .personaljourney2 .p{
+  font-family: IBMPlexSans;
+  font-size: 16px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+}
+.card{
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 48px;
+  margin-left: 48px;
+  width: auto;
+  height: 100%;
+}
+div.card.h4{
+  font-family: IBMPlexSans-SemiBold;
+  font-size: 14px;
+  color: #171717;
+  letter-spacing: 0.16px;
+  line-height: 18px;
+}
+
+div.card .h3{
+  font-family: IBMPlexSans;
+  font-size: 42px;
+  color: #FFFFFF;
+  line-height: 34px;
+}
+
+div.card .p{
+  font-family: IBMPlexSans;
+  font-size: 14px;
+  color: #565656;
+  letter-spacing: 0.16px;
+  line-height: 18px;
+}
+div.card img{
+  position: relative;
+}

@@ -12,8 +12,7 @@ Los requisitos para IBM Digital App Builder incluyen el sistema operativo, así 
 
 * Plataformas de desarrollo soportadas: 
 
-    * MacOS 10.13
-    * MacOS 10.14
+    * MacOS 10.13 (High Sierra o superior) 
     * Windows 10
     * Windows 10 Home
     * Windows 10 Pro
@@ -21,13 +20,17 @@ Los requisitos para IBM Digital App Builder incluyen el sistema operativo, así 
 
 * Requisitos de software (**Requisitos previos**) para utilizar Digital App Builder: 
 
-    * Node Package Manager (npm) (Node.js 8.x o superior)
-    * Cordova 8.0.0 o superior
-    * Ionic 4.2.0 o superior
+    * Node Package Manager (npm) (Node.js 10.x)
+    * Cordova 9.0.0
+    * Ionic 4.12.0
     * CocoaPods (solo MacOS)
     * Android Studio 2.x.x o superior (para una vista previa de aplicaciones en el emulador de Android)
+    * Un Mobile Foundation Server
+        * El [Mobile Foundation DevKit](http://mobilefirstplatform.ibmcloud.com/downloads/#developer-kit)
+        * [Instancia de Mobile Foundation](https://cloud.ibm.com/catalog/services/mobile-foundation) en IBM Cloud
+        * Mobile Foundation Server autónomo
 
-* Requisitos para la obtención de vistas previas de la aplicación:
+* Requisitos previos para ejecutar la aplicación en el dispositivo o emulador/simulador:
 
     * Android Studio (para vistas previas de la aplicación en emuladores Android)
         * Para obtener las instrucciones de instalación, consulte [aquí](https://developer.android.com/studio/)
@@ -36,11 +39,9 @@ Los requisitos para IBM Digital App Builder incluyen el sistema operativo, así 
     * Chrome (para vista previa de plataforma web)
     * Xcode (para vista previa de la aplicación en simuladores iOS). Sólo para MacOS, descargue e instale XCode desde App Store de Apple para obtener vistas previas de la aplicación.
 
-* Otros requisitos para el uso de varios servicios
+* Otros requisitos
 
     * [Cuenta de IBM Cloud](https://cloud.ibm.com/registration)
-    * Cuenta de [Mobile Foundation](https://cloud.ibm.com/catalog/services/mobile-foundation) Server (localmente o en la nube). 
     * Cuenta de servicio de [IBM Watson Assistant](https://cloud.ibm.com/catalog/services/watson-assistant) (para añadir el servicio Chat a la aplicación) 
     * Cuenta de servicio de [IBM Watson Visual Recognition](https://cloud.ibm.com/developer/watson/starter-kits/watson-visual-recognition-basic) (para añadir el servicio de reconocimiento visual a la aplicación) 
-    * Cuenta de servicio de [Notificaciones push](https://cloud.ibm.com/catalog/services/push-notifications) (para habilitar el servicio de notificaciones push en la aplicación) 
 

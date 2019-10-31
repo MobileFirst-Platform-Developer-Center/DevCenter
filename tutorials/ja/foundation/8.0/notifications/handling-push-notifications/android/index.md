@@ -60,7 +60,7 @@ weight: 6
    implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
    
-   >**注**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) フィーチャーを使用していて、MobileFirstAPI をフィーチャー・モジュールから呼び出したい場合は、`inplementation` ではなく `api` 宣言を使用してください。`implementation` を使用すると同じモジュール内での MobileFirst API の使用が制限される可能性がありますが、 `api`  を使用すると、フィーチャー・モジュールを含むアプリ内のすべてのモジュールで MobileFirst API を利用できます。詳しくは、 [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation)を参照してください。
+   >**注**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) フィーチャーを使用していて、MobileFirstAPI をフィーチャー・モジュールから呼び出したい場合は、`inplementation` ではなく `api` 宣言を使用してください。 `implementation` を使用すると同じモジュール内での MobileFirst API の使用が制限される可能性がありますが、 `api`  を使用すると、フィーチャー・モジュールを含むアプリ内のすべてのモジュールで MobileFirst API を利用できます。詳しくは、 [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation)を参照してください。
    
 ```xml
  api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
@@ -131,7 +131,7 @@ weight: 6
 {: #notifications-api }
 ### MFPPush インスタンス
 {: #mfppush-instance }
-すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。  これを行うには、クラス・レベルのフィールド (`private MFPPush push = MFPPush.getInstance();` など) を作成し、その後、クラス内で一貫して `push.<api-call>` を呼び出します。
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。  これを行うには、クラス・レベルのフィールド (`private MFPPush push = MFPPush.getInstance();`など) を作成し、その後、クラス内で一貫して `push.<api-call>` を呼び出します。
 
 代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.getInstance().<api_call>` を呼び出すこともできます。
 

@@ -101,7 +101,7 @@ problema.
 administradores ou não raiz não poderão modificar os arquivos. Para o escopo deste tutorial, mova o diretório **usr** contendo os servidores para um local que não precise de privilégios específicos. Dessa forma, as operações de instalação podem ser feitas sem privilégios específicos.
     * Acesse o diretório de instalação do Liberty.
     * Crie um diretório chamado **etc**. São necessários privilégios de administrador.
-    * No diretório **etc**, crie um arquivo **server.env** com o conteúdo a seguir: `WLP_USER_DIR=<path to a directory where any user can write>`
+    * No diretório **etc**, crie um arquivo **server.env** com o seguinte conteúdo: `WLP_USER_DIR=<caminho para o diretório em que qualquer usuário pode gravar>`
 
     Por exemplo, no Windows: `WLP_USER_DIR=C:\LibertyServers\usr`
 7. Crie um servidor Liberty que será usado para instalar o primeiro nó do {{ site.data.keys.mf_server }} na parte posterior do tutorial.
@@ -411,7 +411,7 @@ O arquivo jvm.options do perfil Liberty é modificado. Uma propriedade (com.ibm.
 Após a instalação ser concluída, é possível usar esse procedimento para testar os componentes instalados.
 
 1. Inicie o servidor usando o comando **server start mfp1**. O arquivo binário para o servidor está em **liberty\_install\_dir/bin**.
-2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>`, conforme definido no arquivo **server.xml**. Uma tela de login é exibida.
+2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>` conforme definido no arquivo **server.xml**. Uma tela de login é exibida.
 
 ![A tela de login do console](mfpconsole_signin.jpg)
 
@@ -513,7 +513,8 @@ Quando você cria um farm, também é necessário configurar um servidor HTTP pa
 1. Inicie os dois servidores:
 
     ```bash
-    server start mfp1 server start mfp2
+    server start mfp1
+    server start mfp2
     ```
 
 2. Acesse o console. Por exemplo, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) ou [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) em HTTPS. Na barra lateral esquerda, um menu extra rotulado como **Nós do Server Farm** aparece. Se você clicar em **Nós do Server Farm**, é possível ver o status de cada nó. Talvez você tenha que esperar um pouco até que os nós sejam iniciados.

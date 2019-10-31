@@ -20,6 +20,7 @@ proporciona API del lado del cliente que permite recopilar datos analíticos sob
 * [Habilitación/inhabilitación de sucesos de cliente](#enablingdisabling-client-event-types)
 * [Sucesos personalizados](#custom-events)
 * [Seguimiento de usuarios](#tracking-users)
+* [Capturar & enviar comentarios de usuario de aplicación interna](#sending-userfeedback-data)
 
 ## Configuración de analíticas en el lado del cliente
 {: #configuring-analytics-on-the-client-side }
@@ -482,4 +483,66 @@ En una aplicación Android, utilice el siguiente método de API de Java:
 
 ```java
 WLAnalytics.send();
+```
+
+## Capturar & enviar comentarios de usuario de aplicación interna
+{: #sending-userfeedback-data }
+
+Utilice los comentarios de usuarios de la aplicación interna para profundizar en su análisis del rendimiento de la aplicación. Puede permitir que los usuarios y probadores de aplicaciones proporcionen comentarios contextuales enriquecidos a los propietarios de las aplicaciones. Los propietarios de aplicaciones reciben comentarios de sus usuarios en tiempo real acerca de su experiencia de uso de la aplicación, lo cual permite a los propietarios y desarrolladores de aplicaciones llevar a cabo acciones adicionales. Esta característica agiliza de forma importante el mantenimiento de la aplicación. Utilice la API siguiente para conmutar su aplicación al modo de comentarios interactivos en cualquier manejador de acciones de su aplicación, por ejemplo, cuando maneja la pulsación de un botón o la selección de un elemento de menú.
+
+> Esta característica no está soportada para aplicaciones web. 
+
+#### JavaScript (Cordova)
+{: #javascript-cordova-sending-userfeedback-data }
+
+En primer lugar, añada el siguiente plugin para incluir la función de comentarios de aplicación interna en su aplicación Cordova y asegúrese de que se ha añadido correctamente el plugin
+```
+cordova plugin add cordova-plugin-mfp-analytics
+```
+
+Ahora, utilice el siguiente método de la API JavaScript en el manejador de acciones de su aplicación Cordova.
+
+```javascript
+WL.Analytics.triggerFeedbackMode();
+```
+
+#### JavaScript (Web)
+{: #javascript-web-ssending-userfeedback-data }
+
+**No soportado**
+
+#### iOS
+{: #ios-sending-userfeedback-data }
+**Swift**
+
+En primer lugar, añada lo siguiente al podfile de su aplicación. 
+
+```
+pod 'IBMMobileFirstPlatformFoundationAnalytics'
+```
+
+A continuación, actualice su pod ejecutando el mandato siguiente en la raíz de su proyecto XCode. 
+```
+pod update
+```
+
+Ahora invoque la siguiente API en el manejador de acciones de su aplicación. 
+
+```swift
+WLAnalytics.sharedInstance().triggerFeedbackMode();
+```
+
+#### Android
+{: #android-sending-userfeedback-data }
+
+En primer lugar, añada la dependencia siguiente en el script Gradle de su aplicación. 
+
+```
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationanalytics:8.0.+@aar'
+```
+
+A continuación, en la aplicación Android, utilice el siguiente método de la API Java en el manejador de acciones:
+
+```java
+WLAnalytics.triggerFeedbackMode();
 ```

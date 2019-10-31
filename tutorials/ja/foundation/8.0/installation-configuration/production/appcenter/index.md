@@ -1211,7 +1211,7 @@ Application Center 用の Apache Tomcat を手動で構成するには、JAR お
                        value="product_install_dir/ApplicationCenter/tools/android-sdk"
                        type="java.lang.String" override="false"/>
           <!-- The protocol of the application resources URI.
-               This property is optional. It is only needed if the protocol
+               このプロパティーは任意指定です。 It is only needed if the protocol
                of the external and internal URI are different. -->
           <!-- <Environment name="ibm.appcenter.proxy.protocol"
                             value="http" type="java.lang.String" override="false"/>

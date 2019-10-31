@@ -37,7 +37,7 @@ Vous pouvez mettre à jour ces composants en procédant de deux façons :
 La procédure de mise à jour dépend de la méthode utilisée lors de l'installation initiale.
 
 >**Remarque :** Il est fortement recommandé d'effectuer une sauvegarde du répertoire d'installation de MFP existant avant de mettre à jour le serveur MobileFirst.
-> Aucune procédure spéciale n'est requise lorsque vous sauvegardez ces fichiers ; il suffit de vous assurer que le serveur MobileFirst est arrêté. Si tel n'est pas le cas, les données peuvent être modifiées au cours de la sauvegarde et il se peut que les données stockées en mémoire ne soient pas encore écrites dans le système de fichiers. Pour éviter tout incohérence des données, arrêtez le serveur MobileFirst avant de commencer la sauvegarde.
+> Aucune procédure spéciale n'est requise lorsque vous sauvegardez ces fichiers ; il suffit de vous assurer que le serveur MobileFirst est arrêté.  Si tel n'est pas le cas, les données peuvent être modifiées au cours de la sauvegarde et il se peut que les données stockées en mémoire ne soient pas encore écrites dans le système de fichiers. Pour éviter tout incohérence des données, arrêtez le serveur MobileFirst avant de commencer la sauvegarde.
 >
 MFP ne prend pas en charge l'annulation d'une mise à jour ou d'un correctif iFix via IBM Installation Manager (IM). L'annulation est cependant possible avec les tâches ANT ou l'outil de configuration de serveur si vous disposez des fichiers war relatifs à MFP qui ont été sauvegardés avant la mise à jour.
 >

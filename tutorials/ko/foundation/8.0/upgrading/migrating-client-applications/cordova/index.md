@@ -413,7 +413,7 @@ Cordova 및 HTML 5에서 제공하는 응답 웹 디자인 메소드를 채택�
 * src/www/acme/html/footer.html
 * plugin.xml
 
-**plugin.xml** 파일에는 `<asset>` 태그가 포함되며, 리소스 복사를 위한 소스와 대상이 포함됩니다.
+**plugin.xml** 파일에는 리소스 복사를 위한 소스와 대상이 포함되어 있는 `<asset>` 태그가 포함되어 있습니다.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -462,7 +462,7 @@ MobileFirst Studio 7.1은 컴파일 전에 불필요한 문자를 모두 제거�
 * [https://www.npmjs.com/package/uglify-js](https://www.npmjs.com/package/uglify-js)
 * [https://www.npmjs.com/package/clean-css](https://www.npmjs.com/package/clean-css)
 
-이러한 후크는 `<hook>` 요소를 사용하여 플러그인 파일 또는 앱의 **config.xml** 파일에서 정의할 수 있습니다.  
+이러한 후크는 `<hook>` 요소를 사용하여 플러그인 파일 또는 앱의 **config.xml** 파일에서 또는 플러그인 파일에서 정의될 수 있습니다.  
 다음 예제에서는 Cordova가 각 플랫폼의 **www/** 폴더에 파일을 복사하기 전에 `before_prepare` 후크 이벤트를 사용하여 코드를 축소하는 스크립트를 실행합니다.
 
 ```html

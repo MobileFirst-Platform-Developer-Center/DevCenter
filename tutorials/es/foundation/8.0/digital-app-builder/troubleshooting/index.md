@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Resolución de problemas
-weight: 6
+weight: 17
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -41,7 +41,7 @@ Encuentre respuestas para algunos de los problemas que puede encontrar al utiliz
 
 * En MacOS, la vista previa de la aplicación en un simulador de Android falla y la aplicación se cuelga. Con el siguiente error:
 
-    `java.lang.RuntimeException: Unable to create application com.ibm.MFPApplication: java.lang.RuntimeException: Client configuration file mfpclient.properties not found in application assets. Use the MFP CLI command 'mfpdev app register' to create the file.`
+    `java.lang.RuntimeException: No se ha podido crear la aplicación com.ibm.MFPApplication: java.lang.RuntimeException: No se ha encontrado el archivo mfpclient.properties en los activos de la aplicación. Utilice el mandato MFP CLI 'mfpdev app register' para crear el archivo.`
 
     Para resolver esto, desde el terminal vaya al directorio ionic de la aplicación y ejecute los mandatos siguientes: 
 
@@ -72,3 +72,15 @@ Encuentre respuestas para algunos de los problemas que puede encontrar al utiliz
 
     Asegúrese de crear el proyecto de la app bajo la unidad `C://<your folder name/app name>`.
 
+* Digital App Builder se bloquea con la pantalla en rojo. 
+
+    Si observa un bloqueo con una pantalla en rojo, consulte los registros en esta ubicación: 
+    * En MacOS- `/Users/<username>/Library/Logs/IBM Digital App Builder/log.log`
+    * En Windows - `C:\\Users\<username>\AppData\Roming\IBM Digital App Builder\log.log`
+
+    Si el error está relacionado con un `getPath` de `rendered.js`,
+se considera un [problema de electrón](https://github.com/electron/electron/issues/8205).
+
+    Esto sucede de forma aleatoria. 
+
+    Reinicie Digital App Builder y su caso de uso deberá funcionar. 

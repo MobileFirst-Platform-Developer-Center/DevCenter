@@ -38,9 +38,10 @@ La image de Docker de tiene ciertos artefectos que pueden personalizarse para ha
 
 1.	Desde la consola de ICP **Catálogo**, asegúrese de que los gráficos helm `ibm-mfpf-*` helm se han cargado.
 2.	Desempaquete el adjunto (`mfp-icp-oracle.zip`) para localizar el `Dockerfile` y `usr-mfpf-server` muestra la estructura de directorios y un `Dockerfile` de muestra para utilizarlo.
-3.	Modifique el `Dockerfile` de forma que utilice la corrección de versión de imagen sobre la que se ha de extender la imagen de Docker.<br/> *Ejemplo:*<br/>
+3.	Modifique el `Dockerfile` de forma que utilice la corrección de versión de imagen sobre la que se ha de extender la imagen de Docker.<br/>
+     *Ejemplo:*<br/>
       `FROM mycluster.icp:8500/default/mfpf-server:<a.b.c.d>`<br/>
-       *a.b.c.d* es la versión de la imagen que está disponible en el registro de imágenes. 
+       *a.b.c.d* es la versión de imagen disponible en el registro de imágenes.
 4.	Siga las instrucciones del blog para personalizar la imagen de Docker y crear los pods de servidor de Mobile Foundation.
 5.	Una vez que se extienda la imagen de Docker con los pasos mencionados, puede utilizarse la consola de ICP para desplegar el gráfico Helm para el servidor de Mobile Foundation. Asegúrese de que se proporciona la nueva imagen.
 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: トラブルシューティング
-weight: 6
+weight: 17
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -18,7 +18,7 @@ IBM Digital App Builder の使用中に発生する可能性があるいくつ�
 
         * Windows の場合: `%USERPROFILE%\AppData\Roaming\IBM Digital App Builder\log.log`
 
-    * `<APP LOCATION>/ibm/applog.log` にある、アプリケーション関連のログに関する `applog.log`
+    * `<APP LOCATION>/ibm/applog.log` にある、アプリケーション関連のログ `applog.log`。
 
 * swagger ファイルを使用してマイクロサービスのデータ・セットを作成できない
 
@@ -70,5 +70,16 @@ IBM Digital App Builder の使用中に発生する可能性があるいくつ�
 
     `C:` 以外の別のディスク・ドライブの場所に新しいアプリを作成しようとすると、エラーが発生することがあります。
 
-    ドライブ `C://<your folder name/app name>` の下にアプリ・プロジェクトを作成するようにしてください。
+    ドライブ `C://<your folder name/app name>` の下にアプリケーション・プロジェクトを作成するようにしてください。
 
+* Digital App Builder が赤い画面で異常終了する。
+
+    赤い画面で異常終了した場合、以下の場所にあるログを確認してください。
+    * MacOS- `/Users/<username>/Library/Logs/IBM Digital App Builder/log.log`
+    * Windows - `C:&#xa5;&#xa5;Users&#xa5;<username>&#xa5;AppData&#xa5;Roming&#xa5;IBM Digital App Builder&#xa5;log.log`
+
+    エラーが `rendered.js` の `getPath` に関するものである場合、それは、既知の [electron の問題](https://github.com/electron/electron/issues/8205)です。
+
+    これはランダムに発生します。
+
+    Digital App Builder を再始動してください。通常、これでシナリオは機能します。

@@ -3,7 +3,7 @@ layout: tutorial
 title: 在 IBM Cloud Private 上设置 MobileFirst Server
 breadcrumb_title: Foundation on IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
-weight: 2
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述

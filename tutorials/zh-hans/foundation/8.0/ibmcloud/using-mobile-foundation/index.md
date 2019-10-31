@@ -3,7 +3,7 @@ layout: tutorial
 title: 在 IBM Cloud 上使用 Mobile Foundation 服务
 breadcrumb_title: Setting up Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
