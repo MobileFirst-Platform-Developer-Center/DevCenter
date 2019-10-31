@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
+<link href="custom-style.css" type="text/css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet"/>
+<script type="text/javascript" src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+
+<style>
+  .bx--col{
+    padding-right: 0rem;
+    padding-left: 2%;
+    padding-top: 2%;
+    margin-right: 2%;
+
+  }
+  #wrapper {
+      margin-left:auto;
+      margin-right:auto;
+  }
+  .wrapper {
+      margin-left:auto;
+      margin-right:auto;
+  }
+
+</style>
+
+</head>
+<body>
+<div class="wrapper" style="width: 100%">
+<header class="bx--header" role="banner" aria-label="IBM Platform Name" data-header>
+  <a class="bx--skip-to-content" href="#main-content" tabindex="0">Skip to main content</a>
+
+  <a class="bx--header__name" href="" title="">
+    <span class="bx--header__name--prefix">
+      Mobile&nbsp;Foundation&nbsp;{dev}
+    </span>
+  </a>
+
+  <nav class="bx--header__nav" aria-label="Platform Name" data-header-nav>
+    <ul class="bx--header__menu-bar" role="menubar" aria-label="Platform Name">
+      <li>
+        <a class="bx--header__menu-item" href="../../../../features/" role="menuitem" tabindex="0">
+          Features
+        </a>
+      </li>
+
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Developers
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Developers">
+              <li class="bx--header__submenu" data-header-submenu>
+                <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ios-tutorials/" tabindex="-1">
+                  <span class="bx--text-truncate--end">
+                    iOS
+                  </span>
+                </a>
+                </li>
+                <li class="bx--header__submenu" data-header-submenu>
+                  <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/android-tutorials/" tabindex="-1">
+                    <span class="bx--text-truncate--end">
+                      Android
+                    </span>
+                  </a>
+                  </li>
+                  <li class="bx--header__submenu" data-header-submenu>
+                    <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/windows-8-10-tutorials/" tabindex="-1">
+                      <span class="bx--text-truncate--end">
+                        Windows 8 and 10
+                      </span>
+                    </a>
+                    </li>
+              <li role="none">
+                <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/cordova-tutorials/" tabindex="-1">
+                  <span class="bx--text-truncate--end">
+                    Cordova
+                  </span>
+                </a>
+                </li>
+                <li role="none">
+                  <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ionic-tutorials/" tabindex="-1">
+                    <span class="bx--text-truncate--end">
+                      Ionic
+                    </span>
+                  </a>
+                  </li>
+
+              <li role="none">
+                <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/xamarin-tutorials/" tabindex="-1">
+                  <span class="bx--text-truncate--end">
+                    Xamarin
+                  </span>
+                </a>
+                </li>
+                <li role="none">
+                  <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/reactnative-tutorials/" tabindex="-1">
+                    <span class="bx--text-truncate--end">
+                      React Native
+                    </span>
+                  </a>
+                  </li>
+
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/web-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Web
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Docs
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Docs">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 8.0
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.1/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.1
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.0/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.0
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/6.3/all-tutorials/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 6.3
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Labs
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Labs">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/8.0/intro/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 8.0 Labs
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.1/setup/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.1 Labs
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.0/setup/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.0 Labs
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Resources
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Resources">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../blog/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Blog
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../downloads/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Downloads
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../video-gallery/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Video&nbsp;Gallery
+              </span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li>
+        <a class="bx--header__menu-item" href="../../../../help/" role="menuitem" tabindex="0">
+          Help
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+
+</header>
+
+<div class="bx--content" style="background-image: url('header.jpg')">
+  <div class="banner">
+  <div class="bx--row" >
+    <div class="bx--col" style="padding-left: 0px"><h2 style="color:white">Mobile Foundation Services in IBM Cloud Pak for Applications</h2>
+      <p style="color:white">Rapidly build and deploy the next generation of multi channel digital apps, including mobile, wearables, conversation, web, and PWAs. Power-up your apps with containerized mobile back-end services.</p>
+      <a href="../../../../tutorials/en/foundation/8.0/ibmcloud/getting-started-mf-on-rhos/" target="_blank"><button  class="bx--btn bx--btn--primary" type="button">Get Started
+      </button></a>
+      <br/>
+    </div>
+    <br/>
+  </div>
+</div>
+</div>
+
+<div class="wrapper" style="width: 100%">
+  <div class="bx--row" style="width: 100%">
+      <div class="bx--col bx--col-max-1 bx--col-md-1" style="margin-right: 0px; max-width: 15%">
+        <div class="bx--row" style="margin-left: 4%">
+          <div class="bx--col">
+        <p>Explore our capabilities</p>
+        </div>
+        </div>
+      </div>
+      <div class="bx--col bx--col-md-11" style="max-width: 85%">
+        <div class="bx--row">
+          <div id="inner-col" class="bx--col">
+            <div class="dab">
+              <svg width="23" height="23" fill-rule="evenodd"><path d="M5.8 1.2v4.7H1.2V1.2h4.6zM7 0H0v7h7V0zM13.8 1.2v4.7H9.2V1.2h4.6zM15 0H8v7h7V0zM21.8 1.2v4.7h-4.7V1.2h4.7zM23 0h-7v7h7V0zM5.8 9.2v4.7H1.2V9.2h4.6zM7 8H0v7h7V8zM13.8 9.2v4.7H9.2V9.2h4.6zM15 8H8v7h7V8zM21.8 9.2v4.7h-4.7V9.2h4.7zM23 8h-7v7h7V8zM5.8 17.2v4.7H1.2v-4.7h4.6zM7 16H0v7h7v-7zM13.8 17.2v4.7H9.2v-4.7h4.6zM15 16H8v7h7v-7zM21.8 17.2v4.7h-4.7v-4.7h4.7zM23 16h-7v7h7v-7z"></path></svg>
+
+              <h3>Accelerate Development</h3>
+              <p>Quickly build digital apps that can run on multiple channels. The Digital App Builder provides the ability to drag-and-drop components to quickly build an app.</p>
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Digital App Builder</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Digital App Builder with AI capabilities leveraging Watson services.</div>
+                    </div>
+
+              </div>
+            </section>
+              <a href="../../../../tutorials/en/foundation/8.0/digital-app-builder/" target="_blank"><button class="bx--btn bx--btn--primary" type="button">Find out more
+            </button></a>
+            </div>
+          </div>
+          <div id="inner-dab-v" class="bx--col">
+            <div class="dab-video" style="background-color: #ffffff" tabindex="0">
+              <iframe width="90%" height="300px" src="https://www.youtube.com/embed/x9_XjyKR8K8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="bx--row">
+          <div class="bx--col">
+          <div class="bx--row">
+          <div class="bx--col">
+            <div class="bx--row">
+              <div class="bx--col">
+            <div class="mc" style="background-color: #ffffff" tabindex="0">
+              <svg width="23" height="24" fill-rule="evenodd"><path d="M20.5 18v-6h-9V5.9C12.9 5.7 14 4.5 14 3c0-1.7-1.3-3-3-3S8 1.3 8 3c0 1.5 1.1 2.7 2.5 2.9V12h-8v6.1C1.1 18.4 0 19.6 0 21c0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.5-1.1-2.7-2.5-2.9V13h16v5.1c-1.4.2-2.5 1.5-2.5 2.9 0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.5-1-2.8-2.5-3zM9 3c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zM5 21c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm15 2c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></svg>
+              <h3>Manage and Control</h3>
+              <p>Enable developers to rapidly build, deploy and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.</p>
+
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Foundation services</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Application Lifecycle</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Security Feature Toggle</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Offline data sync</div>
+                    </div>
+              </div>
+            </section>
+
+
+
+
+            </div>
+            </div>
+            </div>
+
+          </div>
+          <div class="bx--col">
+            <div class="bx--row">
+              <div class="bx--col">
+            <div class="sr" style="background-color: #ffffff" tabindex="0">
+              <svg width="24" height="24" fill-rule="evenodd"><path d="M0 0v24h24V0H0zm22.1 7l-7.2 8.9-9.2-3.8c-.2-.1-.4 0-.6.1L1 16.6V7h21.1zm.9 16H1v-4.9l4.6-5 9.2 3.8c.2.1.4 0 .6-.1L23 7.5V23zm0-17H1V1h22v5z"></path></svg>
+              <h3>Sense and Respond</h3>
+              <p>Keep your user engagement relevant and effective by obtaining insights into how your application is performing with users, with the help of built-in visualizations.</p>
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Mobile Analytics</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Application usage and stability</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Network interactions</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">In-app user feedback</div>
+                    </div>
+
+              </div>
+            </section>
+          </div>
+          </div>
+          </div>
+
+
+            </div>
+          <div class="bx--col">
+            <div class="bx--row">
+              <div class="bx--col">
+            <div class="pn" style="background-color: #ffffff" tabindex="0">
+              <svg width="24" height="24" fill-rule="evenodd"><path d="M21 13V3h-3v1h2v9h-3v11h7V13h-3zm2 10h-5v-9h5v9zM17 3.5L11 0v3H3v13h1V4h7v3l6-3.5zm-5-1.8l3 1.8-3 1.8V1.7zM16 20H6.4c-.3-1.4-1.6-2.5-3.2-2.5C1.4 17.5 0 19 0 20.7 0 22.5 1.5 24 3.2 24c1.7 0 3.1-1.3 3.2-3h9.5l.1-1zM3.2 23C2 23 1 22 1 20.7c0-1.2 1-2.2 2.2-2.2 1.2 0 2.2 1 2.2 2.2.1 1.3-.9 2.3-2.2 2.3z"></path></svg>
+              <h3>Engage with your users</h3>
+              <p>Engage your audience through unified notification mechanism, which makes the entire process of sending notifications completely transparent to the developer.</p>
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Push Notifications</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Notifications for iOS.</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Notifications for Android.</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Notifications for Windows and Web.</div>
+                    </div>
+
+
+              </div>
+            </section>
+
+
+          </div>
+        </div>
+        </div>
+
+        </div>
+          <div class="bx--col">
+            <div class="bx--row">
+              <div class="bx--col">
+            <div class="pd" style="background-color: #ffffff" tabindex="0">
+              <svg width="24" height="24" fill-rule="evenodd"><path d="M14 1v22H1V1h13zm1-1H0v24h15V0zM23 1v22h-5V1h5zm1-1h-7v24h7V0z"></path><path d="M12 4v4H3V4h9zm1-1H2v6h11V3zM21 3v1h-1V3h1zm1-1h-3v3h3V2zM21 7v1h-1V7h1zm1-1h-3v3h3V6zM21 11v1h-1v-1h1zm1-1h-3v3h3v-3zM21 15v1h-1v-1h1zm1-1h-3v3h3v-3zM21 19v1h-1v-1h1zm1-1h-3v3h3v-3z"></path></svg>
+              <h3>Package and Distribute</h3>
+              <p>Use the application center as an enterprise application store and target availability of some mobile applications to particular groups of users within the company.</p>
+              <section class="bx--structured-list">
+              <div class="bx--structured-list-thead">
+                <div class="bx--structured-list-row bx--structured-list-row--header-row">
+                    <div class="bx--structured-list-th">Application Center</div>
+
+                </div>
+              </div>
+              <div class="bx--structured-list-tbody">
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Enterprise app store for iOS.</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Enterprise app store for Android.</div>
+                    </div>
+                    <div class="bx--structured-list-row">
+
+                        <div class="bx--structured-list-td">Enterprise app store for Windows.</div>
+                    </div>
+
+
+              </div>
+            </section>
+
+          </div>
+          </div>
+          </div>
+
+
+        </div>
+          </div>
+          <div class="bx--row">
+            <div class="bx--col">
+              <a href="../../../../tutorials/en/foundation/8.0/application-development/" target="_blank"><button class="bx--btn bx--btn--primary" type="button">Find out more
+            </button></a>
+            </div>
+            <div class="bx--col">
+
+              <a href="../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><button  class="bx--btn bx--btn--primary" type="button">Find out more
+            </button></a>
+            </div>
+
+              <div class="bx--col">
+                <a href="../../../../tutorials/en/foundation/8.0/notifications/" target="_blank"><button class="bx--btn bx--btn--primary" type="button">Find out more
+                </button></a>
+
+            </div>
+              <div class="bx--col">
+            <a href="../../../../tutorials/en/foundation/8.0/appcenter/" target="_blank"><button  class="bx--btn bx--btn--primary" type="button">Find out more
+            </button></a>
+            </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+</div>
+</div>
+
+</div>
+
+<div class="rectangle">
+  <div class="bx--row" style="background-color: #f0f3f6">
+      <div class="bx--col bx--col-max-2 bx--col-sm-12">
+        <h4 style="color:black">View the documentation</h4>
+        </div>
+
+
+      <div class="bx--col bx--col-md-3 bx--col-sm-6" style="margin-left: 0px; margin-right: 98px">
+        <div class="expdocs">
+          <img src="Explore-docs-icon.svg" alt="Explore Docs"/>
+            <h4 style="color:black"><b>Explore the docs</b></h4>
+          <p style="color:black">View the complete documentation on Mobile Foundation.</p>
+        <div style="text-align:right;">
+        <a href="../../../../tutorials/en/foundation/8.0/all-tutorials/"><img src="arrow-black-32.svg" alt="Go"/></a>
+        </div>
+        </div>
+      </div>
+
+
+
+
+  </div>
+
+  <div class="bx--row" style="background-color: #f0f3f6">
+      <div class="bx--col bx--col-max-2 bx--col-sm-12" style="background-color: #f3f3f3">
+
+        <h4 style="color:black">Let us help decide your journey</h4>
+        </div>
+
+      <div class="bx--col bx--col-md-3 bx--col-sm-6" style="margin-left: 0px; margin-right: 98px">
+        <div class="personaljourney1" style="background-color: #000000" tabindex="0">
+
+          <h3 style="color:white">I am a...</h3>
+          <h4 style="color:white">Front-end developer</h4>
+          <p style="color:white">Quickly create mobile, web and PWA (Progressive Web App) multi-channel applications having AI capabilities with low-code approach.</p>
+          <br/>
+        <div style="text-align:right;">
+        <a href="../../../../tutorials/en/mobileservices-icpa/front-end-developer-journey/"><img src="arrow-white-32.svg" alt="Go"/></a>
+        </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+</div>
+    </body>

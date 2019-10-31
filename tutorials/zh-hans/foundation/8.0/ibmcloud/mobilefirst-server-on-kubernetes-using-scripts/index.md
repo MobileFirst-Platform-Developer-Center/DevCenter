@@ -3,7 +3,7 @@ layout: tutorial
 title: 使用脚本在 IBM Cloud Kubernetes 集群上设置 MobileFirst Server
 breadcrumb_title: Foundation on Kubernetes Cluster using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>

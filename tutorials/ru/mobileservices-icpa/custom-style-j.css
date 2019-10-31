@@ -1,0 +1,115 @@
+.bx--container{
+  background-color: #f3f3f3;
+}
+.bx--col {
+  margin: 10px;
+  min-width: 25%;
+}
+.bx--col-md-12 {
+  padding: 10px;
+  margin-left: 48px;
+  margin-top: 48px;
+  padding-bottom: 0px;
+}
+.bx--col-md-12 h2{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 32px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 40px;
+}
+.bx--col-md-12 p{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 20px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 40px;
+}
+.bx--tile{
+  padding: 20px;
+  height: 100%;
+  background-color: #ffffff;
+}
+div#card{
+  position: relative;
+  height: 250px;
+  text-overflow: ellipsis;
+  overflow: scroll;
+}
+div#card h4{
+  font-family: 'IBM Plex Sans SemiBold', 'IBMPlexSans-SemiBold', sans-serif;
+  font-size: 16px;
+  color: #171717;
+  letter-spacing: 0.16px;
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+div#card p{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 15px;
+  color: #565656;
+  letter-spacing: 0.16px;
+  line-height: 18px;
+}
+#title{
+  padding: 20px;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+div#title p{
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 18px;
+  color: #171717;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+div#go {
+  position: absolute;
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  text-align: right;
+}
+div#go img{
+  vertical-align: bottom;
+  padding: 20px;
+}
+.bx--tabs{
+  border-bottom: 0px;
+
+}
+.bx--tabs__nav-item {
+
+}
+.bx--tabs__nav-item:focus{
+  border: 0px;
+}
+.bx--tabs__nav-link{
+  padding-bottom: 10px;
+}
+.bx--tabs__nav-item--selected .bx--tabs__nav-link{
+  background-color: #3D3D3D;
+  border-top: 3px solid  #0062FF;
+  height: 40px;
+}
+.bx--tabs__nav-item .bx--tabs__nav-link {
+  transition-property: color, border-top-color, outline;
+}
+a#tab-link-1.bx--tabs__nav-link{
+  border-bottom: none;
+}
+a#tab-link-2.bx--tabs__nav-link{
+  border-bottom: none;
+}
+a#tab-link-3.bx--tabs__nav-link{
+  border-bottom: none;
+}
+a#tab-link-4.bx--tabs__nav-link{
+  border-bottom: none;
+}
+
+.p {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
