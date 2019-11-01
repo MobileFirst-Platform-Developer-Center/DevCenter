@@ -38,6 +38,9 @@ title: Blog
         letter-spacing: 3px;
         font-weight: 400;
       }
+      .container{
+        width: 95%;
+      }
       .container-fluid {
         font-size: 14px;
       }
@@ -89,7 +92,7 @@ title: Blog
 
     .timeline-item {
       width: 100%;
-      margin-bottom: 70px;
+      margin-bottom: 50px;
     }
     .timeline-item:nth-child(even) .timeline-content {
       float: right;
@@ -166,7 +169,7 @@ title: Blog
     }
 
     .timeline-img-header {
-      height: 150px;
+      height: 130px;
       position: relative;
       margin-bottom: 20px;
     }
@@ -176,7 +179,7 @@ title: Blog
       bottom: 10px;
       left: 20px;
       font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 22px;
+      font-size: 18px;
       line-height: normal;
       font-weight: 600;
     }
@@ -192,7 +195,7 @@ title: Blog
       background: #808080;
       display: inline-block;
       color: #FFFFFF;
-      padding: 10px;
+      padding: 5px;
       position: absolute;
       top: 0;
       right: 0;
@@ -278,7 +281,7 @@ title: Blog
 
         .postExcerpt {
             font-family: 'IBM Plex Sans', sans-serif;
-            font-size: 95%;
+            font-size: 85%;
         }
     </style>
     <script type="text/javascript">
@@ -362,9 +365,9 @@ title: Blog
         <div class="timeline-img-header">
           <h2>{{post.title | truncatewords: 16}}</h2>
         </div>
-        <div class="date"><span class="postDate"><span class="glyphicon glyphicon-pencil"></span>&nbsp;{{ post.author.name}} | <span class="glyphicon glyphicon-calendar"></span>&nbsp;{{post.date | date: '%B %d, %Y'}}</span></div>
-        <p style="padding-bottom: 20px">
-            <span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 50}}</span>...<a href="{{site.baseurl}}{{post.url}}">more</a>
+        <div class="date hidden-sm hidden-xs"><span class="postDate"><span class="glyphicon glyphicon-pencil"></span>&nbsp;{{ post.author.name}} | <span class="glyphicon glyphicon-calendar"></span>&nbsp;{{post.date | date: '%B %d, %Y'}}</span></div>
+        <p style="padding-bottom: 10px">
+            <span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 100}}</span>...<a href="{{site.baseurl}}{{post.url}}">more</a>
         </p>
         <!--<a href="{{site.baseurl}}{{post.url}}" target="_blank"><button class="bx--btn bx--btn--primary">More</button></a>-->
       </div>
