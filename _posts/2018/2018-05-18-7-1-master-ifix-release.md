@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2019-10-21
+date: 2019-11-01
 permalink: '/blog/2018/05/18/7-1-master-ifix-release/'
 version:
 - 7.1
@@ -13,14 +13,42 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *7.1.0.0-MFPF-IF201910160455* has been released for MobileFirst Foundation 7.1, dated **October 16th, 2019**.
+A new iFix *7.1.0.0-MFPF-IF201910310930* has been released for MobileFirst Foundation 7.1, dated **October 31st, 2019**.
 <br/>
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201910310930" role="tablist">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201910310930">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201910310930" href="#collapse-mfp-ifix-IF201910310930" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201910310930"><b>iFix 7.1.0.0-MFPF-IF201910310930</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201910310930" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201910310930">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>October 31st, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH18471</b>  DEFAULT CARD PRESENTATION ON IOS 13 CAUSES SPLASH SCREEN TO NOT APPEAR IN FULLSCREEN.<br/>
+            <b>PH18477</b>  IOS APPLICATIONS ARE NOT DISPLAYED IN THE APPLICATION CENTER INSTALLER PAGE.<br/>
+            </div>
+        </div>      
+    </div>
+</div>     
+
+## Previous iFixes for MobileFirst Foundation 7.1
+
+IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
+*List below includes iFixes released in 2018 only.*
+
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201910160455" role="tablist">
 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201910160455">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201910160455" href="#collapse-mfp-ifix-IF201910160455" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201910160455"><b>iFix 7.1.0.0-MFPF-IF201910160455</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201910160455" href="#collapse-mfp-ifix-IF201910160455" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201910160455"><b>iFix 7.1.0.0-MFPF-IF201910160455</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201910160455" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201910160455">
@@ -37,12 +65,7 @@ A new iFix *7.1.0.0-MFPF-IF201910160455* has been released for MobileFirst Found
             </div>
         </div>      
     </div>
-</div>     
-
-## Previous iFixes for MobileFirst Foundation 7.1
-
-IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
-*List below includes iFixes released in 2018 only.*
+</div>   
 
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201909181659" role="tablist">
 
