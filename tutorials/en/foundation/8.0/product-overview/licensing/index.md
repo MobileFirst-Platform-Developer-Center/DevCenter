@@ -14,15 +14,17 @@ If you have purchased Perpetual licenses, you can consume what you have purchase
 {: #application-or-addressable-device-licenses }
 If you have purchased Application or Addressable Device licenses, you can consume what you have purchased and verify your usage and compliance through the License tracking page in the {{ site.data.keys.mf_console }} and through License Tracking report.
 
-### Processor value unit (PVU) licensing
-{: #processor-value-unit-pvu-licensing }
-Processor value unit (PVU) licensing is available if you have purchased IBM {{ site.data.keys.product }} Extension (see [License Information documents](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)), but only after the purchase of IBM  WebSphere  Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise.
+### Virtual Processor Cores (VPC Licensing)
+{: #vpc-licensing}
 
-The PVU license pricing structure is responsive to both the type and number of processors that are available to installed products. Entitlements can be full capacity or subcapacity. Under the processor value unit licensing structure, you license software based on the number of value units assigned to each processor core.
+Mobile Foundation is also available with capacity-based licensing called Virtual Processor Cores (VPC). VPC is a unit of measurement that is used to determine the licensing cost for Mobile Foundation and is based on the number of cores that are available. Currently, this metric is available only for Cloud Pak for Applications.
 
-For example, processor type A is assigned 80 value units per core and processor type B is assigned 100 value units per core. If you license a product to run on two type A processors, you must acquire an entitlement for 160 value units per core. If the product is to run on two type B processors, the required entitlement is 200 value units per core.
+The features of this metric are as follows,
 
-> [Read more information](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) on PVU licensing.
+* Clients can run any number of applications and devices. Hence this form of license would be beneficial compared to Application license in scenarios where customers have many apps in their deployment.
+
+* Aligned with other products in the portfolio and provide flexibility to clients for hybrid cloud deployments.
+
 
 ### Token Licensing
 {: #token-licensing }
