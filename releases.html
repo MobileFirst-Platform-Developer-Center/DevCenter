@@ -1,0 +1,442 @@
+---
+layout: default
+indexed: false
+---
+<head>
+<style>
+  section {
+  padding: 100px 0;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Roboto';
+  font-size: 17px;
+  font-weight: 400;
+  background-color: #eee;
+}
+
+h1 {
+  font-size: 200%;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
+
+
+.timeline {
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  background: #C5CAE9;
+  width: 5px;
+  height: 95%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  width: 100%;
+  margin-bottom: 70px;
+}
+.timeline-item:nth-child(even) .timeline-content {
+  float: right;
+  padding: 40px 30px 10px 30px;
+}
+.timeline-item:nth-child(even) .timeline-content .date {
+  right: auto;
+  left: 0;
+}
+.timeline-item:nth-child(even) .timeline-content::after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  width: 0;
+  height: 0;
+  top: 30px;
+  left: -15px;
+  border-width: 10px 15px 10px 0;
+  border-color: transparent #f5f5f5 transparent transparent;
+}
+.timeline-item::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.timeline-content {
+  position: relative;
+  width: 45%;
+  padding: 10px 30px;
+  border-radius: 4px;
+  background: #f5f5f5;
+  box-shadow: 0 20px 25px -15px rgba(0, 0, 0, 0.3);
+}
+.timeline-content::after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  width: 0;
+  height: 0;
+  top: 30px;
+  right: -15px;
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent #f5f5f5;
+}
+
+.timeline-img {
+  width: 30px;
+  height: 30px;
+  background: #3F51B5;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  margin-top: 25px;
+  margin-left: -15px;
+}
+
+
+.timeline-card {
+  padding: 0 !important;
+}
+.timeline-card p {
+  padding: 0 20px;
+}
+.timeline-card a {
+  margin-left: 20px;
+}
+
+.timeline-item .timeline-img-header {
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url("https://picsum.photos/1000/800/?random") center center no-repeat;
+  background-size: cover;
+}
+
+.timeline-img-header {
+  height: 200px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.timeline-img-header h2 {
+  color: #FFFFFF;
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+}
+
+blockquote {
+  margin-top: 30px;
+  color: #757575;
+  border-left-color: #3F51B5;
+  padding: 0 20px;
+}
+
+.date {
+  background: #FF4081;
+  display: inline-block;
+  color: #FFFFFF;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .timeline::before {
+    left: 50px;
+  }
+  .timeline .timeline-img {
+    left: 50px;
+  }
+  .timeline .timeline-content {
+    max-width: 100%;
+    width: auto;
+    margin-left: 70px;
+  }
+  .timeline .timeline-item:nth-child(even) .timeline-content {
+    float: none;
+  }
+  .timeline .timeline-item:nth-child(odd) .timeline-content::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    width: 0;
+    height: 0;
+    top: 30px;
+    left: -15px;
+    border-width: 10px 15px 10px 0;
+    border-color: transparent #f5f5f5 transparent transparent;
+  }
+}
+</style>
+<script type="text/javascript">
+  $(function(){
+
+  window.sr = ScrollReveal();
+
+  if ($(window).width() < 768) {
+
+  	if ($('.timeline-content').hasClass('js--fadeInLeft')) {
+  		$('.timeline-content').removeClass('js--fadeInLeft').addClass('js--fadeInRight');
+  	}
+
+  	sr.reveal('.js--fadeInRight', {
+	    origin: 'right',
+	    distance: '300px',
+	    easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+  } else {
+
+  	sr.reveal('.js--fadeInLeft', {
+	    origin: 'left',
+	    distance: '300px',
+		  easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+	  sr.reveal('.js--fadeInRight', {
+	    origin: 'right',
+	    distance: '300px',
+	    easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+  }
+
+  sr.reveal('.js--fadeInLeft', {
+	    origin: 'left',
+	    distance: '300px',
+		  easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+	  sr.reveal('.js--fadeInRight', {
+	    origin: 'right',
+	    distance: '300px',
+	    easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+
+});
+</script>
+<meta charset="utf-8">
+<link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet"/>
+<script type="text/javascript" src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+
+</head>
+<body>
+<div class="wrapper" style="width: 100%">
+  <div class="bx--content" style="background-image: url('/blog/header-blog.jpg')">
+    <div class="banner">
+    <div class="bx--row" >
+      <div class="bx--col" style="padding-left: 0px"><h2 style="color:white">Mobile Foundation 8.0 CD Release notes</h2>
+        <p style="color:white">See <a href="https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/0/897/ENUS217-390/index.html&request_locale=en" target="_blank">Mobile Foundation v8.0 CD support announcement</a>, to learn more about the continuous delivery support model.</p>
+      </div>
+      <br/>
+    </div>
+  </div>
+  </div>
+<br/>
+<section class="timeline">
+  <div class="container">
+    <div class="timeline-item">
+      <div class="timeline-img"></div>
+
+      <div class="timeline-content js--fadeInLeft">
+        <h3>CD update 5</h3>
+        <h4>8.0.0.0-MFPF-IF201903190949-CDUpdate-05</h4>
+        <div class="date">19 March 2019</div>
+        <br/>
+        <h5><span style="color:NAVY"><b>CoreML Update</b></span></h5>
+
+        <p>ML (Machine Learning) models can be executed locally on the iOS mobile device using Apple’s CoreML framework.
+        Mobile Foundation provides the ability to manage the distribution of these models to devices securely. <a href="https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/" target="_blank">Learn more</a>.
+        </p>
+        <br/>
+        <h5><span style="color:NAVY"><b>App Authenticity for watchOS</b></span></h5>
+
+        <p>App Authenticity is a security feature, which validates the authenticity of the application before providing access. This feature was available for mobile apps. The feature is now extended for Apple WatchOS apps. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/" target="_blank">Learn more</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Push Notifications - Additional message features and attributes for FCM</b></span></h5>
+
+        <p>Push Notifications now supports the following additional message attributes.
+        <ul><li>Lights</li>
+        <li>Styles (Inbox, BigText, PictureNotifications)</li></ul></p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+
+      <div class="timeline-img"></div>
+
+      <div class="timeline-content js--fadeInLeft">
+        <h3>CD update 4</h3>
+        <h4>8.0.0.0-MFPF-IF201812191602-CDUpdate-04</h4>
+        <div class="date">19 December 2018</div>
+        <br/>
+        <h5><span style="color:NAVY"><b>HTTP/2 Support for APNs Push Notifications</b></span></h5>
+
+        <p>Push Notifications in MobileFirst now supports the HTTP/2 based APNs Push Notifications along with the legacy TCP Socket based notifications. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/notifications/sending-notifications/#http2-support-for-apns-push-notifications" target="_blank">Learn more</a>.
+        </p>
+        <br/>
+        <h5><span style="color:NAVY"><b>React Native Push SDK released</b></span></h5>
+
+        <p>React Native SDK for Push (react-native-ibm-mobilefirst-push 1.0.0) is released with this CD Update.</p>
+
+      </div>
+
+    </div>
+
+    <div class="timeline-item">
+
+      <div class="timeline-img"></div>
+
+      <div class="timeline-content js--fadeInLeft">
+        <h3>CD update 3</h3>
+        <h4>8.0.0.0-MFPF-IF201811050432-CDUpdate-03</h4>
+        <div class="date">5 November 2018</div>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for refresh tokens on iOS</b></span></h5>
+
+        <p>Mobile Foundation introduces the refresh token feature on iOS starting with this CD Update. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens" target="_blank">Learn more</a>.
+        </p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Download admin CLI (<i>mfpadm</i>) from Mobile Foundation console</b></span></h5>
+
+        <p>Mobile Foundation admin CLI (mfpadm) can now be downloaded from within the Download Center of the Mobile Foundation console.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for Node v8.x for MobileFirst CLI</b></span></h5>
+
+        <p>Starting from this iFix (<i>8.0.0.0-MFPF-IF201810040631</i>), Mobile Foundation adds support for Node v8.x for MobileFirst CLI.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Remove dependency on <i>libstdc++</i> for Cordova projects</b></span></h5>
+
+        <p>Starting with this iFix (<i>8.0.0.0-MFPF-IF201809041150</i>), a change to remove <i>libstdc++</i> as a dependency to Cordova projects is introduced. This is required for new apps running on iOS 12. For further details, such as a workaround, refer to <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/07/23/mfp-support-for-ios12/" target="_blank">this blog post</a>.</p>
+
+      </div>
+    </div>
+
+    <div class="timeline-item">
+
+      <div class="timeline-img"></div>
+
+      <div class="timeline-content js--fadeInLeft">
+        <h3>CD update 2</h3>
+        <h4>8.0.0.0-MFPF-IF201807180449-CDUpdate-02</h4>
+        <div class="date">18 July 2018</div>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for React Native development</b></span></h5>
+
+        <p>Mobile Foundation <a href="{{site.baseurl}}/blog/2018/07/24/React-Native-SDK-Mobile-Foundation/" target="_blank">announces</a> the support for React Native development with the availability of IBM Mobile Foundation SDK for React Native apps. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/reactnative-tutorials/" target="_blank">Learn more</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Automated synchronization of JSONStore collections with CouchDB databases for iOS and Cordova SDK</b></span></h5>
+
+        <p>Using MobileFirst iOS SDK and Cordova SDK, you can automate the synchronization of data between a JSONStore Collection on a device with any flavour of CouchDB database, including <a href="https://www.ibm.com/in-en/marketplace/database-management" target="_blank">Cloudant</a>. For more information on this feature, read this <a href="{{site.baseurl}}/blog/2018/07/24/jsonstoresync-couchdb-databases-ios-and-cordova/" target="_blank">blog post</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Introducing Refresh tokens</b></span></h5>
+
+        <p>Mobile Foundation now introduces special kind of tokens called Refresh tokens that can be used to request a new access token. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens" target="_blank">Learn more</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for Cordova v8 and Cordova Android v7</b></span></h5>
+
+        <p>MobileFirst Cordova plugins for Cordova v8 and Cordova Android v7 is supported. To work with the mentioned version of Cordova, you need to get the latest MobileFirst plugins and upgrade to the latest CLI (mfpdev-cli) version. For details on supported versions for individual platforms, refer to  <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/cordova/#support-levels" target="_blank">Adding the MobileFirst Foundation SDK to Cordova Applications</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Automated synchronization of JSONStore collections with CouchDB databases</b></span></h5>
+
+        <p>using MobileFirst Android SDK, you can automate the synchronization of data between a JSONStore Collection on a device with any flavour of CouchDB database, including <a href="https://www.ibm.com/in-en/marketplace/database-management" target="_blank">Cloudant</a>. For more information on this feature, read this <a href="{{site.baseurl}}/blog/2018/02/23/jsonstoresync-couchdb-databases/" target="_blank">blog post</a>.</p>
+
+      </div>
+    </div>
+
+    <div class="timeline-item">
+
+      <div class="timeline-img"></div>
+
+      <div class="timeline-content js--fadeInLeft">
+        <h3>CD update 1</h3>
+        <h4>8.0.0.0-MFPF-IF201711230641-CDUpdate-01</h4>
+        <div class="date">23 November 2017</div>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for Eclipse UI editor</b></span></h5>
+
+        <p>Mobile Foundation introduces the refresh token feature on iOS starting with this CD Update. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/#refresh-tokens" target="_blank">Learn more</a>.
+        </p>
+        <br/>
+        <h5><span style="color:NAVY"><b>New adapters for building cognitive apps</b></span></h5>
+
+        <p>Mobile Foundation has introduced two new pre-built cognitive services adapters for the <a href="https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonToneAnalyzer" target="_blank">Watson Tone Analyzer</a> and <a href="https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonLanguageTranslator" target="_blank">Language Translator</a> services. These adapters are available to be downloaded and deployed from the Download Center in the Mobile Foundation Console.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Dynamic App Authenticity</b></span></h5>
+
+        <p>A new implementation of <i>application authenticity</i> is provided. This implementation does not require the offline mfp-app-authenticity tool for generating the .authenticity_data file. Instead, you can enable or disable application authenticity from the MobileFirst console. For more information see <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/application-authenticity" target="_blank">Configuring Application Authenticity</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Appcenter (client & server) support for Windows 10</b></span></h5>
+
+        <p>Windows 10 UWP apps are supported in IBM Application Center. The user can now upload Windows 10 UWP apps and install the same on their device. The Windows 10 UWP client project for installing the UWP app is now shipped with the Application Center. You can open the project in Visual Studio and create a binary (for example, <i>.appx</i>) for distribution. Application Center does not provide a predefined method of distributing the mobile client. For more information, see <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/appcenter/preparations/#microsoft-windows-10-universal-native-ibm-appcenter-client" target="_blank">Microsoft Windows 10 Universal (Native) IBM AppCenter client</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>MobileFirst Eclipse plugin support for Eclipse Neon</b></span></h5>
+
+        <p>MobileFirst Eclipse plugin is updated to support Eclipse Neon.</p>
+
+        <br/>
+        <h5><span style="color:NAVY"><b>Android SDK modified to use a newer version of OkHttp (version 3.4.1)</b></span></h5>
+
+        <p>Android SDK has been modified to use a newer version of <i>OkHttp (version 3.4.1)</i> instead of the old version that was previously bundled with the MobileFirst SDK for Android. OkHttp is added as a dependency rather than being bundled with the SDK. This allows freedom of choice in using the OkHttp library for developers and also prevents conflicts with multiple versions of OkHttp.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for Cordova v7</b></span></h5>
+
+        <p>Cordova v7 is supported. For details on supported versions of individual platforms, refer to <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/sdk/cordova/" target="_blank">Adding the MobileFirst Foundation SDK to Cordova Applications]</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Multiple certificate pinning support</b></span></h5>
+
+        <p>Starting with iFix (<i>8.0.0.0-MFPF-IF20170624-0159</i>), Mobile Foundation supports pinning of multiple certificates. Earlier to this iFix, Mobile Foundation supported pinning of a single certificate. Mobile Foundation introduced a new API, which allows connection to multiple hosts by allowing the user to pin public keys of multiple X509 certificates to the client application. This feature is supported only for native Android and iOS apps. Learn more about <i>Multiple certificate pinning support</i> from <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/whats-new/" target="_blank">What's new</a>, under the section What's new in MobileFirst APIs.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Adapters for building a cognitive app</b></span></h5>
+
+        <p>Starting with iFix (<i>8.0.0.0-MFPF-IF20170710-1834</i>), Mobile Foundation has introduced pre-built adapters for Watson cognitive services such as <a href="https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonConversationAdapter" target="_blank">WatsonConversation</a>, <a href="https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonDiscoveryAdapter" target="_blank">WatsonDiscovery</a>, and <a href="https://github.com/mfpdev/mfp-extension-adapters/tree/master/WatsonNLUAdapter" target="_blank">WatsonNLU (Natural Language Understanding)</a>. These adapters are available to be downloaded and deployed from the <i>Download Center</i> in the Mobile Foundation Console.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Cloud Functions adapter for building a serverless app</b></span></h5>
+
+        <p>Starting with iFix (<i>8.0.0.0-MFPF-IF20170710-1834</i>), Mobile Foundation introduced a pre-built adapter called <a href="https://github.com/mfpdev/mfp-extension-adapters/tree/master/OpenWhiskAdapter" target="_blank">Cloud Functions adapter</a> for the <a href="https://console.bluemix.net/openwhisk/" target="_blank">Cloud Functions Platform</a>. The adapter is available to be downloaded and deployed from the Download Center in the Mobile Foundation Console.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for pinning multiple certificates in the Cordova SDK</b></span></h5>
+
+        <p>Starting with this iFix (<i>8.0.0.0-MFPF-IF20170803-1112</i>) pinning of multiple certificates is supported in the Cordova SDK. Read more on Multiple certificate pinning support from <a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/release-notes/whats-new/" target="_blank">What's new</a>, under the section <i>What's new in MobileFirst APIs</i>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for Cordova browser platform</b></span></h5>
+
+        <p>Starting with iFix (<i>8.0.0.0-MFPF-IF20170823-1236</i>), {{ site.data.keys.product }} supports the Cordova browser platform along with the earlier supported platforms of Cordova Windows, Cordova Android, and Cordova iOS. <a href="https://mobilefirstplatform.ibmcloud.com/blog/2017/08/29/cordova-browser-compatibility-with-MFP/" target="_blank">Learn more</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Generate an adapter from its OpenAPI specification</b></span></h5>
+
+        <p>Starting with iFix (<i>8.0.0.0-MFPF-IF20170901-1903</i>), {{ site.data.keys.product }} introduced the capability to auto-generate an adapter from its OpenAPI specification. {{ site.data.keys.product }} users can now focus on the application logic instead of creating the {{ site.data.keys.product }} adapter, which connects the application to the desired back-end service. <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/microservice-adapter/" target="_blank">Learn more</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for iOS 11 and iPhone X</b></span></h5>
+
+        <p>Starting with CD Update <i>8.0.0.0-MFPF-IF201711230641-CDUpdate-01</i>, Mobile Foundation announced the support for iOS 11 and iPhone X on Mobile Foundation v8.0. For further details, read the blog post <a href="https://mobilefirstplatform.ibmcloud.com/blog/2017/09/18/mfp-support-for-ios11/" target="_blank">IBM MobileFirst Platform Foundation Support for iOS 11 and iPhone X</a>.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Support for Android Oreo</b></span></h5>
+
+        <p>Starting with CD Update <i>8.0.0.0-MFPF-IF201711230641-CDUpdate-01</i>, Mobile Foundation announced the support for Android Oreo with this <a href="https://mobilefirstplatform.ibmcloud.com/blog/2017/08/22/mobilefirst-android-Oreo/" target="_blank">blog post</a>. Both native Android apps and hybrid/Cordova apps, built on older versions of Android, work as expected on Android Oreo when the device is upgraded through an OTA.</p>
+        <br/>
+        <h5><span style="color:NAVY"><b>Mobile Foundation can now be deployed on Kubernetes clusters</b></span></h5>
+
+        <p>Starting with CD Update <i>8.0.0.0-MFPF-IF201711230641-CDUpdate-01</i>, Mobile Foundation user can now deploy Mobile Foundation, which includes the Mobile Foundation Server, Mobile Analytics Server, and the Application Center, on Kubernetes clusters. The deployment package has been updated to support Kubernetes deployment. Read the <a href="https://mobilefirstplatform.ibmcloud.com/blog/2017/09/09/mobilefoundation-on-kube/" target="_blank">announcement</a>.</p>
+
+      </div>
+    </div>
+
+
+  </div>
+</section>
+</div>
+</body>
