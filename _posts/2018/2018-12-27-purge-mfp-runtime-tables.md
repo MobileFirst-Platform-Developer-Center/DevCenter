@@ -39,7 +39,11 @@ By default, for customers who do not use license tracking and are at MobileFirst
 >The feature and jndi properties discussed here is applicable only for customers who have not enabled license tracking.
 
 
-The number of expired records in the tables may be very high and enabling the feature may cause the queries to run for a long time. The job is triggered after 1 AM of server local time. The job is scheduled to start a few random minutes after 1 AM and is limited to run for a maximum of one hour. Any transaction during this time may face a delay. To avoid this, we recommend that the customer does an initial clean up of the tables before using this feature. This will ensure the job runs only for a few seconds or minutes and that there is minimal impact to any transaction.
+The number of expired records in the tables may be very high and enabling the feature may cause the queries to run for a long time. To avoid this, we recommend that the customer does an initial clean up of the tables before using this feature. This will ensure that the job runs only for a few seconds or minutes and that there is minimal impact to any transaction.
+
+The delete query for MFP_TRANSIENT_DATA will be modified to show 5 days instead of 1 day.
+
+>**Warning:** When old records from MFP_PERSISTENT_DATA are deleted, users who got deleted will need to re-register their applications. If the application is using custom attributes, this may result in losing these attributes. During registration, the application logic will need to take care of adding these attributes.
 
 For the initial clean up, connect to Mobile Foundation runtime database.
 
