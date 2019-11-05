@@ -31,7 +31,7 @@ Mobile Foundation offers an industry-leading secured platform for developers to 
 
 Image below shows the high level architecture of the Mobile Foundation deployment on Red Hat OpenShift cluster.
 
-![Architecture](../architecture-mobile-services-openshift.png)
+![Architecture](architecture-mobile-services-openshift.png)
 
 ## Installing Mobile Foundation
 {: #install-mf}
