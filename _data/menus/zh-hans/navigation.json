@@ -49,31 +49,31 @@
             "path": "/mobileservices-icpa"
         },{
             "name": "Foundation 8.0 on Red Hat OpenShift",
-            "path": "/foundation/8.0/ibmcloud/getting-started-mf-on-rhos/"
+            "path": "/foundation/8.0/ibmcloud/getting-started-mf-on-rhos"
         },{ "name": "Foundation 8.0 Developer Docs",
             "path": "",
             "children": [{
                 "name": "Developing Applications",
-                "path": "/foundation/8.0/application-development/"
+                "path": "/foundation/8.0/application-development"
                 }, {
                     "name": "API Reference",
-                    "path": "/foundation/8.0/api/"
+                    "path": "/foundation/8.0/api"
                 }]
             }, {
                 "name": "Foundation 8.0 Admin Docs",
                 "path": "",
                 "children": [{
                     "name": "Installation and Configuration",
-                    "path": "/foundation/8.0/installation-configuration/"
+                    "path": "/foundation/8.0/installation-configuration"
                 }, {
                     "name": "Administering Applications",
-                    "path": "/foundation/8.0/administering-apps/"
+                    "path": "/foundation/8.0/administering-apps"
                 }, {
                     "name": "Application Center",
-                    "path": "/foundation/8.0/appcenter/"
+                    "path": "/foundation/8.0/appcenter"
                 }, {
                     "name": "Upgrading",
-                    "path": "/foundation/8.0/upgrading/"
+                    "path": "/foundation/8.0/upgrading"
                 }]
             }, {
                 "name": "Foundation 8.0 All Docs",
@@ -86,10 +86,10 @@
                     "path": "/foundation/7.1/all-tutorials"
                 }, {
                     "name": "Foundation 7.0",
-                    "path": "/foundation/7.0/all-tutorials/"
+                    "path": "/foundation/7.0/all-tutorials"
                 }, {
                     "name": "Foundation 6.3",
-                    "path": "/foundation/6.3/all-tutorials/"
+                    "path": "/foundation/6.3/all-tutorials"
                 }]
             }]
         }, {
@@ -110,10 +110,10 @@
               "path": "",
               "children": [{
                   "name": "Foundation 8.0",
-                  "path": "/blog/2018/05/18/8-0-master-ifix-release/"
+                  "path": "/blog/2018/05/18/8-0-master-ifix-release"
               }, {
                   "name": "Foundation 7.1",
-                  "path": "/blog/2018/05/18/7-1-master-ifix-release/"
+                  "path": "/blog/2018/05/18/7-1-master-ifix-release"
               }]
           }]
         },{
