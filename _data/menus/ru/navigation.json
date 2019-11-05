@@ -141,7 +141,7 @@
               }]
           }, {
               "name": "Video Gallery",
-              "path": "/video-gallery"
+              "path": "/../video-gallery"
           }]
       },  {
           "name": "Help",
