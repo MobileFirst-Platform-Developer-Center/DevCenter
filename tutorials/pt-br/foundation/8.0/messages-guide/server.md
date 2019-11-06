@@ -1,441 +1,457 @@
 ---
 layout: tutorial
-title: MobileFirst server, runtime and console messages
+title: Servidor MobileFirst, mensagens de tempo de execução e console
 breadcrumb_title: Foundation Server
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-# Overview
+# Visão Geral
 {: #overview }
-Find information to help resolve issues that you may encounter with the Mobile Foundation Server.
+Encontre informações para ajudar a resolver problemas que você pode encontrar com o Mobile Foundation Server.
 
-## Mobile Foundation runtime messages
+## Mensagens de tempo de execução do Mobile Foundation
 {: #mfp-runtime-error-codes }
-**Prefix:** FWLSE<br/>
-**Range:** 0000-0012
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 0000-0012
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE0000E** | *Could not store AuthorizationGrant {0} in TransientStorage.* |
-| **FWLSE0001E** | *Failed to retrieve client {0}.* |
-| **FWLSE0002E** | *Invalid request, missing or invalid parameters: {0}.* |
-| **FWLSE0003E** | *Unsupported grant type {0}.* |
-| **FWLSE0004E** | *RedirectUri was passed to authorization endpoint: {0}, but was not passed to token endpoint.* |
-| **FWLSE0005E** | *RedirectUri conflict. authorization endpoint: {0}, token endpoint: {1}.* |
-| **FWLSE0006E** | *Failed parsing grant code from token request: {0}.* |
-| **FWLSE0007E** | *Grant code validation failed. Grant code {0} was provided for clientId {1} but used by clientId {2}.* |
-| **FWLSE0008E** | *Action parse AccessToken failed with exception.* |
-| **FWLSE0009E** | *Unable to sign access token.* |
-| **FWLSE0010E** | *Unable to validate JWT, error in the server Keystore.* |
-| **FWLSE0011E** | *Unable to validate JWT, {0}.* |
-| **FWLSE0012E** | *Client JWT authentication failed - Invalid jti.* |
+| **FWLSE0000E** | *Não foi possível armazenar AutorizationGrant {0} no TransientStorage.* |
+| **FWLSE0001E** | *Falha ao recuperar o cliente {0}.* |
+| **FWLSE0002E** | *Solicitação inválida, parâmetros ausentes ou inválidos: {0}.* |
+| **FWLSE0003E** | *Tipo de concessão não suportado {0}.* |
+| **FWLSE0004E** | *RedirectUri foi passado para terminal de autorização: {0}, mas não foi passado para terminal de token.* |
+| **FWLSE0005E** | *Conflito de RedirectUri. Terminal de autorização: {0}, terminal de token: {1}.* |
+| **FWLSE0006E** | *Falha ao analisar código de concessão a partir da solicitação de token: {0}.* |
+| **FWLSE0007E** | *A validação do código de concessão falhou. O código de concessão {0} foi fornecido para o clientId {1}, mas usado por clientId {2}.* |
+| **FWLSE0008E** | *AccessToken de análise de ação falhou com exceção.* |
+| **FWLSE0009E** | *Não é possível assinar token de acesso.* |
+| **FWLSE0010E** | *Não é possível validar JWT, error no keystore do servidor.* |
+| **FWLSE0011E** | *Não é possível validar JWT, {0}.* |
+| **FWLSE0012E** | *A autenticação do cliente JWT falhou - jti inválido.* |
 
 
-### Java adapter messages
+### Mensagens do adaptador Java
 
-**Prefix:** FWLSE<br/>
-**Range:** 0290-0299
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 0290-0299
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE0290E** | *JAXRS Application class: {0} was not found (or cannot be loaded). Make sure that the class name in the adapter's xml file is correct and that the class actually exist in the adapter''s bin folder or in one of the jars of the adapter's lib folder.* |
-| **FWLSE0291E** | *JAXRS Application class: {0} cannot be instantiated. Make sure that the class has a public zero arguments constructor. If there is a constructor, look at the server log to see the root cause for the failure in instance creation.* |
-| **FWLSE0292E** | *JAXRS Application class: {0} must extend javax.ws.rs.Application.* |
-| **FWLSE0293E** | *Adapter deployment failed. Property type {0} is not supported.* |
-| **FWLSE0294E** | *Adapter deployment failed. Value {0} is illegal for type {1}.* |
-| **FWLSE0295E** | *Adapter configuration deployment failed. Property {0} is not defined in adapter {1}.* |
-| **FWLSE0296E** | *Adapter configuration deployment failed. Property {0} is invalid for type {1}.* |
-| **FWLSE0297W** | *Failed to generate Swagger documentation for adapter {0}.* |
-| **FWLSE0298W** | *Procedure {0} in adapter {1} has the 'connectAs' attribute set to 'enduser'. This feature is not supported.* |
-| **FWLSE0299E** | *Adapter connectivity configuration deployment failed. The properties {0} do not exist.* |
+| **FWLSE0290E** | *Classe de aplicativo JAXRS: {0} não foi localizada (ou não pode ser carregada). Certifie-se de que o nome da classe no arquivo xml do adaptador esteja correto e que a classe realmente exista na pasta bin do adaptador ou em um dos jars da pasta lib do adaptador.* |
+| **FWLSE0291E** | *Classe de aplicativo JAXRS: {0} não pode ser instanciada. Certifique-se de que a classe tenha um construtor de argumentos zero público. Se houver um construtor, consulte o log do servidor para ver a causa raiz para a falha na criação da instância.* |
+| **FWLSE0292E** | *Classe de aplicativo JAXRS: {0} deve estender javax.ws.rs.Application.* |
+| **FWLSE0293E** | *Implementação do adaptador falhou. O tipo de propriedade {0} não é suportado.* |
+| **FWLSE0294E** | *Implementação do adaptador falhou. O valor {0} é ilegal para o tipo {1}.* |
+| **FWLSE0295E** | *Implementação de configuração do adaptador falhou. A propriedade {0} não está definida no adaptador {1}.* |
+| **FWLSE0296E** | *Implementação de configuração do adaptador falhou. A propriedade {0} é inválida para o tipo {1}.* |
+| **FWLSE0297W** | *Falha ao gerar a documentação do Swagger para o adaptador {0}.* |
+| **FWLSE0298W** | *Procedimento {0} no adaptador {1} tem o atributo 'connectAs' configurado como 'enduser'. Esse recurso não é suportado.* |
+| **FWLSE0299E** | *Implementação de configuração de conectividade do adaptador falhou. As propriedades {0} não existem.* |
 
 
-**Prefix:** FWLSE<br/>
-**Range:** 0500-0506
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 0500-0506
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE0500E** | *Adapter connectivity configuration deployment failed. The parameter {0} should be an integer.* |
-| **FWLSE0501E** | *Adapter connectivity configuration deployment failed. The parameter {0} should be positive.* |
-| **FWLSE0502E** | *Adapter connectivity configuration deployment failed. The parameter {0} is out of range.* |
-| **FWLSE0503E** | *Adapter connectivity configuration deployment failed. The parameter {0} should be a boolean.* |
-| **FWLSE0504E** | *Adapter connectivity configuration deployment failed. The {0} should be either http or https.* |
-| **FWLSE0505E** | *Adapter connectivity configuration deployment failed. The cookie policy {0} is not support.* |
-| **FWLSE0506E** | *Adapter connectivity configuration deployment failed. The parameter {0} should be a string.* |
+| **FWLSE0500E** | *Implementação de configuração de conectividade do adaptador falhou. O parâmetro {0} deve ser um número inteiro.* |
+| **FWLSE0501E** | *Implementação de configuração de conectividade do adaptador falhou. O parâmetro {0} deve ser positivo.* |
+| **FWLSE0502E** | *Implementação de configuração de conectividade do adaptador falhou. O parâmetro {0} está fora do intervalo.* |
+| **FWLSE0503E** | *Implementação de configuração de conectividade do adaptador falhou. O parâmetro {0} deve ser um booleano.* |
+| **FWLSE0504E** | *Implementação de configuração de conectividade do adaptador falhou. O {0} deve ser http ou https.* |
+| **FWLSE0505E** | *Implementação de configuração de conectividade do adaptador falhou. A política de cookies {0} não é suporte.* |
+| **FWLSE0506E** | *Implementação de configuração de conectividade do adaptador falhou. O parâmetro {0} deve ser uma sequência.* |
 
-### Registration messages
+### Mensagens de registro
 
-**Prefix:** FWLSE<br/>
-**Range:** 4200-4229
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 4200-4229
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE4200E** | *Change device application status failed.* |
-| **FWLSE4201E** | *Change device status failed.* |
-| **FWLSE4202E** | *Get devices failed.* |
-| **FWLSE4203E** | *Remove device failed.* |
-| **FWLSE4204E** | *Get clients assotiated with device failed.* |
-| **FWLSE4205E** | *getAll for pageInfo: {0} failed.* |
-| **FWLSE4206E** | *GetByAttributes failed.* |
-| **FWLSE4207E** | *Couldn't convert data to persistent data.* |
-| **FWLSE4208E** | *Failed to read client {0}.* |
-| **FWLSE4209E** | *update device display name failed.* |
-| **FWLSE4210E** | *Unable to create signature.* |
-| **FWLSE4211E** | *Failed to store client registration data because it was not properly retrieved. Client Id: {0}.* |
-| **FWLSE4212E** | *update display name on all device clients failed.* |
-| **FWLSE4213E** | *Client JWT authentication failed - public keys do not match.* |
-| **FWLSE4214E** | *Client data is null - this can happen if the client data has been archived (deleted) just now.* |
-| **FWLSE4215E** | *Trying multiple times to access console, giving up.* |
-| **FWLSE4216E** | *GetDeviceClientsError for deviceId: {0}.* |
-| **FWLSE4217E** | *Error while trying to get devices with pageStart: {0} and pageSize: {1}.* |
-| **FWLSE4218E** | *Error while trying to get devices for name: {0} with pageStart: {1} and pageSize: {2}.* |
-| **FWLSE4219E** | *RemoveDeviceError for deviceId: {0}.* |
-| **FWLSE4220E** | *Failed to create web key for client {0}.* |
-| **FWLSE4221E** | *Search devices failed with pageInfo: {0} ,searchMethod: {1} and filter: {2}.* |
-| **FWLSE4222E** | *Client registration failed - invalid signature.* |
-| **FWLSE4223E** | *Client registration failed - invalid application. error: {0}.* |
-| **FWLSE4224E** | *Failed to process registration request.* |
-| **FWLSE4225E** | *Invalid update self registration request, client signature could not be verified.* |
-| **FWLSE4226E** | *App authenticity failure on registration update, update failed {0}.* |
-| **FWLSE4227E** | *Update registration failed.* |
-| **FWLSE4228E** | *applyRegistrationValidations failure on registration, removing the client {0}.* |
-| **FWLSE4229W** | *Re-read of initialized client context, the changes may be lost.* |
+| **FWLSE4200E** | *O status do aplicativo do dispositivo de mudança falhou.* |
+| **FWLSE4201E** | *O status do dispositivo de mudança falhou.* |
+| **FWLSE4202E** | *Obtenção de dispositivos falhou.* |
+| **FWLSE4203E** | *Remoção de dispositivos falhou.* |
+| **FWLSE4204E** | *Obtenção de clientes associados ao dispositivo falhou.* |
+| **FWLSE4205E** | *getAll para pageInfo: {0} falhou.* |
+| **FWLSE4206E** | *GetByAttributes falhou.* |
+| **FWLSE4207E** | *Não foi possível converter dados em dados persistentes.* |
+| **FWLSE4208E** | *Falha ao ler o cliente {0}.* |
+| **FWLSE4209E** | *Falha ao atualizar nome de exibição do dispositivo.* |
+| **FWLSE4210E** | *Não é possível criar assinatura.* |
+| **FWLSE4211E** | *Falha ao armazenar dados de registro do cliente porque ele não foi recuperado corretamente. ID do Cliente: {0}.* |
+| **FWLSE4212E** | *Falha ao atualizar nome de exibição em todos os clientes do dispositivo.* |
+| **FWLSE4213E** | *A autenticação do cliente JWT falhou - as chaves públicas não correspondem.* |
+| **FWLSE4214E** | *Os dados do cliente são nulos - isso pode acontecer se os dados do cliente tiverem sido arquivados (excluídos) apenas agora.* |
+| **FWLSE4215E** | *Tentando acessar o console várias vezes, desistindo.* |
+| **FWLSE4216E** | *GetDeviceClientsError por deviceId: {0}.* |
+| **FWLSE4217E** | *Error ao tentar obter dispositivos com pageStart: {0} e pageSize: {1}.* |
+| **FWLSE4218E** | *Error ao tentar obter dispositivos para o nome: {0} com pageStart: {1} e pageSize: {2}.* |
+| **FWLSE4219E** | *RemoveDeviceError para deviceId: {0}.* |
+| **FWLSE4220E** | *Falha ao criar chave da web para o cliente {0}.* |
+| **FWLSE4221E** | *Os dispositivos de procura falharam com pageInfo: {0}, searchMethod: {1} e filtro: {2}.* |
+| **FWLSE4222E** | *Registro de cliente falhou - assinatura inválida.* |
+| **FWLSE4223E** | *Registro de cliente falhou - aplicativo inválido. erro: {0}.* |
+| **FWLSE4224E** | *Falha ao processar solicitação de registro.* |
+| **FWLSE4225E** | *Solicitação de autorregistro de atualização inválido, assinatura do cliente não pôde ser verificada.* |
+| **FWLSE4226E** | *Falha na autenticidade do aplicativo na atualização de registro, atualização falhou {0}.* |
+| **FWLSE4227E** | *Falha ao atualizar registro.* |
+| **FWLSE4228E** | *Falha de applyRegistrationValidations no registro, removendo o cliente {0}.* |
+| **FWLSE4229W** | *Releitura do contexto do cliente inicializado, as mudanças podem ser perdidas.* |
 
-### App Messages
+### Mensagens do Aplicativo
 
-**Prefix:** FWLST<br/>
-**Range:** 0100-0106
+**Prefixo:** FWLST<br/>
+**Intervalo:** 0100-0106
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLST0100E** | *tried to access direct update to an application which was never associated with direct update security.* |
-| **FWLST0101E** | *No application with name: {0} found.* |
-| **FWLST0102E** | *can't finish direct update due to {0}.* |
-| **FWLST0110E** | *tried to access native update to an application which was never associated with native update security.* |
-| **FWLST0111E** | *No application with name: {0} found.* |
-| **FWLST0112E** | *can't finish native update due to {0}.* |
-| **FWLST0120E** | *tried to access model update to an application which was never associated with model update security.* |
-| **FWLST0121E** | *No application with name: {0} found.* |
-| **FWLST0122E** | *can't finish model update due to {0}.* |
-| **FWLST0103E** | *Invalid client log profile, level should not be null.* |
-| **FWLST0104E** | *Invalid client log profile, found more than one global profile.* |
-| **FWLST0105E** | *Cannot upload user log file due to {0}.* |
-| **FWLST0106E** | *Application deployment failed. {0} application Id is illegal. Application id may only contain a-z, A-Z, _-. characters.* |
+| **FWLST0100E** | *tentativa de acessar a atualização direta para um aplicativo que nunca foi associado à segurança de atualização direta.* |
+| **FWLST0101E** | *Nenhum aplicativo com o nome: {0} encontrado.* |
+| **FWLST0102E** | *não é possível concluir a atualização direta devido a {0}.* |
+| **FWLST0110E** | *tentativa de acessar a atualização nativa para um aplicativo que nunca foi associado à segurança de atualização nativa.* |
+| **FWLST0111E** | *Nenhum aplicativo com o nome: {0} encontrado.* |
+| **FWLST0112E** | *não é possível concluir a atualização nativa devido a {0}.* |
+| **FWLST0120E** | *tentativa de acessar a atualização do modelo para um aplicativo que nunca foi associado à segurança de atualização do modelo.* |
+| **FWLST0121E** | *Nenhum aplicativo com o nome: {0} encontrado.* |
+| **FWLST0122E** | *não é possível concluir a atualização do modelo devido a {0}.* |
+| **FWLST0103E** | *Perfil de log do cliente inválido, nível não deve ser nulo.* |
+| **FWLST0104E** | *Perfil de log do cliente inválido, localizado mais de um perfil global.* |
+| **FWLST0105E** | *Não é possível fazer upload do arquivo de log do usuário devido a {0}.* |
+| **FWLST0106E** | *Implementação de aplicativo falhou. O ID do aplicativo {0} é ilegal. O ID do aplicativo pode conter somente a-z, A-Z, _-. .* |
 
-### JavaScript adapter Messages
+### Mensagens do adaptador JavaScript
 
-**Prefix:** FWLST<br/>
-**Range:** 0900-0906
+**Prefixo:** FWLST<br/>
+**Intervalo:** 0900-0906
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLST0900E** | *Adapter descriptor deployment failed. Keystore Invalid.* |
-| **FWLST0901W** | *SSL alias {0} does not exist in keystore. Backend invocations that require the keystore will fail.* |
-| **FWLST0902W** | *SSL alias exist in descriptor but no password. Backend invocations that require the keystore will fail.* |
-| **FWLST0902W** | *SSL password exist in descriptor but no alias. Backend invocations that require the keystore will fail.* |
-| **FWLST0903W** | *SSL alias and password invalid. Backend invocations that require the keystore will fail.* |
-| **FWLST0904E** | *Exception was thrown while invoking procedure: {0} in adapter: {1}.* |
-| **FWLST0905E** | *Adapter deployment failed. SQL driver {0} was not found in the adapter resources.* |
-| **FWLST0906E** | *Exception was thrown while invoking SQL {0}.* |
+| **FWLST0900E** | *A implementação do descritor do adaptador falhou. Keystore inválido.* |
+| **FWLST0901W** | *O alias de SSL {0} não existe no keystore. Chamadas de backend que requerem o keystore falharão.* |
+| **FWLST0902W** | *O alias de SSL existe no descritor, mas sem senha. Chamadas de backend que requerem o keystore falharão.* |
+| **FWLST0902W** | *Senha SSL existe no descritor, mas sem alias. Chamadas de backend que requerem o keystore falharão.* |
+| **FWLST0903W** | *Alias e senha SSL inválidos. Chamadas de backend que requerem o keystore falharão.* |
+| **FWLST0904E** | *Exceção foi lançada ao chamar procedimento: {0} no adaptador: {1}.* |
+| **FWLST0905E** | *Implementação do adaptador falhou. O driver SQL {0} não foi localizado nos recursos do adaptador.* |
+| **FWLST0906E** | *Exceção foi lançada ao chamar o SQL {0}.* |
 
 
-**Prefix:** FWLSE<br/>
+**Prefixo:** FWLSE<br/>
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE0014W** | *The parameter {0} is not known and will be ignored.* |
-| **FWLSE0152E** | *Unable to find certificate chain with alias: {0}.* |
-| **FWLSE0207E** | *Failed read from the HTTP response input stream.* |
-| **FWLSE0299W** | *Response for request: {0} returned in 0ms. HTTP message flow investigation is required.* |
-| **FWLSE0310E** | *JSON parse failure.* |
-| **FWLSE0311E** | *XML parse or transform failure.* |
+| **FWLSE0014W** | *O parâmetro {0} não é conhecido e será ignorado.* |
+| **FWLSE0152E** | *Não é possível localizar cadeia de certificados com alias: {0}.* |
+| **FWLSE0207E** | *Falha ao ler a partir do fluxo de entrada de resposta HTTP.* |
+| **FWLSE0299W** | *Resposta para solicitação: {0} retornada em 0ms. A investigação do fluxo de mensagens HTTP é necessária.* |
+| **FWLSE0310E** | *Falha de análise de JSON.* |
+| **FWLSE0311E** | *Falha de análise ou de transformação de XML.* |
 | **FWLSE0318I** | *{0}.* |
-| **FWLSE0319W** | *Backend response content type {0} did not match the expected content type {1}, continue processing the response. The request and response headers and body: {2}.* |
-| **FWLSE0330E** | *Cannot initialize the WebSphere SSL context.* |
+| **FWLSE0319W** | *O tipo de conteúdo de resposta de backend {0} não correspondeu ao tipo de conteúdo esperado {1}, continuar processando a resposta. Os cabeçalhos e o corpo da solicitação e da resposta: {2}.* |
+| **FWLSE0330E** | *Não é possível inicializar o contexto SSL do WebSphere.* |
 
 
-### Core Messages
+### Mensagens principais
 
-**Prefix:** FWLST<br/>
+**Prefixo:** FWLST<br/>
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLST3022W** | *Folder {0} is non-writable. User-based home directory will be used.* |
-| **FWLST3023E** | *Project {0} failed to start: Could not create directory {1}.* |
-| **FWLST3024I** | *MFP server is using folder {0} as filesystem cache.* |
-| **FWLST3025W** | *MFP server analytics report is disabled due to empty URL in registry configuration.* |
-| **FWLST3026W** | *MFP sever had error while calling analytics service: {0}.* |
-| **FWLST3027I** | *Configuration changed. Analytics server is now enabled on: {0}.* |
-| **FWLST4047W** | *Product version couldn't be found. Searched in file named: {0} and property named: {1}.* |
-| **FWLST4048W** | *Runtime version couldn't be found. Searched in file named: {0} and property named: {1}.* |
+| **FWLST3022W** | *Pasta {0} não é gravável. O diretório inicial baseado em usuário será usado.* |
+| **FWLST3023E** | *O projeto {0} falhou ao iniciar: não foi possível criar o diretório {1}.* |
+| **FWLST3024I** | *O servidor MFP está usando a pasta {0} como cache de sistema de arquivos.* |
+| **FWLST3025W** | *O relatório de analítica do servidor MFP está desativado devido à URL vazia na configuração do registro.* |
+| **FWLST3026W** | *O servidor MFP teve um erro ao chamar o serviço de analítica: {0}.* |
+| **FWLST3027I** | *Configuração alterada. O servidor analítico agora está ativado em: {0}.* |
+| **FWLST4047W** | *A versão do produto não pôde ser localizada. Procurado em arquivo denominado: {0} e propriedade denominada: {1}.* |
+| **FWLST4048W** | *A versão de tempo de execução não pôde ser localizada. Procurado em arquivo denominado: {0} e propriedade denominada: {1}.* |
 
-### Security Messages
+### Mensagens de Segurança
 
-**Prefix:** FWLSE<br/>
-**Range:** 4010-4068
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 4010-4068
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE4010E** | *Unable to read keystore deployment zip file.* |
-| **FWLSE4011E** | *Zip file does not include keystore file.* |
-| **FWLSE4012E** | *Zip file does not include properties file.* |
-| **FWLSE4016E** | *The type of the keystore certificate algorithm is not RSA. Follow the console guide to create a keystore with an RSA algorithm.* |
-| **FWLSE4017E** | *Unable to create keystore. Keystore: type: {0}.* |
-| **FWLSE4018E** | *Some cryptographic algorithm is not supported in this environment. Keystore: type: {0}.* |
-| **FWLSE4019E** | *This exception indicates one of a variety of certificate problems. Keystore: type: {0}.* |
-| **FWLSE4021E** | *Unable to create keystore. Path: type: {0}.* |
-| **FWLSE4022E** | *Unable to recover key from keystore. Keystore: type: {0}.* |
-| **FWLSE4023E** | *Unable to extract private key from KeyStore, invalid or missing alias. alias:  {0}.* |
-| **FWLSE4024W** | *Duplicate configuration for security check {0} in this adapter. Configuration used: {1}.* |
-| **FWLSE4025W** | *Security check {0} was already configured in a different adapter, the new configuration will not be used.* |
-| **FWLSE4026E** | *Class {1} for security check {0} was not found.* |
-| **FWLSE4027E** | *Unable to create security check {0}. class: {1}, error: {2}.* |
-| **FWLSE4028E** | *Class {1} for security check {0} does not implement the SecurityCheck interface.* |
-| **FWLSE4029E** | *Deployment of authenticity data failed. Error Message: {0}.* |
-| **FWLSE4030E** | *Duplicate scope element mapping was found for scope element {0}, mapping used: {1}.* |
-| **FWLSE4031E** | *Duplicate security check configuration was found for security check {0}.* |
-| **FWLSE4032E** | *The application descriptor of application {0} contains a configuration for security check {1}. The security check is missing, or there was an attempt to remove it.* |
-| **FWLSE4033E** | *The application descriptor of application {0} contains a configuration for security check {1}. The security-check configuration could not be applied.* |
-| **FWLSE4034E** | *Security check {0} has a configuration error for param {1}: {2}.* |
-| **FWLSE4035W** | *Security check ''{0}'' has a configuration warning for param {1}: {2}.* |
-| **FWLSE4036W** | *The application descriptor of application {0} contains a  configuration for a mandatory application scope {1}. One or more of the scope elements are missing, or there was an attempt to remove them.* |
-| **FWLSE4037E** | *Security check {0} cannot have the same name as a scope element mapping.* |
-| **FWLSE4038E** | *The application descriptor of application {0} contains a  configuration for a scope {1} that is mapped to security check {2}. The security check is missing, or there was an attempt to remove it.* |
-| **FWLSE4039W** | *Empty scope element cannot be mapped. Attempting to map to: {0}.* |
-| **FWLSE4040E** | *{0} field for adapter configuration is not formatted correctly.* |
-| **FWLSE4041W** | *Illegal characters used in scope element {0}. Legal characters include letters, numbers, '-' and '_'.* |
-| **FWLSE4042I** | *Security check {0} configuration for param {1}: {2}.* |
-| **FWLSE4043E** | *Application's maximum token expiration must be positive. Configured: {0}.* |
-| **FWLSE4044I** | *User {0} is authenticated through Ltpa-Based SSO security.* |
-| **FWLSE4045I** | *User is NOT authenticated through Ltpa-Based SSO security.* |
-| **FWLSE4046** | *checking if device disabled for registration failed with exception.* |
-| **FWLSE4047:** | *Maximum token expiration value for application {0} is greater than the expiration limit. Value: {1}, expiration limit: {2}.* |
-| **FWLSE4048E** | *Failed to validate access token with external AZ server {0}.* |
-| **FWLSE4049E** | *Ordering security checks failed.* |
-| **FWLSE4050E** | *Invalid client data.* |
-| **FWLSE4051E** | *Application doesn't exist.* |
-| **FWLSE4052E** | *Failed reading externalized security checks. Context initialized clean for client: {0}.* |
-| **FWLSE4053E** | *Security Check does not exist - {0}.* |
-| **FWLSE4054E** | *Failed to externalize the security checks. The security checks are deleted for client: {0}.* |
-| **FWLSE4055E** | *Failed to get scope expiration, 0 returned.* |
-| **FWLSE4056E** | *Introspection failed with exception.* |
-| **FWLSE4057E** | *Unexpected token validation result: {0}.* |
-| **FWLSE4058E** | *Error while encoding header and payload.* |
-| **FWLSE4059E** | *Fail to create header object from the decoded header: {0}.* |
-| **FWLSE4060E** | *Fail to create payload object from the decoded payload: {1}.* |
-| **FWLSE4061E** | *Error while encoding header64 + payload64.* |
-| **FWLSE4062E** | *Error while encoding header for signing or while creating header.* |
-| **FWLSE4063E** | *Error while encoding payload.* |
-| **FWLSE4064E** | *Client is not allowed the scope {0}.* |
-| **FWLSE4065E** | *Client is unauthorized.* |
-| **FWLSE4066E** | *Implicit grant flow is available only for Swagger UI.* |
-| **FWLSE4067E** | *Client is unauthorized.* |
-| **FWLSE4068E** | *Client is unauthorized.* |
+| **FWLSE4010E** | *Não é possível ler arquivo zip de implementação do keystore. |
+| **FWLSE4011E** | *Arquivo Zip não inclui arquivo keystore.* |
+| **FWLSE4012E** | *Arquivo Zip não inclui arquivo de propriedades.* |
+| **FWLSE4016E** | *O tipo do algoritmo de certificado keystore não é RSA. Siga o guia do console para criar um keystore
+com um algoritmo RSA.* |
+| **FWLSE4017E** | *Não é possível criar o keystore. Keystore: tipo: {0}.* |
+| **FWLSE4018E** | *Alguns algoritmos criptográficos não são suportados nesse ambiente. Keystore: tipo: {0}.* |
+| **FWLSE4019E** | *Esta exceção indica um de vários problemas de certificado. Keystore: tipo: {0}.* |
+| **FWLSE4021E** | *Não é possível criar o keystore. Caminho: tipo: {0}.* |
+| **FWLSE4022E** | *Não é possível recuperar chave do keystore. Keystore: tipo: {0}.* |
+| **FWLSE4023E** | *Não é possível extrair chave privada a partir do KeyStore, alias ausente ou inválido. alias: {0}.* |
+| **FWLSE4024W** | *Duplicar a configuração para a verificação de segurança {0} neste adaptador. Configuração usada: {1}.* |
+| **FWLSE4025W** | *A verificação de segurança {0} já estava configurada em um adaptador diferente, a nova configuração não será utilizada.* |
+| **FWLSE4026E** | *Classe {1} para verificação de segurança {0} não foi localizada.* |
+| **FWLSE4027E** | *Não é possível criar verificação de segurança {0}. classe: {1}, erro: {2}.* |
+| **FWLSE4028E** | *Classe {1} para verificação de segurança {0} não implementa a interface SecurityCheck.* |
+| **FWLSE4029E** | *A implementação de dados de autenticidade falhou. Mensagem de Erros: {0}.* |
+| **FWLSE4030E** | *Mapeamento de elemento de escopo duplicado foi localizado para o elemento de escopo {0}, mapeamento usado: {1}.* |
+| **FWLSE4031E** | *Configuração de verificação de segurança duplicada foi localizada para verificação de segurança {0}.* |
+| **FWLSE4032E** | *O descritor de aplicativo do aplicativo {0} contém uma configuração para verificação de segurança {1}. A verificação de segurança está ausente ou houve uma tentativa de removê-la.* |
+| **FWLSE4033E** | *O descritor de aplicativo do aplicativo {0} contém uma configuração para verificação de segurança {1}. A configuração de verificação de segurança não pôde ser aplicada.* |
+| **FWLSE4034E** | *A verificação de segurança {0} tem um erro de configuração para o parâmetro {1}: {2}.* |
+| **FWLSE4035W** | *A verificação de segurança ''{0}'' tem um aviso de configuração para o parâmetro {1}: {2}.* |
+| **FWLSE4036W** | *O descritor de aplicativo do aplicativo {0} contém uma configuração para um escopo do aplicativo obrigatório {1}. Um ou mais dos elementos do escopo estão ausentes ou houve uma tentativa de removê-los.* |
+| **FWLSE4037E** | *A verificação de segurança {0} não pode ter o mesmo nome que um mapeamento de elemento de escopo.* |
+| **FWLSE4038E** | *O descritor de aplicativo do aplicativo {0} contém uma configuração para um escopo {1} que é mapeado para a verificação de segurança {2}. A verificação de segurança está ausente ou houve uma tentativa de removê-la.* |
+| **FWLSE4039W** | *Elemento do escopo vazio não pode ser mapeado. Tentando mapear para: {0}.* |
+| **FWLSE4040E** | *O campo {0} para configuração do adaptador não está formatado corretamente.* |
+| **FWLSE4041W** | *Caractere ilegal usados no elemento de escopo {0}. Os caracteres legais incluem letras, números, '-' e '_'.* |
+| **FWLSE4042I** | *Configuração da verificação de segurança {0} para o parâmetro {1}: {2}.* |
+| **FWLSE4043E** | *A expiração máxima de token do aplicativo deve ser positiva. Configurado: {0}.* |
+| **FWLSE4044I** | *O usuário {0} é autenticado por meio da segurança SSO Baseada em Ltpa.* |
+| **FWLSE4045I** | *O usuário NÃO é autenticado por meio da segurança de SSO baseada em Ltpa.* |
+| **FWLSE4046** | *Verificando se o dispositivo desativado para registro falhou com exceção.* |
+| **FWLSE4047:** | *O valor máximo de expiração de token para o aplicativo {0} é maior que o limite de expiração. Valor: {1}, limite de expiração: {2}.* |
+| **FWLSE4048E** | *Falha ao validar o token de acesso com o servidor AZ externo {0}.* |
+| **FWLSE4049E** | *Falha nas verificações de segurança de pedidos.* |
+| **FWLSE4050E** | *Dados do cliente inválidos.* |
+| **FWLSE4051E** | *O aplicativo não existe.* |
+| **FWLSE4052E** | *Falha ao ler verificações de segurança externalizadas. Limpeza de contexto inicializada para cliente: {0}.* |
+| **FWLSE4053E** | *A verificação de segurança não existe - {0}.* |
+| **FWLSE4054E** | *Falha ao externalizar as verificações de segurança. As verificações de segurança são excluídas para o cliente: {0}.* |
+| **FWLSE4055E** | *Falha ao obter a expiração do escopo, 0 retornados.* |
+| **FWLSE4056E** | *A introspecção falhou com exceção.* |
+| **FWLSE4057E** | *Resultado de validação de token inesperado: {0}.* |
+| **FWLSE4058E** | *Erro ao codificar cabeçalho e carga útil.* |
+| **FWLSE4059E** | *Falha ao criar objeto de cabeçalho a partir do cabeçalho decodificado: {0}.* |
+| **FWLSE4060E** | *Falha ao criar objeto de carga útil a partir da carga útil decodificada: {1}.* |
+| **FWLSE4061E** | *Erro ao codificar header64 + payload64.* |
+| **FWLSE4062E** | *Erro ao codificar cabeçalho para assinar ou ao criar cabeçalho.* |
+| **FWLSE4063E** | *Erro ao codificar a carga útil.* |
+| **FWLSE4064E** | *O cliente não tem permissão para o escopo {0}.* |
+| **FWLSE4065E** | *O cliente é desautorizado.* |
+| **FWLSE4066E** | *Fluxo de concessão implícita está disponível apenas para a UI do Swagger.* |
+| **FWLSE4067E** | *O cliente é desautorizado.* |
+| **FWLSE4068E** | *O cliente é desautorizado.* |
 
 
-### Server persistency Messages
+### Mensagens de persistência do servidor
 
-**Prefix:** FWLSE<br/>
-**Range:** 3000-3009
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 3000-3009
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE3000E** | *Data source JNDI binding not found for names: {0} and {1}.* |
-| **FWLSE3001E** | *Can't serialize List to json array.* |
-| **FWLSE3002E** | *Can't create persistent data item: {0}.* |
-| **FWLSE3003E** | *JSON Array deserialization problem.* |
-| **FWLSE3004E** | *Can't read CLOB value column.* |
-| **FWLSE3005E** | *Can't serialize List to json array.* |
-| **FWLSE3006E** | *Couldn't start transaction :{0}.* |
-| **FWLSE3007E** | *Unexpected error encountered.* |
-| **FWLSE3008E** | *Couldn't generate hash.* |
-| **FWLSE3009E** | *Error occurred while trying to commit the transaction.* |
+| **FWLSE3000E** | *Ligação de JNDI de origem de dados não encontrada para nomes: {0} e {1}.* |
+| **FWLSE3001E** | *Não é possível serializar Lista para a matriz json.* |
+| **FWLSE3002E** | *Não é possível criar item de dados persistente: {0}.* |
+| **FWLSE3003E** | *Problema de desserialização de matriz JSON.* |
+| **FWLSE3004E** | *Não é possível ler a coluna de valor CLOB.* |
+| **FWLSE3005E** | *Não é possível serializar Lista para a matriz json.* |
+| **FWLSE3006E** | *Não foi possível iniciar a transação: {0}.* |
+| **FWLSE3007E** | *Erro inesperado encontrado.* |
+| **FWLSE3008E** | *Não foi possível gerar o hash.* |
+| **FWLSE3009E** | *Ocorreu um erro ao tentar confirmar a transação.* |
 
-### Server war Messages
+### Mensagens de war do servidor
 
-**Prefix:** FWLSE<br/>
-**Range:** 3100-3103
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 3100-3103
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE3100E** | *Unrecognized authorization server mode: {0}.* |
-| **FWLSE3101E** | *Jndi entry {0} not found, authorization server mode unknown.* |
-| **FWLSE3102I** | *Failed to gather annotations for class {0}. Swagger UI may miss some scope.* |
-| **FWLSE3103I** | *Failed to determine class for bean {0}. Swagger UI may miss some scopes.* |
-| **FWLSE3103I** | *Starting with embedded authorization server.* |
-| **FWLSE3103I** | *Starting with external authorization server integration.* |
+| **FWLSE3100E** | *Modo de servidor de autorização não reconhecido: {0}.* |
+| **FWLSE3101E** | *Entrada Jndi {0} não localizada, modo de servidor de autorização desconhecido.* |
+| **FWLSE3102I** | *Falha ao reunir anotações para a classe {0}. A UI do Swagger pode ter algum escopo ausente.* |
+| **FWLSE3103I** | *Falha ao determinar a classe para o bean {0}. A UI do Swagger pode ter alguns escopos ausentes.* |
+| **FWLSE3103I** | *Iniciando com o servidor de autorizações integrado.* |
+| **FWLSE3103I** | *Iniciando com integração de servidor de autorização externa.* |
 
-### License Messages
+### Mensagens de Licença
 
-**Prefix:** FWLSE<br/>
+**Prefixo:** FWLSE<br/>
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE0277I** | *Creating an ILMT record in the file {0}.* |
-| **FWLSE0278I** | *The default ILMT directory {0} cannot be used.* |
-| **FWLSE0279E** | *Failed to create an ILMT record.* |
-| **FWLSE0280I** | *ILMT Debug Mode activated by the environment variable {0}.* |
-| **FWLSE0281E** | *Failed to create an ILMT logger.* |
-| **FWLSE0282I** | *Using the ILMT directory {0}.* |
-| **FWLSE0283E** | *The ILMT directory is not compliant. You can set an appropriate directory to a property named 'license.metric.logger.output.dir' in the file 'license_metric_logger.properties' and use the JVM property '-Dlicense_metric_logger_configuration=\<path to license_metric_logger.properties\>'.* |
-| **FWLSE0284E** | *Failed to retrieve the path where this {0} instance is running. This is not ILMT-compliant.* |
-| **FWLSE0286I** | *Unexpected exception.* |
-| **FWLSE0287E** | *Failed to create an ILMT record because the ILMT Logger was not correctly initialized. This is not ILMT-compliant. Review the log files to find the cause of the initialization error.* |
-| **FWLSE0367E** | *Missing License Report data. Failed to create an ILMT record.* |
+| **FWLSE0277I** | *Criando um registro ILMT no arquivo {0}.* |
+| **FWLSE0278I** | *O diretório ILMT padrão {0} não pode ser usado.* |
+| **FWLSE0279E** | *Falha ao criar um registro ILMT.* |
+| **FWLSE0280I** | *Modo de Depuração ILMT ativado pela variável de ambiente {0}.* |
+| **FWLSE0281E** | *Falha ao criar um criador de logs ILMT.* |
+| **FWLSE0282I** | *Usando o diretório ILMT {0}.* |
+| **FWLSE0283E** | *O diretório ILMT não é compatível. É possível configurar um diretório apropriado para uma propriedade denominada 'license.metric.logger.output.dir' no arquivo 'license_metric_logger.properties' e utilizar a propriedade JVM '-Dlicense_metric_logger_configuration=\<path to license_metric_logger.properties\>'.* |
+| **FWLSE0284E** | *Falha ao recuperar o caminho no qual esta instância {0} está em execução. Isso não é compatível com ILMT.* |
+| **FWLSE0286I** | *Exceção inesperada.* |
+| **FWLSE0287E** | *Falha ao criar um registro ILMT porque o ILMT Logger não foi inicializado corretamente. Isso não é compatível com ILMT. Revise os arquivos de log para localizar a causa do erro de inicialização.* |
+| **FWLSE0367E** | *Dados de Relatório de Licença ausentes. Falha ao criar um registro ILMT.* |
 
-### Purge Messages
+### Mensagens de limpeza
 
-**Prefix:** FWLSE<br/>
-**Range:** 0290-0292
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 0290-0292
 
-| **FWLSE0290I** | *Completed deletion of {0} records in {1} ms.* |
-| **FWLSE0291I** | *Completed deletion of {0} batches in {1} ms.* |
-| **FWLSE0292I** | *Recommended persistent data delete is for records older than {0} days.* |
+| **FWLSE0290I** | *Concluída a exclusão de {0} registros em {1} ms.* |
+| **FWLSE0291I** | *Concluída a exclusão de {0} lotes em {1} ms.* |
+| **FWLSE0292I** | *A exclusão de dados persistentes recomendável é para registros com mais de {0} dias.* |
 
-### Other Messages
+### Outras Mensagens
 
-**Prefix:** FWLSE<br/>
+**Prefixo:** FWLSE<br/>
 
-| **FWLSE0211W** | *Recommended decommissioning interval ({0}) is 86400 seconds which is 1 day.* |
-| **FWLSE0801E** | *Password decode utility com.ibm.websphere.crypto.PasswordUtil is not available. Cannot support encrypted password for {0}.* |
-| **FWLSE0802E** | *Unable to decode password for {0}.* |
-| **FWLSE0803E** | *Cannot find message for id {0} in bundle {1} " + ". Error:{2}.* |
-| **FWLSE0802E** | *Unable to decode password for {0}.* |
+| **FWLSE0211W** | *Intervalo de desatribuição recomendado ({0}) é de 86400 segundos, que é 1 dia.* |
+| **FWLSE0801E** | *O utilitário de decodificador de senha, com.ibm.websphere.crypto.PasswordUtil, não está disponível. Não é possível suportar senha criptografada para {0}.* |
+| **FWLSE0802E** | *Não é possível decodificar a senha para {0}.* |
+| **FWLSE0803E** | *Não é possível localizar a mensagem para o id {0} no pacote configurável {1} "+". Erro:{2}.* |
+| **FWLSE0802E** | *Não é possível decodificar a senha para {0}.* |
 
 
 
-## Mobile Foundation Administration service messages
+## Mensagens de serviço de administração do Mobile Foundation
 {: #admin-services-error-codes }
 <!-- Messages taken from mfp-admin-services/mfp-admin-util/src/main/resources/com/ibm/worklight/admin/resources/messages.properties-->
-**Prefix:** FWLSE<br/>
-**Range:** 3000-3299
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 3000-3299
 
-| **Error Code**  | **Description** |
+| **Código de Erro**  | **Descrição** |
 |-----------------|-----------------|
-| **FWLSE3000E** | **A server error was detected.** |
-| **FWLSE3001E** | **A conflict was detected.** |
-| **FWLSE3002E** | **The resource is not found.** |
-| **FWLSE3003E** | **The runtime cannot be added since its payload contains no name.** |
-| **FWLSE3010E** | **A database error was detected.** <br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, misconfigure the data base. |
-| **FWLSE3011E** | **The port number "{0}" of the mfp.admin.proxy.port JNDI property is not valid.** <br/><br/>{0} is the port number, e.g. 9080.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, set JNDI property mfp.admin.proxy.port to a nonsense value.  Then open the Operations Console. The message will eventually appear in the server logs. |
-| **FWLSE3012E** | **JMX connection error. Reason: "{0}". Check the application server logs for details.** <br/><br/>{0} is an error message coming from the JMX protocol of the web server.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, misconfigure JMX somehow that it throws exceptions. |
-| **FWLSE3013E** | **Timeout when trying to obtain the transaction lock after {0} milliseconds.** <br/><br/>{0} is the number of milliseconds, for instance 32000.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, this happens with a data base connected through an unstable or slow network. |
-| **FWLSE3017E** | **A database error was detected: {0}. Reason: {1}** <br/><br/>{0} is the error message from cloudant.<br/>{1} is the reason message from cloudant.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, misconfigure Cloudant. |
-| **FWLSE3018E** | **Cloudant operation did not complete within {0} milliseconds.** <br/><br/>{0} is the number of milliseconds, for instance 32000.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, use Cloudant DB and set JNDI property mfp.db.cloudant.documentOperation.timeout to 1. If the connection to cloudant is slow, open the Operations Console. The message will eventually appear in the server logs. |
-| **FWLSE3019E** | **Unable to obtain transaction lock. Reason: {0}** <br/><br/>{0} is some exception message that we returned from external. Can be any string.  <br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, can be reproduced when you have a farm with Cloudant and you shut down the locking master while a locking operations is ongoing. Then open the Operations Console.  The message will eventually appear in the server logs. |
-| **FWLSE3021E** | **Timeout when trying to obtain the transaction lock after {0} milliseconds. Increase the {1} property.**<br/><br/>{0} is the number of milliseconds, for instance 32000.<br/>{1} is the name of the JNDI property from which the timeout is taken.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, this happens with a data base connected through an unstable or slow network. |
-| **FWLSE3030E** | **The runtime "{0}" does not exist in the MobileFirst administration database. The database may be corrupted.** <br/><br/>**Where:** {0} is the runtime name (any string).<br/><br/>This error occurs when the {{ site.data.keys.mf_server }} is unable to load the runtime stored in the database.  [APAR PI71317](http://www-01.ibm.com/support/docview.wss?uid=swg1PI71317) was released to address some occurrences of this message.  If the fix level of the server is earlier than **iFix 8.0.0.0-IF20170125-0919**, upgrade to the [latest iFix](https://www-945.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all). |
-| **FWLSE3031E** | **The runtime "{0}" cannot be added or deleted since it is still running.** <br/><br/>{0} is the runtime name (any string). |
-| **FWLSE3032E** | **The runtime "{0}" cannot be added since it exists already.** <br/><br/>{0} is the runtime name (any string). |
-| **FWLSE3033E** | **The runtime "{0}" is not empty but you requested to delete the runtime only when it is empty.** <br/><br/>{0} is the runtime name (any string).<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, delete a stopped runtime which still contains apps. |
-| **FWLSE3034E** | **The application "{1}" for the runtime "{0}" does not exist in the MobileFirst administration database. The database may be corrupted.** <br/><br/>{0} is the runtime name (any string).<br/>{1} is the application name (any string). |
-| **FWLSE30302E** | **The license config for application "{1}" for the runtime "{0}" does not exist in the MobileFirst administration database.** <br/><br/>{0} is the runtime name (any string).<br/>{1} is the application name (any string). |
-| **FWLSE30303E** | **The license config cannot be deleted since application "{1}" for the runtime "{0}" exists in the MobileFirst administration database or the license config doesn''t exists.** <br/>{0} is the runtime name (any string).<br/>{1} is the application name (any string). |
-| **FWLSE30035E** | **The application "{1}" cannot be added since it exists already in the runtime "{0}".** <br/><br/>{0} is the runtime name (any string).<br/>{1} is the application name (any string).<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> occurs only in unit tests |
-| **FWLSE3035E** | **The application "{1}" with environment "{2}" of runtime "{0}" does not exist in the MobileFirst administration database. The database may be corrupted.** <br/><br/>{0} is the runtime name (any string)<br/>{1} is the application name (any string).<br/>{2} is the environment name: android, ios, ... |
-| **FWLSE30304E** | **The AppAuthenticity Data for application "{1}" with environment "{2}" and version "{3}" of runtime "{0}" does not exist in the MobileFirst administration database. The database may be corrupted.** <br/><br/>{0} is the runtime name (any string)<br/>{1} is the application name (any string).<br/>{2} is the environment name: android, ios, ... |
-| **FWLSE3036E** | **The application "{1}" with environment "{2}" and version "{3}" of runtime "{0}" does not exist in the MobileFirst administration database. The database may be corrupted.** <br/><br/>{0} is the runtime name (any string).<br/>{1} is the application name (any string).<br/>{2} is the environment name: android, ios, ... <br/>{3} is the version: 1.0, 2.0 ... |
-| **FWLSE3037E** | **The environment "{1}" with version "{2}" cannot be added since it exists already in the application "{0}".** <br/><br/>{0} is the application name (any string).<br/>{1} is the environment name: android, ios, ... <br/>{2} is the version: 1.0, 2.0 ...<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> occurs only in unit tests |
-| **FWLSE3038E** | **The adapter "{1}" of the runtime "{0}" does not exist in the MobileFirst administration database. The database may be corrupted.** <br/><br/>{0} is the runtime name (any string).  {1} is the adapter name (any string). |
-| **FWLSE3039E:** | **The adapter "{0}" cannot be added since it exists already in the runtime "{1}".** <br/>{0} is the runtime name (any string).  {1} is the adapter name (any string).<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> occurs only in unit tests. |
-| **FWLSE3040E** | **The configuration profile "{0}" was not found for any runtime in the MobileFirst administration database. The database may be corrupted.** <br/><br/>{0} is the id of the configuration profile (any string)<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, might occur in trace log when deleting a nonexisting client config profile. |
-| **FWLSE3045E** | **No MBean found for {0} administration.** <br/><br/>{0} is the word MobileFirst.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. |
-| **FWLSE3041E** | **No MBean found for {0} project ''{1}''. Possibly the {0} runtime web application for {0} project ''{1}'' is not running. If it is running, use JConsole to inspect the available MBeans. If it is not running, full error details are available in the log files of the server.** <br/><br/>{0} is the word MobileFirst.  {1} is the project/runtime name (any string) |
-| **FWLSE3042E** | **Communication error with the MBean ''{0}''. Check the application server logs.** <br/><br/>{0} is the MBean canonical ID, which is an artificial string.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. Might occur if we install a 6.2 worklight-jee-library in a 7.1 MobileFirst server. |
-| **FWLSE3043E** | **The MBean named ''{0}'' is no longer present. Check the application server logs.** <br/><br/>{0} is the MBean canonical ID, which is an artificial string.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, occurs in server farm when shut down a server while a deployment operation is ongoing. |
-| **FWLSE3044E** | **The MBean named ''{1}'' does not support the expected operations. Check that the {0} runtime version is the same than the administration services.** <br/><br/>{0} is the word MobileFirst. {1} is the MBean canonical ID, which is an artificial string.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. Might occur if we install a 6.2 worklight-jee-library in a 7.1 MobileFirst server. |
-| **FWLSE3050E** | **The MBean operation returns an unknown type. Check that the {0} runtime version is the same than the administration services.** <br/><br/>{0} is the word MobileFirst.<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. Might occur if we install a 6.2 worklight-jee-library in a 7.1 MobileFirst server. |
-| **FWLSE3051E** | **Invalid payload. See additional messages for details.** |
-| **FWLSE3052E** | **The following payload is not recognized: "{0}".** <br/><br/>{0} is an extract of the payload in JSON syntax, e.g. "{ a : 0 }" |
-| **FWLSE3053E** | **Invalid parameters. See additional messages for details.** |
-| **FWLSE3061E** | **The environment "{0}" referenced in the file "{1}" of the wlapp file is unknown. Check that the application was correctly built.** <br/><br/>{0} is the environment: android, ios.  {1} is a file name |
-| **FWLSE3063E** | **The application cannot be deployed since the "{0}" folder is missing in the wlapp file. Check that the application was correctly built.** <br/><br/>{0} is a folder name, for instance "meta".<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Deploy a wlapp that does not contain the meta folder |
-| **FWLSE3065E** | **The application cannot be deployed since the "{0}" field is missing in the wlapp file. Check that the application was correctly built.** <br/><br/>{0} is a mandatory field, for instance "app.id" |
-| **FWLSE3066E** | **The application cannot be deployed since the application version "{2}" is different than the version of the {0} runtime "{3}". \nUse {1} "{4}" to build and deploy the application.** <br/><br/>{0} is the word MobileFirst {1} is the name of studio, e.g. MobileFirst Studio {2} is an application version: 1.0, 2.0, ... {3} is the runtime version {4} is the required studio version |
-| **FWLSE3067E** | **The application cannot be deployed since the application version is older than the version of the {0} runtime "{2}". \nUse {1} "{3}" to build and deploy the application.** <br/><br/>{0} is the word MobileFirst {1} is the name of studio, e.g. MobileFirst Studio {2} is the runtime version {3} is the required studio version |
-| **FWLSE3068E** | **The adapter cannot be deployed since the adapter version "{2}" is different than the version of the {0} runtime "{3}". \nUse {1} "{4}" to build and deploy the adapter.** <br/><br/>{0} is the word MobileFirst {1} is the name of studio, e.g. MobileFirst Studio {2} is an adapter version: 1.0, 2.0, ... {3} is the runtime version {4} is the required studio version |
-| **FWLSE3069E** | **The adapter cannot be deployed since the adapter version is older than the version of the {0} runtime "{2}". \nUse {1} "{3}" to build and deploy the adapter.** <br/><br/>{0} is the word MobileFirst {1} is the name of studio, e.g. MobileFirst Studio {2} is the runtime version {3} is the required studio version |
-| **FWLSE3070E** | **Update of application "{1}" with environment "{2}" and version "{3}" failed because it is locked. It can be unlocked using the {0} Operations Console.** <br/><br/>{0} is the word MobileFirst {1} is the application name (any string) {2} is the application environment: android, ios, ... {3} is the application version: 1.0, 2.0, ... |
-| **FWLSE3071E** | **Cannot deploy hybrid application "{0}" because there is already a native application with the same name.** <br/><br/>{0} is the application name (any string)<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Create a native and a hybrid application of the same name and deploy both in Operations Console. |
-| **FWLSE3072E** | **Cannot deploy native application "{0}" because there is already a hybrid application with the same name.** <br/><br/>{0} is the application name (any string)<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Create a native and a hybrid application of the same name and deploy both in Operations Console. |
-| **FWLSE3073E** | **Cannot find the Adobe Air installer file in application "{1}" version "{2}". \nPlease use {0} to rebuild and deploy the wlapp file for this application.** <br/><br/>{0} is the name of studio, e.g. MobileFirst Studi {1} is the application name (any string) {2} is the application version: 1.0, 2.0, ...<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Occurs when the adobe application is messed up |
-| **FWLSE3074W** | **The lock has been properly updated for application "{0}" with environment "{1}" and version "{2}" but this setting has no effect on environment "{1}" because this environment does not support Direct Update.** <br/><br/>{0} is the application name (any string) {1} is the application environment: android, ios, ... {2} is the application version: 1.0, 2.0, ...<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. |
-| **FWLSE3075W** | **The application authentication rule has been properly updated for application "{0}" with environment "{1}" and version "{2}" but this setting has no effect on application "{0}" environment "{1}" because this environment do not support application authenticity checking. You can enable this support for this application environment by declaring in application-descriptor.xml a security configuration defined in authenticationConfig.xml.** <br/><br/>{0} is the application name (any string) {1} is the application environment: android, ios, ... {2} is the application version: 1.0, 2.0, ...<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. |
-| **FWLSE3076W** | **The application "{0}" with environment "{1}" and version "{2}" was not deployed because it did not change since the previous deployment.** <br/><br/>{0} is the application name (any string) {1} is the application environment: android, ios, ... {2} is the application version: 1.0, 2.0, ...<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, deploy the exact same (legal) wlapp twice with the Operations console.  However I could not reproduce that warning. |
-| **FWLSE3077W** | **The adapter "{0}" was not deployed because it did not change since the previous deployment.** <br/><br/>{0} is the adapter name (any string)<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, deploy the exact same (legal) adapter twice with the Operations console.  However I could not reproduce that warning. |
-| **FWLSE3078W** | **The thumbnail file is missing in the wlapp file for application "{0}" with environment "{1}" and version "{2}".** <br/><br/>{0} is the application name (any string) {1} is the application environment: android, ios, ... {2} is the application version: 1.0, 2.0, ... |
-| **FWLSE3079W** | **Impossible to verify that the application "{2}" with environment "{3}" and version "{4}" has been built with the same {1} version as the {0} runtime because the application and runtime versions are both built with versions of Worklight Studio older than 6.0. Please ensure that both have been built with the same version of {1}.** <br/><br/>{0} is the word MobileFirst {1} is the name of studio, e.g. MobileFirst Studio {2} is the application name (any string) {3} is the application environment: android, ios, ... {4} is the application version: 1.0, 2.0, ...<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, deploy wlapp build with Worklight Studio 5.0.6 or older, into MobileFirst Server 7.1. |
-| **FWLSE3080W** | **Impossible to verify that the adapter "{2}" has been built with the same {1} version as the {0} runtime because the adapter and runtime versions are both built with versions of Worklight Studio older than 6.0. Please ensure that both have been built with the same version of {1}.** <br/><br/>{0} is the word MobileFirst {1} is the name of studio, e.g. MobileFirst Studio {2} is the adapter name (any string)<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, deploy adapter build with Worklight Studio 5.0.6 or older, into MobileFirst Server 7.1. |
-| **FWLSE3081E** | **Application authenticity check is not supported for the environment "{0}". Only iOS and Android environments are supported.** <br/><br/>{0} is the application environment: android, ios, ...<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, edit android app with enabled authenticity check and modify the env, then deploy. |
-| **FWLSE3082E** | **The content of the file "{0}" is empty and so cannot be deployed.** <br/><br/>{0} is a file name |
-| **FWLSE3084E** | **The adapter file cannot be deployed since it doesn't contain the mandatory adapter XML file. Check that it was correctly built.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> deploy an adapter that contains no XML file |
-| **FWLSE3085E** | **The application file cannot be deployed since it doesn''t contain the mandatory "{0}" file. Check that it was correctly built.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> deploy a wlapp that contains no meta/deployment.data file |
-| **FWLSE3090E** | **The transaction was never finished. Check the application server logs.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, happens when a transaction gets stalled of unknown reason for 30 min |
-| **FWLSE3091W** | **The processing of transaction {0} failed. Check the application server logs.** <br/><br/>{0} is the transaction id, typically a number<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. Maybe can be produced by shutting down a runtime while a transaction is ongoing. |
-| **FWLSE3092W** | **The transaction {0} was canceled before its processing started. Check the application server logs.** <br/><br/>{0} is the transaction id, typically a number<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult.This occurs if you create several deployment transactions, from which at least one is not yet processed when shut down the server. When restart the server, the unprocessed transaction gets cancelled. |
-| **FWLSE3100W** | **The binary resource {3} cannot be accessed. HTTP Range Request {0}-{1} cannot be satisfied. The maximal content length is {2} bytes.** <br/><br/>{0} is the start of the byte range, e.g. 0 {1} is the end of the byte range, e.g. 6666 {2} is the number of bytes available, e.g. 25 {3} is the resource name (like a file name) |
-| **FWLSE3101W** | **Application {1}, environment {2}, version {3} built with {0} version {4} was overridden by environment built with {0} version {5}** <br/><br/>{0} is the name of studio: MobileFirst Studio {1} is the application name (any string) {2} is the application environment: android, ios, ... {3} is the application version: 1.0, 2.0, ... {4} is the a version of studio, e.g. 3.0 {5} is the another version of studio, e.g. 4.0<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, you need to have an app build with two different versions of Studio, but the app must have the same version number and the same environment. If you then deploy both apps on the same server, the message may occur. But maybe the message is hidden by other messages. I never saw that message. |
-| **FWLSE3102W** | **Application {0} is not enabled for push notification.** <br/><br/>{0} is the application name (any string) |
-| **FWLSE3103E** | **Push notification tag {0} not found for application {2} of runtime {1}.** <br/><br/>{0} is the push notification tag (any string) {1} is the runtime name (any string) {2} is the application name (any string)<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> occurs only in unit tests |
-| **FWLSE3104E** | **Push notification tag {0} already exists for application {2} of runtime {1}.** <br/><br/>{0} is the push notification tag (any string) {1} is the runtime name (any string) {2} is the application name (any string)<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. |
-| **FWLSE3105W** | **Push notification certificate for {0} expired.** <br/><br/>{0} is the push mediator name (any string)<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. |
-| **FWLSE3113E** | **Multiple errors when synchronizing the runtime {0}.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, this occurs in a farm setup (multi node setup) when the server starts, but each node reports a different error. |
-| **FWLSE3199I** | **========= {0} version {1} started.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> This occurs always in the server log when the server started. |
-| **FWLSE3210W** | **Environment: {1} of application {0} version {2} has been deployed with a different version of the native MobileFirst SDK. Direct updates will no longer be available for existing clients with other versions of the MobileFirst SDK. To continue to use direct updates, increment the app version, publish it to the public app store, deploy to the server, and (optionally) block/notify older versions of the app to enforce customers to upgrade to the new version from the app store.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, this may occur if an app was created by an older version of MobileFirst Studio with a different, older MobileFirst SDK. But I am not familiar with native MobileFirst SDK versions. |
-| **FWLSE3119E** | **APNS certificate validation failed. See additional messages for details.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. Occurs if the Apple Push Notification certificate is invalid. |
-| **FWLSE3120E** | **This API can be used only after migrating the application to MobileFirst Platform 6.3. Current version of the application is {0}**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. Occurs with new push notifications used with old apps. |
-| **FWLSE3121E** | **This API is no longer available on the server. See additional messages for details.** |
-| **FWLSE3122E** | **The authenticity check rule of an application can no longer be modified inside the server. You should rebuild your application in order to modify the authenticity check rule and deploy it.** |
-| **FWLSE3123W** | **Environment: {1} of application {0} version {2} has been deployed with extended application authenticity disabled. It is recommended to to use extended app authenticity to further protect from unauthorized apps by using the enable extended-authenticity command of the mfpadm tool before deploying the application.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> In Operations Console, deploy an app with basic authenticity. All apps prior to 7.0 have no extended authenticity and should show this warning or the next. The warning does not occur if you use the Operations Console that is embedded in Worklight Studio. |
-| **FWLSE3124W** | **Environment: {1} of application {0} version {2} has been deployed with application authenticity disabled. Enable it to further protect from unauthorized apps.** |
+| **FWLSE3000E** | **Um erro do servidor foi detectado.** |
+| **FWLSE3001E** | **Um conflito foi detectado.** |
+| **FWLSE3002E** | **O recurso não foi localizado.** |
+| **FWLSE3003E** | **O tempo de execução não pode ser incluído uma vez que sua carga útil não contém nome.** |
+| **FWLSE3010E** | **Um erro de banco de dados foi detectado.** <br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, desconfigure a base de dados. |
+| **FWLSE3011E** | **O número da porta "{0}" da propriedade JNDI mfp.admin.proxy.port não é válido.** <br/><br/>{0} é o número da porta, por exemplo, 9080.<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, configure a propriedade JNDI mfp.admin.proxy.port para um valor nonsense.  Em seguida, abra o Operations Console. Eventualmente, a mensagem aparecerá nos logs do servidor. |
+| **FWLSE3012E** | **Erro de conexão JMX. Motivo: "{0}". Verifique os logs do servidor de aplicativos para obter detalhes.** <br/><br/>{0} é uma mensagem de erro proveniente do protocolo JMX do servidor da web.<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, desconfigure o JMX de forma que ele lança exceções. |
+| **FWLSE3013E** | **Tempo limite ao tentar obter o bloqueio de transação após {0} milissegundos.** <br/><br/>{0} é o número de milissegundos, por exemplo, 32000.<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, isso acontece com uma base de dados conectada por meio de uma rede instável ou lenta. |
+| **FWLSE3017E** | **Um erro de banco de dados foi detectado: {0}. Motivo: {1}** <br/><br/>{0} é a mensagem de erro do cloudant.<br/>{1} é a mensagem do motivo do cloudant.<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, desconfigure o Cloudant. |
+| **FWLSE3018E** | **A operação do Cloudant não foi concluída dentro de {0} milissegundos.** <br/><br/>{0} é o número de milissegundos, por exemplo, 32000.<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, use
+o Cloudant DB e configure a propriedade JNDI mfp.db.cloudant.documentOperation.timeout para 1. Se a conexão com o cloudant estiver lenta, abra o Operations Console. Eventualmente, a mensagem aparecerá nos logs do servidor. |
+| **FWLSE3019E** | **Não é possível obter bloqueio de transação. Motivo: {0}** <br/><br/>{0} é alguma mensagem de exceção que foi retornada externamente. Pode ser qualquer sequência.  <br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, pode ser reproduzido quando você tiver um farm com o Cloudant e encerrar o mestre de bloqueio enquanto uma operação de bloqueio está em andamento. Em seguida, abra o Operations Console.  Eventualmente, a mensagem aparecerá nos logs do servidor. |
+| **FWLSE3021E** | **Tempo limite ao tentar obter o bloqueio de transação após {0} milissegundos. Aumente a propriedade {1}.**<br/><br/>{0} é o número de milissegundos, por exemplo, 32000.<br/>{1} é o nome da propriedade JNDI a partir da qual o tempo limite é obtido.<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, isso acontece com uma base de dados conectada por meio de uma rede instável ou lenta. |
+| **FWLSE3030E** | **O tempo de execução "{0}" não existe no banco de dados de administração do MobileFirst. O banco de dados pode estar corrompido.** <br/><br/>**Em que:** {0} é o nome do tempo de execução (qualquer sequência).<br/><br/>Esse erro ocorre quando o {{site.data.keys.mf_server }} não é capaz de carregar o tempo de execução armazenado no banco de dados.  O [APAR PI71317](http://www-01.ibm.com/support/docview.wss?uid=swg1PI71317) foi liberado para tratar algumas ocorrências desta mensagem.  Se o nível de correção do servidor for anterior a **iFix 8.0.0.0-IF20170125-0919**, faça upgrade para o [iFix mais recente](https://www-945.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all). |
+| **FWLSE3031E** | **O tempo de execução "{0}" não pode ser incluído ou excluído desde que ele ainda esteja em execução.** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência). |
+| **FWLSE3032E** | **O tempo de execução "{0}" não pode ser incluído, pois ele já existe.** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência). |
+| **FWLSE3033E** | **O tempo de execução "{0}" não está vazio, mas você solicitou a exclusão do tempo de execução apenas quando ele estiver vazio.** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência).<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, exclua um tempo de execução interrompido que ainda contém aplicativos. |
+| **FWLSE3034E** | **O aplicativo "{1}" para o tempo de execução "{0}" não existe no banco de dados de administração do MobileFirst. O banco de dados pode estar corrompido.** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência).<br/>{1} é o nome do aplicativo (qualquer sequência). |
+| **FWLSE30302E** | **A configuração de licença para o aplicativo "{1}" para o tempo de execução "{0}" não existe no banco de dados de administração do MobileFirst.** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência).<br/>{1} é o nome do aplicativo (qualquer sequência). |
+| **FWLSE30303E** | **A configuração de licença não pode ser excluída já que o aplicativo "{1}" para o tempo de execução "{0}" existe no banco de dados de administração do MobileFirst ou a configuração de licença não existe.** <br/>{0} é o nome do tempo de execução (qualquer sequência).<br/>{1} é o nome do aplicativo (qualquer sequência). |
+| **FWLSE30035E** | **O aplicativo "{1}" não pode ser incluído, uma vez que ele já existe no tempo de execução "{0}".** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência).<br/>{1} é o nome do aplicativo (qualquer sequência).<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> ocorre apenas em testes de unidade |
+| **FWLSE3035E** | **O aplicativo "{1}" com o ambiente "{2}" do tempo de execução "{0}" não existe no banco de dados de administração do MobileFirst. O banco de dados pode estar corrompido.** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência)<br/>{1} é o nome do aplicativo (qualquer sequência).<br/>{2} é o nome do ambiente: android, ios, ... |
+| **FWLSE30304E** | **O AppAuthenticity Data para o aplicativo "{1}" com ambiente "{2}" e versão "{3}" do tempo de execução "{0}" não existe no banco de dados de administração do MobileFirst. O banco de dados pode estar corrompido.** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência)<br/>{1} é o nome do aplicativo (qualquer sequência).<br/>{2} é o nome do ambiente: android, ios, ... |
+| **FWLSE3036E** | **O aplicativo "{1}" com o ambiente "{2}" e a versão "{3}" do tempo de execução "{0}" não existe no banco de dados de administração do MobileFirst. O banco de dados pode estar corrompido.** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência).<br/>{1} é o nome do aplicativo (qualquer sequência).<br/>{2} é o nome do ambiente: android, ios, ... <br/>{3} é a versão: 1,0, 2,0... |
+| **FWLSE3037E** | **O ambiente "{1}" com a versão "{2}" não pode ser incluído, uma vez que ele já existe no aplicativo "{0}".** <br/><br/>{0} é o nome do aplicativo (qualquer sequência).<br/>{1} é o nome do ambiente: android, ios, ... <br/>{2} é a versão: 1,0, 2,0...<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> ocorre apenas em testes de unidade |
+| **FWLSE3038E** | **O adaptador "{1}" do tempo de execução "{0}" não existe no banco de dados de administração do MobileFirst. O banco de dados pode estar corrompido.** <br/><br/>{0} é o nome do tempo de execução (qualquer sequência).  {1} é o nome do adaptador (qualquer sequência). |
+| **FWLSE3039E:** | **O adaptador "{0}" não pode ser incluído, uma vez que ele já existe no tempo de execução "{1}".** <br/>{0} é o nome do tempo de execução (qualquer sequência).  {1} é o nome do adaptador (qualquer sequência).<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> ocorre apenas em testes de unidade. |
+| **FWLSE3040E** | **O perfil de configuração "{0}" não foi localizado para nenhum tempo de execução no banco de dados de administração do MobileFirst. O banco de dados pode estar corrompido.** <br/><br/>{0} é o id do perfil de configuração (qualquer sequência)<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, pode ocorrer no log de rastreio ao excluir um perfil de configuração do cliente não existente. |
+| **FWLSE3045E** | **Nenhum MBean localizado para a administração do {0}.** <br/><br/>{0} é a palavra MobileFirst.<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. |
+| **FWLSE3041E** | **Nenhum MBean localizado para o projeto {0} ''{1}''. Possivelmente, o aplicativo da web de tempo de execução {0} para o projeto {0} ''{1}'' não está em execução. Se ele estiver em execução, use o JConsole para inspecionar os MBeans disponíveis. Se ele não estiver em execução, detalhes completos do erro estarão disponíveis nos arquivos de log do servidor.** <br/><br/>{0} é a palavra MobileFirst.  {1} é o nome do projeto/tempo de execução (qualquer sequência) |
+| **FWLSE3042E** | **Erro de comunicação com o MBean ''{0}''. Verifique os logs do servidor de aplicativos.** <br/><br/>{0} é o ID canônico do bean gerenciado, que é uma sequência. <br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Pode ocorrer se instalarmos uma biblioteca worklight-jee 6.2 em um servidor MobileFirst 7.1. |
+| **FWLSE3043E** | **O MBean denominado ''{0}'' não está mais presente. Verifique os logs do servidor de aplicativos.** <br/><br/>{0} é o ID canônico do bean gerenciado, que é uma sequência. <br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, ocorre no server farm durante o encerramento de um servidor enquanto uma operação de implementação está em andamento. |
+| **FWLSE3044E** | **O MBean denominado ''{1}'' não suporta as operações esperadas. Verifique se a versão de tempo de execução {0} é a mesma do que os serviços de administração.** <br/><br/>{0} é a palavra MobileFirst. {1} é o ID canônico do bean gerenciado, que é uma sequência. <br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Pode ocorrer se instalarmos uma biblioteca worklight-jee 6.2 em um servidor MobileFirst 7.1. |
+| **FWLSE3050E** | **A operação do MBean retorna um tipo desconhecido. Verifique se a versão de tempo de execução {0} é a mesma dos serviços de administração.** <br/><br/>{0} é a palavra MobileFirst.<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Pode ocorrer se instalarmos uma biblioteca worklight-jee 6.2 em um servidor MobileFirst 7.1. |
+| **FWLSE3051E** | **Carga útil inválida. Consulte mensagens adicionais para obter detalhes.** |
+| **FWLSE3052E** | **A carga útil a seguir não é reconhecida: "{0}".** <br/><br/>{0} é um extrato da carga útil na sintaxe JSON, por exemplo, "{ a : 0 }" |
+| **FWLSE3053E** | **Parâmetros inválidos. Consulte mensagens adicionais para obter detalhes.** |
+| **FWLSE3061E** | **O ambiente "{0}" referenciado no arquivo "{1}" do arquivo wlapp é desconhecido. Verifique
+se o aplicativo foi construído corretamente.** <br/><br/>{0} é o ambiente: android, ios.  {1} é um nome de arquivo |
+| **FWLSE3063E** | **O aplicativo não pode ser implementado desde que a pasta "{0}" esteja ausente no arquivo wlapp. Verifique
+se o aplicativo foi construído corretamente.** <br/><br/>{0} é um nome de pasta, por exemplo "meta".<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Implemente uma wlapp que não contenha a meta pasta |
+| **FWLSE3065E** | **O aplicativo não pode ser implementado desde que o campo "{0}" esteja ausente no arquivo wlapp. Verifique
+se o aplicativo foi construído corretamente.** <br/><br/>{0} é um campo obrigatório, por exemplo, "app.id" |
+| **FWLSE3066E** | **O aplicativo não pode ser implementado desde que a versão do aplicativo "{2}" seja diferente da versão do tempo de execução do {0} "{3}". \nUse {1} "{4}" para construir e implementar o aplicativo.** <br/><br/>{0} é a palavra MobileFirst, {1} é o nome do Studio, por exemplo, o MobileFirst Studio, {2} é uma versão do aplicativo: 1,0, 2,0,... {3} é a versão de tempo de execução, {4} é a versão do Studio necessária |
+| **FWLSE3067E** | **O aplicativo não pode ser implementado uma vez que a versão do aplicativo é mais antiga do que a versão do tempo de execução {0} "{2}". \nUse {1} "{3}" para construir e implementar o aplicativo.** <br/><br/>{0} é a palavra MobileFirst, {1} é o nome do Studio, por exemplo, o MobileFirst Studio, {2} é a versão de tempo de execução, {3} é a versão do Studio necessária |
+| **FWLSE3068E** | **O adaptador não pode ser implementado desde que a versão do adaptador "{2}" seja diferente da versão do tempo de execução do {0} "{3}". \nUse {1} "{4}" para construir e implementar o adaptador.** <br/><br/>{0} é a palavra MobileFirst, {1} é o nome do Studio, por exemplo, MobileFirst Studio, {2} é uma versão do adaptador: 1,0, 2,0,... {3} é a versão de tempo de execução, {4} é a versão do Studio necessária |
+| **FWLSE3069E** | **O adaptador não pode ser implementado desde que a versão do adaptador seja mais antiga que a versão do tempo de execução {0} "{2}". \nUse {1} "{3}" para construir e implementar o adaptador.** <br/><br/>{0} é a palavra MobileFirst, {1} é o nome do Studio, por exemplo, o MobileFirst Studio, {2} é a versão de tempo de execução, {3} é a versão do Studio necessária |
+| **FWLSE3070E** | **A atualização do aplicativo "{1}" com o ambiente "{2}" e a versão "{3}" falhou porque está bloqueada. Ela pode ser desbloqueada usando o Operations Console {0}.** <br/><br/>{0} é a palavra MobileFirst, {1} é o nome do aplicativo (qualquer sequência), {2} é o ambiente de aplicativo: android, ios... {3} é a versão do aplicativo: 1,0, 2,0, ... |
+| **FWLSE3071E** | **Não é possível implementar o aplicativo híbrido "{0}" porque já existe um aplicativo nativo com o mesmo nome.** <br/><br/>{0} é o nome do aplicativo (qualquer sequência)<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Crie um aplicativo nativo e um híbrido de mesmo nome e implemente-os no Operations Console. |
+| **FWLSE3072E** | **Não é possível implementar o aplicativo nativo "{0}" porque já existe um aplicativo híbrido com o mesmo nome.** <br/><br/>{0} é o nome do aplicativo (qualquer sequência)<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Crie um aplicativo nativo e um híbrido de mesmo nome e implemente-os no Operations Console. |
+| **FWLSE3073E** | **Não é possível localizar o arquivo instalador do Adobe Air no aplicativo "{1}" versão "{2}". \nUse {0} para reconstruir e implementar o arquivo wlapp para este aplicativo.** <br/><br/>{0} é o nome do Studio, por exemplo, MobileFirst Studi, {1} é o nome do aplicativo (qualquer sequência), {2} é a versão do aplicativo: 1,0, 2,0, ...<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Ocorre quando o aplicativo de adobe está desorganizado |
+| **FWLSE3074W** | **O bloqueio foi atualizado corretamente para o aplicativo "{0}" com o ambiente "{1}" e a versão "{2}", mas essa configuração não tem efeito sobre o ambiente "{1}" porque esse ambiente não suporta o Direct Update.** <br/><br/>{0} é o nome do aplicativo (qualquer sequência), {1} é o ambiente de aplicação: android, ios... {2} é a versão do aplicativo: 1,0, 2,0, ...<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. |
+| **FWLSE3075W** | **A regra de autenticação do aplicativo foi devidamente atualizada para o aplicativo "{0}" com o ambiente "{1}" e a versão "{2}", mas essa configuração não tem efeito no ambiente "{0}" do aplicativo "{1}" porque esse ambiente não suporta a verificação de autenticidade do aplicativo. É possível ativar esse suporte para esse ambiente de aplicativo declarando no application-descriptor.xml uma configuração de segurança definida em authenticationConfig.xml.** <br/><br/>{0} é o nome do aplicativo (qualquer sequência), {1} é o ambiente de aplicação: android, ios... {2} é a versão do aplicativo: 1,0, 2,0, ...<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. |
+| **FWLSE3076W** | **O aplicativo "{0}" com ambiente "{1}" e versão "{2}" não foi implementado porque ele não mudou desde a implementação anterior.** <br/><br/>{0} é o nome do aplicativo (qualquer sequência), {1} é o ambiente de aplicação: android, ios... {2} é a versão do aplicativo: 1,0, 2,0, ...<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, implemente exatamente o mesmo wlapp (legal) duas vezes com o Operations Console. |
+| **FWLSE3077W** | **O adaptador "{0}" não foi implementado porque ele não foi alterado desde a implementação anterior.** <br/><br/>{0} é o nome do adaptador (qualquer sequência)<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, implemente exatamente o mesmo adaptador (legal) duas vezes com o Operations Console. |
+| **FWLSE3078W** | **O arquivo de miniatura está ausente no arquivo wlapp para o aplicativo "{0}" com o ambiente "{1}" e a versão "{2}".** <br/><br/>{0} é o nome do aplicativo (qualquer sequência), {1} é o ambiente de aplicação: android, ios... {2} é a versão do aplicativo: 1,0, 2,0, ... |
+| **FWLSE3079W** | **Não é possível verificar se o aplicativo "{2}" com ambiente "{3}" e versão "{4}" foi construído com a mesma versão {1} que o tempo de execução {0}, pois as versões do aplicativo e tempo de execução são construídas com versões do Worklight Studio mais antigas que a versão 6.0. Assegure-se de que ambos tenham sido construídos com a mesma versão de {1}.** <br/><br/>{0} é a palavra MobileFirst {1}, é o nome do Studio, por exemplo, MobileFirst Studio, {2} é o nome do aplicativo (qualquer sequência), {3} é o ambiente
+de aplicativo: android, ios... {4} é a versão do aplicativo: 1,0, 2,0, ...<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, implemente o wlapp desenvolvido com o Worklight Studio 5.0.6 ou mais antigo no MobileFirst Server 7.1. |
+| **FWLSE3080W** | **Não é possível verificar se o adaptador "{2}" foi construído com a mesma versão {1} que o tempo de execução {0}, pois as versões do adaptador e tempo de execução são construídas com versões do Worklight Studio anteriores à 6.0. Assegure-se de que ambos tenham sido construídos com a mesma versão de {1}.** <br/><br/>{0} é a palavra MobileFirst, {1} é o nome do Studio, por exemplo, MobileFirst Studio, {2} é o nome do adaptador (qualquer sequência)<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, implemente o adaptador desenvolvido com o Worklight Studio 5.0.6 ou mais antigo no MobileFirst Server 7.1. |
+| **FWLSE3081E** | **A verificação de autenticidade do aplicativo não é suportada para o ambiente "{0}". Apenas os ambientes iOS e Android são suportados.** <br/><br/>{0} é o ambiente de aplicativo: android, ios, ...<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, edite o aplicativo android com a verificação de autenticidade ativada e modifique o ambiente. Em seguida, implemente. |
+| **FWLSE3082E** | **O conteúdo do arquivo "{0}" está vazio e, portanto, não pode ser implementado.** <br/><br/>{0} é um nome de arquivo |
+| **FWLSE3084E** | **O arquivo do adaptador não pode ser implementado, já que ele não contém o arquivo XML obrigatório do adaptador. Verifique se ele foi construído corretamente.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> implemente um adaptador que não contenha nenhum arquivo XML |
+| **FWLSE3085E** | **O arquivo do aplicativo não pode ser implementado, pois ele não contém o arquivo "{0}" obrigatório. Verifique se ele foi construído corretamente.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> implemente um wlapp que não contenha nenhum arquivo meta/deployment.data |
+| **FWLSE3090E** | **A transação nunca foi concluída. Verifique os logs do servidor de aplicativos.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, acontece quando uma transação fica paralisada por um motivo desconhecido por 30 min. |
+| **FWLSE3091W** | **O processamento da transação {0} falhou. Verifique os logs do servidor de aplicativos.** <br/><br/>{0} é o id de transação, geralmente um número<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Talvez possa ser produzido encerrando um tempo de execução enquanto uma transação estiver em andamento. |
+| **FWLSE3092W** | **A transação {0} foi cancelada antes de seu processamento ser iniciado. Verifique os logs do servidor de aplicativos.** <br/><br/>{0} é o id de transação, geralmente um número<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Isso ocorre se você criar várias transações de implementação, das quais pelo menos uma ainda não foi processada durante o encerramento do servidor. Na reinicialização do servidor, a transação não processada é cancelada. |
+| **FWLSE3100W** | **O recurso binário {3} não pode ser acessado. Solicitação de Intervalo de HTTP {0}-{1} não pode ser satisfeita. O comprimento máximo do conteúdo é {2} bytes.** <br/><br/>{0} é o início da faixa de bytes, por exemplo, 0, {1} é o fim do intervalo de bytes, por exemplo, 6666, {2} é o número de bytes disponíveis, por exemplo, 25, {3} é o nome do recurso (como um nome de arquivo) |
+| **FWLSE3101W** | **Aplicativo {1}, ambiente {2}, versão {3} construída com a versão {0}, versão {4} foi sobrescrita pelo ambiente construído com {0}, versão {5}** <br/><br/>{0} é o nome do Studio: o MobileFirst Studio, {1} é o nome do aplicativo (qualquer sequência), {2} é o ambiente de aplicativo: android, ios... {3} é a versão do aplicativo: 1.0, 2.0, ..... {4} é a versão do Studio,
+por exemplo, 3.0 {5} é a outra versão do Studio, por exemplo, 4.0<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, é necessário ter uma construção de aplicativo com duas versões diferentes do Studio, mas o aplicativo deve ter o mesmo número da versão e o mesmo ambiente. Se você implementar ambos os aplicativos no mesmo servidor, a mensagem poderá ocorrer. Mas talvez a mensagem seja ocultada por outras mensagens. Eu nunca vi essa mensagem. |
+| **FWLSE3102W** | **O aplicativo {0} não está ativado para notificação push.** <br/><br/>{0} é o nome do aplicativo (qualquer sequência) |
+| **FWLSE3103E** | **Tag de notificação push {0} não localizada para o aplicativo {2} do tempo de execução {1}.** <br/><br/>{0} é a tag de notificação push (qualquer sequência), {1} é o nome do tempo de execução (qualquer sequência), {2} é o nome do aplicativo (qualquer sequência)<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> ocorre apenas em testes de unidade |
+| **FWLSE3104E** | **Tag de notificação push {0} já existe para o aplicativo {2} do tempo de execução {1}.** <br/><br/>{0} é a tag de notificação push (qualquer sequência), {1} é o nome do tempo de execução (qualquer sequência), {2} é o nome do aplicativo (qualquer sequência)<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. |
+| **FWLSE3105W** | **Certificado de notificação push para {0} expirado.** <br/><br/>{0} é o nome do mediador de push (qualquer sequência)<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. |
+| **FWLSE3113E** | **Diversos erros ao sincronizar o tempo de execução {0}.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, isso ocorre em uma configuração de farm (configuração multinós) quando o servidor é iniciado, mas cada nó relata um erro diferente. |
+| **FWLSE3199I** | **========= {0} versão {1} iniciada.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Isso sempre ocorre no log do servidor quando o servidor é iniciado. |
+| **FWLSE3210W** | **Ambiente: {1} do aplicativo {0} versão {2} foi implantado com uma versão diferente do MobileFirst SDK nativo. Atualizações diretas não estarão mais disponíveis para clientes existentes com outras versões do SDK MobileFirst. Para continuar a usar as atualizações diretas, incremente a versão do aplicativo, publique-a no armazenamento de aplicativos públicos, implemente-a no servidor e
+(opcionalmente) bloqueie versões mais antigas do aplicativo para fazer com que os clientes façam upgrade para a nova versão do armazenamento de aplicativos.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, isso pode ocorrer se um aplicativo foi criado por uma versão mais antiga do MobileFirst Studio com um MobileFirst SDK diferente mais antigo. Porém, não estou familiarizado com as versões nativas do MobileFirst SDK. |
+| **FWLSE3119E** | **A validação do certificado APNS falhou. Consulte mensagens adicionais para obter detalhes.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Ocorre se o certificado Apple Push Notification for inválido. |
+| **FWLSE3120E** | **Essa API pode ser usada somente depois de migrar o aplicativo para o MobileFirst Platform 6.3. A versão atual do aplicativo é {0}**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Ocorre com novas notificações push usadas com aplicativos antigos. |
+| **FWLSE3121E** | **Esta API não está mais disponível no servidor. Consulte mensagens adicionais para obter detalhes.** |
+| **FWLSE3122E** | **A regra de verificação de autenticidade de um aplicativo não pode mais ser modificada no interior do servidor. Você deve reconstruir seu aplicativo a fim de modificar a regra de verificação de autenticidade e implementá-la.** |
+| **FWLSE3123W** | **Ambiente: {1} do aplicativo {0} versão {2} foi implementado com a autenticidade do aplicativo estendida desativada. É recomendável usar a autenticidade do aplicativo estendida para se proteger ainda mais contra aplicativos não autorizados usando o comando ativar autenticidade estendida da ferramenta mfpadm antes de implementar o aplicativo.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> No Operations Console, implemente um aplicativo com autenticidade básica. Nenhum dos aplicativos anteriores à 7.0 tem autenticidade estendida e deve mostrar este aviso ou o próximo. O aviso não ocorre se você usar o Operations Console que está integrado no Worklight Studio. |
+| **FWLSE3124W** | **Ambiente: {1} do aplicativo {0} versão {2} foi implementado com a autenticidade do aplicativo desativada. Ative-a para se proteger ainda mais contra aplicativos não autorizados.** |
 
-### Token License Messages
+### Mensagens de Licença de Token
 
-| **FWLSE3125E** | **The Rational Common Licensing native library is not found. Make sure the JVM property (java.library.path) is defined with the right path and the native library can be executed. Restart IBM MobileFirst Platform Server after taking corrective action.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Do not set the JVM property (java.library.path) pointing to RCL native library in the application server configuration. Then this message will be thrown at runtime synchronization. |
-| **FWLSE3126E** | **The Rational Common Licensing shared library is not found. Make sure the shared library is configured. Restart IBM MobileFirst Platform Server after taking corrective action.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Do not set the shared library path pointing to RCL java library in the application server configuration. Then this message will be thrown at runtime synchronization. |
-| **FWLSE3127E** | **The Rational License Key Server connection is not configured. Make sure the admin JNDI properties "{0}" and "{1}" are set. Restart IBM MobileFirst Platform Server after taking corrective action.** <br/><br/>{0} is the host name of the license server {1} is the port of the license server<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Do not set the JNDI properties (related to token licensing) in the application server configuration. Then this message will be thrown at runtime synchronization. |
-| **FWLSE3128E** | **The Rational License Key Server "{0}" is not accessible. Make sure that license server is running and accessible to IBM MobileFirst Platform Server. If this error occurs at runtime startup, restart IBM MobileFirst Platform Server after taking corrective action.** <br/><br/>{0} is the full address of the license server<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Do not start the license server. Then this message will be thrown at runtime synchronization or during application deployment. |
-| **FWLSE3129E** | **Insufficient token licenses for feature "{0}".** <br/><br/>{0} is the license feature name<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Exhaust all the licenses in the license server. Then this message will be thrown at runtime synchronization or during application deployment. |
-| **FWLSE3130E** | **Token licenses have expired for feature "{0}".** <br/><br/>{0} is the license feature name<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Allow the token licenses to expire. Then this message will be thrown at runtime synchronization or during application deployment. |
-| **FWLSE3131E** | **License error was detected. Check the application server logs for more details.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. |
-| **FWLSE3132E** | **The connection to Rational License Key Server is configured with the admin JNDI properties "{0}" and "{1}" but this IBM MobileFirst Platform Server is not enabled for token licensing.** <br/><br/>{0} is the host name of the license server {1} is the port of the license server<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Do not activate token licensing. But set the JNDI properties (related to token licensing) in the application server configuration. Then this message will be thrown at runtime synchronization. |
-| **FWLSE3133I** | **This application is disabled. Please contact the administrator for more details.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Allow the token licenses to expire. Then all the applications would automatically gets disabled and when the application is accessed from device, this message is seen. |
-| **FWLSE3134E** | **The Rational Common Licensing native library is not found.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Internally to be stored in db. Difficult. |
-| **FWLSE3135E** | **The Rational Common Licensing shared library is not found.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Internally to be stored in db. Difficult. |
-| **FWLSE3136E** | **The Rational License Key Server details are not configured.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Internally to be stored in db. Difficult. |
-| **FWLSE3137E** | **The Rational License Key Server "{0}" is not accessible.** <br/><br/>{0} is the full address of the license server<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Internally to be stored in db. Difficult. |
-| **FWLSE3138E** | **Insufficient token licenses for feature "{0}".** <br/><br/>{0} is the license feature name<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Internally to be stored in db. Difficult. |
-| **FWLSE3139E** | **Token licenses have expired for feature "{0}".** <br/><br/>{0} is the license feature name<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Internally to be stored in db. Difficult. |
-| **FWLSE3140E** | **License error was detected.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Internally to be stored in db. Difficult. |
-| **FWLSE3141E** | **The Rational License Key Server details are configured.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Internally to be stored in db. Difficult. |
+| **FWLSE3125E** | **A biblioteca nativa do Rational Common Licensing não foi localizada. Certifique-se de que a propriedade JVM (java.library.path) está definida com o caminho correto e a biblioteca nativa possa ser executada. Reinicie o IBM MobileFirst Platform
+Server depois de executar a ação corretiva.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Não configure a propriedade JVM (java.library.path) apontando para a biblioteca nativa do RCL na configuração do servidor de aplicativos. Essa mensagem será então lançada na sincronização do tempo de execução. |
+| **FWLSE3126E** | **A biblioteca compartilhada do Rational Common Licensing não foi localizada. Certifique-se de que a biblioteca compartilhada está configurada. Reinicie o IBM MobileFirst Platform
+Server depois de executar a ação corretiva.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Não configure o caminho da biblioteca compartilhada apontando para a biblioteca java do RCL na configuração do servidor de aplicativos. Essa mensagem será então lançada na sincronização do tempo de execução. |
+| **FWLSE3127E** | **A conexão do Rational License Key Server não está configurada. Certifique-se
+de que as propriedades JNDI "{0}" e "{1}" do admin estão configuradas. Reinicie o IBM MobileFirst Platform
+Server depois de executar a ação corretiva.** <br/><br/>{0} é o nome do host do servidor de licença, {1} é a porta do servidor de licença<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Não configure as propriedades JNDI (relacionadas ao licenciamento de token) na configuração do servidor de aplicativos. Essa mensagem será então lançada na sincronização do tempo de execução. |
+| **FWLSE3128E** | **O Rational License Key Server "{0}" não está acessível. Certifique-se
+de que o servidor de licença está sendo executado e está acessível ao IBM MobileFirst Platform Server. Se esse erro ocorrer na inicialização
+do tempo de execução, reinicie o IBM MobileFirst Platform Server depois de executar a ação
+corretiva.** <br/><br/>{0} é o endereço completo do servidor de licença<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Não inicie o servidor de licença. Essa mensagem será então lançada na sincronização do tempo de execução ou durante a implementação do aplicativo. |
+| **FWLSE3129E** | **Licenças de token insuficientes para o recurso "{0}".** <br/><br/>{0} é o nome do recurso de licença<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Esgote todas as licenças no servidor de licença. Essa mensagem será então lançada na sincronização do tempo de execução ou durante a implementação do aplicativo. |
+| **FWLSE3130E** | **As licenças de token expiraram para o recurso "{0}".** <br/><br/>{0} é o nome do recurso de licença<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Permita que as licenças de token expirem. Essa mensagem será então lançada na sincronização do tempo de execução ou durante a implementação do aplicativo. |
+| **FWLSE3131E** | **O erro de licença foi detectado. Verifique os logs do servidor de aplicativos para obter mais detalhes.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. |
+| **FWLSE3132E** | **A conexão com o Rational License Key Server está configurada com as propriedades JNDI do administrador "{0}" e "{1}", mas este IBM MobileFirst Platform Server não está ativado para o licenciamento de token.** <br/><br/>{0} é o nome do host do servidor de licença, {1} é a porta do servidor de licença<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Não ative o licenciamento de token. Mas configure as propriedades JNDI (relacionadas ao licenciamento de token) na configuração do servidor de aplicativos. Essa mensagem será então lançada na sincronização do tempo de execução. |
+| **FWLSE3133I** | **Este aplicativo está desativado. Entre em contato com o administrador para obter mais detalhes.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Permita que as licenças de token expirem. Em seguida, todos os aplicativos serão automaticamente desativados, e quando o aplicativo for acessado a partir do dispositivo, esta mensagem será vista. |
+| **FWLSE3134E** | **A biblioteca nativa do Rational Common Licensing não foi localizada.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Internamente para ser armazenado em db. Difícil. |
+| **FWLSE3135E** | **A biblioteca compartilhada do Rational Common Licensing não foi localizada.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Internamente para ser armazenado em db. Difícil. |
+| **FWLSE3136E** | **Os detalhes do Rational License Key Server não estão configurados.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Internamente para ser armazenado em db. Difícil. |
+| **FWLSE3137E** | **O Rational License Key Server "{0}" não está acessível.** <br/><br/>{0} é o endereço completo do servidor de licença<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Internamente para ser armazenado em db. Difícil. |
+| **FWLSE3138E** | **Licenças de token insuficientes para o recurso "{0}".** <br/><br/>{0} é o nome do recurso de licença<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Internamente para ser armazenado em db. Difícil. |
+| **FWLSE3139E** | **As licenças de token expiraram para o recurso "{0}".** <br/><br/>{0} é o nome do recurso de licença<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Internamente para ser armazenado em db. Difícil. |
+| **FWLSE3140E** | **O erro de licença foi detectado.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Internamente para ser armazenado em db. Difícil. |
+| **FWLSE3141E** | **Os detalhes do Rational License Key Server estão configurados.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Internamente para ser armazenado em db. Difícil. |
 
-### Farm Configuration Messages
+### Mensagens de configuração de farm
 
-| **FWLSE3200W** | **The server "{0}" cannot be added as a new farm member because a server with the same ID is already registered for the runtime "{1}". This can happen either if the JNDI property mfp.admin.serverid has the same value on another running node, or if your server did not unregister itself properly when it last shut down.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, this happens if you configure a server farm wrongly. A server farm consists of multiple computers (nodes). Each computer must have an id (JNDI property mfp.admin.serverid).  If you use the exact same id for two different nodes, you would see this message in the server log. |
-| **FWLSE3201E** | **Failed to unregister the farm member "{0}" for runtime "{1}".**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, may occur in the server logs if you have a server farm and shut down one node in the farm, and anything went wrong during the shutdown. |
-| **FWLSE3202E** | **Failed to retrieve the list of farm members for server "{0}".**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, may occur in the server logs when the admin service is shut down in a server farm.  It then tries to notify the farm members and needs a list of farm members for that. |
-| **FWLSE3203E** | **No farm node is registered with server id "{0}" for runtime "{1}".** |
-| **FWLSE3204W** | **Node "{0}" seems unreachable, this transaction was not performed on this node.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, this can occur in a server farm if you disconnect one farm node from the network and wait long enough. It appears in the server log. |
-| **FWLSE3205W** | **Unable to put the runtime "{0}" on server "{1}" in denial of service mode. You can ignore this warning if the runtime is also shutting down.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, this can occur in a server farm if you disconnect one farm node from the network and wait long enough or shut down the server. But additionally to the normal processing, another exception must happen (e.g. an OutOfMemory exception). |
-| **FWLSE3206E** | **Not allowed to unregister the server "{0}" for the runtime "{1}" because the server appears to be still alive.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, you could reproduce this by calling the REST API to remove a farm node while this farm node is still running. |
-| **FWLSE3207E** | **The farm member with server id "{0}" is not reachable. Please try again later.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. In theory, this can occur in a server farm if you disconnect one farm node from the network and then try to deploy a wlapp. The transaction will fail and you can then see this message in the error log (transaction log, accessible though the UI). |
-| **FWLSE3208E** | **An invalid status code "{0}" was returned. The response content is "{1}".**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> This can occur whenever an unexpected status code is returned from a config service REST invocation. |
-| **FWLSE3209E** | **An exception has occurred during configuration service invocation. The exception message is "{0}".**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> This can occur whenever there are problems with CRUD operations dealing with configurations in the configuration service. This exection is generic and wraps multiple errors |
-| **FWLSE3210E** | **The resource(s) {0} that you are trying to export is not found.** |
-| **FWLSE3211E** | **The resourceInfos parameter {0} is specified incorrectly. The parameter needs to have a value in the format resourceName\|\|resourceType.** |
+| **FWLSE3200W** | **O servidor "{0}" não pode ser incluído como um novo membro do farm porque um servidor com o mesmo ID já está registrado para o tempo de execução "{1}". Isso pode acontecer se a propriedade JNDI mfp.admin.serverid tiver o mesmo valor em outro nó em execução, ou se o seu servidor não cancelou seu próprio registro corretamente ao ser encerrado pela última vez.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, isso acontece se você configurar um server farm incorretamente. Um server farm consiste em vários computadores (nós). Cada computador deve ter um id (propriedade JNDI mfp.admin.serverid).  Se usasse exatamente o mesmo id para dois nós diferentes, você veria esta mensagem no log do servidor. |
+| **FWLSE3201E** | **Falha ao cancelar o registro do membro do farm "{0}" para o tempo de execução "{1}".**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, pode ocorrer nos logs do servidor se você tiver um server farm e encerrar um nó no farm e algo der errado durante o encerramento. |
+| **FWLSE3202E** | **Falha ao recuperar a lista de membros do farm para o servidor "{0}".**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, pode ocorrer nos logs do servidor quando o serviço administrativo é encerrado em um server farm.  Depois, é feita uma tentativa de notificar os membros do farm e é necessário ter uma lista dos membros do farm para isso. |
+| **FWLSE3203E** | **Nenhum nó farm é registrado com o ID do servidor "{0}" para o tempo de execução "{1}".** |
+| **FWLSE3204W** | **Nó "{0}" parece inacessível; essa transação não foi executada neste nó.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, isso pode ocorrer em um server farm se você desconectar um nó farm da rede e esperar por tempo suficiente. Ele aparece no log do servidor. |
+| **FWLSE3205W** | **Não é possível colocar o tempo de execução "{0}" no servidor "{1}" no modo de negação de serviço. É possível ignorar este aviso se o tempo de execução também estiver encerrando.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, isso pode ocorrer em um server farm se você desconectar um nó farm da rede e esperar tempo suficiente ou encerrar o servidor. Mas, adicionalmente, para o processamento normal, outra exceção deve acontecer (por exemplo, uma exceção OutOfMemory). |
+| **FWLSE3206E** | **Não é permitido cancelar o registro do servidor "{0}" para o tempo de execução "{1}" porque o servidor ainda parece estar ativo.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, isso poderia ser reproduzido chamando a API de REST para remover um nó farm enquanto esse nó farm ainda estiver em execução. |
+| **FWLSE3207E** | **O membro do farm com o id do servidor "{0}" não está acessível. Tente novamente mais tarde.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Em teoria, isso pode ocorrer em um server farm se você desconectar um nó farm da rede e, em seguida, tentar implementar um wlapp. A transação falhará e você poderá ver essa mensagem no log de erros (log de transação, acessível através da UI). |
+| **FWLSE3208E** | **Um código de status inválido "{0}" foi retornado. O conteúdo de resposta é "{1}".**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Isso pode ocorrer sempre que um código de status inesperado é retornado de uma chamada REST de serviço de
+configuração. |
+| **FWLSE3209E** | **Ocorreu uma exceção durante a chamada do serviço de configuração. A mensagem de exceção é "{0}".**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Isso pode ocorrer sempre que houver problemas com operações CRUD que lidam com configurações no serviço de configuração. Esta execução é genérica e agrupa vários erros |
+| **FWLSE3210E** | **Os recursos {0} que você está tentando exportar não foram localizados.** |
+| **FWLSE3211E** | **O parâmetro resourceInfos {0} está especificado incorretamente. O parâmetro precisa ter um valor no formato resourceName\|\|resourceType.** |
 
-## {{ site.data.keys.mf_console }} Messages
+## {{ site.data.keys.mf_console }} Mensagens
 
-**Prefix:** FWLSE<br/>
-**Range:** 3300-3399
+**Prefixo:** FWLSE<br/>
+**Intervalo:** 3300-3399
 
-| **FWLSE3301E** | **Problem with SSL certificates. Possible fixes: Put the application server''s certificate into the truststore. Or define the JNDI property {0} to {1} (not in production environments).**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Difficult. Occurs if you setup the server with SSL, but use a wrong SSL certificate. Can also occur with self-signed certificates under certain circumstances. |
-| **FWLSE3302E** | **The keystore for the runtime "{0}" does not exist in the MobileFirst administration database. The database may be corrupted.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> if keystore not present |
-| **FWLSE3303E** | **The Application name "{0}", Environment "{1}", and Version "{2}" from the Web Resource/Authenticity data does not match the deployed application.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Upload a web resource generated for a different application |
-| **FWLSE3304E** | **JNDI property "{0}" is not set. Push service is not enabled in this server.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Give incorrect push server url |
-| **FWLSE3305E** | **Keystore alias can not be null.**<br/><br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> try to upload a keystore and skip the password and alias fields. |
-| **FWLSE3306E** | **Keystore password can not be null.** |
-| **FWLSE3307E** | **Can not find alias "{0}" in this keystore.** |
-| **FWLSE3308E** | **Alias password mismatch.** |
-| **FWLSE3309E** | **Alias password can not be null.** |
-| **FWLSE3310W** | **The server allows only "{0}" applications to be deployed.** <br/>{::nomarkdown}<i>Steps to reproduce:</i>{:/}<br/> Try to deploy apps that will cross the limit set by the jndi property mfp.admin.max.apps |
+| **FWLSE3301E** | **Problema com certificados SSL. Correções possíveis: coloque o certificado do servidor de aplicativos no armazenamento confiável. Ou defina a propriedade JNDI {0} para {1} (não em ambientes de produção).**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Difícil. Ocorre se você configurar o servidor com SSL, mas usar um certificado SSL errado. Também pode ocorrer com certificados autoassinados sob certas circunstâncias. |
+| **FWLSE3302E** | **O keystore para o tempo de execução "{0}" não existe no banco de dados de administração do MobileFirst. O banco de dados pode estar corrompido.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> se o keystore não estiver presente |
+| **FWLSE3303E** | **O nome do aplicativo "{0}", Ambiente "{1}" e Versão "{2}" dos dados do Recurso da Web/Autenticidade não corresponde ao aplicativo implementado.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Faça upload de um recurso da web gerado para um aplicativo diferente |
+| **FWLSE3304E** | **A propriedade JNDI "{0}" não está configurada. O serviço de push não está ativado neste servidor.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Forneça a url do servidor de push incorreto |
+| **FWLSE3305E** | **O alias do keystore não pode ser nulo.**<br/><br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> tente fazer upload de um keystore e ignore os campos de senha e alias |
+| **FWLSE3306E** | **A senha do keystore não pode ser nula.** |
+| **FWLSE3307E** | **Não é possível encontrar o alias "{0}" neste keystore.** |
+| **FWLSE3308E** | **Incompatibilidade de senha do alias.** |
+| **FWLSE3309E** | **A senha do alias não pode ser nula.** |
+| **FWLSE3310W** | **O servidor permite que apenas aplicativos "{0}" sejam implementados.** <br/>{::nomarkdown}<i>Etapas para reproduzir:</i>{:/}<br/> Tente implementar aplicativos que cruzarão o limite configurado pela propriedade jndi mfp.admin.max.apps |

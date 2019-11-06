@@ -221,7 +221,7 @@ IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された
       ```
 
 3. **www/InitOptions.js** を更新して `WL.Client.init` を手動で呼び出すようにします。
-    * **config.xml** ファイルを編集し、`<mfp:clientCustomInit>` エレメントの enabled 属性を true に設定します。
+    * **config.xml** ファイルを編集し、`<mfp:clientCustomInit>`  エレメントの enabled 属性を true に設定します。
     * MobileFirst ハイブリッド・デフォルト・テンプレートを使用している場合、以下のコードを置き換えます。
 
       ```javascript
@@ -413,7 +413,7 @@ MobileFirst アプリケーション・スキン は、各種デバイスおよ�
 * src/www/acme/html/footer.html
 * plugin.xml
 
-以下のように、**plugin.xml** ファイルに `<asset>` タグが含まれていて、このタグに、リソースをコピーするためのソースとターゲットが入っています。
+以下のように、**plugin.xml** ファイルに `<asset>`  タグが含まれていて、このタグに、リソースをコピーするためのソースとターゲットが入っています。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

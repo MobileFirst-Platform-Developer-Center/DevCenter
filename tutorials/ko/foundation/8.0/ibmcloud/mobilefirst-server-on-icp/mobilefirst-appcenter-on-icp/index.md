@@ -49,7 +49,7 @@ MobileFirst Application Center에 대한 자세한 정보는 [MobileFirst Applic
 * {{ site.data.keys.product_adj }} Analytics
 * {{ site.data.keys.product_adj }} Application Center
 
-[IBM Fix Central](http://www.ibm.com/support/fixcentral)에서 {{ site.data.keys.mf_app_center }}의 임시 수정사항을 얻을 수 있습니다.<br/>
+[IBM Fix Central](http://www.ibm.com/support/fixcentral)에서 {{ site.data.keys.mf_app_center }}에 대한 임시 수정사항을 얻을 수 있습니다.<br/>
 
 ## {{ site.data.keys.prod_icp }}에 IBM {{ site.data.keys.mf_app_center }} PPA 아카이브 로드
 {: #load-the-ibm-mfpf-appcenter-ppa-archive}
@@ -65,7 +65,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
       ```bash
       cloudctl login -a https://<ip>:<port>
       ```
-      선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
+선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
 
   2. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
       ```
@@ -75,11 +75,11 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 
       이전 단계를 수행하고 클러스터 엔드포인트를 `cloudctl`의 기본값으로 설정한 경우 `--clustername`은 무시할 수 있습니다.
 
-  3. PPA 아카이브를 로드한 후 저장소를 동기화하면 Helm Charts가 **카탈로그**에 나열됩니다. {{ site.data.keys.prod_icp }} 관리 콘솔에서 이를 수행할 수 있습니다.<br/>
+  3. PPA 아카이브를 로드한 후 저장소를 동기화하면 Helm Charts가 **카탈로그**에 나열됩니다. {{ site.data.keys.prod_icp }} 관리 콘솔에서 이 작업을 완료할 수 있습니다.<br/>
      * **관리 > 저장소**를 선택하십시오.
      * **저장소 동기화**를 클릭하십시오.
 
-  4.  그런 다음 {{ site.data.keys.prod_icp }} 관리 콘솔에서 Docker 이미지 및 Helm 차트를 볼 수 있습니다.<br/>
+  4.  그런 다음 {{ site.data.keys.prod_icp }} 관리 콘솔에서 Docker 이미지 및 Helm Charts를 볼 수 있습니다.<br/>
       Docker 이미지를 보려면 다음과 같이 하십시오.
       * **플랫폼 > 이미지**를 선택하십시오.
       * Helm Charts가 **카탈로그**에 표시됩니다.
@@ -156,7 +156,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 ## {{ site.data.keys.mf_app_center }} 액세스
 {: #access-mf-appcenter-console}
 
-{{ site.data.keys.mf_app_center }} Helm Chart 설치를 완료한 후 `<protocol>://<external_ip>:<port>/appcenterconsole`을 사용하여 브라우저에서 {{ site.data.keys.mf_app_center }} 콘솔에 액세스할 수 있습니다.
+{{ site.data.keys.mf_app_center }} Helm Chart를 설치한 후 `<protocol>://<external_ip>:<port>/appcenterconsole`을 사용하여 브라우저에서 {{ site.data.keys.mf_app_center }} 콘솔에 액세스할 수 있습니다.
 
 프로토콜은 **http** 또는 **https**일 수 있습니다. 또한 NodePort 배치의 경우 포트는 NodePort가 됩니다. 설치된 {{ site.data.keys.mf_app_center }} Chart의 ip_address 및 NodePort를 가져오려면 아래의 단계를 따르십시오.
 

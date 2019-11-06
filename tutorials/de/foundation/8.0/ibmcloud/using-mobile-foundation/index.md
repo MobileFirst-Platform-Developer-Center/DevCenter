@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Mobile Foundation Service in IBM Cloud verwenden
-breadcrumb_title: Setting up Mobile Foundation service
+title: Mobile Foundation Service in IBM Cloud
+breadcrumb_title: Foundation on IBM Cloud
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -213,7 +213,7 @@ Führen Sie für den Zugriff auf Serverprotokolle die folgenden Schritte aus.
 
 **Szenario 1:**
 
-1. Richten Sie Ihre Hostmaschine ein.<br/>
+1. Richten Sie Ihre Hostmaschine ein. <br/>
    Für die Verwaltung der IBM Cloud-Cloud-Foundry-App müssen Sie die Cloud-Foundry-CLI installieren.<br/>
    Installieren Sie die [Cloud-Foundry-CLI](https://github.com/cloudfoundry/cli/releases).
 2. Öffnen Sie das Terminal und melden Sie sich mit `cf login` für Ihre *Organisation* und Ihren *Bereich* an.

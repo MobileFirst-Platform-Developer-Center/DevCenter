@@ -10,16 +10,19 @@ weight: 2
 {: #overview }
 Wenn eine interaktive Benachrichtigung eingeht, können Benutzer Aktionen ausführen, ohne die Anwendung zu öffnen. Beim Eintreffen einer interaktiven Benachrichtigung zeigt das Gerät die Nachricht und Aktionsschaltflächen an. 
 
-Interaktive Benachrichtigungen werden auf Geräten mit iOS ab Version 8 unterstützt. Wenn eine interaktive Benachrichtigung an ein iOS-Gerät mit einer älteren Version als Version 8 gesendet wird, werden die Benachrichtigungsaktionen nicht angezeigt. 
+Interaktive Benachrichtigungen werden auf Geräten mit iOS ab Version 8 und mit Android ab Version 7.0 (API-Ebene 24) unterstützt. Wenn eine interaktive Benachrichtigung an ein iOS- oder Android-Gerät mit einer älteren Version gesendet wird, werden keine Benachrichtigungsaktionen angezeigt. 
 
 ## Interaktive Push-Benachrichtigung senden
 {: #sending-interactive-push-notification }
 Bereiten Sie die Benachrichtigung vor und senden Sie sie. Weitere Informationen finden Sie unter [Push-Benachrichtigungen senden](../../sending-notifications).
 
-Unter **{{ site.data.keys.mf_console }} → [Ihre Anwendung] → Push → Benachrichtigungen senden → Angepasste
-iOS-Einstellungen** können Sie eine Zeichenfolge festlegen, um die Kategorie der Benachrichtigung mit dem Benachrichtigungsobjekt anzugeben. Die Aktionsschaltflächen für die Benachrichtigung werden ausgehend vom Kategoriewert angezeigt. Beispiel: 
+Bei interaktiven Benachrichtigungen geht es um Benachrichtigungsaktionen und ihre Gruppierung in Kategorien. Definieren Sie zunächst die verschiedenen Benachrichtigungsaktionen, die dem Anwendungsbenutzer angeboten werden können. Definieren Sie dann Kategorien, denen Sie die Benachrichtigungsaktionen zuordnen können. Am wichtigsten ist es, jeder Kategorie eine eindeutige Kennung zuzuweisen. Wenn Sie nun interaktive Push-Benachrichtigungen an iOS-Geräte senden möchten, geben Sie unter **{{ site.data.keys.mf_console }} → [Ihre Anwendung] → Push → Benachrichtigungen senden → Angepasste iOS-Einstellungen**  und/oder **{{ site.data.keys.mf_console }} → [Ihre Anwendung] → Push → Benachrichtigungen senden → Angepasste Android-Einstellungen** die Kategoriekennung an. Die Schaltflächen für Benachrichtigungsaktionen auf dem mobilen Gerät werden je nach Kennung angezeigt. Beispiel: 
 
 ![Kategorien für interaktive iOS-Benachrichtigungen in der {{ site.data.keys.mf_console }} festlegen](categories-for-interactive-notifications.png)
+
+Wenn Sie interaktive Benachrichtigungen an Android-Geräte senden möchten, geben Sie unter **{{ site.data.keys.mf_console }} → [Ihre Anwendung] → Push → Benachrichtigungen senden → Angepasste Android-Einstellungen** die Kennung der interaktiven Kategorie an. Beispiel: 
+
+![Kategorien für interaktive iOS-Benachrichtigungen in der {{ site.data.keys.mf_console }}](android-settings-interactive-notifications.png)
 
 ## Interaktive Benachrichtigungen in Cordova-Anwendungen
 {: #handling-interactive-push-notifications-in-cordova-applications }

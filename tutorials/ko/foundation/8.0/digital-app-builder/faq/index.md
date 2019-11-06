@@ -2,7 +2,7 @@
 layout: tutorial
 title: 자주 묻는 질문(FAQ)
 breadcrumb_title: FAQs
-weight: 7
+weight: 18
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -15,7 +15,7 @@ show_children: true
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-dab-faq1">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. **플랫폼 API 키**를 작성하는 방법</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. 플랫폼 API 키의 작성 방법</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-dab-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq1">
@@ -43,6 +43,24 @@ show_children: true
         <div id="collapse-mfp-dab-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq2">
             <div class="panel-body">
                   <p>공유 Playground 서버는 다수의 개발자 간에 공유되는 공통 서버입니다. 이 서버를 프로덕션 앱용으로 사용해서는 안됩니다. 이 서버의 데이터는 알림 없이 삭제될 수 있습니다. 서버 가동시간은 보장되지 않습니다.</p>
+            </div>
+        </div>      
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq3" aria-expanded="true" aria-controls="collapse-mfp-dab-faq3"><b>C. Digital App Builder의 완전한 설치 제거 방법</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq3">
+            <div class="panel-body">
+                  <p>다음 단계를 사용하여 Digital App Builder를 완전히 설치 제거할 수 있습니다.
+                  <ol><li>각 OS에 해당하는 통상적인 방식으로 Digital App Builder를 설치 제거하십시오.</li>
+                      <li>OS에 맞게 수동으로 다음 파일을 삭제하십시오.
+                      <ul><li><b>Windows</b> - <i>Users\worklight\AppData\Roaming\IBM Digital App Builder</i></li>
+                          <li><b>MacOS</b> - <i>Users/&lt;systemname&gt;/Library/Application Support/IBM Digital App Builder</i></li>
+                      </ul></li>
+                  </ol></p>
             </div>
         </div>      
     </div>

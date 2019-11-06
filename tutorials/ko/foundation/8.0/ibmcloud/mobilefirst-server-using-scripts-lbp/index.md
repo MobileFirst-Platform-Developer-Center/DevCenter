@@ -3,7 +3,7 @@ layout: tutorial
 title: Liberty for Java의 스크립트를 사용하여 IBM Cloud에서 MobileFirst Server 설정
 breadcrumb_title: Foundation on Liberty for Java
 relevantTo: [ios,android,windows,javascript]
-weight: 7
+weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -88,7 +88,7 @@ Liberty on Java에서 {{ site.data.keys.product }}을 설정하려면 나중에 
                             <li><b>registry.xml</b> - 사용자 레지스트리 구성입니다. basicRegistry(기본 XML 기반 사용자 레지스트리) 구성이 기본값으로 제공됩니다. basicRegistry에 사용할 사용자 이름과 비밀번호를 구성하거나 ldapRegistry를 구성할 수 있습니다.</li>
                         </ul>
                     </li>
-                    <li><b>env</b> 폴더: 서버 초기화에 사용되는 환경 특성(server.env) 및 사용자 정의 JVM 옵션(jvm.options)을 포함합니다.
+                    <li><b>env</b> 폴더: 서버 초기화에 사용되는 환경 특성(server.env)과 사용자 정의 JVM 옵션(jvm.options)이 들어 있습니다.
                     <br/>
                     </li>
 
@@ -137,8 +137,8 @@ Liberty on Java에서 {{ site.data.keys.product }}을 설정하려면 나중에 
               이 파일에는 환경 초기화를 실행하는 데 사용되는 특성이 포함되어 있습니다.
               <h4>prepareappcenterdbs.properties</h4>
               {{ site.data.keys.mf_app_center }}에는 외부 <a href="https://console.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 데이터베이스 인스턴스</a>(OLTP 또는 트랜잭션으로 표시된 모든 플랜)가 필요합니다.<br/>
-              <b>참고:</b> dashDB Enterprise Transactional 플랜의 배치는 "종량과금제"로 표시된 플랜의 경우 즉각적입니다. <i>Enterprise for Transactions High Availability 2.8.500(종량과금제)</i> <br/><br/>과 같은 적절한 플랜 중 하나를 선택하십시오.
-                             dashDB 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오.
+              <b>참고:</b> dashDB Enterprise Transactional 플랜의 배치는 "종량과금제"로 표시된 플랜의 경우 즉각적입니다. <i>Enterprise for Transactions High Availability 2.8.500(종량과금제)</i>과 같은 적절한 플랜 중 하나를 선택하십시오. <br/><br/>
+               dashDB 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오.
 
               <h4>prepareappcenter.properties</h4>
               이 파일은 prepareappcenter.sh 스크립트에 사용됩니다. 이 파일은 {{ site.data.keys.mf_app_center_short }} 파일 레이아웃을 준비하여 IBM Cloud에 Cloud Foundry 앱으로 푸시합니다.
@@ -204,10 +204,10 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 {% endhighlight %}
                   </li>
                   <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} 준비</b><br />
-                    {{ site.data.keys.mf_app_center }}를 빌드하여 IBM Cloud에 Cloud Foundry 애플리케이션으로 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. 로그인한 조직과 영역에서 모든 Cloud Foundry 애플리케이션과 해당 URL을 보려면 <code>cf apps</code><br/>
+                    {{ site.data.keys.mf_app_center }}를 빌드하여 IBM Cloud에 Cloud Foundry 애플리케이션으로 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. 로그인한 조직과 영역에서 모든 Cloud Foundry 애플리케이션과 해당 URL을 보려면 <code>cf apps</code>를 실행하십시오.<br/>
 
 
-를 실행하십시오.{% highlight bash %}
+{% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
 
@@ -271,8 +271,8 @@ IBM Cloud에서 {{ site.data.keys.mf_app_center }}가 실행되면 이제 모바
               이 파일에는 환경 초기화를 실행하는 데 사용되는 특성이 포함되어 있습니다.
               <h4>prepareserverdbs.properties</h4>
               {{ site.data.keys.mf_bm_short }} 서비스에는 외부 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 데이터베이스 인스턴스</a>(OLTP 또는 트랜잭션으로 표시된 모든 플랜)가 필요합니다.<br/>
-              <b>참고:</b> dashDB Enterprise Transactional 플랜의 배치는 "종량과금제"로 표시된 플랜의 경우 즉각적입니다. <i>Enterprise for Transactions High Availability 2.8.500(종량과금제)</i> <br/><br/>과 같은 적절한 플랜 중 하나를 선택하십시오.
-                             dashDB 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오.
+              <b>참고:</b> dashDB Enterprise Transactional 플랜의 배치는 "종량과금제"로 표시된 플랜의 경우 즉각적입니다. <i>Enterprise for Transactions High Availability 2.8.500(종량과금제)</i>과 같은 적절한 플랜 중 하나를 선택하십시오. <br/><br/>
+               dashDB 인스턴스를 설정한 후 다음과 같은 필수 인수를 제공하십시오.
 
               <h4>prepareserver.properties</h4>
               이 파일은 prepareserver.sh 스크립트에 사용됩니다. 이 파일은 서버 파일 레이아웃을 준비하여 IBM Cloud에 Cloud Foundry 앱으로 푸시합니다.
@@ -338,10 +338,10 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
                   </li>
                   <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} 준비</b><br />
-                    {{ site.data.keys.mf_server }}를 빌드하여 IBM Cloud에 Cloud Foundry 애플리케이션으로 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. 로그인한 조직과 영역에서 모든 Cloud Foundry 애플리케이션과 해당 URL을 보려면 <code>cf apps</code><br/>
+                    {{ site.data.keys.mf_server }}를 빌드하여 IBM Cloud에 Cloud Foundry 애플리케이션으로 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. 로그인한 조직과 영역에서 모든 Cloud Foundry 애플리케이션과 해당 URL을 보려면 <code>cf apps</code>를 실행하십시오.<br/>
 
 
-를 실행하십시오.{% highlight bash %}
+{% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 

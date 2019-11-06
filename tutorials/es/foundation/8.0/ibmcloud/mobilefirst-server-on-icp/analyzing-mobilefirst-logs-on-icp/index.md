@@ -21,11 +21,13 @@ Complete los pasos para examinar el catálogo de {{ site.data.keys.prod_icp }} y
 
 1.  Habilite el registro de JSON en el gráfico de Helm.
 
-      a.  Desde la consola de {{ site.data.keys.prod_icp }}, pulse **Menú > Catálogo**.<br/> 
-      b.  Seleccione el gráfico de Helm de **ibm-mfpfp-server-prod / ibm-mfpfp-analytics-prod / ibm-mfpf-appcenter-prod**, en la sección **Registros**.<br/> **Nota:** Si el catálogo de Helm no contiene este gráfico de Helm al acceder a la consola, seleccione **Gestionar > Repositorios de Helm** y pulse el botón para sincronizar repositorios para renovar el catálogo.
+      a.  Desde la consola de {{ site.data.keys.prod_icp }}, pulse **Menú > Catálogo**.<br/>
+      b.  Seleccione el gráfico de Helm de **ibm-mfpfp-server-prod / ibm-mfpfp-analytics-prod / ibm-mfpf-appcenter-prod**, en la sección **Registros**.<br/>
+          **Nota:** Si el catálogo de Helm no contiene este gráfico de Helm al acceder a la consola, seleccione **Gestionar > Repositorios de Helm** y pulse el botón para sincronizar repositorios para renovar el catálogo.
 
 
-      c.  Establezca los campos de Registro en los siguientes valores predeterminados; como alternativa, puede establecer los valores anteriores al desplegar el gráfico de Helm de {{ site.data.keys.prod_adj }} desde la línea de mandatos utilizando el distintivo `--set`.<br/> <p><b>Campos y valores del gráfico de Helm para el registro de JSON</b></p>            
+      c.  Establezca los campos de Registro en los siguientes valores predeterminados; como alternativa, puede establecer los valores anteriores al desplegar el gráfico de Helm de {{ site.data.keys.prod_adj }} desde la línea de mandatos utilizando el distintivo `--set`.<br/>
+      <p><b>Campos y valores del gráfico de Helm para el registro de JSON</b></p>            
       <table class="table table-bordered" >
         <thead>
           <tr>
@@ -48,21 +50,21 @@ Complete los pasos para examinar el catálogo de {{ site.data.keys.prod_icp }} y
           <tr>
             <td>Origen del registro de la consola</td>
             <td>logs.consoleLogLevel</td>
-            <td>message, trace, accessLog, ffdc<br/><br/>Los tipos de orígenes soportados son: messages, traces, accessLog o ffdc.  <br/>Especifique cada tipo de origen en una lista
-separada por coma en el origen de registro de consola. <br/>El uso de accessLog requiere parámetros adicionales en el archivo <code>server.xml</code>. <br/>Para obtener más información, consulte <a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_http_accesslogs.html?view=kc">Registro de acceso de HTTP</a>.</td>
+            <td>message, trace, accessLog, ffdc<br/><br/>Los tipos de orígenes soportados son: messages, traces, accessLog o ffdc.  <br/>Especifique cada tipo de origen de en una lista separada por comas en el origen de registro de la consola. <br/>El uso de accessLog requiere parámetros adicionales en el archivo <code>server.xml</code>. <br/>Para obtener más información, consulte <a href="https://www.ibm.com/support/knowledgecenter/SSAW57_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/rwlp_http_accesslogs.html?view=kc">Registro de acceso de HTTP</a>.</td>
           </tr>
         </tbody>
       </table>
-2.  Despliegue Kibana.<br/> Una vez que haya desplegado Liberty con el registro de JSON habilitado, los registros de registro se almacenan en Elasticsearch, y puede ver los registros de registro con Kibana.<br/> 
+2.  Despliegue Kibana.<br/>
+    Una vez que haya desplegado Liberty con el registro de JSON habilitado, los registros de registro se almacenan en Elasticsearch, y puede ver los registros de registro con Kibana.<br/>
 
-      a.  Para desplegar Kibana, desde la consola, pulse **Catálogo > Gráficos de Helm**.<br/> 
-      b.  Seleccione el gráfico de Helm **ibm-icplogging-kibana** y pulse **kube-system** en el espacio de nombres de destino.<br/> 
-      c.  Pulse **Instalar**.<br/> 
+      a.  Para desplegar Kibana, desde la consola, pulse **Catálogo > Gráficos de Helm**.<br/>
+      b.  Seleccione el gráfico de Helm **ibm-icplogging-kibana** y pulse **kube-system** en el espacio de nombres de destino.<br/>
+      c.  Pulse **Instalar**.<br/>
 
 3.  Abra Kibana.<br/>
 
       a.  Pulse **Acceso de red > Servicios** desde la consola.<br/>
-      b.  Seleccione **Kibana** en la lista de servicios.<br/>
+      b.  Seleccione **Kibana** de la lista de servicios.<br/>
       c.  Pulse el enlace del campo **Puerto de nodo** para abrir Kibana.<br/>
 
 4.  Cree un patrón de índice en Kibana.<br/>

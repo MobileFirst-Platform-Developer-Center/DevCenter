@@ -2,7 +2,7 @@
 layout: tutorial
 title: よくある質問
 breadcrumb_title: FAQs
-weight: 7
+weight: 18
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -15,7 +15,7 @@ show_children: true
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-dab-faq1">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. **プラットフォーム API キー**の作成方法は?</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq1" aria-expanded="true" aria-controls="collapse-mfp-dab-faq1"><b>A. プラットフォーム API 鍵の作成方法は?</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-dab-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq1">
@@ -43,6 +43,24 @@ show_children: true
         <div id="collapse-mfp-dab-faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq2">
             <div class="panel-body">
                   <p>共有プレイグラウンド・サーバーは、多数の開発者で共有された共通サーバーです。 このサーバーは、実動アプリケーションには使用しないでください。 このサーバー内のデータは、予告なく削除されることがあります。 サーバーのアップタイムは保証されません。</p>
+            </div>
+        </div>      
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-dab-faq3">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-dab-faqs" href="#collapse-mfp-dab-faq3" aria-expanded="true" aria-controls="collapse-mfp-dab-faq3"><b>C. Digital App Builder を完全にアンインストールする方法は?</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-dab-faq3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-dab-faq3">
+            <div class="panel-body">
+                  <p>以下のステップに従って、Digital App Builder を完全にアンインストールできます。
+                  <ol><li>各 OS の通常の方法で Digital App Builder をアンインストールします。</li>
+                      <li>ご使用の OS に応じて以下のファイルを手動で削除します。
+                      <ul><li><b>Windows</b> - <i>Users\worklight\AppData\Roaming\IBM Digital App Builder</i></li>
+                          <li><b>MacOS</b> - <i>Users/&lt;systemname&gt;/Library/Application Support/IBM Digital App Builder</i></li>
+                      </ul></li>
+                  </ol></p>
             </div>
         </div>      
     </div>

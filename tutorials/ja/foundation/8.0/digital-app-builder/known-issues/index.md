@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 既知の問題
-weight: 8
+weight: 19
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

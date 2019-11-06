@@ -505,7 +505,7 @@ Es handelt sich um folgende Ant-Tasks:
 * [Ant-Tasks für die Installation des MobileFirst-Server-Push-Service](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
 * [Ant-Tasks für die Installation von {{ site.data.keys.product_adj }}-Laufzeitumgebungen](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-Eine Übersicht über die Installation mit der Beispielkonfigurationsdatei und den Beispiel-Taks finden Sie unter [{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../../simple-install/tutorials/command-line).
+Eine Übersicht über die Installation mit der Beispielkonfigurationsdatei und den Beispiel-Taks finden Sie unter [{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../../simple-install/command-line).
 
 Sie können eine Ant-Datei mit der Ant-Distribution ausführen, die Teil der Produktinstallation ist. Wenn Sie beispielsweise einen Cluster mit
 WebSphere Application Server Network Deployment und
@@ -747,7 +747,7 @@ MobileFirst-Server-Komponenten und für {{ site.data.keys.mf_analytics }}](../to
 {: #application-server-settings }
 Sie müssen das Element
 **webContainer** so konfigurieren, dass die Servlets sofort geladen werden. Diese Einstellung ist für die Initialisierung mit
-JMX erforderlich. Beispiel: `<webContainer deferServletLoad="false"/>`.
+JMX erforderlich. Beispiel: `<webContainer deferServletLoad="false"/>`
 
 Um Probleme durch Zeitlimitüberschreitungen zu vermeiden, die
 in einigen Liberty-Versionen die Startsequenz für die Laufzeit und den Verwaltungsservice unterbrechen,
@@ -803,7 +803,7 @@ JMX-Kommunikation zwischen der Laufzeit und dem Verwaltungsservice zu konfigurie
 * **mfp.topology.platform**
 * **mfp.topology.clustermode**
 
-Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Einträgen wird kein Kontextstammverzeichnis vorangestellt. Beispiel: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
+Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Einträgen wird kein Kontextstammverzeichnis vorangestellt. Beispiel: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`
 
 > **Hinweis:** Verwenden Sie beim Definieren der JNDI-Werte die Syntax '"075"', um die Werte vor einer einer automatischen Konvertierung zu schützen, bei der 075 in 61 oder 31.500 in 31.5 konvertiert werden würde.
 
@@ -1108,7 +1108,7 @@ MobileFirst-Server-Komponenten und für {{ site.data.keys.mf_analytics }}](../to
 {: #application-server-settings-collective }
 Sie müssen das Element
 **webContainer** so konfigurieren, dass die Servlets sofort geladen werden. Diese Einstellung ist für die Initialisierung mit
-JMX erforderlich. Beispiel: `<webContainer deferServletLoad="false"/>`.
+JMX erforderlich. Beispiel: `<webContainer deferServletLoad="false"/>`
 
 Um Probleme durch Zeitlimitüberschreitungen zu vermeiden, die
 in einigen Liberty-Versionen die Startsequenz für die Laufzeit und den Verwaltungsservice unterbrechen,
@@ -1166,7 +1166,7 @@ JMX-Kommunikation zwischen der Laufzeit und dem Verwaltungsservice zu konfigurie
 * **mfp.topology.clustermode**
 * **mfp.admin.serverid**
 
-Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Einträgen wird kein Kontextstammverzeichnis vorangestellt. Beispiel: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
+Diese globalen JNDI-Einträge werden mit der folgenden Syntax definiert. Den Einträgen wird kein Kontextstammverzeichnis vorangestellt. Beispiel: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`
 
 > **Hinweis:** Verwenden Sie beim Definieren der JNDI-Werte die Syntax '"075"', um die Werte vor einer einer automatischen Konvertierung zu schützen, bei der 075 in 61 oder 31.500 in 31.5 konvertiert werden würde.
 
@@ -2388,7 +2388,7 @@ Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in
                                 </blockquote>
                                 Starten Sie schließlich den Server und suchen Sie in der Datei <b>${wlp.install.dir}/usr/servers/Servername/logs/trace.log</b> nach Zeilen, die com.ibm.ssl.trustStore enthalten.
                                 <ul>
-                                    <li>Importieren Sie die öffentlichen Zertifikate der anderen Server der Farm in den Truststore, auf den die Konfigurationsdatei <b>server.xml</b> des Servers verweist. Das Lernprogramm (<a href="../../simple-install/tutorials/graphical-mode">{{ site.data.keys.mf_server }} im Grafikmodus installieren</a>) enthält die Anweisungen für den Austausch der Zertifikate zwischen zwei Liberty-Servern einer Farm. Weitere Informationen finden Sie unter <a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Farm mit zwei Liberty-Servern für {{ site.data.keys.mf_server }} erstellen</a> in Schritt 5.</li>
+                                    <li>Importieren Sie die öffentlichen Zertifikate der anderen Server der Farm in den Truststore, auf den die Konfigurationsdatei <b>server.xml</b> des Servers verweist. Das Lernprogramm (<a href="../../simple-install/graphical-mode">{{ site.data.keys.mf_server }} im Grafikmodus installieren</a>) enthält die Anweisungen für den Austausch der Zertifikate zwischen zwei Liberty-Servern einer Farm. Weitere Informationen finden Sie unter <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Farm mit zwei Liberty-Servern für {{ site.data.keys.mf_server }} erstellen</a> in Schritt 5.</li>
                                     <li>Starten Sie jede Instanz von WebSphere Application Server Liberty Profile neu, damit die Sicherheitskonfiguration wirksam wird. Die folgenden Schritte sind erforderlich, wenn Sie mit SSO arbeiten möchten.</li>
                                     <li>Starten Sie ein Member der Farm. Nach erfolgreichem Start des Liberty-Servers wird in der LTPA-Standardkonfiguration der LTPA-Keystore <b>${wlp.user.dir}/servers/Servername/resources/security/ltpa.keys</b> generiert.</li>
                                     <li>Kopieren Sie die Datei <b>ltpa.keys</b> in das Verzeichnis <b>${wlp.user.dir}/servers/Servername/resources/security</b> jedes Farmmembers, um die LTPA-Keystores auf allen Farmmembern zu replizieren. Weitere Informationen zur LTPA-Konfiguration finden Sie unter <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">LTPA im Liberty-Profil konfigurieren</a>.</li>

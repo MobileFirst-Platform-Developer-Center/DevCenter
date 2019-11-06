@@ -3,7 +3,7 @@ layout: tutorial
 title: MobileFirst Server mit Scripts für Liberty for Java in IBM Cloud einrichten
 breadcrumb_title: Foundation on Liberty for Java
 relevantTo: [ios,android,windows,javascript]
-weight: 7
+weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -89,8 +89,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Dateilayouts (**d
                             <li><b>registry.xml</b>: Benutzerregistrykonfiguration. Als Standardkonfiguration wird eine auf XML basierende Basisbenutzerregistrykonfiguration (basicRegistry) bereitgestellt. Sie können Namen und Kennwörter für basicRegistry konfigurieren oder ldapRegistry konfigurieren.</li>
                         </ul>
                     </li>
-                    <li>Ordner <b>env</b>: Enthält die Umgebungseigenschaften für die Serverinitialisierung (server.env) sowie angepasste JVM-Optionen (jvm.options).
-                    <br/>
+                    <li>Ordner <b>env</b>: Enthält die Umgebungseigenschaften für die Serverinitialisierung (server.env) sowie angepasste JVM-Optionen (jvm.options).<br/>
                     </li>
 
                     <li>Ordner <b>security</b>: Wird verwendet, um die Keystore-Datei, die Truststore-Datei und die LTPA-Schlüsseldatei (ltpa.keys) zu speichern.</li>
@@ -207,10 +206,10 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 {% endhighlight %}
                   </li>
                   <li><b>prepareappcenter.sh - Erstellung des {{ site.data.keys.mf_app_center }}</b><br />
-                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein {{ site.data.keys.mf_app_center }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in IBM Cloud zu übertragen. Führen Sie <code>cf apps</code><br/>
+                    Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein {{ site.data.keys.mf_app_center }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in IBM Cloud zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben. <br/>
 
 
- aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben. {% highlight bash %}
+{% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
 
@@ -341,10 +340,10 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
                   </li>
                   <li><b>prepareserver.sh - Erstellung eines {{ site.data.keys.mf_server }}</b><br />
-                    Führen Sie das Script <b>prepareserver.sh</b> aus, um einen {{ site.data.keys.mf_server }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in IBM Cloud zu übertragen. Führen Sie <code>cf apps</code><br/>
+                    Führen Sie das Script <b>prepareserver.sh</b> aus, um einen {{ site.data.keys.mf_server }} zu erstellen und per Push-Operation als Cloud-Foundry-Anwendung in IBM Cloud zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben.<br/>
 
 
- aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich zu sehen, für die Sie sich angemeldet haben.{% highlight bash %}
+{% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 

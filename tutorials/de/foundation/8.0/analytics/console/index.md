@@ -113,7 +113,10 @@ Informationen zum Konfigurieren von Protokollfiltern enthält das Lernprogramm [
 
 Weitere Informationen zum Senden der Protokolle vom Client aus finden Sie unter [Clientprotokolle erfassen](../../application-development/client-side-log-collection/).
 
+### Benutzerfeedback App-intern erfassen und anzeigen
+Mit dem App-internen Feature für Benutzerfeedback können Benutzer Ihrer Anwendungen Momentaufnahmen der Anwendung erstellen und diese mit Markierungen und Kommentaren versehen, die ihre Meinung zu der Anwendung widerspiegeln. Benutzerrückmeldungen, die auf mobilen Geräten erfasst und von diesen Geräten gesendet wurden, werden vom Mobile Foundation Analytics Service zusammengefasst und den Eignern und Entwicklern der Anwendung in der Analytics Console präsentiert, sodass diese Einblicke erhalten und ggf. Maßnahmen ergreifen können.   
 
+> Wenn Sie mehr erfahren möchten, sehen Sie sich das Lernprogramm [App-internes Benutzerfeedback](userfeedback/) an. 
 
 ## {{ site.data.keys.mf_console_full }}
 In der {{ site.data.keys.mf_console }} können Sie Analytics Server konfigurieren und verwalten.

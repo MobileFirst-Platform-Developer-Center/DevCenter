@@ -69,7 +69,7 @@ zugrunde liegenden Sicherheitskontext stammen.
 
 #### Interaktive Benachrichtigungen
 {: #interactive-notifications }
-Wenn eine interaktive Benachrichtigung eingeht, können Benutzer Aktionen ausführen, ohne die Anwendung zu öffnen. Beim Eintreffen einer interaktiven Benachrichtigung zeigt das Gerät die Nachricht und Aktionsschaltflächen an. Interaktive Benachrichtigungen werden zurzeit auf Geräten mit iOS ab Version 8 unterstützt. Wenn eine interaktive Benachrichtigung an ein iOS-Gerät mit einer älteren Version als Version 8 gesendet wird, werden die Benachrichtigungsaktionen nicht angezeigt. 
+Wenn eine interaktive Benachrichtigung eingeht, können Benutzer Aktionen ausführen, ohne die Anwendung zu öffnen. Beim Eintreffen einer interaktiven Benachrichtigung zeigt das Gerät die Nachricht und Aktionsschaltflächen an. Interaktive Benachrichtigungen werden auf Geräten mit iOS ab Version 8 und mit Android ab Version 7.0 (API-Ebene 24) unterstützt. Wenn eine interaktive Benachrichtigung an ein iOS- oder Android-Gerät mit einer älteren Version gesendet wird, werden keine Benachrichtigungsaktionen angezeigt. 
 
 > Informieren Sie sich über die Handhabung [interaktiver Benachrichtigungen](handling-push-notifications/interactive).
 
@@ -146,7 +146,7 @@ Wählen Sie aus folgenden Optionen, um das Zertifikat zu generieren:
 - FCM:
 	1. Setzen Sie in der Befehlszeile `Openssl` ab, um die FCM-Zertifikate zu erhalten. 
 	2. Führen Sie den folgenden Befehl aus:
-		```
+  ```
 		openssl s_client -connect gcm-http.googleapis.com:443
 		```
 	3. Kopieren Sie den Inhalt von -----BEGIN CERTIFICATE-----  bis -----END CERTIFICATE----- und speichern Sie ihn in einer Datei mit der Erweiterung `.pem`. 
@@ -155,7 +155,7 @@ Wählen Sie aus folgenden Optionen, um das Zertifikat zu generieren:
 - WNS:
 	1. Verwenden Sie in der Befehlszeile den Befehl `Openssl`, um die WNS-Zertifikate zu erhalten. 
 	2. Führen Sie den folgenden Befehl aus:
-		```
+  ```
 		openssl s_client -connect https://hk2.notify.windows.com:443
 		```
 	3. Kopieren Sie den Inhalt von -----BEGIN CERTIFICATE-----  bis -----END CERTIFICATE----- und speichern Sie ihn in einer Datei mit der Erweiterung `.pem`. 
@@ -192,7 +192,7 @@ Wählen Sie aus folgenden Optionen, um das Zertifikat zu generieren:
 		e. Klicken Sie auf **Apply**.
 		![Berechtigungsnachweis für die Crypto-Validierung konfigurieren](sending-notifications/bck_2.gif)
 
-	3. Erstellen Sie ein Crypto-Profil: 
+	3. Erstellen Sie ein Crypto-Profil:
 
 		a. Navigieren Sie zu **Objects** > **Crypto Configuration** und klicken Sie auf **Crypto Profile**.
 
