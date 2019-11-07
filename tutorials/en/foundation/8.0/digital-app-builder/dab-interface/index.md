@@ -76,7 +76,7 @@ Workbench helps you to design the pages. Workbench consists of three work areas:
     * **Channel** icon - This displays the current channel selected. You can add additional channels by selecting the required channels in the Platforms section under **Settings > App > App details**.
     * Current Page Name - Displays the canvas page name. When switched between pages, the current page name gets updated to the selected page.
     * **Build/Preview the app** - This button has two options: a. helps to preview the app that you are developing; b. build the app.
-    * **Publish App** - This option helps you to build and publish your app for Android/iOS to App Center.
+    * **Publish** - This option helps you to build and publish your app for Android/iOS to App Center or Publish Direct Updates of your app “over-the-air” with refreshed web resources.
     * **Canvas** - At the centre of this section is the canvas which displays either the design or the code. You can drag-and-drop the controls and create the app.
 
 3. **Properties/Actions** tab - At the right-hand side is the properties and action tab. When a control is placed in the canvas, you can edit and modify the properties of the control and connect a control with a related action to perform.
