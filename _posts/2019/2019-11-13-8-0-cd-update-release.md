@@ -1,5 +1,5 @@
 ---
-title: Mobile Foundation 8.0.0.0-MFPF-IF201903190949-CDUpdate-06 released
+title: Mobile Foundation 8.0.0.0-MFPF-IF201911050809-CDUpdate-06 released
 date: 2019-11-13
 version:
 - 8.0
