@@ -14,14 +14,54 @@ pinned: true
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *8.0.0.0-MFPF-IF201910101148*  is released for Mobile Foundation 8.0, dated **October 10th, 2019**.
+A new iFix *8.0.0.0-MFPF-IF201911050809-CDUpdate-06*  is released for Mobile Foundation 8.0, dated **November 5th, 2019**.
 <br/>
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201911050809" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201911050809">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201911050809" href="#collapse-mfp-ifix-IF201911050809" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201911050809"><b>8.0.0.0-MFPF-IF201911050809</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201911050809" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201911050809">
+            <div class="panel-body">
+            CD Update 6 for MobileFirst Foundation 8.0, dated <b>November 5th, 2019</b>.
+
+            <h2>Changes in this CD Update</h2>
+            <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
+
+            <h2>Features</h2>
+            <blockquote>To view the details about the features included in this CD Update, see the <a href="{{site.baseurl}}/blog/2019/11/13/8-0-cd-update-release">announcement</a>.</blockquote>
+
+            <h3>APARs</h3>
+            <b>PH18477</b> IOS APPLICATIONS ARE NOT DISPLAYED IN THE APPLICATION CENTER INSTALLER PAGE.<br/>
+            <b>PH17554</b> CALLS TO PROTECTED ADAPTER METHODS INTERMITTENTLY FAIL WITH HTTP 401 ON IOS.<br/>
+
+            <h2>How to upgrade</h2>
+            <b>Server</b>
+            To upgrade, download &amp; install the <a href="{{site.baseurl}}/downloads/">Developer Kit for evaluators</a>, <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">Developer Kit for customers / iFix package for on-prem production environment</a>(requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
+
+            <b>Client SDKs</b>
+            To upgrade, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/">run the upgrade commands for your platform</a>.
+
+
+
+        </div>
+    </div>
+</div>   
+</div>   
+
+## Previous iFixes & CD Updates for MobileFirst Foundation 8.0
+
+IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<br/>
+*List below includes iFixes and CD Updates released since 2018 only.*
 
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201910101148" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201910101148">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201910101148" href="#collapse-mfp-ifix-IF201910101148" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201910101148"><b>8.0.0.0-MFPF-IF201910101148</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201910101148" href="#collapse-mfp-ifix-IF201910101148" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201910101148"><b>8.0.0.0-MFPF-IF201910101148</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201910101148">
@@ -181,11 +221,6 @@ A new iFix *8.0.0.0-MFPF-IF201910101148*  is released for Mobile Foundation 8.0,
     </div>
 </div>   
 </div>   
-
-## Previous iFixes & CD Updates for MobileFirst Foundation 8.0
-
-IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<br/>
-*List below includes iFixes and CD Updates released since 2018 only.*
 
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201909261537" role="tablist">
     <div class="panel panel-default">

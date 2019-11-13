@@ -1,0 +1,19 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/rajarahul/Desktop/fork/IBMMobileFoundationSwift/SwiftSources/WLAnalytics.swift",
+      "line": 56,
+      "symbol": "WLAnalyticsSwift.shared",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rajarahul/Desktop/fork/IBMMobileFoundationSwift/SwiftSources/WLResourceRequest.swift",
+      "line": 34,
+      "symbol": "WLResourceRequestSwift.init()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/rajarahul/Desktop/fork/IBMMobileFoundationSwift"
+}

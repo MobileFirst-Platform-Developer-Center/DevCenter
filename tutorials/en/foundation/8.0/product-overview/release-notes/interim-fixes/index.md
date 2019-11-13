@@ -14,6 +14,42 @@ Download and install the latest CD Update to obtain all of the features that are
 
 > For a list of iFix releases of {{ site.data.keys.product }} 8.0, [see here]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
+### Features included with CD update 6 (8.0.0.0-MFPF-IF201911050809-CDUpdate-06)
+
+#### <span style="color:Black">Server</span>
+##### <span style="color:NAVY">**Performance Improvements**</span>
+
+Optimized Mobile Foundation database operations and introduced automated purging of records database.
+
+##### <span style="color:NAVY">**Application Center now available inside DevKit**</span>
+
+Application Center is now available as a package with [DevKit]({{site.baseurl}}/downloads/). This enables developers to build apps and publish them to the private store, which is now available as part of the DevKit.
+
+##### <span style="color:NAVY">**Stack support for vendor software**</span>
+
+Mobile Foundation now supports Windows 16 and Oracle 12c.
+
+##### <span style="color:NAVY">**Support for application development frameworks**</span>
+
+Mobile Foundation supports the latest frameworks released by Apple and Google with support for [iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/), iPadOS and [Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/). The platform also provides an SDK for Swift 5.
+
+##### <span style="color:NAVY">**Connect securely to backend apps using an API Proxy**</span>
+
+When connecting to the enterprise backend, it is possible to leverage the security and analytics of Mobile Foundation platform using the API Proxy. API Proxy proxies the requests to the actual backend. [Learn more]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/).
+
+#### <span style="color:Black">Analytics</span>
+##### <span style="color:NAVY">**In-App Feedback**</span>
+
+The in-app feedback feature was earlier available in the Mobile Foundation service on IBM Cloud and has now been ported to the on-prem and container distribution of Mobile Foundation. Using this feature users can share feedback from the app in the form of screen shots, annotations and text. An administrator can login to the analytics console to view the feedback received and take necessary action.
+
+
+
+#### <span style="color:Black">OpenShift package</span>
+##### <span style="color:NAVY">**Mobile Foundation is part of IBM Cloud Pak for Applications v3**</span>
+
+Mobile Foundation is now available as part of [IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/) and supports RedHat Open Shift 3.11. The services currently available are mobile core, analytics, push notifications and app center. Using this capability developers can build cloud native applications using backend microservices and mobile services.
+
+
 ### Features included with CD update 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
 
 ##### <span style="color:NAVY">**CoreML Update**</span>
