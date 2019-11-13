@@ -39,7 +39,7 @@ In this example, the security check is `PinCodeAttempts`, which was defined in [
 Create a Swift class that extends `SecurityCheckChallengeHandler`:
 
 ```swift
-class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
+open class PinCodeChallengeHandler : SecurityCheckChallengeHandlerSwift {
 
 }
 ```
@@ -51,18 +51,17 @@ The minimum requirement from the `SecurityCheckChallengeHandler` protocol is to 
 In this example, an alert prompts the user to enter the PIN code:
 
 ```swift
-override func handleChallenge(challenge: [NSObject : AnyObject]!) {
-    NSLog("%@",challenge)
-    var errorMsg : String
-    if challenge["errorMsg"] is NSNull {
-        errorMsg = "This data requires a PIN code."
-    }
-    else{
-        errorMsg = challenge["errorMsg"] as! String
-    }
-    let remainingAttempts = challenge["remainingAttempts"] as! Int
+override open func handleChallenge(challengeResponse: [AnyHashable: Any]!) {
+  var errorMsg : String
+  if challengeResponse!["errorMsg"] is NSNull {
+      errorMsg = "This data requires a PIN code."
+  }
+  else{
+      errorMsg = challengeResponse!["errorMsg"] as! String
+  }
+  let remainingAttempts = challengeResponse!["remainingAttempts"] as! Int + 2;
 
-    showPopup(errorMsg,remainingAttempts: remainingAttempts)
+  showPopup(errorMsg,remainingAttempts: remainingAttempts);
 }
 ```
 
@@ -94,8 +93,8 @@ Some scenarios may trigger a failure (such as maximum attempts reached). To hand
 The structure of the `Dictionary` passed as a parameter greatly depends on the nature of the failure.
 
 ```swift
-override func handleFailure(failure: [NSObject : AnyObject]!) {
-    if let errorMsg = failure["failure"] as? String {
+override open func handleFailure(failureResponse: [AnyHashable: Any]!) {
+    if let errorMsg = failureResponse["failure"] as? String {
         showError(errorMsg)
     }
     else{
@@ -108,11 +107,8 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 
 ## Handling successes
 {: #handling-successes }
-In general, successes are automatically processed by the framework to allow the rest of the application to continue.
 
-Optionally, you can also choose to do something before the framework closes the challenge handler flow, by implementing the `SecurityCheckChallengeHandler`'s `handleSuccess(success: [NSObject : AnyObject]!)` method. Here again, the content and structure of the `success` `Dictionary` depends on what the security check sends.
-
-In the `PinCodeAttemptsSwift` sample application, the success does not contain any additional data and so `handleSuccess` is not implemented.
+Optionally, you can also choose to do something before the framework closes the challenge handler flow by implementing the SecurityCheckChallengeHandler’s `handleSuccess(successResponse: [AnyHashable: Any]!)` method. Here again, the content and the structure of the success Dictionary depends on what the security check sends.
 
 ## Registering the challenge handler
 {: #registering-the-challenge-handler }
@@ -121,19 +117,19 @@ For the challenge handler to listen for the right challenges, you must tell the 
 To do so, initialize the challenge handler with the security check as follows:
 
 ```swift
-var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName")
+var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName”);
 ```
 
 You must then **register** the challenge handler instance:
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(someChallengeHandler)
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: someChallengeHandler);
 ```
 
 In this example, in one line:
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: PinCodeChallengeHandler(securityCheck: securityCheck));
 ```
 
 **Note:** Registering the challenge handler should only happen once in the entire application lifecycle. It is recommended to use the iOS AppDelegate class to do it.
@@ -151,4 +147,3 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 Follow the sample's README.md file for instructions.
 
 ![Sample application](sample-application.png)
-

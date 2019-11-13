@@ -18,7 +18,7 @@
                 </div>
             </a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse fixed-top">
             <ul class="nav navbar-nav">
                 {% for item in site.data.menus.en.navigation %} {% capture classes %}{% if item.children %}dropdown {%endif%}{% if item.extraClasses %}{{item.extraClasses}}{% endif %}{% endcapture %}
                 <li {% if classes %}class="{{classes}}" {%endif%}>
