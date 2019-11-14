@@ -58,7 +58,7 @@ The in-app feedback feature was earlier available in the Mobile Foundation servi
 #### <span style="color:Black">OpenShift package</span>
 ##### <span style="color:NAVY">**Mobile Foundation is part of IBM Cloud Pak for Applications v3**</span>
 >
-Mobile Foundation is now available as part of [IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/) and supports RedHat Open Shift 3.11. The services currently available are mobile core, analytics, push notifications and app center. Using this capability developers can build cloud native applications using backend microservices and mobile services.
+Mobile Foundation is now available as part of [IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/) and supports Red Hat Open Shift 3.11 and Red Hat Open Shift 4.2. The services currently available are mobile core, analytics, push notifications and app center. Using this capability developers can build cloud native applications using backend microservices and mobile services.
 >
 
 ## How to upgrade
