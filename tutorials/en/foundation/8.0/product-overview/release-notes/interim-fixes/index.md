@@ -27,7 +27,7 @@ Application Center is now available as a package with [DevKit]({{site.baseurl}}/
 
 ##### <span style="color:NAVY">**Stack support for vendor software**</span>
 
-Mobile Foundation now supports Windows 16 and Oracle 12c.
+Mobile Foundation now supports Windows Server 2016 SE and Oracle 18c.
 
 ##### <span style="color:NAVY">**Support for application development frameworks**</span>
 
