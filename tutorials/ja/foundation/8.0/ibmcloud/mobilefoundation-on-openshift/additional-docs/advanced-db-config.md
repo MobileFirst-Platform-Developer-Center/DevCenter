@@ -12,14 +12,14 @@ Mobile Foundation サーバー、Push および Application Center コンポー�
 
 DB2 以外のデータベースを使用して Mobile Foundation をセットアップするには、[ここ](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/#mysql-database-and-user-requirements)にある指示に従います。
 
-デフォルトでは、Mobile Foundation インストーラーは IBM DB2 JDBC ドライバーとともにパッケージ化されています。Oracle および MySQL の場合、JDBC ドライバー (MySQL の場合、Connector/J JDBC ドライバーを使用し、Oracle の場合、Oracle シン JDBC ドライバーを使用します) が永続ボリューム内に配置されていることを確認してください。
+デフォルトでは、Mobile Foundation インストーラーは IBM DB2 JDBC ドライバーとともにパッケージ化されています。 Oracle および MySQL の場合、JDBC ドライバー (MySQL の場合、Connector/J JDBC ドライバーを使用し、Oracle の場合、Oracle シン JDBC ドライバーを使用します) が永続ボリューム内に配置されていることを確認してください。
 
-1. JDBC ドライバーを NFS マウント・ボリュームに配置します。例: */nfs/share/dbdrivers*
+1. JDBC ドライバーを NFS マウント・ボリュームに配置します。 例: */nfs/share/dbdrivers*
 
-2. NFS サーバーの正しい詳細および JDBC ドライバーが保管されている場所のパスを指定することで、永続ボリューム (PV) および永続ボリューム要求 (PVC) を作成します。サンプル yaml を以下に示します。
+2. NFS サーバーの正しい詳細および JDBC ドライバーが保管されている場所のパスを指定することで、永続ボリューム (PV) および永続ボリューム要求 (PVC) を作成します。 サンプル yaml を以下に示します。
 
     ```yaml
-     # Sample PersistentVolume.yaml
+     # サンプル PersistentVolume.yaml
      cat <<EOF | kubectl apply -f -
         apiVersion: v1
         kind: PersistentVolume
@@ -39,7 +39,7 @@ DB2 以外のデータベースを使用して Mobile Foundation をセットア
     ```
 
     ```yaml
-    # Sample PersistentVolumeClaim.yaml
+    # サンプル PersistentVolumeClaim.yaml
       cat <<EOF | kubectl apply -f -
       apiVersion: v1
       kind: PersistentVolumeClaim
@@ -69,7 +69,7 @@ DB2 以外のデータベースを使用して Mobile Foundation をセットア
 ### [オプション] 特権 (admin) を使用して Mobile Foundation データベース操作を処理する
 {: #handle-mf-db-operations}
 
-個別のデータベース管理秘密を使用して、データベースの初期化タスクを実行できます。これにより、必要な Mobile Foundation スキーマおよび表がデータベースに作成されます (まだ存在しない場合)。データベース管理秘密を使用して、データベース・インスタンスでの DDL 操作を制御できます。
+個別のデータベース管理秘密を使用して、データベースの初期化タスクを実行できます。これにより、必要な Mobile Foundation スキーマおよび表がデータベースに作成されます (まだ存在しない場合)。 データベース管理秘密を使用して、データベース・インスタンスでの DDL 操作を制御できます。
 
 `MFP サーバー DB 管理秘密`および `MFP Appcenter DB 管理秘密`の詳細が指定されていない場合、デフォルトの`データベース秘密名`を使用してデータベース初期化タスクが実行されます。
 

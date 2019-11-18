@@ -27,7 +27,7 @@ show_children: true
     ![エンゲージメントのプッシュ通知の iOS 構成](dab-push-ios-config.png)
 
 5. iOS の場合、以下の追加ステップを実行します。
-    * xcode プロジェクト `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` を開き、プッシュ通知機能を有効にします。詳しくは、[https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1) を参照してください。
+    * xcode プロジェクト `<path_to_app>/ionic/platforms/ios/<app>.xcodeproj` を開き、プッシュ通知機能を有効にします。 詳しくは、[https://help.apple.com/xcode/mac/current/#/devdfd3d04a1](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1) を参照してください。
 
 6. サーバー・サイドで以下を行います。
  

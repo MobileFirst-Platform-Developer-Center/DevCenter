@@ -114,10 +114,10 @@ Siga los pasos que se describen en esta sección para desplegar el paquete de Mo
     ```
 
 4.  Cree el secreto del despliegue de IBM Mobile Foundation para acceder a la base de datos.
-    >Consulte la documentación [aquí](../install-mf/#install-mf).
+    >Consulte la documentación [aquí](../mobilefoundation-on-openshift/#setup-openshift-for-mf).
 
 5.  Cree el volumen persistente y la reclamación de volumen para Analytics.
-    >Consulte la documentación [aquí](../install-mf/#install-mf).
+    >Consulte la documentación [aquí](../mobilefoundation-on-openshift/#setup-openshift-for-mf).
 
 6.  Despliegue los componentes de IBM Mobile Foundation.
 
@@ -133,7 +133,7 @@ Siga los pasos que se describen en esta sección para desplegar el paquete de Mo
       pullSecret: pull-secret-name
     ```
 
-    Consulte la documentación [aquí](../install-mf/#deploy-mf-operator) para completar el resto de las configuraciones, tal como réplicas, escalado, propiedades de BD, etc.
+    Consulte la documentación [aquí](../mobilefoundation-on-openshift/#deploy-mf-operator) para completar el resto de las configuraciones, tal como réplicas, escalado, propiedades de BD, etc.
 
 7. Cree o actualice el recurso personalizado. Este paso crea y ejecuta los pods para el componente Mobile Foundation completo en el archivo CR yaml.
 

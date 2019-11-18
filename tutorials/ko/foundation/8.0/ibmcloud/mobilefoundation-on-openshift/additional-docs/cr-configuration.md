@@ -14,7 +14,7 @@ show_in_nav: false
 | global.arch | amd64    | 하이브리드 클러스터에서의 amd64 작업자 노드 스케줄러 선호사항 | amd64 |
 | global.image     | pullPolicy |이미지 가져오기 정책 | Always, Never 또는 IfNotPresent. 기본값: **IfNotPresent** |
 |      |  pullSecret    | 이미지 가져오기 시크릿 | 이미지가 OCP 이미지 레지스트리에 호스팅되지 않은 경우에만 필수입니다. |
-| global.ingress | hostname | 외부 클라이언트에서 사용할 외부 호스트 이름 또는 IP 주소 | 기본적으로 클러스터 프록시 노드의 IP 주소로 설정하려면 공백으로 두기 |
+| global.ingress | hostname | 외부 클라이언트에서 사용할 외부 호스트 이름 또는 IP 주소 | 기본적으로 클러스터 프록시 노드의 IP 주소로 설정하려면 공백으로 두기|
 |         | secret | TLS 시크릿 이름| Ingress 정의에서 사용해야 하는 인증서의 스크릿 이름을 지정합니다. 시크릿은 관련 인증서 및 키를 사용하여 사전에 작성해야 합니다. SSL/TLS를 사용하는 경우 필수입니다. 여기에 이름을 제공하기 전에 인증서 & 키를 사용하여 시크릿을 사전에 작성하십시오. [여기](#optional-creating-tls-secret-for-ingress-configuration)를 참조하십시오. |
 |         | sslPassThrough | SSL 패스스루 사용 | Mobile Foundation 서비스로 SSL 요청을 패스스루해야 하는지 여부를 지정합니다. Mobile Foundation 서비스에서 SSL이 종료됩니다.  **false**(기본값) 또는 true|
 | global.dbinit | enabled | Server, Push, Application Center 데이터베이스 초기화 사용 | Server, Push, Application Center 배치의 경우 데이터베이스를 초기화하고 스키마/테이블을 작성합니다(Analytics의 경우 필요하지 않음).  **true**(기본값) 또는 false |
@@ -59,8 +59,7 @@ show_in_nav: false
 |           | targetCPUUtilizationPercentage | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100 사이의 정수(기본값: **50**) |
 | mfppush.pdb     | enabled | PDB의 사용/사용 안함 여부를 지정합니다. | **true**(기본값) 또는 false |
 |           | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: 1) |
-| mfppush.customConfiguration |  |  사용자 정의 구성(선택사항)  | 사전 작성된 구성 맵에 대한 Push 특정 추가 구성 참조를 제공합니다.  [여기](#optional-custom-server-configuration) 참조
-|
+| mfppush.customConfiguration |  |  사용자 정의 구성(선택사항)  | 사전 작성된 구성 맵에 대한 Push 특정 추가 구성 참조를 제공합니다.  [여기](#optional-custom-server-configuration) 참조 |
 | mfppush.jndiConfigurations | mfpfProperties | 배치를 사용자 정의할 Mobile Foundation Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍 제공 |
 | mfppush | keystoresSecretName | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 [구성 절](#optional-creating-custom-keystore-secret-for-the-deployments)을 참조하십시오.|
 | mfppush.resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  |기본값은 **1000m**입니다. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
@@ -98,7 +97,7 @@ show_in_nav: false
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
 |           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | [여기](#optional-creating-custom-defined-console-login-secrets) 참조|
 |  mfpappcenter.db | type | 지원되는 데이터베이스 벤더 이름. | **DB2**(기본값)/MySQL/Oracle |
-|                   | host | Appcenter 데이터베이스에서 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름 | |
+|                   | host | Appcenter 데이터베이스에서 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름	| |
 |                       | port | 	데이터베이스 포트  | |             
 |                       | name | 사용할 데이터베이스의 이름 | 데이터베이스가 사전에 작성되어야 합니다.|
 |                       | secret | 데이터베이스 신임 정보를 포함하는 사전 작성된 시크릿| |
@@ -166,7 +165,7 @@ kubectl create secret tls mf-tls-secret --key=/path/to/tls.key --cert=/path/to/t
 kubectl create secret generic server-secret --from-file=./keystore.jks --from-file=./truststore.jks --from-literal=KEYSTORE_PASSWORD=worklight --from-literal=TRUSTSTORE_PASSWORD=worklight
 ```
 
-> 참고: 파일과 리터럴의 이름이 위 명령에서 언급될 때 동일해야 합니다. 이 시크릿 이름을 각 컴포넌트의 `keystoresSecretName` 입력 필드에 제공하여 helm 차트를 구성할 때 기본 키 저장소를 대체하십시오.
+> 참고: 파일과 리터럴의 이름이 위 명령에서 언급될 때 동일해야 합니다.	이 시크릿 이름을 각 컴포넌트의 `keystoresSecretName` 입력 필드에 제공하여 helm 차트를 구성할 때 기본 키 저장소를 대체하십시오.
 
 
 ## [선택사항] 기밀 클라이언트를 위한 시크릿 작성

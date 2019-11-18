@@ -75,7 +75,7 @@ Mobile Foundation for Developers 8.0을 설치한 후에 다음을 수행하여 
 {: #access-mf-console}
 
 설치 완료 후 `<protocol>://<ip_address>:<port>/mfpconsole`을 사용하여 {{ site.data.keys.prod_adj }} Operational Console에 액세스할 수 있습니다.
-IBM {{ site.data.keys.mf_analytics }} 콘솔은 `<protocol>://<ip_address>:<port>/analytics/console`을 사용하여 액세스할 수 있습니다.
+IBM {{ site.data.keys.mf_analytics }} Console은 `<protocol>://<ip_address>:<port>/analytics/console`을 사용하여 액세스할 수 있습니다.
 
 프로토콜은 `http` 또는 `https`일 수 있습니다. 또한 **NodePort** 배치의 경우 포트는 **NodePort**가 됩니다. 설치된 {{ site.data.keys.prod_adj }} Chart의 ip_address 및 **NodePort**를 가져오려면 아래의 단계를 따르십시오.
 

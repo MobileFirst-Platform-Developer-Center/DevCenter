@@ -76,7 +76,7 @@ O ambiente de trabalho ajuda você a projetar as páginas. O ambiente de trabalh
     * Ícone **Canal** - Isso exibe o canal atual selecionado. É possível incluir canais adicionais, selecionando os canais necessários na seção Plataformas em **Configurações >Aplicativo >Detalhes do aplicativo**.
     * Nome da página atual - Exibe o nome da página da tela. Quando alternado entre páginas, o nome da página atual é atualizado para a página selecionada.
     * **Construir/Visualizar o aplicativo** - Este botão tem duas opções: a. ajuda a visualizar o aplicativo que está sendo desenvolvido; b. construir o aplicativo.
-    * **Publicar aplicativo** - Esta opção ajuda a construir e publicar seu aplicativo para Android/iOS no App Center.
+    * **Publicar** - Esta opção ajuda você a construir e publicar seu aplicativo para Android/iOS no App Center ou Publicar atualizações diretas de seu aplicativo “over-the-air” com recursos da web atualizados.
     * **Tela** - No centro dessa seção está a tela que exibe o design ou o código. É possível arrastar e soltar os controles e criar o aplicativo.
 
 3. Guia **Propriedades/Ações** - No lado direito, está a guia Propriedades e ação. Quando um controle é colocado na tela, é possível editar e modificar as propriedades do controle e conectar um controle com uma ação relacionada a ser executada.

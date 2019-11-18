@@ -26,6 +26,7 @@ Die Servertopologie für die Installation der Komponenten muss ebenfalls definie
 * [Installation mit Ant-Tasks](#installing-with-ant-tasks)
 * [MobileFirst-Server-Komponenten manuell installieren](#installing-the-mobilefirst-server-components-manually)
 * [Server-Farm installieren](#installing-a-server-farm)
+* [Scheduler der Mobile-Foundation-Laufzeit](#mf-runtime-scheduler)
 
 ## Voraussetzungen für den Anwendungsserver
 {: #application-server-prerequisites }
@@ -2476,3 +2477,67 @@ die folgenden JNDI-Eigenschaften definieren:
 <br/>
 Weitere Informationen zu JNDI-Eigenschaften finden Sie in der [Liste der JNDI-Eigenschaften für den MobileFirst-Server-Verwaltungsservice](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
+
+## Scheduler der Mobile-Foundation-Laufzeit
+{: #mf-runtime-scheduler}
+
+Die Mobile-Foundation-Laufzeit verwendet Quartz Scheduler für einige geplante Aktivitäten.
+
+Der Scheduler der Mobile-Foundation-Laufzeit führt die folgenden Aktivitäten aus:
+
+1.	Lizenzüberwachung
+2.	Erstellung von Prüfprotokollen
+
+Die Ausführung des Schedulers wird von den beiden folgenden JNDI-Eigenschaften gesteuert:
+
+* **mfp.licenseTracking.enabled**
+* **mfp.purgedata.enabled** (eingeführt mit dem vorläufigen Fix *8.0.0.0-MFPF-IF201812191602-CDUpdate-04*)
+
+Diese JNDI-Eigenschaften sind standardmäßig für alle unterstützten Anwendungsserver aktiviert.
+
+>**Hinweis:** Wenn die Mobile Foundation in einem WebSphere Application Server ausgeführt wird, muss die JNDI-Eigenschaft **mfp.licenseTracking.enabled** aktiviert werden. Setzen Sie die Eigenschaft in der WAS-Konsole unter den Einträgen für die Laufzeitumgebung auf den Wert **true**.
+
+### Lizenzüberwachung
+{: #license-tracking}
+
+Die Lizenzüberwachung überwacht Metriken, die für die Lizenzierungsrichtlinie relevant sind. Dazu gehören Clientgeräte, adressierbare Geräte und installierte Apps. Mithilfe dieser Angaben wird bestimmt, ob die Nutung der Mobile Foundation im Rahmen der Lizenzberechtigung erfolgt. So können Verletzungen der Lizenzbestimmungen verhindert werden. Die Lizenzüberwachung hilft bei der Stilllegung von Geräten, die nicht mehr auf Mobile Foundation Server zugreifen, und unterstützt die Archivierung und Löschung alter *MFP_PERSISTENT_DATA*-Datensätze.
+
+In der folgenden Tabelle sind die JNDI-Eigenschaften für Lizenzüberwachung aufgelistet.
+
+| JNDI-Eigenschaft | Beschreibung |
+|---------------|-------------|
+|mfp.device.decommissionProcessingInterval |Definiert, wie häufig eine Stilllegung durchgeführt wird (Intervall in Sekunden). Standardwert: `86400` (ein Tag). |
+|mfp.device.decommission.when |Anzahl von Tagen der Inaktivität, nach denen ein Clientgerät mit der Aufgabe für Gerätestilllegung stillgelegt wird. Standardwert: `90` Tage. |
+|mfp.device.archiveDecommissioned.when |Anzahl von Tagen der Inaktivität, nach denen ein stillgelegtes Clientgerät archiviert wird.<br/> Diese Task schreibt die stillgelegten Clientgeräte in eine Archivdatei. Die archivierten Clientgeräte werden in eine Datei im MobileFirst-Server-Verzeichnis **home\devices_archive** geschrieben. Der Name der Datei
+enthält die Zeitmarke für den Erstellungszeitpunkt der Archivdatei. Standardwert: `90` Tage. |
+|mfp.licenseTracking.enabled |Mit dem Wert dieser Eigenschaft wird die Geräteüberwachung in der IBM Mobile Foundation aktiviert oder inaktiviert.<br/> Aus Leistungsaspekten können Sie die Geräteüberwachung inaktivieren, wenn die IBM Mobile Foundation ausschließlich Business-to-Consumer-Apps (B2C) ausführt. Bei inaktivierter Geräteüberwachung sind
+auch die Lizenzberichte inaktiviert und es werden keine Lizenzmetriken generiert. <br/> Gültige Werte sind `true` (Standard) und `false`. |
+
+In den folgenden Artikeln finden Sie weitere Einzelheiten zur Lizenzüberwachung.
+
+* [Lizenzüberwachung für die Mobile Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/administering-apps/license-tracking/)
+* [Mobile-Foundation-Laufzeiteigenschaften](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html)
+
+Ein Scheduler wird acht Stunden nach einem Serverstart ausgeführt. Wenn die Server beispielsweise heute um 23.00 Uhr gestartet werden, wird der Scheduler nicht morgen um 1.00 Uhr ausgeführt (wie es standardmäßig der Fall wäre), sondern erst übermorgen um 1.00 Uhr. Zwischen dem Start des Servers und der Ausführung des Schedulers müssen mindestens acht Stunden liegen.
+
+Ab dem vorläufigen Fix [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) liegt der Abstand zwischen dem Serverstart und der Ausführung des Schedulers nicht mehr bei acht Stunden, sondern bei vier Stunden.
+Außerdem wurde mit diesem Fix die neue Eigenschaft *MFP.SCHEDULER.STARTHOUR* eingeführt. Mithilfe dieser Eigenschaft kann der Kunde für die Ausführung des Schedulers eine andere als die Standardzeit (1.00 Uhr) festlegen. Die Eigenschaft kann auf einen Wert von 1 bis 23 gesetzt werden. Diese Eigenschaft stellt sicher, dass der Kunde den Start seines Schedulers in eine Zeit mit wenig Datenverkehr legen kann und dass der Scheduler unabhängig vom täglichen Start der Server ausgeführt wird. Ein Kunde, der seinen Server jede Nacht um 1.00 Uhr startet, kann *MFP.SCHEDULER.STARTHOUR* auf den Wert 5 setzen. So wird ein vierstündiger Abstand zwischen dem Neustart des Servers und der Ausführung des Schedulers (um 5.00 Uhr) sichergestellt. 
+
+Sie sollten die Lizenzüberwachung aufgrund der datenbankintensiven Aktivitäten inaktivieren. Nur Kunden mit einem Lizenzierungsmodell für adressierbare Mobile-Foundation-Geräten müssen die Lizenzüberwachung ausführen. 
+
+Kunden, die die Lizenzüberwachung nicht aktiviert haben, können die [Bereinigungsfunktion]({{site.baseurl}}/blog/2018/12/27/purge-mfp-runtime-tables/) zum Löschen alter Datensätze und zur Bewahrung der Tabellen *MFP_PERSISTENT_DATA* und *MFP_TRANSIENT_DATA* nutzen.
+
+### Prüfprotokoll erstellen
+{: #creating-audit-log}
+
+Die Lizenzüberwachung speichert die letzte Ausführung und die Lizenzdaten in der Mobile-Foundation-Laufzeittabelle *LICENSE_TERMS*. Das Prüfprotokoll wird ausgehend vom letzten Berichtseintrag in dieser Tabelle erstellt. Berichte sind als `.slmtag`-Dateien im Protokollordner unter dem Serverinstallationsverzeichnis verfügbar. 
+
+### Quartz-Update inaktivieren
+{: #disable-quartz-update}
+
+In den Mobile-Foundation-Laufzeitbundles sind die erforderlichen Bibliotheken enthalten, zu denen auch einige Bibliotheken anderer Anbieter gehören. Die Mobile Foundation verwendet Quartz Job Schedulers und enthält die Datei `quartz2.2.0.jar`.
+
+Quartz enthält eine Funktion zur Überprüfung auf Updates (*update check*), die eine Verbindung zum [Server](http://www.terracotta.org/) herstellt, um festzustellen, ob eine neue Quartz-Version für den Download verfügbar ist. Diese Überprüfung wird asynchron durchgeführt und hat ekeinen Einfluss auf die Start-/Initialisierungszeit von Quartz. Wenn die Verbindung nicht hergestellt werden kann, schlägt die Überprüfung ohne Folgeprobleme fehl. Wenn die Überprüfung durchgeführt und ein Update gefunden wird, wird dieses Upate in den Quartz-Protokollen als verfügbar aufgeführt.
+
+Die Überprüfung auf Updates (*update check*) kann mit dem Flag  `org.quartz.scheduler.skipUpdateCheck = true` inaktiviert werden. Bei einer Liberty-Implementierung der Mobile Foundation wird eine Datei `jvm.options` erstellt. Während der Implementierung mit dem Server Configuration Tool enthält die neu erstellte Datei `jvm.options` ab dem vorläufigen Fix [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) diese Eigenschaft. Kunden, die ältere vorläufige Fixes verwenden, können diese Eigenschaft zur Datei `jvm.options` hinzufügen.
+Bei WAS-Implementierungen (WebSphere Application Server) muss die oben angegebene JNDI-Eigenschaft über die WAS-Administrationskonsole zu der Umgebungseigenschaft der Mobile-Foundation-Anwendung hinzugefügt werden.

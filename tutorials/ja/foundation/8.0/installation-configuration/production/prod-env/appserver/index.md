@@ -21,6 +21,7 @@ weight: 4
 * [Ant タスクを使用したインストール](#installing-with-ant-tasks)
 * [手動での {{ site.data.keys.mf_server }} コンポーネントのインストール](#installing-the-mobilefirst-server-components-manually)
 * [サーバー・ファームのインストール](#installing-a-server-farm)
+* [Mobile Foundation ランタイム・スケジューラー](#mf-runtime-scheduler)
 
 ## アプリケーション・サーバーの前提条件
 {: #application-server-prerequisites }
@@ -2222,3 +2223,69 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
 
 <br/>
 JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
+
+## Mobile Foundation ランタイム・スケジューラー
+{: #mf-runtime-scheduler}
+
+Mobile Foundation ランタイムは、スケジュールされた一部のアクティビティーの実行に Quartz スケジューラーを使用します。
+
+Mobile Foundation ランタイムのスケジューラーは、次のアクティビティーを実行します。
+
+1.	ライセンス・トラッキング
+2.	監査ログの作成
+
+スケジューラーの実行は、次の 2 つの JNDI プロパティーによって制御されます。
+
+* **mfp.licenseTracking.enabled**
+* **mfp.purgedata.enabled** (iFix レベル *8.0.0.0-MFPF-IF201812191602-CDUpdate-04* から導入されました)
+
+これらの JNDI プロパティーは、サポートされるすべてのアプリケーション・サーバーに対してデフォルトで有効となっています。
+
+>**注:** WebSphere Application Server で実行されている Mobile Foundation では、JNDI プロパティー **mfp.licenseTracking.enabled** を、WAS コンソールの「ランタイム環境」項目で値を **true** に設定することで有効にする必要があります。
+
+### ライセンス・トラッキング
+{: #license-tracking}
+
+ライセンス・トラッキングは、アクティブなクライアント・デバイス、アドレス可能なデバイス、およびインストールされているアプリケーションなど、ライセンス・ポリシーに関連したメトリックを追跡します。この情報は、Mobile Foundation の現在の使用法がライセンス資格の水準内であるかどうかの判別に役立ち、潜在的なライセンス違反を防止します。
+ライセンス・トラッキングは、もう Mobile Foundation Server にアクセスしなくなったデバイスの廃止に役立つとともに、*MFP_PERSISTENT_DATA* の古いレコードのアーカイブと削除にも役立ちます。
+
+次の表には、ライセンス・トラッキングと関連する JNDI プロパティーがリストされています。
+
+| JNDI プロパティー | 説明 |
+|---------------|-------------|
+| mfp.device.decommissionProcessingInterval | 廃止タスクが実行される頻度 (秒単位) を定義します。 デフォルト: `86400` (1 日) |
+| mfp.device.decommission.when | デバイス廃用タスクによってクライアント・デバイスが廃用にされるまでの非アクティブ猶予日数。 デフォルト: `90 日`。 |
+| mfp.device.archiveDecommissioned.when | 廃止されたクライアント・デバイスがアーカイブされるまでの非アクティブ猶予日数。<br/> このタスクは、廃止されたクライアント・デバイスをアーカイブ・ファイルに書き込みます。 アーカイブされたクライアント・デバイスは、Mobile Foundation Server の home\devices_archive ディレクトリーにあるファイルに書き込まれます。 このファイルの名前には、アーカイブ・ファイルが作成されたときのタイム・スタンプが含まれます。 デフォルト: `90 日`。 |
+| mfp.licenseTracking.enabled | IBM Mobile Foundation でデバイス・トラッキングを有効または無効にするために使用する値。<br/> パフォーマンス上の理由のため、IBM Mobile Foundation が Business to Consumer (B2C) アプリケーションのみを実行する場合は、デバイス・トラッキングを無効にすることができます。デバイス・トラッキングが無効になると、ライセンス・レポートも無効になり、ライセンス・メトリックが作成されません。 <br/> 指定可能な値は、`true` (デフォルト)、および `false` です。 |
+
+ライセンス・トラッキングに関する詳細は、以下のトピックを参照してください。
+
+* [Mobile Foundation ライセンス・トラッキング]({{site.baseurl}}/tutorials/en/foundation/8.0/administering-apps/license-tracking/)
+* [Mobile Foundation ランタイム・プロパティー](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html)
+
+スケジューラーは、サーバーが始動してから 8 時間後に実行されます。このことは、サーバーが今日の午後 11 時に始動された場合、スケジューラーは翌日の午前 1 時 (デフォルトのスケジューラー実行時間) には実行されず、翌々日の午前 1 時からのみ実行されることになります。つまり、サーバーの始動時間とスケジューラーの実行時間との間隔は 8 時間です。
+
+iFix レベル [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) を開始すると、サーバーの始動時間とスケジューラーの実行時間との間隔は 8 時間ではなく 4 時間となります。
+また、新しいプロパティー *MFP.SCHEDULER.STARTHOUR* が導入されます。このプロパティーにより、スケジューラーの実行時間をデフォルトである午前 1 時の代わりに顧客の選択に応じた任意の時間に設定することができます。このプロパティーは値を 1 から 23 までとすることができます。このプロパティーを使用すると、顧客はスケジューラーをトラフィックの少ない時間に実行するように構成できるようになり、また、サーバーを毎日始動する場合にもスケジューラーを実行できるようになります。サーバーを毎日午前 1 時に始動する顧客であれば、*MFP.SCHEDULER.STARTHOUR* の値を 5 に設定できます。これにより、サーバーの再始動時間とスケジューラーが実行される午前 5 時とは 4 時間の間隔となります。
+
+ライセンス・トラッキングは、データベースに集中したアクティビティーであるため、ライセンス・トラッキングを無効にしておくことをお勧めします。ライセンス・トラッキングを実行する必要があるのは、Mobile Foundation のアドレス可能なデバイスのライセンス交付モデルを使用する顧客のみです。
+
+ライセンス・トラッキングを無効にしている顧客は、[パージ機能]({{site.baseurl}}/blog/2018/12/27/purge-mfp-runtime-tables/)を使用して古いレコードをクリーンアップして、*MFP_PERSISTENT_DATA* および *MFP_TRANSIENT_DATA* テーブルを保守することができます。
+
+### 監査ログの作成
+{: #creating-audit-log}
+
+ライセンス・トラッキングでは、最新の実行データとライセンス・データが Mobile Foundation ランタイム・テーブル *LICENSE_TERMS* に保存されます。
+監査ログは、このテーブルの最新のレポート項目を基にログを作成します。レポートは、サーバーのインストール・ディレクトリーの配下にある logs フォルダー内の `.slmtag` というファイルで利用できます。
+
+### Quartz アップデートの無効化
+{: #disable-quartz-update}
+
+Mobile Foundation ランタイムには、数個のサード・パーティー製ライブラリーを含む必須ライブラリーがバンドルされています。Mobile Foundation は、Quartz ジョブ・スケジューラーを使用しており、`quartz2.2.0.jar` が組み込まれています。
+
+Quartz には、*アップデート・チェック*機能が含まれており、この機能はダウンロード可能な Quartz の新しいバージョンがあるかどうかをチェックするために[サーバー](http://www.terracotta.org/)に接続します。
+このチェックは、非同期で行われ、Quartz の起動と初期化には影響しません。接続が確立できない場合は、適切な方法で失敗します。チェックの実行でアップデートが見つかった場合は、それが Quartz のログで利用可能として報告されます。
+
+*アップデート・チェック*は、フラグ `org.quartz.scheduler.skipUpdateCheck = true` を使用することで無効にできます。Mobile Foundation の Liberty デプロイメントは、`jvm.options` ファイルを作成します。サーバー構成ツールを介したデプロイメント中に、新しく作成された `jvm.options` ファイルには、iFix レベル [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) 以降からのこのプロパティーが含まれます。
+以前の iFix レベルについては、顧客がこのプロパティーを `jvm.options` ファイルに追加できます。
+WebSphere Application Server (WAS) のデプロイメントの場合は、上記の JNDI プロパティーを WAS 管理コンソールから Mobile Foundation アプリケーションの環境プロパティーに追加する必要があります。

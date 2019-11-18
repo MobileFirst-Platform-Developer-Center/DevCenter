@@ -21,6 +21,7 @@ A topologia do servidor para instalar os componentes também deve estar definida
 * [Instalando com tarefas Ant](#installing-with-ant-tasks)
 * [Instalando os componentes do {{ site.data.keys.mf_server }} manualmente](#installing-the-mobilefirst-server-components-manually)
 * [Instalando um server farm](#installing-a-server-farm)
+* [Planejador de tempo de execução do Mobile Foundation](#mf-runtime-scheduler)
 
 ## Pré-requisitos do Servidor de Aplicativos
 {: #application-server-prerequisites }
@@ -486,7 +487,7 @@ Por padrão, a tarefa Ant **installmobilefirstadmin** cria usuários:
 
 Para usar um usuário existente em vez de criar um novo, é possível executar as operações a seguir:
 
-1. No elemento `<jmx>`, especifique um usuário e senha, e configure o valor do atributo **createLibertyAdmin** como false. Por exemplo:
+1. No elemento `<jmx>`, especifique um usuário e senha e configure o valor do atributo **createLibertyAdmin** como false. Por exemplo:
 
    ```xml
    <installmobilefirstadmin ...>
@@ -494,7 +495,7 @@ Para usar um usuário existente em vez de criar um novo, é possível executar a
        ...
    ```
 
-2. No elemento `<configuration>`, especifique um usuário e senha, e configure o valor do atributo **createConfigAdminUser** como false. Por exemplo:
+2. No elemento `<configuration>`, especifique um usuário e senha e configure o valor do atributo **createConfigAdminUser** como false. Por exemplo:
 
    ```xml
     <installmobilefirstadmin ...>
@@ -503,13 +504,13 @@ Para usar um usuário existente em vez de criar um novo, é possível executar a
    ```
 
 Além disso, o usuário que é criado pelos arquivos Ant de amostra é mapeado para as funções de segurança do serviço de administração e do console. Com essa configuração, é possível usar esse usuário para efetuar logon no
-{{ site.data.keys.mf_server }} após a instalação. Para mudar esse comportamento, remova o elemento `<user>` dos arquivos Ant de amostra. Como alternativa, é possível remover o atributo **password** do elemento `<user>` e o usuário não é criado no registro local do servidor de aplicativos.
+{{ site.data.keys.mf_server }} após a instalação. Para alterar esse comportamento, remova o elemento `<user>` dos arquivos Ant de amostra. Como alternativa, é possível remover o atributo **password** do elemento `<user>` e o usuário não será criado no registro local do servidor de aplicativos.
 
 #### Especifique o nível Liberty Java EE
 {: #specify-liberty-java-ee-level }
 Algumas distribuições do WebSphere Application Server Liberty suportam recursos de Java EE 6 ou de Java EE 7. Por padrão, as tarefas Ant detectam automaticamente os recursos a serem instalados. Por exemplo, o recurso do Liberty **jdbc-4.0** é instalado para Java EE 6 e o recurso **jdbc-4.1** é instalado no caso do Java EE 7. Se a instalação do Liberty suportar ambos os recursos do Java EE 6 e Java EE 7, talvez você queira forçar um certo nível de recursos. Um exemplo pode ser que você pretende executar o {{ site.data.keys.mf_server }} V8.0.0 e V7.1.0 no mesmo servidor Liberty. O {{ site.data.keys.mf_server }} V7.1.0 ou anterior suporta somente recursos de Java EE 6.
 
-Para forçar um determinado nível de recursos de Java EE 6, use o atributo jeeversion do elemento `<websphereapplicationserver>`. Por exemplo:
+Para forçar um determinado nível de recursos Java EE 6, use o atributo jeeversion do elemento `<websphereapplicationserver>`. Por exemplo:
 
 ```xml
 <installmobilefirstadmin execute="${mfp.process.admin}" contextroot="${mfp.admin.contextroot}">
@@ -568,7 +569,7 @@ Os arquivos de amostra, como **configure-wasnd-cluster-dbms-name.xml**, **config
 
 #### Configuração manual da porta RMI no Apache Tomcat
 {: #manual-configuration-of-the-rmi-port-on-apache-tomcat }
-Por padrão, as tarefas Ant modificam o arquivo **setenv.bat** ou o arquivo **setenv.sh** para abrir a porta RMI. Se preferir abrir a porta RMI manualmente, inclua o atributo **tomcatSetEnvConfig** com o valor como false no elemento `<jmx>` das tarefas **installmobilefirstadmin**, **updatemobilefirstadmin** e **uninstallmobilefirstadmin**.
+Por padrão, as tarefas Ant modificam o arquivo **setenv.bat** ou o arquivo **setenv.sh** para abrir a porta RMI. Caso prefira abrir a porta RMI manualmente, inclua o atributo **tomcatSetEnvConfig** com o valor false no elemento `<jmx>` das tarefas **installmobilefirstadmin**, **updatemobilefirstadmin** e **uninstallmobilefirstadmin**.
 
 ## Instalando componentes do {{ site.data.keys.mf_server }} manualmente
 {: #installing-the-mobilefirst-server-components-manually }
@@ -609,7 +610,7 @@ Opcionalmente, para evitar problemas de tempo limite que interrompem a sequênci
   stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```
 
-Também é possível configurar o elemento **tcpOptions** e configurar o atributo **soReuseAddr** como `true`: `<tcpOptions soReuseAddr="true"/>`.
+Também é possível configurar o elemento **tcpOptions** e definir o atributo **soReuseAddr** como `true`: `<tcpOptions soReuseAddr="true"/>`.
 
 #### Recursos do Liberty requeridos pelos aplicativos {{ site.data.keys.mf_server }}
 {: #liberty-features-required-by-the-mobilefirst-server-applications }
@@ -678,20 +679,13 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
 * Nos sistemas UNIX e Linux:
 
   ```bash
-  mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/ cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
   ```
 
 * Nos sistemas do Windows:
 
   ```bash
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+  mkdir LIBERTY_HOME\wlp\usr\extension\lib copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar mkdir LIBERTY_HOME\wlp\usr\extension\lib\features copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
   ```
 
 #### Detalhes de configuração
@@ -951,7 +945,7 @@ Opcionalmente, para evitar problemas de tempo limite que interrompem a sequênci
   stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```
 
-Também é possível configurar o elemento **tcpOptions** e configurar o atributo **soReuseAddr** como `true`: `<tcpOptions soReuseAddr="true"/>`.
+Também é possível configurar o elemento **tcpOptions** e definir o atributo **soReuseAddr** como `true`: `<tcpOptions soReuseAddr="true"/>`.
 
 #### Recursos do Liberty requeridos pelos aplicativos {{ site.data.keys.mf_server }}
 {: #liberty-features-required-by-the-mobilefirst-server-applications-collective }
@@ -1017,20 +1011,13 @@ Copie o recurso de usuário decodificador de senha em seu perfil Liberty. Por ex
 * Nos sistemas UNIX e Linux:
 
   ```bash
-  mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/ cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
   ```
 
 * Nos sistemas do Windows:
 
   ```bash
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
-  LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
-  mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
-  LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
+  mkdir LIBERTY_HOME\wlp\usr\extension\lib copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar mkdir LIBERTY_HOME\wlp\usr\extension\lib\features copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
   ```
 #### Detalhes de configuração
 {: #configuration-details-collective }
@@ -2226,3 +2213,64 @@ Ter um ou mais nós inativos não impede os outros membros do farm de atenderem 
 
 <br/>
 Para obter mais informações sobre propriedades JNDI, consulte [Lista de propriedades JNDI para o serviço de administração do {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+
+## Planejador de tempo de execução de Mobile Foundation
+{: #mf-runtime-scheduler}
+
+O tempo de execução do Mobile Foundation usa planejadores quartz para executar algumas das atividades planejadas.
+
+O planejador no tempo de execução do Mobile Foundation executa as atividades a seguir:
+
+1.	Rastreamento de Licença
+2.	Criando logs de auditoria
+
+A execução do planejador é controlada pelas duas propriedades de JNDI a seguir,
+
+* **mfp.licenseTracking.enabled**
+* **mfp.purgedata.enabled** (introduzido no nível de iFix *8.0.0.0-MFPF-IF201812191602-CDUpdate-04*)
+
+Essas propriedades de JNDI são ativadas por padrão para todos os servidores de aplicativos suportados.
+
+>**Nota:** para o Mobile Foundation em execução no WebSphere Application Server, a propriedade de JNDI **mfp.licenseTracking.enabled** tem que ser ativada configurando seu valor como **true** nas entradas do Runtime Environment no console do WAS.
+
+### Rastreamento de Licença
+{: #license-tracking}
+
+O Rastreamento de licença rastreia as métricas relevantes para a política de licenciamento, como dispositivos ativos do cliente, dispositivos endereçáveis e aplicativos instalados. Essas informações ajudam a determinar se o uso atual da Mobile Foundation está dentro dos níveis de titularidade de licença e pode evitar potenciais violações de licença. O rastreamento de licença ajuda na desatribuição de dispositivos que não estão mais acessando o Mobile Foundation Server e também ajuda no arquivamento e exclusão de registros antigos de *MFP_PERSISTENT_DATA*.
+
+A tabela a seguir lista as propriedades de JNDI relacionadas ao rastreamento de licença.
+
+| Propriedade de JNDI | Descrição |
+|---------------|-------------|
+| mfp.device.decommissionProcessingInterval | Define com que frequência (em segundos) a tarefa de desatribuição é executada. Padrão: `86400`, que é um dia. |
+| mfp.device.decommission.when | O número de dias de inatividade após o qual um dispositivo do cliente é desatribuído pela tarefa de desatribuição de dispositivo. Padrão: `90 dias`. |
+| mfp.device.archiveDecommissioned.when | O número de dias de inatividade após o qual um dispositivo do cliente que foi desatribuído é arquivado. <br/> Essa tarefa grava os dispositivos do cliente que foram desatribuídos em um archive. Os dispositivos arquivados do cliente são gravados em um arquivo no diretório home\devices_archive do Mobile Foundation Server. O nome do arquivo contém o registro de data e hora em que o archive foi criado. Padrão: `90 dias`. |
+| mfp.licenseTracking.enabled | Um valor que é usado para ativar ou desativar o rastreamento de dispositivo no IBM Mobile Foundation. <br/> Por motivos de desempenho, é possível desativar o rastreamento de dispositivo quando o IBM Mobile Foundation executa somente aplicativos Business-to-Consumer (B2C). Quando o rastreamento de dispositivo for desativado, os relatórios de licença também serão desativados e nenhuma métrica de licença será gerada. <br/> Os valores possíveis são `true` (padrão) e `false`. |
+
+Consulte os tópicos a seguir, para obter mais detalhes sobre o rastreamento de licença.
+
+* [Rastreamento de licença do Mobile Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/administering-apps/license-tracking/)
+* [Propriedades de tempo de execução do Mobile Foundation](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html)
+
+Um planejador será executado 8 horas após um início do servidor. Ou seja, se os servidores forem iniciados hoje às 23h, o planejador não será executado à 1h (tempo de execução do planejador padrão) do dia subsequente, ele começará a ser executado somente no dia seguinte à 1h. A diferença entre um início do servidor e uma execução do planejador é de 8 horas.
+
+Iniciando o nível de iFix [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643), a diferença entre um início do servidor e o executor do planejador é de 4 horas em vez de 8 horas.
+Além disso, uma nova propriedade *MFP.SCHEDULER.STARTHOUR* foi introduzida. Com essa propriedade, a execução do planejador pode ser configurada para qualquer horário de opção do cliente em vez do padrão 1h. A propriedade pode assumir um valor de 1 a 23. Essa propriedade assegurará que o cliente possa configurar seu planejador para iniciar em suas horas de tráfego leve e também possa assegurar as execuções do planejador apesar do início diário do servidor. Para um cliente que reinicia seu servidor todas as noites à 1h, ele pode configurar o valor para *MFP.SCHEDULER.STARTHOUR* como 5. Isso assegura uma diferença de 4 horas entre a reinicialização do servidor e a execução do planejador às 5h.
+
+É sugerido manter o rastreamento de licença desativado, pois as atividades de rastreamento de licença são intensivas no banco de dados. Somente aqueles clientes que usam o modelo de licenciamento de dispositivos endereçáveis da Foundation Mobile Foundation precisam executar o rastreamento de licença.
+
+Os clientes que não ativaram o rastreamento de licença podem usar o [recurso de limpeza]({{site.baseurl}}/blog/2018/12/27/purge-mfp-runtime-tables/) para limpar os registros antigos e manter as tabelas *MFP_PERSISTENT_DATA* e *MFP_TRANSIENT_DATA*.
+
+### Criando o log de auditoria
+{: #creating-audit-log}
+
+O rastreamento de licença salva os dados de execução e de licença mais recentes na tabela de tempo de execução do Mobile Foundation *LICENSE_TERMS*. O log de auditoria cria um log com base na entrada de relatório mais recente nessa tabela. Os relatórios estão disponíveis como arquivos `.slmtag` na pasta de logs sob o diretório de instalação do servidor.
+
+### Desativando a atualização do Quartz
+{: #disable-quartz-update}
+
+O tempo de execução do Mobile Foundation empacota as bibliotecas necessárias, incluindo algumas bibliotecas de terceiros. O Mobile Foundation usa planejadores de tarefas Quartz e inclui `quartz2.2.0.jar`.
+
+O Quartz contém um recurso de *verificação de atualização* que se conecta ao [servidor](http://www.terracotta.org/) para verificar se há uma nova versão do Quartz disponível para download. Essa verificação é executada de forma assíncrona e não afeta a inicialização/tempo de inicialização do Quartz e falha normalmente se a conexão não pode ser feita. Se a verificação for executada e uma atualização for localizada, ela será relatada como disponível nos logs do Quartz.
+
+A *verificação de atualização* pode ser desativada usando a sinalização `org.quartz.scheduler.skipUpdateCheck = true`. A implementação Liberty do Mobile Foundation cria um arquivo `jvm.options` e, durante a implementação por meio do Server Configuration Tool, o arquivo `jvm.options` recém-criado incluirá essa propriedade do nível de iFix [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) em diante. Para níveis anteriores de iFix, o cliente pode incluir essa propriedade no arquivo `jvm.options`. No caso de implementações do WebSphere Application Server (WAS), a propriedade de JNDI acima precisa ser incluída na propriedade de ambiente do aplicativo Mobile Foundation por meio do console administrativo do WAS.

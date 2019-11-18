@@ -917,7 +917,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
         | 데이터베이스 유형 | Oracle |
         | 제공자 유형 | Oracle JDBC 드라이버 |
         | 구현 유형 | 연결 풀 데이터 소스 |
-        |이름 | Oracle JDBC 드라이버 |
+        | 이름 | Oracle JDBC 드라이버 |
     * **다음**을 클릭하십시오.
     * **클래스 경로**를 1단계에서 판별된 디렉토리에 있는 JAR 파일로 설정하고 **WAS\_INSTALL\_DIR/profiles/profile-name**을 WebSphere Application Server 변수 참조 **${USER_INSTALL_ROOT}**로 바꾸십시오.
     * **다음**을 클릭하십시오.

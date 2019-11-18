@@ -14,15 +14,17 @@ IBM {{ site.data.keys.mf_server }} では、購入した対象に基づいて、
 {: #application-or-addressable-device-licenses }
 アプリケーションまたはアドレス可能なデバイスのライセンスを購入した場合は、購入した対象を消費して、{{ site.data.keys.mf_console }} の「ライセンス・トラッキング」ページか、ライセンス・トラッキング・レポートを通じて、使用量とコンプライアンスを検証できます。
 
-### プロセッサー・バリュー・ユニット (PVU) ライセンス交付
-{: #processor-value-unit-pvu-licensing }
-プロセッサー・バリュー・ユニット (PVU) ライセンス交付は、IBM {{ site.data.keys.product }} Extension ([ライセンス情報文書](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)を参照) を購入している場合に使用できます。ただし、IBM  WebSphere Application Server Network Deployment、IBM API Connect™ Professional、または IBM API Connect Enterprise の購入後に限ります。
+### 仮想プロセッサー・コア (VPC ライセンス交付)
+{: #vpc-licensing}
 
-PVU ライセンスの価格設定体系は、インストールされている製品に使用可能なプロセッサーのタイプと数の両方に対応します。 資格付与は、フル・キャパシティーまたはサブキャパシティーにすることができます。 プロセッサー・バリュー・ユニット・ライセンス交付では、各プロセッサー・コアに割り当てられたバリュー・ユニット数に基づいてソフトウェアのライセンスを取得します。
+Mobile Foundation は、仮想プロセッサー・コア (VPC) と呼ばれるキャパシティー・ベースのライセンス交付でも使用可能です。VPC は、Mobile Foundation のライセンス料金を決定するために使用される測定の単位で、使用可能なコアの数に基づいています。現在、この測定基準は、Cloud Pak for Applications でのみ利用可能です。
 
-例えば、プロセッサー・タイプ A にはコアあたり 80 バリュー・ユニットが割り当てられ、プロセッサー・タイプ B にはコアあたり 100 バリュー・ユニットが割り当てられているとします。 製品を 2 つのタイプ A プロセッサー上で実行するライセンスを取得する場合、コアあたり 160 バリュー・ユニットの資格付与が必要です。 製品を 2 つのタイプ B プロセッサー上で実行する場合、必要な資格付与はコアあたり 200 バリュー・ユニットです。
+この測定基準のフィーチャーは次のとおりです。
 
-> PVU ライセンス交付についての詳細は、[ こちら](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html)を参照してください。
+* クライアントは、アプリケーションおよびデバイスを幾つでも実行できます。そのため、顧客が多くのアプリケーションをデプロイするシナリオの場合に、この形式のライセンスは、アプリケーション・ライセンスに比べて有利です。
+
+* ポートフォリオ内の他の製品と連携して、ハイブリッド・クラウド・デプロイメントのクライアントに柔軟性を提供します。
+
 
 ### トークン・ライセンス
 {: #token-licensing }

@@ -81,7 +81,7 @@ O instalador do WebSphere Application Server Liberty Core é fornecido como part
     Para o escopo desse tutorial, se **liberty\_install\_dir** apontar para um local onde usuários não administradores ou não raiz não podem modificar os arquivos, mova o diretório que contém os servidores para um local que não precisa de privilégios específicos. Dessa forma, as operações de instalação podem ser feitas sem privilégios específicos.
     * Acesse o diretório de instalação do Liberty.
     * Crie um diretório chamado etc. São necessários privilégios de administrador.
-    * No diretório **etc**, crie um arquivo **server.env** com o seguinte conteúdo: `WLP_USER_DIR=<caminho para um diretório em que qualquer usuário pode gravar>`. Por exemplo, no Windows: `WLP_USER_DIR=C:\LibertyServers\usr`.
+    * No diretório **etc**, crie um arquivo **server.env** com o conteúdo a seguir: `WLP_USER_DIR=<path to a directory where any user can write>`. Por exemplo, no Windows: `WLP_USER_DIR=C:\LibertyServers\usr`.
 7.  Crie um servidor Liberty que será usado para instalar o primeiro nó do {{ site.data.keys.mf_server }} na parte posterior do tutorial.
     * Inicie uma linha de comandos.
     * Acesse **liberty\_install\_dir/bin** e insira **server create mfp1**.
@@ -363,7 +363,7 @@ O arquivo **jvm.options** do perfil Liberty é modificado. Uma propriedade (**co
 Após a instalação ser concluída, é possível usar esse procedimento para testar os componentes instalados.
 
 1. Inicie o servidor usando o comando **server start mfp1**. O arquivo binário para o servidor está em **liberty\_install\_dir/bin**.
-2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>` conforme definido no arquivo **server.xml**. Uma tela de login é exibida.
+2. Teste {{ site.data.keys.mf_console }} com um navegador da web. Acesse [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Por padrão, o servidor é executado na porta 9080. No entanto, é possível verificar a porta no elemento `<httpEndpoint>`, conforme definido no arquivo **server.xml**. Uma tela de login é exibida.
 
 ![A tela de login do console](mfpconsole_signin.jpg)
 
@@ -413,15 +413,15 @@ Quando você cria um farm, também é necessário configurar um servidor HTTP pa
 3. Copie o arquivo Ant que foi usado em [Implementando o {{ site.data.keys.mf_server }} no Liberty com tarefas Ant](#deploying-mobilefirst-server-to-liberty-with-ant-tasks), e mude o valor da propriedade **appserver.was85liberty.serverInstance** para **mfp2**. As tarefas Ant detectam que os bancos de dados existem e não criam as tabelas (consulte a extração de log a seguir). Em seguida, os aplicativos são implementados no servidor.
 
    ```bash
-   [configuredatabase] Checking connectivity to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser'...
-   [configuredatabase] Database MFPDATA exists.
-   [configuredatabase] Connection to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser' succeeded.
-   [configuredatabase] Getting the version of MobileFirstAdmin database MFPDATA...
-   [configuredatabase] Table MFPADMIN_VERSION exists, checking its value...
+   [configuredatabase] Verificando a conectividade com o banco de dados MobileFirstAdmin MFPDATA com esquema 'MFPDATA' e usuário 'mfpuser'...
+   [configuredatabase] Banco de dados MFPDATA existe.
+   [configuredatabase] Conexão com o banco de dados MobileFirstAdmin MFPDATA com esquema 'MFPDATA' e usuário 'mfpuser' estabelecida com sucesso.
+   [configuredatabase] Obtendo a versão do banco de dados MobileFirstAdmin MFPDATA...
+   [configuredatabase] Tabela MFPADMIN_VERSION existe, verificando seu valor...
    [configuredatabase] GetSQLQueryResult => MFPADMIN_VERSION = 8.0.0
-   [configuredatabase] Configuring MobileFirstAdmin database MFPDATA...
-   [configuredatabase] The database is in latest version (8.0.0), no upgrade required.
-   [configuredatabase] Configuration of MobileFirstAdmin database MFPDATA succeeded.
+    [configuredatabase] Configurando o banco de dados MobileFirstAdmin MFPDATA...
+   [configuredatabase] O banco de dados está na versão mais recente (8.0.0), não é necessário fazer upgrade.
+   [configuredatabase] Configuração do banco de dados MobileFirstAdmin MFPDATA feita com sucesso.
    ```
 
 4. Teste os dois servidores com a conexão HTTP.

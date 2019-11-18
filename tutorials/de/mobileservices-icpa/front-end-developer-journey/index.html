@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-
+---
+layout: default
+indexed: false
+---
 <head>
 <meta charset="utf-8">
 <link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
@@ -16,222 +18,103 @@
     margin-left:auto;
     margin-right:auto;
 }
+.postTitle {
+    margin-bottom: 0;
+    color: #808080;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+}
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600&display=swap");
+$font-sans: 'IBM Plex Sans', sans-serif;
+
+
+$black: #34435E;
+$white: #ffffff;
+
+body {
+  font-family: $font-sans;
+  margin: 0;
+  padding: 0 4em;
+  counter-reset: section;
+}
+
+main {
+  min-width: 30%;
+  max-width: 70%;
+  margin: auto;
+}
+
+p {
+  font-size: 1.25em;
+  line-height: 1.75em;
+  border-top: 3px solid;
+  border-image: linear-gradient(to right, #743ad5 0%, #d53a9d 100%);
+  border-image-slice: 1;
+  border-width: 3px;
+  margin: 0;
+  padding: 40px;
+  counter-increment: section;
+  position: relative;
+  color: #000;
+}
+
+  p::before {
+    content: counter(section);
+    position: absolute;
+    border-radius: 50%;
+    height: 1.25em;
+    width: 1.25em;
+    background-color: #808080;
+    text-align: center;
+    line-height: 0.5em;
+    color: white;
+    font-size: 2.1em;
+    padding: 12px;
+  }
+
+
+p:nth-child(odd) {
+  border-right: 3px solid;
+  padding-left: 0;
+}
+  p:nth-child(odd):before {
+    left: 100%;
+    margin-left: -20px;
+  }
+
+
+p:nth-child(even) {
+  border-left: 3px solid;
+  padding-right: 0;
+}
+  p:nth-child(even):before {
+    right: 100%;
+    margin-right: -20px;
+  }
+
+
+p:first-child {
+  border-top: 0;
+  border-top-right-radius:0;
+  border-top-left-radius:0;
+}
+p:last-child {
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:0;
+}
 </style>
 
 </head>
 
-<body style="background-color: #f3f3f3">
-<header class="bx--header" role="banner" aria-label="IBM Plattformname" data-header>
-  <a class="bx--skip-to-content" href="#main-content" tabindex="0">Zum Hauptinhalt</a>
-
-  <a class="bx--header__name" href="" title="">
-    <span class="bx--header__name--prefix">
-      Mobile&nbsp;Foundation&nbsp;{dev}
-    </span>
-  </a>
-
-  <nav class="bx--header__nav" aria-label="Plattformname" data-header-nav>
-    <ul class="bx--header__menu-bar" role="menubar" aria-label="Plattformname">
-    <li>
-        <a class="bx--header__menu-item" href="../../../../features/" role="menuitem" tabindex="0">
-          Features
-        </a>
-      </li>
-
-      <li class="bx--header__submenu" data-header-submenu>
-        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
-          aria-expanded="false" href="javascript:void(0)" tabindex="0">
-          Entwickler
-          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
-            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
-          </svg>
-        </a>
-        <ul class="bx--header__menu" role="menu" aria-label="Entwickler">
-              <li class="bx--header__submenu" data-header-submenu>
-                <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ios-tutorials/" tabindex="-1">
-                  <span class="bx--text-truncate--end">
-                    iOS
-                  </span>
-                </a>
-                </li>
-                <li class="bx--header__submenu" data-header-submenu>
-                  <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/android-tutorials/" tabindex="-1">
-                    <span class="bx--text-truncate--end">
-                      Android
-                    </span>
-                  </a>
-                  </li>
-                  <li class="bx--header__submenu" data-header-submenu>
-                    <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/windows-8-10-tutorials/" tabindex="-1">
-                      <span class="bx--text-truncate--end">
-                        Windows 8 und 10
-                      </span>
-                    </a>
-                    </li>
-              <li role="none">
-                <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/cordova-tutorials/" tabindex="-1">
-                  <span class="bx--text-truncate--end">
-                    Cordova
-                  </span>
-                </a>
-                </li>
-                <li role="none">
-                  <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ionic-tutorials/" tabindex="-1">
-                    <span class="bx--text-truncate--end">
-                      Ionic
-                    </span>
-                  </a>
-                  </li>
-
-              <li role="none">
-                <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/xamarin-tutorials/" tabindex="-1">
-                  <span class="bx--text-truncate--end">
-                    Xamarin
-                  </span>
-                </a>
-                </li>
-                <li role="none">
-                  <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/reactnative-tutorials/" tabindex="-1">
-                    <span class="bx--text-truncate--end">
-                      React Native
-                    </span>
-                  </a>
-                  </li>
-
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/web-tutorials/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Web
-              </span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="bx--header__submenu" data-header-submenu>
-        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
-          aria-expanded="false" href="javascript:void(0)" tabindex="0">
-          Dokumente
-          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
-            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
-          </svg>
-        </a>
-        <ul class="bx--header__menu" role="menu" aria-label="Dokumente">
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/all-tutorials/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Foundation 8.0
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.1/all-tutorials/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Foundation 7.1
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.0/all-tutorials/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Foundation 7.0
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/6.3/all-tutorials/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Foundation 6.3
-              </span>
-            </a>
-          </li>
-        </ul>
-      </li>
-      <li class="bx--header__submenu" data-header-submenu>
-        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
-          aria-expanded="false" href="javascript:void(0)" tabindex="0">
-          Labore
-          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
-            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
-          </svg>
-        </a>
-        <ul class="bx--header__menu" role="menu" aria-label="Labore">
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/8.0/intro/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Foundation-8.0-Labore
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.1/setup/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Foundation-7.1-Labore
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.0/setup/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Foundation-7.0-Labore
-              </span>
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <li class="bx--header__submenu" data-header-submenu>
-        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
-          aria-expanded="false" href="javascript:void(0)" tabindex="0">
-          Ressourcen
-          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
-            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
-          </svg>
-        </a>
-        <ul class="bx--header__menu" role="menu" aria-label="Ressourcen">
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../blog/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Blog
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../downloads/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Downloads
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../video-gallery/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Videogalerie
-              </span>
-            </a>
-          </li>
-
-        </ul>
-      </li>
-
-      <li>
-        <a class="bx--header__menu-item" href="../../../../help/" role="menuitem" tabindex="0">
-          Hilfetexte
-        </a>
-      </li>
-    </ul>
-  </nav>
+<body style="background-color: #fff">
 
 
-
-</header>
-
-
-<div class="bx--row landing-page__banner" style="background-color: #000000">
+<div class="bx--row landing-page__banner" style="background-image: url('../header-1.jpg')">
 
     <div class="bx--col-md-12">
       <h2 style="color:white">Tour für Front-End-Entwickler</h2>
       <br/>
-      <p style="color:white">Erstellen Sie mit wenig Codierungsaufwand rasch mobile und Webanwendungen sowie PWAs (Progressive Web Apps) in Form von Mehrkanalanwendungen mit KI-Funktionalität. </p>
+      <h4 style="color:white">Erstellen Sie mit wenig Codierungsaufwand rasch mobile und Webanwendungen sowie PWAs (Progressive Web Apps) in Form von Mehrkanalanwendungen mit KI-Funktionalität. </h4>
         <br/>
   <div data-tabs class="bx--tabs">
   <div class="bx--tabs-trigger" tabindex="0">
@@ -243,25 +126,25 @@
       class="bx--tabs__nav-item bx--tabs__nav-item--selected "
       data-target=".tab-1" role="presentation">
       <a tabindex="0" id="tab-link-1" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
-        aria-controls="tab-panel-1"  aria-selected="true" ><p style="text-align: center; color:white; font-size: 18px">Cordova</p></a>
+        aria-controls="tab-panel-1"  aria-selected="true" ><h4 style="text-align: center; color:white; font-size: 18px">Cordova</h4></a>
     </li>
     <li
       class="bx--tabs__nav-item "
       data-target=".tab-2" role="presentation">
       <a tabindex="0" id="tab-link-2" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
-        aria-controls="tab-panel-2" ><p style="text-align: center; color:white; font-size: 18px">Ionic</p></a>
+        aria-controls="tab-panel-2" ><h4 style="text-align: center; color:white; font-size: 18px">Ionic</h4></a>
     </li>
     <li
       class="bx--tabs__nav-item "
       data-target=".tab-3" role="presentation">
       <a tabindex="0" id="tab-link-3" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
-        aria-controls="tab-panel-3" ><p style="text-align: center; color:white; font-size: 18px">Android</p></a>
+        aria-controls="tab-panel-3" ><h4 style="text-align: center; color:white; font-size: 18px">Android</h4></a>
     </li>
     <li
       class="bx--tabs__nav-item  bx--tabs__nav-item "
       data-target=".tab-4" role="presentation">
       <a tabindex="0" id="tab-link-4" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
-        aria-controls="tab-panel-4" ><p style="text-align: center; color:white; font-size: 18px">iOS</p></a>
+        aria-controls="tab-panel-4" ><h4 style="text-align: center; color:white; font-size: 18px">iOS</h4></a>
     </li>
   </ul>
 </div>
@@ -271,301 +154,143 @@
   <div id="tab-panel-1" class="tab-1" role="tabpanel" aria-labelledby="tab-link-1"
     aria-hidden="false" >
 
-    <div class="bx--grid bx--grid--full-width landing-page">
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
 
       <div class="bx--row">
         <div id="title" class="bx--col">
-        <p>Schritte für die Erstellung einer Cordova-App</p>
+        <h3>Schritte für die Erstellung einer Cordova-App</h3>
         </div>
       </div>
-      <div class="bx--row" style="width: 100%">
 
-        <div class="bx--col">
-
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Installation und Konfiguration</h4>
-                <p>Entwickler erhalten die Möglichkeit der raschen Entwicklung, Implementierung und Verwaltung ihrer Cloudanwendungen und gleichzeitig Zugang zu einem wachsenden System verfügbarer Services und Laufzeitframeworks. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-            <div class="bx--col">
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>MobileFirst-SDK hinzufügen</h4>
-                <p>Wenn Sie eine nennenswerte und effektive Benutzerbindung anstreben, müssen Sie wissen, welche Erfahrungen Benutzer mit Ihrer Anwendung machen. Dazu stehen integrierte Visualisierungen bereit. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-            <div class="bx--col">
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Benachrichtigungen senden</h4>
-                <p>Binden Sie Ihre Zielgruppe über vereinheitlichte Benachrichtigungsmechanismen ein, die den gesamten Prozess für den Entwickler vollständig transparent gestalten. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-
-
-            <div class="bx--col">
-
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Authentifizierung und Sicherheit hinzufügen</h4>
-                <p>Versehen Sie Ihre Anwendungen mit mehreren Schutzschichten. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-
-          <div class="bx--col">
-            <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-              <h4>Einschätzen und aktiv werden</h4>
-              <p>Sie können Benachrichtigungen mit der IBM Mobile Foundation senden, die Anwendungsnutzung überwachen und so Einsichten gewinnen. </p>
-
-              <div id="go" style="text-align:right;">
-              <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-            </div>
-          </div>
-        </div>
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>Installation und Konfiguration</b></span><br/>
+Entwickler erhalten die Möglichkeit der raschen Entwicklung, Implementierung und Verwaltung ihrer Cloudanwendungen und gleichzeitig Zugang zu einem wachsenden System verfügbarer Services und Laufzeitframeworks. <br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a></p>
+        <p><span style="color:NAVY; font-weight: 600"><b>MobileFirst-SDK hinzufügen</b></span><br/>
+          Client-SDKs stellen eine Reihe von APIs bereit, mit denen Entwickler verschiedene Mobile-Foundation-Features implementieren können, z. B. den Authentifizierungs- und Sicherheitsmechanismus, Benachrichtigung per Push und SMS, Ressourcenanforderungen, Sammlung von Analysedaten usw. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Benachrichtigungen senden</b></span><br/>
+Binden Sie Ihre Zielgruppe über vereinheitlichte Benachrichtigungsmechanismen ein, die den gesamten Prozess für den Entwickler vollständig transparent gestalten. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Authentifizierung und Sicherheit hinzufügen</b></span><br/>
+Versehen Sie Ihre Anwendungen mit mehreren Schutzschichten. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Einschätzen und aktiv werden</b></span><br/>
+Sie können Benachrichtigungen mit der IBM Mobile Foundation senden, die Anwendungsnutzung überwachen und so Einsichten gewinnen. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+      </main>
 
     </div>
   </div>
   <div id="tab-panel-2" class="tab-2" role="tabpanel" aria-labelledby="tab-link-2"
     aria-hidden="true"  hidden >
 
-    <div class="bx--grid bx--grid--full-width landing-page">
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
       <div class="bx--row">
         <div id="title" class="bx--col">
-        <p>Schritte für die Erstellung einer Ionic-App</p>
+        <h3>Schritte für die Erstellung einer Ionic-App</h3>
         </div>
       </div>
-      <div class="bx--row" style="width: 100%">
 
-        <div class="bx--col">
-
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Installation und Konfiguration</h4>
-                <p>Entwickler erhalten die Möglichkeit der raschen Entwicklung, Implementierung und Verwaltung ihrer Cloudanwendungen und gleichzeitig Zugang zu einem wachsenden System verfügbarer Services und Laufzeitframeworks. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-            <div class="bx--col">
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>MobileFirst-SDK hinzufügen</h4>
-                <p>Wenn Sie eine nennenswerte und effektive Benutzerbindung anstreben, müssen Sie wissen, welche Erfahrungen Benutzer mit Ihrer Anwendung machen. Dazu stehen integrierte Visualisierungen bereit. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-            <div class="bx--col">
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Benachrichtigungen senden</h4>
-                <p>Binden Sie Ihre Zielgruppe über vereinheitlichte Benachrichtigungsmechanismen ein, die den gesamten Prozess für den Entwickler vollständig transparent gestalten. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>Installation und Konfiguration</b></span><br/>
+Entwickler erhalten die Möglichkeit der raschen Entwicklung, Implementierung und Verwaltung ihrer Cloudanwendungen und gleichzeitig Zugang zu einem wachsenden System verfügbarer Services und Laufzeitframeworks. <br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a></p>
+        <p><span style="color:NAVY; font-weight: 600"><b>MobileFirst-SDK hinzufügen</b></span><br/>
+          Client-SDKs stellen eine Reihe von APIs bereit, mit denen Entwickler verschiedene Mobile-Foundation-Features implementieren können, z. B. den Authentifizierungs- und Sicherheitsmechanismus, Benachrichtigung per Push und SMS, Ressourcenanforderungen, Sammlung von Analysedaten usw. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Benachrichtigungen senden</b></span><br/>
+Binden Sie Ihre Zielgruppe über vereinheitlichte Benachrichtigungsmechanismen ein, die den gesamten Prozess für den Entwickler vollständig transparent gestalten. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Authentifizierung und Sicherheit hinzufügen</b></span><br/>
+Versehen Sie Ihre Anwendungen mit mehreren Schutzschichten. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Einschätzen und aktiv werden</b></span><br/>
+Sie können Benachrichtigungen mit der IBM Mobile Foundation senden, die Anwendungsnutzung überwachen und so Einsichten gewinnen. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+      </main>
 
 
-            <div class="bx--col">
-
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Authentifizierung und Sicherheit hinzufügen</h4>
-                <p>Versehen Sie Ihre Anwendungen mit mehreren Schutzschichten. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-
-          <div class="bx--col">
-            <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-              <h4>Einschätzen und aktiv werden</h4>
-              <p>Sie können Benachrichtigungen mit der IBM Mobile Foundation senden, die Anwendungsnutzung überwachen und so Einsichten gewinnen. </p>
-
-              <div id="go" style="text-align:right;">
-              <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-            </div>
-          </div>
-        </div>
     </div>
   </div>
 
   <div id="tab-panel-3" class="tab-3" role="tabpanel" aria-labelledby="tab-link-3"
     aria-hidden="true"  hidden >
 
-    <div class="bx--grid bx--grid--full-width landing-page">
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
       <div class="bx--row">
         <div id="title" class="bx--col">
-        <p>Schritte für die Erstellung einer Android-App</p>
+        <h3>Schritte für die Erstellung einer Android-App</h3>
         </div>
       </div>
-      <div class="bx--row" style="width: 100%">
 
-        <div class="bx--col">
-
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Installation und Konfiguration</h4>
-                <p>Entwickler erhalten die Möglichkeit der raschen Entwicklung, Implementierung und Verwaltung ihrer Cloudanwendungen und gleichzeitig Zugang zu einem wachsenden System verfügbarer Services und Laufzeitframeworks. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/android/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-            <div class="bx--col">
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>MobileFirst-SDK hinzufügen</h4>
-                <p>Wenn Sie eine nennenswerte und effektive Benutzerbindung anstreben, müssen Sie wissen, welche Erfahrungen Benutzer mit Ihrer Anwendung machen. Dazu stehen integrierte Visualisierungen bereit. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/android/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-            <div class="bx--col">
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Benachrichtigungen senden</h4>
-                <p>Binden Sie Ihre Zielgruppe über vereinheitlichte Benachrichtigungsmechanismen ein, die den gesamten Prozess für den Entwickler vollständig transparent gestalten. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>Installation und Konfiguration</b></span><br/>
+Entwickler erhalten die Möglichkeit der raschen Entwicklung, Implementierung und Verwaltung ihrer Cloudanwendungen und gleichzeitig Zugang zu einem wachsenden System verfügbarer Services und Laufzeitframeworks. <br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/android/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a></p>
+        <p><span style="color:NAVY; font-weight: 600"><b>MobileFirst-SDK hinzufügen</b></span><br/>
+          Client-SDKs stellen eine Reihe von APIs bereit, mit denen Entwickler verschiedene Mobile-Foundation-Features implementieren können, z. B. den Authentifizierungs- und Sicherheitsmechanismus, Benachrichtigung per Push und SMS, Ressourcenanforderungen, Sammlung von Analysedaten usw. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/android/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Benachrichtigungen senden</b></span><br/>
+Binden Sie Ihre Zielgruppe über vereinheitlichte Benachrichtigungsmechanismen ein, die den gesamten Prozess für den Entwickler vollständig transparent gestalten. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Authentifizierung und Sicherheit hinzufügen</b></span><br/>
+Versehen Sie Ihre Anwendungen mit mehreren Schutzschichten. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Einschätzen und aktiv werden</b></span><br/>
+Sie können Benachrichtigungen mit der IBM Mobile Foundation senden, die Anwendungsnutzung überwachen und so Einsichten gewinnen. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+      </main>
 
 
-            <div class="bx--col">
-
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Authentifizierung und Sicherheit hinzufügen</h4>
-                <p>Versehen Sie Ihre Anwendungen mit mehreren Schutzschichten. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-
-          <div class="bx--col">
-            <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-              <h4>Einschätzen und aktiv werden</h4>
-              <p>Sie können Benachrichtigungen mit der IBM Mobile Foundation senden, die Anwendungsnutzung überwachen und so Einsichten gewinnen. </p>
-
-              <div id="go" style="text-align:right;">
-              <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-            </div>
-          </div>
-        </div>
     </div>
   </div>
 
   <div id="tab-panel-4" class="tab-4" role="tabpanel" aria-labelledby="tab-link-4"
     aria-hidden="true"  hidden >
 
-    <div class="bx--grid bx--grid--full-width landing-page">
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
       <div class="bx--row">
         <div id="title" class="bx--col">
-        <p>Schritte für die Erstellung einer iOS-App</p>
+        <h3>Schritte für die Erstellung einer iOS-App</h3>
         </div>
       </div>
-      <div class="bx--row" style="width: 100%">
 
-        <div class="bx--col">
-
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Installation und Konfiguration</h4>
-                <p>Entwickler erhalten die Möglichkeit der raschen Entwicklung, Implementierung und Verwaltung ihrer Cloudanwendungen und gleichzeitig Zugang zu einem wachsenden System verfügbarer Services und Laufzeitframeworks. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-            <div class="bx--col">
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>MobileFirst-SDK hinzufügen</h4>
-                <p>Wenn Sie eine nennenswerte und effektive Benutzerbindung anstreben, müssen Sie wissen, welche Erfahrungen Benutzer mit Ihrer Anwendung machen. Dazu stehen integrierte Visualisierungen bereit. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-            <div class="bx--col">
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Benachrichtigungen senden</h4>
-                <p>Binden Sie Ihre Zielgruppe über vereinheitlichte Benachrichtigungsmechanismen ein, die den gesamten Prozess für den Entwickler vollständig transparent gestalten. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>Installation und Konfiguration</b></span><br/>
+Entwickler erhalten die Möglichkeit der raschen Entwicklung, Implementierung und Verwaltung ihrer Cloudanwendungen und gleichzeitig Zugang zu einem wachsenden System verfügbarer Services und Laufzeitframeworks. <br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a></p>
+        <p><span style="color:NAVY; font-weight: 600"><b>MobileFirst-SDK hinzufügen</b></span><br/>
+          Client-SDKs stellen eine Reihe von APIs bereit, mit denen Entwickler verschiedene Mobile-Foundation-Features implementieren können, z. B. den Authentifizierungs- und Sicherheitsmechanismus, Benachrichtigung per Push und SMS, Ressourcenanforderungen, Sammlung von Analysedaten usw. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Benachrichtigungen senden</b></span><br/>
+Binden Sie Ihre Zielgruppe über vereinheitlichte Benachrichtigungsmechanismen ein, die den gesamten Prozess für den Entwickler vollständig transparent gestalten. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Authentifizierung und Sicherheit hinzufügen</b></span><br/>
+Versehen Sie Ihre Anwendungen mit mehreren Schutzschichten. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Einschätzen und aktiv werden</b></span><br/>
+Sie können Benachrichtigungen mit der IBM Mobile Foundation senden, die Anwendungsnutzung überwachen und so Einsichten gewinnen. <br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
+        </p>
+      </main>
 
 
-            <div class="bx--col">
-
-              <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-                <h4>Authentifizierung und Sicherheit hinzufügen</h4>
-                <p>Versehen Sie Ihre Anwendungen mit mehreren Schutzschichten. </p>
-
-                <div id="go" style="text-align:right;">
-                <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-              </div>
-            </div>
-
-          <div class="bx--col">
-            <div id="card" data-tile="readonly" class="bx--tile bx--tile--readonly">
-
-              <h4>Einschätzen und aktiv werden</h4>
-              <p>Sie können Benachrichtigungen mit der IBM Mobile Foundation senden, die Anwendungsnutzung überwachen und so Einsichten gewinnen. </p>
-
-              <div id="go" style="text-align:right;">
-              <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Los"/></a>
-        </div>
-            </div>
-          </div>
-        </div>
     </div>
   </div>
 </div>

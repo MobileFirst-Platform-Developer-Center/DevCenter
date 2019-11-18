@@ -118,7 +118,7 @@ Version 8.0 weggefallen sind. In den meisten Fällen wird eine Alternative für 
     </tr>
     <tr>
         <td>Sicherheit - Bereitstellung und automatische Bereitstellung für Geräte</td>
-        <td><p>Weggefallen.</p><p>Hinweis: Die Bereitstellung für Geräte erfolgt im Rahmen des normalen Autorisierungsablaufs. Während des Registrierungsprozesses, der Teil des Sicherheitsablaufs ist, werden automatisch Gerätedaten erfasst. Weitere Informationen zum Sicherheitsablauf finden Sie unter "End-to-End-Autorisierungsablauf".</p>
+        <td><p>Weggefallen</p><p>Hinweis: Die Bereitstellung für Geräte erfolgt im Rahmen des normalen Autorisierungsablaufs. Während des Registrierungsprozesses, der Teil des Sicherheitsablaufs ist, werden automatisch Gerätedaten erfasst. Weitere Informationen zum Sicherheitsablauf finden Sie unter "End-to-End-Autorisierungsablauf".</p>
         </td>
     </tr>
     <tr>
@@ -424,7 +424,7 @@ Die folgenden APIs werden in Version 8.0 nicht weiter unterstützt.
 |`BaseProvisioningChallengeHandler` | Kein Ersatz. Die Bereitstellung für Geräte erfolgt jetzt automatisch über das Sicherheitsframework. |
 |`ChallengeHandler` |Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
 |`WLChallengeHandler` |Verwenden Sie `SecurityCheckChallengeHandler`. |
-|`ChallengeHandler.isCustomResponse()` |Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
+|`ChallengeHandler.isCustomResponse()` | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
 |`ChallengeHandler.submitAdapterAuthentication` |Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
 
 ### Windows-C#-APIs

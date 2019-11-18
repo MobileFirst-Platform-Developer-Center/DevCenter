@@ -14,7 +14,7 @@ weight: 3
 - [IBM アカウント](https://myibm.ibm.com)を使用して IBM Cloud で [OpenShift クラスターを作成します](https://cloud.ibm.com/kubernetes/registry/main/namespaces?platformType=openshift)。
 - [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli) (`ibmcloud`)。
 - [IBM パスポート・アドバンテージ (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html) から Openshift 用の IBM Mobile Foundation パッケージをダウンロードします。
-- Mobile Foundation にはデータベースが必要です。サポートされているデータベースを作成し、データベース・アクセスの詳細を以後使用できるように用意します。[ここ](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/databases/)を参照してください。
+- Mobile Foundation にはデータベースが必要です。 サポートされているデータベースを作成し、データベース・アクセスの詳細を以後使用できるように用意します。 [ここ](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/databases/)を参照してください。
 - (オプション) Mobile Foundation Analytics 用の NFS マウント・ボリューム (または) [ファイル・ストレージ](https://cloud.ibm.com/docs/containers?topic=containers-file_storage)。
 
 ### IBM Cloud 上の Red Hat OpenShift クラスターに Mobile Foundation をデプロイする手順
@@ -33,11 +33,11 @@ weight: 3
     b. 以下のコマンドを実行して、OpenShift の内部 Docker レジストリーにログインします。
 
     ```bash
-    # Create a route from the terminal to the docker registry
+    # 端末から Docker レジストリーへのルートを作成する
     oc create route reencrypt --service=docker-registry -n default
     oc get route docker-registry -n default
 
-    # login into the OpenShift internal container registry
+    # OpenShift 内部コンテナー・レジストリーにログインする
     docker login -u $(oc whoami) -p $(oc whoami -t) <docker-registry-url>
     ```
 
@@ -50,7 +50,7 @@ weight: 3
 
     $ docker login -u $(oc whoami) -p $(oc whoami -t) docker-registry-default.-xxxx.appdomain.cloud
     Login Succeeded
-    ````
+    ``>
 
 
     c. PPA アーカイブを作業ディレクトリー (例えば `mfoskpg`) に解凍し、IBM Mobile Foundation イメージをローカルにロードします。
@@ -62,7 +62,7 @@ weight: 3
     cd mfospkg/images
     ls * | xargs -I{} docker load --input {}
     export MFOS_PROJECT=<my_namespace>
-    export CONTAINER_REGISTRY_URL=<docker-registry-url>    # e.g. docker-registry-default.-xxxx.appdomain.cloud
+    export CONTAINER_REGISTRY_URL=<docker-registry-url>    # 例えば、docker-registry-default.-xxxx.appdomain.cloud
     ```
 
     d. ローカル・マシンからイメージをロードし、OpenShift レジストリーにプッシュします。
@@ -77,7 +77,7 @@ weight: 3
     done
     ```
 
-    > **重要事項:** このあと、OpenShift の内部コンテナー・レジストリーからコンテナー・イメージにアクセスするために、イメージ URL `docker-registry.default.svc:5000/<project_name>/<image_name>:<image_tag>` を使用します。
+    > **重要事項:** この後、OpenShift の内部コンテナー・レジストリーからコンテナー・イメージにアクセスするために、イメージ URL `docker-registry.default.svc:5000/<project_name>/<image_name>:<image_tag>` を使用します。
 
 2. OpenShift プロジェクトを作成します。
 
@@ -87,7 +87,7 @@ weight: 3
 
     c. クラスター・ページの**「OpenShift Web コンソール (OpenShift Web Console)」**ボタンをクリックして、OpenShift コンソールを開きます。
 
-    d. Web コンソールで OpenShift プロジェクトを作成します (または `oc` CLI を使用してプロジェクトを作成できます)。[資料](https://docs.openshift.com/container-platform/3.11/dev_guide/projects.html#create-a-project-using-the-cli)を参照してください。
+    d. Web コンソールで OpenShift プロジェクトを作成します (または `oc` CLI を使用してプロジェクトを作成できます)。 [資料](https://docs.openshift.com/container-platform/3.11/dev_guide/projects.html#create-a-project-using-the-cli)を参照してください。
 
 3. オペレーターをデプロイします。
 
@@ -101,11 +101,11 @@ weight: 3
      oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
      oc create -f deploy/
 
-     # Use your own <project_name> while running the command
+     # コマンドの実行時に独自の <project_name> を使用する
      oc adm policy add-scc-to-group mf-operator system:serviceaccounts:<project_name>
     ```
 
-     これにより、mf-operator ポッドが作成され、実行されます。ポッドをリストし、ポッドが正常に作成されたことを確認します。出力は以下のようになります。
+     これにより、mf-operator ポッドが作成され、実行されます。 ポッドをリストし、ポッドが正常に作成されたことを確認します。 出力は以下のようになります。
 
     ```bash
     $ oc get pods
@@ -114,10 +114,10 @@ weight: 3
     ```
 
 4.  データベースにアクセスするための IBM Mobile Foundation デプロイメント用の秘密を作成します。
-    >[ここ](../install-mf/#install-mf)にある資料を参照してください。
+    >[ここ](../mobilefoundation-on-openshift/#setup-openshift-for-mf)にある資料を参照してください。
 
 5.  Analytics 用の永続ボリュームおよび永続ボリューム要求を作成します。
-    >[ここ](../install-mf/#install-mf)にある資料を参照してください。
+    >[ここ](../mobilefoundation-on-openshift/#setup-openshift-for-mf)にある資料を参照してください。
 
 6.  IBM Mobile Foundation コンポーネントをデプロイします。
 
@@ -125,7 +125,7 @@ weight: 3
 
     a.  `deploy/crds/charts_v1_mfoperator_cr.yaml` でプレースホルダー REPO_URL を置き換えることで、Docker リポジトリーの URL (例えば `docker-registry.default.svc:5000/myprojectname/mfpf-server:2.0.1`) を設定します。
 
-    b.  (オプション) イメージ・レジストリーが OpenShift クラスターの外部にある場合、`deploy/crds/charts_v1_mfoperator_cr.yaml` ファイルに **pullSecret** を追加します。秘密の定義は、 以下のサンプル・スニペットのようになります。
+    b.  (オプション) イメージ・レジストリーが OpenShift クラスターの外部にある場合、`deploy/crds/charts_v1_mfoperator_cr.yaml` ファイルに **pullSecret** を追加します。 秘密の定義は、 以下のサンプル・スニペットのようになります。
 
     ```yaml
     image:
@@ -133,15 +133,15 @@ weight: 3
       pullSecret: pull-secret-name
     ```
 
-    [ここ](../install-mf/#deploy-mf-operator)にある資料を参照して、残りの構成 (レプリカ、スケーリング、DB プロパティーなど) を完了してください。
+    [ここ](../mobilefoundation-on-openshift/#deploy-mf-operator)にある資料を参照して、残りの構成 (レプリカ、スケーリング、DB プロパティーなど) を完了してください。
 
-7. カスタム・リソースを作成または更新します。この手順により、CR yaml で有効化されているすべての Mobile Foundation コンポーネントに対してポッドが作成され、実行されます。
+7. カスタム・リソースを作成または更新します。 この手順により、CR yaml で有効化されているすべての Mobile Foundation コンポーネントに対してポッドが作成され、実行されます。
 
 	```bash
 	oc apply -f deploy/crds/charts_v1_mfoperator_cr.yaml
 	```
 
-    以下のコマンドを実行し、ポッドが正常に作成され、実行されていることを確認します。Mobile Foundation サーバーおよび Push が 3 つの各レプリカ (デフォルト) で有効になっているデプロイメント・シナリオでは、出力は以下のようになります。
+    以下のコマンドを実行し、ポッドが正常に作成され、実行されていることを確認します。 Mobile Foundation サーバーおよび Push が 3 つの各レプリカ (デフォルト) で有効になっているデプロイメント・シナリオでは、出力は以下のようになります。
 
 	```bash
 	$ oc get pods
@@ -156,7 +156,6 @@ weight: 3
 	```
 
 	> **注:** Running (1/1) 状況のポッドは、サービスにアクセスできることを示します。
-
 
 8. 以下のコマンドを実行して、Mobile Foundation エンドポイントにアクセスするためのルートが作成されているかどうか確認します。
 
@@ -214,7 +213,7 @@ oc run perms-pod --overrides='
                         "name": "pvc-data"
                     }]
                 }
-            ],        
+            ],
             "volumes": [
                 {
                     "name": "pvc-data",

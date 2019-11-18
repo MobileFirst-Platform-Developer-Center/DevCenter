@@ -429,7 +429,7 @@ Nos arquivos Ant, é possível localizar os destinos predefinidos que usam a tar
 Os arquivos Ant de amostra têm destinos predefinidos. Siga este procedimento para usar os arquivos.
 
 1. Copie o arquivo Ant de acordo com seu servidor de aplicativos e configuração do banco de dados em um diretório ativo.
-2. Edite o arquivo e insira os valores para a sua configuração na seção `<! -- Start of Property Parameters -->` para o arquivo Ant.
+2. Edite o arquivo e insira os valores para sua configuração na seção `<! -- Start of Property Parameters -->` para o arquivo Ant.
 3. Execute o arquivo Ant com o destino do banco de dados: `mfp_install_dir/shortcuts/ant -f your_ant_file databases`.
 
 Esse comando cria as tabelas no banco de dados e no esquema especificados para todos os aplicativos {{ site.data.keys.mf_server }} (serviço de administração do {{ site.data.keys.mf_server }}, serviço de atualização em tempo real do {{ site.data.keys.mf_server }}, serviço de push do  {{ site.data.keys.mf_server }} e tempo de execução do {{ site.data.keys.mf_server }}). Um log para as operações é produzido e armazenado em seu disco.

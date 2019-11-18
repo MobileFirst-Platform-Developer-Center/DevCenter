@@ -80,7 +80,7 @@ configuredatabase Ant 태스크에 대한 참조 정보입니다. 이 참조 정
 
 | 속성 |설명                | 필수 | 기본값 |
 |-----------|----------------------------|----------|---------|
-|이름      | 특성의 이름입니다.	 |예      |없음    |
+| name      | 특성의 이름입니다.	 |예      |없음    |
 | value	    | 특성의 값입니다.| 예	    |없음    |   
 
 #### Apache Derby
@@ -111,7 +111,7 @@ configuredatabase Ant 태스크에 대한 참조 정보입니다. 이 참조 정
 | server    | 데이터베이스 서버의 호스트 이름입니다.	 |예      |없음  |
 | port      | 데이터베이스 서버의 포트입니다.       | 아니오	    | 50000 |
 | user      | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. | 예	    |없음  |
-|비밀번호  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	 | 아니오	    | 대화식으로 조회됨 |
+| password  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	 | 아니오	    | 대화식으로 조회됨 |
 | instance  | DB2 인스턴스의 이름입니다.          | 아니오	    | 서버에 따라 다름 |
 | schema    | 스키마 이름입니다.                       | 아니오	    | 사용자에 따라 다름   |
 
@@ -129,7 +129,7 @@ DB2 사용자 계정에 대한 자세한 정보는 [DB2 보안 모델 개요](ht
 | 속성 |설명                            | 필수 | 기본값 |
 |-----------|----------------------------------------|----------|---------|
 | user      | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다.  |예      |없음    |
-|비밀번호  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.    | 아니오	    | 대화식으로 조회됨 |
+| password  | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.    | 아니오	    | 대화식으로 조회됨 |
 
 `<dba>` 요소에 지정된 사용자는 SYSADM 또는 SYSCTRL DB2 권한이 있어야 합니다. 자세한 정보는 [권한 개요](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html)를 참조하십시오.
 
@@ -369,7 +369,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 | 속성  |설명                | 필수 | 기본값 |
 |------------|----------------------------|----------|---------|
-|이름       | 특성의 이름입니다.  |예      |없음    |
+| name       | 특성의 이름입니다.  |예      |없음    |
 | value	     | 특성의 값입니다. |	예      |없음    |
 
 이 요소를 사용하면 자체 JNDI 특성을 정의하거나 {{ site.data.keys.mf_console }} WAR 파일 및 관리 서비스에서 제공하는 JNDI 특성의 기본값을 대체할 수 있습니다.
@@ -382,7 +382,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 요소                                   |설명                                      | 개수 |
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` 또는 `<was>` |WebSphere Application Server에 대한 매개변수입니다. <br/><br/>`<websphereapplicationserver>` 요소(또는 줄여서 `was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.               | 0..1  |
+| `<websphereapplicationserver>` 또는 `<was>` |WebSphere Application Server에 대한 매개변수입니다. <br/><br/>`<websphereapplicationserver>` 요소(줄여서 `was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.               | 0..1  |
 | `<tomcat>`                                | Apache Tomcat에 대한 매개변수입니다.	               | 0..1  |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블에 설명되어 있습니다.  
@@ -390,7 +390,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 요소                  |설명                      | 개수 |
 |--------------------------|----------------------------------|-------|
-| `<collectiveController>` | Liberty Collective 제어기입니다. |	0..1  |
+| `<collectiveController>` | Liberty Collective 제어기입니다. |	 0..1  |
 
 `<collectiveController>` 요소에는 다음 속성이 있습니다.
 
@@ -438,7 +438,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 속성  |설명                | 필수 | 기본값 |
 |------------|----------------------------|----------|---------|
-|이름       | 특성의 이름입니다.  |예      |없음    |
+| name       | 특성의 이름입니다.  |예      |없음    |
 | value	     | 특성의 값입니다. |	예      |없음    |
 
 이 요소를 사용하면 자체 JNDI 특성을 정의하거나 {{ site.data.keys.mf_console }} WAR 파일 및 관리 서비스에서 제공하는 JNDI 특성의 기본값을 대체할 수 있습니다. JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오.
@@ -449,7 +449,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 요소      |설명                                              | 개수 |
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` 또는 `<was>`	| WebSphere Application Server의 매개변수입니다.<br/><br/><websphereapplicationserver> 요소(또는 줄여서 <was>)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. | 0..1  |
+| `<websphereapplicationserver>` 또는 `<was>`	| WebSphere Application Server에 대한 매개변수입니다.<br/><br/><websphereapplicationserver> 요소(줄여서 <was>)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. | 0..1  |
 | `<tomcat>`   | Apache Tomcat에 대한 매개변수입니다.                        | 0..1  |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블에 설명되어 있습니다.  
@@ -528,7 +528,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 |---------------|-------------------------------------------------|----------|---------------------------|
 | url           | Cloudant 계정의 URL입니다.                |아니오       | https://user.cloudant.com |
 | user          | Cloudant 계정의 사용자 이름입니다.	      | 예	     |없음                      |
-|비밀번호      | Cloudant 계정의 비밀번호입니다.	          | 아니오	     | 대화식으로 조회됨     |
+| password      | Cloudant 계정의 비밀번호입니다.	          | 아니오	     | 대화식으로 조회됨     |
 | dbName        | Cloudant 데이터베이스 이름입니다. **중요:** 이 데이터베이스 이름은 소문자로 시작해야 하며 소문자(a - z) 및 숫자(0 - 9)와 _, $ 및 - 문자만 포함해야 합니다.                                |아니오       | mfp_push_db               |
 
 ## {{ site.data.keys.mf_server }} 푸시 서비스 설치를 위한 Ant 태스크
@@ -562,7 +562,7 @@ JNDI 환경 항목을 사용하여 푸시 서비스에 대한 구성 특성을 �
 
 | 속성 |설명                           | 필수 | 기본값     |
 |-----------|---------------------------------------|----------|-------------|
-| id        | 다른 배치를 구별합니다.	| 아니오	   | 비어 있음
+| id        | 다른 배치를 구별합니다.	|아니오	   | 비어 있음
 | warFile	| 푸시 서비스에 대한 WAR 파일입니다.	| 아니오	   | ../PushService/mfp-push-service.war 파일은 mfp-ant-deployer.jar 파일이 포함된 MobileFirstServer 디렉토리에 대해 상대적입니다. |
 
 ### Id
@@ -618,7 +618,7 @@ JNDI 환경 항목을 사용하여 푸시 서비스에 대한 구성 특성을 �
 
 | 속성  |설명                | 필수 | 기본값 |
 |------------|----------------------------|----------|---------|
-|이름       | 특성의 이름입니다.  |	예	     |없음    |
+| name       | 특성의 이름입니다.  |	예	     |없음    |
 | value	     | 특성의 값입니다. |	예	     |없음    |
 
 이 요소를 사용하면 자체 JNDI 특성을 정의하거나 푸시 서비스 WAR 파일이 제공하는 JNDI 특성의 기본값을 대체할 수 있습니다.
@@ -640,7 +640,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 
 | 요소              |설명                  | 개수 |
 |----------------------|------------------------------|-------|
-| `<collectiveMember>` | Liberty Collective 멤버입니다. |	0..1  |
+| `<collectiveMember>` | Liberty Collective 멤버입니다. |	 0..1  |
 
 `<collectiveMember>` 요소에는 다음 속성이 있습니다.
 
@@ -676,7 +676,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 {: #username }
 {{ site.data.keys.mf_analytics }}에 대한 데이터 시작점이 기본 인증으로 보호되는 경우 사용되는 사용자 이름을 지정하려면 **username** 속성을 사용하십시오.
 
-#### 비밀번호
+#### password
 {: #password }
 {{ site.data.keys.mf_analytics }}에 대한 데이터 시작점이 기본 인증으로 보호되는 경우 사용되는 비밀번호를 지정하려면 **password** 속성을 사용하십시오.
 
@@ -791,7 +791,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 | 속성 |설명                | 필수 | 기본값 |
 |-----------|----------------------------|----------|---------|
-|이름      | 특성의 이름입니다.	 |예      |없음    |
+| name      | 특성의 이름입니다.	 |예      |없음    |
 | value	    | 특성의 값입니다.| 예	    |없음    |  
 
 `<applicationserver>` 요소는 {{ site.data.keys.product_adj }} 애플리케이션이 배치되는 애플리케이션 서버를 설명합니다. 이 요소는 다음 요소 중 하나의 컨테이너입니다.
@@ -808,7 +808,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | installdir      |	WebSphere Application Server 설치 디렉토리입니다.   |예                      |없음    |
 | profile         |	WebSphere Application Server 프로파일 또는 Liberty입니다.      | 예	                  |없음    |
 | user            I	WebSphere Application Server 관리자 이름입니다.	               | 예(Liberty 제외)  |없음    |
-|비밀번호        | WebSphere Application Server 관리자 비밀번호입니다.   | 아니오 |         |
+| password        | WebSphere Application Server 관리자 비밀번호입니다.   | 아니오 |         |
 | libertyEncoding |	WebSphere Application Server Liberty에 대한 데이터 소스 비밀번호를 인코딩하는 알고리즘입니다. 가능한 값은 없음, xor 및 aes입니다. xor 또는 aes 인코딩이 사용되는지 여부에 관계없이 명확한 비밀번호가 인수로 securityUtility 프로그램에 전달되며 이는 외부 프로세스를 통해 호출됩니다. ps 명령을 사용하거나 UNIX 운영 체제의 /proc 파일 시스템에서 비밀번호를 볼 수 있습니다.                                                         |아니오                       |	xor     |
 | jeeVersion      |	Liberty 프로파일용입니다. JEE6 웹 프로파일 또는 JEE7 웹 프로파일의 기능을 설치할지 여부를 지정합니다. 가능한 값은 6, 7 또는 auto입니다.|아니오 | auto |
 | configureFarm   |	WebSphere Application Server Liberty 및 WebSphere Application Server 전체 프로파일용입니다(WebSphere Application Server Network Deployment 에디션 및 Liberty Collective용이 아님). 서버가 서버 팜 멤버인지 여부를 지정합니다. 가능한 값은 true 또는 false입니다. | 아니오	      | false   |
@@ -850,7 +850,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | 요소     |설명                                   | 개수 |
 |-------------|-----------------------------------------------|-------|
 | `<cell>`    |	전체 셀입니다.	                          | 0..1  |
-| `<cluster>` |	클러스터의 모든 서버입니다.                 |	0..1  |
+| `<cluster>` |	클러스터의 모든 서버입니다.                 |	 0..1  |
 | `<node>`    |	클러스터를 제외한 노드의 모든 서버입니다. | 0..1  |
 | `<server>`  |	단일 서버입니다.	                          | 0..1  |
 
@@ -858,15 +858,15 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 `<cluster>` 요소에는 다음 속성이 있습니다.
 
-| 속성 |설명       | 필수 | 기본값 |
+|속성 |설명       |필수 |기본값 |
 |-----------|-------------------|----------|---------|
-|이름      | 클러스터 이름입니다. | 예	   |없음    |
+| name      | 클러스터 이름입니다. | 예	   |없음    |
 
 `<node>` 요소에는 다음 속성이 있습니다.
 
 | 속성 |설명    | 필수 | 기본값 |
 |-----------|----------------|----------|---------|
-|이름      | 노드 이름입니다. | 예	    |없음    |
+| name      | 노드 이름입니다. | 예	    |없음    |
 
 Network Deployment 컨텍스트에서 사용되는 `<server>` 요소에는 다음 속성이 있습니다.
 
@@ -908,7 +908,7 @@ Network Deployment 컨텍스트에서 사용되는 `<server>` 요소에는 다�
 | analyticsURL | {{ site.data.keys.mf_analytics }} 서비스의 URL입니다.	                                      |예      |없음    |
 | consoleURL   | {{ site.data.keys.mf_analytics_console }}의 URL입니다.	                                      |예      |없음    |
 | username     | 사용자 이름입니다.	                                                                  |예      |없음    |
-|비밀번호     | 비밀번호입니다.	                                                                  |예      |없음    |
+| password     | 비밀번호입니다.	                                                                  |예      |없음    |
 | validate     | {{ site.data.keys.mf_analytics_console }}에 액세스 가능한지 여부를 유효성 검증합니다.	      | 아니오	     | true    |
 | tenant       | {{ site.data.keys.product_adj }} 런타임에서 수집되는 데이터의 색인화를 위한 테넌트입니다.	      |아니오       | 내부 ID |
 
@@ -930,7 +930,7 @@ Network Deployment 컨텍스트에서 사용되는 `<server>` 요소에는 다�
 {: #username-1 }
 {{ site.data.keys.mf_analytics }}에 대한 데이터 시작점이 기본 인증으로 보호되는 경우 사용되는 사용자 이름을 지정하려면 **username** 속성을 사용하십시오.
 
-#### 비밀번호
+#### password
 {: #password-1 }
 {{ site.data.keys.mf_analytics }}에 대한 데이터 시작점이 기본 인증으로 보호되는 경우 사용되는 비밀번호를 지정하려면 **password** 속성을 사용하십시오.
 
@@ -974,7 +974,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 | server     | 데이터베이스 서버의 호스트 이름입니다.      | 예	     |없음    |
 | port       | 데이터베이스 서버의 포트입니다.           | 아니오	     | 50000   |
 | user       | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다.     | 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다.                                 | 예 |I 예 I 없음 I |
-|비밀번호   | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.      |아니오       | 대화식으로 조회됨 |
+| password   | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.      |아니오       | 대화식으로 조회됨 |
 | schema     | 스키마 이름입니다.                           |아니오       | 사용자에 따라 다름 |
 
 DB2 사용자 계정에 대한 자세한 정보는 [DB2 보안 모델 개요](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)를 참조하십시오.  
@@ -997,8 +997,8 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 | 속성  |설명                                | 필수 | 기본값 |
 |------------|--------------------------------------------|----------|---------|
 | database	 | 데이터베이스 이름입니다.	                      |아니오       |유형에 따라 MFPDATA, MFPADM, MFPCFG, MFPPUSH 또는 APPCNTR |
-|server	 | 데이터베이스 서버의 호스트 이름입니다.	  |예      |없음    |
-|port	     | 데이터베이스 서버의 포트입니다.           | 아니오	     | 3306    |
+| server	 | 데이터베이스 서버의 호스트 이름입니다.	  |예      |없음    |
+| port	     | 데이터베이스 서버의 포트입니다.           | 아니오	     | 3306    |
 | user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. | 예 |예 |없음 |
 |password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	  | 아니오	     | 대화식으로 조회됨 |
 
@@ -1031,8 +1031,8 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 | 속성  |설명                                | 필수 | 기본값 |
 |------------|--------------------------------------------|----------|---------|
 | database   | 데이터베이스 이름 또는 Oracle 서비스 이름입니다. 참고: 항상 서비스 이름을 사용하여 PDB 데이터베이스에 연결해야 합니다. |아니오 | ORCL |
-|server	 | 데이터베이스 서버의 호스트 이름입니다.	I 예 I 없음 I
-|port	     | 데이터베이스 서버의 포트입니다.	I 없음 I 1521 I
+| server	 | 데이터베이스 서버의 호스트 이름입니다.	I 예 I 없음 I
+| port	     | 데이터베이스 서버의 포트입니다.	I 없음 I 1521 I
 | user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오. |예 |없음 |
 |password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.	  |아니오       | 대화식으로 조회됨 |
 
@@ -1068,7 +1068,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 | 속성  |설명                                | 필수 | 기본값 |
 |------------|--------------------------------------------|----------|---------|
-|이름       | 특성의 이름입니다.	              |예      |없음    |
+| name       | 특성의 이름입니다.	              |예      |없음    |
 | type	     | 특성 값의 Java 유형입니다(일반적으로 java.lang.String/Integer/Boolean). |아니오 | java.lang.String |
 | value	     | 특성의 값입니다.	              |예      |없음   |
 
@@ -1295,7 +1295,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 | 속성  |설명                | 필수 | 기본값 |
 |------------|----------------------------|----------|---------|
-|이름       | 특성의 이름입니다.  |예      |없음    |
+| name       | 특성의 이름입니다.  |예      |없음    |
 | value	     | 특성의 값입니다. |	예      |없음    |
 
 ### 사용자 및 보안 역할 지정
@@ -1409,7 +1409,7 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 
 | 속성  |설명                | 필수 | 기본값 |
 |------------|----------------------------|----------|---------|
-|이름       | 특성의 이름입니다.  |예      |없음    |
+| name       | 특성의 이름입니다.  |예      |없음    |
 | value	     | 특성의 값입니다. |	예      |없음    |
 
 ## 내부 런타임 데이터베이스

@@ -1078,8 +1078,8 @@ Application Center 用に WebSphere Application Server Liberty プロファイ�
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * Windows システムの場合:
 
@@ -1211,7 +1211,7 @@ Application Center 用の Apache Tomcat を手動で構成するには、JAR お
                        value="product_install_dir/ApplicationCenter/tools/android-sdk"
                        type="java.lang.String" override="false"/>
           <!-- The protocol of the application resources URI.
-               このプロパティーは任意指定です。 It is only needed if the protocol
+               This property is optional. It is only needed if the protocol
                of the external and internal URI are different. -->
           <!-- <Environment name="ibm.appcenter.proxy.protocol"
                             value="http" type="java.lang.String" override="false"/>
@@ -1354,8 +1354,8 @@ Application Center EAR ファイルをデプロイした後、Application Center
 
       ```bash
       mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-      cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-      cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
       ```
     * Windows システムの場合:
 

@@ -1,6 +1,10 @@
-<!DOCTYPE html>
+---
+layout: default
+indexed: false
+---
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
 <link href="custom-style.css" type="text/css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet"/>
@@ -28,32 +32,26 @@
 </head>
 <body>
 <div class="wrapper" style="width: 100%">
-<header class="bx--header" role="banner" aria-label="Nome da plataforma IBM" data-header>
-  <a class="bx--skip-to-content" href="#main-content" tabindex="0">Ignorar e seguir para o conteúdo principal</a>
+<!-- <header class="bx--header" role="banner" aria-label="IBM Platform Name" data-header>
+  <a class="bx--skip-to-content" href="#main-content" tabindex="0">Skip to main content</a>
 
   <a class="bx--header__name" href="" title="">
     <span class="bx--header__name--prefix">
-      Mobile&nbsp;Foundation&nbsp;{dev}
+      IBM&nbsp;Mobile&nbsp;Foundation
     </span>
   </a>
 
-  <nav class="bx--header__nav" aria-label="Nome da plataforma" data-header-nav>
-    <ul class="bx--header__menu-bar" role="menubar" aria-label="Nome da plataforma">
-    <li>
-        <a class="bx--header__menu-item" href="../../../../features/" role="menuitem" tabindex="0">
-          Recursos
-        </a>
-      </li>
-
+  <nav class="bx--header__nav" aria-label="Platform Name" data-header-nav>
+    <ul class="bx--header__menu-bar" role="menubar" aria-label="Platform Name">
       <li class="bx--header__submenu" data-header-submenu>
         <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
           aria-expanded="false" href="javascript:void(0)" tabindex="0">
-          Desenvolvedores
+          Developers
           <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
             <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
           </svg>
         </a>
-        <ul class="bx--header__menu" role="menu" aria-label="Desenvolvedores">
+        <ul class="bx--header__menu" role="menu" aria-label="Developers">
               <li class="bx--header__submenu" data-header-submenu>
                 <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ios-tutorials/" tabindex="-1">
                   <span class="bx--text-truncate--end">
@@ -71,7 +69,7 @@
                   <li class="bx--header__submenu" data-header-submenu>
                     <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../tutorials/en/foundation/8.0/windows-8-10-tutorials/" tabindex="-1">
                       <span class="bx--text-truncate--end">
-                        Windows 8 e 10
+                        Windows 8 and 10
                       </span>
                     </a>
                     </li>
@@ -117,37 +115,44 @@
       <li class="bx--header__submenu" data-header-submenu>
         <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
           aria-expanded="false" href="javascript:void(0)" tabindex="0">
-          Documentos
+          Documentation
           <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
             <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
           </svg>
         </a>
-        <ul class="bx--header__menu" role="menu" aria-label="Documentos">
+        <ul class="bx--header__menu" role="menu" aria-label="Docs">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/digital-app-builder/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Digital App Builder
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation on Cloud Pak for Applications
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/ibmcloud/getting-started-mf-on-rhos/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation on Red Hat OpenShift
+              </span>
+            </a>
+          </li>
           <li role="none">
             <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/8.0/all-tutorials/" tabindex="-1">
               <span class="bx--text-truncate--end">
-                Foundation 8.0
+                Mobile Foundation 8.0
               </span>
             </a>
           </li>
           <li role="none">
             <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.1/all-tutorials/" tabindex="-1">
               <span class="bx--text-truncate--end">
-                Foundation 7.1
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/7.0/all-tutorials/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Foundation 7.0
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../tutorials/en/foundation/6.3/all-tutorials/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Foundation 6.3
+                Mobile Foundation 7.1
               </span>
             </a>
           </li>
@@ -156,52 +161,12 @@
       <li class="bx--header__submenu" data-header-submenu>
         <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
           aria-expanded="false" href="javascript:void(0)" tabindex="0">
-          Laboratórios
+          Releases
           <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
             <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
           </svg>
         </a>
-        <ul class="bx--header__menu" role="menu" aria-label="Laboratórios">
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/8.0/intro/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Laboratórios do Foundation 8.0
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.1/setup/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Laboratórios do Foundation 7.1
-              </span>
-            </a>
-          </li>
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.0/setup/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Laboratórios do Foundation 7.0
-              </span>
-            </a>
-          </li>
-        </ul>
-      </li>
-
-      <li class="bx--header__submenu" data-header-submenu>
-        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
-          aria-expanded="false" href="javascript:void(0)" tabindex="0">
-          Recursos
-          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
-            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
-          </svg>
-        </a>
-        <ul class="bx--header__menu" role="menu" aria-label="Recursos">
-          <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../blog/" tabindex="-1">
-              <span class="bx--text-truncate--end">
-                Blog
-              </span>
-            </a>
-          </li>
+        <ul class="bx--header__menu" role="menu" aria-label="Docs">
           <li role="none">
             <a class="bx--header__menu-item" role="menuitem" href="../../../../downloads/" tabindex="-1">
               <span class="bx--text-truncate--end">
@@ -210,19 +175,80 @@
             </a>
           </li>
           <li role="none">
-            <a class="bx--header__menu-item" role="menuitem" href="../../../../video-gallery/" tabindex="-1">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../releases/" tabindex="-1">
               <span class="bx--text-truncate--end">
-                Vídeo e galeria
+                Release notes
               </span>
             </a>
           </li>
-
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../blog/tag/Announcement/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Announcements
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../blog/2018/05/18/8-0-master-ifix-release/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                iFix notes Foundation 8.0
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../blog/2018/05/18/7-1-master-ifix-release/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                iFix notes Foundation 7.1
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" href="../../../../blog/" tabindex="0">
+          <span class="bx--text-truncate--end">
+            Blog
+          </span>
+        </a>
+      </li>
+      <li class="bx--header__submenu" data-header-submenu>
+        <a class="bx--header__menu-item bx--header__menu-title" role="menuitem" aria-haspopup="true"
+          aria-expanded="false" href="javascript:void(0)" tabindex="0">
+          Samples
+          <svg class="bx--header__menu-arrow" width="12" height="7" aria-hidden="true">
+            <path d="M6.002 5.55L11.27 0l.726.685L6.003 7 0 .685.726 0z" />
+          </svg>
+        </a>
+        <ul class="bx--header__menu" role="menu" aria-label="Labs">
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/8.0/intro/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 8.0 Labs
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../labs/developers/7.1/setup/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Foundation 7.1 Labs
+              </span>
+            </a>
+          </li>
+          <li role="none">
+            <a class="bx--header__menu-item" role="menuitem" href="../../../../video-gallery/" tabindex="-1">
+              <span class="bx--text-truncate--end">
+                Video&nbsp;Gallery
+              </span>
+            </a>
+          </li>
         </ul>
       </li>
 
+
+
       <li>
         <a class="bx--header__menu-item" href="../../../../help/" role="menuitem" tabindex="0">
-          Ajuda
+          Help
         </a>
       </li>
 
@@ -231,12 +257,12 @@
 
 
 </header>
-
+-->
 <div class="bx--content" style="background-image: url('header.jpg')">
   <div class="banner">
   <div class="bx--row" >
     <div class="bx--col" style="padding-left: 0px"><h2 style="color:white">Mobile Foundation Services no IBM Cloud Pak for Applications</h2>
-      <p style="color:white">Crie e implemente rapidamente a nova geração de aplicativos digitais multicanais, incluindo dispositivos móveis, dispositivos vestíveis, conversas, web e PWAs. Aprimore seus aplicativos com serviços de back-end móveis e conteinerizados. </p>
+      <p style="color:white">Crie e implemente rapidamente a nova geração de aplicativos digitais multicanais, incluindo dispositivos móveis, dispositivos vestíveis, conversas, web e PWAs. Aprimore seus aplicativos com serviços de back-end móveis e conteinerizados.</p>
       <a href="../../../../tutorials/en/foundation/8.0/ibmcloud/getting-started-mf-on-rhos/" target="_blank"><button  class="bx--btn bx--btn--primary" type="button">Introdução
       </button></a>
       <br/>
@@ -297,7 +323,7 @@
             <div class="mc" style="background-color: #ffffff" tabindex="0">
               <svg width="23" height="24" fill-rule="evenodd"><path d="M20.5 18v-6h-9V5.9C12.9 5.7 14 4.5 14 3c0-1.7-1.3-3-3-3S8 1.3 8 3c0 1.5 1.1 2.7 2.5 2.9V12h-8v6.1C1.1 18.4 0 19.6 0 21c0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.5-1.1-2.7-2.5-2.9V13h16v5.1c-1.4.2-2.5 1.5-2.5 2.9 0 1.7 1.3 3 3 3s3-1.3 3-3c0-1.5-1-2.8-2.5-3zM9 3c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zM5 21c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm15 2c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></svg>
               <h3>Gerenciar e controlar</h3>
-              <p>Permita que os desenvolvedores construam, implementem e gerenciem rapidamente seus aplicativos em cloud, aprofundando-se em um ecossistema crescente de serviços disponíveis e estruturas de tempo de execução. </p>
+              <p>Permita que os desenvolvedores construam, implementem e gerenciem rapidamente seus aplicativos em cloud, aprofundando-se em um ecossistema crescente de serviços disponíveis e estruturas de tempo de execução.</p>
 
               <section class="bx--structured-list">
               <div class="bx--structured-list-thead">
@@ -336,7 +362,7 @@
             <div class="sr" style="background-color: #ffffff" tabindex="0">
               <svg width="24" height="24" fill-rule="evenodd"><path d="M0 0v24h24V0H0zm22.1 7l-7.2 8.9-9.2-3.8c-.2-.1-.4 0-.6.1L1 16.6V7h21.1zm.9 16H1v-4.9l4.6-5 9.2 3.8c.2.1.4 0 .6-.1L23 7.5V23zm0-17H1V1h22v5z"></path></svg>
               <h3>Perceber e responder</h3>
-              <p>Mantenha seu engajamento de usuário relevante e eficaz obtendo insights sobre o desempenho de seu aplicativo com os usuários por meio de visualizações integradas. </p>
+              <p>Mantenha seu engajamento de usuário relevante e eficaz obtendo insights sobre o desempenho de seu aplicativo com os usuários por meio de visualizações integradas.</p>
               <section class="bx--structured-list">
               <div class="bx--structured-list-thead">
                 <div class="bx--structured-list-row bx--structured-list-row--header-row">
@@ -372,7 +398,7 @@
             <div class="pn" style="background-color: #ffffff" tabindex="0">
               <svg width="24" height="24" fill-rule="evenodd"><path d="M21 13V3h-3v1h2v9h-3v11h7V13h-3zm2 10h-5v-9h5v9zM17 3.5L11 0v3H3v13h1V4h7v3l6-3.5zm-5-1.8l3 1.8-3 1.8V1.7zM16 20H6.4c-.3-1.4-1.6-2.5-3.2-2.5C1.4 17.5 0 19 0 20.7 0 22.5 1.5 24 3.2 24c1.7 0 3.1-1.3 3.2-3h9.5l.1-1zM3.2 23C2 23 1 22 1 20.7c0-1.2 1-2.2 2.2-2.2 1.2 0 2.2 1 2.2 2.2.1 1.3-.9 2.3-2.2 2.3z"></path></svg>
               <h3>Promover o engajamento com seus usuários</h3>
-              <p>Envolva seu público por meio de um mecanismo de notificações unificado que torna todo o processo de envio de notificações completamente transparente para o desenvolvedor. </p>
+              <p>Envolva seu público por meio de um mecanismo de notificações unificado que torna todo o processo de envio de notificações completamente transparente para o desenvolvedor.</p>
               <section class="bx--structured-list">
               <div class="bx--structured-list-thead">
                 <div class="bx--structured-list-row bx--structured-list-row--header-row">
@@ -410,7 +436,7 @@
             <div class="pd" style="background-color: #ffffff" tabindex="0">
               <svg width="24" height="24" fill-rule="evenodd"><path d="M14 1v22H1V1h13zm1-1H0v24h15V0zM23 1v22h-5V1h5zm1-1h-7v24h7V0z"></path><path d="M12 4v4H3V4h9zm1-1H2v6h11V3zM21 3v1h-1V3h1zm1-1h-3v3h3V2zM21 7v1h-1V7h1zm1-1h-3v3h3V6zM21 11v1h-1v-1h1zm1-1h-3v3h3v-3zM21 15v1h-1v-1h1zm1-1h-3v3h3v-3zM21 19v1h-1v-1h1zm1-1h-3v3h3v-3z"></path></svg>
               <h3>Empacotar e distribuir</h3>
-              <p>Use o centro de aplicativos como um armazenamento de aplicativos corporativo e direcione a disponibilidade de alguns aplicativos móveis para determinados grupos de usuários da empresa. </p>
+              <p>Use o centro de aplicativos como um armazenamento de aplicativos corporativo e direcione a disponibilidade de alguns aplicativos móveis para determinados grupos de usuários da empresa.</p>
               <section class="bx--structured-list">
               <div class="bx--structured-list-thead">
                 <div class="bx--structured-list-row bx--structured-list-row--header-row">

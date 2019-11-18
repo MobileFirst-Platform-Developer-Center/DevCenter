@@ -166,7 +166,7 @@ WebSphere Application Server Network Deployment では、ランタイムおよ�
 {: #constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime }
 サーバー・トポロジーごとの管理サービス、ライブ更新サービス、およびランタイムの制約とデプロイメント・モードについて説明します。
 
-[『{{ site.data.keys.mf_server }} 管理サービスから {{ site.data.keys.mf_server }} ライブ更新サービスへ』](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)の説明にあるように、ライブ更新サービスは、常に管理サービスと共に同じアプリケーション・サーバー上にインストールされている必要があります。 ライブ更新サービスのコンテキスト・ルートは、`/<adminContextRoot>config>config` のように定義する必要があります。 例えば、管理サービスのコンテキスト・ルートが **/mfpadmin** の場合、ライブ更新サービスのコンテキスト・ルートは **/mfpadminconfig** でなければなりません。
+[『{{ site.data.keys.mf_server }} 管理サービスから {{ site.data.keys.mf_server }} ライブ更新サービスへ』](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)の説明にあるように、ライブ更新サービスは、常に管理サービスと共に同じアプリケーション・サーバー上にインストールされている必要があります。 ライブ更新サービスのコンテキスト・ルートは、`/<adminContextRoot>config` のように定義する必要があります。 例えば、管理サービスのコンテキスト・ルートが **/mfpadmin** の場合、ライブ更新サービスのコンテキスト・ルートは **/mfpadminconfig** でなければなりません。
 
 使用できるアプリケーション・サーバー・トポロジーは以下のとおりです。
 

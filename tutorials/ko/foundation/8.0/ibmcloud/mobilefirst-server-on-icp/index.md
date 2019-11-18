@@ -519,9 +519,10 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 | 컴포넌트 | CPU  |메모리 | 스토리지
 |---|---|---|---|
 | Mobile Foundation Server | **요청/최소:** 1000m CPU, **제한/최대:** 2000m CPU | **요청/최소:** 2048Mi 메모리, **제한/최대:** 4096Mi 메모리 | 데이터베이스 요구사항의 경우 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts) 참조
-| Mobile Foundation Push | **요청/최소:** 1000m CPU, **제한/최대:** 2000m CPU | **요청/최소:** 2048Mi 메모리, **제한/최대:** 4096Mi 메모리 | 데이터베이스 요구사항의 경우 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts) 참조
-| Mobile Foundation Analytics | **요청/최소:** 1000m CPU, **제한/최대:** 2000m CPU | **요청/최소:** 2048Mi 메모리, **제한/최대:** 4096Mi 메모리 | 지속적 볼륨. 자세한 정보는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts) 참조
-| Mobile Foundation Application Center | **요청/최소:** 1000m CPU, **제한/최대:** 2000m CPU | **요청/최소:** 2048Mi 메모리, **제한/최대:** 4096Mi 메모리 | 데이터베이스 요구사항의 경우 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts) 참조
+| Mobile Foundation Push | **요청/최소:** 1000m CPU, **제한/최대:** 2000m CPU | **요청/최소:** 2048Mi 메모리, **제한/최대:** 4096Mi 메모리  | 데이터베이스 요구사항의 경우 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts) 참조
+| Mobile Foundation Analytics | **요청/최소:** 1000m CPU, **제한/최대:** 2000m CPU  | **요청/최소:** 2048Mi 메모리, **제한/최대:** 4096Mi 메모리  | 지속적 볼륨. 자세한 정보는 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts) 참조
+| Mobile Foundation Application Center | **요청/최소:** 1000m CPU, **제한/최대:** 2000m CPU | **요청/최소:** 2048Mi 메모리, **제한/최대:** 4096Mi 메모리  | 데이터베이스 요구사항의 경우 [IBM {{ site.data.keys.product }} Helm Charts 설치 및 구성](#configure-install-mf-helmcharts) 참조
+
 ## 구성
 {: #configuration}
 
@@ -535,16 +536,16 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 |      | s390x    | 하이브리드 클러스터에서의 S390x 작업자 노드 스케줄러 선호사항 | 2 - 선호사항 없음(기본값) |
 | global.image     | pullPolicy |이미지 가져오기 정책 | Always, Never 또는 IfNotPresent. 기본값: IfNotPresent |
 |      |  pullSecret    | 이미지 가져오기 시크릿 | 이미지가 ICP 이미지 레지스트리에 호스팅되지 않은 경우에만 필수 |
-| global.ingress | hostname | 외부 클라이언트에서 사용할 외부 호스트 이름 또는 IP 주소 | 기본적으로 클러스터 프록시 노드의 IP 주소로 설정하려면 공백으로 두기 |
-|         |secret| TLS 시크릿 이름| Ingress 정의에서 사용해야 하는 인증서의 스크릿 이름을 지정합니다. 시크릿은 관련 인증서 및 키를 사용하여 사전에 작성해야 합니다. SSL/TLS를 사용하는 경우 필수입니다. 여기에 이름을 제공하기 전에 인증서 & 키를 사용하여 시크릿을 사전에 작성하십시오. |
+| global.ingress | hostname | 외부 클라이언트에서 사용할 외부 호스트 이름 또는 IP 주소 | 기본적으로 클러스터 프록시 노드의 IP 주소로 설정하려면 공백으로 두기|
+|         |secret | TLS 시크릿 이름| Ingress 정의에서 사용해야 하는 인증서의 스크릿 이름을 지정합니다. 시크릿은 관련 인증서 및 키를 사용하여 사전에 작성해야 합니다. SSL/TLS를 사용하는 경우 필수입니다. 여기에 이름을 제공하기 전에 인증서 & 키를 사용하여 시크릿을 사전에 작성하십시오. |
 |         | sslPassThrough | SSL 패스스루 사용 | Mobile Foundation 서비스로 SSL 요청을 패스스루해야 하는지 여부를 지정합니다. Mobile Foundation 서비스에서 SSL이 종료됩니다. 기본값: false |
-| global.dbinit | enabled | Server, Push, Application Center 데이터베이스 초기화 사용 | Server, Push, Application Center 배치의 경우 데이터베이스를 초기화하고 스키마/테이블을 작성합니다(Analytics의 경우 필요하지 않음).  기본값: true |
+| global.dbinit | enabled | Server, Push, Application Center 데이터베이스 초기화 사용 | Server, Push, Application Center 배치의 경우 데이터베이스를 초기화하고 스키마/테이블을 작성합니다(Analytics의 경우 필요하지 않음). 기본값: true |
 |  | repository | 데이터베이스 초기화를 위한 Docker 이미지 저장소 | Mobile Foundation 데이터베이스 Docker 이미지의 저장소 |
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
-| mfpserver | enabled          | Server를 사용하도록 플래그 지정| true(기본값) 또는 false |
+| mfpserver | enabled          | Server를 사용하도록 플래그 지정 | true(기본값) 또는 false |
 | mfpserver.image | repository | Docker 이미지 저장소 | Mobile Foundation Server Docker 이미지 저장소 |
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
-|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인 |
+|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인|
 |  mfpserver.db | host | Mobile Foundation Server 테이블을 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름. | IBM DB2®(기본값). |
 |                       | port | 	데이터베이스가 설정되는 포트 | |
 |                       | secret | 데이터베이스 신임 정보를 포함하는 사전 작성된 시크릿| |
@@ -589,7 +590,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 | mfpanalytics | enabled          | Analytics를 사용하도록 플래그 지정 | false(기본값) 또는 true |
 | mfpanalytics.image | repository          | Docker 이미지 저장소 | Mobile Foundation Operational Analytics Docker 이미지의 저장소 |
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
-|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인 |
+|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인|
 | mfpanalytics.replicas |  | 작성해야 하는 Mobile Foundation Operational Analytics의 인스턴스 수(팟(Pod)) | 양의 정수(기본값: 2) |
 | mfpanalytics.autoscaling     | enabled | 수평 팟(Pod) 자동 스케일러(HPA)의 배치 여부를 지정합니다. 이 필드를 사용하면 replicaCount 필드를 사용하지 않습니다. | false(기본값) 또는 true |
 |           | minReplicas  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: 1) |
@@ -613,16 +614,16 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 |           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  | 기본값은 1000m입니다. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |           | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값은 2048Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
 | mfpappcenter | enabled          | Application Center를 사용하도록 플래그 지정 | false(기본값) 또는 true |  
-| mfpappcenter.image | repository          | Docker 이미지 저장소 | Mobile Foundation Application Center Docker 이미지의 저장소|
+| mfpappcenter.image | repository          | Docker 이미지 저장소 | Mobile Foundation Application Center Docker 이미지의 저장소 |
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
-|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인 |
-|  mfpappcenter.db | host | Appcenter 데이터베이스에서 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름 | |
+|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인|
+|  mfpappcenter.db | host | Appcenter 데이터베이스에서 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름	| |
 |                       | port | 	데이터베이스 포트  | |             
 |                       | name | 사용할 데이터베이스의 이름 | 데이터베이스가 사전에 작성되어야 합니다.|
 |                       | secret | 데이터베이스 신임 정보를 포함하는 사전 작성된 시크릿| |
 |                       | schema | 작성할 Application Center 데이터베이스 스키마. | 스키마가 이미 있으면 이를 사용합니다. 없으면 작성됩니다. |
 |                       | ssl | 데이터베이스 연결 유형  | 데이터베이스 연결이 http 또는 https여야 하는지를 지정합니다. 기본값: false(http). 동일한 연결 모드로 데이터베이스 포트도 구성해야 합니다. |
-|                       | driverPvc | 	 JDBC 데이터베이스 드라이버에 액세스하기 위한 지속적 볼륨 청구| JDBC 데이터베이스 드라이버를 호스팅하는 지속적 볼륨 청구 이름을 지정합니다. 선택된 데이터베이스 유형이 DB2가 아닌 경우 필수입니다. |
+|                       | driverPvc | 	 JDBC 데이터베이스 드라이버에 액세스하기 위한 지속적 볼륨 청구  | JDBC 데이터베이스 드라이버를 호스팅하는 지속적 볼륨 청구 이름을 지정합니다. 선택된 데이터베이스 유형이 DB2가 아닌 경우 필수입니다. |
 |                       | adminCredentialsSecret | Application Center DB 관리 시크릿 | DB 초기화를 사용하는 경우 Mobile Foundation 컴포넌트를 위해 데이터베이스 테이블과 스키마를 작성하려면 시크릿 제공 |
 | mfpappcenter.autoscaling     | enabled | 수평 팟(Pod) 자동 스케일러(HPA)의 배치 여부를 지정합니다. 이 필드를 사용하면 replicaCount 필드를 사용하지 않습니다. | false(기본값) 또는 true |
 |           | minReplicas  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: 1) |

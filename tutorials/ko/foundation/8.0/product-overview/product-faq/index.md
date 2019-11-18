@@ -21,7 +21,7 @@ weight: 1
         <div id="collapse-mfp-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq1">
             <div class="panel-body">
               <p>IBM Mobile Foundation v8.0에는 Continuous Delivery 지원 정책이 있습니다.<br/>
-                            Continuous Delivery 지원 모델에 대해 자세히 알아보려면 <a href="https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/0/897/ENUS217-390/index.html&request_locale=en" target="_blank">Mobile Foundation v8.0 CD 지원 공지사항</a>을 참조하십시오.
+              Continuous Delivery 지원 모델에 대해 자세히 알아보려면 <a href="https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/0/897/ENUS217-390/index.html&request_locale=en" target="_blank">Mobile Foundation v8.0 CD 지원 공지사항</a>을 참조하십시오.
 .</p>
          </div>
         </div>      
@@ -59,8 +59,8 @@ weight: 1
         <div id="collapse-mfp-faq4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq4">
             <div class="panel-body">
                 <p><a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/01/31/mfp-on-ibmcloud-private-announce/" target="_blank">여기</a>에서 Mobile Foundation v8.0 on ICP 공지사항 블로그를 볼 수 있습니다.<br/>
-                Mobile Foundation Developer 에디션은 ICP에서 릴리스되었으며 공지사항은 <a href="https://mobilefirstplatform.ibmcloud.com/blog/2019/01/29/mfp-community-edition-on-icp/" target="_blank">여기</a>에서 볼 수 있습니다.<br/>
-                Mobile Foundation v8.0 on ICP를 시작하려면 <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/" target="_blank">문서</a>를 참조하십시오.</p>
+Mobile Foundation Developer 에디션은 ICP에서 릴리스되었으며 공지사항은 <a href="https://mobilefirstplatform.ibmcloud.com/blog/2019/01/29/mfp-community-edition-on-icp/" target="_blank">여기</a>에서 볼 수 있습니다.<br/>
+Mobile Foundation v8.0 on ICP를 시작하려면 <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/" target="_blank">문서</a>를 참조하십시오.</p>
             </div>
         </div>      
     </div>

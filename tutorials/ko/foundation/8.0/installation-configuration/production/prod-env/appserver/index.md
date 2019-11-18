@@ -21,6 +21,7 @@ weight: 4
 * [Ant 태스크를 사용한 설치](#installing-with-ant-tasks)
 * [{{ site.data.keys.mf_server }} 컴포넌트 수동 설치](#installing-the-mobilefirst-server-components-manually)
 * [서버 팜 설치](#installing-a-server-farm)
+* [Mobile Foundation 런타임 스케줄러](#mf-runtime-scheduler)
 
 ## 애플리케이션 서버 전제조건
 {: #application-server-prerequisites }
@@ -421,7 +422,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
 * [{{ site.data.keys.mf_server }} 푸시 서비스 설치를 위한 Ant 태스크](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
 * [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-샘플 구성 파일 및 태스크를 사용한 설치에 대한 개요는 [명령행 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/tutorials/command-line)를 참조하십시오.
+샘플 구성 파일 및 태스크를 사용한 설치에 대한 개요는 [명령행 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/command-line)를 참조하십시오.
 
 제품 설치의 일부인 Ant 배포를 사용하여 Ant 파일을 실행할 수 있습니다. 예를 들어, WebSphere Application Server Network Deployment 클러스터를 가지고 있고 데이터베이스가 IBM DB2인 경우 **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-wasnd-cluster-db2.xml** Ant 파일을 사용할 수 있습니다. 파일을 편집하고 모든 필수 특성을 입력한 후 **mfp\_install\_dir/MobileFirstServer/configuration-samples** 디렉토리에서 다음과 같은 명령을 실행할 수 있습니다.
 
@@ -801,7 +802,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 사용할 수 �
 {% endhighlight %}
 
                 <p>mfp.admin.endpoint 특성의 일반적인 값은 <b>*://*:*/the-adminContextRoot</b>입니다.<br/>
-                                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
+                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
 
                 <h3>보안 역할</h3>
                 <p>애플리케이션의 <b>application-bnd</b> 요소에서 다음과 같은 역할을 선언하십시오.</p>
@@ -1041,11 +1042,11 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-admin-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-collective">
             <div class="panel-body">
-                <p>관리 서비스는 사용자가 Liberty Collective 제어기에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. Liberty Collective 제어기의 <b>server.xml</b> 파일에서 이 애플리케이션에 대해 일부 특정 구성을 작성해야 합니다.
+                <p>관리 서비스는 사용자가 Liberty Collective 제어기에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. Liberty Collective 제어기의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty Collective에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty Collective에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
-                                관리 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service-collective.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpadmin</b>입니다.</p>
+                관리 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service-collective.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpadmin</b>입니다.</p>
 
                 <h3>필수 JNDI 특성</h3>
                 <p>JNDI 특성을 정의할 때 관리 서비스의 컨텍스트 루트가 JNDI 이름의 접두부가 되어야 합니다. 다음 예에서는 <b>mfp.admin.push.url</b>을 선언하여 관리 서비스가 <b>/mfpadmin</b>을 컨텍스트 루트로 사용하여 설치되는 경우를 보여줍니다.</p>
@@ -1098,9 +1099,9 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-live-update-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-collective">
             <div class="panel-body">
-                <p>라이브 업데이트 서비스는 사용자가 Liberty Collective 제어기에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. Liberety Collective 제어기의 <b>server.xml</b> 파일에서 이 애플리케이션에 대해 일부 특정 구성을 작성해야 합니다.
+                <p>라이브 업데이트 서비스는 사용자가 Liberty Collective 제어기에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. Liberty Collective 제어기의 <b>server.xml</b> 파일에서 이 애플리케이션의 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty Collective에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty Collective에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
                 라이브 업데이트 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>에 있습니다. 라이브 업데이트 서비스의 컨텍스트 루트는 다음과 같은 방식으로 정의되어야 합니다. <b>/the-adminContextRootconfig</b>. 예를 들어, 관리 서비스의 컨텍스트 루트가 <b>/mfpadmin</b>인 경우 라이브 업데이트 서비스의 컨텍스트 루트는 <b>/mfpadminconfig</b>여야 합니다.</p>
 
@@ -1133,9 +1134,9 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
         <div id="collapse-console-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-collective">
             <div class="panel-body">
                 <p>콘솔은 사용자가 Liberty Collective 제어기에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. Liberty Collective 제어기의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
-                <br/><br/>진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                <br/><br/>계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
-                콘솔 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpconsole</b>입니다.</p>
+                 콘솔 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpconsole</b>입니다.</p>
 
                 <h3>필수 JNDI 특성</h3>
                 <p>JNDI 특성을 정의할 때 콘솔의 컨텍스트 루트가 JNDI 이름의 접두부가 되어야 합니다. 다음 예에서는 <b>mfp.admin.endpoint</b>를 선언하여 콘솔이 <b>/mfpconsole</b>을 컨텍스트 루트로 사용하여 설치되는 경우를 보여줍니다.</p>
@@ -1145,7 +1146,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 {% endhighlight %}
 
                 <p>mfp.admin.endpoint 특성의 일반적인 값은 <b>*://*:*/the-adminContextRoot</b>입니다.<br/>
-                                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
+                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
 
                 <h3>보안 역할</h3>
                 <p>애플리케이션의 <b>application-bnd</b> 요소에서 다음과 같은 역할을 선언하십시오.</p>
@@ -1168,9 +1169,9 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-runtime-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-collective">
             <div class="panel-body">
-                <p>런타임은 사용자가 Liberty Collective 클러스터 멤버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. 모든 Liberty Collective 클러스터 멤버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대해 일부 특정 구성을 작성해야 합니다.
+                <p>런타임은 사용자가 Liberty Collective 클러스터 멤버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. 모든 Liberty Collective 클러스터 멤버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty Collective에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty Collective에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
                 런타임 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 기본적으로는 <b>/mfp</b>입니다.</p>
 
@@ -1216,11 +1217,11 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-push-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration">
             <div class="panel-body">
-                <p>푸시 서비스는 사용자가 Liberty Collective 클러스터 멤버 또는 Liberty 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. Liberty 서버에서 푸시 서비스를 설치하는 경우 <a href="#manual-installation-on-websphere-application-server-liberty">WebSphere Application Server Liberty에 수동 설치</a> 아래의 <a href="#configuration-details-liberty">{{ site.data.keys.mf_server }} 푸시 서비스 구성 세부사항</a>을 참조하십시오.
+                <p>푸시 서비스는 사용자가 Liberty Collective 클러스터 멤버 또는 Liberty 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. Liberty 서버에서 푸시 서비스를 설치하는 경우에는 <a href="#manual-installation-on-websphere-application-server-liberty">WebSphere Application Server Liberty에 수동 설치</a> 아래의 <a href="#configuration-details-liberty">{{ site.data.keys.mf_server }} 푸시 서비스 구성 세부사항</a>을 참조하십시오.
                 <br/><br/>
                 {{ site.data.keys.mf_server }} 푸시 서비스가 Liberty Collective에서 설치되는 경우 이는 런타임의 경우와 동일한 클러스터 또는 다른 클러스터에서 설치될 수 있습니다.
                 <br/><br/>
-                                모든 Liberty Collective 클러스터 멤버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다. 계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty Collective에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.    
+                모든 Liberty Collective 클러스터 멤버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다. 계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-liberty-collective">WebSphere Application Server Liberty Collective에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.    
                 <br/><br/>
                 푸시 서비스 WAR 파일은 <b>mfp_install_dir/PushService/mfp-push-service.war</b>에 있습니다. 컨텍스트 루트를 <b>/imfpush</b>로 정의해야 합니다. 그렇지 않으면 컨텍스트 루트가 SDK에서 하드코딩되므로 클라이언트 디바이스가 여기에 연결될 수 없습니다.</p>
 
@@ -1305,9 +1306,9 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-admin-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-tomcat">
             <div class="panel-body">
-                <p>관리 서비스는 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. 애플리케이션 서버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대해 일부 특정 구성을 작성해야 합니다.
+                <p>관리 서비스는 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. 애플리케이션 서버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                진행하기 전에 <a href="#manual-installation-on-apache-tomcat">Apache Tomcat에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                계속 진행하기 전에 <a href="#manual-installation-on-apache-tomcat">Apache Tomcat에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
                 관리 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpadmin</b>입니다.</p>
 
@@ -1366,9 +1367,9 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-live-update-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-tomcat">
             <div class="panel-body">
-                <p>라이브 업데이트 서비스는 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. <b>server.xml</b> 파일에서 이 애플리케이션에 대해 일부 특정 구성을 작성해야 합니다.
+                <p>라이브 업데이트 서비스는 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                진행하기 전에 <a href="#manual-installation-on-apache-tomcat">Apache Tomcat에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                계속 진행하기 전에 <a href="#manual-installation-on-apache-tomcat">Apache Tomcat에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
                 라이브 업데이트 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>에 있습니다. 라이브 업데이트 서비스의 컨텍스트 루트는 다음과 같은 방식으로 정의되어야 합니다. <b>/the-adminContextRoot/config</b>. 예를 들어, 관리 서비스의 컨텍스트 루트가 <b>/mfpadmin</b>인 경우 라이브 업데이트 서비스의 컨텍스트 루트는 <b>/mfpadminconfig</b>여야 합니다.</p>
 
@@ -1397,14 +1398,14 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
         <div id="collapse-console-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-tomcat">
             <div class="panel-body">
                 <p>콘솔은 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. 애플리케이션 서버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
-                <br/><br/>진행하기 전에 <a href="#manual-installation-on-apache-tomcat">Apache Tomcat에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                <br/><br/>계속 진행하기 전에 <a href="#manual-installation-on-apache-tomcat">Apache Tomcat에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
-                콘솔 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpconsole</b>입니다.</p>
+                 콘솔 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpconsole</b>입니다.</p>
 
                 <h3>필수 JNDI 특성</h3>
                 <p><b>mfp.admin.endpoint</b> 특성을 정의해야 합니다. 이 특성의 일반적인 값은 <b>*://*:*/the-adminContextRoot</b>입니다.
                 <br/><br/>
-                                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
+                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
 
                 <h3>보안 역할</h3>
                 <p>애플리케이션에 사용 가능한 보안 역할은 다음과 같습니다.</p>
@@ -1426,9 +1427,9 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-runtime-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-tomcat">
             <div class="panel-body">
-                <p>런타임은 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. <b>server.xml</b> 파일에서 이 애플리케이션에 대해 일부 특정 구성을 작성해야 합니다.
+                <p>런타임은 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                진행하기 전에 <a href="#manual-installation-on-apache-tomcat">Apache Tomcat에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                계속 진행하기 전에 <a href="#manual-installation-on-apache-tomcat">Apache Tomcat에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
                 런타임 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 기본적으로는 <b>/mfp</b>입니다.</p>
 
@@ -1577,9 +1578,9 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-admin-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-nd">
             <div class="panel-body">
-                <p>관리 서비스는 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. 애플리케이션 서버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대해 일부 특정 구성을 작성해야 합니다.
+                <p>관리 서비스는 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. 애플리케이션 서버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
                 관리 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpadmin</b>입니다.</p>
 
@@ -1646,9 +1647,9 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-live-update-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-nd">
             <div class="panel-body">
-                <p>라이브 업데이트 서비스는 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. <b>server.xml</b> 파일에서 이 애플리케이션에 대해 일부 특정 구성을 작성해야 합니다.
+                <p>라이브 업데이트 서비스는 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
                 라이브 업데이트 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>에 있습니다. 라이브 업데이트 서비스의 컨텍스트 루트는 다음과 같은 방식으로 정의되어야 합니다. <b>/the-adminContextRoot/config</b>. 예를 들어, 관리 서비스의 컨텍스트 루트가 <b>/mfpadmin</b>인 경우 라이브 업데이트 서비스의 컨텍스트 루트는 <b>/mfpadminconfig</b>여야 합니다.</p>
 
@@ -1677,16 +1678,16 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
         <div id="collapse-console-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-nd">
             <div class="panel-body">
                 <p>콘솔은 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. 애플리케이션 서버의 <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
-                <br/><br/>진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                <br/><br/>                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
-                콘솔 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpconsole</b>입니다.</p>
+                 콘솔 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 일반적으로는 <b>/mfpconsole</b>입니다.</p>
 
                 <h3>필수 JNDI 특성</h3>
-                <p>WebSphere Application Server 관리 콘솔을 사용하여 JNDI 특성을 설정할 수 있습니다. <b>애플리케이션 → 애플리케이션 유형 → WebSphere 엔터프라이즈 애플리케이션 → application_name → 환경</b> 항목(웹 모듈용)으로 이동하고 항목을 설정하십시오.
+                <p>WebSphere Application Server 관리 콘솔을 사용하여 JNDI 특성을 설정할 수 있습니다. <b>애플리케이션 → 애플리케이션 유형 → WebSphere 엔터프라이즈 애플리케이션 → application_name → 웹 모듈용 환경 항목</b>으로 이동하여 항목을 설정하십시오.
                 <br/><br/>
                 <b>mfp.admin.endpoint</b> 특성을 정의해야 합니다. 이 특성의 일반적인 값은 <b>*://*:*/the-adminContextRoot</b>입니다.
                 <br/><br/>
-                                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
+                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
 
                 <h3>보안 역할</h3>
                 <p>애플리케이션에 사용 가능한 보안 역할은 다음과 같습니다.</p>
@@ -1709,9 +1710,9 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
         <div id="collapse-runtime-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-nd">
             <div class="panel-body">
-                <p>런타임은 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. <b>server.xml</b> 파일에서 이 애플리케이션에 대해 일부 특정 구성을 작성해야 합니다.
+                <p>런타임은 사용자가 애플리케이션 서버에 배치할 수 있도록 WAR 애플리케이션으로 패키지됩니다. <b>server.xml</b> 파일에서 이 애플리케이션에 대한 일부 특정 구성을 작성해야 합니다.
                 <br/><br/>
-                진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
+                계속 진행하기 전에 <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">WebSphere Application Server 및 WebSphere Application Server Network Deployment에 수동 설치</a>에서 모든 서비스에 공통인 구성 세부사항을 검토하십시오.
                 <br/><br/>
                 런타임 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>에 있습니다. 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 하지만 기본적으로는 <b>/mfp</b>입니다.</p>
 
@@ -1719,7 +1720,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
                 <p>WebSphere Application Server 관리 콘솔을 사용하여 JNDI 특성을 설정할 수 있습니다. <b>애플리케이션 → 애플리케이션 유형 → WebSphere 엔터프라이즈 애플리케이션 → application_name → 웹 모듈용 환경 항목</b>으로 이동하여 항목을 설정하십시오.</p>
 
                 <p>값이 임베드된 <b>mfp.authorization.server</b> 특성을 정의해야 합니다.<br/>
-                                또한 다음과 같은 JNDI 특성을 정의하여 관리 서비스와의 JMX 통신을 사용으로 설정하십시오.</p>
+                또한 다음과 같은 JNDI 특성을 정의하여 관리 서비스와의 JMX 통신을 사용으로 설정하십시오.</p>
 
                 <b>WebSphere Application Server Network Deployment의 경우</b>
                 <ul>
@@ -1890,9 +1891,9 @@ Server Configuration Tool을 사용하여 서버 팜을 계획할 때는 먼저 
                                     <li>서버 설정에 대한 자세한 정보는 <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건</a>을 참조하십시오.</li>
                                 </ul>
                             </li>
-                            <li>각 신뢰 저장소의 모든 서버 사이에서 서명자 인증서를 교환하십시오.
+                            <li>각각의 신뢰 저장소에 있는 모든 서버 사이에서 서명자 인증서를 교환하십시오.
                             <br/><br/>
-                                                        보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
+                            보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
                             </li>
                         </ul>
                     </li>
@@ -1937,14 +1938,14 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                             </li>
                             <li>팜에서 원하는 멤버 수만큼 독립형 서버를 설정하십시오.
                             <br/><br/>
-                            이 독립형 서버는 각각 동일한 데이터베이스와 통신해야 합니다. 이 서버가 사용하는 포트를 동일한 호스트에서 구성된 다른 서버가 사용하지 않는지 확인해야 합니다. 이 제한조건은 HTTP, HTTPS, REST, SOAP, RMI 프로토콜에서 사용하는 포트에 적용됩니다.
+                             이 독립형 서버는 각각 동일한 데이터베이스와 통신해야 합니다. 이 서버가 사용하는 포트를 동일한 호스트에서 구성된 다른 서버가 사용하지 않는지 확인해야 합니다. 이 제한조건은 HTTP, HTTPS, REST, SOAP 및 RMI 프로토콜에서 사용하는 포트에 적용됩니다.
                             <br/><br/>
-                            각 해당 서버에는 {{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스, 하나 이상의 {{ site.data.keys.product_adj }} 런타임이 배치되어 있어야 합니다.
+                            이 서버 각각에는 {{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 하나 이상의 {{ site.data.keys.product_adj }} 런타임이 배치되어 있어야 합니다.
                             <br/><br/>
                             서버 설정에 대한 자세한 정보는 <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건</a>을 참조하십시오.</li>
-                            <li>각 신뢰 저장소의 모든 서버 사이에서 서명자 인증서를 교환하십시오.
+                            <li>각각의 신뢰 저장소에 있는 모든 서버 사이에서 서명자 인증서를 교환하십시오.
                             <br/><br/>
-                                                        보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
+                            보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
                             </li>
                         </ul>
                     </li>
@@ -1961,29 +1962,29 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                             </li>
                             <li>Ant 파일을 편집하고 데이터베이스에 필요한 모든 특성을 입력하십시오.
                             <br/><br/>
-                                                        {{ site.data.keys.mf_server }} 컴포넌트가 사용하는 데이터베이스의 구성을 사용으로 설정하려면 다음과 같은 특성의 값을 설정하십시오.
+                            {{ site.data.keys.mf_server }} 컴포넌트가 사용하는 데이터베이스의 구성을 사용으로 설정하려면 다음과 같은 특성의 값을 설정하십시오.
                                 <ul>
                                     <li><b>mfp.process.admin</b>을 <b>true</b>로 설정하십시오. 관리 서비스 및 라이브 업데이트 서비스에 대한 데이터베이스를 구성하기 위해서입니다.</li>
                                     <li><b>mfp.process.runtime</b>을 <b>true</b>로 설정하십시오. 런타임에 대한 데이터베이스를 구성하기 위해서입니다.</li>
                                 </ul>
                             </li>
-                            <li><b>mfp_install_dir/MobileFirstServer/configuration-samples</b> 디렉토리에서 다음 명령을 실행하십시오. 여기서 <b>create-database-ant-file.xml</b>은 사용자가 선택한 실제 Ant 파일 이름으로 대체해야 합니다. <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> 및 <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>.
+                            <li><b>mfp_install_dir/MobileFirstServer/configuration-samples</b> 디렉토리에서 <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> 및 <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code> 명령을 실행하십시오(<b>create-database-ant-file.xml</b>을 선택한 실제 Ant 파일 이름으로 바꿔야 함).
                             <br/><br/>
-                                                        {{ site.data.keys.mf_server }} 데이터베이스는 팜의 애플리케이션 서버 사이에서 공유되므로 이 두 명령은 팜에 있는 서버의 수에 관계없이 한 번만 실행해야 합니다.
+                            {{ site.data.keys.mf_server }} 데이터베이스는 팜의 애플리케이션 서버 사이에서 공유되므로 이 두 명령은 팜에 있는 서버의 수에 관계없이 한 번만 실행해야 합니다.
                             </li>
                             <li>선택적으로 다른 런타임을 설치하려면 다른 데이터베이스 이름 또는 스키마를 가진 다른 데이터베이스를 구성해야 합니다. 이를 위해서는 Ant 파일을 편집하고 특성을 수정하고 팜에 있는 서버의 수에 관계없이 <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code> 명령을 한 번 실행하십시오.</li>
                         </ul>
                     </li>
                     <li>관리 서비스, 라이브 업데이트 서비스 및 런타임을 서버에 배치하고 이 서버를 서버 팜의 멤버로 구성하십시오.
                         <ul>
-                            <li><b>mfp\_install\_dir/MobileFirstServer/configuration-samples</b> 디렉토리에서 애플리케이션 서버 및 데이터베이스에 해당하는 Ant 파일을 선택하여 관리 서비스, 라이브 업데이트 서비스, 런타임을 서버에 배치하십시오.
+                            <li><b>mfp\_install\_dir/MobileFirstServer/configuration-samples</b> 디렉토리에서 사용자의 애플리케이션 서버 및 데이터베이스에 해당하는 Ant 파일을 선택하여 관리 서비스, 라이브 업데이트 서비스 및 런타임을 서버에 배치하십시오.
                             <br/><br/>
-                                                        예를 들어, DB2 데이터베이스를 가진 Liberty 서버에 배치의 경우 <b>configure-liberty-db2.xml</b> 파일을 선택하십시오. 팜에서 원하는 멤버 수만큼 이 파일의 사본을 작성하십시오.
+                            예를 들어, DB2 데이터베이스를 가진 Liberty 서버에 배치의 경우 <b>configure-liberty-db2.xml</b> 파일을 선택하십시오. 팜에서 원하는 멤버 수만큼 이 파일의 사본을 작성하십시오.
                             <br/><br/>
                             <b>참고:</b> 이 파일은 이미 배치된 {{ site.data.keys.mf_server }} 컴포넌트의 업그레이드 또는 팜의 각 멤버에서 이들 컴포넌트의 설치 제거에 재사용할 수 있으므로 구성 후 보존하십시오.</li>
                             <li>Ant 파일의 각 사본을 편집하고 2단계에서 사용되는 데이터베이스에 대해 동일한 특성을 입력하고 애플리케이션 서버에 대해 필요한 기타 특성도 입력하십시오.
                             <br/><br/>
-                                                         서버를 서버 팜 멤버로 구성하려면 다음과 같은 특성의 값을 설정하십시오.
+                             서버를 서버 팜 멤버로 구성하려면 다음과 같은 특성의 값을 설정하십시오.
                                 <ul>
                                     <li><b>mfp.farm.configure</b>를 true로 설정하십시오.</li>
                                     <li><b>mfp.farm.server.id</b>: 이 팜 멤버에 대해 정의하는 ID입니다. 팜의 각 서버가 자체 고유 ID를 가지고 있는지 확인하십시오. 팜에 있는 두 서버가 동일한 ID를 가지고 있는 경우 팜은 예측할 수 없는 방식으로 작동합니다.</li>
@@ -1996,17 +1997,17 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                                         <li><b>mfp.process.runtime</b>을 <b>true</b>로 설정하십시오. 런타임의 WAR 파일을 배치하기 위해서입니다.</li>
                                     </ul>
                                 <br/>
-                                <b>참고:</b> 팜의 서버에 둘 이상의 런타임을 설치하려는 경우 속성 ID를 지정하고 <b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b>, <b>uninstallmobilefirstruntime</b> Ant 태스크에서 각 런타임에 대해 고유해야 하는 값을 설정하십시오.
+                                <b>참고:</b> 팜의 서버에 둘 이상의 런타임을 설치하려는 경우에는 속성 ID를 지정하고 <b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b> 및 <b>uninstallmobilefirstruntime</b> Ant 태스크에서 각 런타임에 대해 고유해야 하는 값을 설정하십시오.
                                 <br/>
-                                                                For example,
+                                For example,
 {% highlight xml %}
 <target name="rtminstall">
     <installmobilefirstruntime execute="true" contextroot="/runtime1" id="rtm1">
 {% endhighlight %}
                             </li>
-                            <li>각 서버에 대해 다음 명령을 실행하십시오. 여기서 <b>configure-appserver-database-ant-file.xml</b>은 사용자가 선택한 실제 Ant 파일 이름으로 대체해야 합니다. <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> 및 <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>.
+                            <li>각 서버에 대해 <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> 및 <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code> 명령을 실행하십시오(<b>configure-appserver-database-ant-file.xml</b>을 선택한 실제 Ant 파일 이름으로 바꿔야 함).
                             <br/><br/>
-                                                         이 명령은 <b>installmobilefirstadmin</b> 및 <b>installmobilefirstruntime</b> Ant 태스크를 실행합니다. 이 태스크에 대한 자세한 정보는 <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">{{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} 아티팩트, {{ site.data.keys.mf_server }} 관리 및 라이브 업데이트 서비스 설치를 위한 Ant 태스크</a> 및 <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크</a>를 참조하십시오.
+                             이 명령은 <b>installmobilefirstadmin</b> 및 <b>installmobilefirstruntime</b> Ant 태스크를 실행합니다. 이 태스크에 대한 자세한 정보는 <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">{{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} 아티팩트, {{ site.data.keys.mf_server }} 관리 및 라이브 업데이트 서비스 설치를 위한 Ant 태스크</a> 및 <a href="../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크</a>를 참조하십시오.
                             </li>
                             <li>선택적으로 다른 런타임을 설치하려면 다음의 단계를 수행하십시오.
                                 <ul>
@@ -2074,11 +2075,11 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                         </ul>
                     </li>
                     <li>팜의 멤버가 되도록 되어 있는 모든 서버를 중지하십시오.</li>
-                    <li>애플리케이션 서버 유형에 적절하게 각 서버를 구성하십시오.<br/>일부 JNDI 특성을 올바르게 설정해야 합니다. 서버 팜 토폴로지에서 mfp.config.service.user 및 mfp.config.service.password JNDI 특성은 팜의 모든 멤버에 대해 동일한 값을 가지고 있어야 합니다. Apache Tomcat의 경우에는 JVM 인수가 제대로 정의되어 있는지도 확인해야 합니다.
+                    <li>애플리케이션 서버의 유형에 맞게 적절하게 각 서버를 구성하십시오.<br/>일부 JNDI 특성을 올바르게 설정해야 합니다. 서버 팜 토폴로지에서 mfp.config.service.user 및 mfp.config.service.password JNDI 특성은 팜의 모든 멤버에 대해 동일한 값을 가지고 있어야 합니다. Apache Tomcat의 경우에는 JVM 인수가 제대로 정의되어 있는지도 확인해야 합니다.
                         <ul>
                             <li><b>WebSphere Application Server Liberty 프로파일</b>
                                 <br/>
-                                                                server.xml 파일에서 다음 샘플 코드에 표시된 JNDI 특성을 설정하십시오.
+                                server.xml 파일에서 다음 샘플 코드에 표시된 JNDI 특성을 설정하십시오.
 {% highlight xml %}
 <jndiEntry jndiName="mfp.topology.clustermode" value="Farm"/>
 <jndiEntry jndiName="mfp.admin.serverid" value="farm_member_1"/>
@@ -2108,7 +2109,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                             </li>
                             <li><b>WebSphere Application Server 전체 프로파일</b>
                                 <br/>
-                                                                서버에 배치된 모든 런타임 애플리케이션 및 관리 서비스에서 다음과 같은 JNDI 특성을 선언해야 합니다.
+                                서버에 배치된 모든 런타임 애플리케이션 및 관리 서비스에서 다음과 같은 JNDI 특성을 선언해야 합니다.
                                 <ul>
                                     <li><b>mfp.topology.clustermode</b></li>
                                     <li><b>mfp.admin.serverid</b></li>
@@ -2138,7 +2139,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                         <ul>
                             <li><b>WebSphere Application Server Liberty 프로파일</b>
                                 <br/>
-                                                                 IBM 유틸리티(예: Keytool 또는 iKeyman)를 사용하여 신뢰 저장소를 구성할 수 있습니다.
+                                 IBM 유틸리티(예: Keytool 또는 iKeyman)를 사용하여 신뢰 저장소를 구성할 수 있습니다.
                                 <ul>
                                     <li>Keytool에 대한 자세한 정보는 IBM SDK, Java Technology Edition의 <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a>을 참조하십시오.</li>
                                     <li>iKeyman에 대한 자세한 정보는 IBM SDK, Java Technology Edition의 <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a>을 참조하십시오.</li>
@@ -2152,7 +2153,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                                 </blockquote>
                                 마지막으로 서버를 시작한 후 <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> 파일에서 com.ibm.ssl.trustStore가 포함된 행을 찾으십시오.
                                 <ul>
-                                    <li>팜에 있는 다른 서버의 공용 인증서를 서버의 <b>server.xml</b> 구성 파일이 참조하는 신뢰 저장소로 가져오십시오. <a href="../../simple-install/tutorials/graphical-mode">그래픽 모드에서 {{ site.data.keys.mf_server }} 설치</a> 튜토리얼에서는 팜에 있는 두 Liberty 서버 사이에서 인증서를 교환하는 데 필요한 지시사항을 제공합니다. 자세한 정보는 <a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }}를 실행하는 두 개의 Liberty 서버로 구성된 팜 작성</a> 섹션의 5단계를 참조하십시오.</li>
+                                    <li>팜에 있는 다른 서버의 공용 인증서를 서버의 <b>server.xml</b> 구성 파일이 참조하는 신뢰 저장소로 가져오십시오. <a href="../../simple-install/graphical-mode">그래픽 모드에서 {{ site.data.keys.mf_server }} 설치</a> 튜토리얼에서는 팜에 있는 두 Liberty 서버 사이에서 인증서를 교환하는 데 필요한 지시사항을 제공합니다. 자세한 정보는 <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }}를 실행하는 두 개의 Liberty 서버로 구성된 팜 작성</a> 섹션의 5단계를 참조하십시오.</li>
                                     <li>WebSphere Application Server Liberty 프로파일의 각 인스턴스를 다시 시작하여 보안 구성을 적용하십시오. 싱글 사인온(SSO)이 작동하려면 다음의 단계가 필요합니다.</li>
                                     <li>팜의 한 멤버를 시작하십시오. 기본 LTPA 구성에서는 Liberty 서버가 정상적으로 시작되면 LTPA 키 저장소가 <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys</b>로 생성됩니다.</li>
                                     <li><b>ltpa.keys</b> 파일을 각 팜 멤버의 <b>${wlp.user.dir}/servers/server_name/resources/security</b> 디렉토리에 복사하여 팜 멤버 사이에서 LTPA 키 저장소를 복제하십시오. LTPA 구성에 대한 자세한 정보는 <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Liberty 프로파일에서 LTPA 구성</a>을 참조하십시오.</li>
@@ -2160,7 +2161,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                             </li>
                             <li><b>WebSphere Application Server 전체 프로파일</b>
                                 <br/>
-                                                                 WebSphere Application Server 관리 콘솔에서 신뢰 저장소를 구성하십시오.
+                                 WebSphere Application Server 관리 콘솔에서 신뢰 저장소를 구성하십시오.
                                 <ul>
                                     <li>WebSphere Application Server 관리 콘솔에 로그인하십시오.</li>
                                     <li><b>보안 → SSL 인증서 및 키 관리</b>를 선택하십시오.</li>
@@ -2222,3 +2223,65 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
 
 <br/>
 JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오.
+
+## Mobile Foundation 런타임 스케줄러
+{: #mf-runtime-scheduler}
+
+Mobile Foundation 런타임은 스케줄된 일부 활동을 수행하기 위해 Quartz 스케줄러를 사용합니다.
+
+Mobile Foundation 런타임의 스케줄러는 다음 활동을 수행합니다. 
+
+1.	라이센스 추적
+2.	감사 로그 작성
+
+스케줄러 실행은 다음 두 가지 JNDI 특성으로 제어합니다. 
+
+* **mfp.licenseTracking.enabled**
+* **mfp.purgedata.enabled**(iFix 레벨 *8.0.0.0-MFPF-IF201812191602-CDUpdate-04*에서 도입됨)
+
+이러한 JNDI 특성은 지원되는 모든 애플리케이션 서버에 기본적으로 사용됩니다. 
+
+>**참고:** WebSphere Application Server에서 실행 중인 Mobile Foundation의 경우, JNDI 특성 **mfp.licenseTracking.enabled**는 WAS 콘솔의 런타임 환경 항목에서 해당 값을 **true**로 설정하여 사용으로 설정되어야 합니다. 
+
+### 라이센스 추적
+{: #license-tracking}
+
+라이센스 추적은 활성 클라이언트 디바이스, 주소 지정 가능한 디바이스 및 설치된 앱과 같이 라이센싱 정책과 관련된 메트릭을 추적합니다. 이 정보는 Mobile Foundation의 현재 사용량이 라이센스 부여 레벨 내에 있는지 여부를 판별하는 데 도움이 되며 잠재적인 라이센스 위반을 방지할 수 있습니다. 라이센스 추적은 더 이상 Mobile Foundation Server에 액세스하지 않는 디바이스를 해제하고 *MFP_PERSISTENT_DATA*의 이전 레코드를 아카이브하고 삭제하는 데 도움이 됩니다.
+
+다음 표는 라이센스 추적과 관련된 JNDI 특성을 나열합니다. 
+
+| JNDI 특성 |설명 |
+|---------------|-------------|
+| mfp.device.decommissionProcessingInterval | 해제 태스크가 실행되는 빈도(초)를 정의합니다. 기본값: `86400`(1일). |
+| mfp.device.decommission.when | 클라이언트 디바이스가 디바이스 해제 태스크에 의해 해제될 때까지의 비활성 일 수입니다. 기본값: `90 days`. |
+| mfp.device.archiveDecommissioned.when | 해제된 클라이언트 디바이스가 아카이브될 때까지의 비활성 일 수입니다. <br/> 이 태스크는 해제된 클라이언트 디바이스를 아카이브 파일에 기록합니다. 아카이브된 클라이언트 디바이스는 Mobile Foundation Server home\devices_archive 디렉토리에 있는 파일에 기록됩니다. 이 파일의 이름에는 아카이브 파일 작성 시의 시간소인이 포함됩니다. 기본값: `90 days`. |
+| mfp.licenseTracking.enabled | IBM Mobile Foundation에서 디바이스 추적을 사용 또는 사용 안함으로 설정하는 데 사용되는 값입니다. <br/> 성능상의 이유로, IBM Mobile  Foundation이 B2C(Business-to-Consumer) 앱만 실행하는 경우 디바이스 추적을 사용 안함으로 설정할 수 있습니다. 디바이스 추적이 사용되지 않는 경우, 라이센스 보고서도 사용되지 않고 라이센스 메트릭이 생성되지 않습니다. <br/> 가능한 값은 `true`(기본값) 및 `false`입니다. |
+
+라이센스 추적에 대한 자세한 내용은 아래 주제를 참조하십시오. 
+
+* [Mobile Foundation 라이센스 추적]({{site.baseurl}}/tutorials/en/foundation/8.0/administering-apps/license-tracking/)
+* [Mobile Foundation 런타임 특성](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html)
+
+스케줄러는 서버 시작 후 8시간 후에 실행됩니다. 즉, 오늘 오후 11시에 서버가 시작된 경우 스케줄러는 그 다음날 오전 1시(기본 스케줄러 실행 시간)에 실행되지 않고 다음 다음날 오전 1시부터 실행을 시작합니다. 서버 시작과 스케줄러 실행 사이의 간격은 8시간입니다. 
+
+iFix 레벨 [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643)부터 서버 시작과 스케줄러 실행 사이의 간격은 8시간이 아닌 4시간입니다.
+또한 새 특성 *MFP.SCHEDULER.STARTHOUR*도 도입되었습니다. 이 특성을 사용하면 기본값 오전 1시가 아닌 고객이 선택한 시간으로 스케줄러 실행을 설정할 수 있습니다. 이 특성은 1에서 23 사이의 값을 사용할 수 있습니다. 이 특성은 고객이 트래픽이 적은 시간에 시작하도록 스케줄러를 구성할 수 있도록 하고 매일 서버가 시작되더라도 스케줄러가 실행되도록 할 수 있습니다. 매일 밤 오전 1시에 서버를 다시 시작하는 고객의 경우 *MFP.SCHEDULER.STARTHOUR*의 값을 5로 설정할 수 있습니다. 이렇게 하면 서버 재시작과 스케줄러가 오전 5시에 실행되는 4시간 간격이 보장됩니다.
+
+라이센스 추적 활동이 데이터베이스를 많이 사용하므로 라이센스 추적을 사용하지 않는 것이 좋습니다. Mobile Foundation 주소 지정 가능 디바이스 라이센싱 모델을 사용하는 고객만 라이센스 추적을 실행해야 합니다.
+
+라이센스 추적을 사용하지 않는 고객은 [제거 기능]({{site.baseurl}}/blog/2018/12/27/purge-mfp-runtime-tables/)을 사용하여 이전 레코드를 정리하고 *MFP_PERSISTENT_DATA* 및 *MFP_TRANSIENT_DATA* 테이블을 유지보수할 수 있습니다.
+
+### 감사 로그 작성
+{: #creating-audit-log}
+
+라이센스 추적은 최신 실행 및 라이센스 데이터를 Mobile Foundation 런타임 테이블 *LICENSE_TERMS*에 저장합니다. 감사 로그는 이 테이블의 최신 보고서 항목을 기반으로 로그를 작성합니다. 보고서는 서버 설치 디렉토리의 logs 폴더에 있는 `.slmtag` 파일로 사용 가능합니다. 
+
+### Quartz 업데이트 사용 안함
+{: #disable-quartz-update}
+
+Mobile Foundation 런타임은 일부 서드파티 라이브러리를 포함하여 필수 라이브러리를 번들합니다. Mobile Foundation은 Quartz 작업 스케줄러를 사용하며 `quartz2.2.0.jar`를 포함합니다.
+
+Quartz에는 [서버](http://www.terracotta.org/)에 연결하는 *업데이트 검사* 기능이 포함되어 있습니다. 이 검사는 비동기식으로 실행되며 Quartz의 구동/초기화 시간에 영향을 미치지 않으며 연결할 수 없는 경우 단계적으로 실패합니다. 검사가 실행되고 업데이트가 발견되면 Quartz의 로그에 사용 가능한 것으로 보고됩니다. 
+
+*업데이트 검사*는 플래그 `org.quartz.scheduler.skipUpdateCheck = true`를 사용하여 사용 안함으로 설정될 수 있습니다. Mobile Foundation의 Liberty 배치는 `jvm.options` 파일을 작성하며 배치 중에 서버 구성 도구를 통해 새로 작성된 `jvm.options` 파일에는 iFix 레벨 [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) 이상의 이 특성이 포함됩니다. 이전 iFix 레벨의 경우 고객은 이 특성을 `jvm.options` 파일에 추가할 수 있습니다.
+WAS(WebSphere Application Server) 배치의 경우, 위의 JNDI 특성을 WAS 관리 콘솔에서 Mobile Foundation 애플리케이션의 환경 특성에 추가해야 합니다.

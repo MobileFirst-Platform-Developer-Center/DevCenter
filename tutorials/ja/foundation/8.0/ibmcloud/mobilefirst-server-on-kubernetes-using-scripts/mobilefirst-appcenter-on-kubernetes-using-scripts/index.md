@@ -384,8 +384,8 @@ IBM Cloud からコンテナーを削除する場合、レジストリーから�
 
 以下のコマンドを実行して、IBM Cloud レジストリーからイメージ名を削除します。
 ```bash
-bx cr image-list (Lists the images in the registry)
-bx cr image-rm image-name (Removes the image from the registry)
+bx cr image-list (レジストリー内のイメージをリストします)
+bx cr image-rm image-name (レジストリーからイメージを削除します)
 ```
 
 ## IBM Cloud からのデータベース・サービス構成の削除

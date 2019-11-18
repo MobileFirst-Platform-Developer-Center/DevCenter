@@ -72,7 +72,7 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
       ```bash
       ibmcloud login -a cloud.ibm.com
       ```
-      연합 ID를 사용하는 경우 `--sso` 옵션을 포함하십시오. 선택적으로 위 명령에서 `--skip-ssl-validation` 플래그를 사용하여 SSL 유효성 검증을 건너뛸 수 있습니다. 그러면 HTTP 요청의 SSL 유효성 검증을 우회합니다. 이 매개변수를 사용하면 보안 문제가 발생할 수 있습니다.
+            연합 ID를 사용하는 경우 `--sso` 옵션을 포함하십시오. 선택적으로 위 명령에서 `--skip-ssl-validation` 플래그를 사용하여 SSL 유효성 검증을 건너뛸 수 있습니다. 그러면 HTTP 요청의 SSL 유효성 검증을 우회합니다. 이 매개변수를 사용하면 보안 문제가 발생할 수 있습니다.
 
   2. 다음 명령을 사용하여 IBM Cloud Container 레지스트리에 로그인하고 Container Service를 초기화하십시오.
       ```bash
@@ -116,26 +116,26 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
 
       ```bash
 
-      # 1. Extract the PPA archive
+      # 1. PPA 아카이브 추출
 
       mkdir -p ppatmp ; cd ppatmp
       tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
       cd ./images
       for i in *; do docker load -i $i;done
 
-      # 2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version
+      # 2. IBM Cloud Container 레지스트리 네임스페이스 및 올바른 버전으로 로드된 이미지에 태그 지정
 
       docker tag mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0
       docker tag mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0
       docker tag mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0
 
-      # 3. Push all the images
+      # 3. 모든 이미지 푸시
 
       docker push us.icr.io/my_namespace/mfpf-server:1.1.0
       docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0
       docker push us.icr.io/my_namespace/mfpf-push:1.1.0
 
-      # 4. Cleanup the extracted archive
+      # 4. 추출된 아카이브 정리
 
       rm -rf ppatmp
       ```
@@ -143,62 +143,62 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
       다음은 **다중 아키텍처**에 기반한 작업자 노드에 **mfpf-server** 및 **mfpf-push** 이미지를 로드하는 예입니다. **mfpf-appcenter** 및 **mfpf-analytics**에 대해 동일한 프로세스를 수행해야 합니다.
 
       ```bash
-      # 1. Extract the PPA archive
+      # 1. PPA 아카이브 추출
 
       mkdir -p ppatmp ; cd ppatmp
       tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
       cd ./images
       for i in *; do docker load -i $i;done
 
-      # 2. Tag the loaded images with the IBM Cloud Container registry namespace and with the right version
+      # 2. IBM Cloud Container 레지스트리 네임스페이스 및 올바른 버전으로 로드된 이미지에 태그 지정
 
-      ## 2.1 Tagging mfpf-server
+      ## 2.1 mfpf-server 태그 지정
 
       docker tag mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
       docker tag mfpf-server:1.1.0-s390x us.icr.io/my_namespace/mfpf-server:1.1.0-s390x
       docker tag mfpf-server:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le
 
-      ## 2.2 Tagging mfpf-dbinit
+      ## 2.2 mfpf-dbinit 태그 지정
 
       docker tag mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
       docker tag mfpf-dbinit:1.1.0-s390x us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x
       docker tag mfpf-dbinit:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le
 
-      ## 2.3 Tagging mfpf-push
+      ## 2.3 mfpf-push 태그 지정
 
       docker tag mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
       docker tag mfpf-push:1.1.0-s390x us.icr.io/my_namespace/mfpf-push:1.1.0-s390x
       docker tag mfpf-push:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
 
-      # 3. Push all the images
+      # 3. 모든 이미지 푸시
 
-      ## 3.1 Pushing mfpf-server images
+      ## 3.1 mfpf-server 이미지 푸시
 
       docker push us.icr.io/my_namespace/mfpf-server:1.1.0-amd64
       docker push us.icr.io/my_namespace/mfpf-server:1.1.0-s390x
       docker push us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le
 
-      ## 3.3 Pushing mfpf-dbinit images
+      ## 3.3 mfpf-dbinit 이미지 푸시
 
       docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64
       docker push us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x
       docker push us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le
 
-      ## 3.3 Pushing mfpf-push images
+      ## 3.3 mfpf-push 이미지 푸시
 
       docker push us.icr.io/my_namespace/mfpf-push:1.1.0-amd64
       docker push us.icr.io/my_namespace/mfpf-push:1.1.0-s390x
       docker push us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
 
-      # 4. [Optional] Create and Push the manifests
+      # 4. [선택사항] Manifest 작성 및 푸시
 
-      ## 4.1 Create manifest-lists
+      ## 4.1 manifest-lists 작성
 
       docker manifest create us.icr.io/my_namespace/mfpf-server:1.1.0 us.icr.io/my_namespace/mfpf-server:1.1.0-amd64 us.icr.io/my_namespace/mfpf-server:1.1.0-s390x us.icr.io/my_namespace/mfpf-server/mfpf-server:1.1.0-ppc64le  --amend
       docker manifest create us.icr.io/my_namespace/mfpf-dbinit:1.1.0 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-amd64 us.icr.io/my_namespace/mfpf-dbinit:1.1.0-s390x us.icr.io/my_namespace/mfpf-dbinit/mfpf-dbinit:1.1.0-ppc64le  --amend
       docker manifest create us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-amd64 us.icr.io/my_namespace/mfpf-push:1.1.0-s390x us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le  --amend
 
-      ## 4.2 Annotate the manifests
+      ## 4.2 Manifest 어노테이션 작성
 
       ### mfpf-server
 
@@ -220,13 +220,13 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
       docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push:1.1.0-s390x --os linux --arch s390x
       docker manifest annotate us.icr.io/my_namespace/mfpf-push:1.1.0 us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le --os linux --arch ppc64le
 
-      ## 4.3 Push the manifest list
+      ## 4.3 Manifest 목록 푸시
 
       docker manifest push us.icr.io/my_namespace/mfpf-server:1.1.0
       docker manifest push us.icr.io/my_namespace/mfpf-dbinit:1.1.0
       docker manifest push us.icr.io/my_namespace/mfpf-push:1.1.0
 
-      # 5. Cleanup the extracted archive
+      # 5. 추출된 아카이브 정리
 
       rm -rf ppatmp
       ```
@@ -237,7 +237,7 @@ IBM Cloud Kubernetes Cluster에 PPA 아카이브를 로드하려면 아래에 �
    > 2. 다중 아키텍처는 intel(amd64), power64(ppc64le), s390x를 포함한 아키텍처를 참조합니다. 다중 아키텍처는 ICP 3.1.1에서만 지원됩니다.
 
   ```bash
-  ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
+      ibmcloud cr ppa-archive-load --archive <archive_name> --namespace <namespace> [--clustername <cluster_name>]
   ```
    {{ site.data.keys.product }}의 *archive_name*은 IBM Passport Advantage에서 다운로드한 PPA 아카이브의 이름입니다.
 
@@ -375,15 +375,15 @@ Application Center에 대한 데이터베이스 시크릿을 작성하려면 아
 | image | pullPolicy |이미지 가져오기 정책 | 기본값은 **IfNotPresent**입니다. |
 |  | pullSecret | 이미지 가져오기 시크릿 |  |
 | ingress | hostname | 외부 클라이언트에서 사용할 외부 호스트 이름 또는 IP 주소 | 앱에 공용 또는 개인용 요청을 전달하여 클러스터에서 네트워크 트래픽 워크로드 균형 조절 |
-|  | secret | TLS 시크릿 이름| Ingress 정의에서 사용해야 하는 인증서의 스크릿 이름을 지정합니다. 시크릿은 관련 인증서 및 키를 사용하여 사전에 작성해야 합니다. SSL/TLS를 사용하는 경우 필수입니다. 여기에 이름을 제공하기 전에 인증서 & 키를 사용하여 시크릿을 사전에 작성하십시오. |
+|  | secret | TLS 시크릿 이름 | Ingress 정의에서 사용해야 하는 인증서의 스크릿 이름을 지정합니다. 시크릿은 관련 인증서 및 키를 사용하여 사전에 작성해야 합니다. SSL/TLS를 사용하는 경우 필수입니다. 여기에 이름을 제공하기 전에 인증서 & 키를 사용하여 시크릿을 사전에 작성하십시오. |
 |  | sslPassThrough | SSL 패스스루 사용 | Mobile Foundation 서비스로 SSL 요청을 패스스루해야 하는지 여부를 지정합니다. Mobile Foundation 서비스에서 SSL이 종료됩니다. 기본값: false |
 | https | true |  |  |
-| dbinit | enabled | Server, Push, Application Center 데이터베이스 초기화 사용 | Server, Push, Application Center 배치의 경우 데이터베이스를 초기화하고 스키마/테이블을 작성합니다(Analytics의 경우 필요하지 않음).  기본값: true |
+| dbinit | enabled | Server, Push, Application Center 데이터베이스 초기화 사용 | Server, Push, Application Center 배치의 경우 데이터베이스를 초기화하고 스키마/테이블을 작성합니다(Analytics의 경우 필요하지 않음). 기본값: true |
 | | repository | 데이터베이스 초기화를 위한 Docker 이미지 저장소 | Mobile Foundation 데이터베이스 Docker 이미지의 저장소 |
 |  | tag | Docker 이미지 태그 | Docker 태그 설명 참조 |
 |  | replicas | 작성해야 하는 Mobile Foundation DBinit 인스턴스 수(팟(Pod)) | 양의 정수(기본값: 1) |
 | ***`MFP Server 구성`*** | | | |
-| mfpserver | enabled | Server를 사용하도록 플래그 지정| true(기본값) 또는 false |
+| mfpserver | enabled | Server를 사용하도록 플래그 지정 | true(기본값) 또는 false |
 |  | repository | Docker 이미지 저장소 | Mobile Foundation Server Docker 이미지 저장소 |
 |  | tag | Docker 이미지 태그 | Docker 태그 설명 참조 |
 |  | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인 |
@@ -409,10 +409,10 @@ Application Center에 대한 데이터베이스 시크릿을 작성하려면 아
 | pdb | enabled | PDB의 사용/사용 안함 여부를 지정합니다. | true(기본값) 또는 false |
 | | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: 1) |
 | jndiConfigurations | mfpfProperties | 배치를 사용자 정의할 Mobile Foundation Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍 제공 |
-| | keystoreSecret | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 구성 절을 참조하십시오. |
+| | keystoreSecret | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 구성 절을 참조하십시오.|
 | resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  | 기본값은 2000m입니다. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |                  | limits.memory | 허용되는 최대 메모리 크기를 설명합니다. | 기본값은 4096Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오.|
-|           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  | 기본값: 1000m. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+|           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  |기본값: 1000m. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |           | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값은 2048Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
 | ***`MFP Push 구성`*** | | | |
 | mfppush | enabled | Mobile Foundation Push를 사용하도록 플래그 지정 | true(기본값) 또는 false |
@@ -426,16 +426,16 @@ Application Center에 대한 데이터베이스 시크릿을 작성하려면 아
 | pdb     | enabled | PDB의 사용/사용 안함 여부를 지정합니다. | true(기본값) 또는 false |
 |           | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: 1) |
 | jndiConfigurations | mfpfProperties | 배치를 사용자 정의할 Mobile Foundation Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍 제공 |
-| | keystoresSecretName | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 구성 절을 참조하십시오. |
+| | keystoresSecretName | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 구성 절을 참조하십시오.|
 | resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  | 기본값은 2000m입니다. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |                  | limits.memory | 허용되는 최대 메모리 크기를 설명합니다. | 기본값은 4096Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오.|
-|           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  | 기본값: 1000m. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+|           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  |기본값: 1000m. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |           | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값은 2048Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
 | ***`MFP Analytics 구성`*** | | | |
 | mfpanalytics | enabled          | Analytics를 사용하도록 플래그 지정 | false(기본값) 또는 true |
 | image | repository          | Docker 이미지 저장소 | Mobile Foundation Operational Analytics Docker 이미지의 저장소 |
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
-|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인 |
+|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인|
 | replicas |  | 작성해야 하는 Mobile Foundation Operational Analytics의 인스턴스 수(팟(Pod)) | 양의 정수(기본값: 2) |
 | autoscaling     | enabled | 수평 팟(Pod) 자동 스케일러(HPA)의 배치 여부를 지정합니다. 이 필드를 사용하면 replicaCount 필드를 사용하지 않습니다. | false(기본값) 또는 true |
 |           | min  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: 1) |
@@ -452,17 +452,17 @@ Application Center에 대한 데이터베이스 시크릿을 작성하려면 아
 | pdb  | enabled | PDB의 사용/사용 안함 여부를 지정합니다. | true(기본값) 또는 false |
 |   | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: 1) |
 | jndiConfigurations | mfpfProperties | 운영 분석을 사용자 정의하기 위해 지정할 Mobile Foundation JNDI 특성| 쉼표로 구분된 이름 값 쌍 제공  |
-|  | keystoreSecret | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 구성 절을 참조하십시오. |
+|  | keystoreSecret | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 구성 절을 참조하십시오.|
 | resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  | 기본값은 2000m입니다. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |   | limits.memory | 허용되는 최대 메모리 크기를 설명합니다. | 기본값은 4096Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오.|
 |   | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  |기본값: 1000m. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |   | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값은 2048Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
 | ***`MFP Application Center 구성`*** | | | |
 | mfpappcenter | enabled          | Application Center를 사용하도록 플래그 지정 | false(기본값) 또는 true |  
-| image | repository          | Docker 이미지 저장소 | Mobile Foundation Application Center Docker 이미지의 저장소|
+| image | repository          | Docker 이미지 저장소 | Mobile Foundation Application Center Docker 이미지의 저장소 |
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
-|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인 |
-| db | host | Appcenter 데이터베이스에서 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름 | |
+|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인|
+| db | host | Appcenter 데이터베이스에서 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름	| |
 |   | port | 	데이터베이스 포트  | |             
 | | name | 사용할 데이터베이스의 이름 | 데이터베이스가 사전에 작성되어야 합니다.|
 |   | secret | 데이터베이스 신임 정보를 포함하는 사전 작성된 시크릿| |
@@ -475,9 +475,9 @@ Application Center에 대한 데이터베이스 시크릿을 작성하려면 아
 | pdb     | enabled | PDB의 사용/사용 안함 여부를 지정합니다. | true(기본값) 또는 false |
 |           | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: 1) |
 |  | keystoreSecret | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 구성 절을 참조하십시오.|
-| resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  | 기본값: 1000m. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+| resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  |기본값: 1000m. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |                  | limits.memory | 허용되는 최대 메모리 크기를 설명합니다. | 기본값: 1024Mi. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오.|
-|           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  | 기본값: 1000m. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+|           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  |기본값: 1000m. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |           | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값: 1024Mi. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
 
 
@@ -677,8 +677,8 @@ helm delete --purge <release_name>
     예:
     ```
 
-   "spec": {
-       "tls": [
+      "spec": {
+"tls": [
          {
            "hosts": [
              “ingress_host_name”

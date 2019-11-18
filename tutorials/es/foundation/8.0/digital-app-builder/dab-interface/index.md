@@ -76,7 +76,7 @@ El entorno de trabajo le ayuda a diseñar las páginas. El entorno de trabajo co
     * Icono **Canal** - Visualiza el canal actualmente seleccionado. Se pueden añadir canales adicionales seleccionando los canales necesarios en la sección Plataformas bajo **Parámetros > Aplicación > Detalles de aplicación**. 
     * Nombre de página actual - Muestra el nombre de página del lienzo. Cuando se conmuta entre páginas, el nombre de la página actual se actualiza con la página seleccionada. 
     * **Compilar/Vista previa de aplicación** - Este botón tiene dos opciones:a. ayuda a obtener la vista previa de la aplicación que está desarrollando; b. compila la aplicación.
-    * **Publicar aplicación** - Esta opción le ayuda a crear y publicar su aplicación para Android/iOS en App Center.
+    * **Publicar** - Esta opción le ayuda a crear y publicar su aplicación para Android/iOS en App Center o publicar Direct Updates de su aplicación “over-the-air” con recursos web renovados.
     * **Lienzo** - En el centro de esta sección se encuentra el lienzo, que muestra el diseño o el código. Arrastre y suelte los controles para crear la aplicación.
 
 3. Separador **Propiedades/Acciones** - En el lado derecho se encuentra el separador de propiedades y acciones. Cuando se coloca un control en el lienzo, puede editar y modificar las propiedades del control y conectarlo con una acción relacionada para que la ejecute. 

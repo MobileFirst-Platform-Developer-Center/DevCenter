@@ -6,7 +6,7 @@ relevantTo: [ios,android,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral
+## Visão geral
 {: #overview }
 
 Esse tópico descreve a lista de perguntas mais frequentes relacionadas ao IBM Mobile Foundation.

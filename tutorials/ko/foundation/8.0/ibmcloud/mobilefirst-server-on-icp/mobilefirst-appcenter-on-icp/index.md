@@ -65,7 +65,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
       ```bash
       cloudctl login -a https://<ip>:<port>
       ```
-선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
+      선택적으로 SSL 유효성 검증을 건너뛰려면 위의 명령에서 `--skip-ssl-validation` 플래그를 사용하십시오. 이 옵션을 사용하면 클러스터 엔드포인트의 `username` 및 `password`에 대한 프롬프트가 표시됩니다. 로그인이 성공하면 아래의 단계를 진행하십시오.
 
   2. 다음 명령을 사용하여 {{ site.data.keys.product }}의 PPA 아카이브를 로드하십시오.
       ```
@@ -156,7 +156,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 ## {{ site.data.keys.mf_app_center }} 액세스
 {: #access-mf-appcenter-console}
 
-{{ site.data.keys.mf_app_center }} Helm Chart를 설치한 후 `<protocol>://<external_ip>:<port>/appcenterconsole`을 사용하여 브라우저에서 {{ site.data.keys.mf_app_center }} 콘솔에 액세스할 수 있습니다.
+{{ site.data.keys.mf_app_center }} Helm Chart 설치를 완료한 후 `<protocol>://<external_ip>:<port>/appcenterconsole`을 사용하여 브라우저에서 {{ site.data.keys.mf_app_center }} 콘솔에 액세스할 수 있습니다.
 
 프로토콜은 **http** 또는 **https**일 수 있습니다. 또한 NodePort 배치의 경우 포트는 NodePort가 됩니다. 설치된 {{ site.data.keys.mf_app_center }} Chart의 ip_address 및 NodePort를 가져오려면 아래의 단계를 따르십시오.
 

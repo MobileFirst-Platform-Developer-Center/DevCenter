@@ -50,8 +50,7 @@ Mobile Foundation 인스턴스 설치 프로세스를 시작하기 전의 전제
 
     $ docker login -u $(oc whoami) -p $(oc whoami -t) docker-registry-default.-xxxx.appdomain.cloud
     Login Succeeded
-    ````
-
+    ```
 
     c. PPA 아카이브를 작업 디렉토리로 압축을 풀고(`mfoskpg` 사용) IBM Mobile Foundation 이미지를 로컬로 사용하십시오.
 
@@ -77,7 +76,7 @@ Mobile Foundation 인스턴스 설치 프로세스를 시작하기 전의 전제
     done
     ```
 
-    > **주요 참고:** 여기부터는 OpenShift의 내부 컨테이너 레지스트리에서 컨테이너에 액세스할 때 이미지 URL을 `docker-registry.default.svc:5000/<project_name>/<image_name>:<image_tag>`로 사용하십시오.
+    > **중요 참고:** 여기부터는 OpenShift의 내부 컨테이너 레지스트리에서 컨테이너에 액세스할 때 이미지 URL을 `docker-registry.default.svc:5000/<project_name>/<image_name>:<image_tag>`로 사용하십시오.
 
 2. OpenShift 프로젝트를 작성하십시오.
 
@@ -114,10 +113,10 @@ Mobile Foundation 인스턴스 설치 프로세스를 시작하기 전의 전제
     ```
 
 4.  데이터베이스에 액세스하려면 IBM Mobile Foundation 배치에 필요한 시크릿을 작성하십시오.
-    >[여기](../install-mf/#install-mf)의 문서를 참조하십시오.
+    >[여기](../mobilefoundation-on-openshift/#setup-openshift-for-mf)의 문서를 참조하십시오.
 
 5.  Analytics에 대한 지속적 볼륨 및 볼륨 청구를 작성하십시오.
-    >[여기](../install-mf/#install-mf)의 문서를 참조하십시오.
+    >[여기](../mobilefoundation-on-openshift/#setup-openshift-for-mf)의 문서를 참조하십시오.
 
 6.  IBM Mobile Foundation 컴포넌트를 배치하십시오.
 
@@ -133,7 +132,7 @@ Mobile Foundation 인스턴스 설치 프로세스를 시작하기 전의 전제
       pullSecret: pull-secret-name
     ```
 
-    [여기](../install-mf/#deploy-mf-operator)의 문서를 참조하여 나머지 구성(복제본, 스케일링, DB 특성 등)을 완료하십시오.
+    [여기](../mobilefoundation-on-openshift/#deploy-mf-operator)의 문서를 참조하여 나머지 구성(복제본, 스케일링, DB 특성 등)을 완료하십시오.
 
 7. 사용자 정의 리소스를 작성하거나 업데이트하십시오. 이 단계에서는 CR yaml에서 사용할 수 있는 모든 Mobile Foundation 컴포넌트를 위한 팟(Pod)을 작성하고 실행합니다.
 
@@ -174,7 +173,7 @@ Mobile Foundation 인스턴스 설치 프로세스를 시작하기 전의 전제
 
 Mobile Foundation 컴포넌트의 콘솔에 액세스하기 위한 엔드포인트는 다음과 같습니다.
 
-  * **Mobile Foundation 서버 관리 콘솔** - `http://<ingress_subdomain>/mfpconsole`
+  * **Mobile Foundation Server 관리 콘솔** - `http://<ingress_subdomain>/mfpconsole`
   * **Operational Analytics 콘솔** - `http://<ingress_subdomain>/analytics/console`
   * **Application Center 콘솔** - `http://<ingress_subdomain>/appcenterconsole`
 
@@ -198,7 +197,7 @@ Mobile Foundation 컴포넌트의 콘솔에 액세스하기 위한 엔드포인�
 ```bash
 oc run perms-pod --overrides='
 {
-        "spec": {
+           "spec": {
             "containers": [
                 {
                     "command": [

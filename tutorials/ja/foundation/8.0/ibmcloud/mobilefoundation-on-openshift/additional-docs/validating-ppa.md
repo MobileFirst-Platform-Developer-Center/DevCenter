@@ -8,7 +8,7 @@ show_in_nav: false
 <!-- NLS_CHARSET=UTF-8 -->
 ### パスポート・アドバンテージ・アーカイブからダウンロードした IBM Mobile Foundation アーカイブの検証 (オプション)
 
-パスポート・アドバンテージで入手できる Red Hat OpenShift Container Platform 用の IBM Mobile Foundation パッケージでは、パッケージの整合性を強化するために (Digi Cert により) コードに署名されています。Red Hat OpenShift Container Platform 上の IBM MobileFirst Platform Server の IBM MobileFirst Platform Foundation V8.0 .tar.gz ファイルとともに、`.sig` (署名ファイル) および `.pub` (RSA 公開鍵) ファイルがパスポート・アドバンテージに公開されています。お客様は、以下のように署名を検証することで、パッケージの整合性を確認できます。
+パスポート・アドバンテージで入手できる Red Hat OpenShift Container Platform 用の IBM Mobile Foundation パッケージでは、パッケージの整合性を強化するために (Digi Cert により) コードに署名されています。 Red Hat OpenShift Container Platform 上の IBM MobileFirst Platform Server の IBM MobileFirst Platform Foundation V8.0 .tar.gz ファイルとともに、`.sig` (署名ファイル) および `.pub` (RSA 公開鍵) ファイルがパスポート・アドバンテージに公開されています。 お客様は、以下のように署名を検証することで、パッケージの整合性を確認できます。
 
 #### パスポート・アドバンテージで入手できるパッケージ情報
 

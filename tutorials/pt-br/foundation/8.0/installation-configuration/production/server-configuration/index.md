@@ -27,7 +27,7 @@ Considere sua política de backup e recuperação, otimize a configuração do {
 
 > **Nota:** As informações referentes a URLs que são expostas pelo {{ site.data.keys.product }} são fornecidas como uma diretriz. As organizações devem assegurar que as URLs sejam testadas em uma infraestrutura corporativa, com base no que estiver ativado para as listas de bloqueio e desbloqueio.
 
-| URL da API URL em `<runtime context root>/api/` | Descrição                               | Sugerido para a lista de desbloqueio? |
+| URL da API em `<runtime context root>/api/` | Descrição                               | Sugerido para a lista de desbloqueio? |
 |---------------------------------------------|-------------------------------------------|--------------------------|
 | /adapterdoc/*	                              | Retornar documentação do swagger do adaptador para o adaptador nomeado | Não. Usado apenas internamente pelo administrador e pelos desenvolvedores |
 | /adapters/*  | Entrega de adaptadores | Sim |
@@ -71,7 +71,7 @@ As etapas para configurar o {{ site.data.keys.mf_server }} para ativar a Seguran
         * Oracle JRE 1.7.0_75 ou mais recente
         * Oracle JRE 1.8.0_31 ou mais recente
 2. Se você usar um IBM Java SDK, edite o arquivo **server.xml**.
-    * Inclua a seguinte linha: `<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="SSL_TLSv2"/>`
+    * Inclua a linha a seguir: `<ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" sslProtocol="SSL_TLSv2"/>`
     * Inclua o atributo `sslProtocol="SSL_TLSv2"` em todos os elementos `<ssl>` existentes.
 
 ### WebSphere Application Server Full Profile
@@ -181,8 +181,8 @@ Defina os conceitos básicos da configuração de usuário no console do WebSphe
 {: #configuring-websphere-application-server-liberty-profile-for-mobilefirst-server-administration }
 No perfil Liberty do WebSphere Application Server, configure as funções de **mfpadmin**, **mfpdeployer**, **mfpmonitor** e **mfpoperator** no arquivo de configuração **server.xml** do servidor.
 
-Para configurar as funções de segurança, você deve editar o arquivo **server.xml**. No elemento `<application-bnd>` de cada elemento `<application>`, crie elementos `<security-role>`. Cada elemento `<security-role>` é destinado a cada uma das funções: **mfpadmin**, mfpdeployer, mfpmonitor e mfpoperator. Mapeie as funções para o nome do grupo de usuários apropriado, neste exemplo: **mfpadmingroup**, **mfpdeployergroup**,
-**mfpmonitorgroup** ou **mfpoperatorgroup**. Esses grupos são definidos por meio do elemento `<basicRegistry>`. É possível customizar esse elemento ou substituí-lo totalmente por um elemento `<ldapRegistry>` ou um elemento `<safRegistry>`.
+Para configurar as funções de segurança, você deve editar o arquivo **server.xml**. No elemento `<application-bnd>` de cada elemento `<application>`, crie elementos `<security-role>`. Cada elemento `<security-role>` destina-se a cada uma das funções: **mfpadmin**, mfpdeployer, mfpmonitor e mfpoperator. Mapeie as funções para o nome do grupo de usuários apropriado, neste exemplo: **mfpadmingroup**, **mfpdeployergroup**,
+**mfpmonitorgroup** ou **mfpoperatorgroup**. Esses grupos são definidos por meio do elemento `<basicRegistry>`. É possível customizar esse elemento ou substituí-lo completamente por um elemento `<ldapRegistry>` ou um elemento `<safRegistry>`.
 
 Em seguida, para manter tempos bons de resposta com um grande número de aplicativos instalados, por exemplo com 80 aplicativos, você deve configurar um conjunto de conexões para o banco de dados de administração.
 
@@ -315,7 +315,7 @@ Configure as entradas de ambiente JNDI de uma das seguintes formas:
       </Context>
       ```
 
-        * O prefixo do caminho de contexto não é necessário porque as entradas JNDI são definidas dentro do elemento `<Context>` de um aplicativo.
+        * O prefixo do caminho de contexto não é necessário, porque as entradas JNDI são definidas dentro do elemento `<Context>` de um aplicativo.
         * `override="false"` é obrigatório.
         * O atribuo `type` é sempre `java.lang.String`, a menos que seja especificado de modo diferente para a propriedade.
 
@@ -331,8 +331,8 @@ Configure as entradas de ambiente JNDI de uma das seguintes formas:
 
   Em **mfp_install_dir/MobileFirstServer/configuration-samples**, edite o arquivo XML de configuração para as tarefas Ant, e declare os valores para as propriedades JNDI usando o elemento da propriedade dentro das seguintes tags:
 
-  * `<installmobilefirstadmin>`, para administração do {{ site.data.keys.mf_server }}, {{ site.data.keys.mf_console }} e serviços de atualização em tempo real. Para obter informações adicionais, consulte [Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, administração do {{ site.data.keys.mf_server }} e serviços de atualização em tempo real](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
-  * `<installmobilefirstruntime>`, para propriedades de configuração de tempo de execução do {{ site.data.keys.product_adj }}. Para obter informações adicionais, consulte [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+  * `<installmobilefirstadmin>`, para {{site.data.keys.mf_server }} administração, {{site.data.keys.mf_console }}e serviços de atualização em tempo real. Para obter informações adicionais, consulte [Tarefas Ant para instalação de artefatos do {{ site.data.keys.mf_console }}, do {{ site.data.keys.mf_server }}, administração do {{ site.data.keys.mf_server }} e serviços de atualização em tempo real](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services).
+  * `<installmobilefirstruntime>`, para  {{ site.data.keys.product_adj }} propriedades de configuração de tempo de execução do. Para obter informações adicionais, consulte [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
   * `<installmobilefirstpush>`, para configuração do serviço de push. Para obter informações adicionais, consulte [Tarefas Ant para instalação do serviço de push do {{ site.data.keys.mf_server }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service).
 
   Por exemplo:
@@ -357,8 +357,8 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 | mfp.admin.jmx.connector  | Opcional	           | O tipo de conector Java Management Extensions (JMX).<br/>Os valores possíveis são `SOAP` e `RMI`. O valor padrão é SOAP. | Somente WebSphere Application Server. |
 | mfp.admin.jmx.host       | Opcional	           | nome do host para a conexão JMX REST. | perfil do Liberty apenas. |
 | mfp.admin.jmx.port	   | Opcional	           | Porta para a conexão JMX REST. | perfil do Liberty apenas. |
-| mfp.admin.jmx.user       | Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | nome do usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: o nome do usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: o nome do usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: o nome do usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: O nome do usuário do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
-| mfp.admin.jmx.pwd	| Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | Senha de usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: a senha de usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: a senha de usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: a senha de usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do servidor do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: a senha do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.user       | Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | nome do usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: o nome do usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: o nome do usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: o nome do usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: o nome do usuário do administrador do controlador que é definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.pwd	| Obrigatório para o perfil Liberty e para o farm do WebSphere Application Server; caso contrário, opcional | Senha de usuário para a conexão JMX REST. | Perfil Liberty do WebSphere Application Server: a senha de usuário para a conexão JMX REST.<br/><br/>Farm do WebSphere Application Server: a senha de usuário para a conexão SOAP.<br/><br/>WebSphere Application Server Network Deployment: a senha de usuário do administrador do WebSphere, se o host virtual mapeado para o aplicativo de administração do servidor do {{ site.data.keys.mf_server }} não for o host padrão.<br/><br/>Liberty Collective: a senha do administrador do controlador que é definida no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
 | mfp.admin.rmi.registryPort | Opcional | porta do registro RMI para a conexão JMX através de um firewall. | Tomcat apenas. |
 | mfp.admin.rmi.serverPort | Opcional | porta do servidor RMI para a conexão JMX através de um firewall. | Tomcat apenas. |
 | mfp.admin.jmx.dmgr.host | Obrigatório | nome do host do gerenciador de implementação. | Somente WebSphere Application Server Network Deployment. |
@@ -385,7 +385,7 @@ As seguintes propriedades podem ser configuradas no aplicativo da web do serviç
 #### Propriedades JNDI para serviço de administração: proxies
 {: #jndi-properties-for-administration-service-proxies }
 
-| Propriedade                 | Opcional ou obrigatório | Descrição  |
+| Propriedade                 | Opcional ou obrigatório | Descrição (Description)  |
 |--------------------------|-----------------------|--------------|
 | mfp.admin.proxy.port | Opcional | Se o servidor de administração {{ site.data.keys.product_adj }} estiver atrás de um firewall ou proxy reverso, essa propriedade especificará o endereço do host. Configure essa propriedade para permitir que um usuário fora do firewall atinja o servidor de administração {{ site.data.keys.product_adj }}. Geralmente, essa propriedade é a porta do proxy, por exemplo, 443. É necessário apenas se o protocolo dos URIs externo e interno for diferente. |
 | mfp.admin.proxy.protocol | Opcional | Se o servidor de administração {{ site.data.keys.product_adj }} estiver atrás de um firewall ou proxy reverso, essa propriedade especificará o protocolo (HTTP ou HTTPS). Configure essa propriedade para permitir que um usuário fora do firewall atinja o servidor de administração {{ site.data.keys.product_adj }}. Normalmente, essa propriedade é configurada para o protocolo do proxy. Por exemplo, wl.net. Esta propriedade será necessária apenas se o protocolo dos URIs externo e interno for diferente. |
@@ -492,14 +492,14 @@ Para saber como configurar essas propriedades, consulte [Configurando propriedad
 Quando você configura o tempo de execução do {{ site.data.keys.mf_server }} para seu servidor de aplicativos, é necessário configurar as propriedades JNDI opcionais ou obrigatórias.  
 A tabela a seguir lista as propriedades do {{ site.data.keys.product_adj }} que estão sempre disponíveis como entradas JNDI:
 
-| Propriedade | Descrição |
+| Propriedade | Descrição (Description) |
 |----------|-------------|
 | mfp.admin.jmx.dmgr.host | Obrigatório. O nome do host do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.dmgr.port | Obrigatório. A porta RMI ou SOAP do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.host | Somente Liberty. O nome do host da conexão REST JMX. Para Liberty Collective, use o nome do host do controlador. |
-| mfp.admin.jmx.port | Somente Liberty. O número da porta para a conexão REST JMX. Para Liberty Collective, a porta do conector REST deve ser idêntica ao valor do atributo httpsPort que é declarado no elemento `<httpEndpoint>`. Esse elemento é declarado no arquivo server.xml do controlador Liberty. |
-| mfp.admin.jmx.user | Opcional. Farm do WebSphere Application Server: o nome do usuário da conexão SOAP.<br/><br/>Liberty Collective: O nome do usuário do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
-| mfp.admin.jmx.pwd | Opcional. Farm do WebSphere Application Server: a senha de usuário da conexão SOAP.<br/><br/>Liberty Collective: a senha do administrador controlador definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.port | Somente Liberty. O número da porta para a conexão REST JMX. Para o Liberty Collective, a porta do conector REST deve ser idêntica ao valor do atributo httpsPort que é declarado no elemento `<httpEndpoint>`. Esse elemento é declarado no arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.user | Opcional. Farm do WebSphere Application Server: o nome do usuário da conexão SOAP.<br/><br/>Liberty Collective: o nome do usuário do administrador do controlador que é definido no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
+| mfp.admin.jmx.pwd | Opcional. Farm do WebSphere Application Server: a senha de usuário da conexão SOAP.<br/><br/>Liberty Collective: a senha do administrador do controlador que é definida no elemento `<administrator-role>` do arquivo server.xml do controlador Liberty. |
 | mfp.admin.serverid | Obrigatório para server farms e Liberty Collective; caso contrário, opcional.<br/><br/>Server farm: o identificador do servidor. Deve ser diferente para cada servidor na fazenda.<br/><br/>Liberty Collective: o identificador do membro. O identificador deve ser diferente para cada membro no Collective. O controlador de valor não pode ser usado, pois está reservado para o controlador coletivo. |
 | mfp.topology.platform | Opcional. O tipo de servidor. Os valores válidos são:<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Se você não configurar o valor, o aplicativo tenta adivinhar o tipo de servidor. |
 | mfp.topology.clustermode | Opcional. Além do tipo de servidor, especifique aqui a topologia do servidor. Valores válidos:<ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>O valor padrão é Standalone. |
@@ -639,7 +639,7 @@ Ao implementar um aplicativo que tem pelo menos 40 MB com o IBM {{ site.data.key
 A seguinte saída do sistema é um exemplo do código de erro de log de transações cheio.
 
 ```bash
-DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
+Erro de DB2 SQL: SQLCODE=-964, SQLSTATE=57011
 ```
 
 O conteúdo de cada aplicativo é armazenado no banco de dados de administração do {{ site.data.keys.product_adj }}.
@@ -706,7 +706,7 @@ Quando um aplicativo tenta conectar ao banco de dados após o fechamento da cone
 com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: No operations allowed after statement closed.
 ```
 
-Edite os arquivos **server.xml** e **context.xml**, e para cada elemento `<Resource>`, inclua as seguintes propriedades:
+Edite os arquivos **server.xml** e **context.xml** e, para cada elemento `<Resource>`, inclua as seguintes propriedades:
 
 * **testOnBorrow="true"**
 * **validationQuery="select 1"**
@@ -725,7 +725,7 @@ Por exemplo:
 
 #### Configuração de perfil Liberty do WebSphere Application Server
 {: #websphere-application-server-liberty-profile-configuration-1 }
-Edite o arquivo **server.xml** e, para cada elemento `<dataSource>` (bancos de dados de tempo de execução e do Application Center), inclua um elemento `<connectionManager>` com a propriedade agedTimeout:
+Edite o arquivo **server.xml** e, para cada elemento `<dataSource>` (tempo de execução e bancos de dados do Application Center), inclua um elemento `<connectionManager>` com a propriedade agedTimeout:
 
 ```xml
 <connectionManager agedTimeout="timeout_value"/>

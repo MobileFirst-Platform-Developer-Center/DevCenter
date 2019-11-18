@@ -21,6 +21,7 @@ La topologie de serveur dans laquelle installer les composants doit également �
 * [Installation à l'aide de tâches Ant](#installing-with-ant-tasks)
 * [Installation manuelle des composants {{ site.data.keys.mf_server }}](#installing-the-mobilefirst-server-components-manually)
 * [Installation d'un parc de serveurs](#installing-a-server-farm)
+* [Planificateur d'exécution Mobile Foundation](#mf-runtime-scheduler)
 
 ## Prérequis pour le serveur d'applications
 {: #application-server-prerequisites }
@@ -2203,3 +2204,65 @@ Vous pouvez configurer la fréquence des signaux de présence et la valeur de d�
 
 <br/>
 Pour plus d'informations sur les propriétés JNDI, voir [Liste des propriétés JNDI pour le {{ site.data.keys.mf_server }}service d'administration](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+
+## Planificateur d'exécution Mobile Foundation
+{: #mf-runtime-scheduler}
+
+L'environnement d'exécution de Mobile Foundation fait appel aux planificateurs Quartz pour réaliser certaines activités planifiées.
+
+Le planificateur d'exécution de Mobile Foundation effectue les activités suivantes :
+
+1.	Suivi des licences
+2.	Création de journaux d'audit
+
+L'exécution du planificateur est contrôlée par les deux propriétés JNDI suivantes : 
+
+* **mfp.licenseTracking.enabled**
+* **mfp.purgedata.enabled** (disponible à partir du correctif temporaire *8.0.0.0-MFPF-IF201812191602-CDUpdate-04*)
+
+Ces propriétés JNDI sont activées par défaut pour tous les serveurs d'application pris en charge.
+
+>**Remarque :** Si vous exécutez Mobile Foundation sous WebSphere Application Server, la propriété JNDI **mfp.licenseTracking.enabled** a besoin d'être activée à l'aide de la valeur **true** dans les entrées d'environnement d'exécution de la console WAS.
+
+### Suivi des licences
+{: #license-tracking}
+
+Le suivi des licences assure le suivi des indicateurs relatifs aux règles de licence, tels que les appareils client actifs, les appareils adressables et les applications installées. Ces informations permettent de déterminer si l'utilisation actuelle de Mobile Foundation respecte les niveaux d'autorisation de licence, et peuvent empêcher de potentielles violations de licence. Le suivi des licences aide à mettre les appareils qui n'accèdent plus au serveur Mobile Foundation hors service et à archiver et supprimer les anciens enregistrements de *MFP_PERSISTENT_DATA*.
+
+Le tableau ci-dessous répertorie les propriétés JNDI liées au suivi des licences.
+
+| Propriété JNDI | Description |
+|---------------|-------------|
+| mfp.device.decommissionProcessingInterval | Définit la fréquence (en secondes) à laquelle la tâche de déclassement est exécutée. Valeur par défaut : `86400` (un jour). |
+| mfp.device.decommission.when | Nombre de jours d'inactivité au terme desquels un appareil client est déclassé par la tâche de déclassement d'appareil. Valeur par défaut : `90 jours`. |
+| mfp.device.archiveDecommissioned.when | Nombre de jours d'inactivité au terme desquels un appareil client déclassé est archivé. <br/> Cette tâche écrit les appareils client déclassés dans un fichier archive. Les appareils client archivés sont écrits dans un fichier du répertoire home\devices_archive du serveur Mobile Foundation. Le nom du fichier contient l'horodatage de création du fichier archive. Valeur par défaut : `90 jours`. |
+| mfp.licenseTracking.enabled | Valeur utilisée pour activer ou désactiver le suivi des licences dans IBM Mobile Foundation. <br/> Pour améliorer les performances, vous pouvez désactiver le suivi des licences lorsqu'IBM Mobile Foundation n'exécute que des applications Business-to-Consumer (B2C). Lorsque le suivi des appareils est désactivé, les rapports de licence sont également désactivés et aucune mesure de licence n'est générée. <br/> Les valeurs possibles sont `true` (valeur par défaut) et `false`. |
+
+Veuillez consulter les rubriques ci-dessous pour en savoir plus sur le suivi des licences.
+
+* [Suivi des licences Mobile Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/administering-apps/license-tracking/)
+* [Mobile Foundation Runtime properties](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html)
+
+Le planificateur s'exécute huit heures après le démarrage d'un serveur. Autrement dit, si les serveurs sont démarrés à 23 heures ce jour, le planificateur ne s'exécutera pas à 01h00 (heure d'exécution par défaut du planificateur) mais à 08h00, le lendemain. L'écart entre le démarrage d'un serveur et l'exécution du planificateur est de huit heures.
+
+Démarrage du correctif temporaire [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) l'écart entre le démarrage d'un serveur et l'exécution du planificateur est de quatre heures et non de huit heures.
+Une nouvelle propriété *MFP.SCHEDULER.STARTHOUR* est également introduite. Celle-ci permet au client de choisir l'heure d'exécution du planificateur au lieu de la valeur par défaut (01h00). La propriété peut avoir une valeur comprise entre un et 23. Elle permet ainsi au client de régler le démarrage du planificateur aux heures les moins chargées et garantit que le planificateur s'exécute malgré un démarrage de serveur quotidien. Si un client redémarre ses serveurs tous les jours à 01h00, il peut définir la propriété *MFP.SCHEDULER.STARTHOUR* sur 5. L'écart de quatre heures est conservé et le planificateur s'exécutera à 05h00.
+
+Nous vous conseillons de laisser le suivi des licences désactivé, car les activités associées entraînent une utilisation intensive de la base de données. Seuls les clients utilisant le modèle de licence pour les appareils adressables Mobile Foundation ont besoin d'activer le suivi des licences.
+
+Les clients qui n'ont pas activé le suivi des licences peuvent utiliser la [fonctionnalité de purge]({{site.baseurl}}/blog/2018/12/27/purge-mfp-runtime-tables/) pour supprimer les anciens enregistrements et assurer la maintenance des tables *MFP_PERSISTENT_DATA* et *MFP_TRANSIENT_DATA*.
+
+### Création de journaux d'audit
+{: #creating-audit-log}
+
+Le suivi des licences enregistre les dernières données de licence et d'exécution dans la table d'exécution Mobile Foundation *LICENSE_TERMS*. Le journal d'audit génère un journal basé sur l'entrée la plus récente de la table. Les rapports sont disponibles au format de fichier `.slmtag` dans le dossier des journaux sous le répertoire d'installation du serveur.
+
+### Désactivation de la mise à jour Quartz
+{: #disable-quartz-update}
+
+L'environnement d'exécution de Mobile Foundation regroupe les bibliothèques requises, dont quelques bibliothèques tierces. Mobile Foundation fait appel aux planificateurs de tâches Quartz et inclut `quartz2.2.0.jar`.
+
+Quartz contient une fonctionnalité de *recherche de mises à jour* qui se connecte au [serveur](http://www.terracotta.org/) afin de vérifier si une nouvelle version de Quartz est disponible au téléchargement. La vérification s'exécute de manière asynchrone et n'a pas d'incidence sur le temps de démarrage/d'initialisation de Quartz. Elle échoue si la connexion ne peut pas être établie. Si la vérification s'exécute et qu'une mise à jour est détectée, celle-ci apparaît comme disponible dans les journaux de Quartz.
+
+Vous pouvez désactiver la *recherche de mises à jour* en utilisant l'indicateur `org.quartz.scheduler.skipUpdateCheck = true`. Le déploiement Liberty de Mobile Foundation crée un fichier `jvm.options` et lors du déploiement à l'aide de l'outil de configuration de serveur, le fichier `jvm.options` créé indiquera cette propriété à partir du correctif temporaire [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904). Pour les correctifs temporaires antérieurs, vous pouvez ajouter cette propriété dans le fichier `jvm.options`.
+Dans le cadre des déploiements de WebSphere Application Server (WAS), la propriété JNDI ci-dessus doit être ajoutée à la propriété d'environnement de l'application Mobile Foundation via la console d'administration WAS.

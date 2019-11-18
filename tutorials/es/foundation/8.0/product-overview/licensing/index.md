@@ -14,15 +14,17 @@ Si ha comprado licencias perpetuas, puede consumir lo que ha comprado y verifica
 {: #application-or-addressable-device-licenses }
 Si ha comprado licencias de dispositivo dirigible o aplicación, puede consumir lo que ha comprado y verificar su utilización y cumplimiento a través de la página de seguimiento de licencias en {{ site.data.keys.mf_console }} y a través del informe de seguimiento de licencias.
 
-### Licencias de unidades de valor de procesador (PVU)
-{: #processor-value-unit-pvu-licensing }
-Las licencias de unidades de valor de procesador (PVU) están disponibles al comprar IBM {{ site.data.keys.product }} Extension (consulte [License Information documents](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)), pero únicamente después de haber comprado IBM WebSphere Application Server Network Deployment, IBM API Connect Professional o IBM API Connect Enterprise.
+### Virtual Processor Cores (Licencia de VPC) 
+{: #vpc-licensing}
 
-La estructura de precios de las licencias PVU depende tanto del tipo como del número de procesadores disponibles para los productos instalados. Las autorizaciones pueden ser de capacidad completa o de subcapacidad. En la estructura de gestión de licencias de unidades de valor de procesador, el software se licencia en base al número de unidades de valor asignadas a cada núcleo de procesador.
+Mobile Foundation también está disponible con una licencia basada en capacidad denominada VPC (Virtual Processor Cores). VPC es una unidad de medida que se utiliza para determinar el coste de la licencia para Mobile Foundation y está basada en el número de núcleos disponibles. Actualmente, esta métrica solo está disponible para Cloud Pak for Applications.
 
-Por ejemplo, al tipo de procesador A se le asignan 80 unidades de valor por núcleo y al tipo de procesador B se le asignan 100 unidades de valor por núcleo. Si su licencia corresponde a un producto que se ejecuta en dos procesadores de tipo A, debe adquirir una titularidad para 160 unidades de valor por núcleo. Si el producto se ha de ejecutar en dos procesadores de tipo B, la titularidad que se necesita es de 200 unidades de valor por núcleo.
+Las características de esta métrica son las siguientes. 
 
-> [Consulte aquí para obtener más información](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) sobre la gestión de licencias PVU.
+* Los clientes pueden ejecutar cualquier número de aplicaciones y dispositivos. Por lo tanto, este formato de licencia puede ofrecer más ventajas en comparación con la licencia de aplicación en los casos en los que los clientes tienen muchas aplicaciones en su despliegue.
+
+* Está alineado con los otros productos de la cartera de productos y proporciona flexibilidad a los clientes en los despliegues de nube híbrida.
+
 
 ### Gestión de licencias de señal
 {: #token-licensing }

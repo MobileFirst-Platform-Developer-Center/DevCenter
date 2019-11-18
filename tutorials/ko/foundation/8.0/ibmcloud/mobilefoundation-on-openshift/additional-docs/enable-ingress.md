@@ -56,7 +56,7 @@ OpenShift 클러스터에 배치된 Mobile Foundation 인스턴스에 액세스�
     oc create secret generic server-stores --from-file=./keystore.jks --from-file=./truststore.jks --from-literal=KEYSTORE_PASSWORD=worklight --from-literal=TRUSTSTORE_PASSWORD=worklight
     ```
 
-    >**참고**: 파일 이름 및 리터럴은 위 명령에서 언급된 것과 동일해야 합니다. 사용자 정의 자원을 구성할 때 각 문서의 *keystoreSecret* 입력 필드에 이 시크릿 이름을 제공하여 기본 키 저장소를 대체하십시오.
+    >**참고**: 파일 이름 및 리터럴은 위 명령에서 언급된 것과 동일해야 합니다.	사용자 정의 자원을 구성할 때 각 문서의 *keystoreSecret* 입력 필드에 이 시크릿 이름을 제공하여 기본 키 저장소를 대체하십시오.
 
     `deploy/crds/charts_v1_mfoperator_cr.yaml`의 ingress 섹션은 아래와 비슷합니다.
 

@@ -18,7 +18,7 @@ Descargue e instale la actualización de entrega continua más reciente para obt
 
 ##### <span style="color:NAVY">**Actualización de CoreML**</span>
 
-Los modelos ML (Machine Learning, aprendizaje automático) se pueden ejecutar localmente en el dispositivos móvil iOS mediante la infraestructura CoreML de Apple.
+Los modelos ML (Machine Learning, aprendizaje automático) se pueden ejecutar localmente en el dispositivo móvil iOS mediante la infraestructura CoreML de Apple.
 Mobile Foundation ofrece la posibilidad de gestionar la distribución de estos modelos a dispositivos de forma segura. [Más información](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
 
 ##### <span style="color:NAVY">**App Authenticity para watchOS**</span>

@@ -11,7 +11,7 @@ weight: 6
 
 IBM Mobile Foundation for Developers 8.0 は、サーバーと Operational Analytics コンポーネントで構成される開発者エディションです。
 
-Mobile Foundation サーバー・ランタイムには、Mobile Foundation データを保管するための Derby データベースが組み込まれています。これにより、ユーザーは IBM Cloud Kubernetes デプロイメント内の 1 つのポッドに制限されます。Community Edition では、Mobile Foundation ユーザーは、最小限の構成パラメーターを使用して、IBM Cloud Kubernetes Service で Mobile Foundation インスタンスを簡単にセットアップするという開発を経験できます。
+Mobile Foundation サーバー・ランタイムには、Mobile Foundation データを保管するための Derby データベースが組み込まれています。 これにより、ユーザーは IBM Cloud Kubernetes デプロイメント内の 1 つのポッドに制限されます。 Community Edition では、Mobile Foundation ユーザーは、最小限の構成パラメーターを使用して、IBM Cloud Kubernetes Service で Mobile Foundation インスタンスを簡単にセットアップするという開発を経験できます。
 
 以下の手順に従って、IBM Cloud Kubernetes Service 上の事前構成済み Operational Analytics を含む IBM Mobile Foundation サーバーの開発者エディションをインストールします。<br/>
 * [ここ](https://cloud.ibm.com/kubernetes/clusters)から Kubernetes クラスターを作成し、構成します。
@@ -30,16 +30,16 @@ Mobile Foundation サーバー・ランタイムには、Mobile Foundation デ�
 ## 前提条件
 {: #prereqs}
 
-[IBM Cloud](https://cloud.ibm.com/) ポータルを使用して、IBM Cloud Kubernetes Service (無料プラン) を作成しておく必要があります。セットアップ手順については、[資料](https://cloud.ibm.com/docs/containers?topic=containers-getting-started)を参照してください。
+[IBM Cloud](https://cloud.ibm.com/) ポータルを使用して、IBM Cloud Kubernetes Service (無料プラン) を作成しておく必要があります。 セットアップ手順については、[資料](https://cloud.ibm.com/docs/containers?topic=containers-getting-started)を参照してください。
 kube ポッドおよび helm デプロイメントを管理するために、ホスト・マシンに以下のツールをインストールする必要があります。
 * ibmcloud CLI (`ibmcloud`)
 * Kubernetes CLI (`kubectl`)
 * Helm (`helm`)
 CLI を使用して Kubernetes クラスターを処理するために、*ibmcloud* クライアントを構成する必要があります。
-1. [クラスター・ページ](https://cloud.ibm.com/kubernetes/clusters)にログインしていることを確認します。(注: [IBMid アカウント](https://myibm.ibm.com/)が必要です。)
+1. [クラスター・ページ](https://cloud.ibm.com/kubernetes/clusters)にログインしていることを確認します。 (注: [IBMid アカウント](https://myibm.ibm.com/)が必要です。)
 2. IBM Mobile Foundation Chart をデプロイする先の Kubernetes クラスターをクリックします。
 3. クラスターが作成された後、**「アクセス」**タブの指示に従います。
->**注:** クラスターの作成には数分かかります。クラスターが正常に作成された後、**「ワーカー・ノード (Worker Nodes)」**タブをクリックし、*パブリック IP* をメモします。
+>**注:** クラスターの作成には数分かかります。 クラスターが正常に作成された後、**「ワーカー・ノード (Worker Nodes)」**タブをクリックし、*パブリック IP* をメモします。
 
 ## IBM Mobile Foundation for Developers 8.0 の Helm チャートのインストールおよび構成
 {: #install-the-ibm-mfpf-iks-catalog}
@@ -59,8 +59,8 @@ IBM Cloud クライアント端末 (*ibmcloud* CLI) で、「[Deploying charts f
 |  | tag | Docker イメージ・タグ | [Docker タグの説明](https://docs.docker.com/engine/reference/commandline/image_tag/)を参照 |
 | resources | limits.cpu | 許可される CPU の最大量を記述します。 | デフォルトは 1000m。 Kubernetes の[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)を参照してください。 |
 |  | limits.memory | 許可されるメモリーの最大量を記述します。 | デフォルトは 2048Mi。 Kubernetes の [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)を参照してください。 |
-|  | requests.cpu | 必要な CPU の最小量を記述します。指定されない場合、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは 750m です。Kubernetes の[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)を参照してください。 |
-|  | requests.memory | 必要なメモリーの最小量を記述します。 未指定の場合、デフォルトではメモリー量は制限値 (values.yaml で指定されている場合) または実装定義値になります。| デフォルトは 1024Mi です。 Kubernetes の [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)を参照してください。 |
+|  | requests.cpu | 必要な CPU の最小量を記述します。指定されない場合、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは 750m です。 Kubernetes の[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)を参照してください。 |
+|  | requests.memory | 必要なメモリーの最小量を記述します。 未指定の場合、デフォルトではメモリー量は制限値 (values.yaml で指定されている場合) または実装定義値になります。 | デフォルトは 1024Mi です。 Kubernetes の [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)を参照してください。 |
 | logs | consoleFormat | コンテナー・ログの出力形式を指定します。 | デフォルトは **json** |
 |  | consoleLogLevel | コンテナー・ログに移動するメッセージの細分度を制御します。 | デフォルトは **info** |
 |  | consoleSource | コンテナー・ログに書き込まれるソースを指定します。 複数のソースには、コンマ区切りのリストを使用します。 | デフォルトは **message**、**trace**、**accessLog**、**ffdc** |
@@ -81,7 +81,7 @@ Mobile Foundation for Developers 8.0 のインストールが完了したら、�
 
 ### [オプション] コマンド・ラインの使用
 
-または、コマンド・ラインを使用して以下の手順に従います。以下のコマンドで、**status** が *DEPLOYED* として表示されることを確認します。
+または、コマンド・ラインを使用して以下の手順に従います。 以下のコマンドで、**status** が *DEPLOYED* として表示されることを確認します。
 ```bash
 helm list
 ```
@@ -90,7 +90,7 @@ helm list
     ```bash
     kubectl get deployments
     ```
-2. 以下のコマンドを実行して、デプロイメントの可用性とそれらの詳細な状況を確認します。状況が `(1/1) RUNNING` である場合、kube ポッドは使用可能です。
+2. 以下のコマンドを実行して、デプロイメントの可用性とそれらの詳細な状況を確認します。 状況が `(1/1) RUNNING` である場合、kube ポッドは使用可能です。
     ```bash
     kubectl describe deployment <deployment_name>
     kubectl get pods
@@ -122,4 +122,4 @@ helm delete --purge <release_name>
 ## 制限
 {: #limitations}
 
-この Helm チャートは、開発およびテスト目的のためにのみ提供されます。 データは組み込みの Derby データベースに保管されますが、永続的には保管されません。データベースの制限により、チャート・デプロイメントは 1 つのポッドでのみ動作します。
+この Helm チャートは、開発およびテスト目的のためにのみ提供されます。 データは組み込みの Derby データベースに保管されますが、永続的には保管されません。 データベースの制限により、チャート・デプロイメントは 1 つのポッドでのみ動作します。

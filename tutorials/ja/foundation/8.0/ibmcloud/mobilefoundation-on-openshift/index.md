@@ -22,7 +22,7 @@ OCP に Mobile Foundation をデプロイする手順は、OCP の使用権を�
 
 - OpenShift クラスター v3.11 以上。
 - [OpenShiftクライアント・ツール](https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html) (`oc`)。
-- Mobile Foundation にはデータベースが必要です。サポートされているデータベースを作成し、データベース・アクセスの詳細を以後使用できるように用意します。[ここ](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/databases/)を参照してください。
+- Mobile Foundation にはデータベースが必要です。 サポートされているデータベースを作成し、データベース・アクセスの詳細を以後使用できるように用意します。 [ここ](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/databases/)を参照してください。
 - Mobile Foundation Analytics には、Analytics データを保持するためのマウント済みストレージ・ボリュームが必要です (NFS 推奨)。
 
 ## アーキテクチャー
@@ -37,7 +37,7 @@ OCP に Mobile Foundation をデプロイする手順は、OCP の使用権を�
 ### IBM Mobile Foundation パッケージのダウンロード
 {: #download-mf-package}
 
-[IBM パスポート・アドバンテージ (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html) から Openshift 用の IBM Mobile Foundation パッケージをダウンロードします。アーカイブを `workdir` という名前のディレクトリーに解凍します。
+[IBM パスポート・アドバンテージ (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html) から Openshift 用の IBM Mobile Foundation パッケージをダウンロードします。 アーカイブを `workdir` という名前のディレクトリーに解凍します。
 
   > **注:** PPA パッケージを確認し、署名を検証する場合、[ここ](./additional-docs/validating-ppa/)を参照してください。
 
@@ -81,7 +81,7 @@ OCP に Mobile Foundation をデプロイする手順は、OCP の使用権を�
       MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
     kind: Secret
     metadata:
-    name: mobilefoundation-db-secret
+      name: mobilefoundation-db-secret
     type: Opaque
     EOF
     ```
@@ -155,14 +155,14 @@ OCP に Mobile Foundation をデプロイする手順は、OCP の使用権を�
 ### IBM Mobile Foundation コンポーネントのデプロイ
 {: #deploy-mf-components}
 
-1. いずれかの Mobile Foundation コンポーネントをデプロイするには、要件に従いカスタム・リソース構成 `deploy/crds/charts_v1_mfoperator_cr.yaml` を変更します。[ここ](./additional-docs/cr-configuration/)に、カスタム構成の全リファレンスがあります。
+1. いずれかの Mobile Foundation コンポーネントをデプロイするには、要件に従いカスタム・リソース構成 `deploy/crds/charts_v1_mfoperator_cr.yaml` を変更します。 [ここ](./additional-docs/cr-configuration/)に、カスタム構成の全リファレンスがあります。
 
-   > **重要事項**: デプロイメント後に Mobile Foundation インスタンスにアクセスするには、入口ホスト名を構成する必要があります。カスタム・リソース構成で入口が構成されていることを確認してください。この構成については、この[リンク](./additional-docs/enable-ingress/)を参照してください。
+   > **重要事項**: デプロイメント後に Mobile Foundation インスタンスにアクセスするには、入口ホスト名を構成する必要があります。 カスタム・リソース構成で入口が構成されていることを確認してください。 この構成については、この[リンク](./additional-docs/enable-ingress/)を参照してください。
 
     ```bash
     oc apply -f deploy/crds/charts_v1_mfoperator_cr.yaml
     ```
-2. 以下のコマンドを実行し、ポッドが正常に作成され、実行されていることを確認します。Mobile Foundation サーバーおよび Push が 3 つの各レプリカ (デフォルト) で有効になっているデプロイメント・シナリオでは、出力は以下のようになります。
+2. 以下のコマンドを実行し、ポッドが正常に作成され、実行されていることを確認します。 Mobile Foundation サーバーおよび Push が 3 つの各レプリカ (デフォルト) で有効になっているデプロイメント・シナリオでは、出力は以下のようになります。
 
       ```bash
       $ oc get pods
