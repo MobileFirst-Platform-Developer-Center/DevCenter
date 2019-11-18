@@ -1,0 +1,74 @@
+---
+layout: default
+custom_js:
+- js/tutorial.js
+---
+<section class="container-fluid tutorial" role="main">
+    <div class="row">
+        <div class="sidebar hidden-xs col-lg-2 col-sm-3">
+            {% include tutorialNav.html %}
+        </div>
+        <article class="col-sm-9 col-lg-8 tutorial-center-div">
+            <h1 class="no-anchor">{{ page.title}}</h1>
+            {% include contribute.html %}
+            {% include breadcrumb.html %} {% if page.downloads %}
+            <div class="downloadButtons hidden-xs">
+                {% if page.downloads.size > 2 %}
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle download-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="glyphicon glyphicon-cloud-download"></span> Download Sample <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      {% for download in page.downloads %}
+                        <li><a href="{{download.url}}" target="_blank">{{download.name}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% else %}
+                  {% for download in page.downloads %}
+                    <a class="download-button" href="{{download.url}}" target="_blank">
+                        <span class="glyphicon glyphicon-cloud-download"></span>
+                        {{download.name}}
+                    </a>
+                  {% endfor %}
+                {% endif %}
+            </div>
+            {% endif %}
+            {{ content }}
+            <a href="javascript:void(0)" class="scrollUpButton">&#9650;</a>
+            {% if page.show_children %}
+                {% if page.show_children_title %}
+                <h2 class="hidden-print">{{page.show_children_title}}</h2>
+                {% endif %}
+                {% include show-children.html children=page.children %}
+            {% endif %}
+            <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
+            {% include disqus.html %}
+
+        </article>
+        <div class="col-lg-2">
+
+        </div>
+    </div>
+
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "TechArticle",
+      "name": "{{page.title}}",
+      {% if page.image %}
+      "image": {
+        "@type": "ImageObject",
+        "url": "{{site.url}}{{site.baseurl}}{{page.image}}"
+      },
+      {% endif %}
+       "publisher": {
+        "@type": "Organization",
+        "name": "IBM"
+      },
+      {% if page.excerpt %}
+      "description": "{{ page.excerpt | markdownify | strip_html | strip_newlines | strip | truncatewords: 20}}"
+      {% endif %}
+    }
+    </script>
+</section>
