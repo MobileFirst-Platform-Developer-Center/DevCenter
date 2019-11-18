@@ -19,11 +19,11 @@ weight: 2
 ##### <span style="color:NAVY">**CoreML Update**</span>
 
 Apple の CoreML フレームワークを使用して、iOS モバイル・デバイスで ML (機械学習) モデルをローカルに実行できます。
-Mobile Foundation には、これらのモデルをデバイスに安全に配布するように管理する機能が用意されています。[詳細はこちらを参照してください](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/)。
+Mobile Foundation には、これらのモデルをデバイスに安全に配布するように管理する機能が用意されています。 [詳細はこちらを参照してください](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/)。
 
 ##### <span style="color:NAVY">**watchOS のアプリケーション認証性**</span>
 
-アプリケーション認証性は、アクセス提供前にアプリケーションの認証性を検証するセキュリティー機能です。この機能はモバイル・アプリで使用できました。この機能は今は Apple WatchOS アプリにまで拡張されています。[詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/)。
+アプリケーション認証性は、アクセス提供前にアプリケーションの認証性を検証するセキュリティー機能です。 この機能はモバイル・アプリで使用できました。 この機能は今は Apple WatchOS アプリにまで拡張されています。 [詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/)。
 
 ##### <span style="color:NAVY">**プッシュ通知 - 追加メッセージのフィーチャーおよび FCM の属性**</span>
 

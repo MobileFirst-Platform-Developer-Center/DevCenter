@@ -450,8 +450,8 @@ IBM Cloud Kubernetes 클러스터에서 배치된 인스턴스를 제거하려�
 
 IBM Cloud 레지스트리에서 이미지 이름을 제거하려면 다음 명령을 실행하십시오.
 ```bash
-bx cr image-list (Lists the images in the registry)
-bx cr image-rm image-name (Removes the image from the registry)
+bx cr image-list(레지스트리의 이미지 나열)
+bx cr image-rm image-name(레지스트리에서 이미지 제거)
 ```
 
 ## IBM Cloud에서 데이터베이스 서비스 구성 제거

@@ -76,7 +76,7 @@ Die Workbench hilft Ihnen bei der Gestaltung der Seiten. Sie besteht aus drei Ar
     * Symbol **Kanal** - Mithilfe dieses Symbols wird der derzeit ausgewählte Kanal angezeigt. Sie können weitere Kanäle hinzufügen. Wählen Sie dazu im Plattformabschnitt unter **Einstellungen > App > App-Details** die erforderlichen Kanäle aus.
     * Aktueller Seitenname - Es wird der Seitenname im Erstellungsbereich angezeigt. Nach einem Seitenwechsel wird der Name aktualisiert, sodass der Name der dann ausgewählten Seite angezeigt wird.
     * **App erstellen/voranzeigen** - Diese Schaltfläche hat zwei Funktionen. Sie hilft Ihnen, eine Vorschau der App, die Sie entwickeln, zu sehen und die App zu erstellen.
-    * **App veröffentlichen** - Mithilfe dieser Option können Sie Ihre App für Android/iOS erstellen und im App Center veröffentlichen.
+    * **Veröffentlichen** - Mithilfe dieser Option können Sie Ihre App für Android/iOS erstellen und im App Center veröffentlichen oder direkte Aktualisierungen mit neuen Webressourcen für Ihre App drahtlos veröffentlichen.
     * **Erstellungsbereich** - Im Mittelpunkt dieses Abschnitts befindet sich der Erstellungsbereich, in dem entweder das Design oder der Code angezeigt wird. Sie können die Steuerelemente mit der Maus in den Erstellungsbereich ziehen und die App erstellen.
 
 3. Registerkarte **Eigenschaften/Aktionen** - Auf der rechten Seite befindet sich die Registerkarte für Eigenschaften und Aktionen. Wenn ein Steuerelement im Erstellungsbereich abgelegt wird, können Sie die Eigenschaften des Steuerelements bearbeiten und modifizieren und ein Steuerelement mit einer auszuführenden Aktion verbinden.

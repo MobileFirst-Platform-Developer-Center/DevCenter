@@ -58,7 +58,7 @@ weight: 1
       <!-- <data key='user.database.oracle.appcenter.password' value='password'/> -->
       ```
 
-    c. Se você não optou antes por ativar o licenciamento de token liberado com uma correção temporária em 15 de setembro de 2015 ou posterior, remova o comentário da linha `<data key=’user.licensed.by.tokens’ value=’false’/>`. Configure o valor para **true** se você tiver um contrato para usar o licenciamento de token com o Rational License Key Server. Caso contrário, configure o valor como **false**.
+    c. Caso não tenha optado anteriormente por ativar o licenciamento de token liberado com uma correção temporária de 15 de setembro de 2015 ou mais recente, remova o comentário da linha `<data key=’user.licensed.by.tokens’ value=’false’/>`. Configure o valor para **true** se você tiver um contrato para usar o licenciamento de token com o Rational License Key Server. Caso contrário, configure o valor como **false**.
       Se você ativar o licenciamento de token, certifique-se de que o Rational License Key Server esteja configurado e que possam ser obtidos tokens suficientes para executar o MobileFirst Server e os aplicativos que ele atende. Caso contrário, o aplicativo de administração MobileFirst Server e o ambiente de tempo de execução não poderão ser executados.
       > **Restrição:** após a decisão ser feita para ativar o licenciamento de token ou não, isso não poderá ser modificado. Se você executar um upgrade com o valor **true** e, posteriormente, outro upgrade com o valor **false**, o segundo upgrade falhará.
 

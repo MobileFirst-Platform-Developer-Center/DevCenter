@@ -26,22 +26,16 @@ und Ihre vertragskonforme Verwendung auf der Seite
 Lizenzüberwachungsberichts verifizieren.
 
 
-### PVU-Lizenzierung
-{: #processor-value-unit-pvu-licensing }
-Die PVU-Lizenzierung (Prozessor-Value-Unit) ist verfügbar, wenn Sie
-IBM {{ site.data.keys.product }} Extension gekauft haben
-(siehe Dokumente mit den [Lizenzinformationen](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)).
-Voraussetzung ist jedoch, dass Sie bereits IBM  WebSphere Application Server Network Deployment, IBM API Connect™ Professional oder
-IBM API Connect Enterprise erworben haben. 
+### VPC-Lizenzierung
+{: #vpc-licensing}
 
-Bei einer PVU-Lizenz richtet sich die Preisstruktur nach Typ und Anzahl der Prozessoren, die für installierte Produkte verfügbar sind. Berechtigungen können dem Full-Capacity- oder dem Sub-Capacity-Modell entsprechen. Gemäß der PVU-Lizenzierungsstruktur wird die Software
-abhängig von der jedem Prozessorkern zugeordneten Anzahl von Value-Units lizenziert. 
+Die Mobile Foundation ist auch mit kapazitätsabhängiger Lizenzierung (VPC, Virtual Processor Cores) verfügbar. VPC ist eine Maßeinheit zur Bestimmung der Lizenzierungsgebühren für die Mobile Foundation und gibt die Anzahl der verfügbaren virtuellen Prozessorkerne an. Zurzeit ist diese Metrik nur für Cloud Pak for Applications verfügbar.
 
-Nehmen wir beispielsweise an, einem Prozessortyp A sind 80 Value-Units pro Kern zugeordnet und einem Prozessortyp B 100 Value-Units pro Kern. Wenn Sie eine Produktlizenz für die Ausführung von zwei Prozessoren vom Typ A benötigen, müssen Sie eine
-Berechtigung für 160 Value-Units pro Kern anfordern. Wird das Produkt auf zwei Prozessoren vom Typ B ausgeführt, sind Berechtigungen für 200 Value-Units pro Kern erforderlich. 
+Diese Metrik kann wie folgt charakterisiert werden:
 
-> [Hier finden Sie weitere Informationen zur PVU-Lizenzierung](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
+* Kunden können beliebig viele Anwendungen und Geräte verwenden. Diese Art der Lizenzierung ist daher in Szenarien, in denen Kunden viele Apps in ihrer Implementierung haben, vorteilhafter als die Anwendungslizenz.
 
+* Sie richtet sich an anderen Produkten im Portfolio aus und gibt Kunden die Möglichkeit, Hybridcloudimplementierungen zu nutzen.
 
 
 ### Tokenlizenzierung

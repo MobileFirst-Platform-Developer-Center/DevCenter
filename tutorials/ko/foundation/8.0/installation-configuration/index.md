@@ -70,8 +70,8 @@ weight: 3
 
 WebSphere Application Server Liberty 프로파일에 두 개의 노드가 있는 작동되는 {{ site.data.keys.mf_server }}클러스터를 작성하는 지시사항을 수행하여 {{ site.data.keys.mf_server }} 설치 프로세스에 대해 학습하십시오. 설치는 그래픽 도구(GUI)나 명령행을 사용해서 완료할 수 있습니다.
 
-* [IBM Installation Manager와 서버 구성 도구를 사용한 GUI 모드 설치](production/simple-install/tutorials/graphical-mode).
-* [명령행 도구를 사용하여 명령행 설치](production/simple-install/tutorials/command-line).
+* [IBM Installation Manager와 서버 구성 도구를 사용한 GUI 모드 설치](production/simple-install/graphical-mode).
+* [명령행 도구를 사용하여 명령행 설치](production/simple-install/command-line).
 
 위의 두 방법 중 하나로 설치를 완료한 후에는 요구사항에 따라서 설정을 완료하기 위해 추가 [구성](production/server-configuration)이 필요할 수 있습니다.
 

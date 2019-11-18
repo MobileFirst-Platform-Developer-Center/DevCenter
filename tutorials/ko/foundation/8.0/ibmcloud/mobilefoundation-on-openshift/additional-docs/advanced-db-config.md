@@ -30,12 +30,12 @@ Mobile Foundation 서버, Push 및 Application Center 컴포넌트에 대한 데
         spec:
           accessModes:
           - ReadWriteMany
-          capacity:
-            storage: 20Gi
-          nfs:
-            path: <nfs_path>
-            server: <nfs_server>
-         EOF
+        capacity:
+          storage: 20Gi
+        nfs:
+          path: <nfs_path>
+          server: <nfs_server>
+       EOF
     ```
 
     ```yaml

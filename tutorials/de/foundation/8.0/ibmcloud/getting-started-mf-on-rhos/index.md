@@ -31,7 +31,7 @@ Die Mobile Foundation ist eine branchenführende geschützte Plattform, auf der 
 
 Die folgende Abbildung gibt einen Überblick über die Architektur der Mobile-Foundation-Implementierung in einem Red-Hat-OpenShift-Cluster.
 
-![Architektur](../architecture-mobile-services-openshift.png)
+![Architektur](architecture-mobile-services-openshift.png)
 
 ## Mobile Foundation installieren
 {: #install-mf}

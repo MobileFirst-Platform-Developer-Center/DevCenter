@@ -106,8 +106,8 @@ Certifique-se de que já tenha o arquivo EAR do {{ site.data.keys.mf_analytics }
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Inclua o arquivo **analytics.ear** na pasta `./usr/servers/<serverName>/apps` de seu Liberty Server.
-4. Substitua os conteúdos da tag `<featureManager>` do arquivo `./usr/servers/<serverName>/server.xml` pelo seguinte conteúdo:
+3. Inclua o arquivo **analytics.ear** na pasta `./usr/servers/<serverName>/apps` do servidor Liberty.
+4. Substitua o conteúdo da tag `<featureManager>` do arquivo `./usr/servers/<serverName>/server.xml` pelo conteúdo a seguir:
 
    ```xml
    <featureManager>

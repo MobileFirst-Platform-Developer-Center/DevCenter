@@ -81,7 +81,7 @@ OCP에 Mobile Foundation을 배치하는 단계는 OCP 인타이틀먼트를 확
       MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
     kind: Secret
     metadata:
-    name: mobilefoundation-db-secret
+      name: mobilefoundation-db-secret
     type: Opaque
     EOF
     ```
@@ -94,7 +94,7 @@ OCP에 Mobile Foundation을 배치하는 단계는 OCP 인타이틀먼트를 확
     kind: PersistentVolume
     metadata:
       labels:
-        name: mfanalyticspv
+        name: mfanalyticspv  
       name: mfanalyticspv
     spec:
       capacity:
@@ -175,7 +175,8 @@ OCP에 Mobile Foundation을 배치하는 단계는 OCP 인타이틀먼트를 확
       mfpf-push-29kw92mdlw-882pa     1/1       Running   0          52s
       mfpf-push-1b2w2s973c-983lw     1/1       Running   0          52s
       ```
-    > **참고:** 실행 중인 팟(1/1) 상태는 서비스가 액세스에 대해 사용 가능함을 표시합니다.3. 다음 명령을 실행하여 Mobile Foundation 엔드포인트에 액세스하기 위한 라우트가 작성되었는지 확인하십시오.
+    > **참고:** 실행 중인 팟(1/1) 상태는 서비스가 액세스에 대해 사용 가능함을 표시합니다.
+3. 다음 명령을 실행하여 Mobile Foundation 엔드포인트에 액세스하기 위한 라우트가 작성되었는지 확인하십시오.
 
     ```bash
     $ oc get routes

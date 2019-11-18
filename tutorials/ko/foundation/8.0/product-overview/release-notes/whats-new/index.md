@@ -25,7 +25,7 @@ weight: 1
                 <p>애플리케이션 서버에 설치되어야 하는 프로젝트 WAR 파일을 더 이상 작성하지 않습니다. 대신 {{ site.data.keys.mf_server }}는 한 번 설치되며, 사용자 앱, 리소스 보안 또는 푸시 서비스의 서버 측 구성을 서버에 업로드합니다. {{ site.data.keys.mf_console }}을 사용하여 앱 구성을 수정할 수 있습니다.</p>
 
                 <p>{{ site.data.keys.product_adj }} 프로젝트는 더 이상 존재하지 않습니다. 대신 사용자가 선택한 개발 환경으로 모바일 앱을 개발합니다.<br/>
-                                {{ site.data.keys.mf_server }}를 중지하지 않고도 앱 및 어댑터의 서버 측 구성을 수정할 수 있습니다..</p>
+                {{ site.data.keys.mf_server }}를 중지하지 않고도 앱 및 어댑터의 서버 측 구성을 수정할 수 있습니다..</p>
 
                 <ul>
                     <li>새 개발 프로세스에 대한 자세한 정보는 <a href="../../../application-development/">개발 개념 및 개요</a>를 참조하십시오.</li>
@@ -399,7 +399,7 @@ weight: 1
                 </ul>
 
                 <p>{{ site.data.keys.mf_analytics_console }}에서는 이제 로그인한 사용자의 보안 역할을 기반으로 다른 컨텐츠를 표시합니다.<br/>
-                                자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">역할 기반 액세스 제어</a>를 참조하십시오.</p>
+                자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">역할 기반 액세스 제어</a>를 참조하십시오.</p>
 
                 <p>{{ site.data.keys.mf_analytics_server }}는 Elasticsearch V1.7.5를 사용합니다.</p>
 

@@ -450,8 +450,8 @@ IBM Containers 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM 
 
 以下のコマンドを実行して、IBM Cloud レジストリーからイメージ名を削除します。
 ```bash
-bx cr image-list (Lists the images in the registry)
-bx cr image-rm image-name (Removes the image from the registry)
+bx cr image-list (レジストリー内のイメージをリストします)
+bx cr image-rm image-name (レジストリーからイメージを削除します)
 ```
 
 ## IBM Cloud からのデータベース・サービス構成の削除

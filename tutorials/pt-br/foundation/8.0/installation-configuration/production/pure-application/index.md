@@ -415,7 +415,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -547,7 +547,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -695,7 +695,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -845,7 +845,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -1017,7 +1017,7 @@ Para obter informações adicionais sobre opções de configuração e de config
     Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
     
     **LICENSE\_SERVER\_HOSTNAME**  
-    Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
+    Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
     
     **LMGRD\_PORT**   
     Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -1126,7 +1126,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.
@@ -1657,7 +1657,7 @@ As seções a seguir listam e descrevem os parâmetros para cada pacote de scrip
 {: #mfp-administration-db }
 Este pacote de scripts configura o esquema do banco de dados de administração em um banco de dados DB2. Ele deve ser usado com o componente de software Database Server (DB2).
 
-| Parâmetro | Descrição | 
+| Parâmetro | Descrição (Description) | 
 |-----------|-------------|
 | db_user   | Obrigatório. Nome do usuário para criar o banco de dados de Administração. Ele pode ser mapeado para o nome da instância do componente Database Server. Valor padrão: db2inst1. |
 | db_name	| Obrigatório. Nome do banco de dados para criar o banco de dados de Administração. Valor padrão: WLADM. |
@@ -1668,7 +1668,7 @@ Este pacote de scripts configura o esquema do banco de dados de administração 
 {: #mfp-analytics }
 Esse pacote de scripts configura o {{ site.data.keys.mf_analytics_server }} em um perfil completo do WebSphere Application Server ou servidor de perfil Liberty do WebSphere Application Server, e configura a conexão e o mapeamento de funções de segurança de administração do Analytics para um servidor externo TDS ou AD. Deve ser usado com o servidor de perfil Liberty do WebSphere Application Server ou perfil completo do componente de software do WebSphere Application Server (nome de exibição: servidor independente). Deve ser instalado após o componente de software de perfil Liberty ou Servidor independente.
 
-| Parâmetro | Descrição | 
+| Parâmetro | Descrição (Description) | 
 |-----------|-------------|
 | WAS_ROOT  | Obrigatório.{::nomarkdown}<ul><li>Se o Analytics estiver instalado no perfil Liberty do WebSphere Application Server, especifique o diretório de instalação do perfil Liberty do WebSphere Application Server para Analytics.</li><li>Se o Analytics estiver instalado no perfil completo do WebSphere Application Server, especifique o diretório de instalação do perfil completo do WebSphere Application Server para Analytics.</li></ul>{:/} | 
 | HEAP\_MIN\_SIZE | Somente o perfil integral do WebSphere Application Server.<br/><br/>Dependendo da quantidade de dados de analítica que são gerados, mais memória será necessária para manipulação de mais dados. Configure essa opção para permitir um tamanho mínimo de heap maior para o perfil completo do WebSphere Application Server. Certifique-se de que o tamanho da memória especificado no componente Core OS do {{ site.data.keys.mf_analytics }} seja maior que esse. Recomenda-se configurar o mesmo valor como HEAP_MAX_SIZE.<br/><br/>Valor padrão: 4096 (MB). | 
@@ -1698,7 +1698,7 @@ Esse pacote de scripts configura o {{ site.data.keys.mf_analytics_server }} em u
 {: #mfp-ihs-configuration }
 Esse pacote de scripts configura o IBM HTTP Server para funcionar como um balanceador de carga para várias instâncias do {{ site.data.keys.mf_server }}. Deve ser usado com o componente de software IBM HTTP Servers. Deve ser instalado após o componente de software IBM HTTP Servers.
 
-| Parâmetro | Descrição | 
+| Parâmetro | Descrição (Description) | 
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação do perfil Liberty do WebSphere Application Server ou perfil completo do WebSphere Application Server no nó MobileFirst Platform Server, ou diretório de instalação do Deployment manager no nó DmgrNode. Nos modelos padrão, ele é mapeado para o atributo de saída `install_directory` do servidor de perfil Liberty, Servidor independente ou Deployment manager. | 
 | profile_name | Opcional. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server.<br/><br/>Nos modelos padrão, ele é mapeado para o atributo de saída **dmgr\_profile\_name** do gerenciador de implementação ou sa_profile_name do servidor independente. | 
@@ -1711,7 +1711,7 @@ Esse pacote de scripts configura o IBM HTTP Server para funcionar como um balanc
 {: #mfp-open-firewall-ports-for-was }
 Esse pacote de scripts é aplicável somente para Nós customizados no modelo padrão do {{ site.data.keys.product_adj }} (WAS ND) (WebSphere Application Server Network Deployment). Seu propósito é abrir as portas de firewall necessárias dos Nós customizados que hospedam o {{ site.data.keys.product_adj }} Administration Services e o tempo de execução. Além de definir algumas portas predefinidas do WebSphere Application Server, é preciso especificar as outras portas para conexão com o servidor DB2 e o servidor LDAP.
 
-| Parâmetro | Descrição | 
+| Parâmetro | Descrição (Description) | 
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação de Nós customizados do WebSphere Application Server Network Deployment no nó CustomNode. Nos modelos padrão, ele é mapeado para o atributo de saída install_directory do servidor de Nós customizados. |
 | profile_name | Obrigatório. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída cn_profile_name de Nós customizados. | 
@@ -1722,7 +1722,7 @@ Esse pacote de scripts é aplicável somente para Nós customizados no modelo pa
 {: #mfp-was-sdk-level }
 Esse pacote de scripts é aplicável somente onde os Perfis do WAS estiverem disponíveis no modelo padrão (WebSphere Application Server Network Deployment).
 
-| Parâmetro | Descrição | 
+| Parâmetro | Descrição (Description) | 
 |-----------|-------------|
 | WAS_ROOT | Diretório de instalação do perfil Liberty do WebSphere Application Server ou do perfil completo do WebSphere Application Server no nó do MobileFirst Platform Server ou o diretório de instalação do Deployment manager no nó DmgrNode. Nos modelos padrão, ele é mapeado para o atributo de saída **install_directory** do servidor de perfil Liberty, Servidor independente ou Deployment manager. |
 | profile_name | O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída **dmgr\_profile\_name** do Deployment manager ou **sa\_profile\_name** do Servidor independente. | 
@@ -1732,7 +1732,7 @@ Esse pacote de scripts é aplicável somente onde os Perfis do WAS estiverem dis
 {: #mfp-runtime-db }
 Esse pacote de scripts configura o esquema do banco de dados de tempo de execução em um banco de dados DB2.
 
-| Parâmetro | Descrição | 
+| Parâmetro | Descrição (Description) | 
 |-----------|-------------|
 | db_user | Obrigatório. Nome do usuário para criar o banco de dados de Tempo de execução. Ele pode ser mapeado para o nome da instância do componente Database Server. Valor padrão: db2inst1. | 
 | db_name | Obrigatório. Nome do banco de dados para criar o banco de dados de Tempo de execução. Valor padrão: WLRTIME. | 
@@ -1745,7 +1745,7 @@ Esse pacote de scripts configura o componente {{ site.data.keys.product_adj }} A
 
 O pacote de scripts deve ser usado com o componente de software do servidor de perfil Liberty do WebSphere Application Server ou o componente de software de perfil completo do WebSphere Application Server (nome de exibição: servidor independente), e deve ser instalado após o MFP Server Prerequisite mas antes de quaisquer outros Pacotes de scripts do MFP * no nó da VM do {{ site.data.keys.mf_server }}.
 
-| Parâmetro | Descrição |
+| Parâmetro | Descrição (Description) |
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação do perfil Liberty do WebSphere Application Server ou do perfil completo do WebSphere Application Server no nó do MobileFirst Platform Server ou o diretório de instalação do Deployment manager no nó DmgrNode. Nos modelos padrão, ele é mapeado para o atributo de saída `install_directory` do servidor de perfil Liberty, Servidor independente ou Deployment manager. | 
 | profile_name | Opcional. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída dmgr_profile_name do Deployment manager ou sa_profile_name do Servidor independente. | 
@@ -1784,7 +1784,7 @@ O pacote de scripts deve ser usado com o componente de software do servidor de p
 {: #mfp-server-application-adapter-deployment }
 Este pacote de scripts implementa aplicativos e adaptadores no {{ site.data.keys.mf_server }}. Ele deve ser instalado após o pacote de scripts MFP Server Runtime Deployment correspondente que instalou o tempo de execução onde o aplicativo e o adaptador serão implementados.
 
-| Parâmetro | Descrição | 
+| Parâmetro | Descrição (Description) | 
 |-----------|-------------|
 | artifact_dir | Obrigatório. Caminho de instalação do aplicativo e adaptador para implementação. É mapeado para o atributo de saída target_path do componente {{ site.data.keys.product_adj }} App no modelo padrão. | 
 | admin_context | Obrigatório. Deve ser mfpadmin. | 
@@ -1797,7 +1797,7 @@ Este pacote de scripts implementa aplicativos e adaptadores no {{ site.data.keys
 {: #mfp-server-application-center }
 Esse pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} em um perfil completo do WebSphere Application Server ou servidor de perfil Liberty do WebSphere Application Server. Ele deve ser usado com o servidor de perfil Liberty do WebSphere Application Server e o perfil completo do MFP Server Prerequisite ou do WebSphere Application Server (Servidor independente), MFP WAS SDK Level e MFP Server Prerequisite. Deve ser instalado após o componente de software de perfil Liberty ou Servidor independente.
 
-| Parâmetro | Descrição | 
+| Parâmetro | Descrição (Description) | 
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação do perfil Liberty do WebSphere Application Server ou do perfil completo do WebSphere Application Server no nó do MobileFirst Platform Server. Nos modelos padrão, ele é mapeado para o atributo de saída `install_directory` do servidor de perfil Liberty ou Servidor independente. | 
 | profile_name | O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída sa_profile_name do Servidor independente. | 
@@ -1830,7 +1830,7 @@ Esse pacote de scripts configura o servidor {{ site.data.keys.mf_app_center }} e
 {: #mfp-server-prerequisite }
 Esse pacote de scripts inclui todos os pré-requisitos necessários para instalar o {{ site.data.keys.mf_server }}, incluindo o driver DB2 JDBC e Apache Ant. O pacote de scripts deve ser usado com o componente de software do servidor de perfil Liberty do WebSphere Application Server ou o componente de software de perfil completo do WebSphere Application Server (nome de exibição: servidor independente), e deve ser instalado após o componente de software do servidor mas antes de quaisquer outros pacotes de scripts MFP* no nó do MobileFirst Platform Server.
 
-| Parâmetro | Descrição |
+| Parâmetro | Descrição (Description) |
 |-----------|-------------|
 | Nenhuma | Não há parâmetros para este pacote de scripts. | 
 
@@ -1838,7 +1838,7 @@ Esse pacote de scripts inclui todos os pré-requisitos necessários para instala
 {: #mfp-server-runtime-deployment }
 Esse pacote de scripts instala o tempo de execução do {{ site.data.keys.product }} em um perfil completo do WebSphere Application Server ou no servidor de perfil Liberty do WebSphere Application Server com o {{ site.data.keys.mf_console }} instalado. O pacote de scripts também configura a conexão com o {{ site.data.keys.mf_analytics_server }}. Ele deve ser instalado após o pacote de scripts MFP Server Administration.
 
-| Parâmetro | Descrição |
+| Parâmetro | Descrição (Description) |
 |-----------|-------------|
 | WAS_ROOT | Obrigatório. Diretório de instalação do perfil Liberty do WebSphere Application Server ou perfil completo do WebSphere Application Server no nó MobileFirst Platform Server, ou diretório de instalação do Deployment manager no nó DmgrNode. Nos modelos padrão, ele é mapeado para o atributo de saída install_directory do servidor de perfil Liberty ou Servidor independente. | 
 | profile_name | Opcional. O nome do perfil que contém os arquivos para o ambiente de tempo de execução do WebSphere Application Server. Nos modelos padrão, ele é mapeado para o atributo de saída dmgr\_profile\_name do Deployment manager ou sa\_profile\_name do Servidor independente. |

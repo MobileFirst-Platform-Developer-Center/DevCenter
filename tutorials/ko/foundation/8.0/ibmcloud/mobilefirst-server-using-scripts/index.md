@@ -290,7 +290,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 I
      * 4 - 30자입니다. 명령행에서 컨테이너를 관리하려는 경우 빨리 입력할 수 있는 짧은 네임스페이스를 선호할 수 있습니다.
      * IBM Cloud 레지스트리에서 고유해야 합니다.
 
-    네임스페이스를 설정하려면 다음 명령을 실행하십시오. `cf ic namespace set <new_name>`.  
+    네임스페이스를 설정하려면 `cf ic namespace set <new_name>` 명령을 실행하십시오.  
     설정한 네임스페이스를 가져오려면 `cf ic namespace get` 명령을 실행하십시오.
 
 > IC 명령에 대해 자세히 알아보려면 `ic help` 명령을 사용하십시오.

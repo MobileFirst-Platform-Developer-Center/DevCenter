@@ -22,8 +22,7 @@ Parai incluir um desses controles em seu aplicativo, basta arrastar e soltar na 
 * **Botão** - Use este controle para incluir um botão e associar uma ação a ele. O controle **Botão** tem as seguintes propriedades:
     * Valor de Texto
     * Estilo (alinhamento, cor do texto, cor de fundo, tamanho da fonte)
-É possível designar uma ação para este botão a partir da guia **Ações**.
-Selecione o botão **Em clicar em Navegar para** para navegar em outra página, selecionando o nome da página ou clique em **+** para incluir uma nova página.
+É possível designar uma ação para este botão a partir da guia **Ações**. Selecione o botão **Em clicar em Navegar para** para navegar em outra página, selecionando o nome da página ou clique em **+** para incluir uma nova página.
 * **Imagem** - Use este controle para incluir uma imagem. Especifique a origem da imagem como imagem Local ou Fornecer URL. Também é possível fazer upload de uma imagem e incluí-la na origem do aplicativo. 
     É possível designar uma ação para esta imagem a partir da guia **Ações**. Selecione o botão **Em clicar em Navegar para** para navegar em outra página, selecionando o nome da página ou clique em **+** para incluir uma nova página.
 * **Rótulo** - Use este controle para incluir um rótulo. É possível mudar o **Valor de texto**, **Estilo** (Alinhamento, Cor do texto, Peso da fonte). Nenhuma ação está disponível para esse controle. 

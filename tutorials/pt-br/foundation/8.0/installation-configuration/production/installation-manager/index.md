@@ -317,8 +317,8 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
 4. Ajuste a lista de repositórios no elemento <server>. Para obter informações adicionais sobre essa etapa, consulte a documentação do IBM Installation Manager em [Repositórios](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html).
 
     No elemento `<profile>`, ajuste os valores de cada par de chave/valor.  
-    No elemento `<offering>` no elemento `<install>`, configure o atributo de versão para corresponder à liberação que você deseja instalar, ou remova o atributo de versão se desejar instalar a versão mais recente disponível nos repositórios.
-5. Digite o seguinte comando: `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
+    No elemento `<offering>` no elemento `<install>`, configure o atributo de versão para corresponder à liberação que se deseja instalar ou remova o atributo de versão, caso queira instalar a versão mais nova disponível nos repositórios.
+5. Digite o comando a seguir: `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
     Em que:
     * `<InstallationManagerPath>` é o diretório de instalação do IBM Installation Manager.
@@ -335,7 +335,7 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
     * No UNIX: `chmod 600 response-file.xml`
     * No Windows: `cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. Da mesma forma, se o servidor for um WebSphere Application Server Liberty ou um servidor Apache Tomcat, e o servidor for destinado a ser iniciado somente a partir de sua conta do usuário, também será preciso remover as permissões de leitura para usuários, além de você, do seguinte arquivo:
-    * Para WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml`
+    * Para o Liberty do WebSphere Application Server: `wlp/usr/servers/<server>/server.xml`
     * Para o Apache Tomcat: `conf/server.xml`
 4. Modifique o arquivo de resposta para levar em conta as diferenças entre a máquina na qual o arquivo de resposta foi criado e a máquina de destino.
 5. Instale o {{ site.data.keys.mf_server }}, usando o arquivo de resposta na máquina de destino, conforme descrito em [Instalar um pacote silenciosamente usando um arquivo de resposta](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
@@ -570,7 +570,8 @@ ${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
     </tr>
     <tr>
       <td>user.database.oracle.port</td>
-      <td>${user.database.selection2} == oracle, a menos que ${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
+      <td>${user.database.selection2} == oracle, a menos que
+${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
       <td>A porta em que o servidor de banco de dados Oracle recebe conexões JDBC. Geralmente 1521.</td>
       <td>Um número entre 1 e 65535.</td>
     </tr>

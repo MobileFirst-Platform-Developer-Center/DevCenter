@@ -21,7 +21,7 @@ Para instalar:
 1. Faça download e instale o [NodeJS](https://nodejs.org/en/).
 2. Em uma janela **Linha de comandos**, execute o comando: `npm install -g cordova`.
 
-## Próximas Etapas
+## Etapas seguintes
 {: #next-steps }
 Para continuar com o desenvolvimento do {{ site.data.keys.product_adj }} em aplicativos do Cordova, o SDK/plug-ins do Cordova do {{ site.data.keys.product_adj }} precisam ser incluídos no aplicativo do Cordova.
 

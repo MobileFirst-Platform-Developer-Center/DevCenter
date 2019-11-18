@@ -114,10 +114,10 @@ Führen Sie die hier beschriebenen Schritte aus, um das Paket mit der Mobile Fou
     ```
 
 4.  Erstellen Sie einen geheimen Schlüssel, damit die IBM Mobile-Foundation-Implementierung auf die Datenbank zugreifen kann.
-    > Weitere Informationen finden Sie [hier](../install-mf/#install-mf) in der Dokumentation.
+    > Weitere Informationen finden Sie [hier](../mobilefoundation-on-openshift/#setup-openshift-for-mf) in der Dokumentation.
 
 5.  Erstellen Sie für Analytics einen persistenten Datenträger und eine Anforderung eines persistenten Datenträgers.
-    > Weitere Informationen finden Sie [hier](../install-mf/#install-mf) in der Dokumentation.
+    > Weitere Informationen finden Sie [hier](../mobilefoundation-on-openshift/#setup-openshift-for-mf) in der Dokumentation.
 
 6.  Implementieren Sie die IBM Mobile-Foundation-Komponenten.
 
@@ -133,7 +133,7 @@ Führen Sie die hier beschriebenen Schritte aus, um das Paket mit der Mobile Fou
       pullSecret: pull-secret-name
     ```
 
-    Wie die Konfiguration vervollständigt wird (z. B. in den Bereichen Replikate, Skalierung, DB-Eigenschaften usw.), erfahren Sie [hier](../install-mf/#deploy-mf-operator) in der Dokumentation.
+    Wie die Konfiguration vervollständigt wird (z. B. in den Bereichen Replikate, Skalierung, DB-Eigenschaften usw.), erfahren Sie [hier](../mobilefoundation-on-openshift/#deploy-mf-operator) in der Dokumentation.
 
 7. Erstellen oder aktualisieren Sie die angepasste Ressource. Mit diesem Schritt erstellen Sie die Pods für alle in der YAML-Datei der angepassten Ressource aktivierten Mobile-Foundation-Komponenten und führen sie aus.
 

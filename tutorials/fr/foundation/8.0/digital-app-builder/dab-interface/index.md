@@ -76,7 +76,7 @@ Le plan de travail vous aide à concevoir les pages. Il est composé de trois zo
     * Icône **Canal** : affiche le canal en cours sélectionné. Vous pouvez ajouter des canaux supplémentaires en sélectionnant les canaux requis dans la section Plateformes sous **Paramètres > Application > Détails de l'application**.
     * Nom de la page en cours : affiche le nom de la page de canevas. Lorsque vous passez d'une page à l'autre, le nom de la page en cours est mis à jour pour refléter la page sélectionnée.
     * **Créer/Prévisualiser l'application** : ce bouton comporte deux options : a. permet de prévisualiser l'application que vous développez ; b. permet de générer l'application.
-    * **Publier l'application** : cette option permet de générer et publier votre application pour Android/iOS dans App Center.
+    * **Publier** : cette option permet de générer et publier votre application pour Android/iOS dans App Center ou de publier des mises à jour directes de votre application via une “connexion OTA” avec des ressources Web actualisées.
     * **Canevas** : au centre de cette section se trouve le canevas qui affiche soit la conception, soit le code. Vous pouvez faire glisser et déposer les contrôles et créer l'application.
 
 3. **Propriétés/Actions** : l'onglet des propriétés et des actions se trouve sur le côté droit. Lorsqu'un contrôle est placé dans le canevas, vous pouvez éditer et modifier les propriétés du contrôle et connecter un contrôle à une action associée à effectuer.

@@ -91,7 +91,7 @@ A tabela a seguir mostra as propriedades que podem ser configuradas no {{ site.d
 {: #mobilefirst-analytics-server }
 A tabela a seguir mostra as propriedades que podem ser configuradas no {{ site.data.keys.mf_analytics_server }}.
 
-| Propriedade                           | Descrição                                           | Valor Padrão |
+| Propriedade                           | Descrição (Description)                                           | Valor Padrão |
 |------------------------------------|-------------------------------------------------------|---------------|
 | analytics/nodetype | Define o tipo de nó Elasticsearch. Os valores válidos são master e data. Se essa propriedade não for configurada, o nó agirá como um nó principal elegível e um nó de dados. | 	Nenhuma |
 | analytics/shards | O número de shards por índice. Esse valor pode ser configurado somente pelo primeiro nó que é iniciado no cluster e não pode ser mudado. | 1 |

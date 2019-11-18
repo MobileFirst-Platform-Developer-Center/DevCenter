@@ -24,7 +24,7 @@ Os detalhes do aplicativo exibem informações sobre seu aplicativo: **Ícone do
 
 Clique em **Salvar** para atualizar as alterações.
 
-### Proxy
+### Servidor
 {: #server }
 
 As informações do Servidor exibem os **Detalhes do servidor** no qual você está trabalhando atualmente. É possível editar as informações clicando no link **Editar**. É possível incluir ou modificar a autorização do cliente confidencial.

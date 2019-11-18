@@ -15,7 +15,8 @@ show_in_nav: false
 | global.image     |pullPolicy |Richtlinie für Image-Übertragung per Pull-Operation | Always, Never oder IfNotPresent. Standardeinstellung: **IfNotPresent** |
 |      |  pullSecret    | Geheimer Image-Pull-Schlüssel | Nur erforderlich, wenn Images nicht von der OCP-Image-Registry bereitgestellt werden |
 | global.ingress | hostname |Externer Hostname oder IP-Adresse für externe Clients | Lassen Sie das Parameterfeld leer, um standardmäßig die IP-Adresse des Cluster-Proxy-Knotens zu verwenden. |
-|         | secret | Name des geheimen TLS-Schlüssels | Gibt den Namen des geheimen Schlüssels für das Zertifikat an, der in der Zugriffsdefinition (Ingress) verwendet werden muss. Der geheime Schlüssel muss vorab mit dem relevanten Zertifikat und Schlüssel erstellt worden sein. Obligatorisch, wenn SSL/TLS aktiviert ist. Erstellen Sie den geheimen Schlüssel mit dem Zertifikat und dem geheimen Schlüssel, bevor Sie hier den Namen angeben (siehe [hier](#optional-creating-tls-secret-for-ingress-configuration)). |
+|         | secret | Name des geheimen TLS-Schlüssels | Gibt den Namen des geheimen Schlüssels für das Zertifikat an, der in der Zugriffsdefinition (Ingress) verwendet werden muss. Der geheime Schlüssel muss vorab mit dem relevanten Zertifikat und Schlüssel erstellt worden sein. Obligatorisch, wenn SSL/TLS aktiviert ist. Erstellen Sie den geheimen Schlüssel mit dem Zertifikat und dem geheimen Schlüssel, bevor Sie hier den Namen angeben. Weitere Informationen finden Sie [hier](#optional-creating-tls-secret-for-ingress-configuration).
+|
 |         | sslPassThrough | SSL-Durchgriff aktivieren | Gibt an, dass die SSL-Anforderung an den Mobile Foundation Servie übergeben werden soll. Der SSL-Abschluss erfolgt im Mobile Foundation-Service. **false** (Standardwert) oder true |
 | global.dbinit | enabled | Initialisierung von Server-, Push- und Application-Center-Datenbank aktivieren | Initialisiert Datenbanken und erstellt Schemata/Tabellen für die Server-, Push- und Application-Center-Implementierung. (Für Analytics nicht erforderlich.) **true** (Standardwert) oder false |
 |  | repository | Docker-Image-Repository für die Datenbankinitialisierung | Repository des Docker-Image für die Mobile-Foundation-Datenbank. Der Platzhalter REPO_URL muss durch die richtige Docker-Registry-URL ersetzt wreden. |
@@ -44,7 +45,7 @@ show_in_nav: false
 |           | targetCPUUtilizationPercentage | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
 | mfpserver.pdb     | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | **true** (Standardwert) oder false |
 |           | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: 1) |
-|    mfpserver.customConfiguration |  |  Angepasste Serverkonfiguration (optional)  | Geben Sie einen zusätzlichen serverspezifische Verweis auf eine vorab erstellte configMap an (siehe [hier](#optional-custom-server-configuration)). |
+|    mfpserver.customConfiguration |  |  Angepasste Serverkonfiguration (optional)  | Geben Sie einen zusätzlichen serverspezifische Verweis auf eine vorab erstellte configMap an. Weitere Informationen finden Sie [hier](#optional-custom-server-configuration). |
 | mfpserver.jndiConfigurations |mfpfProperties |JNDI-Eigenschaften von Mobile Foundation Server für die Anpassung der Implementierung | Geben Sie eine Liste mit Name-Wert-Paaren, jeweils getrennt durch ein Komma, an. |
 | mfpserver | keystoreSecret | Im [Konfigurationsabschnitt](#optional-creating-custom-keystore-secret-for-the-deployments) ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |
 | mfpserver.resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität | Standardeinstellung: **2000m**. Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
@@ -61,7 +62,8 @@ show_in_nav: false
 |           | targetCPUUtilizationPercentage | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
 | mfppush.pdb     | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | **true** (Standardwert) oder false |
 |           | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: 1) |
-| mfppush.customConfiguration |  |  Angepasste Konfiguration (optional)  | Geben Sie einen zusätzlichen Push-spezifische Verweis auf eine vorab erstellte configMap an (siehe [hier](#optional-custom-server-configuration)). |
+| mfppush.customConfiguration |  |  Angepasste Konfiguration (optional)  | Geben Sie einen zusätzlichen Push-spezifischen Verweis auf eine vorab erstellte configMap an. Weitere Informationen finden Sie [hier](#optional-custom-server-configuration).
+|
 | mfppush.jndiConfigurations |mfpfProperties |JNDI-Eigenschaften von Mobile Foundation Server für die Anpassung der Implementierung | Geben Sie eine Liste mit Name-Wert-Paaren, jeweils getrennt durch ein Komma, an. |
 | mfppush |keystoresSecretName | Im [Konfigurationsabschnitt](#optional-creating-custom-keystore-secret-for-the-deployments) ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |
 | mfppush.resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität |Standardeinstellung: **1000m** Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
@@ -113,7 +115,8 @@ show_in_nav: false
 |           | targetCPUUtilizationPercentage | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
 | mfpappcenter.pdb     | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | **true** (Standardwert) oder false |
 |           | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: **1**) |
-| mfpappcenter.customConfiguration |  |  Angepasste Konfiguration (optional)  | Geben Sie einen zusätzlichen Application-Center-spezifische Verweis auf eine vorab erstellte configMap an (siehe [hier](#optional-custom-server-configuration)). |
+| mfpappcenter.customConfiguration |  |  Angepasste Konfiguration (optional)  | Geben Sie einen zusätzlichen Application-Center-spezifischen Verweis auf eine vorab erstellte configMap an. Weitere Informationen finden Sie [hier](#optional-custom-server-configuration).
+|
 | mfpappcenter | keystoreSecret | Im [Konfigurationsabschnitt](#optional-creating-custom-keystore-secret-for-the-deployments) ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |
 | mfpappcenter.resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität |Standardeinstellung: **1000m** Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |                  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität |Standardeinstellung: **2048Mi** Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|

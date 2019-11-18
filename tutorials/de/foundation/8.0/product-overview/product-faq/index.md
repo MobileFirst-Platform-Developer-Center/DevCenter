@@ -20,8 +20,8 @@ In diesem Abschnitt sind die häufig zur IBM Mobile Foundation gestellten Fragen
         </div>
         <div id="collapse-mfp-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq1">
             <div class="panel-body">
-              <p>Für IBM Mobile Foundation Version 8.0 gibt es die Supportrichtlinie für Continuous Delivery.<br/>
-                            Weitere Informationen zum Supportmodell für Continuous Delivery finden Sie in der Ankündigung <a href="https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/0/897/ENUS217-390/index.html&request_locale=en" target="_blank">Mobile Foundation V8.0 adopts the continuous delivery support model</a>.
+              <p>Für IBM Mobile Foundation Version 8.0 gibt es die Supportrichtlinie für Continuous Delivery. <br/>
+              Weitere Informationen zum Supportmodell für Continuous Delivery finden Sie in der Akündigung <a href="https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/0/897/ENUS217-390/index.html&request_locale=en" target="_blank">Mobile Foundation V8.0 adopts the continuous delivery support model</a>.
 .</p>
          </div>
         </div>      
@@ -60,7 +60,7 @@ In diesem Abschnitt sind die häufig zur IBM Mobile Foundation gestellten Fragen
             <div class="panel-body">
                 <p>Sie können sich <a href="https://mobilefirstplatform.ibmcloud.com/blog/2018/01/31/mfp-on-ibmcloud-private-announce/" target="_blank">hier</a> den Blog zur Ankündigung von Mobile Foundation Version 8.0 für ICP ansehen.<br/>
                 Die Mobile Foundation Developer Edition wurde für ICP freigegeben und kann <a href="https://mobilefirstplatform.ibmcloud.com/blog/2019/01/29/mfp-community-edition-on-icp/" target="_blank">hier</a> angesehen werden.<br/>
-                Eine Einführung in Mobile Foundation Version 8.0 für ICP finden Sie in der <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/" target="_blank">Dokumentation</a>.</p>
+Eine Einführung in Mobile Foundation Version 8.0 für ICP finden Sie in der <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/mobilefirst-server-on-icp/" target="_blank">Dokumentation</a>.</p>
             </div>
         </div>      
     </div>
