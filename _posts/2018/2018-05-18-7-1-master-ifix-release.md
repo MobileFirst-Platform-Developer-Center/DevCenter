@@ -20,7 +20,7 @@ A new iFix *7.1.0.0-MFPF-IF201911150651* has been released for MobileFirst Found
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201911150651">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201911150651" href="#collapse-mfp-ifix-IF201911150651" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201911150651"><b>iFix 7.1.0.0-MFPF-IF201911150651</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201911150651" href="#collapse-mfp-ifix-IF201911150651" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201911150651"><b>iFix 7.1.0.0-MFPF-IF201911150651</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>&nbsp;&nbsp;<span class="label label-danger">contains SDK fix for iOS 13</span>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201911150651" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201911150651">
