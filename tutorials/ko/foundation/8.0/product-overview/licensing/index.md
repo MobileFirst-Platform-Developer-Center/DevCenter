@@ -19,7 +19,7 @@ IBM {{ site.data.keys.mf_server }}는 구매한 항목을 기반으로 서로 �
 
 Mobile Foundation은 VPC(Virtual Processor Core)라는 용량 기반 라이센싱으로도 사용 가능합니다. VPC는 Mobile Foundation의 라이센싱 비용을 결정하는 데 사용되는 측정 단위이며 사용 가능한 코어 수를 기반으로 합니다. 현재 이 메트릭은 Cloud Pak for Applications에서만 사용할 수 있습니다.
 
-이 메트릭의 기능은 다음과 같습니다. 
+이 메트릭의 기능은 다음과 같습니다.
 
 * 클라이언트에서는 여러 개의 애플리케이션과 디바이스를 실행할 수 있습니다. 따라서 이 형식의 라이센스는 고객이 배치하는 앱이 많은 시나리오의 경우 애플리케이션 라이센스와 비교하여 유용할 수 있습니다.
 

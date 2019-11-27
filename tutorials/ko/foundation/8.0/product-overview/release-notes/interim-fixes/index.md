@@ -14,6 +14,42 @@ weight: 2
 
 > {{ site.data.keys.product }} 8.0의 iFix 릴리스 목록에 대해서는 [여기를 참조하십시오]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
+### CD 업데이트 6에 포함된 기능(8.0.0.0-MFPF-IF201911050809-CDUpdate-06)
+
+#### <span style="color:Black">서버</span>
+##### <span style="color:NAVY">**성능 개선사항**</span>
+
+Mobile Foundation 데이터베이스 오퍼레이션이 최적화되고 레코드 데이터베이스의 자동 제거가 도입되었습니다.
+
+##### <span style="color:NAVY">**이제 DevKit에서 사용 가능한 Application Center**</span>
+
+Application Center는 이제 [DevKit]({{site.baseurl}}/downloads/)에서 패키지로 사용할 수 있습니다. 이를 사용하면 개발자가 앱을 빌드하고 이를 DevKit의 일부로 사용 가능한 개인 저장소에 공개할 수 있습니다.
+
+##### <span style="color:NAVY">**벤더 소프트웨어에 대한 스택 지원**</span>
+
+Mobile Foundation에서는 이제 Windows Server 2016 SE 및 Oracle 18c를 지원합니다.
+
+##### <span style="color:NAVY">**애플리케이션 개발 프레임워크를 위한 지원**</span>
+
+Mobile Foundation은 [iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/), iPadOS 및 [Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/)에 대한 지원과 함께 Apple 및 Google에서 릴리스하는 최신 프레임워크를 지원합니다. 플랫폼에서도 Swift 5용 SDK를 제공됩니다. 
+
+##### <span style="color:NAVY">**API Proxy를 사용하여 백엔드 앱에 안전하게 연결**</span>
+
+엔터프라이즈 백엔드에 연결하는 경우 API Proxy를 사용하여 Mobile Foundation 플랫폼의 보안 및 분석을 활용할 수 있습니다. API Proxy는 실제 백엔드에 대한 요청을 대신합니다.[자세히 보기]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/).
+
+#### <span style="color:Black">분석</span>
+##### <span style="color:NAVY">**앱 내 피드백**</span>
+
+앱 내 피드백 기능은 이전에 IBM Cloud의 Mobile Foundation 서비스에서 사용할 수 있었지만 이제는 Mobile Foundation의 온프레미스 및 컨테이너 배포로 이동되었습니다. 이 기능을 사용하면 사용자가 스크린샷, 어노테이션 및 텍스트 양식으로 앱의 피드백을 공유할 수 있습니다. 관리자는 분석 콘솔에 로그인하여 수신한 피드백을 보고 필요한 조치를 취할 수 있습니다.
+
+
+
+#### <span style="color:Black">OpenShift 패키지</span>
+##### <span style="color:NAVY">**IBM Cloud Pak for Applications v3의 일부인 Mobile Foundation**</span>
+
+Mobile Foundation은 이제 [IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/)의 일부이며 Red Hat Open Shift 3.11 및 Red Hat Open Shift 4.2를 지원합니다. 현재 사용 가능한 서비스는 모바일 코어, 분석, 푸시 알림 및 앱 센터입니다. 이 기능을 사용하면 개발자가 백엔드 마이크로서비스 및 모바일 서비스를 사용하여 클라우드 기반 애플리케이션을 빌드할 수 있습니다.
+
+
 ### CD 업데이트 5에 포함된 기능(8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
 
 ##### <span style="color:NAVY">**CoreML 업데이트**</span>
