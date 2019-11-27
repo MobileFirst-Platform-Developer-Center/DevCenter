@@ -2229,26 +2229,26 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 Mobile Foundation 런타임은 스케줄된 일부 활동을 수행하기 위해 Quartz 스케줄러를 사용합니다.
 
-Mobile Foundation 런타임의 스케줄러는 다음 활동을 수행합니다. 
+Mobile Foundation 런타임의 스케줄러는 다음 활동을 수행합니다.
 
 1.	라이센스 추적
 2.	감사 로그 작성
 
-스케줄러 실행은 다음 두 가지 JNDI 특성으로 제어합니다. 
+스케줄러 실행은 다음 두 가지 JNDI 특성으로 제어합니다.
 
 * **mfp.licenseTracking.enabled**
 * **mfp.purgedata.enabled**(iFix 레벨 *8.0.0.0-MFPF-IF201812191602-CDUpdate-04*에서 도입됨)
 
-이러한 JNDI 특성은 지원되는 모든 애플리케이션 서버에 기본적으로 사용됩니다. 
+이러한 JNDI 특성은 지원되는 모든 애플리케이션 서버에 기본적으로 사용됩니다.
 
->**참고:** WebSphere Application Server에서 실행 중인 Mobile Foundation의 경우, JNDI 특성 **mfp.licenseTracking.enabled**는 WAS 콘솔의 런타임 환경 항목에서 해당 값을 **true**로 설정하여 사용으로 설정되어야 합니다. 
+>**참고:** WebSphere Application Server에서 실행 중인 Mobile Foundation의 경우, JNDI 특성 **mfp.licenseTracking.enabled**는 WAS 콘솔의 런타임 환경 항목에서 해당 값을 **true**로 설정하여 사용으로 설정되어야 합니다.
 
 ### 라이센스 추적
 {: #license-tracking}
 
 라이센스 추적은 활성 클라이언트 디바이스, 주소 지정 가능한 디바이스 및 설치된 앱과 같이 라이센싱 정책과 관련된 메트릭을 추적합니다. 이 정보는 Mobile Foundation의 현재 사용량이 라이센스 부여 레벨 내에 있는지 여부를 판별하는 데 도움이 되며 잠재적인 라이센스 위반을 방지할 수 있습니다. 라이센스 추적은 더 이상 Mobile Foundation Server에 액세스하지 않는 디바이스를 해제하고 *MFP_PERSISTENT_DATA*의 이전 레코드를 아카이브하고 삭제하는 데 도움이 됩니다.
 
-다음 표는 라이센스 추적과 관련된 JNDI 특성을 나열합니다. 
+다음 표는 라이센스 추적과 관련된 JNDI 특성을 나열합니다.
 
 | JNDI 특성 |설명 |
 |---------------|-------------|
@@ -2257,12 +2257,12 @@ Mobile Foundation 런타임의 스케줄러는 다음 활동을 수행합니다.
 | mfp.device.archiveDecommissioned.when | 해제된 클라이언트 디바이스가 아카이브될 때까지의 비활성 일 수입니다. <br/> 이 태스크는 해제된 클라이언트 디바이스를 아카이브 파일에 기록합니다. 아카이브된 클라이언트 디바이스는 Mobile Foundation Server home\devices_archive 디렉토리에 있는 파일에 기록됩니다. 이 파일의 이름에는 아카이브 파일 작성 시의 시간소인이 포함됩니다. 기본값: `90 days`. |
 | mfp.licenseTracking.enabled | IBM Mobile Foundation에서 디바이스 추적을 사용 또는 사용 안함으로 설정하는 데 사용되는 값입니다. <br/> 성능상의 이유로, IBM Mobile  Foundation이 B2C(Business-to-Consumer) 앱만 실행하는 경우 디바이스 추적을 사용 안함으로 설정할 수 있습니다. 디바이스 추적이 사용되지 않는 경우, 라이센스 보고서도 사용되지 않고 라이센스 메트릭이 생성되지 않습니다. <br/> 가능한 값은 `true`(기본값) 및 `false`입니다. |
 
-라이센스 추적에 대한 자세한 내용은 아래 주제를 참조하십시오. 
+라이센스 추적에 대한 자세한 내용은 아래 주제를 참조하십시오.
 
 * [Mobile Foundation 라이센스 추적]({{site.baseurl}}/tutorials/en/foundation/8.0/administering-apps/license-tracking/)
 * [Mobile Foundation 런타임 특성](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html)
 
-스케줄러는 서버 시작 후 8시간 후에 실행됩니다. 즉, 오늘 오후 11시에 서버가 시작된 경우 스케줄러는 그 다음날 오전 1시(기본 스케줄러 실행 시간)에 실행되지 않고 다음 다음날 오전 1시부터 실행을 시작합니다. 서버 시작과 스케줄러 실행 사이의 간격은 8시간입니다. 
+스케줄러는 서버 시작 후 8시간 후에 실행됩니다. 즉, 오늘 오후 11시에 서버가 시작된 경우 스케줄러는 그 다음날 오전 1시(기본 스케줄러 실행 시간)에 실행되지 않고 다음 다음날 오전 1시부터 실행을 시작합니다. 서버 시작과 스케줄러 실행 사이의 간격은 8시간입니다.
 
 iFix 레벨 [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643)부터 서버 시작과 스케줄러 실행 사이의 간격은 8시간이 아닌 4시간입니다.
 또한 새 특성 *MFP.SCHEDULER.STARTHOUR*도 도입되었습니다. 이 특성을 사용하면 기본값 오전 1시가 아닌 고객이 선택한 시간으로 스케줄러 실행을 설정할 수 있습니다. 이 특성은 1에서 23 사이의 값을 사용할 수 있습니다. 이 특성은 고객이 트래픽이 적은 시간에 시작하도록 스케줄러를 구성할 수 있도록 하고 매일 서버가 시작되더라도 스케줄러가 실행되도록 할 수 있습니다. 매일 밤 오전 1시에 서버를 다시 시작하는 고객의 경우 *MFP.SCHEDULER.STARTHOUR*의 값을 5로 설정할 수 있습니다. 이렇게 하면 서버 재시작과 스케줄러가 오전 5시에 실행되는 4시간 간격이 보장됩니다.
@@ -2274,14 +2274,14 @@ iFix 레벨 [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8
 ### 감사 로그 작성
 {: #creating-audit-log}
 
-라이센스 추적은 최신 실행 및 라이센스 데이터를 Mobile Foundation 런타임 테이블 *LICENSE_TERMS*에 저장합니다. 감사 로그는 이 테이블의 최신 보고서 항목을 기반으로 로그를 작성합니다. 보고서는 서버 설치 디렉토리의 logs 폴더에 있는 `.slmtag` 파일로 사용 가능합니다. 
+라이센스 추적은 최신 실행 및 라이센스 데이터를 Mobile Foundation 런타임 테이블 *LICENSE_TERMS*에 저장합니다. 감사 로그는 이 테이블의 최신 보고서 항목을 기반으로 로그를 작성합니다. 보고서는 서버 설치 디렉토리의 logs 폴더에 있는 `.slmtag` 파일로 사용 가능합니다.
 
 ### Quartz 업데이트 사용 안함
 {: #disable-quartz-update}
 
 Mobile Foundation 런타임은 일부 서드파티 라이브러리를 포함하여 필수 라이브러리를 번들합니다. Mobile Foundation은 Quartz 작업 스케줄러를 사용하며 `quartz2.2.0.jar`를 포함합니다.
 
-Quartz에는 [서버](http://www.terracotta.org/)에 연결하는 *업데이트 검사* 기능이 포함되어 있습니다. 이 검사는 비동기식으로 실행되며 Quartz의 구동/초기화 시간에 영향을 미치지 않으며 연결할 수 없는 경우 단계적으로 실패합니다. 검사가 실행되고 업데이트가 발견되면 Quartz의 로그에 사용 가능한 것으로 보고됩니다. 
+Quartz에는 [서버](http://www.terracotta.org/)에 연결하는 *업데이트 검사* 기능이 포함되어 있습니다. 이 검사는 비동기식으로 실행되며 Quartz의 구동/초기화 시간에 영향을 미치지 않으며 연결할 수 없는 경우 단계적으로 실패합니다. 검사가 실행되고 업데이트가 발견되면 Quartz의 로그에 사용 가능한 것으로 보고됩니다.
 
 *업데이트 검사*는 플래그 `org.quartz.scheduler.skipUpdateCheck = true`를 사용하여 사용 안함으로 설정될 수 있습니다. Mobile Foundation의 Liberty 배치는 `jvm.options` 파일을 작성하며 배치 중에 서버 구성 도구를 통해 새로 작성된 `jvm.options` 파일에는 iFix 레벨 [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) 이상의 이 특성이 포함됩니다. 이전 iFix 레벨의 경우 고객은 이 특성을 `jvm.options` 파일에 추가할 수 있습니다.
 WAS(WebSphere Application Server) 배치의 경우, 위의 JNDI 특성을 WAS 관리 콘솔에서 Mobile Foundation 애플리케이션의 환경 특성에 추가해야 합니다.

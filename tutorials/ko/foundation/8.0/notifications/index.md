@@ -111,7 +111,7 @@ SMS의 경우 구성 설정이 REST API 호출의 일부로 제공됩니다. JND
 4. XML 관리자, 멀티프로토콜 게이트웨이 정책을 기본값으로 선택하고 URL 재작성 정책을 없음으로 선택하십시오.
 5. **정적 백엔드** 단일 선택 단추를 선택한 후 **기본 백엔드 URL 설정**에 대해 다음 옵션을 선택하십시오.
 	- FCM의 경우:	`https://gcm-http.googleapis.com`
-	- SMS의 경우: `http://<samplegateway>/gateway`
+	- SMS의 경우:	`http://<samplegateway>/gateway`
 	- WNS의 경우:	`https://hk2.notify.windows.com`
 6. 응답 유형, 요청 유형을 패스스루로 선택하십시오.
 

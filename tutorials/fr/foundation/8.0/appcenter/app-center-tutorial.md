@@ -16,7 +16,7 @@ Application Center facilite le partage des applications mobiles :
 * Vous pouvez partager des informations de **commentaires et d'évaluation**.  
 * Vous pouvez utiliser les listes de contrôle d'accès pour limiter les personnes qui peuvent installer des applications.
 
-Application Center fonctionne avec des applications {{ site.data.keys.product_adj }} et non {{ site.data.keys.product_adj }} et prend en charge toutes les applications **iOS, Android**, **BlackBerry 6/7** et **Windows/Phone 8.x**.
+Application Center fonctionne avec des applications {{ site.data.keys.product_adj }} et non {{ site.data.keys.product_adj }} et prend en charge toutes les applications **iOS, Android** et **Windows/Phone 8.x**.
 
 > **Remarque :** les fichiers Archive/IPA générés à l'aide de Test Flight ou d'iTunes Connect pour la soumission ou la validation d'applications iOS dans les magasins peuvent entraîner un échec/une panne d'exécution. Pour en savoir plus, lisez le blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/).
 
@@ -26,6 +26,8 @@ Vous pouvez utiliser Application Center dans différents contextes. Par exemple 
 * Pendant le développement pour distribuer des applications au sein d'une équipe.
 
 > **Remarque :** pour générer l'application iOS AppCenter Installer, MobileFirst 7.1 est requis.
+>
+Studio est requis pour les applications Worklight 7.1 mais non pour les applications purement Cordova.
 
 #### Accéder à
 {: #jump-to}
@@ -145,11 +147,13 @@ Vous pouvez ouvrir le projet natif obtenu (dans **iphone\native**) manuellement 
 
 > **Remarque :** consultez [Client IBM AppCenter basé sur Cordova](#cordova-based-ibm-appcenter-client), si vous utilisez une infrastructure Cordova pour la génération d'un client AppCenter Android et iOS.
 
-### Pour Blackberry
+<!--
+### For Blackberry
 {: #for-blackberry }
-* Pour générer la version BlackBerry, vous devez disposer de l'environnement IDE Eclipse pour BlackBerry (ou Eclipse avec le plug-in Java pour BlackBerry) avec le SDK 6.0 pour BlackBerry. L'application s'exécute également sur BlackBerry OS 7 lorsqu'elle est compilée avec le SDK 6.0 pour BlackBerry.
+* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
 
-Un projet BlackBerry est fourni dans : **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+-->
 
 ### Pour Windows Phone 8
 {: #for-windows-phone-8}
@@ -200,7 +204,7 @@ Pour ajouter de nouvelles applications au magasin :
 3. Sélectionner un fichier d'application :
     * `.ipa` : iOS
     * `.apk` : Android
-    * `.zip` : BlackBerry 6/7
+    <!--* `.zip`: BlackBerry 6/7-->
     * `.xap` : Windows Phone 8.x
     * `.appx` : Windows Store 8.x
 

@@ -37,7 +37,7 @@ weight: 4
 
 1. シナリオ・ローダーを有効にするには、JVM 引数 `-DwlDevEnv=true` または環境変数 `ANALYTICS_DEBUG=true` のいずれかを設定します。
 
-2. ブラウザーでコンソール URL  `http://<console-path>/scenarioLoader` を使用してシナリオ・ローダーにアクセスします。ここで、`<console-path>` は、`mfp-server/usr/servers/mfp/server.xml` ファイルで定義されている JNDI プロパティー値です。例えば、次のとおりです。
+2. ブラウザーでコンソール URL `http://<console-path>/scenarioLoader` を使用してシナリオ・ローダーにアクセスします。ここで、`<console-path>` は、`mfp-server/usr/servers/mfp/server.xml` ファイルで定義されている JNDI プロパティー値です。例:
 
     `<jndiEntry jndiName="mfp/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>`
 

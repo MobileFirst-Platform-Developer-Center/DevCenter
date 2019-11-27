@@ -32,7 +32,7 @@ downloads:
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe src="https://www.youtube.com/embed/TjbC9thSfmM"></iframe>
+        <iframe title="デモンストレーション" src="https://www.youtube.com/embed/TjbC9thSfmM"></iframe>
     </div>
 </div>
 

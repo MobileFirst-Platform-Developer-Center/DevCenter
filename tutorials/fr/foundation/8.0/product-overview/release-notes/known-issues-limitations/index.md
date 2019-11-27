@@ -14,6 +14,7 @@ Cette documentation décrit les limitations connues d'{{ site.data.keys.product_
 
 * Lorsque la limitation connue s'applique à une fonction spécifique, elle est explicitée dans la rubrique qui décrit la fonction. Vous pouvez alors savoir immédiatement comment elle affecte la fonction.
 * Lorsque la limitation connue est générale, c'est-à-dire qu'elle s'applique à des éléments différents et éventuellement non directement liés, sa description est fournie ici.
+* Des incohérences peuvent être observées dans le fonctionnement des pods Mobile Foundation Analytics dans le déploiement en raison de problèmes de reconnaissance de noeud Elasticsearch dans le cluster OpenShift 4.2. Ainsi, la console d'administration Analytics ne répertorie jamais qu'un seul noeud.
 
 ### Globalisation
 {: #globalization }

@@ -16,11 +16,11 @@ weight: 2
 {: #sending-interactive-push-notification }
 알림을 준비하고 알림을 전송하십시오. 자세한 정보는 [푸시 알림 전송](../../sending-notifications)을 참조하십시오.
 
-대화식 알림은 알림 조치 및 알림 조치를 카테고리로 그룹화하는 데 중점을 둡니다. 우선 애플리케이션 사용자에게 제공될 수 있는 다양한 알림 조치를 정의하십시오. 그 다음에는 각 카테고리가 하나 이상의 알림 조치를 그룹화하는 카테고리를 정의하십시오. 가장 중요한 것은 각 카테고리마다 고유 ID를 지정하는 것입니다. 그리고 대화식 푸시 알림을 iOS 디바이스에 전송하려면 **{{ site.data.keys.mf_console }} → [애플리케이션] → 푸시 → 알림 전송 → iOS 사용자 정의 설정** 및/또는 **{{ site.data.keys.mf_console }} → [애플리케이션] → 푸시 → 알림 전송 → Android 사용자 정의 설정** 아래에서 카테고리 ID를 지정하십시오. 카테고리 ID를 기반으로, 알림 조치 단추가 모바일 디바이스에 표시됩니다. 예를 들어, 다음과 같습니다.
+대화식 알림은 알림 조치 및 알림 조치를 카테고리로 그룹화하는 데 중점을 둡니다.  우선 애플리케이션 사용자에게 제공될 수 있는 다양한 알림 조치를 정의하십시오.  그 다음에는 각 카테고리가 하나 이상의 알림 조치를 그룹화하는 카테고리를 정의하십시오.  가장 중요한 것은 각 카테고리마다 고유 ID를 지정하는 것입니다.  그리고 대화식 푸시 알림을 iOS 디바이스에 전송하려면 **{{ site.data.keys.mf_console }} → [애플리케이션] → 푸시 → 알림 전송 → iOS 사용자 정의 설정** 및/또는 **{{ site.data.keys.mf_console }} → [애플리케이션] → 푸시 → 알림 전송 → Android 사용자 정의 설정** 아래에서 카테고리 ID를 지정하십시오. 카테고리 ID를 기반으로, 알림 조치 단추가 모바일 디바이스에 표시됩니다. 예를 들어, 다음과 같습니다.
 
 ![{{ site.data.keys.mf_console }}에서 iOS 대화식 알림의 카테고리 설정](categories-for-interactive-notifications.png)
 
-대화식 알림을 Android 디바이스에 전송하려면 **{{ site.data.keys.mf_console }} → [애플리케이션] → 푸시 → 알림 전송 → Android 사용자 정의 설정** 아래에서 대화식 카테고리 ID를 지정하십시오. 예를 들어, 다음과 같습니다.
+대화식 알림을 Android 디바이스에 전송하려면 **{{ site.data.keys.mf_console }} → [애플리케이션] → 푸시 → 알림 전송 → Android 사용자 정의 설정** 아래에서 대화식 카테고리 ID를 지정하십시오.   예를 들어, 다음과 같습니다.
 
 ![ {{ site.data.keys.mf_console }}](android-settings-interactive-notifications.png)
 

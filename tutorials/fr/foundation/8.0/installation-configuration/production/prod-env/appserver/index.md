@@ -2215,7 +2215,7 @@ Le planificateur d'exécution de Mobile Foundation effectue les activités suiva
 1.	Suivi des licences
 2.	Création de journaux d'audit
 
-L'exécution du planificateur est contrôlée par les deux propriétés JNDI suivantes : 
+L'exécution du planificateur est contrôlée par les deux propriétés JNDI suivantes :
 
 * **mfp.licenseTracking.enabled**
 * **mfp.purgedata.enabled** (disponible à partir du correctif temporaire *8.0.0.0-MFPF-IF201812191602-CDUpdate-04*)
