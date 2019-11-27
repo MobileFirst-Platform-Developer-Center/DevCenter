@@ -76,6 +76,13 @@ react-native-ibm-mobilefirst プラグインは、React Native 用のコア {{ s
    ```bash
    react-native link
    ```
+  **注:** このコマンドは、React Native 0.60 からは必要ありません。
+
+5. iOS の場合のみ、Mobilefirst Pod の依存関係をインストールします。
+
+   ```bash
+   cd ios && pod install 
+   ```  
 
 #### アプリケーションの終了
 {: #existing-application }
@@ -90,6 +97,13 @@ react-native-ibm-mobilefirst プラグインは、React Native 用のコア {{ s
 
    ```bash
    react-native link
+   ```
+   **注:** このコマンドは、React Native 0.60 からは必要ありません。
+
+3. iOS の場合のみ、Mobilefirst Pod の依存関係をインストールします。
+
+   ```bash
+   cd ios && pod install 
    ```
 
 ### アプリケーションの登録

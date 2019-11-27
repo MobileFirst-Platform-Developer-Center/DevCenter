@@ -72,7 +72,7 @@ CLI を使用して IBM Cloud Kubernetes クラスターにアクセスするた
       ```bash
       ibmcloud login -a cloud.ibm.com
       ```
-      統合 ID を使用する場合、`--sso` オプションを組み込みます。オプションとして SSL の検証をスキップできます。上記のコマンドで `--skip-ssl-validation` フラグを使用します。 これにより、HTTP 要求の SSL 検証がバイパスされます。 このパラメーターを使用すると、セキュリティーの問題が発生する場合があります。
+      統合 ID を使用する場合、`--sso` オプションを組み込みます。 オプションとして SSL の検証をスキップできます。上記のコマンドで `--skip-ssl-validation` フラグを使用します。 これにより、HTTP 要求の SSL 検証がバイパスされます。 このパラメーターを使用すると、セキュリティーの問題が発生する場合があります。
 
   2. IBM Cloud Container Registry にログインし、以下のコマンドを使用して Container Service を初期化します。
       ```bash

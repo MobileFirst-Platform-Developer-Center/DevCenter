@@ -33,7 +33,7 @@ ICP 클러스터의 컨텍스트 구성 정보가 있는 ICP 인스턴스인 적
 kubectl get svc | grep prometheus
 ```
 <br/>
-`ibm-icpmonitoring` 차트에 의해 배치되는 다수의 서비스가 표시됩니다. 이 튜토리얼에서는 아래의 스크린샷에 표시된 대로 `<name used for the helm release>-promethues`(mfp-prometheus-prometheus)라는 서비스에 초점을 맞추고 사용합니다. <br/>
+`ibm-icpmonitoring` 차트에 의해 배치되는 다수의 서비스가 표시됩니다. 이 튜토리얼에서는 아래의 스크린샷에 표시된 대로 `<name used for the helm release>-promethues`(mfp-prometheus-prometheus)라는 서비스에 초점을 맞추고 사용합니다.<br/>
 
 ![배치된 서비스 가져오기](get-svcs-helm.png)
 <br/>

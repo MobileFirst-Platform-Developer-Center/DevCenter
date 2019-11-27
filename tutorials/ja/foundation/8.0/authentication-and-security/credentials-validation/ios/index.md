@@ -39,7 +39,7 @@ downloads:
 `SecurityCheckChallengeHandler` を継承する Swift クラスを作成します。
 
 ```swift
-class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
+open class PinCodeChallengeHandler : SecurityCheckChallengeHandlerSwift {
 
 }
 ```
@@ -51,18 +51,17 @@ class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
 この例では、PIN コードの入力をユーザーに要求するアラートが出されます。
 
 ```swift
-override func handleChallenge(challenge: [NSObject : AnyObject]!) {
-    NSLog("%@",challenge)
-    var errorMsg : String
-    if challenge["errorMsg"] is NSNull {
-        errorMsg = "This data requires a PIN code."
+override open func handleChallenge(challengeResponse: [AnyHashable: Any]!) {
+  var errorMsg : String
+  if challengeResponse!["errorMsg"] is NSNull {
+      errorMsg = "This data requires a PIN code."
     }
-    else{
-        errorMsg = challenge["errorMsg"] as! String
-    }
-    let remainingAttempts = challenge["remainingAttempts"] as! Int
+  else{
+      errorMsg = challengeResponse!["errorMsg"] as! String
+  }
+  let remainingAttempts = challengeResponse!["remainingAttempts"] as! Int + 2;
 
-    showPopup(errorMsg,remainingAttempts: remainingAttempts)
+  showPopup(errorMsg,remainingAttempts: remainingAttempts);
 }
 ```
 
@@ -94,8 +93,8 @@ self.cancel()
 パラメーターとして渡される `Dictionary` の構造は、失敗の性質に大きく依存します。
 
 ```swift
-override func handleFailure(failure: [NSObject : AnyObject]!) {
-    if let errorMsg = failure["failure"] as? String {
+override open func handleFailure(failureResponse: [AnyHashable: Any]!) {
+    if let errorMsg = failureResponse["failure"] as? String {
         showError(errorMsg)
     }
     else{
@@ -108,11 +107,8 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 
 ## 成功の処理
 {: #handling-successes }
-一般的に、成功の場合は、アプリケーションの残りの処理を続行できるように、フレームワークによって自動的に処理されます。
 
-オプションで、`SecurityCheckChallengeHandler` の `handleSuccess(success: [NSObject : AnyObject]!)` メソッドを実装すると、フレームワークがチャレンジ・ハンドラー・フローを閉じる前に、何かの処理を行うようにできます。 この場合も、`success` `Dictionary` のコンテンツおよび構造は、セキュリティー検査が送信する内容に依存します。
-
-`PinCodeAttemptsSwift` サンプル・アプリケーションの場合、success に追加のデータは含まれないため、`handleSuccess` は実装されていません。
+オプションで、SecurityCheckChallengeHandler の `handleSuccess(successResponse: [AnyHashable: Any]!)` メソッドを実装すると、フレームワークがチャレンジ・ハンドラー・フローを閉じる前に、何かの処理を行うようにできます。この場合も、success Dictionary のコンテンツおよび構造は、セキュリティー検査が送信する内容に依存します。
 
 ## チャレンジ・ハンドラーの登録
 {: #registering-the-challenge-handler }
@@ -121,19 +117,19 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 そのためには、以下のようにセキュリティー検査を指定してチャレンジ・ハンドラーを初期設定します。
 
 ```swift
-var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName")
+var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName”);
 ```
 
 次に、チャレンジ・ハンドラー・インスタンスを**登録**する必要があります。
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(someChallengeHandler)
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: someChallengeHandler);
 ```
 
 以下は、1 行にまとめた例です。
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: PinCodeChallengeHandler(securityCheck: securityCheck));
 ```
 
 **注:** チャレンジ・ハンドラーの登録は、アプリケーション・ライフサイクル全体の中で 1 回のみ実行します。 iOS AppDelegate クラスを使用してこれを行うことをお勧めします。
@@ -151,4 +147,3 @@ WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(secur
 サンプルの README.md ファイルの指示に従ってください。
 
 ![サンプル・アプリケーション](sample-application.png)
-

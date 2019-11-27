@@ -25,7 +25,12 @@ MobileFirst プラグインでサポートされる Cordova プラットフォ�
 
 * cordova-ios: **>= 4.1.1 と < 6.0**
 * cordova-android: **>= 6.1.2 と < 9.0**
-* cordova-windows: **>= 4.3.2 と < 7.0**
+* cordova-windows: **>= 5.0.0 と < 8.0**
+
+>**注:** **cordova-windows** の最新の公開バージョンにはバグがあり、アプリの起動時に例外がスローされます。Apache Cordova は開発リポジトリーの問題を修正しましたが、まだ公開されていません。フィックスが含まれるマスター・リポジトリーからの *cordova-windows* バージョンを使用することをお勧めします。以下は、*cordova-windows* プラットフォームを追加してフィックスを設定するために使用できるコマンドです。
+```bash
+cordova platform add https://github.com/apache/cordova-windows
+```
 
 #### ジャンプ先:
 {: #jump-to }
@@ -141,7 +146,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 この関数を使用して、各種 {{ site.data.keys.product_adj }} API メソッドを呼び出します。
 
 ### SDK の手動での追加 
-ローカル・パスからプラグインをインストールするオプションもあります。cordova-plugin-mfp は MFP コンソールからダウンロードできます。それを Cordova アプリケーションにインストールします。
+ローカル・パスからプラグインをインストールするオプションもあります。 cordova-plugin-mfp は MFP コンソールからダウンロードできます。それを Cordova アプリケーションにインストールします。
 1. MFP サーバー・コンソール Dashboard で、「ダウンロード・センター」をクリックし =>「SDK」タブをクリックし => Cordova SDK をダウンロードします。
 
 2. 既存の Cordova プロジェクトのルートに移動し、次のように {{ site.data.keys.product_adj }} コア Cordova プラグインを追加します。

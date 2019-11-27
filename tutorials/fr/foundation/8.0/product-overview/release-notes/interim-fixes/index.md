@@ -14,6 +14,42 @@ Téléchargez et installez la dernière mise à jour en distribution continue po
 
 > Pour obtenir la liste des éditions de correctif temporaire de {{ site.data.keys.product }} 8.0, [cliquez ici]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
+### Fonctions incluses avec la mise à jour en distribution continue 6 (8.0.0.0-MFPF-IF201911050809-CDUpdate-06)
+
+#### <span style="color:Black">Serveur</span>
+##### <span style="color:NAVY">**Améliorations des performances**</span>
+
+Opérations de base de données Mobile Foundation optimisées et purge de la base de données d'enregistrements automatisée.
+
+##### <span style="color:NAVY">**Application Center désormais disponible dans DevKit**</span>
+
+Application Center est désormais fourni avec [DevKit]({{site.baseurl}}/downloads/) sous forme de package. Les développeurs peuvent ainsi créer des applications et les publier dans le magasin privé qui est maintenant intégré à DevKit.
+
+##### <span style="color:NAVY">**Prise en charge de la pile logicielle des fournisseurs tiers**</span>
+
+Mobile Foundation prend désormais en charge Windows Server 2016 SE et Oracle 18c.
+
+##### <span style="color:NAVY">**Prise en charge des infrastructures de développement d'applications**</span>
+
+Mobile Foundation prend en charge les infrastructures les plus récentes publiées par Apple et Google avec le support d'[iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/), d'iPadOS et d'[Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/). La plateforme fournit également un SDK pour Swift 5.
+
+##### <span style="color:NAVY">**Connexion sécurisée aux applications de back end à l'aide d'un proxy d'API**</span>
+
+Lors de la connexion au système de back end de l'entreprise, l'utilisation du proxy d'API permet de bénéficier des fonctions de sécurité et d'analyse de la plateforme Mobile Foundation. Le proxy d'API transmet les demandes au système de back end de l'entreprise. [En savoir plus]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/).
+
+#### <span style="color:Black">Analyse</span>
+##### <span style="color:NAVY">**Commentaires intégrés**</span>
+
+La fonction de commentaires intégrés à l'application était jusqu'à présent disponible dans le service Mobile Foundation on IBM Cloud. Elle l'est désormais dans la distribution sur site et en conteneur de Mobile Foundation. Cette fonction permet aux utilisateurs de partager les commentaires de l'application sous forme de captures d'écran, d'annotations et de texte. Un administrateur peut se connecter à la console d'analyse pour afficher les commentaires reçus et prendre les mesures nécessaires.
+
+
+
+#### <span style="color:Black">Package OpenShift</span>
+##### <span style="color:NAVY">**Mobile Foundation fait partie d'IBM Cloud Pak for Applications v3**</span>
+
+Mobile Foundation est désormais fourni avec [IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/) et prend en charge Red Hat Open Shift 3.11 et Red Hat Open Shift 4.2. Les services actuellement disponibles sont les services mobiles de base, les services d'analyse, les notifications push et App Center. Ces fonctionnalités permettent aux développeurs de créer des applications cloud natives en utilisant les microservices de back end et les services mobiles.
+
+
 ### Fonctions incluses avec la mise à jour en distribution continue 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
 
 ##### <span style="color:NAVY">**Mise à jour CoreML**</span>

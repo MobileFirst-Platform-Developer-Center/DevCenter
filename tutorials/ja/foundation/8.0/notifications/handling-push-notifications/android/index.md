@@ -131,7 +131,7 @@ weight: 6
 {: #notifications-api }
 ### MFPPush インスタンス
 {: #mfppush-instance }
-すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。  これを行うには、クラス・レベルのフィールド (`private MFPPush push = MFPPush.getInstance();`など) を作成し、その後、クラス内で一貫して `push.<api-call>` を呼び出します。
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。  これを行うには、クラス・レベルのフィールド (`private MFPPush push = MFPPush.getInstance();` など) を作成し、その後、クラス内で一貫して `push.<api-call>` を呼び出します。
 
 代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.getInstance().<api_call>` を呼び出すこともできます。
 

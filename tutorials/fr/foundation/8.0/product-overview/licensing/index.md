@@ -19,7 +19,7 @@ Si vous avez acheté des licences d'application ou d'appareil adressable, vous p
 
 Mobile Foundation est également disponible avec une licence basée sur la capacité, appelée VPC (Virtual Processor Cores - coeurs de processeur virtuel). VPC est une unité de mesure utilisée pour déterminer le coût de la licence Mobile Foundation, basée sur le nombre de coeurs disponibles. Cette mesure n'est actuellement disponible que pour Cloud Pak for Applications.
 
-Les fonctionnalités de cet indicateur sont les suivantes : 
+Les fonctionnalités de cet indicateur sont les suivantes :
 
 * Les clients peuvent utiliser le nombre d'applications et d'appareils de leur choix. Ce format de licence est donc avantageux par rapport à la licence par application lorsque les déploiements des clients contiennent de nombreuses applications.
 
