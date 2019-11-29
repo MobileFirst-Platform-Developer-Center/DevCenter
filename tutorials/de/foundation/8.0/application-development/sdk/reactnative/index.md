@@ -78,6 +78,13 @@ Beispiel:
    ```bash
    react-native link
    ```
+  **Hinweis**: Dieser Befehl ist in React Native 0.60 nicht erforderlich.
+
+5. Mobilefirst-Pod-Abhängigkeiten installieren (nur iOS)
+
+   ```bash
+   cd ios && pod install 
+   ```  
 
 #### Vorhandene Anwendung
 {: #existing-application }
@@ -92,6 +99,13 @@ Beispiel:
 
    ```bash
    react-native link
+   ```
+   **Hinweis**: Dieser Befehl ist in React Native 0.60 nicht erforderlich.
+
+3. Mobilefirst-Pod-Abhängigkeiten installieren (nur iOS)
+
+   ```bash
+   cd ios && pod install 
    ```
 
 ### Anwendung registrieren
@@ -167,7 +181,7 @@ definiert.
 |---------------------|---------------------------------------------------------------------|----------------|
 |protocol |Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} |http oder https |
 |host |Hostname von {{ site.data.keys.mf_server }} |192.168.1.63 |
-|port |Port von {{ site.data.keys.mf_server }} |9080 |
+| port       |Port von {{ site.data.keys.mf_server }} |9080 |
 |wlServerContext |Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} |/mfp/ |
 |languagePreferences |Legt die Standardsprache für Client-SDK-Systemnachrichten fest |en |
 

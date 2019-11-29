@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: Direkte Aktualisierung in Cordova-Anwendungen
+title: Direkte Aktualisierung in Cordova- und Ionic-Anwendungen
 breadcrumb_title: Direct Update
-relevantTo: [cordova]
+relevantTo: [cordova,ionic]
 weight: 8
 downloads:
   - name: Download Cordova project
@@ -97,8 +97,11 @@ Die direkte Aktualisierung gilt nur für eine bestimmte Version. Das bedeutet, d
 Wenn Arbeiten an neuen Webressourcen ausgeführt werden, z. B. Fehlerkorrekturen oder geringfügige Änderungen,
 müssen die aktualisierten Webressourcen gepackt und auf den {{ site.data.keys.mf_server }} hochgeladen werden.
 
-1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Cordova-Projekts. 
-2. Führen Sie den Befehl `mfpdev app webupdate` aus. 
+1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Cordova-Projekts.
+2. Führen Sie den Befehl `cordova build` aus.
+3. Führen Sie den Befehl `mfpdev app webupdate` aus.
+
+> **Hinweis:** In Ionic-Anwendungen ist es wichtig, den Buildschritt vor dem Befel für direkte Aktualisierung auszuführen. Fehlt dieser Schritt, werden die Webressourcen nicht aktualisiert. 
 
 Mit dem Befehl `mfpdev app webupdate` werden die aktualisierten Webressourcen zu einer ZIP-Datei gepackt
 und auf den aktiven Standard-MobileFirst-Server auf der

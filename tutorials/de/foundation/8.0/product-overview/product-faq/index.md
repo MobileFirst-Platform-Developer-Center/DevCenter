@@ -21,7 +21,7 @@ In diesem Abschnitt sind die häufig zur IBM Mobile Foundation gestellten Fragen
         <div id="collapse-mfp-faq1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-faq1">
             <div class="panel-body">
               <p>Für IBM Mobile Foundation Version 8.0 gibt es die Supportrichtlinie für Continuous Delivery. <br/>
-              Weitere Informationen zum Supportmodell für Continuous Delivery finden Sie in der Akündigung <a href="https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/0/897/ENUS217-390/index.html&request_locale=en" target="_blank">Mobile Foundation V8.0 adopts the continuous delivery support model</a>.
+              Weitere Informationen zum Supportmodell für Continuous Delivery finden Sie in der Ankündigung <a href="https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/0/897/ENUS217-390/index.html&request_locale=en" target="_blank">Mobile Foundation V8.0 adopts the continuous delivery support model</a>.
 .</p>
          </div>
         </div>      

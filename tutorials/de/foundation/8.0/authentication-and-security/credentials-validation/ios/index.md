@@ -48,7 +48,7 @@ optional eine Fehlernachricht (`errorMsg`).
 Erstellen Sie eine Swift-Klasse, die `SecurityCheckChallengeHandler` erweitert:
 
 ```swift
-class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
+open class PinCodeChallengeHandler : SecurityCheckChallengeHandlerSwift {
 
 }
 ```
@@ -62,18 +62,17 @@ der Methode `handleChallenge`, die den Benutzer zur Angabe der Berechtigungsnach
 Im folgenden Beispiel wird der Benutzer in einem Alert aufgefordert, den PIN-Code einzugeben: 
 
 ```swift
-override func handleChallenge(challenge: [NSObject : AnyObject]!) {
-    NSLog("%@",challenge)
-    var errorMsg : String
-    if challenge["errorMsg"] is NSNull {
-        errorMsg = "This data requires a PIN code."
+override open func handleChallenge(challengeResponse: [AnyHashable: Any]!) {
+  var errorMsg : String
+  if challengeResponse!["errorMsg"] is NSNull {
+      errorMsg = "This data requires a PIN code."
     }
     else{
-        errorMsg = challenge["errorMsg"] as! String
-    }
-    let remainingAttempts = challenge["remainingAttempts"] as! Int
+      errorMsg = challengeResponse!["errorMsg"] as! String
+  }
+  let remainingAttempts = challengeResponse!["remainingAttempts"] as! Int + 2;
 
-    showPopup(errorMsg,remainingAttempts: remainingAttempts)
+  showPopup(errorMsg,remainingAttempts: remainingAttempts);
 }
 ```
 
@@ -110,8 +109,8 @@ Methode `handleFailure` von `SecurityCheckChallengeHandler`.
 Die Struktur des als Parameter übergebenen Verzeichnisses (`Dictionary`) hängt in starkem Maße von der Art des Fehlers ab. 
 
 ```swift
-override func handleFailure(failure: [NSObject : AnyObject]!) {
-    if let errorMsg = failure["failure"] as? String {
+override open func handleFailure(failureResponse: [AnyHashable: Any]!) {
+    if let errorMsg = failureResponse["failure"] as? String {
         showError(errorMsg)
     }
     else{
@@ -124,15 +123,8 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 
 ## Erfolgsbehandlung
 {: #handling-successes }
-Im Erfolgsfall erlaubt das Framework generell die weitere Ausführung der Anwendung. 
 
-Bei Bedarf können Sie entscheiden, eine Aktion auszuführen, bevor das Framework den Abfrage-Handler-Ablauf schließt,
-indem Sie die Methode
-`handleSuccess(success: [NSObject : AnyObject]!)` von `SecurityCheckChallengeHandler` implementieren. Auch hier sind Inhalt und
-Struktur des Verzeichnisses `success` davon abhängig, was die Sicherheitsüberprüfung sendet. 
-
-In der Beispielanwendung `PinCodeAttemptsSwift` gibt es im Erfolgsfall keine zusätzlichen Daten. Daher ist
-`handleSuccess` nicht implemetiert. 
+Bei Bedarf können Sie entscheiden, eine Aktion auszuführen, bevor das Framework den Abfrage-Handler-Ablauf schließt, indem Sie die Methode `handleSuccess(successResponse: [AnyHashable : Any]!)` von SecurityCheckChallengeHandler implementieren. Auch hier sind Inhalt und Struktur der des Verzeichnisses "success" davon abhängig, was die Sicherheitsüberprüfung sendet. 
 
 ## Abfrage-Handler registrieren
 {: #registering-the-challenge-handler }
@@ -141,19 +133,19 @@ Sie müssen das Framework anweisen, dem Abfrage-Handler den Namen einer bestimmt
 Initialisieren Sie den Abfrage-Handler dafür wie folgt mit der Sicherheitsüberprüfung: 
 
 ```swift
-var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName")
+var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName”);
 ```
 
 Anschließend müssen Sie die Abfrage-Handler-Instanz **registrieren**: 
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(someChallengeHandler)
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: someChallengeHandler);
 ```
 
 Geben Sie in diesem Beispiel Folgendes in einer Zeile ein: 
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: PinCodeChallengeHandler(securityCheck: securityCheck));
 ```
 
 **Hinweis:** Der Abfrage-Handler sollte im gesamten Anwendungslebenszyklus nur einmal registriert werden. Es wird empfohlen, dafür die iOS-AppDelegate-Klasse zu verwenden. 
@@ -171,4 +163,3 @@ Die Methode ist mit meinem PIN-Code geschützt, für den es maximal drei Eingabe
 Anweisungen finden Sie in der Datei README.md zum Beispiel. 
 
 ![Beispielanwendung](sample-application.png)
-

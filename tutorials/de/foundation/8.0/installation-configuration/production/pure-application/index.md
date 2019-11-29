@@ -2578,7 +2578,7 @@ Mit diesem Scriptpaket wird der MobileFirst-Application-Center-Server in WebSphe
 |WAS\_admin\_password|Obligatorisch für WebSphere Application Server und optional für WebSphere Application Server Liberty. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was\_admin\_password des eigenständigen Servers zugeordnet.|
 |server_hostname|Dieser Parameter gibt den Hostnamen von {{ site.data.keys.mf_server }} an. Er wird dem Ausgabeattribut host des Liberty-Profile-Servers oder des eigenständigen Servers (Standalone Server) zugeordnet.|
 |LDAP_TYPE|Obligatorischer LDAP-Parameter. LDAP server type of your user registry:<br/><br/>None<br/>Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert festgelegt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.<br/><br/>TivoliDirectoryServer<br/>Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.<br/><br/>ActiveDirectory<br/>Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.<br/><br/>Standardwert: None. | 
-|LDAP_IP|LDAP-Parameter.     IP-Adresse des LDAP-Servers| 
+|LDAP_IP|LDAP-Parameter. IP-Adresse des LDAP-Servers| 
 |LDAP\_SSL\_PORT|Dieser LDAP-Parameter gibt den LDAP-Port für sichere Verbindungen an.| 
 |LDAP_PORT|Dieser LDAP-Parameter gibt den LDAP-Port für nicht gesicherte Verbindungen an.| 
 |BASE_DN|Dieser LDAP-Parameter gibt den Basis-DN an.| 

@@ -37,9 +37,9 @@ WLResourceRequest *request = [WLResourceRequest requestWithURL:[NSURL URLWithStr
 Swift
 
 ```swift
-let request = WLResourceRequest(
-    URL: NSURL(string: "/adapters/JavaAdapter/users"),
-    method: WLHttpMethodGet
+let request = WLResourceRequestSwift(
+    URL: URL(string: "/adapters/JavaAdapter/users"),
+    method: WLResourceRequestSwift.WLHttpMethodGet
 )
 ```
 
@@ -68,12 +68,12 @@ if (error == nil){
 Swift
 
 ```swift
-request.sendWithCompletionHandler { (response, error) -> Void in
-    if(error == nil){
-        NSLog(response.responseText)
+request.send() {(response, error) in
+    if (error != nil){
+        print("Failure: " , error!);
     }
-    else{
-        NSLog(error.description)
+    else if (response != nil){
+        print("Success: " + response!.responseText);
     }
 }
 ```
@@ -149,12 +149,12 @@ Swift
 let formParams = ["height":"175"]
 
 // Anforderung mit Formularparametern senden
-request.sendWithFormParameters(formParams) { (response, error) -> Void in
-    if(error == nil){
-        NSLog(response.responseText)
+request.send(withFormParameters: formParams) {(response, error) in
+    if (error != nil){
+        print("Failure: " , error!);
     }
-    else{
-        NSLog(error.description)
+    else if (response != nil){
+        print("Success: " + response!.responseText);
     }
 }
 ```
@@ -223,14 +223,15 @@ dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callba
 
 ```swift
 // Callback-Warteschlange erstellen
-var completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL)
+let completionQueue = DispatchQueue(label: "com.ibm.mfp.app.callbackQueue");
 
 // Anforderung mit Callback-Warteschlange senden
-request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void in
-  if (error == nil){
-      NSLog(@"%@", response.responseText);
-  } else {
-      NSLog(@"%@", error.description);
+request.send(withQueue: queue){ (response, error) in
+    if (error != nil){
+        print("Failure: " , error!);
+    }
+    else if (response != nil){
+        print("Success: " + response!.responseText);
     }
 }
 ```
