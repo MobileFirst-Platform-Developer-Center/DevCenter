@@ -182,7 +182,7 @@ Objective-C:
 Swift:
 
 ```swift
-import IBMMobileFirstPlatformFoundation
+import IBMMobileFoundationSwift
 ```
 
 <br>

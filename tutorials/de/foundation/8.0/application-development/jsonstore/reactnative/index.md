@@ -29,6 +29,11 @@ Gehen Sie wie folgt vor, um das JSONStore-Plug-in zu Ihrer React-Native-Anwendun
     ```bash
     npm install react-native-ibm-mobilefirst-jsonstore --save
     ```
+3. Mobilefirst-Pod-Abhängigkeiten installieren (nur iOS)
+
+   ```bash
+   cd ios && pod install
+   ```
 
 ## Grundlegende Verwendung
 {: #basic-usage }

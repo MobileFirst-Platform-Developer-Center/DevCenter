@@ -340,7 +340,7 @@ Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten:
 
 | Eigenschaften der Nutzdaten|Definition |
 
-| --- | --- |
+--- | ---
 | message |Die zu sendende Alertnachricht |
 | settings |Die Einstellungen sind verschiedene Attribute der Benachrichtigung. | 
 | target |Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden. | 

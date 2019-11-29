@@ -256,7 +256,7 @@ Der Befehl `show-global-config` zeigt die globale Konfiguration an. Er wird mit 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
 |output	     | Name der Ausgabedatei |	Nein | Nicht verfügbar |
-| outputproperty | Name der Ant-Eigenschaft für die Ausgabe | Nein | Nicht verfügbar |
+| outputproperty |Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar |
 
 **Beispiel**  
 
@@ -273,10 +273,10 @@ Der Befehl `show-user-config` außerhalb der Elemente `<adapter>` und `<app-vers
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime	     | Name der Laufzeit |Ja |	Nicht verfügbar |
+|runtime	     |Name der Laufzeit |Ja |	Nicht verfügbar |
 |format	     |Gibt das Ausgabeformat an (json oder xml) |Ja |Nicht verfügbar | 
-|output	     |Name der Datei, in der die Ausgabe gespeichert werden soll |Nein | Nicht verfügbar | 
-| outputproperty | Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll |Nein | Nicht verfügbar |
+|output	     |Name der Datei, in der die Ausgabe gespeichert werden soll |Nein |Nicht verfügbar | 
+|outputproperty|Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll |Nein |Nicht verfügbar |
 
 **Beispiel**  
 
@@ -294,15 +294,15 @@ Der Befehl `set-user-config` außerhalb der Elemente `<adapter>` und `<app-versi
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit | Ja |Nicht verfügbar | 
-|file	         |Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja |Nicht verfügbar | 
+|runtime        |Name der Laufzeit |Ja |Nicht verfügbar | 
+|file	         |Name der JSON- oder XML-Datei mit der neuen Konfiguration | Ja |Nicht verfügbar | 
 
 Der Befehl `set-user-config` wird mit folgenden Attributen verwendet, um eine einzelne Eigenschaft in der Konfiguration festzulegen.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime	     | Name der Laufzeit | Ja |Nicht verfügbar | 
-|property	     |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |Ja |Nicht verfügbar | 
+|runtime	     |Name der Laufzeit |Ja |Nicht verfügbar | 
+|property	     |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. | Ja |Nicht verfügbar | 
 |value	         |Wert der Eigenschaft |Ja |Nicht verfügbar |
 
 **Beispiel**  
@@ -327,8 +327,8 @@ zu vertraulichen Clients finden Sie unter
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit | Ja |Nicht verfügbar | 
-| format         |Gibt das Ausgabeformat an (json oder xml) |Ja |Nicht verfügbar | 
+|runtime        | Name der Laufzeit |Ja|Nicht verfügbar | 
+| format         |Gibt das Ausgabeformat an (json oder xml) | Ja |Nicht verfügbar | 
 | output         |Name der Datei, in der die Ausgabe gespeichert werden soll |Nein | Nicht verfügbar | 
 | outputproperty |Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll |Nein | Nicht verfügbar | 
 
@@ -351,7 +351,7 @@ zu vertraulichen Clients finden Sie unter
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
+|runtime        | Name der Laufzeit |Ja|Nicht verfügbar | 
 |file	         |Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja |Nicht verfügbar | 
 
 **Beispiel**  
@@ -373,7 +373,7 @@ zu vertraulichen Clients finden Sie unter
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
+|runtime        | Name der Laufzeit |Ja|Nicht verfügbar | 
 |id             |Kennung der Regel |Ja |Nicht verfügbar | 
 |displayName    |Anzeigename der Regel |Ja |Nicht verfügbar | 
 |secret         |Geheimer Schlüssel der Regel |Ja |Nicht verfügbar | 
@@ -401,7 +401,7 @@ Laufzeit implementierten Adapter zurück. Der Befehl wird mit folgenden Attribut
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
 |runtime        | Name der Laufzeit | 	Ja |Nicht verfügbar | 
-|output	     |Name der Ausgabedatei| 	Nein | Nicht verfügbar | 
+|output	     |Name der Ausgabedatei| 	Nein |Nicht verfügbar | 
 | outputproperty | Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
 **Beispiel**  
@@ -597,9 +597,9 @@ auf dem REST-Service [Applications (GET)](http://www.ibm.com/support/knowledgece
 {: #the-deploy-app-command }
 Mit dem Befehl `deploy-app` wird eine App-Version in einer Laufzeit implementiert. Der Befehl wird mit folgenden Attributen verwendet.
 
-|Attribut|Beschreibung |	Erforderlich|Standardwert|
+|Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime | Name der Laufzeit |Ja |Nicht verfügbar| 
+|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
 |file |Anwendungsdeskriptor (eine JSON-Datei) |Ja |Nicht verfügbar | 
 
 **Beispiel**  
@@ -886,9 +886,9 @@ auf dem REST-Service [Export Runtime Resources (GET)](http://www.ibm.com/support
 {: #the-set-authenticity-data-command }
 Der Befehl `set-authenticity-data` innerhalb eines Elements `<app-version>` gibt die Authentizitätsdaten für eine App-Version an. Der Befehl wird mit folgenden Attributen verwendet.
 
-|Attribut |Beschreibung |	Erforderlich|Standardwert|
+|Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|file |Name der Eingabedatei <ul><li>Datei authenticity_data </li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul> |Ja |Nicht verfügbar | 
+|file |Name der Eingabedatei:<ul><li>Datei authenticity_data </li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul> |Ja |Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -962,16 +962,16 @@ auf dem REST-Service [Application Configuration (GET)](http://www.ibm.com/suppor
 {: #the-set-user-config-command-2 }
 Der Befehl `set-user-config` innerhalb eines `<app-version>`-Elements gibt die Benutzerkonfiguration für eine App-Version an. Er wird mit folgenden Attributen verwendet.
 
-|Attribut|Beschreibung |	Erforderlich|Standardwert|
+|Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|file |Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja|Nicht verfügbar| 
+|file |Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja |Nicht verfügbar | 
 
 Der Befehl `set-user-config` wird mit folgenden Attributen verwendet, um eine einzelne Eigenschaft in der Konfiguration festzulegen.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |Ja|Nicht verfügbar | 
-|value	         |Wert der Eigenschaft |Ja|Nicht verfügbar | 
+|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |Ja |Nicht verfügbar | 
+|value	         |Wert der Eigenschaft |Ja |Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -999,7 +999,7 @@ die Liste der Geräte zurück, die Kontakt mit den Apps einer Laufzeit hatten. E
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar| 
+|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
 |query	 |Ein Anzeigename oder eine Benutzer-ID, nach dem bzw. der gesucht werden soll. Dieser Parameter gibt die zu suchende Zeichenfolge an. Zurückgegeben werden alle Geräte, deren Anzeigename oder Benutzer-ID diese |Zeichenfolge enthält (wobei die Groß-/Kleinschreibung nicht unterschieden wird). |Nein | Nicht verfügbar | 
 | output | 	Name der Ausgabedatei|Nein | Nicht verfügbar | 
 | outputproperty | 	 Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
@@ -1025,8 +1025,8 @@ der Datensatz eines Gerätes gelöscht, das Kontakt zu den Apps einer Laufzeit h
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|id             |Eindeutige Gerätekennung |Ja|Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja |Nicht verfügbar | 
+|id |Eindeutige Gerätekennung |Ja |Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -1046,7 +1046,7 @@ Attributen verwendet.
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
 |runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|id             |Eindeutige Gerätekennung |Ja|Nicht verfügbar | 
+|id             |Eindeutige Gerätekennung |Ja |Nicht verfügbar | 
 
 Der Befehl
 `device` unterstützt die folgenden Elemente.
@@ -1065,7 +1065,7 @@ der Status eines Geräts im Geltungsbereich einer Laufzeit geändert. Er wird mi
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|status|Neuer Status|Ja|Nicht verfügbar | 
+|status|Neuer Status|Ja |Nicht verfügbar | 
 
 Folgende Statuswerte sind möglich:
 
@@ -1094,7 +1094,7 @@ Mit dem Befehl `set-appstatus` wird der Status eines Geräts hinsichtlich einer 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
 |app	                        |Name einer App|Ja |Nicht verfügbar | 
-|status| 	Neuer Status|Ja|Nicht verfügbar | 
+|status| 	Neuer Status|Ja |Nicht verfügbar | 
 
 Folgende Statuswerte sind möglich:
 
@@ -1220,11 +1220,11 @@ auf dem REST-Service [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter
 Der Befehl `show-runtime`
 zeigt Informationen zu einer gegebenen implementierten Laufzeit an. Er wird mit folgenden Attributen verwendet:
 
-|Attribut|Beschreibung |	Erforderlich|Standardwert|
+|Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime | Name der Laufzeit |Ja |Nicht verfügbar| 
-| output |Name der Ausgabedatei|Nein |Nicht verfügbar| 
-| outputproperty | Name der Ant-Eigenschaft für die Ausgabe |Nein |Nicht verfügbar | 
+|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
+| output |Name der Ausgabedatei|Nein | Nicht verfügbar | 
+| outputproperty | Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
 **Beispiel**
 
@@ -1243,9 +1243,9 @@ Laufzeit, einschließlich der zugehörigen Apps und Adapter, aus der Datenbank g
 Eine Laufzeit kann nur gelöscht werden, wenn
 die zugehörige Webanwendung gestoppt ist. Der Befehl wird mit folgenden Attributen verwendet. 
 
-|Attribut|Beschreibung |	Erforderlich|Standardwert|
+|Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime | Name der Laufzeit |Ja |Nicht verfügbar|
+|runtime        | Name der Laufzeit |Ja |Nicht verfügbar |
 |condition |Bedingung für das Löschen (empty oder always). **Achtung:** Die Verwendung der Option always ist gefährlich. |Nein | Nicht verfügbar |
 
 **Beispiel**
@@ -1289,7 +1289,7 @@ unterbrochen wurde. Der Befehl wird mit folgenden Attributen verwendet.
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
 |runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|serverId|Kennung des Servers|Ja| Nicht verfügbar | 
+|serverId|Kennung des Servers|Ja | Nicht verfügbar | 
 |force|Das Farmmember wird auch dann entfernt, wenn es verfügbar und verbunden ist. |Nein |false| 
 
 **Beispiel**

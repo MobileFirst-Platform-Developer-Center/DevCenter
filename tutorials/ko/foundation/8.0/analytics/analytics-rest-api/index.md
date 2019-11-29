@@ -49,7 +49,7 @@ User(POST) |/v3/user |새 서버를 작성합니다.
 {: #try-it-out-on-swagger-docs }
 
 Swagger 문서에서 Analytics REST API를 사용해 보십시오.  
-Analytics가 사용되는 {{ site.data.keys.mf_server }} 구성에서는 `<ipaddress>:<port>/analytics-service`를 방문하십시오. 
+Analytics가 사용되는 {{ site.data.keys.mf_server }} 구성에서는 `<ipaddress>:<port>/analytics-service`를 방문하십시오.
 
 ![{{ site.data.keys.mf_analytics }} Swagger 문서 UI](analytics-swagger.png)
 

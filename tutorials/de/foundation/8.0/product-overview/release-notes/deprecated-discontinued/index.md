@@ -118,7 +118,7 @@ Version 8.0 weggefallen sind. In den meisten Fällen wird eine Alternative für 
     </tr>
     <tr>
         <td>Sicherheit - Bereitstellung und automatische Bereitstellung für Geräte</td>
-        <td><p>Weggefallen</p><p>Hinweis: Die Bereitstellung für Geräte erfolgt im Rahmen des normalen Autorisierungsablaufs. Während des Registrierungsprozesses, der Teil des Sicherheitsablaufs ist, werden automatisch Gerätedaten erfasst. Weitere Informationen zum Sicherheitsablauf finden Sie unter "End-to-End-Autorisierungsablauf".</p>
+        <td><p>Weggefallen.</p><p>Hinweis: Die Bereitstellung für Geräte erfolgt im Rahmen des normalen Autorisierungsablaufs. Während des Registrierungsprozesses, der Teil des Sicherheitsablaufs ist, werden automatisch Gerätedaten erfasst. Weitere Informationen zum Sicherheitsablauf finden Sie unter "End-to-End-Autorisierungsablauf".</p>
         </td>
     </tr>
     <tr>

@@ -76,6 +76,13 @@ react-native-ibm-mobilefirst 플러그인은 React Native의 핵심 {{ site.data
    ```bash
    react-native link
    ```
+  **참고**: 이 명령은 react-native 0.60에 필요하지 않습니다.
+
+5. iOS의 경우에는 Mobilefirst Pod 종속 항목을 설치하십시오.
+
+   ```bash
+   cd ios && pod install 
+   ```  
 
 #### 기존 애플리케이션
 {: #existing-application }
@@ -90,6 +97,13 @@ react-native-ibm-mobilefirst 플러그인은 React Native의 핵심 {{ site.data
 
    ```bash
    react-native link
+   ```
+   **참고**: 이 명령은 react-native 0.60에 필요하지 않습니다.
+
+3. iOS의 경우에는 Mobilefirst Pod 종속 항목을 설치하십시오.
+
+   ```bash
+   cd ios && pod install 
    ```
 
 ### 애플리케이션 등록

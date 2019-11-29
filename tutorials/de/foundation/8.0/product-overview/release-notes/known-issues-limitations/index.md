@@ -22,6 +22,7 @@ erklärt ist.
 Sie können dort sofort nachlesen, wie sich die Einschränkung auf das Feature auswirkt.
 * Handelt es sich um eine bekannte allgemeine Einschränkung, also eine Einschränkung, die in unterschiedlichen Artikeln erwähnt werden müsste oder für die
 es möglicherweise keinen speziellen Artikel gibt, finden Sie die Beschreibung der Einschränkung hier.
+* Wegen Problemen mit der Erkennung von Elasticsearch-Knoten im OpenShift-4.2-Cluster kann es zu Inkonsistenzen bei der Funktion von Mobile-Foundation-Analytics-Pods kommen. Infolgedessen werden in der Analytics-Administrationskonsole immer nur jeweils ein Knoten aufgelistet.
 
 ### Globalisierung
 {: #globalization }

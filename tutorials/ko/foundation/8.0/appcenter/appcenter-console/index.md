@@ -300,7 +300,7 @@ Apple iTunes 스토어 주소는 [https://linkmaker.itunes.apple.com/](https://l
 ## {{ site.data.keys.mf_server }} 및 Application Center에서 모바일 애플리케이션 업그레이드
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
-> 이는 Android, iOS 및 Windows Phone에만 지원되며 Windows 10 Universal, Blackberry 또는 Windows 8 Universal에는 현재 지원되지 않습니다.
+> 이는 Android, iOS 및 Windows Phone에만 지원되며 현재 Windows 10 Universal 또는 Windows 8 Universal에는 지원되지 않습니다.
 
 
 {{ site.data.keys.mf_console }} 및 Application Center의 조합을 사용하여 배치된 모바일 애플리케이션을 쉽게 업그레이드할 수 있습니다.

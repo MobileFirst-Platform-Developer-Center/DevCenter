@@ -29,7 +29,12 @@ Von den MobileFirst-Plug-ins werden folgende Cordova-Plattformversionen unterst�
 
 * cordova-ios: **>= 4.1.1 und < 6.0**
 * cordova-android: **>= 6.1.2 und < 9.0**
-* cordova-windows: **>= 4.3.2 und < 7.0**
+* cordova-windows: **>= 5.0.0 und < 8.0**
+
+>**Hinweis:** Die zuletzt veröffentlichte Version von **cordova-windows** hat einen Fehler, der beim App-Start zur Auslösung einer Ausnahme führt. Apache Cordova hat den Fehler im Entwicklungsrepository korrigiert, die Korrektur aber noch nicht veröffentlicht. Sie sollten für *cordova-windows* die Version aus dem Master-Repository, das die Korrektur enthält, verwenden. Nachfolgend sehen Sie den Befehl, mit dem die Plattform *cordova-windows* inklusive Korrektur hinzugefügt wird. 
+```bash
+cordova platform add https://github.com/apache/cordova-windows
+```
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
