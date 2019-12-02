@@ -25,7 +25,12 @@ MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음�
 
 * cordova-ios: **>= 4.1.1 및 < 6.0**
 * cordova-android: **>= 6.1.2 및 < 9.0**
-* cordova-windows: **>= 4.3.2 및 < 7.0**
+* cordova-windows: **>= 5.0.0 및 < 8.0**
+
+>**참고:** **cordova-windows** 최신 공개 버전에는 버그가 있으므로, 앱을 시작하는 동안 예외가 발생합니다. Apache Cordova는 개발 저장소에서 문제를 수정했지만 아직 공개되지 않았습니다. 수정사항이 있는 마스터 저장소의 *cordova-windows* 버전을 사용하도록 권장합니다. 다음은 수정사항을 포함하는 *cordova-windows* 플랫폼을 추가할 때 사용할 수 있는 명령입니다. 
+```bash
+cordova platform add https://github.com/apache/cordova-windows
+```
 
 #### 다음으로 이동:
 {: #jump-to }

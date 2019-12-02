@@ -1,0 +1,297 @@
+---
+layout: default
+indexed: false
+---
+<head>
+<meta charset="utf-8">
+<link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
+<link href="../custom-style-j.css" type="text/css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600&display=swap" rel="stylesheet"/>
+<script type="text/javascript" src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+
+<style>
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+}
+.wrapper {
+    margin-left:auto;
+    margin-right:auto;
+}
+.postTitle {
+    margin-bottom: 0;
+    color: #808080;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+}
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600&display=swap");
+$font-sans: 'IBM Plex Sans', sans-serif;
+
+
+$black: #34435E;
+$white: #ffffff;
+
+body {
+  font-family: $font-sans;
+  margin: 0;
+  padding: 0 4em;
+  counter-reset: section;
+}
+
+main {
+  min-width: 30%;
+  max-width: 70%;
+  margin: auto;
+}
+
+p {
+  font-size: 1.25em;
+  line-height: 1.75em;
+  border-top: 3px solid;
+  border-image: linear-gradient(to right, #743ad5 0%, #d53a9d 100%);
+  border-image-slice: 1;
+  border-width: 3px;
+  margin: 0;
+  padding: 40px;
+  counter-increment: section;
+  position: relative;
+  color: #000;
+}
+
+  p::before {
+    content: counter(section);
+    position: absolute;
+    border-radius: 50%;
+    height: 1.25em;
+    width: 1.25em;
+    background-color: #808080;
+    text-align: center;
+    line-height: 0.5em;
+    color: white;
+    font-size: 2.1em;
+    padding: 12px;
+  }
+
+
+p:nth-child(odd) {
+  border-right: 3px solid;
+  padding-left: 0;
+}
+  p:nth-child(odd):before {
+    left: 100%;
+    margin-left: -20px;
+  }
+
+
+p:nth-child(even) {
+  border-left: 3px solid;
+  padding-right: 0;
+}
+  p:nth-child(even):before {
+    right: 100%;
+    margin-right: -20px;
+  }
+
+
+p:first-child {
+  border-top: 0;
+  border-top-right-radius:0;
+  border-top-left-radius:0;
+}
+p:last-child {
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:0;
+}
+</style>
+{% include breadcrumb.html %}
+</head>
+
+<body style="background-color: #fff">
+
+
+<div class="bx--row landing-page__banner" style="background-image: url('../header-1.jpg')">
+
+    <div class="bx--col-md-12">
+      <h2 style="color:white">Front-end developer journey</h2>
+      <br/>
+      <h4 style="color:white">Quickly create mobile, web and PWA (Progressive Web App) multi-channel applications having AI capabilities with low-code approach</h4>
+        <br/>
+  <div data-tabs class="bx--tabs">
+  <div class="bx--tabs-trigger" tabindex="0">
+    <a href="javascript:void(0)" class="bx--tabs-trigger-text" tabindex="-1"></a>
+    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M5 6L0 1 .7.3 5 4.6 9.3.3l.7.7z"></path></svg>
+  </div>
+  <ul class="bx--tabs__nav bx--tabs__nav--hidden" role="tablist">
+    <li
+      class="bx--tabs__nav-item bx--tabs__nav-item--selected "
+      data-target=".tab-1" role="presentation">
+      <a tabindex="0" id="tab-link-1" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-1"  aria-selected="true" ><h4 style="text-align: center; color:white; font-size: 18px">Cordova</h4></a>
+    </li>
+    <li
+      class="bx--tabs__nav-item "
+      data-target=".tab-2" role="presentation">
+      <a tabindex="0" id="tab-link-2" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-2" ><h4 style="text-align: center; color:white; font-size: 18px">Ionic</h4></a>
+    </li>
+    <li
+      class="bx--tabs__nav-item "
+      data-target=".tab-3" role="presentation">
+      <a tabindex="0" id="tab-link-3" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-3" ><h4 style="text-align: center; color:white; font-size: 18px">Android</h4></a>
+    </li>
+    <li
+      class="bx--tabs__nav-item  bx--tabs__nav-item "
+      data-target=".tab-4" role="presentation">
+      <a tabindex="0" id="tab-link-4" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-4" ><h4 style="text-align: center; color:white; font-size: 18px">iOS</h4></a>
+    </li>
+  </ul>
+</div>
+</div>
+</div>
+<div>
+  <div id="tab-panel-1" class="tab-1" role="tabpanel" aria-labelledby="tab-link-1"
+    aria-hidden="false" >
+
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
+
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <h3>Steps to build a Cordova app</h3>
+        </div>
+      </div>
+
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>Installation and configuration</b></span><br/>
+        Enable developers to rapidly build, deploy and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.<br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a></p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Adding the MobileFirst SDK</b></span><br/>
+          Client SDKs provide a set of APIs that enable developers to implement various Mobile Foundation features, such as, authentication and security mechanisms, Push and SMS notifications, resource requests, collection of analytics data, and more.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Send notifications</b></span><br/>
+          Engage your audience through unified notification mechanism that makes the entire process completely transparent to the developer.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Add authentication and security</b></span><br/>
+          Add various layers of protection to your applications.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Measure and Engage</b></span><br/>
+          Send notifications with IBM Mobile Foundation. Monitor and gain insights on application usage.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+      </main>
+
+    </div>
+  </div>
+  <div id="tab-panel-2" class="tab-2" role="tabpanel" aria-labelledby="tab-link-2"
+    aria-hidden="true"  hidden >
+
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <h3>Steps to build an Ionic app</h3>
+        </div>
+      </div>
+
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>Installation and configuration</b></span><br/>
+        Enable developers to rapidly build, deploy and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.<br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a></p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Adding the MobileFirst SDK</b></span><br/>
+          Client SDKs provide a set of APIs that enable developers to implement various Mobile Foundation features, such as, authentication and security mechanisms, Push and SMS notifications, resource requests, collection of analytics data, and more.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Send notifications</b></span><br/>
+          Engage your audience through unified notification mechanism that makes the entire process completely transparent to the developer.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Add authentication and security</b></span><br/>
+          Add various layers of protection to your applications.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Measure and Engage</b></span><br/>
+          Send notifications with IBM Mobile Foundation. Monitor and gain insights on application usage.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+      </main>
+
+
+    </div>
+  </div>
+
+  <div id="tab-panel-3" class="tab-3" role="tabpanel" aria-labelledby="tab-link-3"
+    aria-hidden="true"  hidden >
+
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <h3>Steps to build an Android app</h3>
+        </div>
+      </div>
+
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>Installation and configuration</b></span><br/>
+        Enable developers to rapidly build, deploy and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.<br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/android/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a></p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Adding the MobileFirst SDK</b></span><br/>
+          Client SDKs provide a set of APIs that enable developers to implement various Mobile Foundation features, such as, authentication and security mechanisms, Push and SMS notifications, resource requests, collection of analytics data, and more.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/android/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Send notifications</b></span><br/>
+          Engage your audience through unified notification mechanism that makes the entire process completely transparent to the developer.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Add authentication and security</b></span><br/>
+          Add various layers of protection to your applications.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Measure and Engage</b></span><br/>
+          Send notifications with IBM Mobile Foundation. Monitor and gain insights on application usage.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+      </main>
+
+
+    </div>
+  </div>
+
+  <div id="tab-panel-4" class="tab-4" role="tabpanel" aria-labelledby="tab-link-4"
+    aria-hidden="true"  hidden >
+
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <h3>Steps to build an iOS app</h3>
+        </div>
+      </div>
+
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>Installation and configuration</b></span><br/>
+        Enable developers to rapidly build, deploy and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.<br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a></p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Adding the MobileFirst SDK</b></span><br/>
+          Client SDKs provide a set of APIs that enable developers to implement various Mobile Foundation features, such as, authentication and security mechanisms, Push and SMS notifications, resource requests, collection of analytics data, and more.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Send notifications</b></span><br/>
+          Engage your audience through unified notification mechanism that makes the entire process completely transparent to the developer.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Add authentication and security</b></span><br/>
+          Add various layers of protection to your applications.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>Measure and Engage</b></span><br/>
+          Send notifications with IBM Mobile Foundation. Monitor and gain insights on application usage.<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="Go"/></a>
+        </p>
+      </main>
+
+
+    </div>
+  </div>
+</div>
+</body>

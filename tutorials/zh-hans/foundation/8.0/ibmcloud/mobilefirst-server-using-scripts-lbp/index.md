@@ -3,7 +3,7 @@ layout: tutorial
 title: 使用 Liberty for Java 的脚本在 IBM Cloud 上设置 MobileFirst Server
 breadcrumb_title: Foundation on Liberty for Java
 relevantTo: [ios,android,windows,javascript]
-weight: 5
+weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述

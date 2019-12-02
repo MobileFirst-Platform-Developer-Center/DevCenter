@@ -300,7 +300,7 @@ Pour modifier les propriétés d'une application téléchargée :
 ## Mise à niveau d'une application mobile dans {{ site.data.keys.mf_server }} et Application Center
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
-> Cette possibilité n'est prise en charge que pour Android, iOS et Windows Phone et n'est pas prise en charge actuellement pour Windows 10 Universal, Blackberry ou Windows 8 Universal.
+> Cette possibilité n'est prise en charge que pour Android, iOS et Windows Phone et n'est pas prise en charge actuellement pour Windows 10 Universal ou Windows 8 Universal.
 
 
 Vous pouvez facilement mettre à niveau les applications mobiles déployées à l'aide d'une combinaison de {{ site.data.keys.mf_console }} et Application Center.

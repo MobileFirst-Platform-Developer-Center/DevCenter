@@ -29,6 +29,11 @@ React Native 애플리케이션에 JSONStore 플러그인을 추가하려면 다
     ```bash
     npm install react-native-ibm-mobilefirst-jsonstore --save
     ```
+3. iOS의 경우에는 Mobilefirst Pod 종속 항목을 설치하십시오.
+
+   ```bash
+   cd ios && pod install 
+   ```
 
 ## 기본 사용법
 {: #basic-usage }
@@ -135,14 +140,14 @@ npm install
 2. 앱 구성.
     (Android에만 해당)
    *  React Native 프로젝트 루트 디렉토리에서 `android/app/src/main/AndroidManifest.xml` 파일을 여십시오.<br/>
-    	 다음 행을 `<manifest>` 태그에 추가하십시오.<br/>
+    	 `<manifest>` 태그에 다음 행을 추가하십시오.<br/>
     	`xmlns:tools="http://schemas.android.com/tools"`<br/>
-    	 다음 행을 `<application>` 태그에 추가하십시오.<br/>
+    	 `<application>` 태그에 다음 행을 추가하십시오.<br/>
     	`tools:replace="android:allowBackup"`<br/><br/>
     	 이 단계는 *react-native-ibm-mobilefirst* 라이브러리에 필요합니다.<br/>
 
 	 *  React Native 프로젝트 루트 디렉토리에서 `android/app/build.gradle` 파일을 여십시오.<br/>
-      *android {}* 내에 다음 코드를 추가하십시오.<br/>
+*android {}* 내에 다음 코드를 추가하십시오.<br/>
 
         ```
         packagingOptions{

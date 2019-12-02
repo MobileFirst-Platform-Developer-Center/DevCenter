@@ -358,7 +358,7 @@ Os arquivos de resposta de amostra para IBM Installation Manager são fornecidos
     <tr>
         <td>user.licensed.by.tokens</td>
         <td>Sempre</td>
-        <td>Ativação do licenciamento de token. Se planejar usar o produto com o Rational License Key Server, deve-se ativar o licenciamento de token.<br/><br/>Nesse caso, configure o valor como <code>true</code>. Caso não planeje usar o produto com o Rational License Key Server, configure o valor como <code>false</code>.<br/><br/> Ao ativar os tokens de licença, é necessário executar etapas de configuração específicas depois de implementar o produto em um servidor de aplicativos. </td>
+        <td>Ativação do licenciamento de token. Se você pretende usar o produto com o Rational License Key Server, deve-se ativar o licenciamento de token.<br/><br/>Nesse caso, configure o valor para <code>true</code>. Se você não planeja usar o produto com o Rational License Key Server, configure o valor como <code>false</code>.<br/><br/>Se você ativar os tokens de licença, serão necessárias etapas específicas de configuração após a implementação do produto em um servidor de aplicativos. </td>
         <td><code>true</code> ou <code>false</code></td>    
     </tr>
     <tr>
@@ -556,13 +556,15 @@ banco de dados MySQL.</td>
     </tr>
     <tr>
       <td>user.database.mysql.appcenter.dbname</td>
-      <td>${user.database.selection2} == oracle, a menos que ${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
+      <td>${user.database.selection2} == oracle, a menos que
+${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
       <td>O nome do banco de dados Oracle para o Application Center.</td>
       <td>Non-empty, um nome de banco de dados válido do Oracle.</td>
     </tr>
     <tr>
       <td>user.database.oracle.host</td>
-      <td>${user.database.selection2} == oracle, a menos que ${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
+      <td>${user.database.selection2} == oracle, a menos que
+${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
       <td>O nome do host ou o endereço IP do servidor de banco de dados Oracle.</td>
       <td></td>
     </tr>
@@ -599,7 +601,8 @@ ${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.dbname</td>
-      <td>${user.database.selection2} == oracle, a menos que ${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
+      <td>${user.database.selection2} == oracle, a menos que
+${user.database.oracle.appcenter.jdbc.url} seja especificado</td>
       <td>O nome do banco de dados Oracle para o Application Center.</td>
       <td>Non-empty, um nome de banco de dados válido do Oracle.
 </td>

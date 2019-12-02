@@ -34,13 +34,13 @@ self.submitChallengeAnswer(credentials);
 응답할 인증 확인이 없으면 `submitChallengeAnswer` API를 호출할 수 없습니다. 이러한 시나리오의 경우 {{ site.data.keys.product }} SDK는 `login` API를 다음과 같이 포함합니다.
 
 ```swift
-WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
-  if(error != nil){
-    NSLog("Login Preemptive Failure: " + String(error))
-  }
-  else {
-    NSLog("Login Preemptive Success")
-  }
+WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) in
+    if(error != nil){
+        print("Login Preemptive Failure: " + String(error!));
+    }
+    else{
+        print("Login Preemptive Success");
+    }
 }
 ```
 
@@ -52,7 +52,7 @@ WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCreden
 
 ```swift
 if(!self.isChallenged){
-  WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in}
+  WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) -> Void in}
 }
 else{
   self.submitChallengeAnswer(credentials)
@@ -66,21 +66,21 @@ else{
 {: #obtaining-an-access-token }
 이 보안 검사는 **RememberMe** 기능(`rememberMe` 부울 키로서)을 지원하므로 애플리케이션이 시작될 때 클라이언트가 현재 로그인한 상태인지 확인하는 것이 유용합니다.
 
-{{ site.data.keys.product }} SDK는 서버에 올바른 토큰을 요청하기 위해 `obtainAccessTokenForScope` API를 제공합니다.
+Mobile Foundation SDK는 서버에 올바른 토큰을 요청하기 위해 `obtainAccessToken` API를 제공합니다. 
 
 ```swift
-WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
+WLAuthorizationManagerSwift.sharedInstance().obtainAccessToken(forScope : scope) { (token, error) -> Void in
   if(error != nil){
-    NSLog("obtainAccessTokenForScope failed: " + String(error))
+    print(“obtainAccessTokenForScope failed: “, error!)
   }
   else{
-    NSLog("obtainAccessTokenForScope success")
+    print(“obtainAccessTokenForScope success " + (token?.value)!);
   }
 }
 ```
 
 > **참고:**
-> `WLAuthorizationManager` `obtainAccessTokenForScope()` API는 자체 완료 핸들러를 가지며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` 메소드 **역시** 호출됩니다.
+> `WLAuthorizationManagerSwift obtainAccessToken()` API에는 자체 완료 핸들러가 있고 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure`도 **역시** 호출됩니다.
 
 클라이언트가 이미 로그인되어 있거나 *remembered* 상태인 경우 API가 성공을 트리거합니다. 클라이언트가 로그인되지 않은 경우 보안 검사가 인증 확인을 다시 전송합니다.
 
@@ -94,9 +94,9 @@ WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (toke
 보안 검사가 `AuthenticatedUser`를 사용하는 경우 이 오브젝트는 사용자의 특성을 포함합니다. 현재 사용자를 저장하기 위해 `handleSuccess`를 사용할 수 있습니다.
 
 ```swift
-override func handleSuccess(success: [NSObject : AnyObject]!) {
+override open func handleSuccess(successResponse: [NSObject : AnyObject]!) {
   self.isChallenged = false
-  self.defaults.setObject(success["user"]!["displayName"]! as! String, forKey: "displayName")
+  self.defaults.setObject(successResponse![“user"]!["displayName"]! as! String, forKey: "displayName")
 }
 ```
 
@@ -118,10 +118,10 @@ override func handleSuccess(success: [NSObject : AnyObject]!) {
 {{ site.data.keys.product }} SDK는 또한 특정 보안 검사에서 로그아웃하도록 `logout` API를 제공합니다.
 
 ```swift
-WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) -> Void in
-  if(error != nil){
-    NSLog("Logout Failure: " + String(error))
-  }
+WLAuthorizationManagerSwift.sharedInstance().logout(securityCheck: self.securityCheck){ (error) -> Void in
+    if(error != nil){
+        print("Logout Failure: " , error!)
+    }
 }
 ```
 
@@ -144,4 +144,3 @@ Remember Me 프로젝트를 [다운로드하려면 클릭](https://github.com/Mo
 앱을 위한 사용자 이름/비밀번호는 일치해야 합니다(즉, "john"/"john").
 
 ![샘플 애플리케이션](sample-application.png)
-

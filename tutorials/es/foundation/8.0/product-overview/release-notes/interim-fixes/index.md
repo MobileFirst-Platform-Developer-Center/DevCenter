@@ -14,11 +14,47 @@ Descargue e instale la actualización de entrega continua más reciente para obt
 
 > Para obtener una lista de releases de iFix de {{ site.data.keys.product }} 8.0, [lea esto]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
-### Características incluidas con CD actualización 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
+### Características incluidas en el disco compacto de actualización 6 (8.0.0.0-MFPF-IF201911050809-CDUpdate-06)
+
+#### <span style="color:Black">Server</span>
+##### <span style="color:NAVY">**Mejoras de rendimiento**</span>
+
+Se han optimizado las operaciones de la base de datos de Mobile Foundation y se ha incluido la depuración automática de la base de datos de registro.
+
+##### <span style="color:NAVY">**Ahora Application Center está disponible en DevKit**</span>
+
+Ahora Application Center está disponible como un paquete con [DevKit]({{site.baseurl}}/downloads/). Esto permite a los desarrolladores crear aplicaciones y publicarlas en el almacén privado, que ahora está disponible como parte de DevKit.
+
+##### <span style="color:NAVY">**Soporte de pila para el software de proveedor**</span>
+
+Ahora Mobile Foundation da soporte a Windows Server 2016 SE y Oracle 18c.
+
+##### <span style="color:NAVY">**Soporte de infraestructuras de desarrollo de aplicaciones**</span>
+
+Mobile Foundation da soporte a las infraestructuras más recientes publicadas por Apple y Google con soporte para [iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/), iPadOS y [Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/). La plataforma también proporciona un SDK para Swift 5.
+
+##### <span style="color:NAVY">**Conecte de forma segura con aplicaciones de fondo utilizando un proxy de API**</span>
+
+Cuando conecta con el programa de fondo de la empresa, puede beneficiarse de la seguridad y las analíticas de la plataforma Mobile Foundation utilizando el proxy de API. El proxy de API actúa como proxy para las solicitudes dirigidas al programa de fondo real. [Más información]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/).
+
+#### <span style="color:Black">Analíticas</span>
+##### <span style="color:NAVY">**Comentarios de aplicación interna**</span>
+
+Anteriormente, la característica de comentarios de aplicación interna estaba disponible en el servicio Mobile Foundation en IBM Cloud y ahora se ha trasladado a la distribución local y de contenedor de Mobile Foundation. Utilizando esta característica los usuarios pueden compartir comentarios desde la aplicación con el formato de capturas de pantalla, anotaciones y texto. El administrador puede iniciar sesión en la consola de analíticas para ver los comentarios recibidos y llevar a cabo las acciones necesarias. 
+
+
+
+#### <span style="color:Black">Paquete OpenShift</span>
+##### <span style="color:NAVY">**Mobile Foundation forma parte de IBM Cloud Pak for Applications v3**</span>
+
+Ahora Mobile Foundation está disponible como parte de [IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/) y da soporte a Red Hat Open Shift 3.11 y Red Hat Open Shift 4.2. Los servicios que están disponibles actualmente son Mobile Core, Analíticas, notificaciones Push y App Center. Utilizando está prestación los desarrolladores pueden crear aplicaciones nativas utilizando los microservicios de fondo y los servicios móviles. 
+
+
+### Características incluidas con el CD de actualización 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
 
 ##### <span style="color:NAVY">**Actualización de CoreML**</span>
 
-Los modelos ML (Machine Learning, aprendizaje automático) se pueden ejecutar localmente en el dispositivos móvil iOS mediante la infraestructura CoreML de Apple.
+Los modelos ML (Machine Learning, aprendizaje automático) se pueden ejecutar localmente en el dispositivo móvil iOS mediante la infraestructura CoreML de Apple.
 Mobile Foundation ofrece la posibilidad de gestionar la distribución de estos modelos a dispositivos de forma segura. [Más información](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
 
 ##### <span style="color:NAVY">**App Authenticity para watchOS**</span>

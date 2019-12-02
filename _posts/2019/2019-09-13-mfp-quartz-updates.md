@@ -1,4 +1,7 @@
 ---
+layout: redirect
+new_url: /404-archived/
+published: false
 title: Mobile Foundation Quartz Updates
 date: 2019-09-13
 tags:
@@ -8,7 +11,6 @@ version:
 author:
   name: Smitha Tv
 ---
-
 
 Mobile Foundation runtime bundles the required libraries including a few third party libraries. Mobile Foundation uses Quartz job schedulers and includes *quartz2.2.0.jar*.
 

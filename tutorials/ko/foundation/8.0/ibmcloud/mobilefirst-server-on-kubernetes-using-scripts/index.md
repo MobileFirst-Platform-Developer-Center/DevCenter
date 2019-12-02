@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: 스크립트를 사용하여 IBM Cloud Kubernetes Cluster에 MobileFirst Server 설정
-breadcrumb_title: Foundation on Kubernetes Cluster using scripts
+breadcrumb_title: Foundation on Kubernetes using scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
@@ -66,7 +66,7 @@ IBM Cloud에 로그인하면 활성 IBM Cloud **영역**의 개요를 제공하�
 
 ## {{ site.data.keys.mf_bm_pkg_name }} 아카이브 다운로드
 {: #download-the-ibm-mfpf-container-8000-archive}
-{{ site.data.keys.mf_bm_short }}의 경우 IBM Cloud Containers를 사용하여 Kubernetes Cluster로 설정하려면 나중에 IBM Cloud에 푸시할 이미지를 먼저 작성해야 합니다.<br/>
+IBM Cloud Containers를 사용하여 Kubernetes Cluster로 {{ site.data.keys.mf_bm_short }}을 설정하려면 나중에 IBM Cloud에 푸시할 이미지를 먼저 작성해야 합니다.<br/>
 [IBM Fix Central](http://www.ibm.com/support/fixcentral)에서 IBM Containers의 MobileFirst Server에 대한 임시 수정사항을 얻을 수 있습니다.<br/>
 Fix Central에서 최신 임시 수정사항을 다운로드하십시오. Kubernetes 지원은 iFix **8.0.0.0-IF201707051849**에서 가능합니다.
 
@@ -262,7 +262,7 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-                <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다. 다음 파일의 인수 값을 채우십시오.<br/>
+                <b>args</b> 폴더에는 스크립트를 실행하는 데 필요한 인수가 포함된 구성 파일 세트가 들어 있습니다.  다음 파일의 인수 값을 채우십시오.<br/>
 
                 <h4>initenv.properties</h4>
                 <ul>
@@ -354,7 +354,7 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
 
                 </li>
                 <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} 이미지 준비</b><br />
-                    {{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareserver.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용 가능한 모든 이미지를 보려면 <code>bx cr image-list</code>를 실행하십시오.<br/>
+                    {{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareserver.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>bx cr image-list</code>를 실행하십시오.<br/>
                     목록은 이미지 이름, 작성 날짜, ID를 포함합니다.<br/>
                     <b>대화식 모드</b>
 {% highlight bash %}
@@ -367,20 +367,20 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
                 </li>
                 <li>IBM Cloud Container Service를 사용하여 Kubernetes 클러스터의 Docker 컨테이너에 {{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }}를 배치하십시오.
                 <ol>
-                  <li>터미널 컨텍스트를 클러스터로 설정하십시오.<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
-                  클러스터 이름을 알려면 다음 명령을 실행하십시오. <br/><code>bx cs clusters</code><br/>
-                  출력에서 구성 파일에 대한 경로가 환경 변수를 설정하기 위한 명령으로 표시됩니다. 예를 들어, 다음과 같습니다.<br/>
+                  <li>터미널 컨텍스트를 클러스터에 설정하십시오.<br/><code>bx cs cluster-config <em>my-cluster</em></code><br/>
+                  클러스터 이름을 확인하려면 다음 명령을 실행하십시오. <br/><code>bx cs clusters</code><br/>
+                  출력에서 구성 파일에 대한 경로가 환경 변수를 설정하는 명령으로 표시됩니다. 예를 들면, 다음과 같습니다.<br/>
                   <code>export KUBECONFIG=/Users/ibm/.bluemix/plugins/container-service/clusters/<em>my-cluster</em>/kube-config-prod-dal12-my-cluster.yml</code><br/>
-                  <em>my-cluster</em>를 클러스터 이름으로 대체한 후에 위의 명령을 복사하고 붙여넣어 터미널의 환경 변수를 설정하고 <b>Enter</b>를 누르십시오.
+                  <em>my-cluster</em>를 클러스터 이름으로 대체한 후 위의 명령을 복사하고 붙여넣어 터미널에서 환경 변수를 설정하고 <b>Enter</b>를 누르십시오.
                   </li>
                   <li><b>[{{ site.data.keys.mf_analytics }}의 경우 필수]: </b> <b>지속적 볼륨 클레임</b>을 작성하십시오. 이는 지속적 분석 데이터에 사용됩니다. 일회성 단계입니다. 이전에 이미 작성한 경우 <b>PVC</b>를 재사용할 수 있습니다. <em>yaml</em> 파일 <b>args/mfpf-persistent-volume-claim.yaml</b>을 편집한 후 명령을 실행하십시오.
-                  다음 <em>kubectl</em> 명령을 실행하기 전에 모든 변수를 해당 값으로 대체해야 합니다.<br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
+                  다음 <em>kubectl</em> 명령을 실행하기 전에 모든 변수가 해당 값으로 대체되어야 합니다.<br/><code>kubectl create -f ./args/mfpf-persistent-volume-claim.yaml</code><br/>
                   후속 단계에서 제공해야 하므로 <b>지속적 볼륨 클레임</b>의 이름을 기록해 두십시오.
                   </li>
                   <li><b>수신 도메인</b>을 가져오려면 다음 명령을 실행하십시오.<br/>
                    <code>bx cs cluster-get <em>my-cluster</em></code><br/>
                    수신 도메인을 기록해 두십시오. TLS를 구성해야 하는 경우 <b>수신 시크릿</b>을 기록해 두십시오.</li>
-                  <li>Kubernetes 배치를 작성하십시오.<br/>yaml 파일 <b>args/mfpf-deployment-all.yaml</b>을 편집하고 세부사항을 채우십시오. <em>kubectl</em> 명령을 실행하기 전에 모든 변수를 해당 값으로 대체해야 합니다.<br/>
+                  <li>Kubernetes 배치를 작성하십시오.<br/>yaml 파일인 <b>args/mfpf-deployment-all.yaml</b>을 편집하고 세부사항을 채우십시오. <em>kubectl</em> 명령을 실행하기 전에 모든 변수가 해당 값으로 대체되어야 합니다.<br/>
                   <b>./args/mfpf-deployment-all.yaml</b>에는 다음 항목에 대한 배치가 포함됩니다.
                   <ul>
                     <li>{{ site.data.keys.mf_server }}의 Kubernetes 배치: 세 개의 인스턴스(복제본), 1024MB 메모리 및 1Core CPU로 구성.</li>

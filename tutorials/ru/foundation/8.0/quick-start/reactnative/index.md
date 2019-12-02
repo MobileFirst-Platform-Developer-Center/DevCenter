@@ -64,12 +64,13 @@ weight: 1
             alert("Success: " + response.responseText);
           },
           (error) => {
-            alert("Failure: " + JSON.stringify(error));
+            console.error(error);
+            alert("Сбой: запрос ресурса");
           }
         );
       }, (error) => {
-        console.log('-->  pingMFP(): failure ', error.responseText);
-        alert("Failed to connect to MobileFirst Server");
+        console.error(error);
+        alert("Не удалось подключиться к MobileFirst Server");
       });
 ```
 

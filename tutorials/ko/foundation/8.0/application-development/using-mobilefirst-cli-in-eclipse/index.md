@@ -167,6 +167,6 @@ Eclipse 프로젝트 탐색기에서 원하는 플랫폼(예: **platforms** 디�
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">
-   		<iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+   		<iframe title="데모 비디오" src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
 	</div>
 </div>

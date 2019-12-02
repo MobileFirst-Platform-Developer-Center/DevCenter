@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: スクリプトを使用した IBM Cloud Kubernetes クラスター上の MobileFirst Application Center のセットアップ
-breadcrumb_title: AppCenter on Kubernetes Cluster using scripts
+breadcrumb_title: AppCenter on Kubernetes using scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
@@ -72,15 +72,15 @@ Fix Central から、最新の暫定修正をダウンロードします。 Kube
 
 このアーカイブ・ファイルには、イメージをビルドするためのファイル (**dependencies** と **mfpf-libs**)、Kubernetes 上で {{ site.data.keys.mf_app_center }} をビルドしてデプロイするためのファイル (bmx-kubernetes) が含まれています。
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology1" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>クリックすると、アーカイブ・ファイルの内容と使用できる環境プロパティーについて、詳細情報が表示されます</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapsezip-file" aria-expanded="true" aria-controls="collapsezip-file"><b>クリックすると、アーカイブ・ファイルの内容と使用できる環境プロパティーについて、詳細情報が表示されます</b></a>
             </h4>
         </div>
 
-        <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+        <div id="collapsezip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
                 <img src="zip.png" alt="アーカイブ・ファイルのファイル・システム構成を示すイメージ" style="float:right;width:570px"/>
                 <h4>bmx-kubernetes フォルダー</h4>
@@ -107,15 +107,15 @@ Fix Central から、最新の暫定修正をダウンロードします。 Kube
                     <li><b>env</b> フォルダー: サーバーの初期化に使用される環境プロパティー (server.env) およびカスタム JVM オプション (jvm.options) が含まれています。</li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist">
+                    <div class="panel-group accordion" id="terminology2" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>クリックすると、サポートされているサーバー環境プロパティーのリストが表示されます</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapseserver-env" aria-expanded="true" aria-controls="collapseserver-env"><b>クリックすると、サポートされているサーバー環境プロパティーのリストが表示されます</b></a>
                                 </h4>
                             </div>
 
-                            <div id="collapse-server-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+                            <div id="collapseserver-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
@@ -156,7 +156,7 @@ Fix Central から、最新の暫定修正をダウンロードします。 Kube
                                     </table>
 
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>セクションを閉じる</b></a>
+                                    <a class="preventScroll" data-toggle="collapse" role="button" data-parent="#server-env" data-target="#collapseserver-env" aria-expanded="true" aria-controls="collapseserver-env"><b>セクションを閉じる</b></a>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +165,7 @@ Fix Central から、最新の暫定修正をダウンロードします。 Kube
                     <li><b>mfpf-libs folder</b> フォルダー: {{ site.data.keys.product_adj }} 製品コンポーネント・ライブラリーおよび CLI が含まれています。</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>セクションを閉じる</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapsezip-file" aria-expanded="true" aria-controls="collapsezip-file"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
@@ -192,11 +192,11 @@ Fix Central から、最新の暫定修正をダウンロードします。 Kube
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">構成ファイルの使用</a>
+                <a class="preventScroll"  role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapsestep-foundation-1" aria-expanded="true" aria-controls="collapsestep-foundation-1">構成ファイルの使用</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapsestep-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
                 <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。 以下のファイルに引数値を入力します。<br/>
 
@@ -246,11 +246,11 @@ Fix Central から、最新の暫定修正をダウンロードします。 Kube
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">スクリプトの実行</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapsestep-foundation-2" aria-expanded="true" aria-controls="collapsestep-foundation-2">スクリプトの実行</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapsestep-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。 非対話モードでの実行を選択した場合は、コマンド・ライン引数のリストも使用可能です。</p>
 
@@ -390,7 +390,7 @@ bx cr image-rm image-name (レジストリーからイメージを削除しま�
 
 ## IBM Cloud からのデータベース・サービス構成の削除
 {: #removing-the-database-service-configuration-from-ibmcloud }
-{{ site.data.keys.mf_app_center }} イメージの構成時に **prepareappcenterdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_app_center }} に必要な構成およびデータベース・テーブルが作成されます。 このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
+{{ site.data.keys.mf_app_center }} イメージの構成時に **prepareappcenterdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_app_center }} に必要な構成およびデータベース表が作成されます。 このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
 
 IBM Cloud からデータベース・サービス構成を削除するには、IBM Cloud ダッシュボードを使用して、以下の手順を実行します。
 

@@ -118,7 +118,7 @@ compile group: 'com.ibm.mobile.foundation',
 
 | API エレメント | マイグレーション・パス |
 |-------------|----------------|
-| `org.apache.http.Header[]` is now deprecated. そのため、以下のメソッドは削除されました。 | |
+| `org.apache.http.Header[]` は非推奨になりました。 そのため、以下のメソッドは削除されました。 | |
 | `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 代わりに、新しい `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API を使用してください。 |
 | `WLResourceRequest.addHeader(org.apache.http.Header header)` | 代わりに、新しい `WLResourceRequest.addHeader(String name, String value)` API を使用してください。 |
 | `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 代わりに、新しい `List<String> WLResourceRequest.getHeaders(String headerName)` API を使用してください。 |

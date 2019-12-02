@@ -413,7 +413,7 @@ Cordova 및 HTML 5에서 제공하는 응답 웹 디자인 메소드를 채택�
 * src/www/acme/html/footer.html
 * plugin.xml
 
-**plugin.xml** 파일에는 `<asset>` 태그가 포함되며, 리소스 복사를 위한 소스와 대상이 포함됩니다.
+**plugin.xml** 파일에는 `<asset>` 태그가 포함되며, 자원 복사를 위한 소스와 대상이 포함됩니다.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

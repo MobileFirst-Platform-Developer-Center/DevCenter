@@ -39,7 +39,7 @@ downloads:
 `SecurityCheckChallengeHandler`를 확장하는 Swift 클래스를 작성하십시오.
 
 ```swift
-class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
+open class PinCodeChallengeHandler : SecurityCheckChallengeHandlerSwift {
 
 }
 ```
@@ -51,18 +51,17 @@ class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
 이 예제에서는 PIN 코드를 입력하도록 경보가 사용자에게 프롬프트로 표시됩니다.
 
 ```swift
-override func handleChallenge(challenge: [NSObject : AnyObject]!) {
-    NSLog("%@",challenge)
-    var errorMsg : String
-    if challenge["errorMsg"] is NSNull {
-        errorMsg = "This data requires a PIN code."
+override open func handleChallenge(challengeResponse: [AnyHashable: Any]!) {
+  var errorMsg : String
+  if challengeResponse!["errorMsg"] is NSNull {
+      errorMsg = "This data requires a PIN code."
     }
-    else{
-        errorMsg = challenge["errorMsg"] as! String
-    }
-    let remainingAttempts = challenge["remainingAttempts"] as! Int
+  else{
+      errorMsg = challengeResponse!["errorMsg"] as! String
+  }
+  let remainingAttempts = challengeResponse!["remainingAttempts"] as! Int + 2;
 
-    showPopup(errorMsg,remainingAttempts: remainingAttempts)
+  showPopup(errorMsg,remainingAttempts: remainingAttempts);
 }
 ```
 
@@ -94,8 +93,8 @@ self.cancel()
 매개변수로 전달된 `Dictionary`의 구조는 실패의 특성에 크게 좌우됩니다.
 
 ```swift
-override func handleFailure(failure: [NSObject : AnyObject]!) {
-    if let errorMsg = failure["failure"] as? String {
+override open func handleFailure(failureResponse: [AnyHashable: Any]!) {
+    if let errorMsg = failureResponse["failure"] as? String {
         showError(errorMsg)
     }
     else{
@@ -108,11 +107,8 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 
 ## 성공 처리
 {: #handling-successes }
-일반적으로 애플리케이션의 남은 부분이 계속 실행될 수 있도록 프레임워크에서 성공을 자동으로 처리합니다.
 
-선택적으로 `SecurityCheckChallengeHandler`의 `handleSuccess(success: [NSObject : AnyObject]!)` 메소드를 구현하여 프레임워크가 인증 확인 핸들러 플로우를 닫기 전에 작업하도록 선택할 수 있습니다. 여기에서 다시, `success` `Dictionary`의 컨텐츠와 구조는 보안 검사가 전송한 항목에 따라 달라집니다.
-
-`PinCodeAttemptsSwift` 샘플 애플리케이션에서 성공에는 추가 데이터가 포함되지 않으므로 `handleSuccess`가 구현되지 않습니다.
+선택적으로 SecurityCheckChallengeHandler의 `handleSuccess(successResponse: [AnyHashable: Any]!)` 메소드를 구현하여 프레임워크가 인증 확인 핸들러 플로우를 닫기 전에 작업하도록 선택할 수도 있습니다. 여기서 다시, 성공한 Dictionary의 컨텐츠와 구조는 보안 검사가 전송하는 항목에 따라 달라집니다.
 
 ## 인증 확인 핸들러 등록
 {: #registering-the-challenge-handler }
@@ -121,19 +117,19 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 이를 위해서 다음과 같이 보안 검사를 사용하여 인증 확인 핸들러를 초기화하십시오.
 
 ```swift
-var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName")
+var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName”);
 ```
 
 그런 다음 인증 확인 핸들러 인스턴스를 **등록**해야 합니다.
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(someChallengeHandler)
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: someChallengeHandler);
 ```
 
 이 예제에서 한 행에 다음과 같이 표시합니다.
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: PinCodeChallengeHandler(securityCheck: securityCheck));
 ```
 
 **참고:** 인증 확인 핸들러 등록은 전체 애플리케이션 라이프사이클 동안 한 번만 일어나야 합니다. 이를 수행하려면 iOS AppDelegate 클래스를 사용하는 것이 좋습니다.
@@ -151,4 +147,3 @@ iOS Swift Native 프로젝트를 [다운로드하려면 클릭](https://github.c
 샘플의 README.md 파일에 있는 지시사항을 따르십시오.
 
 ![샘플 애플리케이션](sample-application.png)
-

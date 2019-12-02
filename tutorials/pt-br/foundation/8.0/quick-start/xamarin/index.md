@@ -143,8 +143,7 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 {: #results }
 * Um clique no botão **Ping do MobileFirst Server** exibirá **Conectado ao MobileFirst
 Server**.
-* Se o aplicativo foi capaz de se conectar ao {{ site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o
-adaptador Java implementado acontecerá.
+* Se o aplicativo foi capaz de se conectar ao {{ site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o adaptador Java implementado acontecerá.
 
 A resposta do adaptador é então impressa no Xamarin Studio Console.
 

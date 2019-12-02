@@ -40,13 +40,13 @@ Sie können die API `submitChallengeAnswer` nicht aufrufen, wenn es keine zu bea
 SDK der {{ site.data.keys.product }} die API `login`. 
 
 ```swift
-WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
-  if(error != nil){
-    NSLog("Login Preemptive Failure: " + String(error))
-  }
-  else {
-    NSLog("Login Preemptive Success")
-  }
+WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) in
+    if(error != nil){
+        print("Login Preemptive Failure: " + String(error!));
+    }
+    else{
+        print("Login Preemptive Success");
+    }
 }
 ```
 
@@ -62,7 +62,7 @@ Wenn der Benutzer auf die Anmeldeschaltfläche (**Login**) klickt, kann dynamisc
 
 ```swift
 if(!self.isChallenged){
-  WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in}
+  WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) -> Void in}
 }
 else{
   self.submitChallengeAnswer(credentials)
@@ -80,23 +80,21 @@ Da diese Sicherheitsüberprüfung die Funktion **RememberMe** (in Form des boole
 `rememberMe`) unterstützt, sollte sinnvollerweise überprüft werden,
 ob der Client angemeldet ist, wenn die Anwendung gestartet wird. 
 
-Das SDK der {{ site.data.keys.product }} stellt die API `obtainAccessTokenForScope` bereit, um den Server nach einem gültigen Token zu fragen: 
+Das SDK der {{ site.data.keys.product }} stellt die API `obtainAccessToken` bereit, um den Server nach einem gültigen Token zu fragen: 
 
 ```swift
-WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
+WLAuthorizationManagerSwift.sharedInstance().obtainAccessToken(forScope : scope) { (token, error) -> Void in
   if(error != nil){
-    NSLog("obtainAccessTokenForScope failed: " + String(error))
+    print(“obtainAccessTokenForScope failed: “, error!)
   }
   else{
-    NSLog("obtainAccessTokenForScope success")
+    print(“obtainAccessTokenForScope success " + (token?.value)!);
   }
 }
 ```
 
 > **Hinweis:**
-> Die `WLAuthorizationManager`-API `obtainAccessTokenForScope()` hat einen eigenen Completion-Handler.
-Die Methode `handleSuccess` oder `handleFailure` des betreffenden Abfrage-Handlers wird
-**ebenfalls** aufgerufen. 
+> Die API `LAuthorizationManagerSwift obtainAccessToken()` hat einen eigenen Completion-Handler. Die Methode `handleSuccess` oder `handleFailure` des betreffenden Abfrage-Handlers wird **ebenfalls** aufgerufen. 
 
 Wenn der Client bereits angemeldet ist oder erinnert wird (Zustand *remembered*), löst die API einen Erfolg aus. Wenn der Client nicht angemeldet ist, sendet die Sicherheitsüberprüfung eine Abfrage zurück. 
 
@@ -111,9 +109,9 @@ Die Methode `handleSuccess` des Abfrage-Handlers empfängt ein Verzeichnis `succ
 Wenn die Sicherheitsüberprüfung einen authentifizierten Benutzer (`AuthenticatedUser`) definiert, enthält dieses Objekt die Eigenschaften des Benutzers. Mit `handleSuccess` können Sie den aktuellen Benutzer speichern. 
 
 ```swift
-override func handleSuccess(success: [NSObject : AnyObject]!) {
+override open func handleSuccess(successResponse: [NSObject : AnyObject]!) {
   self.isChallenged = false
-  self.defaults.setObject(success["user"]!["displayName"]! as! String, forKey: "displayName")
+  self.defaults.setObject(successResponse![“user"]!["displayName"]! as! String, forKey: "displayName")
 }
 ```
 
@@ -136,10 +134,10 @@ Hier hat `success` einen Schlüssel mit der Bezeichnung
 Das SDK der {{ site.data.keys.product }} stellt eine API `logout` für die Abmeldung bei einer bestimmten Sicherheitsüberprüfung bereit. 
 
 ```swift
-WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) -> Void in
-  if(error != nil){
-    NSLog("Logout Failure: " + String(error))
-  }
+WLAuthorizationManagerSwift.sharedInstance().logout(securityCheck: self.securityCheck){ (error) -> Void in
+    if(error != nil){
+        print("Logout Failure: " , error!)
+    }
 }
 ```
 
@@ -162,4 +160,3 @@ Anweisungen finden Sie in der Datei README.md zum Beispiel.
 Benutzername und Kennwort für die App müssen übereinstimmen, z. B. "john"/"john".
 
 ![Beispielanwendung](sample-application.png)
-

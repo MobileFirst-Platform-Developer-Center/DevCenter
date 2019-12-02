@@ -20,6 +20,7 @@ die Analyseunterstützung für die Clientanwendung eingerichtet wird. Darüber h
 * [Clientereignisse aktivieren/inaktivieren](#enablingdisabling-client-event-types)
 * [Kundenspezifische Ereignisse](#custom-events)
 * [Benutzer verfolgen](#tracking-users)
+* [Feedback App-intern erfassen & senden](#sending-userfeedback-data)
 
 ## Analytics auf der Clientseite konfigurieren
 {: #configuring-analytics-on-the-client-side }
@@ -513,4 +514,66 @@ Verwenden Sie in einer Android-Anwendung die folgende Java-API-Methode:
 
 ```java
 WLAnalytics.send();
+```
+
+## Benutzerfeedback App-intern erfassen & senden
+{: #sending-userfeedback-data }
+
+Verwenden Sie App-internes Benutzerfeedback, um die Leistungsanalyse für Ihre Anwendungen zu vertiefen. Sie können den Benutzern Ihrer Anwendung ermöglichen, ausführliches Feedback für den Eigner der App bereitzustellen. App-Eigner erhalten von den Benutzern Echtzeitfeedback zu den Nutzungserfahrungen, an denen App-Eigner und Entwickler dann weiter arbeiten können. Dieses Feature steigert die Agilität bei der Pflege und Wartung von Anwendungen. Mit der folgenden API können Sie den Modus für interaktives Feedback zu Ihrer Anwendung in jedem Aktions-Handler Ihrer Anwendung aktivieren, z. B. im Handler für das Klicken auf eine Schaltfläche oder das Auswählen eines Menüelements. 
+
+> Für Webanwendungen wird dieses Feature nicht unterstützt. 
+
+#### JavaScript (Cordova)
+{: #javascript-cordova-sending-userfeedback-data }
+
+Fügen Sie zunächst das folgende Plug-in hinzu, um die Funktion für App-internes Feedback in Ihre Cordova-Anwendung aufzunehmen. Stellen Sie sicher, dass das Plug-in erfolgreich hinzugefügt wurde: 
+```
+cordova plugin add cordova-plugin-mfp-analytics
+```
+
+Verwenden Sie nun die folgende JavaScript-API-Methode im Aktions-Handler Ihrer Cordova-Anwendung. 
+
+```javascript
+WL.Analytics.triggerFeedbackMode();
+```
+
+#### JavaScript (Web)
+{: #javascript-web-ssending-userfeedback-data }
+
+**Nicht unterstützt**
+
+#### iOS
+{: #ios-sending-userfeedback-data }
+**Swift**
+
+Fügen Sie zuerst Folgendes zur Podfile für Ihre Anwendung hinzu. 
+
+```
+pod 'IBMMobileFirstPlatformFoundationAnalytics'
+```
+
+Als Nächstes müssen Sie Ihren Pod aktualisieren. Führen Sie dazu im Stammverzeichnis Ihres Xcode-Projekts den folgenden Befehl aus. 
+```
+pod update
+```
+
+Rufen Sie dann die folgende API im Aktions-Handler Ihrer Anwendung auf. 
+
+```swift
+WLAnalytics.sharedInstance().triggerFeedbackMode();
+```
+
+#### Android
+{: #android-sending-userfeedback-data }
+
+Fügen Sie zuerst die folgende Abhängigkeit zum Gradle-Script für Ihre Anwendung hinzu. 
+
+```
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationanalytics:8.0.+@aar'
+```
+
+Verwenden Sie dann in Ihrer Android-Anwendung die folgende Java-API-Methode im Aktions-Handler: 
+
+```java
+WLAnalytics.triggerFeedbackMode();
 ```

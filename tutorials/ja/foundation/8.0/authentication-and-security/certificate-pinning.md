@@ -102,13 +102,13 @@ NSArray *arrayOfCerts = [NSArray arrayWithObjects:@“Cert1”,@“Cert2”,@“
 単一の証明書:
 例:
 ```swift
-WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey(certificateFilename: “myCertificate.cer”);
 ```
 複数の証明書:
 例:
 ```swift
-let arrayOfCerts : [Any] = ["Cert1", "Cert2”, "Cert3”];
-WLClient.sharedInstance().pinTrustedCertificatePublicKey( fromFiles: arrayOfCerts)
+let arrayOfCerts : [Any] = ["Cert1", "Cert2", "Cert3"];
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey( certificateFilenames: arrayOfCerts);
 ```
 
 証明書ピン留めメソッドでは、次の 2 つの場合に例外が発生します。

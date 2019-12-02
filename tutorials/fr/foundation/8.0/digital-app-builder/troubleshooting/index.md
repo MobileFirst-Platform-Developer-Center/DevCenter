@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Traitement des incidents
-weight: 6
+weight: 17
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -72,3 +72,14 @@ Vous trouverez ci-après les réponses à certains problèmes que vous êtes sus
 
     Veillez à créer votre unité d'application sous l'unité `C://<your folder name/app name>`.
 
+* Digital App Builder tombe en panne avec un écran rouge.
+
+    Si vous voyez un écran rouge de panne, consultez les journaux à cet emplacement :
+    * Sur MacOS : `/Users/<username>/Library/Logs/IBM Digital App Builder/log.log`
+    * Sur Windows : `C:\\Users\<username>\AppData\Roming\IBM Digital App Builder\log.log`
+
+    Si l'erreur concerne un élément `getPath` issu de `rendered.js`, il s'agit d'un [problème connu lié à electron](https://github.com/electron/electron/issues/8205).
+
+    Cette erreur se produit de manière aléatoire.
+
+    Redémarrez Digital App Builder et votre scénario devrait fonctionner.

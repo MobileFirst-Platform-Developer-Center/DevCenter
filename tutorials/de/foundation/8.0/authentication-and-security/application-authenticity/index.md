@@ -16,13 +16,7 @@ Zum Aktivieren der Anwendungsauthentizität können Sie den in der **{{ site.dat
 
 #### Verfügbarkeit
 {: #availability }
-* Die Anwendungsauthentizität ist auf allen unterstützten Plattformen (iOS, Android, Windows 8.1 Universal, Windows 10 UWP)
-für Cordova-Anwendungen und native Anwendungen verfügbar. 
-
-#### Einschränkungen
-{: #limitations }
-* Die Anwendungsauthentizität bietet unter iOS keine Unterstützung für **Bitcode**. Vor Verwendung der Anwendungsauthentizität müssen Sie daher
-Bitcode in den Xcode-Projekteigenschaften inaktivieren. 
+* Die Anwendungsauthentizität ist auf allen unterstützten Plattformen (iOS, watchOS, Android, Windows 8.1 Universal, Windows 10 UWP) für Cordova-Anwendungen und native Anwendungen verfügbar.
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
@@ -93,15 +87,20 @@ auf **Neu**.
 
 ## Build Time Secret (BTS)
 {: #bts }
-Build Time Secret (BTS) ist ein **optionales Tool für die Verbesserung der Authentizitätsvalidierung** von iOS-Anwendungen. Das Tool injiziert einen zur
+Build Time Secret (BTS) ist ein **optionales Tool für die Verbesserung der Authentizitätsvalidierung** von iOS- und watchOS-Anwendungen. Das Tool injiziert einen zur
 Buildzeit festgelegten geheimen Schlüssel in die Anwendung. Dieser Schlüssel wird später während der Validierung der Authentizität verwendet. 
 
 Das Tool BTS kann über das **Download-Center** in der **{{ site.data.keys.mf_console }}** heruntergeladen werden. 
 
 Verwenden Sie das Tool BTS wie folgt in Xcode:
 1. Klicken Sie auf der Registerkarte **Build Phases** auf die Schaltfläche **+** und erstellen Sie eine neue Scriptausführungsphase (**Run Script**).
-2. Kopieren Sie den Pfad des Tools BTS und fügen Sie ihn in die neu erstellte Phase ein. 
-3. Ziehen Sie die Scriptausführungsphase mit der Maus an eine Position oberhalb der Ressourcenkompilierungsphase (**Compile sources**). 
+2. Kopieren Sie den Pfad des Tools BTS und fügen Sie ihn in die neu erstellte Phase **Run Script** ein.
+3. Ziehen Sie die Scriptausführungsphase (**Run Script Phase**) mit der Maus an eine Position oberhalb der Ressourcenkompilierungsphase (**Compile sources**).
+4. Dieser Schritt ist nur für die Anwendungsumgebung watchOS erforderlich. Für die Aktivierung von BTS muss der Entwickler nach der Position des Tools BTS mit dem Namen einer Swift-Datei aus dem watchOS-Erweiterungspaket übergeben.
+
+Angenommen, das watchOS-Erweiterungspaket enthält die Datei `HelloWatchOS.swift`. In dem Fall muss der Entwickler den Pfad des Tools BTS mit `HelloWatchOS` als Argument übergeben. 
+
+![Tool BTS](BTS_Tool.png)
 
 Das Tool sollte bei der Erstellung einer Produktionsversion der Anwendung verwendet werden. 
 

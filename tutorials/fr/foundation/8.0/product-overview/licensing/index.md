@@ -14,15 +14,17 @@ Si vous avez acheté des Licences perpétuelles, vous pouvez utiliser ce que vou
 {: #application-or-addressable-device-licenses }
 Si vous avez acheté des licences d'application ou d'appareil adressable, vous pouvez utiliser ce que vous avez acheté et vérifier votre utilisation et votre conformité sur la page Suivi des licences dans {{ site.data.keys.mf_console }} et dans le rapport Suivi des licences.
 
-### Octroi de licence par unité de valeur par coeur de processeur (PVU)
-{: #processor-value-unit-pvu-licensing }
-L'octroi de licence par unité de valeur par coeur de processeur est disponible si vous avez acheté IBM {{ site.data.keys.product }} Extension (voir [License Information documents](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)), mais uniquement après que vous avez acheté IBM  WebSphere Application Server Network Deployment, IBM API Connect™ Professional ou IBM API Connect Enterprise.
+### Licence VPC (coeurs de processeur virtuel)
+{: #vpc-licensing}
 
-La structure de tarification de l'octroi de licence par unité de valeur par coeur de processeur répond au type et au nombre de processeurs disponibles pour les produits installés. Les autorisations d'utilisation peuvent correspondre à la pleine capacité ou à une capacité partielle. Avec la structure des licences par unités de valeur de processeur, vous achetez des licences de logiciel en fonction du nombre d'unités de valeur affectées à chaque coeur de processeur.
+Mobile Foundation est également disponible avec une licence basée sur la capacité, appelée VPC (Virtual Processor Cores - coeurs de processeur virtuel). VPC est une unité de mesure utilisée pour déterminer le coût de la licence Mobile Foundation, basée sur le nombre de coeurs disponibles. Cette mesure n'est actuellement disponible que pour Cloud Pak for Applications.
 
-Par exemple, un type de processeur A se voit affecter 80 unités de valeur par coeur et le type de processeur B se voit affecter 100 unités de valeur par coeur. Si vous acquérez une licence pour un produit en vue d'exécuter celui-ci sur deux processeurs de type A, vous devez acheter une autorisation d'utilisation pour 160 unités de valeur par coeur. Si le produit doit s'exécuter sur deux processeurs de type B, l'autorisation d'utilisation requise est de 200 unités de valeur par coeur.
+Les fonctionnalités de cet indicateur sont les suivantes :
 
-> [Voir plus d'informations](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) sur l'octroi de licence par unité de valeur par coeur de processeur.
+* Les clients peuvent utiliser le nombre d'applications et d'appareils de leur choix. Ce format de licence est donc avantageux par rapport à la licence par application lorsque les déploiements des clients contiennent de nombreuses applications.
+
+* Aligné sur d'autres produits du portefeuille et source de flexibilité pour les clients dans les déploiements cloud hybride.
+
 
 ### Octroi de licence de jeton
 {: #token-licensing }

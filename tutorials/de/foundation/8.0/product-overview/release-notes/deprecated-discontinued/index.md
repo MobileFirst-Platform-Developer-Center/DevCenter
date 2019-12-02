@@ -424,7 +424,7 @@ Die folgenden APIs werden in Version 8.0 nicht weiter unterstützt.
 |`BaseProvisioningChallengeHandler` | Kein Ersatz. Die Bereitstellung für Geräte erfolgt jetzt automatisch über das Sicherheitsframework. |
 |`ChallengeHandler` |Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
 |`WLChallengeHandler` |Verwenden Sie `SecurityCheckChallengeHandler`. |
-|`ChallengeHandler.isCustomResponse()` |Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
+|`ChallengeHandler.isCustomResponse()` | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`. |
 |`ChallengeHandler.submitAdapterAuthentication` |Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
 
 ### Windows-C#-APIs

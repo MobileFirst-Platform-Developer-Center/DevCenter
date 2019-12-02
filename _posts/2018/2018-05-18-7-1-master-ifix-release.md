@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2019-09-13
+date: 2019-11-19
 permalink: '/blog/2018/05/18/7-1-master-ifix-release/'
 version:
 - 7.1
@@ -13,14 +13,110 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *7.1.0.0-MFPF-IF201909091200* has been released for MobileFirst Foundation 7.1, dated **September 9th, 2019**.
+A new iFix *7.1.0.0-MFPF-IF201911150651* has been released for MobileFirst Foundation 7.1, dated **November 15th, 2019**.
 <br/>
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201911150651" role="tablist">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201911150651">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201911150651" href="#collapse-mfp-ifix-IF201911150651" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201911150651"><b>iFix 7.1.0.0-MFPF-IF201911150651</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>&nbsp;&nbsp;<span class="label label-danger">contains SDK fix for iOS 13</span>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201911150651" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201911150651">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>November 15th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201911150651&source=SAR">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH18901</b>  SEGMENTATION FAULT WITH NETWORKDETECTOR DEVICEIPADDRESSES AFTER IOS 13 UPGRADE.<br/>
+            </div>
+        </div>      
+    </div>
+</div>     
+
+## Previous iFixes for MobileFirst Foundation 7.1
+
+IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
+*List below includes iFixes released in 2018 only.*
+
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201910310930" role="tablist">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201910310930">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201910310930" href="#collapse-mfp-ifix-IF201910310930" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201910310930"><b>iFix 7.1.0.0-MFPF-IF201910310930</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201910310930" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201910310930">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>October 31st, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH18471</b>  DEFAULT CARD PRESENTATION ON IOS 13 CAUSES SPLASH SCREEN TO NOT APPEAR IN FULLSCREEN.<br/>
+            <b>PH18477</b>  IOS APPLICATIONS ARE NOT DISPLAYED IN THE APPLICATION CENTER INSTALLER PAGE.<br/>
+            </div>
+        </div>      
+    </div>
+</div>    
+
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201910160455" role="tablist">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201910160455">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201910160455" href="#collapse-mfp-ifix-IF201910160455" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201910160455"><b>iFix 7.1.0.0-MFPF-IF201910160455</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201910160455" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201910160455">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>October 16th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH17981</b>  MFP 7.1 IOS NATIVE APP, UPDATE TOKEN WILL HAVE INVALID TOKEN FOR IOS 13 DEVICES.<br/>
+            <b>PH17865</b>  SINCE IOS 13, A USER OF SAFARI ISN'T ABLE TO DOWNLOAD A NEW IPA VERSION OF AN APPLICATION FROM APPLICATION CENTER.<br/>
+            <b>PI92168</b>  UPLOADING APK FILE TO APPLICATION CENTER FAILS WITH NULLPOINTEREXCEPTION IN LOG.<br/>
+            </div>
+        </div>      
+    </div>
+</div>   
+
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201909181659" role="tablist">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201909181659">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201909181659" href="#collapse-mfp-ifix-IF201909181659" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201909181659"><b>iFix 7.1.0.0-MFPF-IF201909181659</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201909181659" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201909181659">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>September 18th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=7.1.0.0&platform=All&function=all&source=fc">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH16982</b>  REMOTE DISABLE IS INTERMITTENTLY NOT WORKING ACROSS PLATFORMS.<br/>
+            </div>
+        </div>      
+    </div>
+</div>  
+
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201909091200" role="tablist">
 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201909091200">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201909091200" href="#collapse-mfp-ifix-IF201909091200" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201909091200"><b>iFix 7.1.0.0-MFPF-IF201909091200</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201909091200" href="#collapse-mfp-ifix-IF201909091200" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201909091200"><b>iFix 7.1.0.0-MFPF-IF201909091200</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201909091200" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201909091200">
@@ -36,13 +132,7 @@ A new iFix *7.1.0.0-MFPF-IF201909091200* has been released for MobileFirst Found
             </div>
         </div>      
     </div>
-</div>     
-
-## Previous iFixes for MobileFirst Foundation 7.1
-
-IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
-*List below includes iFixes released in 2018 only.*
-
+</div>    
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201908200824" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201908200824">

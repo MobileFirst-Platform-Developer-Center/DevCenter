@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-breadcrumb_title: Mobile Foundation on IBM Cloud
+breadcrumb_title: Mobile Foundation on cloud
 title: IBM Mobile Foundation in IBM Cloud verwenden
 relevantTo: [ios,android,windows,javascript]
-weight: 10
+weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/><br/>
@@ -31,7 +31,7 @@ Kurz zusammengefasst gibt es je nach Lizenzberechtigung zwei Möglichkeiten, die
 Wenn Sie die {{ site.data.keys.product}} für IBM Cloud in einer Liberty-for-Java-Laufzeit ausführen möchten, verwenden Sie die folgenden Komponenten: eine **Cloudfoundry-App**, die eine **WebSphere-Liberty-Installation** enthält, in der eine **MobileFirst-Server-Instanz** implementiert ist.
 
 ### Kubernetes-Cluster in IBM Cloud
-Kubernetes ist ein Orchestrierungstool für die Planung von App-Containern in einem Cluster von Rechenmaschinen. Mit Kubernetes können Entwickler die Leistungsfähigkeit und Flexibilität von Containern nutzen, um rasch hoch verfügbare Anwendungen zu entwickeln.
+Kubernetes ist ein Koordinierungstool für die Planung von App-Containern in einem Cluster von Rechenmaschinen. Mit Kubernetes können Entwickler die Leistungsfähigkeit und Flexibilität von Containern nutzen, um rasch hoch verfügbare Anwendungen zu entwickeln.
 Für die Erstellung und Verwaltung Ihrer Kubernetes-Cluster können Sie die Kubernetes-CLI nutzen. 
 
 [Informieren Sie sich über Kubernetes-Cluster in IBM Cloud](https://console.bluemix.net/docs/containers/cs_tutorials.html#cs_tutorials). 

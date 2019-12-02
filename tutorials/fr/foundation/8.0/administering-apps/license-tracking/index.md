@@ -48,7 +48,8 @@ Pour définir le type de licence à l'aide de la console {{ site.data.keys.mf_co
 3. Indiquez des valeurs dans les zones **Type d'application** et **Type de licence de jeton**
 4. Cliquez sur **Sauvegarder**
 
-Pour définir le type de licence à l'aide du programme mfpadm, utilisez `mfpadm app <appname> set license-config <application-type> <token license type>`
+Pour définir le type de licence à l'aide du programme mfpadm,
+utilisez `mfpadm app <appname> set license-config <application-type> <token license type>`
 
 L'exemple suivant affecte aux informations de licence B2E / APPLICATION l'application nommée **my.test.application**
 

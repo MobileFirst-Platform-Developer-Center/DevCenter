@@ -8,7 +8,7 @@ show_children: true
 ## Visão Geral
 {: #installation-and-configuration }
 
-Agora, é possível instalar o Digital App Builder nas plataformas MacOS e Windows. O processo também inclui o software obrigatório verificado e instalado durante a primeira instalação. É possível instalar Java, Xcode e Android Studio para a geração de adaptadores e a visualização do aplicativo durante o desenvolvimento.
+O Digital App Builder pode ser instalado nas plataformas MacOS e Windows. O processo também inclui o software obrigatório verificado e instalado durante a primeira instalação. Instale Java, Xcode e Android Studio para geração de adaptador e visualização do aplicativo durante o desenvolvimento.
 
 ### Instalando no MacOS
 {: #installing-on-macos }
@@ -17,7 +17,7 @@ Agora, é possível instalar o Digital App Builder nas plataformas MacOS e Windo
 2. Clique duas vezes no arquivo .dmg para montar o instalador.
 3. Na janela que o instalador abre, arraste e solte o IBM Digital App Builder na pasta **Aplicativos**.
 4. Clique duas vezes no ícone do IBM Digital App Builder ou no executável para abrir o Digital App Builder.
-    >**Nota**: quando o Digital App Builder for instalado pela primeira vez, ele abrirá a interface para instalar o software obrigatório.
+    >**Nota**: quando o Digital App Builder for instalado pela primeira vez, ele abrirá a interface para instalar o software obrigatório. No caso de existir uma versão anterior do Digital App Builder, é executada uma verificação de pré-requisito e talvez seja preciso fazer upgrade ou downgrade de algum software para atender aos pré-requisitos.
     
     ![Instalando o Digital App Builder](dab-install-startup.png)
 
@@ -25,7 +25,8 @@ Agora, é possível instalar o Digital App Builder nas plataformas MacOS e Windo
 
     ![Tela do contrato de licença](dab-install-license.png)
 
-6. Aceite o contrato de licença e clique em **Avançar (Next)**. Isso exibe a tela **Instalar pré-requisitos**. >**Nota**: é realizada uma verificação para descobrir se algum dos softwares obrigatórios já está instalado e o status é exibido para cada um deles.
+6. Aceite o contrato de licença e clique em **Avançar (Next)**. Isso exibe a tela **Instalar pré-requisitos**.
+    >**Nota**: é realizada uma verificação para descobrir se algum dos softwares obrigatórios já está instalado e o status é exibido para cada um deles.
 
     ![Tela Instalar pré-requisitos](dab-install-prereq.png)
 
@@ -33,22 +34,23 @@ Agora, é possível instalar o Digital App Builder nas plataformas MacOS e Windo
 
     ![Tela Instalar pré-requisitos](dab-install-prereq-tobeinstalled.png)
 
-8. Depois de instalar o software obrigatório, a tela de inicialização do Digital App Builder será exibida. Clique em **Iniciar construção**.
+8. *Opcional* - Depois de instalar o software obrigatório, o instalador verifica a existência de JAVA, pois o Digital App Builder precisa de JAVA para funcionar com conjuntos de dados. 
+    >**Nota**: Pode ser necessária a instalação manual de Java, se ainda não estiver instalado. Para instalar o Java, consulte [Instalando o Java](https://www.java.com/en/download/help/download_options.xml).
+
+9. Depois de instalar o software necessário, é exibida a tela de inicialização do Digital App Builder. Clique em **Iniciar construção**.
 
     ![Inicialização do Digital App Builder](dab-install-startup-screen.png)
 
-9. *Opcional* - Após a instalação do software obrigatório, o instalador verificará o JAVA, pois o Digital App Builder precisa dele para trabalhar com seus conjuntos de dados. >**Nota**: é necessário instalar o JAVA manualmente, se ele ainda não estiver instalado. Para instalar o Java, consulte [Instalando o Java](https://www.java.com/en/download/help/download_options.xml).
-10. *Opcional* - O instalador também verificará a instalação opcional do Xcode (para visualizar seu aplicativo no simulador do iOS durante o desenvolvimento, somente para MacOS) e do Android Studio (para visualizar seu aplicativo Android, para MacOS e Windows). >**Nota**: é necessário instalar manualmente o Xcode e o Android Studio. Para a instalação de Cocoapods, consulte [Usando CocoaPods](https://guides.cocoapods.org/using/using-cocoapods). Para a instalação do Android Studio, consulte [Instalando o Android Studio](https://developer.android.com/studio/). 
+10. *Opcional* - O instalador também verifica a instalação opcional de Xcode (para visualizar o aplicativo no simulador de iOS durante o desenvolvimento, somente para MacOS) e do Android Studio (para visualizar seu aplicativo Android, para MacOS e Windows).
+    >**Nota**: Pode ser necessária a instalação manual de Xcode e do Android Studio. Para a instalação de Cocoapods, consulte [Usando CocoaPods](https://guides.cocoapods.org/using/using-cocoapods). Para a instalação do Android Studio, consulte [Instalando o Android Studio](https://developer.android.com/studio/). 
 
->**Nota**: é possível executar uma [Verificação de pré-requisitos](#prerequisites-check) a qualquer momento para verificar se a instalação está adequada para o desenvolvimento do seu aplicativo. No caso de qualquer erro, corrija o erro e reinicie o Digital App Builder antes de criar um aplicativo.
+>**Nota**: A qualquer momento, execute uma [Verificação de pré-requisito](#prerequisites-check) para verificar se a instalação é capaz de desenvolver o aplicativo. No caso de qualquer erro, corrija o erro e reinicie o Digital App Builder antes de criar um aplicativo.
 
 ### Instalando no Windows
 {: #installing-on-windows }
 
-Execute os comandos a seguir no prompt de comandos aberto no modo administrativo:
-
 1. Faça download do arquivo .exe (**IBM.Digital.App.Builder.Setup.n.n.n.exe**, em que `n.n.n` é o número da versão)) no [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) ou [aqui](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
-2. Dê um clique duplo no executável do Digital App Builder a ser instalado.
+2. Execute o executável transferido por download (**IBM.Digital.App.Builder.Setup.n.n.n.exe**) no modo administrativo.
 
     ![Instalando o Digital App Builder](dab-install-startup.png)
 
@@ -56,7 +58,8 @@ Execute os comandos a seguir no prompt de comandos aberto no modo administrativo
 
     ![Tela do contrato de licença](dab-install-license.png)
 
-4. Aceite o contrato de licença e clique em **Avançar (Next)**. Isso exibe a tela **Instalar pré-requisitos**. >**Nota**: é realizada uma verificação para descobrir se algum dos softwares obrigatórios já está instalado e o status é exibido para cada um deles.
+4. Aceite o contrato de licença e clique em **Avançar (Next)**. Isso exibe a tela **Instalar pré-requisitos**.
+    >**Nota**: é realizada uma verificação para descobrir se algum dos softwares obrigatórios já está instalado e o status é exibido para cada um deles.
 
     ![Tela Instalar pré-requisitos](dab-install-prereq.png)
 
@@ -64,25 +67,27 @@ Execute os comandos a seguir no prompt de comandos aberto no modo administrativo
 
     ![Tela Instalar pré-requisitos](dab-install-prereq-tobeinstalled.png)
 
-6. Depois de instalar o software obrigatório, a tela de inicialização do Digital App Builder será exibida. Clique em **Iniciar construção**.
+6. *Opcional* - Após a instalação do software obrigatório, o instalador verificará o JAVA, pois o Digital App Builder precisa dele para trabalhar com seus conjuntos de dados. 
+    >**Nota**: Pode ser necessária a instalação manual de Java, se ainda não estiver instalado. Para instalar o Java, consulte [Instalando o Java](https://www.java.com/en/download/help/download_options.xml).
+
+7. Depois de instalar o software obrigatório, a tela de inicialização do Digital App Builder será exibida. Clique em **Iniciar construção**.
 
     ![Inicialização do Digital App Builder](dab-install-startup-screen.png)
 
-    >**Nota**: um atalho também será criado em **Iniciar > Programas** na área de trabalho. A pasta de instalação padrão será `<AppData>\Local\IBMDigitalAppBuilder\app-8.0.2`.
+    >**Nota**: um atalho também será criado em **Iniciar > Programas** na área de trabalho. A pasta de instalação padrão é `<AppData>\Local\IBMDigitalAppBuilder\app-8.0.3`.
 
-7. *Opcional* - Após a instalação do software obrigatório, o instalador verificará o JAVA, pois o Digital App Builder precisa dele para trabalhar com seus conjuntos de dados. >**Nota**: é necessário instalar o JAVA manualmente, se ele ainda não estiver instalado. Para instalar o Java, consulte [Instalando o Java](https://www.java.com/en/download/help/download_options.xml).
-8. *Opcional* - O instalador também verificará a instalação opcional do Xcode (para visualizar seu aplicativo no simulador do iOS durante o desenvolvimento, somente para MacOS) e do Android Studio (para visualizar seu aplicativo Android, para MacOS e Windows). >**Nota**: é necessário instalar manualmente o Android Studio. Para a instalação do Android Studio, consulte [Instalando o Android Studio](https://developer.android.com/studio/). 
+8. *Opcional* - O instalador também verificará a instalação opcional do Xcode (para visualizar seu aplicativo no simulador do iOS durante o desenvolvimento, somente para MacOS) e do Android Studio (para visualizar seu aplicativo Android, para MacOS e Windows).
+    >**Nota**: Instale manualmente o Android Studio. Para a instalação do Android Studio, consulte [Instalando o Android Studio](https://developer.android.com/studio/). 
 
->**Nota**: é possível executar uma [Verificação de pré-requisitos](#prerequisites-check) a qualquer momento para verificar se a instalação está adequada para o desenvolvimento do seu aplicativo. No caso de qualquer erro, corrija o erro e reinicie o Digital App Builder antes de criar um aplicativo.
+>**Nota**: A qualquer momento, execute uma [Verificação de pré-requisito](#prerequisites-check) para verificar se a instalação é capaz de desenvolver o aplicativo. No caso de qualquer erro, corrija o erro e reinicie o Digital App Builder antes de criar um aplicativo.
 
 ### Verificação de pré-requisitos
 {: #prerequisites-check }
 
-É possível executar uma verificação de pré-requisitos selecionando **Ajuda > Verificação de pré-requisitos** antes de desenvolver um aplicativo.
+Execute uma verificação de pré-requisitos selecionando **Ajuda > Verificação de pré-requisitos** antes de desenvolver um aplicativo.
 
 ![Verificação de pré-requisitos](dab-prerequsites-check.png)
 
 No caso de qualquer erro, corrija o erro e reinicie o Digital App Builder antes de criar um aplicativo.
 
 >**Nota**: [CocoaPods](https://guides.cocoapods.org/using/using-cocoapods) são necessários somente para MacOS.
-

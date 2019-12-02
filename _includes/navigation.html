@@ -9,18 +9,18 @@
             </button>
             <a href="{{site.baseurl}}/">
                 <div class="logo hidden-sm hidden-md">
-                    <span class="mobilefirst">Mobile</span> Foundation
-                    <span class="dev">{dev}</span>
+                    <span class="mobilefirst">IBM Mobile</span> Foundation
+                    <span class="dev">{docs}</span>
                 </div>
                 <div class="logo visible-sm visible-md">
                     <span class="mobilefirst">MFP</span>
-                    <span class="dev">{dev}</span>
+                    <span class="dev">{docs}</span>
                 </div>
             </a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+        <div id="navbar" class="navbar-collapse collapse fixed-top">
             <ul class="nav navbar-nav">
-                {% for item in site.data.menus.en.navigation %} {% capture classes %}{% if item.children %}dropdown {%endif%}{% if page.url contains item.path %}active {% endif%}{% if item.extraClasses %}{{item.extraClasses}}{% endif %}{% endcapture %}
+                {% for item in site.data.menus.en.navigation %} {% capture classes %}{% if item.children %}dropdown {%endif%}{% if item.extraClasses %}{{item.extraClasses}}{% endif %}{% endcapture %}
                 <li {% if classes %}class="{{classes}}" {%endif%}>
                     {% if item.children %}
                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.name}}<span class="caret"></span></a>

@@ -21,6 +21,7 @@ The server topology to install the components must also be defined. See [Topolog
 * [Installing with Ant tasks](#installing-with-ant-tasks)
 * [Installing the {{ site.data.keys.mf_server }} components manually](#installing-the-mobilefirst-server-components-manually)
 * [Installing a server farm](#installing-a-server-farm)
+* [Mobile Foundation runtime scheduler](#mf-runtime-scheduler)
 
 ## Application server prerequisites
 {: #application-server-prerequisites }
@@ -2222,3 +2223,65 @@ You can configure the heartbeat rate and timeout values by defining the followin
 
 <br/>
 For more information about JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+
+## Mobile Foundation runtime scheduler
+{: #mf-runtime-scheduler}
+
+Mobile Foundation runtime uses quartz schedulers for performing some of the scheduled activities.
+
+The scheduler in Mobile Foundation runtime performs the following activities:
+
+1.	License Tracking
+2.	Creating audit logs
+
+The running of scheduler is controlled by the following two JNDI properties,
+
+* **mfp.licenseTracking.enabled**
+* **mfp.purgedata.enabled** (introduced from iFix level *8.0.0.0-MFPF-IF201812191602-CDUpdate-04*)
+
+These JNDI properties are enabled by default for all supported application servers.
+
+>**Note:** For Mobile Foundation running on WebSphere Application Server, the JNDI property **mfp.licenseTracking.enabled** has to be enabled by setting its value to **true** in the Runtime Environment entries in WAS console.
+
+### License Tracking
+{: #license-tracking}
+
+License Tracking tracks metrics relevant to the licensing policy, such as active client devices, addressable devices, and installed apps. This information helps determine if the current usage of Mobile Foundation is within the license entitlement levels and can prevent potential license violations. License tracking helps in decommissioning devices that are no longer accessing the Mobile Foundation Server and also helps in archiving and deleting old records of *MFP_PERSISTENT_DATA*.
+
+The following table lists the JNDI properties related to license tracking.
+
+| JNDI Property | Description |
+|---------------|-------------|
+| mfp.device.decommissionProcessingInterval | Defines how often (in seconds) the decommissioning task is executed. Default: `86400`, which is one day. |
+| mfp.device.decommission.when | The number of days of inactivity after which a client device is decommissioned by the device decommissioning task. Default: `90 days`. |
+| mfp.device.archiveDecommissioned.when | The number of days of inactivity, after which a client device that has been decommissioned is archived. <br/> This task writes the client devices that were decommissioned to an archive file. The archived client devices are written to a file in the Mobile Foundation Server home\devices_archive directory. The name of the file contains the time stamp when the archive file is created. Default: `90 days`. |
+| mfp.licenseTracking.enabled | A value that is used to enable or disable device tracking in IBM Mobile Foundation. <br/> For performance reasons, you can disable device tracking when IBM Mobile  Foundation runs only Business-to-Consumer (B2C) apps. When device tracking is disabled, the license reports are also disabled and no license metrics are generated. <br/> Possible values are `true` (default) and `false`. |
+
+Please refer the topics below, for more details on license tracking.
+
+* [Mobile Foundation License Tracking]({{site.baseurl}}/tutorials/en/foundation/8.0/administering-apps/license-tracking/)
+* [Mobile Foundation Runtime properties](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html)
+
+A scheduler will run 8 hours after a server start. That is, if the servers are started at 11 PM today, the scheduler will not run at 1 AM(default scheduler run time) of the subsequent day, it will start running only from the next following day 1 AM. The gap between a server start and scheduler run is 8 hours.
+
+Starting iFix level [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) the gap between a server start and scheduler run is 4 hours instead of 8 hours.
+Also, a new property *MFP.SCHEDULER.STARTHOUR* is introduced. With this property, the scheduler run can be set for any time of customer’s choice instead of the default 1 AM. The property can take a value from 1 to 23. This property will ensure that the customer can configure their scheduler to start at their light traffic hours and also can ensure the scheduler runs despite the daily start of the server. For a customer who restarts their server every night at 1 AM, they can set the value for *MFP.SCHEDULER.STARTHOUR* to 5. This ensures a 4 hours gap between server restart and the scheduler will run at 5 AM.
+
+It is suggested to keep license tracking disabled as the license tracking activities are database intensive. Only those customers who use Mobile Foundation addressable devices licensing model need to run license tracking.
+
+Customers who have not enabled license tracking can use [purge feature]({{site.baseurl}}/blog/2018/12/27/purge-mfp-runtime-tables/) to clean up the old records and maintain *MFP_PERSISTENT_DATA* and *MFP_TRANSIENT_DATA* tables.
+
+### Creating Audit Log
+{: #creating-audit-log}
+
+License tracking saves the latest run and license data into Mobile Foundation runtime table *LICENSE_TERMS*. The audit log creates a log based on the latest report entry in this table. The reports are available as `.slmtag` files in the logs folder under the server install directory.
+
+### Disabling Quartz Update
+{: #disable-quartz-update}
+
+Mobile Foundation runtime bundles the required libraries including a few third-party libraries. Mobile Foundation uses Quartz job schedulers and includes `quartz2.2.0.jar`.
+
+Quartz contains an *update check* feature that connects to the [server](http://www.terracotta.org/), to check if there is a new version of Quartz available for download. This check runs asynchronously and does not affect the startup/initialization time of Quartz and it fails gracefully if the connection cannot be made. If the check runs, and an update is found, it will be reported as available in Quartz’s logs.
+
+The *update check* can be disabled by using the flag `org.quartz.scheduler.skipUpdateCheck = true`. Liberty deployment of Mobile Foundation creates a `jvm.options` file and during deployment through Server Configuration Tool, the newly created `jvm.options` file will include this property from iFix level [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) onwards. For prior iFix levels, customer can add this property into the `jvm.options` file.
+In the case of WebSphere Application Server (WAS) deployments, the above JNDI property needs to be added in the environment property of the Mobile Foundation application from the WAS admin console.

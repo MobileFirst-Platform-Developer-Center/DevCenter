@@ -66,7 +66,7 @@ O instalador do WebSphere Application Server Liberty Core é fornecido como part
 1. Revise o contrato de licença para o WebSphere Application Server Liberty Core. Os arquivos de licença podem ser visualizados quando se faz download do instalador a partir do Passport Advantage.
 2. Extraia o arquivo compactado do WebSphere Application Server Liberty Core, que foi transferido por download, em uma pasta.
 
-    Nas próximas etapas, o diretório onde o instalador será extraído é referido como **liberty\_repository\_dir**. Ele contém um arquivo **repository.config** ou um arquivo **diskTag.inf** entre vários outros.
+    Nas etapas seguintes, o diretório onde o instalador será extraído é referido como **liberty\_repository\_dir**. Ele contém um arquivo **repository.config** ou um arquivo **diskTag.inf** entre vários outros.
 
 3. Decida um diretório no qual o perfil Liberty deve ser instalado. É referido como liberty_install_dir nas próximas etapas.
 4. Inicie uma linha de comandos e acesse **installation\_manager\_install\_dir/tools/eclipse/**.

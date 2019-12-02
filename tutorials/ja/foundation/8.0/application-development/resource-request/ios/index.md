@@ -36,9 +36,9 @@ WLResourceRequest *request = [WLResourceRequest requestWithURL:[NSURL URLWithStr
 Swift
 
 ```swift
-let request = WLResourceRequest(
-    URL: NSURL(string: "/adapters/JavaAdapter/users"),
-    method: WLHttpMethodGet
+let request = WLResourceRequestSwift(
+    URL: URL(string: "/adapters/JavaAdapter/users"),
+    method: WLResourceRequestSwift.WLHttpMethodGet
 )
 ```
 
@@ -66,12 +66,12 @@ Objective-C
 Swift
 
 ```swift
-request.sendWithCompletionHandler { (response, error) -> Void in
-    if(error == nil){
-        NSLog(response.responseText)
+request.send() {(response, error) in
+    if (error != nil){
+        print("Failure: " , error!);
     }
-    else{
-        NSLog(error.description)
+    else if (response != nil){
+        print("Success: " + response!.responseText);
     }
 }
 ```
@@ -147,12 +147,12 @@ Swift
 let formParams = ["height":"175"]
 
 //Sending the request with Form parameters
-request.sendWithFormParameters(formParams) { (response, error) -> Void in
-    if(error == nil){
-        NSLog(response.responseText)
+request.send(withFormParameters: formParams) {(response, error) in
+    if (error != nil){
+        print("Failure: " , error!);
     }
-    else{
-        NSLog(error.description)
+    else if (response != nil){
+        print("Success: " + response!.responseText);
     }
 }
 ```
@@ -220,14 +220,15 @@ dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callba
 
 ```swift
 //creating callback queue
-var completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL)
+let completionQueue = DispatchQueue(label: "com.ibm.mfp.app.callbackQueue");
 
 //Sending the request with callback queue
-request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void in
-  if (error == nil){
-      NSLog(@"%@", response.responseText);
-  } else {
-      NSLog(@"%@", error.description);
+request.send(withQueue: queue){ (response, error) in
+    if (error != nil){
+        print("Failure: " , error!);
+    }
+    else if (response != nil){
+        print("Success: " + response!.responseText);
     }
 }
 ```

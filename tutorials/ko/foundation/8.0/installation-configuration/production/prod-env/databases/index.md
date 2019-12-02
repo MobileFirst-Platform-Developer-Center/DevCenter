@@ -102,7 +102,7 @@ DB2에 대한 데이터베이스 요구사항을 검토하십시오. 단계를 �
 
 1. 운영 체제에 대해 적절한 명령을 사용하여 DB2 관리 그룹(예: **DB2USERS**)에서 예를 들어, **mfpuser**라는 시스템 사용자를 작성하십시오. 이 사용자에게 비밀번호(예: **mfpuser**)를 제공하십시오.
 2. **SYSADM** 또는 **SYSCTRL** 권한을 가진 사용자로 DB2 명령행 프로세서를 여십시오.
-    * Windows 시스템에서 **시작 → IBM DB2 → 명령행 프로세서**를 클릭하십시오.
+    * Windows 시스템의 경우 **시작 → IBM DB2 → 명령행 프로세서**를 클릭하십시오.
     * Linux 또는 UNIX 시스템의 경우 **~/sqllib/bin**으로 이동하여 `./db2`를 입력하십시오.
 3. {{ site.data.keys.mf_server }} 데이터베이스를 작성하려면 다음 예와 비슷한 SQL문을 입력하십시오.
 
@@ -313,7 +313,7 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 {: #create-the-database-tables-with-the-server-configuration-tool }
 {{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터베이스 테이블은 Ant 태스크 또는 Server Configuration Tool을 사용하여 수동으로 작성될 수 있습니다. 이 주제에서는 Server Configuration Tool을 사용하여 {{ site.data.keys.mf_server }}를 설치할 때 데이터베이스 설정에 대한 설명 및 세부사항을 제공합니다.
 
-Server Configuration Tool은 설치 프로세스의 일부로 데이터베이스 테이블을 작성할 수 있습니다. 일부 경우에는 {{ site.data.keys.mf_server }} 컴포넌트에 대한 데이터베이스 및 사용자도 작성할 수 있습니다. Server Configuration Tool을 사용한 설치 프로세스에 대한 개요는 [그래픽 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/tutorials/graphical-mode)를 참조하십시오.
+Server Configuration Tool은 설치 프로세스의 일부로 데이터베이스 테이블을 작성할 수 있습니다. 일부 경우에는 {{ site.data.keys.mf_server }} 컴포넌트에 대한 데이터베이스 및 사용자도 작성할 수 있습니다. Server Configuration Tool을 사용한 설치 프로세스에 대한 개요는 [그래픽 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/graphical-mode)를 참조하십시오.
 
 구성 인증 정보를 완료하고 Server Configuration Tool 분할창에서 **배치**를 클릭하면 다음과 같은 조작이 실행됩니다.
 
@@ -400,7 +400,7 @@ MySQL 서버가 [MySQL 데이터베이스 및 사용자 요구사항](#mysql-dat
 
 {{ site.data.keys.mf_server }}가 Ant 태스크를 사용하여 설치된 경우 이 절에서 데이터베이스의 설정에 대한 관련 정보를 찾을 수 있습니다.
 
-Ant 태스크를 사용하여 {{ site.data.keys.mf_server }} 데이터베이스 테이블을 설정할 수 있습니다. 일부 경우에는 이 태스크를 사용하여 데이터베이스 및 사용자도 작성할 수 있습니다. Ant 태스크를 사용한 설치 프로세스에 대한 개요는 [명령행 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/tutorials/command-line)를 참조하십시오.
+Ant 태스크를 사용하여 {{ site.data.keys.mf_server }} 데이터베이스 테이블을 설정할 수 있습니다. 일부 경우에는 이 태스크를 사용하여 데이터베이스 및 사용자도 작성할 수 있습니다. Ant 태스크를 사용한 설치 프로세스에 대한 개요는 [명령행 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/command-line)를 참조하십시오.
 
 Ant 태스크를 시작하는 데 도움이 되는 샘플 Ant 파일 세트가 설치와 함께 제공됩니다. **mfp\_install\_dir/MobileFirstServer/configurations-samples**에서 해당 파일을 찾을 수 있습니다. 해당 파일은 다음과 같은 패턴을 따라 이름이 지정됩니다.
 

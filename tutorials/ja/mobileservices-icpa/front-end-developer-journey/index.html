@@ -1,0 +1,297 @@
+---
+layout: default
+indexed: false
+---
+<head>
+<meta charset="utf-8">
+<link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
+<link href="../custom-style-j.css" type="text/css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600&display=swap" rel="stylesheet"/>
+<script type="text/javascript" src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+
+<style>
+#wrapper {
+    margin-left:auto;
+    margin-right:auto;
+}
+.wrapper {
+    margin-left:auto;
+    margin-right:auto;
+}
+.postTitle {
+    margin-bottom: 0;
+    color: #808080;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bold;
+}
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600&display=swap");
+$font-sans: 'IBM Plex Sans', sans-serif;
+
+
+$black: #34435E;
+$white: #ffffff;
+
+body {
+  font-family: $font-sans;
+  margin: 0;
+  padding: 0 4em;
+  counter-reset: section;
+}
+
+main {
+  min-width: 30%;
+  max-width: 70%;
+  margin: auto;
+}
+
+p {
+  font-size: 1.25em;
+  line-height: 1.75em;
+  border-top: 3px solid;
+  border-image: linear-gradient(to right, #743ad5 0%, #d53a9d 100%);
+  border-image-slice: 1;
+  border-width: 3px;
+  margin: 0;
+  padding: 40px;
+  counter-increment: section;
+  position: relative;
+  color: #000;
+}
+
+  p::before {
+    content: counter(section);
+    position: absolute;
+    border-radius: 50%;
+    height: 1.25em;
+    width: 1.25em;
+    background-color: #808080;
+    text-align: center;
+    line-height: 0.5em;
+    color: white;
+    font-size: 2.1em;
+    padding: 12px;
+  }
+
+
+p:nth-child(odd) {
+  border-right: 3px solid;
+  padding-left: 0;
+}
+  p:nth-child(odd):before {
+    left: 100%;
+    margin-left: -20px;
+  }
+
+
+p:nth-child(even) {
+  border-left: 3px solid;
+  padding-right: 0;
+}
+  p:nth-child(even):before {
+    right: 100%;
+    margin-right: -20px;
+  }
+
+
+p:first-child {
+  border-top: 0;
+  border-top-right-radius:0;
+  border-top-left-radius:0;
+}
+p:last-child {
+  border-bottom-right-radius:0;
+  border-bottom-left-radius:0;
+}
+</style>
+
+</head>
+
+<body style="background-color: #fff">
+
+
+<div class="bx--row landing-page__banner" style="background-image: url('../header-1.jpg')">
+
+    <div class="bx--col-md-12">
+      <h2 style="color:white">フロントエンド開発者ジャーニー</h2>
+      <br/>
+      <h4 style="color:white">AI 機能を持つ、モバイル・アプリケーション、Web アプリケーション、および PWA (Progressive Web App) マルチチャネル・アプリケーションを、ローコード手法で迅速に作成します</h4>
+        <br/>
+  <div data-tabs class="bx--tabs">
+  <div class="bx--tabs-trigger" tabindex="0">
+    <a href="javascript:void(0)" class="bx--tabs-trigger-text" tabindex="-1"></a>
+    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M5 6L0 1 .7.3 5 4.6 9.3.3l.7.7z"></path></svg>
+  </div>
+  <ul class="bx--tabs__nav bx--tabs__nav--hidden" role="tablist">
+    <li
+      class="bx--tabs__nav-item bx--tabs__nav-item--selected "
+      data-target=".tab-1" role="presentation">
+      <a tabindex="0" id="tab-link-1" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-1"  aria-selected="true" ><h4 style="text-align: center; color:white; font-size: 18px">Cordova</h4></a>
+    </li>
+    <li
+      class="bx--tabs__nav-item "
+      data-target=".tab-2" role="presentation">
+      <a tabindex="0" id="tab-link-2" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-2" ><h4 style="text-align: center; color:white; font-size: 18px">Ionic</h4></a>
+    </li>
+    <li
+      class="bx--tabs__nav-item "
+      data-target=".tab-3" role="presentation">
+      <a tabindex="0" id="tab-link-3" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-3" ><h4 style="text-align: center; color:white; font-size: 18px">Android</h4></a>
+    </li>
+    <li
+      class="bx--tabs__nav-item  bx--tabs__nav-item "
+      data-target=".tab-4" role="presentation">
+      <a tabindex="0" id="tab-link-4" class="bx--tabs__nav-link" href="javascript:void(0)" role="tab"
+        aria-controls="tab-panel-4" ><h4 style="text-align: center; color:white; font-size: 18px">iOS</h4></a>
+    </li>
+  </ul>
+</div>
+</div>
+</div>
+<div>
+  <div id="tab-panel-1" class="tab-1" role="tabpanel" aria-labelledby="tab-link-1"
+    aria-hidden="false" >
+
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
+
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <h3>Cordova アプリ作成ステップ</h3>
+        </div>
+      </div>
+
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>インストールおよび構成</b></span><br/>
+使用可能なサービスおよびランタイム・フレームワークのエコシステムの成長を取り込みつつ、開発者がクラウド・アプリケーションの作成、デプロイ、および管理を迅速に行うことを可能にします。<br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a></p>
+                <p><span style="color:NAVY; font-weight: 600"><b>MobileFirst SDK の追加</b></span><br/>
+          クライアント SDK は、開発者が認証とセキュリティー・メカニズム、プッシュと SMS の通知、リソース要求、分析データの収集、その他さまざまな Mobile Foundation フィーチャーを実装するための API のセットを提供します。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/cordova/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>通知の送信</b></span><br/>
+プロセス全体を開発者にまったく認識されないものにする一元的な通知メカニズムを通して、対象者をエンゲージします。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>認証およびセキュリティーの追加</b></span><br/>
+さまざまな保護レイヤーをアプリケーションに追加します。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>測定およびエンゲージ</b></span><br/>
+IBM Mobile Foundation を使用して通知を送信します。アプリケーション使用量をモニターし、洞察を得ます。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+      </main>
+
+    </div>
+  </div>
+  <div id="tab-panel-2" class="tab-2" role="tabpanel" aria-labelledby="tab-link-2"
+    aria-hidden="true"  hidden >
+
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <h3>Ionic アプリ作成ステップ</h3>
+        </div>
+      </div>
+
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>インストールおよび構成</b></span><br/>
+使用可能なサービスおよびランタイム・フレームワークのエコシステムの成長を取り込みつつ、開発者がクラウド・アプリケーションの作成、デプロイ、および管理を迅速に行うことを可能にします。<br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a></p>
+                <p><span style="color:NAVY; font-weight: 600"><b>MobileFirst SDK の追加</b></span><br/>
+          クライアント SDK は、開発者が認証とセキュリティー・メカニズム、プッシュと SMS の通知、リソース要求、分析データの収集、その他さまざまな Mobile Foundation フィーチャーを実装するための API のセットを提供します。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ionic/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>通知の送信</b></span><br/>
+プロセス全体を開発者にまったく認識されないものにする一元的な通知メカニズムを通して、対象者をエンゲージします。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>認証およびセキュリティーの追加</b></span><br/>
+さまざまな保護レイヤーをアプリケーションに追加します。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>測定およびエンゲージ</b></span><br/>
+IBM Mobile Foundation を使用して通知を送信します。アプリケーション使用量をモニターし、洞察を得ます。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+      </main>
+
+
+    </div>
+  </div>
+
+  <div id="tab-panel-3" class="tab-3" role="tabpanel" aria-labelledby="tab-link-3"
+    aria-hidden="true"  hidden >
+
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <h3>Android アプリ作成ステップ</h3>
+        </div>
+      </div>
+
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>インストールおよび構成</b></span><br/>
+使用可能なサービスおよびランタイム・フレームワークのエコシステムの成長を取り込みつつ、開発者がクラウド・アプリケーションの作成、デプロイ、および管理を迅速に行うことを可能にします。<br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/android/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a></p>
+                <p><span style="color:NAVY; font-weight: 600"><b>MobileFirst SDK の追加</b></span><br/>
+          クライアント SDK は、開発者が認証とセキュリティー・メカニズム、プッシュと SMS の通知、リソース要求、分析データの収集、その他さまざまな Mobile Foundation フィーチャーを実装するための API のセットを提供します。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/android/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>通知の送信</b></span><br/>
+プロセス全体を開発者にまったく認識されないものにする一元的な通知メカニズムを通して、対象者をエンゲージします。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>認証およびセキュリティーの追加</b></span><br/>
+さまざまな保護レイヤーをアプリケーションに追加します。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>測定およびエンゲージ</b></span><br/>
+IBM Mobile Foundation を使用して通知を送信します。アプリケーション使用量をモニターし、洞察を得ます。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+      </main>
+
+
+    </div>
+  </div>
+
+  <div id="tab-panel-4" class="tab-4" role="tabpanel" aria-labelledby="tab-link-4"
+    aria-hidden="true"  hidden >
+
+    <div class="bx--grid bx--grid--full-width landing-page" style="margin-bottom: 50px">
+      <div class="bx--row">
+        <div id="title" class="bx--col">
+        <h3>iOS アプリ作成ステップ</h3>
+        </div>
+      </div>
+
+      <main>
+        <p><span style="color:NAVY; font-weight: 600"><b>インストールおよび構成</b></span><br/>
+使用可能なサービスおよびランタイム・フレームワークのエコシステムの成長を取り込みつつ、開発者がクラウド・アプリケーションの作成、デプロイ、および管理を迅速に行うことを可能にします。<br/><br/>
+        <a href="../../../../../tutorials/en/foundation/8.0/installation-configuration/development/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a></p>
+                <p><span style="color:NAVY; font-weight: 600"><b>MobileFirst SDK の追加</b></span><br/>
+          クライアント SDK は、開発者が認証とセキュリティー・メカニズム、プッシュと SMS の通知、リソース要求、分析データの収集、その他さまざまな Mobile Foundation フィーチャーを実装するための API のセットを提供します。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/application-development/sdk/ios/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>通知の送信</b></span><br/>
+プロセス全体を開発者にまったく認識されないものにする一元的な通知メカニズムを通して、対象者をエンゲージします。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/notifications/sending-notifications/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>認証およびセキュリティーの追加</b></span><br/>
+さまざまな保護レイヤーをアプリケーションに追加します。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/authentication-and-security/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+        <p><span style="color:NAVY; font-weight: 600"><b>測定およびエンゲージ</b></span><br/>
+IBM Mobile Foundation を使用して通知を送信します。アプリケーション使用量をモニターし、洞察を得ます。<br/><br/>
+          <a href="../../../../../tutorials/en/foundation/8.0/analytics/" target="_blank"><img src="../arrow-black-32.svg" alt="進む"/></a>
+                </p>
+      </main>
+
+
+    </div>
+  </div>
+</div>
+</body>

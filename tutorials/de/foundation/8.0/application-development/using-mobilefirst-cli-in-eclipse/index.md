@@ -187,6 +187,6 @@ und so eine integrierte Entwicklungsumgebung erzeugen.
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">
-   		<iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+   		<iframe title="Dem video" src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
 	</div>
 </div>

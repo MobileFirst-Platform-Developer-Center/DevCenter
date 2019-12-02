@@ -4,7 +4,7 @@ title: Licenciamento no MobileFirst Server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão geral
+## Visão Geral
 {: #overview }
 O IBM {{ site.data.keys.mf_server }} suporta dois métodos de licenciamento diferentes com base no que você comprou.
 
@@ -14,17 +14,17 @@ Se você tiver adquirido licenças Perpétuas, será possível consumir o que vo
 {: #application-or-addressable-device-licenses }
 Se você tiver comprado licenças de aplicativo ou de dispositivo endereçável, será possível consumir o que comprou e verificar seu uso e conformidade por meio da página Rastreamento de licença no {{ site.data.keys.mf_console }} e por meio do relatório Rastreamento de licença.
 
-### Licenciamento da unidade de valor do processador (PVU)
-{: #processor-value-unit-pvu-licensing }
-O licenciamento da unidade de valor do processador (PVU) estará disponível se você tiver comprado o IBM {{ site.data.keys.product }} Extension (consulte [documentos de Informações de Licença](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)), mas somente após a compra do IBM WebSphere Application Server Network Deployment, IBM API Connect™ Professional ou IBM API Connect Enterprise.
+### Virtual Processor Cores (licenciamento de VPC)
+{: #vpc-licensing}
 
-A estrutura de precificação de licença de PVU é responsiva ao tipo e número de processadores que estão disponíveis para os produtos instalados. As autorizações podem ser de capacidade total ou de subcapacidade. Sob a estrutura de licenciamento da
-unidade de valor do processador, o software é licenciado com base no número de unidades de valor designadas
-para cada núcleo de processador.
+O Mobile Foundation também está disponível com licenciamento baseado em capacidade chamado Cores do Processador Virtual (VPC). VPC é uma unidade de medida que é usada para determinar o custo de licenciamento para o Mobile Foundation e é baseada no número de núcleos que estão disponíveis. Atualmente, essa métrica está disponível apenas para o Cloud Pak for Applications.
 
-Por exemplo, o processador tipo A tem 80 unidades de valor atribuídas por núcleo e o processador tipo B tem 100 unidades de valor atribuídas por núcleo. Se você licenciar um produto para ser executado em dois processadores tipo A, deverá adquirir uma autorização para 160 unidades de valor por núcleo. Se o produto for executado em dois processadores tipo B, a autorização necessária será de 200 unidades de valor por núcleo.
+Os recursos desta métrica são os seguintes,
 
-> [Leia mais informações](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) sobre o licenciamento por PVU.
+* Os clientes podem executar qualquer número de aplicativos e dispositivos. Consequentemente, essa forma de licença seria benéfica em comparação com a licença do aplicativo em cenários em que os clientes têm muitos aplicativos em sua implementação.
+
+* Alinhado com outros produtos no portfólio e fornece flexibilidade aos clientes para implementações de nuvem híbrida.
+
 
 ### Licenciamento de token
 {: #token-licensing }

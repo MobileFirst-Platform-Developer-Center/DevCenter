@@ -18,7 +18,8 @@ Faça download e instale a atualização mais recente do CD para obter todos os 
 
 ##### <span style="color:NAVY">**Atualização do CoreML**</span>
 
-Os modelos de ML (Machine Learning) podem ser executados localmente no dispositivo móvel iOS usando a estrutura CoreML da Apple. A Mobile Foundation fornece a capacidade de gerenciar a distribuição desses modelos para dispositivos de forma segura. [Saiba mais](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
+Os modelos de ML (Machine Learning) podem ser executados localmente no dispositivo móvel iOS usando a estrutura CoreML da Apple.
+A Mobile Foundation fornece a capacidade de gerenciar a distribuição desses modelos para dispositivos de forma segura. [Saiba mais](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/).
 
 ##### <span style="color:NAVY">**App Authenticity for watchOS**</span>
 

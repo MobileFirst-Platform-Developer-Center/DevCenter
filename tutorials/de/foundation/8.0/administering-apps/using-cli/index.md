@@ -404,7 +404,7 @@ wird mit folgenden Argumenten verwendet:
 |Attribut |Beschreibung |
 |-----------|-------------|
 |Laufzeitname | Name der Laufzeit |
-|Datei |Name der JSON- oder XML-Datei mit der neuen Konfiguration |
+|file |Name der JSON- oder XML-Datei mit der neuen Konfiguration |
 
 Syntax für eine einzelne Eigenschaft: `set user-config [Laufzeitname] Eigenschaft = Wert`
 
@@ -413,7 +413,7 @@ Der Befehl `set user-config` wird mit folgenden Argumenten verwendet:
 | Argument |Beschreibung |
 |----------|-------------|
 |Laufzeitname | Name der Laufzeit |
-|Eigenschaft |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |
+|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |
 |Wert |Wert der Eigenschaft |
 
 **Beispiele**  
@@ -506,11 +506,11 @@ wird mit folgenden Argumenten verwendet:
 
 |Attribut	|Beschreibung |
 |-----------|-------------|
-|Laufzeitname | Name der Laufzeit |
+|runtime        | Name der Laufzeit |
 |ID |Kennung der Regel |
 |Anzeigename |Anzeigename der Regel |
-|geheimer_Schlüssel |Geheimer Schlüssel der Regel|
-|zulässiger_Bereich |Liste mit durch Leerzeichen getrennten Token als Bereich für die Regel. Setzen Sie eine Liste mit zwei oder mehr Token in Anführungszeichen. |
+|geheimer_Schlüssel |Geheimer Schlüssel der Regel |
+|zulässiger_Bereich |Liste mit durch Leerzeichen getrennten Token als Bereich für die Regel Setzen Sie eine Liste mit zwei oder mehr Token in Anführungszeichen. |
 
 **Beispiel**
 
@@ -572,7 +572,7 @@ wird mit folgenden Argumenten verwendet:
 | Argument |Beschreibung |
 |----------|-------------|
 |Laufzeitname | Name der Laufzeit |
-|Datei |Binäre Adapterdatei (.adapter) |
+|file |Binäre Adapterdatei (.adapter) |
 
 **Beispiel**
 
@@ -709,7 +709,7 @@ Nach dem Verb können die folgenden Argumente angegeben werden.
 
 |Option |Beschreibung |
 |--------|-------------|
-|Datei |Name der JSON- oder XML-Datei mit der neuen Konfiguration |
+|file |Name der JSON- oder XML-Datei mit der neuen Konfiguration |
 
 Syntax für eine einzelne Eigenschaft: `adapter [Laufzeitname] Adaptername set user-config Eigenschaft = Wert`
 
@@ -717,7 +717,7 @@ Nach dem Verb können die folgenden Argumente angegeben werden.
 
 |Option |Beschreibung |
 |--------|-------------|
-|Eigenschaft |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |
+|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |
 |Wert |Wert der Eigenschaft |
 
 **Beispiele**
@@ -775,7 +775,7 @@ wird mit folgenden Argumenten verwendet:
 | Argument |Beschreibung |
 |----------|-------------|
 |Laufzeitname | Name der Laufzeit |
-|Datei |Anwendungsdeskriptor (eine JSON-Datei) |
+|file |Anwendungsdeskriptor (eine JSON-Datei) |
 
 **Beispiel**
 
@@ -928,7 +928,7 @@ Nach dem Verb können die folgenden Argumente angegeben werden.
 
 | Argument |Beschreibung |
 |----------|-------------|
-|App-Typ |Typ einer App (B2C oder B2E) |
+|appType |Typ einer App (B2C oder B2E) |
 |Lizenztyp |Typ für eine Anwendung (APPLICATION, ADDITIONAL_BRAND_DEPLOYMENT oder NON_PRODUCTION) |
 
 **Beispiel**
@@ -1054,7 +1054,7 @@ Nach dem Verb können die folgenden Argumente angegeben werden.
 
 | Argument |Beschreibung |
 |----------|-------------|
-|Datei |Name der Eingabedatei:<ul><li>Datei .authenticity_data</li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul>|
+|file |Name der Eingabedatei:<ul><li>Datei .authenticity_data</li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul>|
 
 **Beispiele**
 
@@ -1116,7 +1116,7 @@ Nach dem Verb können die folgenden Argumente angegeben werden.
 
 | Argument |Beschreibung |
 |----------|-------------|
-|Datei |Name der JSON- oder XML-Datei mit der neuen Konfiguration |
+|file |Name der JSON- oder XML-Datei mit der neuen Konfiguration |
 
 Syntax für eine einzelne Eigenschaft: `app version [Laufzeitname] App-Name Umgebung Version set user-config Eigenschaft = Wert`
 
@@ -1124,7 +1124,7 @@ Der Befehl `app version set user-config` kann mit folgenden Argumenten nach dem 
 
 | Argument |Beschreibung |
 |----------|-------------|
-|Eigenschaft |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |
+|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |
 |Wert |Wert der Eigenschaft |
 
 **Beispiele**

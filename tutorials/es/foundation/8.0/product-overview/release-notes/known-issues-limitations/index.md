@@ -14,6 +14,7 @@ En esta documentación, podrá encontrar la descripción de las limitaciones de 
 
 * Cuando la limitación se aplica a una característica especial, podrá encontrar su descripción en el tema que explica dicha característica. Será entonces cuando podrá identificar inmediatamente cómo afecta a la característica.
 * No obstante, podrá encontrar la descripción aquí sí las limitaciones conocidas son generales, esto es, que se aplican a temas diferentes y es posible que no estén relacionados directamente entre sí.
+* Es posible que se observe alguna incoherencia en el funcionamiento de los pods de Mobile Foundation Analytics durante el despliegue, debido a problemas de descubrimiento de nodos Elasticsearch en el clúster de OpenShift 4.2. Esto hace que la consola de administración de Analíticas solo liste un nodo en cualquier punto del tiempo. 
 
 ### Globalización
 {: #globalization }

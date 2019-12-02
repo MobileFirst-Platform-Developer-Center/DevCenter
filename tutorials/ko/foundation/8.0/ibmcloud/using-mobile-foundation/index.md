@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: IBM Cloud에서 Mobile Foundation 서비스 사용
-breadcrumb_title: Setting up Mobile Foundation service
+title: IBM Cloud에서 Mobile Foundation 서비스
+breadcrumb_title: Foundation on IBM Cloud
 relevantTo: [ios,android,windows,javascript]
-weight: 1
+weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -214,8 +214,8 @@ User can delete current container by clicking on **Delete Analytics** button fro
 **시나리오 1:**
 
 1. 호스트 시스템을 설정하십시오.<br/>
-   IBM Cloud Cloud Foundry 앱을 관리하려면 Cloud Foundry CLI를 설치해야 합니다.<br/>
-   [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases)를 설치하십시오.
+IBM Cloud Cloud Foundry 앱을 관리하려면 Cloud Foundry CLI를 설치해야 합니다.<br/>
+[Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases)를 설치하십시오.
 2. 터미널을 열고 `cf login`을 사용하여 *조직* 및 *영역*에 로그인하십시오.
 3. CLI에서 다음 명령을 실행하십시오.
 ```bash

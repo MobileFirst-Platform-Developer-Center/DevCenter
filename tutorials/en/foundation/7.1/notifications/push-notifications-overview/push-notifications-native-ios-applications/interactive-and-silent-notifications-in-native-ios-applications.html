@@ -53,7 +53,7 @@ notification.settings.apns.category = "poll";
 <li>Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.<br />
 To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes like Remote notifications and Background fetch.</li>
 <li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>didRegisterForRemoteNotificationsWithDeviceToken</code> method in the <code>AppDelegate</code> class.
-<p>    
+<p>
 {% highlight objc  %}
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     NSLog(@"APNS Token : %@", deviceToken);
@@ -73,7 +73,7 @@ To enable background processing, select the project in XCode and in the capabili
         NSSet *catgories = [NSSet setWithObject:cateogory];
         [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:catgories]];
     }
-    [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
+    [[WLPush sharedInstance] setTokenFromClient:deviceToken];
 }
 {% endhighlight %}</li>
 <li>To handle the actions the user selects, use the <code>handleActionWithIdentifier</code> method of the <code>UIApplicationDelegate</code> protocol:<br />

@@ -165,7 +165,7 @@ O elemento `<mysql>` suporta os elementos a seguir:
 Para as propriedades disponíveis, consulte [Nomes de classe de driver/origem de dados, sintaxe de URL e propriedades de configuração para Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).  
 O elemento interno `<dba>` especifica as credenciais do administrador de banco de dados. Esse elemento possui os atributos a seguir:
 
-| Atributo | Descrição                            | Necessário | Padrão |
+| Atributo | Descrição (Description)                            | Necessário | Padrão |
 |-----------|----------------------------------------|----------|---------|
 | usuário	    | O nome do usuário para acessar bancos de dados. | Sim	    | Nenhuma |
 | senha	| A senha para acessar bancos de dados.	 | Não	    | Consultado interativamente |
@@ -353,7 +353,7 @@ O elemento `<console>` coleta informações para customizar a instalação do {{
 
 O elemento `<console>` suporta o elemento a seguir:
 
-| Elemento               | Descrição                                      | Conta |
+| Elemento               | Descrição (Description)                                      | Conta |
 |-----------------------|--------------------------------------------------|-------|
 | `<artifacts>`         | Os artefatos do {{ site.data.keys.mf_server }}.                | 0..1  |
 | `<property>`	        | As propriedades.	                               | 0..   |
@@ -384,7 +384,7 @@ Use o elemento `<applicationserver>` para definir os parâmetros que dependem do
 
 | Elemento                                   | Descrição                                      | Conta |
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` ou `<was>` | Os parâmetros para o WebSphere Application Server. <br/><br/>O elemento `<websphereapplicationserver>` (ou `was>` em sua forma abreviada) denota uma instância do WebSphere Application Server. O perfil completo do WebSphere Application Server (Base e Network Deployment) é suportado, portanto, é o WebSphere Application Server Liberty Core e o WebSphere Application Server Liberty Network Deployment.               | 0..1  |
+| `<websphereapplicationserver>` ou `<was>` | Os parâmetros para o WebSphere Application Server. <br/><br/>O elemento `<websphereapplicationserver>` (ou `was>` em sua forma curta) denota uma instância do WebSphere Application Server. O perfil completo do WebSphere Application Server (Base e Network Deployment) é suportado, portanto, é o WebSphere Application Server Liberty Core e o WebSphere Application Server Liberty Network Deployment.               | 0..1  |
 | `<tomcat>`                                | Os parâmetros para Apache Tomcat.	               | 0..1  |
 
 Os atributos e os elementos internos desses elementos são descritos nas tabelas de [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
@@ -419,7 +419,7 @@ os membros do farm. |
 
 O elemento `<configuration>` suporta os elementos a seguir:
 
-| Elemento      | Descrição                           | Conta |
+| Elemento      | Descrição (Description)                           | Conta |
 |--------------|---------------------------------------|-------|
 | `<user>`     | O usuário para o serviço de atualização em tempo real. | 0..1  |
 | `<property>` | As propriedades.	                   | 0..   |
@@ -451,15 +451,15 @@ Usando esse elemento, é possível definir suas próprias propriedades JNDI ou s
 {: #to-specify-an-application-server-1 }
 Use o elemento `<applicationserver>` para definir os parâmetros que dependem do servidor de aplicativos subjacente. O elemento `<applicationserver>` suporta os elementos a seguir:
 
-| Elemento      | Descrição                                              | Conta |
+| Elemento      | Descrição (Description)                                              | Conta |
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` ou `<was>`	| Os parâmetros para o WebSphere Application Server.<br/><br/>O elemento <websphereapplicationserver> (ou <was> em sua forma abreviada) denota uma instância do WebSphere Application Server. O perfil completo do WebSphere Application Server (Base e Network Deployment) é suportado, portanto, é o WebSphere Application Server Liberty Core e o WebSphere Application Server Liberty Network Deployment. | 0..1  |
+| `<websphereapplicationserver>` ou `<was>`	| Os parâmetros para o WebSphere Application Server.<br/><br/>O elemento <websphereapplicationserver> (ou <was> em seu formato abreviado) denota uma instância do WebSphere Application Server. O perfil completo do WebSphere Application Server (Base e Network Deployment) é suportado, portanto, é o WebSphere Application Server Liberty Core e o WebSphere Application Server Liberty Network Deployment. | 0..1  |
 | `<tomcat>`   | Os parâmetros para Apache Tomcat.                        | 0..1  |
 
 Os atributos e os elementos internos desses elementos são descritos nas tabelas de [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
 No entanto, para o elemento interno do elemento <was> para Liberty Collective, consulte a seguinte tabela:
 
-| Elemento               | Descrição                  | Conta |
+| Elemento               | Descrição (Description)                  | Conta |
 |-----------------------|----------------------------- |-------|
 | `<collectiveMember>`	| Um membro do Liberty
 Collective. | 0..1  |
@@ -512,7 +512,7 @@ Você deve declarar um banco de dados único: `<database kind="Push">`. O elemen
 
 O elemento `<database>` possui os atributos a seguir:
 
-| Atributo     | Descrição                                     | Necessário | Padrão |
+| Atributo     | Descrição (Description)                                     | Necessário | Padrão |
 |---------------|-------------------------------------------------|----------|---------|
 | kind          | O tipo de banco de dados (Push).	                  | Sim	     | Nenhuma    |
 | validar	    | Para validar se o banco de dados está acessível. | No       | verdadeiro    |
@@ -530,7 +530,7 @@ O elemento `<database>` suporta os elementos a seguir. Para obter informações 
 
 > **Nota:** os atributos do elemento `<cloudant>` são ligeiramente diferentes do tempo de execução. Para obter informações adicionais, consulte a tabela a seguir:
 
-| Atributo     | Descrição                                     | Necessário | Padrão                   |
+| Atributo     | Descrição (Description)                                     | Necessário | Padrão                   |
 |---------------|-------------------------------------------------|----------|---------------------------|
 | URL           | A URL da conta do Cloudant.                | No       | https://user.cloudant.com |
 | usuário          | O nome do usuário da conta do Cloudant.	      | Sim	     | Nenhuma                      |
@@ -644,7 +644,7 @@ Os atributos e os elementos internos desses elementos são descritos nas tabelas
 
 No entanto, para o elemento interno do elemento `<was>` para o Liberty Collective, consulte a tabela a seguir:
 
-| Elemento              | Descrição                  | Conta |
+| Elemento              | Descrição (Description)                  | Conta |
 |----------------------|------------------------------|-------|
 | `<collectiveMember>` | Um membro do Liberty
 Collective. |	0..1  |
@@ -699,7 +699,7 @@ Você deve declarar um banco de dados único: `<database kind="Push">`. O elemen
 
 O elemento `<database>` possui os atributos a seguir:
 
-| Atributo    | Descrição                  | Necessário | Padrão |
+| Atributo    | Descrição (Description)                  | Necessário | Padrão |
 |--------------|------------------------------|----------|---------|
 | kind         | O tipo de banco de dados (Push). | Sim      | Nenhuma    |
 | validar	   | Para validar se o banco de dados está acessível. | No | verdadeiro |
@@ -717,7 +717,7 @@ O elemento `<database>` suporta os elementos a seguir. Para obter informações 
 
 > **Nota:** os atributos do elemento `<cloudant>` são ligeiramente diferentes do tempo de execução. Para obter informações adicionais, consulte a tabela a seguir:
 
-| Atributo    | Descrição                            | Necessário   | Padrão |
+| Atributo    | Descrição (Description)                            | Necessário   | Padrão |
 |--------------|----------------------------------------|------------|---------|
 | url	       | A URL da conta do Cloudant.       | No         | https://user.cloudant.com |
 | usuário	       | O nome do usuário da conta do Cloudant. | Sim | Nenhuma |
@@ -787,7 +787,7 @@ Use o atributo **wasStartingWeight** para especificar um valor que é usado no W
 
 As tarefas **installmobilefirstruntime**, **updatemobilefirstruntime** e **uninstallmobilefirstruntime** suportam os elementos a seguir:
 
-| Elemento               | Descrição                                      | Conta |
+| Elemento               | Descrição (Description)                                      | Conta |
 |-----------------------|--------------------------------------------------|-------|
 | `<property>`          | As propriedades.	                               | 0..   |
 | `<applicationserver>` | O servidor de aplicativos.                          | 1     |
@@ -805,10 +805,10 @@ O elemento `<applicationserver>` descreve o servidor de aplicativos no qual o ap
 
 | Elemento                                    | Descrição                                      | Conta |
 |--------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` ou `<was>` | Os parâmetros para o WebSphere Application Server.	| 0..1  |
+| `<websphereapplicationserver>` ou `<was>`  | Os parâmetros para o WebSphere Application Server.	| 0..1  |
 | `<tomcat>`                                 | Os parâmetros para Apache Tomcat.                | 0..1  |
 
- O elemento `<websphereapplicationserver>` (ou `<was>` em sua forma abreviada) denota uma instância do WebSphere Application Server. O perfil completo do WebSphere Application Server (Base e Network Deployment) é suportado, portanto, é o WebSphere Application Server Liberty Core e o WebSphere Application Server Liberty Network Deployment. O elemento `<websphereapplicationserver>` possui os atributos a seguir:
+O elemento `<websphereapplicationserver>` (ou `<was>` em sua forma abreviada) denota uma instância do WebSphere Application Server. O perfil completo do WebSphere Application Server (Base e Network Deployment) é suportado, portanto, é o WebSphere Application Server Liberty Core e o WebSphere Application Server Liberty Network Deployment. O elemento `<websphereapplicationserver>` possui os atributos a seguir:
 
 | Atributo       | Descrição                                            | Necessário                 | Padrão |
 |-----------------|--------------------------------------------------------|--------------------------|---------|
@@ -835,7 +835,7 @@ O elemento <server>, que é usado nesse contexto, tem o seguinte atributo:
 
 Suporta os elementos a seguir para o Liberty Collective:
 
-| Elemento               | Descrição                  | Conta |
+| Elemento               | Descrição (Description)                  | Conta |
 |-----------------------|------------------------------|-------|
 | `<collectiveMember>`  | Um membro do Liberty
 Collective. | 0..1  |
@@ -1176,7 +1176,7 @@ Use o elemento `<applicationserver>` para definir os parâmetros que dependem do
 
 | Elemento           | Descrição	                            | Conta |
 |-------------------|-------------------------------------------|-------|
-| **websphereapplicationserver** ou **was**	| Os parâmetros para o WebSphere Application Server.  O elemento `<websphereapplicationserver>` (ou `<was>` em sua forma abreviada) denota uma instância do WebSphere Application Server. O perfil completo do WebSphere Application Server (Base e Network Deployment) é suportado, portanto, representam o WebSphere Application Server Liberty Core. O Liberty Collective não é suportado para o Application Center. | 0..1 |
+| **websphereapplicationserver** ou **was**	| Os parâmetros para o WebSphere Application Server. O elemento `<websphereapplicationserver>` (ou `<was>` em sua forma abreviada) denota uma instância do WebSphere Application Server. O perfil completo do WebSphere Application Server (Base e Network Deployment) é suportado, portanto, representam o WebSphere Application Server Liberty Core. O Liberty Collective não é suportado para o Application Center. | 0..1 |
 | tomcat            | Os parâmetros para Apache Tomcat. | 0..1 |
 
 Os atributos e os elementos internos desses elementos são descritos nas tabelas da página [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
@@ -1458,7 +1458,7 @@ A tabela a seguir fornece uma lista de tabelas de banco de dados de administraç
 {: #database-used-by-mobilefirst-server-live-update-service }
 A tabela a seguir fornece uma lista de tabelas de banco de dados do serviço de atualização em tempo real, suas descrições e como elas são usadas em bancos de dados relacionais.
 
-| Nome da tabela de banco de dados relacional | Descrição | Ordem de magnitude |
+| Nome da tabela de banco de dados relacional | Descrição (Description) | Ordem de magnitude |
 |--------------------------------|-------------|--------------------|
 | CS_SCHEMAS	                 | Armazena os esquemas com versão que existem na plataforma.	| Uma linha por esquema. |
 | CS_CONFIGURATIONS	             | Armazena instâncias de configurações para cada esquema com versão. | Uma linha por configuração |

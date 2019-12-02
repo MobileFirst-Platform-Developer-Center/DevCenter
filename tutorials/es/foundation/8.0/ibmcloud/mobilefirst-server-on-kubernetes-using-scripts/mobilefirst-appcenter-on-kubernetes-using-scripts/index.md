@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración de MobileFirst Application Center en IBM Cloud Kubernetes Cluster mediante scripts
-breadcrumb_title: AppCenter on Kubernetes Cluster using scripts
+breadcrumb_title: AppCenter on Kubernetes using scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
@@ -72,15 +72,15 @@ Descargue el arreglo temporal más reciente desde Fix central. El soporte de Kub
 
 El archivo contiene los archivos para crear una imagen (**dependencies** y **mfpf-libs**) y los archivos para compilar y desplegar un {{ site.data.keys.mf_app_center }} en Kubernetes (bmx-kubernetes).
 
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+<div class="panel-group accordion" id="terminology1" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Pulse para obtener más información sobre el contenido del archivo comprimido y las propiedades de entorno disponibles que se han de utilizar</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapsezip-file" aria-expanded="true" aria-controls="collapsezip-file"><b>Pulse para obtener más información sobre el contenido del archivo comprimido y las propiedades de entorno disponibles que se han de utilizar</b></a>
             </h4>
         </div>
 
-        <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+        <div id="collapsezip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
                 <img src="zip.png" alt="Imagen que muestra la estructura del sistema de archivos del archivo comprimido" style="float:right;width:570px"/>
                 <h4>carpeta bmx-kubernetes</h4>
@@ -107,15 +107,15 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
                     <li>Carpeta <b>env</b>: Contiene las propiedades del entorno que se utilizan para la inicialización del servidor (server.env) y las opciones de JVM personalizadas (jvm.options).</li>
 
                     <br/>
-                    <div class="panel-group accordion" id="terminology" role="tablist">
+                    <div class="panel-group accordion" id="terminology2" role="tablist">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Pulse para obtener una lista de las propiedades de entorno del servidor soportadas</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapseserver-env" aria-expanded="true" aria-controls="collapseserver-env"><b>Pulse para obtener una lista de las propiedades de entorno del servidor soportadas</b></a>
                                 </h4>
                             </div>
 
-                            <div id="collapse-server-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+                            <div id="collapseserver-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
@@ -156,8 +156,8 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
                                     </table>
 
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Cerrar sección</b></a>
-                                </div>
+                                    <a class="preventScroll" data-toggle="collapse" role="button" data-parent="#server-env" data-target="#collapseserver-env" aria-expanded="true" aria-controls="collapseserver-env"><b>Cerrar sección</b></a>
+            </div>
                             </div>
                         </div>
                     </div>
@@ -165,7 +165,7 @@ El archivo contiene los archivos para crear una imagen (**dependencies** y **mfp
                     <li>Carpeta <b>mfpf-libs</b>: Contiene las bibliotecas de componentes del producto {{ site.data.keys.product_adj }} y CLI.</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Cerrar sección</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapsezip-file" aria-expanded="true" aria-controls="collapsezip-file"><b>Cerrar sección</b></a>
             </div>
         </div>
     </div>
@@ -192,11 +192,11 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Utilización de los archivos de configuración</a>
+                <a class="preventScroll"  role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapsestep-foundation-1" aria-expanded="true" aria-controls="collapsestep-foundation-1">Utilización de los archivos de configuración</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapsestep-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
                 La carpeta <b>args</b> contiene un conjunto de archivos de configuración que contiene los argumentos necesarios para ejecutar los scripts. Rellene los valores de los argumentos en los archivos siguientes:<br/>
 
@@ -246,11 +246,11 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Ejecución de los scripts</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapsestep-foundation-2" aria-expanded="true" aria-controls="collapsestep-foundation-2">Ejecución de los scripts</a>
             </h4>
         </div>
 
-        <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+        <div id="collapsestep-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
 

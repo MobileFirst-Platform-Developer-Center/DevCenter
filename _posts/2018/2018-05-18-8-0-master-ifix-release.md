@@ -1,6 +1,6 @@
 ---
 title:  iFix and CD Update release information for Mobile Foundation v8.0
-date: 2019-09-13
+date: 2019-11-22
 permalink: '/blog/2018/05/18/8-0-master-ifix-release/'
 version:
 - 8.0
@@ -14,14 +14,709 @@ pinned: true
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *8.0.0.0-MFPF-IF201909091050*  is released for Mobile Foundation 8.0, dated **September 9th, 2019**.
+A new iFix *8.0.0.0-MFPF-IF201911181126*  is released for Mobile Foundation 8.0, dated **November 18th, 2019**.
 <br/>
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201911181126" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201911181126">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201911181126" href="#collapse-mfp-ifix-IF201911181126" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201911181126"><b>8.0.0.0-MFPF-IF201911181126</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201911181126" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201911181126">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 8.0, dated <b>November 18th, 2019</b>.
+
+            <h2>Changes in this iFix</h2>
+            <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
+
+            <h3>Currency support</h3>
+            <blockquote><h4>DB2 11.1 software bundle update for Mobile Foundation V8.0</h4>
+            <p>Mobile Foundation v8.0 currently provides DB2 10.5, which is going out of support on April 30th, 2020. To continue the support for DB2, we are updating the license to DB2 11.1, which is available as part of the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc" target="_blank">iFix IF201911181126</a>. Customers can log in to <a href="https://www.ibm.com/software/passportadvantage/pao_customer.html" target="_blank">Passport Advantage</a> using their IBM credentials and download the DB2 11.1 software bundle. Along with this update, we are also providing <a href="https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.licensing.doc/doc/c0058536.html" target="_blank">DB2 Advanced Workgroup Server Edition 11.1</a> for Z environment and <a href="https://www.ibm.com/support/pages/what-db2-oem-high-capacity-feature-option-license-db2hclic" target="_blank">DB2 OEM High Capacity Add on 11.1</a> for customers who want more hardware capacity to run their database workloads.
+            You can read about the functionality of DB2 servers <a href="https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.licensing.doc/doc/r0053238.html" target="_blank">here</a> and follow the <a href="https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.upgrade.doc/doc/c0023662.html" target="_blank">documentation</a> for upgrading to DB2 11.1.</p></blockquote>
+
+            <h3>APARs</h3>
+            <b>PH18886</b> RUNNING AN IONIC APPLICATION HANGS AT BLACK SCREEN IN CASE OF USING LIVE-RELOAD OPTION.<br/>
+            <b>PH18624</b> CHANGEPASSOWORD ON MULTIPLE OPENED COLLECTION CAUSING APP TO THR OW EXCEPTION IN CORDOVA APP.<br/>
+            <b>PH18466</b> NOT ALL ADAPTER API ENDPOINTS IN ANALYTICS DASHBOARD.<br/>
+
+            <h2>How to upgrade</h2>
+            <b>Server</b>
+            To upgrade, download &amp; install the <a href="{{site.baseurl}}/downloads/">Developer Kit for evaluators</a>, <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">Developer Kit for customers / iFix package for on-prem production environment</a>(requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
+
+            <b>Client SDKs</b>
+            To upgrade, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/">run the upgrade commands for your platform</a>.
+
+
+            <h2> Individual artifact build numbers in this iFix</h2>
+            <i>The artifacts updated in the iFix are emphasized.</i>
+
+            <div class="panel-group accordion" id="mfp-component-builds-IF201911181126" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="mfp-devkit-IF201911181126">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201911181126" href="#collapse-mfp-devkit-IF201911181126" aria-expanded="true" aria-controls="collapse-mfp-devkit-IF201911181126"><b>MobileFirst DevKit</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-mfp-devkit-IF201911181126" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-devkit-IF201911181126">
+                        <div class="panel-body">
+                              <b>8.0.0.0-MFPF-DevKit-Linux-IF201911181126.bin</b><br/>
+                              <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201911181126.zip</b><br/>
+                              <b>8.0.0.0-MFPF-DevKit-Windows-IF201911181126.exe</b><br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="cordova-plugins-IF201911181126">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201911181126" href="#collapse-cordova-plugins-IF201911181126" aria-expanded="true" aria-controls="collapse-cordova-plugins-IF201911181126"><b>Cordova plugins</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-cordova-plugins-IF201911181126" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cordova-plugins-IF201911181126">
+                        <div class="panel-body">
+                              <b>cordova-plugin-mfp              8.0.2019111409</b><br/>
+                              cordova-plugin-mfp-encrypt-utils   8.0.2019070909<br/>
+                              cordova-plugin-mfp-fips            8.0.2019070909<br/>
+                              <b>cordova-plugin-mfp-jsonstore      8.0.2019111409</b><br/>
+                              cordova-plugin-mfp-push            8.0.2019082914<br/>
+                              cordova-template-mfp               8.0.2017060206<br/>
+                              cordova-plugin-mfp-analytics      8.0.2019090714<br/>
+                              ibm-mfp-web-sdk                     8.0.2019070909<br/>
+                              passport-mfp-token-validation      8.0.2017010917<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="tools-IF201911181126">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201911181126" href="#collapse-tools-IF201911181126" aria-expanded="true" aria-controls="collapse-tools-IF201911181126">Tools</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-tools-IF201911181126" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tools-IF201911181126">
+                        <div class="panel-body">
+                              mfpdev-cli 8.0.2018121711<br/>
+                              mfpmigrate-cli 8.0.20180813050750<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="ios-sdk-IF201911181126">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201911181126" href="#collapse-ios-sdk-IF201911181126" aria-expanded="true" aria-controls="collapse-ios-sdk-IF201911181126"><b>iOS SDK</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-ios-sdk-IF201911181126" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk-IF201911181126">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatformFoundation              8.0.2019103114<br/>
+                                IBMMobileFirstPlatformFoundationOpenSSLUtils   8.0.2019103114<br/>
+                                IBMMobileFirstPlatformFoundationPush          8.0.2019082914<br/>
+                                <b>IBMMobileFirstPlatformFoundationJSONStore    8.0.2019103114</b><br/>
+                                IBMMobileFirstPlatformFoundationAnalytics             8.0.2019060711<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="android-sdk-IF201911181126">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201911181126" href="#collapse-android-sdk-IF201911181126" aria-expanded="true" aria-controls="collapse-android-sdk-IF201911181126"><b>Android SDK</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-android-sdk-IF201911181126" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk-IF201911181126">
+                        <div class="panel-body">
+                                ibmmobilefirstplatformfoundation 8.0.2019100905<br/>
+                                ibmmobilefirstplatformfoundationpush             8.0.2019031906<br/>
+                                ibmmobilefirstplatformfoundationjsonstore       8.0.2019082807<br/>
+                                IBMMobileFirstPlatformFoundationAnalytics     8.0.2019061806<br/>
+                                <b>adapter-maven-plugin               8.0.2019102506</b><br/>
+                                <b>adapter-maven-archetype-sql       8.0.2019102506</b><br/>
+                                <b>adapter-maven-archetype-java       8.0.2019102506</b><br/>
+                                <b>adapter-maven-archetype-http       8.0.2019102506</b><br/>
+                                <b>adapter-maven-api                  8.0.2019102506</b><br/>
+                                mfp-security-checks-base          8.0.2018030404<br/>
+                                mfp-java-token-validator          8.0.2017020112<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="win-sdk-IF201911181126">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201911181126" href="#collapse-win-sdk-IF201911181126" aria-expanded="true" aria-controls="collapse-win-sdk-IF201911181126">Windows SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-win-sdk-IF201911181126" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk-IF201911181126">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatform Foundation 8.0.2019020516<br/>
+                                IBM MobileFirstPlatform Push SDK  8.0.2018090415<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="xamarin-sdk-IF201911181126">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201911181126" href="#collapse-xamarin-sdk-IF201911181126" aria-expanded="true" aria-controls="collapse-xamarin-sdk-IF201911181126">Xamarin SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-xamarin-sdk-IF201911181126" class="panel-collapse collapse" role="tabpanel" aria-labelledby="xamarin-sdk-IF201911181126">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatform SDK 8.0.2017051208<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="reactnative-sdk-IF201911181126">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201911181126" href="#collapse-reactnative-sdk-IF201911181126" aria-expanded="true" aria-controls="collapse-reactnative-sdk-IF201911181126">React Native SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-reactnative-sdk-IF201911181126" class="panel-collapse collapse" role="tabpanel" aria-labelledby="reactnative-sdk-IF201911181126">
+                        <div class="panel-body">
+                                react-native-ibm-mobilefirst 8.0.2019102104<br/>
+                                react-native-ibm-mobilefirst-jsonstore  8.0.2019102104<br/>
+                                react-native-ibm-mobilefirst-push 8.0.2019102104<br/>
+                        </div>
+                    </div>        
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>   
+</div>     
+
+## Previous iFixes & CD Updates for MobileFirst Foundation 8.0
+
+IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<br/>
+*List below includes iFixes and CD Updates released since 2018 only.*
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201911050809" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201911050809">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201911050809" href="#collapse-mfp-ifix-IF201911050809" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201911050809"><b>8.0.0.0-MFPF-IF201911050809</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201911050809" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201911050809">
+            <div class="panel-body">
+            CD Update 6 for MobileFirst Foundation 8.0, dated <b>November 5th, 2019</b>.
+
+            <h2>Changes in this CD Update</h2>
+            <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
+
+            <h2>Features</h2>
+            <blockquote>To view the details about the features included in this CD Update, see the <a href="{{site.baseurl}}/blog/2019/11/13/8-0-cd-update-release">announcement</a>.</blockquote>
+
+            <h3>APARs</h3>
+            <b>PH18477</b> IOS APPLICATIONS ARE NOT DISPLAYED IN THE APPLICATION CENTER INSTALLER PAGE.<br/>
+            <b>PH17554</b> CALLS TO PROTECTED ADAPTER METHODS INTERMITTENTLY FAIL WITH HTTP 401 ON IOS.<br/>
+
+            <h2>How to upgrade</h2>
+            <b>Server</b>
+            To upgrade, download &amp; install the <a href="{{site.baseurl}}/downloads/">Developer Kit for evaluators</a>, <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">Developer Kit for customers / iFix package for on-prem production environment</a>(requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
+
+            <b>Client SDKs</b>
+            To upgrade, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/">run the upgrade commands for your platform</a>.
+
+
+
+        </div>
+    </div>
+</div>   
+</div>   
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201910101148" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201910101148">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201910101148" href="#collapse-mfp-ifix-IF201910101148" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201910101148"><b>8.0.0.0-MFPF-IF201910101148</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201910101148">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 8.0, dated <b>October 10th, 2019</b>.
+
+            <h2>Changes in this iFix</h2>
+            <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
+
+            <h3>APARs</h3>
+            <b>PH17865</b> SINCE IOS 13, A USER OF SAFARI ISN'T ABLE TO DOWNLOAD A NEW IPA VERSION OF AN APPLICATION FROM APPLICATION CENTER.<br/>
+            <b>PH17860</b> BYOL PACKAGE USES OLD LIBRARIES OF MOBILE FOUNDATION ANALYTICS.<br/>
+            <b>PH17732</b> REMOVE REDUNDANT FILES FROM NATIVE ANDROID CORE SDK TO REDUCE THE APK SIZE.<br/>
+            <b>PH16757</b> 404 ERROR PAGE SHOWING APPLICATION SERVER HTTP RESPONSE.<br/>
+            <b>PH17113</b> HELM CHART INSTALLATION THROWS PARSING ERROR WHEN DB DRIVER PVC IS PROVIDED.<br/>
+            <b>PH17114</b> POD CRASHES WHEN CUSTOM KEYSTORESECRET IS PROVIDED.<br/>
+            <b>PH17115</b> CONNECTION FAILURES ARE SEEN WHEN MOBILE FOUNDATION IS DEPLOYED WITH ORACLE DATABASE.<br/>
+
+            <h2>How to upgrade</h2>
+            <b>Server</b>
+            To upgrade, download &amp; install the <a href="{{site.baseurl}}/downloads/">Developer Kit for evaluators</a>, <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">Developer Kit for customers / iFix package for on-prem production environment</a>(requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
+
+            <b>Client SDKs</b>
+            To upgrade, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/">run the upgrade commands for your platform</a>.
+
+
+            <h2> Individual artifact build numbers in this iFix</h2>
+            <i>The artifacts updated in the iFix are emphasized.</i>
+
+            <div class="panel-group accordion" id="mfp-component-builds-IF201910101148" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="mfp-devkit-IF201910101148">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201910101148" href="#collapse-mfp-devkit-IF201910101148" aria-expanded="true" aria-controls="collapse-mfp-devkit-IF201910101148"><b>MobileFirst DevKit</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-mfp-devkit-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-devkit-IF201910101148">
+                        <div class="panel-body">
+                              <b>8.0.0.0-MFPF-DevKit-Linux-IF201910101148.bin</b><br/>
+                              <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201910101148.zip</b><br/>
+                              <b>8.0.0.0-MFPF-DevKit-Windows-IF201910101148.exe</b><br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="cordova-plugins-IF201910101148">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201910101148" href="#collapse-cordova-plugins-IF201910101148" aria-expanded="true" aria-controls="collapse-cordova-plugins-IF201910101148">Cordova plugins</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-cordova-plugins-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cordova-plugins-IF201910101148">
+                        <div class="panel-body">
+                              cordova-plugin-mfp              8.0.2019091217<br/>
+                              cordova-plugin-mfp-encrypt-utils   8.0.2019070909<br/>
+                              cordova-plugin-mfp-fips            8.0.2019070909<br/>
+                              cordova-plugin-mfp-jsonstore      8.0.2019072908<br/>
+                              cordova-plugin-mfp-push            8.0.2019090606<br/>
+                              cordova-template-mfp               8.0.2017060206<br/>
+                              cordova-plugin-mfp-analytics      8.0.2019090714<br/>
+                              ibm-mfp-web-sdk                     8.0.2019070909<br/>
+                              passport-mfp-token-validation      8.0.2017010917<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="tools-IF201910101148">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201910101148" href="#collapse-tools-IF201910101148" aria-expanded="true" aria-controls="collapse-tools-IF201910101148">Tools</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-tools-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tools-IF201910101148">
+                        <div class="panel-body">
+                              mfpdev-cli 8.0.2018121711<br/>
+                              mfpmigrate-cli 8.0.20180813050750<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="ios-sdk-IF201910101148">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201910101148" href="#collapse-ios-sdk-IF201910101148" aria-expanded="true" aria-controls="collapse-ios-sdk-IF201910101148">iOS SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-ios-sdk-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk-IF201910101148">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatformFoundation              8.0.2019070714<br/>
+                                IBMMobileFirstPlatformFoundationOpenSSLUtils   8.0.2019070714<br/>
+                                IBMMobileFirstPlatformFoundationPush          8.0.2019082914<br/>
+                                IBMMobileFirstPlatformFoundationJSONStore    8.0.2018071512<br/>
+                                IBMMobileFirstPlatformFoundationAnalytics             8.0.2019060711<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="android-sdk-IF201910101148">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201910101148" href="#collapse-android-sdk-IF201910101148" aria-expanded="true" aria-controls="collapse-android-sdk-IF201910101148"><b>Android SDK</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-android-sdk-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk-IF201910101148">
+                        <div class="panel-body">
+                                <b>ibmmobilefirstplatformfoundation 8.0.2019082915</b><br/>
+                                ibmmobilefirstplatformfoundationpush             8.0.2019031906<br/>
+                                ibmmobilefirstplatformfoundationjsonstore       8.0.2019072605<br/>
+                                IBMMobileFirstPlatformFoundationAnalytics     8.0.2019061806<br/>
+                                <b>adapter-maven-plugin               8.0.2019092701</b><br/>
+                                <b>adapter-maven-archetype-sql       8.0.2019092701</b><br/>
+                                <b>adapter-maven-archetype-java       8.0.2019092701</b><br/>
+                                <b>adapter-maven-archetype-http       8.0.2019092701</b><br/>
+                                <b>adapter-maven-api                  8.0.2019092701</b><br/>
+                                mfp-security-checks-base          8.0.2018030404<br/>
+                                mfp-java-token-validator          8.0.2017020112<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="win-sdk-IF201910101148">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201910101148" href="#collapse-win-sdk-IF201910101148" aria-expanded="true" aria-controls="collapse-win-sdk-IF201910101148">Windows SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-win-sdk-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk-IF201910101148">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatform Foundation 8.0.2019020516<br/>
+                                IBM MobileFirstPlatform Push SDK  8.0.2018090415<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="xamarin-sdk-IF201910101148">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201910101148" href="#collapse-xamarin-sdk-IF201910101148" aria-expanded="true" aria-controls="collapse-xamarin-sdk-IF201910101148">Xamarin SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-xamarin-sdk-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="xamarin-sdk-IF201910101148">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatform SDK 8.0.2017051208<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="reactnative-sdk-IF201910101148">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201910101148" href="#collapse-reactnative-sdk-IF201910101148" aria-expanded="true" aria-controls="collapse-reactnative-sdk-IF201910101148">React Native SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-reactnative-sdk-IF201910101148" class="panel-collapse collapse" role="tabpanel" aria-labelledby="reactnative-sdk-IF201910101148">
+                        <div class="panel-body">
+                                react-native-ibm-mobilefirst 8.0.2019071506<br/>
+                                react-native-ibm-mobilefirst-jsonstore  8.0.2019071506<br/>
+                                react-native-ibm-mobilefirst-push 8.0.2019071506<br/>
+                        </div>
+                    </div>        
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>   
+</div>   
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201909261537" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201909261537">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201909261537" href="#collapse-mfp-ifix-IF201909261537" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201909261537"><b>8.0.0.0-MFPF-IF201909261537</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201909261537" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201909261537">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 8.0, dated <b>September 26th, 2019</b>.
+
+            <h2>Changes in this iFix</h2>
+            <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
+
+            <h3>APARs</h3>
+            <b>PH16755</b> NETWORK AND ADAPTER TABLES IN ANALYTICS CONSOLE SHOWS ONLY 10  ENTRIES.<br/>
+
+            <h2>How to upgrade</h2>
+            <b>Server</b>
+            To upgrade, download &amp; install the <a href="{{site.baseurl}}/downloads/">Developer Kit for evaluators</a>, <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">Developer Kit for customers / iFix package for on-prem production environment</a>(requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
+
+            <b>Client SDKs</b>
+            To upgrade, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/">run the upgrade commands for your platform</a>.
+
+
+            <h2> Individual artifact build numbers in this iFix</h2>
+            <i>The artifacts updated in the iFix are emphasized.</i>
+
+            <div class="panel-group accordion" id="mfp-component-builds-IF201909261537" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="mfp-devkit-IF201909261537">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909261537" href="#collapse-mfp-devkit-IF201909261537" aria-expanded="true" aria-controls="collapse-mfp-devkit-IF201909261537"><b>MobileFirst DevKit</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-mfp-devkit-IF201909261537" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-devkit-IF201909261537">
+                        <div class="panel-body">
+                              <b>8.0.0.0-MFPF-DevKit-Linux-IF201909261537.bin</b><br/>
+                              <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201909261537.zip</b><br/>
+                              <b>8.0.0.0-MFPF-DevKit-Windows-IF201909261537.exe</b><br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="cordova-plugins-IF201909261537">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909261537" href="#collapse-cordova-plugins-IF201909261537" aria-expanded="true" aria-controls="collapse-cordova-plugins-IF201909261537">Cordova plugins</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-cordova-plugins-IF201909261537" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cordova-plugins-IF201909261537">
+                        <div class="panel-body">
+                              cordova-plugin-mfp              8.0.2019091217<br/>
+                              cordova-plugin-mfp-encrypt-utils   8.0.2019070909<br/>
+                              cordova-plugin-mfp-fips            8.0.2019070909<br/>
+                              cordova-plugin-mfp-jsonstore      8.0.2019072908<br/>
+                              cordova-plugin-mfp-push            8.0.2019090606<br/>
+                              cordova-template-mfp               8.0.2017060206<br/>
+                              cordova-plugin-mfp-analytics      8.0.2019090714<br/>
+                              ibm-mfp-web-sdk                     8.0.2019070909<br/>
+                              passport-mfp-token-validation      8.0.2017010917<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="tools-IF201909261537">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909261537" href="#collapse-tools-IF201909261537" aria-expanded="true" aria-controls="collapse-tools-IF201909261537">Tools</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-tools-IF201909261537" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tools-IF201909261537">
+                        <div class="panel-body">
+                              mfpdev-cli 8.0.2018121711<br/>
+                              mfpmigrate-cli 8.0.20180813050750<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="ios-sdk-IF201909261537">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909261537" href="#collapse-ios-sdk-IF201909261537" aria-expanded="true" aria-controls="collapse-ios-sdk-IF201909261537">iOS SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-ios-sdk-IF201909261537" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk-IF201909261537">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatformFoundation              8.0.2019070714<br/>
+                                IBMMobileFirstPlatformFoundationOpenSSLUtils   8.0.2019070714<br/>
+                                IBMMobileFirstPlatformFoundationPush          8.0.2019082914<br/>
+                                IBMMobileFirstPlatformFoundationJSONStore    8.0.2018071512<br/>
+                                IBMMobileFirstPlatformFoundationAnalytics             8.0.2019060711<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="android-sdk-IF201909261537">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909261537" href="#collapse-android-sdk-IF201909261537" aria-expanded="true" aria-controls="collapse-android-sdk-IF201909261537"><b>Android SDK</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-android-sdk-IF201909261537" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk-IF201909261537">
+                        <div class="panel-body">
+                                ibmmobilefirstplatformfoundation 8.0.2019072508<br/>
+                                ibmmobilefirstplatformfoundationpush             8.0.2019031906<br/>
+                                ibmmobilefirstplatformfoundationjsonstore       8.0.2019072605<br/>
+                                IBMMobileFirstPlatformFoundationAnalytics     8.0.2019061806<br/>
+                                <b>adapter-maven-plugin               8.0.2019091817</b><br/>
+                                <b>adapter-maven-archetype-sql       8.0.2019091817</b><br/>
+                                <b>adapter-maven-archetype-java       8.0.2019091817</b><br/>
+                                <b>adapter-maven-archetype-http       8.0.2019091817</b><br/>
+                                <b>adapter-maven-api                  8.0.2019091817</b><br/>
+                                mfp-security-checks-base          8.0.2018030404<br/>
+                                mfp-java-token-validator          8.0.2017020112<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="win-sdk-IF201909261537">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909261537" href="#collapse-win-sdk-IF201909261537" aria-expanded="true" aria-controls="collapse-win-sdk-IF201909261537">Windows SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-win-sdk-IF201909261537" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk-IF201909261537">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatform Foundation 8.0.2019020516<br/>
+                                IBM MobileFirstPlatform Push SDK  8.0.2018090415<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="xamarin-sdk-IF201909261537">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909261537" href="#collapse-xamarin-sdk-IF201909261537" aria-expanded="true" aria-controls="collapse-xamarin-sdk-IF201909261537">Xamarin SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-xamarin-sdk-IF201909261537" class="panel-collapse collapse" role="tabpanel" aria-labelledby="xamarin-sdk-IF201909261537">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatform SDK 8.0.2017051208<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="reactnative-sdk-IF201909261537">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909261537" href="#collapse-reactnative-sdk-IF201909261537" aria-expanded="true" aria-controls="collapse-reactnative-sdk-IF201909261537">React Native SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-reactnative-sdk-IF201909261537" class="panel-collapse collapse" role="tabpanel" aria-labelledby="reactnative-sdk-IF201909261537">
+                        <div class="panel-body">
+                                react-native-ibm-mobilefirst 8.0.2019071506<br/>
+                                react-native-ibm-mobilefirst-jsonstore  8.0.2019071506<br/>
+                                react-native-ibm-mobilefirst-push 8.0.2019071506<br/>
+                        </div>
+                    </div>        
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>   
+</div>   
+
+<div class="panel-group accordion" id="mfp-8.0-ifix-IF201909190904" role="tablist">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201909190904">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201909190904" href="#collapse-mfp-ifix-IF201909190904" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201909190904"><b>8.0.0.0-MFPF-IF201909190904</b></a>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201909190904" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201909190904">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 8.0, dated <b>September 19th, 2019</b>.
+
+            <h2>Changes in this iFix</h2>
+            <i>For a cumulative list of all previous fixes, see the <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">iFix download page on IBM Fix Central</a>.</i><br/><br/>
+
+            <h3>Features</h3>
+            <p>Support for React Native 0.60 has been added to MobileFirst react native plugins.</p>
+
+            <h3>APARs</h3>
+            <b>PH16769</b> QUARTZ JAR IN MFP RUNTIME WAR LOOKS FOR TERRACOTA WEBSITE FOR QUARTZ UPDATE.<br/>
+            <b>PH16456</b> ADDING CORDOVA-PLUGIN-MFP 8.0.2019072911 ON FRESHLY MIGRATED IONIC4 PROJECT LET A BLANK PAGE ON IOS DEVICE.<br/>
+            <b>PH16425</b> ON CANCELING THE CHALLENGE HANDLER, THE POP UP DOES NOT DISAPPEAR.<br/>
+            <b>PH16206</b> DEVICE_ARCHIVE DIR DOES NOT GET CREATED AND DOESNT ARCHIVE DATA WHEN LICENSE TRACKING IS ON.<br/>
+
+            <h2>How to upgrade</h2>
+            <b>Server</b>
+            To upgrade, download &amp; install the <a href="{{site.baseurl}}/downloads/">Developer Kit for evaluators</a>, <a href="http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc">Developer Kit for customers / iFix package for on-prem production environment</a>(requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
+
+            <b>Client SDKs</b>
+            To upgrade, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/">run the upgrade commands for your platform</a>.
+
+
+            <h2> Individual artifact build numbers in this iFix</h2>
+            <i>The artifacts updated in the iFix are emphasized.</i>
+
+            <div class="panel-group accordion" id="mfp-component-builds-IF201909190904" role="tablist">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="mfp-devkit-IF201909190904">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909190904" href="#collapse-mfp-devkit-IF201909190904" aria-expanded="true" aria-controls="collapse-mfp-devkit-IF201909190904"><b>MobileFirst DevKit</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-mfp-devkit-IF201909190904" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-devkit-IF201909190904">
+                        <div class="panel-body">
+                              <b>8.0.0.0-MFPF-DevKit-Linux-IF201909190904.bin</b><br/>
+                              <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201909190904.zip</b><br/>
+                              <b>8.0.0.0-MFPF-DevKit-Windows-IF201909190904.exe</b><br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="cordova-plugins-IF201909190904">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909190904" href="#collapse-cordova-plugins-IF201909190904" aria-expanded="true" aria-controls="collapse-cordova-plugins-IF201909190904"><b>Cordova plugins</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-cordova-plugins-IF201909190904" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cordova-plugins-IF201909190904">
+                        <div class="panel-body">
+                              <b>cordova-plugin-mfp              8.0.2019091217</b><br/>
+                              cordova-plugin-mfp-encrypt-utils   8.0.2019070909<br/>
+                              cordova-plugin-mfp-fips            8.0.2019070909<br/>
+                              cordova-plugin-mfp-jsonstore      8.0.2019072908<br/>
+                              cordova-plugin-mfp-push            8.0.2019090606<br/>
+                              cordova-template-mfp               8.0.2017060206<br/>
+                              cordova-plugin-mfp-analytics      8.0.2019090714<br/>
+                              ibm-mfp-web-sdk                     8.0.2019070909<br/>
+                              passport-mfp-token-validation      8.0.2017010917<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="tools-IF201909190904">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909190904" href="#collapse-tools-IF201909190904" aria-expanded="true" aria-controls="collapse-tools-IF201909190904">Tools</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-tools-IF201909190904" class="panel-collapse collapse" role="tabpanel" aria-labelledby="tools-IF201909190904">
+                        <div class="panel-body">
+                              mfpdev-cli 8.0.2018121711<br/>
+                              mfpmigrate-cli 8.0.20180813050750<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="ios-sdk-IF201909190904">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909190904" href="#collapse-ios-sdk-IF201909190904" aria-expanded="true" aria-controls="collapse-ios-sdk-IF201909190904">iOS SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-ios-sdk-IF201909190904" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk-IF201909190904">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatformFoundation              8.0.2019070714<br/>
+                                IBMMobileFirstPlatformFoundationOpenSSLUtils   8.0.2019070714<br/>
+                                IBMMobileFirstPlatformFoundationPush          8.0.2019082914<br/>
+                                IBMMobileFirstPlatformFoundationJSONStore    8.0.2018071512<br/>
+                                IBMMobileFirstPlatformFoundationAnalytics             8.0.2019060711<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="android-sdk-IF201909190904">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909190904" href="#collapse-android-sdk-IF201909190904" aria-expanded="true" aria-controls="collapse-android-sdk-IF201909190904"><b>Android SDK</b></a>
+                        </h4>
+                    </div>
+                    <div id="collapse-android-sdk-IF201909190904" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk-IF201909190904">
+                        <div class="panel-body">
+                                ibmmobilefirstplatformfoundation 8.0.2019072508</b><br/>
+                                ibmmobilefirstplatformfoundationpush             8.0.2019031906<br/>
+                                ibmmobilefirstplatformfoundationjsonstore       8.0.2019072605<br/>
+                                IBMMobileFirstPlatformFoundationAnalytics     8.0.2019061806<br/>
+                                <b>adapter-maven-plugin              8.0.2019070812</b><br/>
+                                <b>adapter-maven-archetype-sql      8.0.2019070812</b><br/>
+                                <b>adapter-maven-archetype-java      8.0.2019070812</b><br/>
+                                <b>adapter-maven-archetype-http      8.0.2019070812</b><br/>
+                                <b>adapter-maven-api                 8.0.2019070812</b><br/>
+                                mfp-security-checks-base          8.0.2018030404<br/>
+                                mfp-java-token-validator          8.0.2017020112<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="win-sdk-IF201909190904">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909190904" href="#collapse-win-sdk-IF201909190904" aria-expanded="true" aria-controls="collapse-win-sdk-IF201909190904">Windows SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-win-sdk-IF201909190904" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk-IF201909190904">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatform Foundation 8.0.2019020516<br/>
+                                IBM MobileFirstPlatform Push SDK  8.0.2018090415<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="xamarin-sdk-IF201909190904">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909190904" href="#collapse-xamarin-sdk-IF201909190904" aria-expanded="true" aria-controls="collapse-xamarin-sdk-IF201909190904">Xamarin SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-xamarin-sdk-IF201909190904" class="panel-collapse collapse" role="tabpanel" aria-labelledby="xamarin-sdk-IF201909190904">
+                        <div class="panel-body">
+                                IBMMobileFirstPlatform SDK 8.0.2017051208<br/>
+                        </div>
+                    </div>      
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="reactnative-sdk-IF201909190904">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF201909190904" href="#collapse-reactnative-sdk-IF201909190904" aria-expanded="true" aria-controls="collapse-reactnative-sdk-IF201909190904">React Native SDK</a>
+                        </h4>
+                    </div>
+                    <div id="collapse-reactnative-sdk-IF201909190904" class="panel-collapse collapse" role="tabpanel" aria-labelledby="reactnative-sdk-IF201909190904">
+                        <div class="panel-body">
+                                react-native-ibm-mobilefirst 8.0.2019071506<br/>
+                                react-native-ibm-mobilefirst-jsonstore  8.0.2019071506<br/>
+                                react-native-ibm-mobilefirst-push 8.0.2019071506<br/>
+                        </div>
+                    </div>        
+                </div>
+            </div>        
+        </div>
+    </div>
+</div>   
+</div>  
 
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201909091050" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201909091050">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201909091050" href="#collapse-mfp-ifix-IF201909091050" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201909091050"><b>8.0.0.0-MFPF-IF201909091050</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-8.0-ifix-IF201909091050" href="#collapse-mfp-ifix-IF201909091050" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201909091050"><b>8.0.0.0-MFPF-IF201909091050</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201909091050" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201909091050">
@@ -82,7 +777,7 @@ A new iFix *8.0.0.0-MFPF-IF201909091050*  is released for Mobile Foundation 8.0,
                               cordova-plugin-mfp-encrypt-utils   8.0.2019070909<br/>
                               cordova-plugin-mfp-fips            8.0.2019070909<br/>
                               <b>cordova-plugin-mfp-jsonstore      8.0.2019072908</b><br/>
-                              <b>cordova-plugin-mfp-push            8.0.2019082914</b><br/>
+                              <b>cordova-plugin-mfp-push            8.0.2019090606</b><br/>
                               cordova-template-mfp               8.0.2017060206<br/>
                               <b>cordova-plugin-mfp-analytics      8.0.2019090714</b><br/>
                               ibm-mfp-web-sdk                     8.0.2019070909<br/>
@@ -185,12 +880,6 @@ A new iFix *8.0.0.0-MFPF-IF201909091050*  is released for Mobile Foundation 8.0,
     </div>
 </div>   
 </div>   
-
-## Previous iFixes & CD Updates for MobileFirst Foundation 8.0
-
-IFixes for MobileFirst Foundation 8.0 that was released earlier is listed here.<br/>
-*List below includes iFixes and CD Updates released since 2018 only.*
-
 <div class="panel-group accordion" id="mfp-8.0-ifix-IF201908051227" role="tablist">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201908051227">

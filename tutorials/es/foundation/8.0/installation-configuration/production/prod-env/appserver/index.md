@@ -21,6 +21,7 @@ También se debe definir la topología del servidor para instalar los componente
 * [Instalación con tareas Ant](#installing-with-ant-tasks)
 * [Instalación de los componentes de {{ site.data.keys.mf_server }} manualmente](#installing-the-mobilefirst-server-components-manually)
 * [Instalación de una granja de servidores](#installing-a-server-farm)
+* [Planificador de tiempo de ejecución de Mobile Foundation](#mf-runtime-scheduler)
 
 ## Requisitos previos del servidor de aplicaciones
 {: #application-server-prerequisites }
@@ -82,8 +83,8 @@ Asegúrese de que cumple los criterios siguientes:
 {% endhighlight %}
                     </li>
                     <li>Para activar la autenticación, consulte la documentación de usuario de Apache Tomcat <a href="https://tomcat.apache.org/tomcat-7.0-doc/config/http.html#SSL_Support">SSL Support - BIO and NIO</a> y <a href="http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html">SSL Configuration HOW-TO</a>.</li>
-                    <li>For a JMX configuration with SSL enabled, add the following options:
-{% highlight xml %}
+                    <li>En una configuración JMX con SSL habilitado, añada las opciones
+siguientes: {% highlight xml %}
 -Dcom.sun.management.jmxremote=true
 -Dcom.sun.management.jmxremote.port=8686
 -Dcom.sun.management.jmxremote.ssl=true
@@ -421,7 +422,7 @@ Las referencias a las tareas Ant son las siguientes:
 * [Tareas Ant para la instalación del servicio de envío por push de {{ site.data.keys.mf_server }}](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
 * [Tareas Ant para la instalación de entornos de ejecución de {{ site.data.keys.product_adj }}](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-Para obtener una visión general de la instalación con el archivo y las tareas de configuración de ejemplo, consulte [Instalación de {{ site.data.keys.mf_server }} en modalidad de línea de mandatos](../../simple-install/tutorials/command-line).
+Para obtener una visión general de la instalación con el archivo de configuración de ejemplo y las tareas, consulte [Instalación de {{ site.data.keys.mf_server }} en modalidad de línea de mandatos](../../simple-install/command-line).
 
 Puede ejecutar un archivo Ant con la distribución de Ant que forma parte de la instalación del producto. Por ejemplo, si tiene el clúster WebSphere Application Server Network Deployment y su base de datos es IBM DB2, puede utilizar el archivo Ant **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-wasnd-cluster-db2.xml**. Después de editar el archivo y especificar todas las propiedades necesarias, puede ejecutar los mandatos siguientes desde el directorio **mfp\_install\_dir/MobileFirstServer/configuration-samples**:
 
@@ -2152,7 +2153,7 @@ Cuando planifique una granja de servidores, cree en primer lugar servidores aut�
                                 </blockquote>
                                 Por último, inicie el servidor y busque las líneas que contienen com.ibm.ssl.trustStore en el archivo <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b>.
                                 <ul>
-                                    <li>Importe los certificados públicos del resto de servidores de la granja de servidores en el almacén de confianza al que se hace referencia mediante el archivo de configuración <b>server.xml</b> del servidor. La guía de aprendizaje <a href="../../simple-install/tutorials/graphical-mode">Instalación de {{ site.data.keys.mf_server }} en modalidad gráfica</a> proporciona las instrucciones para intercambiar los certificados entre dos servidores de Liberty de una granja de servidores. Para obtener más información, consulte el paso 5 de la sección <a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Creación de una granja de servidores de dos servidores de Liberty que ejecutan {{ site.data.keys.mf_server }}</a>.</li>
+                                    <li>Importe los certificados públicos del resto de servidores de la granja de servidores en el almacén de confianza al que se hace referencia mediante el archivo de configuración <b>server.xml</b> del servidor. La guía de aprendizaje <a href="../../simple-install/graphical-mode">Instalación de {{ site.data.keys.mf_server }} en modalidad gráfica</a> proporciona las instrucciones para intercambiar los certificados entre dos servidores de Liberty de una granja de servidores. Para obtener más información, consulte el paso 5 de la sección <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Creación de una granja de servidores de dos servidores de Liberty que ejecutan {{ site.data.keys.mf_server }}</a>.</li>
                                     <li>Reinicie cada instancia del perfil de WebSphere Application Server Liberty para que surta efecto la configuración de seguridad. Los pasos siguientes son necesarios para que funcione el inicio de sesión único (SSO).</li>
                                     <li>Inicie un miembro de la granja de servidores. En la configuración de LTPA predeterminada, una vez que el servidor de Liberty se inicie correctamente, generará un almacén de claves de LTPA como <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys.</b></li>
                                     <li>Copie el archivo <b>ltpa.keys</b> al directorio <b>${wlp.user.dir}/servers/server_name/resources/security</b> de cada miembro de la granja de servidores para replicar los almacenes de claves de LTPA entre los miembros de la granja de servidores. Para obtener más información sobre la configuración de LTPA, consulte <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Configuración de LTPA en el perfil de Liberty</a>.</li>
@@ -2222,3 +2223,66 @@ Puede configurar la tasa de latido y los valores de tiempo de espera definiendo 
 
 <br/>
 Para obtener más información sobre propiedades JNDI, consulte [Lista de propiedades JNDI para el servicio de administración de {{ site.data.keys.mf_server }}](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+
+## Planificador de tiempo de ejecución de Mobile Foundation
+{: #mf-runtime-scheduler}
+
+El tiempo de ejecución de Mobile Foundation utiliza planificadores Quartz para realizar algunas de las actividades planificadas.
+
+El planificador del tiempo de ejecución de Mobile Foundation realiza las actividades siguientes: 
+
+1.	Seguimiento de licencia 
+2.	Creación de registros de auditoría 
+
+La ejecución del planificador se controla mediante las dos propiedades JNDI siguientes,
+
+* **mfp.licenseTracking.enabled**
+* **mfp.purgedata.enabled** (introducida a partir del nivel de iFix *8.0.0.0-MFPF-IF201812191602-CDUpdate-04*)
+
+De forma predeterminada, estas propiedades JNDI están habilitadas para todos los servidores de aplicaciones soportados.
+
+>**Nota:** En Mobile Foundation que se ejecuta en WebSphere Application Server, la propiedad JNDI **mfp.licenseTracking.enabled** se ha de habilitar estableciendo su valor en **true** en las entradas del entorno de tiempo de ejecución en la consola WAS.
+
+### Seguimiento de licencia 
+{: #license-tracking}
+
+El seguimiento de licencia realiza un seguimiento de las métricas relevantes para la política de licencias, tales como los dispositivos de cliente activos, los dispositivos dirigibles y las aplicaciones instaladas. Esta información ayuda a determinar si el uso actual de Mobile Foundation está dentro de los niveles de titularidad de licencia y puede impedir las infracciones de licencia potenciales. El seguimiento de licencias ayuda en la tarea de decomisar dispositivos que ya no acceden a Mobile Foundation Server y también ayuda a archivar y suprimir registros antiguos de *MFP_PERSISTENT_DATA*.
+
+La siguiente tabla lista las propiedades JNDI relacionadas con el seguimiento de licencia. 
+
+| Propiedad JNDI| Descripción  |
+|---------------|-------------|
+| mfp.device.decommissionProcessingInterval | Define la frecuencia (en segundos) con la que se ejecuta la tarea de decomisar. Valor predeterminado: `86400`, que es un día. |
+| mfp.device.decommission.when | El número de días de inactividad después del cual un dispositivo de cliente se decomisa por la tarea de decomisar dispositivo. Valor predeterminado: `90 días`. |
+| mfp.device.archiveDecommissioned.when | El número de días de inactividad después del cual se archiva un dispositivo de cliente decomisado. <br/> Esta tarea graba los dispositivos de cliente que se han decomisado en un archivo archivador. Los dispositivos de cliente archivados se graban en un archivo en el directorio home\devices_archive de Mobile Foundation Server. El nombre del archivo que contiene la indicación de fecha y hora de cuando se creó el archivo de archivado. Valor predeterminado: `90 días`. |
+| mfp.licenseTracking.enabled | Un valor utilizado para habilitar o inhabilitar el seguimiento de dispositivos en IBM Mobile Foundation. <br/> Por motivos de rendimiento, puede inhabilitar el seguimiento de dispositivo cuando IBM Mobile Foundation solo ejecuta aplicaciones B2C (Business-to-Consumer). Cuando el seguimiento de dispositivo está inhabilitado, los informes de licencia también están inhabilitados y no se generan métricas de licencia. <br/> Los valores posibles son `true` (predeterminado) y `false`. |
+
+Consulte los temas siguientes para obtener más detalles sobre el seguimiento de licencias. 
+
+* [Seguimiento de licencias de Mobile Foundation]({{site.baseurl}}/tutorials/en/foundation/8.0/administering-apps/license-tracking/)
+* [Propiedades de tiempo de ejecución de Mobile Foundation](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html)
+
+Un planificador se ejecutará 8 horas después de un inicio del servidor. Es decir, si hoy se inician los servidores a las 11 PM, el planificador no se ejecutará a la 1 AM (tiempo de ejecución predeterminado del planificador) del día siguiente, solo comenzará a ejecutarse a partir del siguiente día a la 1 AM. El espacio de tiempo entre un inicio del servidor y la ejecución del planificador es de 8 horas.
+
+A partir del nivel de iFix
+[*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) el espacio de tiempo entre el inicio del servidor y la ejecución del planificador es de 4 horas, en lugar de 8 horas.
+Además se ha incluido una nueva propiedad *MFP.SCHEDULER.STARTHOUR*. Con esta propiedad, se puede establecer la ejecución del planificador a cualquier hora que elija el cliente, en lugar del valor predeterminado de la 1 AM. La propiedad puede aceptar un valor de 1 a 23. Esta propiedad garantiza que el cliente pueda configurar su planificador para que se inicie en horas de tráfico ligero y también puede asegurarse de que el planificador se inicie independientemente del inicio diario del servidor. En el caso de un cliente que reinicia su servidor cada noche a la 1 AM, puede establecer el valor de *MFP.SCHEDULER.STARTHOUR* en 5. Esto garantiza un espacio de tiempo de 4 horas entre el reinicio del servidor y el planificador se ejecutará a las 5 AM. 
+
+Se sugiere mantener inhabilitado el seguimiento de licencias ya que las actividades de seguimiento de licencias son intensivas para la base de datos. Solo los clientes que utilizan el modelo de licencia de dispositivos dirigibles de Mobile Foundation necesitan ejecutar el seguimiento de licencia.
+
+Los clientes que no tienen habilitado el seguimiento de licencias puede utilizar la [característica de depuración]({{site.baseurl}}/blog/2018/12/27/purge-mfp-runtime-tables/) para realizar una limpieza de los registros antiguos y mantener las tablas *MFP_PERSISTENT_DATA* y *MFP_TRANSIENT_DATA*.
+
+### Creación del registro de auditoría 
+{: #creating-audit-log}
+
+El seguimiento de licencia guarda la última ejecución y los datos de licencia en la tabla de tiempo de ejecución de Mobile Foundation *LICENSE_TERMS*. El registro de auditoría crea un registro basado en la entrada de informe más reciente de esta tabla. Los informes están disponibles como archivos `.slmtag` en la carpeta logs bajo el directorio de instalación del servidor.
+
+### Inhabilitación de la actualización de Quartz
+{: #disable-quartz-update}
+
+El tiempo de ejecución de Mobile Foundation empaqueta las bibliotecas necesarias, incluidas algunas bibliotecas de terceros. Mobile Foundation utiliza planificadores de trabajos Quartz e incluye `quartz2.2.0.jar`.
+
+Quartz incluye una característica de *comprobación de actualizaciones* que se conecta con el servidor [](http://www.terracotta.org/), para comprobar si hay una nueva versión de Quartz disponible para su descarga. Esta comprobación se ejecuta de forma asíncrona y no afecta el tiempo de arranque/inicialización de Quartz y si no se puede realizar la conexión falla sin interrupciones. Si se ejecuta la comprobación y se encuentra una actualización, se notificará que está disponible en los registros de Quartz. 
+
+La *comprobación de actualizaciones* se puede inhabilitar utilizando el distintivo `org.quartz.scheduler.skipUpdateCheck = true`. El despliegue de Liberty de Mobile Foundation crea un archivo `jvm.options` y durante el despliegue realizado mediante la herramienta de configuración del servidor, el archivo `jvm.options` recién creado incluirá esta propiedad a partir del nivel de iFix [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) en adelante. Para los niveles de iFix anteriores, el cliente puede añadir esta propiedad al archivo `jvm.options`.
+En el caso de los despliegues de WAS (WebSphere Application Server), la propiedad JNDI anterior se ha de añadir a la propiedad de entorno de la aplicación Mobile Foundation desde la consola de administración WAS.

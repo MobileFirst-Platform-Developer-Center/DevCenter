@@ -16,7 +16,7 @@ Application Center を使用すると、簡単にモバイル・アプリケー�
 * **フィードバックおよび評価情報の共有**を行うことができます。  
 * アプリケーションをインストールできるユーザーを制限するためにアクセス制御リストを使用できます。
 
-Application Center は、{{ site.data.keys.product_adj }} アプリケーションおよび非 {{ site.data.keys.product_adj }} アプリケーションと連携し、**iOS、Android**、**BlackBerry 6/7**、および **Windows/Phone 8.x** の各種アプリケーションをすべてサポートします。
+Application Center は、{{ site.data.keys.product_adj }} アプリケーションおよび非 {{ site.data.keys.product_adj }} アプリケーションと連携し、**iOS、Android**、および **Windows/Phone 8.x** の各種アプリケーションをすべてサポートします。
 
 > **注:** iOS アプリケーションのストアへの提出および検証のために Test Flight または iTunes Connect を使用して生成されたアーカイブ・ファイルおよび IPA ファイルにより、ランタイムの異常終了や失敗が発生する場合があります。詳細については、ブログ[『Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0』](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)をご覧ください。
 
@@ -26,6 +26,8 @@ Application Center はさまざまな状況で使用できます。 例えば、
 * 開発中、チーム内にアプリケーションを配布するため。
 
 > **注:** iOS AppCenter Installer アプリケーションのビルドには、MobileFirst 7.1 が必要です。
+>
+Studio は 7.1 worklight アプリに必要ですが、純粋な cordova アプリには必要ありません。
 
 #### ジャンプ先
 {: #jump-to}
@@ -145,11 +147,13 @@ cordova build ios
 
 > **注:** Android および iOS の AppCenter クライアントのビルドに Cordova フレームワークを使用する場合は、[『Cordova ベースの IBM AppCenter クライアント』](#cordova-based-ibm-appcenter-client)を参照してください。
 
-### Blackberry の場合
+<!--
+### For Blackberry
 {: #for-blackberry }
-* BlackBerry バージョンをビルドするには、BlackBerry Eclipse IDE (または BlackBerry Java プラグインがインストールされた Eclipse) と BlackBerry SDK 6.0 が必要です。 BlackBerry SDK 6.0 でコンパイルすると、アプリケーションは BlackBerry OS 7 上でも実行されます。
+* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
 
-BlackBerry プロジェクトは、**install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6** 内にあります。
+A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+-->
 
 ### Windows Phone 8 の場合
 {: #for-windows-phone-8}
@@ -200,7 +204,7 @@ Application Center コンソールを使用して、以下の方法でカタロ�
 3. アプリケーション・ファイルを選択します。
     * `.ipa`: iOS
     * `.apk`: Android
-    * `.zip`: BlackBerry 6/7
+    <!--* `.zip`: BlackBerry 6/7-->
     * `.xap`: Windows Phone 8.x
     * `.appx`: Windows Store 8.x
 
@@ -262,7 +266,7 @@ Windows Phone 8 の場合、Application Center コンソールで、企業アカ
 3. ユーザー名とパスワードを入力します。
 4. **「トークン」**をクリックすると、登録トークンのリストが開きます。
 5. リスト内でその企業を選択します。 企業アカウントの詳細が表示されます。
-6. **「企業アカウントの追加 (Add Company Account)」**をクリックします。 デバイスが登録されます。
+6. **「企業アカウントの追加」**をクリックします。 デバイスが登録されます。
 
 ### モバイル・デバイスへのモバイル・クライアントのインストール
 {: #installing-the-mobile-client-on-the-mobile-device }

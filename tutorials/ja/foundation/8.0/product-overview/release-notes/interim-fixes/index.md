@@ -14,16 +14,52 @@ weight: 2
 
 > {{ site.data.keys.product }} 8.0 の iFix リリースのリストについては、[ここを参照してください]({{site.baseurl}}/blog/tag/iFix_8.0/)。
 
+### CD Update 6 (8.0.0.0-MFPF-IF201911050809-CDUpdate-06) に含まれるフィーチャー
+
+#### <span style="color:Black">サーバー</span>
+##### <span style="color:NAVY">**パフォーマンスの向上**</span>
+
+Mobile Foundation データベース操作を最適化し、レコード・データベースの自動パージを導入しました。
+
+##### <span style="color:NAVY">**DevKit 内部で使用可能となった Application Center**</span>
+
+Application Center は、[DevKit]({{site.baseurl}}/downloads/) が付属したパッケージとして使用できるようになりました。これにより、開発者はアプリをビルドしてプライベート・ストアに発行でき、DevKit の一部として使用できるようになりました。
+
+##### <span style="color:NAVY">**ベンダー・ソフトウェアのスタック・サポート**</span>
+
+Mobile Foundation は Windows Server 2016 SE と Oracle 18c をサポートするようになりました。
+
+##### <span style="color:NAVY">**アプリケーション開発フレームワークのサポート**</span>
+
+Mobile Foundation は、[iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/)、iPadOS、および [Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/) をサポートする、Apple および Google がリリースした最新のフレームワークをサポートします。このプラットフォームでは、Swift 5 用の SDK も提供します。
+
+##### <span style="color:NAVY">**API Proxy を使用した、バックエンド・アプリへのセキュアな接続**</span>
+
+エンタープライズ・バックエンドに接続するときに、API プロキシーを使用して Mobile Foundation プラットフォームのセキュリティーと分析を活用できます。API プロキシーは、要求を実際のバックエンドにプロキシーします。[詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/)。
+
+#### <span style="color:Black">分析</span>
+##### <span style="color:NAVY">**アプリ内フィードバック**</span>
+
+アプリ内フィードバック・フィーチャーは、以前は IBM Cloud の Mobile Foundation サービスで提供され、現在は Mobile Foundation のオンプレミス配布およびコンテナー配布に移植されました。このフィーチャーを使用すると、ユーザーはスクリーン・ショット、注釈、およびテキストの形式でアプリからのフィードバックを共有できます。管理者は Analytics コンソールにログインして、受信したフィードバックを表示し、必要なアクションを実行できます。
+
+
+
+#### <span style="color:Black">OpenShift パッケージ</span>
+##### <span style="color:NAVY">**Mobile Foundation は、IBM Cloud Pak for Applications v3 の一部**</span>
+
+Mobile Foundation は、[IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/) の一部として使用可能となり、Red Hat Open Shift 3.11 および Red Hat Open Shift 4.2 をサポートします。現在使用可能なサービスは、モバイル・コア、分析、プッシュ通知、およびアプリ・センターです。この機能を使用すると、開発者はバックエンド・マイクロサービスとモバイル・サービスを使用してクラウド・ネイティブ・アプリケーションをビルドできます。
+
+
 ### CD update 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05) で導入された機能
 
 ##### <span style="color:NAVY">**CoreML Update**</span>
 
 Apple の CoreML フレームワークを使用して、iOS モバイル・デバイスで ML (機械学習) モデルをローカルに実行できます。
-Mobile Foundation には、これらのモデルをデバイスに安全に配布するように管理する機能が用意されています。[詳細はこちらを参照してください](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/)。
+Mobile Foundation には、これらのモデルをデバイスに安全に配布するように管理する機能が用意されています。 [詳細はこちらを参照してください](https://mobilefirstplatform.ibmcloud.com/blog/2019/02/08/distribute-coreml-models-securely-using-mfp/)。
 
 ##### <span style="color:NAVY">**watchOS のアプリケーション認証性**</span>
 
-アプリケーション認証性は、アクセス提供前にアプリケーションの認証性を検証するセキュリティー機能です。この機能はモバイル・アプリで使用できました。この機能は今は Apple WatchOS アプリにまで拡張されています。[詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/)。
+アプリケーション認証性は、アクセス提供前にアプリケーションの認証性を検証するセキュリティー機能です。 この機能はモバイル・アプリで使用できました。 この機能は今は Apple WatchOS アプリにまで拡張されています。 [詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/watchos/)。
 
 ##### <span style="color:NAVY">**プッシュ通知 - 追加メッセージのフィーチャーおよび FCM の属性**</span>
 

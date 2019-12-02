@@ -3,7 +3,7 @@ layout: tutorial
 breadcrumb_title: Mobile Foundation on IBM Cloud
 title: IBM Cloud 上的 IBM Mobile Foundation
 relevantTo: [ios,android,windows,javascript]
-weight: 10
+weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/><br/>

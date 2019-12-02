@@ -10,15 +10,20 @@ weight: 2
 {: #overview }
 En las notificaciones interactivas, cuando una notificación llega, los usuarios pueden tomar acciones con relación a la misma sin abrir la aplicación. Cuando llega una notificación interactiva, el dispositivo muestra los botones de la acción junto con el mensaje de notificación.
 
-Las notificaciones interactivas están soportadas en dispositivos en iOS versión 8 y posterior. Si se envía una notificación interactiva a un dispositivo iOS con una versión anterior a la versión 8, las acciones de la notificación no se visualizarán.
+Las notificaciones interactivas están soportadas en dispositivos con iOS versión 8 y posteriores y Android v7.0 (nivel de API 24) y posteriores. Si se envía una notificación interactiva a un dispositivo iOS o Android con versiones anteriores, las acciones de notificación no se visualizarán. 
 
 ## Enviar notificaciones push interactivas
 {: #sending-interactive-push-notification }
 La notificación se debe preparar antes de enviarla. Para obtener más información, consulte [Envío de notificaciones push](../../sending-notifications).
 
-Establezca una serie para indicar la categoría de la notificación con el objeto de notificación, bajo **{{ site.data.keys.mf_console }} → [su aplicación] → Push → Enviar notificaciones → Valores personalizados iOS**. Basándose en el valor de la categoría, se visualizan los botones de acción de la notificación. Por ejemplo:
+Las notificaciones interactivas se centran alrededor de las acciones de notificación y su agrupación en diferentes categorías. En primer lugar, defina las distintas acciones de notificación que se ofrecerán al usuario de la aplicación. A continuación, defina categorías en las que se agruparán las acciones de notificación. Es importante asignar un identificador exclusivo a cada categoría. 
+A continuación, para enviar Notificaciones push interactivas a dispositivos iOS especifique el identificador de categoría bajo **{{ site.data.keys.mf_console }} → [su aplicación] → Push → Enviar notificaciones → Valores personalizados de iOS**  y / o **{{ site.data.keys.mf_console }} → [su aplicación] → Push → Enviar notificaciones → Valores personalizados de Android**. En base al identificador de categoría, los botones de acción de notificación se visualizan en el dispositivo móvil. Por ejemplo:
 
 ![Establecer categorías para notificaciones interactivas de iOS en {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
+
+Para enviar notificaciones a dispositivos Android especifique el identificador de categoría interactivo bajo **{{ site.data.keys.mf_console }} → [su aplicación] → Push → Enviar notificaciones → Valores personalizados de Android**.   Por ejemplo:
+
+![Configuración de categorías para las notificaciones interactivas de iOS en la {{ site.data.keys.mf_console }}](android-settings-interactive-notifications.png)
 
 ## Manejo de notificaciones push interactivas en aplicaciones Cordova
 {: #handling-interactive-push-notifications-in-cordova-applications }
@@ -66,7 +71,7 @@ Para recibir notificaciones interactivas, siga estos pasos:
                 //If it is not specified, then the first four actions will be shown.
                 defaultContextActions: ['poll_ok','poll_nok'],
 
-                //Optional list of actions that is needed to show in the notification center, lock screen. 
+                //Optional list of actions that is needed to show in the notification center, lock screen.
                 //If it is not specified, then the first two actions will be shown.
                 minimalContextActions: ['poll_ok','poll_nok'] 
             }]     
