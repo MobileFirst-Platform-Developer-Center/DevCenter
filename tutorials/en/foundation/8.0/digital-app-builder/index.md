@@ -7,7 +7,7 @@ show_children: true
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-**IBM Digital App Builder** helps to quickly create mobile, web and PWA (Progressive Web App) multi-channel applications with AI capabilities powered by Watson services. The apps created using the Digital App Builder leverage IBM Mobile Foundation V8 (on-prem or cloud) for security, backend connectivity, and analytics.
+**IBM Digital App Builder** is a low-code tool, which helps to quickly create mobile, web and PWA (Progressive Web App) multi-channel applications with AI capabilities powered by Watson services. The apps created using the Digital App Builder leverage IBM Mobile Foundation V8 (on-prem or cloud) for security, backend connectivity, and analytics.
 
 The key features of the IBM Digital App Builder are as follows:
 
