@@ -459,7 +459,7 @@ Use o elemento `<applicationserver>` para definir os parâmetros que dependem do
 Os atributos e os elementos internos desses elementos são descritos nas tabelas de [Tarefas Ant para instalação de ambientes de tempo de execução do {{ site.data.keys.product_adj }}](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
 No entanto, para o elemento interno do elemento <was> para Liberty Collective, consulte a seguinte tabela:
 
-| Elemento               | Descrição (Description)                  | Conta |
+| Elemento               | Descrição                  | Conta |
 |-----------------------|----------------------------- |-------|
 | `<collectiveMember>`	| Um membro do Liberty
 Collective. | 0..1  |
