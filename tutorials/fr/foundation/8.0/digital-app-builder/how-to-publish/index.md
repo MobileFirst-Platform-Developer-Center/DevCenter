@@ -52,7 +52,7 @@ Vous pouvez ajouter votre application au référentiel sur le serveur à l'aide 
 ### Publier la mise à jour directe
 {: #dab-publish-direct-update }
 
-Avec la [mise à jour directe](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/direct-update/), les applications Cordova peuvent être mises à jour via une “connexion OTA” avec des ressources Web actualisées, tels que des fichiers Javascript, HTML, CSS ou images. Les entreprises peuvent ainsi s'assurer que que les utilisateurs finaux utilisent la dernière version de l'application.
+Avec la [mise à jour directe](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/direct-update/), les applications Cordova peuvent être mises à jour via une “connexion OTA” avec des ressources Web actualisées, tels que des fichiers Javascript, HTML, CSS ou images. Les entreprises peuvent ainsi s'assurer que les utilisateurs finaux utilisent la dernière version de l'application.
 
 >**Remarque** : Vérifiez que l'application créée ne contient pas d'erreur avant de la publier sur App Center.
 

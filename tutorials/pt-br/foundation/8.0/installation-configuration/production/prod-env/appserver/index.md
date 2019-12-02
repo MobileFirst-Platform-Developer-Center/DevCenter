@@ -2233,7 +2233,7 @@ Essas propriedades de JNDI são ativadas por padrão para todos os servidores de
 
 >**Nota:** para o Mobile Foundation em execução no WebSphere Application Server, a propriedade de JNDI **mfp.licenseTracking.enabled** tem que ser ativada configurando seu valor como **true** nas entradas do Runtime Environment no console do WAS.
 
-### Rastreamento de Licença
+### Controle de licença
 {: #license-tracking}
 
 O Rastreamento de licença rastreia as métricas relevantes para a política de licenciamento, como dispositivos ativos do cliente, dispositivos endereçáveis e aplicativos instalados. Essas informações ajudam a determinar se o uso atual da Mobile Foundation está dentro dos níveis de titularidade de licença e pode evitar potenciais violações de licença. O rastreamento de licença ajuda na desatribuição de dispositivos que não estão mais acessando o Mobile Foundation Server e também ajuda no arquivamento e exclusão de registros antigos de *MFP_PERSISTENT_DATA*.
@@ -2273,4 +2273,5 @@ O tempo de execução do Mobile Foundation empacota as bibliotecas necessárias,
 
 O Quartz contém um recurso de *verificação de atualização* que se conecta ao [servidor](http://www.terracotta.org/) para verificar se há uma nova versão do Quartz disponível para download. Essa verificação é executada de forma assíncrona e não afeta a inicialização/tempo de inicialização do Quartz e falha normalmente se a conexão não pode ser feita. Se a verificação for executada e uma atualização for localizada, ela será relatada como disponível nos logs do Quartz.
 
-A *verificação de atualização* pode ser desativada usando a sinalização `org.quartz.scheduler.skipUpdateCheck = true`. A implementação Liberty do Mobile Foundation cria um arquivo `jvm.options` e, durante a implementação por meio do Server Configuration Tool, o arquivo `jvm.options` recém-criado incluirá essa propriedade do nível de iFix [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) em diante. Para níveis anteriores de iFix, o cliente pode incluir essa propriedade no arquivo `jvm.options`. No caso de implementações do WebSphere Application Server (WAS), a propriedade de JNDI acima precisa ser incluída na propriedade de ambiente do aplicativo Mobile Foundation por meio do console administrativo do WAS.
+A *verificação de atualização* pode ser desativada usando a sinalização `org.quartz.scheduler.skipUpdateCheck = true`. A implementação Liberty do Mobile Foundation cria um arquivo `jvm.options` e, durante a implementação por meio do Server Configuration Tool, o arquivo `jvm.options` recém-criado incluirá essa propriedade do nível de iFix [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) em diante. Para níveis anteriores de iFix, o cliente pode incluir essa propriedade no arquivo `jvm.options`.
+No caso de implementações do WebSphere Application Server (WAS), a propriedade de JNDI acima precisa ser incluída na propriedade de ambiente do aplicativo Mobile Foundation por meio do console administrativo do WAS.
