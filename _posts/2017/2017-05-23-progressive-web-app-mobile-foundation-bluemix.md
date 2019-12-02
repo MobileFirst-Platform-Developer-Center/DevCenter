@@ -33,7 +33,7 @@ The above list provides a picture of how PWAs are different from a traditional w
 
 ### Your own PWA with IBM Mobile Foundation on IBM Cloud
 
-In the following video, you will see how to host a mobile web app using the [SDK for Node.js on IBM Cloud](https://console.ng.bluemix.net/catalog/starters/sdk-for-nodejs?env_id=ibm:yp:us-south&taxonomyNavigation=apps). The Node.js app itself will host the web content and will integrate with a [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) for security, backend connectivity and user management.
+In the following video, you will see how to host a mobile web app using the [SDK for Node.js on IBM Cloud](https://cloud.ibm.com/catalog/starters/cloud-foundry?runtime=sdk-for-nodejs). The Node.js app itself will host the web content and will integrate with a [Mobile Foundation service](https://cloud.ibm.com/catalog/services/mobile-foundation) for security, backend connectivity and user management.
 
 At the heart of a PWA is the concept of a service worker. In this video, you'll also see how to add a service worker to your web app and how the service worker will equip your web app with offline capabilities.
 
