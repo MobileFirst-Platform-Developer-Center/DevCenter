@@ -13,10 +13,10 @@
 
 <header>
   <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.png" style="width:34px;"></a>
-  
+
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
-  
+
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -28,7 +28,7 @@
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
-    
+
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreAddOptions.js~JSONStoreAddOptions.html">JSONStoreAddOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreChangeOptions.js~JSONStoreChangeOptions.html">JSONStoreChangeOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreCollection.js~JSONStoreCollection.html">JSONStoreCollection</a></span></span></li>
@@ -42,10 +42,10 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p># 
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><p>#
 &lt;!---
    Licensed Materials - Property of IBM</p>
-<p>   (C) Copyright 2018 IBM Corp.</p>
+<p>   (C) Copyright 2019 IBM Corp.</p>
 <p>   Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -98,20 +98,20 @@ an <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0
 <p>Import the JSONStore classes into your application. Open <code>App.js</code> and add the following line among the other import statements</p>
 <pre><code><code class="source-code prettyprint">import {WLJSONStore, JSONStoreCollection} from &apos;react-native-ibm-mobilefirst-jsonstore&apos;; </code>
 </code></pre><p>Next, create and open a collection. You can open multiple collections at once. Pass a <code>JSONStoreInitOptions</code> parameter for advanced options such as protecting your collection with a password, setting up sync policies etc. </p>
-<pre><code><code class="source-code prettyprint">var dogs = new JSONStoreCollection(&apos;dogs&apos;); 
+<pre><code><code class="source-code prettyprint">var dogs = new JSONStoreCollection(&apos;dogs&apos;);
 WLJSONStore.openCollections([&apos;dogs&apos;]);  // Provide the name of the collection as a string. </code>
 </code></pre><h3 id="adding-data-to-a-collection">Adding data to a collection</h3><p>Add JSON data to your collection. </p>
-<pre><code><code class="source-code prettyprint">    var hachi = { &quot;name&quot; : &quot;Hachiko&quot; , &quot;breed&quot; : &quot;Akita&quot; , &quot;country&quot; : &quot;Japan&quot;}; 
-    dogs.addData(hachi).then( ()=&gt; { 
+<pre><code><code class="source-code prettyprint">    var hachi = { &quot;name&quot; : &quot;Hachiko&quot; , &quot;breed&quot; : &quot;Akita&quot; , &quot;country&quot; : &quot;Japan&quot;};
+    dogs.addData(hachi).then( ()=&gt; {
       // Data was added to the collection successfully.
-    }).catch ( (err) =&gt; { 
-      // Error adding data. See the err object for more information on the error 
+    }).catch ( (err) =&gt; {
+      // Error adding data. See the err object for more information on the error
     })</code>
-</code></pre><h3 id="querying-data-from-a-collection">Querying data from a collection</h3><p>Use any of the JSONStoreCollection.find* APIs to query a collection. 
+</code></pre><h3 id="querying-data-from-a-collection">Querying data from a collection</h3><p>Use any of the JSONStoreCollection.find* APIs to query a collection.
 Use JSONStoreQueryPart and JSONStoreQuery APIs for advanced filtering and querying of JSON data. </p>
-<pre><code><code class="source-code prettyprint">    dogs.findAllDocuments().then( (result) =&gt; { 
-       // result will have all the documents in the collection 
-       // E.g. [ {&quot;json&quot;: {&quot;name&quot;:&quot;Hachiko&quot;,&quot;breed&quot;:&quot;Akita&quot;,&quot;country&quot;:&quot;Japan&quot;},&quot;_id&quot;:2}]       
+<pre><code><code class="source-code prettyprint">    dogs.findAllDocuments().then( (result) =&gt; {
+       // result will have all the documents in the collection
+       // E.g. [ {&quot;json&quot;: {&quot;name&quot;:&quot;Hachiko&quot;,&quot;breed&quot;:&quot;Akita&quot;,&quot;country&quot;:&quot;Japan&quot;},&quot;_id&quot;:2}]
      }).catch((error) =&gt; {
         console.error (&quot;Error finding docs &quot; +  JSON.stringify(error));
      });</code>
@@ -120,8 +120,8 @@ Use JSONStoreQueryPart and JSONStoreQuery APIs for advanced filtering and queryi
 </code></pre><p>Clearing a collection will remove all documents from a collection but does not destroy it. </p>
 <pre><code><code class="source-code prettyprint">    dogs.clearCollection().then (()=&gt;{
         // All documents cleared successfully
-     }).catch( (err) =&gt; { 
-       // An error occurred while clearing the collection. 
+     }).catch( (err) =&gt; {
+       // An error occurred while clearing the collection.
      })</code>
 </code></pre><p>Destroying a collection will permanently delete all data, all accessors and security artifacts. A collection once destroyed cannot be restored. All collections of the app will be destroyed. </p>
 <pre><code><code class="source-code prettyprint">    WLJSONStore.destroy()</code>
@@ -137,7 +137,7 @@ Use JSONStoreQueryPart and JSONStoreQuery APIs for advanced filtering and queryi
 <li><p><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/api/client-side-api/reactnative/jsonstore/">API Reference</a> </p>
 </li>
 </ul>
-<p>Copyright 2018 IBM Corp.</p>
+<p>Copyright 2019 IBM Corp.</p>
 <p>IBM - IBM MobileFirst Platform Foundation v8.0 license agreement</p>
 <p><a href="https://mobilefirstplatform.ibmcloud.com/licenses/ipla">Terms of Use</a></p>
 </div>

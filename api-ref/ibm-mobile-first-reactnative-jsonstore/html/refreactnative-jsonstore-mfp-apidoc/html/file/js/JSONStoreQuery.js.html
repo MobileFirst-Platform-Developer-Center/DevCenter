@@ -13,10 +13,10 @@
 
 <header>
   <a href="./">Home</a>
-  
+
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
-  
+
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -28,7 +28,7 @@
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
-    
+
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreAddOptions.js~JSONStoreAddOptions.html">JSONStoreAddOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreChangeOptions.js~JSONStoreChangeOptions.html">JSONStoreChangeOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/JSONStoreCollection.js~JSONStoreCollection.html">JSONStoreCollection</a></span></span></li>
@@ -45,7 +45,7 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">js/JSONStoreQuery.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* Licensed Materials - Property of IBM
- * 5725-I43 (C) Copyright IBM Corp. 2018. All Rights Reserved.
+ * 5725-I43 (C) Copyright IBM Corp. 2019. All Rights Reserved.
  * US Government Users Restricted Rights - Use, duplication or
  * disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
  */
@@ -67,7 +67,7 @@ import uuidv4 from &apos;uuid/v4&apos;;
 const queryMap = new Map();
 
 /**
- * This class represents a group of query part objects that are joined with an OR statement. 
+ * This class represents a group of query part objects that are joined with an OR statement.
  */
 class JSONStoreQuery {
 
@@ -91,18 +91,18 @@ class JSONStoreQuery {
     /**
      * Retrieve the current list of query part objects in this query group.
      * @return {Promise&lt;Array&gt;} - A list of all query parts in the query content.
-     * @example 
+     * @example
      * [
      *  {
-     *      value: &quot;[21, 50]&quot;, 
-     *      operation: &quot;BETWEEN&quot;, 
-     *      isKeySpecial: false, 
+     *      value: &quot;[21, 50]&quot;,
+     *      operation: &quot;BETWEEN&quot;,
+     *      isKeySpecial: false,
      *      key: &quot;age&quot;
      *  },
      *  {
      *      value: &quot;[20000, 40000]&quot;,
-     *      operation: &quot;BETWEEN&quot;, 
-     *      isKeySpecial: false, 
+     *      operation: &quot;BETWEEN&quot;,
+     *      isKeySpecial: false,
      *      key: &quot;salary&quot;
      *  }
      * ]
