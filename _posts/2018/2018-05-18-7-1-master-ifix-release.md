@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2019-11-19
+date: 2019-12-04
 permalink: '/blog/2018/05/18/7-1-master-ifix-release/'
 version:
 - 7.1
@@ -13,14 +13,41 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *7.1.0.0-MFPF-IF201911150651* has been released for MobileFirst Foundation 7.1, dated **November 15th, 2019**.
+A new iFix *7.1.0.0-MFPF-IF201911281132* has been released for MobileFirst Foundation 7.1, dated **November 28th, 2019**.
 <br/>
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF201911281132" role="tablist">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF201911281132">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201911281132" href="#collapse-mfp-ifix-IF201911281132" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201911281132"><b>iFix 7.1.0.0-MFPF-IF201911281132</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF201911281132" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201911281132">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>November 28th, 2019</b>.
+            <a href="http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF201911150651&source=SAR">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH18319</b>  CALLING REMOVEGLOBALHEADER AND THEN ADDGLOBALHEADER MULTIPLE TIMES CAUSES WRONG HEADER ADDED TO THE REQUEST.<br/>
+            </div>
+        </div>      
+    </div>
+</div>     
+
+## Previous iFixes for MobileFirst Foundation 7.1
+
+IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
+*List below includes iFixes released in 2018 only.*
+
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201911150651" role="tablist">
 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF201911150651">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201911150651" href="#collapse-mfp-ifix-IF201911150651" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201911150651"><b>iFix 7.1.0.0-MFPF-IF201911150651</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>&nbsp;&nbsp;<span class="label label-danger">contains SDK fix for iOS 13</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF201911150651" href="#collapse-mfp-ifix-IF201911150651" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF201911150651"><b>iFix 7.1.0.0-MFPF-IF201911150651</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF201911150651" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF201911150651">
@@ -35,13 +62,7 @@ A new iFix *7.1.0.0-MFPF-IF201911150651* has been released for MobileFirst Found
             </div>
         </div>      
     </div>
-</div>     
-
-## Previous iFixes for MobileFirst Foundation 7.1
-
-IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
-*List below includes iFixes released in 2018 only.*
-
+</div>    
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF201910310930" role="tablist">
 
     <div class="panel panel-default">
