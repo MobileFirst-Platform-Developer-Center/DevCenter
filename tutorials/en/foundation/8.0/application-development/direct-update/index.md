@@ -192,7 +192,7 @@ The following example shows an implementation of a custom direct update listener
 
 wl_directUpdateChallengeHandler.submitFailure = function(){
   //Include custom implementation on what should be done when there is a direct update failure
-}
+};
 
 var directUpdateCustomListener = {
   onStart: function(totalSize){
