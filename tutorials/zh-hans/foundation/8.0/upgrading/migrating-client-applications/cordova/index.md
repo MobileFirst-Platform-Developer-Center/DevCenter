@@ -179,7 +179,7 @@ weight: 1
       <link rel="stylesheet" href="css/main.css">
       ```
 
-      > **注：****worklight.css** 文件将 body 属性设置为 relative。 如果这影响应用程序的样式，请在您自己的 CSS 代码中为 position 声明其他值。 例如：
+      > **注：****worklight.css** 文件将 body 属性设置为 relative。如果这影响应用程序的样式，请在您自己的 CSS 代码中为 position 声明其他值。 例如：
 
       ```css
       body {

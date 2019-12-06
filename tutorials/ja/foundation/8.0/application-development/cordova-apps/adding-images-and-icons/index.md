@@ -102,16 +102,16 @@ iOS アプリケーションがある場合、`<platform name="ios">` タグと 
 <icon height="87" src="res/icon/ios/icon-small@3x.png" width="87" />
 ```
 
-MobileFirstPlatform Foundation Cordova プラグインのバージョン 8.0.2017102406 以降、`AppDelegate.m` に変更が加えられ、その結果として、`cordova-plugin-mfp` をインストールした状態で Cordova iOS アプリケーションをロードする間は黒い画面が明滅します。ユーザーがこのようなスプラッシュ画面を見たくない場合は、新しい `ViewController` を追加し、`AppDelegate.m` ロードにいくらかの変更を加えることによって、黒いスプラッシュ画面を回避することができます。この処理の手順は以下のとおりです。
+MobileFirstPlatform Foundation Cordova プラグインのバージョン 8.0.2017102406 以降、`AppDelegate.m` に変更が加えられ、その結果として、`cordova-plugin-mfp` をインストールした状態で Cordova iOS アプリケーションをロードする間は黒い画面が明滅します。 ユーザーがこのようなスプラッシュ画面を見たくない場合は、新しい `ViewController` を追加し、`AppDelegate.m` ロードにいくらかの変更を加えることによって、黒いスプラッシュ画面を回避することができます。 この処理の手順は以下のとおりです。
 
 1. XCode プロジェクト内で **Classes** フォルダーを右クリックし、**「新規ファイル」**オプションを選択します。
-2. **Cocoa Touch Class** テンプレートを選択します。**「次へ」**をクリックします。
+2. **Cocoa Touch Class** テンプレートを選択します。 **「次へ」**をクリックします。
 3. デフォルト値のままにします (クラス名は *ViewController* になります)。 **「次へ」**をクリックします。
-4. **「作成」**をクリックします。ファイル `ViewController.m` および `ViewController.h` が **Classes** フォルダーに追加されます。
+4. **「作成」**をクリックします。 ファイル `ViewController.m` および `ViewController.h` が **Classes** フォルダーに追加されます。
 5. もう一度 **Classes** フォルダーを右クリックし、**「新規ファイル」**オプションを選択します。
-6. **Storyboard** テンプレートを選択します。**「次へ」**をクリックし、`ViewController` という名前で保存し、**「作成」**をクリックします。
-7. `ViewController.storyboard` を開き、新しい `ViewController` オブジェクトを追加します。さらに、**「カスタム・クラス」**タブで属性 *Class* を *ViewController* として追加します。**「ID」**タブで、**「Storyboard ID」**および**「Restoration ID」**を *ViewController* として設定します。
-8. `AppDelegate.m` を以下のように変更し、アプリケーションをビルドして実行します。これで、黒いスプラッシュ画面の代わりに、白い画面が表示されるようになります。これは *ViewController.storyboard* でカスタマイズ可能です。
+6. **Storyboard** テンプレートを選択します。 **「次へ」**をクリックし、`ViewController` という名前で保存し、**「作成」**をクリックします。
+7. `ViewController.storyboard` を開き、新しい `ViewController` オブジェクトを追加します。 さらに、**「カスタム・クラス」**タブで属性 *Class* を *ViewController* として追加します。 **「ID」**タブで、**「Storyboard ID」**および**「Restoration ID」**を *ViewController* として設定します。
+8. `AppDelegate.m` を以下のように変更し、アプリケーションをビルドして実行します。 これで、黒いスプラッシュ画面の代わりに、白い画面が表示されるようになります。これは *ViewController.storyboard* でカスタマイズ可能です。
 
 ```
   /*
@@ -262,7 +262,7 @@ MobileFirstPlatform Foundation Cordova プラグインのバージョン 8.0.201
 ```
 
 
->**注:** これらの変更は、iOS プラットフォームが削除されてから追加されると失われます。したがって、これらの変更が、必要に応じて、必要になったときに行われるように注意してください。
+>**注:** これらの変更は、iOS プラットフォームが削除されてから追加されると失われます。 したがって、これらの変更が、必要に応じて、必要になったときに行われるように注意してください。
 
 ### Windows
 {: #windows }

@@ -12,12 +12,12 @@ $font_9: Bitstream Vera Sans Mono;
 $font_10: Courier New;
 
 @font-face {
-   font-family: HelvNeuLightForIBM;
+   font-family: 'IBM Plex Sans', sans-serif;
    src: url(../fonts/Helvetica-Neue-for-IBM/HelvNeueLightforIBM.otf);
 }
 
 @font-face {
-   font-family: HelvNeuRomanForIBM;
+   font-family: 'IBM Plex Sans', sans-serif;
    src: url(../fonts/Helvetica-Neue-for-IBM/HelvNeueRomanforIBM.otf);
 }
 
@@ -28,7 +28,7 @@ html {
 body {
 	height: 100%;
 	padding-top: 0;
-	font-family: Helvetica, Arial, sans-serif;
+	font-family: 'IBM Plex Sans', sans-serif;
 	-webkit-print-color-adjust:exact;
 }
 
@@ -58,7 +58,7 @@ body {
 
 #blogPosts {
 	background-color: #264a60;
-	font-family: HelvNeuLightForIBM;
+	font-family: 'IBM Plex Sans', sans-serif;
 	color: #008fb3;
 	width: 100%;
 	padding: 10px 0 10px 0;
@@ -102,12 +102,13 @@ body {
 }
 
 #flashBlogPosts {
-	background-color: #EE7A55;
-	font-family: HelvNeuLightForIBM;
+	background-color: #DCDCDC;
+	font-family: 'IBM Plex Sans', sans-serif;
 	color: white;
 	width: 100%;
-	padding: 10px 0 10px 0;
-	font-size: 120%;
+	padding: 2px 0 2px 0;
+	font-size: 100%;
+  height: 35px;
 
 	.flashPost {
 		margin-right: 5px;
@@ -116,8 +117,9 @@ body {
 
 	.flashPostTitle {
 		font-size: 85%;
+    font-family: 'IBM Plex Sans', sans-serif;
 		a {
-			color: white;
+			color: #1E90FF;
 			text-decoration: underline;
 
 			&:hover {
@@ -126,7 +128,7 @@ body {
 
 			&:visited {
 				text-decoration: underline;
-				color: white;
+				color: #1E90FF;
 			}
 		}
 	}
@@ -134,7 +136,7 @@ body {
 
 #slackStrip {
 	background-color: #e6f9ff;
-	font-family: HelvNeuLightForIBM;
+	font-family: 'IBM Plex Sans', sans-serif;
 	color: white;
 	width: 100%;
 	padding: 5px 0 5px 0;
@@ -164,7 +166,7 @@ body {
 }
 #multilingualDC {
 	background-color: #05c1c1;
-	font-family: HelvNeuLightForIBM;
+	font-family: 'IBM Plex Sans', sans-serif;
 	color: white;
 	width: 100%;
 	padding: 10px 0 10px 0;
@@ -176,7 +178,7 @@ body {
 	}
   .h1 {
 		font-size: 180%;
-		font-family: HelvNeuLightForIBM;
+		font-family: 'IBM Plex Sans', sans-serif;
 		color: #4A4A4A;
 		margin-bottom: 20px;
 	}
@@ -184,11 +186,11 @@ body {
 #index_sections {
 	margin-top: 50px;
 	font-size: 112.5%;
-   font-family: HelvNeuRomanForIBM;
+   font-family: 'IBM Plex Sans', sans-serif;
 
 	h1 {
 		font-size: 230%;
-		font-family: HelvNeuLightForIBM;
+		font-family: 'IBM Plex Sans', sans-serif;
 		color: #4A4A4A;
 		margin-bottom: 20px;
 	}
@@ -213,7 +215,7 @@ body {
 		#index_overview_icons, #index_overview_text {
 			p {
 				margin-top: 0;
-				font-family: arial;
+				font-family: 'IBM Plex Sans', sans-serif;
 			}
 
 			.index-item {
@@ -234,7 +236,7 @@ body {
 
 		a.read-more {
 			width: 300px;
-			background-color: #5AAAFA;
+			background-color: #0052cc;
 			color: white;
 			text-align: center;
 			padding: 12px 30px 10px 30px;
@@ -425,7 +427,7 @@ blockquote {
 	}
 	.download-button {
 		border-radius: 5px;
-		font-family: Arial;
+		font-family: 'IBM Plex Sans', sans-serif;
 		color: white;
 		font-size: 13px;
 		background-color: #264a60;
@@ -521,7 +523,7 @@ h4.panel-title, .tutorial h4.panel-title  {
 	text-decoration: none;
 	text-shadow: none;
 	font-size: 14px;
-	font-family: Lato;
+	font-family: 'IBM Plex Sans', sans-serif;
 	font-weight: 500;
 
 	&:hover {

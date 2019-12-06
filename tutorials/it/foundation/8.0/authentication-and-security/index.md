@@ -173,14 +173,24 @@ The token expiration period for refresh token is longer than the typical access 
         <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
             <div class="panel-body">
             <p>Refresh token feature can be enabled using the following properties on client side and server side respectively.</p>
-            <b>client-side property</b><br/>
+            <b>Client side property (Android)</b><br/>
 
-            <i>File name</i>.:            mfpclient.properties<br/>
+            <i>File name</i>:            mfpclient.properties<br/>
             <i>Property name</i>:   wlEnableRefreshToken<br/>
             <i>Property value</i>:   true<br/>
 
             For example,<br/>
             <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>Client side property (iOS)</b><br/>
+
+            <i>File name</i>:            mfpclient.plist<br/>
+            <i>Property name</i>:   wlEnableRefreshToken<br/>
+            <i>Property value</i>:   true<br/>
+
+            For example,<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
 
             <b>server-side property</b><br/>
 
@@ -238,7 +248,9 @@ The token expiration period for refresh token is longer than the typical access 
 </div>
 
 
->**Note:** The refresh tokens are long-lived compared to access tokens. Hence the refresh token feature must be used with caution. Applications where periodic user authentication is not necessary are ideal candidates for using the refresh token feature. Currently, MobileFirst supports refresh token feature on android platform only. It is recommended to use different bundle id for Android and iOS applications.
+>**Note:** The refresh tokens are long-lived compared to access tokens. Hence the refresh token feature must be used with caution. Applications where periodic user authentication is not necessary are ideal candidates for using the refresh token feature. 
+>
+> MobileFirst supports refresh token feature on iOS starting CD Update 3. 
 
 
 ### Security Checks

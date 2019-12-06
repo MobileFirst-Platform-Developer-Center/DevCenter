@@ -44,15 +44,20 @@ node -v
 v6.11.1
 ```
 
-> **Note:** Minimum supported **node.js** version is **4.2.3**. Also, with the fast evolving **node** and **npm** packages, the MobileFirst CLI might not be fully functional with all the available versions of **node** and **npm** including the latest versions. Ensure that **node** is on version **6.11.1** and **npm** version is **3.10.10**, for proper functioning of the CLI.
+> **Note:** Minimum supported **node.js** version is **4.2.3**. Also, with the fast evolving **node** and **npm** packages, the MobileFirst CLI might not be fully functional with all the available versions of **node** and **npm** including the latest versions. 
+> 
+> For MobileFirst CLI versions upto and including iFix version 8.0.2018040312, ensure that **node** is on version **6.11.1** and **npm** version is **3.10.10**, for proper functioning of the CLI.
+>
+> For MobileFirst CLI iFix versions 8.0.2018100112 and higher, you can use Node version versions 8.x or 10.x
 
 ## Installing the {{ site.data.keys.mf_cli }}
 {: #installing-the-mobilefirst-cli }
 To install the Command Line Interface run the command:
 
 ```bash
-npm install -g mfpdev-cli
+npm install -g mfpdev-cli --no-optional
 ```
+
 
 If the CLI .zip file was downloaded from the Download Center of the {{ site.data.keys.mf_console }}, use the command:
 

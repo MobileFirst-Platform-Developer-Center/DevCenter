@@ -32,8 +32,15 @@ downloads:
 2. Fügen Sie zum vorhandenen Abschnitt `dependencies` die folgenden Zeilen hinzu: 
 
 ```
-compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+
+>**Hinweis**: Wenn Sie das Feature [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) verwenden und MobileFirst-APIs von einem Zusatzmodul aus aufrufen möchten, verwenden Sie die `api`-Deklaration anstelle von `implementation`. Wenn Sie `implementation` verwenden, ist die Nutzung von MobileFirst-APIs auf dasselbe Modul beschränkt. Bei Verwendung von `api` werden die MobileFirst-APIs dagegen für alle in der App vorhandenen Module verfügbar gemacht. Dies gilt auch für Zusatzmodule. Weitere Details finden Sie unter [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+
+```
+api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+```
+
 3. Fügen Sie Folgendes zum Abschnitt "DefaultConfig" Ihrer Datei build.gradle hinzu.
 ```
   ndk {
@@ -77,7 +84,7 @@ try {
 Mit `getCollectionByName` können Sie einen Mechanismus für den Zugriff auf die Sammlung erstellen. Sie müssen `openCollections` vor `getCollectionByName` aufrufen.
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -115,7 +122,7 @@ try {
 Verwenden Sie `findDocuments`, um mit einer Abfrage ein Dokument in einer Sammlung zu finden. Verwenden Sie `findAllDocuments`, um alle Dokumente aus einer Sammlung abzurufen. Verwenden Sie `findDocumentById`, um mit der eindeutigen Dokument-ID nach einem Dokument zu suchen. 
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreQueryPart queryPart = new JSONStoreQueryPart();
@@ -139,7 +146,7 @@ try {
 Verwenden Sie `replaceDocument`, um Dokumente in einer Sammlung zu modifizieren. Das Feld für die Ersetzung ist die eindeutige ID des Dokuments (`_id`). 
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -201,7 +208,7 @@ Mit `destroy` können Sie die folgenden Daten entfernen:
 * Alle JSONStore-Metadaten und -Sicherheitsartefakte (siehe **Sicherheit** weiter unten in diesem Lernprogramm)
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   WLJSONStore.getInstance(context).destroy();
   // Erfolg behandeln
@@ -357,7 +364,7 @@ an `add`, `replace` und `remove`.
 #### Änderungen mit Push übertragen
 {: #push-changes }
 Wenn Sie Änderungen mit Push an einen Adapter senden möchten, rufen Sie `findAllDirtyDocuments` auf, um eine Liste
-der Dokumente mit Modifikationen abzurufen. Verwnden Sie dann `WLResourceRequest`. Nach dem Senden der Daten und einer Bestätung des erfolgreichen Sendens müssen Sie
+der Dokumente mit Modifikationen abzurufen. Verwenden Sie dann `WLResourceRequest`. Nach dem Senden der Daten und einer Bestätigung des erfolgreichen Sendens müssen Sie
 `markDocumentsClean` aufrufen.
 
 ```java

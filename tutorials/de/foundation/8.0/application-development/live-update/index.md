@@ -4,11 +4,11 @@ title: Liveaktualisierung
 relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
-  - name: Xcode-Projekt herunterladen
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
-  - name: Android-Studio-Projekt herunterladen
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80
-  - name: Adapter für Liveaktualisierung herunterladen
+  - name: Download Live Update adapter
     url: https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -38,7 +38,7 @@ Im folgenden Video wird das Feature für Liveaktualisierung demonstriert.
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe src="https://www.youtube.com/embed/TjbC9thSfmM"></iframe>
+        <iframe title="Demonstration" src="https://www.youtube.com/embed/TjbC9thSfmM"></iframe>
     </div>
 </div>
 
@@ -126,6 +126,8 @@ Für jedes Marktsegment muss Folgendes entschieden werden:
 <br/>
 Sobald über die Parameter entschieden wurde, können Schemafeatures und -eigenschaften und Segmente hinzugefügt werden.   
 Klicken Sie dazu auf **Neu** und geben Sie die erforderlichen Werte an.
+
+
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -482,19 +484,19 @@ public class ResolverAdapterData {
 {: #rest-interface-of-the-segment-resolver-adapter }
 **Anforderung**
 
-| **Attribut** |  **Wert**                                                                                     |  
+|**Attribut** |**Wert**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
-| *URL*           | /segment|
-| *Method*        | POST|               
-| *Content-type*  | application/json|
-| *Body*          | &lt;JSON-Objekt mit allen erforderlichen Informationen für die Segmentauflösung&gt; |
+|*URL*           |/segment|
+|*Method*        |POST|               
+|*Content-type*  |application/json|
+|*Body*             |&lt;JSON-Objekt mit allen erforderlichen Informationen für die Segmentauflösung&gt; |
 
 **Antwort**
 
-|  **Attribut** |  **Wert**                                                                                     |
+|**Attribut** |**Wert**                                                                                     |
 |:-------------------|:--------------------------------------------|
-| *Content-type*  | text/plain |                                                                          
-| *Body*             |  &lt;Zeichenfolge mit einer Beschreibung der Segment-ID&gt; |
+|*Content-type*  |text/plain |                                                                          
+|*Body*             |&lt;Zeichenfolge mit einer Beschreibung der Segment-ID&gt; |
 
 
 ## Themen für Fortgeschrittene

@@ -76,6 +76,13 @@ react-native-ibm-mobilefirst 플러그인은 React Native의 핵심 {{ site.data
    ```bash
    react-native link
    ```
+  **참고**: 이 명령은 react-native 0.60에 필요하지 않습니다.
+
+5. iOS의 경우에는 Mobilefirst Pod 종속 항목을 설치하십시오.
+
+   ```bash
+   cd ios && pod install 
+   ```  
 
 #### 기존 애플리케이션
 {: #existing-application }
@@ -90,6 +97,13 @@ react-native-ibm-mobilefirst 플러그인은 React Native의 핵심 {{ site.data
 
    ```bash
    react-native link
+   ```
+   **참고**: 이 명령은 react-native 0.60에 필요하지 않습니다.
+
+3. iOS의 경우에는 Mobilefirst Pod 종속 항목을 설치하십시오.
+
+   ```bash
+   cd ios && pod install 
    ```
 
 ### 애플리케이션 등록
@@ -118,7 +132,7 @@ react-native-ibm-mobilefirst 플러그인은 React Native의 핵심 {{ site.data
 
 원격 서버를 사용하는 경우 `mfpdev server add` [명령을 사용](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 이를 추가하십시오.
 
-`mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록합니다. 각 플랫폼은 {{ site.data.keys.mf_server }}에 애플리케이션으로 등록됩니다.
+`mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록합니다. 	각 플랫폼은 {{ site.data.keys.mf_server }}에 애플리케이션으로 등록됩니다.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **팁:** {{ site.data.keys.mf_console }}에서 애플리케이션을 등록할 수도 있습니다.    
 >
@@ -141,7 +155,7 @@ SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/react-nati
 {: #mfpclient.properties }
 이 파일은 Android Studio 프로젝트의 **./app/src/main/assets/** 폴더에 있으며, {{ site.data.keys.mf_server }}에서 Android 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-| 특성            | 설명                                                         | 예제 값 |
+| 특성            |설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
 | wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
 | wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
@@ -156,7 +170,7 @@ SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/react-nati
 {: #mfpclientplist }
 이 파일은 프로젝트의 루트에 있으며 {{ site.data.keys.mf_server }}에서 iOS 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-| 특성            | 설명                                                         | 예제 값 |
+| 특성            |설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
 | protocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
 | host        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |

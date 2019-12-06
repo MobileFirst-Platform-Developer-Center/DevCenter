@@ -10,7 +10,7 @@ weight: 3
 
 ### Setting up a development environment
 {: #installing-a-development-environment }
-If you develop the client-side or the server-side of mobile applications, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../bluemix/using-mobile-foundation) to get started.
+If you develop the client-side or the server-side of mobile applications, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../ibmcloud/using-mobile-foundation) to get started.
 
 **Using the {{ site.data.keys.mf_dev_kit }}**
 {: #using-the-dev-kit }
@@ -70,8 +70,8 @@ Please read below for information on preparing and installing {{ site.data.keys.
 
 Learn about the {{ site.data.keys.mf_server }} installation process by going through the instructions to create a functional {{ site.data.keys.mf_server }} cluster with two nodes on WebSphere Application Server Liberty profile. The installation can be completed by using the graphical tools (GUI) or via the command line.
 
-* [GUI mode installation with IBM Installation Manager and the Server Configuration Tool ](production/simple-install/tutorials/graphical-mode).
-* [Command line Installation with command line tool](production/simple-install/tutorials/command-line).
+* [GUI mode installation with IBM Installation Manager and the Server Configuration Tool ](production/simple-install/graphical-mode).
+* [Command line Installation with command line tool](production/simple-install/command-line).
 
 After completing the installation using either of the two methods above, further [configuration](production/server-configuration) may be required to complete the setup depending on the requirements.
 

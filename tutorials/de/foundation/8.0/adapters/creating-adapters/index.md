@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java- und JavaScript-Adapter erstellen
-breadcrumb_title: Adapter erstellen
+breadcrumb_title: Creating Adapters
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
@@ -59,7 +59,7 @@ Sie können wählen, ob Sie den Befehl interaktiv oder direkt ausführen möchte
    mfpdev adapter create
    ```
 
-2. Geben Sie einen Adapternamen ein. Beispiel: 
+2. Geben Sie einen Adapternamen ein. Beispiel:
 
    ```bash
    ? Enter Adapter Name: SampleAdapter

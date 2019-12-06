@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: Cordova 애플리케이션에서 직접 업데이트 사용
+title: Cordova 및 Ionic 애플리케이션에서 직접 업데이트 사용
 breadcrumb_title: Direct Update
-relevantTo: [cordova]
+relevantTo: [cordova,ionic]
 weight: 8
 downloads:
   - name: Download Cordova project
@@ -69,7 +69,10 @@ downloads:
 새 웹 자원에 대한 작업(예: 버그 수정 또는 경미한 변경 등)이 완료되면 업데이트된 웹 자원을 패키지하고 {{ site.data.keys.mf_server }}에 업로드해야 합니다.
 
 1. **명령행** 창을 열고 Cordova 프로젝트의 루트로 이동하십시오.
-2. `mfpdev app webupdate` 명령을 실행하십시오.
+2. `cordova build` 명령을 실행하십시오.
+3. `mfpdev app webupdate` 명령을 실행하십시오.
+
+> **참고:** ionic 애플리케이션에서 직접 업데이트 명령을 사용하기 전 빌드 단계는 중요합니다. 이 단계를 누락하면 웹 리소스가 업데이트되지 않습니다.
 
 `mfpdev app webupdate` 명령을 실행하면 업데이트된 웹 자원을 .zip 파일로 패키지하고 개발자 워크스테이션에서 실행되는 기본 {{ site.data.keys.mf_server }}에 업로드합니다. 패키지된 웹 자원은 **[cordova-project-root-folder]/mobilefirst/** 폴더에 있습니다.
 
@@ -167,7 +170,7 @@ var  directUpdateCustomListener  = {
 * `onProgress`는 `UNZIP_IN_PROGRESS` 상태에서 호출됩니다.
 * `onFinish`는 다음 최종 상태 코드 중 하나로 호출됩니다.
 
-| 상태 코드 | 설명 |
+| 상태 코드 |설명 |
 |-------------|-------------|
 | `SUCCESS` | 직접 업데이트가 오류 없이 완료되었습니다. |
 | `CANCELED` | 직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서). |

@@ -30,10 +30,15 @@ Developers, evaluators, customers, sales and anybody who concerns himself/hersel
 
 ### How to join us on Slack
 
-1. Provide your email address below.
+1. Provide your email address below and express your interest to get invited.
 2. Check your inbox for an invite.
 3. Continue with the onboarding process.
 
 >**Good practice:** Once you have registered, please do edit your profile to mention your real name (first and last) and company name.
 
+<!--
 <p><iframe src="https://slackin.mybluemix.net/" style="overflow:hidden; height:410px; width:310px" scrolling="no" frameborder="0"></iframe></p>
+-->
+<div class="container">
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7lOgsLa60aejNl1i57URDEoktjHNK9Bg7XFyVFjA0BdpZ3g/viewform?embedded=true" width="640" height="517" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+</div>

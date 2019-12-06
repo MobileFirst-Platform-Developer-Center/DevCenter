@@ -47,7 +47,7 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
    And:
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
             name: 'ibmmobilefirstplatformfoundationpush',
             version: '8.0.+',
             ext: 'aar',
@@ -57,8 +57,14 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
    Or in a single line:
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
+   
+   >**Note**: If you are using [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) feature and would like to call MobileFirst APIs in a feature module then use `api` declaration instead of `implementation`. Using `implementation` would restrict using MobileFirst APIs in the same module itself while using `api`  would make MobileFirst APIs available across all modules present in the app including feature modules.For more details read [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+   
+```xml
+ api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+```
 
 2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
 	* Add the following permissions to the top the `manifest` tag:
@@ -356,19 +362,20 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
-
     }
+    
+    apply plugin: 'com.google.gms.google-services'
     ```
 
-    apply plugin: 'com.google.gms.google-services'
+    
 
-    - Add the below dependency in the `buildscript` file
+    - Add the following dependency in the root build.gradle's `buildscript` section
 
       `classpath 'com.google.gms:google-services:3.0.0'`
 
-    - Remove below GCM plugin from build.gradle file compile `com.google.android.gms:play-services-gcm:+`
+    - Remove below GCM plugin from build.gradle file `compile  com.google.android.gms:play-services-gcm:+`
 
- 3. Configure the AndroidManifest file. Following changes are required in the `Android manifest.xml`
+ 3. Configure the AndroidManifest file. Following changes are required in the `AndroidManifest.xml`
 
 **Remove the following entries :**
 

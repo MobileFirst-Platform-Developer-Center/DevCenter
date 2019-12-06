@@ -21,6 +21,7 @@ weight: 4
 * [Ant 태스크를 사용한 설치](#installing-with-ant-tasks)
 * [{{ site.data.keys.mf_server }} 컴포넌트 수동 설치](#installing-the-mobilefirst-server-components-manually)
 * [서버 팜 설치](#installing-a-server-farm)
+* [Mobile Foundation 런타임 스케줄러](#mf-runtime-scheduler)
 
 ## 애플리케이션 서버 전제조건
 {: #application-server-prerequisites }
@@ -210,7 +211,7 @@ WebSphere Application Server Liberty 프로파일의 경우 다음과 같은 조
 
 * Liberty 설치 디렉토리의 파일을 읽습니다.
 * Liberty 서버의 구성 디렉토리(일반적으로 usr/servers/server-name)에서 파일을 작성하여 백업 사본을 작성하고 server.xml 및 jvm.options를 수정합니다.
-* Liberty 공유 자원 디렉토리(일반적으로 usr/shared)에서 파일 및 디렉토리를 작성합니다.
+* Liberty 공유 리소스 디렉토리(일반적으로 usr/shared)에서 파일 및 디렉토리를 작성합니다.
 * Liberty 서버 앱 디렉토리(일반적으로 usr/servers/server-name/apps)에서 파일을 작성합니다.
 
 WebSphere Application Server 전체 프로파일 및 WebSphere Application Server Network Deployment의 경우 다음과 같은 조치를 수행하기 위해 필요한 권한을 가지고 있어야 합니다.
@@ -218,7 +219,7 @@ WebSphere Application Server 전체 프로파일 및 WebSphere Application Serve
 * WebSphere Application Server 설치 디렉토리의 파일을 읽습니다.
 * 선택한 WebSphere Application Server 전체 프로파일 또는 Deployment Manager 프로파일의 구성 파일을 읽습니다.
 * wsadmin 명령을 실행합니다.
-* 프로파일 구성 디렉토리에서 파일을 작성합니다. 설치 도구는 공유 라이브러리 또는 JDBC 드라이버 등의 자원을 해당 디렉토리에 배치합니다.
+* 프로파일 구성 디렉토리에서 파일을 작성합니다. 설치 도구는 공유 라이브러리 또는 JDBC 드라이버 등의 리소스를 해당 디렉토리에 배치합니다.
 
 Apache Tomcat의 경우 다음과 같은 조치를 수행하기 위해 필요한 권한을 가지고 있어야 합니다.
 
@@ -421,7 +422,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
 * [{{ site.data.keys.mf_server }} 푸시 서비스 설치를 위한 Ant 태스크](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
 * [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](../../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-샘플 구성 파일 및 태스크를 사용한 설치에 대한 개요는 [명령행 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/tutorials/command-line)를 참조하십시오.
+샘플 구성 파일 및 태스크를 사용한 설치에 대한 개요는 [명령행 모드에서 {{ site.data.keys.mf_server }} 설치](../../simple-install/command-line)를 참조하십시오.
 
 제품 설치의 일부인 Ant 배포를 사용하여 Ant 파일을 실행할 수 있습니다. 예를 들어, WebSphere Application Server Network Deployment 클러스터를 가지고 있고 데이터베이스가 IBM DB2인 경우 **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-wasnd-cluster-db2.xml** Ant 파일을 사용할 수 있습니다. 파일을 편집하고 모든 필수 특성을 입력한 후 **mfp\_install\_dir/MobileFirstServer/configuration-samples** 디렉토리에서 다음과 같은 명령을 실행할 수 있습니다.
 
@@ -463,7 +464,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
 
 #### 추가 JNDI 특성 지정
 {: #specify-extra-jndi-properties }
-**installmobilefirstadmin**, **installmobilefirstruntime** 및 **installmobilefirstpush** Ant 태스크는 컴포넌트가 작동하기 위해 필요한 JNDI 특성에 대한 값을 선언합니다. 이 JNDI 특성은 JMX 통신과 다른 컴포넌트(예: 라이브 업데이트 서비스, 푸시 서비스, 분석 서비스 또는 권한 부여 서버)에 대한 링크를 정의하는 데 사용됩니다. 하지만 기타 JNDI 특성에 대한 값도 정의할 수 있습니다. 이 세 가지 태스크에 대해 존재하는 `<property>` 요소를 사용하십시오. JNDI 특성의 목록은 다음을 참조하십시오.
+**installmobilefirstadmin**, **installmobilefirstruntime** 및 **installmobilefirstpush** Ant 태스크는 컴포넌트가 작동하기 위해 필요한 JNDI 특성에 대한 값을 선언합니다. 이 JNDI 특성은 JMX 통신과 다른 컴포넌트(예: 라이브 업데이트 서비스, 푸시 서비스, 분석 서비스 또는 권한 부여 서버)에 대한 링크를 정의하는 데 사용됩니다. 하지만 기타 JNDI 특성에 대한 값도 정의할 수 있습니다. 이러한 세 태스크에 대해 존재하는 `<property>` 요소를 사용하십시오. JNDI 특성의 목록은 다음을 참조하십시오.
 
 * [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
 * [{{ site.data.keys.mf_server }} 푸시 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
@@ -486,7 +487,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
 
 새 사용자를 작성하는 대신 기존 사용자를 사용하려면 다음과 같은 조작을 수행하십시오.
 
-1. `<jmx>` 요소에서, 사용자 및 비밀번호를 지정하고 **createLibertyAdmin** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다.
+1. `<jmx>` 요소에서 사용자 및 비밀번호를 지정하고 **createLibertyAdmin** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다.
 
    ```xml
    <installmobilefirstadmin ...>
@@ -494,7 +495,7 @@ Ant 태스크에 대한 참조는 다음과 같습니다.
        ...
    ```
 
-2. `<configuration>` 요소에서, 사용자 및 비밀번호를 지정하고 **createConfigAdminUser** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다.
+2. `<configuration>` 요소에서 사용자 및 비밀번호를 지정하고 **createConfigAdminUser** 속성의 값을 false로 설정하십시오. 예를 들어, 다음과 같습니다.
 
    ```xml
     <installmobilefirstadmin ...>
@@ -542,7 +543,7 @@ JDBC 연결에 대한 특성을 지정할 수 있습니다. `<database>` 요소�
 
 * Ant 설치
 * 원격 컴퓨터에 대한 **mfp-ant-deployer.jar** 파일의 사본. 이 라이브러리에는 Ant 태스크의 정의가 포함되어 있습니다.
-* 설치될 자원 지정. 기본적으로 WAR 파일은 **mfp-ant-deployer.jar** 근처에서 가져오지만 이 WAR 파일의 위치를 지정할 수 있습니다. 예를 들어, 다음과 같습니다.
+* 설치될 리소스 지정. 기본적으로 WAR 파일은 **mfp-ant-deployer.jar** 근처에서 가져오지만 이 WAR 파일의 위치를 지정할 수 있습니다. 예를 들어, 다음과 같습니다.
 
 ```xml
 <installmobilefirstadmin execute="true" contextroot="/mfpadmin" serviceWAR="/usr/mfp/mfp-admin-service.war">
@@ -1340,7 +1341,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
                 <p>JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록</a>을 참조하십시오.</p>
 
                 <h3>데이터 소스</h3>
-                <p>데이터 소스(jdbc/mfpAdminDS)는 **Context** 요소에서 자원으로 선언됩니다. 예를 들어, 다음과 같습니다.</p>
+                <p>데이터 소스(jdbc/mfpAdminDS)는 **Context** 요소에서 리소스로 선언됩니다. 예를 들어, 다음과 같습니다.</p>
 
 {% highlight xml %}
 <Resource name="jdbc/mfpAdminDS" type="javax.sql.DataSource" .../>
@@ -1373,7 +1374,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
                 라이브 업데이트 서비스 WAR 파일은 <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>에 있습니다. 라이브 업데이트 서비스의 컨텍스트 루트는 다음과 같은 방식으로 정의되어야 합니다. <b>/the-adminContextRoot/config</b>. 예를 들어, 관리 서비스의 컨텍스트 루트가 <b>/mfpadmin</b>인 경우 라이브 업데이트 서비스의 컨텍스트 루트는 <b>/mfpadminconfig</b>여야 합니다.</p>
 
                 <h3>데이터 소스</h3>
-                <p>라이브 업데이트 서비스에 대한 데이터 소스의 JNDI 이름은 <code>jdbc/ConfigDS</code>로 정의되어야 합니다. <code>Context</code> 요소에서 자원으로 선언하십시오.</p>
+                <p>라이브 업데이트 서비스에 대한 데이터 소스의 JNDI 이름은 <code>jdbc/ConfigDS</code>로 정의되어야 합니다. <code>Context</code> 요소에서 리소스로 선언하십시오.</p>
 
                 <h3>보안 역할</h3>
                 <p>라이브 업데이트 서비스 애플리케이션에 사용 가능한 보안 역할은 <b>configadmin</b>입니다.
@@ -1456,7 +1457,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
                 <p>JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록</a>을 참조하십시오.</p>
 
                 <h3>데이터 소스</h3>
-                <p>런타임에 대한 데이터 소스의 JNDI 이름은 <b>jdbc/mfpDS</b>로 정의되어야 합니다. <b>Context</b> 요소에서 자원으로 선언하십시오.</p>
+                <p>런타임에 대한 데이터 소스의 JNDI 이름은 <b>jdbc/mfpDS</b>로 정의되어야 합니다. <b>Context</b> 요소에서 리소스로 선언하십시오.</p>
             </div>
         </div>
     </div>
@@ -2090,21 +2091,21 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                                 이 특성은 적절한 값으로 설정되어야 합니다.
                                 <ul>
                                     <li><b>mfp.admin.serverid</b>: 이 팜 멤버에 대해 정의된 ID입니다. 이 ID는 모든 팜 멤버에서 고유해야 합니다.</li>
-                                    <li><b>mfp.admin.jmx.user</b> 및 <b>mfp.admin.jmx.pwd</b>: 이 값은 <code>administrator-role</code> 요소에서 선언된 대로 사용자의 신임 정보와 일치해야 합니다.</li>
+                                    <li><b>mfp.admin.jmx.user</b> 및 <b>mfp.admin.jmx.pwd</b>: 이 값은 <code>administrator-role</code> 요소에서 선언된 대로 사용자의 인증 정보와 일치해야 합니다.</li>
                                     <li><b>mfp.admin.jmx.host</b>: 이 매개변수를 이 서버에 액세스하기 위해 원격 멤버가 사용하는 호스트 이름 또는 IP로 설정하십시오. 따라서 이를 <b>localhost</b>로 설정하지 마십시오. 이 호스트 이름은 팜의 기타 멤버에 의해 사용되며 모든 팜 멤버에 액세스할 수 있어야 합니다.</li>
                                     <li><b>mfp.admin.jmx.port</b>: 이 매개변수를 JMX REST 연결에 사용되는 서버 HTTPS 포트로 설정하십시오. <b>server.xml</b> 파일의 <code>httpEndpoint</code> 요소에서 값을 찾을 수 있습니다.</li>
                                 </ul>
                             </li>
                             <li><b>Apache Tomcat</b>
                                 <br/>
-<b>conf/server.xml</b> 파일을 수정하여 모든 런타임 컨텍스트 및 관리 서비스 컨텍스트에서 다음과 같은 JNDI 특성을 설정하십시오.
+                                <b>conf/server.xml</b> 파일을 수정하여 모든 런타임 컨텍스트 및 관리 서비스 컨텍스트에서 다음과 같은 JNDI 특성을 설정하십시오.
 {% highlight xml %}
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
 <Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
                                 <b>mfp.admin.serverid</b> 특성은 이 팜 멤버에 대해 정의된 ID로 설정되어야 합니다. 이 ID는 모든 팜 멤버에서 고유해야 합니다.
                                 <br/>
-<code>-Djava.rmi.server.hostname</code> JVM 인수가 이 서버에 액세스하기 위해 원격 멤버가 사용하는 호스트 이름 또는 IP로 설정되는지 확인해야 합니다. 따라서 이를 <b>localhost</b>로 설정하지 마십시오. 또한 <code>-Dcom.sun.management.jmxremote.port</code> JVM 인수가 JMX RMI 연결을 사용으로 설정하기 위해 아직 사용되고 있지 않은 포트를 사용하여 설정되어 있는지 확인해야 합니다. 두 인수 모두 <b>CATALINA_OPTS</b> 환경 변수에서 설정됩니다.
+                                <code>-Djava.rmi.server.hostname</code> JVM 인수가 이 서버에 액세스하기 위해 원격 멤버가 사용하는 호스트 이름 또는 IP로 설정되는지 확인해야 합니다. 따라서 이를 <b>localhost</b>로 설정하지 마십시오. 또한 <code>-Dcom.sun.management.jmxremote.port</code> JVM 인수가 JMX RMI 연결을 사용으로 설정하기 위해 아직 사용되고 있지 않은 포트를 사용하여 설정되어 있는지 확인해야 합니다. 두 인수 모두 <b>CATALINA_OPTS</b> 환경 변수에서 설정됩니다.
                             </li>
                             <li><b>WebSphere Application Server 전체 프로파일</b>
                                 <br/>
@@ -2152,7 +2153,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                                 </blockquote>
                                 마지막으로 서버를 시작한 후 <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> 파일에서 com.ibm.ssl.trustStore가 포함된 행을 찾으십시오.
                                 <ul>
-                                    <li>팜에 있는 다른 서버의 공용 인증서를 서버의 <b>server.xml</b> 구성 파일이 참조하는 신뢰 저장소로 가져오십시오. <a href="../../simple-install/tutorials/graphical-mode">그래픽 모드에서 {{ site.data.keys.mf_server }} 설치</a> 학습서에서는 팜에 있는 두 Liberty 서버 사이에서 인증서를 교환하는 데 필요한 지시사항을 제공합니다. 자세한 정보는 <a href="../../simple-install/tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }}를 실행하는 두 개의 Liberty 서버로 구성된 팜 작성</a> 섹션의 5단계를 참조하십시오.</li>
+                                    <li>팜에 있는 다른 서버의 공용 인증서를 서버의 <b>server.xml</b> 구성 파일이 참조하는 신뢰 저장소로 가져오십시오. <a href="../../simple-install/graphical-mode">그래픽 모드에서 {{ site.data.keys.mf_server }} 설치</a> 튜토리얼에서는 팜에 있는 두 Liberty 서버 사이에서 인증서를 교환하는 데 필요한 지시사항을 제공합니다. 자세한 정보는 <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }}를 실행하는 두 개의 Liberty 서버로 구성된 팜 작성</a> 섹션의 5단계를 참조하십시오.</li>
                                     <li>WebSphere Application Server Liberty 프로파일의 각 인스턴스를 다시 시작하여 보안 구성을 적용하십시오. 싱글 사인온(SSO)이 작동하려면 다음의 단계가 필요합니다.</li>
                                     <li>팜의 한 멤버를 시작하십시오. 기본 LTPA 구성에서는 Liberty 서버가 정상적으로 시작되면 LTPA 키 저장소가 <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys</b>로 생성됩니다.</li>
                                     <li><b>ltpa.keys</b> 파일을 각 팜 멤버의 <b>${wlp.user.dir}/servers/server_name/resources/security</b> 디렉토리에 복사하여 팜 멤버 사이에서 LTPA 키 저장소를 복제하십시오. LTPA 구성에 대한 자세한 정보는 <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Liberty 프로파일에서 LTPA 구성</a>을 참조하십시오.</li>
@@ -2222,3 +2223,65 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
 
 <br/>
 JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오.
+
+## Mobile Foundation 런타임 스케줄러
+{: #mf-runtime-scheduler}
+
+Mobile Foundation 런타임은 스케줄된 일부 활동을 수행하기 위해 Quartz 스케줄러를 사용합니다.
+
+Mobile Foundation 런타임의 스케줄러는 다음 활동을 수행합니다.
+
+1.	라이센스 추적
+2.	감사 로그 작성
+
+스케줄러 실행은 다음 두 가지 JNDI 특성으로 제어합니다.
+
+* **mfp.licenseTracking.enabled**
+* **mfp.purgedata.enabled**(iFix 레벨 *8.0.0.0-MFPF-IF201812191602-CDUpdate-04*에서 도입됨)
+
+이러한 JNDI 특성은 지원되는 모든 애플리케이션 서버에 기본적으로 사용됩니다.
+
+>**참고:** WebSphere Application Server에서 실행 중인 Mobile Foundation의 경우, JNDI 특성 **mfp.licenseTracking.enabled**는 WAS 콘솔의 런타임 환경 항목에서 해당 값을 **true**로 설정하여 사용으로 설정되어야 합니다.
+
+### 라이센스 추적
+{: #license-tracking}
+
+라이센스 추적은 활성 클라이언트 디바이스, 주소 지정 가능한 디바이스 및 설치된 앱과 같이 라이센싱 정책과 관련된 메트릭을 추적합니다. 이 정보는 Mobile Foundation의 현재 사용량이 라이센스 부여 레벨 내에 있는지 여부를 판별하는 데 도움이 되며 잠재적인 라이센스 위반을 방지할 수 있습니다. 라이센스 추적은 더 이상 Mobile Foundation Server에 액세스하지 않는 디바이스를 해제하고 *MFP_PERSISTENT_DATA*의 이전 레코드를 아카이브하고 삭제하는 데 도움이 됩니다.
+
+다음 표는 라이센스 추적과 관련된 JNDI 특성을 나열합니다.
+
+| JNDI 특성 |설명 |
+|---------------|-------------|
+| mfp.device.decommissionProcessingInterval | 해제 태스크가 실행되는 빈도(초)를 정의합니다. 기본값: `86400`(1일). |
+| mfp.device.decommission.when | 클라이언트 디바이스가 디바이스 해제 태스크에 의해 해제될 때까지의 비활성 일 수입니다. 기본값: `90 days`. |
+| mfp.device.archiveDecommissioned.when | 해제된 클라이언트 디바이스가 아카이브될 때까지의 비활성 일 수입니다. <br/> 이 태스크는 해제된 클라이언트 디바이스를 아카이브 파일에 기록합니다. 아카이브된 클라이언트 디바이스는 Mobile Foundation Server home\devices_archive 디렉토리에 있는 파일에 기록됩니다. 이 파일의 이름에는 아카이브 파일 작성 시의 시간소인이 포함됩니다. 기본값: `90 days`. |
+| mfp.licenseTracking.enabled | IBM Mobile Foundation에서 디바이스 추적을 사용 또는 사용 안함으로 설정하는 데 사용되는 값입니다. <br/> 성능상의 이유로, IBM Mobile  Foundation이 B2C(Business-to-Consumer) 앱만 실행하는 경우 디바이스 추적을 사용 안함으로 설정할 수 있습니다. 디바이스 추적이 사용되지 않는 경우, 라이센스 보고서도 사용되지 않고 라이센스 메트릭이 생성되지 않습니다. <br/> 가능한 값은 `true`(기본값) 및 `false`입니다. |
+
+라이센스 추적에 대한 자세한 내용은 아래 주제를 참조하십시오.
+
+* [Mobile Foundation 라이센스 추적]({{site.baseurl}}/tutorials/en/foundation/8.0/administering-apps/license-tracking/)
+* [Mobile Foundation 런타임 특성](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html)
+
+스케줄러는 서버 시작 후 8시간 후에 실행됩니다. 즉, 오늘 오후 11시에 서버가 시작된 경우 스케줄러는 그 다음날 오전 1시(기본 스케줄러 실행 시간)에 실행되지 않고 다음 다음날 오전 1시부터 실행을 시작합니다. 서버 시작과 스케줄러 실행 사이의 간격은 8시간입니다.
+
+iFix 레벨 [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643)부터 서버 시작과 스케줄러 실행 사이의 간격은 8시간이 아닌 4시간입니다.
+또한 새 특성 *MFP.SCHEDULER.STARTHOUR*도 도입되었습니다. 이 특성을 사용하면 기본값 오전 1시가 아닌 고객이 선택한 시간으로 스케줄러 실행을 설정할 수 있습니다. 이 특성은 1에서 23 사이의 값을 사용할 수 있습니다. 이 특성은 고객이 트래픽이 적은 시간에 시작하도록 스케줄러를 구성할 수 있도록 하고 매일 서버가 시작되더라도 스케줄러가 실행되도록 할 수 있습니다. 매일 밤 오전 1시에 서버를 다시 시작하는 고객의 경우 *MFP.SCHEDULER.STARTHOUR*의 값을 5로 설정할 수 있습니다. 이렇게 하면 서버 재시작과 스케줄러가 오전 5시에 실행되는 4시간 간격이 보장됩니다.
+
+라이센스 추적 활동이 데이터베이스를 많이 사용하므로 라이센스 추적을 사용하지 않는 것이 좋습니다. Mobile Foundation 주소 지정 가능 디바이스 라이센싱 모델을 사용하는 고객만 라이센스 추적을 실행해야 합니다.
+
+라이센스 추적을 사용하지 않는 고객은 [제거 기능]({{site.baseurl}}/blog/2018/12/27/purge-mfp-runtime-tables/)을 사용하여 이전 레코드를 정리하고 *MFP_PERSISTENT_DATA* 및 *MFP_TRANSIENT_DATA* 테이블을 유지보수할 수 있습니다.
+
+### 감사 로그 작성
+{: #creating-audit-log}
+
+라이센스 추적은 최신 실행 및 라이센스 데이터를 Mobile Foundation 런타임 테이블 *LICENSE_TERMS*에 저장합니다. 감사 로그는 이 테이블의 최신 보고서 항목을 기반으로 로그를 작성합니다. 보고서는 서버 설치 디렉토리의 logs 폴더에 있는 `.slmtag` 파일로 사용 가능합니다.
+
+### Quartz 업데이트 사용 안함
+{: #disable-quartz-update}
+
+Mobile Foundation 런타임은 일부 서드파티 라이브러리를 포함하여 필수 라이브러리를 번들합니다. Mobile Foundation은 Quartz 작업 스케줄러를 사용하며 `quartz2.2.0.jar`를 포함합니다.
+
+Quartz에는 [서버](http://www.terracotta.org/)에 연결하는 *업데이트 검사* 기능이 포함되어 있습니다. 이 검사는 비동기식으로 실행되며 Quartz의 구동/초기화 시간에 영향을 미치지 않으며 연결할 수 없는 경우 단계적으로 실패합니다. 검사가 실행되고 업데이트가 발견되면 Quartz의 로그에 사용 가능한 것으로 보고됩니다.
+
+*업데이트 검사*는 플래그 `org.quartz.scheduler.skipUpdateCheck = true`를 사용하여 사용 안함으로 설정될 수 있습니다. Mobile Foundation의 Liberty 배치는 `jvm.options` 파일을 작성하며 배치 중에 서버 구성 도구를 통해 새로 작성된 `jvm.options` 파일에는 iFix 레벨 [*8.0.0.0-MFPF-IF201909190904*]({{site.baseurl}}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201909190904) 이상의 이 특성이 포함됩니다. 이전 iFix 레벨의 경우 고객은 이 특성을 `jvm.options` 파일에 추가할 수 있습니다.
+WAS(WebSphere Application Server) 배치의 경우, 위의 JNDI 특성을 WAS 관리 콘솔에서 Mobile Foundation 애플리케이션의 환경 특성에 추가해야 합니다.

@@ -333,7 +333,8 @@ pin 码验证问题处理程序 (`pinCodeChallengeHandler`) 的迁移类似于�
 *  [应用程序真实性](#application-authenticity)
 *  [LTPA 域](#ltpa-realm)
 *  [设备配置](#device-provisioning)
-*  [反跨站请求伪造 (anti-XSRF) 域](#anti-cross-site-request-forgery-anti-xsrf-realm)
+*  [反跨站请求伪造 (anti-XSRF) 域
+](#anti-cross-site-request-forgery-anti-xsrf-realm)
 *  [直接更新域](#direct-update-realm)
 *  [远程禁用域](#remote-disable-realm)
 *  [定制认证器和登录模块](#custom-authenticators-and-login-modules)

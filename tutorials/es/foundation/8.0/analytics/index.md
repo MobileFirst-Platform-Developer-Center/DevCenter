@@ -4,13 +4,24 @@ title: MobileFirst Analytics
 breadcrumb_title: Analytics
 show_children: true
 relevantTo: [ios,android,javascript]
-weight: 9
+weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} recopila datos de las actividades entre las aplicaciones y el servidor, los registros de los clientes, los bloqueos de clientes y los registros del lado del servidor desde los dispositivos de cliente y {{ site.data.keys.mf_server }}. Los datos recopilados proporcionan una visión completa tanto de la infraestructura del servidor como de la distribución móvil. Se incluyen: informes predeterminados sobre la retención de usuarios, informes de bloqueos, desglose por tipos de dispositivo y sistemas operativos, gráficos personalizados y datos personalizados, utilización de red, resultados de notificaciones push, comportamiento interno de las aplicaciones o recopilación de datos de depuración entre otros.
+Para que el compromiso de sus usuarios continúe siendo relevante y eficaz debe obtener conocimientos sobre el rendimiento de su aplicación para los usuarios. {{ site.data.keys.mf_analytics_full }} proporciona esta función con visualizaciones incluidas( gráficos y tablas). Con una instrumentación muy mínima de su aplicación, en Mobile Foundation Analytics Console puede visualizar fácilmente los siguientes conocimientos accionables: -
+
+* **Patrones de incorporación & retención de clientes:** ¿Se están incorporando nuevos usuarios? ¿Tiene usuarios existentes que regresan a su aplicación?
+* **Patrones de uso:** ¿A qué hora se utiliza más y menos su aplicación, está cumpliendo con su relevancia empresarial en este aspecto?
+* **Distribución de dispositivo & sistema operativo:** ¿Cuál es la distribución de su aplicación entre modelos de dispositivos móviles y sistemas operativos?
+* **Rendimiento de programas de fondo:** ¿Cuáles son las funciones más utilizadas de sus sistemas de fondo y cuál es el tiempo de respuesta y la estabilidad; es necesario reequilibrar su sistema de fondo?
+* **Estabilidad de la aplicación:** Cuál es la estabilidad de su aplicación a lo largo del tiempo y, si se han producido bloqueos, cuáles son las causas (registros de bloqueos). ¿El diseño/implementación de su aplicación requiere un arreglo?
+* **Objetivos de resolución de problemas:** ¿Cuál es el rastreo/seguimiento del flujo de su aplicación antes de que entre en un bloqueo? 
+* **Experiencia de usuarios de la aplicación interna:** ¿Cuál es la experiencia interactiva de sus usuarios mientras utilizan la aplicación y cuál es su opinión; es necesario revisar su estudio de usuarios?
+* **Seguimientos de clientes:** Gráficos personalizados, que se definen y trazan alrededor de los datos del cliente registrados como parte de los seguimientos y flujos específicos de la aplicación, también proporcionan la flexibilidad de ampliar y definir sus propios conocimientos, lo que también puede ayudarle en sus decisiones empresariales.
+
+{{ site.data.keys.mf_analytics_full }} recopila datos de las actividades desde las aplicaciones al servidor, registros de los clientes, bloqueos de clientes, comentarios de usuarios de la aplicación y registros del lado del servidor desde {{ site.data.keys.mf_server }} y los dispositivos de cliente. Los datos recopilados proporcionan una visión completa tanto de la infraestructura del servidor como de la distribución móvil. 
 
 {{ site.data.keys.mf_server }} viene preparado con una funcionalidad de creación de informes de la infraestructura de red. Cuando el cliente y el servidor informan sobre el uso de la red, los datos se agregan de forma que es posible atribuir un mal comportamiento a la red, al servidor o a los sistemas de fondo. Además, es posible controlar los datos de registrador a los que se accede y que son utilizados por las analíticas mediante la definición de filtros en el lado del cliente y en {{ site.data.keys.mf_analytics_server }}. Es posible elegir la política de retención de datos y el nivel de detalle de los sucesos de los que se informa, establecer alertas condicionales, crear gráficos personalizados y adquirir nuevos datos.
 

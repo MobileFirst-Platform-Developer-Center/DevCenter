@@ -106,7 +106,7 @@ Asegúrese de que ya tenga el archivo EAR de {{ site.data.keys.mf_analytics }}. 
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Añada el archivo **analytics.ear** a la carpeta `./usr/servers/<serverName>/apps` del servidor de Liberty.
+3. Añada el archivo **analytics.ear** a la carpeta `./usr/servers/<serverName>/apps` de su servidor Liberty.
 4. Sustituya el contenido de la etiqueta `<featureManager>` del archivo `./usr/servers/<serverName>/server.xml` por el contenido siguiente:
 
    ```xml
@@ -220,7 +220,7 @@ Para obtener más información sobre los pasos de instalación iniciales para ad
 
 Los pasos siguientes describen cómo instalar y ejecutar el archivo EAR de Analytics en WebSphere Application Server. Si está instalando los archivos WAR individuales en WebSphere Application Server, siga sólo los pasos del 2 al 7 en el archivo WAR de **analytics-service** una vez que haya desplegado los archivos WAR. El orden de carga de clases no se debe modificar en el archivo WAR de analytics-ui.
 
-1. Despliegue el archivo EAR en el servidor de aplicaciones, pero no lo inicie. Para obtener más información sobre cómo instalar un archivo EAR en WebSphere Application Server, consulte el tema [Instalación de los archivos de la aplicación empresarial con la consola](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) en la documentación del producto WebSphere Application Server.
+1. Despliegue el archivo EAR en el servidor de aplicaciones, pero no lo inicie . Para obtener más información sobre cómo instalar un archivo EAR en WebSphere Application Server, consulte el tema [Instalación de los archivos de la aplicación empresarial con la consola](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) en la documentación del producto WebSphere Application Server.
 
 2. Seleccione la aplicación **MobileFirst Analytics** desde la lista **Enterprise Applications**.
 
@@ -254,11 +254,10 @@ Los pasos siguientes describen cómo instalar y ejecutar el archivo EAR de Analy
 9. Para habilitar el acceso al servicio de analíticas a través de la documentación de Swagger, complete los pasos siguientes:
     * Pulse **Servidores > Tipos de servidores > Servidores de aplicaciones de WebSphere** y elija el servidor en el que está desplegado el servicio de Analytics, en la lista de servidores.
     * En **Infraestructura del servidor**, pulse **Java** y vaya a **Gestión de procesos > Definición de procesos > Máquina virtual Java > Propiedades personalizadas**.
-      - Establezca la propiedad personalizada siguiente<br/>
-        **Nombre de propiedad:** *com.ibm.ws.classloader.strict*<br/>
-        **Valor:** *true*
+      - Establezca la siguiente propiedad personalizada<br/>
+**Nombre de propiedad:***com.ibm.ws.classloader.strict*<br/>**Valor:***true*
 
-10. Inicie la aplicación {{ site.data.keys.mf_analytics }} y vaya al enlace del navegador: `http://<hostname>:<port>/analytics/console`.
+10. Inicie la aplicación {{ site.data.keys.mf_analytics }} y vaya al enlace en el navegador: `http://<hostname>:<port>/analytics/console`.
 
 ## Instalación de {{ site.data.keys.mf_analytics }} con tareas Ant
 {: #installing-mobilefirst-analytics-with-ant-tasks }
@@ -305,26 +304,26 @@ Algunos tipos de sucesos se han cambiado entre versiones anteriores de {{ site.d
 
 La tabla siguiente muestra la correlación entre tipos de sucesos antiguos y nuevos. Algunos tipos de sucesos no han cambiado.
 
-|Tipo de suceso antiguo            |Tipo de suceso nuevo         |
+| Tipo de suceso antiguo            | Tipo de suceso nuevo         |
 |---------------------------|------------------------|
-|AlertDefinition	        |AlertDefinition        |
-|AlertNotification	        |AlertNotification      |
-|AlertRunnerNode	        |AlertRunnerNode        |
-|AnalyticsConfiguration |AnalyticsConfiguration |
-|CustomCharts	            |CustomChart            |
-|CustomData	            |CustomData             |
-|Devices	                |Device                 |
-|MfpAppLogs                |AppLog                 |
-|MfpAppPushAction          |AppPushAction          |
-|MfpAppSession	            |AppSession             |
-|ServerLogs	            |ServerLog              |
-|ServerNetworkTransactions |NetworkTransaction     |
-|ServerPushNotifications   |PushNotification       |
-|ServerPushSubscriptions   |PushSubscription       |
-|Users	                    |User                   |
-|inboundRequestURL	        |resourceURL            |
-|mfpAppName	            |appName                |
-|mfpAppVersion	            |appVersion             |
+| AlertDefinition	        | AlertDefinition        |
+| AlertNotification	        | AlertNotification      |
+| AlertRunnerNode	        | AlertRunnerNode        |
+| AnalyticsConfiguration    | AnalyticsConfiguration |
+| CustomCharts	            | CustomChart            |
+| CustomData	            | CustomData             |
+| Devices	                | Device                 |
+| MfpAppLogs                | AppLog                 |
+| MfpAppPushAction          | AppPushAction          |
+| MfpAppSession	            | AppSession             |
+| ServerLogs	            | ServerLog              |
+| ServerNetworkTransactions | NetworkTransaction     |
+| ServerPushNotifications   | PushNotification       |
+| ServerPushSubscriptions   | PushSubscription       |
+| Users	                    | User                   |
+| inboundRequestURL	        | resourceURL            |
+| mfpAppName	            | appName                |
+| mfpAppVersion	            | appVersion             |
 
 ### Migración de datos analíticos
 {: #analytics-data-migration }

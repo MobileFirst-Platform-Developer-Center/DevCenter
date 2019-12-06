@@ -28,7 +28,7 @@ El propósito de esta demostración es explicar un flujo de principio a fin:
 
 ### Paso 1. Cómo iniciar {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Asegúrese de haber [creado una instancia de Mobile Foundation](../../bluemix/using-mobile-foundation), o si está utilizando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), vaya hasta la carpeta del servidor y ejecute el mandato: `./run.sh` en Mac y Linux o `run.cmd` en Windows.
+Asegúrese de haber [creado una instancia de Mobile Foundation](../../ibmcloud/using-mobile-foundation) o bien, si utiliza [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), vaya a la carpeta del servidor y ejecute el mandato `./run.sh` en Mac y Linux o `run.cmd` en Windows.
 
 ### Paso 2. Creación y registro de una aplicación
 {: #2-creating-and-registering-an-application }
@@ -61,14 +61,15 @@ Abra {{ site.data.keys.mf_console }} cargando el URL: `http://your-server-host:s
         resourceRequest.send().then(
           (response) => {
             // Will display "Hello world" in an alert dialog.
-                        alert("Success: " + response.responseText);
+            alert("Success: " + response.responseText);
           },
           (error) => {
-            alert("Failure: " + JSON.stringify(error));
+            console.error(error);
+            alert("Failure: Resource Request");
           }
         );
       }, (error) => {
-        console.log('-->  pingMFP(): failure ', error.responseText);
+        console.error(error);
         alert("Failed to connect to MobileFirst Server");
       });
 ```
@@ -86,8 +87,8 @@ Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.
 2. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto Maven del adaptador y ejecute el mandato:
 
     ```bash
-   mfpdev adapter build
-   ```
+    mfpdev adapter build
+    ```
 
 3. Cuando finalice la construcción, despliéguelo desde {{ site.data.keys.mf_console }} con la acción **Acciones → Desplegar adaptador**. El adaptador se puede encontrar en la carpeta **[adapter]/target**.
 

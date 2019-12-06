@@ -127,13 +127,13 @@ Einzelnes Zertifikat:
 Beispiel:
 
 ```swift
-WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey(certificateFilename: “myCertificate.cer”);
 ```
 Mehrere Zertifikate:
 Beispiel:
 ```swift
-let arrayOfCerts : [Any] = ["Cert1", "Cert2”, "Cert3”];
-WLClient.sharedInstance().pinTrustedCertificatePublicKey( fromFiles: arrayOfCerts)
+let arrayOfCerts : [Any] = ["Cert1", "Cert2", "Cert3"];
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey( certificateFilenames: arrayOfCerts);
 ```
 
 Die Certificate-Pinning-Methode löst in zwei Fällen eine Ausnahme aus: 

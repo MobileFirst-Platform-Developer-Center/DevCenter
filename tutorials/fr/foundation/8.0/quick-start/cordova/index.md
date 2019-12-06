@@ -28,7 +28,7 @@ Cette démonstration présente un processus complet :
 
 ### 1. Démarrage du serveur {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Assurez-vous d'avoir [créé une instance Mobile Foundation](../../bluemix/using-mobile-foundation), ou  
+Assurez-vous d'avoir [créé une instance Mobile Foundation](../../ibmcloud/using-mobile-foundation), ou  
 Si vous utilisez le kit [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur puis exécutez la commande `./run.sh` sous Mac et Linux ou `run.cmd` sous Windows.
 
 ### 2. Création et enregistrement d'une application
@@ -92,12 +92,12 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 
 1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
 
-    Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
+    >Si Maven et {{ site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
 
-2. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
+2. A partir d'une **fenêtre de ligne de commande**, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
 
     ```bash
-   mfpdev adapter build
+    mfpdev adapter build
     ```
 
 3. Une fois la génération terminée, déployez-la à partir de la console {{ site.data.keys.mf_console }} en utilisant l'option **Actions → Déployer un adaptateur**. L'adaptateur est disponible dans le dossier **[adaptateur]/target**.
@@ -110,7 +110,7 @@ Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **
 {: #5-testing-the-application }
 1. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Cordova.
 2. Exécutez la commande `cordova platform add ios|android|windows` pour ajouter une plateforme.
-3. Dans le projet Cordova, sélectionnez le fichier **config.xml** et éditez la valeur `<mfp:server ... url=" "/>` en remplaçant les propriétés **protocol**, **host** et **port** par les valeurs correctes de votre serveur {{ site.data.keys.mf_server }}.
+3. Dans le projet Cordova, sélectionnez le fichier **config.xml** et modifiez les propriétés **protocol**, **host** et **port** de la valeur `<mfp:server ... url=" "/>` en entrant les valeurs correspondant à votre serveur {{ site.data.keys.mf_server }}.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
     * Si vous utilisez un serveur {{ site.data.keys.mf_server }} distant (sur IBM Cloud), les valeurs sont généralement **https**, **your-server-address** et **443**.
     * Si vous utilisez un cluster Kubernetes sur IBM Cloud Private et si le déploiement est de type **NodePort**, la valeur du port est généralement celle de **NodePort** exposée par le service dans le cluster Kubernetes.

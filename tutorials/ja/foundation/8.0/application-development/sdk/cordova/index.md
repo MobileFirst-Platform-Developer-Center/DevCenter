@@ -23,9 +23,14 @@ weight: 1
 {: #support-levels }
 MobileFirst プラグインでサポートされる Cordova プラットフォームのバージョンは次のとおりです。
 
-* cordova-ios: **>= 4.1.1 と < 5.0**
-* cordova-android: **>= 6.1.2 と <= 7.0**
-* cordova-windows: **>= 4.3.2 と < 6.0**
+* cordova-ios: **>= 4.1.1 と < 6.0**
+* cordova-android: **>= 6.1.2 と < 9.0**
+* cordova-windows: **>= 5.0.0 と < 8.0**
+
+>**注:** **cordova-windows** の最新の公開バージョンにはバグがあり、アプリの起動時に例外がスローされます。Apache Cordova は開発リポジトリーの問題を修正しましたが、まだ公開されていません。フィックスが含まれるマスター・リポジトリーからの *cordova-windows* バージョンを使用することをお勧めします。以下は、*cordova-windows* プラットフォームを追加してフィックスを設定するために使用できるコマンドです。
+```bash
+cordova platform add https://github.com/apache/cordova-windows
+```
 
 #### ジャンプ先:
 {: #jump-to }
@@ -69,7 +74,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 
 **前提条件:**
 
-- [Apache Cordova CLI (>=6.x および <9.0)](https://www.npmjs.com/package/cordova) と {{ site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
+- [Apache Cordova CLI(>=6.x および <10.0)](https://www.npmjs.com/package/cordova) と {{ site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
 - {{ site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
 - [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/mobilefirst)、および [Cordova 開発環境のセットアップ](../../../installation-configuration/development/cordova)の両チュートリアルを読む。
 - cordova-windows の場合、マシンにインストールされている Visual Studio と .NET のバージョンと互換性のある Visual C++ のバージョンがインストールされている必要があります。
@@ -139,6 +144,16 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 
 {{ site.data.keys.product_adj }} API メソッドは、{{ site.data.keys.product_adj }} クライアント SDK がロードされた後で使用可能になります。 これで `wlCommonInit` 関数が呼び出されます。  
 この関数を使用して、各種 {{ site.data.keys.product_adj }} API メソッドを呼び出します。
+
+### SDK の手動での追加 
+ローカル・パスからプラグインをインストールするオプションもあります。 cordova-plugin-mfp は MFP コンソールからダウンロードできます。それを Cordova アプリケーションにインストールします。
+1. MFP サーバー・コンソール Dashboard で、「ダウンロード・センター」をクリックし =>「SDK」タブをクリックし => Cordova SDK をダウンロードします。
+
+2. 既存の Cordova プロジェクトのルートに移動し、次のように {{ site.data.keys.product_adj }} コア Cordova プラグインを追加します。
+
+   ```bash
+   cordova plugin add [path-to downloaded mfp cordova plugin]/mfp-cordova/plugins/cordova-plugin-mfp
+   ```
 
 ### アプリケーションの登録
 {: #registering-the-application }
@@ -544,7 +559,7 @@ If you click the button to ping MFP on the browser running on port `8000`, the p
 mfpdev app preview
 ```
 
-サポートされるブラウザー・オプションは*「Simple Browser Rendering」* のみです。*「Mobile Browser Support」*オプションは Browser プラットフォームではサポートされません。
+サポートされるブラウザー・オプションは*「Simple Browser Rendering」* のみです。 *「Mobile Browser Support」*オプションは Browser プラットフォームではサポートされません。
 
 ### Cordova ブラウザー・リソースにサービス提供するための WebSphere Liberty の使用
 {: #using-liberty-cordova-browser}

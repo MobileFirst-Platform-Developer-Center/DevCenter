@@ -62,7 +62,7 @@ MobileFirst 插件支持的 Ionic Cordova 平台版本包括：
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-*cordova-plugin-mfp-encrypt-utils* 插件为使用 iOS 平台的 Cordova 应用程序提供用于加密的 iOS OpenSSL 框架。有关更多信息，请参阅[为 Cordova iOS 启用 OpenSSL](additional-information)。
+*cordova-plugin-mfp-encrypt-utils* 插件为使用 iOS 平台的 Cordova 应用程序提供用于加密的 iOS OpenSSL 框架。有关更多信息，请参阅[为 Cordova iOS 启用 OpenSSL](../cordova/additional-information)。
 
 **先决条件：**
 
@@ -156,7 +156,7 @@ MobileFirst 插件支持的 Ionic Cordova 平台版本包括：
 只有在调用事件之后才会调用各种 {{ site.data.keys.product_adj }} API 方法。
 
 ## 更新 {{ site.data.keys.product_adj }} Ionic SDK
-{: #updating-the-mobilefirst-cordova-sdk }
+{: #updating-the-mobilefirst-ionic-sdk }
 要使用最新发行版更新 {{ site.data.keys.product_adj }} Ionic Cordova SDK，请除去 **cordova-plugin-mfp** 插件：运行 `ionic cordova plugin remove cordova-plugin-mfp` 命令，然后运行 `ionic cordova plugin add cordova-plugin-mfp` 命令以重新添加。
 
 可以在 SDK 的 [NPM 存储库](https://www.npmjs.com/package/cordova-plugin-mfp)中找到 SDK 发行版。

@@ -285,7 +285,7 @@ Para obter informações adicionais sobre as opções de composição e de confi
         Não visível se configurado na etapa 3. Selecione esse campo para licenciar seu padrão com o licenciamento de token. Deixe esse campo vazio se você usar licenças permanentes.
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe este campo em branco.
+        Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o nome completo do host ou endereço IP do Rational License Key Server. Caso contrário, deixe esse campo em branco.
         
         **LMGRD\_PORT**   
         Não visível se configurado na etapa 3. Se você usar o licenciamento de token para licenciar o {{ site.data.keys.product }}, insira o número da porta na qual o daemon de gerenciador de licença (lmrgd) recebe conexões. Caso contrário, deixe esse campo em branco.

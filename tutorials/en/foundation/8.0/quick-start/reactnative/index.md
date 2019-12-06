@@ -28,7 +28,7 @@ The purpose of this demonstration is to explain an end-to-end flow:
 
 ### Step 1. Starting the {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or if you are using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+Make sure you have [created a Mobile Foundation instance](../../ibmcloud/using-mobile-foundation), or if you are using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### Step 2. Creating and registering an application
 {: #2-creating-and-registering-an-application }
@@ -64,11 +64,12 @@ Open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server
             alert("Success: " + response.responseText);
           },
           (error) => {
-            alert("Failure: " + JSON.stringify(error));
+            console.error(error);
+            alert("Failure: Resource Request");
           }
         );
       }, (error) => {
-        console.log('-->  pingMFP(): failure ', error.responseText);
+        console.error(error);
         alert("Failed to connect to MobileFirst Server");
       });
 ```

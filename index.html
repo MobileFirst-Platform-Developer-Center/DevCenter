@@ -7,6 +7,7 @@ indexed: false
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="{{site.baseurl}}/css/bulma-min.css" type="text/css" rel="stylesheet">-->
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <style>
 
     .col-md-4{
@@ -21,7 +22,15 @@ indexed: false
     .postTitle {
        margin-bottom: 0;
        color: #28536f;
-       font-family: Lato;
+       font-family: 'IBM Plex Sans', sans-serif;
+       font-weight: bold;
+       font-size: 2rem;
+
+    }
+    .postTitleLatest {
+       margin-bottom: 0;
+       color: #696969;
+       font-family: 'IBM Plex Sans', sans-serif;
        font-weight: bold;
        font-size: 2rem;
 
@@ -29,13 +38,13 @@ indexed: false
     .postsubTitleAlert {
        margin-bottom: 0;
        color: #ff0000;
-       font-family: Lato;
-
+       font-family: 'IBM Plex Sans', sans-serif;
+'IBM Plex Sans', sans-serif;
     }
 
     .postsubTitle {
        margin-bottom: 0;
-       color: #e5eaee;
+       color: #ffffff;
        font-family: Lato;
        font-weight: bold;
 
@@ -45,6 +54,16 @@ indexed: false
           text-decoration: none;
        }
 
+     .postsubTitleVar {
+      margin-bottom: 0;
+        color: #DCDCDC;
+        font-family: 'IBM Plex Sans', sans-serif;
+     }
+        a {
+           color: #337ab7;
+           text-decoration: none;
+        }
+
     .postDate {
         font-family: Lato;
         font-size: 80%;
@@ -52,14 +71,20 @@ indexed: false
         margin: 0;
         font-weight: bold;
     }
+    .postsubTitleLatest {
+       margin-bottom: 0;
+       color: #696969;
+       font-family: Lato;
+       font-weight: bold;
 
+    }
     .postExcerpt {
-      font-family: Lato;
+      font-family: 'IBM Plex Sans', sans-serif;
       font-size: 85%;
     }
     .title {
       color: #81daf5;
-    	font-family: Lato;
+    	font-family: 'IBM Plex Sans', sans-serif;
       font-size: 2rem;
       font-weight: 600;
       line-height: 1.125;
@@ -68,7 +93,7 @@ indexed: false
     .postTitleNew {
       margin-bottom: 0;
       color: #fff;
-      font-family: Lato;
+      font-family: 'IBM Plex Sans', sans-serif;
       font-weight: bold;
     }
     .tile {
@@ -139,45 +164,82 @@ indexed: false
 } ]
 </script>
 </head>
-<!--<div id="blogPosts">
-   <div class="container" role="section">
-      <span class="postsubTitleAlert"><marquee behavior="scroll" direction="left"><span class="glyphicon glyphicon-warning-sign"></span>&nbsp;Chrome browser reports this site as <b>Not Secure</b>, this is due to Google's policy of dishonoring certificates issued in 2016 or earlier. This site is secure and the certificates are valid.</span></marquee>
+<div id="blogPosts">
+   <div class="container">
+     <div class="row">
+			<div class="col-sm-2 hidden-sm hidden-xs hidden-md">
+        <!--<span class="postTitleLatest">&nbsp;Latest Blog Posts</span>-->
+        <button type="button" class="btn btn-primary btn-sm"><span class="postsubTitle">Recent Posts</span></button>
+
+      </div>
+
+     <div class="col-sm-10">
+     <marquee behavior="scroll" scrolldelay="600" direction="up" style="height: 30px">
+       {% for post in site.posts limit:10 %}  {% for tag in post.tags %} {% if tag == 'iFix' %} {% assign found_ifix = true %} {% break %} {% endif %} {% endfor%} {% if found_ifix != true %}
+       <ul style="list-style: none;">
+        <li><a href="{{site.baseurl}}{{post.url}}"><span class="postsubTitleVar">{{post.title}}</span></a></li>
+      </ul>
+       {% endif %} {% assign found_ifix = false %} {% endfor %}
+      </marquee>
+     </div>
+    </div>
    </div>
-</div>-->
+</div>
 <div id="myCarousel" class="carousel slide hidden-sm hidden-xs hidden-md" data-ride="carousel" role="banner">
    <!-- Carousel indicators -->
    <ul class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <!--<li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>-->
    </ul>
 
    <div class="carousel-inner" role="tablist" aria-label="Carousel animation of news items">
+     <div class="item active">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-7 carousel-caption" role="tab">
+                 <h1 class="no-anchor"><!--<a href="https://console.bluemix.net/catalog/services/mobile-foundation" target="_blank" rel="noopener"><span class="badge badge-primary">&nbsp;Try it!</span></a><br/>-->
+                  <a href="{{site.baseurl}}/blog/2019/04/05/digital-app-builder-ga-announce/" target="_blank" rel="noopener" class="badge badge-info"><span class="postsubTitle">Change the way you build smart web and mobile apps</span></a><br/>
+                  Announcing the General Availability of Digital App Builder 8.0.0&nbsp;<a class="badge badge-light" href="https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases/download/8.0.5/IBM.Digital.App.Builder-8.0.5.dmg"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;<span class="postsubTitle">Mac</span></a>
+                    <a class="badge badge-light" href="https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases/download/8.0.5/IBM.Digital.App.Builder.Setup.8.0.5.exe"><span class="glyphicon glyphicon-download-alt"></span>&nbsp;<span class="postsubTitle">Windows</span></a>
+</h1>
+                  <p class="caption-text">Drag and drop to build apps that connect to microservices, embed AI capabilities<br/>and are multi-channel.<br/><br/></p>
+
+               </div>
+
+               <div class="hidden-xs col-md-5 carousel-caption">
+                  <img src="{{site.baseurl}}/assets/carousel/banner3.png" alt="Digital_App_Builder" />
+
+               </div>
+            </div>
+         </div>
+      </div>
       <div class="item">
          <div class="container">
             <div class="row">
                <div class="col-md-7 carousel-caption" role="tab">
-                 <h1 class="no-anchor">Mobile solutions using common patterns</h1>
-                 <p class="caption-text">Learn to implement Mobile solutions using common patterns as illustrated<br/> in the Mobile Solution Tutorials.</p>
-                 <p><a class="custombtn btn-lg btn-default containers" href="http://console.bluemix.net/docs/tutorials/index.html#mobile" role="button"><span class="glyphicon glyphicon-book"></span>&nbsp;Mobile Solution Tutorials</a></p>
+                 <h1 class="no-anchor">Mobile Foundation on Red Hat OpenShift Container Platform</h1>
+                 <p class="caption-text">Learn how to install a Mobile Foundation instance on an OpenShift cluster.</p>
+                 <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibmcloud/getting-started-mf-on-rhos/" role="button"><span class="glyphicon glyphicon-book"></span>&nbsp;Get started</a></p>
 
 
                </div>
 
                <div class="hidden-xs col-md-5 carousel-caption">
-                  <img src="{{site.baseurl}}/assets/carousel/banner3.png" alt="{{ site.data.keys.mf_console }}" /><br/>
+                  <img src="{{site.baseurl}}/assets/carousel/banner2.png" alt="{{ site.data.keys.mf_console }}" /><br/>
 
               </div>
             </div>
          </div>
       </div>
 
-     <div class="item active">
+     <!--<div class="item">
          <div class="container">
             <div class="row">
                <div class="col-md-7 carousel-caption" role="tab">
-                 <h1 class="no-anchor"><!--<a href="https://console.bluemix.net/catalog/services/mobile-foundation" target="_blank" rel="noopener"><span class="badge badge-primary">&nbsp;Try it!</span></a><br/>-->
-                  <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/" target="_blank" rel="noopener" class="badge badge-info"><span class="postsubTitle">Plan migration to IBM Mobile Foundation v8.0</span></a><br/>
+                 <h1 class="no-anchor">--><!--<a href="https://console.bluemix.net/catalog/services/mobile-foundation" target="_blank" rel="noopener"><span class="badge badge-primary">&nbsp;Try it!</span></a><br/>-->
+                  <!--<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/" target="_blank" rel="noopener" class="badge badge-info"><span class="postsubTitle">Plan migration to IBM Mobile Foundation v8.0</span></a><br/>
                   Mobile Foundation service on IBM Cloud</h1>
                   <p class="caption-text">Quickly and easily stand-up scalable Developer or<br/>Production environments of {{ site.data.keys.product_full }} on IBM cloud.<br/><br/></p>
                   <p><a class="custombtn btn-lg btn-default containers" href="https://console.bluemix.net/catalog/services/mobile-foundation" role="button">Experience {{ site.data.keys.product }} on IBM Cloud</a></p>
@@ -190,15 +252,15 @@ indexed: false
                </div>
             </div>
          </div>
-      </div>
+      </div>-->
 
-      <div class="item">
+      <!--<div class="item">
          <div class="container">
                <div class="row">
                   <div class="col-md-7 carousel-caption" role="tab">
                     <h1 class="no-anchor"><a href="{{site.baseurl}}/blog/2017/05/26/come-chat-with-us/" target="_blank" rel="noopener" class="badge badge-secondary"><span class="postsubTitle">Join the IBM Mobile community on Slack</span></a><br/>IBM Mobile dev channel</h1>
                     <p class="caption-text">Get started with IBM Mobile services and Mobile Foundation on IBM Cloud<br/>using the How-To videos in IBM Mobile dev channel.</p>
-                    <p><a class="custombtn btn-lg btn-default containers" href="https://www.youtube.com/c/IBMMobileDev" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;IBM Mobile dev channel</a></p>
+                    <p><a class="custombtn btn-lg btn-default containers" href="https://www.youtube.com/c/IBMMobileDev" role="button"><span class="glyphicon glyphicon-play"></span>&nbsp;IBM Mobile dev channel</a></p>-->
                     <!--<h1 class="no-anchor"><a class="badge badge-warning"><span class="postsubTitle">&nbsp;Announcements</span></a><br/>
                     Mobile Foundation Blog</h1>-->
                     <!--<p class="caption-text">Read Informational posts related to the Mobile Foundation product <br/>features and announcements here.</p>-->
@@ -206,7 +268,7 @@ indexed: false
 
 
 
-                  </div>
+                  <!--</div>
 
 
                     <div class="hidden-xs col-md-5 carousel-caption">
@@ -216,7 +278,7 @@ indexed: false
 
               </div>
          </div>
-      </div>
+      </div>-->
 
    </div>
 
@@ -229,23 +291,60 @@ indexed: false
       <span class="sr-only">Next</span>
    </a>
 </div>
+<div id="blogPosts" class="hidden-sm hidden-xs hidden-md">
+   <div class="container">
+      <button type="button" class="btn btn-default btn-sm"><a href="{{site.baseurl}}/blog/2019/05/30/leverage-ibm-support-portal/"><span class="glyphicon glyphicon-bell"></span>&nbsp;&nbsp;<span class="postsubTitle">Subscribe for updates & stay up-to-date with all that is happening in Mobile Foundation</span></a></button>
+   </div>
+</div>
 
 <div id="index_sections">
   <!-- Blog -->
-  <div id="index_benefits" class="container" role="complementary">
+  <div id="index_posts" class="container" role="complementary">
 
-     <div class="row hidden-xs hidden-sm hidden-md">
+     <div class="row">
       <!-- <h1 class="no-anchor">Latest in Mobile Foundation Blog</h1>-->
       <!--  <div class="col-md-6">
            <img class="foundation_diamond" src="{{site.baseurl}}/assets/front-page/foundation_logo.svg" alt="Foundation diamond icon"/>
         </div>-->
 
-        <div class="col-md-6 hidden-sm hidden-xs hidden-md">
+        <div class="col-sm-12 hidden-sm hidden-xs hidden-md">
+
+           <div class="benefits">
+             {% for post in site.posts limit:1 %}
+             <div class="card text-center">
+               <div class="card-header">
+                 <div class="alert alert-info">
+                   <p class="card-title"><span class="postTitle">Featured</span></p>
+                 </div>
+               </div>
+               <div class="card-body">
+                 <h5 class="card-title"><span class="postTitle">{{post.title}}</h5>
+                 <p class="card-text">
+                <h4><span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}...</span><a href="{{site.baseurl}}{{post.url}}"><span class="postsubTitleMore">&nbsp;more...</span></a></h4>
+                <!--<a class="btn btn-primary btn-sm" href="{{site.baseurl}}{{post.url}}"><span class="postsubTitle">&nbsp;Read more...</span></a>-->
+               </div>
+               <div class="card-footer text-muted">
+                 <p class="card-text">
+                  <a class="btn btn-default btn-md" href="{{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/release-notes/interim-fixes/"><span class="postsubTitle">&nbsp;Know why you should upgrade to the latest Mobile Foundation v8.0 CD Update</span></a>
+               </div>
+             </div>
+             {% endfor %}
+           </div>
+
+     </div>
+  </div>
+  <hr class="sm hidden-sm hidden-xs hidden-md"/>
+
+<!--<div id="index_sections">
+  <div id="index_benefits" class="container" role="complementary">
+
+     <div class="row hidden-xs hidden-sm hidden-md">
+
+        <div class="col-md-4 hidden-sm hidden-xs hidden-md">
 
            <div class="benefits">
              {% for post in site.posts limit:1 %}
              <div class="card">
-             <!--<img class="card-img-top" src="../assets/front-page/carousel-background.png" alt="Card image cap">-->
 
              <div class="card-body">
                <div class="card-header">
@@ -253,17 +352,15 @@ indexed: false
                    <p class="card-title"><span class="postTitle">{{post.title}}</span></p>
                  </div>
                </div>
-               <!--<h3 class="card-title"><span class="glyphicon glyphicon-bell"></span><span class="postsubTitle">&nbsp;Latest blog post</span></h3>-->
-               <!--<p class="card-title"><h3 class="no-anchor"><a class="badge badge-warning"><span class="postExcerpt">&nbsp;Latest in Mobile Foundation blog</span></a><br/>-->
 
                <p class="card-text"><span class="postExcerpt">{{post.date | date: '%B %d, %Y'}}</span></p>
 
                <p class="card-text">
                  <h4><span class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | truncatewords: 20}}</span></h4>
 
-               </p>
-             </div>
 
+             </div>
+             <br/>
              <div class="card-footer">
                <a class="custombtn btn-lg btn-primary" href="{{site.baseurl}}{{post.url}}"><span class="postsubTitle">&nbsp;Read more...</span></a>
              </div>
@@ -381,7 +478,7 @@ indexed: false
       <div class="row">
          <div class="col-md-6 index_section_left hidden-xs hidden-sm">
             <p><span class="number1">1</span></p>
-            <p><a href="{{ site.baseurl }}/downloads">Download our Developer Kit</a> for a local installation,<br/> or <a href="{{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/">head over to IBM Cloud</a> to setup a<br/> Mobile Foundation server in the cloud.</p>
+            <p><a href="{{ site.baseurl }}/downloads">Download our Developer Kit</a> for a local installation,<br/> or <a href="{{ site.baseurl }}/tutorials/en/foundation/8.0/ibmcloud/using-mobile-foundation/">head over to IBM Cloud</a> to setup a<br/> Mobile Foundation server in the cloud.</p>
 
             <div id="index_getstarted_icons" class="row hidden-xs hidden-sm">
                <div class="col-md-6 index-item">
@@ -389,10 +486,10 @@ indexed: false
                   <p><a href="{{ site.baseurl }}/downloads">Mobile<br/>Foundation</a></p>
                </div>
 
-               <div class="col-md-6 index-item">
-                  <a href="{{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/"><img src="{{site.baseurl}}/assets/front-page/getstarted/bluemix.png" alt="Mobile Foundation IBM Cloud service"/></a>
-                  <p><a href="{{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/">IBM<br/>Cloud</a></p>
-               </div>
+              <!-- <div class="col-md-6 index-item">
+                  <a href="{{ site.baseurl }}/tutorials/en/foundation/8.0/ibmcloud/using-mobile-foundation/"><img src="{{site.baseurl}}/assets/front-page/getstarted/bluemix.png" alt="Mobile Foundation IBM Cloud service"/></a>
+                  <p><a href="{{ site.baseurl }}/tutorials/en/foundation/8.0/ibmcloud/using-mobile-foundation/">IBM<br/>Cloud</a></p>
+               </div>-->
             </div>
 
          </div>

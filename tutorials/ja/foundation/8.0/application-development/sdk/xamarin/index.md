@@ -102,13 +102,13 @@ using Worklight.Xamarin.Android;
 {: #mfpclientplist }
 このファイルは、{{ site.data.keys.mf_server }} に iOS アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
 
-|プロパティー            |説明                                                         |値の例 |
+| プロパティー            | 説明                                                         | 値の例 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    |{{ site.data.keys.mf_server }} との通信プロトコル。             |http または https  |
-| host        |{{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
-| port        |{{ site.data.keys.mf_server }} のポート。                                 | 9080           |
-| wlServerContext     |{{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
-| languagePreferences |クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
+| protocol    | {{ site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
+| host        | {{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
+| port        | {{ site.data.keys.mf_server }} のポート。                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
+| languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
 
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }

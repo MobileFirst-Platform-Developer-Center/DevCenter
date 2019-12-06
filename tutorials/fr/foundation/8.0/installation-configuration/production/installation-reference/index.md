@@ -196,11 +196,11 @@ Vous pouvez aussi utiliser l'élément `<mysql>` avec les attributs suivants :
 | user	    | Nom d'utilisateur permettant d'accéder aux bases de données. | Oui      | Aucune                  |
 | password	| Nom d'utilisateur permettant d'accéder aux bases de données.	 | Non       | Demandée en mode interactif |
 
-> `Remarque :` Si vous spécifiez la base de données avec des attributs alternatifs, cette base de données doit exister, le compte utilisateur doit exister et la base de données doit être déjà accessible pour l'utilisateur. Dans ce cas, la tâche **configuredatabase** ne tente pas de créer la base de données ou l'utilisateur ni d'accorder l'accès à l'utilisateur. La tâche **configuredatabase** garantit seulement que la base de données comporte les tables requises pour la version en cours de {{ site.data.keys.mf_server }}. Vous n'avez pas besoin de spécifier les éléments internes `<dba>` ou `<client>`.
+> `Remarque :` Si vous spécifiez la base de données avec des attributs alternatifs, cette base de données doit exister, le compte utilisateur doit exister et la base de données doit être déjà accessible pour l'utilisateur. Dans ce cas, la tâche **configuredatabase** ne tente pas de créer la base de données ou l'utilisateur ni d'accorder l'accès à l'utilisateur. La tâche **configuredatabase** garantit seulement que la base de données comporte les tables requises pour la version en cours de {{ site.data.keys.mf_server }}. Vous n'avez pas besoin de spécifier l'élément interne `<dba>` ou `<client>`.
 
 #### Oracle
 {: #oracle }
-L'élément `<oracle>` dispose des attributs suivants :
+L'élément `<oracle>` possède les attributs suivants :
 
 | Attribut      | Description                                                              | Obligatoire | Valeur par défaut |
 |----------------|--------------------------------------------------------------------------|----------|---------|
@@ -1130,9 +1130,7 @@ profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#S
 L'élément `<driverclasspath>` doit contenir un fichier JAR de pilote JDBC Oracle. Vous pouvez télécharger des pilotes JDBC Oracle depuis la page [JDBC, SQLJ, Oracle JPublisher and Universal Connection
 Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
 
-L'élément `<property>`, qui peut être utilisé dans les éléments
-`<derby>`, `<db2>`,` <mysql>` ou
-`<oracle>`, dispose des attributs suivants :
+L'élément `<property>`, qui peut être inclus dans les éléments `<derby>`, `<db2>`,` <mysql>` ou `<oracle>`, possède les attributs suivants :
 
 | Attribut  | Description                                | Obligatoire | Valeur par défaut |
 |------------|--------------------------------------------|----------|---------|
@@ -1185,9 +1183,7 @@ La tâche Ant `<uninstallApplicationCenter>` annule les effets d'une précédent
 
 ### Attributs et éléments
 {: #attributes-and-elements-3 }
-Les tâches `<installApplicationCenter>`,
-`<updateApplicationCenter>` et
-`<uninstallApplicationCenter>` ont les attributs suivants :
+Les tâches `<installApplicationCenter>`, `<updateApplicationCenter>` et `<uninstallApplicationCenter>` possèdent les attributs suivants :
 
 | Attribut    | Description                                | Obligatoire | Valeur par défaut |
 |--------------|--------------------------------------------|----------|---------|
@@ -1217,9 +1213,7 @@ L'attribut **shortcutsDir** indique où placer les raccourcis vers la console Ap
 Le programme **aapt** fait partie de la distribution {{ site.data.keys.product }} : **rép_install_produit/ApplicationCenter/tools/android-sdk**.  
 Si cet attribut n'est pas défini, lors du téléchargement d'une application apk, Application Center effectue l'analyse syntaxique de cette dernière à l'aide de son propre code, ce qui peut entraîner les limitations.
 
-Les tâches `<installApplicationCenter>`,
-`<updateApplicationCenter>` et
-`<uninstallApplicationCenter>` prennent en charge les éléments suivants :
+Les tâches `<installApplicationCenter>`, `<updateApplicationCenter>` et `<uninstallApplicationCenter>` possèdent les éléments suivants :
 
 | Elément           | Description	                            | Nombre |
 |-------------------|-------------------------------------------|-------|
@@ -1251,7 +1245,7 @@ Les attributs et les éléments internes de ces éléments sont décrits dans le
 {: #to-specify-a-connection-to-the-services-database }
 L'élément `<database>` collecte les paramètres permettant de spécifier une déclaration de source de données dans un serveur d'applications pour accéder à la base de données des services.
 
-Vous devez déclarer une seule base de données : `<database kind="ApplicationCenter">`. Vous spécifiez l'élément `<database>` en procédant comme pour la tâche  Ant `<configuredatabase>`, à ceci près que l'élément `<database>` ne possède pas les éléments `<dba>` et `<client>`. Il peut posséder les éléments `<property>`.
+Vous devez déclarer une seule base de données : `<database kind="ApplicationCenter">`. Vous spécifiez l'élément `<database>` en procédant comme pour la tâche Ant `<configuredatabase>`, à ceci près que l'élément `<database>` ne possède pas les éléments `<dba>` et `<client>`. Il peut posséder les éléments `<property>`.
 
 L'élément `<database>` possède les attributs suivants :
 
@@ -1329,7 +1323,7 @@ Utilisez l'attribut **serviceWar** afin de spécifier un répertoire différent 
 {{ site.data.keys.mf_analytics }}. Vous pouvez
 spécifier le nom de ce fichier WAR avec un chemin d'accès absolu ou relatif.
 
-Les tâches `<installanalytics>`, `<updateanalytics>` et `<uninstallanalytics>` prennent en charge les éléments suivants :
+Les tâches `<installanalytics>`, `<updateanalytics>` et `<uninstallanalytics>` possèdent les éléments suivants :
 
 | Attribut         | Description                               | Obligatoire | Valeur par défaut |
 |-------------------|-------------------------------------------|----------|---------|

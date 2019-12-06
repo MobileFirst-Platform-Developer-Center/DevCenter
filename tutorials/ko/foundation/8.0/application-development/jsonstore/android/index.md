@@ -11,7 +11,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## 전제조건
+## 선행 조건
 {: #prerequisites }
 
 * [JSONStore 상위 학습서](../)를 읽으십시오.
@@ -31,8 +31,15 @@ downloads:
 2. 기존 `dependencies` 섹션에 다음을 추가하십시오.
 
 ```
-compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+
+>**참고**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) 기능을 사용 중이고 기능 모드에서 MobileFirst API를 호출하려는 경우 `implementation` 대신 `api` 선언을 사용하십시오. `api`를 사용하면 기능 모듈을 포함한 앱에 있는 모든 모듈에서 MobileFirst API가 사용 가능하도록 하는 반면 `implementation`을 사용하면 동일한 모듈 자체에서 MobileFirst API 사용을 제한합니다. 세부사항은 [API 및 구현 분리](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation)를 읽으십시오.
+
+```
+api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+```
+
 3. 다음을 build.gradle 파일의 "DefaultConfig" 섹션에 추가하십시오.
 ```
   ndk {

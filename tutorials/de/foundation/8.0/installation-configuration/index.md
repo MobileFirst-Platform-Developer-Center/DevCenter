@@ -14,7 +14,7 @@ Installationsszenario.
 {: #installing-a-development-environment }
 Wenn Sie die Client- oder Serverseite mobiler Anwendungen entwickeln möchten, beginnen Sie mit
 dem [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) oder
-dem Service [{{ site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation).
+dem Service [{{ site.data.keys.mf_bm }}](../ibmcloud/using-mobile-foundation).
 
 **Verwendung des {{ site.data.keys.mf_dev_kit }}**
 {: #using-the-dev-kit }
@@ -82,8 +82,8 @@ die Anweisungen für die Erstellung eines
 funktionsfähigen MobileFirst-Server-Clusters mit zwei Knoten in
 WebSphere Application Server Liberty Profile durcharbeiten. Für die Installation können Sie die Grafiktools (grafische Benutzerschnittstelle) oder die Befehlszeile verwenden. 
 
-* [Installation im GUI-Modus mit IBM Installation Manager und dem Server Configuration Tool](production/simple-install/tutorials/graphical-mode)
-* [Befehlszeileninstallation mit dem Befehlszeilentool](production/simple-install/tutorials/command-line)
+* [Installation im GUI-Modus mit IBM Installation Manager und dem Server Configuration Tool](production/simple-install/graphical-mode)
+* [Befehlszeileninstallation mit dem Befehlszeilentool](production/simple-install/command-line)
 
 Wenn Sie die Installation mit einer der beiden oben beschriebenen Methoden durchgeführt haben, können abhängig von den Voraussetzungen weitere [Konfigurationsschritte](production/server-configuration) erforderlich sein, um das Setup abzuschließen. 
 

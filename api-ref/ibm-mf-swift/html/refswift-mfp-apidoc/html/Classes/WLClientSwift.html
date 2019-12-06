@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WLClientSwift Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/WLClientSwift" class="dashAnchor"></a>
+
+    <a title="WLClientSwift Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+           Swift Client-side API Reference
+        </a>
+
+      </p>
+
+      <!-- <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p> -->
+
+
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html"> Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      WLClientSwift Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/BaseChallengeHandlerSwift.html">BaseChallengeHandlerSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GatewayChallengeHandlerSwift.html">GatewayChallengeHandlerSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/OCLoggerSwift.html">OCLoggerSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/SecurityCheckChallengeHandlerSwift.html">SecurityCheckChallengeHandlerSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WLAnalyticsSwift.html">WLAnalyticsSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WLAuthorizationManagerSwift.html">WLAuthorizationManagerSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WLClientSwift.html">WLClientSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WLFailResponseSwift.html">WLFailResponseSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WLResourceRequestSwift.html">WLResourceRequestSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WLResponseSwift.html">WLResponseSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WLSecurityUtilsSwift.html">WLSecurityUtilsSwift</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/WLSimpleDataSharingSwift.html">WLSimpleDataSharingSwift</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/OCLogTypeSwift.html">OCLogTypeSwift</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/WLDelegateSwift.html">WLDelegateSwift</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>WLClientSwift</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">WLClientSwift</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">IBMMobileFirstPlatformFoundation</span><span class="o">.</span><span class="kt">WLDelegate</span><span class="p">,</span> <span class="kt"><a href="../Protocols/WLDelegateSwift.html">WLDelegateSwift</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>This singleton class exposes methods that you use to communicate with the IBM MobileFirst Platform Server.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C14sharedInstanceACyFZ"></a>
+                    <a name="//apple_ref/swift/Method/sharedInstance()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C14sharedInstanceACyFZ">sharedInstance()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method returns the shared instance of WLClientSwift.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">sharedInstance</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">WLClientSwift</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>WLCLientSwift shared instance</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C17HTTPCookieStorageSo012NSHTTPCookieF0CyF"></a>
+                    <a name="//apple_ref/swift/Method/HTTPCookieStorage()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C17HTTPCookieStorageSo012NSHTTPCookieF0CyF">HTTPCookieStorage()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Retrieves the shared cookie storage that is used by the framework when communicating with the server.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="kt">HTTPCookieStorage</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">HTTPCookieStorage</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The cookie storage object</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C4send7request8delegatey0B010URLRequestV_yptF"></a>
+                    <a name="//apple_ref/swift/Method/send(request:delegate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C4send7request8delegatey0B010URLRequestV_yptF">send(request:delegate:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method uses URLConnection to execute the provided <strong>URLRequest</strong>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>URLRequest object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delegate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An object that conforms to the NSURLSessionDataDelegate or NSURLSessionTaskDelegate protocol.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C4send7request13responseQueue8delegatey0B010URLRequestV_So17OS_dispatch_queueCyptF"></a>
+                    <a name="//apple_ref/swift/Method/send(request:responseQueue:delegate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C4send7request13responseQueue8delegatey0B010URLRequestV_So17OS_dispatch_queueCyptF">send(request:responseQueue:delegate:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method uses URLConnection to execute the provided URLRequest.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">send</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">responseQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>URLRequest object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>responseQueue</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A callback queue of type DispatchQueue</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>delegate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An object that conforms to the NSURLSessionDataDelegate or NSURLSessionTaskDelegate protocol.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C24registerChallengeHandleryyXe_tcACF"></a>
+                    <a name="//apple_ref/swift/Method/registerChallengeHandler(challengeHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C24registerChallengeHandleryyXe_tcACF">registerChallengeHandler(challengeHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>You can use this method to register a challenge handler, which is a class that inherits either from GatewayChallengeHandlerSwift or SecurityCheckChallengeHandlerSwift.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">registerChallengeHandler</span><span class="p">(</span><span class="nv">challengeHandler</span><span class="p">:</span> <span class="kt">BaseChallengeHandler</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>challengeHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The challenge handler to register.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C15addGlobalHeader10headerName0H5ValueySS_SStF"></a>
+                    <a name="//apple_ref/swift/Method/addGlobalHeader(headerName:headerValue:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C15addGlobalHeader10headerName0H5ValueySS_SStF">addGlobalHeader(headerName:headerValue:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>You use this method to add a global header, which is sent on each request. Each WlRequest instance will use this header as an HTTP header.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">addGlobalHeader</span><span class="p">(</span><span class="nv">headerName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">headerValue</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>headerName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The header name/key.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>value</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The header value.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C18removeGlobalHeader10headerNameySS_tF"></a>
+                    <a name="//apple_ref/swift/Method/removeGlobalHeader(headerName:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C18removeGlobalHeader10headerNameySS_tF">removeGlobalHeader(headerName:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>You use this method to remove a global header, which is no longer sent with each request.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">removeGlobalHeader</span><span class="p">(</span><span class="nv">headerName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>headerName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The header name/key to be removed.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C16getGlobalHeadersSDys11AnyHashableVypGyF"></a>
+                    <a name="//apple_ref/swift/Method/getGlobalHeaders()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C16getGlobalHeadersSDys11AnyHashableVypGyF">getGlobalHeaders()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get global headers.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getGlobalHeaders</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt">AnyHashable</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Global headers</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C19getChallengeHandleryXeSS_tcACF"></a>
+                    <a name="//apple_ref/swift/Method/getChallengeHandler(bySecurityCheck:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C19getChallengeHandleryXeSS_tcACF">getChallengeHandler(bySecurityCheck:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Get challenge handler by realm key.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getChallengeHandler</span><span class="p">(</span><span class="nv">bySecurityCheck</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">BaseChallengeHandler</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Challenge handler object.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C20setHeartBeatInterval8intervalySi_tF"></a>
+                    <a name="//apple_ref/swift/Method/setHeartBeatInterval(interval:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C20setHeartBeatInterval8intervalySi_tF">setHeartBeatInterval(interval:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This method sets the interval, in seconds, at which the client (device) sends a heartbeat signal to the server.</p>
+
+<p>You use the heartbeat signal to prevent a session with the server from timing out because of inactivity. Typically, the heartbeat interval has a value that is less than the server session timeout.The server session timeout is defined in the worklight.properties file. By default, the value of the heartbeat interval is set to 420 seconds (7 minutes). To disable the heartbeat signal, set a value that is less than, or equal to zero.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>The client sends a heartbeat signal to the server only when the application is in the foreground. When the application is sent to the background, the client stops sending heartbeat signals. The client resumes sending heartbeat signals when the application is brought to the foreground again.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setHeartBeatInterval</span><span class="p">(</span><span class="nv">interval</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>interval</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The interval, in seconds, at which the heartbeat signal is sent to the server.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C12setServerUrl3urly0B03URLV_tF"></a>
+                    <a name="//apple_ref/swift/Method/setServerUrl(url:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C12setServerUrl3urly0B03URLV_tF">setServerUrl(url:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the IBM MobileFirst Platform server URL to the specified URL.</p>
+
+<p>Changes the IBM MobileFirst Platform server URL to the new URL and cleans the HTTP client context. After calling this method, the application is not logged in to any server.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>The responsibility for checking the validity of the URL is on the developer.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setServerUrl</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The URL of the new server, including protocol, IP, port, and context.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C9serverUrl0B03URLVyF"></a>
+                    <a name="//apple_ref/swift/Method/serverUrl()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C9serverUrl0B03URLVyF">serverUrl()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns the current IBM MobileFirst Platform server URL.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">serverUrl</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">URL</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>IBM MobileFirst Platform server URL</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C30pinTrustedCertificatePublicKey19certificateFilenameySS_tF"></a>
+                    <a name="//apple_ref/swift/Method/pinTrustedCertificatePublicKey(certificateFilename:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C30pinTrustedCertificatePublicKey19certificateFilenameySS_tF">pinTrustedCertificatePublicKey(certificateFilename:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pins the host X509 certificate public key to the client application. Secured calls to the pinned remote host will be checked for a public key match. Secured calls to other hosts containing other certificates will be rejected. Some mobile operating systems might cache the certificate validation check results. Your app must call the certificate pinning method before making a secured request. Calling this method a second time overrides any previous pinning operation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">pinTrustedCertificatePublicKey</span><span class="p">(</span><span class="nv">certificateFilename</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>certificateFilename</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The name of the certificate file.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C30pinTrustedCertificatePublicKey20certificateFilenamesySayypG_tF"></a>
+                    <a name="//apple_ref/swift/Method/pinTrustedCertificatePublicKey(certificateFilenames:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C30pinTrustedCertificatePublicKey20certificateFilenamesySayypG_tF">pinTrustedCertificatePublicKey(certificateFilenames:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Pins a list of host X509 certificates with public key to the client application. Secured calls to the all pinned remote host will be checked for a public key match. Secured calls to other hosts containing other certificates not pinned with app will be rejected. Some mobile operating systems might cache the certificate validation check results. Your app must call the certificate pinning method before making a secured request. Calling this method a second time overrides any previous pinning operation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">pinTrustedCertificatePublicKey</span><span class="p">(</span><span class="nv">certificateFilenames</span><span class="p">:</span> <span class="kt">Array</span><span class="o">&lt;</span><span class="kt">Any</span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>certificateFilenames</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list conatining names of the certificate files.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C20setDeviceDisplayName07displayH012onCompletionySS_ys5Error_pSgctF"></a>
+                    <a name="//apple_ref/swift/Method/setDeviceDisplayName(displayName:onCompletion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C20setDeviceDisplayName07displayH012onCompletionySS_ys5Error_pSgctF">setDeviceDisplayName(displayName:onCompletion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the display name of the device. The display name is stored in the MobileFirst Server registration data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">setDeviceDisplayName</span><span class="p">(</span><span class="nv">displayName</span><span class="p">:</span><span class="kt">String</span> <span class="p">,</span> <span class="nv">onCompletion</span> <span class="p">:</span> <span class="kd">@escaping</span><span class="p">(</span><span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>displayName</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The device display name to set.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onCompletion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure call-back.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:24IBMMobileFoundationSwift08WLClientC0C20getDeviceDisplayName12onCompletionyySSSg_s5Error_pSgtc_tF"></a>
+                    <a name="//apple_ref/swift/Method/getDeviceDisplayName(onCompletion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:24IBMMobileFoundationSwift08WLClientC0C20getDeviceDisplayName12onCompletionyySSSg_s5Error_pSgtc_tF">getDeviceDisplayName(onCompletion:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Gets the display name of the device. The display name is retrieved from the MobileFirst Server registration data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">getDeviceDisplayName</span><span class="p">(</span><span class="nv">onCompletion</span><span class="p">:</span> <span class="kd">@escaping</span><span class="p">(</span><span class="kt">String</span><span class="p">?</span> <span class="p">,</span><span class="kt">Error</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>onCompletion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure call-back.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section style="text-align: center;" class="footer">
+        <p>&copy; Copyright IBM Corp. 2019</p>
+    </section>
+  </body>
+</div>
+</html>

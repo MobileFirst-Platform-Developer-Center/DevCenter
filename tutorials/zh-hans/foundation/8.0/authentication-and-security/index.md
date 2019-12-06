@@ -173,7 +173,7 @@ MobileFirst 刷新令牌是数字签名的实体，如访问令牌，用于描�
         <div id="collapse-refresh-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="refresh-token-expiration">
             <div class="panel-body">
             <p>可以分别在客户机端和服务器端使用以下属性来启用刷新令牌功能。</p>
-            <b>客户机端属性</b><br/>
+            <b>客户机端属性 (Android)</b><br/>
 
             <i>文件名</i>：mfpclient.properties<br/>
             <i>属性名称</i>：wlEnableRefreshToken<br/>
@@ -181,6 +181,16 @@ MobileFirst 刷新令牌是数字签名的实体，如访问令牌，用于描�
 
             例如，<br/>
             <i>wlEnableRefreshToken=true</i><br/><br/>
+
+            <b>客户机端属性 (iOS)</b><br/>
+
+            <i>文件名</i>：mfpclient.plist<br/>
+            <i>属性名称</i>：wlEnableRefreshToken<br/>
+            <i>属性值</i>：true<br/>
+
+            例如，<br/>
+            <i>wlEnableRefreshToken=true</i><br/><br/>
+
 
             <b>服务器端属性</b><br/>
 
@@ -237,7 +247,9 @@ Pragma: no-cache
 </div>
 
 
->**注：**与访问令牌相比，刷新令牌是长期有效令牌。因此，必须谨慎使用刷新令牌功能。不需要定期进行用户认证的应用程序是使用刷新令牌功能的理想选择。目前，MobileFirst 仅在 Android 平台上支持刷新令牌功能。建议对 Android 和 iOS 应用程序使用不同的捆绑软件标识。
+>**注：**与访问令牌相比，刷新令牌是长期有效令牌。因此，必须谨慎使用刷新令牌功能。不需要定期进行用户认证的应用程序是使用刷新令牌功能的理想选择。 
+>
+> 从 CD 更新 3 开始，MobileFirst 在 iOS 上支持刷新令牌功能。 
 
 
 ### 安全性检查

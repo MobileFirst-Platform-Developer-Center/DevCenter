@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: Ressourcenanforderung von JavaScript-Anwendungen (Cordova, Web)
+title: Ressourcenanforderung von JavaScript-Anwendungen (Cordova-Anwendungen, Webanwendungen)
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 downloads:
-  - name: Webprojekt herunterladen
+  - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
-  - name: Adapter-Maven-Projekt herunterladen
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
@@ -163,6 +163,8 @@ onFailure: function(response) {
 ## Weitere Informationen
 {: #for-more-information }
 > Weitere Hinweise zu WLResourceRequest finden Sie in den [API-Referenzinformationen](../../../api/client-side-api/javascript/client/).
+
+
 
 <img alt="Beispielanwendung" src="resource-request-success-cordova.png" style="float:right"/>
 ## Beispielanwendungen

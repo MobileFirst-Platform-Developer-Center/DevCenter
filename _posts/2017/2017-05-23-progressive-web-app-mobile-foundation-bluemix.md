@@ -1,10 +1,9 @@
 ---
-title: 'Power your Progressive Web Apps with Mobile Foundation and Node.js Runtime on Bluemix'
+title: 'Power your Progressive Web Apps with Mobile Foundation and Node.js Runtime on IBM Cloud'
 date: 2017-05-23
 tags:
 - MobileFirst_Foundation
 - Mobile_Foundation_Service
-- Bluemix
 - IBM_Cloud
 - Progressive_Web_Apps
 - Node.js
@@ -32,9 +31,9 @@ More specifically, progressive web apps are required to be:
 
 The above list provides a picture of how PWAs are different from a traditional web app. The list is by no means a comprehensive one, however, you can see the [complete checklist for PWAs here](https://developers.google.com/web/progressive-web-apps/checklist).
 
-### Your own PWA with IBM Bluemix and Mobile Foundation
+### Your own PWA with IBM Mobile Foundation on IBM Cloud
 
-In the following video, you will see how to host a mobile web app using the [SDK for Node.js on IBM Bluemix](https://console.ng.bluemix.net/catalog/starters/sdk-for-nodejs?env_id=ibm:yp:us-south&taxonomyNavigation=apps). The Node.js app itself will host the web content and will integrate with a [Mobile Foundation service](https://console.bluemix.net/catalog/services/mobile-foundation) for security, backend connectivity and user management.
+In the following video, you will see how to host a mobile web app using the [SDK for Node.js on IBM Cloud](https://cloud.ibm.com/catalog/starters/cloud-foundry?runtime=sdk-for-nodejs). The Node.js app itself will host the web content and will integrate with a [Mobile Foundation service](https://cloud.ibm.com/catalog/services/mobile-foundation) for security, backend connectivity and user management.
 
 At the heart of a PWA is the concept of a service worker. In this video, you'll also see how to add a service worker to your web app and how the service worker will equip your web app with offline capabilities.
 

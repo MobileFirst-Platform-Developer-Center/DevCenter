@@ -1,0 +1,52 @@
+---
+layout: tutorial
+title: WKWebView support for iOS apps
+show_children: true
+show_disqus: false
+print_pdf: false
+weight: 12
+---
+
+<h2>Overview</h2>
+<p>You can replace the default UIWebView in your MobileFirst hybrid iOS Cordova app with WKWebView.</p>
+
+
+<h3>About this task</h3>
+
+<p>With the latest iFix release IBM MobileFirst Platform Foundation V7.1.0 (<i>IF201905221643</i>), you can integrate WKWebView with your hybrid iOS Cordova MobileFirst app.</p>
+<blockquote>
+  The <i>cordova-ios</i> version has been updated to 4.0.1 in this iFix release. Ensure that any additional third-party cordova plugin that is added to the project is compatible with the <i>cordova-ios</i> version 4.0.1.
+</blockquote>
+<p>WKWebView provides an improved WebView. WKWebView displays interactive web content, such as for an in-app browser.</p>
+
+<h3>Procedure</h3>
+<p>To enable the WKWebView in a Hybrid MobileFirst app for iOS, follow the below steps.</p>
+<ol>
+  <li>Open the MobileFirst Hybrid iOS application in Xcode IDE (<code>&lt;ProjectName<&gt;/&lt;AppName&gt;/iphone/native</code>).</li>
+  <li>Navigate to the <code>Resources/config.xml</code> file and add the following preference under the &lt;widget&gt; tag.
+    <p><code>&lt;preference name="CordovaWebViewEngine" value="CDVWKWebViewEngine" /&gt;</code></p>
+</li>
+<li>Click <b>Build phases</b> &gt; <b>Link Binary with Libraries</b> &gt; Search for <i>Webkit.framework</i> and add it.
+</li>
+<li>Click <b>CordovaLib.xcodeproj</b> &gt; <b>Build Phases</b></li>
+<li>Add the following header files in the <b>Headers</b> tab as <i>public</i>. These files are located in <code>CordovaLib.xcodeproj/plugin/WKWebview</code>.
+  <ul><li>CDVWKWebViewUIDelegate.h</li>
+    <li>CDVWKProcessPoolFactory.h</li>
+    <li>CDVWKWebViewEngine.h</li>
+    <li>CDVWKWebViewEngine+FileXhrFix.h
+    </li>
+  </ul>
+</li>
+<li>Add the following source files in <b>Compile sources</b> tab. These files are located in <code>CordovaLib.xcodeproj/plugin/WKWebview</code>.
+  <ul><li>CDVWKProcessPoolFactory.m</li>
+    <li>CDVWKWebViewEngine+FileXhrFix.m</li>
+    <li>CDVWKWebViewUIDelegate.m</li>
+    <li>CDVWKWebViewEngine.m
+    </li>
+  </ul>
+</li>
+<li>Clean and Rebuild the application.</li>
+</ol>
+
+<h3>Results</h3>
+<p>Your MobileFirst hybrid app now uses the WKWebView component instead of the default UIWebView component.</p>

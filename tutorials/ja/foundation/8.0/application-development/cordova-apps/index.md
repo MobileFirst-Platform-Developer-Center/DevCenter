@@ -358,17 +358,17 @@ Simple Browser プレビューでは、アプリケーションの Web リソー
 
 ### ライブ再ロード
 {: #live-reload }
-物理デバイスまたはシミュレーター/エミュレーターでのプレビュー時に同様の効果を得るには、**cordova-plugin-livereload** プラグインを追加します。使用手順については、[プラグイン GitHub ページ](https://github.com/omefire/cordova-plugin-livereload)を参照してください。
+物理デバイスまたはシミュレーター/エミュレーターでのプレビュー時に同様の効果を得るには、**cordova-plugin-livereload** プラグインを追加します。 使用手順については、[プラグイン GitHub ページ](https://github.com/omefire/cordova-plugin-livereload)を参照してください。
 
 ### エミュレーターまたは物理デバイスでのアプリケーションの実行
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-アプリケーションをエミュレートするには、Cordova CLI コマンド `cordova emulate ios|android|windows` を実行します。例えば、次のとおりです。
+アプリケーションをエミュレートするには、Cordova CLI コマンド `cordova emulate ios|android|windows` を実行します。 例えば、次のとおりです。
 
 ```bash
 cordova emulate ios
 ```
 
-開発ワークステーションに接続されている物理デバイス上でアプリケーションを実行するには、Cordova CLI コマンド `cordova run ios|android|windows` を実行します。例えば、次のとおりです。
+開発ワークステーションに接続されている物理デバイス上でアプリケーションを実行するには、Cordova CLI コマンド `cordova run ios|android|windows` を実行します。 例えば、次のとおりです。
 
 ```bash
 cordova run ios
@@ -380,17 +380,20 @@ WebView リソースの編集は、JavaScript のオートコンプリートを�
 
 Xcode、Android Studio、および Visual Studio は、Objective C、Swift、C#、および Java を編集するための全編集機能を提供しますが、JavaScript の編集を支援する方法については制限される場合があります。 JavaScript の編集を容易にするため、{{ site.data.keys.product_adj }} Cordova プロジェクトには、{{ site.data.keys.product_adj }} API エレメントのオートコンプリートを提供する定義ファイルが含まれています。
 
-各 {{ site.data.keys.product_adj }} Cordova プラグインは、{{ site.data.keys.product_adj }} JavaScript ファイルごとに `d.ts` 構成ファイルを提供します。`d.ts` ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内にあります。例えば、メインの {{ site.data.keys.product_adj }} SDK の場合、このファイルは **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts** です。
+各 {{ site.data.keys.product_adj }} Cordova プラグインは、{{ site.data.keys.product_adj }} JavaScript ファイルごとに `d.ts` 構成ファイルを提供します。 `d.ts` ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内にあります。 例えば、メインの {{ site.data.keys.product_adj }} SDK の場合、このファイルは **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts** です。
 
 `d.ts` 構成ファイルは、TypeScript をサポートしているすべての IDE ([TypeScript Playground](http://www.typescriptlang.org/Playground/)、[Visual Studio Code](http://www.microsoft.com/visualstudio/eng)、[WebStorm](http://www.jetbrains.com/webstorm/)、[WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f)、[Eclipse](https://github.com/palantir/eclipse-typescript)) に対してオートコンプリートを提供します。
 
-WebView のリソース (HTML ファイルおよび JavaScript ファイル) は、**[myapp]\www** フォルダーにあります。プロジェクトを cordova build コマンドでビルドする場合、または cordova prepare コマンドを実行する場合、これらのリソースは、**[myapp]\platforms\ios\www** フォルダー、**[myapp]\platforms\android\assets\www** フォルダー、または **[myapp]\platforms\windows\www** フォルダー内の対応する **www** フォルダーにコピーされます。
+WebView のリソース (HTML ファイルおよび JavaScript ファイル) は、**[myapp]\www** フォルダーにあります。 プロジェクトを cordova build コマンドでビルドする場合、または cordova prepare コマンドを実行する場合、これらのリソースは、**[myapp]\platforms\ios\www** フォルダー、**[myapp]\platforms\android\assets\www** フォルダー、または **[myapp]\platforms\windows\www** フォルダー内の対応する **www** フォルダーにコピーされます。
 
 前述の IDE の 1 つでメイン・アプリケーション・フォルダーを開くと、コンテキストが保持されます。 IDE エディターは関連する `d.ts` ファイルにリンクされるようになり、入力に応じて {{ site.data.keys.product_adj }} API エレメントをオートコンプリートします。
 
 ## Android 用の CrossWalk サポート
 {: #crosswalk-support-for-android }
-Android プラットフォーム用の Cordova アプリケーションでは、デフォルトの WebView を [CrossWalk WebView](https://crosswalk-project.org/) に置換できます。  
+Android プラットフォーム用の Cordova アプリケーションでは、デフォルトの WebView を [CrossWalk WebView](https://crosswalk-project.org/) に置換できます。
+
+> **注:** CrossWalk プロジェクトは、コミュニティーおよびその保守担当者によって[保守されなくなりました](https://crosswalk-project.org/blog/crosswalk-final-release.html)。 このため、CrossWalk のバグや問題が、CrossWalk WebView での MobileFirst SDK の機能に影響する可能性があります。 したがって、ご使用のアプリケーションで CrossWalk WebView を使用しないことをお勧めします。 
+
 これを追加するには、以下のようにします。
 
 1. **コマンド・ライン**行から次のコマンドを実行します。
@@ -400,7 +403,7 @@ Android プラットフォーム用の Cordova アプリケーションでは、
    ```
 
    このコマンドにより、アプリケーションに CrossWalk WebView が追加されます。  
-{{ site.data.keys.product_adj }} Cordova SDK は、表に出ないところで、これを使用するように Android プロジェクト・アクティビティーを調整します。
+    {{ site.data.keys.product_adj }} Cordova SDK は、表に出ないところで、これを使用するように Android プロジェクト・アクティビティーを調整します。
 
 2. 次のコマンドを実行して、プロジェクトをビルドします。
 

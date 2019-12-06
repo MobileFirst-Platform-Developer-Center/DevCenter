@@ -28,7 +28,7 @@ O propósito desta demonstração é experimentar um fluxo de ponta a ponta:
 
 ### 1. Iniciando o {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Certifique-se de ter [criado uma instância do Mobile Foundation](../../bluemix/using-mobile-foundation) ou  
+Certifique-se de ter [criado uma instância do Mobile Foundation](../../ibmcloud/using-mobile-foundation) ou  
 Se estiver usando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navegue para a pasta do servidor e execute o comando: `./run.sh` em Mac e Linux ou `run.cmd` no Windows.
 
 ### 2. Criando e registrando um aplicativo
@@ -113,7 +113,9 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 {: #5-testing-the-application }
 1. Em uma janela de **Linha de Comandos**, navegue para a pasta raiz do projeto Cordova:
 2. Execute o comando: `cordova platform add ios|android|windows` para incluir uma plataforma.
-3. O projeto Cordova, selecione o arquivo **config.xml** e edite o `<mfp:server ... url=" "/>` valor com as propriedades **protocolo**, **host** e **porta** com os valores corretos para o seu {{ site.data.keys.mf_server }}.
+3. No projeto Cordova, selecione o arquivo **config.xml** e edite o valor `<mfp:server ... url="
+"/>` com as propriedades **protocol**, **host** e **port** com os valores
+corretos para seu {{ site.data.keys.mf_server }}.
     * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**,
 **localhost** e **9080**.
     * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.

@@ -31,8 +31,15 @@ downloads:
 2. 既存の `dependencies` セクションに以下を追加します。
 
 ```
-compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
 ```
+
+>**注**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) の機能を使用していて、フィーチャー・モジュールの MobileFirst API を呼び出す場合は、`implementation` ではなく `api` 宣言を使用してください。 `implementation` を使用すると、同じモジュールで MobileFirst API の使用が制限され、`api` を使用すると、アプリに存在するすべてのモジュール (フィーチャー・モジュールを含む) で MobileFirst API が使用可能になります。詳しくは、[API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation) を参照してください。
+
+```
+api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.+'
+```
+
 3. build.gradle ファイルの「DefaultConfig」セクションに次を追加します。
 ```
   ndk {

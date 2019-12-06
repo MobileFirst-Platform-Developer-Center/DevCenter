@@ -28,5 +28,4 @@ These logs can also be forwarded to the Analytics console as explained in the tu
     * [IBM WebSphere Application Server Liberty Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
 * To get to the logs in a cloud deployment in:
-    * IBM Containers or Liberty Build Pack, see the [IBM Containers log and trace collection](../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/) tutorial.
     * Mobile Foundation IBM Cloud service, see [Accessing server logs](../../bluemix/using-mobile-foundation/#accessing-server-logs) section in the [Using Mobile Foundation](../../bluemix/using-mobile-foundation) tutorial.

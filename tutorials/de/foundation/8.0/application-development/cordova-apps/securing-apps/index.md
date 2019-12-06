@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova-Anwendungen schützen
-breadcrumb_title: Anwendungen schützen
+breadcrumb_title: Securing applications
 relevantTo: [cordova]
 weight: 1
 ---

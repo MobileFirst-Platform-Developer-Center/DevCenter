@@ -7,7 +7,7 @@ weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
-{: #overview }
+{: #overview
 {{ site.data.keys.product }} SDK는 [Nuget 패키지 관리자](https://www.nuget.org/packages?q=mobilefirst)에서 Xamarin 프로젝트에 추가할 수 있는 Nuget 패키지에 패키지된 종속 항목 콜렉션으로 구성됩니다.
 
 패키지는 핵심 기능 및 다른 기능에 해당됩니다.
@@ -102,7 +102,7 @@ using Worklight.Xamarin.Android;
 {: #mfpclientplist }
 이 파일은 {{ site.data.keys.mf_server }}에서 iOS 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-| 특성            | 설명                                                         | 예제 값 |
+| 특성            |설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
 | protocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
 | host        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |

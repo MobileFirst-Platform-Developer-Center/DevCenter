@@ -34,13 +34,13 @@ You might also want to log in a user without any challenge being received. For e
 You cannot call the `submitChallengeAnswer` API if no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `login` API:
 
 ```swift
-WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
-  if(error != nil){
-    NSLog("Login Preemptive Failure: " + String(error))
-  }
-  else {
-    NSLog("Login Preemptive Success")
-  }
+WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) in
+    if(error != nil){
+        print("Login Preemptive Failure: " + String(error!));
+    }
+    else{
+        print("Login Preemptive Success");
+    }
 }
 ```
 
@@ -52,7 +52,7 @@ When the user clicks the **Login** button, you can dynamically choose which API 
 
 ```swift
 if(!self.isChallenged){
-  WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in}
+  WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) -> Void in}
 }
 else{
   self.submitChallengeAnswer(credentials)
@@ -66,21 +66,21 @@ else{
 {: #obtaining-an-access-token }
 Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in when the application starts.
 
-The {{ site.data.keys.product }} SDK provides the `obtainAccessTokenForScope` API to ask the server for a valid token:
+The Mobile Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
 
 ```swift
-WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
+WLAuthorizationManagerSwift.sharedInstance().obtainAccessToken(forScope : scope) { (token, error) -> Void in
   if(error != nil){
-    NSLog("obtainAccessTokenForScope failed: " + String(error))
+    print(“obtainAccessTokenForScope failed: “, error!)
   }
   else{
-    NSLog("obtainAccessTokenForScope success")
+    print(“obtainAccessTokenForScope success " + (token?.value)!);
   }
 }
 ```
 
 > **Note:**
-> The `WLAuthorizationManager` `obtainAccessTokenForScope()` API has its own completion handler, the `handleSuccess` or `handleFailure` of the relevant challenge handler are **also** called.
+> The `WLAuthorizationManagerSwift obtainAccessToken()` API has its own completion handler, the `handleSuccess` or `handleFailure` of the relevant challenge handler are **also** called.
 
 If the client is already logged-in or is in the *remembered* state, the API triggers a success. If the client is not logged in, the security check sends back a challenge.
 
@@ -94,9 +94,9 @@ The challenge handler `handleSuccess` method receives a dictionary `success` as 
 If the security check sets an `AuthenticatedUser`, this object contains the user's properties. You can use `handleSuccess` to save the current user:
 
 ```swift
-override func handleSuccess(success: [NSObject : AnyObject]!) {
+override open func handleSuccess(successResponse: [NSObject : AnyObject]!) {
   self.isChallenged = false
-  self.defaults.setObject(success["user"]!["displayName"]! as! String, forKey: "displayName")
+  self.defaults.setObject(successResponse![“user"]!["displayName"]! as! String, forKey: "displayName")
 }
 ```
 
@@ -118,10 +118,10 @@ Here, `success` has a key called `user` which itself contains a dictionary repre
 The {{ site.data.keys.product }} SDK also provides a `logout` API to logout from a specific security check:
 
 ```swift
-WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) -> Void in
-  if(error != nil){
-    NSLog("Logout Failure: " + String(error))
-  }
+WLAuthorizationManagerSwift.sharedInstance().logout(securityCheck: self.securityCheck){ (error) -> Void in
+    if(error != nil){
+        print("Logout Failure: " , error!)
+    }
 }
 ```
 
@@ -144,4 +144,3 @@ Follow the sample's README.md file for instructions.
 The username/password for the app must match, i.e. "john"/"john".
 
 ![sample application](sample-application.png)
-

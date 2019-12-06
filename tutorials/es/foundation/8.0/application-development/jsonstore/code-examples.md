@@ -65,7 +65,7 @@ WL.JSONStore.init(collections, options)
 });
 ```
 
-#### Encontrar - ubicar documentos dentro de un almacén 
+#### Encontrar - ubicar documentos dentro de un almacén
 {: #find-locate-documents-inside-the-store }
 ```javascript
 var collectionName = 'people';
@@ -194,7 +194,6 @@ WL.JSONStore.get(collectionName)
 ```
 
 #### Destruir - limpiar los datos de todos los usuarios, destruir el almacenamiento interno y borrar los artefactos de seguridad
-
 {: #destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```javascript
 WL.JSONStore.destroy()
@@ -257,7 +256,7 @@ WL.JSONStore.changePassword(oldPassword, newPassword, username)
 });
 ```
 
-#### Push - obtener todos los documentos marcados como sucios, enviarlos al adaptador y marcarlos como limpios 
+#### Push - obtener todos los documentos marcados como sucios, enviarlos al adaptador y marcarlos como limpios
 {: #push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```javascript
 var collectionName = 'people';
@@ -428,13 +427,12 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Iniciar una transacción, añadir datos, eliminar un documento, comprometer la transacción y desplegar de nuevo la transacción si se produce una anomalía 
+#### Iniciar una transacción, añadir datos, eliminar un documento, comprometer la transacción y desplegar de nuevo la transacción si se produce una anomalía
 {: transaction }
 ```javascript
 WL.JSONStore.startTransaction()
 
 .then(function () {
-
   // Handle startTransaction success.
   // You can call every JSONStore API method except:
   // init, destroy, removeCollection, and closeAll.
@@ -445,7 +443,8 @@ WL.JSONStore.startTransaction()
 })
 
 .then(function () {
-    var docs = [{_id: 1, json: {name: 'carlos'}}];
+
+  var docs = [{_id: 1, json: {name: 'carlos'}}];
 
   return WL.JSONStore.get(collectionName).remove(docs);
 })
@@ -561,7 +560,7 @@ Initialize with a secure random token from the server
 }];
 ```
 
-#### Encontrar - ubicar documentos dentro de un almacén 
+#### Encontrar - ubicar documentos dentro de un almacén
 {: #ios-find-locate-documents-inside-the-store }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -650,7 +649,6 @@ int countResult = [[people countWithQueryParts:@[queryPart] error:&error] intVal
 ```
 
 #### Destruir - limpiar los datos de todos los usuarios, destruir el almacenamiento interno y borrar los artefactos de seguridad
-
 {: #ios-destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```objc
 // This object will point to an error if one occurs.
@@ -690,7 +688,7 @@ oldPassword = nil;
 newPassword = nil;
 ```
 
-#### Push - obtener todos los documentos marcados como sucios, enviarlos al adaptador y marcarlos como limpios 
+#### Push - obtener todos los documentos marcados como sucios, enviarlos al adaptador y marcarlos como limpios
 {: #ios-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -779,7 +777,7 @@ NSError* error = nil;
 [people clearCollectionWithError:&error];
 ```
 
-#### Iniciar una transacción, añadir datos, eliminar un documento, comprometer la transacción y desplegar de nuevo la transacción si se produce una anomalía 
+#### Iniciar una transacción, añadir datos, eliminar un documento, comprometer la transacción y desplegar de nuevo la transacción si se produce una anomalía
 {: #ios-transaction }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -922,7 +920,7 @@ AsyncTask<Context, Void, Void> aTask = new AsyncTask<Context, Void, Void>() {
 aTask.execute(ctx);
 ```
 
-#### Encontrar - ubicar documentos dentro de un almacén 
+#### Encontrar - ubicar documentos dentro de un almacén
 {: #android-find-locate-documents-inside-the-store }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1050,7 +1048,6 @@ catch (JSONStoreException ex) {
 ```
 
 #### Destruir - limpiar los datos de todos los usuarios, destruir el almacenamiento interno y borrar los artefactos de seguridad
-
 {: #android-destory-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1108,7 +1105,7 @@ finally {
 }
 ```
 
-#### Push - obtener todos los documentos marcados como sucios, enviarlos al adaptador y marcarlos como limpios 
+#### Push - obtener todos los documentos marcados como sucios, enviarlos al adaptador y marcarlos como limpios
 {: #android-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1248,7 +1245,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Iniciar una transacción, añadir datos, eliminar un documento, comprometer la transacción y desplegar de nuevo la transacción si se produce una anomalía 
+#### Iniciar una transacción, añadir datos, eliminar un documento, comprometer la transacción y desplegar de nuevo la transacción si se produce una anomalía
 {: #android-transaction }
 ```java
 // Fill in the blank to get the Android application context.

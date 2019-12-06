@@ -144,7 +144,7 @@ Eclipse 프로젝트 탐색기에서 원하는 플랫폼(예: **platforms** 디�
 	1. 이를 수행하면 Eclipse에서 콘솔 옆에 탭이 추가되어야 합니다.
 	1. 여기서 Cordova CLI 명령을 사용하여 플랫폼을 수동으로 추가할 수 있습니다.
 		*  `cordova platform ls`는 설치되고 사용 가능한 플랫폼을 나열합니다.
-		*  `cordova platform add <platform>`. 여기서 *<platform>*은 원하는 플랫폼이며, 해당 명령은 지정된 플랫폼을 프로젝트에 추가합니다.
+		*  `cordova platform add <platform>`. 여기서 *<platform>*에서는 프로젝트에 지정된 플랫폼을 추가하며 원하는 플랫폼과 동일합니다.
 		*  Cordova 플랫폼 특정 명령에 대한 자세한 정보는 <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova platform command 문서</a>를 참조하십시오.
 
 ### 디버그 모드
@@ -167,6 +167,6 @@ Eclipse 프로젝트 탐색기에서 원하는 플랫폼(예: **platforms** 디�
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">
-   		<iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+   		<iframe title="데모 비디오" src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
 	</div>
 </div>

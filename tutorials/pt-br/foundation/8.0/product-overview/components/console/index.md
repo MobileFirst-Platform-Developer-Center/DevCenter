@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão geral
+## Visão Geral
 {: #overview }
 O {{ site.data.keys.mf_console_full }} é uma UI baseada na web que possibilita fluxos de trabalho simplificados para o desenvolvedor e o administrador para criar, monitorar, proteger e administrar aplicativos e adaptadores.
 
@@ -51,7 +51,7 @@ A partir de uma janela de **Linha de comandos**, com o {{ site.data.keys.mf_cli 
 #### Navegador da área de trabalho
 {: #desktop-browser-remote }
 No seu navegador de opção, carregue a URL `http://the-server-host:server-port-number/mfpconsole`.  
-O servidor host pode ser um servidor de propriedade do cliente ou o serviço IBM Cloud, IBM [Mobile Foundation](../../../bluemix/).
+O servidor host pode ser um servidor de propriedade do cliente ou o serviço IBM Cloud, IBM [Mobile Foundation](../../../ibmcloud/).
 
 #### Linha de Comandos
 {: #command-line-remote }

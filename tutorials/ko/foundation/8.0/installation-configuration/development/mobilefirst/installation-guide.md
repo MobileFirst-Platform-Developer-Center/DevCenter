@@ -66,6 +66,7 @@ weight: 1
 **전제조건:**  
 1. {{ site.data.keys.mf_cli }}를 설치하려면 NodeJS와 NPM이 필요합니다.  
  [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/)과 NPM v3.10.10을 다운로드하여 설치하십시오.
+ MobileFirst CLI 버전 8.0.2018100112 이상은 Node v8.x 또는 v10.x를 사용하십시오. 
 
  설치를 확인하려면 명령행 창을 열고 `node -v`를 실행하십시오.
 
@@ -103,7 +104,7 @@ weight: 1
     [이 안내서를 따르십시오](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).
 `mvn -v`를 실행하여 설치를 확인하십시오.
 
-### 사용법
+###  사용법
 {: #usage }
 Apache Maven이 설치되어 있으니 이제 {{ site.data.keys.mf_cli }}를 사용하거나 Maven 명령행 명령을 통해 어댑터를 작성할 수 있습니다.  
-자세한 정보는 [어댑터 학습서]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)를 검토하십시오.
+자세한 정보는 [어댑터 튜토리얼]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)을 검토하십시오.

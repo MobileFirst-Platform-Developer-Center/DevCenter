@@ -6,16 +6,16 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-{{ site.data.keys.product_full }}은 테스트 또는 프로덕션 용도로 클라우드에 배치하거나 사내 구축 환경에 설치할 수 있는 서버 측 컴포넌트 및 개발 도구를 제공합니다. 설치 시나리오에 적합한 설치 주제를 검토하십시오.
+{{ site.data.keys.product_full }}은 테스트 또는 프로덕션 용도로 클라우드에 배치하거나 온프레미스로 설치할 수 있는 서버 측 컴포넌트 및 개발 도구를 제공합니다. 설치 시나리오에 적합한 설치 주제를 검토하십시오.
 
 ### 개발 환경 설정
 {: #installing-a-development-environment }
-모바일 애플리케이션의 서버 측 또는 클라이언트 측을 개발하는 경우 [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) 또는 [{{ site.data.keys.mf_bm }} 서비스](../bluemix/using-mobile-foundation)를 사용하여 시작하십시오.
+모바일 애플리케이션의 서버 측 또는 클라이언트 측을 개발하는 경우 [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) 또는 [{{ site.data.keys.mf_bm }} 서비스](../ibmcloud/using-mobile-foundation)를 사용하여 시작하십시오.
 
 **{{ site.data.keys.mf_dev_kit }} 사용**
 {: #using-the-dev-kit }
 
-{{ site.data.keys.mf_dev_kit }}에는 개인 워크스테이션에서 모바일 애플리케이션을 실행하고 디버깅하는 데 필요한 모든 것이 포함되어 있습니다. {{ site.data.keys.mf_dev_kit }}을 사용하여 애플리케이션을 개발하려면 [MobileFirst 개발 환경 설정](development/mobilefirst) 학습서를 따르십시오.
+{{ site.data.keys.mf_dev_kit }}에는 개인 워크스테이션에서 모바일 애플리케이션을 실행하고 디버깅하는 데 필요한 모든 것이 포함되어 있습니다. {{ site.data.keys.mf_dev_kit }}을 사용하여 애플리케이션을 개발하려면 [MobileFirst 개발 환경 설정](development/mobilefirst) 튜토리얼을 따르십시오.
 
 **{{ site.data.keys.mf_bm }} 사용**
 {: #using-mf-bluemix }
@@ -36,7 +36,7 @@ weight: 3
 * [Xamarin 개발 환경 설정](development/xamarin)
 * [웹 개발 환경 설정](development/web)
 
-### 사내 구축 환경에 테스트 또는 프로덕션 서버 설정
+### 테스트 또는 프로덕션 서버 온프레미스 설정
 {: #installing-a-test-or-production-server-on-premises }
 
 {{ site.data.keys.product }} 서버 설치의 첫 번째 부분은 IBM Installation Manager라는 IBM 제품을 사용합니다. {{ site.data.keys.product }} 서버 컴포넌트를 설치하기 전에 IBM Installation Manager v1.8.4 이상을 설치해야 합니다.
@@ -45,7 +45,7 @@ weight: 3
 
 {{ site.data.keys.mf_server }} 설치 마법사는 IBM Installation Manager를 사용하여 서버에 모든 서버 컴포넌트를 배치합니다.  {{ site.data.keys.product }} 서버 컴포넌트를 애플리케이션 서버에 배치하는 데 필요한 도구와 라이브러리도 설치됩니다.  우수 사례로, 개발 서버의 경우를 제외하고는 모든 컴포넌트를 동일한 애플리케이션 서버 인스턴스에 설치하지 않는 것이 좋습니다. 배치 도구에서는 설치할 컴포넌트를 선택할 수 있습니다.  서버 설치 전에 고려할 사항은 [토폴로지 및 네트워크 플로우](production/prod-env/topologies)를 참조하십시오.
 
-특정 환경에서 {{ site.data.keys.mf_server }} 및 선택적 서비스를 준비하고 설치하는 데 대한 정보는 아래 내용을 읽어보십시오. 단순 설정의 경우 [테스트 또는 프로덕션 환경 설정](production) 학습서를 읽으십시오.
+특정 환경에서 {{ site.data.keys.mf_server }} 및 선택적 서비스를 준비하고 설치하는 데 대한 정보는 아래 내용을 읽어보십시오. 단순 설정의 경우 [테스트 또는 프로덕션 환경 설정](production) 튜토리얼을 읽으십시오.
 
 * [전제조건 확인](production/prod-env/prereqs)
 * [{{ site.data.keys.mf_server }} 컴포넌트 개요](production/prod-env/topologies)
@@ -70,15 +70,15 @@ weight: 3
 
 WebSphere Application Server Liberty 프로파일에 두 개의 노드가 있는 작동되는 {{ site.data.keys.mf_server }}클러스터를 작성하는 지시사항을 수행하여 {{ site.data.keys.mf_server }} 설치 프로세스에 대해 학습하십시오. 설치는 그래픽 도구(GUI)나 명령행을 사용해서 완료할 수 있습니다.
 
-* [IBM Installation Manager와 서버 구성 도구를 사용한 GUI 모드 설치](production/simple-install/tutorials/graphical-mode).
-* [명령행 도구를 사용하여 명령행 설치](production/simple-install/tutorials/command-line).
+* [IBM Installation Manager와 서버 구성 도구를 사용한 GUI 모드 설치](production/simple-install/graphical-mode).
+* [명령행 도구를 사용하여 명령행 설치](production/simple-install/command-line).
 
 위의 두 방법 중 하나로 설치를 완료한 후에는 요구사항에 따라서 설정을 완료하기 위해 추가 [구성](production/server-configuration)이 필요할 수 있습니다.
 
 ### 테스트 또는 프로덕션 환경에 선택적 기능 설정
 {: #setting-up-optional-features-test-or-production-server}
 
-{{ site.data.keys.product }}에는 테스트나 프로덕션 환경을 보완하는 데 사용할 수 있는 선택적 컴포넌트가 포함되어 있습니다.  자세한 정보는 다음 학습서를 참조하십시오.
+{{ site.data.keys.product }}에는 테스트나 프로덕션 환경을 보완하는 데 사용할 수 있는 선택적 컴포넌트가 포함되어 있습니다.  자세한 정보는 다음 튜토리얼을 참조하십시오.
 
 * [{{ site.data.keys.mf_analytics_server }} 설치 및 구성](production/analytics/installation/)
 * [{{ site.data.keys.mf_app_center }} 설치 및 구성](production/appcenter)

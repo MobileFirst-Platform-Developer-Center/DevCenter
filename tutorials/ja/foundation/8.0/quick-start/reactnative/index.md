@@ -28,11 +28,11 @@ weight: 1
 
 ### ステップ 1. {{ site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
-[Mobile Foundation インスタンスを作成済み](../../bluemix/using-mobile-foundation)であることを確認します。あるいは、[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
+[Mobile Foundation インスタンスを作成済み](../../ibmcloud/using-mobile-foundation)であることを確認します。あるいは、[{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
 
 ### ステップ 2. アプリケーションの作成および登録
 {: #2-creating-and-registering-an-application }
-ブラウザーで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 サーバーがローカルで実行されている場合は、`http://localhost:9080/mfpconsole` を使用します。*ユーザー名/パスワード* は **admin/admin** です。
+ブラウザーで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{ site.data.keys.mf_console }} を開きます。 サーバーがローカルで実行されている場合は、`http://localhost:9080/mfpconsole` を使用します。 *ユーザー名/パスワード* は **admin/admin** です。
 
 1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
     * 次のいずれかのプラットフォームを選択します。**Android、iOS**
@@ -64,11 +64,12 @@ weight: 1
             alert("Success: " + response.responseText);
           },
           (error) => {
-            alert("Failure: " + JSON.stringify(error));
+            console.error(error);
+            alert("Failure: Resource Request");
           }
         );
       }, (error) => {
-        console.log('-->  pingMFP(): failure ', error.responseText);
+        console.error(error);
         alert("Failed to connect to MobileFirst Server");
       });
 ```
@@ -98,7 +99,7 @@ weight: 1
 
 ### ステップ 5. アプリケーションのテスト
 {: #5-testing-the-application }
-1.  {{ site.data.keys.mf_cli }} がインストールされていることを確認し、特定のプラットフォームの (iOS または Android) ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。リモート {{ site.data.keys.mf_server }} が使用されている場合は、次の[コマンドを実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加します。
+1.  {{ site.data.keys.mf_cli }} がインストールされていることを確認し、特定のプラットフォームの (iOS または Android) ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。 リモート {{ site.data.keys.mf_server }} が使用されている場合は、次の[コマンドを実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加します。
 ```bash
 mfpdev server add
 ```
@@ -111,13 +112,13 @@ mfpdev app register myIBMCloudServer
 react-native run-ios|run-android
 ```
 
-デバイスが接続されている場合は、アプリケーションがデバイスにインストールされ、起動されます。接続されていない場合は、シミュレーターまたはエミュレーターが使用されます。
+デバイスが接続されている場合は、アプリケーションがデバイスにインストールされ、起動されます。 接続されていない場合は、シミュレーターまたはエミュレーターが使用されます。
 
 <br clear="all"/>
 ### 結果
 {: #results }
 * **「{{ site.data.keys.mf_server }} への ping (Ping MobileFirst Server)」**ボタンをクリックすると、**「{{ site.data.keys.mf_server }} に接続されています (Connected to MobileFirst Server)」**が表示されます。
-* アプリケーションが {{ site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。その場合、アダプター応答がアラートに表示されます。
+* アプリケーションが {{ site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。 その場合、アダプター応答がアラートに表示されます。
 
 ## 次の手順
 {: #next-steps }

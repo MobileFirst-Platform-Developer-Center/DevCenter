@@ -1419,7 +1419,7 @@ auf
     * Öffnen Sie die Administrationskonsole von WebSphere Application Server mit folgender URL: 
     
         ```bash
-        https://{öffentliche IP-Adresse der VM für DmgrNode}:9043/ibm/console
+        https://{öffentliche IP-Adresse der VM für DmgrNode Server}:9043/ibm/console
         ```
     
         Verwenden Sie die Benutzer-ID und das Kennwort,

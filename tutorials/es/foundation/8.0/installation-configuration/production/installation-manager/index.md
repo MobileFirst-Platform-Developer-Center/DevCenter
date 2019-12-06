@@ -38,8 +38,6 @@ Sin embargo, para la instalación de producción, utilice tareas Ant para instal
 > **Importante:** El instalador de {{ site.data.keys.mf_server }} sólo instala los archivos binarios y las herramientas de {{ site.data.keys.mf_server }} en el disco. No despliega las aplicaciones de {{ site.data.keys.mf_server }} en el servidor de aplicaciones. Después de ejecutar la instalación con Installation Manager, debe configurar las bases de datos y desplegar las aplicaciones de {{ site.data.keys.mf_server }} en su servidor de aplicaciones.  
 > De forma similar, al ejecutar Installation Manager para actualizar una instalación existente, sólo actualizará los archivos del disco. Debe llevar a cabo más acciones para actualizar las aplicaciones desplegadas en los servidores de aplicaciones.
 
-
-
 #### Ir a
 {: #jump-to }
 * [Administrador frente a modalidad de usuario](#administrator-versus-user-mode)
@@ -204,8 +202,6 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     > * Para una instalación que no instala Application Center en un servidor de aplicaciones, utilice el archivo denominado **install-no-appcenter.xml**.
     > * Para una instalación que instala Application Center, elija el archivo de respuestas de ejemplo desde la tabla siguiente, dependiendo del servidor de aplicaciones y de la base de datos.
 
-
-
    #### Archivos de respuestas de instalación de ejemplo en el archivo **Silent\_Install\_Sample_Files.zip** para instalar el Application Center
 
     <table>
@@ -216,7 +212,7 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
       <td></td>
             <th>Servidor de aplicaciones donde se instalará el Application Center</th>
             <th>Derby</th>
-            <th>IBM DB2</th>
+            <th>IBM DB2 </th>
             <th>MySQL</th>
             <th>Oracle</th>
         </tr>
@@ -268,7 +264,6 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
 
     > **Nota:** MySQL junto con el perfil de Liberty de WebSphere Application Server o el perfil completo de WebSphere Application Server no está clasificado como una configuración soportada. Para obtener más información, consulte [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Puede utilizar IBM DB2 u otro DBMS soportado por WebSphere Application Server para beneficiarse de una configuración completamente soportada por IBM Support.
 
-
     Para la desinstalación, utilice un archivo de ejemplo que dependa de la versión de {{ site.data.keys.mf_server }} o Worklight Server que ha instalado inicialmente en el grupo de paquetes concreto:
 
     * {{ site.data.keys.mf_server }} utiliza el grupo de paquetes {{ site.data.keys.mf_server }}.
@@ -314,12 +309,12 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     * En UNIX: `chmod 600 <target-file.xml>`
     * En Windows: `cacls <target-file.xml> /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. De forma similar, si el servidor es un perfil de WebSphere Application Server Liberty o un servidor de Apache Tomcat, y el servidor está destinado a que se inicie únicamente desde su cuenta de usuario, también debe eliminar los permisos de lectura para usuarios distintos a usted mismo del archivo siguiente:
-    * Para el perfil de WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml`
+    * Para el perfil de WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml` 
     * Para Apache Tomcat: `conf/server.xml`
 4. Ajuste la lista de repositorios, en el elemento <server>. Para obtener más información sobre este paso, consulte la documentación de IBM Installation Manager en [Repositorios](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html).
 
-    En el elemento `<profile>`, ajuste los valores de cada par clave/valor.  
-    En el elemento `<offering>`, en el elemento `<install>`, establezca el atributo version para que coincida con el release que desea instalar, o elimine el atributo version si desea instalar la versión más reciente disponible en los repositorios.
+En el elemento `<profile>`, ajuste los valores de cada par clave/valor.  
+En el elemento `<offering>` del elemento `<install>`, establezca el atributo version para que coincida con el release que desea instalar, o elimine el atributo version si desea instalar la versión más reciente disponible en los repositorios.
 5. Escriba el siguiente mandato: `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
     Donde:
@@ -327,7 +322,6 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     * `<responseFile>` es el nombre del archivo seleccionado y actualizado en el paso 1.
 
 > Para obtener más información, consulte la documentación de IBM Installation Manager en [Instalación de un paquete de forma silenciosa utilizando un archivo de respuestas](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
-
 
 
 ### Cómo trabajar con un archivo de respuestas registrado en una máquina distinta
@@ -338,7 +332,7 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     * En UNIX: `chmod 600 response-file.xml`
     * En Windows: `cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. De forma similar, si el servidor es uno de WebSphere Application Server Liberty o de Apache Tomcat, y el servidor está pensado para iniciarse únicamente desde su cuenta de usuario, también debe eliminar los permisos de lectura para usuarios que no sean usted mismo desde el siguiente archivo:
-    * Para WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml`
+    * Para WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml` 
     * Para Apache Tomcat: `conf/server.xml`
 4. Modifique el archivo de respuestas para tener en cuenta las diferencias entre la máquina en la que se ha creado el archivo de respuestas y la máquina de destino.
 5. Instale {{ site.data.keys.mf_server }} mediante el archivo de respuestas en la máquina de destino, tal como se describe en [Instalar un paquete de forma silenciosa utilizando un archivo de respuestas](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
@@ -361,7 +355,7 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     <tr>
         <td>user.licensed.by.tokens</td>
         <td>Siempre</td>
-        <td>Activación de las licencias de señales. Si tiene pensado utilizar el producto con Rational License Key Server, debe activar las licencias de señales.<br/><br/>En este caso, establezca el valor en <code>true</code>. Si no tiene pensado utilizar el producto con Rational License Key Server, establezca el valor en <code>false</code>.<br/><br/>Si activa las señales de licencia, se necesitarán pasos de configuración específicos después de desplegar el producto en un servidor de aplicaciones. </td>
+        <td>Activación de las licencias de señales. Si tiene pensado utilizar el producto con Rational License Key Server, debe activar las licencias de señales. <br/><br/>En este caso, establezca el valor en <code>true</code>. Si no tiene pensado utilizar el producto con Rational License Key Server, establezca el valor en <code>false</code>.<br/><br/>Si activa las señales de licencia, se necesitarán pasos de configuración específicos después de desplegar el producto en un servidor de aplicaciones. </td>
         <td><code>true</code> o <code>false</code></td>    
     </tr>
     <tr>
@@ -397,7 +391,7 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
     <tr>
         <td>user.appserver.was.scope</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>Tipo de granja de servidores en el que se instalan las aplicaciones.<br/><br/><code>server</code> significa un servidor autónomo.<br/><br/><code>nd-cell</code> significa una célula de WebSphere Application Server Network Deployment. <code>nd-cluster</code> significa un clúster de WebSphere Application Server Network Deployment.<br/><br/><code>nd-node</code> significa un nodo de WebSphere Application Server Network Deployment (excluyendo clústeres).<br/><br/><code>nd-server</code> significa un servidor gestionado de WebSphere Application Server Network Deployment.</td>
+        <td>Tipo de conjunto de servidores en el que se deben instalar las aplicaciones.<br/><br/><code>server</code> significa un servidor autónomo.<br/><br/><code>nd-cell</code> significa una celda de WebSphere Application Server Network Deployment. <code>nd-cluster</code> significa un clúster de WebSphere Application Server Network Deployment.<br/><br/><code>nd-node</code> significa un nodo de WebSphere Application Server Network Deployment (sin incluir clústeres).<br/><br/><code>nd-server</code> significa un servidor gestionado de WebSphere Application Server Network Deployment.</td>
         <td><code>server</code>, <code>nd-cell</code>, <code>nd-cluster</code>, <code>nd-node</code>, <code>nd-server</code></td>
     </tr>
     <tr>
@@ -602,7 +596,8 @@ Los archivos de respuestas de ejemplo para IBM Installation Manager se proporcio
       <td>user.database.oracle.appcenter.dbname</td>
       <td>${user.database.selection2} == oracle, a menos que se especifique ${user.database.oracle.appcenter.jdbc.url}</td>
       <td>El nombre de la base de datos Oracle para Application Center.</td>
-      <td>No vacío, un nombre de base de datos Oracle válido.</td>
+      <td>No vacío, un nombre de base de datos Oracle válido.
+</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.isservicename.jdbc.url</td>
@@ -637,59 +632,59 @@ Los archivos y las herramientas de {{ site.data.keys.mf_server }} se instalan en
 #### Archivos y subdirectorios del subdirectorio Analytics
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-|Elemento |Descripción |
+| Elemento | Descripción |
 |------|-------------|
-|**analytics.ear** y **analytics-*.war** |Los archivos EAR y WAR para instalar {{ site.data.keys.mf_analytics }}. |
-|**configuration-samples** |Contiene los archivos Ant de ejemplo para instalar {{ site.data.keys.mf_analytics }} con tareas Ant. |
+| **analytics.ear** y **analytics-*.war** | Los archivos EAR y WAR para instalar {{ site.data.keys.mf_analytics }}. |
+| **configuration-samples** | Contiene los archivos Ant de ejemplo para instalar {{ site.data.keys.mf_analytics }} con tareas Ant. |
 
 #### Archivos y subdirectorios del subdirectorio ApplicationCenter
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-|Elemento |Descripción |
+| Elemento | Descripción |
 |------|-------------|
-|**configuration-samples** |Contiene los archivos Ant de ejemplo para instalar Application Center. Las tareas Ant crean la tabla de base de datos y despliegan los archivos WAR en un servidor de aplicaciones. |
-|**console** |Contiene los archivos EAR y WAR para instalar Application Center. El archivo EAR es exclusivamente para IBM  PureApplication System. |
-|**databases** |Contiene los scripts SQL que se van a utilizar para la creación manual de tablas para Application Center. |
-|**installer** |Contiene los recursos para crear el cliente de Application Center. |
-|**tools** |Las herramientas de Application Center. |
+| **configuration-samples** | Contiene los archivos Ant de ejemplo para instalar Application Center. Las tareas Ant crean la tabla de base de datos y despliegan los archivos WAR en un servidor de aplicaciones. |
+| **console** | Contiene los archivos EAR y WAR para instalar Application Center. El archivo EAR es exclusivamente para IBM  PureApplication System. |
+| **databases** | Contiene los scripts SQL que se van a utilizar para la creación manual de tablas para Application Center. |
+| **installer** | Contiene los recursos para crear el cliente de Application Center. |
+| **tools** | Las herramientas de Application Center. |
 
 #### Archivos y subdirectorios del subdirectorio {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-|Elemento |Descripción |
+| Elemento | Descripción |
 |------|-------------|
-|**mfp-ant-deployer.jar** |Un conjunto de tareas Ant de {{ site.data.keys.mf_server }}. |
-|**mfp-*.war** |Los archivos WAR de los componentes de {{ site.data.keys.mf_server }}. |
-|**configuration-samples** |Contiene los archivos Ant de ejemplo para instalar los componentes de {{ site.data.keys.mf_server }} con tareas Ant. |
-|**ConfigurationTool** |Contiene los archivos binarios de la Herramienta de configuración del servidor. La herramienta se inicia desde **dir_instal_servidor_mfp/shortcuts**. |
-|**databases** |Contiene los scripts SQL que se van a utilizar para la creación manual de tablas para componentes de {{ site.data.keys.mf_server }} (servicio de administración de {{ site.data.keys.mf_server }}, servicio de configuración de {{ site.data.keys.mf_server }} y tiempo de ejecución de {{ site.data.keys.product_adj }}). |
-|**external-server-libraries** |Contiene los archivos JAR que utilizan distintas herramientas (como por ejemplo las herramientas de autenticidad y la herramienta de seguridad de OAuth). |
+| **mfp-ant-deployer.jar** | Un conjunto de tareas Ant de {{ site.data.keys.mf_server }}. |
+| **mfp-*.war** | Los archivos WAR de los componentes de {{ site.data.keys.mf_server }}. |
+| **configuration-samples** | Contiene los archivos Ant de ejemplo para instalar los componentes de {{ site.data.keys.mf_server }} con tareas Ant. |
+| **ConfigurationTool** | Contiene los archivos binarios de la Herramienta de configuración del servidor. La herramienta se inicia desde **dir_instal_servidor_mfp/shortcuts**. |
+| **databases** | Contiene los scripts SQL que se van a utilizar para la creación manual de tablas para componentes de {{ site.data.keys.mf_server }} (servicio de administración de {{ site.data.keys.mf_server }}, servicio de configuración de {{ site.data.keys.mf_server }} y tiempo de ejecución de {{ site.data.keys.product_adj }}). |
+| **external-server-libraries** |  Contiene los archivos JAR que utilizan distintas herramientas (como por ejemplo las herramientas de autenticidad y la herramienta de seguridad de OAuth). |
 
 #### Archivos y subdirectorios del subdirectorio PushService
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-|Elemento |Descripción |
+| Elemento | Descripción |
 |------|-------------|
-|**mfp-push-service.war** |El archivo WAR para instalar el servicio de envío por push de {{ site.data.keys.mf_server }}. |
-|**databases** |Contiene los scripts SQL que se van a utilizar para la creación manual de tablas para el servicio de envío por push de {{ site.data.keys.mf_server }}. |
+| **mfp-push-service.war** | El archivo WAR para instalar el servicio de envío por push de {{ site.data.keys.mf_server }}. |
+| **databases** | Contiene los scripts SQL que se van a utilizar para la creación manual de tablas para el servicio de envío por push de {{ site.data.keys.mf_server }}. |
 
 #### Archivos y subdirectorios del subdirectorio License
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-|Elemento |Descripción |
+| Elemento | Descripción |
 |------|-------------|
-|**Text** |Contiene la licencia para {{ site.data.keys.product }}. |
+| **Text** | Contiene la licencia para {{ site.data.keys.product }}. |
 
 #### Archivos y subdirectorios del directorio de instalación de {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-|Elemento |Descripción |
+| Elemento | Descripción |
 |------|-------------|
-|**shortcuts** |Scripts de lanzador para Apache Ant, la Herramienta de configuración del servidor y el mandato mfpadmin, que se facilitan con {{ site.data.keys.mf_server }}. |
+| **shortcuts** | Scripts de lanzador para Apache Ant, la Herramienta de configuración del servidor y el mandato mfpadmin, que se facilitan con {{ site.data.keys.mf_server }}. |
 
 #### Archivos y subdirectorios del subdirectorio tools
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-|Elemento |Descripción |
+| Elemento | Descripción |
 |------|-------------|
-|**tools/apache-ant-version-number** |Una instalación binaria de Apache Ant que utiliza la Herramienta de configuración del servidor. También se puede utilizar para ejecutar las tareas Ant. |
+| **tools/apache-ant-version-number** | Una instalación binaria de Apache Ant que utiliza la Herramienta de configuración del servidor. También se puede utilizar para ejecutar las tareas Ant. |

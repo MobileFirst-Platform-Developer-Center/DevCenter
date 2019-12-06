@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: Cordova アプリケーションでのダイレクト・アップデートの使用
+title: Cordova アプリケーションおよび Ionic アプリケーションでのダイレクト・アップデートの使用
 breadcrumb_title: Direct Update
-relevantTo: [cordova]
+relevantTo: [cordova,ionic]
 weight: 8
 downloads:
   - name: Download Cordova project
@@ -69,7 +69,10 @@ downloads:
 バグ修正やマイナー・チェンジなど、新規 Web リソースへの作業が完了した後、更新された Web リソースをパッケージにし、{{ site.data.keys.mf_server }} にアップロードする必要があります。
 
 1. **コマンド・ライン**・ウィンドウを開き、Cordova プロジェクトのルートに移動します。
-2. 次のコマンドを実行します。`mfpdev app webupdate`。
+2. 次のコマンドを実行します。`cordova build`
+3. 次のコマンドを実行します。`mfpdev app webupdate`。
+
+> **注:** ダイレクト・アップデート・コマンドを使用する場合、その前の ionic アプリケーションでのビルド・ステップが重要です。このステップを行わないと、Web リソースは更新されません。
 
 `mfpdev app webupdate` コマンドにより、更新された Web リソースが .zip ファイルにパッケージされ、開発者ワークステーション上で稼働しているデフォルトの {{ site.data.keys.mf_server }} にアップロードされます。 パッケージ化された Web リソースは、**[cordova-project-root-folder]/mobilefirst/** フォルダー内にあります。
 

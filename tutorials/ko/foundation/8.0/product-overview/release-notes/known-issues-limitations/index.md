@@ -14,6 +14,7 @@ weight: 4
 
 * 알려진 제한사항이 특정 기능에 적용되는 경우 이 특정 기능에 대해 설명하는 주제에서 해당 설명을 찾을 수 있습니다. 따라서 해당 제한사항이 기능에 미치는 영향을 즉시 식별할 수 있습니다.
 * 알려진 제한사항이 일반적인 경우(즉 직접적인 관련이 없는 여러 주제에 적용되는 경우) 여기에서 해당 설명을 찾을 수 있습니다.
+* OpenShift 4.2 클러스터에서의 Elasticsearch 노드 발견 문제점으로 인해 개발 시 Mobile Foundation 분석 팟(Pod) 작동 시 불일치를 관찰할 수 있습니다. 이로 인해 Analytics 관리 콘솔에서는 언제나 하나의 노드만 나열하게 됩니다. 
 
 ### 다국어 지원
 {: #globalization }
@@ -89,7 +90,7 @@ Application Center 모바일 클라이언트는 날짜 형식화와 같이 실�
 * 경보, 확인 및 프롬프트 메소드에 대한 사용자 정의 제목 및 단추 이름은 화면 가장자리에서 잘리지 않도록 짧게 유지해야 합니다.
 * JSONStore는 정규화를 처리하지 않습니다. JSONStore API에 대한 찾기 기능은 액센트 구분, 대소문자 구분, 1 대 2 맵핑과 같은 언어 민감성을 고려하지 않습니다.
 
-### 어댑터 및 써드파티 종속성
+### 어댑터 및 서드파티 종속성
 {: #adapters-and-third-party-dependencies }
 다음 알려진 문제는 {{ site.data.keys.product_adj }} 공유 라이브러리를 포함하여 애플리케이션 서버의 종속성 및 클래스 간 상호작용과 관련이 있습니다.
 
@@ -188,9 +189,9 @@ NuGet 패키지를 통해 {{ site.data.keys.product_adj }} SDK를 설치한 경�
 {: #nested-projects-can-result-in-unpredictable-results-with-the-cli }
 {{ site.data.keys.mf_cli }}를 사용하는 경우 하나의 프로젝트 내에 다른 프로젝트를 중첩시키지 마십시오. 중첩시키는 경우 예상했던 것과 다른 프로젝트에서 조치가 수행될 수 있습니다.
 
-### {{ site.data.keys.mf_mbs }}에서 Cordova 웹 자원 미리보기
+### {{ site.data.keys.mf_mbs }}에서 Cordova 웹 리소스 미리보기
 {: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
-{{ site.data.keys.mf_mbs }}로 웹 자원을 미리볼 수 있지만 일부 {{ site.data.keys.product_adj }} JavaScript API는 시뮬레이터에 의해 지원되지 않습니다. 특히, OAuth 프로토콜은 완전히 지원되지는 않습니다. 하지만 `WLResourceRequest`를 사용하여 어댑터에 대한 호출을 테스트할 수 있습니다.
+{{ site.data.keys.mf_mbs }}로 웹 리소스를 미리볼 수 있지만 일부 {{ site.data.keys.product_adj }} JavaScript API는 시뮬레이터에 의해 지원되지 않습니다. 특히, OAuth 프로토콜은 완전히 지원되지는 않습니다. 하지만 `WLResourceRequest`를 사용하여 어댑터에 대한 호출을 테스트할 수 있습니다.
 
 ### 확장된 앱 인증의 테스트에 필요한 실제 iOS 디바이스
 {: #physical-ios-device-required-for-testing-extended-app-authenticity }
@@ -222,18 +223,6 @@ Cordova 앱의 cordova-ios 플랫폼을 업데이트하려면 다음 단계를 �
 웹 애플리케이션은 다음 제한사항을 가집니다.
 - {: #web_app_limit_ms_ie_n_edge }
 Microsoft Internet Explorer(IE) 및 Microsoft Edge, 관리 앱 메시지와 클라이언트 웹 SDK 메시지는 구성된 브라우저 또는 운영 체제 표시 언어 환경 설정에 따라서가 아닌 운영 체제의 영역 형식 환경 설정에 따라 표시됩니다. [다중 언어로 관리자 메시지 정의](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)도 참조하십시오.
-
-### iOS Cordova 애플리케이션에 대한 WKWebView 지원
-{: #wkwebview-support-for-ios-cordova-applications }
-WKWebView를 사용하는 iOS Cordova 앱에서는 앱 알림 및 직접 업데이트 기능이 제대로 작동하지 않습니다.
-
-이 제한사항은 defect file:// url XmlHttpRequests로 인해서이며 **cordova-plugin-wkwebview-engine**의 WKWebViewEgine에서는 허용되지 않습니다.
-
-이 문제를 회피하기 위해 Cordova 프로젝트에서 다음 명령을 실행하십시오. `cordova plugin add https://github.com/apache/cordova-plugins.git#master:wkwebview-engine-localhost`
-
-이 명령을 실행하면 Cordova 애플리케이션에서 로컬 웹 서버가 실행되며, 로컬 파일을 사용하기 위해 파일 URI 스키마(file://)를 사용하는 대신 로컬 파일을 호스트하고 이에 액세스할 수 있습니다.
-
-**참고:** 이 Cordova 플러그인은 NPM(Node Package Manager)에 공개되지 않습니다.
 
 ### cordova-plugin-statusbar는 cordova-plugin-mfp와 함께 로드된 Cordova 애플리케이션에 대해 작업하지 않습니다.
 {: #cordova-plugin-statusbar-does-not-work-with-cordova-application-loaded-with-cordova-plugin-mfp }
@@ -281,3 +270,42 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 Google Play 스토어에 제출된 다른 오류는 Google 지원팀에 문의할 수 있습니다.
 
 >**참고:** MobileFirst 8.0 iFix 2018년 1월 이후 릴리스 버전을 사용하는 경우 서버 및 클라이언트 모두 동일한 버전으로 업데이트하는 것이 좋습니다.
+
+### Node 8을 사용하여 MobileFirst CLI를 설치하는 중 액세스 오류
+{:#mfpdev-cli-installation errors}
+npm을 사용하여 MobileFirst CLI를 설치하는 중에 터미널 출력에서 다음 오류가 표시될 수 있습니다.
+
+```
+> bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> utf-8-validate@1.2.2 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> fsevents@1.2.4 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/fsevents
+> node install
+```
+
+이 오류는 [node-gyp의 알려진 버그](https://github.com/nodejs/node-gyp/issues/1547)로 인해 발생합니다. 이 오류는 MobileFirst CLI의 기능에 영향을 주지 않으므로 무시해도 됩니다. 이는 *mfpdev-cli iFix 레벨 8.0.2018100112* 이상에 적용됩니다. 이 오류를 해결하려면 설치 시 `--no-optional` 플래그를 사용하십시오. 예를 들어, 다음과 같습니다.
+
+```bash
+npm install -g mfpdev-cli --no-optional
+```

@@ -233,42 +233,122 @@ indexed: false
 
   </div>
   <div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="advanced-tab">
-  <h2><a href="../adapters/">开发适配器</a></h2>
-    开发服务器端代码以与企业后端系统和云服务集成。
+  <h2>React Native SDK for IBM MobileFirst JSONStore</h2>
+IBM Mobile Foundation JSONStore 是一个可选的客户机端 API，提供轻量级、面向文档的存储系统。JSONStore 支持持久存储 JSON 文档。即使设备处于脱机状态，在 JSONStore 中也可以使用应用程序中的文档。这种持久的、始终可用的存储很有用，例如，当设备中没有可用的网络连接时，使用户能够访问文档。<h3>安装</h3>
+      <p>针对 React Native 应用程序的 IBM MobileFirst JSONStore SDK 依赖于 <a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst" target="_blank">IBM MobileFirst Foundation SDK</a>。将 IBM MobileFirst Foundation SDK 添加到您的应用程序。</p>
+      <p>浏览至 React Native 应用程序的文件夹，然后运行以下命令来安装针对 React Native 应用程序的 JSONStore SDK。</p>
+      {% highlight bash  %}
+      npm install react-native-ibm-mobilefirst-jsonstore --save
+      {% endhighlight %}
+      <blockquote>
+        受支持的平台为 Android 和 iOS。
+      </blockquote>
 
+    <h3>入门</h3>
+    <h4>先决条件</h4>
     <ul>
-        <li><a href="../adapters/">适配器概述</a></li>
-        <li><a href="../adapters/creating-adapters/">创建 Java 和 JavaScript 适配器</a></li>
-        <li><a href="../adapters/javascript-adapters/">JavaScript 适配器</a>
-            <ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP 适配器</a>
-                    <ul>
-                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">在 JavaScript HTTP 适配器中使用 SSL</a></li>
-                    </ul>
-                </li>
-                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL 适配器</a></li>
-                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">在 JavaScript 适配器中使用 Java</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/java-adapters/">Java 适配器</a>
-            <ul>
-                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP 适配器</a></li>
-                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL 适配器</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/developing-adapters/">在 IDE 中开发适配器</a></li>
-        <li><a href="../adapters/testing-and-debugging-adapters/">测试并调试适配器</a></li>
-        <li>服务器端日志收集
-            <ul>
-                <li><a href="../adapters/server-side-log-collection/">服务器端日志收集概述</a></li>
-                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java 适配器中的日志收集</a></li>
-                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript 适配器中的日志收集</a></li>
-            </ul>
-        </li>
-        <li><a href="../adapters/advanced-adapter-usage-mashup/">高级适配器用法和 Mashup</a></li>
-        <li><a href="../adapters/cloudant/">使用适配器与 Cloudant 集成</a></li>
+      <li>确保您已考虑 React Native 应用程序的所有先决条件。如果您是 React Native 的新用户，请参阅 <a href="https://facebook.github.io/react-native/docs/getting-started.html" target="_blank">React Native 入门</a>页面。</li>
+      <li><a href="https://console.bluemix.net/catalog/services/Mobile%20Foundation">IBM Cloud 上的 Mobile Foundation 实例</a>或 IBM Mobile Foundation 服务器的<a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/" target="_blank">本地安装</a>。</li>
     </ul>
 
+    <h4>创建 React Native 项目</h4>
+    <ol>
+    <li>第一步是创建 React Native 项目。让我们将应用程序称为 <code>JSONStoreApp</code>。使用 React Native CLI 创建新项目。
+      {% highlight bash  %}
+      react-native init JSONStoreApp
+      cd JSONStoreApp
+      {% endhighlight %}
+    </li>
+    <li>安装 MobileFirst 核心 SDK 并完成<a href="https://www.npmjs.com/package/react-native-ibm-mobilefirst" target="_blank">入门指示信息</a>。</li>
+    <li>将 IBM MobileFirst JSONStore SDK 添加到您的应用程序。
+      {% highlight bash  %}
+      npm install react-native-ibm-mobilefirst-jsonstore —-save
+      {% endhighlight %}
+    </li>
+    <li>链接您的项目，以便将所有本机依赖关系添加到您的 React Native 项目。
+      {% highlight bash  %}
+      react-native link
+      {% endhighlight %}
+   </li>
+  </ol>
+
+  <h4>配置您的 Android 应用程序</h4>
+  <ul>
+    <li>将以下行添加到 <code><React-Native-Project>/android/app/build.gradle</code> 的 <code>android</code> 部分：
+    {% highlight gradle  %}
+    packagingOptions{
+    	exclude 'META-INF/ASL2.0'
+    }
+    {% endhighlight %}
+    </li>
+    </ul>
+
+   <h4>创建 JSONStore 集合</h4>
+    <p>使用 JSONStore API 的第一步是创建 JSONStore 集合。</p>
+    <ol>
+    <li>将 JSONStore 类导入您的应用程序。打开 <code>App.js</code> 并在其他导入语句中添加以下行：{% highlight bash  %}
+    import {WLJSONStore, JSONStoreCollection} from 'react-native-ibm-mobilefirst-jsonstore';
+    {% endhighlight %}
+    </li>
+    <li>创建并打开集合。您可以同时打开多个集合。针对诸如使用密码保护您的集合、设置同步策略等高级选项，传递 <code>JSONStoreInitOptions</code> 参数：
+    {% highlight javascript  %}
+    var dogs = new JSONStoreCollection('dogs');
+    WLJSONStore.openCollections(['dogs']);  // Provide the name of the collection as a string.
+    {% endhighlight %}
+    </li>
+    </ol>
+
+    <h4>将数据添加到集合</h4>
+    <p>将 JSON 数据添加到您的集合。</p>
+    {% highlight javascript  %}
+    	var hachi = { "name" : "Hachiko" , "breed" : "Akita" , "country" : "Japan"};
+        dogs.addData(hachi).then( ()=> {
+          // Data was added to the collection successfully.
+        }).catch ( (err) => {
+          // Error adding data. See the err object for more information on the error
+        })
+    {% endhighlight %}
+
+    <h4>从集合查询数据</h4>
+    <p>使用任何 JSONStoreCollection.find* API 查询集合。使用 JSONStoreQueryPart 和 JSONStoreQuery API 对 JSON 数据进行高级过滤和查询。</p>
+    {% highlight javascript  %}
+    	dogs.findAllDocuments().then( (result) => {
+           // result will have all the documents in the collection
+           // E.g. [ {"json": {"name":"Hachiko","breed":"Akita","country":"Japan"},"_id":2}]
+         }).catch((error) => {
+            console.error ("Error finding docs " +  JSON.stringify(error));
+         });
+    {% endhighlight %}
+
+    <h4>关闭、清除和销毁您的集合。</h4>
+    <p>关闭您的集合将关闭您的 JSONStore 集合，要进一步访问，需要使用 <code>openCollections</code> API 重新将其打开。</p>
+    {% highlight javascript  %}
+    WLJSONStore.closeAll()
+    {% endhighlight %}
+
+    <p>清除集合将从集合中移除所有文档，但不会将其销毁。</p>
+    {% highlight javascript  %}
+    	dogs.clearCollection().then (()=>{
+    		// All documents cleared successfully
+         }).catch( (err) => {
+           // An error occurred while clearing the collection.
+         })
+    {% endhighlight %}
+
+    <p>销毁集合将永久删除所有数据、所有存取器和安全工件。集合一旦销毁，将无法复原。将销毁应用程序的所有集合。</p>
+
+    {% highlight javascript  %}
+    	WLJSONStore.destroy()
+    {% endhighlight %}
+
+    <h3>补充阅读</h3>
+    有关 React Native 应用程序中 JSONStore 的详细信息，请参阅<a href="../application-development/jsonstore/reactnative/">此处</a>。
+    <h3>参考</h3>
+    <ul>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/all-tutorials/" target="_blank">开发者中心</a></li>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/reactnative-tutorials/" target="_blank">入门</a></li>
+    <li><a href="http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/api/client-side-api/reactnative/jsonstore/" target="_blank">API 参考</a></li>
+    </ul>
   </div>
 </div>
 </div>

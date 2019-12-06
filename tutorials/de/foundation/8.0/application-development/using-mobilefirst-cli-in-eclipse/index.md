@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: MobileFirst CLI in Eclipse
+title: MobileFirst-CLI in Eclipse verwenden
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: MobileFirst-Eclipse-Plug-in
+breadcrumb_title: MobileFirst Eclipse plug-in
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -115,18 +115,18 @@ und navigieren Sie zu **IBM MobileFirst Foundation**.
 
 Die folgenden Befehle stehen zur Auswahl: 
 
-| Menüoption| Aktion| Äquivalent auf der MobileFirst-Befehlszeilenschnittstelle|
+|Menüoption|Aktion|Äquivalent auf der MobileFirst-Befehlszeilenschnittstelle|
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Open Server Console| Wenn die Serverdefinition bereits vorhanden ist, wird die Konsole geöffnet, sodass Sie die Aktionen des angegebenen Servers sehen können. | mfpdev server console
+|Open Server Console|Wenn die Serverdefinition bereits vorhanden ist, wird die Konsole geöffnet, sodass Sie die Aktionen des angegebenen Servers sehen können. |mfpdev server console
 |
-| Preview App| Öffnet die App im Browservorschaumodus | mfpdev app preview|
-| Register App| Registriert die App bei dem in Ihren Serverdefinitionen angegebenen Server | mfpdev app register                           |
-| Encrypt App| Führt für Ihre App das Verschlüsselungstool für Webressourcen aus| mfpdev app webencrypt|
-| Pull App| Ruft die vorhandene App-Konfiguration von dem in der Serverdefinition angegebenen Server ab| mfpdev app pull
+|Preview App|Öffnet die App im Browservorschaumodus |mfpdev app preview|
+|Register App|Registriert die App bei dem in Ihren Serverdefinitionen angegebenen Server |mfpdev app register                           |
+|Encrypt App|Führt für Ihre App das Verschlüsselungstool für Webressourcen aus|mfpdev app webencrypt|
+|Pull App|Ruft die vorhandene App-Konfiguration von dem in der Serverdefinition angegebenen Server ab|mfpdev app pull
 |
-| Push App| Sendet die Konfiguration Ihrer aktuellen App an den in der Builddefinition angegebenen Server, sodass Sie sie für eine andere App wiederverwenden können | mfpdev app push
+|Push App|Sendet die Konfiguration Ihrer aktuellen App an den in der Builddefinition angegebenen Server, sodass Sie sie für eine andere App wiederverwenden können |mfpdev app push
 |
-| Update App| Packt den Inhalt des Ordners "www" zu einer ZIP-Datei und ersetzt die Version auf dem Server durch das Paket| mfpdev app webupdate                          |
+|Update App|Packt den Inhalt des Ordners "www" zu einer ZIP-Datei und ersetzt die Version auf dem Server durch das Paket|mfpdev app webupdate                          |
 
 
 ## Tipps und Tricks
@@ -187,6 +187,6 @@ und so eine integrierte Entwicklungsumgebung erzeugen.
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">
-   		<iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+   		<iframe title="Dem video" src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
 	</div>
 </div>

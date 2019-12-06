@@ -76,9 +76,9 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
         </div>
         <div id="collapse-mfp-devkit" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-devkit">
             <div class="panel-body">
-                  <b>8.0.0.0-MFPF-DevKit-Linux-IF201811050432-CDUpdate-01.bin</b><br/>
-                  <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201811050432-CDUpdate-01.zip</b><br/>
-                  <b>8.0.0.0-MFPF-DevKit-Windows-IF201811050432-CDUpdate-01.exe</b><br/>
+                  <b>8.0.0.0-MFPF-DevKit-Linux-IF201811050432-CDUpdate-03.bin</b><br/>
+                  <b>8.0.0.0-MFPF-DevKit-MacOSX-IF201811050432-CDUpdate-03.zip</b><br/>
+                  <b>8.0.0.0-MFPF-DevKit-Windows-IF201811050432-CDUpdate-03.exe</b><br/>
             </div>
         </div>      
     </div>

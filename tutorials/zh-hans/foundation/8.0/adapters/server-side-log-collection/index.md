@@ -28,5 +28,4 @@ weight: 7
     * [IBM WebSphere Application Server Liberty 概要文件](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
 * 要获取以下各项中云部署中的日志：
-    * IBM Containers 或 Liberty Build Pack，请参阅 [IBM Containers 日志和跟踪集合](../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/)教程。
     * Mobile Foundation IBM Cloud 服务，请参阅[使用 Mobile Foundation](../../bluemix/using-mobile-foundation) 教程中的[访问服务器日志](../../bluemix/using-mobile-foundation/#accessing-server-logs)部分。

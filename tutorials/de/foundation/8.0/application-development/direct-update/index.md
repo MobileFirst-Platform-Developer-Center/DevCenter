@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Direkte Aktualisierung in Cordova-Anwendungen
-breadcrumb_title: Direkte Aktualisierung
-relevantTo: [cordova]
+title: Direkte Aktualisierung in Cordova- und Ionic-Anwendungen
+breadcrumb_title: Direct Update
+relevantTo: [cordova,ionic]
 weight: 8
 downloads:
-  - name: Cordova-Projekt herunterladen
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -97,8 +97,11 @@ Die direkte Aktualisierung gilt nur für eine bestimmte Version. Das bedeutet, d
 Wenn Arbeiten an neuen Webressourcen ausgeführt werden, z. B. Fehlerkorrekturen oder geringfügige Änderungen,
 müssen die aktualisierten Webressourcen gepackt und auf den {{ site.data.keys.mf_server }} hochgeladen werden.
 
-1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Cordova-Projekts. 
-2. Führen Sie den Befehl `mfpdev app webupdate` aus. 
+1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Cordova-Projekts.
+2. Führen Sie den Befehl `cordova build` aus.
+3. Führen Sie den Befehl `mfpdev app webupdate` aus.
+
+> **Hinweis:** In Ionic-Anwendungen ist es wichtig, den Buildschritt vor dem Befel für direkte Aktualisierung auszuführen. Fehlt dieser Schritt, werden die Webressourcen nicht aktualisiert. 
 
 Mit dem Befehl `mfpdev app webupdate` werden die aktualisierten Webressourcen zu einer ZIP-Datei gepackt
 und auf den aktiven Standard-MobileFirst-Server auf der
@@ -213,17 +216,17 @@ angibt.
 * Die Methode `onFinish` wird mit einem der abschließenden Statuscodes
 aufgerufen:      
 
-| Statuscode| Beschreibung |
+|Statuscode|Beschreibung |
 |-------------|-------------|
-| `SUCCESS` | Die direkte Aktualisierung wurde fehlerfrei abgeschlossen.|
-| `CANCELED` | Die direkte Aktualisierung wurde abgebrochen (weil beispielsweise die Methode `stop()` aufgerufen wurde).|
-| `FAILURE_NETWORK_PROBLEM` | Es gab während der Aktualisierung ein Problem mit einer Netzverbindung.|
-| `FAILURE_DOWNLOADING` | Die Datei wurde nicht vollständig heruntergeladen.|
-| `FAILURE_NOT_ENOUGH_SPACE` | Auf dem Gerät ist nicht genug Speicher verfügbar, um die Aktualisierungsdatei herunterzuladen und zu entpacken.|
-| `FAILURE_UNZIPPING` | Beim Entpacken der Aktualisierungsdatei ist ein Problem aufgetreten. |
-| `FAILURE_ALREADY_IN_PROGRESS` | Die Startmethode wurde aufgerufen, als die direkte Aktualisierung bereits lief.|
-| `FAILURE_INTEGRITY` | Die Authentizität der Aktualisierungsdatei kann nicht verifiziert werden.|
-| `FAILURE_UNKNOWN` | Unerwarteter interner Fehler|
+|`SUCCESS` |Die direkte Aktualisierung wurde fehlerfrei abgeschlossen.|
+|`CANCELED` |Die direkte Aktualisierung wurde abgebrochen (weil beispielsweise die Methode `stop()` aufgerufen wurde).|
+|`FAILURE_NETWORK_PROBLEM` |Es gab während der Aktualisierung ein Problem mit einer Netzverbindung.|
+|`FAILURE_DOWNLOADING` |Die Datei wurde nicht vollständig heruntergeladen.|
+|`FAILURE_NOT_ENOUGH_SPACE` |Auf dem Gerät ist nicht genug Speicher verfügbar, um die Aktualisierungsdatei herunterzuladen und zu entpacken.|
+|`FAILURE_UNZIPPING` |Beim Entpacken der Aktualisierungsdatei ist ein Problem aufgetreten. |
+|`FAILURE_ALREADY_IN_PROGRESS` |Die Startmethode wurde aufgerufen, als die direkte Aktualisierung bereits lief.|
+|`FAILURE_INTEGRITY` |Die Authentizität der Aktualisierungsdatei kann nicht verifiziert werden.|
+|`FAILURE_UNKNOWN` |Unerwarteter interner Fehler|
 
 Wenn Sie einen angepassten Listener für die direkte Aktualisierung implementieren, müssen Sie sicherstellen, dass
 nach Abschluss der direkten Aktualisierung

@@ -28,7 +28,7 @@ weight: 1
 
 ### 1. Запуск {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Убедитесь, что [создан экземпляр Mobile Foundation](../../bluemix/using-mobile-foundation) либо  
+Убедитесь, что [создан экземпляр Mobile Foundation](../../ibmcloud/using-mobile-foundation) либо  
 В случае применения [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) перейдите в папку сервера и выполните следующую команду: `./run.sh` (Mac и Linux) или `run.cmd` (Windows).
 
 ### 2. Создание и регистрация приложения
@@ -110,7 +110,7 @@ WLAuthorizationManager.obtainAccessToken()
 {: #5-testing-the-application }
 1. В окне **Командная строка** перейдите в корневую папку проекта Cordova.
 2. Выполните команду `cordova platform add ios|android|windows` для добавления платформы.
-3. В проекте Cordova выберите файл **config.xml** и укажите в элементе `<mfp:server ... url=" "/>` значения свойств **protocol**, **host** и **port** с учетом конфигурации {{ site.data.keys.mf_server }}.
+3. В проекте Cordova выберите файл **config.xml** и измените строку `<mfp:server ... url=" "/>` со свойствами **protocol**, **host** и **port**, указав правильные значения для {{ site.data.keys.mf_server }}.
     * Обычные значения в случае применения локального экземпляра {{ site.data.keys.mf_server }}: **http**, **localhost** и **9080**.
     * Обычные значения в случае применения удаленного экземпляра {{ site.data.keys.mf_server }} (в IBM Cloud): **https**, **your-server-address** и **443**.
     * В случае применения кластера Kubernetes в IBM Cloud Private и развертывания с типом **NodePort** значением порта, как правило, будет значение **NodePort**, предоставляемое службой в кластере Kubernetes.

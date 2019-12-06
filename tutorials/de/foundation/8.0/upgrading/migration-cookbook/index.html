@@ -102,9 +102,9 @@ Implementierung und Konfiguation von Sicherheit und Authentifizierung und zu vie
 
         <h3>{{ site.data.keys.mf_server }}</h3>
         <p>Sie können einen {{ site.data.keys.mf_server }} in <a href="https://bluemix.net">IBM Cloud</a> einrichten.
-Verwenden Sie dafür den <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">IBM Cloud-Service 'Mobile Foundation'</a>. Alternativ können Sie
+Verwenden Sie dafür den <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibmcloud/using-mobile-foundation/" target="_blank">IBM Cloud-Service 'Mobile Foundation'</a>. Alternativ können Sie
 das <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a> verwenden,
-jum einen lokal ausgeführten Server einzurichten. </p>
+um einen lokal ausgeführten Server einzurichten. </p>
 
         <h3>Unterstützungstool für die Migration</h3>
         <p>Wenn {{ site.data.keys.mf_server }} betriebsbereit ist,
@@ -298,7 +298,7 @@ if (document.addEventListener) {
                         <br/>
                         <h4>Schritt 5</h4>
                         <p>Zum Testen der Cordova-Anwendung können Sie eine Vorschau der Webressourcen der Anwendung anzeigen oder die Anwendung in einem Simulator/Emulator oder auf einem physischen Gerät ausführen. <br/>
-                            <b>Hinweis:</b> Wenn Ihr clientseitiger Code Logik für Sicherheit und Authentifizierung, Push-Benachrichtigungen, Adapter und ähnliche Fuktionen
+                            <b>Hinweis:</b> Wenn Ihr clientseitiger Code Logik für Sicherheit und Authentifizierung, Push-Benachrichtigungen, Adapter und ähnliche Funktionen
 enthält, müssen Sie Ihren Code unter Umständen weiter anpassen, bevor Sie den Code testen können (siehe unten). Sie können aber überprüfen, ob die Schnittstelle Ihrer Anwendung noch intakt ist. </p>
 
                         <p><b>Vorschau von Webressourcen:</b></p>
@@ -379,7 +379,7 @@ in dem der generierte API-Bericht gespeichert werden soll. </li>
                             <li>Erstellen Sie einen neuen Ordner für den Quellcode und die Ressourcen Ihrer Anwendung. </li>
                             <li>Kopieren Sie die Datei <b>index.html</b> sowie die Ordner <b>js</b>, <b>css</b> und <b>images</b>
 aus dem vorhandenen Projekt in den erstellten Ordner. </li>
-                            <li>Navigieren Sie in einem Befehlszeilenfenster zum Stammordner des migrierten projekts und fügen Sie
+                            <li>Navigieren Sie in einem Befehlszeilenfenster zum Stammordner des migrierten Projekts und fügen Sie
 das {{ site.data.keys.product_adj }}-Web-SDK mit <code>npm install ibm-mfp-web-sdk</code> hinzu. </li>
                         </ol>
 
@@ -787,7 +787,7 @@ export MVN_PATH="/usr/local/bin"
 {% endhighlight %}
                                                     </li>
 
-                                    <li><i>Windows:</i> <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">Follgen Sie dieser Anleitung</a>.</li>
+                                    <li><i>Windows:</i> <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">Folgen Sie dieser Anleitung</a>.</li>
                                     <li>Überprüfen Sie die Installation, indem Sie <code>mvn -v</code> ausführen.</li>
                                 </ul>
                             </li>
@@ -1123,7 +1123,7 @@ Lernprogrammen zur <a href="../../authentication-and-security/" target="_blank">
                 <div id="collapseSecurityFramework" class="panel-collapse collapse" role="tabpanel" aria-labelledby="security-framework">
                     <div class="panel-body">
                         <h3>Realm und Sicherheitsüberprüfung im Vergleich</h3>
-                        <p>Eine Sicherheitsüberprüfung in {{ site.data.keys.product }} 8.0 kann als eine Kombination von drei Konzepten aus früheren Releses betrachtet werden: <br/>
+                        <p>Eine Sicherheitsüberprüfung in {{ site.data.keys.product }} 8.0 kann als eine Kombination von drei Konzepten aus früheren Releases betrachtet werden: <br/>
                         Sicherheitsüberprüfung = Realm + Authentifikator + Anmeldemodul</p>
 
                         <p>Die Implementierung der Sicherheitsüberprüfung ist die Implementierung sowohl des Anmeldemoduls als auch des Authentifikators. <br/>
@@ -1157,7 +1157,7 @@ Lernprogrammen zur <a href="../../authentication-and-security/" target="_blank">
     {% highlight xml %}<parameter name="login-function" value="AuthAdapter.onAuthRequired"/>
 <parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
 
-                                <i>Angepasster Authentifikator + Anmeldenmodul:</i> Es gibt eine Methode <code>init()</code> für den Start und eine Methode <code>processRequest()</code> für die Autorisierung von Anforderungen.
+                                <i>Angepasster Authentifikator + Anmeldemodul:</i> Es gibt eine Methode <code>init()</code> für den Start und eine Methode <code>processRequest()</code> für die Autorisierung von Anforderungen.
 Der Authentifikator sendet die Berechtigungsnachweise des Anmeldemoduls an die Methode <code>login()/logout()</code>. </td>
                                 <td>Bei der Implementierung der Sicherheitsprüfungsschnittstelle muss der Benutzer auch die Methoden
 <code>authorize()</code> und <code>introspect()</code> implementieren, die das Framework bei Autorisierungsanforderungen aufruft. Die Sicherheitsüberprüfung kann die Authentifizierung sowie die An-/Abmeldung selbst handhaben.
@@ -1189,7 +1189,7 @@ externer Ressourcen oder Apps verwendet werden können. Dies ist mit dem Konzept
 
                             <tr>
                                 <td><b>Definition</b></td>
-                                <td>Definition in der Datei <b>authenticationConfig.xml</b> mit einem Namen, einem oder mehreren Sicherheitstests und mindestens einem Sicherheitstestsfür die Definition der Benutzer-ID (<code>UserID</code>).
+                                <td>Definition in der Datei <b>authenticationConfig.xml</b> mit einem Namen, einem oder mehreren Sicherheitstests und mindestens einem Sicherheitstest für die Definition der Benutzer-ID (<code>UserID</code>).
 
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">
     <test isInternalUserID="true" realm="AuthRealm"/>
@@ -1252,7 +1252,7 @@ externer Ressourcen oder Apps verwendet werden können. Dies ist mit dem Konzept
             <li><a href="../migrating-push-notifications/#migration-scenarios" target="_blank">Migrationsszenarien nach Plattform</a></li>
         </ul>
 
-        <blockquote>Weitere Informatione nzum Einrichten der Benachrichtigungsunterstützung und zum Senden authentifizierter und tagbasierter Benachrichtigungen
+        <blockquote>Weitere Informationen zum Einrichten der Benachrichtigungsunterstützung und zum Senden authentifizierter und tagbasierter Benachrichtigungen
 enthalten die
 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/notifications/">Lernprogramme zu Benachrichtigungen</a>.</blockquote>
 
@@ -1272,7 +1272,7 @@ Lernprogramm <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-d
     <div class="sizer">
         <p>Als kleines Extra finden Sie im Anschluss ein Video, das die Migration einer mit MobileFirst Platform Foundation 6.3 erstellten Hybridanwendung und eines Adapters auf eine Cordova-Standardanwendung und ein Maven-Projekt demonstriert.</p>
         <div class="embed-responsive embed-responsive-16by9">
-            <iframe src="https://www.youtube.com/embed/nLrtdOEkbEs"></iframe>
+            <iframe title="Videovorführung" src="https://www.youtube.com/embed/nLrtdOEkbEs"></iframe>
         </div>
     </div>
 </div>

@@ -8,8 +8,8 @@ weight: 2
 {: #overview }
 {{ site.data.keys.mf_server }}를 Eclipse IDE에 통합할 수 있습니다. 이는 통합 개발 경험을 작성하는 데 도움이 될 수 있습니다.
 
-* Eclipse에서 CLI 기능을 노출할 수도 있습니다. [Eclipse에서 {{ site.data.keys.mf_server }} 사용](../../../../application-development/using-mobilefirst-cli-in-eclipse) 학습서를 참조하십시오.
-* 또한 Eclipse에서 어댑터를 개발할 수 있습니다. [Eclipse에서 어댑터 개발](../../../../adapters/developing-adapters) 학습서를 참조하십시오.
+* Eclipse에서 CLI 기능을 노출할 수도 있습니다. [Eclipse에서 {{ site.data.keys.mf_server }} 사용](../../../../application-development/using-mobilefirst-cli-in-eclipse) 튜토리얼을 참조하십시오.
+* 또한 Eclipse에서 어댑터를 개발할 수 있습니다. [Eclipse에서 어댑터 개발](../../../../adapters/developing-adapters) 튜토리얼을 참조하십시오.
 
 ### Eclipse에 서버 추가
 {: #adding-the-server-to-eclipse }

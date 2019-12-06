@@ -63,7 +63,7 @@ Das Plug-in *cordova-plugin-mfp-fips* stellt FIPS-140-2-Unterstützung für die 
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-Das Plug-in *cordova-plugin-mfp-encrypt-utils* stellt iOS-OpenSSL-Frameworks für die Verschlüsselung von Cordova-Anwendungen auf der iOS-Plattform bereit. Weitere Informationen finden Sie unter [OpenSSL für Cordova iOS aktivieren](additional-information).
+Das Plug-in *cordova-plugin-mfp-encrypt-utils* stellt iOS-OpenSSL-Frameworks für die Verschlüsselung von Cordova-Anwendungen auf der iOS-Plattform bereit. Weitere Informationen finden Sie unter [OpenSSL für Cordova iOS aktivieren](../cordova/additional-information).
 
 **Voraussetzungen:**
 
@@ -159,7 +159,7 @@ Die {{ site.data.keys.product_adj }}-API-Methoden sind nach dem Laden des {{ sit
 Rufen Sie die verschiedenen {{ site.data.keys.product_adj }}-API-Methoden erst auf, wenn das Ereignis aufgerufen wurde. 
 
 ## {{ site.data.keys.product_adj }}-Ionic-SDK aktualisieren
-{: #updating-the-mobilefirst-cordova-sdk }
+{: #updating-the-mobilefirst-ionic-sdk }
 Wenn Sie das {{ site.data.keys.product_adj }}-Ionic-Cordova-SDK auf den neuesten Releasestand bringen möchten, entfernen Sie das Plug-in **cordova-plugin-mfp**. Führen Sie dazu den Befehl `ionic cordova plugin remove cordova-plugin-mfp` aus. Führen Sie dann den Befehl `ionic cordova plugin add cordova-plugin-mfp` aus, um das Plug-in wieder hinzuzufügen. 
 
 SDK-Releases sind im [NPM-Repository](https://www.npmjs.com/package/cordova-plugin-mfp) für das jeweilige SDK enthalten.

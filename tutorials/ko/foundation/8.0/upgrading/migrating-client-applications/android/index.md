@@ -91,7 +91,7 @@ V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체
 #### 중단된 Android API 요소
 {: #discontinued-android-api-elements }
 
-| API 요소    | 마이그레이션 경로 |
+| API 요소 | 마이그레이션 경로 |
 |-------------|----------------|
 | `WLConfig WLClient.getConfig()` | 대체 없음. |
 | {::nomarkdown}<ul><li><code>WLDevice WLClient.getWLDevice()</code></li><li><code>WLClient.transmitEvent(org.json.JSONObject event)</code></li><li><code>WLClient.setEventTransmissionPolicy(WLEventTransmissionPolicy policy)</code></li><li><code>WLClient.purgeEventTransmissionBuffer()</code></li></ul>{:/} | 위치정보에 대한 Android API 또는 써드파티 패키지를 사용하십시오. |
@@ -116,7 +116,7 @@ V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체
 #### 레거시 `org.apach.http` API에 종속되는 Android API는 더 이상 지원되지 않음
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
 
-| API 요소    | 마이그레이션 경로 |
+| API 요소 | 마이그레이션 경로 |
 |-------------|----------------|
 | `org.apache.http.Header[]`는 이제 더 이상 사용되지 않습니다. 따라서 다음 메소드가 제거됩니다. | |
 | `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 대신 새 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API를 사용하십시오. |
@@ -126,5 +126,5 @@ V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체
 | `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 대신 새 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API를 사용하십시오. |
 | `WLResourceRequest.setHeader(org.apache.http.Header header)` | 대신 새 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API를 사용하십시오. |
 | `org.apache.http.client.CookieStore WLClient.getCookieStore()` | `ClearableCookieJar WLClient.getPersistentCookies()`로 대체되었습니다. |
-| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 대체 없음. MFP 클라이언트를 사용하면 순환하여 경로를 재지정할 수 있습니다. |
-| {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>, <code>WLHttpResponseListener</code>를 가져오는 모든 메소드:<ul><li><code>WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)</code></li></ul></li></ul>{:/} | 더 이상 사용되지 않는 Apache HTTP 클라이언트 종속 항목으로 인해 제거되었습니다. 요청 및 응답을 완전히 제어하려면 자체 요청을 작성하십시오. |
+|`WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` |대체 없음. MFP 클라이언트를 사용하면 순환하여 경로를 재지정할 수 있습니다. |
+| {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>, <code>WLHttpResponseListener</code>를 가져오는 모든 메소드:<ul><li><code>WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)</code></li></ul></li></ul>{:/} |더 이상 사용되지 않는 Apache HTTP 클라이언트 종속 항목으로 인해 제거되었습니다. 요청 및 응답을 완전히 제어하려면 자체 요청을 작성하십시오. |

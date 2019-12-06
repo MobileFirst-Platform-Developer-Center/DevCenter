@@ -8,21 +8,18 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-In diesem Lernprogramm wird Entwicklern erklärt, wie native C#-Xamarin-Anwendungen für Android- und iOS-Geräte entwickelt werden. Für diese Entwicklungsschritte muss
-Xamarin Studio installiert werden.
+In diesem Lernprogramm wird Entwicklern erklärt, wie native C#-Xamarin-Anwendungen für Android- und iOS-Geräte entwickelt werden. Für diese Entwicklungsschritte muss Visual Studio installiert werden.
 
 **Voraussetzung:** Wenn Sie Ihre Xamarin-Entwicklungsumgebung
 einrichten, müssen Sie das Lernprogramm [MobileFirst-Entwicklungsumgebung einrichten](../../development/) durchgearbeitet haben.
 
 ### Entwicklung
 {: #development }
-Xamarin-Anwendungen werden in [Xamarin Studio](https://www.xamarin.com/studio) oder
-[Microsoft Visual Studio](https://www.visualstudio.com/) entwickelt. Xamarin Studio kann unter Mac OS oder Windows installiert werden.  Auf Desktopgeräten mit
-Windows 8.1 oder Windows 10 kann Xamarin auch als Plug-in zu Microsoft Visual Studio hinzugefügt werden.   
+Xamarin-Anwendungen werden in [Microsoft Visual Studio](https://www.visualstudio.com/) entwickelt. Visual Studio kann unter Mac OS oder Windows installiert werden.    
 
-Sie können Xamarin Studio von der Seite [Xamarin Studio Downloads](https://www.xamarin.com/download) herunterladen.
+Sie können Visual Studio von der Seite [Visual Studio Downloads](https://visualstudio.microsoft.com/downloads/) herunterladen.
 
-![Xamarin Studio](xamarin-studio.png)
+![Visual Studio](Visualstudio.png)
 
 ## Weitere Schritte
 {: #whats-next }

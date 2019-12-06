@@ -100,7 +100,7 @@ weight: 4
 
                     <b>注：</b>可以更改端口 8686。</li>
                     <li>
-                        <p>如果 Tomcat 实例在防火墙背后运行，那么必须配置 JMX 远程生命周期侦听器。 请参阅 <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener"> JMX远程生命周期侦听器</a>的 Apache Tomcat 文档。</p><p>还必须将以下环境属性添加到 <b>server.xml</b> 文件中的管理服务应用程序的 Context 节，如以下示例所示：</p>
+                        <p>如果 Tomcat 实例在防火墙背后运行，那么必须配置 JMX 远程生命周期侦听器。 请参阅 <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener">JMX 远程生命周期侦听器</a>的 Apache Tomcat 文档。</p><p>还必须将以下环境属性添加到 <b>server.xml</b> 文件中的管理服务应用程序的 Context 节，如以下示例所示：</p>
 
 {% highlight xml %}
 <Context docBase="mfpadmin" path="/mfpadmin ">

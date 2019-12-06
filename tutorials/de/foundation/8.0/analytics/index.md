@@ -4,16 +4,25 @@ title: MobileFirst Analytics
 breadcrumb_title: Analytics
 show_children: true
 relevantTo: [ios,android,javascript]
-weight: 9
+weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} erfasst Daten von Aktivitäten zwischen App und Server, aus Clientprokollen, von Clientabstürzen sowie aus
-clientseitigen Protokollen von {{ site.data.keys.mf_server }} und von Clientgeräten. Anhand der erfassten Daten erhalten Sie
-tiefe Einblicke in die mobile Umgebung und die Serverinfrastruktur. Zum Lieferumfang gehören Standardberichte zur Kundenbindung, Absturzberichte, Berichte mit Aufgliederungen nach Gerätetyp und Betriebssystem, mit kundenspezifischen Daten
-und Diagrammen, Berichte zur Netznutzung, Berichte mit den Ergebnissen von Push-Benachrichtigungen, Berichte zum App-internen Verhalten, die Erfassung von Debug-Protollen und vieles mehr. 
+Wenn Sie eine nennenswerte und effektive Benutzerbindung anstreben, müssen Sie wissen, welche Erfahrungen Benutzer mit Ihrer Anwendung machen. {{ site.data.keys.mf_analytics_full }} ergmöglicht diesbezügliche Einblicke mit integrierter Visualisierung (Diagrammen und Tabellen). Mit einer minimalen Instrumentierung Ihrer Anwendung können Sie bequem die folgenden verlässlichen Einblicke in der Mobile Foundation Analytics Console visualisieren: 
+
+* **Onboarding & Verweildauer der Benutzer:** Konnten Sie neue Benutzer gewinnen? Gibt es vorhandene Benutzer, die erneut auf Ihre Anwendung zurückgreifen?
+* **Verwendungsmuster:** Zu welchen Zeiten wird Ihre Anwendung am häufigsten und am seltensten verwendet? Was lässt sich daraus für die Geschäftsrelevanz Ihrer Anwendung ableiten?
+* **Verteilung nach Gerät & Betriebssystem:** Wie sieht die Verteilung Ihrer App auf die verschiedenen Modelle und Betriebssysteme mobiler Geräte aus?
+* **Back-End-Leistung:** Welche Funktionen Ihrer Back-End-Systeme werden am meisten verwendet? Wie sehen Reaktionszeit und Stabilität dieser Funktionen aus? Muss Ihr Back-End-System in seinen Ursprungszustand zurückversetzt werden?
+* **Anwendungsstabilität:** Wie stabil ist Ihre Anwendung im zeitlichen Verlauf? Falls es Abstürze gab, was waren die Ursachen (Absturzprotokolle)? Muss Ihr Anwendungsdesign bzw. Ihre Anwendungsimplementierung korrigiert werden?
+* **Hinweise für die Fehlersuche:** Was sagen die Aufzeichnungen/Protokolle über den Zeitpunkt vor dem Absturz Ihrer Anwendung aus?
+* **App-interne Benutzererfahrung:** Welche interaktiven Erfahrungen machen Ihre Benutzer tatsächlich bei der Nutzung Ihrer App? Wie fühlen sich die Benutzer? Müssen Sie Ihre Benutzerstudio nochmals anschauen?
+* **Kundenspezifische Protokolle:** Kundenspezifische Diagramme, die für kundenspezifische und im Rahmen von Anwendungsabläufen bzw. -protokollen erfasste Daten definiert und erstellt werden, sind so flexibel, dass Sie die gewünschten Einsichten erweitern und definieren können, um bessere Geschäftsentscheidungen treffen zu können.
+
+{{ site.data.keys.mf_analytics_full }} erfasst Daten von Aktivitäten zwischen App und Server, aus Clientprokollen, von Clientabstürzen, aus App-internem Benutzerfeedback sowie aus clientseitigen Protokollen von {{ site.data.keys.mf_server }} und von Clientgeräten. Anhand der erfassten Daten erhalten Sie
+tiefe Einblicke in die mobile Umgebung und die Serverinfrastruktur. 
 
 {{ site.data.keys.mf_server }} ist bei Lieferung für die Erstellung von Berichten zur Netzinfrastruktur
 instrumentiert. Wenn der Client und der Server ihre Netznutzung melden, werden die Daten zusammengefasst. Sie können dann ausmachen, ob die Verantwortung für eine schwache Leistung beim Netz, beim Server oder bei den

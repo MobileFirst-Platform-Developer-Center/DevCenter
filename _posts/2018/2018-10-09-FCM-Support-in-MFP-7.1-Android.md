@@ -15,6 +15,12 @@ additional_authors:
 
 ## Follow the steps in this post to use [Firebase Cloud Messaging (FCM)](https://firebase.google.com/docs/cloud-messaging/) in your android app with MobileFirst Platform v7.1 Android Push SDK
 
+Google Cloud Messaging (GCM) has been deprecated and is integrated with Firebase Cloud Messaging (FCM). Google will turn off most GCM services by April 2019.
+
+For now, the existing applications using GCM services will continue to work as-is.
+
+>**Note:** Custom notifications support is available with only FCM. GCM custom notifications are not supported for devices using API 26 or above.
+
 Get `google-services.json` for your application from [here](https://developers.google.com/cloud-messaging/android/android-migrate-fcm). Add the json file to your `app` folder.
 
 ### Steps for Native application
@@ -55,8 +61,7 @@ Get `google-services.json` for your application from [here](https://developers.g
  d. Update the `application` attributes as below:
 
   ```xml
-     <application android:name="android.support.multidex.MultiDexApplication"
-		android:allowBackup="true"
+     <application android:allowBackup="true"
 		android:icon="@drawable/ic_launcher"
 		android:label="@string/app_name"
 		android:theme="@style/AppTheme"
@@ -187,8 +192,7 @@ b. Add the following code for handling the resume and pause scenarios:
   b. Update the `<application>` tag as below:
 
   ```xml
-    <application  android:name="android.support.multidex.MultiDexApplication"
-              android:label="@string/app_name" android:icon="@drawable/icon">
+    <application android:label="@string/app_name" android:icon="@drawable/icon">
   ```
 
   c. Add below acivity in `<application>`:

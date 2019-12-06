@@ -94,17 +94,17 @@ Si el ámbito de `push.mobileclient` está correlacionado con la **comprobación
 ### Lado del cliente
 {: #client-side }
 
-|Métodos Swift |Descripción  |
+| Métodos Swift | Descripción  |
 |---------------|--------------|
-|[`initialize()`](#initialization) |Inicia MFPPush con el contexto proporcionado. |
-|[`isPushSupported()`](#is-push-supported) |Indica si el dispositivo da soporte a notificaciones push. |
-|[`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) |Registra el dispositivo con el servicio de notificaciones push.|
-|[`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) |Envía la señal de dispositivo al servidor |
-|[`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) |Recupera las etiquetas disponibles en una instancia del servicio de notificaciones push. |
-|[`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) |Suscribe el dispositivo para las etiquetas especificadas. |
-|[`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  |Recupera todas las etiquetas a las que el dispositivo está actualmente suscrito. |
-|[`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) |Anula la suscripción de una o varias etiquetas. |
-|[`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) |Anula el registro del dispositivo del servicio notificaciones push.              |
+| [`initialize()`](#initialization) | Inicia MFPPush con el contexto proporcionado. |
+| [`isPushSupported()`](#is-push-supported) | Indica si el dispositivo da soporte a notificaciones push. |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | Registra el dispositivo con el servicio de notificaciones push.|
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | Envía la señal de dispositivo al servidor |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | Recupera las etiquetas disponibles en una instancia del servicio de notificaciones push. |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | Suscribe el dispositivo para las etiquetas especificadas. |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | Recupera todas las etiquetas a las que el dispositivo está actualmente suscrito. |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Anula la suscripción de una o varias etiquetas. |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | Anula el registro del dispositivo del servicio notificaciones push.              |
 
 #### Inicialización
 {: #initialization }
@@ -281,7 +281,7 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 }
 ```
 
-> Obtenga más información sobre el manejo de notificaciones en iOS de la documentación Apple: http://bit.ly/1ESSGdQ
+> Encontrará más información sobre cómo manejar las notificaciones en iOS en la [documentación de Apple](https://developer.apple.com/library/archive/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1)
 
 <img alt="Imagen de la aplicación de ejemplo" src="notifications-app.png" style="float:right"/>
 

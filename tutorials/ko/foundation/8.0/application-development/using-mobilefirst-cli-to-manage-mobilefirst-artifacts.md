@@ -20,7 +20,7 @@ relevantTo: [ios,android,windows,javascript]
 
 #### 다음으로 이동
 {: #jump-to }
-* [전제조건](#prerequisites)
+* [선행 조건](#prerequisites)
 * [{{ site.data.keys.mf_cli }} 설치](#installing-the-mobilefirst-cli)
 * [CLI 명령 목록](#list-of-cli-commands)
 * [대화식 모드 및 직접 모드](#interactive-and-direct-modes)
@@ -30,7 +30,7 @@ relevantTo: [ios,android,windows,javascript]
 * [유용한 명령](#helpful-commands)
 * [명령행 인터페이스 업데이트 및 설치 제거](#update-and-uninstall-the-command-line-interface)
 
-## 전제조건
+## 선행 조건
 {: #prerequisites }
 {{ site.data.keys.mf_cli }}는 [NPM 레지스트리](https://www.npmjs.com/)에서 NPM 패키지로 사용 가능합니다.  
 
@@ -44,15 +44,20 @@ node -v
 v6.11.1
 ```
 
-> **참고:** 지원되는 최소 **node.js** 버전은 **4.2.3**입니다. 또한 **node**와 **npm** 패키지가 빠르게 전개되므로 MobileFirst CLI가 최신 버전을 포함하여 사용 가능한 모든 버전의 **node** 및 **npm**에서 완벽하게 작동하지 않을 수도 있습니다. CLI가 제대로 작동하려면 **node**의 버전이 **6.11.1**이고 **npm**의 버전이 **3.10.10**인지 확인하십시오.
+> **참고:** 지원되는 최소 **node.js** 버전은 **4.2.3**입니다. 또한 **node**와 **npm** 패키지가 빠르게 전개되므로 MobileFirst CLI가 최신 버전을 포함하여 사용 가능한 모든 버전의 **node** 및 **npm**에서 완벽하게 작동하지 않을 수도 있습니다. 
+> 
+> MobileFirst CLI iFix 버전 8.0.2018040312까지는 CLI가 제대로 작동하려면 **node**의 버전이 **6.11.1**이고 **npm** 버전이 **3.10.10**이어야 합니다.
+>
+> MobileFirst CLI iFix 버전 8.0.2018100112 이상의 경우 Node 버전 8.x 또는 10.x를 사용할 수 있습니다.
 
 ## {{ site.data.keys.mf_cli }} 설치
 {: #installing-the-mobilefirst-cli }
 명령행 인터페이스를 설치하려면 다음 명령을 실행하십시오.
 
 ```bash
-npm install -g mfpdev-cli
+npm install -g mfpdev-cli --no-optional
 ```
+
 
 {{ site.data.keys.mf_console }}의 다운로드 센터에서 CLI .zip 파일을 다운로드한 경우 다음 명령을 사용하십시오.
 
@@ -89,7 +94,7 @@ DESCRIPTION
 ## CLI 명령 목록
 {: #list-of-cli-commands }
 
-| 명령 접두부                                                | 명령 조치                               | 설명                                                             |
+| 명령 접두부                                                | 명령 조치                               |설명                                                             |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
 | `mfpdev app`	                                                | register                                     | {{ site.data.keys.mf_server }}에 앱을 등록합니다.                           |
 |                                                               | config                                       | 앱에 사용할 백엔드 서버 및 런타임을 지정할 수 있습니다. 또한 Cordova 앱의 경우 여러 가지 추가 측면(예: 시스템 메시지의 기본 언어 및 체크섬 보안 검사 수행 여부)을 구성할 수 있습니다. 그 외 Cordova 앱에 대한 다른 구성 매개변수가 포함되어 있습니다.                                                                                                                                                |
@@ -117,7 +122,7 @@ DESCRIPTION
 |                                                               | -d, --debug                                  | 디버그 모드: 디버그 출력을 생성합니다.                                      |
 |                                                               | -dd, --ddebug                                | 상세 디버그 모드: 상세 디버그 출력을 생성합니다.                      |
 |                                                               | -no-color                                    | 명령 출력에 색상을 사용하지 않습니다.                              |
-| mfpdev help                                                   | 명령의 이름                                  | {{ site.data.keys.mf_cli }}(mfpdev) 명령에 대한 도움말을 표시합니다. 인수를 사용하여 각 명령 유형 또는 명령에 대한 자세한 도움말 텍스트를 표시합니다. 예: "mfpdev help server add" |
+| mfpdev help                                                   | 명령의 이름                              | {{ site.data.keys.mf_cli }}(mfpdev) 명령에 대한 도움말을 표시합니다. 인수를 사용하여 각 명령 유형 또는 명령에 대한 자세한 도움말 텍스트를 표시합니다. 예: "mfpdev help server add" |
 
 ## 대화식 모드 및 직접 모드
 {: #interactive-and-direct-modes }

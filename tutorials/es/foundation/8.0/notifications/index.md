@@ -57,7 +57,7 @@ Las notificaciones de difusión única, o notificaciones autenticadas de usuario
 
 #### Notificaciones interactivas
 {: #interactive-notifications }
-En las notificaciones interactivas, cuando una notificación llega, los usuarios pueden tomar acciones con relación a la misma sin abrir la aplicación. Cuando llega una notificación interactiva, el dispositivo muestra los botones de la acción junto con el mensaje de notificación. Actualmente, las notificaciones interactivas están soportadas en dispositivos en iOS versión 8 y posterior. Si se envía una notificación interactiva a un dispositivo iOS con una versión anterior a la versión 8, las acciones de la notificación no se visualizarán.
+En las notificaciones interactivas, cuando una notificación llega, los usuarios pueden tomar acciones con relación a la misma sin abrir la aplicación. Cuando llega una notificación interactiva, el dispositivo muestra los botones de la acción junto con el mensaje de notificación. Las notificaciones interactivas están soportadas en dispositivos con iOS versión 8 y posteriores y Android v7.0 (nivel de API 24) y posteriores. Si se envía una notificación interactiva a un dispositivo iOS o Android con versiones anteriores, las acciones de notificación no se visualizarán. 
 
 > Aprenda a manejar las [notificaciones interactivas](handling-push-notifications/interactive).
 

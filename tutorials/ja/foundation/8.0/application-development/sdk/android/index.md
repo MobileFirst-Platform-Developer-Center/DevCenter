@@ -67,7 +67,7 @@ Android Studio プロジェクトを作成するか、または既存のプロ�
 4. 次の行を、`dependencies` セクション内に追加します。
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
    name: 'ibmmobilefirstplatformfoundation',
    version: '8.0.+',
    ext: 'aar',
@@ -77,7 +77,12 @@ Android Studio プロジェクトを作成するか、または既存のプロ�
    または、次のように 1 行で追加します。
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
+   ```
+   >**注**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) の機能を使用していて、フィーチャー・モジュールの MobileFirst API を呼び出す場合は、`implementation` ではなく `api` 宣言を使用してください。 `implementation` を使用すると、同じモジュールで MobileFirst API の使用が制限され、`api` を使用すると、アプリに存在するすべてのモジュール (フィーチャー・モジュールを含む) で MobileFirst API が使用可能になります。 詳しくは、[API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation) を参照してください。
+   
+  ```xml
+   api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
    ```
 
 5. **「Android」→「app」→「manifests」**で、`AndroidManifest.xml` ファイルを開きます。 次のアクセス権を、**application** エレメントの上に追加します。
@@ -182,13 +187,13 @@ SDK のリリースは、SDK の [JCenter リポジトリー](https://bintray.co
 {: #mfpclient.properties }
 Android Studio プロジェクトの **./app/src/main/assets/** フォルダー内に配置されているこのファイルは、{{ site.data.keys.mf_server }} に Android アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
 
-|プロパティー            |説明                                                         |値の例 |
+| プロパティー            | 説明                                                         | 値の例 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    |{{ site.data.keys.mf_server }} との通信プロトコル。             |http または https  |
-| wlServerHost        |{{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
-| wlServerPort        |{{ site.data.keys.mf_server }} のポート。                                 | 9080           |
-| wlServerContext     |{{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
-| languagePreferences |クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
+| wlServerProtocol    | {{ site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
+| wlServerHost        | {{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
+| wlServerPort        | {{ site.data.keys.mf_server }} のポート。                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
+| languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
 
 ## Javadoc および Android Service のサポート
 {: #support-for-javadoc-and-android-service }

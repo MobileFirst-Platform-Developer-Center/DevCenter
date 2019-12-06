@@ -27,7 +27,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 
 ### 1. Starting the {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
+Make sure you have [created a Mobile Foundation instance](../../ibmcloud/using-mobile-foundation), or  
 If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating an application
@@ -88,47 +88,41 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
 
         _testServerButton.enabled = YES;
     }];
-}
+   }
    ```
 
    In Swift:
 
    ```swift
    @IBAction func getAccessToken(sender: AnyObject) {
-        self.testServerButton.enabled = false
-
-        let serverURL = WLClient.sharedInstance().serverUrl()
-
-        connectionStatusLabel.text = "Connecting to server...\n\(serverURL)"
+        self.testServerButton.isEnabled = false
+        let serverURL = WLClientSwift.sharedInstance().serverUrl();
+        connectionStatusLabel.text = "Connecting to server...\n\(String(describing: serverURL))"
         print("Testing Server Connection")
-        WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { (token, error) -> Void in
-
+        WLAuthorizationManagerSwift.sharedInstance().obtainAccessToken(forScope: nil) { (token,error) -> Void in
             if (error != nil) {
                 self.titleLabel.text = "Bummer..."
-                self.connectionStatusLabel.text = "Failed to connect to {{ site.data.keys.mf_server }}\n\(serverURL)"
-                print("Did not recieve an access token from server: " + error.description)
+                self.connectionStatusLabel.text = "Failed to connect to MobileFirst Server\n\(String(describing: serverURL))"
+                print("Did not receive an access token from server: " + error.debugDescription)
             } else {
                 self.titleLabel.text = "Yay!"
-                self.connectionStatusLabel.text = "Connected to {{ site.data.keys.mf_server }}\n\(serverURL)"
-                print("Recieved the following access token value: " + token.value)
-
-                let url = NSURL(string: "/adapters/javaAdapter/resource/greet/")
-                let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-
-                request.setQueryParameterValue("world", forName: "name")
-                request.sendWithCompletionHandler { (response, error) -> Void in
+                self.connectionStatusLabel.text = "Connected to MobileFirst Server\n\(String(describing: serverURL))"
+                print("Received the following access token value: " + (token?.value)!);
+                let url = URL(string: "/adapters/javaAdapter/resource/greet/");
+                let request = WLResourceRequestSwift(url: url!, method: WLResourceRequestSwift.WLHttpMethodGet);
+                request.setQueryParameterValue(parameterValue: "world", forName: "name");
+                request.send(onCompletion: { (response, error) in
                     if (error != nil){
-                        NSLog("Failure: " + error.description)
+                        print("Failure: " , error!);
                     }
                     else if (response != nil){
-                        NSLog("Success: " + response.responseText)
+                        print("Success: " + response!.responseText);
                     }
-                }
+                })
             }
-
-            self.testServerButton.enabled = true
+            self.testServerButton.isEnabled = true
         }
-   }
+    }
    ```
 
 ### 4. Deploy an adapter
@@ -160,7 +154,7 @@ Alternatively, click the **New** button next to **Adapters**.
     * If using a Kubernetes cluster on IBM Cloud Private and if the deployment is of type **NodePort**, the value of the port would typically be the **NodePort** exposed by the service in Kubernetes cluster.
 
     Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myIBMCloudServer`.
-    
+
 2. Press the **Play** button.
 
 <br clear="all"/>

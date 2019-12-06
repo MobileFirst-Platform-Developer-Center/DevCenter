@@ -84,7 +84,10 @@ Para obtener información sobre cómo configurar los filtros de registro, consul
 
 Para obtener más información sobre cómo enviar registros desde el cliente, consulte [Recopilación de registros de cliente](../../application-development/client-side-log-collection/).
 
+### Capturar y ver comentarios de usuarios de aplicación interna 
+Utilizando la característica Comentarios de usuarios de la aplicación interna, los usuarios de sus aplicaciones puede realizar capturas de pantalla de la aplicación, anotarlas con marcadores y comentarios que describen sus comentarios y opiniones acerca de la aplicación.Los comentarios de los usuarios capturados y enviados desde los dispositivos móviles se agregan a Mobile Foundation Analytics Service y se presentan en Analytics Console para que los propietarios y desarrolladores de aplicaciones los revisen, recopilen conocimientos y realicen acciones, si es necesario.  
 
+> Obtenga más información acerca de cómo visualizar en la guía de aprendizaje de [Comentarios de usuarios de aplicación interna](userfeedback/).
 
 ## {{ site.data.keys.mf_console_full }}
 Configuración y administración del servidor de analíticas con {{ site.data.keys.mf_console }}.
@@ -114,13 +117,13 @@ De forma predeterminada está habilitada la recopilación de datos para el anál
 El contenido en {{ site.data.keys.mf_analytics_console_short }} viene restringido por roles de seguridad definidos de forma previa.  
 {{ site.data.keys.mf_analytics_console_short }} visualiza contenidos diferentes en función del rol de seguridad del usuario que ha iniciado la sesión. En la tabla siguiente se muestran los roles de seguridad y su acceso a {{ site.data.keys.mf_analytics_console_short }}.
 
-|Rol           |Nombre de rol                |Acceso de visualización                                                     |Acceso de edición  |
+| Rol           | Nombre de rol                | Acceso de visualización                                                     | Acceso de edición  |
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-|Administrator  |analytics_administrator  |Todo.	                                                     |Todo.     |
-|Infrastructure |analytics_infrastructure	|Todo.	                                                     |Todo.     |
-|Developer      |analytics_developer	    |Todo excepto páginas del administrador.		             |Todo.     |
-|Support        |analytics_support        |Todo excepto páginas del administrador.		             |Todo.     |
-|Business       |analytics_business       |Todo excepto páginas del administrador y de infraestructura. |Todo.     |
+| Administrator  | analytics_administrator  | Todo.	                                                     | Todo.     |
+| Infrastructure | analytics_infrastructure	| Todo.	                                                     | Todo.     |
+| Developer      | analytics_developer	    | Todo excepto páginas del administrador.		             | Todo.     |
+| Support        | analytics_support        | Todo excepto páginas del administrador.		             | Todo.     |
+| Business       | analytics_business       | Todo excepto páginas del administrador y de infraestructura. | Todo.     |
 
 > Para obtener información sobre cómo configurar roles, consulte [Configuración de la autenticación de usuarios para la administración de {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
 

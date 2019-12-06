@@ -231,10 +231,10 @@ Exécutez DB2 à l'aide des commandes suivantes avec l'utilisateur (utilisateurm
 ```sql
 db2 CONNECT TO MFPDATA
 db2 SET CURRENT SCHEMA = 'MFPSCM'
-db2 -vf rép_install_mfp/MobileFirstServer/databases/create-mfp-admin-db2.sql
-db2 -vf rép_install_mfp/MobileFirstServer/databases/create-configservice-db2.sql -t
-db2 -vf rép_install_mfp/MobileFirstServer/databases/create-runtime-db2.sql -t
-db2 -vf rép_install_mfp/PushService/databases/create-push-db2.sql -t
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql -t
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-configservice-db2.sql -t
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
+db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t
 ```
 
 Si les tables sont créées par utilisateurmfp, cet utilisateur dispose automatiquement des droits relatifs aux tables et peut les utiliser à l'exécution. Pour restreindre les droits de l'utilisateur d'exécution comme décrit dans [Utilisateurs de base de données et droits](#database-users-and-privileges) ou définir un contrôle plus précis des droits, voir la documentation de DB2.
@@ -318,7 +318,7 @@ SOURCE rép_install_mfp/PushService/databases/create-push-mysql.sql;
 Vous pouvez créer les tables de base de données pour les applications {{ site.data.keys.mf_server }} manuellement à l'aide de tâches Ant ou avec l'outil de configuration de serveur. Les rubriques ci-après expliquent en détail comment configurer la base de données lorsque vous installez
 {{ site.data.keys.mf_server }} avec l'outil de configuration de serveur.
 
-L'outil de configuration de serveur peut créer les tables de base de données dans le cadre du processus d'installation. Dans certains cas, il peut même créer une base de données et un utilisateur pour les composants {{ site.data.keys.mf_server }}. Pour une présentation du processus d'installation avec l'outil de configuration de serveur, voir [Installation de {{ site.data.keys.mf_server }} en mode graphique](../../simple-install/tutorials/graphical-mode).
+L'outil de configuration de serveur peut créer les tables de base de données dans le cadre du processus d'installation. Dans certains cas, il peut même créer une base de données et un utilisateur pour les composants {{ site.data.keys.mf_server }}. Pour une présentation du processus d'installation avec l'outil de configuration de serveur, voir [Installation de {{ site.data.keys.mf_server }} en mode graphique](../../simple-install/graphical-mode).
 
 Une fois que vous avez indiqué les données d'identification de configuration et cliqué sur **Deploy** dans la sous-fenêtre Server Configuration Tool, les opérations suivantes sont exécutées :
 
@@ -406,7 +406,7 @@ Vous pouvez créer les tables de base de données pour les applications {{ site.
 
 Vous trouverez dans cette section des informations pertinentes relatives à la configuration de la base de données si {{ site.data.keys.mf_server }} est installé à l'aide de tâches Ant.
 
-Vous pouvez utiliser des tâches Ant pour configurer les tables de base de données {{ site.data.keys.mf_server }}. Dans certains cas, vous pouvez également créer une base de données et un utilisateur à l'aide de ces tâches. Pour une présentation du processus d'installation à l'aide de tâches Ant, voir [Installation de {{ site.data.keys.mf_server }} en mode de ligne de commande](../../simple-install/tutorials/command-line).
+Vous pouvez utiliser des tâches Ant pour configurer les tables de base de données {{ site.data.keys.mf_server }}. Dans certains cas, vous pouvez également créer une base de données et un utilisateur à l'aide de ces tâches. Pour une présentation du processus d'installation à l'aide de tâches Ant, voir [Installation de {{ site.data.keys.mf_server }} en mode de ligne de commande](../../simple-install/command-line).
 
 Un ensemble d'exemples de fichier Ant est fourni avec l'installation pour vous initier aux tâches Ant. Les fichiers se trouvent dans **rép\_install\_mfp/MobileFirstServer/configurations-samples**. Ils sont nommés selon le modèle suivant :
 

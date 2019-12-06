@@ -78,7 +78,7 @@ As propriedades JNDI no WebSphere Application Server estão disponíveis como va
 {: #mobilefirst-server }
 A tabela a seguir mostra as propriedades que podem ser configuradas no {{ site.data.keys.mf_server }}.
 
-| Propriedade                           | Descrição (Description)                                           | Valor Padrão |
+| Propriedade                           | Descrição                                           | Valor Padrão |
 |------------------------------------|-------------------------------------------------------|---------------|
 | mfp.analytics.console.url          | Configure esta propriedade para a URL do {{ site.data.keys.mf_analytics_console }}. Por exemplo, http://hostname:port/analytics/console. Configurar essa propriedade ativa o ícone de análise de dados no {{ site.data.keys.mf_console }}. | Nenhuma |
 | mfp.analytics.logs.forward         | Se essa propriedade for configurada como verdadeira, os logs do servidor que estão registrados no {{ site.data.keys.mf_server }} serão capturados no {{ site.data.keys.mf_analytics }}. | verdadeiro |

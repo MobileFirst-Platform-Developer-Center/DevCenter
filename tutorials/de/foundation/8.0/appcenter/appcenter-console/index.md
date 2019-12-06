@@ -413,10 +413,7 @@ und zu den verfügbaren Anwendungen zurückzukehren, oder auf **Apply**, um die 
 ## Upgrade für eine mobile Anwendung in {{ site.data.keys.mf_server }} und im Application Center
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
-> Diese Funktion wird nur für Android, iOS und Windows Phone unterstützt und derzeit nicht für Windows 10 Universal, Blackberry oder Windows 8 Universal unterstützt.
-
-
-
+> Diese Funktion wird nur für Android, iOS und Windows Phone unterstützt und derzeit nicht für Windows 10 Universal oder Windows 8 Universal unterstützt.
 
 
 Für implementierte mobile Anwendungen können Sie ohne großen Aufwand ein Upgrade durchführen, indem Sie

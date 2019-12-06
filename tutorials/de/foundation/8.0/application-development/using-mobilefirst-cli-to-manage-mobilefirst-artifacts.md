@@ -56,15 +56,20 @@ v6.11.1
 ```
 
 > **Hinweis:** Die unterstützte Mindestversion von **Node.js** ist Version **4.2.3**. Aufgrund der schnellen Entwicklung bei den **Node**- und
-**NPM**-Paketen besteht die Möglichkeit, dass die MobileFirst-CLI nicht mit allen verfügbaren Versionen von **Node** und **NPM**, einschließlich der jeweils neuesten Version, vollständig funktioniert. Stellen Sie für eine ordnungsgemäße Funktionsweise der CLI sicher, dass **Node** auf dem Stand von Version **6.11.1** und **NPM** auf dem Stand von Version **3.10.10** ist.
+**NPM**-Paketen besteht die Möglichkeit, dass die MobileFirst-CLI nicht mit allen verfügbaren Versionen von **Node** und **NPM**, einschließlich der jeweils neuesten Version, vollständig funktioniert.  
+> 
+> Stellen Sie für eine ordnungsgemäße Funktionsweise der MobileFirst-CLI bis einschließlich iFix-Version 8.0.2018040312 sicher, dass **Node** auf dem Stand von Version **6.11.1** und **NPM** auf dem Stand von Version **3.10.10** ist.
+>
+> Ab der iFix-Version 8.0.2018100112 der MobileFirst-CLI können Sie Node Version 8.x oder 10.x verwenden.
 
 ## {{ site.data.keys.mf_cli }} installieren
 {: #installing-the-mobilefirst-cli }
 Führen Sie für die Installation der Befehlszeilenschnittstelle den folgenden Befehl aus: 
 
 ```bash
-npm install -g mfpdev-cli
+npm install -g mfpdev-cli --no-optional
 ```
+
 
 Wenn Sie die CLI-ZIP-Datei über das Download-Center der {{ site.data.keys.mf_console }} heruntergeladen haben, verwenden Sie den folgenden Befehl: 
 
@@ -102,35 +107,36 @@ DESCRIPTION
 ## Liste der CLI-Befehle
 {: #list-of-cli-commands }
 
-| Befehlspräfix | Befehlsaktion | Beschreibung |
+|Befehlspräfix |Befehlsaktion |Beschreibung |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
-| `mfpdev app`	                                                | register                                     | Registriert eine App bei {{ site.data.keys.mf_server }} |
-|                                                               | config | Ermöglicht Ihnen, den Back-End-Server und die Laufzeit für Ihre App anzugeben. Für Cordova-Apps können Sie außerdem diverse zusätzliche Aspekte konfigurieren, z. B. die Standardsprache für Systemnachrichten oder die Überprüfung der Kontrollsumme. Für Cordova-Apps gibt es weitere Konfigurationsparameter. |
-|                                                               | pull | Ruft eine vorhandene App-Konfiguration vom Server ab |
-|                                                               | push                                         | Sendet die Konfiguration einer App an den Server |
-|                                                               | preview | Ermöglicht eine Voranzeige Ihrer Cordova-App ohne ein tatsächliches Gerät für den Zielplattformtyp. Sie können die Voranzeige im {{ site.data.keys.mf_mbs }} oder in Ihrem Web-Browser sehen. |
-|                                                               | webupdate | Packt die Anwendungsressourcen aus dem Verzeichnis www in einer ZIP-Datei zusammen, die für die direkte Aktualisierung verwendet werden kann |
-| mfpdev server	                                                | info | Zeigt Informationen zu {{ site.data.keys.mf_server }} an |
-|                                                               | add | Fügt eine neue Serverdefinition zu Ihrer Umgebung hinzu |
-|                                                               | edit | Ermöglicht die Bearbeitung einer Serverdefinition |
-|                                                               | remove | Entfernt eine Serverdefinition aus Ihrer Umgebung |
-|                                                               | console                                      | Öffnet die {{ site.data.keys.mf_console }} |
-|                                                               | clean | Hebt die Registrierung von Apps bei {{ site.data.keys.mf_server }} auf und entfernt Adapter aus dem Server |
-| mfpdev adapter | create                                       | Erstellt einen Adapter |
-|                                                               | build                                        | Erstellt einen Adapterbuild |
-|                                                               | build all | Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und erstellt einen Build für diese Adapter |
-|                                                               | deploy                                       | Implementiert einen Adapter in {{ site.data.keys.mf_server }} |
-|                                                               | deploy all | Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und implementiert sie in {{ site.data.keys.mf_server }} |
-|                                                               | call | Ruft eine Adapterprozedur in {{ site.data.keys.mf_server }} auf |
-|                                                               | pull | Ruft eine vorhandene Adapterkonfiguration vom Server ab |
-|                                                               | push                                         | Sendet die Konfiguration eines Adapters an den Server |
-| mfpdev                                                        | config | Legt Ihre Konfigurationsvorgaben für die Voranzeige fest (Browsertyp, Zeitlimit und Serverzeitlimit für die mfpdev-Befehlszeilenschnittstelle) |
-|                                                               | info | Zeigt Informationen zu Ihrer Umgebung an, z. B. das Betriebssystem, die Speicherbelegung, die Knotenversion und die Version der Befehlszeilenschnittstelle. Wenn das aktuelle Verzeichnis eine Cordova-Anwendung ist, werden zusätzlich Informationen vom Cordova-Befehl cordova info angezeigt. |
-|                                                               | -v | Zeigt die Nummer der derzeit verwendeten Version der {{ site.data.keys.mf_cli }} an |
-|                                                               | -d, --debug | Debugmodus: Erzeugt Degubausgaben |
-|                                                               | -dd, --ddebug | Ausführlicher Debugmodus: Erzeugt ausführliche Debugausgaben |
-|                                                               | -no-color | Unterdrückt die Verwendung von Farben für die Befehlsausgabe |
-| mfpdev help | Befehlsname | Zeigt Hilfe für MobileFirst-CLI-Befehle (mfpdev-Befehle) an. Durch Angabe von Argumenten können konkrete Hilfetexte für einzelne Befehlstypen oder für einen Befehl angezeigt werden ("mfpdev help server add"). |
+|`mfpdev app`	                                                |register                                     |Registriert eine App bei {{ site.data.keys.mf_server }} |
+|                                                               |config |Ermöglicht Ihnen, den Back-End-Server und die Laufzeit für Ihre App anzugeben. Für Cordova-Apps können Sie außerdem diverse zusätzliche Aspekte konfigurieren, z. B. die Standardsprache für Systemnachrichten oder die Überprüfung der Kontrollsumme. Für Cordova-Apps gibt es weitere Konfigurationsparameter. |
+|                                                               |pull |Ruft eine vorhandene App-Konfiguration vom Server ab |
+|                                                               |push                                         |Sendet die Konfiguration einer App an den Server |
+|                                                               |preview |Ermöglicht eine Voranzeige Ihrer Cordova-App ohne ein tatsächliches Gerät für den Zielplattformtyp. Sie können die Voranzeige im {{ site.data.keys.mf_mbs }} oder in Ihrem Web-Browser sehen. |
+|                                                               |webupdate |Packt die Anwendungsressourcen aus dem Verzeichnis www in einer ZIP-Datei zusammen, die für die direkte Aktualisierung verwendet werden kann |
+|mfpdev server	                                                |info |Zeigt Informationen zu {{ site.data.keys.mf_server }} an |
+|                                                               |add |Fügt eine neue Serverdefinition zu Ihrer Umgebung hinzu |
+|                                                               |edit |Ermöglicht die Bearbeitung einer Serverdefinition |
+|                                                               |remove |Entfernt eine Serverdefinition aus Ihrer Umgebung |
+|                                                               |console                                      |Öffnet die {{ site.data.keys.mf_console }} |
+|                                                               |clean |Hebt die Registrierung von Apps bei {{ site.data.keys.mf_server }} auf und entfernt Adapter aus dem Server |
+|mfpdev adapter |create                                       |Erstellt einen Adapter |
+|                                                               |build                                        |Erstellt einen Adapterbuild |
+|                                                               |build all |Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und erstellt einen Build für diese Adapter |
+|                                                               |deploy                                       |Implementiert einen Adapter in {{ site.data.keys.mf_server }} |
+|                                                               |deploy all |Findet alle Adapter im aktuellen Verzeichznis, einschließlich der Unterverzeichnisse, und implementiert sie in {{ site.data.keys.mf_server }} |
+|                                                               |call |Ruft eine Adapterprozedur in {{ site.data.keys.mf_server }} auf |
+|                                                               |pull |Ruft eine vorhandene Adapterkonfiguration vom Server ab |
+|                                                               |push                                         |Sendet die Konfiguration eines Adapters an den Server |
+|mfpdev                                                        |config |Legt Ihre Konfigurationsvorgaben für die Voranzeige fest (Browsertyp, Zeitlimit und Serverzeitlimit für die mfpdev-Befehlszeilenschnittstelle) |
+|                                                               |info |Zeigt Informationen zu Ihrer Umgebung an, z. B. das Betriebssystem, die Speicherbelegung, die Knotenversion und die Version der Befehlszeilenschnittstelle. Wenn das aktuelle Verzeichnis eine Cordova-Anwendung ist, werden zusätzlich Informationen vom Cordova-Befehl cordova info angezeigt. |
+|                                                               |-v |Zeigt die Nummer der derzeit verwendeten Version der {{ site.data.keys.mf_cli }} an |
+|                                                               |-d, --debug |Debugmodus: Erzeugt Degubausgaben |
+|                                                               |-dd, --ddebug |Ausführlicher Debugmodus: Erzeugt ausführliche Debugausgaben |
+|                                                               |-no-color |Unterdrückt die Verwendung von Farben für die Befehlsausgabe |
+|mfpdev help
+|Befehlsname |Zeigt Hilfe für MobileFirst-CLI-Befehle (mfpdev-Befehle) an. Durch Angabe von Argumenten können konkrete Hilfetexte für einzelne Befehlstypen oder für einen Befehl angezeigt werden ("mfpdev help server add"). |
 
 ## Interaktiver Modus und Direktmodus
 {: #interactive-and-direct-modes }
@@ -310,13 +316,9 @@ Verfügbare Konfigurationen:
 
 * Angabe von Serveradresse und Laufzeit für die zu registrierende Anwendung
 
-    > **Beispielanwendungsfall:**
-Sie möchten eine Anwendung bei einem {{ site.data.keys.mf_server }} mit einer bestimmten Adresse registrieren. Die Anwendung soll aber auch in der Lage sein,
-eine Verbindung zu einer anderen Serveradresse herzustellen, z. B. zu einem
-DataPower-Gerät.
-
+    > **Beispielanwendungsfall:** Sie möchten eine Anwendung bei einem {{ site.data.keys.mf_server }} mit einer bestimmten Adresse registrieren. Die Anwendung soll aber auch in der Lage sein, eine Verbindung zu einer anderen Serveradresse herzustellen, z. B. zu einem DataPower-Gerät.
     >
-    > 1. Führen Sie `mfpdev app register` aus, um die Anwendung bei der erforderlichen MobileFirst-Server-Adresse zu registrieren. 
+    > 1. Führen Sie `mfpdev app register` aus, um die Anwendung bei der erforderlichen MobileFirst-Server-Adresse zu registrieren.
     > 2. Führen Sie `mfpdev app config` aus und passen Sie den Wert der Eigenschaft **server** an die Adresse des DataPower-Geräts an. Sie können den Befehl auch im **Direktmodus** ausführen: `mfpdev app config server http(s)://Server-IP-Adresse_oder_Hostname:Port`.
 
 

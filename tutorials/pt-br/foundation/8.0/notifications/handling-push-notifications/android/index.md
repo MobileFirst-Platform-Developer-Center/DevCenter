@@ -47,18 +47,24 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
    And:
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
             name: 'ibmmobilefirstplatformfoundationpush',
             version: '8.0.+',
             ext: 'aar',
             transitive: true
    ```
-    
+
    Or in a single line:
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
+   
+   >**Note**: If you are using [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) feature and would like to call MobileFirst APIs in a feature module then use `api` declaration instead of `implementation`. Using `implementation` would restrict using MobileFirst APIs in the same module itself while using `api`  would make MobileFirst APIs available across all modules present in the app including feature modules.For more details read [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+   
+```xml
+ api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+```
 
 2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
 	* Add the following permissions to the top the `manifest` tag:
@@ -73,7 +79,7 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
       ```
-      
+
 	* Add the following to the `application` tag:
 
 	  ```xml
@@ -105,7 +111,7 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-      
+
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -113,14 +119,14 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
 	  > **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
 
     * Add the following `intent-filter` to the application's activity.
-      
+
       ```xml
       <intent-filter>
           <action android:name="your.application.package.name.IBMPushNotification" />
           <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
       ```
-      
+
 ## Notifications API
 {: #notifications-api }
 ### MFPPush Instance
@@ -345,28 +351,31 @@ For now, the existing applications using GCM services will continue to work as-i
 
 ### FCM Project Setup
 
-Setting up an application in FCM is a bit different compared to the old GCM model. 
+Setting up an application in FCM is a bit different compared to the old GCM model.
 
  1. Obtain your notification provider credentials, create a FCM project and add the same to your Android application. Include the package name of your application as `com.ibm.mobilefirstplatform.clientsdk.android.push`. Refer the [documentation here](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android) , until the step where you have finished generating the `google-services.json` file
 
- 2. Configure your Gradle file. Add the following in the app's `build.gradle` file 
+ 2. Configure your Gradle file. Add the following in the app's `build.gradle` file
 
     ```xml
     dependencies {
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
-
     }
-    ```
-	
+    
     apply plugin: 'com.google.gms.google-services'
-    
-    - Add the below dependency in the `buildscript` file -
-    
-    `classpath 'com.google.gms:google-services:3.0.0'`
+    ```
 
- 3. Configure the AndroidManifest file. Following changes are required in the `Android manifest.xml` 
+    
+
+    - Add the following dependency in the root build.gradle's `buildscript` section
+
+      `classpath 'com.google.gms:google-services:3.0.0'`
+
+    - Remove below GCM plugin from build.gradle file `compile  com.google.android.gms:play-services-gcm:+`
+
+ 3. Configure the AndroidManifest file. Following changes are required in the `AndroidManifest.xml`
 
 **Remove the following entries :**
 
@@ -381,7 +390,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
             <category android:name="your.application.package.name" />
         </intent-filter>
     </receiver>  
-	
+
     <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
         <intent-filter>
             <action android:name="com.google.android.gms.iid.InstanceID" />
@@ -422,11 +431,7 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
             </intent-filter>
     </service>
 ```
-	
+
  4. Open the app in Android Studio. Copy the `google-services.json` file that you have created in the **step-1** inside the app directory. Note that the `google-service.json` file includes the package name you have added.		
-		
+
  5. Compile the SDK. Build the application.
-
-
-
-

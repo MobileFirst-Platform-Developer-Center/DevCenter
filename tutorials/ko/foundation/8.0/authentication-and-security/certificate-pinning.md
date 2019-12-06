@@ -102,13 +102,13 @@ NSArray *arrayOfCerts = [NSArray arrayWithObjects:@“Cert1”,@“Cert2”,@“
 단일 인증서:
 예제:
 ```swift
-WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey(certificateFilename: “myCertificate.cer”);
 ```
 다중 인증서:
 예제:
 ```swift
-let arrayOfCerts : [Any] = ["Cert1", "Cert2”, "Cert3”];
-WLClient.sharedInstance().pinTrustedCertificatePublicKey( fromFiles: arrayOfCerts)
+let arrayOfCerts : [Any] = ["Cert1", "Cert2", "Cert3"];
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey( certificateFilenames: arrayOfCerts);
 ```
 
 인증서 고정 메소드는 다음 두 가지 경우에 예외를 발생시킵니다.

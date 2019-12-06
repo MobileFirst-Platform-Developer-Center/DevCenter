@@ -13,8 +13,8 @@ The following table lists the two classes available in the IBM® MobileFirst® W
 | Description | Class |
 |-------------|-------|
 | Collects and sends analytics to the server. | `ibmmfpfanalytics` |
-| Logs events from the client. Some of these events can be sent to analytics. | `ibmmfpfanalytics.logger` | 
+| Logs events from the client. Some of these events can be sent to analytics. | `ibmmfpfanalytics.logger` |
 
 ## API Reference
 {: #api-reference }
-<iframe width="100%" height="1000px" frameBorder="0" src="../../../../../../../../../api-ref/wl-web-analytics-client-js-apidoc/html/refjavascript-web-analytics-client/html/index.html"></iframe>
+<iframe title="analytics-api" width="100%" height="1000px" frameBorder="0" src="../../../../../../../../../api-ref/wl-web-analytics-client-js-apidoc/html/refjavascript-web-analytics-client/html/index.html"></iframe>

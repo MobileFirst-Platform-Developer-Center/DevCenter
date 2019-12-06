@@ -82,8 +82,7 @@ Erstellen Sie ein Xcode-Projekt oder verwenden Sie ein vorhandenes Projekt (Swif
 4. Führen Sie im Befehlszeilenfenster den Befehl `pod install` und dann den Befehl `pod update` aus. Mit diesen Befehlen werden die Dateien des nativen SDK der {{ site.data.keys.product }} und die Datei **mfpclient.plist** hinzugefügt. Außerdem wird ein Pod-Projekt erstellt.  
     **Hinweis:** Die Ausführung der Befehle kann einige Zeit dauern.
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis**:
-Ab jetzt können Sie die Datei `[Projektname].xcworkspace` verwenden, um das Projekt in Xcode zu öffnen. Verwenden Sie **nicht**
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis**: Ab jetzt können Sie die Datei `[Projektname].xcworkspace` verwenden, um das Projekt in Xcode zu öffnen. Verwenden Sie **nicht**
 die Datei `[Projektname].xcodeproj`. Ein CocoaPods-basiertes Projekt wird als ein Arbeitsbereich verwaltet, der die (ausführbare Datei der) Anwendung und die Bibliothek
 enthält. (Alle Projektabhängigkeiten werden vom CocoaPods-Manager mit Pull übertragen.)
 
@@ -201,7 +200,7 @@ Objective-C:
 Swift:
 
 ```swift
-import IBMMobileFirstPlatformFoundation
+import IBMMobileFoundationSwift
 ```
 
 <br>
@@ -264,13 +263,13 @@ In dieser Datei, die sich im Stammverzeichnis des Projekts befindet, sind die cl
 iOS-App bei {{ site.data.keys.mf_server }}
 definiert.
 
-| Eigenschaft| Beschreibung | Beispielwerte |
+|Eigenschaft |Beschreibung |Beispielwerte |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol | Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} | http oder https |
-| host | Hostname von {{ site.data.keys.mf_server }} | 192.168.1.63 |
-| port | Port von {{ site.data.keys.mf_server }} | 9080 |
-| wlServerContext | Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} | /mfp/ |
-| languagePreferences | Legt die Standardsprache für Client-SDK-Systemnachrichten fest | en |
+|protocol |Protokoll für die Kommunikation mit {{ site.data.keys.mf_server }} |http oder https |
+|host |Hostname von {{ site.data.keys.mf_server }} |192.168.1.63 |
+|port |Port von {{ site.data.keys.mf_server }} |9080 |
+|wlServerContext |Kontextstammverzeichnis der Anwendung auf dem {{ site.data.keys.mf_server }} |/mfp/ |
+|languagePreferences |Legt die Standardsprache für Client-SDK-Systemnachrichten fest |en |
 
 ## Bitcode und TLS 1.2
 {: #bitcode-and-tls-12 }

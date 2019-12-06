@@ -51,7 +51,7 @@ weight: 2
 #### 데스크탑 브라우저
 {: #desktop-browser-remote }
 선택한 브라우저에서 URL `http://the-server-host:server-port-number/mfpconsole`을 로드하십시오.  
-호스트 서버는 고객 소유 서버 또는 IBM Cloud 서비스, IBM [Mobile Foundation](../../../bluemix/) 중 하나일 수 있습니다.
+호스트 서버는 고객 소유 서버 또는 IBM Cloud 서비스, IBM [Mobile Foundation](../../../ibmcloud/) 중 하나일 수 있습니다.
 
 #### 명령행
 {: #command-line-remote }
@@ -71,7 +71,7 @@ weight: 2
 
 2. `mfpdev server console MyRemoteServer` 명령을 실행하십시오.
 
-> [CLI를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 학습서의 다양한 CLI 명령에 대해 자세히 알아보십시오.
+> [CLI를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 튜토리얼의 다양한 CLI 명령에 대해 자세히 알아보십시오.
 
 ## 콘솔 탐색
 {: #navigating-the-console }

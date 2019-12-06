@@ -47,18 +47,24 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
    Y:
 
    ```xml
-   compile group: 'com.ibm.mobile.foundation',
+   implementation group: 'com.ibm.mobile.foundation',
             name: 'ibmmobilefirstplatformfoundationpush',
             version: '8.0.+',
             ext: 'aar',
             transitive: true
    ```
-    
+
    O en una sola línea:
 
    ```xml
-   compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+   implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
+   
+   >**Nota**: si utiliza la característica [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) y desea llamar a las API de MobileFirst en un módulo de la característica, utilice la declaración `api` en lugar de `implementation`. Si utiliza `implementation`, se restringen las API de MobileFirst al mismo módulo, mientras que, si se utiliza `api`, las API de MobileFirst está disponibles en todos los módulos presentes en la app, incluidos los módulos de la característica. Para obtener más información, consulte [Separación de API e implementation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
+   
+```xml
+ api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+```
 
 2. En **Android → app → manifiestos**, abra el archivo `AndroidManifest.xml`.
 	* Añada los siguientes permisos en la parte superior de la etiqueta `manifest`:
@@ -73,7 +79,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
       ```
-      
+
 	* Añada lo siguiente a la etiqueta `application`:
 
 	  ```xml
@@ -105,7 +111,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-      
+
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
@@ -113,21 +119,21 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
 	  > **Nota:** Asegúrese de sustituir `your.application.package.name` con el nombre de paquete real de su aplicación.
 
     * Añada el siguiente `intent-filter` a la actividad de la aplicación.
-      
+
       ```xml
       <intent-filter>
           <action android:name="your.application.package.name.IBMPushNotification" />
           <category android:name="android.intent.category.DEFAULT" />
       </intent-filter>
       ```
-      
+
 ## API de notificaciones
 {: #notifications-api }
 ### Instancia de MFPPush
 {: #mfppush-instance }
 Todas las llamadas de API se deben realizar en una instancia de `MFPPush`.  Esto se puede realizar creando un campo de nivel de clase como, por ejemplo, `private MFPPush push = MFPPush.getInstance();` y a continuación, llamando a `push.<api-call>` a través de la clase.
 
-De forma alternativa puede llamar a `MFPPush.getInstance().<api_call>` para cada instancia en la que necesita acceder a los métodos de API de push.
+Otra posibilidad es llamar a `MFPPush.getInstance().<api_call>` para cada instancia en la que necesita acceder a los métodos de API de push.
 
 ### Manejadores de desafíos
 {: #challenge-handlers }
@@ -138,16 +144,16 @@ Si el ámbito de `push.mobileclient` está correlacionado con la **comprobación
 ### Lado del cliente
 {: #client-side }
 
-|Métodos Java |Descripción |
+| Métodos Java | Descripción |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-|[`initialize(Context context);`](#initialization) |Inicia MFPPush con el contexto proporcionado. |
-|[`isPushSupported();`](#is-push-supported) |Indica si el dispositivo da soporte a notificaciones push. |
-|[`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) |Registra el dispositivo con el servicio de notificaciones push. |
-|[`getTags(MFPPushResponseListener)`](#get-tags) |Recupera las etiquetas disponibles en una instancia del servicio de notificaciones push. |
-|[`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) |Suscribe el dispositivo para las etiquetas especificadas. |
-|[`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) |Recupera todas las etiquetas a las que el dispositivo está actualmente suscrito. |
-|[`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) |Anula la suscripción de una o varias etiquetas. |
-|[`unregisterDevice(MFPPushResponseListener)`](#unregister) |Anula el registro del dispositivo del servicio notificaciones push. |
+| [`initialize(Context context);`](#initialization) | Inicia MFPPush con el contexto proporcionado. |
+| [`isPushSupported();`](#is-push-supported) | Indica si el dispositivo da soporte a notificaciones push. |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registra el dispositivo con el servicio de notificaciones push. |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | Recupera las etiquetas disponibles en una instancia del servicio de notificaciones push. |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Suscribe el dispositivo para las etiquetas especificadas. |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Recupera todas las etiquetas a las que el dispositivo está actualmente suscrito. |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Anula la suscripción de una o varias etiquetas. |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Anula el registro del dispositivo del servicio notificaciones push. |
 
 #### Inicialización
 {: #initialization }
@@ -346,28 +352,31 @@ Por ahora, las aplicaciones existentes que utilizan servicios de GCM seguirán f
 
 ### Configuración del proyecto de FCM
 
-La configuración de una aplicación en FCM es algo distinta en comparación con el antiguo modelo de GCM. 
+La configuración de una aplicación en FCM es algo distinta en comparación con el antiguo modelo de GCM.
 
  1. Obtenga sus credenciales del proveedor de notificaciones, cree un proyecto de FCM y añada el mismo a la aplicación de Android. Incluya el nombre del paquete de la aplicación como `com.ibm.mobilefirstplatform.clientsdk.android.push`. Consulte la [documentación aquí](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1_android), hasta el paso donde haya terminado de generar el archivo `google-services.json`
 
- 2. Configure el archivo de Gradle. Añada lo siguiente en el archivo `build.gradle` de la aplicación 
+ 2. Configure el archivo de Gradle. Añada lo siguiente en el archivo `build.gradle` de la aplicación
 
     ```xml
     dependencies {
        ......
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
-
     }
-    ```
-	
+    
     apply plugin: 'com.google.gms.google-services'
-    
-    - Añada la dependencia siguiente en el archivo `buildscript` -
-    
-    `classpath 'com.google.gms:google-services:3.0.0'`
+    ```
 
- 3. Configure el archivo AndroidManifest. Son necesarios los cambios siguientes en el `Android manifest.xml` 
+    
+
+    - Añada la siguiente dependencia en el apartado raíz build.gradle `buildscript`
+
+      `classpath 'com.google.gms:google-services:3.0.0'`
+
+    - Elimine el siguiente plugin GCM desde el archivo build.gradle `compile com.google.android.gms:play-services-gcm:+`
+
+ 3. Configure el archivo AndroidManifest. Son necesarios los cambios siguientes en el `AndroidManifest.xml`
 
 **Elimine las entradas siguientes:**
 
@@ -382,7 +391,7 @@ La configuración de una aplicación en FCM es algo distinta en comparación con
             <category android:name="your.application.package.name" />
         </intent-filter>
     </receiver>  
-	
+
     <service android:exported="false" android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService">
         <intent-filter>
             <action android:name="com.google.android.gms.iid.InstanceID" />
@@ -423,11 +432,7 @@ La configuración de una aplicación en FCM es algo distinta en comparación con
             </intent-filter>
     </service>
 ```
-	
+
  4. Abra la aplicación en Android Studio. Copie el archivo `google-services.json` que ha creado en el **step-1** dentro del directorio de aplicación. Tenga en cuenta que el archivo `google-service.json` incluye el nombre del paquete que ha añadido.		
-		
+
  5. Compile el SDK. Cree la aplicación.
-
-
-
-

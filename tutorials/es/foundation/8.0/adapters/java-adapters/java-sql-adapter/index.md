@@ -9,20 +9,16 @@ downloads:
 weight:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visión general 
+## Visión general
 {: #overview }
 
-Los adaptadores Java ofrecen a los desarrolladores un amplio control sobre la conectividad con un sistema de fondo.
-Es por lo tanto responsabilidad del desarrollador asegurarse de que se siguen los procedimientos recomendados con relación al rendimiento y a otros detalles de implementación.
+Los adaptadores Java ofrecen a los desarrolladores un amplio control sobre la conectividad con un sistema de fondo. Es por lo tanto responsabilidad del desarrollador asegurarse de que se siguen los procedimientos recomendados con relación al rendimiento y a otros detalles de implementación.
 Esta guía de aprendizaje cubre un ejemplo de un adaptador de Java que se conecta a un sistema de fondo MySQL para realizar operaciones CRUD (Create, Read, Update, Delete) en una tabla `users` mediante la utilización de conceptos REST.
-
 
 **Requisitos previos:**
 
 * Asegúrese de leer en primer lugar la guía de aprendizaje [Adaptadores Java](../).
-
 * En esta guía de aprendizaje se supone que posee conocimientos de SQL.
-
 
 #### Ir a
 {: #jump-to }
@@ -34,8 +30,7 @@ Esta guía de aprendizaje cubre un ejemplo de un adaptador de Java que se conect
 ## Configuración del origen de datos
 {: #setting-up-the-data-source }
 
-Para poder configurar {{ site.data.keys.mf_server }} de forma que se pueda conectar al servidor MySQL, se debe configurar el archivo XML de adaptador con las **propiedades de configuración**.
-Estas propiedades se puede editar más tarde a través de {{ site.data.keys.mf_console }}.
+Para poder configurar {{ site.data.keys.mf_server }} de forma que se pueda conectar al servidor MySQL, se debe configurar el archivo XML de adaptador con las **propiedades de configuración**. Estas propiedades se puede editar más tarde a través de {{ site.data.keys.mf_console }}.
 
 Edite el archivo adapter.xml y añada las siguientes propiedades:
 
@@ -56,16 +51,13 @@ Edite el archivo adapter.xml y añada las siguientes propiedades:
 </mfp:adapter>
 ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Nota:** Los elementos de propiedades de configuración se deben ubicar siempre *debajo* del elemento `JAXRSApplicationClass`.
-  
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Nota:** Los elementos de propiedades de configuración se deben ubicar siempre *debajo* del elemento `JAXRSApplicationClass`.  
 Aquí se definen los valores de conexión y se les proporciona un valor predeterminado, de forma que se puedan utilizar más tarde en la clase AdapterApplication.
-
 
 ## Implementación de SQL en la clase de Recurso del adaptador
 {: #implementing-sql-in-the-adapter-resource-class }
 
 La clase de Recurso del adaptador es donde se manejan las solicitudes para el servidor.
-
 
 En el adaptador de ejemplo proporcionado, el nombre de clase es `JavaSQLResource`.
 
@@ -80,9 +72,7 @@ En el adaptador de ejemplo proporcionado, el nombre de clase es `JavaSQLResource
 ### Utilización de un origen de datos
 {: #using-datasource }
 
-Cuando se despliega el adaptador, o siempre que cambie la configuración en {{ site.data.keys.mf_console }}, se llama al método `init` de `MFPJAXRSApplication` del adaptador.
-Este es un buen lugar para [cargar las propiedades de configuración](../#configuration-api) y crear un `origen de datos`.
-
+Cuando se despliega el adaptador, o siempre que cambie la configuración en {{ site.data.keys.mf_console }}, se llama al método `init` de `MFPJAXRSApplication` del adaptador. Este es un buen lugar para [cargar las propiedades de configuración](../#configuration-api) y crear un `origen de datos`.
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -106,7 +96,6 @@ public class JavaSQLApplication extends MFPJAXRSApplication{
 En la clase de recurso, cree un método de ayudante para obtener la conexión SQL.
 Utilice `AdaptersAPI` para obtener la instancia actual de `MFPJAXRSApplication`:
 
-
 ```java
 @Context
 AdaptersAPI adaptersAPI;
@@ -123,7 +112,6 @@ public Connection getSQLConnection() throws SQLException{
 {: #create-user }
 
 Se utiliza para crear un nuevo registro de usuario en la base de datos.
-
 
 ```java
 @POST
@@ -157,35 +145,23 @@ public Response createUser(@FormParam("userId") String userId,
 }
 ```
 
-Puesto que este método no tiene ningún `@Path`, es accesible como el URL raíz del recurso.
-Puesto que utiliza `@POST`, únicamente es accesible a través de `HTTP POST`.
-  
+Puesto que este método no tiene ningún `@Path`, es accesible como el URL raíz del recurso. Puesto que utiliza `@POST`, únicamente es accesible a través de `HTTP POST`.  
 El método tiene un grupo de argumentos `@FormParam`, lo que significa que estos argumentos se pueden enviar en el cuerpo HTTP como parámetros `x-www-form-urlencoded`.
-
 
 También es posible pasar los parámetros en el cuerpo HTTP como objetos JSON, mediante la utilización de `@Consumes(MediaType.APPLICATION_JSON)`, en cuyo caso el método necesita un argumento `JSONObject`, o un objeto Java simple con propiedades que coincidan con los nombres de propiedad de JSON.
 
-
 El método `Connection con = getSQLConnection();` obtiene la conexión desde el origen de datos definido con anterioridad.
-
 
 Las consultas de SQL las crea el método `PreparedStatement`.
 
-
-Si la inserción es satisfactoria, se utiliza el método `return Response.ok().build()` para enviar un `200 OK` de vuelta al cliente.
-Si se produce un error, se pueden crear un objeto `Response` diferente con un código de estado HTTP específico.
-En este ejemplo, se envía un código de error `409 Conflict`.
-También es recomendable comprobar si se envían todos los parámetros (no se muestra aquí) o cualquier otra validación de datos.
-
+Si la inserción es satisfactoria, se utiliza el método `return Response.ok().build()` para enviar un `200 OK` de vuelta al cliente. Si se produce un error, se pueden crear un objeto `Response` diferente con un código de estado HTTP específico. En este ejemplo, se envía un código de error `409 Conflict`. También es recomendable comprobar si se envían todos los parámetros (no se muestra aquí) o cualquier otra validación de datos.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Importante:** Asegúrese de cerrar recursos como, por ejemplo, sentencias preparadas y conexiones.
-
 
 ### Obtención de usuario
 {: #get-user }
 
 Recupera un usuario de la base de datos.
-
 
 ```java
 @GET
@@ -224,20 +200,15 @@ public Response getUser(@PathParam("userId") String userId) throws SQLException{
 
 Este método utiliza `@GET` con `@Path("/{userId}")`, lo que significa que está disponible a través de `HTTP GET /adapters/UserAdapter/{userId}` y el `{userId}` se recupera mediante el argumento `@PathParam("userId")` del método.
 
-
-Si no se encuentra el usuario, se devuelve un código de error `404 NOT FOUND`.
-  
+Si no se encuentra el usuario, se devuelve un código de error `404 NOT FOUND`.  
 Si se encuentra el usuario, se construye una respuesta desde el objeto JSON generado.
 
-
 Anteponiendo `@Produces("application/json")` al método se asegura que el `Content-Type` de la salida es correcto.
-
 
 ### Obtención de todos los usuarios
 {: #get-all-users }
 
 Este método es similar a `getUser`, excepto por el bucle en que se recorre sobre `ResultSet`.
-
 
 ```java
 @GET
@@ -269,7 +240,6 @@ public Response getAllUsers() throws SQLException{
 {: #update-user }
 
 Actualización de un registro de usuarios en la base de datos.
-
 
 ```java
 @PUT
@@ -314,12 +284,10 @@ public Response updateUser(@PathParam("userId") String userId,
 
 Cuando se actualiza un recurso existente, es una práctica estándar utilizar `@PUT` (para `HTTP PUT`) y utilizar el ID de recurso en `@Path`.
 
-
 ### Supresión de usuario
 {: #delete-user }
 
 Suprime un registro de usuario de la base de datos.
-
 
 ```java
 @DELETE
@@ -354,25 +322,18 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 
 Se utiliza `@DELETE` (para `HTTP DELETE`) junto con el ID de recurso en el `@Path`, para suprimir un usuario.
 
-
 ## Adaptador de ejemplo
 {: #sample-adapter }
 
 [Pulse para descargar](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) el proyecto Maven Adapters.
 
-
-El proyecto Maven Adapters incluye el adaptador **JavaSQL** descrito con anterioridad.
-  
+El proyecto Maven Adapters incluye el adaptador **JavaSQL** descrito con anterioridad.  
 También se incluye un script SQL en la carpeta **Utils**.
 
-
-### Uso de ejemplo 
+### Uso de ejemplo
 {: #sample-usage }
 
-* Ejecute el script .sql script en su base de datos SQL. 
+* Ejecute el script .sql script en su base de datos SQL.
 * Asegúrese de que el usuario `mobilefirst@%` tiene todos los permisos de acceso asignados.
-
 * Utilice Maven, {{ site.data.keys.mf_cli }} o el IDE de su elección para [compilar y desplegar el adaptador JavaSQL](../../creating-adapters/).
-
 * Para probar o depurar un adaptador, consulte la guía de aprendizaje [Pruebas y depuración de adaptadores](../../testing-and-debugging-adapters).
-

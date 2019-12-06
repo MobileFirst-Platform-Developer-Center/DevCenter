@@ -230,7 +230,7 @@ Ejecute DB2 con los mandatos siguientes con el usuario (mfpuser):
 ```sql
 db2 CONNECT TO MFPDATA
 db2 SET CURRENT SCHEMA = 'MFPSCM'
-db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-configservice-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t
@@ -313,7 +313,7 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 {: #create-the-database-tables-with-the-server-configuration-tool }
 Las tablas de base de datos para las aplicaciones de {{ site.data.keys.mf_server }} se pueden crear manualmente, con Tareas Ant, o con la Herramienta de configuración del servidor. Los temas proporcionan la explicación y los detalles sobre la configuración de base de datos al instalar {{ site.data.keys.mf_server }} con la Herramienta de configuración del servidor.
 
-La Herramienta de configuración del servidor puede crear las tablas de base de datos como parte del proceso de instalación. En algunos casos, puede incluso crear una base de datos y un usuario para los componentes de {{ site.data.keys.mf_server }}. Para obtener una visión general del proceso de instalación con la Herramienta de configuración del servidor, consulte [Instalación de {{ site.data.keys.mf_server }} en modalidad gráfica](../../simple-install/tutorials/graphical-mode).
+La Herramienta de configuración del servidor puede crear las tablas de base de datos como parte del proceso de instalación. En algunos casos, puede incluso crear una base de datos y un usuario para los componentes de {{ site.data.keys.mf_server }}. Para obtener una visión general del proceso de instalación con la Herramienta de configuración del servidor, consulte [Instalación de {{ site.data.keys.mf_server }} en modalidad gráfica](../../simple-install/graphical-mode).
 
 Después de completar las credenciales de configuración y pulsar **Desplegar** en el panel Herramienta de configuración del servidor, se ejecutarán las siguientes operaciones:
 
@@ -400,7 +400,7 @@ Las tablas de base de datos para las aplicaciones de {{ site.data.keys.mf_server
 
 Puede encontrar información relevante en esta sección sobre la configuración de la base de datos si {{ site.data.keys.mf_server }} se instala con tareas Ant.
 
-Puede utilizar tareas Ant para configurar las tablas de base de datos {{ site.data.keys.mf_server }}. En algunos casos, también puede crear una base de datos y un usuario con estas tareas. Para obtener una visión general del proceso de instalación con Tareas Ant, consulte [Instalación de {{ site.data.keys.mf_server }} en modalidad de línea de mandatos](../../simple-install/tutorials/command-line).
+Puede utilizar tareas Ant para configurar las tablas de base de datos {{ site.data.keys.mf_server }}. En algunos casos, también puede crear una base de datos y un usuario con estas tareas. Para obtener una visión general del proceso de instalación con Tareas Ant, consulte [Instalación de {{ site.data.keys.mf_server }} en modalidad de línea de mandatos](../../simple-install/command-line).
 
 Se proporciona un conjunto de archivos Ant de ejemplo con la instalación para ayudarle a comenzar con las tareas Ant. Puede encontrar los archivos en **mfp\_install\_dir/MobileFirstServer/configurations-samples**. Los archivos se denominan con los siguientes patrones:
 
@@ -422,7 +422,7 @@ En los archivos Ant, puede encontrar los destinos predefinidos que utilicen la t
 Los archivos Ant de ejemplo tienen destinos predefinidos. Siga este procedimiento para utilizar los archivos.
 
 1. Copie el archivo Ant según su servidor de aplicaciones y su configuración de base de datos en un directorio de trabajo.
-2. Edite el archivo y especifique los valores para la configuración en la sección `<! -- Start of Property Parameters -->` para el archivo Ant.
+2. Edite el archivo y especifique los valores para la configuración en la sección `<! -- Start of Property Parameters -->` correspondiente al archivo Ant. 
 3. Ejecute el archivo Ant con el destino de bases de datos: `mfp_install_dir/shortcuts/ant -f your_ant_file databases`.
 
 Este mandato crea las tablas de la base de datos y el esquema especificados para todas las aplicaciones de {{ site.data.keys.mf_server }} (servicio de administración de {{ site.data.keys.mf_server }}, servicio de Live Update de {{ site.data.keys.mf_server }}, servicio de envío por push de {{ site.data.keys.mf_server }} y tiempo de ejecución de {{ site.data.keys.mf_server }}). Se crea y se almacena en el disco un registro para las operaciones.
@@ -471,7 +471,7 @@ Utilice las tareas Ant que se proporcionan con la instalación de {{ site.data.k
 
 Cuando especifique el nombre de usuario de Oracle en el archivo Ant, debe estar en mayúsculas. Si tiene un usuario de base de datos Oracle (FOO), pero especifica un nombre de usuario con minúsculas (foo), la tarea Ant **configureDatabase** lo considerará como otro usuario. A diferencia de otras herramientas para la base de datos Oracle, la tarea Ant **configureDatabase** protegerá el nombre de usuario contra la conversión automática a mayúscula.
 
-La tarea Ant **configureDatabase** utiliza un nombre de servicio o Identificador de sistema (SID) Oracle para identificar una base de datos. Sin embargo, si desea realizar la conexión a Oracle RAC, debe especificar un URL de JDBC complejo. En este caso, el elemento **oracle** que se encuentra de la tarea Ant **configureDatabase** debe utilizar los atributos (**url**, **usuario** y **contraseña**) en lugar de estos atributos (**base de datos**, **servidor**, **puerto**, **usuario** y **contraseña**). Para obtener más información, consulte la tabla de [Referencia de tarea Ant **configuredatabase**](../../installation-reference/#ant-configuredatabase-task-reference). Los archivos Ant de ejemplo de **mfp\_install\_dir/MobileFirstServer/configurations-samples** utilizan los atributos **base de datos**, **servidor**, **puerto**, **usuario** y **contraseña** del elemento **oracle**. Deben modificarse si necesita conectarse a Oracle con un URL de JDBC.
+La tarea Ant **configureDatabase** utiliza un nombre de servicio o Identificador de sistema (SID) Oracle para identificar una base de datos. Sin embargo, si desea realizar la conexión a Oracle RAC, debe especificar un URL de JDBC complejo. En este caso, el elemento **oracle** que se encuentra de la tarea Ant **configureDatabase** debe utilizar los atributos (**url**, **usuario** y **contraseña**) en lugar de estos atributos (**base de datos**, **servidor**, **puerto**, **usuario** y **contraseña**). Para obtener más información, consulte la tabla de [Referencia de tareas Ant **configuredatabase**](../../installation-reference/#ant-configuredatabase-task-reference). Los archivos Ant de ejemplo de **mfp\_install\_dir/MobileFirstServer/configurations-samples** utilizan los atributos **base de datos**, **servidor**, **puerto**, **usuario** y **contraseña** del elemento **oracle**. Deben modificarse si necesita conectarse a Oracle con un URL de JDBC.
 
 Para crear las tablas de base de datos en una base de datos que ya existe, consulte [Crear las tablas de base de datos con tareas Ant](#create-the-database-tables-with-ant-tasks).
 

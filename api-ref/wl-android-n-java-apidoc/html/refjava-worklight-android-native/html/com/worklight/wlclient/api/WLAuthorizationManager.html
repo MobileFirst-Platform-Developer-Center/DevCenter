@@ -198,6 +198,12 @@ extends java.lang.Object</pre>
 <div class="block">Sets the URL of the authorization server.</div>
 </td>
 </tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="../../../../com/worklight/wlclient/api/WLAuthorizationManager.html#setLoginTimeout(int)">setLoginTimeout</a></strong>(int&nbsp;timeOut)</code>
+<div class="block">Sets the timeout value for Login API .</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods_inherited_from_class_java.lang.Object">
@@ -332,6 +338,18 @@ extends java.lang.Object</pre>
           <a href="../../../../com/worklight/wlclient/api/WLLogoutResponseListener.html" title="interface in com.worklight.wlclient.api">WLLogoutResponseListener</a>&nbsp;listener)</pre>
 <div class="block">Logs out of the specified security check.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>securityCheck</code> - Name of the security check to log out of.</dd><dd><code>listener</code> - Logout listener whose methods are called upon request completion.</dd></dl>
+</li>
+</ul>
+<a name="setLoginTimeout(int)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setLoginTimeout</h4>
+<pre>public&nbsp;void&nbsp;setLoginTimeout(int&nbsp;timeOut)</pre>
+<div class="block">Sets the timeout value to Login API call .
+ When this method is not called, the default timeout value is used .</div>
+<dl><dt><span class="strong">Parameters:</span></dt><dd><code>timeOut</code> - An integer timeout value in seconds .</dd></dl>
 </li>
 </ul>
 <a name="setAuthorizationServerUrl(java.net.URL)">

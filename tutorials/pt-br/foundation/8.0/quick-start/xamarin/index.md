@@ -26,7 +26,7 @@ O propósito desta demonstração é experimentar um fluxo de ponta a ponta:
 
 ### 1. Iniciando o {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Certifique-se de ter [criado uma instância do Mobile Foundation](../../bluemix/using-mobile-foundation) ou  
+Certifique-se de ter [criado uma instância do Mobile Foundation](../../ibmcloud/using-mobile-foundation) ou  
 Se estiver usando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), navegue
 para a pasta do servidor e execute o comando: `./run.sh` em Mac e Linux ou `run.cmd` no Windows.
 
@@ -63,13 +63,13 @@ andaime do aplicativo do qual você fará download na próxima etapa)
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
-  >Substitua `<ClassName>` pelo nome de sua classe.
+  >Substitua `<ClassName>` pelo nome de sua Classe.
 * Se estiver desenvolvendo para Android, inclua a linha de código a seguir no método **OnCreate** do arquivo **MainActivity.cs**:
 
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
-  >Substitua `<ClassName>` pelo nome de sua classe.
+  >Substitua `<ClassName>` pelo nome de sua Classe.
 * Defina um método para obter o token de acesso e execute uma solicitação de recurso para o MFP Server, conforme abaixo.
 
     ```csharp
@@ -135,7 +135,7 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 **localhost** e **9080**.
     * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.
     * Se você estiver usando um cluster do Kubernetes no IBM Cloud Private, e se a implementação for do tipo **NodePort**, normalmente o valor da porta será **NodePort**, exposto pelo serviço no cluster do Kubernetes.
-    
+
 2. Pressione o botão **Reproduzir**.
 
 <br clear="all"/>
@@ -143,8 +143,7 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 {: #results }
 * Um clique no botão **Ping do MobileFirst Server** exibirá **Conectado ao MobileFirst
 Server**.
-* Se o aplicativo foi capaz de se conectar ao {{ site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o
-adaptador Java implementado acontecerá.
+* Se o aplicativo foi capaz de se conectar ao {{ site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o adaptador Java implementado acontecerá.
 
 A resposta do adaptador é então impressa no Xamarin Studio Console.
 

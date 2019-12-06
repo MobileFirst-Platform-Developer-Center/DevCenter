@@ -314,7 +314,7 @@ Führen Sie die folgenden DB2-Befehle als Benutzer mfpuser aus:
 ```sql
 db2 CONNECT TO MFPDATA
 db2 SET CURRENT SCHEMA = 'MFPSCM'
-db2 -vf MFP-Installationsverzeichnis/MobileFirstServer/databases/create-mfp-admin-db2.sql
+db2 -vf MFP-Installationsverzeichnis/MobileFirstServer/databases/create-mfp-admin-db2.sql -t
 db2 -vf MFP-Installationsverzeichnis/MobileFirstServer/databases/create-configservice-db2.sql -t
 db2 -vf MFP-Installationsverzeichnis/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf MFP-Installationsverzeichnis/PushService/databases/create-push-db2.sql -t
@@ -434,7 +434,7 @@ Server Configuration Tool installieren.
 Das
 Server Configuration Tool kann die Datenbanktabellen
 im Rahmen des Installationsprozesses erstellen. In einigen Fällen kann es sogar eine Datenbank und einen Benutzer für die
-MobileFirst-Server-Komponenten erstellen. Eine Übersicht über den Installationsprozess mit dem Server Configuration Tool finden Sie unter [{{ site.data.keys.mf_server }} im Grafikmodus installieren](../../simple-install/tutorials/graphical-mode).
+MobileFirst-Server-Komponenten erstellen. Eine Übersicht über den Installationsprozess mit dem Server Configuration Tool finden Sie unter [{{ site.data.keys.mf_server }} im Grafikmodus installieren](../../simple-install/graphical-mode).
 
 Wenn Sie die Berechtigungsnachweise für die Konfiguration angegeben und
 im Fenster des Server Configuration Tool
@@ -596,7 +596,7 @@ Server Configuration Tool erstellt werden. In den folgenden Abschnitten ist die 
 In diesem Abschnitt finden Sie relevante Informationen zum Einrichten der Datenbank bei Installation von
 {{ site.data.keys.mf_server }} mit Ant-Tasks.  
 
-Sie können die MobileFirst-Server-Datenbanktabellen mit Ant-Tasks einrichten. In einigen Fällen können Sie auch eine Datenbank und einen Benutzer mit diesen Tasks erstellen. Eine Übersicht über den Installationsprozess mit Ant-Tasks finden Sie unter [{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../../simple-install/tutorials/command-line).
+Sie können die MobileFirst-Server-Datenbanktabellen mit Ant-Tasks einrichten. In einigen Fällen können Sie auch eine Datenbank und einen Benutzer mit diesen Tasks erstellen. Eine Übersicht über den Installationsprozess mit Ant-Tasks finden Sie unter [{{ site.data.keys.mf_server }} im Befehlszeilenmodus installieren](../../simple-install/command-line).
 
 Mit der Installation werden eine Reihe von Ant-Beispieldateien bereitgestellt, die Ihnen den Einstieg in das Arbeiten mit Ant-Tasks erleichtern sollen. Sie finden diese Dateien unter **MFP-Installationsverzeichnis/MobileFirstServer/configuration-samples**. Die Dateien sind nach folgendem Muster benannt:
 

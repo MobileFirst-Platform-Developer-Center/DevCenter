@@ -10,7 +10,7 @@ O {{ site.data.keys.product_full }} fornece ferramentas de desenvolvimento e com
 
 ### Configurando um Ambiente de Desenvolvimento
 {: #installing-a-development-environment }
-Se você desenvolver o lado do cliente ou o lado do servidor de aplicativos móveis, use os serviços [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou [{{ site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation) para começar.
+Ao desenvolver o lado do cliente ou o lado do servidor de aplicativos móveis, use o [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou o serviço [{{ site.data.keys.mf_bm }}](../ibmcloud/using-mobile-foundation) para começar.
 
 **Usando o {{ site.data.keys.mf_dev_kit }}**
 {: #using-the-dev-kit }
@@ -70,8 +70,8 @@ Leia abaixo para obter informações sobre como preparar e instalar o {{site.dat
 
 Saiba mais sobre o processo de instalação do {{ site.data.keys.mf_server }} analisando as instruções para a criação de um cluster {{ site.data.keys.mf_server }} funcional com dois nós no perfil do WebSphere Application Server Liberty. A instalação pode ser concluída usando as ferramentas gráficas (GUI) ou através da linha de comandos.
 
-* [Instalação do modo GUI com o IBM Installation Manager e o Server Configuration Tool](production/simple-install/tutorials/graphical-mode).
-* [Instalação da linha de comandos com a ferramenta de linha de comandos](production/simple-install/tutorials/command-line).
+* [Instalação do modo GUI com o IBM Installation Manager e o Server Configuration Tool](production/simple-install/graphical-mode).
+* [Instalação da linha de comandos com a ferramenta de linha de comandos](production/simple-install/command-line).
 
 Após concluir a instalação usando um dos dois métodos acima, [configurações](production/server-configuration) adicionais podem ser necessárias para concluir a configuração, dependendo dos requisitos.
 

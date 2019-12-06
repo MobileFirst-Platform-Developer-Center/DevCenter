@@ -230,7 +230,7 @@ MySQL のデータベースの要件を確認してください。 以下のス�
 ```sql
 db2 CONNECT TO MFPDATA
 db2 SET CURRENT SCHEMA = 'MFPSCM'
-db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql
+db2 -vf mfp_install_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-configservice-db2.sql -t
 db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t
@@ -313,7 +313,7 @@ SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 {: #create-the-database-tables-with-the-server-configuration-tool }
 {{ site.data.keys.mf_server }} アプリケーションのデータベース表は、Ant タスクを使用するか、サーバー構成ツールを使用して手動で作成することができます。 以下のトピックでは、サーバー構成ツールを使用して {{ site.data.keys.mf_server }} をインストールする際のデータベースのセットアップに関する説明および詳細情報を提供しています。
 
-サーバー構成ツールは、インストール・プロセスの一部としてデータベース表を作成することができます。 場合によっては、{{ site.data.keys.mf_server }} コンポーネントのユーザーおよびデータベースも作成できます。 サーバー構成ツールを使用したインストール・プロセスの概要については、[グラフィカル・モードでの {{ site.data.keys.mf_server }} のインストール](../../simple-install/tutorials/graphical-mode)を参照してください。
+サーバー構成ツールは、インストール・プロセスの一部としてデータベース表を作成することができます。 場合によっては、{{ site.data.keys.mf_server }} コンポーネントのユーザーおよびデータベースも作成できます。 サーバー構成ツールを使用したインストール・プロセスの概要については、[グラフィカル・モードでの {{ site.data.keys.mf_server }} のインストール](../../simple-install/graphical-mode)を参照してください。
 
 構成資格情報を完了し、サーバー構成ツールペインで**「デプロイ」**をクリックすると、以下の操作が実行されます。
 
@@ -400,7 +400,7 @@ Oracle のデータベースおよびユーザーを作成する必要がある�
 
 {{ site.data.keys.mf_server }} が Ant タスクを使用してインストールされている場合は、このセクションにデータベースのセットアップに関する関連情報があります。
 
-Ant タスクを使用して、{{ site.data.keys.mf_server }} データベース表をセットアップすることができます。 場合によっては、これらのタスクを使用してデータベースおよびユーザーも作成できます。 Ant タスクを使用したインストール・プロセスの概要については、[コマンド・ライン・モードでの {{ site.data.keys.mf_server }} のインストール](../../simple-install/tutorials/command-line)を参照してください。
+Ant タスクを使用して、{{ site.data.keys.mf_server }} データベース表をセットアップすることができます。 場合によっては、これらのタスクを使用してデータベースおよびユーザーも作成できます。 Ant タスクを使用したインストール・プロセスの概要については、[コマンド・ライン・モードでの {{ site.data.keys.mf_server }} のインストール](../../simple-install/command-line)を参照してください。
 
 Ant タスクの使用を開始するのに役立つように、インストール済み環境にサンプル Ant ファイルのセットが用意されています。 ファイルは **mfp\_install\_dir/MobileFirstServer/configurations-samples** にあります。 これらのファイルは、以下のパターンに従って命名されています。
 

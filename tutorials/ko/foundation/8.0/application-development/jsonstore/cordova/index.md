@@ -11,7 +11,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## 전제조건
+## 선행 조건
 {: #prerequisites }
 * [JSONStore 상위 학습서](../)를 읽으십시오.
 * {{ site.data.keys.product_adj }} Cordova SDK가 프로젝트에 추가되었는지 확인하십시오. [Cordova 애플리케이션에 {{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/cordova/) 학습서에 따르십시오. 

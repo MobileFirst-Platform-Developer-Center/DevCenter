@@ -16,7 +16,7 @@ Application Center는 다음 모바일 애플리케이션을 쉽게 공유할 �
 * **피드백 및 등급 정보를 공유**할 수 있습니다.  
 * 액세스 제어 목록을 사용하여 애플리케이션을 설치할 수 있는 사용자를 제한할 수 있습니다.
 
-Application Center는 {{ site.data.keys.product_adj }} 앱 및 비{{ site.data.keys.product_adj }} 앱과 함께 작동하며 **iOS, Android**, **BlackBerry 6/7** 및 **Windows/Phone 8.x** 애플리케이션을 지원합니다.
+Application Center는 {{ site.data.keys.product_adj }} 앱 및 비{{ site.data.keys.product_adj }} 앱과 함께 작동하며 **iOS, Android** 및 **Windows/Phone 8.x** 애플리케이션을 지원합니다.
 
 > **참고:** 스토어 제출/iOS 앱의 유효성 검증을 위해 Test Flight 또는 iTunes Connect를 사용하여 생성된 아카이브/IPA 파일은 런타임 충돌/실패를 야기할 수 있으며, 자세한 사항은 [IBM MobileFirst Foundation 8.0에서 앱 스토어 제출을 위해 iOS 앱 준비](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) 블로그를 읽어보십시오.
 
@@ -26,6 +26,8 @@ Application Center는 {{ site.data.keys.product_adj }} 앱 및 비{{ site.data.k
 * 팀 내에서 애플리케이션을 분배하기 위한 개발 단계 중에.
 
 > **참고:** iOS AppCenter 설치 프로그램 애플리케이션을 빌드하려면, MobileFirst 7.1이 필요합니다.
+>
+Studio는 7.1 워크라이트 앱에 필요하며 순수 cordova 앱에는 필요하지 않습니다.
 
 #### 다음으로 이동:
 {: #jump-to}
@@ -145,11 +147,13 @@ cordova build ios
 
 > **참고:** Android 및 iOS AppCenter 클라이언트 빌드에 대해 Cordova 프레임워크를 사용 중인 경우 [Cordova 기반 IBM AppCenter 클라이언트](#cordova-based-ibm-appcenter-client)를 참조하십시오.
 
-### Blackberry의 경우
+<!--
+### For Blackberry
 {: #for-blackberry }
-* BlackBerry 버전을 빌드하려면, BlackBerry SDK 6.0이 포함된 BlackBerry Eclipse IDE(또는 BlackBerry Java 플러그인이 포함된 Eclipse)가 있어야 합니다. 애플리케이션을 BlackBerry SDK 6.0으로 컴파일한 경우 BlackBerry OS 7에서도 실행됩니다.
+* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
 
-BlackBerry 프로젝트가 **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**에 제공됩니다.
+A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+-->
 
 ### Windows Phone 8의 경우
 {: #for-windows-phone-8}
@@ -200,7 +204,7 @@ Application Center 콘솔을 사용하여 다음과 같은 방법으로 카탈�
 3. 애플리케이션 파일을 선택하십시오.
     * `.ipa`: iOS
     * `.apk`: Android
-    * `.zip`: BlackBerry 6/7
+    <!--* `.zip`: BlackBerry 6/7-->
     * `.xap`: Windows Phone 8.x
     * `.appx`: Windows Store 8.x
 
@@ -280,7 +284,7 @@ Windows Phone 8에서 사용자가 디바이스를 등록할 수 있도록 회�
 {: #logging-in-to-the-mobile-client }
 모바일 클라이언트에 로그인하려면 다음을 수행하십시오.
 
-1. 서버에 액세스하기 위한 신임 정보를 입력하십시오.
+1. 서버에 액세스하기 위한 인증 정보를 입력하십시오.
 2. 서버의 호스트 이름이나 IP 주소를 입력하십시오.
 3. 기본 포트(`9080`)가 아닌 경우 **서버 포트** 필드에 포트 번호를 입력하십시오.
 4. **애플리케이션 컨텍스트** 필드에 컨텍스트 `applicationcenter`를 입력하십시오.

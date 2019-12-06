@@ -28,7 +28,7 @@ weight: 1
 
 ### 1단계. {{ site.data.keys.mf_server }} 시작
 {: #1-starting-the-mobilefirst-server }
-[Mobile Foundation 인스턴스를 작성](../../bluemix/using-mobile-foundation)했는지 확인하거나, [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)를 사용하는 경우 서버의 폴더로 이동해서 `./run.sh`(Mac 및 Linux의 경우) 또는 `run.cmd`(Windows의 경우) 명령을 실행하십시오.
+[Mobile Foundation 인스턴스를 작성](../../ibmcloud/using-mobile-foundation)했는지 확인하거나, [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)를 사용하는 경우 서버의 폴더로 이동해서 `./run.sh`(Mac 및 Linux의 경우) 또는 `run.cmd`(Windows의 경우) 명령을 실행하십시오.
 
 ### 2단계. 애플리케이션 작성 및 등록
 {: #2-creating-and-registering-an-application }
@@ -64,11 +64,12 @@ weight: 1
             alert("Success: " + response.responseText);
           },
           (error) => {
-            alert("Failure: " + JSON.stringify(error));
+            console.error(error);
+            alert("Failure: Resource Request");
           }
         );
       }, (error) => {
-        console.log('-->  pingMFP(): failure ', error.responseText);
+        console.error(error);
         alert("Failed to connect to MobileFirst Server");
       });
 ```
@@ -86,7 +87,7 @@ weight: 1
 2. **명령행** 창에서 어댑터의 Maven 프로젝트 루트 폴더로 이동해서 다음 명령을 실행하십시오.
 
     ```bash
-   mfpdev adapter build
+    mfpdev adapter build
     ```
 
 3. 빌드가 완료되면 **조치 → 어댑터 배치** 조치를 사용하여 {{ site.data.keys.mf_console }}에서 이를 배치하십시오. **[adapter]/target** 폴더에서 어댑터를 찾을 수 있습니다.

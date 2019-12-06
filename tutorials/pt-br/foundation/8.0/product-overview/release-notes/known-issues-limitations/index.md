@@ -224,18 +224,6 @@ Aplicativos da web têm as limitações a seguir:
 - {: #web_app_limit_ms_ie_n_edge }
 No Microsoft Internet Explorer (IE) e no Microsoft Edge, mensagens de aplicativos administrativos e mensagens do SDK da web do cliente são exibidas de acordo com a preferência de formato da região do sistema operacional e não de acordo com as preferências de idioma de exibição configuradas para o navegador ou para o sistema operacional. Consulte também [Definindo mensagens do administrador em vários idiomas](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
 
-### Suporte do WKWebView para aplicativos iOS Cordova
-{: #wkwebview-support-for-ios-cordova-applications }
-Os recursos de notificação de aplicativo e Direct Update podem não funcionar bem em aplicativos iOS Cordova com o WKWebView.
-
-Essa limitação se deve ao defeito de file:// url XmlHttpRequests não serem permitidas no WKWebViewEgine em **cordova-plugin-wkwebview-engine**.
-
-Para contornar esse problema, execute o comando a seguir em seu projeto Cordova: `cordova plugin add https://github.com/apache/cordova-plugins.git#master:wkwebview-engine-localhost`
-
-Executar esse comando executaria um servidor da web local em seu aplicativo Cordova, seria possível então hospedar e acessar seus arquivos locais em vez de usar o esquema do URI de arquivo (file://) para trabalhar com arquivos locais.
-
-**Nota:** esse plug-in do Cordova não é publicado no Node package manager (npm).
-
 ### cordova-plugin-statusbar não funciona com o aplicativo Cordova carregado com cordova-plugin-mfp.
 {: #cordova-plugin-statusbar-does-not-work-with-cordova-application-loaded-with-cordova-plugin-mfp }
 cordova-plugin-statusbar não funcionará com o aplicativo Cordova carregado com cordova-plugin-mfp.
@@ -281,4 +269,43 @@ Durante a configuração de **mfpclient.properties** para o seu aplicativo Andro
 A modificação do comportamento padrão de um aplicativo Cordova (como a substituição do comportamento do botão Voltar) quando o Cordova SDK {{ site.data.keys.product_adj }} está incluído no projeto pode acarretar na rejeição do aplicativo pelo Google Play Store no momento do envio.
 Para obter mais informações sobre falhas no envio para o Google Play Store, é possível entrar em contato com o suporte do Google.
 
->**Nota:** se estiver usando a versão de liberação do MobileFirst 8.0 iFix a partir de janeiro de 2018 ou depois, é recomendável atualizar o servidor e o cliente para a mesma versão. 
+>**Nota:** se estiver usando a versão de liberação do MobileFirst 8.0 iFix a partir de janeiro de 2018 ou depois, é recomendável atualizar o servidor e o cliente para a mesma versão.
+
+### Erros de acesso ao instalar a CLI do MobileFirst usando o Node 8
+{:#mfpdev-cli-installation errors}
+Ao instalar a CLI do MobileFirst usando npm, você pode ver os erros a seguir na saída do Terminal.
+
+```
+> bufferutil@1.2.1 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/bufferutil
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> utf-8-validate@1.2.2 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+> node-gyp rebuild
+
+gyp ERR! clean error
+gyp ERR! stack Error: EACCES: permission denied, rmdir 'build'
+gyp ERR! System Darwin 18.0.0
+gyp ERR! command "/usr/local/bin/node" "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js" "rebuild"
+gyp ERR! cwd /usr/local/lib/node_modules/mfpdev-cli/node_modules/utf-8-validate
+gyp ERR! node -v v8.12.0
+gyp ERR! node-gyp -v v3.8.0
+gyp ERR! not ok
+
+> fsevents@1.2.4 install /usr/local/lib/node_modules/mfpdev-cli/node_modules/fsevents
+> node install
+```
+
+Esse erro é devido a um [erro conhecido em node-gyp](https://github.com/nodejs/node-gyp/issues/1547). Esses erros podem ser ignorados porque isso não afeta o funcionamento da CLI do MobileFirst. Isso é aplicável ao *mfpdev-cli iFix level 8.0.2018100112* e superior. Para superar esse erro, use a sinalização `--no-optional` durante a instalação. Por exemplo:
+
+```bash
+npm install -g mfpdev-cli --no-optional
+```

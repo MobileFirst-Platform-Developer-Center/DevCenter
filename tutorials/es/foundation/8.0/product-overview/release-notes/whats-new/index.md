@@ -24,8 +24,7 @@ weight: 1
                 <h3>Nuevo proceso de desarrollo y despliegue</h3>
                 <p>Ya no es necesario crear un archivo WAR de proyecto para instalarlo en el servidor de aplicaciones. En su lugar, {{ site.data.keys.mf_server }} se instala una vez y se sube al servidor la configuración de lado del servidor de sus aplicaciones, de la seguridad de los recursos o del servicio push. Puede modificar la configuración sus aplicaciones con {{ site.data.keys.mf_console }}.</p>
 
-                <p>Ya no existen los proyectos de {{ site.data.keys.product_adj }}. En su lugar, puede desarrollar su aplicación móvil con el entorno de desarrollo que desee.<br/>
-                Es posible modificar la configuración del lado del servidor de sus aplicaciones y adaptadores sin detener {{ site.data.keys.mf_server }}.</p>
+                <p>Ya no existen los proyectos de {{ site.data.keys.product_adj }}. En su lugar, puede desarrollar su aplicación móvil con el entorno de desarrollo que desee.<br/>                 Es posible modificar la configuración del lado del servidor de sus aplicaciones y adaptadores sin detener {{ site.data.keys.mf_server }}.</p>
 
                 <ul>
                     <li>Para obtener más información sobre el nuevo proceso de desarrollo, consulte <a href="../../../application-development/">Visión general y conceptos de desarrollo</a></li>
@@ -277,7 +276,7 @@ weight: 1
                 <p>Los desarrolladores de aplicaciones de IBM Cloud las pueden ejecutar en {{ site.data.keys.product }}. La migración precisa de la realización de cambios de configuración en las aplicaciones de cliente para utilizar las API de {{ site.data.keys.product }}.</p>
 
                 <h3>{{ site.data.keys.product }} como un servicio en IBM Cloud</h3>
-                <p>Ahora de puede utilizar el servicio {{ site.data.keys.mf_bm_full }} en IBM Cloud para crear y ejecutar aplicaciones móviles empresariales. </p>
+                <p>Ahora de puede utilizar el servicio {{ site.data.keys.mf_bm_full }} en IBM Cloud para crear y ejecutar aplicaciones móviles empresariales.</p>
 
                 <h3>Sin archivos .wlapp</h3>
                 <p>En versiones anteriores, las aplicaciones se desplegaban en {{ site.data.keys.mf_server }} subiendo un archivo <b>.wlapp</b>. El archivo contenía datos que describían la aplicación y, en el caso de aplicaciones híbridas, también de los recursos web necesarios. En la V8.0.0, en lugar del archivo <b>.wlapp</b>:</p>
@@ -312,7 +311,7 @@ weight: 1
                 <p>JAX-RS 2.0 presenta una nueva funcionalidad del lado del servidor: HTTP asíncrono del lado del servidor, filtros e interceptores.  Ahora los adaptadores pueden sacar partido de estas nuevas características.</p>
 
                 <h3>{{ site.data.keys.product }} on IBM Containers</h3>
-                <p>{{ site.data.keys.product }} on IBM Containers está disponible para la V8.0.0 en el sitio <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage</a>. Esta versión de {{ site.data.keys.product }} on IBM Containers está lista para entornos de producción y da soporte a la base de datos transaccional empresarial dashDB en IBM Cloud. </p>
+                <p>{{ site.data.keys.product }} on IBM Containers está disponible para la V8.0.0 en el sitio <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage</a>. Esta versión de {{ site.data.keys.product }} on IBM Containers está lista para entornos de producción y da soporte a la base de datos transaccional empresarial dashDB en IBM Cloud.</p>
 
                 <p><b>Nota:</b> Consulte los requisitos previos para desplegar {{ site.data.keys.product }} on IBM Containers.</p>
 
@@ -398,8 +397,7 @@ weight: 1
                     <li>Chino (tradicional)</li>
                 </ul>
 
-                <p>{{ site.data.keys.mf_analytics_console }} ahora muestra contenido diferente en función del rol de seguridad del usuario que ha iniciado la sesión.<br/>
-                Para obtener más información, consulte <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Control de acceso basado en roles</a>.</p>
+                <p>{{ site.data.keys.mf_analytics_console }} ahora muestra contenido diferente en función del rol de seguridad del usuario que ha iniciado la sesión.<br/>                 Para obtener más información, consulte <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Control de acceso basado en roles</a>.</p>
 
                 <p>{{ site.data.keys.mf_analytics_server }} utiliza Elasticsearch V1.7.5.</p>
 
@@ -473,7 +471,7 @@ weight: 1
 
         <div id="collapse-mobilefirst-appcenter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-appcenter">
             <div class="panel-body">
-                <p>Ahora se da soporte a {{ site.data.keys.mf_app_center }} en IBM Cloud (basado en contenedores) a través de scripts BYOL. </p>
+                <p>Ahora se da soporte a {{ site.data.keys.mf_app_center }} en IBM Cloud (basado en contenedores) a través de scripts BYOL.</p>
             </div>
         </div>
     </div>

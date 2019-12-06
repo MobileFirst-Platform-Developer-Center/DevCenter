@@ -9,20 +9,20 @@ tags:
 - Bluemix_Push_Service
 - Web_Push
 author:
-  name: Josephine E. Justin 
+  name: Josephine E. Justin
 ---
 
 ## Overview
 Applications using the MobileFirst Foundation SDK can be integrated with Bluemix Push Services for the applications to receive notifications.  
 Follow the instructions in this blog post in order to integrate your Android application with the Bluemix Push Notifications service.
 
-> Learn more about [IBM Bluemix Push Notificaitons service](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_overview_push.html) and [IBM Bluemix Mobile Foundation service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/bluemix/)
+> Learn more about [IBM Bluemix Push Notificaitons service](https://new-console.ng.bluemix.net/docs/services/mobilepush/c_overview_push.html) and [IBM Bluemix Mobile Foundation service](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibmcloud/)
 
 ### Prerequisites
 1. Running a MobileFirst Server either locally or [Mobile Foundation service](https://new-console.ng.bluemix.net/catalog/services/mobile-foundation) on Bluemix.
 2. Instance of [IBM Bluemix Push Notification](https://new-console.ng.bluemix.net/catalog/services/push-notifications/)
 3. Push Notification instance created at step 2 should be configured with GCM credentials.
-4. Push Notification instance created at step 2 should contain few tags. 
+4. Push Notification instance created at step 2 should contain few tags.
 
 ## Setting up the Web Application
 For the purpose of this blog post, the [RememberMe Web sample application](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/javascript/) is used. Download the sample application and follow the instructions in the README.md file to setup and run the app.
@@ -32,7 +32,7 @@ To deploy this web app in the Mobile Foundation in Bluemix, follow the below ste
 * Modify the port from `var port = 9081;` to `var port = (process.env.VCAP_APP_PORT || 9081);`
 * Update the **mfpServer** variable value from `"http://localhost:9080";` to the correct URL of the MobileFirst Server.
 
-## Adding Push Related artifacts into the App 
+## Adding Push Related artifacts into the App
 Follow the steps mentioned in the [Bluemix web push GIT](https://github.com/ibm-bluemix-mobile-services/bms-clientsdk-javascript-webpush) to allow the application to receive notification. As mentioned in the document, follow the steps mentioned in the section "Initialize in Chrome &amp; Firefox" to setup the Push Web SDK. These changes has to be done in the index.html of the web app.
 
 And as part of this blog post, three buttons were added to the app.  
@@ -72,10 +72,10 @@ function registerPush() {
 	}
 	bmsPush.initialize(params, callback) // initialize Push Service
 	// register device in push service
-	bmsPush.register(function(response) { 
+	bmsPush.register(function(response) {
 		alert("register response "+response.response)
 		//Retrieve available tags
-		bmsPush.retrieveAvailableTags(function(response) { 
+		bmsPush.retrieveAvailableTags(function(response) {
 		    var tagsA = [];
 		    tagList = [];
             var json = JSON.parse(response.response);
@@ -84,7 +84,7 @@ function registerPush() {
                 tagList.push(json.tags[i].name);
             }
             // subscribe to available tags
-            bmsPush.subscribe(tagsA,function(response) { 
+            bmsPush.subscribe(tagsA,function(response) {
                 tagsA.shift();
             }) //end of subscribe
         }) // end of retrieve available tags
@@ -98,7 +98,7 @@ Add the `unsubscribe()` to be called on the **UnSubscribe Push** button click.
 function unsubscribe()
 {
 	// unsubscribe from tags
-	bmsPush.unSubscribe(tagList,function(response) { 
+	bmsPush.unSubscribe(tagList,function(response) {
 		alert(response.response)
 	})
 }
@@ -110,14 +110,14 @@ Add the `unregister()` to be called on the **UnRegister Push** button click.
 function unregister()
 {
 	// unregister device
-	bmsPush.unRegisterDevice(function(response) { 
+	bmsPush.unRegisterDevice(function(response) {
 		alert(response.response)
 	})
 }
 ```
 
 ## Uploading the App to Bluemix
-Upload the above app to Bluemix as a cloud foundary application. Add a **manifest.yml** appropriately to make it as a cf app. Contents of the app would be similar to: 
+Upload the above app to Bluemix as a cloud foundary application. Add a **manifest.yml** appropriately to make it as a cf app. Contents of the app would be similar to:
 
 ```xml
 applications:
@@ -130,7 +130,7 @@ applications:
   disk_quota: 1024M
 ```
 
-Use the command `cf push` on the root folder of the app to upload it to Bluemix. 
+Use the command `cf push` on the root folder of the app to upload it to Bluemix.
 
 ### Configuring Web Push Services on Bluemix
 To configure your push notification service and click on the "configure" tab of the service. In the "web" section of the "configure tab" provide the uploaded app’s URL.  

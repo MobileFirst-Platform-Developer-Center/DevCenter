@@ -30,6 +30,9 @@ oder augehend vom authentifizierten Benutzer.
     * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
     * [REST-APIs](#rest-apis)
     * [Benachrichtigungen anpassen](#customizing-notifications)
+* [HTTP/2-Unterstützung für APNS-Push-Benachrichtigungen](#http2-support-for-apns-push-notifications)
+    * [HTTP/2 aktivieren](#enabling-http2)
+    * [Proxyunterstützung für HTTP/2](#proxy-support-for-http2)
 * [Proxyunterstützung](#proxy-support)
 * [Nächste Lernprogramme](#tutorials-to-follow-next)
 
@@ -335,20 +338,16 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 {: #notification-payload }
 Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten:
 
-| Eigenschaften der Nutzdaten |Definition |
+| Eigenschaften der Nutzdaten|Definition |
 
 --- | ---
 | message |Die zu sendende Alertnachricht |
-| settings |Die Einstellungen sind verschiedene Attribute der Benachrichtigung. |
-
-| target |Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden. |
-
+| settings |Die Einstellungen sind verschiedene Attribute der Benachrichtigung. | 
+| target |Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden. | 
 | deviceIds |Array der Geräte, die durch die Gerätekennungen repräsentiert werden. Geräte mit diesen IDs empfangen eine Unicastbeanchrichtigung. |
 | notificationType |Ganzzahliger Wert für den Kanal (Push/SMS), über den die Nachricht gesendet wird. Gültige Werte sind 1 (nur Push), 2 (nur SMS) und 3 (Push und SMS). | 
-| platforms |Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows). |
-
-| tagNames |Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen. |
-
+| platforms |Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows). | 
+| tagNames |Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen. | 
 | userIds |Array mit Benutzern, repräsentiert durch die Benutzer-IDs, an die eine Unicastbenachrichtigung gesendet wird. |
 | phoneNumber |Telefonnummer für die Registrierung des Geräts und den Empfang von Unicastbenachrichtigungen. |
 
@@ -460,6 +459,32 @@ den Abschnitt **Angepasste iOS/Android-Einstellungen** ein, um die Benachrichtig
 * Benachrichtigungsklang, angepasste Nutzdaten, Titel für Aktionsschlüssel, Benachrichtigungstyp und Kennzeichnungsnummer
 
 ![Push-Benachrichtigungen anpassen](customizing-push-notifications.png)
+
+## HTTP/2-Unterstützung für APNS-Push-Benachrichtigungen
+{: #http2-support-for-apns-push-notifications}
+
+Der Apple Push Notification Service (APNS) unterstützt ein neues, API-basiertes HTTP/2-Netzprotokoll. Die Unterstützung für HTTP/2 bringt viele Vorteile mit sich, zu denen unter anderem folgende gehören:
+
+* Die Nachrichtenlänge erhöht sich von 2 KB auf 4 KB, sodass es in Benachrichtigungen mehr Inhalt geben kann.
+* Zwischen Client und Server sind nicht mehr mehrere Verbindungen notwendig, sodass sich der Durchsatz verbessert.
+* Für universelle Push-Benachrichtigungen werden Client-SSL-Zertifikate unterstützt.
+
+>MobileFirst bietet jetzt neben der Unterstützung für traditionelle, auf TCP-Sockets basierende Benachrichtigungen auch Unterstützung für auf HTTP/2 basierende APNS-Push-Benachrichtigungen. 
+
+### HTTP/2 aktivieren
+{: #enabling-http2}
+
+HTTP/2-basierte Benachrichtigungen können über eine JNDI-Eigenschaft aktiviert werden. 
+```xml
+<jndiEntry jndiName="imfpush/mfp.push.apns.http2.enabled" value= "true"/>
+```
+
+>**Hinweis:** Wenn die obige JNDI-Eigenschaft hinzugefügt wird, werden keine traditionellen, auf TCP-Sockets basierenden Benachrichtungen verwendet, sondern nur die HTTP/2-basierten Benachrichtigungen.
+
+### Proxyunterstützung für HTTP/2
+{: #proxy-support-for-http2}
+
+HTTP/2-basierte Benachrichtigungen können über einen HTTP-Proxy gesendet werden. Informationen zur Weiterleitung der Benachrichtigungen über einen Proxy finden Sie [hier](#proxy-support).
 
 ## Proxyunterstützung
 {: #proxy-support }

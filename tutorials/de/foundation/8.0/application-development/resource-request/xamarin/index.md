@@ -4,9 +4,9 @@ title: Ressourcenanforderung von Xamarin-Anwendungen
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 downloads:
-  - name: Xamarin-Projekt herunterladen
+  - name: Download Xamarin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestXamarin/tree/release80
-  - name: Adapter-Maven-Projekt herunterladen
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
@@ -135,6 +135,8 @@ Falls eine Anforderung fehlschlägt, enthält das Antwortobjekt auch eine Eigens
 ## Weitere Informationen
 {: #for-more-information }
 > Weitere Informationen zu WLResourceRequest finden Sie in der Benutzerdokumentation.
+
+
 <img alt="Beispielanwendung" src="resource-request-success-xamarin.png" style="float:right"/>
 
 ## Beispielanwendung

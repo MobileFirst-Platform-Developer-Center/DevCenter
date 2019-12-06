@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: JavaScript-HTTP-Adapter
-breadcrumb_title: HTTP-Adapter
+breadcrumb_title: HTTP Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Adapter-Maven-Projekt herunterladen
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 1
 ---
