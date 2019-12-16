@@ -94,7 +94,7 @@ https://developer.apple.com/documentation/systemconfiguration/1614126-cncopycurr
 Apple further recommends *If your app is using this API, we encourage you to adopt alternative approaches that don't require Wi-Fi or network information. Valid SSID and BSSID information from CNCopyCurrentNetworkInfo will still be provided to VPN apps, apps that have used NEHotspotConfiguration to configure the current Wi-Fi network, and apps that have obtained permission to access user location through Location Services.*
 
 ##### Push Notification Registration Issue
-While fresh installation of apps using MobileFirst Push notification on iOS 13, regresitration is failing due to error in parsing the token from APNS server. The issue is similar to one reported on [Apple developer Forum](https://forums.developer.apple.com/thread/117545).
+While fresh installation of apps using MobileFirst Push notification on iOS 13, regresitration is failing due to error in parsing the token from APNS server. The issue is similar to one reported on [Apple developer Forum](https://forums.developer.apple.com/thread/117545). Also, this issue is seen only on Xcode v11 with iOS 13 devices. Applications built using Xcode v10.2 will not see the issue.
 
 >**Note** Customer should upgrade to cocopod version `IBMMobileFirstPlatformFoundationPush@8.0.2019082914` for v8 native app and npm version `cordova-plugin-mfp-push@8.0.2019090606` for v8 cordova apps.
 
