@@ -8,9 +8,9 @@ weight: 7
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-Mobile Foundation adapters execute the server-side logic and the transfer & retrieval of data from back-end systems.  Adapters are deployed and run on all the instances of Mobile Foundation runtime, adapters consume system resources irrespective of its usage. In a situation where some adapters are infrequently used by the mobile application compared to a few others, there is no way to scale the Mobile Foundation instance only with the frequently used adapters. Scaling the environment results in all the adapters getting deployed and running on all the newly added nodes. This behavior results in a slow start-up of the Mobile Foundation instance as the runtime needs to deploy and run all the adapters.
+Mobile Foundation adapters execute the server-side logic and the transfer or retrieval of data from back-end systems. Adapters are deployed on all the instances of Mobile Foundation runtime, adapters consume system resources irrespective of its usage. In a situation where some adapters are infrequently used by the mobile application, there exists no way to scale the Mobile Foundation instance only with the frequently used adapters. Scaling the environment results in all the adapters getting deployed and running on all the newly added nodes. This behavior results in a slow start-up of the Mobile Foundation instance as the runtime needs to deploy and run all the adapters.
 
-The adapter grouping feature enables you to group a bunch of resource adapters and run them together on a set of Mobile Foundation nodes. We call this set of nodes as a group in adapter grouping. The group can be scaled out by adding more nodes in the group based on the adapter usage load. Customers can decide beforehand the number of nodes in each group based on the expected load reaching the adapters running in that group.
+The adapter grouping feature enables you to group a bunch of resource adapters and run them together on a set of Mobile Foundation nodes. This set of nodes is called a **group**. The group can be scaled by adding more nodes based on the adapter load. Customers can decide beforehand the number of nodes in each group based on the expected load reaching the adapters running in that group.
 
 >Adapter grouping is only supported for resource adapters and not for security check adapters.
 

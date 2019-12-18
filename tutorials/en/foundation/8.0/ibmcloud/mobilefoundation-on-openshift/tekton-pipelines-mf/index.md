@@ -6,7 +6,7 @@ weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-Mobile Foundation for Cloud Pak for Apps is bundled with Tekton pipelines for automating common DevOps tasks related to Mobile Foundation.
+Mobile Foundation in Cloud Pak for Apps is bundled with Tekton pipelines for automating common DevOps tasks related to Mobile Foundation.
 
 >The steps to deploy Mobile Foundation on OpenShift Container Platform (OCP) are the same irrespective of how you have obtained the OCP entitlement.
 
