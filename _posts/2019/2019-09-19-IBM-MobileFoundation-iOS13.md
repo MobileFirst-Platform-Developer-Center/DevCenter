@@ -30,6 +30,7 @@ We have validated Mobile Foundation v8.0 and v7.1 with the GM release of iOS 13,
 * Oauth handshake with Mobile Foundation server
 * Push notifications
 
+>**Update**: Above features were tested on iPad OS and no issues were found.
 
 ![Sample Images]({{site.baseurl}}/assets/blog/2019-09-19-IBM-MobileFoundation-iOS13/ios13_mfp_screenshots.png)
 
@@ -45,7 +46,7 @@ A fresh installation of apps using MobileFirst Push notification on iOS 13 cause
 - Mobile First v7.1 - iFix version 7.1.0.0-MFPF-IF201909091200 or higher
 
 #### iPadOS on ios 13
-We are waiting for GM seed of iPadOS, please keep an eye on this blog for updates on iPadOS compatibility.
+We have tested applications with MFP v7.1 and v8.0 on iPad OS and we did not see spot any problem.
 
 
 #### Fixes in MFP v8.0 and related APARs
