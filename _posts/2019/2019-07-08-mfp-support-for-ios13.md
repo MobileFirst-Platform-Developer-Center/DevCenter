@@ -66,7 +66,7 @@ Features that were tested for Mobilefirst Foundation (MFP) v7.1:
 * Push notifications
 * Certificate Pinning
 
->**Update:** Above features are tested on iPad OS and no issues found.
+>**Update:** Above features are tested on iPad OS and no issues were found.
 
 #### Known Issues
 
@@ -104,7 +104,7 @@ While fresh installation of apps using MobileFirst Push notification on iOS 13, 
 We have verified basic OAuth Flow and Application Authenticity on watchOS 6.
 
 #### iPadOS 13
-iPadOS 13 doesnt have a separate SDK with Xcode 11 beta. So we have not done any separate testing for iPad OS. iPAD avilable with Xcode11 still using iOS 13 only.
+iPadOS 13 doesnt have a separate SDK with Xcode 11 beta. iPAD avilable with Xcode11 still using iOS 13 only.
 
 ![iPadOS 13 deployment info]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/iPadOS 13 deployment info.png)
 
