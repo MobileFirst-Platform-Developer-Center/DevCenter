@@ -66,6 +66,8 @@ Features that were tested for Mobilefirst Foundation (MFP) v7.1:
 * Push notifications
 * Certificate Pinning
 
+>**Update:** Above features are tested on iPad OS and no issues found.
+
 #### Known Issues
 
 ##### Too Many HTTP Redirect on v7.1
@@ -109,7 +111,7 @@ iPadOS 13 doesnt have a separate SDK with Xcode 11 beta. So we have not done any
 ![xcode11SDKs]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/xcode11SDKs.png)
 
 
->**Update:** We had used iPadOS 13 beta restore images on iPad and verified all Major features of MFP. We found an issue with Direct Update feature only for ionic apps. We are investigating further.
+>**Update:** We had used iPadOS 13 beta restore images on iPad and verified all Major features of MFP.
 
 
 We have also verified MFP based cordova, ionic and react-native apps.
