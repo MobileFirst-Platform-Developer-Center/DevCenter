@@ -104,7 +104,7 @@ While fresh installation of apps using MobileFirst Push notification on iOS 13, 
 We have verified basic OAuth Flow and Application Authenticity on watchOS 6.
 
 #### iPadOS 13
-iPadOS 13 does not have a separate SDK with Xcode 11 beta. iPAD available with Xcode11 still using iOS 13 only.
+iPadOS 13 does not have a separate SDK with Xcode 11 beta. iPAD available with Xcode 11 still using iOS 13 only.
 
 ![iPadOS 13 deployment info]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/iPadOS 13 deployment info.png)
 
