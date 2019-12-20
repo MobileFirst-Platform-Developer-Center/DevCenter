@@ -39,38 +39,24 @@ Create a new app by clicking **Create new app** icon from the Builder dashboard.
     * **Web**: Select this option if you are creating the app for the Web.
     * **PWA**: Select this option if you are creating a Progressive Web App.
 
-3. The **Select type of server to connect to** window is displayed.
+3. Once the integrated development server is up and running, the server details gets automatically fetched. In the event of the development server not running, you can connect to your own IBM Mobile Foundation server instance either created on IBM Cloud or local.
 
-    ![Select type of server](dab-select-server.png)
+    In the **Configure IBM Mobile Foundation instance** window you can either select an existing server or create a new server.
 
-4. You can select a **Shared Playground Server** or a **Custom Professional Server**.
+    >**Note**: To easily get an instance of Mobile Foundation Server, you can provision it on IBM Cloud. You can refer to the documentation on how to provision and use the Mobile Foundation Server on IBM Cloud [here](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started).
 
-    * **Shared Playground Server** – a shared Mobile Foundation server hosted on IBM Cloud to get you started quickly.
-
-        >**Warning**: The Shared Playground Server is a common server that is shared between many developers. This server should not be used for production apps. The data in this server can be deleted without notice. The server uptime is not guaranteed.
-
-        ![IBM Shared Server](dab-shared-server.png)
-
-        * Enter the **IBM Cloud API Key**. For more details access details refer to [**How to create a Platform API Keys**](../faq/) in the FAQ section. 
-
-        * Click **Login** to connect to the server. 
-
-    * **Custom Professional Server** – You can connect to your own Mobile Foundation server either created on IBM Cloud or local. In the **Configure IBM Mobile Foundation instance** window you can either select an existing server or create a new server.
-
-        >**Note**: To easily get an instance of Mobile Foundation Server, you can provision it on IBM Cloud. You can refer to the documentation on how to provision and use the Mobile Foundation Server on IBM Cloud [here](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started).
-
-        ![Configure IBM Mobile Foundation instance](dab-config-ibm-cloud-instance.png)
+    ![Configure IBM Mobile Foundation instance](dab-config-ibm-cloud-instance.png)
  
-        The **Configure IBM Mobile Foundation instance** window displays the list of Mobile Foundation server instances you have defined previously. On selecting the server, the **Server URL**, **Admin username**, **Admin password**, is displayed. To define a new server, you can click **Create new server** link. This will display the new **Configure IBM Mobile Foundation instance** window.
+    The **Configure IBM Mobile Foundation instance** window displays the list of Mobile Foundation server instances you have defined previously. On selecting the server, the **Server URL**, **Admin username**, **Admin password**, is displayed. To define a new server, you can click **Create new server** link. This will display the new **Configure IBM Mobile Foundation instance** window.
 
-        ![Create New Server](dab-custom-professional-server.png)
+    ![Create New Server](dab-custom-professional-server.png)
 
-        * Enter the new IBM Mobile Foundation instance details, like **Server name**, **Server URL**, **Admin username**, **Admin password**.
-            >**Note**: You can get the server url and login credentials from the Mobile Foundation server dashboard for the selected server instance.
-        * Optionally, provide a **Username** (Confidential client username) and **Admin password**, for previewing the data in the Data viewer.
-        * Click **Connect**.
+    * Enter the new IBM Mobile Foundation instance details, like **Server name**, **Server URL**, **Admin username**, **Admin password**.
+        >**Note**: You can get the server url and login credentials from the Mobile Foundation server dashboard for the selected server instance.
+    * Optionally, provide a **Username** (Confidential client username) and **Admin password**, for previewing the data in the Data viewer.
+    * Click **Connect**.
 
-5. On successful login/connect, the **Create App** window is displayed where you can select an existing app definition that you may have created or create a new one by entering the details. 
+4. On successful login/connect, the **Create App** window is displayed where you can select an existing app definition that you may have created or create a new one by entering the details. 
     * For a new app: 
         * Provide the **Name** of the application, **Location** where the project files will be stored, **Project/Bundle Id**, and **Version** of the application. 
  

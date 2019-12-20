@@ -19,6 +19,8 @@ Digital App Builder can be installed on MacOS and Windows platform. The installa
 4. Double click the IBM Digital App Builder icon or executable to open the Digital App Builder.
     >**Note**: When the Digital App Builder is installed for the first time, the Digital App Builder opens up the interface to install the prerequisite software. In case a previous version of Digital App Builder exists, a pre-requisites check is performed and may need to upgrade or downgrade some software to meet the pre-requisites.
     
+    >Beginning from version 8.0.6, the installer contains Mobile Foundation development server. During the installation, the development server gets installed alongwith other pre-requisites. The lifecycle of the development server (like server start/stop) is handled within the Digital App Builder.
+    
     ![Installing Digital App Builder](dab-install-startup.png)
 
 5. Click **Start setup**. This displays the license agreement screen.
@@ -51,6 +53,9 @@ Digital App Builder can be installed on MacOS and Windows platform. The installa
 
 1. Download the .exe (**IBM.Digital.App.Builder.Setup.n.n.n.exe**, where `n.n.n` is the version number)) from [IBM passport advantage](https://www.ibm.com/software/passportadvantage/) or from [here](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
 2. Run the downloaded executable (**IBM.Digital.App.Builder.Setup.n.n.n.exe**) in administrative mode.
+    >**Note**: When the Digital App Builder is installed for the first time, the Digital App Builder opens up the interface to install the prerequisite software. In case a previous version of Digital App Builder exists, a pre-requisites check is performed and may need to upgrade or downgrade some software to meet the pre-requisites.
+    
+    >Beginning from version 8.0.6, the installer contains Mobile Foundation development server. During the installation, the development server gets installed alongwith other pre-requisites. The lifecycle of the development server (like server start/stop) is handled within the Digital App Builder.
 
     ![Installing Digital App Builder](dab-install-startup.png)
 

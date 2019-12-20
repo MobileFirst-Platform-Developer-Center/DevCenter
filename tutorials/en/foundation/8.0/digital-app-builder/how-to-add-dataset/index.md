@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adding a Data Set
-weight: 7
+weight: 8
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

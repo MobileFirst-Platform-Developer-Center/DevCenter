@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adding a Chatbot
-weight: 9
+weight: 10
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
