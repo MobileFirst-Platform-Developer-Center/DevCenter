@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adding a Login Form
-weight: 8
+weight: 9
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adding Image Recognition to the App
-weight: 10
+weight: 11
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

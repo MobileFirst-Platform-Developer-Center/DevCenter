@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Connect to Microservices using the API Proxy
-weight: 15
+weight: 16
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

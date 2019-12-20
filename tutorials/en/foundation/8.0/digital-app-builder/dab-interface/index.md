@@ -35,7 +35,7 @@ Workbench helps you to design the pages. Workbench consists of three work areas:
     Following is the list of controls provided available:
     * **Basic**: You can drag-and-drop these basic controls (Button, Heading, Image, and Label) to the canvas and configure the properties and actions.
 
-        ![Pages / Congrols](dab-workbench-basic-controls.png)
+        ![Pages / Controls](dab-workbench-basic-controls.png)
 
         * **Button** - Buttons has a property to label. In the Action tab you can specify the page to navigate to on click of the Button.
         * **Heading Text** - Helps you to add a heading text for the application such as Page Title.
