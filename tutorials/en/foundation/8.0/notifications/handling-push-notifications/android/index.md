@@ -59,9 +59,9 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
    ```xml
    implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
-   
+
    >**Note**: If you are using [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) feature and would like to call MobileFirst APIs in a feature module then use `api` declaration instead of `implementation`. Using `implementation` would restrict using MobileFirst APIs in the same module itself while using `api`  would make MobileFirst APIs available across all modules present in the app including feature modules.For more details read [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
-   
+
 ```xml
  api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
 ```
@@ -363,17 +363,22 @@ Setting up an application in FCM is a bit different compared to the old GCM mode
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
     }
-    
+
     apply plugin: 'com.google.gms.google-services'
     ```
 
-    
+    - Add the following dependency in the root `build.gradle` file's **buildscript** section
+      ```
+      classpath 'com.google.gms:google-services:3.0.0'
+      ```
 
-    - Add the following dependency in the root build.gradle's `buildscript` section
+    - Remove below GCM plugin from the `build.gradle` file
+      ```
+      compile  com.google.android.gms:play-services-gcm:+
+      ```
 
-      `classpath 'com.google.gms:google-services:3.0.0'`
+    >**Note**: If you are using Android Studio v3.2 or earlier, make sure that each dependency line only has one version number specified.
 
-    - Remove below GCM plugin from build.gradle file `compile  com.google.android.gms:play-services-gcm:+`
 
  3. Configure the AndroidManifest file. Following changes are required in the `AndroidManifest.xml`
 
