@@ -58,6 +58,9 @@ api â€™com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0+â
 ```
 api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
 ```
+####Limitation:
+
+**Applications with Android App Bundle feature installed on Android 5.x devices fails to connect to server if Mobile Foundation Application Authenticity feature is enabled. This limitation is caused by the Google itself, the way it generates diffent base APKs on Android 5.x devices compare to other devices.** 
 
 
 We have validated all the MobileFirst functionalities from both base module and feature module of an Android Native app. You can exploit the Google App Bundle and Dynamic Delivery features with your MobileFirst native Android apps. Refer to the MobileFirst Native Android sample app with App Bundle and Dynamic Delivery features from [here](https://github.com/MobileFirst-Platform-Developer-Center/mfp-appbundle-sample).

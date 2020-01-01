@@ -308,3 +308,8 @@ This error is due a [known bug in node-gyp](https://github.com/nodejs/node-gyp/i
 ```bash
 npm install -g mfpdev-cli --no-optional
 ```
+
+###Android App Bundle feature
+
+
+Applications with Android App Bundle feature installed on Android 5.x devices fails to connect to server if Mobile Foundation Application Authenticity feature is enabled. This limitation is caused by the Google itself, the way it generates diffent base APKs on Android 5.x devices compare to other devices.
