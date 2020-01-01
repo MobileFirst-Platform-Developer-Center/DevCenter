@@ -312,4 +312,4 @@ npm install -g mfpdev-cli --no-optional
 ###Android App Bundle feature
 
 
-Applications with Android App Bundle feature installed on Android 5.x devices fails to connect to server if Mobile Foundation Application Authenticity feature is enabled. This limitation is caused by the Google itself, the way it generates diffent base APKs on Android 5.x devices compare to other devices.
+Applications with Android App Bundle feature installed on Android 5.x devices fails to connect to server if Mobile Foundation Application Authenticity feature an App Authenticity error is enabled. This limitation is caused by the Google itself, because of the way it generates diffent base APK on Android 5.x devices compare to other devices.
