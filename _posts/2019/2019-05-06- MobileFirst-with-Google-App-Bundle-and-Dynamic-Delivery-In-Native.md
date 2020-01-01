@@ -60,7 +60,7 @@ api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
 ```
 ####Limitation:
 
-**Applications with Android App Bundle feature installed on Android 5.x devices fails to connect to server with an App Authenticity error if Mobile Foundation Application Authenticity feature is enabled. This limitation is caused by the Google itself,because of the way it generates diffent base APK on Android 5.x devices compare to other devices.** 
+**Due to the difference in packaging structure of an App Bundle between Android 5.x and Android 6.x & above devices, users on Android 5.x will not be able to connect to a MobileFirst server when App Authenticity is enabled and distributed as an App Bundle on Play Store. This limitation is observed only with combination of Android 5.x + App Authenticity + Android App Bundle. As a workaround, upload your app as a regular .apk file to the Play Store or restrict the minimum Android version to Android 6 or above or have a separate version of the app for Android 5.x devices.** 
 
 
 We have validated all the MobileFirst functionalities from both base module and feature module of an Android Native app. You can exploit the Google App Bundle and Dynamic Delivery features with your MobileFirst native Android apps. Refer to the MobileFirst Native Android sample app with App Bundle and Dynamic Delivery features from [here](https://github.com/MobileFirst-Platform-Developer-Center/mfp-appbundle-sample).
