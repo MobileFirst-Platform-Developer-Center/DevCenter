@@ -1,5 +1,5 @@
 ---
-title: Apple deprecates certificate based notifications
+title: Apple deprecates legacy binary protocol based notifications
 date: 2020-01-03
 tags:
 - MobileFirst_Platform
