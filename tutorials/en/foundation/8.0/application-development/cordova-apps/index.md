@@ -418,6 +418,8 @@ To add, run the following command from a command-line window: `cordova plugin ad
 
 > Learn more about the [Cordova WKWebView plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine).
 
+> **Update:** Using cordova-plugin-wkwebview-engine plugin in cordova application throws XHR related errors and results in direct update failure. To overcome this, your application will require an additional plugin called [cordova-plugin-wkwebviewxhrfix](https://www.npmjs.com/package/cordova-plugin-wkwebviewxhrfix).
+
 ## Further reading
 {: #further-reading }
 Learn more about Cordova:
