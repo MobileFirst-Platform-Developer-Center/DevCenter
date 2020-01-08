@@ -418,7 +418,7 @@ To add, run the following command from a command-line window: `cordova plugin ad
 
 > Learn more about the [Cordova WKWebView plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine).
 
-> **Update:** Using cordova-plugin-wkwebview-engine plugin in Cordova application throws error "Cross origin requests are only supported for HTTP” and results in direct update failure. To overcome this, your application will require an additional plugin called [cordova-plugin-wkwebviewxhrfix](https://www.npmjs.com/package/cordova-plugin-wkwebviewxhrfix). You can find the defect [here](https://issues.apache.org/jira/browse/CB-10143). 
+> **Update:** Using `cordova-plugin-wkwebview-engine` plugin in Cordova application throws error *Cross origin requests are only supported for HTTP* and results in direct update failure. To overcome this, your application will require an additional plugin called [cordova-plugin-wkwebviewxhrfix](https://www.npmjs.com/package/cordova-plugin-wkwebviewxhrfix). You can find the defect [here](https://issues.apache.org/jira/browse/CB-10143). 
 
 ## Further reading
 {: #further-reading }
