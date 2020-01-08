@@ -15,6 +15,7 @@ In this documentation, you can find the description of {{ site.data.keys.product
 * When the known limitation applies to a specific feature, you can find its description in the topic that explains this specific feature. You can then immediately identify how it affects the feature.
 * When the known limitation is general, that is, applies to different and possibly not directly related topics, you can find its description here.
 * Inconsistency may be observed in the functioning of Mobile Foundation Analytics pods in the deployment due to the Elasticsearch node discovery problems in OpenShift 4.2 Cluster. This results in Analytics administration console listing only one node at any point in time.
+* In the AppCenter Android mobile client app, user may notice scrolling issues. This is not a break in functionality. Everything works as expected, however, a few more extra scrolls are required to scroll down. This is a limitation from the 3rd party Javascript frameworks used in the AppCenter client.
 
 ### Globalization
 {: #globalization }
