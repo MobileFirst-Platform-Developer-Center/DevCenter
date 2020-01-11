@@ -120,7 +120,7 @@
             "name": "Blog",
             "path": "/blog"
         },{
-          "name": "Samples",
+          "name": "Resources",
           "path": "/labs",
           "children": [{
               "name": "Developers",
@@ -146,4 +146,7 @@
       },  {
           "name": "Help",
           "path": "/help"
+      }, {
+          "name": "Newsletter",
+          "path": "/../newsletter"
       }]

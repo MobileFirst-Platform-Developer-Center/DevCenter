@@ -1,0 +1,412 @@
+---
+layout: default
+indexed: false
+title: Newsletter
+---
+<head>
+    <!--<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">-->
+    <link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link href="{{site.baseurl}}/css/custom-style.css" type="text/css" rel="stylesheet">
+    <style>
+
+      $primary: #3F51B5;
+      $dark-primary: #303F9F;
+      $light-primary: #C5CAE9;
+      $text: #FFFFFF;
+      $primary-text: #212121;
+      $secondary-text: #757575;
+      $accent: #FF4081;
+      section {
+      padding: 100px 0;
+      }
+
+      html, body {
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: 'IBM Plex Sans';
+        font-size: 17px;
+        font-weight: 400;
+        background-color: #fff;
+      }
+
+      h1 {
+        font-size: 200%;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 400;
+      }
+
+      .banner h2{
+        font-size: 30px;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        font-family: 'IBM Plex Sans';
+      }
+
+      .banner p{
+        font-size: 18px;
+        font-family: 'IBM Plex Sans';
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        line-spacing: 1rem;
+      }
+
+      header {
+      	background: $primary;
+      	color: $text;
+      	padding: 150px 0;
+
+      	p {
+      		font-family: 'IBM Plex Sans';
+      		color: rgba(255, 255, 255, .2);
+      		margin-bottom: 0;
+      		font-size: 60px;
+      		margin-top: -30px;
+
+      	}
+      }
+      a {
+        font-family: 'IBM Plex Sans';
+      }
+
+    .timeline {
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      background: #9EC3DC;
+      width: 5px;
+      height: 95%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      width: 100%;
+      margin-bottom: 50px;
+    }
+    .timeline-item:nth-child(even) .timeline-content {
+      float: right;
+      padding: 40px 30px 10px 30px;
+    }
+    .timeline-item:nth-child(even) .timeline-content .date {
+      right: auto;
+      left: 0;
+    }
+    .timeline-item:nth-child(even) .timeline-content::after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      width: 0;
+      height: 0;
+      top: 30px;
+      left: -15px;
+      border-width: 10px 15px 10px 0;
+      border-color: transparent #f5f5f5 transparent transparent;
+    }
+    .timeline-item::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .timeline-content {
+      position: relative;
+      width: 45%;
+      padding: 10px 30px;
+      border-radius: 4px;
+      background: #f5f5f5;
+      box-shadow: 0 20px 25px -15px rgba(0, 0, 0, 0.3);
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    .timeline-content::after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      width: 0;
+      height: 0;
+      top: 30px;
+      right: -15px;
+      border-width: 10px 0 10px 15px;
+      border-color: transparent transparent transparent #f5f5f5;
+    }
+
+    .timeline-img {
+      width: 30px;
+      height: 30px;
+      background: #0E6DE7;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      margin-top: 25px;
+      margin-left: -15px;
+    }
+
+
+    .timeline-card {
+      padding: 0 !important;
+    }
+    .timeline-card p {
+      padding: 0 20px;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    .timeline-card a {
+      margin-left: 20px;
+    }
+
+    .timeline-item .timeline-img-header {
+      background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url("{{ site.baseurl }}/newsletter/bg1_blue.jpg") center center no-repeat;
+      background-size: cover;
+    }
+
+    .timeline-img-header {
+      height: 130px;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .timeline-img-header h2 {
+      color: #fff;
+      position: absolute;
+      bottom: 10px;
+      left: 20px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 22px;
+      line-height: normal;
+      font-weight: 600;
+    }
+
+    blockquote {
+      margin-top: 30px;
+      color: #757575;
+      border-left-color: #3F51B5;
+      padding: 0 20px;
+    }
+
+    .date {
+      background: #ACEAD9;
+      display: inline-block;
+      color: #000000;
+      padding: 5px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      .timeline::before {
+        left: 50px;
+      }
+      .timeline .timeline-img {
+        left: 50px;
+      }
+      .timeline .timeline-content {
+        max-width: 100%;
+        width: auto;
+        margin-left: 70px;
+        font-family: 'IBM Plex Sans', sans-serif;
+      }
+      .timeline .timeline-item:nth-child(even) .timeline-content {
+        float: none;
+      }
+      .timeline .timeline-item:nth-child(odd) .timeline-content::after {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        width: 0;
+        height: 0;
+        top: 30px;
+        left: -15px;
+        border-width: 10px 15px 10px 0;
+        border-color: transparent #f5f5f5 transparent transparent;
+      }
+    }
+
+      .twoColumns {
+          -webkit-columns: 1 200px;
+          -moz-columns: 1 200px;
+          columns: 1 200px;
+      }
+
+        .postItem {
+            margin-bottom: 10px;
+        }
+
+        .inline {
+            display: inline-block;
+            min-width: 268px;
+        }
+
+        .postTitle {
+            margin-bottom: 0;
+            color: #808080;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: bold;
+        }
+
+        .postTitle1 {
+            margin-bottom: 0;
+            color: #337ab7;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: bold;
+        }
+
+        .postsubTitle {
+            margin-bottom: 0;
+            color: #e5eaee;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: bold;
+        }
+
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+
+        .postDate {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 80%;
+            padding: 0;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .postExcerpt {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 85%;
+        }
+    </style>
+    <script type="text/javascript">
+      $(function(){
+
+      window.sr = ScrollReveal();
+
+      if ($(window).width() < 768) {
+
+      	if ($('.timeline-content').hasClass('js--fadeInLeft')) {
+      		$('.timeline-content').removeClass('js--fadeInLeft').addClass('js--fadeInRight');
+      	}
+
+      	sr.reveal('.js--fadeInRight', {
+    	    origin: 'right',
+    	    distance: '300px',
+    	    easing: 'ease-in-out',
+    	    duration: 800,
+    	  });
+
+      } else {
+
+      	sr.reveal('.js--fadeInLeft', {
+    	    origin: 'left',
+    	    distance: '300px',
+    		  easing: 'ease-in-out',
+    	    duration: 800,
+    	  });
+
+    	  sr.reveal('.js--fadeInRight', {
+    	    origin: 'right',
+    	    distance: '300px',
+    	    easing: 'ease-in-out',
+    	    duration: 800,
+    	  });
+
+      }
+
+      sr.reveal('.js--fadeInLeft', {
+    	    origin: 'left',
+    	    distance: '300px',
+    		  easing: 'ease-in-out',
+    	    duration: 800,
+    	  });
+
+    	  sr.reveal('.js--fadeInRight', {
+    	    origin: 'right',
+    	    distance: '300px',
+    	    easing: 'ease-in-out',
+    	    duration: 800,
+    	  });
+
+
+    });
+    </script>
+</head>
+<div class="wrapper" style="width: 100%">
+
+<div class="bx--content" style="background-image: url('{{site.baseurl}}/blog/header-blog.jpg')">
+  <div class="banner">
+  <div class="bx--row" >
+    <div class="bx--col" style="padding-left: 30px; padding-top: 20px"><h2 style="color: #eee">Mobile Foundation Newsletter</h2>
+
+    </div>
+    <br/>
+  </div>
+</div>
+</div>
+<div class="bx--col" style="padding-left: 35px; padding-top: 20px; height: 70vh;">
+<h3 class="title is-4" style="padding-left: 15px;"><span class="postTitle1">Quarterly Newsletter Editions</span></h3>
+<!--<section id="blogPostsList" class="container"> -->
+
+<div class="bx--col" style="padding-left: 30px; padding-top: 20px">
+
+    <div class="bx--col" style="padding-left: 0px; padding-top: 5px">
+        <p class="postTitle"><span class="glyphicon glyphicon-edit"></span> July 2020 <span class="postExcerpt">Coming up!</span></p>
+
+    </div>
+    <div class="bx--col" style="padding-left: 0px; padding-top: 5px">
+        <p class="postTitle"><span class="glyphicon glyphicon-edit"></span> April 2020 <span class="postExcerpt">Coming up!</span></p>
+
+    </div>
+    <div class="bx--col" style="padding-left: 0px; padding-top: 5px">
+        <p class="postTitle"><span class="glyphicon glyphicon-check"></span> January 2020 <span class="postExcerpt"><a href="{{ site.baseurl }}/newsletter/jan-2020/mf-newsletter-012020.html" target="_blank">View</a></span></p>
+
+    </div>
+
+</div>
+<br/>
+
+<!-- Pagination links -->
+<!--<nav>
+    <ul class="pagination">
+        <li {% if paginator.previous_page==null %}class="disabled" {% endif %}>
+            <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous"><span aria-hidden="true">Previous</span></a>
+        </li>
+        <li {% if paginator.next_page==null %}class="disabled" {% endif %}>
+            <a href="{% if paginator.next_page %}{{ paginator.next_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Next"><span aria-hidden="true">Next</span></a>
+        </li>
+    </ul>
+</nav>-->
+</div>
+<!-- </section> -->
+
+<br/>
+<!--<section style="margin-top: 20px">
+  <div class="container">
+    <div class="timeline-item">
+
+    <div class="timeline-content timeline-card js--fadeInRight">
+      <div class="timeline-img-header">
+        <h2>Quarterly Newsletter Editions</h2>
+      </div>
+
+        <ol><span class="postExcerpt">
+          <li><span class="postExcerpt">July 2020</span></li>
+          <li><span class="postExcerpt">April 2020</span></li>
+          <li><a href="{{ site.baseurl }}/newsletter/jan-2020/mf-newsletter-012020.html" target="_blank">January 2020</a></li></span>
+        </ol>
+
+
+    </div>
+    </div>
+
+
+
+  </div>
+</section>-->
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
