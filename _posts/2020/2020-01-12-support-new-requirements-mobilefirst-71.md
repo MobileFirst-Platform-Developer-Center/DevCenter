@@ -1,5 +1,5 @@
 ---
-title: Compliance with
+title: Support Statement for New Requirements on MobileFirst v7.1
 date: 2020-01-12
 tags:
 - MobileFirst_Platform
