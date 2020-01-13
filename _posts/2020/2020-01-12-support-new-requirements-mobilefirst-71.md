@@ -19,6 +19,6 @@ MobileFirst Platform Foundation version v7.1 is approaching its end of support, 
 
 3. Support for new mobile OS releases - Support for new OS releases for all supported platforms such as Android, iOS, and Windows when available will not be made available on MobileFirst Platform Foundation v7.1.
 
->**Note**: This is not an exhaustive list and any new requirements from Apple or Google in the future, will also be considered as new features. 
+>**Note**: This is not an exhaustive list and any new requirements or deprecations from Apple or Google in the future, will also be considered as new features. 
 
-Mobile Foundation v8.0 accounts for the above changes and will provide support for new and upcoming mobile OS versions. Therefore, if your apps are running on MobileFirst Platform Foundation v7.1, especially the ones that are published to public app stores, we strongly recommend you to migrate to Mobile Foundation v8.0 at the earliest to avail continued support for new mobile OS versions and developer ecosystem changes.
+Mobile Foundation v8.0 accounts for the above changes and _*will provide support for new and upcoming mobile OS versions*_. Therefore, if your apps are running on MobileFirst Platform Foundation v7.1, especially the ones that are published to public app stores, we strongly recommend you to migrate to Mobile Foundation v8.0 at the earliest to avail continued support for new mobile OS versions and developer ecosystem changes.
