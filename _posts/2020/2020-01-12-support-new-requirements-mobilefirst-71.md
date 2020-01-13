@@ -11,7 +11,7 @@ author:
   name: Srihari Kulkarni
 ---
 
-MobileFirst Platform Foundation version v7.1 is approaching its end of support, which is on [March 31, 2020](https://www-01.ibm.com/support/docview.wss?uid=swg3s894700o65547s81). Any upcoming requirements or deprecations from the Apple or Google ecosystem are considered [new features](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/), and therefore _will not be supported even under an extended support contract_. This applies to the following list of upcoming requirements.
+MobileFirst Platform Foundation version v7.1 is approaching its end of support, which is on [March 31, 2020](https://www-01.ibm.com/support/docview.wss?uid=swg3s894700o65547s81). Any upcoming requirements or deprecations from the Apple or Google ecosystem are considered [new features](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/), and therefore <span style="text-decoration: underline">will not be supported even under an extended support contract</span>. This applies to the following list of upcoming requirements.
 
 1. Use of UIWebView - New apps containing UIWebView [will not be accepted to the Apple App Store](https://developer.apple.com/news/?id=12232019b), starting April 2020 and app updates using UIWebView from December 2020.
 
@@ -21,4 +21,4 @@ MobileFirst Platform Foundation version v7.1 is approaching its end of support, 
 
 >**Note**: This is not an exhaustive list and any new requirements or deprecations from Apple or Google in the future, will also be considered as new features.
 
-Mobile Foundation v8.0 accounts for the above changes and _will provide support for new and upcoming mobile OS versions_. Therefore, if your apps are running on MobileFirst Platform Foundation v7.1, especially the ones that are published to public app stores, we strongly recommend you to migrate to Mobile Foundation v8.0 at the earliest to avail continued support for new mobile OS versions and developer ecosystem changes.
+Mobile Foundation v8.0 accounts for the above changes and <span style="text-decoration: underline">will provide support for new and upcoming mobile OS versions</span>. Therefore, if your apps are running on MobileFirst Platform Foundation v7.1, especially the ones that are published to public app stores, we strongly recommend you to migrate to Mobile Foundation v8.0 at the earliest to avail continued support for new mobile OS versions and developer ecosystem changes.
