@@ -47,3 +47,5 @@ This will help you setup a system for MF server to run smoothly and efficiently.
 - You may use the [Server Configuration tool or ANT tasks to configure your Application Server and Database](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/appserver/#installing-with-the-server-configuration-tool)
 - The Application Server and Database can also be manually configured 
 - Do not forget to update your Application Server using SCT or ANT after applying ifix, this will update your Application Server with the latest war files
+
+>Note: Do not manually delete any files or folders in the MF server install directory. Deleting would cause issues while upgrading or even uninstalling the MF server.
