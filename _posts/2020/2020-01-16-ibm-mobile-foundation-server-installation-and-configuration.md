@@ -1,5 +1,5 @@
 ---
-title: IBM Mobile Foundation Server Installation and Configuration 
+title: IBM Mobile Foundation Server Installation and Configuration
 date: 2020-01-21
 tags:
 - MobileFirst_Platform
@@ -23,7 +23,7 @@ This sets up a development environment for you to play around before installing 
 
 ### System requirements
 
-As a pre-requisite, review our [System Requirements page]  (http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/requirements/) prior to installation.
+As a pre-requisite, review our [System Requirements page](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/product-overview/requirements/) prior to installation.
 
 This will help you set up a system for the MF server to run smoothly and efficiently.
 
