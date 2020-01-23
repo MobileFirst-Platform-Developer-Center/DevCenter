@@ -144,6 +144,12 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
     sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/cluster_role_binding.yaml
     ```
 
+    **For Operator image tag 1.0.11 onwards, use the command below.**
+
+    ```bash
+    sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/role_binding.yaml
+    ```
+
 3. Run the following commands to deploy CRD, operator and install Security Context Constraints (SCC).
 
     ```bash
@@ -151,6 +157,15 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
     oc create -f deploy/
     oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
     ```
+    **For Operator image tag 1.0.11 onwards, use the commands below.**
+
+    ```bash
+    oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
+    oc create -f deploy/
+    oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
+    oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$MFOS_PROJECT:mf-operator
+    ```
+
 
 ### Deploy IBM Mobile Foundation components
 {: #deploy-mf-components}
