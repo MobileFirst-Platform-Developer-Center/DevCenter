@@ -57,7 +57,7 @@ body {
 }
 
 #blogPosts {
-	background-color: #264a60;
+	background-color: #ffffff;
 	font-family: 'IBM Plex Sans', sans-serif;
 	color: #008fb3;
 	width: 100%;
@@ -184,7 +184,7 @@ body {
 	}
 }
 #index_sections {
-	margin-top: 50px;
+	margin-top: 10px;
 	font-size: 112.5%;
    font-family: 'IBM Plex Sans', sans-serif;
 
@@ -197,7 +197,7 @@ body {
 
 	hr {
 		border: 1px solid #DDD !important;
-		margin: 70px auto 70px auto;
+		margin: 40px auto 40px auto;
       width: 1046px;
 	}
 
@@ -276,7 +276,7 @@ body {
 
 	#index_getstarted {
 		text-align: center;
-		margin-bottom: 65px;
+		margin-bottom: 25px;
 
 		p {
 			margin-top: 10px;
@@ -371,13 +371,13 @@ body {
 
 footer {
 	background-color: #292a2d;
-	padding: 15px;
+	padding: 10px;
 	margin: 20px 0 0 0;
 	height: 122px;
 	color: #999;
 }
 footer a {
-	font-size: 110%;
+	font-size: 100%;
 	color: #999;
 	&:hover {
 		color: white;
@@ -387,7 +387,7 @@ footer a {
 .footerItem {
 	float: left;
 	border-left: 2px solid white;
-	padding-left: 10px;
+	padding-left: 5px;
 }
 
 .footerHeading {
