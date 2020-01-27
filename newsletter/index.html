@@ -5,21 +5,19 @@ title: Newsletter
 ---
 <head>
     <!--<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">-->
-    <link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-    <link href="{{site.baseurl}}/css/custom-style.css" type="text/css" rel="stylesheet">
+
+    <!--<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">-->
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+    </style>
     <style>
 
-      $primary: #3F51B5;
-      $dark-primary: #303F9F;
-      $light-primary: #C5CAE9;
-      $text: #FFFFFF;
-      $primary-text: #212121;
-      $secondary-text: #757575;
-      $accent: #FF4081;
-      section {
-      padding: 100px 0;
-      }
+      .container {
+        margin-right: auto;
+        margin-left: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+     }
 
       html, body {
         overflow-x: hidden;
@@ -30,205 +28,6 @@ title: Newsletter
         font-size: 17px;
         font-weight: 400;
         background-color: #fff;
-      }
-
-      h1 {
-        font-size: 200%;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        font-weight: 400;
-      }
-
-      .banner h2{
-        font-size: 30px;
-        letter-spacing: 0.5px;
-        font-weight: 600;
-        font-family: 'IBM Plex Sans';
-      }
-
-      .banner p{
-        font-size: 18px;
-        font-family: 'IBM Plex Sans';
-        letter-spacing: 0.5px;
-        font-weight: 600;
-        line-spacing: 1rem;
-      }
-
-      header {
-      	background: $primary;
-      	color: $text;
-      	padding: 150px 0;
-
-      	p {
-      		font-family: 'IBM Plex Sans';
-      		color: rgba(255, 255, 255, .2);
-      		margin-bottom: 0;
-      		font-size: 60px;
-      		margin-top: -30px;
-
-      	}
-      }
-      a {
-        font-family: 'IBM Plex Sans';
-      }
-
-    .timeline {
-      position: relative;
-    }
-    .timeline::before {
-      content: '';
-      background: #9EC3DC;
-      width: 5px;
-      height: 95%;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .timeline-item {
-      width: 100%;
-      margin-bottom: 50px;
-    }
-    .timeline-item:nth-child(even) .timeline-content {
-      float: right;
-      padding: 40px 30px 10px 30px;
-    }
-    .timeline-item:nth-child(even) .timeline-content .date {
-      right: auto;
-      left: 0;
-    }
-    .timeline-item:nth-child(even) .timeline-content::after {
-      content: '';
-      position: absolute;
-      border-style: solid;
-      width: 0;
-      height: 0;
-      top: 30px;
-      left: -15px;
-      border-width: 10px 15px 10px 0;
-      border-color: transparent #f5f5f5 transparent transparent;
-    }
-    .timeline-item::after {
-      content: '';
-      display: block;
-      clear: both;
-    }
-
-    .timeline-content {
-      position: relative;
-      width: 45%;
-      padding: 10px 30px;
-      border-radius: 4px;
-      background: #f5f5f5;
-      box-shadow: 0 20px 25px -15px rgba(0, 0, 0, 0.3);
-      font-family: 'IBM Plex Sans', sans-serif;
-    }
-    .timeline-content::after {
-      content: '';
-      position: absolute;
-      border-style: solid;
-      width: 0;
-      height: 0;
-      top: 30px;
-      right: -15px;
-      border-width: 10px 0 10px 15px;
-      border-color: transparent transparent transparent #f5f5f5;
-    }
-
-    .timeline-img {
-      width: 30px;
-      height: 30px;
-      background: #0E6DE7;
-      border-radius: 50%;
-      position: absolute;
-      left: 50%;
-      margin-top: 25px;
-      margin-left: -15px;
-    }
-
-
-    .timeline-card {
-      padding: 0 !important;
-    }
-    .timeline-card p {
-      padding: 0 20px;
-      font-family: 'IBM Plex Sans', sans-serif;
-    }
-    .timeline-card a {
-      margin-left: 20px;
-    }
-
-    .timeline-item .timeline-img-header {
-      background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4)), url("{{ site.baseurl }}/newsletter/bg1_blue.jpg") center center no-repeat;
-      background-size: cover;
-    }
-
-    .timeline-img-header {
-      height: 130px;
-      position: relative;
-      margin-bottom: 20px;
-    }
-    .timeline-img-header h2 {
-      color: #fff;
-      position: absolute;
-      bottom: 10px;
-      left: 20px;
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 22px;
-      line-height: normal;
-      font-weight: 600;
-    }
-
-    blockquote {
-      margin-top: 30px;
-      color: #757575;
-      border-left-color: #3F51B5;
-      padding: 0 20px;
-    }
-
-    .date {
-      background: #ACEAD9;
-      display: inline-block;
-      color: #000000;
-      padding: 5px;
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-    @media screen and (max-width: 768px) {
-      .timeline::before {
-        left: 50px;
-      }
-      .timeline .timeline-img {
-        left: 50px;
-      }
-      .timeline .timeline-content {
-        max-width: 100%;
-        width: auto;
-        margin-left: 70px;
-        font-family: 'IBM Plex Sans', sans-serif;
-      }
-      .timeline .timeline-item:nth-child(even) .timeline-content {
-        float: none;
-      }
-      .timeline .timeline-item:nth-child(odd) .timeline-content::after {
-        content: '';
-        position: absolute;
-        border-style: solid;
-        width: 0;
-        height: 0;
-        top: 30px;
-        left: -15px;
-        border-width: 10px 15px 10px 0;
-        border-color: transparent #f5f5f5 transparent transparent;
-      }
-    }
-
-      .twoColumns {
-          -webkit-columns: 1 200px;
-          -moz-columns: 1 200px;
-          columns: 1 200px;
       }
 
         .postItem {
@@ -279,80 +78,49 @@ title: Newsletter
             font-family: 'IBM Plex Sans', sans-serif;
             font-size: 85%;
         }
-    </style>
-    <script type="text/javascript">
-      $(function(){
-
-      window.sr = ScrollReveal();
-
-      if ($(window).width() < 768) {
-
-      	if ($('.timeline-content').hasClass('js--fadeInLeft')) {
-      		$('.timeline-content').removeClass('js--fadeInLeft').addClass('js--fadeInRight');
-      	}
-
-      	sr.reveal('.js--fadeInRight', {
-    	    origin: 'right',
-    	    distance: '300px',
-    	    easing: 'ease-in-out',
-    	    duration: 800,
-    	  });
-
-      } else {
-
-      	sr.reveal('.js--fadeInLeft', {
-    	    origin: 'left',
-    	    distance: '300px',
-    		  easing: 'ease-in-out',
-    	    duration: 800,
-    	  });
-
-    	  sr.reveal('.js--fadeInRight', {
-    	    origin: 'right',
-    	    distance: '300px',
-    	    easing: 'ease-in-out',
-    	    duration: 800,
-    	  });
-
+        .carousel {
+          //font-family: HelvNeuRomanForIBM;
+          //font-family: Lato;
+          font-family: 'IBM Plex Sans', sans-serif;
+          background-color: #28536f;
+          background-image: url(../assets/front-page/carousel-background.png);
+          height: 252px;
+        }
+        .carousel .carousel-inner .item .carousel-caption h1 {
+          text-align: left;
+          text-shadow: none;
+          margin-bottom: 10px;
+          margin-top: 36px;
+          font-size: 32px;
       }
 
-      sr.reveal('.js--fadeInLeft', {
-    	    origin: 'left',
-    	    distance: '300px',
-    		  easing: 'ease-in-out',
-    	    duration: 800,
-    	  });
+    </style>
 
-    	  sr.reveal('.js--fadeInRight', {
-    	    origin: 'right',
-    	    distance: '300px',
-    	    easing: 'ease-in-out',
-    	    duration: 800,
-    	  });
-
-
-    });
-    </script>
 </head>
 <div class="wrapper" style="width: 100%">
 
-<div class="bx--content" style="background-image: url('{{site.baseurl}}/blog/header-blog.jpg')">
-  <div class="banner">
-  <div class="bx--row" >
-    <div class="bx--col" style="padding-left: 30px; padding-top: 20px"><h2 style="color: #eee">Mobile Foundation Newsletter</h2>
+  <div id="myCarousel" class="carousel slide hidden-xs hidden-sm hidden-md" data-ride="carousel" role="banner">
+     <!-- Carousel indicators -->
+     <!--<ul class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+     </ul>-->
 
-    </div>
-    <br/>
-
+     <div class="carousel-inner" role="tablist" aria-label="Carousel animation of news items">
+        <div class="item active">
+           <div class="container">
+              <div class="row">
+                 <div class="col-md-7 carousel-caption" role="tab">
+                   <h1 class="no-anchor">Mobile Foundation Newsletter</h1>
+                   <p class="caption-text">Get the latest updates on Mobile Foundation</p>
+                   <p><a class="custombtn btn-lg btn-default containers" href="http://localhost:4000/blog/2019/05/30/leverage-ibm-support-portal/" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp;Subscribe</a></p>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
   </div>
-
-</div>
-</div>
-
-  <a href="{{site.baseurl}}/blog/2019/05/30/leverage-ibm-support-portal/" target="_blank"><span class="glyphicon glyphicon-bell" style="padding-left: 45px; padding-top: 20px;"></span>&nbsp;&nbsp;<span class="postsubTitle">Subscribe to get notified</span></a>
 <div class="bx--col" style="padding-left: 35px; padding-top: 20px; height: 70vh;">
-<h3 class="title is-4" style="padding-left: 15px;"><span class="postTitle1">Quarterly Newsletter Editions</span></h3>
-<!--<section id="blogPostsList" class="container"> -->
+<h3 style="padding-left: 15px;"><span class="postTitle1">Quarterly Newsletter Editions</span></h3>
 
 <div class="bx--col" style="padding-left: 30px; padding-top: 20px">
 
@@ -370,7 +138,7 @@ title: Newsletter
     </div>
 
 </div>
-<br/>
+
 
 <!-- Pagination links -->
 <!--<nav>
@@ -390,7 +158,7 @@ title: Newsletter
 
 <!-- </section> -->
 
-<br/>
+
 <!--<section style="margin-top: 20px">
   <div class="container">
     <div class="timeline-item">
@@ -414,8 +182,3 @@ title: Newsletter
 
   </div>
 </section>-->
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>

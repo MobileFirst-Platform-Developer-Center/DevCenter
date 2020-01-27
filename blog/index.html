@@ -6,8 +6,11 @@ title: Blog
 <head>
     <!--<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">-->
     <link href="https://unpkg.com/carbon-components/css/carbon-components.min.css" type="text/css" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <!--<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">-->
     <link href="{{site.baseurl}}/css/custom-style.css" type="text/css" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+    </style>
     <style>
 
       $primary: #3F51B5;
@@ -82,7 +85,7 @@ title: Blog
     }
     .timeline::before {
       content: '';
-      background: #C5CAE9;
+      background: #17a2b8;
       width: 5px;
       height: 95%;
       position: absolute;
@@ -143,7 +146,7 @@ title: Blog
     .timeline-img {
       width: 30px;
       height: 30px;
-      background: #3F51B5;
+      background: #17a2b8;
       border-radius: 50%;
       position: absolute;
       left: 50%;
@@ -235,7 +238,36 @@ title: Blog
             -moz-columns: 2 200px;
             columns: 2 200px;
         }
+        .carousel {
+        	//font-family: HelvNeuRomanForIBM;
+        	//font-family: Lato;
+        	font-family: 'IBM Plex Sans', sans-serif;
+        	background-color: #28536f;
+        	background-image: url(../assets/front-page/carousel-background.png);
+        	height: 232px;
 
+        }
+        .carousel .carousel-inner .item .carousel-caption h1 {
+          text-align: left;
+          text-shadow: none;
+          margin-bottom: 10px;
+          margin-top: 36px;
+          font-size: 32px;
+        }
+        .carousel .carousel-inner .item .carousel-caption .caption-text {
+          line-height: 23px;
+          font-size: 18px;
+          font-weight: 300;
+          text-align: left;
+          margin-bottom: 40px;
+      }
+      .carousel .carousel-inner .item .carousel-caption .caption-text2 {
+        line-height: 23px;
+        font-size: 14px;
+        font-weight: 300;
+        text-align: left;
+        margin-bottom: 40px;
+      }
         .postItem {
             margin-bottom: 10px;
         }
@@ -339,8 +371,31 @@ title: Blog
     </script>
 </head>
 <div class="wrapper" style="width: 100%">
+  <div id="myCarousel" class="carousel slide hidden-xs hidden-sm hidden-md" data-ride="carousel" role="banner">
+     <!-- Carousel indicators -->
+     <!--<ul class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+     </ul>-->
 
-<div class="bx--content" style="background-image: url('{{site.baseurl}}/blog/header-blog.jpg')">
+     <div class="carousel-inner" role="tablist" aria-label="Carousel animation of news items">
+        <div class="item active">
+           <div class="container">
+              <div class="row">
+                 <div class="col-md-7 carousel-caption" role="tab">
+                   <h1 class="no-anchor">Mobile Foundation Blog</h1>
+                   <p class="caption-text">Insights from Mobile Foundation developers</p>
+
+                   <p class="caption-text2" style="font-size: 14px"><span class="badge badge-light"><a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">contribution guidelines</a> </span>| <span class="badge badge-light"><a href="{{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/">iFix v8.0 announcements</a></span> | <span class="badge badge-light"><a href="{{ site.baseurl }}/blog/2018/05/18/7-1-master-ifix-release/">iFix v7.1 announcements</a></span> | <span class="badge badge-light"><a href="{{ site.baseurl }}/blog/2018/09/27/6-3-master-ifix-release/">iFix v6.3 announcements</a></span></p>
+                 </div>
+
+
+              </div>
+           </div>
+        </div>
+
+     </div>
+</div>
+<!--<div class="bx--content" style="background-image: url('{{site.baseurl}}/blog/header-blog.jpg')">
   <div class="banner">
   <div class="bx--row" >
     <div class="bx--col" style="padding-left: 30px; padding-top: 20px"><h2 style="color: #eee">Mobile Foundation Blog</h2>
@@ -353,7 +408,7 @@ title: Blog
     <br/>
   </div>
 </div>
-</div>
+</div>-->
 <section class="timeline" style="margin-top: 20px">
   <div class="container">
     {% for post in paginator.posts %} {% for tag in post.tags %} {% if tag == 'iFix' %} {% assign found_ifix = true %} {% break %} {% endif %} {% endfor%} {% if found_ifix != true %}

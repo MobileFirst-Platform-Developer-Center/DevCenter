@@ -10,12 +10,12 @@ $color_celeste_approx: #ccc;
     //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
     border-radius: 0;
     margin-bottom: 0;
-    background-color: #3d3d3d;
-    border-color: #3d3d3d;
+    background-color: #285675;
+    border-color: #285675;
     .logo {
       margin-top: -2px;
       margin-left: 0px;
-      font-size: 140%;
+      font-size: 150%;
       color: $white;
       .mobilefirst {
         font-weight: bold;
@@ -45,12 +45,12 @@ $color_celeste_approx: #ccc;
             background-color: $mine_shaft;
             color: $white;
             &:hover {
-              background-color: #3d3d3d;
+              background-color: #285675;
               border: 1px solid #00BFFF;
               color: $white;
             }
             &:focus {
-              background-color: #3d3d3d;
+              background-color: #285675;
               border: 1px solid #00BFFF;
               color: $white;
             }
@@ -66,23 +66,23 @@ $color_celeste_approx: #ccc;
           }
         }
         &.active > a {
-          background-color: #3d3d3d;
+          background-color: #285675;
           border: 1px solid #00BFFF;
           color: $white;
           &:hover {
-            background-color: #3d3d3d;
+            background-color: #285675;
             border: 1px solid #00BFFF;
             color: $white;
           }
           &:focus {
-            background-color: #3d3d3d;
+            background-color: #285675;
             border: 1px solid #00BFFF;
             color: $white;
           }
         }
       }
       > .active > a:focus {
-        background-color: #3d3d3d;
+        background-color: #1A394D;
         border: 1px solid #00BFFF;
         color: $white;
       }
@@ -109,6 +109,8 @@ $color_celeste_approx: #ccc;
     #pnext-search-input {
       height: 33px;
       border-radius: 4px 0 0 4px;
+      background-color: #285675;
+      color: #fff;
       &:focus {
         border-color: #ccc;
         box-shadow: none;
@@ -117,8 +119,16 @@ $color_celeste_approx: #ccc;
     }
     .input-group-btn:last-child > .btn {
         height: 33px;
+        background-color: #285675;
+    }
+    .btn-default {
+      color: #aaa;
+      border-color: #ccc;
     }
   }
+}
+.form-control{
+  color: #fcf8e3;
 }
 .dropdown-menu {
   opacity: 1.0 !important;
