@@ -120,7 +120,7 @@
             "name": "Blog",
             "path": "/blog"
         },{
-          "name": "Resources",
+          "name": "Labs",
           "path": "/labs",
           "children": [{
               "name": "Developers",
@@ -139,9 +139,6 @@
                   "name": "Foundation 7.1 Labs",
                   "path": "/administrators/7.1/intro"
               }]
-          }, {
-              "name": "Video Gallery",
-              "path": "/../video-gallery"
           }]
       },  {
           "name": "Help",
@@ -149,4 +146,7 @@
       }, {
           "name": "Newsletter",
           "path": "/../newsletter"
+      }, {
+          "name": "Videos",
+          "path": "/video-gallery"
       }]
