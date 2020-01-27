@@ -1,0 +1,40 @@
+---
+layout: default
+title: Video Gallery
+custom_js:
+- lib/magnific/jquery.magnific-popup.min.js
+- js/video-gallery.js
+---
+<head>
+  <link href="{{site.url}}{{site.baseurl}}{{page.url}}" rel="canonical"/>
+</head>
+<script id="videoTemplate" type="text/x-jsrender">
+{% raw %}
+<li class="col-md-3 col-sm-4 col-xs-6">
+    <figure>
+      <a href="{{:url}}" data-toggle="lightbox" data-width="960" data-gallery="youtubevideos">
+          <img src="{{:thumbnail}}" class="thumbnail img-responsive" alt="{{:caption}}">
+      </a>
+      {{for tags}}
+        <span class="videoTag label label-info" data-tag="{{:#data}}">{{:#data}}</span>
+      {{/for}}
+      <figcaption class="figure-caption">
+        {{:caption}}
+      </figcaption>
+    </figure>
+</li>
+{% endraw %}
+</script>
+<section class="container video-gallery" role="main">
+
+    <h2 class="no-anchor">Video Gallery<small> Click on a tag for filtered content</small></h2>
+    <br/>
+    Find more {{ site.data.keys.product_full }} and {{ site.data.keys.mf_bm }} videos in our <b>YouTube</b> channel: <br/><br/><img alt="YouTube" src="{{site.baseurl}}/assets/help/YouTube.png" style="width: 28px;margin-left:3px;margin-right:1px"/> <a href="https://www.youtube.com/c/IBMMobileDev"> <b>IBM Mobile Dev</b></a><br/><br/><!--<img alt="YouTube" src="{{site.baseurl}}/assets/help/YouTube.png" style="width: 28px;margin-left:3px;margin-right:1px"/> <a href="https://www.youtube.com/channel/UCh_xLgh2_kENFxAeN8hhkHw"> <em>Bluemix Mobile Foundation</em></a>-->
+    <br/>
+    <hr/>
+    <br/>
+    <div id="videoTags"></div>
+    <ul id="videosList" class="gallery row">
+
+    </ul>
+</section>
