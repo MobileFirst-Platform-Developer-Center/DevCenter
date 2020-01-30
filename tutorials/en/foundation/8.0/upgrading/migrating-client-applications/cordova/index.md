@@ -77,7 +77,7 @@ The following information is important to know before you use the migration assi
 
 * You must have an existing IBM MobileFirst Platform Foundation hybrid application or a Cordova application that you created with the `mfp cordova create` command.
 * You must have internet access.
-* You must have node.js version 4.0.0 or later installed.
+* You must have [node v6.x and npm v3.x](https://nodejs.org/dist/latest-v6.x/) installed to install migration assistance tool mfpmigrate-cli .
 * You must have the Cordova Command-Line Interface (CLI) installed, and any prerequisites installed that are required for using the Cordova CLI for your target platforms. For more information, see [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html) at the Apache Cordova website.
 * Review and understand the limitations of the migration process. For more information, see [Migrating apps from earlier releases](../).
 
