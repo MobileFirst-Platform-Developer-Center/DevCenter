@@ -20,11 +20,11 @@ Since iOS 12, Apple began warning developers about migrating to [WKWebView](http
 
 The message you see while you upload app using UIWebview is as below.
 
->*We identified one or more issues with a recent delivery for your app, [App Name & version number]. Your delivery was successful, but you may wish to correct the following issues in your next delivery:
+>We identified one or more issues with a recent delivery for your app, [App Name & version number]. Your delivery was successful, but you may wish to correct the following issues in your next delivery:
 
 >ITMS-90809: Deprecated API Usage – Apple will stop accepting submissions of apps that use UIWebView APIs. See https://developer.apple.com/documentation/uikit/uiwebview for more information.
 
->After you’ve corrected the issues, you can use Xcode or Application Loader to upload a new binary to App Store Connect.*
+>After you’ve corrected the issues, you can use Xcode or Application Loader to upload a new binary to App Store Connect.
 
 Upon app submission, Apple searches the app’s code for the “UIWebView” string then generates a submission warning if found. Therefore, a future release of MobileFirst based apps will be required to ensure that all references to UIWebView APIs are  removed.
 
