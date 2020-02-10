@@ -14,7 +14,7 @@ author:
 
 > This blog will provide you quick and handy information on installing Mobile Foundation (MF) server components using ANT Tasks. 
 
-> As a pre-requisite, you must have [installed the MF server](https://mobilefirstplatform.ibmcloud.com/blog/2020/01/21/ibm-mobile-foundation-server-installation-and-configuration/#mf-server-installation-using-installation-manager) using IBM Installation (IM) manager
+> As a pre-requisite, you must have [installed the MF server](https://mobilefirstplatform.ibmcloud.com/blog/2020/01/21/ibm-mobile-foundation-server-installation-and-configuration/#mf-server-installation-using-installation-manager) using IBM Installation (IM) manager.
 
 
 ### Why should I use the ANT tasks
@@ -43,15 +43,15 @@ author:
 
 - You can find the ANT tasks under MF server installation directory.
 
-- You don’t have to explicitly download and install ANT. The tool is deployed as a part of MF installer and can be found at /MobileFirst_Platform_Server_install_directory/tools/apache-ant-<version-num>.
+- You don’t have to explicitly download and install ANT. The tool is deployed as a part of MF installer and can be found at **/MobileFirst_Platform_Server_install_directory/tools/apache-ant-(version_num)**.
 
 - You can perform install, update and uninstall of MF server using the same ANT tasks.
 
-- ANT tasks w.r.t MF server components can be found at - /MobileFirst_Platform_Server_install_directory/MobileFirstServer/configuration-samples.
+- ANT tasks w.r.t MF server components can be found at - **/MobileFirst_Platform_Server_install_directory/MobileFirstServer/configuration-samples**.
 
-- ANT tasks w.r.t MF Analytics can be found at - /MobileFirst_Platform_Server_install_directory/Analytics/configuration-samples.
+- ANT tasks w.r.t MF Analytics can be found at - **/MobileFirst_Platform_Server_install_directory/Analytics/configuration-samples**.
 
-- ANT tasks w.r.t MF Application Center can be found at - /MobileFirst_Platform_Server_install_directory/ApplicationCenter/configuration-samples.
+- ANT tasks w.r.t MF Application Center can be found at - **/MobileFirst_Platform_Server_install_directory/ApplicationCenter/configuration-samples**.
 
 - You can also create a configuration with the Server Configuration Tool and export the Ant files by using **File → Export Configuration as Ant Files….** 
 
@@ -75,11 +75,11 @@ author:
 
 ### References 
 
-- You may refer the edited ANT tasks for reference [here](https://github.com/soshanth/SampleANT)
+- You may refer the edited ANT tasks for reference [here](https://github.com/soshanth/SampleANT).
 
-- You may also specify [extra JNDI properties](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/appserver/#specify-extra-jndi-properties)
+- You may also specify [extra JNDI properties](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/appserver/#specify-extra-jndi-properties).
 
-- Refer [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/appserver/#installing-with-ant-tasks) for detailed information on Installing using ANT tasks
+- Refer [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/appserver/#installing-with-ant-tasks) for detailed information on Installing using ANT tasks.
 
 
 
