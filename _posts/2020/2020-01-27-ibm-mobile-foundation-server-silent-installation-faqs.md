@@ -14,7 +14,7 @@ author:
 
 This blog gives you quick and handy information on the FAQs related to Silent Installation of Mobile Foundation (MF) Server.
 
-### What is Silent Installation 
+### What is Silent Installation
 
 You can install the MF server using the IBM Installation Manager (IM) either through wizard mode or though a XML file called response file.
 
@@ -35,12 +35,12 @@ A response file is a XML file that contains data required to complete the MF ser
 
 Below are the different ways of getting a response file -
 
-1.> **Download and use** the pre-recorded sample response files.
+1.> **Download and use** the pre-recorded sample response files.<br/>
 2.> **Record** a response file using the IM in wizard mode. You may record it on a different machine.
 
 ### How to use the Sample response files
 
-- Download and use the pre-recorded sample response files here(http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/Silent_Install_Sample_Files.zip).
+- Download and use the pre-recorded sample response files [here](http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/Silent_Install_Sample_Files.zip).
 
 - The sample response files provide templates for installing the MF Server on a specific setup.
 
@@ -64,7 +64,7 @@ Below are the different ways of getting a response file -
 
 - Using IM you can generate a response file based on the actions you take in the IM GUI.
 
-- When you record a response file, all of the selections that you make in the IM are stored in an XML file. 
+- When you record a response file, all of the selections that you make in the IM are stored in an XML file.
 
 - During silent installation IM uses the data in the XML response file to perform the installation.
 
@@ -87,4 +87,3 @@ Below are the different ways of getting a response file -
 - [MF Server installation](https://mobilefirstplatform.ibmcloud.com/blog/2020/01/21/ibm-mobile-foundation-server-installation-and-configuration/) is now complete.
 
 - Install the MF server to an [Application Server](http://mobilefirstplatform.ibmcloud.com/tutorials/it/foundation/8.0/installation-configuration/production/prod-env/appserver/).
-

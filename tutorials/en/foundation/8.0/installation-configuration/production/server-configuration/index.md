@@ -490,6 +490,7 @@ The following table lists the {{ site.data.keys.product_adj }} properties that a
 
 | Property | Description |
 |----------|-------------|
+| mfp.scheduler.startHour | Optional. Introduced from iFix level *8.0.0.0-MFPF-IF201907091643*. Scheduler run can be set for any time of customer’s choice instead of the default 1 AM. This property can take a value from 1 to 23. This property will ensure that the customer can configure their scheduler to start at a time when their traffic is light and also can ensure the scheduler runs despite the daily start of the server. <br/>**Important Note**: The value configured should have 4 hours difference with the server start time. Scheduler will skip its run, if the scheduler start time is within 4 hours of the server start and will schedule to run for same time next day. |
 | mfp.admin.jmx.dmgr.host | Mandatory. The host name of the deployment manager. WebSphere  Application Server Network Deployment only. |
 | mfp.admin.jmx.dmgr.port | Mandatory. The RMI or SOAP port of the deployment manager. WebSphere Application Server Network Deployment only. |
 | mfp.admin.jmx.host | Liberty only. The host name for the JMX REST connection. For Liberty collective, use the host name of the controller. |
