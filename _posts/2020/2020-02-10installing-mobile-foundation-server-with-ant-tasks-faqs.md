@@ -19,7 +19,7 @@ author:
 
 ### Why should I use the ANT tasks
 
-- The MF Server installation using IM will only copy the MF components on to the user’s machine. 
+- The IM installation of MF Server will only copy the MF artifacts on to the user’s machine. 
 
 - The ANT tasks will help you to create the required data structure on your database to store the MF related data.
 
