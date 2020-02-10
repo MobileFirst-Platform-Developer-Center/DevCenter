@@ -19,11 +19,11 @@ author:
 
 ### Why should I use the ANT tasks
 
-- The IM installation of MF Server will only copy the MF artifacts on to the user’s machine. 
+- Installing MF server using IM, will only copy the MF artifacts on your machine. 
 
 - The ANT tasks will help you to create the required data structure on your database to store the MF related data.
 
-- The ANT tasks will help you to apply the MF components on to your Application Server.
+- The ANT tasks will also help you to apply the MF components on to your Application Server.
 
 - Configuring the database and deploying the MF components can be done either by using the Server Configuration Tool (SCT) or the ANT tasks.
 
@@ -45,7 +45,7 @@ author:
 
 - You don’t have to explicitly download and install ANT. The tool is deployed as a part of MF installer and can be found at **/MobileFirst_Platform_Server_install_directory/tools/apache-ant-(version_num)**.
 
-- You can perform install, update and uninstall of MF server using the same ANT tasks.
+- You can install, update and uninstall the MF server using the same ANT tasks.
 
 - ANT tasks w.r.t MF server components can be found at - **/MobileFirst_Platform_Server_install_directory/MobileFirstServer/configuration-samples**.
 
@@ -58,11 +58,11 @@ author:
 
 ### How to use them
 
-- ANT tasks are written in xml format and their structure varies. There are templates for configuring MF components on a specific setup.
+- ANT tasks are written in xml format and their structure varies.
 
-- ANT task templates specific to a Database and Application server are provided. Pick a ANT task specific to your environment. 
+- ANT task templates specific to a Database and Application server are provided. Pick an ANT task specific to your environment. 
 
-- Review the in-line comments in the ANT tasks before entering all the required properties.
+- Review the in-line comments in the ANT tasks before entering the required properties.
 
 - Run the command to configure the databases : **/MobileFirst_Platform_Server_install_directory/shortcuts/ant -f your_ant_file databases** .
 
