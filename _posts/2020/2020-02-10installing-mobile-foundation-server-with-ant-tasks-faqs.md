@@ -79,7 +79,7 @@ author:
 
 - You may also specify [extra JNDI properties](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/appserver/#specify-extra-jndi-properties).
 
-- Refer [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/appserver/#installing-with-ant-tasks), for detailed information on Installing using ANT tasks.
+- Refer [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/appserver/#installing-with-ant-tasks) for detailed information on Installing using ANT tasks.
 
 
 
