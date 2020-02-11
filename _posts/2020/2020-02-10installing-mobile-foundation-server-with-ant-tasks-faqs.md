@@ -1,6 +1,6 @@
 ---
 title: Installing Mobile Foundation Server with Ant tasks - FAQs
-date: 2020-02-12
+date: 2020-02-11
 tags:
 - MobileFirst_Platform
 - MobileFirst_Foundation
@@ -47,28 +47,28 @@ author:
 
 - You can install, update and uninstall the MF server using the same ANT tasks.
 
-- ANT tasks w.r.t MF server components can be found at - **/MobileFirst_Platform_Server_install_directory/MobileFirstServer/configuration-samples**.
+- ANT tasks w.r.t. MF server components can be found at - **/MobileFirst_Platform_Server_install_directory/MobileFirstServer/configuration-samples**.
 
-- ANT tasks w.r.t MF Analytics can be found at - **/MobileFirst_Platform_Server_install_directory/Analytics/configuration-samples**.
+- ANT tasks w.r.t. MF Analytics can be found at - **/MobileFirst_Platform_Server_install_directory/Analytics/configuration-samples**.
 
-- ANT tasks w.r.t MF Application Center can be found at - **/MobileFirst_Platform_Server_install_directory/ApplicationCenter/configuration-samples**.
+- ANT tasks w.r.t. MF Application Center can be found at - **/MobileFirst_Platform_Server_install_directory/ApplicationCenter/configuration-samples**.
 
-- You can also create a configuration with the Server Configuration Tool and export the Ant files by using **File → Export Configuration as Ant Files….** 
+- You can also create a configuration with the Server Configuration Tool and export the Ant files by using **File → Export Configuration as Ant Files…**.
 
 
 ### How to use them
 
-- ANT tasks are written in xml format and their structure varies.
+- ANT tasks are written in XML format and their structure varies.
 
 - ANT task templates specific to a Database and Application server are provided. Pick an ANT task specific to your environment. 
 
 - Review the in-line comments in the ANT tasks before entering the required properties.
 
-- Run the command to configure the databases : **/MobileFirst_Platform_Server_install_directory/shortcuts/ant -f your_ant_file databases** .
+- Run the command to configure the databases: **/MobileFirst_Platform_Server_install_directory/shortcuts/ant -f your_ant_file databases**.
 
-- Run the command to install the MF components on to the Application Server : **/MobileFirst_Platform_Server_install_directory/shortcuts/ant -f your_ant_file install** . 
+- Run the command to install the MF components on to the Application Server : **/MobileFirst_Platform_Server_install_directory/shortcuts/ant -f your_ant_file install**. 
 
-- Run the command to update the MF components on to the Application Server : **/MobileFirst_Platform_Server_install_directory/shortcuts/ant -f your_ant_file update** . 
+- Run the command to update the MF components on to the Application Server : **/MobileFirst_Platform_Server_install_directory/shortcuts/ant -f your_ant_file update**. 
 
 - After the installation, make a copy of the Ant file so that you can reuse it to apply a fix pack.
 
@@ -79,7 +79,7 @@ author:
 
 - You may also specify [extra JNDI properties](http://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/appserver/#specify-extra-jndi-properties).
 
-- Refer [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/appserver/#installing-with-ant-tasks) for detailed information on Installing using ANT tasks.
+- Refer [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/appserver/#installing-with-ant-tasks), for detailed information on Installing using ANT tasks.
 
 
 
