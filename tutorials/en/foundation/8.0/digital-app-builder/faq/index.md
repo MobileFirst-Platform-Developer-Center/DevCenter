@@ -2,7 +2,7 @@
 layout: tutorial
 title: Frequently Asked Questions
 breadcrumb_title: FAQs
-weight: 19
+weight: 20
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
