@@ -10,7 +10,27 @@ version:
 author:
   name: Srihari Kulkarni
 ---
+<style>
+.audio-background {
+  background-image: linear-gradient(to right, rgba(255,255,255,0), #ffff99);
+;
+}
+</style>
+<script>
+$('#audioMFWebView').on('ended', function() {
+        manageImageObjectsLevel();
+}).get(0).play();
+</script>
 
+<div class="container audio-background">
+  <h3>Listen to the post excerpt</h3>
+  <audio id="audioMFWebView" controls>
+  <source src="{{site.baseurl}}/assets/blog/2020-01-12-support-new-requirements-mobilefirst-71/support-new-requirements-mobilefirst-71.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+  </audio>
+
+</div>
+<br/>
 MobileFirst Platform Foundation version v7.1 is approaching its end of support, which is on [March 31, 2020](https://www-01.ibm.com/support/docview.wss?uid=swg3s894700o65547s81). Any upcoming requirements or deprecations from the Apple or Google ecosystem are considered [new features](https://mobilefirstplatform.ibmcloud.com/blog/2017/01/11/support-plan-for-next-android-ios-mobile-os/), and therefore <span style="text-decoration: underline">will not be supported even under an extended support contract</span>. This applies to the following list of upcoming requirements.
 
 1. Use of UIWebView - New apps containing UIWebView [will not be accepted to the Apple App Store](https://developer.apple.com/news/?id=12232019b), starting April 2020 and app updates using UIWebView from December 2020.
