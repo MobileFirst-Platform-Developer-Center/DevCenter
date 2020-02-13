@@ -106,10 +106,3 @@ You can open an existing app in one of the following ways:
 * If you have seleced Code mode, clicking **Get started** displays the Digital App Builder workspace for updating an existing application.
 
     ![DAB workspace](dab-create-code-mode.png)
-
-### Using templates
-{: #using-templates }
-
-You can use templates to quickly build your application. These are specific feature enabled app templates that will help you to quickly modify and develop the app.
-
-**Mod Resorts**: This templates provides a sample app with the usecase of resorts app. It contains the login module, chat module, in-app feedback module to start with. You will have to deploy the Login adapter and configure your own chatbot credentials.
