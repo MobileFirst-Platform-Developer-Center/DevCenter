@@ -12,7 +12,7 @@ author:
 ---
 <style>
 .audio-background {
-  background-image: linear-gradient(to right, rgba(255,255,255,0), #285675);
+  background-image: linear-gradient(to right, rgba(255,255,255,0), #ffff99);
 ;
 }
 </style>

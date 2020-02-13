@@ -12,7 +12,27 @@ author:
 additional_authors:
   - Vivin Krishnan
 ---
+<style>
+.audio-background {
+  background-image: linear-gradient(to right, rgba(255,255,255,0), #ffff99);
+;
+}
+</style>
+<script>
+$('#audioMFWebView').on('ended', function() {
+        manageImageObjectsLevel();
+}).get(0).play();
+</script>
 
+<div class="container audio-background">
+  <h3>Listen to the post excerpt</h3>
+  <audio id="audioMFWebView" controls>
+  <source src="{{site.baseurl}}/assets/blog/2020-01-03-http2-cert-based-notifications/http2-cert-based-notifications.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+  </audio>
+
+</div>
+<br/>
 [Apple Push Notification Service Update](https://developer.apple.com/news/?id=11042019a) announced the following.
 
 >If you send push notifications with the legacy binary protocol, we recommend updating to the HTTP/2-based APNs provider API as soon as possible. You will be able to take advantage of great modern features such as authentication with a JSON Web Token, improved error messaging, and per-notification feedback.
