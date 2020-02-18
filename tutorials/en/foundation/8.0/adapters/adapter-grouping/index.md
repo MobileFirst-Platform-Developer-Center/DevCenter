@@ -76,7 +76,7 @@ curl -X POST --user admin:admin --header 'Content-Type: application/json' -- hea
 #### Retrieve Adapter Group Configuration
 To get an already deployed adapter group configuration, use the following Mobile Foundation Administration API.
 
-**GET** ```http://<host>:<port>/mfpadmin/management-apis/2.0/runtimes/<runtime>/adapterGroupConfig```
+**GET** `http://<host>:<port>/mfpadmin/management-apis/2.0/runtimes/<runtime>/adapterGroupConfig`
 
 For example,
 
@@ -87,7 +87,7 @@ curl -X GET --user admin:admin --header 'Content-Type: application/json' "http:/
 #### Delete Adapter Group Configuration
 To delete an already deployed adapter group configuration, use the following Mobile Foundation Administration API.
 
-**DELETE** ```http://<host>:<port>/mfpadmin/management-apis/2.0/runtimes/<runtime>/adapterGroupConfig```
+**DELETE** `http://<host>:<port>/mfpadmin/management-apis/2.0/runtimes/<runtime>/adapterGroupConfig`
 
 For example,
 
