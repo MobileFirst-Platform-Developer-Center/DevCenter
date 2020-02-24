@@ -13,3 +13,4 @@ Find answers for frequantly asked questions about problems you may encounter whi
 * [Push Notifications]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/notifications)
 * [JSONStore]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/jsonstore)
 * [Analytics]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/analytics)
+* [AnalyticsReceiver]({{ site.baseurl }}/tutorials/en/foundation/8.0/troubleshooting/analyticsreceiver)
