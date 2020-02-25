@@ -15,7 +15,7 @@ Find information to help resolve issues that you might encounter when you use th
   <div class="panel-body">
   <p>Check the following possibilities.</p>
   <ul>
-    <li>Verify that your {{ site.data.keys.mf_server }} points to right values of {{ site.data.keys.mf_analytics_receiver }}. Ensure that mfp.analytics.receiver.url poiting to {{ site.data.keys.mf_analytics_receiver }} specific rest endpoint (http://hostip:port/analytics-receiver/rest). </li>
+    <li>Verify that your {{ site.data.keys.mf_server }} points to right values of {{ site.data.keys.mf_analytics_receiver }}. Ensure that mfp.analytics.receiver.url pointing to {{ site.data.keys.mf_analytics_receiver }} specific rest endpoint (http://hostip:port/analytics-receiver/rest). </li>
     <li>Also make sure the endpoint url contains fully qualified hostname. Otherwise mobile application will failed to communicate with {{ site.data.keys.mf_analytics_receiver }} and expected to throw following error: 
 
 {% highlight xml %}

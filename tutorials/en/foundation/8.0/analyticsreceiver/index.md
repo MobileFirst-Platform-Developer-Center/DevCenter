@@ -8,18 +8,18 @@ show_children: true
 ## Overview
 {: #overview }
 
-The {{ site.data.keys.mf_analytics_receiver_short }} is an optional service which receives logs from mobile applications and forward them to {{ site.data.keys.mf_analytics_short }} in a phassed manner using inmemory event queue. {{ site.data.keys.mf_analytics_receiver_short }} maintains inmemory event queue to store the logs before sending them to {{ site.data.keys.mf_analytics_short }}. Enableing this service will reduce major work done by {{ site.data.keys.mf_server }} to receive logs via loguploader api. So It improves performance of  {{ site.data.keys.mf_server }} by reducing number of threads and reduces heap usage. Absence of this service, {{ site.data.keys.mf_server }} will handle client logs and forward them to {{ site.data.keys.mf_analytics_short }}.
+The {{ site.data.keys.mf_analytics_receiver_short }} is an optional service which receives logs from mobile applications and forward them to {{ site.data.keys.mf_analytics_short }} in a phassed manner using inmemory event queue. {{ site.data.keys.mf_analytics_receiver_short }} maintains inmemory event queue to store the logs before sending them to {{ site.data.keys.mf_analytics_short }}. Enableing this service will reduce major work done by {{ site.data.keys.mf_server }} to receive logs via loguploader api. So It improves performance of  {{ site.data.keys.mf_server }} by reducing number of threads and heap usage. Absence of this service, {{ site.data.keys.mf_server }} will handle client logs and forward them to {{ site.data.keys.mf_analytics_short }}.
 
 ## {{ site.data.keys.mf_analytics_receiver_short }} workflow
 {: #analytics-receiver-workflow }
 
-Configure {{ site.data.keys.mf_analytics_receiver_short }} in a separate node since it requires enough heap space to store logs into inmemory queue. 
+Configure {{ site.data.keys.mf_analytics_receiver_short }} in a separate node since it requires enough heap space to store logs into inmemory queue before it transmits to  {{ site.data.keys.mf_analytics_short }}. 
 
-{{ site.data.keys.mf_analytics_receiver_short }} should reference {{ site.data.keys.mf_analytics_short }}  details inroder to forward the forward the received logs. i.e JNDI setting for the service will point to the URL and credentials of {{ site.data.keys.mf_analytics_short }}.
+{{ site.data.keys.mf_analytics_receiver_short }} should reference {{ site.data.keys.mf_analytics_short }}  details inroder to forward the received logs. i.e JNDI setting for the service should point to the URL and credentials of {{ site.data.keys.mf_analytics_short }}.
 
-By default mobile applications send the logs to  {{ site.data.keys.mf_server }}. But if {{ site.data.keys.mf_analytics_receiver_short }} enabled then {{ site.data.keys.mf_server }} will inform about receiver url and credentials to mobile applications so that all the logs will be send to {{ site.data.keys.mf_analytics_receiver_short }}. So JNDI env setup for {{ site.data.keys.mf_server }} will have reference to {{ site.data.keys.mf_analytics_receiver_short }} url and its credentials. 
+By default mobile applications send the logs to  {{ site.data.keys.mf_server }}. Upon enabling {{ site.data.keys.mf_analytics_receiver_short }}, all the client logs will be transmitted to {{ site.data.keys.mf_analytics_receiver_short }}. i.e Enabling {{ site.data.keys.mf_analytics_receiver_short }}, {{ site.data.keys.mf_server }} will communicate about receiver url and credentials to mobile applications whenever mobile apps register with {{ site.data.keys.mf_server }}. Further to that all the logs will be send to {{ site.data.keys.mf_analytics_receiver_short }} which further trasmit the logs to {{ site.data.keys.mf_analytics_short }}. So JNDI env setup for {{ site.data.keys.mf_server }} should have reference to {{ site.data.keys.mf_analytics_receiver_short }} url and its credentials. 
 
-As soon as application registers with  {{ site.data.keys.mf_server }}, it will transfer url and credential details of {{ site.data.keys.mf_analytics_receiver_short }} to mobile application. Upon receiving {{ site.data.keys.mf_analytics_receiver_short }} details mobile application stores them into security prefs and use them for sending logs. 
+On sucessfull registeration of application with {{ site.data.keys.mf_server }}, application expected to receive url and credential details of {{ site.data.keys.mf_analytics_receiver_short }} from {{ site.data.keys.mf_server }}. Upon receiving {{ site.data.keys.mf_analytics_receiver_short }} details mobile application stores them into security prefs and use them for sending logs. 
 
 ![Analytics Receiver Workflow](mfp_operational_analytics_receiver.jpg)
 
