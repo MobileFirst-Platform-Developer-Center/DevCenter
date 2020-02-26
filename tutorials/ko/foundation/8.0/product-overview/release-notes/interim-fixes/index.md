@@ -31,11 +31,11 @@ Mobile Foundation에서는 이제 Windows Server 2016 SE 및 Oracle 18c를 지�
 
 ##### <span style="color:NAVY">**애플리케이션 개발 프레임워크를 위한 지원**</span>
 
-Mobile Foundation은 [iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/), iPadOS 및 [Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/)에 대한 지원과 함께 Apple 및 Google에서 릴리스하는 최신 프레임워크를 지원합니다. 플랫폼에서도 Swift 5용 SDK를 제공됩니다. 
+Mobile Foundation은 [iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/), iPadOS 및 [Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/)에 대한 지원과 함께 Apple 및 Google에서 릴리스하는 최신 프레임워크를 지원합니다. 플랫폼에서도 Swift 5용 SDK를 제공됩니다.
 
 ##### <span style="color:NAVY">**API Proxy를 사용하여 백엔드 앱에 안전하게 연결**</span>
 
-엔터프라이즈 백엔드에 연결하는 경우 API Proxy를 사용하여 Mobile Foundation 플랫폼의 보안 및 분석을 활용할 수 있습니다. API Proxy는 실제 백엔드에 대한 요청을 대신합니다.[자세히 보기]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/).
+엔터프라이즈 백엔드에 연결하는 경우 API Proxy를 사용하여 Mobile Foundation 플랫폼의 보안 및 분석을 활용할 수 있습니다. API Proxy는 실제 백엔드에 대한 요청을 대신합니다. [자세히 보기]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/).
 
 #### <span style="color:Black">분석</span>
 ##### <span style="color:NAVY">**앱 내 피드백**</span>

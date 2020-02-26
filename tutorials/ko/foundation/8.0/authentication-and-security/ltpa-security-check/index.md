@@ -51,7 +51,7 @@ LTPA(Light weight Third-Party Authentication) 토큰은 IBM WebSphere Applicatio
 
 이 구성은 LTPA 기반 인증을 위한 WebSphere DataPower로 성공적으로 테스트되었습니다. 인증에 성공하면 게이트웨이는(HTTP 쿠키의 양식으로) LTPA 토큰을 WebSphere Application Server로 보내며, 여기에서 LTPA 토큰을 유효성 검증하고, 호출자 프린시펄을 작성합니다. {{ site.data.keys.product }}에서는 필요에 따라 이 호출자 프린시펄을 사용할 수 있습니다.
 
-##  {{ site.data.keys.product_adj }} LTPA 기반 SSO 보안 검사
+## {{ site.data.keys.product_adj }} LTPA 기반 SSO 보안 검사
 {: #the-mobilefirst-ltpa-based-sso-security-check }
 사전 정의된 {{ site.data.keys.product_adj }} LTPA 기반 싱글 사인온(SSO) 보안 검사(**LtpaBasedSSO**)는 WebSphere Application Server LTPA 프로토콜과 {{ site.data.keys.product }}의 통합을 가능하게 합니다. 이 보안 검사를 통해 이전 절에서 설명한 대로 LTPA 기반 게이트웨이 토폴로지 내에서 {{ site.data.keys.mf_server }}의 인스턴스를 통합할 수 있고 SSO LTPA 토큰으로 사용자를 인증하는 백엔드 서비스를 사용할 수 있습니다.
 

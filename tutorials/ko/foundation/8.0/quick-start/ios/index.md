@@ -95,40 +95,34 @@ weight: 2
 
    ```swift
    @IBAction func getAccessToken(sender: AnyObject) {
-        self.testServerButton.enabled = false
-
-        let serverURL = WLClient.sharedInstance().serverUrl()
-
-        connectionStatusLabel.text = "Connecting to server...\n\(serverURL)"
+        self.testServerButton.isEnabled = false
+        let serverURL = WLClientSwift.sharedInstance().serverUrl();
+        connectionStatusLabel.text = "Connecting to server...\n\(String(describing: serverURL))"
         print("Testing Server Connection")
-        WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { (token, error) -> Void in
-
+        WLAuthorizationManagerSwift.sharedInstance().obtainAccessToken(forScope: nil) { (token,error) -> Void in
             if (error != nil) {
                 self.titleLabel.text = "Bummer..."
-                self.connectionStatusLabel.text = "Failed to connect to {{ site.data.keys.mf_server }}\n\(serverURL)"
-                print("Did not recieve an access token from server: " + error.description)
+                self.connectionStatusLabel.text = "Failed to connect to MobileFirst Server\n\(String(describing: serverURL))"
+                print("Did not receive an access token from server: " + error.debugDescription)
             } else {
                 self.titleLabel.text = "Yay!"
-                self.connectionStatusLabel.text = "Connected to {{ site.data.keys.mf_server }}\n\(serverURL)"
-                print("Recieved the following access token value: " + token.value)
-
-                let url = NSURL(string: "/adapters/javaAdapter/resource/greet/")
-                let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-
-                request.setQueryParameterValue("world", forName: "name")
-                request.sendWithCompletionHandler { (response, error) -> Void in
+                self.connectionStatusLabel.text = "Connected to MobileFirst Server\n\(String(describing: serverURL))"
+                print("Received the following access token value: " + (token?.value)!);
+                let url = URL(string: "/adapters/javaAdapter/resource/greet/");
+                let request = WLResourceRequestSwift(url: url!, method: WLResourceRequestSwift.WLHttpMethodGet);
+                request.setQueryParameterValue(parameterValue: "world", forName: "name");
+                request.send(onCompletion: { (response, error) in
                     if (error != nil){
-                        NSLog("Failure: " + error.description)
+                        print("Failure: " , error!);
                     }
                     else if (response != nil){
-                        NSLog("Success: " + response.responseText)
+                        print("Success: " + response!.responseText);
                     }
-                }
+                })
             }
-
-            self.testServerButton.enabled = true
+            self.testServerButton.isEnabled = true
         }
-   }
+    }
    ```
 
 ### 4. 어댑터 배치

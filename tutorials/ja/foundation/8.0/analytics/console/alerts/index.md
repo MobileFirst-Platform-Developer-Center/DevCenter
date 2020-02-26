@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: アラートの管理
-breadcrumb_title: Alerts
+breadcrumb_title: アラート
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

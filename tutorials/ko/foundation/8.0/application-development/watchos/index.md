@@ -74,10 +74,10 @@ watchOS 개발 시에는 {{ site.data.keys.product_adj }} 앱에 기능을 추�
 
 | 기능 | 제한사항 |
 |---------|------------|
-| openSSL |지원되지 않음 |
-| JSONStore|지원되지 않음 |
-| 알림 |지원되지 않음 |
-| {{ site.data.keys.product_adj }} 코드에 의해 표시되는 메시지 경보 |지원되지 않음 |
+| openSSL | 지원되지 않음 |
+| JSONStore| 지원되지 않음 |
+| 알림 | 지원되지 않음 |
+| {{ site.data.keys.product_adj }} 코드에 의해 표시되는 메시지 경보 | 지원되지 않음 |
 | 원격 사용 안함/알림	| 사용자 정의 필요(아래 참조) |
 | 사용자 이름/비밀번호 보안 검사 | CredentialsValidation 보안 검사 사용 |
 

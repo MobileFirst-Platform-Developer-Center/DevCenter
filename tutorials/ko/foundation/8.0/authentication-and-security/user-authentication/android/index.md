@@ -68,7 +68,7 @@ public void login(JSONObject credentials){
 ```
 
 > **참고:**
->`WLAuthorizationManager` `login()` API는 자체 `onSuccess` 및 `onFailure` 메소드를 보유하며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` 메소드 **역시** 호출됩니다.
+>`WLAuthorizationManager` `login()` API에는 자체 `onSuccess` 및 `onFailure` 메소드가 있으며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` 메소드 **역시** 호출됩니다.
 
 ## 액세스 토큰 얻기
 {: #obtaining-an-access-token }
@@ -91,7 +91,7 @@ WLAuthorizationManager.getInstance().obtainAccessToken(scope, new WLAccessTokenL
 ```
 
 > **참고:**
-> `WLAuthorizationManager` `obtainAccessToken()` API는 자체 `onSuccess` 및 `onFailure` 메소드를 보유하며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` 메소드 **역시** 호출됩니다.
+> `WLAuthorizationManager` `obtainAccessToken()` API에는 자체 `onSuccess` 및 `onFailure` 메소드가 있으며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` 메소드 **역시** 호출됩니다.
 
 클라이언트가 이미 로그인되어 있거나 *remembered* 상태인 경우 API가 성공을 트리거합니다. 클라이언트가 로그인되지 않은 경우 보안 검사가 인증 확인을 다시 전송합니다.
 

@@ -64,14 +64,14 @@ weight: 6
     > 여기서부터 **webapp** 폴더를 웹 애플리케이션의 개발 위치로 간주하십시오.
 
 2. `mvn clean install` 명령을 실행하여 애플리케이션의 웹 리소스가 포함된 .war 파일을 생성하십시오.  
-생성된 .war 파일은 **[MyWebApp] → target** 폴더에 있습니다.
+   생성된 .war 파일은 **[MyWebApp] → target** 폴더에 있습니다.
    
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 웹 리소스를 업데이트할 때마다 `mvn clean install`을 실행해야 합니다.
 
 ### 애플리케이션 서버에 Maven webapp 추가
 {: #adding-the-maven-webapp-to-the-application-server }
 1. WebSphere Application Server의 **server.xml 파일**을 편집하십시오.  
-{{ site.data.keys.mf_dev_kit }}을 사용하는 경우 파일의 위치는 [**{{ site.data.keys.mf_dev_kit }}] → mfp-server → user → servers → mfp** 폴더입니다. 다음 항목을 추가하십시오.
+    {{ site.data.keys.mf_dev_kit }}을 사용하는 경우 파일의 위치는 [**{{ site.data.keys.mf_dev_kit }}] → mfp-server → user → servers → mfp** 폴더입니다. 다음 항목을 추가하십시오.
 
    ```xml
    <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>

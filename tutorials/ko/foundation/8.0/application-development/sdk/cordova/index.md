@@ -27,7 +27,7 @@ MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음�
 * cordova-android: **>= 6.1.2 및 < 9.0**
 * cordova-windows: **>= 5.0.0 및 < 8.0**
 
->**참고:** **cordova-windows** 최신 공개 버전에는 버그가 있으므로, 앱을 시작하는 동안 예외가 발생합니다. Apache Cordova는 개발 저장소에서 문제를 수정했지만 아직 공개되지 않았습니다. 수정사항이 있는 마스터 저장소의 *cordova-windows* 버전을 사용하도록 권장합니다. 다음은 수정사항을 포함하는 *cordova-windows* 플랫폼을 추가할 때 사용할 수 있는 명령입니다. 
+>**참고:** **cordova-windows** 최신 공개 버전에는 버그가 있으므로, 앱을 시작하는 동안 예외가 발생합니다. Apache Cordova는 개발 저장소에서 문제를 수정했지만 아직 공개되지 않았습니다. 수정사항이 있는 마스터 저장소의 *cordova-windows* 버전을 사용하도록 권장합니다. 다음은 수정사항을 포함하는 *cordova-windows* 플랫폼을 추가할 때 사용할 수 있는 명령입니다.
 ```bash
 cordova platform add https://github.com/apache/cordova-windows
 ```
@@ -96,7 +96,7 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 #### 새 애플리케이션
 {: #new-application }
 1. 다음과 같이 Cordova 프로젝트를 작성하십시오. `cordova create projectName applicationId applicationName --template cordova-template-mfp`  
-예:
+   예:
 
    ```bash
    cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
@@ -351,7 +351,7 @@ cordova create <your-appFolder-name> <package-name>
 
 다음 명령을 사용하여 MFP 플러그인을 추가하십시오.
 ```bash
-   cordova plugin add cordova-plugin-mfp
+cordova plugin add cordova-plugin-mfp
 ```
 MFP 서버(로컬에 호스팅된 서버 또는 IBM Cloud의 서버일 수 있음)에 ping을 실행하는 데 사용할 수 있는 단추를 추가하십시오. 단추를 클릭하여 MFP 서버에 ping을 실행하십시오.
 다음과 같이 아래 샘플 코드를 사용할 수 있습니다.
@@ -399,13 +399,13 @@ MFP 서버(로컬에 호스팅된 서버 또는 IBM Cloud의 서버일 수 있�
 
 ```javascript
 
-   var Messages = {
+var Messages = {
   // Add here your messages for the default language.
   // Generate a similar file with a language suffix containing the translated messages.
   // key1 : message1,
 };
 
-   var wlInitOptions = {
+var wlInitOptions = {
   // Options to initialize with the WL.Client object.
   // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.
    mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
@@ -556,7 +556,7 @@ If you click the button to ping MFP on the browser running on port `8000`, the p
 다음 명령을 사용하여 앱을 미리 볼 수 있습니다.
 
 ```bash
-    mfpdev app preview
+mfpdev app preview
 ```
 
 지원되는 유일한 브라우저 옵션은 *Simple Browser 렌더링*입니다. 옵션 *모바일 브라우저 지원*은 브라우저 플랫폼에서 지원되지 않습니다.

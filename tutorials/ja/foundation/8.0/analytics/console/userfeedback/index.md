@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: アプリ内ユーザー・フィードバック
-breadcrumb_title: User Feedback
+breadcrumb_title: ユーザー・フィードバック
 relevantTo: [ios,android,cordova]
 weight: 5
 ---

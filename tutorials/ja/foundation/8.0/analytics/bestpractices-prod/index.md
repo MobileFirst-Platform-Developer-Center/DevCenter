@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics 実動クラスターのセットアップのベスト・プラクティス
-breadcrumb_title: Best Practices
+breadcrumb_title: ベスト・プラクティス
 relevantTo: [ios,android,javascript]
 weight: 6
 ---

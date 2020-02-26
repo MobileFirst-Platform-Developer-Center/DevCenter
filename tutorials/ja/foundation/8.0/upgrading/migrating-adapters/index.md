@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server V8.0.0 で動作するようにするための既存のアダプターのマイグレーション
-breadcrumb_title: Migrating existing adapters
+breadcrumb_title: 既存のアダプターのマイグレーション
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
