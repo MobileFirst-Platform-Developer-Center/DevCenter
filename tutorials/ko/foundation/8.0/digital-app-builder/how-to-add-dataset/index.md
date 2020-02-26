@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 데이터 세트 추가
-weight: 7
+weight: 8
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

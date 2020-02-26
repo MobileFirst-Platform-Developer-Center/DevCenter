@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java 令牌验证程序
-breadcrumb_title: Java Token Validator
+breadcrumb_title: Java 令牌验证程序
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:

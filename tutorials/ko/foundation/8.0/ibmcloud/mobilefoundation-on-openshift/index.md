@@ -144,6 +144,12 @@ OCP에 Mobile Foundation을 배치하는 단계는 OCP 인타이틀먼트를 확
     sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/cluster_role_binding.yaml
     ```
 
+    **Operator 이미지 태그 1.0.11 이상의 경우 아래 명령을 사용하십시오.**
+
+    ```bash
+    sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/role_binding.yaml
+    ```
+
 3. 다음 명령을 실행하여, CRD, Operator를 배치하고 SCC(Security Context Constraints)를 설치하십시오.
 
     ```bash
@@ -151,6 +157,15 @@ OCP에 Mobile Foundation을 배치하는 단계는 OCP 인타이틀먼트를 확
     oc create -f deploy/
     oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
     ```
+    **Operator 이미지 태그 1.0.11 이상의 경우 아래 명령을 사용하십시오.**
+
+    ```bash
+    oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
+    oc create -f deploy/
+    oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
+    oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$MFOS_PROJECT:mf-operator
+    ```
+
 
 ### IBM Mobile Foundation 컴포넌트 배치
 {: #deploy-mf-components}

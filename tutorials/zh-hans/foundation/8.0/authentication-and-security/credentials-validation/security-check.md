@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 实现 CredentialsValidationSecurityCheck 类
-breadcrumb_title: Security Check
+breadcrumb_title: 安全性检查
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
@@ -106,7 +106,7 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
     public String pinCode;
 
     public PinCodeConfig(Properties properties) {
-        super(properties);
+    super(properties);
         pinCode = getStringProperty("pinCode", properties, "1234");
     }
 

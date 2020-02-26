@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 配置 MobileFirst Server 密钥库
-breadcrumb_title: Configuring the Server Keystore
+breadcrumb_title: 配置服务器密钥库
 weight: 14
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -11,7 +11,7 @@ weight: 14
 
 对于生产级安全性，在开发到生产过程中，管理员必须配置 {{ site.data.keys.mf_server }} 来使用用户定义的密钥库。 缺省 {{ site.data.keys.mf_server }} 密钥库规定为仅在开发过程中使用。
 
-### 注释
+### 注
 {: #notes }
 * 要使用密钥库验证直接更新包的真实性，请将应用程序与密钥库中定义的 {{ site.data.keys.mf_server }} 身份的公用密钥静态绑定。 请参阅[在客户端实施安全直接更新](../../application-development/direct-update)。
 * 应慎重考虑在生产后重新配置 {{ site.data.keys.mf_server }} 密钥库。 更改配置会产生以下潜在影响：
@@ -25,7 +25,7 @@ weight: 14
 
    > **注：**别名密钥对算法类型必须为 RSA。 以下指示信息说明在使用 **keytool** 实用程序时，如何将算法类型设置为 RSA。
 
-   您可以使用第三方工具来创建密钥库文件。 例如，您可以通过运行 Java **keytool** 实用程序并使用以下命令来生成 JKS 密钥库文件（其中，`<keystore name>` 是密钥库的名称，`<alias name>` 是您选择的别名）：
+   您可以使用第三方工具来创建密钥库文件。 例如，可通过运行 Java **keytool** 实用程序和以下命令来生成 JKS 密钥库文件（其中，`<keystore name>` 是密钥库名称，`<alias name>` 是所选的别名）：
 
    ```bash
    keytool -keystore <keystore name> -genkey -alias <alias name> -keylag RSA
@@ -47,12 +47,11 @@ weight: 14
    执行以下步骤，配置 {{ site.data.keys.mf_server }} 以使用密钥库：
 
       * **Javascript 适配器**
-        在 {{ site.data.keys.mf_console }} 导航侧边栏中，选择**运行时设置**，然后选择**密钥库**选项卡。 遵循此选项卡上的指示信息来配置用户定义的 {{ site.data.keys.mf_server }} 密钥库。 相关步骤包括上传密钥库文件，指明其类型，以及提供密钥库密码、{{ site.data.keys.mf_server }} 身份别名名称和别名密码。
-        成功配置后，**状态**将更改为*用户定义*，否则将显示错误并且状态仍为*缺省*。
+        在 {{ site.data.keys.mf_console }} 导航侧边栏中，选择**运行时设置**，然后选择**密钥库**选项卡。遵循此选项卡上的指示信息来配置用户定义的 {{ site.data.keys.mf_server }} 密钥库。 相关步骤包括上传密钥库文件，指明其类型，以及提供密钥库密码、{{ site.data.keys.mf_server }} 身份别名名称和别名密码。成功配置后，**状态**将更改为*用户定义*，否则将显示错误并且状态仍为*缺省*。
         在 `<connectionPolicy>` 元素的 `<sslCertificateAlias>` 和 `<sslCertificatePassword>` 子元素内，在相关适配器的描述符文件中配置 SSL 客户机身份别名（如使用）及其密码。 请参阅 [HTTP 适配器 connectionPolicy 元素](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)。
 
       * **Java 适配器**
-        要为 Java 适配器配置相互 SSL 认证，那么必须更新服务器的密钥库。 可以通过执行以下步骤来实现：
+        要为 Java 适配器配置相互 SSL 认证，那么必须更新服务器的密钥库。可以通过执行以下步骤来实现：
 
         * 将密钥库文件复制到 `<ServerInstallation>/mfp-server/usr/servers/mfp/resources/security`。
 

@@ -292,7 +292,7 @@ SSL 在 iOS 设备上是必需的。 因此，该选项未在登录视图中显�
 {: #connecting-to-the-server }
 要连接至服务器：
 
-1. 输入您的用户名和密码。
+1.输入您的用户名和密码。
 2. 输入您的 Application Center 服务器地址。
 3. 如果您的 Application Center 配置通过 SSL 协议运行，请选择 **SSL**。
 4. 轻击**登录**以连接到服务器。

@@ -49,7 +49,7 @@ Application Center에 대한 애플리케이션 배치를 빌드 프로세스에
 |-s |serverpath |Application Center 서버에 대한 경로. |
 |-c | context |Application Center 웹 애플리케이션의 컨텍스트. |
 |-u |user |Application Center에 액세스하기 위한 사용자 인증 정보. |
-|-p |비밀번호 |사용자의 비밀번호. |
+|-p | password |사용자의 비밀번호. |
 |-d |description |업로드할 애플리케이션에 대한 설명. |
 |-l |label |대체 레이블. 일반적으로 업로드할 파일에 저장되어 있는 애플리케이션 디스크립터에서 레이블을 가져옵니다. 애플리케이션 디스크립터에 레이블이 없는 경우 대체 레이블이 사용됩니다. |
 |-isActive |true 또는 false |애플리케이션이 활성 또는 비활성 애플리케이션으로 Application Center에 저장됩니다. |
@@ -86,7 +86,7 @@ Application Center에서 애플리케이션을 삭제하려면 명령행에서 �
 |-s |serverpath |Application Center 서버에 대한 경로. |
 |-c | context |Application Center 웹 애플리케이션의 컨텍스트. |
 |-u |user |Application Center에 액세스하기 위한 사용자 인증 정보. |
-|-p |비밀번호 |사용자의 비밀번호. |
+|-p | password |사용자의 비밀번호. |
 |-y | |SSL 보안 검사를 사용 안함으로 설정합니다. 이를 통해 SSL 인증서의 유효성을 검증하지 않고 보안 호스트에 공개할 수 있습니다. 이 플래그를 사용하면 보안 위험이 발생할 수 있지만, 임시 자체 서명 SSL 인증서로 로컬 호스트를 테스트하는 데 적합합니다. |
 
 파일 또는 애플리케이션 패키지, 운영 체제, 버전을 지정할 수 있습니다. 파일이 지정되는 경우 패키지, 운영 체제 및 버전은 파일에서 결정되고 해당 애플리케이션이 Application Center에서 삭제됩니다. 애플리케이션이 지정되는 경우 형식은 다음 중 하나여야 합니다.
@@ -125,7 +125,7 @@ Application Center가 LDAP으로 구성된 경우 LDAP 서버에 있는 사용�
 |-s |serverpath |Application Center 서버에 대한 경로.|
 |-c | context |Application Center 웹 애플리케이션의 컨텍스트.|
 |-u |user |Application Center에 액세스하기 위한 사용자 인증 정보.|
-|-p |비밀번호 |사용자의 비밀번호.|
+|-p | password |사용자의 비밀번호.|
 |-y | |SSL 보안 검사를 사용 안함으로 설정합니다. 이를 통해 SSL 인증서의 유효성을 검증하지 않고 보안 호스트에 공개할 수 있습니다. 이 플래그를 사용하면 보안 위험이 발생할 수 있지만, 임시 자체 서명 SSL 인증서로 로컬 호스트를 테스트하는 데 적합합니다.|
 
 #### 예
@@ -146,7 +146,7 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 * UNIX/Linux의 경우 ant
 * Windows의 경우 ant.bat
 
-이러한 스크립트는 실행할 준비가 되어 있으며, 특정 환경 변수가 필요하지 않음을 의미합니다. 환경 변수 JAVA_HOME이 설정되어 있는 경우 스크립트는 이를 허용합니다.
+이러한 스크립트는 실행할 준비가 되어 있으며, 특정 환경 변수가 필요하지 않음을 의미합니다. 환경 변수 JAVA_HOME이 설정된 경우 스크립트에서 이를 승인합니다.
 
 업로드 도구로 Ant 태스크를 사용하는 경우 업로드 Ant 태스크의 클래스 이름 값은 **com.ibm.appcenter.ant.UploadApps**입니다. 삭제 Ant 태스크의 클래스 이름 값은 **com.ibm.appcenter.ant.DeleteApps**입니다.
 

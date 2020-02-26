@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 푸시 알림 추가
-weight: 11
+weight: 12
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

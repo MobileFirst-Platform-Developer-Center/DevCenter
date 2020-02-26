@@ -91,7 +91,7 @@ show_in_nav: false
 | mfpanalytics.resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  |기본값은 **1000m**입니다. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |                  | limits.memory | 허용되는 최대 메모리 크기를 설명합니다. | 기본값은 **2048Mi**입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오.|
 |           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  |기본값: **750m**. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
-|           | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값: 1024Mi. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
+|           | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값은 1024Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
 | mfpappcenter | enabled          | Application Center를 사용하도록 플래그 지정 | **false**(기본값) 또는 true |  
 | mfpappcenter.image | repository          | Docker 이미지 저장소 | Mobile Foundation Application Center Docker 이미지의 저장소. REPO_URL 플레이스홀더는 올바른 Docker 레지스트리 URL로 바꾸어야 합니다. |
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |

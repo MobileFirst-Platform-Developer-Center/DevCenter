@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM App Center에 앱 공개
-weight: 14
+weight: 15
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -24,7 +24,7 @@ Digital App Builder의 **공개** 기능을 사용하여 서버에서 저장소�
 
     ![공개](dab-publish.png)
 
-2. 앱이 공개되어야 하는 **플랫폼**을 선택하십시오. 
+2. 앱이 공개되어야 하는 **플랫폼**을 선택하십시오.
 
 3. **웹 체크섬**을 클릭하여 웹 리소스 체크섬 기능을 사용으로 설정하십시오. 자세한 내용은 [웹 리소스 체크섬 기능 사용](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature)을 참조하십시오.
 
@@ -60,7 +60,7 @@ Digital App Builder의 **공개** 기능을 사용하여 서버에서 저장소�
 
     ![공개](dab-publish.png)
 
-2. 앱이 공개되어야 하는 **플랫폼**을 선택하십시오. 
+2. 앱이 공개되어야 하는 **플랫폼**을 선택하십시오.
 
 3. **웹 체크섬**을 클릭하여 웹 리소스 체크섬 기능을 사용으로 설정하십시오. 자세한 내용은 [웹 리소스 체크섬 기능 사용](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature)을 참조하십시오.
 

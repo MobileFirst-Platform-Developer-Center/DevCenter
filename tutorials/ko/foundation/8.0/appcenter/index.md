@@ -185,6 +185,6 @@ Application Center 콘솔을 사용하려면, [Application Center 콘솔](appcen
 * Windows 8: Windows 8용 모바일 클라이언트는 나중에 배포하기 위해 Application Center에 배치되지 않습니다. [Microsoft Windows 8: 프로젝트 빌드](preparations/#microsoft-windows-8-building-the-project)를 참조하십시오.
 * Windows 10 UWP: [Windows 10 디바이스에 Windows 10 UWP 클라이언트 설치](mobile-client/#installing-windows-10-uwp-client-on-windows-10-device)를 참조하십시오.
 
-## 다음 내용
+## 다음에 수행할 작업
 {: #whats-next }
 AppCenter 모바일 클라이언트를 사용하려면, 설치된 애플리케이션에 알림 전송, Appcenter 콘솔, 명령행 도구, 모바일 클라이언트에 대해 알아보기 및 로그 레벨 설정 주제에 설명된 프로시저를 따르십시오.

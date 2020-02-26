@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 准备使用移动式客户机
-breadcrumb_title: Preparations
+breadcrumb_title: 准备
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 로그인 양식 추가
-weight: 8
+weight: 9
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
