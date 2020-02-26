@@ -51,7 +51,7 @@ weight: 1
 2. 프로젝트의 루트 폴더에 있는 **app.js** 파일을 선택하고 다음 코드 스니펫을 붙여넣어 기존 `WLAuthorizationManager.obtainAccessToken()` 함수를 대체하십시오.
 
 ```javascript
-   WLAuthorizationManager.obtainAccessToken("").then(
+  WLAuthorizationManager.obtainAccessToken("").then(
       (token) => {
         console.log('-->  pingMFP(): Success ', token);
         var resourceRequest = new WLResourceRequest("/adapters/javaAdapter/resource/greet/",

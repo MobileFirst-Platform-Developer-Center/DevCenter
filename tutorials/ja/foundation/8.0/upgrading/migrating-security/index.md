@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 認証およびセキュリティーのマイグレーションの概念
-breadcrumb_title: Migrating authentication concepts
+breadcrumb_title: 認証の概念のマイグレーション
 downloads:
   - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample

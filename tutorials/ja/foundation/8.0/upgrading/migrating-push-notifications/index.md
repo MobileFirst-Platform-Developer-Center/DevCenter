@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: イベント・ソース・ベースの通知からのプッシュ通知のマイグレーション
-breadcrumb_title: Migrating push notifications
+breadcrumb_title: プッシュ通知のマイグレーション
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->

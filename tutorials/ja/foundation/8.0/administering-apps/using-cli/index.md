@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 端末を介したアプリケーション管理
-breadcrumb_title: Administrating using terminal
+breadcrumb_title: 端末を使用した管理
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -341,7 +341,7 @@ show user-config mfp
 | 属性 | 説明 |
 |-----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| file | 新しい構成を含む JSON または XML ファイルの名前。 |
+| ファイル | 新しい構成を含む JSON または XML ファイルの名前。 |
 
 単一プロパティーの場合の構文: `set user-config [runtime-name] property = value`
 
@@ -481,7 +481,7 @@ list adapters mfp
 | 引数 | 説明 |
 |----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| file | バイナリー・アダプター・ファイル (.adapter) |
+| ファイル | バイナリー・アダプター・ファイル (.adapter) |
 
 **例**
 
@@ -604,7 +604,7 @@ adapter mfp MyAdapter show user-config
 
 | オプション | 説明 |
 |--------|-------------|
-| file | 新しい構成を含む JSON または XML ファイルの名前。 |
+| ファイル | 新しい構成を含む JSON または XML ファイルの名前。 |
 
 単一プロパティーの場合の構文: `adapter [runtime-name] adapter-name set user-config property = value`
 
@@ -668,7 +668,7 @@ list apps mfp
 | 引数 | 説明 |
 |----------|-------------|
 | runtime-name | ランタイムの名前。 |
-| file | アプリケーション記述子、JSON ファイル。 |
+| ファイル | アプリケーション記述子、JSON ファイル。 |
 
 **例**
 
@@ -941,7 +941,7 @@ app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity
 
 | 引数 | 説明 |
 |----------|-------------|
-| file | 入力ファイルの名前。以下のいずれかです。<ul><li>.authenticity_data ファイルまたは</li><li>認証データの抽出元である装置ファイル (.ipa、.apk、または .appx)</li></ul>|
+| ファイル | 入力ファイルの名前。以下のいずれかです。<ul><li>.authenticity_data ファイルまたは</li><li>認証データの抽出元である装置ファイル (.ipa、.apk、または .appx)</li></ul>|
 
 **例**
 
@@ -1003,7 +1003,7 @@ app version mfp MyApp iPhone 1.1 show user-config
 
 | 引数 | 説明 |
 |----------|-------------|
-| file | 新しい構成を含む JSON または XML ファイルの名前。 |
+| ファイル | 新しい構成を含む JSON または XML ファイルの名前。 |
 
 単一プロパティーの場合の構文: `app version [runtime-name] app-name environment version set user-config property = value`
 

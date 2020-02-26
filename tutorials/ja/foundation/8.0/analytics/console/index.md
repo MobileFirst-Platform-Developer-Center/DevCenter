@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Operations Console および Analytics コンソール
-breadcrumb_title: Analytics Console
+breadcrumb_title: Analytics コンソール
 relevantTo: [ios,android,javascript]
 weight: 4
 ---

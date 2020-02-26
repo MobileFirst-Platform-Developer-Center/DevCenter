@@ -147,7 +147,7 @@ npm install
     	 이 단계는 *react-native-ibm-mobilefirst* 라이브러리에 필요합니다.<br/>
 
 	 *  React Native 프로젝트 루트 디렉토리에서 `android/app/build.gradle` 파일을 여십시오.<br/>
-*android {}* 내에 다음 코드를 추가하십시오.<br/>
+      *android {}* 내에 다음 코드를 추가하십시오.<br/>
 
         ```
         packagingOptions{

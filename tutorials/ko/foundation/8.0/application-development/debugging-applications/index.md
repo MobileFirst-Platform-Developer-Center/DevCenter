@@ -33,7 +33,7 @@ weight: 10
 MBS를 사용하려면 **명령행** 창을 열고 다음 명령을 입력하십시오.
 
 ```bash
-    mfpdev app preview
+mfpdev app preview
 ```
 
 애플리케이션이 여러 개의 플랫폼으로 구성된 경우 미리 볼 플랫폼을 다음과 같이 지정하십시오.

@@ -218,7 +218,7 @@ WebSphere Application Server Liberty 관리에 대한 자세한 정보는 WebSph
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
 설치 아티팩트(JAR 및 EAR 파일) 확보를 위한 초기 설치 단계에 대한 자세한 정보는 [애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치](../../prod-env/appserver)를 참조하십시오. **analytics.ear**, **analytics-ui.war** 및 **analytics-service.war** 파일은 **<mf_server_install_dir>\analytics** 폴더에 있습니다.
 
-다음의 단계에서는 WebSphere Application Server에서 Analytics EAR 파일을 설치하고 실행하는 방법을 설명합니다. WebSphere Application Server에 개별 WAR 파일을 설치하는 경우에는 두 WAR 파일을 모두 배치한 후 **analytics-service** WAR 파일에서 2단계 - 7단계만 수행하십시오.  analytics-ui WAR 파일에서 클래스 로드 순서를 변경해서는 안 됩니다.
+다음의 단계에서는 WebSphere Application Server에서 Analytics EAR 파일을 설치하고 실행하는 방법을 설명합니다. WebSphere Application Server에 개별 WAR 파일을 설치하는 경우에는 두 WAR 파일을 모두 배치한 후 **analytics-service** WAR 파일에서 2단계 - 7단계만 수행하십시오. analytics-ui WAR 파일에서 클래스 로드 순서를 변경해서는 안 됩니다.
 
 1. EAR 파일을 애플리케이션 서버에 배치하되 시작하지는 마십시오. WebSphere Application Server에 EAR 파일을 설치하는 방법에 대한 자세한 정보는 WebSphere Application Server 제품 문서에서 [콘솔을 사용한 엔터프라이즈 애플리케이션 파일 설치](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) 주제를 참조하십시오.
 

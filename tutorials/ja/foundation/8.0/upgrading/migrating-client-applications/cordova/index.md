@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 既存の Cordova アプリケーションおよびハイブリッド・アプリケーションのマイグレーション
-breadcrumb_title: Cordova and hybrid
+breadcrumb_title: Cordova とハイブリッド
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -77,7 +77,7 @@ IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された
 
 * 既存の IBM MobileFirst Platform Foundation ハイブリッド・アプリケーション、または `mfp cordova create` コマンドを使用して作成した Cordova アプリケーションがある必要があります。
 * インターネット・アクセスが必要です。
-* node.js バージョン 4.0.0 以降がインストールされている必要があります。
+* マイグレーション・アシスト・ツール  mfpmigrate-cli をインストールするには、[node v6.x および npm v3.x](https://nodejs.org/dist/latest-v6.x/) がインストール済みである必要があります。
 * Cordova コマンド・ライン・インターフェース (CLI)、およびターゲット・プラットフォームで Cordova CLI を使用するために必要なすべての前提条件がインストールされている必要があります。 詳しくは、Apache Cordova Web サイトの『[The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html)』を参照してください。
 * マイグレーション・プロセスの制限についてよく読み、理解します。 詳しくは、[以前のリリースからのアプリケーションのマイグレーション](../)を参照してください。
 

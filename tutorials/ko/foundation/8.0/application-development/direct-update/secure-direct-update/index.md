@@ -43,7 +43,7 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 키 저장소에서 인증서를 생성하고 공개 키를 추출하는 데 사용 가능한 여러 가지 도구가 있습니다. 다음 예제는 JDK keytool 유틸리티 및 openSSL을 사용하는 프로시저를 설명합니다.
 
 1. {{ site.data.keys.mf_server }}에 배치된 키 저장소 파일에서 공개 키를 추출하십시오.  
-참고: 공개 키는 Base64로 인코딩되어야 합니다.
+   참고: 공개 키는 Base64로 인코딩되어야 합니다.
     
    예를 들어 별명이 `mfp-server`이고 키 저장소 파일이 **keystore.jks**라고 가정하십시오.  
    인증서를 생성하려면 다음 명령을 실행하십시오.

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: プッシュ通知
-breadcrumb_title: Push Notifications
+breadcrumb_title: プッシュ通知
 relevantTo: [ios,android,javascript]
 weight: 5
 ---

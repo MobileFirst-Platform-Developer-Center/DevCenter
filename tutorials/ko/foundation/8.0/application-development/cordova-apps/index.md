@@ -403,12 +403,12 @@ Android 플랫폼용 Cordova 애플리케이션은 기본 WebView를 [CrossWalk 
    ```
 
    이 명령은 애플리케이션에 CrossWalk WebView를 추가합니다.  
-백그라운드에서 {{ site.data.keys.product_adj }} Cordova SDK는 CrossWalk WebView를 사용하도록 Android 프로젝트 활동을 조정합니다.
+    백그라운드에서 {{ site.data.keys.product_adj }} Cordova SDK는 CrossWalk WebView를 사용하도록 Android 프로젝트 활동을 조정합니다.
 
 2. 다음 명령을 실행하여 프로젝트를 빌드하십시오.
 
    ```bash
-cordova build
+   cordova build
    ```
 
 ## iOS에 대한 WKWebView 지원
@@ -417,6 +417,8 @@ Cordova iOS 애플리케이션에서 사용되는 기본 UIWebView를 [Apple's W
 추가하려면 명령행 창에서 `cordova plugin add cordova-plugin-wkwebview-engine` 명령을 실행하십시오.
 
 > [Cordova WKWebView 플러그인](https://github.com/apache/cordova-plugin-wkwebview-engine)에 대해 자세히 알아보십시오.
+
+> **업데이트:** Cordova 애플리케이션에서 `cordova-plugin-wkwebview-engine` 플러그인을 사용하면 *교차 출처(cross origin) 요청은 HTTP에서만 지원됨* 오류가 발생하고 직접 업데이트에 실패합니다. 이를 해결하려면 애플리케이션에 [cordova-plugin-wkwebviewxhrfix](https://www.npmjs.com/package/cordova-plugin-wkwebviewxhrfix)라는 추가 플러그인이 필요합니다. [여기](https://issues.apache.org/jira/browse/CB-10143)에서 이 결함을 찾을 수 있습니다. 
 
 ## 추가 참조
 {: #further-reading }
