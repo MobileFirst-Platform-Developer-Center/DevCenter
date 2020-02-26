@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 设置认证
-breadcrumb_title: Step Up Authentication
+breadcrumb_title: 设置认证
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 문제점 해결
-weight: 17
+weight: 19
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

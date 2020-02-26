@@ -21,7 +21,7 @@ downloads:
 
 ## 登录
 {: #login }
-在此示例中，`UserLogin` 期望使用名为 `username` 和 `password` 的 *key:value*。 它还可选择接受布尔值 `rememberMe` 键，这告知安全性检查在较长时间段内记住此用户。 在样本应用程序中，通过来自登录表单复选框中的布尔值收集此项。
+在此示例中，`UserLogin` 期望使用名为 `username` 和 `password` 的 *key:value*。它还可选择接受布尔值 `rememberMe` 键，这告知安全性检查在较长时间段内记住此用户。 在样本应用程序中，通过来自登录表单复选框中的布尔值收集此项。
 
 `credentials` 自变量为包含 `username`、`password` 和 `rememberMe` 的 `JSONObject`：
 
@@ -34,13 +34,13 @@ self.submitChallengeAnswer(credentials);
 如果没有要回答的验证问题，那么无法调用 `submitChallengeAnswer` API。 对于这些场景，{{ site.data.keys.product }} SDK 包含 `login` API：
 
 ```swift
-WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
-  if(error != nil){
-    NSLog("Login Preemptive Failure: " + String(error))
-  }
-  else {
-    NSLog("Login Preemptive Success")
-  }
+WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) in
+    if(error != nil){
+        print("Login Preemptive Failure: " + String(error!));
+    }
+    else{
+        print("Login Preemptive Success");
+    }
 }
 ```
 
@@ -52,7 +52,7 @@ WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCreden
 
 ```swift
 if(!self.isChallenged){
-  WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in}
+  WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) -> Void in}
 }
 else{
   self.submitChallengeAnswer(credentials)
@@ -66,21 +66,20 @@ else{
 {: #obtaining-an-access-token }
 因为此安全性检查支持 **RememberMe** 功能（作为 `rememberMe` 布尔值键），所以它将用于在应用程序启动时检查客户机当前是否已登录。
 
-{{ site.data.keys.product }} SDK 提供 `obtainAccessTokenForScope` API 以要求服务器提供有效令牌：
+Mobile Foundation SDK 提供 `obtainAccessToken` API 以要求服务器提供有效令牌：
 
 ```swift
-WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
+WLAuthorizationManagerSwift.sharedInstance().obtainAccessToken(forScope : scope) { (token, error) -> Void in
   if(error != nil){
-    NSLog("obtainAccessTokenForScope failed: " + String(error))
+    print(“obtainAccessTokenForScope failed: “, error!)
   }
   else{
-    NSLog("obtainAccessTokenForScope success")
+    print(“obtainAccessTokenForScope success " + (token?.value)!);
   }
 }
 ```
 
-> **注：**
->`WLAuthorizationManager` `obtainAccessTokenForScope()` API 具有自己的完成处理程序，同时**也**会调用相关验证问题处理程序的 `handleSuccess` 或 `handleFailure`。
+> **注：**>`WLAuthorizationManagerSwift obtainAccessToken()` API 具有自己的完成处理程序，同时**也**会调用相关验证问题处理程序的 `handleSuccess` 或 `handleFailure`。
 
 如果客户机已登录或者处于*已记住*状态，那么 API 会触发成功。 如果客户机未登录，那么安全性检查将发送回验证问题。
 
@@ -94,9 +93,9 @@ WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (toke
 如果安全性检查设置 `AuthenticatedUser`，那么此对象包含用户的属性。 您可以使用 `handleSuccess` 来保存当前用户：
 
 ```swift
-override func handleSuccess(success: [NSObject : AnyObject]!) {
+override open func handleSuccess(successResponse: [NSObject : AnyObject]!) {
   self.isChallenged = false
-  self.defaults.setObject(success["user"]!["displayName"]! as! String, forKey: "displayName")
+  self.defaults.setObject(successResponse![“user"]!["displayName"]! as! String, forKey: "displayName")
 }
 ```
 
@@ -118,10 +117,10 @@ override func handleSuccess(success: [NSObject : AnyObject]!) {
 {{ site.data.keys.product }} SDK 还提供 `logout` API 以从特定安全性检查注销：
 
 ```swift
-WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) -> Void in
-  if(error != nil){
-    NSLog("Logout Failure: " + String(error))
-  }
+WLAuthorizationManagerSwift.sharedInstance().logout(securityCheck: self.securityCheck){ (error) -> Void in
+    if(error != nil){
+        print("Logout Failure: " , error!)
+    }
 }
 ```
 
@@ -144,4 +143,3 @@ WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) 
 应用程序的用户名/密码必须匹配，例如，“john”/“john”。
 
 ![样本应用程序](sample-application.png)
-

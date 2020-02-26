@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 챗봇 추가
-weight: 9
+weight: 10
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

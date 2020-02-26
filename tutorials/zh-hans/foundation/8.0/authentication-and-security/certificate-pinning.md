@@ -102,13 +102,13 @@ NSArray *arrayOfCerts = [NSArray arrayWithObjects:@“Cert1”,@“Cert2”,@“
 单证书：
 示例：
 ```swift
-WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey(certificateFilename: “myCertificate.cer”);
 ```
 多证书：
 示例：
 ```swift
-let arrayOfCerts : [Any] = ["Cert1", "Cert2”, "Cert3”];
-WLClient.sharedInstance().pinTrustedCertificatePublicKey( fromFiles: arrayOfCerts)
+let arrayOfCerts : [Any] = ["Cert1", "Cert2", "Cert3"];
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey( certificateFilenames: arrayOfCerts);
 ```
 
 在以下两种情况下，证书锁定方法将引发异常：

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 푸시 알림 문제점 해결
-breadcrumb_title: Notifications
+breadcrumb_title: 알림
 relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---

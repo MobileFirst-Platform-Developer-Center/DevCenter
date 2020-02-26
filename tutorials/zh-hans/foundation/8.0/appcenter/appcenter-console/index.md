@@ -305,7 +305,7 @@ Version** 一样是应用程序的版本。
 ## 在 {{ site.data.keys.mf_server }} 和 Application Center 中升级移动应用程序
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
-> 仅针对 Android、iOS 和 Windows Phone 支持此项操作，目前针对 Windows 10 Universal、Blackberry 或 Windows 8 Universal 不支持此项操作。
+> 仅针对 Android、iOS 和 Windows Phone 支持此项操作，目前针对 Windows 10 Universal 或 Windows 8 Universal 不支持此项操作。
 
 
 您可以结合使用 {{ site.data.keys.mf_console }} 和 Application Center 来轻松升级已部署的移动应用程序。

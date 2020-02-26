@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: 자주 묻는 질문(FAQ)
-breadcrumb_title: FAQs
-weight: 18
+breadcrumb_title: FAQ
+weight: 20
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -57,7 +57,7 @@ show_children: true
                   <p>다음 단계를 사용하여 Digital App Builder를 완전히 설치 제거할 수 있습니다.
                   <ol><li>각 OS에 해당하는 통상적인 방식으로 Digital App Builder를 설치 제거하십시오.</li>
                       <li>OS에 맞게 수동으로 다음 파일을 삭제하십시오.
-                      <ul><li><b>Windows</b> - <i>Users\worklight\AppData\Roaming\IBM Digital App Builder</i></li>
+                      <ul><li><b>Windows</b> - <i>Users\&lt;systemname&gt;\AppData\Roaming\IBM Digital App Builder</i></li>
                           <li><b>MacOS</b> - <i>Users/&lt;systemname&gt;/Library/Application Support/IBM Digital App Builder</i></li>
                       </ul></li>
                   </ol></p>

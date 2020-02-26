@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 创建安全性检查
-breadcrumb_title: Creating a security check
+breadcrumb_title: 创建安全性检查
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---

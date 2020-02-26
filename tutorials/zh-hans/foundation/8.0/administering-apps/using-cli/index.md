@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 通过终端管理应用程序
-breadcrumb_title: Administrating using terminal
+breadcrumb_title: 使用终端进行管理
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->

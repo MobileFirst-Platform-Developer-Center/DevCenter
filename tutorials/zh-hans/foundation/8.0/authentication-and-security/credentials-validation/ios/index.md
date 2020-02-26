@@ -39,7 +39,7 @@ downloads:
 创建可扩展 `SecurityCheckChallengeHandler` 的 Swift 类：
 
 ```swift
-class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
+open class PinCodeChallengeHandler : SecurityCheckChallengeHandlerSwift {
 
 }
 ```
@@ -51,18 +51,17 @@ class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
 在此示例中，警报会提示用户输入 PIN 码：
 
 ```swift
-override func handleChallenge(challenge: [NSObject : AnyObject]!) {
-    NSLog("%@",challenge)
-    var errorMsg : String
-    if challenge["errorMsg"] is NSNull {
-        errorMsg = "This data requires a PIN code."
+override open func handleChallenge(challengeResponse: [AnyHashable: Any]!) {
+  var errorMsg : String
+  if challengeResponse!["errorMsg"] is NSNull {
+      errorMsg = "This data requires a PIN code."
     }
     else{
-        errorMsg = challenge["errorMsg"] as! String
-    }
-    let remainingAttempts = challenge["remainingAttempts"] as! Int
+      errorMsg = challengeResponse!["errorMsg"] as! String
+  }
+  let remainingAttempts = challengeResponse!["remainingAttempts"] as! Int + 2;
 
-    showPopup(errorMsg,remainingAttempts: remainingAttempts)
+  showPopup(errorMsg,remainingAttempts: remainingAttempts);
 }
 ```
 
@@ -94,8 +93,8 @@ self.cancel()
 作为参数传递的 `Dictionary` 的结构很大程度上取决于故障性质。
 
 ```swift
-override func handleFailure(failure: [NSObject : AnyObject]!) {
-    if let errorMsg = failure["failure"] as? String {
+override open func handleFailure(failureResponse: [AnyHashable: Any]!) {
+    if let errorMsg = failureResponse["failure"] as? String {
         showError(errorMsg)
     }
     else{
@@ -108,11 +107,8 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 
 ## 处理成功
 {: #handling-successes }
-通常，该框架会自动处理成功情况，以支持应用程序的其余部分继续运作。
 
-您还可以通过实现 `SecurityCheckChallengeHandler` 的 `handleSuccess(success: [NSObject : AnyObject]!)` 方法，选择在框架关闭验证问题处理程序流之前执行某些操作。 同样，`success` `Dictionary` 的内容和结构取决于安全性检查发送的内容。
-
-在 `PinCodeAttemptsSwift` 样本应用程序中，成功不包含任何其他数据，因此不会实现 `handleSuccess`。
+（可选）还可通过实现 SecurityCheckChallengeHandler 的 `handleSuccess(successResponse: [AnyHashable: Any]!)` 方法，选择在框架关闭验证问题处理程序流之前执行某些操作。同样，成功的 Dictionary 的内容和结构取决于安全性检查发送的内容。
 
 ## 注册验证问题处理程序
 {: #registering-the-challenge-handler }
@@ -121,19 +117,19 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 为此，请使用安全性检查初始化验证问题处理程序，如下所述：
 
 ```swift
-var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName")
+var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName”);
 ```
 
 然后，您必须**注册**验证问题处理程序实例：
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(someChallengeHandler)
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: someChallengeHandler);
 ```
 
 在此示例中，位于一行上：
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: PinCodeChallengeHandler(securityCheck: securityCheck));
 ```
 
 **注：**在整个应用程序生命周期内，注册验证问题处理程序应当只进行一次。 建议使用 iOS AppDelegate 类来执行此操作。
@@ -151,4 +147,3 @@ WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(secur
 请遵循样本的 README.md 文件获取指示信息。
 
 ![样本应用程序](sample-application.png)
-
