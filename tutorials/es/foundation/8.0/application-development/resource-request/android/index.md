@@ -98,7 +98,9 @@ request.send(formParams, new MyInvokeListener());
 
 #### Parámetros - adaptadores JavaScript
 {: #parameters-javascript-adapters}
-Los adaptadores JavaScript utilizan parámetros sin nombre ordenados. Para pasar parámetros a un adaptador JavaScript, establezca una matriz de parámetros con el nombre `params`:
+Los adaptadores JavaScript utilizan parámetros sin nombre ordenados.
+Para pasar parámetros a un adaptador JavaScript, establezca una matriz de parámetros con el nombre `params`:
+
 
 ```java
 formParams.put("params", "['value1', 'value2']");

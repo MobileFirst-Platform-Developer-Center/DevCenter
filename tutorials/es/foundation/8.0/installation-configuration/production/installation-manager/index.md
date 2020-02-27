@@ -355,7 +355,7 @@ En el elemento `<offering>` del elemento `<install>`, establezca el atributo ver
     <tr>
         <td>user.licensed.by.tokens</td>
         <td>Siempre</td>
-        <td>Activación de las licencias de señales. Si tiene pensado utilizar el producto con Rational License Key Server, debe activar las licencias de señales. <br/><br/>En este caso, establezca el valor en <code>true</code>. Si no tiene pensado utilizar el producto con Rational License Key Server, establezca el valor en <code>false</code>.<br/><br/>Si activa las señales de licencia, se necesitarán pasos de configuración específicos después de desplegar el producto en un servidor de aplicaciones. </td>
+        <td>Activación de las licencias de señales. Si tiene pensado utilizar el producto con Rational License Key Server, debe activar las licencias de señales.<br/><br/>En este caso, establezca el valor en <code>true</code>. Si no tiene pensado utilizar el producto con Rational License Key Server, establezca el valor en <code>false</code>.<br/><br/>Si activa las señales de licencia, se necesitarán pasos de configuración específicos después de desplegar el producto en un servidor de aplicaciones. </td>
         <td><code>true</code> o <code>false</code></td>    
     </tr>
     <tr>
@@ -391,7 +391,7 @@ En el elemento `<offering>` del elemento `<install>`, establezca el atributo ver
     <tr>
         <td>user.appserver.was.scope</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>Tipo de conjunto de servidores en el que se deben instalar las aplicaciones.<br/><br/><code>server</code> significa un servidor autónomo.<br/><br/><code>nd-cell</code> significa una celda de WebSphere Application Server Network Deployment. <code>nd-cluster</code> significa un clúster de WebSphere Application Server Network Deployment.<br/><br/><code>nd-node</code> significa un nodo de WebSphere Application Server Network Deployment (sin incluir clústeres).<br/><br/><code>nd-server</code> significa un servidor gestionado de WebSphere Application Server Network Deployment.</td>
+        <td>Tipo de granja de servidores en el que se instalan las aplicaciones.<br/><br/><code>server</code> significa un servidor autónomo.<br/><br/><code>nd-cell</code> significa una célula de WebSphere Application Server Network Deployment. <code>nd-cluster</code> significa un clúster de WebSphere Application Server Network Deployment.<br/><br/><code>nd-node</code> significa un nodo de WebSphere Application Server Network Deployment (excluyendo clústeres).<br/><br/><code>nd-server</code> significa un servidor gestionado de WebSphere Application Server Network Deployment.</td>
         <td><code>server</code>, <code>nd-cell</code>, <code>nd-cluster</code>, <code>nd-node</code>, <code>nd-server</code></td>
     </tr>
     <tr>

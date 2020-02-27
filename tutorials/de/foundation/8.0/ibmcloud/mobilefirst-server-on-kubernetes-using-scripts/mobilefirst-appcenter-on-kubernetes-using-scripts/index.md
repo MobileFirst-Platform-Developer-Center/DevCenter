@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Application Center mit Scripts in einem IBM Cloud-Kubernetes-Cluster einrichten
-breadcrumb_title: AppCenter on Kubernetes using scripts
+breadcrumb_title: Application Center in Kubernetes unter Verwendung von Scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---

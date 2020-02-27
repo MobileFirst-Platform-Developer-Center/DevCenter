@@ -76,6 +76,13 @@ Por ejemplo:
    ```bash
    react-native link
    ```
+  **Nota**: Este mandato no es necesario desde react-native 0.60
+
+5. Solo para iOS, instale las dependencias de Mobilefirst Pod
+
+   ```bash
+   cd ios && pod install
+   ```  
 
 #### Aplicación existente
 {: #existing-application }
@@ -90,6 +97,13 @@ Por ejemplo:
 
    ```bash
    react-native link
+   ```
+   **Nota**: Este mandato no es necesario desde react-native 0.60
+
+3. Solo para iOS, instale las dependencias de Mobilefirst Pod
+
+   ```bash
+   cd ios && pod install
    ```
 
 ### Registro de la aplicación

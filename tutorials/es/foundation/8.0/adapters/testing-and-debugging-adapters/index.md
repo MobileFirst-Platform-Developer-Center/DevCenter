@@ -74,7 +74,7 @@ A efectos de realización de pruebas, establezca **Ámbitos permitidos** en `**`
   ![Imagen de configuración de un cliente confidencial](confidential_client.png)
 {% endcomment %}
 
-1.  Utilice su cliente HTTP (Postman) para realizar una solicitud `POST` HTTP a `http://<IP>:<PORT>/mfp/api/az/v1/token` con los siguientes parámetros utilizando `Content-Type: application/x-www-form-urlencoded`:
+1.  Utilice su cliente HTTP (Postman) para realizar una solicitud `POST` HTTP a `http://<IP>:<PORT>/mfp/api/az/v1/token` con los parámetros siguientes utilizando `Content-Type: application/x-www-form-urlencoded`:
 
     - `grant_type` - Establezca el valor en `client_credentials`.
     - `scope` - Establezca el valor en el ámbito de protección de su recurso. Si su recurso no está asignado a un ámbito de protección, omita este parámetro para aplicar el ámbito predeterminado (`RegisteredClient`). Para obtener más información, consulte [Ámbitos](../../authentication-and-security/#scopes).

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Herramienta de línea de mandatos para cargar o suprimir una aplicación
-breadcrumb_title: Uploading or deleting an app
+breadcrumb_title: Cargar o suprimir una aplicación 
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
@@ -46,19 +46,19 @@ Puede pasar cualquiera de las opciones disponibles de la línea de mandatos.
 
 |Opción |Contenido indicado por |Descripción |
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server. |
-| -c | context | The context of the Application Center web application. |
-| -u | user | The user credentials to access the Application Center. |
-| -p | password | The password of the user. |
-| -d | description | The description of the application to be uploaded. |
-| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. |
-| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. |
-| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. |
-| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. |
-| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. |
-| -e	  |  | Shows the full exception stack trace on failure. |
-| -f	  |  | Force uploading of applications, even if they exist already. |
-| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
+|-s |serverpath |La vía de acceso al servidor de Application Center. |
+|-c |context |El contexto de la aplicación web Application Center. |
+|-u |user |Las credenciales de usuario para acceder al Application Center. |
+|-p |password |La contraseña del usuario. |
+|-d |description |La descripción de la aplicación que se cargará. |
+|-l |label |La etiqueta de reserva. Normalmente, la etiqueta se toma del descriptor de aplicación almacenado en el archivo que se cargará. Si el descriptor de aplicación no contiene una etiqueta, se utilizará la etiqueta de reserva. |
+|-isActive |true o false |La aplicación se almacena en el Application Center como una aplicación activa o inactiva. |
+|-isInstaller |true o false |La aplicación se almacena en el Application Center con el distintivo “installer” establecido según convenga. |
+|-isReadyForProduction |true o false |La aplicación se almacena en el Application Center con el distintivo “ready-for-production” establecido según convenga. |
+|-isRecommended |true o false |La aplicación se almacena en el Application Center con el distintivo “recommended” establecido según convenga. |
+|-e	  |  |Muestra el rastreo de pila de excepciones completo cuando se produce un error. |
+|-f	  |  |Fuerza la carga de aplicaciones, aunque ya existan. |
+|-y	  |  |Inhabilita la comprobación de seguridad SSL, que permite publicar en hosts seguros sin la verificación del certificado SSL. |El uso de este distintivo es un riesgo para la seguridad, pero puede ser adecuado para probar localhost con certificados SSL autofirmados temporales. |
 
 El parámetro files puede especificar archivos de tipo archivos de paquete de aplicaciones de Android (.apk) o archivos de aplicaciones iOS (.ipa).  
 En este ejemplo, la demo del usuario tiene la contraseña demopassword. Utilice esta línea de mandatos.
@@ -83,11 +83,11 @@ Puede pasar cualquiera de las opciones disponibles de la línea de mandatos.
 
 |Opción |Contenido indicado por	|Descripción |
 |--------|----------------------|-------------|
-| -s |serverpath | The path to the Application Center server. |
-| -c | context | The context of the Application Center web application. |
-| -u | user | The user credentials to access the Application Center. |
-| -p | password | The password of the user. |
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. |
+|-s |serverpath |La vía de acceso al servidor de Application Center. |
+|-c |context |El contexto de la aplicación web Application Center. |
+|-u |user |Las credenciales de usuario para acceder al Application Center. |
+|-p |password |La contraseña del usuario. |
+|-y | |Inhabilita la comprobación de seguridad SSL, que permite publicar en hosts seguros sin la verificación del certificado SSL. El uso de este distintivo es un riesgo para la seguridad, pero puede ser adecuado para probar localhost con certificados SSL autofirmados temporales. |
 
 Puede especificar archivos o el paquete de aplicaciones, el sistema operativo y la versión. Si se especifican los archivos, el paquete, el sistema operativo y la versión estarán determinados desde el archivo y la aplicación correspondiente se suprimirá del Application Center. Si se especifican aplicaciones, deben tener uno de los formatos siguientes:
 
@@ -120,13 +120,13 @@ Utilice la herramienta autónoma siguiendo estos pasos.
 
 Puede pasar cualquiera de las opciones disponibles de la línea de mandatos.
 
-|Opción |Contenido indicado por	|Descripción |
+|Opción |Contenido indicado por |Descripción |
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server.|
-| -c | context | The context of the Application Center web application.|
-| -u | user | The user credentials to access the Application Center.|
-| -p | password | The password of the user.|
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.|
+|-s |serverpath |La vía de acceso al servidor de Application Center. |
+|-c |context |El contexto de la aplicación web Application Center. |
+|-u |user |Las credenciales de usuario para acceder al Application Center. |
+|-p |password |La contraseña del usuario. |
+|-y | |Inhabilita la comprobación de seguridad SSL, que permite publicar en hosts seguros sin la verificación del certificado SSL. El uso de este distintivo es un riesgo para la seguridad, pero puede ser adecuado para probar localhost con certificados SSL autofirmados temporales.|
 
 #### Ejemplo
 {: #example-cache }

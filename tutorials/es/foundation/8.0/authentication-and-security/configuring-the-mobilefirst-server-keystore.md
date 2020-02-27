@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración del almacén de claves de MobileFirst Server
-breadcrumb_title: Configuring the Server Keystore
+breadcrumb_title: Configuración del almacén de claves del servidor 
 weight: 14
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -25,7 +25,7 @@ Para establecer la seguridad en un nivel de producción, durante el desplazamien
 
    > **Nota:** El tipo de algoritmo de clave-pareja que se debe utilizar es RSA. La siguiente información explica cómo establecer el tipo de algoritmo en RSA al utilizar el programa de utilidad **keytool**.
 
-   Puede utilizar herramientas de terceros para crear el archivo de almacén de claves. Por ejemplo, puede generar el archivo de almacén de claves JKS ejecutando el programa de utilidad **keytool** con el siguiente mandato (en el que `<keystore name>` es el nombre de su almacén y `<alias name>` es el alias seleccionado):
+   Puede utilizar herramientas de terceros para crear el archivo de almacén de claves. Por ejemplo, puede generar el archivo del almacén de claves JKS ejecutando el programa de utilidad **keytool** de Java con el mandato siguiente, (donde `<keystore name>` es el nombre del almacén de claves y `<alias name>` es su alias seleccionado):
 
    ```bash
    keytool -keystore <keystore name> -genkey -alias <alias name> -keylag RSA
@@ -49,15 +49,16 @@ Para establecer la seguridad en un nivel de producción, durante el desplazamien
       * **Adaptador Javascript**
         En la barra lateral de navegación de {{ site.data.keys.mf_console }}, seleccione **Valores de tiempo de ejecución** y luego seleccione el separador **Almacén de claves**. Siga las instrucciones del separador para configurar el almacén de {{ site.data.keys.mf_server }} definido por el usuario. Los pasos incluyen la carga del archivo de almacén de claves, indicando el tipo y proporcionando la contraseña del almacén de claves, el nombre del alias de identidad de {{ site.data.keys.mf_server }} y la contraseña del alias.
         Si se ha configurado correctamente, el **Estado** cambia a *Definido por el usuario*, o se muestra un error y el estado se queda en *Predeterminado*.
-        El alias de identidad de cliente SSL (si se utiliza) y la contraseña se configuran en el archivo de descriptor del adaptador relevante en `<sslCertificateAlias>` y `<sslCertificatePassword>` los subelementos del elemento de `<connectionPolicy>`. Consulte [Elemento connectionPolicy del adaptador HTTP](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file).
+        El alias de identidad de cliente SSL (si se utiliza) y la contraseña se configuran en el archivo del descriptor del adaptador relevante en los subelementos `<sslCertificateAlias>` y `<sslCertificatePassword>` del elemento `<connectionPolicy>`. Consulte [Elemento connectionPolicy del adaptador HTTP](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file).
 
       * **Adaptador Java**
         Para configurar la autenticación SSL mutua para el adaptador Java el almacén de claves del servidor debe actualizarse. Esto se puede conseguir siguiendo estos pasos:
 
-        * Copie el archivo de almacén de claves en `<ServerInstallation>/mfp-server/usr/servers/mfp/resources/security`
+        * Copie el archivo del almacén de claves en `<ServerInstallation>/mfp-server/usr/servers/mfp/resources/security`
 
-        * Edite el archivo `server.xml` `<ServerInstallation>/mfp-server/usr/servers/mfp/server.xml`.
+        * Edite el archivo `server.xml`  `<ServerInstallation>/mfp-server/usr/servers/mfp/server.xml`.
 
-        * Actualice la configuración del almacén de claves con el nombre de archivo correcto, contraseña y tipo `<keyStore id=“defaultKeyStore” location=<Keystore name> password=<Keystore password> type=<Keystore type> />`
+        * Actualice la configuración del almacén de claves con el nombre de archivo correcto, contraseña y tipo
+        `<keyStore id=“defaultKeyStore” location=<Keystore name> password=<Keystore password> type=<Keystore type> />`
 
 Si se despliega utilizando el servicio {{ site.data.keys.mf_bm_short}} en IBM Cloud, puede subir el archivo de almacén de claves a **Configuración avanzada** antes de desplegar el servidor.

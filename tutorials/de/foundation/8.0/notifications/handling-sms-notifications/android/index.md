@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Handhabung von SMS-Benachrichtigungen in Android
-breadcrumb_title: Handling SMS in Android
+breadcrumb_title: Handhabung von SMS in Android
 relevantTo: [android]
 weight: 10
 downloads:

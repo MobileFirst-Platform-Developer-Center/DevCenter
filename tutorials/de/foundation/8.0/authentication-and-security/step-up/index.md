@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Authentifizierung verstärken
-breadcrumb_title: Step Up Authentication
+breadcrumb_title: Authentifizierung verstärken
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:

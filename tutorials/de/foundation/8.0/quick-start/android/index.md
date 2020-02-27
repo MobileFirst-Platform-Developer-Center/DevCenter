@@ -93,8 +93,8 @@ falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration
                         }
 
                         @Override
-                        public void onFailure(WLFailResponse wlFailResponse) {
-                            Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
+                public void onFailure(WLFailResponse wlFailResponse) {
+                    Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
                         }
                     });
                 }

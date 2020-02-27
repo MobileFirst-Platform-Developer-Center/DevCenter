@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Análisis de mensajes de registro de MobileFirst en IBM Cloud Private
-breadcrumb_title: Analyzing MobileFirst log messages
+breadcrumb_title: Análisis de mensajes de registro de MobileFirst 
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---

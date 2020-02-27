@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Instalación de IBM Mobile Foundation en IBM Cloud Private
-breadcrumb_title: Foundation on IBM Cloud Private
+breadcrumb_title: Foundation en IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
 weight: 8
 ---
@@ -539,10 +539,10 @@ La tabla siguiente indica las variables de entorno utilizadas en la instancia de
 | global.ingress | hostname | El nombre de host externo o dirección IP para que lo utilicen los clientes externos | Déjelo en blanco para utilizar el valor predeterminado de la dirección IP del nodo de proxy del clúster|
 |         | secret | Nombre del secreto TLS | Especifica el nombre del secreto para el certificado que se ha de utilizar en la definición Ingress. El secreto se ha de crear previamente utilizando el certificado y clave relevantes. Es obligatorio si está habilitado SSL/TLS. Cree previamente el secreto con el certificado & clave antes de proporcionar el nombre aquí |
 |         | sslPassThrough | Habilitar passthrough SSL | Especifica si se ha de pasar la solicitud SSL mediante el servicio Mobile Foundation - la terminación de SSL se produce en el servicio Mobile Foundation. Predeterminado: false |
-| global.dbinit | habilitado| Habilitar la inicialización de las bases de datos del servidor, Push y Centro de aplicaciones | Inicializa las bases de datos y crea esquemas y tablas para el despliegue del servidor, Push y el centro de aplicaciones.(No es necesario para las analíticas). Predeterminado: true |
+| global.dbinit | habilitado | Habilitar la inicialización de las bases de datos del servidor, Push y Centro de aplicaciones | Inicializa las bases de datos y crea esquemas y tablas para el despliegue del servidor, Push y el centro de aplicaciones.(No es necesario para las analíticas). Predeterminado: true |
 |  | repository | Repositorios de imagen Docker para la inicialización de base de datos | Repositorio de imagen de docker de la base de datos Mobile Foundation |
 |           | tag | Etiqueta de imagen Docker | Consulte la descripción de la etiqueta Docker |
-| mfpserver |habilitado        | Distintivo para habilitar el servidor | true (predeterminado) o false |
+| mfpserver | habilitado       | Distintivo para habilitar el servidor | true (predeterminado) o false |
 | mfpserver.image | repository | Repositorio de imagen Docker | Repositorio de la imagen Docker de Mobile Foundation Server |
 |           | tag | Etiqueta de imagen Docker | Consulte la descripción de la etiqueta Docker |
 |           | consoleSecret | Un secreto ya creado para inicio de sesión | Consulte la sección de requisitos previos |
@@ -562,7 +562,7 @@ La tabla siguiente indica las variables de entorno utilizadas en la instancia de
 |           | maxReplicas | Límite superior del número de pods que puede establecer el escalador automático. No puede ser inferior al mín. | Entero positivo (predeterminado: 10) |
 |           | targetCPUUtilizationPercentage | Uso promedio objetivo de CPU (representado como un porcentaje de la CPU solicitada) sobre todos los pods. | Entero entre 1 y 100 (predeterminado 50) |
 | mfpserver.pdb     | habilitado | Especifique si se ha de habilitar/inhabilitar PDB.| true (predeterminado) o false |
-|           | mín  | mínimo de pods disponibles | Entero positivo (predeterminado: 1) |
+|           | min  | mínimo de pods disponibles | Entero positivo (predeterminado: 1) |
 |    mfpserver.customConfiguration |  |  Configuración del servidor predeterminada (Opcional)  | Proporcione una referencia de configuración adicional específica del servidor a una correlación de configuración creada previamente |
 | mfpserver.jndiConfigurations | mfpfProperties | Propiedades JNDI de Mobile Foundation Server para personalizar el despliegue  | Especifique pares de valores de nombre separados por comas |
 | mfpserver | keystoreSecret | Consulte la sección de configuración para crear previamente el secreto con almacenes de claves y sus contraseñas.|
@@ -579,7 +579,7 @@ La tabla siguiente indica las variables de entorno utilizadas en la instancia de
 |           | maxReplicas | Límite superior del número de pods que puede establecer el escalador automático. No puede ser inferior a minReplicas. | Entero positivo (predeterminado: 10) |
 |           | targetCPUUtilizationPercentage | Uso promedio objetivo de CPU (representado como un porcentaje de la CPU solicitada) sobre todos los pods. | Entero entre 1 y 100 (predeterminado 50) |
 | mfppush.pdb     | habilitado | Especifique si se ha de habilitar/inhabilitar PDB.| true (predeterminado) o false |
-|           | mín  | mínimo de pods disponibles | Entero positivo (predeterminado: 1) |
+|           | min  | mínimo de pods disponibles | Entero positivo (predeterminado: 1) |
 | mfppush.customConfiguration |  |  Configuración predeterminada (Opcional)  | Proporcione una referencia de configuración adicional específica de Push a una correlación de configuración creada previamente |
 |mfppush.jndiConfigurations | mfpfProperties | Propiedades JNDI de Mobile Foundation Server para personalizar el despliegue  | Especifique pares de valores de nombre separados por comas |
 | mfppush | keystoresSecretName | Consulte la sección de configuración para crear previamente el secreto con almacenes de claves y sus contraseñas.|
@@ -613,7 +613,7 @@ La tabla siguiente indica las variables de entorno utilizadas en la instancia de
 |                  | limits.memory | Describe la cantidad de memoria máxima permitida. | El valor predeterminado es 4096Mi. Consulte Kubernetes - [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
 |           | requests.cpu | Describe la cantidad mínima de CPU requerida - si no se especifica tomará el valor predeterminado del límite (si se ha especificado) o de lo contrario el valor definido por la implementación. | El valor predeterminado es 1000m. Consulte Kubernetes - [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |           | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el límite será el valor predeterminado de cantidad de memoria (si se ha especificado) o el valor definido por implementación. | El valor predeterminado es 2048Mi. Consulte Kubernetes - [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
-| mfpappcenter | enabled          | Distintivo para habilitar Application Center | false (predeterminado) o true |  
+| mfpappcenter | habilitado       | Distintivo para habilitar Application Center | false (predeterminado) o true |  
 | mfpappcenter.image | repository | Repositorio de imagen Docker | Repositorio de la imagen Docker de Mobile Foundation Application Center |
 |           | tag | Etiqueta de imagen Docker | Consulte la descripción de la etiqueta Docker |
 |           | consoleSecret | Un secreto ya creado para inicio de sesión | Consulte la sección de requisitos previos |
@@ -630,7 +630,7 @@ La tabla siguiente indica las variables de entorno utilizadas en la instancia de
 |           | maxReplicas | Límite superior del número de pods que puede establecer el escalador automático. No puede ser inferior a minReplicas. | Entero positivo (predeterminado: 10) |
 |           | targetCPUUtilizationPercentage | Uso promedio objetivo de CPU (representado como un porcentaje de la CPU solicitada) sobre todos los pods. | Entero entre 1 y 100 (predeterminado 50) |
 | mfpappcenter.pdb     | habilitado | Especifique si se ha de habilitar/inhabilitar PDB.| true (predeterminado) o false |
-|           | mín  | mínimo de pods disponibles | Entero positivo (predeterminado: 1) |
+|           | min  | mínimo de pods disponibles | Entero positivo (predeterminado: 1) |
 | mfpappcenter.customConfiguration |  |  Configuración predeterminada (Opcional)  | Proporcione una referencia de configuración adicional específica de Application Center a una correlación de configuración creada previamente |
 | mfpappcenter | keystoreSecret | Consulte la sección de configuración para crear previamente el secreto con almacenes de claves y sus contraseñas.|
 | mfpappcenter.resources | limits.cpu | Describe la cantidad máxima de CPU permitida.  | El valor predeterminado es 1000m. Consulte Kubernetes - [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |

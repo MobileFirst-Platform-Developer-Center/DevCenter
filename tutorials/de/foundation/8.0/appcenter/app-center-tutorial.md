@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Mobile Anwendungen über das IBM Application Center verteilen
-breadcrumb_title: Distributing apps with Application Center
+breadcrumb_title: Apps über das Application Center verteilen
 relevantTo: [ios,android,windows8,cordova]
 show_in_nav: true
 weight: 7

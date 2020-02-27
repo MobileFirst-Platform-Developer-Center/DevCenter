@@ -239,8 +239,8 @@ MFPPush.sharedInstance().unsubscribe(self.tagsArray) { (response, error)  -> Voi
         print(String(describing: response?.description))
     } else {
         self.showAlert("Error \(error?.localizedDescription)")
-        print("Error \(error?.localizedDescription)")
-    }
+       print("Error \(error?.localizedDescription)")
+   }
 }
 ```
 

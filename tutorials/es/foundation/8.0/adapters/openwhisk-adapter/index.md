@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adaptador Cloud Functions
-breadcrumb_title: Cloud Functions adapter
+breadcrumb_title: Adaptador Cloud Functions
 relevantTo: [ios,android,cordova]
 weight: 10
 ---

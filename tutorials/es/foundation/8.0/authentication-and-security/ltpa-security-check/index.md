@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Comprobación de seguridad de inicio de sesión único (SSO) basado en LTPA
-breadcrumb_title: LTPA Security Check
+breadcrumb_title: Comprobación de seguridad LTPA
 relevantTo: [android,ios,windows,javascript]
 weight: 8
 ---

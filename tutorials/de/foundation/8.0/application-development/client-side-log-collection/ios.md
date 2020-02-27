@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Protokollierung in iOS-Anwendungen
-breadcrumb_title: Logging in iOS
+breadcrumb_title: Protokollierung unter iOS
 relevantTo: [ios]
 weight: 2
 ---

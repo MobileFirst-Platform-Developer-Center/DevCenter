@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Anwendungen mit Ant verwalten
-breadcrumb_title: Administrating using Ant
+breadcrumb_title: Verwaltung mit Ant
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -129,12 +129,12 @@ verwendet:
 |url	         |Basis-URL der {{ site.data.keys.product_adj }}-Webanwendung für Verwaltungsservices|Ja | |
 |secure	     |Angabe, ob Operationen mit Sicherheitsrisiko vermieden werden sollen|Nein |true |
 |user	         |Benutzername für den Zugriff auf die {{ site.data.keys.product_adj }}-Verwaltungsservices|Ja | |
-|password	     |Kennwort für den Benutzer |Kennwort oder Datei ist erforderlich. | |
+|password	     |Kennwort für den Benutzer |Datei oder Kennwort ist erforderlich. | |
 |passwordfile |	Datei, die das Kennwort für den Benutzer enthält |Datei oder Kennwort ist erforderlich. | |	 
-|timeout	     |Zeitlimit für den Zugriff auf den gesamten REST-Service in Sekunden |Nein | |
-|connectTimeout|	Zeitlimit für das Herstellen einer Netzverbindung in Sekunden|Nein | |	 
-|socketTimeout|	Zeitlimit für das Erkennen des Verlusts einer Netzverbindung in Sekunden|Nein | |
-|connectionRequestTimeout|	Zeitlimit (in Sekunden) für das Abrufen eines Eintrags aus einem Pool für Verbindungsanforderungen|Nein | |
+|timeout	     |Zeitlimit für den Zugriff auf den gesamten REST-Service in Sekunden |Nein| |
+|connectTimeout|	Zeitlimit für das Herstellen einer Netzverbindung in Sekunden|Nein| |	 
+|socketTimeout|	Zeitlimit für das Erkennen des Verlusts einer Netzverbindung in Sekunden|Nein| |
+|connectionRequestTimeout|	Zeitlimit (in Sekunden) für das Abrufen eines Eintrags aus einem Pool für Verbindungsanforderungen|Nein| |
 |lockTimeout|	Zeitlimit für das Anfordern einer Sperre|Nein | |
 
 **url**<br/>
@@ -273,10 +273,10 @@ Der Befehl `show-user-config` außerhalb der Elemente `<adapter>` und `<app-vers
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime	     |Name der Laufzeit |Ja |	Nicht verfügbar |
-|format	     |Gibt das Ausgabeformat an (json oder xml) |Ja |Nicht verfügbar | 
-|output	     |Name der Datei, in der die Ausgabe gespeichert werden soll |Nein |Nicht verfügbar | 
-|outputproperty|Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll |Nein |Nicht verfügbar |
+|runtime	     |Name der Laufzeit |Ja|	Nicht verfügbar|
+|format	     |Gibt das Ausgabeformat an (json oder xml) |Ja|Nicht verfügbar | 
+|output	     |Name der Datei, in der die Ausgabe gespeichert werden soll |Nein|Nicht verfügbar| 
+| outputproperty |Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll |Nein | Nicht verfügbar |
 
 **Beispiel**  
 
@@ -294,16 +294,16 @@ Der Befehl `set-user-config` außerhalb der Elemente `<adapter>` und `<app-versi
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        |Name der Laufzeit |Ja |Nicht verfügbar | 
-|file	         |Name der JSON- oder XML-Datei mit der neuen Konfiguration | Ja |Nicht verfügbar | 
+|runtime        |Name der Laufzeit |Ja|Nicht verfügbar| 
+|file	         |Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja|Nicht verfügbar | 
 
 Der Befehl `set-user-config` wird mit folgenden Attributen verwendet, um eine einzelne Eigenschaft in der Konfiguration festzulegen.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime	     |Name der Laufzeit |Ja |Nicht verfügbar | 
-|property	     |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. | Ja |Nicht verfügbar | 
-|value	         |Wert der Eigenschaft |Ja |Nicht verfügbar |
+|runtime	     |Name der Laufzeit |Ja|Nicht verfügbar| 
+|property	     |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |Ja|Nicht verfügbar| 
+|value	         |Wert der Eigenschaft |Ja|Nicht verfügbar |
 
 **Beispiel**  
 
@@ -327,8 +327,8 @@ zu vertraulichen Clients finden Sie unter
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja|Nicht verfügbar | 
-| format         |Gibt das Ausgabeformat an (json oder xml) | Ja |Nicht verfügbar | 
+|runtime        |Name der Laufzeit |Ja|Nicht verfügbar | 
+| format         |Gibt das Ausgabeformat an (json oder xml) |Ja|Nicht verfügbar | 
 | output         |Name der Datei, in der die Ausgabe gespeichert werden soll |Nein | Nicht verfügbar | 
 | outputproperty |Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll |Nein | Nicht verfügbar | 
 
@@ -351,8 +351,8 @@ zu vertraulichen Clients finden Sie unter
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja|Nicht verfügbar | 
-|file	         |Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja |Nicht verfügbar | 
+|runtime        |Name der Laufzeit |Ja|Nicht verfügbar | 
+|file	         |Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja|Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -373,11 +373,11 @@ zu vertraulichen Clients finden Sie unter
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja|Nicht verfügbar | 
-|id             |Kennung der Regel |Ja |Nicht verfügbar | 
-|displayName    |Anzeigename der Regel |Ja |Nicht verfügbar | 
-|secret         |Geheimer Schlüssel der Regel |Ja |Nicht verfügbar | 
-|allowedScope   |Liste mit durch Leerzeichen getrennten Token als Bereich für die Regel |Ja |Nicht verfügbar | 
+|runtime        |Name der Laufzeit |Ja|Nicht verfügbar | 
+|id             |Kennung der Regel |Ja|Nicht verfügbar | 
+|displayName    |Anzeigename der Regel |Ja|Nicht verfügbar | 
+|secret         |Geheimer Schlüssel der Regel |Ja|Nicht verfügbar | 
+|allowedScope   |Liste mit durch Leerzeichen getrennten Token als Bereich für die Regel |Ja|Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -400,8 +400,8 @@ Laufzeit implementierten Adapter zurück. Der Befehl wird mit folgenden Attribut
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit | 	Ja |Nicht verfügbar | 
-|output	     |Name der Ausgabedatei| 	Nein |Nicht verfügbar | 
+|runtime        |Name der Laufzeit | 	Ja|Nicht verfügbar | 
+|output	     |Name der Ausgabedatei| 	Nein | Nicht verfügbar | 
 | outputproperty | Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
 **Beispiel**  
@@ -420,8 +420,8 @@ Mit dem Befehl `deploy-adapter` wird ein Adapter in einer Laufzeit implementiert
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime	     | Name der Laufzeit |Ja |Nicht verfügbar | 
-|file |Binäre Adapterdatei (.adapter) |Ja |Nicht verfügbar |
+|runtime	     |Name der Laufzeit |Ja|Nicht verfügbar | 
+|file |Binäre Adapterdatei (.adapter) |Ja|Nicht verfügbar |
 
 **Beispiel**  
 
@@ -439,8 +439,8 @@ Der Befehl `show-adapter` zeigt Details zu einem Adapter an. Der Befehl wird mit
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|name    |Name eines Adapters |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar | 
+|name    |Name eines Adapters |Ja|Nicht verfügbar | 
 | output |Name der Ausgabedatei|Nein | Nicht verfügbar | 
 | outputproperty | Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
@@ -460,8 +460,8 @@ Mit dem Befehl `delete-adapter` wird ein Adapter aus einer Laufzeit entfernt (de
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|name    |Name eines Adapters |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar | 
+|name    |Name eines Adapters |Ja|Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -480,8 +480,8 @@ Attributen verwendet.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|name    |Name eines Adapters |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar | 
+|name    |Name eines Adapters |Ja|Nicht verfügbar | 
 
 Der Befehl
 `adapter` unterstützt die folgenden Elemente.
@@ -500,7 +500,7 @@ Der Befehl `get-binary` innerhalb eines Elements `<adapter>` gibt die binäre Ad
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|tofile | Name der Ausgabedatei |Ja |Nicht verfügbar | 
+|tofile | Name der Ausgabedatei |Ja|Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -520,7 +520,7 @@ Der Befehl `show-user-config` innerhalb eines `<adapter>`-Elements zeigt die Ben
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|format	     |Gibt das Ausgabeformat an (json oder xml) |Ja |Nicht verfügbar | 
+|format	     |Gibt das Ausgabeformat an (json oder xml) |Ja|Nicht verfügbar | 
 |output	     |Name der Datei, in der die Ausgabe gespeichert werden soll |Nein | Nicht verfügbar | 
 | outputproperty |Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll |Nein | Nicht verfügbar |
 
@@ -542,14 +542,14 @@ Der Befehl `set-user-config` innerhalb eines `<adapter>`-Elements gibt die Benut
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|file | Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja |Nicht verfügbar | 
+|file | Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja|Nicht verfügbar | 
 
 Der Befehl wird mit folgenden Attributen verwendet, um eine einzelne Eigenschaft in der Konfiguration festzulegen.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |Ja |Nicht verfügbar | 
-|value |Wert der Eigenschaft |Ja |Nicht verfügbar | 
+|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |Ja|Nicht verfügbar | 
+|value |Wert der Eigenschaft |Ja|Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -579,7 +579,7 @@ Der Befehl `list-apps` gibt eine Liste der in einer Laufzeit implementierten App
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja | Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja | Nicht verfügbar | 
 | output | Name der Ausgabedatei |Nein | Nicht verfügbar | 
 | outputproperty |Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
@@ -599,8 +599,8 @@ Mit dem Befehl `deploy-app` wird eine App-Version in einer Laufzeit implementier
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|file |Anwendungsdeskriptor (eine JSON-Datei) |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar | 
+|file |Anwendungsdeskriptor (eine JSON-Datei) |Ja|Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -618,8 +618,8 @@ Der Befehl `show-app` gibt eine Liste der in einer Laufzeit implementierten App-
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|name    |Name einer App|Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar | 
+|name    |Name einer App|Ja|Nicht verfügbar | 
 | output |Name der Ausgabedatei|Nein | Nicht verfügbar | 
 | outputproperty | Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
@@ -640,8 +640,8 @@ aus einer Laufzeit entfernt (deimplementiert). Der Befehl wird mit folgenden Att
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|name    |Name einer App|Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar | 
+|name    |Name einer App|Ja|Nicht verfügbar| 
 
 **Beispiel**  
 
@@ -659,10 +659,10 @@ Mit dem Befehl `show-app-version` werden Details zu einer App-Version in einer L
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime | Name der Laufzeit |Ja |Nicht verfügbar | 
-|name | Name der App |Ja |Nicht verfügbar | 
-|environment | Mobile Plattform |Ja |Nicht verfügbar | 
-|version | Nummer der App-Version |Ja |Nicht verfügbar | 
+|runtime | Name der Laufzeit |Ja|Nicht verfügbar | 
+|name | Name der App |Ja|Nicht verfügbar | 
+|environment | Mobile Plattform |Ja|Nicht verfügbar | 
+|version | Nummer der App-Version |Ja|Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -680,10 +680,10 @@ Mit dem Befehl `delete-app-version` wird eine App-Version aus einer Laufzeit ent
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime | Name der Laufzeit |Ja |Nicht verfügbar | 
-|name | Name der App |Ja |Nicht verfügbar | 
-|environment | Mobile Plattform |Ja |Nicht verfügbar | 
-|version | Nummer der App-Version |Ja |Nicht verfügbar | 
+|runtime | Name der Laufzeit |Ja|Nicht verfügbar | 
+|name | Name der App |Ja|Nicht verfügbar | 
+|environment | Mobile Plattform |Ja|Nicht verfügbar | 
+|version | Nummer der App-Version |Ja|Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -702,8 +702,8 @@ Attributen verwendet.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime | Name der Laufzeit |Ja |Nicht verfügbar | 
-|name | Name der App |Ja |Nicht verfügbar | 
+|runtime | Name der Laufzeit |Ja|Nicht verfügbar | 
+|name | Name der App |Ja|Nicht verfügbar | 
 
 Die Befehlsgruppe
 app unterstützt die folgenden Elemente.
@@ -722,8 +722,8 @@ Der Befehl `show-license-config` zeigt die Tokenlizenzkonfiguration für eine Ap
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-| output         |	Name einer Datei, in der die Ausgabe gespeichert werden soll |Ja |Nicht verfügbar |
-| outputproperty | 	Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll |Ja |Nicht verfügbar |
+| output         |	Name einer Datei, in der die Ausgabe gespeichert werden soll |Ja|Nicht verfügbar |
+| outputproperty | 	Name einer Ant-Eigenschaft, in der die Ausgabe gespeichert werden soll |Ja |Nicht verfügbar|
 
 **Beispiel**  
 
@@ -743,8 +743,8 @@ Der Befehl `set-license-config` gibt die Tokenlizenzkonfiguration für eine App 
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|appType |Typ einer App (B2C oder B2E) |Ja |Nicht verfügbar | 
-|licenseType |Typ für eine Anwendung (APPLICATION, ADDITIONAL_BRAND_DEPLOYMENT oder NON_PRODUCTION) |Ja |Nicht verfügbar | 
+|appType |Typ einer App (B2C oder B2E) |Ja|Nicht verfügbar| 
+|licenseType |Typ für eine Anwendung (APPLICATION, ADDITIONAL_BRAND_DEPLOYMENT oder NON_PRODUCTION) |Ja|Nicht verfügbar| 
 
 **Beispiel**  
 
@@ -781,10 +781,10 @@ Attributen verwendet.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|name    |Name einer App|Ja |Nicht verfügbar | 
-|environment |Mobile Plattform |Ja |Nicht verfügbar | 
-|version |Version der App |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar| 
+|name    |Name einer App|Ja|Nicht verfügbar| 
+|environment |Mobile Plattform |Ja|Nicht verfügbar| 
+|version |Version der App |Ja|Nicht verfügbar| 
 
 Die Befehlsgruppe `app-version` unterstützt die folgenden
 Elemente: 
@@ -828,7 +828,7 @@ Der Befehl `get-web-resources` innerhalb eines Elements `<app-version>` gibt die
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|tofile | 	 Name der Ausgabedatei |Ja |Nicht verfügbar | 
+|tofile | 	 Name der Ausgabedatei |Ja|Nicht verfügbar| 
 
 **Beispiel**  
 
@@ -847,7 +847,7 @@ Der Befehl `set-web-resources` innerhalb eines Elements `<app-version>` gibt die
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|file |Name der Eingabedatei (muss eine .zip-Datei sein) |Ja |Nicht verfügbar |
+|file |Name der Eingabedatei (muss eine .zip-Datei sein) |Ja|Nicht verfügbar|
 
 **Beispiel**  
 
@@ -888,7 +888,7 @@ Der Befehl `set-authenticity-data` innerhalb eines Elements `<app-version>` gibt
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|file |Name der Eingabedatei:<ul><li>Datei authenticity_data </li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul> |Ja |Nicht verfügbar | 
+|file |Name der Eingabedatei:<ul><li>Datei authenticity_data </li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul> |Ja|Nicht verfügbar| 
 
 **Beispiele**  
 
@@ -936,7 +936,7 @@ Der Befehl `show-user-config` innerhalb eines Elements `<app-version>` zeigt die
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-| format |Gibt das Ausgabeformat an (json oder xml) |Ja |Nicht verfügbar | 
+| format |Gibt das Ausgabeformat an (json oder xml) |Ja|Nicht verfügbar| 
 | output |Name der Ausgabedatei | Nein | Nicht verfügbar| 
 | outputproperty |Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
@@ -964,14 +964,14 @@ Der Befehl `set-user-config` innerhalb eines `<app-version>`-Elements gibt die B
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|file |Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja |Nicht verfügbar | 
+|file |Name der JSON- oder XML-Datei mit der neuen Konfiguration |Ja|Nicht verfügbar| 
 
 Der Befehl `set-user-config` wird mit folgenden Attributen verwendet, um eine einzelne Eigenschaft in der Konfiguration festzulegen.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |Ja |Nicht verfügbar | 
-|value	         |Wert der Eigenschaft |Ja |Nicht verfügbar | 
+|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |Ja|Nicht verfügbar| 
+|value	         |Wert der Eigenschaft |Ja|Nicht verfügbar| 
 
 **Beispiele**  
 
@@ -999,10 +999,10 @@ die Liste der Geräte zurück, die Kontakt mit den Apps einer Laufzeit hatten. E
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar| 
 |query	 |Ein Anzeigename oder eine Benutzer-ID, nach dem bzw. der gesucht werden soll. Dieser Parameter gibt die zu suchende Zeichenfolge an. Zurückgegeben werden alle Geräte, deren Anzeigename oder Benutzer-ID diese |Zeichenfolge enthält (wobei die Groß-/Kleinschreibung nicht unterschieden wird). |Nein | Nicht verfügbar | 
 | output | 	Name der Ausgabedatei|Nein | Nicht verfügbar | 
-| outputproperty | 	 Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
+| outputproperty | 	Name der Ant-Eigenschaft für die Ausgabe|Nein | Nicht verfügbar | 
 
 **Beispiele**  
 
@@ -1025,8 +1025,8 @@ der Datensatz eines Gerätes gelöscht, das Kontakt zu den Apps einer Laufzeit h
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime |Name der Laufzeit |Ja |Nicht verfügbar | 
-|id |Eindeutige Gerätekennung |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar| 
+|id |Eindeutige Gerätekennung |Ja|Nicht verfügbar| 
 
 **Beispiel**  
 
@@ -1045,8 +1045,8 @@ Attributen verwendet.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|id             |Eindeutige Gerätekennung |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar| 
+|id |Eindeutige Gerätekennung |Ja|Nicht verfügbar| 
 
 Der Befehl
 `device` unterstützt die folgenden Elemente.
@@ -1063,9 +1063,9 @@ Der Befehl
 Mit dem Befehl `set-status` wird
 der Status eines Geräts im Geltungsbereich einer Laufzeit geändert. Er wird mit folgenden Attributen verwendet:
 
-|Attribut |Beschreibung |	Erforderlich |Standardwert |
+|Attribut|Beschreibung |	Erforderlich|Standardwert|
 |----------------|-------------|-------------|---------|
-|status|Neuer Status|Ja |Nicht verfügbar | 
+|status|Neuer Status |Ja|Nicht verfügbar| 
 
 Folgende Statuswerte sind möglich:
 
@@ -1093,8 +1093,8 @@ Mit dem Befehl `set-appstatus` wird der Status eines Geräts hinsichtlich einer 
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|app	                        |Name einer App|Ja |Nicht verfügbar | 
-|status| 	Neuer Status|Ja |Nicht verfügbar | 
+|app	                        |Name einer App|Ja|Nicht verfügbar| 
+|status| 	Neuer Status|Ja|Nicht verfügbar| 
 
 Folgende Statuswerte sind möglich:
 
@@ -1128,7 +1128,7 @@ können Sie testen, ob die MobileFirst-Verwaltungsservices überhaupt ausgeführ
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
 | output | 	Name der Ausgabedatei|Nein | Nicht verfügbar | 
-| outputproperty | 	 Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
+| outputproperty | 	Name der Ant-Eigenschaft für die Ausgabe|Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -1150,7 +1150,7 @@ Der Befehl wird mit folgenden Attributen verwendet:
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
 | output | 	Name der Ausgabedatei|Nein | Nicht verfügbar | 
-| outputproperty | 	 Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
+| outputproperty | 	Name der Ant-Eigenschaft für die Ausgabe|Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -1168,7 +1168,7 @@ die Verfügbarkeit der Datenbank und von Zusatzservices. Er wird mit folgenden A
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
 | output | 	Name der Ausgabedatei|Nein | Nicht verfügbar | 
-| outputproperty | 	 Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
+| outputproperty | 	Name der Ant-Eigenschaft für die Ausgabe|Nein | Nicht verfügbar | 
 
 **Beispiel**  
 
@@ -1197,7 +1197,7 @@ Liste der implementierten Laufzeiten zurück. Er wird mit folgenden Attributen v
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar| 
 | output |Name der Ausgabedatei|Nein | Nicht verfügbar | 
 | outputproperty | Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
@@ -1222,7 +1222,7 @@ zeigt Informationen zu einer gegebenen implementierten Laufzeit an. Er wird mit 
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
+|runtime |Name der Laufzeit |Ja|Nicht verfügbar| 
 | output |Name der Ausgabedatei|Nein | Nicht verfügbar | 
 | outputproperty | Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
@@ -1245,7 +1245,7 @@ die zugehörige Webanwendung gestoppt ist. Der Befehl wird mit folgenden Attribu
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar |
+|runtime | Name der Laufzeit |Ja|Nicht verfügbar|
 |condition |Bedingung für das Löschen (empty oder always). **Achtung:** Die Verwendung der Option always ist gefährlich. |Nein | Nicht verfügbar |
 
 **Beispiel**
@@ -1265,7 +1265,7 @@ zurück, auf denen eine gegebene Laufzeit implementiert ist. Er wird mit folgend
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
+|runtime | Name der Laufzeit |Ja|Nicht verfügbar| 
 | output |Name der Ausgabedatei|Nein | Nicht verfügbar | 
 | outputproperty | Name der Ant-Eigenschaft für die Ausgabe |Nein | Nicht verfügbar | 
 
@@ -1288,8 +1288,8 @@ unterbrochen wurde. Der Befehl wird mit folgenden Attributen verwendet.
 
 |Attribut |Beschreibung |	Erforderlich |Standardwert |
 |----------------|-------------|-------------|---------|
-|runtime        | Name der Laufzeit |Ja |Nicht verfügbar | 
-|serverId|Kennung des Servers|Ja | Nicht verfügbar | 
+|runtime | Name der Laufzeit |Ja|Nicht verfügbar| 
+|serverId|Kennung des Servers|Ja| Nicht verfügbar | 
 |force|Das Farmmember wird auch dann entfernt, wenn es verfügbar und verbunden ist. |Nein |false| 
 
 **Beispiel**

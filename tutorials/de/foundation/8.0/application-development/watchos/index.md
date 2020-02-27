@@ -69,9 +69,7 @@ watchOS-2-App ist die Datei **InterfaceController.swift** im Ordner **[Projektna
 
 ## {{ site.data.keys.product_adj }}-Sicherheit für eine iPhone-App und eine watchOS-App einrichten
 {: #setting-up-mobilefirst-security-for-the-iphone-app-and-the-watchos-app }
-Die Apple Watch unterscheidet sich physisch vom iPhone. Die Sicherheitsüberprüfungen müssen daher zum jeweiligen Eingabegerät
-passen. Die Apple
-Watch hat beispielsweise nur einen Ziffernblick, sodass die übliche Sicherheitsüberprüfung mit Benutzernamen/Kennwort nicht möglich ist. Der Zugriff auf geschützte Ressourcen auf dem Server könnte dafür über
+Die Apple Watch unterscheidet sich physisch vom iPhone. Die Sicherheitsüberprüfungen müssen daher zum jeweiligen Eingabegerät passen. Die Apple Watch hat beispielsweise nur einen Ziffernblick, sodass die übliche Sicherheitsüberprüfung mit Benutzernamen/Kennwort nicht möglich ist. Der Zugriff auf geschützte Ressourcen auf dem Server könnte dafür über
 einen PIN-Code aktiviert werden. Aufgrund dieser und vergleichbarer Unterschiede ist es notwendig, für jedes Ziel andere Sicherheitsüberprüfungen
 einzurichten. 
 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Benutzerschnittstelle für Cordova-Anwendungen entwickeln
-breadcrumb_title: Developing UI
+breadcrumb_title: Benutzerschnittstelle entwickeln
 relevantTo: [cordova]
 weight: 1
 ---

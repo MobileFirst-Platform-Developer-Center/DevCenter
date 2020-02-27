@@ -15,6 +15,7 @@ En esta documentación, podrá encontrar la descripción de las limitaciones de 
 * Cuando la limitación se aplica a una característica especial, podrá encontrar su descripción en el tema que explica dicha característica. Será entonces cuando podrá identificar inmediatamente cómo afecta a la característica.
 * No obstante, podrá encontrar la descripción aquí sí las limitaciones conocidas son generales, esto es, que se aplican a temas diferentes y es posible que no estén relacionados directamente entre sí.
 * Es posible que se observe alguna incoherencia en el funcionamiento de los pods de Mobile Foundation Analytics durante el despliegue, debido a problemas de descubrimiento de nodos Elasticsearch en el clúster de OpenShift 4.2. Esto hace que la consola de administración de Analíticas solo liste un nodo en cualquier punto del tiempo. 
+* En la aplicación de cliente móvil AppCenter Android, es posible que el usuario observe problemas de desplazamiento. Esto no es una interrupción de sus funciones. Todo funciona como estaba previsto, no obstante, para desplazarse hacia abajo se requieren algunos desplazamientos más. Esta es una limitación de las infraestructuras Javascript de terceros que se utilizan en el cliente de AppCenter. 
 
 ### Globalización
 {: #globalization }
@@ -309,3 +310,7 @@ Este error se debe a un [error conocido en node-gyp](https://github.com/nodejs/n
 ```bash
 npm install -g mfpdev-cli --no-optional
 ```
+
+### Característica Android App Bundle 
+
+Debido a la diferencia de la estructura de empaquetado de un App Bundle entre Android 5.x y Android 6.x & dispositivos posteriores, los usuarios de Android 5.x no se podrán conectar a un servidor MobileFirst si se habilita la autenticidad de aplicación y se distribuye como un paquete de aplicación en Play Store. Esta limitación solo se observa en combinación con Android 5.x + Autenticación de aplicación + Android App Bundle. Como solución temporal, cargue su aplicación como un archivo .apk normal en Play Store o restrinja la versión mínima de Android a Android 6 o superior, o tenga una versión de la aplicación separada para los dispositivos Android 5.x. 

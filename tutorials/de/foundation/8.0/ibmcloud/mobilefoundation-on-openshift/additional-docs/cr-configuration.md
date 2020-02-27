@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Mobile Foundation Custom Resource (CR) configuration
+breadcrumb_title: Konfiguration angepasster Ressourcen für die Mobile Foundation
 title: Konfiguration angepasster Ressourcen für die IBM Mobile Foundation
 weight: 3
 show_in_nav: false

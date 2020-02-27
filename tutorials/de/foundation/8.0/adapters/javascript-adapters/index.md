@@ -9,8 +9,7 @@ weight: 3
 ## Übersicht
 {: #overview }
 
-JavaScript-Adapter sind Schablonen für die Verbindung zu HTTP- und SQL-Back-Ends, die eine Reihe von Services bereitstellen, die als Prozeduren bezeichnet werden,
-sowie mobile Apps, die diese Prozeduren durch das Absetzen von Ajax-Anforderungen aufrufen können. 
+JavaScript-Adapter sind Schablonen für die Verbindung zu HTTP- und SQL-Back-Ends. Sie stellen eine Reihe von Services bereit, die als Prozeduren bezeichnet und von mobilen Apps mit AJAX-Abfragen aufgerufen wreden können.
 
 **Voraussetzung:** Arbeiten Sie zuerst das Lernprogramm [Java- und JavaScript-Adapter erstellen](../creating-adapters) durch. 
 
@@ -77,12 +76,12 @@ Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei. Diese Ko
                             <li><code>secured</code>: Dieses <i>optionale</i> Element definiert, ob die Adapterprozedur vom {{ site.data.keys.product_adj }}-Sicherheitsframework geschützt wird. Folgende Werte sind gültig:
                                 <ul>
                                     <li><code>true</code>: Standardwert. Die Prozedur wird geschützt. Zum Aufrufen der Prozedur ist ein gültiges Zugriffstoken erforderlich.</li>
-                                    <li><code>false</code>: Die Prozedur wird nicht geschützt. Zum Aufrufen der Prozedur ist kein Zugriffstoken erforderlich (siehe <a href="../../authentication-and-security/#unprotected-resources">Ungeschützte Ressourcen</a>). Wenn dieser Wert festgelegt ist, wird das Attribut <code>scope</code> ignoriert. </li>
+                                    <li><code>false</code>: Die Prozedur ist nicht geschützt. Zum Aufrufen der Prozedur ist kein Zugriffstoken erforderlich (siehe <a href="../../authentication-and-security/#unprotected-resources">Ungeschützte Ressourcen</a>). Wenn dieser Wert festgelegt ist, wird das Attribut <code>scope</code> ignoriert. </li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><b>&lt;securityCheckDefinition&gt;</b>: Dieses <i>optionale</i> Attribut definiert ein Sicherheitsüberprüfungsobjekt. Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm <a href="../../authentication-and-security/creating-a-security-check">Sicherheitsüberprüfungen erstellen</a>.</li>
+                    <li><b>&lt;securityCheckDefinition&gt;</b>: Dieses <i>optionale</i> Attribut definiert ein Sicherheitsprüfungsobjekt. Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm <a href="../../authentication-and-security/creating-a-security-check">Sicherheitsüberprüfungen erstellen</a>.</li>
         			<li><code>property</code>: Dieses <i>optionale</i> Attribut deklariert eine benutzerdefinierte Eigenschaft. Weiteres erfahren Sie im Abschnitt <a href="#custom-properties">Angepasste Eigenschaften</a> dieses Lernprogramms. </li>
                 </ul>
                 <br/>
@@ -172,7 +171,7 @@ mfpdev adapter pull -c [adapterProject]/alternate_config.json
 ### Ordner 'js'
 {: #the-js-folder }
 
-Dieser Ordner enthält die JavaScript-Implementierungsdatei für alle Prozeduren, die in der Datei **adapter.xml** deklariert sind. In einem JavaScript-Adapter kann es nur eine JavaScript-Datei geben. Außerdem kann der Ordner XSL-Dateien mit einem Umwandlungsschema für abgerufene XML-Rohdaten enthalten. Von einem Adapter abgerufene Daten können als Rohdaten oder als vom Adapter vorverarbeitete Daten zurückgegeben werden. In beiden Fällen werden die Daten der Anwendung als **JSON-Objekt** präsentiert.
+Dieser Ordner enthält die JavaScript-Implementierungsdatei für alle Prozeduren, die in der Datei **adapter.xml** deklariert sind. Es kann nur eine JavaScript-Datei in einem JavaScript-Adapter geben. Außerdem kann der Ordner XSL-Dateien mit einem Umwandlungsschema für abgerufene XML-Rohdaten enthalten. Von einem Adapter abgerufene Daten können als Rohdaten oder als vom Adapter vorverarbeitete Daten zurückgegeben werden. In beiden Fällen werden die Daten der Anwendung als **JSON-Objekt** präsentiert.
 
 ## Prozeduren von JavaScript-Adaptern
 {: #javascript-adapter-procedures }

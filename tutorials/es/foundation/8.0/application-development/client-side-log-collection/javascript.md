@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Registro en aplicaciones JavaScript (Cordova, Web)
-breadcrumb_title: Logging in JavaScript
+breadcrumb_title: Registro en JavaScript
 relevantTo: [javascript]
 weight: 1
 ---

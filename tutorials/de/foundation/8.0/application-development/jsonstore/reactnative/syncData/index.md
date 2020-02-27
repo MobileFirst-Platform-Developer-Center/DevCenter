@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Daten einer JSONStore-Sammlung mit einer Cloudant-Datenbank synchronisieren
-breadcrumb_title: Sync data of JSONStore collection to a Cloudant DB
+breadcrumb_title: Daten einer JSONStore-Sammlung mit einer Cloudant-Datenbank synchronisieren
 relevantTo: [reactnative]
 weight: 4
 downloads:

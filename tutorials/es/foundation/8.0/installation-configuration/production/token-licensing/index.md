@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Instalación y configuración de licencias de señales
-breadcrumb_title: Token licensing
+breadcrumb_title: Licencias de señales
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->

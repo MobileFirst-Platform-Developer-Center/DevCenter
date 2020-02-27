@@ -68,9 +68,9 @@ die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhin
    ```xml
    implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
-   
+
    >**Hinweis**: Wenn Sie das Feature [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) verwenden und MobileFirst-APIs von einem Zusatzmodul aus aufrufen möchten, verwenden Sie die `api`-Deklaration anstelle von `implementation`. Wenn Sie `implementation` verwenden, ist die Nutzung von MobileFirst-APIs auf dasselbe Modul beschränkt. Bei Verwendung von `api` werden die MobileFirst-APIs dagegen für alle in der App vorhandenen Module verfügbar gemacht. Dies gilt auch für Zusatzmodule. Weitere Details finden Sie unter [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
-   
+
 ```xml
  api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
 ```
@@ -376,17 +376,22 @@ Die Einrichtung einer Anwendung in FCM unterscheidet sich vom alten GCM-Modell.
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
     }
-    
+
     apply plugin: 'com.google.gms.google-services'
     ```
 
-    
+    - Fügen Sie im Stammabschnitt `buildscript` der Datei **build.gradle** die folgende Abhängigkeit hinzu:
+      ```
+      classpath 'com.google.gms:google-services:3.0.0'
+      ```
 
-    - Fügen Sie im Stammabschnitt `buildscript` der Datei build.gradle die folgende Abhängigkeit hinzu:
+    - Entfernen Sie das folgende GCM-Plug-in aus der Datei `build.gradle`:
+      ```
+      compile  com.google.android.gms:play-services-gcm:+
+      ```
 
-      `classpath 'com.google.gms:google-services:3.0.0'`
+    >**Hinweis**: Wenn Sie Android Studio bis Version 3.2 verwenden, müssen Sie sicherstellen, dass in jeder Abhängigkeitszeile nur eine Versionsnummer angegeben ist.
 
-    - Entfernen Sie das folgende GCM-Plug-in aus der Datei build.gradle: `compile  com.google.android.gms:play-services-gcm:+`.
 
  3. Konfigurieren Sie die Android-Manifestdatei. Die folgenden Änderungen an der Datei `AndroidManifest.xml` sind erforderlich:
 

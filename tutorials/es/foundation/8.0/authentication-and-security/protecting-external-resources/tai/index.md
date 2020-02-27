@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Interceptor de asociaciones de confianza
-breadcrumb_title: Trust Association Interceptor
+breadcrumb_title: Interceptor de asociaciones de confianza
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:

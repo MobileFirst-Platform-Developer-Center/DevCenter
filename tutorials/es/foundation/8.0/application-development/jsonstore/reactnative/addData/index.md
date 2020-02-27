@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adición de datos a una recopilación de JSONStore
-breadcrumb_title: Add data to JSONStore collection
+breadcrumb_title: Añadir datos a una recopilación de JSONStore
 relevantTo: [reactnative]
 weight: 1
 downloads:

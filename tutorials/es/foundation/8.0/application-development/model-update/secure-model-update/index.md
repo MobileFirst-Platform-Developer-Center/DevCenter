@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Implementación de Model Update seguro
-breadcrumb_title: Secure Model Update
+breadcrumb_title: Model Update seguro
 relevantTo: [iOS]
 weight: 2
 ---

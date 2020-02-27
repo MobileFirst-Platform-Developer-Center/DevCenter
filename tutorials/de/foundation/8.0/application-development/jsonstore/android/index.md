@@ -84,7 +84,7 @@ try {
 Mit `getCollectionByName` können Sie einen Mechanismus für den Zugriff auf die Sammlung erstellen. Sie müssen `openCollections` vor `getCollectionByName` aufrufen.
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -122,7 +122,7 @@ try {
 Verwenden Sie `findDocuments`, um mit einer Abfrage ein Dokument in einer Sammlung zu finden. Verwenden Sie `findAllDocuments`, um alle Dokumente aus einer Sammlung abzurufen. Verwenden Sie `findDocumentById`, um mit der eindeutigen Dokument-ID nach einem Dokument zu suchen. 
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreQueryPart queryPart = new JSONStoreQueryPart();
@@ -146,7 +146,7 @@ try {
 Verwenden Sie `replaceDocument`, um Dokumente in einer Sammlung zu modifizieren. Das Feld für die Ersetzung ist die eindeutige ID des Dokuments (`_id`). 
 
 ```java
-Context context = getContext();
+Context  context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -363,8 +363,7 @@ an `add`, `replace` und `remove`.
 
 #### Änderungen mit Push übertragen
 {: #push-changes }
-Wenn Sie Änderungen mit Push an einen Adapter senden möchten, rufen Sie `findAllDirtyDocuments` auf, um eine Liste
-der Dokumente mit Modifikationen abzurufen. Verwenden Sie dann `WLResourceRequest`. Nach dem Senden der Daten und einer Bestätigung des erfolgreichen Sendens müssen Sie
+Wenn Sie Änderungen mit Push an einen Adapter senden möchten, rufen Sie `findAllDirtyDocuments` auf, um eine Liste der Dokumente mit Modifikationen abzurufen. Verwenden Sie dann `WLResourceRequest`. Nach dem Senden der Daten und einer Bestätigung des erfolgreichen Sendens müssen Sie
 `markDocumentsClean` aufrufen.
 
 ```java

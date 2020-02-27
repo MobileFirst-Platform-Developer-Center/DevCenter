@@ -29,6 +29,11 @@ Para añadir el plugin JSONStore a su aplicación React Native:
     ```bash
     npm install react-native-ibm-mobilefirst-jsonstore --save
     ```
+3. Solo para iOS, instale las dependencias de Mobilefirst Pod
+
+   ```bash
+   cd ios && pod install
+   ```
 
 ## Uso básico
 {: #basic-usage }
@@ -134,15 +139,15 @@ npm install
 
 2. Configuración de la aplicación.
     (Para Android solamente)
-   *  Abra el archivo `android/app/src/main/AndroidManifest.xml` del directorio raíz del proyecto React Native. <br/>
-    	 Añada la siguiente línea al código `<manifest>`:<br/>
+   *  Abra el archivo `android/app/src/main/AndroidManifest.xml` desde el directorio raíz del proyecto de React Native.<br/>
+    	 Añada la línea siguiente a la etiqueta `<manifest>`:<br/>
     	`xmlns:tools="http://schemas.android.com/tools"`<br/>
-    	 Añada la siguiente línea al código `<application>`:<br/>
+    	 Añada la línea siguiente a la etiqueta `<application>`x:<br/>
     	`tools:replace="android:allowBackup"`<br/><br/>
-    	 La biblioteca *react-native-ibm-mobilefirst* necesita que se lleve a cabo este paso.<br/>
+    	 Este paso lo requiere la biblioteca *react-native-ibm-mobilefirst*. <br/>
 
-	 *  Abra el archivo `android/app/build.gradle` del directorio raíz del proyecto React Native.<br/>
-      Añada la siguiente línea dentro de *android {}* :<br/>
+	 *  Abra el archivo `android/app/build.gradle` desde el directorio raíz del proyecto de React Native.<br/>
+      Añada el código siguiente en *android {}*:<br/>
 
         ```
         packagingOptions{

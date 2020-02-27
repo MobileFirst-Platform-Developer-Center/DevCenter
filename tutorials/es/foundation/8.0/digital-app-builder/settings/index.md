@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Valores de Digital App Builder 
-weight: 16
+weight: 17
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

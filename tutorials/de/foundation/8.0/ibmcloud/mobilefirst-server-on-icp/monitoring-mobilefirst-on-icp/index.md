@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Mobile Foundation in IBM Cloud Private (ICP) überwachen
-breadcrumb_title: Monitoring Mobile Foundation
+breadcrumb_title: Mobile Foundation überwachen
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

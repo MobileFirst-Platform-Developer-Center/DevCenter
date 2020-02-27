@@ -10,15 +10,11 @@ weight: 9
 
 Para asegurar la aplicación de manera apropiada, habilite la [comprobación de seguridad](../#security-checks) de autenticidad de aplicación de {{ site.data.keys.product_adj }} predefinida (`appAuthenticity`). Cuando esté habilitada, la verificación valida la autenticidad de la aplicación antes de proporcionarle un servicio. Las aplicaciones en un entorno de producción deberían tener esta característica habilitada.
 
-Para habilitar la autenticidad de aplicación, puede seguir las instrucciones que se muestran en pantalla en **{{ site.data.keys.mf_console }}** → **[su-applicación]** → **Authenticidad**, o revisar la información siguiente.
+Para habilitar la autenticidad de aplicación, puede seguir las instrucciones que se muestran en pantalla en **{{ site.data.keys.mf_console }}** → **[su-applicación]** → **Autenticidad**, o revisar la información siguiente.
 
 #### Disponibilidad
 {: #availability }
-* La autenticidad de aplicación está disponible en todas las plataformas soportadas (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) en las aplicaciones nativas y en Cordova.
-
-#### Limitaciones
-{: #limitations }
-* La autenticidad de aplicación no da soporte a **Bitcode** en iOS. Por lo tanto, antes de utilizar la autenticidad de aplicación, inhabilite Bitcode en las propiedades de proyecto de Xcode.
+* La autenticidad de aplicación está disponible en todas las plataformas soportadas (iOS, watchOS, Android, Windows 8.1 Universal, Windows 10 UWP) en las aplicaciones nativas y en Cordova.
 
 #### Ir a:
 {: #jump-to }
@@ -79,14 +75,19 @@ Después de que se haya completado la verificación de autenticidad, no se vuelv
 
 ## BTS (Build Time Secret)
 {: #bts }
-BTS (Build Time Secret) es una **herramienta opcional para mejorar la validación de autenticidad** solo para las aplicaciones de iOS. La herramienta inyecta la aplicación con un secreto determinado en el momento de la compilación, que se utiliza más adelante en el proceso de validación de autenticidad.
+BTS (Build Time Secret) es una **herramienta opcional para mejorar la validación de autenticidad** solo para las aplicaciones de iOS y watchOS. La herramienta inyecta la aplicación con un secreto determinado en el momento de la compilación, que se utiliza más adelante en el proceso de validación de autenticidad.
 
 La herramienta BTS puede descargarse en el **{{ site.data.keys.mf_console }}** → **Centro de descargas**.
 
 Para utilizar la herramienta BTS en Xcode:
 1. En el separador **Fases de compilación** pulse el botón **+** y cree una nueva **Fase de script de ejecución**.
-2. Copie la vía de acceso de la herramienta BTS y péguela en la nueva "Fase de script de ejecución" que ha creado.
-3. Arrastre la fase de script de ejecución sobre la fase **Compilar fuentes**.
+2. Copie la vía de acceso de la herramienta BTS y péguela en la nueva **Fase de script de ejecución** que ha creado.
+3. Arrastre la **Fase de script de ejecución** sobre la fase **Compilar fuentes**. 
+4. Este paso solo es necesario si el entorno de aplicación es watchOS. Para habilitar BTS, el desarrollador debe pasar cualquier nombre de archivo swift que esté empaquetado en la extensión watchOS después de la ubicación de la herramienta BTS.
+
+Por ejemplo, si el paquete de extensión watchOS contiene el archivo `HelloWatchOS.swift`, el desarrollador deberá pasar `HelloWatchOS` como un argumento junto con la vía de acceso de la herramienta BTS. 
+
+![Herramienta BTS](BTS_Tool.png)
 
 La herramienta debería utilizarse al construir una versión de producción de la aplicación.
 

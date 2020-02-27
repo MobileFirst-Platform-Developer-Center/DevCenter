@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Creación de una comprobación de seguridad
-breadcrumb_title: Creating a security check
+breadcrumb_title: Creación de una comprobación de seguridad 
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
@@ -44,7 +44,7 @@ Las clases base de comprobación de seguridad que se describen a continuación e
 
 > Al crear un adaptador Java, la plantilla predeterminada supone que el adaptador presentará **recursos**. Es elección del usuario empaquetar comprobaciones de seguridad y recursos en el mismo adaptador o separarlos en adaptadores distintos.
 
-Para eliminar la implementación de **recursos** predeterminada, suprima los archivos **[NombreAdaptador]Application.java** y **[NombreAdaptador]Resource.java**. Elimine también el `<JAXRSApplicationClass>`elemento de **adapter.xml**.
+Para eliminar la implementación de **recursos** predeterminada, suprima los archivos **[NombreAdaptador]Application.java** y **[NombreAdaptador]Resource.java**. Elimine también el elemento `<JAXRSApplicationClass>` en **adapter.xml**. 
 
 En el archivo del adaptador Java **adapter.xml**, añada un elemento XML llamado `securityCheckDefinition`. Por ejemplo:
 
@@ -63,8 +63,8 @@ En el archivo del adaptador Java **adapter.xml**, añada un elemento XML llamado
 
 Después de desplegar correctamente un adaptador con una definición de comprobación de seguridad en {{ site.data.keys.mf_server }}, también puede ver la comprobación de seguridad y la información de configuración y realizar modificaciones de tiempo de ejecución, en **{{ site.data.keys.mf_console }} → Adaptadores → [su adaptador]**:
 
-* En el separador **Archivos de configuración** puede ver la copia en servidor del descriptor de adaptador, incluido el `<securityCheckDefinition>` elemento que define la comprobación de seguridad personalizada y sus propiedades configurables. También puede [extraer la configuración de adaptador ](../../adapters/java-adapters/#custom-properties) y enviarla a distintos servidores.
-* En el separador **Comprobaciones de seguridad** puede visualizar una lista de todas las propiedades de configuración que ha expuesto en la definición comprobación de seguridad. El valor del atributo `displayName` configurado o el valor del nombre de atributo cuando no se ha configurado ningún nombre hacen referencia a las propiedades. Si establece el atributo de descripción de la propiedad en la definición, también se muestra esta descripción.
+* En el separador **Archivos de configuración** puede ver la copia de su descriptor de adaptador en el servidor, incluido el elemento `<securityCheckDefinition>` que define su comprobación de seguridad personalizada y sus propiedades configurables. También puede [extraer la configuración de adaptador ](../../adapters/java-adapters/#custom-properties) y enviarla a distintos servidores.
+* En el separador **Comprobaciones de seguridad** puede visualizar una lista de todas las propiedades de configuración que ha expuesto en la definición comprobación de seguridad. El valor del atributo `displayName` configurado o el valor del nombre de atributo cuando no se ha configurado ningún nombre hacen referencia a las propiedades. Si establece el atributo de descripción de la propiedad en la definición, también se muestra esta descripción. 
 Para cada propiedad, el valor que se configura en el atributo `defaultValue` se muestra en el valor actual. Puede modificar el valor para sustituir el valor predeterminado de la definición de comprobación de seguridad. Puede restaurar los valores predeterminados de la definición de comprobación de seguridad en cualquier momento.
 * También puede seleccionar la versión de aplicación de la sección **Aplicaciones** de {{ site.data.keys.mf_console }}.
 
@@ -137,8 +137,8 @@ Estas propiedades pueden configurarse en varios niveles:
 
 ### adapter.xml
 {: #adapterxml }
-En el archivo de adaptador Java **adapter.xml**, en `<securityCheckDefinition>`, puede añadir uno o más `<property>` elementos.  
-El `<property>` elemento tiene los atributos siguientes:
+En el archivo **adapter.xml** del adaptador Java, en `<securityCheckDefinition>`, puede añadir uno o varios elementos `<property>`.  
+El elemento `<property>` tiene los atributos siguientes: 
 
 - **name**: El nombre de la propiedad como se define en la clase de configuración.
 - **defaultValue**: Sustituye el valor predeterminado definido en la clase de configuración.

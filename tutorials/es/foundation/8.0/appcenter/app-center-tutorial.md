@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Distribución de aplicaciones móviles con IBM Application Center
-breadcrumb_title: Distributing apps with Application Center
+breadcrumb_title: Distribución de aplicaciones con Application Center
 relevantTo: [ios,android,windows8,cordova]
 show_in_nav: true
 weight: 7
@@ -16,7 +16,7 @@ Application Center facilita el uso compartido de aplicaciones móviles:
 * Puede **compartir comentarios e información de valoración**.  
 * Puede utilizar listas de control de acceso para limitar quién puede instalar aplicaciones.
 
-Application Center funciona con aplicaciones {{ site.data.keys.product_adj }} y no {{ site.data.keys.product_adj }}, y da soporte a cualquier aplicación de **iOS, Android**, **BlackBerry 6/7** y **Windows/Phone 8.x**.
+Application Center funciona con aplicaciones {{ site.data.keys.product_adj }} y aplicaciones no de {{ site.data.keys.product_adj }} y da soporte a cualquier aplicación de **iOS, Android** y **Windows/Phone 8.x**. 
 
 > **Nota:** Los archivos de archivado/IPA generados mediante Test Flight o iTunes Connect para el envío/validación del almacén de aplicaciones iOS, puede provocar un bloqueo/fallo del tiempo de ejecución. Lea el blog [Preparación de aplicaciones iOS para el envío de App Store en IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), para obtener más información.
 
@@ -26,6 +26,8 @@ Puede utilizar Application Center en contextos distintos. Por ejemplo:
 * Durante el desarrollo para distribuir aplicaciones en un equipo.
 
 > **Nota:** para crear la aplicación iOS AppCenter Installer, se necesita MobileFirst 7.1.
+>
+Se requiere Studio para las aplicaciones worklight 7.1 y no se requiere para las aplicaciones cordova puras. 
 
 #### Ir a:
 {: #jump-to}
@@ -145,11 +147,13 @@ Puede abrir el proyecto nativo resultante (en **iphone\native**) manualmente en 
 
 > **Nota:** Consulte [Cliente de IBM AppCenter basado en Cordova](#cordova-based-ibm-appcenter-client), si está utilizando la infraestructura de Cordova para crear el cliente de Android e iOS AppCenter.
 
-### Para Blackberry
+<!--
+### For Blackberry
 {: #for-blackberry }
-* Para crear la versión de BlackBerry, debe tener el BlackBerry Eclipse IDE (o Eclipse con el plug-in de BlackBerry Java) con la BlackBerry SDK 6.0. La aplicación también se ejecuta en BlackBerry OS 7 cuando se compila con BlackBerry SDK 6.0.
+* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
 
-Se proporciona un proyecto de BlackBerry en: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+-->
 
 ### Para Windows Phone 8
 {: #for-windows-phone-8}
@@ -200,7 +204,7 @@ Para añadir aplicaciones nuevas al Almacén:
 3. Seleccione un archivo de aplicación:
     * `.ipa`: iOS
     * `.apk`: Android
-    * `.zip`: BlackBerry 6/7
+    <!--* `.zip`: BlackBerry 6/7-->
     * `.xap`: Windows Phone 8.x
     * `.appx`: Windows Store 8.x
 

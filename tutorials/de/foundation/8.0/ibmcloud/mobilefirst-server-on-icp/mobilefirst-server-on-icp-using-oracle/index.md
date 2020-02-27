@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Mobile Foundation mit Oracle-Datenbank in IBM Cloud Private einrichten
-breadcrumb_title: Foundation with Oracle DB on ICP
+breadcrumb_title: Foundation mit Oracle-DB in ICP
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---

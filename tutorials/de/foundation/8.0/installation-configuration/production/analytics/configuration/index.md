@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server Konfigurationshandbuch
-breadcrumb_title: Configuration Guide
+breadcrumb_title: Konfigurationshandbuch
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración de Mobile Foundation con una base de datos Oracle en IBM Cloud Private
-breadcrumb_title: Foundation with Oracle DB on ICP
+breadcrumb_title: Foundation con Oracle DB en ICP
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---

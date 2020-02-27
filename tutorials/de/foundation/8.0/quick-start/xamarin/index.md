@@ -36,10 +36,9 @@ Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run
 
 1. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**. 
     * Wählen Sie die **Android**-Plattform aus. 
-    * Geben Sie für die **Anwendungs-ID** den Wert **com.ibm.mfpstarterxamarin** ein.
-(Der Wert hängt vom Anwendungsgerüst ab, das Sie im nächsten Schritt herunterladen werden.) 
-    * Geben Sie für die **Version** den Wert **1.0** ein. 
-    * Klicken Sie auf **Anwendung registrieren**. 
+    * Geben Sie für die **Anwendungs-ID** den Wert **com.ibm.mfpstarterxamarin** ein. (Der Wert hängt vom Anwendungsgerüst ab, das Sie im nächsten Schritt herunterladen werden.)
+    * Geben Sie für die **Version** den Wert **1.0** ein.
+    * Klicken Sie auf **Anwendung registrieren**.
 
     <img class="gifplayer" alt="Anwendung registrieren" src="register-an-application-xamarin.gif"/>
 

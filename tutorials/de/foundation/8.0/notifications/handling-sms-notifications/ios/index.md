@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Handhabung von SMS-Benachrichtigungen in iOS
-breadcrumb_title: Handling SMS in iOS
+breadcrumb_title: Handhabung von SMS in iOS
 relevantTo: [ios]
 downloads:
   - name: Download Xcode project

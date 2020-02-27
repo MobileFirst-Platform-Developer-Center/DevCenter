@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst-Protokollnachrichten in IBM Cloud Private analysieren
-breadcrumb_title: Analyzing MobileFirst log messages
+breadcrumb_title: MobileFirst-Protokollnachrichten analysieren
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---

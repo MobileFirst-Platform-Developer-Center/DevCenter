@@ -49,7 +49,8 @@ Para establecer el tipo de licencia con {{ site.data.keys.mf_console }}
 3. Establezca el **Tipo de aplicación** y el **Tipo de licencia de señal**
 4. Pulse **Guardar**
 
-Para establecer el tipo de licencia con el programa mfpadm, utilice `mfpadm app <appname> set license-config <application-type> <token license type>`
+Para establecer el tipo de licencia con el programa mfpadm,
+utilice `mfpadm app <appname> set license-config <application-type> <token license type>`
 
 En el siguiente ejemplo se establece la información de licencia B2E / APPLICATION a la aplicación denominada **my.test.application**
 
@@ -134,11 +135,11 @@ En los siguientes casos la validación de las licencias podría fallar cuando se
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
 Dependiendo del tipo de licencia de señal de una aplicación, se utilizan las siguientes características.
 
-| Tipo de licencia de señal | Nombre característica | 
+|Tipo de licencia de señal |Nombre característica | 
 |--------------------|--------------|
-| APPLICATION        | 	ibmmfpfa    | 
-| ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| (sin característica) | 
+|APPLICATION        | 	ibmmfpfa    | 
+|ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
+|NON_PRODUCTION	|(sin característica) | 
 
 ## Integración con IBM License Metric Tool
 {: #integration-with-ibm-license-metric-tool }

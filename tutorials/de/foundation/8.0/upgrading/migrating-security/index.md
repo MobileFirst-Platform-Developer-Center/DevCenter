@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Authentifizierungs- und Sicherheitskonzepte umstellen
-breadcrumb_title: Migrating authentication concepts
+breadcrumb_title: Authentifizierungskonzepte umstellen
 downloads:
   - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
