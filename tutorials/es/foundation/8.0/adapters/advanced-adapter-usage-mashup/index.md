@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Mashup y utilización de adaptador avanzada
-breadcrumb_title: Adapter Mashup
+breadcrumb_title: Adaptador Mashup
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Cordova project

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Manejo de las notificaciones por SMS en Cordova
-breadcrumb_title: Handling SMS in Cordova
+breadcrumb_title: Manejo de SMS en Cordova
 relevantTo: [cordova]
 weight: 8
 downloads:
@@ -62,7 +62,6 @@ function registerDevice() {
 ```
 
 > El dispositivo también se puede registrar utilizando la [API REST (POST) de registro de dispositivo de push](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
-
 ## Utilización de un servlet de suscripción de SMS
 {: #using-an-sms-subscribe-servlet}
 Las API REST sirven para enviar notificaciones a dispositivos registrados. Es posible enviar cualquier forma de notificación: notificaciones de difusión y etiqueta y notificaciones autenticadas

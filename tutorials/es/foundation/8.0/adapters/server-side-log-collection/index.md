@@ -1,6 +1,6 @@
 ---
 title: Recopilación de registro del lado del servidor
-breadcrumb_title: Server-side log collection
+breadcrumb_title: Recopilación de registro del lado del servidor
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---

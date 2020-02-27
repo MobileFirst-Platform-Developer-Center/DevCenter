@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Dar servicio a Direct Update desde una CDN
-breadcrumb_title: CDN Support
+breadcrumb_title: Soporte de CDN 
 relevantTo: [cordova]
 weight: 1
 ---

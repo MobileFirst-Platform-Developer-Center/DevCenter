@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guía de instalación de la estación de trabajo
-breadcrumb_title: Installation guide
+breadcrumb_title: Guía de instalación
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

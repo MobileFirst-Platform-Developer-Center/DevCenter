@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Programas de utilidad de seguridad JSONStore
-breadcrumb_title: Security utilities
+breadcrumb_title: Programas de utilidad de seguridad
 relevantTo: [ios,android,cordova]
 weight: 4
 ---

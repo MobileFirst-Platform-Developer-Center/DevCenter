@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore-Sicherheitsdienstprogramme
-breadcrumb_title: Security utilities
+breadcrumb_title: Sicherheitsdienstprogramme
 relevantTo: [ios,android,cordova]
 weight: 4
 ---

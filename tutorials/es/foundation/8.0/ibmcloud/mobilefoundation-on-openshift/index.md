@@ -145,6 +145,12 @@ Descargue el paquete de IBM Mobile Foundation para Openshift desde [IBM Passport
     sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/cluster_role_binding.yaml
     ```
 
+    **Para el distintivo de imagen del operador 1.0.11 y posterior, utilice el mandato siguiente.**
+
+    ```bash
+    sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/role_binding.yaml
+    ```
+
 3. Ejecute los mandatos siguientes para desplegar CRD, el operador y para instalar las Restricciones de contexto de seguridad (SCC).
 
     ```bash
@@ -152,6 +158,15 @@ Descargue el paquete de IBM Mobile Foundation para Openshift desde [IBM Passport
     oc create -f deploy/
     oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
     ```
+    **Para el distintivo de imagen del operador 1.0.11 y posterior, utilice los mandatos siguientes.**
+
+    ```bash
+    oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
+    oc create -f deploy/
+    oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
+    oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$MFOS_PROJECT:mf-operator
+    ```
+
 
 ### Despliegue los componentes de IBM Mobile Foundation 
 {: #deploy-mf-components}

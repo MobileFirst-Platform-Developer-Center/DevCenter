@@ -25,7 +25,12 @@ Los plugins de MobileFirst dan soporte a las siguientes versiones de plataforma 
 
 * cordova-ios: **>= 4.1.1 y < 6.0**
 * cordova-android: **>= 6.1.2 y < 9.0**
-* cordova-windows: **>= 4.3.2 y < 7.0**
+* cordova-windows: **>= 5.0.0 y < 8.0**
+
+>**Nota:** La última versión de **cordova-windows** publicada tiene un error que generará una excepción durante el inicio de la aplicación. Apache Cordova ha solucionado el problema en el repositorio de desarrollo pero no se ha publicado todavía. Se le recomienda que utilice la versión de *cordova-windows* del repositorio maestro que contiene el arreglo. El siguiente es el mandato que se puede utilizar para añadir la plataforma *cordova-windows* de modo que tenga aplicado el arreglo. 
+```bash
+cordova platform add https://github.com/apache/cordova-windows
+```
 
 #### Ir a:
 {: #jump-to }
@@ -105,7 +110,7 @@ Considere la posibilidad de crear el proyecto mediante la **plantilla de aplicac
 
 2. Cambie al directorio raíz del proyecto Cordova: `cd hello`
 
-3. Añada una o más plataformas soportadas al proyecto Cordova mediante mandatos de la interfaz de línea de mandatos (CLI) de Cordova: `cordova platform add ios|android|windows`. Por ejemplo:
+3. Añada una o más plataformas soportadas al proyecto Cordova mediante mandatos de la interfaz de línea de mandatos (CLI) de Cordova: `cordova platform add ios|android|windows`.    Por ejemplo:
 
    ```bash
    cordova platform add ios

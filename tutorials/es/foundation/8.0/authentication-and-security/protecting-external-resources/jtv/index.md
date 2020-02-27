@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Validador de elementos Java
-breadcrumb_title: Java Token Validator
+breadcrumb_title: Validador de elementos Java
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:

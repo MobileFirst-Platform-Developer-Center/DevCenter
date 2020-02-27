@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Contrato de comprobación de seguridad
-breadcrumb_title: security check contract
+breadcrumb_title: Contrato de comprobación de seguridad 
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---

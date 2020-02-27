@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Kombinierter Einsatz mit Cloudant
+title: Integration von Cloudant
 relevantTo: [javascript]
 downloads:
   - name: Download Cordova project

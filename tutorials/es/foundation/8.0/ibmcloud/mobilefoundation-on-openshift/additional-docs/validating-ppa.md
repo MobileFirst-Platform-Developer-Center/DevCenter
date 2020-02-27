@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Validating Mobile Foundation archive from PPA
+breadcrumb_title: Validación del archivo de Mobile Foundation desde PPA
 title: Validación del archivo de IBM Mobile Foundation descargado desde Passport Advantage Archive
 weight: 5
 show_in_nav: false

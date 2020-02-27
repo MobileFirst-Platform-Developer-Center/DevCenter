@@ -300,7 +300,7 @@ Para editar las propiedades de una aplicación subida:
 ## Actualización de una aplicación móvil en {{ site.data.keys.mf_server }} y en el Application Center
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
 
-> Esto únicamente está soportado para Android, iOS y Windows Phone y actualmente no está soportado para Windows 10 Universal, Blackberry ni Windows 8 Universal.
+> Esto únicamente está soportado para Android, iOS y Windows Phone y actualmente no está soportado para Windows 10 Universal o Windows 8 Universal.
 
 
 Puede actualizar de forma sencilla aplicaciones móviles desplegadas utilizando una combinación de {{ site.data.keys.mf_console }} y del Application Center.

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Eingabehilfefunktionen der IBM MobileFirst Foundation
-breadcrumb_title: Accessibility features
+breadcrumb_title: Funktionen zur behindertengerechten Bedienung
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->

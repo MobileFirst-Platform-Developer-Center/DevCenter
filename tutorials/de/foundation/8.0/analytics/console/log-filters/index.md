@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Protokollfilter konfigurieren
-breadcrumb_title: Log Filters
+breadcrumb_title: Protokollfilter
 relevantTo: [ios,android,javascript]
 weight: 2
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Protokollierung in Android-Anwendungen
-breadcrumb_title: Logging in Android
+breadcrumb_title: Protokollierung unter Android
 relevantTo: [android]
 weight: 3
 ---

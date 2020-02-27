@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Neuerungen der CD-Updates
-breadcrumb_title: CD Updates
+breadcrumb_title: CD-Updates
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

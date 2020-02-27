@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Información adicional
-breadcrumb_title: Additional info
+breadcrumb_title: Información adicional 
 relevantTo: [android]
 weight: 1
 ---

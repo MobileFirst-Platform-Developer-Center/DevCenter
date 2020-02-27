@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Actualización de la instalación de MobileFirst Platform Foundation
-breadcrumb_title: Applying updates
+breadcrumb_title: Aplicación de actualizaciones 
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->

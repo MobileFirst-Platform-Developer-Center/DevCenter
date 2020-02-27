@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Analytics-Unterstützung für Push-Benachrichtigungen einrichten
-breadcrumb_title: Setting Up Analytics Support
+breadcrumb_title: Analytics-Unterstützung einrichten
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---

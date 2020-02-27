@@ -2,7 +2,7 @@
 layout: tutorial
 title: MobileFirst-CLI in Eclipse verwenden
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: MobileFirst Eclipse plug-in
+breadcrumb_title: MobileFirst-Eclipse-Plug-in
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -119,7 +119,7 @@ Die folgenden Befehle stehen zur Auswahl:
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
 |Open Server Console|Wenn die Serverdefinition bereits vorhanden ist, wird die Konsole geöffnet, sodass Sie die Aktionen des angegebenen Servers sehen können. |mfpdev server console
 |
-|Preview App|Öffnet die App im Browservorschaumodus |mfpdev app preview|
+|Preview App|mfpdev app preview|mfpdev app preview|
 |Register App|Registriert die App bei dem in Ihren Serverdefinitionen angegebenen Server |mfpdev app register                           |
 |Encrypt App|Führt für Ihre App das Verschlüsselungstool für Webressourcen aus|mfpdev app webencrypt|
 |Pull App|Ruft die vorhandene App-Konfiguration von dem in der Serverdefinition angegebenen Server ab|mfpdev app pull

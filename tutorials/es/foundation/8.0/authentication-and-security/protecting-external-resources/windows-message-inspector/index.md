@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Inspector de mensajes Windows .NET
-breadcrumb_title: Windows .NET Message Inspector
+breadcrumb_title: Inspector de mensajes Windows .NET
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:

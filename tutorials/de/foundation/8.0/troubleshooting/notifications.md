@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Fehlerbehebung bei Push-Benachrichtigungen
-breadcrumb_title: Notifications
+breadcrumb_title: Benachrichtigungen
 relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---

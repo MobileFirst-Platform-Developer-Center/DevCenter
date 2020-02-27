@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript-HTTP-Adapter
-breadcrumb_title: HTTP Adapter
+breadcrumb_title: HTTP-Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
@@ -147,7 +147,9 @@ Weitere Informationen zum Setup-Prozess für Keystores enthält das Lernprogramm
   </proxy>
 </connectionPolicy>
 {% endhighlight %}</li>
-                    <li><b>maxConcurrentConnectionsPerNode</b>: Dieses <i>optionale</i> Unterelement definiert die maximale Anzahl Verbindungen, die der {{ site.data.keys.mf_server }} gleichzeitig zum Back-End öffnen kann. In der {{ site.data.keys.product }} gibt es kein Limit für Serviceanforderungen, die von Anwendungen eingehen. Es wird nur die Anzahl gleichzeitiger HTTP-Verbindungen zum Back-End-Service begrenzt.<br/><br/>
+                    <li><b>maxConcurrentConnectionsPerNode</b>: Dieses <i>optionale</i> Unterelement definiert die maximale Anzahl Verbindungen, die der
+{{ site.data.keys.mf_server }} gleichzeitig zum
+Back-End öffnen kann. In der {{ site.data.keys.product }} gibt es kein Limit für Serviceanforderungen, die von Anwendungen eingehen. Es wird nur die Anzahl gleichzeitiger HTTP-Verbindungen zum Back-End-Service begrenzt.<br/><br/>
                     Standardmäßig sind 50 gleichzeitige HTTP-Verbindungen möglich. Schätzen Sie ein, wie viele gleichzeitige Anforderungen an den Adapter erwartet werden. Ausgehend von dieser Zahl und von den maximal zulässigen Anforderungen seitens des Back-End-Service können Sie die Anzahl der gleichzeitigen HTTP-Verbindungen modifizieren. Außerdem können Sie den Back-End-Service so konfigurieren, dass die Anzahl der gleichzeitig eingehenden Anforderungen begrenzt ist.<br/><br/>
                     Stellen Sie sich ein System mit zwei Knoten vor, für das eine Belastung von 100 parallelen Anforderungen erwartet wird. Der Back-End-Service kann aber nur maximal 80 gleichzeitige Anforderungen unterstützen. Für den Fall können Sie maxConcurrentConnectionsPerNode auf
 40 setzen.

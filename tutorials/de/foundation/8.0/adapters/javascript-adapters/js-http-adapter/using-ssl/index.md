@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: SSL in JavaScript-HTTP-Adaptern verwenden
-breadcrumb_title: Using SSL
+breadcrumb_title: SSL verwenden
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---

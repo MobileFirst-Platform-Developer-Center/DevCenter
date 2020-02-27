@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Definición del registro y el rastreo para el Application Center en el servidor de aplicaciones
-breadcrumb_title: Setting up logging and tracing
+breadcrumb_title: Configuración del registro y el rastreo 
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---

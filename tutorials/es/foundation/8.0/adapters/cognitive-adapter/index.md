@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adaptadores para servicios cognitivos de Watson
-breadcrumb_title: Adapters for Watson services
+breadcrumb_title: Adaptadores para servicios de Watson
 relevantTo: [ios,android,cordova]
 weight: 11
 ---

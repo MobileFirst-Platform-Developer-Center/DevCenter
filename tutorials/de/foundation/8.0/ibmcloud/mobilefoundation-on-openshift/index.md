@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Foundation on Red Hat OpenShift
+breadcrumb_title: Foundation in Red Hat OpenShift
 title: Mobile Foundation auf einer vorhandenen Red-Hat-OpenShift-Containerplattform implementieren
 weight: 2
 ---
@@ -144,6 +144,12 @@ Laden Sie das IBM Mobile-Foundation-Paket für Openshift von [IBM Passport Advan
     sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/cluster_role_binding.yaml
     ```
 
+    **Verwenden Sie ab Operator-Image-Tag 1.0.11 den folgenden Befehl.**
+
+    ```bash
+    sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/role_binding.yaml
+    ```
+
 3. Führen Sie die folgenden Befehle aus, um den die Definition für angepasste Ressourcen und den Operator zu implementieren und Einschränkungen für den Sicherheitskontext (SCC, Security Context Constraints) zu installieren.
 
     ```bash
@@ -151,6 +157,15 @@ Laden Sie das IBM Mobile-Foundation-Paket für Openshift von [IBM Passport Advan
     oc create -f deploy/
     oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
     ```
+    **Verwenden Sie ab Operator-Image-Tag 1.0.11 die folgenden Befehle.**
+
+    ```bash
+    oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
+    oc create -f deploy/
+    oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
+    oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$MFOS_PROJECT:mf-operator
+    ```
+
 
 ### IBM Mobile-Foundation-Komponenten implementieren
 {: #deploy-mf-components}

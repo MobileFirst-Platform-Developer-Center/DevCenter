@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración del entorno de desarrollo
-breadcrumb_title: Development Environment
+breadcrumb_title: Entorno de desarrollo
 show_children: true
 weight: 1
 ---

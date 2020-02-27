@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Backup and recovery of Mobile Foundation Analytics data
+breadcrumb_title: Copia de seguridad y recuperación de datos de Mobile Foundation Analytics
 title: Copia de seguridad y recuperación de datos de Mobile Foundation Analytics
 weight: 1
 show_in_nav: false

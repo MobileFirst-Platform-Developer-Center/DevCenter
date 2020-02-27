@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración de Mobile Foundation en IBM Cloud Kubernetes Cluster mediante Helm
-breadcrumb_title: Foundation on Kubernetes using Helm
+breadcrumb_title: Foundation en Kubernetes mediante Helm
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
@@ -143,7 +143,7 @@ Siga los pasos siguientes para cargar el archivo PPA en IBM Cloud Kubernetes Clu
       A continuación, se muestra un ejemplo para cargar las imágenes **mfpf-server** y **mfpf-push** en los nodos de trabajador basados en **varias arquitecturas**. Debe seguir el mismo proceso para **mfpf-appcenter** y **mfpf-analytics**.
 
       ```bash
-      # 1. Extraer el archivo PPA 
+      # 1. Extraiga el archivo PPA 
 
       mkdir -p ppatmp ; cd ppatmp
       tar -xvzf ibm-mobilefirst-foundation-icp.tar.gz
@@ -170,7 +170,7 @@ Siga los pasos siguientes para cargar el archivo PPA en IBM Cloud Kubernetes Clu
       docker tag mfpf-push:1.1.0-s390x us.icr.io/my_namespace/mfpf-push:1.1.0-s390x
       docker tag mfpf-push:1.1.0-ppc64le us.icr.io/my_namespace/mfpf-push/mfpf-push:1.1.0-ppc64le
 
-      # 3. Enviar todas las imágenes 
+      # 3. Envíe todas las imágenes 
 
       ## 3.1 Enviando imágenes de mfpf-server 
 
@@ -415,7 +415,7 @@ La tabla siguiente indica las variables de entorno utilizadas en la instancia de
 |           | requests.cpu | Describe la cantidad mínima de CPU requerida - si no se especifica tomará el valor predeterminado del límite (si se ha especificado) o de lo contrario el valor definido por la implementación. | El valor predeterminado es 1000m. Consulte Kubernetes - [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |           | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el límite será el valor predeterminado de cantidad de memoria (si se ha especificado) o el valor definido por implementación. | El valor predeterminado es 2048Mi. Consulte Kubernetes - [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
 | ***`Configuración de MFP Push`*** | | | |
-| mfppush | enabled | Distintivo para habilitar Mobile Foundation Push | true (predeterminado) o false |
+| mfppush | habilitado | Distintivo para habilitar Mobile Foundation Push | true (predeterminado) o false |
 |           | repository | Repositorio de imagen Docker | Repositorio de la imagen Docker de Mobile Foundation Push |
 |           | tag | Etiqueta de imagen Docker | Consulte la descripción de la etiqueta Docker |
 | replicas | | Número de instancias (pods) de Mobile Foundation Server que se han de crear | Entero positivo (Predeterminado: 3) |
@@ -458,7 +458,7 @@ La tabla siguiente indica las variables de entorno utilizadas en la instancia de
 |   | requests.cpu | Describe la cantidad mínima de CPU requerida - si no se especifica tomará el valor predeterminado del límite (si se ha especificado) o de lo contrario el valor definido por la implementación. | El valor predeterminado es 1000m. Consulte Kubernetes - [significado de CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |   | requests.memory | Describe la cantidad mínima de memoria necesaria. Si no se especifica, el límite será el valor predeterminado de cantidad de memoria (si se ha especificado) o el valor definido por implementación. | El valor predeterminado es 2048Mi. Consulte Kubernetes - [significado de memoria](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
 | ***`Configuración de MFP Application Center`*** | | | |
-| mfpappcenter | enabled          | Distintivo para habilitar Application Center | false (predeterminado) o true |  
+| mfpappcenter | habilitado       | Distintivo para habilitar Application Center | false (predeterminado) o true |  
 | image | repository | Repositorio de imagen Docker | Repositorio de la imagen Docker de Mobile Foundation Application Center |
 |           | tag | Etiqueta de imagen Docker | Consulte la descripción de la etiqueta Docker |
 |           | consoleSecret | Un secreto ya creado para inicio de sesión | Consulte la sección de requisitos previos |

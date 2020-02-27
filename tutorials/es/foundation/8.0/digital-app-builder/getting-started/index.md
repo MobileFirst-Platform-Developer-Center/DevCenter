@@ -39,38 +39,24 @@ Cree una nueva aplicación pulsando el icono **Crear aplicación** desde el pane
     * **Web**: Seleccione esta opción si está creando la aplicación para la web.
     * **PWA**: Seleccione esta opción si está creando una aplicación PWA (Progressive Web App). 
 
-3. Se visualiza la ventana **Seleccionar el tipo de servidor al que conectarse**. 
+3. Cuando el servidor de desarrollo integrado está activo y en ejecución, se capturan automáticamente los detalles del servidor. Si el servidor de desarrollo no se está ejecutando, puede conectar con su propia instancia de IBM Mobile Foundation creada en IBM Cloud o localmente. 
 
-    ![Seleccionar el tipo de servidor al que conectarse](dab-select-server.png)
+    En la ventana **Configurar la instancia de IBM Mobile Foundation**, seleccione un servidor existente o cree un nuevo servidor.
 
-4. Puede seleccionar **Servidor de Playground compartido** o **Servidor profesional personalizado**.
+    >**Nota**: para obtener fácilmente una instancia de Mobile Foundation Server, puede suministrarla en IBM Cloud. Consulte la documentación sobre cómo se suministra y se utiliza Mobile Foundation Server en IBM Cloud [aquí](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started).
 
-    * **Servidor de Playground compartido** – Un servidor de Mobile Foundation compartido alojado en IBM Cloud para que pueda empezar con rapidez. 
-
-        >**Aviso**: El servidor Playground compartido es un servidor común que se comparte entre muchos desarrolladores. Este servidor no se debe utilizar para aplicaciones de producción. Los datos de este servidor se pueden suprimir sin previo aviso. El tiempo de actividad del servidor no está garantizado.
-
-        ![Servidor compartido de IBM](dab-shared-server.png)
-
-        * Especifique la **Clave de API de IBM Cloud**. Para obtener más detalles, consulte [**Cómo crear claves de API de plataforma**](../faq/) en la sección de preguntas más recientes (FAQ).  
-
-        * Pulse **Iniciar sesión** para conectarse al servidor. 
-
-    * **Servidor profesional personalizado** – Puede conectarse a su propio servidor de Mobile Foundation ya sea creado en IBM Cloud o localmente. En la ventana **Configurar la instancia de IBM Mobile Foundation**, seleccione un servidor existente o cree un nuevo servidor.
-
-        >**Nota**: para obtener fácilmente una instancia de Mobile Foundation Server, puede suministrarla en IBM Cloud. Consulte la documentación sobre cómo se suministra y se utiliza Mobile Foundation Server en IBM Cloud [aquí](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started).
-
-        ![Configuración de la instancia de IBM Mobile Foundation](dab-config-ibm-cloud-instance.png)
+    ![Configuración de la instancia de IBM Mobile Foundation](dab-config-ibm-cloud-instance.png)
  
-        La ventana **Configurar la instancia de IBM Mobile Foundation** muestra la lista de instancias de servidor de Mobile Foundation que ha definido anteriormente. Cuando selecciona el servidor, se muestran el **URL de servidor**, el **Nombre de usuario administrador** y la **Contraseña de administrador**. Para definir un nuevo servidor, puede pulsar el enlace **Crear nuevo servidor**. Esto mostrará la nueva ventana **Configurar la instancia de IBM Mobile Foundation**. 
+    La ventana **Configurar la instancia de IBM Mobile Foundation** muestra la lista de instancias de servidor de Mobile Foundation que ha definido anteriormente. Cuando selecciona el servidor, se muestran el **URL de servidor**, el **Nombre de usuario administrador** y la **Contraseña de administrador**. Para definir un nuevo servidor, puede pulsar el enlace **Crear nuevo servidor**. Esto mostrará la nueva ventana **Configurar la instancia de IBM Mobile Foundation**. 
 
-        ![Crear un nuevo servidor](dab-custom-professional-server.png)
+    ![Crear un nuevo servidor](dab-custom-professional-server.png)
 
-        * Especifique los nuevos detalles de la instancia de IBM Mobile Foundation como, por ejemplo, **Nombre de servidor**, **URL de servidor**, **Nombre de usuario administrador** y **Contraseña de administrador**.
+    * Especifique los nuevos detalles de la instancia de IBM Mobile Foundation como, por ejemplo, **Nombre de servidor**, **URL de servidor**, **Nombre de usuario administrador** y **Contraseña de administrador**.
         >**Nota**: Puede obtener el URL de servidor y las credenciales de inicio de sesión desde el panel de control del servidor de Mobile Foundation para la instancia de servidor seleccionada. 
-        * Opcionalmente, proporcione un **Nombre de usuario** (nombre de usuario de cliente confidencial) y una **Contraseña de administrador**, para obtener una vista previa de los datos en el visor de datos. 
-        * Pulse **Conectar**.
+    * Opcionalmente, proporcione un **Nombre de usuario** (nombre de usuario de cliente confidencial) y una **Contraseña de administrador**, para obtener una vista previa de los datos en el visor de datos. 
+    * Pulse **Conectar**.
 
-5. Al iniciar sesión/conectarse correctamente, se visualiza la ventana **Crear aplicación** donde puede seleccionar una definición de aplicación existente que puede haber creado o crear una nueva especificando los detalles.  
+4. Al iniciar sesión/conectarse correctamente, se visualiza la ventana **Crear aplicación** donde puede seleccionar una definición de aplicación existente que puede haber creado o crear una nueva especificando los detalles.  
     * Para una nueva aplicación:  
         * Proporcione el **Nombre** de la aplicación, la **Ubicación** en la que se almacenarán los archivos del proyecto, **Proyecto/ID de paquete** y la **Versión** de la aplicación.  
  
@@ -120,10 +106,3 @@ Puede abrir una aplicación existente de una de las siguientes maneras:
 * Si ha seleccionado la modalidad de código, cuando pulsa **Empecemos** se muestra el espacio de trabajo de Digital App Builder para actualizar una aplicación existente. 
 
     ![Espacio de trabajo de DAB](dab-create-code-mode.png)
-
-### Utilización de plantillas
-{: #using-templates }
-
-Puede utilizar plantillas para crear de forma rápida su aplicación. Estas son plantillas de aplicaciones habilitadas para funciones específicas que le ayudarán a modificar y desarrollar rápidamente la aplicación. 
-
-**Mod Resorts**: Estas plantillas proporcionan una aplicación de ejemplo con los casos de uso de la aplicación Resorts. Contiene el módulo de inicio de sesión, el módulo de comentarios de la aplicación interna para comenzar. Tendrá que desplegar el adaptador de inicio de sesión y configurar sus propias credenciales de chatbot. 

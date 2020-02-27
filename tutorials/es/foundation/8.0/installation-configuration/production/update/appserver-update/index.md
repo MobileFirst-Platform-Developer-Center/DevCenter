@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Actualización del servidor de MobileFirst
-breadcrumb_title: Updating the MobileFirst server
+breadcrumb_title: Actualización del servidor de MobileFirst
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

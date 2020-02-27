@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst-Artefakte über die MobileFirst-CLI verwalten
-breadcrumb_title: Using the MobileFirst CLI
+breadcrumb_title: MobileFirst-CLI verwenden
 weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---

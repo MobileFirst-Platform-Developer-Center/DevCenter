@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Manejo de las notificaciones por SMS en aplicaciones cliente
-breadcrumb_title: Handling SMS Notifications
+breadcrumb_title: Manejo de las notificaciones SMS  
 relevantTo: [ios,android,cordova]
 weight: 4
 show_children: true

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server in einem Anwendungsserver installieren
-breadcrumb_title: Installing MobileFirst Server to an application server
+breadcrumb_title: MobileFirst Server in einem Anwendungsserver installieren
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -2521,7 +2521,7 @@ In den folgenden Artikeln finden Sie weitere Einzelheiten zur Lizenzüberwachung
 Ein Scheduler wird acht Stunden nach einem Serverstart ausgeführt. Wenn die Server beispielsweise heute um 23.00 Uhr gestartet werden, wird der Scheduler nicht morgen um 1.00 Uhr ausgeführt (wie es standardmäßig der Fall wäre), sondern erst übermorgen um 1.00 Uhr. Zwischen dem Start des Servers und der Ausführung des Schedulers müssen mindestens acht Stunden liegen.
 
 Ab dem vorläufigen Fix [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) liegt der Abstand zwischen dem Serverstart und der Ausführung des Schedulers nicht mehr bei acht Stunden, sondern bei vier Stunden.
-Außerdem wurde mit diesem Fix die neue Eigenschaft *MFP.SCHEDULER.STARTHOUR* eingeführt. Mithilfe dieser Eigenschaft kann der Kunde für die Ausführung des Schedulers eine andere als die Standardzeit (1.00 Uhr) festlegen. Die Eigenschaft kann auf einen Wert von 1 bis 23 gesetzt werden. Diese Eigenschaft stellt sicher, dass der Kunde den Start seines Schedulers in eine Zeit mit wenig Datenverkehr legen kann und dass der Scheduler unabhängig vom täglichen Start der Server ausgeführt wird. Ein Kunde, der seinen Server jede Nacht um 1.00 Uhr startet, kann *MFP.SCHEDULER.STARTHOUR* auf den Wert 5 setzen. So wird ein vierstündiger Abstand zwischen dem Neustart des Servers und der Ausführung des Schedulers (um 5.00 Uhr) sichergestellt. 
+Außerdem wurde mit diesem Fix die neue Eigenschaft *mfp.scheduler.startHour* eingeführt. Mithilfe dieser Eigenschaft kann der Kunde für die Ausführung des Schedulers eine andere als die Standardzeit (1.00 Uhr) festlegen. Die Eigenschaft kann auf einen Wert von 1 bis 23 gesetzt werden. Diese Eigenschaft stellt sicher, dass der Kunde den Start seines Schedulers in eine Zeit mit wenig Datenverkehr legen kann und dass der Scheduler unabhängig vom täglichen Start der Server ausgeführt wird. Ein Kunde, der seinen Server jede Nacht um 1.00 Uhr startet, kann *mfp.scheduler.startHour* auf den Wert 5 setzen. So wird ein vierstündiger Abstand zwischen dem Neustart des Servers und der Ausführung des Schedulers (um 5.00 Uhr) sichergestellt. 
 
 Sie sollten die Lizenzüberwachung aufgrund der datenbankintensiven Aktivitäten inaktivieren. Nur Kunden mit einem Lizenzierungsmodell für adressierbare Mobile-Foundation-Geräten müssen die Lizenzüberwachung ausführen. 
 

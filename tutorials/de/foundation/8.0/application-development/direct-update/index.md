@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Direkte Aktualisierung in Cordova- und Ionic-Anwendungen
-breadcrumb_title: Direct Update
+breadcrumb_title: Direkte Aktualisierung
 relevantTo: [cordova,ionic]
 weight: 8
 downloads:
@@ -234,9 +234,16 @@ nach Abschluss der direkten Aktualisierung
 müssen Sie
 außerdem `wl_directUpdateChalengeHandler.submitFailure()` aufrufen. 
 
+>**Hinweis**: Die Funktion `wl_directUpdateChalengeHandler.submitFailure()` muss mit einer angepassten Implementierung bereitgestellt werden, bevor sie aufgerufen wird.
+
 Das folgende Beispiel zeigt eine Implementierung eines angepassten Listeners für die direkte Aktualisierung:
 
 ```javascript
+
+wl_directUpdateChallengeHandler.submitFailure = function(){
+  //Angepasste Implementierung zur Vorgehensweise beim Fehlschlagen der direkten Aktualisierung aufnehmen
+};
+
 var directUpdateCustomListener = {
 onStart: function(totalSize){
     // Angepassten Fortschrittsdialog anzeigen
@@ -415,7 +422,7 @@ Verwenden Sie Ihr bevorzugtes Tool, um den öffentlichen Schlüssel aus dem Mobi
 zu extrahieren und in einen Base64-Schlüssel zu konvertieren.   
 Verwenden Sie den so erzeugten Wert dann wie folgt: 
 
-1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Cordova-Projekts. 
+1. Öffnen Sie ein **Befehlszeilenfenster** und navigieren Sie zum Stammverzeichnis des Cordova-Projekts.
 2. Führen Sie den Befehl `mfpdev app config` aus und wählen Sie die Option "Direct Update Authenticity public key" aus. 
 3. Geben Sie den öffentlichen Schlüssel an und bestätigen Sie die Eingabe. 
 

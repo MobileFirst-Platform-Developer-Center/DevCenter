@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Using Oracle (or) MySQL as IBM Mobile Foundation database
+breadcrumb_title: Oracle oder MySQL als IBM Mobile-Foundation-Datenbank verwenden
 title: Oracle oder MySQL als IBM Mobile-Foundation-Datenbank verwenden
 weight: 2
 show_in_nav: false

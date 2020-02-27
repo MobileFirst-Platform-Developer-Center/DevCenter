@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Requisitos previos para la instalación
-breadcrumb_title: Prerequisites
+breadcrumb_title: Requisitos previos
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java-SQL-Adapter
-breadcrumb_title: SQL Adapter
+breadcrumb_title: SQL-Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
@@ -33,7 +33,7 @@ zu einem MySQL-Back-End herstellt, um mit REST-Konzepten CRUD-Operationen (Creat
 Für eine Konfiguration, die es {{ site.data.keys.mf_server }} ermöglicht, eine Verbindung zum MySQL-Server herzustellen,
 müssen **Konfigurationseigenschaften** in der Adapter-XML-Datei definiert werden. Diese Eigenschaften können später in der {{ site.data.keys.mf_console }} bearbeitet werden.
 
-Bearbeiten Sie die Datei adapter.xml und fügen Sie die folgenden Eigenschaften hinzu: 
+Bearbeiten Sie die Datei adapter.xml. Fügen Sie die folgenden Eigenschaften hinzu:
 
 ```xml
 <mfp:adapter name="JavaSQL"

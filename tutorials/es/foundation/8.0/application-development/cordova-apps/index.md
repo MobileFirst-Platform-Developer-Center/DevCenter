@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Desarrollo de MobileFirst Foundation en aplicaciones Cordova
-breadcrumb_title: Cordova application development
+breadcrumb_title: Desarrollo de aplicaciones Cordova
 relevantTo: [cordova]
 weight: 4
 ---
@@ -424,6 +424,9 @@ con [WKWebView de Apple](https://developer.apple.com/library/ios/documentation/W
 Para añadirlo, ejecute el siguiente mandato desde una ventana de línea de mandatos: `cordova plugin add cordova-plugin-wkwebview-engine`.
 
 > Obtenga más información acerca del plugin [Cordova WKWebView](https://github.com/apache/cordova-plugin-wkwebview-engine).
+
+> **Actualización:** Cuando se utiliza el plugin `cordova-plugin-wkwebview-engine` en la aplicación Cordova se genera el error *Las solicitudes entre orígenes solo están soportadas para HTTP* y se produce un error de actualización directa. Para solucionarlo, su aplicación requiere un plugin adicional denominado
+[cordova-plugin-wkwebviewxhrfix](https://www.npmjs.com/package/cordova-plugin-wkwebviewxhrfix). Puede encontrar el defecto [aquí](https://issues.apache.org/jira/browse/CB-10143). 
 
 ## Lectura adicional
 {: #further-reading }

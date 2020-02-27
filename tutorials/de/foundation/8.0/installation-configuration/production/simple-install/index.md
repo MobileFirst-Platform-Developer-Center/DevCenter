@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Einfache Installation von MobileFirst Server
-breadcrumb_title: Simple MobileFirst Server installation
+breadcrumb_title: Einfache Installation von MobileFirst Server
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

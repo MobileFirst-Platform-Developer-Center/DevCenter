@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Mobile Foundation mit Helm in einem IBM Cloud-Kubernetes-Cluster einrichten
-breadcrumb_title: Foundation on Kubernetes using Helm
+breadcrumb_title: Foundation in Kubernetes unter Verwendung von Helm
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
@@ -416,15 +416,15 @@ In der folgenden Tabelle sind die in der Mobile-Foundation-Server-Instanz, der M
 | ***`MFP-Push-Konfiguration`*** | | | |
 | mfppush | enabled | Flag zur Aktivierung von Mobile Foundation Push | true (Standardwert) oder false |
 |           | repository | Docker-Image-Repository | Repository des Docker-Image für Mobile Foundation Push|
-|           |tag |Docker image tag | Siehe Docker-Tag-Beschreibung |
-| replicas | | Anzahl der zu erstellenden Instanzen (Pods) von Mobile Foundation Server | Positive ganze Zahl (Standardwert: 3) |
+|           |tag |Docker-Image-Tag | Siehe Docker-Tag-Beschreibung |
+| replicas | | Die Anzahl der zu erstellenden Instanzen (Pods) von Mobile Foundation Server | Positive ganze Zahl (Standardwert: 3) |
 | autoscaling     | enabled | Gibt an, ob ein HPA (Horizontal Pod Autoscaler) implementiert ist. Bei Aktivierung dieses Feldes wird das Feld "replicaCount" inaktiviert. | false (Standardwert) oder true |
 |           | min  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: 1) |
 |           | max | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "minReplicas" sein. | Positive ganze Zahl (Standardwert: 10) |
 |           | targetcpu | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: 50) |
-| pdb | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | true (Standardwert) oder false |
+| pdb  | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | true (Standardwert) oder false |
 |           | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: 1) |
-|jndiConfigurations |mfpfProperties |JNDI-Eigenschaften von Mobile Foundation Server für die Anpassung der Implementierung | Geben Sie eine Liste mit Name-Wert-Paaren, jeweils getrennt durch ein Komma, an. |
+|jndiConfigurations |mfpfProperties | JNDI-Eigenschaften von Mobile Foundation Server für die Anpassung der Implementierung | Geben Sie eine Liste mit Name-Wert-Paaren, jeweils getrennt durch ein Komma, an. |
 | |keystoresSecretName | Im Konfigurationsabschnitt ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |
 |resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität | Der Standardwert ist 2000m. Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |                  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität | Der Standardwert ist 4096Mi. Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
@@ -471,7 +471,7 @@ In der folgenden Tabelle sind die in der Mobile-Foundation-Server-Instanz, der M
 |           | min  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: 1) |
 |           | max | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "minReplicas" sein. | Positive ganze Zahl (Standardwert: 10) |
 |           | targetcpu | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: 50) |
-| pdb | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | true (Standardwert) oder false |
+| pdb  | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | true (Standardwert) oder false |
 |           | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: 1) |
 |  | keystoreSecret | Im Konfigurationsabschnitt ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |
 |resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität | Der Standardwert ist 1000m. Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |

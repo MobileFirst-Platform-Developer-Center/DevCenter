@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adición de iconos y pantallas iniciales personalizados a aplicaciones Cordova
-breadcrumb_title: Adding images and icons
+breadcrumb_title: Añadir imágenes e iconos
 relevantTo: [cordova]
 weight: 1
 ---
@@ -80,7 +80,8 @@ Los nombres de archivo y las vías de acceso de los archivos de pantallas inicia
 
 #### Iconos
 {: #icons-ios}
-Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo. Las vías de acceso pueden ser cualesquiera. El nombre de cada imagen corresponde a su tamaño.
+Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo. Las vías de acceso pueden ser cualesquiera.
+El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
