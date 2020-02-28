@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: よくある質問
-breadcrumb_title: FAQs
-weight: 18
+breadcrumb_title: FAQ
+weight: 20
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -57,7 +57,7 @@ show_children: true
                   <p>以下のステップに従って、Digital App Builder を完全にアンインストールできます。
                   <ol><li>各 OS の通常の方法で Digital App Builder をアンインストールします。</li>
                       <li>ご使用の OS に応じて以下のファイルを手動で削除します。
-                      <ul><li><b>Windows</b> - <i>Users\worklight\AppData\Roaming\IBM Digital App Builder</i></li>
+                      <ul><li><b>Windows</b> - <i>Users\&lt;systemname&gt;\AppData\Roaming\IBM Digital App Builder</i></li>
                           <li><b>MacOS</b> - <i>Users/&lt;systemname&gt;/Library/Application Support/IBM Digital App Builder</i></li>
                       </ul></li>
                   </ol></p>

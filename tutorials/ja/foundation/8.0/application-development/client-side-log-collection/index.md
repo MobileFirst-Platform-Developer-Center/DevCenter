@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: クライアント・サイドのログ収集
-breadcrumb_title: Client-side log collection
+breadcrumb_title: クライアント・サイドのログ収集
 relevantTo: [ios,android,javascript]
 weight: 7
 ---

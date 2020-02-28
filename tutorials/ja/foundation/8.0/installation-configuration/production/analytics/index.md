@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server のインストールおよび構成
-breadcrumb_title: Installing MobileFirst Analytics Server
+breadcrumb_title: MobileFirst Analytics Server のインストール
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova アプリケーションの UI の開発
-breadcrumb_title: Developing UI
+breadcrumb_title: UI の開発
 relevantTo: [cordova]
 weight: 1
 ---

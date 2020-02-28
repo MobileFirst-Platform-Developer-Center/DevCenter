@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server の更新
-breadcrumb_title: Updating the MobileFirst server
+breadcrumb_title: MobileFirst Server の更新
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

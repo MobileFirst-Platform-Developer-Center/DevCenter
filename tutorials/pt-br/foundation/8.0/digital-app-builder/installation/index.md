@@ -19,6 +19,8 @@ O Digital App Builder pode ser instalado nas plataformas MacOS e Windows. O proc
 4. Clique duas vezes no ícone do IBM Digital App Builder ou no executável para abrir o Digital App Builder.
     >**Nota**: quando o Digital App Builder for instalado pela primeira vez, ele abrirá a interface para instalar o software obrigatório. No caso de existir uma versão anterior do Digital App Builder, é executada uma verificação de pré-requisito e talvez seja preciso fazer upgrade ou downgrade de algum software para atender aos pré-requisitos.
     
+    >A partir da versão 8.0.6, o instalador contém o servidor de desenvolvimento Mobile Foundation. Durante a instalação, o servidor de desenvolvimento é instalado junto com outros pré-requisitos. O ciclo de vida do servidor de desenvolvimento (como início/parada do servidor) é manipulado no Digital App Builder.
+    
     ![Instalando o Digital App Builder](dab-install-startup.png)
 
 5. Clique em **Iniciar a configuração**. Isso exibe a tela do contrato de licença.
@@ -51,6 +53,9 @@ O Digital App Builder pode ser instalado nas plataformas MacOS e Windows. O proc
 
 1. Faça download do arquivo .exe (**IBM.Digital.App.Builder.Setup.n.n.n.exe**, em que `n.n.n` é o número da versão)) no [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) ou [aqui](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
 2. Execute o executável transferido por download (**IBM.Digital.App.Builder.Setup.n.n.n.exe**) no modo administrativo.
+    >**Nota**: quando o Digital App Builder for instalado pela primeira vez, ele abrirá a interface para instalar o software obrigatório. No caso de existir uma versão anterior do Digital App Builder, é executada uma verificação de pré-requisito e talvez seja preciso fazer upgrade ou downgrade de algum software para atender aos pré-requisitos.
+    
+    >A partir da versão 8.0.6, o instalador contém o servidor de desenvolvimento Mobile Foundation. Durante a instalação, o servidor de desenvolvimento é instalado junto com outros pré-requisitos. O ciclo de vida do servidor de desenvolvimento (como início/parada do servidor) é manipulado no Digital App Builder.
 
     ![Instalando o Digital App Builder](dab-install-startup.png)
 

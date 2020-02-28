@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Application Center を使用したモバイル・アプリケーションの配布
-breadcrumb_title: Distributing apps with Application Center
+breadcrumb_title: Application Center を使用したアプリケーションの配布
 relevantTo: [ios,android,windows8,cordova]
 show_in_nav: true
 weight: 7
@@ -27,7 +27,7 @@ Application Center はさまざまな状況で使用できます。 例えば、
 
 > **注:** iOS AppCenter Installer アプリケーションのビルドには、MobileFirst 7.1 が必要です。
 >
-Studio は 7.1 worklight アプリに必要ですが、純粋な cordova アプリには必要ありません。
+Studio は 7.1 worklight アプリケーションに必要であり、純粋な Cordova アプリケーションには必要ありません。
 
 #### ジャンプ先
 {: #jump-to}
@@ -266,7 +266,7 @@ Windows Phone 8 の場合、Application Center コンソールで、企業アカ
 3. ユーザー名とパスワードを入力します。
 4. **「トークン」**をクリックすると、登録トークンのリストが開きます。
 5. リスト内でその企業を選択します。 企業アカウントの詳細が表示されます。
-6. **「企業アカウントの追加」**をクリックします。 デバイスが登録されます。
+6. **「企業アカウントの追加 (Add Company Account)」**をクリックします。デバイスが登録されます。
 
 ### モバイル・デバイスへのモバイル・クライアントのインストール
 {: #installing-the-mobile-client-on-the-mobile-device }

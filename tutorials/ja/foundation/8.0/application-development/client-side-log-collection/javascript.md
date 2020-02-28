@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript (Cordova、Web) アプリケーションでのロギング
-breadcrumb_title: Logging in JavaScript
+breadcrumb_title: JavaScript でのロギング
 relevantTo: [javascript]
 weight: 1
 ---

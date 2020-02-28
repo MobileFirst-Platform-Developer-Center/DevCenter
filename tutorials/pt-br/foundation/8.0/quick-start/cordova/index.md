@@ -113,9 +113,7 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 {: #5-testing-the-application }
 1. Em uma janela de **Linha de Comandos**, navegue para a pasta raiz do projeto Cordova:
 2. Execute o comando: `cordova platform add ios|android|windows` para incluir uma plataforma.
-3. No projeto Cordova, selecione o arquivo **config.xml** e edite o valor `<mfp:server ... url="
-"/>` com as propriedades **protocol**, **host** e **port** com os valores
-corretos para seu {{ site.data.keys.mf_server }}.
+3. No projeto Cordova, selecione o arquivo **config.xml** e edite o valor `<mfp:server ... url=" "/>` com as propriedades  de **protocolo**, **host** e **porta** com os valores corretos para o seu {{ site.data.keys.mf_server }}.
     * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**,
 **localhost** e **9080**.
     * Se você estiver usando um {{ site.data.keys.mf_server }} remoto (no IBM Cloud), normalmente os valores serão **https**, **your-server-address** e **443**.

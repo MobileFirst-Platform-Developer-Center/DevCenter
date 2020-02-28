@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: ワークステーション・インストール・ガイド
-breadcrumb_title: Installation guide
+breadcrumb_title: インストール・ガイド
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

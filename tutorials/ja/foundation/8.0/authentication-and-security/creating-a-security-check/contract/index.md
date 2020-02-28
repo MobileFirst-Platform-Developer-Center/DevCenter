@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: セキュリティー検査コントラクト
-breadcrumb_title: security check contract
+breadcrumb_title: セキュリティー検査コントラクト
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---

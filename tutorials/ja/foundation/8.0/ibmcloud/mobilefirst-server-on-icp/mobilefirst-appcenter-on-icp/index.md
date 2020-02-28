@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud Private 上での MobileFirst Application Center のセットアップ
-breadcrumb_title: Application Center on IBM Cloud Private
+breadcrumb_title: IBM Cloud Private 上の Application Center
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---

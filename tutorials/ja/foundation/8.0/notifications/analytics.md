@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: プッシュ通知に対する Analytics サポートのセットアップ
-breadcrumb_title: Setting Up Analytics Support
+breadcrumb_title: Analytics サポートのセットアップ
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---

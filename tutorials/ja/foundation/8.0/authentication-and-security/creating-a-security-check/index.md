@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: セキュリティー検査の作成
-breadcrumb_title: Creating a security check
+breadcrumb_title: セキュリティー検査の作成
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---

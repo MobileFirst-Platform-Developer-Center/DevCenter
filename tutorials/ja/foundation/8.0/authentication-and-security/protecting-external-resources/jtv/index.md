@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java トークン・バリデーター
-breadcrumb_title: Java Token Validator
+breadcrumb_title: Java トークン・バリデーター
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:

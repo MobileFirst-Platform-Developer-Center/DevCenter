@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript HTTP アダプターでの SSL の使用
-breadcrumb_title: Using SSL
+breadcrumb_title: SSL の使用
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---

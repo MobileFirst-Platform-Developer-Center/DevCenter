@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: アプリケーションへの画像認識の追加
-weight: 10
+weight: 11
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

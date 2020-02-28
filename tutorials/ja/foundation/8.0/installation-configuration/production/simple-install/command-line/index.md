@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: コマンド・ラインでの MobileFirst Server のインストール
-breadcrumb_title: Command-line installation
+breadcrumb_title: コマンド・ラインでのインストール
 show_breadcrumb: true
 weight: 3
 ---

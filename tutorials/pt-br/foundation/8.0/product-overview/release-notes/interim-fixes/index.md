@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: O que há de novo nas atualizações do CD
-breadcrumb_title: CD Updates
+breadcrumb_title: Atualizações de CD
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -13,6 +13,43 @@ As correções temporárias e as atualizações do CD são cumulativas. Ao fazer
 Faça download e instale a atualização mais recente do CD para obter todos os recursos descritos nas seções a seguir.
 
 > Para obter uma lista de liberações de iFix do {{ site.data.keys.product }} 8.0, [veja aqui]({{site.baseurl}}/blog/tag/iFix_8.0/).
+
+### Recursos incluídos na atualização 6 do CD (8.0.0.0-MFPF-IF201911050809-CDUpdate-06)
+
+#### <span style="color:Black">Servidor</span>
+##### <span style="color:NAVY">**Melhorias de Desempenho**</span>
+
+Otimização das operações do banco de dados Mobile Foundation e introdução de limpeza automatizada do banco de dados de registros.
+
+##### <span style="color:NAVY">**Agora o Application Center está disponível no DevKit**</span>
+
+Agora o Application Center está disponível como um pacote com [DevKit]({{site.baseurl}}/downloads/). Isso permite que os desenvolvedores construam aplicativos e os publiquem no armazenamento privado, que agora está disponível como parte do DevKit.
+
+##### <span style="color:NAVY">**Suporte de pilha para software do fornecedor**</span>
+
+Agora o Mobile Foundation suporta Windows Server 2016 SE e Oracle 18c.
+
+##### <span style="color:NAVY">**Suporte para estruturas de desenvolvimento de aplicativo**</span>
+
+O Mobile Foundation suporta as estruturas mais recentes liberadas pela Apple e pelo Google com suporte para [iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/), iPadOS e
+[Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/). A plataforma também fornece um SDK para Swift 5.
+
+##### <span style="color:NAVY">**Conecte-se com segurança a aplicativos back-end utilizando um Proxy API**</span>
+
+Ao conectar-se ao back-end corporativo, é possível alavancar a segurança e a análise da plataforma Mobile Foundation utilizando o Proxy API. O Proxy API envia as solicitações para o back-end real. [Saiba mais]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/).
+
+#### <span style="color:Black">Analítico</span>
+##### <span style="color:NAVY">**Feedback no Aplicativo**</span>
+
+O recurso de feedback no aplicativo estava disponível anteriormente no serviço Mobile Foundation no IBM Cloud e agora foi transferido para a distribuição de contêiner e no local do Mobile Foundation. Utilizando esse recurso, os usuários podem compartilhar feedback do aplicativo em forma de capturas de tela, anotações e texto. Um administrador pode efetuar login no console de analítica para visualizar o feedback recebido e tomar a ação necessária.
+
+
+
+#### <span style="color:Black">Pacote OpenShift</span>
+##### <span style="color:NAVY">**O Mobile Foundation faz parte do IBM Cloud Pak for Applications v3**</span>
+
+Agora o Mobile Foundation está disponível como parte do [IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/) e suporta Red Hat Open Shift 3.11 e Red Hat Open Shift 4.2. Os serviços atualmente disponíveis são núcleo móvel, análise, notificações de push e centro de aplicativos. Utilizando esses recursos, os desenvolvedores podem construir aplicativos nativos em nuvem usando microsserviços back-end e serviços móveis.
+
 
 ### Recursos incluídos com a atualização 5 do CD (8.0.0.0-MFPF-IF201903190949-CDUpdate-05)
 

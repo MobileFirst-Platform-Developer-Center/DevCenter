@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript (Cordova、Web) アプリケーションのマルチリンガル・トランスレーション
-breadcrumb_title: Multilingual translation
+breadcrumb_title: マルチリンガル・トランスレーション
 relevantTo: [javascript]
 weight: 9
 downloads:

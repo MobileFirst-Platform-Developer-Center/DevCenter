@@ -27,7 +27,7 @@ MobileFirst プラグインでサポートされる Cordova プラットフォ�
 * cordova-android: **>= 6.1.2 と < 9.0**
 * cordova-windows: **>= 5.0.0 と < 8.0**
 
->**注:** **cordova-windows** の最新の公開バージョンにはバグがあり、アプリの起動時に例外がスローされます。Apache Cordova は開発リポジトリーの問題を修正しましたが、まだ公開されていません。フィックスが含まれるマスター・リポジトリーからの *cordova-windows* バージョンを使用することをお勧めします。以下は、*cordova-windows* プラットフォームを追加してフィックスを設定するために使用できるコマンドです。
+>**注:** **cordova-windows** の最新の公開バージョンにはバグがあり、アプリの起動時に例外がスローされます。 Apache Cordova は開発リポジトリーの問題を修正しましたが、まだ公開されていません。 フィックスが含まれるマスター・リポジトリーからの *cordova-windows* バージョンを使用することをお勧めします。 以下は、*cordova-windows* プラットフォームを追加してフィックスを設定するために使用できるコマンドです。
 ```bash
 cordova platform add https://github.com/apache/cordova-windows
 ```

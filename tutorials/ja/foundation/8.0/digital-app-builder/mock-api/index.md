@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: モック REST API の使用
-weight: 13
+weight: 14
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

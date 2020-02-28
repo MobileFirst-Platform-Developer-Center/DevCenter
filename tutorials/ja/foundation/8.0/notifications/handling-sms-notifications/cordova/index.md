@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova での SMS 通知の処理
-breadcrumb_title: Handling SMS in Cordova
+breadcrumb_title: Cordova での SMS の処理
 relevantTo: [cordova]
 weight: 8
 downloads:

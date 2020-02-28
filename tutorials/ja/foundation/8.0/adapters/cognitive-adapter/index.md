@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Watson コグニティブ・サービス用のアダプター
-breadcrumb_title: Adapters for Watson services
+breadcrumb_title: Watson サービス用のアダプター
 relevantTo: [ios,android,cordova]
 weight: 11
 ---

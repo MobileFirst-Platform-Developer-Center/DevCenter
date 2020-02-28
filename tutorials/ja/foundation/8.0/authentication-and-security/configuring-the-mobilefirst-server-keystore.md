@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server 鍵ストアの構成
-breadcrumb_title: Configuring the Server Keystore
+breadcrumb_title: Server 鍵ストアの構成
 weight: 14
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: ステップアップ認証
-breadcrumb_title: Step Up Authentication
+breadcrumb_title: ステップアップ認証
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:

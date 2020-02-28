@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: CDN からのダイレクト・アップデート要求の処理
-breadcrumb_title: CDN Support
+breadcrumb_title: CDN サポート
 relevantTo: [cordova]
 weight: 1
 ---

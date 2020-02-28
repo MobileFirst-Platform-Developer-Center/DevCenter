@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore コレクションからのデータの取り出し
-breadcrumb_title: Fetch data from JSONStore collection
+breadcrumb_title: JSONStore コレクションからのデータの取り出し
 relevantTo: [reactnative]
 weight: 2
 downloads:

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics Server インストール・ガイド
-breadcrumb_title: Installation Guide
+breadcrumb_title: インストール・ガイド
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

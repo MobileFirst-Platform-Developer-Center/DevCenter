@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Using Oracle (or) MySQL as IBM Mobile Foundation database
+breadcrumb_title: Oracle (または) MySQL を IBM Mobile Foundation データベースとして使用する
 title: Oracle (または) MySQL を IBM Mobile Foundation データベースとして使用する
 weight: 2
 show_in_nav: false

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: スクリプトを使用した IBM Cloud Kubernetes クラスター上の MobileFirst サーバーのセットアップ
-breadcrumb_title: Foundation on Kubernetes using scripts
+breadcrumb_title: スクリプトを使用した Kubernetes 上の Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---

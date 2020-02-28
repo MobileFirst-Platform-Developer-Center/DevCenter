@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java アダプターおよび JavaScript アダプターの作成
-breadcrumb_title: Creating Adapters
+breadcrumb_title: アダプターの作成
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2

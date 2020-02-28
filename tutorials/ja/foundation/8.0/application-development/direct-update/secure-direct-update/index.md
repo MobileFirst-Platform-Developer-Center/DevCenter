@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: セキュアなダイレクト・アップデートの実装
-breadcrumb_title: Secure Direct Update
+breadcrumb_title: セキュアなダイレクト・アップデート
 relevantTo: [cordova]
 weight: 2
 ---

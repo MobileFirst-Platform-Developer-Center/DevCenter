@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: トークン・ライセンスに関するインストールおよび構成
-breadcrumb_title: Token licensing
+breadcrumb_title: トークン・ライセンス
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
