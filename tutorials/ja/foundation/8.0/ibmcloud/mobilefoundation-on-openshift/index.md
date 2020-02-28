@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Foundation on Red Hat OpenShift
+breadcrumb_title: Red Hat OpenShift 上の Foundation
 title: 既存の Red Hat OpenShift Container Platform への Mobile Foundation のデプロイ
 weight: 2
 ---
@@ -144,6 +144,12 @@ OCP に Mobile Foundation をデプロイする手順は、OCP の使用権を�
     sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/cluster_role_binding.yaml
     ```
 
+    **Operator イメージ・タグ 1.0.11 以降では、以下のコマンドを使用します。**
+
+    ```bash
+    sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/role_binding.yaml
+    ```
+
 3. 以下のコマンドを実行して CRD、オペレーターをデプロイし、セキュリティー・コンテキスト制約 (SCC) をインストールします。
 
     ```bash
@@ -151,6 +157,15 @@ OCP に Mobile Foundation をデプロイする手順は、OCP の使用権を�
     oc create -f deploy/
     oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
     ```
+    **Operator イメージ・タグ 1.0.11 以降では、以下のコマンドを使用します。**
+
+    ```bash
+    oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
+    oc create -f deploy/
+    oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
+    oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$MFOS_PROJECT:mf-operator
+    ```
+
 
 ### IBM Mobile Foundation コンポーネントのデプロイ
 {: #deploy-mf-components}

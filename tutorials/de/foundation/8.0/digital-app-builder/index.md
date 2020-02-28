@@ -7,7 +7,7 @@ show_children: true
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-Mit **IBM Digital App Builder** können Sie schnell mobile Anwendungen, Webanwendungen und PWA-Mehrkanalanwendungen (Progressive Web App) mit durch Watson-Services gesteuerten KI-Funktionen erstellen. Die Apps, die mit dem Digital App Builder erstellt wurden, nutzen IBM Mobile Foundation Version 8 (lokal oder in der Cloud) für Sicherheit, Back-End-Konnektivität und Analysen.
+Mit **IBM Digital App Builder**, einem Tool mit wenig Code, können Sie schnell mobile Anwendungen, Webanwendungen und PWA-Mehrkanalanwendungen (Progressive Web App) mit durch Watson-Services gesteuerten KI-Funktionen erstellen. Die Apps, die mit dem Digital App Builder erstellt wurden, nutzen IBM Mobile Foundation Version 8 (lokal oder in der Cloud) für Sicherheit, Back-End-Konnektivität und Analysen.
 
 Nachfolgend sind die wichtigsten Features von IBM Digital App Builder aufgeführt:
 
@@ -25,10 +25,25 @@ Nachfolgend sind die wichtigsten Features von IBM Digital App Builder aufgeführ
 
 * Der Eigner einer App kann Analytics für die App aktivieren. Die App sendet dann Daten an Mobile Foundation Server.
 
-Die erstellte App nutzt Open-Source-Technologien wie Cordova, Ionic und Angular. Sie können eine App-Vorschau verwenden, um verschiedene Formfaktoren zu überprüfen, bevor die App implementiert wird. Sie können Ihre Apps auch mit Vorlagen für den Schnelleinstieg erstellen (z. B. Watson Chatbot).  
+Die erstellte App nutzt Open-Source-Technologien wie Cordova, Ionic und Angular. Sie können eine App-Vorschau verwenden, um verschiedene Formfaktoren zu überprüfen, bevor die App implementiert wird. Sie können Ihre Apps auch mit Schablonen für den Schnelleinstieg erstellen (z. B. Watson Chatbot). 
+
+## Beispiele für den Einstieg in Digital App Builder
+{: #samples-dab}
+
+1. [Create a new sample app using Digital App Builder.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/1-getting-started)
+2. [Add a Watson Chatbot to your new app.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/2-watson-chatbot)
+3. [Add some application function code to your app.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/3-toggle-design-code)
+4. [Test your application against backend code by building some mock backend APIs.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/3-toggle-design-code)
+5. [Invoke a microservice backend from your app.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/5-microservice-invocation)
+6. [Use an API Proxy to invoke backend microservices from your app.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/6-api-proxy)
+7. [Engage your app users by adding the capability to send app notifications.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/7-push-notifications)
+8. [Add feature toggle capability to govern the features your apps provide.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/8-liveupdate)
+9. [Obtain insights on your app usage by adding custom analytics.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/9-custom-analytics)
+10. [Listen to the feedback for your app by using in-app feedback.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/10-inapp-feedback)
+
+>**Hinweis**: Sie können auch den Anweisungen in der Readme-Datei für [dieses Git-Repository](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted) folgen, um mit den obigen Beispielen für Digital-App-Builder zu beginnen.
 
 ### Kommende Lernprogramme
 {: #tutorials-to-follow }
 
 Nachfolgend finden Sie weitere Informationen zum Produkt:
-

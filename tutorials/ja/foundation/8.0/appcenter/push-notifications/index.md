@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: アプリケーションの更新のプッシュ通知
-breadcrumb_title: Push notifications
+breadcrumb_title: プッシュ通知
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---

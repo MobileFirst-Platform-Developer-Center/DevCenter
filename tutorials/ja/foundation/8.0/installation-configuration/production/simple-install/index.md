@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: シンプルな MobileFirst Server のインストール
-breadcrumb_title: Simple MobileFirst Server installation
+breadcrumb_title: シンプルな MobileFirst Server のインストール
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server を使用した外部リソースの認証
-breadcrumb_title: Protecting External Resources
+breadcrumb_title: 外部リソースの保護
 relevantTo: [android,ios,windows,javascript]
 weight: 12
 show_children: true

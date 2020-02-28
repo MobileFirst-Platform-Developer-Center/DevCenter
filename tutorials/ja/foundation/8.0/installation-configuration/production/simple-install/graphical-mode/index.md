@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: グラフィカル・モードでの MobileFirst Server のインストール
-breadcrumb_title: Graphical mode installation
+breadcrumb_title: グラフィカル・モードでのインストール
 show_breadcrumb: true
 weight: 2
 ---

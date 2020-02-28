@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: iOS アプリケーションでのロギング
-breadcrumb_title: Logging in iOS
+breadcrumb_title: iOS でのロギング
 relevantTo: [ios]
 weight: 2
 ---

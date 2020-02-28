@@ -7,7 +7,7 @@ show_children: true
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
 {: #overview }
-O **IBM Digital App Builder** ajuda a criar rapidamente aplicativos de diversos canais móveis, da web e PWA (Progressive Web App) com recursos de AI desenvolvidos com serviços do Watson. Os aplicativos criados usando o Digital App Builder alavancam o IBM Mobile Foundation V8 (no local ou na nuvem) para segurança, conectividade de back-end e análise de dados.
+O **IBM Digital App Builder** é uma ferramenta low-code, que ajuda a criar rapidamente aplicativos móveis de diversos canais, da web e PWA (Progressive Web App) com recursos de AI desenvolvidos com serviços do Watson. Os aplicativos criados usando o Digital App Builder alavancam o IBM Mobile Foundation V8 (no local ou na nuvem) para segurança, conectividade de back-end e análise de dados.
 
 Os recursos-chave do IBM Digital App Builder são os seguintes:
 
@@ -25,10 +25,25 @@ Os recursos-chave do IBM Digital App Builder são os seguintes:
 
 * Um proprietário do aplicativo pode ativar o Analytics para o aplicativo. O aplicativo agora envia dados para o servidor Mobile Foundation.
 
-O aplicativo criado usa tecnologias de software livre como Cordova, Ionic e Angular. É possível visualizar o aplicativo para vários fatores de forma antes de ele ser implementado. Também é possível usar os modelos de iniciação rápida para construir seus aplicativos (por exemplo, robô de bate-papo do Watson). 
+O aplicativo criado usa tecnologias de software livre como Cordova, Ionic e Angular. É possível visualizar o aplicativo para vários fatores de forma antes de ele ser implementado. Também é possível usar os modelos de iniciação rápida para construir seus aplicativos (por exemplo, robô de bate-papo do Watson).
+
+## Amostras para começar a usar o Digital App Builder
+{: #samples-dab}
+
+1. [Crie um novo aplicativo de amostra usando o Digital App Builder.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/1-getting-started)
+2. [Inclua um Robô de Bate-papo Watson em seu novo aplicativo.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/2-watson-chatbot)
+3. [Inclua algum código de função de aplicativo em seu aplicativo.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/3-toggle-design-code)
+4. [Teste seu aplicativo no código de back-end, construindo algumas APIs mock de back-end.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/3-toggle-design-code)
+5. [Chame um back-end de microsserviço a partir de seu aplicativo.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/5-microservice-invocation)
+6. [Use um Proxy da API para chamar microsserviços de back-end a partir de seu aplicativo.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/6-api-proxy)
+7. [Envolva seus usuários de aplicativo incluindo o recurso para enviar notificações do aplicativo.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/7-push-notifications)
+8. [Inclua uma capacidade de alternância de recursos para controlar os recursos fornecidos por seus aplicativos.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/8-liveupdate)
+9. [Obtenha insights sobre o uso do aplicativo incluindo analítica customizada.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/9-custom-analytics)
+10. [Ouça o feedback para seu aplicativo usando o feedback no aplicativo.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/10-inapp-feedback)
+
+>**Nota**: Também é possível seguir as instruções no Leia-me para [este repositório git](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted) para começar a usar as amostras do Digital App Builder acima.
 
 ### Tutoriais a serem seguidos
 {: #tutorials-to-follow }
 
 Localize abaixo informações adicionais sobre o produto:
-

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: アダプターの自動生成
-breadcrumb_title: Adapter auto-generation
+breadcrumb_title: アダプターの自動生成
 relevantTo: [ios,android,cordova]
 weight: 12
 ---

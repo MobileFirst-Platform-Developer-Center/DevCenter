@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Enabling Ingress parameters
+breadcrumb_title: Ingress パラメーターの有効化
 title: Ingress パラメーターの有効化
 weight: 4
 show_in_nav: false

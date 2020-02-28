@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova アプリケーションおよび Ionic アプリケーションでのダイレクト・アップデートの使用
-breadcrumb_title: Direct Update
+breadcrumb_title: ダイレクト・アップデート
 relevantTo: [cordova,ionic]
 weight: 8
 downloads:
@@ -184,9 +184,16 @@ var  directUpdateCustomListener  = {
 
 カスタム・ダイレクト・アップデート・リスナーを実装する場合は、ダイレクト・アップデート・プロセスが完了して `onFinish()` メソッドが呼び出されたときにアプリケーションが再ロードされるようにする必要があります。 また、ダイレクト・アップデート・プロセスが正常に完了できなかった場合には `wl_directUpdateChalengeHandler.submitFailure()` を呼び出す必要があります。
 
+>**注**: 関数 `wl_directUpdateChalengeHandler.submitFailure()` は、呼び出される前にカスタム実装を提供する必要があります。
+
 次の例は、カスタム・ダイレクト・アップデート・リスナーの実装を示しています。
 
 ```javascript
+
+wl_directUpdateChallengeHandler.submitFailure = function(){
+  //Include custom implementation on what should be done when there is a direct update failure
+};
+
 var  directUpdateCustomListener  = {
   onStart: function(totalSize){
     //show custom progress dialog

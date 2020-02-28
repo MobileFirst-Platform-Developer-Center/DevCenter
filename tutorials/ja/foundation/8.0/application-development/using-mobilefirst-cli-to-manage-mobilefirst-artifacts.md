@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst CLI を使用した MobileFirst 成果物の管理
-breadcrumb_title: Using the MobileFirst CLI
+breadcrumb_title: MobileFirst CLI の使用
 weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---

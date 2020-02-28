@@ -7,7 +7,7 @@ show_children: true
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-**IBM Digital App Builder** は、Watson サービスが提供する AI 機能を備えた、モバイル、Web、および PWA (プログレッシブ Web アプリケーション) マルチチャネル・アプリケーションを迅速に作成するのに役立ちます。 Digital App Builder を使用して作成されたアプリケーションは、セキュリティー、バックエンド接続、および分析のために IBM Mobile Foundation V8 (オンプレミスまたはクラウド) を利用します。
+**IBM Digital App Builder** は、ローコード・ツールであり、Watson サービスが提供する AI 機能を備えた、モバイル、Web、および PWA (プログレッシブ Web アプリケーション) マルチチャネル・アプリケーションを迅速に作成するのに役立ちます。 Digital App Builder を使用して作成されたアプリケーションは、セキュリティー、バックエンド接続、および分析のために IBM Mobile Foundation V8 (オンプレミスまたはクラウド) を利用します。
 
 IBM Digital App Builder の主な特長は、以下のとおりです。
 
@@ -25,10 +25,25 @@ IBM Digital App Builder の主な特長は、以下のとおりです。
 
 * アプリケーション所有者は、アプリケーションに対して Analytics を有効にすることができます。 そうすると、アプリケーションは Mobile Foundation サーバーにデータを送信するようになります。
 
-作成されたアプリケーションは、Cordova、Ionic、Angular などのオープン・ソース・テクノロジーを使用します。 アプリケーションがデプロイされる前に、さまざまなフォーム・ファクターでアプリケーションをプレビューすることができます。 クイック・スタート・テンプレートを使用して、アプリケーションを作成することもできます (例えば、Watson チャットボット)。 
+作成されたアプリケーションは、Cordova、Ionic、Angular などのオープン・ソース・テクノロジーを使用します。 アプリケーションがデプロイされる前に、さまざまなフォーム・ファクターでアプリケーションをプレビューすることができます。 クイック・スタート・テンプレートを使用して、アプリケーションを作成することもできます (例えば、Watson チャットボット)。
+
+## Digital App Builder 入門サンプル
+{: #samples-dab}
+
+1. [Digital App Builder を使用して新規サンプル・アプリケーションを作成する。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/1-getting-started)
+2. [新規アプリケーションに Watson Chatbot を追加する。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/2-watson-chatbot)
+3. [アプリケーションにアプリケーション機能コードを追加する。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/3-toggle-design-code)
+4. [いくつかのモック・バックエンド API を作成することによって、アプリケーションをバックエンド・コードに対してテストする。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/3-toggle-design-code)
+5. [アプリケーションからマイクロサービス・バックエンドを起動する。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/5-microservice-invocation)
+6. [API プロキシーを使用して、アプリケーションからバックエンド・マイクロサービスを起動する。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/6-api-proxy)
+7. [アプリケーション通知を送信する機能を追加することによって、アプリケーション・ユーザーをエンゲージする。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/7-push-notifications)
+8. [アプリケーションが提供するフィーチャーを制御するためにフィーチャー切り替え機能を追加する。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/8-liveupdate)
+9. [カスタム分析を追加することによって、アプリケーション使用法の洞察を得る。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/9-custom-analytics)
+10. [アプリケーション内フィードバックを使用することによって、アプリケーションのフィードバックを listen する。](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/10-inapp-feedback)
+
+>**注:** 上記の Digital App Builder サンプルを使用した入門のために、[この Git リポジトリー](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted)の Readme にある指示に従うこともできます。
 
 ### 使用するチュートリアル
 {: #tutorials-to-follow }
 
 製品の詳細情報については以下を参照してください。
-

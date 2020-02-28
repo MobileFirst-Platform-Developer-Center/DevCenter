@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: デバイス・シングル・サインオン (SSO) の構成
-breadcrumb_title: Device SSO
+breadcrumb_title: デバイス SSO
 relevantTo: [android,ios,windows,cordova]
 weight: 11
 ---

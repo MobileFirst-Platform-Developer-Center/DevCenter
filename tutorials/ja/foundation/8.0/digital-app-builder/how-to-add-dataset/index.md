@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: データ・セットの追加
-weight: 7
+weight: 8
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

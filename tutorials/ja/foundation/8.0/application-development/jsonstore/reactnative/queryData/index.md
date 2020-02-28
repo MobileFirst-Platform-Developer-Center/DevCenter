@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore コレクションからのデータの照会
-breadcrumb_title: Query data from JSONStore collection
+breadcrumb_title: JSONStore コレクションからのデータの照会
 relevantTo: [reactnative]
 weight: 3
 downloads:

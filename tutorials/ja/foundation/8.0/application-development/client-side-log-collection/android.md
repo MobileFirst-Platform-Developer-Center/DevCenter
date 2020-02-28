@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Android アプリケーションでのロギング
-breadcrumb_title: Logging in Android
+breadcrumb_title: Android でのロギング
 relevantTo: [android]
 weight: 3
 ---

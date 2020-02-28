@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: iOS での SMS 通知の処理
-breadcrumb_title: Handling SMS in iOS
+breadcrumb_title: iOS での SMS の処理
 relevantTo: [ios]
 downloads:
   - name: Download Xcode project

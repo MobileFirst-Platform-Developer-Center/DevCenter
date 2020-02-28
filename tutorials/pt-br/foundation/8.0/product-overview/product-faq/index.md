@@ -1,12 +1,12 @@
 ---
 layout: tutorial
 title: Perguntas mais frequentes
-breadcrumb_title: FAQs
+breadcrumb_title: Perguntas Mais Freqüentes
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão geral
+## Visão Geral
 {: #overview }
 
 Esse tópico descreve a lista de perguntas mais frequentes relacionadas ao IBM Mobile Foundation.

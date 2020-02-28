@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 登録
-breadcrumb_title: Enrollment
+breadcrumb_title: 登録
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:

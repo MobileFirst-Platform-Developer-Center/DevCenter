@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: スクリプトを使用した IBM Cloud Kubernetes クラスター上の MobileFirst Application Center のセットアップ
-breadcrumb_title: AppCenter on Kubernetes using scripts
+breadcrumb_title: スクリプトを使用した Kubernetes 上の AppCenter
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 開発環境のセットアップ
-breadcrumb_title: Development Environment
+breadcrumb_title: 開発環境
 show_children: true
 weight: 1
 ---

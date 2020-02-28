@@ -39,38 +39,24 @@ Builder ダッシュボードの**「新規アプリの作成」**アイコン�
     * **Web**: Web 用アプリケーションを作成する場合は、このオプションを選択します。
     * **PWA**: プログレッシブ Web アプリケーションを作成する場合は、このオプションを選択します。
 
-3. **「接続先サーバーのタイプを選択 (Select type of server to connect to)」**ウィンドウが表示されます。
+3. 統合開発サーバーが稼働中になると、サーバー詳細が自動的に取り出されます。開発サーバーが稼働中でない場合、IBM Cloud 上またはローカルで作成した独自の IBM Mobile Foundation サーバー・インスタンスに接続できます。
 
-    ![サーバーのタイプを選択](dab-select-server.png)
+    **「IBM Mobile Foundation インスタンスの構成 (Configure IBM Mobile Foundation instance)」**ウィンドウで、既存のサーバーを選択するか、新規サーバーを作成できます。
 
-4. **「共有プレイグラウンド・サーバー」**または**「カスタム・プロフェッショナル・サーバー」**を選択できます。
+    >**注**: Mobile Foundation サーバーのインスタンスを簡単に取得するために、IBM Cloud 上でプロビジョンできます。 IBM Cloud 上で Mobile Foundation サーバーをプロビジョンして使用する方法については、資料 ([ここ](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started)) を参照できます。
 
-    * **共有プレイグラウンド・サーバー** – 迅速に開始するための、IBM Cloud 上にホストされた共有 Mobile Foundation サーバー。
-
-        >**警告**: 共有プレイグラウンド・サーバーは、多数の開発者で共有される共通サーバーです。 このサーバーは、実動アプリケーションには使用しないでください。 このサーバー内のデータは、予告なく削除されることがあります。 サーバーのアップタイムは保証されません。
-
-        ![IBM 共有サーバー](dab-shared-server.png)
-
-        * **「IBM Cloud API 鍵」**を入力します。 詳しくは、FAQ セクションの『[**プラットフォーム API キーの作成方法**](../faq/)』を参照してください。 
-
-        * **「ログイン (Login)」**をクリックしてサーバーに接続します。 
-
-    * **カスタム・プロフェッショナル・サーバー** – IBM Cloud 上またはローカルで作成した独自の Mobile Foundation サーバーに接続できます。 **「IBM Mobile Foundation インスタンスの構成 (Configure IBM Mobile Foundation instance)」**ウィンドウで、既存のサーバーを選択するか、新規サーバーを作成できます。
-
-        >**注**: Mobile Foundation サーバーのインスタンスを簡単に取得するために、IBM Cloud 上でプロビジョンできます。 IBM Cloud 上で Mobile Foundation サーバーをプロビジョンして使用する方法については、資料 ([ここ](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started)) を参照できます。
-
-        ![IBM Mobile Foundation インスタンスの構成 (Configure IBM Mobile Foundation instance)](dab-config-ibm-cloud-instance.png)
+    ![IBM Mobile Foundation インスタンスの構成 (Configure IBM Mobile Foundation instance)](dab-config-ibm-cloud-instance.png)
  
-        **「IBM Mobile Foundation インスタンスの構成 (Configure IBM Mobile Foundation instance)」**ウィンドウには、前に定義した Mobile Foundation サーバー・インスタンスのリストが表示されます。 サーバーを選択すると、**「サーバー URL」**、**「管理者ユーザー名」**、**「管理者パスワード」**が表示されます。 新規サーバーを定義するには、**「新規サーバーの作成」**リンクをクリックします。 これにより、新しい**「IBM Mobile Foundation インスタンスの構成 (Configure IBM Mobile Foundation instance)」**ウィンドウが表示されます。
+    **「IBM Mobile Foundation インスタンスの構成 (Configure IBM Mobile Foundation instance)」**ウィンドウには、前に定義した Mobile Foundation サーバー・インスタンスのリストが表示されます。 サーバーを選択すると、**「サーバー URL」**、**「管理者ユーザー名」**、**「管理者パスワード」**が表示されます。 新規サーバーを定義するには、**「新規サーバーの作成」**リンクをクリックします。 これにより、新しい**「IBM Mobile Foundation インスタンスの構成 (Configure IBM Mobile Foundation instance)」**ウィンドウが表示されます。
 
-        ![新規サーバーの作成](dab-custom-professional-server.png)
+    ![新規サーバーの作成](dab-custom-professional-server.png)
 
-        * 新しい IBM Mobile Foundation インスタンスの詳細 (**「サーバー名」**、**「サーバー URL」**、**「管理者ユーザー名」**、**「管理者パスワード」**など) を入力します。
-            >**注**: 選択したサーバー・インスタンスについて、Mobile Foundation サーバー・ダッシュボードからサーバー URL およびログイン資格情報を取得できます。
-        * オプションとして、データ・ビューアーでデータをプレビューするための**「ユーザー名」**(機密クライアント・ユーザー名) および**「管理者パスワード」 **を指定します。
-        * **「接続」**をクリックします。
+    * 新しい IBM Mobile Foundation インスタンスの詳細 (**「サーバー名」**、**「サーバー URL」**、**「管理者ユーザー名」**、**「管理者パスワード」**など) を入力します。
+        >**注**: 選択したサーバー・インスタンスについて、Mobile Foundation サーバー・ダッシュボードからサーバー URL およびログイン資格情報を取得できます。
+    * オプションとして、データ・ビューアーでデータをプレビューするための**「ユーザー名」**(機密クライアント・ユーザー名) および**「管理者パスワード」 **を指定します。
+    * **「接続」**をクリックします。
 
-5. ログイン/接続が成功すると、**「アプリの作成」**ウィンドウが表示されます。ここで、作成済みの既存のアプリケーション定義を選択するか、詳細を入力して新規アプリケーション定義を作成できます。 
+4. ログイン/接続が成功すると、**「アプリの作成」**ウィンドウが表示されます。ここで、作成済みの既存のアプリケーション定義を選択するか、詳細を入力して新規アプリケーション定義を作成できます。 
     * 新規アプリケーションの場合、以下のようにします。 
         * アプリケーションの**「名前」**、プロジェクト・ファイルを保管する**「ロケーション」**、**「プロジェクト/バンドル ID」**、およびアプリケーションの**「バージョン」**を指定します。 
  
@@ -120,10 +106,3 @@ Builder ダッシュボードの**「新規アプリの作成」**アイコン�
 * コード・モードを選択した場合、**「始める (Get started)」**をクリックすると、既存のアプリケーションを更新するための Digital App Builder ワークスペースが表示されます。
 
     ![DAB ワークスペース](dab-create-code-mode.png)
-
-### テンプレートの使用
-{: #using-templates }
-
-テンプレートを使用して、アプリケーションを迅速にビルドできます。 これは、アプリケーションを迅速に変更および開発するのに役立つ、特定の機能が有効になったアプリケーション・テンプレートです。
-
-**Mod Resorts**: このテンプレートは、リゾート・アプリケーションのユース・ケース付きのサンプル・アプリケーションを提供します。 はじめは、ログイン・モジュール、チャット・モジュール、アプリケーション内フィードバック・モジュールが含まれています。 その後、ログイン・アダプターをデプロイし、独自のチャットボット資格情報を構成する必要があります。

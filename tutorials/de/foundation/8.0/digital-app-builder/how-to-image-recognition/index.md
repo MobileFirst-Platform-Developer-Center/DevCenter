@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Bilderkennung zur App hinzufügen
-weight: 10
+weight: 11
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

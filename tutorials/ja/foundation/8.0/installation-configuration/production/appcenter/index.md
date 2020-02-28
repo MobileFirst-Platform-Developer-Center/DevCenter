@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM MobileFirst Foundation Application Center のインストールおよび構成
-breadcrumb_title: Installing Application Center
+breadcrumb_title: Application Center のインストール
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->

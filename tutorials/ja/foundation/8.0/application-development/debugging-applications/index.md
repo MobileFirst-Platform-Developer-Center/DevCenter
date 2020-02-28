@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript (Cordova、Web) アプリケーションのデバッグ
-breadcrumb_title: Debugging applications        
+breadcrumb_title: アプリケーションのデバッグ        
 relevantTo: [javascript]
 weight: 10
 ---

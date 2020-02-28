@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Сквозная демонстрация для веб-приложения
-breadcrumb_title: Web
+breadcrumb_title: Веб-приложение
 relevantTo: [javascript]
 weight: 5
 ---

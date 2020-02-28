@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud Private への IBM Mobile Foundation のインストール
-breadcrumb_title: Foundation on IBM Cloud Private
+breadcrumb_title: IBM Cloud Private 上の Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 8
 ---

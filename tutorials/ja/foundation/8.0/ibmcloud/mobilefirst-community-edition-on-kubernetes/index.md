@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud Kubernetes クラスターへの IBM Mobile Foundation for Developers 8.0 のデプロイ
-breadcrumb_title: Foundation for Developers on IBM Cloud Kubernetes Cluster
+breadcrumb_title: IBM Cloud Kubernetes クラスター上の Foundation for Developers
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
