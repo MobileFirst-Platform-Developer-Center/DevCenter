@@ -7,7 +7,7 @@ show_children: true
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-**IBM Digital App Builder** vous aide à créer rapidement des applications multicanal mobiles, Web et PWA (Progressive Web App) avec des fonctionnalités basées sur les services Watson. Les applications créées avec Digital App Builder s'appuient sur IBM Mobile Foundation version 8 (sur site ou dans le cloud) pour la sécurité, la connectivité de back end et l'analyse.
+**IBM Digital App Builder** est un outil à code réduit qui permet de créer rapidement des applications multicanal mobiles, Web et PWA (Progressive Web App) avec des fonctionnalités basées sur les services Watson. Les applications créées avec Digital App Builder s'appuient sur IBM Mobile Foundation version 8 (sur site ou dans le cloud) pour la sécurité, la connectivité de back end et l'analyse.
 
 Les principales fonctions d'IBM Digital App Builder sont les suivantes :
 
@@ -25,10 +25,25 @@ Les principales fonctions d'IBM Digital App Builder sont les suivantes :
 
 * Le propriétaire d'une application peut activer la fonction d'analyse de l'application. L'application envoie désormais des données au serveur Mobile Foundation.
 
-L'application créée utilise des technologies open source comme Cordova, Ionic et Angular. Vous pouvez prévisualiser l'application pour différents facteurs de formulaire avant de la déployer. Vous pouvez aussi utiliser les modèles de démarrage rapide pour générer vos applications (par exemple, l'agent conversationnel Watson). 
+L'application créée utilise des technologies open source comme Cordova, Ionic et Angular. Vous pouvez prévisualiser l'application pour différents facteurs de formulaire avant de la déployer. Vous pouvez aussi utiliser les modèles de démarrage rapide pour générer vos applications (par exemple, l'agent conversationnel Watson).
+
+## Exemples pour commencer à utiliser Digital App Builder
+{: #samples-dab}
+
+1. [Créez un exemple d'application avec Digital App Builder.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/1-getting-started)
+2. [Ajoutez un agent conversationnel Watson à votre nouvelle application.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/2-watson-chatbot)
+3. [Ajoutez du code de fonction d'application à votre application.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/3-toggle-design-code)
+4. [Testez votre application sur du code de back end en créant des API de back end fictives.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/3-toggle-design-code)
+5. [Appelez un système de back end de microservice depuis votre application.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/5-microservice-invocation)
+6. [Utilisez un proxy d'API pour appeler des microservices de back end depuis votre application.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/6-api-proxy)
+7. [Augmentez l'engagement des utilisateurs de votre application en ajoutant la possibilité d'envoyer des notifications depuis celle-ci.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/7-push-notifications)
+8. [Ajoutez une fonction d'activation/désactivation des fonctionnalités pour gérer les fonctionnalités proposées par vos applications.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/8-liveupdate)
+9. [Obtenez des informations sur l'utilisation de votre application en ajoutant des analyses personnalisées.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/9-custom-analytics)
+10. [Prenez connaissance des commentaires sur votre application en utilisant la fonction de commentaires intégrée.](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted/tree/release80/10-inapp-feedback)
+
+>**Remarque** : Vous pouvez également suivre les instructions du fichier Readme de [ce référentiel git](https://github.com/MobileFirst-Platform-Developer-Center/IBMDigitalAppBuilderGettingStarted) pour utiliser les exemples Digital App Builder ci-dessus.
 
 ### Tutoriels à suivre
 {: #tutorials-to-follow }
 
 Vous trouverez ci-dessous des informations supplémentaires sur le produit :
-
