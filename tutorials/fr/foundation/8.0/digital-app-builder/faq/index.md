@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: Foire aux questions
-breadcrumb_title: FAQs
-weight: 18
+breadcrumb_title: Foire aux questions
+weight: 20
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -57,7 +57,7 @@ Cette rubrique décrit la liste des questions fréquemment posées liées à IBM
                   <p>Pour désinstaller complètement Digital App Builder, procédez comme suit :
                   <ol><li>Désinstallez Digital App Builder de façon habituelle pour chaque système d'exploitation.</li>
                       <li>Supprimez manuellement les fichiers suivants pour chaque système d'exploitation :
-                      <ul><li><b>Windows</b> : <i>Users\worklight\AppData\Roaming\IBM Digital App Builder</i></li>
+                      <ul><li><b>Windows</b> - <i>Users\&lt;systemname&gt;\AppData\Roaming\IBM Digital App Builder</i></li>
                           <li><b>MacOS</b> : <i>Users/&lt;systemname&gt;/Library/Application Support/IBM Digital App Builder</i></li>
                       </ul></li>
                   </ol></p>

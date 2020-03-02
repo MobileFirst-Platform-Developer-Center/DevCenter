@@ -699,7 +699,7 @@ Você deve declarar um banco de dados único: `<database kind="Push">`. O elemen
 
 O elemento `<database>` possui os atributos a seguir:
 
-| Atributo    | Descrição (Description)                  | Necessário | Padrão |
+| Atributo    | Descrição                  | Necessário | Padrão |
 |--------------|------------------------------|----------|---------|
 | kind         | O tipo de banco de dados (Push). | Sim      | Nenhuma    |
 | validar	   | Para validar se o banco de dados está acessível. | No | verdadeiro |
@@ -835,7 +835,7 @@ O elemento <server>, que é usado nesse contexto, tem o seguinte atributo:
 
 Suporta os elementos a seguir para o Liberty Collective:
 
-| Elemento               | Descrição (Description)                  | Conta |
+| Elemento               | Descrição                  | Conta |
 |-----------------------|------------------------------|-------|
 | `<collectiveMember>`  | Um membro do Liberty
 Collective. | 0..1  |

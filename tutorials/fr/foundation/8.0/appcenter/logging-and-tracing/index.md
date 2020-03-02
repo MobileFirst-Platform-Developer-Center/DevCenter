@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuration de la journalisation et du traçage pour Application Center sur le serveur d'applications
-breadcrumb_title: Setting up logging and tracing
+breadcrumb_title: Configuration de la journalisation et du traçage
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Outil de ligne de commande permettant de télécharger ou de supprimer une application
-breadcrumb_title: Uploading or deleting an app
+breadcrumb_title: Téléchargement ou suppression d'une application
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---

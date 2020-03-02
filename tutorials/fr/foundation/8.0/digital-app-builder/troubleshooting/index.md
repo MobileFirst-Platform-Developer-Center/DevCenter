@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Traitement des incidents
-weight: 17
+weight: 19
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

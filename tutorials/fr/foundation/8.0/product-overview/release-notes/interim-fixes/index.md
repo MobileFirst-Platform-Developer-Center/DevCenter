@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Nouveautés des mises à jour en distribution continue
-breadcrumb_title: CD Updates
+breadcrumb_title: Mises à jour en distribution continue
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

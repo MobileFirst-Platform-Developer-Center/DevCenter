@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Instalando o MobileFirst Server da linha de comandos
-breadcrumb_title: Command-line installation
+breadcrumb_title: Instalação da linha de comandos
 show_breadcrumb: true
 weight: 3
 ---

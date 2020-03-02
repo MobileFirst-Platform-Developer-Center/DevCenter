@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation de MobileFirst Server sur un serveur d'applications
-breadcrumb_title: Installing MobileFirst Server to an application server
+breadcrumb_title: Installation de MobileFirst Server sur un serveur d'applications
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -2246,7 +2246,7 @@ Veuillez consulter les rubriques ci-dessous pour en savoir plus sur le suivi des
 Le planificateur s'exécute huit heures après le démarrage d'un serveur. Autrement dit, si les serveurs sont démarrés à 23 heures ce jour, le planificateur ne s'exécutera pas à 01h00 (heure d'exécution par défaut du planificateur) mais à 08h00, le lendemain. L'écart entre le démarrage d'un serveur et l'exécution du planificateur est de huit heures.
 
 Démarrage du correctif temporaire [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) l'écart entre le démarrage d'un serveur et l'exécution du planificateur est de quatre heures et non de huit heures.
-Une nouvelle propriété *MFP.SCHEDULER.STARTHOUR* est également introduite. Celle-ci permet au client de choisir l'heure d'exécution du planificateur au lieu de la valeur par défaut (01h00). La propriété peut avoir une valeur comprise entre un et 23. Elle permet ainsi au client de régler le démarrage du planificateur aux heures les moins chargées et garantit que le planificateur s'exécute malgré un démarrage de serveur quotidien. Si un client redémarre ses serveurs tous les jours à 01h00, il peut définir la propriété *MFP.SCHEDULER.STARTHOUR* sur 5. L'écart de quatre heures est conservé et le planificateur s'exécutera à 05h00.
+La nouvelle propriété *mfp.scheduler.startHour* est également introduite. Celle-ci permet au client de choisir l'heure d'exécution du planificateur au lieu de la valeur par défaut (01h00). La propriété peut avoir une valeur comprise entre un et 23. Elle permet ainsi au client de régler le démarrage du planificateur aux heures les moins chargées et garantit que le planificateur s'exécute malgré un démarrage de serveur quotidien. Si un client redémarre ses serveurs tous les jours à 01h00, il peut définir la propriété *mfp.scheduler.startHour* sur 5. L'écart de quatre heures est conservé et le planificateur s'exécutera à 05h00.
 
 Nous vous conseillons de laisser le suivi des licences désactivé, car les activités associées entraînent une utilisation intensive de la base de données. Seuls les clients utilisant le modèle de licence pour les appareils adressables Mobile Foundation ont besoin d'activer le suivi des licences.
 

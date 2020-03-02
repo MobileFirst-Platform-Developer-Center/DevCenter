@@ -121,7 +121,7 @@ Fournissez des valeurs d'application de base et téléchargez un code de démarr
 
 #### Gestion d'applications
 {: #managing-applications }
-Gérez et configurez des applications enregistrées en utilisant la [mise à jour directe](../../../application-development/direct-update/), la désactivation à distance, l'[authenticité d'application](../../../authentication-and-security/application-authenticity/) et les [paramètres d'authentification et de sécurité](../../../authentication-and-security/).
+Gérez et configurez des applications enregistrées en utilisant la [mise à jour directe](../../../application-development/direct-update/), la désactivation à distance, l'[authenticité d'application](../../../authentication-and-security/application-authenticity/) et en [définissant les paramètres de sécurité](../../../authentication-and-security/).
 
 ![Illustration de l'écran Gestion des applications](application-management.png)
 

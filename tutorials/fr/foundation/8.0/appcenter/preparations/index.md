@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Préparatifs pour l'utilisation du client mobile
-breadcrumb_title: Preparations
+breadcrumb_title: Préparations
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -162,10 +162,10 @@ Pour générer le projet Windows 8 :
 
 Pour distribuer le client mobile à vos utilisateurs Application Center, vous pouvez ensuite générer un programme d'installation qui installera le fichier exécutable généré (.exe) et ses fichiers de bibliothèque de liens dynamiques (.dll) dépendants. Vous pouvez également fournir ces fichiers sans les inclure dans un programme d'installation.
 
-####  Client IBM AppCenter de Microsoft Windows 10 Universal (Natif)
+####  Client IBM AppCenter pour Microsoft Windows 10 Universal (natif)
 {: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
 
-Le client IBM AppCenter de Window 10 Universal natif peut être utilisé pour installer des applications Windows 10 Universal sur des téléphones Windows 10. Utilisez **IBMApplicationCenterWindowsStore** pour installer des applications Windows 10 sur Windows Desktop.
+Le client natif IBM AppCenter pour Window 10 Universal natif peut être utilisé pour installer des applications Windows 10 Universal sur des téléphones Windows 10. Utilisez **IBMApplicationCenterWindowsStore** pour installer des applications Windows 10 sur Windows Desktop.
 
 #### Microsoft Windows 10 Universal : création du projet
 {: #microsoft-windows-10-universal-building-the-project}
@@ -249,4 +249,4 @@ Le client mobile Windows 8 n'est pas destiné à être déployé dans Applicatio
 
 Les versions Android, iOS, Windows Phone et Windows 10 Universal (Phone) du client mobile doivent être déployées dans Application Center. A cet effet, vous devez transférer les fichiers de module d'application Android (.apk), les fichiers d'application iOS (.ipa), les fichiers d'application Windows Phone (.xap), les fichiers Windows 10 Universal (.appx) ou les fichiers archive de répertoire web (.zip) dans Application Center.
 
-Suivez la procédure décrite dans [Ajout d'une application mobile](../appcenter-console/#adding-a-mobile-application) pour ajouter l'application de client mobile pour Android, iOS, Windows Phone et Windows 10 Universal. Veillez à sélectionner la propriété d'application Installer pour indiquer que l'application est un programme d'installation. La sélection de cette propriété permet aux utilisateurs d'appareils mobiles d'installer facilement l'application de client mobile. Pour installer le client mobile, reportez-vous à la tâche associée correspondant à la version de l'application de client mobile déterminée par le système d'exploitation.
+Suivez la procédure décrite dans [Ajout d'une application mobile](../appcenter-console/#adding-a-mobile-application) pour ajouter l'application client mobile pour Android, iOS, Windows Phone et Windows 10 Universal. Veillez à sélectionner la propriété d'application Installer pour indiquer que l'application est un programme d'installation. La sélection de cette propriété permet aux utilisateurs d'appareils mobiles d'installer facilement l'application client mobile. Pour installer le client mobile, reportez-vous à la tâche associée correspondant à la version de l'application client mobile déterminée par le système d'exploitation.

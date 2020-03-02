@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Déploiement d'applications sur des environnements de test et de production
-breadcrumb_title: Deploying apps to environments
+breadcrumb_title: Déploiement d'applications sur les environnements
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

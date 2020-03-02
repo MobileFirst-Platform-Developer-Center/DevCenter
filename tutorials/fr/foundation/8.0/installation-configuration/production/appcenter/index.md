@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation et configuration d'IBM MobileFirst Foundation Application Center
-breadcrumb_title: Installing Application Center
+breadcrumb_title: Installation d'Application Center
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->

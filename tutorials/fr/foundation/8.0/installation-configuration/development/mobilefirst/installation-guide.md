@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guide d'installation du poste de travail
-breadcrumb_title: Installation guide
+breadcrumb_title: Guide d'installation
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
