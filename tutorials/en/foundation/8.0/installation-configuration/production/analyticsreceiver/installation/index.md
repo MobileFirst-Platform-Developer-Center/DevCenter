@@ -7,7 +7,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-{{ site.data.keys.mf_analytics_receiver_receiver_server }} is implemented and shipped as Java EE standard web application archive (WAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
+{{ site.data.keys.mf_analytics_receiver_server }} is implemented and shipped as Java EE standard web application archive (WAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
 
 #### Jump to
 {: #jump-to }
@@ -47,17 +47,14 @@ weight: 1
 
 ### Hardware configuration
 {: #hardware-configuration }
-* Give your JVM ample size to sale in memeory Queue with size of 10000 (i.e minimum Xmx as 6GB)
-* Increase the allowed open file descriptors.
-    * Linux typically limits a per-process number of open file descriptors to a small 1024.
-    * Consult your operating system documentation for how to permanently increase this value to something much larger, like 64,000.
+* Give your JVM ample size to scale the in memory Queue with size of 10000 (i.e minimum Xmx as 6GB)
 * If you use BSDs and Linux, ensure that your operating system I/O scheduler is set to **deadline** or **noop**, not **cfq**.
 
 ## Capacity considerations
 {: #capacity-considerations }
 Capacity is the single-most common question. How much RAM do you need? How much disk space? How many nodes? The answer is always: it depends.
 
-IBM {{ site.data.keys.mf_analytics_receiver }} doesnt require a disk space since its just receives logs from mobile applications and forward them to analytics server. 
+IBM {{ site.data.keys.mf_analytics_receiver }} does not require a disk space since its just receives logs from mobile applications and forwards them to analytics server - there is no storage of events data. 
 
 ## Installing {{ site.data.keys.mf_analytics_receiver }} on WebSphere Application Server Liberty
 {: #installing-mobilefirst-analytics-receiver-on-websphere-application-server-liberty }
