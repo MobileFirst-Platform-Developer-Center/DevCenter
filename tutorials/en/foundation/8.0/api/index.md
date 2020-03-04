@@ -29,3 +29,7 @@ Below are links to the available APIs.
 
 * **[REST API for MobileFirst Analytics and Logger](rest/analytics-logger)**  
     The MobileFirst Analytics public REST API is documented in Swagger.
+
+* **[REST API for MobileFirst Analytics Receiver](analyticsreceiver-apis)**
+    MobileFirst Analytics Receiver an optional service. The REST API for the MobileFirst Analytics Receiver provides api for mobile clients to forward analytics logs, logger logs and inapp feedback to Analytics. If receiver is not enabled MobileFirst runtime itself forwards the logs to analytics.
+
