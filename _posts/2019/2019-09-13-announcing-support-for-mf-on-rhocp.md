@@ -23,7 +23,7 @@ The options to use this platform are
 * As part of [IBM Cloud Pak for Applications](https://www-01.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/5/897/ENUS219-395/index.html&request_locale=ja).
 * Use with your entitlement for Red Hat OpenShift Container Platform
 
-IBM Cloud Pak for Applications offers an end-to-end, enterprise-ready experience to speed development of apps built for Kubernetes. Built on IBM® WebSphere® offerings and OpenShift Container Platform with IBM Kabanero Enterprise, Cloud Pak for Applications provides a long-term solution to help you transition between public, private, and hybrid clouds, and create new business applications.
+IBM Cloud Pak for Applications offers an end-to-end, enterprise-ready experience to speed development of apps built for Kubernetes. Built on IBM® WebSphere® offerings and OpenShift Container Platform with IBM Accelerators for Teams, Cloud Pak for Applications provides a long-term solution to help you transition between public, private, and hybrid clouds, and create new business applications.
 
 Customers can use the TradeUp option to move their existing licenses [ Application or Extend ] of Mobile Foundation to Virtual Processor Core licenses of Cloud Pak for Applications.  For customers who do not want to TradeUp for the move to Cloud Pak for Applications, we have ensured they can use their existing entitlement for Mobile Foundation [ Application and Addressable Device licenses ] to run the Mobile Foundation environment on OpenShift. In this case, the customer needs to bring the entitlement for OpenShift to run Mobile Foundation Applications.
 
