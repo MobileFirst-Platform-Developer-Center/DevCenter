@@ -130,7 +130,7 @@ If you run the push services in a separate application server from the {{ site.d
 
 ### {{ site.data.keys.mf_analytics }} and the {{ site.data.keys.mf_analytics_console }}
 {: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
-{{ site.data.keys.mf_analytics_receiver_full }} is an optional component that provides a analytics and logger log forwarder feature that can be used by mobile apps to forward analytics and logger logs to {{ site.data.keys.mf_analytics_full }}. Usage of this service will free up the log handling done by {{ site.data.keys.mf_server }}. 
+{{ site.data.keys.mf_analytics_receiver_full }} is an optional component that provides an analytics and logger log forwarder feature that can be used by mobile apps to forward analytics and logger logs to {{ site.data.keys.mf_analytics_full }}. Usage of this service will free up the log handling done by {{ site.data.keys.mf_server }}. 
 
 ### {{ site.data.keys.mf_analytics }} and the {{ site.data.keys.mf_analytics_console }}
 {: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }

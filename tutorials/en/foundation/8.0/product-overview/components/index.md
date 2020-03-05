@@ -64,9 +64,9 @@ The data for {{ site.data.keys.mf_analytics }} includes the following sources:
 
 ### {{ site.data.keys.mf_analytics_receiver }}
 {: #mobilefirst-analytics-receiver }
-{{ site.data.keys.product }} includes an optional feature {{ site.data.keys.mf_analytics_receiver_short }}. The {{ site.data.keys.mf_analytics_receiver_short }} feature receives logs from mobile applications and send them to {{ site.data.keys.mf_analytics_short }} in a phassed manner. {{ site.data.keys.mf_analytics_receiver_short }} maintains inmemory Queue to store the logs before sending them to {{ site.data.keys.mf_analytics_short }}. It releaves major work done by {{ site.data.keys.mf_server }} via loguploader api and reduces the usage of inmemory queue usage. Absence of this service {{ site.data.keys.mf_server }} will perform log receiver and log forwarder functionality. Its an optional service.
+{{ site.data.keys.product }} includes an optional feature {{ site.data.keys.mf_analytics_receiver_short }}. The {{ site.data.keys.mf_analytics_receiver_short }} feature receives logs from mobile applications and send them to {{ site.data.keys.mf_analytics_short }} in a phased manner. {{ site.data.keys.mf_analytics_receiver_short }} maintains an in-memory queue to store the logs before sending them to {{ site.data.keys.mf_analytics_short }}. It alleviates major work done by {{ site.data.keys.mf_server }} via loguploader api and reduces the usage of the in-memory queue usage. In the absence of this service the {{ site.data.keys.mf_server }} will perform the log receiver and log forwarder functionality. {{ site.data.keys.mf_analytics_receiver_short }} an optional service.
 
-[Learn more about {{ site.data.keys.mf_analytics_receiver }}](../../analyticsreceiver).
+[Learn more about {{ site.data.keys.mf_analytics_receiver }}](../../analytics/analyticsreceiver).
 
 ### Application Center
 {: #application-center }

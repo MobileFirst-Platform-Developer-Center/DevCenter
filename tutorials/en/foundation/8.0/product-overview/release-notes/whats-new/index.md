@@ -486,7 +486,7 @@ weight: 1
 
         <div id="collapse-mobilefirst-analytics-receiver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics-receiver">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_analytics_server }} is an optional feature which accepts logs from client sdk and forward them to analytics. So It eventually reduces the load for {{ site.data.keys.mf_server }} to handle client loguploader.</p>
+                <p>{{ site.data.keys.mf_analytics_server }} is an optional feature which accepts logs from client SDK and forwards them to analytics. It eventually reduces the load of the {{ site.data.keys.mf_server }} to handle client loguploader function.</p>
             </div>
         </div>
     </div>    

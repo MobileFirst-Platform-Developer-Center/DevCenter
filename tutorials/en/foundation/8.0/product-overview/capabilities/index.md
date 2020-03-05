@@ -53,7 +53,7 @@ In addition to reports that summarize app activity, {{ site.data.keys.product }}
 
 ### Analytics Receiver
 {: #analyticsreceiver }
-The {{ site.data.keys.mf_analytics_receiver }} is an optional feature which receives logs from mobile applications and transfer then into {{ site.data.keys.mf_analytics }} in a phased manner by storing them into in-memory queue.
+The {{ site.data.keys.mf_analytics_receiver }} is an optional feature, which receives logs from mobile applications and transfers them to {{ site.data.keys.mf_analytics }} in a phased manner by storing them into an in-memory queue.
 
 ### Monitoring
 {: #monitoring }

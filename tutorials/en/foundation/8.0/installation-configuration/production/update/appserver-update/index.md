@@ -29,7 +29,7 @@ The installation of this component is optional. The MobileFirst components send 
 ### MobileFirst Operational Analytics Receiver
 {: #analyticsreceiver}
 
-The installation of this component is optional. The MobileFirst Applications send log data to MobileFirst Operational Analytics Receiver via a REST API. Install this component only if MobileFirst Operational Analytics installed. It is preferable to run MobileFirst Operational Analytics Receiver with the other components of MobileFirst Server of the same interim fix level.
+The installation of this component is optional. MobileFirst applications send log data to MobileFirst Operational Analytics Receiver via a REST API. Install this component only if MobileFirst Operational Analytics is installed. It is preferable to run MobileFirst Operational Analytics Receiver with the other components of MobileFirst Server of the same interim fix level (iFix).
 
 ## Updating MobileFirst Server Administration Service, MobileFirst Operations Console, and MobileFirst runtime environment
 {: #updating-server}
