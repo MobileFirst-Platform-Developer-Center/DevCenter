@@ -41,6 +41,34 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
 
   > **NOTE:** Refer [here](./additional-docs/validating-ppa/) if you want to validate the PPA package and verify the signature.
 
+### Using Mobile Foundation images from the Entitled Registry
+{: #using-mf-from-entitled-registry}
+
+Apart from loading the PPA images into the OpenShift internal image registry or any other external registry, one can use the images from the Entitled Registry (ER).
+
+1. Get a key to the entitled registry. After you order [IBM Cloud Pak for Applications](https://www.ibm.com/support/knowledgecenter/SSCSJL_3.x/install-icpa-ppa.html?view=kc), an entitlement key for the Cloud Pak software is associated with your MyIBM account. Get the entitlement key that is assigned to your ID.
+  * Log in to [MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary) with your IBMid and password, which is associated with the entitled software.
+  * In the **Entitlement keys** section, select **Copy key** to copy the entitlement key to the clipboard.
+2. Extract the installation configuration from the installer image on the Entitled Registry.<br/>Using a command line, run the following commands.
+  * Set the Entitled Registry information. Run export commands that set the following:
+    **ENTITLED_REGISTRY** to *cp.icr.io*, **ENTITLED_REGISTRY_USER** to *cp*, and **ENTITLED_REGISTRY_KEY** to the entitlement key that you got from the previous step.
+    ```bash
+    export ENTITLED_REGISTRY=cp.icr.io
+    export ENTITLED_REGISTRY_USER=cp
+    export ENTITLED_REGISTRY_KEY=<apikey>
+    ```
+  * Make sure you are able to log in to the Entitled Registry with the following `docker login` command.
+    ```bash
+    docker login "$ENTITLED_REGISTRY" -u "$ENTITLED_REGISTRY_USER" -p "$ENTITLED_REGISTRY_KEY"
+    ```
+3. Generate an image pull secret using the Entitled Registry details.
+   * Use the following command:
+     ```bash
+     oc create secret docker-registry -n <my_project_name> er-image-pullsecret --docker-server=cp.icr.io --docker-username=<my_username> --docker-password=<my_api_key>
+     ```
+   * Add the pull secrets to the `deploy/operator.yaml` and `deploy/crds/charts_v1_mfoperator_cr.yaml` files.
+
+
 ### Setup the OpenShift project for Mobile Foundation
 {: #setup-openshift-for-mf}
 
@@ -77,6 +105,8 @@ Download the IBM Mobile Foundation package for Openshift from [IBM Passport Adva
       MFPF_RUNTIME_DB_PASSWORD: <base64-encoded-string>
       MFPF_PUSH_DB_USERNAME: <base64-encoded-string>
       MFPF_PUSH_DB_PASSWORD: <base64-encoded-string>
+      MFPF_LIVEUPDATE_DB_USERNAME: <base64-encoded-string>
+      MFPF_LIVEUPDATE_DB_PASSWORD: <base64-encoded-string>
       MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
       MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
     kind: Secret
