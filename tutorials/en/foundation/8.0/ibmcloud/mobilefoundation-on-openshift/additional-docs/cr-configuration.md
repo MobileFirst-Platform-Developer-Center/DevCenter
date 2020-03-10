@@ -40,7 +40,7 @@ show_in_nav: false
 | mfpserver.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicas field. | **false** (default) or true |
 |           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to **1**) |
 |           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than min. | Positive integer (default to **10**) |
-|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to **50**) |
+|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to **50**) |
 | mfpserver.pdb     | enabled | Specifu whether to enable/disable PDB. | **true** (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
 |    mfpserver.customConfiguration |  |  Custom server configuration (Optional)  | Provide server specific additional configuration reference to a pre-created config map. Refer [here](#optional-custom-server-configuration)|
@@ -56,7 +56,7 @@ show_in_nav: false
 | mfppush.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | **false** (default) or true |
 |           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to **1**) |
 |           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to **10**) |
-|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to **50**) |
+|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to **50**) |
 | mfppush.pdb     | enabled | Specifu whether to enable/disable PDB. | **true** (default) or false |
 |           | min  | minimum available pods | Positive integer (default to 1) |
 | mfppush.customConfiguration |  |  Custom configuration (Optional)  | Provide Push specific additional configuration reference to a pre-created config map. Refer [here](#optional-custom-server-configuration) |
@@ -99,7 +99,7 @@ show_in_nav: false
 | mfpanalytics.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | **false** (default) or true |
 |           | min  | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to **1**) |
 |           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to **10**) |
-|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
+|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to 50) |
 |  mfpanalytics.shards|  | Number of Elasticsearch shards for Mobile Foundation Analytics | default to 2|             
 |  mfpanalytics.replicasPerShard|  | Number of Elasticsearch replicas to be maintained per each shard for Mobile Foundation Analytics | default to **2**|
 | mfpanalytics.persistence | enabled         | Use a PersistentVolumeClaim to persist data                        | **true** |                                                 |
@@ -126,8 +126,8 @@ show_in_nav: false
 |  | targetcpu  | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(defaults to **50**). |
 | mfpanalytics_recvr.pdb | enabled  | Specify whether to enable/disable PDB. | **true** (default) or false. |
 |  | min  | minimum available pods | Positive integer (defaults to **1**). |
-| mfpanalytics_recvr | analyticsRecvrSecret     | A pre-created secret for receiver. |  |
-| mfpanalytics_recvr.customConfiguration | analyticsRecvrSecret     | Custom configuration (Optional). | Provide Analytics specific additional configuration reference to a pre-created config map. Refer [here](#optional-custom-server-configuration). |
+| mfpanalytics_recvr | analyticsRecvrSecret     | A pre-created secret for receiver. | Refer [here](#optional-creating-custom-keystore-secret-for-the-deployments). |
+| mfpanalytics_recvr.customConfiguration |  | Custom configuration (Optional). | Provide Analytics specific additional configuration reference to a pre-created config map. Refer [here](#optional-custom-server-configuration). |
 | mfpanalytics_recvr | keystoreSecret     | Refer the [configuration section](#optional-creating-custom-keystore-secret-for-the-deployments) to pre-create the secret with keystores and their passwords. |  |
 | mfpanalytics_recvr.resources | limits.cpu  | Describes the maximum amount of CPU allowed. | Default is **1000m**. See Kubernetes - [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu). |
 |  | limits.memory  | Describes the maximum amount of memory allowed. | Default is **2048Mi**. See Kubernetes - [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
@@ -149,7 +149,7 @@ show_in_nav: false
 | mfpappcenter.autoscaling     | enabled | Specifies whether a horizontal pod autoscaler (HPA) is deployed. Note that enabling this field disables the replicaCount field. | **false** (default) or true |
 |           | min | Lower limit for the number of pods that can be set by the autoscaler. | Positive integer (default to **1**) |
 |           | max | Upper limit for the number of pods that can be set by the autoscaler. Cannot be lower than minReplicas. | Positive integer (default to **10**) |
-|           | targetCPUUtilizationPercentage | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to **50**) |
+|           | targetcpu | Target average CPU utilization (represented as a percentage of requested CPU) over all the pods. | Integer between 1 and 100(default to **50**) |
 | mfpappcenter.pdb     | enabled | Specifu whether to enable/disable PDB. | **true** (default) or false |
 |           | min  | minimum available pods | Positive integer (default to **1**) |
 | mfpappcenter.customConfiguration |  |  Custom configuration (Optional)  | Provide Application Center specific additional configuration reference to a pre-created config map. Refer [here](#optional-custom-server-configuration) |
