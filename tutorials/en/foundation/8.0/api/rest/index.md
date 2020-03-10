@@ -19,3 +19,6 @@ Select an interface:
 
 * **[REST API for MobileFirst Analytics and Logger](analytics-logger)**  
     The MobileFirst Analytics public REST API is documented in Swagger.
+
+*  **[REST API for the MobileFirst Server Live Update service](live-update)**<br/>
+    The REST API for Live Update in the MobileFirst runtime environment enables back-end server applications that were deployed outside of the MobileFirst Server to access Live Update functions from a REST API endpoint.
