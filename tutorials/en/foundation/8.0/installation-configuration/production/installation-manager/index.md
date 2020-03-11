@@ -42,7 +42,6 @@ However, for production installation, use Ant tasks to install Application Cente
 {: #jump-to }
 * [Administrator versus user mode](#administrator-versus-user-mode)
 * [Installing by using IBM Installation Manager Install wizard](#installing-by-using-ibm-installation-manager-install-wizard)
-* [Installing by running IBM Installation Manager in command line](#installing-by-running-ibm-installation-manager-in-command-line)
 * [Installing by using XML response files - silent installation](#installing-by-using-xml-response-files---silent-installation)
 * [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
 
@@ -123,6 +122,7 @@ You can find the resources in the following folders:
 
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 
+<!-- Git issue: https://github.ibm.com/MobileFirst/mfp-planning/issues/910
 ## Installing by running IBM Installation Manager in command line
 {: #installing-by-running-ibm-installation-manager-in-command-line }
 
@@ -173,6 +173,7 @@ You can find the resources in the following folders:
 * **Analytics** folder for {{ site.data.keys.mf_analytics }}    
 
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
+-->
 
 ## Installing by using XML response files - silent installation
 {: #installing-by-using-xml-response-files---silent-installation }
