@@ -17,7 +17,7 @@ To set up Analytics support for Push Notification, the following JNDI properties
 The following properties are required to configure and initialize the {{ site.data.keys.mf_analytics }} plug-in. The username and password will be used to authenticate with the Analytics service at the provided endpoint.
 
 ```xml
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest"/>
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>  
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<password>"/>
 ```
