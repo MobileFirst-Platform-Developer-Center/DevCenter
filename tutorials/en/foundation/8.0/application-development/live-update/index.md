@@ -3,13 +3,6 @@ layout: tutorial
 title: Live Update service
 relevantTo: [ios,android,cordova]
 weight: 11
-downloads:
-  - name: Download Xcode project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
-  - name: Download Android Studio project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80
-  - name: Download Live Update adapter
-    url: https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -313,5 +306,3 @@ LiveUpdateManager.getInstance().obtainConfiguration(false, new ConfigurationList
 ### Cache expiration
 {: #cache-expiration }
 The `expirationPeriod` value is 30 minutes, which is the length of time until the caching expires.
-
-<img alt="Image of the sample application" src="live-update-app.png" style="margin-left: 10px;float:right"/>
