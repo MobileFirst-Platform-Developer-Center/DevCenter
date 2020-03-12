@@ -128,6 +128,7 @@ You can find the resources in the following folders:
 * **PushService** folder for {{ site.data.keys.mf_server }} push service
 * **ApplicationCenter** folder for Application Center
 * **Analytics** folder for {{ site.data.keys.mf_analytics }}
+* **AnalyticsReceiver** folder for {{ site.data.keys.mf_analytics_receiver }}
 
 The goal of this tutorial is to install {{ site.data.keys.mf_server }} by using the resources in **MobileFirstServer** folder.  
 You can also find some shortcuts for the Server Configuration Tool, Ant, and **mfpadm** program in the **shortcuts** folder.
@@ -184,6 +185,10 @@ The following {{ site.data.keys.product_adj }} applications are not deployed by 
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }} is typically deployed on a different set of servers than {{ site.data.keys.mf_server }} because of its high memory requirements. {{ site.data.keys.mf_analytics }} can be installed manually or with Ant tasks. If it is already installed, you can enter its URL, the user name, and password to send data to it in the Server Configuration Tool. The Server Configuration Tool then configures the {{ site.data.keys.product_adj }} apps to send data to {{ site.data.keys.mf_analytics }}.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+{{ site.data.keys.mf_analytics_receiver }} is typically deployed on a different set of servers than {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} because of its high memory requirements. {{ site.data.keys.mf_analytics_receiver }} can be installed manually or with Ant tasks. If it is already installed, you can enter its URL, the user name, and password to send data to it in the Server Configuration Tool. The Server Configuration Tool then configures the {{ site.data.keys.product_adj }} apps to send data to {{ site.data.keys.mf_analytics_receiver }}.
+
 #### Application Center
 {: #application-center }
 This application can be used to distribute mobile apps internally to the employees that use the apps, or for test purpose. It is independent of {{ site.data.keys.mf_server }} and is not necessary to install together with {{ site.data.keys.mf_server }}.
@@ -204,6 +209,7 @@ Pick the appropriate XML file that contains the Ant tasks and configure the prop
     * **appserver.was85liberty.serverInstance** to **mfp1** - the value to the name of the Liberty server where {{ site.data.keys.mf_server }} is to be installed.
     * **mfp.farm.configure** to **false** to install {{ site.data.keys.mf_server }} in stand-alone mode.
     * **mfp.analytics.configure** to **false**. The connection to {{ site.data.keys.mf_analytics }} is not in the scope of this tutorial. You can ignore the other properties mfp.analytics.****.
+    * **mfp.analytics.receiver.configure** to **false**. The connection to {{ site.data.keys.mf_analytics_receiver }} is not in the scope of this tutorial. You can ignore the other properties mfp.analytics.receiver.****.
     * **mfp.admin.client.id** to **admin-client-id**.
     * **mfp.admin.client.secret** to **adminSecret** (or choose another secret password).
     * **mfp.push.client.id** to **push-client-id**.

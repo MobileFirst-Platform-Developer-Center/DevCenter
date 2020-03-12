@@ -42,7 +42,6 @@ However, for production installation, use Ant tasks to install Application Cente
 {: #jump-to }
 * [Administrator versus user mode](#administrator-versus-user-mode)
 * [Installing by using IBM Installation Manager Install wizard](#installing-by-using-ibm-installation-manager-install-wizard)
-* [Installing by running IBM Installation Manager in command line](#installing-by-running-ibm-installation-manager-in-command-line)
 * [Installing by using XML response files - silent installation](#installing-by-using-xml-response-files---silent-installation)
 * [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
 
@@ -120,9 +119,11 @@ You can find the resources in the following folders:
 * **PushService** folder for {{ site.data.keys.mf_server }} push service
 * **ApplicationCenter** folder for Application Center
 * **Analytics** folder for {{ site.data.keys.mf_analytics }}
+* **AnalyticsReceiver** folder for {{ site.data.keys.mf_analytics_receiver }}
 
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 
+<!-- Git issue: https://github.ibm.com/MobileFirst/mfp-planning/issues/910
 ## Installing by running IBM Installation Manager in command line
 {: #installing-by-running-ibm-installation-manager-in-command-line }
 
@@ -171,8 +172,10 @@ You can find the resources in the following folders:
 * **PushService** folder for {{ site.data.keys.mf_server }} push service
 * **ApplicationCenter** folder for Application Center
 * **Analytics** folder for {{ site.data.keys.mf_analytics }}    
+* **AnalyticsReceiver** folder for {{ site.data.keys.mf_analytics_receiver }}
 
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
+-->
 
 ## Installing by using XML response files - silent installation
 {: #installing-by-using-xml-response-files---silent-installation }
@@ -636,6 +639,14 @@ The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.
 |------|-------------|
 | **analytics.ear** and **analytics-*.war** | The EAR and WAR files to install {{ site.data.keys.mf_analytics }}. |
 | **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_analytics }} with Ant tasks. |
+
+#### Files and subdirectories in the AnalyticsReceiver subdirectory
+{: #files-and-subdirectories-in-the-analytics-receiver-subdirectory }
+
+| Item | Description |
+|------|-------------|
+| **analytics-receiver*.war** | The WAR file to install {{ site.data.keys.mf_analytics_receiver }}. |
+| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_analytics_receiver }} with Ant tasks. |
 
 #### Files and subdirectories in the ApplicationCenter subdirectory
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
