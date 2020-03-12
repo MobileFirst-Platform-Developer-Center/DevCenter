@@ -28,18 +28,6 @@ Following usecases will be supported in future releases.
 * A/B testing
 * Context-based customization of the application (e.g., geographic segmentation)
 
-<!--
-#### Demonstration
-{: #demonstration }
-The following video provides a demonstration of the Live Update feature.
-
-<div class="sizer">
-    <div class="embed-responsive embed-responsive-16by9">
-        <iframe title="Demonstration" src="https://www.youtube.com/embed/TjbC9thSfmM"></iframe>
-    </div>
-</div>
--->
-
 #### Jump to:
 {: #jump-to }
 * [Live Update Architecture](#live-update-architecture)
@@ -49,8 +37,6 @@ The following video provides a demonstration of the Live Update feature.
 * [Adding Live Update SDK to Applications](#adding-live-update-sdk-to-applications)
 * [Using the Live Update SDK](#using-the-live-update-sdk)
 * [Advanced Topics](#advanced-topics)
-* [Sample Application](#sample-application)
-
 
 ## Live Update Architecture
 {: #live-update-architecture }
@@ -59,14 +45,14 @@ The following system components function together in order to provide the Live U
 ![Architecture overview](LU-arch.png)
 
 * **Live Update service:** an independent service which provides:
- - Application schema management
- - Serving configurations to applications
+   - Application schema management
+   - Serving configurations to applications
 * **Client-side SDK:** the Live Update SDK is used to retrieve and access configuration elements such as features and properties from the {{ site.data.keys.mf_server }}.
 * **{{ site.data.keys.mf_console }}:** used for configuring the Live Update adapter and settings.
 
 ## Adding Live Update to {{ site.data.keys.mf_server }}
 {: #adding-live-update-to-mobilefirst-server }
-By default, Live Update service is bundled in the {{site.data.keywords.mf_dev_kit}}.
+By default, Live Update service is bundled in the Mobile Foundation DevKit.
 
 > For OpenShift Container Platform (OCP) installation follow the documentation [here](../../ibmcloud/mobilefoundation-on-openshift/).  
 
@@ -78,7 +64,7 @@ In order to allow integration with Live Update, a scope element is required. Wit
 
 1. Load the {{ site.data.keys.mf_console }}.
 2. Click **[your application] → Security tab → Scope-Elements Mapping**.
-3. Click **New** and enter the scope element `configuration-user-login`.
+3. Click **New** and enter the scope element `liveupdate.mobileclient`.
 4. Click **Add**.
 
 You can also map the scope element to a security check in case you're using one in your application.
@@ -140,17 +126,9 @@ To add, click **New** and provide the requested values.
     </div>
 </div>
 
-#### Define Schema features and properties with default values
-{: #define-schema-features-and-properties-with-default-values }
+#### Define Schema features and properties with values
+{: #define-schema-features-and-properties-with-values }
 <img class="gifplayer" alt="Add schema feature and property" src="add-feature-property.png"/>
-
-#### Override default values of features and properties
-{: #override-default-values-of-features-and-properties }
-Enable a feature and change its default state.
-<img class="gifplayer" alt="Enable a feature" src="feature-enabling.png"/>
-
-Override the default value of a property.
-<img class="gifplayer" alt="Override a property" src="property-override.png"/>
 
 ## Adding Live Update SDK to applications
 {: #adding-live-update-sdk-to-applications}
@@ -213,10 +191,10 @@ cordova plugin add cordova-plugin-mfp-liveupdate
 {: #using-the-live-update-sdk }
 There are several approaches to using the Live Update SDK.
 
-### Pre-determined Segment
-{: #pre-determined-segment }
-Implement logic to retrieve a configuration for a relevant segment.  
-Replace "property-name" and "feature-name" with your own.
+### Obtain Configuration
+{: #obtain-config }
+Implement logic to retrieve a configuration.  
+Replace `property-name` and `feature-name` with your own.
 
 #### Cordova
 {: #cordova }
@@ -274,25 +252,6 @@ With the Live Update configuration retrieved, the applicative logic and the appl
 
 ## Advanced Topics
 {: #advanced-topics }
-### Import/Export
-{: #importexport }
-Once a schema has been defined, the system administrator can export and import them to other server instances.
-
-#### Export schema
-{: #export-schema }
-```bash
-curl --user admin:admin http://localhost:9080/mfpliveupdate/v1/com.sample.HelloLiveUpdate/schema > schema.txt
-```
-
-#### Import schema
-{: #import-schema }
-```bash
-curl -X PUT -d @schema.txt --user admin:admin -H "Content-Type:application/json" http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema
-```
-
-* Replace `admin:admin` with your own (default is `admin`)
-* Replace `localhost` and the port number with your own if needed
-* Replace the application identifier `com.sample.HelloLiveUpdate` with your own application's.
 
 ### Caching
 {: #caching }
@@ -356,23 +315,3 @@ LiveUpdateManager.getInstance().obtainConfiguration(false, new ConfigurationList
 The `expirationPeriod` value is 30 minutes, which is the length of time until the caching expires.
 
 <img alt="Image of the sample application" src="live-update-app.png" style="margin-left: 10px;float:right"/>
-
-## Sample application
-{: #sample-application }
-In the sample application you select a country flag and using Live Update the app then outputs text in language that corresponds to the selected country. If enabling the map feature and providing the map, a map of the corresponding country will be displayed.
-
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80) the Xcode project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80) the Android Studio project.
-
-### Sample usage
-{: #sample-usage }
-Follow the sample's README.md file for instructions.
-
-#### Changing Live Update Settings
-{: #changing-live-update-settings }
-Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
-
-In **{{ site.data.keys.mf_console }} → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs, for example, **FR**.
-
-* Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
-* To see the map while using the app, you need to enable to `includeMap` feature.
