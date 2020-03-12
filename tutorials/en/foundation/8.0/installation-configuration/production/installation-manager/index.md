@@ -119,6 +119,7 @@ You can find the resources in the following folders:
 * **PushService** folder for {{ site.data.keys.mf_server }} push service
 * **ApplicationCenter** folder for Application Center
 * **Analytics** folder for {{ site.data.keys.mf_analytics }}
+* **AnalyticsReceiver** folder for {{ site.data.keys.mf_analytics_receiver }}
 
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 
@@ -171,6 +172,7 @@ You can find the resources in the following folders:
 * **PushService** folder for {{ site.data.keys.mf_server }} push service
 * **ApplicationCenter** folder for Application Center
 * **Analytics** folder for {{ site.data.keys.mf_analytics }}    
+* **AnalyticsReceiver** folder for {{ site.data.keys.mf_analytics_receiver }}
 
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
 -->
@@ -637,6 +639,14 @@ The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.
 |------|-------------|
 | **analytics.ear** and **analytics-*.war** | The EAR and WAR files to install {{ site.data.keys.mf_analytics }}. |
 | **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_analytics }} with Ant tasks. |
+
+#### Files and subdirectories in the AnalyticsReceiver subdirectory
+{: #files-and-subdirectories-in-the-analytics-receiver-subdirectory }
+
+| Item | Description |
+|------|-------------|
+| **analytics-receiver*.war** | The WAR file to install {{ site.data.keys.mf_analytics_receiver }}. |
+| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_analytics_receiver }} with Ant tasks. |
 
 #### Files and subdirectories in the ApplicationCenter subdirectory
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }

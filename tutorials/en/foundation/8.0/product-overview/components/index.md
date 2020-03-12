@@ -62,6 +62,12 @@ The data for {{ site.data.keys.mf_analytics }} includes the following sources:
 
 [Learn more about {{ site.data.keys.mf_analytics }}](../../analytics).
 
+### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics-receiver }
+{{ site.data.keys.product }} includes an optional feature {{ site.data.keys.mf_analytics_receiver_short }}. The {{ site.data.keys.mf_analytics_receiver_short }} feature receives logs from mobile applications and send them to {{ site.data.keys.mf_analytics_short }} in a phased manner. {{ site.data.keys.mf_analytics_receiver_short }} maintains an in-memory queue to store the logs before sending them to {{ site.data.keys.mf_analytics_short }}. It alleviates major work done by {{ site.data.keys.mf_server }} via loguploader api and reduces the usage of the in-memory queue usage. In the absence of this service the {{ site.data.keys.mf_server }} will perform the log receiver and log forwarder functionality. {{ site.data.keys.mf_analytics_receiver_short }} an optional service.
+
+[Learn more about {{ site.data.keys.mf_analytics_receiver }}](../../analytics/analyticsreceiver).
+
 ### Application Center
 {: #application-center }
 With the Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications. Development team members can use the Application Center to share applications with members of the team. This process facilitates collaboration between all the people who are involved in the development of an application.
