@@ -13,14 +13,14 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <style>
-.audio-background {
-  background-image: linear-gradient(to right, #fff999, #ffff99);
+.note-background {
+  background-image: linear-gradient(to right, #fff999, #fffff9);
 ;
 }
 </style>
 <br/>
-<div class="container audio-background">
-<h4>If you are on Mobile Foundation v8.0 iFix version xxxxxx or later, then please go <a href="../">here</a> for Live Update documentation.</h4>
+<div class="container note-background">
+<h4>If you are on Mobile Foundation v8.0 iFix version <b>8.0.0.0-IF202003051505</b> or later, then please go <a href="../">here</a> for Live Update documentation.</h4>
 </div>
 
 ## Overview

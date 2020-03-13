@@ -10,7 +10,7 @@ weight: 11
 
 The Live Update feature in {{ site.data.keys.product }} provides a simple way to define and serve different configurations for users of an application. It includes a component in the {{ site.data.keys.mf_console }} for defining the structure of the configuration as well as the values of the configuration. A client SDK (available for Android and iOS **native** and for Cordova applications) is provided for consuming the configuration.
 
-#### Common Use Cases
+### Common Use Cases
 {: #common-use-cases }
 Live Update supports defining and consuming configurations, making it easy to make customizations to the application. An example of a common use cases is:
 
@@ -21,15 +21,63 @@ Following usecases will be supported in future releases.
 * A/B testing
 * Context-based customization of the application (e.g., geographic segmentation)
 
-#### Jump to:
+### Jump to:
 {: #jump-to }
+* [Concept](#concept)
 * [Live Update Architecture](#live-update-architecture)
 * [Adding Live Update to {{ site.data.keys.mf_server }}](#adding-live-update-to-mobilefirst-server)
 * [Configuring Application Security](#configuring-application-security)
-* [Schema](#schema)
 * [Adding Live Update SDK to Applications](#adding-live-update-sdk-to-applications)
 * [Using the Live Update SDK](#using-the-live-update-sdk)
 * [Advanced Topics](#advanced-topics)
+
+## Concept
+{: #concept }
+
+The Live Update service adds the following functions to every application.
+
+1. **Features** - Using features you can define configurable application features and set their default values.
+2. **Properties** - Using properties you can define configurable application properties and set their default values.
+
+The developer or the application management team needs to decide upon the following.
+* The set of features and their default state where Live Update can be used.
+* The set of configurable string properties and their default values.
+
+Once the parameters are decided upon, add the features and properties to the app through the Live Update section.
+
+<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="schema">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSchema" aria-expanded="false" aria-controls="collapseSchema">Click to review the terminology</a>
+            </h4>
+        </div>
+
+        <div id="collapseSchema" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema">
+            <div class="panel-body">
+                <ul>
+                    <li><b>Feature:</b> A feature determines if some part of the application functionality is enabled or disabled. When defining a feature of an application the following elements should be provided:
+                        <ul>
+                            <li><i>id</i> – A unique feature identifier. String, Non-editable.</li>
+                            <li><i>name</i> - A descriptive name of the feature. String, Editable.</li>
+                            <li><i>description</i> – A short description of the feature. String, Editable.</li>
+                            <li><i>defaultValue</i> – The default value of the feature that will be served unless it was overridden inside the segment (see Segment below). Boolean, Editable.</li>
+                        </ul>
+                    </li>
+                    <li><b>Property:</b> A property is a key:value entity that can be used to customize applications. When defining a property the following elements should be provided:
+                        <ul>
+                            <li><i>id</i> – A unique property identifier. String, Non-editable.</li>
+                            <li><i>name</i> - A descriptive name of a property. String, Editable.</li>
+                            <li><i>description</i> – A short description of the property. String, Editable.</li>
+                            <li><i>defaultValue</i> - The default value of the property that will be served unless it was overridden inside the segment (see Segment below). String, Editable.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 ## Live Update Architecture
 {: #live-update-architecture }
@@ -38,7 +86,7 @@ The following system components function together in order to provide the Live U
 ![Architecture overview](LU-arch.png)
 
 * **Live Update service:** an independent service which provides:
-   - Application schema management
+   - Application management
    - Serving configurations to applications
 * **Client-side SDK:** the Live Update SDK is used to retrieve and access configuration elements such as features and properties from the {{ site.data.keys.mf_server }}.
 * **{{ site.data.keys.mf_console }}:** used for configuring the Live Update adapter and settings.
@@ -50,6 +98,8 @@ By default, Live Update service is bundled in the Mobile Foundation DevKit.
 > For OpenShift Container Platform (OCP) installation follow the documentation [here](../../ibmcloud/mobilefoundation-on-openshift/).  
 
 Once the Live Update service is up, the **Live Update Settings** page is then shown for each registered application.
+
+For details on adding Live Update to {{ site.data.keys.mf_server }}, refer to the documentation [here](live-update/).
 
 ## Configuring Application Security
 {: #configuring-application-security }
@@ -65,63 +115,14 @@ You can also map the scope element to a security check in case you're using one 
 > [Learn more about the {{ site.data.keys.product_adj }} security framework](../../authentication-and-security/)
 
 <img class="gifplayer" alt="Add a scope mapping" src="liveupdate-scopemapping.gif"/>
+<br/>
 
-## Schema
-{: #schema }
+## Define features and properties with values
+{: #define-features-and-properties-with-values }
 
-#### What is Schema
-{: #what-is-schema }
-A schema is where features and properties are defined.  
+See the following demonstration to define features and properties with values.
 
-* Using **features** you can define configurable application features and set their default values.  
-* Using **properties** you can define configurable application properties and set their default values.
-
-### Adding Schema
-{: #adding-schema }
-Before adding a schema for an application, the developer or product management team needs decide upon about the following.
-
-* The set of **features** to utilize Live Update for, as well as their default state.
-* The set of configurable string **properties** and their default value.
-
-Once the parameters are decided upon, Schema features &amp; properties can be added.  
-To add, click **New** and provide the requested values.
-
-<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="schema">
-            <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSchema" aria-expanded="false" aria-controls="collapseSchema">Click to review schema terminology</a>
-            </h4>
-        </div>
-
-        <div id="collapseSchema" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema">
-            <div class="panel-body">
-                <ul>
-                    <li><b>Feature:</b> A feature determines if some part of the application functionality is enabled or disabled. When defining a feature in the schema of an application the following elements should be provided:
-                        <ul>
-                            <li><i>id</i> – A unique feature identifier. String, Non-editable.</li>
-                            <li><i>name</i> - A descriptive name of the feature. String, Editable.</li>
-                            <li><i>description</i> – A short description of the feature. String, Editable.</li>
-                            <li><i>defaultValue</i> – The default value of the feature that will be served unless it was overridden inside the segment (see Segment below). Boolean, Editable.</li>
-                        </ul>
-                    </li>
-                    <li><b>Property:</b> A property is a key:value entity that can be used to customize applications. When defining a property in the schema of an application the following elements should be provided:
-                        <ul>
-                            <li><i>id</i> – A unique property identifier. String, Non-editable.</li>
-                            <li><i>name</i> - A descriptive name of a property. String, Editable.</li>
-                            <li><i>description</i> – A short description of the property. String, Editable.</li>
-                            <li><i>defaultValue</i> - The default value of the property that will be served unless it was overridden inside the segment (see Segment below). String, Editable.</li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-#### Define Schema features and properties with values
-{: #define-schema-features-and-properties-with-values }
-<img class="gifplayer" alt="Add schema feature and property" src="add-feature-property.png"/>
+<img class="gifplayer" alt="Add feature and property" src="add-feature-property.png"/>
 
 ## Adding Live Update SDK to applications
 {: #adding-live-update-sdk-to-applications}
