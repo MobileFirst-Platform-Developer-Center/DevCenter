@@ -24,8 +24,10 @@ $('#audioMFWebView').on('ended', function() {
 }).get(0).play();
 </script>
 
+
+
 <div class="container audio-background">
-  <h3>Listen to the post excerpt</h3>
+
   <audio id="audioMFWebView" controls>
   <source src="{{site.baseurl}}/assets/blog/2020-01-03-http2-cert-based-notifications/http2-cert-based-notifications.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
@@ -40,6 +42,7 @@ $('#audioMFWebView').on('ended', function() {
 >The Apple Push Notification service (APNs) will no longer support the legacy binary protocol as of November 2020.
 
 Starting with *iFix 8.0.0.0-MFPF-IF201812191602-CDUpdate-04*, MobileFirst Platform v8.0 supports HTTP/2 based notifications for Apple devices.
+
 
 ### Benefits of HTTP/2 based notifications
 

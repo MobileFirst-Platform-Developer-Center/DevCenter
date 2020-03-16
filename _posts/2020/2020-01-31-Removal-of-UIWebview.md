@@ -23,7 +23,7 @@ $('#audioMFWebView').on('ended', function() {
 </script>
 
 <div class="container audio-background">
-  <h3>Listen to the post excerpt</h3>
+  
   <audio id="audioMFWebView" controls>
   <source src="{{site.baseurl}}/assets/blog/2020-01-31-Removal-of-UIWebview/discontinuation-of-uiwebview.mp3" type="audio/mpeg">
   Your browser does not support the audio tag.
@@ -32,6 +32,9 @@ $('#audioMFWebView').on('ended', function() {
 </div>
 <br/>
 [UIWebView](https://developer.apple.com/documentation/uikit/uiwebview) has been deprecated by Apple since June 2018. However, this recent [announcement](https://developer.apple.com/news/?id=12232019b) by Apple brings an end to the use of UIWebView in all iOS apps.
+
+
+
 
 >If your app still embeds web content using the deprecated UIWebView API, we strongly encourage you to update to WKWebView, as soon as possible, for improved security and reliability. WKWebView ensures that compromised web content doesn’t affect the rest of an app by limiting web processing to the app’s web view. It is supported in iOS and macOS, and by Mac Catalyst.
 >The App Store will no longer accept new apps using UIWebView as of April 2020 and app updates using UIWebView as of December 2020.
