@@ -11,7 +11,28 @@ version:
 author:
   name: Krishnakumar Balachandar
 ---
+<style>
+.audio-background {
+  background-image: linear-gradient(to right, rgba(255,255,255,0), #ffff99);
+;
+}
+</style>
+<script>
+$('#audioMFWebView').on('ended', function() {
+        manageImageObjectsLevel();
+}).get(0).play();
+</script>
 
+
+<div class="container audio-background">
+
+  <audio id="audioMFWebView" controls>
+  <source src="{{site.baseurl}}/assets/blog/2020-03-13-announcement-mobile-foundation-cp4a-4.1/icpa4.1-updates.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+  </audio>
+
+</div>
+<br/>
 We are pleased to announce the following updates to Mobile Foundation as part of [Cloud Pak for Apps v4.1](https://www.ibm.com/support/knowledgecenter/SSCSJL_4.1.x/welcome.html).
 
 ### Software support
