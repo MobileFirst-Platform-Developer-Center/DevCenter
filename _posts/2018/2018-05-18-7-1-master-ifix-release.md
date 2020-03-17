@@ -31,7 +31,7 @@ A new iFix *7.1.0.0-MFPF-IF202003110439* has been released for MobileFirst Found
             <h3>Changes included in this iFix</h3>
             <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
 
-            <b>PH22768</b>  REMOVE REFERENCES TO UIWEBVIEW IN NATIVE CODE TO SUPPORT APP STORE NEW REQUIREMENT.<br/>
+            <b>PH22768</b>  REMOVE REFERENCES TO UIWEBVIEW TO SUPPORT APP STORE NEW REQUIREMENT FOR NATIVE IOS SDK.<br/>
 
             </div>
         </div>      
