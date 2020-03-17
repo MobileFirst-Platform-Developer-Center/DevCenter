@@ -10,6 +10,9 @@ weight: 11
 
 The Live Update feature in {{ site.data.keys.product }} provides a simple way to define and serve different configurations for users of an application. It includes a component in the {{ site.data.keys.mf_console }} for defining the structure of the configuration as well as the values of the configuration. A client SDK (available for Android and iOS **native** and for Cordova applications) is provided for consuming the configuration.
 
+>**Note**: For details on using Live Update with a traditional on-premise {{ site.data.keys.mf_server }}, refer to the documentation [here](live-update/).
+
+
 ### Common Use Cases
 {: #common-use-cases }
 Live Update supports defining and consuming configurations, making it easy to make customizations to the application. An example of a common use cases is:
@@ -99,8 +102,6 @@ By default, Live Update service is bundled in the Mobile Foundation DevKit.
 
 Once the Live Update service is up, the **Live Update Settings** page is then shown for each registered application.
 
-For details on adding Live Update to {{ site.data.keys.mf_server }}, refer to the documentation [here](live-update/).
-
 ## Configuring Application Security
 {: #configuring-application-security }
 In order to allow integration with Live Update, a scope element is required. Without the scope element, the service will reject requests from the client applications.  
@@ -128,9 +129,14 @@ See the following demonstration to define features and properties with values.
 {: #adding-live-update-sdk-to-applications}
 The Live Update SDK provides developers with API to query runtime configuration features and properties that were previously defined in the Live Update Settings screen of the registered application in the {{ site.data.keys.mf_console }}.
 
+For **Cordova**, use SDK version *8.0.202003051505* or prior.
 * [Cordova plugin documentation](https://github.com/mfpdev/mfp-live-update-cordova-plugin)
-* [iOS Swift SDK documentation](https://github.com/mfpdev/mfp-live-update-ios-sdk)
+
+For **Android**, use SDK version *8.0.202003051505*.
 * [Android SDK documentation](https://github.com/mfpdev/mfp-live-update-android-sdk)
+
+For **iOS**, use SDK version *8.0.202003051505*  or prior version.
+* [iOS Swift SDK documentation](https://github.com/mfpdev/mfp-live-update-ios-sdk)
 
 ### Adding the Cordova plugin
 {: #adding-the-cordova-plugin }

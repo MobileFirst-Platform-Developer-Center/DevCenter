@@ -212,9 +212,14 @@ Override the default value of a property.
 {: #adding-live-update-sdk-to-applications}
 The Live Update SDK provides developers with API to query runtime configuration features and properties that were previously defined in the Live Update Settings screen of the registered application in the {{ site.data.keys.mf_console }}.
 
+For **Cordova**, use SDK version *8.0.2019100111* or prior.
 * [Cordova plugin documentation](https://github.com/mfpdev/mfp-live-update-cordova-plugin)
-* [iOS Swift SDK documentation](https://github.com/mfpdev/mfp-live-update-ios-sdk)
+
+For **Android**, use SDK version *8.0.0*.
 * [Android SDK documentation](https://github.com/mfpdev/mfp-live-update-android-sdk)
+
+For **iOS**, use SDK version *8.0.2017092018*  or prior version.
+* [iOS Swift SDK documentation](https://github.com/mfpdev/mfp-live-update-ios-sdk)
 
 ### Adding the Cordova plugin
 {: #adding-the-cordova-plugin }
