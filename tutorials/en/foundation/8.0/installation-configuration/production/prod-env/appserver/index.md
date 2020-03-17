@@ -1893,7 +1893,7 @@ When you plan a server farm with the Server Configuration Tool, first create the
                             </li>
                             <li>Exchange the signer certificates between all the servers in their respective truststores.
                             <br/><br/>
-                            This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, follow the guidelines in step 6 of <a href="#configuring-a-server-farm-manually">Configuring a server farm manually</a>.
+                            <blockquote><b>Note</b>: This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, follow the guidelines in step 6 of <a href="#configuring-a-server-farm-manually">Configuring a server farm manually</a>.</blockquote>
                             </li>
                         </ul>
                     </li>
@@ -1945,7 +1945,7 @@ When you plan a server farm with Ant tasks, first create the stand-alone servers
                             For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime</a>.</li>
                             <li>Exchange the signer certificates between all the servers in their respective truststores.
                             <br/><br/>
-                            This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, follow the guidelines in step 6 of <a href="#configuring-a-server-farm-manually">Configuring a server farm manually</a>.
+                            <blockquote><b>Note</b>: This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, follow the guidelines in step 6 of <a href="#configuring-a-server-farm-manually">Configuring a server farm manually</a></blockquote>.
                             </li>
                         </ul>
                     </li>
