@@ -242,6 +242,30 @@ The Server Configuration Tool can set up the database and install the components
 * [Running the Server Configuration Tool](#running-the-server-configuration-tool)
 * [Applying a fix pack by using the Server Configuration Tool](#applying-a-fix-pack-by-using-the-server-configuration-tool)
 
+The ServerConfigurationTool (SCT) launcher on Mac OS mandates to install the legacy Java SE 6 runtime. You may see the below message when you launch the SCT launcher on Mac OS.
+
+![Message SCT - Mac OS](message-sct-mac.png)
+
+To workaround this, you can follow one of the following approaches and run SCT using the SCT executable without having to install Java SE 6 runtime.
+
+#### Approach 1
+* Right Click on the `ServerConfigurationTool` launcher.
+* Select **Show Package Contents**
+
+  ![Show Package Contents](show-package-contents.png)
+
+* Click **Contents** > **MacOS**.
+* Click the `ServerConfigurationTool` executable to launch SCT.
+
+#### Approach 2
+You can have both Java SE 8 and Java SE6 installed on your computer without any issues.
+
+* When the pop up window appears while using the SCT launcher, click **More Info**.
+* You will be directed to the Apple Support site. Here, you may find further instructions on how to get Java SE 6 runtime.
+* Follow the instructions, install Java SE 6 Runtime and then launch the SCT launcher.
+
+
+
 ### Supported operating systems
 {: #supported-operating-systems }
 You can use the Server Configuration Tool if you are on the following operating systems:
@@ -2155,6 +2179,10 @@ When you plan a server farm, first create stand-alone servers that communicate w
                                 <ul>
                                     <li>Import the public certificates of the other servers in the farm into the truststore that is referenced by the <b>server.xml</b> configuration file of the server. The tutorial <a href="../../simple-install/graphical-mode">Installing {{ site.data.keys.mf_server }} in graphical mode</a> provides you the instructions to exchange the certificates between two Liberty servers in a farm. For more information, see step 5 of <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Creating a farm of two Liberty servers that run {{ site.data.keys.mf_server }}</a> section.</li>
                                     <li>Restart each instance of WebSphere Application Server Liberty profile to make the security configuration take effect. The following steps are needed for single sign-on (SSO) to work.</li>
+                                    <li>Exchange the signer certificates between all the servers in their respective truststores.
+                                    <br/><br/>
+                                    <blockquote><b>Note</b>: This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, perform the following steps.</blockquote>
+                                    </li>
                                     <li>Start one member of the farm. In the default LTPA configuration, after the Liberty server starts successfully, it generates an LTPA keystore as <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys.</b></li>
                                     <li>Copy the <b>ltpa.keys</b> file to the <b>${wlp.user.dir}/servers/server_name/resources/security</b> directory of each farm member to replicate the LTPA keystores across the farm members. For more information about LTPA configuration, see <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Configuring LTPA on the Liberty profile</a>.</li>
                                 </ul>
