@@ -79,6 +79,7 @@ A new iFix *8.0.0.0-MFPF-IF202003051505*  is released for Mobile Foundation 8.0,
                               cordova-plugin-mfp-push            8.0.2019121811<br/>
                               cordova-template-mfp               8.0.2017060206<br/>
                               cordova-plugin-mfp-analytics      8.0.2020020207<br/>
+                              <b>cordova-plugin-mfp-liveupdate 8.0.202003051505</b><br/>
                               ibm-mfp-web-sdk                     8.0.2019120211<br/>
                               passport-mfp-token-validation      8.0.2017010917<br/>
                         </div>
@@ -110,6 +111,7 @@ A new iFix *8.0.0.0-MFPF-IF202003051505*  is released for Mobile Foundation 8.0,
                                 IBMMobileFirstPlatformFoundationPush          8.0.2019082914<br/>
                                 <b>IBMMobileFirstPlatformFoundationJSONStore    8.0.2020021915</b><br/>
                                 IBMMobileFirstPlatformFoundationAnalytics             8.0.2020020508<br/>
+                                <b>IBMMobileFirstPlatformFoundationLiveUpdate 8.0.202003051505</b><br/>
                         </div>
                     </div>      
                 </div>
