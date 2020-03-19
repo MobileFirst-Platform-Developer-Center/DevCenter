@@ -242,6 +242,16 @@ The Server Configuration Tool can set up the database and install the components
 * [Running the Server Configuration Tool](#running-the-server-configuration-tool)
 * [Applying a fix pack by using the Server Configuration Tool](#applying-a-fix-pack-by-using-the-server-configuration-tool)
 
+### Supported operating systems
+{: #supported-operating-systems }
+You can use the Server Configuration Tool if you are on the following operating systems:
+
+* Windows x86 or x86-64
+* macOS x86-64
+* Linux x86 or Linux x86-64
+
+The tool is not available on other operating systems. You need to use Ant tasks to install the {{ site.data.keys.mf_server }} components as described in [Installing with Ant Tasks](#installing-with-ant-tasks).
+
 The ServerConfigurationTool (SCT) launcher on Mac OS mandates to install the legacy Java SE 6 runtime. You may see the below message when you launch the SCT launcher on Mac OS.
 
 ![Message SCT - Mac OS](message-sct-mac.png)
@@ -263,18 +273,6 @@ You can have both Java SE 8 and Java SE6 installed on your computer without any 
 * When the pop up window appears while using the SCT launcher, click **More Info**.
 * You will be directed to the Apple Support site. Here, you may find further instructions on how to get Java SE 6 runtime.
 * Follow the instructions, install Java SE 6 Runtime and then launch the SCT launcher.
-
-
-
-### Supported operating systems
-{: #supported-operating-systems }
-You can use the Server Configuration Tool if you are on the following operating systems:
-
-* Windows x86 or x86-64
-* macOS x86-64
-* Linux x86 or Linux x86-64
-
-The tool is not available on other operating systems. You need to use Ant tasks to install the {{ site.data.keys.mf_server }} components as described in [Installing with Ant Tasks](#installing-with-ant-tasks).
 
 ### Supported topologies
 {: #supported-topologies }
