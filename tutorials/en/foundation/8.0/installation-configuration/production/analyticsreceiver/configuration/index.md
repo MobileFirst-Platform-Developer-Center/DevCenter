@@ -62,8 +62,6 @@ The following table shows the properties that can be set in the {{ site.data.key
 
 | Property                           | Description                                           | Default Value |
 |------------------------------------|-------------------------------------------------------|---------------|
-| receiver.analytics.console.url          | Set this property to the URL of your {{ site.data.keys.mf_analytics_console }}. For example, `http://hostname:port/analytics/console`. Setting this property enables the analytics icon on the {{ site.data.keys.mf_console }}. | None |
-| receiver.analytics.url                  |Required. The URL that is exposed by the {{ site.data.keys.mf_analytics_server }} that receives incoming analytics data. For example, `http://hostname:port/analytics-service/rest`. | None |
-| receiver.analytics.username             | The user name that is used if the data entry point is protected with basic authentication. | None |
-| receiver.analytics.password             | The password that is used if the data entry point is protected with basic authentication. | None |
-| receiver.analytics.event.qsize          | Size of analytic event queue size. It should be added with caution by providing ample JVM heap size. Default queue size 10000  | None |
+| mfp.analytics.receiver.url                  | Required. The URL that is exposed by the {{ site.data.keys.mf_analytics_receiver_server }} that receives incoming analytics data and forward them to {{ site.data.keys.mf_analytics_server }}. For example, `http://hostname:port/analytics-receiver/rest`. | None |
+| mfp.analytics.receiver.username             | The user name that is used if the data entry point is protected with basic authentication. | None |
+| mfp.analytics.receiver.password             | The password that is used if the data entry point is protected with basic authentication. | None |
