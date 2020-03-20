@@ -71,7 +71,7 @@ GEM
     public_suffix (3.0.2)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
-      ffi (>= 1.9.24)
+      ffi (< 2, >= 0.5.0)
     rouge (3.1.1)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
