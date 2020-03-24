@@ -10,7 +10,7 @@ version:
 author:
   name: Krishnakumar Bala
 ---
-We are happy to announce that IBM Digital App Builder 8.0.0 which was launched as a beta release in Dec 2018, is now generally available.  This tool can be used to rapidly build multi-channel apps with AI capabilities that can be deployed on Mobile Foundation runtime. Customers can now download the binaries by logging into [passport advantage](https://www.ibm.com/software/passportadvantage/pao_customer.html) (**CC151EN** for Mac and **CC152EN** for Windows 10). For others who want to try out this tool, download the binaries from our [git repo](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases/tag/GA).
+We are happy to announce that IBM Digital App Builder 8.0.0 which was launched as a beta release in Dec 2018, is now generally available.  This tool can be used to rapidly build multi-channel apps with AI capabilities that can be deployed on Mobile Foundation runtime. Customers can now download the binaries by logging into [passport advantage](https://www.ibm.com/software/passportadvantage/pao_customer.html) (**CC151EN** for Mac and **CC152EN** for Windows 10). For others who want to try out this tool, download the binaries from our [git repo](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
 
 The key features of IBM Digital App Builder 8.0.0 are,
 
