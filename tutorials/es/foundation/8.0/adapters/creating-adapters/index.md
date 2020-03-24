@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Creación de adaptadores Java y JavaScript
-breadcrumb_title: Creating Adapters
+breadcrumb_title: Creación de adaptadores 
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
@@ -402,8 +402,7 @@ Para actualizar el proyecto Maven del adaptador con el último release, encuentr
 Si no tiene acceso en línea al repositorio central de Maven, puede compartir los artefactos Maven de {{ site.data.keys.product }} en el repositorio interno de su organización.
 
 1. [Visite la página de descargas]({{site.baseurl}}/downloads/) y descargue el instalador de {{ site.data.keys.mf_dev_kit_full }}.
-2. Inicie {{ site.data.keys.mf_server }} y en un navegador, cargue {{ site.data.keys.mf_console }} desde el siguiente URL:
-`http://<your-server-host:server-port>/mfpconsole`.
+2. Inicie {{ site.data.keys.mf_server }} y en un navegador, cargue {{ site.data.keys.mf_console }} desde el siguiente URL: `http://<your-server-host:server-port>/mfpconsole`.
 3. Pulse **Centro de descargas**. Bajo **Herramientas → Arquetipos de adaptador**, pulse **Descargar**. Se descargará el archivador **mfp-maven-central-artifacts-adapter.zip**.
 4. Añada los arquetipos de adaptador y las comprobaciones de seguridad al repositorio Maven interno ejecutando el script **install.sh** para Linux y Mac o el script **install.bat** para Windows.
 5. Se necesitan los siguientes archivos JAR para adapter-maven-api. Asegúrese de que están ubicados en la carpeta **.m2** local de los desarrolladores o en el repositorio Maven de su organización. Puede descargarlos desde el The Central Repository.

@@ -124,7 +124,9 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>Novas APIs do lado do cliente Objective-C para iOS</h3>
                 <h4><code>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</code></h4>
-                <p>Com este novo método, é possível obter o nome de exibição de um dispositivo a partir dos dados de registro do {{ site.data.keys.mf_server }}.</p>
+                <p>Com este novo método, é possível obter o nome de exibição de um
+dispositivo a partir dos dados de registro do
+{{ site.data.keys.mf_server }}.</p>
 
                 <h4><code>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</code></h4>
                 <p>Com este novo método, é possível obter o nome de exibição de um dispositivo nos dados de registro do {{ site.data.keys.mf_server }}.</p>

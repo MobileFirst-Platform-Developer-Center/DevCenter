@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Activation/désactivation de fonctions avec Live Update
-weight: 12
+weight: 13
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -86,7 +86,7 @@ Pour ajouter Live Update à votre application :
 
 1. Ouvrez l'application en mode Code.
 2. Accédez au fragment de code et cliquez sur **</>**.
-3. Sous **Live Update**, faites glisser et déposez le fragment de code de la **fonction Live Update** ou de la **propriété Live Update**. 
+3. Sous **Live Update**, faites glisser et déposez le fragment de code de la **fonction Live Update** ou de la **propriété Live Update**.
 
     ![Ajout de Live Update en mode Code - méthode 2](dab-live-update-new-feature-code-snippet.png)
 

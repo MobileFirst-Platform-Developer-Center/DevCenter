@@ -1,6 +1,6 @@
 ---
 title: サーバー・サイドのログ収集
-breadcrumb_title: Server-side log collection
+breadcrumb_title: サーバー・サイドのログ収集
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---

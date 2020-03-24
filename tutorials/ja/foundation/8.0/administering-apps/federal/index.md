@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Foundation での連邦標準サポート
-breadcrumb_title: Federal standards support
+breadcrumb_title: 連邦標準サポート
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->

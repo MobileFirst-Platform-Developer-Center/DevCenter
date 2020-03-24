@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server über die Befehlszeile installieren
-breadcrumb_title: Command-line installation
+breadcrumb_title: Befehlszeileninstallation
 show_breadcrumb: true
 weight: 3
 ---

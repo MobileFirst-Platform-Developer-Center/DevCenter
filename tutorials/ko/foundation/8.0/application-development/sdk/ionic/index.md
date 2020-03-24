@@ -86,7 +86,7 @@ MobileFirst 플러그인에서 지원되는 Ionic Cordova 플랫폼 버전은 �
 #### 새 애플리케이션
 {: #new-application }
 1. `ionic start projectName starter-template` 명령을 사용하여 Ionic 프로젝트를 작성하십시오.  
-예:
+   예:
 
    ```bash
    ionic start Hello blank

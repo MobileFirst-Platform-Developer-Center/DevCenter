@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 기본 제어 추가
-weight: 6
+weight: 7
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

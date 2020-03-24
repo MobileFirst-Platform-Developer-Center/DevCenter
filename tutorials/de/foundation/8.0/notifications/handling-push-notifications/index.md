@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Handhabung von Push-Benachrichtigungen in Clientanwendungen
-breadcrumb_title: Handling Push Notifications
+breadcrumb_title: Handhabung von Push-Benachrichtigungen
 relevantTo: [ios,android,windows,cordova]
 weight: 4
 show_children: true

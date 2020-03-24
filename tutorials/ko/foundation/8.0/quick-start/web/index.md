@@ -123,9 +123,9 @@ weight: 5
 4. 브라우저에서 URL [http://localhost:9081/home](http://localhost:9081/home)을 방문하십시오.
 
 <br>
-#### 보안 원본 정책
+#### 보안 출처 정책(Secure Origins Policy)
 {: #secure-origins-policy }
-개발 중에 Chrome을 사용할 때는 "localhost"가 **아닌** 호스트 및 HTTP를 모두 사용하는 경우 브라우저가 애플리케이션을 로드하도록 허용하지 않을 수 있습니다. 이는 이 브라우저에서 기본적으로 구현되고 사용되는 보안 원본 정책으로 인한 것입니다.
+개발 중에 Chrome을 사용할 때는 "localhost"가 **아닌** 호스트 및 HTTP를 모두 사용하는 경우 브라우저가 애플리케이션을 로드하도록 허용하지 않을 수 있습니다. 이는 이 브라우저에서 기본적으로 구현되고 사용되는 보안 출처 정책(Secure Origins Policy)으로 인한 것입니다.
 
 다음 플래그로 Chrome 브라우저를 시작하여 이를 해결할 수 있습니다.
 

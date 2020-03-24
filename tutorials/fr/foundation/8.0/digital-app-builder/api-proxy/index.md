@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Connexion aux microservices à l'aide du proxy d'API
-weight: 15
+weight: 16
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

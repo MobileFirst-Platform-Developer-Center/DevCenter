@@ -72,6 +72,8 @@ Erstellen Sie ein Xcode-Projekt oder verwenden Sie ein vorhandenes Projekt (Swif
       ```xml
       use_frameworks!
 
+
+
       platform :ios, 8.0
       target "Xcode-project-target" do
           pod 'IBMMobileFirstPlatformFoundation'

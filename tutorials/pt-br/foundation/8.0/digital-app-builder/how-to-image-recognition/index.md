@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Incluindo Reconhecimento de imagem no aplicativo
-weight: 10
+weight: 11
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

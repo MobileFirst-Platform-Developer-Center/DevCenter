@@ -59,9 +59,9 @@ weight: 6
    ```xml
    implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
-   
+
    >**注**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) フィーチャーを使用していて、MobileFirstAPI をフィーチャー・モジュールから呼び出したい場合は、`inplementation` ではなく `api` 宣言を使用してください。 `implementation` を使用すると同じモジュール内での MobileFirst API の使用が制限される可能性がありますが、 `api`  を使用すると、フィーチャー・モジュールを含むアプリ内のすべてのモジュールで MobileFirst API を利用できます。詳しくは、 [API and implementation separation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation)を参照してください。
-   
+
 ```xml
  api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
 ```
@@ -363,17 +363,22 @@ FCM でのアプリケーションのセットアップは、古い GCM モデ�
        compile 'com.google.firebase:firebase-messaging:10.2.6'
        .....
     }
-    
+
     apply plugin: 'com.google.gms.google-services'
     ```
 
-    
+    - ルートの `build.gradle` ファイルの **buildscript** セクションに次の依存関係を追加します。
+      ```
+      classpath 'com.google.gms:google-services:3.0.0'
+      ```
 
-    - ルートの build.gradle の `buildscript` セクションに以下の依存関係を追加します。
+    - 以下の GCM プラグインを `build.gradle` ファイルから除去します。
+      ```
+      compile  com.google.android.gms:play-services-gcm:+
+      ```
 
-      `classpath 'com.google.gms:google-services:3.0.0'`
+    >**注**: Android Studio v3.2 以前を使用している場合は、各依存関係行にバージョン番号が 1 つだけ指定されるようにしてください。
 
-    - 以下の GCM プラグインを build.gradle ファイルから除去します `compile  com.google.android.gms:play-services-gcm:+`
 
  3. AndroidManifest ファイルを構成します。 `AndroidManifest.xml`>で以下の変更が必要です。
 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Administración de aplicaciones a través de MobileFirst Operations Console
-breadcrumb_title: Administrating using the console
+breadcrumb_title: Administración utilizando la consola 
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -189,14 +189,14 @@ En {{ site.data.keys.mf_console }}, puede hacer referencia a un registro de audi
 
 Para acceder al registro de auditoría, pulse el nombre de usuario en la barra de la cabecera y seleccione **Acerca de **, pulse **Soporte adicional** y, a continuación, **Descargar registro de auditoría**.
 
-| Nombre de campo | Descripción |
+|Nombre de campo |Descripción |
 |------------|-------------|
-| Timestamp	 | Fecha y hora en que se creó el registro. |
-| Type	     | Tipo de operación. Consulte la lista de tipos de operación para conocer los posibles valores. |
-| User	     | El **nombre_usuario** del usuario que ha iniciado la sesión. |
-| Outcome	 | El resultado de la operación. Los posibles valores son SUCCESS, ERROR, PENDING. |
-| ErrorCode	 | Si el resultado es ERROR, ErrorCode indica qué error es. |
-| Runtime	 | Nombre del proyecto {{ site.data.keys.product_adj }} asociado a esta operación. |
+|Timestamp	 |Fecha y hora en que se creó el registro. |
+|Type	     |Tipo de operación. Consulte la lista de tipos de operación para conocer los posibles valores. |
+|User	     |El **nombre_usuario** del usuario que ha iniciado la sesión. |
+|Outcome	 |El resultado de la operación. Los posibles valores son SUCCESS, ERROR, PENDING. |
+|ErrorCode	 |Si el resultado es ERROR, ErrorCode indica qué error es. |
+|Runtime	 |Nombre del proyecto {{ site.data.keys.product_adj }} asociado a esta operación. |
 
 En la siguiente lista se muestran los posibles valores del tipo de operación.
 

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Backup and recovery of Mobile Foundation Analytics data
+breadcrumb_title: Mobile Foundation Analytics データのバックアップおよびリカバリー
 title: Mobile Foundation Analytics データのバックアップおよびリカバリー
 weight: 1
 show_in_nav: false

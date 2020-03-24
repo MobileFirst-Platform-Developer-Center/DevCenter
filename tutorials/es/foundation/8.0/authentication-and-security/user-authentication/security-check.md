@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Implementación de la clase UserAuthenticationSecurityCheck
-breadcrumb_title: Security Check
+breadcrumb_title: Comprobación de seguridad
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
@@ -206,7 +206,7 @@ En este ejemplo, el cliente decide habilitar/inhabilitar la función **RememberM
 
 ## Configuración de la comprobación de seguridad
 {: #configuring-the-security-check }
-En el archivo **adapter.xml**, añada un elemento de `<securityCheckDefinition>`:
+En el archivo **adapter.xml**, añada un elemento `<securityCheckDefinition>`: 
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">

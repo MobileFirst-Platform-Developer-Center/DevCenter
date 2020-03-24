@@ -215,11 +215,11 @@ cordova plugin add cordova-plugin-mfp-liveupdate
 
 ### iOS SDK 추가
 {: #adding-the-ios-sdk }
-1. `IBMMobileFirstPlatformFoundationLiveUpdate` Pod를 추가하여 애플리케이션의 Podfile을 편집하십시오.  
-예:
+1. `IBMMobileFirstPlatformFoundationLiveUpdate` 팟(Pod)을 추가하여 애플리케이션의 Podfile을 편집하십시오.  
+ 예:
 
    ```xml
-use_frameworks!
+   use_frameworks!
 
    target 'your-Xcode-project-target' do
       pod 'IBMMobileFirstPlatformFoundation'

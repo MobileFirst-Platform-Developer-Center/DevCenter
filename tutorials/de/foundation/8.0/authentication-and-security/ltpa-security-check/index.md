@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: LTPA-basierte SSO-Sicherheitsüberprüfung
-breadcrumb_title: LTPA Security Check
+breadcrumb_title: LTPA-Sicherheitsüberprüfung
 relevantTo: [android,ios,windows,javascript]
 weight: 8
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Utilización de la API REST de analíticas
-breadcrumb_title: Analytics REST API
+breadcrumb_title: API REST de analíticas
 relevantTo: [ios,android,cordova]
 weight: 2
 ---

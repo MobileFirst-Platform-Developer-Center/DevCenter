@@ -1,40 +1,243 @@
 ---
 layout: default
-title: Video Gallery
-custom_js:
-- lib/magnific/jquery.magnific-popup.min.js
-- js/video-gallery.js
+indexed: false
 ---
 <head>
-  <link href="{{site.url}}{{site.baseurl}}{{page.url}}" rel="canonical"/>
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="{{site.baseurl}}/css/bulma-min.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">-->
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+    </style>
+    <style>
+      .container {
+        margin-right: auto;
+        margin-left: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+     }
+  h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+    .col-md-4{
+      padding:0px;
+    }
+    .col-md-8{
+      padding:0px;
+    }
+    .col-md-6{
+      padding:0px;
+    }
+    .carousel {
+    	//font-family: HelvNeuRomanForIBM;
+    	//font-family: Lato;
+    	font-family: 'IBM Plex Sans', sans-serif;
+    	background-color: #28536f;
+    	background-image: url(../assets/front-page/carousel-background.png);
+    	height: 252px;
+    }
+    .postTitle {
+       margin-bottom: 0;
+       color: #28536f;
+       font-family: 'IBM Plex Sans', sans-serif;
+       font-weight: bold;
+       font-size: 1.5rem;
+
+    }
+    .postTitleLatest {
+       margin-bottom: 0;
+       color: #696969;
+       font-family: 'IBM Plex Sans', sans-serif;
+       font-weight: bold;
+       font-size: 2rem;
+
+    }
+    .postsubTitleAlert {
+       margin-bottom: 0;
+       color: #ff0000;
+       font-family: 'IBM Plex Sans', sans-serif;
+'IBM Plex Sans', sans-serif;
+    }
+
+    .postsubTitle {
+       margin-bottom: 0;
+       color: #ffffff;
+       font-family: 'IBM Plex Sans', sans-serif;
+       font-weight: bold;
+
+    }
+       a {
+          color: #337ab7;
+          text-decoration: none;
+       }
+
+     .postsubTitleVar {
+      margin-bottom: 0;
+        color: #DCDCDC;
+        font-family: 'IBM Plex Sans', sans-serif;
+     }
+        a {
+           color: #337ab7;
+           text-decoration: none;
+        }
+
+    .postDate {
+        font-family: Lato;
+        font-size: 80%;
+        padding: 0;
+        margin: 0;
+        font-weight: bold;
+    }
+    .postsubTitleLatest {
+       margin-bottom: 0;
+       color: #696969;
+       font-family: 'IBM Plex Sans', sans-serif;
+       font-weight: bold;
+
+    }
+    .postExcerpt {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 85%;
+    }
+    .title {
+      color: #81daf5;
+    	font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1.125;
+    }
+
+    .postTitleNew {
+      margin-bottom: 0;
+      color: #fff;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: bold;
+    }
+    .tile {
+      width: 100%;
+      display: inline-block;
+      box-sizing: border-box;
+      background: #fff;
+      padding: 0px;
+      margin-bottom: 10px;
+    }
+    .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    padding:10px;
+    margin-top: 10px;
+    width: 1150px;
+    height: 265px;
+    background-color: : #000066;
+    }
+    .row {
+      margin-bottom: 20px;
+    }
+    </style>
+
+
 </head>
-<script id="videoTemplate" type="text/x-jsrender">
-{% raw %}
-<li class="col-md-3 col-sm-4 col-xs-6">
-    <figure>
-      <a href="{{:url}}" data-toggle="lightbox" data-width="960" data-gallery="youtubevideos">
-          <img src="{{:thumbnail}}" class="thumbnail img-responsive" alt="{{:caption}}">
-      </a>
-      {{for tags}}
-        <span class="videoTag label label-info" data-tag="{{:#data}}">{{:#data}}</span>
-      {{/for}}
-      <figcaption class="figure-caption">
-        {{:caption}}
-      </figcaption>
-    </figure>
-</li>
-{% endraw %}
-</script>
-<section class="container video-gallery" role="main">
+<div id="myCarousel" class="carousel slide hidden-xs hidden-sm hidden-md" data-ride="carousel" role="banner">
+   <!-- Carousel indicators -->
+   <!--<ul class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+   </ul>-->
 
-    <h2 class="no-anchor">Video Gallery<small> Click on a tag for filtered content</small></h2>
-    <br/>
-    Find more {{ site.data.keys.product_full }} and {{ site.data.keys.mf_bm }} videos in our <b>YouTube</b> channel: <br/><br/><img alt="YouTube" src="{{site.baseurl}}/assets/help/YouTube.png" style="width: 28px;margin-left:3px;margin-right:1px"/> <a href="https://www.youtube.com/c/IBMMobileDev"> <b>IBM Mobile Dev</b></a><br/><br/><!--<img alt="YouTube" src="{{site.baseurl}}/assets/help/YouTube.png" style="width: 28px;margin-left:3px;margin-right:1px"/> <a href="https://www.youtube.com/channel/UCh_xLgh2_kENFxAeN8hhkHw"> <em>Bluemix Mobile Foundation</em></a>-->
-    <br/>
-    <hr/>
-    <br/>
-    <div id="videoTags"></div>
-    <ul id="videosList" class="gallery row">
+   <div class="carousel-inner" role="tablist" aria-label="Carousel animation of news items">
+      <div class="item active">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-7 carousel-caption" role="tab">
+                 <h1 class="no-anchor">Subscribe to IBM SupportTV</h1>
+                 <p class="caption-text">Get notified when we upload a new video</p>
+                 <p><a class="custombtn btn-lg btn-default containers" href="https://www.youtube.com/channel/UC9K3qy72l9D27vPeKWoUq7Q" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp;Subscribe</a></p>
 
-    </ul>
-</section>
+
+               </div>
+
+
+            </div>
+         </div>
+      </div>
+
+   </div>
+
+  <!-- <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+   </a>
+   <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+   </a>-->
+</div>
+
+
+<div id="index_sections">
+  <!-- Blog -->
+  <div id="index_posts" class="container" role="complementary">
+
+
+  <!-- Get Started -->
+  <div id="index_getstarted" class="container" role="complementary">
+
+     <h3 class="no-anchor hidden-xs hidden-sm" style="text-align: left"><span class="badge badge-light"><img alt="YouTube" src="{{site.baseurl}}/assets/help/YouTube.png" style="width: 28px;margin-left:3px;margin-right:1px"/>&nbsp;IBM SupportTV</span></h3>
+
+     <div class="row hidden-xs hidden-sm">
+        <div class="col-md-4 index_section_left hidden-xs hidden-sm">
+           <p><span class="postTitle">Over-the-air update using IBM's Mobile Foundation Direct Update</span></p>
+           <iframe width="80%" height="90%" src="https://www.youtube.com/embed/Hd3a3QTzWD0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+        <div class="col-md-4 index_section_left hidden-xs hidden-sm">
+           <p><span class="postTitle">How to use Mobile Foundation's Interactive Push Notification feature</span></p>
+           <iframe width="80%" height="90%" src="https://www.youtube.com/embed/uLkynaqWURE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+        <div class="col-md-4 index_section_right hidden-xs hidden-sm">
+           <p><span class="postTitle">How to use Rich Push Notifications in Mobile Foundation</span></p>
+           <iframe width="80%" height="90%" src="https://www.youtube.com/embed/sSZh5uLeZPE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+
+     </div>
+  </div>
+
+  <hr class="sm hidden-xs hidden-sm"/>
+  <div id="index_getstarted" class="container" role="complementary">
+
+     <h3 class="no-anchor hidden-xs hidden-sm" style="text-align: left"><span class="badge badge-light"><img alt="YouTube" src="{{site.baseurl}}/assets/help/YouTube.png" style="width: 28px;margin-left:3px;margin-right:1px"/>&nbsp;IBM Mobile Dev</span></h3>
+
+     <div class="row hidden-xs hidden-sm">
+        <div class="col-md-6 index_section_left hidden-xs hidden-sm">
+           <p><span class="postTitle">Build multichannel apps with IBM Digital App Builder</span></p>
+           <iframe width="80%" height="90%" src="https://www.youtube.com/embed/x9_XjyKR8K8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+        <div class="col-md-6 index_section_right hidden-xs hidden-sm">
+           <p><span class="postTitle">Fixing iOS 11 UI issue with Mobile Foundation Platform</span></p>
+           <iframe width="80%" height="90%" src="https://www.youtube.com/embed/rHH35SKTuaU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        </div>
+        <!--<div class="col-md-4 index_section_right hidden-xs hidden-sm">
+           <p><span class="postTitle">How to use Rich Push Notifications in Mobile Foundation</span></p>
+           <iframe width="560" height="315" src="https://www.youtube.com/embed/sSZh5uLeZPE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>-->
+
+     </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+</div>

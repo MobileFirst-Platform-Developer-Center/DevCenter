@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: Uso de Direct Update en aplicaciones Cordova
+title: Uso de Direct Update en aplicaciones Ionic y Cordova
 breadcrumb_title: Direct Update
-relevantTo: [cordova]
+relevantTo: [cordova,ionic]
 weight: 8
 downloads:
   - name: Download Cordova project
@@ -70,7 +70,10 @@ Una actualización de Direct Update se aplica únicamente a una versión especí
 Una vez se haya realizado el trabajo en los nuevos recursos web como, por ejemplo, arreglos para errores o cambios menores, es necesario volver a empaquetar dichos recursos web actualizados y subirlos a {{ site.data.keys.mf_server }}.
 
 1. Abra la ventana de **línea de mandatos** y vaya a la raíz del proyecto Cordova.
-2. Ejecute el mandato: `mfpdev app webupdate`.
+2. Ejecute el mandato: `cordova build`.
+3. Ejecute el mandato: `mfpdev app webupdate`.
+
+> **Nota:** El paso de compilación es importante en las aplicaciones Ionic antes de utilizar el mandato direct update, si se omite este paso, no se actualizan los recursos web.
 
 El mandato `mfpdev app webupdate` empaqueta los recursos web actualizados en un archivo .zip y lo sube a la instancia de {{ site.data.keys.mf_server }} predeterminada en ejecución en la estación de trabajo del desarrollador. Los recursos web empaquetados se pueden encontrar en la carpeta **[cordova-project-root-folder]/mobilefirst/**.
 
@@ -184,9 +187,16 @@ Los métodos del escucha se inician durante el proceso de actualización directa
 
 Si implementa un escucha de actualización directa personalizado, debe asegurarse de que la aplicación se recarga cuando se complete el proceso de dicha actualización directa y se haya llamado al método `onFinish()`. También se debe llamar a `wl_directUpdateChalengeHandler.submitFailure()` si el proceso de actualización directa no se completa de forma satisfactoria.
 
+>**Nota**: Se debe proporcionar la función `wl_directUpdateChalengeHandler.submitFailure()` con una implementación personalizada antes de invocarla. 
+
 En el siguiente ejemplo se muestra una implementación de un escucha de actualización directa personalizado:
 
 ```javascript
+
+wl_directUpdateChallengeHandler.submitFailure = function(){
+  //Incluir implementación personalizada sobre qué se ha de hacer ante un error de Direct Update
+};
+
 var directUpdateCustomListener = {
   onStart: function(totalSize){
     //show custom progress dialog
@@ -269,7 +279,7 @@ Cree una variable global para almacenar el contexto de la actualización directa
 var savedDirectUpdateContext;
 ```
 
-Implemente un manejador de desafío de actualización directa. Aquí se guarda el contexto de la actualización directa. Por ejemplo:
+Implemente un manejador de desafío de actualización directa. Aquí se guarda el contexto de la actualización directa. Por ejemplo: 
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){

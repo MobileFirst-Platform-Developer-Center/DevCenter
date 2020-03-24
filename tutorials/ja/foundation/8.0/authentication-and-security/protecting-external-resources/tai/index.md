@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: トラスト・アソシエーション・インターセプター
-breadcrumb_title: Trust Association Interceptor
+breadcrumb_title: トラスト・アソシエーション・インターセプター
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Ejemplos de código JSONStore
-breadcrumb_title: Code examples
+breadcrumb_title: Ejemplos de código 
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
@@ -514,7 +514,7 @@ JSONStoreCollection* people = [[JSONStoreCollection alloc] initWithName:@"people
 [people setSearchField:@"age" withType:JSONStore_Integer];
 
 // Optional options object.
-JSONStoreOpenOptions* options = [JSONStoreOpenOptions new];
+  JSONStoreOpenOptions* options = [JSONStoreOpenOptions new];
 [options setUsername:@"carlos"]; //Optional username, default 'jsonstore'
 [options setPassword:@"123"]; //Optional password, default no password
 

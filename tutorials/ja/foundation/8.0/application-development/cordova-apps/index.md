@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova アプリケーションでの MobileFirst Foundation 開発
-breadcrumb_title: Cordova application development
+breadcrumb_title: Cordova アプリケーション開発
 relevantTo: [cordova]
 weight: 4
 ---
@@ -417,6 +417,8 @@ Cordova iOS アプリケーションで使用されているデフォルトの U
 追加するには、コマンド・ライン・ウィンドウで `cordova plugin add cordova-plugin-wkwebview-engine` コマンドを実行します。
 
 > 詳しくは、[Cordova WKWebView プラグイン](https://github.com/apache/cordova-plugin-wkwebview-engine)を参照してください。
+
+> **アップデート:** Cordova アプリケーションで `cordova-plugin-wkwebview-engine` プラグインを使用すると、エラー*「クロス・オリジン要求は HTTP にのみサポートされます (Cross origin requests are only supported for HTTP)」*がスローされ、ダイレクト・アップデートが失敗します。これを克服するために、アプリケーションには [cordova-plugin-wkwebviewxhrfix](https://www.npmjs.com/package/cordova-plugin-wkwebviewxhrfix) と呼ばれる追加のプラグインが必要です。障害は[ここ](https://issues.apache.org/jira/browse/CB-10143)から検索できます。 
 
 ## 参考文献
 {: #further-reading }

@@ -14,7 +14,8 @@ weight: 4
 
 * 알려진 제한사항이 특정 기능에 적용되는 경우 이 특정 기능에 대해 설명하는 주제에서 해당 설명을 찾을 수 있습니다. 따라서 해당 제한사항이 기능에 미치는 영향을 즉시 식별할 수 있습니다.
 * 알려진 제한사항이 일반적인 경우(즉 직접적인 관련이 없는 여러 주제에 적용되는 경우) 여기에서 해당 설명을 찾을 수 있습니다.
-* OpenShift 4.2 클러스터에서의 Elasticsearch 노드 발견 문제점으로 인해 개발 시 Mobile Foundation 분석 팟(Pod) 작동 시 불일치를 관찰할 수 있습니다. 이로 인해 Analytics 관리 콘솔에서는 언제나 하나의 노드만 나열하게 됩니다. 
+* OpenShift 4.2 클러스터에서의 Elasticsearch 노드 발견 문제점으로 인해 개발 시 Mobile Foundation 분석 팟(Pod) 작동 시 불일치를 관찰할 수 있습니다. 이로 인해 Analytics 관리 콘솔에서는 언제나 하나의 노드만 나열하게 됩니다.
+* AppCenter Android 모바일 클라이언트 앱에서 사용자가 화면 이동 문제를 발견할 수 있습니다. 이 문제가 기능을 중단하지는 않습니다. 모든 기능이 예상대로 작동하지만 아래로 스크롤하는 데 몇 번의 추가 스크롤이 필요합니다. 이는 AppCenter 클라이언트에서 사용되는 서드파티 Javascript 프레임워크의 제한사항입니다.
 
 ### 다국어 지원
 {: #globalization }
@@ -309,3 +310,7 @@ gyp ERR! not ok
 ```bash
 npm install -g mfpdev-cli --no-optional
 ```
+
+### Android 앱 번들 기능
+
+Android 5.x 디바이스와 Android 6.x 이상 디바이스 간의 패키징 구조 차이로 인해 앱 인증이 사용으로 설정되고 Play 스토어에서 앱 번들로 배포되는 경우 Android 5.x의 사용자가 MobileFirst 서버에 연결할 수 없습니다. 이 제한사항은 Android 5.x + 앱 인증 + Android 앱 번들의 조합에서만 관찰됩니다. 임시 해결책으로, 앱을 일반 .apk 파일로 Play 스토어에 업로드하거나, 최소 Android 버전을 Android 6 이상으로 제한하거나, Android 5.x 디바이스용 별도 버전의 앱을 사용하십시오.

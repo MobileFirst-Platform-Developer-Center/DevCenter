@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Procedimientos recomendados para configurar el clúster de producción de MobileFirst Analytics
-breadcrumb_title: Best Practices
+breadcrumb_title: Procedimientos recomendados 
 relevantTo: [ios,android,javascript]
 weight: 6
 ---

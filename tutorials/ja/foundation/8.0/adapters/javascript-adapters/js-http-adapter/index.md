@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript HTTP アダプター
-breadcrumb_title: HTTP Adapter
+breadcrumb_title: HTTP アダプター
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project

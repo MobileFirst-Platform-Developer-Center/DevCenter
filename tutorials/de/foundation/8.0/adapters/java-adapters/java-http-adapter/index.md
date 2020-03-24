@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java-HTTP-Adapter
-breadcrumb_title: HTTP Adapter
+breadcrumb_title: HTTP-Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
@@ -94,7 +94,7 @@ Der Beispieladapter macht nur eine Ressourcen-URL zugänglich, über die Sie den
 * `@Context HttpServletResponse response` wird verwendet, um den Ausgabedatenstrom der Antwort zu schreiben, und ermöglicht eine größere Detailgenauigkeit als die Rückgabe einer einfahcen Zeichenfolge. 
 * Der Zeichenfolgetag `@QueryParam("tag")` ermöglicht der Prozedur, einen Parameter zu empfangen. Die Option `QueryParam` gibt an, dass der Parameter in der Abfrage übergeben werden muss (`/JavaHTTP/?tag=MobileFirst_Platform`). Weitere mögliche Optionen sind `@PathParam`, `@HeaderParam`, `@CookieParam`, `@FormParam` usw. 
 * `throws IOException, ...` bedeutet, dass Ausnahmen zurück zum Client weitergeleitet werden. Der Client-Code ist für die Behandlung möglicher Ausnahmen zuständig, die als Fehler `HTTP 500` empfangen werden. Eine andere Lösung (die in Produktionscode favorisiert werden dürfte) ist die Behandlung von Ausnahmen im Server-Java-Code. Bei dieser Lösung kann ausgehend vom konkreten Fehler entschieden werden, was an den Client gesendet werden soll. 
-* `execute(new HttpGet("/feed.xml"), response)` bedeutet, dass die eigentliche HTTP-Anforderung an den Back-End-Service von einer anderen, später definierten Methode behandelt wird. 
+* `execute(new HttpGet("/feed.xml"), response)` bedeutet, dass die eigentliche HTTP-Anforderung an den Back-End-Service von einer anderen, später definierten Methode bearbeitet wird.
 
 Der mit `execute`
 abgerufene Build und Pfad sowie die abgerufene RSS-Datei hängen davon ab, ob Sie einen Parameter `tag` übergeben. 

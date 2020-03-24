@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Get started with Foundation on OpenShift
+breadcrumb_title: Iniciación a Foundation en OpenShift
 title: Iniciación a Mobile Foundation en un clúster OpenShift
 weight: 1
 ---

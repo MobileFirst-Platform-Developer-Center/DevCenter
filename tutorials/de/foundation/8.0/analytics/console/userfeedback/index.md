@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: App-internes Benutzerfeedback
-breadcrumb_title: User Feedback
+breadcrumb_title: Benutzerfeedback
 relevantTo: [ios,android,cordova]
 weight: 5
 ---

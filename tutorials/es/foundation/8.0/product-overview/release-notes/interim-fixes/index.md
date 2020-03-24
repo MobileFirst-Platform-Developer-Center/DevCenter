@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Novedades en los arreglos temporales de entrega continua
-breadcrumb_title: CD Updates
+breadcrumb_title: Actualizaciones de CD 
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

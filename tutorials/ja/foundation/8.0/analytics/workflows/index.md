@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Analytics ワークフロー
-breadcrumb_title: Workflows
+breadcrumb_title: ワークフロー
 relevantTo: [ios,android,javascript]
 weight: 5
 ---

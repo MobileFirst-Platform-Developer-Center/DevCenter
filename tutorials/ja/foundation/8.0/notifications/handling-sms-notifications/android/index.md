@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Android での SMS 通知の処理
-breadcrumb_title: Handling SMS in Android
+breadcrumb_title: Android での SMS の処理
 relevantTo: [android]
 weight: 10
 downloads:

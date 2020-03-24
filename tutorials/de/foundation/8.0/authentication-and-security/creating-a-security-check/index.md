@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Sicherheitsüberprüfung erstellen
-breadcrumb_title: Creating a security check
+breadcrumb_title: Sicherheitsüberprüfung erstellen
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---

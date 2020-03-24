@@ -108,7 +108,7 @@ Por ejemplo:
 
    > El mandato anterior añade el plug-in del SDK de MobileFirst Core al proyecto de Ionic.
 
-4. Añada una o más plataformas soportadas al proyecto de Cordova mediante el mandato de la CLI de Ionic: `ionic cordova platform add ios|android|windows|browser`. Por ejemplo:
+4. Añada una o más plataformas soportadas al proyecto de Cordova mediante el mandato de la CLI de Ionic: `ionic cordova platform add ios|android|windows|browser`.    Por ejemplo:
 
    ```bash
    cordova platform add ios

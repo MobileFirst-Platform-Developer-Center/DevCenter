@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Protokollierung in JavaScript-Anwendungen (Cordova-Anwendungen, Webanwendungen)
-breadcrumb_title: Logging in JavaScript
+breadcrumb_title: Protokollierung in JavaScript
 relevantTo: [javascript]
 weight: 1
 ---

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Enabling Ingress parameters
+breadcrumb_title: Habilitación de parámetros de Ingress 
 title: Habilitación de parámetros de Ingress 
 weight: 4
 show_in_nav: false

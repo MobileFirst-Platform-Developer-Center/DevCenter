@@ -204,7 +204,7 @@ Sie können wählen, ob Sie den Befehl interaktiv oder direkt ausführen möchte
 ```bash
 mfpdev adapter call adapterName/path
 ```
-Beispiel:
+Beispiel: 
 
 ```bash
 mfpdev adapter call SampleAdapter/users/World
@@ -222,7 +222,7 @@ Hello World
 ```bash
 mfpdev adapter call adapterName/procedureName
 ```
-Beispiel:
+Beispiel: 
 
 ```bash
 mfpdev adapter call SampleAdapter/getFeed

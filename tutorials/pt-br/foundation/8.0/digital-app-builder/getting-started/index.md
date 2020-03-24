@@ -39,38 +39,24 @@ Criar um novo aplicativo clicando no ícone **Criar novo aplicativo** no painel 
     * **Web**: selecione essa opção se você estiver criando o aplicativo para a Web.
     * **PWA**: selecione essa opção se você estiver criando um Progressive Web App.
 
-3. A janela **Selecionar tipo de servidor ao qual se conectar** é exibida.
+3. Quando o servidor de desenvolvimento integrado estiver funcionando, os detalhes do servidor serão buscados automaticamente. Caso o servidor de desenvolvimento não esteja em execução, será possível conectar-se à sua própria instância do servidor IBM Mobile Foundation criada no IBM Cloud ou local.
 
-    ![Selecionar tipo de servidor](dab-select-server.png)
+    Na janela **Configurar instância do IBM Mobile Foundation**, é possível selecionar um servidor existente ou criar um novo servidor.
 
-4. É possível selecionar um **Shared Playground Server** ou um **Custom Professional Server**.
+    >**Nota**: para obter uma instância do Mobile Foundation Server facilmente, basta provisioná-la no IBM Cloud. É possível consultar a documentação sobre como provisionar e usar o Mobile Foundation Server no IBM Cloud [aqui](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started).
 
-    * **Shared Playground Server** – um servidor do Mobile Foundation compartilhado hospedado no IBM Cloud para que você seja iniciado rapidamente.
-
-        >**Aviso**: o Shared Playground Server é um servidor comum que é compartilhado entre vários desenvolvedores. Esse servidor não deve ser usado para aplicativos de produção. Os dados nesse servidor podem ser excluídos sem aviso prévio. O tempo de atividade do servidor não é garantido.
-
-        ![IBM Shared Server](dab-shared-server.png)
-
-        * Insira a **Chave de API do IBM Cloud**. Para obter mais detalhes de acesso, consulte [**Como criar Chaves de API da plataforma**](../faq/) na seção FAQ. 
-
-        * Clique em **Login** para conectar-se ao servidor. 
-
-    * **Custom Professional Server** – É possível conectar-se ao seu próprio servidor Mobile Foundation criado no IBM Cloud ou local. Na janela **Configurar instância do IBM Mobile Foundation**, é possível selecionar um servidor existente ou criar um novo servidor.
-
-        >**Nota**: para obter uma instância do Mobile Foundation Server facilmente, basta provisioná-la no IBM Cloud. É possível consultar a documentação sobre como provisionar e usar o Mobile Foundation Server no IBM Cloud [aqui](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started).
-
-        ![Configurar instância do IBM Mobile Foundation](dab-config-ibm-cloud-instance.png)
+    ![Configurar instância do IBM Mobile Foundation](dab-config-ibm-cloud-instance.png)
  
-        A janela **Configurar instância do IBM Mobile Foundation** exibe a lista de instâncias do servidor Mobile Foundation definidas anteriormente. Ao selecionar o servidor, são exibidos a **URL do servidor**, o **Nome do usuário Admin** e a **senha Admin**. Para definir um novo servidor, é possível clicar no link **Criar novo servidor**. Isso exibirá a nova janela **Configurar instância do IBM Mobile Foundation**.
+    A janela **Configurar instância do IBM Mobile Foundation** exibe a lista de instâncias do servidor Mobile Foundation definidas anteriormente. Ao selecionar o servidor, são exibidos a **URL do servidor**, o **Nome do usuário Admin** e a **senha Admin**. Para definir um novo servidor, é possível clicar no link **Criar novo servidor**. Isso exibirá a nova janela **Configurar instância do IBM Mobile Foundation**.
 
-        ![Criar novo servidor](dab-custom-professional-server.png)
+    ![Criar novo servidor](dab-custom-professional-server.png)
 
-        * Insira os novos detalhes da instância do IBM Mobile Foundation, como **Nome do servidor**, **URL do servidor**, **Nome do usuário administrativo**, **Senha do administrador**.
-            >**Nota**: é possível obter a URL do servidor e as credenciais de login no painel do servidor Mobile Foundation para a instância do servidor selecionada.
-        * Opcionalmente, forneça um **Nome do usuário** (nome do usuário do cliente confidencial) e uma **Senha do administrador**, para visualizar os dados no visualizador de dados.
-        * Clique em **Conectar**.
+    * Insira os novos detalhes da instância do IBM Mobile Foundation, como **Nome do servidor**, **URL do servidor**, **Nome do usuário administrativo**, **Senha do administrador**.
+        >**Nota**: é possível obter a URL do servidor e as credenciais de login no painel do servidor Mobile Foundation para a instância do servidor selecionada.
+    * Opcionalmente, forneça um **Nome do usuário** (nome do usuário do cliente confidencial) e uma **Senha do administrador**, para visualizar os dados no visualizador de dados.
+    * Clique em **Conectar**.
 
-5. Ao efetuar login/conectar-se com êxito, a janela **Criar aplicativo** é exibida, na qual é possível selecionar uma definição de aplicativo existente que você possa ter criado ou criar uma nova, inserindo os detalhes. 
+4. Ao efetuar login/conectar-se com êxito, a janela **Criar aplicativo** é exibida, na qual é possível selecionar uma definição de aplicativo existente que você possa ter criado ou criar uma nova, inserindo os detalhes. 
     * Para um novo aplicativo: 
         * Forneça o **Nome** do aplicativo, o **Local** em que os arquivos de projeto serão armazenados, o **ID do Projeto/Pacote configurável** e a **Versão** do aplicativo. 
  
@@ -120,10 +106,3 @@ Criar um novo aplicativo clicando no ícone **Criar novo aplicativo** no painel 
 * Se você selecionou o modo de Código, clicar em **Introdução** exibe a área de trabalho do Digital App Builder para atualizar um aplicativo existente.
 
     ![Área de trabalho do DAB](dab-create-code-mode.png)
-
-### Usando modelos
-{: #using-templates }
-
-É possível usar modelos para construir rapidamente seu aplicativo. Esses são modelos de aplicativo ativados para recursos específicos que o ajudarão a modificar e desenvolver rapidamente o aplicativo.
-
-**Recursos de mod**: Este modelo fornece um aplicativo de amostra com o caso de uso do aplicativo de recursos. Ele contém o módulo de login, o módulo de bate-papo, o modo de feedback no aplicativo com os quais iniciar. Será necessário implementar o adaptador de Login e configurar suas próprias credenciais de robô de bate-papo.

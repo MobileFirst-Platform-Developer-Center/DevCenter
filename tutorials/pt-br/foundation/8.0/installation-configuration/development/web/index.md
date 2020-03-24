@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configurando o ambiente de desenvolvimento da web
-breadcrumb_title: Web
+breadcrumb_title: web
 relevantTo: [javascript]
 weight: 6
 ---
@@ -137,7 +137,7 @@ O Node.js pode ser usado como um proxy reverso para canalizar solicitações do 
     - Substitua **port** por seu próprio valor.
     - Substitua **app-name** por seu próprio valor.
 
-## Etapas seguintes
+## Próximas Etapas
 {: #next-steps }
 Para continuar com o desenvolvimento do {{ site.data.keys.product }} em aplicativos da web, o SDK da web do {{ site.data.keys.product }} precisa ser incluído no aplicativo da web.
 

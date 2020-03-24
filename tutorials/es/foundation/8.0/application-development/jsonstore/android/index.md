@@ -202,7 +202,7 @@ Utilice `destroy` para eliminar los siguientes datos:
 * Todos los artefactos de seguridad y metadatos de JSONStore - Consulte **Seguridad** más adelante en esta guía de aprendizaje
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   WLJSONStore.getInstance(context).destroy();
   // handle success

@@ -428,7 +428,7 @@ weight: 1
 
                 <ul>
                     <li>Applications client mobiles</li>
-                    <li>Applications de serveur de back end</li>
+                    <li>Applications serveur de back end</li>
                 </ul>
 
                 <h3>Sécurité du service de notification push</h3>
@@ -438,7 +438,7 @@ weight: 1
                 <p>Le modèle basé sur une source d'événement n'est pas pris en charge. La fonction de notification push est activée sur {{ site.data.keys.product }} par le modèle de service push.</p>
 
                 <h3>API REST Push</h3>
-                <p>Vous pouvez activer des applications de serveur back-end qui sont déployées en dehors de {{ site.data.keys.mf_server }} pour accéder aux fonctions de notification push à l'aide de l'API REST pour push dans le contexte d'exécution de {{ site.data.keys.product }}.</p>
+                <p>Vous pouvez activer des applications serveur back-end qui sont déployées en dehors de {{ site.data.keys.mf_server }} pour accéder aux fonctions de notification push à l'aide de l'API REST pour push dans le contexte d'exécution de {{ site.data.keys.product }}.</p>
 
                 <h3>Mise à niveau à partir d'un modèle existant de notification basé sur la source d'événement</h3>
                 <p>Le modèle basé sur une source d'événement n'est pas pris en charge. La fonction de notification push est entièrement activée par le modèle de service push. Toutes les applications basées sur des sources d'événement existantes doivent être migrées vers le nouveau modèle de service push.</p>

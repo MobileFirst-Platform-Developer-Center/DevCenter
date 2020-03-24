@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 应用程序更新的推送通知
-breadcrumb_title: Push notifications
+breadcrumb_title: 推送通知
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
@@ -162,7 +162,7 @@ Application Center 依赖 Google Cloud Messaging (GCM) API 的可用性。 该 A
 
 1. 通过检查 **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** 文件是否包含以下行，
 来检查推送通知是否禁用：`"gcmProjectId": "" ,`。
-2. 从 **IBMAppCenter/apps/AppCenter/android/native/AndroidManifest.xml** 文件中的两个位置除去以下注释之间的所有行：`<!-- AppCenter Push configuration -->` 和 `<!-- end of AppCenter Push configuration -->`。
+2. 从 **IBMAppCenter/apps/AppCenter/android/native/AndroidManifest.xml** 文件中的两个位置除去以下注释之间的所有行：`<!-- AppCenter Push configuration -->` 和 `<!-- end of AppCenter Push configuration -->`.
 3. 删除 **IBMAppCenter/apps/AppCenter/android/native/src/com/ibm/appcenter/GCMIntenteService.java** 类。
 4. 在 Eclipse 中，在 IBMAppCenter/apps/AppCenter/android 文件夹中运行“Build Android Environment”。
 5. 删除此前在运行“Build Android Environment”命令时由 MobileFirst 插件创建的 **IBMAppCenter/apps/AppCenter/android/native/libs/gcm.jar** 文件。

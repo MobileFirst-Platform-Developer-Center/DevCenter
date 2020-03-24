@@ -490,6 +490,7 @@ Le tableau suivant répertorie les propriétés {{ site.data.keys.product_adj }}
 
 | Propriété | Description |
 |----------|-------------|
+| mfp.scheduler.startHour | Facultative. Disponible à partir du correctif temporaire *8.0.0.0-MFPF-IF201907091643*. Le client peut choisir l'heure d'exécution du planificateur au lieu de la valeur par défaut (01h00). La valeur de cette propriété peut être comprise entre 1 et 23. Cette propriété permet au client de régler le démarrage du planificateur à l'heure où le trafic est le moins chargé et de s'assurer que le planificateur s'exécute malgré le démarrage quotidien du serveur. <br/>**Remarque importante** : Il doit y avoir une différence de 4 heures entre la valeur configurée et l'heure de démarrage du serveur. Si l'intervalle entre l'heure de démarrage du planificateur et celle du serveur est inférieur à 4 heures, le planificateur repousse son exécution à la même heure le lendemain. |
 | mfp.admin.jmx.dmgr.host | Obligatoire. Nom d'hôte du gestionnaire de déploiement. WebSphere Application Server Network Deployment uniquement. |
 | mfp.admin.jmx.dmgr.port | Obligatoire. Port RMI ou SOAP du gestionnaire de déploiement. WebSphere Application Server Network Deployment uniquement. |
 | mfp.admin.jmx.host | Liberty uniquement. Nom d'hôte de la connexion REST JMX. Pour la collectivité Liberty, utilisez le nom d'hôte du contrôleur. |

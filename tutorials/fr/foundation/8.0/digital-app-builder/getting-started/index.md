@@ -39,38 +39,24 @@ Créez une application en cliquant sur l'icône **Créer une application** dans 
     * **Web** : sélectionnez cette option si vous créez une application pour le Web.
     * **PWA** : sélectionnez cette option si vous créez une application Progressive Web App.
 
-3. La fenêtre **Sélectionnez le type de serveur auquel se connecter** apparaît.
+3. Lorsque le serveur de développement intégré a démarré et fonctionne, les détails du serveur sont extraits automatiquement. Dans le cas où le serveur de développement ne fonctionnerait pas, vous pouvez vous connecter à votre propre instance de serveur IBM Mobile Foundation créée sur IBM Cloud ou en local.
 
-    ![Sélectionnez le type de serveur auquel se connecter](dab-select-server.png)
+    La fenêtre **Configurer l'instance IBM Mobile Foundation** vous permet de sélectionner un serveur existant ou d'en créer un nouveau.
 
-4. Vous pouvez sélectionner un **Serveur Playground partagé** ou un **Serveur Professional personnalisé**.
+    >**Remarque** : Pour obtenir facilement une instance Mobile Foundation Server, vous pouvez la mettre à disposition sur IBM Cloud. Pour savoir comment mettre à disposition et utiliser Mobile Foundation Server sur IBM Cloud, consultez la documentation [ici](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started).
 
-    * **Serveur Playground partagé** : serveur Mobile Foundation partagé hébergé sur IBM Cloud pour démarrer rapidement.
-
-        >**Avertissement** : Le serveur Playground partagé est un serveur commun partagé entre de nombreux développeurs. Il ne doit pas être utilisé pour des applications de production. Il n'est pas possible de supprimer les données de ce serveur sans notification. Le temps de disponibilité du serveur n'est pas garanti.
-
-        ![Serveur partagé IBM](dab-shared-server.png)
-
-        * Entrez la **Clé d'API IBM Cloud**. Pour plus d'informations sur les détails d'accès, voir [**Comment créer une clé d'API de plateforme ?**](../faq/) dans la rubrique Foire aux questions. 
-
-        * Cliquez sur **Se connecter** pour vous connecter au serveur. 
-
-    * **Serveur Professional personnalisé** : vous pouvez vous connecter à votre propre serveur Mobile Foundation créé sur IBM Cloud ou en local. La fenêtre **Configurer l'instance IBM Mobile Foundation** vous permet de sélectionner un serveur existant ou d'en créer un nouveau.
-
-        >**Remarque** : Pour obtenir facilement une instance Mobile Foundation Server, vous pouvez la mettre à disposition sur IBM Cloud. Pour savoir comment mettre à disposition et utiliser Mobile Foundation Server sur IBM Cloud, consultez la documentation [ici](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started).
-
-        ![Configurer l'instance IBM Mobile Foundation](dab-config-ibm-cloud-instance.png)
+    ![Configurer l'instance IBM Mobile Foundation](dab-config-ibm-cloud-instance.png)
  
-        La fenêtre **Configurer l'instance IBM Mobile Foundation** affiche la liste des instances de serveur Mobile Foundation que vous avez définies précédemment. Lors de la sélection du serveur, les options **URL du serveur**, **Nom d'utilisateur de l'administrateur** et **Mot de passe de l'administrateur** s'affichent. Pour définir un nouveau serveur, vous pouvez cliquer sur le lien **Créer un serveur**. La nouvelle fenêtre **Configurer l'instance IBM Mobile Foundation** s'ouvre.
+    La fenêtre **Configurer l'instance IBM Mobile Foundation** affiche la liste des instances de serveur Mobile Foundation que vous avez définies précédemment. Lors de la sélection du serveur, les options **URL du serveur**, **Nom d'utilisateur de l'administrateur** et **Mot de passe de l'administrateur** s'affichent. Pour définir un nouveau serveur, vous pouvez cliquer sur le lien **Créer un serveur**. La nouvelle fenêtre **Configurer l'instance IBM Mobile Foundation** s'ouvre.
 
-        ![Créer un serveur](dab-custom-professional-server.png)
+    ![Créer un serveur](dab-custom-professional-server.png)
 
-        * Entrez les détails de la nouvelle instance IBM Mobile Foundation : **Nom du serveur**, **URL du serveur**, **Nom d'utilisateur de l'administrateur** et **Mot de passe de l'administrateur**.
-            >**Remarque** : Vous pouvez obtenir l'URL et les données d'identification de connexion du serveur dans le tableau de bord Mobile Foundation de l'instance de serveur sélectionnée.
-        * Si vous le souhaitez, indiquez un **Nom d'utilisateur** (nom d'utilisateur du client confidentiel) et un **Mot de passe de l'administrateur** pour prévisualiser les données dans le visualiseur de données.
-        * Cliquez sur **Se connecter**.
+    * Entrez les détails de la nouvelle instance IBM Mobile Foundation : **Nom du serveur**, **URL du serveur**, **Nom d'utilisateur de l'administrateur** et **Mot de passe de l'administrateur**.
+        >**Remarque** : Vous pouvez obtenir l'URL et les données d'identification de connexion du serveur dans le tableau de bord Mobile Foundation de l'instance de serveur sélectionnée.
+    * Si vous le souhaitez, indiquez un **Nom d'utilisateur** (nom d'utilisateur du client confidentiel) et un **Mot de passe de l'administrateur** pour prévisualiser les données dans le visualiseur de données.
+    * Cliquez sur **Se connecter**.
 
-5. Une fois la connexion établie, la fenêtre **Créer une application** s'ouvre et vous permet de sélectionner une définition d'application existante que vous avez créée ou d'en créer une nouvelle en indiquant les détails appropriés. 
+4. Une fois la connexion établie, la fenêtre **Créer une application** s'ouvre et vous permet de sélectionner une définition d'application existante que vous avez créée ou d'en créer une nouvelle en indiquant les détails appropriés. 
     * Dans le cas d'une nouvelle application : 
         * Indiquez le **Nom** de l'application, l'**Emplacement** de stockage des fichiers de projet, le **Projet/ID de bundle** et la **Version** de l'application. 
  
@@ -120,10 +106,3 @@ Vous pouvez ouvrir une application existante en procédant de l'une des manière
 * Si vous avez sélectionné le mode Code, cliquez sur **Commencer** pour afficher l'espace de travail de Digital App Builder et mettre à jour une application existante.
 
     ![Espace de travail DAB](dab-create-code-mode.png)
-
-### Utilisation de modèles
-{: #using-templates }
-
-Vous pouvez utiliser des modèles pour générer rapidement votre application. Il existe des modèles d'application activés pour des fonctionnalités spécifiques qui vous permettent de modifier et développer rapidement des applications.
-
-**Mod Resorts** : modèle d'application comportant un cas d'utilisation d'une application de lieux de villégiature. Il contient le module de connexion, le module de dialogue en ligne et le module de commentaires intégré pour commencer. Vous devrez déployer l'adaptateur de connexion et configurer vos propres données d'identification pour l'agent conversationnel.

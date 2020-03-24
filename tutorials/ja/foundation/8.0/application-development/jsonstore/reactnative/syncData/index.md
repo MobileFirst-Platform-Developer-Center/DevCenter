@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore コレクションのデータの Cloudant DB への同期
-breadcrumb_title: Sync data of JSONStore collection to a Cloudant DB
+breadcrumb_title: JSONStore コレクションのデータの Cloudant DB への同期
 relevantTo: [reactnative]
 weight: 4
 downloads:

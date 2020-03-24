@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 对分析进行故障诊断
-breadcrumb_title: Analytics
+breadcrumb_title: 分析
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

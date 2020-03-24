@@ -230,8 +230,7 @@ Die Cordova-Konfigurationsdatei ist eine obligatorische
 XML-Datei, die Anwendungsmetadaten enthält und im Stammverzeichnis der App gespeichert wird.   
 Wenn das {{ site.data.keys.product_adj }}-Cordova-SDK zum Projekt hinzugefügt wurde,
 empfängt die von Cordova generierte Datei **config.xml** neue Elemente,
-die über den Namespace `mfp:` identifiziert werden können. Die hinzugefügten Elemente enthalten Informationen zu
-{{ site.data.keys.product_adj }}-Features und zu {{ site.data.keys.mf_server }}.
+die über den Namespace `mfp:` identifiziert werden können. Die hinzugefügten Elemente enthalten Informationen zu {{ site.data.keys.product_adj }}-Features und zu {{ site.data.keys.mf_server }}.
 
 ### Beispiel für zur Datei **config.xml** hinzugefügte {{ site.data.keys.product_adj }}-Einstellungen
 {: #example-of-mobilefirst-settings-added-to-the-configxml-file}

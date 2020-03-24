@@ -44,7 +44,7 @@ Diese Nachricht wird in der Datei `trace.log` des Anwendungsservers ausgegeben. 
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
 * Abruf der Protokolle in einer Cloudimplementierung: 
     * IBM Container- oder Liberty-Buildpack (siehe Lernprogramm [Protokoll und Traceerfassung in IBM Containern](../../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/))
-    * IBM Cloud-Service "Mobile Foundation" (siehe Abschnitt [Zugriff auf Serverprotokolle](../../../bluemix/using-mobile-foundation/#accessing-server-logs) im Lernprogramm [Mobile Foundation verwenden](../../../bluemix/using-mobile-foundation))
+    * IBM Cloud-Service für die Mobile Foundation (siehe Abschnitt [Zugriff auf Serverprotokolle](../../../bluemix/using-mobile-foundation/#accessing-server-logs) im Lernprogramm [Mobile Foundation verwenden](../../../bluemix/using-mobile-foundation))
 
 ## Protokolle zum Analytics Server weiterleiten
 {: #forwarding-logs-to-the-analytics-server }

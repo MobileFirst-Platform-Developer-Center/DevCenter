@@ -39,38 +39,24 @@ Digital App Builder 실행 위치:
     * **웹**: 웹을 위한 앱을 작성 중인 경우 이 옵션을 선택하십시오.
     * **PWA**: Progressive Web App을 작성 중인 경우 이 옵션을 선택하십시오.
 
-3. **연결할 서버 유형 선택** 창이 표시됩니다.
+3. 통합 개발 서버가 시작하여 실행 중이면 서버 세부사항을 자동으로 가져옵니다. 개발 서버가 실행 중이지 않은 경우 IBM Cloud 또는 로컬에서 작성된 고유한 IBM Mobile Foundation 서버 인스턴스에 연결할 수 있습니다.
 
-    ![서버 유형 선택](dab-select-server.png)
+    **IBM Mobile Foundation 인스턴스 구성** 창에서 기존 서버를 선택하거나 새 서버를 작성할 수 있습니다.
 
-4. **공유 Playground 서버** 또는 **사용자 정의 Professional 서버**를 선택할 수 있습니다.
+    >**참고**: Mobile Foundation 서버의 인스턴스를 쉽게 가져오기 위해 IBM Cloud에서 프로비저닝할 수 있습니다. [여기](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started)에서 IBM Cloud의 Mobile Foundation 서버를 프로비저닝하고 사용하는 방법에 대한 문서를 참조할 수 있습니다.
 
-    * **공유 Playground 서버 ** – 빠르게 시작하기 위해 IBM Cloud에서 호스팅된 공유 Mobile Foundation 서버입니다.
-
-        >**경고**: 공유 Playground 서버는 다수의 개발자 간에 공유되는 공통 서버입니다. 이 서버를 프로덕션 앱용으로 사용해서는 안됩니다. 이 서버의 데이터는 알림 없이 삭제될 수 있습니다. 서버 가동시간은 보장되지 않습니다.
-
-        ![IBM Shared Server](dab-shared-server.png)
-
-        * **IBM Cloud API 키**를 입력하십시오. 액세스 세부사항은 FAQ 섹션에서 [**플랫폼 API 키를 작성하는 방법**](../faq/)을 참조하십시오. 
-
-        * **로그인**을 클릭하여 서버에 연결하십시오. 
-
-    * **사용자 정의 Professional 서버** – IBM Cloud 또는 로컬에서 작성된 고유한 Mobile Foundation 서버에 연결할 수 있습니다. **IBM Mobile Foundation 인스턴스 구성** 창에서 기존 서버를 선택하거나 새 서버를 작성할 수 있습니다.
-
-        >**참고**: Mobile Foundation 서버의 인스턴스를 쉽게 가져오기 위해 IBM Cloud에서 프로비저닝할 수 있습니다. [여기](https://cloud.ibm.com/docs/services/mobilefoundation?topic=mobilefoundation-getting-started)에서 IBM Cloud의 Mobile Foundation 서버를 프로비저닝하고 사용하는 방법에 대한 문서를 참조할 수 있습니다.
-
-        ![IBM Mobile Foundation 인스턴스 구성](dab-config-ibm-cloud-instance.png)
+    ![IBM Mobile Foundation 인스턴스 구성](dab-config-ibm-cloud-instance.png)
  
-        **IBM Mobile Foundation 인스턴스 구성** 창에 이전에 정의한 Mobile Foundation 서버 인스턴스 목록이 표시됩니다. 서버를 선택하면 **서버 URL**, **관리자 이름**, **관리자 비밀번호**가 표시됩니다. 새 서버를 정의하기 위해 **새 서버 작성** 링크를 클릭할 수 있습니다. 그러면 새 **IBM Mobile Foundation 인스턴스 구성** 창이 표시됩니다.
+    **IBM Mobile Foundation 인스턴스 구성** 창에 이전에 정의한 Mobile Foundation 서버 인스턴스 목록이 표시됩니다. 서버를 선택하면 **서버 URL**, **관리자 이름**, **관리자 비밀번호**가 표시됩니다. 새 서버를 정의하기 위해 **새 서버 작성** 링크를 클릭할 수 있습니다. 그러면 새 **IBM Mobile Foundation 인스턴스 구성** 창이 표시됩니다.
 
-        ![새 서버 작성](dab-custom-professional-server.png)
+    ![새 서버 작성](dab-custom-professional-server.png)
 
-        * **서버 이름**, **서버 URL**, **관리 사용자 이름**, **관리 비밀번호**와 같은 새 IBM Mobile Foundation 인스턴스 세부사항을 입력하십시오.
-            >**참고**: 선택된 서버 인스턴스에 대해 Mobile Foundation 서버 대시보드에서 서버 URL 및 로그인 인증 정보를 가져올 수 있습니다.
-        * 선택적으로 데이터 뷰어의 데이터를 미리보기하기 위해 **사용자 이름**(기밀 클라이언트 사용자 이름) 및 **관리 비밀번호**를 제공하십시오.
-        * **연결**을 클릭하십시오.
+    * **서버 이름**, **서버 URL**, **관리 사용자 이름**, **관리 비밀번호**와 같은 새 IBM Mobile Foundation 인스턴스 세부사항을 입력하십시오.
+        >**참고**: 선택된 서버 인스턴스에 대해 Mobile Foundation 서버 대시보드에서 서버 URL 및 로그인 인증 정보를 가져올 수 있습니다.
+    * 선택적으로 데이터 뷰어의 데이터를 미리보기하기 위해 **사용자 이름**(기밀 클라이언트 사용자 이름) 및 **관리 비밀번호**를 제공하십시오.
+    * **연결**을 클릭하십시오.
 
-5. 로그인/연결 성공 시 사용자가 작성한 기존 앱 정의를 선택하거나 세부사항을 입력하여 새로 작성할 수 있는 **앱 작성** 창이 표시됩니다. 
+4. 로그인/연결 성공 시 사용자가 작성한 기존 앱 정의를 선택하거나 세부사항을 입력하여 새로 작성할 수 있는 **앱 작성** 창이 표시됩니다. 
     * 새 앱의 경우: 
         * 애플리케이션의 **이름**, 프로젝트 파일이 저장될 **위치**, **프로젝트/번들 ID** 및 애플리케이션의 **버전**을 제공하십시오. 
  
@@ -120,10 +106,3 @@ Digital App Builder 실행 위치:
 * 코드 모드를 선택한 경우, **시작**을 클릭하면 기존 애플리케이션을 업데이트하기 위한 Digital App Builder 작업공간이 표시됩니다.
 
     ![DAB 작업공간](dab-create-code-mode.png)
-
-### 템플리트 사용
-{: #using-templates }
-
-템플리트를 사용하여 애플리케이션을 빠르게 빌드할 수 있습니다. 이는 앱을 빠르게 수정하고 개발하도록 돕는 특정 기능 사용 앱 템플리트입니다.
-
-**모드 리조트**: 이 템플리트는 리조트 앱의 유스 케이스가 있는 샘플 앱을 제공합니다. 여기에는 로그인 모듈, 대화 모듈, 인앱 피드백 모듈이 우선적으로 포함됩니다. 사용자는 로그인 어댑터를 배치하고 자체 챗봇 신임 정보를 구성해야 합니다.

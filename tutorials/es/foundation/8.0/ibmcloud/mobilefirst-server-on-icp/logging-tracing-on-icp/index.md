@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Registro y rastreo en IBM Cloud Private
-breadcrumb_title: Logging and Tracing
+breadcrumb_title: Registro y rastreo 
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

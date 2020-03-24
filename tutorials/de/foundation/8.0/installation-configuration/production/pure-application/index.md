@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server in IBM PureApplication System implementieren
-breadcrumb_title: Installing Pure Application System
+breadcrumb_title: PureApplication System installieren
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -456,7 +456,7 @@ angeben (siehe
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 5 konfiguriert wurde. Er gibt den Namen des Kontextstammverzeichnisses für die MobileFirst-Server-Laufzeit an. Der Name muss mit "/" beginnen.
         
         **deployer\_user**  
-        Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
+    Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt den Benutzernamen für das Konto mit Implementierungsberechtigung an. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
         
         **deployer\_password**  
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt das Kennwort des Benutzers mit Implementierungsberechtigung an.
@@ -639,7 +639,7 @@ angeben (siehe
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 5 konfiguriert wurde. Er gibt den Namen des Kontextstammverzeichnisses für die MobileFirst-Server-Laufzeit an. Der Name muss mit "/" beginnen.
         
         **deployer\_user**  
-        Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
+    Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt den Benutzernamen für das Konto mit Implementierungsberechtigung an. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
         
         **deployer\_password**  
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt das Kennwort des Benutzers mit Implementierungsberechtigung an.
@@ -824,7 +824,7 @@ angeben (siehe
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 5 konfiguriert wurde. Er gibt den Namen des Kontextstammverzeichnisses für die MobileFirst-Server-Laufzeit an. Der Name muss mit "/" beginnen.
         
         **deployer\_user**  
-        Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
+    Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt den Benutzernamen für das Konto mit Implementierungsberechtigung an. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
         
         **deployer\_password**  
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt das Kennwort des Benutzers mit Implementierungsberechtigung an.
@@ -1027,7 +1027,7 @@ durch ein Semikolon (;), z. B. **HelloMobileFirst;HelloWorld**.
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 5 konfiguriert wurde. Er gibt den Namen des Kontextstammverzeichnisses für die MobileFirst-Server-Laufzeit an. Der Name muss mit "/" beginnen.
         
         **deployer\_user**  
-        Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
+    Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt den Benutzernamen für das Konto mit Implementierungsberechtigung an. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
         
         **deployer\_password**  
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt das Kennwort des Benutzers mit Implementierungsberechtigung an.
@@ -1257,7 +1257,7 @@ angeben (siehe
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 5 konfiguriert wurde. Er gibt den Namen des Kontextstammverzeichnisses für die MobileFirst-Server-Laufzeit an. Der Name muss mit "/" beginnen.
         
         **deployer\_user**  
-        Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
+    Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt den Benutzernamen für das Konto mit Implementierungsberechtigung an. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
         
         **deployer\_password**  
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt das Kennwort des Benutzers mit Implementierungsberechtigung an.
@@ -1700,7 +1700,7 @@ angeben (siehe
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 5 konfiguriert wurde. Er gibt den Namen des Kontextstammverzeichnisses für die MobileFirst-Server-Laufzeit an. Der Name muss mit "/" beginnen.
         
         **deployer\_user**  
-        Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
+    Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt den Benutzernamen für das Konto mit Implementierungsberechtigung an. Wenn kein externer LDAP-Server konfiguriert ist, müssen Sie den Wert eingeben, den Sie beim Erstellen des Standardbenutzers mit Administratorberechtigung für den Verwaltungsservice angegeben haben, weil in diesem Fall nur der für die App- und Adapterimplementierung autorisierte Benutzer der Standardbenutzer mit Administratorberechtigung ist.
         
         **deployer\_password**  
         Dieser Parameter ist nicht sichtbar, wenn er bereits in Schritt 8 konfiguriert wurde. Er gibt das Kennwort des Benutzers mit Implementierungsberechtigung an.
@@ -2420,7 +2420,7 @@ gespeichert.</li></ul> |
 |admin_password|Obligatorisch<ul><li>Wenn kein LDAP-Repository aktiviert ist, geben Sie das Kennwort des Standardbenutzers mit Administratorberechtigung zum Schutz der {{ site.data.keys.mf_analytics_console }} an.</li><li>Wenn ein LDAP-Repository aktiviert ist, geben Sie das Kennwort des Benutzers mit Administratorberechtigung an. Dieser Wert wird im LDAP-Repository
 gespeichert.</li></ul>{:/} | 
 |LDAP_TYPE|Obligatorischer LDAP-Parameter. LDAP-Servertyp Ihrer Benutzerregistry:<br/><br/>None<br/>Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert festgelegt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.<br/><br/>TivoliDirectoryServer<br/>Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.<br/><br/>ActiveDirectory<br/>Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.<br/><br/>Standardwert: None. | 
-|LDAP_IP|LDAP-Parameter.     IP-Adresse des LDAP-Servers| 
+|LDAP_IP|LDAP-Parameter. IP-Adresse des LDAP-Servers| 
 |LDAP\_SSL\_PORT|Dieser LDAP-Parameter gibt den LDAP-Port für sichere Verbindungen an.| 
 |LDAP_PORT|Dieser LDAP-Parameter gibt den LDAP-Port für nicht gesicherte Verbindungen an.| 
 |BASE_DN|Dieser LDAP-Parameter gibt den Basis-DN an.| 
@@ -2513,7 +2513,7 @@ installiert werden.
 |profile_name|Dieser optionale Parameter gibt den Namen des Profils an, das die Dateien für die WebSphere-Application-Server-Laufzeitumgebung enthält. In den Musterschablonen wird er dem Ausgabeattribut dmgr_profile_name des Deployment Manager oder dem Ausgabeattribut sa_profile_name des eigenständigen Servers zugeordnet.| 
 |NUMBER\_OF\_CLUSTERMEMBERS|Dieser optionale Parameter gilt nur für die Musterschablone "{{ site.data.keys.product }} (WAS ND)". Er gibt die Anzahl der Cluster-Member des Clusters an, in dem der MFP-Verwaltungsservice implementiert werden soll. Standardwert: 2.| 
 |db_user|Dieser obligatorische Parameter gibt den Namen des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_user des Scriptpakets MFP Administration DB zugeordnet.| 
-|db_name|Dieser obligatorische Parameter gibt den Namen der Verwaltungsdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets MFP Administration DB zugeordnet.| 
+|db_name|Dieser obligatorische Parameter gibt den Namen der Laufzeitdatenbank an. In der Musterschablone wird er dem Ausgabeattribut `db_name` des Scriptpakets MFP Administration DB zugeordnet.| 
 |db_password|	Dieser obligatorische Parameter gibt das Kennwort des Benutzers an, der die Verwaltungsdatenbank erstellt hat. In der Musterschablone wird er dem Ausgabeattribut db_password des Scriptpakets MFP Administration DB zugeordnet. | 
 |db_ip|Dieser Parameter gibt die IP-Adresse des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut IP der Datenbankserversoftwarekomponente zugeordnet.| 
 |db_port|Dieser Parameter gibt die Portnummer des Datenbankservers an, auf dem die Verwaltungsdatenbank installiert ist. In der Musterschablone wird er dem Ausgabeattribut instancePort der Softwarekomponente Database Server zugeordnet. | 
@@ -2577,7 +2577,7 @@ Mit diesem Scriptpaket wird der MobileFirst-Application-Center-Server in WebSphe
 |WAS\_admin\_user|Obligatorisch für WebSphere Application Server und optional für WebSphere Application Server Liberty. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser optionale Parameter in der Musterschablone dem Ausgabeattribut was_admin des eigenständigen Servers zugeordnet.<br/><br/>Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Network Deployment implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was_admin des Deployment Manager zugeordnet.| 
 |WAS\_admin\_password|Obligatorisch für WebSphere Application Server und optional für WebSphere Application Server Liberty. Wenn {{ site.data.keys.mf_server }} in WebSphere Application Server Full Profile implementiert ist, wird dieser Parameter in der Musterschablone dem Ausgabeattribut was\_admin\_password des eigenständigen Servers zugeordnet.|
 |server_hostname|Dieser Parameter gibt den Hostnamen von {{ site.data.keys.mf_server }} an. Er wird dem Ausgabeattribut host des Liberty-Profile-Servers oder des eigenständigen Servers (Standalone Server) zugeordnet.|
-|LDAP_TYPE|Obligatorischer LDAP-Parameter. LDAP server type of your user registry:<br/><br/>None<br/>Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert festgelegt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.<br/><br/>TivoliDirectoryServer<br/>Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.<br/><br/>ActiveDirectory<br/>Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.<br/><br/>Standardwert: None. | 
+|LDAP_TYPE|Obligatorischer LDAP-Parameter. LDAP-Servertyp Ihrer Benutzerregistry:<br/><br/>None<br/>Die LDAP-Verbindung ist inaktiviert. Wenn dieser Wert festgelegt ist, werden alle anderen LDAP-Parameter nur als Platzhalter betrachtet.<br/><br/>TivoliDirectoryServer<br/>Wählen Sie diesen Wert aus, wenn IBM Tivoli Directory Server als LDAP-Repository verwendet wird.<br/><br/>ActiveDirectory<br/>Wählen Sie diesen Wert aus, wenn Microsoft Active Directory als LDAP-Repository verwendet wird.<br/><br/>Standardwert: None. | 
 |LDAP_IP|LDAP-Parameter. IP-Adresse des LDAP-Servers| 
 |LDAP\_SSL\_PORT|Dieser LDAP-Parameter gibt den LDAP-Port für sichere Verbindungen an.| 
 |LDAP_PORT|Dieser LDAP-Parameter gibt den LDAP-Port für nicht gesicherte Verbindungen an.| 

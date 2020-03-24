@@ -93,7 +93,7 @@ require(['mfp'], function(WL) {
 웹 애플리케이션의 기본 JavaScript 파일에서 **컨텍스트 루트** 및 **애플리케이션 ID** 값을 지정하여 {{ site.data.keys.product }} 웹 SDK를 초기화하십시오.
 
 ```javascript
-   var wlInitOptions = {
+var wlInitOptions = {
     mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
     applicationId : 'com.sample.mywebapp' // Replace with your own value.
     sessionMode : true //This is an optional paramter. Setting this to true ensures that MFP related data is stored in the session rather than in the local storage. If this option is set to false or not set at all, default is local storage.

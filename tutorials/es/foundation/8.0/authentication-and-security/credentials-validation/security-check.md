@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Implementación de la clase CredentialsValidationSecurityCheck
-breadcrumb_title: Security Check
+breadcrumb_title: Comprobación de seguridad
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
@@ -183,7 +183,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ## Configuración de la comprobación de seguridad
 {: #configuring-the-security-check }
-En adapter.xml, añada un elemento de `<securityCheckDefinition>`:
+En adapter.xml, añada un elemento `<securityCheckDefinition>`:
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">

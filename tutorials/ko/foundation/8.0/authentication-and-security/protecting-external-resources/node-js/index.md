@@ -61,7 +61,7 @@ npm install passport-mfp-token-validation@8.0.X
  * `authServerUrl`: `localhost:9080`을 사용자의 {{ site.data.keys.mf_server }} IP 주소 및 포트 번호로 대체하십시오.
  * `confClientID`, `confClientPass`: 기밀 클라이언트 ID 및 비밀번호를 사용자가 {{ site.data.keys.mf_console }}에서 정의한 것으로 대체하십시오.
  * `analytics`: 분석 항목은 선택적이며 분석 이벤트를 {{ site.data.keys.product }}에 로그하려는 경우에만 필요합니다.  
-`localhost:9080`, `username`, 및 `password`를 사용자의 Analytics Server IP 주소, 포트 번호, 사용자 이름, 비밀번호로 대체하십시오.
+ `localhost:9080`, `username`, 및 `password`를 사용자의 Analytics Server IP 주소, 포트 번호, 사용자 이름, 비밀번호로 대체하십시오.
 
 * `passport.authenticate`를 호출하여 요청을 인증하십시오.
 

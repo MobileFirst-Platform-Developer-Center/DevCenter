@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Instalación de MobileFirst Server en un servidor de aplicaciones
-breadcrumb_title: Installing MobileFirst Server to an application server
+breadcrumb_title: Instalación de MobileFirst Server en un servidor de aplicaciones
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -2266,7 +2266,7 @@ Un planificador se ejecutará 8 horas después de un inicio del servidor. Es dec
 
 A partir del nivel de iFix
 [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) el espacio de tiempo entre el inicio del servidor y la ejecución del planificador es de 4 horas, en lugar de 8 horas.
-Además se ha incluido una nueva propiedad *MFP.SCHEDULER.STARTHOUR*. Con esta propiedad, se puede establecer la ejecución del planificador a cualquier hora que elija el cliente, en lugar del valor predeterminado de la 1 AM. La propiedad puede aceptar un valor de 1 a 23. Esta propiedad garantiza que el cliente pueda configurar su planificador para que se inicie en horas de tráfico ligero y también puede asegurarse de que el planificador se inicie independientemente del inicio diario del servidor. En el caso de un cliente que reinicia su servidor cada noche a la 1 AM, puede establecer el valor de *MFP.SCHEDULER.STARTHOUR* en 5. Esto garantiza un espacio de tiempo de 4 horas entre el reinicio del servidor y el planificador se ejecutará a las 5 AM. 
+Además, se ha incluido una nueva propiedad *mfp.scheduler.startHour*. Con esta propiedad, se puede establecer la ejecución del planificador a cualquier hora que elija el cliente, en lugar del valor predeterminado de la 1 AM. La propiedad puede aceptar un valor de 1 a 23. Esta propiedad garantiza que el cliente pueda configurar su planificador para que se inicie en horas de tráfico ligero y también puede asegurarse de que el planificador se inicie independientemente del inicio diario del servidor. En el caso de un cliente que reinicia su servidor cada noche a la 1 AM, puede establecer el valor de *mfp.scheduler.startHour* en 5. Esto garantiza un espacio de tiempo de 4 horas entre el reinicio del servidor y el planificador se ejecutará a las 5 AM. 
 
 Se sugiere mantener inhabilitado el seguimiento de licencias ya que las actividades de seguimiento de licencias son intensivas para la base de datos. Solo los clientes que utilizan el modelo de licencia de dispositivos dirigibles de Mobile Foundation necesitan ejecutar el seguimiento de licencia.
 

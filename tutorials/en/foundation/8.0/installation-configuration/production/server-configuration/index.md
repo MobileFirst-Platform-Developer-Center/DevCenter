@@ -490,6 +490,7 @@ The following table lists the {{ site.data.keys.product_adj }} properties that a
 
 | Property | Description |
 |----------|-------------|
+| mfp.scheduler.startHour | Optional. Introduced from iFix level *8.0.0.0-MFPF-IF201907091643*. Scheduler run can be set for any time of customer’s choice instead of the default 1 AM. This property can take a value from 1 to 23. This property will ensure that the customer can configure their scheduler to start at a time when their traffic is light and also can ensure the scheduler runs despite the daily start of the server. <br/>**Important Note**: The value configured should have 4 hours difference with the server start time. Scheduler will skip its run, if the scheduler start time is within 4 hours of the server start and will schedule to run for same time next day. |
 | mfp.admin.jmx.dmgr.host | Mandatory. The host name of the deployment manager. WebSphere  Application Server Network Deployment only. |
 | mfp.admin.jmx.dmgr.port | Mandatory. The RMI or SOAP port of the deployment manager. WebSphere Application Server Network Deployment only. |
 | mfp.admin.jmx.host | Liberty only. The host name for the JMX REST connection. For Liberty collective, use the host name of the controller. |
@@ -504,6 +505,10 @@ The following table lists the {{ site.data.keys.product_adj }} properties that a
 | mfp.analytics.password | The password that is used if the data entry point for the IBM {{ site.data.keys.mf_analytics }} is protected with basic authentication. |
 | mfp.analytics.url | The URL that is exposed by the IBM {{ site.data.keys.mf_analytics }} that receives incoming analytics data. For example, `http://<hostname>:<port>/analytics-service/rest` |
 | mfp.analytics.username | The user name that is used if the data entry point for the IBM {{ site.data.keys.mf_analytics }} is protected with basic authentication.|
+| mfp.device.decommissionProcessingInterval | Defines how often (in seconds) the decommissioning task is executed. Default: 86400, which is one day. |
+| mfp.analytics.receiver.password | The password that is used if the data entry point for the IBM {{ site.data.keys.mf_analytics_receiver }} is protected with basic authentication. |
+| mfp.analytics.receiver.url | The URL that is exposed by the IBM {{ site.data.keys.mf_analytics_receiver }} that receives incoming analytics data. For example, `http://<hostname>:<port>/analytics-receiver/rest` |
+| mfp.analytics.receiver.username | The user name that is used if the data entry point for the IBM {{ site.data.keys.mf_analytics_receiver }} is protected with basic authentication.|
 | mfp.device.decommissionProcessingInterval | Defines how often (in seconds) the decommissioning task is executed. Default: 86400, which is one day. |
 | mfp.device.decommission.when | The number of days of inactivity after which a client device is decommissioned by the device decommissioning task. Default: 90 days. |
 | mfp.device.archiveDecommissioned.when | The number of days of inactivity, after which a client device that has been decommissioned is archived.<br/><br/>This task writes the client devices that were decommissioned to an archive file. The archived client devices are written to a file in the {{ site.data.keys.mf_server }} **home\devices_archive** directory. The name of the file contains the time stamp when the archive file is created. Default: 90 days. |

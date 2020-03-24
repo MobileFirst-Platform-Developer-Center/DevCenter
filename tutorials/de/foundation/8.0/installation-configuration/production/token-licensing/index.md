@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation und Konfiguration für Tokenlizenzierung
-breadcrumb_title: Token licensing
+breadcrumb_title: Tokenlizenzierung
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->

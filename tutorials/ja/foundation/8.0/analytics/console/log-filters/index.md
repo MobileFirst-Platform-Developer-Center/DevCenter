@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: ログ・フィルターの構成
-breadcrumb_title: Log Filters
+breadcrumb_title: ログ・フィルター
 relevantTo: [ios,android,javascript]
 weight: 2
 ---

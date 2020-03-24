@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: プッシュ通知の追加
-weight: 11
+weight: 12
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

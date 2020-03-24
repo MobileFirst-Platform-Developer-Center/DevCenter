@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 实现 UserAuthenticationSecurityCheck 类
-breadcrumb_title: Security Check
+breadcrumb_title: 安全性检查
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
@@ -46,7 +46,7 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 
     @Override
     protected Map<String, Object> createChallenge() {
-        return null;
+    return null;
     }
 }
 ```

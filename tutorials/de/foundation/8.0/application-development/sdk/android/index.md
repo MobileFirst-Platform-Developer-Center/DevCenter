@@ -15,10 +15,7 @@ besteht aus einer Reihe von Abhängigkeiten, die über [Maven Central](http://se
 * **IBMMobileFirstPlatformFoundationJSONStore** - Enthält das JSONStore-Framework. Weitere Informationen enthält das Lernprogramm [JSONStore für Android](../../jsonstore/android/).
 * **IBMMobileFirstPlatformFoundationPush** - Enthält das Framework für Push-Benachrichtigungen. Weitere Informationen enthalten die Lernprogramme zu [Benachrichtigungen](../../../notifications/).
 
-In diesem Lernprogramm erfahren Sie, wie das native {{ site.data.keys.product_adj }}-SDK mithilfe von Gradle
-zu einer neuen oder vorhandenen Android-Anwendung hinzugefügt wird. Sie werden auch lernen,
-wie {{ site.data.keys.mf_server }} konfiguriert werden muss, um die Anwendung zu erkennen.
-Außerdem erfahren Sie, wie Sie Informationen zu den {{ site.data.keys.product_adj }}-Konfigurationsdateien, die zum Projekt hinzugefügt werden, finden können. 
+In diesem Lernprogramm erfahren Sie, wie das native {{ site.data.keys.product_adj }}-SDK mithilfe von Gradle zu einer neuen oder vorhandenen Android-Anwendung hinzugefügt wird. Sie werden auch lernen, wie {{ site.data.keys.mf_server }} konfiguriert werden muss, um die Anwendung zu erkennen. Außerdem erfahren Sie, wie Sie Informationen zu den {{ site.data.keys.product_adj }}-Konfigurationsdateien, die zum Projekt hinzugefügt werden, finden können. 
 
 **Voraussetzungen:**
 
@@ -194,8 +191,7 @@ sollte im gesamten Anwendungslebenszyklus nur einmal erstellt werden. Es wird em
 
 ## Natives {{ site.data.keys.product_adj }}-SDK aktualisieren
 {: #updating-the-mobilefirst-native-sdk }
-Wenn Sie das native {{ site.data.keys.product_adj }}-SDK auf den neuesten Releasestand
-bringen möchten, suchen Sie die neueste Releaseversion und aktualisieren Sie die Eigenschaft `version` in der Datei **build.gradle** entsprechend.   
+Wenn Sie das native {{ site.data.keys.product_adj }}-SDK auf den neuesten Releasestand bringen möchten, suchen Sie die neueste Releaseversion und aktualisieren Sie die Eigenschaft `version` in der Datei **build.gradle** entsprechend.   
 (Vergleichen Sie dazu oben Schritt 4.) 
 
 SDK-Releases sind im [JCenter-Repository](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#) für das jeweilige SDK enthalten.

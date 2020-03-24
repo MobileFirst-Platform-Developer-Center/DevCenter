@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: CredentialsValidationSecurityCheck
-breadcrumb_title: Credentials Validation
+breadcrumb_title: Validación de las credenciales 
 relevantTo: [android,ios,windows,javascript]
 show_children: true
 show_disqus: false

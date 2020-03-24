@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 通过 Ant 管理应用程序
-breadcrumb_title: Administrating using Ant
+breadcrumb_title: 使用 Ant 进行管理
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -172,7 +172,7 @@ weight: 3
 
 #### XML 格式
 {: #xml-format }
-大部分命令的输出都是 XML 格式，特定命令（如 `<set-accessrule>`）的输入也是 XML 格式。 您可以在 **product\_install\_dir/MobileFirstServer/mfpadm-schemas/** 目录中找到这些 XML 格式的 XML 模式。 从服务器接收 XML 响应的命令将验证此响应是否符合特定的模式。 通过指定属性 **xmlvalidation="none"**，可以禁用此检查。 
+大部分命令的输出都是 XML 格式，特定命令（如 `<set-accessrule>`）的输入也采用 XML 格式。您可以在 **product\_install\_dir/MobileFirstServer/mfpadm-schemas/** 目录中找到这些 XML 格式的 XML 模式。 从服务器接收 XML 响应的命令将验证此响应是否符合特定的模式。 通过指定属性 **xmlvalidation="none"**，可以禁用此检查。 
 
 #### 输出字符集
 {: #output-character-set }
@@ -214,7 +214,7 @@ mfpadm Ant 任务的正常输出采用当前语言环境的编码格式进行编
 
 | 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
-| runtime	     | 运行时的名称。      | 是     |	不可用 |
+| runtime	     | 运行时的名称。      | 是 |	不可用 |
 | format	     | 指定输出格式。 json 或 xml。 | 是 | 不可用       | 
 | output	     | 用于存储输出的文件的名称。   | 否  | 不适用      | 
 | outputproperty | 用于存储输出的 Ant 属性的名称。  | 否 | 不适用 |
@@ -230,7 +230,7 @@ mfpadm Ant 任务的正常输出采用当前语言环境的编码格式进行编
 <br/>
 #### `set-user-config` 命令
 {: #the-set-user-config-command }
-`set-user-config` 命令（`<adapter>` 和 `<app-version>` 元素之外）指定运行时的用户配置。 它具有以下用于设置整个配置的属性。
+`<adapter>` 和 `<app-version>` 元素外的 `set-user-config` 命令可指定运行时的用户配置。它具有以下用于设置整个配置的属性。
 
 | 属性      | 描述 |	必需 | 缺省值 |
 |----------------|-------------|-------------|---------|
@@ -328,7 +328,7 @@ mfpadm Ant 任务的正常输出采用当前语言环境的编码格式进行编
 |----------------|-------------|-------------|---------|
 | runtime        | 运行时的名称。 | 	是 | 不可用 | 
 | output	     | 输出文件的名称。 | 	否  | 不适用 | 
-| outputproperty | 输出的 Ant 属性的名称。 | 否 | 不适用 | 
+| outputproperty | 输出的 Ant 属性的名称。 | 否  | 不适用 | 
 
 **示例**  
 
@@ -406,7 +406,7 @@ mfpadm Ant 任务的正常输出采用当前语言环境的编码格式进行编
 
 `adapter` 命令支持以下元素。
 
-| 元素          | 描述 |	计数    | 
+| 元素 | 描述 |	计数    | 
 |------------------|-------------|-------------|
 | get-binary	   | 获取二进制数据。 | 0..∞ | 
 | show-user-config | 显示用户配置。 | 0..∞ | 

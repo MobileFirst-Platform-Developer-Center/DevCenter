@@ -4,7 +4,7 @@ title: Licenciamento no MobileFirst Server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral
+## Visão geral
 {: #overview }
 O IBM {{ site.data.keys.mf_server }} suporta dois métodos de licenciamento diferentes com base no que você comprou.
 

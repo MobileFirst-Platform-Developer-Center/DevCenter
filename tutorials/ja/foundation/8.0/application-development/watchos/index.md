@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Apple watchOS の開発
-breadcrumb_title: watchOS 2, watchOS 3
+breadcrumb_title: watchOS 2、watchOS 3
 relevantTo: [ios]
 weight: 13
 ---

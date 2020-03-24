@@ -35,7 +35,7 @@ Le plan de travail vous aide à concevoir les pages. Il est composé de trois zo
     Voici la liste des contrôles disponibles :
     * **De base** : vous pouvez faire glisser et déposer ces contrôles de base (Bouton, En-tête, Image et Etiquette) dans le canevas et configurer les propriétés et les actions.
 
-        ![Pages/Contrôles](dab-workbench-basic-controls.png)
+        ![Pages/contrôles](dab-workbench-basic-controls.png)
 
         * **Bouton** : les boutons ont une propriété d'étiquetage. L'onglet Action vous permet d'indiquer la page à laquelle l'utilisateur accède lorsqu'il clique sur le bouton.
         * **En-tête** : vous permet d'ajouter un texte d'en-tête à l'application, comme un titre de page.

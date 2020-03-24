@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Daten einer JSONStore-Sammlung abfragen
-breadcrumb_title: Query data from JSONStore collection
+breadcrumb_title: Daten einer JSONStore-Sammlung abfragen
 relevantTo: [reactnative]
 weight: 3
 downloads:

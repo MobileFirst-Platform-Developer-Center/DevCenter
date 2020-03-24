@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation et configuration pour l'octroi de licence de jeton
-breadcrumb_title: Token licensing
+breadcrumb_title: Octroi de licence de jeton
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->

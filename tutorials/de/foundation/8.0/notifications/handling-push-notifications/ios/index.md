@@ -87,12 +87,9 @@ folgen Sie den Anweisungen im Lernprogramm [SDK der {{ site.data.keys.product }}
 {: #notifications-api }
 ### MFPPush-Instanz
 {: #mfppush-instance }
-Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie
-eine Variable (`var`) in einem Ansichtencontroller erstellen, z. B. `var push = MFPPush.sharedInstance();`,
-und dann im gesamten Ansichtencontroller `push.methodName()` aufrufen. 
+Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie eine Variable (`var`) in einem Ansichtencontroller erstellen, z. B. `var push = MFPPush.sharedInstance();`, und dann im gesamten Ansichtencontroller `push.methodName()` aufrufen.
 
-Alternativ dazu können Sie `MFPPush.sharedInstance().methodName()` für jede Instanz aufrufen, in der
-Sie auf die Push-API-Methoden zugreifen müssen. 
+Alternativ dazu können Sie `MFPPush.sharedInstance().methodName()` für jede Instanz aufrufen, in der Sie auf die Push-API-Methoden zugreifen müssen.
 
 ### Abfrage-Handler
 {: #challenge-handlers }
@@ -112,7 +109,7 @@ müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, b
 |[`isPushSupported()`](#is-push-supported) |Unterstützt das Gerät Push-Benachrichtigungen?|
 |[`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) |Registriert das Gerät beim Push-Benachrichtigungsservice|
 |[`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) |Sendet das Gerätetoken an den Server|
-|[`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)  |Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
+|[`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) |Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab|
 |[`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) |Richtet das Geräteabonnement für die angegebenen Tags ein|
 |[`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions) |Ruft die derzeit vom Gerät abonnierten Tags ab |
 |[`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) |Beendet das Abonnement bestimmter Tags|
@@ -232,8 +229,8 @@ MFPPush.sharedInstance().getSubscriptions { (response, error) -> Void in
        self.showAlert(String(describing: tags))
    } else {
        self.showAlert("Error \(error?.localizedDescription)")
-       print("Error \(error?.localizedDescription)")
-   }
+        print("Error \(error?.localizedDescription)")
+    }
 }
 ```
 
@@ -252,8 +249,8 @@ MFPPush.sharedInstance().unsubscribe(self.tagsArray) { (response, error)  -> Voi
         print(String(describing: response?.description))
     } else {
         self.showAlert("Error \(error?.localizedDescription)")
-        print("Error \(error?.localizedDescription)")
-    }
+       print("Error \(error?.localizedDescription)")
+   }
 }
 ```
 
@@ -281,8 +278,7 @@ MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
 
 Push-Benachrichtigungen werden direkt vom nativen iOS-Framework behandelt. Welche Methoden vom iOS-Framework aufgerufen werden, richtet sich nach Ihrem Anwendungslebenszyklus. 
 
-Wenn beispielsweise eine einfache Benachrichtigung empfangen wird, währen die Anwendung aktiv ist,
-wird `didReceiveRemoteNotification` von **AppDelegate** ausgelöst. 
+Wenn beispielsweise eine einfache Benachrichtigung empfangen wird, währen die Anwendung aktiv ist, wird `didReceiveRemoteNotification` von **AppDelegate** ausgelöst. 
 
 ```swift
 func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {

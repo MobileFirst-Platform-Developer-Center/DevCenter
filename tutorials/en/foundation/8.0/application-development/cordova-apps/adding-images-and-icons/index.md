@@ -117,7 +117,7 @@ Starting from MobileFirstPlatform Foundation cordova plugin version 8.0.20171024
   /*
    Licensed Materials - Property of IBM
 
-   (C) Copyright 2017 IBM Corp.
+   (C) Copyright 2020 IBM Corp.
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,

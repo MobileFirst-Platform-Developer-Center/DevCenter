@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración del soporte de Analytics para notificaciones push
-breadcrumb_title: Setting Up Analytics Support
+breadcrumb_title: Configuración del soporte de Analytics
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---

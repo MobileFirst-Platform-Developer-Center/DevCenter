@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Platform Foundation インストール済み環境の更新
-breadcrumb_title: Applying updates
+breadcrumb_title: 更新の適用
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->

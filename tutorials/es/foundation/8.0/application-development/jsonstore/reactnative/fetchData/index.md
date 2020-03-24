@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Captación de datos de una recopilación de JSONStore
-breadcrumb_title: Fetch data from JSONStore collection
+breadcrumb_title: Capturar datos desde la recopilación de JSONStore
 relevantTo: [reactnative]
 weight: 2
 downloads:

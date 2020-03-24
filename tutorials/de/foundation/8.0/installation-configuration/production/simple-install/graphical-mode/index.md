@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server im Grafikmodus installieren
-breadcrumb_title: Graphical mode installation
+breadcrumb_title: Installation im Grafikmodus
 show_breadcrumb: true
 weight: 2
 ---

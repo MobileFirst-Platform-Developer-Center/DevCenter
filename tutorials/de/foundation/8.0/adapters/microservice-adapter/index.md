@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Automatische Adaptergenerierung
-breadcrumb_title: Adapter auto-generation
+breadcrumb_title: Automatische Adaptergenerierung
 relevantTo: [ios,android,cordova]
 weight: 12
 ---

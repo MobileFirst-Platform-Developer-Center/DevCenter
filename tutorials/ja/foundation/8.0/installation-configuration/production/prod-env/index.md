@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 実稼働環境での MobileFirst Server のインストール
-breadcrumb_title: Installing MobileFirst Server
+breadcrumb_title: MobileFirst Server のインストール
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

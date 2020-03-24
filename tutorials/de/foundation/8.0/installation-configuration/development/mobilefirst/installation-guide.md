@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installationshandbuch für Workstations
-breadcrumb_title: Installation guide
+breadcrumb_title: Installationshandbuch
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

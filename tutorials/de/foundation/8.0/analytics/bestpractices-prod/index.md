@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Bewährte Verfahren für die Einrichtung eines MobileFirst-Analytics-Produktionsclusters
-breadcrumb_title: Best Practices
+breadcrumb_title: Bewährte Verfahren
 relevantTo: [ios,android,javascript]
 weight: 6
 ---

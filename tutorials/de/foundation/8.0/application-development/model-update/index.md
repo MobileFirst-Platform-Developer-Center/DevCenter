@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Modellaktualisierung in Anwendungen
-breadcrumb_title: Model Update
+breadcrumb_title: Modellaktualisierung
 relevantTo: [iOS]
 weight: 9
 ---

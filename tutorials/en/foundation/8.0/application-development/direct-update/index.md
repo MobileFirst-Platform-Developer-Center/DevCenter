@@ -184,7 +184,7 @@ The listener methods are started during the direct update process according to f
 
 If you implement a custom direct update listener, you must ensure that the app is reloaded when the direct update process is complete and the `onFinish()` method has been called. You must also call `wl_directUpdateChalengeHandler.submitFailure()` if the direct update process fails to complete successfully.
 
-**Note** The function  `wl_directUpdateChalengeHandler.submitFailure()` must be provided with a custom implementation before being called.
+>**Note**: The function  `wl_directUpdateChalengeHandler.submitFailure()` must be provided with a custom implementation before being called.
 
 The following example shows an implementation of a custom direct update listener:
 

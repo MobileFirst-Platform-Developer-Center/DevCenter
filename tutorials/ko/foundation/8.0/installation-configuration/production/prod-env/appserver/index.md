@@ -328,9 +328,9 @@ Server Configuration Tool을 실행하기 전에 다음과 같은 요구사항�
                                     <li>WebSphere Application Server의 설치 디렉토리를 입력하십시오.</li>
                                     <li>{{ site.data.keys.mf_server }}를 설치할 WebSphere Application Server 프로파일을 선택하십시오. WebSphere Application Server Network Deployment에 설치하는 경우 배치 관리자의 프로파일을 선택하십시오. 배치 관리자 프로파일에서 범위(<b>서버</b> 또는 <b>클러스터</b>)를 선택할 수 있습니다. <b>클러스터</b>를 선택하는 경우 클러스터를 지정해야 합니다.
                                         <ul>
-                                            <li>런타임이 설치되는 위치</li>
-                                            <li>관리 서비스, {{ site.data.keys.mf_console }} 및 라이브 업데이트 서비스가 설치되는 위치</li>
-                                            <li>푸시 서비스가 설치되는 위치</li>
+                                            <li>런타임이 설치되는 위치.</li>
+                                            <li>관리 서비스, {{ site.data.keys.mf_console }} 및 라이브 업데이트 서비스가 설치되는 위치.</li>
+                                            <li>푸시 서비스가 설치되는 위치.</li>
                                         </ul>
                                     </li>
                                     <li>관리자 로그인 ID 및 비밀번호를 입력하십시오. 관리자는 보안 역할을 가지고 있어야 합니다.</li>
@@ -802,7 +802,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 사용할 수 �
 {% endhighlight %}
 
                 <p>mfp.admin.endpoint 특성의 일반적인 값은 <b>*://*:*/the-adminContextRoot</b>입니다.<br/>
-                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
+                JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
 
                 <h3>보안 역할</h3>
                 <p>애플리케이션의 <b>application-bnd</b> 요소에서 다음과 같은 역할을 선언하십시오.</p>
@@ -2265,7 +2265,7 @@ Mobile Foundation 런타임의 스케줄러는 다음 활동을 수행합니다.
 스케줄러는 서버 시작 후 8시간 후에 실행됩니다. 즉, 오늘 오후 11시에 서버가 시작된 경우 스케줄러는 그 다음날 오전 1시(기본 스케줄러 실행 시간)에 실행되지 않고 다음 다음날 오전 1시부터 실행을 시작합니다. 서버 시작과 스케줄러 실행 사이의 간격은 8시간입니다.
 
 iFix 레벨 [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643)부터 서버 시작과 스케줄러 실행 사이의 간격은 8시간이 아닌 4시간입니다.
-또한 새 특성 *MFP.SCHEDULER.STARTHOUR*도 도입되었습니다. 이 특성을 사용하면 기본값 오전 1시가 아닌 고객이 선택한 시간으로 스케줄러 실행을 설정할 수 있습니다. 이 특성은 1에서 23 사이의 값을 사용할 수 있습니다. 이 특성은 고객이 트래픽이 적은 시간에 시작하도록 스케줄러를 구성할 수 있도록 하고 매일 서버가 시작되더라도 스케줄러가 실행되도록 할 수 있습니다. 매일 밤 오전 1시에 서버를 다시 시작하는 고객의 경우 *MFP.SCHEDULER.STARTHOUR*의 값을 5로 설정할 수 있습니다. 이렇게 하면 서버 재시작과 스케줄러가 오전 5시에 실행되는 4시간 간격이 보장됩니다.
+또한 새 특성 *mfp.scheduler.startHour*가 도입되었습니다. 이 특성을 사용하면 기본값 오전 1시가 아닌 고객이 선택한 시간으로 스케줄러 실행을 설정할 수 있습니다. 이 특성은 1에서 23 사이의 값을 가질 수 있습니다. 이 특성은 고객이 트래픽이 적은 시간에 스케줄러가 시작하도록 구성할 수 있게 하며, 매일 서버가 시작되더라도 스케줄러가 실행되도록 할 수 있습니다. 매일 밤 오전 1시에 서버를 다시 시작하는 고객의 경우 *mfp.scheduler.startHour*의 값을 5로 설정할 수 있습니다. 이렇게 하면 서버 다시 시작과 스케줄러가 실행되는 오전 5시에 사이에 4시간 간격이 보장됩니다.
 
 라이센스 추적 활동이 데이터베이스를 많이 사용하므로 라이센스 추적을 사용하지 않는 것이 좋습니다. Mobile Foundation 주소 지정 가능 디바이스 라이센싱 모델을 사용하는 고객만 라이센스 추적을 실행해야 합니다.
 

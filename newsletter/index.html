@@ -1,0 +1,184 @@
+---
+layout: default
+indexed: false
+title: Newsletter
+---
+<head>
+    <!--<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">-->
+
+    <!--<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">-->
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap');
+    </style>
+    <style>
+
+      .container {
+        margin-right: auto;
+        margin-left: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+     }
+
+      html, body {
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: 'IBM Plex Sans';
+        font-size: 17px;
+        font-weight: 400;
+        background-color: #fff;
+      }
+
+        .postItem {
+            margin-bottom: 10px;
+        }
+
+        .inline {
+            display: inline-block;
+            min-width: 268px;
+        }
+
+        .postTitle {
+            margin-bottom: 0;
+            color: #808080;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: bold;
+        }
+
+        .postTitle1 {
+            margin-bottom: 0;
+            color: #337ab7;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: bold;
+        }
+
+        .postsubTitle {
+            margin-bottom: 0;
+            color: #808080;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: bold;
+
+        }
+
+        a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+
+        .postDate {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 80%;
+            padding: 0;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .postExcerpt {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 85%;
+        }
+        .carousel {
+          //font-family: HelvNeuRomanForIBM;
+          //font-family: Lato;
+          font-family: 'IBM Plex Sans', sans-serif;
+          background-color: #28536f;
+          background-image: url(../assets/front-page/carousel-background.png);
+          height: 252px;
+        }
+        .carousel .carousel-inner .item .carousel-caption h1 {
+          text-align: left;
+          text-shadow: none;
+          margin-bottom: 10px;
+          margin-top: 36px;
+          font-size: 32px;
+      }
+
+    </style>
+
+</head>
+<div class="wrapper" style="width: 100%">
+
+  <div id="myCarousel" class="carousel slide hidden-xs hidden-sm hidden-md" data-ride="carousel" role="banner">
+     <!-- Carousel indicators -->
+     <!--<ul class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+     </ul>-->
+
+     <div class="carousel-inner" role="tablist" aria-label="Carousel animation of news items">
+        <div class="item active">
+           <div class="container">
+              <div class="row">
+                 <div class="col-md-7 carousel-caption" role="tab">
+                   <h1 class="no-anchor">Mobile Foundation Newsletter</h1>
+                   <p class="caption-text">Get the latest updates on Mobile Foundation</p>
+                   <p><a class="custombtn btn-lg btn-default containers" href="{{site.baseurl}}/blog/2019/05/30/leverage-ibm-support-portal/" target="_blank"><span class="glyphicon glyphicon-bell"></span>&nbsp;Subscribe</a></p>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+<div class="bx--col" style="padding-left: 35px; padding-top: 20px; height: 70vh;">
+<h3 style="padding-left: 15px;"><span class="postTitle1">Quarterly Newsletter Editions</span></h3>
+
+<div class="bx--col" style="padding-left: 30px; padding-top: 20px">
+
+    <div class="bx--col" style="padding-left: 0px; padding-top: 5px">
+        <p class="postTitle"><span class="glyphicon glyphicon-edit"></span> July 2020 <span class="postExcerpt">Coming up!</span></p>
+
+    </div>
+    <div class="bx--col" style="padding-left: 0px; padding-top: 5px">
+        <p class="postTitle"><span class="glyphicon glyphicon-edit"></span> April 2020 <span class="postExcerpt">Coming up!</span></p>
+
+    </div>
+    <div class="bx--col" style="padding-left: 0px; padding-top: 5px">
+        <p class="postTitle"><span class="glyphicon glyphicon-check"></span> January 2020 <span class="postExcerpt"><a href="{{ site.baseurl }}/newsletter/jan-2020/mf-newsletter-012020.html" target="_blank">View</a></span></p>
+
+    </div>
+
+</div>
+
+
+<!-- Pagination links -->
+<!--<nav>
+    <ul class="pagination">
+        <li {% if paginator.previous_page==null %}class="disabled" {% endif %}>
+            <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous"><span aria-hidden="true">Previous</span></a>
+        </li>
+        <li {% if paginator.next_page==null %}class="disabled" {% endif %}>
+            <a href="{% if paginator.next_page %}{{ paginator.next_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Next"><span aria-hidden="true">Next</span></a>
+        </li>
+    </ul>
+</nav>-->
+</div>
+
+
+
+
+<!-- </section> -->
+
+
+<!--<section style="margin-top: 20px">
+  <div class="container">
+    <div class="timeline-item">
+
+    <div class="timeline-content timeline-card js--fadeInRight">
+      <div class="timeline-img-header">
+        <h2>Quarterly Newsletter Editions</h2>
+      </div>
+
+        <ol><span class="postExcerpt">
+          <li><span class="postExcerpt">July 2020</span></li>
+          <li><span class="postExcerpt">April 2020</span></li>
+          <li><a href="{{ site.baseurl }}/newsletter/jan-2020/mf-newsletter-012020.html" target="_blank">January 2020</a></li></span>
+        </ol>
+
+
+    </div>
+    </div>
+
+
+
+  </div>
+</section>-->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Notifications push des mises à jour de l'application
-breadcrumb_title: Push notifications
+breadcrumb_title: Notifications push
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
@@ -124,7 +124,7 @@ feedback.sandbox.push.apple.com:2196
 gateway.push.apple.com:2195
 feedback.push.apple.com:2196
 
-Vous devez être un développeur Apple enregistré pour configurer votre projet iOS auprès d'Apple Push Notification Services (APN). Dans la société, le rôle administratif responsable du développement d'Apple demande l'activation d'APN. La réponse à cette demande devrait vous fournir un profil de mise à disposition compatible APN pour votre bundle d'applications iOS ; c'est-à-dire une valeur de chaîne qui est définie dans la page de configuration de votre projet Xcode. Ce profil de mise à disposition est utilisé pour générer un fichier de certificat de signature.
+Vous devez être un développeur Apple enregistré pour configurer votre projet iOS auprès d'Apple Push Notification Services (APN). Dans la société, le rôle administratif responsable du développement d'Apple demande l'activation d'APN. La réponse à cette demande devrait vous fournir un profil de mise à disposition compatible APN pour votre bundle d'application iOS ; c'est-à-dire une valeur de chaîne qui est définie dans la page de configuration de votre projet Xcode. Ce profil de mise à disposition est utilisé pour générer un fichier de certificat de signature.
 Il existe deux types de profils de mise à disposition : les profils de développement et les profils de production, qui concernent respectivement les environnements de développement et de production. Les profils de développement concernent exclusivement les serveurs APN de développement Apple. Les profils de production s'adressent exclusivement aux serveurs APN de production Apple. Ces types de serveurs n'offrent pas la même qualité de service.
 
 Remarque : les appareils connectés à un wifi d'entreprise derrière un pare-feu ne peuvent recevoir de notifications push que si la connexion au type d'adresse suivant n'est pas bloquée par le pare-feu.
@@ -139,7 +139,7 @@ Où x est un nombre entier.
 3. Créez un certificat de signature utilisé par les services Application Center pour sécuriser la communication avec le serveur APN. Ce serveur utilise le certificat à des fins de signature de chaque demande push vers le serveur APN. Ce certificat de signature est produit à partir de votre profil de mise à disposition.
 
 * Ouvrez l'utilitaire "Keychain Access" et cliquez sur la catégorie **My Certificates** dans le volet gauche.
-* Recherchez le certificat que vous souhaitez installer et divulguez son contenu. Vous voyez à la fois un certificat et une clé privée ; pour Application Center, la ligne de certificat contient le bundle d'applications d'Application Center **com.ibm.imf.AppCenter**.
+* Recherchez le certificat que vous souhaitez installer et divulguez son contenu. Vous voyez à la fois un certificat et une clé privée ; pour Application Center, la ligne de certificat contient le bundle de l'application Application Center **com.ibm.imf.AppCenter**.
 * Sélectionnez **File → Export Items** pour sélectionner à la fois le certificat et la clé et exportez-les en tant que fichier d'échange d'informations personnelles (.p12). Ce fichier .p12 contient la clé privée requise lorsque le protocole d'établissement de liaison sécurisé est impliqué pour communiquer avec le serveur APN.
 * Copiez le certificat .p12 sur l'ordinateur responsable de l'exécution des services Application Center et installez-le à l'endroit approprié. Le fichier de certificat et son mot de passe sont nécessaires pour créer la tunnellisation sécurisés avec le serveur APN. Vous avez également besoin de certaines informations indiquant si un certificat de développement ou un certificat de production est en jeu. Un profil de mise à disposition de développement produit un certificat de développement et un profil de production génère un certificat de production. L'application Web des services Application Center utilise les propriétés JNDI pour faire référence à ces données sécurisées
 

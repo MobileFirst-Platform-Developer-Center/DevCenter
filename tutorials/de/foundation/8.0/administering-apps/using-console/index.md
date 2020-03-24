@@ -2,7 +2,7 @@
 layout: tutorial
 title: Anwendungen in der MobileFirst Operations Console verwalten
 
-breadcrumb_title: Administrating using the console
+breadcrumb_title: Verwaltung mit der Konsole
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

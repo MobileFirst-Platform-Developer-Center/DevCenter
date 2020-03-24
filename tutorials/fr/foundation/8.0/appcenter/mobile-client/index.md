@@ -194,7 +194,7 @@ Avant d'installer des applications publiées par votre société, vous devez ajo
     Windows Phone 8 ne fournit aucun commentaire sur l'ajout du compte de société.
 
 7. Appuyez sur l'icône Retour pour revenir aux détails du jeton d'inscription d'application.
-8. Appuyez sur **Installers** et sélectionnez l'application de client mobile dans la liste des applications disponibles. Les détails de l'application sont affichés.
+8. Appuyez sur **Installers** et sélectionnez l'application client mobile dans la liste des applications disponibles. Les détails de l'application sont affichés.
 9. Appuyez sur **Install** pour télécharger l'application sélectionnée.
 
     ![Application sélectionnée pour le téléchargement sur un appareil Windows Phone](ac_wp8_app_details.jpg)
@@ -207,7 +207,7 @@ Avant d'installer des applications publiées par votre société, vous devez ajo
 
 > **Astuce :** lorsque vous installez une application de société sur un appareil, cet appareil doit se connecter au serveur Microsoft pour vérifier la signature de l'application. Parfois, le serveur Microsoft ne répond pas. Dans ce cas, vous pouvez recommencer l'installation quelques minutes plus tard. Reportez-vous à la section Installation d'une application sur un appareil Windows Phone pour connaître les messages d'erreur possibles.
 
-Lorsque l'installation est terminée, l'application de client mobile doit être disponible dans votre liste d'applications dans Windows Phone.
+Lorsque l'installation est terminée, l'application client mobile doit être disponible dans votre liste d'applications dans Windows Phone.
 
 ## Installation du client Windows 10 UWP sur un appareil Windows 10
 {: #installing-windows-10-uwp-client-on-windows-10-device }

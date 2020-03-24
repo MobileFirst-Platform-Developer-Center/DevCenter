@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Utilización de la API de analíticas en aplicaciones cliente
-breadcrumb_title: Analytics API
+breadcrumb_title: API de analíticas 
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

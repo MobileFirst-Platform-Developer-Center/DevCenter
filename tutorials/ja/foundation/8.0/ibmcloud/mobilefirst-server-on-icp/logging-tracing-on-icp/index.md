@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud Private でのロギングとトレース
-breadcrumb_title: Logging and Tracing
+breadcrumb_title: ロギングとトレース
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

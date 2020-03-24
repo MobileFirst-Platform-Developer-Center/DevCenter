@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Ajout d'un jeu de données
-weight: 7
+weight: 8
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

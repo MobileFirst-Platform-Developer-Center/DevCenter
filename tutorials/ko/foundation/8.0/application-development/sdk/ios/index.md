@@ -60,7 +60,7 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
     - 다음 행을 추가하고 변경사항을 저장하십시오.
 
       ```xml
-use_frameworks!
+      use_frameworks!
 
       platform :ios, 8.0
       target "Xcode-project-target" do
@@ -151,7 +151,7 @@ use_frameworks!
 2. 다음 명령을 실행하십시오.
 
     ```bash
-   mfpdev app register
+    mfpdev app register
     ```
     - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 이를 추가하십시오.
 
@@ -242,7 +242,7 @@ SDK 릴리스는 SDK의 [CocoaPods 저장소](https://cocoapods.org/?q=ibm%20mob
 {: #mfpclientplist }
 이 파일은 프로젝트의 루트에 있으며 {{ site.data.keys.mf_server }}에서 iOS 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-| 특성            |설명                                                         | 예제 값 |
+| 특성            | 설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
 | protocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
 | host        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |

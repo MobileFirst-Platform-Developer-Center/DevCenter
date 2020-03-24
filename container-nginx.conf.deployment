@@ -96,7 +96,9 @@ http {
       location ~* .(jpg|jpeg|png|gif|ico|css|js|woff|svg)$ {
         expires 1w;
       }
-
+      location ~ /\.git {
+        deny all;
+      }
       error_page 404 /404/index.html;
     }
 

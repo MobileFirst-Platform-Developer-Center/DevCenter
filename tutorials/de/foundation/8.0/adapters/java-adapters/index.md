@@ -72,7 +72,7 @@ der JAX-RS-2.0-Anwendung für diesen Adapter definieren, z. B. `com.sample.JavaA
 					<li><b>description</b>: Dieses <i>optionale</i> Attribut gibt zusätzliche Informationen zum Adapter an. Die Informationen werden in der {{ site.data.keys.mf_console }} angezeigt.</li>
 					<li><b>JAXRSApplicationClass</b>: Dieses Attribut, das <i>obligatorisch ist, um einen Endpunkt /adapter zugänglich zu machen</i>, definiert den Klassennamen der JAX-RS-Anwendung für diesen Adapter. Im Beispiel lautet der Name <b>com.sample.JavaAdapterApplication</b>.
 </li>
-					<li><b>securityCheckDefinition</b>: Dieses <i>optionale</i> Attribut definiert ein Sicherheitsüberprüfungsobjekt. Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm <a href="../../authentication-and-security/creating-a-security-check">Sicherheitsüberprüfungen erstellen</a>. </li>
+					<li><b>securityCheckDefinition</b>: Dieses <i>optionale</i> Attribut definiert ein Sicherheitsprüfungsobjekt. Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm <a href="../../authentication-and-security/creating-a-security-check">Sicherheitsüberprüfungen erstellen</a>. </li>
 					<li><b>property</b>: Dieses <i>optionale</i> Attribut deklariert eine benutzerdefinierte Eigenschaft. Weitere Informationen hierzu enthält der folgende Abschnitt. </li>
                 </ul>
 				<br/>

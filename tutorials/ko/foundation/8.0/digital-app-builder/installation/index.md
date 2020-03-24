@@ -19,6 +19,8 @@ Digital App Builder는 MacOS 및 Windows 플랫폼에 설치될 수 있습니다
 4. IBM Digital App Builder 아이콘 또는 실행 파일을 두 번 클릭하여 Digital App Builder를 여십시오.
     >**참고**: Digital App Builder가 처음으로 설치되면 Digital App Builder는 인터페이스를 열어 필수 소프트웨어를 설치합니다. Digital App Builder의 이전 버전이 존재하는 경우, 필수 소프트웨어 검사가 수행되며 필수 소프트웨어를 충족하기 위해 일부 소프트웨어를 업그레이드 또는 다운그레이드해야 할 수 있습니다.
     
+    >버전 8.0.6부터 설치 프로그램에 Mobile Foundation 개발 서버가 포함됩니다. 설치 중에 개발 서버가 다른 필수 소프트웨어와 함께 설치됩니다. 개발 서버의 라이프사이클(예: 서버 시작/중지)이 Digital App Builder 내에서 처리됩니다.
+    
     ![Digital App Builder 설치](dab-install-startup.png)
 
 5. **설정 시작**을 클릭하십시오. 그러면 라이센스 계약 화면이 표시됩니다.
@@ -51,6 +53,9 @@ Digital App Builder는 MacOS 및 Windows 플랫폼에 설치될 수 있습니다
 
 1. [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) 또는 [여기](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases)에서 .exe(**IBM.Digital.App.Builder.Setup.n.n.n.exe**, 여기서 `n.n.n`은 버전 번호임)를 다운로드하십시오.
 2. 관리 모드에서 다운로드된 실행 파일(**IBM.Digital.App.Builder.Setup.n.n.n.exe**)을 실행하십시오.
+    >**참고**: Digital App Builder가 처음으로 설치되면 Digital App Builder는 인터페이스를 열어 필수 소프트웨어를 설치합니다. Digital App Builder의 이전 버전이 존재하는 경우, 필수 소프트웨어 검사가 수행되며 필수 소프트웨어를 충족하기 위해 일부 소프트웨어를 업그레이드 또는 다운그레이드해야 할 수 있습니다.
+    
+    >버전 8.0.6부터 설치 프로그램에 Mobile Foundation 개발 서버가 포함됩니다. 설치 중에 개발 서버가 다른 필수 소프트웨어와 함께 설치됩니다. 개발 서버의 라이프사이클(예: 서버 시작/중지)이 Digital App Builder 내에서 처리됩니다.
 
     ![Digital App Builder 설치](dab-install-startup.png)
 

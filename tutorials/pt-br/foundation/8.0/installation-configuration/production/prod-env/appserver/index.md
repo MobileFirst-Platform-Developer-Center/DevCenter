@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Instalando o servidor MobileFirst em um servidor de aplicativos
-breadcrumb_title: Installing MobileFirst Server to an application server
+breadcrumb_title: Instalando o servidor MobileFirst em um servidor de aplicativos
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -2233,7 +2233,7 @@ Essas propriedades de JNDI são ativadas por padrão para todos os servidores de
 
 >**Nota:** para o Mobile Foundation em execução no WebSphere Application Server, a propriedade de JNDI **mfp.licenseTracking.enabled** tem que ser ativada configurando seu valor como **true** nas entradas do Runtime Environment no console do WAS.
 
-### Controle de licença
+### Rastreamento de Licença
 {: #license-tracking}
 
 O Rastreamento de licença rastreia as métricas relevantes para a política de licenciamento, como dispositivos ativos do cliente, dispositivos endereçáveis e aplicativos instalados. Essas informações ajudam a determinar se o uso atual da Mobile Foundation está dentro dos níveis de titularidade de licença e pode evitar potenciais violações de licença. O rastreamento de licença ajuda na desatribuição de dispositivos que não estão mais acessando o Mobile Foundation Server e também ajuda no arquivamento e exclusão de registros antigos de *MFP_PERSISTENT_DATA*.
@@ -2255,7 +2255,7 @@ Consulte os tópicos a seguir, para obter mais detalhes sobre o rastreamento de 
 Um planejador será executado 8 horas após um início do servidor. Ou seja, se os servidores forem iniciados hoje às 23h, o planejador não será executado à 1h (tempo de execução do planejador padrão) do dia subsequente, ele começará a ser executado somente no dia seguinte à 1h. A diferença entre um início do servidor e uma execução do planejador é de 8 horas.
 
 Iniciando o nível de iFix [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643), a diferença entre um início do servidor e o executor do planejador é de 4 horas em vez de 8 horas.
-Além disso, uma nova propriedade *MFP.SCHEDULER.STARTHOUR* foi introduzida. Com essa propriedade, a execução do planejador pode ser configurada para qualquer horário de opção do cliente em vez do padrão 1h. A propriedade pode assumir um valor de 1 a 23. Essa propriedade assegurará que o cliente possa configurar seu planejador para iniciar em suas horas de tráfego leve e também possa assegurar as execuções do planejador apesar do início diário do servidor. Para um cliente que reinicia seu servidor todas as noites à 1h, ele pode configurar o valor para *MFP.SCHEDULER.STARTHOUR* como 5. Isso assegura uma diferença de 4 horas entre a reinicialização do servidor e a execução do planejador às 5h.
+Além disso, foi introduzida uma nova propriedade *mfp.scheduler.startHour*. Com essa propriedade, a execução do planejador pode ser configurada para qualquer horário de opção do cliente em vez do padrão 1h. A propriedade pode assumir um valor de 1 a 23. Essa propriedade assegurará que o cliente possa configurar seu planejador para iniciar em suas horas de tráfego leve e também possa assegurar as execuções do planejador apesar do início diário do servidor. Para um cliente que reinicia seu servidor todas as noites à 1h, ele pode configurar o valor para *mfp.scheduler.startHour* como 5. Isso assegura uma diferença de 4 horas entre a reinicialização de servidor e o planejador será executado às 5h.
 
 É sugerido manter o rastreamento de licença desativado, pois as atividades de rastreamento de licença são intensivas no banco de dados. Somente aqueles clientes que usam o modelo de licenciamento de dispositivos endereçáveis da Foundation Mobile Foundation precisam executar o rastreamento de licença.
 

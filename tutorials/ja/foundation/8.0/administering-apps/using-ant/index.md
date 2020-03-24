@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Ant を介したアプリケーション管理
-breadcrumb_title: Administrating using Ant
+breadcrumb_title: Ant を使用した管理
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->

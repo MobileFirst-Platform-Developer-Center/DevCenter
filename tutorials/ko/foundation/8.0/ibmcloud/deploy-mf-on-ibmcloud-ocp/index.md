@@ -197,7 +197,7 @@ Mobile Foundation 컴포넌트의 콘솔에 액세스하기 위한 엔드포인�
 ```bash
 oc run perms-pod --overrides='
 {
-           "spec": {
+        "spec": {
             "containers": [
                 {
                     "command": [

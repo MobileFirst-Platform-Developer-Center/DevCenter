@@ -66,6 +66,8 @@ Features that were tested for Mobilefirst Foundation (MFP) v7.1:
 * Push notifications
 * Certificate Pinning
 
+>**Update:** Above features are tested on iPad OS and no issues were found.
+
 #### Known Issues
 
 ##### Too Many HTTP Redirect on v7.1
@@ -94,7 +96,7 @@ https://developer.apple.com/documentation/systemconfiguration/1614126-cncopycurr
 Apple further recommends *If your app is using this API, we encourage you to adopt alternative approaches that don't require Wi-Fi or network information. Valid SSID and BSSID information from CNCopyCurrentNetworkInfo will still be provided to VPN apps, apps that have used NEHotspotConfiguration to configure the current Wi-Fi network, and apps that have obtained permission to access user location through Location Services.*
 
 ##### Push Notification Registration Issue
-While fresh installation of apps using MobileFirst Push notification on iOS 13, regresitration is failing due to error in parsing the token from APNS server. The issue is similar to one reported on [Apple developer Forum](https://forums.developer.apple.com/thread/117545).
+While fresh installation of apps using MobileFirst Push notification on iOS 13, regresitration is failing due to error in parsing the token from APNS server. The issue is similar to one reported on [Apple developer Forum](https://forums.developer.apple.com/thread/117545). Also, this issue is seen only on Xcode v11 with iOS 13 devices. Applications built using Xcode v10.2 will not see the issue.
 
 >**Note** Customer should upgrade to cocopod version `IBMMobileFirstPlatformFoundationPush@8.0.2019082914` for v8 native app and npm version `cordova-plugin-mfp-push@8.0.2019090606` for v8 cordova apps. For MFP v7.1 install iFix version `7.1.0.0-MFPF-IF201909091200` or higher.
 
@@ -102,14 +104,14 @@ While fresh installation of apps using MobileFirst Push notification on iOS 13, 
 We have verified basic OAuth Flow and Application Authenticity on watchOS 6.
 
 #### iPadOS 13
-iPadOS 13 doesnt have a separate SDK with Xcode 11 beta. So we have not done any separate testing for iPad OS. iPAD avilable with Xcode11 still using iOS 13 only.
+iPadOS 13 does not have a separate SDK with Xcode 11 beta. iPAD available with Xcode 11 still using iOS 13 only.
 
 ![iPadOS 13 deployment info]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/iPadOS 13 deployment info.png)
 
 ![xcode11SDKs]({{site.baseurl}}/assets/blog/2019-07-08-mfp-support-for-ios13/xcode11SDKs.png)
 
 
->**Update:** We had used iPadOS 13 beta restore images on iPad and verified all Major features of MFP. We found an issue with Direct Update feature only for ionic apps. We are investigating further.
+>**Update:** We had used iPadOS 13 beta restore images on iPad and verified all major features of MFP.
 
 
 We have also verified MFP based cordova, ionic and react-native apps.

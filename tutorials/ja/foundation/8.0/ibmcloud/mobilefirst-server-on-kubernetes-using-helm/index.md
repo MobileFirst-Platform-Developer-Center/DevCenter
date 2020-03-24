@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Helm を使用した IBM Cloud Kubernetes クラスター上の Mobile Foundation のセットアップ
-breadcrumb_title: Foundation on Kubernetes using Helm
+breadcrumb_title: Helm を使用した Kubernetes 上の Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Foire aux questions
-breadcrumb_title: FAQs
+breadcrumb_title: Foire aux questions
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

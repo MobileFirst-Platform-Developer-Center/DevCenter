@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova アプリケーションへのカスタム・スプラッシュ画面およびアイコンの追加
-breadcrumb_title: Adding images and icons
+breadcrumb_title: イメージおよびアイコンの追加
 relevantTo: [cordova]
 weight: 1
 ---

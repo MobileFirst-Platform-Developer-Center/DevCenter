@@ -95,7 +95,9 @@ request.Send(formParams);
 
 #### Adaptadores JavaScript
 {: #javascript-adapters-form }
-Los adaptadores JavaScript utilizan parámetros sin nombre ordenados. Para pasar parámetros a un adaptador JavaScript, establezca una matriz de parámetros con el nombre `params`:
+Los adaptadores JavaScript utilizan parámetros sin nombre ordenados.
+Para pasar parámetros a un adaptador JavaScript, establezca una matriz de parámetros con el nombre `params`:
+
 
 ```cs
 formParams.Add("params","['value1', 'value2']");

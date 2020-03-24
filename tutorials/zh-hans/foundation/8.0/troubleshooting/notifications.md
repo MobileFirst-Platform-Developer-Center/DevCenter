@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 对推送通知进行故障诊断
-breadcrumb_title: Notifications
+breadcrumb_title: 通知
 relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---

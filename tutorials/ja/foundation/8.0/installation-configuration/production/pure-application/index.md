@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM PureApplication System への MobileFirst Server のデプロイ
-breadcrumb_title: Installing Pure Application System
+breadcrumb_title: PureApplication System のインストール
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->

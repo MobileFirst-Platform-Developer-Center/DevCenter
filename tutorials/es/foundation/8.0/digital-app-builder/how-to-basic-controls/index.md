@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Añadir controles básicos 
-weight: 6
+weight: 7
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

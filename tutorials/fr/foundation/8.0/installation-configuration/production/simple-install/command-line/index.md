@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Installation de MobileFirst Server via la ligne de commande
-breadcrumb_title: Command-line installation
+title: Installation de MobileFirst Server par la ligne de commande
+breadcrumb_title: Installation par la ligne de commande
 show_breadcrumb: true
 weight: 3
 ---
@@ -220,7 +220,7 @@ Choisissez le fichier XML approprié contenant les tâches Ant et configurez les
 * Exécutez `mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml databases` pour créer les tables de base de données.
 * Exécutez `mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml install` pour installer {{ site.data.keys.mf_server }}.
 
-> **Remarque :** Si vous ne disposez pas de DB2 et que vous souhaitez tester l'installation avec une instance Derby intégrée comme base de données, utilisez le fichier **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-derby.xml**. En revanche, vous ne pourrez pas exécuter la dernière étape de ce tutoriel (Création d'un parc de deux serveurs Liberty exécutant {{ site.data.keys.mf_server }}) car l'accès à la base de données Derby par plusieurs serveurs Liberty est impossible. Vous devez définir les propriétés sauf celles liées à DB2 (**database.db2**, ...). Pour Derby, affectez à la propriété **database.derby.datadir** la valeur du répertoire dans lequel la base de données Derby peut être créée. En outre, affectez à la propriété **database.derby.mfp.dbname** la valeur **MFPDATA**.
+> **Remarque :** Si vous ne disposez pas de DB2 et que vous souhaitez tester l'installation avec une instance Derby intégrée comme base de données, utilisez le fichier**mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-derby.xml**. En revanche, vous ne pourrez pas exécuter la dernière étape de ce tutoriel (Création d'un parc de deux serveurs Liberty exécutant {{ site.data.keys.mf_server }}) car l'accès à la base de données Derby par plusieurs serveurs Liberty est impossible. Vous devez définir les propriétés sauf celles liées à DB2 (**database.db2**, ...). Pour Derby, affectez à la propriété **database.derby.datadir** la valeur du répertoire dans lequel la base de données Derby peut être créée. En outre, affectez à la propriété **database.derby.mfp.dbname** la valeur **MFPDATA**.
 
 Les opérations suivantes sont exécutées par les tâches Ant :
 

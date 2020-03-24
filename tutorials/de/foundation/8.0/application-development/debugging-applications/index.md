@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Debugging für JavaScript-Anwendungen (Cordova-Anwendungen, Webanwendungen)
-breadcrumb_title: Debugging applications        
+breadcrumb_title: Debugging für Anwendungen        
 relevantTo: [javascript]
 weight: 10
 ---

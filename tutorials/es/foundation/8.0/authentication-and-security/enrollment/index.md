@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Inscripción
-breadcrumb_title: Enrollment
+breadcrumb_title: Inscripción
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:

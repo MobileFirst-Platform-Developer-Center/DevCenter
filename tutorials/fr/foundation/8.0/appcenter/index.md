@@ -125,7 +125,7 @@ Base de données qui stocke des informations telles que quelle application est i
 {: #administration-console }
 Console Web dans laquelle les administrateurs peuvent gérer les applications, les droits d'accès des utilisateurs pour l'installation d'applications, les commentaires des utilisateurs sur les applications mobiles et des détails sur les applications installées sur des appareils. Voir [Console Application Center](appcenter-console).
 
-### Application de client mobile
+### Application client mobile
 {: #mobile-client-application }
 Vous utilisez le client mobile pour installer des applications sur un appareil mobile et pour envoyer des commentaires sur une application au serveur. Voir [Client mobile](mobile-client).
 

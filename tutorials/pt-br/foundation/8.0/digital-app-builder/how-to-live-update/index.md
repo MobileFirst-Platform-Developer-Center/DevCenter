@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Alternância de recurso usando a Atualização Dinâmica
-weight: 12
+weight: 13
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

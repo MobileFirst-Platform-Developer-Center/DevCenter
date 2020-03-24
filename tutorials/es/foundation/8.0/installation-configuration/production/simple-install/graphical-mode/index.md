@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Instalación de MobileFirst Server en modalidad gráfica
-breadcrumb_title: Graphical mode installation
+breadcrumb_title: Instalación en modalidad gráfica
 show_breadcrumb: true
 weight: 2
 ---

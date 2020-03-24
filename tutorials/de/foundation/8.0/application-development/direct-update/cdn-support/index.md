@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Anforderungen nach direkter Aktualisierung mit einem CDN bedienen
-breadcrumb_title: CDN Support
+breadcrumb_title: CDN-Unterstützung
 relevantTo: [cordova]
 weight: 1
 ---

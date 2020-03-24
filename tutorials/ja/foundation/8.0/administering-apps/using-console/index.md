@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Operations Console を介したアプリケーション管理
-breadcrumb_title: Administrating using the console
+breadcrumb_title: コンソールを使用した管理
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

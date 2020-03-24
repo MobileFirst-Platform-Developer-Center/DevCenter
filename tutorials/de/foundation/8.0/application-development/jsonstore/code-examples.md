@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore-Codebeispiele
-breadcrumb_title: Code examples
+breadcrumb_title: Codebeispiele
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
@@ -125,7 +125,8 @@ WL.JSONStore.get(collectionName)
 
 .then(function (numberOfDocumentsReplaced) {
   // Erfolg behandeln
-})
+
+  })
 
 .fail(function (errorObject) {
   // Fehler behandeln
@@ -193,7 +194,7 @@ WL.JSONStore.get(collectionName)
 ```javascript
 WL.JSONStore.destroy()
 .then(function () {
-  // Erfolg behandeln
+    // Erfolg behandeln
 })
 
 .fail(function (errorObject) {
@@ -206,7 +207,7 @@ WL.JSONStore.destroy()
 ```javascript
 WL.JSONStore.closeAll()
 .then(function () {
-  // Erfolg behandeln
+    // Erfolg behandeln
 })
 
 .fail(function (errorObject) {
@@ -281,7 +282,7 @@ WL.JSONStore.get(collectionName)
 })
  
 .then(function () {
-  // Behandlung bei Erfolg von markClean
+    // Behandlung bei Erfolg von markClean
 })
  
 .fail(function (errorObject) {
@@ -330,7 +331,7 @@ resource.send()
 })
  
 .then(function () {
-  // Behandlung bei Erfolg von change
+    // Behandlung bei Erfolg von change
 })
  
 .fail(function (errorObject) {
@@ -385,7 +386,7 @@ WL.JSONStore.get(collectionName)
 .removeCollection()
 
 .then(function () {
-  // Erfolg behandeln
+    // Erfolg behandeln
 
   // Hinweis: Sie müssen die API 'init' aufrufen, um die leere Sammlung wiederzuverwenden.
   // Wenn Sie nur alle enthaltenen Daten entfernen möchten, lesen Sie die Infos zur API 'clear'.
@@ -405,7 +406,7 @@ WL.JSONStore.get(collectionName)
 .clear()
 
 .then(function () {
-  // Erfolg behandeln
+    // Erfolg behandeln
 
   // Hinweis: Wenn Sie die Suchfelder ändern möchten, könnten Sie
   // stattdessen die API 'removeCollection' verwenden.
@@ -421,8 +422,7 @@ WL.JSONStore.get(collectionName)
 ```javascript
 WL.JSONStore.startTransaction()
 .then(function () {
-
-  // Behandlung bei Erfolg von startTransaction
+    // Behandlung bei Erfolg von startTransaction
   // Sie können jede Methode der JSONStore-API außer init,
   // destroy, removeCollection und closeAll aufrufen.
 
@@ -432,7 +432,8 @@ WL.JSONStore.startTransaction()
 })
 
 .then(function () {
-    var docs = [{_id: 1, json: {name: 'carlos'}}];
+
+  var docs = [{_id: 1, json: {name: 'carlos'}}];
 
   return WL.JSONStore.get(collectionName).remove(docs);
 })
@@ -502,14 +503,14 @@ JSONStoreCollection* people = [[JSONStoreCollection alloc] initWithName:@"people
 [people setSearchField:@"age" withType:JSONStore_Integer];
 
 // Optionales Optionsobjekt
-JSONStoreOpenOptions* options = [JSONStoreOpenOptions new];
+  JSONStoreOpenOptions* options = [JSONStoreOpenOptions new];
 [options setUsername:@"carlos"]; //Optional username, default 'jsonstore'
 [options setPassword:@"123"]; //Optional password, default no password
 
 // Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Sammlungen öffnen
+  // Sammlungen öffnen
 [[JSONStore sharedInstance] openCollections:@[people] withOptions:options error:&error];
 
 // Daten zur Sammlung hinzufügen

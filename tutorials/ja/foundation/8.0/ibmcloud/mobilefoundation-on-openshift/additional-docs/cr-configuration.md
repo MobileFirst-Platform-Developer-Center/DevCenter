@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Mobile Foundation Custom Resource (CR) configuration
+breadcrumb_title: Mobile Foundation Custom Resource (CR) の構成
 title: IBM Mobile Foundation Custom Resource (CR) の構成
 weight: 3
 show_in_nav: false

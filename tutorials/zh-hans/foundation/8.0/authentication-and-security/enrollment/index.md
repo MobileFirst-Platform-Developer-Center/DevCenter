@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 注册
-breadcrumb_title: Enrollment
+breadcrumb_title: 注册
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:

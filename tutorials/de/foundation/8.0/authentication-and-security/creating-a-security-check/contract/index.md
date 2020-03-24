@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Vereinbarung einer Sicherheitsüberprüfung
-breadcrumb_title: security check contract
+breadcrumb_title: Vereinbarung einer Sicherheitsüberprüfung
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---
