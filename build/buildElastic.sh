@@ -34,9 +34,9 @@ rm -f _site/*.log
 #curl -u poneogentoredichaveradev:b40e4b8c0214e6579e4df7debb78385bd5eeecf8 -XPOST '169.48.167.218:31569/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
 #ELASTICSEARCH on Kube cluster <WORKER_IP>:<NODE_PORT> -----------------------------------
 
-## curl -u $ELASTICCREDENTIALS -X DELETE "169.48.167.218:31569/dev_center"
-## curl -u $ELASTICCREDENTIALS -XPOST '169.48.167.218:31569/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
+curl -u $ELASTICCREDENTIALS -X DELETE "169.48.167.218:31569/dev_center"
+curl -u $ELASTICCREDENTIALS -XPOST '169.48.167.218:31569/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
 
-curl -u $ELASTICCREDENTIALS -X DELETE "169.47.249.218:31986/dev_center"
-curl -u $ELASTICCREDENTIALS -XPOST '169.47.249.218:31986/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
+### curl -u $ELASTICCREDENTIALS -X DELETE "169.47.249.218:31986/dev_center"
+### curl -u $ELASTICCREDENTIALS -XPOST '169.47.249.218:31986/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic.json"
 #-----------------------------------------------------------------
