@@ -159,7 +159,7 @@ var MFPSEARCH = {
     init: function() {
         this.client = new $.es.Client({
             protocol: 'https',
-            hosts: 'mfdcdoccluster.us-south.containers.mybluemix.net'
+            hosts: 'mfdcdoc-primary-c33bf0f22ab59313b3628c493e016b88-0000.us-south.containers.appdomain.cloud'
             //hosts: [
             //     {
             //       host: 'portal-ssl403-12.bmix-dal-yp-4e981698-2fe4-416b-b80d-dcc839ed7ed8.bluempus-in-ibm-com.composedb.com',
