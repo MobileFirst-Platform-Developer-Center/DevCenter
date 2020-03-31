@@ -71,7 +71,7 @@ IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF202003191600">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF202003191600" href="#collapse-mfp-ifix-IF202003191600" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF202003191600"><b>iFix 7.1.0.0-MFPF-IF202003191600</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF202003191600" href="#collapse-mfp-ifix-IF202003191600" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF202003191600"><b>iFix 7.1.0.0-MFPF-IF202003191600</b></a>&nbsp;&nbsp;<span class="label label-danger">superseded by IF202003301225</span>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF202003191600" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF202003191600">
@@ -93,7 +93,7 @@ IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF202003110439">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF202003110439" href="#collapse-mfp-ifix-IF202003110439" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF202003110439"><b>iFix 7.1.0.0-MFPF-IF202003110439</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF202003110439" href="#collapse-mfp-ifix-IF202003110439" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF202003110439"><b>iFix 7.1.0.0-MFPF-IF202003110439</b></a>&nbsp;&nbsp;<span class="label label-danger">superseded by IF202003301225</span>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF202003110439" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF202003110439">
