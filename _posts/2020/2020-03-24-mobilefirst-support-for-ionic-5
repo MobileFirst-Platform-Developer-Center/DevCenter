@@ -1,5 +1,5 @@
 ---
-title: MobileFirst support for ionic 5
+title: MobileFirst support for Ionic 5
 date: 2020-03-24
 tags:
 - MobileFirst_Platform
@@ -10,7 +10,9 @@ author:
   name: Srutha Keerthi
 ---
 
-We are happy to announce that IBM Mobile Foundation v8.0 officially supports the latest Ionic 5. 
+We are happy to announce that IBM Mobile Foundation v8.0 officially supports the latest Ionic 5. Ionic 5 was released in February this year. Most of the changes have been made in the Ionic core. There have been multiple UI changes especially in iOS.
+There is a new API for creating  custom animations, support for a lot of new designs in Ionicons, new Ionic colors have been introduced, new starter designs, improvements to component customization and more. 
+The official Ionic 5 announcement can be found [here] (https://ionicframework.com/blog/announcing-ionic-5/)
 
 The below Mobile Foundation v8.0 features have been validated with the stable release of Ionic 5 and cordova-plugin-mfp version 8.0.2020030204 :
 
@@ -21,14 +23,14 @@ The below Mobile Foundation v8.0 features have been validated with the stable re
 * Push notifications
 
 <b>Direct Update</b></br>
-We have observed some intermittent loading issues with respect to direct update. It is mandatory to add the worklight.d.ts reference in the module.ts files rather than in component.ts files to avoid the possible loading errors.
+We have observed some intermittent loading issues with respect to direct update. In order for direct update to work without any issues, add the worklight.d.ts reference in the module.ts files along with component.ts files to avoid the possible loading errors.
 
-The below reference addition has to be done in module.ts files (not in component.ts files) : 
+The below reference addition has to be done in module.ts files (along with the component.ts files) : 
 `///<reference path="../../plugins/cordova-plugin-mfp/typings/worklight.d.ts"/>`
 
 
 <b>Application Authenticity</b></br>
-Dynamic App Authenticity is fully functional in both Android and iOS. We have observed issues with BTS. We are actively working on resolving them.
+Dynamic App Authenticity is fully functional in both Android and iOS. We have observed that despite the BTS tool being able to create the required checksum, the server is unable to capture the required BTS enablement. We are actively working on resolving this issue. Please revisit this blog for an updates on the resolution.
 
 </br>
 The runs have been performed on an app with the following dependency packages and corresponding versions :
@@ -37,9 +39,9 @@ The runs have been performed on an app with the following dependency packages an
    
    Ionic Framework               : 5.0.5(@ionic/angular)
 
-  cordova-android 					: 8.1.0
+  cordova-android 				       : 8.1.0
   
-  cordova-ios 						: 5.1.1
+  cordova-ios 						       : 5.1.1
 
 >>NOTE: MF v8.0 does not support @ionic/react and @ionic/vue yet.
 
