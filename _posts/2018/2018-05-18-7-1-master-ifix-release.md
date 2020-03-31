@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Foundation iFix release information for 7.1
-date: 2020-03-28
+date: 2020-03-31
 permalink: '/blog/2018/05/18/7-1-master-ifix-release/'
 version:
 - 7.1
@@ -13,14 +13,43 @@ tags:
 author:
   name: Sreelatha Sankaranarayanan
 ---
-A new iFix *7.1.0.0-MFPF-IF202003261913* has been released for MobileFirst Foundation 7.1, dated **March 26th, 2020**.
+A new iFix *7.1.0.0-MFPF-IF202003301225* has been released for MobileFirst Foundation 7.1, dated **March 30th, 2020**.
 <br/>
+<div class="panel-group accordion" id="mfp-7.1-ifix-IF202003301225" role="tablist">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mfp-ifix-IF202003301225">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF202003301225" href="#collapse-mfp-ifix-IF202003301225" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF202003301225"><b>iFix 7.1.0.0-MFPF-IF202003301225</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>&nbsp;&nbsp;<span class="label label-danger">HOT FIX</span>
+            </h4>
+        </div>
+        <div id="collapse-mfp-ifix-IF202003301225" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF202003301225">
+            <div class="panel-body">
+            iFix for MobileFirst Foundation 7.1, dated <b>March 30th, 2020</b>.
+            <a href="http://www.ibm.com/support/fixcentral/quickorder?product=ibm%2FOther+software%2FIBM+MobileFirst+Platform+Foundation&fixids=7.1.0.0-MFPF-IF202003301225&source=SAR">Download iFix</a> (requires login to IBM Fix Central).
+
+            <h3>Changes included in this iFix</h3>
+            <i>For a cumulative list of all previous fixes, see the iFix download page on IBM Fix Central.</i><br/><br/>
+
+            <b>PH23820</b>  SYNCHRONIZE THE RESPONSE FROM RUNTIME FOR SLOW DB.<br/>
+            <b>PH23368</b>  SUPPORT FOR ADAPTIVE UI LAUNCH FROM STORYBOARD FOR MFP 7.1 HYBRID APPS.<br/>
+
+            </div>
+        </div>      
+    </div>
+</div>     
+
+## Previous iFixes for MobileFirst Foundation 7.1
+
+IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
+*List below includes iFixes released in 2018 only.*
+
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF202003261913" role="tablist">
 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF202003261913">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF202003261913" href="#collapse-mfp-ifix-IF202003261913" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF202003261913"><b>iFix 7.1.0.0-MFPF-IF202003261913</b></a>&nbsp;&nbsp;<span class="label label-primary">latest</span>&nbsp;&nbsp;<span class="label label-danger">HOT FIX</span>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF202003261913" href="#collapse-mfp-ifix-IF202003261913" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF202003261913"><b>iFix 7.1.0.0-MFPF-IF202003261913</b></a>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF202003261913" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF202003261913">
@@ -36,13 +65,7 @@ A new iFix *7.1.0.0-MFPF-IF202003261913* has been released for MobileFirst Found
             </div>
         </div>      
     </div>
-</div>     
-
-## Previous iFixes for MobileFirst Foundation 7.1
-
-IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<br/>
-*List below includes iFixes released in 2018 only.*
-
+</div>  
 <div class="panel-group accordion" id="mfp-7.1-ifix-IF202003191600" role="tablist">
 
     <div class="panel panel-default">
@@ -92,7 +115,7 @@ IFixes for MobileFirst Foundation 7.1 that was released earlier is listed here.<
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mfp-ifix-IF202002241356">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF202002241356" href="#collapse-mfp-ifix-IF202002241356" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF202002241356"><b>iFix 7.1.0.0-MFPF-IF202002241356</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#mfp-7.1-ifix-IF202002241356" href="#collapse-mfp-ifix-IF202002241356" aria-expanded="true" aria-controls="collapse-mfp-ifix-IF202002241356"><b>iFix 7.1.0.0-MFPF-IF202002241356</b></a>&nbsp;&nbsp;<span class="label label-danger">superseded by IF202003301225</span>
             </h4>
         </div>
         <div id="collapse-mfp-ifix-IF202002241356" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mfp-ifix-IF202002241356">
