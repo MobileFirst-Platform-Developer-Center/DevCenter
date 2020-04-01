@@ -30,7 +30,9 @@ The installer requires Java installed.
     *Windows:*  
     [Follow this guide](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html).
 
-### Installation
+    [Known issue](#known-issue-win)
+
+## Installation
 {: #installation }
 Get the DevKit Installer from the [Downloads page]({{site.baseurl}}/downloads/), and follow the on-screen instructions.
 
@@ -66,7 +68,7 @@ The [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/a
 **Prerequisite:**  
 1. NodeJS and NPM are requirements before you can install the {{ site.data.keys.mf_cli }}.  
  Download and install [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) and NPM v3.10.10.
- For MobileFirst CLI version 8.0.2018100112 or higher, you can use Node v8.x or v10.x. 
+ For MobileFirst CLI version 8.0.2018100112 or higher, you can use Node v8.x or v10.x.
 
  To Verify the installation, open a command-line window and execute: `node -v`.
 
@@ -93,18 +95,49 @@ Apache Maven is a required to set-up before you can create adapters and security
 1. [Download the Apache Maven .zip](https://maven.apache.org/download.cgi)
 2. Add a `MVN_PATH` variable, pointing to the Maven folder
 
-    *Mac and Linux:* Edit your **~/.bash_profile**:
+   *Mac and Linux:* Edit your **~/.bash_profile**:
 
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
     ```
 
-    *Windows:*  
+    *Windows:*
+
     [Follow this guide](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).
-Verify the installation by executing: `mvn -v`.
+    
+    Verify the installation by executing:
+    ```bash
+    mvn -v
+    ```
+
 
 ### Usage
 {: #usage }
 With Apache Maven installed, you can now create adapters either via Maven command-line commands, or by using the {{ site.data.keys.mf_cli }}.  
 For more information, review the [Adapters tutorials]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
+
+### Known issue on Windows
+{: #known-issue-win}
+
+On Windows machines with Oracle Java 8 update 60 and above, MobileFirst installers using InstallAnywhere technology fails with the following error.
+
+![launch-error](launch-error.png)
+
+#### Cause of the error
+Changes introduced by Oracle in Java 8 update 60 cause installers built using InstallAnywhere to fail with the above error. The reason for this failure is that with Oracle Java 8u60 and above, InstallAnywhere fails to automatically detect the location of the latest supported JVM on the Windows machine.
+
+#### Resolving the error
+
+One of the following approaches can be used to resolve the issue.
+
+##### Approach 1
+
+Guide InstallAnywhere to launch using a given JVM.
+Launch the installer via command line and tell InstallAnywhere which JVM to use for the launch by using the **LAX_VM** parameter.
+
+![lax-vm-parameter](lax-vm-parameter.png)
+
+##### Approach 2
+
+Since this issue is not seen with Java versions earlier to Java 8u60, use Java 7.
