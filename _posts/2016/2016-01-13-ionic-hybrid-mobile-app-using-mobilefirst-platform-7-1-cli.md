@@ -11,7 +11,7 @@ author:
   name: Vidyasagar MSC
 ---
 
-![Ionic preview image](http://vidyasagarmsc.com/wp-content/uploads/2015/12/preview.jpg)
+<!--![Ionic preview image](http://vidyasagarmsc.com/wp-content/uploads/2015/12/preview.jpg)-->
 
 Mobile apps are everywhere and on everyone's learning list. As a web developer, You can leverage your HTML5, Javascript, CSS and other web development technologies like AngarJS to develop mobile apps through [Apache Cordova](http://vidyasagarmsc.com/category/javascript/cordova-javascript). The Ionic framework makes your hybrid mobile app front-end development easy with its open source SDK.
 
@@ -19,7 +19,7 @@ In a simple language, Ionic is a powerf HTML5 SDK that helps you build native-fe
 
 [Ionic](http://vidyasagarmsc.com/tag/ionic) also uses AngarJS for a lot of the core functionality of the framework. While you can still use Ionic with just the CSS portion, It's recommended investing in Angar as it’s one of the best ways to build browser-based applications today.
 
-![Sample Ionic app image](http://vidyasagarmsc.com/wp-content/uploads/2015/12/cordova-ng-ionic.png)
+<!--![Sample Ionic app image](http://vidyasagarmsc.com/wp-content/uploads/2015/12/cordova-ng-ionic.png)-->
 
 MobileFirst Platform (MFP) is an IBM mobile middleware offering also quoted under MADP (Mobile Application Development Platform) and MEAP (Mobile Enterprise Application Platform).
 
@@ -80,7 +80,7 @@ Once done navigate to the app folder on your Terminal or Command Prompt and run 
 
 **Note:** You can learn more about MFP CLI commands and setting up MobileFirst server [here](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/hello-world/integrating-mfpf-sdk-in-cordova-applications/)
 
-![Image of MFP Ionic App Folder structure](http://vidyasagarmsc.com/wp-content/uploads/2015/12/2015-12-30_13-02-40-e1451462516291.jpg)
+<!--![Image of MFP Ionic App Folder structure](http://vidyasagarmsc.com/wp-content/uploads/2015/12/2015-12-30_13-02-40-e1451462516291.jpg)-->
 
 Navigate to app.js under **www/js** folder and the below code to `wlCommonInit` function
 
