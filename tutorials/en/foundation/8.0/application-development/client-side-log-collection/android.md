@@ -67,11 +67,11 @@ To disable:
 Logger.setAutoSendLogs(false);
 ```
 
-### Change autoSendLog interval :
+### Change autoSendLog interval
 {: auto-log-sending-interval }
-By default autoSendLog interval is set as 60 seconds. AutoSendLog interval can be altered using following method.
+By default *autoSendLog interval* is set as 60 seconds. *AutoSendLog interval* can be altered using following method.
 
-To set autoSendLog interval as 120 seconds
+To set *autoSendLog interval* as 120 seconds, see the following.
 
 ```java
 Logger.setAutoSendLogs(true, 120);
