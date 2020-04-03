@@ -67,6 +67,16 @@ To disable:
 Logger.setAutoSendLogs(false);
 ```
 
+### Change autoSendLog interval
+{: auto-log-sending-interval }
+By default *autoSendLog interval* is set as 60 seconds. *AutoSendLog interval* can be altered using following method.
+
+To set *autoSendLog interval* as 120 seconds, see the following.
+
+```java
+Logger.setAutoSendLogs(true, 120);
+```
+
 ## Fine-tuning with the Logger API
 {: #fine-tuning-with-the-logger-api }
 The {{ site.data.keys.product_adj }} client SDK makes internal use of the Logger API. By default, you are capturing log entries made by the SDK. To fine-tune log collection, use logger instances with package names. You can also control which logging level is captured by the analytics using server-side filters.
