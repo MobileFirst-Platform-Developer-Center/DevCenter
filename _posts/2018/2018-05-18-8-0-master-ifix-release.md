@@ -174,9 +174,9 @@ A new iFix *8.0.0.0-MFPF-IF202003311154*  is released for Mobile Foundation 8.0,
                     </div>
                     <div id="collapse-reactnative-sdk-IF202003311154" class="panel-collapse collapse" role="tabpanel" aria-labelledby="reactnative-sdk-IF202003311154">
                         <div class="panel-body">
-                                react-native-ibm-mobilefirst 8.0.2020032412<br/>
-                                react-native-ibm-mobilefirst-jsonstore  8.0.2020032412<br/>
-                                react-native-ibm-mobilefirst-push 8.0.2020032412<br/>
+                                <b>react-native-ibm-mobilefirst 8.0.2020032412</b><br/>
+                                <b>react-native-ibm-mobilefirst-jsonstore  8.0.2020032412</b><br/>
+                                <b>react-native-ibm-mobilefirst-push 8.0.2020032412</b><br/>
                         </div>
                     </div>        
                 </div>
