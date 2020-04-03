@@ -99,14 +99,14 @@ To disable:
 ibmmfpfanalytics.enableAutoSend(false);
 ```
 
-### Change autoSendLog interval :
+### Change autoSendLog interval
 {: auto-log-sending-interval }
-By default autoSendLog interval is set as 60 seconds. AutoSendLog interval can be altered using following method.
+By default *autoSendLog interval* is set as 60 seconds. *AutoSendLog interval* can be changed using following method.
 
 #### For Cordova apps
 {: #for-cordova-apps }
 
-To set autoSendLog interval as 120 seconds
+To set *autoSendLog interval* as 120 seconds, see the following snippet.
 ```javascript
 WL.Logger.config({autoSendLogs: true,autoSendLogsInterval: 120});
 ```
@@ -114,7 +114,7 @@ WL.Logger.config({autoSendLogs: true,autoSendLogsInterval: 120});
 #### For Web apps
 {: #for-web-apps }
 
-To set autoSendLog interval as 120 seconds
+To set *autoSendLog interval* as 120 seconds, see the following snippet.
 ```javascript
 ibmmfpfanalytics.enableAutoSend(true, 120);
 ```
