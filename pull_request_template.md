@@ -21,7 +21,7 @@
 ### For new blog posts
 - [ ] Changes in this PR corresponds to a new blog post.
 
-#### Only if the above is true
+#### Only if the above is checked
 - [ ] This content is not eligible to be on IBM Developer.
 
 #### Provide below the date by when the PR should be published if it is not ready for publish now
