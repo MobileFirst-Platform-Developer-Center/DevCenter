@@ -432,7 +432,7 @@ HTTP/2 based notifications can be enabled using a JNDI Property.
 ### Proxy Support for HTTP/2
 {: #proxy-support-for-http2}
 
-HTTP/2 based notifications can be sent via a HTTP Proxy. To enable routing of the notifications via a proxy, see [here](#proxy-support).
+HTTP/2 based notifications can be sent via a HTTP Proxy. To enable routing of the notifications via a proxy, see [here]({{site.baseurl}}}/blog/2018/12/24/HTTP2-proxy-support/).
 
 ## Proxy Support
 {: #proxy-support }
