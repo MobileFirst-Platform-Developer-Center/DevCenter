@@ -5,7 +5,7 @@ breadcrumb_title: Migrating authentication concepts
 downloads:
   - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
-weight: 3
+weight: 4
 ---
 ## Overview
 {: #overview }
@@ -22,6 +22,11 @@ The [third part](#migrating-other-v71-security-configurations) explains how to m
 
 > **Note:** Before you start the migration, you are advised to read the [V8.0 migration cookbook](../migration-cookbook).  
 > To learn about the basic concepts of the new security framework, see [Authentication and Security](../../authentication-and-security).
+
+## Migration of authentication realms using the migration assistance tool
+{: #migrating-realms-using-migration-assist-tool}
+
+Migration of the supported realms into security checks is made easier with migration assistance tool. See [here]({{site.baseur}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/#using-migration-assistance-tool), for more information.
 
 ## Migrating the sample application
 {: #migrating-the-sample-application }
@@ -42,7 +47,7 @@ Follow these steps to migrate the sample V7.1 application to V8.0:
 {: #migrating-the-resource-adapter }
 Start by migrating the resource adapter. In {{ site.data.keys.product }} V8.0, adapters are developed as separate Maven projects, unlike in V7.1 where adapters are part of the application project. Thus, you can migrate the resource adapter, and build and deploy the migrated adapter, independently of the client application. The same is true for the V8.0 client application, and the V8.0 security checks (which are implemented within adapters). Therefore, you can migrate these artifacts in the order of your choice. The tutorial begins with instructions for migrating the resource adapter, including an introduction the OAuth security scope elements that are used for the V8.0 resource protection.
 
-> **Note:** 
+> **Note:**
 > *  The following instructions are for the migration of the sample `AccountAdapter` resource adapter. You do not need to migrate the sample `PinCodeAdapter` because the adapter-based authentication that it implements is no longer supported in V8.0. The [Replacing the pin-code adapter-based authentication realm](#replacing-the-pin-code-adapter-based-authentication-realm) step explains how to replace the V7.1 pin-code adapter with a V8.0 security check that offers similar protection.
 > *  For instructions on how to migrate adapters to V8.0, see the [V8.0 migration cookbook](../migration-cookbook).
 
@@ -80,7 +85,7 @@ After you edit the adapter code, build the adapter and deploy it to the server b
 
 Next, migrate the client application. For detailed client-application migration instructions, see the [V8.0 migration cookbook](../migration-cookbook).  This tutorial focuses on the migration of the security code. At this stage, exclude the challenge-handler code by editing the application's main HTML file, **index.html**, to add a comment around the lines that import the challenge-handler code:
 
-```html 
+```html
 <!--  
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
@@ -249,7 +254,7 @@ At this stage, you already migrated the sample resource adapter and client appli
 
 When you [migrated the client application](#migrating-the-client-application), you excluded the challenge-handler code by commenting out the relevant lines in the application's main HTML file, **index.html**. Now, add back the application's challenge-handler code, by removing the comment that you previously added around these lines:
 
-```html 
+```html
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
 ```
@@ -263,7 +268,7 @@ Start with the user-login challenge handler (`userLoginChallengeHandler`), which
    ```javascript
    var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
    ```
-   
+
    `WL.Client.createSecurityCheckChallengeHandler` creates a challenge handler that handles challenges from a {{ site.data.keys.product_adj }} security check. V8.0 also introduces a `WL.Client.createGatewayChallengeHandler` method for handling challenges from a third-party gateway, which are known in V8.0 as gateway challenge handlers. When you migrate a V7.1 application to V8.0, replace calls to the `WL.Client` `createWLChallengeHandler` or `createChallengeHandler` method with calls to the V8.0 `WL.Client` challenge-handler creation method that matches the expected challenge source. For example, if your resource is protected by a DataPower reverse proxy that sends a custom login form to the client, use `createGatewayChallengeHandler` to create a gateway challenge handler to handle the gateway challenges.
 
 *  Remove the call to the challenge-handler `isCustomResponse` method. In V8.0, this method is no longer needed to handle security challenges.
@@ -275,9 +280,9 @@ Start with the user-login challenge handler (`userLoginChallengeHandler`), which
    ```javascript
    userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
    ```
-   
+
 The complete code of the challenge handler after you apply these changes is shown here:
-   
+
 ```javascript
 function createUserLoginChallengeHandler() {
     var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
@@ -361,7 +366,7 @@ The V7.1 anti-cross site request forgery (anti-XSRF) realm (`wl_antiXSRFRealm`) 
 ### Direct Update realm
 {: #direct-update-realm }
 
-The V7.1 remote-disable realm (`wl_directUpdateRealm`) does not require migration to V8.0. The {{ site.data.keys.product }} V8.0 implementation of the Direct Update feature does not require a related security check, unlike the realm requirement in V7.1. 
+The V7.1 remote-disable realm (`wl_directUpdateRealm`) does not require migration to V8.0. The {{ site.data.keys.product }} V8.0 implementation of the Direct Update feature does not require a related security check, unlike the realm requirement in V7.1.
 
 **Note:** The V8.0 steps for delivering updates with Direct Update are different from the V7.1 procedure. For more information, see [Migrating Direct Update](../migrating-client-applications/cordova/#migrating-direct-update).
 
@@ -410,4 +415,3 @@ A V7.1 application must define a device-identity realm. In V8.0, this realm is n
 {: #whats-next }
 
 This tutorial covers only the basic steps that are required for migrating to V8.0 the security artifacts of an existing application, developed with a previous version of {{ site.data.keys.product }}. To take full advantage of the V8.0 security features, see the [V8.0 security-framework documentation](../../authentication-and-security/).
-

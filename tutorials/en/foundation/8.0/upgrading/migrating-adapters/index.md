@@ -2,7 +2,7 @@
 layout: tutorial
 title: Migrating existing adapters to work under MobileFirst Server V8.0.0
 breadcrumb_title: Migrating existing adapters
-weight: 3
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -15,13 +15,19 @@ To start, study the changes in adapter APIs that are described in [Deprecated fe
 * Under certain conditions, existing adapters work as-is with {{ site.data.keys.mf_server }} v8.0. See [Using older adapters as-is under {{ site.data.keys.mf_server }} V8.0](#using-older-adapters-as-is-under-mobilefirst-server-v-80).
 * In most cases, you need to upgrade the adapters. For Java™ adapters, see [Migrating Java adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0](#migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80). For JavaScript adapters, see [Migrating JavaScript adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80).
 
+## Migration of adapters using the migration assistance tool
+{: #migrating-adapters-using-migration-assist-tool}
+
+Migration of existing adapters is made easier with migration assistance tool. See [here]({{site.baseur}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/#using-migration-assistance-tool), for more information.
+
+
 ## Using older adapters as-is under {{ site.data.keys.mf_server }} v8.0
 {: #using-older-adapters-as-is-under-mobilefirst-server-v-80 }
 An existing adapter can be deployed as-is under {{ site.data.keys.mf_server }} v8.0, unless it matches any of the following criteria:
 
-| Adapter type | Condition | 
+| Adapter type | Condition |
 |--------------|-----------|
-| Java | Uses the PushAPI or SecurityAPI interfaces | 
+| Java | Uses the PushAPI or SecurityAPI interfaces |
 | JavaScript | {::nomarkdown}<ul><li>Was built using IBM  Worklight  V6.2 or earlier.</li><li>Uses a connection type that is not HTTP or SQL.</li><li>Contains procedures with securityTest customization</li><li>Contains procedures that use the user identity to connect to the back end</li><li>Uses any of the following APIs:<ul><li>WL.Device.*</li><li>WL.Geo.\*</li><li>WL.Server.readSingleJMSMessage</li><li>WL.Server.readAllJMSMessages</li><li>WL.Server.writeJMSMessage</li><li>WL.Server.requestReplyJMSMessage</li><li>WL.Server.getActiveUser</li><li>WL.Server.setActiveUser</li><li>WL.Server.getCurrentUserIdentity</li><li>WL.Server.getCurrentDeviceIdentity</li><li>WL.Server.createEventSource</li><li>WL.Server.createDefaultNotification</li><li>WL.Server.getUserNotificationSubscription</li><li>WL.Server.notifyAllDevices</li><li>WL.Server.notifyDeviceToken</li><li>WL.Server.notifyDeviceSubscription</li><li>WL.Server.sendMessage</li><li>WL.Server.createEventHandler</li><li>WL.Server.setEventHandlers</li><li>WL.Server.setApplicationContext</li><li>WL.Server.fetchNWBusinessObject</li><li>WL.Server.createNWBusinessObject</li><li>WL.Server.deleteNWBusinessObject</li><li>WL.Server.updateNWBusinessObject</li><li>WL.Server.getBeaconsAndTriggers</li><li>WL.Server.signSoapMessage</li><li>WL.Server.createSQLStatement</li></ul></li></ul>{:/} |
 
 ## Migrating Java adapters to Maven projects for {{ site.data.keys.mf_server }} v8.0
@@ -43,7 +49,7 @@ An existing adapter can be deployed as-is under {{ site.data.keys.mf_server }} v
     │                   ├── RSSAdapterApplication.java
     │                   └── RSSAdapterResource.java
    ```
-    
+
    New structure of a Java adapter:
 
    ```xml
