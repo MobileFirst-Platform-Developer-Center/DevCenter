@@ -2,7 +2,7 @@
 layout: tutorial
 title: Migrating push notifications from event source-based notifications
 breadcrumb_title: Migrating push notifications
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
@@ -1565,5 +1565,5 @@ The following information is important to know before you use the migration tool
    ```
 
    * Replace **path-to-migration.properties** with the path to **migration.properties** in case the tool .jar file and the properties file are located at different locations. Otherwise, remove the path from the command.
-   
+
     *Keep lib folder containing required libraries at the same location as tool .jar file.
