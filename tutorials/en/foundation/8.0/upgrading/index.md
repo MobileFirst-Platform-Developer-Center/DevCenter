@@ -6,10 +6,18 @@ weight: 12
 ## Overview
 {: #overview }
 {{ site.data.keys.product_full }} v8.0 introduces new concepts for application development and deployment, and some API changes. Learn about these changes to prepare and plan for the migration of your MobileFirst applications.
+> You can also use use this [lab]({{site.baseurl}}/labs/developers/8.0/advancedwallet/) to guide you through the v7.1 to v8.0 migration.
 
-> [Review the Migration Cookbook](migration-cookbook) to quickly get started with the migration process.
+You can choose one of the following approaches to migrate your apps to Mobile Foundation v8.0.
 
-> Use this [lab]({{site.baseurl}}/labs/developers/8.0/advancedwallet/) to guide you through the v7.1 to v8.0 migration.
+**Approach 1**
+
+Follow the migration cook book to perform a full-fledged migration to Mobile Foundation v8.0. Post migration you will have an app that is fully compatible with all of Mobile Foundation v8.0 features and functions.
+> [Review the Migration Cookbook](migration-cookbook).
+
+**Approach 2**
+
+Use the Mobile Foundation [Migration Studio]({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-studio/) to do an in-place migration of MobileFirst Platform Foundation v7.1 projects. This approach retains the legacy hybrid structure of your app while embedding it with Mobile Foundation v8.0 SDKs enabling your apps to connect to a Mobile Foundation v8.0 instance.
 
 #### Jump to
 {: #jump-to }
