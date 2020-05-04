@@ -23,7 +23,7 @@ Launch the Digital App Builder from:
 ## Create new app
 {: #create-new-app }
 
->**Note**: Create new app in two modes: **Design** mode - helps to design the app by drag-and-drop method and **Code** mode - helps to disign the app in code editor mode.
+>**Note**: Create new app in two modes: **Design** mode - helps to design the app by drag-and-drop method and **Code** mode - helps to design the app in code editor mode.
 
 Creating a new app supports two frameworks, Ionic/Angular and React Native.
 
@@ -92,7 +92,7 @@ Follow the steps below to create a new app.
 ## Open an existing app
 {: #open-an-existing-app }
 
->**Note**: You can open an existing app developed using the Digital App Builder only. By default, the application is opens in design mode.
+>**Note**: You can open an existing app developed using the Digital App Builder only. By default, the application opens in design mode.
 
 You can open an existing app in one of the following ways:
 
