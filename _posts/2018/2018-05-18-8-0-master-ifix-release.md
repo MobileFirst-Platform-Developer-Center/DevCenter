@@ -111,7 +111,7 @@ A new iFix *8.0.0.0-MFPF-IF202004271027*  is released for Mobile Foundation 8.0,
                                 IBMMobileFirstPlatformFoundationOpenSSLUtils   8.0.2020032408<br/>
                                 IBMMobileFirstPlatformFoundationPush          8.0.2019082914<br/>
                                 IBMMobileFirstPlatformFoundationJSONStore    8.0.2020021915<br/>
-                                <b>IBMMobileFirstPlatformFoundationAnalytics             8.0.2020032408</b><br/>
+                                IBMMobileFirstPlatformFoundationAnalytics             8.0.2020032408<br/>
                                 IBMMobileFirstPlatformFoundationLiveUpdate 8.0.202003051505<br/>
                         </div>
                     </div>      
@@ -147,7 +147,7 @@ A new iFix *8.0.0.0-MFPF-IF202004271027*  is released for Mobile Foundation 8.0,
                     <div id="collapse-win-sdk-IF202004271027" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk-IF202004271027">
                         <div class="panel-body">
                                 IBMMobileFirstPlatform Foundation 8.0.2019120813<br/>
-                                <b>IBM MobileFirstPlatform Push SDK  8.0.2020013116</b><br/>
+                                IBM MobileFirstPlatform Push SDK  8.0.2020013116<br/>
                         </div>
                     </div>      
                 </div>
@@ -166,14 +166,14 @@ A new iFix *8.0.0.0-MFPF-IF202004271027*  is released for Mobile Foundation 8.0,
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="reactnative-sdk-IF202004271027">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF202004271027" href="#collapse-reactnative-sdk-IF202004271027" aria-expanded="true" aria-controls="collapse-reactnative-sdk-IF202004271027"><b>React Native SDK</b></a>
+                            <a role="button" data-toggle="collapse" data-parent="#mfp-component-builds-IF202004271027" href="#collapse-reactnative-sdk-IF202004271027" aria-expanded="true" aria-controls="collapse-reactnative-sdk-IF202004271027">React Native SDK</a>
                         </h4>
                     </div>
                     <div id="collapse-reactnative-sdk-IF202004271027" class="panel-collapse collapse" role="tabpanel" aria-labelledby="reactnative-sdk-IF202004271027">
                         <div class="panel-body">
-                                <b>react-native-ibm-mobilefirst 8.0.2020032412</b><br/>
-                                <b>react-native-ibm-mobilefirst-jsonstore  8.0.2020032412</b><br/>
-                                <b>react-native-ibm-mobilefirst-push 8.0.2020032412</b><br/>
+                                react-native-ibm-mobilefirst 8.0.2020032412<br/>
+                                react-native-ibm-mobilefirst-jsonstore  8.0.2020032412<br/>
+                                react-native-ibm-mobilefirst-push 8.0.2020032412<br/>
                         </div>
                     </div>        
                 </div>
