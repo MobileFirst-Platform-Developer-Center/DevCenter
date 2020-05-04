@@ -204,7 +204,7 @@ oc run perms-pod --overrides='
                     "command": [
                         "/bin/sh",
                         "-c",
-                        "mkdir -p /usr/ibm/wlp/usr/servers/mfpf-analytics/analyticsData && chown -R 1001:0 /usr/ibm/wlp/usr/servers/mfpf-analytics/analyticsData"
+                        "mkdir -p /opt/ibm/wlp/usr/servers/mfpf-analytics/analyticsData && chown -R 1001:0 /usr/ibm/wlp/usr/servers/mfpf-analytics/analyticsData"
                     ],
                     "image": "alpine:3.2",
                     "name": "perms-pod",
