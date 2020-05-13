@@ -617,12 +617,16 @@ verfügbar sind:
 |mfp.admin.jmx.pwd |WebSphere-Application-Server-Farm: Benutzerkennwort für die SOAP-Verbindung (optional)<br/><br/>Liberty-Verbund: Kennwort des Controlleradministrators, der im Element `<administrator-role>` der Datei server.xml des Liberty-Controllers definiert ist |
 |mfp.admin.serverid |Obligatorisch für Server-Farmen und einen Liberty-Verbund, ansonsten optional<br/><br/>Server-Farm: Die Serverkennung. Die ID muss für jeden Server in der Farm eindeutig sein.<br/><br/>Liberty-Verbund: die Memberkennung. Jedes Member des Verbunds muss eine andere Kennung haben. Der Wert controller kann nicht verwendet werden, weil er für den Verbundcontroller reserviert ist. |
 |mfp.topology.platform |Optional. Der Servertyp. Gültige Werte: <ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Wenn Sie den Wert nicht definieren, versucht die Anwendung, den Servertyp zu raten. |
-|mfp.topology.clustermode |Optional Zusätzlich zum Servertyp geben Sie mit dieser Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: <ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>Der Standardwert ist Standalone. |
+|mfp.topology.clustermode |Zusätzlich zum Servertyp geben Sie mit dieser optionalen Eigenschaft die Servertopologie an. Die gültigen Werte sind im Folgenden aufgelistet: <ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>Der Standardwert ist Standalone. |
 |mfp.admin.jmx.replica |Nur für einen Liberty-Verbund (optional).<br/><br/>Legen Sie diese Eigenschaft nur fest, wenn die Verwaltungskomponenten, mit denen diese Laufzeit verwaltet wird, in verschiedenen Liberty-Controllern (d. h. Replikaten) implementiert sind.<br/><br/>Syntax der Endpunktliste mit den verschiedenen Controllerreplikaten: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 |mfp.analytics.console.url |Die von IBM {{ site.data.keys.mf_analytics }} zugänglich gemachte URL für die Verbindung zur Analytics Console (optional). Wenn Sie von der {{ site.data.keys.mf_console }} auf die Analytics Console zugreifen möchten, definieren Sie diese Eigenschaft. Beispiel: `http://<Hostname>:<Port>/analytics/console` |
 |mfp.analytics.password |Das Kennwort, das verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics }} durch Basisauthentifizierung geschützt ist. |
 |mfp.analytics.url |Die von IBM {{ site.data.keys.mf_analytics }} zugänglich gemachte URL für den Empfang eingehender Analysedaten. Beispiel: `http://<Hostname>:<Port>/analytics-service/rest` |
 |mfp.analytics.username |Der Benutzername, der verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics }} durch Basisauthentifizierung geschützt ist. |
+|mfp.device.decommissionProcessingInterval |Definiert, wie häufig eine Stilllegung durchgeführt wird (Intervall in Sekunden). Standardwert: 86400 (ein Tag). |
+| mfp.analytics.receiver.password |Das Kennwort, das verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics_receiver }} durch Basisauthentifizierung geschützt ist. |
+| mfp.analytics.receiver.url |Die von IBM {{ site.data.keys.mf_analytics_receiver }} zugänglich gemachte URL für den Empfang eingehender Analysedaten. Beispiel: `http://<Hostname>:<Port>/analytics-receiver/rest` |
+| mfp.analytics.receiver.username |Der Benutzername, der verwendet wird, wenn der Dateneingabepunkt für IBM {{ site.data.keys.mf_analytics_receiver }} durch Basisauthentifizierung geschützt ist. |
 |mfp.device.decommissionProcessingInterval |Definiert, wie häufig eine Stilllegung durchgeführt wird (Intervall in Sekunden). Standardwert: 86400 (ein Tag). |
 |mfp.device.decommission.when |Anzahl von Tagen der Inaktivität, nach denen ein Clientgerät mit der Aufgabe für Gerätestilllegung stillgelegt wird. Standardwert: 90 Tage |
 |mfp.device.archiveDecommissioned.when |Anzahl von Tagen der Inaktivität, nach denen ein stillgelegtes Clientgerät archiviert wird.<br/><br/>Diese Task schreibt die stillgelegten Clientgeräte in eine Archivdatei. Die archivierten Clientgeräte werden in eine Datei im MobileFirst-Server-Verzeichnis **home\devices_archive** geschrieben. Der Name der Datei enthält die Zeitmarke für den Erstellungszeitpunkt der Archivdatei. Standardwert: 90 Tage |
@@ -642,8 +646,8 @@ verfügbar sind:
 |mfp.push.db.type |Optional |Datenbanktyp. Gültige Werte: DB, CLOUTDANT. Standardwert: DB |
 |mfp.push.db.queue.connections |Optional |Anzahl Threads in dem Thread-Pool, der die Datenbankoperation ausführt. Standardwert: 3 |
 |mfp.push.db.cloudant.url |Optional |URL des Cloudant-Kontos. Wenn diese Eigenschaft definiert ist, wird die Cloudant-Datenbank zu dieser URL geleitet. |
-|mfp.push.db.cloudant.dbName |Optional |Name der Datenbank im Cloudant-Konto. Der Name muss mit einem Kleinbuchstaben beginnen und darf nur aus Kleinbuchstaben, Ziffern sowie den Zeichen _, $ und - bestehen. Standardwert: mfp\_push\_db |
-|mfp.push.db.cloudant.username |Optional |Benutzername des Cloudant-Kontos, das zum  Speichern der Datenbank verwendet wird. Wenn diese Eigenschaft nicht definiert ist, wird eine relationale Datenbank verwendet. |
+|mfp.push.db.cloudant.dbName | Optional |Name der Datenbank im Cloudant-Konto. Der Name muss mit einem Kleinbuchstaben beginnen und darf nur aus Kleinbuchstaben, Ziffern sowie den Zeichen _, $ und - bestehen. Standardwert: mfp\_push\_db |
+|mfp.push.db.cloudant.username | Optional |Benutzername des Cloudant-Kontos, das zum  Speichern der Datenbank verwendet wird. Wenn diese Eigenschaft nicht definiert ist, wird eine relationale Datenbank verwendet. |
 |mfp.push.db.cloudant.password | Optional |Kennwort des Cloudant-Kontos, das zum  Speichern der Datenbank verwendet wird. Diese Eigenschaft muss definiert sein, wenn mfp.db.cloudant.username definiert ist. |
 |mfp.push.db.cloudant.doc.version | Optional |Cloudant-Dokumentversion |
 |mfp.push.db.cloudant.socketTimeout |Optional	|Zeitlimit für das Erkennen des Verlusts einer Cloudant-Netzverbindung in Millisekunden. Der Wert null bedeutet kein Zeitlimit. Ein negativer Wert bedeutet, dass der Standardwert verwendet wird (keine Außerkraftsetzung). Für den Standardwert siehe [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
@@ -659,21 +663,21 @@ verfügbar sind:
 |mfp.push.security.password |Optional	|Kennwort für den Zugriff auf den Autorisierungsserver |
 |mfp.push.services.ext.analytics | Optional |Erweiterungs-Plug-in für Analytics |
 |mfp.push.analytics.endpoint | Optional |Endpunkt-URL für den Analyseserver |
-|mfp.push.analytics.user | Optional |Benutzername für den Zugriff auf den Analyseserver |
+|mfp.push.analytics.user |Optional |Benutzername für den Zugriff auf den Analyseserver |
 |mfp.push.analytics.password | Optional |Kennwort für den Zugriff auf den Analyseserver |
 |mfp.push.analytics.events.notificationDispatch |Optional	|Analyseereignis bei Bereitschaft zum Zustellen der Benachrichtigung. Standardwert: true |
 |mfp.push.internalQueue.maxLength |Optional |Länge der Warteschlange mit den Benachrichtigungstasks vor der Zustellung. Standardwert: 200000 |
 |mfp.push.gcm.proxy.enabled |Optional	|Zeigt an, ob über einen Proxy auf GCM zugegriffen werden muss. Standardwert: false |
 |mfp.push.gcm.proxy.protocol | Optional |Kann http oder https sein |
-|mfp.push.gcm.proxy.host |Optional |GCM-Proxy-Host. Ein negativer Wert bedeutet die Verwendung des Standardports. |
+|mfp.push.gcm.proxy.host | Optional |GCM-Proxy-Host. Ein negativer Wert bedeutet die Verwendung des Standardports. |
 |mfp.push.gcm.proxy.port |Optional |GCM-Proxy-Port. Standardwert: -1 |
 |mfp.push.gcm.proxy.user | Optional |Name des Proxybenutzers, wenn der Proxy eine Authentifizierung erfordert. Ein leerer Benutzername bedeutet, dass keine Authentifizierung stattfindet. |
 |mfp.push.gcm.proxy.password | Optional |Proxykennwort, wenn der Proxy eine Authentifizierung erfordert |
-|mfp.push.gcm.connections |Optional |Maximale Verbindungen für GCM-Push. Standardwert: 10 |
-|mfp.push.apns.proxy.enabled | Optional |Zeigt an, ob über einen Proxy auf APNs zugegriffen werden muss. Standardwert: false |
+|mfp.push.gcm.connections | Optional |Maximale Verbindungen für GCM-Push. Standardwert: 10 |
+|mfp.push.apns.proxy.enabled |Optional |Zeigt an, ob über einen Proxy auf APNs zugegriffen werden muss. Standardwert: false |
 |mfp.push.apns.proxy.type | Optional |APNS-Proxy-Typ |
 |mfp.push.apns.proxy.host | Optional |APNS-Proxy-Host |
-|mfp.push.apns.proxy.port |Optional |APNS-Proxy-Port. Standardwert: -1 |
+|mfp.push.apns.proxy.port | Optional |APNS-Proxy-Port. Standardwert: -1 |
 |mfp.push.apns.proxy.user | Optional |Name des Proxybenutzers, wenn der Proxy eine Authentifizierung erfordert. Ein leerer Benutzername bedeutet, dass keine Authentifizierung stattfindet. |
 |mfp.push.apns.proxy.password | Optional |Proxykennwort, wenn der Proxy eine Authentifizierung erfordert |
 |mfp.push.apns.connections | Optional |Maximale Verbindungen für APNS-Push. Standardwert: 3 |

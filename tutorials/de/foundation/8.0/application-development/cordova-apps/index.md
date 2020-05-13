@@ -166,6 +166,8 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 }
 {% endhighlight %}
 
+
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Abschnitt schließen</b></a>
             </div>

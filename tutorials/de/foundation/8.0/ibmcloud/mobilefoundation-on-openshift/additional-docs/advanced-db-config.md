@@ -14,6 +14,13 @@ Anweisungen für das Einrichten der Mobile Foundation mit einer Nicht-DB2-Datenb
 
 Die Pakete der Mobile-Foundation-Installationsprogramme enthalten standardmäßig IBM DB2-JDBC-Treiber. Stellen Sie für Oracle und MySQL sicher, dass sich der JDBC-Treiber (für MySQL der Connector/J-JDBC-Treiber, für Oracle der Oracle-Thin-JDBC-Treiber) auf einem persistenten Datenträger befindet. 
 
+>**Hinweis:**
+>
+>  Oracle-Datenbank:
+>
+>    1. Verwenden Sie **Oracle Service Name** für die Eigenschaft *name* im Datenbankabschnitt der Datei für angepasste Ressourcen (Custom Resource File, `CR.yaml`).
+>    2. Stellen Sie sicher, dass der Name des Oracle-Datenbankbenutzers in GROSSBUCHSTABEN angegeben ist und so auch bei Erstellung des geheimen Datenbankschlüssels verwendet wird. 
+
 1. Stellen Sie den JDBC-Treiber auf einen angehängten NFS-Datenträger, z. B. auf */nfs/share/dbdrivers*.
 
 2. Erstellen Sie einen persistenten Datenträger und eine Anforderung eines persistenten Datenträgers. Geben Sie dazu die NFS-Serverdetails und den Pfad an, unter dem der JDBC-Treiber gespeichert ist. Nachfolgend sehen Sie eine YAML-Beispieldatei:

@@ -50,6 +50,8 @@ Die Komponenten sind über das Download-Center in der {{ site.data.keys.mf_conso
 
 > Öffnen Sie zum Herunterladen des Installers die Seite [Downloads]({{site.baseurl}}/downloads/).
 
+>**Hinweis**: das Developer Kit für Mac OS ist als ZIP-Datei verfügbar. Für die Installation müssen Sie lediglich die ZIP-Datei entpacken. Führen Sie das Developer Kit von dem Ordner aus, in dem Sie die ZIP entpackt haben.  
+
 ## Komponenten der {{ site.data.keys.product }}
 {: #mobilefirst-foundation-components }
 

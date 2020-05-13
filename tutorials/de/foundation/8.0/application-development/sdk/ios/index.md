@@ -70,7 +70,7 @@ Erstellen Sie ein Xcode-Projekt oder verwenden Sie ein vorhandenes Projekt (Swif
     - Fügen Sie die folgenden Zeilen hinzu und speichern Sie die Änderungen:
 
       ```xml
-      use_frameworks!
+use_frameworks!
 
 
 

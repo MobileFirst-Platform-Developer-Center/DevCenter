@@ -231,6 +231,7 @@ Sie finden die Ressourcen in folgenden Ordnern:
 * Ordner PushService für den MobileFirst-Server-Push-Service 
 * Ordner ApplicationCenter für das Application Center
 * Ordner Analytics für {{ site.data.keys.mf_analytics }}
+* Ordner AnalyticsReceiver für den {{ site.data.keys.mf_analytics_receiver }}
 
 Ziel dieses Lernprogramms ist es,
 {{ site.data.keys.mf_server }} mit den Ressourcen im Ordner
@@ -322,6 +323,18 @@ Das Server Configuration Tool konfiguriert dann die
 {{ site.data.keys.mf_analytics }} senden.
 
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+Der {{ site.data.keys.mf_analytics_receiver }} wird wegen des hohen Speicherbedarfs normalerweise nicht in denselben Servern wie {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }} implementiert. Der {{ site.data.keys.mf_analytics_receiver }} kann
+manuell oder mit Ant-Tasks installiert werden. Wenn die Anwendung bereits installiert ist, können Sie die URL, den Benutzernamen und das Kennwort im
+eingeben, damit Daten
+an
+das Server Configuration Tool gesendet werden können.
+Das Server Configuration Tool konfiguriert dann die
+{{ site.data.keys.product_adj }}-Apps so, dass sie Daten an
+{{ site.data.keys.mf_analytics_receiver }} senden.
+
+
 #### Application Center
 {: #application-center }
 Mit dieser Anwendung können mobile Apps intern an Mitarbeiter zur Verwendung oder zu Testzwecken verteilt werden. Das Application Center
@@ -378,10 +391,14 @@ Dieses Fenster wird verwendet, wenn die im vorherigen Fenster eingegebene Datenb
 
     Für die Registrierung des Push-Service und des Verwaltungsservice als vertrauliche OAuth-Clients des Autorisierungsservers sind eine Client-ID und ein Kennwort erforderlich. (Die Rolle des Autorisierungsservers übernimmt standardmäßig die Laufzeitkomponente.) Das Server Configuration Tool generiert eine ID und ein zufälliges Kennwort für jeden der Services. Sie können die generierten Werte für dieses Einführungslernprogamm übernehmen.
 16. Klicken Sie auf **Next**.
-17. Übernehmen Sie im Fenster **Analytics Setting** die Standardeinträge.
+17. Übernehmen Sie im Fenster **Analytics Receiver Setting** die Standardeinträge.
+
+    Um eine Verbindung zum Analytics Receiver Server herstellen zu können, müssen Sie zunächst den {{ site.data.keys.mf_analytics_receiver }} installieren. Diese Installation ist jedoch kein Bestandteil dieses Lernprogramms.
+18. Klicken Sie auf **Next**.    
+19. Übernehmen Sie im Fenster **Analytics Setting** die Standardeinträge.
 
     Um eine Verbindung zum Analytics-Server herstellen zu können, müssen Sie zunächst {{ site.data.keys.mf_analytics }} installieren. Diese Installation ist jedoch kein Bestandteil dieses Lernprogramms.
-18. Klicken Sie auf **Deploy**.
+20. Klicken Sie auf **Deploy**.
 
 Im Konsolenfenster sehen Sie Einzelheiten der ausgeführten Operationen.   
 Eine Ant-Datei wurde gespeichert. Das Server Configuration Tool unterstützt

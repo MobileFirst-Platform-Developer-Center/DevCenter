@@ -207,6 +207,13 @@ Datenverkehr des Push-Service mit Ihrem HTTP-Server zum richtigen Anwendungsserv
 
 ### {{ site.data.keys.mf_analytics }} und {{ site.data.keys.mf_analytics_console }}
 {: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
+{{ site.data.keys.mf_analytics_receiver_full }} ist eine optionale Komponente mit Weiterleitungsfunktion für Analytics- und Logger-Protokolle, die von mobilen
+Apps genutzt werden kann, um
+die genannten Protokolle
+an {{ site.data.keys.mf_analytics_full }} weiterzuleiten. Bei Verwendung dieses Service wird {{ site.data.keys.mf_server }} von der Protokollbearbeitung entlastet.  
+
+### {{ site.data.keys.mf_analytics }} und {{ site.data.keys.mf_analytics_console }}
+{: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
 {{ site.data.keys.mf_analytics_full }} ist eine optionale Komponente mit einem skalierbaren Analysefeature, auf das Sie über die {{ site.data.keys.mf_console }} zugreifen können. Mit dem Analysefeature können Sie Protokolle und Ereignisse, die von Geräten, Apps und Servern erfasst wurden, nach Mustern, Problemen und Statistikdaten zur Plattformnutzung durchsuchen.
 
 In der {{ site.data.keys.mf_console }} können Sie Filter definieren, um die Weiterleitung an den Analyseservice zu aktivieren oder zu inaktivieren. Sie können auch die Art der gesendeten Informationen filtern. Auf der Clientseite können Sie die Protokollerfassungs-API verwenden, um Ereignisse und Daten an den Analyseserver zu senden.

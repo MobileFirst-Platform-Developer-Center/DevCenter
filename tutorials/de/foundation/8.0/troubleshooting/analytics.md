@@ -18,9 +18,9 @@ Hier finden Sie Informationen, die Ihnen bei der Lösung von Problemen helfen, d
     <li>Stellen Sie sicher, dass Ihre Apps so eingestellt sind, dass sie auf den {{site.data.keys.mf_server }} zeigen, der die Protokolle an den {{site.data.keys.mf_analytics_server }} weiterleitet. Stellen Sie sicher, dass die folgenden Werte in den Dateien <code>mfpclient.plist</code> (iOS), <code>mfpclient.properties</code> (Android) oder <code>config.xml</code> (Cordova) definiert sind.
 
 {% highlight xml %}
-protocol = http oder https
+protocol = http or https
 host = IP-Adresse Ihres {{ site.data.keys.mf_server }}
-port = in der Datei the server.xml für Analyseberichte festgelegter HTTP-Port
+port = In der Datei server.xml festgelegter HTTP-Port für Analyseberichte
 wlServerContext = standardmäßig "/mfp/"
 {% endhighlight %}</li>
 

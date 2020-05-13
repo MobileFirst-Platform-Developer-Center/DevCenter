@@ -137,7 +137,7 @@ Seit der Cordova-Plug-in Version 8.0.2017102406 für die MobileFirst Platform Fo
   /*
    Licensed Materials - Property of IBM
 
-   (C) Copyright 2017 IBM Corp.
+   (C) Copyright 2020 IBM Corp.
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,

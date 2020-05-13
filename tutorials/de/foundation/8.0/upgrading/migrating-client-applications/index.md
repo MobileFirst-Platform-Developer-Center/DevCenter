@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Clientanwendungen umstellen
-weight: 2
+weight: 7
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
