@@ -552,7 +552,7 @@ La propriété JNDI suivante est requise pour l'environnement d'exécution lorsq
 
 | Propriétés JNDI | Valeurs |
 |-----------------|--------|
-| mfp.admin.jmx.replica | Liste des noeuds finaux des différentes répliques de contrôleur avec la syntaxe suivante : `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
+| mfp.admin.jmx.replica | Liste des points de terminaison des différentes répliques de contrôleur avec la syntaxe suivante : `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 
 Lorsque plusieurs composants d'administration sont déployés dans le contrôleur, la valeur de la propriété JNDI **mfp.admin.environmentid** locale de chaque environnement d'exécution doit être identique à celle définie pour le service d'administration qui gère l'environnement d'exécution.
 

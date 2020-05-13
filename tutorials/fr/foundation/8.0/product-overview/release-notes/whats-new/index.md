@@ -133,7 +133,7 @@ weight: 1
                 <p>L'API REST pour le service d'administration est partiellement restructurée. En particulier, l'API pour les alarmes et les médiateurs est retirée et la plupart des services REST pour les notifications push font maintenant partie de l'API REST pour le service push.</p>
 
                 <h3>API REST mise à jour pour le contexte d'exécution</h3>
-                <p>L'API REST pour l'exécution de {{ site.data.keys.product_adj }} offre désormais plusieurs services pour les clients mobiles et les clients confidentiels pour appeler des adaptateurs, obtenir des jetons d'accès, obtenir du contenu de mise à jour directe, et plus encore. La plupart des noeuds finaux de l'API REST sont protégés par OAuth. Sur un serveur de développement, vous pouvez afficher le doc swagger pour l'API d'exécution sur le site : <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
+                <p>L'API REST pour l'exécution de {{ site.data.keys.product_adj }} offre désormais plusieurs services pour les clients mobiles et les clients confidentiels pour appeler des adaptateurs, obtenir des jetons d'accès, obtenir du contenu de mise à jour directe, et plus encore. La plupart des points de terminaison de l'API REST sont protégés par OAuth. Sur un serveur de développement, vous pouvez afficher le doc swagger pour l'API d'exécution sur le site : <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
 
                 <h3>Possibilité d'épingler plusieurs certificats</h3>
                 <p>A partir du correctif temporaire 8.0.0.0-IF201706240159, {{ site.data.keys.mf_bm_short }} prend en charge l'épinglage de plusieurs certificats. Cette fonction permet aux utilisateurs d'accéder sans risque à différents hôtes. Avant ce correctif temporaire, {{ site.data.keys.mf_bm_short }} ne permettait d'épingler qu'un seul certificat. {{ site.data.keys.mf_bm_short }} met en oeuvre une nouvelle API qui permet de se connecter à plusieurs hôtes en autorisant l'utilisateur à épingler les clés publiques de plusieurs certificats X509 (obtenus auprès d'une autorité de certification) à l'application client. Une copie de tous les certificats doit être placée dans votre application client. Lors de l'établissement de la liaison SSL, le SDK du client {{ site.data.keys.product_full }} vérifie que la clé publique du certificat du serveur correspond bien à celle de l'un des certificats stockés dans l'application.</p>
@@ -192,7 +192,7 @@ weight: 1
                 <p>La méthode prise en charge et les artefacts fournis pour la protection des ressources sur des serveurs externes ont été modifiés :</p>
 
                 <ul>
-                    <li>Un nouveau module de validation de jeton d'accès {{ site.data.keys.product_adj }} Java Token Validator configurable est fourni pour l'utilisation de l'infrastructure de sécurité {{ site.data.keys.product_adj }} afin de protéger les ressources sur un serveur Java externe. Le module est fourni comme bibliothèque Java (mfp-java-token-validator-8.0.0.jar) et remplace l'utilisation du noeud final de validation de jeton {{ site.data.keys.mf_server }} obsolète pour créer un module de validation Java personnalisé.</li>
+                    <li>Un nouveau module de validation de jeton d'accès {{ site.data.keys.product_adj }} Java Token Validator configurable est fourni pour l'utilisation de l'infrastructure de sécurité {{ site.data.keys.product_adj }} afin de protéger les ressources sur un serveur Java externe. Le module est fourni comme bibliothèque Java (mfp-java-token-validator-8.0.0.jar) et remplace l'utilisation du point de terminaison de validation de jeton {{ site.data.keys.mf_server }} obsolète pour créer un module de validation Java personnalisé.</li>
                     <li>Le filtre d'intercepteur de relations de confiance OAuth {{ site.data.keys.product_adj }} permettant de protéger des ressources Java sur un serveur WebSphere Application Server ou WebSphere Application Server Liberty externe, est désormais fourni comme bibliothèque Java library (com.ibm.imf.oauth.common_8.0.0.jar). La bibliothèque utilise le nouveau module de validation Java Token Validator et la configuration modifiée du filtre d'intercepteur de relations de confiance fourni.</li>
                     <li>L'API d'intercepteur de relations de confiance OAuth {{ site.data.keys.product_adj }} côté serveur n'est plus nécessaire et a été retirée.</li>
                     <li>L'infrastructure Node.js passport-mfp-token-validation {{ site.data.keys.product_adj }} permettant de protéger des ressources Java sur un serveur Node.js externe, a été modifiée pour prendre en charge la nouvelle infrastructure de sécurité.</li>
@@ -477,4 +477,17 @@ weight: 1
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-analytics-receiver">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-analytics-receiver" aria-expanded="true" aria-controls="collapse-mobilefirst-analytics-receiver">Nouveautés de {{ site.data.keys.mf_analytics_receiver }}</a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-analytics-receiver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics-receiver">
+            <div class="panel-body">
+                <p>{{ site.data.keys.mf_analytics_server }} est une fonction facultative qui accepte les journaux en provenance du SDK client et les transfère pour analyse. Il réduit en fait la charge de {{ site.data.keys.mf_server }} pour gérer la fonction client loguploader.</p>
+            </div>
+        </div>
+    </div>    
 </div>

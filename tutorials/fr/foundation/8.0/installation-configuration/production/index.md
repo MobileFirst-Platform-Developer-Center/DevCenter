@@ -16,6 +16,8 @@ Si vous installez un serveur de test ou de production, commencez par consulter l
 
 Pour ajouter MobileFirst Analytics Server à votre installation, voir [Guide d'installation de MobileFirst Analytics Server](analytics/).
 
+Pour ajouter MobileFirst Analytics Receiver Server à votre installation, voir [Guide d'installation de MobileFirst Analytics Receiver Server](analyticsreceiver/).
+
 Pour installer IBM MobileFirst Platform Application Center, voir [Installation et configuration d'Application Center](appcenter/).
 
 ## Application d'un groupe de correctifs pour mettre à niveau MobileFirst Platform Foundation
