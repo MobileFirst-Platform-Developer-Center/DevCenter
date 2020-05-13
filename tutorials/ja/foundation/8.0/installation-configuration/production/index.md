@@ -16,6 +16,8 @@ IBM MobileFirst Platform Foundation は、オンプレミスでインストー�
 
 インストール済み環境に MobileFirst Analytics Server を追加するには、[MobileFirst Analytics Server インストール・ガイド](analytics/)を参照してください。
 
+インストール済み環境に MobileFirst Analytics Receiver Server を追加するには、[MobileFirst Analytics Receiver Server インストール・ガイド](analyticsreceiver/)を参照してください。
+
 IBM MobileFirst Platform Application Center をインストールするには、[Application Center のインストールおよび構成](appcenter/)を参照してください。
 
 ## MobileFirst Platform Foundation をアップグレードするためのフィックスパックの適用

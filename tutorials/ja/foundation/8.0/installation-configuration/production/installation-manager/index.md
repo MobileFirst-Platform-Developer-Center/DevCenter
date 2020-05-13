@@ -42,7 +42,6 @@ Application Center を Installation Manager でインストールすることを
 {: #jump-to }
 * [管理者モード対ユーザー・モード](#administrator-versus-user-mode)
 * [IBM Installation Manager インストール・ウィザードを使用したインストール](#installing-by-using-ibm-installation-manager-install-wizard)
-* [コマンド・ラインでの IBM Installation Manager の実行によるインストール](#installing-by-running-ibm-installation-manager-in-command-line)
 * [XML 応答ファイルを使用したインストール - サイレント・インストール](#installing-by-using-xml-response-files---silent-installation)
 * [{{ site.data.keys.mf_server }} の配布構造](#distribution-structure-of-mobilefirst-server)
 
@@ -120,59 +119,63 @@ Installation Manager のモードについて詳しくは、IBM Installation Man
 * {{ site.data.keys.mf_server }} プッシュ・サービス用の **PushService** フォルダー
 * Application Center 用の **ApplicationCenter** フォルダー
 * {{ site.data.keys.mf_analytics }} 用の **Analytics** フォルダー
+* {{ site.data.keys.mf_analytics_receiver }} 用の **AnalyticsReceiver** フォルダー
 
 また、**shortcuts** フォルダーには、サーバー構成ツール、Ant、および mfpadm プログラムのショートカットも用意されています。
 
-## コマンド・ラインでの IBM Installation Manager の実行によるインストール
+<!-- Git issue: https://github.ibm.com/MobileFirst/mfp-planning/issues/910
+## Installing by running IBM Installation Manager in command line
 {: #installing-by-running-ibm-installation-manager-in-command-line }
 
-1. {{ site.data.keys.mf_server }} のご使用条件を確認します。 ライセンス・ファイルは、パスポート・アドバンテージからインストール・リポジトリーをダウンロードすると表示できます。
-2. ダウンロードした {{ site.data.keys.mf_server }} リポジトリーの圧縮ファイルを、任意のフォルダーに解凍します。
+1. Review the license agreement for {{ site.data.keys.mf_server }}. The license files can be viewed when you download the installation repository from Passport Advantage .
+2. Extract the compressed file of {{ site.data.keys.mf_server }} repository, that you downloaded, to a folder.
 
-    このリポジトリーは、[IBM パスポート・アドバンテージ](http://www.ibm.com/software/passportadvantage/pao_customers.htm)の {{ site.data.keys.product }} eAssembly からダウンロードできます。 このパックの名前は、**IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server** です。
+    You can download the repository from the {{ site.data.keys.product }} eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
 
-    以下のステップでは、インストーラーを解凍するディレクトリーは **mfp\_repository\_dir** という名前になっています。 この中には **MobileFirst\_Platform\_Server/disk1** フォルダーが含まれています。
-3. コマンド・ラインを開始し、**installation\_manager\_install\_dir/tools/eclipse/** に移動します。
+    In the steps that follow, the directory where you extract the installer is referred as **mfp\_repository\_dir**. It contains a **MobileFirst\_Platform\_Server/disk1** folder.
+3. Start a command line and go to **installation\_manager\_install\_dir/tools/eclipse/**.
 
-    ステップ 1 で確認後ご使用条件に同意したら、{{ site.data.keys.mf_server }} をインストールします。
-    * トークン・ライセンスの適用なしでインストールする場合 (トークン・ライセンスの使用を定義した契約がない場合) は、次のコマンドを入力します。
+    If you accept the license agreement after the review in step 1, install {{ site.data.keys.mf_server }}.
+    * For an installation without token licensing enforcement (if you do not have a contract that defines the use of token licensing), enter the command:
 
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
-    * トークン・ライセンスの適用ありでインストールする場合は、次のコマンドを入力します。
+    * For an installation with token licensing enforcement, enter the command:
 
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
 
-        **user.licensed.by.tokens** プロパティーの値を **true** に設定します。 [トークン・ライセンス](../token-licensing)用に {{ site.data.keys.mf_server }} を構成する必要があります。
+        The value of **user.licensed.by.tokens** property is set to **true**. You must configure {{ site.data.keys.mf_server }} for [token licensing](../token-licensing).
 
-        Application Center はインストールせずに {{ site.data.keys.mf_server }} をインストールする場合は、以下のプロパティーを設定します。
+        The following properties are set to install {{ site.data.keys.mf_server }} without Application Center:
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
 
-        このプロパティーは、トークン・ライセンスをアクティブ化するかどうかを示しています。**user.licensed.by.tokens=true/false**.
+        This property indicates whether token licensing is activated or not: **user.licensed.by.tokens=true/false**.
 
-        {{ site.data.keys.product }} をインストールするには、user.use.ios.edition プロパティーの値を false に設定します。
+        Set the value of the user.use.ios.edition property to false to install {{ site.data.keys.product }}.
 
-5. 最新の暫定修正も一緒にインストールする場合は、**-repositories** パラメーターに暫定修正・リポジトリーを追加してください。 **-repositories** パラメーターは、リポジトリーのコンマ区切りリストを受け入れます。
+5. If you want to install with the latest interim fix, add the interim fix repository in the **-repositories** parameter. The **-repositories** parameter takes a comma-separated list of repositories.
 
-    **com.ibm.mobilefirst.foundation.server** を **com.ibm.mobilefirst.foundation.server_version** に置換することで、暫定修正のバージョンを追加します。 **version** の形式は **8.0.0.0-buildNumber** となります。 例えば、暫定修正 **8.0.0.0-IF201601031015** をインストールする場合は、次のコマンドを入力します。`imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`
+    Add the version of the interim fix by replacing **com.ibm.mobilefirst.foundation.server** with **com.ibm.mobilefirst.foundation.server_version**. **version** has the form **8.0.0.0-buildNumber**. For example, if you install the interim fix **8.0.0.0-IF20160103101**5, enter the command: `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`.
 
-    imcl コマンドについて詳しくは、[Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en) を参照してください。
+    For more information about the imcl command, see [Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
 
-{{ site.data.keys.product_adj }} コンポーネントをインストールするためのリソースを含むインストール・ディレクトリーがインストールされます。
+An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.
 
-リソースは以下のフォルダーに入っています。
+You can find the resources in the following folders:
 
-* {{ site.data.keys.mf_server }} 用の **MobileFirstServer** フォルダー
-* {{ site.data.keys.mf_server }} プッシュ・サービス用の **PushService** フォルダー
-* Application Center 用の **ApplicationCenter** フォルダー
-* {{ site.data.keys.mf_analytics }} 用の **Analytics** フォルダー    
+* **MobileFirstServer** folder for {{ site.data.keys.mf_server }}
+* **PushService** folder for {{ site.data.keys.mf_server }} push service
+* **ApplicationCenter** folder for Application Center
+* **Analytics** folder for {{ site.data.keys.mf_analytics }}    
+* **AnalyticsReceiver** folder for {{ site.data.keys.mf_analytics_receiver }}
 
-また、**shortcuts** フォルダーには、サーバー構成ツール、Ant、および mfpadm プログラムのショートカットも用意されています。
+You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
+-->
 
 ## XML 応答ファイルを使用したインストール - サイレント・インストール
 {: #installing-by-using-xml-response-files---silent-installation }
@@ -636,6 +639,14 @@ IBM Installation Manager 用のサンプル応答ファイルは、**Silent\_Ins
 |------|-------------|
 | **analytics.ear** および **analytics-*.war** | {{ site.data.keys.mf_analytics }} をインストールするための EAR ファイルと WAR ファイル。 |
 | **configuration-samples** | Ant タスクを使用して {{ site.data.keys.mf_analytics }} をインストールするためのサンプル Ant ファイルが含まれています。 |
+
+#### AnalyticsReceiver サブディレクトリー内のファイルおよびサブディレクトリー
+{: #files-and-subdirectories-in-the-analytics-receiver-subdirectory }
+
+| アイテム | 説明 |
+|------|-------------|
+| **analytics-receiver*.war** | {{ site.data.keys.mf_analytics_receiver }} をインストールするための WAR ファイル。 |
+| **configuration-samples** | Ant タスクを使用して {{ site.data.keys.mf_analytics_receiver }} をインストールするためのサンプル Ant ファイルが含まれています。 |
 
 #### ApplicationCenter サブディレクトリー内のファイルおよびサブディレクトリー
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }

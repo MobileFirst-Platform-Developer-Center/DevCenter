@@ -41,6 +41,34 @@ OCP に Mobile Foundation をデプロイする手順は、OCP の使用権を�
 
   > **注:** PPA パッケージを確認し、署名を検証する場合、[ここ](./additional-docs/validating-ppa/)を参照してください。
 
+### Entitled Registry からの Mobile Foundation イメージの使用
+{: #using-mf-from-entitled-registry}
+
+PPA イメージを OpenShift 内部イメージ・レジストリーまたはその他の外部レジストリーにロードする以外に、Entitled Registry (ER) からのイメージを使用できます。
+
+1. Entitled Registry のキーを取得します。[IBM Cloud Pak for Applications](https://www.ibm.com/support/knowledgecenter/SSCSJL_3.x/install-icpa-ppa.html?view=kc) を注文した後、Cloud Pak ソフトウェアのライセンス・キーが MyIBM アカウントに関連付けられます。ご自身の ID に割り当てられているライセンス・キーを取得します。
+  * ライセンスが付与されているソフトウェアに関連付けられた IBMid とパスワードを使用して、[MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary) にログインします。
+  * **「ライセンス・キー (Entitlement keys)」**セクションで**「キーのコピー (Copy key)」**を選択して、ライセンス・キーをクリップボードにコピーします。
+2. Entitled Registry のインストーラー・イメージからインストール構成を抽出します。<br/>コマンド・ラインを使用して、以下のコマンドを実行します。
+  * Entitled Registry 情報を設定します。
+    **ENTITLED_REGISTRY** を *cp.icr.io* に、**ENTITLED_REGISTRY_USER** を *cp* に、**ENTITLED_REGISTRY_KEY** を上のステップで取得したライセンス・キーに設定する export コマンドを実行します。
+    ```bash
+    export ENTITLED_REGISTRY=cp.icr.io
+    export ENTITLED_REGISTRY_USER=cp
+    export ENTITLED_REGISTRY_KEY=<apikey>
+    ```
+  * 次の `docker login` コマンドを使用して、Entitled Registry にログインできることを確認します。
+    ```bash
+    docker login "$ENTITLED_REGISTRY" -u "$ENTITLED_REGISTRY_USER" -p "$ENTITLED_REGISTRY_KEY"
+    ```
+3. Entitled Registry の詳細を使用して、イメージ・プル秘密を生成します。
+   * 次のコマンドを使用します。
+     ```bash
+     oc create secret docker-registry -n <my_project_name> er-image-pullsecret --docker-server=cp.icr.io --docker-username=<my_username> --docker-password=<my_api_key>
+     ```
+   * プル秘密を `deploy/operator.yaml` ファイルと `deploy/crds/charts_v1_mfoperator_cr.yaml` ファイルに追加します。
+
+
 ### Mobile Foundation 用の OpenShift プロジェクトのセットアップ
 {: #setup-openshift-for-mf}
 
@@ -77,6 +105,8 @@ OCP に Mobile Foundation をデプロイする手順は、OCP の使用権を�
       MFPF_RUNTIME_DB_PASSWORD: <base64-encoded-string>
       MFPF_PUSH_DB_USERNAME: <base64-encoded-string>
       MFPF_PUSH_DB_PASSWORD: <base64-encoded-string>
+      MFPF_LIVEUPDATE_DB_USERNAME: <base64-encoded-string>
+      MFPF_LIVEUPDATE_DB_PASSWORD: <base64-encoded-string>
       MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
       MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
     kind: Secret

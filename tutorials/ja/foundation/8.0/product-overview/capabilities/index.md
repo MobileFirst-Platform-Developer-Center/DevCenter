@@ -51,6 +51,10 @@ HTML5、CSS3、および JavaScript を使用して、アプリケーション�
 
 アプリケーション・アクティビティーの要約を示すレポートに加えて、{{ site.data.keys.product }} には、{{ site.data.keys.mf_console }} 内でアクセスできるスケーラブルな運用分析プラットフォームが組み込まれています。 企業はこの{{ site.data.keys.mf_analytics_short }}フィーチャーを使用して、デバイス、アプリケーション、およびサーバーから収集された各種ログおよびイベント全体を検索することで、パターン、問題、およびプラットフォーム使用量統計を検討できます。 必要に応じて、分析、レポート、またはその両方を使用可能にすることができます。
 
+### Analytics Receiver
+{: #analyticsreceiver }
+{{ site.data.keys.mf_analytics_receiver }} は、モバイル・アプリケーションからログを受信し、メモリー内キューに保管することによって段階的に {{ site.data.keys.mf_analytics }} に転送するオプション・フィーチャーです。
+
 ### モニター
 {: #monitoring }
 {{ site.data.keys.product }} には、{{ site.data.keys.product }}  のアプリケーションおよびサーバーからのデータを収集、表示、分析し、サーバーの正常性をモニターする、幅広い運用分析メカニズムとレポート作成メカニズムが組み込まれています。

@@ -19,7 +19,7 @@ Digital App Builder は、MacOS および Windows プラットフォーム上に
 4. IBM Digital App Builder アイコンまたは実行可能プログラムをダブルクリックして、Digital App Builder を開きます。
     >**注**: Digital App Builder の初回インストール時、Digital App Builder は、前提ソフトウェアをインストールするためのインターフェースを開きます。 Digital App Builder の前のバージョンが存在する場合、前提条件チェックが実行され、前提条件を満たすために一部のソフトウェアのアップグレードまたはダウングレードが必要になることがあります。
     
-    >バージョン 8.0.6 以降、インストーラーには Mobile Foundation 開発サーバーが含まれています。インストール時に、この開発サーバーが他の前提条件と共にインストールされます。開発サーバーのライフサイクル (サーバーの開始と停止など) は、Digital App Builder 内部で処理されます。
+    >バージョン 8.0.6 以降、インストーラーには Mobile Foundation 開発サーバーが含まれています。 インストール時に、この開発サーバーが他の前提条件と共にインストールされます。 開発サーバーのライフサイクル (サーバーの開始と停止など) は、Digital App Builder 内部で処理されます。
     
     ![Digital App Builder のインストール](dab-install-startup.png)
 
@@ -55,7 +55,7 @@ Digital App Builder は、MacOS および Windows プラットフォーム上に
 2. ダウンロードした実行可能ファイル (**IBM.Digital.App.Builder.Setup.n.n.n.exe**) を管理モードで実行します。
     >**注**: Digital App Builder の初回インストール時、Digital App Builder は、前提ソフトウェアをインストールするためのインターフェースを開きます。 Digital App Builder の前のバージョンが存在する場合、前提条件チェックが実行され、前提条件を満たすために一部のソフトウェアのアップグレードまたはダウングレードが必要になることがあります。
     
-    >バージョン 8.0.6 以降、インストーラーには Mobile Foundation 開発サーバーが含まれています。インストール時に、この開発サーバーが他の前提条件と共にインストールされます。開発サーバーのライフサイクル (サーバーの開始と停止など) は、Digital App Builder 内部で処理されます。
+    >バージョン 8.0.6 以降、インストーラーには Mobile Foundation 開発サーバーが含まれています。 インストール時に、この開発サーバーが他の前提条件と共にインストールされます。 開発サーバーのライフサイクル (サーバーの開始と停止など) は、Digital App Builder 内部で処理されます。
 
     ![Digital App Builder のインストール](dab-install-startup.png)
 

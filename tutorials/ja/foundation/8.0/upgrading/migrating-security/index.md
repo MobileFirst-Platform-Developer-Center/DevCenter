@@ -5,7 +5,7 @@ breadcrumb_title: 認証の概念のマイグレーション
 downloads:
   - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
-weight: 3
+weight: 4
 ---
 ## 概説
 {: #overview }
@@ -17,11 +17,16 @@ weight: 3
 チュートリアルの[最初の部分](#migrating-the-sample-application)では、V7.1 のサンプル・アプリケーションを V8.0 にマイグレーションする方法について説明します。 これには、リソース・アダプターをマイグレーションして、フォーム・ベースの認証レルムとアダプター・ベースの認証レルムをセキュリティー検査に置き換えて、クライアント・アプリケーションとそのチャレンジ・ハンドラーをマイグレーションする作業が含まれます。<br />
 [2 番目の部分](#migrating-other-types-of-authentication-realms)では、サンプル・アプリケーションでは示されていない、V7.1 のその他のタイプの認証レルムを V8.0 にマイグレーションする方法について説明します。<br />
 [3 番目の部分](#migrating-other-v71-security-configurations)では、V7.1 の追加のセキュリティー構成を V8.0 にマイグレーションする方法について説明します。 これには、アプリケーション・レベルの保護の構成、アクセス・トークンの有効期限の構成、およびユーザー ID とデバイス ID の構成が含まれます。
-{% comment %} I edited and reordered, including splitting part two into two and three - which matches the header levels in the original doc. I moved the links (which I also edited) to each second-level header ("part").
+{% comment %} パート 2 を 2 つまたは 3 つに分割すること含め、編集と再配列を行いました。これは元の文書のヘッダー・レベルに一致します。各リンクをそれぞれの第 2 レベルのヘッダー (「パート」) に移動しました (編集も行いました)。
 {% endcomment %}
 
 > **注:** マイグレーションを開始する前に、[V8.0 マイグレーションの手引き](../migration-cookbook)を確認することをお勧めします。  
 > 新しいセキュリティー・フレームワークの基本概念については、[認証およびセキュリティー](../../authentication-and-security)を参照してください。
+
+## マイグレーション・アシスト・ツールを使用した認証レルムのマイグレーション
+{: #migrating-realms-using-migration-assist-tool}
+
+セキュリティー検査へのサポート対象レルムのマイグレーションは、マイグレーション・アシスト・ツールを使用すると、より簡単になります。詳しくは、[こちら]({{site.baseur}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/#using-migration-assistance-tool)を参照してください。
 
 ## サンプル・アプリケーションのマイグレーション
 {: #migrating-the-sample-application }
@@ -42,7 +47,7 @@ V7.1 のサンプル・アプリケーションを V8.0 にマイグレーショ
 {: #migrating-the-resource-adapter }
 リソース・アダプターのマイグレーションから始めます。 アダプターがアプリケーション・プロジェクトの一部であった V7.1 とは異なり、{{ site.data.keys.product }} V8.0 では、アダプターを別個の Maven プロジェクトとして開発します。 そのため、クライアント・アプリケーションとは独立して、リソース・アダプターをマイグレーションして、マイグレーション済みのアダプターをビルドしてデプロイすることができます。 同じことが、V8.0 のクライアント・アプリケーションと V8.0 のセキュリティー検査 (アダプター内に実装されます) についても当てはまります。 そのため、これらの成果物は任意の順序でマイグレーションできます。 このチュートリアルでは、V8.0 のリソース保護に使用される OAuth セキュリティー・スコープ・エレメントの概要を含む、リソース・アダプターのマイグレーション手順から始めます。
 
-> **注:** 
+> **注:**
 > *  以下の手順は、サンプルの `AccountAdapter` リソース・アダプターのマイグレーション手順です。 サンプルの `PinCodeAdapter` をマイグレーションする必要はありません。これによって実装されるアダプター・ベースの認証は V8.0 ではサポートされなくなったためです。 [PIN コード・アダプター・ベースの認証レルムを置き換える](#replacing-the-pin-code-adapter-based-authentication-realm)手順では、V7.1 の PIN コード・アダプターを、類似した保護を行う V8.0 のセキュリティー検査で置き換える方法について説明します。
 > *  アダプターを V8.0 にマイグレーションする方法については、[V8.0 マイグレーションの手引き](../migration-cookbook)を参照してください。
 
@@ -80,7 +85,7 @@ String userName = securityContext.getAuthenticatedUser().getDisplayName();
 
 次に、クライアント・アプリケーションをマイグレーションします。 クライアント・アプリケーションの詳細なマイグレーション手順については、[V8.0 マイグレーションの手引き](../migration-cookbook)を参照してください。  このチュートリアルでは、セキュリティー・コードのマイグレーションを重点的に扱います。 この段階では、アプリケーションのメイン HTML ファイルである **index.html** を編集して、チャレンジ・ハンドラー・コードをインポートするための行の周囲にコメントを追加する (コメント化する) ことで、チャレンジ・ハンドラー・コードを除外します。
 
-```html 
+```html
 <!--  
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
@@ -249,7 +254,7 @@ V7.1 の認証レルムのセキュリティー検査へのマイグレーショ
 
 [クライアント・アプリケーションのマイグレーション](#migrating-the-client-application)時に、アプリケーションのメイン HTML ファイルである **index.html** で該当する行をコメント化して、チャレンジ・ハンドラー・コードを除外しました。 次に、これらの行の周囲に以前に追加したコメントを削除して、アプリケーションのチャレンジ・ハンドラー・コードを追加し直します。
 
-```html 
+```html
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
 ```
@@ -263,7 +268,7 @@ V7.1 の場合と同じ機能を V8.0 で実行するユーザー・ログイン
    ```javascript
    var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
    ```
-   
+
    `WL.Client.createSecurityCheckChallengeHandler` は、{{ site.data.keys.product_adj }} セキュリティー検査からのチャレンジを処理するチャレンジ・ハンドラーを作成します。 V8.0 では、サード・パーティーのゲートウェイからのチャレンジを処理するための `WL.Client.createGatewayChallengeHandler` メソッドも導入されています。これは、V8.0 ではゲートウェイ・チャレンジ・ハンドラーと呼ばれています。 V7.1 アプリケーションを V8.0 にマイグレーションする際に、`WL.Client` `createWLChallengeHandler` メソッドまたは `createChallengeHandler` メソッドの呼び出しを、予期したチャレンジ・ソースと一致する V8.0 の `WL.Client` チャレンジ・ハンドラー作成メソッドの呼び出しで置き換えます。 例えば、カスタム・ログイン・フォームをクライアントに送信する DataPower リバース・プロキシーによってリソースが保護されている場合は、`createGatewayChallengeHandler` を使用して、ゲートウェイ・チャレンジを処理するためのゲートウェイ・チャレンジ・ハンドラーを作成します。
 
 *  チャレンジ・ハンドラー `isCustomResponse` メソッドの呼び出しを削除します。 V8.0 では、セキュリティー・チャレンジを処理するためにこのメソッドは不要になりました。
@@ -275,9 +280,9 @@ V7.1 の場合と同じ機能を V8.0 で実行するユーザー・ログイン
    ```javascript
    userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
    ```
-   
+
 以下に、これらの変更を適用した後のチャレンジ・ハンドラーの完全なコードを示します。
-   
+
 ```javascript
 function createUserLoginChallengeHandler() {
     var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
@@ -361,7 +366,7 @@ V7.1 のクロスサイト・リクエスト・フォージェリー対策 (anti
 ### ダイレクト・アップデート・レルム
 {: #direct-update-realm }
 
-V7.1 のリモート無効化レルム (`wl_directUpdateRealm`) を V8.0 にマイグレーションする必要はありません。 V7.1 のレルム要件とは異なり、ダイレクト・アップデート・フィーチャーの {{ site.data.keys.product }} V8.0 実装では関連するセキュリティー検査は必要ありません。 
+V7.1 のリモート無効化レルム (`wl_directUpdateRealm`) を V8.0 にマイグレーションする必要はありません。 V7.1 のレルム要件とは異なり、ダイレクト・アップデート・フィーチャーの {{ site.data.keys.product }} V8.0 実装では関連するセキュリティー検査は必要ありません。
 
 **注:** ダイレクト・アップデートを使用して更新を配信するための V8.0 の手順は、V7.1 の手順とは異なります。 詳しくは、[ダイレクト・アップデートのマイグレーション](../migrating-client-applications/cordova/#migrating-direct-update)を参照してください。
 
@@ -410,4 +415,3 @@ V7.1 アプリケーションは、デバイス ID レルムを定義する必�
 {: #whats-next }
 
 このチュートリアルでは、以前のバージョンの {{ site.data.keys.product }} で開発された既存のアプリケーションのセキュリティー成果物を V8.0 にマイグレーションするために必要な基本ステップについてのみ扱っています。 V8.0 のセキュリティー機能を十分に活用するには、[V8.0 セキュリティー・フレームワークの資料](../../authentication-and-security/)を参照してください。
-

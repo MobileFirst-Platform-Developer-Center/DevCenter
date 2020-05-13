@@ -62,6 +62,12 @@ weight: 2
 
 [{{ site.data.keys.mf_analytics }} について説明します](../../analytics)。
 
+### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics-receiver }
+{{ site.data.keys.product }} には、オプション・フィーチャー {{ site.data.keys.mf_analytics_receiver_short }} が含まれます。{{ site.data.keys.mf_analytics_receiver_short }} フィーチャーは、モバイル・アプリケーションからログを受信し、それらを {{ site.data.keys.mf_analytics_short }} に段階的に送信します。{{ site.data.keys.mf_analytics_receiver_short }} は、{{ site.data.keys.mf_analytics_short }} に送信する前にログを保管する、メモリー内キューを保持します。これは、{{ site.data.keys.mf_server }} が loguploader api を介して行う主要な作業を軽減し、メモリー内キューの使用量を削減します。このサービスがない場合、{{ site.data.keys.mf_server }} がログの受信機能と転送機能を実行します。{{ site.data.keys.mf_analytics_receiver_short }} オプション・サービス。
+
+[{{ site.data.keys.mf_analytics_receiver }} について説明します](../../analytics/analyticsreceiver)。
+
 ### Application Center
 {: #application-center }
 Application Center を使用すると、組織内で開発中のモバイル・アプリケーションを、モバイル・アプリケーションの単一リポジトリーで共有できます。 開発チーム・メンバーは、Application Center を使用して、チームのメンバーとアプリケーションを共有できます。 このプロセスは、アプリケーションの開発に関わるすべての担当者間のコラボレーションを容易にします。

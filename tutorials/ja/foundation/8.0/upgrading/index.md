@@ -6,10 +6,18 @@ weight: 12
 ## 概説
 {: #overview }
 {{ site.data.keys.product_full }} v8.0 では、アプリケーション開発とデプロイメントの新概念、およびいくつかの API の変更が導入されています。 MobileFirst アプリケーションのマイグレーションについて準備し計画を立てるために、これらの変更について学びます。
+> v7.1 から v8.0 へのマイグレーションの手引きとして、この[ラボ ]({{site.baseurl}}/labs/developers/8.0/advancedwallet/)を使用することもできます。
 
-> [マイグレーションの手引きを検討](migration-cookbook)して、手早くマイグレーション・プロセスを開始します。
+以下のいずれかのアプローチを選択して、アプリケーションを Mobile Foundation v8.0 にマイグレーションすることができます。
 
-> この[ラボ]({{site.baseurl}}/labs/developers/8.0/advancedwallet/)を使用して、v7.1 から v8.0 へのマイグレーションをガイドします。
+**アプローチ 1**
+
+マイグレーションの手引きに従って、Mobile Foundation v8.0 への本格的なマイグレーションを実行します。マイグレーション後、アプリケーションは Mobile Foundation v8.0 のすべてのフィーチャーおよび機能との完全な互換性を持ちます。
+> [マイグレーションの手引きを確認](migration-cookbook)します。
+
+**アプローチ 2**
+
+Mobile Foundation [Migration Studio]({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-studio/) を使用して、MobileFirst Platform Foundation v7.1 プロジェクトのインプレース・マイグレーションを実行します。このアプローチでは、アプリケーションのレガシー・ハイブリッド構造が維持されるとともに、Mobile Foundation v8.0 SDK を用いてアプリケーションが組み込まれて、Mobile Foundation v8.0 インスタンスに接続できるようになります。
 
 #### ジャンプ先
 {: #jump-to }

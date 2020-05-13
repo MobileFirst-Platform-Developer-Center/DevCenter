@@ -2,7 +2,7 @@
 layout: tutorial
 title: MobileFirst Server V8.0.0 で動作するようにするための既存のアダプターのマイグレーション
 breadcrumb_title: 既存のアダプターのマイグレーション
-weight: 3
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
@@ -15,13 +15,19 @@ weight: 3
 * 特定の条件では、既存のアダプターはそのまま {{ site.data.keys.mf_server }} v8.0 で動作します。 [{{ site.data.keys.mf_server }} V8.0 で古いアダプターをそのまま使用する](#using-older-adapters-as-is-under-mobilefirst-server-v-80)を参照してください。
 * ほとんどの場合、アダプターをアップグレードする必要があります。 Java™ アダプターの場合は、[{{ site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの Java アダプターのマイグレーション](#migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80)を参照してください。 JavaScript アダプターの場合は、[{{ site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの JavaScript アダプターのマイグレーション](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80)を参照してください。
 
+## マイグレーション・アシスト・ツールを使用したアダプターのマイグレーション
+{: #migrating-adapters-using-migration-assist-tool}
+
+既存のアダプターのマイグレーションは、マイグレーション・アシスト・ツールを使用すると、より簡単になります。詳しくは、[こちら]({{site.baseur}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/#using-migration-assistance-tool)を参照してください。
+
+
 ## {{ site.data.keys.mf_server }} v8.0 で古いアダプターをそのまま使用する
 {: #using-older-adapters-as-is-under-mobilefirst-server-v-80 }
 既存のアダプターは、以下のいずれの条件にも一致していなければ、{{ site.data.keys.mf_server }} v8.0 にそのままデプロイできます。
 
-| アダプター・タイプ | 条件 | 
+| アダプター・タイプ | 条件 |
 |--------------|-----------|
-| Java | PushAPI または SecurityAPI のインターフェースを使用している | 
+| Java | PushAPI または SecurityAPI のインターフェースを使用している |
 | JavaScript | {::nomarkdown}<ul><li>IBM Worklight V6.2 以前を使用してビルドされた。</li><li>HTTP でも SQL でもない接続タイプを使用している。</li><li>securityTest のカスタマイズが適用されたプロシージャーが含まれている</li><li>ユーザー ID を使用してバックエンドに接続するプロシージャーが含まれている</li><li>以下のいずれかの API を使用している<ul><li>WL.Device.*</li><li>WL.Geo.\*</li><li>WL.Server.readSingleJMSMessage</li><li>WL.Server.readAllJMSMessages</li><li>WL.Server.writeJMSMessage</li><li>WL.Server.requestReplyJMSMessage</li><li>WL.Server.getActiveUser</li><li>WL.Server.setActiveUser</li><li>WL.Server.getCurrentUserIdentity</li><li>WL.Server.getCurrentDeviceIdentity</li><li>WL.Server.createEventSource</li><li>WL.Server.createDefaultNotification</li><li>WL.Server.getUserNotificationSubscription</li><li>WL.Server.notifyAllDevices</li><li>WL.Server.notifyDeviceToken</li><li>WL.Server.notifyDeviceSubscription</li><li>WL.Server.sendMessage</li><li>WL.Server.createEventHandler</li><li>WL.Server.setEventHandlers</li><li>WL.Server.setApplicationContext</li><li>WL.Server.fetchNWBusinessObject</li><li>WL.Server.createNWBusinessObject</li><li>WL.Server.deleteNWBusinessObject</li><li>WL.Server.updateNWBusinessObject</li><li>WL.Server.getBeaconsAndTriggers</li><li>WL.Server.signSoapMessage</li><li>WL.Server.createSQLStatement</li></ul></li></ul>{:/} |
 
 ## {{ site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの Java アダプターのマイグレーション
@@ -43,7 +49,7 @@ weight: 3
     │                   ├── RSSAdapterApplication.java
     │                   └── RSSAdapterResource.java
    ```
-    
+
    新しい Java アダプター構造:
 
    ```xml

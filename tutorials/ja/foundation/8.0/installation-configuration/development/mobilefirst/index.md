@@ -41,6 +41,8 @@ MobileFirst Foundation をワークステーションに迅速にセットアッ
 
 > インストーラーをダウンロードするには、[ダウンロード]({{site.baseurl}}/downloads/)・ページを参照してください。
 
+>**注**: MacOS 用の DevKit は、zip ファイルとして入手できます。インストールするには、ファイルをダウンロードして unzip するだけです。解凍したフォルダーから DevKit を実行します。 
+
 ## {{ site.data.keys.product }} コンポーネント
 {: #mobilefirst-foundation-components }
 

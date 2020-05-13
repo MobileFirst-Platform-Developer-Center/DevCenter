@@ -506,6 +506,10 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 | mfp.analytics.url | 着信分析データを受信する IBM {{ site.data.keys.mf_analytics }} によって公開される URL。 例えば、`http://<hostname>:<port>/analytics-service/rest` などです。 |
 | mfp.analytics.username | IBM {{ site.data.keys.mf_analytics }} のデータ入力ポイントが基本認証で保護されている場合に使用されるユーザー名。|
 | mfp.device.decommissionProcessingInterval | 廃止タスクが実行される頻度 (秒単位) を定義します。 デフォルト: 86400 (1 日)。 |
+| mfp.analytics.receiver.password | IBM {{ site.data.keys.mf_analytics_receiver }} のデータ入力ポイントが基本認証で保護されている場合に使用されるパスワード。 |
+| mfp.analytics.receiver.url | 着信分析データを受信する IBM {{ site.data.keys.mf_analytics_receiver }} によって公開される URL。例えば、`http://<hostname>:<port>/analytics-receiver/rest` などです。 |
+| mfp.analytics.receiver.username |IBM {{ site.data.keys.mf_analytics_receiver }} のデータ入力ポイントが基本認証で保護されている場合に使用されるユーザー名。|
+| mfp.device.decommissionProcessingInterval | 廃止タスクが実行される頻度 (秒単位) を定義します。 デフォルト: 86400 (1 日)。 |
 | mfp.device.decommission.when | デバイス廃用タスクによってクライアント・デバイスが廃用にされるまでの非アクティブ猶予日数。 デフォルト: 90 日。 |
 | mfp.device.archiveDecommissioned.when | 廃止されたクライアント・デバイスがアーカイブされるまでの非アクティブ猶予日数。<br/><br/>このタスクは、廃止されたクライアント・デバイスをアーカイブ・ファイルに書き込みます。 アーカイブされたクライアント・デバイスは、{{ site.data.keys.mf_server }} の **home\devices_archive** ディレクトリーにあるファイルに書き込まれます。 このファイルの名前には、アーカイブ・ファイルが作成されたときのタイム・スタンプが含まれます。 デフォルト: 90 日。 |
 | mfp.licenseTracking.enabled | {{ site.data.keys.product }} でデバイス・トラッキングを有効または無効にするために使用する値。<br/><br/>パフォーマンス上の理由のため、{{ site.data.keys.product }} が Business to Consumer (B2C) アプリケーションのみを実行する場合は、デバイス・トラッキングを無効にすることができます。 デバイス・トラッキングが無効になると、ライセンス・レポートも無効になり、ライセンス・メトリックが作成されません。<br/><br/>指定可能な値は、true (デフォルト) および false です。 |
@@ -527,8 +531,8 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 | mfp.push.db.cloudant.dbName | オプション | Cloudant アカウントのデータベースの名前。 小文字で開始し、小文字、数字、および文字 _、$、- のみで構成されている必要があります。 デフォルト: mfp\_push\_db |
 | mfp.push.db.cloudant.username | オプション | データベースの保管に使用される Cloudant アカウントのユーザー名。 このプロパティーは定義されないと、リレーショナル・データベースが使用されます。 |
 | mfp.push.db.cloudant.password | オプション | データベースの保管に使用される Cloudant アカウントのパスワード。 このプロパティーは、mfp.db.cloudant.username が設定されたときに設定されます。 |
-| mfp.push.db.cloudant.doc.version | オプション | Cloudant 文書のバージョン。 |
-| mfp.push.db.cloudant.socketTimeout | オプション	| Cloudant のネットワーク接続喪失を検出するためのタイムアウト (ミリ秒単位)。 値 0 は、無限のタイムアウトを意味します。 負の値は、デフォルト (オーバーライドなし) を意味します。 デフォルト。 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration) を参照。 |
+| mfp.push.db.cloudant.doc.version |オプション| Cloudant 文書のバージョン。 |
+| mfp.push.db.cloudant.socketTimeout |オプション	| Cloudant のネットワーク接続喪失を検出するためのタイムアウト (ミリ秒単位)。 値 0 は、無限のタイムアウトを意味します。 負の値は、デフォルト (オーバーライドなし) を意味します。 デフォルト。 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration) を参照。 |
 | mfp.push.db.cloudant.connectionTimeout | オプション	| Cloudant のネットワーク接続を確立するためのタイムアウト (ミリ秒単位)。 値 0 は、無限のタイムアウトを意味します。 負の値は、デフォルト (オーバーライドなし) を意味します。 デフォルト。 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration) を参照。 |
 | mfp.push.db.cloudant.maxConnections | オプション | Cloudant コネクターの最大接続数。 デフォルト。 [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration) を参照。 |
 | mfp.push.db.cloudant.ssl.authentication | オプション | SSL 証明書チェーンの検証およびホスト名の検証が、Cloudant データベースへの HTTPS 接続に対して有効化されるかどうかを指定するブール値 (true または false)。 デフォルト: True |
@@ -542,12 +546,12 @@ Apache Tomcat Web アプリケーション・サーバー上に {{ site.data.key
 | mfp.push.services.ext.analytics | オプション | 分析拡張機能プラグイン。 |
 | mfp.push.analytics.endpoint | オプション | 分析サーバーのエンドポイント URL。 |
 | mfp.push.analytics.user | オプション | 分析サーバーにアクセスするユーザー名。 |
-| mfp.push.analytics.password | オプション | 分析サーバーにアクセスするパスワード。 |
+| mfp.push.analytics.password |オプション| 分析サーバーにアクセスするパスワード。 |
 | mfp.push.analytics.events.notificationDispatch | オプション	| 通知がディスパッチされようとしているときの分析イベント。 デフォルト: true |
 | mfp.push.internalQueue.maxLength | オプション | ディスパッチまで通知タスクを保持するキューの長さ。 デフォルト: 200000 |
 | mfp.push.gcm.proxy.enabled | オプション	| プロキシーを介して Google GCM にアクセスする必要があるかどうかを示します。 デフォルト: false |
 | mfp.push.gcm.proxy.protocol | オプション | http または https のいずれかにすることができます。 |
-| mfp.push.gcm.proxy.host | オプション | GCM プロキシー・ホスト。 負の値はデフォルト・ポートを意味します。 |
+| mfp.push.gcm.proxy.host |オプション| GCM プロキシー・ホスト。 負の値はデフォルト・ポートを意味します。 |
 | mfp.push.gcm.proxy.port | オプション | GCM プロキシー・ポート。 デフォルト: -1 |
 | mfp.push.gcm.proxy.user | オプション | プロキシーで認証が必要な場合のプロキシー・ユーザー名。 空のユーザー名は、認証がないことを意味します。 |
 | mfp.push.gcm.proxy.password | オプション | プロキシーで認証が必要な場合のプロキシー・パスワード。 |

@@ -64,7 +64,7 @@ task.tekton.dev/mobile-app-registration-task created
 {: #mobile-app-build-pipeline-android}
 
 **前提条件**
-Android ビルド用のパイプラインを使用する前に、*github-token* をビルド・タスクに追加する必要があります。`pipeline/mobile-app-build-android/buildandroidapptask.yaml` ファイルに移動し、ステップ **create-release** で、*{GITHUB_TOKEN}* のプレースホルダーを有効な *github-token* を使用して編集します。
+Android ビルド用のパイプラインを使用する前に、*github-token* をビルド・タスクに追加する必要があります。 `pipeline/mobile-app-build-android/buildandroidapptask.yaml` ファイルに移動し、ステップ **create-release** で、*{GITHUB_TOKEN}* のプレースホルダーを有効な *github-token* を使用して編集します。
 
 ```yaml
   - name: create-release
@@ -94,7 +94,7 @@ pipelineresource.tekton.dev/mobile-app-build-android-image-resource created
 
 **前提条件**
 1. Android と同様に、ファイル `pipeline/mobile-app-build-ios/buildiosapptask.yaml` のステップ *create-release* に GitHubトークンを追加する必要があります。
-2. 一般にアクセス可能な Mac マシンに Xcode サーバーをセットアップする必要があります。『*iOS アプリケーションをビルドするための Xcode サーバーのセットアップ*』セクションを確認してください。
+2. 一般にアクセス可能な Mac マシンに Xcode サーバーをセットアップする必要があります。 『*iOS アプリケーションをビルドするための Xcode サーバーのセットアップ*』セクションを確認してください。
 
 前提条件を満たした後、次のコマンドを実行します。
 ```bash
@@ -196,7 +196,7 @@ pipelineresource.tekton.dev/appcenter-git-resource configured
 ### PipelineRun を使用して、パイプラインを実行する
 {: #running-pipelines-pipelinerun}
 
-アプリケーション Git リポジトリーに移動し、パイプライン構成ファイル (プロジェクトのルート・フォルダーにある `pipelineconfig.json` ファイル) を編集します。存在しない場合は、ホスト名、ポート、環境の選択、XCode サーバーの詳細、および GitHub の詳細を含む json ファイル `pipelineconfig.json` (GitHub リポジトリーのルート・ディレクトリー内) を作成します。
+アプリケーション Git リポジトリーに移動し、パイプライン構成ファイル (プロジェクトのルート・フォルダーにある `pipelineconfig.json` ファイル) を編集します。 存在しない場合は、ホスト名、ポート、環境の選択、XCode サーバーの詳細、および GitHub の詳細を含む json ファイル `pipelineconfig.json` (GitHub リポジトリーのルート・ディレクトリー内) を作成します。
 
 パイプライン構成ファイルは次のようなものになります。
 
@@ -273,27 +273,27 @@ PipelineRun のログと状況を表示するには、Tekton ダッシュボー�
 2. Xcode を開きます。
 3. メニューから、**「Xcode サーバー」**を選択します。
 ![XCode](./xcode-1.png)
-4.  Xcode サーバーをオンにして、統合を実行します。
+4. Xcode サーバーをオンにして、統合を実行します。
 ![XCode](./xcode-2.png)
 5. サーバーがオンになった後は、**「Permissions」**セクションに移動し、**「ボットの作成と表示 (Create and View Bots)」**オプションを`「すべてのユーザー (all users)」`に変更します。
 ![XCode](./xcode-3.png)
 6. **「アカウント (Accounts)」**セクションに移動し、アカウント・タイプが`「Xcode サーバー」`の新しいアカウントを追加し、使用可能なサーバーを選択します。
 ![XCode](./xcode-4.png)  
 ![XCode](./xcode-5.png)  
-7.  Xcode サーバーをセットアップした後、統合を実行して `ipa` を生成するようにボットを構成する必要があります。Xcode でビルドする iOS プロジェクトを開きます。
-8. プロジェクトのビルド・ログに移動し、**「グループ別 (By Group)」**オプションを選択します。構成されたサーバーが表示されます。
+7. Xcode サーバーをセットアップした後、統合を実行して `ipa` を生成するようにボットを構成する必要があります。 Xcode でビルドする iOS プロジェクトを開きます。
+8. プロジェクトのビルド・ログに移動し、**「グループ別 (By Group)」**オプションを選択します。 構成されたサーバーが表示されます。
 ![XCode](./xcode-6.png)
 9. サーバーを右クリックし、**「ボットの作成 (Create Bot)」**をクリックします。
 ![XCode](./xcode-7.png)
-10. ボットの名前を指定して、**「次へ」**をクリックします。ボット名にスペースが含まれないようにしてください。ボットのソース管理を構成して、**「次へ」**をクリックします。
+10. ボットの名前を指定して、**「次へ」**をクリックします。 ボット名にスペースが含まれないようにしてください。 ボットのソース管理を構成して、**「次へ」**をクリックします。
 ![XCode](./xcode-8.png)
-11. **「アクション (Actions)」**セクションのビルド構成で、**「アーカイブ (Archive)」**オプションが選択されていることを確認します。**「エクスポート (Export)」**オプションの下で、*「カスタム・エクスポート・オプション plist を使用する (Use Custom Export Options Plist)」*を選択します。次の形式の `plist` ファイルがあることを確認してください。
+11. **「アクション (Actions)」**セクションのビルド構成で、**「アーカイブ (Archive)」**オプションが選択されていることを確認します。 **「エクスポート (Export)」**オプションの下で、*「カスタム・エクスポート・オプション plist を使用する (Use Custom Export Options Plist)」*を選択します。 次の形式の `plist` ファイルがあることを確認してください。
 ![XCode](./xcode-9.png)
 12. **「ボット統合のスケジュール (Schedule bot integrations)」**セクションで、*手動* で実行する統合を選択し、**「次へ」**をクリックします。
 ![XCode](./xcode-10.png)
 13. プロジェクトの関連するビルド・オプションを選択し、**「次へ」**をクリックします。
 14. **「証明書とプロファイル (Certificates and Profiles)」**セクションで、`ipa` の生成に必要な関連する証明書とプロファイルがサーバーに追加されていることを確認して、**「次へ」**をクリックします。
-15. **「引数と環境変数 (Arguments and Environment Variables)」**セクションで、**「次へ」**をクリックします。**「トリガー (Triggers)」**セクションで、**「追加」**をクリックし、*「統合前スクリプト (Pre-Integration script)」*を選択し、名前を付けて、アプリケーションの CocoaPod 依存関係 (存在する場合) をダウンロードするスクリプト・セクションに次のスクリプトを追加して、**「作成」**をクリックします。
+15. **「引数と環境変数 (Arguments and Environment Variables)」**セクションで、**「次へ」**をクリックします。 **「トリガー (Triggers)」**セクションで、**「追加」**をクリックし、*「統合前スクリプト (Pre-Integration script)」*を選択し、名前を付けて、アプリケーションの CocoaPod 依存関係 (存在する場合) をダウンロードするスクリプト・セクションに次のスクリプトを追加して、**「作成」**をクリックします。
     ```bash
     #!/bin/sh
     cd $XCS_PRIMARY_REPO_DIR
@@ -303,11 +303,11 @@ PipelineRun のログと状況を表示するには、Tekton ダッシュボー�
     pod install --repo-update
     ```
 ![XCode](./xcode-11.png)
-16. ボットが正常に作成された後、統合が実行されるのを待ちます。統合が成功したら、統合に移動して**「ログ (Logs)」**に移動します。ログの中に *botId* があります。*botId* は、Tekton パイプラインから統合を実行するために必要です。
+16. ボットが正常に作成された後、統合が実行されるのを待ちます。 統合が成功したら、統合に移動して**「ログ (Logs)」**に移動します。 ログの中に *botId* があります。 *botId* は、Tekton パイプラインから統合を実行するために必要です。
 ![XCode](./xcode-12.png)
 ![XCode](./xcode-13.png)
 ![XCode](./xcode-14.png)   
-17. これで、Xcode サーバーのセットアップが正常に完了しました。*botId* と、json 構造の iOS 部分の Xcode サーバー・*ホスト* を使用して、アプリケーションのパイプライン構成ファイル `pipelineconfig.json` を更新します。これで、Tekton パイプラインから `ipa` を生成できるようになります。  
+17. これで、Xcode サーバーのセットアップが正常に完了しました。 *botId* と、json 構造の iOS 部分の Xcode サーバー・*ホスト* を使用して、アプリケーションのパイプライン構成ファイル `pipelineconfig.json` を更新します。 これで、Tekton パイプラインから `ipa` を生成できるようになります。  
     ```json
     "ios": {
       "host": "9.109.199.108",

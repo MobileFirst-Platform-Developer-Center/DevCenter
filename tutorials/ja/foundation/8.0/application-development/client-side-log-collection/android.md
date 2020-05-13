@@ -67,6 +67,16 @@ Logger.setAutoSendLogs(true);
 Logger.setAutoSendLogs(false);
 ```
 
+### autoSendLog インターバルの変更
+{: auto-log-sending-interval }
+デフォルトでは、*autoSendLog インターバル* は 60 秒に設定されています。*autoSendLog インターバル* は、次のメソッドを使用して変更できます。
+
+*autoSendLog インターバル* を 120 秒に設定するには、次を参照してください。
+
+```java
+Logger.setAutoSendLogs(true, 120);
+```
+
 ## Logger API による細かい調整
 {: #fine-tuning-with-the-logger-api }
 {{ site.data.keys.product_adj }} クライアント SDK は、Logger API を内部で利用します。 デフォルトでは、SDK によって作成されたログ・エントリーをキャプチャーしています。 ログ収集を細かく調整するには、パッケージ名を指定してロガー・インスタンスを使用します。 サーバー・サイドのフィルターを使用して、分析でどのロギング・レベルをキャプチャーするかを制御することもできます。
