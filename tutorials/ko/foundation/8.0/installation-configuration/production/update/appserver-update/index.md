@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst 서버 업데이트
-breadcrumb_title: Updating the MobileFirst server
+breadcrumb_title: MobileFirst 서버 업데이트
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -26,6 +26,10 @@ IBM MobileFirst Platform Foundation에서는 사용자가 설치했을 수 있�
 
 이 컴포넌트의 설치는 선택사항입니다. MobileFirst 컴포넌트는 REST API를 통해 MobileFirst Operational Analytics로 데이터를 전송합니다. 임시 수정사항 레벨이 동일한 MobileFirst Server의 다른 컴포넌트와 함께 MobileFirst Operational Analytics를 실행하는 것이 바람직합니다.
 
+### MobileFirst Operational Analytics Receiver
+{: #analyticsreceiver}
+
+이 컴포넌트의 설치는 선택사항입니다. MobileFirst 애플리케이션은 REST API를 통해 MobileFirst Operational Analytics Receiver에 로그 데이터를 전송합니다. MobileFirst Operational Analytics가 설치된 경우에만 이 컴포넌트를 설치하십시오. 임시 수정사항 레벨(iFix)이 동일한 MobileFirst Server의 다른 컴포넌트와 함께 MobileFirst Operational Analytics Receiver를 실행하는 것이 바람직합니다.
 
 ## MobileFirst Server 관리 서비스, MobileFirst Operations Console 및 MobileFirst 런타임 환경 업데이트
 {: #updating-server}

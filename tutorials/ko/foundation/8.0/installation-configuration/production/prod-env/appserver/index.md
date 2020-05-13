@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 애플리케이션 서버에 MobileFirst Server 설치
-breadcrumb_title: Installing MobileFirst Server to an application server
+breadcrumb_title: 애플리케이션 서버에 MobileFirst Server 설치
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -159,7 +159,7 @@ Liberty 서버를 실행하는 프로세스는 프로세스를 시작한 사용�
 {% highlight bash %}                    
 liberty_install_dir/bin/productInfo featureInfo
 {% endhighlight %}
-                    <b>참고:</b> 이 명령의 출력에 restConnector-1.0이 포함되어 있는지 확인하십시오.</li>
+                    <b>참고:</b> 이 명령의 출력에 restConnector-1.0이 포함되는지 확인하십시오.</li>
                 </ul>
             </div>
         </div>
@@ -251,6 +251,28 @@ Server Configuration Tool은 데이터베이스를 설정하고 컴포넌트를 
 * Linux x86 또는 Linux x86-64
 
 기타 운영 체제에서는 이 도구를 사용할 수 없습니다. [Ant 태스크를 사용한 설치](#installing-with-ant-tasks)에 설명된 대로 {{ site.data.keys.mf_server }} 컴포넌트를 설치하려면 Ant 태스크를 사용해야 합니다.
+
+Mac OS의 ServerConfigurationTool(SCT) 실행기는 레거시 Java SE 6 런타임 설치를 실행합니다. Mac OS에서 SCT 실행기를 시작하면 아래 메시지가 표시됩니다. 
+
+![메시지 SCT - Mac OS](message-sct-mac.png)
+
+이 문제를 해결하려는 경우, Java SE 6 런타임을 설치하지 않고 SCT 실행 파일을 사용하여 다음 접근법 중 하나를 수행하고 SCT를 실행할 수 있습니다. 
+
+#### 접근법 1
+* `ServerConfigurationTool` 실행기를 마우스 오른쪽 단추로 클릭합니다. 
+* **패키지 컨텐츠 표시**를 선택합니다. 
+
+  ![패키지 컨텐츠 표시](show-package-contents.png)
+
+* **컨텐츠** > **MacOS**를 클릭합니다.
+* `ServerConfigurationTool` 실행 파일을 클릭하여 SCT를 실행합니다. 
+
+#### 접근법 2
+Java SE 8와 Java SE6를 문제 없이 모두 컴퓨터에 설치할 수 있습니다. 
+
+* SCT 실행기를 사용하는 동안 팝업 창이 표시되면 **자세한 정보**를 클릭합니다. 
+* Apple 지원 사이트로 이동합니다. 여기서 Java SE 6 런타임을 가져오는 방법에 관한 추가 지시사항을 볼 수 있습니다. 
+* 지시사항에 따라 Java SE 6 런타임을 설치하고 SCT 실행기를 시작합니다. 
 
 ### 지원되는 토폴로지
 {: #supported-topologies }
@@ -802,7 +824,7 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 사용할 수 �
 {% endhighlight %}
 
                 <p>mfp.admin.endpoint 특성의 일반적인 값은 <b>*://*:*/the-adminContextRoot</b>입니다.<br/>
-                JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
+                 JNDI 특성에 대한 자세한 정보는 <a href="../../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }}의 JNDI 특성</a>을 참조하십시오.</p>
 
                 <h3>보안 역할</h3>
                 <p>애플리케이션의 <b>application-bnd</b> 요소에서 다음과 같은 역할을 선언하십시오.</p>
@@ -1893,7 +1915,8 @@ Server Configuration Tool을 사용하여 서버 팜을 계획할 때는 먼저 
                             </li>
                             <li>각각의 신뢰 저장소에 있는 모든 서버 사이에서 서명자 인증서를 교환하십시오.
                             <br/><br/>
-                            보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
+                            <blockquote><b>참고</b>: 보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
+                            </blockquote>
                             </li>
                         </ul>
                     </li>
@@ -1945,7 +1968,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                             서버 설정에 대한 자세한 정보는 <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건</a>을 참조하십시오.</li>
                             <li>각각의 신뢰 저장소에 있는 모든 서버 사이에서 서명자 인증서를 교환하십시오.
                             <br/><br/>
-                            보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
+                            <blockquote><b>참고</b>: 보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a></blockquote>의 6단계에 있는 가이드라인을 따르십시오.
                             </li>
                         </ul>
                     </li>
@@ -1999,7 +2022,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                                 <br/>
                                 <b>참고:</b> 팜의 서버에 둘 이상의 런타임을 설치하려는 경우에는 속성 ID를 지정하고 <b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b> 및 <b>uninstallmobilefirstruntime</b> Ant 태스크에서 각 런타임에 대해 고유해야 하는 값을 설정하십시오.
                                 <br/>
-                                For example,
+                                예:
 {% highlight xml %}
 <target name="rtminstall">
     <installmobilefirstruntime execute="true" contextroot="/runtime1" id="rtm1">
@@ -2088,7 +2111,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
 <jndiEntry jndiName="mfp.admin.jmx.host" value="93.12.0.12"/>
 <jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>
 {% endhighlight %}
-                                이 특성은 적절한 값으로 설정되어야 합니다.
+                                이러한 특성은 적절한 값을 사용하여 설정해야 합니다.
                                 <ul>
                                     <li><b>mfp.admin.serverid</b>: 이 팜 멤버에 대해 정의된 ID입니다. 이 ID는 모든 팜 멤버에서 고유해야 합니다.</li>
                                     <li><b>mfp.admin.jmx.user</b> 및 <b>mfp.admin.jmx.pwd</b>: 이 값은 <code>administrator-role</code> 요소에서 선언된 대로 사용자의 인증 정보와 일치해야 합니다.</li>
@@ -2103,7 +2126,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
 <Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                <b>mfp.admin.serverid</b> 특성은 이 팜 멤버에 대해 정의된 ID로 설정되어야 합니다. 이 ID는 모든 팜 멤버에서 고유해야 합니다.
+                                <b>mfp.admin.serverid</b> 특성을 이 팜 멤버에 정의한 ID로 설정해야 합니다. 이 ID는 모든 팜 멤버에서 고유해야 합니다.
                                 <br/>
                                 <code>-Djava.rmi.server.hostname</code> JVM 인수가 이 서버에 액세스하기 위해 원격 멤버가 사용하는 호스트 이름 또는 IP로 설정되는지 확인해야 합니다. 따라서 이를 <b>localhost</b>로 설정하지 마십시오. 또한 <code>-Dcom.sun.management.jmxremote.port</code> JVM 인수가 JMX RMI 연결을 사용으로 설정하기 위해 아직 사용되고 있지 않은 포트를 사용하여 설정되어 있는지 확인해야 합니다. 두 인수 모두 <b>CATALINA_OPTS</b> 환경 변수에서 설정됩니다.
                             </li>
@@ -2155,6 +2178,10 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                                 <ul>
                                     <li>팜에 있는 다른 서버의 공용 인증서를 서버의 <b>server.xml</b> 구성 파일이 참조하는 신뢰 저장소로 가져오십시오. <a href="../../simple-install/graphical-mode">그래픽 모드에서 {{ site.data.keys.mf_server }} 설치</a> 튜토리얼에서는 팜에 있는 두 Liberty 서버 사이에서 인증서를 교환하는 데 필요한 지시사항을 제공합니다. 자세한 정보는 <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }}를 실행하는 두 개의 Liberty 서버로 구성된 팜 작성</a> 섹션의 5단계를 참조하십시오.</li>
                                     <li>WebSphere Application Server Liberty 프로파일의 각 인스턴스를 다시 시작하여 보안 구성을 적용하십시오. 싱글 사인온(SSO)이 작동하려면 다음의 단계가 필요합니다.</li>
+                                    <li>각각의 신뢰 저장소에 있는 모든 서버 사이에서 서명자 인증서를 교환하십시오.
+                                    <br/><br/>
+                                    <blockquote><b>참고</b>: 보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 다음 단계를 완료하십시오. </blockquote>
+                                    </li>
                                     <li>팜의 한 멤버를 시작하십시오. 기본 LTPA 구성에서는 Liberty 서버가 정상적으로 시작되면 LTPA 키 저장소가 <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys</b>로 생성됩니다.</li>
                                     <li><b>ltpa.keys</b> 파일을 각 팜 멤버의 <b>${wlp.user.dir}/servers/server_name/resources/security</b> 디렉토리에 복사하여 팜 멤버 사이에서 LTPA 키 저장소를 복제하십시오. LTPA 구성에 대한 자세한 정보는 <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Liberty 프로파일에서 LTPA 구성</a>을 참조하십시오.</li>
                                 </ul>

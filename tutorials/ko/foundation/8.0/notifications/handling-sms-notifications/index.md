@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 클라이언트 애플리케이션에서 SMS 알림 처리
-breadcrumb_title: Handling SMS Notifications
+breadcrumb_title: SMS 알림 처리
 relevantTo: [ios,android,cordova]
 weight: 4
 show_children: true

@@ -432,7 +432,7 @@ JNDI 특성을 통해 HTTP/2 기반 알림을 사용할 수 있습니다.
 ### HTTP/2에 대한 프록시 지원
 {: #proxy-support-for-http2}
 
-HTTP/2 기반 알림은 HTTP 프록시를 통해서 전송될 수 있습니다. 프록시를 통한 알림 경로 지정을 사용하려면 [여기](#proxy-support)를 참조하십시오.
+HTTP/2 기반 알림은 HTTP 프록시를 통해서 전송될 수 있습니다. 프록시를 통한 알림 경로 지정을 사용하려면 [여기]({{site.baseurl}}}/blog/2018/12/24/HTTP2-proxy-support/)를 참조하십시오.
 
 ## 프록시 지원
 {: #proxy-support }

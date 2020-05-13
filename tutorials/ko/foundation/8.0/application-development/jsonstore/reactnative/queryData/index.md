@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore 콜렉션에서 데이터 조회
-breadcrumb_title: Query data from JSONStore collection
+breadcrumb_title: JSONStore 콜렉션에서 데이터 조회
 relevantTo: [reactnative]
 weight: 3
 downloads:

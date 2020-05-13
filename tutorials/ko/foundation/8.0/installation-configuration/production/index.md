@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Platform Foundation 설치
-breadcrumb_title: Production Environment
+breadcrumb_title: 프로덕션 환경
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -15,6 +15,8 @@ IBM MobileFirst Platform Foundation은 테스트 또는 프로덕션 용도로 �
 테스트 또는 프로덕션 서버를 설치하는 경우 [단순한 MobileFirst Server 설치를 위한 튜토리얼](simple-install/)부터 시작하십시오. 특정 환경을 위한 설치 준비에 대한 자세한 정보는 [ 프로덕션 환경을 위한 MobileFirst Server 설치](prod-env/)를 참조하십시오.
 
 설치에 MobileFirst Analytics Server를 추가하려면 [MobileFirst Analytics Server 설치 안내서](analytics/)를 참조하십시오.
+
+설치에 MobileFirst Analytics Receiver Server를 추가하려면 [MobileFirst Analytics Receiver Server 설치 안내서](analyticsreceiver/)를 참조하십시오.
 
 IBM MobileFirst Platform Application Center를 설치하려면 [Application Center 설치 및 구성](appcenter/)을 참조하십시오.
 

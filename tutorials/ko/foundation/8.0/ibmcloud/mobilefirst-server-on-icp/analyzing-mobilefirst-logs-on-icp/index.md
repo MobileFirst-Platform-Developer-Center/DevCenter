@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud Private에서 MobileFirst 로그 메시지 분석
-breadcrumb_title: Analyzing MobileFirst log messages
+breadcrumb_title: MobileFirst 로그 메시지 분석
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Eclipse에서 MobileFirst CLI 사용
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: MobileFirst Eclipse plug-in
+breadcrumb_title: MobileFirst Eclipse 플러그인
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -155,9 +155,9 @@ Eclipse 프로젝트 탐색기에서 원하는 플랫폼(예: **platforms** 디�
 2. **MobileFirst Studio 플러그인**을 선택하여 플러그인 환경 설정 페이지를 표시하십시오.
 3. **디버그 모드 사용** 선택란이 선택되었는지 확인한 후 **적용 → 확인**을 클릭하십시오.
 
-### 활성 업데이트
+### 라이브 업데이트
 {: #live-update }
-애플리케이션 미리보기 중에 활성 업데이트를 사용할 수 있습니다. 업데이트를 작성하고 변경사항을 저장한 다음 미리보기에서 자동으로 새로 고치기가 수행되는 것을 볼 수 있습니다.
+애플리케이션 미리보기 중에 라이브 업데이트를 사용할 수 있습니다. 업데이트를 작성하고 변경사항을 저장한 다음 미리보기에서 자동으로 새로 고치기가 수행되는 것을 볼 수 있습니다.
 
 ### Eclipse에 {{ site.data.keys.mf_server }} 통합
 {: #integrating-mobilefirst-server-into-eclipse }

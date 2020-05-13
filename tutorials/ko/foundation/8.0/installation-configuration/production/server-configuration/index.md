@@ -506,6 +506,10 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 | mfp.analytics.url | 수신 분석 데이터를 받는 URL입니다. 이 URL은 IBM {{ site.data.keys.mf_analytics }}에 의해 공개됩니다. 예를 들어, `http://<hostname>:<port>/analytics-service/rest`입니다. |
 | mfp.analytics.username | IBM {{ site.data.keys.mf_analytics }}의 데이터 시작점이 기본 인증으로 보호되는 경우에 사용되는 사용자 이름입니다.|
 | mfp.device.decommissionProcessingInterval | 해제 태스크가 실행되는 빈도(초)를 정의합니다. 기본값: 86400(1일). |
+| mfp.analytics.receiver.password |IBM {{ site.data.keys.mf_analytics_receiver }}의 데이터 시작점이 기본 인증으로 보호되는 경우에 사용되는 비밀번호입니다. |
+| mfp.analytics.receiver.url |수신 분석 데이터를 받는 URL입니다. 이 URL은 IBM {{ site.data.keys.mf_analytics_receiver }}에 의해 공개됩니다. 예를 들어, `http://<hostname>:<port>/analytics-receiver/rest`입니다. |
+| mfp.analytics.receiver.username |IBM {{ site.data.keys.mf_analytics_receiver }}의 데이터 시작점이 기본 인증으로 보호되는 경우에 사용되는 사용자 이름입니다.|
+| mfp.device.decommissionProcessingInterval | 해제 태스크가 실행되는 빈도(초)를 정의합니다. 기본값: 86400(1일). |
 | mfp.device.decommission.when | 클라이언트 디바이스가 디바이스 해제 태스크에 의해 해제될 때까지의 비활성 일 수입니다. 기본값: 90일. |
 | mfp.device.archiveDecommissioned.when | 해제된 클라이언트 디바이스가 아카이브될 때까지의 비활성 일 수입니다.<br/><br/>이 태스크는 해제된 클라이언트 디바이스를 아카이브 파일에 기록합니다. 아카이브된 클라이언트 디바이스는 {{ site.data.keys.mf_server }} **home\devices_archive** 디렉토리에 있는 파일에 기록됩니다. 이 파일의 이름에는 아카이브 파일 작성 시의 시간소인이 포함됩니다. 기본값: 90일. |
 | mfp.licenseTracking.enabled | {{ site.data.keys.product }}에서 디바이스 추적을 사용 가능 또는 사용 불가능하게 설정하는 데 사용되는 값입니다.<br/><br/>성능상의 이유로, {{ site.data.keys.product }}이 B2C(Business-to-Consumer) 앱만 실행하는 경우 디바이스 추적을 사용 불가능하게 설정할 수 있습니다. 디바이스 추적이 사용되지 않는 경우, 라이센스 보고서도 사용되지 않고 라이센스 메트릭이 생성되지 않습니다.<br/><br/>가능한 값은 true(기본값) 및 false입니다. |

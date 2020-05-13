@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 사용자 정의 차트 작성
-breadcrumb_title: Custom Charts
+breadcrumb_title: 사용자 정의 차트
 relevantTo: [ios,android,javascript]
 weight: 3
 ---

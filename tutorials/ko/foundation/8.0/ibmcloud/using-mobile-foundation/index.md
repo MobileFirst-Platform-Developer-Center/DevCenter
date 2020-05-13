@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud에서 Mobile Foundation 서비스
-breadcrumb_title: Foundation on IBM Cloud
+breadcrumb_title: IBM Cloud의 Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 11
 ---
@@ -52,7 +52,7 @@ weight: 11
 1. [bluemix.net](http://bluemix.net)으로 이동하여 로그인한 후 **카탈로그**를 클릭하십시오.
 2. **Mobile Foundation**을 검색하고 바둑판식 옵션이 표시되면 클릭하십시오.
 3. *선택사항*. 서비스 인스턴스의 사용자 정의 이름을 입력하거나 기본 제공된 이름을 사용하십시오.
-4. 원하는 가격 책정 플랜을 선택한 후 **작성**을 클릭하십시오.
+4. 원하는 가격 플랜을 선택한 후 **작성**을 클릭하십시오.
 
     <img class="gifplayer" alt="{{ site.data.keys.mf_bm_short }} 서비스 인스턴스 작성" src="mf-create-new.png"/>
 
@@ -186,7 +186,7 @@ User can delete current container by clicking on **Delete Analytics** button fro
 1. IBM Cloud 대시보드에서 마이그레이션하려는 IBM Mobile Foundation 인스턴스를 선택하십시오.
 2. 왼쪽 탐색에서 **플랜**을 선택하십시오.
    ![기존 Mobile Foundation 플랜](existing-plan.png)
-3. 나열된 가격 책정 플랜에서 Professional 1 Application을 선택하십시오.
+3. 나열된 가격 플랜에서 Professional 1 Application을 선택하십시오.
    ![새 Mobile Foundation 플랜](new-plan.png)
 4. **저장** 단추를 클릭하고 플랜 마이그레이션을 확인하십시오.
      이제 Professional 1 Application으로의 마이그레이션이 완료되었으며 기존의 모든 데이터가 계속 유지됩니다. 청구가 변경되며 시스템 정지 시간은 없습니다.

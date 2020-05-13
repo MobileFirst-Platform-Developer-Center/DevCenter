@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Tekton pipelines for Mobile Foundation
+breadcrumb_title: Mobile Foundation에 대한 Tekton 파이프라인
 title: Mobile Foundation에 대한 Tekton 파이프라인 작성
 weight: 1
 ---

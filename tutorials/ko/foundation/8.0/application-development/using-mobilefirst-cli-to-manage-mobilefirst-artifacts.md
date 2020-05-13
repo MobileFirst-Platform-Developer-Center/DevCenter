@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst CLI를 사용하여 MobileFirst 아티팩트 관리
-breadcrumb_title: Using the MobileFirst CLI
+breadcrumb_title: MobileFirst CLI 사용
 weight: 2
 relevantTo: [ios,android,windows,javascript]
 ---
@@ -20,7 +20,7 @@ relevantTo: [ios,android,windows,javascript]
 
 #### 다음으로 이동
 {: #jump-to }
-* [선행 조건](#prerequisites)
+* [전제조건](#prerequisites)
 * [{{ site.data.keys.mf_cli }} 설치](#installing-the-mobilefirst-cli)
 * [CLI 명령 목록](#list-of-cli-commands)
 * [대화식 모드 및 직접 모드](#interactive-and-direct-modes)
@@ -30,7 +30,7 @@ relevantTo: [ios,android,windows,javascript]
 * [유용한 명령](#helpful-commands)
 * [명령행 인터페이스 업데이트 및 설치 제거](#update-and-uninstall-the-command-line-interface)
 
-## 선행 조건
+## 전제조건
 {: #prerequisites }
 {{ site.data.keys.mf_cli }}는 [NPM 레지스트리](https://www.npmjs.com/)에서 NPM 패키지로 사용 가능합니다.  
 

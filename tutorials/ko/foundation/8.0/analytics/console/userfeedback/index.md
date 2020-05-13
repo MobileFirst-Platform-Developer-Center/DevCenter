@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 인앱 사용자 피드백
-breadcrumb_title: User Feedback
+breadcrumb_title: 사용자 피드백
 relevantTo: [ios,android,cordova]
 weight: 5
 ---

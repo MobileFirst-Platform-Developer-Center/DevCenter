@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 그래픽 모드에서 MobileFirst Server 설치
-breadcrumb_title: Graphical mode installation
+breadcrumb_title: 그래픽 모드 설치
 show_breadcrumb: true
 weight: 2
 ---
@@ -142,6 +142,7 @@ WebSphere Application Server Liberty Core의 설치 프로그램은 {{ site.data
 * {{ site.data.keys.mf_server }} 푸시 서비스에 대한 PushService 폴더
 * Application Center에 대한 ApplicationCenter 폴더
 * {{ site.data.keys.mf_analytics }}에 대한 Analytics 폴더
+* {{ site.data.keys.mf_analytics_receiver }}에 대한 AnalyticsReceiver 폴더
 
 이 튜토리얼의 목적은 **MobileFirstServer** 폴더의 리소스를 사용하여 {{ site.data.keys.mf_server }}를 설치하는 것입니다.  
 또한 **shortcuts** 폴더에서 Server Configuration Tool, Ant 및 mfpadm 프로그램의 단축 아이콘도 제공됩니다.
@@ -199,6 +200,10 @@ Server Configuration Tool은 다음 {{ site.data.keys.product_adj }} 애플리�
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }}는 메모리 요구사항이 많기 때문에 일반적으로 {{ site.data.keys.mf_server }}와 다른 서버 세트에 배치됩니다. {{ site.data.keys.mf_analytics }}는 수동으로 또는 Ant 태스크를 사용하여 설치할 수 있습니다. 이미 설치되어 있는 경우에는 Server Configuration Tool에서 해당 URL, 사용자 이름 및 비밀번호를 입력하여 데이터를 전송할 수 있습니다. 그러면 Server Configuration Tool에서 {{ site.data.keys.mf_analytics }}에 데이터를 전송하도록 {{ site.data.keys.product_adj }} 앱을 구성합니다.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+{{ site.data.keys.mf_analytics_receiver }}는 메모리 요구사항이 많기 때문에 일반적으로 {{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }}와 다른 서버 세트에 배치됩니다. {{ site.data.keys.mf_analytics_receiver }}는 수동으로 또는 Ant 태스크를 사용하여 설치할 수 있습니다. 이미 설치되어 있는 경우에는 Server Configuration Tool에서 해당 URL, 사용자 이름 및 비밀번호를 입력하여 데이터를 전송할 수 있습니다. 그러면 Server Configuration Tool에서 {{ site.data.keys.mf_analytics_receiver }}에 데이터를 전송하도록 {{ site.data.keys.product_adj }} 앱을 구성합니다.
+
 #### Application Center
 {: #application-center }
 이 애플리케이션은 모바일 앱을 사용하는 직원들에게 내부적으로 모바일 앱을 분배하는 데 사용되거나 테스트 목적으로 사용될 수 있습니다. 이 애플리케이션은 {{ site.data.keys.mf_server }}와 독립되어 있으므로 {{ site.data.keys.mf_server }}와 함께 설치할 필요는 없습니다.
@@ -252,10 +257,14 @@ Server Configuration Tool은 다음 {{ site.data.keys.product_adj }} 애플리�
 
     푸시 서비스 및 관리 서비스를 권한 부여 서버(기본적으로 런타임 컴포넌트)의 기밀 OAuth 클라이언트로 등록하려면 클라이언트 ID 및 비밀번호가 필요합니다. Server Configuration Tool이 각 서비스에 대한 ID 및 랜덤 비밀번호를 생성하며, 이 시작하기 튜토리얼에서는 해당 값을 그대로 유지해도 됩니다.
 16. **다음**을 클릭하십시오.
-17. **Analytics 설정** 패널의 기본 항목을 그대로 유지하십시오.
+17. **Analytics Receiver 설정** 패널의 기본 항목을 그대로 유지하십시오.
+
+Analytics Receiver 서버로의 연결을 가능하게 하려면 먼저 {{ site.data.keys.mf_analytics_receiver }}를 설치해야 합니다. 단, 이 튜토리얼에서는 이 설치를 다루지 않습니다.
+18. **다음**을 클릭하십시오.    
+19. **Analytics 설정** 패널의 기본 항목을 그대로 유지하십시오.
 
     Analytics 서버로의 연결을 가능하게 하려면 먼저 {{ site.data.keys.mf_analytics }}를 설치해야 합니다. 단, 이 튜토리얼에서는 이 설치를 다루지 않습니다.
-18. **배치**를 클릭하십시오.
+20. **배치**를 클릭하십시오.
 
 **콘솔 창**에서 수행된 조작에 대한 세부사항을 볼 수 있습니다.  
 Ant 파일이 저장됩니다. Server Configuration Tool은 구성 설치 및 업데이트를 위한 Ant 파일의 작성을 지원합니다. 이 Ant 파일은 **파일 → Ant 파일로 구성 내보내기...**를 사용하여 내보낼 수 있습니다. 이 Ant 파일에 대한 자세한 정보는 [명령행 모드에서](../command-line) {{ site.data.keys.mf_server }} 설치의 Ant 태스크를 사용하여 Liberty에 {{ site.data.keys.mf_server }} 배치를 참조하십시오.

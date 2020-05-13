@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 클라이언트 애플리케이션의 자원 요청
-breadcrumb_title: Resource Requests
+breadcrumb_title: 자원 요청
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 5

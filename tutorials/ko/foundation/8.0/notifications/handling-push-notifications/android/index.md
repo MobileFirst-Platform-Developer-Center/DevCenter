@@ -360,7 +360,7 @@ FCM에서 애플리케이션을 설정하는 작업은 이전 GCM 모델에서�
     ```xml
     dependencies {
        ......
-       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       compile 'com.google.firebase:firebase-messaging:17.6.0'
        .....
     }
 

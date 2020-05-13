@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore 콜렉션에서 데이터 페치
-breadcrumb_title: Fetch data from JSONStore collection
+breadcrumb_title: JSONStore 콜렉션에서 데이터 페치
 relevantTo: [reactnative]
 weight: 2
 downloads:

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: CDN에서 직접 업데이트 요청 처리
-breadcrumb_title: CDN Support
+breadcrumb_title: CDN 지원
 relevantTo: [cordova]
 weight: 1
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 자주 묻는 질문(FAQ)
-breadcrumb_title: FAQs
+breadcrumb_title: FAQ
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

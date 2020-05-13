@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 경보 관리
-breadcrumb_title: Alerts
+breadcrumb_title: 경보
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

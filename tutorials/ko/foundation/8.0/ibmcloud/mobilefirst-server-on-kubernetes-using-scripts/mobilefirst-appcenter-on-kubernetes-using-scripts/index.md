@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 스크립트를 사용하여 IBM Cloud Kubernetes Cluster에 MobileFirst Application Center 설정
-breadcrumb_title: AppCenter on Kubernetes using scripts
+breadcrumb_title: 스크립트를 사용한 Kubernetes의 AppCenter
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
@@ -257,22 +257,22 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
             <ol>
                 <li><b>initenv.sh – IBM Cloud에 로그인</b><br />
                     IBM Containers에서 {{ site.data.keys.mf_app_center }}을 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
-                    <b>대화식 모드</b>
+                    <b>Interactive Mode</b>
 {% highlight bash %}
 ./initenv.sh
 {% endhighlight %}
-                    <b>비대화식 모드</b>
+                    <b>Non-interactive Mode</b>
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                 </li>
                 <li><b>prepareappcenterdbs.sh - {{ site.data.keys.mf_app_center }} 데이터베이스 준비</b><br />
-                    <b>prepareappcenterdbs.sh</b> 스크립트는 DB2 데이터베이스 서비스를 사용하여 {{ site.data.keys.mf_app_center }}를 구성하는 데 사용됩니다. DB2 서비스의 서비스 인스턴스가 1단계에서 로그인한 조직 및 영역에서 사용할 수 있어야 합니다. 다음을 실행하십시오.
-                    <b>대화식 모드</b>
+                    <b>prepareappcenterdbs.sh</b> 스크립트는 DB2 데이터베이스 서비스를 사용하여 {{ site.data.keys.mf_app_center }}를 구성하는 데 사용됩니다. 1단계에서 로그인한 조직과 영역에서 DB2 서비스의 서비스 인스턴스를 사용할 수 있어야 합니다. 다음을 실행하십시오.
+                    <b>Interactive Mode</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh
 {% endhighlight %}
-                    <b>비대화식 모드</b>
+                    <b>Non-interactive Mode</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
@@ -287,11 +287,11 @@ Kubernetes에 대한 실용적인 지식이 있어야 합니다. 자세한 내�
                 <li><b>prepareappcenter.sh - {{ site.data.keys.mf_app_center }} 이미지 준비</b><br />
                     {{ site.data.keys.mf_app_center }} 이미지를 빌드하여 IBM Cloud 저장소에 푸시하려면 <b>prepareappcenter.sh</b> 스크립트를 실행하십시오. IBM Cloud 저장소에서 사용할 수 있는 모든 이미지를 보려면 <code>bx cr image-list</code>를 실행하십시오.<br/>
                     목록은 이미지 이름, 작성 날짜, ID를 포함합니다.<br/>
-                    <b>대화식 모드</b>
+                    <b>Interactive Mode</b>
 {% highlight bash %}
 ./prepareappcenter.sh
 {% endhighlight %}
-                    <b>비대화식 모드</b>
+                    <b>Non-interactive Mode</b>
 {% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}

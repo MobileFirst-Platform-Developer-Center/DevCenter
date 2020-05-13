@@ -118,7 +118,7 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
 
                 <ul>
                     <li>다운로드된 .zip 파일을 추출하고 관련 aar 파일을 <b>app\libs</b> 폴더에 저장하십시오.</li>
-                    <li>다음을 <b>종속 항목</b> 클로저에 추가하십시오.
+                    <li>다음을 <b>종속</b> 클로저에 추가하십시오.
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
 compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   

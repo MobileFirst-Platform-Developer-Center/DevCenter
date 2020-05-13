@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM MobileFirst Foundation의 내게 필요한 옵션 기능
-breadcrumb_title: Accessibility features
+breadcrumb_title: 내게 필요한 옵션 기능
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: 이벤트 소스 기반 알림에서 푸시 알림 마이그레이션
-breadcrumb_title: Migrating push notifications
-weight: 4
+breadcrumb_title: 푸시 알림 마이그레이션
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -1565,5 +1565,5 @@ class Pushlistener : MFPPushNotificationListener
    ```
 
    * 도구 .jar 파일 및 properties 파일이 다른 위치에 있는 경우 **path-to-migration.properties**를 **migration.properties**의 경로로 대체하십시오. 그렇지 않으면 명령에서 해당 경로를 제거하십시오.
-   
+
     도구 .jar 파일과 동일한 위치의 필수 라이브러리가 포함된 라이브러리 폴더를 유지하십시오.

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Using Oracle (or) MySQL as IBM Mobile Foundation database
+breadcrumb_title: IBM Mobile Foundation 데이터베이스로 Oracle 또는 MySQL 사용
 title: IBM Mobile Foundation 데이터베이스로 Oracle 또는 MySQL 사용
 weight: 2
 show_in_nav: false
@@ -13,6 +13,13 @@ Mobile Foundation 서버, Push 및 Application Center 컴포넌트에 대한 데
 [여기](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/#mysql-database-and-user-requirements) 지침에 따라 DB2 외 데이터베이스에서 Mobile Foundation을 설정하십시오.
 
 기본적으로 Mobile Foundation 설치 프로그램은 IBM DB2 JDBC 드라이버에 함께 패키지되어 있습니다. Oracle 및 MySQL의 경우 JDBC 드라이버(MySQL의 경우 커넥터/J JDBC 드라이버 사용, Oracle의 경우 Oracle 씬 JDBC 드라이버 사용)가 지속적 볼륨에 있는지 확인하십시오.
+
+>**참고**:
+>
+>  Oracle 데이터베이스의 경우:
+>
+>    1. 사용자 정의 리소스 파일(`CR.yaml`)의 db 섹션에서 *name* 특성에 **Oracle 서비스 이름**을 사용합니다. 
+>    2. Oracle 데이터베이스 사용자를 대문자로 작성했는지 데이터베이스 시크릿 작성 중에 동일한 이름을 사용했는지 확인합니다. 
 
 1. JDBC 드라이버를 NFS로 마운트된 볼륨에 배치하십시오. 예: */nfs/share/dbdrivers*
 

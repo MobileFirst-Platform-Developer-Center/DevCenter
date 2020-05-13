@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore 콜렉션에 데이터 추가
-breadcrumb_title: Add data to JSONStore collection
+breadcrumb_title: JSONStore 콜렉션에 데이터 추가
 relevantTo: [reactnative]
 weight: 1
 downloads:

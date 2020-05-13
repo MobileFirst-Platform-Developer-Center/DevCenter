@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Validating Mobile Foundation archive from PPA
+breadcrumb_title: PPA에서 Mobile Foundation 아카이브 유효성 검증
 title: Passport Advantage 아카이브에서 다운로드한 IBM Mobile Foundation 아카이브 유효성 검증
 weight: 5
 show_in_nav: false
