@@ -12,7 +12,7 @@ show_children: true
 
 Por padrão, o Digital App Builder vem com dois modelos: Recursos de mod e Guias
 
-* **Recursos de mod**: Este modelo fornece um aplicativo de amostra com o caso de uso de aplicativo de recursos. Ele contém o módulo de login, o módulo de bate-papo, o modo de feedback no aplicativo com os quais iniciar. Você deverá implementar o adaptador de Login e configurar suas próprias credenciais de robô de bate-papo. 
+* **Recursos de mod**: Este modelo fornece um aplicativo de amostra com o caso de uso de aplicativo de recursos. Ele contém o módulo de login, o módulo de bate-papo, o modo de feedback no aplicativo com os quais iniciar. Você deverá implementar o adaptador de Login e configurar suas próprias credenciais de robô de bate-papo.
 * **Guias**: Este modelo fornece uma interface de aplicativo móvel com guias, que fornece Guias na parte inferior. Este modelo também inclui o módulo de login.
 
 ### Criando um modelo customizado
@@ -52,5 +52,5 @@ Por exemplo, o novo modelo customizado pode ser incluído conforme mostrado abai
 ```
 >**Nota
 **
->* Certifique-se de incrementar o número de `version`. 
->* Quando houver uma inclusão de um modelo da equipe de liberação, a atualização substituirá a pasta `\ionic_templates\`. Portanto, certifique-se de fazer um backup de sua pasta de modelo customizado e reaplicar após as atualizações. 
+>* Certifique-se de incrementar o número de `version`.
+>* Quando houver uma inclusão de um modelo da equipe de liberação, a atualização substituirá a pasta `\ionic_templates\`. Portanto, certifique-se de fazer um backup de sua pasta de modelo customizado e reaplicar após as atualizações.

@@ -24,7 +24,7 @@ Estes modelos de página estão disponíveis para uso somente no projeto de cód
 
 Para incluir um destes modelos de página em seu aplicativo:
 
-1. Selecione o botão **botão +**/**Incluir nova página** para navegar para a tela **Incluir nova página**. 
+1. Selecione o botão **botão +**/**Incluir nova página** para navegar para a tela **Incluir nova página**.
 
     ![Incluir nova página](home_page.png)
 

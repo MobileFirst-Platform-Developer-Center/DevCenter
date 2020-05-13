@@ -16,7 +16,7 @@ Nesta documentação, é possível localizar a descrição das limitações conh
 * Quando a limitação conhecida for geral, ou seja, se aplicar a tópicos relacionados diferentes e possivelmente não diretamente a eles, é possível localizar sua descrição aqui.
 * Pode-se observar uma inconsistência no funcionamento dos pods do Mobile Foundation Analytics na implementação devido aos problemas de descoberta de nós Elasticsearch no cluster do OpenShift 4.2. Isso faz com que o console de administração do Analytics liste somente um nó a
 qualquer momento.
-* No aplicativo do cliente móvel AppCenter Android, o usuário pode notar problemas de rolagem. Isso não é um problema de funcionalidade. Tudo funciona conforme o esperado, no entanto, são necessárias algumas rolagens extras para baixo. Esta é uma limitação das estruturas Javascript de terceiros usadas no cliente AppCenter. 
+* No aplicativo do cliente móvel AppCenter Android, o usuário pode notar problemas de rolagem. Isso não é um problema de funcionalidade. Tudo funciona conforme o esperado, no entanto, são necessárias algumas rolagens extras para baixo. Esta é uma limitação das estruturas Javascript de terceiros usadas no cliente AppCenter.
 
 ### Globalização
 {: #globalization }

@@ -157,6 +157,7 @@ Um diretório de instalação contendo os recursos para instalação dos compone
 * Pasta PushService para o serviço de push do {{ site.data.keys.mf_server }}
 * Pasta ApplicationCenter para o Application Center
 * Pasta Analytics para {{ site.data.keys.mf_analytics }}
+* Pasta AnalyticsReceiver para o {{ site.data.keys.mf_analytics_receiver }}
 
 O objetivo deste tutorial é instalar {{ site.data.keys.mf_server }} usando os recursos na pasta **MobileFirstServer**.  
 Também é possível localizar alguns atalhos para o Server Configuration Tool, Ant e o programa mfpadm na pasta **shortcuts**.
@@ -215,6 +216,10 @@ O Server Configuration Tool não implementa os seguintes aplicativos do {{ site.
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }} normalmente é implementado em um conjunto de servidores diferente do {{ site.data.keys.mf_server }} devido aos seus requisitos de alta memória. {{ site.data.keys.mf_analytics }} pode ser instalado manualmente ou com tarefas Ant. Se ele já estiver instalado, será possível inserir sua URL, o nome do usuário e a senha para enviar dados para ele no Server Configuration Tool. O Server Configuration Tool irá então configurar os aplicativos do {{ site.data.keys.product_adj }} para enviar dados para o {{ site.data.keys.mf_analytics }}.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+O {{ site.data.keys.mf_analytics_receiver }} é geralmente implementado em um conjunto diferente de servidores do que o {{ site.data.keys.mf_server }} e o {{ site.data.keys.mf_analytics }} por causa de seus altos requisitos de memória. {{ site.data.keys.mf_analytics_receiver }} pode ser instalado manualmente ou com tarefas Ant. Se ele já estiver instalado, será possível inserir sua URL, o nome do usuário e a senha para enviar dados para ele no Server Configuration Tool. O Server Configuration Tool irá então configurar os aplicativos do {{ site.data.keys.product_adj }} para enviar dados para o {{ site.data.keys.mf_analytics_receiver }}.
+
 #### Application Center
 {: #application-center }
 Esse aplicativo pode ser usado para distribuir aplicativos móveis internamente para os funcionários que usam os aplicativos ou para propósitos de teste. Ele é independente do {{ site.data.keys.mf_server }} e não é necessário instalá-lo junto com o {{ site.data.keys.mf_server }}.
@@ -272,10 +277,14 @@ instalar no WebSphere Application Server Network Deployment, é obrigatório ins
 
     Um ID de cliente e uma senha são necessários para se registrar o serviço de push e o serviço de administração como clientes de OAuth confidenciais para o servidor de autorizações (que é, por padrão, o componente de tempo de execução). O Server Configuration Tool gera um ID e uma senha aleatória para cada serviço, que podem ser mantidos como estão para esse tutorial de introdução.
 16. Clique em **Avançar**.
-17. Mantenha as entradas padrão do painel **Configuração do Analytics** no estado em que elas se encontram.
+17. Mantenha as entradas padrão do painel **Configuração do Analytics Receiver** no estado em que elas se encontram.
+
+    Para ativar a conexão com o servidor Analytics Receiver, é necessário primeiro instalar o {{ site.data.keys.mf_analytics_receiver }}. No entanto, a instalação não está no escopo deste tutorial.
+18. Clique em **Avançar**.    
+19. Mantenha as entradas padrão do painel **Configuração do Analytics** no estado em que elas se encontram.
 
     Para ativar a conexão com o servidor Analytics, primeiro é necessário instalar o {{ site.data.keys.mf_analytics }}. No entanto, a instalação não está no escopo deste tutorial.
-18. Clique em **Implementar**.
+20. Clique em **Implementar**.
 
 É possível ver umas das operações feitas na **Janela do Console**.  
 Um arquivo Ant é salvo. O Server Configuration Tool ajuda a criar um arquivo Ant para instalar e atualizar sua configuração. Esse arquivo Ant pode ser exportado usando **Arquivo → Exportar configuração como arquivos Ant...** Para obter informações adicionais sobre esse arquivo Ant, consulte Implementando o {{ site.data.keys.mf_server }} no Liberty com tarefas Ant em Instalando o {{ site.data.keys.mf_server }} [no modo de linha de comando](../command-line).

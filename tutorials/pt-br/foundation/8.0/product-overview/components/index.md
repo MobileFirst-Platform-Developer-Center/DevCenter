@@ -62,6 +62,12 @@ Os dados para {{ site.data.keys.mf_analytics }} incluem as origens a seguir:
 
 [Saiba mais sobre {{ site.data.keys.mf_analytics }}](../../analytics).
 
+### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics-receiver }
+O {{ site.data.keys.product }} inclui um recurso opcional {{ site.data.keys.mf_analytics_receiver_short }}. O recurso {{ site.data.keys.mf_analytics_receiver_short }} recebe logs de aplicativos móveis e os envia para o {{ site.data.keys.mf_analytics_short }} de maneira faseada. O {{ site.data.keys.mf_analytics_receiver_short }} mantém uma fila na memória para armazenar os logs antes de enviá-los para o {{ site.data.keys.mf_analytics_short }}. Ele ameniza o trabalho principal realizado pelo {{ site.data.keys.mf_server }} por meio da API loguploader e reduz o uso da fila na memória. Na ausência deste serviço, o {{ site.data.keys.mf_server }} executará o receptor de log e a funcionalidade de encaminhamento de log. {{ site.data.keys.mf_analytics_receiver_short }}, um serviço opcional.
+
+[Saiba mais sobre {{ site.data.keys.mf_analytics_receiver }}](../../analytics/analyticsreceiver).
+
 ### Centro de aplicativos
 {: #application-center }
 Com o Application Center, é possível compartilhar aplicativos remotos que estão em desenvolvimento na organização em um único repositório de aplicativos remotos. Os membros da equipe de desenvolvimento podem usar o Application Center para compartilhar aplicativos com membros da equipe. Este processo facilita a colaboração entre todas as pessoas envolvidas no desenvolvimento de um aplicativo.

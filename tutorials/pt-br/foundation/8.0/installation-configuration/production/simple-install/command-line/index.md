@@ -136,6 +136,7 @@ Um diretório de instalação contendo os recursos para instalação dos compone
 * Pasta **PushService** para serviço de push do {{ site.data.keys.mf_server }}
 * Pasta **ApplicationCenter** para Application Center
 * Pasta **Analytics** para {{ site.data.keys.mf_analytics }}
+* Pasta **AnalyticsReceiver** para o {{ site.data.keys.mf_analytics_receiver }}
 
 O objetivo deste tutorial é instalar {{ site.data.keys.mf_server }} usando os recursos na pasta **MobileFirstServer**.  
 Também é possível localizar alguns atalhos para o Server Configuration Tool, Ant e o programa **mfpadm** na pasta **shortcuts**.
@@ -193,6 +194,10 @@ Os aplicativos {{ site.data.keys.product_adj }} a seguir não são implementados
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }} normalmente é implementado em um conjunto de servidores diferente do {{ site.data.keys.mf_server }} devido aos seus requisitos de alta memória. {{ site.data.keys.mf_analytics }} pode ser instalado manualmente ou com tarefas Ant. Se ele já estiver instalado, será possível inserir sua URL, o nome do usuário e a senha para enviar dados para ele no Server Configuration Tool. O Server Configuration Tool configura então os aplicativos do {{ site.data.keys.product_adj }} para enviar dados para o {{ site.data.keys.mf_analytics }}.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+O {{ site.data.keys.mf_analytics_receiver }} é geralmente implementado em um conjunto diferente de servidores do que o {{ site.data.keys.mf_server }} e o {{ site.data.keys.mf_analytics }} por causa de seus altos requisitos de memória. {{ site.data.keys.mf_analytics_receiver }} pode ser instalado manualmente ou com tarefas Ant. Se ele já estiver instalado, será possível inserir sua URL, o nome do usuário e a senha para enviar dados para ele no Server Configuration Tool. O Server Configuration Tool configura então os aplicativos do {{ site.data.keys.product_adj }} para enviar dados para o {{ site.data.keys.mf_analytics_receiver }}.
+
 #### Application Center
 {: #application-center }
 Esse aplicativo pode ser usado para distribuir aplicativos móveis internamente para os funcionários que usam os aplicativos ou para propósitos de teste. Ele é independente do {{ site.data.keys.mf_server }} e não é necessário instalá-lo junto com o {{ site.data.keys.mf_server }}.
@@ -214,6 +219,7 @@ Selecione o arquivo XML apropriado que contém as tarefas Ant e configure as pro
     * **appserver.was85liberty.serverInstance** como **mfp1** - o valor para o nome do servidor Liberty no qual o {{ site.data.keys.mf_server }} deve ser instalado.
     * **mfp.farm.configure** para **false** para instalar o {{ site.data.keys.mf_server }} no modo independente.
     * **mfp.analytics.configure** para **false**. A conexão com o {{ site.data.keys.mf_analytics }} não está no escopo deste tutorial. É possível ignorar as outras propriedades mfp.analytics.****.
+    * **mfp.analytics.receiver.configure** para **false**. A conexão com o {{ site.data.keys.mf_analytics_receiver }} não está no escopo deste tutorial. É possível ignorar as outras propriedades mfp.analytics.receiver.****.
     * **mfp.admin.client.id** para **admin-client-id**.
     * **mfp.admin.client.secret** como **adminSecret** (ou escolha outra senha secreta).
     * **mfp.push.client.id** para **push-client-id**.
