@@ -1153,7 +1153,7 @@ La tâche Ant `<installApplicationCenter>` configure un serveur d'applications p
 * Elle déploie l'application Web des services Application Center sur le serveur d'applications.
 * Elle déclare la console  Application Center en tant qu'application Web dans la racine de contexte /appcenterconsole.
 * Elle déploie le fichier WAR de la console Application Center sur le serveur d'applications.
-* Elle configure les propriétés de configuration des services Application Center à l'aide des entrées d'environnement JNDI. Les entrées d'environnement JNDI qui sont liées au noeud final et aux proxys sont commentées. Vous devez supprimer leur mise en commentaire dans certains cas.
+* Elle configure les propriétés de configuration des services Application Center à l'aide des entrées d'environnement JNDI. Les entrées d'environnement JNDI qui sont liées au point de terminaison et aux proxys sont commentées. Vous devez supprimer leur mise en commentaire dans certains cas.
 * Elle configure les utilisateurs qu'elle mappe aux rôles utilisés par les applications Web des services et de la console Application Center.
 * Sur WebSphere Application Server, elle configure la propriété personnalisée nécessaire pour le conteneur Web.
 
@@ -1632,8 +1632,8 @@ Sous Windows : `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERN
 {: #step-3 }
 De la même façon, si votre serveur d'applications est un profil Liberty de WebSphere Application Server, ou Apache Tomcat, et qu'il est destiné à être démarré uniquement depuis votre compte utilisateur, vous devez également retirer les droits d'accès en lecture pour les autres utilisateurs dans les fichiers suivants :
 
-* Pour le profil Liberty de WebSphere Application Server : **wlp/usr/servers/<server>/server.xml**
-* Pour Apache Tomcat : **conf/server.xml**
+* Pour le profil Liberty de WebSphere Application Server : `wlp/usr/servers/<server>/server.xml`
+* Pour Apache Tomcat : `conf/server.xml`
 
 ### Etape 4
 {: #step-4 }

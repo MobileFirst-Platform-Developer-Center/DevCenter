@@ -1510,7 +1510,7 @@ Après avoir installé Application Center sur le serveur d'applications Web de v
 * [Gestion des utilisateurs avec LDAP](#managing-users-with-ldap)
 * [Configuration des propriétés du pilote JDBC DB2 dans WebSphere Application Server](#configuring-properties-of-db2-jdbc-driver-in-websphere-application-server)
 * [Gestion de la taille du journal des transactions DB2](#managing-the-db2-transaction-log-size)
-* [Définition du noeud final des ressources d'application](#defining-the-endpoint-of-the-application-resources)
+* [Définition du point de terminaison des ressources d'application](#defining-the-endpoint-of-the-application-resources)
 * [Configuration du protocole SSL (Secure Sockets Layer)](#configuring-secure-sockets-layer-ssl)
 * [Propriétés JNDI pour Application Center](#jndi-properties-for-application-center)
 * [Configuration de WebSphere Application Server pour la prise en charge d'applications dans des magasins d'applications publics](#configuring-websphere-application-server-to-support-applications-in-public-app-stores)
@@ -1531,7 +1531,7 @@ Vous devez mapper les rôles aux ensembles d'utilisateurs correspondants.
 
 Si vous choisissez d'utiliser une méthode d'authentification via un référentiel d'utilisateurs tel que LDAP, vous pouvez configurer Application Center de sorte que vous puissiez vous servir d'utilisateurs et de groupes en conjonction avec le référentiel d'utilisateurs afin de définir la liste de contrôle d'accès d'Application Center. Cette procédure est conditionnée par le type et la version du serveur d'applications Web que vous utilisez. Voir [Gestion des utilisateurs avec LDAP](#managing-users-with-ldap) pour des informations sur l'utilisation de LDAP en conjonction avec Application Center.
 
-Après avoir configuré l'authentification des utilisateurs d'Application Center, qui inclut la configuration de LDAP si vous prévoyez de l'utiliser, vous pouvez, si nécessaire, définir le noeud final des ressources d'application. Vous devez ensuite générer le client mobile d'Application Center. Celui-ci est utilisé pour installer des applications sur des appareils mobiles. Voir [Préparatifs pour l'utilisation du client mobile](../../../appcenter/preparations/) pour apprendre à générer le client mobile d'Application Center.
+Après avoir configuré l'authentification des utilisateurs d'Application Center, qui inclut la configuration de LDAP si vous prévoyez de l'utiliser, vous pouvez, si nécessaire, définir le point de terminaison des ressources d'application. Vous devez ensuite générer le client mobile d'Application Center. Celui-ci est utilisé pour installer des applications sur des appareils mobiles. Voir [Préparatifs pour l'utilisation du client mobile](../../../appcenter/preparations/) pour apprendre à générer le client mobile d'Application Center.
 
 #### Aller à
 {: #jump-to-11 }
@@ -2205,19 +2205,19 @@ Selon la taille de la plus grande application MobileFirst déployée, il peut ê
 
 Utilisez la commande `DB2 update db cfg` pour augmenter la valeur du paramètre **LOGSECOND**. Aucun espace n'est alloué lorsque la base de données est activée. En effet, l'espace est alloué en fonction des besoins.
 
-### Définition du noeud final des ressources d'application
+### Définition du point de terminaison des ressources d'application
 {: #defining-the-endpoint-of-the-application-resources }
 Lorsque vous ajoutez une application mobile depuis la console Application Center, le composant côté serveur crée des URI (Uniform Resource Identifier) pour les ressources d'application (package et icônes). Le client mobile utilise ces URI pour gérer les applications sur votre appareil.
 
 Pour gérer les applications sur votre appareil, la console Application Center doit être capable de localiser les services REST d'Application Center et de générer le nombre requis d'URI permettant au client mobile de trouver les services REST d'Application Center.
 
-Par défaut, le protocole d'URI, le nom d'hôte et le port sont les mêmes que ceux définis sur le serveur d'applications Web utilisé pour accéder à la console Application Center ; la racine de contexte des services REST d'Application Center est **applicationcenter**. Lorsque la racine de contexte des services REST d'Application Center est modifiée ou lorsque l'URI interne du serveur d'applications Web est différent de l'URI externe pouvant être utilisé par le client mobile, vous devez définir le noeud final accessible en externe (protocole, nom d'hôte et port) des ressources d'application en configurant le serveur d'applications Web. (Par exemple, un pare-feu ou un proxy inverse sécurisé utilisant la redirection HTTP peut être à l'origine de la séparation des URI interne et externe.)
+Par défaut, le protocole d'URI, le nom d'hôte et le port sont les mêmes que ceux définis sur le serveur d'applications Web utilisé pour accéder à la console Application Center ; la racine de contexte des services REST d'Application Center est **applicationcenter**. Lorsque la racine de contexte des services REST d'Application Center est modifiée ou lorsque l'URI interne du serveur d'applications Web est différent de l'URI externe pouvant être utilisé par le client mobile, vous devez définir le point de terminaison accessible en externe (protocole, nom d'hôte et port) des ressources d'application en configurant le serveur d'applications Web. (Par exemple, un pare-feu ou un proxy inverse sécurisé utilisant la redirection HTTP peut être à l'origine de la séparation des URI interne et externe.)
 
 La figure ci-dessous illustre une configuration avec un proxy inverse sécurisé masquant l'adresse interne (192.168...). Le client mobile doit utiliser l'adresse externe (**appcntr.net**).
 
 ![Configuration avec un proxy inverse sécurisé](ac_proxyconfig_hiddenintadd.jpg)
 
-#### Propriétés du noeud final
+#### Propriétés du point de terminaison
 {: #endpoint-properties }
 
 | Nom de la propriété | Objectif | Exemple |
@@ -2230,13 +2230,13 @@ valeur que la console Application Center. Par exemple, *://*:*/appcenter signifi
 
 #### Aller à
 {: #jump-to-13 }
-* [Configuration du noeud final des ressources d'application (profil complet)](#configuring-the-endpoint-of-application-resources-full-profile)
-* [Configuration du noeud final des ressources d'application (profil Liberty)](#configuring-the-endpoint-of-the-application-resources-liberty-profile)
-* [Configuration du noeud final des ressources d'application (Apache Tomcat)](#configuring-the-endpoint-of-the-application-resources-apache-tomcat)
+* [Configuration du point de terminaison des ressources d'application (profil complet)](#configuring-the-endpoint-of-application-resources-full-profile)
+* [Configuration du point de terminaison des ressources d'application (profil Liberty)](#configuring-the-endpoint-of-the-application-resources-liberty-profile)
+* [Configuration du point de terminaison des ressources d'application (Apache Tomcat)](#configuring-the-endpoint-of-the-application-resources-apache-tomcat)
 
-#### Configuration du noeud final des ressources d'application (profil complet)
+#### Configuration du point de terminaison des ressources d'application (profil complet)
 {: #configuring-the-endpoint-of-application-resources-full-profile }
-Pour le profil complet de WebSphere Application Server, configurez le noeud final des ressources d'application dans les entrées d'environnement de l'application des services d'Application Center et de l'application de la console Application Center. La procédure varie selon que vous avez déployé des fichiers WAR ou un fichier EAR.
+Pour le profil complet de WebSphere Application Server, configurez le point de terminaison des ressources d'application dans les entrées d'environnement de l'application des services d'Application Center et de l'application de la console Application Center. La procédure varie selon que vous avez déployé des fichiers WAR ou un fichier EAR.
 
 ##### Si vous avez déployé des fichiers WAR :
 {: #if-you-deployed-war-files }
@@ -2281,9 +2281,9 @@ Pour la liste complète des propriétés JNDI, voir [Propriétés JNDI pour Appl
     Par exemple, `*://*:*/appcenter` signifie que les mêmes protocole, hôte et port que ceux de la console Application Center doivent être utilisés, mais qu'appcenter doit être utilisé comme racine de contexte.
 7. Cliquez sur OK et sauvegardez la configuration.
 
-#### Configuration du noeud final des ressources d'application (profil Liberty)
+#### Configuration du point de terminaison des ressources d'application (profil Liberty)
 {: #configuring-the-endpoint-of-the-application-resources-liberty-profile }
-Pour le profil Liberty, configurez le noeud final des ressources d'application par le biais de l'environnement JNDI.
+Pour le profil Liberty, configurez le point de terminaison des ressources d'application par le biais de l'environnement JNDI.
 
 A partir d'IBM Worklight version 6.0, suivez la procédure ci-dessous si vous devez changer le protocole d'URI, le nom d'hôte et le port utilisés par le client Application Center pour gérer les applications sur votre appareil.
 
@@ -2313,9 +2313,9 @@ Où :
 
 Pour la liste complète des propriétés LDAP que vous pouvez définir, voir [Propriétés JNDI pour Application Center](#jndi-properties-for-application-center).
 
-##### Exemple de définition de propriétés pour la configuration du noeud final
+##### Exemple de définition de propriétés pour la configuration du point de terminaison
 {: #example-of-setting-properties-for-configuring-the-endpoint }
-Cet exemple présente les paramètres des propriétés dans le fichier **server.xml** requis pour la configuration du noeud final des ressources d'application.
+Cet exemple présente les paramètres des propriétés dans le fichier **server.xml** requis pour la configuration du point de terminaison des ressources d'application.
 
 ```xml
 <jndiEntry jndiName="ibm.appcenter.services.endpoint" value=" https://appcntr.net:443/applicationcenter" />
@@ -2327,9 +2327,9 @@ Cet exemple présente les paramètres des propriétés dans le fichier **server.
 Vous pouvez utiliser l'astérisque (\*) comme caractère générique afin de spécifier que les services REST d'Application Center utilisent la même
 valeur que la console Application Center. Par exemple, `*://*:*/appcenter` signifie que les mêmes protocole, hôte et port que ceux de la console Application Center doivent être utilisés, mais qu'**appcenter** doit être utilisé comme racine de contexte.
 
-#### Configuration du noeud final des ressources d'application (Apache Tomcat)
+#### Configuration du point de terminaison des ressources d'application (Apache Tomcat)
 {: #configuring-the-endpoint-of-the-application-resources-apache-tomcat }
-Pour le serveur Apache Tomcat, configurez le noeud final des ressources d'application dans le fichier **server.xml**.
+Pour le serveur Apache Tomcat, configurez le point de terminaison des ressources d'application dans le fichier **server.xml**.
 
 A partir d'IBM Worklight version 6.0, suivez la procédure ci-dessous si vous devez changer le protocole d'URI, le nom d'hôte et le port utilisés par le client Application Center pour gérer les applications sur votre appareil.
 
@@ -2355,9 +2355,9 @@ Où :
 
 Pour la liste complète des propriétés JNDI que vous pouvez définir, voir [Propriétés JNDI pour Application Center](#jndi-properties-for-application-center).
 
-##### Exemple de définition des propriétés du fichier server.xml pour la configuration du noeud final
+##### Exemple de définition des propriétés du fichier server.xml pour la configuration du point de terminaison
 {: #example-of-setting-serverxml-properties-for-configuring-the-endpoint }
-Cet exemple présente les paramètres des propriétés dans le fichier **server.xml** requis pour la configuration du noeud final des ressources d'application.
+Cet exemple présente les paramètres des propriétés dans le fichier **server.xml** requis pour la configuration du point de terminaison des ressources d'application.
 
 Dans la section `<context>` de l'application de console Application Center :
 
@@ -2552,13 +2552,13 @@ Vous pouvez configurer des propriétés JNDI pour Application Center.
 | ibm.appcenter.logging.formatjson | Cette propriété n'a d'effet que si ibm.appcenter.logging.tosystemerror a pour valeur true. Si elle est activée, elle formate les réponses JSON dans des messages de journalisation qui sont dirigés vers System.Error. La définition de cette propriété est utile lorsque vous déboguez le serveur. |
 | ibm.appcenter.logging.tosystemerror | Indique que tous les messages de journalisation sont également redirigés vers System.Error. La définition de cette propriété est utile lorsque vous déboguez le serveur. |
 | ibm.appcenter.openjpa.Log | Cette propriété est transmise à OpenJPA et active la journalisation JPA. Pour des détails, voir [Apache OpenJPA User's Guide](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html). |
-| ibm.appcenter.proxy.host | Si le serveur Application Center se trouve derrière un pare-feu ou un proxy inverse, cette propriété spécifie l'adresse de l'hôte. La définition de cette propriété permet à un utilisateur à l'extérieur du pare-feu d'accéder au serveur Application Center. En général, cette propriété correspond à l'adresse du proxy. Voir [Définition du noeud final des ressources d'application](#defining-the-endpoint-of-the-application-resources). |
-| ibm.appcenter.proxy.port | Si le serveur Application Center se trouve derrière un pare-feu ou un proxy inverse, cette propriété spécifie l'adresse de l'hôte. La définition de cette propriété permet à un utilisateur à l'extérieur du pare-feu d'accéder au serveur Application Center. En général, cette propriété correspond au port du proxy, par exemple 443. Elle n'est requise que si le protocole de l'URI externe et le protocole de l'URI interne sont différents. Voir [Définition du noeud final des ressources d'application](#defining-the-endpoint-of-the-application-resources). |
-| ibm.appcenter.proxy.protocol | Si le serveur Application Center se trouve derrière un pare-feu ou un proxy inverse, cette propriété spécifie le protocole (http ou https). La définition de cette propriété permet à un utilisateur à l'extérieur du pare-feu d'accéder au serveur Application Center. En général, cette propriété correspond au protocole du proxy. Exemple : appcntr.net. Elle n'est requise que si le protocole de l'URI externe et le protocole de l'URI interne sont différents. Voir [Définition du noeud final des ressources d'application](#defining-the-endpoint-of-the-application-resources). |
+| ibm.appcenter.proxy.host | Si le serveur Application Center se trouve derrière un pare-feu ou un proxy inverse, cette propriété spécifie l'adresse de l'hôte. La définition de cette propriété permet à un utilisateur à l'extérieur du pare-feu d'accéder au serveur Application Center. En général, cette propriété correspond à l'adresse du proxy. Voir [Définition du point de terminaison des ressources d'application](#defining-the-endpoint-of-the-application-resources). |
+| ibm.appcenter.proxy.port | Si le serveur Application Center se trouve derrière un pare-feu ou un proxy inverse, cette propriété spécifie l'adresse de l'hôte. La définition de cette propriété permet à un utilisateur à l'extérieur du pare-feu d'accéder au serveur Application Center. En général, cette propriété correspond au port du proxy, par exemple 443. Elle n'est requise que si le protocole de l'URI externe et le protocole de l'URI interne sont différents. Voir [Définition du point de terminaison des ressources d'application](#defining-the-endpoint-of-the-application-resources). |
+| ibm.appcenter.proxy.protocol | Si le serveur Application Center se trouve derrière un pare-feu ou un proxy inverse, cette propriété spécifie le protocole (http ou https). La définition de cette propriété permet à un utilisateur à l'extérieur du pare-feu d'accéder au serveur Application Center. En général, cette propriété correspond au protocole du proxy. Exemple : appcntr.net. Elle n'est requise que si le protocole de l'URI externe et le protocole de l'URI interne sont différents. Voir [Définition du point de terminaison des ressources d'application](#defining-the-endpoint-of-the-application-resources). |
 | ibm.appcenter.proxy.scheme | Cette propriété est simplement un autre nom pour ibm.appcenter.proxy.protocol. |
 | ibm.appcenter.push.schedule.period.amount | Spécifie le planning d'envoi de notifications push des mises à jour d'application. Si des applications sont modifiées fréquemment sur le serveur, définissez cette propriété afin d'envoyer des lots de notifications. Par exemple, envoyez toutes les notifications émises au cours de l'heure précédente au lieu d'envoyer chaque notification individuellement. |
 | ibm.appcenter.push.schedule.period.unit | Spécifie l'unité pour le planning lorsque vous envoyez des notifications push des mises à jour d'application. |
-| ibm.appcenter.services.endpoint | Active la console Application Center afin de localiser les services REST d'Application Center. Spécifiez l'adresse externe et la racine de contexte de l'application Web applicationcenter.war. Dans un scénario avec un pare-feu ou un proxy inverse sécurisé, cet URI doit être l'URI externe et non l'URI interne au réseau local. Exemple : https://appcntr.net:443/applicationcenter. Voir [Définition du noeud final des ressources d'application](#defining-the-endpoint-of-the-application-resources). |
+| ibm.appcenter.services.endpoint | Active la console Application Center afin de localiser les services REST d'Application Center. Spécifiez l'adresse externe et la racine de contexte de l'application Web applicationcenter.war. Dans un scénario avec un pare-feu ou un proxy inverse sécurisé, cet URI doit être l'URI externe et non l'URI interne au réseau local. Exemple : https://appcntr.net:443/applicationcenter. Voir [Définition du point de terminaison des ressources d'application](#defining-the-endpoint-of-the-application-resources). |
 | ibm.appcenter.services.iconCacheMaxAge | Spécifie le nombre de secondes pendant lequel les icônes en cache restent valides pour la console Application Center et le client. Les icônes d'application changent rarement ; c'est pourquoi elles sont mises en cache. Spécifiez des valeurs supérieures à 600 (10 minutes) afin de réduire la quantité de données transférées pour les icônes. |
 | mfp.jndi.configuration | Facultatif. Si la configuration JNDI est injectée dans les fichiers WAR ou fournie en tant que bibliothèque partagée, la valeur de cette propriété est le nom de la configuration JNDI. Vous pouvez aussi spécifier cette valeur comme propriété système. |
 | mfp.jndi.file | Facultatif. Si la configuration JNDI est stockée sous forme de fichier externe, la valeur de cette propriété est le chemin d'accès à un fichier qui décrit la configuration JNDI. Vous pouvez aussi spécifier cette valeur comme propriété système. |

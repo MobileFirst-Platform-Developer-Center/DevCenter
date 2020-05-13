@@ -29,7 +29,7 @@ Utilisez le mode de ligne de commande d'IBM Installation Manager et les tâches 
 * Java version 7 ou ultérieure.
 
 * Téléchargez le programme d'installation d'IBM Installation Manager version 1.8.4 ou ultérieure à partir du site [Installation Manager and Packaging Utility download documents](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* Vous devez également disposer du référentiel d'installation de {{ site.data.keys.mf_server }} et du programme d'installation de WebSphere  Application Server Liberty Core version 8.5.5.3 ou ultérieure. Téléchargez ces packages à partir de {{ site.data.keys.product }} eAssembly sur le site Passport Advantage :
+* Vous devez également disposer du référentiel d'installation de {{ site.data.keys.mf_server }} et du programme d'installation de WebSphere Application Server Liberty Core version 8.5.5.3 ou ultérieure. Téléchargez ces packages à partir de {{ site.data.keys.product }} eAssembly sur le site Passport Advantage :
 
 Référentiel d'installation de **{{ site.data.keys.mf_server }}**  
 {{ site.data.keys.product }} V8.0 .zip file of Installation Manager Repository for {{ site.data.keys.mf_server }}
@@ -98,7 +98,7 @@ La page d'accueil par défaut se trouve sur le site [http://localhost:9080](http
 {: #installing-mobilefirst-server }
 Assurez-vous qu'Installation Manager version 1.8.4 ou ultérieure est installé. L'installation de {{ site.data.keys.mf_server }} peut ne pas aboutir avec une ancienne version d'Installation Manager car les opérations de post-installation nécessitent Java 7. Les anciennes version d'Installation Manager sont livrées avec Java 6.
 
-Exécutez Installation Manager pour installer les fichiers binaires de {{ site.data.keys.mf_server }} sur votre disque avant de créer les bases de données et de déployer {{ site.data.keys.mf_server }} sur le profil Liberty. Lors de l'installation de {{ site.data.keys.mf_server }} à l'aide d'Installation Manager, une option permettant d'installer  {{ site.data.keys.mf_app_center }} vous est proposée. Application Center est un autre composant du produit. Pour les besoins de ce tutoriel, il n'est pas nécessaire de l'installer avec {{ site.data.keys.mf_server }}.
+Exécutez Installation Manager pour installer les fichiers binaires de {{ site.data.keys.mf_server }} sur votre disque avant de créer les bases de données et de déployer {{ site.data.keys.mf_server }} sur le profil Liberty. Lors de l'installation de {{ site.data.keys.mf_server }} à l'aide d'Installation Manager, une option permettant d'installer {{ site.data.keys.mf_app_center }} vous est proposée. Application Center est un autre composant du produit. Pour les besoins de ce tutoriel, il n'est pas nécessaire de l'installer avec {{ site.data.keys.mf_server }}.
 
 Vous devez également définir une propriété pour indiquer si l'octroi de licence de jeton doit être ou non activé. Dans ce tutoriel, on part du principe que l'octroi de licence de jeton n'est pas nécessaire, par conséquent, les étapes de configuration de {{ site.data.keys.mf_server }} pour l'octroi de licence de jeton ne sont pas incluses. En revanche, dans le cadre d'une installation en environnement de production, vous devrez déterminer si vous devez activer ou non l'octroi de licence de jeton. Si vous ne disposez pas d'un contrat d'utilisation de l'octroi de licence de jeton avec Rational License Key Server, vous n'avez pas besoin d'activer l'octroi de licence de jeton. Si vous activez cette option, vous devez configurer {{ site.data.keys.mf_server }} pour l'octroi de licence de jeton.
 
@@ -128,6 +128,7 @@ Ces ressources figurent dans les dossiers suivants :
 * Dossier **PushService** pour le service push de {{ site.data.keys.mf_server }}
 * Dossier **ApplicationCenter** pour Application Center
 * Dossier **Analytics** pour {{ site.data.keys.mf_analytics }}
+* Dossier **AnalyticsReceiver** pour {{ site.data.keys.mf_analytics_receiver }}
 
 L'objectif de ce tutoriel est d'installer {{ site.data.keys.mf_server }} à l'aide des ressources contenues dans le dossier **MobileFirstServer**.  
 En outre, le dossier **shortcuts** contient des raccourcis pour l'outil de configuration de serveur, les tâches Ant et le programme **mfpadm**.
@@ -184,6 +185,10 @@ Les applications {{ site.data.keys.product_adj }} suivantes ne sont pas déploy�
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }} est généralement déployé sur un ensemble de serveurs autre que {{ site.data.keys.mf_server }} en raison de ses exigences élevées en matière de mémoire. {{ site.data.keys.mf_analytics }} peut être installé manuellement ou à l'aide de tâches Ant. Si ce composant est déjà installé, vous pouvez entrer son URL, le nom d'utilisateur et le mot de passe afin de lui envoyer des données dans l'outil de configuration de serveur. L'outil de configuration de serveur configure ensuite les applications {{ site.data.keys.product_adj }} afin d'envoyer des données à {{ site.data.keys.mf_analytics }}.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+{{ site.data.keys.mf_analytics_receiver }} est généralement déployé sur un ensemble de serveurs autres que {{ site.data.keys.mf_server }} et {{ site.data.keys.mf_analytics }} en raison des exigences élevées en matière de mémoire. {{ site.data.keys.mf_analytics_receiver }} peut être installé manuellement ou à l'aide de tâches Ant. Si ce composant est déjà installé, vous pouvez entrer son URL, le nom d'utilisateur et le mot de passe afin de lui envoyer des données dans l'outil de configuration de serveur. L'outil de configuration de serveur configure ensuite les applications {{ site.data.keys.product_adj }} afin d'envoyer des données à {{ site.data.keys.mf_analytics_receiver }}.
+
 #### Application Center
 {: #application-center }
 Cette application peut être utilisée pour distribuer des applications mobiles en interne aux employés qui utilisent les applications, ou à des fins de test. Indépendante de {{ site.data.keys.mf_server }}, elle n'a pas besoin d'être installée en même temps que ce produit.
@@ -204,6 +209,7 @@ Choisissez le fichier XML approprié contenant les tâches Ant et configurez les
     * Affectez à **appserver.was85liberty.serverInstance** la valeur **mfp1** - Valeur du nom du serveur Liberty sur lequel {{ site.data.keys.mf_server }} doit être installé.
     * Affectez à **mfp.farm.configure** la valeur **false** pour installer {{ site.data.keys.mf_server }} en mode autonome.
     * Affectez à **mfp.analytics.configure** la valeur **false**. La connexion à {{ site.data.keys.mf_analytics }} n'est pas abordée dans ce tutoriel. Vous pouvez ignorer les autres propriétés mfp.analytics.****.
+    * Affectez à **mfp.analytics.receiver.configure** la valeur **false**. La connexion à {{ site.data.keys.mf_analytics_receiver }} n'est pas abordée dans ce tutoriel. Vous pouvez ignorer les autres propriétés mfp.analytics.receiver.****.
     * Affectez à **mfp.admin.client.id** la valeur **admin-client-id**.
     * Affectez à **mfp.admin.client.secret** la valeur **adminSecret** (ou choisissez un autre mot de passe secret).
     * Affectez à **mfp.push.client.id** la valeur **push-client-id**.
@@ -262,7 +268,7 @@ Le fichier **server.xml** et certains paramètres de serveur d'applications sont
 
 2. `host='*'` est ajouté dans la déclaration `httpEndPoint`.
 
-    Ce paramètre permet d'autoriser la connexion au serveur à partir de toutes les interfaces réseau. Pour un environnement de production, vous souhaiterez peut-être restreindre la valeur hôte du noeud final HTTP.
+    Ce paramètre permet d'autoriser la connexion au serveur à partir de toutes les interfaces réseau. Pour un environnement de production, vous souhaiterez peut-être restreindre la valeur hôte du point de terminaison HTTP.
 3. L'élément **tcpOptions** (**tcpOptions soReuseAddr="true"**) est ajouté dans la configuration de serveur pour redéfinir immédiatement les accès à un port sans programme d'écoute actif et pour améliorer le débit du serveur.
 4. Un magasin de clés portant l'ID **defaultKeyStore** est créé, le cas échéant.
 
@@ -291,7 +297,7 @@ Les applications suivantes sont installées :
 * **mfpadmin** : service d'administration
 * **mfpadminconfig** : service Live Update
 * **mfpconsole** : {{ site.data.keys.mf_console }}
-* **mobilefirs**t : composant d'exécution de {{ site.data.keys.product_adj }}
+* **mobilefirst** : composant d'exécution de {{ site.data.keys.product_adj }}
 * **imfpush** : service push
 
 L'outil de configuration de serveur installe toutes les applications sur le même serveur. Vous pouvez séparer les applications dans différents serveurs d'applications, mais sous certaines contraintes documentées dans la section [Topologies et flots réseau](../../../prod-env/topologies).  
