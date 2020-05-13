@@ -479,4 +479,17 @@ dispositivo a partir dos dados de registro do
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-analytics-receiver">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-analytics-receiver" aria-expanded="true" aria-controls="collapse-mobilefirst-analytics-receiver">O que há de novo no {{ site.data.keys.mf_analytics_receiver }}</a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-analytics-receiver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics-receiver">
+            <div class="panel-body">
+                <p>{{ site.data.keys.mf_analytics_server }} é um recurso opcional que aceita logs do SDK do cliente e os encaminha para análise. Eventualmente, ele reduz a carga do {{ site.data.keys.mf_server }} para manipular a função loguploader do cliente.</p>
+            </div>
+        </div>
+    </div>    
 </div>

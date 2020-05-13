@@ -30,7 +30,9 @@ O instalador requer o Java instalado.
     *Windows:*  
     [Siga esse guia](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html).
 
-### Tarefas de Instalação
+    [Problema Conhecido](#known-issue-win)
+
+## Tarefas de Instalação
 {: #installation }
 Obtenha o DevKit Installer na [página Downloads]({{site.baseurl}}/downloads/) e siga as instruções na tela.
 
@@ -66,7 +68,7 @@ O [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/app
 **Pré-requisito: **  
 1. O NodeJS e o NPM são necessários antes de ser possível realizar a instalação do {{ site.data.keys.mf_cli }}.  
  Faça o download e instale o [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) e o NPM v3.10.10.
- Para o MobileFirst CLI versão 8.0.2018100112 ou superior, é possível usar o nó v8.x ou v10.x. 
+ Para o MobileFirst CLI versão 8.0.2018100112 ou superior, é possível usar o nó v8.x ou v10.x.
 
  Para verificar a instalação, abra uma janela de linha de comandos e execute: `node -v`.
 
@@ -93,18 +95,49 @@ O Apache Maven é necessário para configuração antes da criação de adaptado
 1. [Faça download do .zip do Apache Maven](https://maven.apache.org/download.cgi)
 2. Inclua uma variável `MVN_PATH`, apontando para a pasta Maven
 
-    *Mac e Linux:* Edite seu **~/.bash_profile**:
+   *Mac e Linux:* Edite seu **~/.bash_profile**:
 
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
     ```
 
-    *Windows:*  
+    *Windows:*
+
     [Siga esse guia](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).
-Verifique a instalação executando: `mvn -v`.
+    
+    Verifique a instalação executando:
+    ```bash
+    mvn -v
+    ```
+
 
 ### USO
 {: #usage }
 Com o Apache Maven instalado, agora é possível criar adaptadores por meio de comandos da linha de comandos do Maven ou usando o {{ site.data.keys.mf_cli }}.  
 Para obter informações adicionais, revise os [tutoriais Adaptadores]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
+
+### Problema conhecido no Windows
+{: #known-issue-win}
+
+Em máquinas Windows com Oracle Java 8 atualização 60 e acima, os instaladores do MobileFirst usando a tecnologia InstallAnywhere falham com o erro a seguir.
+
+![erro de ativação](launch-error.png)
+
+#### Causa do erro
+As mudanças introduzidas pelo Oracle no Java 8 atualização 60 fazem com que os instaladores construídos usando o InstallAnywhere falhem com o erro acima. A razão para essa falha é que com o Oracle Java 8u60 e acima, o InstallAnywhere falha em detectar automaticamente o local da JVM suportada mais recente na máquina Windows.
+
+#### Resolvendo o erro
+
+Uma das abordagens a seguir pode ser usada para resolver o problema.
+
+##### Abordagem 1
+
+Orientar o InstallAnywhere a ativar usando uma determinada JVM.
+Ative o instalador por meio da linha de comandos e indique ao InstallAnywhere qual JVM usar para a ativação usando o parâmetro **LAX_VM**.
+
+![lax-vm-parameter](lax-vm-parameter.png)
+
+##### Abordagem 2
+
+Como esse problema não é visto com versões Java anteriores ao Java 8u60, use o Java 7.

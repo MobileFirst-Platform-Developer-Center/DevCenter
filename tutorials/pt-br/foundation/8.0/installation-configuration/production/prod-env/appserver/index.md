@@ -83,7 +83,7 @@ Assegure-se de cumprir os seguintes critérios:
 {% endhighlight %}
                     </li>
                     <li>Para ativar a autenticação, consulte a documentação do usuário do Apache Tomcat <a href="https://tomcat.apache.org/tomcat-7.0-doc/config/http.html#SSL_Support">Suporte SSL BIO – e NIO</a> e <a href="http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html">Instruções de Configuração SSL</a>.</li>
-                    <li>Para uma configuração JMX com SSL ativado, inclua as seguintes opções:
+                    <li>Para uma configuração do JMX com SSL ativado, inclua as opções a seguir:
 {% highlight xml %}
 -Dcom.sun.management.jmxremote=true
 -Dcom.sun.management.jmxremote.port=8686
@@ -155,11 +155,11 @@ O processo que executa o servidor Liberty não seja interrompido quando o usuár
                 <ul>
                     <li>O Server Configuration Tool e as tarefas Ant pode configurar um padrão seguro conexão JMX, que inclui a geração de um certificado SSL auto-assinado por um período de validade de 365 dias. Essa configuração não deve ser usada para produção.</li>
                     <li>Para configurar a conexão JMX segura para uso de produção, siga as instruções conforme descrito em <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_restconnector.html?cp=SSD28V_8.5.5&view=embed">Configurando a conexão JMX segura para o perfil Liberty</a>.</li>
-                    <li>O rest-connector está disponível para WebSphere Application Server, Liberty Core e outras edições do Liberty, mas é possível empacotar um servidor Liberty com um subconjunto dos recursos disponíveis. Para verificar se o recurso rest-connector está disponível na instalação do Liberty, insira o seguinte comando:
+                    <li>O rest-connector está disponível para WebSphere Application Server, Liberty Core e outras edições do Liberty, mas é possível empacotar um servidor Liberty com um subconjunto dos recursos disponíveis. Para verificar se o recurso rest-connector está disponível em sua instalação do Liberty, insira o comando a seguir:
 {% highlight bash %}                    
 liberty_install_dir/bin/productInfo featureInfo
 {% endhighlight %}
-                    <b>Nota:</b> Verifique se a saída desse comando contém restConnector-1.0.</li>
+                    <b>Nota:</b> verifique se a saída desse comando contém restConnector-1.0.</li>
                 </ul>
             </div>
         </div>
@@ -251,6 +251,28 @@ O Server Configuration Tool pode configurar o banco de dados e instalar os compo
 * Linux x86 ou Linux x86-64
 
 A ferramenta não está disponível em outros sistemas operacionais. É necessário usar tarefas Ant para instalar os componentes do {{ site.data.keys.mf_server }}, conforme descrito em [Instalando com tarefas Ant](#installing-with-ant-tasks).
+
+O ativador do ServerConfigurationTool (SCT) no Mac OS requer a instalação do Java SE 6 Runtime anterior. Você poderá ver a mensagem abaixo quando iniciar o ativador do SCT no Mac OS.
+
+![Mensagem SCT - Mac OS](message-sct-mac.png)
+
+Como solução alternativa, é possível seguir uma das abordagens a seguir e executar o SCT usando o executável do SCT sem ter que instalar o Java SE 6 Runtime.
+
+#### Abordagem 1
+* Clique com o botão direito no ativador `ServerConfigurationTool`.
+* Selecione **Mostrar conteúdos do pacote**
+
+  ![Mostrar conteúdos do pacote](show-package-contents.png)
+
+* Clique em **Conteúdos** > **MacOS**.
+* Clique no executável `ServerConfigurationTool` para ativar o SCT.
+
+#### Abordagem 2
+É possível ter o Java SE 8 e o Java SE6 instalados em seu computador sem problemas.
+
+* Quando a janela pop-up aparecer ao usar o ativador do SCT, clique em **Mais informações**.
+* Você será direcionado para o site de Suporte da Apple. Aqui, é possível localizar mais instruções sobre como obter o Java SE 6 Runtime.
+* Siga as instruções, instale o Java SE 6 Runtime e, em seguida, inicie o ativador do SCT.
 
 ### Topologias suportadas
 {: #supported-topologies }
@@ -1883,7 +1905,7 @@ Quando você planejar um server farm com o Server Configuration Tool, primeiro c
                             </li>
                             <li>Troque os certificados de assinante entre todos os servidores em seus respectivos armazenamentos confiáveis.
                             <br/><br/>
-                            Esta etapa é obrigatória para os farms que usam o perfil integral do WebSphere Application Server ou o Liberty, pois a segurança deve ser ativada. Além disso, para farms do Liberty, a mesma configuração de LTPA deve ser replicada em cada servidor para assegurar o recurso de conexão única. Para fazer essa configuração, siga as diretrizes na etapa 6 de <a href="#configuring-a-server-farm-manually">Configurando um server farm manualmente</a>.
+                            <blockquote><b>Nota</b>: essa etapa é obrigatória para os farms que usam o perfil integral do WebSphere Application Server ou o Liberty, pois a segurança deve ser ativada. Além disso, para farms do Liberty, a mesma configuração de LTPA deve ser replicada em cada servidor para assegurar o recurso de conexão única. Para fazer essa configuração, siga as diretrizes na etapa 6 de <a href="#configuring-a-server-farm-manually">Configurando um server farm manualmente</a>.</blockquote>
                             </li>
                         </ul>
                     </li>
@@ -1935,7 +1957,7 @@ Ao planejar um server farm com tarefas Ant, primeiro crie os servidores independ
                             Para obter informações adicionais sobre como configurar um servidor, consulte <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Restrições no serviço de administração do {{ site.data.keys.mf_server }}, serviço de atualização em tempo real do {{ site.data.keys.mf_server }} e tempo de execução do {{ site.data.keys.product_adj }}</a>.</li>
                             <li>Troque os certificados de assinante entre todos os servidores em seus respectivos armazenamentos confiáveis.
                             <br/><br/>
-                            Esta etapa é obrigatória para os farms que usam o perfil integral do WebSphere Application Server ou o Liberty, pois a segurança deve ser ativada. Além disso, para farms do Liberty, a mesma configuração de LTPA deve ser replicada em cada servidor para assegurar o recurso de conexão única. Para fazer essa configuração, siga as diretrizes na etapa 6 de <a href="#configuring-a-server-farm-manually">Configurando um server farm manualmente</a>.
+                            <blockquote><b>Nota</b>: essa etapa é obrigatória para os farms que usam o perfil integral do WebSphere Application Server ou o Liberty, pois a segurança deve ser ativada. Além disso, para farms do Liberty, a mesma configuração de LTPA deve ser replicada em cada servidor para assegurar o recurso de conexão única. Para fazer essa configuração, siga as diretrizes na etapa 6 de <a href="#configuring-a-server-farm-manually">Configurando um server farm manualmente</a></blockquote>.
                             </li>
                         </ul>
                     </li>
@@ -2078,7 +2100,7 @@ Ao planejar um server farm, crie primeiramente servidores independentes que se c
 <jndiEntry jndiName="mfp.admin.jmx.host" value="93.12.0.12"/>
 <jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>
 {% endhighlight %}
-                                Essas propriedades devem ser configuradas com valores apropriados:
+                                Essas propriedades devem ser configuradas com os valores apropriados:
                                 <ul>
                                     <li><b>mfp.admin.serverid</b>: o identificador definido para este membro do farm. Esse identificador deve ser exclusivo entre todos os membros do farm.</li>
                                     <li><b>mfp.admin.jmx.user</b> e <b>mfp.admin.jmx.pwd</b>: esses valores devem corresponder às credenciais de um usuário conforme declarado no elemento <code>administrator-role</code>.</li>
@@ -2093,7 +2115,7 @@ Ao planejar um server farm, crie primeiramente servidores independentes que se c
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
 <Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                A propriedade <b>mfp.admin.serverid</b> deve ser configurada para o identificador definido para esse membro do farm. Esse identificador deve ser exclusivo entre todos os membros do farm.
+                                A propriedade <b>mfp.admin.serverid</b> deve ser configurada para o identificador que você definiu para esse membro do farm. Esse identificador deve ser exclusivo entre todos os membros do farm.
                                 <br/>
                                 Você deve se certificar de que o argumento de JVM <code>-Djava.rmi.server.hostname</code> esteja configurado para o IP ou nome do host usados pelos membros remotos para acessar esse servidor. Portanto, não o configure para <b>localhost</b>. Além disso, você deve se certificar de que o argumento da JVM <code>-Dcom.sun.management.jmxremote.port</code> esteja configurado com uma porta que ainda não estejam em uso para ativar conexões JMX RMI. Ambos os argumentos são configurados na variável de ambiente <b>CATALINA_OPTS</b>.
                             </li>
@@ -2136,7 +2158,7 @@ Ao planejar um server farm, crie primeiramente servidores independentes que se c
                                 </ul>
                                 As localizações do keystore e do armazenamento confiável são definidas no arquivo <b>server.xml</b>. Consulte os atributos <b>keyStoreRef</b> e <b>trustStoreRef</b> em <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">Atributos de configuração SSL</a>. Por padrão, o keystore do perfil Liberty está em <b>${server.config.dir}/resources/security/key.jks</b>. Se a referência de armazenamento confiável estiver ausente ou não estiver definido no arquivo <b>server.xml</b>, o keystore especificado por <b>keyStoreRef</b> será usado. O servidor usa o keystore padrão e o arquivo é criado na primeira vez que o servidor é executado. Nesse caso, um certificado padrão é criado com um período de validade de 365 dias. Para produção, você pode considerar usar seu próprio certificado (incluindo os intermediários, se necessário) ou mudar a data de expiração do certificado gerado.
 
-                                <blockquote>Nota: se desejar confirmar o local do armazenamento confiável, isso pode ser feito incluindo a seguinte declaração no arquivo server.xml:
+                                <blockquote>Nota: se desejar confirmar o local do armazenamento confiável, isso poderá ser feito incluindo a declaração a seguir no arquivo server.xml:
 {% highlight xml %}
 <logging traceSpecification="SSL=all:SSLChannel=all"/>
 {% endhighlight %}
@@ -2145,6 +2167,10 @@ Ao planejar um server farm, crie primeiramente servidores independentes que se c
                                 <ul>
                                     <li>Importe os certificados públicos dos outros servidores no farm para o armazenamento confiável referenciado pelo arquivo de configuração <b>server.xml</b> do servidor. O tutorial <a href="../../simple-install/graphical-mode">Instalando o {{ site.data.keys.mf_server }} no modo gráfico</a> fornece as instruções para trocar os certificados entre dois servidores Liberty em um farm. Para obter informações adicionais, consulte a etapa 5 da seção <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Criando um farm de dois servidores Liberty que executam o {{ site.data.keys.mf_server }}</a>.</li>
                                     <li>Reinicie cada instância do perfil Liberty do WebSphere Application Server para que a configuração de segurança entre em vigor. As etapas a seguir são necessárias para a conexão única (SSO) funcionar.</li>
+                                    <li>Troque os certificados de assinante entre todos os servidores em seus respectivos armazenamentos confiáveis.
+                                    <br/><br/>
+                                    <blockquote><b>Nota</b>: essa etapa é obrigatória para os farms que usam o perfil integral do WebSphere Application Server ou o Liberty, pois a segurança deve ser ativada. Além disso, para farms do Liberty, a mesma configuração de LTPA deve ser replicada em cada servidor para assegurar o recurso de conexão única. Para fazer essa configuração, execute as etapas a seguir.</blockquote>
+                                    </li>
                                     <li>Inicie um membro do farm. Na configuração padrão de LTPA, após o início bem-sucedido do servidor Liberty, ele gera um keystore LTPA como <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys.</b></li>
                                     <li>Copie o arquivo <b>ltpa.keys</b> para o diretório <b>${wlp.user.dir}/servers/server_name/resources/security</b> de cada membro de farm para replicar os keystores LTPA nos membros de farm. Para obter mais informações sobre a configuração de LTPA, consulte <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Configurando LTPA no perfil do Liberty</a>.</li>
                                 </ul>

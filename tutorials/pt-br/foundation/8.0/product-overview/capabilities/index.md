@@ -51,6 +51,10 @@ O recurso {{ site.data.keys.mf_analytics }} permite a procura entre aplicativos,
 
 Além de relatórios que resumem a atividade do app, o {{ site.data.keys.product }} inclui uma plataforma de analítica operacional escalável que pode ser acessada no {{ site.data.keys.mf_console }}. O recurso {{ site.data.keys.mf_analytics_short }} permite que as empresas procurem padrões, problemas e estatísticas de uso da plataforma nos logs e eventos que são coletados a partir dos dispositivos, aplicativos e servidores. É possível ativar a analítica, relatórios, ou ambos, dependendo de suas necessidades.
 
+### Analytics Receiver
+{: #analyticsreceiver }
+O {{ site.data.keys.mf_analytics_receiver }} é um recurso opcional, que recebe logs de aplicativos móveis e os transfere para o {{ site.data.keys.mf_analytics }} de maneira faseada, armazenando-os em uma fila na memória.
+
 ### Monitoração
 {: #monitoring }
 O {{ site.data.keys.product }} inclui uma série de analítica operacional e mecanismos de relatório para coleta, visualização e análise de dados a partir de seus aplicativos e servidores do {{ site.data.keys.product }} e para monitoramento de funcionamento do servidor.

@@ -38,7 +38,7 @@ Os requisitos de política podem ser preenchidos usando qualquer um dos seguinte
 
     <sup>*</sup> No Safari, o modo de navegação privada é suportado apenas para aplicativos de página única (SPAs). Outros aplicativos podem apresentar comportamento inesperado.
 
-    {% comment %} [sharonl][c-web-browsers-ms-edge] Veja informações sobre o suporte do Microsoft Edge na Tarefa 111165. {% endcomment %}
+    {% comment %} [sharonl][c-web-browsers-ms-edge] Consulte informações sobre o suporte do Microsoft Edge na Tarefa 111165. {% endcomment %}
 
 -   As instruções de configuração a seguir requerem a instalação do Apache Maven ou do Node.js na estação de trabalho do desenvolvedor. Para obter instruções adicionais, consulte o [guia de instalação](../mobilefirst/installation-guide/).
 
