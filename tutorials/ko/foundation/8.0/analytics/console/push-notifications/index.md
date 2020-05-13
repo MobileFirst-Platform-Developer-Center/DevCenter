@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 푸시 알림
-breadcrumb_title: Push Notifications
+breadcrumb_title: 푸시 알림
 relevantTo: [ios,android,javascript]
 weight: 5
 ---

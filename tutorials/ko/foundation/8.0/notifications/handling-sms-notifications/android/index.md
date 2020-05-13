@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Android에서 SMS 알림 처리
-breadcrumb_title: Handling SMS in Android
+breadcrumb_title: Android에서 SMS 처리
 relevantTo: [android]
 weight: 10
 downloads:

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Helm을 사용하여 IBM Cloud Kubernetes Cluster에 Mobile Foundation 설정
-breadcrumb_title: Foundation on Kubernetes using Helm
+breadcrumb_title: Helm을 사용한 Kubernetes의 Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---

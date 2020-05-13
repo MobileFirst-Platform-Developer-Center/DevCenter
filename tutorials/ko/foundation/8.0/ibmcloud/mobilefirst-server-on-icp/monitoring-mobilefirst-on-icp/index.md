@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud Private(ICP)에서 Mobile Foundation 모니터링
-breadcrumb_title: Monitoring Mobile Foundation
+breadcrumb_title: Mobile Foundation 모니터링
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

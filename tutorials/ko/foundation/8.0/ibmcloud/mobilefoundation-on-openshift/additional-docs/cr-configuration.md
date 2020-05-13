@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Mobile Foundation Custom Resource (CR) configuration
+breadcrumb_title: Mobile Foundation 사용자 정의 자원(CR) 구성
 title: IBM Mobile Foundation 사용자 정의 자원(CR) 구성
 weight: 3
 show_in_nav: false
@@ -35,15 +35,15 @@ show_in_nav: false
 |                       | adminCredentialsSecret | MFPServer DB 관리 시크릿 | DB 초기화를 사용하는 경우 시크릿을 제공하여 Mobile Foundation 컴포넌트에 대한 데이터베이스 테이블 및 스키마를 작성합니다. |
 | mfpserver | adminClientSecret | Admin 클라이언트 시크릿 | 작성한 클라이언트 시크릿 이름을 지정합니다. [여기](#optional-creating-secrets-for-confidential-clients) 참조  |
 |  | pushClientSecret | Push 클라이언트 시크릿 | 작성한 클라이언트 시크릿 이름을 지정합니다. [여기](#optional-creating-secrets-for-confidential-clients) 참조 |
+|  | liveupdateClientSecret | LiveUpddate 클라이언트 시크릿 | 작성한 클라이언트 시크릿 이름을 지정합니다. [여기](#optional-creating-secrets-for-confidential-clients) 참조 |
 | mfpserver.replicas |  | 작성해야 하는 Mobile Foundation Server 인스턴스 수(팟(Pod)) | 양의 정수(기본값: **3**) |
 | mfpserver.autoscaling     | enabled | 수평 팟(Pod) 자동 스케일러(HPA)의 배치 여부를 지정합니다. 이 필드를 사용하면 replicas 필드를 사용하지 않습니다. | **false**(기본값) 또는 true |
-|           | minReplicas  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
-|           | maxReplicas | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. 최소값보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
-|           | targetCPUUtilizationPercentage | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100 사이의 정수(기본값: **50**) |
+|           | min  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
+|           | max | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. 최소값보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
+|           | targetcpu | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100 사이의 정수(기본값: **50**) |
 | mfpserver.pdb     | enabled | PDB의 사용/사용 안함 여부를 지정합니다. | **true**(기본값) 또는 false |
 |           | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: 1) |
 |    mfpserver.customConfiguration |  |  사용자 정의 서버 구성(선택사항)  | 사전 작성된 구성 맵에 대한 서버 특정 추가 구성 참조를 제공합니다.  [여기](#optional-custom-server-configuration) 참조|
-| mfpserver.jndiConfigurations | mfpfProperties | 배치를 사용자 정의할 Mobile Foundation Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍 제공 |
 | mfpserver | keystoreSecret | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 [구성 절](#optional-creating-custom-keystore-secret-for-the-deployments)을 참조하십시오.|
 | mfpserver.resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  |기본값: **2000m**. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |                  | limits.memory | 허용되는 최대 메모리 크기를 설명합니다. | 기본값은 **2048Mi**입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오.|
@@ -54,27 +54,52 @@ show_in_nav: false
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
 | mfppush.replicas | | 작성해야 하는 Mobile Foundation Server 인스턴스 수(팟(Pod)) | 양의 정수(기본값: **3**) |
 | mfppush.autoscaling     | enabled | 수평 팟(Pod) 자동 스케일러(HPA)의 배치 여부를 지정합니다. 이 필드를 사용하면 replicaCount 필드를 사용하지 않습니다. | **false**(기본값) 또는 true |
-|           | minReplicas  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
-|           | maxReplicas | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. minReplicas보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
-|           | targetCPUUtilizationPercentage | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100 사이의 정수(기본값: **50**) |
+|           | min  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
+|           | max | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. minReplicas보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
+|           | targetcpu | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100 사이의 정수(기본값: **50**) |
 | mfppush.pdb     | enabled | PDB의 사용/사용 안함 여부를 지정합니다. | **true**(기본값) 또는 false |
 |           | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: 1) |
-| mfppush.customConfiguration |  |  사용자 정의 구성(선택사항)  | 사전 작성된 구성 맵에 대한 Push 특정 추가 구성 참조를 제공합니다.  [여기](#optional-custom-server-configuration) 참조 |
-| mfppush.jndiConfigurations | mfpfProperties | 배치를 사용자 정의할 Mobile Foundation Server JNDI 특성 | 쉼표로 구분된 이름 값 쌍 제공 |
+| mfppush.customConfiguration |  |  사용자 정의 구성(선택사항)  | 사전 작성된 구성 맵에 대한 Push 특정 추가 구성 참조를 제공합니다. [여기](#optional-custom-server-configuration) 참조 |
 | mfppush | keystoresSecretName | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 [구성 절](#optional-creating-custom-keystore-secret-for-the-deployments)을 참조하십시오.|
 | mfppush.resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  |기본값은 **1000m**입니다. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |                  | limits.memory | 허용되는 최대 메모리 크기를 설명합니다. | 기본값은 **2048Mi**입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오.|
 |           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  |기본값: **750m**. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |           | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값은 **1024Mi**입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
+| mfpliveupdate | enabled          | Liveupdate를 사용하도록 플래그 지정 | **false**(기본값) 또는 true |
+| mfpliveupdate.image | repository          | Docker 이미지 저장소 | Mobile Foundation Live Update Docker 이미지의 저장소. REPO_URL 플레이스홀더는 올바른 Docker 레지스트리 URL로 바꾸어야 합니다. |
+|           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조. |
+|           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 |[여기](#optional-creating-custom-defined-console-login-secrets)를 참조하십시오.|
+| mfpliveupdate.db | type          | 지원되는 데이터베이스 벤더 이름 | **DB2**(기본값)/MySQL/Oracle |
+|  | host          | Mobile Foundation Server 테이블을 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름. |  |
+|  | port          | 데이터베이스 포트 번호. |  |
+|  | secret          | 데이터베이스 인증 정보가 있는 사전 작성된 시크릿 |  |
+|  | name          | Mobile Foundation Server 데이터베이스의 이름 |  |
+|  | schema          | 작성할 서버 DB 스키마. | 스키마가 이미 있으면 이를 사용합니다. 그렇지 않으면 작성됩니다. |
+|  | ssl          | 데이터베이스 연결 유형  | 데이터베이스 연결이 http 또는 https여야 하는지를 지정합니다. 기본값은 **false**(http)입니다. 동일한 연결 모드로 데이터베이스 포트도 구성해야 합니다. |
+|  | driverPvc          | JDBC 데이터베이스 드라이버에 액세스하기 위한 지속적 볼륨 청구 | JDBC 데이터베이스 드라이버를 호스팅하는 지속적 볼륨 청구 이름을 지정합니다. 선택된 데이터베이스 유형이 DB2가 아닌 경우 필수입니다. |
+|  | adminCredentialsSecret          | MFPServer DB 관리 시크릿 | DB 초기화를 사용하는 경우 시크릿을 제공하여 Mobile Foundation 컴포넌트에 대한 데이터베이스 테이블 및 스키마를 작성합니다. |
+| mfpliveupdate.replicas |   | 작성해야 하는 Mobile Foundation Liveupdate 인스턴스 수(팟(Pod)) | 양의 정수(기본값: **2**). |
+| mfpliveupdate.autoscaling | enabled  | 수평 팟(Pod) 자동 스케일러(HPA)의 배치 여부를 지정합니다. 이 필드를 사용하면 replicas 필드를 사용하지 않습니다. | **false**(기본값) 또는 true |
+|  | min  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
+|  | max  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. 최소값보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
+|  | targetcpu  | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100 사이의 정수(기본값: **50**) |
+| mfpliveupdate.pdb | enabled  | PDB의 사용/사용 안함 여부를 지정합니다. | **true**(기본값) 또는 false |
+|  | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: **1**) |
+| mfpliveupdate.customConfiguration |   |  사용자 정의 서버 구성(선택사항)  | 사전 작성된 구성 맵에 대한 서버 특정 추가 구성 참조를 제공합니다. [여기](#optional-custom-server-configuration)를 참조하십시오.|
+| mfpliveupdate | keystoreSecret          | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 [구성 절](#optional-creating-custom-keystore-secret-for-the-deployments)을 참조하십시오. |  |
+| mfpliveupdate.resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다. |기본값은 **1000m**입니다. Kubernetes - [CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+|  | limits.memory  | 허용되는 최대 메모리 크기를 설명합니다. | 기본값은 **2048Mi**입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
+|  | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다. |기본값: **750m**. Kubernetes - [CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+|  | requests.memory  | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값은 1024Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
 | mfpanalytics | enabled          | Analytics를 사용하도록 플래그 지정 | **false**(기본값) 또는 true |
 | mfpanalytics.image | repository          | Docker 이미지 저장소 | Mobile Foundation Operational Analytics Docker 이미지의 저장소. REPO_URL 플레이스홀더는 올바른 Docker 레지스트리 URL로 바꾸어야 합니다. |
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
 |           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | [여기](#optional-creating-custom-defined-console-login-secrets) 참조|
 | mfpanalytics.replicas |  | 작성해야 하는 Mobile Foundation Operational Analytics의 인스턴스 수(팟(Pod)) | 양의 정수(기본값: **2**) |
 | mfpanalytics.autoscaling     | enabled | 수평 팟(Pod) 자동 스케일러(HPA)의 배치 여부를 지정합니다. 이 필드를 사용하면 replicaCount 필드를 사용하지 않습니다. | **false**(기본값) 또는 true |
-|           | minReplicas  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
-|           | maxReplicas | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. minReplicas보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
-|           | targetCPUUtilizationPercentage | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100(50에 대한 기본) 사이의 정수 |
+|           | min  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
+|           | max | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. minReplicas보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
+|           | targetcpu | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100(50에 대한 기본) 사이의 정수 |
 |  mfpanalytics.shards|  | Mobile Foundation Analytics에 대한 Elasticsearch 샤드 수 | 기본값: 2|             
 |  mfpanalytics.replicasPerShard|  |Mobile Foundation Analytics에 대해 각 샤드당 유지보수할 Elasticsearch 복제본 수 | 기본값: **2**|
 | mfpanalytics.persistence | enabled         | 데이터를 지속하기 위해 PersistentVolumeClaim 사용                        | **true** |                                                 |
@@ -86,12 +111,28 @@ show_in_nav: false
 | mfpanalytics.pdb     | enabled | PDB의 사용/사용 안함 여부를 지정합니다. | **true**(기본값) 또는 false |
 |           | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: **1**) |
 |    mfpanalytics.customConfiguration |  |  사용자 정의 구성(선택사항)  | 사전 작성된 구성 맵에 대한 Analytics 특정 추가 구성 참조를 제공합니다. [여기]를 참조하십시오. (#optional-custom-server-configuration |
-| mfpanalytics.jndiConfigurations | mfpfProperties | 운영 분석을 사용자 정의하기 위해 지정할 Mobile Foundation JNDI 특성| 쉼표로 구분된 이름 값 쌍 제공  |
 | mfpanalytics | keystoreSecret | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 [구성 절](#optional-creating-custom-keystore-secret-for-the-deployments)을 참조하십시오.|
 | mfpanalytics.resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다.  |기본값은 **1000m**입니다. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |                  | limits.memory | 허용되는 최대 메모리 크기를 설명합니다. | 기본값은 **2048Mi**입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오.|
 |           | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다.  |기본값: **750m**. Kubernetes - [CPU 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
 |           | requests.memory | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값은 1024Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
+| mfpanalytics_recvr | enabled          | Analytics Receiver를 사용하도록 플래그 지정 | **false**(기본값) 또는 true |
+| mfpanalytics_recvr.image | repository          | Docker 이미지 저장소 | Mobile Foundation Live Update Docker 이미지의 저장소. REPO_URL 플레이스홀더는 올바른 Docker 레지스트리 URL로 바꾸어야 합니다. |
+|           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조. |
+| mfpanalytics_recvr.replicas |   | 작성해야 하는 Mobile Foundation Analytics Receiver 인스턴스 수(팟(Pod)) | 양의 정수(기본값: **1**). |
+| mfpanalytics_recvr.autoscaling | enabled  | 수평 팟(Pod) 자동 스케일러(HPA)의 배치 여부를 지정합니다. 이 필드를 사용하면 replicaCount 필드를 사용하지 않습니다. | **false**(기본값) 또는 true |
+|  | min  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
+|  | max  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. 최소값보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
+|  | targetcpu  | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100 사이의 정수(기본값: **50**) |
+| mfpanalytics_recvr.pdb | enabled  | PDB의 사용/사용 안함 여부를 지정합니다. | **true**(기본값) 또는 false |
+|  | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: **1**) |
+| mfpanalytics_recvr | analyticsRecvrSecret     | 수신기를 위해 사전 작성된 시크릿 |[여기](#optional-creating-custom-keystore-secret-for-the-deployments)를 참조하십시오.|
+| mfpanalytics_recvr.customConfiguration |  |  사용자 정의 구성(선택사항)  | 사전 작성된 구성 맵에 대한 Analytics 특정 추가 구성 참조를 제공합니다. [여기](#optional-custom-server-configuration)를 참조하십시오.|
+| mfpanalytics_recvr | keystoreSecret     | 키 저장소 및 해당 비밀번호를 사용하여 시크릿을 사전 작성하려면 [구성 절](#optional-creating-custom-keystore-secret-for-the-deployments)을 참조하십시오. |  |
+| mfpanalytics_recvr.resources | limits.cpu  | 허용되는 최대 CPU 크기를 설명합니다. |기본값은 **1000m**입니다. Kubernetes - [CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+|  | limits.memory  | 허용되는 최대 메모리 크기를 설명합니다. | 기본값은 **2048Mi**입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
+|  | requests.cpu  | 필요한 최소 CPU 크기를 설명합니다. 지정하지 않으면 제한(지정된 경우)을 기본적으로 사용하며, 그렇지 않은 경우 구현 정의 값을 사용합니다. |기본값: **750m**. Kubernetes - [CPU의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)를 참조하십시오. |
+|  | requests.memory  | 필요한 최소 메모리 양 설명. 지정되지 않은 경우 메모리 크기는 제한(지정된 경우) 또는 구현에서 정의한 값을 기본적으로 사용합니다. | 기본값은 1024Mi입니다. Kubernetes - [메모리의 의미](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)를 참조하십시오. |
 | mfpappcenter | enabled          | Application Center를 사용하도록 플래그 지정 | **false**(기본값) 또는 true |  
 | mfpappcenter.image | repository          | Docker 이미지 저장소 | Mobile Foundation Application Center Docker 이미지의 저장소. REPO_URL 플레이스홀더는 올바른 Docker 레지스트리 URL로 바꾸어야 합니다. |
 |           | tag          | Docker 이미지 태그 | Docker 태그 설명 참조 |
@@ -106,9 +147,9 @@ show_in_nav: false
 |                       | driverPvc | JDBC 데이터베이스 드라이버에 액세스하기 위한 지속적 볼륨 청구| JDBC 데이터베이스 드라이버를 호스팅하는 지속적 볼륨 청구 이름을 지정합니다. 선택된 데이터베이스 유형이 DB2가 아닌 경우 필수입니다. |
 |                       | adminCredentialsSecret | Application Center DB 관리 시크릿 | DB 초기화를 사용하는 경우 Mobile Foundation 컴포넌트를 위해 데이터베이스 테이블과 스키마를 작성하려면 시크릿 제공 |
 | mfpappcenter.autoscaling     | enabled | 수평 팟(Pod) 자동 스케일러(HPA)의 배치 여부를 지정합니다. 이 필드를 사용하면 replicaCount 필드를 사용하지 않습니다. | **false**(기본값) 또는 true |
-|           | minReplicas  | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
-|           | maxReplicas | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. minReplicas보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
-|           | targetCPUUtilizationPercentage | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100 사이의 정수(기본값: **50**) |
+|           | min | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 하한. | 양의 정수(기본값: **1**) |
+|           | max | 자동 스케일러가 설정할 수 있는 팟(Pod) 수에 대한 상한. minReplicas보다 낮을 수 없습니다. | 양의 정수(기본값: **10**) |
+|           | targetcpu | 모든 팟(Pod)에서 대상의 평균 CPU 사용률(요청된 CPU의 백분율로 표시). | 1 - 100 사이의 정수(기본값: **50**) |
 | mfpappcenter.pdb     | enabled | PDB의 사용/사용 안함 여부를 지정합니다. | **true**(기본값) 또는 false |
 |           | min  | 사용 가능한 최소 팟(Pod) | 양의 정수(기본값: **1**) |
 | mfpappcenter.customConfiguration |  |  사용자 정의 구성(선택사항)  | 사전 작성된 구성 맵에 대한 Application Center 특정 추가 구성 참조를 제공합니다. [여기](#optional-custom-server-configuration) 참조 |
@@ -124,19 +165,25 @@ show_in_nav: false
 
 Server의 경우,
 
-```
+```bash
 kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
 ```
 
 Analytics의 경우,
 
-```
+```bash
 kubectl create secret generic analyticslogin --from-literal=MFPF_ANALYTICS_ADMIN_USER=admin --from-literal=MFPF_ANALYTICS_ADMIN_PASSWORD=admin
+```
+
+Analytics Receiver의 경우,
+
+```bash
+kubectl create secret generic analytics_recvrsecret --from-literal=MFPF_ANALYTICS_RECVR_USER=admin --from-literal=MFPF_ANALYTICS_RECVR_PASSWORD=admin
 ```
 
 Application Center의 경우,
 
-```
+```bash
 kubectl create secret generic appcenterlogin --from-literal=MFPF_APPCNTR_ADMIN_USER=admin --from-literal=MFPF_APPCNTR_ADMIN_PASSWORD=admin
 ```
 
@@ -180,10 +227,11 @@ kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLI
 kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
 ```
 
-이러한 `mfpserver.pushClientSecret` 및 `mfpserver.adminClientSecret` 필드의 값을 helm 차트 설치 중에 제공하지 않으면 다음과 같이 각각 아래 신임 정보를 사용하여 기본 클라이언트 시크릿이 작성됩니다.
+이러한 `mfpserver.pushClientSecret`, `mfpserver.adminClientSecret` 및 `mfpserver.liveupdateClientSecret` 필드의 값을 helm 차트 설치 중 제공하지 않으면 다음과 같이 각각 아래 신임 정보를 사용하여 기본 클라이언트 시크릿이 작성됩니다. 
 
 * `mfpserver.adminClientSecret`의 경우 `admin / nimda`
 * `mfpserver.pushClientSecret`의 경우 `push / hsup`
+* `mfpserver.liveupdateClientSecret`의 경우 `liveupdate / etadpuevil`
 
 ## [선택사항] 사용자 정의 서버 구성
 

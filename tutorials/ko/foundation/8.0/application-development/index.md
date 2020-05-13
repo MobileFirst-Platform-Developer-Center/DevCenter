@@ -9,7 +9,7 @@ weight: 5
 {: #development-concepts-and-overview }
 {{ site.data.keys.product_full }} 도구 세트를 사용하여 앱을 개발하는 경우 여러 컴포넌트 및 요소를 개발하거나 구성해야 합니다. 앱 개발 시 관련되는 컴포넌트와 구성에 대해 학습하여 개발을 원활하게 진행할 수 있습니다.
 
-이러한 개념을 익히는 것 외에도 네이티브 Cordova 및 웹 애플리케이션에 대한 {{ site.data.keys.product_adj }} 제공 API(예: JSONStore 및 WLResourceRequest)를 학습하고 애플리케이션 디버깅 방법, 직접 업데이트를 사용하여 웹 자원을 새로 고치는 방법, 활성 업데이트를 사용하여 사용자 기반을 세그먼트화하는 방법 및 {{ site.data.keys.mf_cli }}를 사용하여 앱, 어댑터 및 기타 아티팩트를 처리하는 방법에 대해 학습합니다.
+이러한 개념을 익히는 것 외에도 네이티브 Cordova 및 웹 애플리케이션에 대한 {{ site.data.keys.product_adj }} 제공 API(예: JSONStore 및 WLResourceRequest)를 학습하고 애플리케이션 디버깅 방법, 직접 업데이트를 사용하여 웹 자원을 새로 고치는 방법, 라이브 업데이트를 사용하여 사용자 기반을 세그먼트화하는 방법 및 {{ site.data.keys.mf_cli }}를 사용하여 앱, 어댑터 및 기타 아티팩트를 처리하는 방법에 대해 학습합니다.
 
 사이드바 탐색에서 관련 주제로 이동하거나 계속 읽고 여러 {{ site.data.keys.product_adj }} 컴포넌트에 대해 자세히 알아보십시오.
 
@@ -127,6 +127,10 @@ ID는 개발자가 지정한 고유 ID입니다.
 푸시 서비스는 푸시 알림 및 푸시 등록과 같은 푸시 관련 조작의 기본 액세스 지점입니다. 푸시 서비스에 접속하는 경우 클라이언트 앱은 런타임의 URL을 사용하지만 /mfppush로 컨텍스트 루트를 대체합니다. {{ site.data.keys.mf_console }} 또는 푸시 서비스 REST API를 사용하여 푸시 서비스를 구성하고 관리할 수 있습니다.
 
 {{ site.data.keys.product_adj }} 런타임과 별도의 애플리케이션 서버에서 푸시 서비스를 실행하는 경우 HTTP 서버를 사용하여 푸시 서비스 트래픽의 경로를 올바른 애플리케이션 서버로 지정해야 합니다.
+
+### {{ site.data.keys.mf_analytics }} 및 {{ site.data.keys.mf_analytics_console }}
+{: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
+{{ site.data.keys.mf_analytics_receiver_full }}는 모바일 앱에서 분석 및 로거 로그를 {{ site.data.keys.mf_analytics_full }}에 전달하는 데 사용할 수 있는 분석 및 로거 로그 전달자 기능을 제공하는 선택적 컴포넌트입니다. 이 서비스를 사용하면 {{ site.data.keys.mf_server }}에서 로그를 제한 없이 처리할 수 있습니다.  
 
 ### {{ site.data.keys.mf_analytics }} 및 {{ site.data.keys.mf_analytics_console }}
 {: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }

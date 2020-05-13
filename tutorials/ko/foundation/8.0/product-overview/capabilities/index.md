@@ -51,6 +51,10 @@ HTML5 및 CSS3과 JavaScript를 사용하여 앱을 개발할 수 있습니다. 
 
 앱 활동을 요약하는 보고서 외에 {{ site.data.keys.product }}에는 {{ site.data.keys.mf_console }}에서 액세스할 수 있는 확장 가능한 운영 분석 플랫폼이 포함되어 있습니다. {{ site.data.keys.mf_analytics_short }} 기능을 통해 엔터프라이즈는 패턴, 문제점 및 플랫폼 사용법 통계에 대해 디바이스, 앱 및 서버에서 수집된 로그 및 이벤트를 검색할 수 있습니다. 필요에 따라 분석, 보고서 중 하나 또는 둘 다 사용할 수 있습니다.
 
+### Analytics Receiver
+{: #analyticsreceiver }
+{{ site.data.keys.mf_analytics_receiver }}는 모바일 애플리케이션에서 로그를 수신하고 이를 인메모리 큐에 저장하여 단계별로 {{ site.data.keys.mf_analytics }}에 전송하는 선택적 기능입니다. 
+
 ### 모니터링
 {: #monitoring }
 {{ site.data.keys.product }}에는 {{ site.data.keys.product }} 애플리케이션과 서버의 데이터를 수집, 보기 및 분석하고, 서버 상태를 모니터링하기 위한 운영 분석 범위와 보고 메커니즘이 있습니다.

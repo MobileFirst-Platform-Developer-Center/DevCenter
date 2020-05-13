@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 시나리오 로더
-breadcrumb_title: Scenario Loader
+breadcrumb_title: 시나리오 로더
 relevantTo: [ios,android,javascript]
 weight: 4
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 보안 직접 업데이트 구현
-breadcrumb_title: Secure Direct Update
+breadcrumb_title: 보안 직접 업데이트
 relevantTo: [cordova]
 weight: 2
 ---

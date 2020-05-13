@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 개발 환경 설정
-breadcrumb_title: Development Environment
+breadcrumb_title: 개발 환경
 show_children: true
 weight: 1
 ---

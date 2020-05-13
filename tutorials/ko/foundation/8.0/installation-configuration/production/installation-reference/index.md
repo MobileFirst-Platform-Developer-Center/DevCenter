@@ -792,7 +792,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | 속성 | 설명                | 필수 | 기본값 |
 |-----------|----------------------------|----------|---------|
 | name      | 특성의 이름입니다.	 | 예      | 없음    |
-| value	    | 특성의 값입니다. | 예	    | 없음    |  
+| value	    | 특성의 값입니다.| 예	    | 없음    |  
 
 `<applicationserver>` 요소는 {{ site.data.keys.product_adj }} 애플리케이션이 배치되는 애플리케이션 서버를 설명합니다. 이 요소는 다음 요소 중 하나의 컨테이너입니다.
 
@@ -810,7 +810,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | user            I	WebSphere Application Server 관리자 이름입니다.	               | 예(Liberty 제외)  | 없음    |
 | password        | WebSphere Application Server 관리자 비밀번호입니다.   | 아니오 |         |
 | libertyEncoding |	WebSphere Application Server Liberty에 대한 데이터 소스 비밀번호를 인코딩하는 알고리즘입니다. 가능한 값은 없음, xor 및 aes입니다. xor 또는 aes 인코딩이 사용되는지 여부에 관계없이 명확한 비밀번호가 인수로 securityUtility 프로그램에 전달되며 이는 외부 프로세스를 통해 호출됩니다. ps 명령을 사용하거나 UNIX 운영 체제의 /proc 파일 시스템에서 비밀번호를 볼 수 있습니다.                                                         | 아니오                       |	xor     |
-| jeeVersion      |	Liberty 프로파일용입니다. JEE6 웹 프로파일 또는 JEE7 웹 프로파일의 기능을 설치할지 여부를 지정합니다. 가능한 값은 6, 7 또는 auto입니다. | 아니오 | auto |
+| jeeVersion      |	Liberty 프로파일용입니다. JEE6 웹 프로파일 또는 JEE7 웹 프로파일의 기능을 설치할지 여부를 지정합니다. 가능한 값은 6, 7 또는 auto입니다.| 아니오 | auto |
 | configureFarm   |	WebSphere Application Server Liberty 및 WebSphere Application Server 전체 프로파일용입니다(WebSphere Application Server Network Deployment 에디션 및 Liberty Collective용이 아님). 서버가 서버 팜 멤버인지 여부를 지정합니다. 가능한 값은 true 또는 false입니다. | 아니오	      | false   |
 | farmServerId    |	서버 팜에서 서버를 고유하게 식별하는 문자열입니다. {{ site.data.keys.mf_server }} 관리 서비스 및 이와 통신하는 모든 {{ site.data.keys.product_adj }} 런타임은 동일한 값을 공유해야 합니다.                                                                | 예                      |	없음    |
 
@@ -1540,8 +1540,8 @@ Windows의 경우: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%U
 {: #step-3 }
 마찬가지로 애플리케이션 서버가 WebSphere Application Server Liberty 프로파일 또는 Apache Tomcat인 경우 사용자 계정에서만 서버가 시작되도록 되어 있으면 다음과 같은 파일에서 본인 이외의 사용자에 대한 읽기 권한도 제거해야 합니다.
 
-* WebSphere Application Server Liberty 프로파일의 경우: **wlp/usr/servers/<server>/server.xml**
-* Apache Tomcat의 경우: **conf/server.xml**
+* WebSphere Application Server Liberty 프로파일의 경우: `wlp/usr/servers/<server>/server.xml`
+* Apache Tomcat의 경우: `conf/server.xml`
 
 ### 4단계
 {: #step-4 }

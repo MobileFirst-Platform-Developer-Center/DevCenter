@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript(Cordova, 웹) 애플리케이션의 다국어 번역
-breadcrumb_title: Multilingual translation
+breadcrumb_title: 다국어 번역
 relevantTo: [javascript]
 weight: 9
 downloads:

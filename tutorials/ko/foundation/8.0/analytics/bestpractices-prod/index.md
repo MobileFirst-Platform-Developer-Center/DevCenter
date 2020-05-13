@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Analytics 프로덕션 클러스터 설정의 우수 사례
-breadcrumb_title: Best Practices
+breadcrumb_title: 우수 사례
 relevantTo: [ios,android,javascript]
 weight: 6
 ---

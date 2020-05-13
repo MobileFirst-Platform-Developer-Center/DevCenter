@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova 애플리케이션에서 MobileFirst Foundation 개발
-breadcrumb_title: Cordova application development
+breadcrumb_title: Cordova 애플리케이션 개발
 relevantTo: [cordova]
 weight: 4
 ---
@@ -125,7 +125,7 @@ super.onCreate(savedInstanceState);
 
 if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
            WL.getInstance().showSplashScreen(this);
-       } 
+       }
    init();
    WL.getInstance().initializeWebFramework(getApplicationContext(), this);
 }

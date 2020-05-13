@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Android 애플리케이션에서 로깅
-breadcrumb_title: Logging in Android
+breadcrumb_title: Android에서 로깅
 relevantTo: [android]
 weight: 3
 ---
@@ -65,6 +65,16 @@ Logger.setAutoSendLogs(true);
 
 ```java
 Logger.setAutoSendLogs(false);
+```
+
+### autoSendLog 간격 변경
+{: auto-log-sending-interval }
+기본적으로, *autoSendLog 간격은* 60초로 설정됩니다. *AutoSendLog 간격*은 다음 방법을 사용하여 변경할 수 있습니다. 
+
+*autoSendLog 간격*을 120초로 설정하려면 다음을 참조하십시오. 
+
+```java
+Logger.setAutoSendLogs(true, 120);
 ```
 
 ## 로거 API를 사용한 미세 튜닝

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 설치 전제조건
-breadcrumb_title: Prerequisites
+breadcrumb_title: 전제조건
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

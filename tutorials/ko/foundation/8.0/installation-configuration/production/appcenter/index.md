@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM MobileFirst Foundation Application Center 설치 및 구성
-breadcrumb_title: Installing Application Center
+breadcrumb_title: Application Center 설치
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -157,7 +157,7 @@ WebSphere Application Server Network Deployment Server 세트에서 Application 
     | 범위	 | 설명 |
     |--------|-------------|
     | 셀	 | 셀의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
-    | 클러스터| 지정된 클러스터의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
+    | 클러스터 | 지정된 클러스터의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
     | 노드   | (클러스터 제외) 클러스터에 없는 지정된 노드의 모든 애플리케이션 서버에서 Application Center를 설치합니다. |
     | 서버 | 클러스터에 없는 지정된 서버에서 Application Center를 설치합니다. |
 

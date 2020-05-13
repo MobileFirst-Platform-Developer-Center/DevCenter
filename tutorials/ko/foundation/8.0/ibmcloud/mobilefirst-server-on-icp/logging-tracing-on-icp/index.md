@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud Private의 로깅 및 추적
-breadcrumb_title: Logging and Tracing
+breadcrumb_title: 로깅 및 추적
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

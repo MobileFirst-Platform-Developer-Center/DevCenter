@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova 및 Ionic 애플리케이션에서 직접 업데이트 사용
-breadcrumb_title: Direct Update
+breadcrumb_title: 직접 업데이트
 relevantTo: [cordova,ionic]
 weight: 8
 downloads:

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Foundation on Red Hat OpenShift
+breadcrumb_title: Red Hat OpenShift의 Foundation
 title: 기존 Red Hat OpenShift Container Platform에 Mobile Foundation 배치
 weight: 2
 ---
@@ -41,6 +41,34 @@ OCP에 Mobile Foundation을 배치하는 단계는 OCP 인타이틀먼트를 확
 
   > **참고:** PPA 패키지의 유효성을 검증하고 서명을 확인하려는 경우 [여기](./additional-docs/validating-ppa/)를 참조하십시오.
 
+### Entitled Registry의 Mobile Foundation 이미지 사용
+{: #using-mf-from-entitled-registry}
+
+PPA 이미지를 OpenShift 내부 이미지 레지스트리나 다른 외부 레지스트리로 로드하는 방법 외에 Entitled Registry(ER)의 이미지를 사용할 수 있습니다. 
+
+1. Entitled Registry로 키를 가져옵니다. [IBM Cloud Pak for Applications](https://www.ibm.com/support/knowledgecenter/SSCSJL_3.x/install-icpa-ppa.html?view=kc)을 주문한 후, Cloud Pak 소프트웨어의 인타이틀먼트 키가 MyIBM 계정에 연결됩니다. 사용자의 ID에 지정된 인타이틀먼트 키를 가져옵니다. 
+  * 권한이 있는 소프트웨어와 연관된 IBM ID와 비밀번호로 [MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary)에 로그인합니다. 
+  * **인타이틀먼트 키** 섹션에서 **코드 키**를 선택하여 인타이틀먼트 키를 클립보드에 복사합니다. 
+2. Entitled Registry의 설치 프로그램 이미지에서 설치 구성을 추출합니다. <br/>명령행을 사용하여 다음 명령을 실행합니다. 
+  * Entitled Registry 정보를 설정합니다. 다음을 설정하는 내보내기 명령을 실행합니다.
+    **ENTITLED_REGISTRY**를 *cp.icr.io*로, **ENTITLED_REGISTRY_USER**를 *cp*로, **ENTITLED_REGISTRY_KEY**를 이전 단계에서 가져온 인타이틀먼트 키로 설정.
+    ```bash
+    export ENTITLED_REGISTRY=cp.icr.io
+    export ENTITLED_REGISTRY_USER=cp
+    export ENTITLED_REGISTRY_KEY=<apikey>
+    ```
+  * 다음 `docker login` 명령으로 Entitled Registry에 로그인할 수 있는지 확인합니다.
+    ```bash
+    docker login "$ENTITLED_REGISTRY" -u "$ENTITLED_REGISTRY_USER" -p "$ENTITLED_REGISTRY_KEY"
+    ```
+3. Entitled Registry 세부사항을 사용하여 이미지 풀 시크릿을 생성합니다. 
+   * 다음 명령을 사용합니다.
+     ```bash
+     oc create secret docker-registry -n <my_project_name> er-image-pullsecret --docker-server=cp.icr.io --docker-username=<my_username> --docker-password=<my_api_key>
+     ```
+   * 풀 시크릿을 `deploy/operator.yaml`과 `deploy/crds/charts_v1_mfoperator_cr.yaml` 파일에 추가합니다. 
+
+
 ### Mobile Foundation에 대한 OpenShift 프로젝트 설정
 {: #setup-openshift-for-mf}
 
@@ -77,6 +105,8 @@ OCP에 Mobile Foundation을 배치하는 단계는 OCP 인타이틀먼트를 확
       MFPF_RUNTIME_DB_PASSWORD: <base64-encoded-string>
       MFPF_PUSH_DB_USERNAME: <base64-encoded-string>
       MFPF_PUSH_DB_PASSWORD: <base64-encoded-string>
+      MFPF_LIVEUPDATE_DB_USERNAME: <base64-encoded-string>
+      MFPF_LIVEUPDATE_DB_PASSWORD: <base64-encoded-string>
       MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
       MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
     kind: Secret

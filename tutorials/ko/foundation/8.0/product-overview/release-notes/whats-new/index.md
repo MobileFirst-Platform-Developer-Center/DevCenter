@@ -477,4 +477,17 @@ weight: 1
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-analytics-receiver">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-analytics-receiver" aria-expanded="true" aria-controls="collapse-mobilefirst-analytics-receiver">{{ site.data.keys.mf_analytics_receiver }}의 새로운 기능</a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-analytics-receiver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics-receiver">
+            <div class="panel-body">
+                <p>{{ site.data.keys.mf_analytics_server }}는 클라이언트 SDK에서 로그를 받아서 Analytics에 전달하는 선택적 기능입니다. 결국 클라이언트 loguploader 기능을 처리하기 위한 {{ site.data.keys.mf_server }}의 로드를 줄입니다. </p>
+            </div>
+        </div>
+    </div>    
 </div>

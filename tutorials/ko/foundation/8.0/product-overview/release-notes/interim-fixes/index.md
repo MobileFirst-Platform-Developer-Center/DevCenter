@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: CD 업데이트의 새로운 기능
-breadcrumb_title: CD Updates
+breadcrumb_title: CD 업데이트
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->

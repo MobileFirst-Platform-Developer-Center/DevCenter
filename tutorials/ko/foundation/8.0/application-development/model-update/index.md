@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 애플리케이션에서 모델 업데이트 사용
-breadcrumb_title: Model Update
+breadcrumb_title: 모델 업데이트
 relevantTo: [iOS]
 weight: 9
 ---

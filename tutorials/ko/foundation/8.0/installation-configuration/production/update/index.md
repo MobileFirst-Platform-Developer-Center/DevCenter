@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Platform Foundation 설치 업데이트
-breadcrumb_title: Applying updates
+breadcrumb_title: 업데이트 적용
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->

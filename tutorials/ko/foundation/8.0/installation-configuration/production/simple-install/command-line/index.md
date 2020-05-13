@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 명령행에서 MobileFirst Server 설치
-breadcrumb_title: Command-line installation
+breadcrumb_title: 명령행 설치
 show_breadcrumb: true
 weight: 3
 ---
@@ -128,6 +128,7 @@ Installation Manager V1.8.4 이상이 설치되었는지 확인하십시오. 설
 * {{ site.data.keys.mf_server }} 푸시 서비스에 대한 **PushService** 폴더
 * Application Center에 대한 **ApplicationCenter** 폴더
 * {{ site.data.keys.mf_analytics }}에 대한 **Analytics** 폴더
+* {{ site.data.keys.mf_analytics_receiver }}에 대한 **AnalyticsReceiver** 폴더
 
 이 튜토리얼의 목적은 **MobileFirstServer** 폴더의 리소스를 사용하여 {{ site.data.keys.mf_server }}를 설치하는 것입니다.  
 또한 **shortcuts** 폴더에서 Server Configuration Tool, Ant 및 **mfpadm** 프로그램의 단축 아이콘도 제공됩니다.
@@ -184,6 +185,10 @@ Ant 태스크를 사용하여 다음 조작을 실행합니다.
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }}는 메모리 요구사항이 많기 때문에 일반적으로 {{ site.data.keys.mf_server }}와 다른 서버 세트에 배치됩니다. {{ site.data.keys.mf_analytics }}는 수동으로 또는 Ant 태스크를 사용하여 설치할 수 있습니다. 이미 설치되어 있는 경우에는 Server Configuration Tool에서 해당 URL, 사용자 이름 및 비밀번호를 입력하여 데이터를 전송할 수 있습니다. 그러면 Server Configuration Tool에서 {{ site.data.keys.mf_analytics }}에 데이터를 전송하도록 {{ site.data.keys.product_adj }} 앱을 구성합니다.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+{{ site.data.keys.mf_analytics_receiver }}는 메모리 요구사항이 많기 때문에 일반적으로 {{ site.data.keys.mf_server }} 및 {{ site.data.keys.mf_analytics }}와 다른 서버 세트에 배치됩니다. {{ site.data.keys.mf_analytics_receiver }}는 수동으로 또는 Ant 태스크를 사용하여 설치할 수 있습니다. 이미 설치되어 있는 경우에는 Server Configuration Tool에서 해당 URL, 사용자 이름 및 비밀번호를 입력하여 데이터를 전송할 수 있습니다. 그러면 Server Configuration Tool에서 {{ site.data.keys.mf_analytics_receiver }}에 데이터를 전송하도록 {{ site.data.keys.product_adj }} 앱을 구성합니다.
+
 #### Application Center
 {: #application-center }
 이 애플리케이션은 모바일 앱을 사용하는 직원들에게 내부적으로 모바일 앱을 분배하는 데 사용되거나 테스트 목적으로 사용될 수 있습니다. 이 애플리케이션은 {{ site.data.keys.mf_server }}와 독립되어 있으므로 {{ site.data.keys.mf_server }}와 함께 설치할 필요는 없습니다.
@@ -204,6 +209,7 @@ Ant 태스크가 포함된 적절한 XML 파일을 선택하여 특성을 구성
     * **appserver.was85liberty.serverInstance**를 **mfp1**({{ site.data.keys.mf_server }}가 설치될 Liberty 서버의 이름 값)로
     * **mfp.farm.configure**를 **false**로(독립형 모드로 {{ site.data.keys.mf_server }}를 설치하기 위해)
     * **mfp.analytics.configure**를 **false**로. {{ site.data.keys.mf_analytics }}로의 연결은 이 튜토리얼에서 다루지 않습니다. 기타 특성 mfp.analytics.****는 무시해도 됩니다.
+    * **mfp.analytics.receiver.configure**를 **false**로. {{ site.data.keys.mf_analytics_receiver }}로의 연결은 이 튜토리얼에서 다루지 않습니다. 기타 특성 mfp.analytics.receiver.****는 무시해도 됩니다.
     * **mfp.admin.client.id**를 **admin-client-id**로
     * **mfp.admin.client.secret**을 **adminSecret**으로(또는 다른 시크릿 비밀번호 선택)
     * **mfp.push.client.id**를 **push-client-id**로

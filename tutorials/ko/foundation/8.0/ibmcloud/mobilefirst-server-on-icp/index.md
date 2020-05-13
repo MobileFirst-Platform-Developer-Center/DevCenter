@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud Private에 IBM Mobile Foundation 설치
-breadcrumb_title: Foundation on IBM Cloud Private
+breadcrumb_title: IBM Cloud Private의 Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 8
 ---
@@ -216,7 +216,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 
    그런 다음 시크릿의 이름이 global.ingress.secret 필드에서 제공됩니다.
 
-   > 참고: 기타 helm 릴리스에 대해 이미 사용되고 있으면 동일한 ingress 호스트 이름을 사용하지 마십시오.
+   > 참고: 기타 Helm 릴리스에 대해 이미 사용되고 있으면 동일한 ingress 호스트 이름을 사용하지 마십시오.
 
 5. (선택사항) 구성을 사용자 정의하려면(예: 로그 추적 설정 수정, 새 jndi 특성 추가 등) 구성 XML 파일을 사용하여 configmap을 사용해야 합니다. 이렇게 하면 새 구성 설정을 추가하거나 Mobile Foundation 컴포넌트의 기존의 구성을 대체할 수 있습니다.
 
@@ -548,7 +548,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 |           | consoleSecret | 로그인을 위해 사전 작성된 시크릿 | 전제조건 절 확인|
 |  mfpserver.db | host | Mobile Foundation Server 테이블을 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름. | IBM DB2®(기본값). |
 |                       | port | 	데이터베이스가 설정되는 포트 | |
-|                       | secret | 데이터베이스 신임 정보를 포함하는 사전 작성된 시크릿| |
+|                       |secret | 데이터베이스 신임 정보를 포함하는 사전 작성된 시크릿| |
 |                       | name | Mobile Foundation Server 데이터베이스의 이름 | |
 |                       | schema | 작성할 서버 DB 스키마. | 스키마가 이미 있으면 이를 사용합니다. 그렇지 않으면 작성됩니다. |
 |                       | ssl | 데이터베이스 연결 유형  | 데이터베이스 연결이 http 또는 https여야 하는지를 지정합니다. 기본값: false(http). 동일한 연결 모드로 데이터베이스 포트도 구성해야 합니다. |
@@ -620,7 +620,7 @@ PPA 아카이브를 {{ site.data.keys.prod_icp }} 클러스터에 로드하려�
 |  mfpappcenter.db | host | Appcenter 데이터베이스에서 구성해야 하는 데이터베이스의 IP 주소 또는 호스트 이름	| |
 |                       | port | 	데이터베이스 포트  | |             
 |                       | name | 사용할 데이터베이스의 이름 | 데이터베이스가 사전에 작성되어야 합니다.|
-|                       | secret | 데이터베이스 신임 정보를 포함하는 사전 작성된 시크릿| |
+|                       |secret | 데이터베이스 신임 정보를 포함하는 사전 작성된 시크릿| |
 |                       | schema | 작성할 Application Center 데이터베이스 스키마. | 스키마가 이미 있으면 이를 사용합니다. 없으면 작성됩니다. |
 |                       | ssl | 데이터베이스 연결 유형  | 데이터베이스 연결이 http 또는 https여야 하는지를 지정합니다. 기본값: false(http). 동일한 연결 모드로 데이터베이스 포트도 구성해야 합니다. |
 |                       | driverPvc | 	 JDBC 데이터베이스 드라이버에 액세스하기 위한 지속적 볼륨 청구  | JDBC 데이터베이스 드라이버를 호스팅하는 지속적 볼륨 청구 이름을 지정합니다. 선택된 데이터베이스 유형이 DB2가 아닌 경우 필수입니다. |

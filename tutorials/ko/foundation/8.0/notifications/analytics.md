@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 푸시 알림에 대한 Analytics 지원 설정
-breadcrumb_title: Setting Up Analytics Support
+breadcrumb_title: Analytics 지원 설정
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---
@@ -17,7 +17,7 @@ weight: 5
 {{ site.data.keys.mf_analytics }} 플러그인을 구성하고 초기화하려면 다음과 같은 특성이 필요합니다. 사용자 이름 및 비밀번호는 제공된 엔드포인트에서 Analytics 서비스에 대해 인증하는 데 사용됩니다.
 
 ```xml
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest"/>
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>  
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<password>"/>
 ```

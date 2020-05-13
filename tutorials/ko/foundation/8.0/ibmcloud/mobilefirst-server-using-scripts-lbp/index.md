@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Liberty for Java의 스크립트를 사용하여 IBM Cloud에서 MobileFirst Server 설정
-breadcrumb_title: Foundation on Liberty for Java
+breadcrumb_title: Liberty for Java의 Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 9
 ---
@@ -367,7 +367,7 @@ prepareserver.sh --name APP_NAME
                         명령행에 매개변수를 전달할 수도 있습니다.
 
 {% highlight bash %}
-./startserver.sh --name APP_NAME 
+./startserver.sh --name APP_NAME
 {% endhighlight %}
 
                         지원되는 모든 매개변수와 해당 문서에 대해 자세히 알아보려면 도움말 옵션을 실행하십시오.

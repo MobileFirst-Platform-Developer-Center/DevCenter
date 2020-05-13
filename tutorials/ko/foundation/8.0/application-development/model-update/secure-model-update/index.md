@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 보안 모델 업데이트 구현
-breadcrumb_title: Secure Model Update
+breadcrumb_title: 보안 모델 업데이트
 relevantTo: [iOS]
 weight: 2
 ---

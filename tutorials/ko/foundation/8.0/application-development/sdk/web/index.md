@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 웹 애플리케이션에 MobileFirst Foundation SDK 추가
-breadcrumb_title: Web
+breadcrumb_title: 웹
 relevantTo: [javascript]
 weight: 6
 ---
@@ -19,7 +19,7 @@ SDK에는 다음 파일이 포함됩니다.
 
 #### 다음으로 이동
 {: #jump-to }
-- [선행 조건](#prerequisites)
+- [전제조건](#prerequisites)
 - [{{ site.data.keys.product_adj }} 웹 SDK 추가](#adding-the-mobilefirst-web-sdk)
 - [{{ site.data.keys.product_adj }} 웹 SDK 초기화](#initializing-the-mobilefirst-web-sdk)
 - [웹 애플리케이션 등록](#registering-the-web-application)
@@ -28,7 +28,7 @@ SDK에는 다음 파일이 포함됩니다.
 - [보안 출처 정책](#secure-origins-policy)
 - [다음 학습서](#tutorials-to-follow-next)
 
-## 선행 조건
+## 전제조건
 {: #prerequisites }
 -   웹 개발 환경 설정에 대해서는 [지원되는 웹 브라우저](../../../installation-configuration/development/web/#web-app-supported-browsers)
 전제조건을 참조하십시오.

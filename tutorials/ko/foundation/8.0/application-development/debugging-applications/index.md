@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript(Cordova, 웹) 애플리케이션 디버깅
-breadcrumb_title: Debugging applications        
+breadcrumb_title: 애플리케이션 디버깅        
 relevantTo: [javascript]
 weight: 10
 ---

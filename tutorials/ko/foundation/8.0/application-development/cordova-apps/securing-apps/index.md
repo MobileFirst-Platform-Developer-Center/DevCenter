@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova 애플리케이션 보안
-breadcrumb_title: Securing applications
+breadcrumb_title: 애플리케이션 보안
 relevantTo: [cordova]
 weight: 1
 ---

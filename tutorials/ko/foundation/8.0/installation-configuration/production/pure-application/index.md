@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM PureApplication System에 MobileFirst Server 배치
-breadcrumb_title: Installing Pure Application System
+breadcrumb_title: Pure Application System 설치
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -1672,7 +1672,7 @@ LDAP 저장소를 사용하여 Analytics 콘솔을 보호하려는 경우, LDAP 
 | WAS\_admin\_password | WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사용자 비밀번호입니다. WebSphere Application Server Liberty 프로파일의 경우 기본값을 변경하지 않고 그대로 두십시오. | 
 | admin_user | 필수.{::nomarkdown}<ul><li>LDAP 저장소가 사용되지 않는 경우 {{ site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자를 작성하십시오.</li><li>LDAP 저장소가 사용되는 경우에는 {{ site.data.keys.mf_analytics }} 관리 권한이 있는 사용자 이름을 지정하십시오. 값은 LDAP 저장소에 저장됩니다.</li></ul> |
 | admin_password | 필수.<ul><li>LDAP 저장소가 사용되지 않는 경우 {{ site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자의 비밀번호를 지정하십시오.</li><li>LDAP 저장소가 사용되는 경우에는 관리 사용자 비밀번호를 지정하십시오. 값은 LDAP 저장소에 저장됩니다.</li></ul>{:/} | 
-| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>없음<br/>LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.<br/><br/>TivoliDirectoryServer<br/>LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오.<br/><br/>ActiveDirectory<br/>LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오.<br/><br/>기본값: None. | 
+| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.<br/><br/>TivoliDirectoryServer<br/>LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오.<br/><br/>ActiveDirectory<br/>LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오.<br/><br/>기본값: None. | 
 | LDAP_IP | (LDAP 매개변수). LDAP 서버 IP 주소입니다. | 
 | LDAP\_SSL\_PORT | (LDAP 매개변수) 보안 연결을 위한 LDAP 포트입니다. | 
 | LDAP_PORT | (LDAP 매개변수) 비보안 연결을 위한 LDAP 포트입니다. | 
@@ -1684,10 +1684,10 @@ LDAP 저장소를 사용하여 Analytics 콘솔을 보호하려는 경우, LDAP 
 | GROUP_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 그룹을 검색하는 LDAP 그룹 필터입니다. | 
 | LDAP\_REPOSITORY\_NAME | (LDAP 매개변수) LDAP 서버 이름입니다. | 
 | CERT\_FILE\_PATH | (LDAP 매개변수) 업로드된 LDAP 서버 인증의 대상 경로입니다. REQUIRE_SSL이 true로 설정된 경우 필수입니다. | 
-| mfpadmin | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나를 사용하십시오.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자.<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
-| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자.<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
-| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자.<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
-| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자.<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
+| mfpadmin | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나를 사용하십시오.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
+| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
+| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
+| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
@@ -1770,10 +1770,10 @@ LDAP 저장소를 사용하여 Analytics 콘솔을 보호하려는 경우, LDAP 
 | GROUP_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 그룹을 검색하는 LDAP 그룹 필터입니다. | 
 | LDAP\_REPOSITORY\_NAME | (LDAP 매개변수) LDAP 서버 이름입니다. | 
 | CERT\_FILE\_PATH | (LDAP 매개변수) 업로드된 LDAP 서버 인증의 대상 경로입니다. REQUIRE_SSL이 true로 설정된 경우 필수입니다. | 
-| mfpadmin | {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자.<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
-| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자.<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
-| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자.<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
-| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자.<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
+| mfpadmin | {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
+| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
+| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
+| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>None<br/>사용자가 없음.<br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>모든 사용자.<br/><br/>기본값: None. | 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
@@ -1807,7 +1807,7 @@ LDAP 저장소를 사용하여 Analytics 콘솔을 보호하려는 경우, LDAP 
 | WAS\_admin\_user | WebSphere Application Server의 경우 필수입니다. WebSphere Application Server Liberty의 경우 선택사항입니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was_admin 출력 속성에 맵핑됩니다.<br/><br/>{{ site.data.keys.mf_server }}가 WebSphere Application Server Network Deployment에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Deployment Manager의 was_admin 출력 속성에 맵핑됩니다. | 
 | WAS\_admin\_password | WebSphere Application Server의 경우 필수입니다. WebSphere Application Server Liberty의 경우 선택사항입니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was\_admin\_password 출력 속성에 맵핑됩니다. |
 | server_hostname | {{ site.data.keys.mf_server }}의 호스트 이름입니다. Liberty profile server 또는 Standalone server의 host 출력 속성에 맵핑됩니다. |
-| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>없음<br/>LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.<br/><br/>TivoliDirectoryServer<br/>LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오.<br/><br/>ActiveDirectory<br/>LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오.<br/><br/>기본값: None. | 
+| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.<br/><br/>TivoliDirectoryServer<br/>LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오.<br/><br/>ActiveDirectory<br/>LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오.<br/><br/>기본값: None. | 
 | LDAP_IP | (LDAP 매개변수). LDAP 서버 IP 주소입니다. | 
 | LDAP\_SSL\_PORT | (LDAP 매개변수) 보안 연결을 위한 LDAP 포트입니다. | 
 | LDAP_PORT | (LDAP 매개변수) 비보안 연결을 위한 LDAP 포트입니다. | 

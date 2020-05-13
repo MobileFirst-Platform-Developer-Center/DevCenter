@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: 인증 및 보안 개념 마이그레이션
-breadcrumb_title: Migrating authentication concepts
+breadcrumb_title: 인증 개념 마이그레이션
 downloads:
   - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
-weight: 3
+weight: 4
 ---
 ## 개요
 {: #overview }
@@ -22,6 +22,11 @@ weight: 3
 
 > **참고:** 마이그레이션을 시작하기 전에 [V8.0 마이그레이션 쿡북](../migration-cookbook)을 읽어 보는 것이 좋습니다.  
 > 새로운 보안 프레임워크의 기본 개념에 대해 학습하려면 [인증 및 보안](../../authentication-and-security)을 참조하십시오.
+
+## 마이그레이션 지원 도구로 인증 영역 마이그레이션
+{: #migrating-realms-using-migration-assist-tool}
+
+마이그레이션 지원 도구로 지원되는 영역을 보안 검사로 더 쉽게 마이그레이션합니다. 자세한 정보는 [여기]({{site.baseur}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/#using-migration-assistance-tool)를 참조하십시오. 
 
 ## 샘플 애플리케이션 마이그레이션
 {: #migrating-the-sample-application }
@@ -42,7 +47,7 @@ V7.1 샘플 애플리케이션을 V8.0으로 마이그레이션하려면 다음 
 {: #migrating-the-resource-adapter }
 먼저 리소스 어댑터를 마이그레이션하십시오. V7.1에서는 어댑터가 애플리케이션 프로젝트의 일부지만, {{ site.data.keys.product }} V8.0에서는 어댑터가 별도의 Maven 프로젝트로 개발됩니다. 따라서 클라이언트 애플리케이션에 관계없이 리소스 어댑터를 마이그레이션하고 마이그레이션된 어댑터를 배치할 수 있습니다. V8.0 클라이언트 애플리케이션 및 V8.0 보안 검사(어댑터 내에서 구현됨)의 경우에도 동일한 사항이 적용됩니다. 그러므로 이러한 아티팩트는 선택한 순서로 마이그레이션할 수 있습니다. 이 튜토리얼은 V8.0 리소스 보호에 사용되는 OAuth 보안 범위 요소에 대한 소개를 포함하여 리소스 어댑터 마이그레이션에 대한 지시사항으로 시작됩니다.
 
-> **참고:** 
+> **참고:**
 > *  다음은 샘플 `AccountAdapter` 리소스 어댑터를 마이그레이션하기 위한 지시사항입니다. 구현되는 어댑터 기반 인증은 V8.0에서 더 이상 지원되지 않으므로 샘플 `PinCodeAdapter`를 마이그레이션할 필요가 없습니다. [핀 코드 어댑터 기반 인증 영역 대체](#replacing-the-pin-code-adapter-based-authentication-realm) 단계는 V7.1 핀 코드 어댑터를 유사한 보호를 제공하는 V8.0 보안 검사로 대체하는 방법에 대해 설명합니다.
 > *  어댑터를 V8.0으로 마이그레이션하는 방법에 대한 지시사항은 [V8.0 마이그레이션 쿡북](../migration-cookbook)을 참조하십시오.
 
@@ -80,7 +85,7 @@ String userName = securityContext.getAuthenticatedUser().getDisplayName();
 
 다음으로, 클라이언트 애플리케이션을 마이그레이션하십시오. 자세한 클라이언트 애플리케이션 마이그레이션 지시사항은 [V8.0 마이그레이션 쿡북](../migration-cookbook)을 참조하십시오.  이 튜토리얼에서는 보안 코드 마이그레이션에 대해 중점적으로 다룹니다. 이 단계에서는 인증 확인 핸들러 코드를 가져오는 행 주위에 주석을 추가하도록 애플리케이션의 기본 HTML 파일인 **index.html**을 편집하여 인증 확인 핸들러 코드를 제외시키십시오.
 
-```html 
+```html
 <!--  
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
@@ -251,7 +256,7 @@ V7.1 인증 영역을 보안 검사로 마이그레이션했으면 어댑터를 
 
 [클라이언트 애플리케이션을 마이그레이션](#migrating-the-client-application)할 때 애플리케이션의 기본 HTML 파일인 **index.html**에서 관련 행을 주석 처리하여 인증 확인 핸들러 코드를 제외시켰습니다. 이제 이러한 행 주위에 추가한 주석을 제거하여 애플리케이션의 인증 확인 핸들러를 다시 추가하십시오.
 
-```html 
+```html
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
 ```
@@ -265,7 +270,7 @@ V7.1 인증 영역을 보안 검사로 마이그레이션했으면 어댑터를 
    ```javascript
 var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
    ```
-   
+
    `WL.Client.createSecurityCheckChallengeHandler`는 {{ site.data.keys.product_adj }} 보안 검사에서 보낸 인증 확인을 처리하는 인증 확인 핸들러를 작성합니다. V8.0에서는 또한 서드파티 게이트웨이에서 보낸 인증 확인을 처리하는 `WL.Client.createGatewayChallengeHandler` 메소드도 도입했는데, V8.0에서는 이를 게이트웨이 인증 확인 핸들러라고 합니다. V7.1 애플리케이션을 V8.0으로 마이그레이션할 경우 `WL.Client` `createWLChallengeHandler` 또는 `createChallengeHandler` 메소드에 대한 호출을 예상 인증 확인 소스와 일치하는 V8.0 `WL.Client` 인증 확인 핸들러 작성 메소드로 대체하십시오. 예를 들어 사용자의 리소스가 사용자 정의 로그인 양식을 클라이언트로 보내는 DataPower 리버스 프록시의 보호를 받는 경우, `createGatewayChallengeHandler`를 사용하여 게이트웨이 인증 확인을 처리하는 게이트웨이 인증 확인 핸들러를 작성하십시오.
 
 *  인증 확인 핸들러 `isCustomResponse` 메소드에 대한 호출을 제거하십시오. V8.0에서는 보안 인증 확인을 처리하는 데 이 메소드가 더 이상 필요하지 않습니다.
@@ -277,9 +282,9 @@ var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('U
    ```javascript
    userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
    ```
-   
+
 이러한 변경사항을 적용한 후 인증 확인 핸들러의 전체 코드는 다음과 같습니다.
-   
+
 ```javascript
 function createUserLoginChallengeHandler() {
     var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
@@ -348,7 +353,7 @@ function createUserLoginChallengeHandler() {
 ### LTPA 영역
 {: #ltpa-realm }
 
-V7.1 LTPA 영역을 대체하려면 {{ site.data.keys.product }} V8.0의 사전 정의된 LTPA 기반 SSO 보안 검사V8.0인 `LtpaBasedSSO`를 사용하십시오. 이 보안 검사에 대한 자세한 정보는 [LTPA 기반 SSO(싱글 사인온) 보안 검사](../../authentication-and-security/ltpa-security-check/)를 참조하십시오.
+V7.1 LTPA 영역을 대체하려면 {{ site.data.keys.product }} V8.0의 사전 정의된 LTPA 기반 SSO 보안 검사인 `LtpaBasedSSO`를 사용하십시오. 이 보안 검사에 대한 자세한 정보는 [LTPA 기반 SSO(싱글 사인온) 보안 검사](../../authentication-and-security/ltpa-security-check/)를 참조하십시오.
 
 ### 디바이스 프로비저닝
 {: #device-provisioning }
@@ -363,7 +368,7 @@ V7.1 교차 사이트 요청 위조 방지(anti-XSRF) 영역(`wl_antiXSRFRealm`)
 ### 직접 업데이트 영역
 {: #direct-update-realm }
 
-V7.1 원격 사용 안함 영역(`wl_directUpdateRealm`)은 V8.0으로 마이그레이션할 필요가 없습니다. 직접 업데이트 기능의 {{ site.data.keys.product }} V8.0 구현의 경우 V7.1의 영역 요구사항과 달리, 관련 보안 검사가 필요하지 않습니다. 
+V7.1 원격 사용 안함 영역(`wl_directUpdateRealm`)은 V8.0으로 마이그레이션할 필요가 없습니다. 직접 업데이트 기능의 {{ site.data.keys.product }} V8.0 구현의 경우 V7.1의 영역 요구사항과 달리, 관련 보안 검사가 필요하지 않습니다.
 
 **참고:** 직접 업데이트를 통해 업데이트를 제공하는 V8.0 단계는 V7.1 프로시저와 다릅니다. 자세한 정보는 [직접 업데이트 마이그레이션](../migrating-client-applications/cordova/#migrating-direct-update)을 참조하십시오.
 
@@ -412,4 +417,3 @@ V7.1 애플리케이션은 디바이스 ID 영역을 정의해야 합니다. V8.
 {: #whats-next }
 
 이 튜토리얼은 {{ site.data.keys.product }}의 이전 버전에서 개발된 기존 애플리케이션의 보안 아티팩트를 V8.0으로 마이그레이션하는 데 필요한 기본 단계만 다룹니다. V8.0 보안 기능을 완전하게 활용하려면 [V8.0 보안 프레임워크 문서](../../authentication-and-security/)를 참조하십시오.
-

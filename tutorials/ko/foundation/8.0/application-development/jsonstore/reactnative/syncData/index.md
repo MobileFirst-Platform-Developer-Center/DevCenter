@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore 콜렉션의 데이터를 Cloudant DB에 동기화
-breadcrumb_title: Sync data of JSONStore collection to a Cloudant DB
+breadcrumb_title: JSONStore 콜렉션의 데이터를 Cloudant DB에 동기화
 relevantTo: [reactnative]
 weight: 4
 downloads:

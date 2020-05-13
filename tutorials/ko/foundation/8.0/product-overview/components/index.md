@@ -62,6 +62,12 @@ IBM {{ site.data.keys.mf_console }} 사용하는 외에도 {{ site.data.keys.mf_
 
 [{{ site.data.keys.mf_analytics }}에 대해 자세히 알아보십시오](../../analytics).
 
+### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics-receiver }
+{{ site.data.keys.product }}에는 선택적 기능 {{ site.data.keys.mf_analytics_receiver_short }}가 포함됩니다. {{ site.data.keys.mf_analytics_receiver_short }} 기능은 모바일 애플리케이션에서 로그를 수신하여 단계별로 {{ site.data.keys.mf_analytics_short }}에 전송합니다. {{ site.data.keys.mf_analytics_receiver_short }}는 로그를 {{ site.data.keys.mf_analytics_short }}에 전송하기 전에 로그를 저장하기 위해 인메모리 큐를 유지보수합니다. 또한 loguploader API를 통해 {{ site.data.keys.mf_server }}에서 수행하는 주요 작업을 줄이고 인메모리 큐 사용량을 줄입니다. 이 서비스가 없는 경우, {{ site.data.keys.mf_server }}에서 로그 수신자와 전달자 기능을 수행합니다. {{ site.data.keys.mf_analytics_receiver_short }} 선택적 서비스입니다. 
+
+[{{ site.data.keys.mf_analytics_receiver }}에 대해 자세히 알아보십시오](../../analytics/analyticsreceiver).
+
 ### Application Center
 {: #application-center }
 Application Center를 사용하면 조직에서 개발 중인 모바일 애플리케이션을 모바일 애플리케이션의 단일 저장소에서 공유할 수 있습니다. 개발 팀 구성원은 Application Center를 사용하여 팀의 구성원과 애플리케이션을 공유할 수 있습니다. 이 프로세스로 애플리케이션의 개발에 참여하는 모든 담당자들 간의 협업이 간단해집니다.

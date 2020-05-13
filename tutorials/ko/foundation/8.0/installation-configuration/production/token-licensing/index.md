@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 토큰 라이센싱을 위한 설치 및 구성
-breadcrumb_title: Token licensing
+breadcrumb_title: 토큰 라이센싱
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
