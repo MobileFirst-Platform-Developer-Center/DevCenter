@@ -83,7 +83,7 @@ weight: 4
 {% endhighlight %}
                     </li>
                     <li>認証をアクティブにするには、Apache Tomcat ユーザー資料の <a href="https://tomcat.apache.org/tomcat-7.0-doc/config/http.html#SSL_Support">SSL サポート - BIO および NIO</a> と <a href="http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html">SSL 構成方法</a>を参照してください。</li>
-                    <li>For a JMX configuration with SSL enabled, add the following options:
+                    <li>SSL が有効な JMX 構成の場合は、以下のオプションを追加します。
 {% highlight xml %}
 -Dcom.sun.management.jmxremote=true
 -Dcom.sun.management.jmxremote.port=8686
@@ -155,11 +155,11 @@ weight: 4
                 <ul>
                     <li>サーバー構成ツールと Ant タスクは、デフォルトのセキュア JMX 接続を構成することができます。これには、365 日間の有効期間を持つ自己署名 SSL 証明書の生成が含まれます。 この構成は、実稼働環境での使用を目的としたものではありません。</li>
                     <li>実動使用のためのセキュア JMX 接続を構成するには、<a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_restconnector.html?cp=SSD28V_8.5.5&view=embed">Liberty プロファイルへのセキュア JMX 接続の構成</a>に記載された指示に従ってください。</li>
-                    <li>REST コネクターは WebSphere Application Server、Liberty Core、および Liberty の他のエディションで使用可能ですが、Liberty サーバーを使用可能フィーチャーのサブセットと共にパッケージすることが可能です。 REST コネクターがユーザーの Liberty のインストール済み環境で使用可能かどうかを確認するには、以下のコマンドを入力します。
+                    <li>REST コネクターは WebSphere Application Server、Liberty Core、および Liberty の他のエディションで使用可能ですが、Liberty サーバーを使用可能フィーチャーのサブセットと共にパッケージすることが可能です。 REST コネクター・フィーチャーがユーザーの Liberty のインストール済み環境で使用可能かどうかを確認するには、以下のコマンドを入力します。
 {% highlight bash %}                    
 liberty_install_dir/bin/productInfo featureInfo
 {% endhighlight %}
-                    <b>注:</b> このコマンドの出力に restConnector-1.0 が含まれていることを確認してください。</li>
+                    <b>注:</b> このコマンドの出力に restConnector-1.0 が含まれていることを確認します。</li>
                 </ul>
             </div>
         </div>
@@ -251,6 +251,28 @@ Apache Tomcat の場合、以下の操作を実行するには必要な権限を
 * Linux x86 または Linux x86-64
 
 その他のオペレーティング・システムでは、本ツールは使用できません。 [Ant タスクを使用したインストール](#installing-with-ant-tasks)の説明に従い、Ant タスクを使用して {{ site.data.keys.mf_server }} コンポーネントをインストールする必要があります。
+
+Mac OS の ServerConfigurationTool (SCT) ランチャーは、従来の Java SE 6 ランタイムのインストールを必須としています。Mac OS で SCT ランチャーを起動すると、次のメッセージが表示されることがあります。
+
+![メッセージ SCT - Mac OS](message-sct-mac.png)
+
+これを回避するには、次のいずれかのアプローチに従い、Java SE 6 ランタイムをインストールすることなく SCT 実行可能ファイルを使用して SCT を実行します。
+
+#### アプローチ 1
+* `ServerConfigurationTool` ランチャーを右クリックします。
+* **「パッケージ内容の表示 (Show Package Contents)」**を選択します。
+
+  ![「パッケージ内容の表示 (Show Package Contents)」](show-package-contents.png)
+
+* **「内容 (Contents)」** > **「MacOS」**をクリックします。
+* `「ServerConfigurationTool」`実行可能ファイルをクリックして、SCT を起動します。
+
+#### アプローチ 2
+問題なく、Java SE 8 と Java SE6 の両方をコンピューターにインストールできます。
+
+* SCT ランチャーの使用中にポップアップウィンドウが表示されたら、**「詳細情報 (More Info)」**をクリックします。
+* これにより、Apple サポート・サイトに移動します。そこには、Java SE 6 ランタイムを取得する方法について詳しい説明が記載されています。
+* 指示に従って、Java SE 6 ランタイムをインストールしてから、SCT ランチャーを起動します。
 
 ### サポートされるトポロジー
 {: #supported-topologies }
@@ -737,8 +759,7 @@ WebSphere Application Server Network Deployment にインストールするに�
   [...]
 </dataSource>
 {% endhighlight %}
-
-                <h3></h3>
+                   <h3></h3>
                 <p>アプリケーションの <b>application-bnd</b> エレメントで以下のロールを宣言します。</p>
                 <ul>
                     <li>mfpadmin</li>
@@ -770,8 +791,7 @@ WebSphere Application Server Network Deployment にインストールするに�
   [...]
 </dataSource>
 {% endhighlight %}
-
-                <h3></h3>
+                   <h3></h3>
                 <p>アプリケーションの <b>application-bnd</b> エレメントで configadmin ロールを宣言します。 少なくとも 1 人のユーザーがこのロールにマップされている必要があります。 ユーザーとパスワードは、管理サービスの以下の JNDI プロパティーに指定する必要があります。</p>
 
                 <ul>
@@ -859,7 +879,7 @@ WebSphere Application Server Network Deployment にインストールするに�
   [...]
 </dataSource>
 {% endhighlight %}
-            </div>
+   </div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -1078,8 +1098,7 @@ WebSphere Application Server Network Deployment にインストールするに�
   [...]
 </dataSource>
 {% endhighlight %}
-
-                <h3>セキュリティー・ロール</h3>
+                   <h3>セキュリティー・ロール</h3>
                 <p>アプリケーションの <b>application-bnd</b> エレメントで以下のロールを宣言します。</p>
                 <ul>
                     <li>mfpadmin</li>
@@ -1113,8 +1132,7 @@ WebSphere Application Server Network Deployment にインストールするに�
   [...]
 </dataSource>
 {% endhighlight %}
-
-                <h3>セキュリティー・ロール</h3>
+                   <h3>セキュリティー・ロール</h3>
                 <p>アプリケーションの <b>application-bnd</b> エレメントで configadmin ロールを宣言します。 少なくとも 1 人のユーザーがこのロールにマップされている必要があります。 ユーザーとパスワードは、管理サービスの以下の JNDI プロパティーに指定する必要があります。</p>
 
                 <ul>
@@ -1205,7 +1223,7 @@ WebSphere Application Server Network Deployment にインストールするに�
   [...]
 </dataSource>
 {% endhighlight %}
-            </div>
+   </div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -1893,7 +1911,7 @@ WebSphere Application Server Network Deployment にインストールするに�
                             </li>
                             <li>すべてのサーバー間でそれぞれのトラストストア内の署名者証明書を交換します。
                             <br/><br/>
-                            WebSphere Application Server フル・プロファイルまたは Liberty を使用するファームの場合、セキュリティーが有効にされる必要があるため、このステップは必須です。 さらに、Liberty ファームの場合、シングル・サインオンが可能となるように、同じ LTPA 構成が各サーバー上で複製される必要があります。 この構成を行うには、<a href="#configuring-a-server-farm-manually">手動でのサーバー・ファームの構成</a>のステップ 6 で説明されているガイドラインに従ってください。
+                            <blockquote><b>注</b>: WebSphere Application Server フル・プロファイルまたは Liberty を使用するファームの場合、セキュリティーが有効にされる必要があるため、このステップは必須です。さらに、Liberty ファームの場合、シングル・サインオンが可能となるように、同じ LTPA 構成が各サーバー上で複製される必要があります。 この構成を行うには、<a href="#configuring-a-server-farm-manually">手動でのサーバー・ファームの構成</a>のステップ 6 で説明されているガイドラインに従ってください。</blockquote>
                             </li>
                         </ul>
                     </li>
@@ -1945,7 +1963,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                             サーバーのセットアップについて詳しくは、<a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} ライブ更新サービス、および {{ site.data.keys.product_adj }} ランタイムでの制約</a>を参照してください。</li>
                             <li>すべてのサーバー間でそれぞれのトラストストア内の署名者証明書を交換します。
                             <br/><br/>
-                            WebSphere Application Server フル・プロファイルまたは Liberty を使用するファームの場合、セキュリティーが有効にされる必要があるため、このステップは必須です。 さらに、Liberty ファームの場合、シングル・サインオンが可能となるように、同じ LTPA 構成が各サーバー上で複製される必要があります。 この構成を行うには、<a href="#configuring-a-server-farm-manually">手動でのサーバー・ファームの構成</a>のステップ 6 で説明されているガイドラインに従ってください。
+                            <blockquote><b>注</b>: WebSphere Application Server フル・プロファイルまたは Liberty を使用するファームの場合、セキュリティーが有効にされる必要があるため、このステップは必須です。さらに、Liberty ファームの場合、シングル・サインオンが可能となるように、同じ LTPA 構成が各サーバー上で複製される必要があります。 この構成を行うには、<a href="#configuring-a-server-farm-manually">手動でのサーバー・ファームの構成</a></blockquote>のステップ 6 で説明されているガイドラインに従ってください。
                             </li>
                         </ul>
                     </li>
@@ -2088,7 +2106,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
 <jndiEntry jndiName="mfp.admin.jmx.host" value="93.12.0.12"/>
 <jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>
 {% endhighlight %}
-                                これらのプロパティーは、適切な値に設定しなければなりません。
+                                これらのプロパティーは、適切な値で設定する必要があります。
                                 <ul>
                                     <li><b>mfp.admin.serverid</b>: このファーム・メンバー用に定義された ID。 この ID は、すべてのファーム・メンバーにわたって固有である必要があります。</li>
                                     <li><b>mfp.admin.jmx.user</b> および <b>mfp.admin.jmx.pwd</b>: これらの値は、<code>administrator-role</code> エレメントで宣言したユーザーの資格情報と一致する必要があります。</li>
@@ -2103,7 +2121,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
 <Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                <b>mfp.admin.serverid</b> プロパティーには、このファーム・メンバー用に定義した ID を設定します。 この ID は、すべてのファーム・メンバーにわたって固有である必要があります。
+                                <b>mfp.admin.serverid</b> プロパティーは、このファーム・メンバーに対して定義した ID に設定する必要があります。この ID は、すべてのファーム・メンバーにわたって固有である必要があります。
                                 <br/>
                                 <code>-Djava.rmi.server.hostname</code> JVM 引数は、リモート・メンバーがこのサーバーにアクセスするために使用する IP またはホスト名に必ず設定しなければなりません。 したがたって、<b>localhost</b> には設定しないでください。 さらに、<code>-Dcom.sun.management.jmxremote.port</code> JVM 引数の設定に使用されるポートが、JMX RMI 接続を有効にするために既に使用中のポートではないことを確認する必要があります。 両方の引数が <b>CATALINA_OPTS</b> 環境変数で設定されます。
                             </li>
@@ -2146,7 +2164,7 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                                 </ul>
                                 鍵ストアおよびトラストストアのロケーションは、<b>server.xml</b> ファイルに定義されています。 <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 構成属性</a>内の <b>keyStoreRef</b> 属性と <b>trustStoreRef</b> 属性を参照してください。 デフォルトで、Liberty プロファイルの鍵ストアは <b>${server.config.dir}/resources/security/key.jks</b> にあります。 トラストストア参照が <b>server.xml</b> ファイルにないか定義されていない場合は、<b>keyStoreRef</b> によって指定された鍵ストアが使用されます。 サーバーはデフォルトの鍵ストアを使用し、ファイルはサーバーを初めて実行した時に作成されます。 その場合、365 日間の有効期間でデフォルト証明書が作成されます。 実動の場合、独自の証明書を (必要な場合は中間証明書を含めて) 使用すること、または、生成された証明書の有効期限を変更することを検討してください。
 
-                                <blockquote>注: トラストストアのロケーションを確認したい場合は、次の宣言を server.xml ファイルに追加することにより確認できます。
+                                <blockquote>注: トラストストアの場所を確認する場合は、server.xml ファイルに次の宣言を追加して行うことができます。
 {% highlight xml %}
 <logging traceSpecification="SSL=all:SSLChannel=all"/>
 {% endhighlight %}
@@ -2155,6 +2173,10 @@ Ant タスクを使用してサーバー・ファームの計画を行う場合�
                                 <ul>
                                     <li>ファーム内の他のサーバーの公開証明書を、サーバーの <b>server.xml</b> 構成ファイルによって参照されているトラストストアにインポートします。 <a href="../../simple-install/graphical-mode">グラフィカル・モードでの {{ site.data.keys.mf_server }} のインストール</a>のチュートリアルに、ファーム内の 2 つの Liberty サーバー間で証明書を交換する手順が説明されています。 詳しくは、<a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">{{ site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成</a>セクションのステップ 5 を参照してください。</li>
                                     <li>WebSphere Application Server Liberty プロファイルの各インスタンスを再始動して、セキュリティー構成を有効にします。 以下のステップは、シングル・サインオン (SSO) を機能させる場合に必須です。</li>
+                                    <li>すべてのサーバー間でそれぞれのトラストストア内の署名者証明書を交換します。
+                            <br/><br/>
+                                    <blockquote><b>注</b>: WebSphere Application Server フル・プロファイルまたは Liberty を使用するファームの場合、セキュリティーが有効にされる必要があるため、このステップは必須です。さらに、Liberty ファームの場合、シングル・サインオンが可能となるように、同じ LTPA 構成が各サーバー上で複製される必要があります。 この構成を行うには、以下のステップを実行します。</blockquote>
+                                    </li>
                                     <li>ファームのメンバーの 1 つを始動します。 デフォルトの LTPA 構成では、Liberty サーバーが正常に始動すると、LTPA 鍵ストアを <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys</b> として生成します。</li>
                                     <li><b>ltpa.keys</b> ファイルを各ファーム・メンバーの <b>${wlp.user.dir}/servers/server_name/resources/security</b> ディレクトリーにコピーして、ファーム・メンバー全体にわたって LTPA 鍵ストアを複製します。 LTPA 構成について詳しくは、<a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Liberty プロファイル上での LTPA の構成</a>を参照してください。</li>
                                 </ul>

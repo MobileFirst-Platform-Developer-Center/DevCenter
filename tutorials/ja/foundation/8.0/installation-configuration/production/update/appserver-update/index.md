@@ -26,6 +26,10 @@ MobileFirst Server はこれら 3 つのコンポーネントから構成され�
 
 このコンポーネントのインストールはオプションです。 MobileFirst コンポーネントは REST API を介して MobileFirst Operational Analytics にデータを送信します。 MobileFirst Operational Analytics と MobileFirst Server の他のコンポーネントを同じ暫定修正レベルで実行することが推奨されます。
 
+### MobileFirst Operational Analytics Receiver
+{: #analyticsreceiver}
+
+このコンポーネントのインストールはオプションです。 MobileFirst アプリケーションは、REST API を介して MobileFirst Operational Analytics Receiver にログ・データを送信します。MobileFirst Operational Analytics がインストールされている場合にのみ、このコンポーネントをインストールしてください。MobileFirst Operational Analytics Receiver と MobileFirst Server の他のコンポーネントを同じ暫定修正レベルで実行することが推奨されます。
 
 ## MobileFirst Server 管理サービス、MobileFirst オペレーション・コンソール、および MobileFirst ランタイム環境の更新
 {: #updating-server}

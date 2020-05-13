@@ -38,7 +38,7 @@ Web アプリケーションの開発およびテストは、任意の Web ブ�
 
     <sup>*</sup> Safari では、プライベート・ブラウズ・モードは SPA (Single-page Application) に対してのみサポートされます。 他のアプリケーションでは予期しない動作を生じる可能性があります。
 
-    {% comment %} [sharonl][c-web-browsers-ms-edge] タスク 111165 での Microsoft Edge サポートに関する情報を参照してください。 {% endcomment %}
+    {% comment %} [sharonl][c-web-browsers-ms-edge] タスク 111165 の Microsoft Edge サポートに関する情報を参照してください。 {% endcomment %}
 
 -   以下のセットアップ手順では、Apache Maven または Node.js が開発者のワークステーションにインストールされていることが必要です。 詳しい手順については、[インストール・ガイド](../mobilefirst/installation-guide/)を参照してください。
 

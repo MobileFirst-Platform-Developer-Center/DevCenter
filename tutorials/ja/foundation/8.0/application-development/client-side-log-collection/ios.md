@@ -177,6 +177,26 @@ OCLogger.setAutoSendLogs(true);
 OCLogger.setAutoSendLogs(false);
 ```
 
+### autoSendLog インターバルの変更
+{: auto-log-sending-interval }
+デフォルトでは、*autoSendLog インターバル* は 60 秒に設定されています。*autoSendLog インターバル* は、次のメソッドを使用して変更できます。
+
+**Objective-C**
+
+autoSendLog インターバルを 120 秒に設定するには、次のスニペットを参照してください。
+
+```objc
+[OCLogger setAutoSendLogs:YES interval:120];
+```
+
+**Swift**
+
+autoSendLog インターバルを 120 秒に設定するには、次のスニペットを参照してください。
+
+```swift
+OCLogger.setAutoSendLogs(true, 120);
+```
+
 ## Logger API による細かい調整
 {: #fine-tuning-with-the-logger-api }
 {{ site.data.keys.product_adj }} クライアント SDK は、Logger API を内部で利用します。 デフォルトでは、SDK によって作成されたログ・エントリーをキャプチャーしています。 ログ収集を細かく調整するには、パッケージ名を指定してロガー・インスタンスを使用します。 サーバー・サイドのフィルターを使用して、分析でどのロギング・レベルをキャプチャーするかを制御することもできます。

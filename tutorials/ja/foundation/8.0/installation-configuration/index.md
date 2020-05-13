@@ -1,96 +1,98 @@
 ---
 layout: tutorial
-title: インストールおよび構成
+title: Installation and Configuration
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## 概説
+## Overview
 {: #overview }
-{{ site.data.keys.product_full }} は、オンプレミスでインストールするか、クラウドにデプロイして、テストまたは実動で使用することができる開発ツールおよびサーバー・サイド・コンポーネントを提供します。 自分のインストール・シナリオに適したインストール・トピックを確認してください。
+{{ site.data.keys.product_full }} provides development tools and server-side components that you can install on-premises or deploy to the cloud for test or production use. Review the installation topics appropriate for your installation scenario.
 
-### 開発環境のセットアップ
+### Setting up a development environment
 {: #installing-a-development-environment }
-モバイル・アプリケーションのクライアント・サイドまたはサーバー・サイドを開発する場合、[{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) または [{{ site.data.keys.mf_bm }} サービス](../ibmcloud/using-mobile-foundation)を使用して始めてください。
+If you develop the client-side or the server-side of mobile applications, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../ibmcloud/using-mobile-foundation) to get started.
 
-**{{ site.data.keys.mf_dev_kit }}** の使用
+**Using the {{ site.data.keys.mf_dev_kit }}**
 {: #using-the-dev-kit }
 
-{{ site.data.keys.mf_dev_kit }} には、個人用ワークステーションでモバイル・アプリケーションを実行してデバッグするために必要なものがすべて含まれています。 {{ site.data.keys.mf_dev_kit }} を使用してアプリケーションを開発するには、[MobileFirst 開発環境のセットアップ](development/mobilefirst)のチュートリアルに従ってください。
+The {{ site.data.keys.mf_dev_kit }} includes everything required to run and debug mobile applications on a personal workstation. To develop an application using the {{ site.data.keys.mf_dev_kit }}, follow the [Setting up the MobileFirst development environment](development/mobilefirst) tutorial.
 
-**{{ site.data.keys.mf_bm }}** の使用
+**Using the {{ site.data.keys.mf_bm }}**
 {: #using-mf-bluemix }
 
-{{ site.data.keys.mf_bm }} サービスは、{{ site.data.keys.mf_dev_kit }} と似た機能を提供しますが、このサービスは IBM Cloud で実行されます。
+The {{ site.data.keys.mf_bm }} service provides functionality similar to the {{ site.data.keys.mf_dev_kit }}, however the service runs on IBM Cloud.
 
-**{{ site.data.keys.product }} アプリケーションの開発環境のセットアップ**
+**Setting up the development environment for {{ site.data.keys.product }} applications**
 {: #setting-dev-env-mf-apps }
 
-{{ site.data.keys.product }} は、{{ site.data.keys.product }} アプリケーションの開発に使用できるプラットフォームとツールに関してすばらしい柔軟性を備えています。 ただし、選択したツールが {{ site.data.keys.product }} と対話できるようにするには、いくつかの基本的なセットアップを行う必要があります。  
+{{ site.data.keys.product }} provides vast flexibility regarding the platforms and tools that can be used to develop {{ site.data.keys.product }} applications. However, some basic setup is required to enable the chosen tools to interact with {{ site.data.keys.product }}.  
 
-アプリケーションで使用する開発方法に対応する開発環境をセットアップするには、以下のリンクの中から選択してください。
+Select from the following links to set up the development environment corresponding to the development approach that the application will use:
 
-* [Cordova 開発環境のセットアップ](development/cordova)
-* [iOS 開発環境のセットアップ](development/ios)
-* [Android 開発環境のセットアップ](development/android)
-* [Windows 開発環境のセットアップ](development/windows)
-* [Xamarin 開発環境のセットアップ](development/xamarin)
-* [Web 開発環境のセットアップ](development/web)
+* [Set-up the Cordova development environment](development/cordova)
+* [Set-up the iOS development environment](development/ios)
+* [Set-up the Android development environment](development/android)
+* [Set-up the Windows development environment](development/windows)
+* [Set-up the Xamarin development environment](development/xamarin)
+* [Set-up the Web development environment](development/web)
 
-### テスト・サーバーまたは実動サーバーのオンプレミス・セットアップ
+### Setting up a test or production server on-premises
 {: #installing-a-test-or-production-server-on-premises }
 
-{{ site.data.keys.product }} Server をインストールする際の最初の部分では、IBM Installation Manager という IBM 製品を使用します。 {{ site.data.keys.product }} Server コンポーネントをインストールするには、その前に IBM Installation Manager v1.8.4 以降をインストールしておく必要があります。
+The first part of installing the {{ site.data.keys.product }} Server uses an IBM product called IBM Installation Manager. IBM Installation Manager v1.8.4 or later must be installed before installing the {{ site.data.keys.product }} Server components.
 
-> **重要:** 必ず IBM Installation Manager V1.8.4 以降を使用してください。 製品のポストインストール操作に Java 7 が必要なため、古いバージョンの Installation Manager は {{ site.data.keys.product }} {{ site.data.keys.product_version }} をインストールできません。古いバージョンの Installation Manager には Java 6 が装備されています。
+> **Important:** Ensure that you use IBM Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
 
-{{ site.data.keys.mf_server }} のインストール・ウィザードでは、IBM Installation Manager を使用して、すべてのサーバー・コンポーネントをサーバーに配置します。  {{ site.data.keys.product }} Server コンポーネントをアプリケーション・サーバーにデプロイするために必要なツールとライブラリーもインストールされます。  ベスト・プラクティスとして、開発サーバーの場合を除き、すべてのコンポーネントを同じアプリケーション・サーバー・インスタンスにインストールしないでください。 デプロイメント・ツールを使用すると、選択したコンポーネントをインストールできます。  サーバーをインストールする前に考慮すべき点については、[トポロジーとネットワーク・フロー](production/prod-env/topologies)を参照してください。
+The {{ site.data.keys.mf_server }} installation wizard uses IBM Installation Manager to place all of the server components onto the server.  Tools and libraries are also installed that are required to deploy the {{ site.data.keys.product }} Server components to the application server.  As a best practice do not install all of the components on the same application server instance, except in the case of a development server. The deployment tools allow for selection of the components to install.  Please see the [Topologies and Network flows](production/prod-env/topologies) for points to consider before installing the server.
 
-特定の環境での {{ site.data.keys.mf_server }} およびオプション・サービスの準備とインストールについては、以下をお読みください。 単純なセットアップについては、[テスト環境または実稼働環境のセットアップ](production)のチュートリアルを参照してください。
+Please read below for information on preparing and installing {{ site.data.keys.mf_server }} and optional services on your specific environment. For a simple set up, please read [Setting up a test or production environment](production) tutorial.
 
-* [前提条件の確認](production/prod-env/prereqs)
-* [{{ site.data.keys.mf_server }} コンポーネントの概要](production/prod-env/topologies)
-* MobileFirst Server コンポーネントおよびオプションで Application Center をデプロイするためにツールとライブラリーをロードする前に考慮すべき要因
-  * トークン・ライセンス
-  * MobileFirst Foundation Application Center
-  * 管理者モード対ユーザー・モード
-* ファイルのロード後の MobileFirst Server の配布構造
-* 以下の方法によるファイルのロード
-  * IBM Installation Manager インストール・ウィザードの使用
-  * コマンド・ラインでの IBM Installation Manager の実行
-  * XML 応答ファイルの使用 - サイレント・インストール
-* [MobileFirst Foundation Server コンポーネントのバックエンド・データベースの構成](production/prod-env/databases)
-* [アプリケーション・サーバーへの MobileFirst Server のインストール](production/prod-env/appserver)
-* [MobileFirst Server の構成](production/server-configuration)
-* [MobileFirst Analytics Server のインストール](production/analytics/installation)
-* [Application Center のインストール](production/appcenter)
-* [IBM PureApplication System への MobileFirst Server のデプロイ](production/pure-application)
+* [Verifying prerequisites](production/prod-env/prereqs)
+* [{{ site.data.keys.mf_server }} components overview](production/prod-env/topologies)
+* Factors to consider, before loading tools and libraries to deploy MobileFirst Server components, and Application Centre optionally
+  * Token license
+  * MobileFirst Foundation Application Centre
+  * Administrator versus user mode
+* Distribution structure of MobileFirst Server after file loading
+* Loading files by
+  * using IBM Installation Manager Install wizard
+  * running IBM Installation Manager in command line
+  * using XML response files - silent installation
+* [Configuring backend databases for MobileFirst Foundation Server components](production/prod-env/databases)
+* [Installing MobileFirst Server to an application server](production/prod-env/appserver)
+* [Configuring MobileFirst Server](production/server-configuration)
+* [Installing MobileFirst Analytics Server](production/analytics/installation)
+* [Installing MobileFirst Analytics Receiver Server](production/analyticsreceiver/installation)
+* [Installing Application Center](production/appcenter)
+* [Deploying MobileFirst Server on IBM PureApplication System](production/pure-application)
 
-### テスト環境または実稼働環境のセットアップ
+### Setting up a test or production environment
 {: #setting-up-test-or-production-server}
 
-2 つのノードを持つ機能する {{ site.data.keys.mf_server }} クラスターを WebSphere Application Server Liberty プロファイル上に作成する手順を行うことで、{{ site.data.keys.mf_server }} のインストール・プロセスを説明します。 このインストールは、グラフィック・ツール (GUI) を使用するかコマンド・ラインから実行できます。
+Learn about the {{ site.data.keys.mf_server }} installation process by going through the instructions to create a functional {{ site.data.keys.mf_server }} cluster with two nodes on WebSphere Application Server Liberty profile. The installation can be completed by using the graphical tools (GUI) or via the command line.
 
-* [IBM Installation Manager とサーバー構成ツールを使用した GUI モードでのインストール](production/simple-install/graphical-mode)。
-* [コマンド・ライン・ツールを使用したコマンド・ラインでのインストール](production/simple-install/command-line)。
+* [GUI mode installation with IBM Installation Manager and the Server Configuration Tool ](production/simple-install/graphical-mode).
+* [Command line Installation with command line tool](production/simple-install/command-line).
 
-上記の 2 つの方法のいずれかを使用してインストールを実行したら、セットアップを完了するために、要件に応じてさらに[構成](production/server-configuration)が必要になることがあります。
+After completing the installation using either of the two methods above, further [configuration](production/server-configuration) may be required to complete the setup depending on the requirements.
 
-### テスト環境または実稼働環境でのオプション・フィーチャーのセットアップ
+### Setting up optional features on your test or production environment
 {: #setting-up-optional-features-test-or-production-server}
 
-{{ site.data.keys.product }} には、テスト環境または実稼働環境を拡張するために使用できるオプション・コンポーネントが含まれています。  詳しくは、以下のチュートリアルを参照してください。
+{{ site.data.keys.product }} includes optional components that may be used to augment your test or production environment.  Please see the following tutorials for more information:
 
-* [{{ site.data.keys.mf_analytics_server }} のインストールおよび構成](production/analytics/installation/)
-* [{{ site.data.keys.mf_app_center }} のインストールおよび構成](production/appcenter)
+* [Installing and Configuring the {{ site.data.keys.mf_analytics_server }}](production/analytics/installation/)
+* [Installing and Configuring the {{ site.data.keys.mf_analytics_receiver_server }}](production/analyticsreceiver/installation/)
+* [Installing and Configuring the {{ site.data.keys.mf_app_center }}](production/appcenter)
 
-### クラウドへの {{ site.data.keys.mf_server }} テスト環境または実稼働環境のデプロイ
+### Deploying a {{ site.data.keys.mf_server }} test or production environment on the cloud
 {: #deploying-mobilefirst-server-test-or-production-on-the-cloud }
 
-{{ site.data.keys.mf_server }} をクラウドにデプロイする予定の場合は、次のオプションを参照してください。
+If you plan to deploy {{ site.data.keys.mf_server }} to the cloud, see the following options:
 
-* [IBM Cloud での {{ site.data.keys.mf_server }} の使用](../bluemix)。
-* [IBM PureApplication での {{ site.data.keys.mf_server }} の使用](production/pure-application)。
+* [Using {{ site.data.keys.mf_server }} on IBM Cloud](../bluemix).
+* [Using {{ site.data.keys.mf_server }} on IBM PureApplication](production/pure-application).
 
-### 以前のバージョンからのアップグレード
+### Upgrading from earlier versions
 {: #upgrading-from-earlier-versions }
-既存のインストール済み環境およびアプリケーションを新バージョンにアップグレードする方法については、[{{ site.data.keys.product_full }} {{ site.data.keys.product_version }} へのアップグレード](../all-tutorials/#upgrading_to_current_version)を参照してください。
+For information about upgrading existing installations and applications to a newer version, see [Upgrading to {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}](../all-tutorials/#upgrading_to_current_version).

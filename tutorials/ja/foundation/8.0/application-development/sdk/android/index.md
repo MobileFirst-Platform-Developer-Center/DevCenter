@@ -118,14 +118,14 @@ Android Studio プロジェクトを作成するか、または既存のプロ�
 
                 <ul>
                     <li>ダウンロードした .zip ファイルを解凍し、関連する aar ファイルを <b>app\libs</b> フォルダーに入れます。</li>
-                    <li>次の行を <b>dependencies</b> クロージャーに追加します。
+                    <li>次を <b>dependencies</b> クロージャーに追加します。
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
 compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
 compile 'com.squareup.okhttp3:okhttp:3.4.1'
 {% endhighlight %}
                     </li>
-                    <li>次の行を <b>repositories</b> クロージャーに追加します。
+                    <li>次を <b>repositories</b> クロージャーに追加します。
 {% highlight xml %}
 repositories {
     flatDir {

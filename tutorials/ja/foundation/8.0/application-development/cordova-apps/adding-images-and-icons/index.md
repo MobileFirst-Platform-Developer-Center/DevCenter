@@ -117,7 +117,7 @@ MobileFirstPlatform Foundation Cordova プラグインのバージョン 8.0.201
   /*
    Licensed Materials - Property of IBM
 
-   (C) Copyright 2017 IBM Corp.
+   (C) Copyright 2020 IBM Corp.
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,

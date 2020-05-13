@@ -1,8 +1,8 @@
 ---
-layout: tutorial
-title: MobileFirst Foundation 8.0 マイグレーションの手引き
+レイアウト: チュートリアル
+タイトル: MobileFirst Foundation 8.0 マイグレーションの手引き
 breadcrumb_title: マイグレーションの手引き
-weight: 1
+重みづけ: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <div id="overview">
@@ -52,7 +52,7 @@ weight: 1
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
-                        <h3 class="migratingAdapters no-anchor">アダプターのマイグレーション<br/></h3>
+                        <h3 class="migratingAdapters no-anchor">マイグレーション<br/>アダプター</h3>
 
                         <ul class="topics">
                             <li><a href="#migrating-adapters">Apache Maven のセットアップ<br/>の前提条件</a></li>
@@ -771,9 +771,22 @@ export MVN_PATH="/usr/local/bin"
                     </div>
                     <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
                         <div class="panel-body">
+                          <p>実際のマイグレーションに向けてマイグレーション・ツールを実行する前に、マイグレーションの<em>モード</em>を設定します。サポートされている 2 つのモードがあります。</p>
+                          <ul>
+                            <li><b>migrate</b><br/><i>migrate</i> モードでは、クライアント・アプリケーションのマイグレーションをサーバー・マイグレーションとともに活用して、アプリケーションとアダプターを Mobile Foundation v8.0 にマイグレーションできます。</li>
+                            <li><b>compatibility</b><br/><i>compatibility</i> モードを設定すると、サーバー・マイグレーションのみが許可されます。クライアント・マイグレーションは、Mobile Foundation Migration Studio を使用して行います。</li>
+                          </ul>
+                            <p>マイグレーション・モードを設定するには、以下のコマンドを実行します。</p>
+                            <code>
+                              mfpmigrate mode --type [compatibility | migrate]
+                            </code>
+                            <br/><br/>
+                            <blockquote>
+                              <b>注</b>: <i>scan</i> コマンドと <i>client</i> コマンドは、モードが <i>compatibility</i> に設定されていると実行できません。マイグレーション・アシスト・ツールを <i>server</i> オプション用いて実行し、より古い worklight プロジェクトの root ディレクトリーを指定します。
+                            </blockquote>
                             <ol>
-                              <li>マイグレーション・アシスト・ツールを、<i>server</i> オプションを指定し、より古い worklight プロジェクトの <i>root</i> ディレクトリーを指定して実行します。
-                                <br/>
+                              <li>7.1 worklight プロジェクトを Mobile Foundation v8.0 にマイグレーションするには、マイグレーション・アシスト・ツールを以下のように実行します。
+                               <br/>
                                 <code>
                                 mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
                                 </code>
@@ -786,18 +799,108 @@ export MVN_PATH="/usr/local/bin"
                                 <p>既存の MobileFirst プロジェクトからセキュリティー・レルムとアダプターのマイグレーションを実行します。</p>
                                 <br/>
                                 <h4>オプション</h4>
-                                <p><b><i>&lt;sourceDirectory&gt;</i></b>: <i>&lt;sourceDirectory&gt;</i> は、マイグレーションする MobileFirst プロジェクトの <i>root</i> フォルダーでなければなりません。これは必須であり、オプション・パラメーターではありません。</p>
+                                <p><b><i>&lt;sourceDirectory&gt;</i></b>: <i>&lt;sourceDirectory&gt;</i> は、マイグレーションする MobileFirst プロジェクトの <i>root</i> フォルダーでなければなりません。このパラメーターは必須です。</p>
 
                                 <p><b><i>&lt;destinationDirectory&gt;</i></b>: <i>&lt;destinationDirectory&gt;</i> は、アダプターのマイグレーション先となるディレクトリーです。</p>
                               </blockquote>
-                                <p>マイグレーション・ツールは、アダプターとレルムをスキャンします。次に、以下を行います。</p>
+                                <p>マイグレーション・ツールは、アダプターとレルムをスキャンします。次に、以下を実行します。</p>
                                 <ol><li>アダプターおよびサポートされているセキュリティー検査用のテンプレートを作成します。</li>
                                     <li>アダプター・ソースを、新しく作成した Maven 成果物に移動します。</li>
                                     <li>依存関係を使用して、プロジェクト <i>pom</i> を更新します。</li>
                                     <li>このツールを使用して実行された内容と、マイグレーションを完了するために手動で実行されるその他の変更内容を記したサマリー・レポートを作成します。</li>
                                 </ol>
                               </li>
+                              <li>
+                                <p>既存のアダプターおよび <code>worklight.properties</code> ファイルの場合、このツールは非推奨および非サポートの API を 7.1 アダプターからすべて識別し、以下を実行します。</p>
+                                <ol><li>非推奨/非サポートの API を適切な v8.0 API で置換します。</li>
+                                    <li>指定された出力ロケーションで、v7.1 アダプターに対応する v8.0 アダプターを生成します。</li>
+                                    <li>開発者はマイグレーションされたアダプターのディレクトリーに移動し、単一の maven コマンド (<code>mvn clean install  adapter:deploy</code>) を発行することで、アダプターをビルドして Mobile Foundation v8.0 サーバーにデプロイできます。
+                                      <blockquote>
+                                        <b>注</b>: マイグレーションされたアダプターの <code>pom.xml</code> によって、アダプターはローカルで実行されている Mobile Foundation サーバーにデプロイされます。アダプターを別の Mobile Foundation サーバー・インスタンスにデプロイする場合は、<code>pom.xml</code> にあるサーバーの詳細と資格情報を更新し、<code>maven</code> コマンドを発行します。
+                                      </blockquote>
+                                    </li>
+                                    <li><code>worklight.properties</code> ファイルをスキャンして、いずれかのプロパティーが Mobile Foundation v8.0 サーバーへの明示的な JNDI 値の組み込みを必要としているかを把握し、これらのエントリーをレポートに出力します。</li>
+                                </ol>
+                              </li>
+                              <li>
+                                <p>レルムの場合、このツールはサポート対象のレルムと非推奨のレルムを <code>AuthenticationConfig.xml</code> からすべて識別し、以下を実行します。</p>
+                                <ol><li>サマリー・レポートでは、ユーザーの認証構成で使用されているレルム (事前に構成済みで、事前定義されたセキュリティー検査によって v8.0 で使用可能なもの) のリストが要約されます (ユーザーは、さらなるアクションを行う必要はありません)。</li>
+                                    <li>非サポートのレルムが要約されます (Mobile Foundation v8.0 では、これらのレルムはサポートされません)。</li>
+                                    <li>マイグレーションが必要なサポート対象のレルムに対して、以下のステップを実行します。
+                                      <ol>
+                                        <li>特定のレルムのマイグレーションに最適な <i>SecurityCheck</i> を識別します。</li>
+                                        <li>識別した <i>SecurityCheck</i> 基本クラスを使用し、レルムと同じ名前で <i>SecurityCheck</i> というサフィックスを付けて、<i>SecurityCheck</i> テンプレートを生成します。</li>
+                                        <li>レルムでチャレンジと検証のメソッドを識別し、これらを対応する <i>SecurityCheck</i> メソッドにインライン・コメントとしてコピーすることで、ユーザーがそれを参照して、生成された新しい <i>SecurityCheck</i> テンプレートで同じ検証を実装できるようにします。
+                                          <p>レルムのメソッドに実装されているどの認証ロジックが、生成された <i>SecurityCheck</i> テンプレートに適しているかを明確にするために、このマッピングを参照してください。</p>
+                                          <h4>アダプター認証レルム</h4>
+                                          <p>アダプター・オーセンティケーター・レルムは、<code>AuthenticationConfig.xml</code> で定義します。以下にサンプルの定義を示します。</p>
+<pre lang="xml"><code>
+&lt;realm loginModule="SampleLoginModule" name="SampleRealm">
+  &lt;className>com.worklight.integration.auth.AdapterAuthenticator&lt;/className>
+  &lt;parameter name="login-function" value="SampleAdapter.onAuthTrigger"/>
+  &lt;parameter name="logout-function" value="SampleAdapter.onLogout"/>
+&lt;/realm>
+</code></pre>
 
+                                          <p>v7.1 における上記の構成の場合、以下のようにこれを <i>ValidationCredentialsSecurityCheck</i> にマップすることができます。</p>
+                                          <table>
+                                            <tr>
+                                              <td>ValidationCredentialsSecurityCheck.createChallenge</td>
+                                              <td><i>SampleAdapter.onAuthTrigger</i> で使われたアプローチと同じアプローチを使用して、チャレンジを実装できます。ただし、マイグレーションの実行時に気を付けるべきインターフェースの変更があることに注意してください。</td>
+                                            </tr>
+                                            <tr>
+                                              <td>ValidationCredentialsSecurityCheck.validateCredentials</td>
+                                              <td>上記のレルム定義では、これと類似するマッピングがないことに注意してください。このため、このメソッドではマッピングはできません。実際に、あるお客様は、v7.1 でリソース・アダプター・メソッドの 1 つにこれを実装し、チャレンジ・メソッドが成功したあとアプリケーションの <i>ChallengeHandler</i> からこれを呼び出していました。</td>
+                                            </tr>
+                                          </table>
+
+                                          <p>v7.1 でサポートされているすべてのレルム (<i>Form Based Authenticator</i> レルム、<i>Basic Authenticator</i> レルム、<i>Custom Authenticators</i> レルムなど) に対し、その v7.1 定義に基づいて、同様のマッピングが行われます。</p>
+                                          <table>
+                                            <tr>
+                                            <th>v7.1 でのレルム・タイプ</th>
+                                            <th>レルムでのメソッド定義</th>
+                                            <th><i>SecurityCheck</i> メソッド<br/>(Mobile Foundation v8.0)</th>
+                                            </tr>
+                                            <tr>
+                                              <td>CustomAuthentication</td>
+                                              <td>createIdentity</td>
+                                              <td>&lt;UserAuthenticationSecurityCheck&gt;<br/>createUser</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>processRequest</td>
+                                              <td>createChallenge</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>CustomAuhenticator. processAuthenticationFailure<br/>
+                                                CustomAuhenticator.changeResponse<br/>
+                                                on success CustomLoginModule.login
+                                              </td>
+                                              <td>validateCredentials</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>CustomLoginmodule.logout</td>
+                                              <td>Logout</td>
+                                            </tr>
+                                            <tr>
+                                              <td>フォーム・ベースのオーセンティケーター</td>
+                                              <td>CustomLoginModule.login</td>
+                                              <td>&lt;UserAuthenticationSecurityCheck&gt;<br/>validateCredentials</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>CustomLoginmodule.logout</td>
+                                              <td>Logout</td>
+                                            </tr>
+                                          </table>
+                                        </li>
+
+                                      </ol>
+                                    </li>
+                                  </ol>
+                              </li>
                               <li>
                                 <p>サマリー・レポートは、次のように使用します。</p>
                                 <ol>

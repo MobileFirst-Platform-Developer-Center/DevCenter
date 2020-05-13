@@ -360,7 +360,7 @@ FCM でのアプリケーションのセットアップは、古い GCM モデ�
     ```xml
     dependencies {
        ......
-       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       compile 'com.google.firebase:firebase-messaging:17.6.0'
        .....
     }
 

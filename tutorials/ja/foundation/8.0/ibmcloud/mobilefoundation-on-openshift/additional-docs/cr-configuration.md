@@ -35,18 +35,18 @@ show_in_nav: false
 |                       | adminCredentialsSecret | MFPServer DB 管理秘密 | DB の初期化を有効にした場合、Mobile Foundation コンポーネント用のデータベース表およびスキーマを作成するために秘密を指定します。 |
 | mfpserver | adminClientSecret | 管理クライアント秘密 | 作成したクライアント秘密の名前を指定します。 [ここ](#optional-creating-secrets-for-confidential-clients)を参照してください。  |
 |  | pushClientSecret | Push クライアント秘密 | 作成したクライアント秘密の名前を指定します。 [ここ](#optional-creating-secrets-for-confidential-clients)を参照してください。 |
+|  | liveupdateClientSecret | LiveUpddate クライアント秘密 | 作成したクライアント秘密の名前を指定します。 [ここ](#optional-creating-secrets-for-confidential-clients)を参照してください。 |
 | mfpserver.replicas |  | 作成する必要がある Mobile Foundation サーバーのインスタンス (ポッド) の数 | 正整数 (デフォルト: **3**) |
 | mfpserver.autoscaling     | enabled | Horizontal Pod Autoscaler (HPA) をデプロイするかどうかを指定します。 このフィールドを有効にすると、replicas フィールドが無効になるので注意してください。 | **false** (デフォルト) または true |
-|           | minReplicas  | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
-|           | maxReplicas | Autoscaler によって設定できるポッド数の上限値。 下限値より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
-|           | targetCPUUtilizationPercentage | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは **50**) |
+|           | min  | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
+|           | max | Autoscaler によって設定できるポッド数の上限値。 下限値より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
+|           | targetcpu | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは **50**) |
 | mfpserver.pdb     | enabled | PDB を有効にするか無効にするかを指定します。 | **true** (デフォルト) または false |
 |           | min  | 使用可能な最小ポッド数 | 正整数 (デフォルトは 1) |
 |    mfpserver.customConfiguration |  |  カスタム・サーバー構成 (オプション)  | 事前に作成した構成マップに対して Server 固有の追加構成リファレンスを提供します。 [ここ](#optional-custom-server-configuration)を参照してください。|
-| mfpserver.jndiConfigurations | mfpfProperties | デプロイメントをカスタマイズするための Mobile Foundation サーバー JNDI プロパティー | 名前と値のペアをコンマで区切って指定します。 |
 | mfpserver | keystoreSecret | [構成セクション](#optional-creating-custom-keystore-secret-for-the-deployments)を参照して、鍵ストアとそのパスワードを使用して秘密を事前に作成してください。|
 | mfpserver.resources | limits.cpu  | 許可される CPU の最大量を記述します。  | デフォルトは **2000m** です。 Kubernetes の [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) を参照してください。 |
-|                  | limits.memory | 許可されるメモリーの最大量を記述します。 | デフォルトは **2048Mi** です。 Kubernetes の [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。|
+|                  | limits.memory | 許可されるメモリーの最大量を記述します。 | デフォルトは **2048Mi** です。 Kubernetes の [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。 |
 |           | requests.cpu  | 必要な CPU の最小量を記述します。指定されない場合、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。  | デフォルトは **1000m** です。 Kubernetes の [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) を参照してください。 |
 |           | requests.memory | 必要なメモリーの最小量を記述します。 指定されない場合、メモリー量は、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1536Mi** です。 Kubernetes の [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。 |
 | mfppush | enabled          | Mobile Foundation Push を有効にするためのフラグ | **true** (デフォルト) または false |
@@ -54,27 +54,52 @@ show_in_nav: false
 |           | tag          | Docker イメージ・タグ | Docker タグの説明を参照 |
 | mfppush.replicas | | 作成する必要がある Mobile Foundation サーバーのインスタンス (ポッド) の数 | 正整数 (デフォルト: **3**) |
 | mfppush.autoscaling     | enabled | Horizontal Pod Autoscaler (HPA) をデプロイするかどうかを指定します。 このフィールドを有効にすると、replicaCount フィールドが無効になるので注意してください。 | **false** (デフォルト) または true |
-|           | minReplicas  | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
-|           | maxReplicas | Autoscaler によって設定できるポッド数の上限値。 minReplicas より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
-|           | targetCPUUtilizationPercentage | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは **50**) |
+|           | min  | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
+|           | max | Autoscaler によって設定できるポッド数の上限値。 minReplicas より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
+|           | targetcpu | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは **50**) |
 | mfppush.pdb     | enabled | PDB を有効にするか無効にするかを指定します。 | **true** (デフォルト) または false |
 |           | min  | 使用可能な最小ポッド数 | 正整数 (デフォルトは 1) |
 | mfppush.customConfiguration |  |  カスタム構成 (オプション)  | 事前に作成した構成マップに対して Push 固有の追加構成リファレンスを提供します。 [ここ](#optional-custom-server-configuration)を参照してください。 |
-| mfppush.jndiConfigurations | mfpfProperties | デプロイメントをカスタマイズするための Mobile Foundation サーバー JNDI プロパティー | 名前と値のペアをコンマで区切って指定します。 |
 | mfppush | keystoresSecretName | [構成セクション](#optional-creating-custom-keystore-secret-for-the-deployments)を参照して、鍵ストアとそのパスワードを使用して秘密を事前に作成してください。|
 | mfppush.resources | limits.cpu  | 許可される CPU の最大量を記述します。  | デフォルトは **1000m** です。 Kubernetes の [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) を参照してください。 |
 |                  | limits.memory | 許可されるメモリーの最大量を記述します。 | デフォルトは **2048Mi** です。 Kubernetes の [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。|
 |           | requests.cpu  | 必要な CPU の最小量を記述します。指定されない場合、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。  | デフォルトは **750m** です。 Kubernetes の [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) を参照してください。 |
 |           | requests.memory | 必要なメモリーの最小量を記述します。 指定されない場合、メモリー量は、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **1024Mi** です。 Kubernetes の [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。 |
+| mfpliveupdate | enabled          | Liveupdate を有効にするためのフラグ | **false** (デフォルト) または true |
+| mfpliveupdate.image | repository          | Docker イメージ・リポジトリー | Mobile Foundation ライブ・アップデート Docker イメージのリポジトリー。プレースホルダー REPO_URL が正しい Docker レジストリー URL に置き換えられていることを確認してください。 |
+|           | tag          | Docker イメージ・タグ | Docker タグの説明を参照 |
+|           | consoleSecret | ログイン用に事前に作成された秘密 | [ここ](#optional-creating-custom-defined-console-login-secrets)を参照してください。 |
+| mfpliveupdate.db | type          | サポートされているデータベース・ベンダー名 | **DB2** (デフォルト)/MySQL/Oracle |
+|  | host          | Mobile Foundation サーバー表を構成する必要があるデータベースの IP アドレスまたはホスト名 |  |
+|  | port          | データベース・ポート番号 |  |
+|  | secret          | データベース資格情報を持つ、事前に作成された秘密 |  |
+|  | name          | Mobile Foundation サーバー・データベースの名前 |  |
+|  | schema          | 作成する Server DB スキーマ | スキーマが既に存在する場合は、そのスキーマが使用されます。それ以外の場合、作成されます。 |
+|  | ssl          | データベース接続タイプ | データベース接続が http と https のいずれであるかを指定します。 デフォルト値は **false** (http) です。 データベース・ポートも同じ接続モード用に構成されていることを確認してください。 |
+|  | driverPvc          | JDBC データベース・ドライバーにアクセスするための永続ボリューム要求 | JDBC データベース・ドライバーをホストする永続ボリューム要求の名前を指定します。 選択したデータベース・タイプが DB2 ではない場合は必須です。 |
+|  | adminCredentialsSecret          | MFPServer DB 管理秘密 | DB の初期化を有効にした場合、Mobile Foundation コンポーネント用のデータベース表およびスキーマを作成するために秘密を指定します。 |
+| mfpliveupdate.replicas |   | 作成する必要がある Mobile Foundation Liveupdate のインスタンス (ポッド) の数 | 正整数 (デフォルト: **2**) |
+| mfpliveupdate.autoscaling | enabled  | Horizontal Pod Autoscaler (HPA) をデプロイするかどうかを指定します。 このフィールドを有効にすると、replicas フィールドが無効になるので注意してください。 | **false** (デフォルト) または true |
+|  | min  | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
+|  | max  | Autoscaler によって設定できるポッド数の上限値。 下限値より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
+|  | targetcpu  | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは **50**) |
+| mfpliveupdate.pdb | enabled  | PDB を有効にするか無効にするかを指定します。 | **true** (デフォルト) または false |
+|  | min  | 使用可能な最小ポッド数 | 正整数 (デフォルトは **1**) |
+| mfpliveupdate.customConfiguration |   | カスタム・サーバー構成 (オプション) | 事前に作成した構成マップに対して Server 固有の追加構成リファレンスを提供します。 [ここ](#optional-custom-server-configuration)を参照してください。 |
+| mfpliveupdate | keystoreSecret          | [構成セクション](#optional-creating-custom-keystore-secret-for-the-deployments)を参照して、鍵ストアとそのパスワードを使用して秘密を事前に作成してください。|  |
+| mfpliveupdate.resources | limits.cpu  | 許可される CPU の最大量を記述します。 | デフォルトは **1000m** です。 Kubernetes の[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)を参照してください。 |
+|  | limits.memory  | 許可されるメモリーの最大量を記述します。 | デフォルトは **2048Mi** です。 Kubernetes の [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。 |
+|  | requests.cpu  | 必要な CPU の最小量を記述します。指定されない場合、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **750m** です。 Kubernetes の[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)を参照してください。 |
+|  | requests.memory  | 必要なメモリーの最小量を記述します。 指定されない場合、メモリー量は、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは 1024Mi です。 Kubernetes の [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。 |
 | mfpanalytics | enabled          | Analytics を有効にするためのフラグ | **false** (デフォルト) または true |
 | mfpanalytics.image | repository          | Docker イメージ・リポジトリー | Mobile Foundation Operational Analytics Docker イメージのリポジトリー。 プレースホルダー REPO_URL が正しい Docker レジストリー URL に置き換えられていることを確認してください。 |
 |           | tag          | Docker イメージ・タグ | Docker タグの説明を参照 |
 |           | consoleSecret | ログイン用に事前に作成された秘密 | [ここ](#optional-creating-custom-defined-console-login-secrets)を参照してください。|
 | mfpanalytics.replicas |  | 作成する必要がある Mobile Foundation Operational Analytics のインスタンス (ポッド) の数 | 正整数 (デフォルト: **2**) |
 | mfpanalytics.autoscaling     | enabled | Horizontal Pod Autoscaler (HPA) をデプロイするかどうかを指定します。 このフィールドを有効にすると、replicaCount フィールドが無効になるので注意してください。 | **false** (デフォルト) または true |
-|           | minReplicas  | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
-|           | maxReplicas | Autoscaler によって設定できるポッド数の上限値。 minReplicas より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
-|           | targetCPUUtilizationPercentage | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは 50) |
+|           | min  | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
+|           | max | Autoscaler によって設定できるポッド数の上限値。 minReplicas より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
+|           | targetcpu | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは 50) |
 |  mfpanalytics.shards|  | Mobile Foundation Analytics の Elasticsearch シャードの数 | デフォルトは 2|             
 |  mfpanalytics.replicasPerShard|  | Mobile Foundation Analytics のシャードごとに維持する Elasticsearch レプリカの数 | デフォルトは **2**|
 | mfpanalytics.persistence | enabled         | PersistentVolumeClaim を使用してデータを永続化します。                        | **true** |                                                 |
@@ -86,12 +111,28 @@ show_in_nav: false
 | mfpanalytics.pdb     | enabled | PDB を有効にするか無効にするかを指定します。 | **true** (デフォルト) または false |
 |           | min  | 使用可能な最小ポッド数 | 正整数 (デフォルトは **1**) |
 |    mfpanalytics.customConfiguration |  |  カスタム構成 (オプション)  | 事前に作成した構成マップに対して Analytics 固有の追加構成リファレンスを提供します。 [ここ](#optional-custom-server-configuration) を参照してください。 |
-| mfpanalytics.jndiConfigurations | mfpfProperties | Operational Analytics をカスタマイズするために指定する Mobile Foundation JNDI プロパティー| 名前と値のペアをコンマで区切って指定します。  |
 | mfpanalytics | keystoreSecret | [構成セクション](#optional-creating-custom-keystore-secret-for-the-deployments)を参照して、鍵ストアとそのパスワードを使用して秘密を事前に作成してください。|
 | mfpanalytics.resources | limits.cpu  | 許可される CPU の最大量を記述します。  | デフォルトは **1000m** です。 Kubernetes の [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) を参照してください。 |
 |                  | limits.memory | 許可されるメモリーの最大量を記述します。 | デフォルトは **2048Mi** です。 Kubernetes の [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。|
 |           | requests.cpu  | 必要な CPU の最小量を記述します。指定されない場合、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。  | デフォルトは **750m** です。 Kubernetes の [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) を参照してください。 |
 |           | requests.memory | 必要なメモリーの最小量を記述します。 指定されない場合、メモリー量は、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは 1024Mi です。 Kubernetes の [meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。 |
+| mfpanalytics_recvr | enabled          | Analytics Receiver を有効にするためのフラグ | **false** (デフォルト) または true |
+| mfpanalytics_recvr.image | repository          | Docker イメージ・リポジトリー | Mobile Foundation ライブ・アップデート Docker イメージのリポジトリー。プレースホルダー REPO_URL が正しい Docker レジストリー URL に置き換えられていることを確認してください。 |
+|           | tag          | Docker イメージ・タグ | Docker タグの説明を参照 |
+| mfpanalytics_recvr.replicas |   | 作成する必要がある Mobile Foundation Analytics Receiver のインスタンス (ポッド) の数 | 正整数 (デフォルト: **1**) |
+| mfpanalytics_recvr.autoscaling | enabled  | Horizontal Pod Autoscaler (HPA) をデプロイするかどうかを指定します。 このフィールドを有効にすると、replicaCount フィールドが無効になるので注意してください。 | **false** (デフォルト) または true |
+|  | min  | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
+|  | max  | Autoscaler によって設定できるポッド数の上限値。 下限値より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
+|  | targetcpu  | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは **50**) |
+| mfpanalytics_recvr.pdb | enabled  | PDB を有効にするか無効にするかを指定します。 | **true** (デフォルト) または false |
+|  | min  | 使用可能な最小ポッド数 | 正整数 (デフォルトは **1**) |
+| mfpanalytics_recvr | analyticsRecvrSecret     | 受信側用に事前に作成された秘密 | [ここ](#optional-creating-custom-keystore-secret-for-the-deployments)を参照してください。 |
+| mfpanalytics_recvr.customConfiguration |  | カスタム構成 (オプション) | 事前に作成した構成マップに対して Analytics 固有の追加構成リファレンスを提供します。 [ここ](#optional-custom-server-configuration)を参照してください。 |
+| mfpanalytics_recvr | keystoreSecret     | [構成セクション](#optional-creating-custom-keystore-secret-for-the-deployments)を参照して、鍵ストアとそのパスワードを使用して秘密を事前に作成してください。|  |
+| mfpanalytics_recvr.resources | limits.cpu  | 許可される CPU の最大量を記述します。 | デフォルトは **1000m** です。 Kubernetes の[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)を参照してください。 |
+|  | limits.memory  | 許可されるメモリーの最大量を記述します。 | デフォルトは **2048Mi** です。 Kubernetes の [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。 |
+|  | requests.cpu  | 必要な CPU の最小量を記述します。指定されない場合、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは **750m** です。 Kubernetes の[Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu)を参照してください。 |
+|  | requests.memory  | 必要なメモリーの最小量を記述します。 指定されない場合、メモリー量は、最大量が指定されていれば、それがデフォルトになり、そうでなければ実装定義の値がデフォルトになります。 | デフォルトは 1024Mi です。 Kubernetes の [Meaning of memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) を参照してください。 |
 | mfpappcenter | enabled          | Application Center を有効にするためのフラグ | **false** (デフォルト) または true |  
 | mfpappcenter.image | repository          | Docker イメージ・リポジトリー | Mobile Foundation Application Center Docker イメージのリポジトリー。 プレースホルダー REPO_URL が正しい Docker レジストリー URL に置き換えられていることを確認してください。 |
 |           | tag          | Docker イメージ・タグ | Docker タグの説明を参照 |
@@ -106,9 +147,9 @@ show_in_nav: false
 |                       | driverPvc | JDBC データベース・ドライバーにアクセスするための永続ボリューム要求| JDBC データベース・ドライバーをホストする永続ボリューム要求の名前を指定します。 選択したデータベース・タイプが DB2 ではない場合は必須です。 |
 |                       | adminCredentialsSecret | Application Center DB 管理秘密 | DB の初期化を有効にした場合、Mobile Foundation コンポーネント用のデータベース表およびスキーマを作成するために秘密を指定します。 |
 | mfpappcenter.autoscaling     | enabled | Horizontal Pod Autoscaler (HPA) をデプロイするかどうかを指定します。 このフィールドを有効にすると、replicaCount フィールドが無効になるので注意してください。 | **false** (デフォルト) または true |
-|           | minReplicas  | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
-|           | maxReplicas | Autoscaler によって設定できるポッド数の上限値。 minReplicas より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
-|           | targetCPUUtilizationPercentage | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは **50**) |
+|           | min | Autoscaler によって設定できるポッド数の下限値 | 正整数 (デフォルトは **1**) |
+|           | max | Autoscaler によって設定できるポッド数の上限値。 minReplicas より小さくすることはできません。 | 正整数 (デフォルトは **10**) |
+|           | targetcpu | すべてのポッドの目標平均 CPU 使用率 (要求された CPU のパーセンテージで表す) | 1 から 100 までの整数 (デフォルトは **50**) |
 | mfpappcenter.pdb     | enabled | PDB を有効にするか無効にするかを指定します。 | **true** (デフォルト) または false |
 |           | min  | 使用可能な最小ポッド数 | 正整数 (デフォルトは **1**) |
 | mfpappcenter.customConfiguration |  |  カスタム構成 (オプション)  | 事前に作成した構成マップに対して Application Center 固有の追加構成リファレンスを提供します。 [ここ](#optional-custom-server-configuration)を参照してください。 |
@@ -124,19 +165,25 @@ show_in_nav: false
 
 Server の場合:
 
-```
+```bash
 kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
 ```
 
 Analytics の場合:
 
-```
+```bash
 kubectl create secret generic analyticslogin --from-literal=MFPF_ANALYTICS_ADMIN_USER=admin --from-literal=MFPF_ANALYTICS_ADMIN_PASSWORD=admin
+```
+
+Analytics Receiver の場合:
+
+```bash
+kubectl create secret generic analytics_recvrsecret --from-literal=MFPF_ANALYTICS_RECVR_USER=admin --from-literal=MFPF_ANALYTICS_RECVR_PASSWORD=admin
 ```
 
 Application Center の場合:
 
-```
+```bash
 kubectl create secret generic appcenterlogin --from-literal=MFPF_APPCNTR_ADMIN_USER=admin --from-literal=MFPF_APPCNTR_ADMIN_PASSWORD=admin
 ```
 
@@ -180,10 +227,11 @@ kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLI
 kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
 ```
 
-Helm チャートのインストール時に `mfpserver.pushClientSecret` フィールドと `mfpserver.adminClientSecret` フィールドの値を指定しなかった場合、以下のように資格情報を使用してデフォルトのクライアント秘密がそれぞれ作成されます。
+Helm チャートのインストール時に `mfpserver.pushClientSecret` フィールド、`mfpserver.adminClientSecret` フィールド、および `mfpserver.liveupdateClientSecret` フィールドの値を指定しなかった場合、以下の資格情報を使用してデフォルトのクライアント秘密がそれぞれ次のように作成されます。
 
 * `mfpserver.adminClientSecret` の場合、`admin/nimda`
 * `mfpserver.pushClientSecret` の場合、`push/hsup`
+* `mfpserver.liveupdateClientSecret` の場合、`liveupdate / etadpuevil`
 
 ## (オプション) カスタム・サーバー構成
 

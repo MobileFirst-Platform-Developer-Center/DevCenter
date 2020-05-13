@@ -325,7 +325,7 @@ Fix Central から、最新の暫定修正をダウンロードします。 Kube
 
             <ol>
                 <li><b>initenv.sh – IBM Cloud へのログイン</b><br />
-                    <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.mf_bm_short }} をビルドおよび実行する環境を作成します。
+                    <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.mf_bm_short }} をビルドして実行するための環境を作成します。
                     <b>対話モード</b>
 {% highlight bash %}
 ./initenv.sh
@@ -336,7 +336,7 @@ Fix Central から、最新の暫定修正をダウンロードします。 Kube
 {% endhighlight %}
                 </li>
                 <li><b>prepareserverdbs.sh - {{ site.data.keys.mf_server }} データベースの準備</b><br />
-                    <b>prepareserverdbs.sh</b> スクリプトを使用して、DB2 データベース・サービスが含まれた {{ site.data.keys.mf_server }} を構成します。 DB2 サービスのサービス・インスタンスは、手順 1 でログインした組織およびスペースで使用可能でなければなりません。以下を実行します。
+                    <b>prepareserverdbs.sh</b> スクリプトを使用して、DB2 データベース・サービスが含まれた {{ site.data.keys.mf_server }} を構成します。 手順 1 でログインした組織およびスペースにおいて、DB2 サービスのサービス・インスタンスが使用可能になっている必要があります。次のコマンドを実行します。
                     <b>対話モード</b>
 {% highlight bash %}
 ./prepareserverdbs.sh

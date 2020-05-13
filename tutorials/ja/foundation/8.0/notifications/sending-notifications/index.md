@@ -1,112 +1,112 @@
 ---
 layout: tutorial
-title: 通知の送信
+title: Sending Notifications
 relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## 概説
+## Overview
 {: #overview }
-プッシュ通知または SMS 通知を iOS、Android、または Windows デバイスに送信するためには、まず、FCM 詳細 (Android)、APNS 証明書 (iOS)、または WNS 資格情報 (Windows 8.1 Universal/Windows 10 UWP) を使用して {{ site.data.keys.mf_server }} を構成する必要があります。
-その後、すべてのデバイスに通知を送信したり (ブロードキャスト)、特定のタグに登録しているデバイス、単一デバイス ID、ユーザー ID、iOS デバイスのみ、Android デバイスのみ、または Windows デバイスのみに通知を送信したり、あるいは認証ユーザーに基づいて通知を送信したりできます。
+In order to send push or SMS notifications to iOS, Android or Windows devices, the {{ site.data.keys.mf_server }} first needs to be configured with the FCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
+Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID,  User Ids, only iOS devices, only Android devices, only Windows devices, or based on the authenticated user.
 
-**前提条件**: 必ず、[通知の概要](../)チュートリアルをお読みください。
+**Prerequisite**: Make sure to read the [Notifications overview](../) tutorial.
 
-#### ジャンプ先:
+#### Jump to
 {: #jump-to }
-* [通知の設定](#setting-up-notifications)
+* [Setting-up Notifications](#setting-up-notifications)
     * [Firebase Cloud Messaging](#firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
-    * [SMS 通知サービス](#sms-notification-service)
-    * [スコープ・マッピング](#scope-mapping)
-    * [認証済み通知](#authenticated-notifications)
-* [タグの定義](#defining-tags)
-* [通知の送信](#sending-notifications)    
+    * [SMS Notification Service](#sms-notification-service)
+    * [Scope mapping](#scope-mapping)
+    * [Authenticated Notifications](#authenticated-notifications)
+* [Defining Tags](#defining-tags)
+* [Sending Notifications](#sending-notifications)    
     * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
-    * [REST API](#rest-apis)
-    * [通知のカスタマイズ](#customizing-notifications)
-* [APNs プッシュ通知の HTTP/2 サポート](#http2-support-for-apns-push-notifications)
-    * [HTTP/2 の有効化](#enabling-http2)
-    * [HTTP/2 の プロキシー・サポート](#proxy-support-for-http2)
-* [プロキシー・サポート](#proxy-support)
-* [次に使用するチュートリアル](#tutorials-to-follow-next)
+    * [REST APIs](#rest-apis)
+    * [Customizing Notifications](#customizing-notifications)
+* [HTTP/2 Support for APNs Push Notifications](#http2-support-for-apns-push-notifications)
+    * [Enabling HTTP/2](#enabling-http2)
+    * [Proxy Support for HTTP/2](#proxy-support-for-http2)
+* [Proxy Support](#proxy-support)
+* [Tutorials to follow next](#tutorials-to-follow-next)
 
-## 通知のセットアップ
+## Setting up Notifications
 {: #setting-up-notifications }
-通知サポートの有効化では、{{ site.data.keys.mf_server }} とクライアント・アプリケーションの両方でいくつかの構成ステップが必要になります。  
-この後のサーバー・サイドのセットアップを続けてお読みになるか、[クライアント・サイドのセットアップ](#tutorials-to-follow-next)にお進みください。
+Enabling notifications support involves several configuration steps in both {{ site.data.keys.mf_server }} and the client application.  
+Continue reading for the server-side setup, or jump to [Client-side setup](#tutorials-to-follow-next).
 
-サーバー・サイドで必要なセットアップには、必要なベンダー (APNS、FCM、または WNS) の構成と push.mobileclient スコープのマッピングがあります。
+On the server-side, required set-up includes: configuring the needed vendor (APNS, FCM or WNS) and mapping the "push.mobileclient" scope.
 
 ### Firebase Cloud Messaging
 {: #firebase-cloud-messaging }
-> **注:** Google は [GCM を非推奨](https://developers.google.com/cloud-messaging/faq)とし、Cloud Messaging を Firebase に統合しました。 GCM プロジェクトを使用する場合は、必ず [Android 上の GCM クライアント・アプリケーションを FCM にマイグレーション](https://developers.google.com/cloud-messaging/android/android-migrate-fcm)してください。
+> **Note:** Google has [deprecated GCM](https://developers.google.com/cloud-messaging/faq) and has integrated Cloud Messaging with Firebase. If you are using a GCM project, ensure that you [migrate the GCM client apps on Android to FCM](https://developers.google.com/cloud-messaging/android/android-migrate-fcm) .
 
-Android デバイスは、プッシュ通知に Firebase Cloud Messaging (FCM) サービスを使用します。  
-FCM をセットアップするには、次のようにします。
+Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
+To setup FCM:
 
-1. [Firebase コンソール](https://console.firebase.google.com/?pli=1)にアクセスします。
-2. 新規プロジェクトを作成し、プロジェクトに名前を付けます。
-3. 設定 (歯車) アイコンをクリックし、**「プロジェクトの設定」**を選択します。
-4. **「クラウド メッセージング」**タブをクリックして、**「サーバー API キー」**と**「送信者 ID」**を生成し、**「保存」**をクリックします。
+1. Visit the [Firebase Console](https://console.firebase.google.com/?pli=1).
+2. Create a new project and provide a project name.
+3. Click on the Settings "cog wheel" icon and select **Project settings**.
+4. Click the **Cloud Messaging** tab to generate a **Server API Key** and a **Sender ID** and click **Save**.
 
-> [{{ site.data.keys.product_adj }} プッシュ・サービス用 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) または [{{ site.data.keys.product_adj }} 管理サービス用 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi) のいずれかを使用して FCM をセットアップすることもできます。
+> You can also setup FCM using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
 
-#### 注
+#### Notes
 {: #notes }
-お客様の組織にインターネットとの間のトラフィックを制限するファイアウォールが存在する場合は、以下のステップを実行する必要があります。  
+If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
 
-* FCM クライアント・アプリケーションがメッセージを受信するために FCM との接続を許可するようにファイアウォールを構成します。
-* 開くポートは 5228、5229、および 5230 です。 FCM は通常は 5228 のみを使用しますが、場合によっては 5229 および 5230 を使用することもあります。
-* FCM は特定の IP を提供しないため、Google の ASN 15169 にリストされた IP ブロックに含まれるすべての IP アドレスへの発信接続をファイアウォールが受け入れられるようにする必要があります。
-* ファイアウォールが {{ site.data.keys.mf_server }} から fcm.googleapis.com への発信接続をポート 443 で受け入れるようにします。
+* Configure the firewall to allow connectivity with FCM in order for your FCM client apps to receive messages.
+* The ports to open are 5228, 5229, and 5230. FCM typically uses only 5228, but it sometimes uses 5229 and 5230.
+* FCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169.
+* Ensure that your firewall accepts outgoing connections from {{ site.data.keys.mf_server }} to fcm.googleapis.com on port 443.
 
-<img class="gifplayer" alt="GCM 資格情報の追加のイメージ" src="gcm-setup.png"/>
+<img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
 
 ### Apple Push Notifications Service
 {: #apple-push-notifications-service }
-iOS デバイスは、プッシュ通知に Apple Push Notification Service (APNS) を使用します。  
-APNS をセットアップするには、次のようにします。
+iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
+To setup APNS:
 
-1. 開発や実動のためのプッシュ通知証明書を生成します。 詳細な手順については、[こちら](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1)の`「iOS の場合」`セクションを参照してください。
-2. {{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「プッシュ設定」**で、証明書タイプを選択し、証明書のファイルとパスワードを指定します。 次に、**「保存」**をクリックします。
+1. Generate a push notification certificate for development or production. For detailed steps, refer the `For iOS` section [here](https://console.bluemix.net/docs/services/mobilepush/push_step_1.html#push_step_1).
+2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then, click **Save**.
 
-#### 注
+#### Notes
 {: #notes-apns }
-* プッシュ通知を送信するには、{{ site.data.keys.mf_server }} インスタンスから以下のサーバーにアクセス可能でなければなりません。  
-    * Sandbox サーバー:  
+* For push notifications to be sent, the following servers must be accessible from a {{ site.data.keys.mf_server }} instance:  
+    * Sandbox servers:  
         * gateway.sandbox.push.apple.com:2195
         * feedback.sandbox.push.apple.com:2196
-    * 実動サーバー:  
+    * Production servers:  
         * gateway.push.apple.com:2195
         * Feedback.push.apple.com:2196
         * 1-courier.push.apple.com 5223
-* 開発フェーズでは、apns-certificate-sandbox.p12 サンドボックス証明書ファイルを使用します。
-* 実動フェーズでは、apns-certificate-production.p12 実動証明書ファイルを使用します。
-    * APNS 実動証明書は、その証明書を使用するアプリケーションが Apple App Store に正常に送信された後、はじめてテストできるようになります。
+* During the development phase, use the apns-certificate-sandbox.p12 sandbox certificate file.
+* During the production phase, use the apns-certificate-production.p12 production certificate file.
+    * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
 
-**注:** MobileFirst は Universal 証明書をサポートしていません。
+**Note:** MobileFirst does not support Universal certificates.
 
-> [{{ site.data.keys.product_adj }} プッシュ・サービス用 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) または [{{ site.data.keys.product_adj }} 管理サービス用 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc) のいずれかを使用して APNS をセットアップすることもできます。
+> You can also setup APNS using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)
 
-<img class="gifplayer" alt="APNS 資格情報の追加のイメージ" src="apns-setup.png"/>
+<img class="gifplayer" alt="Image of adding the APNS credentials" src="apns-setup.png"/>
 
 ### Windows Push Notifications Service
 {: #windows-push-notifications-service }
-Windows デバイスは、プッシュ通知に Windows Push Notifications Service (WNS) を使用します。  
-WNS をセットアップするには、次のようにします。
+Windows devices use the Windows Push Notifications Service (WNS) for push notifications.  
+To setup WNS:
 
-1. [Microsoft が提供する指示](https://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx)に従って、**「パッケージ セキュリティ ID (SID)」**と**「クライアント シークレット」**の値を生成します。
-2. {{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「プッシュ設定」**で、これらの値を追加し、**「保存」**をクリックします。
+1. Follow the [instructions provided by Microsoft](https://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx) to generate the **Package Security Identifier (SID)** and **Client secret** values.
+2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, add these values and click **Save**.
 
-> [{{ site.data.keys.product_adj }} プッシュ・サービス用 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) または [{{ site.data.keys.product_adj }} 管理サービス用 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc) のいずれかを使用して WNS をセットアップすることもできます。
+> You can also setup WNS using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)
 
-<img class="gifplayer" alt="WNS 資格情報の追加のイメージ" src="wns-setup.png"/>
+<img class="gifplayer" alt="Image of adding the WNS credentials" src="wns-setup.png"/>
 
-### SMS 通知サービス
+### SMS Notification Service
 {: #sms-notification-service }
-以下の JSON を使用して、SMS 通知を送信するための SMS ゲートウェイがセットアップされます。 [`smsConf` REST API を使用](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html)して、SMS ゲートウェイ構成で {{ site.data.keys.mf_server }} を更新します。
+The following JSON is used to setup the SMS gateway for sending SMS notifications. [Use the `smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html) to update the {{ site.data.keys.mf_server }} with the SMS gateway configuration
 
 ```json
 {
@@ -127,20 +127,20 @@ WNS をセットアップするには、次のようにします。
 }
 ```
 
-> SMS 関連の REST API について詳しくは、[プッシュ・サービス API リファレンス](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)を参照してください。
+> Find more SMS-related REST APIs [in the Push Service API Reference](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)
 
-### スコープ・マッピング
+### Scope mapping
 {: #scope-mapping }
-**push.mobileclient** スコープ・エレメントをアプリケーションにマップします。
+Map the **push.mobileclient** scope element to the application.
 
-1. {{ site.data.keys.mf_console }} をロードし、**「 [ご使用のアプリケーション] 」→「セキュリティー」→「スコープ・エレメントのマッピング」**にナビゲートし、**「新規」**をクリックします。
-2. **「スコープ・エレメント」**フィールドに「push.mobileclient」と入力します。 次に、**「追加」**をクリックします。
+1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **New**.
+2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
 
     <div class="panel-group accordion" id="scopes" role="tablist">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="additional-scopes">
                 <h4 class="panel-title">
-                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>使用可能な追加のスコープのリストについてはここをクリック</b></a>
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Click for a list additional available scopes</b></a>
                 </h4>
             </div>
 
@@ -148,163 +148,163 @@ WNS をセットアップするには、次のようにします。
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
-                            <td><b>有効範囲</b></td>
-                            <td><b>説明</b></td>
+                            <td><b>Scope</b></td>
+                            <td><b>Description</b></td>
                         </tr>
                         <tr>
                             <td>apps.read	</td>
-                            <td>アプリケーション・リソースの読み取りの許可</td>
+                            <td>Permission to read application resource.</td>
                         </tr>
                         <tr>
                             <td>apps.write	</td>
-                            <td>アプリケーション・リソースの作成、更新、削除の許可</td>
+                            <td>Permission to create, update, delete application resource.</td>
                         </tr>
                         <tr>
                             <td>gcmConf.read	</td>
-                            <td>GCM 構成設定の読み取りの許可 (API キーおよび SenderId)</td>
+                            <td>Permission to read GCM configuration settings (API Key and SenderId).</td>
                         </tr>
                         <tr>
                             <td>gcmConf.write	</td>
-                            <td>GCM 構成設定の更新、削除の許可</td>
+                            <td>Permission to update, delete GCM configuration settings.</td>
                         </tr>
                         <tr>
                             <td>apnsConf.read	</td>
-                            <td>APNs 構成設定の読み取りの許可</td>
+                            <td>Permission to read APNs configuration settings.</td>
                         </tr>
                         <tr>
                             <td>apnsConf.write	</td>
-                            <td>APNs 構成設定の更新、削除の許可</td>
+                            <td>Permission to update, delete APNs configuration settings.</td>
                         </tr>
                         <tr>
                             <td>devices.read	</td>
-                            <td>デバイスの読み取りの許可</td>
+                            <td>Permission to read device.</td>
                         </tr>
                         <tr>
                             <td>devices.write	</td>
-                            <td>デバイスの作成、更新、削除の許可</td>
+                            <td>Permission to create, update delete device.</td>
                         </tr>
                         <tr>
                             <td>subscriptions.read	</td>
-                            <td>サブスクリプションの読み取りの許可</td>
+                            <td>Permission to read subscriptions.</td>
                         </tr>
                         <tr>
                             <td>subscriptions.write	</td>
-                            <td>サブスクリプションの作成、更新、削除の許可</td>
+                            <td>Permission to create, update, delete subscriptions.</td>
                         </tr>
                         <tr>
                             <td>messages.write	</td>
-                            <td>プッシュ通知の送信の許可</td>
+                            <td>Permission to send push notifications.</td>
                         </tr>
                         <tr>
                             <td>webhooks.read	</td>
-                            <td>イベント通知の読み取りの許可</td>
+                            <td>Permission to read event-notifications.</td>
                         </tr>
                         <tr>
                             <td>webhooks.write	</td>
-                            <td>イベント通知の送信の許可</td>
+                            <td>Permission to send event-notifications.</td>
                         </tr>
                         <tr>
                             <td>smsConf.read	</td>
-                            <td>SMS 構成設定の読み取りの許可</td>
+                            <td>Permission to read SMS configuration settings.</td>
                         </tr>
                         <tr>
                             <td>smsConf.write	</td>
-                            <td>SMS 構成設定の更新、削除の許可</td>
+                            <td>Permission to update, delete SMS configuration settings.</td>
                         </tr>
                         <tr>
                             <td>wnsConf.read	</td>
-                            <td>WNS 構成設定の読み取りの許可</td>
+                            <td>Permission to read WNS configuration settings.</td>
                         </tr>
                         <tr>
                             <td>wnsConf.write	</td>
-                            <td>WNS 構成設定の更新、削除の許可</td>
+                            <td>Permission to update, delete WNS configuration settings.</td>
                         </tr>
                     </table>
-                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>セクションを閉じる</b></a>
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Close section</b></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <img class="gifplayer" alt="スコープ・マッピング" src="scope-mapping.png"/>
+    <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
 
-### 認証済み通知
+### Authenticated Notifications
 {: #authenticated-notifications }
-認証済み通知とは、1 つ以上の `userId` に送信される通知です。  
+Authenticated notifications are notifications that are sent to one or more `userIds`.  
 
-**push.mobileclient** スコープ・エレメントをアプリケーションで使用されるセキュリティー検査にマップします。  
+Map the **push.mobileclient** scope element to the security check used for the application.  
 
-1. {{ site.data.keys.mf_console }} をロードし、**「 [ご使用のアプリケーション] 」→「セキュリティー」→「スコープ・エレメントのマッピング」**にナビゲートし、**「新規」**をクリックするか、既存のスコープ・マッピング・エントリーを編集します。
-2. セキュリティー検査を選択します。 次に、**「追加」**をクリックします。
+1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **New** or edit an existing scope mapping entry.
+2. Select a security check. Then, click **Add**.
 
-    <img class="gifplayer" alt="認証済み通知" src="authenticated-notifications.png"/>
+    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
 
-## タグの定義
+## Defining Tags
 {: #defining-tags }
-{{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「タグ」**で、**「新規」**をクリックします。  
-適切な`「タグ名」`と`「説明」`を入力し、**「保存」**をクリックします。
+In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags**, click **New**.  
+Provide the appropriate `Tag Name` and `Description` and click **Save**.
 
-<img class="gifplayer" alt="タグの追加" src="adding-tags.png"/>
+<img class="gifplayer" alt="Adding tags" src="adding-tags.png"/>
 
-サブスクリプションにより、デバイス登録とタグが結び付けられます。 デバイスがタグから登録解除されると、関連付けられたすべてのサブスクリプションが、デバイス自体から自動的にアンサブスクライブされます。 デバイスのユーザーが複数存在するシナリオでは、サブスクリプションは、ユーザー・ログイン基準に基づいて、モバイル・アプリケーションに実装する必要があります。 例えば、ユーザーがアプリケーションに正常にログインした後にサブスクライブ呼び出しを行い、ログアウト・アクション処理の一部としてアンサブスクライブ呼び出しを明示的に行います。
+Subscriptions tie together a device registration and a tag. When a device is unregistered from a tag, all associated subscriptions are automatically unsubscribed from the device itself. In a scenario where there are multiple users of a device, subscriptions should be implemented in mobile applications based on user log-in criteria. For example, the subscribe call is made after a user successfully logs in to an application and the unsubscribe call is made explicitly as part of the logout action handling.
 
-## 通知の送信
+## Sending Notifications
 {: #sending-notifications }
-プッシュ通知は、{{ site.data.keys.mf_console }} から送信することも、REST API を使用して送信することもできます。
+Push notifications can be sent either from the {{ site.data.keys.mf_console }} or via REST APIs.
 
-* {{ site.data.keys.mf_console }} では、タグ通知およびブロードキャスト通知の 2 つのタイプの通知を送信できます。
-* REST API では、タグ通知、ブロードキャスト通知、および認証済み通知のすべての形式の通知を送信できます。
+* With the {{ site.data.keys.mf_console }}, two types of notifications can be sent: tag and broadcast.
+* With the REST APIs, all forms of notifications can be sent: tag, broadcast and authenticated.
 
 ### {{ site.data.keys.mf_console }}
 {: #mobilefirst-operations-console }
-単一デバイス ID、単一または複数のユーザー ID、iOS デバイスのみか Android デバイスのみ、またはタグにサブスクライブしているデバイスに対して通知を送信できます。
+Notifications can be sent to a single Device ID, a single or several User IDs, only iOS devices or only Android devices, or to devices subscribed to tags.
 
-#### タグ通知
+#### Tag notifications
 {: #tag-notifications }
-タグ通知は、特定のタグにサブスクライブしているすべてのデバイスをターゲットとする通知メッセージです。 タグはユーザーが関心のあるトピックを表し、選択した関心に従って通知を受けられる機能を提供します。
+Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
 
-{{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」**タブで、**「送信先」**タブから**「タグ別のデバイス」**を選択し、**「通知テキスト」**を入力します。 次に、**「送信」**をクリックします。
+In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
-<img class="gifplayer" alt="タグによる送信" src="sending-by-tag.png"/>
+<img class="gifplayer" alt="Sending by tag" src="sending-by-tag.png"/>
 
-#### ブロードキャスト通知
+#### Broadcast notifications
 {: #breadcast-notifications }
-ブロードキャスト通知は、サブスクライブされているすべてのデバイスを宛先とするタグ・プッシュ通知の一形態です。 ブロードキャスト通知は、デフォルトでは、予約済みの `Push.all` タグ (あらゆるデバイスで自動作成される) へのサブスクリプションによって、プッシュ対応のすべての {{ site.data.keys.product_adj }} アプリケーションに対して使用可能になります。 `Push.all` タグは、プログラマチックにアンサブスクライブできます。
+Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled {{ site.data.keys.product_adj }} application by a subscription to a reserved `Push.all` tag (auto-created for every device). The `Push.all` tag can be programmatically unsubscribed.
 
-{{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」**タブで、**「送信先」**タブから**「すべて」**を選択し、**「通知テキスト」**を入力します。 次に、**「送信」**をクリックします。
+In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **All** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
-![すべてに送信](sending-to-all.png)
+![send-to-all](sending-to-all.png)
 
-### REST API
+### REST APIs
 {: #rest-apis }
-REST API を使用する場合は、タグ通知、ブロードキャスト通知、および認証済み通知のすべての形式の通知を送信できます。
+When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
 
-通知を送信するために、POST を使用して REST エンドポイントへの要求が行われます (`imfpush/v1/apps/<application-identifier>/messages`)。  
-URL の例を以下に示します。
+To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
+Example URL:
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
-> すべてのプッシュ通知 REST API を確認するには、ユーザー資料の [REST API ランタイム・サービス](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)のトピックを参照してください。
+> To review all Push Notifications REST APIs, see the [REST API Runtime Services topic](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) in the user documentation.
 
-#### 通知ペイロード
+#### Notification payload
 {: #notification-payload }
-要求には、以下のペイロード・プロパティーを含めることができます。
+The request can contain the following payload properties:
 
-ペイロード・プロパティー| 定義
+Payload Properties| Definition
 --- | ---
-message | 送信されるアラート・メッセージ
-settings | 通知のさまざまな属性の設定。
-target | ターゲットのセットで使用できるのは、コンシューマー ID、デバイス、プラットフォーム、またはタグです。 ターゲットのうちの 1 つのみを設定できます。
-deviceIds | デバイス ID によって表されるデバイスの配列。 これらの ID を持つデバイスが通知を受け取ります。 これはユニキャスト通知です。
-notificationType | メッセージの送信に使用されるチャネル (プッシュ/SMS) を示す整数値。 許可される値は、1 (プッシュのみ)、2 (SMS のみ)、および 3 (プッシュと SMS) です。
-platforms | デバイス・プラットフォームの配列。 これらのプラットフォームを実行しているデバイスが通知を受け取ります。 サポートされる値は、A (Apple/iOS)、G (Google/Android)、および M (Microsoft/Windows) です。
-tagNames | tagNames として指定されたタグの配列。 これらのタグにサブスクライブされているデバイスが通知を受け取ります。 タグ・ベース通知にはこのタイプのターゲットを使用します。
-userIds | 通知の送信先とする、ユーザー ID によって表されるユーザーの配列。 これはユニキャスト通知です。
-phoneNumber | デバイスを登録し、通知を受け取るために使用される電話番号。 これはユニキャスト通知です。
+message | The alert message to be sent
+settings | The settings are the different attributes of the notification.
+target | Set of targets can be consumer Ids, devices, platforms, or tags. Only one of the targets can be set.
+deviceIds | An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notification.
+notificationType | Integer value to indicate the channel (Push/SMS) used to send message. Allowed values are 1 (only Push), 2 (only SMS) and 3 (Push and SMS)
+platforms | An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and M (Microsoft/Windows).
+tagNames | An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications.
+userIds | An array of users represented by their userIds to send the notification. This is a unicast notification.
+phoneNumber | The phone number used for registering the device and receiving notifications. This is a unicast notification.
 
-**プッシュ通知ペイロード JSON サンプル**
+**Push Notifications Payload JSON Example**
 
 ```json
 {
@@ -336,11 +336,11 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 }
 ```
 
-**SMS 通知ペイロード JSON サンプル**
+**SMS Notification Payload JSON Example**
 
 ```json
 {
-  "message" : {
+  "message": {
     "alert": "Hello World from an SMS message"
   },
   "notificationType":3,
@@ -350,32 +350,32 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 }
 ```
 
-#### 通知の送信
+#### Sending the notification
 {: #sending-the-notification }
-通知は、いろいろなツールを使用して送信できます。  
-テスト目的では、以下で説明するように Postman が使用されます。
+The notification can be sent using different tools.  
+For testing purposes, Postman is used as described below:
 
-1. [機密クライアントを構成します](../../authentication-and-security/confidential-clients/)。   
-    REST API 経由でプッシュ通知を送信する場合、スペースで区切られたスコープ・エレメント `messages.write` と `push.application.<applicationId>` を使用します。
+1. [Configure a Confidential Client](../../authentication-and-security/confidential-clients/).   
+    Sending a Push Notification via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>.`
 
-    <img class="gifplayer" alt="機密クライアントの構成" src="push-confidential-client.png"/>
+    <img class="gifplayer" alt="Configure a confidential client" src="push-confidential-client.png"/>
 
-2. [アクセス・トークンを作成します](../../authentication-and-security/confidential-clients#obtaining-an-access-token)。  
+2. [Create an access token](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
 
 
-3. **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages** への **POST** 要求を行います。
-    - リモート {{ site.data.keys.product_adj }} を使用している場合、`hostname` と `port` の値を実際の値で置き換えてください。
-    - アプリケーション ID 値を実際の値で更新します。
+3. Make a **POST** request to **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
+    - If using a remote {{ site.data.keys.product_adj }}, replace the `hostname` and `port` values with your own.
+    - Update the application identifier value with your own.
 
-4. ヘッダーを設定します。
+4. Set a Header:
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
-    - 「Bearer」の後に続く値を上記ステップ (1) で入手したアクセス・トークンの値で置き換えます。
+    - Replace the value after "Bearer" with the value of your access token from step (1) above.
 
-    ![許可ヘッダー](postman_authorization_header.png)
+    ![authorization header](postman_authorization_header.png)
 
-5. 本体を設定します。
-    - 上記の[通知ペイロード](#notification-payload)の説明に従ってプロパティーを更新します。
-    - 例えば、**userIds** 属性が指定された **target** プロパティーを追加すると、特定の登録済みユーザーに通知を送信できます。
+5. Set a Body:
+    - Update its properties as described in [Notification payload](#notification-payload) above.
+    - For example, by adding the **target** property with the **userIds** attribute, you can send a notification to specific registered users.
 
    ```json
    {
@@ -385,70 +385,70 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
    }
    ```
 
-   ![許可ヘッダー](postman_json.png)
+   ![authorization header](postman_json.png)
 
-これで**「送信」**ボタンをクリックすると、デバイスに通知が到着します。
+After clicking on the **Send** button, the device should have now received a notification:
 
-![サンプル・アプリケーションのイメージ](notifications-app.png)
+![Image of the sample application](notifications-app.png)
 
-### 通知のカスタマイズ
+### Customizing Notifications
 {: #customizing-notifications }
-通知メッセージを送信する前に、以下の通知属性をカスタマイズすることもできます。  
+Before sending the notification message, you can also customize the following notification attributes.  
 
-{{ site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「プッシュ」→「タグ」→「通知の送信」**タブで、**「iOS カスタム設定」/「Android カスタム設定」**セクションを展開し、通知属性を変更します。
+In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags → Send Notifications tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
 
 ### Android
 {: #android }
-* 通知音、FCM ストレージ内に通知を保管する期間、カスタム・ペイロードなど。
-* 通知のタイトルを変更する場合は、Android プロジェクトの **strings.xml** ファイル内に `push_notification_tile` を追加します。
+* Notification sound, how long a notification can be stored in the FCM storage, custom payload and more.
+* If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
 
 ### iOS
 {: #ios }
-* 通知音、カスタム・ペイロード、アクション・キーのタイトル、通知タイプ、バッジの数値。
+* Notification sound, custom payload, action key title, notification type and badge number.
 
-![プッシュ通知のカスタマイズ](customizing-push-notifications.png)
+![customizing push notifications](customizing-push-notifications.png)
 
-## APNs プッシュ通知の HTTP/2 サポート
+## HTTP/2 Support for APNs Push Notifications
 {: #http2-support-for-apns-push-notifications}
 
-Apple Push Notification service (APNs) は、HTTP/2 ネットワーク・プロトコルに基づく新しい API をサポートします。 HTTP/2 のサポートには、以下に示すような多くの利点があります。
+Apple Push Notification service (APNs) supports a new API based on HTTP/2 network protocol. Support for HTTP/2 provides many  benefits, including those listed below:
 
-* メッセージの長さが 2 KB から 4 KB に増加し、通知に余分なコンテンツを追加できるようになりました。
-* クライアントとサーバー間の複数の接続が不要になるため、スループットが向上します。
-* Universal Push Notification クライアント SSL 証明書をサポートします。
+* Message length increased from 2 KB to 4 KB, which enables to add extra content to notifications.
+* Eliminates the need for multiple connections between client and server, this improves the throughput.
+* Universal Push Notification Client SSL Certificate support.
 
->MobileFirst でのプッシュ通知は、レガシー TCP ソケット・ベースの通知とともに、HTTP/2 ベースの APNs プッシュ通知をサポートするようになりました。
+>Push Notifications in MobileFirst now supports the HTTP/2 based APNs Push Notifications along with the legacy TCP Socket based notifications.
 
-### HTTP/2 の有効化
+### Enabling HTTP/2
 {: #enabling-http2}
 
-HTTP/2 ベースの通知は、JNDI プロパティーを使用して有効にすることができます。
+HTTP/2 based notifications can be enabled using a JNDI Property.
 ```xml
 <jndiEntry jndiName="imfpush/mfp.push.apns.http2.enabled" value= "true"/>
 ```
 
->**注:** 上記の JNDI プロパティーを追加すると、レガシー TCP ソケット・ベースの通知は使用されず、HTTP/2 ベースの通知のみが有効になります。
+>**Note:** If the above JNDI property is added, legacy TCP Socket based notifications will not be used and only the HTTP/2 based notifications will be enabled.
 
-### HTTP/2 の プロキシー・サポート
+### Proxy Support for HTTP/2
 {: #proxy-support-for-http2}
 
-HTTP/2 ベースの通知は、HTTP プロキシー経由で送信できます。 プロキシー経由での通知のルーティングを有効にするには、[ここ](#proxy-support)を参照してください。
+HTTP/2 based notifications can be sent via a HTTP Proxy. To enable routing of the notifications via a proxy, see [here]({{site.baseurl}}}/blog/2018/12/24/HTTP2-proxy-support/).
 
-## プロキシー・サポート
+## Proxy Support
 {: #proxy-support }
-プロキシー設定を使用して、通知が Android デバイスおよび iOS デバイスに送信される際に経由するオプションのプロキシーを設定できます。 プロキシーの設定には、**push.apns.proxy.** 構成プロパティーと **push.gcm.proxy.** 構成プロパティーを使用できます。 詳しくは、[{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
+You can make use proxy settings to set the optional proxy through which notifications are sent to Android and iOS devices. You can set the proxy by using the **push.apns.proxy.** and **push.gcm.proxy.** configuration properties. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
-## 次に使用するチュートリアル
+## Tutorials to follow next
 {: #tutorials-to-follow-next }
-これでサーバー・サイドがセットアップされたので、次はクライアント・サイドをセットアップし、受け取った通知を処理します。
+With the server-side now set-up, setup the client-side and handle received notifications.
 
-* プッシュ通知の処理
-    * [Cordova アプリケーションでのプッシュ通知の処理](../handling-push-notifications/cordova)
-    * [iOS アプリケーションでのプッシュ通知の処理](../handling-push-notifications/ios)
-    * [Android アプリケーションでのプッシュ通知の処理](../handling-push-notifications/android)
-    * [Windows アプリケーションでのプッシュ通知の処理](../handling-push-notifications/windows)
+* Handling push notifications
+    * [Handling push notifications in Cordova applications](../handling-push-notifications/cordova)
+    * [Handling push notifications in iOS applications](../handling-push-notifications/ios)
+    * [Handling push notifications in Android applications](../handling-push-notifications/android)
+    * [Handling push notifications in Windows applications](../handling-push-notifications/windows)
 
-* SMS 通知の処理
-    * [Cordova アプリケーションでの SMS 通知の処理](../handling-sms-notifications/cordova)
-    * [iOS アプリケーションでの SMS 通知の処理](../handling-sms-notifications/ios)
-    * [Android アプリケーションでの SMS 通知の処理](../handling-sms-notifications/android)
+* Handling SMS notifications
+    * [Handling SMS notifications in Cordova applications](../handling-sms-notifications/cordova)
+    * [Handling SMS notifications in iOS applications](../handling-sms-notifications/ios)
+    * [Handling SMS notifications in Android applications](../handling-sms-notifications/android)

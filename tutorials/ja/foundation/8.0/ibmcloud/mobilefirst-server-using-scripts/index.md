@@ -376,7 +376,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                 <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。 対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
                 <ol>
                     <li><b>initenv.sh – IBM Cloud へのログイン</b><br />
-                    次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
+                    <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -696,7 +696,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>セクションを閉じる</b></a>
-                                    </div>
+            </div>
                                 </div>
                             </div>
                         </div>   
@@ -767,7 +767,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
                 <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。 対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
                 <ol>
                     <li><b>initenv.sh – IBM Cloud へのログイン</b><br />
-                    次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.mf_analytics }} をビルドして実行するための環境を作成します。
+                    <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.mf_analytics }} をビルドして実行するための環境を作成します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -1053,7 +1053,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>セクションを閉じる</b></a>
-                                    </div>
+            </div>
                                 </div>
                             </div>
                         </div>   
@@ -1136,7 +1136,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
             <ol>
                 <li><b>initenv.sh – IBM Cloud へのログイン</b><br />
-                    次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
+                    <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -1183,8 +1183,8 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>
-                                </div>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>セクションを閉じる</b></a>
+            </div>
                             </div>
                         </div>
                     </div>
@@ -1242,7 +1242,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>セクションを閉じる</b></a>
-                                </div>
+            </div>
                             </div>
                         </div>
                     </div>
