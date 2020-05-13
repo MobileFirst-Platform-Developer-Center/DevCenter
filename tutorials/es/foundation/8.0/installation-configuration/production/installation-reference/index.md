@@ -1540,8 +1540,8 @@ En Windows: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME
 {: #step-3 }
 De forma similar, si el servidor de aplicaciones es el perfil de WebSphere Application Server Liberty, o Apache Tomcat, y el servidor está pensado para iniciarse sólo desde la cuenta de usuario, debe también eliminar los permisos de lectura para usuarios que no sean usted mismo desde los siguientes archivos:
 
-* Para el perfil de WebSphere Application Server Liberty: **wlp/usr/servers/<server>/server.xml**
-* Para Apache Tomcat: **conf/server.xml**
+* Para el perfil de WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml` 
+* Para Apache Tomcat: `conf/server.xml`
 
 ### Paso 4
 {: #step-4 }

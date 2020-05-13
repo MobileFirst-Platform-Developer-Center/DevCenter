@@ -62,6 +62,12 @@ Los datos para {{ site.data.keys.mf_analytics }} incluyen los siguientes orígen
 
 [Aprenda más sobre {{ site.data.keys.mf_analytics }}](../../analytics).
 
+### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics-receiver }
+{{ site.data.keys.product }} incluye la característica opcional {{ site.data.keys.mf_analytics_receiver_short }}. La característica {{ site.data.keys.mf_analytics_receiver_short }} recibe registros de las aplicaciones móviles y los envía a {{ site.data.keys.mf_analytics_short }} por fases. {{ site.data.keys.mf_analytics_receiver_short }}mantiene una cola en la memoria para almacenar los registros antes de enviarlos a {{ site.data.keys.mf_analytics_short }}. Reduce la mayor parte del trabajo que realiza {{ site.data.keys.mf_server }} mediante una api loguploader y disminuye el uso de la cola de la memoria. Si este servicio no está presente, {{ site.data.keys.mf_server }} realizará las funciones de recepción y envío de registros. {{ site.data.keys.mf_analytics_receiver_short }} es un servicio opcional. 
+
+[Aprenda más sobre {{ site.data.keys.mf_analytics_receiver }}](../../analytics/analyticsreceiver).
+
 ### Application Center
 {: #application-center }
 Con Application Center, puede compartir aplicaciones móviles que están en desarrollo dentro de su organización en un único repositorio de aplicaciones móviles. Los miembros del equipo de desarrollo pueden utilizar Application Center para compartir aplicaciones con otros miembros del equipo. Este proceso facilita la colaboración entre todas las personas que están implicadas en el desarrollo de una aplicación.

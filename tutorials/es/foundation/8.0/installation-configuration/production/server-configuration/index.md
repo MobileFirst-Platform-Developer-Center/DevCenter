@@ -507,6 +507,10 @@ La siguiente tabla lista las propiedades de {{ site.data.keys.product_adj }} que
 | mfp.analytics.url | El URL expuesto por IBM {{ site.data.keys.mf_analytics }} que recibe datos analíticos de entrada. Por ejemplo, `http://<hostname>:<port>/analytics-service/rest` |
 | mfp.analytics.username | El nombre de usuario que se utiliza si el punto de entrada de datos de IBM {{ site.data.keys.mf_analytics }} está protegido con autenticación básica.|
 | mfp.device.decommissionProcessingInterval | Define la frecuencia (en segundos) con la que se ejecuta la tarea de decomisar. Valor predeterminado: 86400, que es un día. |
+| mfp.analytics.receiver.password |La contraseña que se utiliza si el punto de entrada de datos de IBM {{ site.data.keys.mf_analytics_receiver }} está protegido con autenticación básica. |
+| mfp.analytics.receiver.url |El URL expuesto por IBM {{ site.data.keys.mf_analytics_receiver }} que recibe datos analíticos de entrada. Por ejemplo, `http://<hostname>:<port>/analytics-receiver/rest` |
+| mfp.analytics.receiver.username |El nombre de usuario que se utiliza si el punto de entrada de datos de IBM {{ site.data.keys.mf_analytics_receiver }} está protegido con autenticación básica.|
+| mfp.device.decommissionProcessingInterval | Define la frecuencia (en segundos) con la que se ejecuta la tarea de decomisar. Valor predeterminado: 86400, que es un día. |
 | mfp.device.decommission.when | El número de días de inactividad después del cual un dispositivo de cliente se decomisa por la tarea de decomisar dispositivo. Valor predeterminado: 90 días. |
 | mfp.device.archiveDecommissioned.when |El número de días de inactividad después del cual un dispositivo de cliente decomisado se archiva. <br/><br/>Esta tarea graba los dispositivos de cliente que se han decomisado en un archivo archivador. Los dispositivos de cliente archivados se graban en un archivo en el directorio **home\devices_archive** de {{ site.data.keys.mf_server }}. El nombre del archivo que contiene la indicación de fecha y hora de cuando se creó el archivo de archivado. Valor predeterminado: 90 días. |
 | mfp.licenseTracking.enabled |Un valor utilizado para habilitar o inhabilitar el seguimiento de dispositivo en {{ site.data.keys.product }}.<br/><br/>Por motivos de rendimiento, puede inhabilitar el seguimiento de dispositivo cuando {{ site.data.keys.product }} se ejecuta solo en aplicaciones Business-to-Consumer (B2C). Cuando el seguimiento de dispositivo está inhabilitado, los informes de licencia también están inhabilitados y no se generan métricas de licencia. <br/><br/>Los valores posibles son true (predeterminado) o false.	|
@@ -520,47 +524,47 @@ La siguiente tabla lista las propiedades de {{ site.data.keys.product_adj }} que
 ### Lista de propiedades JNDI para el servicio de envío por push de {{ site.data.keys.mf_server }}
 {: #list-of-jndi-properties-for-mobilefirst-server-push-service }
 
-| Propiedad | Opcional/obligatoria | Descripción |
+| Propiedad | Opcional/obligatoria | Descripción  |
 |----------|-----------------------|-------------|
 | mfp.push.db.type |Opcional | Tipo de base de datos. Valores posibles: DB, CLOUDANT. Predeterminado: DB |
 | mfp.push.db.queue.connections |Opcional | Número de hebras en la agrupación de hebras que realiza la operación de base de datos. Predeterminado: 3 |
 | mfp.push.db.cloudant.url |Opcional | El URL de cuenta de Cloudant. Cuando esta propiedad está definida, la base de datos de Cloudant se dirigirá a este URL. |
 | mfp.push.db.cloudant.dbName |Opcional | El nombre de la base de datos en la cuenta de Cloudant. Debe empezar con una letra minúscula y contener solo letras minúsculas, dígitos y los caracteres _, $ y -. Predeterminado: mfp\_push\_db |
 | mfp.push.db.cloudant.username |Opcional | El nombre de usuario de la cuenta de Cloudant, utilizado para almacenar la base de datos. Cuando esta propiedad no está definida, se utiliza una base de datos relacional. |
-| mfp.push.db.cloudant.password | Opcional | La contraseña de la cuenta de Cloudant, utilizado para almacenar la base de datos. Esta propiedad debe establecerse cuando se establece mfp.db.cloudant.username. |
-| mfp.push.db.cloudant.doc.version | Opcional | La versión del documento de Cloudant. |
-| mfp.push.db.cloudant.socketTimeout | Opcional	| Un tiempo de espera excedido para detectar las pérdidas de una conexión de red para Cloudant, en milisegundos. Un valor de cero implica un tiempo de espera excedido infinito. Un valor negativo significa el valor predeterminado (sin alteración). Predeterminado. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.connectionTimeout | Opcional	| Un tiempo de espera excedido para establecer una conexión de red para Cloudant, en milisegundos. Un valor de cero implica un tiempo de espera excedido infinito. Un valor negativo significa el valor predeterminado (sin alteración). Predeterminado. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.password |Opcional | La contraseña de la cuenta de Cloudant, utilizado para almacenar la base de datos. Esta propiedad debe establecerse cuando se establece mfp.db.cloudant.username. |
+| mfp.push.db.cloudant.doc.version |Opcional | La versión del documento de Cloudant. |
+| mfp.push.db.cloudant.socketTimeout |Opcional	| Un tiempo de espera excedido para detectar las pérdidas de una conexión de red para Cloudant, en milisegundos. Un valor de cero implica un tiempo de espera excedido infinito. Un valor negativo significa el valor predeterminado (sin alteración). Predeterminado. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.connectionTimeout |Opcional	| Un tiempo de espera excedido para establecer una conexión de red para Cloudant, en milisegundos. Un valor de cero implica un tiempo de espera excedido infinito. Un valor negativo significa el valor predeterminado (sin alteración). Predeterminado. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.maxConnections |Opcional | Las conexiones máximas del conector de Cloudant. Predeterminado. Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.ssl.authentication | Opcional | Un valor booleano (true o false) que especifica si la validación de cadena de certificado SSL y la verificación de nombre de host están habilitadas para las conexiones HTTPS con la base de datos de Cloudant. Predeterminado: True |
+| mfp.push.db.cloudant.ssl.authentication |Opcional | Un valor booleano (true o false) que especifica si la validación de cadena de certificado SSL y la verificación de nombre de host están habilitadas para las conexiones HTTPS con la base de datos de Cloudant. Predeterminado: True |
 | mfp.push.db.cloudant.ssl.configuration | Opcional	| (Solo perfil completo WAS) Para conexiones HTTPS con la base de datos de Cloudant: El nombre de una configuración SSL en la configuración de WebSphere Application Server, para utilizarlo cuando no hay una configuración especificada para el host y el puerto. |
-| mfp.push.db.cloudant.proxyHost |Opcional	| Host de proxy del conector de Cloudant. Predeterminado: Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.db.cloudant.proxyPort | Opcional	| Puerto de proxy del conector de Cloudant. Predeterminado: Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
-| mfp.push.services.ext.security | Opcional	| El plugin de extensión de seguridad. |
-| mfp.push.security.endpoint | Opcional	| El URL de punto final para el servidor de autorizaciones. |
+| mfp.push.db.cloudant.proxyHost | Opcional	| Host de proxy del conector de Cloudant. Predeterminado: Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.db.cloudant.proxyPort |Opcional	| Puerto de proxy del conector de Cloudant. Predeterminado: Consulte [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
+| mfp.push.services.ext.security |Opcional	| El plugin de extensión de seguridad. |
+| mfp.push.security.endpoint |Opcional	| El URL de punto final para el servidor de autorizaciones. |
 | mfp.push.security.user |Opcional	| El nombre de usuario para acceder al servidor de autorizaciones. |
 | mfp.push.security.password |Opcional	| La contraseña para acceder al servidor de autorizaciones. |
 | mfp.push.services.ext.analytics | Opcional | El plugin de extensión de análisis. |
-| mfp.push.analytics.endpoint | Opcional | El URL de punto final para el servidor de analíticas. |
-| mfp.push.analytics.user | Opcional | El nombre de usuario para acceder al servidor de analíticas. |
-| mfp.push.analytics.password | Opcional | La contraseña para acceder al servidor de analíticas. |
+| mfp.push.analytics.endpoint |Opcional | El URL de punto final para el servidor de analíticas. |
+| mfp.push.analytics.user |Opcional | El nombre de usuario para acceder al servidor de analíticas. |
+| mfp.push.analytics.password |Opcional | La contraseña para acceder al servidor de analíticas. |
 | mfp.push.analytics.events.notificationDispatch |Opcional	| El suceso de analítica cuando la notificación está a punto de asignarse. Predeterminado: true |
 | mfp.push.internalQueue.maxLength |Opcional | La longitud de la cola que contiene las tareas de notificación antes de asignarlas. Predeterminado: 200000 |
-| mfp.push.gcm.proxy.enabled | Opcional	| Muestra si se debe acceder al GCM de Google a través de un proxy. Predeterminado: false |
+| mfp.push.gcm.proxy.enabled |Opcional	| Muestra si se debe acceder al GCM de Google a través de un proxy. Predeterminado: false |
 | mfp.push.gcm.proxy.protocol | Opcional | Puede ser tanto http como https. |
 | mfp.push.gcm.proxy.host |Opcional | Host de proxy de GCM. Un valor negativo significa el puerto predeterminado. |
 | mfp.push.gcm.proxy.port |Opcional | Puerto de proxy de GCM. Predeterminado: -1 |
 | mfp.push.gcm.proxy.user | Opcional | Nombre de usuario proxy, si el proxy requiere autenticación. Un nombre de usuario vacío significa que no hay autenticación. |
 | mfp.push.gcm.proxy.password | Opcional | Contraseña de proxy, si el proxy requiere autenticación. |
-| mfp.push.gcm.connections |Opcional | Conexiones máximas de Push GCM. Predeterminado: 10 |
-| mfp.push.apns.proxy.enabled | Opcional | Muestra si se debe acceder a APN a través de un proxy. Predeterminado: false |
+| mfp.push.gcm.connections | Opcional | Conexiones máximas de Push GCM. Predeterminado: 10 |
+| mfp.push.apns.proxy.enabled |Opcional | Muestra si se debe acceder a APN a través de un proxy. Predeterminado: false |
 | mfp.push.apns.proxy.type | Opcional | Tipo de proxy de APN. |
 | mfp.push.apns.proxy.host | Opcional | Host de proxy de APN. |
 | mfp.push.apns.proxy.port |Opcional | Puerto de proxy de APN. Predeterminado: -1 |
 | mfp.push.apns.proxy.user | Opcional | Nombre de usuario proxy, si el proxy requiere autenticación. Un nombre de usuario vacío significa que no hay autenticación. |
-| mfp.push.apns.proxy.password | Opcional | Contraseña de proxy, si el proxy requiere autenticación. |
+| mfp.push.apns.proxy.password |Opcional | Contraseña de proxy, si el proxy requiere autenticación. |
 | mfp.push.apns.connections |Opcional | Conexiones máximas de Push APN. Predeterminado: 3 |
-| mfp.push.apns.connectionIdleTimeout | Opcional | Tiempo de espera excedido de conexión inactiva de APN. Predeterminado: 0 |
+| mfp.push.apns.connectionIdleTimeout |Opcional | Tiempo de espera excedido de conexión inactiva de APN. Predeterminado: 0 |
 
 
 {% comment %}

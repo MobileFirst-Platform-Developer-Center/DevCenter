@@ -67,7 +67,17 @@ Para inhabilitar:
 Logger.setAutoSendLogs(false);
 ```
 
-## Ajuste fino con la API Logger
+### Cambiar el intervalo de autoSendLog 
+{: auto-log-sending-interval }
+De forma predeterminada, el *intervalo de autoSendLog* se establece en 60 segundos. El *intervalo de AutoSendLog* se puede modificar utilizando el método siguiente. 
+
+Para establecer el *intervalo de autoSendLog* en 120 segundos, consulte el siguiente fragmento.
+
+```java
+Logger.setAutoSendLogs(true, 120);
+```
+
+## Ajuste preciso con la API Logger
 {: #fine-tuning-with-the-logger-api }
 El SDK de cliente de {{ site.data.keys.product_adj }} utiliza internamente la API Logger. De forma predeterminada, se capturan las entradas de registro que el SDK realiza. Para un ajuste fino en la recopilación del registro, utilice instancias de Logger con nombres de paquete. También puede controlar qué nivel de registro se captura mediante las analíticas utilizando filtros desde el lado del servidor.
 

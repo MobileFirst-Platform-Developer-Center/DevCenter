@@ -30,8 +30,7 @@ Siga las instrucciones que se detallan a continuación para instalar la edición
 ## Requisitos previos
 {: #prereqs}
 
-Debe haber creado IBM Cloud Kubernetes Service (plan gratuito) utilizando el portal
-[IBM Cloud](https://cloud.ibm.com/). Consulte la   [documentación](https://cloud.ibm.com/docs/containers?topic=containers-getting-started) para obtener las instrucciones.
+Debe haber creado IBM Cloud Kubernetes Service (plan gratuito) utilizando el portal [IBM Cloud](https://cloud.ibm.com/). Consulte la   [documentación](https://cloud.ibm.com/docs/containers?topic=containers-getting-started) para obtener las instrucciones.
 Para gestionar pods de kube y el despliegue de helm, debe instalar las herramientas siguientes en su máquina host:
 * CLI ibmcloud (`ibmcloud`)
 * CLI de Kubernetes (`kubectl`)

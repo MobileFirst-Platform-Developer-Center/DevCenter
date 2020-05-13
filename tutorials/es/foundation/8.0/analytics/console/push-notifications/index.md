@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Notificaciones push
-breadcrumb_title: Push Notifications
+breadcrumb_title: Notificaciones push
 relevantTo: [ios,android,javascript]
 weight: 5
 ---

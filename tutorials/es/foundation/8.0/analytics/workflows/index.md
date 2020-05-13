@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Flujos de trabajo de analíticas
-breadcrumb_title: Workflows
+breadcrumb_title: Flujos de trabajo 
 relevantTo: [ios,android,javascript]
 weight: 5
 ---

@@ -51,6 +51,10 @@ La característica {{ site.data.keys.mf_analytics }} permite buscar en aplicacio
 
 Además de los informes de resumen sobre la actividad de las aplicaciones, {{ site.data.keys.product }} incluye una plataforma escalable de analíticas de funcionamiento, a la que se puede acceder desde la consola de {{ site.data.keys.mf_console }}. La característica {{ site.data.keys.mf_analytics_short }} permite que las empresas busquen en registros y sucesos recopilados por los dispositivos, las aplicaciones, los servidores para patrones, los problemas y las estadísticas de utilización de la plataforma. Puede habilitar los análisis, los informes, o ambos, de acuerdo a sus necesidades.
 
+### Analytics Receiver
+{: #analyticsreceiver }
+{{ site.data.keys.mf_analytics_receiver }} es una característica opcional, que recibe registros de las aplicaciones móviles y los transfiere a {{ site.data.keys.mf_analytics }} por fases y los almacena en una cola de la memoria. 
+
 ### Supervisión
 {: #monitoring }
 {{ site.data.keys.product }} incluye una serie de analíticas operativas y mecanismos de creación de informes para la recopilación, visualización y análisis de datos de las aplicaciones y los servidores de {{ site.data.keys.product }} y para supervisar el estado general del servidor.
