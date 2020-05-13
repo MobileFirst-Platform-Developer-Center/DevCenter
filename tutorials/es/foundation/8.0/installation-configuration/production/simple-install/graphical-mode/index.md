@@ -142,6 +142,7 @@ Puede encontrar los recursos en las siguientes carpetas:
 * Carpeta PushService para el servicio de envío por push de {{ site.data.keys.mf_server }}
 * Carpeta ApplicationCenter para Application Center
 * Carpeta Analytics para {{ site.data.keys.mf_analytics }}
+* Carpeta AnalyticsReceiver para {{ site.data.keys.mf_analytics_receiver }}
 
 El objetivo de esta guía de aprendizaje es instalar {{ site.data.keys.mf_server }} utilizando los recursos de la carpeta **MobileFirstServer**.  
 También puede encontrar algunos atajos para la Herramienta de configuración del servidor, Ant, y el programa mfpadm en la carpeta **shortcuts**.
@@ -199,6 +200,10 @@ La Herramienta de configuración del servidor no despliega las siguientes aplica
 {: #mobilefirst-analytics }
 Normalmente, {{ site.data.keys.mf_analytics }} se despliega en una granja de servidores diferente que {{ site.data.keys.mf_server }} debido a su alta necesidad de memoria. {{ site.data.keys.mf_analytics }} se puede instalar manualmente o con tareas Ant. Si ya está instalado, puede introducir su URL, el nombre de usuario y la contraseña para enviarle datos en la Herramienta de configuración del servidor. A continuación, la Herramienta de configuración del servidor configurará las aplicaciones de {{ site.data.keys.product_adj }} para enviar datos a {{ site.data.keys.mf_analytics }}.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+Normalmente {{ site.data.keys.mf_analytics_receiver }} se despliega en un conjunto de servidores diferente al de {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }} debido a que sus requisitos de memoria son elevados. {{ site.data.keys.mf_analytics_receiver }} se puede instalar manualmente o con tareas Ant. Si ya está instalado, puede introducir su URL, el nombre de usuario y la contraseña para enviarle datos en la Herramienta de configuración del servidor. A continuación, la Herramienta de configuración del servidor configurará las aplicaciones de {{ site.data.keys.product_adj }} para enviar datos a {{ site.data.keys.mf_analytics_receiver }}.
+
 #### Application Center
 {: #application-center }
 Esta aplicación puede utilizarse para distribuir aplicaciones móvil internamente a los empleados que utilizan las aplicaciones o para pruebas. Es independiente de {{ site.data.keys.mf_server }} y no es necesario instalarla con {{ site.data.keys.mf_server }}.
@@ -252,10 +257,14 @@ Esta aplicación puede utilizarse para distribuir aplicaciones móvil internamen
 
     Son necesarios un ID de cliente y una contraseña para registrar el servicio de envío por push y el servicio de administración como cliente OAuth confidencial para el servidor de autorizaciones (que, por defecto, es el componente de tiempo de ejecución). La Herramienta de configuración del servidor genera un ID y una contraseña aleatoria para cada servicio, que debe conservar como está para esta guía de aprendizaje de Cómo empezar.
 16. Pulse **Siguiente**.
-17. Conserve las entradas predeterminadas del panel **Valores analíticos** como están.
+17. Conserve las entradas predeterminadas del panel **Analytics Receiver Setting** como están. 
+
+    Para habilitar la conexión de Analytics Receiver Server, primero debe instalar {{ site.data.keys.mf_analytics_receiver }}. Sin embargo, la instalación no se encuentra en el ámbito de esta guía de aprendizaje.
+18. Pulse **Siguiente**.    
+19. Conserve las entradas predeterminadas del panel **Valores analíticos** como están.
 
     Para habilitar la conexión con el servidor de análisis, debe instalar primero {{ site.data.keys.mf_analytics }}. Sin embargo, la instalación no se encuentra en el ámbito de esta guía de aprendizaje.
-18. Pulse **Desplegar**.
+20. Pulse **Desplegar**.
 
 Puede ver el detalle de las operaciones realizadas en la **Ventana de consola**.  
 Se guarda un archivo Ant. La Herramienta de configuración del servidor le ayuda a crear un archivo Ant para instalar y actualizar su configuración. Este archivo Ant se puede exportar utilizando **Archivo → Exportar configuración como archivos Ant...**. Para obtener más información sobre este archivo Ant, consulte Despliegue de {{ site.data.keys.mf_server }} en Liberty con tareas Ant en Instalación de {{ site.data.keys.mf_server }} [en la modalidad de línea de mandatos](../command-line).

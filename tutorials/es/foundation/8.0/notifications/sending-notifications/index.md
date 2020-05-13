@@ -432,7 +432,7 @@ Las notificaciones basadas en HTTP/2 pueden habilitarse mediante una propiedad J
 ### Soporte de proxy para HTTP/2
 {: #proxy-support-for-http2}
 
-Las notificaciones basadas en HTTP/2 pueden habilitarse mediante una propiedad HTTP. Para habilitar el direccionamiento de notificaciones a través de un proxy, consulte [aquí](#proxy-support).
+Las notificaciones basadas en HTTP/2 pueden habilitarse mediante una propiedad HTTP. Para habilitar el direccionamiento de notificaciones a través de un proxy, consulte [aquí]({{site.baseurl}}}/blog/2018/12/24/HTTP2-proxy-support/).
 
 ## Soporte de proxy
 {: #proxy-support }

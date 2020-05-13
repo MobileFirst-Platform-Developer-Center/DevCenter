@@ -17,8 +17,8 @@ Para configurar el soporte de analíticas para notificaciones push, se deben est
 Se necesitan las siguientes propiedades para configurar e inicializar el plugin de {{ site.data.keys.mf_analytics }}. El nombre de usuario y la contraseña se utilizarán para autenticar el servicio de analíticas en el punto final proporcionado.
 
 ```xml
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>  
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<password>"/>
 ```
 

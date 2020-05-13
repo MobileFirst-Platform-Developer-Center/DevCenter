@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Consolas de operaciones y de analíticas
-breadcrumb_title: Analytics Console
+breadcrumb_title: Consola de analíticas
 relevantTo: [ios,android,javascript]
 weight: 4
 ---

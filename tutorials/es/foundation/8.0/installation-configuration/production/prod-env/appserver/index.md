@@ -83,8 +83,8 @@ Asegúrese de que cumple los criterios siguientes:
 {% endhighlight %}
                     </li>
                     <li>Para activar la autenticación, consulte la documentación de usuario de Apache Tomcat <a href="https://tomcat.apache.org/tomcat-7.0-doc/config/http.html#SSL_Support">SSL Support - BIO and NIO</a> y <a href="http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html">SSL Configuration HOW-TO</a>.</li>
-                    <li>En una configuración JMX con SSL habilitado, añada las opciones
-siguientes: {% highlight xml %}
+                    <li>En una configuración JMX con SSL habilitado, añada las opciones siguientes:
+{% highlight xml %}
 -Dcom.sun.management.jmxremote=true
 -Dcom.sun.management.jmxremote.port=8686
 -Dcom.sun.management.jmxremote.ssl=true
@@ -155,11 +155,11 @@ El proceso que ejecuta el servidor de Liberty no se detiene cuando el usuario, q
                 <ul>
                     <li>La Herramienta de configuración del servidor y las tareas Ant pueden configurar una conexión JMX segura predeterminada, que incluye la generación de un certificado SSL firmado automáticamente con un periodo de validez de 365 días. Esta configuración no está pensada para el uso de producción.</li>
                     <li>Para configurar la conexión JMX segura para el uso de producción, siga las instrucciones tal como se describen en <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_restconnector.html?cp=SSD28V_8.5.5&view=embed">Configuración de la conexión JMX segura en el perfil de Liberty</a>.</li>
-                    <li>Rest-connector está disponible para WebSphere Application Server, Liberty Core, y otras ediciones de Liberty, pero se puede empaquetar un servidor de Liberty con un subconjunto de las características disponibles. Para verificar que la característica rest-connector esté disponible en la instalación de Liberty, escriba el siguiente mandato:
+                    <li>Rest-connector está disponible para WebSphere Application Server, Liberty Core, y otras ediciones de Liberty, pero se puede empaquetar un servidor de Liberty con un subconjunto de las características disponibles. Para verificar que la característica rest-connector está disponible en su instalación de Liberty, escriba el mandato siguiente:
 {% highlight bash %}                    
 liberty_install_dir/bin/productInfo featureInfo
 {% endhighlight %}
-                    <b>Nota:</b> Verifique que la salida de este mandato contenga restConnector-1.0.</li>
+                    <b>Nota:</b> Verifique que la salida de este mandato contiene restConnector-1.0.</li>
                 </ul>
             </div>
         </div>
@@ -252,6 +252,28 @@ Puede utilizar la Herramienta de configuración del servidor si se encuentra en 
 
 La herramienta no está disponible en otros sistemas operativos. Debe utilizar las tareas Ant para instalar los componentes de {{ site.data.keys.mf_server }} tal como se describe en [Instalación con Tareas Ant](#installing-with-ant-tasks).
 
+El lanzador SCT (ServerConfigurationTool) del SO Mac obliga a instalar el tiempo de ejecución Java SE 6 existente. Es posible que vea el mensaje siguiente cuando inicia el lanzador SCT en el sistema operativo Mac. 
+
+![Mensaje SCT - Sistema operativo Mac](message-sct-mac.png)
+
+Como solución temporal, puede seguir uno de los métodos siguientes y ejecutar SCT utilizando el ejecutable de SCT sin tener que instalar el tiempo de ejecución Java SE 6. 
+
+#### Método 1
+* Pulse con el botón derecho el lanzador `ServerConfigurationTool`. 
+* Seleccione **Mostrar contenido del paquete**
+
+  ![Mostrar contenido del paquete](show-package-contents.png)
+
+* Pulse **Contenido** > **MacOS**.
+* Pulse el ejecutable `ServerConfigurationTool` para iniciar SCT.
+
+#### Método 2
+Puede tener instalados Java SE 8 y Java SE6 en su sistema sin ningún problema. 
+
+* Cuando se muestre la ventana emergente utilizando el lanzador SCT, pulse **Más información**.
+* Se le redirigirá al sitio de soporte de Apple. Aquí puede encontrar más instrucciones sobre cómo obtener el tiempo de ejecución Java SE 6. 
+* Siga las instrucciones, instale el tiempo de ejecución Java SE 6 y luego inicie el lanzador SCT.
+
 ### Topologías soportadas
 {: #supported-topologies }
 La Herramienta de configuración del servidor instala los componentes de {{ site.data.keys.mf_server }} con las siguientes topologías:
@@ -340,7 +362,7 @@ Antes de ejecutar la Herramienta de configuración del servidor, asegúrese de q
                                             <li>Habilitar la comunicación entre el servicio de administración y el servicio de Live Update mediante:
                                                 <ul>
                                                     <li>Correlación de un usuario con el rol de seguridad <b>configadmin</b> del servicio de Live Update.</li>
-                                                    <li>Adición del ID y de la contraseña de inicio de sesión de este usuario en las propiedades JNDI (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) del servicio de administración.</li>
+                                                    <li>Adición del ID y de la contraseña de inicio de sesión de este usuario en las propiedades JNDI (<b>mfp.config.service.user</b> y <b>mfp.config.service.password</b>) del servicio de administración.</li>
                                                     <li>Correlacione uno o varios usuarios en los roles de seguridad del servicio de administración y de {{ site.data.keys.mf_console }}. Consulte <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuración de autenticación de usuario para la administración de {{ site.data.keys.mf_server }}</a>.</li>
                                                 </ul>
                                             </li>
@@ -738,7 +760,7 @@ Copie la característica de usuario decodificador de contraseñas en el perfil d
 </dataSource>
 {% endhighlight %}
 
-                <h3></h3>
+                   <h3></h3>
                 <p>Declare los roles siguientes en el elemento <b>application-bnd</b> de la aplicación:</p>
                 <ul>
                     <li>mfpadmin</li>
@@ -771,7 +793,7 @@ Copie la característica de usuario decodificador de contraseñas en el perfil d
 </dataSource>
 {% endhighlight %}
 
-                <h3></h3>
+                   <h3></h3>
                 <p>Declare el rol configadmin en el elemento <b>application-bnd</b> de la aplicación. Como mínimo un usuario debe estar correlacionado con este rol. El usuario y su contraseña deben estar proporcionados en las siguientes propiedades JNDI del servicio de administración:</p>
 
                 <ul>
@@ -859,7 +881,7 @@ Copie la característica de usuario decodificador de contraseñas en el perfil d
   [...]
 </dataSource>
 {% endhighlight %}
-            </div>
+   </div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -1079,7 +1101,7 @@ Copie la característica de usuario decodificador de contraseñas en el perfil d
 </dataSource>
 {% endhighlight %}
 
-                <h3>Roles de seguridad</h3>
+                   <h3>Roles de seguridad</h3>
                 <p>Declare los roles siguientes en el elemento <b>application-bnd</b> de la aplicación:</p>
                 <ul>
                     <li>mfpadmin</li>
@@ -1114,7 +1136,7 @@ Copie la característica de usuario decodificador de contraseñas en el perfil d
 </dataSource>
 {% endhighlight %}
 
-                <h3>Roles de seguridad</h3>
+                   <h3>Roles de seguridad</h3>
                 <p>Declare el rol configadmin en el elemento <b>application-bnd</b> de la aplicación. Como mínimo un usuario debe estar correlacionado con este rol. El usuario y su contraseña deben estar proporcionados en las siguientes propiedades JNDI del servicio de administración:</p>
 
                 <ul>
@@ -1205,7 +1227,7 @@ Copie la característica de usuario decodificador de contraseñas en el perfil d
   [...]
 </dataSource>
 {% endhighlight %}
-            </div>
+   </div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -1893,7 +1915,7 @@ Cuando planifique una granja de servidores con la Herramienta de configuración 
                             </li>
                             <li>Intercambie los certificados de firmante entre todos los servidores en sus respectivos almacenes de confianza.
                             <br/><br/>
-                            Este paso es obligatorio para las granjas de servidores que utilizan el perfil completo de WebSphere Application Server o deba habilitarse Liberty como seguridad. Además, para las granjas de servidores de Liberty, se debe replicar la misma configuración de LTPA en cada servidor para asegurar la funcionalidad de inicio de sesión único. Para llevar a cabo esta configuración, siga las directrices en el paso 6 de <a href="#configuring-a-server-farm-manually">Configuración de una granja de servidores manualmente</a>.
+                            <blockquote><b>Nota</b>: Este paso es obligatorio para las granjas que utilizan el perfil completo de WebSphere Application Server o se debe habilitar Liberty como seguridad. Además, para las granjas de servidores de Liberty, se debe replicar la misma configuración de LTPA en cada servidor para asegurar la funcionalidad de inicio de sesión único. Para esta configuración, siga las directrices del paso 6 de <a href="#configuring-a-server-farm-manually">Configuración de una granja de servidores manualmente</a>.</blockquote>
                             </li>
                         </ul>
                     </li>
@@ -1945,7 +1967,7 @@ Cuando planifique una granja de servidores con tareas Ant, cree en primer lugar 
                             Para obtener más información sobre cómo configurar un servidor, consulte <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Restricciones en el servicio de administración de {{ site.data.keys.mf_server }}, en el servicio de Live Update de {{ site.data.keys.mf_server }} y en el tiempo de ejecución de {{ site.data.keys.product_adj }}</a>.</li>
                             <li>Intercambie los certificados de firmante entre todos los servidores en sus respectivos almacenes de confianza.
                             <br/><br/>
-                            Este paso es obligatorio para las granjas de servidores que utilizan el perfil completo de WebSphere Application Server o deba habilitarse Liberty como seguridad. Además, para las granjas de servidores de Liberty, se debe replicar la misma configuración de LTPA en cada servidor para asegurar la funcionalidad de inicio de sesión único. Para llevar a cabo esta configuración, siga las directrices en el paso 6 de <a href="#configuring-a-server-farm-manually">Configuración de una granja de servidores manualmente</a>.
+                            <blockquote><b>Nota</b>: Este paso es obligatorio para las granjas que utilizan el perfil completo de WebSphere Application Server o se debe habilitar Liberty como seguridad. Además, para las granjas de servidores de Liberty, se debe replicar la misma configuración de LTPA en cada servidor para asegurar la funcionalidad de inicio de sesión único. Para llevar a cabo esta configuración, siga las directrices en el paso 6 de <a href="#configuring-a-server-farm-manually">Configuración de una granja de servidores manualmente</a></blockquote>.
                             </li>
                         </ul>
                     </li>
@@ -1999,7 +2021,7 @@ Cuando planifique una granja de servidores con tareas Ant, cree en primer lugar 
                                 <br/>
                                 <b>Nota:</b> Si tiene la intención de instalar más de un tiempo de ejecución en los servidores de la granja de servidores, especifique el ID de atributo y establezca un valor que debe ser exclusivo para cada tiempo de ejecución en <b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b> y en las tareas Ant <b>uninstallmobilefirstruntime</b>.
                                 <br/>
-                                Por ejemplo,
+                                For example,
 {% highlight xml %}
 <target name="rtminstall">
     <installmobilefirstruntime execute="true" contextroot="/runtime1" id="rtm1">
@@ -2088,7 +2110,7 @@ Cuando planifique una granja de servidores, cree en primer lugar servidores aut�
 <jndiEntry jndiName="mfp.admin.jmx.host" value="93.12.0.12"/>
 <jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>
 {% endhighlight %}
-                                Estas propiedades deben establecerse con valores adecuados:
+                                Estas propiedades se deben establecer con los valores adecuados:
                                 <ul>
                                     <li><b>mfp.admin.serverid</b>: El identificador que ha definido para este miembro de la granja de servidores. Este identificador debe ser exclusivo en todos los miembros de la granja de servidores.</li>
                                     <li><b>mfp.admin.jmx.user</b> y <b>mfp.admin.jmx.pwd</b>: Estos valores deben coincidir con las credenciales de un usuario, tal como está declarado en el elemento <code>administrator-role</code>.</li>
@@ -2103,7 +2125,7 @@ Cuando planifique una granja de servidores, cree en primer lugar servidores aut�
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
 <Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                La propiedad <b>mfp.admin.serverid</b> se debe establecer en el identificador definido para este miembro de la granja de servidores. Este identificador debe ser exclusivo en todos los miembros de la granja de servidores.
+                                La propiedad <b>mfp.admin.serverid</b> se debe establecer en el identificador que ha definido para este miembro de granja. Este identificador debe ser exclusivo en todos los miembros de la granja de servidores.
                                 <br/>
                                 Debe asegurarse de que el argumento JVM <code>-Djava.rmi.server.hostname</code> esté establecido en el IP o en el nombre de host utilizado por los miembros remotos para acceder a este servidor. Por lo tanto, no lo establezca en <b>localhost</b>. Además, debe asegurarse de que el argumento JVM <code>-Dcom.sun.management.jmxremote.port</code> se establezca con un puerto que aún no esté en uso para habilitar las conexiones JMX RMI. Ambos argumentos se establecen en la variable de entorno <b>CATALINA_OPTS</b>.
                             </li>
@@ -2146,7 +2168,7 @@ Cuando planifique una granja de servidores, cree en primer lugar servidores aut�
                                 </ul>
                                 Las ubicaciones del almacén de claves y del almacén de confianza están definidas en el archivo <b>server.xml</b>. Consulte los atributos <b>keyStoreRef</b> y <b>trustStoreRef</b> en <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">Atributos de configuración de SSL</a>. De forma predeterminada, el almacén de claves del perfil de Liberty se encuentra en <b>${server.config.dir}/resources/security/key.jks</b>. Si falta la referencia del almacén de confianza o no está definida en el archivo <b>server.xml</b>, se utilizará el almacén de claves especificado por <b>keyStoreRef</b>. El servidor utiliza el almacén de claves predeterminado y el archivo se creará la primera vez que se ejecute el servidor. En tal caso, se creará un certificado predeterminado con un periodo de validez de 365 días. Para producción, es posible que considere la posibilidad de utilizar su propio certificado (incluidos los intermedios, si es necesario) o de cambiar la fecha de caducidad del certificado generado.
 
-                                <blockquote>Nota: Si desea confirmar la ubicación del almacén de confianza, puede hacerlo añadiendo la siguiente declaración al archivo server.xml:
+                                <blockquote>Nota: Si desea confirmar la ubicación del almacén de confianza, añada la declaración siguiente al archivo server.xml:
 {% highlight xml %}
 <logging traceSpecification="SSL=all:SSLChannel=all"/>
 {% endhighlight %}
@@ -2155,6 +2177,10 @@ Cuando planifique una granja de servidores, cree en primer lugar servidores aut�
                                 <ul>
                                     <li>Importe los certificados públicos del resto de servidores de la granja de servidores en el almacén de confianza al que se hace referencia mediante el archivo de configuración <b>server.xml</b> del servidor. La guía de aprendizaje <a href="../../simple-install/graphical-mode">Instalación de {{ site.data.keys.mf_server }} en modalidad gráfica</a> proporciona las instrucciones para intercambiar los certificados entre dos servidores de Liberty de una granja de servidores. Para obtener más información, consulte el paso 5 de la sección <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Creación de una granja de servidores de dos servidores de Liberty que ejecutan {{ site.data.keys.mf_server }}</a>.</li>
                                     <li>Reinicie cada instancia del perfil de WebSphere Application Server Liberty para que surta efecto la configuración de seguridad. Los pasos siguientes son necesarios para que funcione el inicio de sesión único (SSO).</li>
+                                    <li>Intercambie los certificados de firmante entre todos los servidores en sus respectivos almacenes de confianza.
+                            <br/><br/>
+                                    <blockquote><b>Nota</b>: Este paso es obligatorio para las granjas que utilizan el perfil completo de WebSphere Application Server o se debe habilitar Liberty como seguridad. Además, para las granjas de servidores de Liberty, se debe replicar la misma configuración de LTPA en cada servidor para asegurar la funcionalidad de inicio de sesión único. Para realizar esta configuración, siga los pasos siguientes. </blockquote>
+                                    </li>
                                     <li>Inicie un miembro de la granja de servidores. En la configuración de LTPA predeterminada, una vez que el servidor de Liberty se inicie correctamente, generará un almacén de claves de LTPA como <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys.</b></li>
                                     <li>Copie el archivo <b>ltpa.keys</b> al directorio <b>${wlp.user.dir}/servers/server_name/resources/security</b> de cada miembro de la granja de servidores para replicar los almacenes de claves de LTPA entre los miembros de la granja de servidores. Para obtener más información sobre la configuración de LTPA, consulte <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Configuración de LTPA en el perfil de Liberty</a>.</li>
                                 </ul>

@@ -160,7 +160,7 @@ Si opta por ejecutar los scripts de forma interactiva, puede omitir el paso de c
               <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
               <ol>
                   <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
-                      Ejecute el script <b>initenv.sh</b> para iniciar sesión en IBM Cloud. Ejecútelo para la organización y espacio, cuando el servicio dashDB esté enlazado:
+                      Ejecute el script <b>initenv.sh</b> para iniciar sesión en IBM Cloud. Ejecute este script para la organización y espacio a los que está enlazado su servicio DashDB:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -178,7 +178,7 @@ initenv.sh --user IBM_Cloud_user_ID --password IBM_Cloud_password --org IBM_Clou
 {% endhighlight %}
                   </li>
                   <li><b>prepareappcenterdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_app_center }} </b><br />
-                  El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos dashDB o un servidor de base de datos DB2 accesible. La opción de DB2 se puede utilizar especialmente cuando ejecuta IBM Cloud local en el mismo centro de datos en el que está instalado el servidor de DB2. Si utiliza el servicio dashDB, la instancia de servicio de dashDB debe estar disponible en la organización y el espacio en el que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
+                  El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos dashDB o un servidor de base de datos DB2 accesible. La opción de DB2 se puede utilizar especialmente cuando ejecuta IBM Cloud local en el mismo centro de datos en el que está instalado el servidor de DB2. Si utiliza el servicio dashDB, la instancia de servicio de dashDB debe estar disponible en la organización y espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
 {% highlight bash %}
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
@@ -197,7 +197,7 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
 
                   </li>
                   <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
-                      Este paso solo es necesario si necesita crear su servidor en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
+                      Este paso solo es necesario si necesita crear su servidor en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice initenv.properties con la nueva organización y espacio donde se han de crear (e iniciar) los contenedores, y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -224,7 +224,7 @@ prepareappcenter.sh --name APP_NAME
 
                   </li>
                   <li><b>startappcenter.sh - Inicio de {{ site.data.keys.mf_app_center }}</b><br />
-                  El script <b>startappcenter.sh</b> se utiliza para iniciar {{ site.data.keys.mf_app_center }} en la aplicación Liberty for Java Cloud Foundry. Ejecute:<p/>
+                  El script <b>startappcenter.sh</b> se utiliza para iniciar {{ site.data.keys.mf_app_center }} en la aplicación Liberty for Java Cloud Foundry. Ejecute: <p/>
 {% highlight bash %}
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
@@ -294,7 +294,7 @@ Ahora, con {{ site.data.keys.mf_app_center }} ejecutándose en IBM Cloud, puede 
               <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
               <ol>
                   <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
-                      Ejecute el script <b>initenv.sh</b> para iniciar sesión en IBM Cloud. Ejecútelo para la organización y espacio, cuando el servicio dashDB esté enlazado:
+                      Ejecute el script <b>initenv.sh</b> para iniciar sesión en IBM Cloud. Ejecute este script para la organización y espacio a los que está enlazado su servicio DashDB:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -312,7 +312,7 @@ initenv.sh --user IBM_Cloud_user_ID --password IBM_Cloud_password --org IBM_Clou
 {% endhighlight %}
                   </li>
                   <li><b>prepareserverdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_server }}</b><br />
-                  El script <b>prepareserverdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_server }} con el servicio de base de datos dashDB o un servidor de base de datos DB2 accesible. La opción de DB2 se puede utilizar especialmente cuando ejecuta IBM Cloud local en el mismo centro de datos en el que está instalado el servidor de DB2. Si utiliza el servicio dashDB, la instancia de servicio de dashDB debe estar disponible en la organización y el espacio en el que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
+                  El script <b>prepareserverdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_server }} con el servicio de base de datos dashDB o un servidor de base de datos DB2 accesible. La opción de DB2 se puede utilizar especialmente cuando ejecuta IBM Cloud local en el mismo centro de datos en el que está instalado el servidor de DB2. Si utiliza el servicio dashDB, la instancia de servicio de dashDB debe estar disponible en la organización y espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -331,7 +331,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                   </li>
                   <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
-                      Este paso solo es necesario si necesita crear su servidor en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
+                      Este paso solo es necesario si necesita crear su servidor en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice initenv.properties con la nueva organización y espacio donde se han de crear (e iniciar) los contenedores, y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -358,7 +358,7 @@ prepareserver.sh --name APP_NAME
 
                   </li>
                   <li><b>startserver.sh - Inicio del servidor</b><br />
-                  El script <b>startserver.sh</b> se utiliza para iniciar {{ site.data.keys.mf_server }} en la aplicación Liberty for Java Cloud Foundry. Ejecute:<p/>
+                  El script <b>startserver.sh</b> se utiliza para iniciar {{ site.data.keys.mf_server }} en la aplicación Liberty for Java Cloud Foundry. Ejecute: <p/>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}

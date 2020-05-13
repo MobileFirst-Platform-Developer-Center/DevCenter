@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración de filtros de registro
-breadcrumb_title: Log Filters
+breadcrumb_title: Filtros de registro 
 relevantTo: [ios,android,javascript]
 weight: 2
 ---

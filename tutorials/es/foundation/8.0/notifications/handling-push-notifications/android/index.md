@@ -361,7 +361,7 @@ La configuración de una aplicación en FCM es algo distinta en comparación con
     ```xml
     dependencies {
        ......
-       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       compile 'com.google.firebase:firebase-messaging:17.6.0'
        .....
     }
 

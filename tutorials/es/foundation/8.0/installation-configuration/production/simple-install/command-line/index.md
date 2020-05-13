@@ -128,6 +128,7 @@ Puede encontrar los recursos en las siguientes carpetas:
 * Carpeta **PushService** para el servicio de envío por push de {{ site.data.keys.mf_server }}
 * Carpeta **ApplicationCenter** para Application Center
 * Carpeta **Analytics** para {{ site.data.keys.mf_analytics }}
+* Carpeta **AnalyticsReceiver** para {{ site.data.keys.mf_analytics_receiver }}
 
 El objetivo de esta guía de aprendizaje es instalar {{ site.data.keys.mf_server }} utilizando los recursos de la carpeta **MobileFirstServer**.  
 También puede encontrar algunos atajos para la Herramienta de configuración del servidor, Ant, y el programa **mfpadm** en la carpeta **shortcuts**.
@@ -184,6 +185,10 @@ Las siguientes aplicaciones de {{ site.data.keys.product_adj }} no las despliega
 {: #mobilefirst-analytics }
 Normalmente, {{ site.data.keys.mf_analytics }} se despliega en una granja de servidores diferente que {{ site.data.keys.mf_server }} debido a su alta necesidad de memoria. {{ site.data.keys.mf_analytics }} se puede instalar manualmente o con tareas Ant. Si ya está instalado, puede introducir su URL, el nombre de usuario y la contraseña para enviarle datos en la Herramienta de configuración del servidor. A continuación, la Herramienta de configuración del servidor configura las aplicaciones de {{ site.data.keys.product_adj }} para enviar datos a {{ site.data.keys.mf_analytics }}.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+Normalmente {{ site.data.keys.mf_analytics_receiver }} se despliega en un conjunto de servidores diferente al de {{ site.data.keys.mf_server }} y {{ site.data.keys.mf_analytics }} debido a que sus requisitos de memoria son elevados. {{ site.data.keys.mf_analytics_receiver }} se puede instalar manualmente o con tareas Ant. Si ya está instalado, puede introducir su URL, el nombre de usuario y la contraseña para enviarle datos en la Herramienta de configuración del servidor. A continuación, la Herramienta de configuración del servidor configura las aplicaciones de {{ site.data.keys.product_adj }} para enviar datos a {{ site.data.keys.mf_analytics_receiver }}.
+
 #### Application Center
 {: #application-center }
 Esta aplicación puede utilizarse para distribuir aplicaciones móvil internamente a los empleados que utilizan las aplicaciones o para pruebas. Es independiente de {{ site.data.keys.mf_server }} y no es necesario instalarla con {{ site.data.keys.mf_server }}.
@@ -204,6 +209,7 @@ Seleccione el archivo XML adecuado que contiene las tareas Ant y configure las p
     * **appserver.was85liberty.serverInstance** en **mfp1**: El valor del nombre del servidor Liberty donde debe instalarse {{ site.data.keys.mf_server }}.
     * **mfp.farm.configure** en **false** para instalar {{ site.data.keys.mf_server }} en modalidad autónoma.
     * **mfp.analytics.configure** en **false**. La conexión con {{ site.data.keys.mf_analytics }} no está en el ámbito de esta guía de aprendizaje. Puede ignorar las otras propiedades mfp.analytics.****.
+    * **mfp.analytics.receiver.configure** to **false**. La conexión con {{ site.data.keys.mf_analytics_receiver }} no está en el ámbito de esta guía de aprendizaje. Puede omitir las otras propiedades mfp.analytics.receiver.****.
     * **mfp.admin.client.id** en **admin-client-id**.
     * **mfp.admin.client.secret** en **adminSecret** (o elija otra contraseña de secreto).
     * **mfp.push.client.id** en **push-client-id**.
