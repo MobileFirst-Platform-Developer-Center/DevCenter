@@ -182,6 +182,26 @@ Inaktivierung:
 OCLogger.setAutoSendLogs(false);
 ```
 
+### Intervall für autoSendLog ändern
+{: auto-log-sending-interval }
+Das *Intervall für autoSendLog* ist standardmäßig auf 60 Sekunden gesetzt. Sie können das *Intervall für autoSendLog* mit folgender Methode ändern.
+
+**Objective-C**
+
+Das folgende Snippet zeigt, wie das Intervall für autoSendLog auf 120 Sekunden gesetzt wird.
+
+```objc
+[OCLogger setAutoSendLogs:YES interval:120];
+```
+
+**Swift**
+
+Das folgende Snippet zeigt, wie das Intervall für autoSendLog auf 120 Sekunden gesetzt wird.
+
+```swift
+OCLogger.setAutoSendLogs(true, 120);
+```
+
 ## Optimierung mit der Logger-API
 {: #fine-tuning-with-the-logger-api }
 Das {{ site.data.keys.product_adj }}-Client-SDK

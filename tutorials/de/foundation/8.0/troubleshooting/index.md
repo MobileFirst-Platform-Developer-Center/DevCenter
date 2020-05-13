@@ -13,3 +13,4 @@ Hier finden Sie Antworten auf häufig gestellte Fragen zu Problemen, die bei Ver
 * [Push-Benachrichtigungen]({{ site.baseurl }}/tutorials/de/foundation/8.0/troubleshooting/notifications)
 * [JSONStore]({{ site.baseurl }}/tutorials/de/foundation/8.0/troubleshooting/jsonstore)
 * [Analytics]({{ site.baseurl }}/tutorials/de/foundation/8.0/troubleshooting/analytics)
+* [Analytics Receiver]({{ site.baseurl }}/tutorials/de/foundation/8.0/troubleshooting/analyticsreceiver)

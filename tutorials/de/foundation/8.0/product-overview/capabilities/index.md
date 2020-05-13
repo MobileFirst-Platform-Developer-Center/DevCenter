@@ -115,6 +115,10 @@ Mit dem {{ site.data.keys.mf_analytics_short }}-Feature können Unternehmen
 von Geräten, Apps und Servern erfasste Protokolle und Ereignisse durchsuchen, um Muster und Probleme zu finden und Statistiken zur Plattformnutzung
 zu erstellen. Sie können ganz nach Bedarf die Analyse und/oder Berichte aktivieren.
 
+### Analytics Receiver
+{: #analyticsreceiver }
+Der {{ site.data.keys.mf_analytics_receiver }} ist ein Zusatzfeature, das Protokolle von mobilen Anwendungen empfängt und in einer speicherinternen Warteschlange ablegt, um sie von dort aus schrittweise an {{ site.data.keys.mf_analytics }} zu übertragen. 
+
 ### Überwachung
 {: #monitoring }
 In der {{ site.data.keys.product }} gibt es eine Reihe

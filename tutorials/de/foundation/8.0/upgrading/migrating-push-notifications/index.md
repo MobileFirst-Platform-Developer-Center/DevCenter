@@ -2,7 +2,7 @@
 layout: tutorial
 title: Ereignisquellenbasierte Benachrichtigungen auf Push-Benachrichtigungen umstellen
 breadcrumb_title: Push-Benachrichtigungen umstellen
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -1686,5 +1686,5 @@ Die folgenden Informationen müssen vor Verwendung des Migrationstools beachtet 
    ```
 
    * Ersetzen Sie **Pfad_zu_migration.properties** durch den Pfad zur Datei **migration.properties**, wenn sich die JAR-Datei und die Eigenschaftendatei an verschiedenen Positionen befinden. Entfernen Sie andernfalls den Pfad aus dem Befehl.
-   
+
     *Der Ordner "lib" mit den erforderlichen Bibliotheken muss sich an derselben Position wie die Tool-JAR-Datei befinden.

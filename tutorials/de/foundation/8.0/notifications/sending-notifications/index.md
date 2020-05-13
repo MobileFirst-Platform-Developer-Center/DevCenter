@@ -484,7 +484,7 @@ HTTP/2-basierte Benachrichtigungen können über eine JNDI-Eigenschaft aktiviert
 ### Proxyunterstützung für HTTP/2
 {: #proxy-support-for-http2}
 
-HTTP/2-basierte Benachrichtigungen können über einen HTTP-Proxy gesendet werden. Informationen zur Weiterleitung der Benachrichtigungen über einen Proxy finden Sie [hier](#proxy-support).
+HTTP/2-basierte Benachrichtigungen können über einen HTTP-Proxy gesendet werden. Informationen zur Weiterleitung der Benachrichtigungen über einen Proxy finden Sie [hier]({{site.baseurl}}}/blog/2018/12/24/HTTP2-proxy-support/).
 
 ## Proxyunterstützung
 {: #proxy-support }

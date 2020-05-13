@@ -1953,8 +1953,8 @@ ist und dieser nur über Ihren Benutzeraccount gestartet werden soll.
 Entfernen Sie in diesem Fall die Leseberechtigungen
 (read) für alle übrigen Benutzer aus den folgenden Dateien:
 
-* WebSphere Application Server Liberty Profile: **wlp/usr/servers/<Server>/server.xml**
-* Apache Tomcat: **conf/server.xml**
+* WebSphere Application Server Liberty Profile: `wlp/usr/servers/<Server>/server.xml`
+* Apache Tomcat: `conf/server.xml`
 
 ### Schritt 4
 {: #step-4 }

@@ -94,7 +94,6 @@ die MobileFirst-Server-Anwendungen in Ihrem Anwendungsserver implementieren.
 {: #jump-to }
 * [Administratormodus und Benutzermodus im Vergleich](#administrator-versus-user-mode)
 * [Installation mit dem Installationsassistenten von IBM Installation Manager](#installing-by-using-ibm-installation-manager-install-wizard)
-* [Installation mit IBM Installation Manager über die Befehlszeile](#installing-by-running-ibm-installation-manager-in-command-line)
 * [Installation mit XML-Antwortdateien - Unbeaufsichtigte Installation](#installing-by-using-xml-response-files---silent-installation)
 * [Verteilerweg von {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
 
@@ -232,88 +231,65 @@ Sie finden die Ressourcen in folgenden Ordnern:
 * Ordner **PushService** für den MobileFirst-Server-Push-Service 
 * Ordner **ApplicationCenter** für das Application Center
 * Ordner **Analytics** für {{ site.data.keys.mf_analytics }}
+* Ordner **AnalyticsReceiver** für den {{ site.data.keys.mf_analytics_receiver }}
 
 Im Ordner **shortcuts** finden Sie einige Verknüpfungen für den Direktaufruf des
 Server Configuration Tool,
 von Ant und des Programms mfpadm. 
 
-## Installation mit IBM Installation Manager über die Befehlszeile
+<!-- Git issue: https://github.ibm.com/MobileFirst/mfp-planning/issues/910
+## Installing by running IBM Installation Manager in command line
 {: #installing-by-running-ibm-installation-manager-in-command-line }
 
-1. Lesen Sie die Lizenzvereinbarung für {{ site.data.keys.mf_server }} durch. Sie können die Lizenzdateien anzeigen, wenn Sie das Installationsrepository über
-Passport
-Advantage heruntergeladen haben.
-2. Entpacken Sie die komprimierte Datei mit dem heruntergeladenen MobileFirst-Server-Repository
-in einem Ordner. 
+1. Review the license agreement for {{ site.data.keys.mf_server }}. The license files can be viewed when you download the installation repository from Passport Advantage .
+2. Extract the compressed file of {{ site.data.keys.mf_server }} repository, that you downloaded, to a folder.
 
-    Sie können das Repository über [IBM
-Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) aus der eAssembly für
-die {{ site.data.keys.product }}
-herunterladen.
-Das Paket hat den Namen **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+    You can download the repository from the {{ site.data.keys.product }} eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
 
-In den folgenden Schritten wird für das Verzeichnis, in das Sie das Installationsprogramm extrahieren, die Bezeichnung
-**MFP-Repositoryverzeichnis** verwendet.
-Es enthält einen Ordner **MobileFirst_Platform_Server/disk1**.
-3. Öffnen Sie eine Befehlszeile und navigieren Sie zu dem Verzeichnis **Installation-Manager-Installationsverzeichnis/tools/eclipse/**. 
+    In the steps that follow, the directory where you extract the installer is referred as **mfp\_repository\_dir**. It contains a **MobileFirst\_Platform\_Server/disk1** folder.
+3. Start a command line and go to **installation\_manager\_install\_dir/tools/eclipse/**.
 
-    Wenn Sie die in Schritt 1
-durchgelesene Lizenzvereinbarung akzeprtiert haben,
-können Sie {{ site.data.keys.mf_server }} installieren.
-    * Wenn in Ihrem Vertrag keine Tokenlizenzierung vereinbart wurde und Sie also
-eine Installation ohne Durchsetzung der Tokenlizenzierung ausführen, geben Sie den folgenden Befehl ein: 
+    If you accept the license agreement after the review in step 1, install {{ site.data.keys.mf_server }}.
+    * For an installation without token licensing enforcement (if you do not have a contract that defines the use of token licensing), enter the command:
 
       ```bash
-      imcl install com.ibm.mobilefirst.foundation.server -repositories MFP-Repositoryverzeichnis/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
+      imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
-    * Für eine Installation mit Durchsetzung der Tokenlizenzierung müssten Sie den folgenden Befehl eingeben: 
+    * For an installation with token licensing enforcement, enter the command:
 
       ```bash
-      imcl install com.ibm.mobilefirst.foundation.server -repositories MFP-Repositoryverzeichnis/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
+      imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
 
-        Die
-Eigenschaft
-**user.licensed.by.tokens** ist auf den Wert
-**true** gesetzt. Sie müssen {{ site.data.keys.mf_server }} für die
-[Tokenlizenzierung](../token-licensing) konfigurieren. 
+        The value of **user.licensed.by.tokens** property is set to **true**. You must configure {{ site.data.keys.mf_server }} for [token licensing](../token-licensing).
 
-        Die folgenden Eigenschaften sind
-für eine Installation von
-{{ site.data.keys.mf_server }}
-ohne das Application Center definiert: 
+        The following properties are set to install {{ site.data.keys.mf_server }} without Application Center:
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
 
-        Die folgende Eigenschaft gibt an, ob die Tokenlizenzierung aktiviert ist:
-**user.licensed.by.tokens=true/false**.
+        This property indicates whether token licensing is activated or not: **user.licensed.by.tokens=true/false**.
 
-        Setzen Sie die Eigenschaft user.use.ios.edition für die Installation der {{ site.data.keys.product }} auf "false". 
+        Set the value of the user.use.ios.edition property to false to install {{ site.data.keys.product }}.
 
-5. Wenn Sie mit den neuesten vorläufigen Fix installieren wollen, fügen Sie das Repository für den vorläufigen Fix mit dem Parameter
-**-repositories** hinzu. Der Parameter **-repositories** akzeptiert eine Liste mit Repositorys, die jeweils durch ein Komma getrennt angegeben werden müssen. 
+5. If you want to install with the latest interim fix, add the interim fix repository in the **-repositories** parameter. The **-repositories** parameter takes a comma-separated list of repositories.
 
-    Fügen Sie die Version des vorläufigen Fix hinzu.
-Ersetzen Sie dazu **com.ibm.mobilefirst.foundation.server** durch **com.ibm.mobilefirst.foundation.server_Version**. **Version** hat das Format **8.0.0.0-Buildnummer**. Wenn Sie beispielsweise den vorläufigen Fix **8.0.0.0-IF201601031015** installieren möchten, geben Sie den
-folgenden Befehl ein: `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`
+    Add the version of the interim fix by replacing **com.ibm.mobilefirst.foundation.server** with **com.ibm.mobilefirst.foundation.server_version**. **version** has the form **8.0.0.0-buildNumber**. For example, if you install the interim fix **8.0.0.0-IF20160103101**5, enter the command: `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`.
 
-    Weitere Informationen zu dem imcl-Befehl finden Sie unter
-[Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
+    For more information about the imcl command, see [Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
 
-Ein Installationsverzeichnis mit den Ressourcen für die Installation der
-{{ site.data.keys.product_adj }}-Komponenten wurde erstellt. 
+An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.
 
-Sie finden die Ressourcen in folgenden Ordnern: 
+You can find the resources in the following folders:
 
-* Ordner **MobileFirstServer** für {{ site.data.keys.mf_server }}
-* Ordner **PushService** für den MobileFirst-Server-Push-Service 
-* Ordner **ApplicationCenter** für das Application Center
-* Ordner **Analytics** für {{ site.data.keys.mf_analytics }}    
+* **MobileFirstServer** folder for {{ site.data.keys.mf_server }}
+* **PushService** folder for {{ site.data.keys.mf_server }} push service
+* **ApplicationCenter** folder for Application Center
+* **Analytics** folder for {{ site.data.keys.mf_analytics }}    
+* **AnalyticsReceiver** folder for {{ site.data.keys.mf_analytics_receiver }}
 
-Im Ordner **shortcuts** finden Sie einige Verknüpfungen für den Direktaufruf des
-Server Configuration Tool,
-von Ant und des Programms mfpadm. 
+You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
+-->
 
 ## Installation mit XML-Antwortdateien - Unbeaufsichtigte Installation
 {: #installing-by-using-xml-response-files---silent-installation }
@@ -896,6 +872,14 @@ Die Dateien und Tools für {{ site.data.keys.mf_server }} werden im Installation
 |------|-------------|
 |**analytics.ear** und **analytics-*.war** |EAR- und WAR-Dateien für die Installation von {{ site.data.keys.mf_analytics }}|
 |**configuration-samples** |Ant-Beispieldateien für die Installation von {{ site.data.keys.mf_analytics }} mit Ant-Tasks|
+
+#### Dateien und Unterverzeichnisse im Unterverzeichnis 'AnalyticsReceiver'
+{: #files-and-subdirectories-in-the-analytics-receiver-subdirectory }
+
+|Element|Beschreibung |
+|------|-------------|
+| **analytics-receiver*.war** | WAR-Datei für die Installation des {{ site.data.keys.mf_analytics_receiver }} |
+|**configuration-samples** |Ant-Beispieldateien für die Installation von {{ site.data.keys.mf_analytics_receiver }} mit Ant-Tasks|
 
 #### Dateien und Unterverzeichnisse im Unterverzeichnis 'ApplicationCenter'
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }

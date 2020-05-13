@@ -5,7 +5,7 @@ breadcrumb_title: Authentifizierungskonzepte umstellen
 downloads:
   - name: Download migration sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
-weight: 3
+weight: 4
 ---
 ## Übersicht
 {: #overview }
@@ -37,6 +37,11 @@ Version 8.0 umgestellt werden. Dazu gehören die Konfiguration des Schutzes auf 
 > Weitere Informationen zu den Basiskonzepten des neuen Sicherheitsframeworks finden Sie unter [Authentifizierung
 und Sicherheit](../../authentication-and-security).
 
+## Migration von Authentifizierungsrealms mit dem Unterstützungstool für Migration
+{: #migrating-realms-using-migration-assist-tool}
+
+Mit dem Unterstützungstool für Migration ist die Umstellung der unterstützten Realms auf Sicherheitsüberprüfungen einfacher. Weitere Informationen finden Sie [hier]({{site.baseur}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/#using-migration-assistance-tool).
+
 ## Beispielanwendung umstellen
 {: #migrating-the-sample-application }
 
@@ -64,7 +69,7 @@ Gleiches gilt für die Clientanwendung von Version 8.0
 und die Sicherheitsüberprüfungen von Version 8.0 (die innerhalb von Adaptern implementiert werden). Sie können diese Artefakte daher in einer von Ihnen gewählten Reihenfolge migrieren. Das Lernprogramm beginnt mit Anweisungen für die Migration des Ressourcenadapters. Im Rahmen dieser Anweisungen gibt es eine Einführung in die Bereichselemente der OAuth-Sicherheit, die
 in Version 8.0 für den Ressourcenschutz verwendet werden. 
 
-> **Hinweis:** 
+> **Hinweis:**
 > *  Die folgenden Anweisungen gelten für die Migration des Beispielressourcenadapters `AccountAdapter`. Den Beispieladapter `PinCodeAdapter` müssen Sie nicht migrieren, weil die mit diesem Adapter implementierte adapterbasierte Authentifizierung in Version 8.0 nicht mehr unterstützt wird. Im Schritt
 [Adapterbasiertes Authentifizierungsrealm mit PIN-Code ersetzen](#replacing-the-pin-code-adapter-based-authentication-realm) ist erläutert, wie
 der PIN-Code-Adapter aus Version 7.1 durch eine Sicherheitsüberprüfung der Version 8.0 mit vergleichbarem Schutz ersetzt wird.
@@ -114,7 +119,7 @@ Stellen Sie als Nächstes die Clientanwendung um. Ausführliche Anweisungen für
 der Clientanwendung finden Sie im [Migrations-Cookbook für Version 8.0](../migration-cookbook). In diesem Lernprogramm geht es schwerpunktmäßig um die Migration des Sicherheitscodes. Schließen Sie an dieser Stelle den Abfrage-Handler-Code aus. Bearbeiten Sie dazu die HTML-Hauptdatei der Anwendung (**index.html**).
 Schließen Sie die Zeilen für den Import des Abfrage-Handler-Codes in Kommentarzeichen ein: 
 
-```html 
+```html
 <!--  
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
@@ -333,7 +338,7 @@ Als Sie die [Clientanwendung umgestellt](#migrating-the-client-application) habe
 ausgeschlossen, indem die entsprechenden Zeilen in der HTML-Hauptdatei **index.html** auf Komentar gesetzt wurden. Jetzt fügen Sie den Abfrage-Handler-Code wieder hinzu, indem Sie die
 zuvor hinzugefügten Kommentarzeichen entfernen: 
 
-```html 
+```html
     <script src="js/UserLoginChallengeHandler.js"></script>
     <script src="js/PinCodeChallengeHandler.js"></script>
 ```
@@ -356,7 +361,7 @@ müssen Sie die folgenden Änderungen vornehmen:
    ```javascript
    var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
    ```
-   
+
    `WL.Client.createSecurityCheckChallengeHandler` erstellt einen Abfrage-Handler, der Abfragen einer {{ site.data.keys.product_adj }}-Sicherheitsüberprüfung bearbeitet. In Version 8.0 ist zudem eine Methode `WL.Client.createGatewayChallengeHandler` für die Behandlung von Abfragen von einem Gateway eines anderen Anbieters hinzugekommen, die in Version 8.0 entsprechend als Gateway-Abfrage-Handler bezeichnet wird. Wenn Sie die Anwendung aus Version 7.1 auf Version 8.0 umstellen, ersetzen Sie die Aufrufe der `WL.Client`-Methode `createWLChallengeHandler` oder `createChallengeHandler` durch Aufrufe der `WL.Client`-Methode für die Erstellung von Abfrage-Handlern der Version 8.0, die zur erwarteten Abfragequelle passen. Wenn Ihre Ressource beispielsweise von einem DataPower-Reverse-Proxy geschützt wird, der eine angepasste Anmeldung vom Client sendet, verwenden Sie `createGatewayChallengeHandler`, um einen Gateway-Abfrage-Handler für die Bearbeitung von Gateway-Abfragen zu erstellen.
 
 *  Entfernen Sie den Aufruf der Abfrage-Handler-Methode `isCustomResponse`. Diese Methode wird in Version 8.0 nicht mehr für die Bearbeitung von Sicherheitsabfragen benötigt.
@@ -368,9 +373,9 @@ müssen Sie die folgenden Änderungen vornehmen:
    ```javascript
    userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
    ```
-   
+
 Es folgt der vollständige Code des Abfrage-handlers nach den oben beschriebenen Änderungen:
-   
+
 ```javascript
 function createUserLoginChallengeHandler() {
     var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
@@ -472,7 +477,7 @@ Das Anti-XSRF-Realm `wl_antiXSRFRealm` aus Version 7.1 muss nicht auf Version 8.
 {: #direct-update-realm }
 
 Das Realm für direkte Aktualisierung aus Version 7.1 (`wl_directUpdateRealm`) muss nicht auf Version 8.0 umgestellt werden. Die Implementierung des Features für direkte Aktualisierung in
-{{ site.data.keys.product }} Version 8.0 erfordert im Gegensatz zum Realm in Version 7.1 keine zugehörige Sicherheitsüberprüfung.  
+{{ site.data.keys.product }} Version 8.0 erfordert im Gegensatz zum Realm in Version 7.1 keine zugehörige Sicherheitsüberprüfung. 
 
 **Hinweis:** Die Schritte für die Bereitstellung von Aktualisierungen im Rahmen der direkten Aktualisierung von Version 8.0
 unterscheiden sich von den Schritten in Version 7.1. Weitere Informationen finden Sie unter
@@ -571,4 +576,3 @@ auf eine geschützte Ressource zuzugreifen.
 Dieses Lernprogramm deckt nur die grundlegenden Schritte ab, die für die Umstellung der Sicherheitsartefakte einer vorhandenen,
 mit einer Vorgängerversion der {{ site.data.keys.product }} entwickelten Anwendung auf Version 8.0 erforderlich sind. Informationen zu einer optimalen Nutzung der
 Sicherheitsfeatures von Version 8.0 finden Sie in der [Dokumentation zum Sicherheitsframework von Version 8.0](../../authentication-and-security/).
-

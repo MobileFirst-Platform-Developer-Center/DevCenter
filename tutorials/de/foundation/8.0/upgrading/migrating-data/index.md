@@ -2,7 +2,7 @@
 layout: tutorial
 title: Apps umstellen, die mobile Daten mit IMFData oder dem Cloudant-SDK in Cloudant speichern
 breadcrumb_title: Migration von Apps, die mobile Daten speichern
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht

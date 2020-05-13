@@ -38,15 +38,16 @@ show_in_nav: false
 |
 |  | pushClientSecret | Geheimer Clientschlüssel für Push | Geben Sie den Namen des erstellten geheimen Clientschlüssels an. Weitere Informationen finden Sie [hier](#optional-creating-secrets-for-confidential-clients).
 |
+|  | liveupdateClientSecret | Geheimer Clientschlüssel für Liveaktualisierung | Geben Sie den Namen des erstellten geheimen Clientschlüssels an. Weitere Informationen finden Sie [hier](#optional-creating-secrets-for-confidential-clients).
+|
 | mfpserver.replicas |  | Anzahl der zu erstellenden Instanzen (Pods) von Mobile Foundation Server | Positive ganze Zahl (Standardwert: **3**) |
 | mfpserver.autoscaling     | enabled | Gibt an, ob ein HPA (Horizontal Pod Autoscaler) implementiert ist. Bei Aktivierung dieses Feldes wird das Feld "replicas" inaktiviert. | **false** (Standardwert) oder true |
-|           | minReplicas  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
-|           | maxReplicas | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "min" sein. | Positive ganze Zahl (Standardwert: **10**) |
-|           | targetCPUUtilizationPercentage | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
+|           | min  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
+|           | max | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "min" sein. | Positive ganze Zahl (Standardwert: **10**) |
+|           | targetcpu | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
 | mfpserver.pdb     | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | **true** (Standardwert) oder false |
 |           | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: 1) |
 |    mfpserver.customConfiguration |  |  Angepasste Serverkonfiguration (optional)  | Geben Sie einen zusätzlichen serverspezifische Verweis auf eine vorab erstellte configMap an. Weitere Informationen finden Sie [hier](#optional-custom-server-configuration). |
-| mfpserver.jndiConfigurations |mfpfProperties |JNDI-Eigenschaften von Mobile Foundation Server für die Anpassung der Implementierung | Geben Sie eine Liste mit Name-Wert-Paaren, jeweils getrennt durch ein Komma, an. |
 | mfpserver | keystoreSecret | Im [Konfigurationsabschnitt](#optional-creating-custom-keystore-secret-for-the-deployments) ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |
 | mfpserver.resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität | Standardeinstellung: **2000m**. Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |                  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität |Standardeinstellung: **2048Mi** Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
@@ -57,28 +58,53 @@ show_in_nav: false
 |           |tag |Docker-Image-Tag | Siehe Docker-Tag-Beschreibung |
 | mfppush.replicas | | Anzahl der zu erstellenden Instanzen (Pods) von Mobile Foundation Server | Positive ganze Zahl (Standardwert: **3**) |
 | mfppush.autoscaling     | enabled | Gibt an, ob ein HPA (Horizontal Pod Autoscaler) implementiert ist. Bei Aktivierung dieses Feldes wird das Feld "replicaCount" inaktiviert. | **false** (Standardwert) oder true |
-|           | minReplicas  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
-|           | maxReplicas | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "minReplicas" sein. | Positive ganze Zahl (Standardwert: **10**) |
-|           | targetCPUUtilizationPercentage | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
+|           | min  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
+|           | max | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "minReplicas" sein. | Positive ganze Zahl (Standardwert: **10**) |
+|           | targetcpu | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
 | mfppush.pdb     | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | **true** (Standardwert) oder false |
 |           | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: 1) |
 | mfppush.customConfiguration |  |  Angepasste Konfiguration (optional)  | Geben Sie einen zusätzlichen Push-spezifischen Verweis auf eine vorab erstellte configMap an. Weitere Informationen finden Sie [hier](#optional-custom-server-configuration).
 |
-| mfppush.jndiConfigurations |mfpfProperties |JNDI-Eigenschaften von Mobile Foundation Server für die Anpassung der Implementierung | Geben Sie eine Liste mit Name-Wert-Paaren, jeweils getrennt durch ein Komma, an. |
 | mfppush |keystoresSecretName | Im [Konfigurationsabschnitt](#optional-creating-custom-keystore-secret-for-the-deployments) ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |
 | mfppush.resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität |Standardeinstellung: **1000m** Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |                  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität |Standardeinstellung: **2048Mi** Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
 |           |requests.cpu | Beschreibt die erforderliche CPU-Mindestkapazität. Fehlt die Angabe, wird standardmäßig der Wert von "limits" verwendet (sofern angegeben) oder der für die Implementierung definierte Wert. | Standardeinstellung: **750m**. Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |           |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Fehlt die Angabe, wird standardmäßig der Wert von "limits" verwendet (sofern angegeben) oder der für die Implementierung definierte Wert. |Standardeinstellung: **1024Mi** Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
+| mfpliveupdate | enabled          | Flag zum Aktivieren der Liveaktualisierung | **false** (Standardwert) oder true |
+| mfpliveupdate.image | repository | Docker-Image-Repository | Repository des Docker-Image für Mobile-Foundation-Liveaktualisierung. Der Platzhalter REPO_URL muss durch die richtige Docker-Registry-URL ersetzt wreden. |
+|           |tag |Docker-Image-Tag | Siehe Docker-Tag-Beschreibung |
+|           | consoleSecret | Vorab erstellter geheimer Schlüssel für die Anmeldung | Weitere Informationen finden Sie [hier](#optional-creating-custom-defined-console-login-secrets).|
+| mfpliveupdate.db | type | Name des unterstützten Datenbankanbieters | **DB2** (Standardwert) / MySQL / Oracle |
+|  | host | IP-Adresse oder Hostname der Datenbank, für die Mobile-Foundation-Server-Tabellen konfiguriert werden müssen |  |
+|  | port | Nummer des Datenbankports |  |
+|  | secret | Vorab erstellter geheimer Schlüssel mit den Datenbankberechtigungsnachweisen |  |
+|  |name | Name der Mobile-Foundation-Server-Datenbank |  |
+|  | schema |Zu erstellendes Server-DB2-Schema | Ein bereits vorhandenes Schema wird verwendet. Andernfalls wird ein Schema erstellt. |
+|  | ssl | Datenbankverbindungstyp  | Geben Sie an, ob die Datenbankverbindung über http oder https erfolgt. Der Standardwert ist **false** (http). Stellen Sie sicher, dass der Datenbankport für denselben Verbindungsmodus konfiguriert ist. |
+|  | driverPvc | Anforderung eines persistenten Datenträgers für den Zugriff auf den JDBC-Datenbanktreiber | Geben Sie der Anforderung eines persistenten Datenträgers für den JDBC-Datenbanktreiber an. Erforderlich, wenn der ausgewählte Datenbanktyp nicht Db2 ist. |
+|  | adminCredentialsSecret | Geheimer Schlüssel für MFP-Server-Datenbankverwaltung | Wenn Sie die Datenbankinitialisierung aktiviert haben, geben Sie den geheimen Schlüssel an, um Datenbanktabellen und Schemata für Mobile-Foundation-Komponenten zu erstellen. |
+| mfpliveupdate.replicas |   | Die Anzahl der zu erstellenden Instanzen (Pods) der Mobile-Foundation-Liveaktualisierung | Positive ganze Zahl (Standardwert: **2**) |
+| mfpliveupdate.autoscaling | enabled         | Gibt an, ob ein HPA (Horizontal Pod Autoscaler) implementiert ist. Bei Aktivierung dieses Feldes wird das Feld "replicas" inaktiviert. | **false** (Standardwert) oder true |
+|  | min  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
+|  | max | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "min" sein. | Positive ganze Zahl (Standardwert: **10**) |
+|  | targetcpu | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
+| mfpliveupdate.pdb | enabled         | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | **true** (Standardwert) oder false |
+|  | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: **1**) |
+| mfpliveupdate.customConfiguration |   |  Angepasste Serverkonfiguration (optional)  | Geben Sie einen zusätzlichen serverspezifische Verweis auf eine vorab erstellte configMap an. Weitere Informationen finden Sie [hier](#optional-custom-server-configuration).|
+| mfpliveupdate | keystoreSecret | Im [Konfigurationsabschnitt](#optional-creating-custom-keystore-secret-for-the-deployments) ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |  |
+| mfpliveupdate.resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität |Standardeinstellung: **1000m** Weitere Informationen finden Sie auf der Kubernetes-Seite unter [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu).|
+|  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität |Standardeinstellung: **2048Mi** Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|  |requests.cpu | Beschreibt die erforderliche CPU-Mindestkapazität. Fehlt die Angabe, wird standardmäßig der Wert von "limits" verwendet (sofern angegeben) oder der für die Implementierung definierte Wert. | Standardeinstellung: **750m**. Weitere Informationen finden Sie auf der Kubernetes-Seite unter [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu).|
+|  |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Fehlt die Angabe, wird standardmäßig der Wert von "limits" verwendet (sofern angegeben) oder der für die Implementierung definierte Wert. | Der Standardwert ist 1024Mi. Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 | mfpanalytics | enabled          | Flag zum Aktivieren von Analytics | **false** (Standardwert) oder true |
 | mfpanalytics.image | repository | Docker-Image-Repository | Repository des Docker-Image für Mobile Foundation Operational Analytics. Der Platzhalter REPO_URL muss durch die richtige Docker-Registry-URL ersetzt wreden. |
 |           |tag |Docker-Image-Tag | Siehe Docker-Tag-Beschreibung |
 |           | consoleSecret | Vorab erstellter geheimer Schlüssel für die Anmeldung | Weitere Informationen finden Sie [hier](#optional-creating-custom-defined-console-login-secrets). |
 | mfpanalytics.replicas |  | Anzahl der zu erstellenden Instanzen (Pods) von Mobile Foundation Operational Analytics | Positive ganze Zahl (Standardwert: **2**) |
 | mfpanalytics.autoscaling     | enabled | Gibt an, ob ein HPA (Horizontal Pod Autoscaler) implementiert ist. Bei Aktivierung dieses Feldes wird das Feld "replicaCount" inaktiviert. | **false** (Standardwert) oder true |
-|           | minReplicas  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
-|           | maxReplicas | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "minReplicas" sein. | Positive ganze Zahl (Standardwert: **10**) |
-|           | targetCPUUtilizationPercentage | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: 50) |
+|           | min  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
+|           | max | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "minReplicas" sein. | Positive ganze Zahl (Standardwert: **10**) |
+|           | targetcpu | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: 50) |
 |  mfpanalytics.shards|  | Anzahl der Elasticsearch-Shards für Mobile Foundation Analytics | Standardwert: 2|             
 |  mfpanalytics.replicasPerShard|  | Anzahl der pro Shard für Mobile Foundation Analytics zu verwaltenden Elasticsearch-Replikate | Standardwert: **2** |
 | mfpanalytics.persistence | enabled         | Verwenden Sie eine Anforderung eines persistenten Datenträgers zum persistenten Speichern von Daten. | **true** |                                                 |
@@ -90,12 +116,28 @@ show_in_nav: false
 | mfpanalytics.pdb     | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | **true** (Standardwert) oder false |
 |           | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: **1**) |
 |    mfpanalytics.customConfiguration |  |  Angepasste Konfiguration (optional)  | Geben Sie einen zusätzlichen Analytics-spezifischen Verweis auf eine vorab erstellte configMap an (siehe [hier] (#optional-custom-server-configuration)). |
-| mfpanalytics.jndiConfigurations |mfpfProperties | Mobile-Foundation-JNDI-Eigenschaften, die für die Anpassung von Operational Analytics angegeben werden müssen | Geben Sie eine Liste mit Name-Wert-Paaren, jeweils getrennt durch ein Komma, an. |
 | mfpanalytics | keystoreSecret | Im [Konfigurationsabschnitt](#optional-creating-custom-keystore-secret-for-the-deployments) ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |
 | mfpanalytics.resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität |Standardeinstellung: **1000m** Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |                  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität |Standardeinstellung: **2048Mi** Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory)|
 |           |requests.cpu | Beschreibt die erforderliche CPU-Mindestkapazität. Fehlt die Angabe, wird standardmäßig der Wert von "limits" verwendet (sofern angegeben) oder der für die Implementierung definierte Wert. | Standardeinstellung: **750m**. Siehe Kubernetes-Artikel [Meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu) |
 |           |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Fehlt die Angabe, wird standardmäßig der Wert von "limits" verwendet (sofern angegeben) oder der für die Implementierung definierte Wert. | Der Standardwert ist 1024Mi. Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory) |
+| mfpanalytics_recvr | enabled          | Flag zum Aktivieren des Analytics Receiver | **false** (Standardwert) oder true |
+| mfpanalytics_recvr.image | repository | Docker-Image-Repository | Repository des Docker-Image für den Mobile Foundation Analytics Receiver. Der Platzhalter REPO_URL muss durch die richtige Docker-Registry-URL ersetzt wreden. |
+|           |tag |Docker-Image-Tag | Siehe Docker-Tag-Beschreibung |
+| mfpanalytics_recvr.replicas |   | Die Anzahl der zu erstellenden Instanzen (Pods) des Mobile Foundation Analytics Receiver | Positive ganze Zahl (Standardwert: **1**) |
+| mfpanalytics_recvr.autoscaling | enabled         | Gibt an, ob ein HPA (Horizontal Pod Autoscaler) implementiert ist. Bei Aktivierung dieses Feldes wird das Feld "replicaCount" inaktiviert. | **false** (Standardwert) oder true |
+|  | min  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
+|  | max | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "min" sein. | Positive ganze Zahl (Standardwert: **10**) |
+|  | targetcpu | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
+| mfpanalytics_recvr.pdb | enabled         | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | **true** (Standardwert) oder false |
+|  | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: **1**) |
+| mfpanalytics_recvr | analyticsRecvrSecret     | Vorab erstellter geheimer Schlüssel für den Receiver |Weitere Informationen finden Sie [hier](#optional-creating-custom-keystore-secret-for-the-deployments).|
+| mfpanalytics_recvr.customConfiguration |  |  Angepasste Konfiguration (optional)  | Geben Sie einen zusätzlichen analysespezifischen Verweis auf eine vorab erstellte configMap an. Weitere Informationen finden Sie [hier](#optional-custom-server-configuration).|
+| mfpanalytics_recvr | keystoreSecret | Im [Konfigurationsabschnitt](#optional-creating-custom-keystore-secret-for-the-deployments) ist beschrieben, wie der geheime Schlüssel vorab mit den Keystores und den zugehörigen Kennwörtern erstellt werden muss. |  |
+| mfpanalytics_recvr.resources |limits.cpu |Beschreibt die maximal zulässige CPU-Kapazität |Standardeinstellung: **1000m** Weitere Informationen finden Sie auf der Kubernetes-Seite unter [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu).|
+|  |limits.memory |Beschreibt die maximal zulässige Speicherkapazität |Standardeinstellung: **2048Mi** Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
+|  |requests.cpu | Beschreibt die erforderliche CPU-Mindestkapazität. Fehlt die Angabe, wird standardmäßig der Wert von "limits" verwendet (sofern angegeben) oder der für die Implementierung definierte Wert. | Standardeinstellung: **750m**. Weitere Informationen finden Sie auf der Kubernetes-Seite unter [meaning of CPU](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-cpu).|
+|  |requests.memory |Beschreibt die erforderliche Mindestspeicherkapazität. Fehlt die Angabe, wird standardmäßig der Wert von "limits" verwendet (sofern angegeben) oder der für die Implementierung definierte Wert. | Der Standardwert ist 1024Mi. Siehe Kubernetes-Artikel [Meaning of Memory](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/#meaning-of-memory). |
 | mfpappcenter | enabled          | Flag zum Aktivieren des Application Center | **false** (Standardwert) oder true |  
 | mfpappcenter.image | repository | Docker-Image-Repository | Repository des Docker-Image für das Mobile Foundation Application Center. Der Platzhalter REPO_URL muss durch die richtige Docker-Registry-URL ersetzt wreden. |
 |           |tag |Docker-Image-Tag | Siehe Docker-Tag-Beschreibung |
@@ -110,9 +152,9 @@ show_in_nav: false
 |                       | driverPvc | Anforderung eines persistenten Datenträgers für den Zugriff auf den JDBC-Datenbanktreiber | Geben Sie der Anforderung eines persistenten Datenträgers für den JDBC-Datenbanktreiber an. Erforderlich, wenn der ausgewählte Datenbanktyp nicht DB2 ist. |
 |                       | adminCredentialsSecret | Geheimer Schlüssel für Application-Center-Datenbankverwaltung | Wenn Sie die Datenbankinitialisierung aktiviert haben, geben Sie den geheimen Schlüssel an, um Datenbanktabellen und Schemata für Mobile-Foundation-Komponenten zu erstellen. |
 | mfpappcenter.autoscaling     | enabled | Gibt an, ob ein HPA (Horizontal Pod Autoscaler) implementiert ist. Bei Aktivierung dieses Feldes wird das Feld "replicaCount" inaktiviert. | **false** (Standardwert) oder true |
-|           | minReplicas  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
-|           | maxReplicas | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "minReplicas" sein. | Positive ganze Zahl (Standardwert: **10**) |
-|           | targetCPUUtilizationPercentage | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
+|           | min  | Untergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann | Positive ganze Zahl (Standardwert: **1**) |
+|           | max | Obergrenze für die Anzahl der Pods, die vom Autoscaler eingestellt werden kann. Dieser Wert darf nicht kleiner als der von "minReplicas" sein. | Positive ganze Zahl (Standardwert: **10**) |
+|           | targetcpu | Angestrebte durchschnittliche CPU-Auslastung über alle Pods (dargestellt als Prozentsatz der erforderlichen CPU-Kapazität) | Ganze Zahl zwischen 1 und 100 (Standardwert: **50**) |
 | mfpappcenter.pdb     | enabled | Gibt an, ob PDB aktiviert oder inaktiviert werden soll. | **true** (Standardwert) oder false |
 |           | min  | Minimum der verfügbaren Pods | Positive ganze Zahl (Standardwert: **1**) |
 | mfpappcenter.customConfiguration |  |  Angepasste Konfiguration (optional)  | Geben Sie einen zusätzlichen Application-Center-spezifischen Verweis auf eine vorab erstellte configMap an. Weitere Informationen finden Sie [hier](#optional-custom-server-configuration).
@@ -129,19 +171,25 @@ Standardmäßig werden die geheimen Anmeldeschlüssel für die Konsole für alle
 
 Server:
 
-```
+```bash
 kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
 ```
 
 Analytics:
 
-```
+```bash
 kubectl create secret generic analyticslogin --from-literal=MFPF_ANALYTICS_ADMIN_USER=admin --from-literal=MFPF_ANALYTICS_ADMIN_PASSWORD=admin
+```
+
+Analytics Receiver:
+
+```bash
+kubectl create secret generic analytics_recvrsecret --from-literal=MFPF_ANALYTICS_RECVR_USER=admin --from-literal=MFPF_ANALYTICS_RECVR_PASSWORD=admin
 ```
 
 Application Center:
 
-```
+```bash
 kubectl create secret generic appcenterlogin --from-literal=MFPF_APPCNTR_ADMIN_USER=admin --from-literal=MFPF_APPCNTR_ADMIN_PASSWORD=admin
 ```
 
@@ -185,10 +233,11 @@ kubectl create secret generic mf-admin-client --from-literal=MFPF_ADMIN_AUTH_CLI
 kubectl create secret generic mf-push-client --from-literal=MFPF_PUSH_AUTH_CLIENTID=admin --from-literal=MFPF_PUSH_AUTH_SECRET=admin
 ```
 
-Wenn die Werte für die Felder `mfpserver.pushClientSecret` und `mfpserver.adminClientSecret` nicht während der Helm-Chart-Installation angegeben werden, werden standardmäßig geheime Clientschlüssel mit den folgenden Berechtigungsnachweisen erstellt: 
+Wenn die Werte für die Felder `mfpserver.pushClientSecret`, `mfpserver.adminClientSecret` und `mfpserver.liveupdateClientSecret` nicht während der Helm-Chart-Installation angegeben werden, werden standardmäßig geheime Clientschlüssel mit den folgenden Berechtigungsnachweisen erstellt: 
 
 * `admin / nimda` für `mfpserver.adminClientSecret`
 * `push / hsup` für `mfpserver.pushClientSecret`
+* `liveupdate / etadpuevil` für `mfpserver.liveupdateClientSecret`
 
 ## Angepasste Serverkonfiguration [optional]
 

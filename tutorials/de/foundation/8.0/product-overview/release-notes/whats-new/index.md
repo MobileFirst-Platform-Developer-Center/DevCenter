@@ -479,4 +479,17 @@ In {{ site.data.keys.product_full }} Version 8.0 gibt es wesentliche Änderungen
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-analytics-receiver">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-analytics-receiver" aria-expanded="true" aria-controls="collapse-mobilefirst-analytics-receiver">Neuerungen bei {{ site.data.keys.mf_analytics_receiver }}</a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-analytics-receiver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics-receiver">
+            <div class="panel-body">
+                <p>{{ site.data.keys.mf_analytics_server }} ist ein Zusatzfeature, das Protokolle vom Client-SDK akzeptiert und diese zur Analyse weiterleitet. Das Feature entlastet {{ site.data.keys.mf_server }} bei der Ausführung der Funktion loguploader. </p>
+            </div>
+        </div>
+    </div>    
 </div>

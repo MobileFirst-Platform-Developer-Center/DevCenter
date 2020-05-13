@@ -101,6 +101,12 @@ erfasst werden
 
 [Informieren Sie sich über {{ site.data.keys.mf_analytics }}](../../analytics).
 
+### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics-receiver }
+{{ site.data.keys.product }} enthält den {{ site.data.keys.mf_analytics_receiver_short }} als Zusatzfeature. Der {{ site.data.keys.mf_analytics_receiver_short }} empfängt Protokolle von mobilen Anwendungen und sendet sie schrittweise an {{ site.data.keys.mf_analytics_short }}. Der {{ site.data.keys.mf_analytics_receiver_short }} pflegt eine speicherinterne Warteschlange, wo die Potokolle abgelegt werden, bevor sie an {{ site.data.keys.mf_analytics_short }} gesendet werden. Dieses Feature entlastet {{ site.data.keys.mf_server }} über die API loguploader und reduziert die Nutzung der speicherinternen Warteschlange. Wenn dieser Service nicht vorhanden ist, ist {{ site.data.keys.mf_server }} für den Empfang und die Weiterleitung der Protokolle zuständig. Der {{ site.data.keys.mf_analytics_receiver_short }} ist ein optionaler Service. 
+
+[Informieren Sie sich über den {{ site.data.keys.mf_analytics_receiver }}](../../analytics/analyticsreceiver).
+
 ### Application Center
 {: #application-center }
 Das Application

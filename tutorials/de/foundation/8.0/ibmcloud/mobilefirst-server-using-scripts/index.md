@@ -379,10 +379,11 @@ Wenn Sie das {{ site.data.keys.mf_app_center }} verwenden möchten, beginnen Sie
                 <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
                 <ol>
                     <li><b>initenv.sh – Anmeldung bei IBM Cloud</b><br />
-Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.product }} in IBM Containern zu erstellen:
+                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.product }} in IBM Containern zu erstellen:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
+
                         <div class="panel-group accordion" id="terminology-appcenter-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-appcenter-initenv">
@@ -422,7 +423,7 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
 
                                         <p>Beispiel: </p>
 {% highlight bash %}
-initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
+initenv.sh --user IBM_CLOUD-Benutzer-ID --password IBM_CLOUD-Kennwort --org IBM_CLOUD-Organisationsname --space IBM_CLOUD-Bereichsname
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-initenv" data-target="#collapse-script-appcenter-initenv" aria-expanded="false" aria-controls="collapse-script-appcenter-initenv"><b>Abschnitt schließen</b></a>
@@ -487,7 +488,7 @@ prepareappcenterdbs.sh --acdb AppCenterDashDBService
                     Führen Sie das Script <b>prepareappcenter.sh</b> aus, um ein MobileFirst-Application-Center-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu stellen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.
                     Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID. 
 
-Führen Sie Folgendes aus:
+                        Führen Sie Folgendes aus:
 {% highlight bash %}
 ./prepareappcenter.sh args/prepareappcenter.properties
 {% endhighlight %}
@@ -515,7 +516,7 @@ Führen Sie Folgendes aus:
 
                                         <p>Beispiel: </p>
 {% highlight bash %}
-prepareappcenter.sh --tag NAME_DES_SERVER-IMAGE registryUrl/namespace/imagename
+prepareappcenter.sh --tag SERVER-IMAGE-NAME registryUrl/namespace/imagename
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-prepareappcenter" data-target="#collapse-script-appcenter-prepareappcenter" aria-expanded="false" aria-controls="collapse-script-appcenter-prepareappcenter"><b>Abschnitt schließen</b></a>
@@ -527,7 +528,7 @@ prepareappcenter.sh --tag NAME_DES_SERVER-IMAGE registryUrl/namespace/imagename
                     <li><b>startappcenter.sh - Ausführung des Image in einem IBM Container</b><br/>
                     Mit dem Script <b>startappcenter.sh</b> wird das MobileFirst-Application-Center-Image in einem IBM Container ausgeführt. Außerdem bindet das Script Ihr Image an die öffentliche IP-Adresse, die Sie mit der Eigenschaft <b>SERVER_IP</b> konfiguriert haben. 
 
-Führen Sie Folgendes aus:
+                        Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
@@ -612,7 +613,7 @@ startappcenter.sh --tag Image-Tagname --name Containername --ip Container-IP-Adr
                     <li><b>startappcentergroup.sh - Ausführung des Image in einer IBM Containergruppe</b><br/>
                     Das Script <b>startappcentergroup.sh</b> wird verwendet, um das MobileFirst-Application-Center-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>SERVER_CONTAINER_GROUP_HOST</b> konfiguriert haben. 
 
-Führen Sie Folgendes aus:
+                        Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startappcentergroup.sh args/startappcentergroup.properties
 {% endhighlight %}
@@ -697,7 +698,7 @@ startappcentergroup.sh --tag Image-Name --name Containergruppenname --host Hostn
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>Abschnitt schließen</b></a>
-                                    </div>
+            </div>
                                 </div>
                             </div>
                         </div>   
@@ -768,10 +769,11 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
                 <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
                 <ol>
                     <li><b>initenv.sh – Anmeldung bei IBM Cloud</b><br />
-Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.mf_analytics }} in IBM Containern zu erstellen:
+                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.mf_analytics }} in IBM Containern zu erstellen:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
+
                         <div class="panel-group accordion" id="terminology-analytics-initenv" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
@@ -811,7 +813,7 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
 
                                         <p>Beispiel: </p>
 {% highlight bash %}
-initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
+initenv.sh --user IBM_CLOUD-Benutzer-ID --password IBM_CLOUD-Kennwort --org IBM_CLOUD-Organisationsname --space IBM_CLOUD-Bereichsname
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Abschnitt schließen</b></a>
@@ -853,7 +855,7 @@ initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_
 
                                         <p>Beispiel: </p>
 {% highlight bash %}
-prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namespace/mfpfanalytics80
+prepareanalytics.sh --tag registry.ng.bluemix.net/Namespace_Ihres_privaten_Repositorys/mfpfanalytics80
 {% endhighlight %}
 
                                       <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Abschnitt schließen</b></a>
@@ -866,7 +868,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                     <li><b>startanalytics.sh - Ausführung des Image in einem IBM Container</b><br />
                     Das Script <b>startanalytics.sh</b> wird verwendet, um das MobileFirst-Analytics-Image in einem IBM Container auszuführen. Außerdem bindet das Script Ihr Image an die öffentliche IP-Adresse, die Sie mit der Eigenschaft <b>ANALYTICS_IP</b> konfiguriert haben. </li>
 
-Führen Sie Folgendes aus:
+                    Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
@@ -965,10 +967,11 @@ Führen Sie Folgendes aus:
                     <li><b>startanalyticsgroup.sh - Ausführung des Image in einer IBM Containergruppe</b><br />
                     Das Script <b>startanalyticsgroup.sh</b> wird verwendet, um das MobileFirst-Analytics-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>ANALYTICS_CONTAINER_GROUP_HOST</b> konfiguriert haben. 
 
-Führen Sie Folgendes aus:
+                        Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
+
                         <div class="panel-group accordion" id="terminology-analytics-startanalyticsgroup" role="tablist">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
@@ -1052,7 +1055,7 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Abschnitt schließen</b></a>
-                                    </div>
+            </div>
                                 </div>
                             </div>
                         </div>   
@@ -1135,7 +1138,7 @@ startanalyticsgroup.sh --tag Image-Name --name Containergruppenname --host Hostn
 
             <ol>
                 <li><b>initenv.sh – Anmeldung bei IBM Cloud</b><br />
-Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.product }} in IBM Containern zu erstellen:
+                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.product }} in IBM Containern zu erstellen:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -1179,11 +1182,11 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
 
                                     <p>Beispiel: </p>
 {% highlight bash %}
-initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
+initenv.sh --user IBM_CLOUD-Benutzer-ID --password IBM_CLOUD-Kennwort --org IBM_CLOUD-Organisationsname --space IBM_CLOUD-Bereichsname
 {% endhighlight %}
 
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Abschnitt schließen</b></a>
-                                </div>
+            </div>
                             </div>
                         </div>
                     </div>
@@ -1241,7 +1244,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Abschnitt schließen</b></a>
-                                </div>
+            </div>
                             </div>
                         </div>
                     </div>
@@ -1284,9 +1287,10 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                                     <p>Beispiel: </p>
 {% highlight bash %}
-prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
+prepareserver.sh --tag SERVER-IMAGE-NAME registryUrl/namespace/imagename
 {% endhighlight %}
-<br/>
+
+                                  <br/>
                                   <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Abschnitt schließen</b></a>
                               </div>
                           </div>
@@ -1379,7 +1383,7 @@ startserver.sh --tag Image-Tagname --name Containername --ip Container-IP-Adress
                     </div>
                 <li><b>startservergroup.sh - Ausführung des Image in einer IBM Containergruppe</b><br />
                     Das Script <b>startservergroup.sh</b> wird verwendet, um das MobileFirst-Server-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>SERVER_CONTAINER_GROUP_HOST</b> konfiguriert haben. </li>
-Führen Sie Folgendes aus:
+                    Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
