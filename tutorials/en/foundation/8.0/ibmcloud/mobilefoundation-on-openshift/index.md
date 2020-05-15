@@ -79,7 +79,6 @@ Apart from loading the PPA images into the OpenShift internal image registry or 
    oc login -u <username> -p <password> <cluster-url>
    oc new-project $MFOS_PROJECT
    ```
-   * If you notice oc login issues from your local machine, add the OCP cluster host name and IP address to the bottom of the host file.
 2. Unpack the IBM Mobile Foundation package for Openshift using the following command.
   ```bash
   tar xzvf IBM-MobileFoundation-Openshift-Pak-<version>.tar.gz -C <workdir>/
