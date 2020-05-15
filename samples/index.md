@@ -38,6 +38,8 @@ Listed here are some samples and demonstrations for Mobile Foundation v8.0. Use 
 |------|-------------|------|
 | Security |  Application that uses CredentialsValidation Security Check | [View](https://github.com/MobileFirst-Platform-Developer-Center/PincodeIonic) |
 | Security | Application that demonstrated use of biometric authentication | [View](https://github.com/MobileFirst-Platform-Developer-Center/MFPBiometricIonic) |
+| Security |  Application that demonstrates use of social login using Credentials Validation Security Check | [View](https://github.com/MobileFirst-Platform-Developer-Center/SocialLoginIonic) |
+| Security |  Application that demonstrates use of OTP from SMS for login | [View](https://github.com/MobileFirst-Platform-Developer-Center/SMSMobileOTP) |
 | JSONStore |  Application that demonstrates use of JSONStore APIs | [View](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreIonic) |
 | Live Update |  Application that demonstrates use of Live Update feature | [View](https://github.com/MobileFirst-Platform-Developer-Center/LiveupdateIonic) |
 
@@ -49,10 +51,13 @@ Listed here are some samples and demonstrations for Mobile Foundation v8.0. Use 
 | Category | Description | Repository |
 |------|-------------|------|
 | Security | Swift application that uses CredentialsValidation Security Check | [View](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift) |
+| Security | Swift application that demonstrates pre-emptive login | [View](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginSwift) |
 | Security | Swift application that uses CredentialsValidation Security Check and Siri shortcut feature | [View](https://github.com/MobileFirst-Platform-Developer-Center/PincodeSwiftSiriShorcut) |
+| Security | Swift application that demonstrates the use of multiple challenge handlers | [View](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift) |
 | JSONStore |  Swift application that demonstrates use of JSONStore APIs | [View](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift) |
 | Push Notifications |  Swift application that demonstrates use of Push Notifications feature | [View](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift) |
 | Live Update |  Swift application that demonstrates use of Live Update feature | [View](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift) |
+| Management |  Swift application that demonstrates to use the Machine Learning CoreML model update feature | [View](https://github.com/MobileFirst-Platform-Developer-Center/ModelUpdateSwift) |
 
 <hr/>
 
