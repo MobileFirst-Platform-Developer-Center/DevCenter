@@ -39,7 +39,7 @@ En este ejemplo, la comprobación de seguridad es `PinCodeAttempts`, que se defi
 Cree una clase Swift que amplíe `SecurityCheckChallengeHandler`:
 
 ```swift
-class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
+open class PinCodeChallengeHandler : SecurityCheckChallengeHandlerSwift {
 
 }
 ```
@@ -51,18 +51,17 @@ El requisito mínimo del protocolo `SecurityCheckChallengeHandler` es implementa
 En este ejemplo, una alerta le solicita al usuario que introduzca el código PIN:
 
 ```swift
-override func handleChallenge(challenge: [NSObject : AnyObject]!) {
-    NSLog("%@",challenge)
-    var errorMsg : String
-    if challenge["errorMsg"] is NSNull {
-        errorMsg = "This data requires a PIN code."
+override open func handleChallenge(challengeResponse: [AnyHashable: Any]!) {
+  var errorMsg : String
+  if challengeResponse!["errorMsg"] is NSNull {
+      errorMsg = "This data requires a PIN code."
     }
     else{
-        errorMsg = challenge["errorMsg"] as! String
-    }
-    let remainingAttempts = challenge["remainingAttempts"] as! Int
+      errorMsg = challengeResponse!["errorMsg"] as! String
+  }
+  let remainingAttempts = challengeResponse!["remainingAttempts"] as! Int + 2;
 
-    showPopup(errorMsg,remainingAttempts: remainingAttempts)
+  showPopup(errorMsg,remainingAttempts: remainingAttempts);
 }
 ```
 
@@ -94,8 +93,8 @@ Es posible que en algunos escenarios se produzca un error (por ejemplo, el núme
 La estructura de `Dictionary` pasada como parámetro depende de la naturaleza del error.
 
 ```swift
-override func handleFailure(failure: [NSObject : AnyObject]!) {
-    if let errorMsg = failure["failure"] as? String {
+override open func handleFailure(failureResponse: [AnyHashable: Any]!) {
+    if let errorMsg = failureResponse["failure"] as? String {
         showError(errorMsg)
     }
     else{
@@ -108,11 +107,8 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 
 ## Manejador de logros
 {: #handling-successes }
-En general, la infraestructura procesa los logros de forma automática para permitir que el resto de la aplicación continúe.
 
-De forma opcional, también puede elegir realizar otras tareas antes de que la infraestructura cierre el flujo de manejador de desafíos, implementando el método `handleSuccess(success: [NSObject : AnyObject]!)` de `SecurityCheckChallengeHandler` . Una vez más, el contenido y la estructura de `success` `Dictionary` depende de lo que envíe la comprobación de seguridad.
-
-En la aplicación de ejemplo `PinCodeAttemptsSwift`, `handleSuccess` no se implementa porque no hay datos adicionales.
+Opcionalmente, también puede optar por realizar otras tareas antes de que la infraestructura cierre el flujo del manejador de desafíos implementando `handleSuccess(successResponse: [AnyHashable: Any]!)` de SecurityCheckChallengeHandler. Una vez más, el contenido y la estructura del diccionario de logros depende de lo que envíe la comprobación de seguridad.
 
 ## Registro del manejador de desafíos
 {: #registering-the-challenge-handler }
@@ -121,19 +117,19 @@ Para que el manejador de desafíos escuche los desafíos adecuados, debe pedirle
 Para ello, inicialice el manejador de desafíos con la comprobación de seguridad de la siguiente manera:
 
 ```swift
-var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName")
+var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName”);
 ```
 
 A continuación, debe **registrar** la instancia del manejador de desafíos:
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(someChallengeHandler)
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: someChallengeHandler);
 ```
 
 En este ejemplo, en una línea:
 
 ```swift
-WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
+WLClientSwift.sharedInstance().registerChallengeHandler(challengeHandler: PinCodeChallengeHandler(securityCheck: securityCheck));
 ```
 
 **Nota:** Solo debería registrar el manejador de registros una vez en todo el ciclo de vida de aplicación. Se recomienda utilizar la clase de iOS AppDelegate para hacerlo.
@@ -151,4 +147,3 @@ El método está protegido con un código PIN y un máximo de 3 intentos.
 Siga el archivo README.md del ejemplo para obtener instrucciones.
 
 ![Aplicación de ejemplo](sample-application.png)
-

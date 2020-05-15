@@ -305,14 +305,6 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 {: #certificate }
 컴퓨터 보안에서 공개 키를 인증서 소유자의 ID에 바인드하여 인증서 소유자를 인증할 수 있게 해주는 디지털 문서입니다. 인증은 인증 기관에서 발행되며 이러한 기관에서 디지털로 서명됩니다. [인증 기관(CA, Certificate Authority)](#ca--certificate-authority-ca)도 참조하십시오.
 
-### 인코딩된 DER(DER encoded)
-{: #der-encoded }
-ASCII PEM 형식 인증서의 2진 양식과 관련됩니다. Base64, 인코딩된 PEM(PEM encoded)도 참조하십시오.
-
-### 인코딩된 PEM(PEM encoded)
-{: #pem-encoded }
-Base64 인코드 인증서와 관련됩니다. Base64, 인코딩된 DER(DER encoded)도 참조하십시오.
-
 ## 자
 {: #ja }
 
@@ -472,7 +464,7 @@ Application Center에서 사용 가능한 애플리케이션의 카탈로그를 
 {: #b }
 ### Base64
 {: #base64 }
-2진 데이터를 인코딩하는 데 사용되는 일반 텍스트 형식입니다. Base64 인코딩은 X.509 인증, X.509 CSR 및 X.509 CRL을 인코딩하는 사용자 인증서 인증(User Certificate Authentication)에 공통적으로 사용됩니다. 인코딩된 DER(DER encoded), 인코딩된 PEM(PEM encoded)도 참조하십시오.
+2진 데이터를 인코딩하는 데 사용되는 일반 텍스트 형식입니다. Base64 인코딩은 X.509 인증, X.509 CSR 및 X.509 CRL을 인코딩하는 사용자 인증서 인증(User Certificate Authentication)에 공통적으로 사용됩니다. DER로 인코딩(DER encoded), PEM으로 인코딩(PEM encoded)도 참조하십시오.
 
 ## C
 {: #c }
@@ -487,6 +479,10 @@ Application Center에서 사용 가능한 애플리케이션의 카탈로그를 
 
 ## D
 {: #d }
+
+### DER로 인코딩(DER encoded)
+{: #der-encoded }
+ASCII PEM 형식 인증서의 2진 양식과 관련됩니다. Base64, PEM으로 인코딩(PEM encoded)도 참조하십시오.
 
 ### documentify
 {: #documentify }
@@ -560,6 +556,10 @@ Do not translate "MobileFirst" in the term above (site.data.keys.product_adj key
 
 ## P
 {: #p }
+
+### PEM으로 인코딩(PEM encoded)
+{: #pem-encoded }
+Base64로 인코딩된 인증서와 관련됩니다. Base64, DER로 인코딩(DER encoded)도 참조하십시오.
 
 ### PKI / PKI(Public Key Infrastructure)
 {: #pki--public-key-infrastructure-pki }

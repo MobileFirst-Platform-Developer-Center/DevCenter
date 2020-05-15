@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Validador de Node.js
-breadcrumb_title: Node.js validator
+breadcrumb_title: Validador de Node.js
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:

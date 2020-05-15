@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 信任关联拦截器
-breadcrumb_title: Trust Association Interceptor
+breadcrumb_title: 信任关联拦截器
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:

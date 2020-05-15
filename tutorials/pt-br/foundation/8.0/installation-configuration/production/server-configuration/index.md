@@ -494,6 +494,7 @@ A tabela a seguir lista as propriedades do {{ site.data.keys.product_adj }} que 
 
 | Propriedade | Descrição (Description) |
 |----------|-------------|
+| mfp.scheduler.startHour | Opcional. Introduzido a partir do nível de iFix *8.0.0.0-MFPF-IF201907091643*. A execução do planejador pode ser configurada para qualquer horário da escolha do cliente, em vez do padrão de 1h. Esta propriedade pode adotar um valor de 1 a 23. Esta propriedade irá assegurar que o cliente possa configurar seu planejador para iniciar em um horário em que o tráfego é leve e também pode assegurar as execuções do planejador, apesar do início diário do servidor. <br/>**Nota importante**: O valor configurado deve ter uma diferença de 4 horas com o horário de início do servidor. O planejador irá ignorar sua execução se o horário de início dele estiver dentro das 4 horas do início do servidor e irá planejar sua execução para o mesmo horário no dia seguinte. |
 | mfp.admin.jmx.dmgr.host | Obrigatório. O nome do host do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.dmgr.port | Obrigatório. A porta RMI ou SOAP do gerenciador de implementação. Somente WebSphere Application Server Network Deployment. |
 | mfp.admin.jmx.host | Somente Liberty. O nome do host da conexão REST JMX. Para Liberty Collective, use o nome do host do controlador. |
@@ -508,6 +509,10 @@ A tabela a seguir lista as propriedades do {{ site.data.keys.product_adj }} que 
 | mfp.analytics.password | A senha que será usada se o ponto de entrada de dados para o IBM {{ site.data.keys.mf_analytics }} for protegido com autenticação básica. |
 | mfp.analytics.url | A URL que é exposta pelo IBM {{ site.data.keys.mf_analytics }} que recebe dados de análise de dados de entrada. Por exemplo, `http://<hostname>:<port>/analytics-service/rest` |
 | mfp.analytics.username | O nome do usuário que será usado se o ponto de entrada de dados para o IBM {{ site.data.keys.mf_analytics }} for protegido com autenticação básica.|
+| mfp.device.decommissionProcessingInterval | Define com que frequência (em segundos) a tarefa de desatribuição é executada. Padrão: 86400, que é um dia. |
+| mfp.analytics.receiver.password | A senha que será usada se o ponto de entrada de dados para o IBM {{ site.data.keys.mf_analytics_receiver }} for protegido com autenticação básica. |
+| mfp.analytics.receiver.url | A URL que é exposta pelo IBM {{ site.data.keys.mf_analytics_receiver }} que recebe dados de análise de dados de entrada. Por exemplo, `http://<hostname>:<port>/analytics-receiver/rest` |
+| mfp.analytics.receiver.username | O nome do usuário que será usado se o ponto de entrada de dados para o IBM {{ site.data.keys.mf_analytics_receiver }} for protegido com autenticação básica.|
 | mfp.device.decommissionProcessingInterval | Define com que frequência (em segundos) a tarefa de desatribuição é executada. Padrão: 86400, que é um dia. |
 | mfp.device.decommission.when | O número de dias de inatividade após o qual um dispositivo do cliente é desatribuído pela tarefa de desatribuição de dispositivo. Padrão: 90 dias. |
 | mfp.device.archiveDecommissioned.when | O número de dias de inatividade após o qual um dispositivo do cliente que foi desatribuído é arquivado.<br/><br/>Essa tarefa grava os dispositivos do cliente que foram desatribuídos em um archive. Os dispositivos do cliente arquivados são gravados em um arquivo no diretório **home\devices_archive** do {{ site.data.keys.mf_server }}. O nome do arquivo contém o registro de data e hora em que o archive foi criado. Padrão: 90 dias. |

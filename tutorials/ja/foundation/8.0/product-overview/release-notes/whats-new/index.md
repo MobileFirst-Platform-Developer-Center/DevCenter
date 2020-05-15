@@ -477,4 +477,17 @@ weight: 1
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-analytics-receiver">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-analytics-receiver" aria-expanded="true" aria-controls="collapse-mobilefirst-analytics-receiver">{{ site.data.keys.mf_analytics_receiver }} の新機能</a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-analytics-receiver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics-receiver">
+            <div class="panel-body">
+                <p>{{ site.data.keys.mf_analytics_server }} は、クライアント SDK からログを受け入れ、分析に転送するオプション・フィーチャーです。最終的には、クライアント loguploader 機能を処理する {{ site.data.keys.mf_server }} の負荷を軽減します。</p>
+            </div>
+        </div>
+    </div>    
 </div>

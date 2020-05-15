@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Manejo de las notificaciones de push en aplicaciones cliente
-breadcrumb_title: Handling Push Notifications
+breadcrumb_title: Manejo de las notificaciones push 
 relevantTo: [ios,android,windows,cordova]
 weight: 4
 show_children: true

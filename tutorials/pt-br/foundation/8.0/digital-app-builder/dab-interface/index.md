@@ -35,7 +35,7 @@ O ambiente de trabalho ajuda você a projetar as páginas. O ambiente de trabalh
     A seguir está a lista de controles fornecidos disponíveis:
     * **Básico**: É possível arrastar e soltar estes controles básicos (Botão, Cabeçalho, Imagem e Rótulo) para a tela e configurar as propriedades e ações.
 
-        ![Páginas/Controles](dab-workbench-basic-controls.png)
+        ![Páginas / Controles](dab-workbench-basic-controls.png)
 
         * **Botão**-Os botões têm uma propriedade para rotular. Na guia Ação, é possível especificar a página para navegar para o botão direito do mouse no Botão.
         * **Texto de Título**-Ajuda você a incluir um texto de título para o aplicativo, como Título da Página.

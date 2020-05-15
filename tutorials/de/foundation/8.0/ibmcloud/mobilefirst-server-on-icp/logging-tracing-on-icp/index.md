@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Protokollierung und Traceerstellung in IBM Cloud Private
-breadcrumb_title: Logging and Tracing
+breadcrumb_title: Protokollierung und Traceerstellung
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

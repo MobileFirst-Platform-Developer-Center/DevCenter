@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova 및 Ionic 애플리케이션에서 직접 업데이트 사용
-breadcrumb_title: Direct Update
+breadcrumb_title: 직접 업데이트
 relevantTo: [cordova,ionic]
 weight: 8
 downloads:
@@ -170,7 +170,7 @@ var  directUpdateCustomListener  = {
 * `onProgress`는 `UNZIP_IN_PROGRESS` 상태에서 호출됩니다.
 * `onFinish`는 다음 최종 상태 코드 중 하나로 호출됩니다.
 
-| 상태 코드 |설명 |
+| 상태 코드 | 설명 |
 |-------------|-------------|
 | `SUCCESS` | 직접 업데이트가 오류 없이 완료되었습니다. |
 | `CANCELED` | 직접 업데이트가 취소되었습니다(예를 들어 `stop()` 메소드가 호출되어서). |
@@ -184,9 +184,16 @@ var  directUpdateCustomListener  = {
 
 사용자 정의 직접 업데이트 리스너를 구현하는 경우 직접 업데이트 프로세스가 완료되고 `onFinish()` 메소드가 호출되었을 때 앱이 다시 로드되는지 확인해야 합니다. 또한 직접 업데이트 프로세스가 올바르게 완료되지 못하면 `wl_directUpdateChalengeHandler.submitFailure()`를 호출해야 합니다.
 
+>**참고**: `wl_directUpdateChalengeHandler.submitFailure()` 함수는 호출되기 전에 사용자 정의 구현과 함께 제공되어야 합니다.
+
 다음 예제는 사용자 정의 직접 업데이트 리스너 구현을 보여줍니다.
 
 ```javascript
+
+wl_directUpdateChallengeHandler.submitFailure = function(){
+  //Include custom implementation on what should be done when there is a direct update failure
+};
+
 var directUpdateCustomListener = {
   onStart: function(totalSize){
     //show custom progress dialog

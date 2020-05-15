@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: モバイル・クライアントを使用するための準備
-breadcrumb_title: Preparations
+breadcrumb_title: 準備
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

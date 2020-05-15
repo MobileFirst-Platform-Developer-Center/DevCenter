@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configurações do Digital App Builder
-weight: 16
+weight: 17
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -24,7 +24,7 @@ Os detalhes do aplicativo exibem informações sobre seu aplicativo: **Ícone do
 
 Clique em **Salvar** para atualizar as alterações.
 
-### Servidor
+### Server
 {: #server }
 
 As informações do Servidor exibem os **Detalhes do servidor** no qual você está trabalhando atualmente. É possível editar as informações clicando no link **Editar**. É possível incluir ou modificar a autorização do cliente confidencial.

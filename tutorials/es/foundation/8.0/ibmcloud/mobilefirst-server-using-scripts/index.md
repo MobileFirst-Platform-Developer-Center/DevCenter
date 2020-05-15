@@ -376,7 +376,7 @@ Si tiene previsto utilizar {{ site.data.keys.mf_app_center }}, comience aquí.
                 <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
                 <ol>
                     <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
-                    Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.product }} en IBM Containers:
+                    Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar  {{ site.data.keys.product }} en IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -696,7 +696,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>Cerrar sección</b></a>
-                                    </div>
+            </div>
                                 </div>
                             </div>
                         </div>   
@@ -767,7 +767,7 @@ Si tiene previsto utilizar Analytics con {{ site.data.keys.mf_server }}, comienc
                 <p>Las siguientes instrucciones muestran cómo ejecutar los scripts utilizando los archivos de configuración. También está disponible una lista de argumentos de línea de mandatos, si opta por ejecutarlos fuera del modo interactivo:</p>
                 <ol>
                     <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
-                    Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.mf_analytics }} en IBM Containers:
+                    Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar  {{ site.data.keys.mf_analytics }} en IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -1053,7 +1053,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 {% endhighlight %}
 
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Cerrar sección</b></a>
-                                    </div>
+            </div>
                                 </div>
                             </div>
                         </div>   
@@ -1136,7 +1136,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 
             <ol>
                 <li><b>initenv.sh – Inicio de sesión en IBM Cloud </b><br />
-                    Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar {{ site.data.keys.product }} en IBM Containers:
+                    Ejecute el script <b>initenv.sh</b> para crear un entorno para compilar y ejecutar  {{ site.data.keys.product }} en IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -1184,13 +1184,13 @@ initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOU
 {% endhighlight %}
 
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Cerrar sección</b></a>
-                                </div>
+            </div>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li><b>prepareserverdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_server }}</b><br />
-                    El script <b>prepareserverdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_server }} con el servicio de base de datos dashDB. La instancia de servicio de dashDB debe estar disponible en la organización y el espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
+                    El script <b>prepareserverdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_server }} con el servicio de base de datos dashDB. La instancia de servicio del servicio dashDB debe estar disponible en la organización y espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -1242,13 +1242,13 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Cerrar sección</b></a>
-                                </div>
+            </div>
                             </div>
                         </div>
                     </div>
                 </li>
                 <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
-                      Este paso solo es necesario si necesita crear contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
+                      Este paso solo es necesario si necesita crear contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de dashDB. Si es así, actualice initenv.properties con la nueva organización y espacio donde se han de crear (e iniciar) los contenedores, y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}

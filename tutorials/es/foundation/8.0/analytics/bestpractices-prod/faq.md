@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Preguntas más frecuentes
-breadcrumb_title: FAQs
+breadcrumb_title: Preguntas más frecuentes 
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

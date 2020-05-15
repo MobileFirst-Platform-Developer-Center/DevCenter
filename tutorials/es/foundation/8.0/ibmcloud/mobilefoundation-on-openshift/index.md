@@ -41,6 +41,34 @@ Descargue el paquete de IBM Mobile Foundation para Openshift desde [IBM Passport
 
   > **NOTA:** Consulte [aquí](./additional-docs/validating-ppa/) si desea validar el paquete PPA y verificar la firma.
 
+### Uso de las imágenes de Mobile Foundation desde el registro autorizado
+{: #using-mf-from-entitled-registry}
+
+Además de cargar las imágenes PPA en el registro de imágenes interno de OpenShift o en cualquier otro registro externo, se pueden utilizar las imágenes del registro autorizado (ER). 
+
+1. Obtenga una clave para el registro autorizado. Después del pedido de [IBM Cloud Pak for Applications](https://www.ibm.com/support/knowledgecenter/SSCSJL_3.x/install-icpa-ppa.html?view=kc), su cuenta de MyIBM se asocia a una clave de autorización para el software de Cloud Pak. Obtenga la clave de autorización que se ha asignado a su ID.
+  * Inicie sesión en [MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary) con su IBMid y contraseña, que están asociados al software autorizado.
+  * En la sección **Claves de autorización**, seleccione **Copiar clave** para copiar la clave de autorización en el portapapeles.
+2. Extraiga la configuración de la instalación de la imagen del instalador en el registro autorizado. <br/>Utilizando una línea de mandatos, ejecute los mandatos siguientes. 
+  * Establezca la información del registro de autorización. Ejecute los mandatos export que establecen lo siguiente:
+   **ENTITLED_REGISTRY**en *cp.icr.io*, **ENTITLED_REGISTRY_USER** en *cp* y **ENTITLED_REGISTRY_KEY** en la clave de autorización obtenida en el paso siguiente.
+    ```bash
+    export ENTITLED_REGISTRY=cp.icr.io
+    export ENTITLED_REGISTRY_USER=cp
+    export ENTITLED_REGISTRY_KEY=<apikey>
+    ```
+  * Asegúrese de que puede iniciar sesión en el registro autorizado con el mandato `docker login` siguiente.
+    ```bash
+    docker login "$ENTITLED_REGISTRY" -u "$ENTITLED_REGISTRY_USER" -p "$ENTITLED_REGISTRY_KEY"
+    ```
+3. Genere un secreto de extracción de imagen utilizando los detalles del registro autorizado. 
+   * Utilice el mandato siguiente:
+     ```bash
+     oc create secret docker-registry -n <my_project_name> er-image-pullsecret --docker-server=cp.icr.io --docker-username=<my_username> --docker-password=<my_api_key>
+     ```
+   * Añada los secretos de envío para los archivos `deploy/operator.yaml` y `deploy/crds/charts_v1_mfoperator_cr.yaml`. 
+
+
 ### Configure el proyecto OpenShift para Mobile Foundation
 {: #setup-openshift-for-mf}
 
@@ -77,11 +105,13 @@ Descargue el paquete de IBM Mobile Foundation para Openshift desde [IBM Passport
       MFPF_RUNTIME_DB_PASSWORD: <base64-encoded-string>
       MFPF_PUSH_DB_USERNAME: <base64-encoded-string>
       MFPF_PUSH_DB_PASSWORD: <base64-encoded-string>
+      MFPF_LIVEUPDATE_DB_USERNAME: <base64-encoded-string>
+      MFPF_LIVEUPDATE_DB_PASSWORD: <base64-encoded-string>
       MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
       MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
     kind: Secret
     metadata:
-    name: mobilefoundation-db-secret
+      name: mobilefoundation-db-secret
     type: Opaque
     EOF
     ```
@@ -145,6 +175,12 @@ Descargue el paquete de IBM Mobile Foundation para Openshift desde [IBM Passport
     sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/cluster_role_binding.yaml
     ```
 
+    **Para el distintivo de imagen del operador 1.0.11 y posterior, utilice el mandato siguiente.**
+
+    ```bash
+    sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/role_binding.yaml
+    ```
+
 3. Ejecute los mandatos siguientes para desplegar CRD, el operador y para instalar las Restricciones de contexto de seguridad (SCC).
 
     ```bash
@@ -152,6 +188,15 @@ Descargue el paquete de IBM Mobile Foundation para Openshift desde [IBM Passport
     oc create -f deploy/
     oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
     ```
+    **Para el distintivo de imagen del operador 1.0.11 y posterior, utilice los mandatos siguientes.**
+
+    ```bash
+    oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
+    oc create -f deploy/
+    oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
+    oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$MFOS_PROJECT:mf-operator
+    ```
+
 
 ### Despliegue los componentes de IBM Mobile Foundation 
 {: #deploy-mf-components}

@@ -376,7 +376,7 @@ IBM Containers에서 {{ site.data.keys.product }}을 설정하려면 나중에 I
                 <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다.</p>
                 <ol>
                     <li><b>initenv.sh – IBM Cloud에 로그인</b><br />
-                    IBM Containers에서 {{ site.data.keys.product }}를 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
+                    IBM Containers에서 {{ site.data.keys.product }}을 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -695,7 +695,7 @@ startappcenter.sh --tag image_tag_name --name container_name --ip container_ip_a
 startappcentergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
 {% endhighlight %}
 
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-appcenter-startappcentergroup" data-target="#collapse-script-appcenter-startappcentergroup" aria-expanded="false" aria-controls="collapse-script-appcenter-startappcentergroup"><b>섹션 닫기</b></a>
                                     </div>
                                 </div>
                             </div>
@@ -767,7 +767,7 @@ startappcentergroup.sh --tag image_name --name container_group_name --host conta
                 <p>다음 지시사항은 구성 파일을 사용하여 스크립트를 실행하는 방법을 보여줍니다. 대화식 모드에서 실행하는 데 사용하지 않는 명령행 인수의 목록도 사용 가능합니다.</p>
                 <ol>
                     <li><b>initenv.sh – IBM Cloud에 로그인</b><br />
-                    IBM Containers에서 {{ site.data.keys.mf_analytics }}를 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
+IBM Containers에서 {{ site.data.keys.mf_analytics }}을 빌드하고 실행하는 데 필요한 환경을 작성하려면 <b>initenv.sh</b> 스크립트를 실행하십시오.
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -866,7 +866,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                     <li><b>startanalytics.sh - IBM Container에서 이미지 실행</b><br />
                     <b>startanalytics.sh</b> 스크립트는 IBM Container에서 {{ site.data.keys.mf_analytics }} 이미지를 실행하는 데 사용됩니다. 또한 <b>ANALYTICS_IP</b> 특성에서 구성한 공용 IP에 이미지를 바인드합니다.</li>
 
-                    다음을 실행하십시오.
+                        다음을 실행하십시오.
 {% highlight bash %}
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
@@ -1183,7 +1183,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 initenv.sh --user IBM_CLOUD_user_ID --password IBM_CLOUD_password --org IBM_CLOUD_organization_name --space IBM_CLOUD_space_name
 {% endhighlight %}
 
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>섹션 닫기</b></a>
                                 </div>
                             </div>
                         </div>
@@ -1381,7 +1381,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                     </div>
                 <li><b>startservergroup.sh - IBM Container 그룹에서 이미지 실행</b><br />
                     <b>startservergroup.sh</b> 스크립트는 IBM Container 그룹에서 {{ site.data.keys.mf_server }} 이미지를 실행하는 데 사용됩니다. 또한 <b>SERVER_CONTAINER_GROUP_HOST</b> 특성에서 구성한 호스트 이름에 이미지를 바인드합니다.</li>
-                    다음을 실행하십시오.
+                        다음을 실행하십시오.
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}

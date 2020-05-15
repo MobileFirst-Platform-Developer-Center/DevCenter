@@ -130,6 +130,10 @@ Operations Console は、{{ site.data.keys.mf_server }} 構成を表示および
 
 ### {{ site.data.keys.mf_analytics }} および {{ site.data.keys.mf_analytics_console }}
 {: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
+{{ site.data.keys.mf_analytics_receiver_full }} は、モバイル・アプリが分析ログとロガー・ログを {{ site.data.keys.mf_analytics_full }} に転送するために使用できる、分析ログとロガー・ログの転送機能を提供するオプション・コンポーネントです。このサービスを使用すると、{{ site.data.keys.mf_server }} で実行されるログ処理が解放されます。 
+
+### {{ site.data.keys.mf_analytics }} および {{ site.data.keys.mf_analytics_console }}
+{: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
 {{ site.data.keys.mf_analytics_full }} は、{{ site.data.keys.mf_console }} からアクセスできる拡張が容易な分析機能を提供するオプションのコンポーネントです。 この分析機能により、デバイス、アプリケーション、およびサーバーから収集されたログおよびイベント全体でパターン、問題、およびプラットフォーム使用統計を検索できます。
 
 {{ site.data.keys.mf_console }} で、分析サービスへのデータの転送を有効または無効にするフィルターを定義できます。 また、送信される情報のタイプをフィルターに掛けることもできます。 クライアント・サイドでは、クライアント・サイド・ログ・キャプチャー API を使用して、イベントおよびデータを分析サーバーに送信できます。

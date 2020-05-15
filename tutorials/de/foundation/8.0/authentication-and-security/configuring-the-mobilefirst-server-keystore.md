@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Keystore für MobileFirst Server konfigurieren
-breadcrumb_title: Configuring the Server Keystore
+breadcrumb_title: SServer-Keystore konfigurieren
 weight: 14
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guide d'installation de MobileFirst Analytics Server
-breadcrumb_title: Installation Guide
+breadcrumb_title: Guide d'installation
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -47,7 +47,7 @@ weight: 1
 Toutefois, ne dépassez pas 64 Go par noeud. 32 Go et 16 Go sont des valeurs acceptables. Une quantité inférieure à 8 Go nécessite que le cluster contienne de nombreux petits noeuds, et une quantité égale à 64 Go est inutile et problématique en raison de la façon dont Java utilise la mémoire pour les pointeurs.
 * Disque : utilisez des disques SSD si possible, ou des disques traditionnels à rotation rapide dans une configuration RAID 0 si vous ne pouvez pas utiliser de disques SSD.
 * Unité centrale : en général, l'unité centrale n'est pas à l'origine du goulot d'étranglement des performances. Utilisez des systèmes de 2 à 8 coeurs.
-* Réseau : lorsqu'une extension horizontale est nécessaire, vous devez utiliser un centre de données rapide et fiable dont les vitesses prises en charge vont de 1 à 10 Gbe.
+* Réseau : lorsqu'une extension horizontale est nécessaire, vous devez utiliser un centre de données rapide et fiable dont les vitesses prises en charge vont de 1 à 10 GbE.
 
 ### Configuration matérielle
 {: #hardware-configuration }
@@ -285,7 +285,7 @@ Vous devez exécuter la tâche Ant sur l'ordinateur sur lequel est installé le 
     * Vous devez supprimer la mise en commentaire de la propriété **wl.analytics.masters.list** et définir comme valeur la liste des noms d'hôte et des ports de transport des noeuds maîtres. Exemple : `noeud1.masociété.com:96000,noeud2.masociété.com:96000`
     * Ajoutez l'attribut **mastersList** aux éléments **elasticsearch** dans les tâches **installanalytics**, **updateanalytics** et **uninstallanalytics**.
 
-    **Remarque :** si vous procédez à l'installation dans un cluster sur Application Server Network Deployment et que vous ne définissez pas la propriété, la tâche Ant calcule les noeuds finaux des données pour tous les membres du cluster au moment de l'installation et associe la propriété JNDI **masternodes** à cette valeur.
+    **Remarque :** si vous procédez à l'installation dans un cluster sur Application Server Network Deployment et que vous ne définissez pas la propriété, la tâche Ant calcule les points de terminaison des données pour tous les membres du cluster au moment de l'installation et associe la propriété JNDI **masternodes** à cette valeur.
 
 3. Pour déployer les fichiers WAR, exécutez la commande suivante : `ant -f configure-appServer-analytics.xml install`
     Elle se trouve dans le répertoire **rép_install_serveur_mf/shortcuts**. Elle installe un noeud de {{ site.data.keys.mf_analytics }} avec le type par défaut maître et données sur le serveur ou sur chaque membre d'un cluster si vous procédez à l'installation sur WebSphere Application Server Network Deployment.

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 로그 필터 구성
-breadcrumb_title: Log Filters
+breadcrumb_title: 로그 필터
 relevantTo: [ios,android,javascript]
 weight: 2
 ---

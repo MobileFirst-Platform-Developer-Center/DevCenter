@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: セキュアなモデル・アップデートの実装
-breadcrumb_title: Secure Model Update
+breadcrumb_title: セキュアなモデル・アップデート
 relevantTo: [iOS]
 weight: 2
 ---

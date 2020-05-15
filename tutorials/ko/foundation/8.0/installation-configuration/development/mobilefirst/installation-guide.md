@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 워크스테이션 설치 안내서
-breadcrumb_title: Installation guide
+breadcrumb_title: 설치 안내서
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -30,7 +30,9 @@ weight: 1
     *Windows:*  
     [이 안내서를 따르십시오](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html).
 
-### 설치
+    [알려진 문제](#known-issue-win)
+
+## 설치
 {: #installation }
 [다운로드 페이지]({{site.baseurl}}/downloads/)에서 DevKit 설치 프로그램을 가져온 후 화면 지시사항을 따르십시오.
 
@@ -66,7 +68,7 @@ weight: 1
 **전제조건:**  
 1. {{ site.data.keys.mf_cli }}를 설치하려면 NodeJS와 NPM이 필요합니다.  
  [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/)과 NPM v3.10.10을 다운로드하여 설치하십시오.
- MobileFirst CLI 버전 8.0.2018100112 이상은 Node v8.x 또는 v10.x를 사용하십시오. 
+ MobileFirst CLI 버전 8.0.2018100112 이상은 Node v8.x 또는 v10.x를 사용하십시오.
 
  설치를 확인하려면 명령행 창을 열고 `node -v`를 실행하십시오.
 
@@ -93,18 +95,49 @@ weight: 1
 1. [Apache Maven .zip을 다운로드하십시오](https://maven.apache.org/download.cgi).
 2. Maven 폴더를 가리키는 `MVN_PATH` 변수를 추가하십시오.
 
-    *Mac 및 Linux:* **~/.bash_profile**을 편집하십시오.
+   *Mac 및 Linux:* **~/.bash_profile**을 편집하십시오.
 
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
     ```
 
-    *Windows:*  
-    [이 안내서를 따르십시오](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).
-`mvn -v`를 실행하여 설치를 확인하십시오.
+    *Windows:*
 
-###  사용법
+    [이 안내서를 따르십시오](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).
+    
+    다음을 실행하여 설치를 확인하십시오.
+    ```bash
+    mvn -v
+    ```
+
+
+### 사용법
 {: #usage }
 Apache Maven이 설치되어 있으니 이제 {{ site.data.keys.mf_cli }}를 사용하거나 Maven 명령행 명령을 통해 어댑터를 작성할 수 있습니다.  
 자세한 정보는 [어댑터 튜토리얼]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)을 검토하십시오.
+
+### Windows의 알려진 문제
+{: #known-issue-win}
+
+Oracle Java 8 업데이트 60 이상이 있는 Windows 시스템에서는 InstallAnywhere 기술을 사용하는 MobileFirst 설치 프로그램이 다음 오류로 실패합니다. 
+
+![launch-error](launch-error.png)
+
+#### 오류의 원인
+Java 8 업데이트 60의 Oracle에 도입된 변경사항으로 인해 InstallAnywhere를 사용하여 빌드된 설치 프로그램이 위 오류로 실패합니다. 이 실패의 원인은 Oracle Java 8u60 이상을 사용하는 InstallAnywhere에서 Windows 시스템의 최신 지원 JVM 위치를 자동으로 감지할 수 없기 때문입니다. 
+
+#### 오류 해결
+
+다음 접근법 중 하나로 문제를 해결할 수 있습니다. 
+
+##### 접근법 1
+
+InstallAnywhere를 지정된 JVM을 사용하여 시작하도록 지정합니다.
+명령행으로 설치 프로그램을 실행하여 InstallAnywhere에 **LAX_VM** 매개변수를 사용하여 시작할 때 사용할 JVM을 지정합니다. 
+
+![lax-vm-parameter](lax-vm-parameter.png)
+
+##### 접근법 2
+
+이 문제는 Java 8u60 이전 Java 버전에서는 발생하지 않으므로 Java 7을 사용합니다. 

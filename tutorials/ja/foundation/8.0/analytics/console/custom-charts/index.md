@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: カスタム・グラフの作成
-breadcrumb_title: Custom Charts
+breadcrumb_title: カスタム・グラフ
 relevantTo: [ios,android,javascript]
 weight: 3
 ---

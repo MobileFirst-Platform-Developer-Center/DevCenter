@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java- und JavaScript-Adapter erstellen
-breadcrumb_title: Creating Adapters
+breadcrumb_title: Adapter erstellen
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
@@ -59,7 +59,7 @@ Sie können wählen, ob Sie den Befehl interaktiv oder direkt ausführen möchte
    mfpdev adapter create
    ```
 
-2. Geben Sie einen Adapternamen ein. Beispiel:
+2. Geben Sie einen Adapternamen ein. Beispiel: 
 
    ```bash
    ? Enter Adapter Name: SampleAdapter
@@ -356,7 +356,7 @@ Für die Zusammenfassung von Adaptern sind folgende Schritte erforderlich:
   2. Fügen Sie ein Element **`artifactId`** hinzu. Dies ist der Name des Stammverzeichnisses. 
   3. Fügen Sie für jeden Adapter ein Element **`module`** hinzu. 
   4. Fügen Sie das Element **`build`** hinzu. 
-  5. Ersetzen Sie **localhost:9080** durch die IP-Adresse und die Portnummer Ihres {{ site.data.keys.mf_server }} (**optional**). 
+  5. **Optional**. Ersetzen Sie **localhost:9080** durch die konkrete IP-Adresse und die Portnummer Ihres {{ site.data.keys.mf_server }}.
   6. Ersetzen Sie die Standardwerte **mfpfUser** und **`mfpfPassword`** durch Ihren Administratorbenutzernamen und Ihr Administratorkennwort (**`optional`**). 
   7. Ersetzen Sie den Standardwert **mfpfRuntime** durch Ihren Laufzeitnamen (**`optional`**). 
 

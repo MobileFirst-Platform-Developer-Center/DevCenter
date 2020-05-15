@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 클라이언트 애플리케이션 마이그레이션
-weight: 2
+weight: 7
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

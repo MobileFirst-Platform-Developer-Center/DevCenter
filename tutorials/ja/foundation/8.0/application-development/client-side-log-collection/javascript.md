@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript (Cordova、Web) アプリケーションでのロギング
-breadcrumb_title: Logging in JavaScript
+breadcrumb_title: JavaScript でのロギング
 relevantTo: [javascript]
 weight: 1
 ---
@@ -90,13 +90,33 @@ WL.Logger.config({autoSendLogs: false});
 有効にするには、以下のようにします。
 
 ```javascript
-ibmmfpfanalytics.autoSendLogs(true);
+ibmmfpfanalytics.enableAutoSend(true);
 ```
 
 無効にするには、以下のようにします。
 
 ```javascript
-ibmmfpfanalytics.autoSendLogs(false);
+ibmmfpfanalytics.enableAutoSend(false);
+```
+
+### autoSendLog インターバルの変更
+{: auto-log-sending-interval }
+デフォルトでは、*autoSendLog インターバル* は 60 秒に設定されています。*autoSendLog インターバル* は、次のメソッドを使用して変更できます。
+
+#### Cordova アプリケーションの場合
+{: #for-cordova-apps }
+
+*autoSendLog インターバル* を 120 秒に設定するには、次のスニペットを参照してください。
+```javascript
+WL.Logger.config({autoSendLogs: true,autoSendLogsInterval: 120});
+```
+
+#### Web アプリケーションの場合
+{: #for-web-apps }
+
+*autoSendLog インターバル* を 120 秒に設定するには、次のスニペットを参照してください。
+```javascript
+ibmmfpfanalytics.enableAutoSend(true, 120);
 ```
 
 ## Logger API による細かい調整

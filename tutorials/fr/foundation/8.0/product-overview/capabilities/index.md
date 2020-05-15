@@ -52,6 +52,10 @@ La fonction {{ site.data.keys.mf_analytics }} active la recherche parmi les appl
 
 En plus des rapports qui récapitulent l'activité des applications, {{ site.data.keys.product }} inclut une plateforme d'analyse opérationnelle évolutive qui est accessible dans {{ site.data.keys.mf_console }}. La fonction {{ site.data.keys.mf_analytics_short }} permet aux entreprises de rechercher dans les journaux et les événements collectés à partir d'appareils, d'applications et de serveurs des canevas, des problèmes et des statistiques d'utilisation de plateforme. Vous pouvez activer les fonctions d'analyse et/ou de génération de rapports en fonction de vos besoins.
 
+### Analytics Receiver
+{: #analyticsreceiver }
+{{ site.data.keys.mf_analytics_receiver }} est une fonction facultative, qui reçoit des journaux d'applications mobiles et les transfère vers {{ site.data.keys.mf_analytics }} en plusieurs étapes, en les stockant dans une file d'attente en mémoire.
+
 ### Surveillance
 {: #monitoring }
 {{ site.data.keys.product }} inclut divers mécanismes de génération de rapports et d'analyse opérationnelle pour la collecte, l'affichage et l'analyse des données depuis vos applications et vos serveurs {{ site.data.keys.product }}, ainsi que la surveillance de la santé des serveurs.

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Protokollierung und Traceerstellung für das Application Center im Anwendungsserver festlegen
-breadcrumb_title: Setting up logging and tracing
+breadcrumb_title: Protokollierung und Traceerstellung einrichten
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---

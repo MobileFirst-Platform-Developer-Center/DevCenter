@@ -34,13 +34,13 @@ Es posible que desee iniciar sesión en un usuario sin recibir desafíos. Por ej
 No puede llamar la API `submitChallengeAnswer` si no hay desafíos a los que responder. Para estos escenarios, el SDK de {{ site.data.keys.product }} incluye la API `login`:
 
 ```swift
-WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
-  if(error != nil){
-    NSLog("Login Preemptive Failure: " + String(error))
-  }
-  else {
-    NSLog("Login Preemptive Success")
-  }
+WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) in
+    if(error != nil){
+        print("Login Preemptive Failure: " + String(error!));
+    }
+    else{
+        print("Login Preemptive Success");
+    }
 }
 ```
 
@@ -52,7 +52,7 @@ Cuando el usuario pulsa el botón **Iniciar sesión**, puede elegir dinámicamen
 
 ```swift
 if(!self.isChallenged){
-  WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in}
+  WLAuthorizationManagerSwift.sharedInstance().login(securityCheck: self.securityCheckName, credentials: credentials) { (error) -> Void in}
 }
 else{
   self.submitChallengeAnswer(credentials)
@@ -66,21 +66,21 @@ else{
 {: #obtaining-an-access-token }
 Como esta comprobación de seguridad da soporte a la funcionalidad **RememberMe** (como la clave booleana `rememberMe`), sería de gran utilidad comprobar si el cliente tiene una sesión iniciada cuando se inicia la aplicación.
 
-El SDK de {{ site.data.keys.product }} permite que la API `obtainAccessTokenForScope` le pida al servidor una señal válida:
+El SDK de Mobile Foundation proporciona la API `obtainAccessToken` para solicitar al servidor una señal válida:
 
 ```swift
-WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
+WLAuthorizationManagerSwift.sharedInstance().obtainAccessToken(forScope : scope) { (token, error) -> Void in
   if(error != nil){
-    NSLog("obtainAccessTokenForScope failed: " + String(error))
+    print(“obtainAccessTokenForScope failed: “, error!)
   }
   else{
-    NSLog("obtainAccessTokenForScope success")
+    print(“obtainAccessTokenForScope success " + (token?.value)!);
   }
 }
 ```
 
 > **Nota:**
-> La API `WLAuthorizationManager` `obtainAccessTokenForScope()` tiene su propio manejador de terminación; **también** se llama a los métodos `handleSuccess` o `handleFailure` del manejador de desafíos relevante.
+> La API `WLAuthorizationManagerSwift obtainAccessToken()` tiene su propio manejador de terminación, **también** se invocan `handleSuccess` o `handleFailure`, del manejador de desafíos relevante. 
 
 Si el cliente ya ha iniciado sesión o está en estado *recordado*, la API da como resultado "éxito". Si el cliente no ha iniciado sesión, la comprobación de seguridad devuelve un desafío.
 
@@ -94,9 +94,9 @@ El método `handleSuccess` del manejador de desafíos recibe un diccionario `suc
 Si la comprobación de seguridad establece `AuthenticatedUser`, el objeto contiene las propiedades del usuario. Puede utilizar `handleSuccess` para guardar el usuario actual:
 
 ```swift
-override func handleSuccess(success: [NSObject : AnyObject]!) {
+override open func handleSuccess(successResponse: [NSObject : AnyObject]!) {
   self.isChallenged = false
-  self.defaults.setObject(success["user"]!["displayName"]! as! String, forKey: "displayName")
+  self.defaults.setObject(successResponse![“user"]!["displayName"]! as! String, forKey: "displayName")
 }
 ```
 
@@ -118,10 +118,10 @@ Aquí, `success` tiene una clave denominada `user` que contiene un diccionario q
 El SDK de {{ site.data.keys.product }} también proporciona una API `logout` para cerrar sesión de una comprobación de seguridad determinada:
 
 ```swift
-WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) -> Void in
-  if(error != nil){
-    NSLog("Logout Failure: " + String(error))
-  }
+WLAuthorizationManagerSwift.sharedInstance().logout(securityCheck: self.securityCheck){ (error) -> Void in
+    if(error != nil){
+        print("Logout Failure: " , error!)
+    }
 }
 ```
 
@@ -144,4 +144,3 @@ Siga el archivo README.md del ejemplo para obtener instrucciones.
 El nombre de usuario/contraseña de la aplicación debe coincidir, por ejemplo "john/john".
 
 ![aplicación de ejemplo](sample-application.png)
-

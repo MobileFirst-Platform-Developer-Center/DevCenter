@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: LTPA ベースのシングル・サインオン (SSO) セキュリティー検査
-breadcrumb_title: LTPA Security Check
+breadcrumb_title: LTPA セキュリティー検査
 relevantTo: [android,ios,windows,javascript]
 weight: 8
 ---

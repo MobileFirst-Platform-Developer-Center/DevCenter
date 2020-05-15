@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Utilización de SSL en adaptadores JavaScript HTPT
-breadcrumb_title: Using SSL
+breadcrumb_title: Utilización de SSL
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---

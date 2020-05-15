@@ -93,7 +93,7 @@ weight: 3
                         }
 
                         @Override
-                        public void onFailure(WLFailResponse wlFailResponse) {
+                public void onFailure(WLFailResponse wlFailResponse) {
                             Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
                         }
                     });

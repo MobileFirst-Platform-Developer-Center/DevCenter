@@ -32,7 +32,7 @@ En el siguiente vídeo se proporciona una demostración de la característica Li
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe src="https://www.youtube.com/embed/TjbC9thSfmM"></iframe>
+        <iframe title="Demostración" src="https://www.youtube.com/embed/TjbC9thSfmM"></iframe>
     </div>
 </div>
 

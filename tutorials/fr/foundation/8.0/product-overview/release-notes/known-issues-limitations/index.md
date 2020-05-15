@@ -15,6 +15,7 @@ Cette documentation décrit les limitations connues d'{{ site.data.keys.product_
 * Lorsque la limitation connue s'applique à une fonction spécifique, elle est explicitée dans la rubrique qui décrit la fonction. Vous pouvez alors savoir immédiatement comment elle affecte la fonction.
 * Lorsque la limitation connue est générale, c'est-à-dire qu'elle s'applique à des éléments différents et éventuellement non directement liés, sa description est fournie ici.
 * Des incohérences peuvent être observées dans le fonctionnement des pods Mobile Foundation Analytics dans le déploiement en raison de problèmes de reconnaissance de noeud Elasticsearch dans le cluster OpenShift 4.2. Ainsi, la console d'administration Analytics ne répertorie jamais qu'un seul noeud.
+* L'utilisateur peut constater des problèmes de défilement dans l'application client mobile Android d'AppCenter. Il ne s'agit pas d'une panne fonctionnelle. L'application fonctionne normalement, même si le défilement demande un peu plus d'effort. Cette limitation provient des infrastructures Javascript tierces utilisées dans le client AppCenter.
 
 ### Globalisation
 {: #globalization }
@@ -311,3 +312,7 @@ Ces erreurs sont dues à un [bogue connu dans node-gyp](https://github.com/nodej
 ```bash
 npm install -g mfpdev-cli --no-optional
 ```
+
+### Fonctionnalité des bundles d'application Android
+
+A cause de la différence de structure des packages de bundle d'application entre Android 5.x d'une part et Android 6.x et les appareils ci-dessus d'autre part, les utilisateurs d'Android 5.x ne pourront pas se connecter à un serveur MobileFirst lorsque la fonction d'authenticité de l'application est activée et distribuée en tant que bundle d'applications sur Play Store. Cette limitation n'a été observée que pour la combinaison Android 5.x + authenticité de l'application + bundle d'application Android. Pour contourner ce problème, téléchargez votre application dans Play Store comme un fichier .apk standard, ou définissez Android 6 comme la version minimale requise et proposez une version distincte de l'application pour les appareils Android 5.x.

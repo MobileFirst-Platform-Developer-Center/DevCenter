@@ -13,3 +13,4 @@ weight: 15
 * [推送通知]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/notifications)
 * [JSONStore]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/jsonstore)
 * [分析]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/analytics)
+* [AnalyticsReceiver]({{ site.baseurl }}/tutorials/zh-hans/foundation/8.0/troubleshooting/analyticsreceiver)

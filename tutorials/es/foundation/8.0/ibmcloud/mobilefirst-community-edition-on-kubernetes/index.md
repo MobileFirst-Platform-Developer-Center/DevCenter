@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Despliegue de IBM Mobile Foundation for Developers 8.0 en IBM Cloud Kubernetes Cluster
-breadcrumb_title: Foundation for Developers on IBM Cloud Kubernetes Cluster
+breadcrumb_title: Foundation for Developers en IBM Cloud Kubernetes Cluster
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
@@ -30,8 +30,7 @@ Siga las instrucciones que se detallan a continuación para instalar la edición
 ## Requisitos previos
 {: #prereqs}
 
-Debe haber creado IBM Cloud Kubernetes Service (plan gratuito) utilizando el portal
-[IBM Cloud](https://cloud.ibm.com/). Consulte la   [documentación](https://cloud.ibm.com/docs/containers?topic=containers-getting-started) para obtener las instrucciones.
+Debe haber creado IBM Cloud Kubernetes Service (plan gratuito) utilizando el portal [IBM Cloud](https://cloud.ibm.com/). Consulte la   [documentación](https://cloud.ibm.com/docs/containers?topic=containers-getting-started) para obtener las instrucciones.
 Para gestionar pods de kube y el despliegue de helm, debe instalar las herramientas siguientes en su máquina host:
 * CLI ibmcloud (`ibmcloud`)
 * CLI de Kubernetes (`kubectl`)

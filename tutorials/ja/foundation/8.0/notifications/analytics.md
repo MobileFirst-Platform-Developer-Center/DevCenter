@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: プッシュ通知に対する Analytics サポートのセットアップ
-breadcrumb_title: Setting Up Analytics Support
+breadcrumb_title: Analytics サポートのセットアップ
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---
@@ -17,7 +17,7 @@ weight: 5
 {{ site.data.keys.mf_analytics }} プラグインの構成と初期化のために、以下のプロパティーが必要です。 ユーザー名とパスワードが、指定されたエンドポイントで分析サービスとの認証を行うために使用されます。
 
 ```xml
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest"/>
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<username>"/>  
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<password>"/>
 ```

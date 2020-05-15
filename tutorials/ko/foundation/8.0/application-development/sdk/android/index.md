@@ -118,7 +118,7 @@ Android Studio 프로젝트를 작성하거나 기존 항목을 사용하십시�
 
                 <ul>
                     <li>다운로드된 .zip 파일을 추출하고 관련 aar 파일을 <b>app\libs</b> 폴더에 저장하십시오.</li>
-                    <li>다음을 <b>종속 항목</b> 클로저에 추가하십시오.
+                    <li>다음을 <b>종속</b> 클로저에 추가하십시오.
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
 compile 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'   
@@ -152,7 +152,7 @@ repositories {
 2. 다음 명령을 실행하십시오.
 
     ```bash
-   mfpdev app register
+    mfpdev app register
     ```
     - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 이를 추가하십시오.
 
@@ -187,7 +187,7 @@ SDK 릴리스는 SDK의 [JCenter 저장소](https://bintray.com/bintray/jcenter/
 {: #mfpclient.properties }
 이 파일은 Android Studio 프로젝트의 **./app/src/main/assets/** 폴더에 있으며, {{ site.data.keys.mf_server }}에서 Android 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
 
-| 특성            |설명                                                         | 예제 값 |
+| 특성            | 설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
 | wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
 | wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |

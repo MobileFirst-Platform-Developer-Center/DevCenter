@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 앱에 이미지 인식 추가
-weight: 10
+weight: 11
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

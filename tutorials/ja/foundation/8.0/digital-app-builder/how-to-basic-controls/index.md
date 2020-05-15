@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 基本的なコントロールの追加
-weight: 6
+weight: 7
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

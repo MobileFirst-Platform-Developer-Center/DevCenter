@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Foundation on IBM Cloud OpenShift
+breadcrumb_title: IBM Cloud OpenShift의 Foundation
 title: IBM Cloud의 Red Hat OpenShift Container Platform에 Mobile Foundation 배치
 weight: 3
 ---
@@ -50,7 +50,8 @@ Mobile Foundation 인스턴스 설치 프로세스를 시작하기 전의 전제
 
     $ docker login -u $(oc whoami) -p $(oc whoami -t) docker-registry-default.-xxxx.appdomain.cloud
     Login Succeeded
-    ```
+    ````
+
 
     c. PPA 아카이브를 작업 디렉토리로 압축을 풀고(`mfoskpg` 사용) IBM Mobile Foundation 이미지를 로컬로 사용하십시오.
 
@@ -197,7 +198,7 @@ Mobile Foundation 컴포넌트의 콘솔에 액세스하기 위한 엔드포인�
 ```bash
 oc run perms-pod --overrides='
 {
-           "spec": {
+        "spec": {
             "containers": [
                 {
                     "command": [

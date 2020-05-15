@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova 앱에 사용자 정의 스플래시 화면 및 아이콘 추가
-breadcrumb_title: Adding images and icons
+breadcrumb_title: 이미지와 아이콘 추가
 relevantTo: [cordova]
 weight: 1
 ---
@@ -117,7 +117,7 @@ MobileFirstPlatform Foundation cordova 플러그인 버전 8.0.2017102406에서 
   /*
    Licensed Materials - Property of IBM
 
-   (C) Copyright 2017 IBM Corp.
+   (C) Copyright 2020 IBM Corp.
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,

@@ -19,6 +19,8 @@ Digital App Builder peut être installé sur les plateformes MacOS et Windows. L
 4. Cliquez deux fois sur l'icône ou l'exécutable IBM Digital App Builder pour ouvrir Digital App Builder.
     >**Remarque** : Lors de la première installation de Digital App Builder, Digital App Builder ouvrez l'interface permettant d'installer les logiciels prérequis. S'il existe une version précédente de Digital App Builder, un contrôle des prérequis est effectué et il se peut que vous deviez procéder à une mise à niveau ou une rétromigration de certains logiciels pour satisfaire les conditions requises.
     
+    >A partir de la version 8.0.6, le programme d'installation contient le serveur de développement Mobile Foundation. Au cours de l'installation, le serveur de développement est installé en même temps que d'autres prérequis. Le cycle de vie du serveur de développement (comme le démarrage ou l'arrêt du serveur) est géré dans Digital App Builder.
+    
     ![Installation de Digital App Builder](dab-install-startup.png)
 
 5. Cliquez sur **Commencer à configurer**. L'écran du contrat de licence s'affiche.
@@ -51,6 +53,9 @@ Digital App Builder peut être installé sur les plateformes MacOS et Windows. L
 
 1. Téléchargez le fichier .exe (**IBM.Digital.App.Builder.Setup.n.n.n.exe**, où `n.n.n` correspond au numéro de version) depuis [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) ou en cliquant [ici](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
 2. Exécutez l'exécutable téléchargé (**IBM.Digital.App.Builder.Setup.n.n.n.exe**) en mode d'administration.
+    >**Remarque** : Lors de la première installation de Digital App Builder, Digital App Builder ouvrez l'interface permettant d'installer les logiciels prérequis. S'il existe une version précédente de Digital App Builder, un contrôle des prérequis est effectué et il se peut que vous deviez procéder à une mise à niveau ou une rétromigration de certains logiciels pour satisfaire les conditions requises.
+    
+    >A partir de la version 8.0.6, le programme d'installation contient le serveur de développement Mobile Foundation. Au cours de l'installation, le serveur de développement est installé en même temps que d'autres prérequis. Le cycle de vie du serveur de développement (comme le démarrage ou l'arrêt du serveur) est géré dans Digital App Builder.
 
     ![Installation de Digital App Builder](dab-install-startup.png)
 

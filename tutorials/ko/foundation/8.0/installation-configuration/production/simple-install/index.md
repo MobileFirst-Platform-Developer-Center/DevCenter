@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 단순한 MobileFirst Server 설치
-breadcrumb_title: Simple MobileFirst Server installation
+breadcrumb_title: 단순한 MobileFirst Server 설치
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

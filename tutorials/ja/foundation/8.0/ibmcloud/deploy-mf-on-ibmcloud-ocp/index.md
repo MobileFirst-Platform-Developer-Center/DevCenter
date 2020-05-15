@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Foundation on IBM Cloud OpenShift
+breadcrumb_title: IBM Cloud OpenShift 上の Foundation
 title: IBM Cloud 上の Red Hat OpenShift Container Platform への Mobile Foundation のデプロイ
 weight: 3
 ---

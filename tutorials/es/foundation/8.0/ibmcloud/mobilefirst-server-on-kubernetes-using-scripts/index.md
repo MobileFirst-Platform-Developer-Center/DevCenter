@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración de MobileFirst Server en IBM Cloud Kubernetes Cluster mediante scripts
-breadcrumb_title: Foundation on Kubernetes using scripts
+breadcrumb_title: Foundation en Kubernetes mediante scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
@@ -336,7 +336,7 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
 {% endhighlight %}
                 </li>
                 <li><b>prepareserverdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_server }}</b><br />
-                    El script <b>prepareserverdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_server }} con el servicio de base de datos DB2. La instancia de servicio de DB2 debe estar disponible en la Organización y Espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
+                    El script <b>prepareserverdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_server }} con el servicio de base de datos DB2. La instancia de servicio del servicio DB2 debe estar disponible en la organización y espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
                     <b>Modo interactivo</b>
 {% highlight bash %}
 ./prepareserverdbs.sh
@@ -347,7 +347,7 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
 {% endhighlight %}
                 </li>
                 <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
-                      Este paso solo es necesario si necesita crear contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de DB2. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
+                      Este paso solo es necesario si necesita crear contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de DB2. Si es así, actualice initenv.properties con la nueva organización y espacio donde se han de crear (e iniciar) los contenedores, y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Enabling Ingress parameters
+breadcrumb_title: Ingress 매개변수 사용
 title: Ingress 매개변수 사용
 weight: 4
 show_in_nav: false

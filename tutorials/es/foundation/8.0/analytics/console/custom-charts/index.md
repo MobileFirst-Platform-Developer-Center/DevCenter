@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Creación de gráficos personalizados
-breadcrumb_title: Custom Charts
+breadcrumb_title: Gráficos personalizados
 relevantTo: [ios,android,javascript]
 weight: 3
 ---

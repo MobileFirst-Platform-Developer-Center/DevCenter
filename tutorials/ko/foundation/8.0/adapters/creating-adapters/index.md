@@ -105,7 +105,7 @@ Maven 어댑터 프로젝트를 작성하려면 `archetype:generate` Maven 명�
 {: #interactive-mode-archetype }
 
 1. **명령행** 창에서 사용자가 선택한 위치로 이동하십시오.  
-이는 또한 Maven 프로젝트가 생성될 위치입니다.
+   이는 또한 Maven 프로젝트가 생성될 위치입니다.
 
 2. **DarchetypeArtifactId** 플레이스홀더를 실제 값으로 대체하고 다음을 실행하십시오.
 
@@ -227,7 +227,7 @@ mfpdev adapter build all
    ```
    
    `-x` 옵션은 어댑터의 **pom.xml** 파일에 지정된 {{ site.data.keys.mf_server }}에 어댑터를 배치합니다.  
-옵션이 사용되지 않으면 CLI가 CLI 설정에 지정된 기본 서버를 사용합니다.
+   옵션이 사용되지 않으면 CLI가 CLI 설정에 지정된 기본 서버를 사용합니다.
     
    > 추가 CLI 배치 옵션에 대해서는 다음 명령을 실행하십시오. `mfpdev help adapter deploy`.
    

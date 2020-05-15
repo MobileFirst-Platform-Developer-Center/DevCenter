@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: プッシュ通知のトラブルシューティング
-breadcrumb_title: Notifications
+breadcrumb_title: 通知
 relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---

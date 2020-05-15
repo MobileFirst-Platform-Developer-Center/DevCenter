@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: iOS アプリケーションでのロギング
-breadcrumb_title: Logging in iOS
+breadcrumb_title: iOS でのロギング
 relevantTo: [ios]
 weight: 2
 ---
@@ -175,6 +175,26 @@ OCLogger.setAutoSendLogs(true);
 
 ```swift
 OCLogger.setAutoSendLogs(false);
+```
+
+### autoSendLog インターバルの変更
+{: auto-log-sending-interval }
+デフォルトでは、*autoSendLog インターバル* は 60 秒に設定されています。*autoSendLog インターバル* は、次のメソッドを使用して変更できます。
+
+**Objective-C**
+
+autoSendLog インターバルを 120 秒に設定するには、次のスニペットを参照してください。
+
+```objc
+[OCLogger setAutoSendLogs:YES interval:120];
+```
+
+**Swift**
+
+autoSendLog インターバルを 120 秒に設定するには、次のスニペットを参照してください。
+
+```swift
+OCLogger.setAutoSendLogs(true, 120);
 ```
 
 ## Logger API による細かい調整

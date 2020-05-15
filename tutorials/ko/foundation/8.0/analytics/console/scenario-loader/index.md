@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 시나리오 로더
-breadcrumb_title: Scenario Loader
+breadcrumb_title: 시나리오 로더
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
@@ -37,7 +37,7 @@ weight: 4
 
 1. 시나리오 로더를 사용하려면 JVM 인수 `-DwlDevEnv=true` 또는 환경 변수 `ANALYTICS_DEBUG=true`를 설정하십시오.
 
-2. 콘솔 URL `http://<console-path>/scenarioLoader`를 사용하여 브라우저에서 시나리오 로더에 액세스하십시오. 여기서 예를 들어 `<console-path>`는 `mfp-server/usr/servers/mfp/server.xml` 파일에 정의된 JNDI 특성 값입니다. 
+2. 콘솔 URL `http://<console-path>/scenarioLoader`를 사용하여 브라우저에서 시나리오 로더에 액세스하십시오. 여기서 예를 들어 `<console-path>`는 `mfp-server/usr/servers/mfp/server.xml` 파일에 정의된 JNDI 특성 값입니다.
 
     `<jndiEntry jndiName="mfp/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>`
 

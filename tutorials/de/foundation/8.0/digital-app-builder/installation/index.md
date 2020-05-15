@@ -19,6 +19,8 @@ Sie können den Digital App Builder auf den Plattformen Mac OS und Windows insta
 4. Klicken Sie doppelt auf das Symbol für IBM Digital App Builder oder auf die ausführbare Datei, um den Digital App Builder zu öffnen.
     > **Hinweis**: Wenn der Digital App Builder zum ersten Mal installiert wird, öffnet er die Schnittstelle für die Installation von vorausgesetzter Software. Falls bereits eine Vorgängerversion des Digital App Builder vorhanden ist, wird eine Überprüfung der vorausgesetzten Software durchgeführt. Möglicherweise müssen Sie ein Upgrade oder Downgrade für bestimmte Software durchführen, um die Voraussetzungen zu erfüllen.
     
+    > Ab Version 8.0.6 umfasst das Installationsprogramm den Mobile Foundation Development Server. Während der Installation wird der Development Server mit anderen vorausgesetzten Produkten installiert. Der Lebenszyklus des Development Server (wie das Starten/Stoppen des Servers) wird im Digital App Builder gehandhabt.
+    
     ![Digital App Builder installieren](dab-install-startup.png)
 
 5. Klicken Sie auf **Start setup**. Daraufhin erscheint die Anzeige mit der Lizenzvereinbarung.
@@ -50,7 +52,9 @@ Sie können den Digital App Builder auf den Plattformen Mac OS und Windows insta
 {: #installing-on-windows }
 
 1. Laden Sie die .exe-Datei (**IBM.Digital.App.Builder.Setup.n.n.n.exe**, wobei `n.n.n` die Versionsnummer ist) über [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) oder von [hier](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases) herunter.
-2. Führen Sie die heruntergeladene ausführbare Datei (**IBM.Digital.App.Builder.Setup.n.n.n.exe**) im Verwaltungsmodus aus.
+2. Führen Sie die heruntergeladene ausführbare Datei (**IBM.Digital.App.Builder.Setup.n.n.n.exe**) im Verwaltungsmodus aus.> **Hinweis**: Wenn der Digital App Builder zum ersten Mal installiert wird, öffnet er die Schnittstelle für die Installation von vorausgesetzter Software. Falls bereits eine Vorgängerversion des Digital App Builder vorhanden ist, wird eine Überprüfung der vorausgesetzten Software durchgeführt. Möglicherweise müssen Sie ein Upgrade oder Downgrade für bestimmte Software durchführen, um die Voraussetzungen zu erfüllen.
+    
+    > Ab Version 8.0.6 umfasst das Installationsprogramm den Mobile Foundation Development Server. Während der Installation wird der Development Server mit anderen vorausgesetzten Produkten installiert. Der Lebenszyklus des Development Server (wie das Starten/Stoppen des Servers) wird im Digital App Builder gehandhabt.
 
     ![Digital App Builder installieren](dab-install-startup.png)
 

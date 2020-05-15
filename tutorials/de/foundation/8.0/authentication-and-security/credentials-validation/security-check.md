@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Klasse CredentialsValidationSecurityCheck implementieren
-breadcrumb_title: Security Check
+breadcrumb_title: Sicherheitsüberprüfung
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:

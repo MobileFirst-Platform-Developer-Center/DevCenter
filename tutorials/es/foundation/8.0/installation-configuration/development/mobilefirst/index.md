@@ -42,6 +42,8 @@ Los componentes están disponibles a través del Centro de descargas de {{ site.
 
 > Para descargar el instalador, visite la página de [descargas]({{site.baseurl}}/downloads/).
 
+>**Nota**: DevKit for MacOS está disponible como un archivo zip. Para instalarlo, solo ha de descargar y descomprimir el archivo. Ejecute DevKit desde la carpeta extraída.  
+
 ## Componentes de {{ site.data.keys.product }}
 {: #mobilefirst-foundation-components }
 

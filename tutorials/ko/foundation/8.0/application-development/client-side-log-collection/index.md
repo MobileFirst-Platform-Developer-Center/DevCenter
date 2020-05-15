@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 클라이언트 측 로그 콜렉션
-breadcrumb_title: Client-side log collection
+breadcrumb_title: 클라이언트 측 로그 콜렉션
 relevantTo: [ios,android,javascript]
 weight: 7
 ---

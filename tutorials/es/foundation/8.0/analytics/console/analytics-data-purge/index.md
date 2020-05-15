@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Retención de datos y depuración
-breadcrumb_title: Data Retention and Purging
+breadcrumb_title: Retención de datos y depuración
 relevantTo: [ios,android,javascript]
 weight: 6
 ---

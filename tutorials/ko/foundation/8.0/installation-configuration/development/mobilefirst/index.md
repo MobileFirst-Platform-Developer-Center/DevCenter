@@ -41,6 +41,8 @@ weight: 1
 
 > 설치 프로그램을 다운로드하려면 [다운로드]({{site.baseurl}}/downloads/) 페이지를 방문하십시오.
 
+>**참고**: MacOS용 DevKit은 zip 파일로 제공됩니다. 다운로드하여 파일의 압축을 풀면 설치됩니다. 추출된 폴더에서 DevKit을 실행하십시오.  
+
 ## {{ site.data.keys.product }} 컴포넌트
 {: #mobilefirst-foundation-components }
 

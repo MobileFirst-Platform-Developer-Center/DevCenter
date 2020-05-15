@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server in einer Produktionsumgebung installieren
-breadcrumb_title: Installing MobileFirst Server
+breadcrumb_title: MobileFirst Server installieren
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

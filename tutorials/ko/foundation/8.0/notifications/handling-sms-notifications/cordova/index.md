@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova에서 SMS 알림 처리
-breadcrumb_title: Handling SMS in Cordova
+breadcrumb_title: Cordova에서 SMS 처리
 relevantTo: [cordova]
 weight: 8
 downloads:

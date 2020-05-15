@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Distribution d'applications mobiles avec IBM Application Center
-breadcrumb_title: Distributing apps with Application Center
+breadcrumb_title: Distribution d'applications avec Application Center
 relevantTo: [ios,android,windows8,cordova]
 show_in_nav: true
 weight: 7
@@ -16,7 +16,7 @@ Application Center facilite le partage des applications mobiles :
 * Vous pouvez partager des informations de **commentaires et d'évaluation**.  
 * Vous pouvez utiliser les listes de contrôle d'accès pour limiter les personnes qui peuvent installer des applications.
 
-Application Center fonctionne avec des applications {{ site.data.keys.product_adj }} et non {{ site.data.keys.product_adj }} et prend en charge toutes les applications **iOS, Android** et **Windows/Phone 8.x**.
+Application Center fonctionne avec les applications {{ site.data.keys.product_adj }} et d'autres applications, et prend en charge toutes les applications **iOS, Android** et **Windows/Phone 8.x**.
 
 > **Remarque :** les fichiers Archive/IPA générés à l'aide de Test Flight ou d'iTunes Connect pour la soumission ou la validation d'applications iOS dans les magasins peuvent entraîner un échec/une panne d'exécution. Pour en savoir plus, lisez le blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/).
 
@@ -27,7 +27,7 @@ Vous pouvez utiliser Application Center dans différents contextes. Par exemple 
 
 > **Remarque :** pour générer l'application iOS AppCenter Installer, MobileFirst 7.1 est requis.
 >
-Studio est requis pour les applications Worklight 7.1 mais non pour les applications purement Cordova.
+Studio es requis pour les applications Worklight 7.1, mais non pour les applications purement Cordova.
 
 #### Accéder à
 {: #jump-to}
@@ -132,7 +132,7 @@ Cela peut prendre du temps. Une fois cette opération terminée, vous êtes prê
 {: #for-android-phones-and-tablets }
 Le client mobile est livré en tant qu'application compilée (APK) et se trouve dans **install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk**
 
-> **Remarque :** consultez [Client IBM AppCenter basé sur Cordova](#cordova-based-ibm-appcenter-client), si vous utilisez une infrastructure Cordova pour la génération d'un client AppCenter Android et iOS.
+> **Remarque :** consultez [Client IBM AppCenter basé sur Cordova](#cordova-based-ibm-appcenter-client), si vous utilisez une infrastructure Cordova pour la génération d'un client AppCenter pour Android et iOS.
 
 ### Pour iPad et iPhone
 {: #for-ipad-and-iphone }
@@ -145,7 +145,7 @@ Le client mobile est livré en tant qu'application compilée (APK) et se trouve 
 4. Utilisez Xcode pour créer et signer l'application avec votre profil Apple iOS Enterprise.  
 Vous pouvez ouvrir le projet natif obtenu (dans **iphone\native**) manuellement dans Xcode, ou cliquer avec le bouton droit de la souris sur le dossier iPhone et sélectionner **Run As → Xcode project**. Cette action génère le projet et l'ouvre dans Xcode.
 
-> **Remarque :** consultez [Client IBM AppCenter basé sur Cordova](#cordova-based-ibm-appcenter-client), si vous utilisez une infrastructure Cordova pour la génération d'un client AppCenter Android et iOS.
+> **Remarque :** consultez [Client IBM AppCenter basé sur Cordova](#cordova-based-ibm-appcenter-client), si vous utilisez une infrastructure Cordova pour la génération d'un client AppCenter pour Android et iOS.
 
 <!--
 ### For Blackberry
@@ -168,7 +168,7 @@ Application Center gère uniquement les applications de société qui sont sign�
 
 > Pour plus d'informations sur les comptes de société et les jetons d'inscription, consultez la page [Microsoft Developer website → Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx).
 
-> Pour plus d'informations sur la façon de signer des applications de client mobile Windows Phone, consultez le [site Web Microsoft Developer](http://dev.windows.com/en-us/develop).
+> Pour plus d'informations sur la façon de signer des applications client mobiles Windows Phone, consultez le [site Web Microsoft Developer](http://dev.windows.com/en-us/develop).
 
 <br/>
 
@@ -241,9 +241,9 @@ Le client mobile Application Center est une application mobile permettant de gé
 * Installer une application ou mettre à niveau vers une nouvelle version.
 * Fournir des commentaires et une évaluation sur cinq étoiles pour une application.
 
-### Ajout d'applications de client mobile au catalogue
+### Ajout d'applications client mobiles au catalogue
 {: #adding-mobile-client-applications-to-the-catalog }
-Vous devez ajouter des applications de client mobile Application Center au catalogue.
+Vous devez ajouter des applications client mobiles Application Center au catalogue.
 
 1. Ouvrez la console Application Center.
 2. Cliquez sur le bouton **Add Application** pour ajouter le fichier de client mobile `.apk`, `.ipa`, `.zip` ou `.xap`.

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Node.js バリデーター
-breadcrumb_title: Node.js validator
+breadcrumb_title: Node.js バリデーター
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:

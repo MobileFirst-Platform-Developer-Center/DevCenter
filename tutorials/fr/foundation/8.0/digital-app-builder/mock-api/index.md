@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Utilisation d'API REST fictives
-weight: 13
+weight: 14
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -51,7 +51,7 @@ Pour créer et gérer des API afin de simuler des services REST de back end, pro
 {: #dab-mock-api-consuming }
 
 1. En mode Code, faites glisser et déposez le fragment de code **Appel d'API** à partir de la section **COEUR MOBILE**.
-2. Editez le code pour modifier l'URL et pointez vers le noeud final de l'API fictive. Par exemple :
+2. Editez le code pour modifier l'URL et pointez vers le point de terminaison de l'API fictive. Par exemple :
 
     ```
      var resourceRequest = new WLResourceRequest(

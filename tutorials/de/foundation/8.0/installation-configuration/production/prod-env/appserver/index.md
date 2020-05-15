@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server in einem Anwendungsserver installieren
-breadcrumb_title: Installing MobileFirst Server to an application server
+breadcrumb_title: MobileFirst Server in einem Anwendungsserver installieren
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -68,7 +68,8 @@ RMI verwendet. Lesen Sie dazu weiter unten den Abschnitt **JMX-Verbindung für A
 -Dcom.sun.management.jmxremote.authenticate=false
 -Dcom.sun.management.jmxremote.ssl=false
 {% endhighlight %}
-                                    <p><b>Hinweis:</b> 8686 ist ein Standardwert. Der Wert für diesen Port kann geändert werden, wenn der Port auf dem Computer nicht verfügbar ist.</p>
+
+                <p><b>Hinweis:</b> 8686 ist ein Standardwert. Der Wert für diesen Port kann geändert werden, wenn der Port auf dem Computer nicht verfügbar ist.</p>
 
                 <ul>
                     <li>Die Datei <b>setenv.bat</b> wird verwendet, wenn Sie für den Start von Apache Tomcat <b>Tomcat-Installationsverzeichnis/bin/startup.bat</b> oder <b>Tomcat-Installationsverzeichnis/bin/catalina.bat</b> verwenden.</li>
@@ -113,8 +114,8 @@ RMI verwendet. Lesen Sie dazu weiter unten den Abschnitt **JMX-Verbindung für A
 
 {% highlight xml %}
 <Context docBase="mfpadmin" path="/mfpadmin ">
-    <Environment name="mfp.admin.rmi.registryPort" value="Registry-Port" type="java.lang.String" override="false"/>
-    <Environment name="mfp.admin.rmi.serverPort" value="Server-Port" type="java.lang.String" override="false"/>
+    <Environment name="mfp.admin.rmi.registryPort" value="registryPort" type="java.lang.String" override="false"/>
+    <Environment name="mfp.admin.rmi.serverPort" value="serverPort" type="java.lang.String" override="false"/>
 </Context>
 {% endhighlight %}
 
@@ -290,6 +291,28 @@ oder Linux x86-64
 Das Tool ist für andere Betriebssysteme nicht verfügbar. Sie können
 Ant-Tasks für die Installation der
 MobileFirst-Server-Komponenten verwenden (siehe [Installation mit Ant Tasks](#installing-with-ant-tasks)).
+
+Das Startprogramm für das SCT (Server Configuration Tool) für Mac OS setzt voraus, dass die traditionelle Java SE 6 Runtime installiert ist. Beim Starten des Starprogramms für das SCT unter Mac OS könnte folgende Nachricht angezeigt werden: 
+
+![Nachricht des SCT unter Mac OS](message-sct-mac.png)
+
+Sie können die folgenden Ausweichmaßnahmen ergreifen, um diese Nachricht zu umgehen, und für die Ausführung des SCT die ausführbare Datei nutzen. In dem Fall müssen Sie nicht die SE 6 Runtime installieren.
+
+#### Ausweichmaßnahme 1
+* Klicken Sie mit der rechten Maustaste auf das Startprogramm `ServerConfigurationTool`.
+* Wählen Sie **Show Package Contents** aus.
+
+  ![Paktinhalt anzeigen](show-package-contents.png)
+
+* Klicken Sie auf **Contents** > **MacOS**.
+* Klicken Sie auf die ausführbare Datei für `ServerConfigurationTool`, um das SCT zu starten.
+
+#### Ausweichmaßnahme 2
+Sie können auf Ihrem Computer problemlos sowohl Java SE 8 als auch Java SE 6 installiert haben.
+
+* Wenn bei Verwendung des SCT-Startprogramms das Popup-Fenster erscheint, klicken Sie auf **More Info**.
+* Sie werden zur Apple-Unterstützungssite weitergeleitet. Dort erfahren Sie, wie Sie die Java SE 6 Runtime erhalten können.
+* Folgen Sie den Anweisungen, installieren Sie die Java SE 6 Runtime und starten Sie dann das SCT-Startprogramm.
 
 ### Unterstützte Topologien
 {: #supported-topologies }
@@ -899,8 +922,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
   [...]
 </dataSource>
 {% endhighlight %}
-
-                <h3></h3>
+                   <h3></h3>
                 <p>Deklarieren Sie die folgenden Rollen im Element <b>application-bnd</b> der Anwendung:</p>
                 <ul>
                     <li>mfpadmin</li>
@@ -932,8 +954,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
   [...]
 </dataSource>
 {% endhighlight %}
-
-                <h3></h3>
+                   <h3></h3>
                 <p>Deklarieren Sie im Element <b>application-bnd</b> der Anwendung die Rolle configadmin. Dieser Rolle muss mindestens ein Benutzer zugeordnet sein. Der Benutzer und sein Kennwort müssen in den folgenden JNDI-Eigenschaften des Verwaltungsservice angegeben werden:</p>
 
                 <ul>
@@ -1021,7 +1042,7 @@ Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../../serv
   [...]
 </dataSource>
 {% endhighlight %}
-            </div>
+   </div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -1260,8 +1281,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
   [...]
 </dataSource>
 {% endhighlight %}
-
-                <h3>Sicherheitsrollen</h3>
+                   <h3>Sicherheitsrollen</h3>
                 <p>Deklarieren Sie die folgenden Rollen im Element <b>application-bnd</b> der Anwendung:</p>
                 <ul>
                     <li>mfpadmin</li>
@@ -1295,8 +1315,7 @@ Kopieren Sie den Kennwort-Decoder in Ihr Liberty-Profil. Beispiel:
   [...]
 </dataSource>
 {% endhighlight %}
-
-                <h3>Sicherheitsrollen</h3>
+                   <h3>Sicherheitsrollen</h3>
                 <p>Deklarieren Sie im Element <b>application-bnd</b> der Anwendung die Rolle configadmin. Dieser Rolle muss mindestens ein Benutzer zugeordnet sein. Der Benutzer und sein Kennwort müssen in den folgenden JNDI-Eigenschaften des Verwaltungsservice angegeben werden:</p>
 
                 <ul>
@@ -1387,7 +1406,7 @@ Weitere Informationen zu JNDI-Eigenschaften finden Sie unter <a href="../../serv
   [...]
 </dataSource>
 {% endhighlight %}
-            </div>
+   </div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -2126,7 +2145,8 @@ Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in
                             </li>
                             <li>Tauschen Sie die Unterzeichnerzertifikate aus, die sich im Truststore der einzelnen Server befinden.
                             <br/><br/>
-                            Dieser Schritt ist für Farmen obligatorisch, die WebSphere Application Server Full Profile oder Liberty verwenden, da die Sicherheit aktiviert sein muss. Bei Liberty-Farmen muss außerdem die LTPA-Konfiguration auf jedem Server repliziert werden, damit das Single Sign-on funktioniert. Folgen Sie für diese Konfugration der Anleitung in Schritt 6 unter <a href="#configuring-a-server-farm-manually">Server-Farm manuell konfigurieren</a>.</li>
+                            <blockquote><b>Hinweis</b>: Dieser Schritt ist für Farmen obligatorisch, die WebSphere Application Server Full Profile oder Liberty verwenden, da die Sicherheit aktiviert sein muss. Bei Liberty-Farmen muss außerdem die LTPA-Konfiguration auf jedem Server repliziert werden, damit das Single Sign-on funktioniert. Folgen Sie für diese Konfugration der Anleitung in Schritt 6 unter <a href="#configuring-a-server-farm-manually">Server-Farm manuell konfigurieren</a>.</blockquote>
+                            </li>
                         </ul>
                     </li>
                     <li>Führen Sie das Server Configuration Tool für jeden Server der Farm aus. Alle Server müssen dieselben Datenbanken verwenden. In der Anzeige <b>Application Server Settings</b> müssen Sie den Implementierungstyp <b>Server Farm Deployment</b> auswählen. Weitere Informationen zum Tool finden Sie unter <a href="#running-the-server-configuration-tool">Server Configuration Tool ausführen</a>.</li>
@@ -2184,7 +2204,7 @@ Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in
                             Weitere Informationen zum Einrichten eines Servers finden Sie unter <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Einschränkungen für den MobileFirst-Server-Verwaltungsservice und -Liveaktualisierungsservice sowie für die {{ site.data.keys.product_adj }}-Laufzeit</a>.</li>
                             <li>Tauschen Sie die Unterzeichnerzertifikate aus, die sich im Truststore der einzelnen Server befinden.
                             <br/><br/>
-                            Dieser Schritt ist für Farmen obligatorisch, die WebSphere Application Server Full Profile oder Liberty verwenden, da die Sicherheit aktiviert sein muss. Bei Liberty-Farmen muss außerdem die LTPA-Konfiguration auf jedem Server repliziert werden, damit das Single Sign-on funktioniert. Folgen Sie für diese Konfugration der Anleitung in Schritt 6 unter <a href="#configuring-a-server-farm-manually">Server-Farm manuell konfigurieren</a>.</li>
+                            <blockquote><b>Hinweis</b>: Dieser Schritt ist für Farmen obligatorisch, die WebSphere Application Server Full Profile oder Liberty verwenden, da die Sicherheit aktiviert sein muss. Bei Liberty-Farmen muss außerdem die LTPA-Konfiguration auf jedem Server repliziert werden, damit das Single Sign-on funktioniert. Folgen Sie für diese Konfugration der Anleitung in Schritt 6 unter <a href="#configuring-a-server-farm-manually">Server-Farm manuell konfigurieren</a></blockquote>.</li>
                         </ul>
                     </li>
                     <li>Konfigurieren Sie die Datenbank für den Verwaltungs- und Liveaktualisierungsservice und für die Laufzeit.
@@ -2319,13 +2339,13 @@ Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in
                                 Legen Sie in der Datei server.xml die im folgenden Beispielcode gezeigten JNDI-Eigenschaften fest.
 {% highlight xml %}
 <jndiEntry jndiName="mfp.topology.clustermode" value="Farm"/>
-<jndiEntry jndiName="mfp.admin.serverid" value="Farmmember1"/>
-<jndiEntry jndiName="mfp.admin.jmx.user" value="REST-Connector-Benutzer"/>
-<jndiEntry jndiName="mfp.admin.jmx.pwd" value="Kennwort_des_REST-Connector-Benutzers"/>
+<jndiEntry jndiName="mfp.admin.serverid" value="farm_member_1"/>
+<jndiEntry jndiName="mfp.admin.jmx.user" value="myRESTConnectorUser"/>
+<jndiEntry jndiName="mfp.admin.jmx.pwd" value="password-of-rest-connector-user"/>
 <jndiEntry jndiName="mfp.admin.jmx.host" value="93.12.0.12"/>
 <jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>
 {% endhighlight %}
-                                Die folgenden Eigenschaften müssen mit passenden Werten definiert werden:
+                                Für diese Eigenschaften müssen die richtigen Werte festgelegt werden:
                                 <ul>
                                     <li><b>mfp.admin.serverid</b>: Die Kennung, die Sie für dieses Farmmember definiert haben. Diese Kennung muss für jedes Farmmember eindeutig sein. </li>
                                     <li><b>mfp.admin.jmx.user</b> und <b>mfp.admin.jmx.pwd</b>: Diese Werte müssen mit den Berechtigungsnachweisen eines im Element <code>administrator-role</code> deklarierten Benutzers übereinstimmen.</li>
@@ -2338,9 +2358,9 @@ Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in
                                 Modifizieren Sie die Datei <b>conf/server.xml</b>. Legen Sie im Verwaltungsservicekontext und in jedem Laufzeitkontext die folgenden JNDI-Eigenschaften fest.
 {% highlight xml %}
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
-<Environment name="mfp.admin.serverid" value="Farmmember1" type="java.lang.String" override="false"/>
+<Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                Die Eigenschaft <b>mfp.admin.serverid</b> muss auf die ID gesetzt werden, die Sie für dieses Farmmember definiert haben. Diese Kennung muss für jedes Farmmember eindeutig sein.
+                                Die Eigenschaft <b>mfp.admin.serverid</b> muss auf die Kennung gesetzt sein, die Sie für dieses Farm-Member definiert haben. Diese Kennung muss für jedes Farmmember eindeutig sein.
                                 <br/>
                                 Stellen Sie sicher, dass das JVM-Argument <code>-Djava.rmi.server.hostname</code> auf die IP-Adresse oder den Hostnamen gesetzt ist, die bzw. den ferne Member für den Zugriff auf diesen Server verwenden. Das Argument darf daher nicht auf <b>localhost</b> gesetzt werden. Außerdem müssen Sie sicherstellen, dass für das JVM-Argument <code>-Dcom.sun.management.jmxremote.port</code> ein Port definiert wird, der noch nicht für die Aktivierung von JMX-RMI-Verbindungen verwendet wird. Beide Argumente werden in der Umgebungsvariablen <b>CATALINA_OPTS</b> festgelegt.</li>
                             <li><b>WebSphere Application Server Full Profile</b>
@@ -2391,6 +2411,10 @@ Informationen zu den unterstützten Versionen der Anwendungsserver finden Sie in
                                 <ul>
                                     <li>Importieren Sie die öffentlichen Zertifikate der anderen Server der Farm in den Truststore, auf den die Konfigurationsdatei <b>server.xml</b> des Servers verweist. Das Lernprogramm (<a href="../../simple-install/graphical-mode">{{ site.data.keys.mf_server }} im Grafikmodus installieren</a>) enthält die Anweisungen für den Austausch der Zertifikate zwischen zwei Liberty-Servern einer Farm. Weitere Informationen finden Sie unter <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Farm mit zwei Liberty-Servern für {{ site.data.keys.mf_server }} erstellen</a> in Schritt 5.</li>
                                     <li>Starten Sie jede Instanz von WebSphere Application Server Liberty Profile neu, damit die Sicherheitskonfiguration wirksam wird. Die folgenden Schritte sind erforderlich, wenn Sie mit SSO arbeiten möchten.</li>
+                                    <li>Tauschen Sie die Unterzeichnerzertifikate aus, die sich im Truststore der einzelnen Server befinden.
+                            <br/><br/>
+                                    <blockquote><b>Hinweis</b>: Dieser Schritt ist für Farmen obligatorisch, die WebSphere Application Server Full Profile oder Liberty verwenden, da die Sicherheit aktiviert sein muss. Bei Liberty-Farmen muss außerdem die LTPA-Konfiguration auf jedem Server repliziert werden, damit das Single Sign-on funktioniert. Führen Sie dazu die folgenden Konfigurationsschritte aus.</blockquote>
+                                    </li>
                                     <li>Starten Sie ein Member der Farm. Nach erfolgreichem Start des Liberty-Servers wird in der LTPA-Standardkonfiguration der LTPA-Keystore <b>${wlp.user.dir}/servers/Servername/resources/security/ltpa.keys</b> generiert.</li>
                                     <li>Kopieren Sie die Datei <b>ltpa.keys</b> in das Verzeichnis <b>${wlp.user.dir}/servers/Servername/resources/security</b> jedes Farmmembers, um die LTPA-Keystores auf allen Farmmembern zu replizieren. Weitere Informationen zur LTPA-Konfiguration finden Sie unter <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">LTPA im Liberty-Profil konfigurieren</a>.</li>
                                 </ul>
@@ -2521,7 +2545,7 @@ In den folgenden Artikeln finden Sie weitere Einzelheiten zur Lizenzüberwachung
 Ein Scheduler wird acht Stunden nach einem Serverstart ausgeführt. Wenn die Server beispielsweise heute um 23.00 Uhr gestartet werden, wird der Scheduler nicht morgen um 1.00 Uhr ausgeführt (wie es standardmäßig der Fall wäre), sondern erst übermorgen um 1.00 Uhr. Zwischen dem Start des Servers und der Ausführung des Schedulers müssen mindestens acht Stunden liegen.
 
 Ab dem vorläufigen Fix [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) liegt der Abstand zwischen dem Serverstart und der Ausführung des Schedulers nicht mehr bei acht Stunden, sondern bei vier Stunden.
-Außerdem wurde mit diesem Fix die neue Eigenschaft *MFP.SCHEDULER.STARTHOUR* eingeführt. Mithilfe dieser Eigenschaft kann der Kunde für die Ausführung des Schedulers eine andere als die Standardzeit (1.00 Uhr) festlegen. Die Eigenschaft kann auf einen Wert von 1 bis 23 gesetzt werden. Diese Eigenschaft stellt sicher, dass der Kunde den Start seines Schedulers in eine Zeit mit wenig Datenverkehr legen kann und dass der Scheduler unabhängig vom täglichen Start der Server ausgeführt wird. Ein Kunde, der seinen Server jede Nacht um 1.00 Uhr startet, kann *MFP.SCHEDULER.STARTHOUR* auf den Wert 5 setzen. So wird ein vierstündiger Abstand zwischen dem Neustart des Servers und der Ausführung des Schedulers (um 5.00 Uhr) sichergestellt. 
+Außerdem wurde mit diesem Fix die neue Eigenschaft *mfp.scheduler.startHour* eingeführt. Mithilfe dieser Eigenschaft kann der Kunde für die Ausführung des Schedulers eine andere als die Standardzeit (1.00 Uhr) festlegen. Die Eigenschaft kann auf einen Wert von 1 bis 23 gesetzt werden. Diese Eigenschaft stellt sicher, dass der Kunde den Start seines Schedulers in eine Zeit mit wenig Datenverkehr legen kann und dass der Scheduler unabhängig vom täglichen Start der Server ausgeführt wird. Ein Kunde, der seinen Server jede Nacht um 1.00 Uhr startet, kann *mfp.scheduler.startHour* auf den Wert 5 setzen. So wird ein vierstündiger Abstand zwischen dem Neustart des Servers und der Ausführung des Schedulers (um 5.00 Uhr) sichergestellt. 
 
 Sie sollten die Lizenzüberwachung aufgrund der datenbankintensiven Aktivitäten inaktivieren. Nur Kunden mit einem Lizenzierungsmodell für adressierbare Mobile-Foundation-Geräten müssen die Lizenzüberwachung ausführen. 
 

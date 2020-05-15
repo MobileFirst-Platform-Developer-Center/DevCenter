@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Supervisión de Mobile Foundation en IBM Cloud Private (ICP)
-breadcrumb_title: Monitoring Mobile Foundation
+breadcrumb_title: Supervisión de Mobile Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---

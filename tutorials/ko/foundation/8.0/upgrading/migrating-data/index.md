@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: IMFData 또는 Cloudant SDK로 Cloudant에 모바일 데이터를 저장하는 앱 마이그레이션
-breadcrumb_title: Migrating apps storing mobile data
-weight: 5
+breadcrumb_title: 모바일 데이터를 저장하는 앱 마이그레이션
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요

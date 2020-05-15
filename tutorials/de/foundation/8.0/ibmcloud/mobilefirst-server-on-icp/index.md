@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Mobile Foundation für IBM Cloud Private installieren
-breadcrumb_title: Foundation on IBM Cloud Private
+breadcrumb_title: Foundation in IBM Cloud Private
 relevantTo: [ios,android,windows,javascript]
 weight: 8
 ---
@@ -45,7 +45,7 @@ Für die Verwaltung von Containern und Images müssen Sie im Rahmen des IBM Clou
 
 > Installieren Sie die gleiche Kube-CLI, IBM Cloud-CLI und Helm-Version wie in Ihrem ICP-Cluster (Download in der IBM Cloud-Private-Management-Konsole und Klick auf **Menü > Befehlszeilentools > Cloud-Private-CLI**).
 
-Beispiel: 
+Beispiel:
 
 Für die Erstellung von Kubernetes-Artefakten wie geheimen Schlüsseln, persistenten Datenträgern und Anforderungen persistenter Datenträger in IBM Cloud Private benötigen Sie die CLI `kubectl`.
 
@@ -172,7 +172,7 @@ Geheime Schlüsselobjekte bieten die Möglichkeit, sensible Daten wie Kennwörte
       ```
    >HINWEIS: Sie müssen den richtigen Namespace zur obigen YAML-Datei hinzufügen.
 
-2. Obligatorisch: Für die Anmeldung bei Server, Analytics und Application-Center-Konsole ist ein vorab erstellter **geheimer Anmeldeschlüssel** erforderlich. Beispiel: 
+2. Obligatorisch: Für die Anmeldung bei Server, Analytics und Application-Center-Konsole ist ein vorab erstellter **geheimer Anmeldeschlüssel** erforderlich. Beispiel:
 
    ```bash
    kubectl create secret generic serverlogin --from-literal=MFPF_ADMIN_USER=admin --from-literal=MFPF_ADMIN_PASSWORD=admin
@@ -198,7 +198,7 @@ Geheime Schlüsselobjekte bieten die Möglichkeit, sensible Daten wie Kennwörte
 
    Speichern Sie die Dateien `keystore.jks` und `truststore.jks` sowie die zugehörigen Kennwörter wie nachfolgend angegeben.  
 
-   Beispiel: 
+   Beispiel:
 
    ```bash
    kubectl create secret generic server --from-file=./keystore.jks --from-file=./truststore.jks --from-literal=KEYSTORE_PASSWORD=worklight --from-literal=TRUSTSTORE_PASSWORD=worklight

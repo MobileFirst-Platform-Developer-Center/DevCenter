@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Mise à jour de MobileFirst Server
-breadcrumb_title: Updating the MobileFirst server
+breadcrumb_title: Mise à jour de MobileFirst Server
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -26,6 +26,10 @@ L'installation de ce composant est facultative. Ce composant est indépendant de
 
 L'installation de ce composant est facultative. Les composants MobileFirst envoient des données à MobileFirst Operational Analytics via une API REST. Il est préférable d'exécuter MobileFirst Operational Analytics avec les autres composants de MobileFirst Server du même niveau de correctif provisoire.
 
+### MobileFirst Operational Analytics Receiver
+{: #analyticsreceiver}
+
+L'installation de ce composant est facultative. Les applications MobileFirst envoient des données de journal à MobileFirst Operational Analytics Receiver via une API REST. Installez ce composant uniquement si MobileFirst Operational Analytics est installé. Il est préférable d'exécuter MobileFirst Operational Analytics Receiver avec les autres composants de MobileFirst Server du même niveau de correctif provisoire (iFix).
 
 ## Mise à jour du service d'administration de MobileFirst Server, de MobileFirst Operations Console et de l'environnement d'exécution de MobileFirst
 {: #updating-server}

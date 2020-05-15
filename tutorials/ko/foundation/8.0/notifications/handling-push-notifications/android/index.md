@@ -59,9 +59,9 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
    ```xml
    implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
-   
+
    >**참고**: [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) 기능을 사용 중이고 기능 모듈에서 MobileFirst API를 호출하려는 경우 `implementation` 대신 `api` 선언을 사용하십시오. `api`를 사용하면 기능 모듈을 포함한 앱에 있는 모든 모듈에서 MobileFirst API가 사용 가능하도록 하는 반면 `implementation`을 사용하면 동일한 모듈 자체 내로만 MobileFirst API 사용을 제한합니다. 세부사항은 [API 및 구현 분리](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation)를 읽으십시오.
-   
+
 ```xml
  api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
 ```
@@ -144,16 +144,16 @@ Android 애플리케이션이 수신된 푸시 알림을 처리할 수 있으려
 ### 클라이언트 측
 {: #client-side }
 
-|Java 메소드 |설명 |
+| Java 메소드 | 설명 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-|[`initialize(Context context);`](#initialization) |제공된 컨텍스트에 대해 MFPPush를 초기화합니다. |
-|[`isPushSupported();`](#is-push-supported) |디바이스가 푸시 알림을 지원하는지 확인합니다. |
-|[`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) |디바이스를 푸시 알림 서비스에 등록합니다. |
-|[`getTags(MFPPushResponseListener)`](#get-tags) |푸시 알림 서비스 인스턴스에서 사용 가능한 태그를 검색합니다. |
-|[`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) |디바이스를 지정된 태그에 등록합니다. |
-|[`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) |디바이스가 현재 등록된 모든 태그를 검색합니다. |
-|[`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) |특정 태그에서 등록 취소합니다. |
-|[`unregisterDevice(MFPPushResponseListener)`](#unregister) |푸시 알림 서비스에서 디바이스를 등록 취소합니다. |
+| [`initialize(Context context);`](#initialization) | 제공된 컨텍스트에 대해 MFPPush를 초기화합니다. |
+| [`isPushSupported();`](#is-push-supported) | 디바이스가 푸시 알림을 지원하는지 확인합니다. |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | 디바이스를 푸시 알림 서비스에 등록합니다. |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | 푸시 알림 서비스 인스턴스에서 사용 가능한 태그를 검색합니다. |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 디바이스를 지정된 태그에 등록합니다. |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | 디바이스가 현재 등록된 모든 태그를 검색합니다. |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 특정 태그에서 등록 취소합니다. |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | 푸시 알림 서비스에서 디바이스를 등록 취소합니다. |
 
 #### 초기화
 {: #initialization }
@@ -360,20 +360,25 @@ FCM에서 애플리케이션을 설정하는 작업은 이전 GCM 모델에서�
     ```xml
     dependencies {
        ......
-       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       compile 'com.google.firebase:firebase-messaging:17.6.0'
        .....
     }
-    
+
     apply plugin: 'com.google.gms.google-services'
     ```
 
-    
+    - 루트 `build.gradle` 파일의 **buildscript** 섹션에 다음 종속성을 추가하십시오.
+      ```
+      classpath 'com.google.gms:google-services:3.0.0'
+      ```
 
-    - 루트 build.gradle의 `buildscript` 섹션에서 다음 종속 항목을 추가하십시오.
+    - `build.gradle` 파일에서 다음 GCM 플러그인을 제거하십시오.
+      ```
+      compile  com.google.android.gms:play-services-gcm:+
+      ```
 
-      `classpath 'com.google.gms:google-services:3.0.0'`
+    >**참고**: Android Studio v3.2 이하를 사용 중인 경우 각 종속성 행에 하나의 버전 번호만 지정되어 있는지 확인하십시오.
 
-    - build.gradle 파일에서 다음 GCM 플러그인을 제거하십시오. `compile  com.google.android.gms:play-services-gcm:+`
 
  3. AndroidManifest 파일을 구성하십시오. `AndroidManifest.xml`에서 다음과 같이 변경해야 합니다.
 

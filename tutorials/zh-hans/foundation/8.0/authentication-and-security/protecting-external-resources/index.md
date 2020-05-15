@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 使用 MobileFirst Server 认证外部资源
-breadcrumb_title: Protecting External Resources
+breadcrumb_title: 保护外部资源
 relevantTo: [android,ios,windows,javascript]
 weight: 12
 show_children: true

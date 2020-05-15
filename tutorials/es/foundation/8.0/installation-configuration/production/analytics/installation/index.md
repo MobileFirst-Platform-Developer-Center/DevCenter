@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Guía de instalación de MobileFirst Analytics Server
-breadcrumb_title: Installation Guide
+breadcrumb_title: Guía de instalación
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -254,8 +254,9 @@ Los pasos siguientes describen cómo instalar y ejecutar el archivo EAR de Analy
 9. Para habilitar el acceso al servicio de analíticas a través de la documentación de Swagger, complete los pasos siguientes:
     * Pulse **Servidores > Tipos de servidores > Servidores de aplicaciones de WebSphere** y elija el servidor en el que está desplegado el servicio de Analytics, en la lista de servidores.
     * En **Infraestructura del servidor**, pulse **Java** y vaya a **Gestión de procesos > Definición de procesos > Máquina virtual Java > Propiedades personalizadas**.
-      - Establezca la siguiente propiedad personalizada<br/>
-**Nombre de propiedad:***com.ibm.ws.classloader.strict*<br/>**Valor:***true*
+      - Establezca la propiedad personalizada siguiente<br/>
+        **Nombre de propiedad:** *com.ibm.ws.classloader.strict*<br/>
+        **Valor:** *true*
 
 10. Inicie la aplicación {{ site.data.keys.mf_analytics }} y vaya al enlace en el navegador: `http://<hostname>:<port>/analytics/console`.
 
@@ -309,7 +310,7 @@ La tabla siguiente muestra la correlación entre tipos de sucesos antiguos y nue
 | AlertDefinition	        | AlertDefinition        |
 | AlertNotification	        | AlertNotification      |
 | AlertRunnerNode	        | AlertRunnerNode        |
-| AnalyticsConfiguration    | AnalyticsConfiguration |
+| AnalyticsConfiguration    |AnalyticsConfiguration |
 | CustomCharts	            | CustomChart            |
 | CustomData	            | CustomData             |
 | Devices	                | Device                 |

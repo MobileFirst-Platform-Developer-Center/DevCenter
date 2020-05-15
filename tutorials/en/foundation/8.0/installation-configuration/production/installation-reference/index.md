@@ -1540,8 +1540,8 @@ On Windows: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME
 {: #step-3 }
 Similarly, if your application server is WebSphere Application Server Liberty profile, or Apache Tomcat, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following files:
 
-* For WebSphere Application Server Liberty profile: **wlp/usr/servers/<server>/server.xml**
-* For Apache Tomcat: **conf/server.xml**
+* For WebSphere Application Server Liberty profile: `wlp/usr/servers/<server>/server.xml`
+* For Apache Tomcat: `conf/server.xml`
 
 ### Step 4
 {: #step-4 }

@@ -31,7 +31,7 @@ Zusätzliche Protokollierungsstufen von der geringsten bis zur größten Ausfüh
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
 * Abruf der Protokolle in einer Cloudimplementierung: 
     * IBM Container- oder Liberty-Buildpack (siehe Lernprogramm [Protokoll und Traceerfassung in IBM Containern](../../../ibmcloud/mobilefirst-server-using-scripts/log-and-trace-collection/))
-    * IBM Cloud-Service "Mobile Foundation" (siehe Abschnitt [Zugriff auf Serverprotokolle](../../../ibmcloud/using-mobile-foundation/#accessing-server-logs) im Lernprogramm [Mobile Foundation verwenden](../../../ibmcloud/using-mobile-foundation))
+    * IBM Cloud-Service für die Mobile Foundation (siehe Abschnitt [Zugriff auf Serverprotokolle](../../../ibmcloud/using-mobile-foundation/#accessing-server-logs) im Lernprogramm [Mobile Foundation verwenden](../../../ibmcloud/using-mobile-foundation))
 
 ## Protokolle zum Analytics Server weiterleiten
 {: #forwarding-logs-to-the-analytics-server }

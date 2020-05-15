@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Application Center mit Scripts in einem IBM Cloud-Kubernetes-Cluster einrichten
-breadcrumb_title: AppCenter on Kubernetes using scripts
+breadcrumb_title: Application Center in Kubernetes unter Verwendung von Scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
@@ -258,7 +258,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
 
             <ol>
                 <li><b>initenv.sh – Anmeldung bei IBM Cloud</b><br />
-Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung der {{ site.data.keys.mf_app_center }} in IBM Containern zu erstellen:
+                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.mf_app_center }} in IBM Containern zu erstellen:
                     <b>Interaktiver Modus</b>
 {% highlight bash %}
 ./initenv.sh
@@ -269,7 +269,7 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
 {% endhighlight %}
                 </li>
                 <li><b>prepareappcenterdbs.sh - Erstellung der MobileFirst-Application-Center-Datenbank</b><br />
-                    Das Script <b>prepareappcenterdbs.sh</b> wird verwendet, um Ihren {{ site.data.keys.mf_app_center }} mit dem Db2-Datenbankservice zu konfigurieren. Die Instanz des Db2-Service muss in der Organisation und in dem Bereich verfügbar sein, für die Sie sich in Schritt 1 angemeldet haben.
+                    Das Script <b>prepareappcenterdbs.sh</b> wird verwendet, um Ihren {{ site.data.keys.mf_app_center }} mit dem Db2-Datenbankservice zu konfigurieren. Die Instanz des Db2-Service muss in der Organisation und dem Bereich verfügbar sein, bei denen Sie sich in Schritt 1 angemeldet haben. Führen Sie Folgendes aus:
                     <b>Interaktiver Modus</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh
@@ -285,7 +285,7 @@ Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellu
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-</li>
+                </li>
                 <li><b>prepareappcenter.sh - Erstellung eines MobileFirst-Application-Center-Image</b><br />
                     Führen Sie das Script <b>prepareappcenter.sh</b> aus, um das MobileFirst-Application-Center-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu stellen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>bx cr image-list</code> aus. <br/>
                     Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/>

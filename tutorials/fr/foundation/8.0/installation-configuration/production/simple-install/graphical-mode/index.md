@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation de MobileFirst Server en mode graphique
-breadcrumb_title: Graphical mode installation
+breadcrumb_title: Installation en mode graphique
 show_breadcrumb: true
 weight: 2
 ---
@@ -30,7 +30,7 @@ Utilisez le mode graphique d'IBM Installation Manager et l'outil de configuratio
 * Java version 7 ou ultérieure.
 
 * Téléchargez le programme d'installation d'IBM Installation Manager version 1.8.4 ou ultérieure à partir du site [Installation Manager and Packaging Utility download documents](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* Vous devez également disposer du référentiel d'installation de {{ site.data.keys.mf_server }} et du programme d'installation de WebSphere  Application Server Liberty Core version 8.5.5.3 ou ultérieure. Téléchargez ces packages à partir de {{ site.data.keys.product }} eAssembly sur le site Passport Advantage :
+* Vous devez également disposer du référentiel d'installation de {{ site.data.keys.mf_server }} et du programme d'installation de WebSphere Application Server Liberty Core version 8.5.5.3 ou ultérieure. Téléchargez ces packages à partir de {{ site.data.keys.product }} eAssembly sur le site Passport Advantage :
 
 Référentiel d'installation de **{{ site.data.keys.mf_server }}**  
 {{ site.data.keys.product }} V8.0 .zip file of Installation Manager Repository for {{ site.data.keys.mf_server }}
@@ -113,7 +113,7 @@ La page d'accueil par défaut se trouve sur le site http://localhost:9080.
 
 ### Installation de {{ site.data.keys.mf_server }}
 {: #installing-mobilefirst-server }
-Exécutez Installation Manager pour installer les fichiers binaires de {{ site.data.keys.mf_server }} sur votre disque avant de créer les bases de données et de déployer {{ site.data.keys.mf_server }} sur le profil Liberty. Lors de l'installation de {{ site.data.keys.mf_server }} à l'aide d'Installation Manager, une option permettant d'installer  {{ site.data.keys.mf_app_center }} vous est proposée. Application Center est un autre composant du produit. Pour les besoins de ce tutoriel, il n'est pas nécessaire de l'installer avec {{ site.data.keys.mf_server }}.
+Exécutez Installation Manager pour installer les fichiers binaires de {{ site.data.keys.mf_server }} sur votre disque avant de créer les bases de données et de déployer {{ site.data.keys.mf_server }} sur le profil Liberty. Lors de l'installation de {{ site.data.keys.mf_server }} à l'aide d'Installation Manager, une option permettant d'installer {{ site.data.keys.mf_app_center }} vous est proposée. Application Center est un autre composant du produit. Pour les besoins de ce tutoriel, il n'est pas nécessaire de l'installer avec {{ site.data.keys.mf_server }}.
 
 1. Lancez Installation Manager.
 2. Ajoutez le référentiel de {{ site.data.keys.mf_server }} dans Installation Manager.
@@ -145,6 +145,7 @@ Ces ressources figurent dans les dossiers suivants :
 * Dossier PushService pour le service push de {{ site.data.keys.mf_server }}
 * Dossier ApplicationCenter pour Application Center
 * Dossier Analytics pour {{ site.data.keys.mf_analytics }}
+* Dossier AnalyticsReceiver pour {{ site.data.keys.mf_analytics_receiver }}
 
 L'objectif de ce tutoriel est d'installer {{ site.data.keys.mf_server }} à l'aide des ressources contenues dans le dossier **MobileFirstServer**.  
 En outre, le dossier **shortcuts** contient des raccourcis pour l'outil de configuration de serveur, les tâches Ant et le programme mfpadm.
@@ -202,6 +203,10 @@ L'outil de configuration de serveur ne déploie pas les applications {{ site.dat
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }} est généralement déployé sur un ensemble de serveurs autre que {{ site.data.keys.mf_server }} en raison de ses exigences élevées en matière de mémoire. {{ site.data.keys.mf_analytics }} peut être installé manuellement ou à l'aide de tâches Ant. Si ce composant est déjà installé, vous pouvez entrer son URL, le nom d'utilisateur et le mot de passe afin de lui envoyer des données dans l'outil de configuration de serveur. L'outil de configuration de serveur configurera ensuite les applications {{ site.data.keys.product_adj }} afin d'envoyer des données à {{ site.data.keys.mf_analytics }}.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+{{ site.data.keys.mf_analytics_receiver }} est généralement déployé sur un ensemble de serveurs autres que {{ site.data.keys.mf_server }} et {{ site.data.keys.mf_analytics }} en raison des exigences élevées en matière de mémoire. {{ site.data.keys.mf_analytics_receiver }} peut être installé manuellement ou à l'aide de tâches Ant. Si ce composant est déjà installé, vous pouvez entrer son URL, le nom d'utilisateur et le mot de passe afin de lui envoyer des données dans l'outil de configuration de serveur. L'outil de configuration de serveur configurera ensuite les applications {{ site.data.keys.product_adj }} afin d'envoyer des données à {{ site.data.keys.mf_analytics_receiver }}.
+
 #### Application Center
 {: #application-center }
 Cette application peut être utilisée pour distribuer des applications mobiles en interne aux employés qui utilisent les applications, ou à des fins de test. Indépendante de {{ site.data.keys.mf_server }}, elle n'a pas besoin d'être installée en même temps que ce produit.
@@ -255,13 +260,17 @@ Cette application peut être utilisée pour distribuer des applications mobiles 
 
     Un identificateur et un mot de passe de client sont requis pour enregistrer le service push et le service d'administration en tant que clients OAuth confidentiels pour le serveur d'autorisations (par défaut, il s'agit du composant d'environnement d'exécution). L'outil de configuration de serveur génère un ID et un mot de passe aléatoire pour chacun des services, que vous pouvez conserver tels quels pour ce tutoriel de mise en route.
 16. Cliquez sur **Suivant**.
-17. Conservez les entrées par défaut sur le panneau **Analytics Setting**.
+17. Conservez les entrées par défaut sur le panneau **Analytics Receiver Setting**.
+
+    Pour activer la connexion au serveur Analytics Receiver, vous devez d'abord installer {{ site.data.keys.mf_analytics_receiver }}. Toutefois, l'installation n'est pas abordée dans ce tutoriel.
+18. Cliquez sur **Suivant**.    
+19. Conservez les entrées par défaut sur le panneau **Analytics Setting**.
 
     Pour activer la connexion au serveur Analytics, vous devez d'abord installer {{ site.data.keys.mf_analytics }}. Toutefois, l'installation n'est pas abordée dans ce tutoriel.
-18. Cliquez sur **Deploy**.
+20. Cliquez sur **Deploy**.
 
 Vous pouvez voir les informations détaillées relatives aux opérations effectuées dans la **fenêtre console**.  
-Un fichier Ant est sauvegardé. L'outil de configuration de serveur vous aide à créer un fichier Ant pour l'installation et la mise à jour de votre configuration. Ce fichier Ant peut être exporté à l'aide de l'option **File → Export Configuration as Ant Files...**. Pour plus d'informations sur ce fichier Ant, voir  la section Déploiement de {{ site.data.keys.mf_server }} sur Liberty à l'aide de tâches Ant dans la rubrique Installation de {{ site.data.keys.mf_server }} [ en mode de ligne de commande](../command-line).
+Un fichier Ant est sauvegardé. L'outil de configuration de serveur vous aide à créer un fichier Ant pour l'installation et la mise à jour de votre configuration. Ce fichier Ant peut être exporté à l'aide de l'option **File → Export Configuration as Ant Files...**. Pour plus d'informations sur ce fichier Ant, voir la section Déploiement de {{ site.data.keys.mf_server }} sur Liberty à l'aide de tâches Ant dans la rubrique Installation de {{ site.data.keys.mf_server }} [ en mode de ligne de commande](../command-line).
 
 Ensuite, le fichier Ant est exécuté et les opérations suivantes sont effectuées :
 
@@ -303,7 +312,7 @@ Le fichier **server.xml** et certains paramètres de serveur d'applications sont
 
 2. `host='*'` est ajouté dans la déclaration `httpEndPoint`.
 
-    Ce paramètre permet d'autoriser la connexion au serveur à partir de toutes les interfaces réseau. Pour un environnement de production, vous souhaiterez peut-être restreindre la valeur hôte du noeud final HTTP.
+    Ce paramètre permet d'autoriser la connexion au serveur à partir de toutes les interfaces réseau. Pour un environnement de production, vous souhaiterez peut-être restreindre la valeur hôte du point de terminaison HTTP.
 3. L'élément **tcpOptions** (**tcpOptions soReuseAddr="true"**) est ajouté dans la configuration de serveur pour redéfinir immédiatement les accès à un port sans programme d'écoute actif et pour améliorer le débit du serveur.
 4. Un magasin de clés portant l'ID **defaultKeyStore** est créé, le cas échéant.
 
@@ -332,7 +341,7 @@ Les applications suivantes sont installées :
 * **mfpadmin** : service d'administration
 * **mfpadminconfig** : service Live Update
 * **mfpconsole** : {{ site.data.keys.mf_console }}
-* **mobilefirs**t : composant d'exécution de {{ site.data.keys.product_adj }}
+* **mobilefirst** : composant d'exécution de {{ site.data.keys.product_adj }}
 * **imfpush** : service push
 
 L'outil de configuration de serveur installe toutes les applications sur le même serveur. Vous pouvez séparer les applications dans différents serveurs d'applications, mais sous certaines contraintes documentées dans la section [Topologies et flots réseau](../../../prod-env/topologies).  

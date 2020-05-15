@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM MobileFirst Foundation のアクセシビリティー機能
-breadcrumb_title: Accessibility features
+breadcrumb_title: アクセシビリティー機能
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->

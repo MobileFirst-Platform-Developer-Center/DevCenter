@@ -89,7 +89,7 @@ El archivo **adapter.xml** también puede contener propiedades personalizadas de
 Los elementos de propiedades de configuración se deben ubicar **bajo** el elemento `JAXRSApplicationClass`.  
 En el ejemplo anterior hemos definido los valores de conexión y les hemos otorgado valores predeterminados, de forma que se puedan utilizar más tarde en la clase AdapterApplication.
 
-El elemento `<property>` toma los siguientes atributos:
+El elemento `<property>` tiene los atributos siguientes:
 
 - **name**: Nombre de la propiedad, tal como se define en la clase de configuración.
 - **defaultValue**: Modifica el valor predeterminado definido en la clase de configuración.

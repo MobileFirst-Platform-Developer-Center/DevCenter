@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: データの保存と消去
-breadcrumb_title: Data Retention and Purging
+breadcrumb_title: データの保存と消去
 relevantTo: [ios,android,javascript]
 weight: 6
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 웹 개발 환경 설정
-breadcrumb_title: Web
+breadcrumb_title: 웹
 relevantTo: [javascript]
 weight: 6
 ---
@@ -22,12 +22,12 @@ weight: 6
 
 #### 다음으로 이동
 {: #jump-to }
-- [선행 조건](#prerequisites)
+- [전제조건](#prerequisites)
 - [WebSphere Liberty 프로파일을 사용하여 웹 애플리케이션 리소스 제공](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
 - [Node.js 사용](#using-nodejs)
 - [다음 단계](#next-steps)
 
-## 선행 조건
+## 전제조건
 {: #prerequisites }
 -   {: #web-app-supported-browsers }
     다음 브라우저 버전용 웹 애플리케이션이 지원됩니다. 버전 번호는 각 브라우저의 완전히 지원되는 버전 중 가장 빠른 버전을 나타냅니다.
@@ -64,14 +64,14 @@ weight: 6
     > 여기서부터 **webapp** 폴더를 웹 애플리케이션의 개발 위치로 간주하십시오.
 
 2. `mvn clean install` 명령을 실행하여 애플리케이션의 웹 리소스가 포함된 .war 파일을 생성하십시오.  
-생성된 .war 파일은 **[MyWebApp] → target** 폴더에 있습니다.
+   생성된 .war 파일은 **[MyWebApp] → target** 폴더에 있습니다.
    
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 웹 리소스를 업데이트할 때마다 `mvn clean install`을 실행해야 합니다.
 
 ### 애플리케이션 서버에 Maven webapp 추가
 {: #adding-the-maven-webapp-to-the-application-server }
 1. WebSphere Application Server의 **server.xml 파일**을 편집하십시오.  
-{{ site.data.keys.mf_dev_kit }}을 사용하는 경우 파일의 위치는 [**{{ site.data.keys.mf_dev_kit }}] → mfp-server → user → servers → mfp** 폴더입니다. 다음 항목을 추가하십시오.
+    {{ site.data.keys.mf_dev_kit }}을 사용하는 경우 파일의 위치는 [**{{ site.data.keys.mf_dev_kit }}] → mfp-server → user → servers → mfp** 폴더입니다. 다음 항목을 추가하십시오.
 
    ```xml
    <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>

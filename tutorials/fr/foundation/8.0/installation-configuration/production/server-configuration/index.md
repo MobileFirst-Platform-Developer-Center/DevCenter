@@ -11,7 +11,7 @@ Déterminez votre stratégie de sauvegarde et de récupération, optimisez la co
 #### Aller à
 {: #jump-to }
 
-* [Noeuds finaux du serveur de production de {{ site.data.keys.mf_server }}](#endpoints-of-the-mobilefirst-server-production-server)
+* [Points de terminaison du serveur de production de {{ site.data.keys.mf_server }}](#endpoints-of-the-mobilefirst-server-production-server)
 * [Configuration de {{ site.data.keys.mf_server }} pour activer TLS V1.2](#configuring-mobilefirst-server-to-enable-tls-v12)
 * [Configuration de l'authentification d'utilisateur pour l'administration de {{ site.data.keys.mf_server }} ](#configuring-user-authentication-for-mobilefirst-server-administration)
 * [Liste des propriétés JNDI des applications Web de {{ site.data.keys.mf_server }}](#list-of-jndi-properties-of-the-mobilefirst-server-web-applications)
@@ -21,9 +21,9 @@ Déterminez votre stratégie de sauvegarde et de récupération, optimisez la co
 * [Configuration du suivi des licences](#configuring-license-tracking)
 * [Configuration SSL WebSphere Application Server et adaptateurs HTTP](#websphere-application-server-ssl-configuration-and-http-adapters)
 
-## Noeuds finaux du serveur de production de {{ site.data.keys.mf_server }}
+## Points de terminaison du serveur de production de {{ site.data.keys.mf_server }}
 {: #endpoints-of-the-mobilefirst-server-production-server }
-Vous pouvez créer des listes blanches et des listes noires pour les noeuds finaux du serveur IBM {{ site.data.keys.mf_server }}.
+Vous pouvez créer des listes blanches et des listes noires pour les points de terminaison du serveur IBM {{ site.data.keys.mf_server }}.
 
 > **Remarque :** Des informations sur les URL qui sont exposées par {{ site.data.keys.product }} sont fournies comme instructions. Les organisations doivent s'assurer que les URL sont testées dans une infrastructure d'entreprise, en fonction de ce qui a été activé pour les listes blanches et les listes noires.
 
@@ -490,6 +490,7 @@ Le tableau suivant répertorie les propriétés {{ site.data.keys.product_adj }}
 
 | Propriété | Description |
 |----------|-------------|
+| mfp.scheduler.startHour | Facultative. Disponible à partir du correctif temporaire *8.0.0.0-MFPF-IF201907091643*. Le client peut choisir l'heure d'exécution du planificateur au lieu de la valeur par défaut (01h00). La valeur de cette propriété peut être comprise entre 1 et 23. Cette propriété permet au client de régler le démarrage du planificateur à l'heure où le trafic est le moins chargé et de s'assurer que le planificateur s'exécute malgré le démarrage quotidien du serveur. <br/>**Remarque importante** : Il doit y avoir une différence de 4 heures entre la valeur configurée et l'heure de démarrage du serveur. Si l'intervalle entre l'heure de démarrage du planificateur et celle du serveur est inférieur à 4 heures, le planificateur repousse son exécution à la même heure le lendemain. |
 | mfp.admin.jmx.dmgr.host | Obligatoire. Nom d'hôte du gestionnaire de déploiement. WebSphere Application Server Network Deployment uniquement. |
 | mfp.admin.jmx.dmgr.port | Obligatoire. Port RMI ou SOAP du gestionnaire de déploiement. WebSphere Application Server Network Deployment uniquement. |
 | mfp.admin.jmx.host | Liberty uniquement. Nom d'hôte de la connexion REST JMX. Pour la collectivité Liberty, utilisez le nom d'hôte du contrôleur. |
@@ -499,11 +500,15 @@ Le tableau suivant répertorie les propriétés {{ site.data.keys.product_adj }}
 | mfp.admin.serverid | Obligatoire pour les parcs de serveurs et la collectivité Liberty, sinon, facultative.<br/><br/>Parc de serveurs : identificateur de serveur. Il doit être différent pour chaque serveur du parc de serveurs.<br/><br/>Collectivité Liberty : identificateur du membre. L'identificateur doit être différent pour chaque membre de la collectivité. La valeur Contrôleur ne peut pas être utilisée car elle est réservée pour le contrôleur de collectivité. |
 | mfp.topology.platform | Facultative. Type de serveur. Les valeurs valides sont les suivantes :<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>Si vous ne définissez pas la valeur, l'application tente de deviner le type de serveur. |
 | mfp.topology.clustermode | Facultative. En plus du type de serveur, spécifiez ici la topologie du serveur. Valeurs valides :<ul><li>Autonome<li>Cluster</li><li>Parc de serveurs</li></ul>La valeur par défaut est Autonome. |
-| mfp.admin.jmx.replica | Facultative. Pour la collectivité Liberty uniquement.<br/><br/>Ne définissez cette propriété que lorsque les composants d'administration qui gèrent cette exécution sont déployés sur des contrôleurs Liberty différents (répliques).<br/><br/>Liste des noeuds finaux des différentes répliques de contrôleur avec la syntaxe suivante : `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
+| mfp.admin.jmx.replica | Facultative. Pour la collectivité Liberty uniquement.<br/><br/>Ne définissez cette propriété que lorsque les composants d'administration qui gèrent cette exécution sont déployés sur des contrôleurs Liberty différents (répliques).<br/><br/>Liste des points de terminaison des différentes répliques de contrôleur avec la syntaxe suivante : `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` |
 | mfp.analytics.console.url | Facultative. URL exposée par IBM {{ site.data.keys.mf_analytics }} qui établit un lien vers la console Analytics. Définissez cette propriété si vous souhaitez accéder à la console Analytics à partir de {{ site.data.keys.mf_console }}. Par exemple, `http://<hostname>:<port>/analytics/console` |
 | mfp.analytics.password | Mot de passe qui est utilisé si le point d'entrée de données pour IBM {{ site.data.keys.mf_analytics }} est protégé par l'authentification de base. |
 | mfp.analytics.url | URL exposée par IBM {{ site.data.keys.mf_analytics }} qui reçoit les données d'analyse entrantes. Par exemple, `http://<hostname>:<port>/analytics-service/rest` |
 | mfp.analytics.username | Nom d'utilisateur qui est utilisé si le point d'entrée de données pour IBM {{ site.data.keys.mf_analytics }} est protégé par l'authentification de base.|
+| mfp.device.decommissionProcessingInterval | Définit la fréquence (en secondes) à laquelle la tâche de déclassement est exécutée. Valeur par défaut : 86400 (un jour). |
+| mfp.analytics.receiver.password | Mot de passe qui est utilisé si le point d'entrée de données pour IBM {{ site.data.keys.mf_analytics_receiver }} est protégé par l'authentification de base. |
+| mfp.analytics.receiver.url | URL exposée par IBM {{ site.data.keys.mf_analytics_receiver }} qui reçoit les données d'analyse entrantes. Par exemple, `http://<hostname>:<port>/analytics-receiver/rest` |
+| mfp.analytics.receiver.username | Nom d'utilisateur qui est utilisé si le point d'entrée de données pour IBM {{ site.data.keys.mf_analytics_receiver }} est protégé par l'authentification de base.|
 | mfp.device.decommissionProcessingInterval | Définit la fréquence (en secondes) à laquelle la tâche de déclassement est exécutée. Valeur par défaut : 86400 (un jour). |
 | mfp.device.decommission.when | Nombre de jours d'inactivité au terme desquels un appareil client est déclassé par la tâche de déclassement d'appareil. Valeur par défaut : 90 jours. |
 | mfp.device.archiveDecommissioned.when | Nombre de jours d'inactivité au terme desquels un appareil client déclassé est archivé.<br/><br/>Cette tâche écrit les appareils client déclassés dans un fichier archive. Les appareils client archivés sont écrits dans un fichier dans le répertoire **home\devices_archive** de {{ site.data.keys.mf_server }}. Le nom du fichier contient l'horodatage de création du fichier archive. Valeur par défaut : 90 jours. |
@@ -512,7 +517,7 @@ Le tableau suivant répertorie les propriétés {{ site.data.keys.product_adj }}
 | mfp.adapter.invocation.url | URL à utiliser pour appeler des procédures d'adaptateur à partir d'adaptateurs Java ou d'adaptateurs JavaScript qui sont appelés à l'aide du point final REST. Si cette propriété n'est pas définie, l'URL de la demande en cours d'exécution sera utilisée (il s'agit du comportement par défaut). Cette valeur doit contenir l'URL complète, y compris la racine de contexte. |
 | mfp.authorization.server | Mode de serveur d'autorisations. Peut être l'un des modes suivants :{::nomarkdown}<ul><li>Imbriqué : Utilisez le serveur d'autorisations de {{ site.data.keys.product_adj }}.</li><li>Externe : Utilisez un serveur d'autorisations externe.</li></ul>{:/}. Lorsque vous définissez cette valeur, vous devez également définir les propriétés **mfp.external.authorization.server.secret** et **mfp.external.authorization.server.introspection.url** pour votre serveur externe. |
 | mfp.external.authorization.server.secret | Secret du serveur d'autorisations externe. Cette propriété est obligatoire lorsque vous utilisez un serveur d'autorisations externe ; la propriété **mfp.authorization.server** a pour valeur Externe, sinon, elle est ignorée. |
-| mfp.external.authorization.server.introspection.url | URL du noeud final d'introspection du serveur d'autorisations externe. Cette propriété est obligatoire lorsque vous utilisez un serveur d'autorisations externe ; la propriété **mfp.authorization.server** a pour valeur **Externe**, sinon, elle est ignorée. |
+| mfp.external.authorization.server.introspection.url | URL du point de terminaison d'introspection du serveur d'autorisations externe. Cette propriété est obligatoire lorsque vous utilisez un serveur d'autorisations externe ; la propriété **mfp.authorization.server** a pour valeur **Externe**, sinon, elle est ignorée. |
 | ssl.websphere.config | Utilisée pour configurer le magasin de clés d'un adaptateur HTTP. Lorsque cette propriété a pour valeur false (valeur par défaut), cela indique à l'environnement d'exécution de {{ site.data.keys.product_adj }} qu'il doit utiliser le magasin de clés de {{ site.data.keys.product_adj }}. Lorsque cette propriété a pour valeur true, cela indique à l'environnement d'exécution de {{ site.data.keys.product_adj }} qu'il doit utiliser la configuration SSL WebSphere. Pour plus d'informations, voir [Configuration SSL WebSphere Application Server et adaptateurs HTTP](#websphere-application-server-ssl-configuration-and-http-adapters). |
 
 ### Liste des propriétés JNDI pour le service push de {{ site.data.keys.mf_server }}
@@ -535,11 +540,11 @@ Le tableau suivant répertorie les propriétés {{ site.data.keys.product_adj }}
 | mfp.push.db.cloudant.proxyHost | Facultative	| Hôte proxy du connecteur Cloudant. Par défaut : voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.db.cloudant.proxyPort | Facultative	| Port proxy du connecteur Cloudant. Par défaut : voir [https://github.com/cloudant/java-cloudant#advanced-configuration](https://github.com/cloudant/java-cloudant#advanced-configuration). |
 | mfp.push.services.ext.security | Facultative	| Plug-in d'extension de sécurité. |
-| mfp.push.security.endpoint | Facultative	| URL de noeud final pour le serveur d'autorisations. |
+| mfp.push.security.endpoint | Facultative	| URL de point de terminaison pour le serveur d'autorisations. |
 | mfp.push.security.user | Facultative	| Nom d'utilisateur permettant d'accéder au serveur d'autorisations. |
 | mfp.push.security.password | Facultative	| Mot de passe permettant d'accéder au serveur d'autorisations. |
 | mfp.push.services.ext.analytics | Facultative | Plug-in d'extension d'Analytics. |
-| mfp.push.analytics.endpoint | Facultative | URL de noeud final pour le serveur Analytics. |
+| mfp.push.analytics.endpoint | Facultative | URL de point de terminaison pour le serveur Analytics. |
 | mfp.push.analytics.user | Facultative | Nom d'utilisateur permettant d'accéder au serveur Analytics. |
 | mfp.push.analytics.password | Facultative | Mot de passe permettant d'accéder au serveur Analytics. |
 | mfp.push.analytics.events.notificationDispatch | Facultative	| Evénement d'analyse lorsque la notification est sur le point d'être déployée. Valeur par défaut : true |
@@ -925,11 +930,11 @@ Le suivi des licences est activé par défaut. Pour savoir comment configurer le
 
 ### Configuration du suivi des licences pour un appareil client et un appareil adressable
 {: #configuring-license-tracking-for-client-device-and-addressable-device }
-Le suivi des licences pour les appareils client et les appareils adressables est activé par défaut. Les rapports de licence sont disponibles dans {{ site.data.keys.mf_console }}. Vous  pouvez spécifier les propriétés JNDI suivantes pour modifier les paramètres par défaut du suivi des licences.
+Le suivi des licences pour les appareils client et les appareils adressables est activé par défaut. Les rapports de licence sont disponibles dans {{ site.data.keys.mf_console }}. Vous pouvez spécifier les propriétés JNDI suivantes pour modifier les paramètres par défaut du suivi des licences.
 
 > **Remarque :** Si vous disposez d'un contrat qui définit l'utilisation de l'octroi de licence de jeton, voir aussi [Installation et configuration pour l'octroi de licence de jeton](../token-licensing).
 
-Vous  pouvez spécifier les propriétés JNDI suivantes pour modifier les paramètres par défaut du suivi des licences.
+Vous pouvez spécifier les propriétés JNDI suivantes pour modifier les paramètres par défaut du suivi des licences.
 
 **mfp.device.decommission.when**  
 Nombre de jours d'inactivité au terme desquels un appareil est déclassé par la tâche de déclassement d'appareil. Les rapports de licence ne comptabilisent pas les appareils déclassés comme appareils actifs. La valeur par défaut de la propriété est 90 jours. Ne définissez pas une valeur inférieure à 30 jours si l'option de licence pour votre logiciel est Appareil client ou Appareil adressable, sinon, les rapports de licence ne seront peut-être pas suffisants pour prouver la conformité.

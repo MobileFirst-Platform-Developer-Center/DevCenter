@@ -6,10 +6,18 @@ weight: 12
 ## Übersicht
 {: #overview }
 In {{ site.data.keys.product_full }} Version 8.0 gibt es neue Konzepte für die Anwendungsentwicklung und -implementierung sowie einige API-Änderungen. Hier können Sie sich über diese Änderungen informieren, um die Umstellung Ihrer MobileFirst-Anwendungen zu planen. 
-
-> [Nutzen Sie für einen schnellen Einstieg in den Migrationsprozess das Migrations-Cookbook](migration-cookbook). 
-
 > Unter [lab]({{site.baseurl}}/labs/developers/8.0/advancedwallet/) finden Sie einen Leitfaden für die Durchführung der Migration von Version 7.1 auf Version 8.0. 
+
+Sie können einen der folgenden Ansätze für die Migration Ihrer Apps auf Mobile Foundation Version 8.0 nutzen.
+
+**Ansatz 1**
+
+Folgen Sie der Beschreibung im Migrations-Cookbook für eine qualifizierte Migration auf Mobile Foundation Version 8.0. Im Anschluss an die Migration wird Ihre App voll mit allen Features und Funktionen von Mobile Foundation Version 8.0 kompatibel sein.
+> [Lesen Sie das Migrations-Cookbook](migration-cookbook).
+
+**Ansatz 2**
+
+Nuten Sie das Mobile Foundation [Migration Studio]({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-studio/) für eine direkte Migration Ihrer Projekte aus MobileFirst Platform Foundation Version 7.1. Bei diesem Ansatz bleibt die traditionelle Hybridstruktur Ihrer App gewahrt, während sie in SDKs von Mobile Foundation Version 8.0 eingebettet wird und eine Verbindung zu einer Instanz von Mobile Foundation Version 8.0 herstellen kann.
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }

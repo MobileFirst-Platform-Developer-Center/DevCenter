@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server mit Scripts in einem IBM Cloud-Kubernetes-Cluster einrichten
-breadcrumb_title: Foundation on Kubernetes using scripts
+breadcrumb_title: Foundation in Kubernetes unter Verwendung von Scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
@@ -326,7 +326,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
 
             <ol>
                 <li><b>initenv.sh – Anmeldung bei IBM Cloud</b><br />
-                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung der {{ site.data.keys.mf_bm_short }} in IBM Containern zu erstellen:
+                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.mf_bm_short }} in IBM Containern zu erstellen:
                     <b>Interaktiver Modus</b>
 {% highlight bash %}
 ./initenv.sh
@@ -337,7 +337,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
 {% endhighlight %}
                 </li>
                 <li><b>prepareserverdbs.sh - Erstellung der MobileFirst-Server-Datenbank</b><br />
-                    Das Script <b>prepareserverdbs.sh</b> wird verwendet, um Ihren {{ site.data.keys.mf_server }} mit dem Db2-Datenbankservice zu konfigurieren. Die Instanz des Db2-Service muss in der Organisation und in dem Bereich verfügbar sein, für die Sie sich in Schritt 1 angemeldet haben.
+                    Das Script <b>prepareserverdbs.sh</b> wird verwendet, um Ihren {{ site.data.keys.mf_server }} mit dem Db2-Datenbankservice zu konfigurieren. Die Instanz des Db2-Service muss in der Organisation und dem Bereich verfügbar sein, bei denen Sie sich in Schritt 1 angemeldet haben. Führen Sie Folgendes aus:
                     <b>Interaktiver Modus</b>
 {% highlight bash %}
 ./prepareserverdbs.sh
@@ -353,7 +353,7 @@ Bei interaktiver Ausführung wird eine Kopie der angegebenen Argumente im Verzei
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-</li>
+                </li>
                 <li><b>prepareserver.sh - Erstellung eines MobileFirst-Server-Image</b><br />
                     Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image und ein MobileFirst-Analytics-Image zu erstellen und per Push-Operation in Ihr IBM Cloud-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem IBM Cloud-Repository anzeigen möchten, führen Sie <code>bx cr image-list</code> aus. <br/>
                     Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/>

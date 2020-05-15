@@ -13,3 +13,4 @@ weight: 15
 * [プッシュ通知]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/notifications)
 * [JSONStore]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/jsonstore)
 * [Analytics]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/analytics)
+* [AnalyticsReceiver]({{ site.baseurl }}/tutorials/ja/foundation/8.0/troubleshooting/analyticsreceiver)

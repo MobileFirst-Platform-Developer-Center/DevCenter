@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Incluindo um Robô de bate-papo
-weight: 9
+weight: 10
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

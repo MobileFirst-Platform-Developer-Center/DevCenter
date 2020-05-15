@@ -2,7 +2,7 @@
 layout: tutorial
 title: Eclipse での MobileFirst CLI の使用
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: MobileFirst Eclipse plug-in
+breadcrumb_title: MobileFirst Eclipse プラグイン
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -132,7 +132,7 @@ Eclipse のプロジェクト・エクスプローラーで目的のプラット
 ### プラットフォームの追加
 {: #adding-platforms }
 
-追加プラットフォームの追加は、単純なプロセスであり、THyM プラグインで直感的になることはありません。 この同じタスクを実行するには、次の 2 とおりの方法があります。
+追加のプラットフォームは、単純なプロセスであり、THyM プラグインで直感的になることはありません。 この同じタスクを実行するには、次の 2 とおりの方法があります。
 
 1. プロパティーを使用する方法
 	1. プロジェクトを右クリックして、コンテキスト・メニューから**「プロパティー」**を選択します。

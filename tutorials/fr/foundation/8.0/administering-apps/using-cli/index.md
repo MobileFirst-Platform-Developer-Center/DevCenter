@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Administration d'applications via un terminal
-breadcrumb_title: Administrating using terminal
+title: Administration d'applications par un terminal
+breadcrumb_title: Administration par un terminal
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: CD Update の新機能
-breadcrumb_title: CD Updates
+breadcrumb_title: CD Update
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -23,7 +23,7 @@ Mobile Foundation データベース操作を最適化し、レコード・デ�
 
 ##### <span style="color:NAVY">**DevKit 内部で使用可能となった Application Center**</span>
 
-Application Center は、[DevKit]({{site.baseurl}}/downloads/) が付属したパッケージとして使用できるようになりました。これにより、開発者はアプリをビルドしてプライベート・ストアに発行でき、DevKit の一部として使用できるようになりました。
+Application Center は、[DevKit]({{site.baseurl}}/downloads/) が付属したパッケージとして使用できるようになりました。 これにより、開発者はアプリをビルドしてプライベート・ストアに発行でき、DevKit の一部として使用できるようになりました。
 
 ##### <span style="color:NAVY">**ベンダー・ソフトウェアのスタック・サポート**</span>
 
@@ -31,23 +31,23 @@ Mobile Foundation は Windows Server 2016 SE と Oracle 18c をサポートす�
 
 ##### <span style="color:NAVY">**アプリケーション開発フレームワークのサポート**</span>
 
-Mobile Foundation は、[iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/)、iPadOS、および [Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/) をサポートする、Apple および Google がリリースした最新のフレームワークをサポートします。このプラットフォームでは、Swift 5 用の SDK も提供します。
+Mobile Foundation は、[iOS 13]({{site.baseurl}}/blog/2019/09/19/IBM-MobileFoundation-iOS13/)、iPadOS、および [Android 10]({{site.baseurl}}/blog/2019/09/04/mobilefirst-android-Q/) をサポートする、Apple および Google がリリースした最新のフレームワークをサポートします。 このプラットフォームでは、Swift 5 用の SDK も提供します。
 
 ##### <span style="color:NAVY">**API Proxy を使用した、バックエンド・アプリへのセキュアな接続**</span>
 
-エンタープライズ・バックエンドに接続するときに、API プロキシーを使用して Mobile Foundation プラットフォームのセキュリティーと分析を活用できます。API プロキシーは、要求を実際のバックエンドにプロキシーします。[詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/)。
+エンタープライズ・バックエンドに接続するときに、API プロキシーを使用して Mobile Foundation プラットフォームのセキュリティーと分析を活用できます。 API プロキシーは、要求を実際のバックエンドにプロキシーします。 [詳細はこちらを参照してください]({{site.baseurl}}/tutorials/en/foundation/8.0/digital-app-builder/api-proxy/)。
 
 #### <span style="color:Black">分析</span>
 ##### <span style="color:NAVY">**アプリ内フィードバック**</span>
 
-アプリ内フィードバック・フィーチャーは、以前は IBM Cloud の Mobile Foundation サービスで提供され、現在は Mobile Foundation のオンプレミス配布およびコンテナー配布に移植されました。このフィーチャーを使用すると、ユーザーはスクリーン・ショット、注釈、およびテキストの形式でアプリからのフィードバックを共有できます。管理者は Analytics コンソールにログインして、受信したフィードバックを表示し、必要なアクションを実行できます。
+アプリ内フィードバック・フィーチャーは、以前は IBM Cloud の Mobile Foundation サービスで提供され、現在は Mobile Foundation のオンプレミス配布およびコンテナー配布に移植されました。 このフィーチャーを使用すると、ユーザーはスクリーン・ショット、注釈、およびテキストの形式でアプリからのフィードバックを共有できます。 管理者は Analytics コンソールにログインして、受信したフィードバックを表示し、必要なアクションを実行できます。
 
 
 
 #### <span style="color:Black">OpenShift パッケージ</span>
 ##### <span style="color:NAVY">**Mobile Foundation は、IBM Cloud Pak for Applications v3 の一部**</span>
 
-Mobile Foundation は、[IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/) の一部として使用可能となり、Red Hat Open Shift 3.11 および Red Hat Open Shift 4.2 をサポートします。現在使用可能なサービスは、モバイル・コア、分析、プッシュ通知、およびアプリ・センターです。この機能を使用すると、開発者はバックエンド・マイクロサービスとモバイル・サービスを使用してクラウド・ネイティブ・アプリケーションをビルドできます。
+Mobile Foundation は、[IBM Cloud Pak for Apps]({{site.baseurl}}/blog/2019/09/13/announcing-support-for-mf-on-rhocp/) の一部として使用可能となり、Red Hat Open Shift 3.11 および Red Hat Open Shift 4.2 をサポートします。 現在使用可能なサービスは、モバイル・コア、分析、プッシュ通知、およびアプリ・センターです。 この機能を使用すると、開発者はバックエンド・マイクロサービスとモバイル・サービスを使用してクラウド・ネイティブ・アプリケーションをビルドできます。
 
 
 ### CD update 5 (8.0.0.0-MFPF-IF201903190949-CDUpdate-05) で導入された機能

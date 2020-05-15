@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Using Oracle (or) MySQL as IBM Mobile Foundation database
+breadcrumb_title: Oracle oder MySQL als IBM Mobile-Foundation-Datenbank verwenden
 title: Oracle oder MySQL als IBM Mobile-Foundation-Datenbank verwenden
 weight: 2
 show_in_nav: false
@@ -13,6 +13,13 @@ Eine vorkonfigurierte Datenbank ist erforderlich, um die Daten der Komponenten M
 Anweisungen für das Einrichten der Mobile Foundation mit einer Nicht-DB2-Datenbank finden Sie [hier](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/installation-configuration/production/prod-env/databases/#mysql-database-and-user-requirements).
 
 Die Pakete der Mobile-Foundation-Installationsprogramme enthalten standardmäßig IBM DB2-JDBC-Treiber. Stellen Sie für Oracle und MySQL sicher, dass sich der JDBC-Treiber (für MySQL der Connector/J-JDBC-Treiber, für Oracle der Oracle-Thin-JDBC-Treiber) auf einem persistenten Datenträger befindet. 
+
+>**Hinweis:**
+>
+>  Oracle-Datenbank:
+>
+>    1. Verwenden Sie **Oracle Service Name** für die Eigenschaft *name* im Datenbankabschnitt der Datei für angepasste Ressourcen (Custom Resource File, `CR.yaml`).
+>    2. Stellen Sie sicher, dass der Name des Oracle-Datenbankbenutzers in GROSSBUCHSTABEN angegeben ist und so auch bei Erstellung des geheimen Datenbankschlüssels verwendet wird. 
 
 1. Stellen Sie den JDBC-Treiber auf einen angehängten NFS-Datenträger, z. B. auf */nfs/share/dbdrivers*.
 

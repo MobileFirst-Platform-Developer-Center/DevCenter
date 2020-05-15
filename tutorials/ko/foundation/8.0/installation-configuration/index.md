@@ -62,6 +62,7 @@ weight: 3
 * [애플리케이션 서버에 MobileFirst Server 설치](production/prod-env/appserver)
 * [MobileFirst Server 구성](production/server-configuration)
 * [MobileFirst Analytics Server 설치](production/analytics/installation)
+* [MobileFirst Analytics Receiver Server 설치](production/analyticsreceiver/installation)
 * [Application Center 설치](production/appcenter)
 * [IBM PureApplication System에 MobileFirst Server 배치](production/pure-application)
 
@@ -81,6 +82,7 @@ WebSphere Application Server Liberty 프로파일에 두 개의 노드가 있는
 {{ site.data.keys.product }}에는 테스트나 프로덕션 환경을 보완하는 데 사용할 수 있는 선택적 컴포넌트가 포함되어 있습니다.  자세한 정보는 다음 튜토리얼을 참조하십시오.
 
 * [{{ site.data.keys.mf_analytics_server }} 설치 및 구성](production/analytics/installation/)
+* [{{ site.data.keys.mf_analytics_receiver_server }} 설치 및 구성](production/analyticsreceiver/installation/)
 * [{{ site.data.keys.mf_app_center }} 설치 및 구성](production/appcenter)
 
 ### 클라우드에 {{ site.data.keys.mf_server }} 테스트 또는 프로덕션 환경 배치

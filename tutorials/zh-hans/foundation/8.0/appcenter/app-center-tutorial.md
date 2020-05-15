@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 使用 IBM Application Center 分发移动应用程序
-breadcrumb_title: Distributing apps with Application Center
+breadcrumb_title: 使用 Application Center 分发应用程序
 relevantTo: [ios,android,windows8,cordova]
 show_in_nav: true
 weight: 7
@@ -16,7 +16,7 @@ Application Center 有助于共享移动应用程序：
 * 您可以**共享反馈和评级**信息。  
 * 您可以使用访问控制表来限制可安装应用程序的人员。
 
-Application Center 可处理 {{ site.data.keys.product_adj }} 应用程序和非 {{ site.data.keys.product_adj }} 应用程序，并且支持任何 **iOS、Android**、**BlackBerry 6/7** 和 **Windows/Phone 8.x** 应用程序。
+Application Center 可处理 {{ site.data.keys.product_adj }} 应用程序和非 {{ site.data.keys.product_adj }} 应用程序，并且支持任何 **iOS、Android** 和 **Windows/Phone 8.x** 应用程序。
 
 > **注：**使用 Test Flight 或 iTunes Connect 生成且用于在商店提交/验证 iOS 应用程序的归档/IPA 文件可能导致运行时崩溃/失败，请阅读博客 [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) 以了解更多信息。
 
@@ -26,6 +26,8 @@ Application Center 可处理 {{ site.data.keys.product_adj }} 应用程序和非
 * 开发期间在团队内分发应用程序。
 
 > **注：**要构建 iOS AppCenter Installer 应用程序，需要 MobileFirst 7.1。
+>
+7.1 Worklight 应用程序需要 Studio，而纯 cordova 应用程序不需要 Studio。
 
 #### 跳至：
 {: #jump-to}
@@ -145,11 +147,13 @@ cordova build ios
 
 > **注：**如果使用 Cordova 框架来构建 Android 和 iOS AppCenter 客户机，请参阅[基于 Cordova 的 IBM AppCenter 客户机](#cordova-based-ibm-appcenter-client)。
 
-### 对于 Blackberry
+<!--
+### For Blackberry
 {: #for-blackberry }
-* 要构建 BlackBerry 版本，您必须具有带有 BlackBerry SDK 6.0 的 BlackBerry Eclipse IDE（或带有 BlackBerry Java 插件的 Eclipse）。 以 BlackBerry SDK 6.0 编译该应用程序时，该应用程序还会在 BlackBerry OS 7 上运行。
+* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
 
-以下位置中提供了一个 BlackBerry 项目：**install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+-->
 
 ### 对于 Windows Phone 8
 {: #for-windows-phone-8}
@@ -200,7 +204,7 @@ Application Center 仅管理那些使用公司帐户随附的公司证书签署�
 3. 选择应用程序文件：
     * `.ipa`：iOS
     * `.apk`：Android
-    * `.zip`：BlackBerry 6/7
+    <!--* `.zip`: BlackBerry 6/7-->
     * `.xap`：Windows Phone 8.x
     * `.appx`：Windows Store 8.x
 

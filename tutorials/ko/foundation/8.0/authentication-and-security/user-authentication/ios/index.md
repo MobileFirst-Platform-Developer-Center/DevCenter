@@ -60,13 +60,13 @@ else{
 ```
 
 > **참고:**
-> `WLAuthorizationManager` `login()` API는 자체 완료 핸들러를 가지며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` 메소드 **역시** 호출됩니다.
+> `WLAuthorizationManager` `login()` API에는 자체 완료 핸들러가 있으며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` 메소드 **역시** 호출됩니다.
 
 ## 액세스 토큰 얻기
 {: #obtaining-an-access-token }
 이 보안 검사는 **RememberMe** 기능(`rememberMe` 부울 키로서)을 지원하므로 애플리케이션이 시작될 때 클라이언트가 현재 로그인한 상태인지 확인하는 것이 유용합니다.
 
-Mobile Foundation SDK는 서버에 올바른 토큰을 요청하기 위해 `obtainAccessToken` API를 제공합니다. 
+Mobile Foundation SDK는 서버에 올바른 토큰을 요청하기 위해 `obtainAccessToken` API를 제공합니다.
 
 ```swift
 WLAuthorizationManagerSwift.sharedInstance().obtainAccessToken(forScope : scope) { (token, error) -> Void in
@@ -80,7 +80,7 @@ WLAuthorizationManagerSwift.sharedInstance().obtainAccessToken(forScope : scope)
 ```
 
 > **참고:**
-> `WLAuthorizationManagerSwift obtainAccessToken()` API에는 자체 완료 핸들러가 있고 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure`도 **역시** 호출됩니다.
+> `WLAuthorizationManagerSwift obtainAccessToken()` API에는 자체 완료 핸들러가 있으며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` **역시** 호출됩니다.
 
 클라이언트가 이미 로그인되어 있거나 *remembered* 상태인 경우 API가 성공을 트리거합니다. 클라이언트가 로그인되지 않은 경우 보안 검사가 인증 확인을 다시 전송합니다.
 

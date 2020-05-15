@@ -14,6 +14,13 @@ Follow the instructions [here](https://mobilefirstplatform.ibmcloud.com/tutorial
 
 By default, Mobile Foundation installers is packaged with IBM DB2 JDBC drivers. For Oracle and MySQL, make sure that the JDBC driver (for MySQL - use the Connector/J JDBC driver,  for Oracle - use the Oracle thin JDBC driver) is placed within a Persistent Volume.
 
+>**Note**:
+>
+>  For Oracle database:
+>
+>    1. Use **Oracle Service Name** for the property *name* under the db section in Custom Resource File (`CR.yaml`).
+>    2. Make sure the Oracle database user is created with UPPERCASE and the same is used while creating the database secret.
+
 1. Place the JDBC driver in a NFS mounted volume. Example: */nfs/share/dbdrivers*
 
 2. Create a Persistent Volume (PV) and Persistent Volume Claim (PVC) by providing the correct NFS server details and the path where the JDBC driver is stored. Sample yaml is shown below.

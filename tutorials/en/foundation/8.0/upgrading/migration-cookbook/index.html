@@ -2,7 +2,7 @@
 layout: tutorial
 title: MobileFirst Foundation 8.0 Migration Cookbook
 breadcrumb_title: Migration cookbook
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <div id="overview">
@@ -771,8 +771,21 @@ export MVN_PATH="/usr/local/bin"
                     </div>
                     <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
                         <div class="panel-body">
+                          <p>Before running the migration tool for actual migration, set the <em>mode</em> for migration. There are two supported modes.</p>
+                          <ul>
+                            <li><b>migrate</b><br/>With the <i>migrate</i> mode one can utilize client apps migration along with server migration to migrate app and adapters to Mobile Foundation v8.0. </li>
+                            <li><b>compatibility</b><br/>When the <i>compatibility</i> mode is set, only server migration is allowed. The client migration will be done using the Mobile Foundation Migration Studio.</li>
+                          </ul>
+                            <p>To set the migration mode, run following command.</p>
+                            <code>
+                              mfpmigrate mode --type [compatibility | migrate]
+                            </code>
+                            <br/><br/>
+                            <blockquote>
+                              <b>Note</b>: <i>scan</i> and <i>client</i> commands cannot be run when the mode is set to <i>compatibility</i>. Run the migration assistance tool with <i>server</i> option and specify the root directory of your older worklight project.
+                            </blockquote>
                             <ol>
-                              <li>Run the migration Assistance tool with <i>server</i> option and specify the <i>root</i> directory of your older worklight project.
+                              <li>To migrate a 7.1 worklight project into Mobile Foundation v8.0, run the migration assistance tool as follows.
                                 <br/>
                                 <code>
                                 mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
@@ -786,18 +799,108 @@ export MVN_PATH="/usr/local/bin"
                                 <p>Performs the migration of security realms and adapters from an existing MobileFirst project.</p>
                                 <br/>
                                 <h4>OPTIONS</h4>
-                                <p><b><i>&lt;sourceDirectory&gt;</i></b>: The <i>&lt;sourceDirectory&gt;</i> must be the <i>root</i> folder within your MobileFirst project that you want to migrate. This is required and not an optional parameter.</p>
+                                <p><b><i>&lt;sourceDirectory&gt;</i></b>: The <i>&lt;sourceDirectory&gt;</i> must be the <i>root</i> folder within your MobileFirst project that you want to migrate. This parameter is mandatory.</p>
 
                                 <p><b><i>&lt;destinationDirectory&gt;</i></b>: The <i>&lt;destinationDirectory&gt;</i> is the directory where you expect the adapters to be migrated to.</p>
                               </blockquote>
-                                <p>Migration tool scans through the Adapters and realms and:</p>
-                                <ol><li>Creates a template for the Adapters and supported security checks.</li>
+                                <p>Migration tool scans through the adapters and realms and:</p>
+                                <ol><li>Creates a template for the adapters and supported security checks.</li>
                                     <li>Moves the Adapter sources into the newly created maven artifact.</li>
                                     <li>Updates project <i>pom</i> with the dependencies.</li>
                                     <li>Creates a summary report of what is done using this tool and what other changes are to be done manually to complete the migration.</li>
                                 </ol>
                               </li>
+                              <li>
+                                <p>For existing adapters and <code>worklight.properties</code> file, the tool identifies all deprecated and unsupported APIs from 7.1 adapters and does following,</p>
+                                <ol><li>Replaces deprecated/unsupported APIs with appropriate v8.0 APIs.</li>
+                                    <li>Generates v8.0 adapters for the corresponding v7.1 adapters in the specified output location.</li>
+                                    <li>Developers can navigate to the migrated adapter directory and issue a single maven command (<code>mvn clean install  adapter:deploy</code>) to build and deploy the adapter to Mobile Foundation v8.0 server.
+                                      <blockquote>
+                                        <b>Note</b>: Migrated adapter <code>pom.xml</code> will deploy the adapter to Mobile Foundation server that is running locally. If you want to deploy it to another Mobile Foundation server instance, please update server details and credentials in <code>pom.xml</code> and then issue the <code>maven</code> command.
+                                      </blockquote>
+                                    </li>
+                                    <li><code>worklight.properties</code> file is scanned to know if any property requires explicit JNDI value inclusion on Mobile Foundation v8.0 server and outputs these entries in the report.</li>
+                                </ol>
+                              </li>
+                              <li>
+                                <p>For realms, the tool identifies all the supported and deprecated realms from the <code>AuthenticationConfig.xml</code>, and does the following,</p>
+                                <ol><li>In the summary report, a list of realms used in user's authentication config, which are pre configured and available in v8.0 with predefined security checks is summarized. (No further action is needed for users).</li>
+                                    <li>Unsupported realms are summarized (Support for these is not available in Mobile Foundation v8.0).</li>
+                                    <li>For supported realms that need migration following steps are done.
+                                      <ol>
+                                        <li>Identify the best fit <i>SecurityCheck</i> to migrate for a specific realm.</li>
+                                        <li>Generate a <i>SecurityCheck</i> template with identified <i>SecurityCheck</i> base class , using the same name as the realm suffixed with <i>SecurityCheck</i>.</li>
+                                        <li>Identify the challenge and validation methods in the realm, copy them as inline comments in the corresponding <i>SecurityCheck</i> method so that the user can refer to it and implement the same validation in the new <i>SecurityCheck</i> template generated.
+                                          <p>Please refer to this mapping so that it is clear as to which authentication logic implemented in the Realm methods is a correct fitment for generated <i>SecurityCheck</i> template.</p>
+                                          <h4>Adapter Authentication Realm</h4>
+                                          <p>Adapter Authenticator Realm is defined in <code>AuthenticationConfig.xml</code>. Following is a sample definition.</p>
+<pre lang="xml"><code>
+&lt;realm loginModule="SampleLoginModule" name="SampleRealm">
+  &lt;className>com.worklight.integration.auth.AdapterAuthenticator&lt;/className>
+  &lt;parameter name="login-function" value="SampleAdapter.onAuthTrigger"/>
+  &lt;parameter name="logout-function" value="SampleAdapter.onLogout"/>
+&lt;/realm>
+</code></pre>
 
+                                          <p>For the above configuration in v7.1, we can map it to a <i>ValidationCredentialsSecurityCheck</i> as follows.</p>
+                                          <table>
+                                            <tr>
+                                              <td>ValidationCredentialsSecurityCheck.createChallenge</td>
+                                              <td>Can take the similar approach as used in <i>SampleAdapter.onAuthTrigger</i> to implement a challenge. However, please note that there are interface changes that needs to be taken care of while doing the migration.</td>
+                                            </tr>
+                                            <tr>
+                                              <td>ValidationCredentialsSecurityCheck.validateCredentials</td>
+                                              <td>Notice that there is no mapping similar to this in Realm definition above. So  mapping is not possible for this method. As a practice, we have seen that customer implements this in v7.1 in one of the resource adapter methods and calls this from the <i>ChallengeHandler</i> in the application upon success of cthe hallenge method.</td>
+                                            </tr>
+                                          </table>
+
+                                          <p>Similar mapping is done for all the supported realms in the v7.1 like <i>Form Based Authenticator</i> realm, <i>Basic Authenticator</i> realm, and <i>Custom Authenticators</i> based on their v7.1 definitions.</p>
+                                          <table>
+                                            <tr>
+                                            <th>Realm type in v7.1</th>
+                                            <th>Method definitions in the realm</th>
+                                            <th><i>SecurityCheck</i> method in <br/>Mobile Foundation v8.0</th>
+                                            </tr>
+                                            <tr>
+                                              <td>CustomAuthentication</td>
+                                              <td>createIdentity</td>
+                                              <td>&lt;UserAuthenticationSecurityCheck&gt;<br/>createUser</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>processRequest</td>
+                                              <td>createChallenge</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>CustomAuhenticator. processAuthenticationFailure<br/>
+                                                CustomAuhenticator.changeResponse<br/>
+                                                on success CustomLoginModule.login
+                                              </td>
+                                              <td>validateCredentials</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>CustomLoginmodule.logout</td>
+                                              <td>Logout</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Form Based authenticator</td>
+                                              <td>CustomLoginModule.login</td>
+                                              <td>&lt;UserAuthenticationSecurityCheck&gt;<br/>validateCredentials</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>CustomLoginmodule.logout</td>
+                                              <td>Logout</td>
+                                            </tr>
+                                          </table>
+                                        </li>
+
+                                      </ol>
+                                    </li>
+                                  </ol>
+                              </li>
                               <li>
                                 <p>Use Summary report to:</p>
                                 <ol>

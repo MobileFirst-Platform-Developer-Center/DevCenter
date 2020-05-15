@@ -361,7 +361,7 @@ WebSphere  Application Server 전체 프로파일, WebSphere Application Server 
             mfp.admin.jmx.pwd
         </td>
         <td>
-            WebSphere Application Server Liberty 관리자의 비밀번호
+            WebSphere Application Server Liberty 관리자의 비밀번호.
         </td>
     </tr>
 </table>

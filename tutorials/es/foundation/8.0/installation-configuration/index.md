@@ -64,6 +64,7 @@ Lea más adelante, para obtener información sobre la preparación e instalació
 * [Instalación de MobileFirst Server en un servidor de aplicaciones](production/prod-env/appserver)
 * [Configuración de MobileFirst Server](production/server-configuration)
 * [Instalación de MobileFirst Analytics Server](production/analytics/installation)
+* [Instalación de MobileFirst Analytics Receiver Server](production/analyticsreceiver/installation)
 * [Instalación de Application Center](production/appcenter)
 * [Despliegue de MobileFirst Server en IBM PureApplication System](production/pure-application)
 
@@ -83,6 +84,7 @@ Después de completar la instalación mediante uno de los dos métodos anteriore
 {{ site.data.keys.product }} incluye componentes opcionales que pueden utilizarse para aumentar el entorno de prueba o de producción.  Consulte los siguientes tutoriales para obtener más información:
 
 * [Instalación y configuración de  {{ site.data.keys.mf_analytics_server }}](production/analytics/installation/)
+* [Instalación y configuración de  {{ site.data.keys.mf_analytics_receiver_server }}](production/analyticsreceiver/installation/)
 * [Instalación y configuración de {{ site.data.keys.mf_app_center }}](production/appcenter)
 
 ### Despliegue el entorno de prueba o de producción de {{ site.data.keys.mf_server }} en la nube

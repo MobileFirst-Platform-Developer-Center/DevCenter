@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation der MobileFirst Platform Foundation
-breadcrumb_title: Production Environment
+breadcrumb_title: Produktionsumgebung
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -17,6 +17,8 @@ Installationsszenario.
 Wenn Sie einen Test- oder Produktionsserver installieren möchten, beginnen Sie mit den [Lernprogrammen für eine einfache Installation von MobileFirst Server](simple-install/). Weitere Informationen zur Vorbereitung einer Installation für Ihre konkrete Umgebung finden Sie unter [MobileFirst Server für eine Produktionsumgebung installieren](prod-env/).
 
 Wenn Sie MobileFirst Analytics Server zu Ihrer Installation hinzufügen möchten, lesen Sie die Informationen im [MobileFirst Analytics Server Installationshandbuch](analytics/).
+
+Wenn Sie den MobileFirst Analytics Receiver Server zu Ihrer Installation hinzufügen möchten, lesen Sie die Informationen im [MobileFirst Analytics Receiver Server Installationshandbuch](analyticsreceiver/).
 
 Informationen zur Installation des IBM MobileFirst Platform Application Center finden Sie unter [Application Center installieren und konfigurieren](appcenter/).
 

@@ -59,9 +59,9 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
    ```xml
    implementation 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
-   
+
    >**Nota**: si utiliza la característica [Google Dynamic Delivery](https://developer.android.com/studio/projects/dynamic-delivery) y desea llamar a las API de MobileFirst en un módulo de la característica, utilice la declaración `api` en lugar de `implementation`. Si utiliza `implementation`, se restringen las API de MobileFirst al mismo módulo, mientras que, si se utiliza `api`, las API de MobileFirst está disponibles en todos los módulos presentes en la app, incluidos los módulos de la característica. Para obtener más información, consulte [Separación de API e implementation](https://docs.gradle.org/current/userguide/java_library_plugin.html#sec:java_library_separation).
-   
+
 ```xml
  api 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
 ```
@@ -133,7 +133,7 @@ Si {{ site.data.keys.product_adj }} Native Android SDK todavía no está present
 {: #mfppush-instance }
 Todas las llamadas de API se deben realizar en una instancia de `MFPPush`.  Esto se puede realizar creando un campo de nivel de clase como, por ejemplo, `private MFPPush push = MFPPush.getInstance();` y a continuación, llamando a `push.<api-call>` a través de la clase.
 
-Otra posibilidad es llamar a `MFPPush.getInstance().<api_call>` para cada instancia en la que necesita acceder a los métodos de API de push.
+De forma alternativa puede llamar a `MFPPush.getInstance().<api_call>` para cada instancia en la que necesita acceder a los métodos de API de push. 
 
 ### Manejadores de desafíos
 {: #challenge-handlers }
@@ -361,20 +361,25 @@ La configuración de una aplicación en FCM es algo distinta en comparación con
     ```xml
     dependencies {
        ......
-       compile 'com.google.firebase:firebase-messaging:10.2.6'
+       compile 'com.google.firebase:firebase-messaging:17.6.0'
        .....
     }
-    
+
     apply plugin: 'com.google.gms.google-services'
     ```
 
-    
+    - Añada la dependencia siguiente a la sección **buildscript** del archivo `build.gradle` raíz
+      ```
+      classpath 'com.google.gms:google-services:3.0.0'
+      ```
 
-    - Añada la siguiente dependencia en el apartado raíz build.gradle `buildscript`
+    - Elimine el siguiente plugin GCM del archivo `build.gradle`
+      ```
+      compile  com.google.android.gms:play-services-gcm:+
+      ```
 
-      `classpath 'com.google.gms:google-services:3.0.0'`
+    >**Nota**: Si está utilizando Android Studio v3.2 o anterior, asegúrese de que cada línea de dependencia tenga especificado un número de versión. 
 
-    - Elimine el siguiente plugin GCM desde el archivo build.gradle `compile com.google.android.gms:play-services-gcm:+`
 
  3. Configure el archivo AndroidManifest. Son necesarios los cambios siguientes en el `AndroidManifest.xml`
 

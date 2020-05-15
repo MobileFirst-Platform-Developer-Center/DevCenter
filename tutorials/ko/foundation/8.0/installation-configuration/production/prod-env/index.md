@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 프로덕션 환경에서 MobileFirst Server 설치
-breadcrumb_title: Installing MobileFirst Server
+breadcrumb_title: MobileFirst Server 설치
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->

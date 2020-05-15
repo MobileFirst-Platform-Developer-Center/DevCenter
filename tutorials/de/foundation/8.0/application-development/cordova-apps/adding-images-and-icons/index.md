@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Angepasste Begrüßungsanzeigen und Symbole zu Cordova-Apps hinzufügen
-breadcrumb_title: Adding images and icons
+breadcrumb_title: Bilder und Symbole hinzufügen
 relevantTo: [cordova]
 weight: 1
 ---
@@ -137,7 +137,7 @@ Seit der Cordova-Plug-in Version 8.0.2017102406 für die MobileFirst Platform Fo
   /*
    Licensed Materials - Property of IBM
 
-   (C) Copyright 2017 IBM Corp.
+   (C) Copyright 2020 IBM Corp.
 
    Unless required by applicable law or agreed to in writing, software
    distributed under the License is distributed on an "AS IS" BASIS,
@@ -159,9 +159,8 @@ Seit der Cordova-Plug-in Version 8.0.2017102406 für die MobileFirst Platform Fo
    Unless required by applicable law or agreed to in writing,
    software distributed under the License is distributed on an
    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-   KIND, either express or implied.  See the License for the
-   specific language governing permissions and limitations
-   under the License.
+   KIND, either express or implied.  See the License for the specific language governing permissions and
+   limitations under the License.
    */
   #import "AppDelegate.h"
   #import <IBMMobileFirstPlatformFoundationHybrid/IBMMobileFirstPlatformFoundationHybrid.h>

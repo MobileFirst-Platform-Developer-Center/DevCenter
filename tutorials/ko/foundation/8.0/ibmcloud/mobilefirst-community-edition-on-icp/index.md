@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Mobile Foundation for Developers 8.0 on IBM Cloud Private 배치
-breadcrumb_title: Foundation for Developers on IBM Cloud Private
+breadcrumb_title: IBM Cloud Private의 Foundation for Developers
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 애플리케이션에서 모델 업데이트 사용
-breadcrumb_title: Model Update
+breadcrumb_title: 모델 업데이트
 relevantTo: [iOS]
 weight: 9
 ---
@@ -65,7 +65,7 @@ CoreML 및 TensorFlow Lite와 같은 온디바이스 기계 학습(ML)의 도입
 
 마지막 상태는 다음 코드 중 하나입니다.
 
-| 상태 코드 |설명 |
+| 상태 코드 | 설명 |
 |-------------|-------------|
 | `SUCCESS` | 모델 업데이트가 오류 없이 완료되었습니다. |
 | `CANCELED` | 모델 업데이트가 취소되었습니다. |

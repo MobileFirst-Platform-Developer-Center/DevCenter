@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Instalación y configuración de IBM MobileFirst Foundation Application Center
-breadcrumb_title: Installing Application Center
+breadcrumb_title: Instalación de Application Center
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -917,7 +917,7 @@ Si desea establecer y configurar manualmente la base de datos de Oracle para App
         | Databasetype | Oracle |
         | Tipo de proveedor | Controlador JDBC de Oracle |
         | Tipo de implementación | Origen de datos de la agrupación de conexiones |
-        | Nombre | Controlador JDBC de Oracle |
+        | Nombre |Controlador JDBC de Oracle |
     * Pulse **Siguiente**.
     * Establezca la **vía de acceso de clases** en el archivo JAR del directorio determinado en el paso 1, sustituyendo **WAS\_INSTALL\_DIR/profiles/profile-name** por la referencia de variable de WebSphere Application Server **${USER_INSTALL_ROOT}**
     * Pulse **Siguiente**.
@@ -1203,7 +1203,7 @@ Para configurar Apache Tomcat for Application Center manualmente, debe copiar lo
 
       </Context>
 
-      <!-- Declare the IBM Application Center Services application. -->
+            <!-- Declare the IBM Application Center Services application. -->
       <Context path="/applicationcenter" docBase="applicationcenter">
           <!-- The directory with binaries of the 'aapt' program, from
                the Android SDK's platform-tools package. -->
@@ -2193,7 +2193,7 @@ Para obtener una lista completa de propiedades JNDI, consulte [Propiedades JNDI 
     * Para **ibm.appcenter.proxy.protocol**, asigne el protocolo externo.
 6. Para **ibm.appcenter.services.endpoint**, asigne el URI completo de los servicios REST de Application Center (el URI del archivo **applicationcenter.war**).
     * En un escenario con un cortafuegos o un proxy inverso protegido, este URI debe ser el URI externo y no el URI interno que se encuentra dentro del LAN local.
-    * Puede utilizar el carácter de asterisco (\*) como comodín para especificar que los servicios REST de Application Center utilicen el mismo valor que la consola de Application Center.
+    * Puede utilizar el carácter de asterisco (\*) como comodín para especificar que los servicios REST de Application Center utilicen el mismo valor que la consola de Application Center. 
 
     Por ejemplo: `*://*:*/appcenter` significa utilizar el mismo protocolo, host y puerto que la consola de Application Center, pero utilizar appcenter como raíz de contexto.
 7. Pulse Aceptar y guarde la configuración.

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Cordova 애플리케이션 보안
-breadcrumb_title: Securing applications
+breadcrumb_title: 애플리케이션 보안
 relevantTo: [cordova]
 weight: 1
 ---
@@ -37,7 +37,7 @@ weight: 1
         - `cordova compile -- --mfpwebencrypt` | `cordova build -- --mfpwebencrypt`
     <br/>
     **www** 폴더의 운영 체제 정보는 암호화된 컨텐츠를 포함하는 **resources.zip** 파일로 대체됩니다.  
-Android 운영 체제용 앱이고 **resources.zip** 파일 크기가 1MB를 초과하는 경우 **resources.zip** 파일은 이름이 **resources.zip.nnn**이고 크기가 768KB로 줄어든 여러 개의 .zip 파일로 분할됩니다. nnn 변수는 001에서 999 사이의 숫자입니다.
+    Android 운영 체제용 앱이고 **resources.zip** 파일 크기가 1MB를 초과하는 경우 **resources.zip** 파일은 이름이 **resources.zip.nnn**이고 크기가 768KB로 줄어든 여러 개의 .zip 파일로 분할됩니다. nnn 변수는 001에서 999 사이의 숫자입니다.
 4. 플랫폼별 도구와 함께 제공되는 에뮬레이터를 사용하여 암호화된 자원이 있는 애플리케이션을 테스트합니다. 예를 들어 Android에는 Android Studio를 사용하고 iOS에는 Xcode를 사용할 수 있습니다.
 
 **참고:** 암호화되어 있는 애플리케이션을 테스트하는 경우 다음 Cordova 명령을 사용하지 마십시오.

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Utilización de la CLI de MobileFirst en Eclipse
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: MobileFirst Eclipse plug-in
+breadcrumb_title: Plugin de MobileFirst Eclipse 
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -111,7 +111,7 @@ Aquí podrá seleccionar alguno de los siguientes mandatos:
 | Opción de menú         | Acción                                                                                                                                       | Interfaz de línea de mandatos de MobileFirst equivalente |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
 | Abrir consola del servidor | Cuando existe la definición de servidor, abre la consola de forma que se pueden ver las distintas acciones en el servidor especificado.                                    | mfpdev server console                         |
-| Vista previa de aplicación         | Abre la aplicación en la modalidad de vista previa del navegador.                                                                                                   | Abre la aplicación en la modalidad de vista previa del navegador.    |
+| Vista previa de aplicación         | Abre la aplicación en la modalidad de vista previa del navegador.                                                                                                   | Abre la aplicación en la modalidad de vista previa del navegador.                                                                                                   |
 | Registrar aplicación        | Registra la aplicación con el servidor especificado en sus definiciones de servidor.                                                              | mfpdev app register                           |
 | Cifrar aplicación         | Ejecuta la herramienta de cifrado de recursos web en su aplicación.                                                                                           | mfpdev app webencrypt                         |
 | Hacer pull a aplicación            | Recupera la configuración de la aplicación existente desde el servidor especificado en la definición de servidor.                                         | mfpdev app pull                               |
@@ -168,6 +168,6 @@ Mientra realiza una vista de una aplicación Live Update está disponible. Puede
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">
-   		<iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+   		<iframe title="Vídeo de demostración" src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
 	</div>
 </div>

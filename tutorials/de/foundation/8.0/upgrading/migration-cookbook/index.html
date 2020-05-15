@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: MobileFirst Foundation 8.0 - Migrations-Cookbook
+title: MobileFirst Foundation 8.0 Migrations-Cookbook
 breadcrumb_title: Migrations-Cookbook
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <div id="overview">
@@ -111,7 +111,7 @@ um einen lokal ausgeführten Server einzurichten. </p>
 installieren Sie zunächst das Unterstützungstool für die Migration, das Sie später nutzen werden. </p>
 
         <ol>
-            <li><a href="https://nodejs.org/en/" target="_blank">Installieren Sie NodeJS</a> als vorausgesetzte Software für das Tool. </li>
+            <li><a href="https://nodejs.org/dist/latest-v6.x/" target="_blank">Installieren Sie Node Version 6.x und npm Version 3.x</a> als vorausgesetzte Software für das Tool. </li>
             <li>Klicken Sie in der {{ site.data.keys.mf_console }} unten in der Seitenleistennavigation auf den Download-Center-Link. Folgen Sie den Anweisungen für die Installation des Unterstützungstools für die Migration von NPM oder durch das Herunterladen einer ZIP-Datei.</li>
         </ol>
 
@@ -841,8 +841,21 @@ den zuvor verwendeten
                     </div>
                     <div id="collapseMigrationassistant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrationassistant">
                         <div class="panel-body">
+                          <p>Legen Sie vor Ausführung des Migrationstools den <em>Modus</em> für die Migration fest. Es gibt zwei unterstützte Modi.</p>
+                          <ul>
+                            <li><b>migrate</b><br/>Im Modus <i>migrate</i> können Sie die Migration von Client-Apps und Adaptern zusammen mit der Servermigration auf Mobile Foundation Version 8.0 durchführen. </li>
+                            <li><b>compatibility</b><br/>Im Modus <i>compatibility</i> ist nur eine Servermigration möglich. Für die Clientmigration wird das Mobile Foundation Migration Studio verwendet.</li>
+                          </ul>
+                            <p>Führen Sie den folgenden Befehl aus, um den Migrationsmodus festzulegen.</p>
+                            <code>
+                              mfpmigrate mode --type [compatibility | migrate]
+                            </code>
+                            <br/><br/>
+                            <blockquote>
+                              <b>Hinweis</b>: Die Befehle <i>scan</i> und <i>client</i> können nicht ausgeführt werden, wenn der Modus auf <i>compatibility</i> gesetzt ist. Führen Sie das Unterstützungstool für die Migration mit der Option <i>server</i> aus und geben Sie das Stammverzeichnis Ihres älteren Worklight-Projekts an.
+                                </blockquote>
                             <ol>
-                              <li>Führen Sie das Unterstützungstool für die Migration mit der Option <i>server</i> aus und geben Sie das <i>Stammverzeichnis</i> Ihres älteren Worklight-Projekts an.
+                              <li>Führen Sie das Unterstützungstool für Migration wie folgt aus, um ein Worklight-Projekt der Version 7.1 auf Mobile Foundation Version 8.0 zu migrieren.
                                 <br/>
                                 <code>
                                 mfpmigrate server --In <i>/Users/WorklightProject**/</i> --Out <i>/Users/Migrate80Project</i>
@@ -856,7 +869,7 @@ den zuvor verwendeten
                                 <p>Das Tool führt eine Migration für sichere Realms und Adapter eines vorhandenen MobileFirst-Projekts durch. </p>
                                 <br/>
                                 <h4>OPTIONEN</h4>
-                                <p><b><i>&lt;Quellenverzeichnis&gt;</i></b>: Das <i>&lt;Quellenverzeichnis&gt;</i> muss der <i>Stammordner</i> des zu migrierenden MobileFirst-Projekts sein. Dieser Parameter ist erforderlich.</p>
+                                <p><b><i>&lt;Quellenverzeichnis&gt;</i></b>: Das <i>&lt;Quellenverzeichnis&gt;</i> muss der <i>Stammordner</i> des zu migrierenden MobileFirst-Projekts sein. Dieser Parameter ist obligatorisch.</p>
 
                                 <p><b><i>&lt;Zielverzeichnis&gt;</i></b>: Das <i>&lt;Zielverzeichnis&gt;</i> ist das Verzeichnis, das nach der Migration die Adapter enthalten soll.</p>
                               </blockquote>
@@ -867,7 +880,97 @@ den zuvor verwendeten
                                     <li>Es erstellt einen zusammenfassenden Bericht über die ausgeführten Schritte und die Änderungen, die manuell vorgenommen werden müssen, um die Migration abzuschließen.</li>
                                 </ol>
                               </li>
+                              <li>
+                                <p>Für vorhandene Adapter und eine vorhandene Datei <code>worklight.properties</code> ermittelt das Tool alle nicht mehr verwendeten und nicht unterstützten APIs von Adaptern der Version 7.1 und führt die folgenden Schritte aus:</p>
+                                <ol><li>Es ersetzt nicht mehr verwendete bzw. nicht unterstützte APIs durch geeignete APIs der Version 8.0.</li>
+                                    <li>Es generiert Adapter der Version 8.0 für die entsprechenden Adapter der Version 7.1 an der angegebenen Ausgabeposition.</li>
+                                    <li>Entwickler können zum Verzeichnis für migrierte Adapter navigieren und einen Maven-Befehl (<code>mvn clean install  adapter:deploy</code>) absetzen, um den Adapter zu erstellen und im Server von Mobile Foundation Version 8.0 zu implementieren.
+                                      <blockquote>
+                                        <b>Hinweis</b>: Mit der migrierten Adapterdatei <code>pom.xml</code> wir der Adapter im lokal ausgeführten Mobile Foundation Server implementiert. Falls die Implementierung in einer anderen Mobile-Foundation-Server-Instanz erfolgen soll, aktualisieren Sie die Serverdetails und Berechtigungsnachweise in <code>pom.xml</code>, bevor Sie den <code>maven</code>-Befehl absetzen.
+                                      </blockquote>
+                                    </li>
+                                    <li>Die Datei <code>worklight.properties</code> wird gescannt, um herauszufinden, ob eine Eigenschaft explizit die Aufnahme eines JNDI-Wertes in den Server von Mobile Foundation Version 8.0 erfordert. Die entsprechenden Einträge werden im Bericht ausgegeben.</li>
+                                </ol>
+                              </li>
+                              <li>
+                                <p>Das Tool identifiziert alle unterstützten und nicht mehr verwendeten Realms in der Datei <code>AuthenticationConfig.xml</code> und führt folgende Schritte aus:</p>
+                                <ol><li>Es gibt im Ergebnisbericht eine Liste der in der Authentifizierungskonfiguration des Benutzers verwendeten Realms aus, die vorkonfiguriert und in Version 8,0 mit vordefinierten Sicherheitsüberprüfungen verfügbar sind. (Die Benutzer müssen keine weiteren Aktionen ausführen.)</li>
+                                    <li>Es listet nicht unterstützte Realms auf. (In Mobile Foundation Version 8.0 ist für diese Realms keine Unterstützung verfügbar.)</li>
+                                    <li>Für unterstützte Realms, die migriert werden müssen, führt das Tool die folgenden Schritte aus:
+                                      <ol>
+                                        <li>Es identifiziert die am besten geeignete Sicherheitsüberprüfung (<i>SecurityCheck</i>) für die Migration eines bestimmten Realms.</li>
+                                        <li>Es generiert eine <i>SecurityCheck</i>-Vorlage mit identifizierten <i>SecurityCheck</i>-Basisklassen. Als Name wird der Name des Realms mit dem Suffix <i>SecurityCheck</i> verwendet.</li>
+                                        <li>Es identifiziert die Abfrage- und Validierungsmethoden im Realm und kopiert sie als integrierte Kommentare in die entsprechende <i>SecurityCheck</i>-Methode, sodass der Benutzer auf sie zurückgreifen und dieselbe Validierung in der neu generierten <i>SecurityCheck</i>-Vorlage implementieren kann.
+                                          <p>Sehen Sie sich die folgende Zuordnung an, damit Sie verstehen, in wie weit die in Realmmethoden implementierte Authentifizierungslogik für die generierte <i>SecurityCheck</i>-Vorlage passend ist.</p>
+                                          <h4>Adapterauthentifizierungsrealm</h4>
+                                          <p>Das Adapterauthentifzierungsrealm ist in der Datei <code>AuthenticationConfig.xml</code> definiert. Nachfolgend sehen Sie eine Beispieldefinition.</p>
+<pre lang="xml"><code>
+&lt;realm loginModule="SampleLoginModule" name="SampleRealm">
+  &lt;className>com.worklight.integration.auth.AdapterAuthenticator&lt;/className>
+  &lt;parameter name="login-function" value="SampleAdapter.onAuthTrigger"/>
+  &lt;parameter name="logout-function" value="SampleAdapter.onLogout"/>
+&lt;/realm>
+</code></pre>
 
+                                          <p>Die obige Konfiguration von Version 7.1 kann wie folgt einer Sicherheitsüberprüfung (<i>ValidationCredentialsSecurityCheck</i>) zugeordnet werden:</p>
+                                          <table>
+                                            <tr>
+                                              <td>ValidationCredentialsSecurityCheck.createChallenge</td>
+                                              <td>Diese Methode kann für die Implementierung einer Abfrage einen ähnlichen Ansatz wie in <i>SampleAdapter.onAuthTrigger</i> verwenden. Beachten Sie jedoch, dass während der Migration Schnittstellenänderungen berücksichtigt werden müssen.</td>
+                                            </tr>
+                                            <tr>
+                                              <td>ValidationCredentialsSecurityCheck.validateCredentials</td>
+                                              <td>Es gibt keine mit der obigen Realmdefinition vergleichbare Zuordnung. Für diese Methode ist daher keine Zuordnung möglich. Es hat sich gezeigt, dass Kunden diese Methode in Version 7.1 in einer der Ressourcenadaptermethoden implementiert haben und bei Erfolg der Avfragemethode über den Abfragehandler (<i>ChallengeHandler</i>) der Anwendung diese Methode aufgerufen haben.</td>
+                                            </tr>
+                                          </table>
+
+                                          <p>Eine ähnliche Zuordnung wird für alle unterstützten Realms aus Version 7.1 entsprechend ihrer jeweiligen Definition vorgenommen, z. B. für das Realm <i>Form Based Authenticator</i>, das Realm <i>Basic Authenticator</i> und für <i>Custom Authenticators</i>.</p>
+                                          <table>
+                                            <tr>
+                                            <th>Realmtyo in Version 7.1</th>
+                                            <th>Methodendefinitionen im Realm</th>
+                                            <th><i>SecurityCheck</i>-Methode in <br/>Mobile Foundation Version 8.0</th>
+                                            </tr>
+                                            <tr>
+                                              <td>CustomAuthentication</td>
+                                              <td>createIdentity</td>
+                                              <td>&lt;UserAuthenticationSecurityCheck&gt;<br/>createUser</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>processRequest</td>
+                                              <td>createChallenge</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>CustomAuhenticator.processAuthenticationFailure<br/>
+                                                CustomAuhenticator.changeResponse<br/>
+                                                on success CustomLoginModule.login
+                                              </td>
+                                              <td>validateCredentials</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>CustomLoginmodule.logout</td>
+                                              <td>Logout</td>
+                                            </tr>
+                                            <tr>
+                                              <td>Form Based authenticator</td>
+                                              <td>CustomLoginModule.login</td>
+                                              <td>&lt;UserAuthenticationSecurityCheck&gt;<br/>validateCredentials</td>
+                                            </tr>
+                                            <tr>
+                                              <td></td>
+                                              <td>CustomLoginmodule.logout</td>
+                                              <td>Logout</td>
+                                            </tr>
+                                          </table>
+                                        </li>
+
+                                      </ol>
+                                    </li>
+                                  </ol>
+                              </li>
                               <li>
                                 <p>Nutzen Sie den zusammenfassenden Bericht wie folgt:</p>
                                 <ol>

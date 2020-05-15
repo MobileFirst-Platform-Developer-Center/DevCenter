@@ -14,6 +14,9 @@ Nesta documentação, é possível localizar a descrição das limitações conh
 
 * Quando a limitação conhecida se aplicar a um recurso específico, é possível localizar sua descrição no tópico que explica esse recurso específico. É possível então identificar imediatamente como ela afetará o recurso.
 * Quando a limitação conhecida for geral, ou seja, se aplicar a tópicos relacionados diferentes e possivelmente não diretamente a eles, é possível localizar sua descrição aqui.
+* Pode-se observar uma inconsistência no funcionamento dos pods do Mobile Foundation Analytics na implementação devido aos problemas de descoberta de nós Elasticsearch no cluster do OpenShift 4.2. Isso faz com que o console de administração do Analytics liste somente um nó a
+qualquer momento.
+* No aplicativo do cliente móvel AppCenter Android, o usuário pode notar problemas de rolagem. Isso não é um problema de funcionalidade. Tudo funciona conforme o esperado, no entanto, são necessárias algumas rolagens extras para baixo. Esta é uma limitação das estruturas Javascript de terceiros usadas no cliente AppCenter.
 
 ### Globalização
 {: #globalization }
@@ -22,7 +25,7 @@ Se você estiver desenvolvendo aplicativos globalizados, as restrições a segui
 * Tradução parcial: parte do produto {{ site.data.keys.product }} v8.0, incluindo sua documentação, está traduzida para os idiomas a seguir: chinês simplificado, chinês tradicional, francês, alemão, italiano, japonês, coreano, português (do Brasil), russo e espanhol. O texto voltado ao usuário é traduzido.
 * Suporte bidirecional: Os aplicativos que são gerados pelo {{ site.data.keys.product }} não são ativados como totalmente bidirecionais. O espelhamento dos elementos da interface gráfica com o usuário (GUI) e o controle da direção do texto não são fornecidos por padrão. No entanto, não existe nenhuma dependência permanente dos aplicativos gerados nessa limitação. Os desenvolvedores podem alcançar a conformidade bidirecional integral através de ajustes manuais no código gerado.
 
-Embora a tradução para o hebraico seja fornecida para a funcionalidade principal do {{ site.data.keys.product }}, alguns elementos da GUI não são espealhados.
+Embora a tradução para o hebraico seja fornecida para a funcionalidade principal do {{ site.data.keys.product }}, alguns elementos da GUI não são espelhados.
 
 * Restrições sobre nomes de adaptadores: os nomes dos adaptadores devem ser nomes válidos para criar um nome de classe Java. Além disso, eles devem ser compostos apenas dos seguintes caracteres:
     * Letras maiúsculas e minúsculas (A-Z e a-z)
@@ -309,3 +312,7 @@ Esse erro é devido a um [erro conhecido em node-gyp](https://github.com/nodejs/
 ```bash
 npm install -g mfpdev-cli --no-optional
 ```
+
+### Recurso Android App Bundle
+
+Devido à diferença na estrutura de empacotamento de um App Bundle entre dispositivos Android 5.x e Android 6.x & acima, os usuários no Android 5.x não conseguirão conectar-se a um servidor MobileFirst quando a Autenticidade do Aplicativo estiver ativada e distribuída como um App Bundle na Play Store. Esta limitação é observada somente com a combinação de Android 5.x + Autenticidade do Aplicativo + Android App Bundle. Como uma solução alternativa, faça upload de seu aplicativo como um arquivo .apk regular para a Play Store ou restrinja a versão mínima do Android ao Android 6 ou acima ou tenha uma versão separada do aplicativo para dispositivos Android 5.x.

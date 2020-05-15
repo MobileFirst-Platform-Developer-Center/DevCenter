@@ -75,8 +75,8 @@ Las infraestructuras opcionales que añaden características a la aplicación {{
 | Característica | Limitación |
 |---------|------------|
 | openSSL | No soportada |
-| JSONStore| No soportada |
-| Notificaciones | No soportada |
+| JSONStore|No soportada |
+| Notificaciones |No soportada |
 | Alertas de mensajes visualizadas por el código de {{ site.data.keys.product_adj }} | No soportada |
 | Notificación/inhabilitación remota	| Precisa personalización (consulte más abajo) |
 | Comprobación de seguridad de contraseña/nombres de usuario | Utilice la comprobación de seguridad CredentialsValidation |

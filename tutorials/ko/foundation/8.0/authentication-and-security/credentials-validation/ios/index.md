@@ -108,7 +108,7 @@ override open func handleFailure(failureResponse: [AnyHashable: Any]!) {
 ## 성공 처리
 {: #handling-successes }
 
-선택적으로 SecurityCheckChallengeHandler의 `handleSuccess(successResponse: [AnyHashable: Any]!)` 메소드를 구현하여 프레임워크가 인증 확인 핸들러 플로우를 닫기 전에 작업하도록 선택할 수도 있습니다. 여기서 다시, 성공한 Dictionary의 컨텐츠와 구조는 보안 검사가 전송하는 항목에 따라 달라집니다.
+선택적으로 SecurityCheckChallengeHandler의 `handleSuccess(successResponse: [AnyHashable: Any]!)` 메소드를 구현하여 프레임워크가 인증 확인 핸들러 플로우를 닫기 전에 작업하도록 선택할 수 있습니다. 여기에서 다시, success Dictionary의 컨텐츠와 구조는 보안 검사가 전송한 항목에 따라 달라집니다.
 
 ## 인증 확인 핸들러 등록
 {: #registering-the-challenge-handler }

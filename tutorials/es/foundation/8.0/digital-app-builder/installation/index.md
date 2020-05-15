@@ -19,6 +19,8 @@ Digital App Builder se puede instalar en la plataforma MacOS y Windows. La insta
 4. Efectúe una doble pulsación en el icono IBM Digital App Builder para abrirlo.
     >**Nota**: cuando se instala Digital App Builder por primera ver, Digital App Builder abre la interfaz para instalar el software de requisito previo. Si ya existe una versión anterior de Digital App Builder, se realiza una comprobación de requisitos previos y es posible que sea necesario actualizar o degradar algún software para que cumpla los requisitos previos.
     
+    >A partir de la versión 8.0.6, el instalador contiene el servidor de desarrollo de Mobile Foundation. Durante la instalación, el servidor de desarrollo se instala junto con otros requisitos previos. El ciclo de vida del servidor de desarrollo (como inicio/detención del servidor) lo maneja Digital App Builder.
+    
     ![Instalación de Digital App Builder](dab-install-startup.png)
 
 5. Pulse **Iniciar instalación**. Se mostrará la pantalla de acuerdo de licencia.
@@ -51,6 +53,9 @@ Digital App Builder se puede instalar en la plataforma MacOS y Windows. La insta
 
 1. Descargue el archivo .exe (**IBM.Digital.App.Builder.Setup.n.n.n.exe**, donde `n.n.n` es el número de versión)) desde [IBM Passport Advantage](https://www.ibm.com/software/passportadvantage/) o desde [aquí](https://github.com/MobileFirst-Platform-Developer-Center/Digital-App-Builder/releases).
 2. Ejecute el ejecutable descargado (**IBM.Digital.App.Builder.Setup.n.n.n.exe**) en modalidad administrativa.
+    >**Nota**: cuando se instala Digital App Builder por primera ver, Digital App Builder abre la interfaz para instalar el software de requisito previo. Si ya existe una versión anterior de Digital App Builder, se realiza una comprobación de requisitos previos y es posible que sea necesario actualizar o degradar algún software para que cumpla los requisitos previos.
+    
+    >A partir de la versión 8.0.6, el instalador contiene el servidor de desarrollo de Mobile Foundation. Durante la instalación, el servidor de desarrollo se instala junto con otros requisitos previos. El ciclo de vida del servidor de desarrollo (como inicio/detención del servidor) lo maneja Digital App Builder.
 
     ![Instalación de Digital App Builder](dab-install-startup.png)
 

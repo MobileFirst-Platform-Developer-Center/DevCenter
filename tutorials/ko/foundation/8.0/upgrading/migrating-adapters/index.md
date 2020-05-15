@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: MobileFirst Server V8.0.0에서 작동하도록 기존 어댑터 마이그레이션
-breadcrumb_title: Migrating existing adapters
-weight: 3
+breadcrumb_title: 기존 어댑터 마이그레이션
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -15,13 +15,19 @@ weight: 3
 * 특정 조건 하에서 기존 어댑터는 {{ site.data.keys.mf_server }} v8.0에 대해서도 그대로 작동합니다. [{{ site.data.keys.mf_server }} V8.0에서 기존 어댑터를 그대로 사용](#using-older-adapters-as-is-under-mobilefirst-server-v-80)을 참조하십시오.
 * 대부분의 경우 어댑터를 업그레이드해야 합니다. Java™ 어댑터의 경우 [Java 어댑터를 {{ site.data.keys.mf_server }} v8.0을 위한 Maven 프로젝트로 마이그레이션](#migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80)을 참조하십시오. JavaScript 어댑터의 경우 [JavaScript 어댑터를 {{ site.data.keys.mf_server }} v8.0을 위한 Maven 프로젝트로 마이그레이션](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80)을 참조하십시오.
 
+## 마이그레이션 지원 도구로 어댑터 마이그레이션
+{: #migrating-adapters-using-migration-assist-tool}
+
+마이그레이션 지원 도구로 기존 어댑터를 더 쉽게 마이그레이션합니다. 자세한 정보는 [여기]({{site.baseur}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/#using-migration-assistance-tool)를 참조하십시오. 
+
+
 ## {{ site.data.keys.mf_server }} v8.0에서 기존 어댑터를 그대로 사용
 {: #using-older-adapters-as-is-under-mobilefirst-server-v-80 }
 다음 기준에 일치하지 않는 경우 기존 어댑터를 {{ site.data.keys.mf_server }} v8.0에 그대로 배치할 수 있습니다.
 
-|어댑터 유형 |조건 | 
+|어댑터 유형 |조건 |
 |--------------|-----------|
-|Java |PushAPI 또는 SecurityAPI 인터페이스 사용 | 
+|Java |PushAPI 또는 SecurityAPI 인터페이스 사용 |
 |JavaScript | {::nomarkdown}<ul><li>IBM Worklight V6.2 이하를 사용하여 빌드되었습니다.</li><li>HTTP 또는 SQL이 아닌 연결 유형을 사용합니다.</li><li>securityTest 사용자 정의가 있는 프로시저 포함</li><li>사용자 ID로 백엔드에 연결하는 프로시저 포함</li><li>다음 API를 사용합니다.<ul><li>WL.Device.*</li><li>WL.Geo.\*</li><li>WL.Server.readSingleJMSMessage</li><li>WL.Server.readAllJMSMessages</li><li>WL.Server.writeJMSMessage</li><li>WL.Server.requestReplyJMSMessage</li><li>WL.Server.getActiveUser</li><li>WL.Server.setActiveUser</li><li>WL.Server.getCurrentUserIdentity</li><li>WL.Server.getCurrentDeviceIdentity</li><li>WL.Server.createEventSource</li><li>WL.Server.createDefaultNotification</li><li>WL.Server.getUserNotificationSubscription</li><li>WL.Server.notifyAllDevices</li><li>WL.Server.notifyDeviceToken</li><li>WL.Server.notifyDeviceSubscription</li><li>WL.Server.sendMessage</li><li>WL.Server.createEventHandler</li><li>WL.Server.setEventHandlers</li><li>WL.Server.setApplicationContext</li><li>WL.Server.fetchNWBusinessObject</li><li>WL.Server.createNWBusinessObject</li><li>WL.Server.deleteNWBusinessObject</li><li>WL.Server.updateNWBusinessObject</li><li>WL.Server.getBeaconsAndTriggers</li><li>WL.Server.signSoapMessage</li><li>WL.Server.createSQLStatement</li></ul></li></ul>{:/} |
 
 ## Java 어댑터를 {{ site.data.keys.mf_server }} v8.0을 위한 Maven 프로젝트로 마이그레이션
@@ -43,7 +49,7 @@ weight: 3
     │                   ├── RSSAdapterApplication.java
     │                   └── RSSAdapterResource.java
    ```
-    
+
    Java 어댑터의 새 구조:
 
    ```xml

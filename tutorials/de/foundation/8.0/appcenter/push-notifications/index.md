@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Push-Benachrichtigungen für Anwendungsaktualisierungen
-breadcrumb_title: Push notifications
+breadcrumb_title: Push-Benachrichtigungen
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---

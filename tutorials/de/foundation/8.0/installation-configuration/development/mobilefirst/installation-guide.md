@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installationshandbuch für Workstations
-breadcrumb_title: Installation guide
+breadcrumb_title: Installationshandbuch
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -31,7 +31,9 @@ Für den Installer muss Java installiert sein.
     *Windows:*  
     [Folgen Sie dieser Anleitung](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html).
 
-### Installation
+    [Bekanntes Problem](#known-issue-win)
+
+## Installation
 {: #installation }
 Rufen Sie den DevKit Installer von der [Downloadseite]({{site.baseurl}}/downloads/) ab und folgen Sie den angezeigten Anweisungen. 
 
@@ -71,7 +73,7 @@ ein Update für Liveanwendungen mittels direkter Aktualisierung durchführen und
 
 **Voraussetzungen:**  
 1. Node.js und NPM sind Voraussetzungen für die Installation der {{ site.data.keys.mf_cli }}.  
- Sie müssen [NodeJS Version 6.11.1](https://nodejs.org/download/release/v6.11.1/) und NPM Version 3.10.10 herunterladen und installieren. Für die MobileFirst-CLI ab Version 8.0.2018100112 können Sie Node Version 8.x oder Version 10.x verwenden. 
+ Sie müssen [NodeJS Version 6.11.1](https://nodejs.org/download/release/v6.11.1/) und NPM Version 3.10.10 herunterladen und installieren. Für die MobileFirst-CLI ab Version 8.0.2018100112 können Sie Node Version 8.x oder Version 10.x verwenden.
 
  Überprüfen Sie die Installation. Öffnen Sie ein Befehlszeilenfenster und führen Sie den Befehl `node -v` aus.
 
@@ -100,16 +102,21 @@ Vor dem Erstellen von Adaptern und Sicherheitsüberprüfungen müssen Sie Apache
 1. [Laden Sie die ZIP-Datei für Apache Maven herunter](https://maven.apache.org/download.cgi). 
 2. Fügen Sie eine Variable `MVN_PATH` hinzu, die auf den Maven-Ordner zeigt. 
 
-    *Mac und Linux:* Bearbeiten Sie wie folgt Ihre Datei **~/.bash_profile**:
+   *Mac und Linux:* Bearbeiten Sie wie folgt Ihre Datei **~/.bash_profile**:
 
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
     ```
 
-    *Windows:*  
-    [Folgen Sie dieser Anleitung](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/). Überprüfen Sie die Installation, indem Sie `mvn -v` ausführen.
+    *Windows:*
 
+    [Folgen Sie dieser Anleitung](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).
+    
+    Überprüfen Sie die Installation, indem Sie Folgendes ausführen:
+    ```bash
+    mvn -v
+    ```
 
 
 ### Verwendung
@@ -117,3 +124,28 @@ Vor dem Erstellen von Adaptern und Sicherheitsüberprüfungen müssen Sie Apache
 Jetzt, da Apache Maven installiert ist, können Sie Adapter mit Befehlen der Maven-Befehlszeilenschnittstelle
 oder unter Verwendung der {{ site.data.keys.mf_cli }} erstellen.  
 Weitere Informationen enthalten die Lernprogramme zu [Adaptern]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
+
+### Bekanntes Problem unter Windows
+{: #known-issue-win}
+
+Auf Windows-Maschinen mit Oracle Java 8 ab Update 60 erscheint bei Verwendung von MobileFirst-Installationsprogrammen, die die InstallAnywhere-Technologie nutzen, die folgende Fehlernachricht. 
+
+![Startfehler](launch-error.png)
+
+#### Fehlerursache
+Von Oracle im Java-8-Update 60 eingeführte Änderungen führen dazu, dass mit InstallAnywhere erstellte Installationsprogramme fehlschlagen und den oben angegebenen Fehler melden. Dies liegt daran, dass InstallAnywhere in Oracle Java 8 ab Update 60 die Position der zuletzt auf der Windows-Maschine unterstützten JVM nicht automatisch ermitteln kann.
+
+#### Korrektur des Fehlers
+
+Sie können eine der folgenden Ansätze für die Lösung des Problems nutzen.
+
+##### Ansatz 1
+
+Weisen Sie InstallAnywhere an, unter Verwendung einer bestimmten JVM zu starten.
+Starten Sie das Installationsprogramm über die Befehlszeile und geben Sie mit dem Parameter **LAX_VM** an, welche JVM InstallAnywhere für den Start verwenden soll.
+
+![Parameter LAX_VM](lax-vm-parameter.png)
+
+##### Ansatz 2
+
+Da dieses Problem in Vorversionen von Java 8 Update 60 nich aufgetreten ist, können Sie Java 7 verwenden.

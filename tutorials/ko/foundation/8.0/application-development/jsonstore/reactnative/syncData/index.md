@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore 콜렉션의 데이터를 Cloudant DB에 동기화
-breadcrumb_title: Sync data of JSONStore collection to a Cloudant DB
+breadcrumb_title: JSONStore 콜렉션의 데이터를 Cloudant DB에 동기화
 relevantTo: [reactnative]
 weight: 4
 downloads:
@@ -53,7 +53,7 @@ import { JSONStoreCollection, WLJSONStore, JSONStoreInitOptions, JSONStoreSyncPo
     ```
 
 2. 동기화 API를 호출하면 동기화로 열린 모든 JSONStoreCollections가 `openCollection()` API 성공 시 동기화를 자동으로 트리거합니다.<br/>
-JSONStoreCollection이 **JSONStoreSyncPolicy.SYNC_DOWNSTREAM** 정책으로 열리는 경우 `sync()` API를 명시적으로 호출하여 최신 풀을 페치할 수 있습니다.<br/>
+    JSONStoreCollection이 **JSONStoreSyncPolicy.SYNC_DOWNSTREAM** 정책으로 열리는 경우 `sync()` API를 명시적으로 호출하여 최신 풀을 페치할 수 있습니다.<br/>
     JSONStoreCollection이 **JSONStoreSyncPolicy.SYNC_UPSTREAM** 정책으로 열리는 경우, 콜렉션에서 문서를 추가, 업데이트 또는 제거하면 동기화 프로세스가 자동으로 트리거됩니다. `sync()` API를 호출하여 동기화를 명시적으로 트리거할 수도 있습니다.<br/>
     ```javascript
     var favCollection = new JsonStoreCollection('favourites');

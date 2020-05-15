@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst-Foundation-Entwicklung in Cordova-Anwendungen
-breadcrumb_title: Cordova application development
+breadcrumb_title: Cordova-Anwendungsentwicklung
 relevantTo: [cordova]
 weight: 4
 ---
@@ -165,6 +165,8 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
    }
 }
 {% endhighlight %}
+
+
 
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Abschnitt schließen</b></a>
@@ -485,6 +487,8 @@ In Cordova-iOS-Anwendungen kann das standardmäßig verwendete UIWebView durch [
 Führen Sie in einem Befehlszeilenfenster den folgenden Befehl aus, um WKWebView hinzuzufügen: `cordova plugin add cordova-plugin-wkwebview-engine`.
 
 > Machen Sie sich mit dem [Cordova-WKWebView-Plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine) vertraut.
+
+> **Aktualisierung:** Wenn das Plug-in `cordova-plugin-wkwebview-engine` in einer Cordova-Anwendung verwendet wird, wird der Fehler *Cross origin requests are only supported for HTTP* ausgelöst, was zum Fehlschlagen der direkten Aktualisierung führt. Sie können dies vermeiden. Dafür benötigt Ihre Anwendung das zusätzliche Plug-in [cordova-plugin-wkwebviewxhrfix](https://www.npmjs.com/package/cordova-plugin-wkwebviewxhrfix). Den zugehörigen Defect finden Sie [hier](https://issues.apache.org/jira/browse/CB-10143). 
 
 ## Weiterführende Informationen
 {: #further-reading }

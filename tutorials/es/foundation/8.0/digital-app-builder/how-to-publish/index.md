@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Publicación de una aplicación en IBM App Center
-weight: 14
+weight: 15
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: イベント・ソース・ベースの通知からのプッシュ通知のマイグレーション
-breadcrumb_title: Migrating push notifications
-weight: 4
+breadcrumb_title: プッシュ通知のマイグレーション
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
@@ -1565,5 +1565,5 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    ```
 
    * ツールの .jar ファイルとこのプロパティー・ファイルが別々の場所に配置されている場合は、**path-to-migration.properties** を **migration.properties** のパスで置き換えます。 そうでない場合は、コマンドからパスを削除します。
-   
+
     *必要なライブラリーが含まれた lib フォルダーは、ツールの .jar ファイルと同じ場所に配置してください。

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración de MobileFirst Application Center en IBM Cloud Kubernetes Cluster mediante scripts
-breadcrumb_title: AppCenter on Kubernetes using scripts
+breadcrumb_title: AppCenter en Kubernetes mediante scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
@@ -267,18 +267,18 @@ Cuando ejecuta de forma interactiva, se guarda una copia de los argumentos propo
 {% endhighlight %}
                 </li>
                 <li><b>prepareappcenterdbs.sh - Prepare la base de datos de {{ site.data.keys.mf_app_center }} </b><br />
-                    El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos DB2. La instancia de servicio de DB2 debe estar disponible en la Organización y Espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
-                    <b>Interactive Mode</b>
+                    El script <b>prepareappcenterdbs.sh</b> se utiliza para configurar {{ site.data.keys.mf_app_center }} con el servicio de base de datos DB2. La instancia de servicio del servicio DB2 debe estar disponible en la organización y espacio en que ha iniciado sesión en el paso 1. Ejecute lo siguiente:
+                    <b>Modo interactivo</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh
 {% endhighlight %}
-                    <b>Non-interactive Mode</b>
+                    <b>Modo no interactivo</b>
 {% highlight bash %}
 ./prepareappcenterdbs.sh args/prepareappcenterdbs.properties
 {% endhighlight %}
                 </li>
                 <li><b>initenv.sh (Opcional) – Inicio de sesión en IBM Cloud </b><br />
-                      Este paso solo es necesario si necesita crear contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de DB2. Si es así, actualice initenv.properties con la nueva organización y espacio en que se han creado los contenedores (y se han iniciado), y vuelva a ejecutar el script <b>initenv.sh</b>:
+                      Este paso solo es necesario si necesita crear contenedores en una organización y espacio diferentes a aquellos en los que está disponible la instancia de servicio de DB2. Si es así, actualice initenv.properties con la nueva organización y espacio donde se han de crear (e iniciar) los contenedores, y vuelva a ejecutar el script <b>initenv.sh</b>:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}

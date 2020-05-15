@@ -130,6 +130,10 @@ Si ejecuta los servicios push en un servidor de aplicaciones distinto del tiempo
 
 ### {{ site.data.keys.mf_analytics }} y {{ site.data.keys.mf_analytics_console }}
 {: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
+{{ site.data.keys.mf_analytics_receiver_full }} es un componente opcional que proporciona una característica de reenvío del registro de análisis y del registrador que se puede utilizar para enviar con aplicaciones móviles los registros de análisis y del registrador a {{ site.data.keys.mf_analytics_full }}. El uso de este servicio liberará el manejo del registro que realiza {{ site.data.keys.mf_server }}. 
+
+### {{ site.data.keys.mf_analytics }} y {{ site.data.keys.mf_analytics_console }}
+{: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
 {{ site.data.keys.mf_analytics_full }} es un componente opcional que proporciona una característica de analíticas escalables a la que es posible acceder desde {{ site.data.keys.mf_console }}. Esta característica de analíticas permite buscar patrones, estadísticas de uso de plataforma y problemas a través de registros y sucesos que se recopilan desde dispositivos, aplicaciones y servidores.
 
 Desde {{ site.data.keys.mf_console }}, defina filtros para habilitar o inhabilitar el reenvío de datos de las analíticas Service. También se puede filtrar el tipo de información que se envía. En el lado del cliente, utilice la API de captura de registro del lado del cliente para enviar sucesos y datos al servidor de analíticas.

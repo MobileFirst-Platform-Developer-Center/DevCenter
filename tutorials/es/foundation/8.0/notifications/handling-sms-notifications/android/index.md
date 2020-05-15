@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Manejo de las notificaciones por SMS en Android
-breadcrumb_title: Handling SMS in Android
+breadcrumb_title: Manejo de SMS en Android
 relevantTo: [android]
 weight: 10
 downloads:
@@ -80,7 +80,6 @@ catch(Exception ex) {
 ```
 
 > El dispositivo también se puede registrar utilizando la [API REST (POST) de registro de dispositivo de push](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
-
 #### Anular el registro del dispositivo
 {: #unregister-device }
 Anule el registro del dispositivo de una instancia de servicio de notificaciones push.

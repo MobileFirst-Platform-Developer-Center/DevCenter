@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 웹 애플리케이션에 MobileFirst Foundation SDK 추가
-breadcrumb_title: Web
+breadcrumb_title: 웹
 relevantTo: [javascript]
 weight: 6
 ---
@@ -19,7 +19,7 @@ SDK에는 다음 파일이 포함됩니다.
 
 #### 다음으로 이동
 {: #jump-to }
-- [선행 조건](#prerequisites)
+- [전제조건](#prerequisites)
 - [{{ site.data.keys.product_adj }} 웹 SDK 추가](#adding-the-mobilefirst-web-sdk)
 - [{{ site.data.keys.product_adj }} 웹 SDK 초기화](#initializing-the-mobilefirst-web-sdk)
 - [웹 애플리케이션 등록](#registering-the-web-application)
@@ -28,7 +28,7 @@ SDK에는 다음 파일이 포함됩니다.
 - [보안 출처 정책](#secure-origins-policy)
 - [다음 학습서](#tutorials-to-follow-next)
 
-## 선행 조건
+## 전제조건
 {: #prerequisites }
 -   웹 개발 환경 설정에 대해서는 [지원되는 웹 브라우저](../../../installation-configuration/development/web/#web-app-supported-browsers)
 전제조건을 참조하십시오.
@@ -93,7 +93,7 @@ require(['mfp'], function(WL) {
 웹 애플리케이션의 기본 JavaScript 파일에서 **컨텍스트 루트** 및 **애플리케이션 ID** 값을 지정하여 {{ site.data.keys.product }} 웹 SDK를 초기화하십시오.
 
 ```javascript
-   var wlInitOptions = {
+var wlInitOptions = {
     mfpContextRoot : '/mfp', // "mfp" is the default context root in the {{ site.data.keys.product }}
     applicationId : 'com.sample.mywebapp' // Replace with your own value.
     sessionMode : true //This is an optional paramter. Setting this to true ensures that MFP related data is stored in the session rather than in the local storage. If this option is set to false or not set at all, default is local storage.

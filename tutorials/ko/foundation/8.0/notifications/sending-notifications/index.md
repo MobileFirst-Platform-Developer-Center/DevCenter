@@ -292,17 +292,17 @@ https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 {: #notification-payload }
 요청은 다음과 같은 페이로드 특성을 포함할 수 있습니다.
 
-페이로드 특성|정의
+페이로드 특성| 정의
 --- | ---
-message |전송할 경보 메시지입니다.
-settings |설정은 알림의 다양한 속성입니다.
-target |대상 세트는 이용자 ID, 디바이스, 플랫폼 또는 태그일 수 있습니다. 대상 중 하나만 설정할 수 있습니다.
-deviceIds |디바이스 ID로 표시되는 디바이스의 배열입니다. 이러한 ID를 가진 디바이스가 알림을 수신합니다. 이는 유니캐스트 알림입니다.
-notificationType |메시지를 전송하는 데 사용되는 채널(푸시/SMS)을 표시하는 정수 값입니다. 허용되는 값은 1(푸시만), 2(SMS만) 및 3(푸시 및 SMS)입니다 .
-platforms |디바이스 플랫폼의 배열입니다. 이러한 플랫폼에서 실행 중인 디바이스가 알림을 수신합니다. 지원되는 값은 A(Apple/iOS), G(Google/Android) 및 M(Microsoft/Windows)입니다.
-tagNames |tagNames로 지정되는 태그의 배열입니다. 이러한 태그에 등록된 디바이스가 알림을 수신합니다. 태그 기반 알림의 경우 이 유형의 대상을 사용하십시오.
-userIds |알림을 전송할 사용자 ID로 표시되는 사용자의 배열입니다. 이는 유니캐스트 알림입니다.
-phoneNumber |디바이스 등록 및 알림 수신에 사용되는 전화번호입니다. 이는 유니캐스트 알림입니다.
+message | 전송할 경보 메시지입니다.
+settings | 설정은 알림의 다양한 속성입니다.
+target | 대상 세트는 이용자 ID, 디바이스, 플랫폼 또는 태그일 수 있습니다. 대상 중 하나만 설정할 수 있습니다.
+deviceIds | 디바이스 ID로 표시되는 디바이스의 배열입니다. 이러한 ID를 가진 디바이스가 알림을 수신합니다. 이는 유니캐스트 알림입니다.
+notificationType | 메시지를 전송하는 데 사용되는 채널(푸시/SMS)을 표시하는 정수 값입니다. 허용되는 값은 1(푸시만), 2(SMS만) 및 3(푸시 및 SMS)입니다 .
+platforms | 디바이스 플랫폼의 배열입니다. 이러한 플랫폼에서 실행 중인 디바이스가 알림을 수신합니다. 지원되는 값은 A(Apple/iOS), G(Google/Android) 및 M(Microsoft/Windows)입니다.
+tagNames | tagNames로 지정되는 태그의 배열입니다. 이러한 태그에 등록된 디바이스가 알림을 수신합니다. 태그 기반 알림의 경우 이 유형의 대상을 사용하십시오.
+userIds | 알림을 전송할 사용자 ID로 표시되는 사용자의 배열입니다. 이는 유니캐스트 알림입니다.
+phoneNumber | 디바이스 등록 및 알림 수신에 사용되는 전화번호입니다. 이는 유니캐스트 알림입니다.
 
 **푸시 알림 페이로드 JSON의 예**
 
@@ -432,7 +432,7 @@ JNDI 특성을 통해 HTTP/2 기반 알림을 사용할 수 있습니다.
 ### HTTP/2에 대한 프록시 지원
 {: #proxy-support-for-http2}
 
-HTTP/2 기반 알림은 HTTP 프록시를 통해서 전송될 수 있습니다. 프록시를 통한 알림 경로 지정을 사용하려면 [여기](#proxy-support)를 참조하십시오.
+HTTP/2 기반 알림은 HTTP 프록시를 통해서 전송될 수 있습니다. 프록시를 통한 알림 경로 지정을 사용하려면 [여기]({{site.baseurl}}}/blog/2018/12/24/HTTP2-proxy-support/)를 참조하십시오.
 
 ## 프록시 지원
 {: #proxy-support }

@@ -128,8 +128,8 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 2. 그런 다음 `createUser` 메소드를 대체하여 `AuthenticatedUser`의 새 인스턴스를 리턴하십시오.
 
    ```java
-@Override
-    protected AuthenticatedUser createUser() {
+   @Override
+   protected AuthenticatedUser createUser() {
         return new AuthenticatedUser(userId, displayName, this.getName());
    }
    ```

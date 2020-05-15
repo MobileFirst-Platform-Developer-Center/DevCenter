@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configurando o ambiente de desenvolvimento da web
-breadcrumb_title: Web
+breadcrumb_title: web
 relevantTo: [javascript]
 weight: 6
 ---
@@ -38,7 +38,7 @@ Os requisitos de política podem ser preenchidos usando qualquer um dos seguinte
 
     <sup>*</sup> No Safari, o modo de navegação privada é suportado apenas para aplicativos de página única (SPAs). Outros aplicativos podem apresentar comportamento inesperado.
 
-    {% comment %} [sharonl][c-web-browsers-ms-edge] Veja informações sobre o suporte do Microsoft Edge na Tarefa 111165. {% endcomment %}
+    {% comment %} [sharonl][c-web-browsers-ms-edge] Consulte informações sobre o suporte do Microsoft Edge na Tarefa 111165. {% endcomment %}
 
 -   As instruções de configuração a seguir requerem a instalação do Apache Maven ou do Node.js na estação de trabalho do desenvolvedor. Para obter instruções adicionais, consulte o [guia de instalação](../mobilefirst/installation-guide/).
 
@@ -137,7 +137,7 @@ O Node.js pode ser usado como um proxy reverso para canalizar solicitações do 
     - Substitua **port** por seu próprio valor.
     - Substitua **app-name** por seu próprio valor.
 
-## Etapas seguintes
+## Próximas Etapas
 {: #next-steps }
 Para continuar com o desenvolvimento do {{ site.data.keys.product }} em aplicativos da web, o SDK da web do {{ site.data.keys.product }} precisa ser incluído no aplicativo da web.
 

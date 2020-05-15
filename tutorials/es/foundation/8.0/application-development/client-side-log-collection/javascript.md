@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Registro en aplicaciones JavaScript (Cordova, Web)
-breadcrumb_title: Logging in JavaScript
+breadcrumb_title: Registro en JavaScript
 relevantTo: [javascript]
 weight: 1
 ---
@@ -90,16 +90,36 @@ WL.Logger.config({autoSendLogs: false});
 Para habilitar:
 
 ```javascript
-ibmmfpfanalytics.autoSendLogs(true);
+ibmmfpfanalytics.enableAutoSend(true);
 ```
 
 Para inhabilitar:
 
 ```javascript
-ibmmfpfanalytics.autoSendLogs(false);
+ibmmfpfanalytics.enableAutoSend(false);
 ```
 
-## Ajuste fino con la API Logger
+### Cambiar el intervalo de autoSendLog 
+{: auto-log-sending-interval }
+De forma predeterminada, el *intervalo de autoSendLog* se establece en 60 segundos. El *intervalo de AutoSendLog* se puede modificar utilizando el método siguiente. 
+
+#### Para aplicaciones Cordova
+{: #for-cordova-apps }
+
+Para establecer el *intervalo de autoSendLog* en 120 segundos, consulte el siguiente fragmento.
+```javascript
+WL.Logger.config({autoSendLogs: true,autoSendLogsInterval: 120});
+```
+
+#### Para aplicaciones web
+{: #for-web-apps }
+
+Para establecer el *intervalo de autoSendLog* en 120 segundos, consulte el siguiente fragmento.
+```javascript
+ibmmfpfanalytics.enableAutoSend(true, 120);
+```
+
+## Ajuste preciso con la API Logger
 {: #fine-tuning-with-the-logger-api }
 El SDK de cliente de {{ site.data.keys.product_adj }} utiliza internamente la API Logger. De forma predeterminada, se capturan las entradas de registro que el SDK realiza. Para un ajuste fino en la recopilación del registro, utilice instancias de Logger con nombres de paquete. También puede controlar qué nivel de registro se captura mediante las analíticas utilizando filtros desde el lado del servidor.
 

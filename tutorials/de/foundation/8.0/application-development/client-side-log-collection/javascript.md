@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Protokollierung in JavaScript-Anwendungen (Cordova-Anwendungen, Webanwendungen)
-breadcrumb_title: Logging in JavaScript
+breadcrumb_title: Protokollierung in JavaScript
 relevantTo: [javascript]
 weight: 1
 ---
@@ -93,13 +93,33 @@ WL.Logger.config({autoSendLogs: false});
 Aktivierung: 
 
 ```javascript
-ibmmfpfanalytics.autoSendLogs(true);
+ibmmfpfanalytics.enableAutoSend(true);
 ```
 
 Inaktivierung: 
 
 ```javascript
-ibmmfpfanalytics.autoSendLogs(false);
+ibmmfpfanalytics.enableAutoSend(false);
+```
+
+### Intervall für autoSendLog ändern
+{: auto-log-sending-interval }
+Das *Intervall für autoSendLog* ist standardmäßig auf 60 Sekunden gesetzt. Sie können das *Intervall für autoSendLog* mit folgender Methode ändern.
+
+#### Cordova-Apps
+{: #for-cordova-apps }
+
+Das folgende Snippet zeigt, wie das *Intervall für autoSendLog* auf 120 Sekunden gesetzt wird.
+```javascript
+WL.Logger.config({autoSendLogs: true,autoSendLogsInterval: 120});
+```
+
+#### Web-Apps
+{: #for-web-apps }
+
+Das folgende Snippet zeigt, wie das *Intervall für autoSendLog* auf 120 Sekunden gesetzt wird.
+```javascript
+ibmmfpfanalytics.enableAutoSend(true, 120);
 ```
 
 ## Optimierung mit der Logger-API

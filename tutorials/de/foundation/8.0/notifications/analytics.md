@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Analytics-Unterstützung für Push-Benachrichtigungen einrichten
-breadcrumb_title: Setting Up Analytics Support
+breadcrumb_title: Analytics-Unterstützung einrichten
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---
@@ -21,7 +21,7 @@ Die folgenden Eigenschaften sind erforderlich, um das
 MobileFirst-Analytics-Plug-in zu konfigurieren und zu initialisieren. Die Authentifizierung gegenäber dem Analytics-Service am angegebenen Endpunkt erfolgt mit Benutzernamen und Kennwort. 
 
 ```xml
-<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<MFP-Server:Port>/analytics-service/rest/data"/>
+<jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<MFP-Server:Port>/analytics-service/rest"/>
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.user" value = "<Benutzername>"/>
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.password" value = "<Kennwort>"/>
 ```

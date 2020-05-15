@@ -23,6 +23,7 @@ Sie können dort sofort nachlesen, wie sich die Einschränkung auf das Feature a
 * Handelt es sich um eine bekannte allgemeine Einschränkung, also eine Einschränkung, die in unterschiedlichen Artikeln erwähnt werden müsste oder für die
 es möglicherweise keinen speziellen Artikel gibt, finden Sie die Beschreibung der Einschränkung hier.
 * Wegen Problemen mit der Erkennung von Elasticsearch-Knoten im OpenShift-4.2-Cluster kann es zu Inkonsistenzen bei der Funktion von Mobile-Foundation-Analytics-Pods kommen. Infolgedessen werden in der Analytics-Administrationskonsole immer nur jeweils ein Knoten aufgelistet.
+* In der mobilen Android-Client-App für das Application Center können Probleme beim Blättern auftreten. Dies ist keine Fehlfunktion. Es kann sein, dass Sie öfter blättern müssen, um zum Seitenende zu gelangen. Dies ist auf eine Begrenzung der im Application-Center-Client verwendeten JavaScript-Frameworks anderer Anbieter zurückzuführen.
 
 ### Globalisierung
 {: #globalization }
@@ -410,7 +411,7 @@ Vorhandenes Code-Snippet:
 ```objc
 (void)wlInitDidCompleteSuccessfully
 {
-UIViewController* rootViewController = self.window.rootViewController;
+ UIViewController* rootViewController = self.window.rootViewController;
 // Cordova-Ansichtencontroller erstellen
 CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
 cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
@@ -490,3 +491,7 @@ Dieser Fehler ist auf einen [bekannten Programmfehler in node-gyp](https://githu
 ```bash
 npm install -g mfpdev-cli --no-optional
 ```
+
+### Feature für Android-App-Bundles
+
+Aufgrund des Unterschieds in der Paketstruktur von App-Bundles in Android 5.x und Android 6.x sowie aktuelleren Versionen können Benutzer von Android 5.x keine Verbindung zu MobileFirst Server herstellen, wenn die App-Authentizität aktiviert ist und das Paket im Play Store als App-Bundle zur Verfügung gestellt wird. Diese Einschränkung ist nur bei einer Kombination aus Android 5.x, App-Authentizität und Android-App-Bundle zu beobachten. Laden Sie als Ausweichlösung Ihre App als reguläre .apk-Datei in den Play Store hoch oder verwenden Sie Android 6 oder eine aktuellere Version als Mindstversion. Für Geräte mit Android 5.x können Sie auch eine separate Version der App verwenden.

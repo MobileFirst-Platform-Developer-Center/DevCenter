@@ -16,7 +16,9 @@ additional_authors: Kapil Powar
 
 Starting with *iFix 8.0.0.0-MFPF-IF201812191602-CDUpdate-04*, MobileFirst Platform supports HTTP/2 based notifications for Apple devices.
 
->**Note:** Support for HTTP/2 for Push Notifications would co-exist along with the legacy TCP Socket based notifications.
+> **Note:**
+> Support for WAS ND is available from iFix 8.0.0.0-MFPF-IF202002111526.
+> Support for HTTP/2 for Push Notifications would co-exist along with the legacy TCP Socket based notifications.
 
 If you are an on-premise 8.0 customer or Mobile Foundation service customer, then read further to learn about using HTTP/2 based notifications <br/>
 

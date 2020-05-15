@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Validating Mobile Foundation archive from PPA
+breadcrumb_title: PPA からの Mobile Foundation アーカイブの検証
 title: パスポート・アドバンテージ・アーカイブからダウンロードした IBM Mobile Foundation アーカイブの検証
 weight: 5
 show_in_nav: false

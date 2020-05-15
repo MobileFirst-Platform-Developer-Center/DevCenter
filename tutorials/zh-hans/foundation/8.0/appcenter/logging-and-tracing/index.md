@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 在应用程序服务器上为 Application Center 设置日志记录和跟踪
-breadcrumb_title: Setting up logging and tracing
+breadcrumb_title: 设置日志记录和跟踪
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---

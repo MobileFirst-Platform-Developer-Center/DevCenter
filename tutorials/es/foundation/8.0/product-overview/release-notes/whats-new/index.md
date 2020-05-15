@@ -24,7 +24,8 @@ weight: 1
                 <h3>Nuevo proceso de desarrollo y despliegue</h3>
                 <p>Ya no es necesario crear un archivo WAR de proyecto para instalarlo en el servidor de aplicaciones. En su lugar, {{ site.data.keys.mf_server }} se instala una vez y se sube al servidor la configuración de lado del servidor de sus aplicaciones, de la seguridad de los recursos o del servicio push. Puede modificar la configuración sus aplicaciones con {{ site.data.keys.mf_console }}.</p>
 
-                <p>Ya no existen los proyectos de {{ site.data.keys.product_adj }}. En su lugar, puede desarrollar su aplicación móvil con el entorno de desarrollo que desee.<br/>                 Es posible modificar la configuración del lado del servidor de sus aplicaciones y adaptadores sin detener {{ site.data.keys.mf_server }}.</p>
+                <p>Ya no existen los proyectos de {{ site.data.keys.product_adj }}. En su lugar, puede desarrollar su aplicación móvil con el entorno de desarrollo que desee.<br/>
+                Es posible modificar la configuración del lado del servidor de sus aplicaciones y adaptadores sin detener {{ site.data.keys.mf_server }}.</p>
 
                 <ul>
                     <li>Para obtener más información sobre el nuevo proceso de desarrollo, consulte <a href="../../../application-development/">Visión general y conceptos de desarrollo</a></li>
@@ -397,7 +398,8 @@ weight: 1
                     <li>Chino (tradicional)</li>
                 </ul>
 
-                <p>{{ site.data.keys.mf_analytics_console }} ahora muestra contenido diferente en función del rol de seguridad del usuario que ha iniciado la sesión.<br/>                 Para obtener más información, consulte <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Control de acceso basado en roles</a>.</p>
+                <p>{{ site.data.keys.mf_analytics_console }} ahora muestra contenido diferente en función del rol de seguridad del usuario que ha iniciado la sesión.<br/>
+                Para obtener más información, consulte <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Control de acceso basado en roles</a>.</p>
 
                 <p>{{ site.data.keys.mf_analytics_server }} utiliza Elasticsearch V1.7.5.</p>
 
@@ -475,4 +477,17 @@ weight: 1
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-analytics-receiver">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-analytics-receiver" aria-expanded="true" aria-controls="collapse-mobilefirst-analytics-receiver">Novedades en {{ site.data.keys.mf_analytics_receiver }}</a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-analytics-receiver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics-receiver">
+            <div class="panel-body">
+                <p>{{ site.data.keys.mf_analytics_server }} es una característica opcional que acepta registros del SDK del cliente y los envía a Analytics. Reduce la carga de {{ site.data.keys.mf_server }} en la gestión de la función loguploader. </p>
+            </div>
+        </div>
+    </div>    
 </div>

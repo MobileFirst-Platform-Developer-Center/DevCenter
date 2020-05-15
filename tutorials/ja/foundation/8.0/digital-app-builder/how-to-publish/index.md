@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM App Center へのアプリケーションの公開
-weight: 14
+weight: 15
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -26,9 +26,9 @@ Digital App Builder の**「公開 (Publish)」**機能を使用して、アプ�
 
 2. アプリケーションを公開したい**プラットフォーム**を選択します。
 
-3. **「Web チェックサム (Web Checksum)」**をクリックして、Web リソースのチェックサム機能を有効にします。詳細については、[Webリソースのチェックサム機能の有効化](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature)を参照してください。
+3. **「Web チェックサム (Web Checksum)」**をクリックして、Web リソースのチェックサム機能を有効にします。 詳細については、[Webリソースのチェックサム機能の有効化](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature)を参照してください。
 
-4. **「Web リソースの暗号化 (Web Resource Encryption)」**をクリックして、Cordova パッケージの Web リソースを暗号化します。詳細については、[Cordovaパッケージの Web リソースの暗号化](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)を参照してください。
+4. **「Web リソースの暗号化 (Web Resource Encryption)」**をクリックして、Cordova パッケージの Web リソースを暗号化します。 詳細については、[Cordovaパッケージの Web リソースの暗号化](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)を参照してください。
 
 2. **「App Center に公開する (Publish to App Center)」**をクリックします。
 
@@ -52,7 +52,7 @@ Digital App Builder の**「公開 (Publish)」**機能を使用して、アプ�
 ### ダイレクト・アップデートの公開
 {: #dab-publish-direct-update }
 
-[ダイレクト・アップデート](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/direct-update/)により、変更、修正、新規の適用可能ロジック (JavaScript)、HTML、CSS、あるいはイメージなどのリフレッシュされた Web リソースを使用して、Cordova アプリケーションを「over-the-air」で更新できます。これにより、組織では、エンド・ユーザーが常にアプリケーションの最新バージョンを使用することを保証できます。
+[ダイレクト・アップデート](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/direct-update/)により、変更、修正、新規の適用可能ロジック (JavaScript)、HTML、CSS、あるいはイメージなどのリフレッシュされた Web リソースを使用して、Cordova アプリケーションを「over-the-air」で更新できます。 これにより、組織では、エンド・ユーザーが常にアプリケーションの最新バージョンを使用することを保証できます。
 
 >**注**: App Center へ公開する前に、エラーなしの状態でアプリケーションがビルドされていることを確認してください。
 
@@ -62,7 +62,7 @@ Digital App Builder の**「公開 (Publish)」**機能を使用して、アプ�
 
 2. アプリケーションを公開したい**プラットフォーム**を選択します。
 
-3. **「Web チェックサム (Web Checksum)」**をクリックして、Web リソースのチェックサム機能を有効にします。詳細については、[Webリソースのチェックサム機能の有効化](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature)を参照してください。
+3. **「Web チェックサム (Web Checksum)」**をクリックして、Web リソースのチェックサム機能を有効にします。 詳細については、[Webリソースのチェックサム機能の有効化](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature)を参照してください。
 
-4. **「Web リソースの暗号化 (Web Resource Encryption)」**をクリックして、Cordova パッケージの Web リソースを暗号化します。詳細については、[Cordovaパッケージの Web リソースの暗号化](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)を参照してください。
-5. **「ダイレクト・アップデートの公開 (Publish Direct Update)」**をクリックします。ユーザーがアプリケーションを起動して Mobile Foundation サーバーに接続すると、Web リソースの更新のためのプロンプトが表示されます。確認後に、ユーザーは更新された Web リソースを利用することが可能となります。
+4. **「Web リソースの暗号化 (Web Resource Encryption)」**をクリックして、Cordova パッケージの Web リソースを暗号化します。 詳細については、[Cordovaパッケージの Web リソースの暗号化](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/application-development/cordova-apps/securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)を参照してください。
+5. **「ダイレクト・アップデートの公開 (Publish Direct Update)」**をクリックします。 ユーザーがアプリケーションを起動して Mobile Foundation サーバーに接続すると、Web リソースの更新のためのプロンプトが表示されます。 確認後に、ユーザーは更新された Web リソースを利用することが可能となります。

@@ -38,7 +38,7 @@ Vous pouvez satisfaire les exigences dictées par la règle en appliquant l'une 
 
     <sup>*</sup> Dans Safari, le mode de navigation privé n'est pris en charge que pour les applications monopages (SPA). D'autres applications peuvent avoir un comportement inattendu.
 
-    {% comment %} [sharonl][c-web-browsers-ms-edge] Voir les informations sur la prise en charge de Microsoft Edge dans la tâche 111165. {% endcomment %}
+    {% comment %} [sharonl][c-web-browsers-ms-edge] Consultez les informations sur la prise en charge de Microsoft Edge dans la tâche 111165. {% endcomment %}
 
 -   Les instructions de configuration suivantes nécessitent que Apache Maven ou Node.js soit installé sur le poste de travail du développeur. Pour plus d'instructions, voir le [guide d'installation](../mobilefirst/installation-guide/).
 

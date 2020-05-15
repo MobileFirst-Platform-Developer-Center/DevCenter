@@ -13,3 +13,4 @@ weight: 15
 * [푸시 알림]({{ site.baseurl }}/tutorials/ko/foundation/8.0/troubleshooting/notifications)
 * [JSONStore]({{ site.baseurl }}/tutorials/ko/foundation/8.0/troubleshooting/jsonstore)
 * [Analytics]({{ site.baseurl }}/tutorials/ko/foundation/8.0/troubleshooting/analytics)
+* [AnalyticsReceiver]({{ site.baseurl }}/tutorials/ko/foundation/8.0/troubleshooting/analyticsreceiver)

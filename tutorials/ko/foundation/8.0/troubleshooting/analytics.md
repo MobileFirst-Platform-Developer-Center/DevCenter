@@ -21,7 +21,7 @@ weight: 2
 protocol = http 또는 https
 host = {{ site.data.keys.mf_server }}의 IP 주소
 port = 분석 보고를 위해 server.xml 파일에 설정된 HTTP 포트
-wlServerContext = 기본적으로 "/mfp/"
+wlServerContext = 기본값 "/mfp/"
 {% endhighlight %}</li>
 
     <li>{{ site.data.keys.mf_server }}가 {{ site.data.keys.mf_analytics_server }}를 가리키는지 확인하십시오.

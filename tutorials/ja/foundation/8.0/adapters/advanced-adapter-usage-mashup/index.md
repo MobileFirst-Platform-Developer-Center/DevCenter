@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 拡張アダプターの使用法とマッシュアップ
-breadcrumb_title: Adapter Mashup
+breadcrumb_title: アダプターのマッシュアップ
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Cordova project

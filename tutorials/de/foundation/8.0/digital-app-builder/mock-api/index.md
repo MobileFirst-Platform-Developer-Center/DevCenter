@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Pseudo-REST-APIs verwenden
-weight: 13
+weight: 14
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

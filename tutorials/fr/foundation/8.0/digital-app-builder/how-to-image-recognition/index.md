@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Ajout de la reconnaissance d'image à l'application
-weight: 10
+weight: 11
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuración del inicio de sesión único (SSO) del dispositivo
-breadcrumb_title: Device SSO
+breadcrumb_title: SSO del dispositivo 
 relevantTo: [android,ios,windows,cordova]
 weight: 11
 ---

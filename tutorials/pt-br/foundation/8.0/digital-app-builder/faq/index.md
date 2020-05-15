@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: Perguntas frequentes
-breadcrumb_title: FAQs
-weight: 18
+breadcrumb_title: Perguntas Mais Frequentes
+weight: 20
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -57,7 +57,7 @@ Este tópico descreve a lista de perguntas mais comuns relacionadas ao IBM Digit
                   <p>É possível desinstalar completamente o Digital App Builder pelas seguintes etapas:
                   <ol><li>Desinstale o Digital App Builder de maneira regular para cada S.O.</li>
                       <li>Exclua os seguintes arquivos manualmente para seu S.O.
-                      <ul><li><b>Windows</b> - <i>Users\worklight\AppData\Roaming\IBM Digital App Builder</i></li>
+                      <ul><li><b>Windows</b> - <i>Users\&lt;systemname&gt;\AppData\Roaming\IBM Digital App Builder</i></li>
                           <li><b>MacOS</b> - <i>Users/&lt;systemname&gt;/Library/Application Support/IBM Digital App Builder</i></li>
                       </ul></li>
                   </ol></p>

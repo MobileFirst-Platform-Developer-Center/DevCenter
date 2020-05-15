@@ -4,7 +4,7 @@ title: Componentes do Produto
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral
+## Visão geral
 {: #overview }
 O {{ site.data.keys.product_full }} consiste nos componentes a seguir: {{ site.data.keys.mf_cli }}, {{ site.data.keys.mf_server }}, componentes de tempo de execução do lado do cliente, {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_app_center }} e {{ site.data.keys.mf_system_pattern }}.
 
@@ -61,6 +61,12 @@ Os dados para {{ site.data.keys.mf_analytics }} incluem as origens a seguir:
 * Logs do lado do servidor que são capturados em arquivos de log do {{ site.data.keys.product_adj }} tradicionais.
 
 [Saiba mais sobre {{ site.data.keys.mf_analytics }}](../../analytics).
+
+### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics-receiver }
+O {{ site.data.keys.product }} inclui um recurso opcional {{ site.data.keys.mf_analytics_receiver_short }}. O recurso {{ site.data.keys.mf_analytics_receiver_short }} recebe logs de aplicativos móveis e os envia para o {{ site.data.keys.mf_analytics_short }} de maneira faseada. O {{ site.data.keys.mf_analytics_receiver_short }} mantém uma fila na memória para armazenar os logs antes de enviá-los para o {{ site.data.keys.mf_analytics_short }}. Ele ameniza o trabalho principal realizado pelo {{ site.data.keys.mf_server }} por meio da API loguploader e reduz o uso da fila na memória. Na ausência deste serviço, o {{ site.data.keys.mf_server }} executará o receptor de log e a funcionalidade de encaminhamento de log. {{ site.data.keys.mf_analytics_receiver_short }}, um serviço opcional.
+
+[Saiba mais sobre {{ site.data.keys.mf_analytics_receiver }}](../../analytics/analyticsreceiver).
 
 ### Centro de aplicativos
 {: #application-center }

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: IBM Cloud Private에서 Oracle 데이터베이스를 사용하는 Mobile Foundation 설정
-breadcrumb_title: Foundation with Oracle DB on ICP
+breadcrumb_title: ICP의 Oracle DB를 사용하는 Foundation
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---

@@ -99,10 +99,14 @@ mf_web_browser_support_android_ver: "Android 4.3+"
 mf_analytics_short:             "Analytics"
 mf_analytics:                   "MobileFirst Analytics"                                 # DITA: analytics_short
 mf_analytics_full:              "IBM MobileFirst Foundation Operational Analytics"      # DITA: analytics
+mf_analytics_receiver_short:             "Analytics Receiver"
+mf_analytics_receiver:          "MobileFirst Analytics Receiver"
+mf_analytics_receiver_full:     "IBM MobileFirst Foundation Operational Analytics Receiver"      # DITA: analytics
 
 ## MF Analytics service
 mf_analytics_service:            "Mobile Analytics"
 mf_analytics_service_console:            "Mobile Analytics Console"
+mf_analytics_receiver_service:            "Mobile Analytics Receiver"
 
 # MF Analytics Console
 mf_analytics_console_short:     "Analytics Console"
@@ -112,6 +116,8 @@ mf_analytics_console_full:      "IBM MobileFirst Analytics Console"             
 # MF Analytics Server
 mf_analytics_server:            "MobileFirst Analytics Server"                          # DITA: anl_server_short
 mf_analytics_server_full:       "IBM MobileFirst Analytics Server"                      # DITA: anl_server
+mf_analytics_receiver_server:            "MobileFirst Analytics Receiver Server"                          # DITA: anl_recv_server_short
+mf_analytics_receiver_server_full:       "IBM MobileFirst Analytics Receiver Server"                      # DITA: anl_recv_server
 
 ## MF Application Center
 mf_app_center_short:            "Application Center"                                    # DITA: appcenter_short

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server über die Befehlszeile installieren
-breadcrumb_title: Command-line installation
+breadcrumb_title: Befehlszeileninstallation
 show_breadcrumb: true
 weight: 3
 ---
@@ -210,6 +210,7 @@ Sie finden die Ressourcen in folgenden Ordnern:
 * Ordner **PushService** für den MobileFirst-Server-Push-Service 
 * Ordner **ApplicationCenter** für das Application Center
 * Ordner **Analytics** für {{ site.data.keys.mf_analytics }}
+* Ordner **AnalyticsReceiver** für den {{ site.data.keys.mf_analytics_receiver }}
 
 Ziel dieses Lernprogramms ist es,
 {{ site.data.keys.mf_server }} mit den Ressourcen im Ordner
@@ -299,6 +300,18 @@ Das Server Configuration Tool konfiguriert dann die
 {{ site.data.keys.mf_analytics }} senden.
 
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+Der {{ site.data.keys.mf_analytics_receiver }} wird wegen des hohen Speicherbedarfs normalerweise nicht in denselben Servern wie {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }} implementiert. Der {{ site.data.keys.mf_analytics_receiver }} kann
+manuell oder mit Ant-Tasks installiert werden. Wenn die Anwendung bereits installiert ist, können Sie die URL, den Benutzernamen und das Kennwort im
+eingeben, damit Daten
+an
+das Server Configuration Tool gesendet werden können.
+Das Server Configuration Tool konfiguriert dann die
+{{ site.data.keys.product_adj }}-Apps so, dass sie Daten an
+{{ site.data.keys.mf_analytics_receiver }} senden.
+
+
 #### Application Center
 {: #application-center }
 Mit dieser Anwendung können mobile Apps intern an Mitarbeiter zur Verwendung oder zu Testzwecken verteilt werden. Das Application Center
@@ -344,6 +357,7 @@ installieren.
     * Setzen Sie **mfp.analytics.configure** auf **false**.
 Die Verbindung zu {{ site.data.keys.mf_analytics }} ist
 nicht Bestandteil dieses Lernprogramms. Sie können die übrigen Eigenschaften mfp.analytics.**** ignorieren.
+    * Setzen Sie **mfp.analytics.receiver.configure** auf **false**. Die Verbindung zum {{ site.data.keys.mf_analytics_receiver }} ist nicht Bestandteil dieses Lernprogramms. Sie können die übrigen Eigenschaften mfp.analytics.receiver.**** ignorieren.
     * Setzen Sie **mfp.admin.client.id** auf **admin-client-id**. 
     * Setzen Sie **mfp.admin.client.secret** auf **adminSecret** (oder ein anderes geheimes
 Kennwort). 

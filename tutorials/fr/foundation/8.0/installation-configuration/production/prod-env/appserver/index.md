@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Installation de MobileFirst Server sur un serveur d'applications
-breadcrumb_title: Installing MobileFirst Server to an application server
+breadcrumb_title: Installation de MobileFirst Server sur un serveur d'applications
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -90,12 +90,12 @@ Assurez-vous de remplir les critères suivants :
 -Dcom.sun.management.jmxremote.ssl=true
 -Dcom.sun.management.jmxremote.authenticate=false
 -Djava.rmi.server.hostname=localhost  
--Djavax.net.ssl.trustStore=<emplacement_magasin_clés_confiance>
--Djavax.net.ssl.trustStorePassword=<mot_de_passe_magasin_clés_confiance>
--Djavax.net.ssl.trustStoreType=<type_magasin_clés_confiance>
--Djavax.net.ssl.keyStore=<emplacement_magasin_clés>
--Djavax.net.ssl.keyStorePassword=<mot_de_passe_magasin_clés>
--Djavax.net.ssl.keyStoreType=<type_magasin_clés>
+-Djavax.net.ssl.trustStore=<key store location>
+-Djavax.net.ssl.trustStorePassword=<key store password>
+-Djavax.net.ssl.trustStoreType=<key store type>
+-Djavax.net.ssl.keyStore=<key store location>
+-Djavax.net.ssl.keyStorePassword=<key store password>
+-Djavax.net.ssl.keyStoreType=<key store type>
 {% endhighlight %}
 
                     <b>Remarque :</b> le port 8686 peut être changé.</li>
@@ -104,8 +104,8 @@ Assurez-vous de remplir les critères suivants :
 
 {% highlight xml %}
 <Context docBase="mfpadmin" path="/mfpadmin ">
-    <Environment name="mfp.admin.rmi.registryPort" value="portRegistre" type="java.lang.String" override="false"/>
-    <Environment name="mfp.admin.rmi.serverPort" value="portServeur" type="java.lang.String" override="false"/>
+    <Environment name="mfp.admin.rmi.registryPort" value="registryPort" type="java.lang.String" override="false"/>
+    <Environment name="mfp.admin.rmi.serverPort" value="serverPort" type="java.lang.String" override="false"/>
 </Context>
 {% endhighlight %}
 
@@ -154,10 +154,11 @@ et le processus qui exécute le serveur Liberty ne s'arrête pas lorsque l'utili
                 <ul>
                     <li>L'outil de configuration de serveur et les tâches Ant peuvent configurer une connexion JMX sécurisée par défaut qui inclut la génération d'un certificat SSL autosigné dont la période de validité est de 365 jours. Cette configuration ne peut pas être utilisée en production.</li>
                     <li>Afin de configurer la connexion JMX sécurisée pour un usage en production, suivez les instructions décrites dans <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_restconnector.html?cp=SSD28V_8.5.5&view=embed">Configuration d'une connexion JMX sécurisée dans le profil Liberty</a>.</li>
-                    <li>La fonction rest-connector est disponible pour WebSphere Application Server, Liberty Core et d'autres éditions de Liberty ; toutefois, il est possible de conditionner un serveur Liberty avec un sous-ensemble seulement des fonctions disponibles. Pour vérifier que la fonction rest-connector est disponible dans votre installation de Liberty, entrez la commande suivante : {% highlight bash %}                    
-rép_install_liberty/bin/productInfo featureInfo
+                    <li>La fonction rest-connector est disponible pour WebSphere Application Server, Liberty Core et d'autres éditions de Liberty ; toutefois, il est possible de conditionner un serveur Liberty avec un sous-ensemble seulement des fonctions disponibles. Pour vérifier que la fonction rest-connector est disponible dans votre installation de Liberty, entrez la commande suivante :
+{% highlight bash %}                    
+liberty_install_dir/bin/productInfo featureInfo
 {% endhighlight %}
-                    <b>Remarque :</b> vérifiez que la sortie de cette commande répertorie restConnector-1.0.</li>
+                    <b>Remarque :</b> Vérifiez que la sortie de la commande contient restConnector-1.0.</li>
                 </ul>
             </div>
         </div>
@@ -250,6 +251,28 @@ Vous pouvez utiliser l'outil de configuration de serveur si vous utilisez les sy
 
 L'outil n'est pas disponible sur les autres systèmes d'exploitation. Vous devez utiliser des tâches Ant pour installer les composants {{ site.data.keys.mf_server }} comme décrit dans [Installation à l'aide de tâches Ant](#installing-with-ant-tasks).
 
+Le programme de lancement ServerConfigurationTool (SCT) sur Mac OS est chargé d'installer l'environnement d'exécution Java SE 6 existant. Vous pouvez voir le message ci-dessous lors du démarrage du programme de lancement SCT sur Mac OS.
+
+![Message SCT - Mac OS](message-sct-mac.png)
+
+Pour contourner cette instruction, vous pouvez suivre l'une des approches suivantes et exécuter SCT à l'aide de l'exécutable correspondant sans avoir à installer l'environnement d'exécution Java SE 6.
+
+#### Approche 1
+* Cliquez avec le bouton droit de la souris sur le programme de lancement `ServerConfigurationTool`.
+* Sélectionnez **Show Package Contents**
+
+  ![Show Package Contents](show-package-contents.png)
+
+* Cliquez sur **Contents** > **MacOS**.
+* Cliquez sur l'exécutable `ServerConfigurationTool` pour lancer SCT.
+
+#### Approche 2
+Java SE 8 et Java SE6 peuvent tous deux être installés sur votre ordinateur.
+
+* Lorsque la fenêtre en incrustation s'affiche lorsque vous utilisez le programme de lancement SCT, cliquez sur **More Info**.
+* Vous serez redirigé vers le site de support d'Apple. Vous y trouverez des informations supplémentaires sur la manière d'obtenir l'environnement d'exécution Java SE 6.
+* Suivez les instructions d'installation de Java SE 6 et exécutez le programme de lancement SCT.
+
 ### Topologies prises en charge
 {: #supported-topologies }
 L'outil de configuration de serveur installe les composants {{ site.data.keys.mf_server }} avec les topologies suivantes :
@@ -302,7 +325,7 @@ Avant d'exécuter l'outil de configuration de serveur, vérifiez que les exigenc
                             <li>Pour une installation sur un serveur WebSphere Application Server Liberty :
                                 <ul>
                                     <li>Entrez le répertoire d'installation de Liberty et le nom du serveur sur lequel installer {{ site.data.keys.mf_server }}.</li>
-                                    <li>Vous pouvez créer un utilisateur par défaut pour la connexion à la console. Cet utilisateur est créé dans le registre de base Liberty. Pour une installation de production, il est recommandé de désélectionner l'option <b>Create a default user</b> et de configurer l'accès utilisateur après l'installation. For more information, see <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
+                                    <li>Vous pouvez créer un utilisateur par défaut pour la connexion à la console. Cet utilisateur est créé dans le registre de base Liberty. Pour une installation de production, il est recommandé de désélectionner l'option <b>Create a default user</b> et de configurer l'accès utilisateur après l'installation. Pour plus d'informations, voir <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuration de l'authentification d'utilisateur pour l'administration de {{ site.data.keys.mf_server }}</a>.</li>
                                     <li>Sélectionnez le type de déploiement : <b>Standalone deployment</b> (par défaut), <b>Server farm deployment</b> ou <b>Liberty collective deployment</b>.</li>
                                 </ul>
 
@@ -350,7 +373,7 @@ Avant d'exécuter l'outil de configuration de serveur, vérifiez que les exigenc
                                 <ul>
                                     <li>Entrez le répertoire d'installation d'Apache Tomcat.</li>
                                     <li>Entrez le port utilisé pour la communication JMX avec RMI. Par défaut, la valeur est 8686. L'outil de configuration de serveur modifie le fichier <b>rép_install_tomcat/bin/setenv.bat</b> ou <b>rép_install_tomcat/bin/setenv.sh</b> pour ouvrir ce port. Si vous voulez ouvrir le port manuellement ou si <b>setenv.bat</b> ou <b>setenv.sh</b> comporte déjà un code qui ouvre le port, n'utilisez pas l'outil. A la place, procédez à l'installation à l'aide de tâches Ant. Une option permettant d'ouvrir le port RMI manuellement est proposée dans le cadre d'une installation à l'aide de tâches Ant.</li>
-                                    <li>Créez un utilisateur par défaut pour la connexion à la console. Cet utilisateur est également créé dans le fichier de configuration <b>tomcat-users.xml</b>. Pour une installation de production, il est recommandé de désélectionner l'option Create a default user et de configurer l'accès utilisateur après l'installation. For more information, see <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
+                                    <li>Créez un utilisateur par défaut pour la connexion à la console. Cet utilisateur est également créé dans le fichier de configuration <b>tomcat-users.xml</b>. Pour une installation de production, il est recommandé de désélectionner l'option Create a default user et de configurer l'accès utilisateur après l'installation. Pour plus d'informations, voir <a href="../../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuration de l'authentification d'utilisateur pour l'administration de {{ site.data.keys.mf_server }}</a>.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -706,7 +729,8 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
 
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service d'administration. L'exemple suivant est une déclaration de <b>mfp.admin.push.url</b> selon laquelle le service d'administration est installé avec la racine de contexte <b>/mfpadmin</b> :</p>
-{% highlight xml %} <jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value="http://localhost:9080/imfpush"/>
+{% highlight xml %}
+<jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value="http://localhost:9080/imfpush"/>
 {% endhighlight %}
 
                 <p>Si le service push est installé, vous devez configurer les propriétés JNDI suivantes :</p>
@@ -728,7 +752,8 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Source de données</h3>
                 <p>Le nom JNDI de la source de données pour le service d'administration doit être <b>jndiName=racine-contexte/jdbc/mfpAdminDS</b>. L'exemple suivant illustre le cas où le service d'administration est installé avec la racine de contexte <b>/mfpadmin</b> et utilise une base de données relationnelle :</p>
 
-{% highlight xml %} <dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
+{% highlight xml %}
+<dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
   [...]
 </dataSource>
 {% endhighlight %}
@@ -792,7 +817,8 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte de la console. L'exemple suivant est une déclaration de <b>mfp.admin.endpoint</b> selon laquelle la console est installée avec la racine de contexte <b>/mfpconsole</b> :</p>
 
-{% highlight xml %} <jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
+{% highlight xml %}
+<jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
 {% endhighlight %}
 
                 <p>La valeur habituelle pour la propriété mfp.admin.endpoint est <b>*://*:*/the-adminContextRoot</b>.<br/>
@@ -826,11 +852,13 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte de l'environnement d'exécution. L'exemple suivant est une déclaration de <b>mfp.analytics.url</b> selon laquelle l'environnement d'exécution est installé avec la racine de contexte <b>/mobilefirst</b> :</p>
 
-{% highlight xml %} <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
+{% highlight xml %}
+<jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
 
                 <p>Vous devez définir la propriété <b>mobilefirst/mfp.authorization.server</b>. Exemple :</p>
-{% highlight xml %} <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
+{% highlight xml %}
+<jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
 
                 <p>Si {{ site.data.keys.mf_analytics }} est installé, vous devez définir les propriétés JNDI suivantes :</p>
@@ -846,9 +874,11 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Source de données</h3>
                 <p>Le nom JNDI de la source de données pour l'environnement d'exécution doit être <b>jndiName=racine-contexte/jdbc/mfpDS</b>. L'exemple suivant illustre le cas où l'environnement d'exécution est installé avec la racine de contexte <b>/mobilefirst</b> et utilise une base de données relationnelle :</p>
 
-{% highlight xml %} <dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
+{% highlight xml %}
+<dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
   [...]
-</dataSource> {% endhighlight %}
+</dataSource>
+{% endhighlight %}
             </div>
         </div>
     </div>
@@ -868,7 +898,8 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service push. L'exemple suivant est une déclaration de <b>mfp.push.analytics.user</b> selon laquelle le service push est installé avec la racine de contexte <b>/imfpush</b> :</p>
 
-{% highlight xml %} <jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
+{% highlight xml %}
+<jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
 {% endhighlight %}
 
                 Vous devez définir les propriétés suivantes :
@@ -1038,7 +1069,8 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
 
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service d'administration. L'exemple suivant est une déclaration de <b>mfp.admin.push.url</b> selon laquelle le service d'administration est installé avec la racine de contexte <b>/mfpadmin</b> :</p>
-{% highlight xml %} <jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value="http://localhost:9080/imfpush"/>
+{% highlight xml %}
+<jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value="http://localhost:9080/imfpush"/>
 {% endhighlight %}
 
                 <p>Si le service push est installé, vous devez configurer les propriétés JNDI suivantes :</p>
@@ -1060,7 +1092,8 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Source de données</h3>
                 <p>Le nom JNDI de la source de données pour le service d'administration doit être <b>jndiName=racine-contexte/jdbc/mfpAdminDS</b>. L'exemple suivant illustre le cas où le service d'administration est installé avec la racine de contexte <b>/mfpadmin</b> et utilise une base de données relationnelle :</p>
 
-{% highlight xml %} <dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
+{% highlight xml %}
+<dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
   [...]
 </dataSource>
 {% endhighlight %}
@@ -1127,7 +1160,8 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte de la console. L'exemple suivant est une déclaration de <b>mfp.admin.endpoint</b> selon laquelle la console est installée avec la racine de contexte <b>/mfpconsole</b> :</p>
 
-{% highlight xml %} <jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
+{% highlight xml %}
+<jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
 {% endhighlight %}
 
                 <p>La valeur habituelle pour la propriété mfp.admin.endpoint est <b>*://*:*/the-adminContextRoot</b>.<br/>
@@ -1163,11 +1197,13 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte de l'environnement d'exécution. L'exemple suivant est une déclaration de <b>mfp.analytics.url</b> selon laquelle l'environnement d'exécution est installé avec la racine de contexte <b>/mobilefirst</b> :</p>
 
-{% highlight xml %} <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
+{% highlight xml %}
+<jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
 
                 <p>Vous devez définir la propriété <b>mobilefirst/mfp.authorization.server</b>. Exemple :</p>
-{% highlight xml %} <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
+{% highlight xml %}
+<jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
 
                 <p>Si {{ site.data.keys.mf_analytics }} est installé, vous devez définir les propriétés JNDI suivantes :</p>
@@ -1183,9 +1219,11 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Source de données</h3>
                 <p>Le nom JNDI de la source de données pour l'environnement d'exécution doit être <b>jndiName=racine-contexte/jdbc/mfpDS</b>. L'exemple suivant illustre le cas où l'environnement d'exécution est installé avec la racine de contexte <b>/mobilefirst</b> et utilise une base de données relationnelle :</p>
 
-{% highlight xml %} <dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
+{% highlight xml %}
+<dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
   [...]
-</dataSource> {% endhighlight %}
+</dataSource>
+{% endhighlight %}
             </div>
         </div>
     </div>
@@ -1209,7 +1247,8 @@ Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Li
                 <h3>Propriétés JNDI obligatoires</h3>
                 <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service push. L'exemple suivant est une déclaration de <b>mfp.push.analytics.user</b> selon laquelle le service push est installé avec la racine de contexte <b>/imfpush</b> :</p>
 
-{% highlight xml %} <jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
+{% highlight xml %}
+<jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
 {% endhighlight %}
 
                 Vous devez définir les propriétés suivantes :
@@ -1873,7 +1912,8 @@ Lorsque vous planifiez un parc de serveurs avec l'outil de configuration de serv
                             </li>
                             <li>Echangez les certificats de signataire entre tous les serveurs dans leurs magasins de clés de confiance respectifs.
                             <br/><br/>
-                            Cette étape est obligatoire pour les parcs de serveurs qui utilise le profil complet de WebSphere Application Server ou Liberty doit être activé. De plus, pour les parcs de serveurs Liberty, la même configuration LTPA doit être répliquée sur chaque serveur afin d'activer la fonction de connexion unique. Pour effectuer cette configuration, suivez les instructions présentées à l'étape 6 de la section <a href="#configuring-a-server-farm-manually">Configuration manuelle d'un parc de serveurs</a>.
+                            <blockquote><b>Remarque</b> : Cette étape est obligatoire pour les parcs de serveurs qui utilisent le profil complet de WebSphere Application Server ou Liberty, car la sécurité doit y être activée. De plus, pour les parcs de serveurs Liberty, la même configuration LTPA doit être répliquée sur chaque serveur afin d'activer la fonction de connexion unique. Pour effectuer cette configuration, suivez les instructions présentées à l'étape 6 de la section <a href="#configuring-a-server-farm-manually">Configuration manuelle d'un parc de serveurs</a>.
+                            </blockquote>
                             </li>
                         </ul>
                     </li>
@@ -1925,7 +1965,7 @@ Lorsque vous planifiez un parc de serveurs à l'aide de tâches Ant, créez d'ab
                             Pour plus d'informations sur la configuration d'un serveur, voir <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Contraintes sur le service d'administration de {{ site.data.keys.mf_server }}, le service Live Update de {{ site.data.keys.mf_server }} et l'environnement d'exécution de {{ site.data.keys.product_adj }}</a>.</li>
                             <li>Echangez les certificats de signataire entre tous les serveurs dans leurs magasins de clés de confiance respectifs.
                             <br/><br/>
-                            Cette étape est obligatoire pour les parcs de serveurs qui utilise le profil complet de WebSphere Application Server ou Liberty doit être activé. De plus, pour les parcs de serveurs Liberty, la même configuration LTPA doit être répliquée sur chaque serveur afin d'activer la fonction de connexion unique. Pour effectuer cette configuration, suivez les instructions présentées à l'étape 6 de la section <a href="#configuring-a-server-farm-manually">Configuration manuelle d'un parc de serveurs</a>.
+                            <blockquote><b>Remarque</b> : Cette étape est obligatoire pour les parcs de serveurs qui utilisent le profil complet de WebSphere Application Server ou Liberty, car la sécurité doit y être activée. De plus, pour les parcs de serveurs Liberty, la même configuration LTPA doit être répliquée sur chaque serveur afin d'activer la fonction de connexion unique. Pour effectuer cette configuration, suivez les instructions présentées à l'étape 6 de la section <a href="#configuring-a-server-farm-manually">Configuration manuelle d'un parc de serveurs</a></blockquote>.
                             </li>
                         </ul>
                     </li>
@@ -2062,13 +2102,13 @@ Lorsque vous planifiez un parc de serveurs, créez d'abord des serveurs autonome
                                 Dans le fichier server.xml, définissez les propriétés JNDI affichées dans l'exemple de code ci-dessous.
 {% highlight xml %}
 <jndiEntry jndiName="mfp.topology.clustermode" value="Farm"/>
-<jndiEntry jndiName="mfp.admin.serverid" value="membre_parc_1"/>
-<jndiEntry jndiName="mfp.admin.jmx.user" value="monUtilisateurConnecteurREST"/>
-<jndiEntry jndiName="mfp.admin.jmx.pwd" value="motdepasse-utilisateur-connecteur-rest"/>
+<jndiEntry jndiName="mfp.admin.serverid" value="farm_member_1"/>
+<jndiEntry jndiName="mfp.admin.jmx.user" value="myRESTConnectorUser"/>
+<jndiEntry jndiName="mfp.admin.jmx.pwd" value="password-of-rest-connector-user"/>
 <jndiEntry jndiName="mfp.admin.jmx.host" value="93.12.0.12"/>
 <jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>
 {% endhighlight %}
-                                Ces propriétés doivent être associées à des valeurs appropriées :
+                                Ces propriétés doivent être définies avec les valeurs appropriées :
                                 <ul>
                                     <li><b>mfp.admin.serverid</b> : identificateur que vous avez défini pour ce membre de parc de serveurs. Cet identificateur doit être unique parmi tous les membres du parc de serveurs.</li>
                                     <li><b>mfp.admin.jmx.user</b> et <b>mfp.admin.jmx.pwd</b> : ces valeurs doivent correspondre aux données d'identification d'un utilisateur telles que déclarées dans l'élément <code>administrator-role</code>.</li>
@@ -2081,9 +2121,9 @@ Lorsque vous planifiez un parc de serveurs, créez d'abord des serveurs autonome
                                 Modifiez le fichier <b>conf/server.xml</b> pour définir les propriétés JNDI ci-dessous dans le contexte de service d'administration et dans chaque contexte d'exécution.
 {% highlight xml %}
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
-<Environment name="mfp.admin.serverid" value="membre_parc_1" type="java.lang.String" override="false"/>
+<Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                La propriété <b>mfp.admin.serverid</b> doit avoir pour valeur l'identificateur que vous avez défini pour ce membre de parc de serveurs. Cet identificateur doit être unique parmi tous les membres du parc de serveurs.
+                                La propriété <b>mfp.admin.serverid</b> doit être définie sur l'identificateur que vous avez spécifié pour le membre de ce parc de serveurs. Cet identificateur doit être unique parmi tous les membres du parc de serveurs.
                                 <br/>
                                 Vous devez vous assurer que l'argument JVM <code>-Djava.rmi.server.hostname</code> est défini sur l'adresse IP ou le nom d'hôte utilisé par les membres distants pour accéder à ce serveur. Vous ne pouvez donc pas indiquer <b>localhost</b>. De plus, assurez-vous que l'argument JVM <code>-Dcom.sun.management.jmxremote.port</code> ait pour valeur un port qui n'est pas déjà utilisé pour activer les connexions JMX RMI. Les deux arguments sont définis dans la variable d'environnement <b>CATALINA_OPTS</b>.
                             </li>
@@ -2126,8 +2166,7 @@ Lorsque vous planifiez un parc de serveurs, créez d'abord des serveurs autonome
                                 </ul>
                                 Les emplacements du magasin de clés et du magasin de clés de confiance sont définis dans le fichier <b>server.xml</b>. Voir les attributs <b>keyStoreRef</b> et <b>trustStoreRef</b> dans <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">Attributs de configuration SSL</a>. Par défaut, le magasin de clés du profil Liberty est <b>${server.config.dir}/resources/security/key.jks</b>. Si la référence du magasin de clés de confiance est manquante ou n'est pas définie dans le fichier <b>server.xml</b>, le magasin de clés de confiance spécifié par <b>keyStoreRef</b> est utilisé. Le serveur utilise le magasin de clés par défaut et le fichier est créé à la première exécution du serveur. Dans ce cas, un certificat par défaut est créé avec une période de validité de 365 jours. En production, vous pouvez envisager d'utiliser votre propre certificat (y compris les certificats intermédiaires si nécessaire) ou de changer la date d'expiration du certificat généré.
 
-                                <blockquote>Remarque : pour confirmer l'emplacement du magasin de clés de confiance, ajoutez la déclaration suivante dans le fichier server.xml :
-{% highlight xml %}
+                                <blockquote>Remarque : Si vous voulez confirmer l'emplacement du magasin de clés de confiance, vous pouvez le faire en ajoutant la déclaration suivante au fichier server.xml : {% highlight xml %}
 <logging traceSpecification="SSL=all:SSLChannel=all"/>
 {% endhighlight %}
                                 </blockquote>
@@ -2135,6 +2174,10 @@ Lorsque vous planifiez un parc de serveurs, créez d'abord des serveurs autonome
                                 <ul>
                                     <li>Importez les certificats publics des autres serveurs du parc de serveurs dans le magasin de clés de confiance qui est référencé par le fichier de configuration <b>server.xml</b> du serveur. Le tutoriel <a href="../../simple-install/graphical-mode">Installation de {{ site.data.keys.mf_server }} en mode graphique</a> explique comment échanger les certificats entre deux serveurs Liberty dans un parc de serveurs. Pour plus d'informations, voir l'étape 5 de la section <a href="../../simple-install/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Création d'un parc de deux serveurs Liberty exécutant {{ site.data.keys.mf_server }}</a>.</li>
                                     <li>Redémarrez chaque instance du profil Liberty de WebSphere Application Server pour appliquer la configuration des paramètres de sécurité. Les étapes ci-après sont requises pour que la connexion unique fonctionne.</li>
+                                    <li>Echangez les certificats de signataire entre tous les serveurs dans leurs magasins de clés de confiance respectifs.
+                                    <br/><br/>
+                                    <blockquote><b>Remarque</b> : Cette étape est obligatoire pour les parcs de serveurs qui utilisent le profil complet de WebSphere Application Server ou Liberty, car la sécurité doit y être activée. De plus, pour les parcs de serveurs Liberty, la même configuration LTPA doit être répliquée sur chaque serveur afin d'activer la fonction de connexion unique. Pour appliquer cette configuration, effectuez les étapes ci-dessous.</blockquote>
+                                    </li>
                                     <li>Démarrez un membre du parc de serveurs. Dans la configuration LTPA par défaut, une fois que le serveur Liberty a démarré, un magasin de clés LTPA <b>${wlp.user.dir}/servers/nom_serveur/resources/security/ltpa.keys</b> est généré.</li>
                                     <li>Copiez le fichier <b>ltpa.keys</b> dans le répertoire <b>${wlp.user.dir}/servers/nom_serveur/resources/security</b> de chaque membre du parc de serveurs afin de répliquer les magasins de clés LTPA sur les membres du parc de serveurs. Pour plus d'informations sur la configuration LTPA, voir <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Configuration de l'authentification LTPA dans le profil Liberty</a>.</li>
                                 </ul>
@@ -2246,7 +2289,7 @@ Veuillez consulter les rubriques ci-dessous pour en savoir plus sur le suivi des
 Le planificateur s'exécute huit heures après le démarrage d'un serveur. Autrement dit, si les serveurs sont démarrés à 23 heures ce jour, le planificateur ne s'exécutera pas à 01h00 (heure d'exécution par défaut du planificateur) mais à 08h00, le lendemain. L'écart entre le démarrage d'un serveur et l'exécution du planificateur est de huit heures.
 
 Démarrage du correctif temporaire [*8.0.0.0-MFPF-IF201907091643*]({{ site.baseurl }}/blog/2018/05/18/8-0-master-ifix-release/#collapse-mfp-ifix-IF201907091643) l'écart entre le démarrage d'un serveur et l'exécution du planificateur est de quatre heures et non de huit heures.
-Une nouvelle propriété *MFP.SCHEDULER.STARTHOUR* est également introduite. Celle-ci permet au client de choisir l'heure d'exécution du planificateur au lieu de la valeur par défaut (01h00). La propriété peut avoir une valeur comprise entre un et 23. Elle permet ainsi au client de régler le démarrage du planificateur aux heures les moins chargées et garantit que le planificateur s'exécute malgré un démarrage de serveur quotidien. Si un client redémarre ses serveurs tous les jours à 01h00, il peut définir la propriété *MFP.SCHEDULER.STARTHOUR* sur 5. L'écart de quatre heures est conservé et le planificateur s'exécutera à 05h00.
+La nouvelle propriété *mfp.scheduler.startHour* est également introduite. Celle-ci permet au client de choisir l'heure d'exécution du planificateur au lieu de la valeur par défaut (01h00). La propriété peut avoir une valeur comprise entre un et 23. Elle permet ainsi au client de régler le démarrage du planificateur aux heures les moins chargées et garantit que le planificateur s'exécute malgré un démarrage de serveur quotidien. Si un client redémarre ses serveurs tous les jours à 01h00, il peut définir la propriété *mfp.scheduler.startHour* sur 5. L'écart de quatre heures est conservé et le planificateur s'exécutera à 05h00.
 
 Nous vous conseillons de laisser le suivi des licences désactivé, car les activités associées entraînent une utilisation intensive de la base de données. Seuls les clients utilisant le modèle de licence pour les appareils adressables Mobile Foundation ont besoin d'activer le suivi des licences.
 

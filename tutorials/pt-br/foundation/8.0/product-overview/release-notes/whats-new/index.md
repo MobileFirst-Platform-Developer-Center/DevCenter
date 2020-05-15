@@ -124,7 +124,9 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
 
                 <h3>Novas APIs do lado do cliente Objective-C para iOS</h3>
                 <h4><code>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</code></h4>
-                <p>Com este novo método, é possível obter o nome de exibição de um dispositivo a partir dos dados de registro do {{ site.data.keys.mf_server }}.</p>
+                <p>Com este novo método, é possível obter o nome de exibição de um
+dispositivo a partir dos dados de registro do
+{{ site.data.keys.mf_server }}.</p>
 
                 <h4><code>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</code></h4>
                 <p>Com este novo método, é possível obter o nome de exibição de um dispositivo nos dados de registro do {{ site.data.keys.mf_server }}.</p>
@@ -477,4 +479,17 @@ O {{ site.data.keys.product_full }} V8.0 traz mudanças significativas que moder
             </div>
         </div>
     </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="mobilefirst-analytics-receiver">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-analytics-receiver" aria-expanded="true" aria-controls="collapse-mobilefirst-analytics-receiver">O que há de novo no {{ site.data.keys.mf_analytics_receiver }}</a>
+            </h4>
+        </div>
+
+        <div id="collapse-mobilefirst-analytics-receiver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics-receiver">
+            <div class="panel-body">
+                <p>{{ site.data.keys.mf_analytics_server }} é um recurso opcional que aceita logs do SDK do cliente e os encaminha para análise. Eventualmente, ele reduz a carga do {{ site.data.keys.mf_server }} para manipular a função loguploader do cliente.</p>
+            </div>
+        </div>
+    </div>    
 </div>

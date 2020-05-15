@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore セキュリティー・ユーティリティー
-breadcrumb_title: Security utilities
+breadcrumb_title: セキュリティー・ユーティリティー
 relevantTo: [ios,android,cordova]
 weight: 4
 ---

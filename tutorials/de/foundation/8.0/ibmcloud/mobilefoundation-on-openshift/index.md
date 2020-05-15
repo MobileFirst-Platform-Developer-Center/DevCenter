@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-breadcrumb_title: Foundation on Red Hat OpenShift
+breadcrumb_title: Foundation in Red Hat OpenShift
 title: Mobile Foundation auf einer vorhandenen Red-Hat-OpenShift-Containerplattform implementieren
 weight: 2
 ---
@@ -41,6 +41,34 @@ Laden Sie das IBM Mobile-Foundation-Paket für Openshift von [IBM Passport Advan
 
   > **HINWEIS:** Wenn Sie das Passport-Advantage-Paket validieren und die Signatur überprüfen möchten, finden Sie [hier](./additional-docs/validating-ppa/) weitere Informationen.
 
+### Mobile-Foundation-Images aus der Entitled Registry verwenden
+{: #using-mf-from-entitled-registry}
+
+Sie können die PPA-Images in die interne OpenShift-Image-Registry oder eine andere Registry laden, aber auch die Images aus der Entitled Registry (ER) verwenden.
+
+1. Rufen Sie einen Schlüssel für die Entitled Registry ab. Wenn Sie [IBM Cloud Pak for Applications](https://www.ibm.com/support/knowledgecenter/SSCSJL_3.x/install-icpa-ppa.html?view=kc) bestellt haben, wird Ihrem MyIBM Konto ein Berechtigungsschlüssel für die Cloud-Pak-Software zugeordnet. Rufen Sie den Ihrer ID zugeordneten Berechtigungsschlüssel ab.
+  * Melden Sie sich mit Ihrer IBMid und Ihrem Kennwort, die der Software für Berechtigte zugeordnet sind, bei der [MyIBM Container Software Library](https://myibm.ibm.com/products-services/containerlibrary) an.
+  * Wählen Sie im Abschnitt **Entitlement keys** die Option **Copy key** aus, um den Berechtigungsschlüssel in die Zwischenablage zu kopieren.
+2. Extrahieren Sie die Installationskonfiguration aus dem Installationsprogramm-Image von der Entitled Registry.<br/>Führen Sie in der Befehlszeile die folgenden Befehle aus.
+  * Legen Sie die Angaben für die Entitled Registry fest. Führen Sie Exportbefehle aus und definieren Sie Folgendes:
+    Setzen Sie **ENTITLED_REGISTRY** auf *cp.icr.io*, **ENTITLED_REGISTRY_USER** auf *cp* und **ENTITLED_REGISTRY_KEY** auf den Berechtigungsschlüssel aus dem vorherigen Schritt.
+    ```bash
+    export ENTITLED_REGISTRY=cp.icr.io
+    export ENTITLED_REGISTRY_USER=cp
+    export ENTITLED_REGISTRY_KEY=<API-Schlüssel>
+    ```
+  * Prüfen Sie, ob Sie sich mit dem folgenden Befehl `docker login` bei der Entitled Registry anmelden können.
+    ```bash
+    docker login "$ENTITLED_REGISTRY" -u "$ENTITLED_REGISTRY_USER" -p "$ENTITLED_REGISTRY_KEY"
+    ```
+3. Generieren Sie mit den Angaben für die Entitled Registry einen geheimen Schlüssel für Image-Pull-Operationen.
+   * Verwenden Sie den folgenden Befehl:
+     ```bash
+     oc create secret docker-registry -n <mein_Projektname> er-image-pullsecret --docker-server=cp.icr.io --docker-username=<mein_Benutzername> --docker-password=<mein_API-Schlüssel>
+     ```
+   * Fügen Sie den geheimen Schlüssel für Pull-Operationen zu den Dateien `deploy/operator.yaml` und `deploy/crds/charts_v1_mfoperator_cr.yaml` hinzu.
+
+
 ### OpenShift-Projekt für die Mobile Foundation einrichten
 {: #setup-openshift-for-mf}
 
@@ -71,17 +99,19 @@ Laden Sie das IBM Mobile-Foundation-Paket für Openshift von [IBM Passport Advan
     cat <<EOF | oc apply -f -
     apiVersion: v1
     data:
-      MFPF_ADMIN_DB_USERNAME: <base64-encoded-string>
-      MFPF_ADMIN_DB_PASSWORD: <base64-encoded-string>
-      MFPF_RUNTIME_DB_USERNAME: <base64-encoded-string>
-      MFPF_RUNTIME_DB_PASSWORD: <base64-encoded-string>
-      MFPF_PUSH_DB_USERNAME: <base64-encoded-string>
-      MFPF_PUSH_DB_PASSWORD: <base64-encoded-string>
-      MFPF_APPCNTR_DB_USERNAME: <base64-encoded-string>
-      MFPF_APPCNTR_DB_PASSWORD: <base64-encoded-string>
+      MFPF_ADMIN_DB_USERNAME: <base64-codierte_Zeichenfolge>
+      MFPF_ADMIN_DB_PASSWORD: <base64-codierte_Zeichenfolge>
+      MFPF_RUNTIME_DB_USERNAME: <base64-codierte_Zeichenfolge>
+      MFPF_RUNTIME_DB_PASSWORD: <base64-codierte_Zeichenfolge>
+      MFPF_PUSH_DB_USERNAME: <base64-codierte_Zeichenfolge>
+      MFPF_PUSH_DB_PASSWORD: <base64-codierte_Zeichenfolge>
+      MFPF_LIVEUPDATE_DB_USERNAME: <base64-codierte_Zeichenfolge>
+      MFPF_LIVEUPDATE_DB_PASSWORD: <base64-codierte_Zeichenfolge>
+      MFPF_APPCNTR_DB_USERNAME: <base64-codierte_Zeichenfolge>
+      MFPF_APPCNTR_DB_PASSWORD: <base64-codierte_Zeichenfolge>
     kind: Secret
     metadata:
-    name: mobilefoundation-db-secret
+      name: mobilefoundation-db-secret
     type: Opaque
     EOF
     ```
@@ -144,6 +174,12 @@ Laden Sie das IBM Mobile-Foundation-Paket für Openshift von [IBM Passport Advan
     sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/cluster_role_binding.yaml
     ```
 
+    **Verwenden Sie ab Operator-Image-Tag 1.0.11 den folgenden Befehl.**
+
+    ```bash
+    sed -i 's|REPLACE_NAMESPACE|$MFOS_PROJECT|g' deploy/role_binding.yaml
+    ```
+
 3. Führen Sie die folgenden Befehle aus, um den die Definition für angepasste Ressourcen und den Operator zu implementieren und Einschränkungen für den Sicherheitskontext (SCC, Security Context Constraints) zu installieren.
 
     ```bash
@@ -151,6 +187,15 @@ Laden Sie das IBM Mobile-Foundation-Paket für Openshift von [IBM Passport Advan
     oc create -f deploy/
     oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
     ```
+    **Verwenden Sie ab Operator-Image-Tag 1.0.11 die folgenden Befehle.**
+
+    ```bash
+    oc create -f deploy/crds/charts_v1_mfoperator_crd.yaml
+    oc create -f deploy/
+    oc adm policy add-scc-to-group mf-operator system:serviceaccounts:$MFOS_PROJECT
+    oc adm policy add-cluster-role-to-user cluster-admin system:serviceaccount:$MFOS_PROJECT:mf-operator
+    ```
+
 
 ### IBM Mobile-Foundation-Komponenten implementieren
 {: #deploy-mf-components}

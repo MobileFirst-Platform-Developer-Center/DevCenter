@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: アプリケーション・サーバー上での Application Center のロギングおよびトレースの設定
-breadcrumb_title: Setting up logging and tracing
+breadcrumb_title: ロギングおよびトレースの設定
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---

@@ -12,13 +12,13 @@ Appcenter 설치 프로그램 애플리케이션은 모바일 디바이스에 �
 
 #### 다음으로 이동
 {: #jump-to }
-* [선행 조건](#prerequisites)
+* [전제조건](#prerequisites)
 * [Cordova 기반 IBM AppCenter 클라이언트](#cordova-based-ibm-appcenter-client)
 * [MobileFirst Studio 기반 IBM AppCenter 클라이언트](#mobilefirst-studio-based-ibm-appcenter-client)
 * [기능 사용자 정의(전문가용): Android, iOS, Windows Phone](#customizing-features-for-experts-android-ios-windows-phone)
 * [Application Center에 모바일 클라이언트 배치](#deploying-the-mobile-client)
 
-## 선행 조건
+## 전제조건
 {: #prerequisites }
 ### Android 운영 체제에 맞는 전제조건
 {: #prerequisites-specific-to-the-android-operating-system }

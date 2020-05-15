@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: UserAuthenticationSecurityCheck クラスの実装
-breadcrumb_title: Security Check
+breadcrumb_title: セキュリティー検査
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:

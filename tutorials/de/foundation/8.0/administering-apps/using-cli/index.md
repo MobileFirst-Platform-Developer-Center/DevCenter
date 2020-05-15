@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Anwendungen mit einem Terminal verwalten
-breadcrumb_title: Administrating using terminal
+breadcrumb_title: Verwaltung mit einem Terminal
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -506,7 +506,7 @@ wird mit folgenden Argumenten verwendet:
 
 |Attribut	|Beschreibung |
 |-----------|-------------|
-|runtime        | Name der Laufzeit |
+|Laufzeit | Name der Laufzeit |
 |ID |Kennung der Regel |
 |Anzeigename |Anzeigename der Regel |
 |geheimer_Schlüssel |Geheimer Schlüssel der Regel |
@@ -572,7 +572,7 @@ wird mit folgenden Argumenten verwendet:
 | Argument |Beschreibung |
 |----------|-------------|
 |Laufzeitname | Name der Laufzeit |
-|file |Binäre Adapterdatei (.adapter) |
+|Datei |Binäre Adapterdatei (.adapter) |
 
 **Beispiel**
 
@@ -775,7 +775,7 @@ wird mit folgenden Argumenten verwendet:
 | Argument |Beschreibung |
 |----------|-------------|
 |Laufzeitname | Name der Laufzeit |
-|file |Anwendungsdeskriptor (eine JSON-Datei) |
+|Datei |Anwendungsdeskriptor (eine JSON-Datei) |
 
 **Beispiel**
 
@@ -928,7 +928,7 @@ Nach dem Verb können die folgenden Argumente angegeben werden.
 
 | Argument |Beschreibung |
 |----------|-------------|
-|appType |Typ einer App (B2C oder B2E) |
+|App-Typ|Typ einer App (B2C oder B2E) |
 |Lizenztyp |Typ für eine Anwendung (APPLICATION, ADDITIONAL_BRAND_DEPLOYMENT oder NON_PRODUCTION) |
 
 **Beispiel**
@@ -1054,7 +1054,7 @@ Nach dem Verb können die folgenden Argumente angegeben werden.
 
 | Argument |Beschreibung |
 |----------|-------------|
-|file |Name der Eingabedatei:<ul><li>Datei .authenticity_data</li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul>|
+|Datei |Name der Eingabedatei:<ul><li>Datei .authenticity_data</li><li>Gerätedatei (.ipa, .apk oder .appx), aus der die Authentizitätsdaten extrahiert werden</li></ul>|
 
 **Beispiele**
 
@@ -1094,7 +1094,7 @@ Syntax: `app version [Laufzeitname] App-Name Umgebung Version show user-config [
 
 Nach dem Verb können die folgenden Optionen angegeben werden.
 
-|Argument |Beschreibung |Erforderlich |Standardwert |
+| Argument |Beschreibung |Erforderlich |Standardwert |
 |----------|-------------|----------|---------|
 |[--xml] |Erzeugt Ausgaben nicht im JSON-Format, sondern im XML-Format |Nein |Standardausgabe |
 
@@ -1116,7 +1116,7 @@ Nach dem Verb können die folgenden Argumente angegeben werden.
 
 | Argument |Beschreibung |
 |----------|-------------|
-|file |Name der JSON- oder XML-Datei mit der neuen Konfiguration |
+|Datei |Name der JSON- oder XML-Datei mit der neuen Konfiguration |
 
 Syntax für eine einzelne Eigenschaft: `app version [Laufzeitname] App-Name Umgebung Version set user-config Eigenschaft = Wert`
 
@@ -1124,7 +1124,7 @@ Der Befehl `app version set user-config` kann mit folgenden Argumenten nach dem 
 
 | Argument |Beschreibung |
 |----------|-------------|
-|property |Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |
+|Eigenschaft|Name der JSON-Eigenschaft. Verwenden Sie für eine verschachtelte Eigenschaft die Syntax Eigenschaft1.Eigenschaft2.....EigenschaftN. Verwenden Sie für ein JSON-Array-Element den Index anstelle eines Eigenschaftsnamens. |
 |Wert |Wert der Eigenschaft |
 
 **Beispiele**
@@ -1152,7 +1152,7 @@ Syntax: `list devices [Laufzeitname] [--query Abfrage]`
 Der Befehl
 wird mit folgenden Argumenten verwendet:
 
-|Argument |Beschreibung |
+| Argument |Beschreibung |
 |----------|-------------|
 |Laufzeitname | Name der Laufzeit |
 |Abfrage |Ein Anzeigename oder eine Benutzer-ID, nach dem bzw. der gesucht werden soll. Dieser Parameter gibt die zu suchende Zeichenfolge an. Zurückgegeben werden alle Geräte, deren Anzeigename oder Benutzer-ID diese Zeichenfolge enthält (wobei die Groß-/Kleinschreibung nicht unterschieden wird). |
@@ -1313,7 +1313,8 @@ Der Befehl `show diagnostics` zeigt den Status diverser Komponenten an, die für
 
 Syntax: `show diagnostics`
 
-Nach dem Objekt können die folgenden Optionen angegeben werden.
+Nach dem Objekt
+können die folgenden Optionen angegeben werden.
 
 |Option |Beschreibung |
 |--------|-------------|

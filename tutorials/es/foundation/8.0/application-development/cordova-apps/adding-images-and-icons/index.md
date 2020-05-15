@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adición de iconos y pantallas iniciales personalizados a aplicaciones Cordova
-breadcrumb_title: Adding images and icons
+breadcrumb_title: Añadir imágenes e iconos
 relevantTo: [cordova]
 weight: 1
 ---
@@ -80,7 +80,8 @@ Los nombres de archivo y las vías de acceso de los archivos de pantallas inicia
 
 #### Iconos
 {: #icons-ios}
-Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo. Las vías de acceso pueden ser cualesquiera. El nombre de cada imagen corresponde a su tamaño.
+Los nombres de archivo de los archivos de icono deben ser los mismos que los nombres en el siguiente ejemplo. Las vías de acceso pueden ser cualesquiera.
+El nombre de cada imagen corresponde a su tamaño.
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -118,10 +119,11 @@ el plugin `cordova-plugin-mfp` instalado. Si un usuario no quiere ver esta panta
   /*
    Material bajo licencia - Propiedad de IBM
 
-   (C) Copyright 2017 IBM Corp.
+   (C) Copyright 2020 IBM Corp.
 
-A menos que lo requiera la legislación vigente o se acuerde por escrito,
-el software distribuido bajo la licencia se distribuye "TAL CUAL", SIN GARANTÍAS NI CONDICIONES DE NINGÚN TIPO, ya sean expresas o implícitas.
+   A menos que lo requiera la legislación vigente o se acuerde por escrito,
+   el software distribuido bajo la licencia, se distribuye "TAL CUAL",
+   SIN GARANTÍAS O CONDICIONES DE NINGÚN TIPO, explícitas o implícitas.
    Consulte la Licencia para
 ver los permisos aplicables específicos del idioma y las limitaciones
 bajo la Licencia.

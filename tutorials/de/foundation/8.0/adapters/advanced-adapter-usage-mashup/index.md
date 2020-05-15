@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Erweiterte Verwendung von Adaptern und Adapterkombinationen
-breadcrumb_title: Adapter Mashup
+title: Erweiterte Adapternutzung und Adapter-Mashup
+breadcrumb_title: Adapter-Mashup
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Cordova project

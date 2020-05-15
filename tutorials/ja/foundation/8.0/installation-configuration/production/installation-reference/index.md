@@ -1539,8 +1539,8 @@ Windows の場合: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%U
 {: #step-3 }
 同様に、アプリケーション・サーバーが WebSphere Application Server Liberty プロファイルまたは Apache Tomcat サーバーであり、そのサーバーが自分のアカウントからのみ始動するようにする場合は、次のファイルから自分以外のユーザーの read 権限を削除する必要もあります。
 
-* WebSphere Application Server Liberty プロファイルの場合: **wlp/usr/servers/<server>/server.xml**
-* Apache Tomcat の場合: **conf/server.xml**
+* WebSphere Application Server Liberty プロファイルの場合: `wlp/usr/servers/<server>/server.xml`
+* Apache Tomcat の場合: `conf/server.xml`
 
 ### ステップ 4
 {: #step-4 }

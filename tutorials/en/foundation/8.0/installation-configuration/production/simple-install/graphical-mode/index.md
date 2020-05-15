@@ -142,6 +142,7 @@ You can find the resources in the following folders:
 * PushService folder for {{ site.data.keys.mf_server }} push service
 * ApplicationCenter folder for Application Center
 * Analytics folder for {{ site.data.keys.mf_analytics }}
+* AnalyticsReceiver folder for {{ site.data.keys.mf_analytics_receiver }}
 
 The goal of this tutorial is to install {{ site.data.keys.mf_server }} by using the resources in **MobileFirstServer** folder.  
 You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
@@ -199,6 +200,10 @@ The Server Configuration Tool does not deploy the following {{ site.data.keys.pr
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }} is typically deployed on a different set of servers than {{ site.data.keys.mf_server }} because of its high memory requirements. {{ site.data.keys.mf_analytics }} can be installed manually or with Ant tasks. If it is already installed, you can enter its URL, the user name, and password to send data to it in the Server Configuration Tool. The Server Configuration Tool will then configure the {{ site.data.keys.product_adj }} apps to send data to {{ site.data.keys.mf_analytics }}.
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+{{ site.data.keys.mf_analytics_receiver }} is typically deployed on a different set of servers than {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} because of its high memory requirements. {{ site.data.keys.mf_analytics_receiver }} can be installed manually or with Ant tasks. If it is already installed, you can enter its URL, the user name, and password to send data to it in the Server Configuration Tool. The Server Configuration Tool will then configure the {{ site.data.keys.product_adj }} apps to send data to {{ site.data.keys.mf_analytics_receiver }}.
+
 #### Application Center
 {: #application-center }
 This application can be used to distribute mobile apps internally to the employees that use the apps, or for test purpose. It is independent of {{ site.data.keys.mf_server }} and is not necessary to install together with {{ site.data.keys.mf_server }}.
@@ -252,10 +257,14 @@ This application can be used to distribute mobile apps internally to the employe
 
     A client ID and a password are needed to register the push service and the administration service as the confidential OAuth clients for the authorization server (which is by default, the runtime component). The Server Configuration Tool generates an ID and a random password for each of the service, that you can keep as-is for this getting started tutorial.
 16. Click **Next**.
-17. Keep the default entries of **Analytics Setting** panel as-is.
+17. Keep the default entries of **Analytics Receiver Setting** panel as-is.
+
+    To enable the connection to the Analytics Receiver server, you need to first install {{ site.data.keys.mf_analytics_receiver }}. However, the installation is not in the scope of this tutorial.
+18. Click **Next**.    
+19. Keep the default entries of **Analytics Setting** panel as-is.
 
     To enable the connection to the Analytics server, you need to first install {{ site.data.keys.mf_analytics }}. However, the installation is not in the scope of this tutorial.
-18. Click **Deploy**.
+20. Click **Deploy**.
 
 You can see a detail of the operations done in **Console Window**.  
 An Ant file is saved. The Server Configuration Tool helps you create an Ant file for installing and updating your configuration. This Ant file can be exported by using **File → Export Configuration as Ant Files...**. For more information about this Ant file, see Deploying {{ site.data.keys.mf_server }} to Liberty with Ant tasks in Installing {{ site.data.keys.mf_server }} [in command line mode](../command-line).

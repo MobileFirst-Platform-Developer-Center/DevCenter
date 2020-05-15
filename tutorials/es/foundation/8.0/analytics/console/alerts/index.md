@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Gestión de alertas
-breadcrumb_title: Alerts
+breadcrumb_title: Alertas 
 relevantTo: [ios,android,javascript]
 weight: 1
 ---

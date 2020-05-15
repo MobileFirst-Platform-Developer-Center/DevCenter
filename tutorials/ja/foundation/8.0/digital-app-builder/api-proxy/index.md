@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: API プロキシーを使用したマイクロサービスへの接続
-weight: 15
+weight: 16
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

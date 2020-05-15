@@ -699,7 +699,7 @@ Você deve declarar um banco de dados único: `<database kind="Push">`. O elemen
 
 O elemento `<database>` possui os atributos a seguir:
 
-| Atributo    | Descrição (Description)                  | Necessário | Padrão |
+| Atributo    | Descrição                  | Necessário | Padrão |
 |--------------|------------------------------|----------|---------|
 | kind         | O tipo de banco de dados (Push). | Sim      | Nenhuma    |
 | validar	   | Para validar se o banco de dados está acessível. | No | verdadeiro |
@@ -835,7 +835,7 @@ O elemento <server>, que é usado nesse contexto, tem o seguinte atributo:
 
 Suporta os elementos a seguir para o Liberty Collective:
 
-| Elemento               | Descrição (Description)                  | Conta |
+| Elemento               | Descrição                  | Conta |
 |-----------------------|------------------------------|-------|
 | `<collectiveMember>`  | Um membro do Liberty
 Collective. | 0..1  |
@@ -1549,8 +1549,8 @@ No Windows: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME
 {: #step-3 }
 Da mesma forma, se seu servidor de aplicativos for o perfil Liberty do WebSphere Application Server, ou Apache Tomcat, e o servidor for destinado a ser iniciado somente a partir de sua conta do usuário, também será preciso remover as permissões de leitura para outros usuários, além de você, dos seguintes arquivos:
 
-* Para o perfil Liberty do WebSphere Application Server: **wlp/usr/servers/<server>/server.xml**
-* Para o Apache Tomcat: **conf/server.xml**
+* Para o perfil Liberty do WebSphere Application Server: `wlp/usr/servers/<server>/server.xml`
+* Para o Apache Tomcat: `conf/server.xml`
 
 ### Etapa 4
 {: #step-4 }

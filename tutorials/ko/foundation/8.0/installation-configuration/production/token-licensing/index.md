@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 토큰 라이센싱을 위한 설치 및 구성
-breadcrumb_title: Token licensing
+breadcrumb_title: 토큰 라이센싱
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -310,7 +310,7 @@ WebSphere Application Server Network Deployment의 각 노드에 Rational Common
 
 | 운영 체제             | 운영 체제 버전 |	하드웨어 아키텍처 |
 |------------------------------|--------------------------|-----------------------|
-|AIX                          | 7.1                      |	POWER8(64비트 전용) |
+| AIX                          | 7.1                      |	POWER8(64비트 전용) |
 | SUSE Linux Enterprise Server | 11	                      | x86-64 전용           |
 | Windows Server               | 2012	                  | x86-64 전용           |
 

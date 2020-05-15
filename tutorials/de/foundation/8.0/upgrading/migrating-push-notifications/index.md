@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: Ereignisquellenbasierte Benachrichtigungen auf Push-Benachrichtigungen umstellen
-breadcrumb_title: Migrating push notifications
-weight: 4
+breadcrumb_title: Push-Benachrichtigungen umstellen
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -517,7 +517,7 @@ in Unicastbenachrichtigungen konvertiert werden.
 	    }
         @Override
         public void onSuccess(String arg0) {
-           Log.i("Push Notifications", "Registered successfully");
+             Log.i("Push Notifications", "Registered successfully");
 
         }
    });
@@ -1061,9 +1061,9 @@ wie folgt wieder aufheben:
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] subscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-	       NSLog(@"Failed to unregister");
+        	NSLog(@"Failed to unregister");
         }else{
-	       NSLog(@"Successfully unregistered");
+        	NSLog(@"Successfully unregistered");
         }
    }];
    ```
@@ -1136,9 +1136,9 @@ Abonnenten senden](../../notifications/sending-notifications/#sending-notificati
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
+	       NSLog(@"Failed to unregister");
         }else{
-        	NSLog(@"Successfully unregistered");
+	       NSLog(@"Successfully unregistered");
         }
    }];
    ```
@@ -1244,9 +1244,9 @@ sharedInstance] isPushSupported]`.
    [tags addObject:@"sample-tag2"];
    [MFPPush sharedInstance] unsubscribe:tags completionHandler:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
+	       NSLog(@"Failed to unregister");
         }else{
-        	NSLog(@"Successfully unregistered");
+	       NSLog(@"Successfully unregistered");
         }
    }];
    ```
@@ -1686,5 +1686,5 @@ Die folgenden Informationen müssen vor Verwendung des Migrationstools beachtet 
    ```
 
    * Ersetzen Sie **Pfad_zu_migration.properties** durch den Pfad zur Datei **migration.properties**, wenn sich die JAR-Datei und die Eigenschaftendatei an verschiedenen Positionen befinden. Entfernen Sie andernfalls den Pfad aus dem Befehl.
-   
+
     *Der Ordner "lib" mit den erforderlichen Bibliotheken muss sich an derselben Position wie die Tool-JAR-Datei befinden.

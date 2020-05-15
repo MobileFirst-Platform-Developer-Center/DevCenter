@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Déploiement de MobileFirst Server sur IBM PureApplication System
-breadcrumb_title: Installing Pure Application System
+breadcrumb_title: Installation de Pure Application System
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -1676,7 +1676,7 @@ Ce package de script configure {{ site.data.keys.mf_analytics_server }} dans le 
 | WAS\_admin\_password | Profil complet WebSphere Application Server uniquement.<br/><br/>Mot de passe de l'utilisateur administrateur du profil complet de WebSphere Application Server pour le serveur d'analyse. Pour le profil Liberty de WebSphere Application Server, conservez la valeur par défaut. | 
 | admin_user | Obligatoire.{::nomarkdown}<ul><li>Si un référentiel LDAP n'est pas activé, créez un utilisateur d'administration par défaut pour la protection de {{ site.data.keys.mf_analytics_console }}.</li><li>Si un référentiel LDAP est activé, spécifiez le nom d'utilisateur doté du privilège d'administration de {{ site.data.keys.mf_analytics }}. La valeur est stockée dans le référentiel LDAP.</li></ul> |
 | admin_password | Obligatoire.<ul><li>Si un référentiel LDAP n'est pas activé, spécifiez le mot de passe de l'utilisateur d'administration par défaut pour la protection de {{ site.data.keys.mf_analytics_console }}.</li><li>Si un référentiel LDAP est activé, spécifiez le mot de passe de l'administrateur. La valeur est stockée dans le référentiel LDAP.</li></ul>{:/} | 
-| LDAP_TYPE | (Paramètre LDAP) Obligatoire. Type de serveur LDAP de votre registre d'utilisateurs :<br/><br/>None<br/>La connexion LDAP est désactivée. Lorsque cette valeur est définie, tous les autres paramètres LDAP sont traités comme des marques de réservation uniquement.<br/><br/>TivoliDirectoryServer<br/>Sélectionnez cette valeur si le référentiel LDAP est un système IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Sélectionnez cette valeur si le référentiel LDAP est un système Microsoft Active Directory.<br/><br/>Valeur par défaut : None. | 
+| LDAP_TYPE | (Paramètre LDAP) Obligatoire. Type de serveur LDAP de votre registre d'utilisateurs :<br/><br/>Aucun<br/>La connexion LDAP est désactivée. Lorsque cette valeur est définie, tous les autres paramètres LDAP sont traités comme des marques de réservation uniquement.<br/><br/>TivoliDirectoryServer<br/>Sélectionnez cette valeur si le référentiel LDAP est un système IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Sélectionnez cette valeur si le référentiel LDAP est un système Microsoft Active Directory.<br/><br/>Valeur par défaut : None. | 
 | LDAP_IP | (Paramètre LDAP). Adresse IP du serveur LDAP. | 
 | LDAP\_SSL\_PORT | (Paramètre LDAP) Port LDAP pour la connexion sécurisée. | 
 | LDAP_PORT | (Paramètre LDAP) Port LDAP pour la connexion non sécurisée. | 
@@ -1688,10 +1688,10 @@ Ce package de script configure {{ site.data.keys.mf_analytics_server }} dans le 
 | GROUP_FILTER | (Paramètre LDAP) Filtre de groupe LDAP qui s'applique lors de la recherche de groupes dans le registre d'utilisateurs existant. | 
 | LDAP\_REPOSITORY\_NAME | (Paramètre LDAP) Nom de serveur LDAP. | 
 | CERT\_FILE\_PATH | (Paramètre LDAP) Chemin cible de la certification de serveur LDAP téléchargée. Obligatoire lorsque REQUIRE_SSL a pour valeur true. | 
-| mfpadmin | (Paramètre LDAP) Rôle Admin pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpdeployer | (Paramètre LDAP) Rôle Deployer pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpmonitor | (Paramètre LDAP) Rôle Monitor pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpoperator | (Paramètre LDAP) Rôle Operator pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpadmin | (Paramètre LDAP) Rôle Admin pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpdeployer | (Paramètre LDAP) Rôle Deployer pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpmonitor | (Paramètre LDAP) Rôle Monitor pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpoperator | (Paramètre LDAP) Rôle Operator pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
@@ -1774,10 +1774,10 @@ Il doit être utilisé avec le composant logiciel du profil Liberty de WebSphere
 | GROUP_FILTER | (Paramètre LDAP) Filtre de groupe LDAP qui s'applique lors de la recherche de groupes dans le registre d'utilisateurs existant. | 
 | LDAP\_REPOSITORY\_NAME | (Paramètre LDAP) Nom de serveur LDAP. | 
 | CERT\_FILE\_PATH | (Paramètre LDAP) Chemin cible de la certification de serveur LDAP téléchargée. Obligatoire lorsque REQUIRE_SSL a pour valeur true. | 
-| mfpadmin | Rôle d'administrateur pour {{ site.data.keys.mf_server }}. Valeurs possibles :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpdeployer | (Paramètre LDAP) Rôle Deployer pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpmonitor | (Paramètre LDAP) Rôle Monitor pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
-| mfpoperator | (Paramètre LDAP) Rôle Operator pour {{ site.data.keys.mf_server }} :<br/><br/>None<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpadmin | Rôle d'administrateur pour {{ site.data.keys.mf_server }}. Valeurs possibles :<br/><br/>Aucune<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpdeployer | (Paramètre LDAP) Rôle Deployer pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpmonitor | (Paramètre LDAP) Rôle Monitor pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
+| mfpoperator | (Paramètre LDAP) Rôle Operator pour {{ site.data.keys.mf_server }} :<br/><br/>Aucun<br/>Aucun utilisateur.<br/><br/>AllAuthenticatedUsers<br/>Utilisateurs authentifiés<br/><br/>Everyone<br/>Tous les utilisateurs.<br/><br/>Valeur par défaut : None. | 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
@@ -1811,7 +1811,7 @@ Ce package de script configure le serveur {{ site.data.keys.mf_app_center }} dan
 | WAS\_admin\_user | Obligatoire pour WebSphere Application Server. Facultatif pour WebSphere Application Server Liberty. Lorsque {{ site.data.keys.mf_server }} est déployé sur le profil complet de WebSphere Application Server, il est mappé à l'attribut de sortie was_admin du composant Standalone server dans le modèle de canevas.<br/><br/>Lorsque {{ site.data.keys.mf_server }} est déployé sur WebSphere Application Server Network Deployment, il est mappé à l'attribut de sortie was_admin du composant Deployment manager dans le modèle de canevas. | 
 | WAS\_admin\_password | Obligatoire pour WebSphere Application Server. Facultatif pour WebSphere Application Server Liberty. Lorsque {{ site.data.keys.mf_server }} est déployé sur le profil complet de WebSphere Application Server, il est mappé à l'attribut de sortie was\_admin\_password du composant Standalone server dans le modèle de canevas. |
 | server_hostname | Nom d'hôte de {{ site.data.keys.mf_server }}. Il est mappé à l'attribut de sortie host des composants Liberty profile server ou Standalone server. |
-| LDAP_TYPE | (Paramètre LDAP) Obligatoire. Type de serveur LDAP de votre registre d'utilisateurs :<br/><br/>None<br/>La connexion LDAP est désactivée. Lorsque cette valeur est définie, tous les autres paramètres LDAP sont traités comme des marques de réservation uniquement.<br/><br/>TivoliDirectoryServer<br/>Sélectionnez cette valeur si le référentiel LDAP est un système IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Sélectionnez cette valeur si le référentiel LDAP est un système Microsoft Active Directory.<br/><br/>Valeur par défaut : None. | 
+| LDAP_TYPE | (Paramètre LDAP) Obligatoire. Type de serveur LDAP de votre registre d'utilisateurs :<br/><br/>Aucune<br/>La connexion LDAP est désactivée. Lorsque cette valeur est définie, tous les autres paramètres LDAP sont traités comme des marques de réservation uniquement.<br/><br/>TivoliDirectoryServer<br/>Sélectionnez cette valeur si le référentiel LDAP est un système IBM Tivoli Directory Server.<br/><br/>ActiveDirectory<br/>Sélectionnez cette valeur si le référentiel LDAP est un système Microsoft Active Directory.<br/><br/>Valeur par défaut : None. | 
 | LDAP_IP | (Paramètre LDAP). Adresse IP du serveur LDAP. | 
 | LDAP\_SSL\_PORT | (Paramètre LDAP) Port LDAP pour la connexion sécurisée. | 
 | LDAP_PORT | (Paramètre LDAP) Port LDAP pour la connexion non sécurisée. | 
@@ -1823,7 +1823,7 @@ Ce package de script configure le serveur {{ site.data.keys.mf_app_center }} dan
 | GROUP_FILTER | (Paramètre LDAP) Filtre de groupe LDAP qui s'applique lors de la recherche de groupes dans le registre d'utilisateurs existant. | 
 | LDAP\_REPOSITORY\_NAME | (Paramètre LDAP) Nom de serveur LDAP. | 
 | CERT\_FILE\_PATH | (Paramètre LDAP) Chemin cible de la certification de serveur LDAP téléchargée. Obligatoire lorsque REQUIRE_SSL a pour valeur true. | 
-| appcenteradmin | Rôle d'administrateur pour {{ site.data.keys.mf_app_center }}. Valeurs possibles :<ul><li>None</li><li>Aucun utilisateur</li><li>AllAuthenticatedUsers</li>Utilisateurs authentifiés</li><li>Everyone</li><li>Tous les utilisateurs</li></ul>{:/}Valeur par défaut : None | 
+| appcenteradmin | Rôle d'administrateur pour {{ site.data.keys.mf_app_center }}. Valeurs possibles :<ul><li>Aucune</li><li>Aucun utilisateur</li><li>AllAuthenticatedUsers</li>Utilisateurs authentifiés</li><li>Everyone</li><li>Tous les utilisateurs</li></ul>{:/}Valeur par défaut : None | 
 
 ### MFP Server Prerequisite
 {: #mfp-server-prerequisite }

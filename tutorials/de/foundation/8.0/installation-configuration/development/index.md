@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Entwicklungsumgebung einrichten
-breadcrumb_title: Development Environment
+breadcrumb_title: Entwicklungsumgebung
 show_children: true
 weight: 1
 ---

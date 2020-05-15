@@ -9,7 +9,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreReactNative
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## 선행 조건
+## 전제조건
 {: #prerequisites }
 * [JSONStore 상위 학습서](../)를 읽으십시오.
 * {{ site.data.keys.product_adj }} React Native Core SDK가 프로젝트에 추가되었는지 확인하십시오. [React-Native 애플리케이션에 Mobile Foundation SDK 추가](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/reactnative-tutorials/) 학습서에 따르십시오.
@@ -147,7 +147,7 @@ npm install
     	 이 단계는 *react-native-ibm-mobilefirst* 라이브러리에 필요합니다.<br/>
 
 	 *  React Native 프로젝트 루트 디렉토리에서 `android/app/build.gradle` 파일을 여십시오.<br/>
-*android {}* 내에 다음 코드를 추가하십시오.<br/>
+      *android {}* 내에 다음 코드를 추가하십시오.<br/>
 
         ```
         packagingOptions{

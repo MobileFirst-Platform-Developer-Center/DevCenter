@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Desarrollo de interfaz de usuario para aplicaciones Cordova
-breadcrumb_title: Developing UI
+breadcrumb_title: Desarrollo de la interfaz de usuario 
 relevantTo: [cordova]
 weight: 1
 ---

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: iOS에서 SMS 알림 처리
-breadcrumb_title: Handling SMS in iOS
+breadcrumb_title: iOS에서 SMS 처리
 relevantTo: [ios]
 downloads:
   - name: Download Xcode project

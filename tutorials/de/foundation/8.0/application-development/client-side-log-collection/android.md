@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Protokollierung in Android-Anwendungen
-breadcrumb_title: Logging in Android
+breadcrumb_title: Protokollierung unter Android
 relevantTo: [android]
 weight: 3
 ---
@@ -67,6 +67,16 @@ Inaktivierung:
 
 ```java
 Logger.setAutoSendLogs(false);
+```
+
+### Intervall für autoSendLog ändern
+{: auto-log-sending-interval }
+Das *Intervall für autoSendLog* ist standardmäßig auf 60 Sekunden gesetzt. Sie können das *Intervall für autoSendLog* mit folgender Methode ändern.
+
+Nachfolgend sehen Sie, wie das *Intervall für autoSendLog* auf 120 Sekunden gesetzt wird.
+
+```java
+Logger.setAutoSendLogs(true, 120);
 ```
 
 ## Optimierung mit der Logger-API

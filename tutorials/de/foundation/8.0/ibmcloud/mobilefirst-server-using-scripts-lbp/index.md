@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Server mit Scripts für Liberty for Java in IBM Cloud einrichten
-breadcrumb_title: Foundation on Liberty for Java
+breadcrumb_title: Foundation in Liberty for Java
 relevantTo: [ios,android,windows,javascript]
 weight: 9
 ---
@@ -171,7 +171,7 @@ Das {{ site.data.keys.mf_app_center }} erfordert eine externe <a href="https://c
                         Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
-initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
+initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organsisationsname --space IBM_Cloud-Bereichsname
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
@@ -216,7 +216,7 @@ prepareappcenterdbs.sh --acdb MFPAppCenterDashDBService
                         Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
-prepareappcenter.sh --name APP_NAME
+prepareappcenter.sh --name APP-NAME
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
@@ -227,7 +227,8 @@ prepareappcenter.sh --name APP_NAME
 
                   </li>
                   <li><b>startappcenter.sh - Starten des {{ site.data.keys.mf_app_center }}</b><br />
-                  Das Script <b>startappcenter.sh</b> wird zum Starten von {{ site.data.keys.mf_app_center }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus:<p/>
+                  Das Script <b>startappcenter.sh</b> wird zum Starten von {{ site.data.keys.mf_app_center }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus:
+<p/>
 {% highlight bash %}
 ./startappcenter.sh args/startappcenter.properties
 {% endhighlight %}
@@ -235,7 +236,7 @@ prepareappcenter.sh --name APP_NAME
                         Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
-./startappcenter.sh --name APP_NAME
+./startappcenter.sh --name APP-NAME
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
@@ -305,7 +306,7 @@ Mit dem in IBM Cloud ausgeführten {{ site.data.keys.mf_app_center }} können Si
                         Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
-initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organisationsname --space IBM_Cloud-Bereichsname
+initenv.sh --user IBM_Cloud-Benutzer-ID --password IBM_Cloud-Kennwort --org IBM_Cloud-Organsisationsname --space IBM_Cloud-Bereichsname
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
@@ -332,7 +333,8 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
-</li>
+
+                  </li>
                   <li><b>initenv.sh (optional) – Anmeldung bei IBM Cloud</b><br />
                       Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Bereich ohne verfügbare dashDB-Serviceinstanz erstellen müssen. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
@@ -350,7 +352,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                         Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
-prepareserver.sh --name APP_NAME
+prepareserver.sh --name APP-NAME
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 
@@ -358,9 +360,11 @@ prepareserver.sh --name APP_NAME
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
-</li>
+
+                  </li>
                   <li><b>startserver.sh - Starten des Servers</b><br />
-                  Das Script <b>startserver.sh</b> wird zum Starten von {{ site.data.keys.mf_server }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus:<p/>
+                  Das Script <b>startserver.sh</b> wird zum Starten von {{ site.data.keys.mf_server }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus:
+<p/>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -368,7 +372,7 @@ prepareserver.sh --name APP_NAME
                         Sie können die Parameter auch in der Befehlszeile übergeben.
 
 {% highlight bash %}
-./startserver.sh --name APP_NAME 
+./startserver.sh --name APP-NAME
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, führen Sie die Option "help" aus. 

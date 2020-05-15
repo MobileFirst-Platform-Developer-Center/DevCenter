@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: Vorhandene Adapter auf MobileFirst Server Version 8.0.0 umstellen
-breadcrumb_title: Migrating existing adapters
-weight: 3
+breadcrumb_title: Vorhandene Adapter umstellen
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
@@ -27,14 +27,20 @@ in {{ site.data.keys.mf_server }} Version 8.0 umstellen](#migrating-java-adapter
 [JavaScript-Adapter auf Maven-Projekte
 in {{ site.data.keys.mf_server }} Version 8.0 umstellen](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80). 
 
+## Migration von Adaptern mit dem Unterstützungstool für Migration
+{: #migrating-adapters-using-migration-assist-tool}
+
+Mit dem Unterstützungstool für Migration ist die Umstellung vorhandener Adapter einfacher. Weitere Informationen finden Sie [hier]({{site.baseur}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/#using-migration-assistance-tool).
+
+
 ## Ältere Adapter unverändert in {{ site.data.keys.mf_server }} Version 8.0 verwenden
 {: #using-older-adapters-as-is-under-mobilefirst-server-v-80 }
 Ein vorhandener Adapter kann ohne Änderung in {{ site.data.keys.mf_server }} Version 8.0 implementiert werden,
 solange sie nicht die folgenden Bedingungen erfüllen: 
 
-|Adaptertyp |Bedingung| 
+|Adaptertyp |Bedingung|
 |--------------|-----------|
-|Java|Verwendet die Schnittstelle PushAPI oder SecurityAPI| 
+|Java|Verwendet die Schnittstelle PushAPI oder SecurityAPI|
 |JavaScript| {::nomarkdown}<ul><li>Wurde in IBM Worklight bis Version 6.2 erstellt</li><li>Verwendet einen anderen Verbindungstyp als HTTP oder SQL</li><li>Enthält Prozeduren mit securityTest-Anpassung</li><li>Enthält Prozeduren, die für die Verbindung zum Back-End die Benutzeridentität verwenden</li><li>Verwendet eine der folgenden APIs: <ul><li>WL.Device.*</li><li>WL.Geo.\*</li><li>WL.Server.readSingleJMSMessage</li><li>WL.Server.readAllJMSMessages</li><li>WL.Server.writeJMSMessage</li><li>WL.Server.requestReplyJMSMessage</li><li>WL.Server.getActiveUser</li><li>WL.Server.setActiveUser</li><li>WL.Server.getCurrentUserIdentity</li><li>WL.Server.getCurrentDeviceIdentity</li><li>WL.Server.createEventSource</li><li>WL.Server.createDefaultNotification</li><li>WL.Server.getUserNotificationSubscription</li><li>WL.Server.notifyAllDevices</li><li>WL.Server.notifyDeviceToken</li><li>WL.Server.notifyDeviceSubscription</li><li>WL.Server.sendMessage</li><li>WL.Server.createEventHandler</li><li>WL.Server.setEventHandlers</li><li>WL.Server.setApplicationContext</li><li>WL.Server.fetchNWBusinessObject</li><li>WL.Server.createNWBusinessObject</li><li>WL.Server.deleteNWBusinessObject</li><li>WL.Server.updateNWBusinessObject</li><li>WL.Server.getBeaconsAndTriggers</li><li>WL.Server.signSoapMessage</li><li>WL.Server.createSQLStatement</li></ul></li></ul>{:/} |
 
 ## Java-Adapter
@@ -71,7 +77,7 @@ die Informationen unter
     │                   ├── RSSAdapterApplication.java
     │                   └── RSSAdapterResource.java
    ```
-    
+
    Neue Struktur eines Java-Adapters:
 
    ```xml

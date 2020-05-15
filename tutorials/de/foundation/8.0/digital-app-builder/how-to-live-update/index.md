@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Ein-/Ausschalten von Features mit der Liveaktualisierung
-weight: 12
+weight: 13
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

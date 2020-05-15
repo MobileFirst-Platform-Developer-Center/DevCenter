@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: ワークステーション・インストール・ガイド
-breadcrumb_title: Installation guide
+breadcrumb_title: インストール・ガイド
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -30,7 +30,9 @@ weight: 1
     *Windows:*  
     [このガイドに従ってください](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)。
 
-### インストール
+    [既知の問題](#known-issue-win)
+
+## インストール
 {: #installation }
 DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}/downloads/)から入手し、画面の指示に従います。
 
@@ -66,7 +68,7 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 **前提条件:**  
 1. NodeJS と NPM は、{{ site.data.keys.mf_cli }} をインストールするための要件です。  
  [NodeJS v6.11.1](https://nodejs.org/download/release/v6.11.1/) と NPM v3.10.10 をダウンロードしてインストールしてください。
- MobileFirst CLI バージョン 8.0.2018100112 以降では、Node v8.x または v10.x を使用できます。 
+ MobileFirst CLI バージョン 8.0.2018100112 以降では、Node v8.x または v10.x を使用できます。
 
  インストールを検証するには、コマンド・ライン・ウィンドウを開いて以下を実行します。`node -v`
 
@@ -93,18 +95,49 @@ DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}
 1. [Apache Maven .zip をダウンロードします](https://maven.apache.org/download.cgi)。
 2. Maven フォルダーを指す `MVN_PATH` 変数を追加します。
 
-    *Mac および Linux:* **~/.bash_profile** を次のように編集します。
+   *Mac および Linux:* **~/.bash_profile** を次のように編集します。
 
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
     ```
 
-    *Windows:*  
+    *Windows:*
+
     [このガイドに従ってください](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/)。
-`mvn -v` を実行してインストールを検証します。
+    
+    次のコマンドを実行して、インストールを検証します。
+    ```bash
+    mvn -v
+    ```
+
 
 ### 使用法
 {: #usage }
 Apache Maven がインストールされたら、Maven コマンド・ライン・コマンド経由で、または {{ site.data.keys.mf_cli }} を使用して、アダプターを作成できます。  
 詳しくは、[アダプターのチュートリアル]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)を参照してください。
+
+### Windows での既知の問題
+{: #known-issue-win}
+
+Oracle Java 8 update 60 以上の Windows マシンでは、InstallAnywhere テクノロジーを使用する MobileFirst インストーラーが次のエラーで失敗します。
+
+![起動エラー](launch-error.png)
+
+#### エラーの原因
+Oracle が Java 8 update 60 で導入した変更により、InstallAnywhere を使用してビルドされたインストーラーは、上記のエラーで失敗します。この失敗の原因は、Oracle Java 8u60 以上の場合、InstallAnywhere が Windows マシン上でサポートされている最新の JVM の場所を自動的に検出できないためです。
+
+#### エラーの解決
+
+問題の解決には、次のいずれかのアプローチを使用できます。
+
+##### アプローチ 1
+
+指定された JVM を使用して起動するように InstallAnywhere をガイドします。
+コマンド・ラインを使用してインストーラーを起動し、**LAX_VM** パラメーターを使用して、起動に使用する JVM を InstallAnywhere に指示します。
+
+![lax-vm-parameter](lax-vm-parameter.png)
+
+##### アプローチ 2
+
+この問題は Java 8u60 より前のバージョンでは見られないので、Java 7 を使用します。

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: API 프록시를 사용하여 마이크로서비스에 연결
-weight: 15
+weight: 16
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->

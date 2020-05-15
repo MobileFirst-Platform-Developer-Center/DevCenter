@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: グラフィカル・モードでの MobileFirst Server のインストール
-breadcrumb_title: Graphical mode installation
+breadcrumb_title: グラフィカル・モードでのインストール
 show_breadcrumb: true
 weight: 2
 ---
@@ -142,6 +142,7 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
 * {{ site.data.keys.mf_server }} プッシュ・サービス用の PushService フォルダー
 * Application Center 用の ApplicationCenter フォルダー
 * {{ site.data.keys.mf_analytics }} 用の Analytics フォルダー
+* {{ site.data.keys.mf_analytics_receiver }} 用の AnalyticsReceiver フォルダー
 
 このチュートリアルの目的は、**MobileFirstServer** フォルダー内のリソースを使用して {{ site.data.keys.mf_server }} をインストールすることです。  
 また、**shortcuts** フォルダーには、サーバー構成ツール、Ant、および mfpadm プログラムのショートカットも用意されています。
@@ -199,6 +200,10 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
 {: #mobilefirst-analytics }
 {{ site.data.keys.mf_analytics }} はメモリー所要量が大きいため、通常 {{ site.data.keys.mf_server }} とは別のサーバー・セットにデプロイされます。 {{ site.data.keys.mf_analytics }} は、手動で、もしくは Ant タスクを使用してインストールできます。 既にインストール済みの場合は、サーバー構成ツールでその URL、ユーザー名、およびパスワードを入力し、それにデータを送信できるようにします。 それにより、サーバー構成ツールが {{ site.data.keys.mf_analytics }} にデータを送信するように {{ site.data.keys.product_adj }} アプリを構成します。
 
+#### {{ site.data.keys.mf_analytics_receiver }}
+{: #mobilefirst-analytics_receiver }
+{{ site.data.keys.mf_analytics_receiver }} はメモリー所要量が大きいため、通常 {{ site.data.keys.mf_server }} や {{ site.data.keys.mf_analytics }} とは別のサーバー・セットにデプロイされます。{{ site.data.keys.mf_analytics_receiver }} は、手動で、もしくは Ant タスクを使用してインストールできます。 既にインストール済みの場合は、サーバー構成ツールでその URL、ユーザー名、およびパスワードを入力し、それにデータを送信できるようにします。 それにより、サーバー構成ツールが {{ site.data.keys.mf_analytics_receiver }} にデータを送信するように {{ site.data.keys.product_adj }} アプリを構成します。
+
 #### Application Center
 {: #application-center }
 このアプリケーションは、社内でモバイル・アプリを使用する従業員に配布するのに使用したり、テスト目的に使用したりできます。 これは {{ site.data.keys.mf_server }} とは独立していて、{{ site.data.keys.mf_server }} と一緒にインストールする必要はありません。
@@ -252,10 +257,14 @@ WebSphere Application Server Liberty Core のインストーラーは、{{ site.
 
     プッシュ・サービスと管理サービスを許可サーバー (デフォルトではランタイム・コンポーネント) の機密 OAuth クライアントとして登録するには、クライアント ID とパスワードが必要です。 サーバー構成ツールが各サービス用に ID とランダム・パスワードを生成します。この入門チュートリアル用には、それらをそのまま保持することができます。
 16. **「次へ」**をクリックします。
-17. **「Analytics 設定 (Analytics Setting)」**パネルでデフォルト項目をそのまま保持します。
+17. **「Analytics Receiver 設定 (Analytics Receiver Setting)」**パネルでデフォルト項目をそのまま保持します。
+
+    Analytics Receiver サーバーへの接続を使用可能にするには、まず {{ site.data.keys.mf_analytics_receiver }} をインストールする必要があります。ただし、インストールはこのチュートリアルの対象範囲に含まれていません。
+18. **「次へ」**をクリックします。    
+19. **「Analytics 設定 (Analytics Setting)」**パネルでデフォルト項目をそのまま保持します。
 
     Analytics サーバーへの接続を使用可能にするには、まず {{ site.data.keys.mf_analytics }} をインストールする必要があります。 ただし、インストールはこのチュートリアルの対象範囲に含まれていません。
-18. **「デプロイ」**をクリックします。
+20. **「デプロイ」**をクリックします。
 
 実行された操作の詳細を、**「コンソール・ウィンドウ」**で確認できます。  
 Ant ファイルが保存されます。 サーバー構成ツールは、構成のインストールと更新のための Ant ファイルの作成を支援します。 この Ant ファイルは、**「ファイル」→「構成を Ant ファイルとしてエクスポート...(Export Configuration as Ant Files...)」**を使用してエクスポートできます。 この Ant ファイルについて詳しくは、『[コマンド・ライン・モードでの](../command-line) {{ site.data.keys.mf_server }} のインストール』の『Ant タスクを使用した {{ site.data.keys.mf_server }} の Liberty へのデプロイ』を参照してください。

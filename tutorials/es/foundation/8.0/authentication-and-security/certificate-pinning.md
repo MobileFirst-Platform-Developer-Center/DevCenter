@@ -102,13 +102,13 @@ NSArray *arrayOfCerts = [NSArray arrayWithObjects:@“Cert1”,@“Cert2”,@“
 Certificado único:
 Ejemplo:
 ```swift
-WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey(certificateFilename: “myCertificate.cer”);
 ```
 Varios certificados:
 Ejemplo:
 ```swift
-let arrayOfCerts : [Any] = ["Cert1", "Cert2”, "Cert3”];
-WLClient.sharedInstance().pinTrustedCertificatePublicKey( fromFiles: arrayOfCerts)
+let arrayOfCerts : [Any] = ["Cert1", "Cert2", "Cert3"];
+WLClientSwift.sharedInstance().pinTrustedCertificatePublicKey( certificateFilenames: arrayOfCerts);
 ```
 
 El método de fijación de certificados provocará una excepción en dos casos:
