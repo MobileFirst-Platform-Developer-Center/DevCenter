@@ -8,7 +8,7 @@ weight: 2
 
 Learn how to install the Mobile Foundation instance on an OpenShift cluster using the IBM Mobile Foundation Operator.
 
-There are two ways of getting the entitlement to OpenShift Container Platform.
+There are two ways of getting the entitlement to OpenShift Container Platform (OCP).
 
 * You have the entitlement to IBM Cloud Pak for Applications, which includes the OpenShift Container Platform entitlement.
 * You have an existing OpenShift Container Platform (bought from Red Hat).
@@ -22,6 +22,7 @@ Following are the prerequisites before you begin the process of installing Mobil
 
 - OpenShift cluster v3.11 or above.
 - [OpenShift client tools](https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html) (`oc`).
+- Install and setup [Docker](https://docs.docker.com/get-docker/).
 - Mobile Foundation requires a database. Create a supported database and keep the database access details handy for further use. See [here](https://mobilefirstplatform.ibmcloud.com/tutorials/ru/foundation/8.0/installation-configuration/production/prod-env/databases/).
 - Mobile Foundation Analytics requires mounted storage volume for persisting Analytics data (NFS recommended).
 
@@ -158,6 +159,8 @@ Apart from loading the PPA images into the OpenShift internal image registry or 
       volumeName: mfanalyticspv
     EOF
    ```
+   
+  > **NOTE** : Prior to deploying Analytics, check if the PV and the PVC status is in **bound** state.
 
 ### Deploy the IBM Mobile Foundation Operator
 {: #deploy-mf-operator}
