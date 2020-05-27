@@ -1,8 +1,7 @@
 ---
 layout: tutorial
 title: Configurando o Ambiente de Desenvolvimento
-breadcrumb_title: Ambiente de
-Desenvolvimento
+breadcrumb_title: Ambiente de Desenvolvimento
 show_children: true
 weight: 1
 ---
